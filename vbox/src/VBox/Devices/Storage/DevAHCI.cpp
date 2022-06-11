@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 80531 2019-09-01 23:03:34Z vboxsync $ */
+/* $Id: DevAHCI.cpp 80589 2019-09-04 18:20:28Z vboxsync $ */
 /** @file
  * DevAHCI - AHCI controller device (disk and cdrom).
  *
@@ -4500,8 +4500,8 @@ static bool ahciR3ReqSubmit(PAHCIPort pAhciPort, PAHCIREQ pAhciReq, PDMMEDIAEXIO
                 pAhciPort->Led.Asserted.s.fWriting = pAhciPort->Led.Actual.s.fWriting = 1;
             rc = pAhciPort->pDrvMediaEx->pfnIoReqSendScsiCmd(pAhciPort->pDrvMediaEx, pAhciReq->hIoReq,
                                                              0, &pAhciReq->aATAPICmd[0], ATAPI_PACKET_SIZE,
-                                                             PDMMEDIAEXIOREQSCSITXDIR_UNKNOWN, cbBuf,
-                                                             &pAhciPort->abATAPISense[0], sizeof(pAhciPort->abATAPISense),
+                                                             PDMMEDIAEXIOREQSCSITXDIR_UNKNOWN, NULL, cbBuf,
+                                                             &pAhciPort->abATAPISense[0], sizeof(pAhciPort->abATAPISense), NULL,
                                                              &pAhciReq->u8ScsiSts, 30 * RT_MS_1SEC);
         }
     }

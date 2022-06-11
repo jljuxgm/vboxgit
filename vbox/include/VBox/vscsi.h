@@ -1,4 +1,4 @@
-/* $Id: vscsi.h 76585 2019-01-01 06:31:29Z vboxsync $ */
+/* $Id: vscsi.h 80589 2019-09-04 18:20:28Z vboxsync $ */
 /** @file
  * VBox storage drivers - Virtual SCSI driver
  */
@@ -84,6 +84,25 @@ typedef enum VSCSIIOREQTXDIR
 } VSCSIIOREQTXDIR;
 /** Pointer to a SCSI LUN type */
 typedef VSCSIIOREQTXDIR *PVSCSIIOREQTXDIR;
+
+/**
+ * Virtual SCSI transfer direction as seen from the initiator.
+ */
+typedef enum VSCSIXFERDIR
+{
+    /** Invalid data direction. */
+    PVSCSIXFERDIR_INVALID     = 0,
+    /** Direction is unknown. */
+    VSCSIXFERDIR_UNKNOWN,
+    /** Direction is from target to initiator (aka a read). */
+    VSCSIXFERDIR_T2I,
+    /** Direction is from initiator to device (aka a write). */
+    VSCSIXFERDIR_I2T,
+    /** No data transfer associated with this request. */
+    VSCSIXFERDIR_NONE,
+    /** 32bit hack. */
+    VSCSIXFERDIR_32BIT_HACK  = 0x7fffffff
+} VSCSIXFERDIR;
 
 /**
  * LUN types we support
@@ -276,7 +295,9 @@ typedef DECLCALLBACK(void) FNVSCSIREQCOMPLETED(VSCSIDEVICE hVScsiDevice,
                                                int rcScsiCode,
                                                bool fRedoPossible,
                                                int rcReq,
-                                               size_t cbXfer);
+                                               size_t cbXfer,
+                                               VSCSIXFERDIR enmXferDir,
+                                               size_t cbSense);
 /** Pointer to a virtual SCSI request completed callback. */
 typedef FNVSCSIREQCOMPLETED *PFNVSCSIREQCOMPLETED;
 

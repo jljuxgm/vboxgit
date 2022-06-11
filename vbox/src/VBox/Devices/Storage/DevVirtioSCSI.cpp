@@ -1,4 +1,4 @@
-/* $Id: DevVirtioSCSI.cpp 80577 2019-09-04 07:32:56Z vboxsync $ $Revision: 80577 $ $Date: 2019-09-04 15:32:56 +0800 (Wed, 04 Sep 2019) $ $Author: vboxsync $ */
+/* $Id: DevVirtioSCSI.cpp 80589 2019-09-04 18:20:28Z vboxsync $ $Revision: 80589 $ $Date: 2019-09-05 02:20:28 +0800 (Thu, 05 Sep 2019) $ $Author: vboxsync $ */
 /** @file
  * VBox storage devices - Virtio SCSI Driver
  *
@@ -1091,8 +1091,8 @@ static int virtioScsiReqSubmit(PVIRTIOSCSI pThis, uint16_t qIdx, PRTSGBUF pInSgB
 
     rc = pIMediaEx->pfnIoReqSendScsiCmd(pIMediaEx, pReq->hIoReq, uLUN,
                                         pVirtqReq->uCdb, pThis->virtioScsiConfig.uCdbSize,
-                                        PDMMEDIAEXIOREQSCSITXDIR_UNKNOWN, cbDataIn,
-                                        pReq->pbSense, pReq->cbSense,
+                                        PDMMEDIAEXIOREQSCSITXDIR_UNKNOWN, NULL, cbDataIn,
+                                        pReq->pbSense, pReq->cbSense, NULL,
                                         &pReq->uStatus, 30 * RT_MS_1SEC);
 
     if (rc != VINF_PDM_MEDIAEX_IOREQ_IN_PROGRESS)

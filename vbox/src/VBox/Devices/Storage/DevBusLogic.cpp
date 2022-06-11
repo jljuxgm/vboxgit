@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 80531 2019-09-01 23:03:34Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 80589 2019-09-04 18:20:28Z vboxsync $ */
 /** @file
  * VBox storage devices - BusLogic SCSI host adapter BT-958.
  *
@@ -2753,8 +2753,8 @@ static int buslogicR3PrepareBIOSSCSIRequest(PBUSLOGIC pThis)
         ASMAtomicIncU32(&pTgtDev->cOutstandingRequests);
 
         rc = pTgtDev->pDrvMediaEx->pfnIoReqSendScsiCmd(pTgtDev->pDrvMediaEx, pReq->hIoReq, uLun,
-                                                       pbCdb, cbCdb, PDMMEDIAEXIOREQSCSITXDIR_UNKNOWN,
-                                                       cbBuf, NULL, 0, &pReq->u8ScsiSts, 30 * RT_MS_1SEC);
+                                                       pbCdb, cbCdb, PDMMEDIAEXIOREQSCSITXDIR_UNKNOWN, NULL,
+                                                       cbBuf, NULL, 0, NULL, &pReq->u8ScsiSts, 30 * RT_MS_1SEC);
         if (rc == VINF_SUCCESS || rc != VINF_PDM_MEDIAEX_IOREQ_IN_PROGRESS)
         {
             uint8_t u8ScsiSts = pReq->u8ScsiSts;
@@ -3281,7 +3281,7 @@ static int buslogicR3DeviceSCSIRequestSetup(PBUSLOGIC pBusLogic, RTGCPHYS GCPhys
                 ASMAtomicIncU32(&pTgtDev->cOutstandingRequests);
                 rc = pTgtDev->pDrvMediaEx->pfnIoReqSendScsiCmd(pTgtDev->pDrvMediaEx, pReq->hIoReq, uLun,
                                                                &pReq->CCBGuest.c.abCDB[0], pReq->CCBGuest.c.cbCDB,
-                                                               enmXferDir, cbBuf, pReq->pbSenseBuffer, cbSense,
+                                                               enmXferDir, NULL, cbBuf, pReq->pbSenseBuffer, cbSense, NULL,
                                                                &pReq->u8ScsiSts, 30 * RT_MS_1SEC);
                 if (rc != VINF_PDM_MEDIAEX_IOREQ_IN_PROGRESS)
                     buslogicR3ReqComplete(pBusLogic, pReq, rc);

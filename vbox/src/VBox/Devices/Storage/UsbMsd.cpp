@@ -1,4 +1,4 @@
-/* $Id: UsbMsd.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UsbMsd.cpp 80589 2019-09-04 18:20:28Z vboxsync $ */
 /** @file
  * UsbMSD - USB Mass Storage Device Emulation.
  */
@@ -1560,8 +1560,8 @@ static int usbMsdSubmitScsiCommand(PUSBMSD pThis, PUSBMSDREQ pReq, const char *p
                                         : PDMMEDIAEXIOREQSCSITXDIR_FROM_DEVICE;
 
     return pThis->Lun0.pIMediaEx->pfnIoReqSendScsiCmd(pThis->Lun0.pIMediaEx, pReq->hIoReq, pReq->Cbw.bCBWLun,
-                                                      &pReq->Cbw.CBWCB[0], pReq->Cbw.bCBWCBLength, enmTxDir,
-                                                      pReq->Cbw.dCBWDataTransferLength, NULL, 0,
+                                                      &pReq->Cbw.CBWCB[0], pReq->Cbw.bCBWCBLength, enmTxDir, NULL,
+                                                      pReq->Cbw.dCBWDataTransferLength, NULL, 0, NULL,
                                                       &pReq->iScsiReqStatus, 20 * RT_MS_1SEC);
 }
 

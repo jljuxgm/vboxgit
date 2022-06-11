@@ -1,4 +1,4 @@
-/* $Id: DrvStorageFilter.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: DrvStorageFilter.cpp 80589 2019-09-04 18:20:28Z vboxsync $ */
 /** @file
  * VBox storage filter driver sample.
  */
@@ -336,15 +336,16 @@ static DECLCALLBACK(int) drvStorageFltIMedia_IoReqDiscard(PPDMIMEDIAEX pInterfac
 }
 
 /** @interface_method_impl{PDMIMEDIAEX,pfnIoReqSendScsiCmd} */
-static DECLCALLBACK(int) drvStorageFltIMedia_IoReqSendScsiCmd(PPDMIMEDIAEX pInterface, PDMMEDIAEXIOREQ hIoReq, uint32_t uLun,
-                                                              const uint8_t *pbCdb, size_t cbCdb, PDMMEDIAEXIOREQSCSITXDIR enmTxDir,
-                                                              size_t cbBuf, uint8_t *pabSense, size_t cbSense, uint8_t *pu8ScsiSts,
-                                                              uint32_t cTimeoutMillies)
+static DECLCALLBACK(int) drvStorageFltIMedia_IoReqSendScsiCmd(PPDMIMEDIAEX pInterface, PDMMEDIAEXIOREQ hIoReq,
+                                                              uint32_t uLun, const uint8_t *pbCdb, size_t cbCdb,
+                                                              PDMMEDIAEXIOREQSCSITXDIR enmTxDir, PDMMEDIAEXIOREQSCSITXDIR *penmTxDirRet,
+                                                              size_t cbBuf, uint8_t *pabSense, size_t cbSense, size_t *pcbSenseRet,
+                                                              uint8_t *pu8ScsiSts, uint32_t cTimeoutMillies)
 {
     PDRVSTORAGEFILTER pThis = RT_FROM_MEMBER(pInterface, DRVSTORAGEFILTER, IMediaEx);
     return pThis->pIMediaExBelow->pfnIoReqSendScsiCmd(pThis->pIMediaExBelow, hIoReq, uLun, pbCdb, cbCdb,
-                                                      enmTxDir, cbBuf, pabSense, cbSense, pu8ScsiSts,
-                                                      cTimeoutMillies);
+                                                      enmTxDir, penmTxDirRet, cbBuf, pabSense, cbSense, pcbSenseRet,
+                                                      pu8ScsiSts, cTimeoutMillies);
 }
 
 /** @interface_method_impl{PDMIMEDIAEX,pfnIoReqGetActiveCount} */
