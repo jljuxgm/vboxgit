@@ -1,4 +1,4 @@
-/* $Id: UIResourceMonitor.cpp 83475 2020-03-30 11:10:50Z vboxsync $ */
+/* $Id: UIResourceMonitor.cpp 83476 2020-03-30 11:11:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIResourceMonitor class implementation.
  */
@@ -237,8 +237,9 @@ protected:
     virtual void drawFocus ( QPainter * /*painter*/, const QStyleOptionViewItem & /*option*/, const QRect & /*rect*/ ) const {}
 };
 
+
 /*********************************************************************************************************************************
-*   Class UIVMResouceMonitorTableView implementation.                                                                           *
+*   Class UIVMResouceMonitorTableView implementation.                                                                            *
 *********************************************************************************************************************************/
 
 UIVMResouceMonitorTableView::UIVMResouceMonitorTableView(QWidget *pParent /* = 0 */)
