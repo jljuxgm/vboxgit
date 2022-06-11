@@ -1,4 +1,4 @@
-/* $Id: RecordingInternals.h 82422 2019-12-05 15:59:34Z vboxsync $ */
+/* $Id: RecordingInternals.h 82428 2019-12-05 16:40:31Z vboxsync $ */
 /** @file
  * Recording internals header.
  */
@@ -23,6 +23,7 @@
 
 #include <list>
 
+#include <iprt/assert.h>
 #include <iprt/types.h> /* drag in stdint.h before vpx does it. */
 
 #ifdef VBOX_WITH_LIBVPX
