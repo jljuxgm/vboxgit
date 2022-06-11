@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItemCloud.h 83055 2020-02-11 20:29:39Z vboxsync $ */
+/* $Id: UIVirtualMachineItemCloud.h 83065 2020-02-12 19:38:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItemCloud class declarations.
  */
@@ -67,6 +67,17 @@ public:
         /** Acquires instance info of certain @a enmType.
           * @param  pWidget  Brings parent widget to show messages according to. */
         QString acquireInstanceInfo(KVirtualSystemDescriptionType enmType, QWidget *pParent);
+
+        /** Puts cloud VM on pause.
+          * @param  pWidget  Brings parent widget to show messages according to. */
+        void pause(QWidget *pParent);
+        /** Resumes cloud VM execution.
+          * @param  pWidget  Brings parent widget to show messages according to. */
+        void resume(QWidget *pParent);
+        /** Wrapper to handle two tasks above.
+          * @param  fPause   Brings whether cloud VM should be paused or resumed otherwise.
+          * @param  pWidget  Brings parent widget to show messages according to. */
+        void pauseOrResume(bool fPause, QWidget *pParent);
     /** @} */
 
     /** @name Update stuff.
