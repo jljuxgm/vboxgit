@@ -1,4 +1,4 @@
-/* $Id: IOMR0.cpp 81056 2019-09-27 13:11:45Z vboxsync $ */
+/* $Id: IOMR0.cpp 81136 2019-10-08 08:26:49Z vboxsync $ */
 /** @file
  * IOM - Host Context Ring 0.
  */
@@ -110,6 +110,7 @@ VMMR0_INT_DECL(int)  IOMR0IoPortSetUpContext(PGVM pGVM, PPDMDEVINS pDevIns, IOMI
     AssertPtrNullReturn(pfnOutStr, VERR_INVALID_POINTER);
     AssertPtrNullReturn(pfnInStr, VERR_INVALID_POINTER);
 
+    uint16_t const fFlags = pGVM->iomr0.s.paIoPortRing3Regs[hIoPorts].fFlags;
     RTIOPORT const cPorts = pGVM->iomr0.s.paIoPortRing3Regs[hIoPorts].cPorts;
     AssertMsgReturn(cPorts > 0 && cPorts <= _8K, ("cPorts=%s\n", cPorts), VERR_IOM_INVALID_IOPORT_HANDLE);
 
@@ -123,6 +124,7 @@ VMMR0_INT_DECL(int)  IOMR0IoPortSetUpContext(PGVM pGVM, PPDMDEVINS pDevIns, IOMI
     pGVM->iomr0.s.paIoPortRegs[hIoPorts].pfnOutStrCallback  = pfnOutStr;
     pGVM->iomr0.s.paIoPortRegs[hIoPorts].pfnInStrCallback   = pfnInStr;
     pGVM->iomr0.s.paIoPortRegs[hIoPorts].cPorts             = cPorts;
+    pGVM->iomr0.s.paIoPortRegs[hIoPorts].fFlags             = fFlags;
 #ifdef VBOX_WITH_STATISTICS
     uint16_t const idxStats = pGVM->iomr0.s.paIoPortRing3Regs[hIoPorts].idxStats;
     pGVM->iomr0.s.paIoPortRegs[hIoPorts].idxStats           = (uint32_t)idxStats + cPorts <= pGVM->iomr0.s.cIoPortStatsAllocation

@@ -1,4 +1,4 @@
-/* $Id: IOMInternal.h 81056 2019-09-27 13:11:45Z vboxsync $ */
+/* $Id: IOMInternal.h 81136 2019-10-08 08:26:49Z vboxsync $ */
 /** @file
  * IOM - Internal header file.
  */
@@ -179,6 +179,8 @@ typedef struct IOMIOPORTENTRYR0
     RTIOPORT                            cPorts;
     /** Same as the handle index. */
     uint16_t                            idxSelf;
+    /** IOM_IOPORT_F_XXX (copied from ring-3). */
+    uint16_t                            fFlags;
 } IOMIOPORTENTRYR0;
 /** Pointer to a ring-0 I/O port handle table entry. */
 typedef IOMIOPORTENTRYR0 *PIOMIOPORTENTRYR0;
@@ -224,7 +226,8 @@ typedef struct IOMIOPORTENTRYR3
     bool                                fRing0;
     /** Set if there is an raw-mode entry too. */
     bool                                fRawMode;
-    bool                                fUnused;
+    /** IOM_IOPORT_F_XXX */
+    uint8_t                             fFlags;
     /** Same as the handle index. */
     uint16_t                            idxSelf;
 } IOMIOPORTENTRYR3;
