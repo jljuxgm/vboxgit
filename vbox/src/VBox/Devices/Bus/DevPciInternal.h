@@ -1,4 +1,4 @@
-/* $Id: DevPciInternal.h 81704 2019-11-06 11:53:51Z vboxsync $ */
+/* $Id: DevPciInternal.h 82221 2019-11-26 13:30:10Z vboxsync $ */
 /** @file
  * DevPCI - Common Internal Header.
  */
@@ -163,6 +163,8 @@ typedef struct DEVPCIROOT
     IOMIOPORTHANDLE         hIoPortData;
     /** The magic I/O port handle. */
     IOMIOPORTHANDLE         hIoPortMagic;
+    /** The MCFG MMIO region. */
+    IOMMMIOHANDLE           hMmioMcfg;
 
 #if 1 /* Will be moved into the BIOS "soon". */
     /** Current bus number - obsolete (still used by DevPCI, but merge will fix that). */
