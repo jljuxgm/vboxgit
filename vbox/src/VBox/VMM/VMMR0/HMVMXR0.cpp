@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 80843 2019-09-17 08:28:50Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 80871 2019-09-17 17:41:42Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -1620,7 +1620,7 @@ static int hmR0VmxEnterRootMode(PVMCC pVM, RTHCPHYS HCPhysCpuPage, void *pvCpuPa
     {
         /* Restore CR4.VMXE if it was not set prior to our attempt to set it above. */
         if (!(uOldCr4 & X86_CR4_VMXE))
-            SUPR0ChangeCR4(0 /* fOrMask */, ~X86_CR4_VMXE);
+            SUPR0ChangeCR4(0 /* fOrMask */, ~(uint64_t)X86_CR4_VMXE);
 
         if (pVM)
             pVM->hm.s.vmx.HCPhysVmxEnableError = HCPhysCpuPage;
@@ -1652,7 +1652,7 @@ static int hmR0VmxLeaveRootMode(void)
     {
         /* Exit VMX root mode and clear the VMX bit in CR4. */
         VMXDisable();
-        SUPR0ChangeCR4(0 /* fOrMask */, ~X86_CR4_VMXE);
+        SUPR0ChangeCR4(0 /* fOrMask */, ~(uint64_t)X86_CR4_VMXE);
         rc = VINF_SUCCESS;
     }
     else

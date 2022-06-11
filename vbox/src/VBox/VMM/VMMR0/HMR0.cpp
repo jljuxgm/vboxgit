@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 80844 2019-09-17 08:44:53Z vboxsync $ */
+/* $Id: HMR0.cpp 80871 2019-09-17 17:41:42Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -447,7 +447,7 @@ static int hmR0InitIntel(void)
 
             /* Restore CR4.VMXE if it wasn't set prior to us setting it above. */
             if (!(uOldCr4 & X86_CR4_VMXE))
-                SUPR0ChangeCR4(0 /* fOrMask */, ~X86_CR4_VMXE);
+                SUPR0ChangeCR4(0 /* fOrMask */, ~(uint64_t)X86_CR4_VMXE);
 
             /* Restore interrupts. */
             ASMSetFlags(fEFlags);
