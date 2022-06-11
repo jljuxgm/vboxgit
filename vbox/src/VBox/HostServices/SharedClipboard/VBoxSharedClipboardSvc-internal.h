@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-internal.h 81441 2019-10-22 08:24:39Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-internal.h 81443 2019-10-22 09:52:40Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Internal header.
  */
@@ -196,6 +196,13 @@ void shclSvcMsgSetPeekReturn(PSHCLCLIENTMSG pMsg, PVBOXHGCMSVCPARM paDstParms, u
 int shclSvcMsgAdd(PSHCLCLIENT pClient, PSHCLCLIENTMSG pMsg, bool fAppend);
 int shclSvcMsgPeek(PSHCLCLIENT pClient, VBOXHGCMCALLHANDLE hCall, uint32_t cParms, VBOXHGCMSVCPARM paParms[], bool fWait);
 int shclSvcMsgGet(PSHCLCLIENT pClient, VBOXHGCMCALLHANDLE hCall, uint32_t cParms, VBOXHGCMSVCPARM paParms[]);
+
+int shclSvcClientInit(PSHCLCLIENT pClient, uint32_t uClientID);
+void shclSvcClientReset(PSHCLCLIENT pClient);
+
+int shclSvcClientStateInit(PSHCLCLIENTSTATE pClientState, uint32_t uClientID);
+int shclSvcClientStateDestroy(PSHCLCLIENTSTATE pClientState);
+void shclSvcClientStateReset(PSHCLCLIENTSTATE pClientState);
 
 int shclSvcClientWakeup(PSHCLCLIENT pClient);
 
