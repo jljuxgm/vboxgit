@@ -4,7 +4,6 @@
 """
 AUtostart testcase using.
 """
-from __builtin__ import isinstance
 
 __copyright__ = \
 """
@@ -27,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Id: tdAutostart1.py 83965 2020-04-24 14:07:41Z vboxsync $"
+__version__ = "$Id: tdAutostart1.py 83966 2020-04-24 14:39:14Z vboxsync $"
 
 
 # Standard Python imports.
