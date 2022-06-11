@@ -1,4 +1,4 @@
-/* $Id: UIMediumSearchWidget.h 77702 2019-03-14 14:02:18Z vboxsync $ */
+/* $Id: UIMediumSearchWidget.h 78432 2019-05-07 14:01:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSearchWidget class declaration.
  */
@@ -55,7 +55,7 @@ public:
     UIMediumSearchWidget(QWidget *pParent = 0);
     SearchType searchType() const;
     QString searchTerm() const;
-    void    search(QITreeWidget* pTreeWidget);
+    void    search(QITreeWidget* pTreeWidget, bool fGotoNext = true);
 
  protected:
 

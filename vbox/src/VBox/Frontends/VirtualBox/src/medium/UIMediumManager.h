@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.h 78353 2019-04-29 17:19:02Z vboxsync $ */
+/* $Id: UIMediumManager.h 78432 2019-05-07 14:01:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class declaration.
  */
@@ -283,6 +283,12 @@ private:
 
         /** Defines current item for passed @a pTreeWidget as @a pItem. */
         void setCurrentItem(QITreeWidget *pTreeWidget, QTreeWidgetItem *pItem);
+    /** @} */
+
+    /** @name Search stuff.
+      * @{ */
+        /** Calls  the UIMediumSearchWidget::search(..). */
+        void performSearch(bool fSelectNext);
     /** @} */
 
     /** @name Helper stuff.
