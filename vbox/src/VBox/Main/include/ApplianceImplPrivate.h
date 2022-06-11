@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplPrivate.h 78923 2019-06-03 09:09:54Z vboxsync $ */
+/* $Id: ApplianceImplPrivate.h 82366 2019-12-04 08:39:00Z vboxsync $ */
 /** @file
  * VirtualBox Appliance private data definitions
  */
@@ -412,6 +412,7 @@ struct Appliance::ImportStack
     bool                            fForceHWVirt;       // if true, we force enabling hardware virtualization
     bool                            fForceIOAPIC;       // if true, we force enabling the IOAPIC
     uint32_t                        ulMemorySizeMB;     // virtual machine RAM in megabytes
+    Utf8Str                         strFirmwareType;    //Firmware - BIOS or EFI
 #ifdef VBOX_WITH_USB
     bool                            fUSBEnabled;
 #endif
