@@ -1,4 +1,4 @@
-# $Id: Config.kmk 83036 2020-02-10 15:57:32Z vboxsync $
+# $Id: Config.kmk 83044 2020-02-10 18:56:19Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3445,7 +3445,8 @@ ifdef VBOX_SIGNING_MODE
  # @param  $3  The directory to put the signed file in. Defaults to $(dir $2).
  # @param  $4  Additional options.
  VBOX_CCS_SIGN_CMD    = $(VBOX_RETRY) $(VBOX_JAVA) -jar "$(VBOX_CCS_CLIENT_JAR)" \
- 	sign -user "$(VBOX_CCS_USER)" -global_uid "$(VBOX_CCS_GLOBAL_UID)" -server "$(VBOX_CCS_SERVER)" \
+ 	sign -user "$(VBOX_CCS_USER)" -global_uid "$(VBOX_CCS_GLOBAL_UID)" \
+		-job_timeout 90 -server_timeout 75 -server "$(VBOX_CCS_SERVER)" \
  		-sign_method "$1" -file_to_sign "$2" -signed_location "$(if $3,$3,$(dir $2))" $4
 
  ifeq ($(KBUILD_HOST),win)
@@ -7754,7 +7755,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 83036 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 83044 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
