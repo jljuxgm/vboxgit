@@ -1,4 +1,4 @@
-/* $Id: FsPerf.cpp 78781 2019-05-27 10:34:15Z vboxsync $ */
+/* $Id: FsPerf.cpp 79072 2019-06-11 01:31:57Z vboxsync $ */
 /** @file
  * FsPerf - File System (Shared Folders) Performance Benchmark.
  */
@@ -2385,7 +2385,9 @@ void fsPerfNtQueryInfoFileWorker(HANDLE hNtFile1, uint32_t fType)
         {
             if (!g_aNtQueryInfoFileClasses[i].fQuery)
             {
-                if (rcNt != STATUS_INVALID_INFO_CLASS)
+                if (   rcNt != STATUS_INVALID_INFO_CLASS
+                    && (   rcNt != STATUS_INVALID_PARAMETER /* w7rtm-32 result */
+                        || enmClass != FileUnusedInformation))
                     RTTestIFailed("%s/%#x/%c: %#x, expected STATUS_INVALID_INFO_CLASS", pszClass, cbBuf, chType, rcNt);
             }
             else if (   rcNt != STATUS_INVALID_INFO_CLASS
@@ -6650,7 +6652,7 @@ int main(int argc, char *argv[])
 
             case 'V':
             {
-                char szRev[] = "$Revision: 78781 $";
+                char szRev[] = "$Revision: 79072 $";
                 szRev[RT_ELEMENTS(szRev) - 2] = '\0';
                 RTPrintf(RTStrStrip(strchr(szRev, ':') + 1));
                 return RTEXITCODE_SUCCESS;
