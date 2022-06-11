@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsScrollArea.h 77923 2019-03-27 14:43:18Z vboxsync $ */
+/* $Id: UIGraphicsScrollArea.h 80695 2019-09-10 11:29:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGraphicsScrollArea class declaration.
  */
@@ -84,6 +84,8 @@ private:
 
     /** Holds the orientation. */
     Qt::Orientation  m_enmOrientation;
+    /** Holds whether scroll-bar is in auto-hide mode. */
+    bool             m_fAutoHideMode;
 
     /** Holds the scroll-bar instance. */
     UIGraphicsScrollBar *m_pScrollBar;
