@@ -1,4 +1,4 @@
-/* $Id: RTSignTool.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: RTSignTool.cpp 83767 2020-04-17 15:59:51Z vboxsync $ */
 /** @file
  * IPRT - Signing Tool.
  */
@@ -56,7 +56,7 @@
 #endif
 #ifdef RT_OS_WINDOWS
 # include <iprt/win/windows.h>
-# include <ImageHlp.h>
+# include <iprt/win/imagehlp.h>
 #endif
 
 
