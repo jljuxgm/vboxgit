@@ -1,4 +1,4 @@
-/* $Id: UIInformationWidget.h 80357 2019-08-20 12:55:49Z vboxsync $ */
+/* $Id: UIInformationWidget.h 80369 2019-08-21 11:43:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationWidget class declaration.
  */
@@ -51,6 +51,8 @@ public:
 protected:
 
     virtual void retranslateUi() /* override */ = 0;
+    virtual void createTableItems() /* override */ = 0;
+
     void insertTitleRow(const QString &strTitle, const QIcon &icon, const QFontMetrics &fontMetrics);
     void insertInfoRows(const UITextTable &table, const QFontMetrics &fontMetrics,
                         QTextDocument &textDocument, int &iMaxColumn1Length);

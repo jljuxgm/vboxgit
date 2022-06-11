@@ -1,4 +1,4 @@
-/* $Id: UIInformationConfiguration.h 80357 2019-08-20 12:55:49Z vboxsync $ */
+/* $Id: UIInformationConfiguration.h 80369 2019-08-21 11:43:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationConfiguration class declaration.
  */
@@ -31,7 +31,6 @@
 #include "CConsole.h"
 
 /* GUI includes: */
-#include "UITextTable.h"
 #include "UIInformationWidget.h"
 
 /* Forward declarations: */
@@ -39,8 +38,6 @@ class QTableWidgetItem;
 class QTextDocument;
 
 
-/** QWidget extension
-  * providing GUI with configuration-information tab in session-information window. */
 class UIInformationConfiguration : public UIInformationWidget
 {
     Q_OBJECT;
