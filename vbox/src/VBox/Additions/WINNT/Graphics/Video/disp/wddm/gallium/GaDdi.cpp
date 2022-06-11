@@ -1,4 +1,4 @@
-/* $Id: GaDdi.cpp 81082 2019-09-30 13:42:47Z vboxsync $ */
+/* $Id: GaDdi.cpp 81632 2019-11-03 15:49:20Z vboxsync $ */
 /** @file
  * WDDM D3DDDI callbacks implemented for the Gallium based driver.
  */
@@ -4964,7 +4964,6 @@ HRESULT APIENTRY GaDdiAdapterGetCaps(HANDLE hAdapter, const D3DDDIARG_GETCAPS *p
                 }
                 else
                 {
-                    AssertFailed();
                     memset(pData->pData, 0, sizeof (D3DCAPS9));
                 }
             }
