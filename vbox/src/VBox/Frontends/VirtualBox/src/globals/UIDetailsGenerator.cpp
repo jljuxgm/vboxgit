@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGenerator.cpp 84019 2020-04-27 16:47:43Z vboxsync $ */
+/* $Id: UIDetailsGenerator.cpp 84020 2020-04-27 17:02:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsGenerator implementation.
  */
@@ -152,6 +152,9 @@ UITextTable UIDetailsGenerator::generateMachineInformationGeneral(CCloudMachine 
     /* Ignore cloud machine errors: */
     if (comCloudMachine.isOk())
     {
+        /* Common anchor for all fields: */
+        const QString strAnchorType = "cloud";
+
         /* For each form value: */
         const QVector<CFormValue> values = comForm.GetValues();
         foreach (const CFormValue &comIteratedValue, values)
@@ -203,7 +206,7 @@ UITextTable UIDetailsGenerator::generateMachineInformationGeneral(CCloudMachine 
             }
 
             /* Generate table string: */
-            table << UITextTableLine(strLabel, strValue);
+            table << UITextTableLine(strLabel, QString("<a href=#%1,%2>%3</a>").arg(strAnchorType, strLabel, strValue));
         }
     }
 
