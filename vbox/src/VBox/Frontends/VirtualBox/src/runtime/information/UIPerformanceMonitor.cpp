@@ -1,4 +1,4 @@
-/* $Id: UIPerformanceMonitor.cpp 80250 2019-08-13 12:45:41Z vboxsync $ */
+/* $Id: UIPerformanceMonitor.cpp 80252 2019-08-13 13:02:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPerformanceMonitor class implementation.
  */
@@ -769,12 +769,12 @@ void UIPerformanceMonitor::updateCPUGraphsAndMetric(ULONG iExecutingPercentage, 
         QString strInfo;
         QString strReceiveColor;
         if (m_infoLabels[m_strCPUMetricName]->isEnabled())
-            strInfo = QString("<b>%1</b></b><br/><font color=\"%2\">%3: %4\%</font><br/><font color=\"%5\">%6: %7\%</font>")
+            strInfo = QString("<b>%1</b></b><br/><font color=\"%2\">%3: %4%5</font><br/><font color=\"%6\">%7: %8%9</font>")
                 .arg(m_strCPUInfoLabelTitle)
                 .arg(dataColorString(m_strCPUMetricName, 0))
-                .arg(m_strCPUInfoLabelGuest).arg(QString::number(iExecutingPercentage))
+                .arg(m_strCPUInfoLabelGuest).arg(QString::number(iExecutingPercentage)).arg(CPUMetric.unit())
                 .arg(dataColorString(m_strCPUMetricName, 1))
-                .arg(m_strCPUInfoLabelVMM).arg(QString::number(iOtherPercentage));
+                .arg(m_strCPUInfoLabelVMM).arg(QString::number(iOtherPercentage)).arg(CPUMetric.unit());
         else
             strInfo = QString("<b>%1</b><br/>%2%3").arg(m_strCPUInfoLabelTitle).arg("--").arg("%");
         m_infoLabels[m_strCPUMetricName]->setText(strInfo);
