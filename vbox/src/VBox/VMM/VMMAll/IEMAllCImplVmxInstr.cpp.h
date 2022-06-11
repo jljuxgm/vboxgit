@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 78864 2019-05-30 05:22:30Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 78886 2019-05-31 05:09:02Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -1773,6 +1773,8 @@ IEM_STATIC void iemVmxVmexitSaveGuestNonRegState(PVMCPU pVCpu, uint32_t uExitRea
          *
          * See Intel spec. 24.4.2 "Guest Non-Register State".
          */
+        /** @todo r=ramshankar: NSTVMX: I'm not quite sure if we can simply derive this from
+         *        DR6. */
         IEM_CTX_ASSERT(pVCpu, CPUMCTX_EXTRN_DR6);
         uint64_t       fPendingDbgMask = pVCpu->cpum.GstCtx.dr[6];
         uint64_t const fBpHitMask = VMX_VMCS_GUEST_PENDING_DEBUG_XCPT_BP0 | VMX_VMCS_GUEST_PENDING_DEBUG_XCPT_BP1
