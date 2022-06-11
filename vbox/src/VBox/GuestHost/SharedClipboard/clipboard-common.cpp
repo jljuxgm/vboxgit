@@ -1,4 +1,4 @@
-/* $Id: clipboard-common.cpp 80283 2019-08-15 08:47:23Z vboxsync $ */
+/* $Id: clipboard-common.cpp 80285 2019-08-15 09:11:47Z vboxsync $ */
 /** @file
  * Shared Clipboard: Some helper function for converting between the various eol.
  */
@@ -26,9 +26,7 @@
 #include <iprt/errcore.h>
 #include <VBox/log.h>
 #include <VBox/GuestHost/clipboard-helper.h>
-#ifdef LOG_ENABLED
-# include <VBox/HostServices/VBoxClipboardSvc.h>
-#endif
+#include <VBox/HostServices/VBoxClipboardSvc.h>
 
 /** @todo use const where appropriate; delinuxify the code (*Lin* -> *Host*); use AssertLogRel*. */
 
@@ -408,6 +406,7 @@ void VBoxClipboardDbgDumpData(const void *pv, size_t cb, VBOXCLIPBOARDFORMAT u32
     else
         LogFunc(("Invalid format %02X\n", u32Format));
 }
+#endif /* LOG_ENABLED */
 
 /**
  * Translates a Shared Clipboard host message enum to a string.
@@ -481,5 +480,3 @@ const char *VBoxClipboardGuestMsgToStr(uint32_t uMsg)
     }
     return "Unknown";
 }
-#endif /* LOG_ENABLED */
-

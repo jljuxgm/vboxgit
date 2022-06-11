@@ -1,4 +1,4 @@
-/* $Id: clipboard-uri.cpp 80283 2019-08-15 08:47:23Z vboxsync $ */
+/* $Id: clipboard-uri.cpp 80285 2019-08-15 09:11:47Z vboxsync $ */
 /** @file
  * Shared Clipboard: Common URI transfer handling code.
  */
@@ -939,6 +939,8 @@ static int sharedClipboardURITransferListHdrFromDir(PVBOXCLIPBOARDLISTHDR pHdr,
     AssertPtrReturn(pcszSrcPath, VERR_INVALID_POINTER);
     AssertPtrReturn(pcszDstBase, VERR_INVALID_POINTER);
     AssertPtrReturn(pcszDstPath, VERR_INVALID_POINTER);
+
+    RT_NOREF(cchDstBase);
 
     LogFlowFunc(("pcszSrcPath=%s, pcszDstPath=%s, pcszDstBase=%s, cchDstBase=%zu\n",
                  pcszSrcPath, pcszDstPath, pcszDstBase, cchDstBase));
