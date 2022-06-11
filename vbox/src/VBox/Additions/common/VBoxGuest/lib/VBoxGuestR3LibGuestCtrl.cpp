@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibGuestCtrl.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxGuestR3LibGuestCtrl.cpp 84198 2020-05-08 08:09:50Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, guest control.
  */
@@ -662,6 +662,23 @@ VBGLR3DECL(int) VbglR3GuestCtrlSessionCancelPrepared(uint32_t idClient, uint32_t
         rc = VbglR3HGCMCall(&Msg.Hdr, sizeof(Msg));
     } while (rc == VERR_INTERRUPTED);
     return rc;
+}
+
+
+/**
+ * Invalidates the internal state because the (VM) session has been changed (i.e. restored).
+ *
+ * @returns VBox status code.
+ * @param   idClient                Client ID to use for invalidating state.
+ * @param   idNewControlSession     New control session ID. Currently unused.
+ */
+VBGLR3DECL(int) VbglR3GuestCtrlSessionHasChanged(uint32_t idClient, uint64_t idNewControlSession)
+{
+    RT_NOREF(idNewControlSession);
+
+    vbglR3GuestCtrlDetectPeekGetCancelSupport(idClient);
+
+    return VINF_SUCCESS;
 }
 
 
