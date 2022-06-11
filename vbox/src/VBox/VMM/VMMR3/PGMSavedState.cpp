@@ -1,4 +1,4 @@
-/* $Id: PGMSavedState.cpp 80673 2019-09-09 14:02:22Z vboxsync $ */
+/* $Id: PGMSavedState.cpp 81454 2019-10-22 16:04:00Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, The Saved State Part.
  */
@@ -331,9 +331,15 @@ static int pgmR3LoadRomRanges(PVM pVM, PSSMHANDLE pSSM)
         if (id == UINT8_MAX)
         {
             for (PPGMROMRANGE pRom = pVM->pgm.s.pRomRangesR3; pRom; pRom = pRom->pNextR3)
-                AssertLogRelMsg(pRom->idSavedState != UINT8_MAX,
-                                ("The \"%s\" ROM was not found in the saved state. Probably due to some misconfiguration\n",
-                                 pRom->pszDesc));
+                if (pRom->idSavedState != UINT8_MAX)
+                { /* likely */ }
+                else if (pRom->fFlags & PGMPHYS_ROM_FLAGS_MAYBE_MISSING_FROM_STATE)
+                    LogRel(("PGM: The '%s' ROM was not found in the saved state, but it is marked as maybe-missing, so that's probably okay.\n",
+                            pRom->pszDesc));
+                else
+                    AssertLogRelMsg(pRom->idSavedState != UINT8_MAX,
+                                    ("The '%s' ROM was not found in the saved state. Probably due to some misconfiguration\n",
+                                     pRom->pszDesc));
             return VINF_SUCCESS;        /* the end */
         }
         AssertLogRelReturn(id != 0, VERR_SSM_DATA_UNIT_FORMAT_CHANGED);
