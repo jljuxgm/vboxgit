@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc.cpp 82481 2019-12-07 01:05:01Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc.cpp 82482 2019-12-07 01:07:31Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Host service entry points.
  */
@@ -2260,7 +2260,8 @@ static DECLCALLBACK(int) svcLoadState(void *, uint32_t u32ClientID, void *pvClie
     if (lenOrVer == VBOX_SHCL_SAVED_STATE_VER_3_1)
         return svcLoadStateV0(u32ClientID, pvClient, pSSM, uVersion);
 
-    if (lenOrVer >= VBOX_SHCL_SAVED_STATE_VER_6_1B2)
+    if (   lenOrVer >= VBOX_SHCL_SAVED_STATE_VER_6_1B2
+        && lenOrVer <= VBOX_SHCL_SAVED_STATE_VER_CURRENT)
     {
         if (lenOrVer >= VBOX_SHCL_SAVED_STATE_VER_6_1RC1)
         {
@@ -2328,7 +2329,7 @@ static DECLCALLBACK(int) svcLoadState(void *, uint32_t u32ClientID, void *pvClie
     }
     else
     {
-        LogRel(("Shared Clipboard: Unknown saved state version (%#x)\n", lenOrVer));
+        LogRel(("Shared Clipboard: Unsupported saved state version (%#x)\n", lenOrVer));
         return VERR_SSM_DATA_UNIT_FORMAT_CHANGED;
     }
 
