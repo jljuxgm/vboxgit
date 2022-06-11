@@ -1,4 +1,4 @@
-/* $Id: PCIRawDevImpl.cpp 76760 2019-01-10 18:07:47Z vboxsync $ */
+/* $Id: PCIRawDevImpl.cpp 81355 2019-10-18 13:58:39Z vboxsync $ */
 /** @file
  * VirtualBox Driver Interface to raw PCI device.
  */
@@ -46,8 +46,8 @@ typedef struct DRVMAINPCIRAWDEV
 // constructor / destructor
 //
 PCIRawDev::PCIRawDev(Console *console)
-  : mpDrv(NULL),
-    mParent(console)
+  : mParent(console),
+    mpDrv(NULL)
 {
 }
 
