@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 80119 2019-08-04 02:46:15Z vboxsync $ */
+/* $Id: PGMPhys.cpp 80135 2019-08-05 15:05:33Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -4889,8 +4889,11 @@ static DECLCALLBACK(int) pgmR3PhysChunkUnmapCandidateCallback(PAVLU32NODECORE pN
     }
 #endif
 
-    for (unsigned i = 0; i < RT_ELEMENTS(pVM->pgm.s.PhysTlbHC.aEntries); i++)
-        if (pVM->pgm.s.PhysTlbHC.aEntries[i].pMap == pChunk)
+    for (unsigned i = 0; i < RT_ELEMENTS(pVM->pgm.s.PhysTlbR0.aEntries); i++)
+        if (pVM->pgm.s.PhysTlbR0.aEntries[i].pMap == pChunk)
+            return 0;
+    for (unsigned i = 0; i < RT_ELEMENTS(pVM->pgm.s.PhysTlbR3.aEntries); i++)
+        if (pVM->pgm.s.PhysTlbR3.aEntries[i].pMap == pChunk)
             return 0;
 
     pArg->pChunk = pChunk;

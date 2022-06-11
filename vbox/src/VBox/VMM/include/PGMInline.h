@@ -1,4 +1,4 @@
-/* $Id: PGMInline.h 77240 2019-02-10 16:34:51Z vboxsync $ */
+/* $Id: PGMInline.h 80135 2019-08-05 15:05:33Z vboxsync $ */
 /** @file
  * PGM - Inlined functions.
  */
@@ -465,7 +465,7 @@ DECLINLINE(void *) pgmPoolMapPageV2Inlined(PVM pVM, PVMCPU pVCpu, PPGMPOOLPAGE p
 DECLINLINE(int) pgmPhysPageQueryTlbe(PVM pVM, RTGCPHYS GCPhys, PPPGMPAGEMAPTLBE ppTlbe)
 {
     int rc;
-    PPGMPAGEMAPTLBE pTlbe = &pVM->pgm.s.CTXSUFF(PhysTlb).aEntries[PGM_PAGEMAPTLB_IDX(GCPhys)];
+    PPGMPAGEMAPTLBE pTlbe = &pVM->pgm.s.CTX_SUFF(PhysTlb).aEntries[PGM_PAGEMAPTLB_IDX(GCPhys)];
     if (pTlbe->GCPhys == (GCPhys & X86_PTE_PAE_PG_MASK))
     {
         STAM_COUNTER_INC(&pVM->pgm.s.CTX_SUFF(pStats)->CTX_MID_Z(Stat,PageMapTlbHits));
@@ -495,7 +495,7 @@ DECLINLINE(int) pgmPhysPageQueryTlbe(PVM pVM, RTGCPHYS GCPhys, PPPGMPAGEMAPTLBE 
 DECLINLINE(int) pgmPhysPageQueryTlbeWithPage(PVM pVM, PPGMPAGE pPage, RTGCPHYS GCPhys, PPPGMPAGEMAPTLBE ppTlbe)
 {
     int rc;
-    PPGMPAGEMAPTLBE pTlbe = &pVM->pgm.s.CTXSUFF(PhysTlb).aEntries[PGM_PAGEMAPTLB_IDX(GCPhys)];
+    PPGMPAGEMAPTLBE pTlbe = &pVM->pgm.s.CTX_SUFF(PhysTlb).aEntries[PGM_PAGEMAPTLB_IDX(GCPhys)];
     if (pTlbe->GCPhys == (GCPhys & X86_PTE_PAE_PG_MASK))
     {
         STAM_COUNTER_INC(&pVM->pgm.s.CTX_SUFF(pStats)->CTX_MID_Z(Stat,PageMapTlbHits));
