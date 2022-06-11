@@ -1,4 +1,4 @@
-/* $Id: UICloudNetworkingStuff.cpp 83190 2020-03-03 12:25:47Z vboxsync $ */
+/* $Id: UICloudNetworkingStuff.cpp 83203 2020-03-04 16:37:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudNetworkingStuff namespace implementation.
  */
@@ -262,7 +262,7 @@ int UICloudNetworkingStuff::fetchCpuCount(const QMap<KVirtualSystemDescriptionTy
 
 QString UICloudNetworkingStuff::fetchShape(const QMap<KVirtualSystemDescriptionType, QString> &infoMap)
 {
-    /* Return instance shape value: */
+    /* Return shape value: */
     return infoMap.value(KVirtualSystemDescriptionType_CloudInstanceShape);
 }
 

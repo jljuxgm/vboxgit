@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGenerator.cpp 83202 2020-03-04 16:32:34Z vboxsync $ */
+/* $Id: UIDetailsGenerator.cpp 83203 2020-03-04 16:37:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsGenerator implementation.
  */
@@ -297,9 +297,9 @@ UITextTable UIDetailsGenerator::generateMachineInformationSystem(UICloudMachine 
         return table;
     }
 
-    /* Instance Shape: */
+    /* Shape: */
     {
-        const QString strShape = guiCloudMachine.instanceShape();
+        const QString strShape = guiCloudMachine.shape();
         const QString strResult = !strShape.isEmpty()
                                 ? strShape
                                 : QApplication::translate("UIDetails", "Checking ...", "details");

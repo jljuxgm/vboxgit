@@ -1,4 +1,4 @@
-/* $Id: UICloudMachine.h 83190 2020-03-03 12:25:47Z vboxsync $ */
+/* $Id: UICloudMachine.h 83203 2020-03-04 16:37:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudMachine class declaration.
  */
@@ -72,8 +72,8 @@ public:
     int memorySize() const { return m_iMemorySize; }
     /** Returns cloud VM CPU count. */
     int cpuCount() const { return m_iCpuCount; }
-    /** Returns cloud VM instance shape. */
-    QString instanceShape() const { return m_strInstanceShape; }
+    /** Returns cloud VM shape. */
+    QString shape() const { return m_strShape; }
     /** Returns cloud VM domain. */
     QString domain() const { return m_strDomain; }
     /** Returns cloud VM booting firmware. */
@@ -107,8 +107,8 @@ private:
     int      m_iMemorySize;
     /** Holds the cloud VM CPU count. */
     int      m_iCpuCount;
-    /** Holds the cloud VM instance shape. */
-    QString  m_strInstanceShape;
+    /** Holds the cloud VM shape. */
+    QString  m_strShape;
     /** Holds the cloud VM domain. */
     QString  m_strDomain;
     /** Holds the cloud VM booting firmware. */
@@ -167,8 +167,8 @@ public:
     int memorySize() const { return d->memorySize(); }
     /** Returns cloud VM CPU count. */
     int cpuCount() const { return d->cpuCount(); }
-    /** Returns cloud VM instance shape. */
-    QString instanceShape() const { return d->instanceShape(); }
+    /** Returns cloud VM shape. */
+    QString shape() const { return d->shape(); }
     /** Returns cloud VM domain. */
     QString domain() const { return d->domain(); }
     /** Returns cloud VM booting firmware. */
