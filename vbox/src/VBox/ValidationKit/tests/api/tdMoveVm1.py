@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# "$Id: tdMoveVM1.py 79067 2019-06-10 22:56:46Z vboxsync $"
+# "$Id: tdMoveVm1.py 79069 2019-06-10 23:11:29Z vboxsync $"
 
 """
 VirtualBox Validation Kit - VM Move Test #1
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79067 $"
+__version__ = "$Revision: 79069 $"
 
 # Standard Python imports.
 import os
@@ -50,7 +50,7 @@ from testdriver import vboxwrappers
 from tdMoveMedium1 import SubTstDrvMoveMedium1; # pylint: disable=relative-import
 
 
-class SubTstDrvMoveVM1(base.SubTestDriverBase):
+class SubTstDrvMoveVm1(base.SubTestDriverBase):
     """
     Sub-test driver for VM Move Test #1.
     """
@@ -747,5 +747,5 @@ class SubTstDrvMoveVM1(base.SubTestDriverBase):
 if __name__ == '__main__':
     sys.path.append(os.path.dirname(os.path.abspath(__file__)))
     from tdApi1 import tdApi1; # pylint: disable=relative-import
-    sys.exit(tdApi1([SubTstDrvMoveVM1]).main(sys.argv))
+    sys.exit(tdApi1([SubTstDrvMoveVm1]).main(sys.argv))
 
