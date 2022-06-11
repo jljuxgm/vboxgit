@@ -1,4 +1,4 @@
-/* $Id: VBoxAutostart-win.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxAutostart-win.cpp 83271 2020-03-12 14:03:49Z vboxsync $ */
 /** @file
  * VirtualBox Autostart Service - Windows Specific Code.
  */
@@ -778,9 +778,11 @@ static DWORD WINAPI autostartSvcWinServiceCtrlHandlerEx(DWORD dwControl, DWORD d
     /* not reached */
 }
 
-static int autostartStartVMs()
+static RTEXITCODE autostartStartVMs()
 {
     int rc = autostartSetup();
+    if (RT_FAILURE(rc))
+        return RTEXITCODE_FAILURE;
 
     const char *pszConfigFile = RTEnvGet("VBOXAUTOSTART_CONFIG");
     if (!pszConfigFile)
@@ -864,12 +866,12 @@ static int autostartStartVMs()
         return autostartSvcLogError("User is not allowed to autostart VMs.\n");
     }
 
-    rc = autostartStartMain(pCfgAstUser);
+    RTEXITCODE ec = autostartStartMain(pCfgAstUser);
     autostartConfigAstDestroy(pCfgAst);
-    if (RT_FAILURE(rc))
-        autostartSvcLogError("Starting VMs failed, rc=%Rrc\n", rc);
+    if (ec != RTEXITCODE_SUCCESS)
+        autostartSvcLogError("Starting VMs failed\n");
 
-    return rc;
+    return ec;
 }
 
 /**
@@ -911,8 +913,8 @@ static VOID WINAPI autostartSvcWinServiceMain(DWORD cArgs, LPWSTR *papwszArgs)
                     if (autostartSvcWinSetServiceStatus(SERVICE_RUNNING, 0, 0))
                     {
                         LogFlow(("autostartSvcWinServiceMain: calling autostartStartVMs\n"));
-                        rc = autostartStartVMs();
-                        if (RT_SUCCESS(rc))
+                        RTEXITCODE ec = autostartStartVMs();
+                        if (ec == RTEXITCODE_SUCCESS)
                         {
                             LogFlow(("autostartSvcWinServiceMain: done string VMs\n"));
                             err = NO_ERROR;
