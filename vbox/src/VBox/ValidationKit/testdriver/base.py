@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 76939 2019-01-22 16:51:28Z vboxsync $
+# $Id: base.py 78641 2019-05-21 16:41:08Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 76939 $"
+__version__ = "$Revision: 78641 $"
 
 
 # Standard Python imports.
@@ -742,7 +742,7 @@ class SubTestDriverBase(object):
 
     def __init__(self, sName, oTstDrv):
         self.sName              = sName;
-        self.oTstDrv            = oTstDrv;
+        self.oTstDrv            = oTstDrv; # type: TestDriverBase
         self.asRsrcs            = [];
 
     def showUsage(self):
@@ -1052,7 +1052,7 @@ class TestDriverBase(object): # pylint: disable=R0902
 
     def waitForTasksSleepWorker(self, cMsTimeout):
         """
-        Overriable method that does the sleeping for waitForTask().
+        Overridable method that does the sleeping for waitForTask().
 
         cMsTimeout will not be larger than 1000, so there is normally no need
         to do any additional splitting up of the polling interval.
