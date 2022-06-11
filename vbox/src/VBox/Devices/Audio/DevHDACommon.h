@@ -1,4 +1,4 @@
-/* $Id: DevHDACommon.h 80692 2019-09-10 10:17:36Z vboxsync $ */
+/* $Id: DevHDACommon.h 82331 2019-12-02 23:50:22Z vboxsync $ */
 /** @file
  * DevHDACommon.h - Shared HDA device defines / functions.
  */
@@ -652,8 +652,8 @@ bool          hdaR3BDLENeedsInterrupt(PHDABDLE pBDLE);
  * @{
  */
 #ifdef IN_RING3
-bool          hdaR3TimerSet(PHDASTATE pThis, PHDASTREAM pStream, uint64_t u64Expire, bool fForce);
-#endif /* IN_RING3 */
+bool          hdaR3TimerSet(PPDMDEVINS pDevIns, PHDASTATE pThis, PHDASTREAM pStream, uint64_t u64Expire, bool fForce);
+#endif
 /** @} */
 
 #endif /* !VBOX_INCLUDED_SRC_Audio_DevHDACommon_h */
