@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 81927 2019-11-18 00:30:04Z vboxsync $
+# $Id: Makefile.kmk 81934 2019-11-18 09:51:41Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -738,12 +738,12 @@ RuntimeR3_SOURCES.sparc32 += \
 	generic/RTMpGetDescription-generic-stub.cpp \
 	generic/RTSystemIsInsideVM-generic.cpp \
 	common/asm/asm-fake.cpp \
-	common/string/RTStrMemFindU32.cpp
+	common/string/RTStrMemFind32.cpp
 RuntimeR3_SOURCES.sparc64 += \
 	generic/RTMpGetDescription-generic-stub.cpp \
 	generic/RTSystemIsInsideVM-generic.cpp \
 	common/asm/asm-fake.cpp \
-	common/string/RTStrMemFindU32.cpp
+	common/string/RTStrMemFind32.cpp
 
 ifdef IPRT_WITH_LZJB
  RuntimeR3_SOURCES += common/misc/lzjb.c
