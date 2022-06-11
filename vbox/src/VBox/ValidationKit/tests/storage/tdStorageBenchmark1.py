@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdStorageBenchmark1.py 80244 2019-08-13 08:37:08Z vboxsync $
+# $Id: tdStorageBenchmark1.py 80245 2019-08-13 08:39:39Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage benchmark.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 80244 $"
+__version__ = "$Revision: 80245 $"
 
 
 # Standard Python imports.
@@ -180,6 +180,7 @@ class IozoneTest(object):
     def prepare(self, cMsTimeout = 30000):
         """ Prepares the testcase """
         reporter.testStart('IoZone');
+        _ = cMsTimeout;
         return True; # Nothing to do.
 
     def run(self, cMsTimeout = 30000):
@@ -435,7 +436,7 @@ class StorTestCfgMgr(object):
 
         return asTestCfg;
 
-    def getNextTestCfg(self, fSkippedLast = False):
+    def getNextTestCfg(self):
         """
         Returns the next not blacklisted test config or an empty list if
         there is no test left.
