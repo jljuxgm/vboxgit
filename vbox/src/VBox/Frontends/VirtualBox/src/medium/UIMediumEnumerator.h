@@ -1,4 +1,4 @@
-/* $Id: UIMediumEnumerator.h 79150 2019-06-14 13:12:21Z vboxsync $ */
+/* $Id: UIMediumEnumerator.h 79152 2019-06-14 13:22:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumEnumerator class declaration.
  */
@@ -198,6 +198,10 @@ private:
       * @param  result  Brings the list of previously enumerated media
       *                 IDs to be appended with newly enumerated. */
     void enumerateAllMediaOfMachineWithId(const QUuid &uMachineId, QList<QUuid> &result);
+    /** Enumerates all the children media of medium with certain @a uMediumId.
+      * @param  result  Brings the list of previously enumerated media
+      *                 IDs to be appended with newly enumerated. */
+    void enumerateAllMediaOfMediumWithId(const QUuid &uMediumId, QList<QUuid> &result);
 #endif /* VBOX_GUI_WITH_NEW_MEDIA_EVENTS */
 
     /** Holds whether consolidated medium-enumeration process is in progress. */
