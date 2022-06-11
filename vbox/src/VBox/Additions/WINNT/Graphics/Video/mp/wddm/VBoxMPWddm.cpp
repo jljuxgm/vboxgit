@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 79934 2019-07-23 16:43:14Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 79937 2019-07-23 16:57:55Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -7886,7 +7886,7 @@ DriverEntry(
     int irc = RTR0Init(0);
     if (RT_FAILURE(irc))
     {
-        RTLogBackdoorPrintf("VBoxGuest: RTR0Init failed: %Rrc!\n", irc);
+        RTLogBackdoorPrintf("VBoxWddm: RTR0Init failed: %Rrc!\n", irc);
         return STATUS_UNSUCCESSFUL;
     }
 
