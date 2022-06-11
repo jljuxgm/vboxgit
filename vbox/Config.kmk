@@ -1,4 +1,4 @@
-# $Id: Config.kmk 79439 2019-07-01 14:51:04Z vboxsync $
+# $Id: Config.kmk 79441 2019-07-01 15:24:15Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3558,7 +3558,7 @@ ifdef VBOX_SIGNING_MODE
   ## EV sign a file (generic).
   # @param 1  The file to sign.
   ifndef VBOX_SIGN_EV_FILE_FN
-   if $(intersects win all 1,$(VBOX_WITH_CORP_CODE_SIGNING))
+   if $(intersects win_ev all 1,$(VBOX_WITH_CORP_CODE_SIGNING))
     VBOX_SIGN_EV_FILE_FN  = $(call VBOX_CCS_SIGN_CMD,microsoftev,$1,$(dir $1))d$ \
    else ifdef VBOX_CERTIFICATE_EV_SUBJECT_NAME
     VBOX_SIGN_EV_FILE_FN  = $(VBOX_SIGNTOOL) \
@@ -7704,7 +7704,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 79439 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 79441 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
