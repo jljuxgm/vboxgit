@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 80211 2019-08-09 12:36:29Z vboxsync $ */
+/* $Id: UIIndicatorsPool.cpp 80222 2019-08-12 09:36:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIIndicatorsPool class implementation.
  */
@@ -1011,6 +1011,7 @@ protected:
         /* Draw a thin bar on th right hand side of the icon indication CPU load: */
         QLinearGradient gradient(0, 0, 0, height());
         gradient.setColorAt(1.0, Qt::green);
+        gradient.setColorAt(0.5, Qt::yellow);
         gradient.setColorAt(0.0, Qt::red);
 
         painter.setPen(Qt::NoPen);
