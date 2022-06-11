@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceToolBox.cpp 83651 2020-04-09 15:06:32Z vboxsync $ */
+/* $Id: VBoxServiceToolBox.cpp 84005 2020-04-27 12:11:07Z vboxsync $ */
 /** @file
  * VBoxServiceToolbox - Internal (BusyBox-like) toolbox.
  */
@@ -519,14 +519,7 @@ static RTEXITCODE vgsvcToolboxCat(int argc, char **argv)
                     RTFileClose(hInput);
                 }
                 else
-                {
-                    PCRTSTATUSMSG pMsg = RTErrGet(rc);
-                    if (pMsg)
-                        RTMsgError("Could not open input file '%s': %s\n", pNodeIt->pszName, pMsg->pszMsgFull);
-                    else
-                        RTMsgError("Could not open input file '%s', rc=%Rrc\n", pNodeIt->pszName, rc);
-                }
-
+                    RTMsgError("Could not open input file '%s': %Rrc\n", pNodeIt->pszName, rc);
                 if (RT_FAILURE(rc))
                     break;
             }
