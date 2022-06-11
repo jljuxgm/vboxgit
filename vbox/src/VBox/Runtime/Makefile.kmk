@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 80001 2019-07-26 13:35:54Z vboxsync $
+# $Id: Makefile.kmk 80002 2019-07-26 13:36:04Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -67,7 +67,7 @@ else ifdef VBOX_ONLY_EXTPACKS_USE_IMPLIBS
  LIBRARIES += RuntimeBldProg RuntimeR0
  LIBRARIES.solaris += RuntimeR0Stub
  LIBRARIES.win += RuntimeR0Stub
- ifdef VBOX_WITH_ADDITIONS
+ ifdef VBOX_WITH_RAW_MODE
   LIBRARIES.win += RuntimeRCStub
  endif
  include $(PATH_SUB_CURRENT)/tools/Makefile.kmk
