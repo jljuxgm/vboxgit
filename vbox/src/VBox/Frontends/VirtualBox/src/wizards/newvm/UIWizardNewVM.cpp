@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 78292 2019-04-25 10:07:25Z vboxsync $ */
+/* $Id: UIWizardNewVM.cpp 78387 2019-05-06 12:32:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
@@ -232,7 +232,7 @@ void UIWizardNewVM::configureVM(const QString &strGuestTypeId, const CGuestOSTyp
         strHDName = strDVDName;
     }
 
-    /* Liomit the AHCI port count if it's used because windows has trouble with
+    /* Limit the AHCI port count if it's used because windows has trouble with
        too many ports and other guest (OS X in particular) may take extra long
        to boot: */
     if (hdStorageControllerType == KStorageControllerType_IntelAhci)
