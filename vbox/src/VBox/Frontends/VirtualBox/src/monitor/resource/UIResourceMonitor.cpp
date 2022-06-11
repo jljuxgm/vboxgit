@@ -1,4 +1,4 @@
-/* $Id: UIResourceMonitor.cpp 83334 2020-03-19 16:17:08Z vboxsync $ */
+/* $Id: UIResourceMonitor.cpp 83345 2020-03-20 09:24:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIResourceMonitor class implementation.
  */
@@ -31,7 +31,7 @@
 #include "UICommon.h"
 #include "UIExtraDataManager.h"
 #include "UIIconPool.h"
-#include "UIInformationPerformanceMonitor.h"
+#include "UIPerformanceMonitor.h"
 #include "UIResourceMonitor.h"
 #include "UIMessageCenter.h"
 #include "UIToolBar.h"
