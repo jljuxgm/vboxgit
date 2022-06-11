@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 83557 2020-04-04 15:52:48Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 83622 2020-04-08 16:09:35Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -3100,6 +3100,12 @@ DECLCALLBACK(void) Display::i_displayProcessDisplayDataCallback(PPDMIDISPLAYCONN
 
 int Display::i_handleVHWACommandProcess(int enmCmd, bool fGuestCmd, VBOXVHWACMD RT_UNTRUSTED_VOLATILE_GUEST *pCommand)
 {
+    /* bugref:9691 Disable the legacy VHWA interface.
+     * Keep the host commands enabled because they are needed when an old saved state is loaded.
+     */
+    if (fGuestCmd)
+        return VERR_NOT_IMPLEMENTED;
+
     unsigned id = (unsigned)pCommand->iDisplay;
     if (id >= mcMonitors)
         return VERR_INVALID_PARAMETER;
