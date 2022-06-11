@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 80943 2019-09-23 09:36:14Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 82072 2019-11-21 09:44:55Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -367,7 +367,6 @@ int main()
     GEN_CHECK_OFF(VGASTATE, svga.u32PitchLock);
     GEN_CHECK_OFF(VGASTATE, svga.u32CurrentGMRId);
     GEN_CHECK_OFF(VGASTATE, svga.u32RegCaps);
-    GEN_CHECK_OFF(VGASTATE, svga.BasePort);
     GEN_CHECK_OFF(VGASTATE, svga.u32IndexReg);
     GEN_CHECK_OFF(VGASTATE, svga.pSupDrvSession);
     GEN_CHECK_OFF(VGASTATE, svga.FIFORequestSem);
