@@ -1,4 +1,4 @@
-/* $Id: DrvSCSI.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: DrvSCSI.cpp 78787 2019-05-27 17:08:54Z vboxsync $ */
 /** @file
  * VBox storage drivers: Generic SCSI command parser and execution driver
  */
@@ -767,7 +767,12 @@ static DECLCALLBACK(void) drvscsiNotifySuspend(PPDMIMEDIAEX pInterface)
 {
     PDRVSCSI pThis = RT_FROM_MEMBER(pInterface, DRVSCSI, IMediaEx);
 
-    pThis->pDrvMediaEx->pfnNotifySuspend(pThis->pDrvMediaEx);
+    /** @todo Don't crash if someone screws this up...  Recreated a VISO while it
+     *        was mounted and asked the GUI to use it.  Got forced umount question.
+     *        Said yes.  Ended up here with a NULL pointer. */
+    PPDMIMEDIAEX pDrvMediaEx = pThis->pDrvMediaEx;
+    if (pThis)
+        pDrvMediaEx->pfnNotifySuspend(pDrvMediaEx);
 }
 
 /** @interface_method_impl{PDMIMEDIAEX,pfnIoReqAllocSizeSet} */
