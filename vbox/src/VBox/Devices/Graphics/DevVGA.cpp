@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 82065 2019-11-21 08:32:15Z vboxsync $ */
+/* $Id: DevVGA.cpp 82066 2019-11-21 09:01:45Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -5613,7 +5613,7 @@ static DECLCALLBACK(void) vgaPortReportHostCursorCapabilities(PPDMIDISPLAYPORT p
 }
 
 /**
- * @callback_method_impl{FNTMTIMERFNTMTIMERDEV, VGA Refresh Timer}
+ * @callback_method_impl{FNTMTIMERDEV, VGA Refresh Timer}
  */
 static DECLCALLBACK(void) vgaTimerRefresh(PPDMDEVINS pDevIns, PTMTIMER pTimer, void *pvUser)
 {
