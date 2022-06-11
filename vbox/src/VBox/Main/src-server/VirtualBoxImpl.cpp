@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 78826 2019-05-28 16:03:53Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 78827 2019-05-28 16:06:29Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -848,7 +848,7 @@ HRESULT VirtualBox::initMedia(const Guid &uuidRegistry,
              itItem != uIdsForNotify.end();
              ++itItem)
         {
-            i_onMediumRegistered(it->first, it->second, TRUE);
+            i_onMediumRegistered(itItem->first, itItem->second, TRUE);
         }
     }
 
