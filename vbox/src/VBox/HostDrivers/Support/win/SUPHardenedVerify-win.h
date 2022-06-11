@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerify-win.h 80216 2019-08-10 02:04:07Z vboxsync $ */
+/* $Id: SUPHardenedVerify-win.h 80242 2019-08-13 02:02:58Z vboxsync $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Verification, Windows.
  */
@@ -168,7 +168,7 @@ typedef struct SUPHNTLDRCACHEENTRY
     uint8_t            *pbBits;
     /** Set if verified. */
     bool                fVerified;
-    /** Whether we've got valid cacheable image bit.s */
+    /** Whether we've got valid cacheable image bits. */
     bool                fValidBits;
     /** The image base address. */
     uintptr_t           uImageBase;
