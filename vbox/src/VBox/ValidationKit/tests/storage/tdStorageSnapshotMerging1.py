@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdStorageSnapshotMerging1.py 78965 2019-06-04 14:32:14Z vboxsync $
+# $Id: tdStorageSnapshotMerging1.py 79021 2019-06-06 12:13:03Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage snapshotting and merging testcase.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 78965 $"
+__version__ = "$Revision: 79021 $"
 
 
 # Standard Python imports.
@@ -158,7 +158,7 @@ class tdStorageSnapshot(vbox.TestDriver):                                      #
             oProgressCom = oMedium.resize(cbNewSize);
             oProgress = vboxwrappers.ProgressWrapper(oProgressCom, self.oVBoxMgr, self.oVBox.oTstDrv,
                                                      'Resize medium %s' % (oMedium.name));
-            oProgress.wait(cMsTimeout = 1000000);
+            oProgress.wait(cMsTimeout = 15*60*1000); # 15 min
             oProgress.logResult();
         except:
             reporter.logXcpt('IMedium::resize failed on %s' % (oMedium.name));
