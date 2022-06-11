@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.cpp 83337 2020-03-19 17:23:42Z vboxsync $ */
+/* $Id: GuestSessionImplTasks.cpp 83489 2020-03-30 16:38:23Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session tasks.
  */
@@ -1109,7 +1109,7 @@ int FsList::AddDirFromGuest(const Utf8Str &strPath, const Utf8Str &strSubDir /* 
     if (RT_SUCCESS(rc))
     {
         ComObjPtr<GuestFsObjInfo> fsObjInfo;
-        while (RT_SUCCESS(rc = pDir->i_readInternal(fsObjInfo, &rcGuest)))
+        while (RT_SUCCESS(rc = pDir->i_read(fsObjInfo, &rcGuest)))
         {
             FsObjType_T enmObjType = FsObjType_Unknown; /* Shut up MSC. */
             HRESULT hr2 = fsObjInfo->COMGETTER(Type)(&enmObjType);
