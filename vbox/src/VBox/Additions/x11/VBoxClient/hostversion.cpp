@@ -1,4 +1,4 @@
-/* $Id: hostversion.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: hostversion.cpp 81028 2019-09-26 16:57:53Z vboxsync $ */
 /** @file
  * X11 guest client - host version check.
  */
@@ -129,10 +129,7 @@ static int run(struct VBCLSERVICE **ppInterface, bool fDaemonised)
     LogFlowFunc(("\n"));
 
     NOREF(ppInterface);
-    /* Initialise the guest library. */
-    rc = VbglR3InitUser();
-    if (RT_FAILURE(rc))
-        VBClFatalError(("Failed to connect to the VirtualBox kernel service, rc=%Rrc\n", rc));
+
     /* Because we need desktop notifications to be displayed, wait
      * some time to make the desktop environment load (as a work around). */
     if (fDaemonised)
@@ -224,4 +221,3 @@ struct VBCLSERVICE **VBClGetHostVersionService()
     pService->pInterface = &vbclHostVersionInterface;
     return &pService->pInterface;
 }
-

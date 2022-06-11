@@ -1,4 +1,4 @@
-/* $Id: seamless.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: seamless.cpp 81028 2019-09-26 16:57:53Z vboxsync $ */
 /** @file
  * X11 Guest client - seamless mode: main logic, communication with the host and
  * wrapper interface for the main code of the VBoxClient deamon.  The
@@ -285,15 +285,11 @@ static struct SEAMLESSSERVICE *getClassFromInterface(struct VBCLSERVICE **
 static int init(struct VBCLSERVICE **ppInterface)
 {
     struct SEAMLESSSERVICE *pSelf = getClassFromInterface(ppInterface);
-    int rc;
 
     if (pSelf->mIsInitialised)
         return VERR_INTERNAL_ERROR;
-    /* Initialise the guest library. */
-    rc = VbglR3InitUser();
-    if (RT_FAILURE(rc))
-        VBClFatalError(("Failed to connect to the VirtualBox kernel service, rc=%Rrc\n", rc));
-    rc = pSelf->mSeamless.init();
+
+    int rc = pSelf->mSeamless.init();
     if (RT_FAILURE(rc))
         return rc;
     pSelf->mIsInitialised = true;

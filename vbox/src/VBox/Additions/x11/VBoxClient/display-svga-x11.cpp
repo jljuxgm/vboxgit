@@ -1,4 +1,4 @@
-/* $Id: display-svga-x11.cpp 79028 2019-06-06 15:05:36Z vboxsync $ */
+/* $Id: display-svga-x11.cpp 81028 2019-09-26 16:57:53Z vboxsync $ */
 /** @file
  * X11 guest client - VMSVGA emulation resize event pass-through to X.Org
  * guest driver.
@@ -244,10 +244,6 @@ static int run(struct VBCLSERVICE **ppInterface, bool fDaemonised)
     x11Connect(&x11Context);
     if (x11Context.pDisplay == NULL)
         return VINF_SUCCESS;
-    /* Initialise the guest library. */
-    rc = VbglR3InitUser();
-    if (RT_FAILURE(rc))
-        VBClFatalError(("Failed to connect to the VirtualBox kernel service, rc=%Rrc\n", rc));
     rc = VbglR3CtlFilterMask(VMMDEV_EVENT_DISPLAY_CHANGE_REQUEST, 0);
     if (RT_FAILURE(rc))
         VBClFatalError(("Failed to request display change events, rc=%Rrc\n", rc));

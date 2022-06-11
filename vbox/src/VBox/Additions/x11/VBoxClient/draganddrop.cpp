@@ -1,4 +1,4 @@
-/* $Id: draganddrop.cpp 79482 2019-07-03 02:35:37Z vboxsync $ */
+/* $Id: draganddrop.cpp 81028 2019-09-26 16:57:53Z vboxsync $ */
 /** @file
  * X11 guest client - Drag and drop implementation.
  */
@@ -3043,14 +3043,6 @@ int DragAndDropService::init(void)
 {
     LogFlowFuncEnter();
 
-    /* Initialise the guest library. */
-    int rc = VbglR3InitUser();
-    if (RT_FAILURE(rc))
-    {
-        VBClFatalError(("DnD: Failed to connect to the VirtualBox kernel service, rc=%Rrc\n", rc));
-        return rc;
-    }
-
     /* Connect to the x11 server. */
     m_pDisplay = XOpenDisplay(NULL);
     if (!m_pDisplay)
@@ -3062,6 +3054,8 @@ int DragAndDropService::init(void)
     xHelpers *pHelpers = xHelpers::getInstance(m_pDisplay);
     if (!pHelpers)
         return VERR_NO_MEMORY;
+
+    int rc;
 
     do
     {
