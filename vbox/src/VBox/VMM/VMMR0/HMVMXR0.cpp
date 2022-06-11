@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 79650 2019-07-10 05:01:04Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 79651 2019-07-10 05:08:52Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -958,6 +958,7 @@ static void hmR0VmxRemoveProcCtlsVmcs(PVMCPU pVCpu, PVMXTRANSIENT pVmxTransient,
                            ? true
                            : !CPUMIsGuestVmxProcCtlsSet(pVCpu, &pVCpu->cpum.GstCtx, VMX_PROC_CTLS_RDTSC_EXIT);
 #else
+    NOREF(pVCpu);
     bool const fRemoveCtls = true;
 #endif
     PVMXVMCSINFO pVmcsInfo = pVmxTransient->pVmcsInfo;
