@@ -1,4 +1,4 @@
-/* $Id: tstClipboardServiceHost.cpp 78618 2019-05-21 08:36:42Z vboxsync $ */
+/* $Id: tstClipboardServiceHost.cpp 78619 2019-05-21 08:42:35Z vboxsync $ */
 /** @file
  * Shared Clipboard host service test case.
  */
@@ -15,7 +15,7 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#include "../VBoxClipboard.h"
+#include "../VBoxSharedClipboardSvc-internal.h"
 
 #include <VBox/HostServices/VBoxClipboardSvc.h>
 
