@@ -1,4 +1,4 @@
-/* $Id: UIFormEditorWidget.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIFormEditorWidget.cpp 83388 2020-03-24 15:50:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFormEditorWidget class implementation.
  */
@@ -1304,8 +1304,8 @@ void UIFormEditorModel::prepare()
     /* Prepare hardcoded icons map: */
     m_icons["Name"]                = UIIconPool::iconSet(":/name_16px.png");
     m_icons["Display Name"]        = UIIconPool::iconSet(":/name_16px.png");
-    m_icons["Type"]                = UIIconPool::iconSet(":/os_type_16px.png");
-    m_icons["Version"]             = UIIconPool::iconSet(":/os_version_16px.png");
+    m_icons["Type"]                = UIIconPool::iconSet(":/system_type_16px.png");
+    m_icons["Version"]             = UIIconPool::iconSet(":/system_version_16px.png");
     m_icons["CPU"]                 = UIIconPool::iconSet(":/cpu_16px.png");
     m_icons["Memory"]              = UIIconPool::iconSet(":/ram_16px.png");
     m_icons["Description"]         = UIIconPool::iconSet(":/description_16px.png");
