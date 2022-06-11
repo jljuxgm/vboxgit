@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 79202 2019-06-18 09:13:29Z vboxsync $ */
+/* $Id: HMInternal.h 79222 2019-06-19 05:32:21Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -843,12 +843,14 @@ typedef struct VMXVMCSINFO
      * @{ */
     /** The VMCS launch state, see VMX_V_VMCS_LAUNCH_STATE_XXX. */
     uint32_t                    fVmcsState;
+    /** The VMCS launch state of the shadow VMCS, see VMX_V_VMCS_LAUNCH_STATE_XXX. */
+    uint32_t                    fShadowVmcsState;
     /** Set if guest was executing in real mode (extra checks). */
     bool                        fWasInRealMode;
     /** Set if the guest switched to 64-bit mode on a 32-bit host. */
     bool                        fSwitchedTo64on32;
     /** Padding. */
-    bool                        afPadding0[2];
+    bool                        afPadding0[6];
     /** @} */
 
     /** @name Cache of execution related VMCS fields.
