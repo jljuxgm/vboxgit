@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 82426 2019-12-05 16:32:28Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.cpp 82562 2019-12-12 08:32:24Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1432,7 +1432,7 @@ HRESULT SystemProperties::getSupportedNetworkAttachmentTypes(std::vector<Network
         NetworkAttachmentType_HostOnly,
         NetworkAttachmentType_Generic,
         NetworkAttachmentType_NATNetwork,
-#ifdef DEBUG
+#ifdef VBOX_WITH_CLOUD_NET
         NetworkAttachmentType_Cloud,
 #endif
         NetworkAttachmentType_Null,
