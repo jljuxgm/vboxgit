@@ -1,4 +1,4 @@
-/* $Id: Virtio_1_0.h 82004 2019-11-19 16:55:37Z vboxsync $ */
+/* $Id: Virtio_1_0.h 82145 2019-11-24 05:44:12Z vboxsync $ */
 /** @file
  * Virtio_1_0.h - Virtio Declarations
  */
@@ -473,7 +473,7 @@ size_t   virtioCoreSgBufCalcTotalLength(PCVIRTIOSGBUF pGcSgBuf);
 void     virtioCoreSgBufReset(PVIRTIOSGBUF pGcSgBuf);
 int      virtioCoreR3SaveExec(PVIRTIOCORE pVirtio, PCPDMDEVHLPR3 pHlp, PSSMHANDLE pSSM);
 int      virtioCoreR3LoadExec(PVIRTIOCORE pVirtio, PCPDMDEVHLPR3 pHlp, PSSMHANDLE pSSM);
-void     virtioCoreR3VmStateChanged(PPDMDEVINS pDevIns, PVIRTIOCORE pVirtio, VIRTIOVMSTATECHANGED enmState);
+void     virtioCoreR3VmStateChanged(PVIRTIOCORE pVirtio, VIRTIOVMSTATECHANGED enmState);
 void     virtioCoreR3Term(PPDMDEVINS pDevIns, PVIRTIOCORE pVirtio, PVIRTIOCORECC pVirtioCC);
 int      virtioCoreR3Init(PPDMDEVINS pDevIns, PVIRTIOCORE pVirtio, PVIRTIOCORECC pVirtioCC, PVIRTIOPCIPARAMS pPciParams,
                       const char *pcszInstance, uint64_t fDevSpecificFeatures, void *pvDevSpecificCfg, uint16_t cbDevSpecificCfg);
