@@ -1,4 +1,4 @@
-/* $Id: UIPopupBox.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIPopupBox.cpp 80914 2019-09-20 06:16:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPopupBox/UIPopupBoxGroup classes implementation.
  */
@@ -445,7 +445,7 @@ void UIPopupBoxGroup::addPopupBox(UIPopupBox *pPopupBox)
     m_list << pPopupBox;
 
     /* Connect got-hover signal of the popup-box to hover-change slot of the popup-box group: */
-    connect(pPopupBox, SIGNAL(sigGotHover()), this, SLOT(sltHoverChanged()));
+    connect(pPopupBox, &UIPopupBox::sigGotHover, this, &UIPopupBoxGroup::sltHoverChanged);
 }
 
 void UIPopupBoxGroup::sltHoverChanged()
@@ -465,4 +465,3 @@ void UIPopupBoxGroup::sltHoverChanged()
     for (int i = 0; i < list.size(); ++i)
         list[i]->revokeHover();
 }
-

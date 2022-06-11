@@ -1,4 +1,4 @@
-/* $Id: UIPopupPaneButtonPane.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIPopupPaneButtonPane.cpp 80914 2019-09-20 06:16:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPopupPaneButtonPane class implementation.
  */
@@ -109,7 +109,7 @@ void UIPopupPaneButtonPane::prepareButtons()
         {
             m_pButtonLayout->addWidget(pButton);
             m_buttons[iButtonID] = pButton;
-            connect(pButton, SIGNAL(clicked(bool)), this, SLOT(sltButtonClicked()));
+            connect(pButton, &QIToolButton::clicked, this, &UIPopupPaneButtonPane::sltButtonClicked);
             if (pButton->property("default").toBool())
                 m_iDefaultButton = iButtonID;
             if (pButton->property("escape").toBool())
@@ -230,4 +230,3 @@ QIcon UIPopupPaneButtonPane::defaultIcon(int iButtonID)
     }
     return icon;
 }
-

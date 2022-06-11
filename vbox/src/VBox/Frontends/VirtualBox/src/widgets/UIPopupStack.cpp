@@ -1,4 +1,4 @@
-/* $Id: UIPopupStack.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
+/* $Id: UIPopupStack.cpp 80914 2019-09-20 06:16:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPopupStack class implementation.
  */
@@ -262,14 +262,14 @@ void UIPopupStack::prepareContent()
                 /* Connect scroll-viewport: */
                 connect(this, &UIPopupStack::sigProposeStackViewportSize,
                         m_pScrollViewport, &UIPopupStackViewport::sltHandleProposalForSize);
-                connect(m_pScrollViewport, SIGNAL(sigSizeHintChanged()),
-                        this, SLOT(sltAdjustGeometry()));
-                connect(m_pScrollViewport, SIGNAL(sigPopupPaneDone(QString, int)),
-                        this, SIGNAL(sigPopupPaneDone(QString, int)));
-                connect(m_pScrollViewport, SIGNAL(sigPopupPaneRemoved(QString)),
-                        this, SLOT(sltPopupPaneRemoved(QString)));
-                connect(m_pScrollViewport, SIGNAL(sigPopupPanesRemoved()),
-                        this, SLOT(sltPopupPanesRemoved()));
+                connect(m_pScrollViewport, &UIPopupStackViewport::sigSizeHintChanged,
+                        this, &UIPopupStack::sltAdjustGeometry);
+                connect(m_pScrollViewport, &UIPopupStackViewport::sigPopupPaneDone,
+                        this, &UIPopupStack::sigPopupPaneDone);
+                connect(m_pScrollViewport, &UIPopupStackViewport::sigPopupPaneRemoved,
+                        this, &UIPopupStack::sltPopupPaneRemoved);
+                connect(m_pScrollViewport, &UIPopupStackViewport::sigPopupPanesRemoved,
+                        this, &UIPopupStack::sltPopupPanesRemoved);
             }
             /* Assign scroll-viewport to scroll-area: */
             m_pScrollArea->setWidget(m_pScrollViewport);

@@ -1,4 +1,4 @@
-/* $Id: UIPopupPaneMessage.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIPopupPaneMessage.h 80914 2019-09-20 06:16:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPopupPaneMessage class declaration.
  */
@@ -71,10 +71,12 @@ public:
     /** Returns the expanded size-hint. */
     QSize expandedSizeHint() const { return m_expandedSizeHint; }
 
-private slots:
+public slots:
 
     /** Handles proposal for @a iWidth. */
     void sltHandleProposalForWidth(int iWidth);
+
+private slots:
 
     /** Handles focus enter. */
     void sltFocusEnter();
@@ -127,4 +129,3 @@ private:
 };
 
 #endif /* !FEQT_INCLUDED_SRC_widgets_UIPopupPaneMessage_h */
-

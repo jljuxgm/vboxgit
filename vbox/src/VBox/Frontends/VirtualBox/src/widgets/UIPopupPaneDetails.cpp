@@ -1,4 +1,4 @@
-/* $Id: UIPopupPaneDetails.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIPopupPaneDetails.cpp 80914 2019-09-20 06:16:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPopupPaneDetails class implementation.
  */
@@ -22,8 +22,11 @@
 
 /* GUI includes: */
 #include "UIAnimationFramework.h"
+#include "UIPopupPane.h"
 #include "UIPopupPaneDetails.h"
 
+/* Other VBox includes: */
+#include <iprt/assert.h>
 
 UIPopupPaneDetails::UIPopupPaneDetails(QWidget *pParent, const QString &strText, bool fFocused)
     : QWidget(pParent)
@@ -186,9 +189,13 @@ void UIPopupPaneDetails::prepareContent()
 
 void UIPopupPaneDetails::prepareAnimation()
 {
-    /* Propagate parent signals: */
-    connect(parent(), SIGNAL(sigFocusEnter()), this, SLOT(sltFocusEnter()));
-    connect(parent(), SIGNAL(sigFocusLeave()), this, SLOT(sltFocusLeave()));
+    UIPopupPane *pPopupPane = qobject_cast<UIPopupPane*>(parent());
+    AssertReturnVoid(pPopupPane);
+    {
+        /* Propagate parent signals: */
+        connect(pPopupPane, &UIPopupPane::sigFocusEnter, this, &UIPopupPaneDetails::sltFocusEnter);
+        connect(pPopupPane, &UIPopupPane::sigFocusLeave, this, &UIPopupPaneDetails::sltFocusLeave);
+    }
     /* Install geometry animation for 'minimumSizeHint' property: */
     m_pAnimation = UIAnimation::installPropertyAnimation(this, "minimumSizeHint", "collapsedSizeHint", "expandedSizeHint",
                                                          SIGNAL(sigFocusEnter()), SIGNAL(sigFocusLeave()), m_fFocused);
@@ -250,4 +257,3 @@ QFont UIPopupPaneDetails::tuneFont(QFont font)
 #endif
     return font;
 }
-

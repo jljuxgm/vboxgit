@@ -1,4 +1,4 @@
-/* $Id: UIPopupStackViewport.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIPopupStackViewport.cpp 80914 2019-09-20 06:16:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPopupStackViewport class implementation.
  */
@@ -53,8 +53,8 @@ void UIPopupStackViewport::createPopupPane(const QString &strID,
 
     /* Attach popup-pane connection: */
     connect(this, &UIPopupStackViewport::sigProposePopupPaneSize, pPopupPane, &UIPopupPane::sltHandleProposalForSize);
-    connect(pPopupPane, SIGNAL(sigSizeHintChanged()), this, SLOT(sltAdjustGeometry()));
-    connect(pPopupPane, SIGNAL(sigDone(int)), this, SLOT(sltPopupPaneDone(int)));
+    connect(pPopupPane, &UIPopupPane::sigSizeHintChanged, this, &UIPopupStackViewport::sltAdjustGeometry);
+    connect(pPopupPane, &UIPopupPane::sigDone, this, &UIPopupStackViewport::sltPopupPaneDone);
 
     /* Show popup-pane: */
     pPopupPane->show();
@@ -208,4 +208,3 @@ void UIPopupStackViewport::layoutContent()
         iY += (iPaneHeight + m_iLayoutSpacing);
     }
 }
-
