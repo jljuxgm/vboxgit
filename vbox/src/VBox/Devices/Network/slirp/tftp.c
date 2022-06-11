@@ -1,4 +1,4 @@
-/* $Id: tftp.c 80985 2019-09-24 16:19:33Z vboxsync $ */
+/* $Id: tftp.c 80986 2019-09-24 16:24:21Z vboxsync $ */
 /** @file
  * NAT - TFTP server.
  */
@@ -855,6 +855,15 @@ int slirpTftpInput(PNATState pData, struct mbuf *pMbuf)
         case TFTP_ACK:
             tftpProcessACK(pData, pTftpIpHeader);
             break;
+
+        case TFTP_ERROR:
+        {
+            PTFTPSESSION pTftpSession;
+            int rc = tftpSessionFind(pData, pTftpIpHeader, &pTftpSession);
+            if (RT_SUCCESS(rc))
+                tftpSessionTerminate(pTftpSession);
+        }
+
         default:;
     }
     LogFlowFuncLeaveRC(VINF_SUCCESS);
