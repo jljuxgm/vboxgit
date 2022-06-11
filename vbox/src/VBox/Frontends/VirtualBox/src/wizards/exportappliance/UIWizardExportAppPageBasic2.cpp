@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic2.cpp 79599 2019-07-08 16:09:12Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic2.cpp 79661 2019-07-10 08:39:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic2 class implementation.
  */
@@ -340,6 +340,23 @@ void UIWizardExportAppPage2::populateFormProperties()
 
             /* Remember description: */
             m_comVSD = comVSD;
+
+            /* Add Launch Instance flag to virtual system description: */
+            switch (cloudExportMode())
+            {
+                case CloudExportMode_AskThenExport:
+                case CloudExportMode_ExportThenAsk:
+                    m_comVSD.AddDescription(KVirtualSystemDescriptionType_CloudLaunchInstance, "true", QString());
+                    break;
+                default:
+                    m_comVSD.AddDescription(KVirtualSystemDescriptionType_CloudLaunchInstance, "false", QString());
+                    break;
+            }
+            if (!m_comVSD.isOk())
+            {
+                msgCenter().cannotAddVirtualSystemDescriptionValue(m_comVSD);
+                break;
+            }
 
             /* Create Cloud Client: */
             CCloudClient comClient = m_comCloudProfile.CreateCloudClient();
