@@ -1,4 +1,4 @@
-/* $Id: ftp.h 82727 2020-01-13 14:55:50Z vboxsync $ */
+/* $Id: ftp.h 82731 2020-01-13 17:56:36Z vboxsync $ */
 /** @file
  * Header file for FTP client / server implementations.
  */
@@ -30,13 +30,17 @@
 # pragma once
 #endif
 
-#include <iprt/fs.h>
 #include <iprt/types.h>
+#include <iprt/fs.h>
 
 RT_C_DECLS_BEGIN
 
-/** @defgroup grp_rt_ftp   RTFTPServer - FTP server implementation.
+/** @defgroup grp_rt_ftp        RTFtp - FTP server and client.
  * @ingroup grp_rt
+ * @{
+ */
+
+/** @defgroup grp_rt_ftpserver  RTFtpServer - FTP server implementation.
  * @{
  */
 
@@ -285,6 +289,10 @@ RTR3DECL(int) RTFtpServerCreate(PRTFTPSERVER phFTPServer, const char *pcszAddres
  */
 RTR3DECL(int) RTFtpServerDestroy(RTFTPSERVER hFTPServer);
 
+/** @} */
+
+/** @} */
 RT_C_DECLS_END
 
 #endif /* !IPRT_INCLUDED_ftp_h */
+
