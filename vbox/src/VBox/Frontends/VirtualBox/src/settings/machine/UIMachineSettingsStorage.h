@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.h 78596 2019-05-20 11:54:58Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.h 78597 2019-05-20 12:11:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class declaration.
  */
@@ -486,6 +486,9 @@ public:
 
     QModelIndex addAttachment (const QUuid &uCtrId, KDeviceType aDeviceType, const QUuid &uMediumId);
     void delAttachment (const QUuid &uCtrId, const QUuid &uAttId);
+    /** Moves attachment determined by @a uAttId
+      * from controller determined by @a uCtrOldId to one determined by @a uCtrNewId. */
+    void moveAttachment(const QUuid &uAttId, const QUuid &uCtrOldId, const QUuid &uCtrNewId);
 
     void setMachineId (const QUuid &uMachineId);
 
