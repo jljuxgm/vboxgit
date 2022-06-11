@@ -1,4 +1,4 @@
-/* $Id: USBDeviceFiltersImpl.cpp 76592 2019-01-01 20:13:07Z vboxsync $ */
+/* $Id: USBDeviceFiltersImpl.cpp 81682 2019-11-05 19:08:21Z vboxsync $ */
 /** @file
  * Implementation of IUSBDeviceFilters.
  */
@@ -515,6 +515,8 @@ HRESULT USBDeviceFilters::i_loadSettings(const settings::USB &data)
         m->llDeviceFilters->push_back(pFilter);
         pFilter->mInList = true;
     }
+#else
+    RT_NOREF(data);
 #endif /* VBOX_WITH_USB */
 
     return S_OK;
@@ -568,6 +570,8 @@ HRESULT USBDeviceFilters::i_saveSettings(settings::USB &data)
 
         data.llDeviceFilters.push_back(f);
     }
+#else
+    RT_NOREF(data);
 #endif /* VBOX_WITH_USB */
 
     return S_OK;

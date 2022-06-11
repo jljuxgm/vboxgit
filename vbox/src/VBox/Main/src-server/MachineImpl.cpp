@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 81427 2019-10-21 18:37:15Z vboxsync $ */
+/* $Id: MachineImpl.cpp 81682 2019-11-05 19:08:21Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -13425,7 +13425,7 @@ HRESULT SessionMachine::captureUSBDevice(const com::Guid &aId, const com::Utf8St
     AssertReturn(service, E_FAIL);
     return service->captureDeviceForVM(this, aId.ref(), aCaptureFilename);
 #else
-    NOREF(aId);
+    RT_NOREF(aId, aCaptureFilename);
     return E_NOTIMPL;
 #endif
 }
