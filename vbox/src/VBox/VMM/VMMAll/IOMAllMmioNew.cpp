@@ -1,4 +1,4 @@
-/* $Id: IOMAllMmioNew.cpp 81341 2019-10-18 08:08:12Z vboxsync $ */
+/* $Id: IOMAllMmioNew.cpp 81363 2019-10-18 18:19:21Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context, MMIO & String I/O.
  */
@@ -615,7 +615,6 @@ DECLINLINE(bool) iomMmioCanHandlePfInRZ(PVMCC pVM, uint32_t uErrorCode, CTX_SUFF
  * @param   pVCpu       The cross context virtual CPU structure of the calling EMT.
  * @param   uErrorCode  CPU Error code.  This is UINT32_MAX when we don't have
  *                      any error code (the EPT misconfig hack).
- * @param   pCtxCore    Trap register frame.
  * @param   GCPhysFault The GC physical address corresponding to pvFault.
  * @param   pRegEntry   The MMIO entry for the current context.
  */
