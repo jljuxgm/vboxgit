@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 80241 $"
+__version__ = "$Revision: 80693 $"
 
 
 # Standard Python imports.
@@ -921,7 +921,7 @@ class VBoxInstallerTestDriver(TestDriverBase):
 
         self._waitForTestManagerConnectivity(30);
 
-        if fRc is False and os.path.isfile(sLogFile):
+        if os.path.isfile(sLogFile):
             reporter.addLogFile(sLogFile, 'log/uninstaller', "Verbose MSI uninstallation log file");
 
         # Log driver service states (should ls \Driver\VBox* and \Device\VBox*).
@@ -1048,4 +1048,3 @@ class VBoxInstallerTestDriver(TestDriverBase):
 
 if __name__ == '__main__':
     sys.exit(VBoxInstallerTestDriver().main(sys.argv));
-
