@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 83528 $"
+__version__ = "$Revision: 83530 $"
 
 # Standard Python imports.
 import errno
@@ -1362,7 +1362,7 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
         ];
         self.asTests        = self.asTestsDef;
         self.fSkipKnownBugs = False;
-        self.oTestFiles     = None;  # type: vboxtestfileset.TestFileSet
+        self.oTestFiles     = None # type: vboxtestfileset.TestFileSet
         self.oDebug         = tdDebugSettings();
 
     def parseOption(self, asArgs, iArg):                                        # pylint: disable=too-many-branches,too-many-statements
