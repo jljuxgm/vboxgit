@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElement.cpp 80104 2019-08-01 15:03:45Z vboxsync $ */
+/* $Id: UIDetailsElement.cpp 80105 2019-08-01 15:07:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement class implementation.
  */
@@ -762,8 +762,8 @@ void UIDetailsElement::sltHandleAnchorClicked(const QString &strAnchor)
             /* Execute menu, look for result: */
             QAction *pTriggeredAction = menu.exec(QCursor::pos());
             if (   pTriggeredAction
-                && (   fEnabled && (pTriggeredAction == pActionDisable)
-                    || !fEnabled && (pTriggeredAction == pActionEnable)))
+                && (   (fEnabled && pTriggeredAction == pActionDisable)
+                    || (!fEnabled && pTriggeredAction == pActionEnable)))
             {
                 switch (enmRole)
                 {
