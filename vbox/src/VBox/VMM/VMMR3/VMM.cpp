@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 81198 2019-10-09 20:39:21Z vboxsync $ */
+/* $Id: VMM.cpp 82555 2019-12-11 23:56:54Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -2392,7 +2392,7 @@ static int vmmR3ServiceCallRing3Request(PVM pVM, PVMCPU pVCpu)
          */
         case VMMCALLRING3_PGM_POOL_GROW:
         {
-            pVCpu->vmm.s.rcCallRing3 = PGMR3PoolGrow(pVM);
+            pVCpu->vmm.s.rcCallRing3 = PGMR3PoolGrow(pVM, pVCpu);
             break;
         }
 

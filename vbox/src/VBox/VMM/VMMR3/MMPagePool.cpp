@@ -1,4 +1,4 @@
-/* $Id: MMPagePool.cpp 80333 2019-08-16 20:28:38Z vboxsync $ */
+/* $Id: MMPagePool.cpp 82555 2019-12-11 23:56:54Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Page Pool.
  */
@@ -378,6 +378,7 @@ DECLINLINE(void) mmR3PagePoolFree(PMMPAGEPOOL pPool, void *pv)
     }
 }
 
+#if 0
 
 /**
  * Allocates a page from the page pool.
@@ -482,6 +483,7 @@ VMMR3DECL(void) MMR3PageFreeByPhys(PVM pVM, RTHCPHYS HCPhysPage)
         AssertMsgFailed(("Invalid address HCPhysPT=%#x\n", HCPhysPage));
 }
 
+#endif
 
 /**
  * Gets the HC pointer to the dummy page.
