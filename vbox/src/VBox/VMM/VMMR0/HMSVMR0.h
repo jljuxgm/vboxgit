@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.h 76585 2019-01-01 06:31:29Z vboxsync $ */
+/* $Id: HMSVMR0.h 80052 2019-07-29 20:36:52Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Internal header file.
  */
@@ -50,11 +50,6 @@ VMMR0DECL(VBOXSTRICTRC) SVMR0RunGuestCode(PVMCPU pVCpu);
 VMMR0DECL(int)          SVMR0ExportHostState(PVMCPU pVCpu);
 VMMR0DECL(int)          SVMR0ImportStateOnDemand(PVMCPU pVCpu, uint64_t fWhat);
 VMMR0DECL(int)          SVMR0InvalidatePage(PVMCPU pVCpu, RTGCPTR GCVirt);
-
-#if HC_ARCH_BITS == 32 && defined(VBOX_WITH_64_BITS_GUESTS)
-DECLASM(int)            SVMR0VMSwitcherRun64(RTHCPHYS pVMCBHostPhys, RTHCPHYS pVMCBPhys, PCPUMCTX pCtx, PVM pVM, PVMCPU pVCpu);
-VMMR0DECL(int)          SVMR0Execute64BitsHandler(PVMCPU pVCpu, HM64ON32OP enmOp, uint32_t cbParam, uint32_t *paParam);
-#endif /* HC_ARCH_BITS == 32 && defined(VBOX_WITH_64_BITS_GUESTS) */
 
 /**
  * Prepares for and executes VMRUN (32-bit guests).

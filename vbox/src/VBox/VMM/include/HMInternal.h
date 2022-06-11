@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 80036 2019-07-29 07:44:29Z vboxsync $ */
+/* $Id: HMInternal.h 80052 2019-07-29 20:36:52Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -852,7 +852,7 @@ typedef struct VMXVMCSINFO
     /** Set if guest was executing in real mode (extra checks). */
     bool                        fWasInRealMode;
     /** Set if the guest switched to 64-bit mode on a 32-bit host. */
-    bool                        fSwitchedTo64on32;
+    bool                        fSwitchedTo64on32Obsolete;
     /** Padding. */
     bool                        afPadding0[6];
     /** The host CPU for which we have currently exported the host state. */
