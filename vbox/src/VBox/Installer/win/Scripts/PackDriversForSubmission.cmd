@@ -1,5 +1,5 @@
 @echo off
-rem $Id: PackDriversForSubmission.cmd 82434 2019-12-05 17:29:54Z vboxsync $
+rem $Id: PackDriversForSubmission.cmd 82435 2019-12-05 17:34:01Z vboxsync $
 rem rem @file
 rem Windows NT batch script for preparing for signing submission.
 rem
@@ -280,7 +280,7 @@ echo %_MY_OPT_GADIR%\VBoxTray.exe>>                                             
 echo %_MY_OPT_GADIR%\VBoxControl.exe>>                                                  "%_MY_OPT_DDF_FILE%"
 echo %_MY_OPT_GADIR%\VBoxMouse.inf>>                                                    "%_MY_OPT_DDF_FILE%"
 echo %_MY_OPT_GADIR%\VBoxMouse.sys>>                                                    "%_MY_OPT_DDF_FILE%"
-rem VBoxVideo files are excluded from attestation signing. 
+rem VBoxVideo files are excluded from attestation signing.
 rem echo %_MY_OPT_GADIR%\VBoxVideo.inf>>                                                    "%_MY_OPT_DDF_FILE%"
 rem echo %_MY_OPT_GADIR%\VBoxVideo.sys>>                                                    "%_MY_OPT_DDF_FILE%"
 echo %_MY_OPT_GADIR%\VBoxWddm.inf>>                                                     "%_MY_OPT_DDF_FILE%"
