@@ -1,4 +1,4 @@
-/* $Id: display-svga-x11.cpp 83039 2020-02-10 16:57:01Z vboxsync $ */
+/* $Id: display-svga-x11.cpp 83045 2020-02-11 12:31:53Z vboxsync $ */
 /** @file
  * X11 guest client - VMSVGA emulation resize event pass-through to X.Org
  * guest driver.
@@ -53,10 +53,7 @@
  *  context structure. */
 #define VMW_MAX_HEADS 32
 
-/* VMWare X.Org driver control parts definitions. */
-
-#include <X11/Xlibint.h>
-#include <X11/extensions/Xrandr.h>
+#include "seamless-x11.h"
 
 #ifdef RT_OS_LINUX
 # include <sys/ioctl.h>
