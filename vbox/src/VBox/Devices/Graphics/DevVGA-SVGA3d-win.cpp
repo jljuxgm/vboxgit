@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-win.cpp 81431 2019-10-21 19:54:52Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-win.cpp 81577 2019-10-29 22:35:47Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -4035,10 +4035,12 @@ int vmsvga3dSetRenderTarget(PVGASTATE pThis, uint32_t cid, SVGA3dRenderTargetTyp
             {
                 /* Create a dummy render target to satisfy D3D. This path is usually taken only to render
                  * into a depth buffer without wishing to update an actual color render target.
+                 * The dimensions of the render target must match the dimensions of the depth render target,
+                 * which is usually equal to the viewport width and height.
                  */
                 IDirect3DSurface9 *pDummyRenderTarget;
-                hr = pContext->pDevice->CreateRenderTarget(4,
-                                                           4,
+                hr = pContext->pDevice->CreateRenderTarget(pContext->state.RectViewPort.w,
+                                                           pContext->state.RectViewPort.h,
                                                            FOURCC_NULL,
                                                            D3DMULTISAMPLE_NONE,
                                                            0,
