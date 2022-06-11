@@ -1,4 +1,4 @@
-/* $Id: tstVMREQ.cpp 80286 2019-08-15 09:17:40Z vboxsync $ */
+/* $Id: tstVMREQ.cpp 80287 2019-08-15 09:18:15Z vboxsync $ */
 /** @file
  * VMM Testcase.
  */
@@ -310,7 +310,10 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
         VMR3ReleaseUVM(pUVM);
     }
     else if (rc == VERR_SVM_NO_SVM || rc == VERR_VMX_NO_VMX)
+    {
         RTPrintf(TESTCASE ": Skipped: %Rrc\n", rc);
+        return RTEXITCODE_SKIPPED;
+    }
     else
     {
         RTPrintf(TESTCASE ": fatal error: failed to create vm! rc=%Rrc\n", rc);
