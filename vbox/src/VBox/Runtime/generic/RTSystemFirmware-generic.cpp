@@ -1,4 +1,4 @@
-/* $Id: RTSystemFirmware-generic.cpp 80860 2019-09-17 13:13:26Z vboxsync $ */
+/* $Id: RTSystemFirmware-generic.cpp 81062 2019-09-27 20:53:09Z vboxsync $ */
 /** @file
  * IPRT - System firmware information, Generic stub.
  */
@@ -32,27 +32,30 @@
 #include <iprt/system.h>
 
 #include <iprt/errcore.h>
+#include <iprt/string.h>
 
 
 RTDECL(int) RTSystemFirmwareQueryType(PRTSYSFWTYPE penmFirmwareType)
 {
     RT_NOREF(penmFirmwareType);
+    *penmFirmwareType = RTSYSFWTYPE_INVALID;
     return VERR_NOT_SUPPORTED;
 }
 RT_EXPORT_SYMBOL(RTSystemFirmwareQueryType);
 
 
-RTDECL(void) RTSystemFirmwareValueFree(PRTSYSFWVALUE pValue)
+RTDECL(void) RTSystemFirmwareFreeValue(PRTSYSFWVALUE pValue)
 {
     RT_NOREF(pValue);
 }
-RT_EXPORT_SYMBOL(RTSystemFirmwareValueFree);
+RT_EXPORT_SYMBOL(RTSystemFirmwareFreeValue);
 
 
-RTDECL(int) RTSystemFirmwareValueQuery(RTSYSFWPROP enmProp, PRTSYSFWVALUE *ppValue)
+RTDECL(int) RTSystemFirmwareQueryValue(RTSYSFWPROP enmProp, PRTSYSFWVALUE pValue)
 {
-    RT_NOREF(enmProp, ppValue);
+    RT_ZERO(*pValue);
+    RT_NOREF(enmProp);
     return VERR_NOT_SUPPORTED;
 }
-RT_EXPORT_SYMBOL(RTSystemFirmwareValueQuery);
+RT_EXPORT_SYMBOL(RTSystemFirmwareQueryValue);
 
