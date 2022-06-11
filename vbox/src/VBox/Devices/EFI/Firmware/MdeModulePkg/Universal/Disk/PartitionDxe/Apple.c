@@ -1,4 +1,4 @@
-/* $Id: Apple.c 80934 2019-09-22 15:37:49Z vboxsync $ */
+/* $Id: Apple.c 81715 2019-11-06 16:17:11Z vboxsync $ */
 /** @file
  * Apple.c
  */
@@ -190,7 +190,7 @@ PartitionInstallAppleChildHandles (
           if (0 && CompareMem("Apple_HFS", Entry->type, 10) == 0)
               Print(L"HFS partition (%d of %d) at LBA 0x%x size=%dM\n",
                     Partition, PartitionEntries, StartLba,
-                    (UINT32)(MultU64x32(SizeLbs, SubBlockSize) / (1024 * 1024)));
+                    (UINT32)(DivU64x32(MultU64x32(SizeLbs, SubBlockSize), (1024 * 1024))));
 
           ZeroMem (&CdDev, sizeof (CdDev));
           CdDev.Header.Type     = MEDIA_DEVICE_PATH;
