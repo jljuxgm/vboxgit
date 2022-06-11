@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.cpp 78588 2019-05-20 08:52:57Z vboxsync $ */
+/* $Id: UIActionPoolRuntime.cpp 78594 2019-05-20 11:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolRuntime class implementation.
  */
@@ -3522,9 +3522,9 @@ void UIActionPoolRuntime::updateConfiguration()
         m_restrictedActionsMenuView[UIActionRestrictionLevel_Base] = (UIExtraDataMetaDefs::RuntimeMenuViewActionType)
             (m_restrictedActionsMenuView[UIActionRestrictionLevel_Base] | UIExtraDataMetaDefs::RuntimeMenuViewActionType_RecordingSettings);
         m_restrictedActionsMenuInput[UIActionRestrictionLevel_Base] = (UIExtraDataMetaDefs::RuntimeMenuInputActionType)
-            (m_restrictedActionsMenuInput[UIActionRestrictionLevel_Base] |
-             UIExtraDataMetaDefs::RuntimeMenuInputActionType_KeyboardSettings |
-             UIExtraDataMetaDefs::RuntimeMenuInputActionType_SoftKeyboard);
+            (m_restrictedActionsMenuInput[UIActionRestrictionLevel_Base] | UIExtraDataMetaDefs::RuntimeMenuInputActionType_KeyboardSettings);
+        m_restrictedActionsMenuInput[UIActionRestrictionLevel_Base] = (UIExtraDataMetaDefs::RuntimeMenuInputActionType)
+            (m_restrictedActionsMenuInput[UIActionRestrictionLevel_Base] | UIExtraDataMetaDefs::RuntimeMenuInputActionType_SoftKeyboard);
         m_restrictedActionsMenuDevices[UIActionRestrictionLevel_Base] = (UIExtraDataMetaDefs::RuntimeMenuDevicesActionType)
             (m_restrictedActionsMenuDevices[UIActionRestrictionLevel_Base] | UIExtraDataMetaDefs::RuntimeMenuDevicesActionType_HardDrivesSettings);
         m_restrictedActionsMenuDevices[UIActionRestrictionLevel_Base] = (UIExtraDataMetaDefs::RuntimeMenuDevicesActionType)
