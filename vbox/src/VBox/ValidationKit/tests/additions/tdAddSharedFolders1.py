@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 83735 $"
+__version__ = "$Revision: 84093 $"
 
 # Standard Python imports.
 import os
@@ -159,9 +159,9 @@ class SubTstDrvAddSharedFolders1(base.SubTestDriverBase):
         # Check whether the shared folder is gone on the guest now.  Retry for 30 seconds.
         msStart = base.timestampMilli();
         while True:
-            fRc2 = oTxsSession.syncIsDir(sGuestMountPoint + self.sGuestSlash + 'candle.dir');
-            reporter.log2('candle.dir check -> %s' % (fRc2,));
-            if fRc2 is not fMustSucceed:
+            fRc = oTxsSession.syncIsDir(sGuestMountPoint + self.sGuestSlash + 'candle.dir');
+            reporter.log2('candle.dir check -> %s' % (fRc,));
+            if fRc is not fMustSucceed:
                 break;
             if base.timestampMilli() - msStart > 30000:
                 reporter.error('Shared folder unmounting timed out!');
@@ -171,7 +171,7 @@ class SubTstDrvAddSharedFolders1(base.SubTestDriverBase):
 
         reporter.testDone();
 
-        return fRc is fMustSucceed;
+        return fRc is not fMustSucceed;
 
     def unmountShare(self, oSession, oTxsSession, sShareName, sGuestMountPoint):
         """
