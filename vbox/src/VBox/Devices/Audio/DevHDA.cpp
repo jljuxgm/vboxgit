@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 82401 2019-12-04 23:33:29Z vboxsync $ */
+/* $Id: DevHDA.cpp 82402 2019-12-04 23:50:36Z vboxsync $ */
 /** @file
  * DevHDA.cpp - VBox Intel HD Audio Controller.
  *
@@ -1218,12 +1218,6 @@ static VBOXSTRICTRC hdaRegWriteSDCTL(PPDMDEVINS pDevIns, PHDASTATE pThis, uint32
 #ifdef IN_RING3
     /* Get the stream descriptor. */
     const uint8_t uSD = HDA_SD_NUM_FROM_REG(pThis, CTL, iReg);
-
-    /*
-     * Some guests write too much (that is, 32-bit with the top 8 bit being junk)
-     * instead of 24-bit required for SDCTL. So just mask this here to be safe.
-     */
-    u32Value &= 0x00ffffff;
 
     /*
      * Extract the stream tag the guest wants to use for this specific
@@ -3332,7 +3326,7 @@ static DECLCALLBACK(VBOXSTRICTRC) hdaMmioWrite(PPDMDEVINS pDevIns, void *pvUser,
 # ifdef LOG_ENABLED
                 uint32_t uLogOldVal = pThis->au32Regs[idxRegMem];
 # endif
-                rc = hdaWriteReg(pDevIns, pThis, idxRegDsc, u64Value, "*");
+                rc = hdaWriteReg(pDevIns, pThis, idxRegDsc, u64Value & g_afMasks[cbReg], "*");
                 Log4Func(("\t%#x -> %#x\n", uLogOldVal, pThis->au32Regs[idxRegMem]));
             }
             else
