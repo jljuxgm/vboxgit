@@ -1,4 +1,4 @@
-/** $Id: clipboard.cpp 83184 2020-03-02 14:56:27Z vboxsync $ */
+/** $Id: clipboard.cpp 83624 2020-04-08 16:29:25Z vboxsync $ */
 /** @file
  * Guest Additions - X11 Shared Clipboard.
  */
@@ -302,7 +302,7 @@ int vboxClipboardMain(void)
             {
                 case VBGLR3CLIPBOARDEVENTTYPE_REPORT_FORMATS:
                 {
-                    ShClX11ReportFormatsToX11(&g_Ctx.X11, pEvent->u.ReportedFormats.Formats);
+                    ShClX11ReportFormatsToX11(&g_Ctx.X11, pEvent->u.fReportedFormats);
                     break;
                 }
 

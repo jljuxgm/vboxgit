@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc.cpp 83621 2020-04-08 15:02:16Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc.cpp 83624 2020-04-08 16:29:25Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Host service entry points.
  */
@@ -1463,15 +1463,7 @@ static int shClSvcClientReportFormats(PSHCLCLIENT pClient, uint32_t cParms, VBOX
                 g_ExtState.pfnExtension(g_ExtState.pvExtension, VBOX_CLIPBOARD_EXT_FN_FORMAT_ANNOUNCE, &parms, sizeof(parms));
             }
             else
-            {
-                SHCLCLIENTCMDCTX CmdCtx;
-                RT_ZERO(CmdCtx);
-
-                SHCLFORMATDATA FormatData;
-                FormatData.fFlags  = 0;
-                FormatData.Formats = fFormats;
-                rc = ShClSvcImplFormatAnnounce(pClient, &CmdCtx, &FormatData);
-            }
+                rc = ShClSvcImplFormatAnnounce(pClient, fFormats);
         }
     }
 
