@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 81087 2019-09-30 18:55:28Z vboxsync $ */
+/* $Id: Settings.cpp 81103 2019-10-03 09:04:54Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -6202,9 +6202,9 @@ void MachineConfigFile::buildHardwareXML(xml::ElementNode &elmParent,
             || !hw.biosSettings.strNVRAMPath.isEmpty())
         {
             xml::ElementNode *pelmNVRAM = pelmBIOS->createChild("NVRAM");
-	    if (hw.biosSettings.fNVRAMEnabled)
+        if (hw.biosSettings.fNVRAMEnabled)
                 pelmNVRAM->setAttribute("enabled", hw.biosSettings.fNVRAMEnabled);
-	    if (!hw.biosSettings.strNVRAMPath.isEmpty())
+        if (!hw.biosSettings.strNVRAMPath.isEmpty())
                 pelmNVRAM->setAttribute("path", hw.biosSettings.strNVRAMPath);
         }
     }
