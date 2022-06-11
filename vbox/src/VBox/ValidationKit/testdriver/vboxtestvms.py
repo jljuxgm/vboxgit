@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 79156 2019-06-15 02:35:24Z vboxsync $
+# $Id: vboxtestvms.py 79158 2019-06-16 01:27:41Z vboxsync $
 
 """
 VirtualBox Test VMs
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79156 $"
+__version__ = "$Revision: 79158 $"
 
 # Standard Python imports.
 import copy;
@@ -916,7 +916,7 @@ class BaseTestVm(object):
                 fRc = oSession.close() and fRc;
         return fRc;
 
-    def pathJoinEx(self, sBase, *asAppend):
+    def pathJoin(self, sBase, *asAppend):
         """ See common.pathutils.joinEx(). """
         return pathutils.joinEx(self.isWindows() or self.isOS2(), sBase, *asAppend);
 
@@ -1409,7 +1409,7 @@ class TestVm(object):
             return 'changeme';
         return 'password';
 
-    def pathJoinEx(self, sBase, *asAppend):
+    def pathJoin(self, sBase, *asAppend):
         """ See common.pathutils.joinEx(). """
         return pathutils.joinEx(self.isWindows() or self.isOS2(), sBase, *asAppend);
 
