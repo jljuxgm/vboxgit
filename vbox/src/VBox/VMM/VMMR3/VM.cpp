@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VM.cpp 82990 2020-02-05 11:43:13Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -834,6 +834,10 @@ static int vmR3InitRing3(PVM pVM, PUVM pUVM)
     STAM_REG(pVM, &pUVM->vm.s.StatReqProcessed,  STAMTYPE_COUNTER,     "/VM/Req/Processed",      STAMUNIT_OCCURENCES,        "Number of processed requests (any queue).");
     STAM_REG(pVM, &pUVM->vm.s.StatReqMoreThan1,  STAMTYPE_COUNTER,     "/VM/Req/MoreThan1",      STAMUNIT_OCCURENCES,        "Number of times there are more than one request on the queue when processing it.");
     STAM_REG(pVM, &pUVM->vm.s.StatReqPushBackRaces, STAMTYPE_COUNTER,  "/VM/Req/PushBackRaces",  STAMUNIT_OCCURENCES,        "Number of push back races.");
+
+    /* Statistics for ring-0 components: */
+    STAM_REL_REG(pVM, &pVM->R0Stats.gmm.cChunkTlbHits,   STAMTYPE_COUNTER, "/GMM/ChunkTlbHits",   STAMUNIT_OCCURENCES, "GMMR0PageIdToVirt chunk TBL hits");
+    STAM_REL_REG(pVM, &pVM->R0Stats.gmm.cChunkTlbMisses, STAMTYPE_COUNTER, "/GMM/ChunkTlbMisses", STAMUNIT_OCCURENCES, "GMMR0PageIdToVirt chunk TBL misses");
 
     /*
      * Init all R3 components, the order here might be important.

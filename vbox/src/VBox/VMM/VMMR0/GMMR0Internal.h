@@ -1,4 +1,4 @@
-/* $Id: GMMR0Internal.h 82989 2020-02-05 11:16:44Z vboxsync $ */
+/* $Id: GMMR0Internal.h 82990 2020-02-05 11:43:13Z vboxsync $ */
 /** @file
  * GMM - The Global Memory Manager, Internal Header.
  */
@@ -106,6 +106,8 @@ typedef struct GMMPERVM
 
     /** Spinlock protecting the chunk lookup TLB. */
     RTSPINLOCK          hChunkTlbSpinLock;
+    uint64_t            cChunkTlbHits;
+    uint64_t            cChunkTlbMisses;
     /** The chunk lookup TLB used by GMMR0PageIdToVirt. */
     GMMPERVMCHUNKTLBE   aChunkTlbEntries[GMMPERVM_CHUNKTLB_ENTRIES];
 } GMMPERVM;

@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 82989 2020-02-05 11:16:44Z vboxsync $ */
+/* $Id: GMMR0.cpp 82990 2020-02-05 11:43:13Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -4557,9 +4557,14 @@ GMMR0DECL(int)  GMMR0PageIdToVirt(PGVM pGVM, uint32_t idPage, void **ppv)
     if (   pChunk              != NULL
         && pTlbe->idGeneration == ASMAtomicUoReadU64(&pGMM->idFreeGeneration)
         && pChunk->Core.Key    == idChunk)
-    { /* hopeful outcome */ }
+        pGVM->R0Stats.gmm.cChunkTlbHits++; /* hopefully this is a likely outcome */
     else
     {
+        pGVM->R0Stats.gmm.cChunkTlbMisses++;
+
+        /*
+         * Look it up in the chunk tree.
+         */
         RTSpinlockAcquire(pGMM->hSpinLockTree);
         pChunk = gmmR0GetChunkLocked(pGMM, idChunk);
         if (RT_LIKELY(pChunk))
