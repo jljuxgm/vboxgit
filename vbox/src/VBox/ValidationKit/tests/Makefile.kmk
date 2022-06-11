@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 82925 2020-01-30 13:14:12Z vboxsync $
+# $Id: Makefile.kmk 82926 2020-01-30 13:36:19Z vboxsync $
 ## @file
 # VirtualBox Validation Kit.
 #
@@ -46,7 +46,7 @@ include $(PATH_SUB_CURRENT)/usb/Makefile.kmk
 include $(PATH_SUB_CURRENT)/serial/Makefile.kmk
 
 ifndef VBOX_OSE
-#include $(PATH_SUB_CURRENT)/cloud/Makefile.kmk
+include $(PATH_SUB_CURRENT)/cloud/Makefile.kmk
 endif
 
 $(evalcall def_vbox_validationkit_process_python_sources)
