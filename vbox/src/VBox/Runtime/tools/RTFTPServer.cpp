@@ -1,4 +1,4 @@
-/* $Id: RTFTPServer.cpp 82687 2020-01-09 10:45:36Z vboxsync $ */
+/* $Id: RTFTPServer.cpp 82699 2020-01-09 14:43:25Z vboxsync $ */
 /** @file
  * IPRT - Utility for running a (simple) FTP server.
  */
@@ -264,7 +264,7 @@ int main(int argc, char **argv)
                 return RTEXITCODE_SUCCESS;
 
             case 'V':
-                RTPrintf("$Revision: 82687 $\n");
+                RTPrintf("$Revision: 82699 $\n");
                 return RTEXITCODE_SUCCESS;
 
             default:
@@ -303,7 +303,7 @@ int main(int argc, char **argv)
         Callbacks.pfnOnList             = onList;
 
         RTFTPSERVER hFTPServer;
-        rc = RTFTPServerCreate(&hFTPServer, szAddress, uPort, &Callbacks);
+        rc = RTFtpServerCreate(&hFTPServer, szAddress, uPort, &Callbacks);
         if (RT_SUCCESS(rc))
         {
             RTPrintf("Starting FTP server at %s:%RU16 ...\n", szAddress, uPort);
@@ -321,7 +321,7 @@ int main(int argc, char **argv)
 
             RTPrintf("Stopping FTP server ...\n");
 
-            int rc2 = RTFTPServerDestroy(hFTPServer);
+            int rc2 = RTFtpServerDestroy(hFTPServer);
             if (RT_SUCCESS(rc))
                 rc = rc2;
 

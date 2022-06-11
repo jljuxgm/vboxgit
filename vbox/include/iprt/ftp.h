@@ -1,4 +1,4 @@
-/* $Id: ftp.h 82688 2020-01-09 10:48:37Z vboxsync $ */
+/* $Id: ftp.h 82699 2020-01-09 14:43:25Z vboxsync $ */
 /** @file
  * Header file for FTP client / server implementations.
  */
@@ -188,7 +188,7 @@ typedef RTFTPSERVERCALLBACKS *PRTFTPSERVERCALLBACKS;
  * @param   uPort               The port for creating a listening socket.
  * @param   pCallbacks          Callback table to use.
  */
-RTR3DECL(int) RTFTPServerCreate(PRTFTPSERVER phFTPServer, const char *pcszAddress, uint16_t uPort,
+RTR3DECL(int) RTFtpServerCreate(PRTFTPSERVER phFTPServer, const char *pcszAddress, uint16_t uPort,
                                 PRTFTPSERVERCALLBACKS pCallbacks);
 
 /**
@@ -197,7 +197,7 @@ RTR3DECL(int) RTFTPServerCreate(PRTFTPSERVER phFTPServer, const char *pcszAddres
  * @returns IPRT status code.
  * @param   hFTPServer          Handle to the FTP server handle.
  */
-RTR3DECL(int) RTFTPServerDestroy(RTFTPSERVER hFTPServer);
+RTR3DECL(int) RTFtpServerDestroy(RTFTPSERVER hFTPServer);
 
 RT_C_DECLS_END
 
