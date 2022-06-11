@@ -1,4 +1,4 @@
-/* $Id: KeyboardImpl.h 76562 2019-01-01 03:22:50Z vboxsync $ */
+/* $Id: KeyboardImpl.h 79676 2019-07-10 14:14:09Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -76,6 +76,7 @@ private:
                          ULONG *aCodesStored);
     HRESULT putCAD();
     HRESULT releaseKeys();
+    HRESULT putUsageCode(LONG aUsageCode, LONG aUsagePage, BOOL fKeyRelease);
 
     static DECLCALLBACK(void)   i_keyboardLedStatusChange(PPDMIKEYBOARDCONNECTOR pInterface, PDMKEYBLEDS enmLeds);
     static DECLCALLBACK(void)   i_keyboardSetActive(PPDMIKEYBOARDCONNECTOR pInterface, bool fActive);

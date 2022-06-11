@@ -1,4 +1,4 @@
-/* $Id: KeyboardImpl.cpp 76760 2019-01-10 18:07:47Z vboxsync $ */
+/* $Id: KeyboardImpl.cpp 79676 2019-07-10 14:14:09Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -217,6 +217,49 @@ HRESULT Keyboard::putScancodes(const std::vector<LONG> &aScancodes,
     if (RT_FAILURE(vrc))
         return setErrorBoth(VBOX_E_IPRT_ERROR, vrc,
                             tr("Could not send all scan codes to the virtual keyboard (%Rrc)"),
+                            vrc);
+
+    return S_OK;
+}
+
+/**
+ * Sends a HID usage code and page to the keyboard.
+ *
+ * @returns COM status code
+ * @param aUsageCode    The HID usage code to send
+ * @param aUsagePage    The HID usage page corresponding to the code
+ * @param fKeyRelease   The key release flag
+ */
+HRESULT Keyboard::putUsageCode(LONG aUsageCode, LONG aUsagePage, BOOL fKeyRelease)
+{
+    AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
+
+    CHECK_CONSOLE_DRV(mpDrv[0]);
+
+    /* Send input to the last enabled device. Relies on the fact that
+     * the USB keyboard is always initialized after the PS/2 keyboard.
+     */
+    PPDMIKEYBOARDPORT pUpPort = NULL;
+    for (int i = KEYBOARD_MAX_DEVICES - 1; i >= 0 ; --i)
+    {
+        if (mpDrv[i] && (mpDrv[i]->u32DevCaps & KEYBOARD_DEVCAP_ENABLED))
+        {
+            pUpPort = mpDrv[i]->pUpPort;
+            break;
+        }
+    }
+
+    /* No enabled keyboard - throw the input away. */
+    if (!pUpPort)
+        return S_OK;
+
+    int vrc = VINF_SUCCESS;
+    uint32_t u32Usage;
+    u32Usage = (uint8_t)aUsageCode | ((uint32_t)(uint8_t)aUsagePage << 16) | fKeyRelease ? 0x80000000 : 0;
+    vrc = pUpPort->pfnPutEventHid(pUpPort, u32Usage);
+    if (RT_FAILURE(vrc))
+        return setErrorBoth(VBOX_E_IPRT_ERROR, vrc,
+                            tr("Could not send usage code to the virtual keyboard (%Rrc)"),
                             vrc);
 
     return S_OK;
