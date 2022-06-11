@@ -1,4 +1,4 @@
-/* $Id: IOMAll.cpp 81136 2019-10-08 08:26:49Z vboxsync $ */
+/* $Id: IOMAll.cpp 81333 2019-10-17 23:49:39Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context.
  */
@@ -36,23 +36,6 @@
 #include <iprt/assert.h>
 #include <iprt/string.h>
 #include "IOMInline.h"
-
-
-/**
- * Check if this VCPU currently owns the IOM lock exclusively.
- *
- * @returns bool owner/not owner
- * @param   pVM         The cross context VM structure.
- */
-VMMDECL(bool) IOMIsLockWriteOwner(PVM pVM)
-{
-#ifdef IOM_WITH_CRIT_SECT_RW
-    return PDMCritSectRwIsInitialized(&pVM->iom.s.CritSect)
-        && PDMCritSectRwIsWriteOwner(&pVM->iom.s.CritSect);
-#else
-    return PDMCritSectIsOwner(&pVM->iom.s.CritSect);
-#endif
-}
 
 
 //#undef LOG_GROUP
