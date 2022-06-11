@@ -1,4 +1,4 @@
-/* $Id: poll.cpp 78832 2019-05-28 22:42:24Z vboxsync $ */
+/* $Id: poll.cpp 78971 2019-06-04 16:34:14Z vboxsync $ */
 /** @file
  * IPRT - Polling I/O Handles, Windows+Posix Implementation.
  */
@@ -857,7 +857,11 @@ RTDECL(int) RTPollSetAdd(RTPOLLSET hPollSet, PCRTHANDLE pHandle, uint32_t fEvent
             if (fEvents & RTPOLL_EVT_WRITE)
                 pThis->paPollFds[i].events |= POLLOUT;
             if (fEvents & RTPOLL_EVT_ERROR)
+# ifdef RT_OS_DARWIN
+                pThis->paPollFds[i].events |= POLLERR | POLLHUP;
+# else
                 pThis->paPollFds[i].events |= POLLERR;
+# endif
 #endif
             pThis->paHandles[i].enmType     = pHandle->enmType;
             pThis->paHandles[i].u           = uh;
