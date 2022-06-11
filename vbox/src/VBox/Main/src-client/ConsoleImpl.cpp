@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 78897 2019-05-31 15:23:14Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 78899 2019-05-31 15:35:46Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -8423,9 +8423,11 @@ DECLCALLBACK(int) Console::i_sharedClipboardServiceCallback(void *pvExtension, u
     ComPtr<IInternalMachineControl> pControl = pThis->mControl;
 
     int rc = VINF_SUCCESS;
-    HRESULT hrc;
 
-#define H()         AssertMsgBreakStmt(!FAILED(hrc), ("hrc=%Rhrc\n", hrc), rc = VERR_GENERAL_FAILURE)
+# ifdef VBOX_WITH_SHARED_CLIPBOARD_URI_LIST
+    HRESULT hrc;
+#  define H()         AssertMsgBreakStmt(!FAILED(hrc), ("hrc=%Rhrc\n", hrc), rc = VERR_GENERAL_FAILURE)
+# endif /* VBOX_WITH_SHARED_CLIPBOARD_URI_LIST */
 
     switch (u32Function)
     {
