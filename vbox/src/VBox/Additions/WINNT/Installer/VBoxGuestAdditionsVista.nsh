@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditionsVista.nsh 82587 2019-12-16 16:33:00Z vboxsync $
+; $Id: VBoxGuestAdditionsVista.nsh 82603 2019-12-17 10:26:44Z vboxsync $
 ;; @file
 ; VBoxGuestAdditionsVista.nsh - Guest Additions installation for Windows Vista/7.
 ;
@@ -28,6 +28,12 @@ Function Vista_CheckForRequirements
 FunctionEnd
 
 Function Vista_Prepare
+
+  ; Try to restore the original Direct3D files in case we're coming from an old(er) Guest Additions
+  ; installation, which formerly replaced those system files with our own stubs.
+  ; This no longer is needed and thus needs to be reverted in any case.
+  Call RestoreFilesDirect3D
+  ; Ignore the result in case we had trouble restoring. The system would be in an inconsistent state anyway.
 
   Call VBoxMMR_Uninstall
 
