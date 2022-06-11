@@ -1,4 +1,4 @@
-/* $Id: GaDrvEnvKMT.cpp 79817 2019-07-16 17:56:18Z vboxsync $ */
+/* $Id: GaDrvEnvKMT.cpp 82005 2019-11-19 17:42:32Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver interface to the WDDM miniport driver using Kernel Mode Thunks.
  */
@@ -382,6 +382,8 @@ static D3DDDIFORMAT svgaToD3DDDIFormat(SVGA3dSurfaceFormat format)
         case SVGA3D_A1R5G5B5:       return D3DDDIFMT_A1R5G5B5;
         case SVGA3D_LUMINANCE8_ALPHA8: return D3DDDIFMT_A8L8;
         case SVGA3D_R5G6B5:         return D3DDDIFMT_R5G6B5;
+        case SVGA3D_ARGB_S10E5:     return D3DDDIFMT_A16B16G16R16F;
+        case SVGA3D_ARGB_S23E8:     return D3DDDIFMT_A32B32G32R32F;
         default: break;
     }
 
