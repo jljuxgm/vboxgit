@@ -1,4 +1,4 @@
-/* $Id: VBoxWatchdog.cpp 83800 2020-04-18 14:17:26Z vboxsync $ */
+/* $Id: VBoxWatchdog.cpp 83829 2020-04-19 13:54:07Z vboxsync $ */
 /** @file
  * VBoxWatchdog.cpp - VirtualBox Watchdog.
  */
@@ -899,7 +899,7 @@ static void displayHelp(const char *pszImage)
         else
             RTStrmPrintf(g_pStdErr,
                          "  %s\n"
-                         "      %s\n", g_aOptions[i].pszLong, g_aOptions[i].iShort, pcszDescr);
+                         "      %s\n", g_aOptions[i].pszLong, pcszDescr);
     }
 
     for (unsigned j = 0; j < RT_ELEMENTS(g_aModules); j++)
