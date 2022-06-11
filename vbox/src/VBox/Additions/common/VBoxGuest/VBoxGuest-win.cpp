@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-win.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxGuest-win.cpp 83821 2020-04-19 01:10:05Z vboxsync $ */
 /** @file
  * VBoxGuest - Windows specifics.
  */
@@ -406,7 +406,7 @@ NTSTATUS DriverEntry(PDRIVER_OBJECT pDrvObj, PUNICODE_STRING pRegPath)
          * Dynamically resolve symbols not present in NT4.
          */
         RTDBGKRNLINFO hKrnlInfo;
-        int rc = RTR0DbgKrnlInfoOpen(&hKrnlInfo, 0 /*fFlags*/);
+        rc = RTR0DbgKrnlInfoOpen(&hKrnlInfo, 0 /*fFlags*/);
         if (RT_SUCCESS(rc))
         {
             g_pfnKeRegisterBugCheckCallback   = (decltype(KeRegisterBugCheckCallback) *)  RTR0DbgKrnlInfoGetSymbol(hKrnlInfo, NULL, "KeRegisterBugCheckCallback");
