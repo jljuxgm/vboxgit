@@ -1,5 +1,5 @@
 @echo off
-rem $Id: PackDriversForSubmission.cmd 79439 2019-07-01 14:51:04Z vboxsync $
+rem $Id: PackDriversForSubmission.cmd 79708 2019-07-11 21:30:05Z vboxsync $
 rem rem @file
 rem Windows NT batch script for preparing for signing submission.
 rem
@@ -251,6 +251,7 @@ rem
 rem EV sign the cabient file.
 rem
 if not exist "sign-ev.cmd" goto end
+echo info: Now signing the created CAB file. Can take a few minutes...
 call sign-ev.cmd "%_MY_OPT_OUTPUT%" || goto end_failed
 
 goto end
