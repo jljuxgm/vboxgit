@@ -1,4 +1,4 @@
-/* $Id: UIDetails.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIDetails.h 79461 2019-07-02 09:41:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetails class declaration.
  */
@@ -44,9 +44,6 @@ signals:
     void sigLinkClicked(const QString &strCategory,
                         const QString &strControl,
                         const QUuid &uId);
-
-    /** Notifies listeners about sliding started. */
-    void sigSlidingStarted();
 
     /** Notifies listeners about toggling started. */
     void sigToggleStarted();

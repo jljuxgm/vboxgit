@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneMachine.cpp 76771 2019-01-11 12:51:50Z vboxsync $ */
+/* $Id: UIToolPaneMachine.cpp 79461 2019-07-02 09:41:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolPaneMachine class implementation.
  */
@@ -115,7 +115,6 @@ void UIToolPaneMachine::openTool(UIToolType enmType)
                 {
                     /* Configure pane: */
                     m_pPaneDetails->setProperty("ToolType", QVariant::fromValue(UIToolType_Details));
-                    connect(this, &UIToolPaneMachine::sigSlidingStarted, m_pPaneDetails, &UIDetails::sigSlidingStarted);
                     connect(this, &UIToolPaneMachine::sigToggleStarted,  m_pPaneDetails, &UIDetails::sigToggleStarted);
                     connect(this, &UIToolPaneMachine::sigToggleFinished, m_pPaneDetails, &UIDetails::sigToggleFinished);
                     connect(m_pPaneDetails, &UIDetails::sigLinkClicked,  this, &UIToolPaneMachine::sigLinkClicked);

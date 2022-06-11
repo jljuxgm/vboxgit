@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 79391 2019-06-27 12:41:27Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 79461 2019-07-02 09:41:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -490,8 +490,6 @@ void UIVirtualBoxManagerWidget::prepareConnections()
             this, &UIVirtualBoxManagerWidget::sltHandleChooserPaneIndexChange);
     connect(m_pPaneChooser, &UIChooser::sigSelectionInvalidated,
             this, &UIVirtualBoxManagerWidget::sltHandleChooserPaneSelectionInvalidated);
-    connect(m_pPaneChooser, &UIChooser::sigSlidingStarted,
-            m_pPaneToolsMachine, &UIToolPaneMachine::sigSlidingStarted);
     connect(m_pPaneChooser, &UIChooser::sigToggleStarted,
             m_pPaneToolsMachine, &UIToolPaneMachine::sigToggleStarted);
     connect(m_pPaneChooser, &UIChooser::sigToggleFinished,

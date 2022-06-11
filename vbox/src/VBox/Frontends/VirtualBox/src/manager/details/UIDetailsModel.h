@@ -1,4 +1,4 @@
-/* $Id: UIDetailsModel.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIDetailsModel.h 79461 2019-07-02 09:41:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsModel class declaration.
  */
@@ -158,8 +158,6 @@ public slots:
     /** Handle details view resize. */
     void sltHandleViewResize();
 
-    /** Handles chooser pane signal about item sliding started. */
-    void sltHandleSlidingStarted();
     /** Handles chooser pane signal about group toggle started. */
     void sltHandleToggleStarted();
     /** Handles chooser pane signal about group toggle finished. */

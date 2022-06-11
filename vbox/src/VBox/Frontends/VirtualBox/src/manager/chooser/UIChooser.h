@@ -1,4 +1,4 @@
-/* $Id: UIChooser.h 77933 2019-03-28 12:30:56Z vboxsync $ */
+/* $Id: UIChooser.h 79461 2019-07-02 09:41:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooser class declaration.
  */
@@ -48,9 +48,6 @@ signals:
         void sigSelectionChanged();
         /** Notifies listeners about selection invalidated. */
         void sigSelectionInvalidated();
-
-        /** Notifies listeners about sliding started. */
-        void sigSlidingStarted();
 
         /** Notifies listeners about toggling started. */
         void sigToggleStarted();
