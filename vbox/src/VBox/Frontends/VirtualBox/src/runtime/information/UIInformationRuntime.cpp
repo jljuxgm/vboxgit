@@ -1,4 +1,4 @@
-/* $Id: UIInformationRuntime.cpp 82610 2019-12-18 07:09:49Z vboxsync $ */
+/* $Id: UIInformationRuntime.cpp 82611 2019-12-18 08:08:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationRuntime class implementation.
  */
@@ -415,7 +415,7 @@ void UIRuntimeInfoWidget::updateInfoRow(InfoRow enmLine, const QString &strColum
     QTableWidgetItem *pItem = 0;
     for (int i = 0; i < rowCount() && !pItem; ++i)
     {
-        pItem = item(i, 1);
+        pItem = item(i, 2);
         if (!pItem)
             continue;
         if (pItem->type() != enmLine)
