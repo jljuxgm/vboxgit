@@ -1,4 +1,4 @@
-/* $Id: VBoxManageList.cpp 79867 2019-07-18 20:33:32Z vboxsync $ */
+/* $Id: VBoxManageList.cpp 81644 2019-11-04 10:36:44Z vboxsync $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
@@ -445,8 +445,6 @@ static HRESULT listUsbHost(const ComPtr<IVirtualBox> &pVirtualBox)
             CHECK_ERROR_RET(dev, COMGETTER(Port)(&usPort), 1);
             USHORT usVersion;
             CHECK_ERROR_RET(dev, COMGETTER(Version)(&usVersion), 1);
-            USHORT usPortVersion;
-            CHECK_ERROR_RET(dev, COMGETTER(PortVersion)(&usPortVersion), 1);
             USBConnectionSpeed_T enmSpeed;
             CHECK_ERROR_RET(dev, COMGETTER(Speed)(&enmSpeed), 1);
 
