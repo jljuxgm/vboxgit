@@ -1,4 +1,4 @@
-/* $Id: VSCSIVpdPagePool.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VSCSIVpdPagePool.cpp 80592 2019-09-04 18:34:01Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: VPD page pool
  */
@@ -107,6 +107,7 @@ int vscsiVpdPagePoolQueryPage(PVSCSIVPDPOOL pVScsiVpdPool, PVSCSIREQINT pVScsiRe
     {
         if (pPage->abPage[1] == uPage)
         {
+            vscsiReqSetXferSize(pVScsiReq, pPage->cbPage);
             RTSgBufCopyFromBuf(&pVScsiReq->SgBuf, &pPage->abPage[0], pPage->cbPage);
             return VINF_SUCCESS;
         }
