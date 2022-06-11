@@ -1,4 +1,4 @@
-/* $Id: HostDnsService.h 78030 2019-04-05 19:08:10Z vboxsync $ */
+/* $Id: HostDnsService.h 78941 2019-06-03 19:05:16Z vboxsync $ */
 /** @file
  * Host DNS listener.
  */
@@ -67,10 +67,11 @@ public:
     virtual HRESULT init(HostDnsMonitorProxy *pProxy);
     virtual void uninit(void);
 
+    virtual ~HostDnsServiceBase();
+
 protected:
 
     explicit HostDnsServiceBase(bool fThreaded = false);
-    virtual ~HostDnsServiceBase();
 
     void setInfo(const HostDnsInformation &);
 

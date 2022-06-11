@@ -1,4 +1,4 @@
-/* $Id: HostDnsService.cpp 77993 2019-04-03 15:11:36Z vboxsync $ */
+/* $Id: HostDnsService.cpp 78941 2019-06-03 19:05:16Z vboxsync $ */
 /** @file
  * Base class for Host DNS & Co services.
  */
@@ -311,7 +311,13 @@ void HostDnsMonitorProxy::uninit(void)
 {
     if (m)
     {
-        m->pMonitorImpl->uninit();
+        if (m->pMonitorImpl)
+        {
+            m->pMonitorImpl->uninit();
+
+            delete m->pMonitorImpl;
+            m->pMonitorImpl = NULL;
+        }
 
         delete m;
         m = NULL;
