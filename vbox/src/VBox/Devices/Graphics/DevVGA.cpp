@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 82084 2019-11-21 16:26:41Z vboxsync $ */
+/* $Id: DevVGA.cpp 82086 2019-11-21 19:32:20Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -4976,7 +4976,7 @@ static DECLCALLBACK(int) vgaPortSetRefreshRate(PPDMIDISPLAYPORT pInterface, uint
 
 #ifdef VBOX_WITH_VMSVGA
     if (pThis->svga.fFIFOThreadSleeping)
-        SUPSemEventSignal(pThis->svga.pSupDrvSession, pThis->svga.FIFORequestSem);
+        PDMDevHlpSUPSemEventSignal(pDevIns, pThis->svga.hFIFORequestSem);
 #endif
 
     if (cMilliesInterval)
@@ -5584,11 +5584,12 @@ static DECLCALLBACK(void) vgaTimerRefresh(PPDMDEVINS pDevIns, PTMTIMER pTimer, v
      * there is work to be done.
      */
     if (pThis->svga.fFIFOThreadSleeping && pThis->svga.fEnabled && pThis->svga.fConfigured)
-        vmsvgaFIFOWatchdogTimer(pThis);
+        vmsvgaFIFOWatchdogTimer(pDevIns, pThis);
 #endif
 }
 
 #ifdef VBOX_WITH_VMSVGA
+
 int vgaR3RegisterVRAMHandler(PVGASTATE pVGAState, uint64_t cbFrameBuffer)
 {
     PPDMDEVINS pDevIns = pVGAState->pDevInsR3;
@@ -5612,7 +5613,8 @@ int vgaR3UnregisterVRAMHandler(PVGASTATE pVGAState)
     AssertRC(rc);
     return rc;
 }
-#endif
+
+#endif /* PPDMDEVINS pDevIns */
 
 /* -=-=-=-=-=- Ring 3: PCI Device -=-=-=-=-=- */
 
