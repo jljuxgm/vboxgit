@@ -1,4 +1,4 @@
-/* $Id: UIMediumEnumerator.h 78723 2019-05-24 12:26:23Z vboxsync $ */
+/* $Id: UIMediumEnumerator.h 78724 2019-05-24 12:28:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumEnumerator class declaration.
  */
@@ -20,8 +20,6 @@
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
-
-//#define VBOX_GUI_WITH_NEW_MEDIA_EVENTS
 
 /* Qt includes: */
 #include <QObject>
