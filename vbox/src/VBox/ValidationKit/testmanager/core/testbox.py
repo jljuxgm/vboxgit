@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testbox.py 84109 2020-04-30 14:44:31Z vboxsync $
+# $Id: testbox.py 84110 2020-04-30 15:04:56Z vboxsync $
 
 """
 Test Manager - TestBox.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84109 $"
+__version__ = "$Revision: 84110 $"
 
 
 # Standard python imports.
@@ -688,7 +688,7 @@ class TestBoxDataEx(TestBoxData):
         # HACK ALERT! idTestBox might not have been validated and converted yet, but we need detect
         #             adding so we can ignore idTestBox being NIL when validating group memberships.
         ## @todo make base.py pass us the ksValidateFor_Xxxx value.
-        fIsAdding = True if self.idTestBox in [ None, -1, '-1', 'None', '' ] else False;
+        fIsAdding = bool(self.idTestBox in [ None, -1, '-1', 'None', '' ])
 
         for iInGrp, oInSchedGroup in enumerate(self.aoInSchedGroups):
             oInSchedGroup = copy.copy(oInSchedGroup);
