@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 79538 2019-07-05 07:21:11Z vboxsync $ */
+/* $Id: HMInternal.h 79624 2019-07-09 04:41:11Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -1122,6 +1122,7 @@ typedef struct HMCPU
     STAMCOUNTER             StatInjectXcpt;
     STAMCOUNTER             StatInjectPendingReflect;
     STAMCOUNTER             StatInjectPendingInterpret;
+    STAMCOUNTER             StatInjectPendingNPF;
 
     STAMCOUNTER             StatExitAll;
     STAMCOUNTER             StatNestedExitAll;
