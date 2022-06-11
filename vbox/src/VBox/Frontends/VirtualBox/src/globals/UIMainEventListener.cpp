@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.cpp 80543 2019-09-02 09:34:46Z vboxsync $ */
+/* $Id: UIMainEventListener.cpp 81592 2019-10-30 16:39:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMainEventListener class implementation.
  */
@@ -22,6 +22,7 @@
 /* GUI includes: */
 #include "UICommon.h"
 #include "UIMainEventListener.h"
+#include "UIMousePointerShapeData.h"
 
 /* COM includes: */
 #include "COMEnums.h"
@@ -344,10 +345,12 @@ STDMETHODIMP UIMainEventListener::HandleEvent(VBoxEventType_T, IEvent *pEvent)
         case KVBoxEventType_OnMousePointerShapeChanged:
         {
             CMousePointerShapeChangedEvent comEventSpecific(pEvent);
-            emit sigMousePointerShapeChange(comEventSpecific.GetVisible(), comEventSpecific.GetAlpha(),
-                                            QPoint(comEventSpecific.GetXhot(), comEventSpecific.GetYhot()),
-                                            QSize(comEventSpecific.GetWidth(), comEventSpecific.GetHeight()),
-                                            comEventSpecific.GetShape());
+            UIMousePointerShapeData shapeData(comEventSpecific.GetVisible(),
+                                              comEventSpecific.GetAlpha(),
+                                              QPoint(comEventSpecific.GetXhot(), comEventSpecific.GetYhot()),
+                                              QSize(comEventSpecific.GetWidth(), comEventSpecific.GetHeight()),
+                                              comEventSpecific.GetShape());
+            emit sigMousePointerShapeChange(shapeData);
             break;
         }
         case KVBoxEventType_OnMouseCapabilityChanged:

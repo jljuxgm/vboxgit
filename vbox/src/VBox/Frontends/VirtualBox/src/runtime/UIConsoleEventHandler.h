@@ -1,4 +1,4 @@
-/* $Id: UIConsoleEventHandler.h 80554 2019-09-02 14:27:53Z vboxsync $ */
+/* $Id: UIConsoleEventHandler.h 81592 2019-10-30 16:39:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConsoleEventHandler class declaration.
  */
@@ -34,6 +34,7 @@
 
 /* Forward declarations: */
 class UIConsoleEventHandlerProxy;
+class UIMousePointerShapeData;
 class UISession;
 
 
@@ -45,8 +46,8 @@ class UIConsoleEventHandler : public QObject
 
 signals:
 
-    /** Notifies about mouse pointer become @a fVisible and his shape changed to @a fAlpha, @a hotCorner, @a size and @a shape. */
-    void sigMousePointerShapeChange(bool fVisible, bool fAlpha, QPoint hotCorner, QSize size, QVector<uint8_t> shape);
+    /** Notifies about mouse pointer @a shapeData change. */
+    void sigMousePointerShapeChange(const UIMousePointerShapeData &shapeData);
     /** Notifies about mouse capability change to @a fSupportsAbsolute, @a fSupportsRelative, @a fSupportsMultiTouch and @a fNeedsHostCursor. */
     void sigMouseCapabilityChange(bool fSupportsAbsolute, bool fSupportsRelative, bool fSupportsMultiTouch, bool fNeedsHostCursor);
     /** Notifies about guest request to change the cursor position to @a uX * @a uY.

@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.h 80543 2019-09-02 09:34:46Z vboxsync $ */
+/* $Id: UIMainEventListener.h 81592 2019-10-30 16:39:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMainEventListener class declaration.
  */
@@ -46,6 +46,7 @@
 class QPoint;
 class QString;
 class UIMainEventListeningThread;
+class UIMousePointerShapeData;
 class CEventListener;
 class CEventSource;
 class CGuestProcessStateChangedEvent;
@@ -129,8 +130,8 @@ signals:
 
     /** @name Console related signals
       * @{ */
-        /** Notifies about mouse pointer become @a fVisible and his shape changed to @a fAlpha, @a hotCorner, @a size and @a shape. */
-        void sigMousePointerShapeChange(bool fVisible, bool fAlpha, QPoint hotCorner, QSize size, QVector<uint8_t> shape);
+        /** Notifies about mouse pointer @a shapeData change. */
+        void sigMousePointerShapeChange(const UIMousePointerShapeData &shapeData);
         /** Notifies about mouse capability change to @a fSupportsAbsolute, @a fSupportsRelative, @a fSupportsMultiTouch and @a fNeedsHostCursor. */
         void sigMouseCapabilityChange(bool fSupportsAbsolute, bool fSupportsRelative, bool fSupportsMultiTouch, bool fNeedsHostCursor);
         /** Notifies about guest request to change the cursor position to @a uX * @a uY.
