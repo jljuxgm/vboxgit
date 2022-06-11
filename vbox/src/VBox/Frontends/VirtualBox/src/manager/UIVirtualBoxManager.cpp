@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 83674 2020-04-10 17:37:18Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 83709 2020-04-15 16:53:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -1952,8 +1952,7 @@ bool UIVirtualBoxManager::isActionEnabled(int iActionIndex, const QList<UIVirtua
         case UIActionIndexST_M_Machine_S_Remove:
         {
             return !isGroupSavingInProgress() &&
-                   isAtLeastOneItemRemovable(items) &&
-                   isItemsLocal(items);
+                   isAtLeastOneItemRemovable(items);
         }
         case UIActionIndexST_M_Machine_S_AddGroup:
         {

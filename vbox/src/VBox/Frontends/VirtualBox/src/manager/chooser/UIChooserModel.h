@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.h 83705 2020-04-15 15:46:18Z vboxsync $ */
+/* $Id: UIChooserModel.h 83709 2020-04-15 16:53:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class declaration.
  */
@@ -30,6 +30,7 @@
 
 /* COM includes: */
 #include "COMEnums.h"
+#include "CCloudMachine.h"
 #include "CMachine.h"
 
 /* Forward declaration: */
@@ -369,6 +370,8 @@ private:
         void removeItems(const QList<UIChooserItem*> &items);
         /** Unregisters a list of local virtual @a machines. */
         void unregisterLocalMachines(const QList<CMachine> &machines);
+        /** Unregisters a list of cloud virtual @a machines. */
+        void unregisterCloudMachines(const QList<CCloudMachine> &machines);
 
         /** Processes drag move @a pEvent. */
         bool processDragMoveEvent(QGraphicsSceneDragDropEvent *pEvent);
