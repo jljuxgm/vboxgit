@@ -1,4 +1,4 @@
-/* $Id: shmem-win.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: shmem-win.cpp 78561 2019-05-17 11:15:02Z vboxsync $ */
 /** @file
  * IPRT - Named shared memory object, Windows Implementation.
  */
@@ -259,6 +259,15 @@ RTDECL(int) RTShMemClose(RTSHMEM hShMem)
         rc = RTErrConvertFromWin32(GetLastError());
 
     return rc;
+}
+
+
+RTDECL(int) RTShMemDelete(const char *pszName)
+{
+    AssertPtrReturn(pszName, VERR_INVALID_POINTER);
+    AssertReturn(*pszName != '\0', VERR_INVALID_PARAMETER);
+
+    return VERR_NOT_SUPPORTED;
 }
 
 

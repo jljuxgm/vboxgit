@@ -1,4 +1,4 @@
-/* $Id: shmem-posix.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: shmem-posix.cpp 78561 2019-05-17 11:15:02Z vboxsync $ */
 /** @file
  * IPRT - Named shared memory object, POSIX Implementation.
  */
@@ -208,6 +208,29 @@ RTDECL(int) RTShMemClose(RTSHMEM hShMem)
     }
     else
         rc = RTErrConvertFromErrno(errno);
+
+    return rc;
+}
+
+
+RTDECL(int) RTShMemDelete(const char *pszName)
+{
+    AssertPtrReturn(pszName, VERR_INVALID_POINTER);
+
+    size_t cchName = strlen(pszName);
+    AssertReturn(cchName, VERR_INVALID_PARAMETER);
+    AssertReturn(cchName < NAME_MAX - 1, VERR_INVALID_PARAMETER); /* account for the / we add later on. */
+    char *psz = NULL;
+
+    int rc = RTStrAllocEx(&psz, cchName + 2); /* '/' + terminator */
+    if (RT_SUCCESS(rc))
+    {
+        psz[0] = '/';
+        memcpy(&psz[1], pszName, cchName + 1);
+        if (shm_unlink(psz))
+            rc = RTErrConvertFromErrno(errno);
+        RTStrFree(psz);
+    }
 
     return rc;
 }
