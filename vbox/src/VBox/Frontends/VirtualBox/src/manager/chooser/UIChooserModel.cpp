@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 83857 2020-04-20 13:54:44Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 83858 2020-04-20 14:13:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -977,16 +977,6 @@ void UIChooserModel::sltCreateNewMachine()
 
         /* Execute wizard: */
         pWizard->exec();
-
-        // WORKAROUND:
-        // Hehey! Now we have to inject created VM nodes and then rebuild tree for the main root node
-        // ourselves cause there is no corresponding event yet. So we are calling actual handler to do that.
-        foreach (const CCloudMachine &comMachine, pWizard->machines())
-            sltCloudMachineRegistered(pWizard->source() /* provider name */,
-                                      pWizard->profileName() /* profile name */,
-                                      comMachine.GetId() /* machine ID */,
-                                      true /* registered? */);
-
         delete pWizard;
     }
 

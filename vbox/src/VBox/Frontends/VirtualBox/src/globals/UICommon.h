@@ -1,4 +1,4 @@
-/* $Id: UICommon.h 83760 2020-04-17 15:01:00Z vboxsync $ */
+/* $Id: UICommon.h 83858 2020-04-20 14:13:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class declaration.
  */
@@ -83,6 +83,18 @@ signals:
 
         /** Notifies listeners about the VBoxSVC availability change. */
         void sigVBoxSVCAvailabilityChange();
+    /** @} */
+
+    /** @name Temporary: Cloud Virtual Machine stuff.
+     * @{ */
+        /** Notifies listeners about cloud VM was (un)registered.
+          * @note   This is to be replaced by corresponding Main API event later.
+          * @param  strProviderShortName  Brings provider short name.
+          * @param  strProfileName        Brings profile name.
+          * @param  uId                   Brings cloud VM id.
+          * @param  fRegistered           True is machine was registered, false otherwise. */
+        void sigCloudMachineRegistered(const QString &strProviderShortName, const QString &strProfileName,
+                                       const QUuid &uId, const bool fRegistered);
     /** @} */
 
     /** @name COM: Virtual Media stuff.
@@ -480,6 +492,18 @@ public:
           * if yes, new session of required type will be opened and machine will be updated,
           * otherwise, no session will be created and machine will be left unchanged. */
         CSession tryToOpenSessionFor(CMachine &comMachine);
+    /** @} */
+
+    /** @name Temporary: Cloud Virtual Machine stuff.
+     * @{ */
+        /** Notifies listeners about cloud VM was (un)registered.
+          * @note   This is to be replaced by corresponding Main API event later.
+          * @param  strProviderShortName  Brings provider short name.
+          * @param  strProfileName        Brings profile name.
+          * @param  uId                   Brings cloud VM id.
+          * @param  fRegistered           True is machine was registered, false otherwise. */
+        void notifyCloudMachineRegistered(const QString &strProviderShortName, const QString &strProfileName,
+                                          const QUuid &uId, const bool fRegistered);
     /** @} */
 
     /** @name COM: Virtual Media stuff.

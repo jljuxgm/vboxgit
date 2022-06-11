@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 83760 2020-04-17 15:01:00Z vboxsync $ */
+/* $Id: UICommon.cpp 83858 2020-04-20 14:13:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -2567,6 +2567,12 @@ CSession UICommon::tryToOpenSessionFor(CMachine &comMachine)
 
     /* Return session: */
     return comSession;
+}
+
+void UICommon::notifyCloudMachineRegistered(const QString &strProviderShortName, const QString &strProfileName,
+                                            const QUuid &uId, const bool fRegistered)
+{
+    emit sigCloudMachineRegistered(strProviderShortName, strProfileName, uId, fRegistered);
 }
 
 void UICommon::enumerateMedia(const CMediumVector &comMedia /* = CMediumVector() */)
