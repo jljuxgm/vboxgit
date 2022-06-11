@@ -1,4 +1,4 @@
-/* $Id: pdmpcidevint.h 81035 2019-09-26 20:22:35Z vboxsync $ */
+/* $Id: pdmpcidevint.h 81375 2019-10-19 13:57:55Z vboxsync $ */
 /** @file
  * DevPCI - PDM PCI Internal header - Only for hiding bits of PDMPCIDEV.
  */
@@ -48,16 +48,28 @@
  */
 typedef struct PCIIOREGION
 {
-    /** Current PCI mapping address, 0xffffffff means not mapped. */
+    /** Current PCI mapping address, INVALID_PCI_ADDRESS (0xffffffff) means not mapped. */
     uint64_t                        addr;
+    /** The region size.  Power of 2. */
     uint64_t                        size;
-    uint8_t                         type; /* PCIADDRESSSPACE */
-    uint8_t                         padding[HC_ARCH_BITS == 32 ? 3 : 7];
-    /** Callback called when the region is mapped. */
-    R3PTRTYPE(PFNPCIIOREGIONMAP)    map_func;
-} PCIIOREGION, PCIIORegion;
-/** Pointer to PCI I/O region. */
+    /** Handle or UINT64_MAX (see PDMPCIDEV_IORGN_F_HANDLE_MASK in fFlags). */
+    uint64_t                        hHandle;
+    /** PDMPCIDEV_IORGN_F_XXXX. */
+    uint32_t                        fFlags;
+    /** PCIADDRESSSPACE */
+    uint8_t                         type;
+    uint8_t                         abPadding0[3];
+    /** Callback called when the region is mapped or unmapped (new style devs). */
+    R3PTRTYPE(PFNPCIIOREGIONMAP)    pfnMap;
+#if R3_ARCH_BITS == 32
+    uint32_t                        u32Padding2;
+#endif
+} PCIIOREGION;
+AssertCompileSize(PCIIOREGION, 5*8);
+/** Pointer to a PCI I/O region. */
 typedef PCIIOREGION *PPCIIOREGION;
+/** Pointer to a const PCI I/O region. */
+typedef PCIIOREGION const *PCPCIIOREGION;
 
 /**
  * Callback function for reading from the PCI configuration space.
@@ -199,7 +211,7 @@ typedef struct PDMPCIDEVINT
     /** @}  */
 } PDMPCIDEVINT;
 AssertCompileMemberAlignment(PDMPCIDEVINT, aIORegions, 8);
-AssertCompileSize(PDMPCIDEVINT, HC_ARCH_BITS == 32 ? 0x60 : 0x140);
+AssertCompileSize(PDMPCIDEVINT, HC_ARCH_BITS == 32 ? 0x98 : 0x178);
 
 /** Indicate that PDMPCIDEV::Int.s can be declared. */
 #define PDMPCIDEVINT_DECLARED

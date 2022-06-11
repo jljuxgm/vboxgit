@@ -1,4 +1,4 @@
-/* $Id: DevPciInternal.h 81034 2019-09-26 20:04:13Z vboxsync $ */
+/* $Id: DevPciInternal.h 81375 2019-10-19 13:57:55Z vboxsync $ */
 /** @file
  * DevPCI - Common Internal Header.
  */
@@ -209,8 +209,9 @@ DECLCALLBACK(int)  devpciR3CommonRegisterDevice(PPDMDEVINS pDevIns, PPDMPCIDEV p
                                                 uint8_t uPciDevNo, uint8_t uPciFunNo, const char *pszName);
 DECLCALLBACK(int)  devpcibridgeR3CommonRegisterDevice(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDev, uint32_t fFlags,
                                                       uint8_t uPciDevNo, uint8_t uPciFunNo, const char *pszName);
-DECLCALLBACK(int)  devpciR3CommonIORegionRegister(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDev, int iRegion, RTGCPHYS cbRegion,
-                                                  PCIADDRESSSPACE enmType, PFNPCIIOREGIONMAP pfnCallback);
+DECLCALLBACK(int)  devpciR3CommonIORegionRegister(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDev, uint32_t iRegion,
+                                                  RTGCPHYS cbRegion, PCIADDRESSSPACE enmType, uint32_t fFlags,
+                                                  uint64_t hHandle, PFNPCIIOREGIONMAP pfnCallback);
 DECLCALLBACK(void) devpciR3CommonInterceptConfigAccesses(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDev,
                                                          PFNPCICONFIGREAD pfnRead, PFNPCICONFIGWRITE pfnWrite);
 DECLCALLBACK(VBOXSTRICTRC) devpciR3CommonConfigRead(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDev,
