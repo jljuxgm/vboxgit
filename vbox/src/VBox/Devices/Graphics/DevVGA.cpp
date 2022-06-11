@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 83284 2020-03-13 13:18:14Z vboxsync $ */
+/* $Id: DevVGA.cpp 83648 2020-04-09 13:09:32Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -5642,7 +5642,6 @@ static DECLCALLBACK(int) vgaR3PciIORegionVRamMapUnmap(PPDMDEVINS pDevIns, PPDMPC
         if (RT_SUCCESS(rc))
         {
 # ifdef VBOX_WITH_VMSVGA
-            Assert(!pThis->svga.fEnabled || !pThis->svga.fVRAMTracking);
             if (    !pThis->svga.fEnabled
                 ||  (   pThis->svga.fEnabled
                      && pThis->svga.fVRAMTracking
@@ -5670,7 +5669,6 @@ static DECLCALLBACK(int) vgaR3PciIORegionVRamMapUnmap(PPDMDEVINS pDevIns, PPDMPC
          */
         Assert(pThis->GCPhysVRAM);
 # ifdef VBOX_WITH_VMSVGA
-        Assert(!pThis->svga.fEnabled || !pThis->svga.fVRAMTracking);
         if (    !pThis->svga.fEnabled
             ||  (   pThis->svga.fEnabled
                  && pThis->svga.fVRAMTracking
