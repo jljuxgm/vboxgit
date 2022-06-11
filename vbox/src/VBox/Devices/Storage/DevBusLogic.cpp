@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 81804 2019-11-12 14:43:17Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 81805 2019-11-12 14:44:55Z vboxsync $ */
 /** @file
  * VBox storage devices - BusLogic SCSI host adapter BT-958.
  *
@@ -3418,26 +3418,6 @@ static int buslogicR3ProcessMailboxNext(PBUSLOGIC pBusLogic)
         buslogicR3OutgoingMailboxAdvance(pBusLogic);
 
     return rc;
-}
-
-/**
- * Transmit queue consumer
- * Queue a new async task.
- *
- * @returns Success indicator.
- *          If false the item will not be removed and the flushing will stop.
- * @param   pDevIns     The device instance.
- * @param   pItem       The item to consume. Upon return this item will be freed.
- */
-static DECLCALLBACK(bool) buslogicR3NotifyQueueConsumer(PPDMDEVINS pDevIns, PPDMQUEUEITEMCORE pItem)
-{
-    RT_NOREF(pItem);
-    PBUSLOGIC pThis = PDMDEVINS_2_DATA(pDevIns, PBUSLOGIC);
-
-    int rc = PDMDevHlpSUPSemEventSignal(pDevIns, pThis->hEvtProcess);
-    AssertRC(rc);
-
-    return true;
 }
 
 /** @callback_method_impl{FNSSMDEVLIVEEXEC}  */
