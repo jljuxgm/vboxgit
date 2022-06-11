@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialogSpecific.h 83939 2020-04-23 10:15:07Z vboxsync $ */
+/* $Id: UISettingsDialogSpecific.h 83960 2020-04-24 09:22:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISettingsDialogSpecific class declaration.
  */
@@ -20,6 +20,9 @@
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
+
+/* Qt includes: */
+#include <QPointer>
 
 /* GUI includes: */
 #include "UISettingsDialog.h"
@@ -73,6 +76,9 @@ private:
     /** Holds the name of control to be focused. */
     QString  m_strControl;
 };
+
+/** Safe pointer to cloud machine settings dialog. */
+typedef QPointer<UISettingsDialogGlobal> UISafePointerSettingsDialogGlobal;
 
 
 /** UISettingsDialog extension encapsulating all the specific functionality of the Machine Settings. */
@@ -165,6 +171,9 @@ private:
     /** Holds whether we have request to reset first run flag. */
     bool  m_fResetFirstRunFlag;
 };
+
+/** Safe pointer to cloud machine settings dialog. */
+typedef QPointer<UISettingsDialogMachine> UISafePointerSettingsDialogMachine;
 
 
 #endif /* !FEQT_INCLUDED_SRC_settings_UISettingsDialogSpecific_h */
