@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 83674 2020-04-10 17:37:18Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 83676 2020-04-10 17:50:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -937,6 +937,29 @@ void UIChooserModel::sltCreateNewMachine()
 
         /* Execute wizard: */
         pWizard->exec();
+
+        // WORKAROUND:
+        // Hehey! Now we have to inject created VM nodes and then rebuild tree for the main root node ourselves
+        // cause there is no corresponding event yet. Later this to be done in corresponding event handler instead.
+        foreach (const CCloudMachine &comMachine, pWizard->machines())
+        {
+            // Create new node:
+            UIChooserNodeMachine *pNode = new UIChooserNodeMachine(pGroup->node(),
+                                                                   false /* favorite */,
+                                                                   pGroup->node()->nodes().size() /* position */,
+                                                                   comMachine);
+            // Request async node update:
+            pNode->cache()->toCloud()->updateInfoAsync(false /* delayed? */);
+        }
+        // Remember first selected item definition:
+        const QString strDefinition = firstSelectedItem()->definition();
+        // Rebuild tree for main root:
+        buildTreeForMainRoot();
+        updateNavigationItemList();
+        updateLayout();
+        // Restore selection:
+        setSelectedItem(strDefinition);
+
         delete pWizard;
     }
 
