@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.cpp 83178 2020-02-28 10:59:44Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.cpp 83198 2020-03-04 10:58:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class implementation.
  */
@@ -483,9 +483,9 @@ void UIChooserAbstractModel::loadTree()
                                                                                                          pProfileNode);
                                     if (pTask)
                                     {
-                                        connect(pTask, &UITask::sigComplete,
+                                        connect(uiCommon().threadPoolCloud(), &UIThreadPool::sigTaskComplete,
                                                 this, &UIChooserAbstractModel::sltHandleCloudAcquireInstancesTaskComplete);
-                                        uiCommon().threadPool()->enqueueTask(pTask);
+                                        uiCommon().threadPoolCloud()->enqueueTask(pTask);
                                     }
                                 }
                             }

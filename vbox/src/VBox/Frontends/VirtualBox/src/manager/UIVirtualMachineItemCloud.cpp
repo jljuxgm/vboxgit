@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItemCloud.cpp 83163 2020-02-26 14:56:44Z vboxsync $ */
+/* $Id: UIVirtualMachineItemCloud.cpp 83198 2020-03-04 10:58:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItemCloud class implementation.
  */
@@ -286,9 +286,9 @@ void UIVirtualMachineItemCloud::sltCreateGetCloudInstanceInfoTask()
     if (!m_pTask)
     {
         m_pTask = new UITaskCloudGetInstanceInfo(m_guiCloudMachine);
-        connect(m_pTask, &UITask::sigComplete,
+        connect(uiCommon().threadPoolCloud(), &UIThreadPool::sigTaskComplete,
                 this, &UIVirtualMachineItemCloud::sltHandleGetCloudInstanceInfoDone);
-        uiCommon().threadPool()->enqueueTask(m_pTask);
+        uiCommon().threadPoolCloud()->enqueueTask(m_pTask);
     }
 }
 
