@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 82975 2020-02-04 12:35:27Z vboxsync $ */
+/* $Id: GMMR0.cpp 82976 2020-02-04 12:36:10Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -536,7 +536,8 @@ typedef struct GMM
     /** Sharable modules (count of nodes in pGlobalSharedModuleTree). */
     uint32_t            cShareableModules;
 
-    /** The chunk list.  For simplifying the cleanup process. */
+    /** The chunk list.  For simplifying the cleanup process and avoid tree
+     * traversal. */
     RTLISTANCHOR        ChunkList;
 
     /** The maximum number of pages we're allowed to allocate.
