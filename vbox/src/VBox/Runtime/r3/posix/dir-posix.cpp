@@ -1,4 +1,4 @@
-/* $Id: dir-posix.cpp 79467 2019-07-02 15:14:30Z vboxsync $ */
+/* $Id: dir-posix.cpp 79468 2019-07-02 15:17:18Z vboxsync $ */
 /** @file
  * IPRT - Directory manipulation, POSIX.
  */
@@ -184,7 +184,7 @@ RTDECL(int) RTDirRemove(const char *pszPath)
                 size_t      cch     = strlen(pszNativePath);
                 if (cch > 2 && pszNativePath[cch - 1] == '/')
                 {
-                    pszStat = pszFree = RTMemTmpAlloc(cch);
+                    pszStat = pszFree = (char *)RTMemTmpAlloc(cch);
                     memcpy(pszFree, pszNativePath, cch);
                     do
                         pszFree[--cch] = '\0';
