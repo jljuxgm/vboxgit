@@ -1,4 +1,4 @@
-/* $Id: IOMInternal.h 80641 2019-09-06 20:09:16Z vboxsync $ */
+/* $Id: IOMInternal.h 80679 2019-09-09 18:26:59Z vboxsync $ */
 /** @file
  * IOM - Internal header file.
  */
@@ -204,6 +204,8 @@ typedef struct IOMIOPORTENTRYR3
     R3PTRTYPE(PFNIOMIOPORTINSTRING)     pfnInStrCallback;
     /** Description / Name. For easing debugging. */
     R3PTRTYPE(const char *)             pszDesc;
+    /** Extended port description table, optional. */
+    R3PTRTYPE(PCIOMIOPORTDESC)          paExtDescs;
     /** PCI device the registration is associated with. */
     R3PTRTYPE(PPDMPCIDEV)               pPciDev;
     /** The PCI device region (high 16-bit word) and subregion (low word),

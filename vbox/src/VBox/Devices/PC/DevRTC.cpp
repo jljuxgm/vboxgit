@@ -1,4 +1,4 @@
-/* $Id: DevRTC.cpp 80672 2019-09-09 14:00:54Z vboxsync $ */
+/* $Id: DevRTC.cpp 80679 2019-09-09 18:26:59Z vboxsync $ */
 /** @file
  * Motorola MC146818 RTC/CMOS Device with PIIX4 extensions.
  */
@@ -1203,8 +1203,16 @@ static DECLCALLBACK(int)  rtcConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMN
     /*
      * Register I/O ports.
      */
+    static const IOMIOPORTDESC g_aIoPortDescs[] =
+    {
+        { NULL, "ADDR - CMOS Bank #1", NULL, NULL },
+        { "DATA - CMOS Bank #1", "DATA - CMOS Bank #1", NULL, NULL },
+        { NULL, "ADDR - CMOS Bank #2", NULL, NULL },
+        { "DATA - CMOS Bank #2", "DATA - CMOS Bank #2", NULL, NULL },
+        { NULL, NULL, NULL, NULL }
+    };
     rc = PDMDevHlpIoPortCreateAndMap(pDevIns, pThis->IOPortBase, 4, rtcIOPortWrite, rtcIOPortRead,
-                                     "MC146818 RTC/CMOS", &pThis->hIoPorts);
+                                     "MC146818 RTC/CMOS", g_aIoPortDescs, &pThis->hIoPorts);
     AssertRCReturn(rc, rc);
 
     /*
