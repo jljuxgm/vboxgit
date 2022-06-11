@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageBasic1.h 84277 2020-05-12 17:51:16Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageBasic1.h 84283 2020-05-13 11:38:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageBasic1 class declaration.
  */
@@ -119,15 +119,11 @@ protected:
     /** Holds the Cloud Profile object reference. */
     CCloudProfile          m_comCloudProfile;
 
-    /** Holds the location layout instance. */
-    QGridLayout *m_pLocationLayout;
     /** Holds the location type label instance. */
     QLabel      *m_pLocationLabel;
     /** Holds the location type combo-box instance. */
     QIComboBox  *m_pLocationComboBox;
 
-    /** Holds the cloud container layout instance. */
-    QGridLayout  *m_pCloudContainerLayout;
     /** Holds the account label instance. */
     QLabel       *m_pAccountLabel;
     /** Holds the account combo-box instance. */
@@ -189,8 +185,12 @@ private:
 
     /** Holds the main label instance. */
     QIRichTextLabel *m_pLabelMain;
+    /** Holds the location layout instance. */
+    QGridLayout     *m_pLocationLayout;
     /** Holds the description label instance. */
     QIRichTextLabel *m_pLabelDescription;
+    /** Holds the options layout instance. */
+    QGridLayout     *m_pOptionsLayout;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_wizards_newcloudvm_UIWizardNewCloudVMPageBasic1_h */
