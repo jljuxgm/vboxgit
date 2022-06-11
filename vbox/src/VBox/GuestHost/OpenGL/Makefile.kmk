@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 78408 2019-05-06 21:31:01Z vboxsync $
+# $Id: Makefile.kmk 78424 2019-05-07 10:04:23Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox Guest/Host OpenGL part
 #
@@ -44,10 +44,6 @@ endif
 # VBoxOGLcrutil
 #
 VBoxOGLcrutil_TEMPLATE      = VBOXCROGLR3GUESTLIB
-if defined(VBOX_SIGNING_MODE) && defined(VBOX_WITH_WDDM)
- VBoxOGLcrutil_INSTTYPE.win = none
- VBoxOGLcrutil_DEBUG_INSTTYPE.win = both
-endif
 VBoxOGLcrutil_SDKS.win      = ReorderCompilerIncs $(VBOX_WINPSDK) $(VBOX_WINDDK)
 VBoxOGLcrutil_INTERMEDIATES = $(VBOX_PATH_CROGL_GENFILES)/cr_opcodes.h
 VBoxOGLcrutil_INCS += \
