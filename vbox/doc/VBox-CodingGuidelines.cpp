@@ -1,4 +1,4 @@
-/* $Id: VBox-CodingGuidelines.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBox-CodingGuidelines.cpp 78746 2019-05-25 15:48:37Z vboxsync $ */
 /** @file
  * VBox - Coding Guidelines.
  */
@@ -166,6 +166,9 @@
  *   <li> The term 'last' is inclusive, whereas the term 'end' is exclusive.
  *
  *   <li> Go through all of this: https://www.slideshare.net/olvemaudal/deep-c/
+ *
+ *   <li> Avoid throwing exceptions, always prefer returning statuses.
+ *        Crappy exception handling is rewared by a glass of water in the face.
  *
  * </ul>
  *
