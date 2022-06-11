@@ -1,4 +1,4 @@
-/* $Id: DhcpMessage.cpp 79818 2019-07-16 19:00:06Z vboxsync $ */
+/* $Id: DhcpMessage.cpp 79865 2019-07-18 20:31:15Z vboxsync $ */
 /** @file
  * DHCP Message and its de/serialization.
  */
@@ -399,7 +399,7 @@ int DhcpServerMessage::encode(octets_t &data)
 
     for (optmap_t::const_iterator it = m_optmap.begin(); it != m_optmap.end(); ++it)
     {
-        LogRel3(("encoding option %d\n", it->first));
+        LogRel3(("encoding option %d (%s)\n", it->first, DhcpOption::name(it->first)));
         DhcpOption &opt = *it->second;
         data << opt;
     }

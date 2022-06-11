@@ -1,4 +1,4 @@
-/* $Id: DhcpOptions.h 79845 2019-07-17 21:12:50Z vboxsync $ */
+/* $Id: DhcpOptions.h 79865 2019-07-18 20:31:15Z vboxsync $ */
 /** @file
  * DHCP server - DHCP options
  */
@@ -61,6 +61,7 @@ public:
 
 public:
     static DhcpOption *parse(uint8_t aOptCode, int aEnc, const char *pcszValue, int *prc = NULL);
+    static const char *name(uint8_t bOptcode);
 
 public:
     uint8_t optcode() const RT_NOEXCEPT { return m_OptCode; }
