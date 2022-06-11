@@ -1,4 +1,4 @@
-/* $Id: DevLsiLogicSCSI.h 81744 2019-11-07 19:14:18Z vboxsync $ */
+/* $Id: DevLsiLogicSCSI.h 81751 2019-11-08 15:01:34Z vboxsync $ */
 /** @file
  * VBox storage devices: LsiLogic LSI53c1030 SCSI controller - Defines and structures.
  */
@@ -31,8 +31,13 @@
 #define LSILOGIC_BIOS_IO_PORT       0x434
 #define LSILOGIC_SAS_BIOS_IO_PORT   0x438
 
-#define LSILOGICSCSI_REQUEST_QUEUE_DEPTH_DEFAULT 256
-#define LSILOGICSCSI_REPLY_QUEUE_DEPTH_DEFAULT   256
+#define LSILOGICSCSI_REQUEST_QUEUE_DEPTH_MIN        8       /**< (bird just picked this out thin air) */
+#define LSILOGICSCSI_REQUEST_QUEUE_DEPTH_MAX        1024    /**< (bird just picked this out thin air) */
+#define LSILOGICSCSI_REQUEST_QUEUE_DEPTH_DEFAULT    256
+
+#define LSILOGICSCSI_REPLY_QUEUE_DEPTH_MIN          8       /**< (bird just picked this out thin air) */
+#define LSILOGICSCSI_REPLY_QUEUE_DEPTH_MAX          1024    /**< (bird just picked this out thin air) */
+#define LSILOGICSCSI_REPLY_QUEUE_DEPTH_DEFAULT      256
 
 #define LSILOGICSCSI_MAXIMUM_CHAIN_DEPTH 3
 
