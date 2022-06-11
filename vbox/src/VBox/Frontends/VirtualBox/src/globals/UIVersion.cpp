@@ -1,4 +1,4 @@
-/* $Id: UIVersion.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIVersion.cpp 78655 2019-05-22 10:55:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVersion class implementation.
  */
@@ -115,7 +115,7 @@ UIVersion UIVersion::effectiveReleasedVersion() const
             version.setZ(version.z() - 1);
         /* If this version being developed on trunk (we use hardcoded one for now): */
         else
-            version.setZ(6); /* Current .z for 5.2.z */
+            version.setZ(8); /* Current .z for 6.0.z */
     }
 
     /* Finally, we just return that we have:  */
