@@ -1,4 +1,4 @@
-/* $Id: IOMAllMmioNew.cpp 81333 2019-10-17 23:49:39Z vboxsync $ */
+/* $Id: IOMAllMmioNew.cpp 81334 2019-10-18 00:02:26Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context, MMIO & String I/O.
  */
@@ -677,7 +677,7 @@ DECLINLINE(VBOXSTRICTRC) iomMmioCommonPfHandlerNew(PVMCC pVM, PVMCPUCC pVCpu, ui
     }
 # endif
 #else  /* IN_RING3 */
-    RT_NOREF(pRegEntry);
+    RT_NOREF(pVM, pRegEntry);
 #endif /* IN_RING3 */
 
     STAM_PROFILE_STOP(&pVM->iom.s.StatRZMMIOHandler, a);
