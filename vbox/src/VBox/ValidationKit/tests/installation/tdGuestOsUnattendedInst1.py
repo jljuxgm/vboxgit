@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdGuestOsUnattendedInst1.py 79914 2019-07-21 21:14:38Z vboxsync $
+# $Id: tdGuestOsUnattendedInst1.py 79916 2019-07-22 09:36:32Z vboxsync $
 
 """
 VirtualBox Validation Kit - Guest OS unattended installation tests.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79914 $"
+__version__ = "$Revision: 79916 $"
 
 
 # Standard Python imports.
@@ -418,7 +418,10 @@ class tdGuestOsInstTest1(vbox.TestDriver):
             UnattendedVm(oSet, 'tst-ubuntu-16.04.6-64', 'Ubuntu_64', '6.0/uaisos/ubuntu-16.04.6-desktop-amd64.iso'), # ~5GiB
             UnattendedVm(oSet, 'tst-ubuntu-16.04.6-32', 'Ubuntu',    '6.0/uaisos/ubuntu-16.04.6-desktop-i386.iso'),  # ~4.5GiB
             UnattendedVm(oSet, 'tst-ubuntu-16.10-64', 'Ubuntu_64', '6.0/uaisos/ubuntu-16.10-desktop-amd64.iso'),     # ~5.5GiB
+            ## @todo 16.10-32 doesn't ask for an IP, so it always fails.
+            #UnattendedVm(oSet, 'tst-ubuntu-16.10-32', 'Ubuntu',    '6.0/uaisos/ubuntu-16.10-desktop-i386.iso'),      # ~5.5GiB?
             UnattendedVm(oSet, 'tst-ubuntu-17.04-64', 'Ubuntu_64', '6.0/uaisos/ubuntu-17.04-desktop-amd64.iso'),     # ~5GiB
+            UnattendedVm(oSet, 'tst-ubuntu-17.04-32', 'Ubuntu',    '6.0/uaisos/ubuntu-17.04-desktop-i386.iso'),      # ~4.5GiB
             ## @todo ubuntu 17.10, 18.04 & 18.10 do not work.  They misses all the the build tools (make, gcc, perl, ++)
             ##       and has signed kmods:
             UnattendedVm(oSet, 'tst-ubuntu-17.10-64', 'Ubuntu_64', '6.0/uaisos/ubuntu-17.10-desktop-amd64.iso', # >4Gib
