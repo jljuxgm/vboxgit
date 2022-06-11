@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 83638 $"
+__version__ = "$Revision: 83639 $"
 
 # Standard Python imports.
 import errno
@@ -1550,7 +1550,7 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
                 sFileVBoxServiceHst = self.oDebug.sImgPath;
                 sFileVBoxServiceGst = "/tmp/VBoxService-txs";
                 oTxsSession.syncUploadFile(sFileVBoxServiceHst, sFileVBoxServiceGst);
-                oTxsSession.syncExec("/bin/chmod", ("/bin/chmod", "755", sFileVBoxServiceGst) ); # syncChMod not implemented yet.
+                oTxsSession.syncChMod(sFileVBoxServiceGst, 0o755);
                 reporter.log('Executing VBoxService (in background)...');
                 oTxsSession.syncExec(sFileVBoxServiceGst, (sFileVBoxServiceGst, "-vvvv", "--only-control", \
                                                            "--logfile", "/tmp/VBoxService-txs.log") );
