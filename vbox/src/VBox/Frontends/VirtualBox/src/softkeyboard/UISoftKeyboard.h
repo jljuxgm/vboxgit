@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboard.h 78921 2019-06-03 08:36:10Z vboxsync $ */
+/* $Id: UISoftKeyboard.h 78953 2019-06-04 08:10:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class declaration.
  */
@@ -54,7 +54,7 @@ public:
 
 protected:
 
-    virtual void retranslateUi();
+    virtual void retranslateUi() /* override */;
 
 private slots:
 
@@ -75,13 +75,6 @@ private:
     QHBoxLayout   *m_pMainLayout;
     UISoftKeyboardWidget       *m_pContainerWidget;
     QString       m_strMachineName;
-
-    int m_iXSpacing;
-    int m_iYSpacing;
-    int m_iLeftMargin;
-    int m_iTopMargin;
-    int m_iRightMargin;
-    int m_iBottomMargin;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_softkeyboard_UISoftKeyboard_h */
