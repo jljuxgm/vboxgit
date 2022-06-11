@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 79804 2019-07-16 09:55:32Z vboxsync $ */
+/* $Id: CPUMR3CpuId.cpp 79805 2019-07-16 09:57:33Z vboxsync $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -4561,7 +4561,7 @@ int cpumR3InitCpuIdAndMsrs(PVM pVM, PCCPUMMSRS pHostMsrs)
 
         /*
          * Some more configuration that we're applying at the end of everything
-         * via the CPUMSetGuestCpuIdFeature API.
+         * via the CPUMR3SetGuestCpuIdFeature API.
          */
 
         /* Check if PAE was explicitely enabled by the user. */
