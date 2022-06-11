@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGroup.cpp 77934 2019-03-28 12:42:50Z vboxsync $ */
+/* $Id: UIChooserItemGroup.cpp 79265 2019-06-21 09:30:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGroup class implementation.
  */
@@ -998,6 +998,8 @@ void UIChooserItemGroup::sltGroupToggleFinish(bool fToggled)
     model()->updateLayout();
     /* Update toggle-button tool-tip: */
     updateToggleButtonToolTip();
+    /* Repaint finally: */
+    update();
 
     /* Toggle finished: */
     emit sigToggleFinished();
