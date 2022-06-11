@@ -1,4 +1,4 @@
-/* $Id: RTFTPServer.cpp 82665 2020-01-08 09:32:19Z vboxsync $ */
+/* $Id: RTFTPServer.cpp 82666 2020-01-08 10:02:03Z vboxsync $ */
 /** @file
  * IPRT - Utility for running a (simple) FTP server.
  */
@@ -47,6 +47,9 @@
 #include <iprt/thread.h>
 #include <iprt/vfs.h>
 
+#ifdef RT_OS_WINDOWS
+# include <iprt/win/windows.h>
+#endif
 
 /*********************************************************************************************************************************
 *   Global Variables                                                                                                             *
@@ -211,7 +214,7 @@ int main(int argc, char **argv)
                 return RTEXITCODE_SUCCESS;
 
             case 'V':
-                RTPrintf("$Revision: 82665 $\n");
+                RTPrintf("$Revision: 82666 $\n");
                 return RTEXITCODE_SUCCESS;
 
             default:
