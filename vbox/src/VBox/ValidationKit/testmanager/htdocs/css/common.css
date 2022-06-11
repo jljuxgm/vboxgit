@@ -1,4 +1,4 @@
-﻿/* $Id: common.css 82968 2020-02-04 10:35:17Z vboxsync $ */
+﻿/* $Id: common.css 83360 2020-03-21 13:43:17Z vboxsync $ */
 /** @file
  * Test Manager - Common CSS.
  */
@@ -527,6 +527,24 @@ ul.sf-checkbox-expandable {
 #top-menu .current_page_item a {
 }
 
+/*
+ * Time navigation forms on a line with some padding between them.
+ */
+.tmtimenav form {
+    display: inline-block;
+}
+
+.tmtimenav form + form {
+    padding-left: 0.6em;
+}
+
+/*
+ * Items per page and next.
+ */
+.tmnextanditemsperpage form {
+    display: inline-block;
+    padding-left: 1em;
+}
 
 /*
  * Error message (typically a paragraph in the body).

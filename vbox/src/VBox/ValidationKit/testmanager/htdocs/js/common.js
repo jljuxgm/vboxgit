@@ -1,4 +1,4 @@
-/* $Id: common.js 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: common.js 83360 2020-03-21 13:43:17Z vboxsync $ */
 /** @file
  * Common JavaScript functions
  */
@@ -479,6 +479,22 @@ function clearForm(sIdForm)
     }
 
     return true;
+}
+
+
+/**
+ * Used by the time navigation to update the hidden efficient date field when
+ * either of the date or time fields changes.
+ *
+ * @param oForm     The form.
+ */
+function timeNavigationUpdateHiddenEffDate(oForm, sIdSuffix)
+{
+    var sDate = document.getElementById('EffDate' + sIdSuffix).value;
+    var sTime = document.getElementById('EffTime' + sIdSuffix).value;
+
+    var oField = document.getElementById('EffDateTime' + sIdSuffix);
+    oField.value =  sDate + 'T' + sTime + '.00Z';
 }
 
 

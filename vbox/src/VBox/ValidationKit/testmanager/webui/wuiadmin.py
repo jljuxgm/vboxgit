@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuiadmin.py 83341 2020-03-19 20:40:17Z vboxsync $
+# $Id: wuiadmin.py 83360 2020-03-21 13:43:17Z vboxsync $
 
 """
 Test Manager Core - WUI - Admin Main page.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 83341 $"
+__version__ = "$Revision: 83360 $"
 
 
 # Standard python imports.
@@ -427,7 +427,7 @@ class WuiAdmin(WuiDispatcherBase):
         from testmanager.webui.wuiadminsystemchangelog import WuiAdminSystemChangelogList;
 
         tsEffective     = self.getEffectiveDateParam();
-        cItemsPerPage   = self.getIntParam(self.ksParamItemsPerPage, iMin = 2, iMax =   9999, iDefault = 300);
+        cItemsPerPage   = self.getIntParam(self.ksParamItemsPerPage, iMin = 2, iMax =   9999, iDefault = 384);
         iPage           = self.getIntParam(self.ksParamPageNo,       iMin = 0, iMax = 999999, iDefault = 0);
         cDaysBack       = self.getIntParam(self.ksParamDaysBack,     iMin = 1, iMax = 366,    iDefault = 14);
         self._checkForUnknownParameters();

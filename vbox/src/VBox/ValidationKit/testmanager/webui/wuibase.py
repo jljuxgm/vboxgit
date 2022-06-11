@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuibase.py 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: wuibase.py 83360 2020-03-21 13:43:17Z vboxsync $
 
 """
 Test Manager Web-UI - Base Classes.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 82968 $"
+__version__ = "$Revision: 83360 $"
 
 
 # Standard python imports.
@@ -818,7 +818,7 @@ class WuiDispatcherBase(object):
         oListContentType is a child of WuiListContentBase.
         """
         tsEffective     = self.getEffectiveDateParam();
-        cItemsPerPage   = self.getIntParam(self.ksParamItemsPerPage, iMin = 2, iMax =   9999, iDefault = 300);
+        cItemsPerPage   = self.getIntParam(self.ksParamItemsPerPage, iMin = 2, iMax =   9999, iDefault = 384);
         iPage           = self.getIntParam(self.ksParamPageNo,       iMin = 0, iMax = 999999, iDefault = 0);
         aiSortColumnsDup = self.getListOfIntParams(self.ksParamSortColumns,
                                                    iMin = -getattr(oLogicType, 'kcMaxSortColumns', 0) + 1,
