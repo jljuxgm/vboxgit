@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItemCloud.cpp 84196 2020-05-08 04:02:37Z vboxsync $ */
+/* $Id: UIVirtualMachineItemCloud.cpp 84201 2020-05-08 10:30:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItemCloud class implementation.
  */
@@ -128,10 +128,7 @@ void UIVirtualMachineItemCloud::recache()
 
             /* Determine whether VM is accessible: */
             m_fAccessible = m_comCloudMachine.GetAccessible();
-            CVirtualBoxErrorInfo comInfo = m_comCloudMachine.GetAccessError();
-            if (!m_fAccessible && comInfo.isNull())
-                LogRel(("UIVirtualMachineItemCloud::recache: Error info is NULL for inaccessible VM.\n"));
-            m_strAccessError = !m_fAccessible && !comInfo.isNull() ? UIErrorString::formatErrorInfo(comInfo) : QString();
+            m_strAccessError = !m_fAccessible ? UIErrorString::formatErrorInfo(m_comCloudMachine.GetAccessError()) : QString();
 
             /* Determine VM OS type: */
             m_strOSTypeId = m_fAccessible ? m_comCloudMachine.GetOSTypeId() : "Other";
