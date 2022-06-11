@@ -1,4 +1,4 @@
-/* $Id: UIWizardAddCloudVM.cpp 83653 2020-04-09 16:38:03Z vboxsync $ */
+/* $Id: UIWizardAddCloudVM.cpp 83670 2020-04-10 14:07:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardAddCloudVM class implementation.
  */
@@ -22,6 +22,7 @@
 #include "UIWizardAddCloudVMPageExpert.h"
 
 /* COM includes: */
+#include "CCloudMachine.h"
 #include "CProgress.h"
 
 
@@ -74,8 +75,11 @@ bool UIWizardAddCloudVM::addCloudVMs()
     /* For each cloud instance name we have: */
     foreach (const QString &strInstanceName, field("instanceIds").toStringList())
     {
+        CCloudMachine comMachine;
+
         /* Initiate cloud VM add procedure: */
-        CProgress comProgress = comClient.AddCloudMachine(strInstanceName);
+        CProgress comProgress = comClient.AddCloudMachine(strInstanceName, comMachine);
+        RT_NOREF(comMachine);
         if (!comClient.isOk())
         {
             msgCenter().cannotCreateCloudMachine(comClient, this);
