@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 80585 2019-09-04 14:05:50Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 80865 2019-09-17 15:21:39Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -2342,6 +2342,12 @@ RTEXITCODE handleModifyVM(HandlerArg *a)
                 ComPtr<IAudioAdapter> audioAdapter;
                 sessionMachine->COMGETTER(AudioAdapter)(audioAdapter.asOutParam());
                 ASSERT(audioAdapter);
+/** @todo r=klaus: don't unconditionally bolt together setting the audio driver
+ * and enabling the device. Doing this more cleverly allows changing the audio
+ * driver for VMs in saved state, which can be very useful when moving VMs
+ * between systems with different setup. The driver doesn't leave any traces in
+ * saved state. The GUI also might learn this trick if it doesn't use it
+ * already. */
 
                 /* disable? */
                 if (!RTStrICmp(ValueUnion.psz, "none"))
