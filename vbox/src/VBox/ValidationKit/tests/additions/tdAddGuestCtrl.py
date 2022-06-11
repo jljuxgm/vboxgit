@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79333 $"
+__version__ = "$Revision: 79354 $"
 
 # Standard Python imports.
 import errno
@@ -2576,14 +2576,14 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
             reporter.log2('Waiting for non-stale processes to terminate...');
             for i, oProcess in enumerate(aoProcesses):
                 try:
-                    oProcess.waitForArray([ vboxcon.ProcessWaitForFlag_Terminate, ], 30 * 1000);
+                    eWaitResult = oProcess.waitForArray([ vboxcon.ProcessWaitForFlag_Terminate, ], 120 * 1000);
                     eProcessStatus = oProcess.status;
                 except:
                     fRc = reporter.errorXcpt('Waiting for non-stale process #%d failed:' % (i,));
                 else:
                     if eProcessStatus != vboxcon.ProcessStatus_TerminatedNormally:
-                        fRc = reporter.error('Waiting for non-stale processes #%d resulted in status %d, expected %d'
-                                             % (i, eProcessStatus, vboxcon.ProcessStatus_TerminatedNormally));
+                        fRc = reporter.error('Waiting for non-stale processes #%d resulted in status %d, expected %d (wr=%d)'
+                                             % (i, eProcessStatus, vboxcon.ProcessStatus_TerminatedNormally, eWaitResult));
 
             try:    cProcesses = len(self.oTstDrv.oVBoxMgr.getArray(oGuestSession, 'processes'));
             except: fRc = reporter.errorXcpt();
