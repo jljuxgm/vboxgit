@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 81938 2019-11-18 12:14:05Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 81951 2019-11-18 16:45:41Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -56,24 +56,6 @@
 # define PDM_DEVHLP_DEADLOCK_DETECTION /**< @todo enable DevHlp deadlock detection! */
 #endif
 
-
-
-/**
- * Wrapper around PDMR3LdrGetSymbolRCLazy.
- */
-DECLINLINE(int) pdmR3DevGetSymbolRCLazy(PPDMDEVINS pDevIns, const char *pszSymbol, PRTRCPTR ppvValue)
-{
-    PVM pVM = pDevIns->Internal.s.pVMR3;
-    if (!VM_IS_RAW_MODE_ENABLED(pVM))
-    {
-        *ppvValue = NIL_RTRCPTR;
-        return VINF_SUCCESS;
-    }
-    return PDMR3LdrGetSymbolRCLazy(pVM,
-                                   pDevIns->Internal.s.pDevR3->pReg->pszRCMod,
-                                   pDevIns->Internal.s.pDevR3->pszRCSearchPath,
-                                   pszSymbol, ppvValue);
-}
 
 
 /**
