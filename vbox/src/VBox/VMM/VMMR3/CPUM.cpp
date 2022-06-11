@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 81787 2019-11-12 04:23:12Z vboxsync $ */
+/* $Id: CPUM.cpp 81792 2019-11-12 08:47:21Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -4030,10 +4030,6 @@ static DECLCALLBACK(void) cpumR3InfoGuestHwvirt(PVM pVM, PCDBGFINFOHLP pHlp, con
 
     /*
      * Figure out what to dump.
-     *
-     * In the future we may need to dump everything whether or not we're actively in nested-guest mode
-     * or not, hence the reason why we use a mask to determine what needs dumping. Currently, we only
-     * dump hwvirt. state when the guest CPU is executing a nested-guest.
      */
     /** @todo perhaps make this configurable through pszArgs, depending on how much
      *        noise we wish to accept when nested hwvirt. isn't used. */
