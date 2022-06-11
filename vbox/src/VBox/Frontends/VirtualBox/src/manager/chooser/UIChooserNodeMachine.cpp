@@ -1,4 +1,4 @@
-/* $Id: UIChooserNodeMachine.cpp 83672 2020-04-10 16:27:16Z vboxsync $ */
+/* $Id: UIChooserNodeMachine.cpp 83881 2020-04-21 09:41:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserNodeMachine class implementation.
  */
@@ -85,6 +85,9 @@ UIChooserNodeMachine::UIChooserNodeMachine(UIChooserNode *pParent,
             break;
         case UIVirtualMachineItem::ItemType_CloudFake:
             m_pCache = new UIVirtualMachineItemCloud;
+            break;
+        case UIVirtualMachineItem::ItemType_CloudReal:
+            m_pCache = new UIVirtualMachineItemCloud(pCopyFrom->cache()->toCloud()->machine());
             break;
         default:
             break;
