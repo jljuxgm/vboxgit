@@ -1,4 +1,4 @@
-/* $Id: UINetworkRequest.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UINetworkRequest.h 78665 2019-05-22 15:27:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkRequest class declaration.
  */
@@ -71,10 +71,11 @@ signals:
 public:
 
     /** Constructs network-request of the passed @a enmType
-      * on the basis of the passed @a urls and the @a requestHeaders
+      * on the basis of the passed @a urls, @a strTarget and the @a requestHeaders
       * for the @a pCustomer and @a pNetworkManager specified. */
     UINetworkRequest(UINetworkRequestType enmType,
                      const QList<QUrl> &urls,
+                     const QString &strTarget,
                      const UserDictionary &requestHeaders,
                      UINetworkCustomer *pCustomer,
                      UINetworkManager *pNetworkManager);
@@ -124,6 +125,8 @@ private:
     const UINetworkRequestType m_enmType;
     /** Holds the request urls. */
     const QList<QUrl> m_urls;
+    /** Holds the request target. */
+    const QString m_strTarget;
     /** Holds the request headers. */
     const UserDictionary m_requestHeaders;
     /** Holds the request customer. */

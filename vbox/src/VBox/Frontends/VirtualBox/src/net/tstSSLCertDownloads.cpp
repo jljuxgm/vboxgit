@@ -1,4 +1,4 @@
-/* $Id: tstSSLCertDownloads.cpp 78066 2019-04-09 16:02:32Z vboxsync $ */
+/* $Id: tstSSLCertDownloads.cpp 78665 2019-05-22 15:27:01Z vboxsync $ */
 /** @file
  * IPRT Testcase - Simple cURL testcase.
  */
@@ -36,8 +36,9 @@
 {
     NOREF(hTest);
     QUrl Dummy1;
-    UserDictionary Dummy2;
-    UINetworkReplyPrivateThread TestObj(UINetworkRequestType_GET, Dummy1, Dummy2);
+    QString strDummy2;
+    UserDictionary Dummy3;
+    UINetworkReplyPrivateThread TestObj(UINetworkRequestType_GET, Dummy1, strDummy2, Dummy3);
 
     /*
      * Do the first setup things that UINetworkReplyPrivateThread::run.

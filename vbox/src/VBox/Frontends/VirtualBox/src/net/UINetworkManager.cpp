@@ -1,4 +1,4 @@
-/* $Id: UINetworkManager.cpp 76825 2019-01-15 12:42:06Z vboxsync $ */
+/* $Id: UINetworkManager.cpp 78665 2019-05-22 15:27:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkManager stuff implementation.
  */
@@ -101,11 +101,11 @@ void UINetworkManager::show()
     m_pNetworkManagerDialog->showNormal();
 }
 
-void UINetworkManager::createNetworkRequest(UINetworkRequestType enmType, const QList<QUrl> &urls,
+void UINetworkManager::createNetworkRequest(UINetworkRequestType enmType, const QList<QUrl> &urls, const QString &strTarget,
                                             const UserDictionary &requestHeaders, UINetworkCustomer *pCustomer)
 {
     /* Create network-request: */
-    UINetworkRequest *pNetworkRequest = new UINetworkRequest(enmType, urls, requestHeaders, pCustomer, this);
+    UINetworkRequest *pNetworkRequest = new UINetworkRequest(enmType, urls, strTarget, requestHeaders, pCustomer, this);
     /* Prepare created network-request: */
     prepareNetworkRequest(pNetworkRequest);
 }

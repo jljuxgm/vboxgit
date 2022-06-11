@@ -1,4 +1,4 @@
-/* $Id: UIUpdateManager.cpp 76825 2019-01-15 12:42:06Z vboxsync $ */
+/* $Id: UIUpdateManager.cpp 78665 2019-05-22 15:27:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUpdateManager class implementation.
  */
@@ -310,7 +310,7 @@ void UIUpdateStepVirtualBox::sltStartStep()
     headers["User-Agent"] = strUserAgent;
     QUrl fullUrl(m_url);
     fullUrl.setQuery(url);
-    createNetworkRequest(UINetworkRequestType_GET, QList<QUrl>() << fullUrl, headers);
+    createNetworkRequest(UINetworkRequestType_GET, QList<QUrl>() << fullUrl, QString(), headers);
 }
 
 /* static */
