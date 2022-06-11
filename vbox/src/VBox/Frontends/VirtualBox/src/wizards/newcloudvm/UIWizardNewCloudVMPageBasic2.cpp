@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageBasic2.cpp 79684 2019-07-11 07:57:10Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageBasic2.cpp 79752 2019-07-13 11:16:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageBasic2 class implementation.
  */
@@ -162,7 +162,14 @@ bool UIWizardNewCloudVMPageBasic2::validatePage()
 
     /* Try to create cloud VM: */
     if (fResult)
+    {
         fResult = qobject_cast<UIWizardNewCloudVM*>(wizard())->createCloudVM();
+
+        /* If the final step failed we could try
+         * sugest user more valid form this time: */
+        if (!fResult)
+            sltInitShortWizardForm();
+    }
 
     /* Unlock finish button: */
     endProcessing();
