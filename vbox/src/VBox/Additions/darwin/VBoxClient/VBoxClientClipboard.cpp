@@ -1,4 +1,4 @@
-/** $Id: VBoxClientClipboard.cpp 80990 2019-09-25 06:20:09Z vboxsync $ */
+/** $Id: VBoxClientClipboard.cpp 82514 2019-12-09 13:26:25Z vboxsync $ */
 /** @file
  * VBoxClient - Shared Slipboard Dispatcher, Darwin.
  */
@@ -176,7 +176,7 @@ static DECLCALLBACK(int) vbclGuestPasteboardPoll(RTTHREAD hThreadSelf, void *pvU
         if (fSyncFlags & kPasteboardModified)
         {
             fFormats = vbclClipboardGetAvailableFormats(g_PasteboardRef);
-            rc = VbglR3ClipboardFormatsReport(g_u32ClientId, fFormats);
+            rc = VbglR3ClipboardReportFormats(g_u32ClientId, fFormats);
             if (RT_FAILURE(rc))
             {
                 VBoxClientVerbose(2, "failed to report pasteboard update (%Rrc)\n", rc);
@@ -286,7 +286,7 @@ static int vbclClipboardStop(void)
 
     AssertReturn(g_u32ClientId != 0, VERR_GENERAL_FAILURE);
 
-    VbglR3ClipboardFormatsReport(g_u32ClientId, 0);
+    VbglR3ClipboardReportFormats(g_u32ClientId, 0);
 
     rc = VbglR3ClipboardDisconnect(g_u32ClientId);
     if (RT_SUCCESS(rc))
