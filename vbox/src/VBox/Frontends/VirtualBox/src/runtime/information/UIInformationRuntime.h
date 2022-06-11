@@ -1,4 +1,4 @@
-/* $Id: UIInformationRuntime.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIInformationRuntime.h 80357 2019-08-20 12:55:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationRuntime class declaration.
  */
@@ -73,4 +73,3 @@ private:
 };
 
 #endif /* !FEQT_INCLUDED_SRC_runtime_information_UIInformationRuntime_h */
-
