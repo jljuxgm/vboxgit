@@ -1,4 +1,4 @@
-/* $Id: ovfreader.cpp 78602 2019-05-20 16:26:10Z vboxsync $ */
+/* $Id: ovfreader.cpp 78604 2019-05-20 16:45:15Z vboxsync $ */
 /** @file
  * OVF reader declarations.
  *
@@ -38,7 +38,7 @@ using namespace ovf;
  * Should be used if you don't have an OVF file, but want to fill the data
  * m_mapDisks, m_llVirtualSystems manually
  */
-OVFReader::OVFReader()  
+OVFReader::OVFReader()
 {
 }
 
