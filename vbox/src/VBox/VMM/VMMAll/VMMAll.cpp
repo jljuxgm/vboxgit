@@ -1,4 +1,4 @@
-/* $Id: VMMAll.cpp 78438 2019-05-07 15:57:37Z vboxsync $ */
+/* $Id: VMMAll.cpp 80003 2019-07-26 13:37:47Z vboxsync $ */
 /** @file
  * VMM All Contexts.
  */
@@ -172,21 +172,6 @@ void vmmTermFormatTypes(void)
         RTStrFormatTypeDeregister("vmcpuset");
 }
 #endif
-
-
-/**
- * Gets the bottom of the hypervisor stack - RC Ptr.
- *
- * (The returned address is not actually writable, only after it's decremented
- * by a push/ret/whatever does it become writable.)
- *
- * @returns bottom of the stack.
- * @param   pVCpu       The cross context virtual CPU structure.
- */
-VMM_INT_DECL(RTRCPTR) VMMGetStackRC(PVMCPU pVCpu)
-{
-    return (RTRCPTR)pVCpu->vmm.s.pbEMTStackBottomRC;
-}
 
 
 /**
@@ -407,18 +392,6 @@ VMMDECL(PVMCPU) VMMGetCpuById(PVM pVM, RTCPUID idCpu)
 VMM_INT_DECL(uint32_t) VMMGetSvnRev(void)
 {
     return VBOX_SVN_REV;
-}
-
-
-/**
- * Queries the current switcher
- *
- * @returns active switcher
- * @param   pVM             The cross context VM structure.
- */
-VMM_INT_DECL(VMMSWITCHER) VMMGetSwitcher(PVM pVM)
-{
-    return pVM->vmm.s.enmSwitcher;
 }
 
 
