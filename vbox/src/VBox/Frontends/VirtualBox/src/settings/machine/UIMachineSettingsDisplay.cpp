@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.cpp 83625 2020-04-08 17:40:29Z vboxsync $ */
+/* $Id: UIMachineSettingsDisplay.cpp 83627 2020-04-08 18:06:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsDisplay class implementation.
  */
@@ -871,11 +871,6 @@ void UIMachineSettingsDisplay::sltHandleGraphicsControllerComboChange()
 {
     /* Update Video RAM requirements: */
     m_pVideoMemoryEditor->setGraphicsControllerType(m_pGraphicsControllerEditor->value());
-#ifdef VBOX_WITH_VIDEOHWACCEL
-    m_pLayout2DVideo->setCurrentWidget(  graphicsControllerTypeCurrent() == KGraphicsControllerType_VBoxVGA
-                                       ? m_pCheckbox2DVideo
-                                       : m_pPlaceholder2DVideo);
-#endif
 
     /* Revalidate: */
     revalidate();
