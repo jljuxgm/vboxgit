@@ -1,4 +1,4 @@
-/* $Id: Db.h 79563 2019-07-06 01:22:56Z vboxsync $ */
+/* $Id: Db.h 79568 2019-07-06 23:42:51Z vboxsync $ */
 /** @file
  * DHCP server - address database
  */
@@ -50,10 +50,10 @@ public:
 
 private:
     const RTNETADDRIPV4 m_addr;
-    State m_state;
-    ClientId m_id;
-    Timestamp m_issued;
-    uint32_t m_secLease;
+    State               m_state;
+    ClientId            m_id;
+    Timestamp           m_issued;
+    uint32_t            m_secLease;
 
 public:
     Binding();
