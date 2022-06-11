@@ -1,4 +1,4 @@
-/* $Id: QIDialogContainer.h 79900 2019-07-19 18:33:40Z vboxsync $ */
+/* $Id: QIDialogContainer.h 79939 2019-07-23 18:17:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIDialogContainer class declaration.
  */
@@ -44,6 +44,11 @@ public:
 
     /** Defines containing @a pWidget. */
     void setWidget(QWidget *pWidget);
+
+public slots:
+
+    /** Activates window. */
+    void sltActivateWindow() { activateWindow(); }
 
 private:
 
