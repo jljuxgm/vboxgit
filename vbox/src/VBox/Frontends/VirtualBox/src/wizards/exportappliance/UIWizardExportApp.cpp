@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportApp.cpp 79699 2019-07-11 14:16:41Z vboxsync $ */
+/* $Id: UIWizardExportApp.cpp 79816 2019-07-16 17:38:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportApp class implementation.
  */
@@ -330,7 +330,7 @@ bool UIWizardExportApp::exportVMs(CAppliance &comAppliance)
                     CCloudClient comClient = field("client").value<CCloudClient>();
                     CVirtualSystemDescription comDescription = field("vsd").value<CVirtualSystemDescription>();
                     /* Create and run wizard as modal dialog, but prevent final step: */
-                    pNewCloudVMWizard = new UIWizardNewCloudVM(this, comClient, comDescription);
+                    pNewCloudVMWizard = new UIWizardNewCloudVM(this, comClient, comDescription, mode());
                     pNewCloudVMWizard->setFinalStepPrevented(true);
                     pNewCloudVMWizard->prepare();
                     iWizardResult = pNewCloudVMWizard->exec();
@@ -391,7 +391,7 @@ bool UIWizardExportApp::exportVMs(CAppliance &comAppliance)
                     CVirtualSystemDescription comDescription = field("vsd").value<CVirtualSystemDescription>();
                     /* Create and run short wizard mode as modal dialog: */
                     QWidget *pWizardParent = windowManager().realParentWindow(this);
-                    pNewCloudVMWizard = new UIWizardNewCloudVM(pWizardParent, comClient, comDescription);
+                    pNewCloudVMWizard = new UIWizardNewCloudVM(pWizardParent, comClient, comDescription, mode());
                     windowManager().registerNewParent(pNewCloudVMWizard, pWizardParent);
                     pNewCloudVMWizard->prepare();
                     iWizardResult = pNewCloudVMWizard->exec();

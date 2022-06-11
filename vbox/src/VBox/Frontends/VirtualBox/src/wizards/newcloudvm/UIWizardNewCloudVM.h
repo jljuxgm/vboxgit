@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVM.h 79682 2019-07-11 07:25:08Z vboxsync $ */
+/* $Id: UIWizardNewCloudVM.h 79816 2019-07-16 17:38:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVM class declaration.
  */
@@ -55,7 +55,8 @@ public:
       * @param  comDescription  Brings the Virtual System Description object to use. */
     UIWizardNewCloudVM(QWidget *pParent,
                        const CCloudClient &comClient = CCloudClient(),
-                       const CVirtualSystemDescription &comDescription = CVirtualSystemDescription());
+                       const CVirtualSystemDescription &comDescription = CVirtualSystemDescription(),
+                       WizardMode enmMode = WizardMode_Auto);
 
     /** Prepares all. */
     virtual void prepare() /* override */;

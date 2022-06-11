@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVM.cpp 79700 2019-07-11 15:14:03Z vboxsync $ */
+/* $Id: UIWizardNewCloudVM.cpp 79816 2019-07-16 17:38:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVM class implementation.
  */
@@ -31,8 +31,9 @@
 
 UIWizardNewCloudVM::UIWizardNewCloudVM(QWidget *pParent,
                                        const CCloudClient &comClient /* = CCloudClient() */,
-                                       const CVirtualSystemDescription &comDescription /* = CVirtualSystemDescription() */)
-    : UIWizard(pParent, WizardType_NewCloudVM)
+                                       const CVirtualSystemDescription &comDescription /* = CVirtualSystemDescription() */,
+                                       WizardMode enmMode /* = WizardMode_Auto */)
+    : UIWizard(pParent, WizardType_NewCloudVM, enmMode)
     , m_comClient(comClient)
     , m_comVSD(comDescription)
     , m_fFullWizard(m_comClient.isNull() || m_comVSD.isNull())
