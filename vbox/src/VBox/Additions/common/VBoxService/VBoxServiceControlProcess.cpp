@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlProcess.cpp 83269 2020-03-12 08:15:01Z vboxsync $ */
+/* $Id: VBoxServiceControlProcess.cpp 83272 2020-03-12 15:02:43Z vboxsync $ */
 /** @file
  * VBoxServiceControlThread - Guest process handling.
  */
@@ -554,7 +554,7 @@ static int vgsvcGstCtrlProcessProcLoop(PVBOXSERVICECTRLPROCESS pProcess)
                     break;
 
                 case VBOXSERVICECTRLPIPEID_STDERR:
-                    rc = vgsvcGstCtrlProcessPollsetOnOutput(pProcess, fPollEvt, &pProcess->hPipeStdOutR, idPollHnd);
+                    rc = vgsvcGstCtrlProcessPollsetOnOutput(pProcess, fPollEvt, &pProcess->hPipeStdErrR, idPollHnd);
                     break;
 
                 case VBOXSERVICECTRLPIPEID_IPC_NOTIFY:
