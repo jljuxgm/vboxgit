@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 80118 2019-08-04 02:39:54Z vboxsync $ */
+/* $Id: VMMDev.cpp 80296 2019-08-15 15:47:10Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -93,7 +93,6 @@
 #include <iprt/file.h>
 #include <VBox/vmm/pgm.h>
 #include <VBox/err.h>
-#include <VBox/vmm/vm.h> /* for VM_IS_EMT */
 #include <VBox/dbg.h>
 #include <VBox/version.h>
 
