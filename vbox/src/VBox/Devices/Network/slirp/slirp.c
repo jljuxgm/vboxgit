@@ -1,4 +1,4 @@
-/* $Id: slirp.c 81725 2019-11-06 21:00:34Z vboxsync $ */
+/* $Id: slirp.c 81729 2019-11-06 21:08:44Z vboxsync $ */
 /** @file
  * NAT - slirp glue.
  */
@@ -46,7 +46,7 @@
 # include <paths.h>
 #endif
 
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <VBox/vmm/dbgf.h>
 #include <VBox/vmm/pdmdrv.h>
 #include <iprt/assert.h>
