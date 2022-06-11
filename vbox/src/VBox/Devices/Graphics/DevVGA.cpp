@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 80704 2019-09-10 15:19:39Z vboxsync $ */
+/* $Id: DevVGA.cpp 80731 2019-09-11 12:23:11Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -869,7 +869,9 @@ static uint32_t vbe_read_cfg(PVGASTATE pThis)
         case VBE_DISPI_CFG_ID_VERSION:   val = 1; break;
         case VBE_DISPI_CFG_ID_VRAM_SIZE: val = pThis->vram_size; break;
         case VBE_DISPI_CFG_ID_3D:        val = pThis->f3DEnabled; break;
+#ifdef VBOX_WITH_VMSVGA
         case VBE_DISPI_CFG_ID_VMSVGA:    val = pThis->fVMSVGAEnabled; break;
+#endif
         default:
            return 0; /* Not supported. */
     }
@@ -5335,7 +5337,10 @@ vgaPortCopyRect(PPDMIDISPLAYPORT pInterface,
      */
     if (   (pThis->vbe_regs[VBE_DISPI_INDEX_ENABLE] & VBE_DISPI_ENABLED) == 0
         && VBVAIsPaused(pThis)
-        && !pThis->svga.fEnabled)
+#ifdef VBOX_WITH_VMSVGA
+        && !pThis->svga.fEnabled
+#endif
+       )
     {
         PDMCritSectLeave(&pThis->CritSect);
         return VERR_INVALID_STATE;
