@@ -1,4 +1,4 @@
-/* $Id: Config.cpp 79899 2019-07-19 17:56:08Z vboxsync $ */
+/* $Id: Config.cpp 80022 2019-07-28 13:25:28Z vboxsync $ */
 /** @file
  * DHCP server - server configuration
  */
@@ -229,7 +229,7 @@ int Config::i_logInit() RT_NOEXCEPT
     int rc = com::VBoxLogRelCreate("DHCP Server",
                                    pszFilename,
                                    RTLOGFLAGS_PREFIX_TIME_PROG,
-                                   "all net_dhcpd.e.l",
+                                   "all net_dhcpd.e.l.f.l3.l4.l5.l6",
                                    "VBOXDHCP_RELEASE_LOG",
                                    RTLOGDEST_FILE
 #ifdef DEBUG

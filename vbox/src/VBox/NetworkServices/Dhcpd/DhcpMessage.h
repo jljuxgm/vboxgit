@@ -1,4 +1,4 @@
-/* $Id: DhcpMessage.h 79568 2019-07-06 23:42:51Z vboxsync $ */
+/* $Id: DhcpMessage.h 80022 2019-07-28 13:25:28Z vboxsync $ */
 /** @file
  * DHCP Message and its de/serialization.
  */
@@ -80,6 +80,8 @@ public:
         return m_optMessageType.value();
     }
     /** @} */
+
+    void            dump() const RT_NOEXCEPT;
 };
 
 
@@ -143,6 +145,7 @@ public:
     /** @} */
 
     int             encode(octets_t &data);
+    void            dump() const RT_NOEXCEPT;
 };
 
 #endif /* !VBOX_INCLUDED_SRC_Dhcpd_DhcpMessage_h */
