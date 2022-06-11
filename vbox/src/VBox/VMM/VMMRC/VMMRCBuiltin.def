@@ -1,4 +1,4 @@
-; $Id: VMMRCBuiltin.def 76553 2019-01-01 01:45:53Z vboxsync $
+; $Id: VMMRCBuiltin.def 78438 2019-05-07 15:57:37Z vboxsync $
 ;; @file
 ; VMM Raw-mode Context Builtin DLL - Definition file for generating import library.
 ;
@@ -19,6 +19,7 @@ LIBRARY VMMRCBuiltin.rc
 EXPORTS
     ; data
     g_VM                            DATA
+    g_VCpu0                         DATA
     g_CPUM                          DATA
     g_TRPM                          DATA
     g_TRPMCPU                       DATA

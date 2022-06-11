@@ -1,4 +1,4 @@
-/* $Id: PDMLdr.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: PDMLdr.cpp 78438 2019-05-07 15:57:37Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager, module loader.
  */
@@ -361,6 +361,8 @@ static DECLCALLBACK(int) pdmR3GetImportRC(RTLDRMOD hLdrMod, const char *pszModul
         int rc = VINF_SUCCESS;
         if (!strcmp(pszSymbol, "g_VM"))
             *pValue = pVM->pVMRC;
+        else if (!strcmp(pszSymbol, "g_VCpu0"))
+            *pValue = pVM->pVMRC + pVM->offVMCPU;
         else if (!strcmp(pszSymbol, "g_CPUM"))
             *pValue = VM_RC_ADDR(pVM, &pVM->cpum);
         else if (   !strncmp(pszSymbol, "g_TRPM", 6)

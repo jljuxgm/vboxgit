@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: Makefile.kmk 78438 2019-05-07 15:57:37Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -971,6 +971,7 @@ $(PATH_TARGET)/undef-rc.run: $$(VMMRC_1_TARGET)
 			-e 's/ *U //' \
 			\
 			-e '/^g_VM\>/d'\
+			-e '/^g_VCpu0\>/d'\
 			-e '/^g_CPUM\>/d'\
 			-e '/^g_Logger\>/d'\
 			-e '/^g_RelLogger\>/d'\
