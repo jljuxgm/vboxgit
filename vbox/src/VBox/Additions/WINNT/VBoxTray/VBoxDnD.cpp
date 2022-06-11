@@ -1,4 +1,4 @@
-/* $Id: VBoxDnD.cpp 79207 2019-06-18 11:18:17Z vboxsync $ */
+/* $Id: VBoxDnD.cpp 79218 2019-06-18 16:20:25Z vboxsync $ */
 /** @file
  * VBoxDnD.cpp - Windows-specific bits of the drag and drop service.
  */
@@ -146,7 +146,7 @@ int VBoxDnDWnd::Initialize(PVBOXDNDCONTEXT pCtx)
             AssertRC(rc2);
 
             if (!pCtx->fStarted) /* Did the thread fail to start? */
-                rc = VERR_GENERAL_FAILURE; /** @todo Find a better rc. */
+                rc = VERR_NOT_SUPPORTED; /* Report back DnD as not being supported. */
         }
     }
 
