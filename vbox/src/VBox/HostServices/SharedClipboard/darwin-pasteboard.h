@@ -1,4 +1,4 @@
-/* $Id: darwin-pasteboard.h 83628 2020-04-08 18:49:21Z vboxsync $ */
+/* $Id: darwin-pasteboard.h 83630 2020-04-08 19:13:56Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Mac OS X host implementation.
  */
@@ -30,7 +30,7 @@ int queryNewPasteboardFormats(PasteboardRef pPasteboard, uint32_t *pfFormats, bo
 int readFromPasteboard(PasteboardRef pPasteboard, uint32_t fFormat, void *pv, uint32_t cb, uint32_t *pcbActual);
 int takePasteboardOwnership(PasteboardRef pPasteboard, uint64_t idOwnership,
                             const char *pszOwnershipFlavor, const char *pszOwnershipValue);
-int writeToPasteboard(PasteboardRef pPasteboard, uint64_t idOwnership, void *pv, uint32_t cb, uint32_t fFormat);
+int writeToPasteboard(PasteboardRef hPasteboard, uint64_t idOwnership, void const *pv, uint32_t cb, uint32_t fFormat);
 
 #endif /* !VBOX_INCLUDED_SRC_SharedClipboard_darwin_pasteboard_h */
 
