@@ -1,4 +1,4 @@
-/* $Id: UIResourceMonitor.h 83375 2020-03-23 18:40:37Z vboxsync $ */
+/* $Id: UIResourceMonitor.h 83379 2020-03-24 10:49:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIResourceMonitor class declaration.
  */
@@ -38,7 +38,6 @@ class UIToolBar;
 class UIResourceMonitorProxyModel;
 class UIResourceMonitorModel;
 
-
 /** QWidget extension to display a Linux top like utility that sort running vm wrt. resource allocations. */
 class UIResourceMonitorWidget : public QIWithRetranslateUI<QWidget>
 {
@@ -67,18 +66,18 @@ protected:
         virtual void showEvent(QShowEvent *pEvent) /* override */;
     /** @} */
 
-public slots:
-
 private slots:
 
     void sltHandleDataUpdate();
+    void sltCreateContextMenu(const QPoint &point);
+    void sltHandleColumnAction(bool fChecked);
 
 private:
 
+    void setColumnShown(int iColumnId, bool fShown);
     /** @name Prepare/cleanup cascade.
       * @{ */
         void prepare();
-        void prepareActions();
         void prepareWidgets();
         void prepareToolBar();
         void loadSettings();
@@ -97,6 +96,8 @@ private:
         QTableView *m_pTableView;
         UIResourceMonitorProxyModel *m_pProxyModel;
         UIResourceMonitorModel      *m_pModel;
+        QVector<QString>             m_columnCaptions;
+        QVector<bool>                m_columnShown;
     /** @} */
 
 };
