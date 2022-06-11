@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 80394 2019-08-23 13:02:30Z vboxsync $ */
+/* $Id: UICommon.cpp 80495 2019-08-29 10:56:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -1137,6 +1137,22 @@ QString UICommon::formatSize(quint64 uSize, uint cDecimal /* = 2 */,
     }
 
     return QString("%1 %2").arg(strNumber).arg(gpConverter->toString(static_cast<SizeSuffix>(iSuffix)));
+}
+
+/* static */
+QString UICommon::addMetricSuffixToNumber(quint64 uNumber)
+{
+    if (uNumber <= 0)
+        return QString();
+    /* See https://en.wikipedia.org/wiki/Metric_prefix for metric suffixes:*/
+    char suffixes[] = {'k', 'M', 'G', 'T', 'P', 'E', 'Z', 'Y'};
+    int zeroCount = (int)log10(uNumber);
+    if (zeroCount < 3)
+        return QString::number(uNumber);
+    int h = 3 * (zeroCount / 3);
+    char result[128];
+    sprintf(result, "%.2f", uNumber / (float)pow(10, h));
+    return QString("%1%2").arg(result).arg(suffixes[h / 3 - 1]);
 }
 
 /* static */
