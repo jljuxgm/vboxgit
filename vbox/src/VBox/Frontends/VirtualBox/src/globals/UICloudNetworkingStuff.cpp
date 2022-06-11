@@ -1,4 +1,4 @@
-/* $Id: UICloudNetworkingStuff.cpp 83643 2020-04-09 09:43:07Z vboxsync $ */
+/* $Id: UICloudNetworkingStuff.cpp 83650 2020-04-09 15:06:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudNetworkingStuff namespace implementation.
  */
@@ -219,8 +219,8 @@ void UICloudNetworkingStuff::refreshCloudMachineInfo(CCloudMachine &comCloudMach
                                                      QString &strErrorMessage,
                                                      QWidget *pParent /* = 0 */)
 {
-    /* Execute ReadState async method: */
-    CProgress comProgress = comCloudMachine.ReadState();
+    /* Execute Refresh async method: */
+    CProgress comProgress = comCloudMachine.Refresh();
     if (!comCloudMachine.isOk())
     {
         if (pParent)
