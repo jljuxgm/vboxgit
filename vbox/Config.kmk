@@ -1,4 +1,4 @@
-# $Id: Config.kmk 79991 2019-07-26 02:25:15Z vboxsync $
+# $Id: Config.kmk 79994 2019-07-26 09:47:25Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -398,14 +398,6 @@ endif
 
 ## @name VMM related settings.
 ## @{
-# Enable the tradition raw-mode virtualization (being removed in 6.1).
-ifn1of ($(KBUILD_TARGET), darwin linux solaris win)
- VBOX_WITH_RAW_MODE = 1
-else ifdef VBOX_ONLY_EXTPACKS
- VBOX_WITH_RAW_MODE = 1
-endif
-# Enable the ring-1 compression option (mainly for QNX).
-VBOX_WITH_RAW_RING1 = 1
 # Enable safe STR (store task register) emulation for raw-mode.
 VBOX_WITH_SAFE_STR = 1
 # Enable support for 64-bit guests.
@@ -7734,7 +7726,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 79991 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 79994 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
