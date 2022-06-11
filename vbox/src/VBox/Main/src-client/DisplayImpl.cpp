@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 80546 2019-09-02 11:35:38Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 80725 2019-09-11 10:33:08Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2444,6 +2444,7 @@ HRESULT Display::completeVHWACommand(BYTE *aCommand)
     mpDrv->pVBVACallbacks->pfnVHWACommandCompleteAsync(mpDrv->pVBVACallbacks, (VBOXVHWACMD RT_UNTRUSTED_VOLATILE_GUEST *)aCommand);
     return S_OK;
 #else
+    RT_NOREF(aCommand);
     return E_NOTIMPL;
 #endif
 }
