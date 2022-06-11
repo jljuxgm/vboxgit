@@ -1,5 +1,5 @@
 @echo off
-rem $Id: Single-1-Prepare.cmd 80769 2019-09-13 10:04:41Z vboxsync $
+rem $Id: Single-1-Prepare.cmd 80775 2019-09-13 11:32:03Z vboxsync $
 rem rem @file
 rem Windows NT batch script for preparing single build (either amd64 and x86) for signing submission.
 rem
@@ -32,7 +32,7 @@ set _MY_VER_REV=@VBOX_VERSION_STRING@r@VBOX_SVN_REV@
 rem
 rem Parse arguments.
 rem
-set _MY_OPT_UNTAR_DIR=%_MY_SCRIPT_DIR%\..\..\..\
+set _MY_OPT_UNTAR_DIR=%_MY_SCRIPT_DIR%\..\
 for %%i in (%_MY_OPT_UNTAR_DIR%) do set _MY_OPT_UNTAR_DIR=%%~fi
 set _MY_OPT_EXTPACK=%_MY_OPT_UNTAR_DIR%\Oracle_VM_VirtualBox_Extension_Pack-%_MY_VER_REV%.vbox-extpack
 set _MY_OPT_EXTPACK_ENTERPRISE=%_MY_OPT_UNTAR_DIR%\Oracle_VM_VirtualBox_Extension_Pack-%_MY_VER_REV%-ENTERPRISE.vbox-extpack
@@ -187,7 +187,7 @@ echo **************************************************************************
 echo Packing drivers
 echo **************************************************************************
 cd /d "%_MY_REPACK_DIR%" || goto end_failed
-call "%_MY_REPACK_DIR%\PackDriversForSubmission.cmd" -b "%_MY_BINDIR%" -a "%_MY_OPT_ARCH%" -e "%_MY_OPT_EXTPACK%" ^
+call "%_MY_REPACK_DIR%\PackDriversForSubmission.cmd" -b "%_MY_BINDIR%" -a %_MY_OPT_ARCH% -e "%_MY_OPT_EXTPACK%" ^
     -o "%_MY_OPT_OUTDIR%\VBoxDrivers-%_MY_VER_REV%-%_MY_OPT_ARCH%.cab" || goto end_failed
 echo .
 cd /d "%_MY_SAVED_CD%"
