@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 83616 2020-04-08 08:55:56Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 83674 2020-04-10 17:37:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -97,6 +97,16 @@ bool UIVirtualBoxManagerWidget::isAllItemsOfOneGroupSelected() const
 bool UIVirtualBoxManagerWidget::isSingleGroupSelected() const
 {
     return m_pPaneChooser->isSingleGroupSelected();
+}
+
+bool UIVirtualBoxManagerWidget::isSingleLocalGroupSelected() const
+{
+    return m_pPaneChooser->isSingleLocalGroupSelected();
+}
+
+bool UIVirtualBoxManagerWidget::isSingleCloudProfileGroupSelected() const
+{
+    return m_pPaneChooser->isSingleCloudProfileGroupSelected();
 }
 
 void UIVirtualBoxManagerWidget::setToolsType(UIToolType enmType)

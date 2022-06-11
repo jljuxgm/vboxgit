@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 83290 2020-03-13 16:43:36Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.h 83674 2020-04-10 17:37:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -296,6 +296,10 @@ private:
         bool isAllItemsOfOneGroupSelected() const;
         /** Returns whether single group is selected. */
         bool isSingleGroupSelected() const;
+        /** Returns whether single local group is selected. */
+        bool isSingleLocalGroupSelected() const;
+        /** Returns whether single cloud profile group is selected. */
+        bool isSingleCloudProfileGroupSelected() const;
     /** @} */
 
     /** @name VM launching stuff.

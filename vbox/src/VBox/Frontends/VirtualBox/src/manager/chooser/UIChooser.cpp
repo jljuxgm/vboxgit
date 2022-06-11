@@ -1,4 +1,4 @@
-/* $Id: UIChooser.cpp 83064 2020-02-12 19:24:33Z vboxsync $ */
+/* $Id: UIChooser.cpp 83674 2020-04-10 17:37:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooser class implementation.
  */
@@ -76,6 +76,16 @@ bool UIChooser::isMachineItemSelected() const
 bool UIChooser::isSingleGroupSelected() const
 {
     return m_pChooserModel->isSingleGroupSelected();
+}
+
+bool UIChooser::isSingleLocalGroupSelected() const
+{
+    return m_pChooserModel->isSingleLocalGroupSelected();
+}
+
+bool UIChooser::isSingleCloudProfileGroupSelected() const
+{
+    return m_pChooserModel->isSingleCloudProfileGroupSelected();
 }
 
 bool UIChooser::isAllItemsOfOneGroupSelected() const
