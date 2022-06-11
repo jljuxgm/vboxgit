@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboard.cpp 81268 2019-10-14 18:11:11Z vboxsync $ */
+/* $Id: UISoftKeyboard.cpp 81279 2019-10-15 07:03:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class implementation.
  */
@@ -2074,7 +2074,11 @@ void UISoftKeyboardWidget::paintEvent(QPaintEvent *pEvent) /* override */
         m_fScaleFactorX = width() / (float) m_iInitialWidth;
     else
         m_fScaleFactorX = width() / (float) m_iInitialWidthNoNumPad;
-    m_fScaleFactorY = height() / (float) m_iInitialHeight;
+
+    if (!m_fHideMultimediaKeys)
+        m_fScaleFactorY = height() / (float) m_iInitialHeight;
+    else
+        m_fScaleFactorY = height() / (float)(m_iInitialHeight - m_multiMediaKeysLayout.totalHeight());
 
     QPainter painter(this);
     QFont painterFont(font());
@@ -2086,7 +2090,6 @@ void UISoftKeyboardWidget::paintEvent(QPaintEvent *pEvent) /* override */
     int unitSize = qApp->style()->pixelMetric(QStyle::PM_LayoutLeftMargin);
     float fLedRadius =  0.8 * unitSize;
     float fLedMargin =  0.6 * unitSize;
-
 
     UISoftKeyboardPhysicalLayout *pPhysicalLayout = findPhysicalLayout(m_pCurrentKeyboardLayout->physicalLayoutUuid());
     if (!pPhysicalLayout)
@@ -2129,7 +2132,7 @@ void UISoftKeyboardWidget::paintEvent(QPaintEvent *pEvent) /* override */
             painter.drawPolygon(key.polygon());
 
             m_pCurrentKeyboardLayout->drawTextInRect(key, painter);
-
+            /* Draw small LED like circles on the modifier/lock keys: */
             if (key.type() != KeyType_Ordinary)
             {
                 QColor ledColor;
