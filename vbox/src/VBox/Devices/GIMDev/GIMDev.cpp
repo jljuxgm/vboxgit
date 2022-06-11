@@ -1,4 +1,4 @@
-/* $Id: GIMDev.cpp 80118 2019-08-04 02:39:54Z vboxsync $ */
+/* $Id: GIMDev.cpp 80297 2019-08-15 15:47:59Z vboxsync $ */
 /** @file
  * Guest Interface Manager Device.
  */
@@ -22,7 +22,6 @@
 #define LOG_GROUP LOG_GROUP_DEV_GIM
 #include <VBox/vmm/pdmdev.h>
 #include <VBox/vmm/gim.h>
-#include <VBox/vmm/vm.h>
 
 #include "VBoxDD.h"
 #include <iprt/alloc.h>
