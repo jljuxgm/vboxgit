@@ -1,6 +1,6 @@
-/* $Id: UIVirtualMachineItemCloud.h 83095 2020-02-17 12:38:51Z vboxsync $ */
+/* $Id: UIVirtualMachineItemCloud.h 83108 2020-02-18 15:29:54Z vboxsync $ */
 /** @file
- * VBox Qt GUI - UIVirtualMachineItemCloud class declarations.
+ * VBox Qt GUI - UIVirtualMachineItemCloud class declaration.
  */
 
 /*

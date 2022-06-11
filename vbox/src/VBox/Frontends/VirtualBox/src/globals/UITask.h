@@ -1,4 +1,4 @@
-/* $Id: UITask.h 83094 2020-02-17 10:12:35Z vboxsync $ */
+/* $Id: UITask.h 83108 2020-02-18 15:29:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UITask class declaration.
  */
@@ -46,7 +46,7 @@ public:
         Type_MediumEnumeration     = 1,
         Type_DetailsPopulation     = 2,
         Type_CloudAcquireInstances = 3,
-        Type_GetCloudInstanceState = 4,
+        Type_CloudGetInstanceState = 4,
     };
 
     /** Constructs the task of passed @a enmType. */
