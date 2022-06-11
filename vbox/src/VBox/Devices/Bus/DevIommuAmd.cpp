@@ -1,4 +1,4 @@
-/* $Id: DevIommuAmd.cpp 83177 2020-02-28 10:11:17Z vboxsync $ */
+/* $Id: DevIommuAmd.cpp 83185 2020-03-02 17:28:14Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - AMD implementation.
  */
@@ -14,6 +14,7 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
@@ -842,4 +843,3 @@ const PDMDEVREG g_DeviceIommu =
 };
 
 #endif /* !VBOX_DEVICE_STRUCT_TESTCASE */
-
