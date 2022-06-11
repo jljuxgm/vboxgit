@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.cpp 83489 2020-03-30 16:38:23Z vboxsync $ */
+/* $Id: GuestSessionImplTasks.cpp 83606 2020-04-07 11:57:30Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session tasks.
  */
@@ -1405,6 +1405,9 @@ HRESULT GuestSessionTaskCopyFrom::Init(const Utf8Str &strTaskDesc)
      *       be processed.
      */
 
+    if (mDest.isEmpty())
+        return setProgressErrorMsg(VBOX_E_IPRT_ERROR, Utf8StrFmt(GuestSession::tr("Destination must not be empty")));
+
     GuestSessionFsSourceSet::iterator itSrc = mSources.begin();
     while (itSrc != mSources.end())
     {
@@ -1412,6 +1415,12 @@ HRESULT GuestSessionTaskCopyFrom::Init(const Utf8Str &strTaskDesc)
         Utf8Str strDst = mDest;
 
         bool    fFollowSymlinks;
+
+        if (strSrc.isEmpty())
+        {
+            strErrorInfo = Utf8StrFmt(GuestSession::tr("Source entry must not be empty"));
+            break;
+        }
 
         if (itSrc->enmType == FsObjType_Directory)
         {
@@ -1653,6 +1662,9 @@ HRESULT GuestSessionTaskCopyTo::Init(const Utf8Str &strTaskDesc)
      *       be processed.
      */
 
+    if (mDest.isEmpty())
+        return setProgressErrorMsg(VBOX_E_IPRT_ERROR, Utf8StrFmt(GuestSession::tr("Destination must not be empty")));
+
     GuestSessionFsSourceSet::iterator itSrc = mSources.begin();
     while (itSrc != mSources.end())
     {
@@ -1660,6 +1672,12 @@ HRESULT GuestSessionTaskCopyTo::Init(const Utf8Str &strTaskDesc)
         Utf8Str strDst = mDest;
 
         LogFlowFunc(("Source: strSrc=%s, strDst=%s\n", strSrc.c_str(), strDst.c_str()));
+
+        if (strSrc.isEmpty())
+        {
+            strErrorInfo = Utf8StrFmt(GuestSession::tr("Source entry must not be empty"));
+            break;
+        }
 
         RTFSOBJINFO srcFsObjInfo;
         rc = RTPathQueryInfo(strSrc.c_str(), &srcFsObjInfo, RTFSOBJATTRADD_NOTHING);
