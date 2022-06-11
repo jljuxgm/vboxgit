@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 80444 2019-08-27 17:47:44Z vboxsync $
+# $Id: Makefile.kmk 80716 2019-09-11 02:28:59Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox Guest Addition X11 Client.
 #
@@ -47,6 +47,8 @@ VBoxClient_LIBS.freebsd = \
 	iconv
 VBoxClient_LIBS.linux = \
 	dl
+VBoxClient_LIBS.netbsd = \
+	crypt
 VBoxClient_LIBS.solaris = \
 	dl
 VBoxClient_LIBS = \
