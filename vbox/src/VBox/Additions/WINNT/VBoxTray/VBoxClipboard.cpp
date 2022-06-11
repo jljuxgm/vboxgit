@@ -1,4 +1,4 @@
-/* $Id: VBoxClipboard.cpp 80664 2019-09-09 10:00:04Z vboxsync $ */
+/* $Id: VBoxClipboard.cpp 80667 2019-09-09 11:37:47Z vboxsync $ */
 /** @file
  * VBoxClipboard - Shared clipboard, Windows Guest Implementation.
  */
@@ -1212,7 +1212,7 @@ DECLCALLBACK(int) VBoxClipboardWorker(void *pInstance, bool volatile *pfShutdown
             }
             else
             {
-                PVBGLR3CLIPBOARDEVENT pEvent = (PVBGLR3CLIPBOARDEVENT)RTMemAllocZ(sizeof(VBGLR3CLIPBOARDEVENT));
+                pEvent = (PVBGLR3CLIPBOARDEVENT)RTMemAllocZ(sizeof(VBGLR3CLIPBOARDEVENT));
                 if (!pEvent)
                 {
                     rc = VERR_NO_MEMORY;
