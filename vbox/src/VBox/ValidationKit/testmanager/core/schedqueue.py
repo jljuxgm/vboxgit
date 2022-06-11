@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# "$Id: schedqueue.py 83343 2020-03-19 20:48:13Z vboxsync $"
+# "$Id: schedqueue.py 83364 2020-03-23 09:47:01Z vboxsync $"
 
 """
 Test Manager - Test Case Queue.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 83343 $"
+__version__ = "$Revision: 83364 $"
 
 ## Standard python imports.
 #import unittest
@@ -45,12 +45,13 @@ class SchedQueueEntry(ModelDataBase):
     def __init__(self):
         ModelDataBase.__init__(self)
 
-        self.idItem             = None
-        self.tsLastScheduled    = None
-        self.sSchedGroup        = None
-        self.sTestGroup         = None
-        self.sTestCase          = None
-        self.fUpToDate          = None
+        self.idItem                     = None
+        self.tsLastScheduled            = None
+        self.sSchedGroup                = None
+        self.sTestGroup                 = None
+        self.sTestCase                  = None
+        self.fUpToDate                  = None
+        self.iPerSchedGroupRowNumber    = None;
 
     def initFromDbRow(self, aoRow):
         """
@@ -60,12 +61,13 @@ class SchedQueueEntry(ModelDataBase):
         if aoRow is None:
             raise TMExceptionBase('TestCaseQueue row not found.')
 
-        self.idItem             = aoRow[0]
-        self.tsLastScheduled    = aoRow[1]
-        self.sSchedGroup        = aoRow[2]
-        self.sTestGroup         = aoRow[3]
-        self.sTestCase          = aoRow[4]
-        self.fUpToDate          = aoRow[5]
+        self.idItem                     = aoRow[0]
+        self.tsLastScheduled            = aoRow[1]
+        self.sSchedGroup                = aoRow[2]
+        self.sTestGroup                 = aoRow[3]
+        self.sTestCase                  = aoRow[4]
+        self.fUpToDate                  = aoRow[5]
+        self.iPerSchedGroupRowNumber    = aoRow[6];
         return self
 
 
