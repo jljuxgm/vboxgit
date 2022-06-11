@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackendGlobal.cpp 83304 2020-03-17 12:08:26Z vboxsync $ */
+/* $Id: UIConverterBackendGlobal.cpp 83314 2020-03-18 12:05:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConverterBackendGlobal implementation.
  */
@@ -1197,6 +1197,9 @@ template<> QString toString(const UIExtraDataMetaDefs::DetailsElementOptionTypeN
         case UIExtraDataMetaDefs::DetailsElementOptionTypeNetwork_HostOnlyAdapter: strResult = QApplication::translate("UICommon", "Host Only Adapter"); break;
         case UIExtraDataMetaDefs::DetailsElementOptionTypeNetwork_GenericDriver:   strResult = QApplication::translate("UICommon", "Generic Driver"); break;
         case UIExtraDataMetaDefs::DetailsElementOptionTypeNetwork_NATNetwork:      strResult = QApplication::translate("UICommon", "NAT Network"); break;
+#ifdef VBOX_WITH_CLOUD_NET
+        case UIExtraDataMetaDefs::DetailsElementOptionTypeNetwork_CloudNetwork:    strResult = QApplication::translate("UICommon", "Cloud Network"); break;
+#endif /* VBOX_WITH_CLOUD_NET */
         default:
         {
             AssertMsgFailed(("No text for details element option type=%d", enmDetailsElementOptionTypeNetwork));
