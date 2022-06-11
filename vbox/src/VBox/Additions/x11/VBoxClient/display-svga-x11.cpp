@@ -1,4 +1,4 @@
-/* $Id: display-svga-x11.cpp 83928 2020-04-22 14:33:37Z vboxsync $ */
+/* $Id: display-svga-x11.cpp 83933 2020-04-22 16:33:55Z vboxsync $ */
 /** @file
  * X11 guest client - VMSVGA emulation resize event pass-through to X.Org
  * guest driver.
@@ -574,9 +574,7 @@ static DECLCALLBACK(int) x11MonitorThreadFunction(RTTHREAD ThreadSelf, void *pvU
 
 static int startX11MonitorThread()
 {
-    return 0;
     int rc;
-
     Assert(g_fMonitorThreadShutdown == false);
     if (mX11MonitorThread == NIL_RTTHREAD)
     {
@@ -900,7 +898,6 @@ static unsigned int computeDpi(unsigned int pixels, unsigned int mm)
    if (mm > 0) {
       dpi = (unsigned int)((double)pixels * MILLIS_PER_INCH /
                            (double)mm + 0.5);
-      printf("computed dpi %u\n", dpi);
    }
    return (dpi > 0) ? dpi : DEFAULT_DPI;
 }
@@ -1251,8 +1248,6 @@ static int run(struct VBCLSERVICE **ppInterface, bool fDaemonised)
                 aOutputs[j].fEnabled = !(aMonitors[j].fDisplayFlags & VMMDEV_DISPLAY_DISABLED);
                 if (aOutputs[j].fEnabled)
                     iRunningX += aOutputs[j].width;
-                printf("%d %d %d %d %d\n", aOutputs[j].x, aOutputs[j].y,
-                       aOutputs[j].width, aOutputs[j].height, aOutputs[j].fEnabled);
             }
             setXrandrTopology(aOutputs);
         }
