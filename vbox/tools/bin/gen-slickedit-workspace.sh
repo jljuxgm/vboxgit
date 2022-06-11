@@ -1,5 +1,5 @@
 # !kmk_ash
-# $Id: gen-slickedit-workspace.sh 79484 2019-07-03 04:03:48Z vboxsync $
+# $Id: gen-slickedit-workspace.sh 79809 2019-07-16 14:05:18Z vboxsync $
 ## @file
 # Script for generating a SlickEdit workspace.
 #
@@ -571,6 +571,8 @@ my_generate_usercpp_h()
 #define RT_C_DECLS_BEGIN
 #define RT_C_DECLS_END
 #define RT_NO_THROW
+#define RT_NOEXCEPT
+#define RT_OVERRIDE
 #define RT_THROW(type) throw(type)
 #define RT_GCC_EXTENSION
 #define RT_COMPILER_GROKS_64BIT_BITFIELDS
