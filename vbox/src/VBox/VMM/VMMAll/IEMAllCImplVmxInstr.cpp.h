@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 78681 2019-05-23 07:39:24Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 78689 2019-05-23 10:44:35Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -1396,48 +1396,6 @@ IEM_STATIC VMXVDIAG iemVmxGetDiagVmexitPdpteRsvd(unsigned iPdpte)
         case 3: return kVmxVDiag_Vmexit_HostPdpte3Rsvd;
         IEM_NOT_REACHED_DEFAULT_CASE_RET2(kVmxVDiag_Ipe_12);
     }
-}
-
-
-/**
- * Gets the masked nested-guest CR0/CR4 subject to the corresponding guest/host mask
- * and the CR0/CR4 read-shadow.
- *
- * @returns The masked nested-guest CR0/CR4.
- * @param   pVCpu       The cross context virtual CPU structure.
- * @param   iCrReg      The control register (either CR0 or CR4).
- * @param   uGuestCrX   The current guest CR0 or guest CR4.
- */
-IEM_STATIC uint64_t iemVmxGetMaskedCr0Cr4(PVMCPU pVCpu, uint8_t iCrReg, uint64_t uGuestCrX)
-{
-    Assert(IEM_VMX_IS_NON_ROOT_MODE(pVCpu));
-    Assert(iCrReg == 0 || iCrReg == 4);
-
-    PCVMXVVMCS pVmcs = pVCpu->cpum.GstCtx.hwvirt.vmx.CTX_SUFF(pVmcs);
-    Assert(pVmcs);
-
-    /*
-     * For each CR0 or CR4 bit owned by the host, the corresponding bit is loaded from the
-     * CR0 read shadow or CR4 read shadow. For each CR0 or CR4 bit that is not owned by the
-     * host, the corresponding bit from the guest CR0 or guest CR4 is loaded.
-     *
-     * See Intel Spec. 25.3 "Changes To Instruction Behavior In VMX Non-root Operation".
-     */
-    uint64_t fGstHostMask;
-    uint64_t fReadShadow;
-    if (iCrReg == 0)
-    {
-        fGstHostMask = pVmcs->u64Cr0Mask.u;
-        fReadShadow  = pVmcs->u64Cr0ReadShadow.u;
-    }
-    else
-    {
-        fGstHostMask = pVmcs->u64Cr4Mask.u;
-        fReadShadow  = pVmcs->u64Cr4ReadShadow.u;
-    }
-
-    uint64_t const fMaskedCrX = (fReadShadow & fGstHostMask) | (uGuestCrX & ~fGstHostMask);
-    return fMaskedCrX;
 }
 
 
