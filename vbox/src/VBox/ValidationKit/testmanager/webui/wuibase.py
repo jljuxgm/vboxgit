@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuibase.py 83395 2020-03-24 18:55:11Z vboxsync $
+# $Id: wuibase.py 83397 2020-03-24 20:16:51Z vboxsync $
 
 """
 Test Manager Web-UI - Base Classes.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 83395 $"
+__version__ = "$Revision: 83397 $"
 
 
 # Standard python imports.
@@ -96,6 +96,8 @@ class WuiDispatcherBase(object):
     ksParamChangeLogPageNo          = 'ChangeLogPageNo';
     ## The name of the parameter indicate number of change log entries per page.
     ksParamChangeLogEntriesPerPage  = 'ChangeLogEntriesPerPage';
+    ## The change log related parameters.
+    kasChangeLogParams = (ksParamChangeLogEnabled, ksParamChangeLogPageNo, ksParamChangeLogEntriesPerPage,);
 
     ## @name Dispatcher debugging parameters.
     ## {@
