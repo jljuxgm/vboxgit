@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 79084 2019-06-11 10:40:04Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 79085 2019-06-11 10:47:36Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -1401,11 +1401,14 @@ static int hmR0VmxAllocVmcsInfo(PVMCPU pVCpu, PVMXVMCSINFO pVmcsInfo, bool fIsNs
              * don't need to care about carefully restoring the guest MSR bitmap.
              * The guest visible nested-guest MSR bitmap needs to remain unchanged.
              * Hence, allocate a separate MSR bitmap for the guest and nested-guest.
+             * We also don't need to re-initialize the nested-guest MSR bitmap here as
+             * we do that later while merging VMCS.
              */
             if (pVM->hm.s.vmx.Msrs.ProcCtls.n.allowed1 & VMX_PROC_CTLS_USE_MSR_BITMAPS)
             {
                 rc = hmR0VmxPageAllocZ(&pVmcsInfo->hMemObjMsrBitmap, &pVmcsInfo->pvMsrBitmap, &pVmcsInfo->HCPhysMsrBitmap);
-                if (RT_SUCCESS(rc))
+                if (   RT_SUCCESS(rc)
+                    && fIsNstGstVmcs)
                     ASMMemFill32(pVmcsInfo->pvMsrBitmap, X86_PAGE_4K_SIZE, UINT32_C(0xffffffff));
             }
 
