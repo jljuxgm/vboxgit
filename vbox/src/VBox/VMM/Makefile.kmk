@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 78438 2019-05-07 15:57:37Z vboxsync $
+# $Id: Makefile.kmk 79091 2019-06-11 15:15:30Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -935,7 +935,7 @@ BLDDIRS += $(PATH_TARGET)/pylint
 define def_vbox_vmm_py_check
 $(eval name:=$(basename $(notdir $(py))))
 
-pylint::   $(name)-py-phony.o
+pylint:    $(name)-py-phony.o
 $(name).o: $(name)-py-phony.o
 $(PATH_TARGET)/pylint/$(name).o $(name)-py-phony.o:: $(py) | $(PATH_TARGET)/pylint/
 ifdef VBOX_WITH_PYLINT

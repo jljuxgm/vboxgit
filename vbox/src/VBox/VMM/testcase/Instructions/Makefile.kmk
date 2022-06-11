@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: Makefile.kmk 79091 2019-06-11 15:15:30Z vboxsync $
 ## @file
 # Sub-Makefile for the X86 and AMD64 Instruction Tests.
 #
@@ -29,7 +29,7 @@ BLDDIRS += $(PATH_TARGET)/pylint
 define def_vbox_instructions_py_check
 $(eval name:=$(basename $(notdir $(py))))
 
-pylint::   $(name)-py-phony.o
+pylint:    $(name)-py-phony.o
 $(name).o: $(name)-py-phony.o
 $(PATH_TARGET)/pylint/$(name).o $(name)-py-phony.o:: $(py) | $(PATH_TARGET)/pylint/
 ifdef VBOX_WITH_PYLINT
