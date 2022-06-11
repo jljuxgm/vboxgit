@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 80834 $"
+__version__ = "$Revision: 80852 $"
 
 # Standard Python imports.
 import errno
@@ -2130,7 +2130,7 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
         """
         Tests the guest session environment changes.
         """
-        enmErrInvalidVarName = vbox.ComError.VBOX_E_IPRT_ERROR if self.oTstDrv.fpApiRev >= 6.1 else vbox.ComError.E_INVALIDARG;
+        enmErrInvalidVarName = vbox.ComError.VBOX_E_IPRT_ERROR if self.oTstDrv.fpApiVer >= 6.1 else vbox.ComError.E_INVALIDARG;
         aoTests = [
             # Check basic operations.
             tdTestSessionEx([ # Initial environment is empty.
