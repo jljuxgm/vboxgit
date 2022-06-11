@@ -1,4 +1,4 @@
-/* $Id: Virtio_1_0.cpp 81629 2019-11-02 22:11:47Z vboxsync $ */
+/* $Id: Virtio_1_0.cpp 81630 2019-11-02 22:12:49Z vboxsync $ */
 /** @file
  * Virtio_1_0 - Virtio Common (PCI, feature & config mgt, queue mgt & proxy, notification mgt)
  */
@@ -410,6 +410,8 @@ void virtioRelocate(PPDMDEVINS pDevIns, RTGCINTPTR offDelta)
     LogFunc(("\n"));
 
     pVirtio->pDevInsR3 = pDevIns;
+    pVirtio->pDevInsRC = PDMDEVINS_2_RCPTR(pDevIns);
+    pVirtio->pDevInsR0 = PDMDEVINS_2_R0PTR(pDevIns);
 }
 
 
@@ -1055,6 +1057,8 @@ int   virtioConstruct(PPDMDEVINS             pDevIns,
     RTStrCopy(pVirtio->szInstance, sizeof(pVirtio->szInstance), pcszInstance);
 
     pVirtio->pDevInsR3 = pDevIns;
+    pVirtio->pDevInsR0 = PDMDEVINS_2_R0PTR(pDevIns);
+    pVirtio->pDevInsRC = PDMDEVINS_2_RCPTR(pDevIns);
     pVirtio->uDeviceStatus = 0;
     pVirtio->cbDevSpecificCfg = cbDevSpecificCfg;
     pVirtio->pDevSpecificCfg  = pDevSpecificCfg;
