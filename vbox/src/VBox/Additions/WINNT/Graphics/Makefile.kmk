@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: Makefile.kmk 80300 2019-08-15 16:27:25Z vboxsync $
 ## @file
 # Sub-Makefile for the Windows guest graphics driver.
 #
@@ -20,9 +20,6 @@ include $(KBUILD_PATH)/subheader.kmk
 
 # Include sub-makefiles.
 include $(PATH_SUB_CURRENT)/Video/Makefile.kmk
-ifdef VBOX_WITH_CROGL
- include $(PATH_SUB_CURRENT)/Wine_new/Makefile.kmk
-endif
 
 include $(FILE_KBUILD_SUB_FOOTER)
 
