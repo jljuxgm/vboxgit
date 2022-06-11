@@ -1,4 +1,4 @@
-/* $Id: VBoxDnD.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxDnD.h 83833 2020-04-19 14:14:35Z vboxsync $ */
 /** @file
  * VBoxDnD.h - Windows-specific bits of the drag'n drop service.
  */
@@ -307,7 +307,7 @@ public:
 
 public:
 
-    int Initialize(PVBOXDNDCONTEXT pContext);
+    int Initialize(PVBOXDNDCONTEXT a_pCtx);
     void Destroy(void);
 
 public:
