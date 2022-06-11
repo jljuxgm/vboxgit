@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 82039 2019-11-20 17:22:21Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 82049 2019-11-20 20:32:26Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -4373,6 +4373,7 @@ const PDMDEVHLPR3 g_pdmR3DevHlpTrusted =
     SSMR3HandleHostBits,
     SSMR3HandleRevision,
     SSMR3HandleVersion,
+    SSMR3HandleHostOSAndArch,
     pdmR3DevHlp_TMTimerCreate,
     pdmR3DevHlp_TimerCreate,
     pdmR3DevHlp_TimerToPtr,
@@ -4869,6 +4870,7 @@ const PDMDEVHLPR3 g_pdmR3DevHlpUnTrusted =
     SSMR3HandleHostBits,
     SSMR3HandleRevision,
     SSMR3HandleVersion,
+    SSMR3HandleHostOSAndArch,
     pdmR3DevHlp_TMTimerCreate,
     pdmR3DevHlp_TimerCreate,
     pdmR3DevHlp_TimerToPtr,
