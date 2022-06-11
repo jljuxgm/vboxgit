@@ -1,4 +1,4 @@
-/* $Id: VBoxClipboard.cpp 80866 2019-09-17 15:40:00Z vboxsync $ */
+/* $Id: VBoxClipboard.cpp 80886 2019-09-18 11:27:18Z vboxsync $ */
 /** @file
  * VBoxClipboard - Shared clipboard, Windows Guest Implementation.
  */
@@ -800,8 +800,8 @@ static LRESULT vboxClipboardWinProcessMsg(PSHCLCONTEXT pCtx, HWND hwnd, UINT msg
 
                                    if (RT_SUCCESS(rc))
                                    {
-                                       rc = SharedClipboardTransferLTransferSetRoots(pTransfer,
-                                                                                     papszList, cbList + 1 /* Include termination */);
+                                       rc = SharedClipboardTransferSetRoots(pTransfer,
+                                                                            papszList, cbList + 1 /* Include termination */);
                                        if (RT_SUCCESS(rc))
                                        {
                                            PSHCLWRITETHREADCTX pThreadCtx
@@ -909,8 +909,8 @@ static LRESULT vboxClipboardWinProcessMsg(PSHCLCONTEXT pCtx, HWND hwnd, UINT msg
 
                                if (RT_SUCCESS(rc))
                                {
-                                   rc = SharedClipboardTransferLTransferSetRoots(pTransfer,
-                                                                                 papszList, cbList + 1 /* Include termination */);
+                                   rc = SharedClipboardTransferSetRoots(pTransfer,
+                                                                        papszList, cbList + 1 /* Include termination */);
                                    if (RT_SUCCESS(rc))
                                    {
                                        PSHCLWRITETHREADCTX pThreadCtx
