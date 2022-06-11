@@ -1,4 +1,4 @@
-/* $Id: UIChooserNodeMachine.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIChooserNodeMachine.cpp 83000 2020-02-05 19:35:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserNodeMachine class implementation.
  */
@@ -27,6 +27,18 @@ UIChooserNodeMachine::UIChooserNodeMachine(UIChooserNode *pParent,
                                            const CMachine &comMachine)
     : UIChooserNode(pParent, fFavorite)
     , m_pCache(new UIVirtualMachineItemLocal(comMachine))
+{
+    if (parentNode())
+        parentNode()->addNode(this, iPosition);
+    retranslateUi();
+}
+
+UIChooserNodeMachine::UIChooserNodeMachine(UIChooserNode *pParent,
+                                           bool fFavorite,
+                                           int iPosition,
+                                           const QString &strName)
+    : UIChooserNode(pParent, fFavorite)
+    , m_pCache(new UIVirtualMachineItemCloud(strName))
 {
     if (parentNode())
         parentNode()->addNode(this, iPosition);

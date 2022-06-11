@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItem.h 82960 2020-02-03 15:50:24Z vboxsync $ */
+/* $Id: UIVirtualMachineItem.h 83000 2020-02-05 19:35:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItem class declarations.
  */
@@ -49,7 +49,7 @@ class UIVirtualMachineItem : public QIWithRetranslateUI3<QObject>
 public:
 
     /** Item types. */
-    enum ItemType { ItemType_Local, ItemType_CloudFake };
+    enum ItemType { ItemType_Local, ItemType_CloudFake, ItemType_CloudReal };
 
     /** Constructs VM item on the basis of taken @a enmType. */
     UIVirtualMachineItem(ItemType enmType);

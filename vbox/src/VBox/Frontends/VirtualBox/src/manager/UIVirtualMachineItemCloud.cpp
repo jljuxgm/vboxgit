@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItemCloud.cpp 82960 2020-02-03 15:50:24Z vboxsync $ */
+/* $Id: UIVirtualMachineItemCloud.cpp 83000 2020-02-05 19:35:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItemCloud class implementation.
  */
@@ -26,6 +26,14 @@ UIVirtualMachineItemCloud::UIVirtualMachineItemCloud()
     : UIVirtualMachineItem(ItemType_CloudFake)
     , m_enmFakeCloudItemState(FakeCloudItemState_Loading)
 {
+    recache();
+}
+
+UIVirtualMachineItemCloud::UIVirtualMachineItemCloud(const QString &strName)
+    : UIVirtualMachineItem(ItemType_CloudReal)
+    , m_enmFakeCloudItemState(FakeCloudItemState_NotApplicable)
+{
+    m_strName = strName;
     recache();
 }
 
