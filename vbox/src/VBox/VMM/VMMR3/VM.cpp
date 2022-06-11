@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 80074 2019-07-31 14:18:34Z vboxsync $ */
+/* $Id: VM.cpp 80080 2019-07-31 16:12:31Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -734,18 +734,6 @@ static int vmR3ReadBaseConfig(PVM pVM, PUVM pUVM, uint32_t cCpus)
 {
     int         rc;
     PCFGMNODE   pRoot = CFGMR3GetRoot(pVM);
-
-    /*
-     * If executing in fake suplib mode disable RR3 and RR0 in the config.
-     */
-    const char *psz = RTEnvGet("VBOX_SUPLIB_FAKE");
-    if (psz && !strcmp(psz, "fake"))
-    {
-        CFGMR3RemoveValue(pRoot, "RawR3Enabled");
-        CFGMR3InsertInteger(pRoot, "RawR3Enabled", 0);
-        CFGMR3RemoveValue(pRoot, "RawR0Enabled");
-        CFGMR3InsertInteger(pRoot, "RawR0Enabled", 0);
-    }
 
     /*
      * Base EM and HM config properties.
