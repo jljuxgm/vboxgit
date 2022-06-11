@@ -1,4 +1,4 @@
-/* $Id: GuestFileImpl.cpp 78666 2019-05-22 15:27:27Z vboxsync $ */
+/* $Id: GuestFileImpl.cpp 79189 2019-06-17 16:04:55Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest file handling.
  */
@@ -1296,7 +1296,7 @@ HRESULT GuestFile::close()
     LogFlowThisFuncEnter();
 
     /* Close file on guest. */
-    int rcGuest;
+    int rcGuest = VERR_IPE_UNINITIALIZED_STATUS;
     int vrc = i_closeFile(&rcGuest);
     /* On failure don't return here, instead do all the cleanup
      * work first and then return an error. */
@@ -1326,7 +1326,8 @@ HRESULT GuestFile::queryInfo(ComPtr<IFsObjInfo> &aObjInfo)
 
     HRESULT hr = S_OK;
 
-    GuestFsObjData fsObjData; int rcGuest;
+    GuestFsObjData fsObjData;
+    int rcGuest = VERR_IPE_UNINITIALIZED_STATUS;
     int vrc = i_queryInfo(fsObjData, &rcGuest);
     if (RT_SUCCESS(vrc))
     {
@@ -1362,7 +1363,8 @@ HRESULT GuestFile::querySize(LONG64 *aSize)
 
     HRESULT hr = S_OK;
 
-    GuestFsObjData fsObjData; int rcGuest;
+    GuestFsObjData fsObjData;
+    int rcGuest = VERR_IPE_UNINITIALIZED_STATUS;
     int vrc = i_queryInfo(fsObjData, &rcGuest);
     if (RT_SUCCESS(vrc))
     {
