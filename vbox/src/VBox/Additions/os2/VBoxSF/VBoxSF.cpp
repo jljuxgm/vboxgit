@@ -1,4 +1,4 @@
-/** $Id: VBoxSF.cpp 77661 2019-03-11 21:14:16Z vboxsync $ */
+/** $Id: VBoxSF.cpp 79110 2019-06-13 00:17:25Z vboxsync $ */
 /** @file
  * VBoxSF - OS/2 Shared Folders, the FS and FSD level IFS EPs
  */
@@ -2125,7 +2125,12 @@ vboxSfOs2MakeEmptyEaList(PEAOP pEaOp, ULONG uLevel)
     {
         Log2(("vboxSfOs2MakeEmptyEaList: #0: %p %p %#x\n", EaOp.fpGEAList, EaOp.fpFEAList, EaOp.oError));
         EaOp.fpFEAList = (PFEALIST)KernSelToFlat((uintptr_t)EaOp.fpFEAList);
-        EaOp.fpGEAList = (PGEALIST)KernSelToFlat((uintptr_t)EaOp.fpGEAList);
+        if (   uLevel != FI_LVL_EAS_FULL
+            && uLevel != FI_LVL_EAS_FULL_5
+            && uLevel != FI_LVL_EAS_FULL_8)
+            EaOp.fpGEAList = (PGEALIST)KernSelToFlat((uintptr_t)EaOp.fpGEAList);
+        else
+            EaOp.fpGEAList = NULL;
         Log2(("vboxSfOs2MakeEmptyEaList: #0b: %p %p\n", EaOp.fpGEAList, EaOp.fpFEAList));
 
         rc = vboxSfOs2MakeEmptyEaListEx(&EaOp, uLevel, NULL, &pEaOp->oError);
