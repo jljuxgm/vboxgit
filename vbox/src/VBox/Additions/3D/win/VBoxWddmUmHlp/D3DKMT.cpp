@@ -1,4 +1,4 @@
-/* $Id: D3DKMT.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: D3DKMT.cpp 79769 2019-07-14 17:04:58Z vboxsync $ */
 /** @file
  * WDDM Kernel Mode Thunks helpers.
  */
@@ -219,9 +219,12 @@ static NTSTATUS vboxDispKmtOpenAdapterFromLuid(D3DKMT_HANDLE *phAdapter, LUID *p
 
 NTSTATUS vboxDispKmtOpenAdapter2(D3DKMT_HANDLE *phAdapter, LUID *pLuid)
 {
-    NTSTATUS Status = vboxDispKmtOpenAdapterFromHdc(phAdapter, pLuid);
+    NTSTATUS Status = vboxDispKmtOpenAdapterFromLuid(phAdapter, pLuid);
     if (Status != STATUS_SUCCESS)
-        Status = vboxDispKmtOpenAdapterFromLuid(phAdapter, pLuid);
+    {
+        /* Fallback for pre-Windows8 */
+        Status = vboxDispKmtOpenAdapterFromHdc(phAdapter, pLuid);
+    }
 
     return Status;
 }
