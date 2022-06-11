@@ -1,4 +1,4 @@
-/* $Id: Virtio_1_0.cpp 83603 2020-04-07 09:43:23Z vboxsync $ */
+/* $Id: Virtio_1_0.cpp 83664 2020-04-10 07:58:57Z vboxsync $ */
 /** @file
  * Virtio_1_0 - Virtio Common (PCI, feature & config mgt, queue mgt & proxy, notification mgt)
  */
@@ -1114,6 +1114,8 @@ static void virtioNotifyGuestDriver(PPDMDEVINS pDevIns, PVIRTIOCORE pVirtio, uin
             virtioKick(pDevIns, pVirtio, VIRTIO_ISR_VIRTQ_INTERRUPT, pVirtio->uQueueMsixVector[idxQueue], fForce);
             return;
         }
+/** TEMPORARY DEBUGGING HACK, EVALUATE AND REMOVE */
+virtioKick(pDevIns, pVirtio, VIRTIO_ISR_VIRTQ_INTERRUPT, pVirtio->uQueueMsixVector[idxQueue], fForce);
 
         Log6Func(("...skipping interrupt. Guest flagged VIRTQ_AVAIL_F_NO_INTERRUPT for queue\n"));
     }
