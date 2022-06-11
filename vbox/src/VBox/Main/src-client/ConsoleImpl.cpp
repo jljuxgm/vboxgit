@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 78900 2019-05-31 15:46:15Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 78901 2019-05-31 16:22:52Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -9294,6 +9294,7 @@ int Console::i_changeClipboardMode(ClipboardMode_T aClipboardMode)
 
     return vrc;
 #else
+    RT_NOREF(aClipboardMode);
     return VERR_NOT_IMPLEMENTED;
 #endif
 }
