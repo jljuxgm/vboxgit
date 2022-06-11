@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 80586 2019-09-04 14:14:03Z vboxsync $ */
+/* $Id: MachineImpl.cpp 80752 2019-09-12 11:03:41Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -1890,7 +1890,12 @@ HRESULT Machine::getAccelerate2DVideoEnabled(BOOL *aAccelerate2DVideoEnabled)
 {
     AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
 
-    *aAccelerate2DVideoEnabled = mHWData->mAccelerate2DVideoEnabled;
+    /** @todo quick workaround for hang with Win10 guest when 2d accel
+     * is enabled when non-VBoxVGA graphics is configured. */
+    if (mHWData->mGraphicsControllerType == GraphicsControllerType_VBoxVGA)
+        *aAccelerate2DVideoEnabled = mHWData->mAccelerate2DVideoEnabled;
+    else
+        *aAccelerate2DVideoEnabled = FALSE;
 
     return S_OK;
 }
