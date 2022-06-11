@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 81401 2019-10-21 12:21:41Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 81442 2019-10-22 08:39:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -2405,6 +2405,24 @@ void UIMessageCenter::cannotAddDiskEncryptionPassword(const CConsole &console)
     error(0, MessageType_Error,
           tr("Bad password or authentication failure."),
           UIErrorString::formatErrorInfo(console));
+}
+
+bool UIMessageCenter::confirmSoftKeyboardClose() const
+{
+    return questionBinary(0, MessageType_Warning,
+                          tr("There are not saved layouts? Closing this dialog will cause loosing the changed. Proceed?"),
+                          0 /* auto-confirm id */,
+                          "Ok", "Cancel");
+
+
+
+    // bool questionBinary(QWidget *pParent, MessageType enmType,
+    //                     const QString &strMessage,
+    //                     const char *pcszAutoConfirmId = 0,
+    //                     const QString &strOkButtonText = QString(),
+    //                     const QString &strCancelButtonText = QString(),
+    //                     bool fDefaultFocusForOk = true) const;
+
 }
 
 #ifdef VBOX_GUI_WITH_NETWORK_MANAGER
