@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItemCloud.h 83094 2020-02-17 10:12:35Z vboxsync $ */
+/* $Id: UIVirtualMachineItemCloud.h 83095 2020-02-17 12:38:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItemCloud class declarations.
  */
@@ -142,6 +142,9 @@ private:
       * @{ */
         /** Holds fake cloud item state. */
         FakeCloudItemState  m_enmFakeCloudItemState;
+
+        /** Holds the state acquire task instance. */
+        UITask *m_pTask;
     /** @} */
 };
 
