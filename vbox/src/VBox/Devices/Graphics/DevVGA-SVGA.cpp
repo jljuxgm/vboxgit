@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 83256 2020-03-11 10:57:46Z vboxsync $ */
+/* $Id: DevVGA-SVGA.cpp 83273 2020-03-12 17:02:31Z vboxsync $ */
 /** @file
  * VMware SVGA device.
  *
@@ -5802,6 +5802,15 @@ int vmsvgaR3LoadDone(PPDMDEVINS pDevIns)
                                                          pSVGAState->Cursor.pData);
         AssertRC(rc);
     }
+
+    /* If the VRAM handler should not be registered, we have to explicitly
+     * unregister it here!
+     */
+    if (!pThis->svga.fVRAMTracking)
+    {
+        vgaR3UnregisterVRAMHandler(pDevIns, pThis);
+    }
+
     return VINF_SUCCESS;
 }
 
