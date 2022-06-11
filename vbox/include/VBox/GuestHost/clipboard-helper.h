@@ -1,4 +1,4 @@
-/* $Id: clipboard-helper.h 79174 2019-06-17 10:30:49Z vboxsync $ */
+/* $Id: clipboard-helper.h 79176 2019-06-17 10:39:33Z vboxsync $ */
 /** @file
  * Shared Clipboard - Some helper function for converting between the various EOLs.
  */
@@ -175,7 +175,7 @@ int vboxClipboardBmpGetDib(const void *pvSrc, size_t cbSrc, const void **ppvDst,
  *
  * @returns VBox status code.
  * @param   pszSrc              HTML data to dump.
- * @param   cb                  Size (in bytes) of HTML data to dump.
+ * @param   cbSrc               Size (in bytes) of HTML data to dump.
  */
 int vboxClipboardDbgDumpHtml(const char *pszSrc, size_t cbSrc);
 #endif
