@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 84072 2020-04-29 07:42:49Z vboxsync $
+# $Id: vbox.py 84108 2020-04-30 14:37:19Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84072 $"
+__version__ = "$Revision: 84108 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -3513,8 +3513,6 @@ class TestDriver(base.TestDriver):                                              
         if sFile is None:
             sFile = 'valkit.txt';
 
-        reporter.log2('txsCdWait: Waiting for file "%s" to become available ...' % (sFile,));
-
         fRemoveVm   = self.addTask(oSession);
         fRemoveTxs  = self.addTask(oTxsSession);
         cMsTimeout  = self.adjustTimeoutMs(cMsTimeout);
@@ -3523,6 +3521,7 @@ class TestDriver(base.TestDriver):                                              
         fRc         = oTxsSession.asyncIsFile('${CDROM}/%s' % (sFile,), cMsTimeout2);
         if fRc is True:
             while True:
+                reporter.log('txsCdWait: Waiting for file "%s" to become available ...' % (sFile,));
                 # wait for it to complete.
                 oTask = self.waitForTasks(cMsTimeout2 + 1);
                 if oTask is not oTxsSession:
@@ -3548,6 +3547,15 @@ class TestDriver(base.TestDriver):                                              
 
                 # delay.
                 self.sleep(1);
+
+                ## @todo Make this optional and identify guest OS type.
+                reporter.log('txsCdWait: Listing root contents of ${CDROM}:');
+                oTxsSession.syncExec("/bin/ls", ("/bin/ls", "-al", "${CDROM}"), fIgnoreErrors = True);
+                # ASSUMES that we always install Windows on drive C right now.
+                # Does not run on ancient stuff which uses WINNT as %WinDir%.
+                oTxsSession.syncExec("C:\\Windows\\System32\\cmd.exe",
+                                     ("C:\\Windows\\System32\\cmd.exe", "/C", "dir", "${CDROM}"),
+                                     fIgnoreErrors = True);
 
                 # resubmitt the task.
                 cMsTimeout2 = msStart + cMsTimeout - base.timestampMilli();
