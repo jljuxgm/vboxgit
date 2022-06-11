@@ -1,4 +1,4 @@
-/* $Id: HDAStream.cpp 82255 2019-11-27 23:20:26Z vboxsync $ */
+/* $Id: HDAStream.cpp 82323 2019-12-02 14:33:12Z vboxsync $ */
 /** @file
  * HDAStream.cpp - Stream functions for HD Audio.
  */
@@ -1374,12 +1374,8 @@ int hdaR3StreamTransfer(PHDASTREAM pStream, uint32_t cbToProcessMax)
     {
         Log3Func(("[SD%RU8] Scheduling timer\n", pStream->u8SD));
 
-        TMTimerUnlock(pStream->pTimer);
-
         LogFunc(("Timer set SD%RU8\n", pStream->u8SD));
         hdaR3TimerSet(pStream->pHDAState, pStream, tsTransferNext, false /* fForce */);
-
-        TMTimerLock(pStream->pTimer, VINF_SUCCESS);
 
         pStream->State.tsTransferNext = tsTransferNext;
     }
