@@ -1,4 +1,4 @@
-/* $Id: extvfs.cpp 80633 2019-09-06 16:35:36Z vboxsync $ */
+/* $Id: extvfs.cpp 80635 2019-09-06 16:46:01Z vboxsync $ */
 /** @file
  * IPRT - Ext2/3/4 Virtual Filesystem.
  */
@@ -1196,7 +1196,7 @@ static int rtFsExtInodeLoad(PRTFSEXTVOL pThis, uint32_t iInode, PRTFSEXTINODE *p
             if (RT_SUCCESS(rc))
             {
                 bool fIns = RTAvlU32Insert(&pThis->InodeRoot, &pInode->Core);
-                Assert(fIns);
+                Assert(fIns); RT_NOREF(fIns);
             }
         }
         else
