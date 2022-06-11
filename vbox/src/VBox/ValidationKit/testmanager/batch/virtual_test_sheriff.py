@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 80140 2019-08-05 19:59:41Z vboxsync $
+# $Id: virtual_test_sheriff.py 80235 2019-08-12 20:04:52Z vboxsync $
 # pylint: disable=line-too-long
 
 """
@@ -35,7 +35,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 80140 $"
+__version__ = "$Revision: 80235 $"
 
 
 # Standard python imports
@@ -337,7 +337,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
 
         if self.oConfig.sLogFile:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 80140 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 80235 $ \n');
 
 
     def eprint(self, sText):
@@ -711,7 +711,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.getFailureReason(tReason);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 80140 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 80235 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
@@ -812,6 +812,8 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
         # ( Whether to stop on hit, reason tuple, needle text. )
         ( False, ktReason_Host_LeftoverService,
           'SERVICE_NAME: vbox' ),
+        ( False, ktReason_Host_LeftoverService,
+          'Seems installation was skipped. Old version lurking behind? Not the fault of this build/test run!'),
     ];
 
     kdatSimpleInstallUninstallMainLogReasonsPerOs = {
