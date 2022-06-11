@@ -1,4 +1,4 @@
-/* $Id: UISession.h 81592 2019-10-30 16:39:09Z vboxsync $ */
+/* $Id: UISession.h 81622 2019-11-01 17:58:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -443,9 +443,12 @@ private:
     void updateMenu();
 #endif /* VBOX_WS_MAC */
 
-    /* Common helpers: */
     /** Updates mouse pointer shape. */
     void updateMousePointerShape();
+    /** Updates mouse pointer @a pixmap, @a uXHot and @a uYHot according to scaling attributes. */
+    void updateMousePointerPixmapScaling(QPixmap &pixmap, uint &uXHot, uint &uYHot);
+
+    /* Common helpers: */
     bool preprocessInitialization();
     bool mountAdHocImage(KDeviceType enmDeviceType, UIMediumDeviceType enmMediumType, const QString &strMediumName);
     bool postprocessInitialization();
