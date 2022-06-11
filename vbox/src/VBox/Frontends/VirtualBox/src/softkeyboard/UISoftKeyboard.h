@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboard.h 78661 2019-05-22 13:24:02Z vboxsync $ */
+/* $Id: UISoftKeyboard.h 78682 2019-05-23 09:30:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class declaration.
  */
@@ -84,6 +84,7 @@ private:
     int           m_iTotalRowHeight;
     int           m_iMaxRowWidth;
     QVector<UISoftKeyboardKey*> m_pressedModifiers;
+    bool          m_fKeepAspectRatio;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_softkeyboard_UISoftKeyboard_h */
