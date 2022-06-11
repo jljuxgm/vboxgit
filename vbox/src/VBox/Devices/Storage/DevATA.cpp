@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 81857 2019-11-15 00:17:46Z vboxsync $ */
+/* $Id: DevATA.cpp 81858 2019-11-15 00:22:45Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -6543,7 +6543,6 @@ static DECLCALLBACK(void) ataR3Detach(PPDMDEVINS pDevIns, unsigned iLUN, uint32_
  * Configure a LUN.
  *
  * @returns VBox status code.
- * @param   pDevIns     The device instance.
  * @param   pIf         The ATA unit state.
  */
 static int ataR3ConfigLun(ATADevState *pIf)

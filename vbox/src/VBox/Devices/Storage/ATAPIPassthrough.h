@@ -1,4 +1,4 @@
-/* $Id: ATAPIPassthrough.h 81844 2019-11-14 18:16:36Z vboxsync $ */
+/* $Id: ATAPIPassthrough.h 81858 2019-11-15 00:22:45Z vboxsync $ */
 /** @file
  * VBox storage devices: ATAPI passthrough helpers (common code for DevATA and DevAHCI).
  */
@@ -35,7 +35,7 @@ typedef struct TRACKLIST *PTRACKLIST;
 DECLHIDDEN(int) ATAPIPassthroughTrackListCreateEmpty(PTRACKLIST *ppTrackList);
 DECLHIDDEN(void) ATAPIPassthroughTrackListDestroy(PTRACKLIST pTrackList);
 DECLHIDDEN(void) ATAPIPassthroughTrackListClear(PTRACKLIST pTrackList);
-DECLHIDDEN(int)  ATAPIPassthroughTrackListUpdate(PTRACKLIST pTrackList, const uint8_t *pCDB, const void *pvBuf, size_t cbBuf);
+DECLHIDDEN(int)  ATAPIPassthroughTrackListUpdate(PTRACKLIST pTrackList, const uint8_t *pbCDB, const void *pvBuf, size_t cbBuf);
 DECLHIDDEN(uint32_t) ATAPIPassthroughTrackListGetSectorSizeFromLba(PTRACKLIST pTrackList, uint32_t iAtapiLba);
 DECLHIDDEN(bool) ATAPIPassthroughParseCdb(const uint8_t *pbCdb, size_t cbCdb, size_t cbBuf,
                                           PTRACKLIST pTrackList, uint8_t *pbSense, size_t cbSense,
