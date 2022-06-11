@@ -1,4 +1,4 @@
-/** $Id: DevE1000Phy.h 81465 2019-10-23 01:10:43Z vboxsync $ */
+/** $Id: DevE1000Phy.h 82347 2019-12-03 16:32:17Z vboxsync $ */
 /** @file
  * DevE1000Phy - Intel 82540EM Ethernet Controller Internal PHY Emulation, Header.
  */
@@ -106,6 +106,10 @@ namespace Phy
 
 #define MDIO_READ_OP  2
 #define MDIO_WRITE_OP 1
+
+/* External callback declaration */
+void e1kPhyLinkResetCallback(PPDMDEVINS pDevIns);
+
 
 typedef struct Phy::Phy_st PHY;
 typedef PHY *PPHY;
