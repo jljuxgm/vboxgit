@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 82990 2020-02-05 11:43:13Z vboxsync $ */
+/* $Id: GMMR0.cpp 82992 2020-02-05 12:16:50Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -3369,7 +3369,7 @@ GMMR0DECL(int) GMMR0FreeLargePageReq(PGVM pGVM, VMCPUID idCpu, PGMMFREELARGEPAGE
 
 
 /**
- * @callback_method{FNGVMMR0ENUMCALLBACK,
+ * @callback_method_impl{FNGVMMR0ENUMCALLBACK,
  * Used by gmmR0FreeChunkFlushPerVmTlbs().}
  */
 static DECLCALLBACK(int) gmmR0InvalidatePerVmChunkTlbCallback(PGVM pGVM, void *pvUser)
