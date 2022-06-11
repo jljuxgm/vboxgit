@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 78119 2019-04-12 10:19:15Z vboxsync $ */
+/* $Id: DevE1000.cpp 78626 2019-05-21 10:00:11Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -5516,9 +5516,7 @@ static DECLCALLBACK(bool) e1kTxQueueConsumer(PPDMDEVINS pDevIns, PPDMQUEUEITEMCO
     E1kLog2(("%s e1kTxQueueConsumer:\n", pThis->szPrf));
 
     int rc = e1kXmitPending(pThis, false /*fOnWorkerThread*/); NOREF(rc);
-#ifndef DEBUG_andy /** @todo r=andy Happens for me a lot, mute this for me. */
-    AssertMsg(RT_SUCCESS(rc) || rc == VERR_TRY_AGAIN, ("%Rrc\n", rc));
-#endif
+    AssertMsg(RT_SUCCESS(rc) || rc == VERR_TRY_AGAIN || rc == VERR_NET_DOWN, ("%Rrc\n", rc));
     return true;
 }
 
