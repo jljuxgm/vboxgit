@@ -1,4 +1,4 @@
-/* $Id: vbox_ttm.c 79025 2019-06-06 14:33:47Z vboxsync $ */
+/* $Id: vbox_ttm.c 79026 2019-06-06 14:36:31Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -310,7 +310,11 @@ int vbox_mm_init(struct vbox_private *vbox)
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 15, 0) || defined(RHEL_71)
 				 dev->anon_inode->i_mapping,
 #endif
+#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 2, 0)
 				 DRM_FILE_PAGE_OFFSET, true);
+#else
+				 true);
+#endif
 	if (ret) {
 		DRM_ERROR("Error initialising bo driver; %d\n", ret);
 #if LINUX_VERSION_CODE < KERNEL_VERSION(5, 0, 0)
