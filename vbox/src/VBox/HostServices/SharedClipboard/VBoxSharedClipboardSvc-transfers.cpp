@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-transfers.cpp 81290 2019-10-15 16:53:56Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-transfers.cpp 81325 2019-10-17 16:07:37Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Internal code for transfer (list) handling.
  */
@@ -1538,7 +1538,7 @@ int shclSvcTransferHandler(PSHCLCLIENT pClient,
                 rc = shclSvcTransferGetListHdr(cParms, paParms, &hList, &hdrList);
                 if (RT_SUCCESS(rc))
                 {
-                    void    *pvData = SharedClipboardTransferListHdrDup(&hdrList);
+                    void    *pvData = ShClTransferListHdrDup(&hdrList);
                     uint32_t cbData = sizeof(SHCLLISTHDR);
 
                     const SHCLEVENTID uEvent = VBOX_SHCL_CONTEXTID_GET_EVENT(uCID);
