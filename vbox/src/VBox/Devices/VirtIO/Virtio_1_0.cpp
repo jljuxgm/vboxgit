@@ -1,4 +1,4 @@
-/* $Id: Virtio_1_0.cpp 84351 2020-05-19 05:26:12Z vboxsync $ */
+/* $Id: Virtio_1_0.cpp 84352 2020-05-19 05:35:09Z vboxsync $ */
 /** @file
  * Virtio_1_0 - Virtio Common (PCI, feature & config mgt, queue mgt & proxy, notification mgt)
  */
@@ -1459,9 +1459,9 @@ static int virtioCommonCfgAccessed(PPDMDEVINS pDevIns, PVIRTIOCORE pVirtio, PVIR
         if (fWrite) /* Guest WRITE pCommonCfg->uDeviceStatus */
         {
             uint8_t const fNewStatus = *(uint8_t *)pv;
-            Log7Func(("Guest wrote uDeviceStatus ................ (", fNewStatus ^ pVirtio->uDeviceStatus));
+            Log7Func(("Guest wrote uDeviceStatus ................ ("));
             if (LogIs7Enabled())
-                virtioLogDeviceStatus(fNewStatus);
+                virtioLogDeviceStatus(fNewStatus ^ pVirtio->uDeviceStatus);
             Log7((")\n"));
 
             /* If the status changed or we were reset, we need to go to ring-3 as
