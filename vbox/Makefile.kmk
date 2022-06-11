@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 76661 2019-01-06 19:21:38Z vboxsync $
+# $Id: Makefile.kmk 79861 2019-07-18 15:48:27Z vboxsync $
 ## @file
 # Top level makefile.
 #
@@ -704,7 +704,7 @@ VBOX_CORE_DOXYFILE_INPUT_DIRS = \
 	src/VBox/Additions/x11/vboxmouse/xorg71 \
 	src/VBox/Additions/x11/vboxvideo \
 	src/VBox/NetworkServices \
-	src/VBox/NetworkServices/DHCP \
+	src/VBox/NetworkServices/Dhcpd \
 	src/VBox/NetworkServices/NAT \
 	src/VBox/NetworkServices/NetLib \
 	src/VBox/Storage \
