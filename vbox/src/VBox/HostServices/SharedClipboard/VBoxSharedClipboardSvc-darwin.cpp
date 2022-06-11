@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-darwin.cpp 80849 2019-09-17 09:46:51Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-darwin.cpp 80858 2019-09-17 13:03:39Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Mac OS X host.
  */
@@ -214,7 +214,7 @@ int SharedClipboardSvcImplFormatAnnounce(PSHCLCLIENT pClient,
     }
 
 #ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS
-    if (pFormats->uFormats & VBOX_SHCL_FMT_URI_LIST) /* No URI support yet. */
+    if (pFormats->uFormats & VBOX_SHCL_FMT_URI_LIST) /* No transfer support yet. */
         return VINF_SUCCESS;
 #endif
 
@@ -276,37 +276,37 @@ int SharedClipboardSvcImplWriteData(PSHCLCLIENT pClient,
 }
 
 #ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS
-int SharedClipboardSvcImplURIReadDir(PSHCLCLIENT pClient, PSHCLDIRDATA pDirData)
+int SharedClipboardSvcImplTransferReadDir(PSHCLCLIENT pClient, PSHCLDIRDATA pDirData)
 {
     RT_NOREF(pClient, pDirData);
     return VERR_NOT_IMPLEMENTED;
 }
 
-int SharedClipboardSvcImplURIWriteDir(PSHCLCLIENT pClient, PSHCLDIRDATA pDirData)
+int SharedClipboardSvcImplTransferWriteDir(PSHCLCLIENT pClient, PSHCLDIRDATA pDirData)
 {
     RT_NOREF(pClient, pDirData);
     return VERR_NOT_IMPLEMENTED;
 }
 
-int SharedClipboardSvcImplURIReadFileHdr(PSHCLCLIENT pClient, PSHCLFILEHDR pFileHdr)
+int SharedClipboardSvcImplTransferReadFileHdr(PSHCLCLIENT pClient, PSHCLFILEHDR pFileHdr)
 {
     RT_NOREF(pClient, pFileHdr);
     return VERR_NOT_IMPLEMENTED;
 }
 
-int SharedClipboardSvcImplURIWriteFileHdr(PSHCLCLIENT pClient, PSHCLFILEHDR pFileHdr)
+int SharedClipboardSvcImplTransferWriteFileHdr(PSHCLCLIENT pClient, PSHCLFILEHDR pFileHdr)
 {
     RT_NOREF(pClient, pFileHdr);
     return VERR_NOT_IMPLEMENTED;
 }
 
-int SharedClipboardSvcImplURIReadFileData(PSHCLCLIENT pClient, PSHCLFILEDATA pFileData)
+int SharedClipboardSvcImplTransferReadFileData(PSHCLCLIENT pClient, PSHCLFILEDATA pFileData)
 {
     RT_NOREF(pClient, pFileData);
     return VERR_NOT_IMPLEMENTED;
 }
 
-int SharedClipboardSvcImplURIWriteFileData(PSHCLCLIENT pClient, PSHCLFILEDATA pFileData)
+int SharedClipboardSvcImplTransferWriteFileData(PSHCLCLIENT pClient, PSHCLFILEDATA pFileData)
 {
     RT_NOREF(pClient, pFileData);
     return VERR_NOT_IMPLEMENTED;
