@@ -1,4 +1,4 @@
-/* $Id: display-svga-x11.cpp 83137 2020-02-21 21:18:29Z vboxsync $ */
+/* $Id: display-svga-x11.cpp 83138 2020-02-21 22:22:43Z vboxsync $ */
 /** @file
  * X11 guest client - VMSVGA emulation resize event pass-through to X.Org
  * guest driver.
@@ -164,7 +164,7 @@ static void queryMonitorPositions()
     {
         getMonitorIdFromName("virtual123");
         mpMonitorPositions = (RTPOINT*)malloc(x11Context.hOutputCount * sizeof(RTPOINT));
-        /* todo: memset? */
+        /** @todo memset? */
         for (int i = 0; i < x11Context.hOutputCount; ++i)
         {
             mpMonitorPositions[i].x = iSentinelPosition;
