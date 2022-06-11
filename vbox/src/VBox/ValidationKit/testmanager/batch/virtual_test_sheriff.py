@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 78717 2019-05-24 11:24:07Z vboxsync $
+# $Id: virtual_test_sheriff.py 78726 2019-05-24 13:20:21Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -35,7 +35,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 78717 $"
+__version__ = "$Revision: 78726 $"
 
 
 # Standard python imports
@@ -171,7 +171,8 @@ class VirtualTestSheriffCaseFile(object):
     def isVBoxGAsTest(self):
         """ Test case classification: VirtualBox Guest Additions test. """
         return self.isVBoxTest() \
-           and self.oTestCase.sName.lower().startswith('ga\'s tests');
+           and (   self.oTestCase.sName.lower().startswith('guest additions')
+                or self.oTestCase.sName.lower().startswith('ga\'s tests'));
 
     def isVBoxAPITest(self):
         """ Test case classification: VirtualBox API test. """
@@ -187,6 +188,11 @@ class VirtualTestSheriffCaseFile(object):
         """ Test case classification: Smoke test. """
         return self.isVBoxTest() \
            and self.oTestCase.sName.lower().startswith('smoketest');
+
+    def isVBoxSerialTest(self):
+        """ Test case classification: Smoke test. """
+        return self.isVBoxTest() \
+           and self.oTestCase.sName.lower().startswith('serial:');
 
 
     #
@@ -299,6 +305,8 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
                            help = 'Work period specified in hours.  Defauls is 2 hours.');
         oParser.add_option('--real-run-back', dest = 'fRealRun', action = 'store_true', default = False,
                            help = 'Whether to commit the findings to the database. Default is a dry run.');
+        oParser.add_option('--testset', dest = 'aidTestSets', metavar = '<id>', default = [], type = 'int', action = 'append',
+                           help = 'Only investigate this one.  Accumulates IDs when repeated.');
         oParser.add_option('-q', '--quiet', dest = 'fQuiet', action = 'store_true', default = False,
                            help = 'Quiet execution');
         oParser.add_option('-l', '--log', dest = 'sLogFile', metavar = '<logfile>', default = None,
@@ -310,7 +318,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
 
         if self.oConfig.sLogFile:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 78717 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 78726 $ \n');
 
 
     def eprint(self, sText):
@@ -675,7 +683,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.getFailureReason(tReason);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 78717 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 78726 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
@@ -995,8 +1003,8 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         ( True,  ktReason_Host_Modprobe_Failed,                     'Kernel driver not installed' ),
         ( True,  ktReason_OSInstall_Sata_no_BM,                     'PCHS=14128/14134/8224' ),
         ( True,  ktReason_Host_DoubleFreeHeap,                      'double free or corruption' ),
-        ( True,  ktReason_Unknown_VM_Start_Error,                   'VMSetError: ' ),
-        ( True,  ktReason_Unknown_VM_Start_Error,                   'error: failed to open session for' ),
+        ( False, ktReason_Unknown_VM_Start_Error,                   'VMSetError: ' ),
+        ( False, ktReason_Unknown_VM_Start_Error,                   'error: failed to open session for' ),
         ( False, ktReason_Unknown_VM_Runtime_Error,                 'Console: VM runtime error: fatal=true' ),
     ];
 
@@ -1376,10 +1384,14 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         # Get a list of failed test sets without any assigned failure reason.
         #
         cGot = 0;
-        aoTestSets = self.oTestSetLogic.fetchFailedSetsWithoutReason(cHoursBack = self.oConfig.cHoursBack, tsNow = self.tsNow);
+        if self.oConfig.aidTestSets is None or len(self.oConfig.aidTestSets) == 0:
+            aoTestSets = self.oTestSetLogic.fetchFailedSetsWithoutReason(cHoursBack = self.oConfig.cHoursBack,
+                                                                         tsNow = self.tsNow);
+        else:
+            aoTestSets = [self.oTestSetLogic.getById(idTestSet) for idTestSet in self.oConfig.aidTestSets];
         for oTestSet in aoTestSets:
-            self.dprint(u'');
-            self.dprint(u'reasoningFailures: Checking out test set #%u, status %s'  % ( oTestSet.idTestSet, oTestSet.enmStatus,))
+            self.dprint(u'----------------------------------- #%u, status %s -----------------------------------'
+                        % ( oTestSet.idTestSet, oTestSet.enmStatus,));
 
             #
             # Open a case file and assign it to the right investigator.
@@ -1425,6 +1437,10 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
                 fRc = self.investigateVBoxVMTest(oCaseFile, fSingleVM = False);
 
             elif oCaseFile.isVBoxSmokeTest():
+                self.dprint(u'investigateVBoxVMTest is taking over %s.' % (oCaseFile.sLongName,));
+                fRc = self.investigateVBoxVMTest(oCaseFile, fSingleVM = False);
+
+            elif oCaseFile.isVBoxSerialTest():
                 self.dprint(u'investigateVBoxVMTest is taking over %s.' % (oCaseFile.sLongName,));
                 fRc = self.investigateVBoxVMTest(oCaseFile, fSingleVM = False);
 
