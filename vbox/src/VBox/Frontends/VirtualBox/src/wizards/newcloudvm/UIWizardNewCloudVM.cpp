@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVM.cpp 79580 2019-07-07 16:12:08Z vboxsync $ */
+/* $Id: UIWizardNewCloudVM.cpp 79656 2019-07-10 08:21:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVM class implementation.
  */
@@ -33,6 +33,7 @@ UIWizardNewCloudVM::UIWizardNewCloudVM(QWidget *pParent,
     , m_comClient(comClient)
     , m_comVSD(comDescription)
     , m_fFullWizard(m_comClient.isNull() || m_comVSD.isNull())
+    , m_fFinalStepPrevented(false)
 {
 #ifndef VBOX_WS_MAC
     /* Assign watermark: */
@@ -121,6 +122,13 @@ bool UIWizardNewCloudVM::createCloudVM()
     /* Main API request sequence, can be interrupted after any step: */
     do
     {
+        /* Do nothing if prevented: */
+        if (m_fFinalStepPrevented)
+        {
+            fResult = true;
+            break;
+        }
+
         /* Acquire prepared client and description: */
         CCloudClient comClient = client();
         CVirtualSystemDescription comDescription = vsd();

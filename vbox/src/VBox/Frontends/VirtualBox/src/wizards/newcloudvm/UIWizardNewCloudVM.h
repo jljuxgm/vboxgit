@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVM.h 79580 2019-07-07 16:12:08Z vboxsync $ */
+/* $Id: UIWizardNewCloudVM.h 79656 2019-07-10 08:21:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVM class declaration.
  */
@@ -60,6 +60,9 @@ public:
     /** Prepares all. */
     virtual void prepare() /* override */;
 
+    /** Sets whether the final step is @a fPrevented. */
+    void setFinalStepPrevented(bool fPrevented) { m_fFinalStepPrevented = fPrevented; }
+
     /** Defines Cloud @a comClient object. */
     void setClient(const CCloudClient &comClient) { m_comClient = comClient; }
     /** Returns Cloud Client object. */
@@ -97,6 +100,8 @@ private:
 
     /** Holds whether we want full wizard form or short one. */
     bool  m_fFullWizard;
+    /** Holds whether the final step is prevented. */
+    bool  m_fFinalStepPrevented;
 };
 
 /** Safe pointer to new cloud vm wizard. */
