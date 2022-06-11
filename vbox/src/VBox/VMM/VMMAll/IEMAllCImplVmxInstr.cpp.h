@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 80556 2019-09-03 05:37:47Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 80572 2019-09-04 04:39:54Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -2512,7 +2512,8 @@ IEM_STATIC VBOXSTRICTRC iemVmxVmexit(PVMCPUCC pVCpu, uint32_t uExitReason, uint6
                                                  | RT_BF_MAKE(VMX_BF_IDT_VECTORING_INFO_VALID,          1);
                 iemVmxVmcsSetIdtVectoringInfo(pVCpu, uIdtVectoringInfo);
                 iemVmxVmcsSetIdtVectoringErrCode(pVCpu, uErrCode);
-                LogFlow(("vmexit: idt_info=%#RX32 idt_err_code=%#RX32\n", uIdtVectoringInfo, uErrCode));
+                LogFlow(("vmexit: idt_info=%#RX32 idt_err_code=%#RX32 cr2=%#RX64\n", uIdtVectoringInfo, uErrCode,
+                         pVCpu->cpum.GstCtx.cr2));
             }
         }
     }
