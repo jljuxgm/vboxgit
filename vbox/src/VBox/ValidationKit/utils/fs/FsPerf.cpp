@@ -1,4 +1,4 @@
-/* $Id: FsPerf.cpp 79072 2019-06-11 01:31:57Z vboxsync $ */
+/* $Id: FsPerf.cpp 79140 2019-06-14 01:57:30Z vboxsync $ */
 /** @file
  * FsPerf - File System (Shared Folders) Performance Benchmark.
  */
@@ -1805,7 +1805,12 @@ static int fsPrepTestArea(void)
         static char const s_szSub[] = "d" RTPATH_SLASH_STR;
         memcpy(&g_szDeepDir[g_cchDeepDir], s_szSub, sizeof(s_szSub));
         g_cchDeepDir += sizeof(s_szSub) - 1;
-        RTTESTI_CHECK_RC_RET( RTDirCreate(g_szDeepDir, 0755, 0), VINF_SUCCESS, rcCheck);
+        int rc = RTDirCreate(g_szDeepDir, 0755, 0);
+        if (RT_FAILURE(rc))
+        {
+            RTTestIFailed("RTDirCreate(g_szDeepDir=%s) -> %Rrc\n", g_szDeepDir, rc);
+            return rc;
+        }
     } while (g_cchDeepDir < 176);
     RTTestIPrintf(RTTESTLVL_ALWAYS, "Deep  dir: %s\n", g_szDeepDir);
 
@@ -6652,7 +6657,7 @@ int main(int argc, char *argv[])
 
             case 'V':
             {
-                char szRev[] = "$Revision: 79072 $";
+                char szRev[] = "$Revision: 79140 $";
                 szRev[RT_ELEMENTS(szRev) - 2] = '\0';
                 RTPrintf(RTStrStrip(strchr(szRev, ':') + 1));
                 return RTEXITCODE_SUCCESS;
