@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageExpert.h 79575 2019-07-07 12:03:22Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageExpert.h 79580 2019-07-07 16:12:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageExpert class declaration.
  */
@@ -38,7 +38,7 @@ class UIWizardNewCloudVMPageExpert : public UIWizardPage,
 public:
 
     /** Constructs expert page. */
-    UIWizardNewCloudVMPageExpert();
+    UIWizardNewCloudVMPageExpert(bool fFullWizard);
 
 protected:
 
@@ -72,6 +72,9 @@ private slots:
 
     /** Handles change in instance list. */
     void sltHandleInstanceListChange();
+
+    /** Initializes short wizard form. */
+    void sltInitShortWizardForm();
 
 private:
 
