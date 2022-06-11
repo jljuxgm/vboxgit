@@ -1,4 +1,4 @@
-/* $Id: UIFormEditorWidget.cpp 79798 2019-07-15 18:56:56Z vboxsync $ */
+/* $Id: UIFormEditorWidget.cpp 79814 2019-07-16 15:59:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFormEditorWidget class implementation.
  */
@@ -1395,6 +1395,11 @@ void UIFormEditorWidget::setVirtualSystemDescriptionForm(const CVirtualSystemDes
     /// @todo add some check..
     m_pTableModel->setFormValues(comForm.GetValues());
     adjustTable();
+}
+
+void UIFormEditorWidget::makeSureEditorDataCommitted()
+{
+    m_pTableView->makeSureEditorDataCommitted();
 }
 
 bool UIFormEditorWidget::eventFilter(QObject *pObject, QEvent *pEvent)

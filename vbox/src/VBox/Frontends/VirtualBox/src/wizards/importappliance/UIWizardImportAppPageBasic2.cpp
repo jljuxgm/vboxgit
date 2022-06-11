@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageBasic2.cpp 78970 2019-06-04 15:02:03Z vboxsync $ */
+/* $Id: UIWizardImportAppPageBasic2.cpp 79814 2019-07-16 15:59:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageBasic2 class implementation.
  */
@@ -285,6 +285,9 @@ bool UIWizardImportAppPageBasic2::validatePage()
     const bool fIsSourceCloudOne = fieldImp("isSourceCloudOne").toBool();
     if (fIsSourceCloudOne)
     {
+        /* Make sure table has own data committed: */
+        m_pFormEditor->makeSureEditorDataCommitted();
+
         /* Check whether we have proper VSD form: */
         CVirtualSystemDescriptionForm comForm = fieldImp("vsdForm").value<CVirtualSystemDescriptionForm>();
         fResult = comForm.isNotNull();

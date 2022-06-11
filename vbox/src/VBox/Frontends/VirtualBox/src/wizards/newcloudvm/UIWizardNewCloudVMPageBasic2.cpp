@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageBasic2.cpp 79752 2019-07-13 11:16:47Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageBasic2.cpp 79814 2019-07-16 15:59:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageBasic2 class implementation.
  */
@@ -147,6 +147,9 @@ bool UIWizardNewCloudVMPageBasic2::validatePage()
 
     /* Lock finish button: */
     startProcessing();
+
+    /* Make sure table has own data committed: */
+    m_pFormEditor->makeSureEditorDataCommitted();
 
     /* Check whether we have proper VSD form: */
     CVirtualSystemDescriptionForm comForm = vsdForm();

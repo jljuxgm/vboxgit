@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageExpert.cpp 79699 2019-07-11 14:16:41Z vboxsync $ */
+/* $Id: UIWizardExportAppPageExpert.cpp 79814 2019-07-16 15:59:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageExpert class implementation.
  */
@@ -628,6 +628,9 @@ bool UIWizardExportAppPageExpert::validatePage()
     const bool fIsFormatCloudOne = fieldImp("isFormatCloudOne").toBool();
     if (fIsFormatCloudOne)
     {
+        /* Make sure table has own data committed: */
+        m_pFormEditor->makeSureEditorDataCommitted();
+
         /* Check whether we have proper VSD form: */
         CVirtualSystemDescriptionForm comForm = fieldImp("vsdExportForm").value<CVirtualSystemDescriptionForm>();
         fResult = comForm.isNotNull();
