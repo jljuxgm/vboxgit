@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 81964 2019-11-18 20:42:02Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 82080 2019-11-21 12:55:25Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -241,7 +241,6 @@ static int getSmcDeviceKey(IVirtualBox *pVirtualBox, IMachine *pMachine, Utf8Str
         szProdName[0] = '\0';
         RTSystemQueryDmiString(RTSYSDMISTR_PRODUCT_NAME, szProdName, sizeof(szProdName));
         if (   (   !strncmp(szProdName, RT_STR_TUPLE("Mac"))
-                || !strncmp(szProdName, RT_STR_TUPLE("iMac"))
                 || !strncmp(szProdName, RT_STR_TUPLE("iMac"))
                 || !strncmp(szProdName, RT_STR_TUPLE("Xserve"))
                )
