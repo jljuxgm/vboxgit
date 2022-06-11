@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 81936 2019-11-18 12:10:24Z vboxsync $ */
+/* $Id: VMMR0.cpp 82544 2019-12-11 11:53:22Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -2077,7 +2077,7 @@ static int vmmR0EntryExWorker(PGVM pGVM, VMCPUID idCpu, VMMR0OPERATION enmOperat
             VMM_CHECK_SMAP_CHECK2(pGVM, RT_NOTHING);
             break;
 
-#ifdef VBOX_WITH_PCI_PASSTHROUGH
+#if 0 //def VBOX_WITH_PCI_PASSTHROUGH
         /*
          * Requests to host PCI driver service.
          */
