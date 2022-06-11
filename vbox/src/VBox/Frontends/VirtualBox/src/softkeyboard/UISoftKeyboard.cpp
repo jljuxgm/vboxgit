@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboard.cpp 79589 2019-07-08 10:51:03Z vboxsync $ */
+/* $Id: UISoftKeyboard.cpp 79596 2019-07-08 14:50:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class implementation.
  */
@@ -2660,7 +2660,8 @@ void UISoftKeyboardWidget::loadLayouts()
     physicalLayoutNames << ":/101_ansi.xml"
                         << ":/102_iso.xml"
                         << ":/106_japanese.xml"
-                        << ":/103_iso.xml";
+                        << ":/103_iso.xml"
+                        << ":/103_ansi.xml";
     foreach (const QString &strName, physicalLayoutNames)
         loadPhysicalLayout(strName);
 
@@ -2674,7 +2675,8 @@ void UISoftKeyboardWidget::loadLayouts()
                         << ":/us.xml"
                         << ":/greek.xml"
                         << ":/japanese.xml"
-                        << ":/brazilian.xml";
+                        << ":/brazilian.xml"
+                        << ":/korean.xml";
 
     foreach (const QString &strName, keyboardLayoutNames)
         loadKeyboardLayout(strName);
