@@ -1,4 +1,4 @@
-# $Id: Config.kmk 78419 2019-05-07 09:30:40Z vboxsync $
+# $Id: Config.kmk 78420 2019-05-07 09:37:39Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2525,9 +2525,9 @@ ifdef VBOX_WITH_CROGL
    VBOX_LIB_OGL_CRUTIL_X86      = $(PATH_OBJ)/VBoxOGLcrutil-x86/VBoxOGLcrutil-x86$(VBOX_SUFF_LIB)
   endif
  else
-  VBOX_LIB_OGL        = $(VBOX_PATH_ADDITIONS)/VBoxOGL$(VBOX_SUFF_LIB)
-  VBOX_LIB_OGL_CRUTIL = $(VBOX_PATH_ADDITIONS)/VBoxOGLcrutil$(VBOX_SUFF_LIB)
-  VBOX_LIB_OGL_HOSTCRUTIL = $(PATH_STAGE_BIN)/VBoxOGLhostcrutil$(VBOX_SUFF_LIB)
+  VBOX_LIB_OGL        = $(VBOX_PATH_ADDITIONS)/VBoxOGL$(VBOX_SUFF_DLL)
+  VBOX_LIB_OGL_CRUTIL = $(VBOX_PATH_ADDITIONS)/VBoxOGLcrutil$(VBOX_SUFF_DLL)
+  VBOX_LIB_OGL_HOSTCRUTIL = $(PATH_STAGE_BIN)/VBoxOGLhostcrutil$(VBOX_SUFF_DLL)
  endif
 
  if1of ($(KBUILD_TARGET), freebsd linux solaris)
@@ -7686,7 +7686,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 78419 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 78420 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
