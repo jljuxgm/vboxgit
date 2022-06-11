@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 81624 2019-11-01 20:46:49Z vboxsync $ */
+/* $Id: PDM.cpp 82261 2019-11-28 00:29:11Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -33,6 +33,7 @@
  *
  * @sa  @ref grp_pdm
  *      @subpage pg_pdm_block_cache
+ *      @subpage pg_pdm_audio
  *
  *
  * @section sec_pdm_dev     The Pluggable Devices
