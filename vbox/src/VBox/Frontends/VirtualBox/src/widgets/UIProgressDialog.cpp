@@ -1,4 +1,4 @@
-/* $Id: UIProgressDialog.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
+/* $Id: UIProgressDialog.cpp 80955 2019-09-23 17:27:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIProgressDialog class implementation.
  */
@@ -338,7 +338,7 @@ void UIProgressDialog::prepareWidgets()
                     m_fCancelEnabled = m_comProgress.GetCancelable();
                     m_pButtonCancel->setEnabled(m_fCancelEnabled);
                     m_pButtonCancel->setFocusPolicy(Qt::ClickFocus);
-                    connect(m_pButtonCancel, SIGNAL(clicked()), this, SLOT(sltCancelOperation()));
+                    connect(m_pButtonCancel, &UIMiniCancelButton::clicked, this, &UIProgressDialog::sltCancelOperation);
 
                     /* Add into layout: */
                     pProgressLayout->addWidget(m_pButtonCancel, 0, Qt::AlignVCenter);

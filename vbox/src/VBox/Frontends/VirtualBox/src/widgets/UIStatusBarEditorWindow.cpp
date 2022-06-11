@@ -1,4 +1,4 @@
-/* $Id: UIStatusBarEditorWindow.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
+/* $Id: UIStatusBarEditorWindow.cpp 80955 2019-09-23 17:27:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIStatusBarEditorWindow class implementation.
  */
@@ -844,8 +844,8 @@ void UIStatusBarEditorWidget::prepareStatusButtons()
         setStatusBarConfiguration(gEDataManager->restrictedStatusBarIndicators(machineID()),
                                   gEDataManager->statusBarIndicatorOrder(machineID()));
         /* And listen for the status-bar configuration changes after that: */
-        connect(gEDataManager, SIGNAL(sigStatusBarConfigurationChange(const QUuid &)),
-                this, SLOT(sltHandleConfigurationChange(const QUuid &)));
+        connect(gEDataManager, &UIExtraDataManager::sigStatusBarConfigurationChange,
+                this, &UIStatusBarEditorWidget::sltHandleConfigurationChange);
     }
 }
 
@@ -856,8 +856,8 @@ void UIStatusBarEditorWidget::prepareStatusButton(IndicatorType enmType)
     AssertPtrReturnVoid(pButton);
     {
         /* Configure status button: */
-        connect(pButton, SIGNAL(sigClick()), this, SLOT(sltHandleButtonClick()));
-        connect(pButton, SIGNAL(sigDragObjectDestroy()), this, SLOT(sltHandleDragObjectDestroy()));
+        connect(pButton, &UIStatusBarEditorButton::sigClick, this, &UIStatusBarEditorWidget::sltHandleButtonClick);
+        connect(pButton, &UIStatusBarEditorButton::sigDragObjectDestroy, this, &UIStatusBarEditorWidget::sltHandleDragObjectDestroy);
         /* Add status button into button-layout: */
         m_pButtonLayout->addWidget(pButton);
         /* Insert status button into map: */
