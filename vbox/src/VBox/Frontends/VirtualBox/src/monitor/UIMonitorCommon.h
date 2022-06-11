@@ -1,4 +1,4 @@
-/* $Id: UIMonitorCommon.h 83347 2020-03-20 11:46:50Z vboxsync $ */
+/* $Id: UIMonitorCommon.h 83380 2020-03-24 14:10:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMonitorCommon class declaration.
  */
@@ -45,6 +45,8 @@ public:
         static void getDiskLoad(CMachineDebugger &debugger, quint64 &uOutDiskWritten, quint64 &uOutDiskRead);
         static void getVMMExitCount(CMachineDebugger &debugger, quint64 &uOutVMMExitCount);
     /** @} */
+        static void getRAMLoad(CPerformanceCollector &comPerformanceCollector, QVector<QString> &nameList,
+                               QVector<CUnknown>& objectList, quint64 &iOutTotalRAM, quint64 &iOutFreeRAM);
 
 private:
 
