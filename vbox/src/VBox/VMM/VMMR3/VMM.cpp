@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 81153 2019-10-08 13:59:03Z vboxsync $ */
+/* $Id: VMM.cpp 81198 2019-10-09 20:39:21Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -37,9 +37,9 @@
  *  - @subpage pg_iem
  *  - @subpage pg_iom
  *  - @subpage pg_mm
+ *  - @subpage pg_nem
  *  - @subpage pg_pdm
  *  - @subpage pg_pgm
- *  - @subpage pg_rem
  *  - @subpage pg_selm
  *  - @subpage pg_ssm
  *  - @subpage pg_stam

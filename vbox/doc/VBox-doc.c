@@ -1,4 +1,4 @@
-/* $Id: VBox-doc.c 80367 2019-08-21 11:35:06Z vboxsync $ */
+/* $Id: VBox-doc.c 81198 2019-10-09 20:39:21Z vboxsync $ */
 /** @file
  * VirtualBox Top Level Documentation File.
  */
@@ -36,9 +36,8 @@
  *      - @ref pg_em
  *      - @ref pg_gim
  *      - @ref pg_hm
- *      - @ref pg_rem
- *          - @ref pg_vboxrem_amd64
  *      - @ref pg_iem
+ *      - @ref pg_nem
  *      - @ref pg_gmm
  *          - @ref pg_mm
  *          - @ref pg_pgm
