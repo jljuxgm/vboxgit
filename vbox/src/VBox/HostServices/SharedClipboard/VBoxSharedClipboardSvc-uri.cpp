@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-uri.cpp 80847 2019-09-17 09:38:16Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-uri.cpp 80848 2019-09-17 09:43:53Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Internal code for URI (list) handling.
  */
@@ -1306,7 +1306,7 @@ int sharedClipboardSvcURIHandler(PSHCLCLIENT pClient,
             if (RT_FAILURE(rc))
                 break;
 
-            const SHCLURITRANSFERID uTransferID = VBO_SHARED_CLIPBOARD_CONTEXTID_GET_TRANSFER(uCID);
+            const SHCLURITRANSFERID uTransferID = VBOX_SHCL_CONTEXTID_GET_TRANSFER(uCID);
 
             pTransfer = SharedClipboardURICtxGetTransfer(&pClient->URI, uTransferID);
             if (!pTransfer)
