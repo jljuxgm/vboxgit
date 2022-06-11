@@ -1,4 +1,4 @@
-/* $Id: tstFile.cpp 82832 2020-01-22 16:21:56Z vboxsync $ */
+/* $Id: tstFile.cpp 82835 2020-01-22 21:53:59Z vboxsync $ */
 /** @file
  * IPRT Testcase - File I/O.
  */
@@ -285,7 +285,7 @@ int main()
     /*
      * Test appending & truncation.
      */
-    RTTestSub(hTest, "Basics");
+    RTTestSub(hTest, "Append");
     hFile = NIL_RTFILE;
     RTTESTI_CHECK_RC(rc = RTFileOpen(&hFile, "tstFile#2.tst",
                                      RTFILE_O_READWRITE | RTFILE_O_CREATE_REPLACE | RTFILE_O_DENY_NONE | RTFILE_O_APPEND),
