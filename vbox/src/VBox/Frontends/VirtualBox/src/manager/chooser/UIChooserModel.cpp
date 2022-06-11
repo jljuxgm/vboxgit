@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 83268 2020-03-11 20:31:25Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 83330 2020-03-19 13:26:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -225,6 +225,14 @@ void UIChooserModel::setSelectedItem(const QString &strDefinition)
         /* Search for group-item with passed descriptor (name): */
         pItem = root()->searchForItem(strItemDescriptor,
                                       UIChooserItemSearchFlag_Group |
+                                      UIChooserItemSearchFlag_ExactName);
+    }
+    /* Its a global-item definition? */
+    else if (strItemType == "n")
+    {
+        /* Search for global-item with required name: */
+        pItem = root()->searchForItem(strItemDescriptor,
+                                      UIChooserItemSearchFlag_Global |
                                       UIChooserItemSearchFlag_ExactName);
     }
     /* Its a machine-item definition? */
@@ -718,10 +726,16 @@ void UIChooserModel::sltHandleCloudAcquireInstancesTaskComplete(UITask *pTask)
     /* Call to base-class: */
     UIChooserAbstractModel::sltHandleCloudAcquireInstancesTaskComplete(pTask);
 
+    /* Remember first selected item definition: */
+    const QString strDefinition = firstSelectedItem()->definition();
+
     /* Rebuild tree for main root: */
     buildTreeForMainRoot();
     updateNavigationItemList();
     updateLayout();
+
+    /* Restore selection: */
+    setSelectedItem(strDefinition);
 }
 #endif /* VBOX_GUI_WITH_CLOUD_VMS */
 
