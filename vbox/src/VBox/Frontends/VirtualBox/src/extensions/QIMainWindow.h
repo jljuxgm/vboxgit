@@ -1,4 +1,4 @@
-/* $Id: QIMainWindow.h 81248 2019-10-14 10:31:23Z vboxsync $ */
+/* $Id: QIMainWindow.h 81255 2019-10-14 12:15:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - QIMainWindow class declaration.
  */
@@ -52,8 +52,15 @@ protected:
     /** Returns whether the window should be maximized when geometry being restored. */
     virtual bool shouldBeMaximized() const { return false; }
 
-    /** Restores the cached window geometry. */
-    void restoreGeometry();
+    /** Restores the window geometry to passed @a rect. */
+    void restoreGeometry(const QRect &rect);
+
+    /** Returns current window geometry. */
+    QRect currentGeometry() const;
+    /** Returns whether the window is currently maximized. */
+    bool isCurrentlyMaximized() const;
+
+private:
 
     /** Holds the cached window geometry. */
     QRect m_geometry;

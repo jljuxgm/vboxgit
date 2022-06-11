@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 81248 2019-10-14 10:31:23Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 81255 2019-10-14 12:15:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -224,8 +224,9 @@ void UIVirtualBoxManager::sltHandleHostScreenAvailableAreaChange()
         return;
 
     /* Restore the geometry cached by the window: */
-    resize(m_geometry.size());
-    move(m_geometry.topLeft());
+    const QRect geo = currentGeometry();
+    resize(geo.size());
+    move(geo.topLeft());
 }
 #endif /* VBOX_WS_X11 */
 
@@ -1489,13 +1490,10 @@ void UIVirtualBoxManager::loadSettings()
 {
     /* Load window geometry: */
     {
-        /* Load geometry: */
-        m_geometry = gEDataManager->selectorWindowGeometry(this);
-
-        /* Restore geometry: */
+        const QRect geo = gEDataManager->selectorWindowGeometry(this);
         LogRel2(("GUI: UIVirtualBoxManager: Restoring geometry to: Origin=%dx%d, Size=%dx%d\n",
-                 m_geometry.x(), m_geometry.y(), m_geometry.width(), m_geometry.height()));
-        restoreGeometry();
+                 geo.x(), geo.y(), geo.width(), geo.height()));
+        restoreGeometry(geo);
     }
 }
 
@@ -1503,13 +1501,10 @@ void UIVirtualBoxManager::saveSettings()
 {
     /* Save window geometry: */
     {
-#ifdef VBOX_WS_MAC
-        gEDataManager->setSelectorWindowGeometry(m_geometry, ::darwinIsWindowMaximized(this));
-#else /* VBOX_WS_MAC */
-        gEDataManager->setSelectorWindowGeometry(m_geometry, isMaximized());
-#endif /* !VBOX_WS_MAC */
-        LogRel2(("GUI: UIVirtualBoxManager: Geometry saved as: Origin=%dx%d, Size=%dx%d\n",
-                 m_geometry.x(), m_geometry.y(), m_geometry.width(), m_geometry.height()));
+        const QRect geo = currentGeometry();
+        LogRel2(("GUI: UIVirtualBoxManager: Saving geometry as: Origin=%dx%d, Size=%dx%d\n",
+                 geo.x(), geo.y(), geo.width(), geo.height()));
+        gEDataManager->setSelectorWindowGeometry(geo, isCurrentlyMaximized());
     }
 }
 
