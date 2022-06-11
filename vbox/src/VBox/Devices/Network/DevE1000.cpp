@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 81423 2019-10-21 18:04:39Z vboxsync $ */
+/* $Id: DevE1000.cpp 81424 2019-10-21 18:10:31Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -7932,7 +7932,7 @@ static DECLCALLBACK(int) e1kR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFGM
 
 # ifndef E1K_NO_TAD
         /* Create Transmit Absolute Delay Timer */
-        rc = PDMDevHlpTimerCreate(pDevIns, TMCLOCK_VIRTUAL, e1kR3TxIntDelayTimer, pThis, TMTIMER_FLAGS_NO_CRIT_SECT,
+        rc = PDMDevHlpTimerCreate(pDevIns, TMCLOCK_VIRTUAL, e1kR3TxAbsDelayTimer, pThis, TMTIMER_FLAGS_NO_CRIT_SECT,
                                   "E1000 Transmit Absolute Delay Timer", &pThis->hTADTimer);
         AssertRCReturn(rc, rc);
 # endif /* E1K_NO_TAD */
@@ -7946,7 +7946,7 @@ static DECLCALLBACK(int) e1kR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFGM
     AssertRCReturn(rc, rc);
 
     /* Create Receive Absolute Delay Timer */
-    rc = PDMDevHlpTimerCreate(pDevIns, TMCLOCK_VIRTUAL, e1kR3RxIntDelayTimer, pThis, TMTIMER_FLAGS_NO_CRIT_SECT,
+    rc = PDMDevHlpTimerCreate(pDevIns, TMCLOCK_VIRTUAL, e1kR3RxAbsDelayTimer, pThis, TMTIMER_FLAGS_NO_CRIT_SECT,
                               "E1000 Receive Absolute Delay Timer", &pThis->hRADTimer);
     AssertRCReturn(rc, rc);
 #endif /* E1K_USE_RX_TIMERS */
