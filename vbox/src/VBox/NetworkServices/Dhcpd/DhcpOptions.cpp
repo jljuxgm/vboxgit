@@ -1,4 +1,4 @@
-/* $Id: DhcpOptions.cpp 79777 2019-07-15 00:28:50Z vboxsync $ */
+/* $Id: DhcpOptions.cpp 79778 2019-07-15 00:36:08Z vboxsync $ */
 /** @file
  * DHCP server - DHCP options
  */
@@ -292,7 +292,7 @@ DhcpOption *DhcpOption::parse(uint8_t aOptCode, int aEnc, const char *pcszValue,
 
     switch (aEnc)
     {
-        case 0: /* DhcpOptEncoding_Legacy */
+        case 0: /* DHCPOptionEncoding_Normal */
             switch (aOptCode)
             {
 #define HANDLE(a_OptClass)  \
