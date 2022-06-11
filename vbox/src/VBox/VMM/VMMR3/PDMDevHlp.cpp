@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 81691 2019-11-06 00:59:43Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 81705 2019-11-06 11:58:44Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -690,7 +690,7 @@ static DECLCALLBACK(RTGCPHYS) pdmR3DevHlp_Mmio2GetMappingAddress(PPDMDEVINS pDev
     LogFlow(("pdmR3DevHlp_Mmio2ChangeRegionNo: caller='%s'/%d: hRegion=%#RX6r\n", pDevIns->pReg->szName, pDevIns->iInstance, hRegion));
     VM_ASSERT_EMT0_RETURN(pVM, NIL_RTGCPHYS);
 
-    RTGCPHYS GCPhys = PGMR3PhysMMIOExGetMappingAddress(pVM, pDevIns, hRegion);
+    RTGCPHYS GCPhys = PGMR3PhysMmio2GetMappingAddress(pVM, pDevIns, hRegion);
 
     LogFlow(("pdmR3DevHlp_Mmio2ChangeRegionNo: caller='%s'/%d: returns %RGp\n", pDevIns->pReg->szName, pDevIns->iInstance, GCPhys));
     return GCPhys;
