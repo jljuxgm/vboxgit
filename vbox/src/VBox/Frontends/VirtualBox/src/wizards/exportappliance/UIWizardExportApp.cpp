@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportApp.cpp 78994 2019-06-05 13:09:44Z vboxsync $ */
+/* $Id: UIWizardExportApp.cpp 79557 2019-07-05 14:15:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportApp class implementation.
  */
@@ -241,7 +241,8 @@ void UIWizardExportApp::prepare()
 
     /* Now, when we are ready, we can
      * fast traver to page 2 if requested: */
-    if (m_fFastTraverToExportOCI)
+    if (   mode() == WizardMode_Basic
+        && m_fFastTraverToExportOCI)
         button(QWizard::NextButton)->click();
 }
 

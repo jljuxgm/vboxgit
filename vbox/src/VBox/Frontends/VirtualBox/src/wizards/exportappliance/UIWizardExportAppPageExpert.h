@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageExpert.h 79542 2019-07-05 07:41:33Z vboxsync $ */
+/* $Id: UIWizardExportAppPageExpert.h 79557 2019-07-05 14:15:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageExpert class declaration.
  */
@@ -102,6 +102,9 @@ private slots:
     void sltHandleAccountButtonClick();
 
 private:
+
+    /** Holds whether starting page was polished. */
+    bool  m_fPolished;
 
     /** Holds the VM selector container instance. */
     QGroupBox *m_pSelectorCnt;
