@@ -1,4 +1,4 @@
-/** $Id: VBoxClient.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/** $Id: VBoxClient.cpp 83716 2020-04-16 13:18:42Z vboxsync $ */
 /** @file
  * VBoxClient - User specific services, Darwin.
  */
@@ -199,9 +199,9 @@ static void vbclStopServices(void)
 static void usage(char *sProgName)
 {
     RTPrintf("usage: %s [-fvl]\n", sProgName);
-    RTPrintf("       -f\tRun in foreground (default: no)\n", sProgName);
-    RTPrintf("       -v\tIncrease verbosity level (default: no verbosity)\n", sProgName);
-    RTPrintf("       -l\tSpecify log file name (default: no log file)\n", sProgName);
+    RTPrintf("       -f\tRun in foreground (default: no)\n");
+    RTPrintf("       -v\tIncrease verbosity level (default: no verbosity)\n");
+    RTPrintf("       -l\tSpecify log file name (default: no log file)\n");
     exit(1);
 }
 
@@ -212,6 +212,13 @@ int main(int argc, char *argv[])
 
     bool         fDemonize     = true;
     static char *szLogFileName = NULL;
+
+    rc = RTR3InitExe(argc, &argv, 0);
+    if (RT_FAILURE(rc))
+    {
+        RTPrintf("RTR3InitExe() failed: (%Rrc)\n", rc);
+        return RTMsgInitFailure(rc);
+    }
 
     /* Parse command line */
     while((c = getopt(argc, argv, "fvl:")) != -1)
@@ -244,13 +251,6 @@ int main(int argc, char *argv[])
             RTPrintf("failed to run into background\n");
             return 1;
         }
-    }
-
-    rc = RTR3InitExe(argc, &argv, 0);
-    if (RT_FAILURE(rc))
-    {
-        RTPrintf("RTR3InitExe() failed: (%Rrc)\n", rc);
-        return RTMsgInitFailure(rc);
     }
 
     rc = VbglR3Init();
