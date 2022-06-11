@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-x11.cpp 80467 2019-08-28 09:31:18Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-x11.cpp 80473 2019-08-28 11:52:47Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Linux host.
  */
@@ -431,6 +431,7 @@ int ClipRequestDataForX11(VBOXCLIPBOARDCONTEXT *pCtx, uint32_t u32Format, void *
  * Called when we have requested data from VBox and that data has arrived.
  *
  * @param pClient               Context information about the guest VM.
+ * @param pCmdCtx               Pointer to the clipboard command context.
  * @param pData                 Data block to write to clipboard.
  */
 int VBoxClipboardSvcImplWriteData(PVBOXCLIPBOARDCLIENT pClient,

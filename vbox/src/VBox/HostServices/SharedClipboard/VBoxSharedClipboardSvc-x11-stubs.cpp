@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-x11-stubs.cpp 80444 2019-08-27 17:47:44Z vboxsync $*/
+/* $Id: VBoxSharedClipboardSvc-x11-stubs.cpp 80473 2019-08-28 11:52:47Z vboxsync $*/
 /** @file
  * Shared Clipboard Service - Linux host, a stub version with no functionality for use on headless hosts.
  */
@@ -107,6 +107,7 @@ int VBoxClipboardSvcImplFormatAnnounce(PVBOXCLIPBOARDCLIENT pClient, PVBOXCLIPBO
  * @param pClient       Context information about the guest VM
  * @param pCmdCtx       Command context to use.
  * @param pData         Data block to put read data into.
+ * @param pcbActual     Where to store the actual amount of data available.
  */
 int VBoxClipboardSvcImplReadData(PVBOXCLIPBOARDCLIENT pClient, PVBOXCLIPBOARDCLIENTCMDCTX pCmdCtx,
                                  PSHAREDCLIPBOARDDATABLOCK pData, uint32_t *pcbActual)
