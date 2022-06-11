@@ -1,4 +1,4 @@
-/* $Id: clipboard-common.cpp 80444 2019-08-27 17:47:44Z vboxsync $ */
+/* $Id: clipboard-common.cpp 80459 2019-08-28 08:34:32Z vboxsync $ */
 /** @file
  * Shared Clipboard: Some helper function for converting between the various eol.
  */
@@ -91,6 +91,13 @@ void SharedClipboardPayloadFree(PSHAREDCLIPBOARDEVENTPAYLOAD pPayload)
     pPayload = NULL;
 }
 
+/**
+ * Creates (initializes) an event.
+ *
+ * @returns VBox status code.
+ * @param   pEvent              Event to initialize.
+ * @param   uID                 ID to use for the event.
+ */
 int SharedClipboardEventCreate(PSHAREDCLIPBOARDEVENT pEvent, uint16_t uID)
 {
     AssertPtrReturn(pEvent, VERR_INVALID_POINTER);
@@ -107,6 +114,11 @@ int SharedClipboardEventCreate(PSHAREDCLIPBOARDEVENT pEvent, uint16_t uID)
     return rc;
 }
 
+/**
+ * Destroys an event.
+ *
+ * @param   pEvent              Event to destroy.
+ */
 void SharedClipboardEventDestroy(PSHAREDCLIPBOARDEVENT pEvent)
 {
     if (!pEvent)
@@ -125,6 +137,13 @@ void SharedClipboardEventDestroy(PSHAREDCLIPBOARDEVENT pEvent)
     pEvent->uID = 0;
 }
 
+/**
+ * Creates a new event source.
+ *
+ * @returns VBox status code.
+ * @param   pSource             Event source to create.
+ * @param   uID                 ID to use for event source.
+ */
 int SharedClipboardEventSourceCreate(PSHAREDCLIPBOARDEVENTSOURCE pSource, uint16_t uID)
 {
     AssertPtrReturn(pSource, VERR_INVALID_POINTER);
@@ -142,6 +161,11 @@ int SharedClipboardEventSourceCreate(PSHAREDCLIPBOARDEVENTSOURCE pSource, uint16
     return rc;
 }
 
+/**
+ * Destroys an event source.
+ *
+ * @param   pSource             Event source to destroy.
+ */
 void SharedClipboardEventSourceDestroy(PSHAREDCLIPBOARDEVENTSOURCE pSource)
 {
     if (!pSource)

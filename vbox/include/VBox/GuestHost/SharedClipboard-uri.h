@@ -1,4 +1,4 @@
-/* $Id: SharedClipboard-uri.h 80444 2019-08-27 17:47:44Z vboxsync $ */
+/* $Id: SharedClipboard-uri.h 80459 2019-08-28 08:34:32Z vboxsync $ */
 /** @file
  * Shared Clipboard - Shared URI functions between host and guest.
  */
@@ -466,10 +466,16 @@ typedef struct _VBOXCLIPBOARDLIST
     VBOXCLIPBOARDROOTLISTENTRY *paEntries;
 } VBOXCLIPBOARDLIST, *PVBOXCLIPBOARDLIST;
 
+/**
+ * Structure for keeping a Shared Clipboard object data chunk.
+ */
 typedef struct _VBOXCLIPBOARDOBJDATACHUNK
 {
+    /** Handle of object this data chunk is related to. */
     uint64_t  uHandle;
+    /** Pointer to actual data chunk. */
     void     *pvData;
+    /** Size (in bytes) of data chunk. */
     uint32_t  cbData;
 } VBOXCLIPBOARDOBJDATACHUNK, *PVBOXCLIPBOARDOBJDATACHUNK;
 
