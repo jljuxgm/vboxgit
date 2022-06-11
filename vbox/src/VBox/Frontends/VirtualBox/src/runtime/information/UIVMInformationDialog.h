@@ -1,4 +1,4 @@
-/* $Id: UIVMInformationDialog.h 81258 2019-10-14 13:13:41Z vboxsync $ */
+/* $Id: UIVMInformationDialog.h 81261 2019-10-14 14:38:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMInformationDialog class declaration.
  */
@@ -21,8 +21,11 @@
 # pragma once
 #endif
 
+/* Qt includes: */
+#include <QMainWindow>
+
 /* GUI includes: */
-#include "QIMainWindow.h"
+#include "QIWithRestorableGeometry.h"
 #include "QIWithRetranslateUI.h"
 
 /* COM includes: */
@@ -34,10 +37,14 @@ class QITabWidget;
 class QIDialogButtonBox;
 class UIMachineWindow;
 
+/* Type definitions: */
+typedef QIWithRestorableGeometry<QMainWindow> QMainWindowWithRestorableGeometry;
+typedef QIWithRetranslateUI<QMainWindowWithRestorableGeometry> QMainWindowWithRestorableGeometryAndRetranslateUi;
 
-/** QIMainWindow subclass providing user
+
+/** QMainWindow subclass providing user
   * with the dialog unifying VM details and statistics. */
-class UIVMInformationDialog : public QIWithRetranslateUI<QIMainWindow>
+class UIVMInformationDialog : public QMainWindowWithRestorableGeometryAndRetranslateUi
 {
     Q_OBJECT;
 
