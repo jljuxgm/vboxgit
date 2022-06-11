@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestControlSvc.cpp 83504 2020-04-01 15:28:53Z vboxsync $ */
+/* $Id: VBoxGuestControlSvc.cpp 83506 2020-04-01 15:31:48Z vboxsync $ */
 /** @file
  * Guest Control Service: Controlling the guest.
  */
@@ -1226,6 +1226,8 @@ int GstCtrlService::clientReportFeatures(ClientState *pClient, VBOXHGCMCALLHANDL
 int GstCtrlService::clientQueryFeatures(ClientState *pClient,
                                         VBOXHGCMCALLHANDLE hCall, uint32_t cParms, VBOXHGCMSVCPARM paParms[])
 {
+    RT_NOREF(pClient);
+
     /*
      * Validate the request.
      */
