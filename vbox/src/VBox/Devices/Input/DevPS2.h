@@ -1,4 +1,4 @@
-/* $Id: DevPS2.h 82189 2019-11-25 17:37:49Z vboxsync $ */
+/* $Id: DevPS2.h 82190 2019-11-25 17:44:40Z vboxsync $ */
 /** @file
  * PS/2 devices - Internal header file.
  */
@@ -41,6 +41,7 @@ typedef struct KBDSTATE *PKBDSTATE;
 DEF_PS2Q_TYPE(GeneriQ, 1);
 void PS2CmnClearQueue(GeneriQ *pQ);
 void PS2CmnInsertQueue(GeneriQ *pQ, uint8_t val);
+int  PS2CmnRemoveQueue(GeneriQ *pQ, uint8_t *pVal);
 void PS2CmnR3SaveQueue(PCPDMDEVHLPR3 pHlp, PSSMHANDLE pSSM, GeneriQ *pQ);
 int  PS2CmnR3LoadQueue(PCPDMDEVHLPR3 pHlp, PSSMHANDLE pSSM, GeneriQ *pQ);
 
