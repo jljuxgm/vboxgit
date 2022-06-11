@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 78841 2019-05-29 11:24:39Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 78843 2019-05-29 12:02:10Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -137,7 +137,7 @@ HRESULT Appliance::interpret()
     /* Clear any previous virtual system descriptions */
     m->virtualSystemDescriptions.clear();
 
-    if (!m->pReader)
+    if (m->locInfo.storageType == VFSType_File && !m->pReader)
         return setError(E_FAIL,
                         tr("Cannot interpret appliance without reading it first (call read() before interpret())"));
 
