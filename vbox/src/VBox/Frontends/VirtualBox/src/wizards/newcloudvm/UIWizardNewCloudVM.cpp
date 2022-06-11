@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVM.cpp 79656 2019-07-10 08:21:59Z vboxsync $ */
+/* $Id: UIWizardNewCloudVM.cpp 79682 2019-07-11 07:25:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVM class implementation.
  */
@@ -14,6 +14,9 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
+/* Qt includes: */
+#include <QAbstractButton>
 
 /* GUI includes: */
 #include "UIMessageCenter.h"
@@ -162,6 +165,11 @@ bool UIWizardNewCloudVM::createCloudVM()
     return fResult;
 }
 
+void UIWizardNewCloudVM::scheduleAutoFinish()
+{
+    QMetaObject::invokeMethod(this, "sltTriggerFinishButton", Qt::QueuedConnection);
+}
+
 void UIWizardNewCloudVM::retranslateUi()
 {
     /* Call to base-class: */
@@ -170,4 +178,9 @@ void UIWizardNewCloudVM::retranslateUi()
     /* Translate wizard: */
     setWindowTitle(tr("Create Cloud Virtual Machine"));
     setButtonText(QWizard::FinishButton, tr("Create"));
+}
+
+void UIWizardNewCloudVM::sltTriggerFinishButton()
+{
+    button(QWizard::FinishButton)->click();
 }

@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVM.h 79656 2019-07-10 08:21:59Z vboxsync $ */
+/* $Id: UIWizardNewCloudVM.h 79682 2019-07-11 07:25:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVM class declaration.
  */
@@ -84,10 +84,19 @@ public:
     /** Creates New Cloud VM. */
     bool createCloudVM();
 
+    /** Schedules Finish button trigger for
+      * the next event-loop cicle. */
+    void scheduleAutoFinish();
+
 protected:
 
     /** Handles translation event. */
     virtual void retranslateUi() /* override */;
+
+private slots:
+
+    /** Triggers Finish button. */
+    void sltTriggerFinishButton();
 
 private:
 
