@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testbox.py 84097 2020-04-30 10:35:14Z vboxsync $
+# $Id: testbox.py 84109 2020-04-30 14:44:31Z vboxsync $
 
 """
 Test Manager - TestBox.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84097 $"
+__version__ = "$Revision: 84109 $"
 
 
 # Standard python imports.
@@ -703,7 +703,8 @@ class TestBoxDataEx(TestBoxData):
             else:
                 asErrors = [];
                 for sKey in dCurErrors:
-                    asErrors.append('%s: %s' % (sKey[len('TestBoxInSchedGroup_'):], dCurErrors[sKey] + ('{%s}' % self.idTestBox)));
+                    asErrors.append('%s: %s' % (sKey[len('TestBoxInSchedGroup_'):],
+                                                dCurErrors[sKey] + ('{%s}' % self.idTestBox)))
                 dErrors[iInGrp] = '<br>\n'.join(asErrors)
             aoNewValues.append(oInSchedGroup);
 
