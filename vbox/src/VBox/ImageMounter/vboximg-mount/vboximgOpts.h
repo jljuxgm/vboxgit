@@ -1,5 +1,5 @@
 
-/* $Id: vboximgOpts.h 76585 2019-01-01 06:31:29Z vboxsync $ $Revision: 76585 $ $Date: 2019-01-01 14:31:29 +0800 (Tue, 01 Jan 2019) $ $Author: vboxsync $ */
+/* $Id: vboximgOpts.h 80517 2019-08-30 17:04:46Z vboxsync $ $Revision: 80517 $ $Date: 2019-08-31 01:04:46 +0800 (Sat, 31 Aug 2019) $ $Author: vboxsync $ */
 
 /** @file
  * vboximgOpts.h
@@ -27,14 +27,12 @@
 typedef struct vboximgOpts {
      char         *pszVm;                   /** optional VM UUID */
      char         *pszImageUuidOrPath;      /** Virtual Disk image UUID or path */
-     int32_t       idxPartition;            /** Number of partition to constrain FUSE based FS to (optional) 0 - whole disk*/
-     int32_t       offset;                  /** Offset to base virtual disk reads and writes from (altnerative to partition) */
-     int32_t       size;                    /** Size of accessible disk region, starting at offset, default = offset 0 */
      uint32_t      fListMediaLong;          /** Flag to list virtual disks of all known VMs */
      uint32_t      fVerboseList;            /** FUSE parsing doesn't understand combined flags (-lv, -vl), so we kludge it */
      uint32_t      fWideList;               /** FUSE parsing doesn't understand combined flags,(-lw, -wl) so we kludge it */
      uint32_t      fList;                   /** Flag to list virtual disks of all known VMs */
      uint32_t      fListParts;              /** Flag to summarily list partitions associated with pszImage */
+     uint32_t      fGstFs;                  /** Flag to try to exposes supported filesystems directly in the mountpoint inside a subdirectory */
      uint32_t      fAllowRoot;              /** Flag to allow root to access this FUSE FS */
      uint32_t      fRW;                     /** Flag to allow changes to FUSE-mounted Virtual Disk image */
      uint32_t      fWide;                   /** Flag to use wide-format list mode */
