@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: utils.py 78463 2019-05-10 15:29:51Z vboxsync $
+# $Id: utils.py 78464 2019-05-10 15:44:32Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 78463 $"
+__version__ = "$Revision: 78464 $"
 
 
 # Standard Python imports.
@@ -2098,10 +2098,10 @@ def areBytesEqual(oLeft, oRight):
             except: pass;
     else:
         if isString(oLeft):
-            try:    oLeft = bytearray(oLeft, 'utf-8');
+            try:    oLeft = bytearray(oLeft, 'utf-8');      # pylint: disable=redefined-variable-type
             except: pass;
         if isString(oRight):
-            try:    oRight = bytearray(oRight, 'utf-8');
+            try:    oRight = bytearray(oRight, 'utf-8');    # pylint: disable=redefined-variable-type
             except: pass;
 
     # Check if we now have the same type for both:
