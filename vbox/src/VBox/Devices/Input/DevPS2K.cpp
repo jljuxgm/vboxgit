@@ -1,4 +1,4 @@
-/* $Id: DevPS2K.cpp 83299 2020-03-16 15:20:30Z vboxsync $ */
+/* $Id: DevPS2K.cpp 83301 2020-03-16 17:14:44Z vboxsync $ */
 /** @file
  * PS2K - PS/2 keyboard emulation.
  */
@@ -484,8 +484,7 @@ static void ps2kSetDefaults(PPDMDEVINS pDevIns, PPS2K pThis)
 /**
  * The keyboard controller disabled the keyboard serial line.
  *
- * @param   pDevIns The device instance.
- * @param   pThis   The PS/2 auxiliary device shared instance data.
+ * @param   pThis   The keyboard device shared instance data.
  */
 void PS2KLineDisable(PPS2K pThis)
 {
@@ -495,8 +494,7 @@ void PS2KLineDisable(PPS2K pThis)
 /**
  * The keyboard controller enabled the keyboard serial line.
  *
- * @param   pDevIns The device instance.
- * @param   pThis   The PS/2 auxiliary device shared instance data.
+ * @param   pThis   The keyboard device shared instance data.
  */
 void PS2KLineEnable(PPS2K pThis)
 {
