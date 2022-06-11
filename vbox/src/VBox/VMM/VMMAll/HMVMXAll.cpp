@@ -1,4 +1,4 @@
-/* $Id: HMVMXAll.cpp 79637 2019-07-09 09:08:37Z vboxsync $ */
+/* $Id: HMVMXAll.cpp 79715 2019-07-12 05:59:51Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - All contexts.
  */
@@ -914,6 +914,7 @@ VMM_INT_DECL(void) HMDumpHwvirtVmxState(PVMCPU pVCpu)
     LogRel(("GCPhysVmcs                 = %#RGp\n",     pCtx->hwvirt.vmx.GCPhysVmcs));
     LogRel(("GCPhysShadowVmcs           = %#RGp\n",     pCtx->hwvirt.vmx.GCPhysShadowVmcs));
     LogRel(("enmDiag                    = %u (%s)\n",   pCtx->hwvirt.vmx.enmDiag, HMGetVmxDiagDesc(pCtx->hwvirt.vmx.enmDiag)));
+    LogRel(("uDiagAux                   = %#RX64\n",    pCtx->hwvirt.vmx.uDiagAux));
     LogRel(("enmAbort                   = %u (%s)\n",   pCtx->hwvirt.vmx.enmAbort, HMGetVmxAbortDesc(pCtx->hwvirt.vmx.enmAbort)));
     LogRel(("uAbortAux                  = %u (%#x)\n",  pCtx->hwvirt.vmx.uAbortAux, pCtx->hwvirt.vmx.uAbortAux));
     LogRel(("fInVmxRootMode             = %RTbool\n",   pCtx->hwvirt.vmx.fInVmxRootMode));
