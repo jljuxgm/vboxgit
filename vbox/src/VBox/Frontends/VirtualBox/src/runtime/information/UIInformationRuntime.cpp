@@ -1,4 +1,4 @@
-/* $Id: UIInformationRuntime.cpp 80979 2019-09-24 15:00:42Z vboxsync $ */
+/* $Id: UIInformationRuntime.cpp 80994 2019-09-25 06:37:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationRuntime class implementation.
  */
@@ -46,8 +46,11 @@
 /* External includes: */
 # include <math.h>
 
+/** The time in seconds between metric inquries done to API. */
 const ULONG iPeriod = 1;
+/** The number of data points we store in UIChart. with iPeriod=1 it corresponds to 2 min. of data. */
 const int iMaximumQueueSize = 120;
+/** This is passed to IPerformanceCollector during its setup. When 1 that means IPerformanceCollector object does a data cache of size 1. */
 const int iMetricSetupCount = 1;
 const int iDecimalCount = 2;
 
