@@ -1,4 +1,4 @@
-/* $Id: CPUMR3Db.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: CPUMR3Db.cpp 83092 2020-02-17 09:35:20Z vboxsync $ */
 /** @file
  * CPUM - CPU database part.
  */
@@ -757,6 +757,22 @@ int cpumR3MsrApplyFudge(PVM pVM)
             MFX(0xc0000103, "AMD64_TSC_AUX", Amd64TscAux, Amd64TscAux, 0, 0, ~(uint64_t)UINT32_MAX),
         };
         rc = cpumR3MsrApplyFudgeTable(pVM, &s_aRdTscPFudgeMsrs[0], RT_ELEMENTS(s_aRdTscPFudgeMsrs));
+        AssertLogRelRCReturn(rc, rc);
+    }
+
+    /*
+     * Windows 10 incorrectly writes to MSR_IA32_TSX_CTRL without checking
+     * CPUID.ARCH_CAP(EAX=7h,ECX=0):EDX[bit 29] or the MSR feature bits in
+     * MSR_IA32_ARCH_CAPABILITIES[bit 7], see @bugref{9630}.
+     * Ignore writes to this MSR and return 0 on reads.
+     */
+    if (pVM->cpum.s.GuestFeatures.fArchCap)
+    {
+        static CPUMMSRRANGE const s_aTsxCtrl[] =
+        {
+            MVI(MSR_IA32_TSX_CTRL, "IA32_TSX_CTRL", 0),
+        };
+        rc = cpumR3MsrApplyFudgeTable(pVM, &s_aTsxCtrl[0], RT_ELEMENTS(s_aTsxCtrl));
         AssertLogRelRCReturn(rc, rc);
     }
 
