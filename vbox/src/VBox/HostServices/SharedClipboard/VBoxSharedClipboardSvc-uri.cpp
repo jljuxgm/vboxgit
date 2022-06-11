@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-uri.cpp 79366 2019-06-26 15:59:30Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-uri.cpp 79367 2019-06-26 16:11:28Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Internal code for URI (list) handling.
  */
@@ -43,7 +43,7 @@ extern void *g_pvExtension;
 
 
 /*********************************************************************************************************************************
-*   Provider implementation                                                                                                                    *
+*   Provider implementation                                                                                                      *
 *********************************************************************************************************************************/
 
 int VBoxSvcClipboardProviderImplURIReadDataHdr(PSHAREDCLIPBOARDPROVIDERCTX pCtx, PVBOXCLIPBOARDDATAHDR *ppDataHdr)
@@ -174,8 +174,9 @@ int VBoxSvcClipboardProviderImplURIWriteFileData(PSHAREDCLIPBOARDPROVIDERCTX pCt
     return VERR_NOT_IMPLEMENTED;
 }
 
+
 /*********************************************************************************************************************************
-*   URI callbacks                                                                                                                    *
+*   URI callbacks                                                                                                                *
 *********************************************************************************************************************************/
 
 DECLCALLBACK(void) VBoxSvcClipboardURITransferPrepareCallback(PSHAREDCLIPBOARDURITRANSFERCALLBACKDATA pData)
