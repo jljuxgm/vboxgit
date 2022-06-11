@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.h 82187 2019-11-25 17:18:11Z vboxsync $ */
+/* $Id: UIActionPool.h 82713 2020-01-10 12:39:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPool class declaration.
  */
@@ -632,7 +632,7 @@ protected:
     /** Updates shortcuts. */
     virtual void updateShortcuts();
 
-    /** Hadles translation event. */
+    /** Handles translation event. */
     virtual void retranslateUi() /* override */;
 
     /** Handles any Qt @a pEvent */

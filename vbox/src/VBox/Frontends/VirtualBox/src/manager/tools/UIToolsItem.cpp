@@ -1,4 +1,4 @@
-/* $Id: UIToolsItem.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIToolsItem.cpp 82713 2020-01-10 12:39:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsItem class definition.
  */
@@ -236,6 +236,12 @@ void UIToolsItem::reconfigure(UIToolClass enmClass, UIToolType enmType,
     m_icon = icon;
     updatePixmap();
 
+    /* Update name finally: */
+    reconfigure(strName);
+}
+
+void UIToolsItem::reconfigure(const QString &strName)
+{
     /* If name is changed: */
     if (m_strName != strName)
     {
