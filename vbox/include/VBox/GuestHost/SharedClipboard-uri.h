@@ -1,4 +1,4 @@
-/* $Id: SharedClipboard-uri.h 79347 2019-06-26 09:15:29Z vboxsync $ */
+/* $Id: SharedClipboard-uri.h 79349 2019-06-26 09:21:51Z vboxsync $ */
 /** @file
  * Shared Clipboard - Shared URI functions between host and guest.
  */
@@ -562,21 +562,6 @@ typedef enum SHAREDCLIPBOARDURITRANSFERSTATUS
     /** The transfer is active and running. */
     SHAREDCLIPBOARDURITRANSFERSTATUS_RUNNING
 };
-
-/**
- * Enumeration to specify the Shared Clipboard URI source type.
- */
-typedef enum SHAREDCLIPBOARDSOURCE
-{
-    /** Invalid source type. */
-    SHAREDCLIPBOARDSOURCE_INVALID = 0,
-    /** Source is local. */
-    SHAREDCLIPBOARDSOURCE_LOCAL,
-    /** Source is remote. */
-    SHAREDCLIPBOARDSOURCE_REMOTE,
-    /** The usual 32-bit hack. */
-    SHAREDCLIPBOARDSOURCE_32Bit_Hack = 0x7fffffff
-} SHAREDCLIPBOARDSOURCE;
 
 /**
  * Structure for maintaining an URI transfer state.
