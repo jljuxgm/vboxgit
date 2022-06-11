@@ -1,4 +1,4 @@
-/* $Id: fuzz.cpp 83291 2020-03-13 16:56:34Z vboxsync $ */
+/* $Id: fuzz.cpp 83426 2020-03-25 19:40:09Z vboxsync $ */
 /** @file
  * IPRT - Fuzzing framework API, core.
  */
@@ -1914,6 +1914,49 @@ RTDECL(int) RTFuzzCtxCorpusInputAddFromVfsFileEx(RTFUZZCTX hFuzzCtx, RTVFSFILE h
             pMutation->cbInput  = cbFile;
             pMutation->pvInput  = pvCorpus;
             rc = RTVfsFileRead(hVfsFile, pvCorpus, cbFile, NULL);
+            if (RT_SUCCESS(rc))
+                rc = rtFuzzCtxMutationAdd(pThis, pMutation);
+
+            if (RT_FAILURE(rc))
+                rtFuzzMutationDestroy(pMutation);
+        }
+        else
+            rc = VERR_NO_MEMORY;
+    }
+
+    return rc;
+}
+
+
+RTDECL(int) RTFuzzCtxCorpusInputAddFromVfsIoStrm(RTFUZZCTX hFuzzCtx, RTVFSIOSTREAM hVfsIos)
+{
+    PRTFUZZCTXINT pThis = hFuzzCtx;
+    AssertPtrReturn(pThis, VERR_INVALID_HANDLE);
+    AssertReturn(hVfsIos != NIL_RTVFSIOSTREAM, VERR_INVALID_HANDLE);
+
+    return RTFuzzCtxCorpusInputAddFromVfsIoStrmEx(hFuzzCtx, hVfsIos, pThis->offMutStart, pThis->cbMutRange);
+}
+
+RTDECL(int) RTFuzzCtxCorpusInputAddFromVfsIoStrmEx(RTFUZZCTX hFuzzCtx, RTVFSIOSTREAM hVfsIos,
+                                                   uint64_t offMutStart, uint64_t cbMutRange)
+{
+    PRTFUZZCTXINT pThis = hFuzzCtx;
+    AssertPtrReturn(pThis, VERR_INVALID_HANDLE);
+    AssertReturn(hVfsIos != NIL_RTVFSIOSTREAM, VERR_INVALID_HANDLE);
+
+    void *pvCorpus = NULL;
+    RTFSOBJINFO ObjInfo;
+    int rc = RTVfsIoStrmQueryInfo(hVfsIos, &ObjInfo, RTFSOBJATTRADD_UNIX);
+    if (RT_SUCCESS(rc))
+    {
+        PRTFUZZMUTATION pMutation = rtFuzzMutationCreateEx(pThis, 0, NULL, offMutStart, cbMutRange,
+                                                           ObjInfo.cbObject, &pvCorpus);
+        if (RT_LIKELY(pMutation))
+        {
+            pMutation->pMutator = &g_MutatorCorpus;
+            pMutation->cbInput  = ObjInfo.cbObject;
+            pMutation->pvInput  = pvCorpus;
+            rc = RTVfsIoStrmRead(hVfsIos, pvCorpus, ObjInfo.cbObject, true /*fBlocking*/, NULL);
             if (RT_SUCCESS(rc))
                 rc = rtFuzzCtxMutationAdd(pThis, pMutation);
 
