@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageExpert.cpp 78882 2019-05-30 14:08:35Z vboxsync $ */
+/* $Id: UIWizardImportAppPageExpert.cpp 78883 2019-05-30 14:23:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageExpert class implementation.
  */
@@ -376,6 +376,16 @@ bool UIWizardImportAppPageExpert::validatePage()
 
     /* Lock finish button: */
     startProcessing();
+
+    /* Check whether there was cloud source selected: */
+    const bool fIsSourceCloudOne = fieldImp("isSourceCloudOne").toBool();
+    if (fIsSourceCloudOne)
+    {
+        /* Give changed VSD back to appliance: */
+        /// @todo check for possible errors
+        CVirtualSystemDescriptionForm comForm = fieldImp("vsdForm").value<CVirtualSystemDescriptionForm>();
+        comForm.GetVirtualSystemDescription();
+    }
 
     /* Try to import appliance: */
     if (fResult)
