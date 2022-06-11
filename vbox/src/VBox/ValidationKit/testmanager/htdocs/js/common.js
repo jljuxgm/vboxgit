@@ -1,4 +1,4 @@
-/* $Id: common.js 83455 2020-03-26 21:05:47Z vboxsync $ */
+/* $Id: common.js 83456 2020-03-26 21:08:05Z vboxsync $ */
 /** @file
  * Common JavaScript functions
  */
@@ -790,13 +790,13 @@ function tooltipRepositionOnLoad()
         var xPos;
         var yPos;
 
-        console.log('tooltipRepositionOnLoad: rect: x,y=' + oRelToRect.x + ',' + oRelToRect.y
-                    + ' cx,cy=' + oRelToRect.width + ',' + oRelToRect.height + ' top=' + oRelToRect.top
-                    + ' bottom=' + oRelToRect.bottom + ' left=' + oRelToRect.left + ' right=' + oRelToRect.right);
+        //console.log('tooltipRepositionOnLoad: rect: x,y=' + oRelToRect.x + ',' + oRelToRect.y
+        //            + ' cx,cy=' + oRelToRect.width + ',' + oRelToRect.height + ' top=' + oRelToRect.top
+        //            + ' bottom=' + oRelToRect.bottom + ' left=' + oRelToRect.left + ' right=' + oRelToRect.right);
         //console.log('tooltipRepositionOnLoad: yScroll=' + yScroll + ' yScrollBottom=' + yScrollBottom);
         //console.log('tooltipRepositionOnLoad: cyAbove=' + cyAbove + ' cyBelow=' + cyBelow + ' cyNeeded=' + cyNeeded);
-        console.log('tooltipRepositionOnLoad: xScroll=' + xScroll + ' xScrollRight=' + xScrollRight);
-        console.log('tooltipRepositionOnLoad: cxLeft=' + cxLeft + ' cxRight=' + cxRight + ' cxNeeded=' + cxNeeded);
+        //console.log('tooltipRepositionOnLoad: xScroll=' + xScroll + ' xScrollRight=' + xScrollRight);
+        //console.log('tooltipRepositionOnLoad: cxLeft=' + cxLeft + ' cxRight=' + cxRight + ' cxNeeded=' + cxNeeded);
 
         /*
          * Decide where to put the thing.
