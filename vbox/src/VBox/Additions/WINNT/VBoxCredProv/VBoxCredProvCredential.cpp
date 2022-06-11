@@ -1,4 +1,4 @@
-/* $Id: VBoxCredProvCredential.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxCredProvCredential.cpp 83824 2020-04-19 01:20:58Z vboxsync $ */
 /** @file
  * VBoxCredProvCredential - Class for keeping and handling the passed credentials.
  */
@@ -41,11 +41,11 @@
 
 
 
-VBoxCredProvCredential::VBoxCredProvCredential(void) :
-    m_enmUsageScenario(CPUS_INVALID),
-    m_cRefs(1),
-    m_pEvents(NULL),
-    m_fHaveCreds(false)
+VBoxCredProvCredential::VBoxCredProvCredential(void)
+    : m_cRefs(1)
+    , m_enmUsageScenario(CPUS_INVALID)
+    , m_pEvents(NULL)
+    , m_fHaveCreds(false)
 {
     VBoxCredProvVerbose(0, "VBoxCredProvCredential: Created\n");
     VBoxCredentialProviderAcquire();

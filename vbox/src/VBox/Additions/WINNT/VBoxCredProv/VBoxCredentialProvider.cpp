@@ -1,4 +1,4 @@
-/* $Id: VBoxCredentialProvider.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxCredentialProvider.cpp 83824 2020-04-19 01:20:58Z vboxsync $ */
 /** @file
  * VBoxCredentialProvider - Main file of the VirtualBox Credential Provider.
  */
@@ -318,8 +318,6 @@ static void VBoxCredentialProviderUnregisterSENS(void)
     try
     {
         VBoxCredProvVerbose(0, "VBoxCredentialProviderUnregisterSENS\n");
-
-        HRESULT hr;
 
         for (int i = 0; i < RT_ELEMENTS(g_aSENSEvents); i++)
         {

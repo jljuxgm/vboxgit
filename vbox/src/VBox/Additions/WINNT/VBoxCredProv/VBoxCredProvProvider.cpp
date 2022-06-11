@@ -1,4 +1,4 @@
-/* $Id: VBoxCredProvProvider.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxCredProvProvider.cpp 83824 2020-04-19 01:20:58Z vboxsync $ */
 /** @file
  * VBoxCredProvProvider - The actual credential provider class.
  */
@@ -33,12 +33,12 @@
 
 
 
-VBoxCredProvProvider::VBoxCredProvProvider(void) :
-    m_cRefs(1),
-    m_pPoller(NULL),
-    m_pCred(NULL),
-    m_pEvents(NULL),
-    m_fHandleRemoteSessions(false)
+VBoxCredProvProvider::VBoxCredProvProvider(void)
+    : m_cRefs(1)
+    , m_pCred(NULL)
+    , m_pPoller(NULL)
+    , m_pEvents(NULL)
+    , m_fHandleRemoteSessions(false)
 {
     VBoxCredentialProviderAcquire();
 
