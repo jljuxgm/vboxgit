@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 81309 2019-10-17 11:40:23Z vboxsync $ */
+/* $Id: UIExtraDataDefs.cpp 81563 2019-10-29 10:23:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -238,6 +238,8 @@ const char *UIExtraDataDefs::GUI_LogViewerShowLineNumbersDisabled = "showLineNum
 const char *UIExtraDataDefs::GUI_LogViewerNoFontStyleName = "noFontStyleName";
 const char *UIExtraDataDefs::GUI_GuestControl_LogViewerVisiblePanels = "GUI/LogViewerVisiblePanels";
 
+/* Restricted dialogs: */
+const char *UIExtraDataDefs::GUI_RestrictedDialogs = "GUI/RestrictedDialogs";
 
 /* Obsolete keys: */
 QMap<QString, QString> UIExtraDataDefs::prepareObsoleteKeysMap()
