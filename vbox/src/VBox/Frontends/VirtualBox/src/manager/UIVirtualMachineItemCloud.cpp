@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItemCloud.cpp 83277 2020-03-13 11:07:00Z vboxsync $ */
+/* $Id: UIVirtualMachineItemCloud.cpp 83288 2020-03-13 15:57:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItemCloud class implementation.
  */
@@ -103,8 +103,8 @@ void UIVirtualMachineItemCloud::recache()
     /* Determine attributes which are always available: */
     if (!m_guiCloudMachine.isNull())
     {
-        m_strId = m_guiCloudMachine.id();
-        m_strName = m_guiCloudMachine.name();
+        m_strId = m_guiCloudMachine.instanceId();
+        m_strName = m_guiCloudMachine.instanceName();
     }
 
     /* Now determine whether VM is accessible: */

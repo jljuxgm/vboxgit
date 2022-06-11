@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGenerator.cpp 83255 2020-03-11 10:34:49Z vboxsync $ */
+/* $Id: UIDetailsGenerator.cpp 83288 2020-03-13 15:57:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsGenerator implementation.
  */
@@ -139,7 +139,7 @@ UITextTable UIDetailsGenerator::generateMachineInformationGeneral(UICloudMachine
     /* Name: */
     if (fOptions & UIExtraDataMetaDefs::DetailsElementOptionTypeGeneral_Name)
         table << UITextTableLine(QApplication::translate("UIDetails", "Name", "details (general)"),
-                                 guiCloudMachine.name());
+                                 guiCloudMachine.instanceName());
 
     /* Operating system: */
     if (fOptions & UIExtraDataMetaDefs::DetailsElementOptionTypeGeneral_OS)
