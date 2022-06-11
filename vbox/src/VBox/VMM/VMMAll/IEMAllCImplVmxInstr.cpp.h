@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 80841 2019-09-17 06:26:34Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 80912 2019-09-20 05:49:12Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -1732,7 +1732,7 @@ IEM_STATIC void iemVmxVmexitLoadHostControlRegsMsrs(PVMCPUCC pVCpu)
         if (fHostInLongMode)
             uValidHostCr4 |= X86_CR4_PAE;
         else
-            uValidHostCr4 &= ~X86_CR4_PCIDE;
+            uValidHostCr4 &= ~(uint64_t)X86_CR4_PCIDE;
 
         /* Verify we have not modified CR4 fixed bits in VMX non-root operation. */
         Assert((uGuestCr4 &  uCr4Mb1) == uCr4Mb1);
