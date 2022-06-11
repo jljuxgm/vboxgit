@@ -1,6 +1,6 @@
-/* $Id: biosint.h 78052 2019-04-09 10:13:30Z vboxsync $ */
+/* $Id: biosint.h 78714 2019-05-24 10:19:34Z vboxsync $ */
 /** @file
- * PC BIOS - ???
+ * PC BIOS - BIOS internal definitions.
  */
 
 /*
