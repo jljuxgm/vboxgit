@@ -1,4 +1,4 @@
-﻿/* $Id: common.css 83410 2020-03-25 13:52:48Z vboxsync $ */
+﻿/* $Id: common.css 83440 2020-03-26 14:20:22Z vboxsync $ */
 /** @file
  * Test Manager - Common CSS.
  */
@@ -1150,7 +1150,8 @@ table.tmsqltable tr td:nth-child(4) {
     margin:     0px;
     border:     0px none;
     width:      100%;
-    overflow:   auto;
+    //overflow:   auto;
+    overflow:   hidden;
 }
 
 

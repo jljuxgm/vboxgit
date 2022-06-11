@@ -1,4 +1,4 @@
-/* $Id: tooltip.css 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: tooltip.css 83440 2020-03-26 14:20:22Z vboxsync $ */
 /** @file
  * Test Manager - Tooltip content (via iframe).
  */
@@ -114,7 +114,7 @@
 }
 
 /* This helps highlighting the revision we're showing the tooltip for. */
-.tmvcstimeline :target, .tmvcstimeline :target + dd {
+.tmvcstimeline-highlight, .tmvcstimeline :target, .tmvcstimeline :target + dd {
     background-color: #d8e8ff;
     padding-top:    0.2em;
     padding-bottom: 0.2em;
