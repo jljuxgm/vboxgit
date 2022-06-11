@@ -1,4 +1,4 @@
-/* $Id: Recording.h 82422 2019-12-05 15:59:34Z vboxsync $ */
+/* $Id: Recording.h 82423 2019-12-05 16:09:59Z vboxsync $ */
 /** @file
  * Recording code header.
  */
@@ -20,8 +20,6 @@
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
-
-using namespace com;
 
 #include <VBox/err.h>
 #include <VBox/settings.h>
