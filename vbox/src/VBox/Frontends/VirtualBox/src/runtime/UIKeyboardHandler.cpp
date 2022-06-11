@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.cpp 83685 2020-04-14 08:51:31Z vboxsync $ */
+/* $Id: UIKeyboardHandler.cpp 83686 2020-04-14 08:54:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandler class implementation.
  */
@@ -90,7 +90,7 @@ const int XKeyRelease = KeyRelease;
 #  undef FocusOut
 #  undef FocusIn
 # endif /* KeyPress */
-//# include <xcb/xcb.h>
+# include <xcb/xcb.h>
 #endif /* VBOX_WS_X11 */
 
 /* Enums representing different keyboard-states: */
