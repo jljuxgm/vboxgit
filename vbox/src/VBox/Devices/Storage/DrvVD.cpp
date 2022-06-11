@@ -1,4 +1,4 @@
-/* $Id: DrvVD.cpp 82130 2019-11-23 17:28:44Z vboxsync $ */
+/* $Id: DrvVD.cpp 82690 2020-01-09 12:01:58Z vboxsync $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
@@ -5079,21 +5079,31 @@ static DECLCALLBACK(int) drvvdConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uint
             AssertRC(rc);
 
             /* Check VDConfig for encryption config. */
-            if (pCfgVDConfig)
-                pThis->pCfgCrypto = CFGMR3GetChild(pCfgVDConfig, "CRYPT");
-
-            if (pThis->pCfgCrypto)
+            /** @todo This makes sure that the crypto config is not cleared accidentally
+             * when it was set because there are multiple VDConfig entries for a snapshot chain
+             * but only one contains the crypto config.
+             *
+             * This needs to be properly fixed by specifying which part of the image should contain the
+             * crypto stuff.
+             */
+            if (!pThis->pCfgCrypto)
             {
-                /* Setup VDConfig interface for disk encryption support. */
-                pThis->VDIfCfg.pfnAreKeysValid  = drvvdCfgAreKeysValid;
-                pThis->VDIfCfg.pfnQuerySize     = drvvdCfgQuerySize;
-                pThis->VDIfCfg.pfnQuery         = drvvdCfgQuery;
-                pThis->VDIfCfg.pfnQueryBytes    = NULL;
+                if (pCfgVDConfig)
+                    pThis->pCfgCrypto = CFGMR3GetChild(pCfgVDConfig, "CRYPT");
 
-                pThis->VDIfCrypto.pfnKeyRetain               = drvvdCryptoKeyRetain;
-                pThis->VDIfCrypto.pfnKeyRelease              = drvvdCryptoKeyRelease;
-                pThis->VDIfCrypto.pfnKeyStorePasswordRetain  = drvvdCryptoKeyStorePasswordRetain;
-                pThis->VDIfCrypto.pfnKeyStorePasswordRelease = drvvdCryptoKeyStorePasswordRelease;
+                if (pThis->pCfgCrypto)
+                {
+                    /* Setup VDConfig interface for disk encryption support. */
+                    pThis->VDIfCfg.pfnAreKeysValid  = drvvdCfgAreKeysValid;
+                    pThis->VDIfCfg.pfnQuerySize     = drvvdCfgQuerySize;
+                    pThis->VDIfCfg.pfnQuery         = drvvdCfgQuery;
+                    pThis->VDIfCfg.pfnQueryBytes    = NULL;
+
+                    pThis->VDIfCrypto.pfnKeyRetain               = drvvdCryptoKeyRetain;
+                    pThis->VDIfCrypto.pfnKeyRelease              = drvvdCryptoKeyRelease;
+                    pThis->VDIfCrypto.pfnKeyStorePasswordRetain  = drvvdCryptoKeyStorePasswordRetain;
+                    pThis->VDIfCrypto.pfnKeyStorePasswordRelease = drvvdCryptoKeyStorePasswordRelease;
+                }
             }
 
             /* Unconditionally insert the TCPNET interface, don't bother to check
