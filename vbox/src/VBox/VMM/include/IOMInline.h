@@ -1,4 +1,4 @@
-/* $Id: IOMInline.h 80641 2019-09-06 20:09:16Z vboxsync $ */
+/* $Id: IOMInline.h 80675 2019-09-09 14:09:23Z vboxsync $ */
 /** @file
  * IOM - Inlined functions.
  */
@@ -36,7 +36,7 @@
  * @returns NULL if no port registered.
  *
  * @param   pVM             The cross context VM structure.
- * @param   Port            The I/O port lookup.
+ * @param   uPort           The I/O port lookup.
  * @param   pidxLastHint    Pointer to IOMCPU::idxIoPortLastRead or
  *                          IOMCPU::idxIoPortLastWrite.
  *
