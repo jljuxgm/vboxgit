@@ -1,4 +1,4 @@
-/* $Id: UIInformationConfiguration.cpp 80554 2019-09-02 14:27:53Z vboxsync $ */
+/* $Id: UIInformationConfiguration.cpp 80913 2019-09-20 06:03:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationConfiguration class implementation.
  */
@@ -46,14 +46,12 @@ UIInformationConfiguration::UIInformationConfiguration(QWidget *pParent, const C
 {
     prepareObjects();
     retranslateUi();
-    createTableItems();
     connect(gVBoxEvents, &UIVirtualBoxEventHandler::sigMachineDataChange,
             this, &UIInformationConfiguration::sltMachineDataChanged);
 }
 
 void UIInformationConfiguration::sltMachineDataChanged()
 {
-    resetTable();
     createTableItems();
 }
 
@@ -68,12 +66,14 @@ void UIInformationConfiguration::retranslateUi()
     m_strSerialPortsTitle = QApplication::translate("UIVMInformationDialog", "Serial Ports");
     m_strUSBTitle = QApplication::translate("UIVMInformationDialog", "USB");
     m_strSharedFoldersTitle = QApplication::translate("UIVMInformationDialog", "Shared Folders");
+    createTableItems();
 }
 
 void UIInformationConfiguration::createTableItems()
 {
     if (!m_pTableWidget)
         return;
+    resetTable();
     QFontMetrics fontMetrics(m_pTableWidget->font());
     QTextDocument textDocument;
 
