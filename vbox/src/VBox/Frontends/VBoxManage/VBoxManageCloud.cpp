@@ -1,4 +1,4 @@
-/* $Id: VBoxManageCloud.cpp 79935 2019-07-23 16:44:25Z vboxsync $ */
+/* $Id: VBoxManageCloud.cpp 79942 2019-07-23 23:31:20Z vboxsync $ */
 /** @file
  * VBoxManageCloud - The cloud related commands.
  */
@@ -1229,10 +1229,20 @@ static RTEXITCODE deleteCloudImage(HandlerArg *a, int iFirst, PCLOUDCOMMONOPT pC
         switch (c)
         {
             case 'i':
+            {
+                if (strImageId.isNotEmpty())
+                    return errorArgument("Duplicate parameter: --id");
+
                 strImageId = ValueUnion.psz;
+                if (strImageId.isEmpty())
+                    return errorArgument("Empty parameter: --id");
+
                 break;
+            }
+
             case VINF_GETOPT_NOT_OPTION:
                 return errorUnknownSubcommand(ValueUnion.psz);
+
             default:
                 return errorGetOpt(c, &ValueUnion);
         }
