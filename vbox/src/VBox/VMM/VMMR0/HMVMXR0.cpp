@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 80274 2019-08-14 14:34:38Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 80314 2019-08-16 04:55:53Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -3284,7 +3284,7 @@ static int hmR0VmxSetupShadowVmcsFieldsArrays(PVMCC pVM)
     else
     {
         LogRelFunc(("VMX VMWRITE-All feature exposed to the guest but host CPU does not support it!\n"));
-        pVM->aCpus[0].hm.s.u32HMError = VMX_UFC_GST_HOST_VMWRITE_ALL;
+        VMCC_GET_CPU_0(pVM)->hm.s.u32HMError = VMX_UFC_GST_HOST_VMWRITE_ALL;
         return VERR_HM_UNSUPPORTED_CPU_FEATURE_COMBO;
     }
 
