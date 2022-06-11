@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 78916 2019-06-01 17:43:28Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 78950 2019-06-04 07:26:56Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -8460,6 +8460,7 @@ DECLCALLBACK(int) Console::i_sharedClipboardServiceCallback(void *pvExtension, u
             LogFlowFunc(("VBOX_CLIPBOARD_EXT_FN_FORMAT_ANNOUNCE\n"));
 
             VBOXCLIPBOARDEXTPARMS *pParms = (VBOXCLIPBOARDEXTPARMS *)pvParms;
+            AssertPtr(pParms);
 
             /* The guest announces clipboard formats. This must be delivered to all clients. */
             if (pThis->mConsoleVRDPServer)
@@ -8475,6 +8476,7 @@ DECLCALLBACK(int) Console::i_sharedClipboardServiceCallback(void *pvExtension, u
             LogFlowFunc(("VBOX_CLIPBOARD_EXT_FN_DATA_READ\n"));
 
             VBOXCLIPBOARDEXTPARMS *pParms = (VBOXCLIPBOARDEXTPARMS *)pvParms;
+            AssertPtr(pParms);
 
             /* The clipboard service expects that the pvData buffer will be filled
              * with clipboard data. The server returns the data from the client that
@@ -8493,6 +8495,7 @@ DECLCALLBACK(int) Console::i_sharedClipboardServiceCallback(void *pvExtension, u
             LogFlowFunc(("VBOX_CLIPBOARD_EXT_FN_DATA_WRITE\n"));
 
             VBOXCLIPBOARDEXTPARMS *pParms = (VBOXCLIPBOARDEXTPARMS *)pvParms;
+            AssertPtr(pParms);
 
             if (pThis->mConsoleVRDPServer)
                 pThis->mConsoleVRDPServer->SendClipboard(VRDE_CLIPBOARD_FUNCTION_DATA_WRITE,
@@ -8508,6 +8511,14 @@ DECLCALLBACK(int) Console::i_sharedClipboardServiceCallback(void *pvExtension, u
             com::SafeArray<BSTR> abstrParms; /* Empty for now. */
             ULONG uID;
             hrc = pControl->ClipboardAreaRegister(ComSafeArrayAsInParam(abstrParms), &uID);      H();
+            if (SUCCEEDED(hrc))
+            {
+                 PVBOXCLIPBOARDEXTAREAPARMS pParms = (PVBOXCLIPBOARDEXTAREAPARMS)pvParms;
+                 AssertPtr(pParms);
+
+                 /* Return the registered area ID back to the caller. */
+                 pParms->uID = uID;
+            }
         } break;
 
         case VBOX_CLIPBOARD_EXT_FN_AREA_UNREGISTER:
