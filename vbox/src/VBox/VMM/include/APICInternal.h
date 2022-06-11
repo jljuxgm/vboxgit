@@ -1,4 +1,4 @@
-/* $Id: APICInternal.h 82031 2019-11-20 16:11:16Z vboxsync $ */
+/* $Id: APICInternal.h 82035 2019-11-20 16:42:30Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller.
  */
@@ -1160,8 +1160,6 @@ typedef struct APICDEV
 {
     /** The MMIO handle. */
     IOMMMIOHANDLE               hMmio;
-    /** The device instance - R3 Ptr. */
-    PPDMDEVINSR3                pDevInsR3;
 } APICDEV;
 /** Pointer to an APIC device. */
 typedef APICDEV *PAPICDEV;
