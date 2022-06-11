@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic2.h 80442 2019-08-27 12:28:02Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic2.h 81738 2019-11-07 16:13:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic2 class declaration.
  */
@@ -218,7 +218,7 @@ protected:
     QStackedWidget *m_pSettingsWidget;
 
     /** Holds the file selector label instance. */
-    QLabel    *m_pFileSelectorLabel;
+    QLabel                  *m_pFileSelectorLabel;
     /** Holds the file selector instance. */
     UIEmptyFilePathSelector *m_pFileSelector;
 
