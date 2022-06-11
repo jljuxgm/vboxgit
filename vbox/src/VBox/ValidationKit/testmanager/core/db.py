@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: db.py 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: db.py 83358 2020-03-21 13:02:08Z vboxsync $
 
 """
 Test Manager - Database Interface.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 82968 $"
+__version__ = "$Revision: 83358 $"
 
 
 # Standard python imports.
@@ -74,7 +74,7 @@ def dbTimestampToDatetime(oValue):
     if isinstance(oValue, datetime.datetime):
         return oValue;
     if utils.isString(oValue):
-        raise Exception('TODO');
+        return utils.parseIsoTimestamp(oValue);
     return oValue.pydatetime();
 
 def dbTimestampToZuluDatetime(oValue):
