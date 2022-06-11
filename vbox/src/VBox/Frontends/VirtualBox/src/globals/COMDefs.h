@@ -1,4 +1,4 @@
-/* $Id: COMDefs.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: COMDefs.h 80044 2019-07-29 12:57:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various COM definitions and COM wrapper class declarations.
  *
@@ -73,17 +73,13 @@
 
 #include <VBox/com/com.h>
 #include <VBox/com/array.h>
-#include <VBox/com/assert.h>
 
 #undef ASSERT
 
 /* Qt includes */
 #include <QString>
-#include <QRect>
 #include <QUuid>
 #include <QVector>
-#include <QStringList>
-#include <QMetaType>
 
 /* GUI includes: */
 #include "UILibraryDefs.h"

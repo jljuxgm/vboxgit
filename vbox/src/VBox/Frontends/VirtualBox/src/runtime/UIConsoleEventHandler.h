@@ -1,4 +1,4 @@
-/* $Id: UIConsoleEventHandler.h 77719 2019-03-15 10:16:28Z vboxsync $ */
+/* $Id: UIConsoleEventHandler.h 80044 2019-07-29 12:57:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConsoleEventHandler class declaration.
  */
@@ -23,6 +23,7 @@
 
 /* Qt includes: */
 #include <QObject>
+#include <QRect>
 
 /* COM includes: */
 #include "COMEnums.h"

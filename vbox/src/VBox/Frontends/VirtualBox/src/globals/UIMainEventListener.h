@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.h 78324 2019-04-26 13:20:04Z vboxsync $ */
+/* $Id: UIMainEventListener.h 80044 2019-07-29 12:57:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMainEventListener class declaration.
  */
@@ -24,6 +24,7 @@
 /* Qt includes: */
 #include <QList>
 #include <QObject>
+#include <QRect>
 
 /* GUI includes: */
 #include "UILibraryDefs.h"
@@ -43,7 +44,6 @@
 
 /* Forward declarations: */
 class QPoint;
-class QSize;
 class QString;
 class UIMainEventListeningThread;
 class CEventListener;
