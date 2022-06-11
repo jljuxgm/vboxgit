@@ -1,11 +1,13 @@
 @echo off
-rem $Id: Combined-3-Repack.cmd 82274 2019-11-28 19:20:19Z vboxsync $
+rem $Id: Combined-3-Repack.cmd 82275 2019-11-28 19:37:46Z vboxsync $
 rem rem @file
 rem Windows NT batch script for repacking signed amd64 and x86 drivers.
 rem
 
 rem
 rem Copyright (C) 2018-2019 Oracle Corporation
+rem
+rem Oracle Corporation confidential
 rem All rights reserved
 rem
 
