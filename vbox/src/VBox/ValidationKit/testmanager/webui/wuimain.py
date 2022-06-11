@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuimain.py 83366 2020-03-23 13:12:48Z vboxsync $
+# $Id: wuimain.py 83432 2020-03-25 20:19:30Z vboxsync $
 
 """
 Test Manager Core - WUI - The Main page.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 83366 $"
+__version__ = "$Revision: 83432 $"
 
 # Standard Python imports.
 
@@ -79,7 +79,7 @@ class WuiMain(WuiDispatcherBase):
     ksActionReportTestBoxFailures       = 'ReportTestBoxFailures';
     ksActionReportFailureReasons        = 'ReportFailureReasons';
     ksActionGraphWiz                    = 'GraphWiz';
-    ksActionVcsHistoryTooltip           = 'VcsHistoryTooltip';
+    ksActionVcsHistoryTooltip           = 'VcsHistoryTooltip';  ##< Hardcoded in common.js.
     ## @}
 
     ## @name Standard report parameters

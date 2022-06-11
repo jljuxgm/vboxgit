@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuivcshistory.py 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: wuivcshistory.py 83432 2020-03-25 20:19:30Z vboxsync $
 
 """
 Test Manager WUI - VCS history
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 82968 $"
+__version__ = "$Revision: 83432 $"
 
 # Python imports.
 #import datetime;
@@ -70,7 +70,7 @@ class WuiVcsHistoryTooltip(WuiContentBase):
                        % (oTsZulu.strftime('%Y-%m-%d'),);
 
             sEntry  = '  <dt id="r%s">' % (oEntry.iRevision, );
-            sEntry += '<a href="%s">' \
+            sEntry += '<a href="%s" target="_blank">' \
                     % ( webutils.escapeAttr(config.g_ksTracChangsetUrlFmt
                                             % { 'iRevision': oEntry.iRevision, 'sRepository': oEntry.sRepository,}), );
 
