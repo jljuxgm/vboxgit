@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboard.cpp 79641 2019-07-09 12:58:12Z vboxsync $ */
+/* $Id: UISoftKeyboard.cpp 79654 2019-07-10 07:02:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class implementation.
  */
@@ -679,7 +679,7 @@ signals:
 public:
 
     UISoftKeyboardStatusBarWidget(QWidget *pParent = 0);
-    void updateMessage(const QString &strMessage);
+    void updateLayoutNameInStatusBar(const QString &strMessage);
 
 protected:
 
@@ -3167,7 +3167,7 @@ void UISoftKeyboardStatusBarWidget::prepareObjects()
     retranslateUi();
 }
 
-void UISoftKeyboardStatusBarWidget::updateMessage(const QString &strMessage)
+void UISoftKeyboardStatusBarWidget::updateLayoutNameInStatusBar(const QString &strMessage)
 {
     if (!m_pMessageLabel)
         return;
@@ -3688,10 +3688,10 @@ void UISoftKeyboard::updateStatusBarMessage(const QString &strName)
     if (!strName.isEmpty())
     {
         strMessage += QString("%1: %2").arg(tr("Layout")).arg(strName);
-        m_pStatusBarWidget->updateMessage(strMessage);
+        m_pStatusBarWidget->updateLayoutNameInStatusBar(strMessage);
     }
     else
-        m_pStatusBarWidget->updateMessage(QString());
+        m_pStatusBarWidget->updateLayoutNameInStatusBar(QString());
 }
 
 void UISoftKeyboard::updateLayoutSelectorList()
