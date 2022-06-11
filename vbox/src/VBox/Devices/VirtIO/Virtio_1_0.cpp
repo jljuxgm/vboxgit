@@ -1,4 +1,4 @@
-/* $Id: Virtio_1_0.cpp 82151 2019-11-25 04:14:32Z vboxsync $ */
+/* $Id: Virtio_1_0.cpp 82183 2019-11-25 16:14:33Z vboxsync $ */
 /** @file
  * Virtio_1_0 - Virtio Common (PCI, feature & config mgt, queue mgt & proxy, notification mgt)
  */
@@ -169,7 +169,12 @@ DECLINLINE(uint16_t) virtioReadAvailRingIdx(PPDMDEVINS pDevIns, PVIRTIOCORE pVir
 
 DECLINLINE(bool) virtqIsEmpty(PPDMDEVINS pDevIns, PVIRTIOCORE pVirtio, uint16_t idxQueue)
 {
-    return virtioReadAvailRingIdx(pDevIns, pVirtio, idxQueue) == pVirtio->virtqState[idxQueue].uAvailIdx;
+    uint16_t uAvailGst = virtioReadAvailRingIdx(pDevIns, pVirtio, idxQueue);
+    bool fEmpty = uAvailGst == pVirtio->virtqState[idxQueue].uAvailIdx;
+
+    LogFlow(("Q<%u>: uAvailGst=%u uAvailIdx=%u -> fEmpty=%RTbool\n",
+             idxQueue, uAvailGst, pVirtio->virtqState[idxQueue].uAvailIdx, fEmpty));
+    return fEmpty;
 }
 
 #if 0 /* unused - Will be used when VIRTIO_F_EVENT_IDX optional feature is implemented, VirtIO 1.0, 2.4.7 */
