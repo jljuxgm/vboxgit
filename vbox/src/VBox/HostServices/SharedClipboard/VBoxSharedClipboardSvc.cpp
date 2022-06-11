@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc.cpp 79107 2019-06-12 13:57:04Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc.cpp 79108 2019-06-12 14:01:24Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Host service entry points.
  */
@@ -429,6 +429,7 @@ static DECLCALLBACK(int) svcDisconnect(void *, uint32_t u32ClientID, void *pvCli
     VBoxClipboardSvcImplDisconnect(pClientData);
 
     vboxSvcClipboardClientStateReset(&pClientData->State);
+    vboxSvcClipboardClientStateDestroy(&pClientData->State);
 
     g_pClientData = NULL;
 
@@ -463,30 +464,9 @@ static DECLCALLBACK(int) svcConnect(void *, uint32_t u32ClientID, void *pvClient
     vboxSvcClipboardClientStateInit(&pClientData->State, u32ClientID);
 
     int rc = VBoxClipboardSvcImplConnect(pClientData, VBoxSvcClipboardGetHeadless());
-#if 1
+#ifdef VBOX_WITH_SHARED_CLIPBOARD_URI_LIST
     if (RT_SUCCESS(rc))
         rc = SharedClipboardURICtxInit(&pClientData->URI);
-#else
-    if (RT_SUCCESS(rc))
-    {
-        SHAREDCLIPBOARDPROVIDERCREATIONCTX creationCtx;
-        RT_ZERO(creationCtx);
-        creationCtx.enmSource = SHAREDCLIPBOARDPROVIDERSOURCE_HOSTSERVICE;
-
-        PSHAREDCLIPBOARDURITRANSFER pTransfer;
-        rc = SharedClipboardURITransferCreate(SHAREDCLIPBOARDURITRANSFERDIR_WRITE, &creationCtx, &pTransfer);
-
-
-        rc = SharedClipboardURITransferCreate(&pClientData->Transfer, &pClientData->State);
-        if (RT_SUCCESS(rc))
-        SharedClipboardURICtxTransferAdd
-
-        if (RT_SUCCESS(rc))
-        {
-            pClientData->cTransfers    = 0;
-            pClientData->cMaxTransfers = 1; /* At the moment we only support one transfer per client at a time. */
-        }
-    }
 #endif
 
     if (RT_SUCCESS(rc))
