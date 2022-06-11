@@ -1,4 +1,4 @@
-/* $Id: Virtio_1_0.h 81814 2019-11-12 18:21:33Z vboxsync $ */
+/* $Id: Virtio_1_0.h 81817 2019-11-12 19:07:39Z vboxsync $ */
 /** @file
  * Virtio_1_0.h - Virtio Declarations
  */
@@ -71,7 +71,7 @@ typedef PVIRTIOSGSEG *PPVIRTIOSGSEG;
 
 typedef struct VIRTIOSGBUF
 {
-    PCVIRTIOSGSEG paSegs;                                       /**< Pointer to the scatter/gather array       */
+    PVIRTIOSGSEG paSegs;                                       /**< Pointer to the scatter/gather array       */
     unsigned  cSegs;                                            /**< Number of segments                        */
     unsigned  idxSeg;                                           /**< Current segment we are in                 */
     RTGCPHYS  pGcSegCur;                                        /**< Ptr to byte within the current seg        */
@@ -405,7 +405,6 @@ DECLINLINE(bool) virtioCoreIsQueueEnabled(PVIRTIOCORE pVirtio, uint16_t idxQueue
     Assert(idxQueue < RT_ELEMENTS(pVirtio->virtqState));
     return pVirtio->uQueueEnable[idxQueue] != 0;
 }
-
 
 /**
  * Get name of queue, by idxQueue, assigned at virtioCoreR3QueueAttach()
