@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testfileset.py 79280 2019-06-21 14:26:11Z vboxsync $
+# $Id: testfileset.py 79449 2019-07-01 15:51:32Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79280 $"
+__version__ = "$Revision: 79449 $"
 
 
 # Standard Python imports.
@@ -536,6 +536,7 @@ class TestFileSet(object):
             if self.fDosStyle:
                 sPath = sPath.replace('\\', '/');
             oTarInfo = tarfile.TarInfo(sPath);
+            oTarInfo.mode = 0o666;
             oTarInfo.size = len(oFile.abContent);
             oFile.off = 0;
             try:
