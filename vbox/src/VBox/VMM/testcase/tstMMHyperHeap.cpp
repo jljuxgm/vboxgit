@@ -1,4 +1,4 @@
-/* $Id: tstMMHyperHeap.cpp 82928 2020-01-30 13:52:30Z vboxsync $ */
+/* $Id: tstMMHyperHeap.cpp 82930 2020-01-30 14:00:01Z vboxsync $ */
 /** @file
  * MM Hypervisor Heap testcase.
  */
@@ -182,7 +182,9 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
     }
 
     /* free and allocate the same node again. */
-MMHyperHeapDump(pVM);
+#ifdef DEBUG
+    MMHyperHeapDump(pVM);
+#endif
     for (i = 0; i < RT_ELEMENTS(aOps); i++)
     {
         if (    !aOps[i].pvAlloc
