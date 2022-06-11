@@ -1,4 +1,4 @@
-/* $Id: UsbMsd.cpp 81585 2019-10-30 11:19:27Z vboxsync $ */
+/* $Id: UsbMsd.cpp 81765 2019-11-11 16:00:31Z vboxsync $ */
 /** @file
  * UsbMSD - USB Mass Storage Device Emulation.
  */
@@ -1430,7 +1430,9 @@ static DECLCALLBACK(int) usbMsdLoadExec(PPDMUSBINS pUsbIns, PSSMHANDLE pSSM, uin
             AssertReturn(pReq, VERR_NO_MEMORY);
             pThis->pReq = pReq;
 
+            AssertCompile(sizeof(pReq->enmState) == sizeof(uint32_t));
             SSMR3GetU32(pSSM, (uint32_t *)&pReq->enmState);
+
             uint32_t cbBuf = 0;
             rc = SSMR3GetU32(pSSM, &cbBuf);
             AssertRCReturn(rc, rc);

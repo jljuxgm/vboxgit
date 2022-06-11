@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 81591 2019-10-30 14:14:10Z vboxsync $ */
+/* $Id: DevSB16.cpp 81765 2019-11-11 16:00:31Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  */
@@ -1829,7 +1829,7 @@ static DECLCALLBACK(int) sb16SaveExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM)
 /**
  * Worker for sb16LoadExec.
  */
-static int sb16Load(PSSMHANDLE pSSM, PSB16STATE pThis)
+static int sb16Load(PCPDMDEVHLPR3 pHlp, PSSMHANDLE pSSM, PSB16STATE pThis)
 {
     SSMR3GetS32(pSSM, &pThis->irq);
     SSMR3GetS32(pSSM, &pThis->dma);
@@ -1842,7 +1842,7 @@ static int sb16Load(PSSMHANDLE pSSM, PSB16STATE pThis)
     SSMR3GetS32(pSSM, &pThis->fmt_signed);
     SSMR3GetS32(pSSM, &pThis->fmt_bits);
 
-    SSMR3GetU32(pSSM, (uint32_t *)&pThis->fmt);
+    PDMDEVHLP_SSM_GET_ENUM32_RET(pHlp, pSSM, pThis->fmt, PDMAUDIOFMT);
 
     SSMR3GetS32(pSSM, &pThis->dma_auto);
     SSMR3GetS32(pSSM, &pThis->block_size);
@@ -1942,7 +1942,7 @@ static DECLCALLBACK(int) sb16LoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uint3
     if (uPass != SSM_PASS_FINAL)
         return VINF_SUCCESS;
 
-    return sb16Load(pSSM, pThis);
+    return sb16Load(pDevIns->pHlpR3, pSSM, pThis);
 }
 
 /**

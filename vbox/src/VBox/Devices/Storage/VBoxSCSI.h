@@ -1,4 +1,4 @@
-/* $Id: VBoxSCSI.h 76565 2019-01-01 04:23:20Z vboxsync $ */
+/* $Id: VBoxSCSI.h 81765 2019-11-11 16:00:31Z vboxsync $ */
 /** @file
  * VBox storage devices - Simple SCSI interface for BIOS access.
  */
@@ -149,8 +149,8 @@ int vboxscsiWriteString(PPDMDEVINS pDevIns, PVBOXSCSI pVBoxSCSI, uint8_t iRegist
 int vboxscsiReadString(PPDMDEVINS pDevIns, PVBOXSCSI pVBoxSCSI, uint8_t iRegister,
                        uint8_t *pbDst, uint32_t *pcTransfers, unsigned cb);
 
-DECLHIDDEN(int) vboxscsiR3LoadExec(PVBOXSCSI pVBoxSCSI, PSSMHANDLE pSSM);
-DECLHIDDEN(int) vboxscsiR3SaveExec(PVBOXSCSI pVBoxSCSI, PSSMHANDLE pSSM);
+DECLHIDDEN(int) vboxscsiR3LoadExec(PCPDMDEVHLPR3 pHlp, PVBOXSCSI pVBoxSCSI, PSSMHANDLE pSSM);
+DECLHIDDEN(int) vboxscsiR3SaveExec(PCPDMDEVHLPR3 pHlp, PVBOXSCSI pVBoxSCSI, PSSMHANDLE pSSM);
 RT_C_DECLS_END
 #endif /* IN_RING3 */
 

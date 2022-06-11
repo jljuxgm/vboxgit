@@ -1,4 +1,4 @@
-/* $Id: DevIoApic.cpp 81591 2019-10-30 14:14:10Z vboxsync $ */
+/* $Id: DevIoApic.cpp 81765 2019-11-11 16:00:31Z vboxsync $ */
 /** @file
  * IO APIC - Input/Output Advanced Programmable Interrupt Controller.
  */
@@ -1089,10 +1089,10 @@ static DECLCALLBACK(int) ioapicR3LoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, u
     }
 
     if (uVersion == IOAPIC_SAVED_STATE_VERSION)
-        SSMR3GetU32(pSSM, (uint32_t *)&pThis->uIrr);
+        SSMR3GetU32(pSSM, &pThis->uIrr);
 
-    SSMR3GetU8(pSSM, (uint8_t *)&pThis->u8Id);
-    SSMR3GetU8(pSSM, (uint8_t *)&pThis->u8Index);
+    SSMR3GetU8V(pSSM, &pThis->u8Id);
+    SSMR3GetU8V(pSSM, &pThis->u8Index);
     for (uint8_t idxRte = 0; idxRte < RT_ELEMENTS(pThis->au64RedirTable); idxRte++)
         SSMR3GetU64(pSSM, &pThis->au64RedirTable[idxRte]);
 

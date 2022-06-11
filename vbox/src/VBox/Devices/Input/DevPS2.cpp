@@ -1,4 +1,4 @@
-/* $Id: DevPS2.cpp 81591 2019-10-30 14:14:10Z vboxsync $ */
+/* $Id: DevPS2.cpp 81765 2019-11-11 16:00:31Z vboxsync $ */
 /** @file
  * DevPS2 - PS/2 keyboard & mouse controller device.
  */
@@ -540,8 +540,8 @@ static int kbd_load(PSSMHANDLE pSSM, KBDState *s, uint32_t version_id)
     SSMR3GetU8(pSSM, &s->mode);
     if (version_id <= 5)
     {
-        SSMR3GetU32(pSSM, (uint32_t *)&u32Dummy);
-        SSMR3GetU32(pSSM, (uint32_t *)&u32Dummy);
+        SSMR3GetU32(pSSM, &u32Dummy);
+        SSMR3GetU32(pSSM, &u32Dummy);
     }
     else
     {

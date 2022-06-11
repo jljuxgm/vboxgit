@@ -1,4 +1,4 @@
-/* $Id: DevVirtioSCSI.cpp 81689 2019-11-06 00:52:45Z vboxsync $ $Revision: 81689 $ $Date: 2019-11-06 08:52:45 +0800 (Wed, 06 Nov 2019) $ $Author: vboxsync $ */
+/* $Id: DevVirtioSCSI.cpp 81765 2019-11-11 16:00:31Z vboxsync $ $Revision: 81765 $ $Date: 2019-11-12 00:00:31 +0800 (Tue, 12 Nov 2019) $ $Author: vboxsync $ */
 /** @file
  * VBox storage devices - Virtio SCSI Driver
  *
@@ -2010,7 +2010,7 @@ static DECLCALLBACK(int) virtioScsiR3LoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSS
     pHlp->pfnSSMGetU16(pSSM, &pThis->virtioScsiConfig.uMaxTarget);
     pHlp->pfnSSMGetU32(pSSM, &pThis->virtioScsiConfig.uMaxLun);
     pHlp->pfnSSMGetU32(pSSM, &pThis->fAsyncEvtsEnabled);
-    pHlp->pfnSSMGetU32(pSSM, (uint32_t *)&pThis->cActiveReqs);
+    pHlp->pfnSSMGetU32V(pSSM, &pThis->cActiveReqs);
     pHlp->pfnSSMGetBool(pSSM, &pThis->fEventsMissed);
     pHlp->pfnSSMGetU32(pSSM, &pThis->fVirtioReady);
     pHlp->pfnSSMGetU32(pSSM, &pThis->fHasT10pi);

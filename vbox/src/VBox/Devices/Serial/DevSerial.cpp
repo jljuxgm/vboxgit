@@ -1,4 +1,4 @@
-/* $Id: DevSerial.cpp 81591 2019-10-30 14:14:10Z vboxsync $ */
+/* $Id: DevSerial.cpp 81765 2019-11-11 16:00:31Z vboxsync $ */
 /** @file
  * DevSerial - 16550A UART emulation.
  *
@@ -178,8 +178,7 @@ static DECLCALLBACK(int) serialR3LoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, u
     {
         SSMR3GetU8(    pSSM, &bIrq);
         SSMR3GetIOPort(pSSM, &PortBase);
-        rc = SSMR3GetU32(   pSSM, (uint32_t *)&enmType);
-        AssertRCReturn(rc, rc);
+        PDMDEVHLP_SSM_GET_ENUM32_RET(pDevIns->pHlpR3, pSSM, enmType, UARTTYPE);
         if (uPass == SSM_PASS_FINAL)
         {
             rc = uartR3LoadExec(&pThis->UartCore, pSSM, uVersion, uPass, NULL, NULL);

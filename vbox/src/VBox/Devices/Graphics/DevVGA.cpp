@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 81591 2019-10-30 14:14:10Z vboxsync $ */
+/* $Id: DevVGA.cpp 81765 2019-11-11 16:00:31Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -2782,7 +2782,7 @@ static int vga_load(PSSMHANDLE pSSM, PVGASTATE pThis, int version_id)
     SSMR3GetMem(pSSM, pThis->gr, 16);
     SSMR3GetU8(pSSM, &pThis->ar_index);
     SSMR3GetMem(pSSM, pThis->ar, 21);
-    SSMR3GetU32(pSSM, (uint32_t *)&pThis->ar_flip_flop);
+    SSMR3GetS32(pSSM, &pThis->ar_flip_flop);
     SSMR3GetU8(pSSM, &pThis->cr_index);
     SSMR3GetMem(pSSM, pThis->cr, 256);
     SSMR3GetU8(pSSM, &pThis->msr);
@@ -2797,7 +2797,7 @@ static int vga_load(PSSMHANDLE pSSM, PVGASTATE pThis, int version_id)
     SSMR3GetMem(pSSM, pThis->dac_cache, 3);
     SSMR3GetMem(pSSM, pThis->palette, 768);
 
-    SSMR3GetU32(pSSM, (uint32_t *)&pThis->bank_offset);
+    SSMR3GetS32(pSSM, &pThis->bank_offset);
     SSMR3GetU8(pSSM, &u8);
     is_vbe = !!u8;
 #ifdef CONFIG_BOCHS_VBE

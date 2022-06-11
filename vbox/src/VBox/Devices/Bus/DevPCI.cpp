@@ -1,4 +1,4 @@
-/* $Id: DevPCI.cpp 81514 2019-10-24 11:25:11Z vboxsync $ */
+/* $Id: DevPCI.cpp 81765 2019-11-11 16:00:31Z vboxsync $ */
 /** @file
  * DevPCI - PCI BUS Device.
  *
@@ -1156,9 +1156,9 @@ static DECLCALLBACK(int) pciR3LoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uint
     if (uVersion >= VBOX_PCI_SAVED_STATE_VERSION_IRQ_STATES)
     {
         for (uint8_t i = 0; i < RT_ELEMENTS(pThis->Piix3.auPciLegacyIrqLevels); i++)
-            pHlp->pfnSSMGetU32(pSSM, (uint32_t *)&pThis->Piix3.auPciLegacyIrqLevels[i]);
+            pHlp->pfnSSMGetU32V(pSSM, &pThis->Piix3.auPciLegacyIrqLevels[i]);
         for (uint8_t i = 0; i < RT_ELEMENTS(pThis->auPciApicIrqLevels); i++)
-            pHlp->pfnSSMGetU32(pSSM, (uint32_t *)&pThis->auPciApicIrqLevels[i]);
+            pHlp->pfnSSMGetU32V(pSSM, &pThis->auPciApicIrqLevels[i]);
 
         pHlp->pfnSSMGetU32(pSSM, &pThis->Piix3.iAcpiIrqLevel);
         pHlp->pfnSSMGetS32(pSSM, &pThis->Piix3.iAcpiIrq);
