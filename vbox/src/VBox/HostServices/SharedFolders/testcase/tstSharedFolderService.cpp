@@ -1,4 +1,4 @@
-/* $Id: tstSharedFolderService.cpp 77685 2019-03-13 17:00:36Z vboxsync $ */
+/* $Id: tstSharedFolderService.cpp 78947 2019-06-04 00:39:03Z vboxsync $ */
 /** @file
  * Testcase for the shared folder service vbsf API.
  *
@@ -299,6 +299,16 @@ extern int testRTDirReadEx(RTDIR hDir, PRTDIRENTRYEX pDirEntry, size_t *pcbDirEn
         /*else RTPrintf("%s: iDir=%d\n", pRealDir->iDir);*/
     }
     return VERR_NO_MORE_FILES;
+}
+
+static uint64_t testRTDirSetFMode;
+
+extern int testRTDirSetMode(RTDIR hDir, RTFMODE fMode)
+{
+    RT_NOREF1(hDir);
+ /* RTPrintf("%s: fMode=%llu\n", __PRETTY_FUNCTION__, LLUIFY(fMode)); */
+    testRTDirSetFMode = fMode;
+    return VINF_SUCCESS;
 }
 
 static RTTIMESPEC testRTDirSetTimesATime;
