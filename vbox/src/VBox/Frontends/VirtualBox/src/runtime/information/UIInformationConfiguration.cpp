@@ -1,4 +1,4 @@
-/* $Id: UIInformationConfiguration.cpp 80379 2019-08-21 18:58:04Z vboxsync $ */
+/* $Id: UIInformationConfiguration.cpp 80554 2019-09-02 14:27:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationConfiguration class implementation.
  */
@@ -70,7 +70,6 @@ void UIInformationConfiguration::retranslateUi()
     m_strSharedFoldersTitle = QApplication::translate("UIVMInformationDialog", "Shared Folders");
 }
 
-
 void UIInformationConfiguration::createTableItems()
 {
     if (!m_pTableWidget)
@@ -140,8 +139,6 @@ void UIInformationConfiguration::createTableItems()
     m_pTableWidget->resizeColumnToContents(2);
 }
 
-
-
 void UIInformationConfiguration::prepareObjects()
 {
     /* Create layout: */
@@ -164,8 +161,6 @@ void UIInformationConfiguration::prepareObjects()
         m_pMainLayout->addWidget(m_pTableWidget);
     }
 }
-
-
 
 void UIInformationConfiguration::insertInfoRows(const UITextTable &table, const QFontMetrics &fontMetrics,
                                                 QTextDocument &textDocument, int &iMaxColumn1Length)

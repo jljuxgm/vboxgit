@@ -1,4 +1,4 @@
-/* $Id: UIConsoleEventHandler.h 80044 2019-07-29 12:57:31Z vboxsync $ */
+/* $Id: UIConsoleEventHandler.h 80554 2019-09-02 14:27:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConsoleEventHandler class declaration.
  */
@@ -86,6 +86,10 @@ signals:
 #endif /* RT_OS_DARWIN */
     /** Notifies about audio adapter state change. */
     void sigAudioAdapterChange();
+    /** Notifies clipboard mode change. */
+    void sigClipboardModeChange(KClipboardMode enmMode);
+    /** Notifies drag and drop mode change. */
+    void sigDnDModeChange(KDnDMode enmMode);
 
 public:
 
@@ -122,4 +126,3 @@ private:
 #define gConsoleEvents UIConsoleEventHandler::instance()
 
 #endif /* !FEQT_INCLUDED_SRC_runtime_UIConsoleEventHandler_h */
-
