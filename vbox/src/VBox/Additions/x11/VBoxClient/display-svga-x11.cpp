@@ -1,4 +1,4 @@
-/* $Id: display-svga-x11.cpp 83910 2020-04-21 19:31:41Z vboxsync $ */
+/* $Id: display-svga-x11.cpp 83911 2020-04-21 19:38:05Z vboxsync $ */
 /** @file
  * X11 guest client - VMSVGA emulation resize event pass-through to X.Org
  * guest driver.
@@ -845,7 +845,7 @@ static int findExistingModeIndex(unsigned iXRes, unsigned iYRes)
 
 static bool disableCRTC(RRCrtc crtcID)
 {
-    Status ret;
+    Status ret = Success;
 #ifdef WITH_DISTRO_XRAND_XINERAMA
     ret = XRRSetCrtcConfig(x11Context.pDisplay, x11Context.pScreenResources, crtcID,
                            CurrentTime, 0, 0, None, RR_Rotate_0, NULL, 0);
@@ -1032,7 +1032,7 @@ static bool configureOutput(int iOutputIndex, struct RANDROUTPUT *paOutputs)
     pOutputInfo->crtc = pOutputInfo->crtcs[0];
 
     RRCrtc crtcId = pOutputInfo->crtcs[0];
-    Status ret;
+    Status ret = Success;
 #ifdef WITH_DISTRO_XRAND_XINERAMA
     ret = XRRSetCrtcConfig(x11Context.pDisplay, x11Context.pScreenResources, crtcId, CurrentTime,
                            paOutputs[iOutputIndex].x, paOutputs[iOutputIndex].y,
