@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 81714 2019-11-06 14:56:21Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 81883 2019-11-15 16:31:00Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -5898,8 +5898,7 @@ int Console::i_configNetwork(const char *pszDevice,
                             }
 
                             if (fEnabledDhcp)
-                                hrc = dhcpServer->Start(networkName.raw(),
-                                                        trunkName.raw(),
+                                hrc = dhcpServer->Start(trunkName.raw(),
                                                         trunkType.raw());
                         }
                         else

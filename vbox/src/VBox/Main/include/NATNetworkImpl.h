@@ -1,4 +1,4 @@
-/* $Id: NATNetworkImpl.h 76562 2019-01-01 03:22:50Z vboxsync $ */
+/* $Id: NATNetworkImpl.h 81883 2019-11-15 16:31:00Z vboxsync $ */
 /** @file
  * INATNetwork implementation header, lives in VBoxSVC.
  */
@@ -110,7 +110,7 @@ private:
                                USHORT aGuestPort);
     HRESULT removePortForwardRule(BOOL aISipv6,
                                   const com::Utf8Str &aRuleName);
-    HRESULT start(const com::Utf8Str &aTrunkType);
+    HRESULT start();
     HRESULT stop();
 
     // Internal methods
