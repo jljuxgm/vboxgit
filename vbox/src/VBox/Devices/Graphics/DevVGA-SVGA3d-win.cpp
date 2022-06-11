@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-win.cpp 78589 2019-05-20 09:55:47Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-win.cpp 79668 2019-07-10 10:40:53Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -25,6 +25,7 @@
 #include <VBox/err.h>
 #include <VBox/log.h>
 #include <VBox/vmm/pgm.h>
+#include <VBox/AssertGuest.h>
 
 #include <iprt/assert.h>
 #include <iprt/semaphore.h>
@@ -3053,6 +3054,8 @@ int vmsvga3dSetTransform(PVGASTATE pThis, uint32_t cid, SVGA3dTransformType type
 
     Log(("vmsvga3dSetTransform %x %s\n", cid, vmsvgaTransformToString(type)));
 
+    ASSERT_GUEST_RETURN((unsigned)type < SVGA3D_TRANSFORM_MAX, VERR_INVALID_PARAMETER);
+
     if (    cid >= pState->cContexts
         ||  pState->papContexts[cid]->id != cid)
     {
@@ -3225,8 +3228,8 @@ int vmsvga3dSetRenderState(PVGASTATE pThis, uint32_t cid, uint32_t cRenderStates
 
         Log(("vmsvga3dSetRenderState: state=%s (%d) val=%x\n", vmsvga3dGetRenderStateName(pRenderState[i].state), pRenderState[i].state, pRenderState[i].uintValue));
         /* Save the render state for vm state saving. */
-        if (pRenderState[i].state < SVGA3D_RS_MAX)
-            pContext->state.aRenderState[pRenderState[i].state] = pRenderState[i];
+        ASSERT_GUEST_RETURN((unsigned)pRenderState[i].state < SVGA3D_RS_MAX, VERR_INVALID_PARAMETER);
+        pContext->state.aRenderState[pRenderState[i].state] = pRenderState[i];
 
         switch (pRenderState[i].state)
         {
