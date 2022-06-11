@@ -1,4 +1,4 @@
-/* $Id: DevFlash.cpp 80531 2019-09-01 23:03:34Z vboxsync $ */
+/* $Id: DevFlash.cpp 80671 2019-09-09 12:18:15Z vboxsync $ */
 /** @file
  * DevFlash - A simple Flash device
  *
@@ -524,7 +524,7 @@ const PDMDEVREG g_DeviceFlash =
     /* .u32Version = */             PDM_DEVREG_VERSION,
     /* .uReserved0 = */             0,
     /* .szName = */                 "flash",
-    /* .fFlags = */                 PDM_DEVREG_FLAGS_HOST_BITS_DEFAULT | PDM_DEVREG_FLAGS_GUEST_BITS_DEFAULT | PDM_DEVREG_FLAGS_R0 | PDM_DEVREG_FLAGS_RC,
+    /* .fFlags = */                 PDM_DEVREG_FLAGS_DEFAULT_BITS,
     /* .fClass = */                 PDM_DEVREG_CLASS_ARCH,
     /* .cMaxInstances = */          1,
     /* .uSharedVersion = */         42,
@@ -534,8 +534,8 @@ const PDMDEVREG g_DeviceFlash =
     /* .uReserved1 = */             0,
     /* .pszDescription = */         "Flash Memory Device",
 #if defined(IN_RING3)
-    /* .pszRCMod = */               "VBoxDDRC.rc",
-    /* .pszR0Mod = */               "VBoxDDR0.r0",
+    /* .pszRCMod = */               "",
+    /* .pszR0Mod = */               "",
     /* .pfnConstruct = */           flashConstruct,
     /* .pfnDestruct = */            flashDestruct,
     /* .pfnRelocate = */            NULL,
