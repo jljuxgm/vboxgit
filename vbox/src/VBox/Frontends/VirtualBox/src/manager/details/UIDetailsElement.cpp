@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElement.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIDetailsElement.cpp 83149 2020-02-25 12:33:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement class implementation.
  */
@@ -302,6 +302,16 @@ QString UIDetailsElement::description() const
 const CMachine &UIDetailsElement::machine()
 {
     return m_pSet->machine();
+}
+
+const UICloudMachine &UIDetailsElement::cloudMachine()
+{
+    return m_pSet->cloudMachine();
+}
+
+bool UIDetailsElement::isLocal() const
+{
+    return m_pSet->isLocal();
 }
 
 void UIDetailsElement::setName(const QString &strName)

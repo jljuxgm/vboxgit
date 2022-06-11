@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElement.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIDetailsElement.h 83149 2020-02-25 12:33:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement class declaration.
  */
@@ -33,6 +33,7 @@
 class QPropertyAnimation;
 class QStateMachine;
 class QTextLayout;
+class UICloudMachine;
 class UIDetailsSet;
 class UIGraphicsRotatorButton;
 class UIGraphicsTextPane;
@@ -158,6 +159,11 @@ protected:
 
         /** Returns cached machine reference. */
         const CMachine &machine();
+        /** Returns cached cloud machine reference. */
+        const UICloudMachine &cloudMachine();
+
+        /** Returns whether element is of local type. */
+        bool isLocal() const;
 
         /** Defines element @a strName. */
         void setName(const QString &strName);
