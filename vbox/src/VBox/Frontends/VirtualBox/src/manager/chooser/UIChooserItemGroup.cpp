@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGroup.cpp 82942 2020-01-31 13:54:10Z vboxsync $ */
+/* $Id: UIChooserItemGroup.cpp 82944 2020-01-31 15:00:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGroup class implementation.
  */
@@ -37,6 +37,7 @@
 #include "UIGraphicsScrollArea.h"
 #include "UIIconPool.h"
 #include "UIVirtualBoxManager.h"
+#include "UIVirtualMachineItem.h"
 
 
 /*********************************************************************************************************************************

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 82857 2020-01-25 13:26:38Z vboxsync $
+# $Id: Makefile.kmk 82944 2020-01-31 15:00:08Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -611,6 +611,7 @@ VirtualBox_QT_MOCHDRS = \
 	src/manager/UIVirtualBoxManager.h \
 	src/manager/UIVirtualBoxManagerWidget.h \
 	src/manager/UIVirtualMachineItem.h \
+	src/manager/UIVirtualMachineItemLocal.h \
 	src/manager/UIWelcomePane.h \
 	src/manager/chooser/UIChooser.h \
 	src/manager/chooser/UIChooserAbstractModel.h \
@@ -1053,6 +1054,7 @@ VirtualBox_SOURCES = \
 	src/manager/UIVirtualBoxManager.cpp \
 	src/manager/UIVirtualBoxManagerWidget.cpp \
 	src/manager/UIVirtualMachineItem.cpp \
+	src/manager/UIVirtualMachineItemLocal.cpp \
 	src/manager/UIWelcomePane.cpp \
 	src/manager/chooser/UIChooser.cpp \
 	src/manager/chooser/UIChooserAbstractModel.cpp \

@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.cpp 82917 2020-01-29 18:28:06Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.cpp 82944 2020-01-31 15:00:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class implementation.
  */
@@ -26,6 +26,10 @@
 #include "UIExtraDataManager.h"
 #include "UIMessageCenter.h"
 #include "UIVirtualBoxEventHandler.h"
+#include "UIVirtualMachineItem.h"
+
+/* COM includes: */
+#include "CMachine.h"
 
 /* Type defs: */
 typedef QSet<QString> UIStringSet;

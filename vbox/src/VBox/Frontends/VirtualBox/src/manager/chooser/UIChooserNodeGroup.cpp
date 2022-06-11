@@ -1,4 +1,4 @@
-/* $Id: UIChooserNodeGroup.cpp 80493 2019-08-29 09:21:14Z vboxsync $ */
+/* $Id: UIChooserNodeGroup.cpp 82944 2020-01-31 15:00:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserNodeGroup class implementation.
  */
@@ -19,6 +19,9 @@
 #include "UIChooserNodeGroup.h"
 #include "UIChooserNodeGlobal.h"
 #include "UIChooserNodeMachine.h"
+
+/* Other VBox includes: */
+#include "iprt/assert.h"
 
 
 UIChooserNodeGroup::UIChooserNodeGroup(UIChooserNode *pParent,
