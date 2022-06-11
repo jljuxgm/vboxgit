@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 79387 2019-06-27 12:11:36Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 79641 2019-07-09 12:58:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -1608,7 +1608,8 @@ void UIMachineLogic::sltShowSoftKeyboard()
         m_pSoftKeyboardDialog->raise();
         return;
     }
-    m_pSoftKeyboardDialog = new UISoftKeyboard(0, uisession(), machine().GetName());
+    QWidget *pCenterWidget = windowManager().realParentWindow(activeMachineWindow());
+    m_pSoftKeyboardDialog = new UISoftKeyboard(0, uisession(), pCenterWidget, machine().GetName());
     if (m_pSoftKeyboardDialog)
     {
         connect(m_pSoftKeyboardDialog, &QMainWindow::destroyed, this, &UIMachineLogic::sltSoftKeyboardClosed);

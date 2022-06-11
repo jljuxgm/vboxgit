@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboard.h 79456 2019-07-01 19:16:35Z vboxsync $ */
+/* $Id: UISoftKeyboard.h 79641 2019-07-09 12:58:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class declaration.
  */
@@ -54,7 +54,7 @@ class UISoftKeyboard : public QIWithRetranslateUI<QMainWindow>
 
 public:
 
-    UISoftKeyboard(QWidget *pParent, UISession *pSession,
+    UISoftKeyboard(QWidget *pParent, UISession *pSession, QWidget *pCenterWidget,
                    QString strMachineName = QString());
     ~UISoftKeyboard();
 
@@ -101,6 +101,7 @@ private:
     CKeyboard& keyboard() const;
 
     UISession     *m_pSession;
+    QWidget       *m_pCenterWidget;
     QHBoxLayout   *m_pMainLayout;
     UISoftKeyboardWidget       *m_pKeyboardWidget;
     QString           m_strMachineName;
