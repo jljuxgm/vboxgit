@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-ogl.cpp 82165 2019-11-25 11:18:42Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-ogl.cpp 82408 2019-12-05 11:42:25Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -6327,6 +6327,23 @@ int vmsvga3dDrawPrimitives(PVGASTATECC pThisCC, uint32_t cid, uint32_t numVertex
         }
     }
 
+    /* Flush any shader changes; after (!) checking the vertex declarations to deal with pre-transformed vertices. */
+    if (pContext->pShaderContext)
+    {
+        uint32_t rtHeight = 0;
+
+        if (pContext->state.aRenderTargets[SVGA3D_RT_COLOR0] != SVGA_ID_INVALID)
+        {
+            PVMSVGA3DSURFACE pRenderTarget;
+            rc = vmsvga3dSurfaceFromSid(pState, pContext->state.aRenderTargets[SVGA3D_RT_COLOR0], &pRenderTarget);
+            AssertRCReturn(rc, rc);
+
+            rtHeight = pRenderTarget->paMipmapLevels[0].mipmapSize.height;
+        }
+
+        ShaderUpdateState(pContext->pShaderContext, rtHeight);
+    }
+
     /*
      * D3D and OpenGL have a different meaning of value zero for the vertex array stride:
      * - D3D and VMSVGA: "use a zero stride to tell the runtime not to increment the vertex buffer offset."
@@ -6395,20 +6412,6 @@ int vmsvga3dDrawPrimitives(PVGASTATECC pThisCC, uint32_t cid, uint32_t numVertex
         {
             Assert(pVertexDivisor[iVertexDivisor].s.count == 1);
         }
-    }
-
-    /* Flush any shader changes; after (!) checking the vertex declarations to deal with pre-transformed vertices. */
-    if (pContext->pShaderContext)
-    {
-        uint32_t rtHeight = 0;
-
-        if (pContext->state.aRenderTargets[SVGA3D_RT_COLOR0] != SVGA_ID_INVALID)
-        {
-            PVMSVGA3DSURFACE pRenderTarget = pState->papSurfaces[pContext->state.aRenderTargets[SVGA3D_RT_COLOR0]];
-            rtHeight = pRenderTarget->paMipmapLevels[0].mipmapSize.height;
-        }
-
-        ShaderUpdateState(pContext->pShaderContext, rtHeight);
     }
 
     /* Process all vertex declarations. Each vertex buffer is represented by one stream. */
