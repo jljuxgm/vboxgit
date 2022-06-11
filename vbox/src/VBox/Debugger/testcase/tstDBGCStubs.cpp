@@ -1,4 +1,4 @@
-/* $Id: tstDBGCStubs.cpp 80156 2019-08-06 13:54:47Z vboxsync $ */
+/* $Id: tstDBGCStubs.cpp 80304 2019-08-15 17:34:15Z vboxsync $ */
 /** @file
  * DBGC Testcase - Command Parser, VMM Stub Functions.
  */
@@ -16,7 +16,7 @@
  */
 
 #include <VBox/err.h>
-#include <VBox/vmm/vm.h>
+#include <VBox/vmm/vmapi.h>
 #include <iprt/string.h>
 
 

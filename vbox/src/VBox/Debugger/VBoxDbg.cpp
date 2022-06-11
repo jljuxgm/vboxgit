@@ -1,4 +1,4 @@
-/* $Id: VBoxDbg.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxDbg.cpp 80304 2019-08-15 17:34:15Z vboxsync $ */
 /** @file
  * VBox Debugger GUI.
  */
@@ -27,7 +27,6 @@
 # include <VirtualBox_XPCOM.h>
 #endif /* !RT_OS_WINDOWS */
 #include <VBox/dbggui.h>
-#include <VBox/vmm/vm.h>
 #include <iprt/errcore.h>
 #include <iprt/assert.h>
 #include <iprt/alloc.h>
