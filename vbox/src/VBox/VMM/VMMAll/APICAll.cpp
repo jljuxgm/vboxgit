@@ -1,4 +1,4 @@
-/* $Id: APICAll.cpp 82041 2019-11-20 18:58:22Z vboxsync $ */
+/* $Id: APICAll.cpp 82329 2019-12-02 18:16:13Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller - All Contexts.
  */
@@ -1414,7 +1414,7 @@ static VBOXSTRICTRC apicGetTimerCcr(PPDMDEVINS pDevIns, PVMCPUCC pVCpu, int rcBu
     PCAPICCPU       pApicCpu = VMCPU_TO_APICCPU(pVCpu);
     TMTIMERHANDLE   hTimer   = pApicCpu->hTimer;
 
-    int rc = PDMDevHlpTimerLock(pDevIns, hTimer, rcBusy);
+    VBOXSTRICTRC rc = PDMDevHlpTimerLockClock(pDevIns, hTimer, rcBusy);
     if (rc == VINF_SUCCESS)
     {
         /* If the current-count register is 0, it implies the timer expired. */
@@ -1422,14 +1422,14 @@ static VBOXSTRICTRC apicGetTimerCcr(PPDMDEVINS pDevIns, PVMCPUCC pVCpu, int rcBu
         if (uCurrentCount)
         {
             uint64_t const cTicksElapsed = PDMDevHlpTimerGet(pDevIns, hTimer) - pApicCpu->u64TimerInitial;
-            PDMDevHlpTimerUnlock(pDevIns, hTimer);
+            PDMDevHlpTimerUnlockClock(pDevIns, hTimer);
             uint8_t  const uTimerShift   = apicGetTimerShift(pXApicPage);
             uint64_t const uDelta        = cTicksElapsed >> uTimerShift;
             if (uInitialCount > uDelta)
                 *puValue = uInitialCount - uDelta;
         }
         else
-            PDMDevHlpTimerUnlock(pDevIns, hTimer);
+            PDMDevHlpTimerUnlockClock(pDevIns, hTimer);
     }
     return rc;
 }
@@ -1466,7 +1466,7 @@ static VBOXSTRICTRC apicSetTimerIcr(PPDMDEVINS pDevIns, PVMCPUCC pVCpu, int rcBu
      * timer ICR. We rely on CCR being consistent in apicGetTimerCcr().
      */
     TMTIMERHANDLE hTimer = pApicCpu->hTimer;
-    int rc = PDMDevHlpTimerLock(pDevIns, hTimer, rcBusy);
+    VBOXSTRICTRC rc = PDMDevHlpTimerLockClock(pDevIns, hTimer, rcBusy);
     if (rc == VINF_SUCCESS)
     {
         pXApicPage->timer_icr.u32InitialCount = uInitialCount;
@@ -1475,7 +1475,7 @@ static VBOXSTRICTRC apicSetTimerIcr(PPDMDEVINS pDevIns, PVMCPUCC pVCpu, int rcBu
             apicStartTimer(pVCpu, uInitialCount);
         else
             apicStopTimer(pVCpu);
-        PDMDevHlpTimerUnlock(pDevIns, hTimer);
+        PDMDevHlpTimerUnlockClock(pDevIns, hTimer);
     }
     return rc;
 }
