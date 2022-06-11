@@ -1,4 +1,4 @@
-/* $Id: draganddrop.cpp 81042 2019-09-27 10:30:21Z vboxsync $ */
+/* $Id: draganddrop.cpp 81052 2019-09-27 12:44:45Z vboxsync $ */
 /** @file
  * X11 guest client - Drag and drop implementation.
  */
@@ -3478,6 +3478,11 @@ struct DRAGANDDROPSERVICE
     DragAndDropService mDragAndDrop;
 };
 
+static const char *getName()
+{
+    return "Drag and Drop (DnD)";
+}
+
 static const char *getPidFilePath()
 {
     return ".vboxclient-draganddrop.pid";
@@ -3512,6 +3517,7 @@ static void cleanup(struct VBCLSERVICE **ppInterface)
 
 struct VBCLSERVICE vbclDragAndDropInterface =
 {
+    getName,
     getPidFilePath,
     init,
     run,

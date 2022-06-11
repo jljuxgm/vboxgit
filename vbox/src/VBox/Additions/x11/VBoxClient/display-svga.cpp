@@ -1,4 +1,4 @@
-/* $Id: display-svga.cpp 81040 2019-09-27 09:45:46Z vboxsync $ */
+/* $Id: display-svga.cpp 81052 2019-09-27 12:44:45Z vboxsync $ */
 /** @file
  * X11 guest client - VMSVGA emulation resize event pass-through to drm guest
  * driver.
@@ -166,6 +166,11 @@ static void drmSendHints(struct DRMCONTEXT *pContext, struct DRMVMWRECT *paRects
         VBClLogFatalError("Failure updating layout, rc=%Rrc\n", rc);
 }
 
+static const char *getName()
+{
+    return "Display SVGA";
+}
+
 static const char *getPidFilePath()
 {
     return ".vboxclient-display-svga.pid";
@@ -238,6 +243,7 @@ static int run(struct VBCLSERVICE **ppInterface, bool fDaemonised)
 
 static struct VBCLSERVICE interface =
 {
+    getName,
     getPidFilePath,
     VBClServiceDefaultHandler, /* Init */
     run,

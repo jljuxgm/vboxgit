@@ -1,4 +1,4 @@
-/* $Id: display.cpp 81040 2019-09-27 09:45:46Z vboxsync $ */
+/* $Id: display.cpp 81052 2019-09-27 12:44:45Z vboxsync $ */
 /** @file
  * X11 guest client - display management.
  */
@@ -221,6 +221,11 @@ static int initDisplay(struct DISPLAYSTATE *pState)
     return VINF_SUCCESS;
 }
 
+static const char *getName()
+{
+    return "Display";
+}
+
 static const char *getPidFilePath()
 {
     return ".vboxclient-display.pid";
@@ -262,6 +267,7 @@ static int run(struct VBCLSERVICE **ppInterface, bool fDaemonised)
 
 struct VBCLSERVICE vbclDisplayInterface =
 {
+    getName,
     getPidFilePath,
     init,
     run,

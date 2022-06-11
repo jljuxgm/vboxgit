@@ -1,4 +1,4 @@
-/* $Id: VBoxClient.h 81042 2019-09-27 10:30:21Z vboxsync $ */
+/* $Id: VBoxClient.h 81052 2019-09-27 12:44:45Z vboxsync $ */
 /** @file
  *
  * VirtualBox additions user session daemon.
@@ -37,6 +37,8 @@ extern void VBClCleanUp(bool fExit = true);
  * service per invocation. */
 struct VBCLSERVICE
 {
+    /** Returns the (friendly) name of the service. */
+    const char *(*getName)(void);
     /** Get the services default path to pidfile, relative to $HOME */
     /** @todo Should this also have a component relative to the X server number?
      */

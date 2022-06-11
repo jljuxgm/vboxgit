@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 80862 2019-09-17 14:45:21Z vboxsync $
+# $Id: Makefile.kmk 81052 2019-09-27 12:44:45Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox Guest Addition X11 Client.
 #
@@ -25,6 +25,7 @@ PROGRAMS += VBoxClient
 
 VBoxClient_TEMPLATE = NewVBoxGuestR3Exe
 VBoxClient_DEFS += VBOX_X11_CLIPBOARD VBOX_WITH_HGCM
+VBoxClient_DEFS += VBOX_BUILD_TARGET=\"$(KBUILD_TARGET).$(KBUILD_TARGET_ARCH)\"
 ifdef VBOX_WITH_DBUS
  VBoxClient_DEFS += VBOX_WITH_DBUS
 endif

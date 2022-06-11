@@ -1,4 +1,4 @@
-/* $Id: hostversion.cpp 81042 2019-09-27 10:30:21Z vboxsync $ */
+/* $Id: hostversion.cpp 81052 2019-09-27 12:44:45Z vboxsync $ */
 /** @file
  * X11 guest client - host version check.
  */
@@ -32,6 +32,11 @@
 #endif
 
 #include "VBoxClient.h"
+
+static const char *getName()
+{
+    return "Host Version Check";
+}
 
 static const char *getPidFilePath()
 {
@@ -199,6 +204,7 @@ static int run(struct VBCLSERVICE **ppInterface, bool fDaemonised)
 
 struct VBCLSERVICE vbclHostVersionInterface =
 {
+    getName,
     getPidFilePath,
     VBClServiceDefaultHandler, /* init */
     run,

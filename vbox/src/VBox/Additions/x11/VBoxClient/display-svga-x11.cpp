@@ -1,4 +1,4 @@
-/* $Id: display-svga-x11.cpp 81040 2019-09-27 09:45:46Z vboxsync $ */
+/* $Id: display-svga-x11.cpp 81052 2019-09-27 12:44:45Z vboxsync $ */
 /** @file
  * X11 guest client - VMSVGA emulation resize event pass-through to X.Org
  * guest driver.
@@ -224,6 +224,11 @@ static void x11GetScreenInfo(struct X11CONTEXT *pContext)
         VBClLogFatalError("%s failed to set resolution\n", __func__);
 }
 
+static const char *getName()
+{
+    return "Display SVGA X11";
+}
+
 static const char *getPidFilePath()
 {
     return ".vboxclient-display-svga-x11.pid";
@@ -294,6 +299,7 @@ static int run(struct VBCLSERVICE **ppInterface, bool fDaemonised)
 
 static struct VBCLSERVICE interface =
 {
+    getName,
     getPidFilePath,
     VBClServiceDefaultHandler, /* Init */
     run,

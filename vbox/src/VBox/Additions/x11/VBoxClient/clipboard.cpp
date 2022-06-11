@@ -1,4 +1,4 @@
-/** $Id: clipboard.cpp 81044 2019-09-27 10:49:07Z vboxsync $ */
+/** $Id: clipboard.cpp 81052 2019-09-27 12:44:45Z vboxsync $ */
 /** @file
  * Guest Additions - X11 Shared Clipboard.
  */
@@ -284,6 +284,11 @@ int vboxClipboardMain(void)
     return rc;
 }
 
+static const char *getName()
+{
+    return "Shared Clipboard";
+}
+
 static const char *getPidFilePath()
 {
     return ".vboxclient-clipboard.pid";
@@ -313,6 +318,7 @@ static void cleanup(struct VBCLSERVICE **ppInterface)
 
 struct VBCLSERVICE vbclClipboardInterface =
 {
+    getName,
     getPidFilePath,
     VBClServiceDefaultHandler, /* init */
     run,
