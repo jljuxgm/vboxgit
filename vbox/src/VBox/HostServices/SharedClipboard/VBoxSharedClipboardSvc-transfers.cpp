@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-transfers.cpp 82875 2020-01-27 13:31:54Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-transfers.cpp 84142 2020-05-05 07:13:00Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Internal code for transfer (list) handling.
  */
@@ -1401,7 +1401,7 @@ int shClSvcTransferHandler(PSHCLCLIENT pClient,
                 && ShClTransferGetDir(pTransfer)    == SHCLTRANSFERDIR_TO_REMOTE)
             {
                 /* Get roots if this is a local write transfer (host -> guest). */
-                rc = ShClSvcImplTransferGetRoots(pClient, pTransfer);
+                rc = ShClBackendTransferGetRoots(pClient, pTransfer);
             }
             else
             {
@@ -2059,7 +2059,7 @@ int shClSvcTransferStart(PSHCLCLIENT pClient,
         rc = ShClTransferCreate(&pTransfer);
         if (RT_SUCCESS(rc))
         {
-            rc = ShClSvcImplTransferCreate(pClient, pTransfer);
+            rc = ShClBackendTransferCreate(pClient, pTransfer);
             if (RT_SUCCESS(rc))
             {
                 SHCLPROVIDERCREATIONCTX creationCtx;
@@ -2156,7 +2156,7 @@ int shClSvcTransferStart(PSHCLCLIENT pClient,
 
             if (RT_FAILURE(rc))
             {
-                ShClSvcImplTransferDestroy(pClient, pTransfer);
+                ShClBackendTransferDestroy(pClient, pTransfer);
                 ShClTransferDestroy(pTransfer);
 
                 RTMemFree(pTransfer);
