@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 81530 2019-10-25 10:14:23Z vboxsync $ */
+/* $Id: PDM.cpp 81532 2019-10-25 10:17:30Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -144,6 +144,9 @@
  * - Convert all queues to the handle based ones or tasks.
  *
  * - Set the PDM_DEVREG_FLAGS_NEW_STYLE in the registration structure.
+ *   (Functionally, this only makes a difference for PDMDevHlpSetDeviceCritSect
+ *   behavior, but it will become mandatory once all devices has been
+ *   converted.)
  *
  * - Convert all CFGMR3Xxxx calls to pHlp->pfnCFGMXxxx.
  *
