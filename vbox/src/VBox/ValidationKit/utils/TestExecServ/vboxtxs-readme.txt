@@ -1,4 +1,4 @@
-$Id: vboxtxs-readme.txt 83938 2020-04-23 07:32:32Z vboxsync $
+$Id: vboxtxs-readme.txt 84015 2020-04-27 15:03:05Z vboxsync $
 
 
 VirtualBox Test eXecution Service
@@ -38,7 +38,9 @@ Linux Installation
        other) ln -s ../../opt/validationkit/linux/vboxtxs     ./vboxtxs
 6 b) Add vboxtxs to runlevels 2, 3, 5 and any other that makes sense
      on the distro. There is usually some command for doing this, e.g.
-       update-rc.d vboxtxs defaults && update-rc.d vboxtxs enable
+       ```update-rc.d vboxtxs defaults && update-rc.d vboxtxs enable``` (Debian-based)
+    or
+       ```chkconfig --add vboxtxs``` (OL/RHEL)
 
   ... or ...
 
