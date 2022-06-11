@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 79891 2019-07-19 16:16:19Z vboxsync $
+# $Id: Makefile.kmk 79895 2019-07-19 17:26:45Z vboxsync $
 ## @file
 # Top level makefile.
 #
@@ -478,6 +478,8 @@ else  # !VBOX_ONLY_DOCS
 #
  ifdef VBOX_WITH_ALL_DOXYGEN_TARGETS
 docs: docs.Core
+ else
+docs:
  endif
 endif # !VBOX_ONLY_DOCS
 
