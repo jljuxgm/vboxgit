@@ -1,4 +1,4 @@
-/* $Id: Virtio_1_0.h 80522 2019-08-31 21:19:08Z vboxsync $ */
+/* $Id: Virtio_1_0.h 80596 2019-09-05 07:12:46Z vboxsync $ */
 /** @file
  * Virtio_1_0.h - Virtio Declarations
  */
@@ -40,6 +40,12 @@ typedef void * VIRTIOHANDLE;                                     /**< Opaque han
 #define VIRTIOSCSI_REGION_MEM_IO            0                    /**< BAR for MMIO (implementation specific)   */
 #define VIRTIOSCSI_REGION_PORT_IO           1                    /**< BAR for PORT I/O (impl specific)         */
 #define VIRTIOSCSI_REGION_PCI_CAP           2                    /**< BAR for VirtIO Cap. MMIO (impl specific) */
+
+#define VIRTIO_HEX_DUMP(logLevel, pv, cb, base, title) \
+    do { \
+        if (LogIsItEnabled(logLevel, LOG_GROUP)) \
+            virtioHexDump((pv), (cb), (base), (title)); \
+    } while (0)
 
 /**
  * The following structure is used to pass the PCI parameters from the consumer
@@ -319,5 +325,16 @@ void virtioLogMappedIoValue(const char *pszFunc, const char *pszMember, size_t u
                             const void *pv, uint32_t cb, uint32_t uOffset,
                             bool fWrite, bool fHasIndex, uint32_t idx);
 
+/**
+ * Does a formatted hex dump using Log(()), recommend using VIRTIO_HEX_DUMP() macro to
+ * control enabling of logging efficiently.
+ *
+ * @param   pv          - pointer to buffer to dump contents of
+ * @param   cb          - count of characters to dump from buffer
+ * @param   uBase       - base address of per-row address prefixing of hex output
+ * @param   pszTitle    - Optional title. If present displays title that lists
+ *                        provided text with value of cb to indicate size next to it.
+ */
+void virtioHexDump(uint8_t *pv, size_t cb, uint32_t uBase, const char *pszTitle);
 
 #endif /* !VBOX_INCLUDED_SRC_VirtIO_Virtio_1_0_h */
