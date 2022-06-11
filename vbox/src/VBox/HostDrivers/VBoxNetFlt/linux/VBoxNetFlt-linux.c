@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-linux.c 80735 2019-09-11 14:35:34Z vboxsync $ */
+/* $Id: VBoxNetFlt-linux.c 81649 2019-11-04 12:10:50Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Linux Specific Code.
  */
@@ -924,8 +924,13 @@ static void vboxNetFltLinuxSkBufToSG(PVBOXNETFLTINS pThis, struct sk_buff *pBuf,
     for (i = 0; i < skb_shinfo(pBuf)->nr_frags; i++)
     {
         skb_frag_t *pFrag = &skb_shinfo(pBuf)->frags[i];
+# if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 4, 0)
+        pSG->aSegs[iSeg].cb = pFrag->bv_len;
+        pSG->aSegs[iSeg].pv = VBOX_SKB_KMAP_FRAG(pFrag) + pFrag->bv_offset;
+# else /* < KERNEL_VERSION(5, 4, 0) */
         pSG->aSegs[iSeg].cb = pFrag->size;
         pSG->aSegs[iSeg].pv = VBOX_SKB_KMAP_FRAG(pFrag) + pFrag->page_offset;
+# endif /* >= KERNEL_VERSION(5, 4, 0) */
         Log6((" %p", pSG->aSegs[iSeg].pv));
         pSG->aSegs[iSeg++].Phys = NIL_RTHCPHYS;
         Assert(iSeg <= pSG->cSegsAlloc);
@@ -940,8 +945,13 @@ static void vboxNetFltLinuxSkBufToSG(PVBOXNETFLTINS pThis, struct sk_buff *pBuf,
         for (i = 0; i < skb_shinfo(pFragBuf)->nr_frags; i++)
         {
             skb_frag_t *pFrag = &skb_shinfo(pFragBuf)->frags[i];
+# if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 4, 0)
+            pSG->aSegs[iSeg].cb = pFrag->bv_len;
+            pSG->aSegs[iSeg].pv = VBOX_SKB_KMAP_FRAG(pFrag) + pFrag->bv_offset;
+# else /* < KERNEL_VERSION(5, 4, 0) */
             pSG->aSegs[iSeg].cb = pFrag->size;
             pSG->aSegs[iSeg].pv = VBOX_SKB_KMAP_FRAG(pFrag) + pFrag->page_offset;
+# endif /* >= KERNEL_VERSION(5, 4, 0) */
             Log6((" %p", pSG->aSegs[iSeg].pv));
             pSG->aSegs[iSeg++].Phys = NIL_RTHCPHYS;
             Assert(iSeg <= pSG->cSegsAlloc);

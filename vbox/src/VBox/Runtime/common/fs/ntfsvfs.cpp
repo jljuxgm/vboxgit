@@ -1,4 +1,4 @@
-/* $Id: ntfsvfs.cpp 80585 2019-09-04 14:05:50Z vboxsync $ */
+/* $Id: ntfsvfs.cpp 81649 2019-11-04 12:10:50Z vboxsync $ */
 /** @file
  * IPRT - NTFS Virtual Filesystem, currently only for reading allocation bitmap.
  */
@@ -1052,7 +1052,7 @@ static int rtFsNtfsAttr_ParseExtents(PRTFSNTFSATTR pAttrib, PRTFSNTFSEXTENTS pEx
                     case 4: cClustersInRun |= (uint32_t)pbPairs[offPairs + 3] << 24; RT_FALL_THRU();
                     case 3: cClustersInRun |= (uint32_t)pbPairs[offPairs + 2] << 16; RT_FALL_THRU();
                     case 2: cClustersInRun |= (uint16_t)pbPairs[offPairs + 1] <<  8; RT_FALL_THRU();
-                    case 1: cClustersInRun |= (uint16_t)pbPairs[offPairs + 0] <<  0; RT_FALL_THRU();
+                    case 1: cClustersInRun |= (uint16_t)pbPairs[offPairs + 0] <<  0;
                 }
                 offPairs += cbRunField;
                 AssertBreakStmt(cClustersInRun <= cMaxClustersInRun,

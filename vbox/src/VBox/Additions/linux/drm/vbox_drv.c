@@ -1,4 +1,4 @@
-/*  $Id: vbox_drv.c 80712 2019-09-10 19:25:36Z vboxsync $ */
+/*  $Id: vbox_drv.c 81649 2019-11-04 12:10:50Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -305,12 +305,16 @@ static void vbox_master_drop(struct drm_device *dev, struct drm_file *file_priv)
 }
 
 static struct drm_driver driver = {
+#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 4, 0)
 	.driver_features =
 	    DRIVER_MODESET | DRIVER_GEM | DRIVER_HAVE_IRQ |
-#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 1, 0) && !defined(RHEL_81)
+# if LINUX_VERSION_CODE < KERNEL_VERSION(5, 1, 0) && !defined(RHEL_81)
 	    DRIVER_IRQ_SHARED |
-#endif
+# endif /* < KERNEL_VERSION(5, 1, 0) && !defined(RHEL_81) */
 	    DRIVER_PRIME,
+#else /* >= KERNEL_VERSION(5, 4, 0) */
+        .driver_features = DRIVER_MODESET | DRIVER_GEM | DRIVER_HAVE_IRQ,
+#endif /* < KERNEL_VERSION(5, 4, 0) */
 	.dev_priv_size = 0,
 
 #if LINUX_VERSION_CODE < KERNEL_VERSION(4, 19, 0)

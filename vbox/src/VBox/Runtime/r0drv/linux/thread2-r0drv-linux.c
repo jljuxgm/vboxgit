@@ -1,4 +1,4 @@
-/* $Id: thread2-r0drv-linux.c 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: thread2-r0drv-linux.c 81649 2019-11-04 12:10:50Z vboxsync $ */
 /** @file
  * IPRT - Threads (Part 2), Ring-0 Driver, Linux.
  */
@@ -36,6 +36,9 @@
 #include <iprt/errcore.h>
 #include "internal/thread.h"
 
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 11, 0)
+    #include <uapi/linux/sched/types.h>
+#endif /* >= KERNEL_VERSION(4, 11, 0) */
 
 RTDECL(RTTHREAD) RTThreadSelf(void)
 {
