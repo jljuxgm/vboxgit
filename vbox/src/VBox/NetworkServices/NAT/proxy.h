@@ -1,4 +1,4 @@
-/* $Id: proxy.h 76576 2019-01-01 06:05:25Z vboxsync $ */
+/* $Id: proxy.h 81784 2019-11-11 22:23:37Z vboxsync $ */
 /** @file
  * NAT Network - common definitions and declarations.
  */
@@ -67,6 +67,9 @@ extern struct netif *g_proxy_netif;
 void proxy_init(struct netif *, struct proxy_options *);
 SOCKET proxy_connected_socket(int, int, ipX_addr_t *, u16_t);
 SOCKET proxy_bound_socket(int, int, struct sockaddr *);
+#ifdef RT_OS_LINUX
+int proxy_fixup_accepted_socket(SOCKET);
+#endif
 void proxy_reset_socket(SOCKET);
 int proxy_sendto(SOCKET, struct pbuf *, void *, size_t);
 void proxy_lwip_post(struct tcpip_msg *);

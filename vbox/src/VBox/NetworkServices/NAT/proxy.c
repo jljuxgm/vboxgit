@@ -1,4 +1,4 @@
-/* $Id: proxy.c 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: proxy.c 81784 2019-11-11 22:23:37Z vboxsync $ */
 /** @file
  * NAT Network - proxy setup and utilities.
  */
@@ -409,6 +409,37 @@ proxy_create_socket(int sdom, int stype)
 
     return s;
 }
+
+
+#ifdef RT_OS_LINUX
+/**
+ * Fixup a socket returned by accept(2).
+ *
+ * On Linux a socket returned by accept(2) does NOT inherit the socket
+ * options from the listening socket!  We need to repeat parts of the
+ * song and dance we did above to make it non-blocking.
+ */
+int
+proxy_fixup_accepted_socket(SOCKET s)
+{
+    int sflags;
+    int status;
+
+    sflags = fcntl(s, F_GETFL, 0);
+    if (sflags < 0) {
+        DPRINTF(("F_GETFL: %R[sockerr]\n", SOCKERRNO()));
+        return -1;
+    }
+
+    status = fcntl(s, F_SETFL, sflags | O_NONBLOCK);
+    if (status < 0) {
+        DPRINTF(("O_NONBLOCK: %R[sockerr]\n", SOCKERRNO()));
+        return -1;
+    }
+
+    return 0;
+}
+#endif  /* RT_OS_LINUX */
 
 
 /**
