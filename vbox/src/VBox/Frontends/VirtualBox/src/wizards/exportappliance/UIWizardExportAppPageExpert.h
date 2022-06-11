@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageExpert.h 79567 2019-07-06 12:43:14Z vboxsync $ */
+/* $Id: UIWizardExportAppPageExpert.h 79590 2019-07-08 12:01:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageExpert class declaration.
  */
@@ -49,6 +49,7 @@ class UIWizardExportAppPageExpert : public UIWizardPage,
     Q_PROPERTY(CCloudClient client READ client);
     Q_PROPERTY(CVirtualSystemDescription vsd READ vsd);
     Q_PROPERTY(CVirtualSystemDescriptionForm vsdExportForm READ vsdExportForm);
+    Q_PROPERTY(CloudExportMode cloudExportMode READ cloudExportMode);
     Q_PROPERTY(ExportAppliancePointer applianceWidget READ applianceWidget);
 
 public:
