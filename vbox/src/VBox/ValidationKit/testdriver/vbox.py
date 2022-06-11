@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 83990 2020-04-27 09:57:12Z vboxsync $
+# $Id: vbox.py 84072 2020-04-29 07:42:49Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 83990 $"
+__version__ = "$Revision: 84072 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -716,12 +716,15 @@ class ConsoleEventHandlerBase(EventHandlerBase):
             except:
                 reporter.logXcpt();
         ## @todo implement the other events.
-        if eType not in (vboxcon.VBoxEventType_OnMousePointerShapeChanged,
-                         vboxcon.VBoxEventType_OnCursorPositionChanged):
-            if eType in self.dEventNo2Name:
-                reporter.log2('%s(%s)/%s' % (self.dEventNo2Name[eType], str(eType), self.sName));
-            else:
-                reporter.log2('%s/%s' % (str(eType), self.sName));
+        try:
+            if eType not in (vboxcon.VBoxEventType_OnMousePointerShapeChanged,
+                             vboxcon.VBoxEventType_OnCursorPositionChanged):
+                if eType in self.dEventNo2Name:
+                    reporter.log2('%s(%s)/%s' % (self.dEventNo2Name[eType], str(eType), self.sName));
+                else:
+                    reporter.log2('%s/%s' % (str(eType), self.sName));
+        except AttributeError: # Handle older VBox versions which don't have a specific event.
+            pass;
         return None;
 
 
