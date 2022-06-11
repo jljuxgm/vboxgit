@@ -1,4 +1,4 @@
-/* $Id: UICloudNetworkingStuff.cpp 83992 2020-04-27 10:16:01Z vboxsync $ */
+/* $Id: UICloudNetworkingStuff.cpp 83993 2020-04-27 10:42:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudNetworkingStuff namespace implementation.
  */
@@ -23,6 +23,7 @@
 
 /* COM includes: */
 #include "CAppliance.h"
+#include "CForm.h"
 #include "CProgress.h"
 #include "CStringArray.h"
 #include "CVirtualBox.h"
@@ -200,6 +201,41 @@ bool UICloudNetworkingStuff::cloudMachineState(const CCloudMachine &comCloudMach
         return false;
     }
     enmResult = enmState;
+    return true;
+}
+
+bool UICloudNetworkingStuff::cloudMachineSettingsForm(CCloudMachine &comCloudMachine,
+                                                      CForm &comResult,
+                                                      QWidget *pParent /* = 0 */)
+{
+    /* Acquire machine name first: */
+    QString strMachineName;
+    if (!cloudMachineName(comCloudMachine, strMachineName))
+        return false;
+
+    /* Prepare settings form: */
+    CForm comForm;
+
+    /* Now execute GetSettingsForm async method: */
+    CProgress comProgress = comCloudMachine.GetSettingsForm(comForm);
+    if (!comCloudMachine.isOk())
+    {
+        msgCenter().cannotAcquireCloudMachineParameter(comCloudMachine, pParent);
+        return false;
+    }
+
+    /* Show "Get settings form" progress: */
+    msgCenter().showModalProgressDialog(comProgress,
+                                        strMachineName,
+                                        ":/progress_settings_90px.png", pParent, 0);
+    if (!comProgress.isOk() || comProgress.GetResultCode() != 0)
+    {
+        msgCenter().cannotAcquireCloudClientParameter(comProgress, pParent);
+        return false;
+    }
+
+    /* Return result: */
+    comResult = comForm;
     return true;
 }
 
