@@ -1,5 +1,5 @@
 #!/usr/bin/make -f
-# $Id: rules 82830 2020-01-22 15:27:04Z vboxsync $
+# $Id: rules 82831 2020-01-22 15:44:43Z vboxsync $
 ## @file
 # VirtualBox rules.
 #
@@ -201,7 +201,7 @@ clean:
 	rm -rf $(stagedir)
 	rm -rf $(builddir)
 	rm -rf $(vboxroot)/rpm
-	rm -f rpm/VirtualBox-*
+	rm -rf rpm/VirtualBox-*
 	rm -f rpm/VirtualBox.tar rpm/VirtualBox.tar.bz2
 	rm -f rpm/VirtualBox.spec
 	rm -f rpm/build-stamp rpm/configure-stamp rpm/configure.log
