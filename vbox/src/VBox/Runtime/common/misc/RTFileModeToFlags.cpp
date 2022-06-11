@@ -1,4 +1,4 @@
-/* $Id: RTFileModeToFlags.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: RTFileModeToFlags.cpp 79284 2019-06-21 20:38:29Z vboxsync $ */
 /** @file
  * IPRT - RTFileModeToFlags.
  */
@@ -219,11 +219,16 @@ RTR3DECL(int) RTFileModeToFlagsEx(const char *pszAccess, const char *pszDisposit
                 fMode |= RTFILE_O_WRITE;
                 break;
 
+            case 'a': /* Append. */
+                fMode |= RTFILE_O_WRITE | RTFILE_O_APPEND;
+                break;
+
             case '+':
             {
                 switch (chPrev)
                 {
                     case 'w':
+                    case 'a':
                         /* Also use read access in write mode. */
                         fMode |= RTFILE_O_READ;
                         break;
@@ -278,9 +283,9 @@ RTR3DECL(int) RTFileModeToFlagsEx(const char *pszAccess, const char *pszDisposit
     else if (   !RTStrCmp(pszCur, "oc")
              || !RTStrCmp(pszCur, "open-create"))
         fMode |= RTFILE_O_OPEN_CREATE;
-    /* Open existing file and place the file pointer at
-     * the end of the file, if opened with write access.
-     * Create the file if does not exist. */
+    /* Open existing file and place the file pointer at the end of the file, if
+     * opened with write access. Create the file if does not exist.
+     * Note! This mode is ill conceived as the appending is a accesss mode not open disposition. */
     else if (   !RTStrCmp(pszCur, "oa")
              || !RTStrCmp(pszCur, "open-append"))
         fMode |= RTFILE_O_OPEN_CREATE | RTFILE_O_APPEND;
