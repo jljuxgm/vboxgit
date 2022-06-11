@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 79912 2019-07-21 15:41:29Z vboxsync $
+# $Id: vboxwrappers.py 79969 2019-07-25 03:06:33Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79912 $"
+__version__ = "$Revision: 79969 $"
 
 
 # Standard Python imports.
@@ -3258,7 +3258,7 @@ class TxsConnectTask(TdTaskBase):
         try:
             (sIpAddr, sState, secIssued, secExpire) = self.oIDhcpServer.findLeaseByMAC(self.sMacAddr, 0);
         except:
-            reporter.log2Xcpt('sMacAddr=%s' % (self.sMacAddr,));
+            reporter.log4Xcpt('sMacAddr=%s' % (self.sMacAddr,));
             return False;
 
         secNow = utils.secondsSinceUnixEpoch();
