@@ -1,4 +1,4 @@
-﻿/* $Id: common.css 83360 2020-03-21 13:43:17Z vboxsync $ */
+﻿/* $Id: common.css 83361 2020-03-21 17:03:54Z vboxsync $ */
 /** @file
  * Test Manager - Common CSS.
  */
@@ -667,6 +667,14 @@ table.tmtable th {
 
 .tmtable td {
 }
+
+tr.tmseparator td {
+    border-bottom:      2px solid black;
+    font-size:          0;
+    padding-top:        0;
+    padding-bottom:     0;
+}
+
 
 
 /*

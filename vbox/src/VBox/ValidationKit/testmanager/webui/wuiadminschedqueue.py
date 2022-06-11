@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# "$Id: wuiadminschedqueue.py 83342 2020-03-19 20:45:24Z vboxsync $"
+# "$Id: wuiadminschedqueue.py 83361 2020-03-21 17:03:54Z vboxsync $"
 
 """
 Test Manager WUI - Admin - Scheduling Queue.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 83342 $"
+__version__ = "$Revision: 83361 $"
 
 
 # Validation Kit imports
@@ -48,9 +48,22 @@ class WuiAdminSchedQueueList(WuiListContentBase):
         self._asColumnAttribs = [
             'align="center"', 'align="center"',   'align="center"', 'align="center"', 'align="center"', 'align="center"'
         ];
+        self._iPrevPerSchedGroupRowNumber = 0;
 
     def _formatListEntry(self, iEntry):
         oEntry = self._aoEntries[iEntry] # type: SchedQueueEntry
         sState = 'up-to-date' if oEntry.fUpToDate else 'outdated';
         return [ oEntry.tsLastScheduled, oEntry.sSchedGroup, oEntry.sTestGroup, oEntry.sTestCase, sState, oEntry.idItem ];
+
+    def _formatListEntryHtml(self, iEntry):
+        sHtml = WuiListContentBase._formatListEntryHtml(self, iEntry);
+
+        # Insert separator row?
+        if iEntry < len(self._aoEntries):
+            oEntry = self._aoEntries[iEntry] # type: SchedQueueEntry
+            if oEntry.iPerSchedGroupRowNumber != self._iPrevPerSchedGroupRowNumber:
+                if iEntry > 0:
+                    sHtml += '<tr class="tmseparator"><td colspan=%s> </td></tr>\n' % (len(self._asColumnHeaders),);
+                self._iPrevPerSchedGroupRowNumber = oEntry.iPerSchedGroupRowNumber;
+        return sHtml;
 
