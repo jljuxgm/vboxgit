@@ -1,4 +1,4 @@
-/* $Id: HDAStreamChannel.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: HDAStreamChannel.cpp 82252 2019-11-27 21:31:53Z vboxsync $ */
 /** @file
  * HDAStreamChannel.cpp - Stream channel functions for HD Audio.
  */
@@ -61,7 +61,7 @@ void hdaR3StreamChannelDataDestroy(PPDMAUDIOSTREAMCHANNELDATA pChanData)
         pChanData->pCircBuf = NULL;
     }
 
-    pChanData->fFlags = PDMAUDIOSTREAMCHANNELDATA_FLAG_NONE;
+    pChanData->fFlags = PDMAUDIOSTREAMCHANNELDATA_FLAGS_NONE;
 }
 
 /**

@@ -1,4 +1,4 @@
-/* $Id: DrvHostValidationKit.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: DrvHostValidationKit.cpp 82252 2019-11-27 21:31:53Z vboxsync $ */
 /** @file
  * ValidationKit audio driver - host backend for dumping and injecting audio data
  *                              from/to the device emulation.
@@ -179,8 +179,8 @@ static int vakitCreateStreamOut(PDRVHOSTVAKITAUDIO pDrv, PVAKITAUDIOSTREAM pStre
             {
                 size_t cch;
                 char szTimingInfo[128];
-                cch = RTStrPrintf(szTimingInfo, sizeof(szTimingInfo), "# %dHz %dch %dbit\n",
-                                  pCfgReq->Props.uHz, pCfgReq->Props.cChannels, pCfgReq->Props.cBytes * 8);
+                cch = RTStrPrintf(szTimingInfo, sizeof(szTimingInfo), "# %uHz %uch %ubit\n",
+                                  pCfgReq->Props.uHz, pCfgReq->Props.cChannels, pCfgReq->Props.cbSample * 8);
 
                 RTFileWrite(pStreamDbg->hFileTiming, szTimingInfo, cch, NULL);
             }

@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.h 76990 2019-01-25 13:51:22Z vboxsync $ */
+/* $Id: DrvAudio.h 82252 2019-11-27 21:31:53Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  */
@@ -262,10 +262,10 @@ void DrvAudioHlpDeviceEnumPrint(const char *pszDesc, const PPDMAUDIODEVICEENUM p
 /** @name Audio string-ify methods.
  * @{ */
 const char *DrvAudioHlpAudMixerCtlToStr(PDMAUDIOMIXERCTL enmMixerCtl);
-const char *DrvAudioHlpPlaybackDstToStr(const PDMAUDIOPLAYBACKDEST enmPlaybackDst);
-const char *DrvAudioHlpRecSrcToStr(const PDMAUDIORECSOURCE enmRecSource);
+const char *DrvAudioHlpPlaybackDstToStr(const PDMAUDIOPLAYBACKDST enmPlaybackDst);
+const char *DrvAudioHlpRecSrcToStr(const PDMAUDIORECSRC enmRecSource);
 PDMAUDIOFMT DrvAudioHlpStrToAudFmt(const char *pszFmt);
-char *DrvAudioHlpAudDevFlagsToStrA(PDMAUDIODEVFLAG fFlags);
+char *DrvAudioHlpAudDevFlagsToStrA(uint32_t fFlags);
 /** @}  */
 
 /** @name Audio file methods.

@@ -1,4 +1,4 @@
-/* $Id: DevHDACommon.cpp 81182 2019-10-09 12:11:53Z vboxsync $ */
+/* $Id: DevHDACommon.cpp 82252 2019-11-27 21:31:53Z vboxsync $ */
 /** @file
  * DevHDACommon.cpp - Shared HDA device functions.
  */
@@ -546,11 +546,11 @@ int hdaR3SDFMTToPCMProps(uint16_t u16SDFMT, PPDMAUDIOPCMPROPS pProps)
     {
         RT_BZERO(pProps, sizeof(PDMAUDIOPCMPROPS));
 
-        pProps->cBytes    = cBytes;
+        pProps->cbSample  = cBytes;
         pProps->fSigned   = true;
         pProps->cChannels = (u16SDFMT & 0xf) + 1;
         pProps->uHz       = u32Hz * u32HzMult / u32HzDiv;
-        pProps->cShift    = PDMAUDIOPCMPROPS_MAKE_SHIFT_PARMS(pProps->cBytes, pProps->cChannels);
+        pProps->cShift    = PDMAUDIOPCMPROPS_MAKE_SHIFT_PARMS(pProps->cbSample, pProps->cChannels);
     }
 
 # undef EXTRACT_VALUE
