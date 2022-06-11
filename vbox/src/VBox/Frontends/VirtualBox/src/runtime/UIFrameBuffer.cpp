@@ -1,4 +1,4 @@
-/* $Id: UIFrameBuffer.cpp 80617 2019-09-06 08:32:17Z vboxsync $ */
+/* $Id: UIFrameBuffer.cpp 82022 2019-11-20 11:53:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFrameBuffer class implementation.
  */
@@ -1516,8 +1516,8 @@ void UIFrameBufferPrivate::paintDefault(QPaintEvent *pEvent)
         && (   !m_pMachineView->uisession()->isMouseIntegrated()
             || !m_pMachineView->uisession()->isMouseSupportsAbsolute()))
     {
-        /* Acquire session cursor pixmap: */
-        QPixmap cursorPixmap = m_pMachineView->uisession()->cursorPixmap();
+        /* Acquire session cursor shape pixmap: */
+        QPixmap cursorPixmap = m_pMachineView->uisession()->cursorShapePixmap();
 
         /* Take the device-pixel-ratio into account: */
         cursorPixmap.setDevicePixelRatio(devicePixelRatio());
@@ -1625,8 +1625,8 @@ void UIFrameBufferPrivate::paintSeamless(QPaintEvent *pEvent)
         && (   !m_pMachineView->uisession()->isMouseIntegrated()
             || !m_pMachineView->uisession()->isMouseSupportsAbsolute()))
     {
-        /* Acquire session cursor pixmap: */
-        QPixmap cursorPixmap = m_pMachineView->uisession()->cursorPixmap();
+        /* Acquire session cursor shape pixmap: */
+        QPixmap cursorPixmap = m_pMachineView->uisession()->cursorShapePixmap();
 
         /* Take the device-pixel-ratio into account: */
         cursorPixmap.setDevicePixelRatio(devicePixelRatio());
