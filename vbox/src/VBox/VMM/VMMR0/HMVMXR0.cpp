@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 78656 2019-05-22 11:17:54Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 78657 2019-05-22 11:19:44Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -12817,11 +12817,6 @@ DECLINLINE(VBOXSTRICTRC) hmR0VmxHandleExitNested(PVMCPU pVCpu, PVMXTRANSIENT pVm
             {
                 int rc = hmR0VmxReadExitInstrLenVmcs(pVmxTransient);
                 AssertRCReturn(rc, rc);
-
-                VMXVEXITINFO ExitInfo;
-                RT_ZERO(ExitInfo);
-                ExitInfo.uReason = uExitReason;
-                ExitInfo.cbInstr = pVmxTransient->cbInstr;
                 rcStrict = IEMExecVmxVmexitInstr(pVCpu, uExitReason, pVmxTransient->cbInstr);
             }
             else
