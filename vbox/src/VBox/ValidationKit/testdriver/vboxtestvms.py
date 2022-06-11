@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 79180 2019-06-17 12:19:45Z vboxsync $
+# $Id: vboxtestvms.py 79208 2019-06-18 12:00:44Z vboxsync $
 
 """
 VirtualBox Test VMs
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79180 $"
+__version__ = "$Revision: 79208 $"
 
 # Standard Python imports.
 import copy;
@@ -920,6 +920,9 @@ class BaseTestVm(object):
         """ See common.pathutils.joinEx(). """
         return pathutils.joinEx(self.isWindows() or self.isOS2(), sBase, *asAppend);
 
+    def pathSep(self):
+        """ Returns the preferred paths separator for the guest OS. """
+        return '\\' if self.isWindows() or self.isOS2() else '/';
 
 
 ## @todo Inherit from BaseTestVm
