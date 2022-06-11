@@ -1,4 +1,4 @@
-/* $Id: UIPerformanceMonitor.cpp 80187 2019-08-07 15:15:00Z vboxsync $ */
+/* $Id: UIPerformanceMonitor.cpp 80188 2019-08-07 15:26:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPerformanceMonitor class implementation.
  */
@@ -100,8 +100,10 @@ UIChart::UIChart(QWidget *pParent, const UISubMetric *pSubMetric)
     , m_size(QSize(50, 50))
     , m_fDrawPieChart(true)
     , m_fUseGradientLineColor(true)
-    , m_dataSeriesColor({Qt::red, Qt::blue})
 {
+    m_dataSeriesColor[0] = QColor(Qt::red);
+    m_dataSeriesColor[1] = QColor(Qt::blue);
+
     m_iMargin = qApp->QApplication::style()->pixelMetric(QStyle::PM_LayoutTopMargin);
     m_iPieChartSize = 1.5f * qApp->style()->pixelMetric(QStyle::PM_LargeIconSize);
     m_pieChartRect = QRect(1.5 * m_iMargin, 1.5 * m_iMargin, m_iPieChartSize, m_iPieChartSize);
