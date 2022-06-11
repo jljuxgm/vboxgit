@@ -1,4 +1,4 @@
-/* $Id: Virtio_1_0_impl.h 80683 2019-09-09 19:57:50Z vboxsync $ $Revision: 80683 $ $Date: 2019-09-10 03:57:50 +0800 (Tue, 10 Sep 2019) $ $Author: vboxsync $ */
+/* $Id: Virtio_1_0_impl.h 80718 2019-09-11 06:55:26Z vboxsync $ $Revision: 80718 $ $Date: 2019-09-11 14:55:26 +0800 (Wed, 11 Sep 2019) $ $Author: vboxsync $ */
 /** @file
  * Virtio_1_0_impl.h - Virtio Declarations
  */
@@ -254,7 +254,8 @@ typedef struct virt_used
 } VIRTQ_USED_T, *PVIRTQ_USED_T;
 
 /**
-* This macro returns true if physical address and access length are within the mapped capability struct.
+* This macro returns true if the implied parameter GCPhysAddr address and access length are
+* within mapped capability struct specified with the explicit parameters.
 *
 * Actual Parameters:
 *     @oaram    pPhysCapStruct - [input]  Pointer to MMIO mapped capability struct
@@ -273,8 +274,9 @@ typedef struct virt_used
                 fMatched = true;
 
 /**
- * This macro resolves to boolean true if uOffset matches a field offset and size exactly,
- * (or if it is a 64-bit field, if it accesses either 32-bit part as a 32-bit access)
+ * This macro resolves to boolean true if the implied parameters, uOffset and cb, match the field
+ * offset and size of a field in the Common Cfg struct, (or if it is a 64-bit field, if it accesses
+ * either 32-bit part as a 32-bit access)
  * This is mandated by section 4.1.3.1 of the VirtIO 1.0 specification)
  *
  * @param   member   - Member of VIRTIO_PCI_COMMON_CFG_T
