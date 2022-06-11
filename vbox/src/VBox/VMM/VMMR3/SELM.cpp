@@ -1,4 +1,4 @@
-/* $Id: SELM.cpp 80014 2019-07-26 16:12:06Z vboxsync $ */
+/* $Id: SELM.cpp 80055 2019-07-29 21:36:45Z vboxsync $ */
 /** @file
  * SELM - The Selector Manager.
  */
@@ -81,8 +81,6 @@
 #include <iprt/string.h>
 #include <iprt/thread.h>
 #include <iprt/string.h>
-
-#include "SELMInline.h"
 
 
 /*********************************************************************************************************************************

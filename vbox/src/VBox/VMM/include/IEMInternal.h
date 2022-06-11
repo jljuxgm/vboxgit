@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 76585 2019-01-01 06:31:29Z vboxsync $ */
+/* $Id: IEMInternal.h 80055 2019-07-29 21:36:45Z vboxsync $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -374,8 +374,7 @@ typedef struct IEMCPU
 
     /** Whether to bypass access handlers or not. */
     bool                    fBypassHandlers;                                                                /* 0x06 */
-    /** Indicates that we're interpreting patch code - RC only! */
-    bool                    fInPatchCode;                                                                   /* 0x07 */
+    bool                    fUnusedWasInPatchCode;                                                          /* 0x07 */
 
     /** @name Decoder state.
      * @{ */
