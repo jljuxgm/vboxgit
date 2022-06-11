@@ -1,4 +1,4 @@
-/* $Id: DragAndDrop.h 78036 2019-04-08 11:06:11Z vboxsync $ */
+/* $Id: DragAndDrop.h 79482 2019-07-03 02:35:37Z vboxsync $ */
 /** @file
  * DnD - Shared functions between host and guest.
  */
@@ -52,9 +52,10 @@ typedef uint32_t DNDURIDROPPEDFILEFLAGS;
  */
 class DnDDroppedFiles
 {
-
 public:
-
+#ifdef RT_NEED_NEW_AND_DELETE
+    RTMEM_IMPLEMENT_NEW_AND_DELETE();
+#endif
     DnDDroppedFiles(void);
     DnDDroppedFiles(const char *pszPath, DNDURIDROPPEDFILEFLAGS fFlags = DNDURIDROPPEDFILE_FLAGS_NONE);
     virtual ~DnDDroppedFiles(void);
@@ -144,6 +145,9 @@ public:
         View_Dest_32Bit_Hack = 0x7fffffff
     };
 
+#ifdef RT_NEED_NEW_AND_DELETE
+    RTMEM_IMPLEMENT_NEW_AND_DELETE();
+#endif
     DnDURIObject(void);
     DnDURIObject(Type type,
                  const RTCString &strSrcPathAbs = "",
@@ -270,7 +274,9 @@ typedef uint32_t DNDURILISTFLAGS;
 class DnDURIList
 {
 public:
-
+#ifdef RT_NEED_NEW_AND_DELETE
+    RTMEM_IMPLEMENT_NEW_AND_DELETE();
+#endif
     DnDURIList(void);
     virtual ~DnDURIList(void);
 

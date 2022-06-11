@@ -1,4 +1,4 @@
-/* $Id: seamless.h 76563 2019-01-01 03:53:56Z vboxsync $ */
+/* $Id: seamless.h 79482 2019-07-03 02:35:37Z vboxsync $ */
 /** @file
  * X11 Guest client - seamless mode, missing proper description while using the
  * potentially confusing word 'host'.
@@ -79,6 +79,9 @@ private:
 public:
     SeamlessMain(void);
     virtual ~SeamlessMain();
+#ifdef RT_NEED_NEW_AND_DELETE
+    RTMEM_IMPLEMENT_NEW_AND_DELETE();
+#endif
 
     /**
       * Initialise the service.
