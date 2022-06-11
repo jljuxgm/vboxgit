@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 80172 2019-08-07 08:48:20Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 80179 2019-08-07 10:48:23Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -322,12 +322,8 @@ pgmPhysRomWriteHandler(PVM pVM, PVMCPU pVCpu, RTGCPHYS GCPhys, void *pvPhys, voi
 void pgmPhysInvalidRamRangeTlbs(PVM pVM)
 {
     pgmLock(pVM);
-    for (uint32_t i = 0; i < PGM_RAMRANGE_TLB_ENTRIES; i++)
-    {
-        pVM->pgm.s.apRamRangesTlbR3[i] = NIL_RTR3PTR;
-        pVM->pgm.s.apRamRangesTlbR0[i] = NIL_RTR0PTR;
-        pVM->pgm.s.apRamRangesTlbRC[i] = NIL_RTRCPTR;
-    }
+    RT_ZERO(pVM->pgm.s.apRamRangesTlbR3);
+    RT_ZERO(pVM->pgm.s.apRamRangesTlbR0);
     pgmUnlock(pVM);
 }
 

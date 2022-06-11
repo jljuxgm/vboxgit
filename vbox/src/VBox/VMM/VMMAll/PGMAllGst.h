@@ -1,4 +1,4 @@
-/* $Id: PGMAllGst.h 80163 2019-08-06 20:28:12Z vboxsync $ */
+/* $Id: PGMAllGst.h 80179 2019-08-07 10:48:23Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Guest Paging Template - All context code.
  */
@@ -515,11 +515,7 @@ PGM_GST_DECL(int, GetPDE)(PVMCPU pVCpu, RTGCPTR GCPtr, PX86PDEPAE pPDE)
  */
 PGM_GST_DECL(int, Relocate)(PVMCPU pVCpu, RTGCPTR offDelta)
 {
-    pVCpu->pgm.s.pGst32BitPdRC += offDelta;
-    for (unsigned i = 0; i < RT_ELEMENTS(pVCpu->pgm.s.apGstPaePDsRC); i++)
-        pVCpu->pgm.s.apGstPaePDsRC[i] += offDelta;
-    pVCpu->pgm.s.pGstPaePdptRC += offDelta;
-
+    RT_NOREF(pVCpu, offDelta);
     return VINF_SUCCESS;
 }
 #endif
