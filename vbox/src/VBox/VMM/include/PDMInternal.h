@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 81390 2019-10-20 23:50:44Z vboxsync $ */
+/* $Id: PDMInternal.h 81391 2019-10-21 00:23:27Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -996,6 +996,10 @@ typedef struct PDMTASK
     R3PTRTYPE(void *) volatile  pvOwner;
     /** Task name. */
     R3PTRTYPE(const char *)     pszName;
+    /** Number of times already triggered when PDMTaskTrigger was called. */
+    uint32_t volatile           cAlreadyTrigged;
+    /** Number of runs. */
+    uint32_t                    cRuns;
 } PDMTASK;
 /** Pointer to a PDM task. */
 typedef PDMTASK *PPDMTASK;
