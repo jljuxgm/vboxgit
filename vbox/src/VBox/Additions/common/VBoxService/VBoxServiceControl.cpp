@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControl.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxServiceControl.cpp 83405 2020-03-25 12:45:01Z vboxsync $ */
 /** @file
  * VBoxServiceControl - Host-driven Guest Control.
  */
@@ -215,7 +215,10 @@ static DECLCALLBACK(int) vgsvcGstCtrlInit(void)
             /*
              * Report features to the host.
              */
-            rc = VbglR3GuestCtrlReportFeatures(g_idControlSvcClient, VBOX_GUESTCTRL_GF_0_SET_SIZE, &g_fControlHostFeatures0);
+            const uint64_t fGuestFeatures = VBOX_GUESTCTRL_GF_0_SET_SIZE
+                                          | VBOX_GUESTCTRL_GF_0_PROCESS_ARGV0;
+
+            rc = VbglR3GuestCtrlReportFeatures(g_idControlSvcClient, fGuestFeatures, &g_fControlHostFeatures0);
             if (RT_SUCCESS(rc))
                 VGSvcVerbose(3, "Host features: %#RX64\n", g_fControlHostFeatures0);
             else

@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestControlSvc.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxGuestControlSvc.cpp 83405 2020-03-25 12:45:01Z vboxsync $ */
 /** @file
  * Guest Control Service: Controlling the guest.
  */
@@ -933,8 +933,8 @@ private:
 
 
 /** Host feature mask for GUEST_MSG_REPORT_FEATURES/GUEST_MSG_QUERY_FEATURES. */
-static uint64_t const g_fGstCtrlHostFeatures0 = VBOX_GUESTCTRL_HF_0_NOTIFY_RDWR_OFFSET;
-
+static uint64_t const g_fGstCtrlHostFeatures0 = VBOX_GUESTCTRL_HF_0_NOTIFY_RDWR_OFFSET
+                                              | VBOX_GUESTCTRL_HF_0_PROCESS_ARGV0;
 
 
 /**
