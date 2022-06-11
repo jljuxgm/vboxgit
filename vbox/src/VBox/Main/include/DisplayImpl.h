@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 77451 2019-02-25 06:32:10Z vboxsync $ */
+/* $Id: DisplayImpl.h 78784 2019-05-27 14:16:41Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -27,6 +27,7 @@
 #include <VBox/vmm/pdmdrv.h>
 #include <VBoxVideo.h>
 #include <VBox/vmm/pdmifs.h>
+#include <VBox/VMMDev.h>  /* For struct VMMDevDisplayDef - why is it in that file? */
 #include "DisplayWrap.h"
 
 #ifdef VBOX_WITH_CROGL
@@ -104,6 +105,10 @@ typedef struct _DISPLAYFBINFO
         ComPtr<IDisplaySourceBitmap> pSourceBitmap;
     } Recording;
 #endif /* VBOX_WITH_RECORDING */
+
+    /** Description of the currently plugged monitor with preferred mode,
+     * a.k.a the last mode hint sent. */
+    struct VMMDevDisplayDef monitorDesc;
 } DISPLAYFBINFO;
 
 /* The legacy VBVA (VideoAccel) data.
@@ -255,6 +260,14 @@ private:
                                      ULONG aWidth,
                                      ULONG aHeight,
                                      ULONG aBitsPerPixel);
+    virtual HRESULT getVideoModeHint(ULONG aDisplay,
+                                     BOOL *aEnabled,
+                                     BOOL *aChangeOrigin,
+                                     LONG *aOriginX,
+                                     LONG *aOriginY,
+                                     ULONG *aWidth,
+                                     ULONG *aHeight,
+                                     ULONG *aBitsPerPixel);
     virtual HRESULT setSeamlessMode(BOOL aEnabled);
     virtual HRESULT takeScreenShot(ULONG aScreenId,
                                    BYTE *aAddress,
