@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItem.h 82944 2020-01-31 15:00:08Z vboxsync $ */
+/* $Id: UIVirtualMachineItem.h 82960 2020-02-03 15:50:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItem class declarations.
  */
@@ -35,6 +35,7 @@
 #include "CVirtualBoxErrorInfo.h"
 
 /* Forward declarations: */
+class UIVirtualMachineItemCloud;
 class UIVirtualMachineItemLocal;
 
 /* Using declarations: */
@@ -48,7 +49,7 @@ class UIVirtualMachineItem : public QIWithRetranslateUI3<QObject>
 public:
 
     /** Item types. */
-    enum ItemType { ItemType_Local };
+    enum ItemType { ItemType_Local, ItemType_CloudFake };
 
     /** Constructs VM item on the basis of taken @a enmType. */
     UIVirtualMachineItem(ItemType enmType);
@@ -61,6 +62,8 @@ public:
         ItemType itemType() const { return m_enmType; }
         /** Returns item casted to local type. */
         UIVirtualMachineItemLocal *toLocal();
+        /** Returns item casted to cloud type. */
+        UIVirtualMachineItemCloud *toCloud();
     /** @} */
 
     /** @name VM access attributes.

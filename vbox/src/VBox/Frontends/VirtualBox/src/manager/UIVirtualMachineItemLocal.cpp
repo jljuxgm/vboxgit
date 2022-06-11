@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItemLocal.cpp 82944 2020-01-31 15:00:08Z vboxsync $ */
+/* $Id: UIVirtualMachineItemLocal.cpp 82960 2020-02-03 15:50:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItem class implementation.
  */
@@ -20,10 +20,10 @@
 #include <QIcon>
 
 /* GUI includes: */
-#include "UIVirtualMachineItemLocal.h"
 #include "UICommon.h"
 #include "UIConverter.h"
 #include "UIExtraDataManager.h"
+#include "UIVirtualMachineItemLocal.h"
 #ifdef VBOX_WS_MAC
 # include <ApplicationServices/ApplicationServices.h>
 #endif /* VBOX_WS_MAC */
