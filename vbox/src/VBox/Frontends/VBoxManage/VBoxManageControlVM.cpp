@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 81287 2019-10-15 16:38:43Z vboxsync $ */
+/* $Id: VBoxManageControlVM.cpp 81962 2019-11-18 19:20:41Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of the controlvm command.
  */
@@ -517,7 +517,7 @@ RTEXITCODE handleControlVM(HandlerArg *a)
         {
             if (a->argc <= 1 + 1)
             {
-                errorArgument("Missing argument to '%s'. Expected clipboard mode.", a->argv[1]);
+                errorArgument("Missing argument to '%s'.", a->argv[1]);
                 rc = E_FAIL;
                 break;
             }
@@ -549,7 +549,7 @@ RTEXITCODE handleControlVM(HandlerArg *a)
             {
                 if (a->argc <= 1 + 2)
                 {
-                    errorArgument("Missing argument to '%s'. Expected true / false.", a->argv[2]);
+                    errorArgument("Missing argument to '%s'. Expected enabled / disabled.", a->argv[2]);
                     rc = E_FAIL;
                     break;
                 }
@@ -575,6 +575,12 @@ RTEXITCODE handleControlVM(HandlerArg *a)
                     fNeedsSaving = true;
             }
 # endif /* VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS */
+            else
+            {
+                errorArgument("Invalid '%s' argument '%s'.", a->argv[1], a->argv[2]);
+                rc = E_FAIL;
+                break;
+            }
         }
 #endif /* VBOX_WITH_SHARED_CLIPBOARD */
         else if (!strcmp(a->argv[1], "draganddrop"))
