@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 79434 2019-07-01 11:31:44Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 79508 2019-07-03 15:20:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -677,6 +677,8 @@ public:
         bool softKeyboardDialogShouldBeMaximized();
         void setSoftKeyboardColorTheme(const QStringList &colorStringList);
         QStringList softKeyboardColorTheme();
+        void setSoftKeyboardSelectedLayout(const QUuid &uLayoutUid);
+        QUuid softKeyboardSelectedLayout();
     /** @} */
 
     /** @name File Manager options

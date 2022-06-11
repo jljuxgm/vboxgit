@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 79434 2019-07-01 11:31:44Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 79508 2019-07-03 15:20:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -4315,6 +4315,16 @@ void UIExtraDataManager::setSoftKeyboardColorTheme(const QStringList &colorStrin
 QStringList UIExtraDataManager::softKeyboardColorTheme()
 {
     return extraDataStringList(GUI_SoftKeyboard_ColorTheme);
+}
+
+void UIExtraDataManager::setSoftKeyboardSelectedLayout(const QUuid &uLayoutUid)
+{
+    setExtraDataString(GUI_SoftKeyboard_SelectedLayout, uLayoutUid.toString());
+}
+
+QUuid UIExtraDataManager::softKeyboardSelectedLayout()
+{
+    return QUuid(extraDataString(GUI_SoftKeyboard_SelectedLayout));
 }
 
 void UIExtraDataManager::setFileManagerOptions(bool fListDirectoriesFirst,
