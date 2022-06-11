@@ -1,4 +1,4 @@
-/* $Id: ioqueuebase.cpp 79949 2019-07-24 11:05:45Z vboxsync $ */
+/* $Id: ioqueuebase.cpp 79952 2019-07-24 11:21:03Z vboxsync $ */
 /** @file
  * IPRT - I/O queue, Base/Public API.
  */
@@ -141,8 +141,8 @@ RTDECL(int) RTIoQueueCreate(PRTIOQUEUE phIoQueue, PCRTIOQUEUEPROVVTABLE pProvVTa
     {
         pThis->pVTbl          = pProvVTable;
         pThis->hIoQueueProv   = (RTIOQUEUEPROV)&pThis->abInst[0];
-        pThis->cSqEntries     = cSqEntries;
-        pThis->cCqEntries     = cCqEntries;
+        pThis->cSqEntries     = (uint32_t)cSqEntries;
+        pThis->cCqEntries     = (uint32_t)cCqEntries;
         pThis->cReqsCommitted = 0;
         pThis->cReqsPrepared  = 0;
 
