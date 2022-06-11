@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 83949 2020-04-23 14:37:52Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 83962 2020-04-24 09:45:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -1719,7 +1719,7 @@ void UIChooserModel::unregisterCloudMachines(const QList<CCloudMachine> &machine
         const QUuid uId = comMachine.GetId();
         if (!comMachine.isOk())
         {
-            msgCenter().cannotAcquireMachineParameter(comMachine);
+            msgCenter().cannotAcquireCloudMachineParameter(comMachine);
             continue;
         }
         /* Prepare unregister progress: */
