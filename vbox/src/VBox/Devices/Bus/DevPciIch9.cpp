@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 80946 2019-09-23 11:08:54Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 80947 2019-09-23 11:39:51Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation device.
  *
@@ -776,7 +776,7 @@ uint32_t devpciR3GetCfg(PPDMPCIDEV pPciDev, int32_t iRegister, int cb)
         rcStrict = pPciDev->Int.s.pfnConfigRead(pPciDev->Int.s.CTX_SUFF(pDevIns), pPciDev, iRegister, cb, &u32Value);
     if (rcStrict == VINF_PDM_PCI_DO_DEFAULT)
         rcStrict = devpciR3CommonConfigReadWorker(pPciDev, iRegister, cb, &u32Value);
-    AssertRCSuccess(rcStrict);
+    AssertRCSuccess(VBOXSTRICTRC_VAL(rcStrict));
     return u32Value;
 }
 
