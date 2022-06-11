@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwipNAT.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxNetLwipNAT.cpp 83806 2020-04-18 23:12:06Z vboxsync $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -73,7 +73,7 @@
 
 #include <map>
 #include <vector>
-#include <string>
+#include <iprt/sanitized/string>
 
 #include <stdio.h>
 

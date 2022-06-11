@@ -1,4 +1,4 @@
-/* $Id: ComHostUtils.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: ComHostUtils.cpp 83806 2020-04-18 23:12:06Z vboxsync $ */
 /** @file
  * ComHostUtils.cpp
  */
@@ -51,7 +51,7 @@
 
 #include <vector>
 #include <list>
-#include <string>
+#include <iprt/sanitized/string>
 #include <map>
 
 #include "../NetLib/VBoxNetBaseService.h"

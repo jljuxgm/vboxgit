@@ -1,4 +1,4 @@
-/* $Id: VBoxNetBaseService.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxNetBaseService.cpp 83806 2020-04-18 23:12:06Z vboxsync $ */
 /** @file
  * VBoxNetBaseService - common services for VBoxNetDHCP and VBoxNetNAT.
  */
@@ -54,7 +54,7 @@
 #include <VBox/version.h>
 
 #include <vector>
-#include <string>
+#include <iprt/sanitized/string>
 
 #include <VBox/err.h>
 #include <VBox/log.h>
