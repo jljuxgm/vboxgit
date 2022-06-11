@@ -1,4 +1,4 @@
-; $Id: vcc-fakes-kernel32-A.asm 83861 2020-04-20 15:01:48Z vboxsync $
+; $Id: vcc-fakes-kernel32-A.asm 84365 2020-05-19 11:22:09Z vboxsync $
 ;; @file
 ; IPRT - Wrappers for kernel32 APIs missing in NT4 and earlier.
 ;
@@ -35,6 +35,8 @@ GLOBALNAME vcc100_kernel32_fakes_asm
 %ifdef VCC_FAKES_TARGET_VCC100
  %include "vcc-fakes-kernel32-100.h"
 %elifdef VCC_FAKES_TARGET_VCC141
+ %include "vcc-fakes-kernel32-141.h"
+%elifdef VCC_FAKES_TARGET_VCC142
  %include "vcc-fakes-kernel32-141.h"
 %else
  %error "PORT ME!"

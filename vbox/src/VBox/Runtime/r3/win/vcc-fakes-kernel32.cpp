@@ -1,4 +1,4 @@
-/* $Id: vcc-fakes-kernel32.cpp 83862 2020-04-20 15:21:38Z vboxsync $ */
+/* $Id: vcc-fakes-kernel32.cpp 84365 2020-05-19 11:22:09Z vboxsync $ */
 /** @file
  * IPRT - Tricks to make the Visual C++ 2010 CRT work on NT4, W2K and XP.
  */
@@ -69,6 +69,8 @@ static volatile bool g_fInitialized = false;
 #ifdef VCC_FAKES_TARGET_VCC100
 # include "vcc-fakes-kernel32-100.h"
 #elif defined(VCC_FAKES_TARGET_VCC141)
+# include "vcc-fakes-kernel32-141.h"
+#elif defined(VCC_FAKES_TARGET_VCC142)
 # include "vcc-fakes-kernel32-141.h"
 #else
 # error "Port me!"
@@ -837,6 +839,8 @@ DECLASM(void) FakeResolve_kernel32(void)
 #ifdef VCC_FAKES_TARGET_VCC100
 # include "vcc-fakes-kernel32-100.h"
 #elif defined(VCC_FAKES_TARGET_VCC141)
+# include "vcc-fakes-kernel32-141.h"
+#elif defined(VCC_FAKES_TARGET_VCC142)
 # include "vcc-fakes-kernel32-141.h"
 #else
 # error "Port me!"
