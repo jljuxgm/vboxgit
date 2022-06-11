@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.cpp 83705 2020-04-15 15:46:18Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.cpp 83706 2020-04-15 15:50:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class implementation.
  */
@@ -27,11 +27,10 @@
 #include "UIExtraDataManager.h"
 #include "UIMessageCenter.h"
 #include "UIVirtualBoxEventHandler.h"
-#include "UIVirtualMachineItem.h"
+#include "UIVirtualMachineItemCloud.h"
 #ifdef VBOX_GUI_WITH_CLOUD_VMS
 # include "UITaskCloudListMachines.h"
 # include "UIThreadPool.h"
-# include "UIVirtualMachineItemCloud.h"
 #endif
 
 /* COM includes: */
