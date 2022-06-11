@@ -1,4 +1,4 @@
-/* $Id: Apple.c 80721 2019-09-11 08:46:37Z vboxsync $ */
+/* $Id: Apple.c 80934 2019-09-22 15:37:49Z vboxsync $ */
 /** @file
  * Apple.c
  */
@@ -102,7 +102,6 @@ PartitionInstallAppleChildHandles (
   EFI_STATUS                Found;
   UINT32                    Partition;
   UINT32                    PartitionEntries;
-  UINT32                    VolSpaceSize;
   UINT32                    SubBlockSize;
   UINT32                    BlkPerSec;
   EFI_PARTITION_INFO_PROTOCOL  PartitionInfo;
@@ -110,7 +109,6 @@ PartitionInstallAppleChildHandles (
   VBoxLogFlowFuncEnter();
   Found         = EFI_NOT_FOUND;
   Media         = BlockIo->Media;
-  VolSpaceSize  = 0;
 
   Block = AllocatePool ((UINTN) Media->BlockSize);
 
