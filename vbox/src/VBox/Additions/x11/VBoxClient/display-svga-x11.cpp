@@ -1,4 +1,4 @@
-/* $Id: display-svga-x11.cpp 83201 2020-03-04 15:40:26Z vboxsync $ */
+/* $Id: display-svga-x11.cpp 83206 2020-03-05 12:56:02Z vboxsync $ */
 /** @file
  * X11 guest client - VMSVGA emulation resize event pass-through to X.Org
  * guest driver.
@@ -48,10 +48,7 @@
 #include <iprt/string.h>
 #include <iprt/thread.h>
 
-#include <X11/Xlib.h>
-#include <X11/Xutil.h>
 #include <X11/Xlibint.h>
-#include <X11/extensions/shape.h>
 #include <X11/extensions/Xrandr.h>
 
 #define OLD_JUNK
