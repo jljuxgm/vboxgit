@@ -1,4 +1,4 @@
-/* $Id: DHCPServerImpl.cpp 79734 2019-07-12 12:54:11Z vboxsync $ */
+/* $Id: DHCPServerImpl.cpp 79740 2019-07-12 14:58:40Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -925,7 +925,7 @@ HRESULT DHCPServer::restart()
 /**
  * @throws std::bad_alloc
  */
-HRESULT DHCPServer::i_writeDhcpdConfig(const char *pszFilename, uint32_t uMACAddressVersion)
+HRESULT DHCPServer::i_writeDhcpdConfig(const char *pszFilename, uint32_t uMACAddressVersion) RT_NOEXCEPT
 {
     /*
      * Produce the DHCP server configuration.
