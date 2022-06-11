@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 81866 2019-11-15 10:55:49Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 82238 2019-11-27 07:07:58Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -6730,9 +6730,11 @@ IEM_STATIC int iemVmxVmentryLoadGuestVmcsRefState(PVMCPUCC pVCpu, const char *ps
          */
         if (!PGMHandlerPhysicalIsRegistered(pVCpu->CTX_SUFF(pVM), GCPhysApicAccess))
         {
-            int rc = PGMHandlerPhysicalRegister(pVCpu->CTX_SUFF(pVM), GCPhysApicAccess, GCPhysApicAccess + X86_PAGE_4K_SIZE - 1,
-                                                pVCpu->iem.s.hVmxApicAccessPage, NIL_RTR3PTR /* pvUserR3 */,
-                                                NIL_RTR0PTR /* pvUserR0 */,  NIL_RTRCPTR /* pvUserRC */, NULL /* pszDesc */);
+            PVMCC pVM       = pVCpu->CTX_SUFF(pVM);
+            PVMCPUCC pVCpu0 = VMCC_GET_CPU_0(pVM);
+            int rc = PGMHandlerPhysicalRegister(pVM, GCPhysApicAccess, GCPhysApicAccess + X86_PAGE_4K_SIZE - 1,
+                                                pVCpu0->iem.s.hVmxApicAccessPage, NIL_RTR3PTR /* pvUserR3 */,
+                                                NIL_RTR0PTR /* pvUserR0 */, NIL_RTRCPTR /* pvUserRC */, NULL /* pszDesc */);
             if (RT_SUCCESS(rc))
             { /* likely */ }
             else
