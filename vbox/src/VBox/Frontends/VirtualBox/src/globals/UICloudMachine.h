@@ -1,4 +1,4 @@
-/* $Id: UICloudMachine.h 83144 2020-02-25 11:06:13Z vboxsync $ */
+/* $Id: UICloudMachine.h 83145 2020-02-25 11:09:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudMachine class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef FEQT_INCLUDED_SRC_manager_UICloudMachine_h
-#define FEQT_INCLUDED_SRC_manager_UICloudMachine_h
+#ifndef FEQT_INCLUDED_SRC_globals_UICloudMachine_h
+#define FEQT_INCLUDED_SRC_globals_UICloudMachine_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
