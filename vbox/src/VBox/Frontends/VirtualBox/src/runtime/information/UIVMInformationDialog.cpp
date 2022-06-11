@@ -1,4 +1,4 @@
-/* $Id: UIVMInformationDialog.cpp 82474 2019-12-06 19:55:06Z vboxsync $ */
+/* $Id: UIVMInformationDialog.cpp 82605 2019-12-17 12:32:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMInformationDialog class implementation.
  */
@@ -112,8 +112,7 @@ void UIVMInformationDialog::retranslateUi()
     m_pTabWidget->setTabText(0, tr("Configuration &Details"));
     m_pTabWidget->setTabText(1, tr("&Runtime Information"));
     m_pTabWidget->setTabText(2, tr("Performance &Monitor"));
-    /// @todo Shouldn't that be just "&Guest Control"?
-    m_pTabWidget->setTabText(3, tr("Guest Control &Session Information"));
+    m_pTabWidget->setTabText(3, tr("&Guest Control"));
 }
 
 void UIVMInformationDialog::sltHandlePageChanged(int iIndex)
