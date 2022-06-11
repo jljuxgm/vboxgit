@@ -1,4 +1,4 @@
-/* $Id: DhcpdInternal.h 79622 2019-07-09 01:21:16Z vboxsync $ */
+/* $Id: DhcpdInternal.h 79761 2019-07-14 03:18:41Z vboxsync $ */
 /** @file
  * DHCP server - Internal header.
  */
@@ -21,7 +21,11 @@
 # pragma once
 #endif
 
-#define LOG_GROUP LOG_GROUP_NET_DHCPD
+#ifndef IN_VBOXSVC
+# define LOG_GROUP LOG_GROUP_NET_DHCPD
+#elif !defined(LOG_GROUP)
+# define LOG_GROUP LOG_GROUP_MAIN_DHCPCONFIG
+#endif
 #include <iprt/stdint.h>
 #include <iprt/string.h>
 #include <VBox/log.h>

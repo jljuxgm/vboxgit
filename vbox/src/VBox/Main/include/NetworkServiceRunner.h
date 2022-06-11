@@ -1,4 +1,4 @@
-/* $Id: NetworkServiceRunner.h 79644 2019-07-09 14:01:06Z vboxsync $ */
+/* $Id: NetworkServiceRunner.h 79761 2019-07-14 03:18:41Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for VBox DHCP server.
  */
@@ -52,8 +52,10 @@ public:
 
     int  start(bool aKillProcessOnStop);
     int  stop();
-    bool isRunning();
     void detachFromServer();
+    bool isRunning();
+
+    RTPROCESS getPid() const;
 
     /** @name Common options
      * @{ */

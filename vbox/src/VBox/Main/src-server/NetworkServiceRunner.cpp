@@ -1,4 +1,4 @@
-/* $Id: NetworkServiceRunner.cpp 79644 2019-07-09 14:01:06Z vboxsync $ */
+/* $Id: NetworkServiceRunner.cpp 79761 2019-07-14 03:18:41Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for VBox DHCP server
  */
@@ -285,3 +285,13 @@ bool NetworkServiceRunner::isRunning()
     }
     return false;
 }
+
+
+/**
+ * Gets the process ID of a running service, NIL_PROCESS if not running.
+ */
+RTPROCESS NetworkServiceRunner::getPid() const
+{
+    return m->Process;
+}
+

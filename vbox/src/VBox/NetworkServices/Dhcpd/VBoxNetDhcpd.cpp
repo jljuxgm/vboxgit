@@ -1,4 +1,4 @@
-/* $Id: VBoxNetDhcpd.cpp 79622 2019-07-09 01:21:16Z vboxsync $ */
+/* $Id: VBoxNetDhcpd.cpp 79761 2019-07-14 03:18:41Z vboxsync $ */
 /** @file
  * VBoxNetDhcpd - DHCP server for host-only and NAT networks.
  */
@@ -619,25 +619,7 @@ int VBoxNetDhcpd::main(int argc, char **argv)
     /*
      * Parse the command line into a configuration object.
      */
-    /** @todo XXX: We no longer need hardcoded and compat methods. We should remove them soon. */
-    if (argc < 2)
-        m_Config = Config::hardcoded();
-    else if (   strcmp(argv[1], "--config") == 0
-             || strcmp(argv[1], "--comment") == 0)
-        m_Config = Config::create(argc, argv);
-    else
-    {
-        try
-        {
-            m_Config = Config::compat(argc, argv);
-        }
-        catch (std::bad_alloc &)
-        {
-            m_Config = NULL;
-            RTMsgError("Out of memory");
-            return VERR_NO_MEMORY;
-        }
-    }
+    m_Config = Config::create(argc, argv);
     if (m_Config == NULL)
         return VERR_GENERAL_FAILURE;
 

@@ -1,4 +1,4 @@
-/* $Id: DHCPServerImpl.h 79732 2019-07-12 12:40:09Z vboxsync $ */
+/* $Id: DHCPServerImpl.h 79761 2019-07-14 03:18:41Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -112,7 +112,7 @@ private:
     /** @name Helpers
      * @{  */
     HRESULT i_doSaveSettings();
-    HRESULT i_calcLeasesFilename(const com::Utf8Str &aNetwork) RT_NOEXCEPT;
+    HRESULT i_calcLeasesConfigAndLogFilenames(const com::Utf8Str &aNetwork) RT_NOEXCEPT;
     HRESULT i_writeDhcpdConfig(const char *pszFilename, uint32_t uMACAddressVersion) RT_NOEXCEPT;
 
     HRESULT i_vmNameToIdAndValidateSlot(const com::Utf8Str &aVmName, LONG aSlot, com::Guid &idMachine);
