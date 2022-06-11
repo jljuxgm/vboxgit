@@ -1,4 +1,4 @@
-/* $Id: RTPathSetMode-r3-nt.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: RTPathSetMode-r3-nt.cpp 79155 2019-06-14 16:33:05Z vboxsync $ */
 /** @file
  * IPRT - RTPathSetMode, Native NT.
  */
@@ -40,7 +40,7 @@
 
 RTDECL(int) RTPathSetMode(const char *pszPath, RTFMODE fMode)
 {
-    fMode = rtFsModeNormalize(fMode, pszPath, 0);
+    fMode = rtFsModeNormalize(fMode, pszPath, 0, 0);
     AssertReturn(rtFsModeIsValidPermissions(fMode), VERR_INVALID_FMODE);
 
     /*

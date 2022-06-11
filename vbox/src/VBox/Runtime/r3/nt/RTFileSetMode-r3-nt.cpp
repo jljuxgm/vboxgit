@@ -1,4 +1,4 @@
-/* $Id: RTFileSetMode-r3-nt.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: RTFileSetMode-r3-nt.cpp 79155 2019-06-14 16:33:05Z vboxsync $ */
 /** @file
  * IPRT - RTFileSetMode, Native NT.
  */
@@ -75,7 +75,7 @@ RTDECL(int) RTFileSetMode(RTFILE hFile, RTFMODE fMode)
 {
     HANDLE hNative = (HANDLE)RTFileToNative(hFile);
     AssertReturn(hNative != RTNT_INVALID_HANDLE_VALUE, VERR_INVALID_HANDLE);
-    fMode = rtFsModeNormalize(fMode, NULL, 0);
+    fMode = rtFsModeNormalize(fMode, NULL, 0, RTFS_TYPE_FILE);
     AssertReturn(rtFsModeIsValidPermissions(fMode), VERR_INVALID_FMODE);
 
     return rtNtFileSetModeWorker(hNative, fMode);

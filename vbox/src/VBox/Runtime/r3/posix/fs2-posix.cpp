@@ -1,4 +1,4 @@
-/* $Id: fs2-posix.cpp 77754 2019-03-18 12:23:18Z vboxsync $ */
+/* $Id: fs2-posix.cpp 79155 2019-06-14 16:33:05Z vboxsync $ */
 /** @file
  * IPRT - File System Helpers, POSIX, Part 2.
  */
@@ -131,7 +131,7 @@ void rtFsConvertStatToObjInfo(PRTFSOBJINFO pObjInfo, const struct stat *pStat, c
 #endif
     Assert(RTFS_TYPE_MASK == S_IFMT);
 
-    pObjInfo->Attr.fMode  = rtFsModeFromUnix(fMode, pszName, cbName);
+    pObjInfo->Attr.fMode  = rtFsModeFromUnix(fMode, pszName, cbName, 0);
 
     /* additional unix attribs */
     pObjInfo->Attr.enmAdditional          = RTFSOBJATTRADD_UNIX;

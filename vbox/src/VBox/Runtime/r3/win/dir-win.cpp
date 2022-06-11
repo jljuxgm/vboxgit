@@ -1,4 +1,4 @@
-/* $Id: dir-win.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: dir-win.cpp 79155 2019-06-14 16:33:05Z vboxsync $ */
 /** @file
  * IPRT - Directory, Windows.
  */
@@ -50,7 +50,7 @@ RTDECL(int) RTDirCreate(const char *pszPath, RTFMODE fMode, uint32_t fCreate)
      * Validate the file mode.
      */
     int rc;
-    fMode = rtFsModeNormalize(fMode, pszPath, 0);
+    fMode = rtFsModeNormalize(fMode, pszPath, 0, RTFS_TYPE_DIRECTORY);
     if (rtFsModeIsValidPermissions(fMode))
     {
         /*

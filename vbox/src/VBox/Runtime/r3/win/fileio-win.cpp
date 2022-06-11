@@ -1,4 +1,4 @@
-/* $Id: fileio-win.cpp 77681 2019-03-13 15:26:52Z vboxsync $ */
+/* $Id: fileio-win.cpp 79155 2019-06-14 16:33:05Z vboxsync $ */
 /** @file
  * IPRT - File I/O, native implementation for the Windows host platform.
  */
@@ -1037,7 +1037,7 @@ RTR3DECL(int) RTFileQueryInfo(RTFILE hFile, PRTFSOBJINFO pObjInfo, RTFSOBJATTRAD
 
     RT_ZERO(*pObjInfo);
     pObjInfo->Attr.enmAdditional = enmAdditionalAttribs;
-    pObjInfo->Attr.fMode = rtFsModeFromDos(RTFS_DOS_NT_DEVICE, "", 0, 0);
+    pObjInfo->Attr.fMode = rtFsModeFromDos(RTFS_DOS_NT_DEVICE, "", 0, 0, 0);
     return VINF_SUCCESS;
 #else
 

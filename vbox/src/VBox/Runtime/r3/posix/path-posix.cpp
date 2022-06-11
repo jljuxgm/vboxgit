@@ -1,4 +1,4 @@
-/* $Id: path-posix.cpp 78178 2019-04-17 18:32:29Z vboxsync $ */
+/* $Id: path-posix.cpp 79155 2019-06-14 16:33:05Z vboxsync $ */
 /** @file
  * IPRT - Path Manipulation, POSIX, Part 1.
  */
@@ -86,7 +86,7 @@ RTR3DECL(int) RTPathSetMode(const char *pszPath, RTFMODE fMode)
     AssertReturn(*pszPath, VERR_INVALID_PARAMETER);
 
     int rc;
-    fMode = rtFsModeNormalize(fMode, pszPath, 0);
+    fMode = rtFsModeNormalize(fMode, pszPath, 0, 0);
     if (rtFsModeIsValidPermissions(fMode))
     {
         char const *pszNativePath;

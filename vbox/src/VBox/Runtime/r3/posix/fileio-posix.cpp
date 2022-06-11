@@ -1,4 +1,4 @@
-/* $Id: fileio-posix.cpp 77684 2019-03-13 16:39:57Z vboxsync $ */
+/* $Id: fileio-posix.cpp 79155 2019-06-14 16:33:05Z vboxsync $ */
 /** @file
  * IPRT - File I/O, POSIX, Part 1.
  */
@@ -818,7 +818,7 @@ RTR3DECL(int) RTFileSetMode(RTFILE hFile, RTFMODE fMode)
     /*
      * Normalize the mode and call the API.
      */
-    fMode = rtFsModeNormalize(fMode, NULL, 0);
+    fMode = rtFsModeNormalize(fMode, NULL, 0, RTFS_TYPE_FILE);
     if (!rtFsModeIsValid(fMode))
         return VERR_INVALID_PARAMETER;
 

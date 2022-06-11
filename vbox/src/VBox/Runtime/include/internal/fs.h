@@ -1,4 +1,4 @@
-/* $Id: fs.h 77754 2019-03-18 12:23:18Z vboxsync $ */
+/* $Id: fs.h 79155 2019-06-14 16:33:05Z vboxsync $ */
 /** @file
  * IPRT - Internal RTFs header.
  */
@@ -43,9 +43,9 @@ RT_C_DECLS_BEGIN
 /** IO_REPARSE_TAG_SYMLINK */
 #define RTFSMODE_SYMLINK_REPARSE_TAG UINT32_C(0xa000000c)
 
-RTFMODE rtFsModeFromDos(RTFMODE fMode, const char *pszName, size_t cbName, uint32_t uReparseTag);
-RTFMODE rtFsModeFromUnix(RTFMODE fMode, const char *pszName, size_t cbName);
-RTFMODE rtFsModeNormalize(RTFMODE fMode, const char *pszName, size_t cbName);
+RTFMODE rtFsModeFromDos(RTFMODE fMode, const char *pszName, size_t cbName, uint32_t uReparseTag, RTFMODE fType);
+RTFMODE rtFsModeFromUnix(RTFMODE fMode, const char *pszName, size_t cbName, RTFMODE fType);
+RTFMODE rtFsModeNormalize(RTFMODE fMode, const char *pszName, size_t cbName, RTFMODE fType);
 bool    rtFsModeIsValid(RTFMODE fMode);
 bool    rtFsModeIsValidPermissions(RTFMODE fMode);
 

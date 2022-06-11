@@ -1,4 +1,4 @@
-/* $Id: RTDirSetMode-generic.cpp 78947 2019-06-04 00:39:03Z vboxsync $ */
+/* $Id: RTDirSetMode-generic.cpp 79155 2019-06-14 16:33:05Z vboxsync $ */
 /** @file
  * IPRT - RTDirSetMode, generic implementation.
  */
@@ -52,6 +52,13 @@ RTR3DECL(int) RTDirSetMode(RTDIR hDir, RTFMODE fMode)
      */
     if (!rtDirValidHandle(hDir))
         return VERR_INVALID_PARAMETER;
+
+    /* Make sure we flag it as a directory so that it will be converted correctly: */
+    if (!(fMode & RTFS_UNIX_MASK))
+        fMode |= RTFS_DOS_DIRECTORY;
+    else if (!(fMode & RTFS_TYPE_MASK))
+        fMode |= RTFS_TYPE_DIRECTORY;
+
     return RTPathSetMode(hDir->pszPath, fMode);
 }
 

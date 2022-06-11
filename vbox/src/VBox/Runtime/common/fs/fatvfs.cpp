@@ -1,4 +1,4 @@
-/* $Id: fatvfs.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: fatvfs.cpp 79155 2019-06-14 16:33:05Z vboxsync $ */
 /** @file
  * IPRT - FAT Virtual Filesystem.
  */
@@ -1950,7 +1950,7 @@ static void rtFsFatObj_InitFromDirEntry(PRTFSFATOBJ pObj, PCFATDIRENTRY pDirEntr
     pObj->pVol              = pVol;
     pObj->offEntryInDir     = offEntryInDir;
     pObj->fAttrib           = ((RTFMODE)pDirEntry->fAttrib << RTFS_DOS_SHIFT) & RTFS_DOS_MASK_OS2;
-    pObj->fAttrib           = rtFsModeFromDos(pObj->fAttrib, (char *)&pDirEntry->achName[0], sizeof(pDirEntry->achName), 0);
+    pObj->fAttrib           = rtFsModeFromDos(pObj->fAttrib, (char *)&pDirEntry->achName[0], sizeof(pDirEntry->achName), 0, 0);
     pObj->cbObject          = pDirEntry->cbFile;
     pObj->fMaybeDirtyFat    = false;
     pObj->fMaybeDirtyDirEnt = false;
