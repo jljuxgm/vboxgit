@@ -1,4 +1,4 @@
-/* $Id: DevPIC.cpp 81915 2019-11-17 20:30:10Z vboxsync $ */
+/* $Id: DevPIC.cpp 81924 2019-11-17 23:12:04Z vboxsync $ */
 /** @file
  * DevPIC - Intel 8259 Programmable Interrupt Controller (PIC) Device.
  */
@@ -669,7 +669,7 @@ static uint32_t pic_ioport_read(PPDMDEVINS pDevIns, PDEVPIC pThis, PDEVPICCC pTh
 /* -=-=-=-=-=- I/O ports -=-=-=-=-=- */
 
 /**
- * @callback_method_impl{FNIOMIOPORTIN}
+ * @callback_method_impl{FNIOMIOPORTNEWIN}
  */
 static DECLCALLBACK(VBOXSTRICTRC) picIOPortRead(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT offPort, uint32_t *pu32, unsigned cb)
 {
