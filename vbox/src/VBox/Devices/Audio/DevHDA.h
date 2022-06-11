@@ -1,4 +1,4 @@
-/* $Id: DevHDA.h 82399 2019-12-04 20:50:10Z vboxsync $ */
+/* $Id: DevHDA.h 82401 2019-12-04 23:33:29Z vboxsync $ */
 /** @file
  * DevHDA.h - VBox Intel HD Audio Controller.
  */
@@ -208,8 +208,12 @@ typedef struct HDASTATE
     STAMCOUNTER             aStatRegReadsToR3[HDA_NUM_REGS];
     STAMCOUNTER             aStatRegWrites[HDA_NUM_REGS];
     STAMCOUNTER             aStatRegWritesToR3[HDA_NUM_REGS];
-    STAMCOUNTER             StatRegMultiReads;
-    STAMCOUNTER             StatRegMultiWrites;
+    STAMCOUNTER             StatRegMultiReadsRZ;
+    STAMCOUNTER             StatRegMultiReadsR3;
+    STAMCOUNTER             StatRegMultiWritesRZ;
+    STAMCOUNTER             StatRegMultiWritesR3;
+    STAMCOUNTER             StatRegSubWriteRZ;
+    STAMCOUNTER             StatRegSubWriteR3;
     STAMCOUNTER             StatRegUnknownReads;
     STAMCOUNTER             StatRegUnknownWrites;
     STAMCOUNTER             StatRegWritesBlockedByReset;
