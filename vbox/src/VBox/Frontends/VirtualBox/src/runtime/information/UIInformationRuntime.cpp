@@ -1,4 +1,4 @@
-/* $Id: UIInformationRuntime.cpp 81097 2019-10-02 12:45:04Z vboxsync $ */
+/* $Id: UIInformationRuntime.cpp 81392 2019-10-21 07:54:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationRuntime class implementation.
  */
@@ -72,8 +72,6 @@ public:
 protected:
 
     virtual void retranslateUi() /* override */;
-    virtual QSize sizeHint() const;
-    virtual QSize minimumSizeHint() const /* override */;
 
 private slots:
 
@@ -210,16 +208,6 @@ void UIRuntimeInfoWidget::retranslateUi()
 
     /* Make the API calls and populate the table: */
     createInfoRows();
-}
-
-QSize UIRuntimeInfoWidget::sizeHint() const
-{
-    return QSize(m_iMinimumWidth, m_iMinimumWidth);
-}
-
-QSize UIRuntimeInfoWidget::minimumSizeHint() const
-{
-    return QSize(m_iMinimumWidth, m_iMinimumWidth);
 }
 
 void UIRuntimeInfoWidget::insertInfoRow(InfoRow enmInfoRow, const QString& strLabel, const QString &strInfo, int iRow /* = -1 */)
