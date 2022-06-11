@@ -1,4 +1,4 @@
-/* $Id: VBoxManageCloud.cpp 79039 2019-06-07 15:17:03Z vboxsync $ */
+/* $Id: VBoxManageCloud.cpp 79057 2019-06-10 09:29:58Z vboxsync $ */
 /** @file
  * VBoxManageCloud - The cloud related commands.
  */
@@ -140,11 +140,11 @@ static RTEXITCODE listCloudInstances(HandlerArg *a, int iFirst, PCLOUDCOMMONOPT 
     com::SafeArray<CloudMachineState_T> machimeStates;
     if (strState.isNotEmpty())
     {
-        if (strState.equals("Run"))
+        if (strState.equals("run"))
             machimeStates.push_back(CloudMachineState_Running);
-        else if (strState.equals("Stop"))
+        else if (strState.equals("stop"))
             machimeStates.push_back(CloudMachineState_Stopped);
-        else if (strState.equals("Terminate"))
+        else if (strState.equals("terminate"))
             machimeStates.push_back(CloudMachineState_Terminated);
     }
 
