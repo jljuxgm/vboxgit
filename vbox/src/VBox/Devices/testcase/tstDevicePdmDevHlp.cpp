@@ -1,4 +1,4 @@
-/* $Id: tstDevicePdmDevHlp.cpp 83263 2020-03-11 16:34:33Z vboxsync $ */
+/* $Id: tstDevicePdmDevHlp.cpp 83264 2020-03-11 16:36:12Z vboxsync $ */
 /** @file
  * tstDevice - Test framework for PDM devices/drivers, PDM helper implementation.
  */
@@ -5275,6 +5275,7 @@ const PDMDEVHLPR3 g_tstDevPdmDevHlpR3 =
     pdmR3DevHlp_AsyncNotificationCompleted,
     pdmR3DevHlp_RTCRegister,
     pdmR3DevHlp_PCIBusRegister,
+    pdmR3DevHlp_IommuRegister,
     pdmR3DevHlp_PICRegister,
     pdmR3DevHlp_ApicRegister,
     pdmR3DevHlp_IoApicRegister,
