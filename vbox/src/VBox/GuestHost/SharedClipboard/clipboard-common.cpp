@@ -1,4 +1,4 @@
-/* $Id: clipboard-common.cpp 82871 2020-01-27 12:33:01Z vboxsync $ */
+/* $Id: clipboard-common.cpp 82874 2020-01-27 13:11:48Z vboxsync $ */
 /** @file
  * Shared Clipboard: Some helper function for converting between the various eol.
  */
@@ -346,6 +346,48 @@ int ShClEventWait(PSHCLEVENTSOURCE pSource, SHCLEVENTID uID, RTMSINTERVAL uTimeo
 
     LogFlowFuncLeaveRC(rc);
     return rc;
+}
+
+/**
+ * Retains an event by increasing its reference count.
+ *
+ * @returns New reference count, or UINT32_MAX if failed.
+ * @param   pSource             Event source of event to retain.
+ * @param   idEvent             ID of event to retain.
+ */
+uint32_t ShClEventRetain(PSHCLEVENTSOURCE pSource, SHCLEVENTID idEvent)
+{
+    PSHCLEVENT pEvent = shclEventGet(pSource, idEvent);
+    if (!pEvent)
+    {
+        AssertFailed();
+        return UINT32_MAX;
+    }
+
+    AssertReturn(pEvent->cRefs < 64, UINT32_MAX); /* Sanity. Yeah, not atomic. */
+
+    return ASMAtomicIncU32(&pEvent->cRefs);
+}
+
+/**
+ * Releases an event by decreasing its reference count.
+ *
+ * @returns New reference count, or UINT32_MAX if failed.
+ * @param   pSource             Event source of event to release.
+ * @param   idEvent             ID of event to release.
+ */
+uint32_t ShClEventRelease(PSHCLEVENTSOURCE pSource, SHCLEVENTID idEvent)
+{
+    PSHCLEVENT pEvent = shclEventGet(pSource, idEvent);
+    if (!pEvent)
+    {
+        AssertFailed();
+        return UINT32_MAX;
+    }
+
+    AssertReturn(pEvent->cRefs, UINT32_MAX); /* Sanity. Yeah, not atomic. */
+
+    return ASMAtomicDecU32(&pEvent->cRefs);
 }
 
 /**
