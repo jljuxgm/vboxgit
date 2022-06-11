@@ -1,4 +1,4 @@
-# $Id: Config.kmk 80326 2019-08-16 11:22:43Z vboxsync $
+# $Id: Config.kmk 80329 2019-08-16 12:59:34Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -431,9 +431,7 @@ if1of ($(KBUILD_TARGET), win)
  VBOX_WITH_NATIVE_NEM = 1
 endif
 # Enables new VM/GVM allocation style (see VBox/types.h too).
-if1of ($(KBUILD_TARGET), darwin linux win)
- VBOX_BUGREF_9217 := 1
-endif
+VBOX_BUGREF_9217 := 1
 ## @}
 
 
@@ -7733,7 +7731,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 80326 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 80329 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
