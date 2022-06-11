@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 83226 2020-03-06 18:17:34Z vboxsync $
+# $Id: Makefile.kmk 83227 2020-03-06 18:24:15Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox Guest Addition X11 Client.
 #
@@ -37,11 +37,11 @@ ifdef VBOX_WITH_DISTRO_XRAND_XINERAMA
  VBoxClient_LIBS += Xrandr
 endif
 
-VBoxClient_INCS += ../x11include/panoramiXproto-1.1
-VBoxClient_INCS += ../x11include/libXrandr-1.5.2
+
 VBoxClient_DEFS.linux += _GNU_SOURCE
 VBoxClient_INCS = $(VBOX_GRAPHICS_INCS)
-
+VBoxClient_INCS += ../x11include/panoramiXproto-1.1
+VBoxClient_INCS += ../x11include/libXrandr-1.5.2
 VBoxClient_SOURCES = \
 	main.cpp \
 	display-svga.cpp \
