@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 81161 2019-10-08 15:21:59Z vboxsync $ */
+/* $Id: SUPDrv.cpp 81304 2019-10-17 10:19:19Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -4399,6 +4399,8 @@ int VBOXCALL supdrvQueryVTCapsInternal(uint32_t *pfCaps)
                         *pfCaps |= SUPVTCAPS_NESTED_PAGING;
                     if (vtCaps.n.allowed1 & VMX_PROC_CTLS2_UNRESTRICTED_GUEST)
                         *pfCaps |= SUPVTCAPS_VTX_UNRESTRICTED_GUEST;
+                    if (vtCaps.n.allowed1 & VMX_PROC_CTLS2_VMCS_SHADOWING)
+                        *pfCaps |= SUPVTCAPS_VTX_VMCS_SHADOWING;
                 }
             }
         }
