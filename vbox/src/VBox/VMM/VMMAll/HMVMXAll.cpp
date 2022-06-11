@@ -1,4 +1,4 @@
-/* $Id: HMVMXAll.cpp 80387 2019-08-22 14:44:42Z vboxsync $ */
+/* $Id: HMVMXAll.cpp 80767 2019-09-13 09:29:18Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - All contexts.
  */
@@ -324,6 +324,8 @@ static const char * const g_apszVmxVDiagDesc[] =
     VMXV_DIAG_DESC(kVmxVDiag_Vmentry_HostSegBase              , "HostSegBase"               ),
     VMXV_DIAG_DESC(kVmxVDiag_Vmentry_HostSs                   , "HostSs"                    ),
     VMXV_DIAG_DESC(kVmxVDiag_Vmentry_HostSysenterEspEip       , "HostSysenterEspEip"        ),
+    VMXV_DIAG_DESC(kVmxVDiag_Vmentry_IoBitmapAPtrReadPhys     , "IoBitmapAPtrReadPhys"      ),
+    VMXV_DIAG_DESC(kVmxVDiag_Vmentry_IoBitmapBPtrReadPhys     , "IoBitmapBPtrReadPhys"      ),
     VMXV_DIAG_DESC(kVmxVDiag_Vmentry_LongModeCS               , "LongModeCS"                ),
     VMXV_DIAG_DESC(kVmxVDiag_Vmentry_MsrBitmapPtrReadPhys     , "MsrBitmapPtrReadPhys"      ),
     VMXV_DIAG_DESC(kVmxVDiag_Vmentry_MsrLoad                  , "MsrLoad"                   ),
