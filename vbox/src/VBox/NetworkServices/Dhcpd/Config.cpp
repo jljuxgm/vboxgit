@@ -1,4 +1,4 @@
-/* $Id: Config.cpp 79865 2019-07-18 20:31:15Z vboxsync $ */
+/* $Id: Config.cpp 79868 2019-07-18 20:36:10Z vboxsync $ */
 /** @file
  * DHCP server - server configuration
  */
@@ -895,7 +895,7 @@ void ConfigLevelBase::initFromXml(const xml::ElementNode *pElmConfig, bool fStri
 /**
  * Internal worker for parsing the elements under /DHCPServer/Options/.
  *
- * @param   pElmOptions         The <Options> element.
+ * @param   pElmOptions         The \<Options\> element.
  * @param   fStrict             Set if we're in strict mode, clear if we just
  *                              want to get on with it if we can.
  * @param   pConfig             The configuration object.
