@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 78449 2019-05-08 13:56:43Z vboxsync $
+# $Id: Makefile.kmk 78451 2019-05-08 15:30:54Z vboxsync $
 ## @file
 # Sub-Makefile for the Cross Platform Guest Addition Services.
 #
@@ -162,7 +162,7 @@ VBoxService_SOURCES.win  += \
 	VBoxService-win.rc \
 	VBoxService-win.cpp
 
-VBoxService_SOURCES.os2   = \
+VBoxService_SOURCES.os2  += \
 	VBoxService-os2.def
 
 VBoxService_LDFLAGS.darwin = -framework IOKit
