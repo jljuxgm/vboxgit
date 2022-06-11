@@ -1,4 +1,4 @@
-/* $Id: UIPathOperations.cpp 78146 2019-04-16 15:52:58Z vboxsync $ */
+/* $Id: UIPathOperations.cpp 81155 2019-10-08 14:45:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPathOperations class implementation.
  */
@@ -63,8 +63,13 @@ const QChar UIPathOperations::dosDelimiter = QChar('\\');
 
     if (doesPathStartWithDriveLetter(newPath))
     {
-        if (newPath.at(newPath.length() - 1) != delimiter)
+        if (newPath.length() == 2)
+        {
             newPath += delimiter;
+            return newPath;
+        }
+        if (newPath.at(2) != delimiter)
+            newPath.insert(2, delimiter);
         return newPath;
     }
     if (newPath.at(0) != delimiter)
@@ -74,7 +79,6 @@ const QChar UIPathOperations::dosDelimiter = QChar('\\');
 
 /* static */ QString UIPathOperations::sanitize(const QString &path)
 {
-    //return addStartDelimiter(removeTrailingDelimiters(removeMultipleDelimiters(path)));
     QString newPath = addStartDelimiter(removeTrailingDelimiters(removeMultipleDelimiters(path))).replace(dosDelimiter, delimiter);
     return newPath;
 }

@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerGuestTable.cpp 81138 2019-10-08 09:21:13Z vboxsync $ */
+/* $Id: UIFileManagerGuestTable.cpp 81155 2019-10-08 14:45:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerGuestTable class implementation.
  */
@@ -198,13 +198,10 @@ void UIFileManagerGuestTable::readDirectory(const QString& strPath,
             {
                 QVector<QVariant> data;
                 QDateTime changeTime = QDateTime::fromMSecsSinceEpoch(fsInfo.GetChangeTime()/RT_NS_1MS);
-
                 KFsObjType fsObjectType = fileType(fsInfo);
                 UICustomFileSystemItem *item = new UICustomFileSystemItem(fsInfo.GetName(), parent, fsObjectType);
-
                 if (!item)
                     continue;
-
                 item->setData(static_cast<qulonglong>(fsInfo.GetObjectSize()), UICustomFileSystemModelColumn_Size);
                 item->setData(changeTime, UICustomFileSystemModelColumn_ChangeTime);
                 item->setData(fsInfo.GetUserName(), UICustomFileSystemModelColumn_Owner);
@@ -296,6 +293,7 @@ bool UIFileManagerGuestTable::renameItem(UICustomFileSystemItem *item, QString n
     QVector<KFsObjRenameFlag> aFlags(1, KFsObjRenameFlag_Replace);
 
     m_comGuestSession.FsObjRename(item->path(), newPath, aFlags);
+
     if (!m_comGuestSession.isOk())
     {
         emit sigLogOutput(UIErrorString::formatErrorInfo(m_comGuestSession), FileManagerLogType_Error);
