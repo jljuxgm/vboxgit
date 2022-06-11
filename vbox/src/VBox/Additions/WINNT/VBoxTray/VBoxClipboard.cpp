@@ -1,4 +1,4 @@
-/* $Id: VBoxClipboard.cpp 82527 2019-12-10 01:46:40Z vboxsync $ */
+/* $Id: VBoxClipboard.cpp 82689 2020-01-09 11:30:53Z vboxsync $ */
 /** @file
  * VBoxClipboard - Shared clipboard, Windows Guest Implementation.
  */
@@ -578,6 +578,8 @@ static LRESULT vboxClipboardWinProcessMsg(PSHCLCONTEXT pCtx, HWND hwnd, UINT msg
                         if (lp != NULL)
                         {
                             SHCLDATABLOCK dataBlock;
+                            RT_ZERO(dataBlock);
+
                             dataBlock.uFormat = fFormat;
                             dataBlock.pvData  = lp;
                             dataBlock.cbData  = (uint32_t)GlobalSize(hClip);
@@ -601,6 +603,8 @@ static LRESULT vboxClipboardWinProcessMsg(PSHCLCONTEXT pCtx, HWND hwnd, UINT msg
                         if (uniString != NULL)
                         {
                             SHCLDATABLOCK dataBlock;
+                            RT_ZERO(dataBlock);
+
                             dataBlock.uFormat = fFormat;
                             dataBlock.pvData  = uniString;
                             dataBlock.cbData  = ((uint32_t)lstrlenW(uniString) + 1) * 2;
@@ -628,6 +632,8 @@ static LRESULT vboxClipboardWinProcessMsg(PSHCLCONTEXT pCtx, HWND hwnd, UINT msg
                             if (lp != NULL)
                             {
                                 SHCLDATABLOCK dataBlock;
+                                RT_ZERO(dataBlock);
+
                                 dataBlock.uFormat = fFormat;
                                 dataBlock.pvData  = lp;
                                 dataBlock.cbData  = (uint32_t)GlobalSize(hClip);
