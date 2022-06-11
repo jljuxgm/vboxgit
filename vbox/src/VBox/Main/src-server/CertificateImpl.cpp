@@ -1,4 +1,4 @@
-/* $Id: CertificateImpl.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: CertificateImpl.cpp 84249 2020-05-11 11:47:02Z vboxsync $ */
 /** @file
  * ICertificate COM class implementations.
  */
@@ -448,6 +448,8 @@ HRESULT Certificate::i_getAlgorithmName(PCRTCRX509ALGORITHMIDENTIFIER a_pAlgId, 
     else if (strcmp(pszOid, RTCRX509ALGORITHMIDENTIFIERID_SHA256_WITH_RSA))     pszName = "sha256WithRSAEncryption";
     else if (strcmp(pszOid, RTCRX509ALGORITHMIDENTIFIERID_SHA384_WITH_RSA))     pszName = "sha384WithRSAEncryption";
     else if (strcmp(pszOid, RTCRX509ALGORITHMIDENTIFIERID_SHA512_WITH_RSA))     pszName = "sha512WithRSAEncryption";
+    else if (strcmp(pszOid, RTCRX509ALGORITHMIDENTIFIERID_SHA512T224_WITH_RSA)) pszName = "sha512-224WithRSAEncryption";
+    else if (strcmp(pszOid, RTCRX509ALGORITHMIDENTIFIERID_SHA512T256_WITH_RSA)) pszName = "sha512-256WithRSAEncryption";
     else
         pszName = pszOid;
     a_rReturn = pszName;
