@@ -1,4 +1,4 @@
-/* $Id: vcc-fakes.h 83861 2020-04-20 15:01:48Z vboxsync $ */
+/* $Id: vcc-fakes.h 83862 2020-04-20 15:21:38Z vboxsync $ */
 /** @file
  * IPRT - Common macros for the Visual C++ 2010+ CRT import fakes.
  */
@@ -55,6 +55,18 @@
             RT_BREAKPOINT(); \
         } \
     } while (0)
+# define MY_ASSERT_STMT_RETURN(a_Expr, a_Stmt, a_rc) \
+    do { \
+        if (a_Expr) \
+        { /* likely */ } \
+        else \
+        { \
+            OutputDebugStringA("Assertion failed on line " RT_XSTR(__LINE__) ": " RT_XSTR(a_Expr) "\n"); \
+            RT_BREAKPOINT(); \
+            a_Stmt; \
+            return (a_rc); \
+        } \
+    } while (0)
 # else
 #  define MY_ASSERT(a_Expr, ...) \
     do { \
@@ -73,6 +85,8 @@
 # endif
 #else
 # define MY_ASSERT(a_Expr, ...) do { } while (0)
+# define MY_ASSERT_STMT_RETURN(a_Expr, a_Stmt, a_rc) \
+    do { if (a_Expr) { /* likely */ } else { a_Stmt; return (a_rc); }} while (0)
 #endif
 
 
