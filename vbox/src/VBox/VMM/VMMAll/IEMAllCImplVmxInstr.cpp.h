@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 78638 2019-05-21 16:15:58Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 78646 2019-05-22 06:25:18Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -2878,6 +2878,9 @@ IEM_STATIC VBOXSTRICTRC iemVmxVmexit(PVMCPU pVCpu, uint32_t uExitReason)
     }
     else
         Log3(("vmexit: Loading host-state failed. uExitReason=%u rc=%Rrc\n", uExitReason, VBOXSTRICTRC_VAL(rcStrict)));
+
+    /* Notify HM that we've completed the VM-exit. */
+    HMNotifyVmxNstGstVmexit(pVCpu, &pVCpu->cpum.GstCtx);
 
     /* We're no longer in nested-guest execution mode. */
     pVCpu->cpum.GstCtx.hwvirt.vmx.fInVmxNonRootMode = false;
