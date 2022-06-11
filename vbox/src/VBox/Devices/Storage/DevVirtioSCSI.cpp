@@ -1,15 +1,20 @@
-/* $Id: DevVirtioSCSI.cpp 79289 2019-06-22 01:04:28Z vboxsync $ $Revision: 79289 $ $Date: 2019-06-22 09:04:28 +0800 (Sat, 22 Jun 2019) $ $Author: vboxsync $ */
+/* $Id: DevVirtioSCSI.cpp 79290 2019-06-22 01:17:15Z vboxsync $ $Revision: 79290 $ $Date: 2019-06-22 09:17:15 +0800 (Sat, 22 Jun 2019) $ $Author: vboxsync $ */
 /** @file
- * VBox Sample Device.
+ * VBox storage devices - Virtio SCSI Driver
+ *
  */
 
 /*
- * Copyright (C) 2009-2019 Oracle Corporation
+ * Copyright (C) 2006-2019 Oracle Corporation
  *
- * Oracle Corporation confidential
- * All rights reserved
+ * This file is part of VirtualBox Open Source Edition (OSE), as
+ * available from http://www.virtualbox.org. This file is free software;
+ * you can redistribute it and/or modify it under the terms of the GNU
+ * General Public License (GPL) as published by the Free Software
+ * Foundation, in version 2 as it comes in the "COPYING" file of the
+ * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
+ * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
-
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
