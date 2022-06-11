@@ -1,4 +1,4 @@
-/* $Id: Virtio_1_0.cpp 79928 2019-07-23 11:47:38Z vboxsync $ */
+/* $Id: Virtio_1_0.cpp 79929 2019-07-23 12:03:59Z vboxsync $ */
 /** @file
  * Virtio_1_0 - Virtio Common Functions (VirtQueue, VQueue, Virtio PCI)
  */
@@ -699,15 +699,17 @@ int virtioDestruct(VIRTIOSTATE* pState)
 /**
  * Setup PCI device controller and Virtio state
  *
- * @param   pDevIns          Device instance data
- * @param   pState           Device state
- * @param   iInstance        Instance number
- * @param   pPciParams       Values to populate industry standard PCI Configuration Space data structure
- * @param   pcszNameFmt      Device instance name (format-specifier)
- * @param   uVirtioRegion    Region number to map for PCi Capabilities structs
- * @param   nQueues          Number of Virtio Queues created by consumer (driver)
+ * @param   pDevIns               Device instance data
+ * @param   pVirtio               Device State
+ * @param   iInstance             Instance number
+ * @param   pPciParams            Values to populate industry standard PCI Configuration Space data structure
+ * @param   pcszNameFmt           Device instance name (format-specifier)
+ * @param   nQueues               Number of Virtio Queues created by consumer (driver)
+ * @param   uVirtioRegion         Region number to map for PCi Capabilities structs
+ * @param   devCapReadCallback    Client function to call back to handle device specific capabilities
+ * @param   devCapWriteCallback   Client function to call back to handle device specific capabilities
+ * @param   cbDevSpecificCap      Size of device specific struct
  */
-
 int   virtioConstruct(PPDMDEVINS pDevIns, PVIRTIOSTATE pVirtio, int iInstance,
                     PVIRTIOPCIPARAMS pPciParams, const char *pcszNameFmt,
                     uint32_t nQueues, uint32_t uVirtioRegion,

@@ -1,4 +1,4 @@
-/* $Id: DevVirtioSCSI.cpp 79928 2019-07-23 11:47:38Z vboxsync $ $Revision: 79928 $ $Date: 2019-07-23 19:47:38 +0800 (Tue, 23 Jul 2019) $ $Author: vboxsync $ */
+/* $Id: DevVirtioSCSI.cpp 79929 2019-07-23 12:03:59Z vboxsync $ $Revision: 79929 $ $Date: 2019-07-23 20:03:59 +0800 (Tue, 23 Jul 2019) $ $Author: vboxsync $ */
 /** @file
  * VBox storage devices - Virtio SCSI Driver
  *
@@ -712,7 +712,7 @@ static DECLCALLBACK(int) virtioScsiR3DevCapRead(PPDMDEVINS pDevIns, RTGCPHYS GCP
  * @param   pDevIns     The device instance.
  * @param   GCPhysAddr  Guest driver physical address to write
  * @param   pvBuf       Buffer in which to save read data
- * @param   cbRead      Number of bytes to write
+ * @param   cbWrite     Number of bytes to write
  */
 static DECLCALLBACK(int) virtioScsiR3DevCapWrite(PPDMDEVINS pDevIns, RTGCPHYS GCPhysAddr, const void *pvBuf, size_t cbWrite)
 {
