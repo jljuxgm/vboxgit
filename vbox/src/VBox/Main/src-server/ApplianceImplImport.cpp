@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 78749 2019-05-25 17:18:05Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 78841 2019-05-29 11:24:39Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -1236,7 +1236,11 @@ HRESULT Appliance::i_gettingCloudData(TaskCloud *pTask)
         ComPtr<IVirtualSystemDescription> instanceDescription = vsdArray[0];
 
         LogRel(("%s: calling CloudClient::GetInstanceInfo()\n", __FUNCTION__));
-        hrc = cloudClient->GetInstanceInfo(Bstr(parts.at(1)).raw(), instanceDescription);//instance id
+
+        ComPtr<IProgress> pProgress;
+        hrc = cloudClient->GetInstanceInfo(Bstr(parts.at(1)).raw(), instanceDescription, pProgress.asOutParam());
+        if (FAILED(hrc)) throw hrc;
+        hrc = pTask->pProgress->WaitForOtherProgressCompletion(pProgress, 60000);//timeout 1 min = 60000 millisec
         if (FAILED(hrc)) throw hrc;
 
         // set cloud profile
