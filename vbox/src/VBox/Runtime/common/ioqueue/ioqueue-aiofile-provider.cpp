@@ -1,4 +1,4 @@
-/* $Id: ioqueue-aiofile-provider.cpp 79949 2019-07-24 11:05:45Z vboxsync $ */
+/* $Id: ioqueue-aiofile-provider.cpp 79950 2019-07-24 11:13:26Z vboxsync $ */
 /** @file
  * IPRT - I/O queue, Async I/O file provider.
  */
@@ -201,7 +201,7 @@ static DECLCALLBACK(int) rtIoQueueAioFileProv_ReqPrepare(RTIOQUEUEPROV hIoQueueP
         else
         {
             int rc2 = RTFileAioReqDestroy(hReq);
-            Assert(rc2);
+            Assert(rc2); RT_NOREF(rc2);
         }
     }
 
