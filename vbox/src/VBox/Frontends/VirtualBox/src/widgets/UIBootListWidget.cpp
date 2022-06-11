@@ -1,4 +1,4 @@
-/* $Id: UIBootListWidget.cpp 79976 2019-07-25 13:14:34Z vboxsync $ */
+/* $Id: UIBootListWidget.cpp 79977 2019-07-25 13:26:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIBootListWidget class implementation.
  */
@@ -207,7 +207,7 @@ QModelIndex UIBootListWidget::moveItemTo(const QModelIndex &index, int row)
 
 
 /*********************************************************************************************************************************
-*   Class UIBootOrderEditor implementation.                                                                                           *
+*   Class UIBootOrderEditor implementation.                                                                                      *
 *********************************************************************************************************************************/
 
 UIBootOrderEditor::UIBootOrderEditor(QWidget *pParent /* = 0 */, bool fWithLabel /* = false */)
