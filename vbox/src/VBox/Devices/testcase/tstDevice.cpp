@@ -1,4 +1,4 @@
-/* $Id: tstDevice.cpp 82902 2020-01-29 10:03:17Z vboxsync $ */
+/* $Id: tstDevice.cpp 82904 2020-01-29 12:19:30Z vboxsync $ */
 /** @file
  * tstDevice - Test framework for PDM devices/drivers
  */
@@ -846,6 +846,9 @@ static int tstDevPdmDevCreate(const char *pszName)
         Cfg.pDut = &Dut;
 
         rc = RTCritSectRwInit(&Dut.CritSectLists);
+        AssertRC(rc);
+
+        rc = RTCritSectInitEx(&Dut.CritSectNop.s.CritSect, RTCRITSECT_FLAGS_NOP, NIL_RTLOCKVALCLASS, RTLOCKVAL_SUB_CLASS_NONE, "DutNop");
         AssertRC(rc);
 
         PPDMCRITSECT pCritSect;
