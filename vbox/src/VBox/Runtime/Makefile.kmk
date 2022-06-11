@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 81079 2019-09-30 12:13:41Z vboxsync $
+# $Id: Makefile.kmk 81137 2019-10-08 08:28:31Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -483,6 +483,7 @@ RuntimeR3_SOURCES       = \
 	common/misc/RTFileOpenF.cpp \
 	common/misc/RTFileOpenV.cpp \
 	common/misc/RTMemWipeThoroughly.cpp \
+	common/misc/RTSystemFirmwareTypeName.cpp \
 	common/misc/assert.cpp \
 	common/misc/buildconfig.cpp \
 	common/misc/cidr.cpp \
