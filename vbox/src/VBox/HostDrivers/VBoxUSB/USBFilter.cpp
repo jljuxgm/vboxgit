@@ -1,4 +1,4 @@
-/* $Id: USBFilter.cpp 82662 2020-01-08 09:14:38Z vboxsync $ */
+/* $Id: USBFilter.cpp 82663 2020-01-08 09:19:18Z vboxsync $ */
 /** @file
  * VirtualBox USB filter abstraction.
  */
@@ -332,7 +332,7 @@ USBLIB_DECL(int) USBFilterValidate(PCUSBFILTER pFilter)
         if (    USBFilterIsMethodUsingStringValue((USBFILTERMATCH)pFilter->aFields[i].enmMatch)
             &&  pFilter->aFields[i].u16Value > pFilter->offCurEnd)
         {
-            Log(("USBFilter: %p - bad offset=%#x\n", pFilter->aFields[i].u16Value));
+            Log(("USBFilter: %p - bad offset=%#x\n", pFilter, pFilter->aFields[i].u16Value));
             return VERR_INVALID_PARAMETER;
         }
     }
