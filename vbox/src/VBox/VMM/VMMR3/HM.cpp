@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 79491 2019-07-03 08:37:48Z vboxsync $ */
+/* $Id: HM.cpp 79512 2019-07-04 05:56:32Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -179,7 +179,7 @@ static int                hmR3TermCPU(PVM pVM);
  */
 VMMR3_INT_DECL(int) HMR3Init(PVM pVM)
 {
-    LogFlow(("HMR3Init\n"));
+    LogFlowFunc(("\n"));
 
     /*
      * Assert alignment and sizes.
@@ -631,7 +631,7 @@ VMMR3_INT_DECL(int) HMR3Init(PVM pVM)
  */
 static int hmR3InitFinalizeR3(PVM pVM)
 {
-    LogFlow(("HMR3InitCPU\n"));
+    LogFlowFunc(("\n"));
 
     if (!HMIsEnabled(pVM))
         return VINF_SUCCESS;
