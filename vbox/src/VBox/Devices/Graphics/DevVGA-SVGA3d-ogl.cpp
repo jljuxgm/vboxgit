@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-ogl.cpp 82586 2019-12-16 15:23:17Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-ogl.cpp 82609 2019-12-17 17:07:20Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -6809,7 +6809,7 @@ internal_error:
     /* Dump render target to a bitmap. */
     if (pContext->state.aRenderTargets[SVGA3D_RT_COLOR0] != SVGA3D_INVALID_ID)
     {
-        vmsvga3dUpdateHeapBuffersForSurfaces(pThis, pContext->state.aRenderTargets[SVGA3D_RT_COLOR0]);
+        vmsvga3dUpdateHeapBuffersForSurfaces(pThisCC, pContext->state.aRenderTargets[SVGA3D_RT_COLOR0]);
         PVMSVGA3DSURFACE pSurface;
         int rc2 = vmsvga3dSurfaceFromSid(pState, pContext->state.aRenderTargets[SVGA3D_RT_COLOR0], &pSurface);
         if (RT_SUCCESS(rc2))
@@ -6818,7 +6818,7 @@ internal_error:
         /* Stage 0 texture. */
         if (pContext->aSidActiveTextures[0] != SVGA3D_INVALID_ID)
         {
-            vmsvga3dUpdateHeapBuffersForSurfaces(pThis, pContext->aSidActiveTextures[0]);
+            vmsvga3dUpdateHeapBuffersForSurfaces(pThisCC, pContext->aSidActiveTextures[0]);
             rc2 = vmsvga3dSurfaceFromSid(pState, pContext->aSidActiveTextures[0], &pSurface);
             if (RT_SUCCESS(rc2))
                 vmsvga3dInfoSurfaceToBitmap(NULL, pSurface, "bmpgl", "rt", "-post-tx");
