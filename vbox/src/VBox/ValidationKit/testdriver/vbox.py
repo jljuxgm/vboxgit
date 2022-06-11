@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 81982 2019-11-19 10:34:47Z vboxsync $
+# $Id: vbox.py 81991 2019-11-19 12:09:00Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 81982 $"
+__version__ = "$Revision: 81991 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -2032,7 +2032,8 @@ class TestDriver(base.TestDriver):                                              
             reporter.log("  VRAM:               %sMB" % (oVM.graphicsAdapter.VRAMSize,));
             reporter.log("  Monitors:           %s" % (oVM.graphicsAdapter.monitorCount,));
             reporter.log("  GraphicsController: %s"
-                         % (self.oVBoxMgr.getEnumValueName('GraphicsControllerType', oVM.graphicsAdapter.graphicsControllerType),));
+                         % (self.oVBoxMgr.getEnumValueName('GraphicsControllerType',
+                                                           oVM.graphicsAdapter.graphicsControllerType),));
         else:
             reporter.log("  VRAM:               %sMB" % (oVM.VRAMSize,));
             reporter.log("  Monitors:           %s" % (oVM.monitorCount,));
