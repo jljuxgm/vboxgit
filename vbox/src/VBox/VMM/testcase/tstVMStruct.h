@@ -1,4 +1,4 @@
-/* $Id: tstVMStruct.h 80334 2019-08-17 00:43:24Z vboxsync $ */
+/* $Id: tstVMStruct.h 80938 2019-09-23 08:19:38Z vboxsync $ */
 /** @file
  * tstVMMStruct - Statements for generating VM and VMCPU offset and size tests.
  *
@@ -1182,8 +1182,8 @@
     GEN_CHECK_OFF(TMTIMERQUEUE, offSchedule);
     GEN_CHECK_OFF(TMTIMERQUEUE, enmClock);
 
-    GEN_CHECK_SIZE(TRPM); // has .mac
-    GEN_CHECK_SIZE(TRPMCPU); // has .mac
+    GEN_CHECK_SIZE(TRPM);
+    GEN_CHECK_SIZE(TRPMCPU);
     GEN_CHECK_SIZE(VM);  // has .mac
     GEN_CHECK_SIZE(VMM);
     GEN_CHECK_OFF(VMM, offVM);
