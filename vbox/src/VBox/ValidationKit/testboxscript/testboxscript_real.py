@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: testboxscript_real.py 83047 2020-02-11 13:14:19Z vboxsync $
+# $Id: testboxscript_real.py 83183 2020-03-02 10:28:23Z vboxsync $
 
 """
 TestBox Script - main().
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 83047 $"
+__version__ = "$Revision: 83183 $"
 
 
 # Standard python imports.
@@ -1012,6 +1012,14 @@ class TestBoxScript(object):
         parser.add_option("-E", "--putenv", metavar = "<variable>=<value>", action = "append",
                           dest = "asEnvVars", default = [],
                           help = "Sets an environment variable. Can be repeated.");
+        def sbp_callback(option, opt_str, value, parser):
+            _, _, _ = opt_str, value, option
+            parser.values.sTestManagerUrl = 'http://10.162.100.8/testmanager/'
+            parser.values.sBuildsServerName = 'vbox-st02.ru.oracle.com'
+            parser.values.sTestRsrcServerName = 'vbox-st02.ru.oracle.com'
+            parser.values.sTestRsrcServerShare = 'scratch/data/testrsrc'
+        parser.add_option("--spb", "--load-sbp-defaults", action="callback", callback=sbp_callback,
+                          help="Load defaults for the sbp setup.")
 
         (oOptions, args) = parser.parse_args()
         # Check command line
