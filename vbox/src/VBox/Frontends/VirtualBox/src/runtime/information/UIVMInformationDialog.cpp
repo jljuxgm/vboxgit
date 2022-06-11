@@ -1,4 +1,4 @@
-/* $Id: UIVMInformationDialog.cpp 80999 2019-09-25 08:41:05Z vboxsync $ */
+/* $Id: UIVMInformationDialog.cpp 81074 2019-09-30 11:18:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMInformationDialog class implementation.
  */
@@ -245,7 +245,6 @@ void UIVMInformationDialog::prepareTabWidget()
             m_tabs.insert(2, pPerformanceMonitorWidget);
             m_pTabWidget->addTab(m_tabs.value(2), QString());
         }
-
 
         /* Create Guest Process Control tab: */
         QString strMachineName;
