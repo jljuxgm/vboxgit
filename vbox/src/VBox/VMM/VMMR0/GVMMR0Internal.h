@@ -1,4 +1,4 @@
-/* $Id: GVMMR0Internal.h 80334 2019-08-17 00:43:24Z vboxsync $ */
+/* $Id: GVMMR0Internal.h 81071 2019-09-30 10:17:28Z vboxsync $ */
 /** @file
  * GVMM - The Global VM Manager, Internal header.
  */
@@ -35,7 +35,9 @@ typedef struct GVMMPERVCPU
     RTSEMEVENTMULTI     HaltEventMulti;
     /** The ring-3 mapping of the VMCPU structure. */
     RTR0MEMOBJ          VMCpuMapObj;
-    /** The APIC ID of the CPU that EMT was scheduled on the last time we checked. */
+    /** The APIC ID of the CPU that EMT was scheduled on the last time we checked.
+     * @todo Extend to 32-bit and use most suitable APIC ID function when we
+     *       start using this for something sensible... */
     uint8_t             iCpuEmt;
 } GVMMPERVCPU;
 /** Pointer to the GVMM per VCPU data. */
