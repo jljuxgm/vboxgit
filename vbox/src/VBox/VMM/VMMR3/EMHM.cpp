@@ -1,4 +1,4 @@
-/* $Id: EMHM.cpp 81153 2019-10-08 13:59:03Z vboxsync $ */
+/* $Id: EMHM.cpp 81157 2019-10-08 15:00:33Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager - hardware virtualization
  */
@@ -162,7 +162,7 @@ static int emR3HmExecuteInstructionWorker(PVM pVM, PVMCPU pVCpu, int rcRC, const
 static int emR3HmExecuteInstructionWorker(PVM pVM, PVMCPU pVCpu, int rcRC)
 #endif
 {
-    NOREF(rcRC);
+    RT_NOREF(rcRC, pVM);
 
 #ifdef LOG_ENABLED
     /*
