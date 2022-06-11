@@ -1,4 +1,4 @@
-/* $Id: UIMediumEnumerator.cpp 82998 2020-02-05 19:14:36Z vboxsync $ */
+/* $Id: UIMediumEnumerator.cpp 83205 2020-03-05 12:15:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumEnumerator class implementation.
  */
@@ -122,6 +122,13 @@ UIMediumEnumerator::UIMediumEnumerator()
     /* Prepare global thread-pool listener: */
     connect(uiCommon().threadPool(), &UIThreadPool::sigTaskComplete,
             this, &UIMediumEnumerator::sltHandleMediumEnumerationTaskComplete);
+
+    /* We should make sure media map contains at least NULL medium object: */
+    addNullMediumToMap(m_media);
+    /* Notify listener about initial enumeration started/finished instantly: */
+    LogRel(("GUI: UIMediumEnumerator: Initial medium-enumeration finished!\n"));
+    emit sigMediumEnumerationStarted();
+    emit sigMediumEnumerationFinished();
 }
 
 QList<QUuid> UIMediumEnumerator::mediumIDs() const
