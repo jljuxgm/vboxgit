@@ -1,4 +1,4 @@
-/* $Id: DevPCI.cpp 80960 2019-09-23 20:54:03Z vboxsync $ */
+/* $Id: DevPCI.cpp 80962 2019-09-23 23:04:49Z vboxsync $ */
 /** @file
  * DevPCI - PCI BUS Device.
  *
@@ -388,7 +388,7 @@ static void pciSetIrqInternal(PPDMDEVINS pDevIns, PDEVPCIROOT pGlobals, PDEVPCIB
 
 
 /**
- * @interface_method_impl{PDMPCIBUSREG,pfnSetIrqR3}
+ * @interface_method_impl{PDMPCIBUSREGR3,pfnSetIrqR3}
  */
 static DECLCALLBACK(void) pciSetIrq(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDev, int iIrq, int iLevel, uint32_t uTagSrc)
 {
@@ -1498,7 +1498,7 @@ const PDMDEVREG g_DevicePCI =
 /* -=-=-=-=-=- The PCI bridge specific bits -=-=-=-=-=- */
 
 /**
- * @interface_method_impl{PDMPCIBUSREG,pfnSetIrqR3}
+ * @interface_method_impl{PDMPCIBUSREGR3,pfnSetIrqR3}
  */
 static DECLCALLBACK(void) pcibridgeSetIrq(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDev, int iIrq, int iLevel, uint32_t uTagSrc)
 {

@@ -1,4 +1,4 @@
-/* $Id: DevPciMerge1.cpp.h 80960 2019-09-23 20:54:03Z vboxsync $ */
+/* $Id: DevPciMerge1.cpp.h 80961 2019-09-23 20:59:22Z vboxsync $ */
 /** @file
  * DevPci - Early attempt at common code for DevPci and DevPciIch9.
  *
@@ -65,6 +65,8 @@ static uint8_t pciR3MergedFindUnusedDeviceNo(PDEVPCIBUS pBus)
 static int pciR3MergedRegisterDeviceOnBus(PPDMDEVINS pDevIns, PDEVPCIBUS pBus, PPDMPCIDEV pPciDev, uint32_t fFlags,
                                           uint8_t uPciDevNo, uint8_t uPciFunNo, const char *pszName)
 {
+    RT_NOREF(pDevIns);
+
     /*
      * Validate input.
      */
