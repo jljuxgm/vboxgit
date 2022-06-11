@@ -1,4 +1,4 @@
-/* $Id: common.js 83457 2020-03-26 21:12:38Z vboxsync $ */
+/* $Id: common.js 83459 2020-03-26 23:38:07Z vboxsync $ */
 /** @file
  * Common JavaScript functions
  */
@@ -887,8 +887,6 @@ function tooltipReallyShow(oTooltip, oRelTo)
     oTooltip.oElm.style.display  = 'block';
     oRect = oRelTo.getBoundingClientRect();
     oTooltip.oRelToRect = oRect;
-    oTooltip.oElm.style.left     = oRect.right + 'px';
-    oTooltip.oElm.style.top      = oRect.bottom + 'px';
 
     g_oCurrentTooltip = oTooltip;
 
