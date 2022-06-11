@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackendCOM.cpp 82474 2019-12-06 19:55:06Z vboxsync $ */
+/* $Id: UIConverterBackendCOM.cpp 82568 2019-12-12 14:54:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConverterBackendCOM implementation.
  */
@@ -366,6 +366,7 @@ template<> QString toString(const KNetworkAdapterType &type)
 #ifdef VBOX_WITH_VIRTIO
         case KNetworkAdapterType_Virtio:    return QApplication::translate("UICommon", "Paravirtualized Network (virtio-net)", "NetworkAdapterType");
 #endif /* VBOX_WITH_VIRTIO */
+        case KNetworkAdapterType_Am79C960:  return QApplication::translate("UICommon", "PCnet-ISA (Am79C960)", "NetworkAdapterType");
         default: AssertMsgFailed(("No text for %d", type)); break;
     }
     return QString();
