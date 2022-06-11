@@ -1,4 +1,4 @@
-/* $Id: precomp_vcc.h 82968 2020-02-04 10:35:17Z vboxsync $*/
+/* $Id: precomp_vcc.h 83871 2020-04-20 23:02:05Z vboxsync $*/
 /** @file
  * VBox Qt GUI - Precompiled header for Visual C++.
  */
@@ -41,7 +41,9 @@
 #include <qalgorithms.h>
 #include <qarraydata.h>
 #include <qatomic.h>
-#include <qatomic_msvc.h>
+#if _MSC_VER < 1910 /* Conflicts with qatomic_cxx11.h which is dragged in above somewhere. */
+# include <qatomic_msvc.h>
+#endif
 #include <qbasicatomic.h>
 #include <qbytearray.h>
 #include <qchar.h>
