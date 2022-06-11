@@ -1,4 +1,4 @@
-/* $Id: ClipboardDataObjectImpl-win.cpp 78440 2019-05-07 17:44:31Z vboxsync $ */
+/* $Id: ClipboardDataObjectImpl-win.cpp 78443 2019-05-07 18:00:52Z vboxsync $ */
 /** @file
  * ClipboardDataObjectImpl-win.cpp - Shared Clipboard IDataObject implementation.
  */
@@ -14,6 +14,7 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
