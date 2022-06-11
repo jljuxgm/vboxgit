@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 82414 2019-12-05 12:41:21Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 82547 2019-12-11 13:24:35Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -1754,12 +1754,19 @@ NTSTATUS APIENTRY DxgkDdiQueryAdapterInfo(
                     pQAI->enmHwType = pDevExt->enmHwType;
                     pQAI->u32AdapterCaps = pDevExt->f3DEnabled ? VBOXWDDM_QAI_CAP_3D : 0;
                     pQAI->u32AdapterCaps |= VBOXWDDM_QAI_CAP_DXVA; /** @todo Fetch from registry. */
+                    if (VBoxQueryWinVersion(NULL) >= WINVERSION_7)
+                    {
+                        // pQAI->u32AdapterCaps |= VBOXWDDM_QAI_CAP_WIN7;
+                        // pQAI->u32AdapterCaps |= VBOXWDDM_QAI_CAP_DXVAHD; /** @todo Fetch from registry. */
+                    }
+
                     static int cLoggedCaps = 0;
                     if (cLoggedCaps < 1)
                     {
                         ++cLoggedCaps;
-                        LOGREL_EXACT(("WDDM: addapter capabilities 0x%08X\n", pQAI->u32AdapterCaps));
+                        LOGREL_EXACT(("WDDM: adapter capabilities 0x%08X\n", pQAI->u32AdapterCaps));
                     }
+
                     if (pDevExt->enmHwType == VBOXVIDEO_HWTYPE_VBOX)
                     {
                         pQAI->u.vbox.u32VBox3DCaps = 0;

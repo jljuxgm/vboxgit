@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3D.cpp 81632 2019-11-03 15:49:20Z vboxsync $ */
+/* $Id: VBoxDispD3D.cpp 82547 2019-12-11 13:24:35Z vboxsync $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
@@ -179,7 +179,9 @@ HRESULT APIENTRY OpenAdapter(__inout D3DDDIARG_OPENADAPTER *pOpenData)
             pOpenData->pAdapterFuncs->pfnGetCaps      = GaDdiAdapterGetCaps;
             pOpenData->pAdapterFuncs->pfnCreateDevice = GaDdiAdapterCreateDevice;
             pOpenData->pAdapterFuncs->pfnCloseAdapter = GaDdiAdapterCloseAdapter;
-            pOpenData->DriverVersion                  = D3D_UMD_INTERFACE_VERSION_VISTA;
+            pOpenData->DriverVersion                  = RT_BOOL(pAdapterInfo->u32AdapterCaps & VBOXWDDM_QAI_CAP_WIN7)
+                                                      ? D3D_UMD_INTERFACE_VERSION_WIN7
+                                                      : D3D_UMD_INTERFACE_VERSION_VISTA;
         }
 #endif
         else
