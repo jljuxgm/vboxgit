@@ -1,4 +1,4 @@
-/* $Id: HMAll.cpp 80333 2019-08-16 20:28:38Z vboxsync $ */
+/* $Id: HMAll.cpp 80630 2019-09-06 11:03:24Z vboxsync $ */
 /** @file
  * HM - All contexts.
  */
@@ -855,10 +855,11 @@ VMM_INT_DECL(void) HMGetSvmMsrsFromHwvirtMsrs(PCSUPHWVIRTMSRS pHwvirtMsrs, PSVMM
  */
 VMM_INT_DECL(const char *) HMGetVmxExitName(uint32_t uExit)
 {
-    if (uExit <= MAX_EXITREASON_VTX)
+    uint16_t const uReason = VMX_EXIT_REASON_BASIC(uExit);
+    if (uReason <= MAX_EXITREASON_VTX)
     {
-        Assert(uExit < RT_ELEMENTS(g_apszVmxExitReasons));
-        return g_apszVmxExitReasons[uExit];
+        Assert(uReason < RT_ELEMENTS(g_apszVmxExitReasons));
+        return g_apszVmxExitReasons[uReason];
     }
     return NULL;
 }
