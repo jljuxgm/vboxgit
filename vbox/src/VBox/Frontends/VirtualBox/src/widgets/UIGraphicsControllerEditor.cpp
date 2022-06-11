@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsControllerEditor.cpp 80068 2019-07-31 11:20:37Z vboxsync $ */
+/* $Id: UIGraphicsControllerEditor.cpp 80072 2019-07-31 11:48:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGraphicsControllerEditor class implementation.
  */
@@ -94,6 +94,8 @@ void UIGraphicsControllerEditor::prepare()
             if (m_pCombo)
             {
                 setFocusProxy(m_pCombo->focusProxy());
+                if (m_pLabel)
+                    m_pLabel->setBuddy(m_pCombo->focusProxy());
                 connect(m_pCombo, static_cast<void(QIComboBox::*)(int)>(&QIComboBox::currentIndexChanged),
                         this, &UIGraphicsControllerEditor::sltHandleCurrentIndexChanged);
                 pComboLayout->addWidget(m_pCombo);
