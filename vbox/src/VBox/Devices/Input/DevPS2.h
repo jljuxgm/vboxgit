@@ -1,4 +1,4 @@
-/* $Id: DevPS2.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: DevPS2.h 83299 2020-03-16 15:20:30Z vboxsync $ */
 /** @file
  * PS/2 devices - Internal header file.
  */
@@ -148,7 +148,9 @@ typedef struct PS2K
     bool                fThrottleActive;
     /** Set if the input rate should be throttled. */
     bool                fThrottleEnabled;
-    uint8_t             abAlignment2[2];
+    /** Set if the serial line is disabled on the KBC. */
+    bool                fLineDisabled;
+    uint8_t             abAlignment2[1];
 
     /** Command delay timer. */
     TMTIMERHANDLE       hKbdDelayTimer;
@@ -195,6 +197,9 @@ typedef PS2KR3 *PPS2KR3;
 
 int  PS2KByteToKbd(PPDMDEVINS pDevIns, PPS2K pThis, uint8_t cmd);
 int  PS2KByteFromKbd(PPDMDEVINS pDevIns, PPS2K pThis, uint8_t *pVal);
+
+void PS2KLineDisable(PPS2K pThis);
+void PS2KLineEnable(PPS2K pThis);
 
 int  PS2KR3Construct(PPDMDEVINS pDevIns, PPS2K pThis, PPS2KR3 pThisCC, PCFGMNODE pCfg);
 int  PS2KR3Attach(PPDMDEVINS pDevIns, PPS2KR3 pThisCC, unsigned iLUN, uint32_t fFlags);
@@ -267,6 +272,8 @@ typedef struct PS2M
     uint8_t             u8Resolution;
     /** Currently processed command (if any). */
     uint8_t             u8CurrCmd;
+    /** Set if the serial line is disabled on the KBC. */
+    bool                fLineDisabled;
     /** Set if the throttle delay is active. */
     bool                fThrottleActive;
     /** Set if the throttle delay is active. */
@@ -339,6 +346,9 @@ typedef PS2MR3 *PPS2MR3;
 
 int  PS2MByteToAux(PPDMDEVINS pDevIns, PPS2M pThis, uint8_t cmd);
 int  PS2MByteFromAux(PPS2M pThis, uint8_t *pVal);
+
+void PS2MLineDisable(PPS2M pThis);
+void PS2MLineEnable(PPS2M pThis);
 
 int  PS2MR3Construct(PPDMDEVINS pDevIns, PPS2M pThis, PPS2MR3 pThisCC);
 int  PS2MR3Attach(PPDMDEVINS pDevIns, PPS2MR3 pThisCC, unsigned iLUN, uint32_t fFlags);
