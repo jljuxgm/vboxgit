@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 83752 2020-04-17 13:34:45Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 83760 2020-04-17 15:01:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -922,6 +922,22 @@ void UIMessageCenter::cannotACPIShutdownMachine(const CConsole &console) const
           tr("Failed to send the ACPI Power Button press event to the virtual machine <b>%1</b>.")
              .arg(CConsole(console).GetMachine().GetName()),
           UIErrorString::formatErrorInfo(console));
+}
+
+void UIMessageCenter::cannotPowerUpMachine(const CCloudMachine &comMachine) const
+{
+    error(0, MessageType_Error,
+          tr("Failed to start the virtual machine <b>%1</b>.")
+             .arg(CCloudMachine(comMachine).GetName()),
+          UIErrorString::formatErrorInfo(comMachine));
+}
+
+void UIMessageCenter::cannotPowerUpMachine(const CProgress &comProgress, const QString &strMachineName) const
+{
+    error(0, MessageType_Error,
+          tr("Failed to start the virtual machine <b>%1</b>.")
+             .arg(strMachineName),
+          UIErrorString::formatErrorInfo(comProgress));
 }
 
 void UIMessageCenter::cannotPowerDownMachine(const CConsole &console) const
