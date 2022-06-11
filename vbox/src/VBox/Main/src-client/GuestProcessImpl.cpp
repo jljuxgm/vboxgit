@@ -1,4 +1,4 @@
-/* $Id: GuestProcessImpl.cpp 83419 2020-03-25 16:49:34Z vboxsync $ */
+/* $Id: GuestProcessImpl.cpp 83420 2020-03-25 16:54:35Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling.
  */
@@ -47,7 +47,6 @@
 #include "ThreadTask.h"
 
 #include <memory> /* For auto_ptr. */
-#include <algorithm> /* For std::rotate. */
 
 #include <iprt/asm.h>
 #include <iprt/cpp/utils.h> /* For unconst(). */
