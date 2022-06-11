@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 83946 2020-04-23 11:31:30Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 83948 2020-04-23 12:59:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -684,8 +684,15 @@ void UIChooserModel::sltCloudMachineRegistered(const QString &strProviderName, c
     /* Existing VM unregistered? */
     if (!fRegistered)
     {
+        /* Remember first selected item definition: */
+        AssertPtrReturnVoid(firstSelectedItem());
+        const QString strDefinition = firstSelectedItem()->definition();
+
         /* Rebuild tree for main root: */
         buildTreeForMainRoot();
+
+        /* Restore selected item: */
+        setSelectedItem(strDefinition);
     }
     /* New VM registered? */
     else
