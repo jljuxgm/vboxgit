@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 83026 2020-02-07 18:25:17Z vboxsync $ */
+/* $Id: HM.cpp 83105 2020-02-18 03:48:08Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -1569,8 +1569,8 @@ static int hmR3InitFinalizeR0Intel(PVM pVM)
         for (VMCPUID idCpu = 0; idCpu < pVM->cCpus; idCpu++)
         {
             PCVMXVMCSINFO pVmcsInfoNstGst = &pVM->apCpusR3[idCpu]->hm.s.vmx.VmcsInfoNstGst;
-            LogRel(("HM: VCPU%3d:   MSR bitmap physaddr    = %#RHp\n", idCpu, pVmcsInfoNstGst->HCPhysMsrBitmap));
-            LogRel(("HM: VCPU%3d:   VMCS physaddr          = %#RHp\n", idCpu, pVmcsInfoNstGst->HCPhysVmcs));
+            LogRel(("HM: VCPU%3d: MSR bitmap physaddr      = %#RHp\n", idCpu, pVmcsInfoNstGst->HCPhysMsrBitmap));
+            LogRel(("HM: VCPU%3d: VMCS physaddr            = %#RHp\n", idCpu, pVmcsInfoNstGst->HCPhysVmcs));
         }
     }
 #endif
