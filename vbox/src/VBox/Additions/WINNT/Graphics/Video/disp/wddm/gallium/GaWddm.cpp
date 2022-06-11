@@ -1,4 +1,4 @@
-/* $Id: GaWddm.cpp 80959 2019-09-23 20:32:25Z vboxsync $ */
+/* $Id: GaWddm.cpp 81082 2019-09-30 13:42:47Z vboxsync $ */
 /** @file
  * WDDM helpers implemented for the Gallium based driver.
  */
@@ -244,6 +244,7 @@ HRESULT GaD3DResourceSynchMem(PVBOXWDDMDISP_RESOURCE pRc, bool fToBackend)
 
             PVBOXWDDMDISP_ALLOCATION pAlloc = &pRc->aAllocations[i];
             Assert(pAlloc->pvMem);
+            Assert(pAlloc->pvMem != Rect.pBits);
 
             VBoxD3DIfLockUnlockMemSynch(pAlloc, &Rect, NULL, fToBackend);
 
