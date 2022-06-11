@@ -1,4 +1,4 @@
-/* $Id: vboxhgcm.c 78341 2019-04-28 16:47:51Z vboxsync $ */
+/* $Id: vboxhgcm.c 78791 2019-05-27 19:08:22Z vboxsync $ */
 /** @file
  * VBox HGCM connection
  */
@@ -595,7 +595,8 @@ static int crVBoxHGCMCall(CRConnection *conn, PVBGLIOCHGCMCALL pData, unsigned c
         { /* likely */ }
         else
         {
-            crWarning("vboxCall failed with VBox status code %Rrc\n", rc);
+            if (rc != VERR_BUFFER_OVERFLOW) /* Normal, this gets retried with a an updated buffer. */
+                crWarning("vboxCall failed with VBox status code %Rrc\n", rc);
 # ifndef RT_OS_WINDOWS
             if (rc == VERR_INTERRUPTED)
             {
