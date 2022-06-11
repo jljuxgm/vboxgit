@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: schedgroup.py 83387 2020-03-24 14:50:45Z vboxsync $
+# $Id: schedgroup.py 83390 2020-03-24 16:58:43Z vboxsync $
 
 """
 Test Manager - Scheduling Group.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 83387 $"
+__version__ = "$Revision: 83390 $"
 
 
 # Standard python imports.
@@ -529,14 +529,14 @@ WHERE       idSchedGroup = %s
         AND tsEffective <= %s
 ORDER BY    tsEffective DESC
 ) UNION (
-SELECT      tsEffective,
+SELECT      CASE WHEN tsEffective + %s::INTERVAL = tsExpire THEN tsExpire ELSE tsEffective END,
             uidAuthor
 FROM        SchedGroupMembers
 WHERE       idSchedGroup = %s
         AND tsEffective <= %s
 ORDER BY    tsEffective DESC
 ) UNION (
-SELECT      tsEffective,
+SELECT      CASE WHEN tsEffective + %s::INTERVAL = tsExpire THEN tsExpire ELSE tsEffective END,
             uidAuthor
 FROM        TestBoxesInSchedGroups
 WHERE       idSchedGroup = %s
@@ -545,7 +545,10 @@ ORDER BY    tsEffective DESC
 )
 ORDER BY    tsEffective DESC
 LIMIT %s OFFSET %s
-''', (idSchedGroup, tsNow, idSchedGroup, tsNow, idSchedGroup, tsNow, cMaxRows + 1, iStart, ));
+''', (idSchedGroup, tsNow,
+      db.dbOneTickIntervalString(), idSchedGroup, tsNow,
+      db.dbOneTickIntervalString(), idSchedGroup, tsNow,
+      cMaxRows + 1, iStart, ));
 
         aoEntries = [] # type: list[ChangeLogEntry]
         tsPrevious = tsNow;
@@ -562,8 +565,7 @@ LIMIT %s OFFSET %s
             # that only there to record the user doing the deletion.
             #
             for iEntry, oEntry in enumerate(aoEntries):
-                oEntry.oNewRaw = SchedGroupDataEx().initFromDbWithId(self._oDb, idSchedGroup,
-                                                                     db.dbTimestampPlusOneTick(oEntry.tsEffective));
+                oEntry.oNewRaw = SchedGroupDataEx().initFromDbWithId(self._oDb, idSchedGroup, oEntry.tsEffective);
                 if iEntry > 0:
                     aoEntries[iEntry - 1].oOldRaw = oEntry.oNewRaw;
 
