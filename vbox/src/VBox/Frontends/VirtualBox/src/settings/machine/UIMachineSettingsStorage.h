@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.h 78539 2019-05-16 09:42:39Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.h 78545 2019-05-16 12:47:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class declaration.
  */
@@ -280,6 +280,7 @@ public:
 
     QList<QUuid> attachmentIDs(KDeviceType enmType = KDeviceType_Null) const;
 
+    QList<AbstractItem*> attachments() const { return mAttachments; }
     void setAttachments(const QList<AbstractItem*> &attachments) { mAttachments = attachments; }
 
 private:
