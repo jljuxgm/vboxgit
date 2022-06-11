@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageExpert.cpp 79580 2019-07-07 16:12:08Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageExpert.cpp 79587 2019-07-08 10:01:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageExpert class implementation.
  */
@@ -251,9 +251,8 @@ bool UIWizardNewCloudVMPageExpert::isComplete() const
     bool fResult = true;
 
     /* Check cloud settings: */
-    fResult =    client().isNotNull()
-              && !imageId().isNull()
-              && vsd().isNotNull()
+    fResult =    UIWizardNewCloudVMPage1::client().isNotNull()
+              && UIWizardNewCloudVMPage1::vsd().isNotNull()
               && UIWizardNewCloudVMPage1::vsdForm().isNotNull();
 
     /* Return result: */

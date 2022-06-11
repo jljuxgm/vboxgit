@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageBasic2.cpp 79580 2019-07-07 16:12:08Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageBasic2.cpp 79587 2019-07-08 10:01:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageBasic2 class implementation.
  */
@@ -43,6 +43,16 @@ void UIWizardNewCloudVMPage2::refreshFormPropertiesTable()
     /* Make sure the properties table get the new description form: */
     if (comForm.isNotNull())
         m_pFormEditor->setVirtualSystemDescriptionForm(comForm);
+}
+
+CCloudClient UIWizardNewCloudVMPage2::client() const
+{
+    return qobject_cast<UIWizardNewCloudVM*>(wizardImp())->client();
+}
+
+CVirtualSystemDescription UIWizardNewCloudVMPage2::vsd() const
+{
+    return qobject_cast<UIWizardNewCloudVM*>(wizardImp())->vsd();
 }
 
 CVirtualSystemDescriptionForm UIWizardNewCloudVMPage2::vsdForm() const
@@ -110,6 +120,20 @@ void UIWizardNewCloudVMPageBasic2::initializePage()
 
     /* Translate page: */
     retranslateUi();
+}
+
+bool UIWizardNewCloudVMPageBasic2::isComplete() const
+{
+    /* Initial result: */
+    bool fResult = true;
+
+    /* Check cloud settings: */
+    fResult =    client().isNotNull()
+              && vsd().isNotNull()
+              && vsdForm().isNotNull();
+
+    /* Return result: */
+    return fResult;
 }
 
 bool UIWizardNewCloudVMPageBasic2::validatePage()

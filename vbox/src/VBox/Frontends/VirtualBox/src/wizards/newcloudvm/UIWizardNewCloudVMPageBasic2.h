@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageBasic2.h 79580 2019-07-07 16:12:08Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageBasic2.h 79587 2019-07-08 10:01:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageBasic2 class declaration.
  */
@@ -25,6 +25,12 @@
 #include "UIFormEditorWidget.h"
 #include "UIWizardPage.h"
 
+/* COM includes: */
+#include "COMEnums.h"
+#include "CCloudClient.h"
+#include "CVirtualSystemDescription.h"
+#include "CVirtualSystemDescriptionForm.h"
+
 /* Forward declarations: */
 class QIRichTextLabel;
 
@@ -39,6 +45,10 @@ protected:
     /** Refreshes form properties table. */
     void refreshFormPropertiesTable();
 
+    /** Returns Cloud Client object. */
+    CCloudClient client() const;
+    /** Returns Virtual System Description object. */
+    CVirtualSystemDescription vsd() const;
     /** Returns Virtual System Description Form object. */
     CVirtualSystemDescriptionForm vsdForm() const;
 
@@ -71,6 +81,9 @@ protected:
 
     /** Performs page initialization. */
     virtual void initializePage() /* override */;
+
+    /** Returns whether page is complete. */
+    virtual bool isComplete() const /* override */;
 
     /** Performs page validation. */
     virtual bool validatePage() /* override */;
