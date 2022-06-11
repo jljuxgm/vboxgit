@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 78675 2019-05-23 00:09:12Z vboxsync $
+# $Id: tdAddBasic1.py 78797 2019-05-28 01:51:18Z vboxsync $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 78675 $"
+__version__ = "$Revision: 78797 $"
 
 # Standard Python imports.
 import os;
@@ -207,7 +207,7 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
         elif oTestVm.isLinux():
             (fRc, oTxsSession) = self.testLinuxInstallAdditions(oSession, oTxsSession, oTestVm);
         else:
-            reporter.error('Guest Additions installation not implemented for %s yet! (%s)' % \
+            reporter.error('Guest Additions installation not implemented for %s yet! (%s)' %
                            (oTestVm.sKind, oTestVm.sVmName,));
             fRc = False;
 
@@ -248,11 +248,24 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
         Installs the Windows guest additions using the test execution service.
         Since this involves rebooting the guest, we will have to create a new TXS session.
         """
-        asLogFiles = [];
 
-        fHaveSetupApiDevLog = False;
+        #
+        # Install the public signing key.
+        #
+        if oTestVm.sKind not in ('WindowsNT4', 'Windows2000', 'WindowsXP', 'Windows2003'):
+            self.txsRunTest(oTxsSession, 'VBoxCertUtil.exe', 1 * 60 * 1000, '${CDROM}/cert/VBoxCertUtil.exe',
+                            ('${CDROM}/cert/VBoxCertUtil.exe', 'add-trusted-publisher', '${CDROM}/cert/vbox-sha1.cer'));
+            self.txsRunTest(oTxsSession, 'VBoxCertUtil.exe', 1 * 60 * 1000, '${CDROM}/cert/VBoxCertUtil.exe',
+                            ('${CDROM}/cert/VBoxCertUtil.exe', 'add-trusted-publisher', '${CDROM}/cert/vbox-sha256.cer'));
 
+        #
         # Delete relevant log files.
+        #
+        # Note! On some guests the files in question still can be locked by the OS, so ignore
+        #       deletion errors from the guest side (e.g. sharing violations) and just continue.
+        #
+        asLogFiles = [];
+        fHaveSetupApiDevLog = False;
         if oTestVm.sKind in ('WindowsNT4',):
             sWinDir = 'C:/WinNT/';
         else:
@@ -267,15 +280,8 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
                                                    '"HKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\Setup"',
                                                    '/v', 'LogLevel', '/t', 'REG_DWORD', '/d', '0xFF'));
 
-        # On some guests the files in question still can be locked by the OS, so ignore deletion
-        # errors from the guest side (e.g. sharing violations) and just continue.
         for sFile in asLogFiles:
             self.txsRmFile(oSession, oTxsSession, sFile, 10 * 1000, fIgnoreErrors = True);
-
-        # Install the public signing key.
-        if oTestVm.sKind not in ('WindowsNT4', 'Windows2000', 'WindowsXP', 'Windows2003'):
-            ## TODO
-            pass;
 
         #
         # The actual install.
