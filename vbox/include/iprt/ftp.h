@@ -1,4 +1,4 @@
-/* $Id: ftp.h 82822 2020-01-22 11:48:43Z vboxsync $ */
+/* $Id: ftp.h 82838 2020-01-23 09:15:08Z vboxsync $ */
 /** @file
  * Header file for FTP client / server implementations.
  */
@@ -338,7 +338,7 @@ typedef struct RTFTPSERVERCALLBACKS
      * @param   ppszEntry       Where to return the allocated string of the entry name.
      * @param   ppszOwner       Where to return the allocated string of the owner.
      * @param   ppszGroup       Where to return the allocated string of the group.
-     * @param   ppszTarget      Where to return the allocated string of the target (if a link).
+     * @param   ppszTarget      Where to return the allocated string of the target (if a link). Currently unused.
      */
     DECLCALLBACKMEMBER(int, pfnOnDirRead)(PRTFTPCALLBACKDATA pData, void *pvHandle, char **ppszEntry,
                                           PRTFSOBJINFO pInfo, char **ppszOwner, char **ppszGroup, char **ppszTarget);
