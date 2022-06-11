@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: Makefile.kmk 83944 2020-04-23 10:43:42Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - Miscellaneous Utilites.
 #
@@ -28,7 +28,7 @@ SUB_DEPTH = ../../../../..
 include $(KBUILD_PATH)/subheader.kmk
 
 PROGRAMS += LoadGenerator
-LoadGenerator_TEMPLATE = VBoxValidationKitR3Host
+LoadGenerator_TEMPLATE = VBoxValidationKitR3SupDrv
 LoadGenerator_SOURCES  = loadgenerator.cpp
 
 SYSMODS += loadgeneratorR0
