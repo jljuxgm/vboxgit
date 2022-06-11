@@ -1,4 +1,4 @@
-/* $Id: RTPathGlob.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: RTPathGlob.cpp 83758 2020-04-17 14:55:22Z vboxsync $ */
 /** @file
  * IPRT - RTPathGlob
  */
@@ -1367,7 +1367,7 @@ static int rtPathGlobParse(PRTPATHGLOB pGlob, const char *pszPattern, PRTPATHPAR
             else
                 AssertMsgFailedReturn(("'%.*s' is not supported yet\n", pszComp, pParsed->aComps[0].cch),
                                       VERR_PATH_MATCH_FEATURE_NOT_IMPLEMENTED);
-            pGlob->offFirstPath = (uint32_t)RTPathEnsureTrailingSeparator(pGlob->szPath, sizeof(pGlob->szPath));
+            pGlob->offFirstPath = (uint16_t)RTPathEnsureTrailingSeparator(pGlob->szPath, sizeof(pGlob->szPath));
             pGlob->iFirstComp   = iComp = 1;
         }
     }
