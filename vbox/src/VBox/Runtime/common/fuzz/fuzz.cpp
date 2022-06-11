@@ -1,4 +1,4 @@
-/* $Id: fuzz.cpp 80585 2019-09-04 14:05:50Z vboxsync $ */
+/* $Id: fuzz.cpp 82768 2020-01-15 09:58:56Z vboxsync $ */
 /** @file
  * IPRT - Fuzzing framework API, core.
  */
@@ -368,9 +368,9 @@ typedef struct RTFUZZMEMHDR
     /** Some padding. */
     uint32_t                    uPadding0;
 #elif HC_ARCH_BITS == 64
-#else
     /** Some padding. */
     uint64_t                    uPadding0;
+#else
 # error "Port me"
 #endif
 } RTFUZZMEMHDR;
