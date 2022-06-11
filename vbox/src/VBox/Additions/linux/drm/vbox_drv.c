@@ -1,4 +1,4 @@
-/*  $Id: vbox_drv.c 79025 2019-06-06 14:33:47Z vboxsync $ */
+/*  $Id: vbox_drv.c 79690 2019-07-11 11:59:17Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -321,7 +321,7 @@ static struct drm_driver driver = {
 	.lastclose = vbox_driver_lastclose,
 	.master_set = vbox_master_set,
 	.master_drop = vbox_master_drop,
-#if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 18, 0) || defined(RHEL_73)
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 18, 0) || defined(RHEL_72)
 # if LINUX_VERSION_CODE < KERNEL_VERSION(4, 14, 0) && !defined(RHEL_75) \
   && !defined(OPENSUSE_151)
 	.set_busid = drm_pci_set_busid,
@@ -372,12 +372,20 @@ static int __init vbox_init(void)
 	if (vbox_modeset == 0)
 		return -EINVAL;
 
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 18, 0) || defined(RHEL_73)
 	return pci_register_driver(&vbox_pci_driver);
+#else
+	return drm_pci_init(&driver, &vbox_pci_driver);
+#endif
 }
 
 static void __exit vbox_exit(void)
 {
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 18, 0) || defined(RHEL_73)
 	pci_unregister_driver(&vbox_pci_driver);
+#else
+	drm_pci_exit(&driver, &vbox_pci_driver);
+#endif
 }
 
 module_init(vbox_init);

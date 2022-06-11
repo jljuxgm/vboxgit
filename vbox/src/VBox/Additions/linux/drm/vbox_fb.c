@@ -1,4 +1,4 @@
-/* $Id: vbox_fb.c 79026 2019-06-06 14:36:31Z vboxsync $ */
+/* $Id: vbox_fb.c 79690 2019-07-11 11:59:17Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -425,7 +425,7 @@ int vbox_fbdev_init(struct drm_device *dev)
 	vbox->fbdev = fbdev;
 	spin_lock_init(&fbdev->dirty_lock);
 
-#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 17, 0) && !defined(RHEL_73)
+#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 17, 0) && !defined(RHEL_72)
 	fbdev->helper.funcs = &vbox_fb_helper_funcs;
 #else
 	drm_fb_helper_prepare(dev, &fbdev->helper, &vbox_fb_helper_funcs);
