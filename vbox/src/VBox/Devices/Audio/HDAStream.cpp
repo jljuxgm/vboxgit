@@ -1,4 +1,4 @@
-/* $Id: HDAStream.cpp 76672 2019-01-07 12:19:53Z vboxsync $ */
+/* $Id: HDAStream.cpp 78506 2019-05-14 14:28:16Z vboxsync $ */
 /** @file
  * HDAStream.cpp - Stream functions for HD Audio.
  */
@@ -872,7 +872,8 @@ int hdaR3StreamRead(PHDASTREAM pStream, uint32_t cbToRead, uint32_t *pcbRead)
 
         RTCircBufReleaseReadBlock(pCircBuf, cbWritten);
 
-        if (RT_FAILURE(rc))
+        if (   !cbWritten /* Nothing written? */
+            || RT_FAILURE(rc))
             break;
 
         Assert(cbLeft  >= cbWritten);
@@ -1482,7 +1483,7 @@ void hdaR3StreamUpdate(PHDASTREAM pStream, bool fInTimer)
             if (cbToReadFromStream)
             {
                 /* Read (guest output) data and write it to the stream's sink. */
-                rc2 = hdaR3StreamRead(pStream, cbToReadFromStream, NULL);
+                rc2 = hdaR3StreamRead(pStream, cbToReadFromStream, NULL /* pcbRead */);
                 AssertRC(rc2);
             }
 
