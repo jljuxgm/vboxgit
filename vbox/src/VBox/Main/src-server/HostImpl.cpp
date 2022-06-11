@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 81682 2019-11-05 19:08:21Z vboxsync $ */
+/* $Id: HostImpl.cpp 81684 2019-11-05 19:13:06Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -1933,6 +1933,14 @@ HRESULT Host::removeUSBDeviceSource(const com::Utf8Str &aId)
     ReturnComNotImplemented();
 #endif
 }
+
+
+HRESULT Host::getUpdate(ComPtr<IHostUpdate> &aUpdate)
+{
+    RT_NOREF(aUpdate);
+    ReturnComNotImplemented();
+}
+
 
 // public methods only for internal purposes
 ////////////////////////////////////////////////////////////////////////////////

@@ -1,4 +1,4 @@
-/* $Id: HostImpl.h 81305 2019-10-17 10:23:39Z vboxsync $ */
+/* $Id: HostImpl.h 81684 2019-11-05 19:13:06Z vboxsync $ */
 /** @file
  * Implementation of IHost.
  */
@@ -115,6 +115,7 @@ private:
     HRESULT getUTCTime(LONG64 *aUTCTime);
     HRESULT getAcceleration3DAvailable(BOOL *aAcceleration3DAvailable);
     HRESULT getVideoInputDevices(std::vector<ComPtr<IHostVideoInputDevice> > &aVideoInputDevices);
+    HRESULT getUpdate(ComPtr<IHostUpdate> &aUpdate);
 
     // wrapped IHost methods
     HRESULT getProcessorSpeed(ULONG aCpuId,
