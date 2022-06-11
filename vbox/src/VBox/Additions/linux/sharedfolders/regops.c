@@ -1,4 +1,4 @@
-/* $Id: regops.c 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: regops.c 83049 2020-02-11 15:17:18Z vboxsync $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, regular file inode and file operations.
  */
@@ -2082,8 +2082,8 @@ static ssize_t vbsf_reg_write(struct file *file, const char *buf, size_t size, l
  */
 DECLINLINE(void) vbsf_iter_unlock_pages(struct iov_iter *iter, struct page **papPages, size_t cPages, bool fSetDirty)
 {
-    /* We don't mark kernel pages dirty: */
-    if (iter->type & ITER_KVEC)
+    /* We don't mark kernel pages dirty (KVECs, BVECs, PIPEs): */
+    if (!iter_is_iovec(iter))
         fSetDirty = false;
 
     while (cPages-- > 0)
