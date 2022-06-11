@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 83290 2020-03-13 16:43:36Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 83439 2020-03-26 14:12:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -656,6 +656,12 @@ void UIVirtualBoxManagerWidget::updateToolbar()
                     m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Cloud_S_Help));
                     break;
                 }
+                case UIToolType_VMResourceMonitor:
+                {
+                    m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_VMResourceMonitor_T_Columns));
+                    break;
+                }
+
                 default:
                     break;
             }

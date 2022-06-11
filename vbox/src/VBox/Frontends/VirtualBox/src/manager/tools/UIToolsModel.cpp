@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.cpp 83304 2020-03-17 12:08:26Z vboxsync $ */
+/* $Id: UIToolsModel.cpp 83439 2020-03-26 14:12:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class implementation.
  */
@@ -451,7 +451,7 @@ void UIToolsModel::retranslateUi()
             case UIToolType_Media:              pItem->reconfigure(tr("Media")); break;
             case UIToolType_Network:            pItem->reconfigure(tr("Network")); break;
             case UIToolType_Cloud:              pItem->reconfigure(tr("Cloud")); break;
-            case UIToolType_VMResourceMonitor:  pItem->reconfigure(tr("VM Resource Monitor")); break;
+            case UIToolType_VMResourceMonitor:  pItem->reconfigure(tr("Resources")); break;
             case UIToolType_Details:            pItem->reconfigure(tr("Details")); break;
             case UIToolType_Snapshots:          pItem->reconfigure(tr("Snapshots")); break;
             case UIToolType_Logs:               pItem->reconfigure(tr("Logs")); break;
