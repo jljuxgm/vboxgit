@@ -1,4 +1,4 @@
-/* $Id: ftp-server.cpp 82772 2020-01-15 16:41:07Z vboxsync $ */
+/* $Id: ftp-server.cpp 82773 2020-01-15 16:51:55Z vboxsync $ */
 /** @file
  * Generic FTP server (RFC 959) implementation.
  * Partly also implements RFC 3659 (Extensions to FTP, for "SIZE", ++).
@@ -704,7 +704,7 @@ static int rtFtpServerDataConnOpen(PRTFTPSERVERDATACONN pDataConn, PRTNETADDRIPV
                                              pAddr->au8[0], pAddr->au8[1], pAddr->au8[2], pAddr->au8[3]);
     AssertReturn(cchAdddress > 0, VERR_NO_MEMORY);
 
-    int rc;
+    int rc = VINF_SUCCESS; /* Shut up MSVC. */
 
     /* Try a bit harder if the data connection is not ready (yet). */
     for (int i = 0; i < 10; i++)
