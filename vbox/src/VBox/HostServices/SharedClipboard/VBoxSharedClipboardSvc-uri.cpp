@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-uri.cpp 79702 2019-07-11 19:34:05Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-uri.cpp 79704 2019-07-11 19:38:32Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Internal code for URI (list) handling.
  */
@@ -494,6 +494,7 @@ DECLCALLBACK(void) VBoxSvcClipboardURITransferErrorCallback(PSHAREDCLIPBOARDURIT
 
     LogRel(("Shared Clipboard: Transfer failed with %Rrc\n", rc));
 }
+
 
 /*********************************************************************************************************************************
 *   HGCM getters / setters                                                                                                       *
