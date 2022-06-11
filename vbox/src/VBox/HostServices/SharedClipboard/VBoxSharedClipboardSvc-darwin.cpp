@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-darwin.cpp 80998 2019-09-25 07:45:51Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-darwin.cpp 81174 2019-10-09 09:06:38Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Mac OS X host.
  */
@@ -118,8 +118,6 @@ static int vboxClipboardThread(RTTHREAD ThreadSelf, void *pvUser)
 
 int ShClSvcImplInit(void)
 {
-    Log(("vboxClipboardInit\n"));
-
     g_ctx.fTerminate = false;
 
     int rc = initPasteboard(&g_ctx.pasteboard);
@@ -227,14 +225,6 @@ int ShClSvcImplFormatAnnounce(PSHCLCLIENT pClient,
     return shclSvcDataReadRequest(pClient, &dataReq, NULL /* puEvent */);
 }
 
-/**
- * Called by the HGCM clipboard subsystem when the guest wants to read the host clipboard.
- *
- * @param pClient               Context information about the guest VM.
- * @param pCmdCtx               Command context to use for reading the data. Currently unused.
- * @param pData                 Data block to put read data into.
- * @param pcbActual             Where to write the actual size of the written data.
- */
 int ShClSvcImplReadData(PSHCLCLIENT pClient, PSHCLCLIENTCMDCTX pCmdCtx,
                         PSHCLDATABLOCK pData, uint32_t *pcbActual)
 {
@@ -253,14 +243,6 @@ int ShClSvcImplReadData(PSHCLCLIENT pClient, PSHCLCLIENTCMDCTX pCmdCtx,
     return rc;
 }
 
-/**
- * Called by the HGCM clipboard subsystem when we have requested data and that data arrives.
- *
- *
- * @param pClient               Context information about the guest VM.
- * @param pCmdCtx               Command context to use for writing the data. Currently unused.
- * @param pData                 Data block to write to clipboard.
- */
 int ShClSvcImplWriteData(PSHCLCLIENT pClient,
                          PSHCLCLIENTCMDCTX pCmdCtx, PSHCLDATABLOCK pData)
 {
