@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageBasic2.cpp 79815 2019-07-16 17:31:08Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageBasic2.cpp 80610 2019-09-05 18:40:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageBasic2 class implementation.
  */
@@ -168,7 +168,6 @@ bool UIWizardNewCloudVMPageBasic2::validatePage()
         fResult = comForm.isOk();
         if (!fResult)
             msgCenter().cannotAcquireVirtualSystemDescriptionFormProperty(comForm);
-        setVSDForm(CVirtualSystemDescriptionForm());
     }
 
     /* Try to create cloud VM: */
