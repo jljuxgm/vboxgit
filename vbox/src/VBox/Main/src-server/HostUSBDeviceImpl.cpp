@@ -1,4 +1,4 @@
-/* $Id: HostUSBDeviceImpl.cpp 76592 2019-01-01 20:13:07Z vboxsync $ */
+/* $Id: HostUSBDeviceImpl.cpp 81667 2019-11-05 11:08:21Z vboxsync $ */
 /** @file
  * VirtualBox IHostUSBDevice COM interface implementation.
  */
@@ -203,6 +203,16 @@ HRESULT HostUSBDevice::getPort(USHORT *aPort)
     AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
 
     *aPort = mUsb->bPort;
+
+    return S_OK;
+}
+
+
+HRESULT HostUSBDevice::getPortPath(com::Utf8Str &aPortPath)
+{
+    AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
+
+    aPortPath = mUsb->pszPortPath;
 
     return S_OK;
 }

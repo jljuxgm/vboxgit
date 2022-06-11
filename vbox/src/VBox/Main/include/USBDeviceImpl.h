@@ -1,4 +1,4 @@
-/* $Id: USBDeviceImpl.h 81644 2019-11-04 10:36:44Z vboxsync $ */
+/* $Id: USBDeviceImpl.h 81667 2019-11-05 11:08:21Z vboxsync $ */
 /** @file
  * Header file for the OUSBDevice (IUSBDevice) class, VBoxC.
  */
@@ -56,6 +56,7 @@ private:
     HRESULT getSerialNumber(com::Utf8Str &aSerialNumber);
     HRESULT getAddress(com::Utf8Str &aAddress);
     HRESULT getPort(USHORT *aPort);
+    HRESULT getPortPath(com::Utf8Str &aPortPath);
     HRESULT getVersion(USHORT *aVersion);
     HRESULT getSpeed(USBConnectionSpeed_T *aSpeed);
     HRESULT getRemote(BOOL *aRemote);
@@ -90,6 +91,8 @@ private:
         const com::Utf8Str backend;
         /** The host port number. */
         const USHORT port;
+        /** The host port path. */
+        const com::Utf8Str portPath;
         /** The major USB version number of the device. */
         const USHORT version;
         /** The speed at which the device is communicating. */

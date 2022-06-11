@@ -1,4 +1,4 @@
-/* $Id: HostUSBDeviceImpl.h 76592 2019-01-01 20:13:07Z vboxsync $ */
+/* $Id: HostUSBDeviceImpl.h 81667 2019-11-05 11:08:21Z vboxsync $ */
 /** @file
  * VirtualBox IHostUSBDevice COM interface implementation.
  */
@@ -258,6 +258,7 @@ private:
     HRESULT getSerialNumber(com::Utf8Str &aSerialNumber);
     HRESULT getAddress(com::Utf8Str &aAddress);
     HRESULT getPort(USHORT *aPort);
+    HRESULT getPortPath(com::Utf8Str &aPortPath);
     HRESULT getVersion(USHORT *aVersion);
     HRESULT getPortVersion(USHORT *aPortVersion);
     HRESULT getSpeed(USBConnectionSpeed_T *aSpeed);
