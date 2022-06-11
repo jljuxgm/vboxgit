@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 83774 2020-04-17 17:56:52Z vboxsync $
+# $Id: tdAddBasic1.py 83839 2020-04-20 07:51:06Z vboxsync $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 83774 $"
+__version__ = "$Revision: 83839 $"
 
 # Standard Python imports.
 import os;
@@ -342,32 +342,34 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
         # Install Kernel headers, which are required for actually installing the Linux Additions.
         if oTestVm.sKind.startswith('Debian') \
         or oTestVm.sKind.startswith('Ubuntu'):
-            fRc = self.txsRunTest(oTxsSession, 'Installing Kernel headers', 5 * 60 *1000,
-                                  '/usr/bin/apt-get', ('/usr/bin/apt-get', 'install', '-y', 'linux-headers-generic'),
+            fRc = self.txsRunTest(oTxsSession, 'Updating package sources', 5 * 60 *1000,
+                                  '/usr/bin/apt-get', ('/usr/bin/apt-get', 'update'),
                                   fCheckSessionStatus = True);
-            if not fRc:
-                reporter.error('Error installing Kernel headers');
-            fRc = self.txsRunTest(oTxsSession, 'Installing Guest Additions depdendencies', 5 * 60 *1000, \
-                                  '/usr/bin/apt-get', ('/usr/bin/apt-get', 'install', '-y', 'build-essential', 'perl'),
-                                  fCheckSessionStatus = True);
-            if not fRc:
-                reporter.error('Error installing additional installer dependencies');
+            if fRc:
+                fRc = self.txsRunTest(oTxsSession, 'Installing Kernel headers', 5 * 60 *1000,
+                                      '/usr/bin/apt-get', ('/usr/bin/apt-get', 'install', '-y', 'linux-headers-generic'),
+                                      fCheckSessionStatus = True);
+            if fRc:
+                fRc = self.txsRunTest(oTxsSession, 'Installing Guest Additions depdendencies', 5 * 60 *1000, \
+                                      '/usr/bin/apt-get', ('/usr/bin/apt-get', 'install', '-y', 'build-essential', 'perl'),
+                                      fCheckSessionStatus = True);
         elif oTestVm.sKind.startswith('OL') \
         or   oTestVm.sKind.startswith('Oracle') \
         or   oTestVm.sKind.startswith('RHEL') \
         or   oTestVm.sKind.startswith('Redhat') \
         or   oTestVm.sKind.startswith('Cent'):
-            fRc = self.txsRunTest(oTxsSession, 'Installing Kernel headers', 5 * 60 *1000,
-                                  '/usr/bin/yum', ('/usr/bin/yum', '-y', 'install', 'kernel-headers'),
-                                  fCheckSessionStatus = True);
-            if not fRc:
-                reporter.error('Error installing Kernel headers');
-            fRc = self.txsRunTest(oTxsSession, 'Installing Guest Additions depdendencies', 5 * 60 *1000, \
-                                  '/usr/bin/yum', ('/usr/bin/yum', '-y', 'install', \
+            fRc = self.txsRunTest(oTxsSession, 'Updating package sources', 5 * 60 *1000,
+                                               '/usr/bin/yum', ('/usr/bin/yum', 'update'),
+                                               fCheckSessionStatus = True);
+            if fRc:
+                fRc = self.txsRunTest(oTxsSession, 'Installing Kernel headers', 5 * 60 *1000,
+                                      '/usr/bin/yum', ('/usr/bin/yum', '-y', 'install', 'kernel-headers'),
+                                      fCheckSessionStatus = True);
+            if fRc:
+                fRc = self.txsRunTest(oTxsSession, 'Installing Guest Additions depdendencies', 5 * 60 *1000, \
+                                      '/usr/bin/yum', ('/usr/bin/yum', '-y', 'install', \
                                                    'make', 'automake', 'gcc', 'kernel-devel', 'dkms', 'bzip2', 'perl'),
-                                  fCheckSessionStatus = True);
-            if not fRc:
-                reporter.error('Error installing additional installer dependencies');
+                                      fCheckSessionStatus = True);
         else:
             reporter.error('Installing Linux Additions for kind "%s" is not supported yet' % oTestVm.sKind);
             return (False, oTxsSession);
