@@ -1,6 +1,6 @@
-/* $Id: ebda.h 76565 2019-01-01 04:23:20Z vboxsync $ */
+/* $Id: ebda.h 78406 2019-05-06 21:17:11Z vboxsync $ */
 /** @file
- * PC BIOS - ???
+ * PC BIOS - EBDA (Extended BIOS Data Area) Definition
  */
 
 /*
