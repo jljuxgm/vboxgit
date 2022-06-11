@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 81605 2019-10-31 14:29:46Z vboxsync $ */
+/* $Id: SUPDrv.cpp 81623 2019-11-01 20:44:44Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -224,6 +224,8 @@ static SUPFUNC g_aFunctions[] =
     { "SUPR0ObjVerifyAccess",                   (void *)(uintptr_t)SUPR0ObjVerifyAccess },
     { "SUPR0PageAllocEx",                       (void *)(uintptr_t)SUPR0PageAllocEx },
     { "SUPR0PageFree",                          (void *)(uintptr_t)SUPR0PageFree },
+    { "SUPR0PageMapKernel",                     (void *)(uintptr_t)SUPR0PageMapKernel },
+    { "SUPR0PageProtect",                       (void *)(uintptr_t)SUPR0PageProtect },
     { "SUPR0Printf",                            (void *)(uintptr_t)SUPR0Printf },
     { "SUPR0GetSessionGVM",                     (void *)(uintptr_t)SUPR0GetSessionGVM },
     { "SUPR0GetSessionVM",                      (void *)(uintptr_t)SUPR0GetSessionVM },

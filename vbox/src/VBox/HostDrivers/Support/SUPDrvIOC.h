@@ -1,4 +1,4 @@
-/* $Id: SUPDrvIOC.h 81369 2019-10-18 21:13:03Z vboxsync $ */
+/* $Id: SUPDrvIOC.h 81623 2019-11-01 20:44:44Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - IOCtl definitions.
  */
@@ -222,7 +222,7 @@ typedef SUPREQHDR *PSUPREQHDR;
  * @todo Pending work on next major version change:
  *          - Move SUP_IOCTL_FAST_DO_NOP and SUP_VMMR0_DO_NEM_RUN after NEM.
  */
-#define SUPDRV_IOC_VERSION                              0x002d0000
+#define SUPDRV_IOC_VERSION                              0x002d0001
 
 /** SUP_IOCTL_COOKIE. */
 typedef struct SUPCOOKIE
