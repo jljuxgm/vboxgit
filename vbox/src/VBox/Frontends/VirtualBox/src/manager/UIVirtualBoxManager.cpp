@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 84272 2020-05-12 14:41:42Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 84337 2020-05-18 16:45:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -2354,7 +2354,9 @@ bool UIVirtualBoxManager::isAtLeastOneItemCanBeStartedOrShown(const QList<UIVirt
 bool UIVirtualBoxManager::isAtLeastOneItemDiscardable(const QList<UIVirtualMachineItem*> &items)
 {
     foreach (UIVirtualMachineItem *pItem, items)
-        if (pItem->isItemSaved() && pItem->isItemEditable())
+        if (   (   pItem->isItemSaved()
+                || pItem->itemType() == UIVirtualMachineItemType_CloudReal)
+            && pItem->isItemEditable())
             return true;
     return false;
 }
