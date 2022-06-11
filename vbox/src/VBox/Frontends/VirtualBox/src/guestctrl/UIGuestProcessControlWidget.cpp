@@ -1,4 +1,4 @@
-/* $Id: UIGuestProcessControlWidget.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
+/* $Id: UIGuestProcessControlWidget.cpp 81226 2019-10-11 12:45:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestProcessControlWidget class implementation.
  */
@@ -315,6 +315,7 @@ UIGuestProcessControlWidget::UIGuestProcessControlWidget(EmbedTo enmEmbedding, c
 UIGuestProcessControlWidget::~UIGuestProcessControlWidget()
 {
     saveSettings();
+    cleanupListener();
 }
 
 void UIGuestProcessControlWidget::retranslateUi()
