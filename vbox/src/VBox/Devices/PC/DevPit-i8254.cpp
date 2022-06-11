@@ -1,4 +1,4 @@
-/* $Id: DevPit-i8254.cpp 81908 2019-11-17 15:12:57Z vboxsync $ */
+/* $Id: DevPit-i8254.cpp 81945 2019-11-18 15:57:04Z vboxsync $ */
 /** @file
  * DevPIT-i8254 - Intel 8254 Programmable Interval Timer (PIT) And Dummy Speaker Device.
  */
@@ -1014,7 +1014,7 @@ static DECLCALLBACK(int) pitR3SaveExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM)
         pHlp->pfnSSMPutU64(pSSM, pChan->u64NextTS);
         pHlp->pfnSSMPutU64(pSSM, pChan->u64ReloadTS);
         pHlp->pfnSSMPutS64(pSSM, pChan->next_transition_time);
-        if (pChan->hTimer)
+        if (pChan->hTimer != NIL_TMTIMERHANDLE)
             PDMDevHlpTimerSave(pDevIns, pChan->hTimer, pSSM);
     }
 
@@ -1091,7 +1091,7 @@ static DECLCALLBACK(int) pitR3LoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uint
         pHlp->pfnSSMGetU64(pSSM, &pChan->u64NextTS);
         pHlp->pfnSSMGetU64(pSSM, &pChan->u64ReloadTS);
         pHlp->pfnSSMGetS64(pSSM, &pChan->next_transition_time);
-        if (pChan->hTimer)
+        if (pChan->hTimer != NIL_TMTIMERHANDLE)
         {
             PDMDevHlpTimerLoad(pDevIns, pChan->hTimer, pSSM);
             LogRel(("PIT: mode=%d count=%#x (%u) - %d.%02d Hz (ch=%d) (restore)\n",
