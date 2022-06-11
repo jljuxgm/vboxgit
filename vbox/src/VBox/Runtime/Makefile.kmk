@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 83837 2020-04-20 00:34:06Z vboxsync $
+# $Id: Makefile.kmk 83841 2020-04-20 09:23:31Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -2818,6 +2818,7 @@ RuntimeR0Drv_SOURCES    = \
 	common/string/utf-16.cpp \
 	common/string/utf-16-case.cpp \
 	common/string/utf-16-latin-1.cpp \
+	common/string/utf-16-printf.cpp \
 	common/table/avlpv.cpp \
 	common/table/avlu32.cpp \
 	common/time/time.cpp \
