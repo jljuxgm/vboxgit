@@ -1,4 +1,4 @@
-/* $Id: Virtio_1_0.h 80657 2019-09-09 07:14:32Z vboxsync $ */
+/* $Id: Virtio_1_0.h 80683 2019-09-09 19:57:50Z vboxsync $ */
 /** @file
  * Virtio_1_0.h - Virtio Declarations
  */
@@ -287,6 +287,14 @@ void virtioQueueEnable(VIRTIOHANDLE hVirtio, uint16_t qIdx, bool fEnabled);
  *
  */
 void virtioResetAll(VIRTIOHANDLE hVirtio);
+
+/**
+ * This sends notification ('kicks') guest driver to check queues for any new
+ * elements in the used queue to process.  It should be called after resuming
+ * in case anything was added to the queues during suspend/quiescing and a
+ * notification was missed, to prevent the guest from stalling after suspend.
+ */
+void virtioPropagateResumeNotification(VIRTIOHANDLE hVirtio);
 
 
 
