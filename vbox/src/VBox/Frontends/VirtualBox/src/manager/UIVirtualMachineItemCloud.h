@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItemCloud.h 83076 2020-02-14 14:14:09Z vboxsync $ */
+/* $Id: UIVirtualMachineItemCloud.h 83094 2020-02-17 10:12:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItemCloud class declarations.
  */
@@ -26,6 +26,7 @@
 
 /* Forward declarations: */
 class UICloudMachine;
+class UITask;
 
 /** UIVirtualMachineItem sub-class used as cloud Virtual Machine item interface. */
 class UIVirtualMachineItemCloud : public UIVirtualMachineItem
@@ -64,6 +65,9 @@ public:
         /** Updates cloud VM state.
           * @param  pWidget  Brings parent widget to show messages according to. */
         void updateState(QWidget *pParent);
+
+        /** Updates cloud VM state async way, @a fDelayed if requested or instant otherwise. */
+        void updateStateAsync(bool fDelayed);
 
         /** Puts cloud VM on pause.
           * @param  pWidget  Brings parent widget to show messages according to. */
@@ -112,6 +116,13 @@ protected:
         /** Handles translation event. */
         virtual void retranslateUi() /* override */;
     /** @} */
+
+private slots:
+
+        /** Create cloud VM state acquire task. */
+        void sltCreateGetCloudInstanceStateTask();
+        /** Handles signal about cloud VM state acquire task is done. */
+        void sltHandleGetCloudInstanceStateDone(UITask *pTask);
 
 private:
 
