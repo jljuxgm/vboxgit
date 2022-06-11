@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: Makefile.kmk 80714 2019-09-11 01:29:49Z vboxsync $
 ## @file
 # Sub-Makefile for the Guest Additions Command Line Management Interface.
 #
@@ -48,6 +48,7 @@ VBoxControl_SOURCES = \
 VBoxControl_SOURCES.win = \
 	VBoxControl.rc
 VBoxControl_LDFLAGS.darwin = -framework IOKit
+VBoxControl_LIBS.netbsd = crypt
 VBoxControl_USES.win += vboximportchecker
 VBoxControl_VBOX_IMPORT_CHECKER.win.x86 = nt31
 VBoxControl_VBOX_IMPORT_CHECKER.win.amd64 = xp64
