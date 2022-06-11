@@ -1,4 +1,4 @@
-/* $Id: errmsgwin-sorter.cpp 84067 2020-04-28 22:53:31Z vboxsync $ */
+/* $Id: errmsgwin-sorter.cpp 84070 2020-04-28 23:58:24Z vboxsync $ */
 /** @file
  * IPRT - Status code messages, Windows, sorter build program.
  */
@@ -227,19 +227,20 @@ int main(int argc, char **argv)
                 "\n"
                 "typedef struct RTMSGWINENTRYINT\n"
                 "{\n"
-                "    uint32_t offDefine : 20;\n"
-                "    uint32_t cchDefine : 9;\n"
+                "    uint32_t offDefine  : 20;\n"
+                "    uint32_t cchDefine  : 9;\n"
                 "%s"
                 "    int32_t  iCode;\n"
                 "} RTMSGWINENTRYINT;\n"
                 "typedef RTMSGWINENTRYINT *PCRTMSGWINENTRYINT;\n"
                 "\n"
-                "static const RTMSGWINENTRYINT g_aWinMsgs[] =\n"
+                "static const RTMSGWINENTRYINT g_aWinMsgs[ /*%lu*/ ] =\n"
                 "{\n"
                 ,
                 enmMode == kMode_All
-                ? "    uint32_t offMsgFull  : 23;\n"
-                  "    uint32_t cchMsgFull  : 9;\n" : "");
+                ? "    uint32_t offMsgFull : 23;\n"
+                  "    uint32_t cchMsgFull : 9;\n" : "",
+                (unsigned long)cStatusMsgs);
 
         if (enmMode == kMode_All)
             for (size_t i = 0; i < cStatusMsgs; i++)
