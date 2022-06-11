@@ -1,4 +1,4 @@
-/* $Id: DevLsiLogicSCSI.cpp 80701 2019-09-10 14:42:31Z vboxsync $ */
+/* $Id: DevLsiLogicSCSI.cpp 80702 2019-09-10 14:46:37Z vboxsync $ */
 /** @file
  * DevLsiLogicSCSI - LsiLogic LSI53c1030 SCSI controller.
  */
@@ -5824,7 +5824,7 @@ const PDMDEVREG g_DeviceLsiLogicSAS =
     /* .cbInstanceShared = */       sizeof(LSILOGICSCSI),
     /* .cbInstanceCC = */           0,
     /* .cbInstanceRC = */           0,
-    /* .uReserved1 = */             0,
+    /* .cMaxPciDevices = */         1,
     /* .pszDescription = */         "LSI Logic SAS1068 controller.\n",
 #if defined(IN_RING3)
     /* .pszRCMod = */               "VBoxDDRC.rc",
