@@ -1,4 +1,4 @@
-/* $Id: ProgressImpl.h 76562 2019-01-01 03:22:50Z vboxsync $ */
+/* $Id: ProgressImpl.h 78666 2019-05-22 15:27:27Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -138,6 +138,18 @@ public:
                               const char *pcszComponent,
                               const char *aText,
                               va_list va);
+    HRESULT i_notifyCompleteBoth(HRESULT aResultCode,
+                                 int vrc,
+                                 const GUID &aIID,
+                                 const char *pcszComponent,
+                                 const char *aText,
+                                 ...);
+    HRESULT i_notifyCompleteBothV(HRESULT aResultCode,
+                                  int vrc,
+                                  const GUID &aIID,
+                                  const char *pcszComponent,
+                                  const char *aText,
+                                  va_list va);
 
     bool i_setCancelCallback(void (*pfnCallback)(void *), void *pvUser);
 

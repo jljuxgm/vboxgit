@@ -1,4 +1,4 @@
-/* $Id: ProgressImpl.cpp 77252 2019-02-11 08:42:08Z vboxsync $ */
+/* $Id: ProgressImpl.cpp 78666 2019-05-22 15:27:27Z vboxsync $ */
 /** @file
  * VirtualBox Progress COM class implementation
  */
@@ -411,6 +411,53 @@ HRESULT Progress::i_notifyCompleteV(HRESULT aResultCode,
     HRESULT rc = errorInfo.createObject();
     AssertComRCReturnRC(rc);
     errorInfo->init(aResultCode, aIID, pcszComponent, text);
+
+    return notifyComplete(aResultCode, errorInfo);
+}
+
+/**
+ * Wrapper around Progress:notifyCompleteBothV.
+ */
+HRESULT Progress::i_notifyCompleteBoth(HRESULT aResultCode,
+                                       int vrc,
+                                       const GUID &aIID,
+                                       const char *pcszComponent,
+                                       const char *aText,
+                                       ...)
+{
+    va_list va;
+    va_start(va, aText);
+    HRESULT hrc = i_notifyCompleteBothV(aResultCode, vrc, aIID, pcszComponent, aText, va);
+    va_end(va);
+    return hrc;
+}
+
+/**
+ * Marks the operation as complete and attaches full error info.
+ *
+ * @param aResultCode   Operation result (error) code, must not be S_OK.
+ * @param vrc           VBox status code to associate with the error.
+ * @param aIID          IID of the interface that defines the error.
+ * @param pszComponent  Name of the component that generates the error.
+ * @param pszFormat     Error message (must not be null), an RTStrPrintf-like
+ *                      format string in UTF-8 encoding.
+ * @param va            List of arguments for the format string.
+ */
+HRESULT Progress::i_notifyCompleteBothV(HRESULT aResultCode,
+                                        int vrc,
+                                        const GUID &aIID,
+                                        const char *pszComponent,
+                                        const char *pszFormat,
+                                        va_list va)
+{
+    /* expected to be used only in case of error */
+    Assert(FAILED(aResultCode));
+
+    Utf8Str text(pszFormat, va);
+    ComObjPtr<VirtualBoxErrorInfo> errorInfo;
+    HRESULT rc = errorInfo.createObject();
+    AssertComRCReturnRC(rc);
+    errorInfo->initEx(aResultCode, vrc, aIID, pszComponent, text);
 
     return notifyComplete(aResultCode, errorInfo);
 }
