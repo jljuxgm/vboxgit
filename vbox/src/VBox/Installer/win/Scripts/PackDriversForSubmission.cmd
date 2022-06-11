@@ -1,5 +1,5 @@
 @echo off
-rem $Id: PackDriversForSubmission.cmd 82260 2019-11-27 23:51:00Z vboxsync $
+rem $Id: PackDriversForSubmission.cmd 82327 2019-12-02 15:48:25Z vboxsync $
 rem rem @file
 rem Windows NT batch script for preparing for signing submission.
 rem
@@ -276,6 +276,8 @@ if "%_MY_OPT_WITH_GA%" == "0"   goto no_additions_ddf
 echo .Set DestinationDir=VBoxGuestAdditions>>                                           "%_MY_OPT_DDF_FILE%"
 echo %_MY_OPT_GADIR%\VBoxGuest.inf>>                                                    "%_MY_OPT_DDF_FILE%"
 echo %_MY_OPT_GADIR%\VBoxGuest.sys>>                                                    "%_MY_OPT_DDF_FILE%"
+echo %_MY_OPT_GADIR%\VBoxTray.exe>>                                                     "%_MY_OPT_DDF_FILE%"
+echo %_MY_OPT_GADIR%\VBoxControl.exe>>                                                  "%_MY_OPT_DDF_FILE%"
 echo %_MY_OPT_GADIR%\VBoxMouse.inf>>                                                    "%_MY_OPT_DDF_FILE%"
 echo %_MY_OPT_GADIR%\VBoxMouse.sys>>                                                    "%_MY_OPT_DDF_FILE%"
 rem echo %_MY_OPT_GADIR%\VBoxSF.sys>>                                                       "%_MY_OPT_DDF_FILE%"
