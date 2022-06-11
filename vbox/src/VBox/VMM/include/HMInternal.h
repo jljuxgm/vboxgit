@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 82814 2020-01-22 03:38:46Z vboxsync $ */
+/* $Id: HMInternal.h 82965 2020-02-04 06:32:19Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -832,11 +832,11 @@ typedef struct VMXVMCSINFO
     /** @name LBR MSR data.
      *  @{ */
     /** List of LastBranch-From-IP MSRs. */
-    uint64_t    au64LbrFromIpMsr[32];
+    uint64_t                    au64LbrFromIpMsr[32];
     /** List of LastBranch-To-IP MSRs. */
-    uint64_t    au64LbrToIpMsr[32];
+    uint64_t                    au64LbrToIpMsr[32];
     /** The MSR containing the index to the most recent branch record.  */
-    uint64_t    u64LbrTosMsr;
+    uint64_t                    u64LbrTosMsr;
     /** @} */
 } VMXVMCSINFO;
 /** Pointer to a VMXVMCSINFO struct. */
