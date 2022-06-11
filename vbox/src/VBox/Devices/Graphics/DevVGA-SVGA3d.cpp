@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d.cpp 83292 2020-03-14 13:23:27Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d.cpp 83559 2020-04-04 23:50:05Z vboxsync $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - Common core code.
  */
@@ -364,7 +364,7 @@ int vmsvga3dSurfaceDestroy(PVGASTATECC pThisCC, uint32_t sid)
     if (pSurface->paMipmapLevels)
     {
         for (uint32_t i = 0; i < pSurface->cMipmapLevels; ++i)
-            RTMemFree(pSurface->paMipmapLevels[i].pSurfaceData);
+            RTMemFreeZ(pSurface->paMipmapLevels[i].pSurfaceData, pSurface->paMipmapLevels[i].cbSurface);
         RTMemFree(pSurface->paMipmapLevels);
     }
 
