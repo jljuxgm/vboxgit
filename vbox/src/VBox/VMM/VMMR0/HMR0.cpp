@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 79345 2019-06-26 09:09:46Z vboxsync $ */
+/* $Id: HMR0.cpp 79352 2019-06-26 09:42:43Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -1177,6 +1177,7 @@ VMMR0_INT_DECL(int) HMR0InitVM(PVM pVM)
         pVM->hm.s.vmx.u64HostMsrEfer        = g_HmR0.hwvirt.u.vmx.u64HostMsrEfer;
         pVM->hm.s.vmx.u64HostSmmMonitorCtl  = g_HmR0.hwvirt.u.vmx.u64HostSmmMonitorCtl;
         HMGetVmxMsrsFromHwvirtMsrs(&g_HmR0.hwvirt.Msrs, &pVM->hm.s.vmx.Msrs);
+        /* If you need to tweak host MSRs for testing VMX R0 code, do it here. */
 
         /* Enable VPID if supported and configured. */
         if (pVM->hm.s.vmx.Msrs.ProcCtls2.n.allowed1 & VMX_PROC_CTLS2_VPID)
@@ -1216,6 +1217,7 @@ VMMR0_INT_DECL(int) HMR0InitVM(PVM pVM)
         pVM->hm.s.svm.u32Rev      = g_HmR0.hwvirt.u.svm.u32Rev;
         pVM->hm.s.svm.u32Features = g_HmR0.hwvirt.u.svm.u32Features;
         pVM->hm.s.svm.u64MsrHwcr  = g_HmR0.hwvirt.Msrs.u.svm.u64MsrHwcr;
+        /* If you need to tweak host MSRs for testing SVM R0 code, do it here. */
     }
     pVM->hm.s.rcInit              = g_HmR0.rcInit;
     pVM->hm.s.uMaxAsid            = g_HmR0.hwvirt.uMaxAsid;
