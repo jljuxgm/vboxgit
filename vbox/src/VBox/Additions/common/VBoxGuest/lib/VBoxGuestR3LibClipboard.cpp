@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibClipboard.cpp 82528 2019-12-10 02:35:26Z vboxsync $ */
+/* $Id: VBoxGuestR3LibClipboard.cpp 82529 2019-12-10 02:41:38Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Shared Clipboard.
  */
@@ -2439,6 +2439,7 @@ VBGLR3DECL(int) VbglR3ClipboardEventGetNext(uint32_t idMsg, uint32_t cParms, PVB
                 rc = VERR_NOT_SUPPORTED;
                 break;
         }
+        pEvent->cmdCtx = *pCtx;
     }
 
     LogFlowFuncLeaveRC(rc);
