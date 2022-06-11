@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 78728 2019-05-24 13:24:30Z vboxsync $
+# $Id: virtual_test_sheriff.py 78737 2019-05-24 22:22:04Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -35,7 +35,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 78728 $"
+__version__ = "$Revision: 78737 $"
 
 
 # Standard python imports
@@ -318,7 +318,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
 
         if self.oConfig.sLogFile:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 78728 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 78737 $ \n');
 
 
     def eprint(self, sText):
@@ -683,7 +683,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.getFailureReason(tReason);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 78728 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 78737 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
@@ -1386,7 +1386,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         # Get a list of failed test sets without any assigned failure reason.
         #
         cGot = 0;
-        if self.oConfig.aidTestSets is None or len(self.oConfig.aidTestSets) == 0:
+        if not self.oConfig.aidTestSets:
             aoTestSets = self.oTestSetLogic.fetchFailedSetsWithoutReason(cHoursBack = self.oConfig.cHoursBack,
                                                                          tsNow = self.tsNow);
         else:
