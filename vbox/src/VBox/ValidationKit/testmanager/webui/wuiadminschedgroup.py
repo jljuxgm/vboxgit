@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuiadminschedgroup.py 83364 2020-03-23 09:47:01Z vboxsync $
+# $Id: wuiadminschedgroup.py 83385 2020-03-24 14:46:13Z vboxsync $
 
 """
 Test Manager WUI - Scheduling groups.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 83364 $"
+__version__ = "$Revision: 83385 $"
 
 
 # Validation Kit imports.
@@ -85,11 +85,11 @@ class WuiSchedGroup(WuiFormContentBase):
 
         oForm.addListOfSchedGroupMembers(SchedGroupDataEx.ksParam_aoMembers,
                                          oData.aoMembers, self._aoAllRelevantTestGroups,    'Test groups',
-                                         fReadOnly = self._sMode == WuiFormContentBase.ksMode_Show);
+                                         oData.idSchedGroup, fReadOnly = self._sMode == WuiFormContentBase.ksMode_Show);
 
         oForm.addListOfSchedGroupBoxes(SchedGroupDataEx.ksParam_aoTestBoxes,
                                        oData.aoTestBoxes, self._aoAllRelevantTestBoxes,     'Test boxes',
-                                       fReadOnly = self._sMode == WuiFormContentBase.ksMode_Show);
+                                       oData.idSchedGroup, fReadOnly = self._sMode == WuiFormContentBase.ksMode_Show);
 
         oForm.addMultilineText(SchedGroupData.ksParam_sComment,     oData.sComment,         'Comment');
         oForm.addSubmit()
