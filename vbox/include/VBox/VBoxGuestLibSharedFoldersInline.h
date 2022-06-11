@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestLibSharedFoldersInline.h 78469 2019-05-11 01:12:07Z vboxsync $ */
+/* $Id: VBoxGuestLibSharedFoldersInline.h 78480 2019-05-13 09:15:25Z vboxsync $ */
 /** @file
  * VBoxGuestLib - Shared Folders Host Request Helpers (ring-0).
  */
@@ -699,7 +699,6 @@ DECLINLINE(int) VbglR0SfHostReqRemove(SHFLROOT idRoot, VBOXSFREMOVEREQ *pReq, ui
     return vrc;
 }
 
-#ifdef __cplusplus
 
 /** Request structure for VbglR0SfHostReqCloseAndRemove.  */
 typedef struct VBOXSFCLOSEANDREMOVEREQ
@@ -748,8 +747,6 @@ DECLINLINE(int) VbglR0SfHostReqCloseAndRemove(SHFLROOT idRoot, VBOXSFCLOSEANDREM
         vrc = pReq->Call.header.result;
     return vrc;
 }
-
-#endif /* __cplusplus */
 
 
 /** Request structure for VbglR0SfHostReqRenameWithSrcContig and
