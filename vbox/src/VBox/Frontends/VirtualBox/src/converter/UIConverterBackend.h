@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackend.h 81572 2019-10-29 12:25:17Z vboxsync $ */
+/* $Id: UIConverterBackend.h 81573 2019-10-29 12:47:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConverterBackend declaration.
  */
@@ -215,6 +215,8 @@ template<> SHARED_LIBRARY_STUFF UIExtraDataMetaDefs::DetailsElementOptionTypeUse
 template<> SHARED_LIBRARY_STUFF QString toString(const UIExtraDataMetaDefs::DetailsElementOptionTypeDescription &enmDetailsElementOptionTypeDescription);
 template<> SHARED_LIBRARY_STUFF QString toInternalString(const UIExtraDataMetaDefs::DetailsElementOptionTypeDescription &enmDetailsElementOptionTypeDescription);
 template<> SHARED_LIBRARY_STUFF UIExtraDataMetaDefs::DetailsElementOptionTypeDescription fromInternalString<UIExtraDataMetaDefs::DetailsElementOptionTypeDescription>(const QString &strDetailsElementOptionTypeDescription);
+template<> SHARED_LIBRARY_STUFF QString toInternalString(const UIExtraDataMetaDefs::RestrictedDialogs &enmRestrictedDialogs);
+template<> SHARED_LIBRARY_STUFF UIExtraDataMetaDefs::RestrictedDialogs fromInternalString<UIExtraDataMetaDefs::RestrictedDialogs>(const QString &strRestrictedDialogs);
 template<> SHARED_LIBRARY_STUFF QString toInternalString(const UIToolType &enmToolType);
 template<> SHARED_LIBRARY_STUFF UIToolType fromInternalString<UIToolType>(const QString &strToolType);
 template<> SHARED_LIBRARY_STUFF QString toInternalString(const UIVisualStateType &visualStateType);
