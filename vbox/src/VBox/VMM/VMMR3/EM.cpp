@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 78926 2019-06-03 10:02:38Z vboxsync $ */
+/* $Id: EM.cpp 78978 2019-06-05 06:25:09Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -2235,7 +2235,7 @@ int emR3ForcedActions(PVM pVM, PVMCPU pVCpu, int rc)
                     else if (   CPUMIsGuestInVmxNonRootMode(&pVCpu->cpum.GstCtx)
                              && CPUMIsGuestVmxPinCtlsSet(pVCpu, &pVCpu->cpum.GstCtx, VMX_PIN_CTLS_NMI_EXIT))
                     {
-                        rc2 = VBOXSTRICTRC_VAL(IEMExecVmxVmexitNmi(pVCpu));
+                        rc2 = VBOXSTRICTRC_VAL(IEMExecVmxVmexitXcptNmi(pVCpu));
                         Assert(rc2 != VINF_VMX_INTERCEPT_NOT_ACTIVE);
                         UPDATE_RC();
                     }
