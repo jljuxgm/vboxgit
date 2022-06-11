@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-darwin.cpp 82880 2020-01-27 17:52:41Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-darwin.cpp 82884 2020-01-27 18:31:03Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Mac OS X host.
  */
@@ -211,7 +211,7 @@ int ShClSvcImplFormatAnnounce(PSHCLCLIENT pClient,
 }
 
 int ShClSvcImplReadData(PSHCLCLIENT pClient, PSHCLCLIENTCMDCTX pCmdCtx,
-                        SHCLFORMAT uFormat, uint32_t cbData, void *pvData, uint32_t *pcbActual)
+                        SHCLFORMAT uFormat, void *pvData, uint32_t cbData, uint32_t *pcbActual)
 {
     RT_NOREF(pCmdCtx);
 
@@ -229,7 +229,7 @@ int ShClSvcImplReadData(PSHCLCLIENT pClient, PSHCLCLIENTCMDCTX pCmdCtx,
 }
 
 int ShClSvcImplWriteData(PSHCLCLIENT pClient,
-                         PSHCLCLIENTCMDCTX pCmdCtx, SHCLFORMAT uFormat, uint32_t cbData, void *pvData)
+                         PSHCLCLIENTCMDCTX pCmdCtx, SHCLFORMAT uFormat, void *pvData, uint32_t cbData)
 {
     RT_NOREF(pCmdCtx);
 
