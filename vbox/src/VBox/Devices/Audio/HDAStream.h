@@ -1,4 +1,4 @@
-/* $Id: HDAStream.h 82332 2019-12-03 00:30:11Z vboxsync $ */
+/* $Id: HDAStream.h 82345 2019-12-03 14:40:21Z vboxsync $ */
 /** @file
  * HDAStream.h - Stream functions for HD Audio.
  */
@@ -234,7 +234,7 @@ typedef struct HDASTREAM
     R3PTRTYPE(PHDASTATE)     pHDAState;
     /** Pointer to HDA sink this stream is attached to. */
     R3PTRTYPE(PHDAMIXERSINK) pMixSink;
-    /** Stream's timer (copy of HDASTATE::ahTimers[u8SD]). */
+    /** The timer for pumping data thru the attached LUN drivers. */
     TMTIMERHANDLE            hTimer;
     /** The stream'S critical section to serialize access. */
     RTCRITSECT               CritSect;

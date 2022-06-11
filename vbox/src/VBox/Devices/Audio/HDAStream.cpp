@@ -1,4 +1,4 @@
-/* $Id: HDAStream.cpp 82332 2019-12-03 00:30:11Z vboxsync $ */
+/* $Id: HDAStream.cpp 82345 2019-12-03 14:40:21Z vboxsync $ */
 /** @file
  * HDAStream.cpp - Stream functions for HD Audio.
  */
@@ -53,7 +53,7 @@ int hdaR3StreamCreate(PHDASTREAM pStream, PHDASTATE pThis, uint8_t u8SD)
     pStream->u8SD           = u8SD;
     pStream->pMixSink       = NULL;
     pStream->pHDAState      = pThis;
-    pStream->hTimer         = pThis->ahTimers[u8SD];
+    Assert(pStream->hTimer != NIL_TMTIMERHANDLE); /* hdaR3Construct initalized this one already. */
 
     pStream->State.fInReset = false;
     pStream->State.fRunning = false;

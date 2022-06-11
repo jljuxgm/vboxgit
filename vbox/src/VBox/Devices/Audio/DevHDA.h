@@ -1,4 +1,4 @@
-/* $Id: DevHDA.h 82331 2019-12-02 23:50:22Z vboxsync $ */
+/* $Id: DevHDA.h 82345 2019-12-03 14:40:21Z vboxsync $ */
 /** @file
  * DevHDA.h - VBox Intel HD Audio Controller.
  */
@@ -137,9 +137,6 @@ typedef struct HDASTATE
     bool                    afPadding1b[2];
     /** Number of active (running) SDn streams. */
     uint8_t                 cStreamsActive;
-    /** The stream timers for pumping data thru the attached LUN drivers.
-     * Duplicated in HDASTREAM::hTimer. */
-    TMTIMERHANDLE           ahTimers[HDA_MAX_STREAMS];
     /** Pointer to HDA codec to use. */
     R3PTRTYPE(PHDACODEC)    pCodec;
     /** List of associated LUN drivers (HDADRIVER). */
