@@ -1,4 +1,4 @@
-/* $Id: clipboard-transfers.cpp 81290 2019-10-15 16:53:56Z vboxsync $ */
+/* $Id: clipboard-transfers.cpp 81315 2019-10-17 13:59:28Z vboxsync $ */
 /** @file
  * Shared Clipboard: Common Shared Clipboard transfer handling code.
  */
@@ -813,7 +813,7 @@ int ShClTransferObjOpen(PSHCLTRANSFER pTransfer, PSHCLOBJOPENCREATEPARMS pOpenCr
                                                            SHCLOBJHANDLE_INVALID, &fOpen);
                 if (RT_SUCCESS(rc))
                 {
-                    pInfo->pszPathLocalAbs = RTStrAPrintf2("%s/%s", pTransfer->pszPathRootAbs, pOpenCreateParms->pszPath);
+                    pInfo->pszPathLocalAbs = RTPathJoinA(pTransfer->pszPathRootAbs, pOpenCreateParms->pszPath);
                     if (pInfo->pszPathLocalAbs)
                     {
                         rc = RTFileOpen(&pInfo->u.Local.hFile, pInfo->pszPathLocalAbs, fOpen);
