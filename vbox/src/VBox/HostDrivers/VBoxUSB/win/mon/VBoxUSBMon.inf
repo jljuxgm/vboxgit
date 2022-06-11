@@ -1,4 +1,4 @@
-; $Id: VBoxUSBMon.inf 76925 2019-01-21 16:50:06Z vboxsync $
+; $Id: VBoxUSBMon.inf 80796 2019-09-15 18:00:43Z vboxsync $
 ;; @file
 ; VBox USB Monitor driver - Installation file
 ;
@@ -68,7 +68,8 @@ VBoxUSBMon.sys
 [VBoxUSBMon_Service]
 DisplayName    = %VBoxUSBMon.SVCDESC%
 ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
-StartType      = 3                  ; SERVICE_DEMAND_START
+;StartType      = 3                  ; SERVICE_DEMAND_START
+StartType      = 1                  ; autostart to fix Vista problem
 ErrorControl   = 1                  ; SERVICE_ERROR_NORMAL
 ServiceBinary  = %12%\VBoxUSBMon.sys
 
