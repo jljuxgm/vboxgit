@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 80387 2019-08-22 14:44:42Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 80489 2019-08-29 07:53:55Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -3604,6 +3604,7 @@ IEM_STATIC VBOXSTRICTRC iemVmxVmexitEventWithInfo(PVMCPUCC pVCpu, PCVMXVEXITINFO
 {
     Assert(pExitInfo);
     Assert(pExitEventInfo);
+    Assert(pExitInfo->uReason == VMX_EXIT_XCPT_OR_NMI);
     Assert(VMX_EXIT_INT_INFO_IS_VALID(pExitEventInfo->uExitIntInfo));
 
     iemVmxVmcsSetExitInstrLen(pVCpu, pExitInfo->cbInstr);
