@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 83640 $"
+__version__ = "$Revision: 83641 $"
 
 # Standard Python imports.
 import errno
@@ -1584,11 +1584,11 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
         """
         if oTestVm.isWindows():
             sPathSC = os.path.join(self.getGuestSystemDir(oTestVm), 'sc.exe');
-            if fStart:
-                return self.oTstDrv.txsRunTest(oTxsSession, 'Starting VBoxService with verbose logging', 30 * 1000,
+            if fStart is True:
+                return self.oTstDrv.txsRunTest(oTxsSession, 'Starting VBoxService with verbose logging', 30 * 1000, \
                                                sPathSC, (sPathSC, 'start', 'VBoxService'));
             else:
-                return self.oTstDrv.txsRunTest(oTxsSession, 'Stopping VBoxService', 30 * 1000,
+                return self.oTstDrv.txsRunTest(oTxsSession, 'Stopping VBoxService', 30 * 1000, \
                                                sPathSC, (sPathSC, 'stop', 'VBoxService'));
         else:
             reporter.log('Controlling VBoxService not supported for this guest yet');
