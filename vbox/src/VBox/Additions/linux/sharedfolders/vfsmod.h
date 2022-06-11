@@ -1,4 +1,4 @@
-/* $Id: vfsmod.h 78137 2019-04-16 01:30:52Z vboxsync $ */
+/* $Id: vfsmod.h 78660 2019-05-22 13:18:28Z vboxsync $ */
 /** @file
  * vboxsf - Linux Shared Folders VFS, internal header.
  */
@@ -99,7 +99,7 @@ DECLINLINE(void) i_size_write(struct inode *pInode, loff_t cbNew)
 #endif /* < 2.6.0 */
 
 #if  LINUX_VERSION_CODE < KERNEL_VERSION(3, 2, 0) \
-  && (!defined(RHEL_MAJOR) || RHEL_MAJOR != 6)
+  && (!defined(RHEL_MAJOR) || RHEL_MAJOR != 6 || RHEL_MINOR < 10)
 DECLINLINE(void) set_nlink(struct inode *pInode, unsigned int cLinks)
 {
     pInode->i_nlink = cLinks;
