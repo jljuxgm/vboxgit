@@ -1,4 +1,4 @@
-/* $Id: VBoxAboutDlg.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
+/* $Id: VBoxAboutDlg.cpp 80887 2019-09-18 12:21:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxAboutDlg class implementation.
  */
@@ -195,10 +195,9 @@ void VBoxAboutDlg::prepareCloseButton()
         QPushButton *pCloseButton = pButtonBox->addButton(QDialogButtonBox::Close);
         AssertPtrReturnVoid(pCloseButton);
         /* Prepare close-button: */
-        connect(pButtonBox, SIGNAL(rejected()), this, SLOT(reject()));
+        connect(pButtonBox, &QDialogButtonBox::rejected, this, &VBoxAboutDlg::reject);
 
         /* Add button-box to the main-layout: */
         m_pMainLayout->addWidget(pButtonBox);
     }
 }
-
