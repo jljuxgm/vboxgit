@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.cpp 80887 2019-09-18 12:21:55Z vboxsync $ */
+/* $Id: UIActionPoolManager.cpp 82375 2019-12-04 11:31:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class implementation.
  */
@@ -741,6 +741,34 @@ protected:
     {
         setName(QApplication::translate("UIActionPool", "&Move..."));
         setStatusTip(QApplication::translate("UIActionPool", "Move selected virtual machine"));
+    }
+};
+
+/** Simple action extension, used as 'Perform Export Machine locally' action class. */
+class UIActionSimpleSelectorMachinePerformExportLocally : public UIActionSimple
+{
+    Q_OBJECT;
+
+public:
+
+    /** Constructs action passing @a pParent to the base-class. */
+    UIActionSimpleSelectorMachinePerformExportLocally(UIActionPool *pParent)
+        : UIActionSimple(pParent, ":/export_16px.png", ":/export_disabled_16px.png")
+    {}
+
+protected:
+
+    /** Returns shortcut extra-data ID. */
+    virtual QString shortcutExtraDataID() const /* override */
+    {
+        return QString("ExportLocally");
+    }
+
+    /** Handles translation event. */
+    virtual void retranslateUi() /* override */
+    {
+        setName(QApplication::translate("UIActionPool", "E&xport Locally..."));
+        setStatusTip(QApplication::translate("UIActionPool", "Export selected virtual machine locally"));
     }
 };
 
