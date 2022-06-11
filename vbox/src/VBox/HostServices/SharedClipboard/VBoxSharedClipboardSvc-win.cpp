@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-win.cpp 79497 2019-07-03 13:28:33Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-win.cpp 79630 2019-07-09 08:14:01Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Win32 host.
  */
@@ -645,7 +645,7 @@ int VBoxClipboardSvcImplDisconnect(PVBOXCLIPBOARDCLIENTDATA pClientData)
     if (pCtx)
     {
         if (pCtx->Win.hWnd)
-            PostMessage(pCtx->Win.hWnd, WM_CLOSE, 0 /* wParam */, 0 /* lParam */);
+            PostMessage(pCtx->Win.hWnd, WM_DESTROY, 0 /* wParam */, 0 /* lParam */);
 
         rc = RTSemEventDestroy(pCtx->hRenderEvent);
         if (RT_SUCCESS(rc))
