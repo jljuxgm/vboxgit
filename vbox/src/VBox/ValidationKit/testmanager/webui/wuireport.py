@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuireport.py 82649 2019-12-23 20:54:32Z vboxsync $
+# $Id: wuireport.py 82940 2020-01-31 11:32:55Z vboxsync $
 
 """
 Test Manager WUI - Reports.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 82649 $"
+__version__ = "$Revision: 82940 $"
 
 
 # Validation Kit imports.
@@ -664,7 +664,7 @@ class WuiReportTestCaseArgsFailures(WuiReportFailuresWithTotalBase):
     def __init__(self, oModel, dParams, fSubReport = False, aiSortColumns = None, fnDPrint = None, oDisp = None):
         WuiReportFailuresWithTotalBase.__init__(self, oModel, dParams, fSubReport = fSubReport,
                                                 aiSortColumns = aiSortColumns, fnDPrint = fnDPrint, oDisp = oDisp);
-        self.oTestCaseCrit = TestResultFilter().aCriteria[TestResultFilter.kiTestCases]; # type: FilterCriterion
+        self.oTestCaseCrit = TestResultFilter().aCriteria[TestResultFilter.kiTestCases] # type: FilterCriterion
 
     @staticmethod
     def _formatName(oTestCaseArgs):

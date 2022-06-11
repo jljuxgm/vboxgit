@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuihlpgraphgooglechart.py 82648 2019-12-23 20:53:40Z vboxsync $
+# $Id: wuihlpgraphgooglechart.py 82940 2020-01-31 11:32:55Z vboxsync $
 
 """
 Test Manager Web-UI - Graph Helpers - Implemented using Google Charts.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 82648 $"
+__version__ = "$Revision: 82940 $"
 
 # Validation Kit imports.
 from common                             import utils, webutils;
@@ -65,7 +65,7 @@ class WuiHlpBarGraph(WuiHlpGraphGoogleChartsBase):
         return None;
 
     def renderGraph(self):
-        aoTable = self._oData.aoTable; # type: WuiHlpGraphDataTable
+        aoTable = self._oData.aoTable # type: WuiHlpGraphDataTable
 
         # Seems material (google.charts.Bar) cannot change the direction on the Y-axis,
         # so we cannot get bars growing downwards from the top like we want for the
