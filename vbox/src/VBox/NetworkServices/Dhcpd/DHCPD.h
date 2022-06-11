@@ -1,4 +1,4 @@
-/* $Id: DHCPD.h 79568 2019-07-06 23:42:51Z vboxsync $ */
+/* $Id: DHCPD.h 79621 2019-07-09 01:14:53Z vboxsync $ */
 /** @file
  * DHCP server - protocol logic
  */
@@ -39,8 +39,6 @@ class DHCPD
 {
     /** The DHCP configuration. */
     const Config   *m_pConfig;
-    /** The lease database filename. */
-    RTCString       m_strLeasesFilename;
     /** The lease database. */
     Db              m_db;
 

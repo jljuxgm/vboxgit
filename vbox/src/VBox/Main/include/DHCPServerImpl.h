@@ -1,4 +1,4 @@
-/* $Id: DHCPServerImpl.h 79610 2019-07-08 23:29:30Z vboxsync $ */
+/* $Id: DHCPServerImpl.h 79621 2019-07-09 01:14:53Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -138,7 +138,7 @@ private:
 
     /** @name Helpers
      * @{  */
-    HRESULT i_calcLeaseFilename(const com::Utf8Str &aNetwork) RT_NOEXCEPT;
+    HRESULT i_calcLeasesFilename(const com::Utf8Str &aNetwork) RT_NOEXCEPT;
     /** @} */
 
     struct Data;
