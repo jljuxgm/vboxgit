@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceToolBox.cpp 83434 2020-03-26 11:58:18Z vboxsync $ */
+/* $Id: VBoxServiceToolBox.cpp 83436 2020-03-26 13:51:14Z vboxsync $ */
 /** @file
  * VBoxServiceToolbox - Internal (BusyBox-like) toolbox.
  */
@@ -291,20 +291,16 @@ static int vgsvcToolboxParseMode(const char *pcszMode, RTFMODE *pfMode)
  */
 static void vgsvcToolboxPathBufDestroy(PRTLISTNODE pList)
 {
-    AssertPtr(pList);
-    /** @todo use RTListForEachSafe */
-    PVBOXSERVICETOOLBOXPATHENTRY pNode = RTListGetFirst(pList, VBOXSERVICETOOLBOXPATHENTRY, Node);
-    while (pNode)
+    if (!pList)
+        return;
+
+    PVBOXSERVICETOOLBOXPATHENTRY pEntry, pEntryNext;
+    RTListForEachSafe(pList, pEntry, pEntryNext, VBOXSERVICETOOLBOXPATHENTRY, Node)
     {
-        PVBOXSERVICETOOLBOXPATHENTRY pNext = RTListNodeIsLast(pList, &pNode->Node)
-                                           ? NULL
-                                           : RTListNodeGetNext(&pNode->Node, VBOXSERVICETOOLBOXPATHENTRY, Node);
-        RTListNodeRemove(&pNode->Node);
+        RTListNodeRemove(&pEntry->Node);
 
-        RTStrFree(pNode->pszName);
-
-        RTMemFree(pNode);
-        pNode = pNext;
+        RTStrFree(pEntry->pszName);
+        RTMemFree(pEntry);
     }
 }
 
