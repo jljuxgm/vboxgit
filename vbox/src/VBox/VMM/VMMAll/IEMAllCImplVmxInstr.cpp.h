@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 79382 2019-06-27 09:48:48Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 79405 2019-06-28 10:33:18Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -3011,8 +3011,6 @@ IEM_STATIC VBOXSTRICTRC iemVmxVmexitInstrMovFromCr3(PVMCPU pVCpu, uint8_t iGReg,
  */
 IEM_STATIC VBOXSTRICTRC iemVmxVmexitInstrMovToCr3(PVMCPU pVCpu, uint64_t uNewCr3, uint8_t iGReg, uint8_t cbInstr)
 {
-    PCVMXVVMCS pVmcs = pVCpu->cpum.GstCtx.hwvirt.vmx.CTX_SUFF(pVmcs);
-    Assert(pVmcs);
     Assert(iGReg < X86_GREG_COUNT);
 
     /*
