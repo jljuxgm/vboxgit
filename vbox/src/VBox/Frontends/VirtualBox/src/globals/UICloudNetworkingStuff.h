@@ -1,4 +1,4 @@
-/* $Id: UICloudNetworkingStuff.h 83720 2020-04-16 16:41:10Z vboxsync $ */
+/* $Id: UICloudNetworkingStuff.h 83992 2020-04-27 10:16:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudNetworkingStuff namespace declaration.
  */
@@ -49,6 +49,31 @@ namespace UICloudNetworkingStuff
     SHARED_LIBRARY_STUFF CCloudMachine cloudMachineById(const QString &strProviderShortName,
                                                         const QString &strProfileName,
                                                         const QUuid &uMachineId);
+
+    /** Acquires @a comCloudMachine ID as a @a uResult, using @a pParent to show messages according to. */
+    SHARED_LIBRARY_STUFF bool cloudMachineId(const CCloudMachine &comCloudMachine,
+                                             QUuid &uResult,
+                                             QWidget *pParent = 0);
+    /** Acquires @a comCloudMachine accessible state as a @a fResult, using @a pParent to show messages according to. */
+    SHARED_LIBRARY_STUFF bool cloudMachineAccessible(const CCloudMachine &comCloudMachine,
+                                                     bool &fResult,
+                                                     QWidget *pParent = 0);
+    /** Acquires @a comCloudMachine accessible error as a @a comResult, using @a pParent to show messages according to. */
+    SHARED_LIBRARY_STUFF bool cloudMachineAccessError(const CCloudMachine &comCloudMachine,
+                                                      CVirtualBoxErrorInfo &comResult,
+                                                      QWidget *pParent = 0);
+    /** Acquires @a comCloudMachine name as a @a strResult, using @a pParent to show messages according to. */
+    SHARED_LIBRARY_STUFF bool cloudMachineName(const CCloudMachine &comCloudMachine,
+                                               QString &strResult,
+                                               QWidget *pParent = 0);
+    /** Acquires @a comCloudMachine OS type ID as a @a strResult, using @a pParent to show messages according to. */
+    SHARED_LIBRARY_STUFF bool cloudMachineOSTypeId(const CCloudMachine &comCloudMachine,
+                                                   QString &strResult,
+                                                   QWidget *pParent = 0);
+    /** Acquires @a comCloudMachine state as a @a enmResult, using @a pParent to show messages according to. */
+    SHARED_LIBRARY_STUFF bool cloudMachineState(const CCloudMachine &comCloudMachine,
+                                                KMachineState &enmResult,
+                                                QWidget *pParent = 0);
 
     /** Acquires instance map.
       * @param  comCloudClient   Brings cloud client object.
