@@ -1,4 +1,4 @@
-; $Id: VBoxSFA.asm 79095 2019-06-12 04:15:09Z vboxsync $
+; $Id: VBoxSFA.asm 79113 2019-06-13 03:56:18Z vboxsync $
 ;; @file
 ; VBoxSF - OS/2 Shared Folders, all assembly code (16 -> 32 thunking mostly).
 ;
@@ -1797,7 +1797,7 @@ segment CODE16
         je near .quiet
 segment DATA16
 .szMessage:
-        db 'VirtualBox Guest Additions IFS for OS/2', 0dh, 0ah, 0
+        db 'VirtualBox Guest Additions IFS for OS/2 version ', VBOX_VERSION_STRING, ' r', VBOX_SVN_REV_STR, 0dh, 0ah, 0
 segment CODE16
         mov     bx, .szMessage
         call    NAME(FS_INIT_FPUTS)
