@@ -1,4 +1,4 @@
-/* $Id: display-svga-x11.cpp 83038 2020-02-10 16:53:34Z vboxsync $ */
+/* $Id: display-svga-x11.cpp 83039 2020-02-10 16:57:01Z vboxsync $ */
 /** @file
  * X11 guest client - VMSVGA emulation resize event pass-through to X.Org
  * guest driver.
@@ -428,6 +428,7 @@ static void getModeNameAndLineFromCVT(int iWidth, int iHeight, char *pszOutModeN
     char szCvtCommand[MAX_COMMAND_LINE_LEN];
     const int iFreq = 60;
     const int iMinNameLen = 4;
+    /* Make release builds happy. */
     (void)iMinNameLen;
     RTStrPrintf(szCvtCommand, sizeof(szCvtCommand), "%s %d %d %d", pcszCvt, iWidth, iHeight, iFreq);
     FILE *pFile;
@@ -447,7 +448,7 @@ static void getModeNameAndLineFromCVT(int iWidth, int iHeight, char *pszOutModeN
                 szModeLine[strlen(szModeLine) - 1] = '\0';
             size_t iFirstQu = RTStrOffCharOrTerm(szModeLine, '\"');
             size_t iModeLineLen = strlen(szModeLine);
-            /* Some gcc's complain about unused variable. */
+            /* Make release builds happy. */
             (void)iModeLineLen;
             Assert(iFirstQu < iModeLineLen - iMinNameLen);
 
