@@ -1,4 +1,4 @@
-/* $Id: DevFdc.cpp 80531 2019-09-01 23:03:34Z vboxsync $ */
+/* $Id: DevFdc.cpp 80703 2019-09-10 14:50:27Z vboxsync $ */
 /** @file
  * VBox storage devices - Floppy disk controller
  */
@@ -2847,7 +2847,7 @@ const PDMDEVREG g_DeviceFloppyController =
     /* .cbInstanceShared = */       sizeof(fdctrl_t),
     /* .cbInstanceCC = */           0,
     /* .cbInstanceRC = */           0,
-    /* .uReserved1 = */             0,
+    /* .cMaxPciDevices = */         0,
     /* .pszDescription = */         "Floppy drive controller (Intel 82078)",
 #if defined(IN_RING3)
     /* .pszRCMod = */               "",

@@ -1,4 +1,4 @@
-/* $Id: VirtualKD.cpp 80531 2019-09-01 23:03:34Z vboxsync $ */
+/* $Id: VirtualKD.cpp 80703 2019-09-10 14:50:27Z vboxsync $ */
 /** @file
  * VirtualKD - Device stub/loader for fast Windows kernel-mode debugging.
  *
@@ -236,7 +236,7 @@ const PDMDEVREG g_DeviceVirtualKD =
     /* .cbInstanceShared = */       sizeof(VIRTUALKD),
     /* .cbInstanceCC = */           0,
     /* .cbInstanceRC = */           0,
-    /* .uReserved1 = */             0,
+    /* .cMaxPciDevices = */         0,
     /* .pszDescription = */         "Provides fast debugging interface when debugging Windows kernel",
 #if defined(IN_RING3)
     /* .pszRCMod = */               "",

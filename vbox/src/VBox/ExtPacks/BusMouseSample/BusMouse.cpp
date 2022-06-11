@@ -1,4 +1,4 @@
-/* $Id: BusMouse.cpp 80531 2019-09-01 23:03:34Z vboxsync $ */
+/* $Id: BusMouse.cpp 80703 2019-09-10 14:50:27Z vboxsync $ */
 /** @file
  * BusMouse - Microsoft Bus (parallel) mouse controller device.
  */
@@ -843,7 +843,7 @@ const PDMDEVREG g_DeviceBusMouse =
     /* .cbInstanceShared = */       sizeof(MouState),
     /* .cbInstanceCC = */           0,
     /* .cbInstanceRC = */           0,
-    /* .uReserved1 = */             0,
+    /* .cMaxPciDevices = */         0,
     /* .pszDescription = */         "Microsoft Bus Mouse controller. LUN #0 is the mouse connector.",
 # if defined(IN_RING3)
     /* .pszRCMod = */               "VBoxDDRC.rc",

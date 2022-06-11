@@ -1,4 +1,4 @@
-/* $Id: GIMDev.cpp 80531 2019-09-01 23:03:34Z vboxsync $ */
+/* $Id: GIMDev.cpp 80703 2019-09-10 14:50:27Z vboxsync $ */
 /** @file
  * Guest Interface Manager Device.
  */
@@ -421,7 +421,7 @@ const PDMDEVREG g_DeviceGIMDev =
     /* .cbInstanceShared = */       sizeof(GIMDEV),
     /* .cbInstanceCC = */           0,
     /* .cbInstanceRC = */           0,
-    /* .uReserved1 = */             0,
+    /* .cMaxPciDevices = */         0,
     /* .pszDescription = */         "VirtualBox GIM Device",
 #if defined(IN_RING3)
     /* .pszRCMod = */               "VBoxDDRC.rc",

@@ -1,4 +1,4 @@
-/* $Id: DevPcArch.cpp 80531 2019-09-01 23:03:34Z vboxsync $ */
+/* $Id: DevPcArch.cpp 80703 2019-09-10 14:50:27Z vboxsync $ */
 /** @file
  * DevPcArch - PC Architecture Device.
  */
@@ -297,7 +297,7 @@ const PDMDEVREG g_DevicePcArch =
     /* .cbInstanceShared = */       sizeof(DEVPCARCH),
     /* .cbInstanceCC = */           0,
     /* .cbInstanceRC = */           0,
-    /* .uReserved1 = */             0,
+    /* .cMaxPciDevices = */         0,
     /* .pszDescription = */         "PC Architecture Device",
 #if defined(IN_RING3)
     /* .pszRCMod = */               "",

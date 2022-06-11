@@ -1,4 +1,4 @@
-/* $Id: DevIoApic.cpp 80531 2019-09-01 23:03:34Z vboxsync $ */
+/* $Id: DevIoApic.cpp 80703 2019-09-10 14:50:27Z vboxsync $ */
 /** @file
  * IO APIC - Input/Output Advanced Programmable Interrupt Controller.
  */
@@ -1383,7 +1383,7 @@ const PDMDEVREG g_DeviceIOAPIC =
     /* .cbInstanceShared = */       sizeof(IOAPIC),
     /* .cbInstanceCC = */           0,
     /* .cbInstanceRC = */           0,
-    /* .uReserved1 = */             0,
+    /* .cMaxPciDevices = */         0,
     /* .pszDescription = */         "I/O Advanced Programmable Interrupt Controller (IO-APIC) Device",
 #if defined(IN_RING3)
     /* .pszRCMod = */               "VBoxDDRC.rc",

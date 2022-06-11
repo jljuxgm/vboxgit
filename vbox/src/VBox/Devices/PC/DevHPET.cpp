@@ -1,4 +1,4 @@
-/* $Id: DevHPET.cpp 80531 2019-09-01 23:03:34Z vboxsync $ */
+/* $Id: DevHPET.cpp 80703 2019-09-10 14:50:27Z vboxsync $ */
 /** @file
  * HPET virtual device - High Precision Event Timer emulation.
  */
@@ -1488,7 +1488,7 @@ const PDMDEVREG g_DeviceHPET =
     /* .cbInstanceShared = */       sizeof(HPET),
     /* .cbInstanceCC = */           0,
     /* .cbInstanceRC = */           0,
-    /* .uReserved1 = */             0,
+    /* .cMaxPciDevices = */         0,
     /* .pszDescription = */         "High Precision Event Timer (HPET) Device",
 #if defined(IN_RING3)
     /* .pszRCMod = */               "VBoxDDRC.rc",

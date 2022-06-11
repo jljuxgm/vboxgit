@@ -1,4 +1,4 @@
-/* $Id: DevEFI.cpp 80531 2019-09-01 23:03:34Z vboxsync $ */
+/* $Id: DevEFI.cpp 80703 2019-09-10 14:50:27Z vboxsync $ */
 /** @file
  * DevEFI - EFI <-> VirtualBox Integration Framework.
  */
@@ -2468,7 +2468,7 @@ const PDMDEVREG g_DeviceEFI =
     /* .cbInstanceShared = */       sizeof(DEVEFI),
     /* .cbInstanceCC = */           0,
     /* .cbInstanceRC = */           0,
-    /* .uReserved1 = */             0,
+    /* .cMaxPciDevices = */         0,
     /* .pszDescription = */         "Extensible Firmware Interface Device.\n"
                                     "LUN#0 - NVRAM port",
 #if defined(IN_RING3)
