@@ -1,4 +1,4 @@
-/* $Id: IOMR3IoPort.cpp 81461 2019-10-22 21:09:55Z vboxsync $ */
+/* $Id: IOMR3IoPort.cpp 81564 2019-10-29 10:38:26Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor, I/O port related APIs.
  */
@@ -543,6 +543,34 @@ VMMR3_INT_DECL(int)  IOMR3IoPortValidateHandle(PVM pVM, PPDMDEVINS pDevIns, IOMI
     PIOMIOPORTENTRYR3 const pRegEntry = &pVM->iom.s.paIoPortRegs[hIoPorts];
     AssertReturn(pRegEntry->pDevIns == pDevIns, VERR_IOM_INVALID_IOPORT_HANDLE);
     return VINF_SUCCESS;
+}
+
+
+/**
+ * Gets the mapping address of I/O ports @a hIoPorts.
+ *
+ * @returns Mapping address if mapped, UINT32_MAX if not mapped or invalid
+ *          input.
+ * @param   pVM         The cross context VM structure.
+ * @param   pDevIns     The device which allegedly owns @a hRegion.
+ * @param   hIoPorts    The handle to I/O port region.
+ */
+VMMR3_INT_DECL(uint32_t) IOMR3IoPortGetMappingAddress(PVM pVM, PPDMDEVINS pDevIns, IOMIOPORTHANDLE hIoPorts)
+{
+    AssertPtrReturn(pDevIns, UINT32_MAX);
+    AssertReturn(hIoPorts < RT_MIN(pVM->iom.s.cMmioRegs, pVM->iom.s.cMmioAlloc), UINT32_MAX);
+    IOMIOPORTENTRYR3 volatile * const pRegEntry = &pVM->iom.s.paIoPortRegs[hIoPorts];
+    AssertReturn(pRegEntry->pDevIns == pDevIns, UINT32_MAX);
+    for (uint32_t iTry = 0; ; iTry++)
+    {
+        bool        fMapped = pRegEntry->fMapped;
+        RTIOPORT    uPort   = pRegEntry->uPort;
+        if (   (   ASMAtomicReadBool(&pRegEntry->fMapped) == fMapped
+                && uPort == pRegEntry->uPort)
+            || iTry > 1024)
+            return fMapped ? uPort : UINT32_MAX;
+        ASMNopPause();
+    }
 }
 
 
