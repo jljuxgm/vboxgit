@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 79346 2019-06-26 09:13:37Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 79355 2019-06-26 11:19:45Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -14047,6 +14047,7 @@ HMVMX_EXIT_DECL hmR0VmxExitXcptOrNmi(PVMCPU pVCpu, PVMXTRANSIENT pVmxTransient)
          * [1] -- See Intel spec. 27.2.3 "Information for VM Exits During Event Delivery".
          * [2] -- See Intel spec. 27.5.5 "Updating Non-Register State".
          */
+        STAM_PROFILE_ADV_STOP(&pVCpu->hm.s.StatExitXcptNmi, y3);
         return hmR0VmxExitHostNmi(pVCpu);
     }
 
@@ -16402,7 +16403,6 @@ static VBOXSTRICTRC hmR0VmxExitHostNmi(PVMCPU pVCpu)
     VMXDispatchHostNmi();
 
     STAM_REL_COUNTER_INC(&pVCpu->hm.s.StatExitHostNmiInGC);
-    STAM_PROFILE_ADV_STOP(&pVCpu->hm.s.StatExitXcptNmi, y3);
     return VINF_SUCCESS;
 }
 
