@@ -1,4 +1,4 @@
-/* $Id: IOMR3IoPort.cpp 81383 2019-10-19 23:58:44Z vboxsync $ */
+/* $Id: IOMR3IoPort.cpp 81461 2019-10-22 21:09:55Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor, I/O port related APIs.
  */
@@ -283,6 +283,9 @@ VMMR3_INT_DECL(int)  IOMR3IoPortCreate(PVM pVM, PPDMDEVINS pDevIns, RTIOPORT cPo
     pVM->iom.s.paIoPortRegs[idx].idxSelf            = idx;
 
     pVM->iom.s.cIoPortRegs = idx + 1;
+#ifdef VBOX_WITH_STATISTICS
+    pVM->iom.s.cIoPortStats = cNewIoPortStats;
+#endif
     *phIoPorts = idx;
     return VINF_SUCCESS;
 }
