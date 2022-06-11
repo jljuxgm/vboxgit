@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 81603 2019-10-31 09:25:18Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 81710 2019-11-06 14:51:26Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -1740,9 +1740,17 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
                 eFwType = fIsGuest64Bit ? FirmwareType_EFI64 : FirmwareType_EFI32;
             bool const f64BitEntry = eFwType == FirmwareType_EFI64;
 
+            Assert(eFwType == FirmwareType_EFI64 || eFwType == FirmwareType_EFI32 || eFwType == FirmwareType_EFIDUAL);
+#ifdef VBOX_WITH_EFI_IN_DD2
+            const char *pszEfiRomFile = eFwType == FirmwareType_EFIDUAL ? "VBoxEFIDual.fd"
+                                      : eFwType == FirmwareType_EFI32   ? "VBoxEFI32.fd"
+                                      :                                   "VBoxEFI64.fd";
+#else
             Utf8Str efiRomFile;
             rc = findEfiRom(virtualBox, eFwType, &efiRomFile);
             AssertRCReturn(rc, rc);
+            const char *pszEfiRomFile = efiRomFile.c_str();
+#endif
 
             /* Get boot args */
             Utf8Str bootArgs;
@@ -1815,7 +1823,7 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
             InsertConfigInteger(pCfg,  "NumCPUs",     cCpus);
             InsertConfigInteger(pCfg,  "McfgBase",    uMcfgBase);
             InsertConfigInteger(pCfg,  "McfgLength",  cbMcfgLength);
-            InsertConfigString(pCfg,   "EfiRom",      efiRomFile);
+            InsertConfigString(pCfg,   "EfiRom",      pszEfiRomFile);
             InsertConfigString(pCfg,   "BootArgs",    bootArgs);
             InsertConfigString(pCfg,   "DeviceProps", deviceProps);
             InsertConfigInteger(pCfg,  "IOAPIC",      fIOAPIC);
