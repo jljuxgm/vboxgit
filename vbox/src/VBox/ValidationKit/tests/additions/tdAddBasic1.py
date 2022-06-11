@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 83848 2020-04-20 10:46:25Z vboxsync $
+# $Id: tdAddBasic1.py 83849 2020-04-20 11:28:33Z vboxsync $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 83848 $"
+__version__ = "$Revision: 83849 $"
 
 # Standard Python imports.
 import os;
@@ -357,7 +357,7 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
             if fNeedsProxy:
                 fRc = oTxsSession.syncMkDir("/etc/apt/apt.conf.d/", 0o755);
                 if fRc:
-                    fRc = oTxsSession.syncUploadString('"Acquire::http::Proxy \"' + sHttpProxy + '\"\r\n'
+                    fRc = oTxsSession.syncUploadString('Acquire::http::Proxy \"' + sHttpProxy + '\"\r\n'
                                                        'Acquire::https::Proxy \"' + sHttpsProxy + '\"',
                                                        '/etc/apt/apt.conf.d/proxy.conf', 0o644);
                     if not fRc:
@@ -371,7 +371,7 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
                 fRc = self.txsRunTest(oTxsSession, 'Applying EOL upgrade path of Ubuntu 15.10', 5 * 60 *1000,
                                       '/bin/sed',
                                       ('/bin/sed', '-E', '-i',
-                                       '"s/http:\\/\\/.*\\.ubuntu\\.com/http:\\/\\/old-releases.ubuntu.com/"',
+                                       's/http:\\/\\/.*\\.ubuntu\\.com/http:\\/\\/old-releases.ubuntu.com/',
                                        '/etc/apt/sources.list'),
                                       fCheckSessionStatus = True);
             if fRc:
