@@ -1,4 +1,4 @@
-/* $Id: DevRTC.cpp 81503 2019-10-24 01:43:10Z vboxsync $ */
+/* $Id: DevRTC.cpp 81514 2019-10-24 11:25:11Z vboxsync $ */
 /** @file
  * Motorola MC146818 RTC/CMOS Device with PIIX4 extensions.
  */
@@ -1278,8 +1278,7 @@ const PDMDEVREG g_DeviceMC146818 =
     /* .u32Version = */             PDM_DEVREG_VERSION,
     /* .uReserved0 = */             0,
     /* .szName = */                 "mc146818",
-    /* .fFlags = */                 PDM_DEVREG_FLAGS_RC | PDM_DEVREG_FLAGS_R0 | PDM_DEVREG_FLAGS_NEW_STYLE
-                                    | PDM_DEVREG_FLAGS_HOST_BITS_DEFAULT | PDM_DEVREG_FLAGS_GUEST_BITS_DEFAULT,
+    /* .fFlags = */                 PDM_DEVREG_FLAGS_DEFAULT_BITS | PDM_DEVREG_FLAGS_RZ | PDM_DEVREG_FLAGS_NEW_STYLE,
     /* .fClass = */                 PDM_DEVREG_CLASS_RTC,
     /* .cMaxInstances = */          1,
     /* .uSharedVersion = */         1,

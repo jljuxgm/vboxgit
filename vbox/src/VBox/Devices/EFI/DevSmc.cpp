@@ -1,4 +1,4 @@
-/* $Id: DevSmc.cpp 80704 2019-09-10 15:19:39Z vboxsync $ */
+/* $Id: DevSmc.cpp 81514 2019-10-24 11:25:11Z vboxsync $ */
 /** @file
  * DevSmc - Apple System Management Controller.
  *
@@ -1499,7 +1499,7 @@ const PDMDEVREG g_DeviceSmc =
     /* .u32Version = */             PDM_DEVREG_VERSION,
     /* .uReserved0 = */             0,
     /* .szName = */                 "smc",
-    /* .fFlags = */                 PDM_DEVREG_FLAGS_HOST_BITS_DEFAULT | PDM_DEVREG_FLAGS_GUEST_BITS_DEFAULT | PDM_DEVREG_FLAGS_R0 | PDM_DEVREG_FLAGS_RC,
+    /* .fFlags = */                 PDM_DEVREG_FLAGS_DEFAULT_BITS | PDM_DEVREG_FLAGS_RZ,
     /* .fClass = */                 PDM_DEVREG_CLASS_ARCH,
     /* .cMaxInstances = */          1,
     /* .uSharedVersion = */         42,

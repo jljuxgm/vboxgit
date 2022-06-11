@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 81221 2019-10-11 08:50:59Z vboxsync $ */
+/* $Id: DevVGA.cpp 81514 2019-10-24 11:25:11Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -7278,7 +7278,7 @@ const PDMDEVREG g_DeviceVga =
     /* .u32Version = */             PDM_DEVREG_VERSION,
     /* .uReserved0 = */             0,
     /* .szName = */                 "vga",
-    /* .fFlags = */                 PDM_DEVREG_FLAGS_DEFAULT_BITS | PDM_DEVREG_FLAGS_RC | PDM_DEVREG_FLAGS_R0,
+    /* .fFlags = */                 PDM_DEVREG_FLAGS_DEFAULT_BITS | PDM_DEVREG_FLAGS_RZ,
     /* .fClass = */                 PDM_DEVREG_CLASS_GRAPHICS,
     /* .cMaxInstances = */          1,
     /* .uSharedVersion = */         42,

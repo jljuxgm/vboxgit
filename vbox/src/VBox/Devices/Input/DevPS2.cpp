@@ -1,4 +1,4 @@
-/* $Id: DevPS2.cpp 80704 2019-09-10 15:19:39Z vboxsync $ */
+/* $Id: DevPS2.cpp 81514 2019-10-24 11:25:11Z vboxsync $ */
 /** @file
  * DevPS2 - PS/2 keyboard & mouse controller device.
  */
@@ -1050,7 +1050,7 @@ const PDMDEVREG g_DevicePS2KeyboardMouse =
     /* .u32Version = */             PDM_DEVREG_VERSION,
     /* .uReserved0 = */             0,
     /* .szName = */                 "pckbd",
-    /* .fFlags = */                 PDM_DEVREG_FLAGS_DEFAULT_BITS | PDM_DEVREG_FLAGS_RC | PDM_DEVREG_FLAGS_R0,
+    /* .fFlags = */                 PDM_DEVREG_FLAGS_DEFAULT_BITS | PDM_DEVREG_FLAGS_RZ,
     /* .fClass = */                 PDM_DEVREG_CLASS_INPUT,
     /* .cMaxInstances = */          1,
     /* .uSharedVersion = */         42,

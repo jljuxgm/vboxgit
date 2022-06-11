@@ -1,4 +1,4 @@
-/* $Id: DevOxPcie958.cpp 81369 2019-10-18 21:13:03Z vboxsync $ */
+/* $Id: DevOxPcie958.cpp 81514 2019-10-24 11:25:11Z vboxsync $ */
 /** @file
  * DevOxPcie958 - Oxford Semiconductor OXPCIe958 PCI Express bridge to octal serial port emulation
  */
@@ -632,7 +632,7 @@ const PDMDEVREG g_DeviceOxPcie958 =
     /* .u32version = */             PDM_DEVREG_VERSION,
     /* .uReserved0 = */             0,
     /* .szName = */                 "oxpcie958uart",
-    /* .fFlags = */                 PDM_DEVREG_FLAGS_DEFAULT_BITS | PDM_DEVREG_FLAGS_RC | PDM_DEVREG_FLAGS_R0,
+    /* .fFlags = */                 PDM_DEVREG_FLAGS_DEFAULT_BITS | PDM_DEVREG_FLAGS_RZ,
     /* .fClass = */                 PDM_DEVREG_CLASS_SERIAL,
     /* .cMaxInstances = */          ~0U,
     /* .uSharedVersion = */         42,

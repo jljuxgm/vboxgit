@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet.cpp 81031 2019-09-26 19:26:33Z vboxsync $ */
+/* $Id: DevVirtioNet.cpp 81514 2019-10-24 11:25:11Z vboxsync $ */
 /** @file
  * DevVirtioNet - Virtio Network Device
  */
@@ -2352,7 +2352,7 @@ const PDMDEVREG g_DeviceVirtioNet =
     /* .uReserved0 = */             0,
     /* .szName = */                 "virtio-net",
 #ifdef VNET_GC_SUPPORT
-    /* .fFlags = */                 PDM_DEVREG_FLAGS_DEFAULT_BITS | PDM_DEVREG_FLAGS_RC | PDM_DEVREG_FLAGS_R0,
+    /* .fFlags = */                 PDM_DEVREG_FLAGS_DEFAULT_BITS | PDM_DEVREG_FLAGS_RZ,
 #else
     /* .fFlags = */                 PDM_DEVREG_FLAGS_DEFAULT_BITS,
 #endif

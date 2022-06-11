@@ -1,4 +1,4 @@
-/* $Id: GIMDev.cpp 80704 2019-09-10 15:19:39Z vboxsync $ */
+/* $Id: GIMDev.cpp 81514 2019-10-24 11:25:11Z vboxsync $ */
 /** @file
  * Guest Interface Manager Device.
  */
@@ -414,7 +414,7 @@ const PDMDEVREG g_DeviceGIMDev =
     /* .u32Version = */             PDM_DEVREG_VERSION,
     /* .uReserved0 = */             0,
     /* .szName = */                 "GIMDev",
-    /* .fFlags = */                 PDM_DEVREG_FLAGS_DEFAULT_BITS | PDM_DEVREG_FLAGS_R0 | PDM_DEVREG_FLAGS_RC,
+    /* .fFlags = */                 PDM_DEVREG_FLAGS_DEFAULT_BITS | PDM_DEVREG_FLAGS_RZ,
     /* .fClass = */                 PDM_DEVREG_CLASS_MISC,
     /* .cMaxInstances = */          1,
     /* .uSharedVersion = */         42,

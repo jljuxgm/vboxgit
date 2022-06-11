@@ -1,4 +1,4 @@
-/* $Id: DevHPET.cpp 80704 2019-09-10 15:19:39Z vboxsync $ */
+/* $Id: DevHPET.cpp 81514 2019-10-24 11:25:11Z vboxsync $ */
 /** @file
  * HPET virtual device - High Precision Event Timer emulation.
  */
@@ -1481,7 +1481,7 @@ const PDMDEVREG g_DeviceHPET =
     /* .u32Version = */             PDM_DEVREG_VERSION,
     /* .uReserved0 = */             0,
     /* .szName = */                 "hpet",
-    /* .fFlags = */                 PDM_DEVREG_FLAGS_DEFAULT_BITS | PDM_DEVREG_FLAGS_RC | PDM_DEVREG_FLAGS_R0,
+    /* .fFlags = */                 PDM_DEVREG_FLAGS_DEFAULT_BITS | PDM_DEVREG_FLAGS_RZ,
     /* .fClass = */                 PDM_DEVREG_CLASS_PIT,
     /* .cMaxInstances = */          1,
     /* .uSharedVersion = */         42,

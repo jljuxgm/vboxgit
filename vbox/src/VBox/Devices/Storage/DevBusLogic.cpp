@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 81031 2019-09-26 19:26:33Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 81514 2019-10-24 11:25:11Z vboxsync $ */
 /** @file
  * VBox storage devices - BusLogic SCSI host adapter BT-958.
  *
@@ -4497,7 +4497,7 @@ const PDMDEVREG g_DeviceBusLogic =
     /* .u32Version = */             PDM_DEVREG_VERSION,
     /* .uReserved0 = */             0,
     /* .szName = */                 "buslogic",
-    /* .fFlags = */                 PDM_DEVREG_FLAGS_DEFAULT_BITS | PDM_DEVREG_FLAGS_RC | PDM_DEVREG_FLAGS_R0 |
+    /* .fFlags = */                 PDM_DEVREG_FLAGS_DEFAULT_BITS | PDM_DEVREG_FLAGS_RZ |
                                     PDM_DEVREG_FLAGS_FIRST_SUSPEND_NOTIFICATION | PDM_DEVREG_FLAGS_FIRST_POWEROFF_NOTIFICATION |
                                     PDM_DEVREG_FLAGS_FIRST_RESET_NOTIFICATION,
     /* .fClass = */                 PDM_DEVREG_CLASS_STORAGE,

@@ -1,4 +1,4 @@
-/* $Id: DevDMA.cpp 80704 2019-09-10 15:19:39Z vboxsync $ */
+/* $Id: DevDMA.cpp 81514 2019-10-24 11:25:11Z vboxsync $ */
 /** @file
  * DevDMA - DMA Controller Device.
  */
@@ -1129,7 +1129,7 @@ const PDMDEVREG g_DeviceDMA =
     /* .u32Version = */             PDM_DEVREG_VERSION,
     /* .uReserved0 = */             0,
     /* .szName = */                 "8237A",
-    /* .fFlags = */                 PDM_DEVREG_FLAGS_DEFAULT_BITS | PDM_DEVREG_FLAGS_R0 | PDM_DEVREG_FLAGS_RC,
+    /* .fFlags = */                 PDM_DEVREG_FLAGS_DEFAULT_BITS | PDM_DEVREG_FLAGS_RZ,
     /* .fClass = */                 PDM_DEVREG_CLASS_DMA,
     /* .cMaxInstances = */          1,
     /* .uSharedVersion = */         42,

@@ -1,4 +1,4 @@
-/* $Id: DevSerial.cpp 80704 2019-09-10 15:19:39Z vboxsync $ */
+/* $Id: DevSerial.cpp 81514 2019-10-24 11:25:11Z vboxsync $ */
 /** @file
  * DevSerial - 16550A UART emulation.
  *
@@ -470,7 +470,7 @@ const PDMDEVREG g_DeviceSerialPort =
     /* .u32Version = */             PDM_DEVREG_VERSION,
     /* .uReserved0 = */             0,
     /* .szName = */                 "serial",
-    /* .fFlags = */                 PDM_DEVREG_FLAGS_DEFAULT_BITS | PDM_DEVREG_FLAGS_RC | PDM_DEVREG_FLAGS_R0,
+    /* .fFlags = */                 PDM_DEVREG_FLAGS_DEFAULT_BITS | PDM_DEVREG_FLAGS_RZ,
     /* .fClass = */                 PDM_DEVREG_CLASS_SERIAL,
     /* .cMaxInstances = */          UINT32_MAX,
     /* .uSharedVersion = */         42,

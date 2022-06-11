@@ -1,4 +1,4 @@
-/* $Id: DevVirtioSCSI.cpp 81369 2019-10-18 21:13:03Z vboxsync $ $Revision: 81369 $ $Date: 2019-10-19 05:13:03 +0800 (Sat, 19 Oct 2019) $ $Author: vboxsync $ */
+/* $Id: DevVirtioSCSI.cpp 81514 2019-10-24 11:25:11Z vboxsync $ $Revision: 81514 $ $Date: 2019-10-24 19:25:11 +0800 (Thu, 24 Oct 2019) $ $Author: vboxsync $ */
 /** @file
  * VBox storage devices - Virtio SCSI Driver
  *
@@ -2456,7 +2456,7 @@ const PDMDEVREG g_DeviceVirtioSCSI =
     /* .uReserved0 = */             0,
     /* .szName = */                 "virtio-scsi",
 #ifdef VIRTIOSCSI_GC_SUPPORT
-    /* .fFlags = */                 PDM_DEVREG_FLAGS_DEFAULT_BITS | PDM_DEVREG_FLAGS_RC | PDM_DEVREG_FLAGS_R0
+    /* .fFlags = */                 PDM_DEVREG_FLAGS_DEFAULT_BITS | PDM_DEVREG_FLAGS_RZ
                                     | PDM_DEVREG_FLAGS_FIRST_SUSPEND_NOTIFICATION
                                     | PDM_DEVREG_FLAGS_FIRST_POWEROFF_NOTIFICATION,
 #else

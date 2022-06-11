@@ -1,4 +1,4 @@
-/* $Id: DevEFI.cpp 81509 2019-10-24 08:56:40Z vboxsync $ */
+/* $Id: DevEFI.cpp 81514 2019-10-24 11:25:11Z vboxsync $ */
 /** @file
  * DevEFI - EFI <-> VirtualBox Integration Framework.
  */
@@ -2704,7 +2704,7 @@ const PDMDEVREG g_DeviceEFI =
     /* .u32Version = */             PDM_DEVREG_VERSION,
     /* .uReserved0 = */             0,
     /* .szName = */                 "efi",
-    /* .fFlags = */                 PDM_DEVREG_FLAGS_DEFAULT_BITS | PDM_DEVREG_FLAGS_R0 | PDM_DEVREG_FLAGS_RC | PDM_DEVREG_FLAGS_NEW_STYLE,
+    /* .fFlags = */                 PDM_DEVREG_FLAGS_DEFAULT_BITS | PDM_DEVREG_FLAGS_RZ | PDM_DEVREG_FLAGS_NEW_STYLE,
     /* .fClass = */                 PDM_DEVREG_CLASS_ARCH_BIOS,
     /* .cMaxInstances = */          1,
     /* .uSharedVersion = */         42,

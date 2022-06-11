@@ -1,4 +1,4 @@
-/* $Id: DevPcArch.cpp 80704 2019-09-10 15:19:39Z vboxsync $ */
+/* $Id: DevPcArch.cpp 81514 2019-10-24 11:25:11Z vboxsync $ */
 /** @file
  * DevPcArch - PC Architecture Device.
  */
@@ -290,7 +290,7 @@ const PDMDEVREG g_DevicePcArch =
     /* .u32Version = */             PDM_DEVREG_VERSION,
     /* .uReserved0 = */             0,
     /* .szName = */                 "pcarch",
-    /* .fFlags = */                 PDM_DEVREG_FLAGS_HOST_BITS_DEFAULT | PDM_DEVREG_FLAGS_GUEST_BITS_DEFAULT,
+    /* .fFlags = */                 PDM_DEVREG_FLAGS_DEFAULT_BITS,
     /* .fClass = */                 PDM_DEVREG_CLASS_ARCH,
     /* .cMaxInstances = */          1,
     /* .uSharedVersion = */         42,
