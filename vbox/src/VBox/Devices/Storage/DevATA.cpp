@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 81999 2019-11-19 16:02:48Z vboxsync $ */
+/* $Id: DevATA.cpp 82015 2019-11-20 09:48:33Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -7789,7 +7789,7 @@ static DECLCALLBACK(int) ataR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFGM
     /*
      * Validate and read configuration.
      */
-    PDMDEV_VALIDATE_CONFIG_RETURN(pDevIns, "IRQDelay|Type", "");
+    PDMDEV_VALIDATE_CONFIG_RETURN(pDevIns, "IRQDelay|Type",  "PrimaryMaster|PrimarySlave|SecondaryMaster|SecondarySlave");
 
     rc = pHlp->pfnCFGMQueryU32Def(pCfg, "IRQDelay", &msDelayIRQ, 0);
     if (RT_FAILURE(rc))
