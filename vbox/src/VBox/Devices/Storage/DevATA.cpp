@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 81998 2019-11-19 15:59:20Z vboxsync $ */
+/* $Id: DevATA.cpp 81999 2019-11-19 16:02:48Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -6164,11 +6164,11 @@ static DECLCALLBACK(int) ataR3AsyncIOThread(RTTHREAD hThreadSelf, void *pvUser)
                 LogRel(("PIIX3 ATA: Ctl#%d: finished processing RESET\n", pCtl->iCtl));
                 for (uint32_t i = 0; i < RT_ELEMENTS(pCtl->aIfs); i++)
                 {
+                    ataR3SetSignature(&pCtl->aIfs[i]);
                     if (pCtl->aIfs[i].fATAPI)
                         ataSetStatusValue(pCtl, &pCtl->aIfs[i], 0); /* NOTE: READY is _not_ set */
                     else
                         ataSetStatusValue(pCtl, &pCtl->aIfs[i], ATA_STAT_READY | ATA_STAT_SEEK);
-                    ataR3SetSignature(&pCtl->aIfs[i]);
                 }
                 break;
 
