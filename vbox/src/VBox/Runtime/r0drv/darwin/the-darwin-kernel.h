@@ -1,4 +1,4 @@
-/* $Id: the-darwin-kernel.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: the-darwin-kernel.h 83074 2020-02-14 12:35:34Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the Darwing kernel.
  */
@@ -205,6 +205,10 @@ typedef void        (*PFNR0DARWINCPUINTERRUPT)(int);
 extern lck_grp_t                  *g_pDarwinLockGroup;
 extern PFNR0DARWINASTPENDING       g_pfnR0DarwinAstPending;
 extern PFNR0DARWINCPUINTERRUPT     g_pfnR0DarwinCpuInterrupt;
+#ifdef DEBUG /* Used once for debugging memory issues (see #9466). */
+typedef kern_return_t (*PFNR0DARWINVMFAULTEXTERNAL)(vm_map_t, vm_map_offset_t, vm_prot_t, boolean_t, int, pmap_t, vm_map_offset_t);
+extern PFNR0DARWINVMFAULTEXTERNAL  g_pfnR0DarwinVmFaultExternal;
+#endif
 
 /* threadpreempt-r0drv-darwin.cpp */
 int  rtThreadPreemptDarwinInit(void);
