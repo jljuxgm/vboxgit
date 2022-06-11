@@ -1,4 +1,4 @@
-/* $Id: VBoxServicePageSharing.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxServicePageSharing.cpp 83822 2020-04-19 01:13:00Z vboxsync $ */
 /** @file
  * VBoxService - Guest page sharing.
  */
@@ -498,8 +498,8 @@ static void vgsvcPageSharingInspectGuest(void)
 
                     pRec = &pModule->Core;
                 }
-                bool ret = RTAvlPVInsert(&pNewTree, pRec);
-                Assert(ret); NOREF(ret);
+                bool fRet = RTAvlPVInsert(&pNewTree, pRec);
+                Assert(fRet); NOREF(fRet);
             }
         }
 skipkernelmodules:
