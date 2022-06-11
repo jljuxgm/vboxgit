@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsGeneral.h 82290 2019-11-29 18:31:38Z vboxsync $ */
+/* $Id: UIMachineSettingsGeneral.h 82292 2019-11-29 18:47:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsGeneral class declaration.
  */
@@ -99,8 +99,6 @@ private:
     void prepare();
     /** Prepares 'Basic' tab. */
     void prepareTabBasic();
-    /** Prepares 'Advanced' tab. */
-    void prepareTabAdvanced();
     /** Prepares 'Description' tab. */
     void prepareTabDescription();
     /** Prepares 'Encryption' tab. */
@@ -112,6 +110,8 @@ private:
 
     /** Repopulates Clipboard mode combo-box. */
     void repopulateComboClipboardMode();
+    /** Repopulates DnD mode combo-box. */
+    void repopulateComboDnDMode();
 
     /** Saves existing general data from the cache. */
     bool saveGeneralData();
