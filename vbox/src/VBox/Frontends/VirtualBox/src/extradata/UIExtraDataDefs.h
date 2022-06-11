@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 80773 2019-09-13 11:10:21Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 81228 2019-10-11 14:13:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -153,8 +153,6 @@ namespace UIExtraDataDefs
       * @{ */
         /** Holds recent folder for VISO creation content. */
         SHARED_LIBRARY_STUFF extern const char *GUI_VISOCreator_RecentFolder;
-        /** Holds dialog geometry for VISO creation dialog. */
-        SHARED_LIBRARY_STUFF extern const char *GUI_VISOCreator_DialogGeometry;
     /** @} */
 
     /** @name VirtualBox Manager
