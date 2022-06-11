@@ -1,4 +1,4 @@
-/* $Id: MMPagePool.cpp 82555 2019-12-11 23:56:54Z vboxsync $ */
+/* $Id: MMPagePool.cpp 82557 2019-12-12 00:35:39Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Page Pool.
  */
@@ -43,7 +43,9 @@
 *********************************************************************************************************************************/
 #ifdef IN_RING3
 static void *   mmR3PagePoolAlloc(PMMPAGEPOOL pPool);
+#if 0
 static void     mmR3PagePoolFree(PMMPAGEPOOL pPool, void *pv);
+#endif
 #endif
 
 
@@ -325,6 +327,7 @@ DECLINLINE(void *) mmR3PagePoolAlloc(PMMPAGEPOOL pPool)
     return NULL;
 }
 
+#if 0
 
 /**
  * Frees a page from the page pool.
@@ -378,7 +381,6 @@ DECLINLINE(void) mmR3PagePoolFree(PMMPAGEPOOL pPool, void *pv)
     }
 }
 
-#if 0
 
 /**
  * Allocates a page from the page pool.
