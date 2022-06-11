@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 81870 2019-11-15 12:52:16Z vboxsync $ */
+/* $Id: DevATA.cpp 81997 2019-11-19 15:57:09Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -1846,9 +1846,19 @@ static bool ataR3ReadSectorsSS(PPDMDEVINS pDevIns, PATACONTROLLER pCtl, PATADEVS
     rc = ataR3ReadSectors(pDevIns, pCtl, s, pDevR3, iLBA, s->abIOBuffer, cSectors, &fRedo);
     if (RT_SUCCESS(rc))
     {
-        ataR3SetSector(s, iLBA + cSectors);
+        /* When READ SECTORS etc. finishes, the address in the task
+         * file register points at the last sector read, not at the next
+         * sector that would be read. This ensures the registers always
+         * contain a valid sector address.
+         */
         if (s->cbElementaryTransfer == s->cbTotalTransfer)
+        {
             s->iSourceSink = ATAFN_SS_NULL;
+            ataR3SetSector(s, iLBA + cSectors - 1);
+        }
+        else
+            ataR3SetSector(s, iLBA + cSectors);
+        s->uATARegNSector -= cSectors;
         ataR3CmdOK(pCtl, s, ATA_STAT_SEEK);
     }
     else
