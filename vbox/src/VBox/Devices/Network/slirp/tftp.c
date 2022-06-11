@@ -1,4 +1,4 @@
-/* $Id: tftp.c 80984 2019-09-24 16:17:53Z vboxsync $ */
+/* $Id: tftp.c 80985 2019-09-24 16:19:33Z vboxsync $ */
 /** @file
  * NAT - TFTP server.
  */
@@ -42,7 +42,6 @@
  */
 
 #include <slirp.h>
-#include <iprt/asm-math.h>
 #include <iprt/file.h>
 #include <iprt/err.h>
 #include <iprt/path.h>
