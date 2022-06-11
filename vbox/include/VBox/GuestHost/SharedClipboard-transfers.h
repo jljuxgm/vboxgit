@@ -1,4 +1,4 @@
-/* $Id: SharedClipboard-transfers.h 81325 2019-10-17 16:07:37Z vboxsync $ */
+/* $Id: SharedClipboard-transfers.h 81331 2019-10-17 20:23:14Z vboxsync $ */
 /** @file
  * Shared Clipboard - Shared transfer functions between host and guest.
  */
@@ -807,6 +807,13 @@ typedef struct _SHCLTRANSFER *PSHCLTRANSFER;
     void         *pvUser;
 } SHCLPROVIDERCTX, *PSHCLPROVIDERCTX;
 
+/** @todo r=bird: These macros must go as they do no lend themselves to writing
+ *        sane documentation.  Use the DECLCALLBACK macro instead, as you
+ *        probably do not need the function and function pointer typedefs.
+ *
+ *        However, we need the documentation as you don't document a flying
+ *        flamingo elsewhere regarding these functions.
+ */
 /** Defines an clipboard transfer provider function declaration with additional parameters. */
 #define SHCLPROVIDERFUNCDECL(a_Name, ...) \
     typedef DECLCALLBACK(int) RT_CONCAT(FNSHCLPROVIDER, a_Name)(PSHCLPROVIDERCTX, __VA_ARGS__); \
