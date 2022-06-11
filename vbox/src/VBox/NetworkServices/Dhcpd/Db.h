@@ -1,4 +1,4 @@
-/* $Id: Db.h 79530 2019-07-04 18:25:04Z vboxsync $ */
+/* $Id: Db.h 79531 2019-07-04 18:27:21Z vboxsync $ */
 /** @file
  * DHCP server - address database
  */
@@ -135,7 +135,8 @@ class Db
 private:
     typedef std::list<Binding *> bindings_t;
 
-    /** Configuration (set at init). */
+    /** Configuration (set at init).
+     * @note Currently not used.  */
     const Config   *m_pConfig;
     /** The lease database. */
     bindings_t      m_bindings;
