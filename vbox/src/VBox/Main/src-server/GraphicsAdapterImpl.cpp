@@ -1,4 +1,4 @@
-/* $Id: GraphicsAdapterImpl.cpp 81964 2019-11-18 20:42:02Z vboxsync $ */
+/* $Id: GraphicsAdapterImpl.cpp 81970 2019-11-18 21:04:30Z vboxsync $ */
 /** @file
  * Implementation of IGraphicsAdapter in VBoxSVC.
  */
@@ -257,7 +257,7 @@ HRESULT GraphicsAdapter::setAccelerate3DEnabled(BOOL aAccelerate3DEnabled)
 
     mParent->i_setModified(Machine::IsModified_MachineData);
     mData.backup();
-    mData->fAccelerate3D = aAccelerate3DEnabled;
+    mData->fAccelerate3D = !!aAccelerate3DEnabled;
 
     return S_OK;
 }
@@ -289,7 +289,7 @@ HRESULT GraphicsAdapter::setAccelerate2DVideoEnabled(BOOL aAccelerate2DVideoEnab
 
     mParent->i_setModified(Machine::IsModified_MachineData);
     mData.backup();
-    mData->fAccelerate2DVideo = aAccelerate2DVideoEnabled;
+    mData->fAccelerate2DVideo = !!aAccelerate2DVideoEnabled;
 
     return S_OK;
 }
