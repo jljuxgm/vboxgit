@@ -1,4 +1,4 @@
-# $Id: Config.kmk 83891 2020-04-21 12:36:32Z vboxsync $
+# $Id: Config.kmk 83936 2020-04-22 22:00:05Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -6722,8 +6722,9 @@ ifdef VBOX_WITH_QTGUI
     endif
    endif
   else if1of ($(KBUILD_TARGET), win)
-   VBOX_PATH_QT := $(sort $(wildcard $(KBUILD_DEVTOOLS_TRG)/qt/v5*))
-   VBOX_PATH_QT := $(lastword $(filter %-$(tolower $(VBOX_VCC_TOOL_STEM)),$(VBOX_PATH_QT)) $(VBOX_PATH_QT))
+   VBOX_PATH_QT := $(rsort $(wildcard $(KBUILD_DEVTOOLS_TRG)/qt/v5*))
+   VBOX_PATH_QT := $(firstword $(filter %-$(tolower $(VBOX_VCC_TOOL_STEM)),$(VBOX_PATH_QT)) \
+                    $(filter-out %-vcc100 %-vcc110 %-vcc120 %-vcc140 %-vcc141 %-vcc142 %-vcc143 %-vcc150, $(VBOX_PATH_QT)))
    ifdef VBOX_PATH_QT
     PATH_SDK_QT5  := $(VBOX_PATH_QT)
     PATH_TOOL_QT5 := $(VBOX_PATH_QT)
@@ -8025,7 +8026,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 83891 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 83936 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
