@@ -1,10 +1,10 @@
-/* $Id: VBoxSharedClipboardSvc-x11.cpp 82846 2020-01-24 09:36:52Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-x11.cpp 82848 2020-01-24 10:32:37Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Linux host.
  */
 
 /*
- * Copyright (C) 2006-2019 Oracle Corporation
+ * Copyright (C) 2006-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -215,7 +215,7 @@ int ShClSvcImplReadData(PSHCLCLIENT pClient,
         else
         {
             RTMemFree(pReq);
-            rc = VERR_GENERAL_FAILURE;
+            rc = VERR_SHCLPB_MAX_EVENTS_REACHED;
         }
     }
     else
@@ -388,10 +388,10 @@ int ShClSvcImplTransferGetRoots(PSHCLCLIENT pClient, PSHCLTRANSFER pTransfer)
 {
     LogFlowFuncEnter();
 
-    SHCLEVENTID idEvent = ShClEventIDGenerate(&pClient->EventSrc);
+    int rc;
 
-    int rc = ShClEventRegister(&pClient->EventSrc, idEvent);
-    if (RT_SUCCESS(rc))
+    SHCLEVENTID idEvent = ShClEventIdGenerateAndRegister(&pClient->EventSrc);
+    if (idEvent)
     {
         CLIPREADCBREQ *pReq = (CLIPREADCBREQ *)RTMemAllocZ(sizeof(CLIPREADCBREQ));
         if (pReq)
@@ -411,9 +411,13 @@ int ShClSvcImplTransferGetRoots(PSHCLCLIENT pClient, PSHCLTRANSFER pTransfer)
                 }
             }
         }
+        else
+            rc = VERR_NO_MEMORY;
 
         ShClEventUnregister(&pClient->EventSrc, idEvent);
     }
+    else
+        rc = VERR_SHCLPB_MAX_EVENTS_REACHED;
 
     LogFlowFuncLeaveRC(rc);
     return rc;
