@@ -1,4 +1,4 @@
-/* $Id: UIInformationRuntime.cpp 80771 2019-09-13 10:25:13Z vboxsync $ */
+/* $Id: UIInformationRuntime.cpp 80772 2019-09-13 11:06:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationRuntime class implementation.
  */
@@ -874,7 +874,6 @@ void UIChart::drawCombinedDoughnutChart(QPainter &painter, quint64  iMaximum,
 QPainterPath UIChart::wholeArc(const QRectF &rectangle)
 {
     QPainterPath arc;
-    QPointF center(rectangle.center());
     arc.addEllipse(rectangle);
     return arc;
 }
