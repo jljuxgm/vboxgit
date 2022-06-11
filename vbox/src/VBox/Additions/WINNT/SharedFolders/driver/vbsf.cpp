@@ -1,4 +1,4 @@
-/* $Id: vbsf.cpp 78584 2019-05-18 21:07:57Z vboxsync $ */
+/* $Id: vbsf.cpp 78628 2019-05-21 11:32:08Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders - File System Driver initialization and generic routines
  */
@@ -21,6 +21,7 @@
 *********************************************************************************************************************************/
 #include "vbsf.h"
 #include <iprt/initterm.h>
+#include <iprt/dbg.h>
 
 
 /*********************************************************************************************************************************
@@ -661,10 +662,20 @@ NTSTATUS DriverEntry(IN PDRIVER_OBJECT  DriverObject,
         return STATUS_UNSUCCESSFUL;
     }
 
-    /* Resolve newer kernel APIs we might want to use: */
-    UNICODE_STRING RoutineName;
-    RtlInitUnicodeString(&RoutineName, L"CcCoherencyFlushAndPurgeCache");
-    g_pfnCcCoherencyFlushAndPurgeCache = (PFNCCCOHERENCYFLUSHANDPURGECACHE)MmGetSystemRoutineAddress(&RoutineName);
+    /*
+     * Resolve newer kernel APIs we might want to use.
+     * Note! Because of http://www.osronline.com/article.cfm%5eid=494.htm we cannot
+     *       use MmGetSystemRoutineAddress here as it will crash on xpsp2.
+     */
+    RTDBGKRNLINFO hKrnlInfo;
+    int rc = RTR0DbgKrnlInfoOpen(&hKrnlInfo, 0/*fFlags*/);
+    AssertLogRelRC(rc);
+    if (RT_SUCCESS(rc))
+    {
+        g_pfnCcCoherencyFlushAndPurgeCache
+            = (PFNCCCOHERENCYFLUSHANDPURGECACHE)RTR0DbgKrnlInfoGetSymbol(hKrnlInfo, NULL, "CcCoherencyFlushAndPurgeCache");
+        RTR0DbgKrnlInfoRelease(hKrnlInfo);
+    }
 
     /* Init the driver object. */
     DriverObject->DriverUnload = VBoxMRxUnload;
