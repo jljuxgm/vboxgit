@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 80232 $"
+__version__ = "$Revision: 80233 $"
 
 
 # Standard Python imports.
@@ -922,10 +922,14 @@ class VBoxInstallerTestDriver(TestDriverBase):
             reporter.addLogFile(sLogFile, 'log/uninstaller', "Verbose MSI uninstallation log file");
 
         # Log driver service states (should ls \Driver\VBox* and \Device\VBox*).
+        asLeftovers = [];
         for sService in self.kasWindowsServices:
             fRc2, _ = self._sudoExecuteSync(['sc.exe', 'query', sService]);
             if fIgnoreServices is False and fRc2 is True:
+                asLeftovers.append(sService,)
                 fRc = False
+        if asLeftovers:
+            reporter.log('Warning! Leftover VBox drivers: %s' % (', '.join(asLeftovers),));
 
         return fRc;
 
