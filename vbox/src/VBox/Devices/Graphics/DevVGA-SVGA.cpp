@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 84011 2020-04-27 14:49:33Z vboxsync $ */
+/* $Id: DevVGA-SVGA.cpp 84013 2020-04-27 14:56:13Z vboxsync $ */
 /** @file
  * VMware SVGA device.
  *
@@ -3924,7 +3924,8 @@ static DECLCALLBACK(int) vmsvgaR3FifoLoop(PPDMDEVINS pDevIns, PPDMTHREAD pThread
                 Log(("vmsvgaR3FifoLoop: UPDATE (%d,%d)(%d,%d)\n", pUpdate->x, pUpdate->y, pUpdate->width, pUpdate->height));
                 /** @todo Multiple screens? */
                 VMSVGASCREENOBJECT *pScreen = vmsvgaR3GetScreenObject(pThisCC, 0);
-                AssertPtrBreak(pScreen);
+                if (!pScreen) /* Can happen if screen is not defined (aScreens[idScreen].fDefined == false) yet. */
+                    break;
                 vmsvgaR3UpdateScreen(pThisCC, pScreen, pUpdate->x, pUpdate->y, pUpdate->width, pUpdate->height);
                 break;
             }
