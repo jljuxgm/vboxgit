@@ -1,4 +1,4 @@
-    /* $Id: DevVirtioSCSI.cpp 82010 2019-11-20 03:20:11Z vboxsync $ $Revision: 82010 $ $Date: 2019-11-20 11:20:11 +0800 (Wed, 20 Nov 2019) $ $Author: vboxsync $ */
+    /* $Id: DevVirtioSCSI.cpp 82023 2019-11-20 12:31:38Z vboxsync $ $Revision: 82023 $ $Date: 2019-11-20 20:31:38 +0800 (Wed, 20 Nov 2019) $ $Author: vboxsync $ */
 /** @file
  * VBox storage devices - Virtio SCSI Driver
  *
@@ -1996,7 +1996,7 @@ static DECLCALLBACK(int) virtioScsiR3LoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSS
         pWorkerR3->cRedoDescs = 0;
     }
 
-LogFunc(("Have %d redo reqs to load:%d\n", cReqsRedo));
+LogFunc(("Have %d redo reqs to load\n", cReqsRedo));
 
     for (int i = 0; i < cReqsRedo; i++)
     {
@@ -2332,7 +2332,6 @@ static DECLCALLBACK(void) virtioScsiR3Resume(PPDMDEVINS pDevIns)
             AssertRC(rc);
         }
     }
-
     /* Ensure guest is working the queues too. */
     virtioCoreR3VmStateChanged(pDevIns, &pThis->Virtio, kvirtIoVmStateChangedResume);
 }
