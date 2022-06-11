@@ -1,4 +1,4 @@
-/* $Id: IOMR0Mmio.cpp 81383 2019-10-19 23:58:44Z vboxsync $ */
+/* $Id: IOMR0Mmio.cpp 82277 2019-11-28 20:24:13Z vboxsync $ */
 /** @file
  * IOM - Host Context Ring 0, MMIO.
  */
@@ -202,6 +202,10 @@ VMMR0_INT_DECL(int) IOMR0MmioGrowRegistrationTables(PGVM pGVM, uint64_t cReqMinE
             {
                 paRing0[i].idxSelf  = (uint16_t)i;
                 paRing0[i].idxStats = UINT16_MAX;
+            }
+            i = cbRing3 / sizeof(*paRing3);
+            while (i-- > cOldEntries)
+            {
                 paRing3[i].idxSelf  = (uint16_t)i;
                 paRing3[i].idxStats = UINT16_MAX;
             }

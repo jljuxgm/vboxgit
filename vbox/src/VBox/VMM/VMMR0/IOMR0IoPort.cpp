@@ -1,4 +1,4 @@
-/* $Id: IOMR0IoPort.cpp 81383 2019-10-19 23:58:44Z vboxsync $ */
+/* $Id: IOMR0IoPort.cpp 82277 2019-11-28 20:24:13Z vboxsync $ */
 /** @file
  * IOM - Host Context Ring 0, I/O ports.
  */
@@ -205,6 +205,10 @@ VMMR0_INT_DECL(int) IOMR0IoPortGrowRegistrationTables(PGVM pGVM, uint64_t cReqMi
             {
                 paRing0[i].idxSelf  = (uint16_t)i;
                 paRing0[i].idxStats = UINT16_MAX;
+            }
+            i = cbRing3 / sizeof(*paRing3);
+            while (i-- > cOldEntries)
+            {
                 paRing3[i].idxSelf  = (uint16_t)i;
                 paRing3[i].idxStats = UINT16_MAX;
             }
