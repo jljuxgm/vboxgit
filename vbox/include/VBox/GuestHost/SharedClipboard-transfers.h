@@ -1,4 +1,4 @@
-/* $Id: SharedClipboard-transfers.h 82491 2019-12-07 10:42:14Z vboxsync $ */
+/* $Id: SharedClipboard-transfers.h 82493 2019-12-07 11:37:51Z vboxsync $ */
 /** @file
  * Shared Clipboard - Shared transfer functions between host and guest.
  */
@@ -41,6 +41,7 @@
 #include <iprt/cpp/ministring.h>
 
 #include <VBox/GuestHost/SharedClipboard.h>
+#include <VBox/HostServices/VBoxClipboardSvc.h>
 
 
 struct SHCLTRANSFER;
