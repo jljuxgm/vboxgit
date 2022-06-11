@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc.cpp 82530 2019-12-10 02:43:23Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc.cpp 82534 2019-12-10 10:41:32Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Host service entry points.
  */
@@ -1235,7 +1235,9 @@ int ShClSvcDataReadSignal(PSHCLCLIENT pClient, PSHCLCLIENTCMDCTX pCmdCtx,
 
     if (RT_SUCCESS(rc))
     {
+        RTCritSectEnter(&pClient->CritSect);
         rc = ShClEventSignal(&pClient->EventSrc, uEvent, pPayload);
+        RTCritSectLeave(&pClient->CritSect);
         if (RT_FAILURE(rc))
             ShClPayloadFree(pPayload);
     }

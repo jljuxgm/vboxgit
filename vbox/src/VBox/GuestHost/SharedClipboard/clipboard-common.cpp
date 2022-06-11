@@ -1,4 +1,4 @@
-/* $Id: clipboard-common.cpp 82527 2019-12-10 01:46:40Z vboxsync $ */
+/* $Id: clipboard-common.cpp 82534 2019-12-10 10:41:32Z vboxsync $ */
 /** @file
  * Shared Clipboard: Some helper function for converting between the various eol.
  */
@@ -442,6 +442,8 @@ int ShClEventWait(PSHCLEVENTSOURCE pSource, SHCLEVENTID uID, RTMSINTERVAL uTimeo
  * @param   pSource             Event source of event to signal.
  * @param   uID                 Event ID to signal.
  * @param   pPayload            Event payload to associate. Takes ownership. Optional.
+ *
+ * @note    Caller must enter crit sect protecting the event source!
  */
 int ShClEventSignal(PSHCLEVENTSOURCE pSource, SHCLEVENTID uID,
                     PSHCLEVENTPAYLOAD pPayload)
