@@ -1,5 +1,5 @@
 @echo off
-rem $Id: Single-1-Prepare.cmd 82968 2020-02-04 10:35:17Z vboxsync $
+rem $Id: Single-1-Prepare.cmd 83563 2020-04-05 10:27:08Z vboxsync $
 rem rem @file
 rem Windows NT batch script for preparing single build (either amd64 and x86) for signing submission.
 rem
@@ -196,6 +196,10 @@ rem
 rem Generate script for taking the next step.
 rem
 set _MY_NEXT_SCRIPT=%_MY_OPT_OUTDIR%\Single-3-Repack.cmd
+rem If out dir is the same as repack dir this would erase original repack script
+if not exist "%_MY_NEXT_SCRIPT%" goto generate_next_script
+set _MY_NEXT_SCRIPT=%_MY_OPT_OUTDIR%\Single-3-Repack-Gen.cmd
+:generate_next_script
 echo cd /d "%cd%" > "%_MY_NEXT_SCRIPT%"
 echo call "%_MY_SCRIPT_DIR%\Single-3-Repack.cmd" --extpack "%_MY_OPT_EXTPACK%" ^
     --extpack-enterprise "%_MY_OPT_EXTPACK_ENTERPRISE%" ^
