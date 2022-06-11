@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboard.cpp 81311 2019-10-17 12:43:36Z vboxsync $ */
+/* $Id: UISoftKeyboard.cpp 81339 2019-10-18 06:57:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class implementation.
  */
@@ -4092,7 +4092,6 @@ void UISoftKeyboard::prepareConnections()
     connect(m_pSettingsWidget, &UISoftKeyboardSettingsWidget::sigColorCellClicked, this, &UISoftKeyboard::sltHandleColorCellClick);
     connect(m_pSettingsWidget, &UISoftKeyboardSettingsWidget::sigCloseSettingsWidget, this, &UISoftKeyboard::sltShowHideSettingsWidget);
     connect(m_pSettingsWidget, &UISoftKeyboardSettingsWidget::sigColorThemeSelectionChanged, this, &UISoftKeyboard::sltHandleColorThemeListSelection);
-
 }
 
 void UISoftKeyboard::saveSettings()
