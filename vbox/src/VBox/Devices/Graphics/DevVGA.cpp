@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 83280 2020-03-13 12:19:26Z vboxsync $ */
+/* $Id: DevVGA.cpp 83282 2020-03-13 13:03:21Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -72,7 +72,6 @@
 #include <VBox/vmm/pgm.h>
 #include <VBox/AssertGuest.h>
 #ifdef IN_RING3
-# include <VBox/vmm/cpum.h>
 # include <iprt/mem.h>
 # include <iprt/ctype.h>
 #endif /* IN_RING3 */
@@ -6675,11 +6674,11 @@ static DECLCALLBACK(int)   vgaR3Construct(PPDMDEVINS pDevIns, int iInstance, PCF
     /*
      * Register access handler types for tracking dirty VRAM pages.
      */
-    rc = PGMR3HandlerPhysicalTypeRegister(pVM, PGMPHYSHANDLERKIND_WRITE,
-                                          vgaLFBAccessHandler,
-                                          g_DeviceVga.pszR0Mod, "vgaLFBAccessHandler", "vgaLbfAccessPfHandler",
-                                          g_DeviceVga.pszRCMod, "vgaLFBAccessHandler", "vgaLbfAccessPfHandler",
-                                          "VGA LFB", &pThis->hLfbAccessHandlerType);
+    rc = PDMDevHlpPGMHandlerPhysicalTypeRegister(pDevIns, PGMPHYSHANDLERKIND_WRITE,
+                                                 vgaLFBAccessHandler,
+                                                 "vgaLFBAccessHandler", "vgaLbfAccessPfHandler",
+                                                 "vgaLFBAccessHandler", "vgaLbfAccessPfHandler",
+                                                 "VGA LFB", &pThis->hLfbAccessHandlerType);
     AssertRCReturn(rc, rc);
 
     /*
@@ -6817,7 +6816,7 @@ static DECLCALLBACK(int)   vgaR3Construct(PPDMDEVINS pDevIns, int iInstance, PCF
     uint32_t        fFlags = 0;
     if (pThisCC->pbVgaBios == NULL)
     {
-        CPUMMICROARCH enmMicroarch = pVM ? CPUMGetGuestMicroarch(pVM) : kCpumMicroarch_Intel_P6;
+        CPUMMICROARCH enmMicroarch = PDMDevHlpCpuGetGuestMicroarch(pDevIns);
         if (   enmMicroarch == kCpumMicroarch_Intel_8086
             || enmMicroarch == kCpumMicroarch_Intel_80186
             || enmMicroarch == kCpumMicroarch_NEC_V20
