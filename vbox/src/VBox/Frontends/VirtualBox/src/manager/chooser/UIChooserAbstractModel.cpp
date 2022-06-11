@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.cpp 84303 2020-05-14 13:19:47Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.cpp 84304 2020-05-14 13:39:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class implementation.
  */
@@ -175,11 +175,7 @@ void UIChooserAbstractModel::init()
                 UITaskCloudListMachines *pTask = new UITaskCloudListMachines(strProviderShortName,
                                                                              strProfileName);
                 if (pTask)
-                {
-                    connect(uiCommon().threadPoolCloud(), &UIThreadPool::sigTaskComplete,
-                            this, &UIChooserAbstractModel::sltHandleCloudListMachinesTaskComplete);
                     uiCommon().threadPoolCloud()->enqueueTask(pTask);
-                }
             }
         }
         LogRelFlow(("UIChooserAbstractModel: Cloud providers/profiles loaded.\n"));
@@ -508,6 +504,9 @@ void UIChooserAbstractModel::prepare()
 void UIChooserAbstractModel::prepareConnections()
 {
 #ifdef VBOX_GUI_WITH_CLOUD_VMS
+    /* Cloud thread-pool connections: */
+    connect(uiCommon().threadPoolCloud(), &UIThreadPool::sigTaskComplete,
+            this, &UIChooserAbstractModel::sltHandleCloudListMachinesTaskComplete);
     /* Setup temporary connections,
      * this is to be replaced by corresponding Main API event later. */
     connect(&uiCommon(), &UICommon::sigCloudMachineRegistered,
