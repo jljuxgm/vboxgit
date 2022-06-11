@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 80417 2019-08-26 05:39:07Z vboxsync $ */
+/* $Id: HM.cpp 80457 2019-08-28 07:31:35Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -1549,8 +1549,8 @@ static int hmR3InitFinalizeR0Intel(PVM pVM)
             {
                 pVM->hm.s.vmx.pNonPagingModeEPTPageTable->a[i].u  = _4M * i;
                 pVM->hm.s.vmx.pNonPagingModeEPTPageTable->a[i].u |= X86_PDE4M_P | X86_PDE4M_RW | X86_PDE4M_US
-                                                                  | X86_PDE4M_A | X86_PDE4M_D | X86_PDE4M_PS
-                                                                  | X86_PDE4M_G;
+                                                                 |  X86_PDE4M_A | X86_PDE4M_D | X86_PDE4M_PS
+                                                                 |  X86_PDE4M_G;
             }
 
             /* We convert it here every time as PCI regions could be reconfigured. */
