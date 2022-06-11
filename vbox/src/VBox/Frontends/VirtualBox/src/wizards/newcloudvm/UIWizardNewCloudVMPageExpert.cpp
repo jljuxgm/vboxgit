@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageExpert.cpp 79587 2019-07-08 10:01:12Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageExpert.cpp 79595 2019-07-08 14:23:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageExpert class implementation.
  */
@@ -341,4 +341,5 @@ void UIWizardNewCloudVMPageExpert::sltInitShortWizardForm()
 
     /* Refresh form properties table: */
     refreshFormPropertiesTable();
+    emit completeChanged();
 }
