@@ -1,4 +1,4 @@
-/* $Id: UIPerformanceMonitor.cpp 80330 2019-08-16 13:14:50Z vboxsync $ */
+/* $Id: UIPerformanceMonitor.cpp 80371 2019-08-21 13:23:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPerformanceMonitor class implementation.
  */
@@ -518,7 +518,7 @@ void UIPerformanceMonitor::retranslateUi()
     iMaximum = qMax(iMaximum, m_strNetInfoLabelTitle.length());
     m_strNetInfoLabelReceived = QApplication::translate("UIVMInformationDialog", "Received");
     iMaximum = qMax(iMaximum, m_strNetInfoLabelReceived.length());
-    m_strNetInfoLabelTransmitted = QApplication::translate("UIVMInformationDialog", "Trasmitted");
+    m_strNetInfoLabelTransmitted = QApplication::translate("UIVMInformationDialog", "Transmitted");
     iMaximum = qMax(iMaximum, m_strNetInfoLabelTransmitted.length());
     m_strNetInfoLabelMaximum = QApplication::translate("UIVMInformationDialog", "Maximum");
     iMaximum = qMax(iMaximum, m_strNetInfoLabelMaximum.length());
