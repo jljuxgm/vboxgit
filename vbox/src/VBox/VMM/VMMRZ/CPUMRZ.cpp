@@ -1,4 +1,4 @@
-/* $Id: CPUMRZ.cpp 80052 2019-07-29 20:36:52Z vboxsync $ */
+/* $Id: CPUMRZ.cpp 80064 2019-07-31 10:31:36Z vboxsync $ */
 /** @file
  * CPUM - Raw-mode and ring-0 context.
  */
@@ -54,13 +54,6 @@ VMMRZ_INT_DECL(void)    CPUMRZFpuStatePrepareHostCpuForUse(PVMCPU pVCpu)
             break;
 
         case CPUM_USED_FPU_HOST:
-#if defined(IN_RING0) && ARCH_BITS == 32 && defined(VBOX_WITH_64_BITS_GUESTS)
-            if (pVCpu->cpum.s.fUseFlags | CPUM_SYNC_FPU_STATE)
-            {
-                pVCpu->cpum.s.fUseFlags &= ~CPUM_SYNC_FPU_STATE;
-                HMR0NotifyCpumUnloadedGuestFpuState(pVCpu);
-            }
-#endif
             Log6(("CPUMRZFpuStatePrepareHostCpuForUse: #1 - %#x\n", ASMGetCR0()));
             break;
 

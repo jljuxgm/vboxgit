@@ -1,4 +1,4 @@
-/* $Id: tstVMStruct.h 80062 2019-07-31 08:57:49Z vboxsync $ */
+/* $Id: tstVMStruct.h 80064 2019-07-31 10:31:36Z vboxsync $ */
 /** @file
  * tstVMMStruct - Statements for generating VM and VMCPU offset and size tests.
  *
@@ -55,13 +55,11 @@
     GEN_CHECK_OFF(CPUMCPU, fApicDisVectors);
     GEN_CHECK_OFF(CPUMCPU, fX2Apic);
 #endif
-    GEN_CHECK_OFF(CPUMCPU, fRawEntered);
     GEN_CHECK_OFF(CPUMCPU, fRemEntered);
 
     GEN_CHECK_SIZE(CPUMHOSTCTX);
     GEN_CHECK_OFF(CPUMHOSTCTX, pXStateR3);
     GEN_CHECK_OFF(CPUMHOSTCTX, pXStateR0);
-    GEN_CHECK_OFF(CPUMHOSTCTX, pXStateRC);
 #if HC_ARCH_BITS == 64
     GEN_CHECK_OFF(CPUMHOSTCTX, rbx);
     GEN_CHECK_OFF(CPUMHOSTCTX, rdi);
@@ -197,7 +195,6 @@
      *        finalized. */
     GEN_CHECK_OFF(CPUMCTX, pXStateR0);
     GEN_CHECK_OFF(CPUMCTX, pXStateR3);
-    GEN_CHECK_OFF(CPUMCTX, pXStateRC);
     GEN_CHECK_OFF(CPUMCTX, rdi);
     GEN_CHECK_OFF(CPUMCTX, rsi);
     GEN_CHECK_OFF(CPUMCTX, rbp);

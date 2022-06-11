@@ -1,4 +1,4 @@
-/* $Id: CFGM.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: CFGM.cpp 80064 2019-07-31 10:31:36Z vboxsync $ */
 /** @file
  * CFGM - Configuration Manager.
  */
@@ -974,15 +974,6 @@ VMMR3DECL(int) CFGMR3ConstructDefaultTree(PVM pVM)
     rc = CFGMR3InsertInteger(pRoot, "RamHoleSize",          512U * _1M);
     UPDATERC();
     rc = CFGMR3InsertInteger(pRoot, "TimerMillies",         10);
-    UPDATERC();
-    rc = CFGMR3InsertInteger(pRoot, "RawR3Enabled",         1);
-    UPDATERC();
-    /** @todo CFGM Defaults: RawR0, PATMEnabled and CASMEnabled needs attention later. */
-    rc = CFGMR3InsertInteger(pRoot, "RawR0Enabled",         1);
-    UPDATERC();
-    rc = CFGMR3InsertInteger(pRoot, "PATMEnabled",          1);
-    UPDATERC();
-    rc = CFGMR3InsertInteger(pRoot, "CSAMEnabled",          1);
     UPDATERC();
 
     /*
