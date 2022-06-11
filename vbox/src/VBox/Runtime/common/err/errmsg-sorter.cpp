@@ -1,4 +1,4 @@
-/* $Id: errmsg-sorter.cpp 84128 2020-05-02 11:57:04Z vboxsync $ */
+/* $Id: errmsg-sorter.cpp 84130 2020-05-02 15:42:40Z vboxsync $ */
 /** @file
  * IPRT - Status code messages, sorter build program.
  */
@@ -419,8 +419,8 @@ int main(int argc, char **argv)
                         s_aStatusMsgs2[i].MsgFull.offStrTab,
                         (unsigned)s_aStatusMsgs2[i].MsgFull.cchString,
                         s_aStatusMsgs2[i].iCode,
-                        (unsigned)s_aStatusMsgs2[i].MsgShort.cchString,
                         (unsigned)s_aStatusMsgs2[i].Define.cchString,
+                        (unsigned)s_aStatusMsgs2[i].MsgShort.cchString,
                         s_aStatusMsgs2[i].pszDefine);
         else if (enmMode == kMode_All)
             for (size_t i = 0; i < cStatusMsgs; i++)
