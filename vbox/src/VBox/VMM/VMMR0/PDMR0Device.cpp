@@ -1,4 +1,4 @@
-/* $Id: PDMR0Device.cpp 81031 2019-09-26 19:26:33Z vboxsync $ */
+/* $Id: PDMR0Device.cpp 81160 2019-10-08 15:07:13Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, R0 Device parts.
  */
@@ -210,8 +210,8 @@ static DECLCALLBACK(int) pdmR0DevHlp_IoPortSetUpContextEx(PPDMDEVINS pDevIns, IO
 
 
 /** @interface_method_impl{PDMDEVHLPR0,pfnMmioSetUpContextEx} */
-static DECLCALLBACK(int) pdmR0DevHlp_MmioSetUpContextEx(PPDMDEVINS pDevIns, IOMMMIOHANDLE hRegion, PFNIOMMMIOWRITE pfnWrite,
-                                                        PFNIOMMMIOREAD pfnRead, PFNIOMMMIOFILL pfnFill, void *pvUser)
+static DECLCALLBACK(int) pdmR0DevHlp_MmioSetUpContextEx(PPDMDEVINS pDevIns, IOMMMIOHANDLE hRegion, PFNIOMMMIONEWWRITE pfnWrite,
+                                                        PFNIOMMMIONEWREAD pfnRead, PFNIOMMMIONEWFILL pfnFill, void *pvUser)
 {
     RT_NOREF(pDevIns, hRegion, pfnWrite, pfnRead, pfnFill, pvUser);
     return VERR_NOT_IMPLEMENTED;
