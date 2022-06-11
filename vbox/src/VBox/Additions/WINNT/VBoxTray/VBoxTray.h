@@ -1,4 +1,4 @@
-/* $Id: VBoxTray.h 78809 2019-05-28 10:54:53Z vboxsync $ */
+/* $Id: VBoxTray.h 78937 2019-06-03 13:52:06Z vboxsync $ */
 /** @file
  * VBoxTray - Guest Additions Tray, Internal Header.
  */
@@ -21,25 +21,7 @@
 # pragma once
 #endif
 
-#       define _InterlockedExchange           _InterlockedExchange_StupidDDKVsCompilerCrap
-#       define _InterlockedExchangeAdd        _InterlockedExchangeAdd_StupidDDKVsCompilerCrap
-#       define _InterlockedCompareExchange    _InterlockedCompareExchange_StupidDDKVsCompilerCrap
-#       define _InterlockedAddLargeStatistic  _InterlockedAddLargeStatistic_StupidDDKVsCompilerCrap
-#       define _interlockedbittestandset      _interlockedbittestandset_StupidDDKVsCompilerCrap
-#       define _interlockedbittestandreset    _interlockedbittestandreset_StupidDDKVsCompilerCrap
-#       define _interlockedbittestandset64    _interlockedbittestandset64_StupidDDKVsCompilerCrap
-#       define _interlockedbittestandreset64  _interlockedbittestandreset64_StupidDDKVsCompilerCrap
-#       pragma warning(disable : 4163)
 #include <iprt/win/windows.h>
-#       pragma warning(default : 4163)
-#       undef  _InterlockedExchange
-#       undef  _InterlockedExchangeAdd
-#       undef  _InterlockedCompareExchange
-#       undef  _InterlockedAddLargeStatistic
-#       undef  _interlockedbittestandset
-#       undef  _interlockedbittestandreset
-#       undef  _interlockedbittestandset64
-#       undef  _interlockedbittestandreset64
 
 #include <tchar.h>
 #include <stdio.h>
@@ -188,8 +170,8 @@ typedef struct _VBOXGLOBALMESSAGE
     UINT     uMsgID;
 } VBOXGLOBALMESSAGE, *PVBOXGLOBALMESSAGE;
 
-extern HWND         g_hwndToolWindow;
 extern HINSTANCE    g_hInstance;
+extern HWND         g_hwndToolWindow;
 extern uint32_t     g_fGuestDisplaysChanged;
 
 RTEXITCODE VBoxTrayShowError(const char *pszFormat, ...);

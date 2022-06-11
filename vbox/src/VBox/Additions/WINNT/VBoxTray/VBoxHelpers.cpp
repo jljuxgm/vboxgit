@@ -1,4 +1,4 @@
-/* $Id: VBoxHelpers.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxHelpers.cpp 78937 2019-06-03 13:52:06Z vboxsync $ */
 /** @file
  * helpers - Guest Additions Service helper functions
  */
@@ -19,6 +19,7 @@
 
 #include <iprt/string.h>
 #include <iprt/alloca.h>
+#include <iprt/system.h>
 #include <VBox/Log.h>
 #include <VBox/VBoxGuestLib.h>
 
@@ -289,15 +290,10 @@ int hlpShowBalloonTip(HINSTANCE hInst, HWND hWnd, UINT uID,
 
     /* Do we want to have */
 
-    /* Get running OS version. */
-    OSVERSIONINFO osInfo;
-    osInfo.dwOSVersionInfoSize = sizeof(OSVERSIONINFO);
-    if (FALSE == GetVersionEx(&osInfo))
-        return RTErrConvertFromWin32(GetLastError());
-
     /* Is the current OS supported (at least WinXP) for displaying
      * our own icon and do we actually *want* to display our own stuff? */
-    if (   osInfo.dwMajorVersion >= 5
+    uint64_t const uNtVersion = RTSystemGetNtVersion();
+    if (    uNtVersion >= RTSYSTEM_MAKE_NT_VERSION(5, 0, 0)
         && (dwInfoFlags & NIIF_INFO))
     {
         /* Load (or retrieve handle of) the app's icon. */
@@ -305,13 +301,12 @@ int hlpShowBalloonTip(HINSTANCE hInst, HWND hWnd, UINT uID,
         if (hIcon)
             niData.dwInfoFlags = NIIF_USER; /* Use an own notification icon. */
 
-        if (   osInfo.dwMajorVersion == 5
-            && osInfo.dwMinorVersion == 1) /* WinXP. */
+        if (uNtVersion >= RTSYSTEM_MAKE_NT_VERSION(5, 1, 0)) /* WinXP. */
         {
             /* Use an own icon instead of the default one. */
             niData.hIcon = hIcon;
         }
-        else if (osInfo.dwMajorVersion == 6) /* Vista and up. */
+        else if (uNtVersion >= RTSYSTEM_MAKE_NT_VERSION(6, 0, 0)) /* Vista and up. */
         {
             /* Use an own icon instead of the default one. */
             niData.dwInfoFlags |= NIIF_LARGE_ICON; /* Use a  large icon if available! */
