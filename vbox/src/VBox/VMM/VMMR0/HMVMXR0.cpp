@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 79458 2019-07-02 04:45:02Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 79459 2019-07-02 05:01:30Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -2626,6 +2626,7 @@ static int hmR0VmxCheckVmcsCtls(PVMCPU pVCpu, PCVMXVMCSINFO pVmcsInfo, bool fIsN
                         pVCpu->hm.s.u32HMError = VMX_VCI_CTRL_TSC_OFFSET,
                         VERR_VMX_VMCS_FIELD_CACHE_INVALID);
 
+    NOREF(pcszVmcs);
     return VINF_SUCCESS;
 }
 
