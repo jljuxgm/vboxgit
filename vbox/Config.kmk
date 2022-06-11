@@ -1,4 +1,4 @@
-# $Id: Config.kmk 83093 2020-02-17 09:55:54Z vboxsync $
+# $Id: Config.kmk 83100 2020-02-17 18:27:13Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3709,7 +3709,7 @@ ifdef VBOX_SIGNING_MODE
  VBOX_CCS_NOTARIZE_CMD = $(VBOX_RETRY) $(VBOX_JAVA) -jar "$(VBOX_CCS_CLIENT_JAR)" \
  	mac_notarize -user "$(VBOX_CCS_USER)" -global_uid "$(VBOX_CCS_GLOBAL_UID)" \
 		-job_timeout 90 -server_timeout 75 -server "$(VBOX_CCS_SERVER)" \
- 		-file_to_notarize "$1" -bundle_id "$2" -download_location "$(if $3,$3,$(dir $2))"
+ 		-file_to_notarize "$1" -bundle_id "$2" -download_location "$(if $3,$3,$(dir $1))"
 
   ## Sign an application bundle, framework or kernel extension.
   # @param 1  The bundle to sign.
@@ -7772,7 +7772,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 83093 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 83100 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
