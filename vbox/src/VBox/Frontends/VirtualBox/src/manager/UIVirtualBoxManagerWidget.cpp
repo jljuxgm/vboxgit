@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 83480 2020-03-30 13:03:58Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 83482 2020-03-30 13:35:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -269,12 +269,16 @@ void UIVirtualBoxManagerWidget::sltHandleSlidingAnimationComplete(SlidingDirecti
         {
             m_pPaneTools->setToolsClass(UIToolClass_Machine);
             m_pStackedWidget->setCurrentWidget(m_pPaneToolsMachine);
+            m_pPaneToolsGlobal->setActive(false);
+            m_pPaneToolsMachine->setActive(true);
             break;
         }
         case SlidingDirection_Reverse:
         {
             m_pPaneTools->setToolsClass(UIToolClass_Global);
             m_pStackedWidget->setCurrentWidget(m_pPaneToolsGlobal);
+            m_pPaneToolsMachine->setActive(false);
+            m_pPaneToolsGlobal->setActive(true);
             break;
         }
     }
@@ -460,6 +464,8 @@ void UIVirtualBoxManagerWidget::prepareWidgets()
                         m_pPaneToolsGlobal = new UIToolPaneGlobal(actionPool());
                         if (m_pPaneToolsGlobal)
                         {
+                            if (m_pPaneChooser->isGlobalItemSelected())
+                                m_pPaneToolsGlobal->setActive(true);
                             connect(m_pPaneToolsGlobal, &UIToolPaneGlobal::sigCloudProfileManagerChange,
                                     this, &UIVirtualBoxManagerWidget::sigCloudProfileManagerChange);
 
@@ -471,6 +477,8 @@ void UIVirtualBoxManagerWidget::prepareWidgets()
                         m_pPaneToolsMachine = new UIToolPaneMachine(actionPool());
                         if (m_pPaneToolsMachine)
                         {
+                            if (!m_pPaneChooser->isGlobalItemSelected())
+                                m_pPaneToolsMachine->setActive(true);
                             connect(m_pPaneToolsMachine, &UIToolPaneMachine::sigCurrentSnapshotItemChange,
                                     this, &UIVirtualBoxManagerWidget::sigCurrentSnapshotItemChange);
 
