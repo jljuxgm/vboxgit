@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 83639 $"
+__version__ = "$Revision: 83640 $"
 
 # Standard Python imports.
 import errno
@@ -1577,7 +1577,7 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
     #
     # VBoxService handling.
     #
-    def vboxServiceControl(self, oTxsSession, oTestVm, fStart):
+    def vboxServiceControl(self, oTxsSession, oTestVm, fStart): # pylint: disable=no-else-return
         """
         Controls VBoxService on the guest by starting or stopping the service.
         Returns success indicator.
