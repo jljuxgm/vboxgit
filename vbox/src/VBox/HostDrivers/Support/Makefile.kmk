@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 83348 2020-03-20 11:47:53Z vboxsync $
+# $Id: Makefile.kmk 83893 2020-04-21 14:33:40Z vboxsync $
 ## @file
 # Sub-Makefile for the support library and the drivers/modules/kexts it uses.
 #
@@ -351,6 +351,7 @@ if "$(KBUILD_TARGET)" == "win" && defined(VBOX_WITH_HARDENING) ## @todo some of 
 	$(VBOX_PATH_RUNTIME_SRC)/common/string/RTStrCat.cpp \
 	$(VBOX_PATH_RUNTIME_SRC)/common/string/RTStrCmp.cpp \
 	$(VBOX_PATH_RUNTIME_SRC)/common/string/RTStrCopy.cpp \
+	$(VBOX_PATH_RUNTIME_SRC)/common/string/RTStrEnd.asm \
 	$(VBOX_PATH_RUNTIME_SRC)/common/string/RTStrICmpAscii.cpp \
 	$(VBOX_PATH_RUNTIME_SRC)/common/string/RTStrNCmp.cpp \
 	$(VBOX_PATH_RUNTIME_SRC)/common/string/RTStrNLen.cpp \
