@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibClipboard.cpp 78315 2019-04-26 09:06:32Z vboxsync $ */
+/* $Id: VBoxGuestR3LibClipboard.cpp 78581 2019-05-18 15:48:41Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Clipboard.
  */
@@ -498,7 +498,7 @@ static int vbglR3ClipboardSendURIData(HGCMCLIENTID idClient, const void *pvData,
     {
         /*
          * Send the (meta) data; in case of URIs it's the (non-recursive) file/directory
-         * URI list the host needs to know upfront to set up the drag'n drop operation.
+         * URI list the host needs to know upfront to set up the Shared Clipboard operation.
          */
         RTCString strRootDest = lstURI.GetRootEntries();
         if (strRootDest.isNotEmpty())

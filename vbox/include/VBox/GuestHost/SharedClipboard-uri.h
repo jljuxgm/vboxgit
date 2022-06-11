@@ -1,4 +1,4 @@
-/* $Id: SharedClipboard-uri.h 78501 2019-05-14 11:36:25Z vboxsync $ */
+/* $Id: SharedClipboard-uri.h 78581 2019-05-18 15:48:41Z vboxsync $ */
 /** @file
  * Shared Clipboard - Shared URI functions between host and guest.
  */
@@ -88,7 +88,7 @@ protected:
 protected:
 
     /** Number of references to this instance. */
-    volatile uint16_t            m_cRefs;
+    volatile uint32_t            m_cRefs;
     /** Critical section for serializing access. */
     RTCRITSECT                   m_CritSect;
     /** Open flags. */

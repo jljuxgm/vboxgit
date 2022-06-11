@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc.cpp 78580 2019-05-18 15:38:45Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc.cpp 78581 2019-05-18 15:48:41Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Host service entry points.
  */
@@ -512,7 +512,7 @@ static DECLCALLBACK(void) svcCall(void *,
             {
                 uint32_t u32Formats;
 
-                rc = VBoxHGCMParmUInt32Get (&paParms[0], &u32Formats);
+                rc = VBoxHGCMParmUInt32Get(&paParms[0], &u32Formats);
 
                 if (RT_SUCCESS (rc))
                 {
@@ -561,11 +561,11 @@ static DECLCALLBACK(void) svcCall(void *,
                 void     *pv;
                 uint32_t cb;
 
-                rc = VBoxHGCMParmUInt32Get (&paParms[0], &u32Format);
+                rc = VBoxHGCMParmUInt32Get(&paParms[0], &u32Format);
 
                 if (RT_SUCCESS (rc))
                 {
-                    rc = VBoxHGCMParmPtrGet (&paParms[1], &pv, &cb);
+                    rc = VBoxHGCMParmPtrGet(&paParms[1], &pv, &cb);
 
                     if (RT_SUCCESS (rc))
                     {
@@ -628,7 +628,7 @@ static DECLCALLBACK(void) svcCall(void *,
                         }
                         else if (RT_SUCCESS (rc))
                         {
-                            VBoxHGCMParmUInt32Set (&paParms[2], cbActual);
+                            VBoxHGCMParmUInt32Set(&paParms[2], cbActual);
                         }
                     }
                 }
@@ -656,11 +656,11 @@ static DECLCALLBACK(void) svcCall(void *,
                 uint32_t cb;
                 uint32_t u32Format;
 
-                rc = VBoxHGCMParmUInt32Get (&paParms[0], &u32Format);
+                rc = VBoxHGCMParmUInt32Get(&paParms[0], &u32Format);
 
                 if (RT_SUCCESS (rc))
                 {
-                    rc = VBoxHGCMParmPtrGet (&paParms[1], &pv, &cb);
+                    rc = VBoxHGCMParmPtrGet(&paParms[1], &pv, &cb);
 
                     if (RT_SUCCESS (rc))
                     {
