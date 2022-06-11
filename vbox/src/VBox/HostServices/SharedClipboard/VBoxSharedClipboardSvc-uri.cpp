@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-uri.cpp 80359 2019-08-21 08:37:54Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-uri.cpp 80361 2019-08-21 08:49:40Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Internal code for URI (list) handling.
  */
@@ -634,6 +634,7 @@ int vboxSvcClipboardURIObjWrite(PSHAREDCLIPBOARDPROVIDERCTX pCtx, SHAREDCLIPBOAR
     LogFlowFuncLeaveRC(rc);
     return rc;
 }
+
 
 /*********************************************************************************************************************************
 *   URI callbacks                                                                                                                *
