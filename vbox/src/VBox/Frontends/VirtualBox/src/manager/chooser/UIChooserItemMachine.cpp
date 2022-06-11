@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemMachine.cpp 83883 2020-04-21 09:55:16Z vboxsync $ */
+/* $Id: UIChooserItemMachine.cpp 83884 2020-04-21 10:02:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemMachine class implementation.
  */
@@ -393,6 +393,10 @@ bool UIChooserItemMachine::isDropAllowed(QGraphicsSceneDragDropEvent *pEvent, UI
         UIChooserItem *pItem = pCastedMimeData->item();
         UIChooserItemMachine *pMachineItem = pItem->toMachineItem();
 
+        /* No drops for cloud items: */
+        if (   node()->toMachineNode()->cache()->itemType() != UIVirtualMachineItem::ItemType_Local
+            || pMachineItem->node()->toMachineNode()->cache()->itemType() != UIVirtualMachineItem::ItemType_Local)
+            return false;
         /* No drops for immutable item: */
         if (pMachineItem->isLockedMachine())
             return false;

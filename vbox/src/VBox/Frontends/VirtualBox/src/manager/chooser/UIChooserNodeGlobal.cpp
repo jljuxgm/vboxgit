@@ -1,4 +1,4 @@
-/* $Id: UIChooserNodeGlobal.cpp 83672 2020-04-10 16:27:16Z vboxsync $ */
+/* $Id: UIChooserNodeGlobal.cpp 83884 2020-04-21 10:02:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserNodeGlobal class implementation.
  */
@@ -115,11 +115,6 @@ void UIChooserNodeGlobal::updateAllNodes(const QUuid &)
 
     /* Update global-item: */
     item()->updateItem();
-}
-
-bool UIChooserNodeGlobal::hasAtLeastOneCloudNode() const
-{
-    return false;
 }
 
 int UIChooserNodeGlobal::positionOf(UIChooserNode *pNode)

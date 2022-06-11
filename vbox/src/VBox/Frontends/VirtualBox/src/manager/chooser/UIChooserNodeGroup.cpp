@@ -1,4 +1,4 @@
-/* $Id: UIChooserNodeGroup.cpp 83673 2020-04-10 17:31:04Z vboxsync $ */
+/* $Id: UIChooserNodeGroup.cpp 83884 2020-04-21 10:02:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserNodeGroup class implementation.
  */
@@ -177,19 +177,6 @@ void UIChooserNodeGroup::updateAllNodes(const QUuid &uId)
     /* Update all the children recursively: */
     foreach (UIChooserNode *pNode, nodes())
         pNode->updateAllNodes(uId);
-}
-
-bool UIChooserNodeGroup::hasAtLeastOneCloudNode() const
-{
-    foreach (UIChooserNode *pNode, m_nodesGroup)
-        if (pNode->hasAtLeastOneCloudNode())
-            return true;
-
-    foreach (UIChooserNode *pNode, m_nodesMachine)
-        if (pNode->hasAtLeastOneCloudNode())
-            return true;
-
-    return false;
 }
 
 int UIChooserNodeGroup::positionOf(UIChooserNode *pNode)
