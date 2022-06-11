@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: Makefile.kmk 78785 2019-05-27 14:23:41Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox C Binding.
 #
@@ -42,14 +42,6 @@ INSTALLS += CAPIHeaders
 CAPIHeaders_MODE = a+r,u+rw
 CAPIHeaders_INST = $(INST_SDK)bindings/c/include/
 CAPIHeaders_SOURCES = \
-	VBoxCAPI_v2_2.h \
-	VBoxCAPI_v3_0.h \
-	VBoxCAPI_v3_1.h \
-	VBoxCAPI_v3_2.h \
-	VBoxCAPI_v4_0.h \
-	VBoxCAPI_v4_1.h \
-	VBoxCAPI_v4_2.h \
-	VBoxCAPI_v4_3.h \
 	$(CAPIHeaders_0_OUTDIR)/VBoxCAPI.h=>VBoxCAPI_v$(VBOX_API_VERSION).h
 CAPIHeaders_CLEAN = \
 	$(CAPIHeaders_0_OUTDIR)/VBoxCAPI.h
