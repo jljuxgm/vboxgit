@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 79238 2019-06-19 10:44:54Z vboxsync $
+# $Id: Makefile.kmk 79244 2019-06-19 14:19:05Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -958,7 +958,6 @@ VirtualBox_QT_MOCSRCS = \
 	src/widgets/UIMenuToolBar.cpp \
 	src/widgets/UITabBar.cpp \
 	src/widgets/graphics/UIGraphicsScrollBar.cpp \
-	src/wizards/newcloudvm/UIWizardNewCloudVM.cpp \
 	src/wizards/importappliance/UIWizardImportApp.cpp
 
 
