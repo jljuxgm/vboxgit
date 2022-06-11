@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 80932 2019-09-22 10:54:36Z vboxsync $ */
+/* $Id: UICommon.cpp 80987 2019-09-24 16:24:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -3328,6 +3328,28 @@ QString UICommon::details(const CMedium &comMedium, bool fPredictDiff, bool fUse
         {
             /* Medium might be deleted already, return null string: */
             return QString();
+        }
+    }
+
+    /* For differencing hard-disk we have to request
+     * enumeration of whole tree based in it's root item: */
+    if (   comMedium.isNotNull()
+        && comMedium.GetDeviceType() == KDeviceType_HardDisk)
+    {
+        /* Traverse through parents to root to catch it: */
+        CMedium comRootMedium;
+        CMedium comParentMedium = comMedium.GetParent();
+        while (comParentMedium.isNotNull())
+        {
+            comRootMedium = comParentMedium;
+            comParentMedium = comParentMedium.GetParent();
+        }
+        /* Enumerate root if it's found and wasn't cached: */
+        if (comRootMedium.isNotNull())
+        {
+            const QUuid uRootId = comRootMedium.GetId();
+            if (medium(uRootId).isNull())
+                enumerateMedia(CMediumVector() << comRootMedium);
         }
     }
 
