@@ -1,4 +1,4 @@
-/* $Id: vcc100-kernel32-fakes.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: vcc100-kernel32-fakes.cpp 80031 2019-07-28 22:01:31Z vboxsync $ */
 /** @file
  * IPRT - Tricks to make the Visual C++ 2010 CRT work on NT4, W2K and XP.
  */
@@ -87,6 +87,33 @@ DECL_KERNEL32(BOOL) Fake_InitializeCriticalSectionAndSpinCount(LPCRITICAL_SECTIO
     RT_NOREF(cSpin);
     InitializeCriticalSection(pCritSect);
     return TRUE;
+}
+
+
+DECL_KERNEL32(HANDLE) Fake_CreateIoCompletionPort(HANDLE hFile, HANDLE hExistingCompletionPort, ULONG_PTR uCompletionKey,
+                                                  DWORD cConcurrentThreads)
+{
+    RT_NOREF(hFile, hExistingCompletionPort, uCompletionKey, cConcurrentThreads);
+    SetLastError(ERROR_NOT_SUPPORTED);
+    return NULL;
+}
+
+
+DECL_KERNEL32(BOOL) Fake_GetQueuedCompletionStatus(HANDLE hCompletionPort, PDWORD_PTR pcbTransfered, PULONG_PTR puCompletionKey,
+                                                   LPOVERLAPPED pOverlapped, DWORD cMs)
+{
+    RT_NOREF(hCompletionPort, pcbTransfered, puCompletionKey, pOverlapped, cMs);
+    SetLastError(ERROR_NOT_SUPPORTED);
+    return FALSE;
+}
+
+
+DECL_KERNEL32(BOOL) Fake_PostQueuedCompletionStatus(HANDLE hCompletionPort, DWORD cbTransfered, ULONG_PTR uCompletionKey,
+                                                    LPOVERLAPPED pOverlapped)
+{
+    RT_NOREF(hCompletionPort, cbTransfered, uCompletionKey, pOverlapped);
+    SetLastError(ERROR_NOT_SUPPORTED);
+    return FALSE;
 }
 
 
