@@ -1,4 +1,4 @@
-/* $Id: DevPIC.cpp 82041 2019-11-20 18:58:22Z vboxsync $ */
+/* $Id: DevPIC.cpp 82656 2020-01-02 15:39:19Z vboxsync $ */
 /** @file
  * DevPIC - Intel 8259 Programmable Interrupt Controller (PIC) Device.
  */
@@ -755,7 +755,7 @@ static DECLCALLBACK(VBOXSTRICTRC) picIOPortElcrWrite(PPDMDEVINS pDevIns, void *p
 /**
  * @callback_method_impl{FNDBGFHANDLERDEV}
  */
-static DECLCALLBACK(void) picIR3nfo(PPDMDEVINS pDevIns, PCDBGFINFOHLP pHlp, const char *pszArgs)
+static DECLCALLBACK(void) picR3Info(PPDMDEVINS pDevIns, PCDBGFINFOHLP pHlp, const char *pszArgs)
 {
     PDEVPIC pThis = PDMDEVINS_2_DATA(pDevIns, PDEVPIC);
     NOREF(pszArgs);
@@ -956,7 +956,7 @@ static DECLCALLBACK(int)  picR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFG
     /*
      * Register the info item.
      */
-    PDMDevHlpDBGFInfoRegister(pDevIns, "pic", "PIC info.", picIR3nfo);
+    PDMDevHlpDBGFInfoRegister(pDevIns, "pic", "PIC info.", picR3Info);
 
     /*
      * Initialize the device state.
