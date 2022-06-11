@@ -1,4 +1,4 @@
-/* $Id: DevRTC.cpp 81377 2019-10-19 13:58:47Z vboxsync $ */
+/* $Id: DevRTC.cpp 81408 2019-10-21 13:10:03Z vboxsync $ */
 /** @file
  * Motorola MC146818 RTC/CMOS Device with PIIX4 extensions.
  */
@@ -231,9 +231,10 @@ typedef PRTCSTATER3 PRTCSTATECC;
 #elif defined(IN_RING0)
 typedef  RTCSTATER0  RTCSTATECC;
 typedef PRTCSTATER0 PRTCSTATECC;
-#elif defined(IN_RING0)
+#elif defined(IN_RC)
 typedef  RTCSTATERC  RTCSTATECC;
 typedef PRTCSTATERC PRTCSTATECC;
+#else
 # error "Not IN_RING3, IN_RING0 or IN_RC"
 #endif
 
