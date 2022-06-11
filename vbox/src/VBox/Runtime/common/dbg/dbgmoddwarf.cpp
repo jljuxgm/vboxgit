@@ -1,4 +1,4 @@
-/* $Id: dbgmoddwarf.cpp 77913 2019-03-27 12:14:54Z vboxsync $ */
+/* $Id: dbgmoddwarf.cpp 82027 2019-11-20 15:20:12Z vboxsync $ */
 /** @file
  * IPRT - Debug Info Reader For DWARF.
  */
@@ -3411,11 +3411,14 @@ DECLHIDDEN(int) rtDwarfUnwind_Slow(PRTDWARFCURSOR pCursor, RTUINTPTR uRvaCursor,
             /*
              * Common information entry (CIE).  Record the info we need about it.
              */
-            if ((cCies & 8) == 0)
+            if ((cCies % 8) == 0)
             {
                 void *pvNew = RTMemRealloc(paCies, sizeof(paCies[0]) * (cCies + 8));
                 if (pvNew)
+                {
                     paCies = (PRTDWARFCIEINFO)pvNew;
+                    pCieHint = NULL;
+                }
                 else
                 {
                     rc = VERR_NO_MEMORY;
