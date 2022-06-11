@@ -1,4 +1,4 @@
-# $Id: routines.sh 82263 2019-11-28 10:21:30Z vboxsync $
+# $Id: routines.sh 82269 2019-11-28 16:50:07Z vboxsync $
 # Oracle VM VirtualBox
 # VirtualBox installer shell routines
 #
@@ -151,7 +151,7 @@ systemd_wrap_init_script()
     test -z "${servicetype}" && servicetype="forking"
     targets=`for i in ${runlevels}; do printf "runlevel${i}.target "; done`
     before=`for i in ${startbefore}; do printf "${i}.service "; done`
-    after=`for i in ${required_target}; do printf "${i}.target "; done` `for i in ${required}; do printf "${i}.service "; done`
+    after=`for i in ${required_target}; do printf "${i}.target "; done; for i in ${required}; do printf "${i}.service "; done`
     cat > "${unit_path}/${name}.service" << EOF
 [Unit]
 SourcePath=${script}
