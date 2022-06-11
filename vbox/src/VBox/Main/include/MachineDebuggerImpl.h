@@ -1,4 +1,4 @@
-/* $Id: MachineDebuggerImpl.h 76562 2019-01-01 03:22:50Z vboxsync $ */
+/* $Id: MachineDebuggerImpl.h 80114 2019-08-02 21:04:00Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -132,6 +132,7 @@ private:
     HRESULT getStats(const com::Utf8Str &aPattern,
                      BOOL aWithDescriptions,
                      com::Utf8Str &aStats);
+    HRESULT getCPULoad(ULONG aCpuId, ULONG *aPctExecuting, ULONG *aPctHalted, ULONG *aPctOther, LONG64 *aMsInterval) RT_OVERRIDE;
 
     // private methods
     bool i_queueSettings() const;
