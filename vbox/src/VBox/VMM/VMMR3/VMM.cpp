@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 80003 2019-07-26 13:37:47Z vboxsync $ */
+/* $Id: VMM.cpp 80004 2019-07-26 13:39:48Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -940,6 +940,8 @@ VMMR3_INT_DECL(int) VMMR3UpdateLoggers(PVM pVM)
             AssertRC(rc);
         }
     }
+#else
+    RT_NOREF(pVM);
 #endif
 
     return rc;
