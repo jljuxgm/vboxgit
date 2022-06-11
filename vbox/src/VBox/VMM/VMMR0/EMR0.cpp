@@ -1,4 +1,4 @@
-/* $Id: EMR0.cpp 80334 2019-08-17 00:43:24Z vboxsync $ */
+/* $Id: EMR0.cpp 80336 2019-08-17 00:52:40Z vboxsync $ */
 /** @file
  * EM - Host Context Ring 0.
  */
@@ -36,7 +36,6 @@
  *
  * @returns VBox status code.
  * @param   pGVM            The ring-0 VM structure.
- * @param   pVM             The cross context VM structure.
  */
 VMMR0_INT_DECL(int) EMR0InitVM(PGVM pGVM)
 {
