@@ -1,4 +1,4 @@
-/* $Id: DevOHCI.cpp 81544 2019-10-25 13:37:23Z vboxsync $ */
+/* $Id: DevOHCI.cpp 81550 2019-10-25 15:24:18Z vboxsync $ */
 /** @file
  * DevOHCI - Open Host Controller Interface for USB.
  */
@@ -6209,7 +6209,7 @@ const PDMDEVREG g_DeviceOHCI =
     /* .u32version = */             PDM_DEVREG_VERSION,
     /* .uReserved0 = */             0,
     /* .szName = */                 "usb-ohci",
-    /* .fFlags = */                 PDM_DEVREG_FLAGS_DEFAULT_BITS | PDM_DEVREG_FLAGS_RZ,
+    /* .fFlags = */                 PDM_DEVREG_FLAGS_DEFAULT_BITS | PDM_DEVREG_FLAGS_RZ | PDM_DEVREG_FLAGS_NEW_STYLE,
     /* .fClass = */                 PDM_DEVREG_CLASS_BUS_USB,
     /* .cMaxInstances = */          ~0U,
     /* .uSharedVersion = */         42,
