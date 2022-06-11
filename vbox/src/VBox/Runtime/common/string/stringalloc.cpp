@@ -1,4 +1,4 @@
-/* $Id: stringalloc.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: stringalloc.cpp 83979 2020-04-26 01:28:56Z vboxsync $ */
 /** @file
  * IPRT - String Manipulation.
  */
@@ -186,7 +186,7 @@ RTDECL(int) RTStrAAppendNTag(char **ppsz, const char *pszAppend, size_t cchAppen
 }
 
 
-#ifndef IN_RING0
+#if !defined(IN_RING0) && !defined(IPRT_NO_ALLOCA_TROUBLE)
 
 /* XXX Currently not needed anywhere. alloca() induces some linker problems for ring 0 code
  * with newer versions of VCC */
