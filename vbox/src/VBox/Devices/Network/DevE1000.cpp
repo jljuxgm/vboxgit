@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 81470 2019-10-23 01:26:04Z vboxsync $ */
+/* $Id: DevE1000.cpp 81471 2019-10-23 01:42:27Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -8116,6 +8116,7 @@ static DECLCALLBACK(int) e1kR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFGM
  */
 static DECLCALLBACK(int)  e1kRZConstruct(PPDMDEVINS pDevIns)
 {
+    PDMDEV_CHECK_VERSIONS_RETURN(pDevIns);
     PE1KSTATE   pThis   = PDMINS_2_DATA(pDevIns, PE1KSTATE);
     PE1KSTATECC pThisCC = PDMINS_2_DATA_CC(pDevIns, PE1KSTATECC);
 
