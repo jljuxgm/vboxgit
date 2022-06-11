@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d.cpp 83292 2020-03-14 13:23:27Z vboxsync $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - Common core code.
  */
@@ -645,8 +645,8 @@ int vmsvga3dSurfaceDMA(PVGASTATE pThis, PVGASTATECC pThisCC, SVGA3dGuestImage gu
                                          cBlocksY);
                 AssertRC(rc);
 
-                Log4(("first line [z=%d]:\n%.*Rhxd\n",
-                      z, pMipLevel->cbSurfacePitch, (uint8_t *)pMipLevel->pSurfaceData + uHostOffset));
+                Log4(("first line [z=%d] (updated at offset 0x%x):\n%.*Rhxd\n",
+                      z, uHostOffset, pMipLevel->cbSurfacePitch, pMipLevel->pSurfaceData));
 
                 uHostOffset += pMipLevel->cbSurfacePlane;
                 uGuestOffset += pMipLevel->mipmapSize.height * cbGuestPitch;
