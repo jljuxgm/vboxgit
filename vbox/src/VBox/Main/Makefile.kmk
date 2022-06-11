@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 83784 2020-04-17 23:30:24Z vboxsync $
+# $Id: Makefile.kmk 83785 2020-04-17 23:34:58Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -1239,7 +1239,11 @@ else # !win
 	glue/xpcom/helpers.cpp
 endif # !win
 
+ifdef VBOX_WITH_AUTOMATIC_DEFS_QUOTING
+glue/VBoxLogRelCreate.cpp_DEFS = KBUILD_TYPE="$(KBUILD_TYPE)"
+else
 glue/VBoxLogRelCreate.cpp_DEFS = KBUILD_TYPE=\"$(KBUILD_TYPE)\"
+endif
 
 # 32-bit version of VBoxCOM.
 if defined(VBOX_WITH_32_ON_64_MAIN_API) && !defined(VBOX_ONLY_EXTPACKS)

@@ -1,4 +1,4 @@
-/* $Id: string.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: string.cpp 83785 2020-04-17 23:34:58Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - UTF-8 and UTF-16 string classes.
  */
@@ -232,7 +232,7 @@ int Bstr::compareUtf8(const char *a_pszRight, CaseSensitivity a_enmCase /*= Case
 
 #ifndef VBOX_WITH_XPCOM
 
-HRESULT Bstr::joltNoThrow(ssize_t cwcNew /* = -1*/)
+HRESULT Bstr::joltNoThrow(ssize_t cwcNew /* = -1*/) RT_NOEXCEPT
 {
     if (m_bstr)
     {
