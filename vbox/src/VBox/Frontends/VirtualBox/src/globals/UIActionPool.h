@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.h 82186 2019-11-25 17:02:40Z vboxsync $ */
+/* $Id: UIActionPool.h 82187 2019-11-25 17:18:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPool class declaration.
  */
@@ -246,6 +246,8 @@ public:
     virtual QString shortcutExtraDataID() const { return QString(); }
     /** Returns default keyboard shortcut for this action. */
     virtual QKeySequence defaultShortcut(UIActionPoolType) const { return QKeySequence(); }
+    /** Returns standard keyboard shortcut for this action. */
+    virtual QKeySequence standardShortcut(UIActionPoolType) const { return QKeySequence(); }
 
     /** Defines current keyboard shortcuts for this action. */
     void setShortcuts(const QList<QKeySequence> &shortcuts);
