@@ -1,4 +1,4 @@
-/* $Id: thread.h 83101 2020-02-17 19:46:52Z vboxsync $ */
+/* $Id: thread.h 83124 2020-02-20 17:23:23Z vboxsync $ */
 /** @file
  * IPRT - Internal RTThread header.
  */
@@ -264,7 +264,7 @@ DECLHIDDEN(void)         rtThreadClearTlsEntry(RTTLS iTls);
 DECLHIDDEN(void)         rtThreadTlsDestruction(PRTTHREADINT pThread); /* in tls-generic.cpp */
 #endif
 #ifdef RT_OS_WINDOWS
-DECLHIDDEN(void)         rtTlsWinDetachThread(void); /* in tls-dllmain-win.cpp */
+DECLHIDDEN(void)         rtThreadWinTlsDestruction(void); /* in tls-win.cpp */
 #endif
 
 /* thread-posix.cpp */

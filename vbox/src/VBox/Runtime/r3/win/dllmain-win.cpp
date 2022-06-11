@@ -1,4 +1,4 @@
-/* $Id: dllmain-win.cpp 83101 2020-02-17 19:46:52Z vboxsync $ */
+/* $Id: dllmain-win.cpp 83124 2020-02-20 17:23:23Z vboxsync $ */
 /** @file
  * IPRT - Win32 DllMain (Ring-3).
  */
@@ -81,7 +81,7 @@ BOOL __stdcall DllMain(HANDLE hModule, DWORD dwReason, PVOID pvReserved)
             break;
 
         case DLL_THREAD_DETACH:
-            rtTlsWinDetachThread();
+            rtThreadWinTlsDestruction();
             rtThreadNativeDetach();
             break;
     }
