@@ -1,4 +1,4 @@
-/* $Id: DevPS2.h 82203 2019-11-25 21:53:27Z vboxsync $ */
+/* $Id: DevPS2.h 82204 2019-11-25 21:55:12Z vboxsync $ */
 /** @file
  * PS/2 devices - Internal header file.
  */
@@ -343,7 +343,7 @@ typedef struct KBDSTATE
 
     /** Mouse state (implemented in separate PS2M module). */
     PS2M                        Aux;
-} KBDSTATE, KBDState;
+} KBDSTATE;
 
 
 /* Shared keyboard/aux internal interface. */
