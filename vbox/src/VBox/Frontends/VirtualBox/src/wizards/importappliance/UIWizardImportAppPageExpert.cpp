@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageExpert.cpp 79814 2019-07-16 15:59:06Z vboxsync $ */
+/* $Id: UIWizardImportAppPageExpert.cpp 80919 2019-09-20 11:02:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageExpert class implementation.
  */
@@ -64,7 +64,7 @@ UIWizardImportAppPageExpert::UIWizardImportAppPageExpert(bool fImportFromOCIByDe
                 }
 
                 /* Create stacked layout: */
-                m_pStackedLayout = new QStackedLayout(m_pCntSource);
+                m_pStackedLayout = new QStackedLayout;
                 if (m_pStackedLayout)
                 {
                     /* Create local container: */
