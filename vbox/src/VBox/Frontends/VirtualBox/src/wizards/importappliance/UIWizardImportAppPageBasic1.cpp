@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageBasic1.cpp 78848 2019-05-29 13:32:08Z vboxsync $ */
+/* $Id: UIWizardImportAppPageBasic1.cpp 78849 2019-05-29 13:33:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageBasic1 class implementation.
  */
@@ -344,6 +344,31 @@ void UIWizardImportAppPage1::populateFormProperties()
             if (!comVBox.isOk())
             {
                 msgCenter().cannotCreateAppliance(comVBox);
+                break;
+            }
+
+            /* Read cloud instance info: */
+            CProgress comReadProgress = comAppliance.Read(QString("OCI://%1/%2").arg(profileName(), machineId()));
+            if (!comAppliance.isOk())
+            {
+                msgCenter().cannotImportAppliance(comAppliance);
+                break;
+            }
+
+            /* Show "Read appliance" progress: */
+            msgCenter().showModalProgressDialog(comReadProgress, UIWizardImportApp::tr("Read appliance..."),
+                                                ":/progress_reading_appliance_90px.png", 0, 0);
+            if (!comReadProgress.isOk() || comReadProgress.GetResultCode() != 0)
+            {
+                msgCenter().cannotImportAppliance(comReadProgress, comAppliance.GetPath());
+                break;
+            }
+
+            /* Interpret cloud instance info: */
+            comAppliance.Interpret();
+            if (!comAppliance.isOk())
+            {
+                msgCenter().cannotImportAppliance(comAppliance);
                 break;
             }
 
