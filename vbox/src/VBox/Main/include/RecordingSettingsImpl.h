@@ -1,4 +1,4 @@
-/* $Id: RecordingSettingsImpl.h 78068 2019-04-10 09:38:27Z vboxsync $ */
+/* $Id: RecordingSettingsImpl.h 82192 2019-11-25 18:08:10Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation - Machine recording screen settings.
  */
@@ -66,7 +66,7 @@ private:
     typedef std::map <uint32_t, ComObjPtr<RecordingScreenSettings> > RecordScreenSettingsMap;
 
     void i_reset(void);
-    int i_syncToMachineDisplays(void);
+    int i_syncToMachineDisplays(uint32_t cMonitors);
     int i_createScreenObj(RecordScreenSettingsMap &screenSettingsMap, uint32_t uScreenId, const settings::RecordingScreenSettings &data);
     int i_destroyScreenObj(RecordScreenSettingsMap &screenSettingsMap, uint32_t uScreenId);
     int i_destroyAllScreenObj(RecordScreenSettingsMap &screenSettingsMap);
