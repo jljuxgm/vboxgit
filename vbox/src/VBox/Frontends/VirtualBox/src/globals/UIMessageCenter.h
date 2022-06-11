@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 84184 2020-05-07 11:24:05Z vboxsync $ */
+/* $Id: UIMessageCenter.h 84217 2020-05-08 14:49:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -280,12 +280,15 @@ public:
     void cannotRemoveCloudMachine(const CCloudMachine &comMachine, const CProgress &comProgress) const;
     bool warnAboutInaccessibleMedia() const;
     bool confirmDiscardSavedState(const QString &strNames) const;
+    bool confirmTerminateCloudInstance(const QString &strNames) const;
     bool confirmResetMachine(const QString &strNames) const;
     bool confirmACPIShutdownMachine(const QString &strNames) const;
     bool confirmPowerOffMachine(const QString &strNames) const;
     void cannotPauseMachine(const CConsole &console) const;
     void cannotResumeMachine(const CConsole &console) const;
     void cannotDiscardSavedState(const CMachine &machine) const;
+    void cannotTerminateCloudInstance(const CCloudMachine &comMachine) const;
+    void cannotTerminateCloudInstance(const CProgress &comProgress, const QString &strMachineName) const;
     void cannotSaveMachineState(const CMachine &machine);
     void cannotSaveMachineState(const CProgress &progress, const QString &strMachineName);
     void cannotACPIShutdownMachine(const CConsole &console) const;

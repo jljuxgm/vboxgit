@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItemCloud.cpp 84201 2020-05-08 10:30:03Z vboxsync $ */
+/* $Id: UIVirtualMachineItemCloud.cpp 84217 2020-05-08 14:49:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItemCloud class implementation.
  */
@@ -184,7 +184,8 @@ bool UIVirtualMachineItemCloud::isItemRemovable() const
 
 bool UIVirtualMachineItemCloud::isItemSaved() const
 {
-    return false;
+    return    accessible()
+           && machineState() == KCloudMachineState_Stopped;
 }
 
 bool UIVirtualMachineItemCloud::isItemPoweredOff() const
