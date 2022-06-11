@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 81637 2019-11-04 04:22:10Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 81638 2019-11-04 06:03:32Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -1857,13 +1857,17 @@ static int hmR0VmxAllocVmcsInfo(PVMCPUCC pVCpu, PVMXVMCSINFO pVmcsInfo, bool fIs
                 rc = APICGetApicPageForCpu(pVCpu, &pVmcsInfo->HCPhysVirtApic, (PRTR0PTR)&pVmcsInfo->pbVirtApic, NULL /*pR3Ptr*/);
                 if (RT_FAILURE(rc))
                     return rc;
+                Assert(pVmcsInfo->pbVirtApic);
+                Assert(pVmcsInfo->HCPhysVirtApic && pVmcsInfo->HCPhysVirtApic != NIL_RTHCPHYS);
             }
         }
         else
+        {
             pVmcsInfo->pbVirtApic = (uint8_t *)CPUMGetGuestVmxVirtApicPage(pVCpu, &pVCpu->cpum.GstCtx,
                                                                            &pVmcsInfo->HCPhysVirtApic);
-        Assert(pVmcsInfo->pbVirtApic);
-        Assert(pVmcsInfo->HCPhysVirtApic && pVmcsInfo->HCPhysVirtApic != NIL_RTHCPHYS);
+            Assert(pVmcsInfo->pbVirtApic);
+            Assert(pVmcsInfo->HCPhysVirtApic && pVmcsInfo->HCPhysVirtApic != NIL_RTHCPHYS);
+        }
     }
 
     return VINF_SUCCESS;
