@@ -1,4 +1,4 @@
-/* $Id: HostDnsService.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: HostDnsService.h 84344 2020-05-18 18:32:12Z vboxsync $ */
 /** @file
  * Host DNS listener.
  */
@@ -26,6 +26,7 @@
 #include <iprt/cpp/lock.h>
 
 #include <list>
+#include <string>
 #include <vector>
 
 typedef std::list<com::Utf8Str> Utf8StrList;
