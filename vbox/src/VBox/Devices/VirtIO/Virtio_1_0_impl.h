@@ -1,4 +1,4 @@
-/* $Id: Virtio_1_0_impl.h 80762 2019-09-13 02:33:47Z vboxsync $ $Revision: 80762 $ $Date: 2019-09-13 10:33:47 +0800 (Fri, 13 Sep 2019) $ $Author: vboxsync $ */
+/* $Id: Virtio_1_0_impl.h 80928 2019-09-21 05:29:54Z vboxsync $ $Revision: 80928 $ $Date: 2019-09-21 13:29:54 +0800 (Sat, 21 Sep 2019) $ $Author: vboxsync $ */
 /** @file
  * Virtio_1_0_impl.h - Virtio Declarations
  */
@@ -516,6 +516,7 @@ DECLINLINE(void) virtioLogDeviceStatus( uint8_t status)
             Log6(("%sFAILED",      primed++ ? " | " : ""));
         if (status & VIRTIO_STATUS_DEVICE_NEEDS_RESET)
             Log6(("%sNEEDS_RESET", primed++ ? " | " : ""));
+        (void)primed;
     }
 }
 
