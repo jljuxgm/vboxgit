@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 80360 2019-08-21 08:41:18Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 80546 2019-09-02 11:35:38Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -3428,6 +3428,10 @@ int Display::processVBVAResize(PCVBVAINFOVIEW pView, PCVBVAINFOSCREEN pScreen, v
     RT_NOREF(pView);
 
     DISPLAYFBINFO *pFBInfo = &maFramebuffers[pScreen->u32ViewIndex];
+
+#ifdef DEBUG_sunlover
+    logVBVAResize(pView, pScreen, pFBInfo);
+#endif
 
     if (pScreen->u16Flags & VBVA_SCREEN_F_DISABLED)
     {
