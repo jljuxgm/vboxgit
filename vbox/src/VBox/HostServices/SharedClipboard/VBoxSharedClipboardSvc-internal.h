@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-internal.h 80283 2019-08-15 08:47:23Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-internal.h 80318 2019-08-16 09:13:49Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Internal header.
  */
@@ -44,6 +44,9 @@ using namespace HGCM;
 struct VBOXCLIPBOARDCLIENTSTATE;
 #endif /* VBOX_WITH_SHARED_CLIPBOARD_URI_LIST */
 
+/**
+ * Structure for keeping a single HGCM message.
+ */
 typedef struct _VBOXCLIPBOARDCLIENTMSG
 {
     /** Stored message type. */
@@ -52,6 +55,8 @@ typedef struct _VBOXCLIPBOARDCLIENTMSG
     uint32_t         m_cParms;
     /** Stored HGCM parameters. */
     PVBOXHGCMSVCPARM m_paParms;
+    /** Message context. */
+    VBOXSHCLMSGCTX   m_Ctx;
 } VBOXCLIPBOARDCLIENTMSG, *PVBOXCLIPBOARDCLIENTMSG;
 
 #ifdef VBOX_WITH_SHARED_CLIPBOARD_URI_LIST
