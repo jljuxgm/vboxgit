@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin-cocoa.mm 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxUtils-darwin-cocoa.mm 80696 2019-09-10 11:38:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI -  Declarations of utility classes and functions for handling Darwin Cocoa specific tasks.
  */
@@ -26,6 +26,7 @@
 #import <AppKit/NSColor.h>
 #import <AppKit/NSFont.h>
 #import <AppKit/NSScreen.h>
+#import <AppKit/NSScroller.h>
 #import <AppKit/NSWindow.h>
 #import <AppKit/NSImageView.h>
 
@@ -260,6 +261,19 @@ bool darwinScreensHaveSeparateSpaces()
      * This method is available since 10.9 only. */
     if ([NSScreen respondsToSelector: @selector(screensHaveSeparateSpaces)])
         return [NSScreen performSelector: @selector(screensHaveSeparateSpaces)];
+    else
+        return false;
+}
+
+bool darwinIsScrollerStyleOverlay()
+{
+    /* Check whether scrollers by default have legacy style.
+     * This method is available since 10.7 only. */
+    if ([NSScroller respondsToSelector: @selector(preferredScrollerStyle)])
+    {
+        const int enmType = (int)(intptr_t)[NSScroller performSelector: @selector(preferredScrollerStyle)];
+        return enmType == NSScrollerStyleOverlay;
+    }
     else
         return false;
 }

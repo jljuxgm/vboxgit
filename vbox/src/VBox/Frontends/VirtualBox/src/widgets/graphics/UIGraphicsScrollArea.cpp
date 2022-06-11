@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsScrollArea.cpp 80695 2019-09-10 11:29:51Z vboxsync $ */
+/* $Id: UIGraphicsScrollArea.cpp 80696 2019-09-10 11:38:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGraphicsScrollArea class implementation.
  */
@@ -22,6 +22,9 @@
 /* GUI includes: */
 #include "UIGraphicsScrollArea.h"
 #include "UIGraphicsScrollBar.h"
+#ifdef VBOX_WS_MAC
+# include "VBoxUtils.h"
+#endif
 
 
 UIGraphicsScrollArea::UIGraphicsScrollArea(Qt::Orientation enmOrientation, QGraphicsScene *pScene /* = 0 */)
@@ -244,6 +247,11 @@ void UIGraphicsScrollArea::prepare()
 
 void UIGraphicsScrollArea::prepareWidgets()
 {
+#ifdef VBOX_WS_MAC
+    /* Check whether scroll-bar is in auto-hide (overlay) mode: */
+    m_fAutoHideMode = darwinIsScrollerStyleOverlay();
+#endif
+
     /* Create scroll-bar: */
     m_pScrollBar = new UIGraphicsScrollBar(m_enmOrientation, m_fAutoHideMode, this);
     if (m_pScrollBar)

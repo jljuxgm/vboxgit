@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: VBoxUtils-darwin.h 80696 2019-09-10 11:38:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Declarations of utility classes and functions for handling Darwin specific tasks.
  */
@@ -114,6 +114,7 @@ SHARED_LIBRARY_STUFF void darwinToggleWindowZoom(NativeNSWindowRef pWindow);
 SHARED_LIBRARY_STUFF bool darwinIsInFullscreenMode(NativeNSWindowRef pWindow);
 SHARED_LIBRARY_STUFF bool darwinIsOnActiveSpace(NativeNSWindowRef pWindow);
 SHARED_LIBRARY_STUFF bool darwinScreensHaveSeparateSpaces();
+SHARED_LIBRARY_STUFF bool darwinIsScrollerStyleOverlay();
 
 bool darwinOpenFile(NativeNSStringRef pstrFile);
 
