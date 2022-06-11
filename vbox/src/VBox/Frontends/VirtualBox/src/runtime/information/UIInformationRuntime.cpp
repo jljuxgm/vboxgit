@@ -1,4 +1,4 @@
-/* $Id: UIInformationRuntime.cpp 81094 2019-10-01 11:34:45Z vboxsync $ */
+/* $Id: UIInformationRuntime.cpp 81097 2019-10-02 12:45:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationRuntime class implementation.
  */
@@ -25,7 +25,6 @@
 /* GUI includes: */
 #include "UICommon.h"
 #include "UIConverter.h"
-#include "UIExtraDataManager.h"
 #include "UIIconPool.h"
 #include "UIInformationRuntime.h"
 #include "UISession.h"
@@ -33,7 +32,6 @@
 /* COM includes: */
 #include "CGuest.h"
 #include "CVRDEServerInfo.h"
-
 
 enum InfoRow
 {
@@ -483,10 +481,6 @@ UIInformationRuntime::UIInformationRuntime(QWidget *pParent, const CMachine &mac
 
     prepareObjects();
     retranslateUi();
-}
-
-UIInformationRuntime::~UIInformationRuntime()
-{
 }
 
 void UIInformationRuntime::retranslateUi()
