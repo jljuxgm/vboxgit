@@ -1,4 +1,4 @@
-/* $Id: UIPerformanceMonitor.h 80187 2019-08-07 15:15:00Z vboxsync $ */
+/* $Id: UIPerformanceMonitor.h 80203 2019-08-09 06:08:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPerformanceMonitor class declaration.
  */
@@ -61,8 +61,6 @@ public:
 
     void addData(int iDataSeriesIndex, ULONG fData);
     const QQueue<ULONG> *data(int iDataSeriesIndex) const;
-
-    bool isPercentage() const;
 
     bool requiresGuestAdditions() const;
     void setRequiresGuestAdditions(bool fRequiresGAs);
