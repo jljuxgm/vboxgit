@@ -1,4 +1,4 @@
-/* $Id: tstRTErr-1.cpp 84054 2020-04-28 16:05:00Z vboxsync $ */
+/* $Id: tstRTErr-1.cpp 84057 2020-04-28 16:33:50Z vboxsync $ */
 /** @file
  * IPRT Testcase - Error Messages.
  */
@@ -233,5 +233,4 @@ int main(int argc, char **argv)
      */
     return RTTestSummaryAndDestroy(hTest);
 }
-
 
