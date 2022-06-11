@@ -1,4 +1,4 @@
-/* $Id: VBoxFBOverlay.h 78967 2019-06-04 14:39:36Z vboxsync $ */
+/* $Id: VBoxFBOverlay.h 82677 2020-01-08 17:08:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxFrameBuffer Overly classes declarations.
  */
@@ -749,7 +749,7 @@ private:
 class VBoxVHWAHandleTable
 {
 public:
-    VBoxVHWAHandleTable(uint32_t initialSize);
+    VBoxVHWAHandleTable(uint32_t maxSize);
     ~VBoxVHWAHandleTable();
     uint32_t put(void * data);
     bool mapPut(uint32_t h, void * data);
