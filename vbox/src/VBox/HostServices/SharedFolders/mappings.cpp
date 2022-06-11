@@ -1,4 +1,4 @@
-/* $Id: mappings.cpp 78904 2019-05-31 19:23:47Z vboxsync $ */
+/* $Id: mappings.cpp 81464 2019-10-23 00:57:16Z vboxsync $ */
 /** @file
  * Shared Folders Service - Mappings support.
  */
@@ -392,7 +392,9 @@ int vbsfMappingsAdd(const char *pszFolderName, PSHFLSTRING pMapName, bool fWrita
             RTFSPROPERTIES prop;
             prop.fCaseSensitive = false; /* Shut up MSC. */
             rc = RTFsQueryProperties(g_FolderMapping[i].pszFolderName, &prop);
+#ifndef DEBUG_bird /* very annoying */
             AssertRC(rc);
+#endif
             g_FolderMapping[i].fHostCaseSensitive = RT_SUCCESS(rc) ? prop.fCaseSensitive : false;
             vbsfRootHandleAdd(i);
             vbsfMappingsWakeupAllWaiters();
