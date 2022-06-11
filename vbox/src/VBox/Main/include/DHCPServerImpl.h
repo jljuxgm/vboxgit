@@ -1,4 +1,4 @@
-/* $Id: DHCPServerImpl.h 79761 2019-07-14 03:18:41Z vboxsync $ */
+/* $Id: DHCPServerImpl.h 79771 2019-07-14 21:10:58Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -68,6 +68,7 @@ public:
     /** @name Public internal methods.
      * @{ */
     HRESULT i_saveSettings(settings::DHCPServer &data);
+    HRESULT i_removeConfig(DHCPConfig *pConfig, DHCPConfigScope_T enmScope);
     /** @} */
 
 private:
