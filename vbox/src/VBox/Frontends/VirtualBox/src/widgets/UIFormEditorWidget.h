@@ -1,4 +1,4 @@
-/* $Id: UIFormEditorWidget.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIFormEditorWidget.h 83961 2020-04-24 09:26:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFormEditorWidget class declaration.
  */
@@ -29,6 +29,7 @@
 class QHeaderView;
 class UIFormEditorModel;
 class UIFormEditorView;
+class CForm;
 class CVirtualSystemDescriptionForm;
 
 /** QWidget subclass representing model/view Form Editor widget. */
@@ -46,6 +47,8 @@ public:
     /** Returns vertical header reference. */
     QHeaderView *verticalHeader() const;
 
+    /** Defines @a comForm to be edited. */
+    void setForm(const CForm &comForm);
     /** Defines virtual system description @a comForm to be edited. */
     void setVirtualSystemDescriptionForm(const CVirtualSystemDescriptionForm &comForm);
 

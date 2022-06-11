@@ -1,4 +1,4 @@
-/* $Id: UIFormEditorWidget.cpp 83388 2020-03-24 15:50:54Z vboxsync $ */
+/* $Id: UIFormEditorWidget.cpp 83961 2020-04-24 09:26:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFormEditorWidget class implementation.
  */
@@ -40,6 +40,7 @@
 /* COM includes: */
 #include "CBooleanFormValue.h"
 #include "CChoiceFormValue.h"
+#include "CForm.h"
 #include "CFormValue.h"
 #include "CRangedIntegerFormValue.h"
 #include "CStringFormValue.h"
@@ -1435,6 +1436,14 @@ QHeaderView *UIFormEditorWidget::verticalHeader() const
 {
     AssertPtrReturn(m_pTableView, 0);
     return m_pTableView->verticalHeader();
+}
+
+void UIFormEditorWidget::setForm(const CForm &comForm)
+{
+    AssertPtrReturnVoid(m_pTableModel);
+    /// @todo add some check..
+    m_pTableModel->setFormValues(comForm.GetValues());
+    adjustTable();
 }
 
 void UIFormEditorWidget::setVirtualSystemDescriptionForm(const CVirtualSystemDescriptionForm &comForm)
