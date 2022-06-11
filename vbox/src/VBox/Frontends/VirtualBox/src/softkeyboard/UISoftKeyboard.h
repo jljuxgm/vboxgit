@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboard.h 78635 2019-05-21 14:27:39Z vboxsync $ */
+/* $Id: UISoftKeyboard.h 78661 2019-05-22 13:24:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class declaration.
  */
@@ -61,6 +61,7 @@ private slots:
 
     void sltHandleKeyPress();
     void sltHandleKeyRelease();
+    void sltHandleModifierStateChange();
 
 private:
 
@@ -82,6 +83,7 @@ private:
     QVector<UISoftKeyboardRow*> m_rows;
     int           m_iTotalRowHeight;
     int           m_iMaxRowWidth;
+    QVector<UISoftKeyboardKey*> m_pressedModifiers;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_softkeyboard_UISoftKeyboard_h */
