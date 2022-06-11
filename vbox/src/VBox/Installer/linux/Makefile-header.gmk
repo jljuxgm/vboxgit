@@ -1,4 +1,4 @@
-# $Id: Makefile-header.gmk 78446 2019-05-08 10:57:05Z vboxsync $
+# $Id: Makefile-header.gmk 78447 2019-05-08 10:59:59Z vboxsync $
 ## @file
 # VirtualBox Guest Additions kernel module Makefile, common parts.
 #
@@ -173,7 +173,11 @@ else # neq($(KERNELRELEASE),)
  KERN_VER := $(KERNELRELEASE)
 
  ifeq ($(KERN_DIR),)
-  KERN_DIR := /lib/modules/$(KERN_VER)/build
+  ifneq ($(srctree),)
+   KERN_DIR := $(srctree)
+  else
+   KERN_DIR := /lib/modules/$(KERN_VER)/build
+  endif
  endif
 endif # neq($(KERNELRELEASE),)
 
