@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSize.cpp 81778 2019-11-11 20:00:50Z vboxsync $ */
+/* $Id: tstDeviceStructSize.cpp 81782 2019-11-11 22:09:07Z vboxsync $ */
 /** @file
  * tstDeviceStructSize - testcase for check structure sizes/alignment
  *                       and to verify that HC and RC uses the same
@@ -368,11 +368,11 @@ int main()
 # ifdef VBOX_WITH_STATISTICS
     CHECK_MEMBER_ALIGNMENT(IOAPIC, StatMmioReadRZ, 8);
 # endif
-    CHECK_MEMBER_ALIGNMENT(LSILOGISCSI, aMessage, 8);
-    CHECK_MEMBER_ALIGNMENT(LSILOGISCSI, ReplyPostQueueCritSect, 8);
-    CHECK_MEMBER_ALIGNMENT(LSILOGISCSI, ReplyFreeQueueCritSect, 8);
-    CHECK_MEMBER_ALIGNMENT(LSILOGISCSI, uReplyFreeQueueNextEntryFreeWrite, 8);
-    CHECK_MEMBER_ALIGNMENT(LSILOGISCSI, VBoxSCSI, 8);
+    CHECK_MEMBER_ALIGNMENT(LSILOGICSCSI, aMessage, 8);
+    CHECK_MEMBER_ALIGNMENT(LSILOGICSCSI, ReplyPostQueueCritSect, 8);
+    CHECK_MEMBER_ALIGNMENT(LSILOGICSCSI, ReplyFreeQueueCritSect, 8);
+    CHECK_MEMBER_ALIGNMENT(LSILOGICSCSI, uReplyFreeQueueNextEntryFreeWrite, 8);
+    CHECK_MEMBER_ALIGNMENT(LSILOGICSCSICC, VBoxSCSI, 8);
 #ifdef VBOX_WITH_USB
     CHECK_MEMBER_ALIGNMENT(OHCI, RootHub, 8);
 # ifdef VBOX_WITH_STATISTICS
