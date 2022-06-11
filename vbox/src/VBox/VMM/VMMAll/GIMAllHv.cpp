@@ -1,4 +1,4 @@
-/* $Id: GIMAllHv.cpp 76886 2019-01-18 10:57:02Z vboxsync $ */
+/* $Id: GIMAllHv.cpp 78434 2019-05-07 14:12:26Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Microsoft Hyper-V, All Contexts.
  */
@@ -1371,9 +1371,13 @@ VMM_INT_DECL(VBOXSTRICTRC) gimHvWriteMsr(PVMCPU pVCpu, uint32_t idMsr, PCCPUMMSR
  */
 VMM_INT_DECL(bool) gimHvShouldTrapXcptUD(PVMCPU pVCpu)
 {
+#ifdef VBOX_WITH_RAW_MODE
     if (   VM_IS_RAW_MODE_ENABLED(pVCpu->CTX_SUFF(pVM))
         && gimHvAreHypercallsEnabled(pVCpu))
         return true;
+#else
+    RT_NOREF(pVCpu);
+#endif
     return false;
 }
 
