@@ -1,4 +1,4 @@
-/* $Id: VMMDevHGCM.cpp 81625 2019-11-01 20:47:17Z vboxsync $ */
+/* $Id: VMMDevHGCM.cpp 81707 2019-11-06 12:09:12Z vboxsync $ */
 /** @file
  * VMMDev - HGCM - Host-Guest Communication Manager Device.
  */
@@ -448,7 +448,7 @@ static int vmmdevR3HgcmRemoveCommand(PVMMDEVCC pThisCC, PVBOXHGCMCMD pCmd)
  * this function.
  *
  * @returns Pointer to the command on success, NULL otherwise.
- * @param   pThis           The VMMDev instance data.
+ * @param   pThisCC         The VMMDev ring-3 instance data.
  * @param   GCPhys          The physical address of the command we're looking for.
  */
 DECLINLINE(PVBOXHGCMCMD) vmmdevR3HgcmFindCommandLocked(PVMMDEVCC pThisCC, RTGCPHYS GCPhys)
