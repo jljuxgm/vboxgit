@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 79132 2019-06-13 15:13:12Z vboxsync $
+# $Id: vboxtestvms.py 79156 2019-06-15 02:35:24Z vboxsync $
 
 """
 VirtualBox Test VMs
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79132 $"
+__version__ = "$Revision: 79156 $"
 
 # Standard Python imports.
 import copy;
@@ -565,6 +565,28 @@ class BaseTestVm(object):
         Gets the non-canonical OS type (self.sGuestOsType is canonical).
         """
         return self.sKind; #self.aInfo[g_iGuestOsType];
+
+    def getGuestArch(self):
+        """ Same as util.getHostArch. """
+        return 'amd64' if self.sKind.find('_64') >= 0 else 'x86';
+
+    def getGuestOs(self):
+        """ Same as util.getHostOs. """
+        if self.isWindows():    return 'win';
+        if self.isOS2():        return 'os2';
+        if self.isLinux():      return 'linux';
+        reporter.error('getGuestOs does not what to return!');
+        raise Exception();
+
+    def getGuestOsDotArch(self):
+        """ Same as util.getHostOsDotArch. """
+        return self.getGuestOs() + '.' + self.getGuestArch();
+
+    def getGuestExeSuff(self):
+        """ The executable image suffix for the guest. """
+        if self.isWindows() or self.isOS2():
+            return '.exe';
+        return '';
 
     def isWindows(self):
         """ Checks if it's a Windows VM. """
@@ -1229,6 +1251,28 @@ class TestVm(object):
         """ Hook into getReconfiguredVm() for children. """
         _ = oTestDrv; _ = oVM; _ = oSession;
         return True;
+
+    def getGuestArch(self):
+        """ Same as util.getHostArch. """
+        return 'amd64' if self.sKind.find('_64') >= 0 else 'x86';
+
+    def getGuestOs(self):
+        """ Same as util.getHostOs. """
+        if self.isWindows():    return 'win';
+        if self.isOS2():        return 'os2';
+        if self.isLinux():      return 'linux';
+        reporter.error('getGuestOs does not what to return!');
+        raise Exception();
+
+    def getGuestExeSuff(self):
+        """ The executable image suffix for the guest. """
+        if self.isWindows() or self.isOS2():
+            return '.exe';
+        return '';
+
+    def getGuestOsDotArch(self):
+        """ Same as util.getHostOsDotArch."""
+        return self.getGuestOs() + '.' + self.getGuestArch();
 
     def isWindows(self):
         """ Checks if it's a Windows VM. """
