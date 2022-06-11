@@ -1,4 +1,4 @@
-/* $Id: UIFormEditorWidget.cpp 78938 2019-06-03 13:57:48Z vboxsync $ */
+/* $Id: UIFormEditorWidget.cpp 78954 2019-06-04 08:26:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFormEditorWidget class implementation.
  */
