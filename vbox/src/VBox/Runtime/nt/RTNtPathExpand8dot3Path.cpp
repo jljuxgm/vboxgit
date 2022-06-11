@@ -1,4 +1,4 @@
-/* $Id: RTNtPathExpand8dot3Path.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: RTNtPathExpand8dot3Path.cpp 83726 2020-04-17 01:58:50Z vboxsync $ */
 /** @file
  * IPRT - Native NT, RTNtPathExpand8dot3Path.
  */
@@ -130,7 +130,7 @@ RTDECL(int) RTNtPathExpand8dot3Path(PUNICODE_STRING pUniStr, bool fPathOnly)
         {
             RT_ZERO(*puBuf);
 
-            IO_STATUS_BLOCK Ios = RTNT_IO_STATUS_BLOCK_INITIALIZER;
+            RTNT_IO_STATUS_BLOCK_REINIT(&Ios);
             UNICODE_STRING  NtFilterStr;
             NtFilterStr.Buffer = pwszFix;
             NtFilterStr.Length = (USHORT)((uintptr_t)pwszFixEnd - (uintptr_t)pwszFix);
