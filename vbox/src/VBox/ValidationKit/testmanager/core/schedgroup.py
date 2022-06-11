@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: schedgroup.py 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: schedgroup.py 83340 2020-03-19 18:31:18Z vboxsync $
 
 """
 Test Manager - Scheduling Group.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 82968 $"
+__version__ = "$Revision: 83340 $"
 
 
 # Standard python imports.
@@ -446,7 +446,7 @@ class SchedGroupLogic(ModelLogicBase): # pylint: disable=too-few-public-methods
             self._oDb.execute('SELECT   *\n'
                               'FROM     SchedGroups\n'
                               'WHERE    tsExpire = \'infinity\'::TIMESTAMP\n'
-                              'ORDER BY idSchedGroup DESC\n'
+                              'ORDER BY fEnabled DESC, sName DESC\n'
                               'LIMIT %s OFFSET %s\n'
                               , (cMaxRows, iStart,));
         else:
@@ -454,7 +454,7 @@ class SchedGroupLogic(ModelLogicBase): # pylint: disable=too-few-public-methods
                               'FROM     SchedGroups\n'
                               'WHERE    tsExpire     > %s\n'
                               '     AND tsEffective <= %s\n'
-                              'ORDER BY idSchedGroup DESC\n'
+                              'ORDER BY fEnabled DESC, sName DESC\n'
                               'LIMIT %s OFFSET %s\n'
                               , (tsNow, tsNow, cMaxRows, iStart,));
 
