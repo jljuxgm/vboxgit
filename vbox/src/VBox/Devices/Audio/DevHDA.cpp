@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 83298 2020-03-16 13:10:10Z vboxsync $ */
+/* $Id: DevHDA.cpp 83812 2020-04-19 00:21:56Z vboxsync $ */
 /** @file
  * DevHDA.cpp - VBox Intel HD Audio Controller.
  *
@@ -3268,7 +3268,7 @@ static DECLCALLBACK(VBOXSTRICTRC) hdaMmioWrite(PPDMDEVINS pDevIns, void *pvUser,
                 u64Value <<= cbBefore * 8;
                 u64Value  |= pThis->au32Regs[idxRegMem] & g_afMasks[cbBefore];
                 Log4Func(("\tWithin register, supplied %u leading bits: %#llx -> %#llx ...\n",
-                          cbBefore * 8, ~g_afMasks[cbBefore] & u64Value, u64Value));
+                          cbBefore * 8, ~(uint64_t)g_afMasks[cbBefore] & u64Value, u64Value));
                 STAM_COUNTER_INC(&pThis->CTX_SUFF_Z(StatRegMultiWrites));
             }
             else

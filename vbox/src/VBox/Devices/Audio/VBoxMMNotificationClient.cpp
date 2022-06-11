@@ -1,4 +1,4 @@
-/* $Id: VBoxMMNotificationClient.cpp 83239 2020-03-10 10:13:59Z vboxsync $ */
+/* $Id: VBoxMMNotificationClient.cpp 83812 2020-04-19 00:21:56Z vboxsync $ */
 /** @file
  * VBoxMMNotificationClient.cpp - Implementation of the IMMNotificationClient interface
  *                                to detect audio endpoint changes.
@@ -22,6 +22,11 @@
 
 #pragma warning(push)
 #pragma warning(disable: 4201)
+#ifndef DOXYGEN_RUNNING
+# if RT_MSC_PREREQ(RT_MSC_VER_VC141)
+#  pragma warning(disable: 4091) /* v7.1\include\ksmedia.h(4356): warning C4091: 'typedef ': ignored on left of '<unnamed-enum-KSEVENT_DYNAMIC_FORMAT_CHANGE>' when no variable is declared */
+# endif
+#endif
 #include <mmdeviceapi.h>
 #include <endpointvolume.h>
 #pragma warning(pop)
@@ -236,10 +241,10 @@ STDMETHODIMP VBoxMMNotificationClient::OnDefaultDeviceChanged(EDataFlow eFlow, E
 
 STDMETHODIMP VBoxMMNotificationClient::QueryInterface(REFIID interfaceID, void **ppvInterface)
 {
-    const IID IID_IMMNotificationClient = __uuidof(IMMNotificationClient);
+    const IID MY_IID_IMMNotificationClient = __uuidof(IMMNotificationClient);
 
     if (   IsEqualIID(interfaceID, IID_IUnknown)
-        || IsEqualIID(interfaceID, IID_IMMNotificationClient))
+        || IsEqualIID(interfaceID, MY_IID_IMMNotificationClient))
     {
         *ppvInterface = static_cast<IMMNotificationClient*>(this);
         AddRef();
