@@ -1,4 +1,4 @@
-/* $Id: fsw_hfs.c 82517 2019-12-09 14:22:34Z vboxsync $ */
+/* $Id: fsw_hfs.c 82520 2019-12-09 15:11:50Z vboxsync $ */
 /** @file
  * fsw_hfs.c - HFS file system driver code, see
  *
@@ -1358,6 +1358,7 @@ static fsw_status_t fsw_hfs_get_path_from_cnid(struct fsw_hfs_volume *vol, fsw_u
         goto done;
 
     fsw_memzero(&param, sizeof(param));
+    fsw_memzero(&rec_name, sizeof(rec_name));
 
     catkey.parentID = cnid;
     catkey.nodeName.length = 0;
