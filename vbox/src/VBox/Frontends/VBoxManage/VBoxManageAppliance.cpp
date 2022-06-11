@@ -1,4 +1,4 @@
-/* $Id: VBoxManageAppliance.cpp 81400 2019-10-21 11:27:36Z vboxsync $ */
+/* $Id: VBoxManageAppliance.cpp 81515 2019-10-24 12:31:36Z vboxsync $ */
 /** @file
  * VBoxManage - The appliance-related commands.
  */
@@ -361,7 +361,18 @@ RTEXITCODE handleImportAppliance(HandlerArg *arg)
         }
     }
 
-    if (actionType == LOCAL && strOvfFilename.isEmpty())
+    /* Last check after parsing all arguments */
+    if (strOvfFilename.isNotEmpty())
+    {
+        if (actionType == NOT_SET)
+        {
+            if (fCloud)
+                actionType = CLOUD;
+            else
+                actionType = LOCAL;
+        }
+    }
+    else
         return errorSyntax(USAGE_IMPORTAPPLIANCE, "Not enough arguments for \"import\" command.");
 
     do
