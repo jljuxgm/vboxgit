@@ -1,4 +1,4 @@
-/* $Id: ioqueue.h 79949 2019-07-24 11:05:45Z vboxsync $ */
+/* $Id: ioqueue.h 80035 2019-07-29 07:32:39Z vboxsync $ */
 /** @file
  * IPRT - Internal RTIoQueue header.
  */
@@ -36,8 +36,10 @@ RT_C_DECLS_BEGIN
 
 /** The standard file I/O queue provider using synchronous file access. */
 extern RTDATADECL(RTIOQUEUEPROVVTABLE const) g_RTIoQueueStdFileProv;
+#ifndef RT_OS_OS2
 /** The file I/O queue provider using the RTFileAio API. */
 extern RTDATADECL(RTIOQUEUEPROVVTABLE const) g_RTIoQueueAioFileProv;
+#endif
 #if defined(RT_OS_LINUX)
 /** The file I/O queue provider using the recently added io_uring interface when
  * available on the host. */

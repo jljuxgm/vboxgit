@@ -1,4 +1,4 @@
-/* $Id: ioqueuebase.cpp 79983 2019-07-25 17:21:24Z vboxsync $ */
+/* $Id: ioqueuebase.cpp 80035 2019-07-29 07:32:39Z vboxsync $ */
 /** @file
  * IPRT - I/O queue, Base/Public API.
  */
@@ -88,7 +88,9 @@ static PCRTIOQUEUEPROVVTABLE g_apIoQueueProviders[] =
 #if defined(RT_OS_LINUX)
     &g_RTIoQueueLnxIoURingProv,
 #endif
+#ifndef RT_OS_OS2
     &g_RTIoQueueAioFileProv,
+#endif
     &g_RTIoQueueStdFileProv
 };
 
