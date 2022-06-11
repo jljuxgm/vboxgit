@@ -1,4 +1,4 @@
-/* $Id: BIOSSettingsImpl.cpp 81087 2019-09-30 18:55:28Z vboxsync $ */
+/* $Id: BIOSSettingsImpl.cpp 81222 2019-10-11 11:34:51Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation - Machine BIOS settings.
  */
@@ -509,7 +509,8 @@ HRESULT BIOSSettings::getNonVolatileStorageFile(com::Utf8Str &aNonVolatileStorag
         strTmp = m->bd->strNVRAMPath;
     }
 
-    m->pMachine->i_calculateFullPath(strTmp, aNonVolatileStorageFile);
+    if (strTmp.isNotEmpty())
+        m->pMachine->i_calculateFullPath(strTmp, aNonVolatileStorageFile);
 
     return S_OK;
 }
