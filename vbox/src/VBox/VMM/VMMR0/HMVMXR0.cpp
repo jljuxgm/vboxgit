@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 79453 2019-07-01 18:04:13Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 79454 2019-07-01 18:10:09Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -3864,6 +3864,7 @@ static int hmR0VmxSetupVmcsMiscCtls(PVMCPU pVCpu, PVMXVMCSINFO pVmcsInfo)
     }
 #endif
 
+    Assert(pVmcsInfo->u64VmcsLinkPtr == NIL_RTHCPHYS);
     int rc = VMXWriteVmcs64(VMX_VMCS64_GUEST_VMCS_LINK_PTR_FULL, NIL_RTHCPHYS);
     if (RT_SUCCESS(rc))
     {
@@ -3938,6 +3939,7 @@ static int hmR0VmxSetupVmcsXcptBitmap(PVMCPU pVCpu, PVMXVMCSINFO pVmcsInfo)
 static int hmR0VmxSetupVmcsCtlsNested(PVMCPU pVCpu, PVMXVMCSINFO pVmcsInfo)
 {
     PVM pVM = pVCpu->CTX_SUFF(pVM);
+    Assert(pVmcsInfo->u64VmcsLinkPtr == NIL_RTHCPHYS);
     int rc = VMXWriteVmcs64(VMX_VMCS64_GUEST_VMCS_LINK_PTR_FULL, NIL_RTHCPHYS);
     if (RT_SUCCESS(rc))
     {
