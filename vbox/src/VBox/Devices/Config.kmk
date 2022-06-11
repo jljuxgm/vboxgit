@@ -1,4 +1,4 @@
-# $Id: Config.kmk 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: Config.kmk 80299 2019-08-15 15:58:44Z vboxsync $
 ## @file
 # kBuild Configuration file for the Devices.
 #
@@ -20,6 +20,11 @@ VBOX_DEVICES_CONFIG_KMK_INCLUDED = 1
 # Include the top-level configure file.
 ifndef VBOX_ROOT_CONFIG_KMK_INCLUDED
  include $(PATH_ROOT)/Config.kmk
+endif
+
+# We need the VMM/Config.kmk one for the VMM_COMMON_DEFS variable.
+ifndef VBOX_VMM_CONFIG_KMK_INCLUDED
+ include $(PATH_ROOT)/src/VBox/VMM/Config.kmk
 endif
 
 VBOX_PATH_DEVICES_SRC := $(PATH_ROOT)/src/VBox/Devices
