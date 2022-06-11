@@ -1,4 +1,4 @@
-/* $Id: UIChooserNodeGroup.cpp 83040 2020-02-10 17:08:22Z vboxsync $ */
+/* $Id: UIChooserNodeGroup.cpp 83315 2020-03-18 12:29:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserNodeGroup class implementation.
  */
@@ -33,8 +33,11 @@ UIChooserNodeGroup::UIChooserNodeGroup(UIChooserNode *pParent,
     , m_strName(strName)
     , m_fOpened(fOpened)
 {
+    /* Add to parent: */
     if (parentNode())
         parentNode()->addNode(this, iPosition);
+
+    /* Apply language settings: */
     retranslateUi();
 }
 
@@ -45,9 +48,14 @@ UIChooserNodeGroup::UIChooserNodeGroup(UIChooserNode *pParent,
     , m_strName(pCopyFrom->name())
     , m_fOpened(pCopyFrom->isOpened())
 {
+    /* Add to parent: */
     if (parentNode())
         parentNode()->addNode(this, iPosition);
+
+    /* Copy internal stuff: */
     copyContents(pCopyFrom);
+
+    /* Apply language settings: */
     retranslateUi();
 }
 
@@ -61,7 +69,11 @@ UIChooserNodeGroup::~UIChooserNodeGroup()
         delete m_nodesGlobal.last();
     while (!m_nodesMachine.isEmpty())
         delete m_nodesMachine.last();
+
+    /* Delete item: */
     delete item();
+
+    /* Remove from parent: */
     if (parentNode())
         parentNode()->removeNode(this);
 }
