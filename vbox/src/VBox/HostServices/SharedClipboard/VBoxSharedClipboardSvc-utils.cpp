@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-utils.cpp 80847 2019-09-17 09:38:16Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-utils.cpp 80849 2019-09-17 09:46:51Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Host service utility functions.
  */
@@ -31,7 +31,7 @@
 #include "VBoxSharedClipboardSvc-internal.h"
 
 
-#ifdef VBOX_WITH_SHARED_CLIPBOARD_URI_LIST
+#ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS
 /**
  * Returns whether a HGCM message is allowed in a certain service mode or not.
  *
@@ -149,5 +149,5 @@ bool sharedClipboardSvcURIReturnMsg(PSHCLCLIENT pClient, uint32_t cParms, VBOXHG
     return fHandled;
 }
 #endif
-#endif /* VBOX_WITH_SHARED_CLIPBOARD_URI_LIST */
+#endif /* VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS */
 

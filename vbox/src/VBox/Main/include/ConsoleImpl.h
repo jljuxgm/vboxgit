@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 78916 2019-06-01 17:43:28Z vboxsync $ */
+/* $Id: ConsoleImpl.h 80849 2019-09-17 09:46:51Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -876,7 +876,7 @@ private:
     static DECLCALLBACK(int) i_sharedClipboardServiceCallback(void *pvExtension, uint32_t u32Function,
                                                               void *pvParms, uint32_t cbParms);
     /** @} */
-#endif /* VBOX_WITH_SHARED_CLIPBOARD_URI_LIST */
+#endif /* VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS */
 
     /** @name Disk encryption support
      * @{ */

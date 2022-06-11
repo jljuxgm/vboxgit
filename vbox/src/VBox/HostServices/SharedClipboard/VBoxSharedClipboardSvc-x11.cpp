@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-x11.cpp 80847 2019-09-17 09:38:16Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-x11.cpp 80849 2019-09-17 09:46:51Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Linux host.
  */
@@ -203,7 +203,7 @@ int SharedClipboardSvcImplFormatAnnounce(PSHCLCLIENT pClient, PSHCLCLIENTCMDCTX 
 {
     RT_NOREF(pCmdCtx);
 
-#ifdef VBOX_WITH_SHARED_CLIPBOARD_URI_LIST
+#ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS
     if (pFormats->uFormats & VBOX_SHCL_FMT_URI_LIST) /* No URI support yet. */
         return VINF_SUCCESS;
 #endif
@@ -388,7 +388,7 @@ int ClipRequestDataForX11(SHCLCONTEXT *pCtx, uint32_t u32Format, void **ppv, uin
     return rc;
 }
 
-#ifdef VBOX_WITH_SHARED_CLIPBOARD_URI_LIST
+#ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS
 int SharedClipboardSvcImplURITransferCreate(PSHCLCLIENT pClient, PSHCLURITRANSFER pTransfer)
 {
     RT_NOREF(pClient, pTransfer);

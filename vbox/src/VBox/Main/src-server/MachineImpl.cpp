@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 80824 2019-09-16 13:18:44Z vboxsync $ */
+/* $Id: MachineImpl.cpp 80849 2019-09-17 09:46:51Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -13403,7 +13403,7 @@ HRESULT SessionMachine::onSessionEnd(const ComPtr<ISession> &aSession,
 
 HRESULT SessionMachine::clipboardAreaRegister(const std::vector<com::Utf8Str> &aParms, ULONG *aID)
 {
-#ifdef VBOX_WITH_SHARED_CLIPBOARD_URI_LIST
+#ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS
     ULONG uID;
     int rc = mParent->i_onClipboardAreaRegister(aParms, &uID);
     if (RT_SUCCESS(rc))
@@ -13421,7 +13421,7 @@ HRESULT SessionMachine::clipboardAreaRegister(const std::vector<com::Utf8Str> &a
 
 HRESULT SessionMachine::clipboardAreaUnregister(ULONG aID)
 {
-#ifdef VBOX_WITH_SHARED_CLIPBOARD_URI_LIST
+#ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS
     return mParent->i_onClipboardAreaUnregister(aID);
 #else
     RT_NOREF(aID);
@@ -13431,7 +13431,7 @@ HRESULT SessionMachine::clipboardAreaUnregister(ULONG aID)
 
 HRESULT SessionMachine::clipboardAreaAttach(ULONG aID)
 {
-#ifdef VBOX_WITH_SHARED_CLIPBOARD_URI_LIST
+#ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS
     return mParent->i_onClipboardAreaAttach(aID);
 #else
     RT_NOREF(aID);
@@ -13440,7 +13440,7 @@ HRESULT SessionMachine::clipboardAreaAttach(ULONG aID)
 }
 HRESULT SessionMachine::clipboardAreaDetach(ULONG aID)
 {
-#ifdef VBOX_WITH_SHARED_CLIPBOARD_URI_LIST
+#ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS
     return mParent->i_onClipboardAreaDetach(aID);
 #else
     RT_NOREF(aID);
@@ -13450,7 +13450,7 @@ HRESULT SessionMachine::clipboardAreaDetach(ULONG aID)
 
 HRESULT SessionMachine::clipboardAreaGetMostRecent(ULONG *aID)
 {
-#ifdef VBOX_WITH_SHARED_CLIPBOARD_URI_LIST
+#ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS
     ULONG uID = mParent->i_onClipboardAreaGetMostRecent();
     if (aID)
         *aID = uID;
@@ -13463,7 +13463,7 @@ HRESULT SessionMachine::clipboardAreaGetMostRecent(ULONG *aID)
 
 HRESULT SessionMachine::clipboardAreaGetRefCount(ULONG aID, ULONG *aRefCount)
 {
-#ifdef VBOX_WITH_SHARED_CLIPBOARD_URI_LIST
+#ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS
     ULONG uRefCount = mParent->i_onClipboardAreaGetRefCount(aID);
     if (aRefCount)
         *aRefCount = uRefCount;
