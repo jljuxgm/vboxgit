@@ -1,4 +1,4 @@
-/* $Id: TemplateRsrcDefs.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: TemplateRsrcDefs.h 82909 2020-01-29 13:32:11Z vboxsync $ */
 /** @file
  * Defines for templates that does not have Windows.h handy.
  */
@@ -24,10 +24,6 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-
-#ifdef IN_ICON_FILE
-IDI_ICON1 ICON IN_ICON_FILE
-#endif
 
 #define VS_VERSION_INFO         1
 #define VS_FFI_FILEFLAGSMASK    0x3f

@@ -1,4 +1,4 @@
-/* $Id: TemplateR0.rc 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: TemplateR0.rc 82909 2020-01-29 13:32:11Z vboxsync $ */
 /** @file
  * Resource file template for a ring-0 module.
  */
@@ -80,7 +80,7 @@
 LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 
 #ifdef IN_ICON_FILE
-1 ICON IN_ICON_FILE
+IDI_ICON1 ICON IN_ICON_FILE
 #endif
 
 VS_VERSION_INFO VERSIONINFO
