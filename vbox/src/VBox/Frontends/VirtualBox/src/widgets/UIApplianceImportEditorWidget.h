@@ -1,4 +1,4 @@
-/* $Id: UIApplianceImportEditorWidget.h 79032 2019-06-07 07:28:32Z vboxsync $ */
+/* $Id: UIApplianceImportEditorWidget.h 82385 2019-12-04 16:19:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceImportEditorWidget class declaration.
  */
@@ -37,6 +37,7 @@ enum MACAddressImportPolicy
     MACAddressImportPolicy_StripAllMACs,
     MACAddressImportPolicy_MAX
 };
+Q_DECLARE_METATYPE(MACAddressImportPolicy);
 
 class UIApplianceImportEditorWidget: public UIApplianceEditorWidget
 {
