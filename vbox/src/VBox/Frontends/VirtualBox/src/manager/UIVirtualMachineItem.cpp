@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItem.cpp 82878 2020-01-27 17:30:46Z vboxsync $ */
+/* $Id: UIVirtualMachineItem.cpp 82879 2020-01-27 17:32:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItem class implementation.
  */
@@ -40,11 +40,11 @@
 UIVirtualMachineItem::UIVirtualMachineItem(const CMachine &comMachine)
     : m_comMachine(comMachine)
     , m_fAccessible(false)
-    , m_fHasDetails(false)
     , m_cSnaphot(0)
     , m_enmMachineState(KMachineState_Null)
     , m_enmSessionState(KSessionState_Null)
     , m_enmConfigurationAccessLevel(ConfigurationAccessLevel_Null)
+    , m_fHasDetails(false)
 {
     recache();
 }
