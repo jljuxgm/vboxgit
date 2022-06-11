@@ -1,4 +1,4 @@
-/* $Id: UIChooserNode.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIChooserNode.h 83040 2020-02-10 17:08:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserNode class declaration.
  */
@@ -95,6 +95,10 @@ public:
     virtual void removeAllNodes(const QUuid &uId) = 0;
     /** Updates all children with specified @a uId recursively. */
     virtual void updateAllNodes(const QUuid &uId) = 0;
+
+    /** Returns whether this node is a cloud node itself
+      * or contains at least one cloud VM node child. */
+    virtual bool hasAtLeastOneCloudNode() const = 0;
 
     /** Returns node position. */
     int position();
