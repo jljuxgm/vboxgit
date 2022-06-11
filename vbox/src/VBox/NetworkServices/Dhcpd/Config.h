@@ -1,4 +1,4 @@
-/* $Id: Config.h 79563 2019-07-06 01:22:56Z vboxsync $ */
+/* $Id: Config.h 79613 2019-07-08 23:50:48Z vboxsync $ */
 /** @file
  * DHCP server - server configuration
  */
@@ -45,6 +45,7 @@ class Config
 
     RTCString       m_strNetwork;       /**< The name of the internal network the DHCP server is connected to. */
     RTCString       m_strBaseName;      /**< m_strNetwork sanitized to be usable in a path component. */
+    RTCString       m_strLeaseFilename; /**< The lease filename if one given.  Dhcpd will pick a default if empty. */
 
     RTCString       m_strTrunk;         /**< The trunk name of the internal network. */
     INTNETTRUNKTYPE m_enmTrunkType;     /**< The trunk type of the internal network. */
@@ -90,8 +91,9 @@ public:
     const RTCString    &getHome() const RT_NOEXCEPT             { return m_strHome; }
 
     const RTCString    &getNetwork() const RT_NOEXCEPT          { return m_strNetwork; }
-
     const RTCString    &getBaseName() const RT_NOEXCEPT         { return m_strBaseName; }
+    const RTCString    &getLeaseFilename() const RT_NOEXCEPT    { return m_strLeaseFilename; }
+
     const RTCString    &getTrunk() const RT_NOEXCEPT            { return m_strTrunk; }
     INTNETTRUNKTYPE     getTrunkType() const RT_NOEXCEPT        { return m_enmTrunkType; }
 
