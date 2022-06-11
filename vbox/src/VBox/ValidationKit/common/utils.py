@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: utils.py 81112 2019-10-04 21:45:22Z vboxsync $
+# $Id: utils.py 82635 2019-12-22 18:53:40Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 81112 $"
+__version__ = "$Revision: 82635 $"
 
 
 # Standard Python imports.
@@ -62,6 +62,24 @@ if sys.version_info[0] >= 3:
     unicode = str;  # pylint: disable=redefined-builtin,invalid-name
     xrange = range; # pylint: disable=redefined-builtin,invalid-name
     long = int;     # pylint: disable=redefined-builtin,invalid-name
+
+
+#
+# Strings.
+#
+
+def toUnicode(sString, encoding = None, errors = 'strict'):
+    """
+    A little like the python 2 unicode() function.
+    """
+    if sys.version_info[0] >= 3:
+        if isinstance(sString, bytes):
+            return str(sString, encoding if encoding else 'utf-8', errors);
+    else:
+        if not isinstance(sString, unicode):
+            return unicode(sString, encoding, errors);
+    return sString;
+
 
 
 #
