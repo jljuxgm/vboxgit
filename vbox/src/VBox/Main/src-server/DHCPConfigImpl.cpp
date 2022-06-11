@@ -1,4 +1,4 @@
-/* $Id: DHCPConfigImpl.cpp 79778 2019-07-15 00:36:08Z vboxsync $ */
+/* $Id: DHCPConfigImpl.cpp 79800 2019-07-16 00:06:00Z vboxsync $ */
 /** @file
  * VirtualBox Main - IDHCPConfig, IDHCPConfigGlobal, IDHCPConfigGroup, IDHCPConfigIndividual implementation.
  */
@@ -861,6 +861,54 @@ HRESULT DHCPGroupConfig::i_removeCondition(DHCPGroupCondition *a_pCondition)
 
     /* Never mind if already delete, right? */
     return S_OK;
+}
+
+
+/**
+ * Overridden to add a 'name' attribute and emit condition child elements.
+ */
+void DHCPGroupConfig::i_writeDhcpdConfig(xml::ElementNode *a_pElmGroup)
+{
+    AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
+
+    /* The name attribute: */
+    a_pElmGroup->setAttribute("name", m_strName);
+
+    /*
+     * Conditions:
+     */
+    for (ConditionsIterator it = m_Conditions.begin(); it != m_Conditions.end(); ++it)
+    {
+        xml::ElementNode *pElmCondition;
+        switch ((*it)->i_getType())
+        {
+            case DHCPGroupConditionType_MAC:
+                pElmCondition = a_pElmGroup->createChild("ConditionMAC");
+                break;
+            case DHCPGroupConditionType_MACWildcard:
+                pElmCondition = a_pElmGroup->createChild("ConditionMACWildcard");
+                break;
+            case DHCPGroupConditionType_vendorClassID:
+                pElmCondition = a_pElmGroup->createChild("ConditionVendorClassID");
+                break;
+            case DHCPGroupConditionType_vendorClassIDWildcard:
+                pElmCondition = a_pElmGroup->createChild("ConditionVendorClassIDWildcard");
+                break;
+            case DHCPGroupConditionType_userClassID:
+                pElmCondition = a_pElmGroup->createChild("ConditionUserClassID");
+                break;
+            case DHCPGroupConditionType_userClassIDWildcard:
+                pElmCondition = a_pElmGroup->createChild("ConditionUserClassIDWildcard");
+                break;
+            default:
+                AssertLogRelMsgFailed(("m_enmType=%d\n", (*it)->i_getType()));
+                continue;
+        }
+        pElmCondition->setAttribute("inclusive", (*it)->i_getInclusive());
+        pElmCondition->setAttribute("value", (*it)->i_getValue());
+    }
+
+    DHCPConfig::i_writeDhcpdConfig(a_pElmGroup);
 }
 
 
