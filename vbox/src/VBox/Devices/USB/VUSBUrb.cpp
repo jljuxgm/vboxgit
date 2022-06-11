@@ -1,4 +1,4 @@
-/* $Id: VUSBUrb.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VUSBUrb.cpp 79678 2019-07-10 18:25:58Z vboxsync $ */
 /** @file
  * Virtual USB - URBs.
  */
@@ -714,6 +714,7 @@ static bool vusbMsgSetup(PVUSBPIPE pPipe, const void *pvBuf, uint32_t cbBuf)
         {
             pNew->pMsg = (PVUSBSETUP)pNew->Urb.abData;
             pExtra = pNew;
+            pPipe->pCtrl = pExtra;
         }
         pExtra->Urb.pVUsb = (PVUSBURBVUSB)&pExtra->Urb.abData[cbBuf + pSetupIn->wLength];
         pExtra->Urb.pVUsb->pUrb = &pExtra->Urb;
