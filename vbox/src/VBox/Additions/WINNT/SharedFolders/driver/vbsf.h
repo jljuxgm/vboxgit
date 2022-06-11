@@ -1,4 +1,4 @@
-/* $Id: vbsf.h 78468 2019-05-11 01:05:49Z vboxsync $ */
+/* $Id: vbsf.h 78471 2019-05-12 16:32:53Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders - File System Driver header file
  */
@@ -124,6 +124,14 @@ typedef struct VBSFNTFCBEXT
     PMRX_VBOX_FOBX            pFobxLastAccessTime;
     PMRX_VBOX_FOBX            pFobxLastWriteTime;
     PMRX_VBOX_FOBX            pFobxChangeTime;
+    /** @} */
+
+    /** @name Cached volume info.
+     * @{ */
+    /** The RTTimeSystemNanoTS value when VolInfo was retrieved, 0 to force update. */
+    uint64_t                  nsVolInfoUpToDate;
+    /** Volume information. */
+    SHFLVOLINFO               VolInfo;
     /** @} */
 } VBSFNTFCBEXT;
 /** Pointer to the VBox FCB extension data. */
