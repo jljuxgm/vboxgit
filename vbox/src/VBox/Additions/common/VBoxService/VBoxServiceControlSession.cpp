@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlSession.cpp 83534 2020-04-03 15:41:58Z vboxsync $ */
+/* $Id: VBoxServiceControlSession.cpp 83536 2020-04-03 16:01:48Z vboxsync $ */
 /** @file
  * VBoxServiceControlSession - Guest session handling. Also handles the spawned session processes.
  */
@@ -323,7 +323,7 @@ static int vgsvcGstCtrlSessionHandleFileOpen(PVBOXSERVICECTRLSESSION pSession, P
                     fFlags |= (uCreationMode << RTFILE_O_CREATE_MODE_SHIFT) & RTFILE_O_CREATE_MODE_MASK;
                     /* If we're opening a file in read-only mode, strip truncation mode.
                      * rtFileRecalcAndValidateFlags() will validate it anyway, but avoid asserting in debug builds. */
-                    if (fFlags & RTFILE_O_READ) 
+                    if (fFlags & RTFILE_O_READ)
                         fFlags &= ~RTFILE_O_TRUNCATE;
                     rc = RTFileOpen(&pFile->hFile, pFile->szName, fFlags);
                     if (RT_SUCCESS(rc))
