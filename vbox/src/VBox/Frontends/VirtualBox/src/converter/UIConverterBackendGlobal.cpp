@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackendGlobal.cpp 78586 2019-05-20 08:28:05Z vboxsync $ */
+/* $Id: UIConverterBackendGlobal.cpp 78587 2019-05-20 08:48:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConverterBackendGlobal implementation.
  */
@@ -700,7 +700,7 @@ template<> UIExtraDataMetaDefs::RuntimeMenuInputActionType fromInternalString<UI
     QStringList keys;             QList<UIExtraDataMetaDefs::RuntimeMenuInputActionType> values;
     keys << "Keyboard";           values << UIExtraDataMetaDefs::RuntimeMenuInputActionType_Keyboard;
     keys << "KeyboardSettings";   values << UIExtraDataMetaDefs::RuntimeMenuInputActionType_KeyboardSettings;
-    keys << "SoftKeyboard";   values << UIExtraDataMetaDefs::RuntimeMenuInputActionType_SoftKeyboard;
+    keys << "SoftKeyboard";       values << UIExtraDataMetaDefs::RuntimeMenuInputActionType_SoftKeyboard;
     keys << "TypeCAD";            values << UIExtraDataMetaDefs::RuntimeMenuInputActionType_TypeCAD;
 #ifdef VBOX_WS_X11
     keys << "TypeCABS";           values << UIExtraDataMetaDefs::RuntimeMenuInputActionType_TypeCABS;
