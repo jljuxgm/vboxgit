@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 81605 2019-10-31 14:29:46Z vboxsync $ */
+/* $Id: CPUM.cpp 81733 2019-11-07 04:43:30Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -1995,6 +1995,12 @@ void cpumR3InitVmxGuestFeaturesAndMsrs(PVM pVM, PCVMXMSRS pHostVmxMsrs, PVMXMSRS
     pGuestFeat->fVmxIntelPt               = (pBaseFeat->fVmxIntelPt               & EmuFeat.fVmxIntelPt              );
     pGuestFeat->fVmxVmwriteAll            = (pBaseFeat->fVmxVmwriteAll            & EmuFeat.fVmxVmwriteAll           );
     pGuestFeat->fVmxEntryInjectSoftInt    = (pBaseFeat->fVmxEntryInjectSoftInt    & EmuFeat.fVmxEntryInjectSoftInt   );
+
+    if (HMIsSubjectToVmxPreemptTimerErratum())
+    {
+        Log(("CPUM: VMX-preemption timer erratum detected. Cannot expose VMX-preemption timer feature to guests."));
+        pGuestFeat->fVmxPreemptTimer = 0;
+    }
 
     /* Paranoia. */
     if (!pGuestFeat->fVmxSecondaryExecCtls)
