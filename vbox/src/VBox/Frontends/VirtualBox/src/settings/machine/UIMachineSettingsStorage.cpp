@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 80884 2019-09-18 11:23:57Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 80926 2019-09-20 13:24:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class implementation.
  */
@@ -3709,7 +3709,7 @@ void UIMachineSettingsStorage::prepare()
 
     /* Start medium-enumeration (only if necessary): */
     if (!uiCommon().isFullMediumEnumerationRequested())
-        uiCommon().startMediumEnumeration();
+        uiCommon().enumerateMedia();
 
     /* Layout created in the .ui file. */
     AssertPtrReturnVoid(mLtStorage);

@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 80890 2019-09-18 13:46:52Z vboxsync $ */
+/* $Id: UIMachine.cpp 80926 2019-09-20 13:24:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -209,7 +209,7 @@ bool UIMachine::prepare()
     if (uiCommon().agressiveCaching())
     {
         AssertReturn(m_pSession, false);
-        uiCommon().startMediumEnumeration(m_pSession->machineMedia());
+        uiCommon().enumerateMedia(m_pSession->machineMedia());
     }
 
     /* Prepare machine-logic: */
