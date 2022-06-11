@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDHCPServer.cpp 79614 2019-07-08 23:51:32Z vboxsync $ */
+/* $Id: VBoxManageDHCPServer.cpp 79615 2019-07-09 00:21:20Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of dhcpserver command.
  */
@@ -521,7 +521,7 @@ static RTEXITCODE dhcpdHandleFindLease(PDHCPDCMDCTX pCtx, int argc, char **argv)
     };
 
     bool            fHaveMacAddress   = false;
-    RTMAC           MacAddress        = { 0, 0, 0, 0, 0, 0 };
+    RTMAC           MacAddress        = { { 0, 0, 0,  0, 0, 0 } };
 
     RTGETOPTSTATE   GetState;
     int vrc = RTGetOptInit(&GetState, argc, argv, s_aOptions, RT_ELEMENTS(s_aOptions), 1, 0);
