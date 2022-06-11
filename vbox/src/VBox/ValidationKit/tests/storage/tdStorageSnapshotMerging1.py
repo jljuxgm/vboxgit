@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdStorageSnapshotMerging1.py 79323 2019-06-25 12:33:03Z vboxsync $
+# $Id: tdStorageSnapshotMerging1.py 79470 2019-07-02 16:16:44Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage snapshotting and merging testcase.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79323 $"
+__version__ = "$Revision: 79470 $"
 
 
 # Standard Python imports.
@@ -73,7 +73,7 @@ class tdStorageSnapshot(vbox.TestDriver):                                      #
         self.oGuestToGuestVM   = None;
         self.oGuestToGuestSess = None;
         self.oGuestToGuestTxs  = None;
-        self.asStorageCtrlsDef = ['AHCI', 'IDE', 'LsiLogicSAS', 'LsiLogic', 'BusLogic'];
+        self.asStorageCtrlsDef = ['AHCI'];
         self.asStorageCtrls    = self.asStorageCtrlsDef;
         #self.asDiskFormatsDef  = ['VDI', 'VMDK', 'VHD', 'QED', 'Parallels', 'QCOW', 'iSCSI'];
         self.asDiskFormatsDef  = ['VDI', 'VMDK', 'VHD'];
@@ -308,7 +308,7 @@ class tdStorageSnapshot(vbox.TestDriver):                                      #
         fRc = True;
         sFile = 't-base' + sExt;
         sHddPath = os.path.join(self.oVBox.oTstDrv.sScratchPath, sFile);
-        oHd = oSession.createBaseHd(sHddPath, sFmt=oDskFmt.id, cb=oOrigBaseHd.logicalSize);
+        oHd = oSession.createBaseHd(sHddPath, sFmt=oDskFmt.id, cb=oOrigBaseHd.logicalSize, cMsTimeout = 15 * 60 * 1000); # 15 min
         #if oSession.createBaseHd can't create disk because it exists, oHd will point to some stub object anyway
         fRc = fRc and oHd is not None and (oHd.logicalSize == oOrigBaseHd.logicalSize);
         fRc = fRc and self.cloneMedium(oOrigBaseHd, oHd);
@@ -336,7 +336,8 @@ class tdStorageSnapshot(vbox.TestDriver):                                      #
                     sResFilePath = os.path.join(self.oVBox.oTstDrv.sScratchPath, 't_res.vmdk');
                     sResFilePathRaw = os.path.join(self.oVBox.oTstDrv.sScratchPath, 't_res-flat.vmdk');
                     oResHd = oSession.createBaseHd(sResFilePath, sFmt='VMDK', cb=oOrigWithDiffHd.logicalSize,
-                                                   tMediumVariant = (vboxcon.MediumVariant_Fixed, ));
+                                                   tMediumVariant = (vboxcon.MediumVariant_Fixed, ),
+                                                   cMsTimeout = 15 * 60 * 1000); # 15 min
                     fRc = oResHd is not None;
                     fRc = fRc and self.cloneMedium(oHd, oResHd);
 
