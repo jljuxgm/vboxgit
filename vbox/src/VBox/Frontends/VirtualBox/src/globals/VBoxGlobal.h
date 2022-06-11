@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.h 78722 2019-05-24 12:09:08Z vboxsync $ */
+/* $Id: VBoxGlobal.h 78723 2019-05-24 12:26:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class declaration.
  */
@@ -477,6 +477,8 @@ public:
      * @{ */
         /** Starts medium-enumeration. */
         void startMediumEnumeration(const CMediumVector &mediaList = CMediumVector());
+        /** Enumerates additional medium. */
+        void enumerateAdditionalMedium(const CMedium &comMedium);
         /** Calls refresh for each medium which has been already enumerated. */
         void refreshMedia();
         /** Returns whether medium-enumeration is in progress. */
