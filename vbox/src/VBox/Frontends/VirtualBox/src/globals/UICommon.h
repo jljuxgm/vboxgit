@@ -1,4 +1,4 @@
-/* $Id: UICommon.h 80888 2019-09-18 12:51:11Z vboxsync $ */
+/* $Id: UICommon.h 80890 2019-09-18 13:46:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class declaration.
  */
@@ -482,7 +482,7 @@ public:
     /** @name COM: Virtual Media stuff.
      * @{ */
         /** Starts medium-enumeration. */
-        void startMediumEnumeration(const CMediumVector &mediaList = CMediumVector());
+        void startMediumEnumeration(const CMediumVector &comMedia = CMediumVector());
         /** Enumerates additional medium. */
         void enumerateAdditionalMedium(const CMedium &comMedium);
         /** Calls refresh for each medium which has been already enumerated. */
