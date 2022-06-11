@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 82283 2019-11-29 13:10:02Z vboxsync $ */
+/* $Id: DevVGA.cpp 82607 2019-12-17 14:56:09Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -6203,6 +6203,8 @@ static DECLCALLBACK(int)  vgaAttach(PPDMDEVINS pDevIns, unsigned iLUN, uint32_t 
 {
     PVGASTATE       pThis   = PDMDEVINS_2_DATA(pDevIns, PVGASTATE);
     PVGASTATECC     pThisCC = PDMDEVINS_2_DATA_CC(pDevIns, PVGASTATECC);
+
+    RT_NOREF(pThis);
 
     AssertMsgReturn(fFlags & PDM_TACH_FLAGS_NOT_HOT_PLUG,
                     ("VGA device does not support hotplugging\n"),
