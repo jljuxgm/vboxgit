@@ -1,4 +1,4 @@
-/* $Id: alloc-ef-r0drv.cpp 83546 2020-04-04 10:46:18Z vboxsync $ */
+/* $Id: alloc-ef-r0drv.cpp 83549 2020-04-04 11:09:20Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, electric fence for ring-0 drivers.
  */
@@ -699,6 +699,7 @@ static void rtR0MemFree(const char *pszOp, RTMEMTYPE enmType, void *pv, size_t c
          */
         AssertMsg(enmType != RTMEMTYPE_RTMEMFREEZ || cbUser == pBlock->cbUnaligned,
                   ("cbUser=%#zx cbUnaligned=%#zx\n", cbUser, pBlock->cbUnaligned));
+        RT_NOREF(cbUser);
         if (enmType == RTMEMTYPE_RTMEMFREEZ)
             RT_BZERO(pv, pBlock->cbUnaligned);
 #ifdef RTR0MEM_EF_FREE_FILL
