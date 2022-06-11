@@ -1,4 +1,4 @@
-/* $Id: clipboard-transfers.cpp 80905 2019-09-19 12:14:07Z vboxsync $ */
+/* $Id: clipboard-transfers.cpp 80907 2019-09-19 13:12:34Z vboxsync $ */
 /** @file
  * Shared Clipboard: Common Shared Clipboard transfer handling code.
  */
@@ -833,9 +833,10 @@ int SharedClipboardTransferObjectClose(PSHCLTRANSFER pTransfer, SHCLOBJHANDLE hO
                     break;
             }
 
-            RTMemFree(pInfo);
-
             RTListNodeRemove(&pInfo->Node);
+
+            RTMemFree(pInfo);
+            pInfo = NULL;
         }
         else
             rc = VERR_NOT_FOUND;

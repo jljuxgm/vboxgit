@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-transfers.cpp 80905 2019-09-19 12:14:07Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-transfers.cpp 80907 2019-09-19 13:12:34Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Internal code for transfer (list) handling.
  */
@@ -2053,7 +2053,7 @@ int sharedClipboardSvcTransferSendStatus(PSHCLCLIENT pClient, PSHCLTRANSFER pTra
     AssertPtrReturn(pTransfer, VERR_INVALID_POINTER);
     /* puEvent is optional. */
 
-    PSHCLCLIENTMSG pMsgReadData = sharedClipboardSvcMsgAlloc(VBOX_SHCL_HOST_MSG_TRANSFER_TRANSFER_STATUS,
+    PSHCLCLIENTMSG pMsgReadData = sharedClipboardSvcMsgAlloc(VBOX_SHCL_HOST_MSG_TRANSFER_STATUS,
                                                              VBOX_SHCL_CPARMS_TRANSFER_STATUS);
     if (!pMsgReadData)
         return VERR_NO_MEMORY;

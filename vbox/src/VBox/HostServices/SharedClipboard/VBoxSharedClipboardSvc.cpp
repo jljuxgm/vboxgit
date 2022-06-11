@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc.cpp 80883 2019-09-18 11:22:57Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc.cpp 80907 2019-09-19 13:12:34Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Host service entry points.
  */
@@ -1494,10 +1494,8 @@ static int sharedClipboardSvcClientStateInit(PSHCLCLIENTSTATE pClientState, uint
 
     sharedClipboardSvcClientStateReset(pClientState);
 
-    /* Register the client.
-     * Note: Do *not* memset the struct, as it contains classes (for caching). */
+    /* Register the client. */
     pClientState->uClientID    = uClientID;
-    pClientState->uProtocolVer = 0;
 
     return VINF_SUCCESS;
 }
@@ -1525,6 +1523,9 @@ static int sharedClipboardSvcClientStateDestroy(PSHCLCLIENTSTATE pClientState)
 static void sharedClipboardSvcClientStateReset(PSHCLCLIENTSTATE pClientState)
 {
     LogFlowFuncEnter();
+
+    pClientState->uProtocolVer = 0;
+    pClientState->cbChunkSize  = _64K; /** Make this configurable. */
 
 #ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS
     pClientState->Transfers.enmTransferDir = SHCLTRANSFERDIR_UNKNOWN;

@@ -1,4 +1,4 @@
-/* $Id: SharedClipboard-transfers.h 80906 2019-09-19 12:21:24Z vboxsync $ */
+/* $Id: SharedClipboard-transfers.h 80907 2019-09-19 13:12:34Z vboxsync $ */
 /** @file
  * Shared Clipboard - Shared transfer functions between host and guest.
  */
@@ -918,14 +918,17 @@ typedef struct _SHCLTRANSFERCALLBACKDATA
     void         *pvUser;
 } SHCLTRANSFERCALLBACKDATA, *PSHCLTRANSFERCALLBACKDATA;
 
+/** Declares a Shared Clipboard transfer callback. */
 #define SHCLTRANSFERCALLBACKDECL(a_Ret, a_Name) \
     typedef DECLCALLBACK(a_Ret) RT_CONCAT(FNSHCLCALLBACK, a_Name)(PSHCLTRANSFERCALLBACKDATA pData); \
     typedef RT_CONCAT(FNSHCLCALLBACK, a_Name) RT_CONCAT(*PFNSHCLCALLBACK, a_Name);
 
+/** Declares a Shared Clipboard transfer callback with variable arguments. */
 #define SHCLTRANSFERCALLBACKDECL_VA(a_Ret, a_Name, ...) \
     typedef DECLCALLBACK(a_Ret) RT_CONCAT(FNSHCLCALLBACK, a_Name)(PSHCLTRANSFERCALLBACKDATA pData, __VA_ARGS__); \
     typedef RT_CONCAT(FNSHCLCALLBACK, a_Name) RT_CONCAT(*PFNSHCLCALLBACK, a_Name);
 
+/** Declares a Shared Clipboard transfer callback member function. */
 #define SHCLTRANSFERCALLBACKMEMBER(a_Name, a_Member) \
     RT_CONCAT(PFNSHCLCALLBACK, a_Name) a_Member;
 
