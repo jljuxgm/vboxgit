@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 78726 2019-05-24 13:20:21Z vboxsync $
+# $Id: virtual_test_sheriff.py 78728 2019-05-24 13:24:30Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -35,7 +35,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 78726 $"
+__version__ = "$Revision: 78728 $"
 
 
 # Standard python imports
@@ -318,7 +318,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
 
         if self.oConfig.sLogFile:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 78726 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 78728 $ \n');
 
 
     def eprint(self, sText):
@@ -683,7 +683,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.getFailureReason(tReason);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 78726 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 78728 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
@@ -1089,18 +1089,20 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
             """
             Investigates the current set of VM related logs.
             """
-            self.dprint('investigateLogSet: lengths: result log %u, VM log %u, kernel log %u, vga text %u, info text %u'
+            self.dprint('investigateLogSet: log lengths: result %u, VM %u, kernel %u, vga text %u, info text %u, hard %u'
                         % ( len(sResultLog if sResultLog else ''),
                             len(sVMLog     if sVMLog else ''),
                             len(sKrnlLog   if sKrnlLog else ''),
                             len(sVgaText   if sVgaText else ''),
-                            len(sInfoText  if sInfoText else ''), ));
+                            len(sInfoText  if sInfoText else ''),
+                            len(sNtHardLog if sNtHardLog else ''), ));
 
             #self.dprint(u'main.log<<<\n%s\n<<<\n' % (sResultLog,));
             #self.dprint(u'vbox.log<<<\n%s\n<<<\n' % (sVMLog,));
             #self.dprint(u'krnl.log<<<\n%s\n<<<\n' % (sKrnlLog,));
             #self.dprint(u'vgatext.txt<<<\n%s\n<<<\n' % (sVgaText,));
             #self.dprint(u'info.txt<<<\n%s\n<<<\n' % (sInfoText,));
+            #self.dprint(u'hard.txt<<<\n%s\n<<<\n' % (sNtHardLog,));
 
             # TODO: more
 
