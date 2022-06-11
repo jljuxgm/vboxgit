@@ -1,4 +1,4 @@
-# $Id: Config.kmk 80724 2019-09-11 10:25:06Z vboxsync $
+# $Id: Config.kmk 80952 2019-09-23 14:22:58Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2660,43 +2660,6 @@ else
  VBOX_GCC_VERSION = $(shell ($(1) -dumpfullversion 2>/dev/null || $(1) -dumpversion) | \
     $(SED_EXT) 's|\([0-9]\)\.\{0,1\}\([0-9]\{0,1\}\)\.\{0,1\}\([0-9]\{0,1\}\).*|$$(int-add $$(int-mul 10000, \1), $$(int-mul 100, $$(firstword \2 0)), $$(firstword \3 0))|' )
 endif
-
-# Find MinGW cross compilers for EFI on non-windows systems. We need to probe
-# them for supported options in the Dynamic Config.kmk section below.
-ifdef VBOX_WITH_EFI
- ifneq ($(KBUILD_HOST),win)
-  ifndef VBOX_PATH_PREFIX_MINGW32
-   VBOX_PATH_PREFIX_MINGW32 := $(firstword \
-   	$(which i686-w64-mingw32-gcc) \
-   	$(which i686-w32-mingw32-gcc) \
-   	$(which i686-pc-mingw32-gcc) \
-   	$(which i586-mingw32msvc-gcc) \
-        )# Add more variants.
-   ifdef VBOX_PATH_PREFIX_MINGW32
-    VBOX_PATH_PREFIX_MINGW32 := $(substr $(VBOX_PATH_PREFIX_MINGW32), 1, $(expr $(length-var VBOX_PATH_PREFIX_MINGW32) - 3))
-   endif
-  endif
-  ifndef VBOX_PATH_PREFIX_MINGW64
-   VBOX_PATH_PREFIX_MINGW64 := $(firstword \
-   	$(which x86_64-w64-mingw64-gcc) \
-   	$(which x86_64-w64-mingw32-gcc) \
-   	$(which x86_64-pc-mingw64-gcc) \
-   	$(which x86_64-pc-mingw32-gcc) \
-   	$(which x86_64-w32-mingw32-gcc) \
-        )# Add more variants.
-   ifdef VBOX_PATH_PREFIX_MINGW64
-    VBOX_PATH_PREFIX_MINGW64 := $(substr $(VBOX_PATH_PREFIX_MINGW64), 1, $(expr $(length-var VBOX_PATH_PREFIX_MINGW64) - 3))
-   endif
-  endif
-  if defined(VBOX_PATH_PREFIX_MINGW32) || defined(VBOX_PATH_PREFIX_MINGW64)
-   if !defined(VBOX_PATH_PREFIX_MINGW32)
-    VBOX_PATH_PREFIX_MINGW32 = $(VBOX_PATH_PREFIX_MINGW64)
-   else if !defined(VBOX_PATH_PREFIX_MINGW64)
-    VBOX_PATH_PREFIX_MINGW64 = $(VBOX_PATH_PREFIX_MINGW32)
-   endif
-  endif
- endif # !win
-endif # VBOX_WITH_EFI
 
 # YASM macros
 ifndef DONT_USE_YASM
@@ -7736,7 +7699,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 80724 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 80952 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
