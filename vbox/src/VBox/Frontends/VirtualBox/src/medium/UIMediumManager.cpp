@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 79192 2019-06-17 17:02:14Z vboxsync $ */
+/* $Id: UIMediumManager.cpp 79204 2019-06-18 09:52:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class implementation.
  */
@@ -693,7 +693,6 @@ void UIMediumManagerWidget::prepare()
     /* Apply language settings: */
     retranslateUi();
 
-#ifndef VBOX_GUI_WITH_NEW_MEDIA_EVENTS
     /* Start medium-enumeration (if necessary): */
     if (!vboxGlobal().isMediumEnumerationInProgress())
         vboxGlobal().startMediumEnumeration();
@@ -707,14 +706,6 @@ void UIMediumManagerWidget::prepare()
         if (!vboxGlobal().isMediumEnumerationInProgress())
             sltHandleMediumEnumerationFinish();
     }
-#else
-    /* Emulate medium-enumeration start: */
-    sltHandleMediumEnumerationStart();
-
-    /* Emulate medium-enumeration finish (if necessary): */
-    if (!vboxGlobal().isMediumEnumerationInProgress())
-        sltHandleMediumEnumerationFinish();
-#endif
 }
 
 void UIMediumManagerWidget::prepareConnections()
