@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboard.h 81285 2019-10-15 11:22:37Z vboxsync $ */
+/* $Id: UISoftKeyboard.h 81293 2019-10-16 06:46:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class declaration.
  */
@@ -85,6 +85,8 @@ private slots:
     void sltKeyCaptionsEdited(UISoftKeyboardKey* pKey);
     void sltShowHideSidePanel();
     void sltShowHideSettingsWidget();
+    void sltHandleColorThemeListSelection(const QString &strColorThemeName);
+    void sltHandleKeyboardWidgetColorThemeChange();
     void sltCopyLayout();
     void sltSaveLayout();
     void sltDeleteLayout();
