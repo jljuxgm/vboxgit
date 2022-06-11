@@ -1,4 +1,4 @@
-/* $Id: DevIommuAmd.cpp 83448 2020-03-26 18:09:34Z vboxsync $ */
+/* $Id: DevIommuAmd.cpp 83449 2020-03-26 18:10:33Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - AMD implementation.
  */
@@ -1491,7 +1491,7 @@ typedef struct IOMMU
     MSI_CAP_HDR_T               MsiCapHdr;          /**< MSI Capability header register. */
     MSI_ADDR_T                  MsiAddr;            /**< MSI Address register.*/
     MSI_DATA_T                  MsiData;            /**< MSI Data register. */
-    MSI_MAP_CAP_HDR_T           MsiMapCapHdr;       /**< MSI Capping capability header register. */
+    MSI_MAP_CAP_HDR_T           MsiMapCapHdr;       /**< MSI Mapping capability header register. */
     /** @} */
 
     /** @name MMIO: Performance Optimization Control registers.
