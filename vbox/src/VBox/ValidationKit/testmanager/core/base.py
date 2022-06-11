@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 82641 2019-12-22 22:04:36Z vboxsync $
+# $Id: base.py 82939 2020-01-31 11:13:38Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 82641 $"
+__version__ = "$Revision: 82939 $"
 
 
 # Standard python imports.
@@ -1190,6 +1190,7 @@ class FilterCriterion(object):
     ksType_UInt    = 'uint';     ##< unsigned integer value.
     ksType_UIntNil = 'uint-nil'; ##< unsigned integer value, with nil.
     ksType_String  = 'string';   ##< string value.
+    ksType_Ranges  = 'ranges';   ##< List of (unsigned) integer ranges.
     ## @}
 
     def __init__(self, sName, sVarNm = None, sType = ksType_UInt, # pylint: disable=too-many-arguments
@@ -1242,7 +1243,7 @@ class ModelFilterBase(ModelBase):
         ModelBase.__init__(self);
         self.aCriteria = [] # type: list[FilterCriterion]
 
-    def _initFromParamsWorker(self, oDisp, oCriterion):
+    def _initFromParamsWorker(self, oDisp, oCriterion): # (,FilterCriterion)
         """ Worker for initFromParams. """
         if oCriterion.sType == FilterCriterion.ksType_UInt:
             oCriterion.aoSelected = oDisp.getListOfIntParams(oCriterion.sVarNm, iMin = 0, aiDefaults = []);
@@ -1258,6 +1259,27 @@ class ModelFilterBase(ModelBase):
                   or '\'' in sValue \
                   or sValue[-1] == '\\':
                     raise TMExceptionBase('Variable %s has an illegal value "%s"!' % (oCriterion.sVarNm, sValue));
+        elif oCriterion.sType == FilterCriterion.ksType_Ranges:
+            def convertRangeNumber(sValue):
+                """ Helper """
+                sValue = sValue.strip();
+                if sValue and sValue not in ('inf', 'Inf', 'INf', 'INF', 'InF', 'iNf', 'iNF', 'inF',):
+                    try:    return int(sValue);
+                    except: pass;
+                return None;
+
+            for sRange in oDisp.getStringParam(oCriterion.sVarNm, sDefault = '').split(','):
+                sRange = sRange.strip();
+                if sRange and sRange != '-' and any(ch.isdigit() for ch in sRange):
+                    asValues = sRange.split('-');
+                    if len(asValues) == 1:
+                        asValues = [asValues[0], asValues[0]];
+                    elif len(asValues) > 2:
+                        asValues = [asValues[0], asValues[-1]];
+                    tTuple = (convertRangeNumber(asValues[0]), convertRangeNumber(asValues[1]));
+                    if tTuple[0] is not None and tTuple[1] is not None and tTuple[0] > tTuple[1]:
+                        tTuple = (tTuple[1], tTuple[0]);
+                    oCriterion.aoSelected.append(tTuple);
         else:
             assert False;
         if oCriterion.aoSelected:
