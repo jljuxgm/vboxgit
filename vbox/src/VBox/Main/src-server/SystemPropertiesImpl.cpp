@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 82349 2019-12-03 17:39:04Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.cpp 82352 2019-12-03 19:05:29Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1575,9 +1575,7 @@ HRESULT SystemProperties::getSupportedStorageBuses(std::vector<StorageBus_T> &aS
         StorageBus_SAS,
         StorageBus_USB,
         StorageBus_PCIe,
-#ifdef DEBUG
         StorageBus_VirtioSCSI,
-#endif
     };
     aSupportedStorageBuses.assign(aStorageBuses,
                                   aStorageBuses + RT_ELEMENTS(aStorageBuses));
@@ -1598,9 +1596,7 @@ HRESULT SystemProperties::getSupportedStorageControllerTypes(std::vector<Storage
         StorageControllerType_LsiLogicSas,
         StorageControllerType_USB,
         StorageControllerType_NVMe,
-#ifdef DEBUG
         StorageControllerType_VirtioSCSI,
-#endif
     };
     aSupportedStorageControllerTypes.assign(aStorageControllerTypes,
                                             aStorageControllerTypes + RT_ELEMENTS(aStorageControllerTypes));
