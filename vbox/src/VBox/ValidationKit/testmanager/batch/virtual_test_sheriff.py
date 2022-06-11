@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 81115 2019-10-05 01:42:17Z vboxsync $
+# $Id: virtual_test_sheriff.py 81116 2019-10-05 01:43:10Z vboxsync $
 # pylint: disable=line-too-long
 
 """
@@ -35,7 +35,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 81115 $"
+__version__ = "$Revision: 81116 $"
 
 
 # Standard python imports
@@ -43,7 +43,7 @@ import hashlib;
 import os;
 import re;
 import smtplib;
-import subprocess;
+#import subprocess;
 import sys;
 from email.mime.multipart   import MIMEMultipart;
 from email.mime.text        import MIMEText;
@@ -73,7 +73,7 @@ from testmanager.core.testresults           import TestResultLogic, TestResultFi
 from testmanager.core.testresultfailures    import TestResultFailureLogic, TestResultFailureData;
 from testmanager.core.useraccount           import UserAccountLogic;
 from testmanager.config                     import g_ksSmtpHost, g_kcSmtpPort, g_ksAlertFrom, \
-                                                   g_ksAlertSubject, g_asAlertList, g_ksLomPassword;
+                                                   g_ksAlertSubject, g_asAlertList #, g_ksLomPassword;
 
 # Python 3 hacks:
 if sys.version_info[0] >= 3:
@@ -337,7 +337,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
 
         if self.oConfig.sLogFile:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 81115 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 81116 $ \n');
 
 
     def eprint(self, sText):
@@ -720,7 +720,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.getFailureReason(tReason);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 81115 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 81116 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
