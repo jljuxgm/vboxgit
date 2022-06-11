@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 83371 2020-03-23 14:29:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class implementation.
  */
@@ -132,8 +132,6 @@ enum PixmapType
 
     ChooseExistingEn,
     ChooseExistingDis,
-    HDNewEn,
-    HDNewDis,
     CDUnmountEnabled,
     CDUnmountDisabled,
     FDUnmountEnabled,
@@ -1088,8 +1086,6 @@ UIIconPoolStorageSettings::UIIconPoolStorageSettings()
     /* Specific attachment custom file-names: */
     m_names.insert(ChooseExistingEn,             ":/select_file_16px.png");
     m_names.insert(ChooseExistingDis,            ":/select_file_disabled_16px.png");
-    m_names.insert(HDNewEn,                      ":/hd_new_16px.png");
-    m_names.insert(HDNewDis,                     ":/hd_new_disabled_16px.png");
     m_names.insert(CDUnmountEnabled,             ":/cd_unmount_16px.png");
     m_names.insert(CDUnmountDisabled,            ":/cd_unmount_disabled_16px.png");
     m_names.insert(FDUnmountEnabled,             ":/fd_unmount_16px.png");
