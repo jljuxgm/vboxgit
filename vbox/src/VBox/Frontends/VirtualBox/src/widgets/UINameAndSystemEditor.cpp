@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.cpp 79890 2019-07-19 15:46:55Z vboxsync $ */
+/* $Id: UINameAndSystemEditor.cpp 79927 2019-07-23 08:35:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class implementation.
  */
@@ -73,6 +73,13 @@ QString UINameAndSystemEditor::name() const
     if (!m_pNameLineEdit)
         return QString();
     return m_pNameLineEdit->text();
+}
+
+void UINameAndSystemEditor::setPath(const QString &strPath)
+{
+    if (!m_pPathSelector)
+        return;
+    m_pPathSelector->setPath(strPath);
 }
 
 QString UINameAndSystemEditor::path() const

@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.h 79885 2019-07-19 12:32:51Z vboxsync $ */
+/* $Id: UINameAndSystemEditor.h 79927 2019-07-23 08:35:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class declaration.
  */
@@ -79,6 +79,8 @@ public:
     /** Returns the VM name. */
     QString name() const;
 
+    /** Defines the VM @a strPath. */
+    void setPath(const QString &strPath);
     /** Returns path string selected by the user. */
     QString path() const;
 
