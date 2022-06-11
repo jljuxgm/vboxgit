@@ -1,4 +1,4 @@
-/* $Id: PGMR0Pool.cpp 82555 2019-12-11 23:56:54Z vboxsync $ */
+/* $Id: PGMR0Pool.cpp 82567 2019-12-12 10:37:49Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool, ring-0 specific bits.
  */
@@ -100,7 +100,7 @@ VMMR0_INT_DECL(int) PGMR0PoolGrow(PGVM pGVM)
                 RTR3PTR  pbRing3 = RTR0MemObjAddressR3(hMapObj);
                 AssertPtr(pbRing0);
                 Assert(((uintptr_t)pbRing0 & PAGE_OFFSET_MASK) == 0);
-                AssertPtr(pbRing3 != NIL_RTR3PTR);
+                Assert(pbRing3 != NIL_RTR3PTR);
                 Assert((pbRing3 & PAGE_OFFSET_MASK) == 0);
 
                 /*
