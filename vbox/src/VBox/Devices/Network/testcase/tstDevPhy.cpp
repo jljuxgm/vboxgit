@@ -1,4 +1,4 @@
-/* $Id: tstDevPhy.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: tstDevPhy.cpp 81410 2019-10-21 13:12:17Z vboxsync $ */
 /** @file
  * PHY MDIO unit tests.
  */
@@ -106,7 +106,7 @@ void PhyTest::shiftOutBits(uint32_t data, uint16_t count) {
     uint32_t mask = 0x01 << (count - 1);
 
     do {
-        Phy::writeMDIO(phy, data & mask);
+        Phy::writeMDIO(phy, data & mask, NULL /*pDevIns*/);
         mask >>= 1;
     } while (mask);
 }

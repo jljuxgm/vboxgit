@@ -1,4 +1,4 @@
-/** $Id: DevE1000Phy.h 76565 2019-01-01 04:23:20Z vboxsync $ */
+/** $Id: DevE1000Phy.h 81410 2019-10-21 13:12:17Z vboxsync $ */
 /** @file
  * DevE1000Phy - Intel 82540EM Ethernet Controller Internal PHY Emulation, Header.
  */
@@ -116,13 +116,13 @@ namespace Phy
     /** Initialize PHY. */
     void     init(PPHY pPhy, int iNICInstance, uint16_t u16EPid);
     /** Read PHY register at specified address. */
-    uint16_t readRegister(PPHY pPhy, uint32_t u32Address);
+    uint16_t readRegister(PPHY pPhy, uint32_t u32Address, PPDMDEVINS pDevIns);
     /** Write to PHY register at specified address. */
-    void     writeRegister(PPHY pPhy, uint32_t u32Address, uint16_t u16Value);
+    void     writeRegister(PPHY pPhy, uint32_t u32Address, uint16_t u16Value, PPDMDEVINS pDevIns);
     /** Read the value on MDIO pin. */
     bool     readMDIO(PPHY pPhy);
     /** Set the value of MDIO pin. */
-    void     writeMDIO(PPHY pPhy, bool fPin);
+    void     writeMDIO(PPHY pPhy, bool fPin, PPDMDEVINS pDevIns);
     /** Hardware reset. */
     void     hardReset(PPHY pPhy);
     /** Query link status. */
