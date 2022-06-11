@@ -1,4 +1,4 @@
-/* $Id: clipboard-win.cpp 81212 2019-10-10 12:22:34Z vboxsync $ */
+/* $Id: clipboard-win.cpp 81223 2019-10-11 12:06:49Z vboxsync $ */
 /** @file
  * Shared Clipboard: Windows-specific functions for clipboard handling.
  */
@@ -1014,7 +1014,7 @@ int SharedClipboardWinGetRoots(PSHCLWINCTX pWinCtx, PSHCLTRANSFER pTransfer)
     AssertPtrReturn(pWinCtx,   VERR_INVALID_POINTER);
     AssertPtrReturn(pTransfer, VERR_INVALID_POINTER);
 
-    Assert(SharedClipboardTransferGetSource(pTransfer) == SHCLSOURCE_LOCAL); /* Sanity. */
+    Assert(ShClTransferGetSource(pTransfer) == SHCLSOURCE_LOCAL); /* Sanity. */
 
     int rc = SharedClipboardWinOpen(pWinCtx->hWnd);
     if (RT_SUCCESS(rc))
@@ -1035,8 +1035,8 @@ int SharedClipboardWinGetRoots(PSHCLWINCTX pWinCtx, PSHCLTRANSFER pTransfer)
 
                 if (RT_SUCCESS(rc))
                 {
-                    rc = SharedClipboardTransferRootsSet(pTransfer,
-                                                         papszList, cbList + 1 /* Include termination */);
+                    rc = ShClTransferRootsSet(pTransfer,
+                                              papszList, cbList + 1 /* Include termination */);
                     RTStrFree(papszList);
                 }
             }
