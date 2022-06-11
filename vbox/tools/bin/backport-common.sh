@@ -1,4 +1,4 @@
-# $Id: backport-common.sh 84267 2020-05-12 08:37:44Z vboxsync $
+# $Id: backport-common.sh 84268 2020-05-12 08:49:56Z vboxsync $
 ## @file
 # Common backport script bits.
 #
@@ -162,6 +162,8 @@ do
             echo "    The backport destination directory. default: script location"
             echo "  --branch <ver>"
             echo "    The name of the branch being backported to. default: auto"
+            echo "  --debug"
+            echo "    Enables verbose output."
             echo "  --first-rev, --first, -1"
             echo "    Merge only: Check that the branch does not have any pending changes."
             echo "  --force"
