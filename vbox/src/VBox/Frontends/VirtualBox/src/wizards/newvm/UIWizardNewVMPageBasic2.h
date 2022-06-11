@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic2.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic2.h 79948 2019-07-24 10:59:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic2 class declaration.
  */
@@ -25,7 +25,7 @@
 #include "UIWizardPage.h"
 
 /* Forward declarations: */
-class UIGuestRAMSlider;
+class UIBaseMemorySlider;
 class QSpinBox;
 class QLabel;
 class QIRichTextLabel;
@@ -43,7 +43,7 @@ protected:
     void onRamEditorValueChanged();
 
     /* Widgets: */
-    UIGuestRAMSlider *m_pRamSlider;
+    UIBaseMemorySlider *m_pRamSlider;
     QSpinBox *m_pRamEditor;
     QLabel *m_pRamMin;
     QLabel *m_pRamMax;

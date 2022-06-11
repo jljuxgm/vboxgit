@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic2.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic2.cpp 79948 2019-07-24 10:59:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic2 class implementation.
  */
@@ -27,7 +27,7 @@
 #include "UIWizardNewVMPageBasic2.h"
 #include "UIWizardNewVM.h"
 #include "UICommon.h"
-#include "UIGuestRAMSlider.h"
+#include "UIBaseMemorySlider.h"
 #include "QIRichTextLabel.h"
 
 
@@ -59,7 +59,7 @@ UIWizardNewVMPageBasic2::UIWizardNewVMPageBasic2()
         m_pLabel = new QIRichTextLabel(this);
         QGridLayout *pMemoryLayout = new QGridLayout;
         {
-            m_pRamSlider = new UIGuestRAMSlider(this);
+            m_pRamSlider = new UIBaseMemorySlider(this);
             {
                 m_pRamSlider->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
                 m_pRamSlider->setOrientation(Qt::Horizontal);
@@ -95,7 +95,7 @@ UIWizardNewVMPageBasic2::UIWizardNewVMPageBasic2()
     }
 
     /* Setup connections: */
-    connect(m_pRamSlider, &UIGuestRAMSlider::valueChanged,
+    connect(m_pRamSlider, &UIBaseMemorySlider::valueChanged,
             this, &UIWizardNewVMPageBasic2::sltRamSliderValueChanged);
     connect(m_pRamEditor, static_cast<void(QSpinBox::*)(int)>(&QSpinBox::valueChanged),
             this, &UIWizardNewVMPageBasic2::sltRamEditorValueChanged);
