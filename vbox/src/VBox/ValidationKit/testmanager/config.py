@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: config.py 83381 2020-03-24 14:42:41Z vboxsync $
+# $Id: config.py 83415 2020-03-25 16:27:11Z vboxsync $
 
 """
 Test Manager Configuration.
@@ -26,14 +26,14 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 83381 $"
+__version__ = "$Revision: 83415 $"
 
 import os;
 
 ## Test Manager version string.
 g_ksVersion             = 'v0.1.0';
 ## Test Manager revision string.
-g_ksRevision            = ('$Revision: 83381 $')[11:-2];
+g_ksRevision            = ('$Revision: 83415 $')[11:-2];
 
 ## Enable VBox specific stuff.
 g_kfVBoxSpecific        = True;
@@ -89,6 +89,8 @@ g_ksBuildBinUrlPrefix   = '/builds/'
 g_ksBuildBinRootDir     = '/mnt/builds/'
 ## File on the build binary share that can be used to check that it's mounted.
 g_ksBuildBinRootFile    = 'builds.txt'
+## Template for paratial database dump files.  One argument: UID
+g_ksTmDbDumpFileTemplate = '/var/tmp/tm-partial-db-dump-for-%u.zip'
 ## @}
 
 
@@ -141,6 +143,19 @@ g_kcMbMaxUploadTotal    = 200;
 ## The max number of files that can be uploaded.
 g_kcMaxUploads          = 256;
 ## @}
+
+
+## @name Partial Database Dump
+## @{
+
+## Minimum number of day.  Set higher than g_kcTmDbDumpMaxDays to disable.
+g_kcTmDbDumpMinDays     = 1;
+## Maximum number of day.  Keep low - consider space and runtime.
+g_kcTmDbDumpMaxDays     = 31;
+## The default number of days.
+g_kcTmDbDumpDefaultDays = 14;
+## @}
+
 
 ## @name Debug Features
 ## @{
