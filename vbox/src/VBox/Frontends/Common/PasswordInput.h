@@ -1,4 +1,4 @@
-/* $Id: PasswordInput.h 80569 2019-09-03 14:34:21Z vboxsync $ */
+/* $Id: PasswordInput.h 80573 2019-09-04 05:54:47Z vboxsync $ */
 /** @file
  * Frontend shared bits - Password file and console input helpers.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef VBOX_INCLUDED_SRC_Common_PasswordFileImpl_h
-#define VBOX_INCLUDED_SRC_Common_PasswordFileImpl_h
+#ifndef VBOX_INCLUDED_SRC_Common_PasswordInput_h
+#define VBOX_INCLUDED_SRC_Common_PasswordInput_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -31,4 +31,4 @@ RTEXITCODE readPasswordFile(const char *pszFilename, com::Utf8Str *pPasswd);
 RTEXITCODE readPasswordFromConsole(com::Utf8Str *pPassword, const char *pszPrompt, ...);
 RTEXITCODE settingsPasswordFile(ComPtr<IVirtualBox> virtualBox, const char *pszFilename);
 
-#endif /* !VBOX_INCLUDED_SRC_VBoxAutostart_VBoxAutostart_h */
+#endif /* !VBOX_INCLUDED_SRC_Common_PasswordInput_h */

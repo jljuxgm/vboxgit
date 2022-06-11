@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 80569 2019-09-03 14:34:21Z vboxsync $
+# $Id: Makefile.kmk 80573 2019-09-04 05:54:47Z vboxsync $
 ## @file
 # VBoxAutostart - VM autostart service.
 #
@@ -29,7 +29,7 @@ ifeq ($(KBUILD_TARGET),win)
 	VBoxAutostartUtils.cpp \
 	VBoxAutostart-win.cpp \
 	../Common/PasswordInput.cpp
- VBoxAutostartSvc_LIBS.win += Secur32.lib	
+ VBoxAutostartSvc_LIBS.win += Secur32.lib
 else
  PROGRAMS += VBoxAutostart
  VBoxAutostart_TEMPLATE   = VBOXMAINCLIENTEXE

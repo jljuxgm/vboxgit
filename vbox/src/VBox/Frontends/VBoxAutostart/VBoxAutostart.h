@@ -1,4 +1,4 @@
-/* $Id: VBoxAutostart.h 80569 2019-09-03 14:34:21Z vboxsync $ */
+/* $Id: VBoxAutostart.h 80573 2019-09-04 05:54:47Z vboxsync $ */
 /** @file
  * VBoxAutostart - VirtualBox Autostart service.
  */
@@ -321,4 +321,3 @@ DECLHIDDEN(int) autostartSetup();
 DECLHIDDEN(void) autostartShutdown();
 
 #endif /* !VBOX_INCLUDED_SRC_VBoxAutostart_VBoxAutostart_h */
-
