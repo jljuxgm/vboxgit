@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 79454 2019-07-01 18:10:09Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 79455 2019-07-01 18:13:16Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -11703,6 +11703,9 @@ static void hmR0VmxPreRunGuestCommitted(PVMCPU pVCpu, PVMXTRANSIENT pVmxTransien
     {
         if (!(pVmcsInfo->u32ProcCtls & VMX_PROC_CTLS_RDTSC_EXIT))
         {
+            /** @todo NSTVMX: This might be broken wrt to merging MSR permissions when
+             *        transitioning to executing the nested-guest. We should probably remove
+             *        the dynamically added MSRs somehow. */
             hmR0VmxImportGuestState(pVCpu, pVmcsInfo, CPUMCTX_EXTRN_TSC_AUX);
             /* NB: Because we call hmR0VmxAddAutoLoadStoreMsr with fUpdateHostMsr=true,
                it's safe even after hmR0VmxUpdateAutoLoadHostMsrs has already been done. */
