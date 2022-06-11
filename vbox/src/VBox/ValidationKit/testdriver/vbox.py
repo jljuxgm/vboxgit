@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 84112 2020-04-30 15:48:14Z vboxsync $
+# $Id: vbox.py 84118 2020-04-30 17:34:54Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84112 $"
+__version__ = "$Revision: 84118 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -3561,15 +3561,25 @@ class TestDriver(base.TestDriver):                                              
             reporter.error('txsCdWait: asyncIsFile failed');
 
         if not fRc:
+            # Do some diagnosis to find out why this failed.
             ## @todo Identify guest OS type and only run one of the following commands.
             reporter.log('txsCdWait: Listing root contents of ${CDROM}:');
             oTxsSession.syncExec("/bin/ls", ("/bin/ls", "-al", "${CDROM}"), fIgnoreErrors = True);
             # ASSUMES that we always install Windows on drive C right now.
-            oTxsSession.syncExec("C:\\Windows\\System32\\cmd.exe",
-                                 ("C:\\Windows\\System32\\cmd.exe", "/C", "dir", "${CDROM}"),
+            sWinDir = "C:\\Windows\\System32\\";
+            oTxsSession.syncExec(sWinDir + " cmd.exe",
+                                 (sWinDir + "cmd.exe", "/C", "dir", "${CDROM}"),
                                  fIgnoreErrors = True);
             oTxsSession.syncExec("C:\\WINNT\\System32\\cmd.exe",
                                  ("C:\\WINNT\\System32\\cmd.exe", "/C", "dir", "${CDROM}"),
+                                 fIgnoreErrors = True);
+
+            reporter.log('txsCdWait: Listing mount points / drives:');
+            oTxsSession.syncExec("/bin/mount", ("/bin/mount"), fIgnoreErrors = True);
+            # Should work since WinXP Pro.
+            oTxsSession.syncExec(sWinDir + "wbem\\WMIC.exe",
+                                 (sWinDir + "wbem\\WMIC.exe", "logicaldisk", "get",
+                                  "deviceid, volumename, description"),
                                  fIgnoreErrors = True);
 
         if fRemoveTxs:
