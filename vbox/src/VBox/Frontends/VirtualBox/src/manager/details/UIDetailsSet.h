@@ -1,4 +1,4 @@
-/* $Id: UIDetailsSet.h 83149 2020-02-25 12:33:39Z vboxsync $ */
+/* $Id: UIDetailsSet.h 83179 2020-02-28 15:29:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsSet class declaration.
  */
@@ -77,7 +77,7 @@ protected slots:
     /** @name Item stuff.
       * @{ */
         /** Handles request about starting step build.
-          * @param  uStepId    Brings the step ID.
+          * @param  uStepId      Brings the step ID.
           * @param  iStepNumber  Brings the step number. */
         virtual void sltBuildStep(const QUuid &uStepId, int iStepNumber) /* override */;
     /** @} */
@@ -215,11 +215,11 @@ private:
         ConfigurationAccessLevel  m_configurationAccessLevel;
 
         /** Holds the build step instance. */
-        UIPrepareStep *m_pBuildStep;
-        /** Holds the last step number. */
-        int            m_iLastStepNumber;
+        UIPrepareStep             *m_pBuildStep;
+        /** Holds the list of types to build steps for. */
+        QList<DetailsElementType>  m_types;
         /** Holds the generated set ID. */
-        QUuid          m_uSetId;
+        QUuid                      m_uSetId;
     /** @} */
 
     /** @name Children stuff.
