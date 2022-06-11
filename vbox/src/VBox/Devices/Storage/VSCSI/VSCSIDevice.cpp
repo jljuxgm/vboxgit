@@ -1,4 +1,4 @@
-/* $Id: VSCSIDevice.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VSCSIDevice.cpp 80541 2019-09-02 07:55:16Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: Device handling
  */
@@ -66,7 +66,7 @@ static bool vscsiDeviceReqProcess(PVSCSIDEVICEINT pVScsiDevice, PVSCSIREQINT pVS
                 size_t cbData;
                 SCSIINQUIRYDATA ScsiInquiryReply;
 
-                vscsiReqSetXferSize(pVScsiReq, scsiBE2H_U16(&pVScsiReq->pbCDB[3]));
+                vscsiReqSetXferSize(pVScsiReq, RT_MIN(sizeof(SCSIINQUIRYDATA), scsiBE2H_U16(&pVScsiReq->pbCDB[3])));
                 memset(&ScsiInquiryReply, 0, sizeof(ScsiInquiryReply));
                 ScsiInquiryReply.cbAdditional = 31;
                 ScsiInquiryReply.u5PeripheralDeviceType = SCSI_INQUIRY_DATA_PERIPHERAL_DEVICE_TYPE_UNKNOWN;

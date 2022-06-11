@@ -1,4 +1,4 @@
-/* $Id: VSCSILunMmc.cpp 77011 2019-01-27 09:46:43Z vboxsync $ */
+/* $Id: VSCSILunMmc.cpp 80541 2019-09-02 07:55:16Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: MMC LUN implementation (CD/DVD-ROM)
  */
@@ -1092,7 +1092,7 @@ static DECLCALLBACK(int) vscsiLunMmcReqProcess(PVSCSILUNINT pVScsiLun, PVSCSIREQ
             {
                 SCSIINQUIRYDATA ScsiInquiryReply;
 
-                vscsiReqSetXferSize(pVScsiReq, scsiBE2H_U16(&pVScsiReq->pbCDB[3]));
+                vscsiReqSetXferSize(pVScsiReq, RT_MIN(sizeof(SCSIINQUIRYDATA), scsiBE2H_U16(&pVScsiReq->pbCDB[3])));
                 memset(&ScsiInquiryReply, 0, sizeof(ScsiInquiryReply));
 
                 ScsiInquiryReply.cbAdditional           = 31;
