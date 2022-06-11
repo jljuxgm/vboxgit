@@ -1,4 +1,4 @@
-/* $Id: VBoxClipboard.cpp 79267 2019-06-21 10:11:59Z vboxsync $ */
+/* $Id: VBoxClipboard.cpp 79271 2019-06-21 10:30:21Z vboxsync $ */
 /** @file
  * VBoxClipboard - Shared clipboard, Windows Guest Implementation.
  */
@@ -28,7 +28,7 @@
 #include <iprt/asm.h>
 #include <iprt/ldr.h>
 
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 
 #include <VBox/GuestHost/SharedClipboard.h>
 #include <VBox/GuestHost/SharedClipboard-win.h>
