@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdSerial1.py 79092 2019-06-11 15:26:40Z vboxsync $
+# $Id: tdSerial1.py 79199 2019-06-18 08:47:25Z vboxsync $
 
 """
 VirtualBox Validation Kit - Serial port testing #1.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79092 $"
+__version__ = "$Revision: 79199 $"
 
 
 # Standard Python imports.
@@ -197,7 +197,7 @@ class tdSerial1(vbox.TestDriver):
 
         if fRc:
             fRc = oSession.changeSerialPortAttachment(0, ePortMode, sLocation, fServer);
-            if fRc and (sMode in 'TcpServ', 'NamedPipeServ',):
+            if fRc and sMode in ('TcpServ', 'NamedPipeServ',):
                 self.sleep(2); # Fudge to allow the TCP server to get started.
                 fRc = self.oLoopback.connect();
                 if not fRc:
