@@ -1,10 +1,10 @@
-# $Id: vboxguest.ioconf 70835 2018-01-31 14:49:25Z vboxsync $
+# $Id: vboxguest.ioconf 82972 2020-02-04 11:13:09Z vboxsync $
 ## @file
 # NetBSD vboxguest module configuration
 #
 
 #
-# Copyright (C) 2017 Oracle Corporation
+# Copyright (C) 2017-2020 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-# $Id: Readme.txt 56292 2015-06-09 14:20:46Z vboxsync $ */
+# $Id: Readme.txt 82972 2020-02-04 11:13:09Z vboxsync $ */
 #* @file
 # Readme.txt - Some description about using this module.
 
 
 #
-# Copyright (C) 2009-2015 Oracle Corporation
+# Copyright (C) 2009-2020 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;
