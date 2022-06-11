@@ -1,4 +1,4 @@
-/* $Id: OpenGLTestApp.cpp 78408 2019-05-06 21:31:01Z vboxsync $ */
+/* $Id: OpenGLTestApp.cpp 78410 2019-05-06 21:44:47Z vboxsync $ */
 /** @file
  * VBox host opengl support test application.
  */
@@ -48,8 +48,13 @@
 #include <VBox/version.h>
 #endif
 
-#ifdef VBOX_WITH_CROGL
+#ifdef VBOX_WITH_VIDEOHWACCEL
+#include <QGLWidget>
+#include <QApplication>
+#include <VBox/VBoxGL2D.h>
+#endif
 
+#ifdef VBOX_WITH_CROGL
 #include <cr_spu.h>
 
 static int vboxCheck3DAccelerationSupported()
@@ -69,10 +74,6 @@ static int vboxCheck3DAccelerationSupported()
 #endif
 
 #ifdef VBOX_WITH_VIDEOHWACCEL
-#include <QGLWidget>
-#include <QApplication>
-#include <VBox/VBoxGL2D.h>
-
 static int vboxCheck2DVideoAccelerationSupported()
 {
     LogRel(("Testing 2D Support:\n"));
@@ -298,7 +299,7 @@ int main(int argc, char **argv)
                     break;
 
                 case 'V':
-                    RTPrintf("$Revision: 78408 $\n");
+                    RTPrintf("$Revision: 78410 $\n");
                     return 0;
 
                 case VERR_GETOPT_UNKNOWN_OPTION:
