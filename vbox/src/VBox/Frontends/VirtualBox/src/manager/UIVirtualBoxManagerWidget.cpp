@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 83164 2020-02-26 19:06:10Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 83254 2020-03-11 10:21:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -24,7 +24,6 @@
 /* GUI includes: */
 #include "QISplitter.h"
 #include "UIActionPoolManager.h"
-#include "UIErrorString.h"
 #include "UIExtraDataManager.h"
 #include "UIChooser.h"
 #include "UIVirtualBoxManager.h"
@@ -786,7 +785,7 @@ void UIVirtualBoxManagerWidget::recacheCurrentItemInformation(bool fDontRaiseErr
 
             /* Propagate last access error to update the Error-pane (if machine selected but inaccessible): */
             if (pItem)
-                m_pPaneToolsMachine->setErrorDetails(UIErrorString::formatErrorInfo(pItem->accessError()));
+                m_pPaneToolsMachine->setErrorDetails(pItem->accessError());
         }
 
         /* Propagate current items to update the Details-pane (in any case): */

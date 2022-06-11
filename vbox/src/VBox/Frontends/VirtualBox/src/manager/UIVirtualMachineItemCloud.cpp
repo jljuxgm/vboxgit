@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItemCloud.cpp 83198 2020-03-04 10:58:40Z vboxsync $ */
+/* $Id: UIVirtualMachineItemCloud.cpp 83254 2020-03-11 10:21:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItemCloud class implementation.
  */
@@ -112,7 +112,7 @@ void UIVirtualMachineItemCloud::recache()
     if (m_fAccessible)
     {
         /* Reset last access error information: */
-        m_comAccessError = CVirtualBoxErrorInfo();
+        m_strAccessError.clear();
 
         /* Determine own VM attributes: */
         m_strOSTypeId = !m_guiCloudMachine.isNull()

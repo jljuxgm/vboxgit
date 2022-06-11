@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItem.h 83000 2020-02-05 19:35:22Z vboxsync $ */
+/* $Id: UIVirtualMachineItem.h 83254 2020-03-11 10:21:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItem class declarations.
  */
@@ -29,10 +29,6 @@
 /* GUI includes: */
 #include "QIWithRetranslateUI.h"
 #include "UISettingsDefs.h"
-
-/* COM includes: */
-#include "COMEnums.h"
-#include "CVirtualBoxErrorInfo.h"
 
 /* Forward declarations: */
 class UIVirtualMachineItemCloud;
@@ -71,7 +67,7 @@ public:
         /** Returns whether VM was accessible. */
         bool accessible() const { return m_fAccessible; }
         /** Returns the last cached access error. */
-        const CVirtualBoxErrorInfo &accessError() const { return m_comAccessError; }
+        QString accessError() const { return m_strAccessError; }
     /** @} */
 
     /** @name Basic attributes.
@@ -151,9 +147,9 @@ protected:
     /** @name VM access attributes.
       * @{ */
         /** Holds whether VM was accessible. */
-        bool                  m_fAccessible;
+        bool     m_fAccessible;
         /** Holds the last cached access error. */
-        CVirtualBoxErrorInfo  m_comAccessError;
+        QString  m_strAccessError;
     /** @} */
 
     /** @name Basic attributes.
