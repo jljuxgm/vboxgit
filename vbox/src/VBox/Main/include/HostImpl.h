@@ -1,4 +1,4 @@
-/* $Id: HostImpl.h 77804 2019-03-20 08:05:37Z vboxsync $ */
+/* $Id: HostImpl.h 81305 2019-10-17 10:23:39Z vboxsync $ */
 /** @file
  * Implementation of IHost.
  */
@@ -63,6 +63,8 @@ public:
 
     HRESULT i_loadSettings(const settings::Host &data);
     HRESULT i_saveSettings(settings::Host &data);
+
+    void    i_updateProcessorFeatures();
 
     HRESULT i_getDrives(DeviceType_T mediumType, bool fRefresh, MediaList *&pll, AutoWriteLock &treeLock);
     HRESULT i_findHostDriveById(DeviceType_T mediumType, const Guid &uuid, bool fRefresh, ComObjPtr<Medium> &pMedium);
