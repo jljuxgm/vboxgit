@@ -1,4 +1,4 @@
-/* $Id: UIResourceMonitor.cpp 83392 2020-03-24 16:59:50Z vboxsync $ */
+/* $Id: UIResourceMonitor.cpp 83404 2020-03-25 12:11:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIResourceMonitor class implementation.
  */
@@ -290,6 +290,7 @@ void UIResourceMonitorItem::initPerformanceCollector()
     m_objectList = QVector<CUnknown>(m_nameList.size(), CUnknown());
     m_performanceMonitor.SetupMetrics(m_nameList, m_objectList, iPeriod, iMetricSetupCount);
 }
+
 
 /*********************************************************************************************************************************
 *   Class UIVMResouceMonitorProxyModel implementation.                                                                           *
