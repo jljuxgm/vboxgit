@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 82612 2019-12-18 10:47:57Z vboxsync $ */
+/* $Id: HM.cpp 82614 2019-12-18 11:08:49Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -359,7 +359,7 @@ VMMR3_INT_DECL(int) HMR3Init(PVM pVM)
 
     /** @cfgm{/HM/SvmLbrVirt, bool, false}
      * Whether to make use of the LBR virtualization feature of the CPU if it's
-     * available. This is disabled by default as its only useful while debugging
+     * available. This is disabled by default as it's only useful while debugging
      * and enabling it causes a small hit to performance. */
     rc = CFGMR3QueryBoolDef(pCfgHm, "SvmLbrVirt", &pVM->hm.s.svm.fLbrVirt, false);
     AssertRCReturn(rc, rc);
