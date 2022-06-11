@@ -1,4 +1,4 @@
-/* $Id: HDAStream.cpp 82417 2019-12-05 13:31:38Z vboxsync $ */
+/* $Id: HDAStream.cpp 82418 2019-12-05 13:33:27Z vboxsync $ */
 /** @file
  * HDAStream.cpp - Stream functions for HD Audio.
  */
@@ -923,7 +923,7 @@ static int hdaR3StreamTransfer(PPDMDEVINS pDevIns, PHDASTREAM pStream, uint32_t 
     AssertPtr(pThis);
 
     PHDASTREAMPERIOD pPeriod = &pStream->State.Period;
-    hdaR3StreamPeriodLock(pPeriod))
+    hdaR3StreamPeriodLock(pPeriod);
 
     bool fProceed = true;
 
