@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibClipboard.cpp 78683 2019-05-23 10:07:21Z vboxsync $ */
+/* $Id: VBoxGuestR3LibClipboard.cpp 78684 2019-05-23 10:12:43Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Clipboard.
  */
@@ -151,6 +151,7 @@ VBGLR3DECL(int) VbglR3ClipboardReadData(HGCMCLIENTID idClient, uint32_t fFormat,
     return rc;
 }
 
+#ifdef VBOX_WITH_SHARED_CLIPBOARD_URI_LIST
 /**
  * Reads the meta data header from the host.
  *
@@ -408,6 +409,7 @@ static int vbglR3ClipboardReadMetaDataMain(HGCMCLIENTID idClient, PVBGLR3GUESTDN
                                                &pMeta->cbMeta);
     return rc;
 }
+#endif /* VBOX_WITH_SHARED_CLIPBOARD_URI_LIST */
 
 /**
  * Reports (advertises) guest clipboard formats to the host.
