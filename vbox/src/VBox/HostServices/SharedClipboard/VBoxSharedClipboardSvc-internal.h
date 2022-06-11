@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-internal.h 82485 2019-12-07 02:14:02Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-internal.h 82489 2019-12-07 03:43:00Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Internal header.
  */
@@ -74,6 +74,7 @@ typedef struct SHCLCLIENTTRANSFERSTATE
 
 /**
  * Structure for holding a single POD (plain old data) transfer.
+ *
  * This mostly is plain text, but also can be stuff like bitmap (BMP) or other binary data.
  */
 typedef struct SHCLCLIENTPODSTATE
