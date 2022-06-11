@@ -1,4 +1,4 @@
-/* $Id: QIManagerDialog.cpp 81284 2019-10-15 11:06:09Z vboxsync $ */
+/* $Id: QIManagerDialog.cpp 81356 2019-10-18 14:07:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIManagerDialog class implementation.
  */
@@ -55,7 +55,7 @@ void QIManagerDialogFactory::cleanup(QIManagerDialog *&pDialog)
 *********************************************************************************************************************************/
 
 QIManagerDialog::QIManagerDialog(QWidget *pCenterWidget)
-    : pCenterWidget(pCenterWidget)
+    : m_pCenterWidget(pCenterWidget)
     , m_fCloseEmitted(false)
     , m_pWidget(0)
     , m_pWidgetMenu(0)
@@ -73,7 +73,7 @@ void QIManagerDialog::prepare()
 
     /* Invent initial size: */
     QSize proposedSize;
-    const int iHostScreen = gpDesktop->screenNumber(pCenterWidget);
+    const int iHostScreen = gpDesktop->screenNumber(m_pCenterWidget);
     if (iHostScreen >= 0 && iHostScreen < gpDesktop->screenCount())
     {
         /* On the basis of current host-screen geometry if possible: */
@@ -103,7 +103,7 @@ void QIManagerDialog::prepare()
     finalize();
 
     /* Center according requested widget: */
-    UICommon::centerWidget(this, pCenterWidget, false);
+    UICommon::centerWidget(this, m_pCenterWidget, false);
 
     /* Load the dialog's settings from extradata */
     loadSettings();
