@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 78789 2019-05-27 19:06:27Z vboxsync $
+# $Id: Makefile.kmk 79019 2019-06-06 10:04:32Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox Guest/Host OpenGL part
 #
@@ -77,9 +77,6 @@ VBoxOGLcrutil_LIBS.win = \
 VBoxOGLcrutil_LIBS = \
 	$(VBOX_LIB_IPRT_GUEST_R3_SHARED) \
 	$(VBOX_LIB_VBGL_R3_SHARED)
-ifeq ($(KBUILD_TARGET),linux)
- VBoxOGLcrutil_LIBS += crypt
-endif
 
 # Needed by GDEbuger
 ifdef CR_NO_GL_SYSTEM_PATH

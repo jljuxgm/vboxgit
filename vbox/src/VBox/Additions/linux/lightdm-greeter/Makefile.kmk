@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: Makefile.kmk 79019 2019-06-06 10:04:32Z vboxsync $
 ## @file
 # Makefile for VBox LightDM greeter for providing automated logons.
 #
@@ -90,9 +90,6 @@ ifdef VBOX_WITH_FLTK
  endif
 else
  vbox-greeter_LIBS += gtk-3
-endif
-ifeq ($(KBUILD_TARGET),linux)
-vbox-greeter_LIBS += crypt
 endif
 
 vbox-greeter_LDFLAGS = $(if $(VBOX_OSE),$(shell pkg-config --libs liblightdm-gobject-1),)

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 78451 2019-05-08 15:30:54Z vboxsync $
+# $Id: Makefile.kmk 79019 2019-06-06 10:04:32Z vboxsync $
 ## @file
 # Sub-Makefile for the Cross Platform Guest Addition Services.
 #
@@ -171,10 +171,6 @@ VBoxService_LIBS         += \
 	$(VBOX_LIB_IPRT_GUEST_R3) \
 	$(VBOX_LIB_VBGL_R3) \
 	$(VBOX_LIB_IPRT_GUEST_R3)       # (The joy of unix linkers.)
-if1of ($(KBUILD_TARGET), linux)
- VBoxService_LIBS        += \
-	crypt
-endif
 ifdef VBOX_WITH_DBUS
  if1of ($(KBUILD_TARGET), linux solaris) # FreeBSD?
 VBoxService_LIBS         += \
