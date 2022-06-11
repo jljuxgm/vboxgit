@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 82362 2019-12-03 23:36:38Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 82371 2019-12-04 10:17:52Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -2634,7 +2634,6 @@ static DECLCALLBACK(void) ichac97R3Timer(PPDMDEVINS pDevIns, PTMTIMER pTimer, vo
  * Sets the virtual device timer to a new expiration time.
  *
  * @param   pDevIns             The device instance.
- * @param   pThis               The shared AC'97 state.
  * @param   pStream             AC'97 stream to set timer for.
  * @param   cTicksToDeadline    The number of ticks to the new deadline.
  *
