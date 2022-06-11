@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 81987 2019-11-19 11:21:38Z vboxsync $
+# $Id: vboxwrappers.py 82622 2019-12-19 14:55:09Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 81987 $"
+__version__ = "$Revision: 82622 $"
 
 
 # Standard Python imports.
@@ -69,6 +69,9 @@ def _ControllerNameToBusAndType(sController):
     elif sController == "NVMe Controller":
         eBus  = vboxcon.StorageBus_PCIe;
         eType = vboxcon.StorageControllerType_NVMe;
+    elif sController == "VirtIO SCSI Controller":
+        eBus  = vboxcon.StorageBus_VirtioSCSI;
+        eType = vboxcon.StorageControllerType_VirtioSCSI;
     else:
         eBus  = vboxcon.StorageBus_Null;
         eType = vboxcon.StorageControllerType_Null;
