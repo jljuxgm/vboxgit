@@ -1,4 +1,4 @@
-/* $Id: ClipboardStreamImpl-win.cpp 79267 2019-06-21 10:11:59Z vboxsync $ */
+/* $Id: ClipboardStreamImpl-win.cpp 79347 2019-06-26 09:15:29Z vboxsync $ */
 /** @file
  * ClipboardStreamImpl-win.cpp - Shared Clipboard IStream object implementation (guest and host side).
  */
@@ -53,20 +53,13 @@ VBoxClipboardWinStreamImpl::VBoxClipboardWinStreamImpl(VBoxClipboardWinDataObjec
     , m_uObjIdx(uObjIdx)
 {
     AssertPtr(m_pURITransfer);
-    AssertPtr(m_pURITransfer->pProvider);
 
     LogFunc(("m_uObjIdx=%RU64\n", uObjIdx));
-
-    m_pURITransfer->pProvider->AddRef();
 }
 
 VBoxClipboardWinStreamImpl::~VBoxClipboardWinStreamImpl(void)
 {
     LogFlowThisFuncEnter();
-
-    if (   m_pURITransfer
-        && m_pURITransfer->pProvider)
-        m_pURITransfer->pProvider->Release();
 }
 
 /*
@@ -187,7 +180,8 @@ STDMETHODIMP VBoxClipboardWinStreamImpl::Read(void *pvBuffer, ULONG nBytesToRead
 
     if (cbToRead)
     {
-        rc = m_pURITransfer->pProvider->ReadFileData(pvBuffer, cbToRead, 0 /* fFlags */, &cbRead);
+        rc = m_pURITransfer->ProviderIface.pfnReadFileData(&m_pURITransfer->ProviderCtx,
+                                                           pvBuffer, cbToRead, 0 /* fFlags */, &cbRead);
         if (RT_SUCCESS(rc))
         {
 //            pObj->AddProcessed(cbRead);
