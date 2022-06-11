@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 78831 2019-05-28 16:12:03Z vboxsync $
+# $Id: vboxtestvms.py 78957 2019-06-04 08:46:02Z vboxsync $
 
 """
 VirtualBox Test VMs
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 78831 $"
+__version__ = "$Revision: 78957 $"
 
 # Standard Python imports.
 import copy;
@@ -1109,7 +1109,7 @@ class TestVmSet(object):
             asVirtModes = list(g_asVirtModes);
         self.asVirtModesDef = asVirtModes;
         self.asVirtModes    = asVirtModes;
-        self.aoTestVms      = [];
+        self.aoTestVms      = []                # type: list(BaseTestVm)
         self.fIgnoreSkippedVm = fIgnoreSkippedVm;
         self.asParavirtModes = None; ##< If None, use the first PV mode of the test VM, otherwise all modes in this list.
 
