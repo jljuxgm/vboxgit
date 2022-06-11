@@ -1,4 +1,4 @@
-/* $Id: DrvAudioCommon.cpp 82255 2019-11-27 23:20:26Z vboxsync $ */
+/* $Id: DrvAudioCommon.cpp 82259 2019-11-27 23:48:57Z vboxsync $ */
 /** @file
  * Intermedia audio driver, common routines.
  *
@@ -1130,7 +1130,7 @@ bool DrvAudioHlpStreamStatusCanWrite(PDMAUDIOSTREAMSTS fStatus)
  * @c false if not.
  *
  * @returns @c true if ready to operate, @c if not.
- * @param   enmStatus           Stream status to evaluate.
+ * @param   fStatus Stream status to evaluate.
  */
 bool DrvAudioHlpStreamStatusIsReady(PDMAUDIOSTREAMSTS fStatus)
 {
