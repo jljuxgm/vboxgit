@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.cpp 84186 2020-05-07 14:17:42Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.cpp 84303 2020-05-14 13:19:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class implementation.
  */
@@ -507,10 +507,12 @@ void UIChooserAbstractModel::prepare()
 
 void UIChooserAbstractModel::prepareConnections()
 {
+#ifdef VBOX_GUI_WITH_CLOUD_VMS
     /* Setup temporary connections,
      * this is to be replaced by corresponding Main API event later. */
     connect(&uiCommon(), &UICommon::sigCloudMachineRegistered,
             this, &UIChooserAbstractModel::sltCloudMachineRegistered);
+#endif
 
     /* Setup global connections: */
     connect(gVBoxEvents, &UIVirtualBoxEventHandler::sigMachineStateChange,
