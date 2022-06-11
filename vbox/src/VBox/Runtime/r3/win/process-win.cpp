@@ -1,4 +1,4 @@
-/* $Id: process-win.cpp 80485 2019-08-28 18:59:24Z vboxsync $ */
+/* $Id: process-win.cpp 80492 2019-08-29 09:04:15Z vboxsync $ */
 /** @file
  * IPRT - Process, Windows.
  */
@@ -450,7 +450,7 @@ static int rtProcWinDuplicateToken(HANDLE hSrcToken, PHANDLE phToken)
 
 /**
  * Get the token assigned to specified thread indicated by @a hThread.
- * 
+ *
  * Only used when RTPROC_FLAGS_AS_IMPERSONATED_TOKEN is in effect and the
  * purpose is to get a duplicate the impersonated token of the current thread.
  *
