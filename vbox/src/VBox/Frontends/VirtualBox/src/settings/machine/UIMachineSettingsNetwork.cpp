@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsNetwork.cpp 80678 2019-09-09 14:29:48Z vboxsync $ */
+/* $Id: UIMachineSettingsNetwork.cpp 81088 2019-09-30 22:03:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsNetwork class implementation.
  */
@@ -1051,7 +1051,8 @@ void UIMachineSettingsNetworkPage::refreshInternalNetworkList(bool fFullRefresh 
     m_internalNetworkList.clear();
     /* Get internal network names from other VMs: */
     if (fFullRefresh)
-        m_internalNetworkList << UINetworkAttachmentEditor::internalNetworks();
+        m_internalNetworkListSaved = UINetworkAttachmentEditor::internalNetworks();
+    m_internalNetworkList << m_internalNetworkListSaved;
     /* Append internal network list with names from all the tabs: */
     for (int iTab = 0; iTab < m_pTabWidget->count(); ++iTab)
     {
@@ -1077,7 +1078,8 @@ void UIMachineSettingsNetworkPage::refreshGenericDriverList(bool fFullRefresh /*
     m_genericDriverList.clear();
     /* Get generic driver names from other VMs: */
     if (fFullRefresh)
-        m_genericDriverList << UINetworkAttachmentEditor::genericDrivers();
+        m_genericDriverListSaved = UINetworkAttachmentEditor::genericDrivers();
+    m_genericDriverList << m_genericDriverListSaved;
     /* Append generic driver list with names from all the tabs: */
     for (int iTab = 0; iTab < m_pTabWidget->count(); ++iTab)
     {

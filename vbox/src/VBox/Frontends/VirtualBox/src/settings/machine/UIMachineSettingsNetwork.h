@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsNetwork.h 80678 2019-09-09 14:29:48Z vboxsync $ */
+/* $Id: UIMachineSettingsNetwork.h 81088 2019-09-30 22:03:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsNetwork class declaration.
  */
@@ -130,10 +130,14 @@ private:
     QStringList  m_bridgedAdapterList;
     /** Holds the internal network list. */
     QStringList  m_internalNetworkList;
+    /** Holds the saved internal network list. */
+    QStringList  m_internalNetworkListSaved;
     /** Holds the host-only interface list. */
     QStringList  m_hostInterfaceList;
     /** Holds the generic driver list. */
     QStringList  m_genericDriverList;
+    /** Holds the saved generic driver list. */
+    QStringList  m_genericDriverListSaved;
     /** Holds the NAT network list. */
     QStringList  m_natNetworkList;
 
