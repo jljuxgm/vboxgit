@@ -1,4 +1,4 @@
-/* $Id: tstClipboardServiceHost.cpp 82527 2019-12-10 01:46:40Z vboxsync $ */
+/* $Id: tstClipboardServiceHost.cpp 82846 2020-01-24 09:36:52Z vboxsync $ */
 /** @file
  * Shared Clipboard host service test case.
  */
@@ -129,7 +129,7 @@ static void testSetTransferMode(void)
 /* Adds a host data read request message to the client's message queue. */
 static void testMsgAddReadData(PSHCLCLIENT pClient, uint32_t fFormat)
 {
-    int rc = ShClSvcDataReadRequest(pClient, fFormat, NULL /* puEvent */);
+    int rc = ShClSvcDataReadRequest(pClient, fFormat, NULL /* pidEvent */);
     RTTESTI_CHECK_RC_OK(rc);
 }
 

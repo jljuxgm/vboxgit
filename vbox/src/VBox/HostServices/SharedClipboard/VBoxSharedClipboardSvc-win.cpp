@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-win.cpp 82628 2019-12-20 13:41:17Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-win.cpp 82846 2020-01-24 09:36:52Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Win32 host.
  */
@@ -177,19 +177,19 @@ static int vboxClipboardSvcWinDataRead(PSHCLCONTEXT pCtx, UINT uFormat, void **p
         return VERR_NOT_SUPPORTED;
     }
 
-    SHCLEVENTID uEvent = 0;
-    int rc = ShClSvcDataReadRequest(pCtx->pClient, fFormat, &uEvent);
+    SHCLEVENTID idEvent = 0;
+    int rc = ShClSvcDataReadRequest(pCtx->pClient, fFormat, &idEvent);
     if (RT_SUCCESS(rc))
     {
         PSHCLEVENTPAYLOAD pPayload;
-        rc = ShClEventWait(&pCtx->pClient->EventSrc, uEvent, 30 * 1000, &pPayload);
+        rc = ShClEventWait(&pCtx->pClient->EventSrc, idEvent, 30 * 1000, &pPayload);
         if (RT_SUCCESS(rc))
         {
             *ppvData = pPayload ? pPayload->pvData : NULL;
             *pcbData = pPayload ? pPayload->cbData : 0;
 
             /* Detach the payload, as the caller then will own the data. */
-            ShClEventPayloadDetach(&pCtx->pClient->EventSrc, uEvent);
+            ShClEventPayloadDetach(&pCtx->pClient->EventSrc, idEvent);
             /**
              * @todo r=bird: The payload has already been detached,
              * ShClEventPayloadDetach and ShClEventWait does the exact same
@@ -197,7 +197,7 @@ static int vboxClipboardSvcWinDataRead(PSHCLCONTEXT pCtx, UINT uFormat, void **p
              */
         }
 
-        ShClEventUnregister(&pCtx->pClient->EventSrc, uEvent);
+        ShClEventUnregister(&pCtx->pClient->EventSrc, idEvent);
     }
 
     LogFlowFuncLeaveRC(rc);

@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-darwin.cpp 82527 2019-12-10 01:46:40Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-darwin.cpp 82846 2020-01-24 09:36:52Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Mac OS X host.
  */
@@ -207,7 +207,7 @@ int ShClSvcImplFormatAnnounce(PSHCLCLIENT pClient,
         return VINF_SUCCESS;
 #endif
 
-    return ShClSvcDataReadRequest(pClient, pFormats->Formats, NULL /* puEvent */);
+    return ShClSvcDataReadRequest(pClient, pFormats->Formats, NULL /* pidEvent */);
 }
 
 int ShClSvcImplReadData(PSHCLCLIENT pClient, PSHCLCLIENTCMDCTX pCmdCtx,
