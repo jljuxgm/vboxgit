@@ -1,4 +1,4 @@
-/* $Id: Virtio_1_0.cpp 80615 2019-09-06 04:24:53Z vboxsync $ */
+/* $Id: Virtio_1_0.cpp 80639 2019-09-06 17:41:59Z vboxsync $ */
 /** @file
  * Virtio_1_0 - Virtio Common (PCI, feature & config mgt, queue mgt & proxy, notification mgt)
  */
@@ -34,9 +34,8 @@
 
 #define INSTANCE(pVirtio) pVirtio->szInstance
 #define QUEUENAME(qIdx) (pVirtio->virtqProxy[qIdx].szVirtqName)
-#define CBQUEUENAME(qIdx) RTStrNLen(QUEUENAME(qIdx), sizeof(QUEUENAME(qIdx)))
-/**
 
+/**
  * Formats the logging of a memory-mapped I/O input or output value
  *
  * @param   pszFunc     - To avoid displaying this function's name via __FUNCTION__ or Log2Func()

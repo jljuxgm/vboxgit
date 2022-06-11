@@ -1,4 +1,4 @@
-/* $Id: DevVirtioSCSI.cpp 80616 2019-09-06 04:44:04Z vboxsync $ $Revision: 80616 $ $Date: 2019-09-06 12:44:04 +0800 (Fri, 06 Sep 2019) $ $Author: vboxsync $ */
+/* $Id: DevVirtioSCSI.cpp 80639 2019-09-06 17:41:59Z vboxsync $ $Revision: 80639 $ $Date: 2019-09-07 01:41:59 +0800 (Sat, 07 Sep 2019) $ $Author: vboxsync $ */
 /** @file
  * VBox storage devices - Virtio SCSI Driver
  *
@@ -401,6 +401,8 @@ typedef struct VIRTIOSCSITARGET
 
     /** Extended media port interface. */
     PDMIMEDIAEXPORT                 IMediaExPort;
+
+    PPDMIMEDIANOTIFY                pMediaNotify;
 
      /** Pointer to the attached driver's extended media interface. */
     R3PTRTYPE(PPDMIMEDIAEX)         pDrvMediaEx;
@@ -1737,7 +1739,13 @@ static DECLCALLBACK(void) virtioScsiR3MediumEjected(PPDMIMEDIAEXPORT pInterface)
     PVIRTIOSCSI pThis = pTarget->CTX_SUFF(pVirtioScsi);
     LogFunc(("LUN %d Ejected!\n", pTarget->iLUN));
     if (pThis->pMediaNotify)
-        virtioScsiSetWriteLed(pTarget, false);
+    {
+         int rc = VMR3ReqCallNoWait(PDMDevHlpGetVM(pThis->CTX_SUFF(pDevIns)), VMCPUID_ANY,
+                                   (PFNRT)pThis->pMediaNotify->pfnEjected, 2,
+                                    pThis->pMediaNotify, pTarget->iLUN);
+         AssertRC(rc);
+    }
+
 }
 
 /** @callback_method_impl{FNSSMDEVLIVEEXEC}  */
@@ -2304,6 +2312,11 @@ static DECLCALLBACK(int) virtioScsiConstruct(PPDMDEVINS pDevIns, int iInstance, 
             AssertMsgReturn(VALID_PTR(pTarget->pDrvMediaEx),
                          ("virtio-scsi configuration error: LUN#%u: Failed to set I/O request size!\n", pTarget->iLUN),
                          rc);
+
+            pTarget->pMediaNotify = PDMIBASE_QUERY_INTERFACE(pTarget->pDrvBase, PDMIMEDIANOTIFY);
+            AssertMsgReturn(VALID_PTR(pTarget->pDrvMediaEx),
+                         ("virtio-scsi configuration error: LUN#%u: Failed to get set Media notify obj!\n",
+                          pTarget->iLUN), rc);
 
         }
         else if (rc == VERR_PDM_NO_ATTACHED_DRIVER)
