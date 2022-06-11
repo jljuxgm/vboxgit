@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 81789 2019-11-12 04:37:09Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 81866 2019-11-15 10:55:49Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -6194,6 +6194,7 @@ IEM_STATIC int iemVmxVmentryCheckCtls(PVMCPUCC pVCpu, const char *pszInstr)
         Assert(!(pVmcs->u32ProcCtls2 & VMX_PROC_CTLS2_VMFUNC));             /* We don't support VM functions yet. */
         Assert(!(pVmcs->u32ProcCtls2 & VMX_PROC_CTLS2_EPT_VE));             /* We don't support EPT-violation #VE yet. */
         Assert(!(pVmcs->u32ProcCtls2 & VMX_PROC_CTLS2_PAUSE_LOOP_EXIT));    /* We don't support Pause-loop exiting yet. */
+        Assert(!(pVmcs->u32ProcCtls2 & VMX_PROC_CTLS2_TSC_SCALING));        /* We don't support TSC-scaling yet. */
 
         /* VMCS shadowing. */
         if (pVmcs->u32ProcCtls2 & VMX_PROC_CTLS2_VMCS_SHADOWING)
