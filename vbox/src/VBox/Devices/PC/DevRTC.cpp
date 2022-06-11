@@ -1,4 +1,4 @@
-/* $Id: DevRTC.cpp 81408 2019-10-21 13:10:03Z vboxsync $ */
+/* $Id: DevRTC.cpp 81472 2019-10-23 01:42:54Z vboxsync $ */
 /** @file
  * Motorola MC146818 RTC/CMOS Device with PIIX4 extensions.
  */
@@ -1255,6 +1255,7 @@ static DECLCALLBACK(int)  rtcConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMN
  */
 static DECLCALLBACK(int)  rtcRZConstruct(PPDMDEVINS pDevIns)
 {
+    PDMDEV_CHECK_VERSIONS_RETURN(pDevIns);
     PRTCSTATE   pThis   = PDMINS_2_DATA(pDevIns, PRTCSTATE);
     PRTCSTATER0 pThisCC = PDMINS_2_DATA_CC(pDevIns, PRTCSTATECC);
     pThisCC->CTX_SUFF(pDevIns) = pDevIns;
