@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageBasic2.cpp 78275 2019-04-24 14:53:31Z vboxsync $ */
+/* $Id: UIWizardImportAppPageBasic2.cpp 78853 2019-05-29 14:16:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageBasic2 class implementation.
  */
@@ -271,12 +271,6 @@ void UIWizardImportAppPageBasic2::cleanupPage()
     m_pApplianceWidget->restoreDefaults();
     /* Call to base-class: */
     UIWizardPage::cleanupPage();
-}
-
-bool UIWizardImportAppPageBasic2::isComplete() const
-{
-    /* No importing for cloud source for now: */
-    return !field("isSourceCloudOne").toBool();
 }
 
 bool UIWizardImportAppPageBasic2::validatePage()
