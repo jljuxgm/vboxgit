@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuimain.py 83360 2020-03-21 13:43:17Z vboxsync $
+# $Id: wuimain.py 83366 2020-03-23 13:12:48Z vboxsync $
 
 """
 Test Manager Core - WUI - The Main page.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 83360 $"
+__version__ = "$Revision: 83366 $"
 
 # Standard Python imports.
 
@@ -423,7 +423,7 @@ class WuiMain(WuiDispatcherBase):
         else:
             sNext = '&nbsp;&nbsp;&gt;&gt;';
 
-        from wuicontentbase import WuiListContentBase; ## @todo move to better place.
+        from testmanager.webui.wuicontentbase import WuiListContentBase; ## @todo move to better place.
         return WuiListContentBase.generateTimeNavigation('top', self.getParameters(), self.getEffectiveDateParam(),
                                                          sPrev, sNext, False);
 
@@ -544,7 +544,7 @@ class WuiMain(WuiDispatcherBase):
         Note! Modifies dParams!
         """
 
-        from wuicontentbase import WuiListContentBase; ## @todo move to better place.
+        from testmanager.webui.wuicontentbase import WuiListContentBase; ## @todo move to better place.
         return WuiListContentBase.generateItemPerPageSelector('top', dParams, cItemsPerPage);
 
     def _generateResultNavigation(self, cItems, cItemsPerPage, iPage, tsEffective, sCurPeriod, fOnlyFailures,
