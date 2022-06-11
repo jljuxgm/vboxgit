@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdStorageSnapshotMerging1.py 78125 2019-04-15 14:35:53Z vboxsync $
+# $Id: tdStorageSnapshotMerging1.py 78965 2019-06-04 14:32:14Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage snapshotting and merging testcase.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 78125 $"
+__version__ = "$Revision: 78965 $"
 
 
 # Standard Python imports.
@@ -158,7 +158,7 @@ class tdStorageSnapshot(vbox.TestDriver):                                      #
             oProgressCom = oMedium.resize(cbNewSize);
             oProgress = vboxwrappers.ProgressWrapper(oProgressCom, self.oVBoxMgr, self.oVBox.oTstDrv,
                                                      'Resize medium %s' % (oMedium.name));
-            oProgress.wait(cMsTimeout = 60 * 1000);
+            oProgress.wait(cMsTimeout = 1000000);
             oProgress.logResult();
         except:
             reporter.logXcpt('IMedium::resize failed on %s' % (oMedium.name));
@@ -239,7 +239,7 @@ class tdStorageSnapshot(vbox.TestDriver):                                      #
             oProgressCom = oSrcHd.cloneTo(oTgtHd, (vboxcon.MediumVariant_Standard, ), None);
             oProgress = vboxwrappers.ProgressWrapper(oProgressCom, self.oVBoxMgr, self.oVBox.oTstDrv,
                                                      'clone base disk %s to %s' % (oSrcHd.name, oTgtHd.name));
-            oProgress.wait(cMsTimeout = 60 * 1000);
+            oProgress.wait(cMsTimeout = 1000000);
             oProgress.logResult();
         except:
             reporter.errorXcpt('failed to clone medium %s to %s' % (oSrcHd.name, oTgtHd.name));
@@ -259,7 +259,7 @@ class tdStorageSnapshot(vbox.TestDriver):                                      #
                     oProgress = oVM.deleteConfig([]);
                 else:
                     oProgress = oVM.delete(None);
-                self.waitOnProgress(oProgress);
+                oProgress.wait(cMsTimeout = 1000000);
 
             except:
                 reporter.logXcpt();
