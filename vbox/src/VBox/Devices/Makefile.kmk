@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 83263 2020-03-11 16:34:33Z vboxsync $
+# $Id: Makefile.kmk 83296 2020-03-16 11:43:32Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -1355,6 +1355,7 @@ endif
  	testcase/tstDevice.cpp \
  	testcase/tstDeviceCfg.cpp \
  	testcase/tstDevicePdmDevHlp.cpp \
+ 	testcase/tstDevicePdmThread.cpp \
  	testcase/tstDeviceSsmFuzz.cpp
  endif
 

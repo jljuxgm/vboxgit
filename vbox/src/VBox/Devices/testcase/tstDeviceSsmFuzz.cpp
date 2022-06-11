@@ -1,4 +1,4 @@
-/* $Id: tstDeviceSsmFuzz.cpp 83261 2020-03-11 16:10:11Z vboxsync $ */
+/* $Id: tstDeviceSsmFuzz.cpp 83296 2020-03-16 11:43:32Z vboxsync $ */
 /** @file
  * tstDeviceSsmFuzz - SSM fuzzing testcase.
  */
@@ -103,7 +103,15 @@ static DECLCALLBACK(int) tstDevSsmFuzzEntry(TSTDEVDUT hDut, PCTSTDEVCFGITEM paCf
     int rc = RTFuzzCtxCreate(&hFuzzCtx, RTFUZZCTXTYPE_BLOB);
     if (RT_SUCCESS(rc))
     {
-        rc = RTFuzzCtxCorpusInputAddFromDirPath(hFuzzCtx, tstDevSsmFuzzGetCfgString(paCfg, cCfgItems, "CorpusPath"));
+        uint64_t cbMutateRange = tstDevSsmFuzzGetCfgU64(paCfg, cCfgItems, "OffMutateSize");
+        if (!cbMutateRange)
+            cbMutateRange = UINT64_MAX;
+
+        rc = RTFuzzCtxCfgSetMutationRange(hFuzzCtx,
+                                          tstDevSsmFuzzGetCfgU64(paCfg, cCfgItems, "OffMutateStart"),
+                                          cbMutateRange);
+        if (RT_SUCCESS(rc))
+            rc = RTFuzzCtxCorpusInputAddFromDirPath(hFuzzCtx, tstDevSsmFuzzGetCfgString(paCfg, cCfgItems, "CorpusPath"));
         if (RT_SUCCESS(rc))
         {
             rc = RTFuzzCtxCfgSetInputSeedMaximum(hFuzzCtx, (size_t)tstDevSsmFuzzGetCfgU64(paCfg, cCfgItems, "InputSizeMax"));
