@@ -1,4 +1,4 @@
-/* $Id: PDMDriver.cpp 80074 2019-07-31 14:18:34Z vboxsync $ */
+/* $Id: PDMDriver.cpp 80154 2019-08-06 10:47:22Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Driver parts.
  */
@@ -1385,6 +1385,20 @@ static DECLCALLBACK(int) pdmR3DrvHlp_DBGFInfoRegister(PPDMDRVINS pDrvIns, const 
 }
 
 
+/** @interface_method_impl{PDMDRVHLPR3,pfnDBGFInfoRegisterArgv} */
+static DECLCALLBACK(int) pdmR3DrvHlp_DBGFInfoRegisterArgv(PPDMDRVINS pDrvIns, const char *pszName, const char *pszDesc, PFNDBGFINFOARGVDRV pfnHandler)
+{
+    PDMDRV_ASSERT_DRVINS(pDrvIns);
+    LogFlow(("pdmR3DrvHlp_DBGFInfoRegisterArgv: caller='%s'/%d: pszName=%p:{%s} pszDesc=%p:{%s} pfnHandler=%p\n",
+             pDrvIns->pReg->szName, pDrvIns->iInstance, pszName, pszName, pszDesc, pszDesc, pfnHandler));
+
+    int rc = DBGFR3InfoRegisterDriverArgv(pDrvIns->Internal.s.pVMR3, pszName, pszDesc, pfnHandler, pDrvIns);
+
+    LogFlow(("pdmR3DrvHlp_DBGFInfoRegisterArgv: caller='%s'/%d: returns %Rrc\n", pDrvIns->pReg->szName, pDrvIns->iInstance, rc));
+    return rc;
+}
+
+
 /** @interface_method_impl{PDMDRVHLPR3,pfnDBGFInfoDeregister} */
 static DECLCALLBACK(int) pdmR3DrvHlp_DBGFInfoDeregister(PPDMDRVINS pDrvIns, const char *pszName)
 {
@@ -1823,6 +1837,7 @@ const PDMDRVHLPR3 g_pdmR3DrvHlp =
     pdmR3DrvHlp_SSMRegister,
     pdmR3DrvHlp_SSMDeregister,
     pdmR3DrvHlp_DBGFInfoRegister,
+    pdmR3DrvHlp_DBGFInfoRegisterArgv,
     pdmR3DrvHlp_DBGFInfoDeregister,
     pdmR3DrvHlp_STAMRegister,
     pdmR3DrvHlp_STAMRegisterF,
