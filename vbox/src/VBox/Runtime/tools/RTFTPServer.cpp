@@ -1,4 +1,4 @@
-/* $Id: RTFTPServer.cpp 82732 2020-01-14 09:53:20Z vboxsync $ */
+/* $Id: RTFTPServer.cpp 82770 2020-01-15 14:34:38Z vboxsync $ */
 /** @file
  * IPRT - Utility for running a (simple) FTP server.
  */
@@ -46,7 +46,7 @@
 #include <iprt/asm.h>
 #include <iprt/assert.h>
 #include <iprt/ctype.h>
-#include <iprt/errcore.h>
+#include <iprt/err.h>
 #include <iprt/file.h>
 #include <iprt/getopt.h>
 #include <iprt/initterm.h>
@@ -304,11 +304,11 @@ static DECLCALLBACK(int) onPathUp(PRTFTPCALLBACKDATA pData)
     return VINF_SUCCESS;
 }
 
-static DECLCALLBACK(int) onList(PRTFTPCALLBACKDATA pData, const char *pcszPath, void **ppvData, size_t *pcbData)
+static DECLCALLBACK(int) onList(PRTFTPCALLBACKDATA pData, const char *pcszPath, void *pvData, size_t cbData, size_t *pcbRead)
 {
-    RT_NOREF(pData, pcszPath, ppvData, pcbData);
+    RT_NOREF(pData, pcszPath, pvData, cbData, pcbRead);
 
-    return VINF_SUCCESS;
+    return VINF_EOF;
 }
 
 int main(int argc, char **argv)
@@ -382,7 +382,7 @@ int main(int argc, char **argv)
                 return RTEXITCODE_SUCCESS;
 
             case 'V':
-                RTPrintf("$Revision: 82732 $\n");
+                RTPrintf("$Revision: 82770 $\n");
                 return RTEXITCODE_SUCCESS;
 
             default:
