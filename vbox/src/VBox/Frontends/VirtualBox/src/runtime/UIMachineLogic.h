@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 79387 2019-06-27 12:11:36Z vboxsync $ */
+/* $Id: UIMachineLogic.h 80601 2019-09-05 08:50:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -299,6 +299,7 @@ private slots:
     void sltToggleVRDE(bool fEnabled);
 
     /* "Device" menu functionality: */
+    void sltOpenVMSettingsDialogDefault();
     void sltOpenVMSettingsDialog(const QString &strCategory = QString(), const QString &strControl = QString());
     void sltOpenStorageSettingsDialog();
     void sltToggleAudioOutput(bool fEnabled);

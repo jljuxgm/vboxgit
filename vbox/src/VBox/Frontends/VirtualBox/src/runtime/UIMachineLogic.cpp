@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 80600 2019-09-05 08:43:16Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 80601 2019-09-05 08:50:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -1092,7 +1092,7 @@ void UIMachineLogic::prepareActionConnections()
 
     /* 'Machine' actions connections: */
     connect(actionPool()->action(UIActionIndexRT_M_Machine_S_Settings), &UIAction::triggered,
-            [=](){ UIMachineLogic::sltOpenVMSettingsDialog();});
+            this, &UIMachineLogic::sltOpenVMSettingsDialogDefault);
     connect(actionPool()->action(UIActionIndexRT_M_Machine_S_TakeSnapshot), &UIAction::triggered,
             this, &UIMachineLogic::sltTakeSnapshot);
     connect(actionPool()->action(UIActionIndexRT_M_Machine_S_ShowInformation), &UIAction::triggered,
@@ -2141,6 +2141,11 @@ void UIMachineLogic::sltToggleVRDE(bool fEnabled)
         /* Notify about the error: */
         return msgCenter().cannotSaveMachineSettings(machine());
     }
+}
+
+void UIMachineLogic::sltOpenVMSettingsDialogDefault()
+{
+    sltOpenVMSettingsDialog();
 }
 
 void UIMachineLogic::sltOpenVMSettingsDialog(const QString &strCategory /* = QString() */,
