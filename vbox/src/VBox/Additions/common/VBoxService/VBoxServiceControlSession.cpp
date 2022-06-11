@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlSession.cpp 83349 2020-03-20 13:40:21Z vboxsync $ */
+/* $Id: VBoxServiceControlSession.cpp 83409 2020-03-25 13:15:39Z vboxsync $ */
 /** @file
  * VBoxServiceControlSession - Guest session handling. Also handles the spawned session processes.
  */
@@ -2681,12 +2681,14 @@ RTEXITCODE VGSvcGstCtrlSessionSpawnInit(int argc, char **argv)
                 break;
 
             case VINF_GETOPT_NOT_OPTION:
-                /* Ignore; might be "guestsession" main command. */
-                /** @todo r=bird: We DO NOT ignore stuff on the command line! */
-                break;
-
+            {
+                if (!RTStrICmp(ValueUnion.psz, VBOXSERVICECTRLSESSION_GETOPT_PREFIX))
+                    break;
+                /* else fall through and bail out. */
+                RT_FALL_THROUGH();
+            }
             default:
-                return RTMsgErrorExit(RTEXITCODE_SYNTAX, "Unknown command '%s'", ValueUnion.psz);
+                return RTMsgErrorExit(RTEXITCODE_SYNTAX, "Unknown argument '%s'", ValueUnion.psz);
         }
     }
 

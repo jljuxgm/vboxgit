@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControl.h 83286 2020-03-13 15:35:35Z vboxsync $ */
+/* $Id: VBoxServiceControl.h 83409 2020-03-25 13:15:39Z vboxsync $ */
 /** @file
  * VBoxServiceControl.h - Internal guest control definitions.
  */
@@ -143,6 +143,10 @@ typedef struct VBOXSERVICECTRLSESSIONTHREAD
 } VBOXSERVICECTRLSESSIONTHREAD;
 /** Pointer to thread data. */
 typedef VBOXSERVICECTRLSESSIONTHREAD *PVBOXSERVICECTRLSESSIONTHREAD;
+
+/** Defines the prefix being used for telling our service executable that we're going
+ *  to spawn a new (Guest Control) user session. */
+#define VBOXSERVICECTRLSESSION_GETOPT_PREFIX             "guestsession"
 
 /** Flag indicating that this session has been spawned from
  *  the main executable. */

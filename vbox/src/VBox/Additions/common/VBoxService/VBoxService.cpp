@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxService.cpp 83409 2020-03-25 13:15:39Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -914,7 +914,7 @@ int main(int argc, char **argv)
      * handles a guest control session.
      */
     if (   argc >= 2
-        && !RTStrICmp(argv[1], "guestsession"))
+        && !RTStrICmp(argv[1], VBOXSERVICECTRLSESSION_GETOPT_PREFIX))
         fUserSession = true;
 #endif
 
