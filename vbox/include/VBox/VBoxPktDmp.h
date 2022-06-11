@@ -1,4 +1,4 @@
-/* $Id: VBoxPktDmp.h 82681 2020-01-09 04:31:04Z vboxsync $ */
+/* $Id: VBoxPktDmp.h 82682 2020-01-09 04:50:57Z vboxsync $ */
 /** @file
  * VBoxPktDmp.h - Dump Ethernet frame into debug log.
  */
@@ -49,7 +49,6 @@ DECLINLINE(const char *) vboxEthTypeStr(uint16_t uType)
 }
 
 
-//DECLHIDDEN(void) 
 DECLINLINE(void) vboxEthPacketDump(const char *pcszInstance, const char *pcszText, const uint8_t *pcPacket, uint32_t cb)
 {
 #if defined(LOG_ENABLED) && !defined(VBOX_DEVICE_STRUCT_TESTCASE)
