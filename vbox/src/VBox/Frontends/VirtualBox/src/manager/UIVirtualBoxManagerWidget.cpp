@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 83129 2020-02-21 11:11:18Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 83163 2020-02-26 14:56:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -285,10 +285,17 @@ void UIVirtualBoxManagerWidget::sltHandleSlidingAnimationComplete(SlidingDirecti
 
 void UIVirtualBoxManagerWidget::sltHandleCloudMachineStateChange(const QString &strId)
 {
+    /* If that is machine or group item selected: */
+    if (isMachineItemSelected() || isGroupItemSelected())
+    {
+        /* Recache current item info: */
+        recacheCurrentItemInformation();
+    }
+
     /* Acquire current item: */
     UIVirtualMachineItem *pItem = currentItem();
 
-    /* repeat the task only if we are still on the same item: */
+    /* Repeat the task only if we are still on the same item: */
     if (pItem && pItem->id() == strId)
         pItem->toCloud()->updateInfoAsync(true /* delayed? */);
 
