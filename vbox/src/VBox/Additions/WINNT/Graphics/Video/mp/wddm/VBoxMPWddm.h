@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxMPWddm.h 83840 2020-04-20 09:16:29Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -23,12 +23,6 @@
 
 #define VBOX_WDDM_DRIVERNAME L"VBoxWddm"
 
-#ifndef DEBUG_misha
-# ifdef Assert
-#  error "VBoxMPWddm.h must be included first."
-# endif
-# define RT_NO_STRICT
-#endif
 #include "common/VBoxMPUtils.h"
 #include "common/VBoxMPDevExt.h"
 #include "../../common/VBoxVideoTools.h"

@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 83827 2020-04-19 02:02:30Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 83840 2020-04-20 09:16:29Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -502,7 +502,7 @@ bool vboxWddmGhDisplayCheckSetInfoForDisabledTargetsNew(PVBOXMP_DEVEXT pDevExt)
     for (int i = 0; i < VBoxCommonFromDeviceExt(pDevExt)->cDisplays; ++i)
     {
         VBOXWDDM_TARGET *pTarget = &pDevExt->aTargets[i];
-        Assert(pTarget->u32Id == i);
+        Assert(pTarget->u32Id == (unsigned)i);
         if (pTarget->VidPnSourceId != D3DDDI_ID_UNINITIALIZED)
         {
             Assert(pTarget->VidPnSourceId < (D3DDDI_VIDEO_PRESENT_SOURCE_ID)VBoxCommonFromDeviceExt(pDevExt)->cDisplays);
@@ -561,7 +561,7 @@ bool vboxWddmGhDisplayCheckSetInfoForDisabledTargetsLegacy(PVBOXMP_DEVEXT pDevEx
     for (int i = 0; i < VBoxCommonFromDeviceExt(pDevExt)->cDisplays; ++i)
     {
         VBOXWDDM_TARGET *pTarget = &pDevExt->aTargets[i];
-        Assert(pTarget->u32Id == i);
+        Assert(pTarget->u32Id == (unsigned)i);
         if (pTarget->VidPnSourceId != D3DDDI_ID_UNINITIALIZED)
         {
             Assert(pTarget->VidPnSourceId < (D3DDDI_VIDEO_PRESENT_SOURCE_ID)VBoxCommonFromDeviceExt(pDevExt)->cDisplays);
@@ -3849,7 +3849,7 @@ DxgkDdiCommitVidPn(
             for (int i = 0; i < VBoxCommonFromDeviceExt(pDevExt)->cDisplays; ++i)
             {
                 VBOXWDDM_TARGET *pTarget = &pDevExt->aTargets[i];
-                Assert(pTarget->u32Id == i);
+                Assert(pTarget->u32Id == (unsigned)i);
                 if (pTarget->VidPnSourceId != D3DDDI_ID_UNINITIALIZED)
                 {
                     continue;
