@@ -1,4 +1,4 @@
-/* $Id: DevIommuAmd.cpp 84023 2020-04-27 19:37:58Z vboxsync $ */
+/* $Id: DevIommuAmd.cpp 84024 2020-04-27 19:41:11Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - AMD implementation.
  */
@@ -3004,6 +3004,10 @@ static int iommuAmdWriteEventLogEntry(PPDMDEVINS pDevIns, PCEVT_GENERIC_T pEvent
                 ASMAtomicOrU64(&pThis->Status.u64, IOMMU_STATUS_EVT_LOG_INTR);
                 /** @todo IOMMU: Generate the interrupt. */
             }
+        }
+        else
+        {
+            /** @todo IOMMU: Set the overflow bit and generate interrupt. */
         }
     }
 }
