@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibGuestCtrl.cpp 79296 2019-06-24 09:09:21Z vboxsync $ */
+/* $Id: VBoxGuestR3LibGuestCtrl.cpp 79428 2019-06-30 10:12:44Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, guest control.
  */
@@ -330,7 +330,7 @@ VBGLR3DECL(int) VbglR3GuestCtrlReportFeatures(uint32_t idClient, uint64_t fGuest
         VbglHGCMParmUInt64Set(&Msg.f64Features0, fGuestFeatures);
         VbglHGCMParmUInt64Set(&Msg.f64Features1, VBOX_GUESTCTRL_GF_1_MUST_BE_ONE);
 
-        rc = VbglR3HGCMCall(&Msg.Hdr, sizeof(Msg.Hdr));
+        rc = VbglR3HGCMCall(&Msg.Hdr, sizeof(Msg));
         if (RT_SUCCESS(rc))
         {
             Assert(Msg.f64Features0.type == VMMDevHGCMParmType_64bit);
@@ -369,7 +369,7 @@ VBGLR3DECL(int) VbglR3GuestCtrlQueryFeatures(uint32_t idClient, uint64_t *pfHost
         VbglHGCMParmUInt64Set(&Msg.f64Features0, 0);
         VbglHGCMParmUInt64Set(&Msg.f64Features1, RT_BIT_64(63));
 
-        rc = VbglR3HGCMCall(&Msg.Hdr, sizeof(Msg.Hdr));
+        rc = VbglR3HGCMCall(&Msg.Hdr, sizeof(Msg));
         if (RT_SUCCESS(rc))
         {
             Assert(Msg.f64Features0.type == VMMDevHGCMParmType_64bit);
