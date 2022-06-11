@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 80396 2019-08-23 13:27:22Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 80943 2019-09-23 09:36:14Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -217,20 +217,11 @@ int main()
     GEN_CHECK_OFF(DEVPCIBUS, cBridges);
     GEN_CHECK_OFF(DEVPCIBUS, apDevices);
     GEN_CHECK_OFF(DEVPCIBUS, apDevices[1]);
-    GEN_CHECK_OFF(DEVPCIBUS, pDevInsR3);
-    GEN_CHECK_OFF(DEVPCIBUS, pPciHlpR3);
     GEN_CHECK_OFF(DEVPCIBUS, papBridgesR3);
-    GEN_CHECK_OFF(DEVPCIBUS, pDevInsR0);
-    GEN_CHECK_OFF(DEVPCIBUS, pPciHlpR0);
-    GEN_CHECK_OFF(DEVPCIBUS, pDevInsRC);
-    GEN_CHECK_OFF(DEVPCIBUS, pPciHlpRC);
     GEN_CHECK_OFF(DEVPCIBUS, PciDev);
     GEN_CHECK_SIZE(PIIX3ISABRIDGE);
     GEN_CHECK_SIZE(DEVPCIROOT);
     GEN_CHECK_OFF(DEVPCIROOT, PciBus);
-    GEN_CHECK_OFF(DEVPCIROOT, pDevInsR3);
-    GEN_CHECK_OFF(DEVPCIROOT, pDevInsR0);
-    GEN_CHECK_OFF(DEVPCIROOT, pDevInsRC);
     GEN_CHECK_OFF(DEVPCIROOT, fUseIoApic);
     GEN_CHECK_OFF(DEVPCIROOT, u64PciConfigMMioAddress);
     GEN_CHECK_OFF(DEVPCIROOT, u64PciConfigMMioLength);

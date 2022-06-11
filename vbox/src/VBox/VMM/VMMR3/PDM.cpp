@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 80531 2019-09-01 23:03:34Z vboxsync $ */
+/* $Id: PDM.cpp 80943 2019-09-23 09:36:14Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -538,18 +538,6 @@ VMMR3_INT_DECL(void) PDMR3Relocate(PVM pVM, RTGCINTPTR offDelta)
             pVM->pdm.s.IoApic.pfnSendMsiRC      += offDelta;
         if (pVM->pdm.s.IoApic.pfnSetEoiRC)
             pVM->pdm.s.IoApic.pfnSetEoiRC       += offDelta;
-    }
-
-    /*
-     * The register PCI Buses.
-     */
-    for (unsigned i = 0; i < RT_ELEMENTS(pVM->pdm.s.aPciBuses); i++)
-    {
-        if (pVM->pdm.s.aPciBuses[i].pDevInsRC)
-        {
-            pVM->pdm.s.aPciBuses[i].pDevInsRC   += offDelta;
-            pVM->pdm.s.aPciBuses[i].pfnSetIrqRC += offDelta;
-        }
     }
 
     /*

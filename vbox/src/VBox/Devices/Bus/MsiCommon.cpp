@@ -1,4 +1,4 @@
-/* $Id: MsiCommon.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: MsiCommon.cpp 80943 2019-09-23 09:36:14Z vboxsync $ */
 /** @file
  * MSI support routines
  *
@@ -32,8 +32,13 @@ DECLINLINE(uint16_t) msiGetMessageControl(PPDMPCIDEV pDev)
 {
     uint32_t idxMessageControl = pDev->Int.s.u8MsiCapOffset + VBOX_MSI_CAP_MESSAGE_CONTROL;
 #ifdef IN_RING3
-    if (pciDevIsPassthrough(pDev))
-        return pDev->Int.s.pfnConfigRead(pDev->Int.s.CTX_SUFF(pDevIns), pDev, idxMessageControl, 2);
+    if (pciDevIsPassthrough(pDev) && pDev->Int.s.pfnConfigRead)
+    {
+        uint32_t u32Value = 0;
+        VBOXSTRICTRC rcStrict = pDev->Int.s.pfnConfigRead(pDev->Int.s.CTX_SUFF(pDevIns), pDev, idxMessageControl, 2, &u32Value);
+        AssertRCSuccess(rcStrict);
+        return (uint16_t)u32Value;
+    }
 #endif
     return PCIDevGetWord(pDev, idxMessageControl);
 }
