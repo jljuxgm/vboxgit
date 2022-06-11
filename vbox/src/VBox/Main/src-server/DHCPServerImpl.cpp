@@ -1,4 +1,4 @@
-/* $Id: DHCPServerImpl.cpp 79732 2019-07-12 12:40:09Z vboxsync $ */
+/* $Id: DHCPServerImpl.cpp 79733 2019-07-12 12:51:57Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -125,10 +125,10 @@ struct DHCPServer::Data
     /** Global configuration. */
     ComObjPtr<DHCPGlobalConfig> globalConfig;
 
-    /** Group configuration indexed by name. */
-    std::map<com::Utf8Str, ComObjPtr<DHCPGroupConfig>> groupConfigs;
-    /** Iterator for groupConfigs. */
-    typedef std::map<com::Utf8Str, ComObjPtr<DHCPGroupConfig>>::iterator GroupConfigIterator;
+//    /** Group configuration indexed by name. */
+//    std::map<com::Utf8Str, ComObjPtr<DHCPGroupConfig>> groupConfigs;
+//    /** Iterator for groupConfigs. */
+//    typedef std::map<com::Utf8Str, ComObjPtr<DHCPGroupConfig>>::iterator GroupConfigIterator;
 
     /** Individual (host) configuration indexed by MAC address or VM UUID. */
     std::map<com::Utf8Str, ComObjPtr<DHCPIndividualConfig>> individualConfigs;
