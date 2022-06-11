@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 80824 2019-09-16 13:18:44Z vboxsync $ */
+/* $Id: VBoxManageMisc.cpp 80825 2019-09-16 13:22:56Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -1873,7 +1873,7 @@ RTEXITCODE handleUnattendedInstall(HandlerArg *a)
             aBstrEnv.push_back(BstrFmt("DISPLAY=%s", pszDisplay).raw());
         const char *pszXAuth = RTEnvGet("XAUTHORITY");
         if (pszXAuth)
-            aBstrEnv.push_back(BstrrFmt("XAUTHORITY=%s", pszXAuth).raw());
+            aBstrEnv.push_back(BstrFmt("XAUTHORITY=%s", pszXAuth).raw());
 #endif
         ComPtr<IProgress> ptrProgress;
         CHECK_ERROR2(hrc, ptrMachine, LaunchVMProcess(a->session, Bstr(pszSessionType).raw(), ComSafeArrayAsInParam(aBstrEnv), ptrProgress.asOutParam()));
