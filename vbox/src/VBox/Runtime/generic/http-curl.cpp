@@ -1,4 +1,4 @@
-/* $Id: http-curl.cpp 78252 2019-04-22 23:25:02Z vboxsync $ */
+/* $Id: http-curl.cpp 79005 2019-06-05 15:51:51Z vboxsync $ */
 /** @file
  * IPRT - HTTP client API, cURL based.
  *
@@ -1031,7 +1031,7 @@ static int rtHttpConfigureProxyForUrlFromEnv(PRTHTTPINTERNAL pThis, const char *
 static DECLCALLBACK(int) rtHttpLibProxyResolveImports(void *pvUser)
 {
     RTLDRMOD hMod;
-    int rc = RTLdrLoad("/usr/lib/libproxy.so.1", &hMod);
+    int rc = RTLdrLoadSystem("libproxy.so.1", false /*fNoUnload*/,  &hMod);
     if (RT_SUCCESS(rc))
     {
         rc = RTLdrGetSymbol(hMod, "px_proxy_factory_new", (void **)&g_pfnLibProxyFactoryCtor);
