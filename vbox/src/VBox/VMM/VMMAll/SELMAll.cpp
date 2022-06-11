@@ -1,4 +1,4 @@
-/* $Id: SELMAll.cpp 80161 2019-08-06 18:10:51Z vboxsync $ */
+/* $Id: SELMAll.cpp 80268 2019-08-14 11:25:13Z vboxsync $ */
 /** @file
  * SELM All contexts.
  */
@@ -19,6 +19,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#define VBOX_BUGREF_9217_PART_I
 #define LOG_GROUP LOG_GROUP_SELM
 #include <VBox/vmm/selm.h>
 #include <VBox/vmm/stam.h>
@@ -28,7 +29,7 @@
 #include <VBox/vmm/pgm.h>
 #include <VBox/vmm/hm.h>
 #include "SELMInternal.h"
-#include <VBox/vmm/vm.h>
+#include <VBox/vmm/vmcc.h>
 #include <VBox/err.h>
 #include <VBox/param.h>
 #include <iprt/assert.h>

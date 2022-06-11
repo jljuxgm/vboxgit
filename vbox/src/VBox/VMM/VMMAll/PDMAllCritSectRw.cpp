@@ -1,4 +1,4 @@
-/* $Id: PDMAllCritSectRw.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: PDMAllCritSectRw.cpp 80268 2019-08-14 11:25:13Z vboxsync $ */
 /** @file
  * IPRT - Read/Write Critical Section, Generic.
  */
@@ -19,12 +19,13 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#define LOG_GROUP LOG_GROUP_PDM//_CRITSECT
+#define VBOX_BUGREF_9217_PART_I
+#define LOG_GROUP LOG_GROUP_PDM_CRITSECT
 #include "PDMInternal.h"
 #include <VBox/vmm/pdmcritsectrw.h>
 #include <VBox/vmm/mm.h>
 #include <VBox/vmm/vmm.h>
-#include <VBox/vmm/vm.h>
+#include <VBox/vmm/vmcc.h>
 #include <VBox/err.h>
 #include <VBox/vmm/hm.h>
 

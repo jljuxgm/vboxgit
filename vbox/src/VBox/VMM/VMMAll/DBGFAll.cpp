@@ -1,4 +1,4 @@
-/* $Id: DBGFAll.cpp 80253 2019-08-13 15:49:33Z vboxsync $ */
+/* $Id: DBGFAll.cpp 80268 2019-08-14 11:25:13Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, All Context Code.
  */
@@ -23,7 +23,7 @@
 #define LOG_GROUP LOG_GROUP_DBGF
 #include <VBox/vmm/dbgf.h>
 #include "DBGFInternal.h"
-#include <VBox/vmm/vm.h>
+#include <VBox/vmm/vmcc.h>
 #include <VBox/err.h>
 #include <iprt/assert.h>
 #include <iprt/asm.h>

@@ -1,4 +1,4 @@
-/* $Id: REMAll.cpp 80161 2019-08-06 18:10:51Z vboxsync $ */
+/* $Id: REMAll.cpp 80268 2019-08-14 11:25:13Z vboxsync $ */
 /** @file
  * REM - Recompiled Execution Monitor, all Contexts part.
  */
@@ -19,6 +19,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#define VBOX_BUGREF_9217_PART_I
 #define LOG_GROUP LOG_GROUP_REM
 #ifdef VBOX_WITH_REM
 # include <VBox/vmm/rem.h>
@@ -26,7 +27,7 @@
 #include <VBox/vmm/em.h>
 #include <VBox/vmm/vmm.h>
 #include "REMInternal.h"
-#include <VBox/vmm/vm.h>
+#include <VBox/vmm/vmcc.h>
 #include <iprt/errcore.h>
 #include <VBox/log.h>
 

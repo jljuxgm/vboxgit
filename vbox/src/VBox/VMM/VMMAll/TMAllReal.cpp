@@ -1,4 +1,4 @@
-/* $Id: TMAllReal.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: TMAllReal.cpp 80268 2019-08-14 11:25:13Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, Real Time, All Contexts.
  */
@@ -19,10 +19,11 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#define VBOX_BUGREF_9217_PART_I
 #define LOG_GROUP LOG_GROUP_TM
 #include <VBox/vmm/tm.h>
 #include "TMInternal.h"
-#include <VBox/vmm/vm.h>
+#include <VBox/vmm/vmcc.h>
 #include <iprt/time.h>
 
 

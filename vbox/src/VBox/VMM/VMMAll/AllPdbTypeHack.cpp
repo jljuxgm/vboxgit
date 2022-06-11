@@ -1,4 +1,4 @@
-/* $Id: AllPdbTypeHack.cpp 80161 2019-08-06 18:10:51Z vboxsync $ */
+/* $Id: AllPdbTypeHack.cpp 80268 2019-08-14 11:25:13Z vboxsync $ */
 /** @file
  * Debug info hack for the VM and VMCPU structures.
  */
@@ -54,7 +54,7 @@
 #include "../include/REMInternal.h"
 #include "../VMMR0/GMMR0Internal.h"
 #include "../VMMR0/GVMMR0Internal.h"
-#include <VBox/vmm/vm.h>
+#include <VBox/vmm/vmcc.h>
 #ifdef IN_RING3
 # include <VBox/vmm/uvm.h>
 #endif

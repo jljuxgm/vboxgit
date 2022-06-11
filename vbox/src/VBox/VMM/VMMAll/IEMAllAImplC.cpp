@@ -1,4 +1,4 @@
-/* $Id: IEMAllAImplC.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: IEMAllAImplC.cpp 80268 2019-08-14 11:25:13Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in Assembly, portable C variant.
  */
@@ -19,8 +19,9 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#define VBOX_BUGREF_9217_PART_I
 #include "IEMInternal.h"
-#include <VBox/vmm/vm.h>
+#include <VBox/vmm/vmcc.h>
 #include <VBox/err.h>
 #include <iprt/x86.h>
 #include <iprt/uint128.h>

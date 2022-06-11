@@ -1,4 +1,4 @@
-/* $Id: VBoxREMWrapper.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxREMWrapper.cpp 80268 2019-08-14 11:25:13Z vboxsync $ */
 /** @file
  *
  * VBoxREM Win64 DLL Wrapper.
@@ -1299,8 +1299,8 @@ static REMFNDESC g_aVMMImports[] =
     { "TMCpuTickGet",                           VMM_FN(TMCpuTickGet),                   &g_aArgsVMCPU[0],                           RT_ELEMENTS(g_aArgsVMCPU),                             REMFNDESC_FLAGS_RET_INT,    sizeof(uint64_t),   NULL },
     { "TMR3NotifySuspend",                      VMM_FN(TMR3NotifySuspend),              &g_aArgsVMandVMCPU[0],                      RT_ELEMENTS(g_aArgsVMandVMCPU),                        REMFNDESC_FLAGS_RET_INT,    sizeof(int),        NULL },
     { "TMR3NotifyResume",                       VMM_FN(TMR3NotifyResume),               &g_aArgsVMandVMCPU[0],                      RT_ELEMENTS(g_aArgsVMandVMCPU),                        REMFNDESC_FLAGS_RET_INT,    sizeof(int),        NULL },
-    { "TMNotifyEndOfExecution",                 VMM_FN(TMNotifyEndOfExecution),         &g_aArgsVMCPU[0],                           RT_ELEMENTS(g_aArgsVMCPU),                             REMFNDESC_FLAGS_RET_VOID,   0,                  NULL },
-    { "TMNotifyStartOfExecution",               VMM_FN(TMNotifyStartOfExecution),       &g_aArgsVMCPU[0],                           RT_ELEMENTS(g_aArgsVMCPU),                             REMFNDESC_FLAGS_RET_VOID,   0,                  NULL },
+    { "TMNotifyEndOfExecution",                 VMM_FN(TMNotifyEndOfExecution),         &g_aArgsVMandVMCPU[0],                           RT_ELEMENTS(g_aArgsVMCPU),                             REMFNDESC_FLAGS_RET_VOID,   0,                  NULL },
+    { "TMNotifyStartOfExecution",               VMM_FN(TMNotifyStartOfExecution),       &g_aArgsVMandVMCPU[0],                           RT_ELEMENTS(g_aArgsVMCPU),                             REMFNDESC_FLAGS_RET_VOID,   0,                  NULL },
     { "TMTimerPollBool",                        VMM_FN(TMTimerPollBool),                &g_aArgsVMandVMCPU[0],                      RT_ELEMENTS(g_aArgsVMandVMCPU),                        REMFNDESC_FLAGS_RET_VOID,   0,                  NULL },
     { "TMR3TimerQueuesDo",                      VMM_FN(TMR3TimerQueuesDo),              &g_aArgsVM[0],                              RT_ELEMENTS(g_aArgsVM),                                REMFNDESC_FLAGS_RET_VOID,   0,                  NULL },
     { "TRPMAssertTrap",                         VMM_FN(TRPMAssertTrap),                 &g_aArgsTRPMAssertTrap[0],                  RT_ELEMENTS(g_aArgsTRPMAssertTrap),                    REMFNDESC_FLAGS_RET_INT,    sizeof(int),        NULL },
