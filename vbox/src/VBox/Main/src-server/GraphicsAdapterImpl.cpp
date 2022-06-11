@@ -1,4 +1,4 @@
-/* $Id: GraphicsAdapterImpl.cpp 81971 2019-11-18 21:35:57Z vboxsync $ */
+/* $Id: GraphicsAdapterImpl.cpp 82007 2019-11-19 19:46:36Z vboxsync $ */
 /** @file
  * Implementation of IGraphicsAdapter in VBoxSVC.
  */
@@ -247,11 +247,11 @@ HRESULT GraphicsAdapter::getAccelerate3DEnabled(BOOL *aAccelerate3DEnabled)
 
 HRESULT GraphicsAdapter::setAccelerate3DEnabled(BOOL aAccelerate3DEnabled)
 {
-    AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
-
     /* the machine needs to be mutable */
     AutoMutableStateDependency adep(mParent);
     if (FAILED(adep.rc())) return adep.rc();
+
+    AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
     /** @todo check validity! */
 
@@ -279,11 +279,11 @@ HRESULT GraphicsAdapter::getAccelerate2DVideoEnabled(BOOL *aAccelerate2DVideoEna
 
 HRESULT GraphicsAdapter::setAccelerate2DVideoEnabled(BOOL aAccelerate2DVideoEnabled)
 {
-    AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
-
     /* the machine needs to be mutable */
     AutoMutableStateDependency adep(mParent);
     if (FAILED(adep.rc())) return adep.rc();
+
+    AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
     /** @todo check validity! */
 
@@ -311,11 +311,11 @@ HRESULT GraphicsAdapter::setMonitorCount(ULONG aMonitorCount)
                         tr("Invalid monitor count: %lu (must be in range [%lu, %lu])"),
                         aMonitorCount, 1, SchemaDefs::MaxGuestMonitors);
 
-    AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
-
     /* the machine needs to be mutable */
     AutoMutableStateDependency adep(mParent);
     if (FAILED(adep.rc())) return adep.rc();
+
+    AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
     mParent->i_setModified(Machine::IsModified_GraphicsAdapter);
     mData.backup();
