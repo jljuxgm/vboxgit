@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.cpp 83439 2020-03-26 14:12:18Z vboxsync $ */
+/* $Id: UIToolsModel.cpp 83895 2020-04-21 15:01:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class implementation.
  */
@@ -285,14 +285,6 @@ void UIToolsModel::setFocusItem(UIToolsItem *pItem)
 UIToolsItem *UIToolsModel::focusItem() const
 {
     return m_pFocusItem;
-}
-
-void UIToolsModel::makeSureSomeItemIsSelected()
-{
-    /* Make sure selection item list is never empty
-     * if at least one item (for example 'focus') present: */
-    if (!currentItem() && focusItem())
-        setCurrentItem(focusItem());
 }
 
 const QList<UIToolsItem*> &UIToolsModel::navigationList() const

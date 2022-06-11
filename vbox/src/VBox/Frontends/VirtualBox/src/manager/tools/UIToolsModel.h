@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.h 83023 2020-02-07 17:06:29Z vboxsync $ */
+/* $Id: UIToolsModel.h 83895 2020-04-21 15:01:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class declaration.
  */
@@ -149,9 +149,6 @@ public:
         void setFocusItem(UIToolsItem *pItem);
         /** Returns focus item. */
         UIToolsItem *focusItem() const;
-
-        /** Makes sure some item is selected. */
-        void makeSureSomeItemIsSelected();
     /** @} */
 
     /** @name Navigation stuff.
