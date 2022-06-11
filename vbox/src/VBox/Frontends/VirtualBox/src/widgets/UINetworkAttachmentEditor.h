@@ -1,4 +1,4 @@
-/* $Id: UINetworkAttachmentEditor.h 80213 2019-08-09 13:12:48Z vboxsync $ */
+/* $Id: UINetworkAttachmentEditor.h 81422 2019-10-21 18:04:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkAttachmentEditor class declaration.
  */
@@ -84,6 +84,10 @@ public:
     static QStringList genericDrivers();
     /** Returns NAT network list. */
     static QStringList natNetworks();
+#ifdef VBOX_WITH_CLOUD_NET
+    /** Returns cloud network list. */
+    static QStringList cloudNetworks();
+#endif /* VBOX_WITH_CLOUD_NET */
 
 protected:
 

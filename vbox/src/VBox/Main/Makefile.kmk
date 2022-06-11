@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 80849 2019-09-17 09:46:51Z vboxsync $
+# $Id: Makefile.kmk 81422 2019-10-21 18:04:10Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -117,6 +117,9 @@ VBOX_MAIN_DEFS += VBOX_WITH_MIDL_PROXY_STUB
 endif
 ifdef VBOX_WITH_NETFLT
 VBOX_MAIN_DEFS += VBOX_WITH_NETFLT
+endif
+ifdef VBOX_WITH_CLOUD_NET
+VBOX_MAIN_DEFS += VBOX_WITH_CLOUD_NET
 endif
 ifdef VBOX_WITH_PCI_PASSTHROUGH
 VBOX_MAIN_DEFS += VBOX_WITH_PCI_PASSTHROUGH
@@ -555,6 +558,10 @@ VBoxSVC_SOURCES = \
 	../NetworkServices/Dhcpd/DhcpOptions.cpp \
 	src-server/NetworkServiceRunner.cpp \
 	src-server/NATNetworkImpl.cpp \
+	$(if $(VBOX_WITH_CLOUD_NET), \
+	src-server/CloudGateway.cpp \
+	src-server/CloudNetworkImpl.cpp \
+	,) \
 	src-server/GuestOSTypeImpl.cpp \
 	src-server/HostDnsService.cpp \
 	src-server/HostImpl.cpp \

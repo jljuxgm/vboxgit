@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 78923 2019-06-03 09:09:54Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 81422 2019-10-21 18:04:10Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -328,6 +328,7 @@ Utf8Str convertNetworkAttachmentTypeToString(NetworkAttachmentType_T type)
         case NetworkAttachmentType_Generic: strType = "Generic"; break;
         case NetworkAttachmentType_NATNetwork: strType = "NATNetwork"; break;
         case NetworkAttachmentType_Null: strType = "Null"; break;
+        case NetworkAttachmentType_Cloud: strType = "Cloud"; break;
 #ifdef VBOX_WITH_XPCOM_CPP_ENUM_HACK
         case NetworkAttachmentType_32BitHack: AssertFailedBreak(); /* (compiler warnings) */
 #endif

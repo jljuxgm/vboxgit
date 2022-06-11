@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.h 76562 2019-01-01 03:22:50Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.h 81422 2019-10-21 18:04:10Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -84,6 +84,8 @@ private:
     HRESULT setNATNetwork(const com::Utf8Str &aNATNetwork);
     HRESULT getGenericDriver(com::Utf8Str &aGenericDriver);
     HRESULT setGenericDriver(const com::Utf8Str &aGenericDriver);
+    HRESULT getCloudNetwork(com::Utf8Str &aCloudNetwork);
+    HRESULT setCloudNetwork(const com::Utf8Str &aCloudNetwork);
     HRESULT getCableConnected(BOOL *aCableConnected);
     HRESULT setCableConnected(BOOL aCableConnected);
     HRESULT getLineSpeed(ULONG *aLineSpeed);

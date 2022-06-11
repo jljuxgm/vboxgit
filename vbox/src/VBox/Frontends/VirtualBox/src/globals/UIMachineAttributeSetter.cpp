@@ -1,4 +1,4 @@
-/* $Id: UIMachineAttributeSetter.cpp 80215 2019-08-09 17:08:08Z vboxsync $ */
+/* $Id: UIMachineAttributeSetter.cpp 81422 2019-10-21 18:04:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineAttributeSetter namespace implementation.
  */
@@ -243,6 +243,9 @@ void UIMachineAttributeSetter::setMachineAttribute(const CMachine &comConstMachi
                     case KNetworkAttachmentType_HostOnly: comAdapter.SetHostOnlyInterface(nad.m_strName); break;
                     case KNetworkAttachmentType_Generic: comAdapter.SetGenericDriver(nad.m_strName); break;
                     case KNetworkAttachmentType_NATNetwork: comAdapter.SetNATNetwork(nad.m_strName); break;
+#ifdef VBOX_WITH_CLOUD_NET
+                    case KNetworkAttachmentType_Cloud: comAdapter.SetCloudNetwork(nad.m_strName); break;
+#endif /* VBOX_WITH_CLOUD_NET */
                     default: break;
                 }
                 if (!comAdapter.isOk())
