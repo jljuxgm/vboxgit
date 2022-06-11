@@ -1,4 +1,4 @@
-/* $Id: PDMDevice.cpp 80704 2019-09-10 15:19:39Z vboxsync $ */
+/* $Id: PDMDevice.cpp 80706 2019-09-10 15:47:03Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device parts.
  */
@@ -349,6 +349,8 @@ int pdmR3DevInit(PVM pVM)
             Req.cbInstanceShared = pReg->cbInstanceShared;
             Req.cbInstanceR3     = pReg->cbInstanceCC;
             Req.cbInstanceRC     = pReg->cbInstanceRC;
+            Req.cMaxPciDevices   = pReg->cMaxPciDevices;
+            Req.cMaxMsixVectors  = pReg->cMaxMsixVectors;
             Req.iInstance        = paDevs[i].iInstance;
             Req.fRCEnabled       = fRCEnabled;
             Req.afReserved[0]    = false;
