@@ -1,4 +1,4 @@
-/* $Id: GraphicsAdapterImpl.cpp 81970 2019-11-18 21:04:30Z vboxsync $ */
+/* $Id: GraphicsAdapterImpl.cpp 81971 2019-11-18 21:35:57Z vboxsync $ */
 /** @file
  * Implementation of IGraphicsAdapter in VBoxSVC.
  */
@@ -199,7 +199,7 @@ HRESULT GraphicsAdapter::setGraphicsControllerType(GraphicsControllerType_T aGra
 
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
-    mParent->i_setModified(Machine::IsModified_MachineData);
+    mParent->i_setModified(Machine::IsModified_GraphicsAdapter);
     mData.backup();
     mData->graphicsControllerType = aGraphicsControllerType;
 
@@ -229,7 +229,7 @@ HRESULT GraphicsAdapter::setVRAMSize(ULONG aVRAMSize)
 
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
-    mParent->i_setModified(Machine::IsModified_MachineData);
+    mParent->i_setModified(Machine::IsModified_GraphicsAdapter);
     mData.backup();
     mData->ulVRAMSizeMB = aVRAMSize;
 
@@ -255,7 +255,7 @@ HRESULT GraphicsAdapter::setAccelerate3DEnabled(BOOL aAccelerate3DEnabled)
 
     /** @todo check validity! */
 
-    mParent->i_setModified(Machine::IsModified_MachineData);
+    mParent->i_setModified(Machine::IsModified_GraphicsAdapter);
     mData.backup();
     mData->fAccelerate3D = !!aAccelerate3DEnabled;
 
@@ -287,7 +287,7 @@ HRESULT GraphicsAdapter::setAccelerate2DVideoEnabled(BOOL aAccelerate2DVideoEnab
 
     /** @todo check validity! */
 
-    mParent->i_setModified(Machine::IsModified_MachineData);
+    mParent->i_setModified(Machine::IsModified_GraphicsAdapter);
     mData.backup();
     mData->fAccelerate2DVideo = !!aAccelerate2DVideoEnabled;
 
@@ -317,7 +317,7 @@ HRESULT GraphicsAdapter::setMonitorCount(ULONG aMonitorCount)
     AutoMutableStateDependency adep(mParent);
     if (FAILED(adep.rc())) return adep.rc();
 
-    mParent->i_setModified(Machine::IsModified_MachineData);
+    mParent->i_setModified(Machine::IsModified_GraphicsAdapter);
     mData.backup();
     mData->cMonitors = aMonitorCount;
 
