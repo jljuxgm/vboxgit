@@ -1,4 +1,4 @@
-/* $Id: x509-core.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: x509-core.cpp 84248 2020-05-11 11:46:40Z vboxsync $ */
 /** @file
  * IPRT - Crypto - X.509, Core APIs.
  */
@@ -171,6 +171,16 @@ RTDECL(int) RTCrX509AlgorithmIdentifier_CompareDigestOidAndEncryptedDigestOid(co
         if (!strcmp(pszEncryptedDigestOid, RTCRX509ALGORITHMIDENTIFIERID_SHA224_WITH_RSA))
             return 0;
     }
+    else if (!strcmp(pszDigestOid, RTCRX509ALGORITHMIDENTIFIERID_SHA512T224))
+    {
+        if (!strcmp(pszEncryptedDigestOid, RTCRX509ALGORITHMIDENTIFIERID_SHA512T224_WITH_RSA))
+            return 0;
+    }
+    else if (!strcmp(pszDigestOid, RTCRX509ALGORITHMIDENTIFIERID_SHA512T256))
+    {
+        if (!strcmp(pszEncryptedDigestOid, RTCRX509ALGORITHMIDENTIFIERID_SHA512T256_WITH_RSA))
+            return 0;
+    }
     else if (!strcmp(pszDigestOid, RTCRX509ALGORITHMIDENTIFIERID_WHIRLPOOL))
     {
         /* ?? */
@@ -218,6 +228,12 @@ RTDECL(const char *) RTCrX509AlgorithmIdentifier_CombineEncryptionOidAndDigestOi
         if (   !strcmp(pszDigestOid, RTCRX509ALGORITHMIDENTIFIERID_SHA224)
             || !strcmp(pszDigestOid, RTCRX509ALGORITHMIDENTIFIERID_SHA224_WITH_RSA))
             return RTCRX509ALGORITHMIDENTIFIERID_SHA224_WITH_RSA;
+        if (   !strcmp(pszDigestOid, RTCRX509ALGORITHMIDENTIFIERID_SHA512T224)
+            || !strcmp(pszDigestOid, RTCRX509ALGORITHMIDENTIFIERID_SHA512T224_WITH_RSA))
+            return RTCRX509ALGORITHMIDENTIFIERID_SHA512T224_WITH_RSA;
+        if (   !strcmp(pszDigestOid, RTCRX509ALGORITHMIDENTIFIERID_SHA512T256)
+            || !strcmp(pszDigestOid, RTCRX509ALGORITHMIDENTIFIERID_SHA512T256_WITH_RSA))
+            return RTCRX509ALGORITHMIDENTIFIERID_SHA512T256_WITH_RSA;
 
         /* if (!strcmp(pszDigestOid, RTCRX509ALGORITHMIDENTIFIERID_WHIRLPOOL))
             return ???; */
