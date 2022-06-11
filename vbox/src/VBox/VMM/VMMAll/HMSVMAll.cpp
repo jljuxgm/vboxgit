@@ -1,4 +1,4 @@
-/* $Id: HMSVMAll.cpp 80333 2019-08-16 20:28:38Z vboxsync $ */
+/* $Id: HMSVMAll.cpp 81176 2019-10-09 10:25:19Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - All contexts.
  */
@@ -180,7 +180,7 @@ VMM_INT_DECL(void) HMNotifySvmNstGstVmexit(PVMCPUCC pVCpu, PCPUMCTX pCtx)
  * @remarks This value returned by this functions is expected by the callers not
  *          to change throughout the lifetime of the VM.
  */
-VMM_INT_DECL(bool) HMIsSvmVGifActive(PVM pVM)
+VMM_INT_DECL(bool) HMIsSvmVGifActive(PCVM pVM)
 {
     bool const fVGif    = RT_BOOL(pVM->hm.s.svm.u32Features & X86_CPUID_SVM_FEATURE_EDX_VGIF);
     bool const fUseVGif = fVGif && pVM->hm.s.svm.fVGif;
