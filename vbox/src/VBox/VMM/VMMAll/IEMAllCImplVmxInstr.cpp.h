@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 80259 2019-08-14 04:54:57Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 80263 2019-08-14 05:23:40Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -6074,9 +6074,11 @@ IEM_STATIC int iemVmxVmentryCheckEntryCtls(PVMCPU pVCpu, const char *pszInstr)
                 else
                     IEM_VMX_VMENTRY_FAILED_RET(pVCpu, pszInstr, pszFailure, kVmxVDiag_Vmentry_EntryInstrLen);
 
-                /* Instruction length of 0 is allowed only when its CPU feature is present. */
-                if (   pVmcs->u32EntryInstrLen == 0
-                    && !IEM_GET_GUEST_CPU_FEATURES(pVCpu)->fVmxEntryInjectSoftInt)
+                /* However, instruction length of 0 is allowed only when its CPU feature is present. */
+                if (   pVmcs->u32EntryInstrLen != 0
+                    || IEM_GET_GUEST_CPU_FEATURES(pVCpu)->fVmxEntryInjectSoftInt)
+                { /* likely */ }
+                else
                     IEM_VMX_VMENTRY_FAILED_RET(pVCpu, pszInstr, pszFailure, kVmxVDiag_Vmentry_EntryInstrLenZero);
             }
         }
