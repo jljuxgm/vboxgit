@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 84174 2020-05-06 19:41:19Z vboxsync $
+# $Id: tdAddBasic1.py 84178 2020-05-07 06:48:31Z vboxsync $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84174 $"
+__version__ = "$Revision: 84178 $"
 
 # Standard Python imports.
 import os;
@@ -304,21 +304,19 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
                 reporter.errorXcpt('Getting IGuest failed.');
                 return (False, oTxsSession);
 
-            #
-            # Wait for the GAs to come up.
-            #
-            fRc = self.waitForGuestAdditionsRunLevel(oSession, oGuest, 5 * 60 * 1000, vboxcon.AdditionsRunLevelType_Userland);
-            if not fRc:
-                return (False, oTxsSession);
-
             # Check the additionsVersion attribute. It must not be empty.
             reporter.testStart('IGuest::additionsVersion');
             fRc = self.testIGuest_additionsVersion(oGuest);
             reporter.testDone();
+            if not fRc:
+                return (False, oTxsSession);
 
+            # Wait for the GAs to come up.
             reporter.testStart('IGuest::additionsRunLevel');
-            self.testIGuest_additionsRunLevel(oGuest, oTestVm);
+            fRc = self.testIGuest_additionsRunLevel(oSession, oTestVm, oGuest);
             reporter.testDone();
+            if not fRc:
+                return (False, oTxsSession);
 
             ## @todo test IAdditionsFacilities.
 
@@ -496,7 +494,7 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
         ## @todo verify the format.
         return True;
 
-    def testIGuest_additionsRunLevel(self, oGuest, oTestVm):
+    def testIGuest_additionsRunLevel(self, oSession, oTestVm, oGuest):
         """
         Do run level tests.
         """
@@ -505,19 +503,7 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
         else:
             eExpectedRunLevel = vboxcon.AdditionsRunLevelType_Userland;
 
-        ## @todo Insert wait for the desired run level.
-        try:
-            iLevel = oGuest.additionsRunLevel;
-        except:
-            reporter.errorXcpt('Getting the additions run level failed.');
-            return False;
-        reporter.log('IGuest::additionsRunLevel=%s' % (iLevel,));
-
-        if iLevel != eExpectedRunLevel:
-            pass; ## @todo We really need that wait!!
-            #reporter.error('Expected runlevel %d, found %d instead' % (eExpectedRunLevel, iLevel));
-        return True;
-
+        return self.waitForGuestAdditionsRunLevel(oSession, oGuest, 5 * 60 * 1000, eExpectedRunLevel);
 
     def testGuestProperties(self, oSession, oTxsSession, oTestVm):
         """
