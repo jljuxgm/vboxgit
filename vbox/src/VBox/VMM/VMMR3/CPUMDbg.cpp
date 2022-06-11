@@ -1,4 +1,4 @@
-/* $Id: CPUMDbg.cpp 80050 2019-07-29 20:04:35Z vboxsync $ */
+/* $Id: CPUMDbg.cpp 80051 2019-07-29 20:10:07Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager, Debugger & Debugging APIs.
  */
@@ -305,6 +305,7 @@ static DECLCALLBACK(int) cpumR3RegSet_ftw(void *pvUser, PCDBGFREGDESC pDesc, PCD
     return VERR_DBGF_READ_ONLY_REGISTER;
 }
 
+#if 0 /* unused */
 
 /**
  * @interface_method_impl{DBGFREGDESC,pfnGet}
@@ -343,6 +344,7 @@ static DECLCALLBACK(int) cpumR3RegSet_Dummy(void *pvUser, PCDBGFREGDESC pDesc, P
     return VERR_DBGF_READ_ONLY_REGISTER;
 }
 
+#endif /* unused */
 
 /**
  * @interface_method_impl{DBGFREGDESC,pfnGet}
