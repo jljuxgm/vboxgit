@@ -1,4 +1,4 @@
-/* $Id: clipboard-transfers.cpp 82478 2019-12-06 23:57:37Z vboxsync $ */
+/* $Id: clipboard-transfers.cpp 82527 2019-12-10 01:46:40Z vboxsync $ */
 /** @file
  * Shared Clipboard: Common Shared Clipboard transfer handling code.
  */
@@ -1189,7 +1189,7 @@ int ShClTransferCreate(PSHCLTRANSFER *ppTransfer)
 
     RTListInit(&pTransfer->Events.lstEvents);
     pTransfer->Events.uID          = 0;
-    pTransfer->Events.uEventIDNext = 1;
+    pTransfer->Events.idNextEvent  = 1;
 
     if (RT_SUCCESS(rc))
     {
