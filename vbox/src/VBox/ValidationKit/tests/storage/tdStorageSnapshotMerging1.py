@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdStorageSnapshotMerging1.py 79470 2019-07-02 16:16:44Z vboxsync $
+# $Id: tdStorageSnapshotMerging1.py 79471 2019-07-02 16:26:28Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage snapshotting and merging testcase.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79470 $"
+__version__ = "$Revision: 79471 $"
 
 
 # Standard Python imports.
@@ -308,7 +308,8 @@ class tdStorageSnapshot(vbox.TestDriver):                                      #
         fRc = True;
         sFile = 't-base' + sExt;
         sHddPath = os.path.join(self.oVBox.oTstDrv.sScratchPath, sFile);
-        oHd = oSession.createBaseHd(sHddPath, sFmt=oDskFmt.id, cb=oOrigBaseHd.logicalSize, cMsTimeout = 15 * 60 * 1000); # 15 min
+        oHd = oSession.createBaseHd(sHddPath, sFmt=oDskFmt.id, cb=oOrigBaseHd.logicalSize,
+                                    cMsTimeout = 15 * 60 * 1000); # 15 min
         #if oSession.createBaseHd can't create disk because it exists, oHd will point to some stub object anyway
         fRc = fRc and oHd is not None and (oHd.logicalSize == oOrigBaseHd.logicalSize);
         fRc = fRc and self.cloneMedium(oOrigBaseHd, oHd);
