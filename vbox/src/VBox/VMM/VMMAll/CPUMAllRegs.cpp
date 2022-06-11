@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 79379 2019-06-27 08:08:39Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 80007 2019-07-26 13:57:38Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -21,7 +21,6 @@
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_CPUM
 #include <VBox/vmm/cpum.h>
-#include <VBox/vmm/patm.h>
 #include <VBox/vmm/dbgf.h>
 #include <VBox/vmm/apic.h>
 #include <VBox/vmm/pgm.h>

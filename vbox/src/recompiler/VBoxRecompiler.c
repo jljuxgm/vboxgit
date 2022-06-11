@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 77900 2019-03-27 08:16:23Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 80007 2019-07-26 13:57:38Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -53,8 +53,6 @@
 #include <VBox/dbg.h>
 #include <VBox/vmm/apic.h>
 #include <VBox/vmm/hm.h>
-#include <VBox/vmm/patm.h>
-#include <VBox/vmm/csam.h>
 #include "REMInternal.h"
 #include <VBox/vmm/vm.h>
 #include <VBox/vmm/uvm.h>

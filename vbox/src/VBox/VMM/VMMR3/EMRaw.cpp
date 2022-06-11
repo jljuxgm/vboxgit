@@ -1,4 +1,4 @@
-/* $Id: EMRaw.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: EMRaw.cpp 80007 2019-07-26 13:57:38Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager - software virtualization
  */
@@ -23,8 +23,6 @@
 #define VMCPU_INCL_CPUM_GST_CTX
 #include <VBox/vmm/em.h>
 #include <VBox/vmm/vmm.h>
-#include <VBox/vmm/patm.h>
-#include <VBox/vmm/csam.h>
 #include <VBox/vmm/selm.h>
 #include <VBox/vmm/trpm.h>
 #include <VBox/vmm/iem.h>

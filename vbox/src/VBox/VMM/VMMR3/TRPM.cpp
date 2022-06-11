@@ -1,4 +1,4 @@
-/* $Id: TRPM.cpp 79844 2019-07-17 17:56:00Z vboxsync $ */
+/* $Id: TRPM.cpp 80007 2019-07-26 13:57:38Z vboxsync $ */
 /** @file
  * TRPM - The Trap Monitor.
  */
@@ -84,8 +84,6 @@
 #include <VBox/vmm/dbgf.h>
 #include <VBox/vmm/mm.h>
 #include <VBox/vmm/stam.h>
-#include <VBox/vmm/csam.h>
-#include <VBox/vmm/patm.h>
 #include <VBox/vmm/iem.h>
 #include "TRPMInternal.h"
 #include <VBox/vmm/vm.h>

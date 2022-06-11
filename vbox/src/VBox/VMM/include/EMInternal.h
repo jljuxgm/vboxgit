@@ -1,4 +1,4 @@
-/* $Id: EMInternal.h 76585 2019-01-01 06:31:29Z vboxsync $ */
+/* $Id: EMInternal.h 80007 2019-07-26 13:57:38Z vboxsync $ */
 /** @file
  * EM - Internal header file.
  */
@@ -25,7 +25,6 @@
 #include <VBox/types.h>
 #include <VBox/vmm/em.h>
 #include <VBox/vmm/stam.h>
-#include <VBox/vmm/patm.h>
 #include <VBox/dis.h>
 #include <VBox/vmm/pdmcritsect.h>
 #include <iprt/avl.h>

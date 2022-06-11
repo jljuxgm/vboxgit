@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 78712 2019-05-24 08:34:13Z vboxsync $ */
+/* $Id: EMAll.cpp 80007 2019-07-26 13:57:38Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -23,7 +23,6 @@
 #include <VBox/vmm/em.h>
 #include <VBox/vmm/mm.h>
 #include <VBox/vmm/selm.h>
-#include <VBox/vmm/patm.h>
 #include <VBox/vmm/pgm.h>
 #include <VBox/vmm/iem.h>
 #include <VBox/vmm/iom.h>

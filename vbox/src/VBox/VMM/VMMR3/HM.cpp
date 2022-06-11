@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 79873 2019-07-19 09:07:21Z vboxsync $ */
+/* $Id: HM.cpp 80007 2019-07-26 13:57:38Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -50,8 +50,6 @@
 #include <VBox/vmm/dbgf.h>
 #include <VBox/vmm/iom.h>
 #include <VBox/vmm/iem.h>
-#include <VBox/vmm/patm.h>
-#include <VBox/vmm/csam.h>
 #include <VBox/vmm/selm.h>
 #include <VBox/vmm/nem.h>
 #ifdef VBOX_WITH_REM

@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 76993 2019-01-25 14:34:46Z vboxsync $ */
+/* $Id: PGMAll.cpp 80007 2019-07-26 13:57:38Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -28,8 +28,6 @@
 #include <VBox/sup.h>
 #include <VBox/vmm/mm.h>
 #include <VBox/vmm/stam.h>
-#include <VBox/vmm/csam.h>
-#include <VBox/vmm/patm.h>
 #include <VBox/vmm/trpm.h>
 #ifdef VBOX_WITH_REM
 # include <VBox/vmm/rem.h>

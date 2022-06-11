@@ -1,4 +1,4 @@
-/* $Id: DBGFDisas.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: DBGFDisas.cpp 80007 2019-07-26 13:57:38Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Disassembler.
  */
@@ -26,9 +26,6 @@
 #include <VBox/vmm/hm.h>
 #include <VBox/vmm/pgm.h>
 #include <VBox/vmm/cpum.h>
-#ifdef VBOX_WITH_RAW_MODE
-# include <VBox/vmm/patm.h>
-#endif
 #include "DBGFInternal.h"
 #include <VBox/dis.h>
 #include <VBox/err.h>
