@@ -1,4 +1,4 @@
-/* $Id: UIAddDiskEncryptionPasswordDialog.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
+/* $Id: UIAddDiskEncryptionPasswordDialog.cpp 79798 2019-07-15 18:56:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIAddDiskEncryptionPasswordDialog class implementation.
  */
@@ -214,6 +214,9 @@ void UIPasswordEditor::keyPressEvent(QKeyEvent *pEvent)
 
 void UIPasswordEditor::prepare()
 {
+    /* Make sure QIStyledDelegate aware of us: */
+    setProperty("has_sigCommitData", true);
+    setProperty("has_sigEnterKeyTriggered", true);
     /* Set echo mode: */
     setEchoMode(QLineEdit::Password);
     /* Listen for the text changes: */

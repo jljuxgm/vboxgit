@@ -1,4 +1,4 @@
-/* $Id: QIStyledItemDelegate.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: QIStyledItemDelegate.cpp 79798 2019-07-15 18:56:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIStyledItemDelegate class implementation.
  */
@@ -44,11 +44,13 @@ QWidget *QIStyledItemDelegate::createEditor(QWidget *pParent,
     QWidget *pEditor = QStyledItemDelegate::createEditor(pParent, option, index);
 
     /* Watch for editor data commits, redirect to listeners: */
-    if (m_fWatchForEditorDataCommits)
+    if (   m_fWatchForEditorDataCommits
+        && pEditor->property("has_sigCommitData").toBool())
         connect(pEditor, SIGNAL(sigCommitData(QWidget *)), this, SIGNAL(commitData(QWidget *)));
 
     /* Watch for editor Enter key triggering, redirect to listeners: */
-    if (m_fWatchForEditorEnterKeyTriggering)
+    if (   m_fWatchForEditorEnterKeyTriggering
+        && pEditor->property("has_sigEnterKeyTriggered").toBool())
         connect(pEditor, SIGNAL(sigEnterKeyTriggered()), this, SIGNAL(sigEditorEnterKeyTriggered()));
 
     /* Notify listeners about editor created: */

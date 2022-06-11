@@ -1,4 +1,4 @@
-/* $Id: UIHotKeyEditor.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIHotKeyEditor.cpp 79798 2019-07-15 18:56:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHotKeyEditor class implementation.
  */
@@ -126,6 +126,8 @@ UIHotKeyEditor::UIHotKeyEditor(QWidget *pParent)
     , m_iTakenKey(-1)
     , m_fSequenceTaken(false)
 {
+    /* Make sure QIStyledDelegate aware of us: */
+    setProperty("has_sigCommitData", true);
     /* Configure self: */
     setAutoFillBackground(true);
     setFocusProxy(m_pLineEdit);
