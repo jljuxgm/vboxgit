@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGenerator.h 77465 2019-02-26 08:16:05Z vboxsync $ */
+/* $Id: UIDetailsGenerator.h 80100 2019-08-01 12:42:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsGenerator declaration.
  */
@@ -62,8 +62,8 @@ namespace UIDetailsGenerator
     SHARED_LIBRARY_STUFF UITextTable generateMachineInformationUI(CMachine &comMachine,
                                                                   const UIExtraDataMetaDefs::DetailsElementOptionTypeUserInterface &fOptions);
 
-    SHARED_LIBRARY_STUFF UITextTable generateMachineInformationDetails(CMachine &comMachine,
-                                                                       const UIExtraDataMetaDefs::DetailsElementOptionTypeDescription &fOptions);
+    SHARED_LIBRARY_STUFF UITextTable generateMachineInformationDescription(CMachine &comMachine,
+                                                                           const UIExtraDataMetaDefs::DetailsElementOptionTypeDescription &fOptions);
 }
 
 #endif /* !FEQT_INCLUDED_SRC_globals_UIDetailsGenerator_h */

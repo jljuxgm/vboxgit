@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElements.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
+/* $Id: UIDetailsElements.cpp 80100 2019-08-01 12:42:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement[Name] classes implementation.
  */
@@ -406,7 +406,7 @@ void UIDetailsUpdateTaskDescription::run()
         return;
 
     /* Generate details table: */
-    UITextTable table = UIDetailsGenerator::generateMachineInformationDetails(comMachine, m_fOptions);
+    UITextTable table = UIDetailsGenerator::generateMachineInformationDescription(comMachine, m_fOptions);
     setProperty("table", QVariant::fromValue(table));
 }
 
