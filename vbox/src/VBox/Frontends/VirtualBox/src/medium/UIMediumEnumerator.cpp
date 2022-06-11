@@ -1,4 +1,4 @@
-/* $Id: UIMediumEnumerator.cpp 79337 2019-06-25 17:49:15Z vboxsync $ */
+/* $Id: UIMediumEnumerator.cpp 79348 2019-06-26 09:16:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumEnumerator class implementation.
  */
@@ -499,10 +499,13 @@ void UIMediumEnumerator::sltHandleMediumRegistered(const QUuid &uMediumId, KDevi
         /* Make sure this medium is still cached: */
         if (medium(uMediumId).isNull())
         {
+            /* This medium can be wiped out already because of async event nature. Currently
+             * medium unregistration event comes very late and other even unrealted events
+             * can come before it and request for this particular medium enumeration. If medium
+             * enumeration is performed fast enough (before medium unregistration event comes),
+             * medium will be wiped out already, so we just ignore it. */
             LogRel2(("GUI: UIMediumEnumerator:  Medium {%s} was not currently cached!\n",
                      uMediumId.toString().toUtf8().constData()));
-            /// @todo is this a valid case?
-            AssertFailed();
         }
         else
         {
