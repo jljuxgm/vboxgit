@@ -1,4 +1,4 @@
-/* $Id: VBoxFBOverlay.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: VBoxFBOverlay.h 78967 2019-06-04 14:39:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxFrameBuffer Overly classes declarations.
  */
@@ -56,10 +56,6 @@
 #ifdef VBOXVHWA_PROFILE_FPS
 # include <iprt/stream.h>
 #endif /* VBOXVHWA_PROFILE_FPS */
-
-#ifndef S_FALSE
-# define S_FALSE ((HRESULT)1L)
-#endif
 
 #ifdef DEBUG_misha
 # define VBOXVHWA_PROFILE_FPS

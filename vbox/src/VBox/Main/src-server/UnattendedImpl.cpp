@@ -1,4 +1,4 @@
-/* $Id: UnattendedImpl.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UnattendedImpl.cpp 78967 2019-06-04 14:39:36Z vboxsync $ */
 /** @file
  * Unattended class implementation
  */
@@ -39,11 +39,6 @@
 #include <iprt/path.h>
 
 using namespace std;
-
-/* XPCOM doesn't define S_FALSE. */
-#ifndef S_FALSE
-# define S_FALSE ((HRESULT)1)
-#endif
 
 
 /*********************************************************************************************************************************
