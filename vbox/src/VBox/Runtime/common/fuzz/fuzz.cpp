@@ -1,4 +1,4 @@
-/* $Id: fuzz.cpp 77758 2019-03-18 13:17:30Z vboxsync $ */
+/* $Id: fuzz.cpp 80585 2019-09-04 14:05:50Z vboxsync $ */
 /** @file
  * IPRT - Fuzzing framework API, core.
  */
@@ -1834,7 +1834,7 @@ RTDECL(int) RTFuzzCtxCorpusInputAddFromVfsFile(RTFUZZCTX hFuzzCtx, RTVFSFILE hVf
 
     uint64_t cbFile = 0;
     void *pvCorpus = NULL;
-    int rc = RTVfsFileGetSize(hVfsFile, &cbFile);
+    int rc = RTVfsFileQuerySize(hVfsFile, &cbFile);
     if (RT_SUCCESS(rc))
     {
         PRTFUZZMUTATION pMutation = rtFuzzMutationCreate(pThis, 0, NULL, cbFile, &pvCorpus);

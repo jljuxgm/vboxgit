@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFile.cpp 80333 2019-08-16 20:28:38Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFile.cpp 80585 2019-09-04 14:05:50Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -949,7 +949,7 @@ static DECLCALLBACK(int) pdmacFileEpInitialize(PPDMASYNCCOMPLETIONENDPOINT pEndp
         {
             uint64_t cbSize;
 
-            rc = RTFileGetSize(hFile, &cbSize);
+            rc = RTFileQuerySize(hFile, &cbSize);
 
             if (RT_SUCCESS(rc) && ((cbSize % 512) == 0))
                 fFileFlags |= RTFILE_O_NO_CACHE;
@@ -1007,7 +1007,7 @@ static DECLCALLBACK(int) pdmacFileEpInitialize(PPDMASYNCCOMPLETIONENDPOINT pEndp
     {
         pEpFile->fFlags = fFileFlags;
 
-        rc = RTFileGetSize(pEpFile->hFile, (uint64_t *)&pEpFile->cbFile);
+        rc = RTFileQuerySize(pEpFile->hFile, (uint64_t *)&pEpFile->cbFile);
         if (RT_SUCCESS(rc))
         {
             /* Initialize the segment cache */

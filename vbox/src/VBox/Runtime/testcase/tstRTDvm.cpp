@@ -1,4 +1,4 @@
-/* $Id: tstRTDvm.cpp 77256 2019-02-11 12:19:52Z vboxsync $ */
+/* $Id: tstRTDvm.cpp 80585 2019-09-04 14:05:50Z vboxsync $ */
 /** @file
  * IPRT Testcase - IPRT Disk Volume Management (DVM)
  */
@@ -189,11 +189,11 @@ int main(int argc, char **argv)
     }
 
     uint64_t cb = 0;
-    rc = RTVfsFileGetSize(hVfsDisk, &cb);
+    rc = RTVfsFileQuerySize(hVfsDisk, &cb);
     if (   RT_FAILURE(rc)
         || cb % 512 != 0) /* Assume 512 byte sector size. */
     {
-        RTTestIFailed("RTVfsFileGetSize -> %Rrc", rc);
+        RTTestIFailed("RTVfsFileQuerySize -> %Rrc", rc);
         return RTTestSummaryAndDestroy(hTest);
     }
 

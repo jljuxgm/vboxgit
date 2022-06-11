@@ -1,4 +1,4 @@
-/* $Id: MachineImplCloneVM.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: MachineImplCloneVM.cpp 80585 2019-09-04 14:05:50Z vboxsync $ */
 /** @file
  * Implementation of MachineCloneVM
  */
@@ -221,7 +221,7 @@ HRESULT MachineCloneVMPrivate::addSaveState(const ComObjPtr<Machine> &machine, b
             sst.snapshotUuid = machine->i_getSnapshotId();
         sst.strSaveStateFile = bstrSrcSaveStatePath;
         uint64_t cbSize;
-        int vrc = RTFileQuerySize(sst.strSaveStateFile.c_str(), &cbSize);
+        int vrc = RTFileQuerySizeByPath(sst.strSaveStateFile.c_str(), &cbSize);
         if (RT_FAILURE(vrc))
             return p->setErrorBoth(VBOX_E_IPRT_ERROR, vrc, p->tr("Could not query file size of '%s' (%Rrc)"),
                                    sst.strSaveStateFile.c_str(), vrc);

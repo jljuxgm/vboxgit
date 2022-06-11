@@ -1,4 +1,4 @@
-/* $Id: dvm.cpp 77970 2019-04-01 01:35:07Z vboxsync $ */
+/* $Id: dvm.cpp 80585 2019-09-04 14:05:50Z vboxsync $ */
 /** @file
  * IPRT Disk Volume Management API (DVM) - generic code.
  */
@@ -201,7 +201,7 @@ RTDECL(int) RTDvmCreate(PRTDVM phVolMgr, RTVFSFILE hVfsFile, uint32_t cbSector, 
     AssertReturn(cRefs != UINT32_MAX, VERR_INVALID_HANDLE);
 
     uint64_t cbDisk;
-    int rc = RTVfsFileGetSize(hVfsFile, &cbDisk);
+    int rc = RTVfsFileQuerySize(hVfsFile, &cbDisk);
     if (RT_SUCCESS(rc))
     {
         PRTDVMINTERNAL pThis = (PRTDVMINTERNAL)RTMemAllocZ(sizeof(RTDVMINTERNAL));

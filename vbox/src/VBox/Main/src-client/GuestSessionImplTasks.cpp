@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.cpp 79418 2019-06-28 18:35:11Z vboxsync $ */
+/* $Id: GuestSessionImplTasks.cpp 80585 2019-09-04 14:05:50Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session tasks.
  */
@@ -1978,7 +1978,7 @@ int GuestSessionTaskUpdateAdditions::copyFileToGuest(GuestSession *pSession, RTV
     if (RT_SUCCESS(rc))
     {
         uint64_t cbSrcSize = 0;
-        rc = RTVfsFileGetSize(hVfsFile, &cbSrcSize);
+        rc = RTVfsFileQuerySize(hVfsFile, &cbSrcSize);
         if (RT_SUCCESS(rc))
         {
             LogRel(("Copying Guest Additions installer file \"%s\" to \"%s\" on guest ...\n",

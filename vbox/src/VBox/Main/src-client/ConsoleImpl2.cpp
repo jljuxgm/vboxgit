@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 80360 2019-08-21 08:41:18Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 80585 2019-09-04 14:05:50Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -3968,7 +3968,7 @@ int Console::i_checkMediumLocation(IMedium *pMedium, bool *pfUseHostIOCache)
             {
                 RTFOFF maxSize;
                 /* Careful: This function will work only on selected local file systems! */
-                rc = RTFileGetMaxSizeEx(file, &maxSize);
+                rc = RTFileQueryMaxSizeEx(file, &maxSize);
                 RTFileClose(file);
                 if (   RT_SUCCESS(rc)
                     && maxSize > 0

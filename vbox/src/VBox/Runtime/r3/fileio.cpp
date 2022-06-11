@@ -1,4 +1,4 @@
-/* $Id: fileio.cpp 77825 2019-03-21 12:33:42Z vboxsync $ */
+/* $Id: fileio.cpp 80585 2019-09-04 14:05:50Z vboxsync $ */
 /** @file
  * IPRT - File I/O.
  */
@@ -226,12 +226,12 @@ RTR3DECL(uint64_t)  RTFileTell(RTFILE File)
  * @returns The max size of the file.
  *          -1 on failure, the file position is undefined.
  * @param   File        Handle to the file.
- * @see     RTFileGetMaxSizeEx.
+ * @see     RTFileQueryMaxSizeEx.
  */
 RTR3DECL(RTFOFF) RTFileGetMaxSize(RTFILE File)
 {
     RTFOFF cbMax;
-    int rc = RTFileGetMaxSizeEx(File, &cbMax);
+    int rc = RTFileQueryMaxSizeEx(File, &cbMax);
     return RT_SUCCESS(rc) ? cbMax : -1;
 }
 
@@ -316,12 +316,12 @@ RTDECL(int) RTFileCompareByHandlesEx(RTFILE hFile1, RTFILE hFile2, uint32_t fFla
      * Compare the file sizes first.
      */
     uint64_t cbFile1;
-    int rc = RTFileGetSize(hFile1, &cbFile1);
+    int rc = RTFileQuerySize(hFile1, &cbFile1);
     if (RT_FAILURE(rc))
         return rc;
 
     uint64_t cbFile2;
-    rc = RTFileGetSize(hFile1, &cbFile2);
+    rc = RTFileQuerySize(hFile1, &cbFile2);
     if (RT_FAILURE(rc))
         return rc;
 

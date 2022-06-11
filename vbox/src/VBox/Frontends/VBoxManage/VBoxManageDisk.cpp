@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 77625 2019-03-08 20:44:54Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 80585 2019-09-04 14:05:50Z vboxsync $ */
 /** @file
  * VBoxManage - The disk/medium related commands.
  */
@@ -1186,7 +1186,7 @@ RTEXITCODE handleConvertFromRaw(HandlerArg *a)
     if (fReadFromStdIn)
         cbFile = RTStrToUInt64(filesize);
     else
-        rc = RTFileGetSize(File, &cbFile);
+        rc = RTFileQuerySize(File, &cbFile);
     if (RT_FAILURE(rc))
     {
         RTMsgError("Cannot get image size for file \"%s\": %Rrc", srcfilename, rc);

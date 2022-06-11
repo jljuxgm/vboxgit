@@ -1,4 +1,4 @@
-/* $Id: manifest.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: manifest.cpp 80585 2019-09-04 14:05:50Z vboxsync $ */
 /** @file
  * IPRT - Manifest file handling, old style - deprecated.
  */
@@ -117,7 +117,7 @@ RTR3DECL(int) RTManifestVerify(const char *pszManifestFile, PRTMANIFESTTEST paTe
     do
     {
         uint64_t cbSize;
-        rc = RTFileGetSize(file, &cbSize);
+        rc = RTFileQuerySize(file, &cbSize);
         if (RT_FAILURE(rc))
             break;
 

@@ -1,4 +1,4 @@
-/* $Id: ntfsvfs.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: ntfsvfs.cpp 80585 2019-09-04 14:05:50Z vboxsync $ */
 /** @file
  * IPRT - NTFS Virtual Filesystem, currently only for reading allocation bitmap.
  */
@@ -5535,7 +5535,7 @@ RTDECL(int) RTFsNtfsVolOpen(RTVFSFILE hVfsFileIn, uint32_t fMntFlags, uint32_t f
         RTListInit(&pThis->CoreUnusedHead);
         RTListInit(&pThis->IdxNodeUnusedHead);
 
-        rc = RTVfsFileGetSize(pThis->hVfsBacking, &pThis->cbBacking);
+        rc = RTVfsFileQuerySize(pThis->hVfsBacking, &pThis->cbBacking);
         if (RT_SUCCESS(rc))
         {
             void *pvBuf = RTMemTmpAlloc(_64K);

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 79891 2019-07-19 16:16:19Z vboxsync $
+# $Id: Makefile.kmk 80585 2019-09-04 14:05:50Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -66,7 +66,7 @@ PROGRAMS += \
 	tstFile \
 	tstRTFileAio \
 	tstRTFileAppend-1 \
-	tstRTFileGetSize-1 \
+	tstRTFileQuerySize-1 \
 	tstRTFileModeStringToFlags \
 	tstFileLock \
 	tstRTFileOpenEx-1 \
@@ -361,8 +361,8 @@ tstRTFileAio_SOURCES = tstRTFileAio.cpp
 tstRTFileAppend-1_TEMPLATE = VBOXR3TSTEXE
 tstRTFileAppend-1_SOURCES = tstRTFileAppend-1.cpp
 
-tstRTFileGetSize-1_TEMPLATE = VBOXR3TSTEXE
-tstRTFileGetSize-1_SOURCES = tstRTFileGetSize-1.cpp
+tstRTFileQuerySize-1_TEMPLATE = VBOXR3TSTEXE
+tstRTFileQuerySize-1_SOURCES = tstRTFileQuerySize-1.cpp
 
 tstRTFileModeStringToFlags_TEMPLATE = VBOXR3TSTEXE
 tstRTFileModeStringToFlags_SOURCES = tstRTFileModeStringToFlags.cpp

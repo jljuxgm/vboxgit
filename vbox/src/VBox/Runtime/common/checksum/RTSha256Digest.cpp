@@ -1,4 +1,4 @@
-/* $Id: RTSha256Digest.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: RTSha256Digest.cpp 80585 2019-09-04 14:05:50Z vboxsync $ */
 /** @file
  * IPRT - SHA256 digest creation
  *
@@ -127,7 +127,7 @@ RTR3DECL(int) RTSha256DigestFromFile(const char *pszFile, char **ppszDigest, PFN
     if (pfnProgressCallback)
     {
         uint64_t cbFile;
-        rc = RTFileGetSize(hFile, &cbFile);
+        rc = RTFileQuerySize(hFile, &cbFile);
         if (RT_FAILURE(rc))
         {
             RTFileClose(hFile);

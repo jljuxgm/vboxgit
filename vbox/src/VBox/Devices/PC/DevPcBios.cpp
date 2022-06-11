@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.cpp 80531 2019-09-01 23:03:34Z vboxsync $ */
+/* $Id: DevPcBios.cpp 80585 2019-09-04 14:05:50Z vboxsync $ */
 /** @file
  * DevPcBios - PC BIOS Device.
  */
@@ -1483,7 +1483,7 @@ static DECLCALLBACK(int)  pcbiosConstruct(PPDMDEVINS pDevIns, int iInstance, PCF
         {
             /* Figure the size and check restrictions. */
             uint64_t cbPcBios;
-            rc = RTFileGetSize(hFilePcBios, &cbPcBios);
+            rc = RTFileQuerySize(hFilePcBios, &cbPcBios);
             if (RT_SUCCESS(rc))
             {
                 pThis->cbPcBios = (uint32_t)cbPcBios;
@@ -1678,7 +1678,7 @@ static DECLCALLBACK(int)  pcbiosConstruct(PPDMDEVINS pDevIns, int iInstance, PCF
                             RTFILE_O_READ | RTFILE_O_OPEN | RTFILE_O_DENY_WRITE);
             if (RT_SUCCESS(rc))
             {
-                rc = RTFileGetSize(hFileLanBoot, &cbFileLanBoot);
+                rc = RTFileQuerySize(hFileLanBoot, &cbFileLanBoot);
                 if (RT_SUCCESS(rc))
                 {
                     if (cbFileLanBoot <= _64K - (VBOX_LANBOOT_SEG << 4 & 0xffff))

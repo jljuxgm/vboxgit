@@ -1,4 +1,4 @@
-/* $Id: xml.cpp 79677 2019-07-10 15:45:05Z vboxsync $ */
+/* $Id: xml.cpp 80585 2019-09-04 14:05:50Z vboxsync $ */
 /** @file
  * IPRT - XML Manipulation API.
  */
@@ -2289,7 +2289,7 @@ void XmlFileWriter::write(const char *pcszFilename, bool fSafe)
 
         /* Make a backup of any existing file (ignore failure). */
         uint64_t cbPrevFile;
-        rc = RTFileQuerySize(pcszFilename, &cbPrevFile);
+        rc = RTFileQuerySizeByPath(pcszFilename, &cbPrevFile);
         if (RT_SUCCESS(rc) && cbPrevFile >= 16)
             RTFileRename(pcszFilename, szPrevFilename, RTPATHRENAME_FLAGS_REPLACE);
 

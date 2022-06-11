@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 80074 2019-07-31 14:18:34Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 80585 2019-09-04 14:05:50Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -589,7 +589,7 @@ RTEXITCODE handleModifyVM(HandlerArg *a)
                     break;
                 }
                 uint64_t cbSize;
-                vrc = RTFileGetSize(iconFile, &cbSize);
+                vrc = RTFileQuerySize(iconFile, &cbSize);
                 if (RT_FAILURE(vrc))
                 {
                     RTMsgError("Cannot get size of file \"%s\": %Rrc", ValueUnion.psz, vrc);

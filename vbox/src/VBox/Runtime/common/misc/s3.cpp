@@ -1,4 +1,4 @@
-/* $Id: s3.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: s3.cpp 80585 2019-09-04 14:05:50Z vboxsync $ */
 /** @file
  * IPRT - S3 communication API.
  */
@@ -955,7 +955,7 @@ RTR3DECL(int) RTS3PutKey(RTS3 hS3, const char *pszBucketName, const char *pszKey
         return rc;
 
     uint64_t cbFileSize;
-    rc = RTFileGetSize(hFile, &cbFileSize);
+    rc = RTFileQuerySize(hFile, &cbFileSize);
     if (RT_FAILURE(rc))
     {
         RTFileClose(hFile);

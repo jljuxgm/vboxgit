@@ -1,4 +1,4 @@
-/* $Id: AutostartDb-generic.cpp 80569 2019-09-03 14:34:21Z vboxsync $ */
+/* $Id: AutostartDb-generic.cpp 80585 2019-09-04 14:05:50Z vboxsync $ */
 /** @file
  * VirtualBox Main - Autostart implementation.
  */
@@ -71,7 +71,7 @@ int AutostartDb::autostartModifyDb(bool fAutostart, bool fAddVM)
                  * a number of the amount of VMs with autostart configured, so they
                  * should be really really small. Anything else is bogus.
                  */
-                rc = RTFileGetSize(hAutostartFile, &cbFile);
+                rc = RTFileQuerySize(hAutostartFile, &cbFile);
                 if (   RT_SUCCESS(rc)
                     && cbFile <= 16)
                 {

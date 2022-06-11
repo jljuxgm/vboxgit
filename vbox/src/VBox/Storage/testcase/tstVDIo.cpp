@@ -1,4 +1,4 @@
-/* $Id: tstVDIo.cpp 77232 2019-02-09 01:55:37Z vboxsync $ */
+/* $Id: tstVDIo.cpp 80585 2019-09-04 14:05:50Z vboxsync $ */
 /** @file
  * VBox HDD container test utility - I/O replay.
  */
@@ -1668,7 +1668,7 @@ static DECLCALLBACK(int) vdScriptHandlerIoPatternCreateFromFile(PVDSCRIPTARG paS
         rc = RTFileOpen(&hFile, pcszFile, RTFILE_O_DENY_NONE | RTFILE_O_OPEN | RTFILE_O_READ);
         if (RT_SUCCESS(rc))
         {
-            rc = RTFileGetSize(hFile, &cbPattern);
+            rc = RTFileQuerySize(hFile, &cbPattern);
             if (RT_SUCCESS(rc))
             {
                 pPattern = tstVDIoPatternCreate(pcszName, (size_t)cbPattern);

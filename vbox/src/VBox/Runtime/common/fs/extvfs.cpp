@@ -1,4 +1,4 @@
-/* $Id: extvfs.cpp 76619 2019-01-02 19:54:18Z vboxsync $ */
+/* $Id: extvfs.cpp 80585 2019-09-04 14:05:50Z vboxsync $ */
 /** @file
  * IPRT - Ext2/3/4 Virtual Filesystem.
  */
@@ -2722,7 +2722,7 @@ RTDECL(int) RTFsExtVolOpen(RTVFSFILE hVfsFileIn, uint32_t fMntFlags, uint32_t fE
         RTListInit(&pThis->LstInodeLru);
         RTListInit(&pThis->LstBlockLru);
 
-        rc = RTVfsFileGetSize(pThis->hVfsBacking, &pThis->cbBacking);
+        rc = RTVfsFileQuerySize(pThis->hVfsBacking, &pThis->cbBacking);
         if (RT_SUCCESS(rc))
         {
             rc = rtFsExtVolLoadAndParseSuperblock(pThis, pErrInfo);

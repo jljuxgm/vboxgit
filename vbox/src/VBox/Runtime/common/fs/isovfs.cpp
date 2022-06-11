@@ -1,4 +1,4 @@
-/* $Id: isovfs.cpp 78356 2019-04-30 09:02:35Z vboxsync $ */
+/* $Id: isovfs.cpp 80585 2019-09-04 14:05:50Z vboxsync $ */
 /** @file
  * IPRT - ISO 9660 and UDF Virtual Filesystem (read only).
  */
@@ -5617,7 +5617,7 @@ static int rtFsIsoVolTryInit(PRTFSISOVOL pThis, RTVFS hVfsSelf, RTVFSFILE hVfsBa
     /*
      * Get stuff that may fail.
      */
-    int rc = RTVfsFileGetSize(hVfsBacking, &pThis->cbBacking);
+    int rc = RTVfsFileQuerySize(hVfsBacking, &pThis->cbBacking);
     if (RT_SUCCESS(rc))
         pThis->cBackingSectors = pThis->cbBacking / pThis->cbSector;
     else

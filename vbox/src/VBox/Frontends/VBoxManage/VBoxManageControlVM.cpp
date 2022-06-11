@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 79363 2019-06-26 15:25:43Z vboxsync $ */
+/* $Id: VBoxManageControlVM.cpp 80585 2019-09-04 14:05:50Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of the controlvm command.
  */
@@ -320,7 +320,7 @@ static HRESULT keyboardPutFile(IKeyboard *pKeyboard, const char *pszFilename)
     if (RT_SUCCESS(vrc))
     {
         uint64_t cbFile = 0;
-        vrc = RTFileGetSize(File, &cbFile);
+        vrc = RTFileQuerySize(File, &cbFile);
         if (RT_SUCCESS(vrc))
         {
             const uint64_t cbFileMax = _64K;

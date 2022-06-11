@@ -1,4 +1,4 @@
-/* $Id: vfsreadahead.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: vfsreadahead.cpp 80585 2019-09-04 14:05:50Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Read-Ahead Thread.
  */
@@ -484,7 +484,7 @@ static DECLCALLBACK(int) rtVfsReadAhead_QuerySize(void *pvThis, uint64_t *pcbFil
     AssertReturn(pThis->hFile != NIL_RTVFSFILE, VERR_NOT_SUPPORTED);
 
     RTCritSectEnter(&pThis->IoCritSect); /* paranoia */
-    int rc = RTVfsFileGetSize(pThis->hFile, pcbFile);
+    int rc = RTVfsFileQuerySize(pThis->hFile, pcbFile);
     RTCritSectLeave(&pThis->IoCritSect);
 
     return rc;

@@ -1,4 +1,4 @@
-/* $Id: isomaker.cpp 78731 2019-05-24 13:48:20Z vboxsync $ */
+/* $Id: isomaker.cpp 80585 2019-09-04 14:05:50Z vboxsync $ */
 /** @file
  * IPRT - ISO Image Maker.
  */
@@ -6247,7 +6247,7 @@ static int rtFsIsoMakerOutFile_ProduceTransTbl(PRTFSISOMAKEROUTPUTFILE pThis, PR
      * Check that the size matches our estimate.
      */
     uint64_t cbResult = 0;
-    rc = RTVfsFileGetSize(hVfsFile, &cbResult);
+    rc = RTVfsFileQuerySize(hVfsFile, &cbResult);
     if (RT_SUCCESS(rc) && cbResult == pFile->cbData)
     {
         pThis->hVfsSrcFile = hVfsFile;

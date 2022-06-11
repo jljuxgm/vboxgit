@@ -1,4 +1,4 @@
-/* $Id: VISO.cpp 79965 2019-07-24 20:32:32Z vboxsync $ */
+/* $Id: VISO.cpp 80585 2019-09-04 14:05:50Z vboxsync $ */
 /** @file
  * VISO - Virtual ISO disk image, Core Code.
  */
@@ -343,7 +343,7 @@ static int visoOpenWorker(PVISOIMAGE pThis)
                                         if (RT_SUCCESS(rc))
                                         {
                                             uint64_t cbImage;
-                                            rc = RTVfsFileGetSize(hVfsFile, &cbImage);
+                                            rc = RTVfsFileQuerySize(hVfsFile, &cbImage);
                                             if (RT_SUCCESS(rc))
                                             {
                                                 /*

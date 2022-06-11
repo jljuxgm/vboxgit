@@ -1,4 +1,4 @@
-/* $Id: RTLdrCheckImports.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: RTLdrCheckImports.cpp 80585 2019-09-04 14:05:50Z vboxsync $ */
 /** @file
  * IPRT - Module dependency checker.
  */
@@ -276,7 +276,7 @@ static int LoadImportModule(PCRTCHECKIMPORTSOPTS pOpts, PRTCHECKIMPORTMODULE pMo
             {
                 /* Read it into a memory buffer. */
                 uint64_t cbFile;
-                rc = RTVfsFileGetSize(hVfsFile, &cbFile);
+                rc = RTVfsFileQuerySize(hVfsFile, &cbFile);
                 if (RT_SUCCESS(rc))
                 {
                     if (cbFile < _4M)
@@ -374,7 +374,7 @@ static int LoadImportModule(PCRTCHECKIMPORTSOPTS pOpts, PRTCHECKIMPORTMODULE pMo
                                           pszImage, szPath, cbFile);
                 }
                 else
-                    RTMsgError("%s: %s: RTVfsFileGetSize failed on export file: %Rrc", pszImage, szPath, rc);
+                    RTMsgError("%s: %s: RTVfsFileQuerySize failed on export file: %Rrc", pszImage, szPath, rc);
                 RTVfsFileRelease(hVfsFile);
                 return rc;
             }

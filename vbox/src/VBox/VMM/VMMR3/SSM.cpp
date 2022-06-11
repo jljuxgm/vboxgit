@@ -1,4 +1,4 @@
-/* $Id: SSM.cpp 80531 2019-09-01 23:03:34Z vboxsync $ */
+/* $Id: SSM.cpp 80585 2019-09-04 14:05:50Z vboxsync $ */
 /** @file
  * SSM - Saved State Manager.
  */
@@ -2002,7 +2002,7 @@ static DECLCALLBACK(uint64_t) ssmR3FileTell(void *pvUser)
  */
 static DECLCALLBACK(int) ssmR3FileSize(void *pvUser, uint64_t *pcb)
 {
-    return RTFileGetSize((RTFILE)(uintptr_t)pvUser, pcb);
+    return RTFileQuerySize((RTFILE)(uintptr_t)pvUser, pcb);
 }
 
 

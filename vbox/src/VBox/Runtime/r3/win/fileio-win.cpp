@@ -1,4 +1,4 @@
-/* $Id: fileio-win.cpp 79155 2019-06-14 16:33:05Z vboxsync $ */
+/* $Id: fileio-win.cpp 80585 2019-09-04 14:05:50Z vboxsync $ */
 /** @file
  * IPRT - File I/O, native implementation for the Windows host platform.
  */
@@ -797,7 +797,7 @@ RTR3DECL(int) RTFileSetSize(RTFILE hFile, uint64_t cbSize)
 }
 
 
-RTR3DECL(int)  RTFileGetSize(RTFILE hFile, uint64_t *pcbSize)
+RTR3DECL(int)  RTFileQuerySize(RTFILE hFile, uint64_t *pcbSize)
 {
     /*
      * GetFileSize works for most handles.
@@ -848,7 +848,7 @@ RTR3DECL(int)  RTFileGetSize(RTFILE hFile, uint64_t *pcbSize)
 }
 
 
-RTR3DECL(int) RTFileGetMaxSizeEx(RTFILE hFile, PRTFOFF pcbMax)
+RTR3DECL(int) RTFileQueryMaxSizeEx(RTFILE hFile, PRTFOFF pcbMax)
 {
     /** @todo r=bird:
      * We might have to make this code OS version specific... In the worse

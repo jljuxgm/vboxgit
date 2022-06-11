@@ -1,4 +1,4 @@
-/* $Id: vfsstdfile.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: vfsstdfile.cpp 80585 2019-09-04 14:05:50Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Standard File Implementation.
  */
@@ -110,7 +110,7 @@ DECLINLINE(int) rtVfsStdFile_ReadFixRC(PRTVFSSTDFILE pThis, RTFOFF off, size_t c
         return VINF_SUCCESS;
 
     uint64_t cbFile;
-    int rc = RTFileGetSize(pThis->hFile, &cbFile);
+    int rc = RTFileQuerySize(pThis->hFile, &cbFile);
     if (RT_FAILURE(rc))
         return rc;
 
@@ -382,7 +382,7 @@ static DECLCALLBACK(int) rtVfsStdFile_Seek(void *pvThis, RTFOFF offSeek, unsigne
 static DECLCALLBACK(int) rtVfsStdFile_QuerySize(void *pvThis, uint64_t *pcbFile)
 {
     PRTVFSSTDFILE pThis = (PRTVFSSTDFILE)pvThis;
-    return RTFileGetSize(pThis->hFile, pcbFile);
+    return RTFileQuerySize(pThis->hFile, pcbFile);
 }
 
 
@@ -413,7 +413,7 @@ static DECLCALLBACK(int) rtVfsStdFile_QueryMaxSize(void *pvThis, uint64_t *pcbMa
 {
     PRTVFSSTDFILE pThis = (PRTVFSSTDFILE)pvThis;
     RTFOFF cbMax = 0;
-    int rc = RTFileGetMaxSizeEx(pThis->hFile, &cbMax);
+    int rc = RTFileQueryMaxSizeEx(pThis->hFile, &cbMax);
     if (RT_SUCCESS(rc))
         *pcbMax = cbMax;
     return rc;

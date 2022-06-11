@@ -1,4 +1,4 @@
-/* $Id: inifile.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: inifile.cpp 80585 2019-09-04 14:05:50Z vboxsync $ */
 /** @file
  * IPRT - INI-file parser.
  */
@@ -146,7 +146,7 @@ static int rtIniFileLoad(PRTINIFILEINT pThis)
      * Load the entire file into memory, ensuring two terminating zeros.
      */
     uint64_t cbFile;
-    int rc = RTVfsFileGetSize(pThis->hVfsFile, &cbFile);
+    int rc = RTVfsFileQuerySize(pThis->hVfsFile, &cbFile);
     AssertRCReturn(rc, rc);
 
     if (cbFile > RTINIFILE_MAX_SIZE)

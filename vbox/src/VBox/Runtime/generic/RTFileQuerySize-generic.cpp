@@ -1,4 +1,4 @@
-/* $Id: RTFileQuerySize-generic.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: RTFileQuerySize-generic.cpp 80585 2019-09-04 14:05:50Z vboxsync $ */
 /** @file
  * IPRT - RTFileQuerySize, generic implementation.
  */
@@ -37,7 +37,7 @@
 #include <iprt/path.h>
 
 
-RTDECL(int) RTFileQuerySize(const char *pszPath, uint64_t *pcbFile)
+RTDECL(int) RTFileQuerySizeByPath(const char *pszPath, uint64_t *pcbFile)
 {
     RTFSOBJINFO ObjInfo;
     int rc = RTPathQueryInfoEx(pszPath, &ObjInfo, RTFSOBJATTRADD_NOTHING, RTPATH_F_FOLLOW_LINK);

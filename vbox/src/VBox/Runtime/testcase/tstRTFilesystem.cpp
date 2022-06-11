@@ -1,4 +1,4 @@
-/* $Id: tstRTFilesystem.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: tstRTFilesystem.cpp 80585 2019-09-04 14:05:50Z vboxsync $ */
 /** @file
  * IPRT Testcase - IPRT Filesystem API (Fileystem)
  */
@@ -59,10 +59,10 @@ static int tstRTFilesystem(RTTEST hTest, RTVFSFILE hVfsFile)
     uint32_t cBlocksUnused = 0;
     uint64_t cbFs = 0;
 
-    rc = RTVfsFileGetSize(hVfsFile, &cbFs);
+    rc = RTVfsFileQuerySize(hVfsFile, &cbFs);
     if (RT_FAILURE(rc))
     {
-        RTTestIFailed("RTVfsFileGetSize -> %Rrc", rc);
+        RTTestIFailed("RTVfsFileQuerySize -> %Rrc", rc);
         return rc;
     }
 

@@ -1,4 +1,4 @@
-/* $Id: tstAnimate.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: tstAnimate.cpp 80585 2019-09-04 14:05:50Z vboxsync $ */
 /** @file
  * VBox Animation Testcase / Tool.
  */
@@ -196,7 +196,7 @@ static DECLCALLBACK(int) scriptRun(PVM pVM, RTFILE File)
 {
     RTPrintf("info: running script...\n");
     uint64_t cb;
-    int rc = RTFileGetSize(File, &cb);
+    int rc = RTFileQuerySize(File, &cb);
     if (RT_SUCCESS(rc))
     {
         if (cb == 0)
@@ -803,7 +803,7 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
     {
         if (FileRawMem != NIL_RTFILE)
         {
-            rc = RTFileGetSize(FileRawMem, &cbMem);
+            rc = RTFileQuerySize(FileRawMem, &cbMem);
             AssertReleaseRC(rc);
             cbMem -= offRawMem;
             cbMem &= ~(PAGE_SIZE - 1);

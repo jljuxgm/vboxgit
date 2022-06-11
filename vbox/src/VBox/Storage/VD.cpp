@@ -1,4 +1,4 @@
-/* $Id: VD.cpp 79965 2019-07-24 20:32:32Z vboxsync $ */
+/* $Id: VD.cpp 80585 2019-09-04 14:05:50Z vboxsync $ */
 /** @file
  * VD - Virtual disk container implementation.
  */
@@ -3249,7 +3249,7 @@ static DECLCALLBACK(int) vdIOGetSizeFallback(void *pvUser, void *pvStorage, uint
     RT_NOREF1(pvUser);
     PVDIIOFALLBACKSTORAGE pStorage = (PVDIIOFALLBACKSTORAGE)pvStorage;
 
-    return RTFileGetSize(pStorage->File, pcbSize);
+    return RTFileQuerySize(pStorage->File, pcbSize);
 }
 
 /**

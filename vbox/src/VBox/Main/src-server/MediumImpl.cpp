@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 79968 2019-07-25 01:28:23Z vboxsync $ */
+/* $Id: MediumImpl.cpp 80585 2019-09-04 14:05:50Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -5546,10 +5546,10 @@ HRESULT Medium::i_queryPreferredMergeDirection(const ComObjPtr<Medium> &pOther,
 
         if (i_isMediumFormatFile() && pOther->i_isMediumFormatFile())
         {
-            vrc = RTFileQuerySize(this->i_getLocationFull().c_str(), &cbMediumThis);
+            vrc = RTFileQuerySizeByPath(this->i_getLocationFull().c_str(), &cbMediumThis);
             if (RT_SUCCESS(vrc))
             {
-                vrc = RTFileQuerySize(pOther->i_getLocationFull().c_str(),
+                vrc = RTFileQuerySizeByPath(pOther->i_getLocationFull().c_str(),
                                       &cbMediumOther);
             }
 

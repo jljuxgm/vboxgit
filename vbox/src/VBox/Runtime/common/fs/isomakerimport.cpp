@@ -1,4 +1,4 @@
-/* $Id: isomakerimport.cpp 77734 2019-03-16 03:53:06Z vboxsync $ */
+/* $Id: isomakerimport.cpp 80585 2019-09-04 14:05:50Z vboxsync $ */
 /** @file
  * IPRT - ISO Image Maker, Import Existing Image.
  */
@@ -2520,7 +2520,7 @@ RTDECL(int) RTFsIsoMakerImport(RTFSISOMAKER hIsoMaker, RTVFSFILE hIsoFile, uint3
      * Get the file size.
      */
     uint64_t cbSrcFile = 0;
-    int rc = RTVfsFileGetSize(hIsoFile, &cbSrcFile);
+    int rc = RTVfsFileQuerySize(hIsoFile, &cbSrcFile);
     if (RT_SUCCESS(rc))
     {
         /*

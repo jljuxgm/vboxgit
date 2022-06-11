@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 80531 2019-09-01 23:03:34Z vboxsync $ */
+/* $Id: DevACPI.cpp 80585 2019-09-04 14:05:50Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -3117,7 +3117,7 @@ static int acpiR3ReadCustomTable(PPDMDEVINS pDevIns, uint8_t **ppu8CustBin, uint
                         RTFILE_O_READ | RTFILE_O_OPEN | RTFILE_O_DENY_WRITE);
     if (RT_SUCCESS(rc))
     {
-        rc = RTFileGetSize(FileCUSTBin, pcbCustBin);
+        rc = RTFileQuerySize(FileCUSTBin, pcbCustBin);
         if (RT_SUCCESS(rc))
         {
             /* The following checks should be in sync the AssertReleaseMsg's below. */

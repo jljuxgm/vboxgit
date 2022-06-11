@@ -1,4 +1,4 @@
-/* $Id: vfsprogress.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: vfsprogress.cpp 80585 2019-09-04 14:05:50Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, progress filter for files.
  */
@@ -401,7 +401,7 @@ static DECLCALLBACK(int) rtVfsProgressFile_Seek(void *pvThis, RTFOFF offSeek, un
 static DECLCALLBACK(int) rtVfsProgressFile_QuerySize(void *pvThis, uint64_t *pcbFile)
 {
     PRTVFSPROGRESSFILE pThis = (PRTVFSPROGRESSFILE)pvThis;
-    return RTVfsFileGetSize(pThis->hVfsFile, pcbFile);
+    return RTVfsFileQuerySize(pThis->hVfsFile, pcbFile);
 }
 
 

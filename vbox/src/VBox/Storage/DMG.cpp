@@ -1,4 +1,4 @@
-/* $Id: DMG.cpp 79965 2019-07-24 20:32:32Z vboxsync $ */
+/* $Id: DMG.cpp 80585 2019-09-04 14:05:50Z vboxsync $ */
 /** @file
  * VBoxDMG - Interpreter for Apple Disk Images (DMG).
  */
@@ -501,7 +501,7 @@ static int dmgWrapFileReadUser(PDMGIMAGE pThis, RTFOFF off, PVDIOCTX pIoCtx, siz
 }
 
 /**
- * vdIfIoIntFileGetSize / RTVfsFileGetSize wrapper.
+ * vdIfIoIntFileGetSize / RTVfsFileQuerySize wrapper.
  */
 static int dmgWrapFileGetSize(PDMGIMAGE pThis, uint64_t *pcbFile)
 {
@@ -509,7 +509,7 @@ static int dmgWrapFileGetSize(PDMGIMAGE pThis, uint64_t *pcbFile)
     if (pThis->hDmgFileInXar == NIL_RTVFSFILE)
         rc = vdIfIoIntFileGetSize(pThis->pIfIoXxx, pThis->pStorage, pcbFile);
     else
-        rc = RTVfsFileGetSize(pThis->hDmgFileInXar, pcbFile);
+        rc = RTVfsFileQuerySize(pThis->hDmgFileInXar, pcbFile);
     return rc;
 }
 
@@ -1787,7 +1787,7 @@ static DECLCALLBACK(int) dmgProbe(const char *pszFilename, PVDINTERFACE pVDIfsDi
     if (hDmgFileInXar == NIL_RTVFSFILE)
         rc = vdIfIoIntFileGetSize(pIfIo, pStorage, &cbFile);
     else
-        rc = RTVfsFileGetSize(hDmgFileInXar, &cbFile);
+        rc = RTVfsFileQuerySize(hDmgFileInXar, &cbFile);
     if (   RT_SUCCESS(rc)
         && cbFile >= sizeof(DMGUDIF))
     {

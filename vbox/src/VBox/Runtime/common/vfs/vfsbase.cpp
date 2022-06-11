@@ -1,4 +1,4 @@
-/* $Id: vfsbase.cpp 80518 2019-08-30 17:25:03Z vboxsync $ */
+/* $Id: vfsbase.cpp 80585 2019-09-04 14:05:50Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Base.
  */
@@ -4219,7 +4219,7 @@ RTDECL(int) RTVfsFileSeek(RTVFSFILE hVfsFile, RTFOFF offSeek, uint32_t uMethod, 
 }
 
 
-RTDECL(int) RTVfsFileGetSize(RTVFSFILE hVfsFile, uint64_t *pcbSize)
+RTDECL(int) RTVfsFileQuerySize(RTVFSFILE hVfsFile, uint64_t *pcbSize)
 {
     RTVFSFILEINTERNAL *pThis = hVfsFile;
     AssertPtrReturn(pThis, VERR_INVALID_HANDLE);

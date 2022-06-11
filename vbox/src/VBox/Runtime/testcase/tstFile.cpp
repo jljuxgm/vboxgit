@@ -1,4 +1,4 @@
-/* $Id: tstFile.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: tstFile.cpp 80585 2019-09-04 14:05:50Z vboxsync $ */
 /** @file
  * IPRT Testcase - File I/O.
  */
@@ -50,15 +50,15 @@ int main()
     }
 
     RTFOFF cbMax = -2;
-    rc = RTFileGetMaxSizeEx(File, &cbMax);
+    rc = RTFileQueryMaxSizeEx(File, &cbMax);
     if (RT_FAILURE(rc))
     {
-        RTPrintf("tstFile: RTFileGetMaxSizeEx failed: %Rrc\n", rc);
+        RTPrintf("tstFile: RTFileQueryMaxSizeEx failed: %Rrc\n", rc);
         cErrors++;
     }
     else if (cbMax <= 0)
     {
-        RTPrintf("tstFile: RTFileGetMaxSizeEx failed: cbMax=%RTfoff\n", cbMax);
+        RTPrintf("tstFile: RTFileQueryMaxSizeEx failed: cbMax=%RTfoff\n", cbMax);
         cErrors++;
     }
     else if (RTFileGetMaxSize(File) != cbMax)
@@ -79,7 +79,7 @@ int main()
     else
     {
         uint64_t cb;
-        rc = RTFileGetSize(File, &cb);
+        rc = RTFileQuerySize(File, &cb);
         if (RT_FAILURE(rc))
         {
             RTPrintf("Failed to get file size of #1. rc=%Rrc\n", rc);
@@ -87,7 +87,7 @@ int main()
         }
         else if (cb != _2G + _1M)
         {
-            RTPrintf("RTFileGetSize return %RX64 bytes, expected %RX64.\n", cb, _2G + _1M);
+            RTPrintf("RTFileQuerySize return %RX64 bytes, expected %RX64.\n", cb, _2G + _1M);
             cErrors++;
         }
         else

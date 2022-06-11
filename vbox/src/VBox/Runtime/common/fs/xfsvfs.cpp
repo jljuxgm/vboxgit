@@ -1,4 +1,4 @@
-/* $Id: xfsvfs.cpp 77008 2019-01-26 18:54:44Z vboxsync $ */
+/* $Id: xfsvfs.cpp 80585 2019-09-04 14:05:50Z vboxsync $ */
 /** @file
  * IPRT - XFS Virtual Filesystem.
  */
@@ -2326,7 +2326,7 @@ RTDECL(int) RTFsXfsVolOpen(RTVFSFILE hVfsFileIn, uint32_t fMntFlags, uint32_t fX
         RTListInit(&pThis->LstInodeLru);
         RTListInit(&pThis->LstBlockLru);
 
-        rc = RTVfsFileGetSize(pThis->hVfsBacking, &pThis->cbBacking);
+        rc = RTVfsFileQuerySize(pThis->hVfsBacking, &pThis->cbBacking);
         if (RT_SUCCESS(rc))
         {
             rc = rtFsXfsVolLoadAndParseSuperblock(pThis, pErrInfo);

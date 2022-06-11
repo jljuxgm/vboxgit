@@ -1,4 +1,4 @@
-/* $Id: log.cpp 77727 2019-03-15 14:14:18Z vboxsync $ */
+/* $Id: log.cpp 80585 2019-09-04 14:05:50Z vboxsync $ */
 /** @file
  * Runtime VBox - Logger.
  */
@@ -3206,7 +3206,7 @@ static int rtlogFileOpen(PRTLOGGER pLogger, PRTERRINFO pErrInfo)
     }
     if (RT_SUCCESS(rc))
     {
-        rc = RTFileGetSize(pLogger->pInt->hFile, &pLogger->pInt->cbHistoryFileWritten);
+        rc = RTFileQuerySize(pLogger->pInt->hFile, &pLogger->pInt->cbHistoryFileWritten);
         if (RT_FAILURE(rc))
         {
             /* Don't complain if this fails, assume the file is empty. */

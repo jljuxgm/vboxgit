@@ -1,4 +1,4 @@
-/* $Id: ldrVfsFile.cpp 77971 2019-04-01 09:35:17Z vboxsync $ */
+/* $Id: ldrVfsFile.cpp 80585 2019-09-04 14:05:50Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, The File Oriented Parts, VFS variant.
  */
@@ -87,7 +87,7 @@ static DECLCALLBACK(uint64_t) rtldrVfsFileSize(PRTLDRREADER pReader)
 {
     PRTLDRREADERVFSFILE pFileReader = (PRTLDRREADERVFSFILE)pReader;
     uint64_t cbFile;
-    int rc = RTVfsFileGetSize(pFileReader->hVfsFile, &cbFile);
+    int rc = RTVfsFileQuerySize(pFileReader->hVfsFile, &cbFile);
     if (RT_SUCCESS(rc))
         return cbFile;
     return 0;

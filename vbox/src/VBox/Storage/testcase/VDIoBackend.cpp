@@ -1,4 +1,4 @@
-/* $Id: VDIoBackend.cpp 80205 2019-08-09 09:10:06Z vboxsync $ */
+/* $Id: VDIoBackend.cpp 80585 2019-09-04 14:05:50Z vboxsync $ */
 /** @file
  * VBox HDD container test utility, I/O backend API
  */
@@ -221,7 +221,7 @@ int VDIoBackendStorageGetSize(PVDIOSTORAGE pIoStorage, uint64_t *pcbSize)
         rc = VDMemDiskGetSize(pIoStorage->u.pMemDisk, pcbSize);
     }
     else
-        rc = RTFileGetSize(pIoStorage->u.hFile, pcbSize);
+        rc = RTFileQuerySize(pIoStorage->u.hFile, pcbSize);
 
     return rc;
 }
