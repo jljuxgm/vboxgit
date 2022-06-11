@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageBasic1.h 84283 2020-05-13 11:38:51Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageBasic1.h 84289 2020-05-13 15:19:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageBasic1 class declaration.
  */
@@ -37,6 +37,7 @@
 class QGridLayout;
 class QLabel;
 class QListWidget;
+class QTabBar;
 class QTableWidget;
 class QIComboBox;
 class QIRichTextLabel;
@@ -134,6 +135,8 @@ protected:
     QTableWidget *m_pAccountPropertyTable;
     /** Holds the source image label instance. */
     QLabel       *m_pSourceImageLabel;
+    /** Holds the source tab-bar instance. */
+    QTabBar      *m_pSourceTabBar;
     /** Holds the source image list instance. */
     QListWidget  *m_pSourceImageList;
 };
@@ -180,6 +183,9 @@ private slots:
 
     /** Handles account tool-button click. */
     void sltHandleAccountButtonClick();
+
+    /** Handles change in source tab-bar. */
+    void sltHandleSourceChange();
 
 private:
 
