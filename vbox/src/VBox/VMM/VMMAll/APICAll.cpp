@@ -1,4 +1,4 @@
-/* $Id: APICAll.cpp 79264 2019-06-21 05:43:43Z vboxsync $ */
+/* $Id: APICAll.cpp 80062 2019-07-31 08:57:49Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller - All Contexts.
  */
@@ -3489,10 +3489,8 @@ VMM_INT_DECL(VBOXSTRICTRC) APICHvSetEoi(PVMCPU pVCpu, uint32_t uEoi)
  * @param   pHCPhys         Where to store the host-context physical address.
  * @param   pR0Ptr          Where to store the ring-0 address.
  * @param   pR3Ptr          Where to store the ring-3 address (optional).
- * @param   pRCPtr          Where to store the raw-mode context address
- *                          (optional).
  */
-VMM_INT_DECL(int) APICGetApicPageForCpu(PCVMCPU pVCpu, PRTHCPHYS pHCPhys, PRTR0PTR pR0Ptr, PRTR3PTR pR3Ptr, PRTRCPTR pRCPtr)
+VMM_INT_DECL(int) APICGetApicPageForCpu(PCVMCPU pVCpu, PRTHCPHYS pHCPhys, PRTR0PTR pR0Ptr, PRTR3PTR pR3Ptr)
 {
     AssertReturn(pVCpu,   VERR_INVALID_PARAMETER);
     AssertReturn(pHCPhys, VERR_INVALID_PARAMETER);
@@ -3505,8 +3503,6 @@ VMM_INT_DECL(int) APICGetApicPageForCpu(PCVMCPU pVCpu, PRTHCPHYS pHCPhys, PRTR0P
     *pR0Ptr  = pApicCpu->pvApicPageR0;
     if (pR3Ptr)
         *pR3Ptr  = pApicCpu->pvApicPageR3;
-    if (pRCPtr)
-        *pRCPtr  = pApicCpu->pvApicPageRC;
     return VINF_SUCCESS;
 }
 
