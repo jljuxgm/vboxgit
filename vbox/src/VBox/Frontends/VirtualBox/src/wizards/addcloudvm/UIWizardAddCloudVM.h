@@ -1,4 +1,4 @@
-/* $Id: UIWizardAddCloudVM.h 83676 2020-04-10 17:50:30Z vboxsync $ */
+/* $Id: UIWizardAddCloudVM.h 83857 2020-04-20 13:54:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardAddCloudVM class declaration.
  */
@@ -64,6 +64,11 @@ public:
 
     /** Returns Cloud Machine object wrapper list. */
     QList<CCloudMachine> machines() const { return m_machines; }
+
+    /** Returns source. */
+    QString source() const;
+    /** Returns profile name. */
+    QString profileName() const;
 
     /** Adds cloud VMs. */
     bool addCloudVMs();

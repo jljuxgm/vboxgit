@@ -1,4 +1,4 @@
-/* $Id: UIWizardAddCloudVM.cpp 83676 2020-04-10 17:50:30Z vboxsync $ */
+/* $Id: UIWizardAddCloudVM.cpp 83857 2020-04-20 13:54:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardAddCloudVM class implementation.
  */
@@ -63,6 +63,16 @@ void UIWizardAddCloudVM::prepare()
     }
     /* Call to base-class: */
     UIWizard::prepare();
+}
+
+QString UIWizardAddCloudVM::source() const
+{
+    return field("source").toString();
+}
+
+QString UIWizardAddCloudVM::profileName() const
+{
+    return field("profileName").toString();
 }
 
 bool UIWizardAddCloudVM::addCloudVMs()

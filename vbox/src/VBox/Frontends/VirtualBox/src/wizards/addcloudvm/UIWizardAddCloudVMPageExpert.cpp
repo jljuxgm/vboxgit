@@ -1,4 +1,4 @@
-/* $Id: UIWizardAddCloudVMPageExpert.cpp 83653 2020-04-09 16:38:03Z vboxsync $ */
+/* $Id: UIWizardAddCloudVMPageExpert.cpp 83857 2020-04-20 13:54:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardAddCloudVMPageExpert class implementation.
  */
@@ -153,6 +153,8 @@ UIWizardAddCloudVMPageExpert::UIWizardAddCloudVMPageExpert()
             this, &UIWizardAddCloudVMPageExpert::completeChanged);
 
     /* Register fields: */
+    registerField("source", this, "source");
+    registerField("profileName", this, "profileName");
     registerField("instanceIds", this, "instanceIds");
 }
 

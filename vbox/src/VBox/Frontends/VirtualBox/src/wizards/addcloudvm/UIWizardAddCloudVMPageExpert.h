@@ -1,4 +1,4 @@
-/* $Id: UIWizardAddCloudVMPageExpert.h 83653 2020-04-09 16:38:03Z vboxsync $ */
+/* $Id: UIWizardAddCloudVMPageExpert.h 83857 2020-04-20 13:54:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardAddCloudVMPageExpert class declaration.
  */
@@ -32,6 +32,8 @@ class UIWizardAddCloudVMPageExpert : public UIWizardPage,
                                      public UIWizardAddCloudVMPage1
 {
     Q_OBJECT;
+    Q_PROPERTY(QString source READ source);
+    Q_PROPERTY(QString profileName READ profileName);
     Q_PROPERTY(QStringList instanceIds READ instanceIds);
 
 public:

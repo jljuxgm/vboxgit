@@ -1,4 +1,4 @@
-/* $Id: UIWizardAddCloudVMPageBasic1.h 83653 2020-04-09 16:38:03Z vboxsync $ */
+/* $Id: UIWizardAddCloudVMPageBasic1.h 83857 2020-04-20 13:54:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardAddCloudVMPageBasic1 class declaration.
  */
@@ -132,6 +132,8 @@ protected:
 class UIWizardAddCloudVMPageBasic1 : public UIWizardPage, public UIWizardAddCloudVMPage1
 {
     Q_OBJECT;
+    Q_PROPERTY(QString source READ source);
+    Q_PROPERTY(QString profileName READ profileName);
     Q_PROPERTY(QStringList instanceIds READ instanceIds);
 
 public:

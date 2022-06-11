@@ -1,4 +1,4 @@
-/* $Id: UIWizardAddCloudVMPageBasic1.cpp 83653 2020-04-09 16:38:03Z vboxsync $ */
+/* $Id: UIWizardAddCloudVMPageBasic1.cpp 83857 2020-04-20 13:54:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardAddCloudVMPageBasic1 class implementation.
  */
@@ -600,6 +600,8 @@ UIWizardAddCloudVMPageBasic1::UIWizardAddCloudVMPageBasic1()
             this, &UIWizardAddCloudVMPageBasic1::completeChanged);
 
     /* Register fields: */
+    registerField("source", this, "source");
+    registerField("profileName", this, "profileName");
     registerField("instanceIds", this, "instanceIds");
 }
 
