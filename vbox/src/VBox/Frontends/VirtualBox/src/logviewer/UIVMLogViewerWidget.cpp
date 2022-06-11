@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.cpp 79673 2019-07-10 13:24:48Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.cpp 80605 2019-09-05 12:36:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class implementation.
  */
@@ -49,6 +49,7 @@
 /* COM includes: */
 #include "CSystemProperties.h"
 
+/** Limit the read string size to avoid bloated log viewer pages. */
 const ULONG uAllowedLogSize = _256M;
 UIVMLogViewerWidget::UIVMLogViewerWidget(EmbedTo enmEmbedding,
                                          UIActionPool *pActionPool,
