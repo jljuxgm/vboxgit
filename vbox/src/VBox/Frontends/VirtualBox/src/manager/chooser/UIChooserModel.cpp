@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 83859 2020-04-20 14:36:26Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 83892 2020-04-21 14:17:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -779,15 +779,30 @@ void UIChooserModel::sltHandleCloudListMachinesTaskComplete(UITask *pTask)
     UIChooserAbstractModel::sltHandleCloudListMachinesTaskComplete(pTask);
 
     /* Remember first selected item definition: */
-    const QString strDefinition = firstSelectedItem()->definition();
+    const QString strDefinition = firstSelectedItem() ? firstSelectedItem()->definition() : QString();
 
     /* Rebuild tree for main root: */
     buildTreeForMainRoot();
     updateNavigationItemList();
     updateLayout();
 
-    /* Restore selection: */
-    setSelectedItem(strDefinition);
+    /* Restore selection if there was some item before: */
+    if (!strDefinition.isNull())
+        setSelectedItem(strDefinition);
+    else
+    {
+        /* Make sure selected-item present, if possible: */
+        if (!firstSelectedItem() && !navigationItems().isEmpty())
+        {
+            setSelectedItem(navigationItems().first());
+            emit sigSelectionInvalidated();
+        }
+        /* Make sure current-item present, if possible: */
+        else if (!currentItem() && firstSelectedItem())
+            setCurrentItem(firstSelectedItem());
+        /* Notify about selected-item change: */
+        emit sigSelectionChanged();
+    }
 }
 #endif /* VBOX_GUI_WITH_CLOUD_VMS */
 
