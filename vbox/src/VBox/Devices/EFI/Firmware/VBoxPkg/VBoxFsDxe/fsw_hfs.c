@@ -1,4 +1,4 @@
-/* $Id: fsw_hfs.c 82520 2019-12-09 15:11:50Z vboxsync $ */
+/* $Id: fsw_hfs.c 82521 2019-12-09 15:26:21Z vboxsync $ */
 /** @file
  * fsw_hfs.c - HFS file system driver code, see
  *
@@ -281,7 +281,7 @@ static fsw_status_t fsw_hfs_volume_mount(struct fsw_hfs_volume *vol)
         /* get volume name */
         s.type = FSW_STRING_TYPE_ISO88591;
         s.size = s.len = kHFSMaxVolumeNameChars;
-        s.data = "HFS+ volume";
+        s.data = "HFS+ volume\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"; /* Otherwise buffer overflow reading beyond the end of the buffer. */
         status = fsw_strdup_coerce(&vol->g.label, vol->g.host_string_type, &s);
         CHECK(status);
 
