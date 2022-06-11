@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-win.cpp 80858 2019-09-17 13:03:39Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-win.cpp 80862 2019-09-17 14:45:21Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Win32 host.
  */
@@ -26,7 +26,7 @@
 #include <VBox/GuestHost/clipboard-helper.h>
 #include <VBox/GuestHost/SharedClipboard-win.h>
 #ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS
-# include <VBox/GuestHost/SharedClipboard-uri.h>
+# include <VBox/GuestHost/SharedClipboard-transfers.h>
 #endif
 
 #include <iprt/alloc.h>
@@ -45,7 +45,7 @@
 
 #include "VBoxSharedClipboardSvc-internal.h"
 #ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS
-# include "VBoxSharedClipboardSvc-uri.h"
+# include "VBoxSharedClipboardSvc-transfers.h"
 #endif
 
 

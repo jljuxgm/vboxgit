@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-uri.cpp 80858 2019-09-17 13:03:39Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-transfers.cpp 80862 2019-09-17 14:45:21Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Internal code for transfer (list) handling.
  */
@@ -33,7 +33,7 @@
 #include <iprt/path.h>
 
 #include "VBoxSharedClipboardSvc-internal.h"
-#include "VBoxSharedClipboardSvc-uri.h"
+#include "VBoxSharedClipboardSvc-transfers.h"
 
 
 /*********************************************************************************************************************************

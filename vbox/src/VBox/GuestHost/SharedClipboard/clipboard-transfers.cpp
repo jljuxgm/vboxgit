@@ -1,4 +1,4 @@
-/* $Id: clipboard-uri.cpp 80858 2019-09-17 13:03:39Z vboxsync $ */
+/* $Id: clipboard-transfers.cpp 80862 2019-09-17 14:45:21Z vboxsync $ */
 /** @file
  * Shared Clipboard: Common Shared Clipboard transfer handling code.
  */
@@ -27,7 +27,7 @@
 
 #include <VBox/err.h>
 #include <VBox/HostServices/VBoxClipboardSvc.h>
-#include <VBox/GuestHost/SharedClipboard-uri.h>
+#include <VBox/GuestHost/SharedClipboard-transfers.h>
 
 
 static int sharedClipboardTransferThreadCreate(PSHCLTRANSFER pTransfer, PFNRTTHREAD pfnThreadFunc, void *pvUser);

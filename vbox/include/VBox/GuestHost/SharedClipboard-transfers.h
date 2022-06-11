@@ -1,4 +1,4 @@
-/* $Id: SharedClipboard-uri.h 80858 2019-09-17 13:03:39Z vboxsync $ */
+/* $Id: SharedClipboard-transfers.h 80862 2019-09-17 14:45:21Z vboxsync $ */
 /** @file
  * Shared Clipboard - Shared transfer functions between host and guest.
  */

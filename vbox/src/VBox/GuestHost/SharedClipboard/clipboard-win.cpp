@@ -1,4 +1,4 @@
-/* $Id: clipboard-win.cpp 80858 2019-09-17 13:03:39Z vboxsync $ */
+/* $Id: clipboard-win.cpp 80862 2019-09-17 14:45:21Z vboxsync $ */
 /** @file
  * Shared Clipboard: Windows-specific functions for clipboard handling.
  */
@@ -34,7 +34,7 @@
 
 #include <VBox/GuestHost/SharedClipboard.h>
 #ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS
-# include <VBox/GuestHost/SharedClipboard-uri.h>
+# include <VBox/GuestHost/SharedClipboard-transfers.h>
 #endif
 #include <VBox/GuestHost/SharedClipboard-win.h>
 #include <VBox/GuestHost/clipboard-helper.h>

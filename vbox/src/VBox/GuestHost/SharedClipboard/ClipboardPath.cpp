@@ -1,4 +1,4 @@
-/* $Id: ClipboardPath.cpp 79267 2019-06-21 10:11:59Z vboxsync $ */
+/* $Id: ClipboardPath.cpp 80862 2019-09-17 14:45:21Z vboxsync $ */
 /** @file
  * Shared Clipboard - Path handling.
  */
@@ -20,7 +20,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_SHARED_CLIPBOARD
-#include <VBox/GuestHost/SharedClipboard-uri.h>
+#include <VBox/GuestHost/SharedClipboard-transfers.h>
 
 #include <iprt/err.h>
 #include <iprt/path.h>

@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-internal.h 80858 2019-09-17 13:03:39Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-internal.h 80862 2019-09-17 14:45:21Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Internal header.
  */
@@ -34,7 +34,7 @@
 
 #include <VBox/HostServices/Service.h>
 #include <VBox/GuestHost/SharedClipboard.h>
-#include <VBox/GuestHost/SharedClipboard-uri.h>
+#include <VBox/GuestHost/SharedClipboard-transfers.h>
 
 using namespace HGCM;
 

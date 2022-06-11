@@ -1,4 +1,4 @@
-/* $Id: SharedClipboardPrivate.cpp 80849 2019-09-17 09:46:51Z vboxsync $ */
+/* $Id: SharedClipboardPrivate.cpp 80862 2019-09-17 14:45:21Z vboxsync $ */
 /** @file
  * Private Shared Clipboard code.
  */
@@ -23,7 +23,7 @@
 #include <VBox/err.h>
 
 #ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS
-# include <VBox/GuestHost/SharedClipboard-uri.h>
+# include <VBox/GuestHost/SharedClipboard-transfers.h>
 #endif
 
 #include "ConsoleImpl.h"

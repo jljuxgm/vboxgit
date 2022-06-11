@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibClipboard.cpp 80858 2019-09-17 13:03:39Z vboxsync $ */
+/* $Id: VBoxGuestR3LibClipboard.cpp 80862 2019-09-17 14:45:21Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Shared Clipboard.
  */
@@ -31,7 +31,7 @@
 #include <VBox/GuestHost/SharedClipboard.h>
 #include <VBox/GuestHost/clipboard-helper.h>
 #ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS
-# include <VBox/GuestHost/SharedClipboard-uri.h>
+# include <VBox/GuestHost/SharedClipboard-transfers.h>
 #endif
 #include <VBox/HostServices/VBoxClipboardSvc.h>
 #include <VBox/err.h>

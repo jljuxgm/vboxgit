@@ -1,4 +1,4 @@
-/* $Id: ClipboardArea.cpp 80662 2019-09-09 08:43:14Z vboxsync $ */
+/* $Id: ClipboardArea.cpp 80862 2019-09-17 14:45:21Z vboxsync $ */
 /** @file
  * Shared Clipboard - Area handling.
  */
@@ -20,7 +20,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_SHARED_CLIPBOARD
-#include <VBox/GuestHost/SharedClipboard-uri.h>
+#include <VBox/GuestHost/SharedClipboard-transfers.h>
 
 #include <iprt/asm.h>
 #include <iprt/assert.h>
