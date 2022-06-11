@@ -1,4 +1,4 @@
-/* $Id$ */
+/* $Id: VBoxSharedClipboardSvc-utils.cpp 78652 2019-05-22 09:58:53Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Host service utility functions.
  */
