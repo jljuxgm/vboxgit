@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet.cpp 81708 2019-11-06 14:25:11Z vboxsync $ */
+/* $Id: DevVirtioNet.cpp 81709 2019-11-06 14:48:04Z vboxsync $ */
 /** @file
  * DevVirtioNet - Virtio Network Device
  */
@@ -594,17 +594,6 @@ static DECLCALLBACK(void) vnetR3LinkUpTimer(PPDMDEVINS pDevIns, PTMTIMER pTimer,
     Log(("%s vnetR3LinkUpTimer: Link is up\n", INSTANCE(pThis)));
     if (pThis->pDrv)
         pThis->pDrv->pfnNotifyLinkChanged(pThis->pDrv, PDMNETWORKLINKSTATE_UP);
-}
-
-
-/**
- * @callback_method_impl{FNPDMQUEUEDEV, Handler for the wakeup signaller queue.}
- */
-static DECLCALLBACK(bool) vnetR3CanRxQueueConsumer(PPDMDEVINS pDevIns, PPDMQUEUEITEMCORE pItem)
-{
-    RT_NOREF(pItem);
-    vnetWakeupReceive(pDevIns);
-    return true;
 }
 
 #endif /* IN_RING3 */
