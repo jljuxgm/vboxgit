@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedVerify.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
+/* $Id: SUPR3HardenedVerify.cpp 81158 2019-10-08 15:01:41Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Verification of Hardened Installation.
  */
@@ -130,9 +130,6 @@ static SUPINSTFILE const    g_aSupInstallFiles[] =
 
     {   kSupIFT_Dll,  kSupID_AppSharedLib,      false, "VBoxRT" SUPLIB_DLL_SUFF },
     {   kSupIFT_Dll,  kSupID_AppSharedLib,      false, "VBoxVMM" SUPLIB_DLL_SUFF },
-#ifdef VBOX_WITH_REM
-    {   kSupIFT_Dll,  kSupID_AppSharedLib,      false, "VBoxREM" SUPLIB_DLL_SUFF },
-#endif
 #if HC_ARCH_BITS == 32
     {   kSupIFT_Dll,  kSupID_AppSharedLib,       true, "VBoxREM32" SUPLIB_DLL_SUFF },
     {   kSupIFT_Dll,  kSupID_AppSharedLib,       true, "VBoxREM64" SUPLIB_DLL_SUFF },
