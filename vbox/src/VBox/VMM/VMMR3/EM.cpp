@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 81766 2019-11-11 16:10:19Z vboxsync $ */
+/* $Id: EM.cpp 81786 2019-11-12 04:20:34Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -1893,8 +1893,8 @@ int emR3ForcedActions(PVM pVM, PVMCPU pVCpu, int rc)
             if (VMCPU_FF_IS_SET(pVCpu, VMCPU_FF_VMX_PREEMPT_TIMER))
             {
                 rc2 = VBOXSTRICTRC_VAL(IEMExecVmxVmexitPreemptTimer(pVCpu));
-                if (rc2 != VINF_VMX_INTERCEPT_NOT_ACTIVE)
-                    UPDATE_RC();
+                Assert(rc2 != VINF_VMX_INTERCEPT_NOT_ACTIVE);
+                UPDATE_RC();
             }
         }
 #endif
