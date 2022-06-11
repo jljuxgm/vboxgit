@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.cpp 77822 2019-03-21 08:23:11Z vboxsync $ */
+/* $Id: UIActionPoolRuntime.cpp 78567 2019-05-17 12:27:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolRuntime class implementation.
  */
@@ -1540,6 +1540,50 @@ protected:
     {
         setName(QApplication::translate("UIActionPool", "&Keyboard Settings..."));
         setStatusTip(QApplication::translate("UIActionPool", "Display global preferences window to configure keyboard shortcuts"));
+    }
+};
+
+/** Simple action extension, used as 'Show Soft Keyboard' action class. */
+class UIActionSimpleRuntimeShowSoftKeyboard : public UIActionSimple
+{
+    Q_OBJECT;
+
+public:
+
+    /** Constructs action passing @a pParent to the base-class. */
+    UIActionSimpleRuntimeShowSoftKeyboard(UIActionPool *pParent)
+        : UIActionSimple(pParent, ":/keyboard_settings_16px.png", ":/keyboard_settings_disabled_16px.png", true)
+    {}
+
+protected:
+
+    /** Returns action extra-data ID. */
+    virtual int extraDataID() const /* override */
+    {
+        return UIExtraDataMetaDefs::RuntimeMenuInputActionType_SoftKeyboard;
+    }
+    /** Returns action extra-data key. */
+    virtual QString extraDataKey() const /* override */
+    {
+        return gpConverter->toInternalString(UIExtraDataMetaDefs::RuntimeMenuInputActionType_SoftKeyboard);
+    }
+    /** Returns whether action is allowed. */
+    virtual bool isAllowed() const /* override */
+    {
+        return actionPool()->toRuntime()->isAllowedInMenuInput(UIExtraDataMetaDefs::RuntimeMenuInputActionType_SoftKeyboard);
+    }
+
+    /** Returns shortcut extra-data ID. */
+    virtual QString shortcutExtraDataID() const /* override */
+    {
+        return QString("SoftKeyboard");
+    }
+
+    /** Handles translation event. */
+    virtual void retranslateUi() /* override */
+    {
+        setName(QApplication::translate("UIActionPool", "&Soft Keyboard..."));
+        setStatusTip(QApplication::translate("UIActionPool", "Display soft keyboard"));
     }
 };
 
@@ -3345,6 +3389,7 @@ void UIActionPoolRuntime::preparePool()
     m_pool[UIActionIndexRT_M_Input] = new UIActionMenuRuntimeInput(this);
     m_pool[UIActionIndexRT_M_Input_M_Keyboard] = new UIActionMenuRuntimeKeyboard(this);
     m_pool[UIActionIndexRT_M_Input_M_Keyboard_S_Settings] = new UIActionSimpleRuntimeShowKeyboardSettings(this);
+    m_pool[UIActionIndexRT_M_Input_M_Keyboard_S_SoftKeyboard] = new UIActionSimpleRuntimeShowSoftKeyboard(this);
     m_pool[UIActionIndexRT_M_Input_M_Keyboard_S_TypeCAD] = new UIActionSimpleRuntimePerformTypeCAD(this);
 #ifdef VBOX_WS_X11
     m_pool[UIActionIndexRT_M_Input_M_Keyboard_S_TypeCABS] = new UIActionSimpleRuntimePerformTypeCABS(this);
@@ -4082,7 +4127,8 @@ void UIActionPoolRuntime::updateMenuInputKeyboard()
 
     /* 'Keyboard Settings' action: */
     fSeparator = addAction(pMenu, action(UIActionIndexRT_M_Input_M_Keyboard_S_Settings)) || fSeparator;
-
+    /* 'Soft Keyboard' action: */
+    fSeparator = addAction(pMenu, action(UIActionIndexRT_M_Input_M_Keyboard_S_SoftKeyboard)) || fSeparator;
     /* Separator: */
     if (fSeparator)
     {

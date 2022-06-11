@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 77822 2019-03-21 08:23:11Z vboxsync $ */
+/* $Id: UIMachineLogic.h 78567 2019-05-17 12:27:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -264,6 +264,8 @@ private slots:
 
     /* "Machine" menu functionality: */
     void sltShowKeyboardSettings();
+    void sltShowSoftKeyboard();
+    void sltCloseSoftKeyboard();
     void sltToggleMouseIntegration(bool fEnabled);
     void sltTypeCAD();
 #ifdef VBOX_WS_X11
@@ -435,6 +437,7 @@ private:
     QIManagerDialog *m_pLogViewerDialog;
     QIManagerDialog *m_pFileManagerDialog;
     QIManagerDialog *m_pProcessControlDialog;
+    QIManagerDialog *m_pSoftKeyboardDialog;
 
     /* Friend classes: */
     friend class UIMachineWindow;
