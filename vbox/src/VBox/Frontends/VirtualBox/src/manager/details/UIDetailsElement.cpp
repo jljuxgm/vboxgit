@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElement.cpp 83149 2020-02-25 12:33:39Z vboxsync $ */
+/* $Id: UIDetailsElement.cpp 83719 2020-04-16 16:30:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement class implementation.
  */
@@ -304,7 +304,7 @@ const CMachine &UIDetailsElement::machine()
     return m_pSet->machine();
 }
 
-const UICloudMachine &UIDetailsElement::cloudMachine()
+const CCloudMachine &UIDetailsElement::cloudMachine()
 {
     return m_pSet->cloudMachine();
 }
