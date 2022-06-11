@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 83923 2020-04-22 12:22:03Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 83924 2020-04-22 12:59:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -311,7 +311,7 @@ QList<UIVirtualMachineItem*> UIChooserModel::selectedMachineItems() const
     /* Reintegrate machine-items into valid format: */
     QList<UIVirtualMachineItem*> currentMachineList;
     foreach (UIChooserItemMachine *pItem, currentMachineItemList)
-        currentMachineList << pItem->node()->toMachineNode()->cache();
+        currentMachineList << pItem->nodeToMachineType()->cache();
     return currentMachineList;
 }
 
@@ -1055,7 +1055,7 @@ void UIChooserModel::sltPerformRefreshAction()
     UIChooserItem *pSelectedItem = 0;
     foreach (UIChooserItemMachine *pItem, inaccessibleMachineItemList)
     {
-        switch (pItem->node()->toMachineNode()->cacheType())
+        switch (pItem->nodeToMachineType()->cacheType())
         {
             case UIVirtualMachineItemType_Local:
             {
@@ -1081,7 +1081,7 @@ void UIChooserModel::sltPerformRefreshAction()
             case UIVirtualMachineItemType_CloudReal:
             {
                 /* Much more simple than for local items, we are not reloading them, just refreshing: */
-                pItem->node()->toMachineNode()->cache()->toCloud()->updateInfoAsync(false /* delayed */);
+                pItem->nodeToMachineType()->cache()->toCloud()->updateInfoAsync(false /* delayed */);
 
                 break;
             }

@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGroup.h 83672 2020-04-10 16:27:16Z vboxsync $ */
+/* $Id: UIChooserItemGroup.h 83924 2020-04-22 12:59:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGroup class declaration.
  */
@@ -70,6 +70,9 @@ public:
 
     /** @name Item stuff.
       * @{ */
+        /** Returns group node reference. */
+        UIChooserNodeGroup *nodeToGroupType() const;
+
         /** Returns whether group is closed. */
         bool isClosed() const;
         /** Closes group in @a fAnimated way if requested. */

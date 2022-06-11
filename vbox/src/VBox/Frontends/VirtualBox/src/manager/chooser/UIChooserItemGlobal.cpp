@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGlobal.cpp 83672 2020-04-10 16:27:16Z vboxsync $ */
+/* $Id: UIChooserItemGlobal.cpp 83924 2020-04-22 12:59:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGlobal class implementation.
  */
@@ -50,6 +50,11 @@ UIChooserItemGlobal::UIChooserItemGlobal(UIChooserItem *pParent, UIChooserNodeGl
 UIChooserItemGlobal::~UIChooserItemGlobal()
 {
     cleanup();
+}
+
+UIChooserNodeGlobal *UIChooserItemGlobal::nodeToGlobalType() const
+{
+    return node() ? node()->toGlobalNode() : 0;
 }
 
 bool UIChooserItemGlobal::isToolButtonArea(const QPoint &position, int iMarginMultiplier /* = 1 */) const

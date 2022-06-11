@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGlobal.h 83672 2020-04-10 16:27:16Z vboxsync $ */
+/* $Id: UIChooserItemGlobal.h 83924 2020-04-22 12:59:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGlobal class declaration.
  */
@@ -45,6 +45,9 @@ public:
 
     /** @name Item stuff.
       * @{ */
+        /** Returns global node reference. */
+        UIChooserNodeGlobal *nodeToGlobalType() const;
+
         /** Returns whether passed @a position belongs to tool button area. */
         bool isToolButtonArea(const QPoint &position, int iMarginMultiplier = 1) const;
         /** Returns whether passed @a position belongs to pin button area. */
