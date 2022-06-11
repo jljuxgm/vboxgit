@@ -1,4 +1,4 @@
-/* $Id: Svga.h 83222 2020-03-06 11:22:07Z vboxsync $ */
+/* $Id: Svga.h 83578 2020-04-06 00:04:45Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver VMSVGA.
  */
@@ -82,6 +82,8 @@ typedef struct VBOXWDDM_EXT_VMSVGA
     uint32_t u32MemorySize;   /** SVGA_REG_MEMORY_SIZE */
     uint32_t u32MaxTextureWidth;  /** SVGA3D_DEVCAP_MAX_TEXTURE_WIDTH */
     uint32_t u32MaxTextureHeight; /** SVGA3D_DEVCAP_MAX_TEXTURE_HEIGHT */
+
+    uint32_t u32MaxTextureLevels; /** 1 + floor(log2(max(u32MaxTextureWidth, u32MaxTextureHeight))) */
 
     /** Fifo state. */
     VMSVGAFIFO fifo;

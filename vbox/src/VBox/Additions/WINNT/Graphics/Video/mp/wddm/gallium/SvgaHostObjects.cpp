@@ -1,4 +1,4 @@
-/* $Id: SvgaHostObjects.cpp 83222 2020-03-06 11:22:07Z vboxsync $ */
+/* $Id: SvgaHostObjects.cpp 83578 2020-04-06 00:04:45Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - VMSVGA host object accounting.
  */
@@ -317,6 +317,8 @@ NTSTATUS SvgaSurfaceCreate(VBOXWDDM_EXT_VMSVGA *pSvga,
 {
     NTSTATUS Status = svgaHostObjectsProcessPending(pSvga);
     AssertReturn(Status == STATUS_SUCCESS, Status);
+
+    AssertReturn(cSizes <= pSvga->u32MaxTextureLevels, STATUS_INVALID_PARAMETER);
 
     SURFACEOBJECT *pSO = (SURFACEOBJECT *)GaMemAllocZero(sizeof(SURFACEOBJECT));
     if (pSO)
