@@ -1,4 +1,4 @@
-/* $Id: UICloudMachineSettingsDialogPage.h 83963 2020-04-24 11:05:10Z vboxsync $ */
+/* $Id: UICloudMachineSettingsDialogPage.h 84006 2020-04-27 12:13:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudMachineSettingsDialogPage class declaration.
  */
@@ -28,8 +28,9 @@
 /* GUI includes: */
 #include "UIFormEditorWidget.h"
 
-/* Forward declarations: */
-class CForm;
+/* COM includes: */
+#include "COMEnums.h"
+#include "CForm.h"
 
 /** Cloud machine settings dialog page. */
 class UICloudMachineSettingsDialogPage : public QWidget
@@ -40,6 +41,11 @@ public:
 
     /** Constructs cloud machine settings dialog page passing @a pParent to the base-class. */
     UICloudMachineSettingsDialogPage(QWidget *pParent);
+
+    /** Returns page form. */
+    CForm form() const { return m_comForm; }
+
+public slots:
 
     /** Defines page @a comForm. */
     void setForm(const CForm &comForm);
@@ -54,6 +60,9 @@ private:
 
     /** Holds the form editor widget instance. */
     UIFormEditorWidgetPointer  m_pFormEditor;
+
+    /** Holds the page form. */
+    CForm  m_comForm;
 };
 
 /** Safe pointer to Form Editor widget. */

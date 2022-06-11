@@ -1,4 +1,4 @@
-/* $Id: UICloudMachineSettingsDialogPage.cpp 83963 2020-04-24 11:05:10Z vboxsync $ */
+/* $Id: UICloudMachineSettingsDialogPage.cpp 84006 2020-04-27 12:13:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudMachineSettingsDialogPage class implementation.
  */
@@ -22,6 +22,9 @@
 /* GUI includes: */
 #include "UICloudMachineSettingsDialogPage.h"
 
+/* Other VBox includes: */
+#include "iprt/assert.h"
+
 
 UICloudMachineSettingsDialogPage::UICloudMachineSettingsDialogPage(QWidget *pParent)
     : QWidget(pParent)
@@ -31,14 +34,15 @@ UICloudMachineSettingsDialogPage::UICloudMachineSettingsDialogPage(QWidget *pPar
 
 void UICloudMachineSettingsDialogPage::setForm(const CForm &comForm)
 {
-    if (m_pFormEditor)
-        m_pFormEditor->setForm(comForm);
+    m_comForm = comForm;
+    AssertPtrReturnVoid(m_pFormEditor.data());
+    m_pFormEditor->setForm(m_comForm);
 }
 
 void UICloudMachineSettingsDialogPage::makeSureDataCommitted()
 {
-    if (m_pFormEditor)
-        m_pFormEditor->makeSureEditorDataCommitted();
+    AssertPtrReturnVoid(m_pFormEditor.data());
+    m_pFormEditor->makeSureEditorDataCommitted();
 }
 
 void UICloudMachineSettingsDialogPage::prepare()
