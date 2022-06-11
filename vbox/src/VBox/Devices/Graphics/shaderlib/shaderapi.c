@@ -1,4 +1,4 @@
-/* $Id: shaderapi.c 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: shaderapi.c 81981 2019-11-19 10:10:16Z vboxsync $ */
 /** @file
  * shaderlib -- interface to WINE's Direct3D shader functions
  */
@@ -225,7 +225,12 @@ SHADERDECL(int) ShaderContextCreate(void **ppShaderContext)
     pContext->pDeviceContext->shader_backend = &glsl_shader_backend;
     pContext->pDeviceContext->ps_selected_mode = SHADER_GLSL;
     pContext->pDeviceContext->vs_selected_mode = SHADER_GLSL;
+#ifndef VBOX_WITH_VMSVGA
     pContext->render_offscreen = false;
+#else
+    /* VMSVGA always renders offscreen. */
+    pContext->render_offscreen = true;
+#endif
 
     list_init(&pContext->pDeviceContext->shaders);
 
