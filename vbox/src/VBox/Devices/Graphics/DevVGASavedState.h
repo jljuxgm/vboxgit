@@ -1,4 +1,4 @@
-/* $Id: DevVGASavedState.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: DevVGASavedState.h 83274 2020-03-12 17:12:56Z vboxsync $ */
 /** @file
  * DevVGA - Saved state versions.
  *
@@ -46,7 +46,8 @@
         } \
     } while (0)
 
-#define VGA_SAVEDSTATE_VERSION                   21
+#define VGA_SAVEDSTATE_VERSION                   22
+#define VGA_SAVEDSTATE_VERSION_VMSVGA_CURSOR     22 /* Legacy cursor registers. */
 #define VGA_SAVEDSTATE_VERSION_VMSVGA_SCREENS    21 /* Screen objects. */
 #define VGA_SAVEDSTATE_VERSION_VMSVGA            20 /* Multiple updates and fixes for VMSVGA saved state. */
 #define VGA_SAVEDSTATE_VERSION_VMSVGA_TEX_STAGES 19
