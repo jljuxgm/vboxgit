@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 82896 2020-01-28 21:43:45Z vboxsync $ */
+/* $Id: PGMPool.cpp 82897 2020-01-28 22:47:20Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -489,6 +489,8 @@ VMMR3_INT_DECL(int) PGMR3PoolGrow(PVM pVM, PVMCPU pVCpu)
         return rc;
     LogRel(("PGMR3PoolGrow: rc=%Rrc cCurPages=%#x cMaxPages=%#x\n",
             rc, pVM->pgm.s.pPoolR3->cCurPages, pVM->pgm.s.pPoolR3->cMaxPages));
+    if (pVM->pgm.s.pPoolR3->cCurPages > 128 && RT_FAILURE_NP(rc))
+        return -rc;
     return rc;
 }
 
