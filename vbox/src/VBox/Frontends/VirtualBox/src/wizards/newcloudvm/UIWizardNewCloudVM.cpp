@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVM.cpp 79682 2019-07-11 07:25:08Z vboxsync $ */
+/* $Id: UIWizardNewCloudVM.cpp 79700 2019-07-11 15:14:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVM class implementation.
  */
@@ -98,7 +98,7 @@ bool UIWizardNewCloudVM::createVSDForm()
 
         /* Show "Acquire launch form" progress: */
         msgCenter().showModalProgressDialog(comProgress, tr("Acquire launch form..."),
-                                            ":/progress_refresh_90px.png", 0, 0);
+                                            ":/progress_refresh_90px.png", this, 0);
         if (!comProgress.isOk() || comProgress.GetResultCode() != 0)
         {
             msgCenter().cannotAcquireCloudClientParameter(comProgress);
