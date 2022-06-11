@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: storagecfg.py 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: storagecfg.py 83204 2020-03-05 10:34:47Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage test configuration API.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 82968 $"
+__version__ = "$Revision: 83204 $"
 
 # Standard Python imports.
 import os;
@@ -174,6 +174,13 @@ class StorageConfigOsSolaris(StorageConfigOs):
             fRc = oExec.execBinaryNoStdOut('zfs', ('create', '-o', 'mountpoint='+sMountPoint, '-V', cbVol, sPool + '/' + sVol));
         else:
             fRc = oExec.execBinaryNoStdOut('zfs', ('create', '-o', 'mountpoint='+sMountPoint, sPool + '/' + sVol));
+
+        # @todo Add proper parameters to set proper owner:group ownership, the testcase broke in r133060 for Solaris
+        #       because ceating directories is now done using the python mkdir API instead of calling 'sudo mkdir...'.
+        #       No one noticed though because testboxstor1 went out of action before...
+        #       Will get fixed as soon as I'm back home.
+        if fRc:
+            fRc = oExec.execBinaryNoStdOut('chmod', ('777', sMountPoint));
 
         return fRc;
 
