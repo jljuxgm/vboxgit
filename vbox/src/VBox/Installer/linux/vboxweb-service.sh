@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: vboxweb-service.sh 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: vboxweb-service.sh 82263 2019-11-28 10:21:30Z vboxsync $
 ## @file
 # VirtualBox web service API daemon init script.
 #
@@ -26,6 +26,7 @@
 # Default-Start:  2 3 4 5
 # Default-Stop:   0 1 6
 # Description:    VirtualBox web service API
+# X-Required-Target-Start: network-online
 ### END INIT INFO
 
 PATH=$PATH:/bin:/sbin:/usr/sbin
