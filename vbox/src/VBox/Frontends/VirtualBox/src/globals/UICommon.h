@@ -1,4 +1,4 @@
-/* $Id: UICommon.h 79365 2019-06-26 15:57:32Z vboxsync $ */
+/* $Id: UICommon.h 79889 2019-07-19 15:45:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class declaration.
  */
@@ -471,6 +471,10 @@ public:
         CSession openSession(const QUuid &uId, KLockType enmLockType = KLockType_Write);
         /** Opens session of KLockType_Shared type for VM with certain @a uId. */
         CSession openExistingSession(const QUuid &uId) { return openSession(uId, KLockType_Shared); }
+        /** Tries to guess if new @a comSession needs to be opened for certain @a comMachine,
+          * if yes, new session of required type will be opened and machine will be updated,
+          * otherwise, no session will be created and machine will be left unchanged. */
+        CSession tryToOpenSessionFor(CMachine &comMachine);
     /** @} */
 
     /** @name COM: Virtual Media stuff.
