@@ -1,4 +1,4 @@
-/* $Id: VBoxMPGaFence.cpp 76884 2019-01-18 10:45:23Z vboxsync $ */
+/* $Id: VBoxMPGaFence.cpp 82440 2019-12-05 20:44:23Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver interface for WDDM kernel mode driver.
  */
@@ -14,6 +14,7 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+#define GALOG_GROUP GALOG_GROUP_FENCE
 
 #include "VBoxMPGaWddm.h"
 #include "../VBoxMPVidPn.h"

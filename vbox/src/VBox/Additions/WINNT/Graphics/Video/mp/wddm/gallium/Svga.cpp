@@ -1,4 +1,4 @@
-/* $Id: Svga.cpp 81594 2019-10-30 18:47:23Z vboxsync $ */
+/* $Id: Svga.cpp 82440 2019-12-05 20:44:23Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - VMSVGA.
  */
@@ -14,6 +14,8 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
+#define GALOG_GROUP GALOG_GROUP_SVGA
 
 #include "Svga.h"
 #include "SvgaFifo.h"

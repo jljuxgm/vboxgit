@@ -1,4 +1,4 @@
-/* $Id: SvgaFifo.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: SvgaFifo.cpp 82440 2019-12-05 20:44:23Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - VMSVGA FIFO.
  */
@@ -14,6 +14,8 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
+#define GALOG_GROUP GALOG_GROUP_SVGA_FIFO
 
 #include "SvgaFifo.h"
 #include "SvgaHw.h"
