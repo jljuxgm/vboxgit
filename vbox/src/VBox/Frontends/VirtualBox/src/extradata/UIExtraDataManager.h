@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 78519 2019-05-14 17:03:54Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 78680 2019-05-23 07:11:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -668,6 +668,13 @@ public:
         void setGuestProcessControlDialogGeometry(const QRect &geometry, bool fMaximized);
         void setFileManagerVisiblePanels(const QStringList &panelNameList);
         QStringList fileManagerVisiblePanels();
+    /** @} */
+
+    /** @name Soft Keyboard
+      * @{ */
+        QRect softKeyboardDialogGeometry(QWidget *pWidget, const QRect &defaultGeometry);
+        void setSoftKeyboardDialogGeometry(const QRect &geometry, bool fMaximized);
+        bool softKeyboardDialogShouldBeMaximized();
     /** @} */
 
     /** @name File Manager options

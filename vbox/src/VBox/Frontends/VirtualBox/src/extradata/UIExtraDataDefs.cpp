@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 78519 2019-05-14 17:03:54Z vboxsync $ */
+/* $Id: UIExtraDataDefs.cpp 78680 2019-05-23 07:11:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -202,6 +202,9 @@ const char *UIExtraDataDefs::GUI_GuestControl_FileManagerDialogGeometry = "GUI/G
 const char *UIExtraDataDefs::GUI_GuestControl_FileManagerVisiblePanels = "GUI/GuestControl/FileManagerVisiblePanels";
 const char *UIExtraDataDefs::GUI_GuestControl_ProcessControlSplitterHints = "GUI/GuestControl/ProcessControlSplitterHints";
 const char *UIExtraDataDefs::GUI_GuestControl_ProcessControlDialogGeometry = "GUI/GuestControl/ProcessControlDialogGeometry";
+
+/* Soft Keyboard: */
+const char *UIExtraDataDefs::GUI_SoftKeyboard_DialogGeometry = "GUI/SoftKeyboardDialogGeometry";
 
 /* File Manager options: */
 const char *UIExtraDataDefs::GUI_GuestControl_FileManagerOptions = "GUI/GuestControl/FileManagerOptions";

@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 78519 2019-05-14 17:03:54Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 78680 2019-05-23 07:11:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -4286,6 +4286,25 @@ void UIExtraDataManager::setFileManagerVisiblePanels(const QStringList &panelNam
 QStringList UIExtraDataManager::fileManagerVisiblePanels()
 {
     return extraDataStringList(GUI_GuestControl_FileManagerVisiblePanels);
+}
+
+QRect UIExtraDataManager::softKeyboardDialogGeometry(QWidget *pWidget, const QRect &defaultGeometry)
+{
+    return dialogGeometry(GUI_SoftKeyboard_DialogGeometry, pWidget, defaultGeometry);
+}
+
+void UIExtraDataManager::setSoftKeyboardDialogGeometry(const QRect &geometry, bool fMaximized)
+{
+    setDialogGeometry(GUI_SoftKeyboard_DialogGeometry, geometry, fMaximized);
+}
+
+bool UIExtraDataManager::softKeyboardDialogShouldBeMaximized()
+{
+    /* Get corresponding extra-data: */
+    const QStringList data = extraDataStringList(GUI_SoftKeyboard_DialogGeometry);
+
+    /* Make sure 5th item has required value: */
+    return data.size() == 5 && data[4] == GUI_Geometry_State_Max;
 }
 
 void UIExtraDataManager::setFileManagerOptions(bool fListDirectoriesFirst,
