@@ -1,4 +1,4 @@
-/* $Id: fileio-win.cpp 82835 2020-01-22 21:53:59Z vboxsync $ */
+/* $Id: fileio-win.cpp 82836 2020-01-22 21:55:17Z vboxsync $ */
 /** @file
  * IPRT - File I/O, native implementation for the Windows host platform.
  */
@@ -924,7 +924,7 @@ static HANDLE rtFileReOpenAppendOnlyWithFullWriteAccess(HANDLE hFile)
 
 RTR3DECL(int) RTFileSetSize(RTFILE hFile, uint64_t cbSize)
 {
-#if 0
+#if 1
     HANDLE hNtFile  = (HANDLE)RTFileToNative(hFile);
     HANDLE hDupFile = INVALID_HANDLE_VALUE;
     union

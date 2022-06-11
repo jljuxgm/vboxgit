@@ -1,4 +1,4 @@
-/* $Id: tstFile.cpp 82835 2020-01-22 21:53:59Z vboxsync $ */
+/* $Id: tstFile.cpp 82836 2020-01-22 21:55:17Z vboxsync $ */
 /** @file
  * IPRT Testcase - File I/O.
  */
@@ -75,7 +75,7 @@ static void tstAppend(RTFILE hFile)
     if (memcmp(achBuf, g_szTestStr2, cbWrite1 + cbWrite2) != 0)
         RTTestIFailed("Read back #1 failed (%#zx + %#zx)", cbWrite1, cbWrite2);
 
-#ifndef RT_OS_WINDOWS
+#if 1 //ndef RT_OS_WINDOWS
     /*
      * Truncate the file and write some more. This is problematic on windows.
      */
