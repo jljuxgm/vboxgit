@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 82170 2019-11-25 12:22:23Z vboxsync $
+# $Id: Makefile.kmk 82296 2019-11-29 23:24:58Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -1388,7 +1388,7 @@ if defined(VBOX_WITH_EXTPACK) && defined(VBOX_WITH_EXTPACK_PUEL) && defined(VBOX
 
  endif
 
- if defined(VBOX_WITH_PCI_PASSTHROUGH)
+ if defined(VBOX_WITH_PCI_PASSTHROUGH_IMPL)
   DLLS += VBoxPciRawR3
   VBoxPciRawR3_TEMPLATE     = VBoxR3ExtPackPuel
   VBoxPciRawR3_SOURCES      = Bus/DevPciRaw.cpp
