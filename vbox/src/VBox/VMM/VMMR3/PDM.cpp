@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 78208 2019-04-18 15:54:40Z vboxsync $ */
+/* $Id: PDM.cpp 80027 2019-07-28 14:26:07Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -480,11 +480,7 @@ VMMR3_INT_DECL(int) PDMR3Init(PVM pVM)
  */
 VMMR3_INT_DECL(int) PDMR3InitCompleted(PVM pVM, VMINITCOMPLETED enmWhat)
 {
-#ifdef VBOX_WITH_RAW_MODE
-    if (enmWhat == VMINITCOMPLETED_RC)
-#else
     if (enmWhat == VMINITCOMPLETED_RING0)
-#endif
         return pdmR3DevInitComplete(pVM);
     return VINF_SUCCESS;
 }
