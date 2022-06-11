@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackendCOM.cpp 82681 2020-01-09 04:31:04Z vboxsync $ */
+/* $Id: UIConverterBackendCOM.cpp 82694 2020-01-09 13:28:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConverterBackendCOM implementation.
  */
@@ -356,16 +356,16 @@ template<> QString toString(const KNetworkAdapterType &type)
 {
     switch (type)
     {
-        case KNetworkAdapterType_Am79C970A: return QApplication::translate("UICommon", "PCnet-PCI II (Am79C970A)", "NetworkAdapterType");
-        case KNetworkAdapterType_Am79C973:  return QApplication::translate("UICommon", "PCnet-FAST III (Am79C973)", "NetworkAdapterType");
-        case KNetworkAdapterType_I82540EM:  return QApplication::translate("UICommon", "Intel PRO/1000 MT Desktop (82540EM)", "NetworkAdapterType");
-        case KNetworkAdapterType_I82543GC:  return QApplication::translate("UICommon", "Intel PRO/1000 T Server (82543GC)", "NetworkAdapterType");
-        case KNetworkAdapterType_I82545EM:  return QApplication::translate("UICommon", "Intel PRO/1000 MT Server (82545EM)", "NetworkAdapterType");
+        case KNetworkAdapterType_Am79C970A:  return QApplication::translate("UICommon", "PCnet-PCI II (Am79C970A)", "NetworkAdapterType");
+        case KNetworkAdapterType_Am79C973:   return QApplication::translate("UICommon", "PCnet-FAST III (Am79C973)", "NetworkAdapterType");
+        case KNetworkAdapterType_I82540EM:   return QApplication::translate("UICommon", "Intel PRO/1000 MT Desktop (82540EM)", "NetworkAdapterType");
+        case KNetworkAdapterType_I82543GC:   return QApplication::translate("UICommon", "Intel PRO/1000 T Server (82543GC)", "NetworkAdapterType");
+        case KNetworkAdapterType_I82545EM:   return QApplication::translate("UICommon", "Intel PRO/1000 MT Server (82545EM)", "NetworkAdapterType");
 #ifdef VBOX_WITH_VIRTIO
-        case KNetworkAdapterType_Virtio:    return QApplication::translate("UICommon", "Paravirtualized Network (virtio-net)", "NetworkAdapterType");
+        case KNetworkAdapterType_Virtio:     return QApplication::translate("UICommon", "Paravirtualized Network (virtio-net)", "NetworkAdapterType");
 #endif /* VBOX_WITH_VIRTIO */
-        case KNetworkAdapterType_Virtio_1_0: return QApplication::translate("UICommon", "Paravirtualized Network (virtio-net-1-dot-0)", "NetworkAdapterType");
-        case KNetworkAdapterType_Am79C960:  return QApplication::translate("UICommon", "PCnet-ISA (Am79C960)", "NetworkAdapterType");
+        case KNetworkAdapterType_Virtio_1_0: return QApplication::translate("UICommon", "Paravirtualized Network (virtio-net 1.0)", "NetworkAdapterType");
+        case KNetworkAdapterType_Am79C960:   return QApplication::translate("UICommon", "PCnet-ISA (Am79C960)", "NetworkAdapterType");
         default: AssertMsgFailed(("No text for %d", type)); break;
     }
     return QString();
