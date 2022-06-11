@@ -1,4 +1,4 @@
-/* $Id: utf8-posix.cpp 80764 2019-09-13 06:52:50Z vboxsync $ */
+/* $Id: utf8-posix.cpp 82631 2019-12-21 15:27:30Z vboxsync $ */
 /** @file
  * IPRT - UTF-8 helpers, POSIX.
  */
@@ -87,6 +87,13 @@ AssertCompile(sizeof(iconv_t) <= sizeof(void *));
 #  define NON_CONST_ICONV_INPUT
 # else
 # error __FreeBSD_version__
+# endif
+#endif
+#ifdef RT_OS_NETBSD
+/* iconv constness was changed on 2019-10-24, shortly after 9.99.17 */
+# include <sys/param.h>
+# if __NetBSD_Prereq__(9,99,18)
+#  define NON_CONST_ICONV_INPUT
 # endif
 #endif
 
