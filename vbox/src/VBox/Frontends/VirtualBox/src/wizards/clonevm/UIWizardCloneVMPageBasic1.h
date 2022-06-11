@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMPageBasic1.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIWizardCloneVMPageBasic1.h 82550 2019-12-11 14:21:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMPageBasic1 class declaration.
  */
@@ -91,7 +91,6 @@ protected:
     QLabel      *m_pPathLabel;
     QLabel      *m_pMACComboBoxLabel;
     QComboBox   *m_pMACComboBox;
-    QLabel      *m_pAdditionalOptionsLabel;
     QCheckBox   *m_pKeepDiskNamesCheckBox;
     QCheckBox   *m_pKeepHWUUIDsCheckBox;
 };
@@ -128,6 +127,7 @@ private:
 
     QIRichTextLabel *m_pMainLabel;
     QGridLayout     *m_pContainerLayout;
+    QLabel          *m_pAdditionalOptionsLabel;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_wizards_clonevm_UIWizardCloneVMPageBasic1_h */
