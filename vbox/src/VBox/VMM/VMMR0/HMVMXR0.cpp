@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 79536 2019-07-05 06:34:49Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 79537 2019-07-05 06:46:27Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -14420,6 +14420,7 @@ static VBOXSTRICTRC hmR0VmxExitXcptBP(PVMCPU pVCpu, PVMXTRANSIENT pVmxTransient)
 static VBOXSTRICTRC hmR0VmxExitXcptAC(PVMCPU pVCpu, PVMXTRANSIENT pVmxTransient)
 {
     HMVMX_VALIDATE_EXIT_XCPT_HANDLER_PARAMS(pVCpu, pVmxTransient);
+    STAM_COUNTER_INC(&pVCpu->hm.s.StatExitGuestAC);
 
     /*
      * Re-inject it. We'll detect any nesting before getting here.
