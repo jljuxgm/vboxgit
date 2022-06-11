@@ -1,4 +1,4 @@
-/* $Id: EMHandleRCTmpl.h 80016 2019-07-26 17:06:38Z vboxsync $ */
+/* $Id: EMHandleRCTmpl.h 80507 2019-08-30 06:27:07Z vboxsync $ */
 /** @file
  * EM - emR3[Raw|Hm|Nem]HandleRC template.
  */
@@ -155,6 +155,7 @@ int emR3NemHandleRC(PVM pVM, PVMCPU pVCpu, int rc)
 
         case VINF_EM_RAW_GUEST_TRAP:
         case VINF_EM_RAW_EMULATE_INSTR:
+            Assert(!TRPMHasTrap(pVCpu)); /* We're directly executing instructions below without respecting any pending traps! */
             rc = emR3ExecuteInstruction(pVM, pVCpu, "EMUL: ");
             break;
 
