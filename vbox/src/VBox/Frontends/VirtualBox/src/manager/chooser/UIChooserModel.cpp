@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 84105 2020-04-30 14:07:20Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 84106 2020-04-30 14:09:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -95,9 +95,6 @@ void UIChooserModel::deinit()
 {
     /* Save last selected-item: */
     saveLastSelectedItem();
-
-    /* Clear list of selected-items: */
-    clearSelectedItems();
 
     /* Call to base-class: */
     UIChooserAbstractModel::deinit();
