@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicNormal.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIMachineLogicNormal.cpp 78995 2019-06-05 13:30:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicNormal class implementation.
  */
@@ -224,7 +224,7 @@ void UIMachineLogicNormal::sltHandleActionTriggerViewScreenToggle(int iIndex, bo
     if (!fEnabled)
     {
         uisession()->setScreenVisibleHostDesires(iIndex, false);
-        display().SetVideoModeHint(iIndex, false, false, 0, 0, 0, 0, 0);
+        display().SetVideoModeHint(iIndex, false, false, 0, 0, 0, 0, 0, true);
     }
     else
     {
@@ -234,7 +234,7 @@ void UIMachineLogicNormal::sltHandleActionTriggerViewScreenToggle(int iIndex, bo
         if (!uHeight)
             uHeight = 600;
         uisession()->setScreenVisibleHostDesires(iIndex, true);
-        display().SetVideoModeHint(iIndex, true, false, 0, 0, uWidth, uHeight, 32);
+        display().SetVideoModeHint(iIndex, true, false, 0, 0, uWidth, uHeight, 32, true);
     }
 }
 
@@ -242,7 +242,7 @@ void UIMachineLogicNormal::sltHandleActionTriggerViewScreenResize(int iIndex, co
 {
     /* Resize guest to required size: */
     display().SetVideoModeHint(iIndex, uisession()->isScreenVisible(iIndex),
-                             false, 0, 0, size.width(), size.height(), 0);
+                             false, 0, 0, size.width(), size.height(), 0, true);
 }
 
 void UIMachineLogicNormal::sltHostScreenAvailableAreaChange()

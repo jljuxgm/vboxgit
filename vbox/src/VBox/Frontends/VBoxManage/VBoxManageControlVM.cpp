@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 77910 2019-03-27 11:33:01Z vboxsync $ */
+/* $Id: VBoxManageControlVM.cpp 78995 2019-06-05 13:30:45Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of the controlvm command.
  */
@@ -1438,7 +1438,7 @@ RTEXITCODE handleControlVM(HandlerArg *a)
             }
             CHECK_ERROR_BREAK(pDisplay, SetVideoModeHint(uDisplayIdx, fEnabled,
                                                          fChangeOrigin, iOriginX, iOriginY,
-                                                         uXRes, uYRes, uBpp));
+                                                         uXRes, uYRes, uBpp, true));
         }
         else if (!strcmp(a->argv[1], "setscreenlayout"))
         {

@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 78784 2019-05-27 14:16:41Z vboxsync $ */
+/* $Id: DisplayImpl.h 78995 2019-06-05 13:30:45Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -259,7 +259,8 @@ private:
                                      LONG aOriginY,
                                      ULONG aWidth,
                                      ULONG aHeight,
-                                     ULONG aBitsPerPixel);
+                                     ULONG aBitsPerPixel,
+                                     BOOL aNotify);
     virtual HRESULT getVideoModeHint(ULONG aDisplay,
                                      BOOL *aEnabled,
                                      BOOL *aChangeOrigin,

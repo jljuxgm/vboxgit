@@ -1,4 +1,4 @@
-/* $Id: VBoxSDL.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxSDL.cpp 78995 2019-06-05 13:30:45Z vboxsync $ */
 /** @file
  * VBox frontends: VBoxSDL (simple frontend based on SDL):
  * Main code
@@ -2823,7 +2823,7 @@ DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
                 /* communicate the resize event to the guest */
                 gpDisplay->SetVideoModeHint(0 /*=display*/, true /*=enabled*/, false /*=changeOrigin*/,
                                             0 /*=originX*/, 0 /*=originY*/,
-                                            uResizeWidth, uResizeHeight, 0 /*=don't change bpp*/);
+                                            uResizeWidth, uResizeHeight, 0 /*=don't change bpp*/, true /*=notify*/);
                 break;
 
             }
@@ -5224,7 +5224,7 @@ static void SetFullscreen(bool enable)
             gfIgnoreNextResize = TRUE;
             gpDisplay->SetVideoModeHint(0 /*=display*/, true /*=enabled*/,
                                         false /*=changeOrigin*/, 0 /*=originX*/, 0 /*=originY*/,
-                                        NewWidth, NewHeight, 0 /*don't change bpp*/);
+                                        NewWidth, NewHeight, 0 /*don't change bpp*/, true /*=notify*/);
         }
     }
 }
