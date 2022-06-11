@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 82114 2019-11-22 23:05:31Z vboxsync $ */
+/* $Id: DevVGA.h 82199 2019-11-25 20:54:14Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -361,14 +361,16 @@ typedef struct VGAState
     bool                        fRenderVRAM;
     /** Whether 3D is enabled for the VM. */
     bool                        f3DEnabled;
+    /** Set if state has been restored. */
+    bool                        fStateLoaded;
 #ifdef VBOX_WITH_VMSVGA
     /* Whether the SVGA emulation is enabled or not. */
     bool                        fVMSVGAEnabled;
     bool                        fVMSVGAPciId;
     bool                        fVMSVGAPciBarLayout;
-    bool                        Padding4[4];
+    bool                        Padding4[3];
 #else
-    bool                        Padding4[3+4];
+    bool                        Padding4[3+3];
 #endif
 
     struct {

@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 82127 2019-11-23 08:45:29Z vboxsync $ */
+/* $Id: DevVGA-SVGA.cpp 82199 2019-11-25 20:54:14Z vboxsync $ */
 /** @file
  * VMware SVGA device.
  *
@@ -5286,7 +5286,10 @@ DECLCALLBACK(int) vmsvgaR3PciIORegionFifoMapUnmap(PPDMDEVINS pDevIns, PPDMPCIDEV
     Assert(pPciDev == pDevIns->apPciDevs[0]);
 
     Log(("vmsvgaR3PciIORegionFifoMapUnmap: iRegion=%d GCPhysAddress=%RGp cb=%RGp enmType=%d\n", iRegion, GCPhysAddress, cb, enmType));
-    AssertReturn(iRegion == pThis->pciRegions.iFIFO && enmType == PCI_ADDRESS_SPACE_MEM_PREFETCH, VERR_INTERNAL_ERROR);
+    AssertReturn(   iRegion == pThis->pciRegions.iFIFO
+                 && (   enmType == PCI_ADDRESS_SPACE_MEM
+                     || (enmType == PCI_ADDRESS_SPACE_MEM_PREFETCH /* got wrong in 6.1.0RC1 */ && pThis->fStateLoaded))
+                 , VERR_INTERNAL_ERROR);
     if (GCPhysAddress != NIL_RTGCPHYS)
     {
         /*
