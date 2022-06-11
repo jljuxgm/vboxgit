@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 78675 $"
+__version__ = "$Revision: 78676 $"
 
 # Standard Python imports.
 import os
@@ -98,7 +98,8 @@ class SubTstDrvAddSharedFolders1(base.SubTestDriverBase):
         # Skip the test if before 6.0
         #
         if self.oTstDrv.fpApiVer < 6.0:
-            return None;
+            reporter.log('Requires 6.0 or later (for now)');
+            return (None, oTxsSession);
 
         #
         # Create the host directory to share. Empty except for a 'candle.dir' subdir
