@@ -1,4 +1,4 @@
-/* $Id: errmsg-sorter.cpp 83745 2020-04-17 12:33:33Z vboxsync $ */
+/* $Id: errmsg-sorter.cpp 83749 2020-04-17 12:42:46Z vboxsync $ */
 /** @file
  * IPRT - Status code messages, sorter build program.
  */
@@ -191,8 +191,8 @@ int main(int argc, char **argv)
                 if (IgnoreDuplicateDefine(pMsg->pszDefine))
                     continue;
                 PCRTSTATUSMSG pPrev = &g_aStatusMsgs[i - 1];
-                fprintf(stderr, "%s: warning: Duplicate value %#lx (%ld) - %s and %s\n",
-                        argv[0], (unsigned long)iPrev, iPrev, pMsg->pszDefine, pPrev->pszDefine);
+                fprintf(stderr, "%s: warning: Duplicate value %d - %s and %s\n",
+                        argv[0], iPrev, pMsg->pszDefine, pPrev->pszDefine);
             }
             else if (i + 1 < RT_ELEMENTS(g_aStatusMsgs))
             {
