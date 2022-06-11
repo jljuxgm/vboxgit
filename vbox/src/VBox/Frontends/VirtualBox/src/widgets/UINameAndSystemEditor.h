@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UINameAndSystemEditor.h 83902 2020-04-21 16:20:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class declaration.
  */
@@ -73,6 +73,13 @@ public:
                           bool fChooseName = true,
                           bool fChoosePath = false,
                           bool fChooseType = true);
+
+    /** Defines whether VM name stuff is @a fEnabled. */
+    void setNameStuffEnabled(bool fEnabled);
+    /** Defines whether VM path stuff is @a fEnabled. */
+    void setPathStuffEnabled(bool fEnabled);
+    /** Defines whether VM OS type stuff is @a fEnabled. */
+    void setOSTypeStuffEnabled(bool fEnabled);
 
     /** Defines the VM @a strName. */
     void setName(const QString &strName);

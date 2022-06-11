@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElement.cpp 83719 2020-04-16 16:30:01Z vboxsync $ */
+/* $Id: UIDetailsElement.cpp 83902 2020-04-21 16:20:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement class implementation.
  */
@@ -169,7 +169,8 @@ void UIDetailsElement::updateAppearance()
 
     /* Update anchor role restrictions: */
     ConfigurationAccessLevel cal = m_pSet->configurationAccessLevel();
-    m_pTextPane->setAnchorRoleRestricted("#machine_name", cal != ConfigurationAccessLevel_Full);
+    m_pTextPane->setAnchorRoleRestricted("#machine_name",    cal != ConfigurationAccessLevel_Full
+                                                          && cal != ConfigurationAccessLevel_Partial_Saved);
     m_pTextPane->setAnchorRoleRestricted("#machine_location", cal != ConfigurationAccessLevel_Full);
     m_pTextPane->setAnchorRoleRestricted("#os_type", cal != ConfigurationAccessLevel_Full);
     m_pTextPane->setAnchorRoleRestricted("#base_memory", cal != ConfigurationAccessLevel_Full);
