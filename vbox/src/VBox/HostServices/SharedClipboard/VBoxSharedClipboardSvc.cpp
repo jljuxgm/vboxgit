@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc.cpp 78441 2019-05-07 17:48:32Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc.cpp 78442 2019-05-07 17:52:50Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Host service entry points.
  */
@@ -414,7 +414,7 @@ static DECLCALLBACK(void) svcCall(void *,
                                   VBOXHGCMSVCPARM paParms[],
                                   uint64_t tsArrival)
 {
-    RT_NOREF_PV(u32ClientID, tsArrival);
+    RT_NOREF(u32ClientID, tsArrival);
     int rc = VINF_SUCCESS;
 
     LogFunc(("u32ClientID = %d, fn = %d, cParms = %d, pparms = %d\n",
