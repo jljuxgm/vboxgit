@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic2.h 79552 2019-07-05 10:18:48Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic2.h 79565 2019-07-06 11:25:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic2 class declaration.
  */
@@ -34,6 +34,7 @@
 #include "CCloudProfile.h"
 #include "CCloudProvider.h"
 #include "CCloudProviderManager.h"
+#include "CVirtualSystemDescription.h"
 #include "CVirtualSystemDescriptionForm.h"
 
 /* Forward declarations: */
@@ -155,6 +156,8 @@ protected:
     QString profileName() const;
     /** Returns Appliance object. */
     CAppliance appliance() const;
+    /** Returns Virtual System Description object. */
+    CVirtualSystemDescription vsd() const;
     /** Returns Virtual System Description Export Form object. */
     CVirtualSystemDescriptionForm vsdExportForm() const;
 
@@ -169,6 +172,8 @@ protected:
     CCloudProfile                  m_comCloudProfile;
     /** Holds the Appliance object reference. */
     CAppliance                     m_comAppliance;
+    /** Holds the Virtual System Description object reference. */
+    CVirtualSystemDescription      m_comVSD;
     /** Holds the Virtual System Description Export Form object reference. */
     CVirtualSystemDescriptionForm  m_comVSDExportForm;
 
@@ -244,6 +249,7 @@ class UIWizardExportAppPageBasic2 : public UIWizardPage, public UIWizardExportAp
     Q_PROPERTY(bool includeISOsSelected READ isIncludeISOsSelected WRITE setIncludeISOsSelected);
     Q_PROPERTY(QString providerShortName READ providerShortName);
     Q_PROPERTY(CAppliance appliance READ appliance);
+    Q_PROPERTY(CVirtualSystemDescription vsd READ vsd);
     Q_PROPERTY(CVirtualSystemDescriptionForm vsdExportForm READ vsdExportForm);
 
 public:
