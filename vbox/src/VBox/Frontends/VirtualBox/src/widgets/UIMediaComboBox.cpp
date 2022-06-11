@@ -1,4 +1,4 @@
-/* $Id: UIMediaComboBox.cpp 80897 2019-09-18 17:39:58Z vboxsync $ */
+/* $Id: UIMediaComboBox.cpp 80899 2019-09-18 17:44:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediaComboBox class implementation.
  */
@@ -60,9 +60,13 @@ void UIMediaComboBox::repopulate()
 {
     /* Start medium-enumeration (if necessary): */
     if (!uiCommon().isFullMediumEnumerationRequested())
-        uiCommon().startMediumEnumeration();
-    else
-        refresh();
+    {
+        CMediumVector comMedia;
+        comMedia << uiCommon().host().GetDVDDrives();
+        comMedia << uiCommon().virtualBox().GetDVDImages();
+        uiCommon().enumerateAdditionalMedia(comMedia);
+    }
+    refresh();
 }
 
 void UIMediaComboBox::setCurrentItem(const QUuid &uItemId)

@@ -1,4 +1,4 @@
-/* $Id: UIMediumEnumerator.cpp 80895 2019-09-18 16:21:48Z vboxsync $ */
+/* $Id: UIMediumEnumerator.cpp 80899 2019-09-18 17:44:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumEnumerator class implementation.
  */
@@ -184,8 +184,6 @@ void UIMediumEnumerator::startMediumEnumeration(const CMediumVector &comMedia /*
     else
     {
         m_fFullMediumEnumerationRequested = false;
-        addMediaToMap(uiCommon().host().GetDVDDrives(), guiMedia);
-        addMediaToMap(uiCommon().virtualBox().GetDVDImages(), guiMedia);
         addMediaToMap(comMedia, guiMedia);
     }
 
