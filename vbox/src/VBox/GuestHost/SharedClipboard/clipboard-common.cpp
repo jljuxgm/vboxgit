@@ -1,4 +1,4 @@
-/* $Id: clipboard-common.cpp 82875 2020-01-27 13:31:54Z vboxsync $ */
+/* $Id: clipboard-common.cpp 82910 2020-01-29 15:59:44Z vboxsync $ */
 /** @file
  * Shared Clipboard: Some helper function for converting between the various eol.
  */
@@ -97,6 +97,9 @@ static void shClEventTerm(PSHCLEVENT pEvent)
 {
     if (!pEvent)
         return;
+
+    AssertMsgReturnVoid(pEvent->cRefs == 0, ("Event %RU32 still has %RU32 references\n",
+                                             pEvent->idEvent, pEvent->cRefs));
 
     LogFlowFunc(("Event %RU32\n", pEvent->idEvent));
 
