@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3DIf.cpp 80372 2019-08-21 14:32:40Z vboxsync $ */
+/* $Id: VBoxDispD3DIf.cpp 80745 2019-09-12 09:13:01Z vboxsync $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
@@ -681,7 +681,10 @@ static HRESULT vboxDispD3DGlobalDoOpen(PVBOXWDDMDISP_D3D pD3D, VBOXWDDM_QAI cons
         hr = GaWddmD3DBackendOpen(pD3D, pAdapterInfo, pFormats);
 #endif
     else
+    {
+        RT_NOREF(pFormats);
         hr = E_FAIL;
+    }
 
     if (SUCCEEDED(hr))
     {
