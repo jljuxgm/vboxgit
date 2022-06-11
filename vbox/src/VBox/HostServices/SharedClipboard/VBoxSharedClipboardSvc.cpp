@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc.cpp 79273 2019-06-21 12:24:35Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc.cpp 79275 2019-06-21 12:40:08Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Host service entry points.
  */
@@ -96,6 +96,9 @@
  * sub folder "VirtualBox Shared Clipboards/clipboard-<ID>". VBoxSVC does not
  * do any file locking in a clipboard area, but keeps the clipboard areas's
  * directory open to prevent deletion by third party processes.
+ *
+ * @todo We might use some VFS / container (IPRT?) for this instead of the
+ *       host's file system directly?
  *
  * @section sec_uri_structure           URI handling structure.
  *
