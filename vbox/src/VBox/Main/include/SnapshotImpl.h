@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.h 76562 2019-01-01 03:22:50Z vboxsync $ */
+/* $Id: SnapshotImpl.h 81425 2019-10-21 18:19:39Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -91,6 +91,11 @@ public:
 
     bool i_sharesSavedStateFile(const Utf8Str &strPath,
                                 Snapshot *pSnapshotToIgnore);
+
+    void i_updateNVRAMPaths(const Utf8Str &strOldPath,
+                            const Utf8Str &strNewPath);
+    void i_updateNVRAMPathsImpl(const Utf8Str &strOldPath,
+                                const Utf8Str &strNewPath);
 
     HRESULT i_saveSnapshot(settings::Snapshot &data) const;
     HRESULT i_saveSnapshotImpl(settings::Snapshot &data) const;
