@@ -1,4 +1,4 @@
-/* $Id: GIM.cpp 80333 2019-08-16 20:28:38Z vboxsync $ */
+/* $Id: GIM.cpp 80597 2019-09-05 07:43:17Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager.
  */
@@ -289,8 +289,9 @@ static DECLCALLBACK(int) gimR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersion, 
     uint32_t uProviderId;
     uint32_t uProviderVersion;
 
-    rc = SSMR3GetU32(pSSM, &uProviderId);           AssertRCReturn(rc, rc);
-    rc = SSMR3GetU32(pSSM, &uProviderVersion);      AssertRCReturn(rc, rc);
+    SSMR3GetU32(pSSM, &uProviderId);
+    rc = SSMR3GetU32(pSSM, &uProviderVersion);
+    AssertRCReturn(rc, rc);
 
     if ((GIMPROVIDERID)uProviderId != pVM->gim.s.enmProviderId)
         return SSMR3SetCfgError(pSSM, RT_SRC_POS, N_("Saved GIM provider %u differs from the configured one (%u)."),
