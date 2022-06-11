@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestInstallHelper.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxGuestInstallHelper.cpp 83843 2020-04-20 09:31:57Z vboxsync $ */
 /** @file
  * VBoxGuestInstallHelper - Various helper routines for Windows guest installer.
  *                          Works with NSIS 3.x.
@@ -305,7 +305,7 @@ VBOXINSTALLHELPER_EXPORT FileGetArchitecture(HWND hwndParent, int string_size, T
     {
 #ifdef UNICODE
         char *pszFileUtf8;
-        int rc = RTUtf16ToUtf8(szFile, &pszFileUtf8);
+        rc = RTUtf16ToUtf8(szFile, &pszFileUtf8);
         if (RT_SUCCESS(rc))
         {
 #else
