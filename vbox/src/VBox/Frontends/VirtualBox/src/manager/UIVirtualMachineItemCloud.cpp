@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItemCloud.cpp 83963 2020-04-24 11:05:10Z vboxsync $ */
+/* $Id: UIVirtualMachineItemCloud.cpp 84037 2020-04-28 10:51:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItemCloud class implementation.
  */
@@ -136,7 +136,8 @@ void UIVirtualMachineItemCloud::recachePixmap()
 
 bool UIVirtualMachineItemCloud::isItemEditable() const
 {
-    return accessible();
+    return    accessible()
+           && itemType() == UIVirtualMachineItemType_CloudReal;
 }
 
 bool UIVirtualMachineItemCloud::isItemSaved() const
@@ -221,7 +222,6 @@ void UIVirtualMachineItemCloud::retranslateUi()
                                        "<nobr>%2</nobr>")
                                        .arg(m_strName)
                                        .arg(gpConverter->toString(m_enmMachineState));
-
         }
     }
     /* Otherwise: */
