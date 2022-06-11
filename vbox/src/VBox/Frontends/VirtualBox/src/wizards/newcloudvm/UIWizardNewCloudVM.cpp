@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVM.cpp 79305 2019-06-24 11:23:34Z vboxsync $ */
+/* $Id: UIWizardNewCloudVM.cpp 79312 2019-06-24 15:54:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVM class implementation.
  */
@@ -80,7 +80,7 @@ bool UIWizardNewCloudVM::createCloudVM()
     else
     {
         /* Show "Create Cloud Machine" progress: */
-        msgCenter().showModalProgressDialog(comProgress, tr("Create Cloud Machine ..."), ":/progress_import_90px.png", this, 0);
+        msgCenter().showModalProgressDialog(comProgress, tr("Create Cloud Machine ..."), ":/progress_new_cloud_vm_90px.png", this, 0);
         if (!comProgress.GetCanceled())
         {
             /* Show error message if necessary: */

@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic2.cpp 78989 2019-06-05 11:27:24Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic2.cpp 79312 2019-06-24 15:54:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic2 class implementation.
  */
@@ -358,7 +358,7 @@ void UIWizardExportAppPage2::populateFormProperties()
 
             /* Show "Acquire export form" progress: */
             msgCenter().showModalProgressDialog(comExportDescriptionFormProgress, UIWizardExportApp::tr("Acquire export form..."),
-                                                ":/progress_reading_appliance_90px.png", 0, 0);
+                                                ":/progress_refresh_90px.png", 0, 0);
             if (!comExportDescriptionFormProgress.isOk() || comExportDescriptionFormProgress.GetResultCode() != 0)
             {
                 msgCenter().cannotAcquireCloudClientParameter(comExportDescriptionFormProgress);

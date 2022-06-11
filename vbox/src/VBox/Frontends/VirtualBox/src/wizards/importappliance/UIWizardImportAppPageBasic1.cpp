@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageBasic1.cpp 79243 2019-06-19 12:02:59Z vboxsync $ */
+/* $Id: UIWizardImportAppPageBasic1.cpp 79312 2019-06-24 15:54:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageBasic1 class implementation.
  */
@@ -428,7 +428,7 @@ void UIWizardImportAppPage1::populateFormProperties()
 
             /* Show "Acquire import form" progress: */
             msgCenter().showModalProgressDialog(comImportDescriptionFormProgress, UIWizardImportApp::tr("Acquire import form..."),
-                                                ":/progress_reading_appliance_90px.png", 0, 0);
+                                                ":/progress_refresh_90px.png", 0, 0);
             if (!comImportDescriptionFormProgress.isOk() || comImportDescriptionFormProgress.GetResultCode() != 0)
             {
                 msgCenter().cannotAcquireCloudClientParameter(comImportDescriptionFormProgress);
