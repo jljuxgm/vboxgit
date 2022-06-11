@@ -1,4 +1,4 @@
-/* $Id: VBoxManageCloud.cpp 81398 2019-10-21 11:18:35Z vboxsync $ */
+/* $Id: VBoxManageCloud.cpp 81421 2019-10-21 17:47:42Z vboxsync $ */
 /** @file
  * VBoxManageCloud - The cloud related commands.
  */
@@ -734,19 +734,22 @@ static RTEXITCODE showCloudInstanceInfo(HandlerArg *a, int iFirst, PCLOUDCOMMONO
         Utf8Str strNotFound;
     };
 
-    size_t vsdHReadableArraySize = 9;//the number of items in the vsdHReadableArray
-    vsdHReadable vsdHReadableArray[9] = {
-        {VirtualSystemDescriptionType_CloudDomain, "Availability domain = '%ls'\n", "Availability domain wasn't found\n"},
-        {VirtualSystemDescriptionType_Name, "Instance displayed name = '%ls'\n", "Instance displayed name wasn't found\n"},
-        {VirtualSystemDescriptionType_CloudInstanceState, "Instance state = '%ls'\n", "Instance state wasn't found\n"},
-        {VirtualSystemDescriptionType_CloudInstanceId, "Instance Id = '%ls'\n", "Instance Id wasn't found\n"},
-        {VirtualSystemDescriptionType_CloudImageId, "Bootable image Id = '%ls'\n",
+    const size_t vsdHReadableArraySize = 12;//the number of items in the vsdHReadableArray
+    vsdHReadable vsdHReadableArray[vsdHReadableArraySize] = {
+        {VirtualSystemDescriptionType_CloudDomain, "Availability domain = %ls\n", "Availability domain wasn't found\n"},
+        {VirtualSystemDescriptionType_Name, "Instance displayed name = %ls\n", "Instance displayed name wasn't found\n"},
+        {VirtualSystemDescriptionType_CloudInstanceState, "Instance state = %ls\n", "Instance state wasn't found\n"},
+        {VirtualSystemDescriptionType_CloudInstanceId, "Instance Id = %ls\n", "Instance Id wasn't found\n"},
+        {VirtualSystemDescriptionType_CloudInstanceDisplayName, "Instance name = %ls\n", "Instance name wasn't found\n"},
+        {VirtualSystemDescriptionType_CloudImageId, "Bootable image Id = %ls\n",
             "Image Id whom the instance is booted up wasn't found\n"},
-        {VirtualSystemDescriptionType_CloudInstanceShape, "Shape of the instance = '%ls'\n",
+        {VirtualSystemDescriptionType_CloudInstanceShape, "Shape of the instance = %ls\n",
             "The shape of the instance wasn't found\n"},
-        {VirtualSystemDescriptionType_OS, "Type of guest OS = '%ls'\n", "Type of guest OS wasn't found.\n"},
-        {VirtualSystemDescriptionType_Memory, "RAM = '%ls MB'\n", "Value for RAM wasn't found\n"},
-        {VirtualSystemDescriptionType_CPU, "CPUs = '%ls'\n", "Numbers of CPUs weren't found\n"}
+        {VirtualSystemDescriptionType_OS, "Type of guest OS = %ls\n", "Type of guest OS wasn't found\n"},
+        {VirtualSystemDescriptionType_Memory, "RAM = %ls MB\n", "Value for RAM wasn't found\n"},
+        {VirtualSystemDescriptionType_CPU, "CPUs = %ls\n", "Numbers of CPUs weren't found\n"},
+        {VirtualSystemDescriptionType_CloudPublicIP, "Instance public IP = %ls\n", "Public IP wasn't found\n"},
+        {VirtualSystemDescriptionType_Miscellaneous, "%ls\n", "Free-form tags or metadata weren't found\n"}
     };
 
     com::SafeArray<VirtualSystemDescriptionType_T> retTypes;
@@ -766,7 +769,13 @@ static RTEXITCODE showCloudInstanceInfo(HandlerArg *a, int iFirst, PCLOUDCOMMONO
         if (FAILED(hrc) || aVBoxValues.size() == 0)
             LogRel((vsdHReadableArray[i].strNotFound.c_str()));
         else
-            RTPrintf(vsdHReadableArray[i].strFound.c_str(), aVBoxValues[0]);
+        {
+            LogRel(("Size is %d", aVBoxValues.size()));
+            for (size_t j = 0; j<aVBoxValues.size(); ++j)
+            {
+                RTPrintf(vsdHReadableArray[i].strFound.c_str(), aVBoxValues[j]);
+            }
+        }
 
         retTypes.setNull();
         aRefs.setNull();
