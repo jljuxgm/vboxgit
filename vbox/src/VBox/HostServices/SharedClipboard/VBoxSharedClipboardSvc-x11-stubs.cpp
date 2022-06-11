@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-x11-stubs.cpp 82968 2020-02-04 10:35:17Z vboxsync $*/
+/* $Id: VBoxSharedClipboardSvc-x11-stubs.cpp 83947 2020-04-23 11:46:18Z vboxsync $*/
 /** @file
  * Shared Clipboard Service - Linux host, a stub version with no functionality for use on headless hosts.
  */
@@ -92,12 +92,12 @@ int SharedClipboardSvcImplDisconnect(PSHCLCLIENT pClient)
  *
  * @param pClient               Context data for the guest system.
  * @param pCmdCtx               Command context to use.
- * @param pFormats              Clipboard formats the guest is offering.
+ * @param fFormats              Clipboard formats the guest is offering.
  */
 int SharedClipboardSvcImplFormatAnnounce(PSHCLCLIENT pClient, PSHCLCLIENTCMDCTX pCmdCtx,
-                                         PSHCLFORMATDATA pFormats)
+                                         SHCLFORMATS fFormats)
 {
-    RT_NOREF(pClient, pCmdCtx, pFormats);
+    RT_NOREF(pClient, pCmdCtx, fFormats);
     return VINF_SUCCESS;
 }
 
