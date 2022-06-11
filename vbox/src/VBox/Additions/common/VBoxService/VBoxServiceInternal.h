@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceInternal.h 76563 2019-01-01 03:53:56Z vboxsync $ */
+/* $Id: VBoxServiceInternal.h 78450 2019-05-08 14:25:43Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Services.
  */
@@ -166,7 +166,9 @@ extern unsigned     g_cVerbosity;
 extern char         g_szLogFile[RTPATH_MAX + 128];
 extern uint32_t     g_DefaultInterval;
 extern VBOXSERVICE  g_TimeSync;
+#ifdef VBOX_WITH_VBOXSERVICE_CLIPBOARD
 extern VBOXSERVICE  g_Clipboard;
+#endif
 extern VBOXSERVICE  g_Control;
 extern VBOXSERVICE  g_VMInfo;
 extern VBOXSERVICE  g_CpuHotPlug;
