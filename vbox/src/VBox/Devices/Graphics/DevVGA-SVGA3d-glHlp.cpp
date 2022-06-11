@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-glHlp.cpp 81770 2019-11-11 16:51:35Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-glHlp.cpp 82095 2019-11-22 08:09:37Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device OpenGL backend
  */
@@ -649,8 +649,12 @@ static void doRender(PVMSVGA3DSTATE pState,
 
     AssertReturnVoid(pProgram);
 
-    uint32_t const cWidth = pSurface->pMipmapLevels[iMipmap].mipmapSize.width;
-    uint32_t const cHeight = pSurface->pMipmapLevels[iMipmap].mipmapSize.height;
+    PVMSVGA3DMIPMAPLEVEL pMipmapLevel;
+    int rc = vmsvga3dMipmapLevel(pSurface, 0, iMipmap, &pMipmapLevel);
+    AssertRCReturnVoid(rc);
+
+    uint32_t const cWidth = pMipmapLevel->mipmapSize.width;
+    uint32_t const cHeight = pMipmapLevel->mipmapSize.height;
 
     /* Use the shared context, where all textures are created. */
     PVMSVGA3DCONTEXT pContext = &pState->SharedCtx;

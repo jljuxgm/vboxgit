@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-win-d3d9.cpp 81365 2019-10-18 18:45:41Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-win-d3d9.cpp 82095 2019-11-22 08:09:37Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device Direct3D 9 backend.
  */
@@ -1020,8 +1020,8 @@ HRESULT D3D9Conversion::ConvertTexture(PVMSVGA3DCONTEXT pContext,
         hr = initConversion();
         if (hr == D3D_OK)
         {
-            uint32_t const cWidth = pSurface->pMipmapLevels[0].mipmapSize.width;
-            uint32_t const cHeight = pSurface->pMipmapLevels[0].mipmapSize.height;
+            uint32_t const cWidth = pSurface->paMipmapLevels[0].mipmapSize.width;
+            uint32_t const cHeight = pSurface->paMipmapLevels[0].mipmapSize.height;
 
             hr = setConversionState(pSourceTexture, cWidth, cHeight);
             if (hr == D3D_OK)
