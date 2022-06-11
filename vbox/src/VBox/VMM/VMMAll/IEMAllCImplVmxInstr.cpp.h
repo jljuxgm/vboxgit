@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 79405 2019-06-28 10:33:18Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 79476 2019-07-02 17:06:36Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -3865,7 +3865,7 @@ DECLINLINE(void) iemVmxVirtApicSetPendingWrite(PVMCPU pVCpu, uint16_t offApic)
     pVCpu->cpum.GstCtx.hwvirt.vmx.offVirtApicWrite = offApic;
 
     /*
-     * Signal that we need to perform virtual-APIC write emulation (TPR/PPR/EOI/Self-IPI
+     * Flag that we need to perform virtual-APIC write emulation (TPR/PPR/EOI/Self-IPI
      * virtualization or APIC-write emulation).
      */
     if (!VMCPU_FF_IS_SET(pVCpu, VMCPU_FF_VMX_APIC_WRITE))
