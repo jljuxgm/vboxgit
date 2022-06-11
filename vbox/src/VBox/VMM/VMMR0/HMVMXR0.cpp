@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 78639 2019-05-21 16:16:30Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 78640 2019-05-21 16:20:56Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -12759,13 +12759,7 @@ DECLINLINE(VBOXSTRICTRC) hmR0VmxHandleExitNested(PVMCPU pVCpu, PVMXTRANSIENT pVm
             int rc = hmR0VmxReadExitQualVmcs(pVCpu, pVmxTransient);
             rc    |= hmR0VmxReadExitInstrLenVmcs(pVmxTransient);
             rc    |= hmR0VmxReadIdtVectoringInfoVmcs(pVmxTransient);
-            if (VMX_IDT_VECTORING_INFO_IS_VALID(pVmxTransient->uIdtVectoringInfo))
-                rc |= hmR0VmxReadIdtVectoringErrorCodeVmcs(pVmxTransient);
-            else
-            {
-                pVmxTransient->uIdtVectoringInfo      = 0;
-                pVmxTransient->uIdtVectoringErrorCode = 0;
-            }
+            rc    |= hmR0VmxReadIdtVectoringErrorCodeVmcs(pVmxTransient);
             AssertRCReturn(rc, rc);
 
             VMXVEXITINFO ExitInfo;
