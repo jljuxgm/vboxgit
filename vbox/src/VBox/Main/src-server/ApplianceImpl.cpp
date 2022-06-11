@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 84031 2020-04-28 09:55:27Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -498,6 +498,18 @@ HRESULT Appliance::getPath(com::Utf8Str &aPath)
 
     aPath = m->locInfo.strPath;
 
+    return S_OK;
+}
+
+/**
+ * Public method implementation.
+ */
+HRESULT Appliance::getManifest(com::Utf8Str &aManifest, com::Utf8Str &aManifestName)
+{
+    AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
+
+    aManifest = m->strManifest;
+    aManifestName = m->strManifestName;
     return S_OK;
 }
 
