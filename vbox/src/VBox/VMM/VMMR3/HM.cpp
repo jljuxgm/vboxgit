@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 79627 2019-07-09 04:56:19Z vboxsync $ */
+/* $Id: HM.cpp 79658 2019-07-10 08:37:07Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -785,6 +785,7 @@ static int hmR3InitFinalizeR3(PVM pVM)
         HM_REG_COUNTER(&pVCpu->hm.s.StatExitExtInt,             "/HM/CPU%d/Exit/ExtInt", "Physical maskable interrupt (host).");
 #endif
         HM_REG_COUNTER(&pVCpu->hm.s.StatExitHostNmiInGC,        "/HM/CPU%d/Exit/HostNmiInGC", "Host NMI received while in guest context.");
+        HM_REG_COUNTER(&pVCpu->hm.s.StatExitHostNmiInGCIpi,     "/HM/CPU%d/Exit/HostNmiInGCIpi", "Host NMI received while in guest context dispatched using IPIs.");
 #ifdef VBOX_WITH_STATISTICS
         HM_REG_COUNTER(&pVCpu->hm.s.StatExitPreemptTimer,       "/HM/CPU%d/Exit/PreemptTimer", "VMX-preemption timer expired.");
         HM_REG_COUNTER(&pVCpu->hm.s.StatExitTprBelowThreshold,  "/HM/CPU%d/Exit/TprBelowThreshold", "TPR lowered below threshold by the guest.");
