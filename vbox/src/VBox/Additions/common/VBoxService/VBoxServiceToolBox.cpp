@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceToolBox.cpp 83436 2020-03-26 13:51:14Z vboxsync $ */
+/* $Id: VBoxServiceToolBox.cpp 83437 2020-03-26 13:55:15Z vboxsync $ */
 /** @file
  * VBoxServiceToolbox - Internal (BusyBox-like) toolbox.
  */
@@ -1606,7 +1606,7 @@ static RTEXITCODE vgsvcToolboxStat(int argc, char **argv)
             }
             else
                 rc2 = vgsvcToolboxPrintFsInfo(ValueUnion.psz, strlen(ValueUnion.psz), fOutputFlags, NULL, &IdCache, &objInfo);
-            /** @todo r=bird: You're checking rc not rc2 here...   */
+
             if (RT_SUCCESS(rc))
                 rc = rc2;
             /* Do not break here -- process every element in the list
