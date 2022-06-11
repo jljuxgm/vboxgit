@@ -1,4 +1,4 @@
-/* $Id: QIComboBox.cpp 78059 2019-04-09 13:17:58Z vboxsync $ */
+/* $Id: QIComboBox.cpp 79241 2019-06-19 12:00:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIComboBox class implementation.
  */
@@ -257,6 +257,13 @@ int QIComboBox::findData(const QVariant &data,
     /* Redirect to combo-box: */
     AssertPtrReturn(m_pComboBox, -1);
     return m_pComboBox->findData(data, iRole, flags);
+}
+
+void QIComboBox::clear()
+{
+    /* Redirect to combo-box: */
+    AssertPtrReturnVoid(m_pComboBox);
+    m_pComboBox->clear();
 }
 
 void QIComboBox::setIconSize(const QSize &size) const

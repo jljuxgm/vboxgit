@@ -1,4 +1,4 @@
-/* $Id: QIComboBox.h 78059 2019-04-09 13:17:58Z vboxsync $ */
+/* $Id: QIComboBox.h 79241 2019-06-19 12:00:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIComboBox class declaration.
  */
@@ -106,6 +106,9 @@ public:
                  Qt::MatchFlags flags = static_cast<Qt::MatchFlags>(Qt::MatchExactly | Qt::MatchCaseSensitive)) const;
 
 public slots:
+
+    /** Clears the combobox, removing all items. */
+    void clear();
 
     /** Defines the @a size of the icons shown in the combo-box. */
     void setIconSize(const QSize &size) const;
