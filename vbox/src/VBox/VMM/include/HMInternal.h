@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 80152 2019-08-06 08:23:33Z vboxsync $ */
+/* $Id: HMInternal.h 80170 2019-08-07 04:59:59Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -911,13 +911,10 @@ typedef struct HMCPU
             /** Whether flushing the TLB is required due to switching to/from the
              *  nested-geust. */
             bool                        fSwitchedNstGstFlushTlb;
-
-            bool                        fVirtApicPageLocked;
             /** Alignment. */
-            bool                        afAlignment0[3];
+            bool                        afAlignment0[4];
             /** Cached guest APIC-base MSR for identifying when to map the APIC-access page. */
             uint64_t                    u64GstMsrApicBase;
-            PGMPAGEMAPLOCK              PgMapLockVirtApic;
             /** @} */
 
             /** @name Host information.
