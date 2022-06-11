@@ -1,4 +1,4 @@
-/* $Id: VMMDevState.h 77243 2019-02-10 22:44:00Z vboxsync $ */
+/* $Id: VMMDevState.h 80118 2019-08-04 02:39:54Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device, internal header.
  */
@@ -139,13 +139,12 @@ typedef struct VMMDevState
     /** Does the guest currently want the host pointer to be shown? */
     uint32_t fHostCursorRequested;
 
-//#if HC_ARCH_BITS == 32
-//    /** Alignment padding. */
-//    uint32_t u32Alignment0;
-//#endif
-
+#ifdef VBOX_WITH_RAW_MODE_KEEP
     /** Pointer to device instance - RC pointer. */
     PPDMDEVINSRC pDevInsRC;
+#else
+    uint32_t u32Alignment0;
+#endif
     /** Pointer to device instance - R3 poitner. */
     PPDMDEVINSR3 pDevInsR3;
     /** Pointer to device instance - R0 pointer. */
@@ -204,9 +203,9 @@ typedef struct VMMDevState
     R3PTRTYPE(VMMDevMemory *)   pVMMDevRAMR3;
     /** R0 pointer to VMMDev RAM area - first page only, could be NULL! */
     R0PTRTYPE(VMMDevMemory *)   pVMMDevRAMR0;
+#ifdef VBOX_WITH_RAW_MODE_KEEP
     /** R0 pointer to VMMDev RAM area - first page only, could be NULL! */
     RCPTRTYPE(VMMDevMemory *)   pVMMDevRAMRC;
-#if HC_ARCH_BITS != 32
     RTRCPTR                     RCPtrAlignment3b;
 #endif
 

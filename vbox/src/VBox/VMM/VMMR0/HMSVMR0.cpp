@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 80080 2019-07-31 16:12:31Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 80118 2019-08-04 02:39:54Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -1536,15 +1536,7 @@ static void hmR0SvmExportGuestCR3(PVMCPU pVCpu, PSVMVMCB pVmcb)
     PCPUMCTX pCtx = &pVCpu->cpum.GstCtx;
     if (pVM->hm.s.fNestedPaging)
     {
-        PGMMODE enmShwPagingMode;
-#if HC_ARCH_BITS == 32
-        if (CPUMIsGuestInLongModeEx(pCtx))
-            enmShwPagingMode = PGMMODE_AMD64_NX;
-        else
-#endif
-            enmShwPagingMode = PGMGetHostMode(pVM);
-
-        pVmcb->ctrl.u64NestedPagingCR3 = PGMGetNestedCR3(pVCpu, enmShwPagingMode);
+        pVmcb->ctrl.u64NestedPagingCR3 = PGMGetHyperCR3(pVCpu);
         pVmcb->ctrl.u32VmcbCleanBits &= ~HMSVM_VMCB_CLEAN_NP;
         pVmcb->guest.u64CR3 = pCtx->cr3;
         Assert(pVmcb->ctrl.u64NestedPagingCR3);

@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 77965 2019-03-30 12:35:49Z vboxsync $ */
+/* $Id: DevVGA.h 80118 2019-08-04 02:39:54Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -277,11 +277,13 @@ typedef struct VGAState {
     /** end-of-common-state-marker */
     uint32_t                    u32Marker;
 
+# ifdef VBOX_WITH_RAW_MODE_KEEP
     /** Pointer to the device instance - RC Ptr. */
     PPDMDEVINSRC                pDevInsRC;
     /** Pointer to the GC vram mapping. */
     RCPTRTYPE(uint8_t *)        vram_ptrRC;
     uint32_t                    Padding1;
+# endif
 
     /** Pointer to the device instance - R3 Ptr. */
     PPDMDEVINSR3                pDevInsR3;

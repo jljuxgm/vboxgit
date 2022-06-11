@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 80080 2019-07-31 16:12:31Z vboxsync $ */
+/* $Id: VM.cpp 80118 2019-08-04 02:39:54Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -626,8 +626,10 @@ static int vmR3CreateU(PUVM pUVM, uint32_t cCpus, PFNCFGMCONSTRUCTOR pfnCFGMCons
                 rc = vmR3InitRing3(pVM, pUVM);
                 if (RT_SUCCESS(rc))
                 {
+#ifndef PGM_WITHOUT_MAPPINGS
                     rc = PGMR3FinalizeMappings(pVM);
                     if (RT_SUCCESS(rc))
+#endif
                     {
 
                         LogFlow(("Ring-3 init succeeded\n"));

@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 80090 2019-07-31 21:20:57Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 80118 2019-08-04 02:39:54Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -640,6 +640,7 @@ static DECLCALLBACK(int) pdmR3DevHlp_MMHyperMapMMIO2(PPDMDEVINS pDevIns, PPDMPCI
                                                      RTGCPHYS cb, const char *pszDesc, PRTRCPTR pRCPtr)
 {
     PDMDEV_ASSERT_DEVINS(pDevIns);
+#ifndef PGM_WITHOUT_MAPPINGS
     PVM pVM = pDevIns->Internal.s.pVMR3;
     VM_ASSERT_EMT(pVM);
     LogFlow(("pdmR3DevHlp_MMHyperMapMMIO2: caller='%s'/%d: pPciDev=%p:{%#x} iRegion=%#x off=%RGp cb=%RGp pszDesc=%p:{%s} pRCPtr=%p\n",
@@ -655,6 +656,11 @@ static DECLCALLBACK(int) pdmR3DevHlp_MMHyperMapMMIO2(PPDMDEVINS pDevIns, PPDMPCI
 
     int rc = MMR3HyperMapMMIO2(pVM, pDevIns, pPciDev ? pPciDev->Int.s.idxDevCfg : 254, iRegion, off, cb, pszDesc, pRCPtr);
 
+#else
+    RT_NOREF(pDevIns, pPciDev, iRegion, off, cb, pszDesc, pRCPtr);
+    AssertFailed();
+    int rc = VERR_RAW_MODE_NOT_SUPPORTED;
+#endif
     LogFlow(("pdmR3DevHlp_MMHyperMapMMIO2: caller='%s'/%d: returns %Rrc *pRCPtr=%RRv\n", pDevIns->pReg->szName, pDevIns->iInstance, rc, *pRCPtr));
     return rc;
 }
