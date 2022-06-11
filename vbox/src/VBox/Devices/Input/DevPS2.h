@@ -1,4 +1,4 @@
-/* $Id: DevPS2.h 82195 2019-11-25 19:12:32Z vboxsync $ */
+/* $Id: DevPS2.h 82200 2019-11-25 20:55:43Z vboxsync $ */
 /** @file
  * PS/2 devices - Internal header file.
  */
@@ -135,8 +135,6 @@ typedef struct PS2K
     /** Input throttle timer. */
     TMTIMERHANDLE       hThrottleTimer;
 
-    /** The device critical section protecting everything - R3 Ptr */
-    R3PTRTYPE(PPDMCRITSECT) pCritSectR3;
     /** The device instance.
      * @note Only for getting our bearings in interface methods. */
     PPDMDEVINSR3        pDevIns;
@@ -274,8 +272,6 @@ typedef struct PS2M
     /** Throttling delay in milliseconds. */
     uint32_t            uThrottleDelay;
 
-    /** The device critical section protecting everything - R3 Ptr */
-    R3PTRTYPE(PPDMCRITSECT) pCritSectR3;
     /** The device instance.
      * @note Only for getting our bearings in interface methods. */
     PPDMDEVINSR3        pDevIns;
