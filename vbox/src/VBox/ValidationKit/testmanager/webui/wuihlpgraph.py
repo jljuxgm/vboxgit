@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuihlpgraph.py 79087 2019-06-11 11:58:28Z vboxsync $
+# $Id: wuihlpgraph.py 82645 2019-12-23 14:41:05Z vboxsync $
 
 """
 Test Manager Web-UI - Graph Helpers.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79087 $"
+__version__ = "$Revision: 82645 $"
 
 
 class WuiHlpGraphDataTable(object): # pylint: disable=too-few-public-methods
@@ -47,9 +47,12 @@ class WuiHlpGraphDataTable(object): # pylint: disable=too-few-public-methods
 
     def __init__(self, sGroupLable, asMemberLabels):
         self.aoTable = [ WuiHlpGraphDataTable.Row(sGroupLable, asMemberLabels), ];
+        self.fHasStringValues = False;
 
     def addRow(self, sGroup, aoValues, asValues = None):
         """Adds a row to the data table."""
+        if asValues:
+            self.fHasStringValues = True;
         self.aoTable.append(WuiHlpGraphDataTable.Row(sGroup, aoValues, asValues));
         return True;
 
