@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 80621 2019-09-06 09:25:22Z vboxsync $ */
+/* $Id: IEMAll.cpp 80808 2019-09-16 06:32:35Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -13817,7 +13817,7 @@ static VBOXSTRICTRC iemHandleNestedInstructionBoundraryFFs(PVMCPUCC pVCpu, VBOXS
             && !VMCPU_FF_IS_SET(pVCpu, VMCPU_FF_INHIBIT_INTERRUPTS)
             && !TRPMHasTrap(pVCpu))
         {
-            Assert(pVCpu->cpum.GstCtx.hwvirt.vmx.fInterceptEvents);
+            Assert(CPUMIsGuestVmxInterceptEvents(&pVCpu->cpum.GstCtx));
             if (   VMCPU_FF_IS_SET(pVCpu, VMCPU_FF_VMX_NMI_WINDOW)
                 && CPUMIsGuestVmxVirtNmiBlocking(pVCpu, &pVCpu->cpum.GstCtx))
             {
