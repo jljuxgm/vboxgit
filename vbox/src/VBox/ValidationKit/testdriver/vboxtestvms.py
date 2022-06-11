@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 84066 2020-04-28 20:49:11Z vboxsync $
+# $Id: vboxtestvms.py 84082 2020-04-29 13:16:55Z vboxsync $
 
 """
 VirtualBox Test VMs
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84066 $"
+__version__ = "$Revision: 84082 $"
 
 # Standard Python imports.
 import copy;
@@ -1913,7 +1913,7 @@ class TestVmManager(object):
         TestVm('tst-ol-6u2-32',             kfGrpStdSmoke,        sHd = '6.1/ol-6u2-x86.vdi',
                sKind = 'Oracle',    acCpusSup = range(1, 33), fIoApic = True,
                asParavirtModesSup = [g_ksParavirtProviderKVM,]),
-        TestVm('tst-ubuntu-15_10-64-efi',   kfGrpStdSmoke,        sHd = '6.1/efi/ubuntu-15_10-efi-amd64-2.vdi',
+        TestVm('tst-ubuntu-15_10-64-efi',   kfGrpStdSmoke,        sHd = '6.1/efi/ubuntu-15_10-efi-amd64-3.vdi',
                sKind = 'Ubuntu_64', acCpusSup = range(1, 33), fIoApic = True, sFirmwareType = 'efi',
                asParavirtModesSup = [g_ksParavirtProviderKVM,]),
         # Note: Deprecated / buggy; use the one in the 6.1 folder.
