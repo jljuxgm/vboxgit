@@ -1,4 +1,4 @@
-/* $Id: info.cpp 78551 2019-05-16 19:23:28Z vboxsync $ */
+/* $Id: info.cpp 78553 2019-05-17 00:55:39Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders FSD - Information Querying & Setting Routines.
  */
@@ -2011,7 +2011,7 @@ static NTSTATUS vbsfNtRename(IN PRX_CONTEXT RxContext,
             else
             {
                 Status = vbsfNtVBoxStatusToNt(vrc);
-                Log(("VBOXSF: vbsfNtRename: VbglR0SfRename failed with %Rrc (Status=%#x)\n", vrc, Status));
+                Log(("VBOXSF: vbsfNtRename: VbglR0SfHostReqRenameWithSrcBuf failed with %Rrc (Status=%#x)\n", vrc, Status));
             }
 
             VbglR0PhysHeapFree(pShflSrcPath);
