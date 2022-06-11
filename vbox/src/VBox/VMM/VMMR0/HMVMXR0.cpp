@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 79651 2019-07-10 05:08:52Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 79653 2019-07-10 06:42:26Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -13720,14 +13720,15 @@ static VBOXSTRICTRC hmR0VmxCheckExitDueToEventDelivery(PVMCPU pVCpu, PVMXTRANSIE
              && uExitVector != X86_XCPT_DF
              && hmR0VmxIsPinCtlsSet(pVCpu, pVmxTransient, VMX_PIN_CTLS_VIRT_NMI))
     {
+        Assert(!VMX_IDT_VECTORING_INFO_IS_VALID(pVmxTransient->uIdtVectoringInfo));
+
         /*
          * Execution of IRET caused this fault when NMI blocking was in effect (i.e we're in the guest NMI handler).
          * We need to set the block-by-NMI field so that NMIs remain blocked until the IRET execution is restarted.
          * See Intel spec. 30.7.1.2 "Resuming guest software after handling an exception".
          */
         CPUMSetGuestNmiBlocking(pVCpu, true);
-        Log4Func(("Set NMI blocking. fValid=%RTbool uExitReason=%u\n", VMX_EXIT_INT_INFO_IS_VALID(pVmxTransient->uExitIntInfo),
-                  pVmxTransient->uExitReason));
+        Log4Func(("Set NMI blocking. uExitReason=%u\n", pVmxTransient->uExitReason));
     }
 
     Assert(   rcStrict == VINF_SUCCESS  || rcStrict == VINF_HM_DOUBLE_FAULT
