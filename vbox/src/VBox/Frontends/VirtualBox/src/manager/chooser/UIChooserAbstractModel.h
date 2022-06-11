@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.h 83008 2020-02-06 14:59:10Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.h 83041 2020-02-10 17:22:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class declaration.
  */
@@ -198,7 +198,7 @@ private:
         /** Gathers group @a definitions of @a pParentGroup. */
         void gatherGroupDefinitions(QMap<QString, QStringList> &definitions, UIChooserNode *pParentGroup);
         /** Gathers group @a orders of @a pParentGroup. */
-        void gatherGroupOrders(QMap<QString, QStringList> &orders, UIChooserNode *pParentItem);
+        void gatherGroupOrders(QMap<QString, QStringList> &orders, UIChooserNode *pParentGroup);
 
         /** Makes sure group definitions saving is finished. */
         void makeSureGroupDefinitionsSaveIsFinished();
