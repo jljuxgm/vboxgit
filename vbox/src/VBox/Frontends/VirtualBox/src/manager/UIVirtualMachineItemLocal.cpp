@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItemLocal.cpp 83755 2020-04-17 13:57:48Z vboxsync $ */
+/* $Id: UIVirtualMachineItemLocal.cpp 83921 2020-04-22 12:09:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItem class implementation.
  */
@@ -39,7 +39,7 @@
 *********************************************************************************************************************************/
 
 UIVirtualMachineItemLocal::UIVirtualMachineItemLocal(const CMachine &comMachine)
-    : UIVirtualMachineItem(ItemType_Local)
+    : UIVirtualMachineItem(UIVirtualMachineItemType_Local)
     , m_comMachine(comMachine)
     , m_cSnaphot(0)
     , m_enmSessionState(KSessionState_Null)

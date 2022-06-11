@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItem.cpp 83000 2020-02-05 19:35:22Z vboxsync $ */
+/* $Id: UIVirtualMachineItem.cpp 83921 2020-04-22 12:09:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItem class implementation.
  */
@@ -24,7 +24,7 @@
 *   Class UIVirtualMachineItem implementation.                                                                                   *
 *********************************************************************************************************************************/
 
-UIVirtualMachineItem::UIVirtualMachineItem(ItemType enmType)
+UIVirtualMachineItem::UIVirtualMachineItem(UIVirtualMachineItemType enmType)
     : m_enmType(enmType)
     , m_fAccessible(false)
     , m_enmMachineState(KMachineState_Null)
@@ -39,15 +39,15 @@ UIVirtualMachineItem::~UIVirtualMachineItem()
 
 UIVirtualMachineItemLocal *UIVirtualMachineItem::toLocal()
 {
-    return   itemType() == ItemType_Local
+    return   itemType() == UIVirtualMachineItemType_Local
            ? static_cast<UIVirtualMachineItemLocal*>(this)
            : 0;
 }
 
 UIVirtualMachineItemCloud *UIVirtualMachineItem::toCloud()
 {
-    return   (   itemType() == ItemType_CloudFake
-              || itemType() == ItemType_CloudReal)
+    return   (   itemType() == UIVirtualMachineItemType_CloudFake
+              || itemType() == UIVirtualMachineItemType_CloudReal)
            ? static_cast<UIVirtualMachineItemCloud*>(this)
            : 0;
 }

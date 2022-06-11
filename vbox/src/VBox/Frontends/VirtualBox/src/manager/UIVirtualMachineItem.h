@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItem.h 83755 2020-04-17 13:57:48Z vboxsync $ */
+/* $Id: UIVirtualMachineItem.h 83921 2020-04-22 12:09:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItem class declarations.
  */
@@ -29,6 +29,7 @@
 
 /* GUI includes: */
 #include "QIWithRetranslateUI.h"
+#include "UIManagerDefs.h"
 #include "UISettingsDefs.h"
 
 /* Forward declarations: */
@@ -45,18 +46,15 @@ class UIVirtualMachineItem : public QIWithRetranslateUI3<QObject>
 
 public:
 
-    /** Item types. */
-    enum ItemType { ItemType_Local, ItemType_CloudFake, ItemType_CloudReal };
-
     /** Constructs VM item on the basis of taken @a enmType. */
-    UIVirtualMachineItem(ItemType enmType);
+    UIVirtualMachineItem(UIVirtualMachineItemType enmType);
     /** Destructs VM item. */
     virtual ~UIVirtualMachineItem();
 
     /** @name RTTI stuff.
       * @{ */
         /** Returns item type. */
-        ItemType itemType() const { return m_enmType; }
+        UIVirtualMachineItemType itemType() const { return m_enmType; }
         /** Returns item casted to local type. */
         UIVirtualMachineItemLocal *toLocal();
         /** Returns item casted to cloud type. */
@@ -144,7 +142,7 @@ protected:
     /** @name RTTI stuff.
       * @{ */
         /** Holds item type. */
-        ItemType  m_enmType;
+        UIVirtualMachineItemType  m_enmType;
     /** @} */
 
     /** @name VM access attributes.
