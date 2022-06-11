@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuihlpgraphsimple.py 79092 2019-06-11 15:26:40Z vboxsync $
+# $Id: wuihlpgraphsimple.py 82648 2019-12-23 20:53:40Z vboxsync $
 
 """
 Test Manager Web-UI - Graph Helpers - Simple/Stub Implementation.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79092 $"
+__version__ = "$Revision: 82648 $"
 
 # Validation Kit imports.
 from common.webutils                    import escapeAttr, escapeElem;
@@ -48,6 +48,10 @@ class WuiHlpBarGraph(WuiHlpGraphBase):
     def setRangeMax(self, fpMax):
         """ Sets the max range."""
         self.fpMax = float(fpMax);
+        return None;
+
+    def invertYDirection(self):
+        """ Not supported. """
         return None;
 
     def renderGraph(self):
