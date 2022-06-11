@@ -1,4 +1,4 @@
-/* $Id: VBoxDD2.h 76565 2019-01-01 04:23:20Z vboxsync $ */
+/* $Id: VBoxDD2.h 80531 2019-09-01 23:03:34Z vboxsync $ */
 /** @file
  * Built-in drivers & devices part 2 header.
  *
@@ -70,4 +70,3 @@ extern const PDMDEVREG g_DeviceLPC;
 RT_C_DECLS_END
 
 #endif /* !VBOX_INCLUDED_SRC_build_VBoxDD2_h */
-

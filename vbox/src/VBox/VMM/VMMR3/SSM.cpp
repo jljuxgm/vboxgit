@@ -1,4 +1,4 @@
-/* $Id: SSM.cpp 80333 2019-08-16 20:28:38Z vboxsync $ */
+/* $Id: SSM.cpp 80531 2019-09-01 23:03:34Z vboxsync $ */
 /** @file
  * SSM - Saved State Manager.
  */
@@ -9078,6 +9078,21 @@ VMMR3DECL(int) SSMR3SetCfgError(PSSMHANDLE pSSM, RT_SRC_POS_DECL, const char *ps
     int rc = SSMR3SetLoadErrorV(pSSM, VERR_SSM_LOAD_CONFIG_MISMATCH, RT_SRC_POS_ARGS, pszFormat, va);
     va_end(va);
     return rc;
+}
+
+
+/**
+ * SSMR3SetLoadError wrapper that returns VERR_SSM_LOAD_CONFIG_MISMATCH.
+ *
+ * @returns VERR_SSM_LOAD_CONFIG_MISMATCH.
+ * @param   pSSM                The saved state handle.
+ * @param   SRC_POS             The error location, use RT_SRC_POS.
+ * @param   pszFormat           The message format string.
+ * @param   va                  Variable argument list.
+ */
+VMMR3DECL(int) SSMR3SetCfgErrorV(PSSMHANDLE pSSM, RT_SRC_POS_DECL, const char *pszFormat, va_list va)
+{
+    return SSMR3SetLoadErrorV(pSSM, VERR_SSM_LOAD_CONFIG_MISMATCH, RT_SRC_POS_ARGS, pszFormat, va);
 }
 
 #endif /* !SSM_STANDALONE */

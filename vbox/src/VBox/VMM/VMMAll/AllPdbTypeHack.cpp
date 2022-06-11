@@ -1,4 +1,4 @@
-/* $Id: AllPdbTypeHack.cpp 80268 2019-08-14 11:25:13Z vboxsync $ */
+/* $Id: AllPdbTypeHack.cpp 80531 2019-09-01 23:03:34Z vboxsync $ */
 /** @file
  * Debug info hack for the VM and VMCPU structures.
  */
@@ -93,7 +93,7 @@ DECLEXPORT(uint32_t) PdbTypeHack(PVM pVM, PVMCPU pVCpu, PPDMCRITSECT pCs1, PPDMC
          | (pCs1 == g_PdbTypeHack3)
          | pCs2->s.Core.fFlags
          | (pCs2 == g_PdbTypeHack4)
-         | g_PdbTypeHack5->Internal.s.fIntFlags
+         | g_PdbTypeHack5->Internal.s.idxR0Device
          | (g_PdbTypeHack5 != NULL)
          | (uint32_t)g_PdbTypeHack6->Internal.s.fDetaching
          | (g_PdbTypeHack6 != NULL)

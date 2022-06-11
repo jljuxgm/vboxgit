@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-win.cpp 80346 2019-08-19 19:36:29Z vboxsync $ */
+/* $Id: NEMR3Native-win.cpp 80531 2019-09-01 23:03:34Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, native ring-3 Windows backend.
  *
@@ -1460,7 +1460,7 @@ int nemR3NativeInitAfterCPUM(PVM pVM)
                 NTSTATUS const rcNtLast  = RTNtLastStatusValue();
                 DWORD const    dwErrLast = RTNtLastErrorValue();
                 return VMSetError(pVM, VERR_NEM_VM_CREATE_FAILED, RT_SRC_POS,
-                                  "Call to WHvSetupPartition failed: %Rhrc (Last=%#x/%u)", hrc, rcNtLast, dwErrLast);
+                                  "Call to VidMessageSlotMap failed: Last=%#x/%u", rcNtLast, dwErrLast);
             }
         }
 #endif

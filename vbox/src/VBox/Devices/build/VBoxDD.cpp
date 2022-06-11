@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.cpp 78799 2019-05-28 05:38:34Z vboxsync $ */
+/* $Id: VBoxDD.cpp 80531 2019-09-01 23:03:34Z vboxsync $ */
 /** @file
  * VBoxDD - Built-in drivers & devices (part 1).
  */
@@ -145,11 +145,9 @@ extern "C" DECLEXPORT(int) VBoxDevicesRegister(PPDMDEVREGCB pCallbacks, uint32_t
     if (RT_FAILURE(rc))
         return rc;
 #endif
-#ifdef VBOX_ACPI
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DeviceACPI);
     if (RT_FAILURE(rc))
         return rc;
-#endif
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DeviceDMA);
     if (RT_FAILURE(rc))
         return rc;

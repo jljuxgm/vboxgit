@@ -1,4 +1,4 @@
-/* $Id: tstVMStructSize.cpp 80334 2019-08-17 00:43:24Z vboxsync $ */
+/* $Id: tstVMStructSize.cpp 80531 2019-09-01 23:03:34Z vboxsync $ */
 /** @file
  * tstVMStructSize - testcase for check structure sizes/alignment
  *                   and to verify that HC and GC uses the same
@@ -313,10 +313,20 @@ int main()
     CHECK_SIZE_ALIGNMENT(CPUMCTXMSRS, 64);
 
     /* pdm */
-    PRINT_OFFSET(PDMDEVINS, Internal);
-    PRINT_OFFSET(PDMDEVINS, achInstanceData);
-    CHECK_MEMBER_ALIGNMENT(PDMDEVINS, achInstanceData, 64);
-    CHECK_PADDING(PDMDEVINS, Internal, 1);
+    PRINT_OFFSET(PDMDEVINSR3, Internal);
+    PRINT_OFFSET(PDMDEVINSR3, achInstanceData);
+    CHECK_MEMBER_ALIGNMENT(PDMDEVINSR3, achInstanceData, 64);
+    CHECK_PADDING(PDMDEVINSR3, Internal, 1);
+
+    PRINT_OFFSET(PDMDEVINSR0, Internal);
+    PRINT_OFFSET(PDMDEVINSR0, achInstanceData);
+    CHECK_MEMBER_ALIGNMENT(PDMDEVINSR0, achInstanceData, 64);
+    CHECK_PADDING(PDMDEVINSR0, Internal, 1);
+
+    PRINT_OFFSET(PDMDEVINSRC, Internal);
+    PRINT_OFFSET(PDMDEVINSRC, achInstanceData);
+    CHECK_MEMBER_ALIGNMENT(PDMDEVINSRC, achInstanceData, 64);
+    CHECK_PADDING(PDMDEVINSRC, Internal, 1);
 
     PRINT_OFFSET(PDMUSBINS, Internal);
     PRINT_OFFSET(PDMUSBINS, achInstanceData);

@@ -1,4 +1,4 @@
-/* $Id: APICInternal.h 80281 2019-08-15 07:29:37Z vboxsync $ */
+/* $Id: APICInternal.h 80531 2019-09-01 23:03:34Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller.
  */
@@ -22,9 +22,8 @@
 #endif
 
 #include <VBox/sup.h>
-#include <VBox/types.h>
+#include <VBox/vmm/pdmdev.h> /* before apic.h! */
 #include <VBox/vmm/apic.h>
-#include <VBox/vmm/pdmdev.h>
 
 /** @defgroup grp_apic_int       Internal
  * @ingroup grp_apic
@@ -1432,6 +1431,12 @@ VMM_INT_DECL(void)            apicStartTimer(PVMCPUCC pVCpu, uint32_t uInitialCo
 VMM_INT_DECL(void)            apicClearInterruptFF(PVMCPUCC pVCpu, PDMAPICIRQ enmType);
 void                          apicInitIpi(PVMCPUCC pVCpu);
 void                          apicResetCpu(PVMCPUCC pVCpu, bool fResetApicBaseMsr);
+
+DECLCALLBACK(int)             apicR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFGMNODE pCfg);
+DECLCALLBACK(int)             apicR3Destruct(PPDMDEVINS pDevIns);
+DECLCALLBACK(void)            apicR3Relocate(PPDMDEVINS pDevIns, RTGCINTPTR offDelta);
+DECLCALLBACK(void)            apicR3Reset(PPDMDEVINS pDevIns);
+DECLCALLBACK(int)             apicR3InitComplete(PPDMDEVINS pDevIns);
 
 RT_C_DECLS_END
 
