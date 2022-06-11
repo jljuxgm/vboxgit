@@ -1,4 +1,4 @@
-/* $Id: VBoxManageAppliance.cpp 80707 2019-09-10 16:32:44Z vboxsync $ */
+/* $Id: VBoxManageAppliance.cpp 80738 2019-09-11 16:47:01Z vboxsync $ */
 /** @file
  * VBoxManage - The appliance-related commands.
  */
@@ -1520,7 +1520,7 @@ RTEXITCODE handleExportAppliance(HandlerArg *a)
                     if (itD->first == "vmname")
                     {
                         //remove default value if user has specified new name (default value is set in the ExportTo())
-                        pVSD->RemoveDescriptionByType(VirtualSystemDescriptionType_Name);
+//                      pVSD->RemoveDescriptionByType(VirtualSystemDescriptionType_Name);
                         pVSD->AddDescription(VirtualSystemDescriptionType_Name,
                                              Bstr(itD->second).raw(),
                                              Bstr(itD->second).raw());
