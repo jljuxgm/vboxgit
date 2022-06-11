@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 80023 2019-07-28 13:29:43Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.cpp 80734 2019-09-11 14:32:43Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -514,7 +514,6 @@ HRESULT SystemProperties::getDeviceTypesForStorageBus(StorageBus_T aBus,
         case StorageBus_SCSI:
         case StorageBus_SAS:
         case StorageBus_USB:
-        case StorageBus_VirtioSCSI:
         {
             aDeviceTypes.resize(2);
             aDeviceTypes[0] = DeviceType_DVD;
@@ -527,6 +526,7 @@ HRESULT SystemProperties::getDeviceTypesForStorageBus(StorageBus_T aBus,
             aDeviceTypes[0] = DeviceType_Floppy;
             break;
         }
+        case StorageBus_VirtioSCSI:
         case StorageBus_PCIe:
         {
             aDeviceTypes.resize(1);
