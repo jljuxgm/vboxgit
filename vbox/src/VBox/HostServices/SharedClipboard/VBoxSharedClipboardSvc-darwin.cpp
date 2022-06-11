@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-darwin.cpp 79036 2019-06-07 14:56:19Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-darwin.cpp 79041 2019-06-07 15:26:51Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Mac OS X host.
  */
@@ -209,6 +209,8 @@ int VBoxClipboardSvcImplFormatAnnounce(PVBOXCLIPBOARDCLIENTDATA pClientData, uin
     }
 
     vboxSvcClipboardReportMsg(pClientData, VBOX_SHARED_CLIPBOARD_HOST_MSG_READ_DATA, u32Formats);
+
+    return VINF_SUCCESS;
 }
 
 /**
