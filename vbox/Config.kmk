@@ -1,4 +1,4 @@
-# $Id: Config.kmk 83759 2020-04-17 14:56:02Z vboxsync $
+# $Id: Config.kmk 83783 2020-04-17 23:29:27Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2032,7 +2032,11 @@ VBOX_PYLINT_FLAGS = $(if-expr $(VBOX_PYLINT_VERSION) >= 10500,--reports=n,--repo
 
 # Define the macro for win path conversion.
 ifndef VBOX_ONLY_SDK
+ if1of (quote,$(KBUILD_FEATURES))
+  VBOX_FN_MAKE_WIN_PATH = "$(quote-sh-dq $(subst /,\,$(requote unquoted $(1))))"
+ else
   VBOX_FN_MAKE_WIN_PATH = $(subst /,\\,$(1))
+ endif
 else
   # on Wine Z: is always FS root
   VBOX_FN_MAKE_WIN_PATH = $(subst /,\\,$(patsubst /%,Z:/%,$(1)))
@@ -7950,7 +7954,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 83759 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 83783 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
