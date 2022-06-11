@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 82404 2019-12-05 00:36:11Z vboxsync $ */
+/* $Id: DevHDA.cpp 82405 2019-12-05 00:37:14Z vboxsync $ */
 /** @file
  * DevHDA.cpp - VBox Intel HD Audio Controller.
  *
@@ -162,12 +162,6 @@
         else \
             return VBOXSTRICTRC_TODO(rcLock); \
     } while (0)
-
-/**
- * Releases the HDA lock and TM lock.
- */
-#define DEVHDA_UNLOCK_BOTH(a_pDevIns, a_pThis, a_pStream) \
-    PDMDevHlpTimerUnlockClock2(pDevIns, (a_pStream)->hTimer, &(a_pThis)->CritSect)
 
 
 /*********************************************************************************************************************************
