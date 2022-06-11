@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 80585 2019-09-04 14:05:50Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 80729 2019-09-11 10:44:16Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -3776,9 +3776,11 @@ int Console::i_configGraphicsController(PCFGMNODE pDevices,
             InsertConfigInteger(pCfg, "VMSVGA3dEnabled", f3DEnabled);
 # else
             LogRel(("VMSVGA3d not available in this build!\n"));
-# endif
+# endif /* VBOX_WITH_VMSVGA3D */
         }
-#endif
+#else
+        RT_NOREF(enmGraphicsController);
+#endif /* VBOX_WITH_VMSVGA */
 
         /* Custom VESA mode list */
         unsigned cModes = 0;
