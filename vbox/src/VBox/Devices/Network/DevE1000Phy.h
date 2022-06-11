@@ -1,4 +1,4 @@
-/** $Id: DevE1000Phy.h 81410 2019-10-21 13:12:17Z vboxsync $ */
+/** $Id: DevE1000Phy.h 81465 2019-10-23 01:10:43Z vboxsync $ */
 /** @file
  * DevE1000Phy - Intel 82540EM Ethernet Controller Internal PHY Emulation, Header.
  */
@@ -130,9 +130,9 @@ namespace Phy
     /** Set link status. */
     void     setLinkStatus(PPHY pPhy, bool fLinkIsUp);
     /** Save PHY state. */
-    int      saveState(PSSMHANDLE pSSMHandle, PPHY pPhy);
+    int      saveState(struct PDMDEVHLPR3 const *pHlp, PSSMHANDLE pSSM, PPHY pPhy);
     /** Restore previously saved PHY state. */
-    int      loadState(PSSMHANDLE pSSMHandle, PPHY pPhy);
+    int      loadState(struct PDMDEVHLPR3 const *pHlp, PSSMHANDLE pSSM, PPHY pPhy);
 }
 
 #endif /* !VBOX_INCLUDED_SRC_Network_DevE1000Phy_h */

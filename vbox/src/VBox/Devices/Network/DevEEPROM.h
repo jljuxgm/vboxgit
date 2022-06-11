@@ -1,4 +1,4 @@
-/* $Id: DevEEPROM.h 76767 2019-01-11 10:13:14Z vboxsync $ */
+/* $Id: DevEEPROM.h 81465 2019-10-23 01:10:43Z vboxsync $ */
 /** @file
  * DevEEPROM - Microwire-compatible 64x16-bit 93C46 EEPROM Emulation, Header.
  */
@@ -74,8 +74,8 @@ struct EEPROM93C46
 
 
     /** @todo save and load methods */
-    void save(PSSMHANDLE pSSM);
-    int  load(PSSMHANDLE pSSM);
+    void save(PCPDMDEVHLPR3 pHlp, PSSMHANDLE pSSM);
+    int  load(PCPDMDEVHLPR3 pHlp, PSSMHANDLE pSSM);
 
     /** Actual content of EEPROM */
     uint16_t m_au16Data[SIZE];
