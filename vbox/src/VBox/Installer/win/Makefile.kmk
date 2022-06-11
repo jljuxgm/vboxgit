@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 80799 2019-09-15 19:44:37Z vboxsync $
+# $Id: Makefile.kmk 80801 2019-09-15 20:39:51Z vboxsync $
 ## @file
 # Makefile for the Windows installer.
 #
@@ -1072,7 +1072,6 @@ $(PATH_STAGE_BIN)/$(PACKAGE_NAME_MULTIARCH_FINAL) \
 		'if ".%KBUILD_DEVTOOLS%" == "." (echo KBUILD_DEVTOOLS is not set & exit /b1)' \
 		'if ".%KBUILD_BIN_PATH%" == "." (echo KBUILD_BIN_PATH is not set & exit /b1)' \
 		$(subst $(KBUILD_BIN_PATH),%KBUILD_BIN_PATH%,$(subst $(KBUILD_DEVTOOLS),%KBUILD_DEVTOOLS%, \
-		$(if-expr defined(VBOX_WITH_MSM_INSTALL), \
 		'..\bin\VBoxStubBld.exe ^' \
 		'  -out $(@F) ^' \
 		'  -target-$(KBUILD_TARGET_ARCH) $(PACKAGE_NAME_FINAL) ^' \
