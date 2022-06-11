@@ -1,4 +1,4 @@
-/* $Id: SSM.cpp 80585 2019-09-04 14:05:50Z vboxsync $ */
+/* $Id: SSM.cpp 81049 2019-09-27 12:18:27Z vboxsync $ */
 /** @file
  * SSM - Saved State Manager.
  */
@@ -9645,6 +9645,17 @@ VMMR3DECL(const char *) SSMR3HandleHostOSAndArch(PSSMHANDLE pSSM)
         return pSSM->u.Read.szHostOSAndArch;
     return KBUILD_TARGET "." KBUILD_TARGET_ARCH;
 }
+
+
+#ifdef DEBUG
+/**
+ * Gets current data offset, relative to the start of the unit - only for debugging
+ */
+VMMR3DECL(uint64_t) SSMR3HandleTellInUnit(PSSMHANDLE pSSM)
+{
+    return ssmR3StrmTell(&pSSM->Strm) - pSSM->offUnitUser;
+}
+#endif
 
 
 #ifndef SSM_STANDALONE
