@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 79707 2019-07-11 20:59:45Z vboxsync $
+# $Id: Makefile.kmk 79709 2019-07-11 21:35:58Z vboxsync $
 ## @file
 # Makefile for the Windows installer.
 #
@@ -1104,7 +1104,7 @@ $$(RePackScripts_0_OUTDIR)/sign-sha1.cmd: | $$(dir $$@)
 		) )
 
 $$(RePackScripts_0_OUTDIR)/sign-ev.cmd: | $$(dir $$@)
-	# The %~dp1\\ oddity is working around otherwise ending with \" during
+	# The %~dp1\ oddity is working around otherwise ending with \" during
 	# expansion of the CCS command line which for a reason I cannot immediately
 	# understand appends a " to the path.
 	$(APPEND) -nt "$@" \
