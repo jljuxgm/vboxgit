@@ -1,4 +1,4 @@
-/* $Id: DHCPServerImpl.cpp 79621 2019-07-09 01:14:53Z vboxsync $ */
+/* $Id: DHCPServerImpl.cpp 79623 2019-07-09 03:18:02Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -989,7 +989,7 @@ HRESULT DHCPServer::findLeaseByMAC(const com::Utf8Str &aMac, LONG aType,
 /**
  * Calculates and updates the value of strLeasesFilename given @a aNetwork.
  */
-HRESULT DHCPServer::i_calcLeasesFilename(const com::Utf8Str &aNetwork)
+HRESULT DHCPServer::i_calcLeasesFilename(const com::Utf8Str &aNetwork) RT_NOEXCEPT
 {
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
