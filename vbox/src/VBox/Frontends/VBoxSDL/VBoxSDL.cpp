@@ -1,4 +1,4 @@
-/* $Id: VBoxSDL.cpp 80569 2019-09-03 14:34:21Z vboxsync $ */
+/* $Id: VBoxSDL.cpp 80824 2019-09-16 13:18:44Z vboxsync $ */
 /** @file
  * VBox frontends: VBoxSDL (simple frontend based on SDL):
  * Main code
@@ -1526,7 +1526,7 @@ DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
         else
         {
             ComPtr<IProgress> progress;
-            rc = pMachine->LaunchVMProcess(pSession, Bstr("headless").raw(), NULL, progress.asOutParam());
+            rc = pMachine->LaunchVMProcess(pSession, Bstr("headless").raw(), ComSafeArrayNullInParam(), progress.asOutParam());
             if (SUCCEEDED(rc) && !progress.isNull())
             {
                 RTPrintf("Waiting for VM to power on...\n");

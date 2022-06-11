@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: vboxshell.py 77978 2019-04-01 13:07:25Z vboxsync $
+# $Id: vboxshell.py 80824 2019-09-16 13:18:44Z vboxsync $
 
 """
 VirtualBox Python Shell.
@@ -33,7 +33,7 @@ Foundation, in version 2 as it comes in the "COPYING" file of the
 VirtualBox OSE distribution. VirtualBox OSE is distributed in the
 hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
 """
-__version__ = "$Revision: 77978 $"
+__version__ = "$Revision: 80824 $"
 
 
 import gc
@@ -267,7 +267,8 @@ def startVm(ctx, mach, vmtype):
     vbox = ctx['vb']
     perf = ctx['perf']
     session = ctx['global'].getSessionObject()
-    progress = mach.launchVMProcess(session, vmtype, "")
+    asEnv = []
+    progress = mach.launchVMProcess(session, vmtype, asEnv)
     if progressBar(ctx, progress, 100) and int(progress.resultCode) == 0:
         # we ignore exceptions to allow starting VM even if
         # perf collector cannot be started

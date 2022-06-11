@@ -1,4 +1,4 @@
-/* $Id: tstAPI.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: tstAPI.cpp 80824 2019-09-16 13:18:44Z vboxsync $ */
 /** @file
  * tstAPI - test program for our COM/XPCOM interface
  */
@@ -20,7 +20,6 @@
 
 #include <VBox/com/com.h>
 #include <VBox/com/string.h>
-#include <VBox/com/array.h>
 #include <VBox/com/Guid.h>
 #include <VBox/com/ErrorInfo.h>
 #include <VBox/com/errorprint.h>
@@ -1308,7 +1307,7 @@ int main(int argc, char *argv[])
         ComPtr<IProgress> progress;
         RTPrintf("Launching VM process...\n");
         CHECK_ERROR_BREAK(machine, LaunchVMProcess(session, sessionType.raw(),
-                                                   NULL, progress.asOutParam()));
+                                                   ComSafeArrayNullInParam(), progress.asOutParam()));
         RTPrintf("Waiting for the VM to power on...\n");
         CHECK_ERROR_BREAK(progress, WaitForCompletion(-1));
 

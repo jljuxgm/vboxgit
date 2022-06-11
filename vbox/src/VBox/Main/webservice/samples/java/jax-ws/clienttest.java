@@ -1,4 +1,4 @@
-/* $Id: clienttest.java 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: clienttest.java 80824 2019-09-16 13:18:44Z vboxsync $ */
 /*!file
  * Sample client for the VirtualBox web service, written in Java (object-oriented bindings).
  *
@@ -228,7 +228,8 @@ public class clienttest
             {
                 String uuid = oMachine.getId();
                 String sessionType = "gui";
-                String env = "DISPLAY=:0.0";
+                ArrayList<String> env = new ArrayList<String>();
+                env.add("DISPLAY=:0.0");
                 IProgress oProgress =
                     oMachine.launchVMProcess(oSession,
                                              sessionType,

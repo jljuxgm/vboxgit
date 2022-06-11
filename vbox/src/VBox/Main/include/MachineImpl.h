@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 80074 2019-07-31 14:18:34Z vboxsync $ */
+/* $Id: MachineImpl.h 80824 2019-09-16 13:18:44Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -548,7 +548,7 @@ public:
 
     HRESULT i_launchVMProcess(IInternalSessionControl *aControl,
                               const Utf8Str &strType,
-                              const Utf8Str &strEnvironment,
+                              const std::vector<com::Utf8Str> &aEnvironmentChanges,
                               ProgressProxy *aProgress);
 
     HRESULT i_getDirectControl(ComPtr<IInternalSessionControl> *directControl)
@@ -972,7 +972,7 @@ private:
                         LockType_T aLockType);
     HRESULT launchVMProcess(const ComPtr<ISession> &aSession,
                             const com::Utf8Str &aType,
-                            const com::Utf8Str &aEnvironment,
+                            const std::vector<com::Utf8Str> &aEnvironmentChanges,
                             ComPtr<IProgress> &aProgress);
     HRESULT setBootOrder(ULONG aPosition,
                          DeviceType_T aDevice);

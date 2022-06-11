@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 80754 2019-09-12 11:16:01Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 80824 2019-09-16 13:18:44Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -1156,7 +1156,7 @@ HRESULT VirtualBox::getAPIRevision(LONG64 *aAPIRevision)
 
     /** @todo This needs to be the same in OSE and non-OSE, preferrably
      *        only changing when actual API changes happens. */
-    uRevision |= 0;
+    uRevision |= 1;
 
     *aAPIRevision = uRevision;
 

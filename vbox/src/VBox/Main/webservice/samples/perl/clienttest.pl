@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-# $Id: clienttest.pl 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: clienttest.pl 80824 2019-09-16 13:18:44Z vboxsync $
 ## @file
 # This little perl program attempts to connect to a running VirtualBox
 # webservice and calls various methods on it. Please refer to the SDK
@@ -178,10 +178,11 @@ elsif ($optMode eq "startvm")
 
     print "[$cmd] UUID: $uuid\n";
 
+    my @env = ();
     my $progress = vboxService->IMachine_launchVMProcess($machine,
                                                          $session,
                                                          "headless",
-                                                         "");
+                                                         @env);
     die "[$cmd] Cannot launch VM; stopped"
         if (!$progress);
 

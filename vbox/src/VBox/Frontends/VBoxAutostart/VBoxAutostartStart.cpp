@@ -1,4 +1,4 @@
-/* $Id: VBoxAutostartStart.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxAutostartStart.cpp 80824 2019-09-16 13:18:44Z vboxsync $ */
 /** @file
  * VBoxAutostart - VirtualBox Autostart service, start machines during system boot.
  */
@@ -138,7 +138,7 @@ DECLHIDDEN(RTEXITCODE) autostartStartMain(PCFGAST pCfgAst)
                                                              machine.asOutParam()));
 
                 CHECK_ERROR_BREAK(machine, LaunchVMProcess(g_pSession, Bstr("headless").raw(),
-                                                           Bstr("").raw(), progress.asOutParam()));
+                                                           ComSafeArrayNullInParam(), progress.asOutParam()));
                 if (SUCCEEDED(rc) && !progress.isNull())
                 {
                     autostartSvcLogVerbose("Waiting for VM \"%ls\" to power on...\n", (*it).strId.raw());

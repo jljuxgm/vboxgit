@@ -1,4 +1,4 @@
-/* $Id: tstCAPIGlue.c 80074 2019-07-31 14:18:34Z vboxsync $ */
+/* $Id: tstCAPIGlue.c 80824 2019-09-16 13:18:44Z vboxsync $ */
 /** @file tstCAPIGlue.c
  * Demonstrator program to illustrate use of C bindings of Main API.
  *
@@ -742,7 +742,7 @@ static void startVM(const char *argv0, IVirtualBox *virtualBox, ISession *sessio
     HRESULT rc;
     IMachine  *machine    = NULL;
     IProgress *progress   = NULL;
-    BSTR env              = NULL;
+    SAFEARRAY *env        = NULL;
     BSTR sessionType;
     SAFEARRAY *groupsSA = g_pVBoxFuncs->pfnSafeArrayOutParamAlloc();
 
@@ -779,7 +779,7 @@ static void startVM(const char *argv0, IVirtualBox *virtualBox, ISession *sessio
     }
 
     g_pVBoxFuncs->pfnUtf8ToUtf16("gui", &sessionType);
-    rc = IMachine_LaunchVMProcess(machine, session, sessionType, env, &progress);
+    rc = IMachine_LaunchVMProcess(machine, session, sessionType, ComSafeArrayAsInParam(env), &progress);
     g_pVBoxFuncs->pfnUtf16Free(sessionType);
     if (SUCCEEDED(rc))
     {
