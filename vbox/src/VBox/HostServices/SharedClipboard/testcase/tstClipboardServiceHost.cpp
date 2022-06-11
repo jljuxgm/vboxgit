@@ -1,4 +1,4 @@
-/* $Id: tstClipboardServiceHost.cpp 82891 2020-01-28 15:59:15Z vboxsync $ */
+/* $Id: tstClipboardServiceHost.cpp 82892 2020-01-28 16:02:55Z vboxsync $ */
 /** @file
  * Shared Clipboard host service test case.
  */
@@ -270,8 +270,6 @@ static void testSetHeadless(void)
 
 static void testHostCall(void)
 {
-    RTAssertSetMayPanic(false);
-
     testSetMode();
 #ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS
     testSetTransferMode();
@@ -293,6 +291,9 @@ int main(int argc, char *argv[])
     if (rcExit != RTEXITCODE_SUCCESS)
         return rcExit;
     RTTestBanner(hTest);
+
+    /* Don't let assertions in the host service panic (core dump) the test cases. */
+    RTAssertSetMayPanic(false);
 
     /*
      * Run the tests.
