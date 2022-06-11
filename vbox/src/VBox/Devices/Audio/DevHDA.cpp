@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 82252 2019-11-27 21:31:53Z vboxsync $ */
+/* $Id: DevHDA.cpp 82257 2019-11-27 23:45:42Z vboxsync $ */
 /** @file
  * DevHDA.cpp - VBox Intel HD Audio Controller.
  *
@@ -2515,8 +2515,8 @@ static int hdaR3MixerAddDrvStream(PHDASTATE pThis, PAUDMIXSINK pMixSink, PPDMAUD
             if (RT_SUCCESS(rc))
             {
                 /* If this is an input stream, always set the latest (added) stream
-                 * as the recording source.
-                 * @todo Make the recording source dynamic (CFGM?). */
+                 * as the recording source. */
+                /** @todo Make the recording source dynamic (CFGM?). */
                 if (pStreamCfg->enmDir == PDMAUDIODIR_IN)
                 {
                     PDMAUDIOBACKENDCFG Cfg;
