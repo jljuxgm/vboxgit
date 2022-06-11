@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.h 82086 2019-11-21 19:32:20Z vboxsync $ */
+/* $Id: DevVGA-SVGA.h 82088 2019-11-21 21:59:57Z vboxsync $ */
 /** @file
  * VMware SVGA device
  */
@@ -365,7 +365,7 @@ DECLCALLBACK(int) vmsvgaR3PciIORegionFifoMapUnmap(PPDMDEVINS pDevIns, PPDMPCIDEV
 DECLCALLBACK(VBOXSTRICTRC) vmsvgaIORead(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT offPort, uint32_t *pu32, unsigned cb);
 DECLCALLBACK(VBOXSTRICTRC) vmsvgaIOWrite(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT offPort, uint32_t u32, unsigned cb);
 
-DECLCALLBACK(void) vmsvgaPortSetViewport(PPDMIDISPLAYPORT pInterface, uint32_t uScreenId,
+DECLCALLBACK(void) vmsvgaR3PortSetViewport(PPDMIDISPLAYPORT pInterface, uint32_t uScreenId,
                                          uint32_t x, uint32_t y, uint32_t cx, uint32_t cy);
 
 int vmsvgaInit(PPDMDEVINS pDevIns);
