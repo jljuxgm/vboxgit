@@ -1,4 +1,4 @@
-/* $Id: GaDdi.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: GaDdi.cpp 83222 2020-03-06 11:22:07Z vboxsync $ */
 /** @file
  * WDDM D3DDDI callbacks implemented for the Gallium based driver.
  */
@@ -2047,8 +2047,14 @@ HRESULT APIENTRY GaDdiDestroyResource(HANDLE hDevice, HANDLE hResource)
             PVBOXWDDMDISP_ALLOCATION pAlloc = &pRc->aAllocations[i];
             if (pAlloc->hSharedHandle)
             {
-                if (i == 0)
+                if (pAlloc->hSharedHandle == (HANDLE)pAlloc->hostID)
                 {
+                    /* The original shared resource is being destroyed. */
+                    Assert(pRc->RcDesc.fFlags.SharedResource);
+                }
+                else if (i == 0)
+                {
+                    /* This resource has been opened and maps to a the original shared resource. */
                     /* Tell miniport to remove the sid -> shared sid mapping. */
                     IGaDirect3DDevice9Ex *pGaD3DDevice9Ex = NULL;
                     IDirect3DDevice9 *pDevice9If = VBOXDISP_D3DEV(pDevice);

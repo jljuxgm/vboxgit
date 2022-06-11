@@ -1,4 +1,4 @@
-/* $Id: VBoxMPGaUtils.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxMPGaUtils.cpp 83222 2020-03-06 11:22:07Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver interface for WDDM kernel mode driver.
  */
@@ -24,6 +24,7 @@ volatile uint32_t g_fu32GaLogControl =
       GALOG_GROUP_RELEASE
 #ifdef DEBUG
     | GALOG_GROUP_TEST
+    | GALOG_GROUP_HOSTOBJECTS
 //    | GALOG_GROUP_PRESENT
 //    | GALOG_GROUP_DXGK
 //    | GALOG_GROUP_SVGA

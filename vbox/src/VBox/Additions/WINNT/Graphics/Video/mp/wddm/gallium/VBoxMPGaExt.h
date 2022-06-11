@@ -1,4 +1,4 @@
-/* $Id: VBoxMPGaExt.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxMPGaExt.h 83222 2020-03-06 11:22:07Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver miscellaneous helpers and common includes.
  */
@@ -39,6 +39,8 @@ typedef struct VBOXWDDM_EXT_GA
     volatile uint32_t u32LastCompletedFenceId; /* Updated in ISR. */
     volatile uint32_t u32PreemptionFenceId; /* Updated in GaDxgkDdiPreemptCommand. */
     volatile uint32_t u32LastCompletedSeqNo; /* Updated in DPC routine. */
+
+    RTLISTANCHOR listHwRenderData;
 
     struct
     {
