@@ -1,4 +1,4 @@
-/* $Id: VBoxClipboard.cpp 80990 2019-09-25 06:20:09Z vboxsync $ */
+/* $Id: VBoxClipboard.cpp 80991 2019-09-25 06:22:53Z vboxsync $ */
 /** @file
  * VBoxClipboard - Shared clipboard, Windows Guest Implementation.
  */
@@ -992,12 +992,13 @@ DECLCALLBACK(int) VBoxShClWorker(void *pInstance, bool volatile *pfShutdown)
                    break;
                }
 
+#ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS
                case VBGLR3CLIPBOARDEVENTTYPE_URI_TRANSFER_STATUS:
                {
                    /* Nothing to do here. */
                    break;
                }
-
+#endif
                case VBGLR3CLIPBOARDEVENTTYPE_INVALID:
                default:
                {
