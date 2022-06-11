@@ -1,4 +1,4 @@
-/* $Id: GuestDnDTargetImpl.cpp 78093 2019-04-10 15:11:29Z vboxsync $ */
+/* $Id: GuestDnDTargetImpl.cpp 78745 2019-05-25 14:22:39Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag'n drop target.
  */
@@ -658,7 +658,7 @@ HRESULT GuestDnDTarget::sendData(ULONG aScreenId, const com::Utf8Str &aFormat, c
         /* This function delete pTask in case of exceptions,
          * so there is no need in the call of delete operator. */
         hr = pTask->createThreadWithType(RTTHREADTYPE_MAIN_WORKER);
-
+        pTask = NULL; /* Note: pTask is now owned by the worker thread. */
     }
     catch (std::bad_alloc &)
     {
@@ -676,8 +676,6 @@ HRESULT GuestDnDTarget::sendData(ULONG aScreenId, const com::Utf8Str &aFormat, c
 
         hr = pResp->queryProgressTo(aProgress.asOutParam());
         ComAssertComRC(hr);
-
-        /* Note: pTask is now owned by the worker thread. */
     }
     else
         hr = setError(hr, tr("Starting thread for GuestDnDTarget::i_sendDataThread (%Rhrc)"), hr);
