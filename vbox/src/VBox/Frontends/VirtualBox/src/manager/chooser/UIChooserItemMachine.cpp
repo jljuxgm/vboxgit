@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemMachine.cpp 77934 2019-03-28 12:42:50Z vboxsync $ */
+/* $Id: UIChooserItemMachine.cpp 79388 2019-06-27 12:27:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemMachine class implementation.
  */
@@ -567,12 +567,6 @@ QVariant UIChooserItemMachine::data(int iKey) const
         case MachineItemData_MinorSpacing: return QApplication::style()->pixelMetric(QStyle::PM_SmallIconSize) / 4;
         case MachineItemData_TextSpacing:  return 0;
         case MachineItemData_ButtonMargin: return QApplication::style()->pixelMetric(QStyle::PM_SmallIconSize) / 4;
-
-        /* Pixmaps: */
-        case MachineItemData_SettingsButtonPixmap: return UIIconPool::iconSet(":/vm_settings_16px.png");
-        case MachineItemData_StartButtonPixmap:    return UIIconPool::iconSet(":/vm_start_16px.png");
-        case MachineItemData_PauseButtonPixmap:    return UIIconPool::iconSet(":/vm_pause_16px.png");
-        case MachineItemData_CloseButtonPixmap:    return UIIconPool::iconSet(":/exit_16px.png");
 
         /* Default: */
         default: break;
