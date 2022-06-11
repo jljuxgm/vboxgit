@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicSeamless.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIMachineLogicSeamless.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicSeamless class implementation.
  */
@@ -21,7 +21,7 @@
 #endif /* !VBOX_WS_MAC */
 
 /* GUI includes: */
-#include "VBoxGlobal.h"
+#include "UICommon.h"
 #include "UIMessageCenter.h"
 #include "UIPopupCenter.h"
 #include "UISession.h"
@@ -284,7 +284,7 @@ void UIMachineLogicSeamless::prepareMachineWindows()
     setMachineWindowsCreated(true);
 
 #ifdef VBOX_WS_X11
-    switch (vboxGlobal().typeOfWindowManager())
+    switch (uiCommon().typeOfWindowManager())
     {
         case X11WMType_GNOMEShell:
         case X11WMType_Mutter:

@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.cpp 78519 2019-05-14 17:03:54Z vboxsync $ */
+/* $Id: UIFileManagerTable.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class implementation.
  */
@@ -31,7 +31,7 @@
 #include "QILabel.h"
 #include "QILineEdit.h"
 #include "QIToolButton.h"
-#include "VBoxGlobal.h"
+#include "UICommon.h"
 #include "UIActionPool.h"
 #include "UICustomFileSystemModel.h"
 #include "UIErrorString.h"
@@ -1479,7 +1479,7 @@ QString UIFileManagerTable::fileTypeString(KFsObjType type)
 
 /* static */ QString UIFileManagerTable::humanReadableSize(ULONG64 size)
 {
-    return vboxGlobal().formatSize(size);
+    return uiCommon().formatSize(size);
 }
 
 void UIFileManagerTable::optionsUpdated()

@@ -1,4 +1,4 @@
-/* $Id: UIMenuBar.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIMenuBar.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMenuBar class implementation.
  */
@@ -21,7 +21,7 @@
 #include <QPixmapCache>
 
 /* GUI includes: */
-#include "VBoxGlobal.h"
+#include "UICommon.h"
 #include "UIImageTools.h"
 #include "UIMenuBar.h"
 
@@ -31,7 +31,7 @@ UIMenuBar::UIMenuBar(QWidget *pParent /* = 0 */)
     , m_fShowBetaLabel(false)
 {
     /* Check for beta versions: */
-    if (vboxGlobal().isBeta())
+    if (uiCommon().isBeta())
         m_fShowBetaLabel = true;
 }
 

@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageExpert.cpp 77154 2019-02-04 17:52:47Z vboxsync $ */
+/* $Id: UIWizardCloneVDPageExpert.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDPageExpert class implementation.
  */
@@ -66,7 +66,7 @@ UIWizardCloneVDPageExpert::UIWizardCloneVDPageExpert(KDeviceType enmDeviceType)
                 m_pFormatButtonGroup = new QButtonGroup(m_pFormatCnt);
                 {
                     /* Enumerate medium formats in special order: */
-                    CSystemProperties properties = vboxGlobal().virtualBox().GetSystemProperties();
+                    CSystemProperties properties = uiCommon().virtualBox().GetSystemProperties();
                     const QVector<CMediumFormat> &formats = properties.GetMediumFormats();
                     QMap<QString, CMediumFormat> vdi, preferred, others;
                     foreach (const CMediumFormat &format, formats)

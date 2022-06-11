@@ -1,4 +1,4 @@
-/* $Id: UITools.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UITools.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UITools class implementation.
  */
@@ -23,7 +23,7 @@
 #include "UIToolsModel.h"
 #include "UIToolsView.h"
 #include "UIVirtualBoxManagerWidget.h"
-#include "VBoxGlobal.h"
+#include "UICommon.h"
 
 
 UITools::UITools(UIVirtualBoxManagerWidget *pParent)

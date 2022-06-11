@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic3.cpp 78993 2019-06-05 13:02:13Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic3.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic3 class implementation.
  */
@@ -22,7 +22,7 @@
 /* GUI includes: */
 #include "QILabelSeparator.h"
 #include "QIRichTextLabel.h"
-#include "VBoxGlobal.h"
+#include "UICommon.h"
 #include "UIMessageCenter.h"
 #include "UIWizardExportApp.h"
 #include "UIWizardExportAppPageBasic3.h"
@@ -61,7 +61,7 @@ void UIWizardExportAppPage3::refreshApplianceSettingsWidget()
         foreach (const QUuid &uMachineId, uuids)
         {
             /* Get the machine with the uMachineId: */
-            CVirtualBox comVBox = vboxGlobal().virtualBox();
+            CVirtualBox comVBox = uiCommon().virtualBox();
             CMachine comMachine = comVBox.FindMachine(uMachineId.toString());
             if (comVBox.isOk() && comMachine.isNotNull())
             {

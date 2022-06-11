@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlInterface.cpp 77839 2019-03-22 08:00:48Z vboxsync $ */
+/* $Id: UIGuestControlInterface.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlInterface class implementation.
  */
@@ -18,7 +18,7 @@
 /* GUI includes: */
 #include "UIErrorString.h"
 #include "UIGuestControlInterface.h"
-#include "VBoxGlobal.h"
+#include "UICommon.h"
 
 /* COM includes: */
 #include "CFsObjInfo.h"

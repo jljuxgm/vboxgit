@@ -1,4 +1,4 @@
-/* $Id: UINetworkManager.cpp 78665 2019-05-22 15:27:01Z vboxsync $ */
+/* $Id: UINetworkManager.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkManager stuff implementation.
  */
@@ -20,7 +20,7 @@
 #include <QUrl>
 
 /* GUI includes: */
-#include "VBoxGlobal.h"
+#include "UICommon.h"
 #include "UINetworkCustomer.h"
 #include "UINetworkManager.h"
 #include "UINetworkManagerDialog.h"
@@ -64,7 +64,7 @@ UINetworkManagerDialog *UINetworkManager::window() const
 UINetworkManagerIndicator *UINetworkManager::createIndicator() const
 {
     /* For Selector UI only: */
-    AssertReturn(vboxGlobal().uiType() == VBoxGlobal::UIType_SelectorUI, 0);
+    AssertReturn(uiCommon().uiType() == UICommon::UIType_SelectorUI, 0);
 
     /* Create network-manager state-indicator: */
     UINetworkManagerIndicator *pNetworkManagerIndicator = new UINetworkManagerIndicator;

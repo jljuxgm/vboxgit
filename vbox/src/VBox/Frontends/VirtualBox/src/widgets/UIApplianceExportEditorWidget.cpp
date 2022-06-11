@@ -1,4 +1,4 @@
-/* $Id: UIApplianceExportEditorWidget.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIApplianceExportEditorWidget.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceExportEditorWidget class implementation.
  */
@@ -21,7 +21,7 @@
 /* GUI includes: */
 #include "QITreeView.h"
 #include "UIApplianceExportEditorWidget.h"
-#include "VBoxGlobal.h"
+#include "UICommon.h"
 #include "UIMessageCenter.h"
 
 /* COM includes: */
@@ -66,7 +66,7 @@ CAppliance* UIApplianceExportEditorWidget::init()
 {
     if (m_pAppliance)
         delete m_pAppliance;
-    CVirtualBox vbox = vboxGlobal().virtualBox();
+    CVirtualBox vbox = uiCommon().virtualBox();
     /* Create a appliance object */
     m_pAppliance = new CAppliance(vbox.CreateAppliance());
 //    bool fResult = m_pAppliance->isOk();

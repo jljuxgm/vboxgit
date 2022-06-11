@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageBasic1.cpp 79313 2019-06-24 16:13:24Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageBasic1.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageBasic1 class implementation.
  */
@@ -69,7 +69,7 @@ void UIWizardNewCloudVMPage1::populateDestinations()
     do
     {
         /* Initialize Cloud Provider Manager: */
-        CVirtualBox comVBox = vboxGlobal().virtualBox();
+        CVirtualBox comVBox = uiCommon().virtualBox();
         m_comCloudProviderManager = comVBox.GetCloudProviderManager();
         if (!comVBox.isOk())
         {
@@ -354,7 +354,7 @@ void UIWizardNewCloudVMPage1::populateFormProperties()
         do
         {
             /* Create appliance: */
-            CVirtualBox comVBox = vboxGlobal().virtualBox();
+            CVirtualBox comVBox = uiCommon().virtualBox();
             CAppliance comAppliance = comVBox.CreateAppliance();
             if (!comVBox.isOk())
             {

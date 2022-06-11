@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.h 78722 2019-05-24 12:09:08Z vboxsync $ */
+/* $Id: UIMediumManager.h 79365 2019-06-26 15:57:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class declaration.
  */
@@ -147,19 +147,19 @@ private slots:
 
     /** @name Medium operation stuff.
       * @{ */
-        /** Handles VBoxGlobal::sigMediumCreated signal. */
+        /** Handles UICommon::sigMediumCreated signal. */
         void sltHandleMediumCreated(const QUuid &uMediumID);
-        /** Handles VBoxGlobal::sigMediumDeleted signal. */
+        /** Handles UICommon::sigMediumDeleted signal. */
         void sltHandleMediumDeleted(const QUuid &uMediumID);
     /** @} */
 
     /** @name Medium enumeration stuff.
       * @{ */
-        /** Handles VBoxGlobal::sigMediumEnumerationStarted signal. */
+        /** Handles UICommon::sigMediumEnumerationStarted signal. */
         void sltHandleMediumEnumerationStart();
-        /** Handles VBoxGlobal::sigMediumEnumerated signal. */
+        /** Handles UICommon::sigMediumEnumerated signal. */
         void sltHandleMediumEnumerated(const QUuid &uMediumID);
-        /** Handles VBoxGlobal::sigMediumEnumerationFinished signal. */
+        /** Handles UICommon::sigMediumEnumerationFinished signal. */
         void sltHandleMediumEnumerationFinish();
         void sltHandleMachineStateChange(const QUuid &uId, const KMachineState state);
     /** @} */

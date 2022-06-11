@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageBasic3.cpp 77154 2019-02-04 17:52:47Z vboxsync $ */
+/* $Id: UIWizardCloneVDPageBasic3.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDPageBasic3 class implementation.
  */
@@ -24,7 +24,7 @@
 /* GUI includes: */
 #include "UIWizardCloneVDPageBasic3.h"
 #include "UIWizardCloneVD.h"
-#include "VBoxGlobal.h"
+#include "UICommon.h"
 #include "UIMessageCenter.h"
 #include "UIIconPool.h"
 #include "QIFileDialog.h"

@@ -1,4 +1,4 @@
-/* $Id: UIWizard.cpp 79260 2019-06-20 16:01:52Z vboxsync $ */
+/* $Id: UIWizard.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizard class implementation.
  */
@@ -24,7 +24,7 @@
 #include "UIIconPool.h"
 #include "UIWizard.h"
 #include "UIWizardPage.h"
-#include "VBoxGlobal.h"
+#include "UICommon.h"
 #include "QIRichTextLabel.h"
 #include "UIExtraDataManager.h"
 

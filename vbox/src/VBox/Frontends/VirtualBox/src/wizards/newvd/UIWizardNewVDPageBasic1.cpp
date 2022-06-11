@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageBasic1.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIWizardNewVDPageBasic1.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageBasic1 class implementation.
  */
@@ -24,7 +24,7 @@
 #include "UIConverter.h"
 #include "UIWizardNewVDPageBasic1.h"
 #include "UIWizardNewVD.h"
-#include "VBoxGlobal.h"
+#include "UICommon.h"
 #include "QIRichTextLabel.h"
 
 /* COM includes: */
@@ -99,7 +99,7 @@ UIWizardNewVDPageBasic1::UIWizardNewVDPageBasic1()
             m_pFormatButtonGroup = new QButtonGroup(this);
             {
                 /* Enumerate medium formats in special order: */
-                CSystemProperties properties = vboxGlobal().virtualBox().GetSystemProperties();
+                CSystemProperties properties = uiCommon().virtualBox().GetSystemProperties();
                 const QVector<CMediumFormat> &formats = properties.GetMediumFormats();
                 QMap<QString, CMediumFormat> vdi, preferred;
                 foreach (const CMediumFormat &format, formats)

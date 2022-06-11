@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsProxy.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIGlobalSettingsProxy.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsProxy class implementation.
  */
@@ -24,7 +24,7 @@
 #include "UIGlobalSettingsProxy.h"
 #include "UIExtraDataManager.h"
 #include "UIMessageCenter.h"
-#include "VBoxGlobal.h"
+#include "UICommon.h"
 #include "VBoxUtils.h"
 
 /* COM includes: */

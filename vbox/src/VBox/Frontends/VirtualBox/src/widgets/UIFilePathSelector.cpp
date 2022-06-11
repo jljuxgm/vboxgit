@@ -1,4 +1,4 @@
-/* $Id: UIFilePathSelector.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIFilePathSelector.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFilePathSelector class implementation.
  */
@@ -32,7 +32,7 @@
 #include "QILabel.h"
 #include "QILineEdit.h"
 #include "QIToolButton.h"
-#include "VBoxGlobal.h"
+#include "UICommon.h"
 #include "UIIconPool.h"
 #include "UIFilePathSelector.h"
 
@@ -428,9 +428,9 @@ void UIFilePathSelector::selectPath()
 QIcon UIFilePathSelector::defaultIcon() const
 {
     if (m_enmMode == Mode_Folder)
-        return vboxGlobal().icon(QFileIconProvider::Folder);
+        return uiCommon().icon(QFileIconProvider::Folder);
     else
-        return vboxGlobal().icon(QFileIconProvider::File);
+        return uiCommon().icon(QFileIconProvider::File);
 }
 
 QString UIFilePathSelector::fullPath(bool fAbsolute /* = true */) const
@@ -568,7 +568,7 @@ void UIFilePathSelector::refreshText()
 
         /* Attach corresponding icon: */
         setItemIcon(PathId, QFileInfo(m_strPath).exists() ?
-                            vboxGlobal().icon(QFileInfo(m_strPath)) :
+                            uiCommon().icon(QFileInfo(m_strPath)) :
                             defaultIcon());
 
         /* Set the tool-tip: */

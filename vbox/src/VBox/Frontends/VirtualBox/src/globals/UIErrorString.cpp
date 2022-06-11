@@ -1,4 +1,4 @@
-/* $Id: UIErrorString.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIErrorString.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIErrorString class implementation.
  */
@@ -20,7 +20,7 @@
 #include <QObject>
 
 /* GUI includes: */
-#include "VBoxGlobal.h"
+#include "UICommon.h"
 #include "UIErrorString.h"
 
 /* COM includes: */
@@ -164,9 +164,9 @@ QString UIErrorString::errorInfoToString(const COMErrorInfo &comInfo, HRESULT wr
         /* Check if details text written in English (latin1) and translated: */
         if (   strDetailsInfo == QString::fromLatin1(strDetailsInfo.toLatin1())
             && strDetailsInfo != QObject::tr(strDetailsInfo.toLatin1().constData()))
-            strFormatted += QString("<p>%1.</p>").arg(vboxGlobal().emphasize(QObject::tr(strDetailsInfo.toLatin1().constData())));
+            strFormatted += QString("<p>%1.</p>").arg(uiCommon().emphasize(QObject::tr(strDetailsInfo.toLatin1().constData())));
         else
-            strFormatted += QString("<p>%1.</p>").arg(vboxGlobal().emphasize(strDetailsInfo));
+            strFormatted += QString("<p>%1.</p>").arg(uiCommon().emphasize(strDetailsInfo));
     }
 
     strFormatted += "<!--EOM--><table bgcolor=#EEEEEE border=0 cellspacing=5 "

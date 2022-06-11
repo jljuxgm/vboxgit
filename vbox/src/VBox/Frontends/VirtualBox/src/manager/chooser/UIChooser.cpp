@@ -1,4 +1,4 @@
-/* $Id: UIChooser.cpp 77933 2019-03-28 12:30:56Z vboxsync $ */
+/* $Id: UIChooser.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooser class implementation.
  */
@@ -23,7 +23,7 @@
 #include "UIChooserModel.h"
 #include "UIChooserView.h"
 #include "UIVirtualBoxManagerWidget.h"
-#include "VBoxGlobal.h"
+#include "UICommon.h"
 
 
 UIChooser::UIChooser(UIVirtualBoxManagerWidget *pParent)

@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportApp.cpp 78852 2019-05-29 14:16:05Z vboxsync $ */
+/* $Id: UIWizardImportApp.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportApp class implementation.
  */
@@ -28,7 +28,7 @@
 /* GUI includes: */
 #include "QIDialog.h"
 #include "QIFileDialog.h"
-#include "VBoxGlobal.h"
+#include "UICommon.h"
 #include "UIMessageCenter.h"
 #include "UIWizardImportApp.h"
 #include "UIWizardImportAppPageBasic1.h"
@@ -99,7 +99,7 @@ private slots:
     /* Save stuff: */
     void sltSave()
     {
-        QString fileName = QIFileDialog::getSaveFileName(vboxGlobal().documentsPath(), tr("Text (*.txt)"),
+        QString fileName = QIFileDialog::getSaveFileName(uiCommon().documentsPath(), tr("Text (*.txt)"),
                                                          this, tr("Save license to file..."));
         if (!fileName.isEmpty())
         {

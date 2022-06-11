@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIToolsModel.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class implementation.
  */
@@ -27,7 +27,7 @@
 
 /* GUI includes: */
 #include "QIMessageBox.h"
-#include "VBoxGlobal.h"
+#include "UICommon.h"
 #include "UIActionPoolManager.h"
 #include "UIIconPool.h"
 #include "UITools.h"
@@ -449,7 +449,7 @@ void UIToolsModel::prepareScene()
 void UIToolsModel::prepareItems()
 {
     /* Check if Ext Pack is ready, some of actions my depend on it: */
-    CExtPack extPack = vboxGlobal().virtualBox().GetExtensionPackManager().Find(GUI_ExtPackName);
+    CExtPack extPack = uiCommon().virtualBox().GetExtensionPackManager().Find(GUI_ExtPackName);
     const bool fExtPackAccessible = !extPack.isNull() && extPack.GetUsable();
 
     /* Enable both classes of tools initially: */

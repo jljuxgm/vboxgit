@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlTreeItem.cpp 77784 2019-03-19 13:39:12Z vboxsync $ */
+/* $Id: UIGuestControlTreeItem.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestSessionTreeItem class implementation.
  */
@@ -20,7 +20,7 @@
 #include "UIExtraDataManager.h"
 #include "UIGuestControlTreeItem.h"
 #include "UIGuestProcessControlWidget.h"
-#include "VBoxGlobal.h"
+#include "UICommon.h"
 
 /* COM includes: */
 #include "CGuest.h"
@@ -89,7 +89,7 @@ void UIGuestControlTreeItem::cleanupListener(CEventSource comEventSource)
     }
 
     /* Make sure VBoxSVC is available: */
-    if (!vboxGlobal().isVBoxSVCAvailable())
+    if (!uiCommon().isVBoxSVCAvailable())
         return;
 
     /* Unregister event listener for CProgress event source: */

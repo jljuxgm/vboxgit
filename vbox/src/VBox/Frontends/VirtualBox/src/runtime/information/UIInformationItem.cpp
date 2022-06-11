@@ -1,4 +1,4 @@
-/* $Id: UIInformationItem.cpp 77432 2019-02-22 14:52:39Z vboxsync $ */
+/* $Id: UIInformationItem.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationItem class definition.
  */
@@ -22,7 +22,7 @@
 #include <QUrl>
 
 /* GUI includes: */
-#include "VBoxGlobal.h"
+#include "UICommon.h"
 #include "UIIconPool.h"
 #include "UIInformationItem.h"
 

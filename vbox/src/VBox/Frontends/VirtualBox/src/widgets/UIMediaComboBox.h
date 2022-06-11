@@ -1,4 +1,4 @@
-/* $Id: UIMediaComboBox.h 78722 2019-05-24 12:09:08Z vboxsync $ */
+/* $Id: UIMediaComboBox.h 79365 2019-06-26 15:57:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediaComboBox class declaration.
  */
@@ -26,7 +26,7 @@
 #include <QString>
 
 /* GUI includes: */
-#include "VBoxGlobal.h"
+#include "UICommon.h"
 #include "UILibraryDefs.h"
 
 /** QComboBox subclass representing a list of registered media. */

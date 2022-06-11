@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 78408 2019-05-06 21:31:01Z vboxsync $
+# $Id: Makefile.kmk 79365 2019-06-26 15:57:32Z vboxsync $
 ## @file
 # Install misc stuff and create dist packages for Mac OS X.
 #
@@ -399,7 +399,7 @@ ifdef VBOX_WITH_DEBUGGER_GUI
 endif
 ifdef VBOX_WITH_HARDENING
  VBOX_DI_VBAPP_DYLIBS += \
- 	MacOS/VBoxGlobal.dylib \
+ 	MacOS/UICommon.dylib \
  	MacOS/VirtualBoxVM.dylib \
  	MacOS/VBoxNetDHCP.dylib \
  	MacOS/VBoxNetNAT.dylib \

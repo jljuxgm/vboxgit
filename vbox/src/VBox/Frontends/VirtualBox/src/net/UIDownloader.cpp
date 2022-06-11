@@ -1,4 +1,4 @@
-/* $Id: UIDownloader.cpp 78665 2019-05-22 15:27:01Z vboxsync $ */
+/* $Id: UIDownloader.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDownloader class implementation.
  */
@@ -16,7 +16,7 @@
  */
 
 /* GUI includes: */
-#include "VBoxGlobal.h"
+#include "UICommon.h"
 #include "VBoxUtils.h"
 #include "UIDownloader.h"
 #include "UIMessageCenter.h"

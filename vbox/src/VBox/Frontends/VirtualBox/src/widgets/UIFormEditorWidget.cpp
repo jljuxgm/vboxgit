@@ -1,4 +1,4 @@
-/* $Id: UIFormEditorWidget.cpp 79310 2019-06-24 14:23:45Z vboxsync $ */
+/* $Id: UIFormEditorWidget.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFormEditorWidget class implementation.
  */
@@ -616,7 +616,7 @@ void RangedIntegerEditor::setRangedInteger(const RangedIntegerData &rangedIntege
     setValue(rangedInteger.integer());
     m_strSuffix = rangedInteger.suffix();
     setSuffix(m_strSuffix.isEmpty() ? QString() :
-              QString(" %1").arg(QApplication::translate("VBoxGlobal", m_strSuffix.toUtf8().constData())));
+              QString(" %1").arg(QApplication::translate("UICommon", m_strSuffix.toUtf8().constData())));
 }
 
 RangedIntegerData RangedIntegerEditor::rangedInteger() const

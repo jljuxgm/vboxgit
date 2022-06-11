@@ -1,4 +1,4 @@
-/* $Id: UIApplianceImportEditorWidget.cpp 79032 2019-06-07 07:28:32Z vboxsync $ */
+/* $Id: UIApplianceImportEditorWidget.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceImportEditorWidget class implementation.
  */
@@ -28,7 +28,7 @@
 #include "UIFilePathSelector.h"
 #include "UIMessageCenter.h"
 #include "UIWizardImportApp.h"
-#include "VBoxGlobal.h"
+#include "UICommon.h"
 
 /* COM includes: */
 #include "CAppliance.h"
@@ -88,8 +88,8 @@ void UIApplianceImportEditorWidget::prepareWidgets()
         if (m_pPathSelector)
         {
             m_pPathSelector->setResetEnabled(true);
-            m_pPathSelector->setDefaultPath(vboxGlobal().virtualBox().GetSystemProperties().GetDefaultMachineFolder());
-            m_pPathSelector->setPath(vboxGlobal().virtualBox().GetSystemProperties().GetDefaultMachineFolder());
+            m_pPathSelector->setDefaultPath(uiCommon().virtualBox().GetSystemProperties().GetDefaultMachineFolder());
+            m_pPathSelector->setPath(uiCommon().virtualBox().GetSystemProperties().GetDefaultMachineFolder());
             m_pPathSelectorLabel->setBuddy(m_pPathSelector);
 
             /* Add into layout: */
@@ -158,7 +158,7 @@ bool UIApplianceImportEditorWidget::setFile(const QString& strFile)
     if (!strFile.isEmpty())
     {
         CProgress progress;
-        CVirtualBox vbox = vboxGlobal().virtualBox();
+        CVirtualBox vbox = uiCommon().virtualBox();
         /* Create a appliance object */
         m_pAppliance = new CAppliance(vbox.CreateAppliance());
         fResult = m_pAppliance->isOk();

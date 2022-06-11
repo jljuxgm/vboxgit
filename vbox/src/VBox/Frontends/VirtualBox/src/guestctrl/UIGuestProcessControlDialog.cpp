@@ -1,4 +1,4 @@
-/* $Id: UIGuestProcessControlDialog.cpp 77822 2019-03-21 08:23:11Z vboxsync $ */
+/* $Id: UIGuestProcessControlDialog.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestProcessControlDialog class implementation.
  */
@@ -25,7 +25,7 @@
 #include "UIIconPool.h"
 #include "UIGuestControlConsole.h"
 #include "UIGuestProcessControlDialog.h"
-#include "VBoxGlobal.h"
+#include "UICommon.h"
 #ifdef VBOX_WS_MAC
 # include "VBoxUtils-darwin.h"
 #endif

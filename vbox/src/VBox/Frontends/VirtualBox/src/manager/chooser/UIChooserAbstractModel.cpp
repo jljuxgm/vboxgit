@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.cpp 77948 2019-03-29 10:46:10Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class implementation.
  */
@@ -16,7 +16,7 @@
  */
 
 /* GUI includes: */
-#include "VBoxGlobal.h"
+#include "UICommon.h"
 #include "UIChooser.h"
 #include "UIChooserAbstractModel.h"
 #include "UIChooserNode.h"
@@ -209,7 +209,7 @@ void UIChooserAbstractModel::sltMachineRegistered(const QUuid &uMachineId, const
         if (gEDataManager->showMachineInVirtualBoxManagerChooser(uMachineId))
         {
             /* Add new machine-item: */
-            const CMachine comMachine = vboxGlobal().virtualBox().FindMachine(uMachineId.toString());
+            const CMachine comMachine = uiCommon().virtualBox().FindMachine(uMachineId.toString());
             addMachineIntoTheTree(comMachine, true /* make it visible */);
         }
     }
@@ -238,7 +238,7 @@ void UIChooserAbstractModel::sltReloadMachine(const QUuid &uMachineId)
     if (gEDataManager->showMachineInVirtualBoxManagerChooser(uMachineId))
     {
         /* Add new machine-item: */
-        const CMachine comMachine = vboxGlobal().virtualBox().FindMachine(uMachineId.toString());
+        const CMachine comMachine = uiCommon().virtualBox().FindMachine(uMachineId.toString());
         addMachineIntoTheTree(comMachine, true /* make it visible */);
     }
 }
@@ -314,7 +314,7 @@ void UIChooserAbstractModel::loadTree()
 
         /* Add all the approved machine nodes into the tree: */
         LogRelFlow(("UIChooserModel: Loading VMs...\n"));
-        foreach (const CMachine &comMachine, vboxGlobal().virtualBox().GetMachines())
+        foreach (const CMachine &comMachine, uiCommon().virtualBox().GetMachines())
         {
             const QUuid uMachineID = comMachine.GetId();
             if (!uMachineID.isNull() && gEDataManager->showMachineInVirtualBoxManagerChooser(uMachineID))
@@ -756,7 +756,7 @@ void UIThreadGroupDefinitionSave::run()
         do
         {
             /* 1. Open session: */
-            session = vboxGlobal().openSession(QUuid(strId));
+            session = uiCommon().openSession(QUuid(strId));
             if (session.isNull())
                 break;
 

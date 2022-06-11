@@ -1,4 +1,4 @@
-/* $Id: UIFileManager.cpp 78092 2019-04-10 14:27:06Z vboxsync $ */
+/* $Id: UIFileManager.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManager class implementation.
  */
@@ -35,7 +35,7 @@
 #include "UIFileManagerHostTable.h"
 #include "UIGuestControlInterface.h"
 #include "UIToolBar.h"
-#include "VBoxGlobal.h"
+#include "UICommon.h"
 
 /* COM includes: */
 #include "CFsObjInfo.h"
@@ -663,7 +663,7 @@ void UIFileManager::cleanupListener(ComObjPtr<UIMainEventListenerImpl> &QtListen
     }
 
     /* Make sure VBoxSVC is available: */
-    if (!vboxGlobal().isVBoxSVCAvailable())
+    if (!uiCommon().isVBoxSVCAvailable())
         return;
 
     /* Unregister event listener for CProgress event source: */

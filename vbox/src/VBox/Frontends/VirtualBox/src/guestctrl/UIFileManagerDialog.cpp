@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerDialog.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIFileManagerDialog.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerDialog class implementation.
  */
@@ -25,7 +25,7 @@
 #include "UIIconPool.h"
 #include "UIFileManager.h"
 #include "UIFileManagerDialog.h"
-#include "VBoxGlobal.h"
+#include "UICommon.h"
 #ifdef VBOX_WS_MAC
 # include "VBoxUtils-darwin.h"
 #endif

@@ -1,4 +1,4 @@
-/* $Id: UICustomFileSystemModel.cpp 77868 2019-03-25 09:27:48Z vboxsync $ */
+/* $Id: UICustomFileSystemModel.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICustomFileSystemModel class implementation.
  */
@@ -24,7 +24,7 @@
 #include "UIErrorString.h"
 #include "UICustomFileSystemModel.h"
 #include "UIPathOperations.h"
-#include "VBoxGlobal.h"
+#include "UICommon.h"
 
 const char *UICustomFileSystemModel::strUpDirectoryString = "..";
 
@@ -439,7 +439,7 @@ QVariant UICustomFileSystemModel::data(const QModelIndex &index, int role) const
             if (m_fShowHumanReadableSizes)
             {
                 qulonglong size = item->data(index.column()).toULongLong();
-                return vboxGlobal().formatSize(size);
+                return uiCommon().formatSize(size);
             }
             else
                 return item->data(index.column());

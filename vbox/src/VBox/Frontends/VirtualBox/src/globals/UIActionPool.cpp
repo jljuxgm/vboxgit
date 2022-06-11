@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.cpp 76864 2019-01-17 14:54:47Z vboxsync $ */
+/* $Id: UIActionPool.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPool class implementation.
  */
@@ -20,7 +20,7 @@
 #include <QToolTip>
 
 /* GUI includes: */
-#include "VBoxGlobal.h"
+#include "UICommon.h"
 #include "UIActionPool.h"
 #include "UIActionPoolManager.h"
 #include "UIActionPoolRuntime.h"
@@ -187,7 +187,7 @@ QString UIAction::nameInMenu() const
         /* Unchanged name for Manager UI: */
         case UIActionPoolType_Manager: return name();
         /* Filtered name for Runtime UI: */
-        case UIActionPoolType_Runtime: return VBoxGlobal::removeAccelMark(name());
+        case UIActionPoolType_Runtime: return UICommon::removeAccelMark(name());
     }
     /* Nothing by default: */
     return QString();
@@ -213,7 +213,7 @@ void UIAction::updateText()
         case UIActionPoolType_Runtime:
         {
             if (machineMenuAction())
-                setText(vboxGlobal().insertKeyToActionText(nameInMenu(),
+                setText(uiCommon().insertKeyToActionText(nameInMenu(),
                                                            gShortcutPool->shortcut(actionPool(), this).toString()));
             else
                 setText(nameInMenu());

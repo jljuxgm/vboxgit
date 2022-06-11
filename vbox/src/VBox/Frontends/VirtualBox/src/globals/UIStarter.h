@@ -1,4 +1,4 @@
-/* $Id: UIStarter.h 76835 2019-01-16 11:54:21Z vboxsync $ */
+/* $Id: UIStarter.h 79365 2019-06-26 15:57:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIStarter class declaration.
  */
@@ -45,9 +45,9 @@ public:
     /** Create the singleton UI starter instance. */
     static void destroy();
 
-    /** Init VBoxGlobal connections. */
+    /** Init UICommon connections. */
     void init();
-    /** Deinit VBoxGlobal connections. */
+    /** Deinit UICommon connections. */
     void deinit();
 
 private slots:

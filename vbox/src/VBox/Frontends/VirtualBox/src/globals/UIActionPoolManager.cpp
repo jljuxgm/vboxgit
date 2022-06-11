@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.cpp 79266 2019-06-21 10:07:44Z vboxsync $ */
+/* $Id: UIActionPoolManager.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class implementation.
  */
@@ -16,7 +16,7 @@
  */
 
 /* GUI includes: */
-#include "VBoxGlobal.h"
+#include "UICommon.h"
 #include "UIActionPoolManager.h"
 #include "UIExtraDataManager.h"
 #include "UIIconPool.h"
@@ -2993,7 +2993,7 @@ void UIActionPoolManager::updateMenuFile()
     pMenu->clear();
 
     /* Check if Ext Pack is ready, some of actions my depend on it: */
-    CExtPack extPack = vboxGlobal().virtualBox().GetExtensionPackManager().Find(GUI_ExtPackName);
+    CExtPack extPack = uiCommon().virtualBox().GetExtensionPackManager().Find(GUI_ExtPackName);
     const bool fExtPackAccessible = !extPack.isNull() && extPack.GetUsable();
 
     /* The Application / 'File' menu contents is very different depending on host type. */

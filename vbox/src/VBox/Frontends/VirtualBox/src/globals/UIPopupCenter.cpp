@@ -1,4 +1,4 @@
-/* $Id: UIPopupCenter.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIPopupCenter.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPopupCenter class implementation.
  */
@@ -17,7 +17,7 @@
 
 /* GUI includes: */
 #include "QIMessageBox.h"
-#include "VBoxGlobal.h"
+#include "UICommon.h"
 #include "UIErrorString.h"
 #include "UIExtraDataManager.h"
 #include "UIHostComboEditor.h"

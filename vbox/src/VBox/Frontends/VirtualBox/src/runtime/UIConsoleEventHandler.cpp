@@ -1,4 +1,4 @@
-/* $Id: UIConsoleEventHandler.cpp 77719 2019-03-15 10:16:28Z vboxsync $ */
+/* $Id: UIConsoleEventHandler.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConsoleEventHandler class implementation.
  */
@@ -19,7 +19,7 @@
 #include "UIConsoleEventHandler.h"
 #include "UIMainEventListener.h"
 #include "UIExtraDataManager.h"
-#include "VBoxGlobal.h"
+#include "UICommon.h"
 #include "UISession.h"
 #ifdef VBOX_WS_MAC
 # include "VBoxUtils.h"

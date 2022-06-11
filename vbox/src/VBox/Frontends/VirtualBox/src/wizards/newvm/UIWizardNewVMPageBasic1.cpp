@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic1.cpp 77592 2019-03-07 08:46:46Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic1.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic1 class implementation.
  */
@@ -23,7 +23,7 @@
 
 /* GUI includes: */
 #include "QIRichTextLabel.h"
-#include "VBoxGlobal.h"
+#include "UICommon.h"
 #include "UIMessageCenter.h"
 #include "UINameAndSystemEditor.h"
 #include "UIWizardNewVMPageBasic1.h"
@@ -178,7 +178,7 @@ UIWizardNewVMPage1::UIWizardNewVMPage1(const QString &strGroup)
     , m_strGroup(strGroup)
 
 {
-    CHost host = vboxGlobal().host();
+    CHost host = uiCommon().host();
     m_fSupportsHWVirtEx = host.GetProcessorFeature(KProcessorFeature_HWVirtEx);
     m_fSupportsLongMode = host.GetProcessorFeature(KProcessorFeature_LongMode);
 }
@@ -196,7 +196,7 @@ void UIWizardNewVMPage1::onNameChanged(QString strNewName)
             if (m_pNameAndSystemEditor)
             {
                 m_pNameAndSystemEditor->blockSignals(true);
-                m_pNameAndSystemEditor->setType(vboxGlobal().vmGuestOSType(gs_OSTypePattern[i].pcstId));
+                m_pNameAndSystemEditor->setType(uiCommon().vmGuestOSType(gs_OSTypePattern[i].pcstId));
                 m_pNameAndSystemEditor->blockSignals(false);
             }
             break;
@@ -218,7 +218,7 @@ void UIWizardNewVMPage1::composeMachineFilePath()
     if (m_pNameAndSystemEditor->name().isEmpty() || m_pNameAndSystemEditor->path().isEmpty())
         return;
     /* Get VBox: */
-    CVirtualBox vbox = vboxGlobal().virtualBox();
+    CVirtualBox vbox = uiCommon().virtualBox();
 
     /* Compose machine filename: */
     m_strMachineFilePath = vbox.ComposeMachineFilename(m_pNameAndSystemEditor->name(),

@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicScale.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIMachineLogicScale.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicScale class implementation.
  */
@@ -21,7 +21,7 @@
 #endif
 
 /* GUI includes: */
-#include "VBoxGlobal.h"
+#include "UICommon.h"
 #include "UIDesktopWidgetWatchdog.h"
 #include "UIMessageCenter.h"
 #include "UISession.h"

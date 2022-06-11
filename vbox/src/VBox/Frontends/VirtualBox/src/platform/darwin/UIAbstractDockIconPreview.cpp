@@ -1,4 +1,4 @@
-/* $Id: UIAbstractDockIconPreview.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIAbstractDockIconPreview.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Realtime Dock Icon Preview
  */
@@ -26,7 +26,7 @@
 #include "UIMachineLogic.h"
 #include "UIMachineView.h"
 #include "UISession.h"
-#include "VBoxGlobal.h"
+#include "UICommon.h"
 
 /* COM includes: */
 #include "COMEnums.h"
@@ -115,7 +115,7 @@ void UIAbstractDockIconPreviewHelper::initPreviewImages()
 void UIAbstractDockIconPreviewHelper::drawOverlayIcons(CGContextRef context)
 {
     /* Determine whether dock icon overlay is not disabled: */
-    if (!gEDataManager->dockIconDisableOverlay(vboxGlobal().managedVMUuid()))
+    if (!gEDataManager->dockIconDisableOverlay(uiCommon().managedVMUuid()))
     {
         /* Initialize overlay rectangle: */
         CGRect overlayRect = CGRectMake(0, 0, 0, 0);

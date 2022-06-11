@@ -1,4 +1,4 @@
-/* $Id: UIStatusBarEditorWindow.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIStatusBarEditorWindow.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIStatusBarEditorWindow class implementation.
  */
@@ -31,7 +31,7 @@
 
 /* GUI includes: */
 #include "QIToolButton.h"
-#include "VBoxGlobal.h"
+#include "UICommon.h"
 #include "UIConverter.h"
 #include "UIExtraDataManager.h"
 #include "UIIconPool.h"
@@ -392,7 +392,7 @@ void UIStatusBarEditorButton::updatePixmap()
 *********************************************************************************************************************************/
 
 UIStatusBarEditorWindow::UIStatusBarEditorWindow(UIMachineWindow *pParent)
-    : UISlidingToolBar(pParent, pParent->statusBar(), new UIStatusBarEditorWidget(0, false, vboxGlobal().managedVMUuid()), UISlidingToolBar::Position_Bottom)
+    : UISlidingToolBar(pParent, pParent->statusBar(), new UIStatusBarEditorWidget(0, false, uiCommon().managedVMUuid()), UISlidingToolBar::Position_Bottom)
 {
 }
 

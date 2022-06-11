@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.cpp 78462 2019-05-10 14:56:17Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class implementation.
  */
@@ -44,7 +44,7 @@
 #include "UIVMLogViewerSearchPanel.h"
 #include "UIVMLogViewerOptionsPanel.h"
 #include "UIToolBar.h"
-#include "VBoxGlobal.h"
+#include "UICommon.h"
 
 /* COM includes: */
 #include "CSystemProperties.h"
@@ -797,7 +797,7 @@ bool UIVMLogViewerWidget::createLogViewerPages()
                                      "Please select a Virtual Machine to see its logs"));
     }
 
-    const CSystemProperties &sys = vboxGlobal().virtualBox().GetSystemProperties();
+    const CSystemProperties &sys = uiCommon().virtualBox().GetSystemProperties();
     unsigned cMaxLogs = sys.GetLogHistoryCount() + 1 /*VBox.log*/ + 1 /*VBoxHardening.log*/; /** @todo Add api for getting total possible log count! */
     bool logFileRead = false;
     for (unsigned i = 0; i < cMaxLogs && !noLogsToShow; ++i)

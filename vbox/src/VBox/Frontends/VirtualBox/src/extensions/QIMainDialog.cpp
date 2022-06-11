@@ -1,4 +1,4 @@
-/* $Id: QIMainDialog.cpp 77179 2019-02-06 15:35:57Z vboxsync $ */
+/* $Id: QIMainDialog.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIMainDialog class implementation.
  */
@@ -28,7 +28,7 @@
 
 /* GUI includes: */
 #include "QIMainDialog.h"
-#include "VBoxGlobal.h"
+#include "UICommon.h"
 #include "VBoxUtils.h"
 
 /* Other VBox includes: */
@@ -232,7 +232,7 @@ void QIMainDialog::polishEvent(QShowEvent *)
 
     /* Explicit centering according to our parent: */
     if (m_fIsAutoCentering)
-        VBoxGlobal::centerWidget(this, parentWidget(), false);
+        UICommon::centerWidget(this, parentWidget(), false);
 
     /* Mark dialog as polished: */
     m_fPolished = true;

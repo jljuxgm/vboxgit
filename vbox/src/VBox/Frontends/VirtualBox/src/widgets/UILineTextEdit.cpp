@@ -1,4 +1,4 @@
-/* $Id: UILineTextEdit.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UILineTextEdit.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UILineTextEdit class definitions.
  */
@@ -26,7 +26,7 @@
 
 /* GUI includes: */
 #include "QIFileDialog.h"
-#include "VBoxGlobal.h"
+#include "UICommon.h"
 #include "UILineTextEdit.h"
 
 
@@ -78,7 +78,7 @@ void UITextEditor::retranslateUi()
 
 void UITextEditor::open()
 {
-    QString fileName = QIFileDialog::getOpenFileName(vboxGlobal().documentsPath(), tr("Text (*.txt);;All (*.*)"), this, tr("Select a file to open..."));
+    QString fileName = QIFileDialog::getOpenFileName(uiCommon().documentsPath(), tr("Text (*.txt);;All (*.*)"), this, tr("Select a file to open..."));
     if (!fileName.isEmpty())
     {
         QFile file(fileName);

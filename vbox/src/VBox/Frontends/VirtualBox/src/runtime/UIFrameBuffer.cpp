@@ -1,4 +1,4 @@
-/* $Id: UIFrameBuffer.cpp 78018 2019-04-04 13:37:38Z vboxsync $ */
+/* $Id: UIFrameBuffer.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFrameBuffer class implementation.
  */
@@ -31,7 +31,7 @@
 #include "UIMachineView.h"
 #include "UIPopupCenter.h"
 #include "UIExtraDataManager.h"
-#include "VBoxGlobal.h"
+#include "UICommon.h"
 #ifdef VBOX_WITH_MASKED_SEAMLESS
 # include "UIMachineWindow.h"
 #endif /* VBOX_WITH_MASKED_SEAMLESS */
@@ -718,7 +718,7 @@ STDMETHODIMP UIFrameBufferPrivate::COMGETTER(Capabilities)(ComSafeArrayOut(Frame
         return E_POINTER;
 
     com::SafeArray<FramebufferCapabilities_T> caps;
-    if (vboxGlobal().isSeparateProcess())
+    if (uiCommon().isSeparateProcess())
     {
        caps.resize(2);
        caps[0] = FramebufferCapabilities_UpdateImage;
@@ -739,7 +739,7 @@ STDMETHODIMP UIFrameBufferPrivate::COMGETTER(Capabilities)(ComSafeArrayOut(Frame
 STDMETHODIMP UIFrameBufferPrivate::NotifyChange(ULONG uScreenId, ULONG uX, ULONG uY, ULONG uWidth, ULONG uHeight)
 {
     CDisplaySourceBitmap sourceBitmap;
-    if (!vboxGlobal().isSeparateProcess())
+    if (!uiCommon().isSeparateProcess())
         display().QuerySourceBitmap(uScreenId, sourceBitmap);
 
     /* Lock access to frame-buffer: */
@@ -766,7 +766,7 @@ STDMETHODIMP UIFrameBufferPrivate::NotifyChange(ULONG uScreenId, ULONG uX, ULONG
     /* While updates are disabled, visible region will be saved:  */
     m_pendingSyncVisibleRegion = QRegion();
 
-    if (!vboxGlobal().isSeparateProcess())
+    if (!uiCommon().isSeparateProcess())
     {
        /* Acquire new pending bitmap: */
        m_pendingSourceBitmap = sourceBitmap;
@@ -1086,7 +1086,7 @@ void UIFrameBufferPrivate::handleNotifyChange(int iWidth, int iHeight)
     lock();
 
     /* If there is NO pending source-bitmap: */
-    if (!vboxGlobal().isSeparateProcess() && !m_fPendingSourceBitmap)
+    if (!uiCommon().isSeparateProcess() && !m_fPendingSourceBitmap)
     {
         /* Do nothing, change-event already processed: */
         LogRel2(("GUI: UIFrameBufferPrivate::handleNotifyChange: Already processed.\n"));

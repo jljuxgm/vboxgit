@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialog.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UISettingsDialog.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISettingsDialog class implementation.
  */
@@ -24,7 +24,7 @@
 
 /* GUI includes: */
 #include "QIWidgetValidator.h"
-#include "VBoxGlobal.h"
+#include "UICommon.h"
 #include "UIConverter.h"
 #include "UIIconPool.h"
 #include "UIMessageCenter.h"

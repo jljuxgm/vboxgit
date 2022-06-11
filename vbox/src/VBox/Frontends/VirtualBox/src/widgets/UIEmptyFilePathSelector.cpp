@@ -1,4 +1,4 @@
-/* $Id: UIEmptyFilePathSelector.cpp 78215 2019-04-19 14:20:27Z vboxsync $ */
+/* $Id: UIEmptyFilePathSelector.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIEmptyFilePathSelector class implementation.
  */
@@ -22,7 +22,7 @@
 #include "QILineEdit.h"
 #include "UIIconPool.h"
 #include "UIEmptyFilePathSelector.h"
-#include "VBoxGlobal.h"
+#include "UICommon.h"
 
 /* Global includes */
 #include <iprt/assert.h>
