@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplSvmInstr.cpp.h 78371 2019-05-03 08:21:44Z vboxsync $ */
+/* $Id: IEMAllCImplSvmInstr.cpp.h 78483 2019-05-13 10:52:16Z vboxsync $ */
 /** @file
  * IEM - AMD-V (Secure Virtual Machine) instruction implementation.
  */
@@ -989,8 +989,8 @@ IEM_STATIC VBOXSTRICTRC iemSvmHandleIOIntercept(PVMCPU pVCpu, uint16_t u16Port, 
 
     SVMIOIOEXITINFO IoExitInfo;
     void *pvIoBitmap = pVCpu->cpum.GstCtx.hwvirt.svm.CTX_SUFF(pvIoBitmap);
-    bool const fIntercept = CPUMIsSvmIoInterceptActive(pvIoBitmap, u16Port, enmIoType, cbReg, cAddrSizeBits, iEffSeg, fRep,
-                                                       fStrIo, &IoExitInfo);
+    bool const fIntercept = CPUMIsSvmIoInterceptSet(pvIoBitmap, u16Port, enmIoType, cbReg, cAddrSizeBits, iEffSeg, fRep,
+                                                    fStrIo, &IoExitInfo);
     if (fIntercept)
     {
         Log3(("iemSvmHandleIOIntercept: u16Port=%#x (%u) -> #VMEXIT\n", u16Port, u16Port));
