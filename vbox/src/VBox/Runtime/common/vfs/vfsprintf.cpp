@@ -1,4 +1,4 @@
-/* $Id: vfsprintf.cpp 84146 2020-05-05 15:10:47Z vboxsync $ */
+/* $Id: vfsprintf.cpp 84152 2020-05-05 19:41:28Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, File Printf.
  */
@@ -30,8 +30,7 @@
 *********************************************************************************************************************************/
 #include <iprt/vfs.h>
 
-#include <iprt/err.h>
-#include <iprt/mem.h>
+#include <iprt/errcore.h>
 #include <iprt/string.h>
 
 
