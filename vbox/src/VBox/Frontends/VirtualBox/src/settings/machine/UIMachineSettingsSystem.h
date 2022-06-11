@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSystem.h 79963 2019-07-24 18:21:31Z vboxsync $ */
+/* $Id: UIMachineSettingsSystem.h 79976 2019-07-25 13:14:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSystem class declaration.
  */
@@ -98,18 +98,12 @@ protected:
     /** Performs final page polishing. */
     virtual void polishPage() /* override */;
 
-    /** Preprocesses any Qt @a pEvent for passed @a pObject. */
-    virtual bool eventFilter(QObject *pObject, QEvent *pEvent) /* override */;
-
 private slots:
 
     /** Handles memory size slider change. */
     void sltHandleMemorySizeSliderChange();
     /** Handles memory size editor change. */
     void sltHandleMemorySizeEditorChange();
-
-    /** Handle current boot item change to @a iCurrentIndex. */
-    void sltHandleCurrentBootItemChange(int iCurrentIndex);
 
     /** Handles CPU count slider change. */
     void sltHandleCPUCountSliderChange();
@@ -148,8 +142,6 @@ private:
     /** Retranslates Paravirtualization providers combo-box. */
     void retranslateComboParavirtProvider();
 
-    /** Adjusts boot-order tree-widget size. */
-    void adjustBootOrderTWSize();
     /** Loads boot item list for passed @a comMachine. */
     UIBootItemDataList loadBootItems(const CMachine &comMachine);
     /** Saves @a bootItems list to passed @a comMachine. */
