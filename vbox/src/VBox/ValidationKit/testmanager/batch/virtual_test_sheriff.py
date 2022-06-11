@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 80789 2019-09-15 10:59:26Z vboxsync $
+# $Id: virtual_test_sheriff.py 80791 2019-09-15 11:15:14Z vboxsync $
 # pylint: disable=line-too-long
 
 """
@@ -35,7 +35,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 80789 $"
+__version__ = "$Revision: 80791 $"
 
 
 # Standard python imports
@@ -337,7 +337,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
 
         if self.oConfig.sLogFile:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 80789 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 80791 $ \n');
 
 
     def eprint(self, sText):
@@ -711,7 +711,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.getFailureReason(tReason);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 80789 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 80791 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
@@ -835,10 +835,10 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
         ],
         'solaris': [
             # ( Whether to stop on hit, reason tuple, needle text. )
-            ( True, ktReason_Host_InstallationFailed, 'svcadm: Couldn\'t bind to svc.configd.' ),
-            ( True, ktReason_Host_InstallationFailed, 'pkgadd: ERROR: postinstall script did not complete successfully' ),
             ( True, ktReason_Host_DriverNotUnloading, 'can\'t unload the module: Device busy' ),
             ( True, ktReason_Host_DriverNotUnloading, 'Unloading: Host module ...FAILED!' ),
+            ( True, ktReason_Host_InstallationFailed, 'svcadm: Couldn\'t bind to svc.configd.' ),
+            ( True, ktReason_Host_InstallationFailed, 'pkgadd: ERROR: postinstall script did not complete successfully' ),
         ],
     };
 
