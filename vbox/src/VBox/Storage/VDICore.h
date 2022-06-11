@@ -1,4 +1,4 @@
-/* $Id: VDICore.h 76578 2019-01-01 06:11:47Z vboxsync $ */
+/* $Id: VDICore.h 79742 2019-07-12 16:11:19Z vboxsync $ */
 /** @file
  * Virtual Disk Image (VDI), Core Code Header (internal).
  */
@@ -553,6 +553,8 @@ typedef struct VDIIMAGEDESC
     unsigned                offStartBlockData;
     /** Total size of image block (including the extra data). */
     unsigned                cbTotalBlockData;
+    /** Allocation Block Size */
+    unsigned                cbAllocationBlock;
     /** Container filename. (UTF-8) */
     const char             *pszFilename;
     /** Physical geometry of this image (never actually stored). */

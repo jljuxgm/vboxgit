@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 77857 2019-03-23 17:41:55Z vboxsync $ */
+/* $Id: MediumImpl.h 79742 2019-07-12 16:11:19Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -349,6 +349,9 @@ private:
                                                      const char *pszzValid);
     static DECLCALLBACK(int) i_vdConfigQuerySize(void *pvUser, const char *pszName,
                                                  size_t *pcbValue);
+    static DECLCALLBACK(int) i_vdConfigUpdate(void *pvUser, bool fCreate,
+                                            const char *pszName, const char *pszValue);
+
     static DECLCALLBACK(int) i_vdConfigQuery(void *pvUser, const char *pszName,
                                              char *pszValue, size_t cchValue);
 
