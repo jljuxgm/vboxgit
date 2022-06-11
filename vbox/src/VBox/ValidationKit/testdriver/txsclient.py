@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: txsclient.py 79156 2019-06-15 02:35:24Z vboxsync $
+# $Id: txsclient.py 79219 2019-06-18 21:50:00Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79156 $"
+__version__ = "$Revision: 79219 $"
 
 # Standard Python imports.
 import array;
@@ -636,7 +636,7 @@ class Session(TdTaskBase):
 
         rc = self.waitForTask(self.cMsTimeout + 5000);
         if rc is False:
-            reporter.maybeErrXcpt(self.fErr, 'asyncToSync: waitForTask failed...');
+            reporter.maybeErr(self.fErr, 'asyncToSync: waitForTask failed...');
             self.cancelTask();
             #reporter.log2('asyncToSync(%s): returns False (#2)' % (fnAsync, rc));
             return False;
