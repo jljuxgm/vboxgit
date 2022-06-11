@@ -1,4 +1,4 @@
-/* $Id: PDMQueue.cpp 80333 2019-08-16 20:28:38Z vboxsync $ */
+/* $Id: PDMQueue.cpp 80334 2019-08-17 00:43:24Z vboxsync $ */
 /** @file
  * PDM Queue - Transport data and tasks to EMT and R3.
  */
@@ -87,11 +87,7 @@ static int pdmR3QueueCreate(PVM pVM, size_t cbItem, uint32_t cItems, uint32_t cM
      * Initialize the data fields.
      */
     pQueue->pVMR3 = pVM;
-#ifdef VBOX_BUGREF_9217
     pQueue->pVMR0 = fRZEnabled ? pVM->pVMR0ForCall : NIL_RTR0PTR;
-#else
-    pQueue->pVMR0 = fRZEnabled ? pVM->pVMR0 : NIL_RTR0PTR;
-#endif
     pQueue->pVMRC = fRZEnabled ? pVM->pVMRC : NIL_RTRCPTR;
     pQueue->pszName = pszName;
     pQueue->cMilliesInterval = cMilliesInterval;

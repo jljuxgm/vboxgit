@@ -1,4 +1,4 @@
-/* $Id: PDMR0Device.cpp 80333 2019-08-16 20:28:38Z vboxsync $ */
+/* $Id: PDMR0Device.cpp 80334 2019-08-17 00:43:24Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, R0 Device parts.
  */
@@ -457,13 +457,8 @@ extern DECLEXPORT(const PDMDEVHLPR0) g_pdmR0DevHlp =
 static DECLCALLBACK(void) pdmR0PicHlp_SetInterruptFF(PPDMDEVINS pDevIns)
 {
     PDMDEV_ASSERT_DEVINS(pDevIns);
-#ifdef VBOX_BUGREF_9217
-    PGVM   pGVM  = (PGVM)pDevIns->Internal.s.pVMR0;
+    PGVM     pGVM  = (PGVM)pDevIns->Internal.s.pVMR0;
     PVMCPUCC pVCpu = &pGVM->aCpus[0];     /* for PIC we always deliver to CPU 0, MP use APIC */
-#else
-    PVMCC    pVM   = pDevIns->Internal.s.pVMR0;
-    PVMCPUCC pVCpu = VMCC_GET_CPU_0(pVM); /* for PIC we always deliver to CPU 0, MP use APIC */
-#endif
     /** @todo r=ramshankar: Propagating rcRZ and make all callers handle it? */
     APICLocalInterrupt(pVCpu, 0 /* u8Pin */, 1 /* u8Level */, VINF_SUCCESS /* rcRZ */);
 }
@@ -473,13 +468,8 @@ static DECLCALLBACK(void) pdmR0PicHlp_SetInterruptFF(PPDMDEVINS pDevIns)
 static DECLCALLBACK(void) pdmR0PicHlp_ClearInterruptFF(PPDMDEVINS pDevIns)
 {
     PDMDEV_ASSERT_DEVINS(pDevIns);
-#ifdef VBOX_BUGREF_9217
-    PGVM   pGVM  = (PGVM)pDevIns->Internal.s.pVMR0;
+    PGVM     pGVM  = (PGVM)pDevIns->Internal.s.pVMR0;
     PVMCPUCC pVCpu = &pGVM->aCpus[0];     /* for PIC we always deliver to CPU 0, MP use APIC */
-#else
-    PVMCC    pVM   = pDevIns->Internal.s.pVMR0;
-    PVMCPUCC pVCpu = VMCC_GET_CPU_0(pVM); /* for PIC we always deliver to CPU 0, MP use APIC */
-#endif
     /** @todo r=ramshankar: Propagating rcRZ and make all callers handle it? */
     APICLocalInterrupt(pVCpu, 0 /* u8Pin */, 0 /* u8Level */, VINF_SUCCESS /* rcRZ */);
 }

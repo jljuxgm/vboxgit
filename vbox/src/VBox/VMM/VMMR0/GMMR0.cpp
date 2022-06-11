@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 80333 2019-08-16 20:28:38Z vboxsync $ */
+/* $Id: GMMR0.cpp 80334 2019-08-17 00:43:24Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -1224,11 +1224,7 @@ static uint16_t gmmR0GetCurrentNumaNodeId(void)
  */
 GMMR0DECL(void) GMMR0CleanupVM(PGVM pGVM)
 {
-#ifdef VBOX_BUGREF_9217
     LogFlow(("GMMR0CleanupVM: pGVM=%p:{.hSelf=%#x}\n", pGVM, pGVM->hSelf));
-#else
-    LogFlow(("GMMR0CleanupVM: pGVM=%p:{.pVM=%p, .hSelf=%#x}\n", pGVM, pGVM->pVM, pGVM->hSelf));
-#endif
 
     PGMM pGMM;
     GMM_GET_VALID_INSTANCE_VOID(pGMM);
@@ -5140,11 +5136,7 @@ static DECLCALLBACK(int) gmmR0CheckSharedModule(PAVLGCPTRNODECORE pNode, void *p
     Log(("gmmR0CheckSharedModule: check %s %s base=%RGv size=%x\n",
          pGblMod->szName, pGblMod->szVersion, pGblMod->Core.Key, pGblMod->cbModule));
 
-# ifdef VBOX_BUGREF_9217
     int rc = PGMR0SharedModuleCheck(pArgs->pGVM, pArgs->pGVM, pArgs->idCpu, pGblMod, pRecVM->aRegionsGCPtrs);
-#else
-    int rc = PGMR0SharedModuleCheck(pArgs->pGVM->pVM, pArgs->pGVM, pArgs->idCpu, pGblMod, pRecVM->aRegionsGCPtrs);
-# endif
     if (RT_FAILURE(rc))
         return rc;
     return VINF_SUCCESS;
