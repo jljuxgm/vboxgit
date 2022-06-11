@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 80487 2019-08-28 20:34:19Z vboxsync $
+# $Id: Makefile.kmk 82416 2019-12-05 13:00:09Z vboxsync $
 ## @file
 # Makefile for the Windows guest display driver.
 #
@@ -132,6 +132,7 @@ VBoxDispD3D_INCS     += \
 	$(VBOX_PATH_3D)/win/include \
 	$(VBOX_PATH_VMSVGA_INC)
 VBoxDispD3D_SOURCES  += \
+	wddm/gallium/GaDxva.cpp \
 	wddm/gallium/GaDrvEnvWddm.cpp \
 	wddm/gallium/GaWddm.cpp \
 	wddm/gallium/GaDdi.cpp \

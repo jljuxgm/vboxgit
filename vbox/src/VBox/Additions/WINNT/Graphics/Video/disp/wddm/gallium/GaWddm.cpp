@@ -1,4 +1,4 @@
-/* $Id: GaWddm.cpp 81082 2019-09-30 13:42:47Z vboxsync $ */
+/* $Id: GaWddm.cpp 82416 2019-12-05 13:00:09Z vboxsync $ */
 /** @file
  * WDDM helpers implemented for the Gallium based driver.
  */
@@ -397,7 +397,9 @@ HRESULT GaD3DIfCreateForRc(struct VBOXWDDMDISP_RESOURCE *pRc)
     const DWORD d3dMultisampleQuality        = pRc->RcDesc.MultisampleQuality;
     const BOOL d3dLockable                   = !pRc->RcDesc.fFlags.NotLockable;
 
-    if (VBOXWDDMDISP_IS_TEXTURE(pRc->RcDesc.fFlags))
+    if (   VBOXWDDMDISP_IS_TEXTURE(pRc->RcDesc.fFlags)
+        || pRc->RcDesc.fFlags.VideoProcessRenderTarget
+        || pRc->RcDesc.fFlags.DecodeRenderTarget)
     {
         PVBOXWDDMDISP_ALLOCATION pAllocation = &pRc->aAllocations[0];
         IDirect3DBaseTexture9 *pD3DIfTex = NULL;
