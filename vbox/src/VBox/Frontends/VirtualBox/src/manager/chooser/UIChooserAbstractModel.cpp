@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.cpp 83882 2020-04-21 09:46:01Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.cpp 83900 2020-04-21 16:01:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class implementation.
  */
@@ -362,6 +362,12 @@ bool UIChooserAbstractModel::isGroupSavingInProgress() const
 {
     return    UIThreadGroupDefinitionSave::instance()
            || UIThreadGroupOrderSave::instance();
+}
+
+/* static */
+QString UIChooserAbstractModel::toOldStyleUuid(const QUuid &uId)
+{
+    return uId.toString().remove(QRegExp("[{}]"));
 }
 
 void UIChooserAbstractModel::sltMachineStateChanged(const QUuid &uMachineId, const KMachineState)
@@ -988,12 +994,6 @@ void UIChooserAbstractModel::makeSureGroupOrdersSaveIsFinished()
     /* Cleanup if necessary: */
     if (UIThreadGroupOrderSave::instance())
         UIThreadGroupOrderSave::cleanup();
-}
-
-/* static */
-QString UIChooserAbstractModel::toOldStyleUuid(const QUuid &uId)
-{
-    return uId.toString().remove(QRegExp("[{}]"));
 }
 
 

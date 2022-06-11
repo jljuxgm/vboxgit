@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.h 83705 2020-04-15 15:46:18Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.h 83900 2020-04-21 16:01:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class declaration.
  */
@@ -106,6 +106,10 @@ public:
         void saveGroupSettings();
         /** Returns whether group saving is in progress. */
         bool isGroupSavingInProgress() const;
+
+        /** Returns QString representation for passed @a uId, wiping out {} symbols.
+          * @note  Required for backward compatibility after QString=>QUuid change. */
+        static QString toOldStyleUuid(const QUuid &uId);
     /** @} */
 
 public slots:
@@ -231,10 +235,6 @@ private:
         void makeSureGroupDefinitionsSaveIsFinished();
         /** Makes sure group orders saving is finished. */
         void makeSureGroupOrdersSaveIsFinished();
-
-        /** Returns QString representation for passed @a uId, wiping out {} symbols.
-          * @note  Required for backward compatibility after QString=>QUuid change. */
-        static QString toOldStyleUuid(const QUuid &uId);
     /** @} */
 
     /** @name General stuff.
