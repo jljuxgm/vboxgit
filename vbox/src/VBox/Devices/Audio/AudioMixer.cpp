@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 78506 2019-05-14 14:28:16Z vboxsync $ */
+/* $Id: AudioMixer.cpp 78507 2019-05-14 14:34:34Z vboxsync $ */
 /** @file
  * Audio mixing routines for multiplexing audio sources in device emulations.
  *
@@ -107,7 +107,6 @@ static void audioMixerStreamDestroyInternal(PAUDMIXSTREAM pStream);
 static int audioMixerStreamUpdateStatus(PAUDMIXSTREAM pMixStream);
 
 
-#ifdef LOG_ENABLED
 /**
  * Converts a mixer sink status to a string.
  *
@@ -155,7 +154,6 @@ static char *dbgAudioMixerSinkStatusToStr(AUDMIXSINKSTS fStatus)
 
     return pszFlags;
 }
-#endif /* DEBUG */
 
 /**
  * Creates an audio sink and attaches it to the given mixer.
