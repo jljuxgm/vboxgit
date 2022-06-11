@@ -1,4 +1,4 @@
-/* $Id: UICloudMachine.cpp 83151 2020-02-25 13:06:21Z vboxsync $ */
+/* $Id: UICloudMachine.cpp 83159 2020-02-26 11:46:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudMachine class implementation.
  */
@@ -53,6 +53,41 @@ UICloudMachineData::UICloudMachineData(const UICloudMachineData &other)
 UICloudMachineData::~UICloudMachineData()
 {
     //printf("Data for machine with id = {%s} is deleted\n", m_strId.toUtf8().constData());
+}
+
+CCloudClient UICloudMachineData::cloudClient() const
+{
+    return m_comCloudClient;
+}
+
+QString UICloudMachineData::id() const
+{
+    return m_strId;
+}
+
+QString UICloudMachineData::name() const
+{
+    return m_strName;
+}
+
+bool UICloudMachineData::isAccessible() const
+{
+    return m_fAccessible;
+}
+
+QString UICloudMachineData::osType()
+{
+    return m_strOsType;
+}
+
+int UICloudMachineData::memorySize()
+{
+    return m_iMemorySize;
+}
+
+int UICloudMachineData::cpuCount()
+{
+    return m_iCpuCount;
 }
 
 
