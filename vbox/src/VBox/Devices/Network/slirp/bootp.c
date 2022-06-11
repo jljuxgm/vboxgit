@@ -1,4 +1,4 @@
-/* $Id: bootp.c 83581 2020-04-06 01:30:22Z vboxsync $ */
+/* $Id: bootp.c 83591 2020-04-06 14:58:18Z vboxsync $ */
 /** @file
  * NAT - BOOTP/DHCP server emulation.
  */
@@ -571,14 +571,6 @@ static int dhcp_decode_request(PNATState pData, struct bootp_t *bp, size_t vlen,
             memcpy(bc->macaddr, bp->bp_hwaddr, ETH_ALEN);
             bc->addr.s_addr = ui32;
             break;
-
-        case REBINDING:
-            LogRel(("NAT: REBINDING state isn't impemented\n"));
-            return -1;
-
-        case SELECTING:
-            LogRel(("NAT: SELECTING state isn't impemented\n"));
-            return -1;
 
         case NONE:
             return -1;
