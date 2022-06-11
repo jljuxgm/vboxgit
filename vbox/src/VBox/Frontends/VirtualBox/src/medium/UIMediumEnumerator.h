@@ -1,4 +1,4 @@
-/* $Id: UIMediumEnumerator.h 79129 2019-06-13 13:17:48Z vboxsync $ */
+/* $Id: UIMediumEnumerator.h 79131 2019-06-13 14:20:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumEnumerator class declaration.
  */
@@ -113,6 +113,9 @@ private slots:
     /** Handles snapshot-deleted events for a machine with specified @a uMachineID and a snapshot with specified @a uSnapshotID. */
     void sltHandleSnapshotDeleted(const QUuid &uMachineID, const QUuid &uSnapshotID);
 #else /* VBOX_GUI_WITH_NEW_MEDIA_EVENTS */
+    /** Handles machine-data-change event for a machine with specified @a uMachineId. */
+    void sltHandleMachineDataChange(const QUuid &uMachineId);
+
     /** Handles signal about storage controller change.
       * @param  uMachineId         Brings the ID of machine corresponding controller belongs to.
       * @param  strControllerName  Brings the name of controller this event is related to. */
