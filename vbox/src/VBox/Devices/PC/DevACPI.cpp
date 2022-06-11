@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 82020 2019-11-20 11:36:21Z vboxsync $ */
+/* $Id: DevACPI.cpp 82068 2019-11-21 09:09:17Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -3104,6 +3104,7 @@ static void acpiR3SetupHpet(PPDMDEVINS pDevIns, PACPISTATE pThis, RTGCPHYS32 add
  * Used by acpiR3PlantTables to plant a MMCONFIG PCI config space access (MCFG)
  * descriptor.
  *
+ * @param   pDevIns     The device instance.
  * @param   pThis       The ACPI shared instance data.
  * @param   GCPhysDst   Where to plant it.
  */
