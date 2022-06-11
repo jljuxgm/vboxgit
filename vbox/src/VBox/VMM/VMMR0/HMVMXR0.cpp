@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 82018 2019-11-20 10:30:36Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 82026 2019-11-20 15:10:30Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -9839,7 +9839,7 @@ static int hmR0VmxMapHCApicAccessPage(PVMCPUCC pVCpu)
 
     /* Map the HC APIC-access page in place of the MMIO page, also updates the shadow page tables if necessary. */
     Assert(pVM->hm.s.vmx.HCPhysApicAccess != NIL_RTHCPHYS);
-    rc = IOMMMIOMapMMIOHCPage(pVM, pVCpu, GCPhysApicBase, pVM->hm.s.vmx.HCPhysApicAccess, X86_PTE_RW | X86_PTE_P);
+    rc = IOMR0MmioMapMmioHCPage(pVM, pVCpu, GCPhysApicBase, pVM->hm.s.vmx.HCPhysApicAccess, X86_PTE_RW | X86_PTE_P);
     AssertRCReturn(rc, rc);
 
     /* Update the per-VCPU cache of the APIC base MSR. */

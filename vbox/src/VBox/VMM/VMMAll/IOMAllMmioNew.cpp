@@ -1,4 +1,4 @@
-/* $Id: IOMAllMmioNew.cpp 81947 2019-11-18 16:14:43Z vboxsync $ */
+/* $Id: IOMAllMmioNew.cpp 82026 2019-11-20 15:10:30Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context, MMIO & String I/O.
  */
@@ -1166,7 +1166,7 @@ VMM_INT_DECL(int) IOMMmioMapMmio2Page(PVMCC pVM, PPDMDEVINS pDevIns, IOMMMIOHAND
  * @param   fPageFlags      Page flags to set. Must be (X86_PTE_RW | X86_PTE_P)
  *                          for the time being.
  */
-VMM_INT_DECL(int) IOMR0MmioMapMmioHCPage(PVMCC pVM, PVMCPUCC pVCpu, RTGCPHYS GCPhys, RTHCPHYS HCPhys, uint64_t fPageFlags)
+VMMR0_INT_DECL(int) IOMR0MmioMapMmioHCPage(PVMCC pVM, PVMCPUCC pVCpu, RTGCPHYS GCPhys, RTHCPHYS HCPhys, uint64_t fPageFlags)
 {
     /* Currently only called from VT-x code during a page fault. */
     Log(("IOMR0MmioMapMmioHCPage %RGp -> %RGp flags=%RX64\n", GCPhys, HCPhys, fPageFlags));
