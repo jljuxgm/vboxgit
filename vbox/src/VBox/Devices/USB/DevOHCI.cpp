@@ -1,4 +1,4 @@
-/* $Id: DevOHCI.cpp 81526 2019-10-25 09:53:18Z vboxsync $ */
+/* $Id: DevOHCI.cpp 81527 2019-10-25 09:54:20Z vboxsync $ */
 /** @file
  * DevOHCI - Open Host Controller Interface for USB.
  */
@@ -1629,6 +1629,8 @@ DECLINLINE(void) ohciR3ReadITd(PPDMDEVINS pDevIns, POHCI pThis, uint32_t ITdAddr
               pITd->aPSW[6] >> 12, pITd->aPSW[6] & 0xfff,
               pITd->aPSW[7] >> 12, pITd->aPSW[7] & 0xfff));
     }
+# else
+    RT_NOREF(pThis);
 # endif
 }
 
