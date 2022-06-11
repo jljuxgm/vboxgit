@@ -1,4 +1,4 @@
-/* $Id: store.cpp 84310 2020-05-14 17:40:35Z vboxsync $ */
+/* $Id: store.cpp 84329 2020-05-18 13:35:33Z vboxsync $ */
 /** @file
  * IPRT - Cryptographic (Certificate) Store.
  */
@@ -96,6 +96,18 @@ DECLHIDDEN(int) rtCrStoreCreate(PCRTCRSTOREPROVIDER pProvider, void *pvProvider,
     return VERR_NO_MEMORY;
 }
 
+
+/**
+ * For the parent forwarding of the in-memory store.
+ */
+DECLHIDDEN(PCRTCRSTOREPROVIDER) rtCrStoreGetProvider(RTCRSTORE hStore, void **ppvProvider)
+{
+    PRTCRSTOREINT pThis = (PRTCRSTOREINT)hStore;
+    AssertPtrReturn(pThis, NULL);
+    AssertReturn(pThis->u32Magic == RTCRSTOREINT_MAGIC, NULL);
+    *ppvProvider = pThis->pvProvider;
+    return pThis->pProvider;
+}
 
 
 RTDECL(uint32_t) RTCrStoreRetain(RTCRSTORE hStore)
