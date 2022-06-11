@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.h 84084 2020-04-29 14:15:52Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.h 84104 2020-04-30 13:43:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class declaration.
  */
@@ -187,8 +187,10 @@ private:
 
     /** @name Prepare/Cleanup cascade.
       * @{ */
-        /** Prepares window. */
+        /** Prepares all. */
         void prepare();
+        /** Prepares palette. */
+        void preparePalette();
         /** Prepares widgets. */
         void prepareWidgets();
         /** Prepares connections. */
@@ -196,12 +198,14 @@ private:
         /** Loads settings. */
         void loadSettings();
 
-        /** Update toolbar. */
+        /** Updates toolbar. */
         void updateToolbar();
 
         /** Saves settings. */
         void saveSettings();
-        /** Cleanups window. */
+        /** Cleanups connections. */
+        void cleanupConnections();
+        /** Cleanups all. */
         void cleanup();
     /** @} */
 
