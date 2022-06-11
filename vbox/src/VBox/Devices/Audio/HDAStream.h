@@ -1,4 +1,4 @@
-/* $Id: HDAStream.h 82450 2019-12-06 12:39:15Z vboxsync $ */
+/* $Id: HDAStream.h 82463 2019-12-06 14:29:16Z vboxsync $ */
 /** @file
  * HDAStream.h - Streams for HD Audio.
  */
@@ -165,7 +165,6 @@ typedef struct HDASTREAMSTATE
     /** The stream's current configuration.
      *  Should match SDFMT. */
     PDMAUDIOSTREAMCFG       Cfg;
-    uint32_t                Padding4;
     /** Timestamp (in ns) of last stream update. */
     uint64_t                tsLastUpdateNs;
 } HDASTREAMSTATE;

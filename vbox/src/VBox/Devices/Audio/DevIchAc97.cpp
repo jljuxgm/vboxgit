@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 82451 2019-12-06 12:46:23Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 82463 2019-12-06 14:29:16Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -359,8 +359,7 @@ typedef struct AC97STREAMSTATE
     uint32_t                Padding;
 #endif
     /** The stream's current configuration. */
-    PDMAUDIOSTREAMCFG       Cfg; //+104
-    uint32_t                Padding2;
+    PDMAUDIOSTREAMCFG       Cfg; //+108
 #ifdef VBOX_WITH_AUDIO_AC97_ASYNC_IO
     /** Asynchronous I/O state members. */
     AC97STREAMSTATEAIO      AIO;
