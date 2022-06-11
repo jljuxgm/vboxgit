@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 83259 2020-03-11 15:18:52Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 83303 2020-03-17 07:54:16Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -45,6 +45,8 @@
 #include <iprt/process.h> /* For RTProcSelf(). */
 #include <iprt/thread.h>
 #include <iprt/vfs.h>
+
+#include <iprt/cpp/path.h>
 
 #include <map>
 #include <vector>
@@ -2682,7 +2684,9 @@ static DECLCALLBACK(RTEXITCODE) gctlHandleUpdateAdditions(PGCTLCMDCTX pCtx, int 
             GCTLCMD_COMMON_OPTION_CASES(pCtx, ch, &ValueUnion);
 
             case 's':
-                strSource = ValueUnion.psz;
+                vrc = RTPathAbsCxx(strSource, ValueUnion.psz);
+                if (RT_FAILURE(vrc))
+                    return RTMsgErrorExitFailure("RTPathAbsCxx failed on '%s': %Rrc", ValueUnion.psz, vrc);
                 break;
 
             case 'w':
