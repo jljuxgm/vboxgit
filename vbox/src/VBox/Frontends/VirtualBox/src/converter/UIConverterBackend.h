@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackend.h 77647 2019-03-11 10:43:02Z vboxsync $ */
+/* $Id: UIConverterBackend.h 78547 2019-05-16 13:10:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConverterBackend declaration.
  */
@@ -297,6 +297,7 @@ template<> SHARED_LIBRARY_STUFF KAudioControllerType fromString<KAudioController
 template<> SHARED_LIBRARY_STUFF QString toString(const KAuthType &type);
 template<> SHARED_LIBRARY_STUFF KAuthType fromString<KAuthType>(const QString &strType);
 template<> SHARED_LIBRARY_STUFF QString toString(const KStorageBus &bus);
+template<> SHARED_LIBRARY_STUFF KStorageBus fromString<KStorageBus>(const QString &strType);
 template<> SHARED_LIBRARY_STUFF QString toString(const KStorageControllerType &type);
 template<> SHARED_LIBRARY_STUFF KStorageControllerType fromString<KStorageControllerType>(const QString &strType);
 template<> SHARED_LIBRARY_STUFF QString toString(const KChipsetType &type);
