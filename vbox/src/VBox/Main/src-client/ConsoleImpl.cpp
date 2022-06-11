@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 80662 2019-09-09 08:43:14Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 80737 2019-09-11 15:07:39Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -5703,8 +5703,9 @@ HRESULT Console::i_onRecordingChange(BOOL fEnabled)
 
         ptrVM.release();
     }
+#else
+    RT_NOREF(fEnabled);
 #endif /* VBOX_WITH_RECORDING */
-
     return rc;
 }
 
