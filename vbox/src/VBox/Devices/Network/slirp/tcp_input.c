@@ -1,4 +1,4 @@
-/* $Id: tcp_input.c 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: tcp_input.c 80037 2019-07-29 09:29:10Z vboxsync $ */
 /** @file
  * NAT - TCP input.
  */
@@ -721,7 +721,7 @@ findso:
 /*          sorwakeup(so); */
 
             /*
-             * If this is a short packet, then ACK now - with Nagel
+             * If this is a short packet, then ACK now - with Nagle
              *      congestion avoidance sender won't send more until
              *      he gets an ACK.
              *
