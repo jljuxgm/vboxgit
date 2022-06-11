@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-darwin.cpp 81451 2019-10-22 13:23:50Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-darwin.cpp 81746 2019-11-08 08:28:06Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Mac OS X host.
  */
@@ -75,7 +75,7 @@ static int vboxClipboardChanged(SHCLCONTEXT *pCtx)
 
         formatData.uFormats = fFormats;
 
-        rc = shClSvcFormatsReport(pCtx->pClient, &formatData);
+        rc = ShClSvcFormatsReport(pCtx->pClient, &formatData);
     }
 
     LogFlowFuncLeaveRC(rc);
@@ -222,7 +222,7 @@ int ShClSvcImplFormatAnnounce(PSHCLCLIENT pClient,
     dataReq.uFmt   = pFormats->uFormats;
     dataReq.cbSize = _64K; /** @todo Make this more dynamic. */
 
-    return shClSvcDataReadRequest(pClient, &dataReq, NULL /* puEvent */);
+    return ShClSvcDataReadRequest(pClient, &dataReq, NULL /* puEvent */);
 }
 
 int ShClSvcImplReadData(PSHCLCLIENT pClient, PSHCLCLIENTCMDCTX pCmdCtx,
