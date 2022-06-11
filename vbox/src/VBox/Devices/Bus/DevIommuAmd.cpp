@@ -1,4 +1,4 @@
-/* $Id: DevIommuAmd.cpp 84228 2020-05-09 18:05:08Z vboxsync $ */
+/* $Id: DevIommuAmd.cpp 84236 2020-05-10 03:25:16Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - AMD implementation.
  */
@@ -4275,12 +4275,15 @@ static int iommuAmdLookupDeviceTables(PPDMDEVINS pDevIns, uint16_t uDevId, uint6
             {
                 /* Record the translated base address (before continuing to check permission bits of any subsequent pages). */
                 if (cbChecked == 0)
-                    *pGCPhysSpa = Iotlbe.GCPhysSpa;
+                {
+                    RTGCPHYS const offSpa = ~(UINT64_C(0xffffffffffffffff) << Iotlbe.cShift);
+                    *pGCPhysSpa = Iotlbe.GCPhysSpa | offSpa;
+                }
 
                 /** @todo IOMMU: Split large pages into 4K IOTLB entries and add to IOTLB cache. */
 
                 uint64_t const cbPhysPage = UINT64_C(1) << Iotlbe.cShift;
-                cbChecked += cbPhysPage;
+                cbChecked += cbPhysPage;        /** @todo IOMMU: We need to consider the offset here. */
                 if (cbChecked >= cbAccess)
                     break;
                 uBaseIova += cbPhysPage;
