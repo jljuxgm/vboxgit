@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testcase.py 79087 2019-06-11 11:58:28Z vboxsync $
+# $Id: testcase.py 81767 2019-11-11 16:34:01Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79087 $"
+__version__ = "$Revision: 81767 $"
 
 
 # Standard python imports.
@@ -682,6 +682,8 @@ class TestCaseData(ModelDataBase):
             'sOsVersion':           oTestBoxData.sOsVersion,
             'sCpuVendor':           oTestBoxData.sCpuVendor,
             'sCpuArch':             oTestBoxData.sCpuArch,
+            'iCpuFamily':           oTestBoxData.getCpuFamily(),
+            'iCpuModel':            oTestBoxData.getCpuModel(),
             'cCpus':                oTestBoxData.cCpus,
             'fCpuHwVirt':           oTestBoxData.fCpuHwVirt,
             'fCpuNestedPaging':     oTestBoxData.fCpuNestedPaging,
