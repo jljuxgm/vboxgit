@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79160 $"
+__version__ = "$Revision: 79162 $"
 
 # Standard Python imports.
 from array import array
@@ -2764,7 +2764,7 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
                     else:
                         reporter.log2('%s: eType=%s (dir=%d)' % (sDirTemp, eType, vboxcon.FsObjType_Directory,));
                         if eType != vboxcon.FsObjType_Directory:
-                            fRc = reporter.error('Temporary directory not created as a directory: eType=%d'
+                            fRc = reporter.error('Temporary directory "%s" not created as a directory: eType=%d'
                                                  % (sDirTemp, eType));
             fRc = oCurTest.closeSession(True) and fRc;
         return (fRc, oTxsSession);
