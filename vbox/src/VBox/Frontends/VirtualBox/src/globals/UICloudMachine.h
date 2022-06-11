@@ -1,4 +1,4 @@
-/* $Id: UICloudMachine.h 83146 2020-02-25 11:20:42Z vboxsync $ */
+/* $Id: UICloudMachine.h 83148 2020-02-25 12:16:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudMachine class declaration.
  */
@@ -98,4 +98,4 @@ private:
 /* Make meta-object sub-system aware: */
 Q_DECLARE_METATYPE(UICloudMachine);
 
-#endif /* !FEQT_INCLUDED_SRC_manager_UICloudMachine_h */
+#endif /* !FEQT_INCLUDED_SRC_globals_UICloudMachine_h */
