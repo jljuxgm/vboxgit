@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 79343 2019-06-26 09:05:12Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 79372 2019-06-27 04:45:03Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -7363,7 +7363,7 @@ IEM_STATIC VBOXSTRICTRC iemVmxVmlaunchVmresume(PVMCPU pVCpu, uint8_t cbInstr, VM
      * controls. The guest hypervisor should not make assumptions and cannot expect
      * predictable behavior if changes to these structures are made in guest memory while
      * executing in VMX non-root mode. As far as VirtualBox is concerned, the guest cannot
-     * modify them anyway as we cache them in host memory. We are trade memory for speed here.
+     * modify them anyway as we cache them in host memory.
      *
      * See Intel spec. 24.11.4 "Software Access to Related Structures".
      */
