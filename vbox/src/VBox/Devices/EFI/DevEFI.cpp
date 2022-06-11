@@ -1,4 +1,4 @@
-/* $Id: DevEFI.cpp 81262 2019-10-14 16:42:45Z vboxsync $ */
+/* $Id: DevEFI.cpp 81264 2019-10-14 16:56:35Z vboxsync $ */
 /** @file
  * DevEFI - EFI <-> VirtualBox Integration Framework.
  */
@@ -2301,7 +2301,7 @@ static DECLCALLBACK(int)  efiConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMN
         rc = nvramLoad(pThis);
         AssertRCReturn(rc, rc);
     }
-    if (rc == VERR_PDM_NO_ATTACHED_DRIVER)
+    else if (rc == VERR_PDM_NO_ATTACHED_DRIVER)
     {
         pThis->Lun0.pNvramDrv = NULL;
         rc = VINF_SUCCESS; /* Missing driver is no error condition. */
