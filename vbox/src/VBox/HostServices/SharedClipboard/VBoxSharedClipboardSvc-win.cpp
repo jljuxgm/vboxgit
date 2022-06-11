@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-win.cpp 80995 2019-09-25 07:07:18Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-win.cpp 81041 2019-09-27 10:14:04Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Win32 host.
  */
@@ -656,6 +656,17 @@ int ShClSvcImplConnect(PSHCLCLIENT pClient, bool fHeadless)
 
         /* Sync the host clipboard content with the client. */
         rc = ShClSvcImplSync(pClient);
+        if (rc == VINF_NO_CHANGE)
+        {
+            /*
+             * The sync could return VINF_NO_CHANGE if nothing has changed on the host, but older
+             * Guest Additions rely on the fact that only VINF_SUCCESS indicates a successful connect
+             * to the host service (instead of using RT_SUCCESS()).
+             *
+             * So implicitly set VINF_SUCCESS here to not break older Guest Additions.
+             */
+            rc = VINF_SUCCESS;
+        }
     }
     else
         rc = VERR_NO_MEMORY;
