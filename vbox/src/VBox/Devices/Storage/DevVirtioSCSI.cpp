@@ -1,4 +1,4 @@
-/* $Id: DevVirtioSCSI.cpp 80657 2019-09-09 07:14:32Z vboxsync $ $Revision: 80657 $ $Date: 2019-09-09 15:14:32 +0800 (Mon, 09 Sep 2019) $ $Author: vboxsync $ */
+/* $Id: DevVirtioSCSI.cpp 80658 2019-09-09 07:37:33Z vboxsync $ $Revision: 80658 $ $Date: 2019-09-09 15:37:33 +0800 (Mon, 09 Sep 2019) $ $Author: vboxsync $ */
 /** @file
  * VBox storage devices - Virtio SCSI Driver
  *
@@ -87,9 +87,9 @@
 
 #define VIRTIOSCSI_SENSE_SIZE_DEFAULT               96          /**< VirtIO 1.0: 96 on reset, guest can change       */
 #define VIRTIOSCSI_CDB_SIZE_DEFAULT                 32          /**< VirtIO 1.0: 32 on reset, guest can change       */
-#define virtioScsi_PI_BYTES_IN                      1           /**< Value TBD (see section 5.6.6.1)                 */
-#define virtioScsi_PI_BYTES_OUT                     1           /**< Value TBD (see section 5.6.6.1)                 */
-#define virtioScsi_DATA_OUT                         512         /**< Value TBD (see section 5.6.6.1)                 */
+#define VIRTIOSCSI_PI_BYTES_IN                      1           /**< Value TBD (see section 5.6.6.1)                 */
+#define VIRTIOSCSI_PI_BYTES_OUT                     1           /**< Value TBD (see section 5.6.6.1)                 */
+#define VIRTIOSCSI_DATA_OUT                         512         /**< Value TBD (see section 5.6.6.1)                 */
 
 /**
  * VirtIO SCSI Host Device device-specific queue indicies
