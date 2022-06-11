@@ -1,4 +1,4 @@
-/* $Id: clipboard-win.cpp 81223 2019-10-11 12:06:49Z vboxsync $ */
+/* $Id: clipboard-win.cpp 81317 2019-10-17 14:21:45Z vboxsync $ */
 /** @file
  * Shared Clipboard: Windows-specific functions for clipboard handling.
  */
@@ -1144,7 +1144,7 @@ int SharedClipboardWinDropFilesToStringList(DROPFILES *pDropFiles, char **papszL
         {
             LogFlowFunc(("\tFile: %s (cchFile=%RU16)\n", pszFileUtf8, cchFileUtf8));
 
-            LogRel(("Shared Clipboard: Adding guest file '%s'\n", pszFileUtf8));
+            LogRel2((("Shared Clipboard: Adding file '%s' to transfer\n", pszFileUtf8));
 
             rc = RTStrAAppendExN(&pszFiles, 1 /* cPairs */, pszFileUtf8, strlen(pszFileUtf8));
             cchFiles += (uint32_t)strlen(pszFileUtf8);
