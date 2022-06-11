@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageBasic1.cpp 79034 2019-06-07 11:04:47Z vboxsync $ */
+/* $Id: UIWizardImportAppPageBasic1.cpp 79065 2019-06-10 13:47:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageBasic1 class implementation.
  */
@@ -419,7 +419,7 @@ void UIWizardImportAppPage1::populateFormProperties()
 
             /* Read Cloud Client description form: */
             CVirtualSystemDescriptionForm comForm;
-            CProgress comImportDescriptionFormProgress = m_comCloudClient.GetImportDescriptionForm(comDescription, comForm);
+            CProgress comImportDescriptionFormProgress = m_comCloudClient.GetImportDescriptionForm(comVBox, comDescription, comForm);
             if (!m_comCloudClient.isOk())
             {
                 msgCenter().cannotAcquireCloudClientParameter(m_comCloudClient);
