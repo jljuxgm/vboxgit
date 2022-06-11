@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 83736 $"
+__version__ = "$Revision: 83793 $"
 
 # Standard Python imports.
 import errno
@@ -1616,24 +1616,19 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
             if oTxsSession.syncMkDirPath(sDir, 0o777) is not True:
                 return reporter.error('Failed to create directory "%s"!' % (sDir,));
 
-        if oTestVm.isWindows():
-            sGuestSlash = '\\';
-        else:
-            sGuestSlash = '/';
-
         #
         # Enable VBoxService verbose logging.
         #
-        self.oDebug.sVBoxServiceLogPath = self.getGuestTempDir(oTestVm) + sGuestSlash + "VBoxService";
+        self.oDebug.sVBoxServiceLogPath = oTestVm.pathJoin(self.getGuestTempDir(oTestVm), "VBoxService");
         if oTxsSession.syncMkDirPath(self.oDebug.sVBoxServiceLogPath, 0o777) is not True:
             return reporter.error('Failed to create directory "%s"!' % (self.oDebug.sVBoxServiceLogPath,));
-        sPathLogFile = os.path.join(self.oDebug.sVBoxServiceLogPath, 'VBoxService.log');
+        sPathLogFile = oTestVm.pathJoin(self.oDebug.sVBoxServiceLogPath, 'VBoxService.log');
 
         reporter.log('VBoxService logs will be stored in "%s"' % (self.oDebug.sVBoxServiceLogPath,));
 
         if oTestVm.isWindows():
-            sPathRegExe         = self.getGuestSystemDir(oTestVm) + sGuestSlash + 'reg.exe';
-            sPathVBoxServiceExe = self.getGuestSystemDir(oTestVm) + sGuestSlash + 'VBoxService.exe';
+            sPathRegExe         = oTestVm.pathJoin(self.getGuestSystemDir(oTestVm), 'reg.exe');
+            sPathVBoxServiceExe = oTestVm.pathJoin(self.getGuestSystemDir(oTestVm), 'VBoxService.exe');
             sImagePath          = '%s -vvvv --logfile %s' % (sPathVBoxServiceExe, sPathLogFile);
             self.oTstDrv.txsRunTest(oTxsSession, 'Enabling VBoxService verbose logging (via registry)', 30 * 1000,
                                     sPathRegExe,
