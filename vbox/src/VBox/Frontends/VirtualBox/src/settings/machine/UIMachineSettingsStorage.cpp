@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 78598 2019-05-20 13:42:42Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 78627 2019-05-21 11:12:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class implementation.
  */
@@ -3665,11 +3665,8 @@ void UIMachineSettingsStorage::sltHandleDragMove(QDragMoveEvent *pEvent)
     if (!pItemController || pItemController->id().toString() == strControllerId)
         return;
     /* Also make sure there is enough place for new attachment: */
-    const KStorageBus enmBus = pItemController->ctrBusType();
-    const int uMaxPortCount = vboxGlobal().virtualBox().GetSystemProperties().GetMaxPortCountForStorageBus(enmBus);
-    const int uMaxDevicePerPortCount = vboxGlobal().virtualBox().GetSystemProperties().GetMaxDevicesPerPortForStorageBus(enmBus);
-    const SlotsList usedSlots = pItemController->ctrUsedSlots();
-    if (usedSlots.size() >= uMaxPortCount * uMaxDevicePerPortCount)
+    const bool fIsMoreAttachmentsPossible = m_pModelStorage->data(index, StorageModel::R_IsMoreAttachmentsPossible).toBool();
+    if (!fIsMoreAttachmentsPossible)
         return;
 
     /* Accept drag-enter event: */
