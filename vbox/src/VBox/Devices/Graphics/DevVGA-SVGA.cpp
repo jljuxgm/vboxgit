@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 82059 2019-11-20 22:00:11Z vboxsync $ */
+/* $Id: DevVGA-SVGA.cpp 82071 2019-11-21 09:36:50Z vboxsync $ */
 /** @file
  * VMware SVGA device.
  *
@@ -5320,7 +5320,7 @@ DECLCALLBACK(int) vmsvgaR3IORegionMap(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDev, ui
     }
     else
     {
-        AssertReturn(iRegion == pThis->pciRegions.iFIFO && enmType == PCI_ADDRESS_SPACE_MEM, VERR_INTERNAL_ERROR);
+        AssertReturn(iRegion == pThis->pciRegions.iFIFO && enmType == PCI_ADDRESS_SPACE_MEM_PREFETCH, VERR_INTERNAL_ERROR);
         if (GCPhysAddress != NIL_RTGCPHYS)
         {
             /*
