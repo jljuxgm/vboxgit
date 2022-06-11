@@ -1,4 +1,4 @@
-/* $Id: UISettingsSelector.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UISettingsSelector.cpp 83801 2020-04-18 18:02:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISettingsSelector class implementation.
  */
@@ -800,9 +800,9 @@ UISelectorActionItem *UISettingsSelectorToolBar::findActionItemByTabWidget(QTabW
     foreach (UISelectorItem *pItem, m_list)
         if (static_cast<UISelectorActionItem*>(pItem)->tabWidget() == pTabWidget)
         {
-            QTabWidget *pTabWidget = static_cast<UISelectorActionItem*>(pItem)->tabWidget();
+            QTabWidget *pTabWidget2 = static_cast<UISelectorActionItem*>(pItem)->tabWidget(); /// @todo r=bird: same as pTabWidget?
             pResult = static_cast<UISelectorActionItem*>(
-                findItemByPage(static_cast<UISettingsPage*>(pTabWidget->widget(iIndex))));
+                findItemByPage(static_cast<UISettingsPage*>(pTabWidget2->widget(iIndex))));
             break;
         }
 

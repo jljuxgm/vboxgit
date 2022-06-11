@@ -1,4 +1,4 @@
-/* $Id: UINetworkReply.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UINetworkReply.cpp 83801 2020-04-18 18:02:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkReply stuff implementation.
  */
@@ -442,7 +442,7 @@ int UINetworkReplyPrivateThread::applyHttpsCertificates()
          * so we use RTPathQueryInfoEx here and not RTFileExists.
          */
         RTFSOBJINFO Info;
-        int rc = RTPathQueryInfoEx(pszCaCertFile, &Info, RTFSOBJATTRADD_NOTHING, RTPATH_F_FOLLOW_LINK);
+        rc = RTPathQueryInfoEx(pszCaCertFile, &Info, RTFSOBJATTRADD_NOTHING, RTPATH_F_FOLLOW_LINK);
         if (   RT_SUCCESS(rc)
             && RTFS_IS_FILE(Info.Attr.fMode))
         {

@@ -1,4 +1,4 @@
-/* $Id: VBoxFBOverlay.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxFBOverlay.cpp 83801 2020-04-18 18:02:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxFBOverlay implementation.
  */
@@ -263,7 +263,7 @@ static const VBoxVHWAInfo & vboxVHWAGetSupportInfo(const QGLContext *pContext)
         else
         {
             VBoxGLTmpContext ctx;
-            const QGLContext *pContext = ctx.makeCurrent();
+            pContext = ctx.makeCurrent();
             Assert(pContext);
             if (pContext)
             {

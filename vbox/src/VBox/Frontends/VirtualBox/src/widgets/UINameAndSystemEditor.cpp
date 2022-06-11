@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UINameAndSystemEditor.cpp 83801 2020-04-18 18:02:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class implementation.
  */
@@ -253,9 +253,9 @@ void UINameAndSystemEditor::sltFamilyChanged(int iIndex)
         /* Skip 64bit OS types if hardware virtualization or long mode is not supported: */
         if (guiType.is64bit && (!m_fSupportsHWVirtEx || !m_fSupportsLongMode))
             continue;
-        const int iIndex = m_pComboType->count();
-        m_pComboType->insertItem(iIndex, guiType.typeDescription);
-        m_pComboType->setItemData(iIndex, guiType.typeId, TypeID);
+        const int idxItem = m_pComboType->count();
+        m_pComboType->insertItem(idxItem, guiType.typeDescription);
+        m_pComboType->setItemData(idxItem, guiType.typeId, TypeID);
     }
 
     /* Select the most recently chosen item: */
