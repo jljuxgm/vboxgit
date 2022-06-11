@@ -1,4 +1,4 @@
-/* $Id: DevVirtioSCSI.cpp 81814 2019-11-12 18:21:33Z vboxsync $ $Revision: 81814 $ $Date: 2019-11-13 02:21:33 +0800 (Wed, 13 Nov 2019) $ $Author: vboxsync $ */
+/* $Id: DevVirtioSCSI.cpp 81815 2019-11-12 18:46:14Z vboxsync $ $Revision: 81815 $ $Date: 2019-11-13 02:46:14 +0800 (Wed, 13 Nov 2019) $ $Author: vboxsync $ */
 /** @file
  * VBox storage devices - Virtio SCSI Driver
  *
@@ -1163,7 +1163,7 @@ static int virtioScsiR3ReqSubmit(PPDMDEVINS pDevIns, PVIRTIOSCSI pThis, PVIRTIOS
      * Handle submission errors
      */
 
-    if (RT_LIKELY(fBadLUNFormat
+    if (RT_LIKELY(!fBadLUNFormat
                   || (uTarget < pThis->cTargets
                   &&  pThisCC->paTargetInstances[uTarget].fPresent
                   &&  pThisCC->paTargetInstances[uTarget].pDrvMediaEx)))
