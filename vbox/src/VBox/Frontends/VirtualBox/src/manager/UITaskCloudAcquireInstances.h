@@ -1,4 +1,4 @@
-/* $Id: UITaskCloudAcquireInstances.h 83050 2020-02-11 15:41:55Z vboxsync $ */
+/* $Id: UITaskCloudAcquireInstances.h 83097 2020-02-17 16:56:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UITaskCloudAcquireInstances class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef FEQT_INCLUDED_SRC_manager_chooser_UITaskCloudAcquireInstances_h
-#define FEQT_INCLUDED_SRC_manager_chooser_UITaskCloudAcquireInstances_h
+#ifndef FEQT_INCLUDED_SRC_manager_UITaskCloudAcquireInstances_h
+#define FEQT_INCLUDED_SRC_manager_UITaskCloudAcquireInstances_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -79,4 +79,4 @@ private:
     QList<UICloudMachine>  m_instances;
 };
 
-#endif /* !FEQT_INCLUDED_SRC_manager_chooser_UITaskCloudAcquireInstances_h */
+#endif /* !FEQT_INCLUDED_SRC_manager_UITaskCloudAcquireInstances_h */

@@ -1,4 +1,4 @@
-/* $Id: UITaskCloudAcquireInstances.cpp 83050 2020-02-11 15:41:55Z vboxsync $ */
+/* $Id: UITaskCloudAcquireInstances.cpp 83097 2020-02-17 16:56:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UITaskCloudAcquireInstances class implementation.
  */
