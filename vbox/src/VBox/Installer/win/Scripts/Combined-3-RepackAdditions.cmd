@@ -1,5 +1,5 @@
 @echo off
-rem $Id: Combined-3-RepackAdditions.cmd 82468 2019-12-06 16:32:09Z vboxsync $
+rem $Id: Combined-3-RepackAdditions.cmd 82469 2019-12-06 17:21:50Z vboxsync $
 rem rem @file
 rem Windows NT batch script for repacking signed amd64 and x86 drivers.
 rem
@@ -213,7 +213,7 @@ cp %_MY_REPACK_DIR_AMD64%\..\obj\uninst.exe %_MY_REPACK_DIR_AMD64%
 
 rem TBD: that has to be converted to invoke auto-generated .cmd
 
-%KBUILD_BIN_PATH%\kmk_redirect.exe -C %_MY_OPT_SRC_DIR%/VBox/Additions/WINNT/Installer ^
+%KBUILD_BIN_PATH%\kmk_redirect.exe -C %_MY_OPT_SRC_DIR% ^
         -E "PATH_OUT=%_MY_REPACK_DIR_AMD64%\.." ^
         -E "PATH_TARGET=%_MY_REPACK_DIR_AMD64%" ^
         -E "PATH_TARGET_X86=%_MY_REPACK_DIR_X86%\resources" ^
@@ -244,7 +244,7 @@ cp %_MY_REPACK_DIR_X86%\..\obj\uninst.exe %_MY_REPACK_DIR_X86%\
 
 rem TBD: that has to be converted to invoke auto-generated .cmd
 
-%KBUILD_BIN_PATH%\kmk_redirect.exe -C %_MY_OPT_SRC_DIR%/VBox/Additions/WINNT/Installer ^
+%KBUILD_BIN_PATH%\kmk_redirect.exe -C %_MY_OPT_SRC_DIR% ^
         -E "PATH_OUT=%_MY_REPACK_DIR_X86%\.." ^
         -E "PATH_TARGET=%_MY_REPACK_DIR_X86%" ^
         -E "PATH_TARGET_X86=%_MY_REPACK_DIR_X86%\resources" ^
