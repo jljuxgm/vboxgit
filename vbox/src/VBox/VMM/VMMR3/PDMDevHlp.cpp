@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 81961 2019-11-18 19:06:25Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 82034 2019-11-20 16:39:40Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -1700,7 +1700,11 @@ static DECLCALLBACK(void) pdmR3DevHlp_STAMRegister(PPDMDEVINS pDevIns, void *pvS
     int rc;
     if (*pszName == '/')
         rc = STAMR3Register(pVM, pvSample, enmType, STAMVISIBILITY_ALWAYS, pszName, enmUnit, pszDesc);
-    else /* Provide default device statistics prefix: */
+    /* Provide default device statistics prefix: */
+    else if (pDevIns->pReg->cMaxInstances == 1)
+        rc = STAMR3RegisterF(pVM, pvSample, enmType, STAMVISIBILITY_ALWAYS, enmUnit, pszDesc,
+                             "/Devices/%s/%s", pDevIns->pReg->szName, pszName);
+    else
         rc = STAMR3RegisterF(pVM, pvSample, enmType, STAMVISIBILITY_ALWAYS, enmUnit, pszDesc,
                              "/Devices/%s#%u/%s", pDevIns->pReg->szName, pDevIns->iInstance, pszName);
     AssertRC(rc);
@@ -1723,8 +1727,12 @@ static DECLCALLBACK(void) pdmR3DevHlp_STAMRegisterV(PPDMDEVINS pDevIns, void *pv
         /* Provide default device statistics prefix: */
         va_list vaCopy;
         va_copy(vaCopy, args);
-        rc = STAMR3RegisterF(pVM, pvSample, enmType, enmVisibility, enmUnit, pszDesc,
-                             "/Devices/%s#%u/%N", pDevIns->pReg->szName, pDevIns->iInstance, pszName, &vaCopy);
+        if (pDevIns->pReg->cMaxInstances == 1)
+            rc = STAMR3RegisterF(pVM, pvSample, enmType, enmVisibility, enmUnit, pszDesc,
+                                 "/Devices/%s/%N", pDevIns->pReg->szName, pszName, &vaCopy);
+        else
+            rc = STAMR3RegisterF(pVM, pvSample, enmType, enmVisibility, enmUnit, pszDesc,
+                                 "/Devices/%s#%u/%N", pDevIns->pReg->szName, pDevIns->iInstance, pszName, &vaCopy);
         va_end(vaCopy);
     }
     AssertRC(rc);
