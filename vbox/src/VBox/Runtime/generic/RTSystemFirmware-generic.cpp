@@ -1,4 +1,4 @@
-/* $Id: RTSystemFirmware-generic.cpp 80857 2019-09-17 12:36:45Z vboxsync $ */
+/* $Id: RTSystemFirmware-generic.cpp 80860 2019-09-17 13:13:26Z vboxsync $ */
 /** @file
  * IPRT - System firmware information, Generic stub.
  */
@@ -49,10 +49,10 @@ RTDECL(void) RTSystemFirmwareValueFree(PRTSYSFWVALUE pValue)
 RT_EXPORT_SYMBOL(RTSystemFirmwareValueFree);
 
 
-RTDECL(int) RTSystemFirmwareValueGet(RTSYSFWPROP enmProp, PRTSYSFWVALUE *ppValue)
+RTDECL(int) RTSystemFirmwareValueQuery(RTSYSFWPROP enmProp, PRTSYSFWVALUE *ppValue)
 {
     RT_NOREF(enmProp, ppValue);
     return VERR_NOT_SUPPORTED;
 }
-RT_EXPORT_SYMBOL(RTSystemFirmwareValueGet);
+RT_EXPORT_SYMBOL(RTSystemFirmwareValueQuery);
 

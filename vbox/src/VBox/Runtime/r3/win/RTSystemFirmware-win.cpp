@@ -1,4 +1,4 @@
-/* $Id: RTSystemFirmware-win.cpp 80708 2019-09-10 16:34:49Z vboxsync $ */
+/* $Id: RTSystemFirmware-win.cpp 80860 2019-09-17 13:13:26Z vboxsync $ */
 /** @file
  * IPRT - System firmware information, Win32.
  */
@@ -168,7 +168,7 @@ RTDECL(void) RTSystemFirmwareValueFree(PRTSYSFWVALUE pValue)
 }
 
 
-RTDECL(int) RTSystemFirmwareValueGet(RTSYSFWPROP enmProp, PRTSYSFWVALUE *ppValue)
+RTDECL(int) RTSystemFirmwareValueQuery(RTSYSFWPROP enmProp, PRTSYSFWVALUE *ppValue)
 {
     int rc = rtSystemFirmwareGetPrivileges(SE_SYSTEM_ENVIRONMENT_NAME);
     if (RT_FAILURE(rc))
