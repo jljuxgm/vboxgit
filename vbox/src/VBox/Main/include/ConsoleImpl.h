@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 78683 2019-05-23 10:07:21Z vboxsync $ */
+/* $Id: ConsoleImpl.h 78779 2019-05-27 10:22:15Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -864,8 +864,6 @@ private:
     void i_guestPropertiesVRDPUpdateDisconnect(uint32_t u32ClientId);
 #endif
 
-    bool i_isResetTurnedIntoPowerOff(void);
-
     /** @name Disk encryption support
      * @{ */
     HRESULT i_consoleParseDiskEncryption(const char *psz, const char **ppszEnd);
@@ -940,6 +938,9 @@ private:
     bool mfSnapshotFolderDiskTypeShown : 1;
     /** true if a USB controller is available (i.e. USB devices can be attached). */
     bool mfVMHasUsbController : 1;
+    /** Shadow of the VBoxInternal2/TurnResetIntoPowerOff extra data setting.
+     * This is initialized by Console::i_configConstructorInner(). */
+    bool mfTurnResetIntoPowerOff : 1;
     /** true if the VM power off was caused by reset. */
     bool mfPowerOffCausedByReset : 1;
 

@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 78725 2019-05-24 13:15:59Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 78779 2019-05-27 10:22:15Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -1203,7 +1203,9 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
         InsertConfigInteger(pHM, "MDSClearOnVMEntry", fMDSClearOnVMEntry);
 
         /* Reset overwrite. */
-        if (i_isResetTurnedIntoPowerOff())
+        mfTurnResetIntoPowerOff = GetExtraDataBoth(virtualBox, pMachine,
+                                                   "VBoxInternal2/TurnResetIntoPowerOff", &strTmp)->equals("1");
+        if (mfTurnResetIntoPowerOff)
             InsertConfigInteger(pRoot, "PowerOffInsteadOfReset", 1);
 
         /* Use NEM rather than HM. */
