@@ -1,4 +1,4 @@
-/* $Id: QIComboBox.h 80197 2019-08-08 12:29:28Z vboxsync $ */
+/* $Id: QIComboBox.h 80199 2019-08-08 15:26:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIComboBox class declaration.
  */
@@ -87,6 +87,8 @@ public:
     int currentIndex() const;
     /** Returns the text of the current item in the combo-box. */
     QString currentText() const;
+    /** Returns the data of the current item in the combo-box. */
+    QVariant currentData(int iRole = Qt::UserRole) const;
 
     /** Adds the @a items into the combo-box. */
     void addItems(const QStringList &items) const;
