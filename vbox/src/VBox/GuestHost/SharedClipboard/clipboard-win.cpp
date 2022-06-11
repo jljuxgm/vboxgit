@@ -1,4 +1,4 @@
-/* $Id: clipboard-win.cpp 83624 2020-04-08 16:29:25Z vboxsync $ */
+/* $Id: clipboard-win.cpp 83953 2020-04-23 15:21:16Z vboxsync $ */
 /** @file
  * Shared Clipboard: Windows-specific functions for clipboard handling.
  */
@@ -242,13 +242,12 @@ int SharedClipboardWinChainAdd(PSHCLWINCTX pCtx)
 
     BOOL fRc;
     if (SharedClipboardWinIsNewAPI(pAPI))
-    {
         fRc = pAPI->pfnAddClipboardFormatListener(pCtx->hWnd);
-    }
     else
     {
+        SetLastError(NO_ERROR);
         pCtx->hWndNextInChain = SetClipboardViewer(pCtx->hWnd);
-        fRc = pCtx->hWndNextInChain != NULL;
+        fRc = pCtx->hWndNextInChain != NULL || GetLastError() == NO_ERROR;
     }
 
     int rc = VINF_SUCCESS;
