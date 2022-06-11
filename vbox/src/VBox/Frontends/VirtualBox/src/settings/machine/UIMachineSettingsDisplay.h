@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIMachineSettingsDisplay.h 80042 2019-07-29 11:40:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsDisplay class declaration.
  */
@@ -171,13 +171,13 @@ private:
     int           m_iMaxVRAMVisible;
     /** Holds the initial VRAM value when the dialog is opened. */
     int           m_iInitialVRAM;
-#ifdef VBOX_WITH_VIDEOHWACCEL
-    /** Holds whether the guest OS supports 2D Video Acceleration. */
-    bool          m_f2DVideoAccelerationSupported;
-#endif
 #ifdef VBOX_WITH_CRHGSMI
     /** Holds whether the guest OS supports WDDM. */
     bool          m_fWddmModeSupported;
+#endif
+#ifdef VBOX_WITH_VIDEOHWACCEL
+    /** Holds whether the guest OS supports 2D Video Acceleration. */
+    bool          m_f2DVideoAccelerationSupported;
 #endif
 
     /** Holds the page data cache instance. */
