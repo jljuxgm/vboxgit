@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 83842 2020-04-20 09:24:40Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 84325 2020-05-15 20:26:13Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -3465,6 +3465,7 @@ DxgkDdiEscape(
 
                     vboxWddmDisplaySettingsCheckPos(pDevExt, i);
                 }
+                Status = STATUS_SUCCESS;
                 break;
             }
             default:
