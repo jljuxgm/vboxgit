@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 84169 2020-05-06 16:17:54Z vboxsync $
+# $Id: vbox.py 84218 2020-05-08 15:52:35Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84169 $"
+__version__ = "$Revision: 84218 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -3568,14 +3568,15 @@ class TestDriver(base.TestDriver):                                              
             # ASSUMES that we always install Windows on drive C right now.
             sWinDir = "C:\\Windows\\System32\\";
             oTxsSession.syncExec(sWinDir + " cmd.exe",
-                                 ("cmd.exe", "/C", "dir", "${CDROM}"),
+                                 ('cmd.exe', '/C', 'dir', '${CDROM}'),
                                  fIgnoreErrors = True);
-            oTxsSession.syncExec("C:\\WINNT\\System32\\cmd.exe",
-                                 ("C:\\WINNT\\System32\\cmd.exe", "/C", "dir", "${CDROM}"),
+            oTxsSession.syncExec('C:\\WINNT\\System32\\cmd.exe',
+                                 ('C:\\WINNT\\System32\\cmd.exe', '/C', 'dir', '${CDROM}'),
                                  fIgnoreErrors = True);
 
             reporter.log('txsCdWait: Listing mount points / drives:');
-            oTxsSession.syncExec("/bin/mount", ("mount"), fIgnoreErrors = True);
+            oTxsSession.syncExec('/bin/mount', ('/bin/mount',), fIgnoreErrors = True);
+            oTxsSession.syncExec('/bin/cat', ('/bin/cat', '/etc/fstab'), fIgnoreErrors = True);
             # Should work since WinXP Pro.
             oTxsSession.syncExec(sWinDir + "wbem\\WMIC.exe",
                                  ("WMIC.exe", "logicaldisk", "get",
