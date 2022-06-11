@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItemCloud.h 83131 2020-02-21 12:14:35Z vboxsync $ */
+/* $Id: UIVirtualMachineItemCloud.h 83147 2020-02-25 11:39:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItemCloud class declaration.
  */
@@ -22,10 +22,10 @@
 #endif
 
 /* GUI includes: */
+#include "UICloudMachine.h"
 #include "UIVirtualMachineItem.h"
 
 /* Forward declarations: */
-class UICloudMachine;
 class UITask;
 
 /** UIVirtualMachineItem sub-class used as cloud Virtual Machine item interface. */
@@ -54,6 +54,12 @@ public:
     UIVirtualMachineItemCloud(const UICloudMachine &guiCloudMachine);
     /** Destructs cloud VM item. */
     virtual ~UIVirtualMachineItemCloud();
+
+    /** @name Arguments.
+      * @{ */
+        /** Returns cached cloud VM object. */
+        UICloudMachine machine() const { return m_guiCloudMachine; }
+    /** @} */
 
     /** @name Data attributes.
       * @{ */
@@ -139,8 +145,8 @@ private:
 
     /** @name Arguments.
       * @{ */
-        /** Holds cached cloud machine object reference. */
-        UICloudMachine *m_pCloudMachine;
+        /** Holds cached cloud VM object reference. */
+        UICloudMachine  m_guiCloudMachine;
     /** @} */
 
     /** @name Data attributes.
