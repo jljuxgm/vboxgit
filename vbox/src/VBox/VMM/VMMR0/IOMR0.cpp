@@ -1,4 +1,4 @@
-/* $Id: IOMR0.cpp 81167 2019-10-09 08:15:37Z vboxsync $ */
+/* $Id: IOMR0.cpp 81169 2019-10-09 08:36:54Z vboxsync $ */
 /** @file
  * IOM - Host Context Ring 0.
  */
@@ -23,7 +23,6 @@
 #include <VBox/vmm/iom.h>
 #include "IOMInternal.h"
 #include <VBox/vmm/vmcc.h>
-#include <VBox/err.h>
 #include <VBox/log.h>
 #include <iprt/assertcompile.h>
 
