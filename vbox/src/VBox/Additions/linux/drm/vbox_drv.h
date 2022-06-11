@@ -1,4 +1,4 @@
-/* $Id: vbox_drv.h 83073 2020-02-14 11:35:05Z vboxsync $ */
+/* $Id: vbox_drv.h 84255 2020-05-11 14:32:23Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -51,6 +51,9 @@
 #include <linux/pci.h>
 
 #if defined(RHEL_MAJOR) && defined(RHEL_MINOR)
+# if RHEL_MAJOR == 8 && RHEL_MINOR >= 2
+#  define RHEL_82
+# endif
 # if RHEL_MAJOR == 8 && RHEL_MINOR >= 1
 #  define RHEL_81
 # endif

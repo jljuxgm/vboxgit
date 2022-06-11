@@ -1,4 +1,4 @@
-/* $Id: vbox_ttm.c 83073 2020-02-14 11:35:05Z vboxsync $ */
+/* $Id: vbox_ttm.c 84255 2020-05-11 14:32:23Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -312,7 +312,7 @@ int vbox_mm_init(struct vbox_private *vbox)
 #endif
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 5, 0)
                                  dev->vma_offset_manager,
-#elif LINUX_VERSION_CODE < KERNEL_VERSION(5, 2, 0)
+#elif LINUX_VERSION_CODE < KERNEL_VERSION(5, 2, 0) && !defined(RHEL_82)
 				 DRM_FILE_PAGE_OFFSET,
 #endif
 				 true);
