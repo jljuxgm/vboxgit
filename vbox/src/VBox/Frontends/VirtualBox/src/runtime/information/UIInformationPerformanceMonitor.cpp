@@ -1,4 +1,4 @@
-/* $Id: UIInformationPerformanceMonitor.cpp 81508 2019-10-24 06:39:40Z vboxsync $ */
+/* $Id: UIInformationPerformanceMonitor.cpp 81735 2019-11-07 11:37:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationPerformanceMonitor class implementation.
  */
@@ -1149,12 +1149,12 @@ void UIInformationPerformanceMonitor::prepareMetrics()
     {
         /* Network metric: */
         UIMetric networkMetric(m_strNetworkMetricName, "B", iMaximumQueueSize);
-        networkMetric.setQueryPrefix("Devices");
+        networkMetric.setQueryPrefix("Public");
         QStringList networkDeviceList;
         networkDeviceList << "E1k" <<"VNet" << "PCNet";
         networkMetric.setDeviceTypeList(networkDeviceList);
         QStringList networkMetricDataSubStringList;
-        networkMetricDataSubStringList << "ReceiveBytes" << "TransmitBytes";
+        networkMetricDataSubStringList << "BytesReceived" << "BytesTransmitted";
         networkMetric.setMetricDataSubString(networkMetricDataSubStringList);
         m_metrics.insert(m_strNetworkMetricName, networkMetric);
     }
