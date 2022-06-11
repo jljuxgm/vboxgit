@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 82043 2019-11-20 19:47:05Z vboxsync $ */
+/* $Id: DevVGA.h 82048 2019-11-20 20:30:15Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -575,8 +575,8 @@ void vboxVDMAControl(PVBOXVDMAHOST pVdma, VBOXVDMA_CTL RT_UNTRUSTED_VOLATILE_GUE
 void vboxVDMACommand(PVBOXVDMAHOST pVdma, VBOXVDMACBUF_DR RT_UNTRUSTED_VOLATILE_GUEST *pCmd, uint32_t cbCmd);
 int vboxVDMASaveStateExecPrep(struct VBOXVDMAHOST *pVdma);
 int vboxVDMASaveStateExecDone(struct VBOXVDMAHOST *pVdma);
-int vboxVDMASaveStateExecPerform(struct VBOXVDMAHOST *pVdma, PSSMHANDLE pSSM);
-int vboxVDMASaveLoadExecPerform(struct VBOXVDMAHOST *pVdma, PSSMHANDLE pSSM, uint32_t u32Version);
+int vboxVDMASaveStateExecPerform(PCPDMDEVHLPR3 pHlp, struct VBOXVDMAHOST *pVdma, PSSMHANDLE pSSM);
+int vboxVDMASaveLoadExecPerform(PCPDMDEVHLPR3 pHlp, struct VBOXVDMAHOST *pVdma, PSSMHANDLE pSSM, uint32_t u32Version);
 int vboxVDMASaveLoadDone(struct VBOXVDMAHOST *pVdma);
 # endif /* VBOX_WITH_VDMA */
 

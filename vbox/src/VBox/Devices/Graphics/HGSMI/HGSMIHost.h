@@ -1,4 +1,4 @@
-/* $Id: HGSMIHost.h 80295 2019-08-15 15:46:09Z vboxsync $ */
+/* $Id: HGSMIHost.h 82048 2019-11-20 20:30:15Z vboxsync $ */
 /** @file
  * VBox Host Guest Shared Memory Interface (HGSMI), host part.
  */
@@ -101,8 +101,8 @@ int HGSMIHostCommandAlloc(PHGSMIINSTANCE pIns, void RT_UNTRUSTED_VOLATILE_GUEST 
 int HGSMIHostCommandSubmitAndFreeAsynch(PHGSMIINSTANCE pIns, void RT_UNTRUSTED_VOLATILE_GUEST *pvData, bool fDoIrq);
 int HGSMIHostCommandFree(PHGSMIINSTANCE pIns, void RT_UNTRUSTED_VOLATILE_GUEST *pvData);
 
-int HGSMIHostLoadStateExec(PHGSMIINSTANCE pIns, PSSMHANDLE pSSM, uint32_t u32Version);
-int HGSMIHostSaveStateExec(PHGSMIINSTANCE pIns, PSSMHANDLE pSSM);
+int HGSMIHostLoadStateExec(const struct PDMDEVHLPR3 *pHlp, PHGSMIINSTANCE pIns, PSSMHANDLE pSSM, uint32_t u32Version);
+int HGSMIHostSaveStateExec(const struct PDMDEVHLPR3 *pHlp, PHGSMIINSTANCE pIns, PSSMHANDLE pSSM);
 
 #ifdef VBOX_WITH_WDDM
 int HGSMICompleteGuestCommand(PHGSMIINSTANCE pIns, void RT_UNTRUSTED_VOLATILE_GUEST *pvMem, bool fDoIrq);
