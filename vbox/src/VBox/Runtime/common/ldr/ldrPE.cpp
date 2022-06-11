@@ -1,4 +1,4 @@
-/* $Id: ldrPE.cpp 77971 2019-04-01 09:35:17Z vboxsync $ */
+/* $Id: ldrPE.cpp 81120 2019-10-06 15:22:54Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Portable Executable (PE).
  */
@@ -632,8 +632,10 @@ static DECLCALLBACK(int) rtldrPEGetBits(PRTLDRMODINTERNAL pMod, void *pvBits, RT
                 return rc;
             AssertMsgFailed(("Failed to apply fixups. rc=%Rrc\n", rc));
         }
+#ifndef IN_SUP_HARDENED_R3
         else
             AssertMsgFailed(("Failed to resolve imports. rc=%Rrc\n", rc));
+#endif
     }
     return rc;
 }
