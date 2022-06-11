@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 79802 2019-07-16 06:04:03Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 79803 2019-07-16 06:25:39Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -16917,7 +16917,7 @@ HMVMX_EXIT_DECL hmR0VmxExitXcptOrNmiNested(PVMCPU pVCpu, PVMXTRANSIENT pVmxTrans
                 return IEMExecVmxVmexitXcpt(pVCpu, &ExitInfo, &ExitEventInfo);
             }
 
-            /* Nested paging is currently a requirement, otherwise we would need to handle shadow #PFs. */
+            /* Nested paging is currently a requirement, otherwise we would need to handle shadow #PFs in hmR0VmxExitXcptPF. */
             Assert(pVCpu->CTX_SUFF(pVM)->hm.s.fNestedPaging);
             return hmR0VmxExitXcpt(pVCpu, pVmxTransient);
         }
