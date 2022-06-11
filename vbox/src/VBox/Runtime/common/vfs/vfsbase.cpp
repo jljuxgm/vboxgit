@@ -1,4 +1,4 @@
-/* $Id: vfsbase.cpp 84192 2020-05-07 20:56:01Z vboxsync $ */
+/* $Id: vfsbase.cpp 84204 2020-05-08 11:29:09Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Base.
  */
@@ -369,6 +369,32 @@ static int rtVfsTraverseToParent(RTVFSINTERNAL *pThis, PRTVFSPARSEDPATH pPath, u
 static int rtVfsDirFollowSymlinkObjToParent(RTVFSDIRINTERNAL **ppVfsParentDir, RTVFSOBJ hVfsObj,
                                             PRTVFSPARSEDPATH pPath, uint32_t fFlags);
 
+
+
+/**
+ * Translates a RTVFSOBJTYPE value into a string.
+ *
+ * @returns Pointer to readonly name.
+ * @param   enmType             The object type to name.
+ */
+RTDECL(const char *) RTVfsTypeName(RTVFSOBJTYPE enmType)
+{
+    switch (enmType)
+    {
+        case RTVFSOBJTYPE_INVALID:      return "invalid";
+        case RTVFSOBJTYPE_BASE:         return "base";
+        case RTVFSOBJTYPE_VFS:          return "VFS";
+        case RTVFSOBJTYPE_FS_STREAM:    return "FS stream";
+        case RTVFSOBJTYPE_IO_STREAM:    return "I/O stream";
+        case RTVFSOBJTYPE_DIR:          return "directory";
+        case RTVFSOBJTYPE_FILE:         return "file";
+        case RTVFSOBJTYPE_SYMLINK:      return "symlink";
+        case RTVFSOBJTYPE_END:          return "end";
+        case RTVFSOBJTYPE_32BIT_HACK:
+            break;
+    }
+    return "unknown";
+}
 
 
 /*
