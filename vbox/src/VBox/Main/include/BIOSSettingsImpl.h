@@ -1,4 +1,4 @@
-/* $Id: BIOSSettingsImpl.h 81087 2019-09-30 18:55:28Z vboxsync $ */
+/* $Id: BIOSSettingsImpl.h 81299 2019-10-16 19:32:48Z vboxsync $ */
 
 /** @file
  *
@@ -57,6 +57,8 @@ public:
     void i_copyFrom(BIOSSettings *aThat);
     void i_applyDefaults(GuestOSType *aOsType);
 
+    void i_updateNonVolatileStorageFile(const com::Utf8Str &aNonVolatileStorageFile);
+
 private:
 
     // wrapped IBIOSettings properties
@@ -80,8 +82,6 @@ private:
     HRESULT setTimeOffset(LONG64 offset);
     HRESULT getPXEDebugEnabled(BOOL *enabled);
     HRESULT setPXEDebugEnabled(BOOL enable);
-    HRESULT getNonVolatileStorageEnabled(BOOL *enabled);
-    HRESULT setNonVolatileStorageEnabled(BOOL enable);
     HRESULT getNonVolatileStorageFile(com::Utf8Str &aNonVolatileStorageFile);
 
     struct Data;

@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 81087 2019-09-30 18:55:28Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 81299 2019-10-16 19:32:48Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -869,7 +869,6 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> pVirtualBox,
     SHOW_UTF8_STRING("biosapic", "BIOS APIC mode:", pszAPIC);
 
     SHOW_LONG64_PROP(biosSettings,  TimeOffset,                 "biossystemtimeoffset", "Time offset:",  "ms");
-    SHOW_BOOLEAN_PROP(biosSettings, NonVolatileStorageEnabled,  "biosnvram",            "BIOS NVRAM:");
     Bstr bstrNVRAMFile;
     CHECK_ERROR2I_RET(biosSettings, COMGETTER(NonVolatileStorageFile)(bstrNVRAMFile.asOutParam()), hrcCheck);
     if (bstrNVRAMFile.isNotEmpty())
