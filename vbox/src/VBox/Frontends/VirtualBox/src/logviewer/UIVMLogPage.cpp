@@ -1,4 +1,4 @@
-/* $Id: UIVMLogPage.cpp 78462 2019-05-10 14:56:17Z vboxsync $ */
+/* $Id: UIVMLogPage.cpp 80339 2019-08-18 10:38:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -145,7 +145,7 @@ void UIVMLogPage::setTextEditText(const QString &strText)
     QTextCursor cursor = m_pTextEdit->textCursor();
     cursor.movePosition(QTextCursor::End, QTextCursor::MoveAnchor);
     m_pTextEdit->setTextCursor(cursor);
-    repaint();
+    update();
 }
 
 void UIVMLogPage::setTextEditTextAsHtml(const QString &strText)
@@ -153,7 +153,7 @@ void UIVMLogPage::setTextEditTextAsHtml(const QString &strText)
     if (!m_pTextEdit)
         return;
     m_pTextEdit->appendHtml(strText);
-    repaint();
+    update();
 }
 
 void UIVMLogPage::markForError()
@@ -168,7 +168,7 @@ void UIVMLogPage::setScrollBarMarkingsVector(const QVector<float> &vector)
     if (!m_pTextEdit)
         return;
     m_pTextEdit->setScrollBarMarkingsVector(vector);
-    repaint();
+    update();
 }
 
 void UIVMLogPage::clearScrollBarMarkingsVector()
@@ -176,7 +176,7 @@ void UIVMLogPage::clearScrollBarMarkingsVector()
     if (!m_pTextEdit)
         return;
     m_pTextEdit->clearScrollBarMarkingsVector();
-    repaint();
+    update();
 }
 
 void UIVMLogPage::documentUndo()

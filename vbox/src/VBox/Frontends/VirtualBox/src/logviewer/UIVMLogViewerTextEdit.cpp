@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerTextEdit.cpp 78462 2019-05-10 14:56:17Z vboxsync $ */
+/* $Id: UIVMLogViewerTextEdit.cpp 80339 2019-08-18 10:38:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -170,7 +170,7 @@ void UILineNumberArea::mouseMoveEvent(QMouseEvent *pEvent)
 {
     if (m_pTextEdit)
         m_pTextEdit->setMouseCursorLine(m_pTextEdit->lineNumberForPos(pEvent->pos()));
-    repaint();
+    update();
 }
 
 void UILineNumberArea::mousePressEvent(QMouseEvent *pEvent)
@@ -353,7 +353,7 @@ void UIVMLogViewerTextEdit::mouseMoveEvent(QMouseEvent *pEvent)
 {
     setMouseCursorLine(lineNumberForPos(pEvent->pos()));
     if (m_pLineNumberArea)
-        m_pLineNumberArea->repaint();
+        m_pLineNumberArea->update();
     QPlainTextEdit::mouseMoveEvent(pEvent);
 }
 
@@ -431,7 +431,7 @@ int UIVMLogViewerTextEdit::visibleLineCount()
 void UIVMLogViewerTextEdit::setBookmarkLineSet(const QSet<int>& lineSet)
 {
     m_bookmarkLineSet = lineSet;
-    repaint();
+    update();
 }
 
 int  UIVMLogViewerTextEdit::lineNumberForPos(const QPoint &position)
@@ -472,7 +472,7 @@ void UIVMLogViewerTextEdit::setShownTextIsFiltered(bool warning)
         return;
     m_bShownTextIsFiltered = warning;
     if (viewport())
-        viewport()->repaint();
+        viewport()->update();
 }
 
 void UIVMLogViewerTextEdit::setShowLineNumbers(bool bShowLineNumbers)
