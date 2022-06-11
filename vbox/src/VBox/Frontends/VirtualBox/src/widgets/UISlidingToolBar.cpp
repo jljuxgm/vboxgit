@@ -1,4 +1,4 @@
-/* $Id: UISlidingToolBar.cpp 80955 2019-09-23 17:27:06Z vboxsync $ */
+/* $Id: UISlidingToolBar.cpp 81827 2019-11-13 14:02:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISlidingToolBar class implementation.
  */
@@ -166,9 +166,8 @@ void UISlidingToolBar::prepareContents()
                 QPalette pal2 = m_pWidget->palette();
                 pal2.setColor(QPalette::Window, palette().color(QPalette::Window));
                 m_pWidget->setPalette(pal2);
-                UIMenuBarEditorWidget *pEditorWidget = qobject_cast<UIMenuBarEditorWidget*>(m_pWidget);
-                if (pEditorWidget)
-                    connect(pEditorWidget, &UIMenuBarEditorWidget::sigCancelClicked, this, &UISlidingToolBar::close);
+                /* Using abstract (old-style) connection here(!) since the base classes can be different: */
+                connect(m_pWidget, SIGNAL(sigCancelClicked()), this, SLOT(close()));
                 /* Add child-widget into area: */
                 m_pWidget->setParent(m_pArea);
             }
