@@ -1,4 +1,4 @@
-/* $Id: GuestProcessImpl.cpp 79190 2019-06-17 16:07:49Z vboxsync $ */
+/* $Id: GuestProcessImpl.cpp 79239 2019-06-19 10:52:44Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling.
  */
@@ -1309,14 +1309,15 @@ ProcessWaitResult_T GuestProcess::i_waitFlagsToResultEx(uint32_t fWaitFlags,
 
                 case ProcessStatus_Started:
                     /* Only wait for process start. */
-                    if (fWaitFlags == ProcessWaitForFlag_Start)
+                    if (fWaitFlags & ProcessWaitForFlag_Start)
                         waitResult = ProcessWaitResult_Start;
                     break;
 
                 default:
                     AssertMsgFailed(("Unhandled old status %RU32 before new status 'started'\n",
                                      oldStatus));
-                    waitResult = ProcessWaitResult_Start;
+                    if (fWaitFlags & ProcessWaitForFlag_Start)
+                        waitResult = ProcessWaitResult_Start;
                     break;
             }
             break;
@@ -1374,7 +1375,7 @@ ProcessWaitResult_T GuestProcess::i_waitFlagsToResult(uint32_t fWaitFlags)
 {
     AssertPtr(mSession);
     return GuestProcess::i_waitFlagsToResultEx(fWaitFlags,
-                                               mData.mStatus /* curStatus */, mData.mStatus /* newStatus */,
+                                               mData.mStatus /* oldStatus */, mData.mStatus /* newStatus */,
                                                mData.mProcess.mFlags, mSession->i_getProtocolVersion());
 }
 
