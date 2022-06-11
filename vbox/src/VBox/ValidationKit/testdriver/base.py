@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 79324 2019-06-25 13:39:46Z vboxsync $
+# $Id: base.py 79446 2019-07-01 15:46:18Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79324 $"
+__version__ = "$Revision: 79446 $"
 
 
 # Standard Python imports.
@@ -1637,7 +1637,7 @@ class TestDriverBase(object): # pylint: disable=too-many-instance-attributes
         try:
             iRc = self.innerMain(asArgs);
         except:
-            reporter.logXcpt();
+            reporter.logXcpt(cFrames = None);
             try:
                 self.onExit(-1);
             except:
