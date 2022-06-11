@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 79355 2019-06-26 11:19:45Z vboxsync $ */
+/* $Id: HM.cpp 79373 2019-06-27 04:45:57Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -696,6 +696,10 @@ static int hmR3InitFinalizeR3(PVM pVM)
         rc = STAMR3RegisterF(pVM, &pVCpu->hm.s.StatExitXcptNmi, STAMTYPE_PROFILE, STAMVISIBILITY_USED, STAMUNIT_TICKS_PER_CALL,
                              "Exceptions, NMIs.",
                              "/PROF/CPU%d/HM/SwitchFromGC_2/XcptNmi", i);
+        AssertRC(rc);
+        rc = STAMR3RegisterF(pVM, &pVCpu->hm.s.StatExitVmentry, STAMTYPE_PROFILE, STAMVISIBILITY_USED, STAMUNIT_TICKS_PER_CALL,
+                             "VMLAUNCH/VMRESUME on Intel or VMRUN on AMD.",
+                             "/PROF/CPU%d/HM/SwitchFromGC_2/Vmentry", i);
         AssertRC(rc);
         rc = STAMR3RegisterF(pVM, &pVCpu->hm.s.StatImportGuestState, STAMTYPE_PROFILE, STAMVISIBILITY_USED, STAMUNIT_TICKS_PER_CALL,
                              "Profiling of importing guest state from hardware after VM-exit.",

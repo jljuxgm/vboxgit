@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 79345 2019-06-26 09:09:46Z vboxsync $ */
+/* $Id: HMInternal.h 79373 2019-06-27 04:45:57Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -1102,6 +1102,7 @@ typedef struct HMCPU
     STAMPROFILEADV          StatExitIO;
     STAMPROFILEADV          StatExitMovCRx;
     STAMPROFILEADV          StatExitXcptNmi;
+    STAMPROFILEADV          StatExitVmentry;
     STAMPROFILEADV          StatImportGuestState;
     STAMPROFILEADV          StatExportGuestState;
     STAMPROFILEADV          StatLoadGuestFpuState;
