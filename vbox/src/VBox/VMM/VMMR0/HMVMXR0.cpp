@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 80587 2019-09-04 17:44:20Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 80588 2019-09-04 17:48:38Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -12363,6 +12363,7 @@ VMMR0DECL(VBOXSTRICTRC) VMXR0RunGuestCode(PVMCPUCC pVCpu)
 #ifdef VBOX_WITH_NESTED_HWVIRT_VMX
         bool const fInNestedGuestMode = CPUMIsGuestInVmxNonRootMode(pCtx);
 #else
+        NOREF(pCtx);
         bool const fInNestedGuestMode = false;
 #endif
         if (!fInNestedGuestMode)
