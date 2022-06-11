@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 83963 2020-04-24 11:05:10Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 84102 2020-04-30 13:20:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -2239,7 +2239,7 @@ bool UIVirtualBoxManager::isAtLeastOneItemInaccessible(const QList<UIVirtualMach
 bool UIVirtualBoxManager::isAtLeastOneItemRemovable(const QList<UIVirtualMachineItem*> &items)
 {
     foreach (UIVirtualMachineItem *pItem, items)
-        if (!pItem->accessible() || pItem->isItemEditable())
+        if (pItem->isItemRemovable())
             return true;
     return false;
 }

@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItemLocal.h 83755 2020-04-17 13:57:48Z vboxsync $ */
+/* $Id: UIVirtualMachineItemLocal.h 84102 2020-04-30 13:20:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItemLocal class declaration.
  */
@@ -91,6 +91,8 @@ public:
       * @{ */
         /** Returns whether this item is editable. */
         virtual bool isItemEditable() const /* override */;
+        /** Returns whether this item is removable. */
+        virtual bool isItemRemovable() const /* override */;
         /** Returns whether this item is saved. */
         virtual bool isItemSaved() const /* override */;
         /** Returns whether this item is powered off. */

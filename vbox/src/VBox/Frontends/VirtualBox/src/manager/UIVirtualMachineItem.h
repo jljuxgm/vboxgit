@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItem.h 83921 2020-04-22 12:09:34Z vboxsync $ */
+/* $Id: UIVirtualMachineItem.h 84102 2020-04-30 13:20:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItem class declarations.
  */
@@ -119,6 +119,8 @@ public:
       * @{ */
         /** Returns whether this item is editable. */
         virtual bool isItemEditable() const = 0;
+        /** Returns whether this item is removable. */
+        virtual bool isItemRemovable() const = 0;
         /** Returns whether this item is saved. */
         virtual bool isItemSaved() const = 0;
         /** Returns whether this item is powered off. */

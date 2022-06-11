@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItemLocal.cpp 83921 2020-04-22 12:09:34Z vboxsync $ */
+/* $Id: UIVirtualMachineItemLocal.cpp 84102 2020-04-30 13:20:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItem class implementation.
  */
@@ -212,6 +212,12 @@ bool UIVirtualMachineItemLocal::isItemEditable() const
 {
     return    accessible()
            && sessionState() == KSessionState_Unlocked;
+}
+
+bool UIVirtualMachineItemLocal::isItemRemovable() const
+{
+    return    !accessible()
+           || sessionState() == KSessionState_Unlocked;
 }
 
 bool UIVirtualMachineItemLocal::isItemSaved() const
