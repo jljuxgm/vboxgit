@@ -1,4 +1,4 @@
-/* $Id: UIDetailsModel.cpp 79839 2019-07-17 16:07:29Z vboxsync $ */
+/* $Id: UIDetailsModel.cpp 79842 2019-07-17 16:51:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsModel class implementation.
  */
@@ -53,6 +53,13 @@ UIDetailsModel::UIDetailsModel(UIDetails *pParent)
 UIDetailsModel::~UIDetailsModel()
 {
     cleanup();
+}
+
+void UIDetailsModel::init()
+{
+    /* Install root as event-filter for scene view,
+     * we need QEvent::Scroll events from it: */
+    root()->installEventFilterHelper(view());
 }
 
 QGraphicsScene *UIDetailsModel::scene() const

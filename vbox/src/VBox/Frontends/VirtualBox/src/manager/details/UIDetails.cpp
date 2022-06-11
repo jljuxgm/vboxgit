@@ -1,4 +1,4 @@
-/* $Id: UIDetails.cpp 79461 2019-07-02 09:41:51Z vboxsync $ */
+/* $Id: UIDetails.cpp 79842 2019-07-17 16:51:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetails class implementation.
  */
@@ -64,6 +64,9 @@ void UIDetails::prepare()
                 /* Add into layout: */
                 pMainLayout->addWidget(m_pDetailsView);
             }
+
+            /* Init model: */
+            m_pDetailsModel->init();
         }
     }
 
@@ -76,8 +79,6 @@ void UIDetails::prepare()
     /* Setup details-model connections: */
     connect(m_pDetailsModel, &UIDetailsModel::sigRootItemMinimumWidthHintChanged,
             m_pDetailsView, &UIDetailsView::sltMinimumWidthHintChanged);
-    connect(m_pDetailsModel, &UIDetailsModel::sigRootItemMinimumHeightHintChanged,
-            m_pDetailsView, &UIDetailsView::sltMinimumHeightHintChanged);
     connect(m_pDetailsModel, &UIDetailsModel::sigLinkClicked,
             this, &UIDetails::sigLinkClicked);
     connect(this, &UIDetails::sigToggleStarted,

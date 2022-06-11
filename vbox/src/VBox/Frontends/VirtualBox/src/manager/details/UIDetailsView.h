@@ -1,4 +1,4 @@
-/* $Id: UIDetailsView.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIDetailsView.h 79842 2019-07-17 16:51:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsView class declaration.
  */
@@ -51,7 +51,6 @@ public slots:
 
     /* Handlers: Size-hint stuff: */
     void sltMinimumWidthHintChanged(int iMinimumWidthHint);
-    void sltMinimumHeightHintChanged(int iMinimumHeightHint);
 
 private:
 
@@ -69,7 +68,6 @@ private:
 
     /* Variables: */
     int m_iMinimumWidthHint;
-    int m_iMinimumHeightHint;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_manager_details_UIDetailsView_h */

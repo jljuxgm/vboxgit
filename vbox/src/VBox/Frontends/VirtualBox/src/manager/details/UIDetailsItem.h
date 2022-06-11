@@ -1,4 +1,4 @@
-/* $Id: UIDetailsItem.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIDetailsItem.h 79842 2019-07-17 16:51:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsItem class declaration.
  */
@@ -88,6 +88,10 @@ public:
 
         /** Returns the description of the item. */
         virtual QString description() const = 0;
+
+        /** Installs event-filter for @a pSource object.
+          * @note  Base-class implementation does nothing. */
+        virtual void installEventFilterHelper(QObject *pSource) { Q_UNUSED(pSource); }
     /** @} */
 
     /** @name Children stuff.
