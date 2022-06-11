@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.cpp 83276 2020-03-13 11:02:49Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.cpp 83290 2020-03-13 16:43:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class implementation.
  */
@@ -331,7 +331,7 @@ void UIChooserAbstractModel::sltHandleCloudMachineStateChange()
 {
     UIVirtualMachineItem *pCache = qobject_cast<UIVirtualMachineItem*>(sender());
     AssertPtrReturnVoid(pCache);
-    sigCloudMachineStateChange(pCache->id());
+    emit sigCloudMachineStateChange(pCache->id());
 }
 
 void UIChooserAbstractModel::sltGroupDefinitionsSaveComplete()

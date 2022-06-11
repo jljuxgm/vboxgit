@@ -1,4 +1,4 @@
-/* $Id: UICloudMachine.cpp 83288 2020-03-13 15:57:50Z vboxsync $ */
+/* $Id: UICloudMachine.cpp 83290 2020-03-13 16:43:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudMachine class implementation.
  */
@@ -33,6 +33,7 @@ UICloudMachineData::UICloudMachineData(const CCloudClient &comCloudClient,
     : m_comCloudClient(comCloudClient)
     , m_strInstanceId(strInstanceId)
     , m_strInstanceName(strInstanceName)
+    , m_uId(QUuid::createUuid())
     , m_fAccessible(true)
     , m_enmMachineState(KMachineState_PoweredOff)
     , m_strOsType("Other")
@@ -47,6 +48,7 @@ UICloudMachineData::UICloudMachineData(const UICloudMachineData &other)
     , m_comCloudClient(other.m_comCloudClient)
     , m_strInstanceId(other.m_strInstanceId)
     , m_strInstanceName(other.m_strInstanceName)
+    , m_uId(other.m_uId)
     , m_fAccessible(other.m_fAccessible)
     , m_strAccessError(other.m_strAccessError)
     , m_enmMachineState(other.m_enmMachineState)

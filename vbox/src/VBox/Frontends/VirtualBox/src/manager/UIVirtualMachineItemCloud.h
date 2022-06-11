@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItemCloud.h 83163 2020-02-26 14:56:44Z vboxsync $ */
+/* $Id: UIVirtualMachineItemCloud.h 83290 2020-03-13 16:43:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItemCloud class declaration.
  */
@@ -132,6 +132,12 @@ private:
       * @{ */
         /** Holds cached cloud VM object reference. */
         UICloudMachine  m_guiCloudMachine;
+    /** @} */
+
+    /** @name Basic attributes.
+      * @{ */
+        /** Holds the cloud instance id. */
+        QString  m_strInstanceId;
     /** @} */
 
     /** @name Data attributes.

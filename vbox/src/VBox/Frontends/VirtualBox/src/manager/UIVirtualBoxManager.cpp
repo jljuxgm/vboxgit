@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 83268 2020-03-11 20:31:25Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 83290 2020-03-13 16:43:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -350,7 +350,7 @@ void UIVirtualBoxManager::sltCurrentSnapshotItemChange()
     updateActionsAppearance();
 }
 
-void UIVirtualBoxManager::sltHandleCloudMachineStateChange(const QString /* strMachineId */)
+void UIVirtualBoxManager::sltHandleCloudMachineStateChange(const QUuid & /* uId */)
 {
     updateActionsAppearance();
 }

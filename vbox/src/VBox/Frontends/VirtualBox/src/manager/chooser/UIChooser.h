@@ -1,4 +1,4 @@
-/* $Id: UIChooser.h 83064 2020-02-12 19:24:33Z vboxsync $ */
+/* $Id: UIChooser.h 83290 2020-03-13 16:43:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooser class declaration.
  */
@@ -60,8 +60,8 @@ signals:
 
     /** @name Cloud machine stuff.
       * @{ */
-        /** Notifies about state change for cloud machine with certain @a strId. */
-        void sigCloudMachineStateChange(const QString &strId);
+        /** Notifies about state change for cloud machine with certain @a uId. */
+        void sigCloudMachineStateChange(const QUuid &uId);
     /** @} */
 
     /** @name Group saving stuff.

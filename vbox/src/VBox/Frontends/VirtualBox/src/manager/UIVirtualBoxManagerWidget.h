@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.h 83094 2020-02-17 10:12:35Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.h 83290 2020-03-13 16:43:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class declaration.
  */
@@ -65,8 +65,8 @@ signals:
     /** Notifies listeners about current Snapshots pane item change. */
     void sigCurrentSnapshotItemChange();
 
-    /** Notifies about state change for cloud machine with certain @a strMachineId. */
-    void sigCloudMachineStateChange(const QString &strMachineId);
+    /** Notifies about state change for cloud machine with certain @a uId. */
+    void sigCloudMachineStateChange(const QUuid &uId);
 
 public:
 
@@ -157,8 +157,8 @@ private slots:
           * @param  enmDirection  Brings which direction was animation finished for. */
         void sltHandleSlidingAnimationComplete(SlidingDirection enmDirection);
 
-        /** Handles state change for cloud machine with specified @a strMachineId. */
-        void sltHandleCloudMachineStateChange(const QString &strId);
+        /** Handles state change for cloud machine with certain @a uId. */
+        void sltHandleCloudMachineStateChange(const QUuid &uId);
     /** @} */
 
     /** @name Tools stuff.

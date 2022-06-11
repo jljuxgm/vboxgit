@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 83268 2020-03-11 20:31:25Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 83290 2020-03-13 16:43:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -282,7 +282,7 @@ void UIVirtualBoxManagerWidget::sltHandleSlidingAnimationComplete(SlidingDirecti
     sltHandleChooserPaneIndexChange();
 }
 
-void UIVirtualBoxManagerWidget::sltHandleCloudMachineStateChange(const QString &strId)
+void UIVirtualBoxManagerWidget::sltHandleCloudMachineStateChange(const QUuid &uId)
 {
     /* Acquire current item: */
     UIVirtualMachineItem *pItem = currentItem();
@@ -296,7 +296,7 @@ void UIVirtualBoxManagerWidget::sltHandleCloudMachineStateChange(const QString &
             sltHandleToolsPaneIndexChange();
 
         /* If we still have same item selected: */
-        if (pItem && pItem->id() == strId)
+        if (pItem && pItem->id() == uId)
         {
             /* Propagate current items to update the Details-pane: */
             m_pPaneToolsMachine->setItems(currentItems());
@@ -310,7 +310,7 @@ void UIVirtualBoxManagerWidget::sltHandleCloudMachineStateChange(const QString &
         m_pPaneToolsMachine->openTool(UIToolType_Error);
 
         /* If we still have same item selected: */
-        if (pItem && pItem->id() == strId)
+        if (pItem && pItem->id() == uId)
         {
             /* Propagate current items to update the Details-pane (in any case): */
             m_pPaneToolsMachine->setItems(currentItems());
@@ -320,7 +320,7 @@ void UIVirtualBoxManagerWidget::sltHandleCloudMachineStateChange(const QString &
     }
 
     /* Pass the signal further: */
-    emit sigCloudMachineStateChange(strId);
+    emit sigCloudMachineStateChange(uId);
 }
 
 void UIVirtualBoxManagerWidget::sltHandleToolMenuRequested(UIToolClass enmClass, const QPoint &position)
