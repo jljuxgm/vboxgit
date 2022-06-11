@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 81525 2019-10-25 09:53:00Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 81555 2019-10-25 22:46:32Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -4568,6 +4568,7 @@ const PDMDEVHLPR3 g_pdmR3DevHlpTrusted =
     pdmR3DevHlp_TimerSave,
     pdmR3DevHlp_TimerLoad,
     pdmR3DevHlp_TimerDestroy,
+    TMR3TimerSkip,
     pdmR3DevHlp_TMUtcNow,
     CFGMR3Exists,
     CFGMR3QueryType,
@@ -5035,6 +5036,7 @@ const PDMDEVHLPR3 g_pdmR3DevHlpUnTrusted =
     pdmR3DevHlp_TimerSave,
     pdmR3DevHlp_TimerLoad,
     pdmR3DevHlp_TimerDestroy,
+    TMR3TimerSkip,
     pdmR3DevHlp_TMUtcNow,
     CFGMR3Exists,
     CFGMR3QueryType,
