@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 82310 2019-12-01 01:28:15Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 82317 2019-12-02 12:07:49Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -2933,7 +2933,7 @@ static int ichac97R3StreamTransfer(PAC97STATE pThis, PAC97STREAM pStream, uint32
 
 
 /**
- * @callback_method_impl{FNIOMIOPORTNEWOUT}
+ * @callback_method_impl{FNIOMIOPORTNEWIN}
  */
 static DECLCALLBACK(VBOXSTRICTRC)
 ichac97IoPortNabmRead(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT offPort, uint32_t *pu32, unsigned cb)
@@ -3622,6 +3622,7 @@ static DECLCALLBACK(int) ichac97R3SaveExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM)
  * Loads an AC'97 stream from SSM.
  *
  * @returns IPRT status code.
+ * @param   pDevIns             The device instance.
  * @param   pSSM                Saved state manager (SSM) handle to use.
  * @param   pStream             AC'97 stream to load.
  */
