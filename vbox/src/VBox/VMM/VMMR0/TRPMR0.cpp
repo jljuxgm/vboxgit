@@ -1,4 +1,4 @@
-/* $Id: TRPMR0.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: TRPMR0.cpp 80015 2019-07-26 16:46:49Z vboxsync $ */
 /** @file
  * TRPM - The Trap Monitor - HC Ring 0
  */
@@ -30,8 +30,8 @@
 #include <iprt/asm-amd64-x86.h>
 
 
-#if defined(RT_OS_DARWIN) && ARCH_BITS == 32
-# error "32-bit darwin is no longer supported. Go back to 4.3 or earlier!"
+#if ARCH_BITS == 32
+# error "32-bit is no longer supported. Go back to 6.0 or earlier!"
 #endif
 
 

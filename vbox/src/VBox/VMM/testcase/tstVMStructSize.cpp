@@ -1,4 +1,4 @@
-/* $Id: tstVMStructSize.cpp 80014 2019-07-26 16:12:06Z vboxsync $ */
+/* $Id: tstVMStructSize.cpp 80015 2019-07-26 16:46:49Z vboxsync $ */
 /** @file
  * tstVMStructSize - testcase for check structure sizes/alignment
  *                   and to verify that HC and GC uses the same
@@ -254,7 +254,6 @@ int main()
 #endif
 
     PVM pVM = NULL; NOREF(pVM);
-    CHECK_MEMBER_ALIGNMENT(VM, trpm.s.aIdt, 16);
     CHECK_MEMBER_ALIGNMENT(VM, aCpus[0], PAGE_SIZE);
     CHECK_MEMBER_ALIGNMENT(VM, aCpus[1], PAGE_SIZE);
     CHECK_MEMBER_ALIGNMENT(VM, aCpus[0].cpum.s.Host, 64);
