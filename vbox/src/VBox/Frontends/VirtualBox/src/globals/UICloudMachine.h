@@ -1,4 +1,4 @@
-/* $Id: UICloudMachine.h 83161 2020-02-26 14:37:40Z vboxsync $ */
+/* $Id: UICloudMachine.h 83162 2020-02-26 14:39:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudMachine class declaration.
  */
@@ -63,6 +63,9 @@ public:
     /** Returns whether cloud VM is accessible. */
     bool isAccessible() const { return m_fAccessible; }
 
+    /** Returns cloud VM state. */
+    KMachineState machineState() const { return m_enmMachineState; }
+
     /** Returns cloud VM OS type. */
     QString osType() const { return m_strOsType; }
     /** Returns cloud VM memory size. */
@@ -82,6 +85,9 @@ private:
 
     /** Holds whether cloud VM is accessible. */
     bool  m_fAccessible;
+
+    /** Holds the cloud VM state. */
+    KMachineState  m_enmMachineState;
 
     /** Holds the cloud VM OS type. */
     QString  m_strOsType;
@@ -127,6 +133,9 @@ public:
 
     /** Returns whether cloud VM is accessible. */
     bool isAccessible() const { return d->isAccessible(); }
+
+    /** Returns cloud VM state. */
+    KMachineState machineState() { return d->machineState(); }
 
     /** Returns cloud VM OS type. */
     QString osType() const { return d->osType(); }
