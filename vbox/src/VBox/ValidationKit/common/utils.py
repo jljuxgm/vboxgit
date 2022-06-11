@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: utils.py 82640 2019-12-22 22:02:38Z vboxsync $
+# $Id: utils.py 82966 2020-02-04 10:09:09Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 82640 $"
+__version__ = "$Revision: 82966 $"
 
 
 # Standard Python imports.
@@ -1337,6 +1337,7 @@ def processCollectCrashInfo(uPid, fnLog, fnCrashFile):
 #
 # Note! We cannot use time.clock() as the timestamp must be portable across
 #       processes.  See timeout testcase problem on win hosts (no logs).
+#       Also, time.clock() was axed in python 3.8 (https://bugs.python.org/issue31803).
 #
 #import sys;
 #import time;

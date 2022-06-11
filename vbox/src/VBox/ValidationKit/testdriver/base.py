@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 80237 2019-08-12 21:16:08Z vboxsync $
+# $Id: base.py 82966 2020-02-04 10:09:09Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 80237 $"
+__version__ = "$Revision: 82966 $"
 
 
 # Standard Python imports.
@@ -154,17 +154,13 @@ def timestampMilli():
     """
     Gets a millisecond timestamp.
     """
-    if sys.platform == 'win32':
-        return long(time.clock() * 1000);
-    return long(time.time() * 1000);
+    return utils.timestampMilli();
 
 def timestampNano():
     """
     Gets a nanosecond timestamp.
     """
-    if sys.platform == 'win32':
-        return long(time.clock() * 1000000000);
-    return long(time.time() * 1000000000);
+    return utils.timestampNano();
 
 def tryGetHostByName(sName):
     """
