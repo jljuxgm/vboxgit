@@ -1,4 +1,4 @@
-/* $Id: HGSMIChSetup.h 76585 2019-01-01 06:31:29Z vboxsync $ */
+/* $Id: HGSMIChSetup.h 80478 2019-08-28 13:32:17Z vboxsync $ */
 /** @file
  * VBox Host Guest Shared Memory Interface (HGSMI), Host/Guest shared part.
  */
@@ -59,8 +59,6 @@ AssertCompileSize(HGSMIBUFFERLOCATION, 8);
 #ifdef VBOX_WITH_WDDM
 /* one or more guest commands is completed, should be accessed under FIFO lock only */
 # define HGSMIHOSTFLAGS_GCOMMAND_COMPLETED UINT32_C(0x04)
-/* watchdog timer interrupt flag (used for debugging), should be accessed under VGAState::lock only */
-# define HGSMIHOSTFLAGS_WATCHDOG           UINT32_C(0x08)
 #endif
 /* vsync interrupt flag, should be accessed under VGAState::lock only */
 #define HGSMIHOSTFLAGS_VSYNC               UINT32_C(0x10)

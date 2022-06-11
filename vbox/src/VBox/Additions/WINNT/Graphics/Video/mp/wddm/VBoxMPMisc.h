@@ -1,4 +1,4 @@
-/* $Id: VBoxMPMisc.h 80422 2019-08-26 13:56:24Z vboxsync $ */
+/* $Id: VBoxMPMisc.h 80478 2019-08-28 13:32:17Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -152,11 +152,6 @@ BOOLEAN vboxShRcTreeRemove(PVBOXMP_DEVEXT pDevExt, PVBOXWDDM_ALLOCATION pAlloc);
 #endif
 
 NTSTATUS vboxWddmDrvCfgInit(PUNICODE_STRING pRegStr);
-
-#ifdef VBOX_VDMA_WITH_WATCHDOG
-NTSTATUS vboxWddmWdInit(PVBOXMP_DEVEXT pDevExt);
-NTSTATUS vboxWddmWdTerm(PVBOXMP_DEVEXT pDevExt);
-#endif
 
 NTSTATUS VBoxWddmSlEnableVSyncNotification(PVBOXMP_DEVEXT pDevExt, BOOLEAN fEnable);
 NTSTATUS VBoxWddmSlGetScanLine(PVBOXMP_DEVEXT pDevExt, DXGKARG_GETSCANLINE *pSl);

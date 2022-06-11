@@ -1,4 +1,4 @@
-/* $Id: VBoxMPDevExt.h 80422 2019-08-26 13:56:24Z vboxsync $ */
+/* $Id: VBoxMPDevExt.h 80478 2019-08-28 13:32:17Z vboxsync $ */
 /** @file
  * VBox Miniport device extension header
  */
@@ -165,10 +165,6 @@ typedef struct _VBOXMP_DEVEXT
 
 
 
-#ifdef VBOX_VDMA_WITH_WATCHDOG
-   PKTHREAD pWdThread;
-   KEVENT WdEvent;
-#endif
    BOOL bVSyncTimerEnabled;
    volatile uint32_t fVSyncInVBlank;
    volatile LARGE_INTEGER VSyncTime;

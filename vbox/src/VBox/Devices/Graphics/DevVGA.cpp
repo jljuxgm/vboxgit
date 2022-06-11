@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 80428 2019-08-26 16:09:49Z vboxsync $ */
+/* $Id: DevVGA.cpp 80478 2019-08-28 13:32:17Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -3111,9 +3111,6 @@ static DECLCALLBACK(int) vgaR3IOPortHGSMIWrite(PPDMDEVINS pDevIns, void *pvUser,
                         PDMDevHlpPCISetIrqNoWait(pDevIns, 0, PDM_IRQ_LEVEL_LOW);
                         HGSMIClearHostGuestFlags(pThis->pHGSMI,
                                                  HGSMIHOSTFLAGS_IRQ
-#  ifdef VBOX_VDMA_WITH_WATCHDOG
-                                                 | HGSMIHOSTFLAGS_WATCHDOG
-#  endif
                                                  | HGSMIHOSTFLAGS_VSYNC
                                                  | HGSMIHOSTFLAGS_HOTPLUG
                                                  | HGSMIHOSTFLAGS_CURSOR_CAPABILITIES
