@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 80620 2019-09-06 09:16:02Z vboxsync $ */
+/* $Id: IEMAll.cpp 80621 2019-09-06 09:25:22Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -15237,6 +15237,7 @@ VMM_INT_DECL(VBOXSTRICTRC) IEMExecDecodedInvlpg(PVMCPUCC pVCpu, uint8_t cbInstr,
  *
  * @param   pVCpu       The cross context virtual CPU structure.
  * @param   cbInstr     The instruction length in bytes.
+ * @param   iEffSeg     The effective segment register.
  * @param   GCPtrDesc   The effective address of the INVPCID descriptor.
  * @param   uType       The invalidation type.
  *
