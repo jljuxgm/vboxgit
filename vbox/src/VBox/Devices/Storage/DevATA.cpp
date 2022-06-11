@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 81997 2019-11-19 15:57:09Z vboxsync $ */
+/* $Id: DevATA.cpp 81998 2019-11-19 15:59:20Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -4183,7 +4183,6 @@ static bool ataR3InitDevParmSS(PPDMDEVINS pDevIns, PATACONTROLLER pCtl, PATADEVS
     RTThreadSleep(pCtl->msDelayIRQ);
     ataR3LockEnter(pDevIns, pCtl);
     ataR3CmdOK(pCtl, s, ATA_STAT_SEEK);
-    ataHCSetIRQ(pDevIns, pCtl, s);
     return false;
 }
 
@@ -4199,7 +4198,6 @@ static bool ataR3RecalibrateSS(PPDMDEVINS pDevIns, PATACONTROLLER pCtl, PATADEVS
     RTThreadSleep(pCtl->msDelayIRQ);
     ataR3LockEnter(pDevIns, pCtl);
     ataR3CmdOK(pCtl, s, ATA_STAT_SEEK);
-    ataHCSetIRQ(pDevIns, pCtl, s);
     return false;
 }
 
