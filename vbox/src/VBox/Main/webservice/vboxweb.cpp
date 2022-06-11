@@ -1,4 +1,4 @@
-/* $Id: vboxweb.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: vboxweb.cpp 84347 2020-05-18 19:02:01Z vboxsync $ */
 /** @file
  * vboxweb.cpp:
  *      hand-coded parts of the webservice server. This is linked with the
@@ -2326,28 +2326,27 @@ int __vbox__IManagedObjectRef_USCORErelease(
     _vbox__IManagedObjectRef_USCOREreleaseResponse *resp)
 {
     RT_NOREF(resp);
-    HRESULT rc = S_OK;
+    HRESULT rc;
     WEBDEBUG(("-- entering %s\n", __FUNCTION__));
 
-    do
     {
         // findRefFromId and the delete call below require the lock
         util::AutoWriteLock lock(g_pWebsessionsLockHandle COMMA_LOCKVAL_SRC_POS);
 
         ManagedObjectRef *pRef;
-        if ((rc = ManagedObjectRef::findRefFromId(req->_USCOREthis, &pRef, false)))
+        rc = ManagedObjectRef::findRefFromId(req->_USCOREthis, &pRef, false);
+        if (rc == S_OK)
         {
-            RaiseSoapInvalidObjectFault(soap, req->_USCOREthis);
-            break;
+            WEBDEBUG(("   found reference; deleting!\n"));
+            // this removes the object from all stacks; since
+            // there's a ComPtr<> hidden inside the reference,
+            // this should also invoke Release() on the COM
+            // object
+            delete pRef;
         }
-
-        WEBDEBUG(("   found reference; deleting!\n"));
-        // this removes the object from all stacks; since
-        // there's a ComPtr<> hidden inside the reference,
-        // this should also invoke Release() on the COM
-        // object
-        delete pRef;
-    } while (0);
+        else
+            RaiseSoapInvalidObjectFault(soap, req->_USCOREthis);
+    }
 
     WEBDEBUG(("-- leaving %s, rc: %#lx\n", __FUNCTION__, rc));
     if (FAILED(rc))
