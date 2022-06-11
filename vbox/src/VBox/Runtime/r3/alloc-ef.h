@@ -1,4 +1,4 @@
-/* $Id: alloc-ef.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: alloc-ef.h 83546 2020-04-04 10:46:18Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, electric fence.
  */
@@ -156,6 +156,7 @@ typedef enum RTMEMTYPE
     RTMEMTYPE_RTMEMALLOCZ,
     RTMEMTYPE_RTMEMREALLOC,
     RTMEMTYPE_RTMEMFREE,
+    RTMEMTYPE_RTMEMFREEZ,
 
     RTMEMTYPE_NEW,
     RTMEMTYPE_NEW_ARRAY,
@@ -200,7 +201,7 @@ RTDECL(void *)  rtR3MemAlloc(const char *pszOp, RTMEMTYPE enmType, size_t cbUnal
                              const char *pszTag, void *pvCaller, RT_SRC_POS_DECL);
 RTDECL(void *)  rtR3MemRealloc(const char *pszOp, RTMEMTYPE enmType, void *pvOld, size_t cbNew,
                                const char *pszTag, void *pvCaller, RT_SRC_POS_DECL);
-RTDECL(void)    rtR3MemFree(const char *pszOp, RTMEMTYPE enmType, void *pv, void *pvCaller, RT_SRC_POS_DECL);
+RTDECL(void)    rtR3MemFree(const char *pszOp, RTMEMTYPE enmType, void *pv, size_t cbUser, void *pvCaller, RT_SRC_POS_DECL);
 RT_C_DECLS_END
 
 
