@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: systemchangelog.py 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: systemchangelog.py 83383 2020-03-24 14:44:25Z vboxsync $
 
 """
 Test Manager - System changelog compilation.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 82968 $"
+__version__ = "$Revision: 83383 $"
 
 
 # Validation Kit imports.
@@ -79,8 +79,8 @@ class SystemChangelogLogic(ModelLogicBase):
         ksWhat_FailureCategory:  ( 'FailureCategories',  'idFailureCategory',   None, ),
         ksWhat_FailureReason:    ( 'FailureReasons',     'idFailureReason',     None, ),
         ksWhat_GlobalRsrc:       ( 'GlobalResources',    'idGlobalRsrc',        None, ),
-        ksWhat_SchedGroup:       ( 'SchedGroupes',       'idSchedGroup',        None, ),
-        ksWhat_TestGroup:        ( 'TestGroupes',        'idTestGroup',         None, ),
+        ksWhat_SchedGroup:       ( 'SchedGroups',        'idSchedGroup',        None, ),
+        ksWhat_TestGroup:        ( 'TestGroups',         'idTestGroup',         None, ),
         ksWhat_User:             ( 'Users',              'idUser',              None, ),
         ksWhat_TestResult:       ( 'TestResults',        'idTestResult',        None, ),
     }, **{sEvent: ( 'SystemLog',  'tsCreated',  'TimestampId', ) for sEvent in SystemLogData.kasEvents});
@@ -153,7 +153,7 @@ class SystemChangelogLogic(ModelLogicBase):
 
         # Special entry for the system log.
         sQuery  = '(\n'
-        sQuery += '    SELECT NULL AS uidAuthor,\n';
+        sQuery += '    SELECT NULL      AS uidAuthor,\n';
         sQuery += '           tsCreated AS tsEffective,\n';
         sQuery += '           sEvent    AS sEvent,\n';
         sQuery += '           NULL      AS idWhat,\n';
