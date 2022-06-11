@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 84017 2020-04-27 16:28:19Z vboxsync $
+# $Id: tdAddBasic1.py 84034 2020-04-28 10:25:35Z vboxsync $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84017 $"
+__version__ = "$Revision: 84034 $"
 
 # Standard Python imports.
 import os;
@@ -365,8 +365,7 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
         if not fRc:
             iRc = self.getAdditionsInstallerResult(oTxsSession);
             # Check for rc == 0 just for completeness.
-            if iRc == 0 \
-            or iRc == 2: # Can happen if the GA installer has detected older VBox kernel modules running and needs a reboot.
+            if iRc in (0, 2): # Can happen if the GA installer has detected older VBox kernel modules running and needs a reboot.
                 reporter.log('Guest has old(er) VBox kernel modules still running; requires a reboot');
                 fRc = True;
 
