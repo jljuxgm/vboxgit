@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 84098 2020-04-30 10:38:09Z vboxsync $ */
+/* $Id: UIMessageCenter.h 84184 2020-05-07 11:24:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -273,7 +273,7 @@ public:
     void cannotSetGroups(const CMachine &machine) const;
     bool confirmMachineItemRemoval(const QStringList &names) const;
     int confirmMachineRemoval(const QList<CMachine> &machines) const;
-    bool confirmCloudMachineRemoval(const QList<CCloudMachine> &machines) const;
+    int confirmCloudMachineRemoval(const QList<CCloudMachine> &machines) const;
     void cannotRemoveMachine(const CMachine &machine) const;
     void cannotRemoveMachine(const CMachine &machine, const CProgress &progress) const;
     void cannotRemoveCloudMachine(const CCloudMachine &comMachine) const;
