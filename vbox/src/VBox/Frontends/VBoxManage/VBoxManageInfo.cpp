@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 81489 2019-10-23 10:49:01Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 81588 2019-10-30 13:20:26Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -1866,6 +1866,9 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> pVirtualBox,
                 break;
         }
         SHOW_UTF8_STRING("clipboard", "Clipboard Mode:", psz);
+#ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS
+        SHOW_BOOLEAN_PROP(machine, ClipboardFileTransfersEnabled, "clipboard_file_transfers", "Clipboard file transfers:");
+#endif
     }
 
     /* Drag and drop */
