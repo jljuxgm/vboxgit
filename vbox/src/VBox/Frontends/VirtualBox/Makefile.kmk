@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 83659 2020-04-09 17:20:05Z vboxsync $
+# $Id: Makefile.kmk 83721 2020-04-16 17:41:23Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -1329,7 +1329,6 @@ UICommon_SOURCES = \
 	src/globals/UIActionPoolManager.cpp \
 	src/globals/UIActionPoolRuntime.cpp \
 	src/globals/UIAnimationFramework.cpp \
-	src/globals/UICloudMachine.cpp \
 	src/globals/UICloudNetworkingStuff.cpp \
 	src/globals/UICommon.cpp \
 	src/globals/UICustomFileSystemModel.cpp \
