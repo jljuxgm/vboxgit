@@ -1,4 +1,4 @@
-/* $Id: IOMAllMmioNew.cpp 81336 2019-10-18 01:03:10Z vboxsync $ */
+/* $Id: IOMAllMmioNew.cpp 81338 2019-10-18 01:14:50Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context, MMIO & String I/O.
  */
@@ -230,7 +230,7 @@ static VBOXSTRICTRC iomMmioDoComplicatedWrite(PVM pVM, PVMCPU pVCpu, CTX_SUFF(PI
                         Log(("iomMmioDoComplicatedWrite: GCPhys=%RGp GCPhysStart=%RGp cbValue=%u rc=%Rrc [read]\n", GCPhys, GCPhysStart, cbValue, VBOXSTRICTRC_VAL(rc2)));
                         return rc2;
                     }
-                    AssertMsgReturn(rc2 >= VINF_EM_FIRST && rc2 <= VINF_EM_LAST, ("%Rrc\n", rc2), VERR_IPE_UNEXPECTED_INFO_STATUS);
+                    AssertMsgReturn(rc2 >= VINF_EM_FIRST && rc2 <= VINF_EM_LAST, ("%Rrc\n", VBOXSTRICTRC_VAL(rc2)), VERR_IPE_UNEXPECTED_INFO_STATUS);
                     if (rc == VINF_SUCCESS || rc2 < rc)
                         rc = rc2;
                     break;
@@ -308,7 +308,7 @@ static VBOXSTRICTRC iomMmioDoComplicatedWrite(PVM pVM, PVMCPU pVCpu, CTX_SUFF(PI
                     Log(("iomMmioDoComplicatedWrite: GCPhys=%RGp GCPhysStart=%RGp cbValue=%u rc=%Rrc [write]\n", GCPhys, GCPhysStart, cbValue, VBOXSTRICTRC_VAL(rc2)));
                     return rc2;
                 }
-                AssertMsgReturn(rc2 >= VINF_EM_FIRST && rc2 <= VINF_EM_LAST, ("%Rrc\n", rc2), VERR_IPE_UNEXPECTED_INFO_STATUS);
+                AssertMsgReturn(rc2 >= VINF_EM_FIRST && rc2 <= VINF_EM_LAST, ("%Rrc\n", VBOXSTRICTRC_VAL(rc2)), VERR_IPE_UNEXPECTED_INFO_STATUS);
                 if (rc == VINF_SUCCESS || rc2 < rc)
                     rc = rc2;
                 break;
