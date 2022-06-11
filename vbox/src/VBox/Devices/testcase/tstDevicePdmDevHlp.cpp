@@ -1,4 +1,4 @@
-/* $Id: tstDevicePdmDevHlp.cpp 82902 2020-01-29 10:03:17Z vboxsync $ */
+/* $Id: tstDevicePdmDevHlp.cpp 82903 2020-01-29 10:05:36Z vboxsync $ */
 /** @file
  * tstDevice - Test framework for PDM devices/drivers, PDM helper implementation.
  */
@@ -53,6 +53,7 @@
 #define TMCLOCK_FREQ_REAL       UINT32_C(1000)
 /** Frequency of the virtual clock. */
 #define TMCLOCK_FREQ_VIRTUAL    UINT32_C(1000000000)
+
 
 /*********************************************************************************************************************************
 *   Structures and Typedefs                                                                                                      *
