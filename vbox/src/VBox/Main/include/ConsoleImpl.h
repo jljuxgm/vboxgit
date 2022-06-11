@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: ConsoleImpl.h 84342 2020-05-18 18:24:58Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -107,6 +107,7 @@ typedef struct VUSBIRHCONFIG *PVUSBIRHCONFIG;
 class ConsoleMouseInterface
 {
 public:
+    virtual ~ConsoleMouseInterface() { }
     virtual VMMDevMouseInterface  *i_getVMMDevMouseInterface(){return NULL;}
     virtual DisplayMouseInterface *i_getDisplayMouseInterface(){return NULL;}
     virtual void i_onMouseCapabilityChange(BOOL supportsAbsolute,

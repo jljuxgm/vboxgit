@@ -1,4 +1,4 @@
-/* $Id: Matching.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: Matching.h 84342 2020-05-18 18:24:58Z vboxsync $ */
 /** @file
  * Declaration of template classes that provide simple API to
  * do matching between values and value filters constructed from strings.
@@ -81,6 +81,9 @@ protected:
 
 class ParsedIntervalFilter_base : public ParsedFilter_base
 {
+public:
+    virtual ~ParsedIntervalFilter_base() { /* Make VC++ 14.2 happy */ }
+
 protected:
 
     enum Mode { Single, Start, End };

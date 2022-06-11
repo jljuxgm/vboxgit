@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 83142 2020-02-24 19:24:26Z vboxsync $ */
+/* $Id: DisplayImpl.h 84342 2020-05-18 18:24:58Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -119,6 +119,7 @@ typedef struct VIDEOACCEL
 class DisplayMouseInterface
 {
 public:
+    virtual ~DisplayMouseInterface() { }
     virtual HRESULT i_getScreenResolution(ULONG cScreen, ULONG *pcx,
                                           ULONG *pcy, ULONG *pcBPP, LONG *pXOrigin, LONG *pYOrigin) = 0;
     virtual void i_getFramebufferDimensions(int32_t *px1, int32_t *py1,

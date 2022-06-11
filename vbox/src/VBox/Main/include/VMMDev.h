@@ -1,4 +1,4 @@
-/* $Id: VMMDev.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VMMDev.h 84342 2020-05-18 18:24:58Z vboxsync $ */
 /** @file
  * VirtualBox Driver interface to VMM device
  */
@@ -31,6 +31,7 @@ class Console;
 class VMMDevMouseInterface
 {
 public:
+    virtual ~VMMDevMouseInterface() { /* Make VC++ 19.2 happy. */ }
     virtual PPDMIVMMDEVPORT getVMMDevPort() = 0;
 };
 
