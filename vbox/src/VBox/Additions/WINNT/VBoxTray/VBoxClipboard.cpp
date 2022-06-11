@@ -1,4 +1,4 @@
-/* $Id: VBoxClipboard.cpp 80283 2019-08-15 08:47:23Z vboxsync $ */
+/* $Id: VBoxClipboard.cpp 80324 2019-08-16 09:40:21Z vboxsync $ */
 /** @file
  * VBoxClipboard - Shared clipboard, Windows Guest Implementation.
  */
@@ -34,19 +34,14 @@
 #include <VBox/HostServices/VBoxClipboardSvc.h> /* Temp, remove. */
 #include <VBox/GuestHost/SharedClipboard-win.h>
 #ifdef VBOX_WITH_SHARED_CLIPBOARD_URI_LIST
-#   include <VBox/GuestHost/SharedClipboard-uri.h>
+# include <VBox/GuestHost/SharedClipboard-uri.h>
 #endif
 
 #include <strsafe.h>
 
 #ifdef VBOX_WITH_SHARED_CLIPBOARD_URI_LIST
-/** !!! HACK ALERT !!! Dynamically resolve functions! */
-#   ifdef _WIN32_IE
-#       undef _WIN32_IE
-#       define _WIN32_IE 0x0501
-#   endif
-#   include <iprt/win/shlobj.h>
-#   include <iprt/win/shlwapi.h>
+# include <iprt/win/shlobj.h>
+# include <iprt/win/shlwapi.h>
 #endif
 
 
