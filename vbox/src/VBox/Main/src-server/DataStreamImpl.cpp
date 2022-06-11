@@ -1,4 +1,4 @@
-/* $Id: DataStreamImpl.cpp 76592 2019-01-01 20:13:07Z vboxsync $ */
+/* $Id: DataStreamImpl.cpp 79582 2019-07-08 06:39:42Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation - DataStream
  */
@@ -76,6 +76,7 @@ HRESULT DataStream::init(unsigned long aBufferSize)
     m_hSemEvtDataAvail   = NIL_RTSEMEVENT;
     m_hSemEvtBufSpcAvail = NIL_RTSEMEVENT;
     m_pBuffer            = NULL;
+    m_fEos               = false;
     int vrc = RTSemEventCreate(&m_hSemEvtDataAvail);
     if (RT_SUCCESS(vrc))
         vrc = RTSemEventCreate(&m_hSemEvtBufSpcAvail);
