@@ -1,4 +1,4 @@
-/* $Id: DhcpdInternal.h 79761 2019-07-14 03:18:41Z vboxsync $ */
+/* $Id: DhcpdInternal.h 79763 2019-07-14 03:59:56Z vboxsync $ */
 /** @file
  * DHCP server - Internal header.
  */
@@ -48,9 +48,11 @@ typedef std::vector<uint8_t> octets_t;
 /** Raw DHCP option map (keyed by option number, byte vector value). */
 typedef std::map<uint8_t, octets_t> rawopts_t;
 
+#ifndef IN_VBOXSVC
 class DhcpOption;
 /** DHCP option map (keyed by option number, DhcpOption value). */
 typedef std::map<uint8_t, std::shared_ptr<DhcpOption> > optmap_t;
+#endif
 
 
 /** Equal compare operator for mac address. */

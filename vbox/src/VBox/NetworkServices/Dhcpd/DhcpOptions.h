@@ -1,4 +1,4 @@
-/* $Id: DhcpOptions.h 79761 2019-07-14 03:18:41Z vboxsync $ */
+/* $Id: DhcpOptions.h 79763 2019-07-14 03:59:56Z vboxsync $ */
 /** @file
  * DHCP server - DHCP options
  */
@@ -210,8 +210,10 @@ inline octets_t &operator<<(octets_t &dst, const DhcpOption &option)
 }
 
 
+#ifndef IN_VBOXSVC
 optmap_t &operator<<(optmap_t &optmap, DhcpOption *option);
 optmap_t &operator<<(optmap_t &optmap, const std::shared_ptr<DhcpOption> &option);
+#endif
 
 
 
