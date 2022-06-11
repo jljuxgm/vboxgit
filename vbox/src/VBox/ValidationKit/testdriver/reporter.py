@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: reporter.py 79087 2019-06-11 11:58:28Z vboxsync $
+# $Id: reporter.py 79138 2019-06-14 01:00:00Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79087 $"
+__version__ = "$Revision: 79138 $"
 
 
 # Standard Python imports.
@@ -1071,6 +1071,50 @@ class RemoteReporter(ReporterBase):
 # Helpers
 #
 
+g_fnComXcptFormatter = None;
+
+def setComXcptFormatter(fnCallback):
+    """
+    Install callback for prettier COM exception formatting.
+
+    The callback replaces the work done by format_exception_only() and
+    takes the same arguments.  It returns None if not interested in the
+    exception.
+    """
+    global g_fnComXcptFormatter;
+    g_fnComXcptFormatter = fnCallback;
+    return True;
+
+def formatExceptionOnly(oType, oXcpt, sCaller, sTsPrf):
+    """
+    Wrapper around traceback.format_exception_only and __g_fnComXcptFormatter.
+    """
+    #asRet = ['oType=%s type(oXcpt)=%s' % (oType, type(oXcpt),)];
+    asRet = [];
+
+    # Try the callback first.
+    fnCallback = g_fnComXcptFormatter;
+    if fnCallback:
+        try:
+            asRetCb = fnCallback(oType, oXcpt);
+            if asRetCb:
+                return asRetCb;
+                #asRet += asRetCb;
+        except:
+            g_oReporter.log(0, '** internal-error: Hit exception #2 in __g_fnComXcptFormatter! %s'
+                            % (traceback.format_exc()), sCaller, sTsPrf);
+            asRet += ['internal error: exception in __g_fnComXcptFormatter'];
+
+    # Now try format_exception_only:
+    try:
+        asRet += traceback.format_exception_only(oType, oXcpt);
+    except:
+        g_oReporter.log(0, '** internal-error: Hit exception #2 in format_exception_only! %s'
+                        % (traceback.format_exc()), sCaller, sTsPrf);
+        asRet += ['internal error: Exception in format_exception_only!'];
+    return asRet;
+
+
 def logXcptWorker(iLevel, fIncErrors, sPrefix="", sText=None, cFrames=1):
     """
     Log an exception, optionally with a preceeding message and more than one
@@ -1098,9 +1142,9 @@ def logXcptWorker(iLevel, fIncErrors, sPrefix="", sText=None, cFrames=1):
                 sCaller = utils.getCallerName(oTraceback.tb_frame);
                 if sText is not None:
                     rc = g_oReporter.log(iLevel, "%s%s" % (sPrefix, sText), sCaller, sTsPrf);
-                asInfo = [];
+                asInfo = None;
                 try:
-                    asInfo = asInfo + traceback.format_exception_only(oType, oValue);
+                    asInfo = formatExceptionOnly(oType, oValue, sCaller, sTsPrf);
                     if cFrames is not None and cFrames <= 1:
                         asInfo = asInfo + traceback.format_tb(oTraceback, 1);
                     else:
@@ -1132,6 +1176,7 @@ def logXcptWorker(iLevel, fIncErrors, sPrefix="", sText=None, cFrames=1):
     finally:
         g_oLock.release();
     return rc;
+
 
 #
 # The public Classes
@@ -1588,7 +1633,7 @@ def testFailureXcpt(sDetails = ''):
         oType = oValue, oTraceback = None;
     if oType is not None:
         sCaller = utils.getCallerName(oTraceback.tb_frame);
-        sXcpt   = ' '.join(traceback.format_exception_only(oType, oValue));
+        sXcpt   = ' '.join(formatExceptionOnly(oType, oValue, sCaller, utils.getTimePrefix()));
     else:
         sCaller = utils.getCallerName();
         sXcpt   = 'No exception at %s' % (sCaller,);

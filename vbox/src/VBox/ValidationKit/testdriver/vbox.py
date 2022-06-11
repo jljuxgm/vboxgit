@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 79092 2019-06-11 15:26:40Z vboxsync $
+# $Id: vbox.py 79138 2019-06-14 01:00:00Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79092 $"
+__version__ = "$Revision: 79138 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -181,6 +181,47 @@ def reportError(oErr, sText):
     reporter.error(sText);
     return reporter.error(stringifyErrorInfo(oErrObj));
 
+def formatComOrXpComException(oType, oXcpt):
+    """
+    Callback installed with the reporter to better format COM exceptions.
+    Similar to format_exception_only, only it returns None if not interested.
+    """
+    _ = oType;
+    oVBoxMgr = vboxcon.goHackModuleClass.oVBoxMgr;
+    if oVBoxMgr is None:
+        return None;
+    if not oVBoxMgr.xcptIsOurXcptKind(oXcpt):               # pylint: disable=not-callable
+        return None;
+
+    if platform.system() == 'Windows':
+        hrc = oXcpt.hresult;
+        if hrc == ComError.DISP_E_EXCEPTION and oXcpt.excepinfo is not None and len(oXcpt.excepinfo) > 5:
+            hrc    = oXcpt.excepinfo[5];
+            sWhere = oXcpt.excepinfo[1];
+            sMsg   = oXcpt.excepinfo[2];
+        else:
+            sWhere = None;
+            sMsg   = oXcpt.strerror;
+    else:
+        hrc    = oXcpt.errno;
+        sWhere = None;
+        sMsg   = oXcpt.msg;
+
+    sHrc = oVBoxMgr.xcptToString(hrc);                      # pylint: disable=not-callable
+    if sHrc.find('(') < 0:
+        sHrc = '%s (%#x)' % (sHrc, hrc & 0xffffffff);
+
+    asRet = ['COM-Xcpt: %s' % (sHrc,)];
+    if sMsg and sWhere:
+        asRet.append('--------- %s: %s' % (sWhere, sMsg,));
+    elif sMsg:
+        asRet.append('--------- %s' % (sMsg,));
+    return asRet;
+    #if sMsg and sWhere:
+    #    return ['COM-Xcpt: %s - %s: %s' % (sHrc, sWhere, sMsg,)];
+    #if sMsg:
+    #    return ['COM-Xcpt: %s - %s' % (sHrc, sMsg,)];
+    #return ['COM-Xcpt: %s' % (sHrc,)];
 
 #
 # Classes
@@ -1344,6 +1385,7 @@ class TestDriver(base.TestDriver):                                              
             # Install the constant wrapping hack.
             vboxcon.goHackModuleClass.oVBoxMgr  = self.oVBoxMgr; # VBoxConstantWrappingHack.
             vboxcon.fpApiVer                    = self.fpApiVer;
+            reporter.setComXcptFormatter(formatComOrXpComException);
 
         except:
             self.oVBoxMgr = None;
@@ -1431,6 +1473,7 @@ class TestDriver(base.TestDriver):                                              
         self.oVBoxMgr         = None;
         self.oVBox            = None;
         vboxcon.goHackModuleClass.oVBoxMgr = None; # VBoxConstantWrappingHack.
+        reporter.setComXcptFormatter(None);
 
         # Do garbage collection to try get rid of those objects.
         try:
