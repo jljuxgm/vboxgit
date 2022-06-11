@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# "$Id: schedqueue.py 83342 2020-03-19 20:45:24Z vboxsync $"
+# "$Id: schedqueue.py 83343 2020-03-19 20:48:13Z vboxsync $"
 
 """
 Test Manager - Test Case Queue.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 83342 $"
+__version__ = "$Revision: 83343 $"
 
 ## Standard python imports.
 #import unittest
@@ -114,7 +114,7 @@ FROM   SchedQueues
               AND TestCases.tsExpire             > SchedQueues.tsConfig
               AND TestCases.tsEffective         <= SchedQueues.tsConfig
 ORDER BY iPerSchedGroupRowNumber,
-         SchedGroups.sName
+         SchedGroups.sName DESC
 LIMIT %s OFFSET %s''' % (cMaxRows, iStart,))
         aoRows = []
         for _ in range(self._oDb.getRowCount()):
