@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 81388 2019-10-20 23:15:06Z vboxsync $ */
+/* $Id: PDMInternal.h 81390 2019-10-20 23:50:44Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -35,6 +35,7 @@
 #endif
 #include <VBox/vmm/pdmblkcache.h>
 #include <VBox/vmm/pdmcommon.h>
+#include <VBox/vmm/pdmtask.h>
 #include <VBox/sup.h>
 #include <iprt/assert.h>
 #include <iprt/critsect.h>
