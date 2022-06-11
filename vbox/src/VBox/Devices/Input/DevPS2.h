@@ -1,4 +1,4 @@
-/* $Id: DevPS2.h 82201 2019-11-25 21:32:30Z vboxsync $ */
+/* $Id: DevPS2.h 82203 2019-11-25 21:53:27Z vboxsync $ */
 /** @file
  * PS/2 devices - Internal header file.
  */
@@ -332,13 +332,6 @@ typedef struct KBDSTATE
     /* keyboard state */
     int32_t translate;
     int32_t xlat_state;
-
-    /** Pointer to the device instance - RC. */
-    PPDMDEVINSRC                pDevInsRC;
-    /** Pointer to the device instance - R3 . */
-    PPDMDEVINSR3                pDevInsR3;
-    /** Pointer to the device instance. */
-    PPDMDEVINSR0                pDevInsR0;
 
     /** I/O port 60h. */
     IOMIOPORTHANDLE             hIoPortData;
