@@ -1,4 +1,4 @@
-/* $Id: VBoxSDS.cpp 83657 2020-04-09 17:01:41Z vboxsync $ */
+/* $Id: VBoxSDS.cpp 83818 2020-04-19 00:55:42Z vboxsync $ */
 /** @file
  * VBoxSDS - COM global service main entry (System Directory Service)
  */
@@ -392,11 +392,11 @@ public:
                     wszFilePath[cwcFilePath + 1] = L'\"';
                     wszFilePath[cwcFilePath + 2] = L'\0';
 
-                    SC_HANDLE hService = ::CreateServiceW(hSCM, m_wszServiceName, m_wszServiceDisplayName,
-                                                          SERVICE_CHANGE_CONFIG,
-                                                          SERVICE_WIN32_OWN_PROCESS,
-                                                          SERVICE_DEMAND_START, SERVICE_ERROR_NORMAL,
-                                                          wszFilePath, NULL, NULL, L"RPCSS\0", NULL, NULL);
+                    hService = ::CreateServiceW(hSCM, m_wszServiceName, m_wszServiceDisplayName,
+                                                SERVICE_CHANGE_CONFIG,
+                                                SERVICE_WIN32_OWN_PROCESS,
+                                                SERVICE_DEMAND_START, SERVICE_ERROR_NORMAL,
+                                                wszFilePath, NULL, NULL, L"RPCSS\0", NULL, NULL);
                     if (hService != NULL)
                     {
                         SERVICE_DESCRIPTIONW sd;
@@ -527,9 +527,9 @@ public:
 #ifdef WITH_WATCHER
         , m_fHasClients(false)
 #endif
-        , m_cMsShutdownTimeOut(cMsShutdownTimeout)
         , m_hEventShutdown(INVALID_HANDLE_VALUE)
         , m_dwMainThreadID(~(DWORD)42)
+        , m_cMsShutdownTimeOut(cMsShutdownTimeout)
     {
     }
 
