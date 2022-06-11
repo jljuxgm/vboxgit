@@ -1,4 +1,4 @@
-/* $Id: Virtio_1_0.h 80240 2019-08-12 23:45:40Z vboxsync $ */
+/* $Id: Virtio_1_0.h 80306 2019-08-15 18:45:06Z vboxsync $ */
 /** @file
  * Virtio_1_0.h - Virtio Declarations
  */
@@ -146,15 +146,14 @@ typedef struct VIRTIOCALLBACKS
 /**
  * API to for VirtIO client below this point.
  */
-int           virtioReset        (VIRTIOHANDLE hVirtio);
-bool          virtioQueueInit    (VIRTIOHANDLE hVirtio, uint16_t qIdx, const char *pcszName);
+bool          virtioQueueAttach  (VIRTIOHANDLE hVirtio, uint16_t qIdx, const char *pcszName);
 const char *  virtioQueueGetName (VIRTIOHANDLE hVirtio, uint16_t qIdx);
+bool          virtioQueuePeek    (VIRTIOHANDLE hVirtio, uint16_t qIdx, PVIRTQ_BUF_VECTOR_T pBufVec);
 bool          virtioQueueGet     (VIRTIOHANDLE hVirtio, uint16_t qIdx, PVIRTQ_BUF_VECTOR_T pBufVec, bool fRemove);
 void          virtioQueuePut     (VIRTIOHANDLE hVirtio, uint16_t qIdx, PVIRTQ_BUF_VECTOR_T pBufVec, uint32_t cb);
-bool          virtioQueuePeek    (VIRTIOHANDLE hVirtio, uint16_t qIdx, PVIRTQ_BUF_VECTOR_T pBufVec);
 void          virtioQueueSync    (VIRTIOHANDLE hVirtio, uint16_t qIdx);
 bool          virtioQueueIsEmpty (VIRTIOHANDLE hVirtio, uint16_t qIdx);
-int           virtioGetNumQueues (VIRTIOHANDLE hVirtio);
+void          virtioResetAll     (VIRTIOHANDLE hVirtio);
 
 /** CLIENT MUST CALL ON RELOCATE CALLBACK! */
 void          virtioRelocate     (PPDMDEVINS pDevIns, RTGCINTPTR offDelta);
@@ -166,7 +165,6 @@ void          virtioRelocate     (PPDMDEVINS pDevIns, RTGCINTPTR offDelta);
  * @param   pVirtio                  Device State
  * @param   pPciParams               Values to populate industry standard PCI Configuration Space data structure
  * @param   pcszInstance             Device instance name
- * @param   uNumQueues               Number of Virtio Queues created by consumer (driver)
  * @param   uDevSpecificFeatures     VirtIO device-specific features offered by client
  * @param   devCapReadCallback       Client handler to call upon guest read to device specific capabilities.
  * @param   devCapWriteCallback      Client handler to call upon guest write to device specific capabilities.
