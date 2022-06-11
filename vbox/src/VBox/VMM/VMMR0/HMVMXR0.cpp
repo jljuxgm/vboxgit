@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 80389 2019-08-23 04:04:13Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 80390 2019-08-23 04:07:44Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -1477,7 +1477,7 @@ DECLINLINE(void) hmR0VmxReadGuestPhysicalAddrVmcs(PVMXTRANSIENT pVmxTransient)
     }
 }
 
-
+#ifdef VBOX_WITH_NESTED_HWVIRT_VMX
 /**
  * Reads the Guest pending-debug exceptions from the VMCS into the VMX transient
  * structure.
@@ -1493,7 +1493,7 @@ DECLINLINE(void) hmR0VmxReadGuestPendingDbgXctps(PVMXTRANSIENT pVmxTransient)
         pVmxTransient->fVmcsFieldsRead |= HMVMX_READ_GUEST_PENDING_DBG_XCPTS;
     }
 }
-
+#endif
 
 /**
  * Reads the IDT-vectoring information field from the VMCS into the VMX
