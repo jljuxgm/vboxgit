@@ -1,4 +1,4 @@
-/* $Id: HDAStream.h 82417 2019-12-05 13:31:38Z vboxsync $ */
+/* $Id: HDAStream.h 82420 2019-12-05 13:51:16Z vboxsync $ */
 /** @file
  * HDAStream.h - Streams for HD Audio.
  */
@@ -237,8 +237,11 @@ typedef struct HDASTREAM
     R3PTRTYPE(PHDAMIXERSINK)    pMixSink;
     /** The timer for pumping data thru the attached LUN drivers. */
     TMTIMERHANDLE               hTimer;
-    /** The stream'S critical section to serialize access. */
+#ifdef VBOX_WITH_AUDIO_HDA_ASYNC_IO
+    /** The stream's critical section to serialize access between the async I/O
+     *  thread and (basically) the guest. */
     RTCRITSECT                  CritSect;
+#endif
     /** Internal state of this stream. */
     HDASTREAMSTATE              State;
     /** Debug information. */
