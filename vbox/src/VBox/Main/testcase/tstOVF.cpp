@@ -1,4 +1,4 @@
-/* $Id: tstOVF.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: tstOVF.cpp 84348 2020-05-18 19:02:32Z vboxsync $ */
 /** @file
  *
  * tstOVF - testcases for OVF import and export
@@ -56,7 +56,7 @@ struct MyError
             com::ProgressErrorInfo info(pProgress);
             com::GluePrintErrorInfo(info);
         }
-        else if (rc)
+        else if (rc != S_OK)
         {
             com::ErrorInfo info;
             if (!info.isFullAvailable() && !info.isBasicAvailable())
