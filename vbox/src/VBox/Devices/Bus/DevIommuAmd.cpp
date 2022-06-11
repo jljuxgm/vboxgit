@@ -1,4 +1,4 @@
-/* $Id: DevIommuAmd.cpp 84317 2020-05-15 09:40:53Z vboxsync $ */
+/* $Id: DevIommuAmd.cpp 84318 2020-05-15 09:42:34Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - AMD implementation.
  */
@@ -4796,9 +4796,15 @@ static DECLCALLBACK(int) iommuAmdR3CmdThread(PPDMDEVINS pDevIns, PPDMTHREAD pThr
                     {
                         if (   rc == VERR_IOMMU_CMD_NOT_SUPPORTED
                             || rc == VERR_IOMMU_CMD_INVALID_FORMAT)
+                        {
+                            Assert(EvtError.n.u4EvtCode == IOMMU_EVT_ILLEGAL_CMD_ERROR);
                             iommuAmdRaiseIllegalCmdEvent(pDevIns, (PCEVT_ILLEGAL_CMD_ERR_T)&EvtError);
+                        }
                         else if (rc == VERR_IOMMU_CMD_HW_ERROR)
+                        {
+                            Assert(EvtError.n.u4EvtCode == IOMMU_EVT_COMMAND_HW_ERROR);
                             iommuAmdRaiseCmdHwErrorEvent(pDevIns, (PCEVT_CMD_HW_ERR_T)&EvtError);
+                        }
                         break;
                     }
                 }
