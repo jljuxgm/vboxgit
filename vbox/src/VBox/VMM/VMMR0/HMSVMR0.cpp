@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 81177 2019-10-09 10:41:01Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 81179 2019-10-09 10:58:00Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -4614,9 +4614,7 @@ static int hmR0SvmRunGuestCodeNested(PVMCPUCC pVCpu, uint32_t *pcLoops)
         rc = hmR0SvmPreRunGuest(pVCpu, &SvmTransient);
         if (    rc != VINF_SUCCESS
             || !CPUMIsGuestInSvmNestedHwVirtMode(pCtx))
-        {
             break;
-        }
 
         /*
          * No longjmps to ring-3 from this point on!!!
