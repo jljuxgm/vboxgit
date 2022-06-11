@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 78374 2019-05-03 11:41:50Z vboxsync $ */
+/* $Id: UIMediumManager.cpp 78386 2019-05-06 11:06:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class implementation.
  */
@@ -1601,7 +1601,7 @@ void UIMediumManagerFactory::create(QIManagerDialog *&pDialog, QWidget *pCenterW
 
 
 /*********************************************************************************************************************************
-*   Class UIMediumManager implementation.                                                                                 *
+*   Class UIMediumManager implementation.                                                                                        *
 *********************************************************************************************************************************/
 
 UIMediumManager::UIMediumManager(QWidget *pCenterWidget, UIActionPool *pActionPool)
