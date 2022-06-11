@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 79716 2019-07-12 06:16:36Z vboxsync $ */
+/* $Id: CPUM.cpp 79723 2019-07-12 10:18:45Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -2626,10 +2626,6 @@ static DECLCALLBACK(int) cpumR3SaveExec(PVM pVM, PSSMHANDLE pSSM)
             SSMR3PutGCPhys(pSSM,   pGstCtx->hwvirt.vmx.GCPhysVmxon);
             SSMR3PutGCPhys(pSSM,   pGstCtx->hwvirt.vmx.GCPhysVmcs);
             SSMR3PutGCPhys(pSSM,   pGstCtx->hwvirt.vmx.GCPhysShadowVmcs);
-            SSMR3PutU32(pSSM,      (uint32_t)pGstCtx->hwvirt.vmx.enmDiag);
-            SSMR3PutU64(pSSM,      pGstCtx->hwvirt.vmx.uDiagAux);
-            SSMR3PutU32(pSSM,      (uint32_t)pGstCtx->hwvirt.vmx.enmAbort);
-            SSMR3PutU32(pSSM,      pGstCtx->hwvirt.vmx.uAbortAux);
             SSMR3PutBool(pSSM,     pGstCtx->hwvirt.vmx.fInVmxRootMode);
             SSMR3PutBool(pSSM,     pGstCtx->hwvirt.vmx.fInVmxNonRootMode);
             SSMR3PutBool(pSSM,     pGstCtx->hwvirt.vmx.fInterceptEvents);
@@ -2919,10 +2915,6 @@ static DECLCALLBACK(int) cpumR3LoadExec(PVM pVM, PSSMHANDLE pSSM, uint32_t uVers
                         SSMR3GetGCPhys(pSSM,   &pGstCtx->hwvirt.vmx.GCPhysVmxon);
                         SSMR3GetGCPhys(pSSM,   &pGstCtx->hwvirt.vmx.GCPhysVmcs);
                         SSMR3GetGCPhys(pSSM,   &pGstCtx->hwvirt.vmx.GCPhysShadowVmcs);
-                        SSMR3GetU32(pSSM,       (uint32_t *)&pGstCtx->hwvirt.vmx.enmDiag);
-                        SSMR3GetU64(pSSM,      &pGstCtx->hwvirt.vmx.uDiagAux);
-                        SSMR3GetU32(pSSM,       (uint32_t *)&pGstCtx->hwvirt.vmx.enmAbort);
-                        SSMR3GetU32(pSSM,      &pGstCtx->hwvirt.vmx.uAbortAux);
                         SSMR3GetBool(pSSM,     &pGstCtx->hwvirt.vmx.fInVmxRootMode);
                         SSMR3GetBool(pSSM,     &pGstCtx->hwvirt.vmx.fInVmxNonRootMode);
                         SSMR3GetBool(pSSM,     &pGstCtx->hwvirt.vmx.fInterceptEvents);
