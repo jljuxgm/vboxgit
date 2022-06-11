@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoHost3D.h 76585 2019-01-01 06:31:29Z vboxsync $ */
+/* $Id: VBoxVideoHost3D.h 80472 2019-08-28 11:46:50Z vboxsync $ */
 /** @file
  * VirtualBox 3D host inter-components interfaces
  */
@@ -77,6 +77,9 @@ typedef struct VBOXCRCMDCTL_CALLOUT_LIST
 
 struct VBOXCRCMDCTL;
 
+/**
+ * Probably not used anymore (just to keep doxygen happy for now).
+ */
 typedef DECLCALLBACKPTR(int, PFNVBOXCRCLIENT_CALLOUT)(HVBOXCRCLIENT hClient, struct VBOXCRCMDCTL* pCmd, VBOXCRCMDCTL_CALLOUT_LISTENTRY *pEntry, PFNVBOXCRCMDCTL_CALLOUT_CB pfnCb);
 
 typedef struct VBOXCRCLIENT_INFO
@@ -178,6 +181,10 @@ typedef DECLCALLBACKPTR(uint8_t*, PFNVBOXCRCMDCTL_REMAINING_HOST_COMMAND)(HVBOXC
 typedef struct VBOXCRCMDCTL_HGCMENABLE_DATA
 {
     HVBOXCRCMDCTL_REMAINING_HOST_COMMAND hRHCmd;
+
+    /**
+     * Probably not used anymore (just to keep doxygen happy for now).
+     */
     PFNVBOXCRCMDCTL_REMAINING_HOST_COMMAND pfnRHCmd;
 } VBOXCRCMDCTL_HGCMENABLE_DATA;
 
@@ -190,7 +197,15 @@ typedef DECLCALLBACKPTR(void, PFNVBOXCRCMDCTL_NOTIFY_TERMINATING_DONE)(HVBOXCRCM
 typedef struct VBOXCRCMDCTL_HGCMDISABLE_DATA
 {
     HVBOXCRCMDCTL_NOTIFY_TERMINATING hNotifyTerm;
+
+    /**
+     * Probably not used anymore (just to keep doxygen happy for now).
+     */
     PFNVBOXCRCMDCTL_NOTIFY_TERMINATING pfnNotifyTerm;
+
+    /**
+     * Probably not used anymore (just to keep doxygen happy for now).
+     */
     PFNVBOXCRCMDCTL_NOTIFY_TERMINATING_DONE pfnNotifyTermDone;
 } VBOXCRCMDCTL_HGCMDISABLE_DATA;
 
