@@ -1,4 +1,4 @@
-/* $Id: VBoxManageAppliance.cpp 84231 2020-05-10 00:53:10Z vboxsync $ */
+/* $Id: VBoxManageAppliance.cpp 84233 2020-05-10 00:56:51Z vboxsync $ */
 /** @file
  * VBoxManage - The appliance-related commands.
  */
@@ -2097,7 +2097,7 @@ static int doAddPkcs7Signature(PCRTCRX509CERTIFICATE pCertificate, RTCRKEY hPriv
                 }
             }
             else
-                RTMsgError("RTCrStoreCreateInMem failed: %Rrc%", rc);
+                RTMsgError("RTCrStoreCreateInMem failed: %Rrc", rc);
         }
         if (RT_SUCCESS(rc))
         {
