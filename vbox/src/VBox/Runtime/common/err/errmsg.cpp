@@ -1,4 +1,4 @@
-/* $Id: errmsg.cpp 84054 2020-04-28 16:05:00Z vboxsync $ */
+/* $Id: errmsg.cpp 84063 2020-04-28 19:32:41Z vboxsync $ */
 /** @file
  * IPRT - Status code messages.
  */
@@ -86,7 +86,7 @@ static const struct
 static size_t rtErrLookup(int rc)
 {
     /*
-     * Perform binary search (duplicate code in RTErrWinGet).
+     * Perform binary search (duplicate code in rtErrWinLookup).
      */
     size_t iStart = 0;
     size_t iEnd   = RT_ELEMENTS(g_aStatusMsgs);

@@ -1,4 +1,4 @@
-/* $Id: VBoxCertUtil.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxCertUtil.cpp 84063 2020-04-28 19:32:41Z vboxsync $ */
 /** @file
  * VBoxCertUtil - VBox Certificate Utility - Windows Only.
  */
@@ -101,12 +101,9 @@ static const char *errorToString(DWORD dwErr)
         MY_CASE(CRYPT_E_OSS_ERROR);
         default:
         {
-            PCRTCOMERRMSG pWinComMsg = RTErrCOMGet(dwErr);
-            if (pWinComMsg)
-                return pWinComMsg->pszDefine;
-
-            static char s_szErr[32];
-            RTStrPrintf(s_szErr, sizeof(s_szErr), "%#x (%d)", dwErr, dwErr);
+            static char s_szErr[80];
+            if (RTErrWinQueryDefine(dwErr, s_szErr, sizeof(s_szErr), true /*fFailIfUnknown*/) == VERR_NOT_FOUND)
+                RTStrPrintf(s_szErr, sizeof(s_szErr), "%#x (%d)", dwErr, dwErr);
             return s_szErr;
         }
     }
