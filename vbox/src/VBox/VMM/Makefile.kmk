@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 81153 2019-10-08 13:59:03Z vboxsync $
+# $Id: Makefile.kmk 81156 2019-10-08 14:58:45Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -119,6 +119,7 @@ VBoxVMM_SOURCES  = \
 	VMMR3/GIMMinimal.cpp \
 	VMMR3/IEMR3.cpp \
 	VMMR3/IOM.cpp \
+	VMMR3/IOMR3IoPort.cpp \
 	VMMR3/GMM.cpp \
 	VMMR3/MM.cpp \
 	VMMR3/MMHeap.cpp \
