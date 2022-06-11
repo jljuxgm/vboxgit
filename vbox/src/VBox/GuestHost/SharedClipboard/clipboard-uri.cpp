@@ -1,4 +1,4 @@
-/* $Id: clipboard-uri.cpp 79270 2019-06-21 10:28:42Z vboxsync $ */
+/* $Id: clipboard-uri.cpp 79276 2019-06-21 13:10:30Z vboxsync $ */
 /** @file
  * Shared Clipboard: Common URI transfer handling code.
  */
@@ -1369,7 +1369,7 @@ int SharedClipboardURITransferWriteObjects(PSHAREDCLIPBOARDURITRANSFER pTransfer
                 SharedClipboardURIDirDataInit(&dirData);
 
                 dirData.pszPath = RTStrDup(strPath.c_str());
-                dirData.cbPath  = (uint32_t)strlen(dirData.pszPath) + 1 /* Include termination */;
+                dirData.cbPath  = (uint32_t)strlen(dirData.pszPath);
 
                 rc = pTransfer->pProvider->WriteDirectory(&dirData);
 
@@ -1390,7 +1390,7 @@ int SharedClipboardURITransferWriteObjects(PSHAREDCLIPBOARDURITRANSFER pTransfer
                 SharedClipboardURIFileHdrInit(&fileHdr);
 
                 fileHdr.pszFilePath = RTStrDup(strPath.c_str());
-                fileHdr.cbFilePath  = (uint32_t)strlen(fileHdr.pszFilePath) + 1 /* Include termination */;
+                fileHdr.cbFilePath  = (uint32_t)strlen(fileHdr.pszFilePath);
                 fileHdr.cbSize      = pObj->GetSize();
                 fileHdr.fFlags      = 0;
                 fileHdr.fMode       = pObj->GetMode();
@@ -1412,7 +1412,8 @@ int SharedClipboardURITransferWriteObjects(PSHAREDCLIPBOARDURITRANSFER pTransfer
                     rc = pObj->Read(pvData, cbData, &cbRead);
                     if (RT_SUCCESS(rc))
                     {
-                        rc = pTransfer->pProvider->WriteFileData(pvData, cbRead);
+                        uint32_t cbToRead = cbRead;
+                        rc = pTransfer->pProvider->WriteFileData(pvData, cbToRead, 0 /* fFlags */, &cbRead);
                     }
 
                     if (RT_FAILURE(rc))

@@ -1,4 +1,4 @@
-/* $Id: ClipboardURIList.cpp 79267 2019-06-21 10:11:59Z vboxsync $ */
+/* $Id: ClipboardURIList.cpp 79276 2019-06-21 13:10:30Z vboxsync $ */
 /** @file
  * Shared Clipboard - URI list class.
  */
@@ -113,6 +113,7 @@ int SharedClipboardURIList::appendPathRecursive(const char *pcszSrcPath,
     AssertPtrReturn(pcszSrcPath, VERR_INVALID_POINTER);
     AssertPtrReturn(pcszDstBase, VERR_INVALID_POINTER);
     AssertPtrReturn(pcszDstPath, VERR_INVALID_POINTER);
+    AssertReturn(!(fFlags & ~SHAREDCLIPBOARDURILIST_FLAGS_VALID_MASK), VERR_INVALID_FLAGS);
 
     LogFlowFunc(("pcszSrcPath=%s, pcszDstPath=%s, pcszDstBase=%s, cchDstBase=%zu, fFlags=0x%x\n",
                  pcszSrcPath, pcszDstPath, pcszDstBase, cchDstBase, fFlags));
@@ -279,7 +280,7 @@ int SharedClipboardURIList::appendObject(SharedClipboardURIObject *pObject)
     int rc = VINF_SUCCESS;
 
     m_lstTree.append(pObject);
-    m_lstRoot.append(pObject->GetSourcePathAbs());;
+    m_lstRoot.append(pObject->GetSourcePathAbs());
 
     m_cTotal++;
     m_cbTotal += pObject->GetSize();

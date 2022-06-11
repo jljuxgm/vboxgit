@@ -1,4 +1,4 @@
-/* $Id: ClipboardURIObject.cpp 78942 2019-06-03 19:10:19Z vboxsync $ */
+/* $Id: ClipboardURIObject.cpp 79276 2019-06-21 13:10:30Z vboxsync $ */
 /** @file
  * Shared Clipboard - URI object class. For handling creation/reading/writing to files and directories on host or guest side.
  */
@@ -120,6 +120,8 @@ void SharedClipboardURIObject::closeInternal(void)
  */
 void SharedClipboardURIObject::Close(void)
 {
+    LogFlowFuncEnter();
+
     closeInternal();
 }
 
@@ -336,6 +338,8 @@ int SharedClipboardURIObject::OpenFileEx(const RTCString &strPathAbs, View enmVi
                              u.File.objInfo.cbObject, u.File.objInfo.Attr.fMode));
             u.File.cbToProcess = u.File.objInfo.cbObject;
             u.File.cbProcessed = 0;
+
+            m_enmView = enmView;
         }
     }
 
@@ -466,7 +470,7 @@ int SharedClipboardURIObject::Read(void *pvBuf, size_t cbBuf, uint32_t *pcbRead)
     AssertReturn(cbBuf, VERR_INVALID_PARAMETER);
     /* pcbRead is optional. */
 
-    AssertMsgReturn(m_enmView == View_Source, ("Cannot read from an object which is not in source view\n"),
+    AssertMsgReturn(m_enmView == View_Source, ("Cannot read from an object which is not in source view (is 0x%x)\n", m_enmView),
                     VERR_INVALID_STATE);
 
     size_t cbRead = 0;
