@@ -1,4 +1,4 @@
-/* $Id: clipboard-transfers.cpp 81330 2019-10-17 20:22:20Z vboxsync $ */
+/* $Id: clipboard-transfers.cpp 81332 2019-10-17 20:27:21Z vboxsync $ */
 /** @file
  * Shared Clipboard: Common Shared Clipboard transfer handling code.
  */
@@ -761,7 +761,7 @@ void ShClTransferObjOpenParmsDestroy(PSHCLOBJOPENCREATEPARMS pParms)
  * @param   pTransfer           Clipboard transfer to get object handle info from.
  * @param   hObj                Object handle of the object to get handle info for.
  */
-DECINLINE(PSHCLOBJHANDLEINFO) shClTransferObjGet(PSHCLTRANSFER pTransfer, SHCLOBJHANDLE hObj)
+DECLINLINE(PSHCLOBJHANDLEINFO) shClTransferObjGet(PSHCLTRANSFER pTransfer, SHCLOBJHANDLE hObj)
 {
     PSHCLOBJHANDLEINFO pIt;
     RTListForEach(&pTransfer->lstObj, pIt, SHCLOBJHANDLEINFO, Node) /** @todo Slooow ...but works for now. */
@@ -1342,7 +1342,7 @@ int ShClTransferClose(PSHCLTRANSFER pTransfer)
  * @param   pTransfer           Clipboard transfer to get list handle info from.
  * @param   hList               List handle of the list to get handle info for.
  */
-DECINLINE(PSHCLLISTHANDLEINFO) shClTransferListGetByHandle(PSHCLTRANSFER pTransfer, SHCLLISTHANDLE hList)
+DECLINLINE(PSHCLLISTHANDLEINFO) shClTransferListGetByHandle(PSHCLTRANSFER pTransfer, SHCLLISTHANDLE hList)
 {
     PSHCLLISTHANDLEINFO pIt;
     RTListForEach(&pTransfer->lstList, pIt, SHCLLISTHANDLEINFO, Node) /** @todo Sloooow ... improve this. */
@@ -1360,7 +1360,7 @@ DECINLINE(PSHCLLISTHANDLEINFO) shClTransferListGetByHandle(PSHCLTRANSFER pTransf
  * @returns New List handle on success, or SHCLLISTHANDLE_INVALID on error.
  * @param   pTransfer           Clipboard transfer to create new list handle for.
  */
-DECINLINE(SHCLLISTHANDLE) shClTransferListHandleNew(PSHCLTRANSFER pTransfer)
+DECLINLINE(SHCLLISTHANDLE) shClTransferListHandleNew(PSHCLTRANSFER pTransfer)
 {
     return pTransfer->uListHandleNext++; /** @todo Good enough for now. Improve this later. */
 }
