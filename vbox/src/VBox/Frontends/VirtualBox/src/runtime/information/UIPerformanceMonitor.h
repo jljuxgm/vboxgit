@@ -1,4 +1,4 @@
-/* $Id: UIPerformanceMonitor.h 80132 2019-08-05 12:15:04Z vboxsync $ */
+/* $Id: UIPerformanceMonitor.h 80158 2019-08-06 15:15:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPerformanceMonitor class declaration.
  */
@@ -41,6 +41,7 @@
 /* Forward declarations: */
 class QTimer;
 class QGridLayout;
+class QLabel;
 class UIChart;
 
 class UISubMetric
@@ -117,7 +118,9 @@ private:
     QVector<CUnknown> m_objectList;
 
     QMap<QString, UISubMetric> m_subMetrics;
-    QMultiMap<QString,UIChart*>  m_charts;
+    QMap<QString,UIChart*>  m_charts;
+    QMap<QString,QLabel*>  m_infoLabels;
+
     QString m_strCPUMetricName;
     QString m_strRAMMetricName;
 
