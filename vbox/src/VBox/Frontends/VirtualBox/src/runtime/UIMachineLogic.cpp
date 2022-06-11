@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 81964 2019-11-18 20:42:02Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 81969 2019-11-18 21:01:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -2596,7 +2596,7 @@ void UIMachineLogic::sltChangeDockIconUpdate(bool fEnabled)
         {
             m_pDockPreviewSelectMonitorGroup->setEnabled(fEnabled);
             m_DockIconPreviewMonitor = qMin(gEDataManager->realtimeDockIconUpdateMonitor(uiCommon().managedVMUuid()),
-                                            (int)machine().GetMonitorCount() - 1);
+                                            (int)machine().GetGraphicsAdapter().GetMonitorCount() - 1);
         }
         /* Resize the dock icon in the case the preview monitor has changed. */
         QSize size = machineWindows().at(m_DockIconPreviewMonitor)->machineView()->size();
