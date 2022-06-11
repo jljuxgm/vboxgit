@@ -1,4 +1,4 @@
-/* $Id: UIMachineAttributeSetter.h 79940 2019-07-23 18:21:43Z vboxsync $ */
+/* $Id: UIMachineAttributeSetter.h 79959 2019-07-24 13:57:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineAttributeSetter namespace declaration.
  */
@@ -32,6 +32,7 @@ enum MachineAttribute
     MachineAttribute_Name,
     MachineAttribute_OSType,
     MachineAttribute_Location,
+    MachineAttribute_BaseMemory,
 };
 
 /** Namespace used to assign CMachine attributes on more convenient basis. */

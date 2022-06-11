@@ -1,4 +1,4 @@
-/* $Id: UIMachineAttributeSetter.cpp 79940 2019-07-23 18:21:43Z vboxsync $ */
+/* $Id: UIMachineAttributeSetter.cpp 79959 2019-07-24 13:57:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineAttributeSetter namespace implementation.
  */
@@ -80,6 +80,17 @@ void UIMachineAttributeSetter::setMachineAttribute(const CMachine &comConstMachi
             {
                 /* Change machine OS type: */
                 comMachine.SetOSTypeId(guiAttribute.toString());
+                if (!comMachine.isOk())
+                {
+                    msgCenter().cannotChangeMachineAttribute(comMachine);
+                    fErrorHappened = true;
+                }
+                break;
+            }
+            case MachineAttribute_BaseMemory:
+            {
+                /* Change machine base memory (RAM): */
+                comMachine.SetMemorySize(guiAttribute.toInt());
                 if (!comMachine.isOk())
                 {
                     msgCenter().cannotChangeMachineAttribute(comMachine);
