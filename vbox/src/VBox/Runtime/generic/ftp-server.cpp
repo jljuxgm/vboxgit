@@ -1,4 +1,4 @@
-/* $Id: ftp-server.cpp 82727 2020-01-13 14:55:50Z vboxsync $ */
+/* $Id: ftp-server.cpp 82728 2020-01-13 15:00:53Z vboxsync $ */
 /** @file
  * Generic FTP server (RFC 959) implementation.
  * Partly also implements RFC 3659 (Extensions to FTP, for "SIZE", ++).
@@ -613,7 +613,7 @@ static DECLCALLBACK(int) rtFtpServerDataConnThread(RTTHREAD ThreadSelf, void *pv
     {
         do
         {
-            size_t cbRead;
+            size_t cbRead = 0;
             RTFTPSERVER_HANDLE_CALLBACK_VA(pfnOnFileRead, pvHandle, pvBuf, cbBuf, &cbRead);
             if (RT_SUCCESS(rc))
                 rc = RTTcpWrite(pClient->DataConn.hSocket, pvBuf, cbRead);
