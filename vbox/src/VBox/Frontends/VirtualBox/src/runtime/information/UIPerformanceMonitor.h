@@ -1,4 +1,4 @@
-/* $Id: UIPerformanceMonitor.h 80249 2019-08-13 11:43:59Z vboxsync $ */
+/* $Id: UIPerformanceMonitor.h 80250 2019-08-13 12:45:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPerformanceMonitor class declaration.
  */
@@ -143,6 +143,8 @@ private:
       * @{ */
         /** CPU info label strings. */
         QString m_strCPUInfoLabelTitle;
+        QString m_strCPUInfoLabelGuest;
+        QString  m_strCPUInfoLabelVMM;
         /** RAM usage info label strings. */
         QString m_strRAMInfoLabelTitle;
         QString m_strRAMInfoLabelTotal;
