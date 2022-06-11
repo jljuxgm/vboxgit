@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 84224 2020-05-09 08:51:43Z vboxsync $
+# $Id: tdAddBasic1.py 84226 2020-05-09 17:39:15Z vboxsync $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84224 $"
+__version__ = "$Revision: 84226 $"
 
 # Standard Python imports.
 import os;
@@ -327,8 +327,14 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
             # Do a bit of diagnosis on error.
             if not fRc:
                 if oTestVm.isLinux():
+                    reporter.log('Boot log:');
+                    oTxsSession.syncExec('/bin/journalctl', ('/bin/journalctl', '-b'), fIgnoreErrors = True);
+                    reporter.log('Loaded processes:');
                     oTxsSession.syncExec('/bin/ps', ('/bin/ps', '-a', '-u', '-x'), fIgnoreErrors = True);
-                    oTxsSession.syncExec('bin/dmesg', ('/bin/dmesg'), fIgnoreErrors = True);
+                    reporter.log('Kernel messages:');
+                    oTxsSession.syncExec('/bin/dmesg', ('/bin/dmesg'), fIgnoreErrors = True);
+                    reporter.log('Loaded modules:');
+                    oTxsSession.syncExec('/sbin/lsmod', ('/sbin/lsmod'), fIgnoreErrors = True);
 
         return (fRc, oTxsSession);
 
