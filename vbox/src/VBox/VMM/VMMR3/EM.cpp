@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 80812 2019-09-16 06:40:41Z vboxsync $ */
+/* $Id: EM.cpp 80815 2019-09-16 09:22:23Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -1651,7 +1651,7 @@ static int emR3VmxNstGstIntrIntercept(PVMCPU pVCpu)
 static int emR3SvmNstGstIntrIntercept(PVMCPU pVCpu)
 {
 #ifdef VBOX_WITH_NESTED_HWVIRT_SVM
-    /* Handle the physical interrupt intercept (can be masked by the guest hypervisor). */
+    /* Handle the physical interrupt intercept (can be masked by the nested hypervisor). */
     if (CPUMIsGuestSvmCtrlInterceptSet(pVCpu, &pVCpu->cpum.GstCtx, SVM_CTRL_INTERCEPT_INTR))
     {
         CPUM_ASSERT_NOT_EXTRN(pVCpu, IEM_CPUMCTX_EXTRN_SVM_VMEXIT_MASK);
