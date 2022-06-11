@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 81006 2019-09-25 10:27:16Z vboxsync $ */
+/* $Id: SUPDrv.cpp 81161 2019-10-08 15:21:59Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -205,7 +205,6 @@ static SUPFUNC g_aFunctions[] =
     { "SUPR0GetSvmUsability",                   (void *)(uintptr_t)SUPR0GetSvmUsability },
     { "SUPR0GetVTSupport",                      (void *)(uintptr_t)SUPR0GetVTSupport },
     { "SUPR0GetVmxUsability",                   (void *)(uintptr_t)SUPR0GetVmxUsability },
-    { "SUPR0GetRawModeUsability",               (void *)(uintptr_t)SUPR0GetRawModeUsability },
     { "SUPR0LdrIsLockOwnerByMod",               (void *)(uintptr_t)SUPR0LdrIsLockOwnerByMod },
     { "SUPR0LdrLock",                           (void *)(uintptr_t)SUPR0LdrLock },
     { "SUPR0LdrUnlock",                         (void *)(uintptr_t)SUPR0LdrUnlock },
@@ -4105,25 +4104,6 @@ SUPR0DECL(int) SUPR0GetCurrentGdtRw(RTHCUINTPTR *pGdtRw)
 #else
     NOREF(pGdtRw);
     return VERR_NOT_IMPLEMENTED;
-#endif
-}
-
-
-/**
- * Checks if raw-mode is usable on this system.
- *
- * The reasons why raw-mode isn't safe to use are host specific.  For example on
- * Windows the Hyper-V root partition may perhapse not allow important bits in
- * CR4 to be changed, which would make it impossible to do a world switch.
- *
- * @returns VBox status code.
- */
-SUPR0DECL(int) SUPR0GetRawModeUsability(void)
-{
-#ifdef RT_OS_WINDOWS
-    return supdrvOSGetRawModeUsability();
-#else
-    return VINF_SUCCESS;
 #endif
 }
 
