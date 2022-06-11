@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 82294 2019-11-29 22:27:11Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 82295 2019-11-29 22:31:58Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -4440,7 +4440,7 @@ const PDMDEVREG g_DeviceICHAC97 =
     /* .pfnReserved7 = */           NULL,
 #elif defined(IN_RING0)
     /* .pfnEarlyConstruct = */      NULL,
-    /* .pfnConstruct = */           NULL,
+    /* .pfnConstruct = */           ichac97RZConstruct,
     /* .pfnDestruct = */            NULL,
     /* .pfnFinalDestruct = */       NULL,
     /* .pfnRequest = */             NULL,
@@ -4453,7 +4453,7 @@ const PDMDEVREG g_DeviceICHAC97 =
     /* .pfnReserved6 = */           NULL,
     /* .pfnReserved7 = */           NULL,
 #elif defined(IN_RC)
-    /* .pfnConstruct = */           NULL,
+    /* .pfnConstruct = */           ichac97RZConstruct,
     /* .pfnReserved0 = */           NULL,
     /* .pfnReserved1 = */           NULL,
     /* .pfnReserved2 = */           NULL,
