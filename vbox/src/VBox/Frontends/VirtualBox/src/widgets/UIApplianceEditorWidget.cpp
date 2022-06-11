@@ -1,4 +1,4 @@
-/* $Id: UIApplianceEditorWidget.cpp 82570 2019-12-12 16:22:53Z vboxsync $ */
+/* $Id: UIApplianceEditorWidget.cpp 82681 2020-01-09 04:31:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceEditorWidget class implementation.
  */
@@ -840,6 +840,9 @@ QWidget *UIVirtualHardwareItem::createEditor(QWidget *pParent, const QStyleOptio
                     ++iAdapterTypeIndex;
                 }
                 /* Pass editor back: */
+#ifdef VBOX_WITH_VIRTIO_NET_1_0
+                pComboBox->addItem(gpConverter->toString(KNetworkAdapterType_Virtio_1_0), KNetworkAdapterType_Virtio_1_0);
+#endif /* VBOX_WITH_VIRTIO */
                 pEditor = pComboBox;
                 break;
             }

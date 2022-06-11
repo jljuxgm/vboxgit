@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.h 78799 2019-05-28 05:38:34Z vboxsync $ */
+/* $Id: VBoxDD.h 82681 2020-01-09 04:31:04Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1) header.
  */
@@ -55,6 +55,9 @@ extern const PDMDEVREG g_DeviceE1000;
 #endif
 #ifdef VBOX_WITH_VIRTIO
 extern const PDMDEVREG g_DeviceVirtioNet;
+#endif
+#ifdef VBOX_WITH_VIRTIO_NET_1_0
+extern const PDMDEVREG g_DeviceVirtioNet_1_0;
 #endif
 #ifdef VBOX_WITH_INIP
 extern const PDMDEVREG g_DeviceINIP;

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 82502 2019-12-08 23:54:49Z vboxsync $
+# $Id: Makefile.kmk 82681 2020-01-09 04:31:04Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -144,6 +144,12 @@ VBOX_MAIN_DEFS += VBOX_WITH_USB_CARDREADER_TEST
 endif
 ifdef VBOX_WITH_VIRTIO
 VBOX_MAIN_DEFS += VBOX_WITH_VIRTIO
+endif
+ifdef VBOX_WITH_VIRTIO_1_0
+VBOX_MAIN_DEFS += VBOX_WITH_VIRTIO_1_0
+endif
+ifdef VBOX_WITH_VIRTIO_NET_1_0
+VBOX_MAIN_DEFS += VBOX_WITH_VIRTIO_NET_1_0
 endif
 ifdef VBOX_WITH_VMSVGA
 VBOX_MAIN_DEFS += VBOX_WITH_VMSVGA

@@ -1,4 +1,4 @@
-    /* $Id: DevVirtioSCSI.cpp 82571 2019-12-12 16:36:08Z vboxsync $ $Revision: 82571 $ $Date: 2019-12-13 00:36:08 +0800 (Fri, 13 Dec 2019) $ $Author: vboxsync $ */
+    /* $Id: DevVirtioSCSI.cpp 82681 2020-01-09 04:31:04Z vboxsync $ $Revision: 82681 $ $Date: 2020-01-09 12:31:04 +0800 (Thu, 09 Jan 2020) $ $Author: vboxsync $ */
 /** @file
  * VBox storage devices - Virtio SCSI Driver
  *
@@ -381,6 +381,7 @@ typedef struct VIRTIOSCSITARGET
 
     /** Flag whether device is present. */
     bool                            fPresent;
+
     /** Media port interface. */
     PDMIMEDIAPORT                   IMediaPort;
 
@@ -410,6 +411,9 @@ typedef struct VIRTIOSCSI
 {
     /** The core virtio state.   */
     VIRTIOCORE                      Virtio;
+
+    /** VirtIO Host SCSI device runtime configuration parameters */
+    VIRTIOSCSI_CONFIG_T             virtioScsiConfig;
 
     bool                            fBootable;
     bool                            afPadding0[3];
@@ -441,8 +445,6 @@ typedef struct VIRTIOSCSI
     /** Total number of requests active across all targets */
     volatile uint32_t               cActiveReqs;
 
-    /** VirtIO Host SCSI device runtime configuration parameters */
-    VIRTIOSCSI_CONFIG_T             virtioScsiConfig;
 
     /** True if the guest/driver and VirtIO framework are in the ready state */
     uint32_t                        fVirtioReady;
@@ -492,9 +494,6 @@ typedef struct VIRTIOSCSIR3
 
     /** Status Target: LEDs port interface. */
     PDMILEDPORTS                    ILeds;
-
-    /** Status Target: Partner of ILeds. */
-    R3PTRTYPE(PPDMILEDCONNECTORS)   pLedsConnector;
 
     /** IMediaExPort: Media ejection notification */
     R3PTRTYPE(PPDMIMEDIANOTIFY)     pMediaNotify;
@@ -2549,7 +2548,6 @@ static DECLCALLBACK(int) virtioScsiR3Construct(PPDMDEVINS pDevIns, int iInstance
         /* Initialize static parts of the device. */
         pTarget->pDevIns = pDevIns;
         pTarget->uTarget = uTarget;
-        pTarget->led.u32Magic = PDMLED_MAGIC;
 
         pTarget->IBase.pfnQueryInterface                 = virtioScsiR3TargetQueryInterface;
 

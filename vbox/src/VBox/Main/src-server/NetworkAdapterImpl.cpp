@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.cpp 81603 2019-10-31 09:25:18Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.cpp 82681 2020-01-09 04:31:04Z vboxsync $ */
 /** @file
  * Implementation of INetworkAdapter in VBoxSVC.
  */
@@ -244,6 +244,9 @@ HRESULT NetworkAdapter::setAdapterType(NetworkAdapterType_T aAdapterType)
 #endif
 #ifdef VBOX_WITH_VIRTIO
         case NetworkAdapterType_Virtio:
+#endif
+#ifdef VBOX_WITH_VIRTIO_NET_1_0
+        case NetworkAdapterType_Virtio_1_0:
 #endif /* VBOX_WITH_VIRTIO */
             break;
         default:
