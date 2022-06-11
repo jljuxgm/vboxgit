@@ -1,5 +1,5 @@
 @echo off
-rem $Id: Combined-3-RepackAdditions.cmd 82542 2019-12-10 16:24:04Z vboxsync $
+rem $Id: Combined-3-RepackAdditions.cmd 82935 2020-01-30 19:16:39Z vboxsync $
 rem rem @file
 rem Windows NT batch script for repacking signed amd64 and x86 drivers.
 rem
@@ -170,8 +170,8 @@ set _MY_BINDIR_X86=%_MY_OPT_UNTAR_DIR%\win.x86\%_MY_OPT_BUILD_TYPE%\bin\addition
 if not exist "%_MY_BINDIR_AMD64%"       goto error_amd64_bindir_not_found
 if not exist "%_MY_BINDIR_X86%"         goto error_x86_bindir_not_found
 
-set _MY_REPACK_DIR_AMD64=%_MY_OPT_UNTAR_DIR%\win.amd64\%_MY_OPT_BUILD_TYPE%\repack
-set _MY_REPACK_DIR_X86=%_MY_OPT_UNTAR_DIR%\win.x86\%_MY_OPT_BUILD_TYPE%\repack
+set _MY_REPACK_DIR_AMD64=%_MY_OPT_UNTAR_DIR%\win.amd64\%_MY_OPT_BUILD_TYPE%\repackadd
+set _MY_REPACK_DIR_X86=%_MY_OPT_UNTAR_DIR%\win.x86\%_MY_OPT_BUILD_TYPE%\repackadd
 if not exist "%_MY_REPACK_DIR_AMD64%"   goto error_amd64_repack_dir_not_found
 if not exist "%_MY_REPACK_DIR_X86%"     goto error_x86_repack_dir_not_found
 
