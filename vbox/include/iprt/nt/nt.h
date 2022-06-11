@@ -1,4 +1,4 @@
-/* $Id: nt.h 78535 2019-05-15 23:48:14Z vboxsync $ */
+/* $Id: nt.h 80212 2019-08-09 13:11:21Z vboxsync $ */
 /** @file
  * IPRT - Header for code using the Native NT API.
  */
@@ -1602,6 +1602,7 @@ NTSYSAPI NTSTATUS NTAPI NtAlertThread(HANDLE hThread);
 #ifdef IPRT_NT_USE_WINTERNL
 NTSYSAPI NTSTATUS NTAPI ZwAlertThread(HANDLE hThread);
 #endif
+NTSYSAPI NTSTATUS NTAPI NtTestAlert(void);
 
 #ifdef IPRT_NT_USE_WINTERNL
 NTSYSAPI NTSTATUS NTAPI NtOpenProcessToken(HANDLE, ACCESS_MASK, PHANDLE);
