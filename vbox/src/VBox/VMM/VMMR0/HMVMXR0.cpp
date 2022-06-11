@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 79545 2019-07-05 07:53:12Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 79564 2019-07-06 06:57:37Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -16424,7 +16424,7 @@ HMVMX_EXIT_DECL hmR0VmxExitEptMisconfig(PVMCPU pVCpu, PVMXTRANSIENT pVmxTransien
               pVCpu->idCpu, pVCpu->cpum.GstCtx.cs.Sel, pVCpu->cpum.GstCtx.rip,
               VBOXSTRICTRC_VAL(rcStrict), pVCpu->cpum.GstCtx.cs.Sel, pVCpu->cpum.GstCtx.rip));
     }
-    return VBOXSTRICTRC_TODO(rcStrict);
+    return rcStrict;
 }
 
 
