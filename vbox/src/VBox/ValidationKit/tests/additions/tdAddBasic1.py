@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 84165 2020-05-06 15:34:03Z vboxsync $
+# $Id: tdAddBasic1.py 84174 2020-05-06 19:41:19Z vboxsync $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84165 $"
+__version__ = "$Revision: 84174 $"
 
 # Standard Python imports.
 import os;
@@ -330,23 +330,19 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
         Since this involves rebooting the guest, we will have to create a new TXS session.
         """
 
-        sUser     = oTestVm.getTestUser();
-        ## @todo Do we need to get/use the test user's password as well here somehow?
-
         #
         # Install the public signing key.
         #
         if oTestVm.sKind not in ('WindowsNT4', 'Windows2000', 'WindowsXP', 'Windows2003'):
             fRc = self.txsRunTest(oTxsSession, 'VBoxCertUtil.exe', 1 * 60 * 1000, '${CDROM}/cert/VBoxCertUtil.exe',
                                   ('${CDROM}/cert/VBoxCertUtil.exe', 'add-trusted-publisher', '${CDROM}/cert/vbox-sha1.cer'),
-                                  sAsUser = sUser, fCheckSessionStatus = True);
+                                  fCheckSessionStatus = True);
             if not fRc:
                 reporter.error('Error installing SHA1 certificate');
             else:
                 fRc = self.txsRunTest(oTxsSession, 'VBoxCertUtil.exe', 1 * 60 * 1000, '${CDROM}/cert/VBoxCertUtil.exe',
                                       ('${CDROM}/cert/VBoxCertUtil.exe', 'add-trusted-publisher',
-                                       '${CDROM}/cert/vbox-sha256.cer'),
-                                      sAsUser = sUser, fCheckSessionStatus = True);
+                                       '${CDROM}/cert/vbox-sha256.cer'), fCheckSessionStatus = True);
                 if not fRc:
                     reporter.error('Error installing SHA256 certificate');
 
@@ -371,7 +367,7 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
                                                   ('c:\\Windows\\System32\\reg.exe', 'add',
                                                    '"HKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\Setup"',
                                                    '/v', 'LogLevel', '/t', 'REG_DWORD', '/d', '0xFF'),
-                                                   sAsUser = sUser, fCheckSessionStatus = True);
+                                                   fCheckSessionStatus = True);
 
         for sFile in asLogFiles:
             self.txsRmFile(oSession, oTxsSession, sFile, 10 * 1000, fIgnoreErrors = True);
@@ -382,8 +378,7 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
         # Also tell the installer to produce the appropriate log files.
         #
         fRc = self.txsRunTest(oTxsSession, 'VBoxWindowsAdditions.exe', 5 * 60 * 1000, '${CDROM}/VBoxWindowsAdditions.exe',
-                              ('${CDROM}/VBoxWindowsAdditions.exe', '/S', '/l', '/with_autologon'),
-                              sAsUser = sUser, fCheckSessionStatus = True);
+                              ('${CDROM}/VBoxWindowsAdditions.exe', '/S', '/l', '/with_autologon'), fCheckSessionStatus = True);
 
         #
         # Reboot the VM and reconnect the TXS session.
