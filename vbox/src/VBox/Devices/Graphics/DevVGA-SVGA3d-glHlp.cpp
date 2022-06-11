@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-glHlp.cpp 82095 2019-11-22 08:09:37Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-glHlp.cpp 82096 2019-11-22 08:21:56Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device OpenGL backend
  */
@@ -696,7 +696,7 @@ static void doRender(PVMSVGA3DSTATE pState,
     glBindTexture(GL_TEXTURE_2D, 0);
     GL_CHECK_ERROR();
 
-    unsetRenderTarget(pState, pSurface->oglId.texture);
+    unsetRenderTarget(pState, targetTexture);
 
     pState->ext.glUseProgram(0);
     GL_CHECK_ERROR();
