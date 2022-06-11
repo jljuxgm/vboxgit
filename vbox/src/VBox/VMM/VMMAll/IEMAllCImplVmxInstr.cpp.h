@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 78445 2019-05-08 08:37:27Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 78453 2019-05-09 08:14:40Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -7751,7 +7751,7 @@ IEM_STATIC bool iemVmxIsRdmsrWrmsrInterceptSet(PCVMCPU pVCpu, uint32_t uExitReas
     if (pVmcs->u32ProcCtls & VMX_PROC_CTLS_USE_MSR_BITMAPS)
     {
         Assert(pVCpu->cpum.GstCtx.hwvirt.vmx.CTX_SUFF(pvMsrBitmap));
-        uint32_t fMsrpm = CPUMGetVmxMsrPermission(pVCpu->cpum.GstCtx.hwvirt.vmx.CTX_SUFF(pvMsrBitmap), idMsr);
+        uint32_t const fMsrpm = CPUMGetVmxMsrPermission(pVCpu->cpum.GstCtx.hwvirt.vmx.CTX_SUFF(pvMsrBitmap), idMsr);
         if (uExitReason == VMX_EXIT_RDMSR)
             return RT_BOOL(fMsrpm & VMXMSRPM_EXIT_RD);
         return RT_BOOL(fMsrpm & VMXMSRPM_EXIT_WR);
