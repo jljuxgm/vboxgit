@@ -1,4 +1,4 @@
-/* $Id: process-creation-posix.cpp 79007 2019-06-05 17:24:03Z vboxsync $ */
+/* $Id: process-creation-posix.cpp 79009 2019-06-05 18:09:26Z vboxsync $ */
 /** @file
  * IPRT - Process Creation, POSIX.
  */
@@ -316,8 +316,8 @@ static int rtCheckCredentials(const char *pszUser, const char *pszPasswd, gid_t 
         rc = pszEncPasswd && !strcmp(pszEncPasswd, pPwd->pw_passwd) ? VINF_SUCCESS : VERR_AUTHENTICATION_FAILURE;
         RTMemWipeThoroughly(&CryptData, sizeof(CryptData), 3);
 # else
-        char *pszEncPasswd = crypt(pszPasswd, ppw->pw_passwd);
-        rc = strcmp(pszEncPasswd, ppw->pw_passwd) == 0 ? VINF_SUCCESS : VERR_AUTHENTICATION_FAILURE;
+        char *pszEncPasswd = crypt(pszPasswd, pPwd->pw_passwd);
+        rc = strcmp(pszEncPasswd, pPwd->pw_passwd) == 0 ? VINF_SUCCESS : VERR_AUTHENTICATION_FAILURE;
 # endif
     }
 
