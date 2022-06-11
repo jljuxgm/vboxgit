@@ -1,4 +1,4 @@
-/* $Id: VBoxManageNATNetwork.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxManageNATNetwork.cpp 83796 2020-04-18 13:33:35Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of NAT Network command command.
  */
@@ -50,7 +50,7 @@
 #include <VBox/log.h>
 
 #include <vector>
-#include <string>
+#include <iprt/sanitized/string>
 
 #include "VBoxManage.h"
 #include "VBoxPortForwardString.h"
