@@ -1,4 +1,4 @@
-/* $Id: ClipboardEnumFormatEtcImpl-win.cpp 80664 2019-09-09 10:00:04Z vboxsync $ */
+/* $Id: ClipboardEnumFormatEtcImpl-win.cpp 81269 2019-10-14 18:28:34Z vboxsync $ */
 /** @file
  * ClipboardEnumFormatEtcImpl-win.cpp - Shared Clipboard IEnumFORMATETC ("Format et cetera") implementation.
  */
@@ -43,9 +43,11 @@ SharedClipboardWinEnumFormatEtc::SharedClipboardWinEnumFormatEtc(LPFORMATETC pFo
 
         for (ULONG i = 0; i < cFormats; i++)
         {
-            LogFlowFunc(("Format %RU32: cfFormat=%RI16, sFormat=%s, tyMed=%RU32, dwAspect=%RU32\n",
-                         i, pFormatEtc[i].cfFormat, SharedClipboardWinDataObject::ClipboardFormatToString(pFormatEtc[i].cfFormat),
-                         pFormatEtc[i].tymed, pFormatEtc[i].dwAspect));
+            LogFlowFunc(("Format %RU32: cfFormat=%RI16, tyMed=%RU32, dwAspect=%RU32\n",
+                         i, pFormatEtc[i].cfFormat, pFormatEtc[i].tymed, pFormatEtc[i].dwAspect));
+
+            SharedClipboardWinDataObject::logFormat(pFormatEtc[i].cfFormat);
+
             SharedClipboardWinEnumFormatEtc::CopyFormat(&m_pFormatEtc[i], &pFormatEtc[i]);
         }
 
