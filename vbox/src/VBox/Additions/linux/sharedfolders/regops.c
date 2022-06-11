@@ -1,4 +1,4 @@
-/* $Id: regops.c 78204 2019-04-18 11:42:57Z vboxsync $ */
+/* $Id: regops.c 80582 2019-09-04 10:27:59Z vboxsync $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, regular file inode and file operations.
  */
@@ -347,7 +347,7 @@ static size_t copy_from_iter(uint8_t *pbDst, size_t cbToCopy, struct iov_iter *p
                     cbThisCopy = cbToCopy;
                 if (pSrcIter->type & ITER_KVEC)
                     memcpy(pbDst, (void *)pSrcIter->iov->iov_base + pSrcIter->iov_offset, cbThisCopy);
-                else if (!copy_from_user(pbDst, pSrcIter->iov->iov_base + pSrcIter->iov_offset, cbThisCopy))
+                else if (copy_from_user(pbDst, pSrcIter->iov->iov_base + pSrcIter->iov_offset, cbThisCopy) != 0)
                     break;
                 pbDst    += cbThisCopy;
                 cbToCopy -= cbThisCopy;
@@ -386,7 +386,7 @@ static size_t copy_to_iter(uint8_t const *pbSrc, size_t cbToCopy, struct iov_ite
                     cbThisCopy = cbToCopy;
                 if (pDstIter->type & ITER_KVEC)
                     memcpy((void *)pDstIter->iov->iov_base + pDstIter->iov_offset, pbSrc, cbThisCopy);
-                else if (!copy_to_user(pDstIter->iov->iov_base + pDstIter->iov_offset, pbSrc, cbThisCopy)) {
+                else if (copy_to_user(pDstIter->iov->iov_base + pDstIter->iov_offset, pbSrc, cbThisCopy) != 0) {
                     break;
                 }
                 pbSrc    += cbThisCopy;
