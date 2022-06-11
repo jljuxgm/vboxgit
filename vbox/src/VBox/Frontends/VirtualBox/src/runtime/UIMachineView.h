@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIMachineView.h 82030 2019-11-20 16:07:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class declaration.
  */
@@ -69,6 +69,8 @@ class UIMachineView : public QAbstractScrollArea
 
 signals:
 
+    /** Notifies about mouse pointer shape change. */
+    void sigMousePointerShapeChange();
     /** Notifies about frame-buffer resize. */
     void sigFrameBufferResize();
 

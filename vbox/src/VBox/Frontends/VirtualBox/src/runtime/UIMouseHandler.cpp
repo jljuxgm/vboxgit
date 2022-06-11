@@ -1,4 +1,4 @@
-/* $Id: UIMouseHandler.cpp 80617 2019-09-06 08:32:17Z vboxsync $ */
+/* $Id: UIMouseHandler.cpp 82030 2019-11-20 16:07:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMouseHandler class implementation.
  */
@@ -107,6 +107,8 @@ void UIMouseHandler::prepareListener(ulong uIndex, UIMachineWindow *pMachineWind
         m_views.insert(uIndex, pMachineWindow->machineView());
         /* Install event-filter for machine-view: */
         m_views[uIndex]->installEventFilter(this);
+        /* Make machine-view notify mouse-handler about mouse pointer shape change: */
+        connect(m_views[uIndex], &UIMachineView::sigMousePointerShapeChange, this, &UIMouseHandler::sltMousePointerShapeChanged);
         /* Make machine-view notify mouse-handler about frame-buffer resize: */
         connect(m_views[uIndex], &UIMachineView::sigFrameBufferResize, this, &UIMouseHandler::sltMousePointerShapeChanged);
     }
@@ -522,8 +524,7 @@ UIMouseHandler::UIMouseHandler(UIMachineLogic *pMachineLogic)
     /* Mouse capability state-change updater: */
     connect(uisession(), &UISession::sigMouseCapabilityChange, this, &UIMouseHandler::sltMouseCapabilityChanged);
 
-    /* Mouse pointer shape state-change updaters: */
-    connect(uisession(), &UISession::sigMousePointerShapeChange, this, &UIMouseHandler::sltMousePointerShapeChanged);
+    /* Mouse pointer shape state-change updater: */
     connect(this, &UIMouseHandler::sigStateChange, this, &UIMouseHandler::sltMousePointerShapeChanged);
 
     /* Mouse cursor position state-change updater: */
