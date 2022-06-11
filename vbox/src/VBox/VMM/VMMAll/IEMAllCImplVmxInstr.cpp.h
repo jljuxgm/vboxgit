@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 80912 2019-09-20 05:49:12Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 81002 2019-09-25 09:12:34Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -7088,6 +7088,12 @@ IEM_STATIC void iemVmxVmentryInjectTrpmEvent(PVMCPUCC pVCpu, const char *pszInst
             TRPMSetInstrLength(pVCpu, cbInstr);
             Log(("%s: Injecting: instr_len=%u\n", pszInstr, cbInstr));
         }
+    }
+
+    if (VMX_ENTRY_INT_INFO_TYPE(uEntryIntInfo) == VMX_ENTRY_INT_INFO_TYPE_PRIV_SW_XCPT)
+    {
+        TRPMSetTrapDueToIcebp(pVCpu);
+        Log(("%s: Injecting: icebp\n", pszInstr));
     }
 
     NOREF(pszInstr);

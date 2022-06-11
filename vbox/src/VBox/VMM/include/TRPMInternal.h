@@ -1,4 +1,4 @@
-/* $Id: TRPMInternal.h 80938 2019-09-23 08:19:38Z vboxsync $ */
+/* $Id: TRPMInternal.h 81002 2019-09-25 09:12:34Z vboxsync $ */
 /** @file
  * TRPM - Internal header file.
  */
@@ -71,39 +71,23 @@ typedef struct TRPMCPU
     TRPMEVENT               enmActiveType;
 
     /** Errorcode for the active interrupt/trap. */
-    RTGCUINT                uActiveErrorCode; /**< @todo don't use RTGCUINT */
-
-    /** CR2 at the time of the active exception. */
-    RTGCUINTPTR             uActiveCR2;
-
-    /** Saved trap vector number. */
-    RTGCUINT                uSavedVector; /**< @todo don't use RTGCUINT */
-
-    /** Saved errorcode. */
-    RTGCUINT                uSavedErrorCode;
-
-    /** Saved cr2. */
-    RTGCUINTPTR             uSavedCR2;
-
-    /** Saved trap type. */
-    TRPMEVENT               enmSavedType;
+    uint32_t                uActiveErrorCode;
 
     /** Instruction length for software interrupts and software exceptions
      * (\#BP, \#OF) */
     uint8_t                 cbInstr;
 
-    /** Saved instruction length. */
-    uint8_t                 cbSavedInstr;
+    /** Whether this \#DB trap is caused due to INT1/ICEBP. */
+    bool                    fIcebp;
 
-    /** Padding. */
-    uint8_t                 au8Padding[2];
-
-    /** Previous trap vector # - for debugging. */
-    RTGCUINT                uPrevVector;
+    /** CR2 at the time of the active exception. */
+    RTGCUINTPTR             uActiveCR2;
 } TRPMCPU;
 
 /** Pointer to TRPMCPU Data. */
 typedef TRPMCPU *PTRPMCPU;
+/** Pointer to const TRPMCPU Data. */
+typedef const TRPMCPU *PCTRPMCPU;
 
 /** @} */
 
