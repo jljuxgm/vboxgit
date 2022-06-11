@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdStorageBenchmark1.py 79092 2019-06-11 15:26:40Z vboxsync $
+# $Id: tdStorageBenchmark1.py 79591 2019-07-08 12:25:46Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage benchmark.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79092 $"
+__version__ = "$Revision: 79591 $"
 
 
 # Standard Python imports.
@@ -394,8 +394,10 @@ class tdStorageBenchmark(vbox.TestDriver):                                      
 
     # Global storage configs for the testbox
     kdStorageCfgs = {
-        'testboxstor1.de.oracle.com': r'c[3-9]t\dd0\Z',
-        'adaris': [ '/dev/sda' ]
+        'testboxstor1.de.oracle.com': storagecfg.DiskCfg('solaris', storagecfg.g_ksDiskCfgRegExp, r'c[3-9]t\dd0\Z'),
+        'testboxstor2.de.oracle.com': storagecfg.DiskCfg('win',     storagecfg.g_ksDiskCfgStatic, 'D:'),
+        'adaris':                     storagecfg.DiskCfg('linux',   storagecfg.g_ksDiskCfgList,   [ '/dev/sda' ]),
+        'daedalus':                   storagecfg.DiskCfg('darwin',  storagecfg.g_ksDiskCfgStatic, '/Volumes/VirtualBox/Testsuite/StorageScratch'),
     };
 
     # Available test sets.
@@ -1161,8 +1163,8 @@ class tdStorageBenchmark(vbox.TestDriver):                                      
                     # Prepare the storage on the guest
                     lstBinaryPaths = ['/bin', '/sbin', '/usr/bin', '/usr/sbin' ];
                     oExecVm = remoteexecutor.RemoteExecutor(oTxsSession, lstBinaryPaths, '${SCRATCH}');
-                    oStorCfgVm = storagecfg.StorageCfg(oExecVm, 'linux', self.getGuestDisk(oSession, oTxsSession, \
-                                                                                           eStorageController));
+                    oGstDiskCfg = storagecfg.DiskCfg('linux', storagecfg.g_ksDiskCfgList, self.getGuestDisk(oSession, oTxsSession, eStorageController));
+                    oStorCfgVm = storagecfg.StorageCfg(oExecVm, oGstDiskCfg);
 
                     iTry = 0;
                     while iTry < 3:
@@ -1273,7 +1275,7 @@ class tdStorageBenchmark(vbox.TestDriver):                                      
                               '/opt/csw/bin', '/usr/ccs/bin', '/usr/sfw/bin'];
             oExecutor = remoteexecutor.RemoteExecutor(None, lstBinaryPaths, self.sScratchPath);
             if not self.fUseScratch:
-                self.oStorCfg = storagecfg.StorageCfg(oExecutor, utils.getHostOs(), oDiskCfg);
+                self.oStorCfg = storagecfg.StorageCfg(oExecutor, oDiskCfg);
 
                 # Try to cleanup any leftovers from a previous run first.
                 fRc = self.oStorCfg.cleanupLeftovers();

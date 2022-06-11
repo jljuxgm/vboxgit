@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: remoteexecutor.py 79092 2019-06-11 15:26:40Z vboxsync $
+# $Id: remoteexecutor.py 79591 2019-07-08 12:25:46Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage benchmark, test execution helpers.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79092 $"
+__version__ = "$Revision: 79591 $"
 
 
 # Standard Python imports.
@@ -275,3 +275,14 @@ class RemoteExecutor(object):
 
         return fRc;
 
+    def rmTree(self, sDir, cMsTimeout = 30000):
+        """
+        Recursively removes all files and sub directories including the given directory.
+        """
+        fRc = True;
+        if self.oTxsSession is not None:
+            fRc = self.oTxsSession.syncRmTree(sDir, cMsTimeout);
+        else:
+            fRc = self.execBinaryNoStdOut('rm', ('-rf', sDir));
+
+        return fRc;
