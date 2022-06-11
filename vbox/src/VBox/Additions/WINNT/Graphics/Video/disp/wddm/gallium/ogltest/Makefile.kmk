@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 77646 2019-03-11 10:30:14Z vboxsync $
+# $Id: Makefile.kmk 81081 2019-09-30 13:39:49Z vboxsync $
 ## @file
 # Makefile for OpenGL test application.
 #
@@ -24,6 +24,8 @@ PROGRAMS.amd64 += \
 	ogltest-x86
 
 ogltest_TEMPLATE = VBOXR3STATIC
+ogltest_INCS = \
+	$(PATH_ROOT)/src/VBox/Devices/Graphics/vmsvga_glext
 ogltest_SOURCES = \
 	ogltest.cpp \
 	oglrender.cpp

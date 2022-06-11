@@ -1,4 +1,4 @@
-/* $Id: ogltest.cpp 77646 2019-03-11 10:30:14Z vboxsync $ */
+/* $Id: ogltest.cpp 81081 2019-09-30 13:39:49Z vboxsync $ */
 /** @file
  * OpenGL testcase. Win32 application to run Gallium OpenGL tests.
  */
@@ -16,6 +16,32 @@
  */
 
 #include "oglrender.h"
+
+PFNGLBINDBUFFERPROC                             glBindBuffer;
+PFNGLDELETEBUFFERSPROC                          glDeleteBuffers;
+PFNGLGENBUFFERSPROC                             glGenBuffers;
+PFNGLBUFFERDATAPROC                             glBufferData;
+PFNGLMAPBUFFERPROC                              glMapBuffer;
+PFNGLUNMAPBUFFERPROC                            glUnmapBuffer;
+PFNGLENABLEVERTEXATTRIBARRAYPROC                glEnableVertexAttribArray;
+PFNGLDISABLEVERTEXATTRIBARRAYPROC               glDisableVertexAttribArray;
+PFNGLVERTEXATTRIBPOINTERPROC                    glVertexAttribPointer;
+PFNGLCREATESHADERPROC                           glCreateShader;
+PFNGLATTACHSHADERPROC                           glAttachShader;
+PFNGLCOMPILESHADERPROC                          glCompileShader;
+PFNGLCREATEPROGRAMPROC                          glCreateProgram;
+PFNGLDELETEPROGRAMPROC                          glDeleteProgram;
+PFNGLDELETESHADERPROC                           glDeleteShader;
+PFNGLDETACHSHADERPROC                           glDetachShader;
+PFNGLLINKPROGRAMPROC                            glLinkProgram;
+PFNGLSHADERSOURCEPROC                           glShaderSource;
+PFNGLUSEPROGRAMPROC                             glUseProgram;
+PFNGLGETPROGRAMIVPROC                           glGetProgramiv;
+PFNGLGETPROGRAMINFOLOGPROC                      glGetProgramInfoLog;
+PFNGLGETSHADERIVPROC                            glGetShaderiv;
+PFNGLGETSHADERINFOLOGPROC                       glGetShaderInfoLog;
+PFNGLVERTEXATTRIBDIVISORPROC                    glVertexAttribDivisor;
+PFNGLDRAWARRAYSINSTANCEDPROC                    glDrawArraysInstanced;
 
 class OGLTest
 {
@@ -167,6 +193,41 @@ HRESULT OGLTest::initOGL()
 
             mhGLRC = wglCreateContext(hDC);
             setCurrentGLCtx(mhGLRC);
+
+/* Get a function address, return VERR_NOT_IMPLEMENTED on failure. */
+#define GLGETPROC_(ProcType, ProcName, NameSuffix) do { \
+    ProcName = (ProcType)wglGetProcAddress(#ProcName NameSuffix); \
+    if (!ProcName) { TestShowError(E_FAIL, #ProcName NameSuffix " missing"); } \
+} while(0)
+
+            GLGETPROC_(PFNGLBINDBUFFERPROC                       , glBindBuffer, "");
+            GLGETPROC_(PFNGLDELETEBUFFERSPROC                    , glDeleteBuffers, "");
+            GLGETPROC_(PFNGLGENBUFFERSPROC                       , glGenBuffers, "");
+            GLGETPROC_(PFNGLBUFFERDATAPROC                       , glBufferData, "");
+            GLGETPROC_(PFNGLMAPBUFFERPROC                        , glMapBuffer, "");
+            GLGETPROC_(PFNGLUNMAPBUFFERPROC                      , glUnmapBuffer, "");
+            GLGETPROC_(PFNGLENABLEVERTEXATTRIBARRAYPROC          , glEnableVertexAttribArray, "");
+            GLGETPROC_(PFNGLDISABLEVERTEXATTRIBARRAYPROC         , glDisableVertexAttribArray, "");
+            GLGETPROC_(PFNGLVERTEXATTRIBPOINTERPROC              , glVertexAttribPointer, "");
+            GLGETPROC_(PFNGLCREATESHADERPROC                     , glCreateShader, "");
+            GLGETPROC_(PFNGLATTACHSHADERPROC                     , glAttachShader, "");
+            GLGETPROC_(PFNGLCOMPILESHADERPROC                    , glCompileShader, "");
+            GLGETPROC_(PFNGLCREATEPROGRAMPROC                    , glCreateProgram, "");
+            GLGETPROC_(PFNGLDELETEPROGRAMPROC                    , glDeleteProgram, "");
+            GLGETPROC_(PFNGLDELETESHADERPROC                     , glDeleteShader, "");
+            GLGETPROC_(PFNGLDETACHSHADERPROC                     , glDetachShader, "");
+            GLGETPROC_(PFNGLLINKPROGRAMPROC                      , glLinkProgram, "");
+            GLGETPROC_(PFNGLSHADERSOURCEPROC                     , glShaderSource, "");
+            GLGETPROC_(PFNGLUSEPROGRAMPROC                       , glUseProgram, "");
+            GLGETPROC_(PFNGLGETPROGRAMIVPROC                     , glGetProgramiv, "");
+            GLGETPROC_(PFNGLGETPROGRAMINFOLOGPROC                , glGetProgramInfoLog, "");
+            GLGETPROC_(PFNGLGETSHADERIVPROC                      , glGetShaderiv, "");
+            GLGETPROC_(PFNGLGETSHADERINFOLOGPROC                 , glGetShaderInfoLog, "");
+            GLGETPROC_(PFNGLVERTEXATTRIBDIVISORPROC              , glVertexAttribDivisor, "");
+            GLGETPROC_(PFNGLDRAWARRAYSINSTANCEDPROC              , glDrawArraysInstanced, "");
+
+#undef GLGETPROC_
+
         }
         else
         {
