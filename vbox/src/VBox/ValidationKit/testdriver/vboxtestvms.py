@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 79208 2019-06-18 12:00:44Z vboxsync $
+# $Id: vboxtestvms.py 79396 2019-06-27 15:05:34Z vboxsync $
 
 """
 VirtualBox Test VMs
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79208 $"
+__version__ = "$Revision: 79396 $"
 
 # Standard Python imports.
 import copy;
@@ -814,7 +814,7 @@ class BaseTestVm(object):
             if oGuestOSType:
                 try:
                     eCtrl = oGuestOSType.recommendedHDStorageController;
-                    eBus  = oGuestOSType.RecommendedHDStorageBus;
+                    eBus  = oGuestOSType.recommendedHDStorageBus;
                 except:
                     reporter.errorXcpt();
                 else:
