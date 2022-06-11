@@ -1,4 +1,4 @@
-/* $Id: fs.cpp 79155 2019-06-14 16:33:05Z vboxsync $ */
+/* $Id: fs.cpp 79293 2019-06-23 14:31:54Z vboxsync $ */
 /** @file
  * IPRT - File System.
  */
@@ -135,7 +135,10 @@ RTFMODE rtFsModeFromUnix(RTFMODE fMode, const char *pszName, size_t cbName, RTFM
     if (!(fMode & RTFS_DOS_HIDDEN) && pszName)
     {
         pszName = RTPathFilename(pszName);
-        if (pszName && *pszName == '.')
+        if (   pszName
+            && pszName[0] == '.'
+            && pszName[1] != '\0' /* exclude "." */
+            && (pszName[1] != '.' || pszName[2] != '\0')) /* exclude ".." */
             fMode |= RTFS_DOS_HIDDEN;
     }
     return fMode;
