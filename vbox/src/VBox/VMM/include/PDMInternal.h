@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 81413 2019-10-21 13:39:27Z vboxsync $ */
+/* $Id: PDMInternal.h 81841 2019-11-14 02:12:01Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -72,6 +72,12 @@ RT_C_DECLS_BEGIN
   || defined(DOXYGEN_RUNNING)
 # define PDMCRITSECTRW_STRICT
 #endif
+
+/** The maximum device instance (total) size, ring-0/raw-mode capable devices. */
+#define PDM_MAX_DEVICE_INSTANCE_SIZE    _4M
+/** The maximum device instance (total) size, ring-3 only devices. */
+#define PDM_MAX_DEVICE_INSTANCE_SIZE_R3 _8M
+
 
 
 /*******************************************************************************
