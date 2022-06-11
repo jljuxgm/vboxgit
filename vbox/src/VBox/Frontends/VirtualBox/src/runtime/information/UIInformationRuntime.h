@@ -1,4 +1,4 @@
-/* $Id: UIInformationRuntime.h 80419 2019-08-26 07:18:56Z vboxsync $ */
+/* $Id: UIInformationRuntime.h 80420 2019-08-26 07:51:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationRuntime class declaration.
  */
@@ -220,6 +220,10 @@ private:
         QString m_strDiskIOInfoLabelRead;
         QString m_strDiskIOInfoLabelWrittenTotal;
         QString m_strDiskIOInfoLabelReadTotal;
+        /** VM Exit info label strings. */
+        QString m_strVMExitInfoLabelTitle;
+        QString m_strVMExitLabelCurrent;
+        QString m_strVMExitLabelTotal;
     /** @} */
     /** The following string is used while querrying CMachineDebugger. */
     QString m_strQueryString;
