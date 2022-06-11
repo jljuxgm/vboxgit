@@ -1,4 +1,4 @@
-/* $Id: VBoxBugReport.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxBugReport.h 84030 2020-04-28 09:35:19Z vboxsync $ */
 /** @file
  * VBoxBugReport - VirtualBox command-line diagnostics tool, internal header file.
  */
@@ -47,29 +47,29 @@
 
 /* Base */
 
-inline void handleRtError(int rc, const char *pszMsgFmt, ...)
+DECLINLINE(void) handleRtError(int rc, const char *pszMsgFmt, ...)
 {
     if (RT_FAILURE(rc))
     {
         va_list va;
         va_start(va, pszMsgFmt);
-        RTCString msgArgs(pszMsgFmt, va);
+        RTCString strMsg(pszMsgFmt, va);
         va_end(va);
-        RTCStringFmt msg("%s. %s (%d)\n", msgArgs.c_str(), RTErrGetFull(rc), rc);
-        throw RTCError(msg.c_str());
+        strMsg.appendPrintfNoThrow(". %Rrf\n", rc);
+        throw RTCError(strMsg);
     }
 }
 
-inline void handleComError(HRESULT hr, const char *pszMsgFmt, ...)
+DECLINLINE(void) handleComError(HRESULT hr, const char *pszMsgFmt, ...)
 {
     if (FAILED(hr))
     {
         va_list va;
         va_start(va, pszMsgFmt);
-        RTCString msgArgs(pszMsgFmt, va);
+        RTCString strMsg(pszMsgFmt, va);
         va_end(va);
-        RTCStringFmt msg("%s (hr=0x%x)\n", msgArgs.c_str(), hr);
-        throw RTCError(msg.c_str());
+        strMsg.appendPrintfNoThrow(". (hr=0x%x %Rhrc)\n", hr, hr);
+        throw RTCError(strMsg);
     }
 }
 
