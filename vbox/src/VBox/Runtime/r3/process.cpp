@@ -1,4 +1,4 @@
-/* $Id: process.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: process.cpp 83661 2020-04-09 18:53:23Z vboxsync $ */
 /** @file
  * IPRT - Process, Common.
  */
@@ -109,6 +109,12 @@ RTR3DECL(char *) RTProcGetExecutablePath(char *pszExecPath, size_t cbExecPath)
 
     AssertMsgFailed(("Buffer too small (%zu <= %zu)\n", cbExecPath, cch));
     return NULL;
+}
+
+
+RTR3DECL(const char *) RTProcExecutablePath(void)
+{
+    return g_szrtProcExePath;
 }
 
 
