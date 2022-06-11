@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 84241 2020-05-11 09:02:56Z vboxsync $
+# $Id: tdAddBasic1.py 84307 2020-05-14 14:53:17Z vboxsync $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84241 $"
+__version__ = "$Revision: 84307 $"
 
 # Standard Python imports.
 import os;
@@ -196,9 +196,11 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
             self.sFileCdWait = 'VBoxLinuxAdditions.run';
 
         self.logVmInfo(oVM);
+        reporter.testStart('Waiting for TXS + CD (%s)' % (self.sFileCdWait,));
         oSession, oTxsSession = self.startVmAndConnectToTxsViaTcp(oTestVm.sVmName, fCdWait = True,
                                                                   cMsCdWait = 5 * 60 * 1000,
                                                                   sFileCdWait = self.sFileCdWait);
+        reporter.testDone();
         if oSession is not None:
             self.addTask(oTxsSession);
             # Do the testing.
