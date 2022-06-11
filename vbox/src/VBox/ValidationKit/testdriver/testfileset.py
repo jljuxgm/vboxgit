@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testfileset.py 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: testfileset.py 83623 2020-04-08 16:26:17Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 82968 $"
+__version__ = "$Revision: 83623 $"
 
 
 # Standard Python imports.
@@ -513,7 +513,10 @@ class TestFileSet(object):
 
         # Open the tarball:
         try:
-            oTarFile = tarfile.open(sTarFileHst, 'w:gz');
+            # Make sure to explicitly set GNU_FORMAT here, as with Python 3.8 the default format (tarfile.DEFAULT_FORMAT)
+            # has been changed to tarfile.PAX_FORMAT, which our extraction code (vts_tar) currently can't handle.
+            ## @todo Remove tarfile.GNU_FORMAT and use tarfile.PAX_FORMAT as soon as we have PAX support.
+            oTarFile = tarfile.open(sTarFileHst, 'w:gz', format = tarfile.GNU_FORMAT);
         except:
             return reporter.errorXcpt('Failed to open new tar file: %s' % (sTarFileHst,));
 
