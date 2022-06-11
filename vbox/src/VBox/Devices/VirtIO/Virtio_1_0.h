@@ -1,4 +1,4 @@
-/* $Id: Virtio_1_0.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: Virtio_1_0.h 83186 2020-03-02 17:50:00Z vboxsync $ */
 /** @file
  * Virtio_1_0.h - Virtio Declarations
  */
@@ -463,6 +463,7 @@ void virtioCoreLogMappedIoValue(const char *pszFunc, const char *pszMember, uint
                                 int fWrite, int fHasIndex, uint32_t idx);
 
 void virtioCoreHexDump(uint8_t *pv, uint32_t cb, uint32_t uBase, const char *pszTitle);
+void virtioCoreGcPhysHexDump(PPDMDEVINS pDevIns, RTGCPHYS gcPhys, uint32_t cb, uint32_t uBase, const char *pszTitle);
 
 void     virtioCoreSgBufInit(PVIRTIOSGBUF pGcSgBuf, PVIRTIOSGSEG paSegs, size_t cSegs);
 void     virtioCoreSgBufReset(PVIRTIOSGBUF pGcSgBuf);
