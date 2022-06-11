@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 80791 2019-09-15 11:15:14Z vboxsync $
+# $Id: virtual_test_sheriff.py 80792 2019-09-15 11:25:15Z vboxsync $
 # pylint: disable=line-too-long
 
 """
@@ -35,7 +35,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 80791 $"
+__version__ = "$Revision: 80792 $"
 
 
 # Standard python imports
@@ -337,7 +337,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
 
         if self.oConfig.sLogFile:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 80791 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 80792 $ \n');
 
 
     def eprint(self, sText):
@@ -711,7 +711,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.getFailureReason(tReason);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 80791 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 80792 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
@@ -837,6 +837,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
             # ( Whether to stop on hit, reason tuple, needle text. )
             ( True, ktReason_Host_DriverNotUnloading, 'can\'t unload the module: Device busy' ),
             ( True, ktReason_Host_DriverNotUnloading, 'Unloading: Host module ...FAILED!' ),
+            ( True, ktReason_Host_DriverNotUnloading, 'Unloading: NetFilter (Crossbow) module ...FAILED!' ),
             ( True, ktReason_Host_InstallationFailed, 'svcadm: Couldn\'t bind to svc.configd.' ),
             ( True, ktReason_Host_InstallationFailed, 'pkgadd: ERROR: postinstall script did not complete successfully' ),
         ],
@@ -850,6 +851,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
         We lump the two together since the installation typically also performs
         an uninstall first and will be seeing similar issues to the uninstall.
         """
+        self.dprint(u'%s + %s <<\n%s\n<<' % (oFailedResult.tsCreated, oFailedResult.tsElapsed, sResultLog,));
 
         if fInstall and oFailedResult.enmStatus == TestSetData.ksTestStatus_TimedOut:
             oCaseFile.noteReasonForId(self.ktReason_Host_Install_Hang, oFailedResult.idTestResult)
