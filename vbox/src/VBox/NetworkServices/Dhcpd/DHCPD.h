@@ -1,4 +1,4 @@
-/* $Id: DHCPD.h 76576 2019-01-01 06:05:25Z vboxsync $ */
+/* $Id: DHCPD.h 79514 2019-07-04 08:01:58Z vboxsync $ */
 /** @file
  * DHCP server - protocol logic
  */
@@ -21,6 +21,7 @@
 # pragma once
 #endif
 
+#include <iprt/cpp/ministring.h>
 #include "Defs.h"
 #include "Config.h"
 #include "DhcpMessage.h"
@@ -30,7 +31,7 @@
 class DHCPD
 {
     const Config *m_pConfig;
-    std::string m_strLeasesFileName;
+    RTCString m_strLeasesFileName;
     Db m_db;
 
 public:

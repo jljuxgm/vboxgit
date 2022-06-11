@@ -1,4 +1,4 @@
-/* $Id: DhcpMessage.h 76576 2019-01-01 06:05:25Z vboxsync $ */
+/* $Id: DhcpMessage.h 79514 2019-07-04 08:01:58Z vboxsync $ */
 /** @file
  * DHCP Message and its de/serialization.
  */
@@ -23,15 +23,10 @@
 
 #include "Defs.h"
 #include <iprt/net.h>
-#include <string>
+#include <iprt/cpp/ministring.h>
 #include "ClientId.h"
 #include "DhcpOptions.h"
 
-
-/* move to <iptr/net.h>? */
-#define DHCP_OPTION_OVERLOAD_MASK  0x3
-#define DHCP_OPTION_OVERLOAD_FILE  0x1
-#define DHCP_OPTION_OVERLOAD_SNAME 0x2
 
 
 class DhcpMessage
@@ -47,8 +42,8 @@ protected:
     RTNETADDRIPV4   m_siaddr;
     RTNETADDRIPV4   m_giaddr;
 
-    std::string m_sname;
-    std::string m_file;
+    RTCString m_sname;
+    RTCString m_file;
 
     OptMessageType m_optMessageType;
 
