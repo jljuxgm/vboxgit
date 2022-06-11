@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 78867 2019-05-30 05:39:12Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 78868 2019-05-30 05:40:08Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -3012,9 +3012,11 @@ VMM_INT_DECL(uint64_t) CPUMRemoveNestedGuestTscOffset(PCVMCPU pVCpu, uint64_t uT
     PCCPUMCTX pCtx = &pVCpu->cpum.s.Guest;
     if (CPUMIsGuestInVmxNonRootMode(pCtx))
     {
-        PCVMXVVMCS pVmcs = pCtx->hwvirt.vmx.CTX_SUFF(pVmcs);
         if (CPUMIsGuestVmxProcCtlsSet(pVCpu, pCtx, VMX_PROC_CTLS_USE_TSC_OFFSETTING))
+        {
+            PCVMXVVMCS pVmcs = pCtx->hwvirt.vmx.CTX_SUFF(pVmcs);
             return uTicks - pVmcs->u64TscOffset.u;
+        }
         return uTicks;
     }
 
