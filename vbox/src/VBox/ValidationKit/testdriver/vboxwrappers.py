@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: vboxwrappers.py 83401 2020-03-25 10:59:09Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 82968 $"
+__version__ = "$Revision: 83401 $"
 
 
 # Standard Python imports.
@@ -1646,6 +1646,44 @@ class SessionWrapper(TdTaskBase):
             fRc = False;
         else:
             reporter.log('set the VRAM size of "%s" to %s' % (self.sName, cMB));
+        self.oTstDrv.processPendingEvents();
+        return fRc;
+
+    def setVideoControllerType(self, eControllerType):
+        """
+        Set the video controller type of the VM.
+        Returns True on success and False on failure.  Error information is logged.
+        """
+        fRc = True;
+        try:
+            if self.fpApiVer >= 6.1 and hasattr(self.o.machine, 'graphicsAdapter'):
+                self.o.machine.graphicsAdapter.graphicsControllerType = eControllerType;
+            else:
+                self.o.machine.graphicsControllerType = eControllerType;
+        except:
+            reporter.errorXcpt('failed to set the video controller type of "%s" to %s' % (self.sName, eControllerType));
+            fRc = False;
+        else:
+            reporter.log('set the video controller type of "%s" to %s' % (self.sName, eControllerType));
+        self.oTstDrv.processPendingEvents();
+        return fRc;
+
+    def setAccelerate3DEnabled(self, fEnabled):
+        """
+        Set the video controller type of the VM.
+        Returns True on success and False on failure.  Error information is logged.
+        """
+        fRc = True;
+        try:
+            if self.fpApiVer >= 6.1 and hasattr(self.o.machine, 'graphicsAdapter'):
+                self.o.machine.graphicsAdapter.accelerate3DEnabled = fEnabled;
+            else:
+                self.o.machine.accelerate3DEnabled = fEnabled;
+        except:
+            reporter.errorXcpt('failed to set the accelerate3DEnabled of "%s" to %s' % (self.sName, fEnabled));
+            fRc = False;
+        else:
+            reporter.log('set the accelerate3DEnabled of "%s" to %s' % (self.sName, fEnabled));
         self.oTstDrv.processPendingEvents();
         return fRc;
 
