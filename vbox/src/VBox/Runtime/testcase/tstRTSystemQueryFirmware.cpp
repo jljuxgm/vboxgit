@@ -1,4 +1,4 @@
-/* $Id: tstRTSystemQueryFirmware.cpp 81063 2019-09-27 21:54:24Z vboxsync $ */
+/* $Id: tstRTSystemQueryFirmware.cpp 81064 2019-09-27 21:57:20Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTSystemQuerFirmware*.
  */
@@ -64,7 +64,7 @@ int main()
                 RTTestPrintf(hTest, RTTESTLVL_INFO, "  Firmware type: Unknown\n");
                 break;
             default:
-                RTTestFailed(hTest, "RTSystemFirmwareQueryType return invalid type: %d (%#x)", enmType);
+                RTTestFailed(hTest, "RTSystemFirmwareQueryType return invalid type: %d (%#x)", enmType, enmType);
                 break;
         }
     }
