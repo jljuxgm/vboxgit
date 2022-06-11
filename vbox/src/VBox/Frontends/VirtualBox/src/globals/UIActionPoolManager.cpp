@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.cpp 83616 2020-04-08 08:55:56Z vboxsync $ */
+/* $Id: UIActionPoolManager.cpp 83685 2020-04-14 08:51:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class implementation.
  */
@@ -2834,7 +2834,8 @@ public:
 
     /** Constructs action passing @a pParent to the base-class. */
     UIActionMenuSelectorVMResourceMonitorToggleColumns(UIActionPool *pParent)
-        : UIActionMenu(pParent, ":/exit_16px.png")
+        : UIActionMenu(pParent,
+                       ":/cloud_profile_try_32px.png", ":/cloud_profile_try_16px.png")
     {}
 
 protected:

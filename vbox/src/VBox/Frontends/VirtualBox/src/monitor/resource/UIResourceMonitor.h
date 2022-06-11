@@ -1,4 +1,4 @@
-/* $Id: UIResourceMonitor.h 83616 2020-04-08 08:55:56Z vboxsync $ */
+/* $Id: UIResourceMonitor.h 83685 2020-04-14 08:51:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIResourceMonitor class declaration.
  */
@@ -47,9 +47,6 @@ class UIVMResourceMonitorTableView;
 class UIResourceMonitorWidget : public QIWithRetranslateUI<QWidget>
 {
     Q_OBJECT;
-
-signals:
-
 
 public:
 
@@ -121,8 +118,6 @@ private:
         /* The key is the column id (VMResourceMonitorColumn) and value is true if the column is visible. */
         QMap<int, bool>                     m_columnVisible;
         UIVMResourceMonitorHostStatsWidget *m_pHostStatsWidget;
-
-
     /** @} */
     /** Indicates if this widget's host tool is current tool. */
     bool    m_fIsCurrentTool;
