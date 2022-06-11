@@ -1,4 +1,4 @@
-/* $Id: clipboard-transfers.cpp 81315 2019-10-17 13:59:28Z vboxsync $ */
+/* $Id: clipboard-transfers.cpp 81318 2019-10-17 14:23:54Z vboxsync $ */
 /** @file
  * Shared Clipboard: Common Shared Clipboard transfer handling code.
  */
@@ -2226,7 +2226,7 @@ int ShClTransferRootsSet(PSHCLTRANSFER pTransfer, const char *pszRoots, size_t c
     AssertReturn(cbRoots,           VERR_INVALID_PARAMETER);
 
     if (!RTStrIsValidEncoding(pszRoots))
-        return VERR_INVALID_PARAMETER;
+        return VERR_INVALID_UTF8_ENCODING;
 
     int rc = VINF_SUCCESS;
 
