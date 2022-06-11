@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewNormal.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIMachineViewNormal.cpp 78778 2019-05-27 10:08:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineViewNormal class implementation.
  */
@@ -68,7 +68,7 @@ bool UIMachineViewNormal::eventFilter(QObject *pWatched, QEvent *pEvent)
                 /* Recalculate max guest size: */
                 setMaxGuestSize();
                 /* And resize guest to current window size: */
-                if (pEvent->spontaneous() && m_bIsGuestAutoresizeEnabled && uisession()->isGuestSupportsGraphics())
+                if (m_bIsGuestAutoresizeEnabled && uisession()->isGuestSupportsGraphics())
                     QTimer::singleShot(300, this, SLOT(sltPerformGuestResize()));
                 break;
             }
