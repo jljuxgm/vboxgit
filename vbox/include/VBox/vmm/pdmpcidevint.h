@@ -1,4 +1,4 @@
-/* $Id: pdmpcidevint.h 81031 2019-09-26 19:26:33Z vboxsync $ */
+/* $Id: pdmpcidevint.h 81035 2019-09-26 20:22:35Z vboxsync $ */
 /** @file
  * DevPCI - PDM PCI Internal header - Only for hiding bits of PDMPCIDEV.
  */
@@ -193,7 +193,7 @@ typedef struct PDMPCIDEVINT
     uint8_t                         abPadding2[HC_ARCH_BITS == 32 ? 0x14 : 0x10];
 
     /** Pointer to bus specific data. (R3 ptr) */
-    R3PTRTYPE(const void *)         pPciBusPtrR3;
+    R3PTRTYPE(const void *)         pvPciBusPtrR3;
     /** I/O regions. */
     PCIIOREGION                     aIORegions[VBOX_PCI_NUM_REGIONS];
     /** @}  */
