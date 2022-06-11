@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItemCloud.cpp 83012 2020-02-06 19:44:16Z vboxsync $ */
+/* $Id: UIVirtualMachineItemCloud.cpp 83015 2020-02-07 12:30:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItemCloud class implementation.
  */
@@ -170,9 +170,9 @@ void UIVirtualMachineItemCloud::retranslateUi()
     /* If machine is accessible: */
     if (m_fAccessible)
     {
-        /* Update machine/state name: */
         if (itemType() == ItemType_CloudFake)
         {
+            /* Update machine/state name: */
             switch (m_enmFakeCloudItemState)
             {
                 case UIVirtualMachineItemCloud::FakeCloudItemState_Loading:
@@ -184,14 +184,19 @@ void UIVirtualMachineItemCloud::retranslateUi()
                 default:
                     break;
             }
-        }
 
-        /* Update tool-tip: */
-        m_strToolTipText = tr("<nobr><b>%1</b></nobr><br>"
-                              "<nobr>%2</nobr>",
-                              "VM tooltip (name, state)")
-                              .arg(m_strName)
-                              .arg(gpConverter->toString(m_enmMachineState));
+            /* Update tool-tip: */
+            m_strToolTipText = m_strMachineStateName;
+        }
+        else
+        {
+            /* Update tool-tip: */
+            m_strToolTipText = QString("<nobr><b>%1</b></nobr><br>"
+                                       "<nobr>%2</nobr>")
+                                       .arg(m_strName)
+                                       .arg(gpConverter->toString(m_enmMachineState));
+
+        }
     }
     /* Otherwise: */
     else
