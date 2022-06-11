@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d.cpp 82583 2019-12-13 21:29:51Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d.cpp 82586 2019-12-16 15:23:17Z vboxsync $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - Common core code.
  */
@@ -615,7 +615,8 @@ int vmsvga3dSurfaceDMA(PVGASTATE pThis, PVGASTATECC pThisCC, SVGA3dGuestImage gu
         AssertReturn(u32GuestBlockX < UINT32_MAX / pSurface->cbBlock, VERR_INVALID_PARAMETER);
         RT_UNTRUSTED_VALIDATED_FENCE();
 
-        if (!VMSVGA3DSURFACE_HAS_HW_SURFACE(pSurface))
+        if (   !VMSVGA3DSURFACE_HAS_HW_SURFACE(pSurface)
+            || VMSVGA3DSURFACE_NEEDS_DATA(pSurface))
         {
             uint64_t uGuestOffset = u32GuestBlockX * pSurface->cbBlock +
                                     u32GuestBlockY * cbGuestPitch +
@@ -652,7 +653,8 @@ int vmsvga3dSurfaceDMA(PVGASTATE pThis, PVGASTATECC pThisCC, SVGA3dGuestImage gu
                 AssertReturn(uGuestOffset < UINT32_MAX, VERR_INVALID_PARAMETER);
             }
         }
-        else
+
+        if (VMSVGA3DSURFACE_HAS_HW_SURFACE(pSurface))
         {
             SVGA3dCopyBox clipBox;
             clipBox.x = hostBox.x;
