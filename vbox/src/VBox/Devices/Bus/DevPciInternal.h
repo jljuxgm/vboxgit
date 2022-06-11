@@ -1,4 +1,4 @@
-/* $Id: DevPciInternal.h 80943 2019-09-23 09:36:14Z vboxsync $ */
+/* $Id: DevPciInternal.h 80960 2019-09-23 20:54:03Z vboxsync $ */
 /** @file
  * DevPCI - Common Internal Header.
  */
@@ -167,6 +167,13 @@ typedef struct DEVPCIROOT
         /** ISA bridge state. */
         PIIX3ISABRIDGE      PIIX3State;
     } Piix3;
+
+    /** The address I/O port handle. */
+    IOMIOPORTHANDLE         hIoPortAddress;
+    /** The data I/O port handle. */
+    IOMIOPORTHANDLE         hIoPortData;
+    /** The magic I/O port handle. */
+    IOMIOPORTHANDLE         hIoPortMagic;
 
 #if 1 /* Will be moved into the BIOS "soon". */
     /** Current bus number - obsolete (still used by DevPCI, but merge will fix that). */

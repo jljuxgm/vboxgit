@@ -1,4 +1,4 @@
-/* $Id: DevPciMerge1.cpp.h 80943 2019-09-23 09:36:14Z vboxsync $ */
+/* $Id: DevPciMerge1.cpp.h 80960 2019-09-23 20:54:03Z vboxsync $ */
 /** @file
  * DevPci - Early attempt at common code for DevPci and DevPciIch9.
  *
@@ -191,8 +191,6 @@ static int pciR3MergedRegisterDeviceOnBus(PPDMDEVINS pDevIns, PDEVPCIBUS pBus, P
     pPciDev->uDevFn                 = VBOX_PCI_DEVFN_MAKE(uPciDevNo, uPciFunNo);
     pPciDev->Int.s.pBusR3           = pBus;
     Assert(pBus == PDMINS_2_DATA(pDevIns, PDEVPCIBUS));
-    pPciDev->Int.s.pBusR0           = PDMINS_2_DATA_R0PTR(pDevIns);
-    pPciDev->Int.s.pBusRC           = PDMINS_2_DATA_RCPTR(pDevIns);
     pPciDev->Int.s.pfnConfigRead    = NULL;
     pPciDev->Int.s.pfnConfigWrite   = NULL;
 

@@ -1,4 +1,4 @@
-/* $Id: IOMR0.cpp 80645 2019-09-06 20:14:36Z vboxsync $ */
+/* $Id: IOMR0.cpp 80960 2019-09-23 20:54:03Z vboxsync $ */
 /** @file
  * IOM - Host Context Ring 0.
  */
@@ -89,8 +89,8 @@ VMMR0_INT_DECL(void) IOMR0CleanupVM(PGVM pGVM)
  * @note    Only callable at VM creation time.
  */
 VMMR0_INT_DECL(int)  IOMR0IoPortSetUpContext(PGVM pGVM, PPDMDEVINS pDevIns, IOMIOPORTHANDLE hIoPorts,
-                                             PFNIOMIOPORTOUT pfnOut,  PFNIOMIOPORTIN pfnIn,
-                                             PFNIOMIOPORTOUTSTRING pfnOutStr, PFNIOMIOPORTINSTRING pfnInStr, void *pvUser)
+                                             PFNIOMIOPORTNEWOUT pfnOut,  PFNIOMIOPORTNEWIN pfnIn,
+                                             PFNIOMIOPORTNEWOUTSTRING pfnOutStr, PFNIOMIOPORTNEWINSTRING pfnInStr, void *pvUser)
 {
     /*
      * Validate input and state.
