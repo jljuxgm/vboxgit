@@ -1,4 +1,4 @@
-/* $Id: DHCPServerImpl.h 76562 2019-01-01 03:22:50Z vboxsync $ */
+/* $Id: DHCPServerImpl.h 79610 2019-07-08 23:29:30Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -35,17 +35,17 @@ namespace settings
 struct NETIFINFO;
 #endif
 
-#ifdef RT_OS_WINDOWS
+#if defined(RT_OS_WINDOWS) || defined(RT_OS_OS2)
 # define DHCP_EXECUTABLE_NAME "VBoxNetDHCP.exe"
 #else
 # define DHCP_EXECUTABLE_NAME "VBoxNetDHCP"
 #endif
 
-class DHCPServerRunner: public NetworkServiceRunner
+class DHCPServerRunner : public NetworkServiceRunner
 {
 public:
-    DHCPServerRunner():NetworkServiceRunner(DHCP_EXECUTABLE_NAME){}
-    virtual ~DHCPServerRunner(){};
+    DHCPServerRunner() : NetworkServiceRunner(DHCP_EXECUTABLE_NAME) {}
+    virtual ~DHCPServerRunner() {};
 
     static const std::string kDsrKeyGateway;
     static const std::string kDsrKeyLowerIp;
@@ -67,8 +67,8 @@ public:
  *  the middle.
  */
 
-class ATL_NO_VTABLE DHCPServer :
-    public DHCPServerWrap
+class ATL_NO_VTABLE DHCPServer
+    : public DHCPServerWrap
 {
 public:
 
@@ -133,6 +133,13 @@ private:
                   const com::Utf8Str &aTrunkType);
     HRESULT stop();
     HRESULT restart();
+    HRESULT findLeaseByMAC(const com::Utf8Str &aMac, LONG aType,
+                           com::Utf8Str &aAddress, com::Utf8Str &aState, LONG64 *aIssued, LONG64 *aExpire) RT_OVERRIDE;
+
+    /** @name Helpers
+     * @{  */
+    HRESULT i_calcLeaseFilename(const com::Utf8Str &aNetwork) RT_NOEXCEPT;
+    /** @} */
 
     struct Data;
     Data *m;
