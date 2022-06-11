@@ -1,4 +1,4 @@
-/* $Id: DevHPET.cpp 81963 2019-11-18 20:31:38Z vboxsync $ */
+/* $Id: DevHPET.cpp 81965 2019-11-18 20:49:18Z vboxsync $ */
 /** @file
  * HPET virtual device - High Precision Event Timer emulation.
  */
@@ -350,8 +350,7 @@ DECLINLINE(uint64_t) hpetTicksToNs(PHPET pThis, uint64_t value)
 
 DECLINLINE(uint64_t) nsToHpetTicks(PCHPET pThis, uint64_t u64Value)
 {
-    //return ASMMultU64ByU32DivByU32(u64Value, FS_PER_NS, RT_MAX(pThis->u32Period, 1 /* no div/zero */));
-    return ASMMultU64ByU32DivByU32(u64Value, FS_PER_NS, pThis->u32Period);
+    return ASMMultU64ByU32DivByU32(u64Value, FS_PER_NS, RT_MAX(pThis->u32Period, 1 /* no div/zero */));
 }
 
 DECLINLINE(uint64_t) hpetGetTicks(PPDMDEVINS pDevIns, PCHPET pThis)
@@ -1133,6 +1132,7 @@ static DECLCALLBACK(void) hpetR3Timer(PPDMDEVINS pDevIns, PTMTIMER pTimer, void 
             {
                 Log4(("HPET: periodic: next in %llu\n", hpetTicksToNs(pThis, u64Diff)));
                 STAM_REL_COUNTER_INC(&pHpetTimer->StatSetTimer);
+                PDMDevHlpTimerSetNano(pDevIns, pHpetTimer->hTimer, hpetTicksToNs(pThis, u64Diff));
             }
             else
             {
