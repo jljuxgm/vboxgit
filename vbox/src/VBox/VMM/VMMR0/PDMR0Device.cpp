@@ -1,4 +1,4 @@
-/* $Id: PDMR0Device.cpp 80722 2019-09-11 09:21:47Z vboxsync $ */
+/* $Id: PDMR0Device.cpp 80942 2019-09-23 09:33:46Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, R0 Device parts.
  */
@@ -1567,9 +1567,8 @@ VMMR0_INT_DECL(int) PDMR0DeviceCreateReqHandler(PGVM pGVM, PPDMDEVICECREATEREQ p
                         && pReq->cMaxPciDevices   == pDevReg->cMaxPciDevices
                         && pReq->cMaxMsixVectors  == pDevReg->cMaxMsixVectors)
                     {
-                        rc = pdmR0DeviceCreateWorker(pGVM, pDevReg, pReq->iInstance, pReq->fRCEnabled,
-                                                     pReq->cbInstanceR3, pReq->cbInstanceRC, hMod,
-                                                     &pReq->pDevInsR3);
+                        rc = pdmR0DeviceCreateWorker(pGVM, pDevReg, pReq->iInstance, pReq->cbInstanceR3, pReq->cbInstanceRC,
+                                                     NIL_RTRCPTR /** @todo new raw-mode */, hMod, &pReq->pDevInsR3);
                         if (RT_SUCCESS(rc))
                             hMod = NULL; /* keep the module reference */
                     }
