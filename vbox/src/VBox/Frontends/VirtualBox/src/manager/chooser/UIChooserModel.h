@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.h 83897 2020-04-21 15:30:16Z vboxsync $ */
+/* $Id: UIChooserModel.h 83925 2020-04-22 13:04:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class declaration.
  */
@@ -40,6 +40,7 @@ class UIChooser;
 class UIChooserHandlerMouse;
 class UIChooserHandlerKeyboard;
 class UIChooserItem;
+class UIChooserItemMachine;
 class UIChooserNode;
 class UIChooserView;
 class UIVirtualMachineItem;
@@ -365,8 +366,8 @@ private:
         /** Update tree for main root. */
         void updateTreeForMainRoot();
 
-        /** Removes machine @a items. */
-        void removeItems(const QList<UIChooserItem*> &items);
+        /** Removes @a machineItems. */
+        void removeItems(const QList<UIChooserItemMachine*> &machineItems);
         /** Unregisters a list of local virtual @a machines. */
         void unregisterLocalMachines(const QList<CMachine> &machines);
         /** Unregisters a list of cloud virtual @a machines. */
