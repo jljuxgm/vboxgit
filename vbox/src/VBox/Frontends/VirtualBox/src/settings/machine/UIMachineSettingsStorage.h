@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.h 80896 2019-09-18 17:38:32Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.h 81047 2019-09-27 11:04:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class declaration.
  */
@@ -149,13 +149,13 @@ enum PixmapType
     MaxIndex
 };
 
-/* Abstract Controller Type */
-class SHARED_LIBRARY_STUFF AbstractControllerType
+/* Controller Type */
+class SHARED_LIBRARY_STUFF ControllerType
 {
 public:
 
-    AbstractControllerType (KStorageBus aBusType, KStorageControllerType aCtrType);
-    virtual ~AbstractControllerType() {}
+    ControllerType (KStorageBus aBusType, KStorageControllerType aCtrType);
+    virtual ~ControllerType() {}
 
     KStorageBus busType() const;
     ControllerBusList busTypes() const;
@@ -304,7 +304,7 @@ private:
 
     QString mOldCtrName;
     QString mCtrName;
-    AbstractControllerType *mCtrType;
+    ControllerType *mCtrType;
     uint mPortCount;
     bool mUseIoCache;
     QList <AbstractItem*> mAttachments;
