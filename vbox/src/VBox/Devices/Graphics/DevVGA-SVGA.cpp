@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 78347 2019-04-29 12:35:29Z vboxsync $ */
+/* $Id: DevVGA-SVGA.cpp 80872 2019-09-17 20:54:03Z vboxsync $ */
 /** @file
  * VMware SVGA device.
  *
@@ -1600,7 +1600,7 @@ PDMBOTHCBDECL(int) vmsvgaWritePort(PVGASTATE pThis, uint32_t u32)
 
             /* bird: Whatever this is was added to make screenshot work, ask sunlover should explain... */
             for (uint32_t idScreen = 0; idScreen < pThis->cMonitors; ++idScreen)
-                pThis->pDrv->pfnVBVAEnable(pThis->pDrv, idScreen, NULL /*pHostFlags*/, false /*fRenderThreadMode*/);
+                pThis->pDrv->pfnVBVAEnable(pThis->pDrv, idScreen, NULL /*pHostFlags*/);
         }
         else
         {

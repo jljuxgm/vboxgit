@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 80731 2019-09-11 12:23:11Z vboxsync $ */
+/* $Id: DevVGA.cpp 80872 2019-09-17 20:54:03Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -5444,8 +5444,6 @@ static DECLCALLBACK(void) vgaTimerRefresh(PPDMDEVINS pDevIns, PTMTIMER pTimer, v
 #ifdef VBOX_WITH_VIDEOHWACCEL
     vbvaTimerCb(pThis);
 #endif
-
-    vboxCmdVBVATimerRefresh(pThis);
 
 #ifdef VBOX_WITH_VMSVGA
     /*
