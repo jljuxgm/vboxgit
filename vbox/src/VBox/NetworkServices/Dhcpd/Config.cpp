@@ -1,4 +1,4 @@
-/* $Id: Config.cpp 79868 2019-07-18 20:36:10Z vboxsync $ */
+/* $Id: Config.cpp 79899 2019-07-19 17:56:08Z vboxsync $ */
 /** @file
  * DHCP server - server configuration
  */
@@ -30,7 +30,7 @@
 #include <iprt/uuid.h>
 #include <iprt/cpp/path.h>
 
-#include <VBox/com/com.h>       /* For log initialization. */
+#include <VBox/com/utils.h>     /* For log initialization. */
 
 #include "Config.h"
 
