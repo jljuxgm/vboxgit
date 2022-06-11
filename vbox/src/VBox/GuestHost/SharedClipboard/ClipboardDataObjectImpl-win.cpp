@@ -1,4 +1,4 @@
-/* $Id: ClipboardDataObjectImpl-win.cpp 81223 2019-10-11 12:06:49Z vboxsync $ */
+/* $Id: ClipboardDataObjectImpl-win.cpp 81259 2019-10-14 13:18:28Z vboxsync $ */
 /** @file
  * ClipboardDataObjectImpl-win.cpp - Shared Clipboard IDataObject implementation.
  */
@@ -648,8 +648,11 @@ STDMETHODIMP SharedClipboardWinDataObject::GetData(LPFORMATETC pFormatEtc, LPSTG
         }
     }
 
-    if (FAILED(hr))
+    if (   FAILED(hr)
+        && hr != DV_E_FORMATETC) /* Can happen if the caller queries unknown / unhandled formats. */
+    {
         LogRel(("Shared Clipboard: Error returning data from data object (%Rhrc)\n", hr));
+    }
 
     LogFlowFunc(("hr=%Rhrc\n", hr));
     return hr;
