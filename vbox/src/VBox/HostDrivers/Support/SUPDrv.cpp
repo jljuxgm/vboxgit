@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 81005 2019-09-25 10:20:59Z vboxsync $ */
+/* $Id: SUPDrv.cpp 81006 2019-09-25 10:27:16Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -4585,6 +4585,8 @@ SUPR0DECL(int) SUPR0QueryUcodeRev(PSUPDRVSESSION pSession, uint32_t *puRevision)
  */
 SUPR0DECL(int) SUPR0GetHwvirtMsrs(PSUPHWVIRTMSRS pMsrs, uint32_t fCaps, bool fForce)
 {
+    NOREF(fForce);
+
     int rc;
     RTTHREADPREEMPTSTATE PreemptState = RTTHREADPREEMPTSTATE_INITIALIZER;
 
