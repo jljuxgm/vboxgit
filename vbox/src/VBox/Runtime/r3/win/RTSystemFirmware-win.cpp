@@ -1,4 +1,4 @@
-/* $Id: RTSystemFirmware-win.cpp 81499 2019-10-23 20:51:33Z vboxsync $ */
+/* $Id: RTSystemFirmware-win.cpp 81500 2019-10-23 21:08:03Z vboxsync $ */
 /** @file
  * IPRT - System firmware information, Win32.
  */
@@ -193,6 +193,7 @@ RTDECL(int) RTSystemQueryFirmwareBoolean(RTSYSFWBOOL enmBoolean, bool *pfValue)
 
     /*
      * Do the query.
+     * Note! This will typically fail with access denied unless we're in an elevated process.
      */
     if (!g_pfnGetFirmwareEnvironmentVariableW)
         return VERR_NOT_SUPPORTED;
