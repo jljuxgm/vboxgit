@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 83827 2020-04-19 02:02:30Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -3315,15 +3315,15 @@ DxgkDdiEscape(
 
                 if (pAlloc->bAssigned)
                 {
-                    PVBOXMP_DEVEXT pDevExt = pDevice->pAdapter;
-                    Assert(pAlloc->AllocData.SurfDesc.VidPnSourceId < (D3DDDI_VIDEO_PRESENT_SOURCE_ID)VBoxCommonFromDeviceExt(pDevExt)->cDisplays);
-                    PVBOXWDDM_SOURCE pSource = &pDevExt->aSources[pAlloc->AllocData.SurfDesc.VidPnSourceId];
+                    PVBOXMP_DEVEXT pDevExt2 = pDevice->pAdapter;
+                    Assert(pAlloc->AllocData.SurfDesc.VidPnSourceId < (D3DDDI_VIDEO_PRESENT_SOURCE_ID)VBoxCommonFromDeviceExt(pDevExt2)->cDisplays);
+                    PVBOXWDDM_SOURCE pSource = &pDevExt2->aSources[pAlloc->AllocData.SurfDesc.VidPnSourceId];
                     if (pSource->AllocData.hostID != pAlloc->AllocData.hostID)
                     {
                         pSource->AllocData.hostID = pAlloc->AllocData.hostID;
                         pSource->u8SyncState &= ~VBOXWDDM_HGSYNC_F_SYNCED_LOCATION;
 
-                        vboxWddmGhDisplayCheckSetInfo(pDevExt);
+                        vboxWddmGhDisplayCheckSetInfo(pDevExt2);
                     }
                 }
 

@@ -1,4 +1,4 @@
-/* $Id: GaWddm.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: GaWddm.cpp 83827 2020-04-19 02:02:30Z vboxsync $ */
 /** @file
  * WDDM helpers implemented for the Gallium based driver.
  */
@@ -744,7 +744,7 @@ IUnknown *GaD3DIfCreateSharedPrimary(struct VBOXWDDMDISP_ALLOCATION *pAlloc)
             Assert(hostID == usedHostId);
 
             /* Remember that this sid is used for all operations on this allocation. */
-            pAlloc->hSharedHandle = (HANDLE)hostID;
+            pAlloc->hSharedHandle = (HANDLE)(uintptr_t)hostID;
         }
         else
         {
@@ -760,7 +760,7 @@ IUnknown *GaD3DIfCreateSharedPrimary(struct VBOXWDDMDISP_ALLOCATION *pAlloc)
                 Assert(usedHostId);
 
                 /* Remember which sid is actually used for this allocation. */
-                pAlloc->hSharedHandle = (HANDLE)usedHostId;
+                pAlloc->hSharedHandle = (HANDLE)(uintptr_t)usedHostId;
 
                 /* Inform the miniport. */
                 VBOXDISPIFESCAPE_GASHAREDSID data;
