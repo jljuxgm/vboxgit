@@ -1,4 +1,4 @@
-# $Id: Config.kmk 82740 2020-01-14 15:40:40Z vboxsync $
+# $Id: Config.kmk 82764 2020-01-15 01:43:52Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3340,11 +3340,12 @@ VBOX_EDIT_VERSION_AND_BUILD_CMD_FN = $(SED) \
 # @param    3        The output filename relative to the target output dir.
 #                    Optional, defaults to 2.
 #
-VBOX_EDIT_VERSION_AND_BUILD_RULE_FN = $(eval $(value VBOX_EDIT_VERSION_AND_BUILD_RULE_DEF))
+VBOX_EDIT_VERSION_AND_BUILD_RULE_FN = $(eval $(VBOX_EDIT_VERSION_AND_BUILD_RULE_DEF))
 define VBOX_EDIT_VERSION_AND_BUILD_RULE_DEF
-$$($(1)_0_OUTDIR)/$(if $(3),$(3),$(2)): $(PATH_SUB_CURRENT)/$(2) $(VBOX_SVN_REV_KMK) | $$(dir $$@)
-	$(call MSG_GENERATE,$(1),$@,$<)
-	$(QUIET)$(call VBOX_EDIT_VERSION_AND_BUILD_CMD_FN,$<,$@)
+$$$$($(1)_0_OUTDIR)/$(if $(3),$(3),$(2)): $$(PATH_SUB_CURRENT)/$(2) $$(VBOX_SVN_REV_KMK) | $$$$(dir $$$$@)
+	$$(call MSG_GENERATE,$(1),$$@,$$<)
+	$$(QUIET)$$(call VBOX_EDIT_VERSION_AND_BUILD_CMD_FN,$$<,$$@)
+$(1)_CLEAN += $$($(1)_0_OUTDIR)/$(if $(3),$(3),$(2))
 endef
 
 
@@ -7731,7 +7732,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 82740 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 82764 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
