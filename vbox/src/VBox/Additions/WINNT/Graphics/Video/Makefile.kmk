@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 80300 2019-08-15 16:27:25Z vboxsync $
+# $Id: Makefile.kmk 82753 2020-01-15 00:14:05Z vboxsync $
 ## @file
 # Makefile for the Windows guest video driver.
 #
@@ -100,6 +100,7 @@ ifdef VBOX_WITH_WDDM
  endif # VBOX_SIGN_ADDITIONS
 
  VBoxWddm-inf_CLEAN = $(VBoxWddm-inf_SOURCES)
+ VBoxWddm-inf_CLEAN.amd64 = $(VBoxWddm-inf_SOURCES.amd64)
  VBoxWddm-inf_BLDDIRS = \
  	$(PATH_TARGET)/VBoxWddmCat.dir
 
