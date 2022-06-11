@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSystem.h 82288 2019-11-29 17:18:23Z vboxsync $ */
+/* $Id: UIMachineSettingsSystem.h 82289 2019-11-29 17:24:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSystem class declaration.
  */
@@ -130,7 +130,7 @@ private:
     /** Repopulates Pointing HID type combo-box. */
     void repopulateComboPointingHIDType();
     /** Repopulates Paravirtualization Provider type combo-box. */
-    void repopulateComboParavirtualizationProviderType();
+    void repopulateComboParavirtProviderType();
 
     /** Retranslates Chipset type combo-box. */
     void retranslateComboChipsetType();

@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSystem.cpp 82288 2019-11-29 17:18:23Z vboxsync $ */
+/* $Id: UIMachineSettingsSystem.cpp 82289 2019-11-29 17:24:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSystem class implementation.
  */
@@ -267,7 +267,7 @@ void UIMachineSettingsSystem::getFromCache()
     /* We are doing that *now* because these combos have
      * dynamical content which depends on cashed value: */
     repopulateComboPointingHIDType();
-    repopulateComboParavirtualizationProviderType();
+    repopulateComboParavirtProviderType();
 
     /* Load old 'Motherboard' data from the cache: */
     m_pBaseMemoryEditor->setValue(oldSystemData.m_iMemorySize);
@@ -906,7 +906,7 @@ void UIMachineSettingsSystem::repopulateComboPointingHIDType()
     }
 }
 
-void UIMachineSettingsSystem::repopulateComboParavirtualizationProviderType()
+void UIMachineSettingsSystem::repopulateComboParavirtProviderType()
 {
     /* Paravirtualization Provider combo-box created in the .ui file. */
     AssertPtrReturnVoid(m_pComboParavirtProvider);
