@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 78711 2019-05-24 08:31:12Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 78713 2019-05-24 09:34:30Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -14247,9 +14247,15 @@ HMVMX_EXIT_DECL hmR0VmxExitWrmsr(PVMCPU pVCpu, PVMXTRANSIENT pVmxTransient)
 HMVMX_EXIT_DECL hmR0VmxExitPause(PVMCPU pVCpu, PVMXTRANSIENT pVmxTransient)
 {
     HMVMX_VALIDATE_EXIT_HANDLER_PARAMS(pVCpu, pVmxTransient);
+
     /** @todo The guest has likely hit a contended spinlock. We might want to
      *        poke a schedule different guest VCPU. */
-    return VINF_EM_RAW_INTERRUPT;
+    int rc = hmR0VmxAdvanceGuestRip(pVCpu, pVmxTransient);
+    if (RT_SUCCESS(rc))
+        return VINF_EM_RAW_INTERRUPT;
+
+    AssertMsgFailed(("hmR0VmxExitPause: Failed to increment RIP. rc=%Rrc\n", rc));
+    return rc;
 }
 
 
