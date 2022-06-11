@@ -1,4 +1,4 @@
-/* $Id: DevRTC.cpp 82329 2019-12-02 18:16:13Z vboxsync $ */
+/* $Id: DevRTC.cpp 82334 2019-12-03 01:04:34Z vboxsync $ */
 /** @file
  * Motorola MC146818 RTC/CMOS Device with PIIX4 extensions.
  */
@@ -1158,17 +1158,17 @@ static DECLCALLBACK(int)  rtcConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMN
      */
     /* Periodic timer. */
     rc = PDMDevHlpTimerCreate(pDevIns, TMCLOCK_VIRTUAL_SYNC, rtcTimerPeriodic, pThis,
-                              TMTIMER_FLAGS_DEFAULT_CRIT_SECT, "MC146818 RTC/CMOS - Periodic", &pThis->hPeriodicTimer);
+                              TMTIMER_FLAGS_DEFAULT_CRIT_SECT, "MC146818 RTC (CMOS) - Periodic", &pThis->hPeriodicTimer);
     AssertRCReturn(rc, rc);
 
     /* Seconds timer. */
     rc = PDMDevHlpTimerCreate(pDevIns, TMCLOCK_VIRTUAL_SYNC, rtcTimerSecond, pThis,
-                              TMTIMER_FLAGS_DEFAULT_CRIT_SECT, "MC146818 RTC/CMOS - Second", &pThis->hSecondTimer);
+                              TMTIMER_FLAGS_DEFAULT_CRIT_SECT, "MC146818 RTC (CMOS) - Second", &pThis->hSecondTimer);
     AssertRCReturn(rc, rc);
 
     /* The second2 timer, this is always active. */
     rc = PDMDevHlpTimerCreate(pDevIns, TMCLOCK_VIRTUAL_SYNC, rtcTimerSecond2, pThis,
-                              TMTIMER_FLAGS_DEFAULT_CRIT_SECT, "MC146818 RTC/CMOS - Second2", &pThis->hSecondTimer2);
+                              TMTIMER_FLAGS_DEFAULT_CRIT_SECT, "MC146818 RTC (CMOS) - Second2", &pThis->hSecondTimer2);
     AssertRCReturn(rc, rc);
 
     pThis->next_second_time = PDMDevHlpTimerGet(pDevIns, pThis->hSecondTimer2)
