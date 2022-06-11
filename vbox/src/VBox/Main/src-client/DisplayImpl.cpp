@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 78995 2019-06-05 13:30:45Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 79002 2019-06-05 15:39:36Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2030,7 +2030,7 @@ HRESULT Display::setVideoModeHint(ULONG aDisplay, BOOL aEnabled,
     {
         PPDMIVMMDEVPORT pVMMDevPort = pVMMDev->getVMMDevPort();
         if (pVMMDevPort)
-            pVMMDevPort->pfnRequestDisplayChange(pVMMDevPort, 1, &d, false, aNotify);
+            pVMMDevPort->pfnRequestDisplayChange(pVMMDevPort, 1, &d, false, RT_BOOL(aNotify));
     }
     /* Notify listeners. */
     fireGuestMonitorInfoChangedEvent(mParent->i_getEventSource(), aDisplay);
