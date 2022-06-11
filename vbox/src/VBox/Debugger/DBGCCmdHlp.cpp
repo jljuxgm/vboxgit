@@ -1,4 +1,4 @@
-/* $Id: DBGCCmdHlp.cpp 80014 2019-07-26 16:12:06Z vboxsync $ */
+/* $Id: DBGCCmdHlp.cpp 80156 2019-08-06 13:54:47Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Command Helpers.
  */
@@ -1304,8 +1304,9 @@ static DECLCALLBACK(PCDBGFINFOHLP) dbgcHlpGetDbgfOutputHlp(PDBGCCMDHLP pCmdHlp)
     /* Lazy init */
     if (!pDbgc->DbgfOutputHlp.pfnPrintf)
     {
-        pDbgc->DbgfOutputHlp.pfnPrintf  = dbgcHlpGetDbgfOutputHlp_Printf;
-        pDbgc->DbgfOutputHlp.pfnPrintfV = dbgcHlpGetDbgfOutputHlp_PrintfV;
+        pDbgc->DbgfOutputHlp.pfnPrintf      = dbgcHlpGetDbgfOutputHlp_Printf;
+        pDbgc->DbgfOutputHlp.pfnPrintfV     = dbgcHlpGetDbgfOutputHlp_PrintfV;
+        pDbgc->DbgfOutputHlp.pfnGetOptError = DBGFR3InfoGenricGetOptError;
     }
 
     return &pDbgc->DbgfOutputHlp;

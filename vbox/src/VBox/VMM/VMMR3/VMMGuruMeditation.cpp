@@ -1,4 +1,4 @@
-/* $Id: VMMGuruMeditation.cpp 80050 2019-07-29 20:04:35Z vboxsync $ */
+/* $Id: VMMGuruMeditation.cpp 80156 2019-08-06 13:54:47Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor, Guru Meditation Code.
  */
@@ -198,8 +198,9 @@ static void vmmR3FatalDumpInfoHlpInit(PVMMR3FATALDUMPINFOHLP pHlp)
 {
     RT_BZERO(pHlp, sizeof(*pHlp));
 
-    pHlp->Core.pfnPrintf  = vmmR3FatalDumpInfoHlp_pfnPrintf;
-    pHlp->Core.pfnPrintfV = vmmR3FatalDumpInfoHlp_pfnPrintfV;
+    pHlp->Core.pfnPrintf      = vmmR3FatalDumpInfoHlp_pfnPrintf;
+    pHlp->Core.pfnPrintfV     = vmmR3FatalDumpInfoHlp_pfnPrintfV;
+    pHlp->Core.pfnGetOptError = DBGFR3InfoGenricGetOptError;
 
     /*
      * The loggers.

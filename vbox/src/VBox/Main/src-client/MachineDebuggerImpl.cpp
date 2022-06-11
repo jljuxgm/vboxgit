@@ -1,4 +1,4 @@
-/* $Id: MachineDebuggerImpl.cpp 80114 2019-08-02 21:04:00Z vboxsync $ */
+/* $Id: MachineDebuggerImpl.cpp 80156 2019-08-06 13:54:47Z vboxsync $ */
 /** @file
  * VBox IMachineDebugger COM class implementation (VBoxC).
  */
@@ -888,12 +888,13 @@ static DECLCALLBACK(void) MachineDebuggerInfoPrintf(PCDBGFINFOHLP pHlp, const ch
  */
 static void MachineDebuggerInfoInit(PMACHINEDEBUGGERINOFHLP pHlp)
 {
-    pHlp->Core.pfnPrintf    = MachineDebuggerInfoPrintf;
-    pHlp->Core.pfnPrintfV   = MachineDebuggerInfoPrintfV;
-    pHlp->pszBuf            = NULL;
-    pHlp->cbBuf             = 0;
-    pHlp->offBuf            = 0;
-    pHlp->fOutOfMemory      = false;
+    pHlp->Core.pfnPrintf        = MachineDebuggerInfoPrintf;
+    pHlp->Core.pfnPrintfV       = MachineDebuggerInfoPrintfV;
+    pHlp->Core.pfnGetOptError   = DBGFR3InfoGenricGetOptError;
+    pHlp->pszBuf                = NULL;
+    pHlp->cbBuf                 = 0;
+    pHlp->offBuf                = 0;
+    pHlp->fOutOfMemory          = false;
 }
 
 /**
