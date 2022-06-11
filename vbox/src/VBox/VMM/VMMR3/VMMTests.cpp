@@ -1,4 +1,4 @@
-/* $Id: VMMTests.cpp 80003 2019-07-26 13:37:47Z vboxsync $ */
+/* $Id: VMMTests.cpp 80011 2019-07-26 15:06:30Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core, Tests.
  */
@@ -33,7 +33,7 @@
 #include <VBox/vmm/selm.h>
 #include "VMMInternal.h"
 #include <VBox/vmm/vm.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <VBox/param.h>
 
 #include <iprt/assert.h>
