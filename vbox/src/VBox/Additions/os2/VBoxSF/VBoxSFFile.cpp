@@ -1,4 +1,4 @@
-/** $Id: VBoxSFFile.cpp 79112 2019-06-13 03:33:29Z vboxsync $ */
+/** $Id: VBoxSFFile.cpp 79710 2019-07-12 05:10:42Z vboxsync $ */
 /** @file
  * VBoxSF - OS/2 Shared Folders, the file level IFS EPs.
  */
@@ -306,6 +306,14 @@ FS32_OPENCREATE(PCDFSI pCdFsi, PVBOXSFCD pCdFsd, PCSZ pszName, LONG offCurDirEnd
                 if (pReq->CreateParms.Handle == SHFL_HANDLE_NIL)
                 {
                     rc = ERROR_OPEN_FAILED; //ERROR_FILE_EXISTS;
+                    break;
+                }
+                if (RTFS_IS_DIRECTORY(pReq->CreateParms.Info.Attr.fMode))
+                {
+                    LogFlow(("FS32_OPENCREATE: directory, closing and returning ERROR_ACCESS_DENIED!\n"));
+                    AssertCompile(RTASSERT_OFFSET_OF(VBOXSFCREATEREQ, CreateParms.Handle) > sizeof(VBOXSFCLOSEREQ)); /* no aliasing issues */
+                    VbglR0SfHostReqClose(pFolder->idHostRoot, (VBOXSFCLOSEREQ *)pReq, pReq->CreateParms.Handle);
+                    rc = ERROR_ACCESS_DENIED;
                     break;
                 }
                 RT_FALL_THRU();
