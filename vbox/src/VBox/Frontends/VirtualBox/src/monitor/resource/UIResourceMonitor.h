@@ -1,4 +1,4 @@
-/* $Id: UIResourceMonitor.h 83365 2020-03-23 10:35:27Z vboxsync $ */
+/* $Id: UIResourceMonitor.h 83375 2020-03-23 18:40:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIResourceMonitor class declaration.
  */
@@ -94,7 +94,7 @@ private:
     /** @name Misc members.
       * @{ */
         UIToolBar *m_pToolBar;
-        QTableView *m_pTableWidget;
+        QTableView *m_pTableView;
         UIResourceMonitorProxyModel *m_pProxyModel;
         UIResourceMonitorModel      *m_pModel;
     /** @} */
