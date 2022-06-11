@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 82421 2019-12-05 14:08:43Z vboxsync $ */
+/* $Id: DevHDA.cpp 82425 2019-12-05 16:22:58Z vboxsync $ */
 /** @file
  * DevHDA.cpp - VBox Intel HD Audio Controller.
  *
@@ -2028,8 +2028,12 @@ static VBOXSTRICTRC hdaRegWriteRIRBWP(PPDMDEVINS pDevIns, PHDASTATE pThis, uint3
             /* Do a RIRB reset. */
             if (pThis->cbRirbBuf)
             {
+#ifdef IN_RING3
                 Assert(pThis->pu64RirbBuf);
-                RT_BZERO((void *)pThis->pu64RirbBuf, pThis->cbRirbBuf);
+                RT_BZERO(pThis->pu64RirbBuf, pThis->cbRirbBuf);
+#else
+                return VINF_IOM_R3_MMIO_WRITE;
+#endif
             }
 
             LogRel2(("HDA: RIRB reset\n"));
