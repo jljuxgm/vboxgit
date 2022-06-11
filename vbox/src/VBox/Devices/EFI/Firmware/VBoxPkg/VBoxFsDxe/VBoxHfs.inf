@@ -1,4 +1,4 @@
-# $Id: VBoxHfs.inf 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: VBoxHfs.inf 80721 2019-09-11 08:46:37Z vboxsync $
 ## @file
 # VBoxHfs - VBox HFS FS driver.
 #
@@ -45,7 +45,6 @@
 [Packages]
         MdePkg/MdePkg.dec
         MdeModulePkg/MdeModulePkg.dec
-        IntelFrameworkModulePkg/IntelFrameworkModulePkg.dec
         VBoxPkg/VBoxPkg.dec
 
 [LibraryClasses]

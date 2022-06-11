@@ -1,4 +1,4 @@
-# $Id: VBoxVgaMiniPortDxe.inf 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: VBoxVgaMiniPortDxe.inf 80721 2019-09-11 08:46:37Z vboxsync $
 ## @file
 # VBoxVgaMiniPortDxe.inf - VgaMiniPort Protocol module declaration.
 #
@@ -44,7 +44,7 @@
 
 [Packages]
         MdePkg/MdePkg.dec
-        IntelFrameworkModulePkg/IntelFrameworkModulePkg.dec
+        OvmfPkg/OvmfPkg.dec
         VBoxPkg/VBoxPkg.dec
 
 [LibraryClasses]

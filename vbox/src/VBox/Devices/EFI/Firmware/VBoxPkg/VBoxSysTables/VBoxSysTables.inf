@@ -1,4 +1,4 @@
-# $Id: VBoxSysTables.inf 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: VBoxSysTables.inf 80721 2019-09-11 08:46:37Z vboxsync $
 ## @file
 # VBoxSysTables - VBox system tables.
 #
@@ -43,8 +43,6 @@
 [Packages]
         MdePkg/MdePkg.dec
         MdeModulePkg/MdeModulePkg.dec
-        IntelFrameworkPkg/IntelFrameworkPkg.dec
-        IntelFrameworkModulePkg/IntelFrameworkModulePkg.dec
         VBoxPkg/VBoxPkg.dec
 
 [LibraryClasses]
@@ -63,7 +61,6 @@
    gEfiSmbiosTableGuid
    gEfiAcpiTableGuid
    gEfiAcpi20TableGuid
-   gEfiProcessorSubClassGuid
    gEfiMpsTableGuid
 
 [Protocols]
