@@ -1,4 +1,4 @@
-/* $Id: HMVMXAll.cpp 80767 2019-09-13 09:29:18Z vboxsync $ */
+/* $Id: HMVMXAll.cpp 80813 2019-09-16 06:46:18Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - All contexts.
  */
@@ -1166,7 +1166,6 @@ VMM_INT_DECL(uint32_t) HMTrpmEventTypeToVmxEventType(uint8_t uVector, TRPMEVENT 
                 break;
 
             default:
-                Assert(uVector == X86_XCPT_DB);
                 uIntInfoType |= (VMX_IDT_VECTORING_INFO_TYPE_SW_INT << VMX_IDT_VECTORING_INFO_TYPE_SHIFT);
                 break;
         }
