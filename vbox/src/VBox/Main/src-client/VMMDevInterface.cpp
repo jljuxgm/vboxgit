@@ -1,4 +1,4 @@
-/* $Id: VMMDevInterface.cpp 78915 2019-06-01 17:37:37Z vboxsync $ */
+/* $Id: VMMDevInterface.cpp 79263 2019-06-20 20:34:08Z vboxsync $ */
 /** @file
  * VirtualBox Driver Interface to VMM device.
  */
@@ -735,7 +735,7 @@ int VMMDev::hgcmHostCall(const char *pszServiceName, uint32_t u32Function,
 void VMMDev::hgcmShutdown(bool fUvmIsInvalid /*= false*/)
 {
 #ifdef VBOX_WITH_GUEST_PROPS
-    if (mpDrv->hHgcmSvcExtGstProps)
+    if (mpDrv && mpDrv->hHgcmSvcExtGstProps)
     {
         HGCMHostUnregisterServiceExtension(mpDrv->hHgcmSvcExtGstProps);
         mpDrv->hHgcmSvcExtGstProps = NULL;
@@ -743,7 +743,7 @@ void VMMDev::hgcmShutdown(bool fUvmIsInvalid /*= false*/)
 #endif
 
 #ifdef VBOX_WITH_GUEST_CONTROL
-    if (mpDrv->hHgcmSvcExtGstCtrl)
+    if (mpDrv && mpDrv->hHgcmSvcExtGstCtrl)
     {
         HGCMHostUnregisterServiceExtension(mpDrv->hHgcmSvcExtGstCtrl);
         mpDrv->hHgcmSvcExtGstCtrl = NULL;
