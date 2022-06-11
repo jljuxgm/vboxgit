@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 79905 2019-07-19 20:02:22Z vboxsync $
+# $Id: Makefile.kmk 80220 2019-08-12 07:54:30Z vboxsync $
 ## @file
 # Sub-Makefile for the support library and the drivers/modules/kexts it uses.
 #
@@ -388,7 +388,9 @@ if "$(KBUILD_TARGET)" == "win" && defined(VBOX_WITH_HARDENING) ## @todo some of 
 	../../Disassembler/DisasmReg.cpp
 
  SUPR3HardenedStatic_SOURCES.amd64 += \
- 	$(VBOX_PATH_RUNTIME_SRC)/common/math/RTUInt128MulByU64.asm
+ 	$(VBOX_PATH_RUNTIME_SRC)/common/math/RTUInt128MulByU64.asm \
+ 	$(VBOX_PATH_RUNTIME_SRC)/win/amd64/ASMGetCS.asm \
+ 	$(VBOX_PATH_RUNTIME_SRC)/win/amd64/ASMGetSS.asm
 
  SUPR3HardenedStatic_SOURCES.win += \
  	win/SUPR3HardenedNoCrt-win.cpp \
