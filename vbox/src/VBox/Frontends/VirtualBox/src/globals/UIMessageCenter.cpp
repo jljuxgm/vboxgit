@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 83709 2020-04-15 16:53:18Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 83752 2020-04-17 13:34:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -930,6 +930,14 @@ void UIMessageCenter::cannotPowerDownMachine(const CConsole &console) const
           tr("Failed to stop the virtual machine <b>%1</b>.")
              .arg(CConsole(console).GetMachine().GetName()),
           UIErrorString::formatErrorInfo(console));
+}
+
+void UIMessageCenter::cannotPowerDownMachine(const CCloudMachine &comMachine) const
+{
+    error(0, MessageType_Error,
+          tr("Failed to stop the virtual machine <b>%1</b>.")
+             .arg(CCloudMachine(comMachine).GetName()),
+          UIErrorString::formatErrorInfo(comMachine));
 }
 
 void UIMessageCenter::cannotPowerDownMachine(const CProgress &progress, const QString &strMachineName) const

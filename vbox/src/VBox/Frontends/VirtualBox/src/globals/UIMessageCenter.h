@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 83709 2020-04-15 16:53:18Z vboxsync $ */
+/* $Id: UIMessageCenter.h 83752 2020-04-17 13:34:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -294,6 +294,7 @@ public:
     void cannotSaveMachineState(const CProgress &progress, const QString &strMachineName);
     void cannotACPIShutdownMachine(const CConsole &console) const;
     void cannotPowerDownMachine(const CConsole &console) const;
+    void cannotPowerDownMachine(const CCloudMachine &comMachine) const;
     void cannotPowerDownMachine(const CProgress &progress, const QString &strMachineName) const;
     bool confirmStartMultipleMachines(const QString &strNames) const;
     void cannotMoveMachine(const CMachine &machine, QWidget *pParent = 0) const;
