@@ -1,4 +1,4 @@
-/* $Id: UIDetailsModel.h 79461 2019-07-02 09:41:51Z vboxsync $ */
+/* $Id: UIDetailsModel.h 79839 2019-07-17 16:07:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsModel class declaration.
  */
@@ -45,6 +45,7 @@ class UIDetailsElement;
 class UIDetailsElementAnimationCallback;
 class UIDetailsGroup;
 class UIDetailsItem;
+class UIDetailsView;
 
 
 /** QObject sub-class used as graphics details model. */
@@ -75,6 +76,8 @@ public:
 
     /** Returns graphics scene this model belongs to. */
     QGraphicsScene *scene() const;
+    /** Returns the reference of the first view of the scene(). */
+    UIDetailsView *view() const;
     /** Returns paint device this model belongs to. */
     QGraphicsView *paintDevice() const;
 
