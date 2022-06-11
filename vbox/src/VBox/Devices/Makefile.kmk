@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 82681 2020-01-09 04:31:04Z vboxsync $
+# $Id: Makefile.kmk 82789 2020-01-19 12:19:24Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -198,7 +198,9 @@ if !defined(VBOX_ONLY_EXTPACKS) && "$(intersects $(KBUILD_TARGET_ARCH),$(VBOX_SU
  	Storage/ATAPIPassthrough.cpp \
  	Storage/IOBufMgmt.cpp \
  	Network/DrvNetSniffer.cpp \
- 	Network/Pcap.cpp
+ 	Network/Pcap.cpp \
+ 	Trace/DrvIfsTrace.cpp \
+ 	Trace/DrvIfsTrace-serial.cpp
  ifn1of ($(KBUILD_TARGET), os2)
   VBoxDD_SOURCES += Storage/DrvHostBase.cpp
  endif
