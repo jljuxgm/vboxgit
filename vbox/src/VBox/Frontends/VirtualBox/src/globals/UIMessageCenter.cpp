@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 78819 2019-05-28 13:47:30Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 78823 2019-05-28 14:36:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -1896,6 +1896,30 @@ void UIMessageCenter::cannotCreateMachineFolder(const QString &strFolderName, QW
           tr("<p>Cannot create the machine folder <b>%1</b> in the parent folder <nobr><b>%2</b>.</nobr></p>"
              "<p>Please check that the parent really exists and that you have permissions to create the machine folder.</p>")
              .arg(fi.fileName()).arg(fi.absolutePath()));
+}
+
+void UIMessageCenter::cannotCreateAppliance(const CVirtualBox &comVBox, QWidget *pParent /* = 0 */) const
+{
+    error(pParent, MessageType_Critical, tr("<p>Cannot create a virtual appliance.</p>"),
+          UIErrorString::formatErrorInfo(comVBox));
+}
+
+void UIMessageCenter::cannotCreateVirtualSystemDescription(const CAppliance &comAppliance, QWidget *pParent /* = 0 */) const
+{
+    error(pParent, MessageType_Critical, tr("<p>Cannot create a virtual system description.</p>"),
+          UIErrorString::formatErrorInfo(comAppliance));
+}
+
+void UIMessageCenter::cannotAcquireVirtualSystemDescription(const CAppliance &comAppliance, QWidget *pParent /* = 0 */) const
+{
+    error(pParent, MessageType_Critical, tr("<p>Cannot create a virtual system description.</p>"),
+          UIErrorString::formatErrorInfo(comAppliance));
+}
+
+void UIMessageCenter::cannotAcquireCloudInstanceInfo(const CCloudClient &comClient, QWidget *pParent /* = 0 */) const
+{
+    error(pParent, MessageType_Critical, tr("<p>Cannot acquire a cloud instance information.</p>"),
+          UIErrorString::formatErrorInfo(comClient));
 }
 
 void UIMessageCenter::cannotImportAppliance(CAppliance &appliance, QWidget *pParent /* = 0*/) const
