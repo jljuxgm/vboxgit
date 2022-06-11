@@ -1,4 +1,4 @@
-/* $Id: Db.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: Db.cpp 79509 2019-07-03 15:41:17Z vboxsync $ */
 /** @file
  * DHCP server - address database
  */
@@ -472,11 +472,8 @@ Binding *Db::allocateAddress(const ClientId &id, RTNETADDRIPV4 addr)
             addrBinding->giveTo(id);
             return addrBinding;
         }
-        else
-        {
-            LogDHCP(("> .... cannot reuse %s binding for this address\n",
-                     addrBinding->stateName()));
-        }
+        LogDHCP(("> .... cannot reuse %s binding for this address\n",
+                 addrBinding->stateName()));
     }
 
     /*
@@ -543,7 +540,7 @@ Binding *Db::allocateBinding(const DhcpClientMessage &req)
 
     Assert(b->id() == id);
 
-    /*
+    /** @todo
      * XXX: handle requests for specific lease time!
      * XXX: old lease might not have expired yet?
      */
