@@ -1,4 +1,4 @@
-/* $Id: tstClipboardServiceHost.cpp 78578 2019-05-18 14:48:13Z vboxsync $ */
+/* $Id: tstClipboardServiceHost.cpp 78579 2019-05-18 15:27:22Z vboxsync $ */
 /** @file
  * Shared Clipboard host service test case.
  */
@@ -25,7 +25,7 @@
 
 extern "C" DECLCALLBACK(DECLEXPORT(int)) VBoxHGCMSvcLoad (VBOXHGCMSVCFNTABLE *ptable);
 
-static VBOXCLIPBOARDCLIENTDATA g_Client;
+static VBOXCLIPBOARDSVCCTX g_Client;
 static VBOXHGCMSVCHELPERS g_Helpers = { NULL };
 
 /** Simple call handle structure for the guest call completion callback */
