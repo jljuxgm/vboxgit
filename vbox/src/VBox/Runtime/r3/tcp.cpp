@@ -1,4 +1,4 @@
-/* $Id: tcp.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: tcp.cpp 78821 2019-05-28 14:16:34Z vboxsync $ */
 /** @file
  * IPRT - TCP/IP.
  */
@@ -1074,6 +1074,17 @@ RTR3DECL(int)  RTTcpSetSendCoalescing(RTSOCKET Sock, bool fEnable)
 {
     int fFlag = fEnable ? 0 : 1;
     return rtSocketSetOpt(Sock, IPPROTO_TCP, TCP_NODELAY, &fFlag, sizeof(fFlag));
+}
+
+
+RTR3DECL(int)  RTTcpSetBufferSize(RTSOCKET hSocket, uint32_t cbSize)
+{
+    int cbIntSize = (int)cbSize;
+    AssertReturn(cbIntSize >= 0, VERR_OUT_OF_RANGE);
+    int rc = rtSocketSetOpt(hSocket, SOL_SOCKET, SO_SNDBUF, &cbIntSize, sizeof(cbIntSize));
+    if (RT_SUCCESS(rc))
+        rc = rtSocketSetOpt(hSocket, SOL_SOCKET, SO_RCVBUF, &cbIntSize, sizeof(cbIntSize));
+    return rc;
 }
 
 
