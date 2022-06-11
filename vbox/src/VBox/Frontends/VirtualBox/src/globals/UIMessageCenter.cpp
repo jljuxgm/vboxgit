@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 78396 2019-05-06 17:22:19Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 78539 2019-05-16 09:42:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -1114,6 +1114,14 @@ int UIMessageCenter::confirmRemovingOfLastDVDDevice(QWidget *pParent /* = 0*/) c
                           tr("&Remove", "medium") /* ok button text */,
                           QString() /* cancel button text */,
                           false /* ok button by default? */);
+}
+
+bool UIMessageCenter::confirmStorageBusChangeWithOpticalRemoval(QWidget *pParent /* = 0 */) const
+{
+    return questionBinary(pParent, MessageType_Question,
+                          tr("<p>This controller has optical devices attached.  You have requested storage bus "
+                             "change to type which doesn't support optical devices.</p><p>If you proceed optical "
+                             "devices will be removed.</p>"));
 }
 
 void UIMessageCenter::cannotAttachDevice(const CMachine &machine, UIMediumDeviceType enmType,
