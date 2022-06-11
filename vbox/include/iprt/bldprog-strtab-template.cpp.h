@@ -1,4 +1,4 @@
-/* $Id: bldprog-strtab-template.cpp.h 84070 2020-04-28 23:58:24Z vboxsync $ */
+/* $Id: bldprog-strtab-template.cpp.h 84127 2020-05-02 11:56:09Z vboxsync $ */
 /** @file
  * IPRT - Build Program - String Table Generator.
  */
@@ -758,7 +758,8 @@ static bool BldProgStrTab_CompileIt(PBLDPROGSTRTAB pThis, bool fVerbose)
 
     /*
      * Create papSortedStrings from the hash table.  The table is sorted by
-     * string length, with the longer strings first.
+     * string length, with the longer strings first, so that we increase our
+     * chances of locating duplicate substrings.
      */
     pThis->papSortedStrings = (PBLDPROGSTRING *)malloc(sizeof(pThis->papSortedStrings[0]) * pThis->cUniqueStrings);
     if (!pThis->papSortedStrings)
