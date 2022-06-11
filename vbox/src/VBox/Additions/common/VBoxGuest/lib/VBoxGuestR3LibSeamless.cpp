@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibSeamless.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxGuestR3LibSeamless.cpp 83142 2020-02-24 19:24:26Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Seamless mode.
  */
@@ -170,3 +170,31 @@ VBGLR3DECL(int) VbglR3SeamlessSendRects(uint32_t cRects, PRTRECT pRects)
     return rc;
 }
 
+VBGLR3DECL(int) VbglR3SeamlessSendMonitorPositions(uint32_t cPositions, PRTPOINT pPositions)
+{
+    VMMDevVideoUpdateMonitorPositions *pReq;
+    int rc;
+
+    AssertReturn(cPositions || cPositions == 0, VERR_INVALID_PARAMETER);
+    //AssertMsgReturn(cRects <= _1M, ("%u\n", cRects), VERR_OUT_OF_RANGE);
+
+    rc = vbglR3GRAlloc((VMMDevRequestHeader **)&pReq,
+                         sizeof(VMMDevVideoUpdateMonitorPositions)
+                       + cPositions * sizeof(RTPOINT)
+                       - sizeof(RTPOINT),
+                       VMMDevReq_VideoUpdateMonitorPositions);
+    if (RT_SUCCESS(rc))
+    {
+        pReq->cPositions = cPositions;
+        if (cPositions)
+            memcpy(&pReq->aPositions, pPositions, cPositions * sizeof(RTPOINT));
+        rc = vbglR3GRPerform(&pReq->header);
+        LogFunc(("Monitor position update request returned %Rrc, internal %Rrc.\n",
+                 rc, pReq->header.rc));
+        if (RT_SUCCESS(rc))
+            rc = pReq->header.rc;
+        vbglR3GRFree(&pReq->header);
+    }
+    LogFunc(("Sending monitor positions (%u of them)  to the host: %Rrc\n", cPositions, rc));
+    return rc;
+}

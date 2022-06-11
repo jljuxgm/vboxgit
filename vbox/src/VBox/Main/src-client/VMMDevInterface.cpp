@@ -1,4 +1,4 @@
-/* $Id: VMMDevInterface.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VMMDevInterface.cpp 83142 2020-02-24 19:24:26Z vboxsync $ */
 /** @file
  * VirtualBox Driver Interface to VMM device.
  */
@@ -457,6 +457,16 @@ DECLCALLBACK(int) vmmdevSetVisibleRegion(PPDMIVMMDEVCONNECTOR pInterface, uint32
 
     /* Forward to Display, which calls corresponding framebuffers. */
     pConsole->i_getDisplay()->i_handleSetVisibleRegion(cRect, pRect);
+
+    return VINF_SUCCESS;
+}
+
+DECLCALLBACK(int) vmmdevUpdateMonitorPositions(PPDMIVMMDEVCONNECTOR pInterface, uint32_t cPositions, PRTPOINT pPositions)
+{
+    PDRVMAINVMMDEV pDrv = RT_FROM_MEMBER(pInterface, DRVMAINVMMDEV, Connector);
+    Console *pConsole = pDrv->pVMMDev->getParent();
+
+    pConsole->i_getDisplay()->i_handleUpdateMonitorPositions(cPositions, pPositions);
 
     return VINF_SUCCESS;
 }
@@ -1069,6 +1079,7 @@ DECLCALLBACK(int) VMMDev::drvConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfgHandle,
     pThis->Connector.pfnGetHeightReduction            = vmmdevGetHeightReduction;
     pThis->Connector.pfnSetCredentialsJudgementResult = vmmdevSetCredentialsJudgementResult;
     pThis->Connector.pfnSetVisibleRegion              = vmmdevSetVisibleRegion;
+    pThis->Connector.pfnUpdateMonitorPositions        = vmmdevUpdateMonitorPositions;
     pThis->Connector.pfnQueryVisibleRegion            = vmmdevQueryVisibleRegion;
     pThis->Connector.pfnReportStatistics              = vmmdevReportStatistics;
     pThis->Connector.pfnQueryStatisticsInterval       = vmmdevQueryStatisticsInterval;

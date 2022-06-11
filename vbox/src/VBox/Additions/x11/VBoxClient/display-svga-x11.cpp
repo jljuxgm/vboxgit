@@ -1,4 +1,4 @@
-/* $Id: display-svga-x11.cpp 83140 2020-02-21 22:55:34Z vboxsync $ */
+/* $Id: display-svga-x11.cpp 83142 2020-02-24 19:24:26Z vboxsync $ */
 /** @file
  * X11 guest client - VMSVGA emulation resize event pass-through to X.Org
  * guest driver.
@@ -141,6 +141,16 @@ static int getMonitorIdFromName(const char *sMonitorName)
     return iResult;
 }
 
+static void sendMonitorPositions(RTPOINT *pPositions, size_t cPositions)
+{
+    if (cPositions && !pPositions)
+    {
+        VBClLogError(("Monitor position update called with NULL pointer!\n"));
+        return;
+    }
+    VbglR3SeamlessSendMonitorPositions(cPositions, pPositions);
+}
+
 static void queryMonitorPositions()
 {
     static const int iSentinelPosition = -1;
@@ -180,8 +190,8 @@ static void queryMonitorPositions()
             mpMonitorPositions[iMonitorID].x = pMonitorInfo[i].x;
             mpMonitorPositions[iMonitorID].y = pMonitorInfo[i].y;
         }
-        // if (iMonitorCount > 0)
-        //     mHostMonitorPositionSendCallback(mpMonitorPositions, x11Context.hOutputCount);
+        if (iMonitorCount > 0)
+            mHostMonitorPositionSendCallback(mpMonitorPositions, x11Context.hOutputCount);
     }
     XRRFreeMonitors(pMonitorInfo);
 }
