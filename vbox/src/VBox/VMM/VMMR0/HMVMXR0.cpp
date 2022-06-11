@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 79712 2019-07-12 05:34:26Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 79719 2019-07-12 07:25:28Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -17039,13 +17039,12 @@ HMVMX_EXIT_DECL hmR0VmxExitXcptOrNmiNested(PVMCPU pVCpu, PVMXTRANSIENT pVmxTrans
                 if (pVCpu->hm.s.Event.fPending)
                 {
                     Assert(ExitEventInfo.uIdtVectoringInfo    == pVCpu->hm.s.Event.u64IntInfo);
-                    Assert(ExitEventInfo.uIdtVectoringErrCode == pVCpu->hm.s.Event.u32ErrCode);
+                    if (VMX_IDT_VECTORING_INFO_IS_ERROR_CODE_VALID(ExitEventInfo.uIdtVectoringInfo))
+                        Assert(ExitEventInfo.uIdtVectoringErrCode == pVCpu->hm.s.Event.u32ErrCode);
                     if (   VMX_IDT_VECTORING_INFO_TYPE(ExitEventInfo.uIdtVectoringInfo) == VMX_IDT_VECTORING_INFO_TYPE_SW_INT
                         || VMX_IDT_VECTORING_INFO_TYPE(ExitEventInfo.uIdtVectoringInfo) == VMX_IDT_VECTORING_INFO_TYPE_PRIV_SW_XCPT
                         || VMX_IDT_VECTORING_INFO_TYPE(ExitEventInfo.uIdtVectoringInfo) == VMX_IDT_VECTORING_INFO_TYPE_SW_XCPT)
-                    {
                         Assert(ExitInfo.cbInstr == pVCpu->hm.s.Event.cbInstr);
-                    }
 
                     pVCpu->hm.s.Event.fPending = false;
                 }
