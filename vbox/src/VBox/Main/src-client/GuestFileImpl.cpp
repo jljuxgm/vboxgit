@@ -1,4 +1,4 @@
-/* $Id: GuestFileImpl.cpp 79278 2019-06-21 13:52:35Z vboxsync $ */
+/* $Id: GuestFileImpl.cpp 79282 2019-06-21 20:35:35Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest file handling.
  */
@@ -1558,7 +1558,7 @@ HRESULT GuestFile::writeAt(LONG64 aOffset, const std::vector<BYTE> &aData, ULONG
 
     const uint32_t cbData = (uint32_t)aData.size();
     const void *pvData = (void *)&aData.front();
-    int vrc = i_writeData(aTimeoutMS, pvData, cbData, (uint32_t*)aWritten);
+    int vrc = i_writeDataAt(aOffset, aTimeoutMS, pvData, cbData, (uint32_t*)aWritten);
     if (RT_FAILURE(vrc))
         hr = setErrorBoth(VBOX_E_IPRT_ERROR, vrc, tr("Writing %zubytes to file \"%s\" (at offset %RU64) failed: %Rrc"),
                           aData.size(), mData.mOpenInfo.mFilename.c_str(), aOffset, vrc);
