@@ -1,4 +1,4 @@
-/* $Id: FlashCore.cpp 81250 2019-10-14 11:41:24Z vboxsync $ */
+/* $Id: FlashCore.cpp 81252 2019-10-14 11:43:54Z vboxsync $ */
 /** @file
  * DevFlash - A simple Flash device
  *
@@ -187,7 +187,7 @@ static int flashMemReadByte(PFLASHCORE pThis, uint32_t off, uint8_t *pbData)
     }
     *pbData = bValue;
 
-    LogFlow(("flashMemReadByte: read access at %08RX: %02X (cmd=%02X) rc=%Rrc\n", bValue, pThis->bCmd, rc));
+    LogFlow(("flashMemReadByte: read access at %08RX: %02X (cmd=%02X) rc=%Rrc\n", off, bValue, pThis->bCmd, rc));
     return rc;
 }
 
