@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 80390 2019-08-23 04:07:44Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 80391 2019-08-23 04:37:13Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -1488,7 +1488,7 @@ DECLINLINE(void) hmR0VmxReadGuestPendingDbgXctps(PVMXTRANSIENT pVmxTransient)
 {
     if (!(pVmxTransient->fVmcsFieldsRead & HMVMX_READ_GUEST_PENDING_DBG_XCPTS))
     {
-        int rc = VMXReadVmcs64(VMX_VMCS_GUEST_PENDING_DEBUG_XCPTS, &pVmxTransient->uGuestPendingDbgXcpts);
+        int rc = VMXReadVmcsNw(VMX_VMCS_GUEST_PENDING_DEBUG_XCPTS, &pVmxTransient->uGuestPendingDbgXcpts);
         AssertRC(rc);
         pVmxTransient->fVmcsFieldsRead |= HMVMX_READ_GUEST_PENDING_DBG_XCPTS;
     }
