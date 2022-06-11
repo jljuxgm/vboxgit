@@ -1,4 +1,4 @@
-/* $Id: GaDrvEnvKMT.cpp 78601 2019-05-20 15:01:25Z vboxsync $ */
+/* $Id: GaDrvEnvKMT.cpp 79782 2019-07-15 09:22:26Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver interface to the WDDM miniport driver using Kernel Mode Thunks.
  */
@@ -385,8 +385,8 @@ static D3DDDIFORMAT svgaToD3DDDIFormat(SVGA3dSurfaceFormat format)
         default: break;
     }
 
-    Assert(0);
     VBoxDispMpLoggerLogF("WDDM: EnvKMT: unsupported surface format %d\n", format);
+    Assert(0);
     return D3DDDIFMT_UNKNOWN;
 }
 
@@ -404,6 +404,11 @@ GaDrvEnvKmt::gaEnvSurfaceDefine(void *pvEnv,
     uint32_t                          cbAlloc;
     uint8_t                          *pu8Req;
     uint32_t                          cbReq;
+
+    /* First check if the format is supported. */
+    D3DDDIFORMAT const ddiFormat = svgaToD3DDDIFormat((SVGA3dSurfaceFormat)pCreateParms->format);
+    if (ddiFormat == D3DDDIFMT_UNKNOWN)
+        return -1;
 
     /* Size of the SVGA request data */
     cbReq = sizeof(GASURFCREATE) + cSizes * sizeof(GASURFSIZE);
@@ -458,7 +463,7 @@ GaDrvEnvKmt::gaEnvSurfaceDefine(void *pvEnv,
                 wddmAllocInfo.SurfDesc.depth      = paSizes[0].cDepth;
                 wddmAllocInfo.SurfDesc.width      = paSizes[0].cWidth;
                 wddmAllocInfo.SurfDesc.height     = paSizes[0].cHeight;
-                wddmAllocInfo.SurfDesc.format     = svgaToD3DDDIFormat((SVGA3dSurfaceFormat)pCreateParms->format);
+                wddmAllocInfo.SurfDesc.format     = ddiFormat;
                 wddmAllocInfo.SurfDesc.VidPnSourceId = 0;
                 wddmAllocInfo.SurfDesc.bpp        = vboxWddmCalcBitsPerPixel(wddmAllocInfo.SurfDesc.format);
                 wddmAllocInfo.SurfDesc.pitch      = vboxWddmCalcPitch(wddmAllocInfo.SurfDesc.width,
