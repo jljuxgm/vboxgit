@@ -1,4 +1,4 @@
-/* $Id: QIWithRestorableGeometry.h 81261 2019-10-14 14:38:47Z vboxsync $ */
+/* $Id: QIWithRestorableGeometry.h 81272 2019-10-14 19:04:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - QIWithRestorableGeometry class declaration.
  */
@@ -141,5 +141,14 @@ private:
     /** Holds the cached window geometry. */
     QRect m_geometry;
 };
+
+/** Explicit QIWithRestorableGeometry instantiation for QMainWindow class.
+  * @note  On Windows it's important that all template cases are instantiated just once across
+  *        the linking space. In case we have particular template case instantiated from both
+  *        library and executable sides, - we have multiple definition case and need to strictly
+  *        ask compiler to do it just once and link such cases against library only.
+  *        I would also note that it would be incorrect to just make whole the template exported
+  *        to library because latter can have lack of required instantiations (current case). */
+template class SHARED_LIBRARY_STUFF QIWithRestorableGeometry<QMainWindow>;
 
 #endif /* !FEQT_INCLUDED_SRC_globals_QIWithRestorableGeometry_h */

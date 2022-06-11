@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 81263 2019-10-14 16:51:31Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 81272 2019-10-14 19:04:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -26,6 +26,7 @@
 # include <QLabel>
 # include <QLineEdit>
 # include <QListView>
+# include <QMainWindow>
 # include <QMenuBar>
 # include <QPainter>
 # include <QPushButton>
