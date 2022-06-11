@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxBase.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VirtualBoxBase.cpp 83787 2020-04-18 00:00:11Z vboxsync $ */
 /** @file
  * VirtualBox COM base classes implementation
  */
@@ -23,12 +23,11 @@
 #include <typeinfo>
 
 #if !defined(VBOX_WITH_XPCOM)
-#include <iprt/win/windows.h>
-#include <dbghelp.h>
+# include <iprt/win/windows.h>
 #else /* !defined(VBOX_WITH_XPCOM) */
 /// @todo remove when VirtualBoxErrorInfo goes away from here
-#include <nsIServiceManager.h>
-#include <nsIExceptionService.h>
+# include <nsIServiceManager.h>
+# include <nsIExceptionService.h>
 #endif /* !defined(VBOX_WITH_XPCOM) */
 
 #include "VirtualBoxBase.h"
