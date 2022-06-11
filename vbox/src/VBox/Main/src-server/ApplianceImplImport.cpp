@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 78930 2019-06-03 10:56:02Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 78931 2019-06-03 11:07:41Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -1379,7 +1379,7 @@ HRESULT Appliance::i_importCloudImpl(TaskCloud *pTask)
 
             /* Case when some invalid OS type or garbage was passed. Set to VBOXOSTYPE_Unknown. */
             if (idxOSType > Global::cOSTypes)
-            {            
+            {
                 strOsType = Global::OSTypeId(guestOsType);
                 vsd->RemoveDescriptionByType(VirtualSystemDescriptionType_OS);
                 vsd->AddDescription(VirtualSystemDescriptionType_OS,
