@@ -1,4 +1,4 @@
-/* $Id: VBoxApfsJmpStartDxe.c 81600 2019-10-30 20:58:44Z vboxsync $ */
+/* $Id: VBoxApfsJmpStartDxe.c 81601 2019-10-30 21:11:30Z vboxsync $ */
 /** @file
  * VBoxApfsJmpStartDxe.c - VirtualBox APFS jumpstart driver.
  */
@@ -121,7 +121,7 @@ static EFI_STATUS vboxApfsJmpStartLoadAndExecEfiDriver(IN PAPFSJMPSTARTCTX pCtx,
     void *pvApfsDrv = AllocateZeroPool(cbReadLeft);
     if (pvApfsDrv)
     {
-    	uint32_t i = 0;
+        uint32_t i = 0;
         uint8_t *pbBuf = (uint8_t *)pvApfsDrv;
 
         for (i = 0; i < RT_LE2H_U32(pCtx->JmpStart.Hdr.cExtents) && !EFI_ERROR(rc) && cbReadLeft; i++)
