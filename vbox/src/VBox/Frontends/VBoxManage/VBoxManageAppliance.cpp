@@ -1,4 +1,4 @@
-/* $Id: VBoxManageAppliance.cpp 81515 2019-10-24 12:31:36Z vboxsync $ */
+/* $Id: VBoxManageAppliance.cpp 81517 2019-10-24 12:54:46Z vboxsync $ */
 /** @file
  * VBoxManage - The appliance-related commands.
  */
@@ -1474,7 +1474,19 @@ RTEXITCODE handleExportAppliance(HandlerArg *a)
 
         if (llMachines.empty())
             return errorSyntax(USAGE_EXPORTAPPLIANCE, "At least one machine must be specified with the export command.");
-        if (!strOutputFile.length())
+
+        /* Last check after parsing all arguments */
+        if (strOutputFile.isNotEmpty())
+        {
+            if (actionType == NOT_SET)
+            {
+                if (fCloud)
+                    actionType = CLOUD;
+                else
+                    actionType = LOCAL;
+            }
+        }
+        else
             return errorSyntax(USAGE_EXPORTAPPLIANCE, "Missing --output argument with export command.");
 
         // match command line arguments with the machines count
