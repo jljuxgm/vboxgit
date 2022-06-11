@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 79073 2019-06-11 05:26:37Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 79084 2019-06-11 10:40:04Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -10032,9 +10032,8 @@ static void hmR0VmxMergeMsrBitmapNested(PCVMCPU pVCpu, PVMXVMCSINFO pVmcsInfoNst
      * MSR that is intercepted by the guest is also intercepted while executing the
      * nested-guest using hardware-assisted VMX.
      */
-    uint32_t const cbFrag = sizeof(uint64_t);
-    uint32_t const cFrags = X86_PAGE_4K_SIZE / cbFrag;
-    for (uint32_t i = 0; i <= cFrags; i++)
+    uint32_t const cFrags = X86_PAGE_4K_SIZE / sizeof(uint64_t);
+    for (uint32_t i = 0; i < cFrags; i++)
         pu64MsrBitmap[i] = pu64MsrBitmapNstGst[i] | pu64MsrBitmapGst[i];
 }
 
