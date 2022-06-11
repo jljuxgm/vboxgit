@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemMachine.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIChooserItemMachine.cpp 83317 2020-03-18 12:55:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemMachine class implementation.
  */
@@ -240,12 +240,19 @@ void UIChooserItemMachine::removeItem(UIChooserItem*)
 
 UIChooserItem* UIChooserItemMachine::searchForItem(const QString &strSearchTag, int iItemSearchFlags)
 {
-    /* Ignoring if we are not searching for the machine-item? */
+    /* Ignore if we are not searching for the machine-item: */
     if (!(iItemSearchFlags & UIChooserItemSearchFlag_Machine))
         return 0;
 
+    /* Are we searching by the exact ID? */
+    if (iItemSearchFlags & UIChooserItemSearchFlag_ExactId)
+    {
+        /* Exact ID doesn't match? */
+        if (id() != QUuid(strSearchTag))
+            return 0;
+    }
     /* Are we searching by the exact name? */
-    if (iItemSearchFlags & UIChooserItemSearchFlag_ExactName)
+    else if (iItemSearchFlags & UIChooserItemSearchFlag_ExactName)
     {
         /* Exact name doesn't match? */
         if (name() != strSearchTag)

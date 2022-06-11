@@ -1,4 +1,4 @@
-/* $Id: UIChooserDefs.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIChooserDefs.h 83317 2020-03-18 12:55:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserDefs class declaration.
  */
@@ -44,7 +44,8 @@ enum UIChooserItemSearchFlag
     UIChooserItemSearchFlag_Machine   = RT_BIT(0),
     UIChooserItemSearchFlag_Global    = RT_BIT(1),
     UIChooserItemSearchFlag_Group     = RT_BIT(2),
-    UIChooserItemSearchFlag_ExactName = RT_BIT(3)
+    UIChooserItemSearchFlag_ExactId   = RT_BIT(3),
+    UIChooserItemSearchFlag_ExactName = RT_BIT(4)
 };
 
 

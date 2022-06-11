@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGlobal.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIChooserItemGlobal.cpp 83317 2020-03-18 12:55:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGlobal class implementation.
  */
@@ -206,7 +206,7 @@ void UIChooserItemGlobal::removeItem(UIChooserItem *)
 
 UIChooserItem *UIChooserItemGlobal::searchForItem(const QString &, int iItemSearchFlags)
 {
-    /* Ignoring if we are not searching for the global-item? */
+    /* Ignore if we are not searching for the global-item: */
     if (!(iItemSearchFlags & UIChooserItemSearchFlag_Global))
         return 0;
 
