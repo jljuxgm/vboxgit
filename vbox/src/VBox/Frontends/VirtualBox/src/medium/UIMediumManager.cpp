@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
+/* $Id: UIMediumManager.cpp 80884 2019-09-18 11:23:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class implementation.
  */
@@ -694,11 +694,7 @@ void UIMediumManagerWidget::prepare()
     retranslateUi();
 
     /* Start medium-enumeration (if necessary): */
-#ifndef VBOX_GUI_WITH_NEW_MEDIA_EVENTS
-    if (!uiCommon().isMediumEnumerationInProgress())
-#else
     if (!uiCommon().isFullMediumEnumerationRequested())
-#endif
         uiCommon().startMediumEnumeration();
     /* Emulate medium-enumeration otherwise: */
     else
@@ -1356,7 +1352,6 @@ void UIMediumManagerWidget::updateMediumItem(const UIMedium &medium)
     if (pMediumItem == mediumItem(type))
         refetchCurrentMediumItem(type);
 
-#ifdef VBOX_GUI_WITH_NEW_MEDIA_EVENTS
     /* Update all the children recursively as well: */
     foreach(const QUuid &uMediumId, uiCommon().mediumIDs())
     {
@@ -1365,7 +1360,6 @@ void UIMediumManagerWidget::updateMediumItem(const UIMedium &medium)
             && guiMedium.parentID() == medium.id())
             updateMediumItem(guiMedium);
     }
-#endif
 }
 
 void UIMediumManagerWidget::deleteMediumItem(const QUuid &uMediumID)

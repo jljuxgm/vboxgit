@@ -1,4 +1,4 @@
-/* $Id: UIMediumItem.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
+/* $Id: UIMediumItem.cpp 80884 2019-09-18 11:23:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumItem class implementation.
  */
@@ -422,9 +422,6 @@ bool UIMediumItemHD::remove()
 
     /* Remember some of hard-disk attributes: */
     CMedium hardDisk = medium().medium();
-#ifndef VBOX_GUI_WITH_NEW_MEDIA_EVENTS
-    QUuid uMediumID = id();
-#endif
 
     /* Propose to remove medium storage: */
     if (!maybeRemoveStorage())
@@ -437,11 +434,6 @@ bool UIMediumItemHD::remove()
         msgCenter().cannotCloseMedium(medium(), hardDisk, treeWidget());
         return false;
     }
-
-#ifndef VBOX_GUI_WITH_NEW_MEDIA_EVENTS
-    /* Remove UIMedium finally: */
-    uiCommon().deleteMedium(uMediumID);
-#endif
 
     /* True by default: */
     return true;
@@ -553,9 +545,6 @@ bool UIMediumItemCD::remove()
 
     /* Remember some of optical-disk attributes: */
     CMedium image = medium().medium();
-#ifndef VBOX_GUI_WITH_NEW_MEDIA_EVENTS
-    QUuid uMediumID = id();
-#endif
 
     /* Close optical-disk: */
     image.Close();
@@ -564,11 +553,6 @@ bool UIMediumItemCD::remove()
         msgCenter().cannotCloseMedium(medium(), image, treeWidget());
         return false;
     }
-
-#ifndef VBOX_GUI_WITH_NEW_MEDIA_EVENTS
-    /* Remove UIMedium finally: */
-    uiCommon().deleteMedium(uMediumID);
-#endif
 
     /* True by default: */
     return true;
@@ -628,9 +612,6 @@ bool UIMediumItemFD::remove()
 
     /* Remember some of floppy-disk attributes: */
     CMedium image = medium().medium();
-#ifndef VBOX_GUI_WITH_NEW_MEDIA_EVENTS
-    QUuid uMediumID = id();
-#endif
 
     /* Close floppy-disk: */
     image.Close();
@@ -639,11 +620,6 @@ bool UIMediumItemFD::remove()
         msgCenter().cannotCloseMedium(medium(), image, treeWidget());
         return false;
     }
-
-#ifndef VBOX_GUI_WITH_NEW_MEDIA_EVENTS
-    /* Remove UIMedium finally: */
-    uiCommon().deleteMedium(uMediumID);
-#endif
 
     /* True by default: */
     return true;

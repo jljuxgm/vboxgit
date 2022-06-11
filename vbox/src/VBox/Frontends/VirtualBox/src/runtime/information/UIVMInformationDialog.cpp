@@ -1,4 +1,4 @@
-/* $Id: UIVMInformationDialog.cpp 80773 2019-09-13 11:10:21Z vboxsync $ */
+/* $Id: UIVMInformationDialog.cpp 80884 2019-09-18 11:23:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMInformationDialog class implementation.
  */
@@ -168,11 +168,7 @@ void UIVMInformationDialog::prepare()
     loadSettings();
 
     /* This is needed at least for some VM to show correct storage info. */
-#ifndef VBOX_GUI_WITH_NEW_MEDIA_EVENTS
-    if (uiCommon().uiType() == UICommon::UIType_RuntimeUI)
-#else
     if (!uiCommon().isFullMediumEnumerationRequested())
-#endif
         uiCommon().startMediumEnumeration();
 }
 
