@@ -1,4 +1,4 @@
-/* $Id: VBoxCompilerPlugInsCommon.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxCompilerPlugInsCommon.cpp 80566 2019-09-03 13:00:21Z vboxsync $ */
 /** @file
  * VBoxCompilerPlugInsCommon - Code common to the compiler plug-ins.
  */
@@ -418,6 +418,15 @@ void MyCheckFormatCString(PVFMTCHKSTATE pState, const char *pszFmt)
                 iArg += 2;
                 break;
             }
+
+            case 'R':
+                if (   pszFmt[0] == 'h'
+                    && pszFmt[1] == 'X')
+                {
+                    VFmtChkRequirePresentArg(pState, pszPct, iArg, "Expected argument");
+                    iArg++;
+                }
+                RT_FALL_THROUGH();
 
             default:
                 VFmtChkRequirePresentArg(pState, pszPct, iArg, "Expected argument");
