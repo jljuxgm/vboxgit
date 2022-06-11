@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 80443 2019-08-27 16:48:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -579,6 +579,9 @@ void UIChooserModel::sltHandleViewResized()
 {
     /* Relayout: */
     updateLayout();
+
+    /* Make current item visible asynchronously: */
+    QMetaObject::invokeMethod(this, "sltMakeSureCurrentItemVisible", Qt::QueuedConnection);
 }
 
 bool UIChooserModel::eventFilter(QObject *pWatched, QEvent *pEvent)
@@ -697,6 +700,11 @@ void UIChooserModel::sltReloadMachine(const QUuid &uId)
 
     /* Notify listeners about selection change: */
     emit sigSelectionChanged();
+}
+
+void UIChooserModel::sltMakeSureCurrentItemVisible()
+{
+    root()->toGroupItem()->makeSureItemIsVisible(currentItem());
 }
 
 void UIChooserModel::sltCurrentItemDestroyed()
