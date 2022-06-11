@@ -1,4 +1,4 @@
-/* $Id: VBoxMPTypes.h 81594 2019-10-30 18:47:23Z vboxsync $ */
+/* $Id: VBoxMPTypes.h 81651 2019-11-04 12:52:17Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -58,6 +58,8 @@ typedef struct VBOXWDDM_ALLOCATION *PVBOXWDDM_ALLOCATION;
 #define VBOXWDDM_C_POINTER_MAX_WIDTH_LEGACY  64
 #define VBOXWDDM_C_POINTER_MAX_HEIGHT_LEGACY 64
 #endif
+
+#define VBOXWDDM_DUMMY_DMABUFFER_SIZE 4
 
 #define VBOXWDDM_POINTER_ATTRIBUTES_SIZE VBOXWDDM_ROUNDBOUND( \
          VBOXWDDM_ROUNDBOUND( sizeof (VIDEO_POINTER_ATTRIBUTES), 4 ) + \
@@ -272,5 +274,17 @@ typedef struct VBOXWDDM_VMODES
     uint64_t aTransientResolutions[VBOX_VIDEO_MAX_SCREENS];
     uint64_t aPendingRemoveCurResolutions[VBOX_VIDEO_MAX_SCREENS];
 } VBOXWDDM_VMODES;
+
+typedef struct VBOXVDMADDI_CMD_QUEUE
+{
+    volatile uint32_t cQueuedCmds;
+    LIST_ENTRY CmdQueue;
+} VBOXVDMADDI_CMD_QUEUE, *PVBOXVDMADDI_CMD_QUEUE;
+
+typedef struct VBOXVDMADDI_NODE
+{
+    VBOXVDMADDI_CMD_QUEUE CmdQueue;
+    UINT uLastCompletedFenceId;
+} VBOXVDMADDI_NODE, *PVBOXVDMADDI_NODE;
 
 #endif /* !GA_INCLUDED_SRC_WINNT_Graphics_Video_mp_wddm_VBoxMPTypes_h */

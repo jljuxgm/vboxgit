@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVdma.h 80876 2019-09-18 06:09:19Z vboxsync $ */
+/* $Id: VBoxMPVdma.h 81651 2019-11-04 12:52:17Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -39,8 +39,5 @@ int vboxVdmaCreate (PVBOXMP_DEVEXT pDevExt, VBOXVDMAINFO *pInfo
 int vboxVdmaDisable(PVBOXMP_DEVEXT pDevExt, PVBOXVDMAINFO pInfo);
 int vboxVdmaEnable(PVBOXMP_DEVEXT pDevExt, PVBOXVDMAINFO pInfo);
 int vboxVdmaDestroy(PVBOXMP_DEVEXT pDevExt, PVBOXVDMAINFO pInfo);
-
-NTSTATUS vboxVdmaGgDmaBltPerform(PVBOXMP_DEVEXT pDevExt, struct VBOXWDDM_ALLOC_DATA * pSrcAlloc, RECT* pSrcRect,
-        struct VBOXWDDM_ALLOC_DATA *pDstAlloc, RECT* pDstRect);
 
 #endif /* !GA_INCLUDED_SRC_WINNT_Graphics_Video_mp_wddm_VBoxMPVdma_h */

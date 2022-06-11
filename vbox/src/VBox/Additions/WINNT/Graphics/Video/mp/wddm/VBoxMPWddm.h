@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.h 80483 2019-08-28 16:07:42Z vboxsync $ */
+/* $Id: VBoxMPWddm.h 81651 2019-11-04 12:52:17Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -208,6 +208,12 @@ bool vboxWddmGhDisplayCheckSetInfoFromSource(PVBOXMP_DEVEXT pDevExt, PVBOXWDDM_S
 #define VBOXWDDM_CTXLOCK_UNLOCK(_p) do { \
         KeReleaseSpinLock(&(_p)->ContextLock, _ctxLockOldIrql); \
     } while (0)
+
+DECLINLINE(PVBOXWDDM_ALLOCATION) vboxWddmGetAllocationFromAllocList(DXGK_ALLOCATIONLIST *pAllocList)
+{
+    PVBOXWDDM_OPENALLOCATION pOa = (PVBOXWDDM_OPENALLOCATION)pAllocList->hDeviceSpecificAllocation;
+    return pOa->pAllocation;
+}
 
 #endif /* !GA_INCLUDED_SRC_WINNT_Graphics_Video_mp_wddm_VBoxMPWddm_h */
 
