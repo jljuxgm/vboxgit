@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneGlobal.cpp 83334 2020-03-19 16:17:08Z vboxsync $ */
+/* $Id: UIToolPaneGlobal.cpp 83481 2020-03-30 13:09:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolPaneGlobal class implementation.
  */
@@ -170,6 +170,7 @@ void UIToolPaneGlobal::openTool(UIToolType enmType)
             }
             case UIToolType_VMResourceMonitor:
             {
+                /* Create VM Resource Monitor: */
                 m_pPaneResourceMonitor = new UIResourceMonitorWidget(EmbedTo_Stack, m_pActionPool, false /* show toolbar */);
                 AssertPtrReturnVoid(m_pPaneResourceMonitor);
                 {
@@ -180,6 +181,7 @@ void UIToolPaneGlobal::openTool(UIToolType enmType)
 
                     /* Configure pane: */
                     m_pPaneResourceMonitor->setProperty("ToolType", QVariant::fromValue(UIToolType_VMResourceMonitor));
+
                     /* Add into layout: */
                     m_pLayout->addWidget(m_pPaneResourceMonitor);
                     m_pLayout->setCurrentWidget(m_pPaneResourceMonitor);
