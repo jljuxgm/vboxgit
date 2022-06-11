@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 79462 2019-07-02 09:55:41Z vboxsync $ */
+/* $Id: HMInternal.h 79477 2019-07-02 17:07:56Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -855,6 +855,10 @@ typedef struct VMXVMCSINFO
     bool                        fSwitchedTo64on32;
     /** Padding. */
     bool                        afPadding0[6];
+    /** The host CPU for which we have currently exported the host state. */
+    RTCPUID                     idHostCpu;
+    /** Padding. */
+    uint32_t                    u32Padding1;
     /** @} */
 
     /** @name Cache of execution related VMCS fields.
