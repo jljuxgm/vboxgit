@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 79476 2019-07-02 17:06:36Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 79518 2019-07-04 09:03:19Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -3250,7 +3250,6 @@ IEM_STATIC VBOXSTRICTRC iemVmxVmexitInstrStrIo(PVMCPU pVCpu, VMXINSTRID uInstrId
         RT_ZERO(ExitInfo);
         ExitInfo.uReason            = VMX_EXIT_IO_INSTR;
         ExitInfo.cbInstr            = cbInstr;
-        ExitInfo.InstrInfo          = ExitInstrInfo;
         ExitInfo.u64GuestLinearAddr = uGuestLinearAddr;
         ExitInfo.u64Qual            = RT_BF_MAKE(VMX_BF_EXIT_QUAL_IO_WIDTH,     cbAccess - 1)
                                     | RT_BF_MAKE(VMX_BF_EXIT_QUAL_IO_DIRECTION, uDirection)
@@ -3258,6 +3257,8 @@ IEM_STATIC VBOXSTRICTRC iemVmxVmexitInstrStrIo(PVMCPU pVCpu, VMXINSTRID uInstrId
                                     | RT_BF_MAKE(VMX_BF_EXIT_QUAL_IO_IS_REP,    fRep)
                                     | RT_BF_MAKE(VMX_BF_EXIT_QUAL_IO_ENCODING,  VMX_EXIT_QUAL_IO_ENCODING_DX)
                                     | RT_BF_MAKE(VMX_BF_EXIT_QUAL_IO_PORT,      u16Port);
+        if (IEM_GET_GUEST_CPU_FEATURES(pVCpu)->fVmxInsOutInfo)
+            ExitInfo.InstrInfo = ExitInstrInfo;
         return iemVmxVmexitInstrWithInfo(pVCpu, &ExitInfo);
     }
 
