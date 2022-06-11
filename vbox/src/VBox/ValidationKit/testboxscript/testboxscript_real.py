@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: testboxscript_real.py 79092 2019-06-11 15:26:40Z vboxsync $
+# $Id: testboxscript_real.py 81108 2019-10-04 01:41:17Z vboxsync $
 
 """
 TestBox Script - main().
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79092 $"
+__version__ = "$Revision: 81108 $"
 
 
 # Standard python imports.
@@ -178,7 +178,7 @@ class TestBoxScript(object):
             constants.tbreq.SIGNON_PARAM_SCRIPT_REV:       { self.VALUE: self._getScriptRev(),         self.FN: None },
             constants.tbreq.SIGNON_PARAM_REPORT:           { self.VALUE: self._getHostReport(),        self.FN: None },
             constants.tbreq.SIGNON_PARAM_PYTHON_VERSION:   { self.VALUE: self._getPythonHexVersion(),  self.FN: None },
-            constants.tbreq.SIGNON_PARAM_CPU_COUNT:        { self.VALUE: None,     self.FN: multiprocessing.cpu_count },
+            constants.tbreq.SIGNON_PARAM_CPU_COUNT:        { self.VALUE: None,     self.FN: utils.getPresentCpuCount },
             constants.tbreq.SIGNON_PARAM_MEM_SIZE:         { self.VALUE: None,     self.FN: self._getHostMemSize },
             constants.tbreq.SIGNON_PARAM_SCRATCH_SIZE:     { self.VALUE: None,     self.FN: self._getFreeScratchSpace },
         }
