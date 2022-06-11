@@ -1,4 +1,4 @@
-/* $Id: UICloudNetworkingStuff.h 84056 2020-04-28 16:28:30Z vboxsync $ */
+/* $Id: UICloudNetworkingStuff.h 84099 2020-04-30 10:50:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudNetworkingStuff namespace declaration.
  */
@@ -26,11 +26,11 @@
 
 /* COM includes: */
 #include "COMEnums.h"
+#include "CCloudClient.h"
+#include "CCloudMachine.h"
 #include "CCloudProfile.h"
 #include "CCloudProvider.h"
 #include "CCloudProviderManager.h"
-#include "CCloudClient.h"
-#include "CCloudMachine.h"
 #include "CForm.h"
 
 /** Cloud networking stuff namespace. */
