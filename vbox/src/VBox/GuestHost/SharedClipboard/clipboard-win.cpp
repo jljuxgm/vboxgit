@@ -1,4 +1,4 @@
-/* $Id: clipboard-win.cpp 81321 2019-10-17 14:46:33Z vboxsync $ */
+/* $Id: clipboard-win.cpp 81843 2019-11-14 16:30:44Z vboxsync $ */
 /** @file
  * Shared Clipboard: Windows-specific functions for clipboard handling.
  */
@@ -458,7 +458,7 @@ int SharedClipboardWinGetFormats(PSHCLWINCTX pCtx, PSHCLFORMATDATA pFormats)
     {
         LogFlowFunc(("fFormats=0x%08X\n", fFormats));
 
-        pFormats->uFormats = fFormats;
+        pFormats->Formats = fFormats;
         pFormats->fFlags   = 0; /** @todo Handle flags. */
     }
 

@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-win.cpp 81824 2019-11-13 13:28:48Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-win.cpp 81843 2019-11-14 16:30:44Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Win32 host.
  */
@@ -594,7 +594,7 @@ static int vboxClipboardSvcWinSyncInternal(PSHCLCONTEXT pCtx)
 
         rc = SharedClipboardWinGetFormats(&pCtx->Win, &Formats);
         if (   RT_SUCCESS(rc)
-            && Formats.uFormats != VBOX_SHCL_FMT_NONE)
+            && Formats.Formats != VBOX_SHCL_FMT_NONE)
         {
             rc = ShClSvcFormatsReport(pCtx->pClient, &Formats);
         }
@@ -725,13 +725,13 @@ int ShClSvcImplFormatAnnounce(PSHCLCLIENT pClient, PSHCLCLIENTCMDCTX pCmdCtx,
     PSHCLCONTEXT pCtx = pClient->State.pCtx;
     AssertPtrReturn(pCtx, VERR_INVALID_POINTER);
 
-    LogFlowFunc(("uFormats=0x%x, hWnd=%p\n", pFormats->uFormats, pCtx->Win.hWnd));
+    LogFlowFunc(("uFormats=0x%x, hWnd=%p\n", pFormats->Formats, pCtx->Win.hWnd));
 
     /*
      * The guest announced formats. Forward to the window thread.
      */
     PostMessage(pCtx->Win.hWnd, SHCL_WIN_WM_REPORT_FORMATS,
-                0 /* wParam */, pFormats->uFormats /* lParam */);
+                0 /* wParam */, pFormats->Formats /* lParam */);
 
     rc = VINF_SUCCESS;
 
