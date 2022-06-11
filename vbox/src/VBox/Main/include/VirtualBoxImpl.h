@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 78942 2019-06-03 19:10:19Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 79174 2019-06-17 10:30:49Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -174,8 +174,8 @@ public:
     void i_onSnapshotChange(const Guid &aMachineId, const Guid &aSnapshotId);
 
 #ifdef VBOX_WITH_SHARED_CLIPBOARD_URI_LIST
-    int i_clipboardAreaCreate(SharedClipboardAreaData &AreaData, uint32_t fFlags);
-    int i_clipboardAreaDestroy(SharedClipboardAreaData &AreaData);
+    int i_clipboardAreaCreate(ULONG uAreaID, uint32_t fFlags, SharedClipboardAreaData **ppAreaData);
+    int i_clipboardAreaDestroy(SharedClipboardAreaData *pAreaData);
 
     HRESULT i_onClipboardAreaRegister(const std::vector<com::Utf8Str> &aParms, ULONG *aID);
     HRESULT i_onClipboardAreaUnregister(ULONG aID);
