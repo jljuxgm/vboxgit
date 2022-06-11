@@ -1,4 +1,4 @@
-/* $Id: PGMAllHandler.cpp 82118 2019-11-22 23:31:45Z vboxsync $ */
+/* $Id: PGMAllHandler.cpp 82119 2019-11-22 23:32:26Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -1330,6 +1330,7 @@ static PPGMPAGE pgmPhysResolveMmio2PageLocked(PVMCC pVM, PPDMDEVINS pDevIns, PGM
         AssertReturn(pCur, NULL);
     }
 }
+
 
 /**
  * Replaces an MMIO page with an MMIO2 page.
