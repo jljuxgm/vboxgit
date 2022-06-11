@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.h 81739 2019-11-07 17:13:01Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.h 81740 2019-11-07 17:24:31Z vboxsync $ */
 
 /** @file
  *
@@ -123,8 +123,8 @@ private:
     HRESULT getSupportedExportOptions(std::vector<ExportOptions_T> &aSupportedExportOptions);
     HRESULT getSupportedRecordingAudioCodecs(std::vector<RecordingAudioCodec_T> &aSupportedRecordingAudioCodecs);
     HRESULT getSupportedRecordingVideoCodecs(std::vector<RecordingVideoCodec_T> &aSupportedRecordingVideoCodecs);
-    HRESULT getSupportedRecordingVideoScalingMethods(std::vector<RecordingVideoScalingMethod_T> &aSupportedRecordingVideoScalingMethods);
-    HRESULT getSupportedRecordingVideoRateControlModes(std::vector<RecordingVideoRateControlMode_T> &aSupportedRecordingVideoRateControlModes);
+    HRESULT getSupportedRecordingVSMethods(std::vector<RecordingVideoScalingMethod_T> &aSupportedRecordingVideoScalingMethods);
+    HRESULT getSupportedRecordingVRCModes(std::vector<RecordingVideoRateControlMode_T> &aSupportedRecordingVideoRateControlModes);
     HRESULT getSupportedGraphicsControllerTypes(std::vector<GraphicsControllerType_T> &aSupportedGraphicsControllerTypes);
     HRESULT getSupportedCloneOptions(std::vector<CloneOptions_T> &aSupportedCloneOptions);
     HRESULT getSupportedAutostopTypes(std::vector<AutostopType_T> &aSupportedAutostopTypes);
