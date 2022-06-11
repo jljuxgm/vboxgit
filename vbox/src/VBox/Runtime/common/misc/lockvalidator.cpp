@@ -1,4 +1,4 @@
-/* $Id: lockvalidator.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: lockvalidator.cpp 79786 2019-07-15 11:08:36Z vboxsync $ */
 /** @file
  * IPRT - Lock Validator.
  */
@@ -3372,8 +3372,13 @@ RTDECL(int) RTLockValidatorRecExclCheckBlocking(PRTLOCKVALRECEXCL pRec, RTTHREAD
              && (   pRecU->Excl.hClass->cMsMinDeadlock > cMillies
                  || pRecU->Excl.hClass->cMsMinDeadlock > RT_INDEFINITE_WAIT))
         rc = VINF_SUCCESS;
-    else if (!rtLockValidatorIsSimpleNoDeadlockCase(pRecU))
-        rc = rtLockValidatorDeadlockDetection(pRecU, pThreadSelf, pSrcPos);
+    else
+    {
+        rtLockValidatorSerializeDetectionEnter();
+        if (!rtLockValidatorIsSimpleNoDeadlockCase(pRecU))
+            rc = rtLockValidatorDeadlockDetection(pRecU, pThreadSelf, pSrcPos);
+        rtLockValidatorSerializeDetectionLeave();
+    }
 
     if (RT_SUCCESS(rc))
         ASMAtomicWriteBool(&pThreadSelf->fReallySleeping, fReallySleeping);
@@ -3674,8 +3679,13 @@ RTDECL(int) RTLockValidatorRecSharedCheckBlocking(PRTLOCKVALRECSHRD pRec, RTTHRE
              && (   pRec->hClass->cMsMinDeadlock == RT_INDEFINITE_WAIT
                  || pRec->hClass->cMsMinDeadlock > cMillies))
         rc = VINF_SUCCESS;
-    else if (!rtLockValidatorIsSimpleNoDeadlockCase(pRecU))
-        rc = rtLockValidatorDeadlockDetection(pRecU, pThreadSelf, pSrcPos);
+    else
+    {
+        rtLockValidatorSerializeDetectionEnter();
+        if (!rtLockValidatorIsSimpleNoDeadlockCase(pRecU))
+            rc = rtLockValidatorDeadlockDetection(pRecU, pThreadSelf, pSrcPos);
+        rtLockValidatorSerializeDetectionLeave();
+    }
 
     if (RT_SUCCESS(rc))
         ASMAtomicWriteBool(&pThreadSelf->fReallySleeping, fReallySleeping);
