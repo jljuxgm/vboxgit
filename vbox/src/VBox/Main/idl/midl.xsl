@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
-<!-- $Id: midl.xsl 76067 2018-12-08 00:54:36Z vboxsync $ -->
+<!-- $Id: midl.xsl 82969 2020-02-04 10:54:12Z vboxsync $ -->
 
 <!--
  *  A template to generate a MS IDL compatible interface definition file
  *  from the generic interface definition expressed in XML.
 
-    Copyright (C) 2006-2016 Oracle Corporation
+    Copyright (C) 2006-2020 Oracle Corporation
 
     This file is part of VirtualBox Open Source Edition (OSE), as
     available from http://www.virtualbox.org. This file is free software;
