@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.h 78513 2019-05-14 15:31:04Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.h 78517 2019-05-14 15:52:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class declaration.
  */
@@ -165,19 +165,6 @@ private:
     KStorageBus mBusType;
     KStorageControllerType mCtrType;
     QList<PixmapType> mPixmaps;
-};
-
-/* virtio-scsi Controller Type */
-class SHARED_LIBRARY_STUFF VirtioSCSIStorageControllerType : public AbstractControllerType
-{
-public:
-
-    VirtioSCSIStorageControllerType (KStorageControllerType aSubType);
-
-private:
-
-    KStorageControllerType first() const;
-    uint size() const;
 };
 
 /* Abstract Item */
