@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplExport.cpp 80210 2019-08-09 12:36:04Z vboxsync $ */
+/* $Id: ApplianceImplExport.cpp 80603 2019-09-05 10:42:53Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -205,7 +205,7 @@ HRESULT Machine::exportTo(const ComPtr<IAppliance> &aAppliance, const com::Utf8S
                      && pSATAController.isNull())
                 pSATAController = nwControllers[j];
             else if (   eType == StorageBus_SCSI
-                     && pSATAController.isNull())
+                     && pSCSIController.isNull())
                 pSCSIController = nwControllers[j];
             else if (   eType == StorageBus_SAS
                      && pSASController.isNull())
