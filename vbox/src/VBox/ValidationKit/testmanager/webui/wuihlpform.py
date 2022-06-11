@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuihlpform.py 83394 2020-03-24 18:54:07Z vboxsync $
+# $Id: wuihlpform.py 83396 2020-03-24 20:08:41Z vboxsync $
 
 """
 Test Manager Web-UI - Form Helpers.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 83394 $"
+__version__ = "$Revision: 83396 $"
 
 # Standard python imports.
 import copy;
@@ -779,7 +779,7 @@ class WuiHlpForm(object):
                   % ( SchedGroupDataEx.ksParam_aidTestGroups,
                       ','.join([unicode(oTestGroup.idTestGroup) for oTestGroup in aoAllRelevantTestGroups]), ));
 
-        self._add(u'<table class="tmformtbl">\n'
+        self._add(u'<table class="tmformtbl tmformtblschedgroupmembers">\n'
                   u' <thead>\n'
                   u'  <tr>\n'
                   u'    <th></th>\n'
@@ -827,16 +827,16 @@ class WuiHlpForm(object):
                           SchedGroupDataEx.ksParam_aoMembers, '' if oMember is None else ' checked', sCheckBoxAttr,
                           oTestGroup.idTestGroup, oTestGroup.idTestGroup, escapeElem(oTestGroup.sName),
                           ));
-            self._add(u'    <td align="left">%s</td>\n' % ( escapeElem(oTestGroup.sName), ));
+            self._add(u'    <td>%s</td>\n' % ( escapeElem(oTestGroup.sName), ));
 
-            self._add(u'    <td align="center">\n'
+            self._add(u'    <td>\n'
                       u'      <input name="%s[%s]" type="text" value="%s" style="max-width:3em;" %s>\n'
                       u'    </td>\n'
                       % ( sPrefix, SchedGroupMemberData.ksParam_iSchedPriority,
                           (oMember if oMember is not None else oDefMember).iSchedPriority,
                           ' readonly class="tmform-input-readonly"' if fReadOnly else '', ));
 
-            self._add(u'    <td align="center">\n'
+            self._add(u'    <td>\n'
                       u'      <select name="%s[%s]" id="%s[%s]" class="tmform-combobox"%s>\n'
                       u'        <option value="-1"%s>None</option>\n'
                       % ( sPrefix, SchedGroupMemberData.ksParam_idTestGroupPreReq,
@@ -852,7 +852,7 @@ class WuiHlpForm(object):
             self._add(u'      </select>\n'
                       u'    </td>\n');
 
-            self._add(u'    <td align="left">\n'
+            self._add(u'    <td>\n'
                       u'      Todo<input name="%s[%s]" type="hidden" value="%s">\n'
                       u'    </td>\n'
                       % ( sPrefix, SchedGroupMemberData.ksParam_bmHourlySchedule,

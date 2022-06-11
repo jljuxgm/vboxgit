@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: db.py 83389 2020-03-24 16:57:46Z vboxsync $
+# $Id: db.py 83396 2020-03-24 20:08:41Z vboxsync $
 
 """
 Test Manager - Database Interface.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 83389 $"
+__version__ = "$Revision: 83396 $"
 
 
 # Standard python imports.
@@ -641,10 +641,10 @@ class TMDatabaseConnection(object):
         for aEntry in self._aoTraceBack:
             iEntry += 1;
             sDebug += ' <tr>\n' \
-                      '  <td align="right">%s</td>\n' \
-                      '  <td align="right">%s</td>\n' \
-                      '  <td align="right">%s</td>\n' \
-                      '  <td align="right">%s</td>\n' \
+                      '  <td>%s</td>\n' \
+                      '  <td>%s</td>\n' \
+                      '  <td>%s</td>\n' \
+                      '  <td>%s</td>\n' \
                       '  <td><pre>%s</pre></td>\n' \
                       '  <td>%s</td>\n' \
                       ' </tr>\n' \
