@@ -1,4 +1,4 @@
-/** $Id: VBoxSF.cpp 79110 2019-06-13 00:17:25Z vboxsync $ */
+/** $Id: VBoxSF.cpp 79112 2019-06-13 03:33:29Z vboxsync $ */
 /** @file
  * VBoxSF - OS/2 Shared Folders, the FS and FSD level IFS EPs
  */
@@ -1536,6 +1536,10 @@ FS32_MKDIR(PCDFSI pCdFsi, PVBOXSFCD pCdFsd, PCSZ pszDir, LONG offCurDirEnd, PEAO
      */
     APIRET rc;
     if (pEaOp == NULL)
+        rc = NO_ERROR;
+    else
+        rc = vboxSfOs2CheckEaOpForCreation(pEaOp);
+    if (rc == NO_ERROR)
     {
         /*
          * Resolve the path.
@@ -1594,10 +1598,7 @@ FS32_MKDIR(PCDFSI pCdFsi, PVBOXSFCD pCdFsd, PCSZ pszDir, LONG offCurDirEnd, PEAO
         }
     }
     else
-    {
-        Log(("FS32_MKDIR: EAs not supported\n"));
-        rc = ERROR_EAS_NOT_SUPPORTED;
-    }
+        Log(("FS32_MKDIR: EA trouble %p: %u%s\n", pEaOp, rc, rc == ERROR_EAS_NOT_SUPPORTED ? " (ERROR_EAS_NOT_SUPPORTED)" : ""));
 
     RT_NOREF_PV(pCdFsi);
     LogFlow(("FS32_MMDIR: returns %u\n", rc));
