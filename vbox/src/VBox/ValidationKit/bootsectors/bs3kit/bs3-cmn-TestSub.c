@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-TestSub.c 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: bs3-cmn-TestSub.c 83022 2020-02-07 13:49:18Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3TestSub, Bs3TestSubF, Bs3TestSubV.
  */
@@ -63,7 +63,7 @@ BS3_CMN_DEF(void, Bs3TestSubV,(const char *pszFormat, va_list BS3_FAR va))
     Bs3PrintChr(':');
     do
        Bs3PrintChr(' ');
-    while (cch++ < 49);
+    while (cch++ < 48);
     Bs3PrintStr(" TESTING\n");
 
     /* The sub-test result is not yet reported. */
