@@ -1,4 +1,4 @@
-/* $Id: FsPerf.cpp 79140 2019-06-14 01:57:30Z vboxsync $ */
+/* $Id: FsPerf.cpp 79371 2019-06-27 02:51:22Z vboxsync $ */
 /** @file
  * FsPerf - File System (Shared Folders) Performance Benchmark.
  */
@@ -2422,8 +2422,9 @@ void fsPerfNtQueryInfoFileWorker(HANDLE hNtFile1, uint32_t fType)
                     )
                 RTTestIFailed("%s/%#x/%c: %#x", pszClass, cbBuf, chType, rcNt);
             if (   (Ios.Status != VirginIos.Status || Ios.Information != VirginIos.Information)
-                && !(   fType == RTFS_TYPE_DIRECTORY /* NTFS/W10-17763 */
-                    && Ios.Status == rcNt && Ios.Information == 0) )
+                && !(fType == RTFS_TYPE_DIRECTORY && Ios.Status == rcNt && Ios.Information == 0) /* NTFS/W10-17763 */
+                && !(   enmClass == FileUnusedInformation
+                     && Ios.Status == rcNt && Ios.Information == sizeof(uBuf)) /* NTFS/VBoxSF/w7rtm */ )
                 RTTestIFailed("%s/%#x/%c: I/O status block was modified: %#x %#zx",
                               pszClass, cbBuf, chType, Ios.Status, Ios.Information);
             if (!ASMMemIsAllU8(&uBuf, sizeof(uBuf), 0xff))
@@ -6657,7 +6658,7 @@ int main(int argc, char *argv[])
 
             case 'V':
             {
-                char szRev[] = "$Revision: 79140 $";
+                char szRev[] = "$Revision: 79371 $";
                 szRev[RT_ELEMENTS(szRev) - 2] = '\0';
                 RTPrintf(RTStrStrip(strchr(szRev, ':') + 1));
                 return RTEXITCODE_SUCCESS;
