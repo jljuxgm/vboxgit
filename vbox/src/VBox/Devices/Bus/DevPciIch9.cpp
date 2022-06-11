@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 81375 2019-10-19 13:57:55Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 81378 2019-10-19 13:59:55Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation device.
  *
@@ -2726,7 +2726,6 @@ static VBOXSTRICTRC devpciR3UpdateMappings(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDe
                 if (uNew != INVALID_PCI_ADDRESS)
                 {
                     /* The callout is optional with new style devices: */
-                    int rc;
                     if (pRegion->pfnMap)
                     {
                         rc = pRegion->pfnMap(pPciDev->Int.s.pDevInsR3, pPciDev, iRegion,
