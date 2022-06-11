@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 80439 2019-08-27 10:52:10Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 80440 2019-08-27 10:56:18Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -10466,7 +10466,7 @@ static void hmR0VmxPreRunGuestCommitted(PVMCPUCC pVCpu, PVMXTRANSIENT pVmxTransi
     VMCPU_ASSERT_STATE(pVCpu, VMCPUSTATE_STARTED_HM);
     VMCPU_SET_STATE(pVCpu, VMCPUSTATE_STARTED_EXEC);
 
-    PVMCC          pVM           = pVCpu->CTX_SUFF(pVM);
+    PVMCC        pVM           = pVCpu->CTX_SUFF(pVM);
     PVMXVMCSINFO pVmcsInfo     = pVmxTransient->pVmcsInfo;
     PHMPHYSCPU   pHostCpu      = hmR0GetCurrentCpu();
     RTCPUID const idCurrentCpu = pHostCpu->idCpu;
