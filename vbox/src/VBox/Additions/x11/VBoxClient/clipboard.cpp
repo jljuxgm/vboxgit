@@ -1,4 +1,4 @@
-/** $Id: clipboard.cpp 80847 2019-09-17 09:38:16Z vboxsync $ */
+/** $Id: clipboard.cpp 80990 2019-09-25 06:20:09Z vboxsync $ */
 /** @file
  * Guest Additions - X11 Shared Clipboard.
  */
@@ -151,7 +151,7 @@ void ClipReportX11Formats(SHCLCONTEXT *pCtx, uint32_t u32Formats)
 {
     RT_NOREF1(pCtx);
     LogRelFlowFunc(("u32Formats=%d\n", u32Formats));
-    int rc = VbglR3ClipboardReportFormats(g_ctx.client, u32Formats);
+    int rc = VbglR3ClipboardFormatsReport(g_ctx.client, u32Formats);
     LogRelFlowFunc(("rc=%Rrc\n", rc));
 }
 

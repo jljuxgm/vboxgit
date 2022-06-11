@@ -1,4 +1,4 @@
-/* $Id: clipboard-common.cpp 80907 2019-09-19 13:12:34Z vboxsync $ */
+/* $Id: clipboard-common.cpp 80990 2019-09-25 06:20:09Z vboxsync $ */
 /** @file
  * Shared Clipboard: Some helper function for converting between the various eol.
  */
@@ -816,6 +816,28 @@ void VBoxShClDbgDumpData(const void *pv, size_t cb, SHCLFORMAT u32Format)
 #endif /* LOG_ENABLED */
 
 /**
+ * Translates a Shared Clipboard host function number to a string.
+ *
+ * @returns Function ID string name.
+ * @param   uFn                 The function to translate.
+ */
+const char *VBoxShClHostFunctionToStr(uint32_t uFn)
+{
+    switch (uFn)
+    {
+        RT_CASE_RET_STR(VBOX_SHCL_HOST_FN_SET_MODE);
+        RT_CASE_RET_STR(VBOX_SHCL_HOST_FN_SET_HEADLESS);
+        RT_CASE_RET_STR(VBOX_SHCL_HOST_FN_CANCEL);
+        RT_CASE_RET_STR(VBOX_SHCL_HOST_FN_ERROR);
+        RT_CASE_RET_STR(VBOX_SHCL_HOST_FN_AREA_REGISTER);
+        RT_CASE_RET_STR(VBOX_SHCL_HOST_FN_AREA_UNREGISTER);
+        RT_CASE_RET_STR(VBOX_SHCL_HOST_FN_AREA_ATTACH);
+        RT_CASE_RET_STR(VBOX_SHCL_HOST_FN_AREA_DETACH);
+    }
+    return "Unknown";
+}
+
+/**
  * Translates a Shared Clipboard host message enum to a string.
  *
  * @returns Message ID string name.
@@ -888,4 +910,3 @@ const char *VBoxShClGuestMsgToStr(uint32_t uMsg)
     }
     return "Unknown";
 }
-

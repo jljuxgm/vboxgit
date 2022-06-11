@@ -1,4 +1,4 @@
-/* $Id: clipboard-helper.h 80847 2019-09-17 09:38:16Z vboxsync $ */
+/* $Id: clipboard-helper.h 80990 2019-09-25 06:20:09Z vboxsync $ */
 /** @file
  * Shared Clipboard - Some helper function for converting between the various EOLs.
  */
@@ -190,6 +190,14 @@ int VBoxShClDbgDumpHtml(const char *pszSrc, size_t cbSrc);
  */
 void VBoxShClDbgDumpData(const void *pv, size_t cb, SHCLFORMAT u32Format);
 #endif /* LOG_ENABLED */
+
+/**
+ * Translates a Shared Clipboard host function number to a string.
+ *
+ * @returns Function ID string name.
+ * @param   uFn                 The function to translate.
+ */
+const char *VBoxShClHostFunctionToStr(uint32_t uFn);
 
 /**
  * Translates a Shared Clipboard host message enum to a string.

@@ -1,4 +1,4 @@
-/* $Id: clipboard-transfers.cpp 80918 2019-09-20 10:27:30Z vboxsync $ */
+/* $Id: clipboard-transfers.cpp 80990 2019-09-25 06:20:09Z vboxsync $ */
 /** @file
  * Shared Clipboard: Common Shared Clipboard transfer handling code.
  */
@@ -1063,8 +1063,6 @@ int SharedClipboardTransferCreate(PSHCLTRANSFER *ppTransfer)
     pTransfer->State.enmStatus = SHCLTRANSFERSTATUS_NONE;
     pTransfer->State.enmDir    = SHCLTRANSFERDIR_UNKNOWN;
     pTransfer->State.enmSource = SHCLSOURCE_INVALID;
-
-    LogFlowFunc(("enmDir=%RU32, enmSource=%RU32\n", pTransfer->State.enmDir, pTransfer->State.enmSource));
 
     pTransfer->pArea = NULL; /* Will be created later if needed. */
 

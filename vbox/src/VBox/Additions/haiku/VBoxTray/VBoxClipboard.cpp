@@ -1,4 +1,4 @@
-/* $Id: VBoxClipboard.cpp 80847 2019-09-17 09:38:16Z vboxsync $ */
+/* $Id: VBoxClipboard.cpp 80990 2019-09-25 06:20:09Z vboxsync $ */
 /** @file
  * VBoxClipboard; Haiku Guest Additions, implementation.
  */
@@ -344,7 +344,7 @@ void VBoxShClService::MessageReceived(BMessage *message)
 
             be_clipboard->Unlock();
 
-            VbglR3ClipboardReportFormats(fClientId, formats);
+            VbglR3ClipboardFormatsReport(fClientId, formats);
             break;
         }
 
