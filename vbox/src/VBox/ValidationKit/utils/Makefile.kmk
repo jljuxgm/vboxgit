@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 78607 2019-05-20 20:59:49Z vboxsync $
+# $Id: Makefile.kmk 80029 2019-07-28 21:31:51Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - Utilities.
 #
@@ -36,6 +36,7 @@ include $(PATH_SUB_CURRENT)/fs/Makefile.kmk
 include $(PATH_SUB_CURRENT)/misc/Makefile.kmk
 include $(PATH_SUB_CURRENT)/network/Makefile.kmk
 include $(PATH_SUB_CURRENT)/serial/Makefile.kmk
+include $(PATH_SUB_CURRENT)/storage/Makefile.kmk
 ifeq ($(KBUILD_TARGET),win)
  include $(PATH_SUB_CURRENT)/nt/Makefile.kmk
 endif
