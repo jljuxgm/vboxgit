@@ -1,4 +1,4 @@
-/* $Id: HMVMXAll.cpp 79715 2019-07-12 05:59:51Z vboxsync $ */
+/* $Id: HMVMXAll.cpp 79874 2019-07-19 09:15:09Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - All contexts.
  */
@@ -1324,6 +1324,13 @@ VMM_INT_DECL(void) HMNotifyVmxNstGstVmexit(PVMCPU pVCpu)
      * VMCS controls on the next nested-guest VM-entry.
      */
     pVCpu->hm.s.vmx.fMergedNstGstCtls = false;
+
+    /*
+     * Flush the TLB before entering the outer guest execution (mainly required since the
+     * APIC-access guest-physical address would have changed and probably more things in
+     * the future).
+     */
+    pVCpu->hm.s.vmx.fSwitchedNstGstFlushTlb = true;
 }
 
 
