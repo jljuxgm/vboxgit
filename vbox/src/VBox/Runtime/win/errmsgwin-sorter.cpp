@@ -1,4 +1,4 @@
-/* $Id: errmsgwin-sorter.cpp 83743 2020-04-17 11:25:08Z vboxsync $ */
+/* $Id: errmsgwin-sorter.cpp 83744 2020-04-17 11:30:40Z vboxsync $ */
 /** @file
  * IPRT - Status code messages, Windows, sorter build program.
  */
@@ -59,7 +59,7 @@ typedef long VBOXSTATUSTYPE; /* used by errmsgvboxcomdata.h */
 static RTWINERRMSG  g_aStatusMsgs[] =
 {
 #if !defined(IPRT_NO_ERROR_DATA) && !defined(DOXYGEN_RUNNING)
-# include "errmsgcomdata.h"
+# include "errmsgwindata.h"
 # if defined(VBOX) && !defined(IN_GUEST)
 #  include "errmsgvboxcomdata.h"
 # endif
