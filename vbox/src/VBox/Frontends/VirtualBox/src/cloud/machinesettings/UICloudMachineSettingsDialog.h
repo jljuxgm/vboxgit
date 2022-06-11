@@ -1,4 +1,4 @@
-/* $Id: UICloudMachineSettingsDialog.h 83963 2020-04-24 11:05:10Z vboxsync $ */
+/* $Id: UICloudMachineSettingsDialog.h 84010 2020-04-27 14:46:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudMachineSettingsDialog class declaration.
  */
@@ -61,6 +61,9 @@ protected:
     virtual void retranslateUi() /* override */;
 
 private slots:
+
+    /** Sets Ok button to be @a fEnabled. */
+    void setOkButtonEnabled(bool fEnabled);
 
     /** Performs dialog refresh. */
     void sltRefresh();

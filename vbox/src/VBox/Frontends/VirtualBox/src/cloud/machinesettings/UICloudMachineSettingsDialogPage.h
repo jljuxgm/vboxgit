@@ -1,4 +1,4 @@
-/* $Id: UICloudMachineSettingsDialogPage.h 84009 2020-04-27 14:30:35Z vboxsync $ */
+/* $Id: UICloudMachineSettingsDialogPage.h 84010 2020-04-27 14:46:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudMachineSettingsDialogPage class declaration.
  */
@@ -36,6 +36,11 @@
 class UICloudMachineSettingsDialogPage : public QWidget
 {
     Q_OBJECT;
+
+signals:
+
+    /** Notifies listeners about value has became @a fValid. */
+    void sigValidChanged(bool fValid);
 
 public:
 
