@@ -1,4 +1,4 @@
-/* $Id: Virtio_1_0.cpp 82010 2019-11-20 03:20:11Z vboxsync $ */
+/* $Id: Virtio_1_0.cpp 82055 2019-11-20 20:57:51Z vboxsync $ */
 /** @file
  * Virtio_1_0 - Virtio Common (PCI, feature & config mgt, queue mgt & proxy, notification mgt)
  */
@@ -114,9 +114,8 @@ const char *virtioCoreGetStateChangeText(VIRTIOVMSTATECHANGED enmState)
     }
 }
 
-/*********************************************************************************************************************************
-*   Internal Functions                                                                                                           *
-*********************************************************************************************************************************/
+/* Internal Functions */
+
 static void virtioNotifyGuestDriver(PPDMDEVINS pDevIns, PVIRTIOCORE pVirtio, uint16_t idxQueue, bool fForce);
 static int  virtioKick(PPDMDEVINS pDevIns, PVIRTIOCORE pVirtio, uint8_t uCause, uint16_t uVec, bool fForce);
 
