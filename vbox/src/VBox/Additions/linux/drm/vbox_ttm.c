@@ -1,4 +1,4 @@
-/* $Id: vbox_ttm.c 79026 2019-06-06 14:36:31Z vboxsync $ */
+/* $Id: vbox_ttm.c 80269 2019-08-14 13:19:08Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -33,7 +33,7 @@
  *          Michael Thayer <michael.thayer@oracle.com>
  */
 #include "vbox_drv.h"
-#include <ttm/ttm_page_alloc.h>
+#include <drm/ttm/ttm_page_alloc.h>
 
 #if LINUX_VERSION_CODE < KERNEL_VERSION(3, 18, 0) && !defined(RHEL_72)
 #define PLACEMENT_FLAGS(placement) (placement)
