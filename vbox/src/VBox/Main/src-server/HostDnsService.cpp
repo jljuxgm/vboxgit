@@ -1,4 +1,4 @@
-/* $Id: HostDnsService.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: HostDnsService.cpp 83794 2020-04-18 13:25:05Z vboxsync $ */
 /** @file
  * Base class for Host DNS & Co services.
  */
@@ -31,7 +31,7 @@
 
 #include <algorithm>
 #include <set>
-#include <string>
+#include <iprt/sanitized/string>
 #include "HostDnsService.h"
 
 

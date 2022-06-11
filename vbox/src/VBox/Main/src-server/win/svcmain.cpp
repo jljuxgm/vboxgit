@@ -1,4 +1,4 @@
-/* $Id: svcmain.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: svcmain.cpp 83794 2020-04-18 13:25:05Z vboxsync $ */
 /** @file
  * SVCMAIN - COM out-of-proc server main entry
  */
@@ -184,8 +184,8 @@ bool CExeModule::StartMonitor()
     hEventShutdown = CreateEvent(NULL, false, false, NULL);
     if (hEventShutdown == NULL)
         return false;
-    DWORD dwThreadID;
-    HANDLE h = CreateThread(NULL, 0, MonitorProc, this, 0, &dwThreadID);
+    DWORD idThreadIgnored;
+    HANDLE h = CreateThread(NULL, 0, MonitorProc, this, 0, &idThreadIgnored);
     return (h != NULL);
 }
 
@@ -239,8 +239,8 @@ public:
     HRESULT i_getVirtualBox(IUnknown **ppResult);
 
 private:
-    HRESULT VirtualBoxClassFactory::i_registerWithSds(IUnknown **ppOtherVirtualBox);
-    void    VirtualBoxClassFactory::i_deregisterWithSds(void);
+    HRESULT i_registerWithSds(IUnknown **ppOtherVirtualBox);
+    void    i_deregisterWithSds(void);
 
     friend VBoxSVCRegistration;
 };

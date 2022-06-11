@@ -1,4 +1,4 @@
-/* $Id: HostDnsServiceLinux.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: HostDnsServiceLinux.cpp 83794 2020-04-18 13:25:05Z vboxsync $ */
 /** @file
  * Linux specific DNS information fetching.
  */
@@ -43,7 +43,7 @@
 #include <sys/types.h>
 #include <sys/socket.h>
 
-#include <string>
+#include <iprt/sanitized/string>
 #include <vector>
 #include "../HostDnsService.h"
 

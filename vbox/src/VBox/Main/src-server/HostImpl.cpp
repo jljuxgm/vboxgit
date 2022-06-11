@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: HostImpl.cpp 83794 2020-04-18 13:25:05Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -163,7 +163,7 @@ typedef SOLARISDVD *PSOLARISDVD;
 #include <stdio.h>
 
 #include <algorithm>
-#include <string>
+#include <iprt/sanitized/string>
 #include <vector>
 
 #include "HostDnsService.h"
@@ -645,7 +645,7 @@ HRESULT Host::i_updatePersistentConfigForHostOnlyAdapters(void)
         if (strKey.startsWith("HostOnly/{"))
         {
             Bstr bstrValue;
-            HRESULT hrc = m->pParent->GetExtraData(aGlobalExtraDataKeys[i], bstrValue.asOutParam());
+            hrc = m->pParent->GetExtraData(aGlobalExtraDataKeys[i], bstrValue.asOutParam());
             if (hrc != S_OK)
                 continue;
 

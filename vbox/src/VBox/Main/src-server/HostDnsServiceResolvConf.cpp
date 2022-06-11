@@ -1,4 +1,4 @@
-/* $Id: HostDnsServiceResolvConf.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: HostDnsServiceResolvConf.cpp 83794 2020-04-18 13:25:05Z vboxsync $ */
 /** @file
  * Base class for Host DNS & Co services.
  */
@@ -38,7 +38,7 @@ typedef int socklen_t;
 
 #include <VBox/log.h>
 
-#include <string>
+#include <iprt/sanitized/string>
 
 #include "HostDnsService.h"
 #include "../../Devices/Network/slirp/resolv_conf_parser.h"

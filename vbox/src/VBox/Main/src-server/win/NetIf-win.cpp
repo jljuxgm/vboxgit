@@ -1,4 +1,4 @@
-/* $Id: NetIf-win.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: NetIf-win.cpp 83794 2020-04-18 13:25:05Z vboxsync $ */
 /** @file
  * Main - NetIfList, Windows implementation.
  */
@@ -1909,7 +1909,7 @@ int NetIfList(std::list<ComObjPtr<HostNetworkInterface> > &list)
     else
     {
         std::list<BoundAdapter> boundAdapters;
-        HRESULT hr = netIfGetBoundAdapters(boundAdapters);
+        hr = netIfGetBoundAdapters(boundAdapters);
 #if 0
         if (hr != S_OK)
             hr = netIfGetBoundAdaptersFallback(boundAdapters);

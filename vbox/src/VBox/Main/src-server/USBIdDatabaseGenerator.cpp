@@ -1,4 +1,4 @@
-/* $Id: USBIdDatabaseGenerator.cpp 82972 2020-02-04 11:13:09Z vboxsync $ */
+/* $Id: USBIdDatabaseGenerator.cpp 83794 2020-04-18 13:25:05Z vboxsync $ */
 /** @file
  * USB device vendor and product ID database - generator.
  */
@@ -23,7 +23,7 @@
 
 #include <algorithm>
 #include <map>
-#include <string>
+#include <iprt/sanitized/string>
 #include <vector>
 
 #include <iprt/err.h>

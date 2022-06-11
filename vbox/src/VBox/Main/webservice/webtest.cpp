@@ -1,4 +1,4 @@
-/* $Id: webtest.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: webtest.cpp 83794 2020-04-18 13:25:05Z vboxsync $ */
 /** @file
  * webtest.cpp:
  *      demo webservice client in C++. This mimics some of the
@@ -23,8 +23,8 @@
 #include "vboxwebsrv.nsmap"
 
 #include <iostream>
-#include <sstream>
-#include <string>
+#include <iprt/sanitized/sstream>
+#include <iprt/sanitized/string>
 
 #include <iprt/initterm.h>
 #include <iprt/message.h>

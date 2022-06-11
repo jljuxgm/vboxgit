@@ -1,4 +1,4 @@
-/* $Id: NetIf-solaris.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: NetIf-solaris.cpp 83794 2020-04-18 13:25:05Z vboxsync $ */
 /** @file
  * Main - NetIfList, Solaris implementation.
  */
@@ -35,7 +35,7 @@
 #ifdef VBOX_WITH_HOSTNETIF_API
 
 #include <map>
-#include <string>
+#include <iprt/sanitized/string>
 #include <fcntl.h>
 #include <unistd.h>
 #include <stropts.h>

@@ -1,4 +1,4 @@
-/* $Id: HostDnsServiceDarwin.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: HostDnsServiceDarwin.cpp 83794 2020-04-18 13:25:05Z vboxsync $ */
 /** @file
  * Darwin specific DNS information fetching.
  */
@@ -27,7 +27,7 @@
 #include <CoreFoundation/CoreFoundation.h>
 #include <SystemConfiguration/SCDynamicStore.h>
 
-#include <string>
+#include <iprt/sanitized/string>
 #include <vector>
 #include "../HostDnsService.h"
 

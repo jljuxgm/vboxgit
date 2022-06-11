@@ -1,4 +1,4 @@
-/* $Id: vboxweb.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: vboxweb.h 83794 2020-04-18 13:25:05Z vboxsync $ */
 /** @file
  * vboxweb.h - header file for "real" web server code.
  */
@@ -31,7 +31,7 @@
 
 #include <iprt/asm.h>
 
-#include <string>
+#include <iprt/sanitized/string>
 
 /****************************************************************************
  *

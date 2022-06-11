@@ -1,4 +1,4 @@
-/* $Id: HostDnsServiceWin.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: HostDnsServiceWin.cpp 83794 2020-04-18 13:25:05Z vboxsync $ */
 /** @file
  * Host DNS listener for Windows.
  */
@@ -37,8 +37,8 @@
 #include <iprt/win/iphlpapi.h>
 
 #include <algorithm>
-#include <sstream>
-#include <string>
+#include <iprt/sanitized/sstream>
+#include <iprt/sanitized/string>
 #include <vector>
 
 static inline int registerNotification(const HKEY& hKey, HANDLE& hEvent);
