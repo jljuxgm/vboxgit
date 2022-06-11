@@ -1,4 +1,4 @@
-/* $Id: PCIRawDevImpl.h 76562 2019-01-01 03:22:50Z vboxsync $ */
+/* $Id: PCIRawDevImpl.h 81354 2019-10-18 13:38:05Z vboxsync $ */
 /** @file
  * VirtualBox Driver interface to raw PCI device
  */
@@ -21,7 +21,6 @@
 # pragma once
 #endif
 
-#include "VirtualBoxBase.h"
 #include <VBox/vmm/pdmdrv.h>
 
 class Console;
@@ -34,7 +33,6 @@ class PCIRawDev
     virtual ~PCIRawDev();
 
     static const PDMDRVREG DrvReg;
-    struct DRVMAINPCIRAWDEV *mpDrv;
 
     Console *getParent() const
     {
@@ -49,8 +47,8 @@ class PCIRawDev
                                                            uint32_t uHostPCIAddress, uint32_t uGuestPCIAddress,
                                                            int rc);
 
-
     Console * const mParent;
+    struct DRVMAINPCIRAWDEV *mpDrv;
 };
 
 #endif /* !MAIN_INCLUDED_PCIRawDevImpl_h */
