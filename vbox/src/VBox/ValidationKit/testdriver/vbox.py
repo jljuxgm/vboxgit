@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 84218 2020-05-08 15:52:35Z vboxsync $
+# $Id: vbox.py 84313 2020-05-14 18:29:44Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84218 $"
+__version__ = "$Revision: 84313 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -3574,6 +3574,8 @@ class TestDriver(base.TestDriver):                                              
                                  ('C:\\WINNT\\System32\\cmd.exe', '/C', 'dir', '${CDROM}'),
                                  fIgnoreErrors = True);
 
+            reporter.log('txsCdWait: Listing media directory:');
+            oTxsSession.syncExec('/bin/ls', ('/bin/ls', '-l', '-a', '-R', '/media'), fIgnoreErrors = True);
             reporter.log('txsCdWait: Listing mount points / drives:');
             oTxsSession.syncExec('/bin/mount', ('/bin/mount',), fIgnoreErrors = True);
             oTxsSession.syncExec('/bin/cat', ('/bin/cat', '/etc/fstab'), fIgnoreErrors = True);
