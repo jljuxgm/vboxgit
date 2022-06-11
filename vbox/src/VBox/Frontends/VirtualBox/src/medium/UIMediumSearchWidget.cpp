@@ -1,4 +1,4 @@
-/* $Id: UIMediumSearchWidget.cpp 78432 2019-05-07 14:01:55Z vboxsync $ */
+/* $Id: UIMediumSearchWidget.cpp 78435 2019-05-07 14:19:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSearchWidget class implementation.
  */
@@ -248,8 +248,6 @@ void UIMediumSearchWidget::goToNextPrevious(bool fNext)
 
 void UIMediumSearchWidget::sltShowNextMatchingItem()
 {
-    if (m_matchedItemList.isEmpty())
-        return;
     goToNextPrevious(true);
 }
 
