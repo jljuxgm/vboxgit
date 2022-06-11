@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElements.cpp 80784 2019-09-13 17:21:05Z vboxsync $ */
+/* $Id: UIDetailsElements.cpp 80817 2019-09-16 09:33:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement[Name] classes implementation.
  */
@@ -121,8 +121,8 @@ UIDetailsElementPreview::UIDetailsElementPreview(UIDetailsSet *pParent, bool fOp
     AssertPtr(m_pPreview);
     {
         /* Configure preview: */
-        connect(m_pPreview, SIGNAL(sigSizeHintChanged()),
-                this, SLOT(sltPreviewSizeHintChanged()));
+        connect(m_pPreview, &UIMachinePreview::sigSizeHintChanged,
+                this, &UIDetailsElementPreview::sltPreviewSizeHintChanged);
     }
 
     /* Translate finally: */

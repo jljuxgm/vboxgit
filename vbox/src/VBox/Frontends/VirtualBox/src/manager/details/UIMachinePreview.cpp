@@ -1,4 +1,4 @@
-/* $Id: UIMachinePreview.cpp 79860 2019-07-18 15:47:48Z vboxsync $ */
+/* $Id: UIMachinePreview.cpp 80817 2019-09-16 09:33:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachinePreview class implementation.
  */
@@ -418,9 +418,9 @@ void UIMachinePreview::prepare()
     setUpdateInterval(gEDataManager->selectorWindowPreviewUpdateInterval(), false);
 
     /* Setup connections: */
-    connect(m_pUpdateTimer, SIGNAL(timeout()), this, SLOT(sltRecreatePreview()));
-    connect(gVBoxEvents, SIGNAL(sigMachineStateChange(QUuid, KMachineState)),
-            this, SLOT(sltMachineStateChange(QUuid)));
+    connect(m_pUpdateTimer, &QTimer::timeout, this, &UIMachinePreview::sltRecreatePreview);
+    connect(gVBoxEvents, &UIVirtualBoxEventHandler::sigMachineStateChange,
+            this, &UIMachinePreview::sltMachineStateChange);
 
     /* Retranslate the UI */
     retranslateUi();
