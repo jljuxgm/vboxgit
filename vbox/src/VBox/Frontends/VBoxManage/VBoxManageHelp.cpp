@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 81603 2019-10-31 09:25:18Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 82198 2019-11-25 20:42:38Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -582,6 +582,7 @@ void printUsage(USAGECATEGORY enmCommand, uint64_t fSubcommandScope, PRTSTREAM p
                      "                            [--biosapic disabled|apic|x2apic]\n"
                      "                            [--biossystemtimeoffset <msec>]\n"
                      "                            [--biospxedebug on|off]\n"
+                     "                            [--system-uuid-le on|off]\n"
                      "                            [--boot<1-4> none|floppy|dvd|disk|net>]\n"
                      "                            [--nic<1-N> none|null|nat|bridged|intnet"
 #if defined(VBOX_WITH_NETFLT)
