@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 80333 2019-08-16 20:28:38Z vboxsync $ */
+/* $Id: IEMAll.cpp 80349 2019-08-20 04:57:12Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -16151,7 +16151,7 @@ VMM_INT_DECL(VBOXSTRICTRC) IEMExecDecodedInvvpid(PVMCPUCC pVCpu, PCVMXVEXITINFO 
  *
  * @remarks The @a pvUser argument is currently unused.
  */
-PGM_ALL_CB2_DECL(VBOXSTRICTRC) iemVmxApicAccessPageHandler(PVM pVM, PVMCPUCC pVCpu, RTGCPHYS GCPhysFault, void *pvPhys,
+PGM_ALL_CB2_DECL(VBOXSTRICTRC) iemVmxApicAccessPageHandler(PVMCC pVM, PVMCPUCC pVCpu, RTGCPHYS GCPhysFault, void *pvPhys,
                                                            void *pvBuf, size_t cbBuf, PGMACCESSTYPE enmAccessType,
                                                            PGMACCESSORIGIN enmOrigin, void *pvUser)
 {
