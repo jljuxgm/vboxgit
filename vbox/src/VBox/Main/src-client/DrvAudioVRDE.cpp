@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVRDE.cpp 82255 2019-11-27 23:20:26Z vboxsync $ */
+/* $Id: DrvAudioVRDE.cpp 82579 2019-12-13 13:54:24Z vboxsync $ */
 /** @file
  * VRDE audio backend for Main.
  */
@@ -160,7 +160,10 @@ static int vrdeControlStreamIn(PDRVAUDIOVRDE pDrv, PVRDESTREAM pStreamVRDE, PDMA
     LogFlowFunc(("enmStreamCmd=%ld\n", enmStreamCmd));
 
     if (!pDrv->pConsoleVRDPServer)
-        return VINF_SUCCESS;
+    {
+        LogRel(("Audio: VRDP console not ready yet\n"));
+        return VERR_AUDIO_STREAM_NOT_READY;
+    }
 
     int rc;
 
@@ -175,8 +178,8 @@ static int vrdeControlStreamIn(PDRVAUDIOVRDE pDrv, PVRDESTREAM pStreamVRDE, PDMA
                                                                pStreamVRDE->pCfg->Props.cbSample * 8 /* Bit */);
             if (rc == VERR_NOT_SUPPORTED)
             {
-                LogRel2(("Audio: No VRDE client connected, so no input recording available\n"));
-                rc = VINF_SUCCESS;
+                LogRel(("Audio: No VRDE client connected, so no input recording available\n"));
+                rc = VERR_AUDIO_STREAM_NOT_READY;
             }
 
             break;
