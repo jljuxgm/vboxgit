@@ -1,4 +1,4 @@
-/* $Id: vbsf.cpp 78562 2019-05-17 11:36:45Z vboxsync $ */
+/* $Id: vbsf.cpp 78575 2019-05-18 02:23:00Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders - File System Driver initialization and generic routines
  */
@@ -649,6 +649,14 @@ NTSTATUS DriverEntry(IN PDRIVER_OBJECT  DriverObject,
     VbglR0SfHostReqQueryFeaturesSimple(&g_fSfFeatures, &g_uSfLastFunction);
     LogRel(("VBoxSF: g_fHostFeatures=%#x g_fSfFeatures=%#RX64 g_uSfLastFunction=%u\n",
             g_fHostFeatures, g_fSfFeatures, g_uSfLastFunction));
+
+    if (!VbglR0CanUsePhysPageList())
+    {
+        LogRel(("vboxsf: Host does not support physical page lists.  Refuses to load!\n"));
+        VbglR0SfTerm();
+        RTR0Term();
+        return STATUS_UNSUCCESSFUL;
+    }
 
     /* Init the driver object. */
     DriverObject->DriverUnload = VBoxMRxUnload;
