@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.h 77170 2019-02-06 09:18:49Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.h 78500 2019-05-14 11:28:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class declaration.
  */
@@ -154,103 +154,12 @@ public:
 
 protected:
 
-    virtual KStorageControllerType first() const = 0;
-    virtual uint size() const = 0;
+    KStorageControllerType first() const;
+    uint size() const;
 
     KStorageBus mBusType;
     KStorageControllerType mCtrType;
     QList<PixmapType> mPixmaps;
-};
-
-/* IDE Controller Type */
-class SHARED_LIBRARY_STUFF IDEControllerType : public AbstractControllerType
-{
-public:
-
-    IDEControllerType (KStorageControllerType aSubType);
-
-private:
-
-    KStorageControllerType first() const;
-    uint size() const;
-};
-
-/* SATA Controller Type */
-class SHARED_LIBRARY_STUFF SATAControllerType : public AbstractControllerType
-{
-public:
-
-    SATAControllerType (KStorageControllerType aSubType);
-
-private:
-
-    KStorageControllerType first() const;
-    uint size() const;
-};
-
-/* SCSI Controller Type */
-class SHARED_LIBRARY_STUFF SCSIControllerType : public AbstractControllerType
-{
-public:
-
-    SCSIControllerType (KStorageControllerType aSubType);
-
-private:
-
-    KStorageControllerType first() const;
-    uint size() const;
-};
-
-/* Floppy Controller Type */
-class SHARED_LIBRARY_STUFF FloppyControllerType : public AbstractControllerType
-{
-public:
-
-    FloppyControllerType (KStorageControllerType aSubType);
-
-private:
-
-    KStorageControllerType first() const;
-    uint size() const;
-};
-
-/* SAS Controller Type */
-class SHARED_LIBRARY_STUFF SASControllerType : public AbstractControllerType
-{
-public:
-
-    SASControllerType (KStorageControllerType aSubType);
-
-private:
-
-    KStorageControllerType first() const;
-    uint size() const;
-};
-
-/* USB Controller Type */
-class SHARED_LIBRARY_STUFF USBStorageControllerType : public AbstractControllerType
-{
-public:
-
-    USBStorageControllerType (KStorageControllerType aSubType);
-
-private:
-
-    KStorageControllerType first() const;
-    uint size() const;
-};
-
-/* NVMe Controller Type */
-class SHARED_LIBRARY_STUFF NVMeStorageControllerType : public AbstractControllerType
-{
-public:
-
-    NVMeStorageControllerType (KStorageControllerType aSubType);
-
-private:
-
-    KStorageControllerType first() const;
-    uint size() const;
 };
 
 /* Abstract Item */
