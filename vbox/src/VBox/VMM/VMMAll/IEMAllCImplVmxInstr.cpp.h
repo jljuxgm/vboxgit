@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 82575 2019-12-13 05:48:21Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 82705 2020-01-10 05:26:47Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -3509,13 +3509,6 @@ IEM_STATIC VBOXSTRICTRC iemVmxVmexitExtInt(PVMCPUCC pVCpu, uint8_t uVector, bool
     PCVMXVVMCS pVmcs = pVCpu->cpum.GstCtx.hwvirt.vmx.CTX_SUFF(pVmcs);
     Assert(pVmcs);
     Assert(!fIntPending || uVector == 0);
-
-    /** @todo NSTVMX: r=ramshankar: Consider standardizing check basic/blanket
-     *        intercepts for VM-exits. Right now it is not clear which iemVmxVmexitXXX()
-     *        functions require prior checking of a blanket intercept and which don't.
-     *        It is better for the caller to check a blanket intercept performance wise
-     *        than making a function call. Leaving this as a todo because it is more
-     *        a performance issue. */
 
     /* The VM-exit is subject to "External interrupt exiting" being set. */
     if (pVmcs->u32PinCtls & VMX_PIN_CTLS_EXT_INT_EXIT)
