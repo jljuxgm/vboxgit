@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 82453 2019-12-06 12:48:43Z vboxsync $ */
+/* $Id: DevHDA.cpp 82459 2019-12-06 13:15:43Z vboxsync $ */
 /** @file
  * DevHDA.cpp - VBox Intel HD Audio Controller.
  *
@@ -4370,7 +4370,7 @@ static int hdaR3AttachInternal(PPDMDEVINS pDevIns, PHDASTATE pThis, PHDASTATER3 
  * during runtime.
  *
  * @returns VBox status code.
- * @param   pThisR3     The ring-3 HDA device state.
+ * @param   pThisCC     The ring-3 HDA device state.
  * @param   pDrv        Driver to detach from device.
  * @param   fFlags      Flags, combination of the PDMDEVATT_FLAGS_* \#defines.
  */
