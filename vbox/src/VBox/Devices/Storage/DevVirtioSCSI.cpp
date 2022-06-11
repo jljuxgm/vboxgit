@@ -1,4 +1,4 @@
-/* $Id: DevVirtioSCSI.cpp 81302 2019-10-17 07:25:17Z vboxsync $ $Revision: 81302 $ $Date: 2019-10-17 15:25:17 +0800 (Thu, 17 Oct 2019) $ $Author: vboxsync $ */
+/* $Id: DevVirtioSCSI.cpp 81306 2019-10-17 11:18:55Z vboxsync $ $Revision: 81306 $ $Date: 2019-10-17 19:18:55 +0800 (Thu, 17 Oct 2019) $ $Author: vboxsync $ */
 /** @file
  * VBox storage devices - Virtio SCSI Driver
  *
@@ -1909,7 +1909,7 @@ static int virtioScsiCfgAccessed(PVIRTIOSCSI pThis, uint32_t uOffset,
                                     const void *pv, uint32_t cb, bool fWrite)
 {
 
-    AssertReturn(!pv || cb >= sizeof(uint32_t), fWrite ? VINF_SUCCESS : VINF_IOM_MMIO_UNUSED_00);
+    AssertReturn(!pv || cb > sizeof(uint32_t), fWrite ? VINF_SUCCESS : VINF_IOM_MMIO_UNUSED_00);
 
     if (MATCH_SCSI_CONFIG(uNumQueues))
         SCSI_CONFIG_ACCESSOR_READONLY(uNumQueues);
