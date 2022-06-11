@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 82237 2019-11-27 04:15:02Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 82264 2019-11-28 10:28:42Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -9259,7 +9259,7 @@ static VBOXSTRICTRC hmR0VmxExportGuestStateOptimal(PVMCPUCC pVCpu, PVMXTRANSIENT
  * @param   pVmcsInfo   The VMCS info. object.
  *
  * @remarks This function assumes our cache of the VMCS controls
- *          are valid, i.e. hmR0VmxCheckVmcsCtls() succeeded.
+ *          are valid, i.e. hmR0VmxCheckCachedVmcsCtls() succeeded.
  */
 static uint32_t hmR0VmxCheckGuestState(PVMCPUCC pVCpu, PCVMXVMCSINFO pVmcsInfo)
 {
