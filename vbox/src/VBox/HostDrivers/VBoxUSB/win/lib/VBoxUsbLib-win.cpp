@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbLib-win.cpp 78998 2019-06-05 14:30:40Z vboxsync $ */
+/* $Id: VBoxUsbLib-win.cpp 78999 2019-06-05 14:33:18Z vboxsync $ */
 /** @file
  * VBox USB ring-3 Driver Interface library, Windows.
  */
@@ -306,11 +306,7 @@ static int usbLibDevPopulate(PUSBDEVICE pDev, PUSB_NODE_CONNECTION_INFORMATION_E
     pDev->idProduct = pConInfo->DeviceDescriptor.idProduct;
     pDev->bcdDevice = pConInfo->DeviceDescriptor.bcdDevice;
     pDev->bBus = 0; /** @todo figure out bBus on windows... */
-#if 1 /** @todo check up the bPort value before enabling this. */
     pDev->bPort = iPort;
-#else
-    pDev->bPort = 0;
-#endif
     /** @todo check which devices are used for primary input (keyboard & mouse) */
     if (!lpszDrvKeyName || *lpszDrvKeyName == 0)
         pDev->enmState = USBDEVICESTATE_UNUSED;
