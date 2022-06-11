@@ -1,4 +1,4 @@
-/* $Id: tstClipboardServiceHost.cpp 82890 2020-01-28 15:52:02Z vboxsync $ */
+/* $Id: tstClipboardServiceHost.cpp 82891 2020-01-28 15:59:15Z vboxsync $ */
 /** @file
  * Shared Clipboard host service test case.
  */
@@ -34,16 +34,6 @@ struct VBOXHGCMCALLHANDLE_TYPEDEF
     /** Where to store the result code */
     int32_t rc;
 };
-
-/** Don't let assertions in the host service panic (core dump) the test cases. */
-RTDECL(bool) RTAssertShouldPanic(void)
-{
-#ifndef DEBUG_andy
-    return false;
-#else
-    return true;
-#endif
-}
 
 /** Call completion callback for guest calls. */
 static DECLCALLBACK(int) callComplete(VBOXHGCMCALLHANDLE callHandle, int32_t rc)
@@ -280,6 +270,8 @@ static void testSetHeadless(void)
 
 static void testHostCall(void)
 {
+    RTAssertSetMayPanic(false);
+
     testSetMode();
 #ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS
     testSetTransferMode();
