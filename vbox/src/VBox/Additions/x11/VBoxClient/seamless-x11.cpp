@@ -1,4 +1,4 @@
-/* $Id: seamless-x11.cpp 83045 2020-02-11 12:31:53Z vboxsync $ */
+/* $Id: seamless-x11.cpp 83048 2020-02-11 13:16:48Z vboxsync $ */
 /** @file
  * X11 Seamless mode.
  */
@@ -92,7 +92,7 @@ int SeamlessX11::init(PFNSENDREGIONUPDATE pHostCallback)
 
     mRandRMask = 0;
     mRandRAvailable = false;
-    if (XRRQueryExtension(mDisplay, &mRandREventBase, &mRandRErrorBase))
+    /*if (XRRQueryExtension(mDisplay, &mRandREventBase, &mRandRErrorBase))
     {
         int iRandRMajor = 0;
         int iRandRMinor = 0;
@@ -105,7 +105,7 @@ int SeamlessX11::init(PFNSENDREGIONUPDATE pHostCallback)
                     RROutputChangeNotifyMask |
                     RROutputPropertyNotifyMask;
         }
-    }
+        }*/
     mHostCallback = pHostCallback;
     mEnabled = false;
     unmonitorClientList();
