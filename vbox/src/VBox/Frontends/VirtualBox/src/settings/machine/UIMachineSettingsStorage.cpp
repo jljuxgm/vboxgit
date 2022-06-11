@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 81164 2019-10-08 17:57:50Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 81189 2019-10-09 15:05:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class implementation.
  */
@@ -4051,6 +4051,9 @@ void UIMachineSettingsStorage::sltHandleCurrentItemChange()
 
 void UIMachineSettingsStorage::sltHandleContextMenuRequest(const QPoint &position)
 {
+    /* Forget last mouse press position: */
+    m_mousePressPosition = QPoint();
+
     const QModelIndex index = m_pTreeStorage->indexAt(position);
     if (!index.isValid())
         return sltAddController();
