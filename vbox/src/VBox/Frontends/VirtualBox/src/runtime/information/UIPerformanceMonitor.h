@@ -1,4 +1,4 @@
-/* $Id: UIPerformanceMonitor.h 80341 2019-08-19 11:11:27Z vboxsync $ */
+/* $Id: UIPerformanceMonitor.h 80380 2019-08-21 19:16:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPerformanceMonitor class declaration.
  */
@@ -37,6 +37,7 @@
 
 /* GUI includes: */
 #include "QIWithRetranslateUI.h"
+#include "UITextTable.h"
 
 /* Forward declarations: */
 class QTimer;
@@ -109,6 +110,7 @@ private:
     void updateRAMGraphsAndMetric(quint64 iTotalRAM, quint64 iFreeRAM);
     void updateNewGraphsAndMetric(ULONG iReceiveRate, ULONG iTransmitRate);
     QString dataColorString(const QString &strChartName, int iDataIndex);
+    UITextTable runTimeAttributes();
 
     bool m_fGuestAdditionsAvailable;
     /** Holds the machine instance. */
