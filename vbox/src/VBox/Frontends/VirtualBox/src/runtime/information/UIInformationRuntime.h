@@ -1,4 +1,4 @@
-/* $Id: UIInformationRuntime.h 80523 2019-09-01 08:55:31Z vboxsync $ */
+/* $Id: UIInformationRuntime.h 80525 2019-09-01 13:39:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationRuntime class declaration.
  */
@@ -37,7 +37,8 @@
 
 /* GUI includes: */
 #include "QIWithRetranslateUI.h"
-#include "UITextTable.h"
+#include "UIMainEventListener.h"
+
 
 /* Forward declarations: */
 class QTimer;
@@ -154,6 +155,7 @@ private slots:
     void sltTimeout();
     void sltGuestAdditionsStateChange();
     void sltGuestMonitorChange(KGuestMonitorChangedEventType changeType, ulong uScreenId, QRect screenGeo);
+    void sltVRDEChange();
 
 private:
 
@@ -191,6 +193,7 @@ private:
     QMap<QString, UIMetric> m_subMetrics;
     QMap<QString,UIChart*>  m_charts;
     QMap<QString,QLabel*>  m_infoLabels;
+    ComObjPtr<UIMainEventListenerImpl> m_pQtGuestListener;
 
     /** @name These metric names are used for map keys to identify metrics.
       * @{ */
