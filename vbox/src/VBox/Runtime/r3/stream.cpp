@@ -1,4 +1,4 @@
-/* $Id: stream.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: stream.cpp 81521 2019-10-24 15:44:53Z vboxsync $ */
 /** @file
  * IPRT - I/O Stream.
  */
@@ -902,7 +902,7 @@ static int rtStrmWriteLocked(PRTSTREAM pStream, const void *pvBuf, size_t cbWrit
     {
         char       *pszSrcFree = NULL;
         const char *pszSrc     = (const char *)pvBuf;
-        if (pszSrc[cbWrite])
+        if (pszSrc[cbWrite - 1])
         {
             pszSrc = pszSrcFree = RTStrDupN(pszSrc, cbWrite);
             if (pszSrc == NULL)
