@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic2.cpp 79544 2019-07-05 07:52:53Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic2.cpp 79550 2019-07-05 08:49:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic2 class implementation.
  */
@@ -344,7 +344,7 @@ void UIWizardExportAppPage2::populateFormProperties()
 
             /* Read Cloud Client Export description form: */
             CVirtualSystemDescriptionForm comExportForm;
-            CProgress comExportDescriptionFormProgress = comCloudClient.GetExportDescriptionForm(comVSD, comExportForm);
+            CProgress comExportDescriptionFormProgress = comCloudClient.GetExportLaunchDescriptionForm(comVSD, comExportForm);
             if (!comCloudClient.isOk())
             {
                 msgCenter().cannotAcquireCloudClientParameter(comCloudClient);
