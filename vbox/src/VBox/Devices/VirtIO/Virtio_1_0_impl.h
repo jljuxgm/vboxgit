@@ -1,4 +1,4 @@
-/* $Id: Virtio_1_0_impl.h 80522 2019-08-31 21:19:08Z vboxsync $ $Revision: 80522 $ $Date: 2019-09-01 05:19:08 +0800 (Sun, 01 Sep 2019) $ $Author: vboxsync $ */
+/* $Id: Virtio_1_0_impl.h 80527 2019-09-01 16:28:56Z vboxsync $ $Revision: 80527 $ $Date: 2019-09-02 00:28:56 +0800 (Mon, 02 Sep 2019) $ $Author: vboxsync $ */
 /** @file
  * Virtio_1_0_impl.h - Virtio Declarations
  */
@@ -511,7 +511,7 @@ DECLINLINE(void) virtioWriteUsedAvailEvent(PVIRTIOSTATE pVirtio, uint16_t qIdx, 
 DECLINLINE(void) virtioLogDeviceStatus( uint8_t status)
 {
     if (status == 0)
-        Log(("RESET"));
+        Log3(("RESET"));
     else
     {
         int primed = 0;

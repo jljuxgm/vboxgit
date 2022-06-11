@@ -1,4 +1,4 @@
-/* $Id: Virtio_1_0.cpp 80522 2019-08-31 21:19:08Z vboxsync $ */
+/* $Id: Virtio_1_0.cpp 80527 2019-09-01 16:28:56Z vboxsync $ */
 /** @file
  * Virtio_1_0 - Virtio Common (PCI, feature & config mgt, queue mgt & proxy, notification mgt)
  */
@@ -637,7 +637,7 @@ static int virtioCommonCfgAccessed(PVIRTIOSTATE pVirtio, int fWrite, off_t uOffs
             pVirtio->uDeviceStatus = *(uint8_t *)pv;
             Log3Func(("Guest wrote uDeviceStatus ................ ("));
             virtioLogDeviceStatus(pVirtio->uDeviceStatus);
-            Log((")\n"));
+            Log3((")\n"));
             if (pVirtio->uDeviceStatus == 0)
                 virtioGuestResetted(pVirtio);
             /**
@@ -655,7 +655,7 @@ static int virtioCommonCfgAccessed(PVIRTIOSTATE pVirtio, int fWrite, off_t uOffs
             Log3Func(("Guest read  uDeviceStatus ................ ("));
             *(uint32_t *)pv = pVirtio->uDeviceStatus;
             virtioLogDeviceStatus(pVirtio->uDeviceStatus);
-            Log((")\n"));
+            Log3((")\n"));
         }
     }
     else if (MATCH_COMMON_CFG(uMsixConfig))
