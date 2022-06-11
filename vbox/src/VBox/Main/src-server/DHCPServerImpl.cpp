@@ -1,4 +1,4 @@
-/* $Id: DHCPServerImpl.cpp 79774 2019-07-14 21:32:22Z vboxsync $ */
+/* $Id: DHCPServerImpl.cpp 79775 2019-07-14 22:46:31Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -387,8 +387,8 @@ HRESULT DHCPServer::i_removeConfig(DHCPConfig *pConfig, DHCPConfigScope_T enmSco
                     DHCPConfig *pCurConfig = it->second;
                     if (pCurConfig == pConfig)
                     {
+                        m->groupConfigs.erase(it++); /* Post increment returns copy of original that is then erased. */
                         fFound = true;
-                        it = m->groupConfigs.erase(it);
                     }
                     else
                         ++it;
@@ -404,8 +404,8 @@ HRESULT DHCPServer::i_removeConfig(DHCPConfig *pConfig, DHCPConfigScope_T enmSco
                     DHCPConfig *pCurConfig = it->second;
                     if (pCurConfig == pConfig)
                     {
+                        m->individualConfigs.erase(it++); /* Post increment returns copy of original that is then erased. */
                         fFound = true;
-                        it = m->individualConfigs.erase(it);
                     }
                     else
                         ++it;
