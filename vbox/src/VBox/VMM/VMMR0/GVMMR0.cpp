@@ -1,4 +1,4 @@
-/* $Id: GVMMR0.cpp 80047 2019-07-29 19:12:29Z vboxsync $ */
+/* $Id: GVMMR0.cpp 80191 2019-08-08 00:36:57Z vboxsync $ */
 /** @file
  * GVMM - Global VM Manager.
  */
@@ -957,8 +957,8 @@ GVMMR0DECL(int) GVMMR0CreateVM(PSUPDRVSESSION pSession, uint32_t cCpus, PVM *ppV
                                 {
                                     pGVM->aCpus[i].pVMR0 = pGVM;
                                     pGVM->aCpus[i].pVMR3 = pVMR3;
-                                    pGVM->apCpus[i] = RTR0MemObjAddressR3(pGVM->aCpus[i].gvmm.s.VMCpuMapObj);
-                                    AssertPtr((void *)pGVM->apCpus[i]);
+                                    pGVM->apCpusR3[i] = RTR0MemObjAddressR3(pGVM->aCpus[i].gvmm.s.VMCpuMapObj);
+                                    AssertPtr((void *)pGVM->apCpusR3[i]);
                                 }
 
                                 pGVM->paVMPagesR3 = RTR0MemObjAddressR3(pGVM->gvmm.s.VMPagesMapObj);
@@ -1093,6 +1093,7 @@ GVMMR0DECL(int) GVMMR0CreateVM(PSUPDRVSESSION pSession, uint32_t cCpus, PVM *ppV
                                         pVM->aCpus[i].pVMR3           = pVMR3;
                                         pVM->aCpus[i].idHostCpu       = NIL_RTCPUID;
                                         pVM->aCpus[i].hNativeThreadR0 = NIL_RTNATIVETHREAD;
+                                        pVM->apCpusR3[i] = pVMR3 + RT_UOFFSETOF_DYN(VM, aCpus[i]);
                                     }
 
                                     rc = RTR0MemObjMapUser(&pGVM->gvmm.s.VMPagesMapObj, pGVM->gvmm.s.VMPagesMemObj, (RTR3PTR)-1,

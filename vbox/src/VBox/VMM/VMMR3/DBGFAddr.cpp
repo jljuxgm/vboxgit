@@ -1,4 +1,4 @@
-/* $Id: DBGFAddr.cpp 80014 2019-07-26 16:12:06Z vboxsync $ */
+/* $Id: DBGFAddr.cpp 80191 2019-08-08 00:36:57Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Mixed Address Methods.
  */
@@ -19,6 +19,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#define VBOX_BUGREF_9217_PART_I
 #define LOG_GROUP LOG_GROUP_DBGF
 #include <VBox/vmm/dbgf.h>
 #include <VBox/vmm/pgm.h>

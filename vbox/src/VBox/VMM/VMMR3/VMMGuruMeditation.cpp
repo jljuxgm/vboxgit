@@ -1,4 +1,4 @@
-/* $Id: VMMGuruMeditation.cpp 80156 2019-08-06 13:54:47Z vboxsync $ */
+/* $Id: VMMGuruMeditation.cpp 80191 2019-08-08 00:36:57Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor, Guru Meditation Code.
  */
@@ -19,6 +19,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#define VBOX_BUGREF_9217_PART_I
 #define LOG_GROUP LOG_GROUP_VMM
 #include <VBox/vmm/vmm.h>
 #include <VBox/vmm/pdmapi.h>

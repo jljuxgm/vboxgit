@@ -1,4 +1,4 @@
-/* $Id: DBGFDisas.cpp 80161 2019-08-06 18:10:51Z vboxsync $ */
+/* $Id: DBGFDisas.cpp 80191 2019-08-08 00:36:57Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Disassembler.
  */
@@ -19,6 +19,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#define VBOX_BUGREF_9217_PART_I
 #define LOG_GROUP LOG_GROUP_DBGF
 #include <VBox/vmm/dbgf.h>
 #include <VBox/vmm/selm.h>

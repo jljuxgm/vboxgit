@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletion.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: PDMAsyncCompletion.cpp 80191 2019-08-08 00:36:57Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -19,6 +19,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#define VBOX_BUGREF_9217_PART_I
 #define LOG_GROUP LOG_GROUP_PDM_ASYNC_COMPLETION
 #include "PDMInternal.h"
 #include <VBox/vmm/pdm.h>

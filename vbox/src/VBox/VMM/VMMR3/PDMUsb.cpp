@@ -1,4 +1,4 @@
-/* $Id: PDMUsb.cpp 80153 2019-08-06 10:47:09Z vboxsync $ */
+/* $Id: PDMUsb.cpp 80191 2019-08-08 00:36:57Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, USB part.
  */
@@ -19,6 +19,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#define VBOX_BUGREF_9217_PART_I
 #define LOG_GROUP LOG_GROUP_PDM_DRIVER
 #include "PDMInternal.h"
 #include <VBox/vmm/pdm.h>

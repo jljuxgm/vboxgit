@@ -1,4 +1,4 @@
-/* $Id: DBGFBp.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: DBGFBp.cpp 80191 2019-08-08 00:36:57Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Breakpoint Management.
  */
@@ -19,6 +19,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#define VBOX_BUGREF_9217_PART_I
 #define LOG_GROUP LOG_GROUP_DBGF
 #include <VBox/vmm/dbgf.h>
 #include <VBox/vmm/selm.h>
@@ -100,7 +101,7 @@ int dbgfR3BpInit(PVM pVM)
 
     for (VMCPUID idCpu = 0; idCpu < pVM->cCpus; idCpu++)
     {
-        PVMCPU pVCpu = &pVM->aCpus[idCpu];
+        PVMCPU pVCpu = pVM->apCpusR3[idCpu];
         pVCpu->dbgf.s.iActiveBp = ~0U;
     }
 

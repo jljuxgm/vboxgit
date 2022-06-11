@@ -1,4 +1,4 @@
-/* $Id: EMR3Dbg.cpp 76993 2019-01-25 14:34:46Z vboxsync $ */
+/* $Id: EMR3Dbg.cpp 80191 2019-08-08 00:36:57Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager, Debugger Related Bits.
  */
@@ -19,6 +19,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#define VBOX_BUGREF_9217_PART_I
 #define LOG_GROUP LOG_GROUP_EM
 #include <VBox/vmm/em.h>
 #include <VBox/vmm/hm.h>
@@ -198,7 +199,7 @@ static DECLCALLBACK(void) emR3InfoExitHistory(PVM pVM, PCDBGFINFOHLP pHlp, const
      */
     PVMCPU   pVCpu    = VMMGetCpu(pVM);
     if (!pVCpu)
-        pVCpu = &pVM->aCpus[0];
+        pVCpu = pVM->apCpusR3[0];
     bool     fReverse = true;
     uint32_t cLeft    = RT_ELEMENTS(pVCpu->em.s.aExitHistory);
 

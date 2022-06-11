@@ -1,4 +1,4 @@
-/* $Id: DBGFCpu.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: DBGFCpu.cpp 80191 2019-08-08 00:36:57Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, CPU State Accessors.
  */
@@ -19,6 +19,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#define VBOX_BUGREF_9217_PART_I
 #define LOG_GROUP LOG_GROUP_DBGF
 #define VMCPU_INCL_CPUM_GST_CTX /* For CPUM_IMPORT_EXTRN_RET(). */
 #include <VBox/vmm/dbgf.h>

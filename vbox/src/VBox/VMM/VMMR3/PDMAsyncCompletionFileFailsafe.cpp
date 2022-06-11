@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileFailsafe.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileFailsafe.cpp 80191 2019-08-08 00:36:57Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  * Simple File I/O manager.
@@ -20,12 +20,15 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#define VBOX_BUGREF_9217_PART_I
 #define LOG_GROUP LOG_GROUP_PDM_ASYNC_COMPLETION
 #include <iprt/asm.h>
 #include <iprt/assert.h>
 #include <VBox/log.h>
 
 #include "PDMAsyncCompletionFileInternal.h"
+
+
 
 /**
  * Put a list of tasks in the pending request list of an endpoint.

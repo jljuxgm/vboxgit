@@ -1,4 +1,4 @@
-/* $Id: IOM.cpp 80161 2019-08-06 18:10:51Z vboxsync $ */
+/* $Id: IOM.cpp 80191 2019-08-08 00:36:57Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor.
  */
@@ -105,6 +105,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#define VBOX_BUGREF_9217_PART_I
 #define LOG_GROUP LOG_GROUP_IOM
 #include <VBox/vmm/iom.h>
 #include <VBox/vmm/cpum.h>
@@ -259,10 +260,10 @@ static void iomR3FlushCache(PVM pVM)
      * (1) The irrelvant access not holding the lock is in assertion code.
      */
     IOM_LOCK_EXCL(pVM);
-    VMCPUID iCpu = pVM->cCpus;
-    while (iCpu-- > 0)
+    VMCPUID idCpu = pVM->cCpus;
+    while (idCpu-- > 0)
     {
-        PVMCPU pVCpu = &pVM->aCpus[iCpu];
+        PVMCPU pVCpu = pVM->apCpusR3[idCpu];
         pVCpu->iom.s.pRangeLastReadR0  = NIL_RTR0PTR;
         pVCpu->iom.s.pRangeLastWriteR0 = NIL_RTR0PTR;
         pVCpu->iom.s.pStatsLastReadR0  = NIL_RTR0PTR;
@@ -318,10 +319,10 @@ VMMR3_INT_DECL(void) IOMR3Relocate(PVM pVM, RTGCINTPTR offDelta)
     /*
      * Reset the raw-mode cache (don't bother relocating it).
      */
-    VMCPUID iCpu = pVM->cCpus;
-    while (iCpu-- > 0)
+    VMCPUID idCpu = pVM->cCpus;
+    while (idCpu-- > 0)
     {
-        PVMCPU pVCpu = &pVM->aCpus[iCpu];
+        PVMCPU pVCpu = pVM->apCpusR3[idCpu];
         pVCpu->iom.s.pRangeLastReadRC  = NIL_RTRCPTR;
         pVCpu->iom.s.pRangeLastWriteRC = NIL_RTRCPTR;
         pVCpu->iom.s.pStatsLastReadRC  = NIL_RTRCPTR;
