@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 78951 2019-06-04 07:41:40Z vboxsync $ */
+/* $Id: IEMAll.cpp 78958 2019-06-04 10:33:11Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -3407,7 +3407,7 @@ VMM_INT_DECL(IEMXCPTRAISE) IEMEvaluateRecursiveXcpt(PVMCPU pVCpu, uint32_t fPrev
         IEMXCPTCLASS enmPrevXcptClass = iemGetXcptClass(uPrevVector);
         if (enmPrevXcptClass != IEMXCPTCLASS_BENIGN)
         {
-            IEMXCPTCLASS enmCurXcptClass  = iemGetXcptClass(uCurVector);
+            IEMXCPTCLASS enmCurXcptClass = iemGetXcptClass(uCurVector);
             if (   enmPrevXcptClass == IEMXCPTCLASS_PAGE_FAULT
                 && (   enmCurXcptClass == IEMXCPTCLASS_PAGE_FAULT
                     || enmCurXcptClass == IEMXCPTCLASS_CONTRIBUTORY))
