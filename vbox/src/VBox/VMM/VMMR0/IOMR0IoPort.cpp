@@ -1,4 +1,4 @@
-/* $Id: IOMR0IoPort.cpp 81333 2019-10-17 23:49:39Z vboxsync $ */
+/* $Id: IOMR0IoPort.cpp 81335 2019-10-18 00:09:19Z vboxsync $ */
 /** @file
  * IOM - Host Context Ring 0, I/O ports.
  */
@@ -270,7 +270,9 @@ VMMR0_INT_DECL(int) IOMR0IoPortGrowStatisticsTable(PGVM pGVM, uint64_t cReqMinEn
     AssertReturn(cNewEntries > cOldEntries, VERR_IOM_IOPORT_IPE_1);
     AssertReturn(pGVM->iom.s.cIoPortStatsAllocation == cOldEntries, VERR_IOM_IOPORT_IPE_1);
     AssertReturn(pGVM->iom.s.cIoPortStats <= cOldEntries, VERR_IOM_IOPORT_IPE_2);
+#ifdef VBOX_WITH_STATISTICS
     AssertReturn(!pGVM->iomr0.s.fIoPortStatsFrozen, VERR_WRONG_ORDER);
+#endif
 
     /*
      * Allocate a new table, zero it and map it.
