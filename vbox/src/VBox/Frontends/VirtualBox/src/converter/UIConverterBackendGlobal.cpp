@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackendGlobal.cpp 78587 2019-05-20 08:48:18Z vboxsync $ */
+/* $Id: UIConverterBackendGlobal.cpp 79250 2019-06-19 18:07:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConverterBackendGlobal implementation.
  */
@@ -1947,6 +1947,7 @@ template<> QString toInternalString(const WizardType &wizardType)
         case WizardType_CloneVM:         strResult = "CloneVM"; break;
         case WizardType_ExportAppliance: strResult = "ExportAppliance"; break;
         case WizardType_ImportAppliance: strResult = "ImportAppliance"; break;
+        case WizardType_NewCloudVM:      strResult = "NewCloudVM"; break;
         case WizardType_FirstRun:        strResult = "FirstRun"; break;
         case WizardType_NewVD:           strResult = "NewVD"; break;
         case WizardType_CloneVD:         strResult = "CloneVD"; break;
@@ -1969,6 +1970,7 @@ template<> WizardType fromInternalString<WizardType>(const QString &strWizardTyp
     keys << "CloneVM";         values << WizardType_CloneVM;
     keys << "ExportAppliance"; values << WizardType_ExportAppliance;
     keys << "ImportAppliance"; values << WizardType_ImportAppliance;
+    keys << "NewCloudVM";      values << WizardType_NewCloudVM;
     keys << "FirstRun";        values << WizardType_FirstRun;
     keys << "NewVD";           values << WizardType_NewVD;
     keys << "CloneVD";         values << WizardType_CloneVD;

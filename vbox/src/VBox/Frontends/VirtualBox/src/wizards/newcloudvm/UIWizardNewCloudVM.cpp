@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVM.cpp 79244 2019-06-19 14:19:05Z vboxsync $ */
+/* $Id: UIWizardNewCloudVM.cpp 79250 2019-06-19 18:07:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVM class implementation.
  */
@@ -27,7 +27,7 @@
 
 
 UIWizardNewCloudVM::UIWizardNewCloudVM(QWidget *pParent, bool fImportFromOCIByDefault)
-    : UIWizard(pParent, WizardType_ImportAppliance)
+    : UIWizard(pParent, WizardType_NewCloudVM)
     , m_fImportFromOCIByDefault(fImportFromOCIByDefault)
 {
 #ifndef VBOX_WS_MAC
