@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGroup.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIDetailsGroup.h 79841 2019-07-17 16:34:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsGroup class declaration.
  */
@@ -25,6 +25,7 @@
 #include "UIDetailsItem.h"
 
 /* Forward declarations: */
+class QGraphicsLinearLayout;
 class QGraphicsScene;
 class UIVirtualMachineItem;
 
@@ -150,6 +151,11 @@ private:
 
     /** @name Children stuff.
       * @{ */
+        /** Holds the children container instance. */
+        QIGraphicsWidget      *m_pContainer;
+        /** Holds the children layout instance. */
+        QGraphicsLinearLayout *m_pLayout;
+
         /** Holds the cached machine item list. */
         QList<UIVirtualMachineItem*> m_machineItems;
 
