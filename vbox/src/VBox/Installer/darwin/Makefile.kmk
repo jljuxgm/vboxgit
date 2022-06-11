@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 83119 2020-02-19 16:33:43Z vboxsync $
+# $Id: Makefile.kmk 84338 2020-05-18 16:52:48Z vboxsync $
 ## @file
 # Install misc stuff and create dist packages for Mac OS X.
 #
@@ -905,6 +905,7 @@ $(VBOX_PATH_PACK_TMP)/Packages/OSXFuseCore.pkg: \
 	$(call MSG_TOOL,Preparing FUSE for macOS core package,,,$@)
 	@# Cleanup any previously failed attempts.
 	sudo rm -Rf $@
+	$(MKDIR) -p $(@D)
 	pkgutil --flatten $(VBOX_PATH_FUSE_CORE_PKG) $@
 endif
 
