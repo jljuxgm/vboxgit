@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 83116 2020-02-19 15:34:40Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 83117 2020-02-19 15:57:06Z vboxsync $ */
 /** @file
  * VBox storage devices - BusLogic SCSI host adapter BT-958.
  *
@@ -2092,6 +2092,7 @@ static int buslogicProcessCommand(PPDMDEVINS pDevIns, PBUSLOGIC pThis)
             }
             pThis->fMbxIs24Bit = true;
             pThis->cMailbox = pRequest->cMailbox;
+            pThis->uMailboxOutgoingPositionCurrent = pThis->uMailboxIncomingPositionCurrent = 0;
             pThis->GCPhysAddrMailboxOutgoingBase = (RTGCPHYS)ADDR_TO_U32(pRequest->aMailboxBaseAddr);
             /* The area for incoming mailboxes is right after the last entry of outgoing mailboxes. */
             pThis->GCPhysAddrMailboxIncomingBase = pThis->GCPhysAddrMailboxOutgoingBase + (pThis->cMailbox * sizeof(Mailbox24));
@@ -2125,6 +2126,7 @@ static int buslogicProcessCommand(PPDMDEVINS pDevIns, PBUSLOGIC pThis)
             }
             pThis->fMbxIs24Bit = false;
             pThis->cMailbox = pRequest->cMailbox;
+            pThis->uMailboxOutgoingPositionCurrent = pThis->uMailboxIncomingPositionCurrent = 0;
             pThis->GCPhysAddrMailboxOutgoingBase = (RTGCPHYS)pRequest->uMailboxBaseAddress;
             /* The area for incoming mailboxes is right after the last entry of outgoing mailboxes. */
             pThis->GCPhysAddrMailboxIncomingBase = (RTGCPHYS)pRequest->uMailboxBaseAddress + (pThis->cMailbox * sizeof(Mailbox32));
