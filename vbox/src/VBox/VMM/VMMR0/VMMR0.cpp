@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 80531 2019-09-01 23:03:34Z vboxsync $ */
+/* $Id: VMMR0.cpp 80587 2019-09-04 17:44:20Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -1014,7 +1014,7 @@ VMMR0_INT_DECL(void) VMMR0ThreadCtxHookDisable(PVMCPUCC pVCpu)
      * Clear the VCPU <-> host CPU mapping as we've left HM context.
      * @bugref{7726#c19} explains the need for this trick:
      *
-     *      hmR0VmxCallRing3Callback/hmR0SvmCallRing3Callback &
+     *      VMXR0CallRing3Callback/SVMR0CallRing3Callback &
      *      hmR0VmxLeaveSession/hmR0SvmLeaveSession disables context hooks during
      *      longjmp & normal return to ring-3, which opens a window where we may be
      *      rescheduled without changing VMCPUID::idHostCpu and cause confusion if
