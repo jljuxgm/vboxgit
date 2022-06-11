@@ -1,4 +1,4 @@
-/* $Id: xml.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: xml.cpp 79677 2019-07-10 15:45:05Z vboxsync $ */
 /** @file
  * IPRT - XML Manipulation API.
  */
@@ -559,6 +559,36 @@ const char *Node::getValue() const
     if (   m_pLibNode
         && m_pLibNode->children)
         return (const char *)m_pLibNode->children->content;
+
+    return NULL;
+}
+
+/**
+ * Returns the value of a node. If this node is an attribute, returns
+ * the attribute value; if this node is an element, then this returns
+ * the element text content.
+ * @return
+ * @param   cchValueLimit   If the length of the returned value exceeds this
+ *                          limit a EIPRTFailure exception will be thrown.
+ */
+const char *Node::getValueN(size_t cchValueLimit) const
+{
+    if (   m_pLibAttr
+        && m_pLibAttr->children
+        )
+    {
+        // libxml hides attribute values in another node created as a
+        // single child of the attribute node, and it's in the content field
+        AssertStmt(strlen((const char *)m_pLibAttr->children->content) <= cchValueLimit, throw EIPRTFailure(VERR_BUFFER_OVERFLOW, "Attribute '%s' exceeds limit of %zu bytes", m_pcszName, cchValueLimit));
+        return (const char *)m_pLibAttr->children->content;
+    }
+
+    if (   m_pLibNode
+        && m_pLibNode->children)
+    {
+        AssertStmt(strlen((const char *)m_pLibNode->children->content) <= cchValueLimit, throw EIPRTFailure(VERR_BUFFER_OVERFLOW, "Element '%s' exceeds limit of %zu bytes", m_pcszName, cchValueLimit));
+        return (const char *)m_pLibNode->children->content;
+    }
 
     return NULL;
 }
@@ -1151,6 +1181,77 @@ bool ElementNode::getAttributeValue(const char *pcszMatch, bool *pfValue, const 
             *pfValue = false;
             return true;
         }
+    }
+
+    return false;
+}
+
+/**
+ * Convenience method which attempts to find the attribute with the given
+ * name and returns its value as a string.
+ *
+ * @param   pcszMatch       Name of attribute to find.
+ * @param   ppcsz           Where to return the attribute.
+ * @param   cchValueLimit   If the length of the returned value exceeds this
+ *                          limit a EIPRTFailure exception will be thrown.
+ * @param   pcszNamespace   The attribute name space prefix or NULL.
+ * @returns Boolean success indicator.
+ */
+bool ElementNode::getAttributeValueN(const char *pcszMatch, const char **ppcsz, size_t cchValueLimit, const char *pcszNamespace /*= NULL*/) const
+{
+    const AttributeNode *pAttr = findAttribute(pcszMatch, pcszNamespace);
+    if (pAttr)
+    {
+        *ppcsz = pAttr->getValueN(cchValueLimit);
+        return true;
+    }
+    return false;
+}
+
+/**
+ * Convenience method which attempts to find the attribute with the given
+ * name and returns its value as a string.
+ *
+ * @param   pcszMatch       Name of attribute to find.
+ * @param   pStr            Pointer to the string object that should receive the
+ *                          attribute value.
+ * @param   cchValueLimit   If the length of the returned value exceeds this
+ *                          limit a EIPRTFailure exception will be thrown.
+ * @param   pcszNamespace   The attribute name space prefix or NULL.
+ * @returns Boolean success indicator.
+ *
+ * @throws  Whatever the string class may throw on assignment.
+ */
+bool ElementNode::getAttributeValueN(const char *pcszMatch, RTCString *pStr, size_t cchValueLimit, const char *pcszNamespace /*= NULL*/) const
+{
+    const AttributeNode *pAttr = findAttribute(pcszMatch, pcszNamespace);
+    if (pAttr)
+    {
+        *pStr = pAttr->getValueN(cchValueLimit);
+        return true;
+    }
+
+    return false;
+}
+
+/**
+ * Like getAttributeValue (ministring variant), but makes sure that all backslashes
+ * are converted to forward slashes.
+ *
+ * @param   pcszMatch       Name of attribute to find.
+ * @param   pStr            Pointer to the string object that should
+ *                          receive the attribute path value.
+ * @param   cchValueLimit   If the length of the returned value exceeds this
+ *                          limit a EIPRTFailure exception will be thrown.
+ * @param   pcszNamespace   The attribute name space prefix or NULL.
+ * @returns Boolean success indicator.
+ */
+bool ElementNode::getAttributeValuePathN(const char *pcszMatch, RTCString *pStr, size_t cchValueLimit, const char *pcszNamespace /*= NULL*/) const
+{
+    if (getAttributeValueN(pcszMatch, pStr, cchValueLimit, pcszNamespace))
+    {
+        pStr->findReplace('\\', '/');
+        return true;
     }
 
     return false;
