@@ -1,4 +1,4 @@
-/* $Id: UIBootOrderEditor.cpp 79981 2019-07-25 14:59:57Z vboxsync $ */
+/* $Id: UIBootOrderEditor.cpp 79982 2019-07-25 16:09:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIBootListWidget class implementation.
  */
@@ -364,6 +364,51 @@ void UIBootDataTools::saveBootItems(const UIBootItemDataList &bootItems, CMachin
             fSuccess = comMachine.isOk();
         }
     }
+}
+
+QString UIBootDataTools::bootItemsToReadableString(const UIBootItemDataList &bootItems)
+{
+    /* Prepare list: */
+    QStringList list;
+    /* We are reflecting only enabled items: */
+    foreach (const UIBootItemData &bootItem, bootItems)
+        if (bootItem.m_fEnabled)
+            list << gpConverter->toString(bootItem.m_enmType);
+    /* But if list is empty we are adding Null item at least: */
+    if (list.isEmpty())
+        list << gpConverter->toString(KDeviceType_Null);
+    /* Join list to string: */
+    return list.join(", ");
+}
+
+QString UIBootDataTools::bootItemsToSerializedString(const UIBootItemDataList &bootItems)
+{
+    /* Prepare list: */
+    QStringList list;
+    /* This is simple, we are adding '+' before enabled types and '-' before disabled: */
+    foreach (const UIBootItemData &bootItem, bootItems)
+        list << (bootItem.m_fEnabled ? QString("+%1").arg(bootItem.m_enmType) : QString("-%1").arg(bootItem.m_enmType));
+    /* Join list to string: */
+    return list.join(';');
+}
+
+UIBootItemDataList UIBootDataTools::bootItemsFromSerializedString(const QString &strBootItems)
+{
+    /* Prepare list: */
+    UIBootItemDataList list;
+    /* First of all, split passed string to arguments: */
+    const QStringList arguments = strBootItems.split(';');
+    /* Now parse in backward direction, we have added '+' before enabled types and '-' before disabled: */
+    foreach (QString strArgument, arguments)
+    {
+        UIBootItemData data;
+        data.m_fEnabled = strArgument.startsWith('+');
+        strArgument.remove(QRegExp("[+-]"));
+        data.m_enmType = static_cast<KDeviceType>(strArgument.toInt());
+        list << data;
+    }
+    /* Return list: */
+    return list;
 }
 
 

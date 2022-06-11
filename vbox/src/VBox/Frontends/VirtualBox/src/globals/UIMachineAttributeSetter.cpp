@@ -1,4 +1,4 @@
-/* $Id: UIMachineAttributeSetter.cpp 79959 2019-07-24 13:57:03Z vboxsync $ */
+/* $Id: UIMachineAttributeSetter.cpp 79982 2019-07-25 16:09:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineAttributeSetter namespace implementation.
  */
@@ -19,6 +19,7 @@
 #include <QVariant>
 
 /* GUI includes: */
+#include "UIBootOrderEditor.h"
 #include "UICommon.h"
 #include "UIMachineAttributeSetter.h"
 #include "UIMessageCenter.h"
@@ -91,6 +92,17 @@ void UIMachineAttributeSetter::setMachineAttribute(const CMachine &comConstMachi
             {
                 /* Change machine base memory (RAM): */
                 comMachine.SetMemorySize(guiAttribute.toInt());
+                if (!comMachine.isOk())
+                {
+                    msgCenter().cannotChangeMachineAttribute(comMachine);
+                    fErrorHappened = true;
+                }
+                break;
+            }
+            case MachineAttribute_BootOrder:
+            {
+                /* Change machine boot order: */
+                saveBootItems(guiAttribute.value<UIBootItemDataList>(), comMachine);
                 if (!comMachine.isOk())
                 {
                     msgCenter().cannotChangeMachineAttribute(comMachine);

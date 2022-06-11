@@ -1,4 +1,4 @@
-/* $Id: UIBootOrderEditor.h 79981 2019-07-25 14:59:57Z vboxsync $ */
+/* $Id: UIBootOrderEditor.h 79982 2019-07-25 16:09:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIBootListWidget class declaration.
  */
@@ -62,6 +62,7 @@ struct UIBootItemData
     bool         m_fEnabled;
 };
 typedef QList<UIBootItemData> UIBootItemDataList;
+Q_DECLARE_METATYPE(UIBootItemDataList);
 
 
 /** Boot data tools namespace. */
@@ -71,6 +72,14 @@ namespace UIBootDataTools
     SHARED_LIBRARY_STUFF UIBootItemDataList loadBootItems(const CMachine &comMachine);
     /** Saves @a bootItems list to passed @a comMachine. */
     SHARED_LIBRARY_STUFF void saveBootItems(const UIBootItemDataList &bootItems, CMachine &comMachine);
+
+    /** Converts passed @a bootItems list into human readable string. */
+    SHARED_LIBRARY_STUFF QString bootItemsToReadableString(const UIBootItemDataList &bootItems);
+
+    /** Performs serialization for passed @a bootItems list. */
+    SHARED_LIBRARY_STUFF QString bootItemsToSerializedString(const UIBootItemDataList &bootItems);
+    /** Performs deserialization for passed @a strBootItems string. */
+    SHARED_LIBRARY_STUFF UIBootItemDataList bootItemsFromSerializedString(const QString &strBootItems);
 }
 using namespace UIBootDataTools;
 
