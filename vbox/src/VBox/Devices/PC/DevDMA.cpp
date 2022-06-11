@@ -1,4 +1,4 @@
-/* $Id: DevDMA.cpp 81988 2019-11-19 11:22:13Z vboxsync $ */
+/* $Id: DevDMA.cpp 81989 2019-11-19 11:28:13Z vboxsync $ */
 /** @file
  * DevDMA - DMA Controller Device.
  */
@@ -571,7 +571,7 @@ static DECLCALLBACK(VBOXSTRICTRC) dmaWriteHiPage(PPDMDEVINS pDevIns, void *pvUse
     else
     {
         /* Likely a guest bug. */
-        Log(("Bad size write to high page register %#x (size %d, data %#x)\n", dc->is16bit, offPort, cb, u32));
+        Log(("dmaWriteHiPage/%u: Bad size write to high page register %#x (size %d, data %#x)\n", dc->is16bit, offPort, cb, u32));
     }
     return VINF_SUCCESS;
 }
