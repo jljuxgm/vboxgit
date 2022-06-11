@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic2.cpp 82392 2019-12-04 17:43:48Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic2.cpp 82471 2019-12-06 18:34:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic2 class implementation.
  */
@@ -398,7 +398,7 @@ void UIWizardExportAppPage2::populateFormProperties()
             }
 
             /* Show "Acquire export form" progress: */
-            msgCenter().showModalProgressDialog(comExportDescriptionFormProgress, UIWizardExportApp::tr("Acquire export form..."),
+            msgCenter().showModalProgressDialog(comExportDescriptionFormProgress, UIWizardExportApp::tr("Acquire export form ..."),
                                                 ":/progress_refresh_90px.png", 0, 0);
             if (!comExportDescriptionFormProgress.isOk() || comExportDescriptionFormProgress.GetResultCode() != 0)
             {

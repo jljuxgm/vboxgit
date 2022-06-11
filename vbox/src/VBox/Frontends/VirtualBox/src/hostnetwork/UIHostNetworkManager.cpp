@@ -1,4 +1,4 @@
-/* $Id: UIHostNetworkManager.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
+/* $Id: UIHostNetworkManager.cpp 82471 2019-12-06 18:34:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHostNetworkManager class implementation.
  */
@@ -388,7 +388,7 @@ void UIHostNetworkManagerWidget::sltCreateHostNetwork()
     else
     {
         /* Show interface creation progress: */
-        msgCenter().showModalProgressDialog(progress, UIHostNetworkManager::tr("Adding network..."), ":/progress_network_interface_90px.png", this, 0);
+        msgCenter().showModalProgressDialog(progress, UIHostNetworkManager::tr("Adding network ..."), ":/progress_network_interface_90px.png", this, 0);
 
         /* Show error message if necessary: */
         if (!progress.isOk() || progress.GetResultCode() != 0)
@@ -489,7 +489,7 @@ void UIHostNetworkManagerWidget::sltRemoveHostNetwork()
             else
             {
                 /* Show interface removal progress: */
-                msgCenter().showModalProgressDialog(progress, UIHostNetworkManager::tr("Removing network..."), ":/progress_network_interface_90px.png", this, 0);
+                msgCenter().showModalProgressDialog(progress, UIHostNetworkManager::tr("Removing network ..."), ":/progress_network_interface_90px.png", this, 0);
 
                 /* Show error message if necessary: */
                 if (!progress.isOk() || progress.GetResultCode() != 0)
