@@ -1,4 +1,4 @@
-/* $Id: MediumAttachmentImpl.cpp 76592 2019-01-01 20:13:07Z vboxsync $ */
+/* $Id: MediumAttachmentImpl.cpp 78786 2019-05-27 14:53:06Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -215,6 +215,20 @@ void MediumAttachment::uninit()
 
 // IHardDiskAttachment properties
 /////////////////////////////////////////////////////////////////////////////
+
+
+HRESULT MediumAttachment::getMachine(ComPtr<IMachine> &aMachine)
+{
+    LogFlowThisFuncEnter();
+
+    AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
+
+    ComObjPtr<Machine> pMachine(m->pMachine);
+    pMachine.queryInterfaceTo(aMachine.asOutParam());
+
+    LogFlowThisFuncLeave();
+    return S_OK;
+}
 
 
 HRESULT MediumAttachment::getMedium(ComPtr<IMedium> &aHardDisk)

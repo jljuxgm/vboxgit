@@ -1,4 +1,4 @@
-/* $Id: MediumAttachmentImpl.h 76562 2019-01-01 03:22:50Z vboxsync $ */
+/* $Id: MediumAttachmentImpl.h 78786 2019-05-27 14:53:06Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -112,6 +112,7 @@ public:
 private:
 
     // Wrapped IMediumAttachment properties
+    HRESULT getMachine(ComPtr<IMachine> &aMachine);
     HRESULT getMedium(ComPtr<IMedium> &aHardDisk);
     HRESULT getController(com::Utf8Str &aController);
     HRESULT getPort(LONG *aPort);
