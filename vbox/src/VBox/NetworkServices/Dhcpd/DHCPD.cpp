@@ -1,4 +1,4 @@
-/* $Id: DHCPD.cpp 79800 2019-07-16 00:06:00Z vboxsync $ */
+/* $Id: DHCPD.cpp 79818 2019-07-16 19:00:06Z vboxsync $ */
 /** @file
  * DHCP server - protocol logic
  */
@@ -266,7 +266,8 @@ DhcpServerMessage *DHCPD::i_doDiscover(const DhcpClientMessage &req)
         reply->addOption(OptRapidCommit(true));
 
         b->setState(Binding::ACKED);
-        i_saveLeases();
+        if (!b->isFixed())
+            i_saveLeases();
     }
 
     reply->setYiaddr(b->addr());
@@ -320,7 +321,8 @@ DhcpServerMessage *DHCPD::i_doRequest(const DhcpClientMessage &req)
     std::unique_ptr<DhcpServerMessage> ack(i_createMessage(RTNET_DHCP_MT_ACK, req));
 
     b->setState(Binding::ACKED);
-    i_saveLeases();
+    if (!b->isFixed())
+        i_saveLeases();
 
     ack->setYiaddr(b->addr());
     ack->addOption(OptLeaseTime(b->leaseTime()));
