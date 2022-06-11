@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 80274 2019-08-14 14:34:38Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 80316 2019-08-16 06:03:08Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -7666,9 +7666,10 @@ HMSVM_EXIT_DECL hmR0SvmExitXcptBP(PVMCPUCC pVCpu, PSVMTRANSIENT pSvmTransient)
         Event.n.u3Type   = SVM_EVENT_EXCEPTION;
         Event.n.u8Vector = X86_XCPT_BP;
         hmR0SvmSetPendingEvent(pVCpu, &Event, 0 /* GCPtrFaultAddress */);
+        rc = VINF_SUCCESS;
     }
 
-    Assert(rc == VINF_SUCCESS || rc == VINF_EM_RAW_GUEST_TRAP || rc == VINF_EM_DBG_BREAKPOINT);
+    Assert(rc == VINF_SUCCESS || rc == VINF_EM_DBG_BREAKPOINT);
     return rc;
 }
 
