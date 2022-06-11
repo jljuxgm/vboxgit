@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 80497 2019-08-29 12:42:52Z vboxsync $ */
+/* $Id: UICommon.cpp 80498 2019-08-29 12:46:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -1146,7 +1146,7 @@ QString UICommon::addMetricSuffixToNumber(quint64 uNumber)
         return QString();
     /* See https://en.wikipedia.org/wiki/Metric_prefix for metric suffixes:*/
     char suffixes[] = {'k', 'M', 'G', 'T', 'P', 'E', 'Z', 'Y'};
-    int zeroCount = (int)log10((unsigned long double)uNumber);
+    int zeroCount = (int)log10((long double)uNumber);
     if (zeroCount < 3)
         return QString::number(uNumber);
     int h = 3 * (zeroCount / 3);
