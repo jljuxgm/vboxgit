@@ -1,4 +1,4 @@
-/* $Id: tstRTPath.cpp 78702 2019-05-24 00:11:00Z vboxsync $ */
+/* $Id: tstRTPath.cpp 79570 2019-07-07 00:40:40Z vboxsync $ */
 /** @file
  * IPRT Testcase - Test various path functions.
  */
@@ -250,6 +250,36 @@ static void testParentLength(RTTEST hTest)
                 RTTestFailed(hTest, "sub-test #%u: RTPathParentLength returned %u, expected %u (%s)",
                              i, cchParent2, cchExpected, s_aTests[i].pszPath);
         }
+    }
+}
+
+
+static void testPurgeFilename(RTTEST hTest)
+{
+    static struct
+    {
+        const char *pszIn, *pszOut;
+        uint32_t    fFlags;
+    } const s_aTests[] =
+    {
+        { "start///end",            "start___end",      RTPATH_STR_F_STYLE_UNIX },
+        { "start///end",            "start___end",      RTPATH_STR_F_STYLE_DOS },
+        { "start///end",            "start___end",      RTPATH_STR_F_STYLE_HOST },
+        { "1:<>\\9",                "1:<>\\9",          RTPATH_STR_F_STYLE_UNIX },
+        { "1:<>\\9",                "1____9",           RTPATH_STR_F_STYLE_DOS },
+        { "\t\r\n",                 "\t\r\n",           RTPATH_STR_F_STYLE_UNIX },
+        { "\t\r\n",                 "___",              RTPATH_STR_F_STYLE_DOS },
+    };
+    RTTestSub(hTest, "RTPathPurgeFilename");
+    for (uint32_t i = 0; i < RT_ELEMENTS(s_aTests); i++)
+    {
+        char szPath[RTPATH_MAX];
+        strcpy(szPath, s_aTests[i].pszIn);
+        char *pszRet = RTPathPurgeFilename(szPath, s_aTests[i].fFlags);
+        RTTEST_CHECK(hTest, pszRet == &szPath[0]);
+        if (strcmp(szPath, s_aTests[i].pszOut) != 0)
+            RTTestFailed(hTest, "sub-test #%u: got '%s', expected '%s' (style %#x)",
+                         i, szPath, s_aTests[i].pszOut, s_aTests[i].fFlags);
     }
 }
 
@@ -982,6 +1012,7 @@ int main()
 
     testParserAndSplitter(hTest);
     testParentLength(hTest);
+    testPurgeFilename(hTest);
 
     /*
      * Summary.
