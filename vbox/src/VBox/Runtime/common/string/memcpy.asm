@@ -1,4 +1,4 @@
-; $Id: memcpy.asm 76553 2019-01-01 01:45:53Z vboxsync $
+; $Id: memcpy.asm 81281 2019-10-15 08:16:03Z vboxsync $
 ;; @file
 ; IPRT - No-CRT memcpy - AMD64 & X86.
 ;
@@ -32,7 +32,12 @@ BEGINCODE
 ; @param    pvDst   gcc: rdi  msc: rcx  x86:[esp+4]   wcall: eax
 ; @param    pvSrc   gcc: rsi  msc: rdx  x86:[esp+8]   wcall: edx
 ; @param    cb      gcc: rdx  msc: r8   x86:[esp+0ch] wcall: ebx
+%ifdef IN_RING0_DRV_ON_DARWIN
+.global NAME(memcpy):private_extern
+NAME(memcpy):
+%else
 RT_NOCRT_BEGINPROC memcpy
+%endif
         cld
 
         ; Do the bulk of the work.
