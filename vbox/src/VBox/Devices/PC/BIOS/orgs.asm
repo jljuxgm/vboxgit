@@ -1,4 +1,4 @@
-; $Id: orgs.asm 76553 2019-01-01 01:45:53Z vboxsync $
+; $Id: orgs.asm 81089 2019-09-30 22:21:06Z vboxsync $
 ;; @file
 ; ???
 ;
@@ -142,6 +142,9 @@ extrn           _inv_op_handler:near
 extrn           rom_scan_:near
 ifdef VBOX_WITH_AHCI
 extrn           _ahci_init:near
+endif
+ifdef VBOX_WITH_VIRTIO_SCSI
+extrn           _virtio_scsi_init:near
 endif
 if VBOX_BIOS_CPU ge 80286
 extrn           _int15_blkmove:near
@@ -642,6 +645,11 @@ endif
 ifdef VBOX_WITH_SCSI
                 ; SCSI driver setup
                 call    _scsi_init
+endif
+
+ifdef VBOX_WITH_VIRTIO_SCSI
+                ; VirtIO-SCSI driver setup
+                call    _virtio_scsi_init
 endif
 
                 ;; floppy setup
