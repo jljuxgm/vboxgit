@@ -1,4 +1,4 @@
-/* $Id: DevIommuAmd.cpp 83703 2020-04-15 14:58:14Z vboxsync $ */
+/* $Id: DevIommuAmd.cpp 83711 2020-04-16 05:12:58Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - AMD implementation.
  */
@@ -2214,10 +2214,10 @@ static VBOXSTRICTRC iommuAmdHwEvtStatus_w(PPDMDEVINS pDevIns, PIOMMU pThis, uint
     uint64_t HwStatus = pThis->HwEvtStatus.u64;
     if (!(HwStatus & RT_BIT(0)))
         return VINF_SUCCESS;
-    if (u64Value & HwStatus & RT_BIT(0))
-        HwStatus &= ~RT_BIT(0);
-    if (u64Value & HwStatus & RT_BIT(1))
-        HwStatus &= ~RT_BIT(1);
+    if (u64Value & HwStatus & RT_BIT_64(0))
+        HwStatus &= ~RT_BIT_64(0);
+    if (u64Value & HwStatus & RT_BIT_64(1))
+        HwStatus &= ~RT_BIT_64(1);
     pThis->HwEvtStatus.u64 = HwStatus;
     return VINF_SUCCESS;
 }
