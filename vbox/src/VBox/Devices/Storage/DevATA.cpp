@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 81844 2019-11-14 18:16:36Z vboxsync $ */
+/* $Id: DevATA.cpp 81845 2019-11-14 18:27:56Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -1654,7 +1654,7 @@ static int ataR3ReadSectors(ATADevState *s, uint64_t u64Sector, void *pvBuf,
     uint32_t const cbSector = s->cbSector;
     uint32_t cbToRead = cSectors * cbSector;
     Assert(pvBuf == &s->abIOBuffer[0]);
-    AssertReturn(cbToRead <= sizeof(s->abIOBuffer), VERR_BUFFER_OVERFLOW);
+    AssertReturnStmt(cbToRead <= sizeof(s->abIOBuffer), *pfRedo = false, VERR_BUFFER_OVERFLOW);
 
     ataR3LockLeave(pCtl);
 
@@ -1686,7 +1686,7 @@ static int ataR3WriteSectors(ATADevState *s, uint64_t u64Sector,
     uint32_t const cbSector = s->cbSector;
     uint32_t cbToWrite = cSectors * cbSector;
     Assert(pvBuf == &s->abIOBuffer[0]);
-    AssertReturn(cbToWrite <= sizeof(s->abIOBuffer), VERR_BUFFER_OVERFLOW);
+    AssertReturnStmt(cbToWrite <= sizeof(s->abIOBuffer), *pfRedo = false, VERR_BUFFER_OVERFLOW);
 
     ataR3LockLeave(pCtl);
 
@@ -2142,7 +2142,7 @@ static bool atapiR3PassthroughSS(ATADevState *s)
                     scsiLBA2MSF(aATAPICmd + 6, iATAPILBA + cReqSectors);
                     break;
             }
-            AssertLogRelReturn(pbBuf - &s->abIOBuffer[0] + cbCurrTX <= sizeof(s->abIOBuffer), false);
+            AssertLogRelReturn((uintptr_t)(pbBuf - &s->abIOBuffer[0]) + cbCurrTX <= sizeof(s->abIOBuffer), false);
             rc = s->pDrvMedia->pfnSendCmd(s->pDrvMedia, aATAPICmd, ATAPI_PACKET_SIZE, (PDMMEDIATXDIR)s->uTxDir,
                                           pbBuf, &cbCurrTX, abATAPISense, sizeof(abATAPISense), 30000 /**< @todo timeout */);
             if (rc != VINF_SUCCESS)
