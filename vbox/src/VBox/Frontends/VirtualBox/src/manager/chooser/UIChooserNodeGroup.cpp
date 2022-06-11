@@ -1,4 +1,4 @@
-/* $Id: UIChooserNodeGroup.cpp 77847 2019-03-22 13:22:06Z vboxsync $ */
+/* $Id: UIChooserNodeGroup.cpp 80493 2019-08-29 09:21:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserNodeGroup class implementation.
  */
@@ -123,9 +123,9 @@ void UIChooserNodeGroup::addNode(UIChooserNode *pNode, int iPosition)
 {
     switch (pNode->type())
     {
-        case UIChooserItemType_Group:   m_nodesGroup.insert(iPosition, pNode); return;
-        case UIChooserItemType_Global:  m_nodesGlobal.insert(iPosition, pNode); return;
-        case UIChooserItemType_Machine: m_nodesMachine.insert(iPosition, pNode); return;
+        case UIChooserItemType_Group:   m_nodesGroup.insert(iPosition == -1 ? m_nodesGroup.size() : iPosition, pNode); return;
+        case UIChooserItemType_Global:  m_nodesGlobal.insert(iPosition == -1 ? m_nodesGlobal.size() : iPosition, pNode); return;
+        case UIChooserItemType_Machine: m_nodesMachine.insert(iPosition == -1 ? m_nodesMachine.size() : iPosition, pNode); return;
         default: break;
     }
     AssertFailedReturnVoid();
