@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGroup.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIDetailsGroup.cpp 83150 2020-02-25 12:38:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsGroup class implementation.
  */
@@ -80,7 +80,8 @@ void UIDetailsGroup::buildGroup(const QList<UIVirtualMachineItem*> &machineItems
     /* Filter out cloud VM items for now: */
     QList<UIVirtualMachineItem*> filteredItems;
     foreach (UIVirtualMachineItem *pItem, machineItems)
-        if (pItem->itemType() == UIVirtualMachineItem::ItemType_Local)
+        if (   pItem->itemType() == UIVirtualMachineItem::ItemType_Local
+            || pItem->itemType() == UIVirtualMachineItem::ItemType_CloudReal)
             filteredItems << pItem;
 
     /* Remember passed machine-items: */

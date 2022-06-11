@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItemCloud.cpp 83147 2020-02-25 11:39:17Z vboxsync $ */
+/* $Id: UIVirtualMachineItemCloud.cpp 83150 2020-02-25 12:38:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItemCloud class implementation.
  */
@@ -159,7 +159,7 @@ void UIVirtualMachineItemCloud::recache()
         m_enmConfigurationAccessLevel = ConfigurationAccessLevel_Null;
 
         /* Determine whether we should show this VM details: */
-        m_fHasDetails = false;
+        m_fHasDetails = true;
     }
     else
     {
