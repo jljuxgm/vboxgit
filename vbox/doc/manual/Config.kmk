@@ -1,4 +1,4 @@
-# $Id: Config.kmk 82051 2019-11-20 20:43:58Z vboxsync $
+# $Id: Config.kmk 82058 2019-11-20 21:42:16Z vboxsync $
 ## @file
 # kBuild Configuration file for the manual.
 #
@@ -279,7 +279,7 @@ endif # VBOX_XML_CATALOG
 
 ifdef VBOX_XML_ENTITIES
 
- $(VBOX_XML_ENTITIES): $(VBOX_PATH_MANUAL_SRC)/Config.kmk | $$(dir $$@)
+ $(VBOX_XML_ENTITIES): $(VBOX_PATH_MANUAL_SRC)/Config.kmk $(VBOX_VERSION_STAMP) | $$(dir $$@)
 	$(call MSG_L1,Creating entities $@)
 	$(QUIET)$(APPEND) -tn "$@" \
 		'<!-- Entities for product names -->' \
