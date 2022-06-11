@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 79508 2019-07-03 15:20:44Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 79921 2019-07-22 11:54:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -4305,6 +4305,32 @@ bool UIExtraDataManager::softKeyboardDialogShouldBeMaximized()
 
     /* Make sure 5th item has required value: */
     return data.size() == 5 && data[4] == GUI_Geometry_State_Max;
+}
+
+void UIExtraDataManager::setSoftKeyboardOptions(bool fHideNumPad, bool fHideOSMenuKeys)
+{
+    QStringList data;
+
+    if (fHideNumPad)
+        data << GUI_SoftKeyboard_HideNumPad;
+    if (fHideOSMenuKeys)
+        data << GUI_SoftKeyboard_HideOSMenuKeys;
+
+    setExtraDataStringList(GUI_SoftKeyboard_Options, data);
+}
+
+void UIExtraDataManager::softKeyboardOptions(bool &fOutHideNumPad, bool &fOutHideOSMenuKeys)
+{
+    fOutHideNumPad = false;
+    fOutHideOSMenuKeys = false;
+    const QStringList data = extraDataStringList(GUI_SoftKeyboard_Options);
+    for (int i = 0; i < data.size(); ++i)
+    {
+        if (data[i] == GUI_SoftKeyboard_HideNumPad)
+            fOutHideNumPad = true;
+        if (data[i] == GUI_SoftKeyboard_HideOSMenuKeys)
+            fOutHideOSMenuKeys = true;
+    }
 }
 
 void UIExtraDataManager::setSoftKeyboardColorTheme(const QStringList &colorStringList)
