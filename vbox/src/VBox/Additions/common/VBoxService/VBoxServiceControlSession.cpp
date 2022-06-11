@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlSession.cpp 84150 2020-05-05 17:48:08Z vboxsync $ */
+/* $Id: VBoxServiceControlSession.cpp 84154 2020-05-06 06:28:29Z vboxsync $ */
 /** @file
  * VBoxServiceControlSession - Guest session handling. Also handles the spawned session processes.
  */
@@ -1054,7 +1054,7 @@ int VgsvcGstCtrlSessionStartupInfoInitEx(PVBOXSERVICECTRLSESSIONSTARTUPINFO pSta
     { \
         pStartupInfo->psz##a_Str = RTStrAlloc(a_cb); \
         AssertPtrBreak(pStartupInfo->psz##a_Str); \
-        pStartupInfo->cb##a_Str  = a_cb; \
+        pStartupInfo->cb##a_Str  = (uint32_t)a_cb; \
     }
 
     do

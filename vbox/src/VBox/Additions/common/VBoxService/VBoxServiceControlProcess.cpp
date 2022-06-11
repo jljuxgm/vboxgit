@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlProcess.cpp 84150 2020-05-05 17:48:08Z vboxsync $ */
+/* $Id: VBoxServiceControlProcess.cpp 84154 2020-05-06 06:28:29Z vboxsync $ */
 /** @file
  * VBoxServiceControlThread - Guest process handling.
  */
@@ -92,7 +92,7 @@ int VgsvcGstCtrlProcessStartupInfoInitEx(PVBOXSERVICECTRLPROCSTARTUPINFO pStartu
     { \
         pStartupInfo->psz##a_Str = RTStrAlloc(a_cb); \
         AssertPtrBreak(pStartupInfo->psz##a_Str); \
-        pStartupInfo->cb##a_Str  = a_cb; \
+        pStartupInfo->cb##a_Str  = (uint32_t)a_cb; \
     }
 
     do
@@ -193,7 +193,7 @@ static PVBOXSERVICECTRLPROCSTARTUPINFO vgsvcGstCtrlProcessStartupInfoDup(PVBOXSE
     { \
         pStartupInfoDup->psz##a_Str = (char *)RTStrDup(pStartupInfo->psz##a_Str); \
         AssertPtrBreak(pStartupInfoDup->psz##a_Str); \
-        pStartupInfoDup->cb##a_Str  = strlen(pStartupInfoDup->psz##a_Str) + 1 /* Include terminator */; \
+        pStartupInfoDup->cb##a_Str  = (uint32_t)strlen(pStartupInfoDup->psz##a_Str) + 1 /* Include terminator */; \
     }
 
 #define DUP_MEM(a_Str) \
@@ -201,7 +201,7 @@ static PVBOXSERVICECTRLPROCSTARTUPINFO vgsvcGstCtrlProcessStartupInfoDup(PVBOXSE
     { \
         pStartupInfoDup->psz##a_Str = (char *)RTMemDup(pStartupInfo->psz##a_Str, pStartupInfo->cb##a_Str); \
         AssertPtrBreak(pStartupInfoDup->psz##a_Str); \
-        pStartupInfoDup->cb##a_Str  = pStartupInfo->cb##a_Str; \
+        pStartupInfoDup->cb##a_Str  = (uint32_t)pStartupInfo->cb##a_Str; \
     }
 
             DUP_STR(Cmd);
