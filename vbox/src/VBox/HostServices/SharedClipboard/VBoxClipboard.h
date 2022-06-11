@@ -1,4 +1,4 @@
-/* $Id: VBoxClipboard.h 78579 2019-05-18 15:27:22Z vboxsync $ */
+/* $Id: VBoxClipboard.h 78580 2019-05-18 15:38:45Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Internal header.
  */
@@ -26,10 +26,10 @@
 
 #include <VBox/GuestHost/SharedClipboard.h>
 
-typedef struct _VBOXCLIPBOARDCLIENTDATA
+typedef struct _VBOXCLIPBOARDSVCCTX
 {
-    struct _VBOXCLIPBOARDCLIENTDATA *pNext;
-    struct _VBOXCLIPBOARDCLIENTDATA *pPrev;
+    struct _VBOXCLIPBOARDSVCCTX *pNext;
+    struct _VBOXCLIPBOARDSVCCTX *pPrev;
 
     VBOXCLIPBOARDCONTEXT *pCtx;
 
