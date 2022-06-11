@@ -1,4 +1,4 @@
-/* $Id: PGMHandler.cpp 80191 2019-08-08 00:36:57Z vboxsync $ */
+/* $Id: PGMHandler.cpp 80264 2019-08-14 08:49:08Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -348,7 +348,8 @@ DECLCALLBACK(void) pgmR3InfoHandlers(PVM pVM, PCDBGFINFOHLP pHlp, const char *ps
      * Parse options.
      */
     PGMHANDLERINFOARG Args = { pHlp, pVM, /* .fStats = */ true };
-    Args.fStats = strstr(pszArgs, "nost") == NULL;
+    if (pszArgs)
+        Args.fStats = strstr(pszArgs, "nost") == NULL;
 
     /*
      * Dump the handlers.
