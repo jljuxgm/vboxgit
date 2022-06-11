@@ -1,4 +1,4 @@
-/* $Id: VBoxTray.cpp 81145 2019-10-08 11:35:40Z vboxsync $ */
+/* $Id: VBoxTray.cpp 81188 2019-10-09 14:45:15Z vboxsync $ */
 /** @file
  * VBoxTray - Guest Additions Tray Application
  */
@@ -420,7 +420,8 @@ static int vboxTrayServicesStop(VBOXSERVICEENV *pEnv)
             }
         }
 
-        if (pSvc->pDesc->pfnDestroy)
+        if (   pSvc->pDesc->pfnDestroy
+            && pSvc->pInstance) /* pInstance might be NULL if initialization of a service failed. */
         {
             LogRel2(("Terminating service '%s' ...\n", pSvc->pDesc->pszName));
             pSvc->pDesc->pfnDestroy(pSvc->pInstance);
