@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-internal.h 82852 2020-01-24 15:12:23Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-internal.h 82872 2020-01-27 12:43:24Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Internal header.
  */
@@ -90,9 +90,9 @@ typedef struct SHCLCLIENTPODSTATE
  * @note Part of saved state! */
 /** No Shared Clipboard client flags defined. */
 #define SHCLCLIENTSTATE_FLAGS_NONE              0
-/** Client has a guest read operation active. */
+/** Client has a guest read operation active. Currently unused. */
 #define SHCLCLIENTSTATE_FLAGS_READ_ACTIVE       RT_BIT(0)
-/** Client has a guest write operation active. */
+/** Client has a guest write operation active. Currently unused. */
 #define SHCLCLIENTSTATE_FLAGS_WRITE_ACTIVE      RT_BIT(1)
 /** @} */
 
