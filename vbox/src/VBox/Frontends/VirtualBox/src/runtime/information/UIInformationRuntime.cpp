@@ -1,4 +1,4 @@
-/* $Id: UIInformationRuntime.cpp 82611 2019-12-18 08:08:54Z vboxsync $ */
+/* $Id: UIInformationRuntime.cpp 82613 2019-12-18 11:02:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationRuntime class implementation.
  */
@@ -272,7 +272,7 @@ void UIRuntimeInfoWidget::updateScreenInfo(int iScreenID /* = -1 */)
     int iRowCount = rowCount();
     for (int i = iRowCount - 1; i >= 0; --i)
     {
-        QTableWidgetItem *pItem = item(i, 0);
+        QTableWidgetItem *pItem = item(i, 1);
         if (pItem && pItem->type() == InfoRow_Resolution)
             removeRow(i);
     }
