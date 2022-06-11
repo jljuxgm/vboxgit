@@ -1,4 +1,4 @@
-/* $Id: HMVMXAll.cpp 78620 2019-05-21 08:54:23Z vboxsync $ */
+/* $Id: HMVMXAll.cpp 78621 2019-05-21 08:59:56Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - All contexts.
  */
@@ -994,7 +994,7 @@ VMM_INT_DECL(void) HMDumpHwvirtVmxState(PVMCPU pVCpu)
         LogRel(("  %sVMWRITE-bitmap addr        = %#RX64\n",   pszPrefix, pVmcs->u64AddrVmwriteBitmap.u));
         LogRel(("  %sVirt-Xcpt info addr        = %#RX64\n",   pszPrefix, pVmcs->u64AddrXcptVeInfo.u));
         LogRel(("  %sXSS-bitmap                 = %#RX64\n",   pszPrefix, pVmcs->u64XssBitmap.u));
-        LogRel(("  %sENCLS-exiting bitmap addr  = %#RX64\n",   pszPrefix, pVmcs->u64AddrEnclsBitmap.u));
+        LogRel(("  %sENCLS-exiting bitmap       = %#RX64\n",   pszPrefix, pVmcs->u64EnclsBitmap.u));
         LogRel(("  %sSPPT pointer               = %#RX64\n",   pszPrefix, pVmcs->u64SpptPtr.u));
         LogRel(("  %sTSC multiplier             = %#RX64\n",   pszPrefix, pVmcs->u64TscMultiplier.u));
 
