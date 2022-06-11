@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 80652 2019-09-08 18:19:53Z vboxsync $ */
+/* $Id: UIIndicatorsPool.cpp 80831 2019-09-16 18:00:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIIndicatorsPool class implementation.
  */
@@ -1054,7 +1054,7 @@ private slots:
         ULONG aPctHalted;
         ULONG aPctOther;
         comMachineDebugger.GetCPULoad(0x7fffffff, aPctExecuting, aPctHalted, aPctOther);
-        m_iCPULoadPercentage = aPctExecuting;
+        m_iCPULoadPercentage = aPctExecuting + aPctOther;
         update();
     }
 
