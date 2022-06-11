@@ -1,4 +1,4 @@
-/* $Id: DevHDACommon.h 82406 2019-12-05 00:47:02Z vboxsync $ */
+/* $Id: DevHDACommon.h 82417 2019-12-05 13:31:38Z vboxsync $ */
 /** @file
  * DevHDACommon.h - Shared HDA device defines / functions.
  */
@@ -534,11 +534,11 @@ extern const HDAREGDESC g_aHdaRegMap[HDA_NUM_REGS];
 
 
 
-/** The HDA controller. */
+/** Pointer to a shared HDA state. */
 typedef struct HDASTATE *PHDASTATE;
-/** The HDA stream. */
+/** Pointer to a HDA stream state. */
 typedef struct HDASTREAM *PHDASTREAM;
-
+/** Pointer to a mixer sink. */
 typedef struct HDAMIXERSINK *PHDAMIXERSINK;
 
 

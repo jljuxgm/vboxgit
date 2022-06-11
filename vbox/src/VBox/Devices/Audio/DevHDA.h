@@ -1,4 +1,4 @@
-/* $Id: DevHDA.h 82406 2019-12-05 00:47:02Z vboxsync $ */
+/* $Id: DevHDA.h 82417 2019-12-05 13:31:38Z vboxsync $ */
 /** @file
  * DevHDA.h - VBox Intel HD Audio Controller.
  */
@@ -100,7 +100,7 @@ typedef struct HDASTATEDBGINFO
 } HDASTATEDBGINFO, *PHDASTATEDBGINFO;
 
 /**
- * ICH Intel HD Audio Controller state.
+ * Shared ICH Intel HD audio controller state.
  */
 typedef struct HDASTATE
 {
@@ -225,7 +225,9 @@ typedef struct HDASTATE
     /** This is for checking that the build was correctly configured in all contexts.
      *  This is set to HDASTATE_ALIGNMENT_CHECK_MAGIC. */
     uint64_t                uAlignmentCheckMagic;
-} HDASTATE, *PHDASTATE;
+} HDASTATE;
+/** Pointer to a shared HDA device state.  */
+typedef HDASTATE *PHDASTATE;
 
 /** Value for HDASTATE:uAlignmentCheckMagic. */
 #define HDASTATE_ALIGNMENT_CHECK_MAGIC  UINT64_C(0x1298afb75893e059)
