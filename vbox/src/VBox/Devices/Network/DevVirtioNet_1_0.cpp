@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet_1_0.cpp 82778 2020-01-16 12:20:04Z vboxsync $ $Revision: 82778 $ $Date: 2020-01-16 20:20:04 +0800 (Thu, 16 Jan 2020) $ $Author: vboxsync $ */
+/* $Id: DevVirtioNet_1_0.cpp 82779 2020-01-16 12:32:53Z vboxsync $ $Revision: 82779 $ $Date: 2020-01-16 20:32:53 +0800 (Thu, 16 Jan 2020) $ $Author: vboxsync $ */
 
 /** @file
  * VBox storage devices - Virtio NET Driver
@@ -1109,8 +1109,6 @@ static int virtioNetR3HandleRxPacket(PPDMDEVINS pDevIns, PVIRTIONET pThis, PVIRT
         int rc = virtioCoreR3QueueGet(pDevIns, &pThis->Virtio, RXQIDX(0), &pDescChain, true);
 
         AssertRC(rc == VINF_SUCCESS || rc == VERR_NOT_AVAILABLE, rc);
-
-        /** @todo  Find a better way to deal with this */
 
         AssertMsgReturn(rc == VINF_SUCCESS && pDescChain->cbPhysSend,
                         ("Not enough Rx buffers in queue to accomodate ethernet packet\n"),
