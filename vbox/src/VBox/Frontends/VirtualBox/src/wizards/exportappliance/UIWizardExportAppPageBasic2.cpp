@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic2.cpp 79661 2019-07-10 08:39:58Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic2.cpp 79699 2019-07-11 14:16:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic2 class implementation.
  */
@@ -925,8 +925,6 @@ UIWizardExportAppPageBasic2::UIWizardExportAppPageBasic2(bool fExportToOCIByDefa
                     m_pRadioAskThenExport = new QRadioButton;
                     if (m_pRadioAskThenExport)
                     {
-                        m_pRadioAskThenExport->setEnabled(false);
-
                         /* Add into layout: */
                         m_pSettingsLayout2->addWidget(m_pRadioAskThenExport, 3, 1);
                     }
