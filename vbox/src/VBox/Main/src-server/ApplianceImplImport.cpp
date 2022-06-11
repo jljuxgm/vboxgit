@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 78929 2019-06-03 10:54:07Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 78930 2019-06-03 10:56:02Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -1961,7 +1961,7 @@ HRESULT Appliance::i_importCloudImpl(TaskCloud *pTask)
             LogRel(("%s: Cloud import (local phase) - exception occured (%Rrc).\n", __FUNCTION__, aRc));
             hrc = aRc;
         }
-        catct (int aRc)
+        catch (int aRc)
         {
             LogRel(("%s: Cloud import (local phase) - exception occured (%Rrc).\n", __FUNCTION__, aRc));
             hrc = setErrorVrc(aRc);
