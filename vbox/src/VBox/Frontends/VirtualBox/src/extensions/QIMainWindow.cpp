@@ -1,4 +1,4 @@
-/* $Id: QIMainWindow.cpp 81255 2019-10-14 12:15:33Z vboxsync $ */
+/* $Id: QIMainWindow.cpp 81256 2019-10-14 12:21:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - QIMainWindow class implementation.
  */
@@ -26,6 +26,11 @@
 #ifdef VBOX_WS_X11
 # include "UICommon.h"
 # include "UIDesktopWidgetWatchdog.h"
+#endif
+
+/* Other VBox includes: */
+#ifdef VBOX_WS_MAC
+# include "iprt/cpp/utils.h"
 #endif
 
 
@@ -102,7 +107,7 @@ QRect QIMainWindow::currentGeometry() const
 bool QIMainWindow::isCurrentlyMaximized() const
 {
 #ifdef VBOX_WS_MAC
-    return ::darwinIsWindowMaximized(this);
+    return ::darwinIsWindowMaximized(unconst(this));
 #else
     return isMaximized();
 #endif
