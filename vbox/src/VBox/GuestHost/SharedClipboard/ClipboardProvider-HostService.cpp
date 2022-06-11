@@ -1,4 +1,4 @@
-/* $Id: ClipboardProvider-HostService.cpp 78942 2019-06-03 19:10:19Z vboxsync $ */
+/* $Id: ClipboardProvider-HostService.cpp 78974 2019-06-04 16:51:48Z vboxsync $ */
 /** @file
  * Shared Clipboard - Provider implementation for host service (host side).
  */
@@ -39,94 +39,6 @@ SharedClipboardProviderHostService::SharedClipboardProviderHostService(void)
 }
 
 SharedClipboardProviderHostService::~SharedClipboardProviderHostService(void)
-{
-}
-
-int SharedClipboardProviderHostService::ReadMetaData(uint32_t fFlags /* = 0 */)
-{
-    RT_NOREF(fFlags);
-    return VERR_NOT_IMPLEMENTED;
-}
-
-int SharedClipboardProviderHostService::WriteMetaData(const void *pvBuf, size_t cbBuf, size_t *pcbWritten, uint32_t fFlags /* = 0 */)
-{
-    RT_NOREF(pvBuf, cbBuf, pcbWritten, fFlags);
-    return VERR_NOT_IMPLEMENTED;
-}
-
-int SharedClipboardProviderVbglR3::ReadDirectory(PVBOXCLIPBOARDDIRDATA pDirData)
-{
-    RT_NOREF(pDirData);
-
-    LogFlowFuncEnter();
-
-    int rc = VERR_NOT_IMPLEMENTED;
-
-    LogFlowFuncLeaveRC(rc);
-    return rc;
-}
-
-int SharedClipboardProviderVbglR3::WriteDirectory(const PVBOXCLIPBOARDDIRDATA pDirData)
-{
-    RT_NOREF(pDirData);
-
-    LogFlowFuncEnter();
-
-    int rc = VERR_NOT_IMPLEMENTED;
-
-    LogFlowFuncLeaveRC(rc);
-    return rc;
-}
-
-int SharedClipboardProviderVbglR3::ReadFileHdr(PVBOXCLIPBOARDFILEHDR pFileHdr)
-{
-    RT_NOREF(pFileHdr);
-
-    LogFlowFuncEnter();
-
-    int rc = VERR_NOT_IMPLEMENTED;
-
-    LogFlowFuncLeaveRC(rc);
-    return rc;
-}
-
-int SharedClipboardProviderVbglR3::WriteFileHdr(const PVBOXCLIPBOARDFILEHDR pFileHdr)
-{
-    RT_NOREF(pFileHdr);
-
-    LogFlowFuncEnter();
-
-    int rc = VERR_NOT_IMPLEMENTED;
-
-    LogFlowFuncLeaveRC(rc);
-    return rc;
-}
-
-int SharedClipboardProviderVbglR3::ReadFileData(PVBOXCLIPBOARDFILEDATA pFileData)
-{
-    RT_NOREF(pFileData);
-
-    LogFlowFuncEnter();
-
-    int rc = VERR_NOT_IMPLEMENTED;
-
-    LogFlowFuncLeaveRC(rc);
-    return rc;
-}
-
-int SharedClipboardProviderVbglR3::WriteFileData(const PVBOXCLIPBOARDFILEDATA pFileData)
-{
-    RT_NOREF(pFileData);
-
-    LogFlowFuncEnter();
-
-    int rc = VERR_NOT_IMPLEMENTED;
-
-    LogFlowFuncLeaveRC(rc);
-    return rc;
-}
-
-void SharedClipboardProviderHostService::Reset(void)
 {
 }
 

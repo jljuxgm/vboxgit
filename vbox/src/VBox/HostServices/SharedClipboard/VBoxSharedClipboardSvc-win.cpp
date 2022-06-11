@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-win.cpp 78942 2019-06-03 19:10:19Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-win.cpp 78974 2019-06-04 16:51:48Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Win32 host.
  */
@@ -63,6 +63,10 @@ struct _VBOXCLIPBOARDCONTEXT
     PVBOXCLIPBOARDCLIENTDATA pClientData;
     /** Windows-specific context data. */
     VBOXCLIPBOARDWINCTX      Win;
+#ifdef VBOX_WITH_SHARED_CLIPBOARD_URI_LIST
+    /** Structure for keeping URI clipboard information around. */
+    SHAREDCLIPBOARDURICTX    URI;
+#endif
 };
 
 /* Only one client is supported. There seems to be no need for more clients. */
