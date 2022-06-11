@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 82364 2019-12-04 07:31:09Z vboxsync $ */
+/* $Id: DevE1000.cpp 82368 2019-12-04 09:47:53Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -4534,11 +4534,11 @@ static int e1kFallbackAddToFrame(PPDMDEVINS pDevIns, PE1KSTATE pThis, E1KTXDESC 
     do
     {
         /* Calculate how many bytes we have left in this TCP segment */
-        uint32_t cb = u16MaxPktLen - pThis->u16TxPktLen;
+        uint16_t cb = u16MaxPktLen - pThis->u16TxPktLen;
         if (cb > pDesc->data.cmd.u20DTALEN)
         {
             /* This descriptor fits completely into current segment */
-            cb = pDesc->data.cmd.u20DTALEN;
+            cb = (uint16_t)pDesc->data.cmd.u20DTALEN; /* u20DTALEN at this point is guarantied to fit into 16 bits. */
             rc = e1kFallbackAddSegment(pDevIns, pThis, pDesc->data.u64BufAddr, cb, pDesc->data.cmd.fEOP /*fSend*/, fOnWorkerThread);
         }
         else
