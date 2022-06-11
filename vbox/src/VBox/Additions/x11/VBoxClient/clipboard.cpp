@@ -1,4 +1,4 @@
-/** $Id: clipboard.cpp 82286 2019-11-29 16:08:08Z vboxsync $ */
+/** $Id: clipboard.cpp 82287 2019-11-29 16:18:10Z vboxsync $ */
 /** @file
  * Guest Additions - X11 Shared Clipboard.
  */
@@ -42,6 +42,7 @@
 #ifdef VBOX_WITH_SHARED_CLIPBOARD_FUSE
 # include "clipboard-fuse.h"
 #endif
+
 
 /*********************************************************************************************************************************
 *   Global Variables                                                                                                             *
