@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplExport.cpp 78923 2019-06-03 09:09:54Z vboxsync $ */
+/* $Id: ApplianceImplExport.cpp 79168 2019-06-17 06:41:35Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -440,7 +440,7 @@ HRESULT Machine::exportTo(const ComPtr<IAppliance> &aAppliance, const com::Utf8S
                 strLocation = bstrLocation;
 
                 Utf8Str ext = strLocation;
-                ext.assignEx(RTPathSuffix(ext.c_str()));//returns extension with dot (".iso")
+                ext.assignEx(RTPathSuffix(strLocation.c_str()));//returns extension with dot (".iso")
 
                 int eq = ext.compare(".iso", Utf8Str::CaseInsensitive);
                 if (eq != 0)
