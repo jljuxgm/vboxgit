@@ -1,4 +1,4 @@
-/* $Id: tstSeamlessX11-auto.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: tstSeamlessX11-auto.cpp 81040 2019-09-27 09:45:46Z vboxsync $ */
 /** @file
  * Automated test of the X11 seamless Additions code.
  * @todo Better separate test data from implementation details!
@@ -45,9 +45,34 @@ int XFree(void *data)
 #define TEST_DISPLAY ((Display *)0xffff)
 #define TEST_ROOT ((Window)1)
 
-extern void vbclFatalError(char *psz)
+void VBClLogError(const char *pszFormat, ...)
 {
-    RTPrintf("Fatal error: %s\n", psz);
+    va_list args;
+    va_start(args, pszFormat);
+    char *psz = NULL;
+    RTStrAPrintfV(&psz, pszFormat, args);
+    va_end(args);
+
+    AssertPtr(psz);
+    RTPrintf("Error: %s", psz);
+
+    RTStrFree(psz);
+}
+
+/** Exit with a fatal error. */
+void VBClLogFatalError(const char *pszFormat, ...)
+{
+    va_list args;
+    va_start(args, pszFormat);
+    char *psz = NULL;
+    RTStrAPrintfV(&psz, pszFormat, args);
+    va_end(args);
+
+    AssertPtr(psz);
+    RTPrintf("Fatal error: %s", psz);
+
+    RTStrFree(psz);
+
     exit(1);
 }
 

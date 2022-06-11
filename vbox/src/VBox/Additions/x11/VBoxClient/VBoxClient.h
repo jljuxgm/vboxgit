@@ -1,4 +1,4 @@
-/* $Id: VBoxClient.h 76563 2019-01-01 03:53:56Z vboxsync $ */
+/* $Id: VBoxClient.h 81040 2019-09-27 09:45:46Z vboxsync $ */
 /** @file
  *
  * VirtualBox additions user session daemon.
@@ -26,16 +26,9 @@
 #include <iprt/cpp/utils.h>
 #include <iprt/string.h>
 
-/** Exit with a fatal error. */
-#define VBClFatalError(format) \
-do { \
-    char *pszMessage = RTStrAPrintf2 format; \
-    LogRel(format); \
-    vbclFatalError(pszMessage); \
-} while(0)
-
-/** Exit with a fatal error. */
-extern DECLNORETURN(void) vbclFatalError(char *pszMessage);
+void VBClLogInfo(const char *pszFormat, ...);
+void VBClLogError(const char *pszFormat, ...);
+void VBClLogFatalError(const char *pszFormat, ...);
 
 /** Call clean-up for the current service and exit. */
 extern void VBClCleanUp(bool fExit = true);

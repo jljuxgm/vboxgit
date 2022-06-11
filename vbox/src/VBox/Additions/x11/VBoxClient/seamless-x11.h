@@ -1,4 +1,4 @@
-/* $Id: seamless-x11.h 79482 2019-07-03 02:35:37Z vboxsync $ */
+/* $Id: seamless-x11.h 81040 2019-09-27 09:45:46Z vboxsync $ */
 /** @file
  * Seamless mode - X11 guests.
  */
@@ -154,13 +154,13 @@ public:
         VBoxGuestWinInfo *pInfo = new VBoxGuestWinInfo(isMapped, x, y, w, h, cRects,
                                                        pRects);
         pInfo->Core.Key = hWin;
-        LogRelFlowFunc(("returning\n"));
+        LogRelFlowFuncLeave();
         return RTAvlU32Insert(&mWindows, &pInfo->Core);
     }
 
     VBoxGuestWinInfo *removeWindow(Window hWin)
     {
-        LogRelFlowFunc(("called\n"));
+        LogRelFlowFuncEnter();
         return (VBoxGuestWinInfo *)RTAvlU32Remove(&mWindows, hWin);
     }
 };
