@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 84080 2020-04-29 12:54:41Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 84081 2020-04-29 12:59:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -700,7 +700,6 @@ void UIVirtualBoxManagerWidget::updateToolbar()
                         pButton->setPopupMode(QToolButton::InstantPopup);
                         pButton->setAutoRaise(true);
                     }
-
                     break;
                 }
 
@@ -765,6 +764,7 @@ void UIVirtualBoxManagerWidget::updateToolbar()
                 case UIToolType_Error:
                 {
                     m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Machine_S_New));
+                    m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Machine_S_Add));
                     m_pToolBar->addSeparator();
                     m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Machine_S_Refresh));
                     break;
