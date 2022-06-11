@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 83170 2020-02-27 10:10:47Z vboxsync $ */
+/* $Id: MachineImpl.cpp 83171 2020-02-27 10:28:09Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -7367,7 +7367,7 @@ HRESULT Machine::i_connectToCloudNetwork(ProgressProxy *aProgress)
     int iSlot = -1;
 
     LogFlowThisFunc(("Checking if cloud network needs to be connected\n"));
-    for (int slot = 0; slot < mNetworkAdapters.size(); ++slot)
+    for (int slot = 0; (unsigned)slot < mNetworkAdapters.size(); ++slot)
     {
         BOOL enabled;
         hrc = mNetworkAdapters[slot]->COMGETTER(Enabled)(&enabled);
