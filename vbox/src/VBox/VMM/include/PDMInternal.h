@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 81948 2019-11-18 16:28:43Z vboxsync $ */
+/* $Id: PDMInternal.h 81961 2019-11-18 19:06:25Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -1230,6 +1230,8 @@ typedef struct PDM
     PDMAPIC                         Apic;
     /** The registered I/O APIC device. */
     PDMIOAPIC                       IoApic;
+    /** The registered HPET device. */
+    PPDMDEVINSR3                    pHpet;
 
     /** List of registered devices. (FIFO) */
     R3PTRTYPE(PPDMDEV)              pDevs;
