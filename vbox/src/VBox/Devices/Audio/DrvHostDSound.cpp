@@ -1,4 +1,4 @@
-/* $Id: DrvHostDSound.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: DrvHostDSound.cpp 83240 2020-03-10 10:14:40Z vboxsync $ */
 /** @file
  * Windows host backend driver using DirectSound.
  */
@@ -2582,7 +2582,7 @@ static DECLCALLBACK(void) drvHostDSoundDestruct(PPDMDRVINS pDrvIns)
 #ifdef VBOX_WITH_AUDIO_MMNOTIFICATION_CLIENT
     if (pThis->m_pNotificationClient)
     {
-        pThis->m_pNotificationClient->Dispose();
+        pThis->m_pNotificationClient->Unregister();
         pThis->m_pNotificationClient->Release();
 
         pThis->m_pNotificationClient = NULL;
@@ -2682,12 +2682,15 @@ static DECLCALLBACK(int) drvHostDSoundConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pC
             pThis->m_pNotificationClient = new VBoxMMNotificationClient();
 
             HRESULT hr = pThis->m_pNotificationClient->Initialize();
+            if (SUCCEEDED(hr))
+                hr = pThis->m_pNotificationClient->Register();
+
             if (FAILED(hr))
                 rc = VERR_AUDIO_BACKEND_INIT_FAILED;
         }
         catch (std::bad_alloc &ex)
         {
-            NOREF(ex);
+            RT_NOREF(ex);
             rc = VERR_NO_MEMORY;
         }
     }
