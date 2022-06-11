@@ -1,4 +1,4 @@
-/* $Id: VBox-doc.c 80010 2019-07-26 15:05:06Z vboxsync $ */
+/* $Id: VBox-doc.c 80367 2019-08-21 11:35:06Z vboxsync $ */
 /** @file
  * VirtualBox Top Level Documentation File.
  */
@@ -112,8 +112,6 @@
  *  - Host Services.
  *      - @ref pg_hostclip Shared Clipboard.
  *      - Shared Folders.
- *      - Shared OpenGL. See PDF. (TODO: translate PDF to doxygen)
- *          - @ref pg_opengl_cocoa
  *      - @ref pg_svc_guest_properties
  *      - @ref pg_svc_guest_control
  *  - Guest Additions.
