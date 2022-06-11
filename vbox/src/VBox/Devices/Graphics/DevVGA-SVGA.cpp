@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 83152 2020-02-25 13:49:56Z vboxsync $ */
+/* $Id: DevVGA-SVGA.cpp 83154 2020-02-25 13:56:12Z vboxsync $ */
 /** @file
  * VMware SVGA device.
  *
@@ -835,7 +835,7 @@ void vmsvgaR3VBVAResize(PVGASTATE pThis, PVGASTATECC pThisCC)
  * Used to update screen offsets (positions) since appearently vmwgfx fails to pass correct offsets thru FIFO.
  *
  * @param   pInterface  The device instance.
- * @param   cPosition   The size of the pPosition array
+ * @param   cPositions  The size of the pPosition array
  * @param   pPosition   Monitor positions. We assume for the disable monitors the positions is (-1, -1)
  */
 DECLCALLBACK(void) vmsvgaR3PortReportMonitorPositions(PPDMIDISPLAYPORT pInterface, uint32_t cPositions, PRTPOINT pPosition)
