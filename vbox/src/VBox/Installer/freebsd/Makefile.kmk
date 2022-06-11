@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 80975 2019-09-24 13:47:46Z vboxsync $
+# $Id: Makefile.kmk 81159 2019-10-08 15:04:14Z vboxsync $
 ## @file
 # Makefile for the FreeBSD installer.
 #
@@ -103,13 +103,6 @@ VBOX_FBSD_STRIP_BIN = \
 		VBoxTestOGL \
 	$(if $(VBOX_WITH_PYTHON),VBoxPython.so,) \
 	$(if $(VBOX_WITH_DTRACE),VBoxDTrace,)
-
-ifdef VBOX_WITH_REM
- VBOX_FBSD_STRIP_BIN += \
- 	VBoxREM.so \
- 	$(if $(eq $(KBUILD_TARGET_ARCH),x86),VBoxREM32.so,) \
- 	$(if $(eq $(KBUILD_TARGET_ARCH),x86),VBoxREM64.so,)
-endif
 
 # Do not remove relocation information of these binaries
 VBOX_FBSD_STRIP_OBJ = \
