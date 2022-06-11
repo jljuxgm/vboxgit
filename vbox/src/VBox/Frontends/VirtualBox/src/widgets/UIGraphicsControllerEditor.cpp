@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsControllerEditor.cpp 80072 2019-07-31 11:48:29Z vboxsync $ */
+/* $Id: UIGraphicsControllerEditor.cpp 82430 2019-12-05 16:49:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGraphicsControllerEditor class implementation.
  */
@@ -29,6 +29,7 @@
 UIGraphicsControllerEditor::UIGraphicsControllerEditor(QWidget *pParent /* = 0 */, bool fWithLabel /* = false */)
     : QIWithRetranslateUI<QWidget>(pParent)
     , m_fWithLabel(fWithLabel)
+    , m_enmValue(KGraphicsControllerType_Max)
     , m_pLabel(0)
     , m_pCombo(0)
 {
@@ -39,7 +40,11 @@ void UIGraphicsControllerEditor::setValue(KGraphicsControllerType enmValue)
 {
     if (m_pCombo)
     {
-        int iIndex = m_pCombo->findData(QVariant::fromValue(enmValue));
+        /* Update cached value: */
+        m_enmValue = enmValue;
+
+        /* Look for proper index to choose: */
+        int iIndex = m_pCombo->findData(QVariant::fromValue(m_enmValue));
         if (iIndex != -1)
             m_pCombo->setCurrentIndex(iIndex);
     }
@@ -47,7 +52,7 @@ void UIGraphicsControllerEditor::setValue(KGraphicsControllerType enmValue)
 
 KGraphicsControllerType UIGraphicsControllerEditor::value() const
 {
-    return m_pCombo ? m_pCombo->itemData(m_pCombo->currentIndex()).value<KGraphicsControllerType>() : KGraphicsControllerType_Null;
+    return m_pCombo ? m_pCombo->currentData().value<KGraphicsControllerType>() : m_enmValue;
 }
 
 void UIGraphicsControllerEditor::retranslateUi()

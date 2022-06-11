@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsControllerEditor.h 80068 2019-07-31 11:20:37Z vboxsync $ */
+/* $Id: UIGraphicsControllerEditor.h 82430 2019-12-05 16:49:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGraphicsControllerEditor class declaration.
  */
@@ -75,6 +75,9 @@ private:
 
     /** Holds whether descriptive label should be created. */
     bool  m_fWithLabel;
+
+    /** Holds the value to be selected. */
+    KGraphicsControllerType  m_enmValue;
 
     /** Holds the label instance. */
     QLabel     *m_pLabel;
