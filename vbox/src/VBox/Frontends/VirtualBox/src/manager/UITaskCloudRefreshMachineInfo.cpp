@@ -1,4 +1,4 @@
-/* $Id: UITaskCloudRefreshMachineInfo.cpp 83656 2020-04-09 17:01:07Z vboxsync $ */
+/* $Id: UITaskCloudRefreshMachineInfo.cpp 83658 2020-04-09 17:13:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UITaskCloudRefreshMachineInfo class implementation.
  */
@@ -26,7 +26,7 @@ UITaskCloudRefreshMachineInfo::UITaskCloudRefreshMachineInfo(const CCloudMachine
 {
 }
 
-QString UITaskCloudRefreshMachineInfo::errorInfo()
+QString UITaskCloudRefreshMachineInfo::errorInfo() const
 {
     m_mutex.lock();
     const QString strErrorInfo = m_strErrorInfo;
