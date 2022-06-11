@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGenerator.cpp 84020 2020-04-27 17:02:01Z vboxsync $ */
+/* $Id: UIDetailsGenerator.cpp 84107 2020-04-30 14:27:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsGenerator implementation.
  */
@@ -206,7 +206,10 @@ UITextTable UIDetailsGenerator::generateMachineInformationGeneral(CCloudMachine 
             }
 
             /* Generate table string: */
-            table << UITextTableLine(strLabel, QString("<a href=#%1,%2>%3</a>").arg(strAnchorType, strLabel, strValue));
+            if (comIteratedValue.GetEnabled())
+                table << UITextTableLine(strLabel, QString("<a href=#%1,%2>%3</a>").arg(strAnchorType, strLabel, strValue));
+            else
+                table << UITextTableLine(strLabel, strValue);
         }
     }
 
