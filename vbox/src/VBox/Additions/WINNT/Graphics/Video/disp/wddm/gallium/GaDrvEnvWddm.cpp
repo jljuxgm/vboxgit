@@ -1,4 +1,4 @@
-/* $Id: GaDrvEnvWddm.cpp 82651 2019-12-24 12:23:05Z vboxsync $ */
+/* $Id: GaDrvEnvWddm.cpp 82679 2020-01-08 19:37:51Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver interface to the WDDM miniport driver.
  */
@@ -219,6 +219,9 @@ GaDrvEnvWddm::gaEnvWddmSurfaceDefine(void *pvEnv,
 
     ddiEscape.hDevice               = 0; // pThis->mWddmCallbacks.hDevice;
     ddiEscape.Flags.Value           = 0;
+    ddiEscape.Flags.HardwareAccess  = 1; // Required, otherwise graphics corruption can happen. No idea why.
+                                         // Eventually we probably have to create allocations for surfaces,
+                                         // as a WDDM driver should do. Then the Escape hack will be removed.
     ddiEscape.pPrivateDriverData    = pData;
     ddiEscape.PrivateDriverDataSize = cbAlloc;
     ddiEscape.hContext              = 0;
@@ -252,7 +255,9 @@ GaDrvEnvWddm::gaEnvWddmSurfaceDestroy(void *pvEnv,
 
     ddiEscape.hDevice               = 0; // pThis->mWddmCallbacks.hDevice;
     ddiEscape.Flags.Value           = 0;
-    ddiEscape.Flags.HardwareAccess  = 1; /// @todo Remove when the miniport has the ref counting for the host objects
+    ddiEscape.Flags.HardwareAccess  = 1; // Required, otherwise graphics corruption can happen. No idea why.
+                                         // Eventually we probably have to create allocations for surfaces,
+                                         // as a WDDM driver should do. Then the Escape hack will be removed.
     ddiEscape.pPrivateDriverData    = &data;
     ddiEscape.PrivateDriverDataSize = sizeof(data);
     ddiEscape.hContext              = 0;
