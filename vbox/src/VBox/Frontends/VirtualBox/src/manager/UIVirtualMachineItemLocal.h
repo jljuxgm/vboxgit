@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItemLocal.h 84102 2020-04-30 13:20:34Z vboxsync $ */
+/* $Id: UIVirtualMachineItemLocal.h 84189 2020-05-07 15:13:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItemLocal class declaration.
  */
@@ -66,6 +66,8 @@ public:
 
     /** @name State attributes.
       * @{ */
+        /** Returns cached machine state. */
+        KMachineState machineState() const { return m_enmMachineState; }
         /** Returns cached session state. */
         KSessionState sessionState() const { return m_enmSessionState; }
         /** Returns cached session state name. */
@@ -147,6 +149,8 @@ private:
 
     /** @name State attributes.
       * @{ */
+        /** Holds cached machine state. */
+        KMachineState  m_enmMachineState;
         /** Holds cached session state. */
         KSessionState  m_enmSessionState;
         /** Holds cached session state name. */

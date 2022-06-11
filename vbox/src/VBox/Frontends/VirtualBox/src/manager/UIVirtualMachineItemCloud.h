@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItemCloud.h 84182 2020-05-07 11:14:41Z vboxsync $ */
+/* $Id: UIVirtualMachineItemCloud.h 84189 2020-05-07 15:13:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItemCloud class declaration.
  */
@@ -58,6 +58,9 @@ public:
 
     /** @name Data attributes.
       * @{ */
+        /** Returns cached machine state. */
+        KCloudMachineState machineState() const { return m_enmMachineState; }
+
         /** Defines fake cloud item @a enmState. */
         void setFakeCloudItemState(UIFakeCloudVirtualMachineItemState enmState);
         /** Returns fake cloud item state. */
@@ -121,6 +124,9 @@ private slots:
 
 private:
 
+    /** Temporary! Converts state from KMachineState to KCloudMachineState. */
+    static KCloudMachineState toCloudMachineState(KMachineState enmState);
+
     /** @name Arguments.
       * @{ */
         /** Holds cached cloud machine object. */
@@ -129,6 +135,9 @@ private:
 
     /** @name Data attributes.
       * @{ */
+        /** Holds cached machine state. */
+        KCloudMachineState  m_enmMachineState;
+
         /** Holds fake cloud item state. */
         UIFakeCloudVirtualMachineItemState  m_enmFakeCloudItemState;
         /** Holds fake cloud item error message. */

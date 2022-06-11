@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackend.h 83494 2020-03-31 09:41:58Z vboxsync $ */
+/* $Id: UIConverterBackend.h 84189 2020-05-07 15:13:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConverterBackend declaration.
  */
@@ -128,6 +128,7 @@ template<> SHARED_LIBRARY_STUFF bool canConvert<UISettingsDefs::RecordingMode>()
 template<> SHARED_LIBRARY_STUFF bool canConvert<VMResourceMonitorColumn>();
 
 /* Declare COM canConvert specializations: */
+template<> SHARED_LIBRARY_STUFF bool canConvert<KCloudMachineState>();
 template<> SHARED_LIBRARY_STUFF bool canConvert<KMachineState>();
 template<> SHARED_LIBRARY_STUFF bool canConvert<KSessionState>();
 template<> SHARED_LIBRARY_STUFF bool canConvert<KParavirtProvider>();
@@ -272,6 +273,8 @@ template<> SHARED_LIBRARY_STUFF QString toInternalString(const VMResourceMonitor
 template<> SHARED_LIBRARY_STUFF VMResourceMonitorColumn fromInternalString<VMResourceMonitorColumn>(const QString &strVMResourceMonitorColumn);
 
 /* Declare COM conversion specializations: */
+template<> SHARED_LIBRARY_STUFF QIcon toIcon(const KCloudMachineState &state);
+template<> SHARED_LIBRARY_STUFF QString toString(const KCloudMachineState &state);
 template<> SHARED_LIBRARY_STUFF QColor toColor(const KMachineState &state);
 template<> SHARED_LIBRARY_STUFF QIcon toIcon(const KMachineState &state);
 template<> SHARED_LIBRARY_STUFF QString toString(const KMachineState &state);

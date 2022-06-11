@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItemLocal.cpp 84102 2020-04-30 13:20:34Z vboxsync $ */
+/* $Id: UIVirtualMachineItemLocal.cpp 84189 2020-05-07 15:13:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItem class implementation.
  */
@@ -42,6 +42,7 @@ UIVirtualMachineItemLocal::UIVirtualMachineItemLocal(const CMachine &comMachine)
     : UIVirtualMachineItem(UIVirtualMachineItemType_Local)
     , m_comMachine(comMachine)
     , m_cSnaphot(0)
+    , m_enmMachineState(KMachineState_Null)
     , m_enmSessionState(KSessionState_Null)
 {
     recache();

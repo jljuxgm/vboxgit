@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItem.cpp 83921 2020-04-22 12:09:34Z vboxsync $ */
+/* $Id: UIVirtualMachineItem.cpp 84189 2020-05-07 15:13:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItem class implementation.
  */
@@ -27,7 +27,6 @@
 UIVirtualMachineItem::UIVirtualMachineItem(UIVirtualMachineItemType enmType)
     : m_enmType(enmType)
     , m_fAccessible(false)
-    , m_enmMachineState(KMachineState_Null)
     , m_enmConfigurationAccessLevel(ConfigurationAccessLevel_Null)
     , m_fHasDetails(false)
 {

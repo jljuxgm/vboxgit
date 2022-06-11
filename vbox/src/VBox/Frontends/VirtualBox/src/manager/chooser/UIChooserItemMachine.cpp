@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemMachine.cpp 84188 2020-05-07 14:28:29Z vboxsync $ */
+/* $Id: UIChooserItemMachine.cpp 84189 2020-05-07 15:13:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemMachine class implementation.
  */
@@ -96,7 +96,8 @@ bool UIChooserItemMachine::isLockedMachine() const
         return false;
 
     /* Acquire local machine state: */
-    const KMachineState enmState = cache()->machineState();
+    AssertPtrReturn(cache()->toLocal(), true);
+    const KMachineState enmState = cache()->toLocal()->machineState();
     return    enmState != KMachineState_PoweredOff
            && enmState != KMachineState_Saved
            && enmState != KMachineState_Teleported
