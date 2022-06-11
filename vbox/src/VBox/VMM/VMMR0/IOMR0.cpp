@@ -1,4 +1,4 @@
-/* $Id: IOMR0.cpp 80644 2019-09-06 20:13:58Z vboxsync $ */
+/* $Id: IOMR0.cpp 80645 2019-09-06 20:14:36Z vboxsync $ */
 /** @file
  * IOM - Host Context Ring 0.
  */
@@ -123,8 +123,8 @@ VMMR0_INT_DECL(int)  IOMR0IoPortSetUpContext(PGVM pGVM, PPDMDEVINS pDevIns, IOMI
     pGVM->iomr0.s.paIoPortRegs[hIoPorts].pfnOutStrCallback  = pfnOutStr;
     pGVM->iomr0.s.paIoPortRegs[hIoPorts].pfnInStrCallback   = pfnInStr;
     pGVM->iomr0.s.paIoPortRegs[hIoPorts].cPorts             = cPorts;
-    uint16_t const idxStats = pGVM->iomr0.s.paIoPortRing3Regs[hIoPorts].idxStats;
 #ifdef VBOX_WITH_STATISTICS
+    uint16_t const idxStats = pGVM->iomr0.s.paIoPortRing3Regs[hIoPorts].idxStats;
     pGVM->iomr0.s.paIoPortRegs[hIoPorts].idxStats           = (uint32_t)idxStats + cPorts <= pGVM->iomr0.s.cIoPortStatsAllocation
                                                             ? idxStats : UINT16_MAX;
 #else
