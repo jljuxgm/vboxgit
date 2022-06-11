@@ -1,4 +1,4 @@
-/* $Id: QITreeWidget.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: QITreeWidget.h 84350 2020-05-18 20:07:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QITreeWidget class declaration.
  */
@@ -35,7 +35,8 @@ class QITreeWidget;
  *  tree items. */
 class SHARED_LIBRARY_STUFF QITreeWidgetItemFilter
 {
- public:
+public:
+    virtual ~QITreeWidgetItemFilter() { /* Make VC++ 19.2 happy. */ }
     virtual bool operator()(QTreeWidgetItem*) const
     {
         return true;
