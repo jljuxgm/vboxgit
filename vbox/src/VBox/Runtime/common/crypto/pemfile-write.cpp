@@ -1,4 +1,4 @@
-/* $Id: pemfile-write.cpp 84211 2020-05-08 13:06:37Z vboxsync $ */
+/* $Id: pemfile-write.cpp 84230 2020-05-10 00:52:05Z vboxsync $ */
 /** @file
  * IPRT - Crypto - PEM file writer.
  */
@@ -109,6 +109,26 @@ RTDECL(size_t) RTCrPemWriteBlob(PFNRTSTROUTPUT pfnOutput, void *pvUser,
     /* termination call */
     cchRet += pfnOutput(pvUser, NULL, 0);
 
+    return cchRet;
+}
+
+
+RTDECL(ssize_t) RTCrPemWriteBlobToVfsIoStrm(RTVFSIOSTREAM hVfsIos, const void *pvContent, size_t cbContent, const char *pszMarker)
+{
+    VFSIOSTRMOUTBUF Buf;
+    VFSIOSTRMOUTBUF_INIT(&Buf, hVfsIos);
+    size_t cchRet = RTCrPemWriteBlob(RTVfsIoStrmStrOutputCallback, &Buf, pvContent, cbContent, pszMarker);
+    Assert(Buf.offBuf == 0);
+    return RT_SUCCESS(Buf.rc) ? (ssize_t)cchRet : Buf.rc;
+}
+
+
+RTDECL(ssize_t) RTCrPemWriteBlobToVfsFile(RTVFSFILE hVfsFile, const void *pvContent, size_t cbContent, const char *pszMarker)
+{
+    RTVFSIOSTREAM hVfsIos = RTVfsFileToIoStream(hVfsFile);
+    AssertReturn(hVfsIos != NIL_RTVFSIOSTREAM, VERR_INVALID_HANDLE);
+    ssize_t cchRet = RTCrPemWriteBlobToVfsIoStrm(hVfsIos, pvContent, cbContent, pszMarker);
+    RTVfsIoStrmRelease(hVfsIos);
     return cchRet;
 }
 
@@ -234,4 +254,5 @@ RTDECL(ssize_t) RTCrPemWriteAsn1ToVfsFile(RTVFSFILE hVfsFile, PRTASN1CORE pRoot,
     RTVfsIoStrmRelease(hVfsIos);
     return cchRet;
 }
+
 

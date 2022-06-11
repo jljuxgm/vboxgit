@@ -1,4 +1,4 @@
-/* $Id: store.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: store.cpp 84230 2020-05-10 00:52:05Z vboxsync $ */
 /** @file
  * IPRT - Cryptographic (Certificate) Store.
  */
@@ -317,8 +317,9 @@ RTDECL(uint32_t) RTCrStoreCertCount(RTCRSTORE hStore)
  * OpenSSL helper.
  */
 
-RTDECL(int) RTCrStoreConvertToOpenSslCertStore(RTCRSTORE hStore, uint32_t fFlags, void **ppvOpenSslStore)
+RTDECL(int) RTCrStoreConvertToOpenSslCertStore(RTCRSTORE hStore, uint32_t fFlags, void **ppvOpenSslStore, PRTERRINFO pErrInfo)
 {
+    RT_NOREF(pErrInfo);
     PRTCRSTOREINT pThis = (PRTCRSTOREINT)hStore;
     AssertPtrReturn(pThis, VERR_INVALID_HANDLE);
     AssertReturn(pThis->u32Magic == RTCRSTOREINT_MAGIC, VERR_INVALID_HANDLE);
@@ -371,8 +372,9 @@ RTDECL(int) RTCrStoreConvertToOpenSslCertStore(RTCRSTORE hStore, uint32_t fFlags
 }
 
 
-RTDECL(int) RTCrStoreConvertToOpenSslCertStack(RTCRSTORE hStore, uint32_t fFlags, void **ppvOpenSslStack)
+RTDECL(int) RTCrStoreConvertToOpenSslCertStack(RTCRSTORE hStore, uint32_t fFlags, void **ppvOpenSslStack, PRTERRINFO pErrInfo)
 {
+    RT_NOREF(pErrInfo);
     PRTCRSTOREINT pThis = (PRTCRSTOREINT)hStore;
     AssertPtrReturn(pThis, VERR_INVALID_HANDLE);
     AssertReturn(pThis->u32Magic == RTCRSTOREINT_MAGIC, VERR_INVALID_HANDLE);

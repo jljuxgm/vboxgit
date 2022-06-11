@@ -1,4 +1,4 @@
-/* $Id: pkcs7-verify.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: pkcs7-verify.cpp 84230 2020-05-10 00:52:05Z vboxsync $ */
 /** @file
  * IPRT - Crypto - PKCS \#7, Verification
  */
@@ -67,7 +67,7 @@ static int rtCrPkcs7VerifySignedDataUsingOpenSsl(PCRTCRPKCS7CONTENTINFO pContent
     {
         STACK_OF(X509) *pAddCerts = NULL;
         if (hAdditionalCerts != NIL_RTCRSTORE)
-            rcOssl = RTCrStoreConvertToOpenSslCertStack(hAdditionalCerts, 0, (void **)&pAddCerts);
+            rcOssl = RTCrStoreConvertToOpenSslCertStack(hAdditionalCerts, 0, (void **)&pAddCerts, pErrInfo);
         else
         {
             pAddCerts = sk_X509_new_null();
@@ -78,11 +78,11 @@ static int rtCrPkcs7VerifySignedDataUsingOpenSsl(PCRTCRPKCS7CONTENTINFO pContent
             PCRTCRPKCS7SETOFCERTS pCerts = &pContentInfo->u.pSignedData->Certificates;
             for (uint32_t i = 0; i < pCerts->cItems; i++)
                 if (pCerts->papItems[i]->enmChoice == RTCRPKCS7CERTCHOICE_X509)
-                    rtCrOpenSslAddX509CertToStack(pAddCerts, pCerts->papItems[i]->u.pX509Cert);
+                    rtCrOpenSslAddX509CertToStack(pAddCerts, pCerts->papItems[i]->u.pX509Cert, NULL);
 
             X509_STORE *pTrustedCerts = NULL;
             if (hTrustedCerts != NIL_RTCRSTORE)
-                rcOssl = RTCrStoreConvertToOpenSslCertStore(hTrustedCerts, 0, (void **)&pTrustedCerts);
+                rcOssl = RTCrStoreConvertToOpenSslCertStore(hTrustedCerts, 0, (void **)&pTrustedCerts, pErrInfo);
             if (RT_SUCCESS(rcOssl))
             {
                 rtCrOpenSslInit();

@@ -1,4 +1,4 @@
-/* $Id: pkix-verify.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: pkix-verify.cpp 84230 2020-05-10 00:52:05Z vboxsync $ */
 /** @file
  * IPRT - Crypto - Public Key Infrastructure API, Verification.
  */
@@ -115,8 +115,8 @@ RTDECL(int) RTCrPkixPubKeyVerifySignature(PCRTASN1OBJID pAlgorithm, RTCRKEY hPub
     /* Create an EVP public key. */
     EVP_PKEY     *pEvpPublicKey = NULL;
     const EVP_MD *pEvpMdType = NULL;
-    int rcOssl = rtCrKeyToOpenSslKey(hPublicKey, true /*fNeedPublic*/, pAlgorithm->szObjId,
-                                     (void **)&pEvpPublicKey, (const void **)&pEvpMdType, pErrInfo);
+    int rcOssl = rtCrKeyToOpenSslKeyEx(hPublicKey, true /*fNeedPublic*/, pAlgorithm->szObjId,
+                                       (void **)&pEvpPublicKey, (const void **)&pEvpMdType, pErrInfo);
     if (RT_SUCCESS(rcOssl))
     {
         EVP_MD_CTX *pEvpMdCtx = EVP_MD_CTX_create();
@@ -229,8 +229,8 @@ RTDECL(int) RTCrPkixPubKeyVerifySignedDigest(PCRTASN1OBJID pAlgorithm, RTCRKEY h
     /* Create an EVP public key. */
     EVP_PKEY     *pEvpPublicKey = NULL;
     const EVP_MD *pEvpMdType = NULL;
-    int rcOssl = rtCrKeyToOpenSslKey(hPublicKey, true /*fNeedPublic*/, pszAlgObjId,
-                                     (void **)&pEvpPublicKey, (const void **)&pEvpMdType, pErrInfo);
+    int rcOssl = rtCrKeyToOpenSslKeyEx(hPublicKey, true /*fNeedPublic*/, pszAlgObjId,
+                                       (void **)&pEvpPublicKey, (const void **)&pEvpMdType, pErrInfo);
     if (RT_SUCCESS(rcOssl))
     {
         /* Create an EVP public key context we can use to validate the digest. */

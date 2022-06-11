@@ -1,4 +1,4 @@
-/* $Id: pkix-sign.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: pkix-sign.cpp 84230 2020-05-10 00:52:05Z vboxsync $ */
 /** @file
  * IPRT - Crypto - Public Key Infrastructure API, Verification.
  */
@@ -154,8 +154,8 @@ RTDECL(int) RTCrPkixPubKeySignDigest(PCRTASN1OBJID pAlgorithm, RTCRKEY hPrivateK
     /* Create an EVP private key. */
     EVP_PKEY     *pEvpPrivateKey = NULL;
     const EVP_MD *pEvpMdType = NULL;
-    int rcOssl = rtCrKeyToOpenSslKey(hPrivateKey, false /*fNeedPublic*/, pszAlgObjId,
-                                     (void **)&pEvpPrivateKey, (const void **)&pEvpMdType, pErrInfo);
+    int rcOssl = rtCrKeyToOpenSslKeyEx(hPrivateKey, false /*fNeedPublic*/, pszAlgObjId,
+                                       (void **)&pEvpPrivateKey, (const void **)&pEvpMdType, pErrInfo);
     if (RT_SUCCESS(rcOssl))
     {
         /* Create an EVP Private key context we can use to validate the digest. */
