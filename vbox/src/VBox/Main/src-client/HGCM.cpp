@@ -1,4 +1,4 @@
-/* $Id: HGCM.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: HGCM.cpp 78910 2019-06-01 12:24:42Z vboxsync $ */
 /** @file
  * HGCM (Host-Guest Communication Manager)
  */
@@ -1154,6 +1154,12 @@ void HGCMService::instanceDestroy(void)
 
     RTStrFree(m_pszSvcName);
     m_pszSvcName = NULL;
+
+    if (m_paClientIds)
+    {
+        RTMemFree(m_paClientIds);
+        m_paClientIds = NULL;
+    }
 }
 
 int HGCMService::saveClientState(uint32_t u32ClientId, PSSMHANDLE pSSM)
