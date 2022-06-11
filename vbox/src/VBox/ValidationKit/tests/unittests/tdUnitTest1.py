@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 82914 2020-01-29 17:09:31Z vboxsync $
+# $Id: tdUnitTest1.py 82915 2020-01-29 17:11:08Z vboxsync $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 82914 $"
+__version__ = "$Revision: 82915 $"
 
 
 # Standard Python imports.
@@ -121,10 +121,10 @@ class tdUnitTest1(vbox.TestDriver):
         'testcase/tstClipboardGH-X11Smoke': '',         # (New name) Ditto.
         'testcase/tstFileLock': '',
         'testcase/tstDisasm-2': '',                     # without parameters it will disassembler 1GB starting from 0
-        'testcase/tstFileAppendWin-1': '',              
+        'testcase/tstFileAppendWin-1': '',
         'testcase/tstDir': '',                          # useless without parameters
         'testcase/tstDir-2': '',                        # useless without parameters
-        'testcase/tstGlobalConfig': '',                 
+        'testcase/tstGlobalConfig': '',
         'testcase/tstHostHardwareLinux': '',            # must be killed with CTRL-C
         'testcase/tstHttp': '',                         # Talks to outside servers.
         'testcase/tstRTHttp': '',                       # parameters required
@@ -172,13 +172,13 @@ class tdUnitTest1(vbox.TestDriver):
         'tstTestCallTemplates': '',                     # some strange xpcom18a4 test, segfaults
         'testcase/tstRTFilesystem': '',                 # parameters required
         'testcase/tstRTDvm': '',                        # parameters required
-        # later                                         
+        # later
         'testcase/tstIntNetR0': '',                     # RTSPINLOCK_FLAGS_INTERRUPT_SAFE == RTSPINLOCK_FLAGS_INTERRUPT_UNSAFE
-        # slow stuff                                    
+        # slow stuff
         'testcase/tstAvl': '',                          # SLOW!
         'testcase/tstRTAvl': '',                        # SLOW! (new name)
         'testcase/tstVD': '',                           # 8GB fixed-sized vmdk
-        # failed or hang                                
+        # failed or hang
         'testcase/tstCryptoPkcs7Verify': '',            # hang
         'tstOVF': '',                                   # hang (only ancient version, now in new place)
         'testcase/tstOVF': '',                          # Creates mess when fails, needs to be run in a separate test.
