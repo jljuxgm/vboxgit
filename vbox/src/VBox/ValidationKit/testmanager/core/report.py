@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: report.py 79087 2019-06-11 11:58:28Z vboxsync $
+# $Id: report.py 82634 2019-12-22 18:52:21Z vboxsync $
 
 """
 Test Manager - Report models.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79087 $"
+__version__ = "$Revision: 82634 $"
 
 
 # Standard Python imports.
@@ -465,7 +465,7 @@ class ReportPeriodSetBase(object):
     def pruneRowsWithZeroSumHits(self):
         """ Discards rows with zero sum hits across all periods.  Works around lazy selects counting both totals and hits. """
         cDeleted = 0;
-        aidKeys  = self.dcHitsPerId.keys();
+        aidKeys  = list(self.dcHitsPerId);
         for idKey in aidKeys:
             if self.dcHitsPerId[idKey] == 0:
                 self.deleteKey(idKey);
