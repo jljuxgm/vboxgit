@@ -1,4 +1,4 @@
-/* $Id: VBoxFswParam.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxFswParam.h 82508 2019-12-09 12:10:54Z vboxsync $ */
 /** @file
  * VBoxFswParam.h
  */
@@ -52,6 +52,8 @@
 # include <Guid/FileInfo.h>
 # include <Guid/FileSystemVolumeLabelInfo.h>
 # include <Protocol/ComponentName.h>
+
+# include <Guid/VBoxFsBlessedFileInfo.h> /* For HFS blessed file support. */
 
 # define BS gBS
 # define PROTO_NAME(x) gEfi ## x ## Guid

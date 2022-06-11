@@ -1,4 +1,4 @@
-/* $Id: fsw_efi.c 77696 2019-03-13 22:11:52Z vboxsync $ */
+/* $Id: fsw_efi.c 82508 2019-12-09 12:10:54Z vboxsync $ */
 /** @file
  * fsw_efi.c - EFI host environment code.
  */
@@ -135,6 +135,10 @@ EFI_STATUS fsw_efi_dnode_fill_FileInfo(IN FSW_VOLUME_DATA *Volume,
                                        IN struct fsw_dnode *dno,
                                        IN OUT UINTN *BufferSize,
                                        OUT VOID *Buffer);
+
+#if defined(VBOX) && (FSTYPE == hfs)
+extern fsw_status_t fsw_hfs_get_blessed_file(void *vol, struct fsw_string *path);
+#endif
 
 /**
  * Interface structure for the EFI Driver Binding protocol.
@@ -981,6 +985,34 @@ EFI_STATUS fsw_efi_dnode_getinfo(IN FSW_FILE_DATA *File,
         // prepare for return
         *BufferSize = RequiredSize;
         Status = EFI_SUCCESS;
+
+#ifdef VBOX
+    } else if (CompareGuid(InformationType, &gVBoxFsBlessedFileInfoGuid)) {
+
+# if FSTYPE == hfs
+        struct fsw_string StrBlessedFile;
+
+        fsw_status_t rc = fsw_hfs_get_blessed_file(Volume->vol, &StrBlessedFile);
+        if (!rc)
+        {
+            // check buffer size
+            RequiredSize = SIZE_OF_VBOX_FS_BLESSED_FILE + fsw_efi_strsize(&StrBlessedFile);
+            if (*BufferSize < RequiredSize) {
+                *BufferSize = RequiredSize;
+                return EFI_BUFFER_TOO_SMALL;
+            }
+
+            // copy volume label
+            fsw_efi_strcpy(((VBOX_FS_BLESSED_FILE *)Buffer)->BlessedFile, &StrBlessedFile);
+
+            // prepare for return
+            *BufferSize = RequiredSize;
+            Status = EFI_SUCCESS;
+        }
+        else
+# endif
+            Status = EFI_UNSUPPORTED;
+#endif
 
     } else {
         Status = EFI_UNSUPPORTED;

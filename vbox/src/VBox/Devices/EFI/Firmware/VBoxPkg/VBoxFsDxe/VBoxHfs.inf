@@ -1,4 +1,4 @@
-# $Id: VBoxHfs.inf 80721 2019-09-11 08:46:37Z vboxsync $
+# $Id: VBoxHfs.inf 82508 2019-12-09 12:10:54Z vboxsync $
 ## @file
 # VBoxHfs - VBox HFS FS driver.
 #
@@ -63,6 +63,7 @@
   gEfiFileInfoGuid
   gEfiFileSystemInfoGuid
   gEfiFileSystemVolumeLabelInfoIdGuid
+  gVBoxFsBlessedFileInfoGuid
 
 [Protocols]
   gEfiDiskIoProtocolGuid
