@@ -1,4 +1,4 @@
-/* $Id: tstClipboardServiceHost.cpp 82846 2020-01-24 09:36:52Z vboxsync $ */
+/* $Id: tstClipboardServiceHost.cpp 82880 2020-01-27 17:52:41Z vboxsync $ */
 /** @file
  * Shared Clipboard host service test case.
  */
@@ -306,8 +306,8 @@ void ShClSvcImplDestroy() { }
 int ShClSvcImplDisconnect(PSHCLCLIENT) { return VINF_SUCCESS; }
 int ShClSvcImplConnect(PSHCLCLIENT, bool) { return VINF_SUCCESS; }
 int ShClSvcImplFormatAnnounce(PSHCLCLIENT, PSHCLCLIENTCMDCTX, PSHCLFORMATDATA) { AssertFailed(); return VINF_SUCCESS; }
-int ShClSvcImplReadData(PSHCLCLIENT, PSHCLCLIENTCMDCTX, PSHCLDATABLOCK, unsigned int *) { AssertFailed(); return VERR_WRONG_ORDER; }
-int ShClSvcImplWriteData(PSHCLCLIENT, PSHCLCLIENTCMDCTX, PSHCLDATABLOCK) { AssertFailed(); return VINF_SUCCESS; }
+int ShClSvcImplReadData(PSHCLCLIENT, PSHCLCLIENTCMDCTX, SHCLFORMAT uFormat, uint32_t cbData, void *pvData, unsigned int *) { AssertFailed(); return VERR_WRONG_ORDER; }
+int ShClSvcImplWriteData(PSHCLCLIENT, PSHCLCLIENTCMDCTX, SHCLFORMAT uFormat, uint32_t cbData, void *pvData) { AssertFailed(); return VINF_SUCCESS; }
 int ShClSvcImplSync(PSHCLCLIENT) { return VINF_SUCCESS; }
 
 #ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS

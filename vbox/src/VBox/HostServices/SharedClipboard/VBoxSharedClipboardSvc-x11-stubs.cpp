@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-x11-stubs.cpp 81820 2019-11-13 11:19:52Z vboxsync $*/
+/* $Id: VBoxSharedClipboardSvc-x11-stubs.cpp 82880 2020-01-27 17:52:41Z vboxsync $*/
 /** @file
  * Shared Clipboard Service - Linux host, a stub version with no functionality for use on headless hosts.
  */
@@ -106,13 +106,15 @@ int SharedClipboardSvcImplFormatAnnounce(PSHCLCLIENT pClient, PSHCLCLIENTCMDCTX 
  *
  * @param pClient       Context information about the guest VM
  * @param pCmdCtx       Command context to use.
- * @param pData         Data block to put read data into.
+ * @param uFormat       Clipboard format to read.
+ * @param pvData        Where to return the read clipboard data.
+ * @param cbData        Size (in bytes) of buffer where to return the clipboard data.
  * @param pcbActual     Where to store the actual amount of data available.
  */
 int SharedClipboardSvcImplReadData(PSHCLCLIENT pClient, PSHCLCLIENTCMDCTX pCmdCtx,
-                                   PSHCLDATABLOCK pData, uint32_t *pcbActual)
+                                   SHCLFORMAT uFormat, void *pvData, uint32_t cbData, uint32_t *pcbActual)
 {
-    RT_NOREF(pClient, pCmdCtx, pData);
+    RT_NOREF(pClient, pCmdCtx, uFormat, pvData, cbData);
 
     /* No data available. */
     *pcbActual = 0;
@@ -121,9 +123,9 @@ int SharedClipboardSvcImplReadData(PSHCLCLIENT pClient, PSHCLCLIENTCMDCTX pCmdCt
 }
 
 int SharedClipboardSvcImplWriteData(PSHCLCLIENT pClient, PSHCLCLIENTCMDCTX pCmdCtx,
-                                    PSHCLDATABLOCK pData)
+                                    SHCLFORMAT uFormat, void *pvData, uint32_t cbData)
 {
-    RT_NOREF(pClient, pCmdCtx, pData);
+    RT_NOREF(pClient, pCmdCtx, uFormat, pvData, cbData);
     return VERR_NOT_IMPLEMENTED;
 }
 

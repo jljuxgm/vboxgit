@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-internal.h 82872 2020-01-27 12:43:24Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-internal.h 82880 2020-01-27 17:52:41Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Internal header.
  */
@@ -241,7 +241,7 @@ void shClSvcClientTransfersReset(PSHCLCLIENT pClient);
  * @{
  */
 int ShClSvcDataReadRequest(PSHCLCLIENT pClient, SHCLFORMAT fFormat, PSHCLEVENTID pidEvent);
-int ShClSvcDataReadSignal(PSHCLCLIENT pClient, PSHCLCLIENTCMDCTX pCmdCtx, PSHCLDATABLOCK pData);
+int ShClSvcDataReadSignal(PSHCLCLIENT pClient, PSHCLCLIENTCMDCTX pCmdCtx, SHCLFORMAT uFormat, void *pvData, uint32_t cbData);
 int ShClSvcHostReportFormats(PSHCLCLIENT pClient, SHCLFORMATS fFormats);
 uint32_t ShClSvcGetMode(void);
 bool ShClSvcGetHeadless(void);
@@ -292,19 +292,23 @@ int ShClSvcImplFormatAnnounce(PSHCLCLIENT pClient, PSHCLCLIENTCMDCTX pCmdCtx, PS
  * @returns VBox status code.
  * @param   pClient             Shared Clipboard client context.
  * @param   pCmdCtx             Shared Clipboard command context.
- * @param   pData               Where to return the read clipboard data.
+ * @param   uFormat             Clipboard format to read.
+ * @param   pvData              Where to return the read clipboard data.
+ * @param   cbData              Size (in bytes) of buffer where to return the clipboard data.
  * @param   pcbActual           Where to return the amount of bytes read.
  */
-int ShClSvcImplReadData(PSHCLCLIENT pClient, PSHCLCLIENTCMDCTX pCmdCtx, PSHCLDATABLOCK pData, uint32_t *pcbActual);
+int ShClSvcImplReadData(PSHCLCLIENT pClient, PSHCLCLIENTCMDCTX pCmdCtx, SHCLFORMAT uFormat, void *pvData, uint32_t cbData, uint32_t *pcbActual);
 /**
  * Called when the guest writes clipboard data to the host.
  *
  * @returns VBox status code.
  * @param   pClient             Shared Clipboard client context.
  * @param   pCmdCtx             Shared Clipboard command context.
- * @param   pData               Clipboard data from the guest.
+ * @param   uFormat             Clipboard format to write.
+ * @param   pvData              Clipboard data to write.
+ * @param   cbData              Size (in bytes) of buffer clipboard data to write.
  */
-int ShClSvcImplWriteData(PSHCLCLIENT pClient, PSHCLCLIENTCMDCTX pCmdCtx, PSHCLDATABLOCK pData);
+int ShClSvcImplWriteData(PSHCLCLIENT pClient, PSHCLCLIENTCMDCTX pCmdCtx, SHCLFORMAT uFormat, void *pvData, uint32_t cbData);
 /**
  * Called when synchronization of the clipboard contents of the host clipboard with the guest is needed.
  *

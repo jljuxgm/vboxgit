@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-darwin.cpp 82846 2020-01-24 09:36:52Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-darwin.cpp 82880 2020-01-27 17:52:41Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Mac OS X host.
  */
@@ -211,7 +211,7 @@ int ShClSvcImplFormatAnnounce(PSHCLCLIENT pClient,
 }
 
 int ShClSvcImplReadData(PSHCLCLIENT pClient, PSHCLCLIENTCMDCTX pCmdCtx,
-                        PSHCLDATABLOCK pData, uint32_t *pcbActual)
+                        SHCLFORMAT uFormat, uint32_t cbData, void *pvData, uint32_t *pcbActual)
 {
     RT_NOREF(pCmdCtx);
 
@@ -221,7 +221,7 @@ int ShClSvcImplReadData(PSHCLCLIENT pClient, PSHCLCLIENTCMDCTX pCmdCtx,
     *pcbActual = 0;
 
     int rc = readFromPasteboard(pClient->State.pCtx->pasteboard,
-                                pData->uFormat, pData->pvData, pData->cbData, pcbActual);
+                                uFormat, pvData, cbData, pcbActual);
 
     ShClSvcUnlock();
 
@@ -229,13 +229,13 @@ int ShClSvcImplReadData(PSHCLCLIENT pClient, PSHCLCLIENTCMDCTX pCmdCtx,
 }
 
 int ShClSvcImplWriteData(PSHCLCLIENT pClient,
-                         PSHCLCLIENTCMDCTX pCmdCtx, PSHCLDATABLOCK pData)
+                         PSHCLCLIENTCMDCTX pCmdCtx, SHCLFORMAT uFormat, uint32_t cbData, void *pvData)
 {
     RT_NOREF(pCmdCtx);
 
     ShClSvcLock();
 
-    writeToPasteboard(pClient->State.pCtx->pasteboard, pData->pvData, pData->cbData, pData->uFormat);
+    writeToPasteboard(pClient->State.pCtx->pasteboard, pvData, cbData, uFormat);
 
     ShClSvcUnlock();
 
