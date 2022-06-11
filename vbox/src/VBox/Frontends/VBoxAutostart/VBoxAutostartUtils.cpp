@@ -1,4 +1,4 @@
-/* $Id: VBoxAutostartUtils.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxAutostartUtils.cpp 83797 2020-04-18 13:52:37Z vboxsync $ */
 /** @file
  * VBoxAutostart - VirtualBox Autostart service, start machines during system boot.
  *                 Utils used by the windows and posix frontends.
@@ -29,11 +29,7 @@
 #include <iprt/thread.h>
 #include <iprt/stream.h>
 #include <iprt/log.h>
-#include <iprt/path.h>
-
-#include <algorithm>
-#include <list>
-#include <string>
+#include <iprt/path.h>      /* RTPATH_MAX */
 
 #include "VBoxAutostart.h"
 

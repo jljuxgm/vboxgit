@@ -1,4 +1,4 @@
-/* $Id: VBoxAutostartStop.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxAutostartStop.cpp 83797 2020-04-18 13:52:37Z vboxsync $ */
 /** @file
  * VBoxAutostart - VirtualBox Autostart service, stop machines during system shutdown.
  */
@@ -28,9 +28,7 @@
 #include <iprt/assert.h>
 #include <iprt/message.h>
 
-#include <algorithm>
 #include <list>
-#include <string>
 
 #include "VBoxAutostart.h"
 
