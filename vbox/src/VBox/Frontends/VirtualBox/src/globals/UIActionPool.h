@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.h 76773 2019-01-11 12:59:21Z vboxsync $ */
+/* $Id: UIActionPool.h 80479 2019-08-28 13:53:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPool class declaration.
  */
@@ -273,6 +273,10 @@ protected:
 
     /** Updates action text accordingly. */
     virtual void updateText();
+
+    /** Simplifies passed @a strText by removing dots and ampersands.
+      * @note Used to simplify action names for tool-tip needs. */
+    static QString simplifyText(QString strText);
 
 private:
 
