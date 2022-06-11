@@ -1,4 +1,4 @@
-/* $Id: pemfile-write.cpp 84230 2020-05-10 00:52:05Z vboxsync $ */
+/* $Id: pemfile-write.cpp 84263 2020-05-11 17:42:24Z vboxsync $ */
 /** @file
  * IPRT - Crypto - PEM file writer.
  */
@@ -254,5 +254,3 @@ RTDECL(ssize_t) RTCrPemWriteAsn1ToVfsFile(RTVFSFILE hVfsFile, PRTASN1CORE pRoot,
     RTVfsIoStrmRelease(hVfsIos);
     return cchRet;
 }
-
-
