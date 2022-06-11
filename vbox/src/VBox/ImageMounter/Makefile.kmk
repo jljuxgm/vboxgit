@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: Makefile.kmk 81387 2019-10-20 09:21:13Z vboxsync $
 ## @file
 # Sub-Makefile for the image mounting utilities.
 #
@@ -18,7 +18,7 @@
 SUB_DEPTH = ../../..
 include $(KBUILD_PATH)/subheader.kmk
 
-ifdef VBOX_WITH_VBOXIMGMOUNT
+if defined(VBOX_WITH_VBOXIMGMOUNT) && "$(intersects $(KBUILD_TARGET_ARCH), $(VBOX_SUPPORTED_HOST_ARCHS))" != ""
   include $(PATH_SUB_CURRENT)/vboximg-mount/Makefile.kmk
 endif
 
