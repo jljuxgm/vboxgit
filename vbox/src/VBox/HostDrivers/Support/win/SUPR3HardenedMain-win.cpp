@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain-win.cpp 81118 2019-10-06 01:02:53Z vboxsync $ */
+/* $Id: SUPR3HardenedMain-win.cpp 82006 2019-11-19 18:13:18Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main(), windows bits.
  */
@@ -1138,8 +1138,8 @@ static void supR3HardenedWinVerifyCacheProcessImportTodos(void)
  */
 static void supR3HardenedWinVerifyCacheProcessWvtTodos(void)
 {
-    PVERIFIERCACHEENTRY  pReschedule = NULL;
-    PVERIFIERCACHEENTRY volatile *ppReschedLastNext = NULL;
+    PVERIFIERCACHEENTRY           pReschedule = NULL;
+    PVERIFIERCACHEENTRY volatile *ppReschedLastNext = &pReschedule;
 
     /*
      * Work until we've got nothing more todo.
@@ -1175,9 +1175,8 @@ static void supR3HardenedWinVerifyCacheProcessWvtTodos(void)
                     /* Retry it at a later time. */
                     SUP_DPRINTF(("supR3HardenedWinVerifyCacheProcessWvtTodos: %d (was %d) fWinVerifyTrust=%d for '%ls' [rescheduled]\n",
                                  rc, pCur->rc, fWinVerifyTrust, pCur->wszPath));
-                    if (!pReschedule)
-                        ppReschedLastNext = &pCur->pNextTodoWvt;
-                    pCur->pNextTodoWvt = pReschedule;
+                    *ppReschedLastNext = pCur;
+                    ppReschedLastNext = &pCur->pNextTodoWvt;
                 }
             }
             /* else: already processed. */
