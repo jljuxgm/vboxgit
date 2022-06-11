@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: storagecfg.py 79591 2019-07-08 12:25:46Z vboxsync $
+# $Id: storagecfg.py 79593 2019-07-08 12:41:20Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage test configuration API.
@@ -26,14 +26,11 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79591 $"
+__version__ = "$Revision: 79593 $"
 
 # Standard Python imports.
 import os;
 import re;
-
-# Validation Kit imports.
-from common import utils;
 
 
 class StorageDisk(object):
@@ -654,9 +651,9 @@ class StorageCfg(object):
         """
         if not self.oDiskCfg.isCfgStaticDir():
             return self.oStorOs.cleanupPoolsAndVolumes(self.oExec, 'pool', 'vol');
-        else:
-            fRc = True;
-            for sEntry in os.listdir(self.oDiskCfg.getDisks()):
-                fRc = fRc and self.oExec.rmTree(os.path.join(self.oDiskCfg.getDisks(), sEntry));
 
-            return fRc;
+        fRc = True;
+        for sEntry in os.listdir(self.oDiskCfg.getDisks()):
+            fRc = fRc and self.oExec.rmTree(os.path.join(self.oDiskCfg.getDisks(), sEntry));
+
+        return fRc;
