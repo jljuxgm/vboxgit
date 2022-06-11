@@ -1,4 +1,4 @@
-/* $Id: VBoxManageAppliance.cpp 84036 2020-04-28 10:43:46Z vboxsync $ */
+/* $Id: VBoxManageAppliance.cpp 84038 2020-04-28 10:54:56Z vboxsync $ */
 /** @file
  * VBoxManage - The appliance-related commands.
  */
@@ -2227,8 +2227,6 @@ RTEXITCODE handleSignAppliance(HandlerArg *arg)
                                             if (fResign)
                                                 continue;
                                         }
-                                   
-                                        /** todo: some progress object should be added here to display the action progress */
 
                                         /* Read the input stream and add the content into the output stream */
                                         rc = RTVfsFsStrmAdd(hVfsFssOVADest, pszName, hVfsObj, 0 /*fFlags*/);
