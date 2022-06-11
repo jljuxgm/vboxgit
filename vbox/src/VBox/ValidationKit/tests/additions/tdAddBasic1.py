@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 84226 2020-05-09 17:39:15Z vboxsync $
+# $Id: tdAddBasic1.py 84241 2020-05-11 09:02:56Z vboxsync $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84226 $"
+__version__ = "$Revision: 84241 $"
 
 # Standard Python imports.
 import os;
@@ -499,7 +499,7 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
             ## @todo VBoxClient does not have facility statuses implemented yet.
             eExpectedRunLevel = vboxcon.AdditionsRunLevelType_Userland;
 
-        return self.waitForGuestAdditionsRunLevel(oSession, oGuest, 60 * 1000, eExpectedRunLevel);
+        return self.waitForGuestAdditionsRunLevel(oSession, oGuest, 5 * 60 * 1000, eExpectedRunLevel);
 
     def testIGuest_additionsVersion(self, oGuest):
         """
