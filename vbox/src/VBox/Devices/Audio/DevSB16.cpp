@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 82252 2019-11-27 21:31:53Z vboxsync $ */
+/* $Id: DevSB16.cpp 82253 2019-11-27 21:45:49Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  */
@@ -1093,7 +1093,7 @@ static DECLCALLBACK(VBOXSTRICTRC) sb16IoPortDspRead(PPDMDEVINS pDevIns, void *pv
             retval = 0;
             break;
 
-        case 0x0e:                  /* data available status | irq 8 ack */
+        case 8:                     /* data available status | irq 8 ack */
             retval = (!pThis->out_data_len || pThis->highspeed) ? 0 : 0x80;
             if (pThis->mixer_regs[0x82] & 1)
             {
