@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsInput.cpp 80881 2019-09-18 11:13:38Z vboxsync $ */
+/* $Id: UIGlobalSettingsInput.cpp 82186 2019-11-25 17:02:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsInput class implementation.
  */
@@ -926,7 +926,7 @@ void UIGlobalSettingsInput::loadToCacheFrom(QVariant &data)
                                                       strShortcutKey,
                                                       shortcut.scope(),
                                                       UICommon::removeAccelMark(shortcut.description()),
-                                                      shortcut.sequence().toString(QKeySequence::NativeText),
+                                                      shortcut.primaryToNativeText(),
                                                       shortcut.defaultSequence().toString(QKeySequence::NativeText));
     }
     oldInputData.setAutoCapture(gEDataManager->autoCaptureEnabled());

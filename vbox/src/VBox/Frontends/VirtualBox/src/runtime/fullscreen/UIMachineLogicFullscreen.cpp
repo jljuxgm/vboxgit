@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicFullscreen.cpp 81964 2019-11-18 20:42:02Z vboxsync $ */
+/* $Id: UIMachineLogicFullscreen.cpp 82186 2019-11-25 17:02:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicFullscreen class implementation.
  */
@@ -77,7 +77,7 @@ bool UIMachineLogicFullscreen::checkAvailability()
     const UIShortcut &shortcut =
             gShortcutPool->shortcut(actionPool()->shortcutsExtraDataID(),
                                     actionPool()->action(UIActionIndexRT_M_View_T_Fullscreen)->shortcutExtraDataID());
-    const QString strHotKey = QString("Host+%1").arg(shortcut.toString());
+    const QString strHotKey = QString("Host+%1").arg(shortcut.primaryToPortableText());
     if (!msgCenter().confirmGoingFullscreen(strHotKey))
         return false;
 
