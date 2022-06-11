@@ -1,4 +1,4 @@
-/* $Id: UICloudNetworkingStuff.cpp 83650 2020-04-09 15:06:10Z vboxsync $ */
+/* $Id: UICloudNetworkingStuff.cpp 83656 2020-04-09 17:01:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudNetworkingStuff namespace implementation.
  */
@@ -230,10 +230,10 @@ void UICloudNetworkingStuff::refreshCloudMachineInfo(CCloudMachine &comCloudMach
     }
     else
     {
-        /* Show "Read cloud machine state" progress: */
+        /* Show "Refresh cloud machine information" progress: */
         if (pParent)
             msgCenter().showModalProgressDialog(comProgress,
-                                                UICommon::tr("Read cloud machine state ..."),
+                                                UICommon::tr("Refresh cloud machine information ..."),
                                                 ":/progress_reading_appliance_90px.png", pParent, 0);
         else
             comProgress.WaitForCompletion(-1);
