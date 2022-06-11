@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuibase.py 83391 2020-03-24 16:59:31Z vboxsync $
+# $Id: wuibase.py 83395 2020-03-24 18:55:11Z vboxsync $
 
 """
 Test Manager Web-UI - Base Classes.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 83391 $"
+__version__ = "$Revision: 83395 $"
 
 
 # Standard python imports.
@@ -783,7 +783,7 @@ class WuiDispatcherBase(object):
         """
 
         sHtml  = '<div id="debug-panel">\n' \
-                 ' <form id="debug-panel-form" type="get" action="#">\n';
+                 ' <form id="debug-panel-form" method="get" action="#">\n';
 
         for sKey, oValue in self._dParams.items():
             if sKey not in self.kasDbgParams:
