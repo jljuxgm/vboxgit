@@ -1,4 +1,4 @@
-/* $Id: UIChooserNodeMachine.h 83884 2020-04-21 10:02:06Z vboxsync $ */
+/* $Id: UIChooserNodeMachine.h 83923 2020-04-22 12:22:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserNodeMachine class declaration.
  */
@@ -23,6 +23,7 @@
 
 /* GUI includes: */
 #include "UIChooserNode.h"
+#include "UIManagerDefs.h"
 
 /* Forward declarations: */
 class UIVirtualMachineItem;
@@ -105,7 +106,9 @@ public:
     virtual void sortNodes() /* override */;
 
     /** Returns virtual machine cache instance. */
-    UIVirtualMachineItem *cache() const { return m_pCache; }
+    UIVirtualMachineItem *cache() const;
+    /** Returns virtual machine cache instance. */
+    UIVirtualMachineItemType cacheType() const;
 
 protected:
 

@@ -1,4 +1,4 @@
-/* $Id: UIChooserNodeMachine.cpp 83921 2020-04-22 12:09:34Z vboxsync $ */
+/* $Id: UIChooserNodeMachine.cpp 83923 2020-04-22 12:22:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserNodeMachine class implementation.
  */
@@ -78,7 +78,7 @@ UIChooserNodeMachine::UIChooserNodeMachine(UIChooserNode *pParent,
     : UIChooserNode(pParent, pCopyFrom->isFavorite())
 {
     /* Prepare cache of corresponding type: */
-    switch (pCopyFrom->cache()->itemType())
+    switch (pCopyFrom->cacheType())
     {
         case UIVirtualMachineItemType_Local:
             m_pCache = new UIVirtualMachineItemLocal(pCopyFrom->cache()->toLocal()->machine());
@@ -231,6 +231,16 @@ void UIChooserNodeMachine::searchForNodes(const QString &strSearchTerm, int iIte
 void UIChooserNodeMachine::sortNodes()
 {
     AssertFailedReturnVoid();
+}
+
+UIVirtualMachineItem *UIChooserNodeMachine::cache() const
+{
+    return m_pCache;
+}
+
+UIVirtualMachineItemType UIChooserNodeMachine::cacheType() const
+{
+    return cache() ? cache()->itemType() : UIVirtualMachineItemType_Local;
 }
 
 void UIChooserNodeMachine::retranslateUi()
