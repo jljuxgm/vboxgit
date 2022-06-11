@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 82049 2019-11-20 20:32:26Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 82067 2019-11-21 09:01:45Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -3712,7 +3712,7 @@ static DECLCALLBACK(int) pdmR3DevHlp_PICRegister(PPDMDEVINS pDevIns, PPDMPICREG 
 }
 
 
-/** @interface_method_impl{PDMDEVHLPR3,pfnAPICRegister} */
+/** @interface_method_impl{PDMDEVHLPR3,pfnApicRegister} */
 static DECLCALLBACK(int) pdmR3DevHlp_ApicRegister(PPDMDEVINS pDevIns)
 {
     PDMDEV_ASSERT_DEVINS(pDevIns);
