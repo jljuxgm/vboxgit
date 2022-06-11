@@ -1,4 +1,4 @@
-/* $Id: VUSBDevice.cpp 79499 2019-07-03 13:35:39Z vboxsync $ */
+/* $Id: VUSBDevice.cpp 79500 2019-07-03 13:38:54Z vboxsync $ */
 /** @file
  * Virtual USB - Device.
  */
@@ -1665,7 +1665,7 @@ DECLHIDDEN(int) vusbDevIoThreadExecV(PVUSBDEV pDev, uint32_t fFlags, PFNRT pfnFu
     int rc = VINF_SUCCESS;
     PRTREQ hReq = NULL;
 
-//    Assert(pDev->hUrbIoThread != NIL_RTTHREAD);
+    Assert(pDev->hUrbIoThread != NIL_RTTHREAD);
     if (RT_LIKELY(pDev->hUrbIoThread != NIL_RTTHREAD))
     {
         uint32_t fReqFlags = RTREQFLAGS_IPRT_STATUS;
