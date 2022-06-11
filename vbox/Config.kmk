@@ -1,4 +1,4 @@
-# $Id: Config.kmk 83537 2020-04-03 16:12:19Z vboxsync $
+# $Id: Config.kmk 83538 2020-04-03 16:20:40Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2722,7 +2722,7 @@ endif
 
 # Figures the pylint version.
 VBOX_PYLINT_FIGURE_VERSION = $(shell $(1) --version 2> /dev/null \
-	| $(SED_EXT) -n -e 's/pylint-[^ \t]*/pylint/' \
+	| $(SED_EXT) -n -e 's/pylint-[^[:blank:]]*/pylint/' \
 	-e 's|^ *pylint *\([0-9][0-9]*\).\([0-9][0-9]*\)\.\([0-9][0-9]*\).*$(DOLLAR)|$$(expr \1 * 10000 + \2 * 100 + \3)|p' )
 
 # Java stuff.
@@ -7806,7 +7806,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 83537 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 83538 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
