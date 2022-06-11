@@ -1,4 +1,4 @@
-/* $Id: IOMAllMMIO.cpp 81383 2019-10-19 23:58:44Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 81433 2019-10-21 20:21:43Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context, MMIO & String I/O.
  */
@@ -693,42 +693,6 @@ DECLEXPORT(VBOXSTRICTRC) iomMmioPfHandler(PVMCC pVM, PVMCPUCC pVCpu, RTGCUINT uE
     LogFlow(("iomMmioPfHandler: GCPhys=%RGp uErr=%#x pvFault=%RGv rip=%RGv\n",
              GCPhysFault, (uint32_t)uErrorCode, pvFault, (RTGCPTR)pCtxCore->rip)); NOREF(pvFault);
     return iomMmioCommonPfHandlerOld(pVM, pVCpu, (uint32_t)uErrorCode, pCtxCore, GCPhysFault, pvUser);
-}
-
-
-/**
- * Physical access handler for MMIO ranges.
- *
- * @returns VBox status code (appropriate for GC return).
- * @param   pVM         The cross context VM structure.
- * @param   pVCpu       The cross context virtual CPU structure of the calling EMT.
- * @param   uErrorCode  CPU Error code.
- * @param   pCtxCore    Trap register frame.
- * @param   GCPhysFault The GC physical address.
- */
-VMMDECL(VBOXSTRICTRC) IOMMMIOPhysHandler(PVMCC pVM, PVMCPUCC pVCpu, RTGCUINT uErrorCode, PCPUMCTXCORE pCtxCore, RTGCPHYS GCPhysFault)
-{
-    /*
-     * We don't have a range here, so look it up before calling the common function.
-     */
-    int rc2 = IOM_LOCK_SHARED(pVM); NOREF(rc2);
-#ifndef IN_RING3
-    if (rc2 == VERR_SEM_BUSY)
-        return VINF_IOM_R3_MMIO_READ_WRITE;
-#endif
-    PIOMMMIORANGE pRange = iomMmioGetRange(pVM, pVCpu, GCPhysFault);
-    if (RT_UNLIKELY(!pRange))
-    {
-        IOM_UNLOCK_SHARED(pVM);
-        return VERR_IOM_MMIO_RANGE_NOT_FOUND;
-    }
-    iomMmioRetainRange(pRange);
-    IOM_UNLOCK_SHARED(pVM);
-
-    VBOXSTRICTRC rcStrict = iomMmioCommonPfHandlerOld(pVM, pVCpu, (uint32_t)uErrorCode, pCtxCore, GCPhysFault, pRange);
-
-    iomMmioReleaseRange(pVM, pRange);
-    return VBOXSTRICTRC_VAL(rcStrict);
 }
 
 
