@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 82913 2020-01-29 17:03:51Z vboxsync $
+# $Id: tdUnitTest1.py 82914 2020-01-29 17:09:31Z vboxsync $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 82913 $"
+__version__ = "$Revision: 82914 $"
 
 
 # Standard Python imports.
@@ -724,6 +724,9 @@ class tdUnitTest1(vbox.TestDriver):
         # Determin the host OS specific exclusion lists.
         dTestCasesBuggyForHostOs = self.kdTestCasesBuggyPerOs.get(utils.getHostOs(), []);
         dTestCasesBuggyForHostOs.update(self.kdTestCasesBuggyPerOs.get(utils.getHostOsDotArch(), []));
+
+        ## @todo Add filtering for more specifc OSes (like OL server, doesn't have X installed) by adding a separate
+        #        black list + using utils.getHostOsVersion().
 
         #
         # Process the file list and run everything looking like a testcase.
