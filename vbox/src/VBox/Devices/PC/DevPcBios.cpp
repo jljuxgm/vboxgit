@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.cpp 80703 2019-09-10 14:50:27Z vboxsync $ */
+/* $Id: DevPcBios.cpp 80704 2019-09-10 15:19:39Z vboxsync $ */
 /** @file
  * DevPcBios - PC BIOS Device.
  */
@@ -1810,6 +1810,7 @@ const PDMDEVREG g_DevicePcBios =
     /* .cbInstanceCC = */           0,
     /* .cbInstanceRC = */           0,
     /* .cMaxPciDevices = */         0,
+    /* .cMaxMsixVectors = */        0,
     /* .pszDescription = */         "PC BIOS Device",
 #if defined(IN_RING3)
     /* .pszRCMod = */               "",

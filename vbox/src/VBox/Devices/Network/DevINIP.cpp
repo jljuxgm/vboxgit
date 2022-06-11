@@ -1,4 +1,4 @@
-/* $Id: DevINIP.cpp 80703 2019-09-10 14:50:27Z vboxsync $ */
+/* $Id: DevINIP.cpp 80704 2019-09-10 15:19:39Z vboxsync $ */
 /** @file
  * DevINIP - Internal Network IP stack device/service.
  */
@@ -739,6 +739,7 @@ const PDMDEVREG g_DeviceINIP =
     /* .cbInstanceCC = */           0,
     /* .cbInstanceRC = */           0,
     /* .cMaxPciDevices = */         0,
+    /* .cMaxMsixVectors = */        0,
     /* .pszDescription = */         "Internal Network IP stack device",
 #if defined(IN_RING3)
     /* .pszRCMod = */               "",

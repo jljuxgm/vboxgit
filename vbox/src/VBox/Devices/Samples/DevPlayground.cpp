@@ -1,4 +1,4 @@
-/* $Id: DevPlayground.cpp 80701 2019-09-10 14:42:31Z vboxsync $ */
+/* $Id: DevPlayground.cpp 80704 2019-09-10 15:19:39Z vboxsync $ */
 /** @file
  * DevPlayground - Device for making PDM/PCI/... experiments.
  *
@@ -351,6 +351,7 @@ static const PDMDEVREG g_DevicePlayground =
     /* .cbInstanceCC = */           0,
     /* .cbInstanceRC = */           0,
     /* .cMaxPciDevices = */         1,
+    /* .cMaxMsixVectors = */        0,
     /* .pszDescription = */         "VBox Playground Device.",
 #if defined(IN_RING3)
     /* .pszRCMod = */               "",

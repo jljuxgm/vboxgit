@@ -1,4 +1,4 @@
-/* $Id: APICAll.cpp 80703 2019-09-10 14:50:27Z vboxsync $ */
+/* $Id: APICAll.cpp 80704 2019-09-10 15:19:39Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller - All Contexts.
  */
@@ -3524,6 +3524,7 @@ const PDMDEVREG g_DeviceAPIC =
     /* .cbInstanceCC = */           0,
     /* .cbInstanceRC = */           0,
     /* .cMaxPciDevices = */         0,
+    /* .cMaxMsixVectors = */        0,
     /* .pszDescription = */         "Advanced Programmable Interrupt Controller",
 #if defined(IN_RING3)
     /* .szRCMod = */                "VMMRC.rc",

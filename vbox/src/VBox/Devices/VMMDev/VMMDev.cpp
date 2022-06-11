@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 80701 2019-09-10 14:42:31Z vboxsync $ */
+/* $Id: VMMDev.cpp 80704 2019-09-10 15:19:39Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -4752,6 +4752,7 @@ extern "C" const PDMDEVREG g_DeviceVMMDev =
     /* .cbInstanceCC = */           0,
     /* .cbInstanceRC = */           0,
     /* .cMaxPciDevices = */         1,
+    /* .cMaxMsixVectors = */        0,
     /* .pszDescription = */         "VirtualBox VMM Device\n",
 #if defined(IN_RING3)
     /* .pszRCMod = */               "VBoxDDRC.rc",

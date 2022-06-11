@@ -1,4 +1,4 @@
-/* $Id: DevRTC.cpp 80703 2019-09-10 14:50:27Z vboxsync $ */
+/* $Id: DevRTC.cpp 80704 2019-09-10 15:19:39Z vboxsync $ */
 /** @file
  * Motorola MC146818 RTC/CMOS Device with PIIX4 extensions.
  */
@@ -1276,6 +1276,7 @@ const PDMDEVREG g_DeviceMC146818 =
     /* .cbInstanceCC = */           sizeof(RTCSTATECC),
     /* .cbInstanceRC = */           sizeof(RTCSTATERC),
     /* .cMaxPciDevices = */         0,
+    /* .cMaxMsixVectors = */        0,
     /* .pszDescription = */         "Motorola MC146818 RTC/CMOS Device.",
 #ifdef IN_RING3
     /* .pszRCMod = */               "VBoxDDRC.rc",

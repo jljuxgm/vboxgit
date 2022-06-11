@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 80701 2019-09-10 14:42:31Z vboxsync $ */
+/* $Id: DevACPI.cpp 80704 2019-09-10 15:19:39Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -4195,6 +4195,7 @@ const PDMDEVREG g_DeviceACPI =
     /* .cbInstanceCC = */           0,
     /* .cbInstanceRC = */           0,
     /* .cMaxPciDevices = */         1,
+    /* .cMaxMsixVectors = */        0,
     /* .pszDescription = */         "Advanced Configuration and Power Interface",
 #if defined(IN_RING3)
     /* .pszRCMod = */               "VBoxDDRC.rc",

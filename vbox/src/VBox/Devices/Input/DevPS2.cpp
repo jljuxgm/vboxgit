@@ -1,4 +1,4 @@
-/* $Id: DevPS2.cpp 80703 2019-09-10 14:50:27Z vboxsync $ */
+/* $Id: DevPS2.cpp 80704 2019-09-10 15:19:39Z vboxsync $ */
 /** @file
  * DevPS2 - PS/2 keyboard & mouse controller device.
  */
@@ -1058,6 +1058,7 @@ const PDMDEVREG g_DevicePS2KeyboardMouse =
     /* .cbInstanceCC = */           0,
     /* .cbInstanceRC = */           0,
     /* .cMaxPciDevices = */         0,
+    /* .cMaxMsixVectors = */        0,
     /* .pszDescription = */         "PS/2 Keyboard and Mouse device. Emulates both the keyboard, mouse and the keyboard controller.\n"
                                     "LUN #0 is the keyboard connector.\n"
                                     "LUN #1 is the aux/mouse connector.",

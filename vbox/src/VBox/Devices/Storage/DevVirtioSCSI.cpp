@@ -1,4 +1,4 @@
-/* $Id: DevVirtioSCSI.cpp 80701 2019-09-10 14:42:31Z vboxsync $ $Revision: 80701 $ $Date: 2019-09-10 22:42:31 +0800 (Tue, 10 Sep 2019) $ $Author: vboxsync $ */
+/* $Id: DevVirtioSCSI.cpp 80704 2019-09-10 15:19:39Z vboxsync $ $Revision: 80704 $ $Date: 2019-09-10 23:19:39 +0800 (Tue, 10 Sep 2019) $ $Author: vboxsync $ */
 /** @file
  * VBox storage devices - Virtio SCSI Driver
  *
@@ -2381,6 +2381,7 @@ const PDMDEVREG g_DeviceVirtioSCSI =
     /* .cbInstanceCC = */           0,
     /* .cbInstanceRC = */           0,
     /* .cMaxPciDevices = */         1,
+    /* .cMaxMsixVectors = */        0,
     /* .pszDescription = */         "Virtio Host SCSI.\n",
 #if defined(IN_RING3)
     /* .pszRCMod = */               "VBoxDDRC.rc",

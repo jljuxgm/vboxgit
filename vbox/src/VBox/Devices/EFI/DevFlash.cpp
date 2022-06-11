@@ -1,4 +1,4 @@
-/* $Id: DevFlash.cpp 80703 2019-09-10 14:50:27Z vboxsync $ */
+/* $Id: DevFlash.cpp 80704 2019-09-10 15:19:39Z vboxsync $ */
 /** @file
  * DevFlash - A simple Flash device
  *
@@ -532,6 +532,7 @@ const PDMDEVREG g_DeviceFlash =
     /* .cbInstanceCC = */           0,
     /* .cbInstanceRC = */           0,
     /* .cMaxPciDevices = */         0,
+    /* .cMaxMsixVectors = */        0,
     /* .pszDescription = */         "Flash Memory Device",
 #if defined(IN_RING3)
     /* .pszRCMod = */               "",
