@@ -1,4 +1,4 @@
-/* $Id: Virtio_1_0.cpp 80527 2019-09-01 16:28:56Z vboxsync $ */
+/* $Id: Virtio_1_0.cpp 80528 2019-09-01 22:28:39Z vboxsync $ */
 /** @file
  * Virtio_1_0 - Virtio Common (PCI, feature & config mgt, queue mgt & proxy, notification mgt)
  */
@@ -825,7 +825,7 @@ PDMBOTHCBDECL(int) virtioR3MmioWrite(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS 
     if (fIsr && cb == sizeof(uint8_t))
     {
         pVirtio->uISR = *(uint8_t *)pv;
-        Log2Func(("Setting uISR = 0x%02x (virtq interrupt: %d, dev confg interrupt: %d)\n",
+        Log3Func(("Setting uISR = 0x%02x (virtq interrupt: %d, dev confg interrupt: %d)\n",
               pVirtio->uISR & 0xff,
               pVirtio->uISR & VIRTIO_ISR_VIRTQ_INTERRUPT,
               !!(pVirtio->uISR & VIRTIO_ISR_DEVICE_CONFIG)));
