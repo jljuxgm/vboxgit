@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-x11.cpp 82535 2019-12-10 12:25:32Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-x11.cpp 82539 2019-12-10 13:02:27Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Linux host.
  */
@@ -205,6 +205,8 @@ int ShClSvcImplReadData(PSHCLCLIENT pClient,
                     memcpy(pData->pvData, pPayload->pvData, RT_MIN(pData->cbData, pPayload->cbData));
                     pData->cbData = (uint32_t)pPayload->cbData; /** @todo r=bird: Just ditch this data block wrapper, it made you forget to set pcbActual! */
                     *pcbActual = (uint32_t)pPayload->cbData;
+
+                    ShClPayloadFree(pPayload);
                 }
             }
 
