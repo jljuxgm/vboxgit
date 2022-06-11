@@ -1,4 +1,4 @@
-/* $Id: PGMHandler.cpp 80163 2019-08-06 20:28:12Z vboxsync $ */
+/* $Id: PGMHandler.cpp 80164 2019-08-06 20:31:26Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -46,10 +46,10 @@
 #include <iprt/assert.h>
 #include <iprt/alloc.h>
 #include <iprt/asm.h>
+#include <iprt/err.h>
 #include <iprt/thread.h>
 #include <iprt/string.h>
 #include <VBox/param.h>
-#include <VBox/err.h>
 #include <VBox/vmm/hm.h>
 
 
