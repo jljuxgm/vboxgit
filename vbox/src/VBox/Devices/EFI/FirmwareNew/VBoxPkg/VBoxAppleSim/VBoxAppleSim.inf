@@ -1,4 +1,4 @@
-# $Id: VBoxAppleSim.inf 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: VBoxAppleSim.inf 80721 2019-09-11 08:46:37Z vboxsync $
 ## @file
 # VBoxAppleSim - VBox Apple interfaces simulation support.
 #
@@ -43,8 +43,6 @@
 [Packages]
         MdePkg/MdePkg.dec
         MdeModulePkg/MdeModulePkg.dec
-        IntelFrameworkPkg/IntelFrameworkPkg.dec
-        IntelFrameworkModulePkg/IntelFrameworkModulePkg.dec
         VBoxPkg/VBoxPkg.dec
 
 [LibraryClasses]
@@ -59,12 +57,8 @@
    PcdLib
    DevicePathLib
 
-[Guids]
-   gEfiProcessorSubClassGuid
-
 [Protocols]
    gEfiDevicePathToTextProtocolGuid
-   gEfiDataHubProtocolGuid
 
 [BuildOptions.common]
 

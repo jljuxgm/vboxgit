@@ -1,4 +1,4 @@
-# $Id: VBoxPkg.dec 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: VBoxPkg.dec 80721 2019-09-11 08:46:37Z vboxsync $
 ## @file
 # VBoxPkg.dec - VirtualBox Package description.
 #
@@ -43,12 +43,12 @@
 # Various types of Platform Configuration Database (PCD) items.
 #
 [PcdsFixedAtBuild.common]
-        gEfiMdeModulePkgTokenSpaceGuid.PcdFlashNvStorageVariableBase|0|UINT32|0x00001000
-        gEfiMdeModulePkgTokenSpaceGuid.PcdFlashNvStorageVariableSize|0|UINT32|0x00001001
-        gEfiMdeModulePkgTokenSpaceGuid.PcdFlashNvStorageFtwWorkingBase|0|UINT32|0x00001002
-        gEfiMdeModulePkgTokenSpaceGuid.PcdFlashNvStorageFtwWorkingSize|0|UINT32|0x00001003
-        gEfiMdeModulePkgTokenSpaceGuid.PcdFlashNvStorageFtwSpareBase|0|UINT32|0x00001004
-        gEfiMdeModulePkgTokenSpaceGuid.PcdFlashNvStorageFtwSpareSize|0|UINT32|0x00001005
+#        gEfiMdeModulePkgTokenSpaceGuid.PcdFlashNvStorageVariableBase|0|UINT32|0x00001000
+#        gEfiMdeModulePkgTokenSpaceGuid.PcdFlashNvStorageVariableSize|0|UINT32|0x00001001
+#        gEfiMdeModulePkgTokenSpaceGuid.PcdFlashNvStorageFtwWorkingBase|0|UINT32|0x00001002
+#        gEfiMdeModulePkgTokenSpaceGuid.PcdFlashNvStorageFtwWorkingSize|0|UINT32|0x00001003
+#        gEfiMdeModulePkgTokenSpaceGuid.PcdFlashNvStorageFtwSpareBase|0|UINT32|0x00001004
+#        gEfiMdeModulePkgTokenSpaceGuid.PcdFlashNvStorageFtwSpareSize|0|UINT32|0x00001005
         gVBoxVgaPkgTokenSpaceGuid.PcdDriverSupportedEfiVersion|0x0002000a|UINT32|0x00010003
 
 ## XXX - boot mode - gEfiNt32PkgTokenSpaceGuid.PcdWinNtBootMode|1|UINT32|0x00001006

@@ -1,4 +1,4 @@
-/* $Id: Apple.c 77672 2019-03-13 08:25:50Z vboxsync $ */
+/* $Id: Apple.c 80721 2019-09-11 08:46:37Z vboxsync $ */
 /** @file
  * Apple.c
  */
@@ -216,7 +216,8 @@ PartitionInstallAppleChildHandles (
               &PartitionInfo,
               CdDev.PartitionStart,
               CdDev.PartitionStart + CdDev.PartitionSize - 1,
-              SubBlockSize);
+              SubBlockSize,
+              NULL);
 
           if (!EFI_ERROR (Status)) {
               Found = EFI_SUCCESS;
