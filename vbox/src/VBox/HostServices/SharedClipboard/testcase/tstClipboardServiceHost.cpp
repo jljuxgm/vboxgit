@@ -1,4 +1,4 @@
-/* $Id: tstClipboardServiceHost.cpp 79547 2019-07-05 08:20:28Z vboxsync $ */
+/* $Id: tstClipboardServiceHost.cpp 79549 2019-07-05 08:33:43Z vboxsync $ */
 /** @file
  * Shared Clipboard host service test case.
  */
@@ -194,6 +194,7 @@ static void testGetHostMsg(void)
     table.pfnCall(NULL, &call, 1 /* clientId */, &g_Client, VBOX_SHARED_CLIPBOARD_GUEST_FN_GET_HOST_MSG_OLD,
                   2, parms, 0);
     RTTESTI_CHECK_RC(call.rc, VERR_TRY_AGAIN);  /* This call should not complete yet. */
+    table.pfnDisconnect(NULL, 1 /* clientId */, &g_Client);
     table.pfnUnload(NULL);
 }
 
