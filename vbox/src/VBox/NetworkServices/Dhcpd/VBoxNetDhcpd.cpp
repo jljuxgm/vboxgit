@@ -1,4 +1,4 @@
-/* $Id: VBoxNetDhcpd.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxNetDhcpd.cpp 83779 2020-04-17 22:19:15Z vboxsync $ */
 /** @file
  * VBoxNetDhcpd - DHCP server for host-only and NAT networks.
  */
@@ -69,7 +69,7 @@ extern "C"
 #include "netif/etharp.h"
 }
 
-#include <string>
+#include <iprt/sanitized/string>
 #include <vector>
 #include <memory>
 
