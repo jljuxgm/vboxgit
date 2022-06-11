@@ -1,4 +1,4 @@
-/* $Id: APICAll.cpp 81153 2019-10-08 13:59:03Z vboxsync $ */
+/* $Id: APICAll.cpp 81518 2019-10-24 13:23:41Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller - All Contexts.
  */
@@ -3511,7 +3511,7 @@ const PDMDEVREG g_DeviceAPIC =
     /* .u32Version = */             PDM_DEVREG_VERSION,
     /* .uReserved0 = */             0,
     /* .szName = */                 "apic",
-    /* .fFlags = */                 PDM_DEVREG_FLAGS_DEFAULT_BITS | PDM_DEVREG_FLAGS_R0,
+    /* .fFlags = */                 PDM_DEVREG_FLAGS_DEFAULT_BITS | PDM_DEVREG_FLAGS_RZ,
     /* .fClass = */                 PDM_DEVREG_CLASS_PIC,
     /* .cMaxInstances = */          1,
     /* .uSharedVersion = */         42,
