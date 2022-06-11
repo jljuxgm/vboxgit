@@ -1,4 +1,4 @@
-/* $Id: http-curl.cpp 83355 2020-03-20 21:22:33Z vboxsync $ */
+/* $Id: http-curl.cpp 83356 2020-03-20 21:30:57Z vboxsync $ */
 /** @file
  * IPRT - HTTP client API, cURL based.
  *
@@ -3640,6 +3640,9 @@ RTR3DECL(int) RTHttpPerform(RTHTTP hHttp, const char *pszUrl, RTHTTPMETHOD enmMe
                 pThis->ReadData.Mem.cbMem  = cbReqBody;
                 pThis->ReadData.Mem.offMem = 0;
                 rcCurl = rtHttpSetReadCallback(pThis, rtHttpReadData, pThis);
+                /* curl will use chunked transfer is it doesn't know the body size */
+                if (enmMethod == RTHTTPMETHOD_PUT && CURL_SUCCESS(rcCurl))
+                    rcCurl = curl_easy_setopt(pThis->pCurl, CURLOPT_INFILESIZE_LARGE, cbReqBody);
             }
         }
         else if (pThis->pfnUploadCallback && CURL_SUCCESS(rcCurl))
