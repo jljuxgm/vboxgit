@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuireport.py 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: wuireport.py 83403 2020-03-25 12:09:58Z vboxsync $
 
 """
 Test Manager WUI - Reports.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 82968 $"
+__version__ = "$Revision: 83403 $"
 
 
 # Validation Kit imports.
@@ -35,7 +35,7 @@ from testmanager.webui.wuicontentbase   import WuiContentBase, WuiTmLink, WuiSvn
 from testmanager.webui.wuihlpgraph      import WuiHlpGraphDataTable, WuiHlpBarGraph;
 from testmanager.webui.wuitestresult    import WuiTestSetLink, WuiTestResultsForTestCaseLink, WuiTestResultsForTestBoxLink;
 from testmanager.webui.wuiadmintestcase import WuiTestCaseDetailsLink;
-from testmanager.webui.wuiadmintestbox  import WuiTestBoxDetailsLink;
+from testmanager.webui.wuiadmintestbox  import WuiTestBoxDetailsLinkShort;
 from testmanager.core.report            import ReportModelBase, ReportFilter;
 from testmanager.core.testresults       import TestResultFilter;
 
@@ -720,7 +720,7 @@ class WuiReportTestBoxFailures(WuiReportFailuresWithTotalBase):
 
     def _formatEdgeOccurenceSubject(self, oTransient):
         sHtml = u'%s ' % ( webutils.escapeElem(oTransient.oSubject.sName),);
-        sHtml += WuiTestBoxDetailsLink(oTransient.oSubject.idTestBox, fBracketed = False).toHtml();
+        sHtml += WuiTestBoxDetailsLinkShort(oTransient.oSubject).toHtml();
         return sHtml;
 
     def _formatSeriesNameColumnHeadersForTable(self):
@@ -731,7 +731,7 @@ class WuiReportTestBoxFailures(WuiReportFailuresWithTotalBase):
         sHtml  = u'<td>';
         sHtml += WuiTestResultsForTestBoxLink(idKey, oTestBox.sName, self._dExtraTestResultsParams).toHtml()
         sHtml += u' ';
-        sHtml += WuiTestBoxDetailsLink(oTestBox.idTestBox).toHtml();
+        sHtml += WuiTestBoxDetailsLinkShort(oTestBox).toHtml();
         sHtml += u' ';
         sHtml += WuiReportSummaryLink(ReportModelBase.ksSubTestBox, oTestBox.idTestBox,
                                       dExtraParams = self._dExtraParams).toHtml();

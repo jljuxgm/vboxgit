@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuitestresult.py 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: wuitestresult.py 83403 2020-03-25 12:09:58Z vboxsync $
 
 """
 Test Manager WUI - Test Results.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 82968 $"
+__version__ = "$Revision: 83403 $"
 
 # Python imports.
 import datetime;
@@ -885,7 +885,13 @@ class WuiGroupedResultList(WuiListContentBase):
         if oEntry.sOsVersion is not None:
             sTestBoxTitle += 'OS version:\t%s\n' % ( oEntry.sOsVersion, );
         asFeatures = [];
-        if oEntry.fCpuHwVirt       is True: asFeatures.append(u'HW\u2011Virt');
+        if oEntry.fCpuHwVirt       is True:
+            if oEntry.sCpuVendor is None:
+                asFeatures.append(u'HW\u2011Virt');
+            elif oEntry.sCpuVendor in ['AuthenticAMD',]:
+                asFeatures.append(u'HW\u2011Virt(AMD\u2011V)');
+            else:
+                asFeatures.append(u'HW\u2011Virt(VT\u2011x)');
         if oEntry.fCpuNestedPaging is True: asFeatures.append(u'Nested\u2011Paging');
         if oEntry.fCpu64BitGuest   is True: asFeatures.append(u'64\u2011bit\u2011Guest');
         #if oEntry.fChipsetIoMmu    is True: asFeatures.append(u'I/O\u2011MMU');

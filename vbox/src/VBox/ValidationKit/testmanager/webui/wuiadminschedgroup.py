@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuiadminschedgroup.py 83385 2020-03-24 14:46:13Z vboxsync $
+# $Id: wuiadminschedgroup.py 83403 2020-03-25 12:09:58Z vboxsync $
 
 """
 Test Manager WUI - Scheduling groups.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 83385 $"
+__version__ = "$Revision: 83403 $"
 
 
 # Validation Kit imports.
@@ -36,6 +36,7 @@ from testmanager.core.schedgroup        import SchedGroupData, SchedGroupDataEx;
 from testmanager.core.testgroup         import TestGroupData, TestGroupLogic;
 from testmanager.core.testbox           import TestBoxData, TestBoxLogic;
 from testmanager.webui.wuicontentbase   import WuiFormContentBase, WuiListContentBase, WuiTmLink, WuiRawHtml;
+from testmanager.webui.wuiadmintestbox  import WuiTestBoxDetailsLink;
 
 
 class WuiSchedGroup(WuiFormContentBase):
@@ -153,13 +154,7 @@ class WuiAdminSchedGroupList(WuiListContentBase):
         for oRelation in oEntry.aoTestBoxes:
             oTestBox = oRelation.oTestBox;
             if oTestBox:
-                aoTestBoxes.append(WuiTmLink(oTestBox.sName, WuiAdmin.ksScriptName,
-                                             { WuiAdmin.ksParamAction: WuiAdmin.ksActionTestBoxDetails,
-                                               TestBoxData.ksParam_idTestBox: oTestBox.idTestBox,
-                                               WuiAdmin.ksParamEffectiveDate: self._tsEffectiveDate, },
-                                             sTitle = '#%s - %s / %s - %s.%s (%s)'
-                                                    % (oTestBox.idTestBox, oTestBox.ip, oTestBox.uuidSystem, oTestBox.sOs,
-                                                       oTestBox.sCpuArch, oTestBox.sOsVersion,)));
+                aoTestBoxes.append(WuiTestBoxDetailsLink(oTestBox, fBracketed = True, tsNow = self._tsEffectiveDate));
             else:
                 aoTestBoxes.append(WuiRawHtml('#%s' % (oRelation.idTestBox,)));
 
