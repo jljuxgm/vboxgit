@@ -1,4 +1,4 @@
-/* $Id: ldrNative.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: ldrNative.cpp 83539 2020-04-03 17:01:58Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Native interface.
  */
@@ -160,8 +160,11 @@ RTDECL(int) RTLdrLoadEx(const char *pszFilename, PRTLDRMOD phLdrMod, uint32_t fF
         rc = rtldrNativeLoad(pszFilename, &pMod->hNative, fFlags, pErrInfo);
         if (RT_SUCCESS(rc))
         {
+            if (fFlags & RTLDRLOAD_FLAGS_NO_UNLOAD)
+                RTMEM_MAY_LEAK(pMod);
+
             *phLdrMod = &pMod->Core;
-            LogFlow(("RTLdrLoad: returns %Rrc *phLdrMod=%RTldrm\n", rc, *phLdrMod));
+            LogFlow(("RTLdrLoad: returns %Rrc *phLdrMod=%RTldrm\n", rc,*phLdrMod));
             return rc;
         }
 
