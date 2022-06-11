@@ -1,4 +1,4 @@
-/* $Id: seamless.cpp 81040 2019-09-27 09:45:46Z vboxsync $ */
+/* $Id: seamless.cpp 81042 2019-09-27 10:30:21Z vboxsync $ */
 /** @file
  * X11 Guest client - seamless mode: main logic, communication with the host and
  * wrapper interface for the main code of the VBoxClient deamon.  The
@@ -310,7 +310,7 @@ static int run(struct VBCLSERVICE **ppInterface, bool fDaemonised)
 
 static void cleanup(struct VBCLSERVICE **ppInterface)
 {
-    NOREF(ppInterface);
+    RT_NOREF(ppInterface);
     VbglR3SeamlessSetCap(false);
     VbglR3Term();
 }

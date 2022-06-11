@@ -1,4 +1,4 @@
-/* $Id: VBoxClient.h 81040 2019-09-27 09:45:46Z vboxsync $ */
+/* $Id: VBoxClient.h 81042 2019-09-27 10:30:21Z vboxsync $ */
 /** @file
  *
  * VirtualBox additions user session daemon.
@@ -64,7 +64,7 @@ DECLINLINE(int) VBClServiceDefaultHandler(struct VBCLSERVICE **pSelf)
  * process/X11 exits. */
 DECLINLINE(void) VBClServiceDefaultCleanup(struct VBCLSERVICE **ppInterface)
 {
-    NOREF(ppInterface);
+    RT_NOREF(ppInterface);
 }
 
 extern struct VBCLSERVICE **VBClGetClipboardService();

@@ -1,4 +1,4 @@
-/* $Id: hostversion.cpp 81040 2019-09-27 09:45:46Z vboxsync $ */
+/* $Id: hostversion.cpp 81042 2019-09-27 10:30:21Z vboxsync $ */
 /** @file
  * X11 guest client - host version check.
  */
@@ -128,7 +128,7 @@ static int run(struct VBCLSERVICE **ppInterface, bool fDaemonised)
     int rc;
     LogFlowFunc(("\n"));
 
-    NOREF(ppInterface);
+    RT_NOREF(ppInterface);
 
     /* Because we need desktop notifications to be displayed, wait
      * some time to make the desktop environment load (as a work around). */
