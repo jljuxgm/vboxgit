@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 78412 2019-05-06 21:52:21Z vboxsync $
+# $Id: Makefile.kmk 78414 2019-05-06 22:00:21Z vboxsync $
 ## @file
 # Sub-Makefile for the Shared OpenGL Host Service.
 #
@@ -64,7 +64,7 @@ VBoxSharedCrOpenGL_SOURCES = \
 	crserver/crservice.cpp
 VBoxSharedCrOpenGL_SOURCES.win = \
 	crserver/VBoxSharedCrOpenGL.rc
-VBoxSharedCrOpenGL_LDFLAGS.darwin = -install_name $(VBOX_DYLD_EXECUTABLE_PATH)/VBoxSharedCrOpenGL.dylib
+VBoxSharedCrOpenGL_LDFLAGS.darwin = -install_name $(VBOX_DYLD_EXECUTABLE_PATH)/VBoxSharedCrOpenGL.dylib -framework IOKit
 VBoxSharedCrOpenGL_LIBS = \
 	$(PATH_STAGE_LIB)/VBoxOGLcrserverlib$(VBOX_SUFF_LIB) \
 	$(PATH_STAGE_LIB)/VBoxOGLhostcrstate$(VBOX_SUFF_LIB) \
