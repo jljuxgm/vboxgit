@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: schedgroup.py 83384 2020-03-24 14:46:06Z vboxsync $
+# $Id: schedgroup.py 83387 2020-03-24 14:50:45Z vboxsync $
 
 """
 Test Manager - Scheduling Group.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 83384 $"
+__version__ = "$Revision: 83387 $"
 
 
 # Standard python imports.
@@ -501,7 +501,7 @@ class SchedGroupLogic(ModelLogicBase): # pylint: disable=too-few-public-methods
             aoRet.append(SchedGroupDataEx().initFromDbRowEx(aoRow, self._oDb, tsNow));
         return aoRet;
 
-    def fetchForChangeLog(self, idSchedGroup, iStart, cMaxRows, tsNow): # pylint: disable=too-many-locals
+    def fetchForChangeLog(self, idSchedGroup, iStart, cMaxRows, tsNow): # pylint: disable=too-many-locals,too-many-statements
         """
         Fetches change log entries for a scheduling group.
 
@@ -554,7 +554,7 @@ LIMIT %s OFFSET %s
             aoEntries.append(ChangeLogEntry(uidAuthor, None, tsEffective, tsPrevious, None, None, []));
             tsPrevious = db.dbTimestampPlusOneTick(tsEffective);
 
-        if True:
+        if True: # pylint: disable=using-constant-test
             #
             # Fetch data for each for each change log entry point.
             #
