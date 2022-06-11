@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 80174 2019-08-07 09:41:39Z vboxsync $ */
+/* $Id: PGMInternal.h 80175 2019-08-07 09:41:57Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -1115,7 +1115,6 @@ typedef PPGMPAGE *PPPGMPAGE;
  */
 #define PGM_PAGE_HAS_ACTIVE_PHYSICAL_HANDLERS(a_pPage) \
     ( PGM_PAGE_GET_HNDL_PHYS_STATE(a_pPage) >= PGM_PAGE_HNDL_PHYS_STATE_WRITE )
-
 
 /**
  * Checks if the page has any access handlers, including temporarily disabled ones.
