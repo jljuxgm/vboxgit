@@ -1,4 +1,4 @@
-/* $Id: WebMWriter.h 82422 2019-12-05 15:59:34Z vboxsync $ */
+/* $Id: WebMWriter.h 82427 2019-12-05 16:33:04Z vboxsync $ */
 /** @file
  * WebMWriter.h - WebM container handling.
  */
@@ -28,6 +28,7 @@
 #include <map>
 #include <list>
 
+#include <iprt/mem.h>
 #include <iprt/rand.h>
 
 #ifdef VBOX_WITH_LIBVPX

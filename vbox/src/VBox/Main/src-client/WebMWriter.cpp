@@ -1,4 +1,4 @@
-/* $Id: WebMWriter.cpp 82422 2019-12-05 15:59:34Z vboxsync $ */
+/* $Id: WebMWriter.cpp 82427 2019-12-05 16:33:04Z vboxsync $ */
 /** @file
  * WebMWriter.cpp - WebM container handling.
  */
@@ -25,6 +25,8 @@
 #include "LoggingNew.h"
 
 #include <iprt/buildconfig.h>
+#include <iprt/errcore.h>
+
 #include <VBox/version.h>
 
 #include "WebMWriter.h"

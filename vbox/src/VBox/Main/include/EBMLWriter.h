@@ -1,4 +1,4 @@
-/* $Id: EBMLWriter.h 82422 2019-12-05 15:59:34Z vboxsync $ */
+/* $Id: EBMLWriter.h 82427 2019-12-05 16:33:04Z vboxsync $ */
 /** @file
  * EBMLWriter.h - EBML writer.
  */
@@ -25,6 +25,9 @@
 
 #include <iprt/critsect.h>
 #include <iprt/file.h>
+
+#include <VBox/com/string.h>
+
 
 /** No flags set. */
 #define VBOX_EBMLWRITER_FLAG_NONE               0
