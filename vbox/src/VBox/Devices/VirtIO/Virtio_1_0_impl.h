@@ -1,4 +1,4 @@
-/* $Id: Virtio_1_0_impl.h 81019 2019-09-26 12:46:26Z vboxsync $ $Revision: 81019 $ $Date: 2019-09-26 20:46:26 +0800 (Thu, 26 Sep 2019) $ $Author: vboxsync $ */
+/* $Id: Virtio_1_0_impl.h 81031 2019-09-26 19:26:33Z vboxsync $ $Revision: 81031 $ $Date: 2019-09-27 03:26:33 +0800 (Fri, 27 Sep 2019) $ $Author: vboxsync $ */
 /** @file
  * Virtio_1_0_impl.h - Virtio Declarations
  */
@@ -141,7 +141,6 @@ typedef struct virtio_pci_cfg_cap
  */
 typedef struct VIRTIOSTATE
 {
-    PDMPCIDEV                 dev;                               /**< PCI device                                */
     char                      szInstance[16];                    /**< Instance name, e.g. "VIRTIOSCSI0"         */
     void *                    pClientContext;                    /**< Client callback returned on callbacks     */
 

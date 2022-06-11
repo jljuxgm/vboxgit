@@ -1,4 +1,4 @@
-/* $Id: Virtio.h 76565 2019-01-01 04:23:20Z vboxsync $ */
+/* $Id: Virtio.h 81031 2019-09-26 19:26:33Z vboxsync $ */
 /** @file
  * Virtio.h - Virtio Declarations
  */
@@ -193,8 +193,6 @@ typedef struct VPCIState_st
     uint32_t               padding2;
 #endif
 
-    /** TODO */
-    PDMPCIDEV              pciDevice;
     /** Base port of I/O space region. */
     RTIOPORT               IOPortBase;
 

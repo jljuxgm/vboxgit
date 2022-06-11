@@ -1,4 +1,4 @@
-/* $Id: DevHDA.h 80692 2019-09-10 10:17:36Z vboxsync $ */
+/* $Id: DevHDA.h 81031 2019-09-26 19:26:33Z vboxsync $ */
 /** @file
  * DevHDA.h - VBox Intel HD Audio Controller.
  */
@@ -102,8 +102,6 @@ typedef struct HDASTATEDBGINFO
  */
 typedef struct HDASTATE
 {
-    /** The PCI device structure. */
-    PDMPCIDEV               PciDev;
     /** Critical section protecting the HDA state. */
     PDMCRITSECT             CritSect;
     /** R3 Pointer to the device instance. */

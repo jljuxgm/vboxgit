@@ -1,4 +1,4 @@
-/* $Id: VMMDevState.h 80118 2019-08-04 02:39:54Z vboxsync $ */
+/* $Id: VMMDevState.h 81031 2019-09-26 19:26:33Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device, internal header.
  */
@@ -120,8 +120,6 @@ typedef VMMDEVFACILITYSTATUSENTRY *PVMMDEVFACILITYSTATUSENTRY;
  */
 typedef struct VMMDevState
 {
-    /** The PCI device structure. */
-    PDMPCIDEV           PciDev;
     /** The critical section for this device.
      * @remarks We use this rather than the default one, it's simpler with all
      *          the driver interfaces where we have to waste time digging out the

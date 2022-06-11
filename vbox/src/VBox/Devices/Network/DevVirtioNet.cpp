@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet.cpp 80704 2019-09-10 15:19:39Z vboxsync $ */
+/* $Id: DevVirtioNet.cpp 81031 2019-09-26 19:26:33Z vboxsync $ */
 /** @file
  * DevVirtioNet - Virtio Network Device
  */
@@ -1972,9 +1972,8 @@ static DECLCALLBACK(int) vnetLoadDone(PPDMDEVINS pDevIns, PSSMHANDLE pSSM)
 static DECLCALLBACK(int) vnetMap(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDev, uint32_t iRegion,
                                  RTGCPHYS GCPhysAddress, RTGCPHYS cb, PCIADDRESSSPACE enmType)
 {
-    RT_NOREF(pPciDev, iRegion);
     PVNETSTATE pThis = PDMINS_2_DATA(pDevIns, PVNETSTATE);
-    int       rc;
+    RT_NOREF(pPciDev, iRegion);
 
     if (enmType != PCI_ADDRESS_SPACE_IO)
     {
@@ -1984,9 +1983,9 @@ static DECLCALLBACK(int) vnetMap(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDev, uint32_
     }
 
     pThis->VPCI.IOPortBase = (RTIOPORT)GCPhysAddress;
-    rc = PDMDevHlpIOPortRegister(pDevIns, pThis->VPCI.IOPortBase,
-                                 cb, 0, vnetIOPortOut, vnetIOPortIn,
-                                 NULL, NULL, "VirtioNet");
+    int rc = PDMDevHlpIOPortRegister(pDevIns, pThis->VPCI.IOPortBase,
+                                     cb, 0, vnetIOPortOut, vnetIOPortIn,
+                                     NULL, NULL, "VirtioNet");
 #ifdef VNET_GC_SUPPORT
     AssertRCReturn(rc, rc);
     rc = PDMDevHlpIOPortRegisterR0(pDevIns, pThis->VPCI.IOPortBase,
