@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 83793 $"
+__version__ = "$Revision: 84161 $"
 
 # Standard Python imports.
 import errno
@@ -2190,24 +2190,25 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
                         except:
                             fRc = reporter.errorXcpt('asArgs=%s' % (oTest.asArgs,));
                             break;
-                        reporter.log2('Wait returned: %d' % (eWaitResult,));
+                        #reporter.log2('Wait returned: %d' % (eWaitResult,));
 
                         # Process output:
                         for eFdResult, iFd, sFdNm in [ (vboxcon.ProcessWaitResult_StdOut, 1, 'stdout'),
                                                        (vboxcon.ProcessWaitResult_StdErr, 2, 'stderr'), ]:
                             if eWaitResult in (eFdResult, vboxcon.ProcessWaitResult_WaitFlagNotSupported):
-                                reporter.log2('Reading %s ...' % (sFdNm,));
                                 try:
-                                    abBuf = oProcess.Read(1, 64 * 1024, oTest.timeoutMS);
+                                    abBuf = oProcess.read(iFd, 64 * 1024, oTest.timeoutMS);
                                 except KeyboardInterrupt: # Not sure how helpful this is, but whatever.
                                     reporter.error('Process (PID %d) execution interrupted' % (iPid,));
                                     try: oProcess.close();
                                     except: pass;
                                 except:
-                                    pass; ## @todo test for timeouts and fail on anything else!
+                                    reporter.maybeErrXcpt(fIsError, 'asArgs=%s' % (oTest.asArgs,));
                                 else:
                                     if abBuf:
                                         reporter.log2('Process (PID %d) got %d bytes of %s data' % (iPid, len(abBuf), sFdNm,));
+                                        for sLine in abBuf.splitlines():
+                                            reporter.log('%s: %s' % (sFdNm, sLine));
                                         acbFdOut[iFd] += len(abBuf);
                                         oTest.sBuf     = abBuf; ## @todo Figure out how to uniform + append!
 
@@ -2932,8 +2933,10 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
 
         if sVBoxControl:
             # Paths with spaces on windows.
-            atExec.append([ tdTestExec(sCmd = sVBoxControl, asArgs = [ sVBoxControl, 'version' ]),
-                           tdTestResultExec(fRc = True) ]);
+            atExec.append([ tdTestExec(sCmd = sVBoxControl, asArgs = [ sVBoxControl, 'version' ],
+                                       afFlags = [ vboxcon.ProcessCreateFlag_WaitForStdOut,
+                                                   vboxcon.ProcessCreateFlag_WaitForStdErr ]),
+                            tdTestResultExec(fRc = True) ]);
 
         # Build up the final test array for the first batch.
         atTests = atInvalid + atExec;
