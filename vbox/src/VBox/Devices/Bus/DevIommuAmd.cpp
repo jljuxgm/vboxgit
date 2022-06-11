@@ -1,4 +1,4 @@
-/* $Id: DevIommuAmd.cpp 84088 2020-04-29 16:11:15Z vboxsync $ */
+/* $Id: DevIommuAmd.cpp 84089 2020-04-29 16:53:42Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - AMD implementation.
  */
@@ -3385,9 +3385,9 @@ static DECLCALLBACK(VBOXSTRICTRC) iommuAmdR3PciConfigWrite(PPDMDEVINS pDevIns, P
             {
                 pThis->IommuBar.au32[0] = u32Value & IOMMU_BAR_VALID_MASK;
                 Assert(pThis->hMmio == NIL_IOMMMIOHANDLE);
-                RTGCPHYS GCPhysMmioBase = RT_MAKE_U64(pThis->IommuBar.n.u18BaseAddrLo, pThis->IommuBar.n.u32BaseAddrHi);
-                GCPhysMmioBase <<= 14;  /* 16K aligned when performance counters are not supported. */
-                Assert(!pThis->ExtFeat.n.u1PerfCounterSup);
+                Assert(!pThis->ExtFeat.n.u1PerfCounterSup); /* 16K aligned when performance counters aren't supported. */
+                uint64_t const fAlignMask = UINT64_C(0xffffffffffffc000);
+                RTGCPHYS const GCPhysMmioBase = RT_MAKE_U64(pThis->IommuBar.au32[0] & fAlignMask, pThis->IommuBar.au32[1]);
                 rcStrict = PDMDevHlpMmioMap(pDevIns, pThis->hMmio, GCPhysMmioBase);
                 if (RT_FAILURE(rcStrict))
                     Log((IOMMU_LOG_PFX ": Failed to map IOMMU MMIO region at %#RGp. rc=%Rrc\n", GCPhysMmioBase, rcStrict));
