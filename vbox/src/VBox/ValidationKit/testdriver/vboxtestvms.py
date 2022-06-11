@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 78312 2019-04-26 07:16:14Z vboxsync $
+# $Id: vboxtestvms.py 78418 2019-05-06 23:30:09Z vboxsync $
 
 """
 VirtualBox Test VMs
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 78312 $"
+__version__ = "$Revision: 78418 $"
 
 # Standard Python imports.
 import copy;
@@ -325,7 +325,9 @@ class TestVm(object):
               or (self.aInfo is not None and (self.aInfo[g_iFlags] & g_kiNoRaw)):
                 self.asVirtModesSup = [sVirtMode for sVirtMode in self.asVirtModesSup if sVirtMode != 'raw'];
             # TEMPORARY HACK - START
-            sHostName = socket.getfqdn();
+            sHostName = os.environ.get("COMPUTERNAME", None);
+            if sHostName:   sHostName = sHostName.lower();
+            else:           sHostName = socket.getfqdn(); # Horribly slow on windows without IPv6 DNS/whatever.
             if sHostName.startswith('testboxpile1'):
                 self.asVirtModesSup = [sVirtMode for sVirtMode in self.asVirtModesSup if sVirtMode != 'raw'];
             # TEMPORARY HACK - END
