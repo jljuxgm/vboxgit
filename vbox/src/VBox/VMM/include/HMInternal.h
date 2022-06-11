@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 80439 2019-08-27 10:52:10Z vboxsync $ */
+/* $Id: HMInternal.h 80740 2019-09-12 04:42:16Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -909,7 +909,7 @@ typedef struct HMCPU
             /** Whether the nested-guest VMCS has been copied to the shadow VMCS. */
             bool                        fCopiedNstGstToShadowVmcs;
             /** Whether flushing the TLB is required due to switching to/from the
-             *  nested-geust. */
+             *  nested-guest. */
             bool                        fSwitchedNstGstFlushTlb;
             /** Alignment. */
             bool                        afAlignment0[4];
