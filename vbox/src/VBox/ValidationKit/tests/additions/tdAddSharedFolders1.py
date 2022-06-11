@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 78676 $"
+__version__ = "$Revision: 78677 $"
 
 # Standard Python imports.
 import os
@@ -194,7 +194,7 @@ class SubTstDrvAddSharedFolders1(base.SubTestDriverBase):
 
             asArgs.extend(self.asExtraArgs);
             reporter.log2('Starting guest FsPerf (%s)...' % (asArgs,));
-            fRc = self.oTstDrv.txsRunTest(oTxsSession, 'FsPerf', 10 * 60 * 1000,
+            fRc = self.oTstDrv.txsRunTest(oTxsSession, 'FsPerf', 30 * 60 * 1000,
                                           '${CDROM}/vboxvalidationkit/${OS/ARCH}/FsPerf${EXESUFF}', asArgs);
             reporter.log2('FsPerf -> %s' % (fRc,));
 
