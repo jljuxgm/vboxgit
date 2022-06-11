@@ -1,4 +1,4 @@
-/* $Id: UIInformationConfiguration.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIInformationConfiguration.h 83978 2020-04-24 18:50:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationConfiguration class declaration.
  */
@@ -65,11 +65,11 @@ private:
     void createTableItems();
     void prepareObjects();
     void insertTitleRow(const QString &strTitle, const QIcon &icon, const QFontMetrics &fontMetrics);
-    void insertInfoRows(const UITextTable &table, const QFontMetrics &fontMetrics,
-                        QTextDocument &textDocument, int &iMaxColumn1Length);
+    void insertInfoRows(const UITextTable &table, const QFontMetrics &fontMetrics, int &iMaxColumn1Length);
     void insertInfoRow(const QString strText1, const QString &strText2,
                        const QFontMetrics &fontMetrics, int &iMaxColumn1Length);
     void resetTable();
+    QString removeHtmlFromString(const QString &strOriginal);
 
     CMachine m_machine;
     CConsole m_console;
