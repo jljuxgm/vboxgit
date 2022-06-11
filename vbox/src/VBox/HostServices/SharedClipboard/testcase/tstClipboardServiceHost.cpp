@@ -1,4 +1,4 @@
-/* $Id: tstClipboardServiceHost.cpp 80444 2019-08-27 17:47:44Z vboxsync $ */
+/* $Id: tstClipboardServiceHost.cpp 80446 2019-08-27 17:56:22Z vboxsync $ */
 /** @file
  * Shared Clipboard host service test case.
  */
@@ -25,7 +25,7 @@
 
 extern "C" DECLCALLBACK(DECLEXPORT(int)) VBoxHGCMSvcLoad (VBOXHGCMSVCFNTABLE *ptable);
 
-static VBOXCLIPBOARDCLIENTDATA g_Client;
+static VBOXCLIPBOARDCLIENT g_Client;
 static VBOXHGCMSVCHELPERS g_Helpers = { NULL };
 
 /** Simple call handle structure for the guest call completion callback */
@@ -280,11 +280,11 @@ int VBoxClipboardSvcImplDisconnect(PVBOXCLIPBOARDCLIENT)
 { return VINF_SUCCESS; }
 int VBoxClipboardSvcImplConnect(PVBOXCLIPBOARDCLIENT, bool)
 { return VINF_SUCCESS; }
-int VBoxClipboardSvcImplFormatAnnounce(PVBOXCLIPBOARDCLIENT, PVBOXCLIPBOARDCLIENTCMDCTX pCmdCtx, PSHAREDCLIPBOARDFORMATDATA pFormats)
+int VBoxClipboardSvcImplFormatAnnounce(PVBOXCLIPBOARDCLIENT, PVBOXCLIPBOARDCLIENTCMDCTX, PSHAREDCLIPBOARDFORMATDATA)
 { AssertFailed(); return VINF_SUCCESS; }
-int VBoxClipboardSvcImplReadData(PVBOXCLIPBOARDCLIENT, PVBOXCLIPBOARDCLIENTCMDCTX pCmdCtx, PSHAREDCLIPBOARDDATABLOCK pData, unsigned int *)
+int VBoxClipboardSvcImplReadData(PVBOXCLIPBOARDCLIENT, PVBOXCLIPBOARDCLIENTCMDCTX, PSHAREDCLIPBOARDDATABLOCK, unsigned int *)
 { AssertFailed(); return VERR_WRONG_ORDER; }
-int VBoxClipboardSvcImplWriteData(PVBOXCLIPBOARDCLIENT, PVBOXCLIPBOARDCLIENTCMDCTX pCmdCtx, PSHAREDCLIPBOARDDATABLOCK pData)
+int VBoxClipboardSvcImplWriteData(PVBOXCLIPBOARDCLIENT, PVBOXCLIPBOARDCLIENTCMDCTX, PSHAREDCLIPBOARDDATABLOCK)
 { AssertFailed(); return VINF_SUCCESS; }
 int VBoxClipboardSvcImplSync(PVBOXCLIPBOARDCLIENT)
 { AssertFailed(); return VERR_WRONG_ORDER; }
