@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 81964 2019-11-18 20:42:02Z vboxsync $ */
+/* $Id: UIIndicatorsPool.cpp 82008 2019-11-19 20:50:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIIndicatorsPool class implementation.
  */
@@ -742,7 +742,9 @@ private:
         /* Prepare tool-tip: */
         QString strFullData;
 
+        /* Get graphics adapter: */
         CGraphicsAdapter comGraphics = machine.GetGraphicsAdapter();
+
         /* Video Memory: */
         const ULONG uVRAMSize = comGraphics.GetVRAMSize();
         const QString strVRAMSize = UICommon::tr("<nobr>%1 MB</nobr>", "details report").arg(uVRAMSize);

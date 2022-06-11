@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 81507 2019-10-24 06:07:39Z vboxsync $ */
+/* $Id: UIMessageCenter.h 82008 2019-11-19 20:50:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -330,6 +330,7 @@ public:
     bool confirmCancelingPortForwardingDialog(QWidget *pParent = 0) const;
     void cannotChangeMachineAttribute(const CMachine &comMachine, QWidget *pParent = 0) const;
     void cannotSaveMachineSettings(const CMachine &machine, QWidget *pParent = 0) const;
+    void cannotChangeGraphicsAdapterAttribute(const CGraphicsAdapter &comAdapter, QWidget *pParent = 0) const;
     void cannotChangeAudioAdapterAttribute(const CAudioAdapter &comAdapter, QWidget *pParent = 0) const;
     void cannotChangeNetworkAdapterAttribute(const CNetworkAdapter &comAdapter, QWidget *pParent = 0) const;
 

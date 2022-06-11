@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 81964 2019-11-18 20:42:02Z vboxsync $ */
+/* $Id: UIWizardNewVM.cpp 82008 2019-11-19 20:50:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
@@ -145,12 +145,12 @@ bool UIWizardNewVM::createVM()
 
 void UIWizardNewVM::configureVM(const QString &strGuestTypeId, const CGuestOSType &comGuestType)
 {
-    CVirtualBox vbox = uiCommon().virtualBox();
+    /* Get graphics adapter: */
+    CGraphicsAdapter comGraphics = m_machine.GetGraphicsAdapter();
 
     /* RAM size: */
     m_machine.SetMemorySize(field("ram").toInt());
 
-    CGraphicsAdapter comGraphics = m_machine.GetGraphicsAdapter();
     /* Graphics Controller type: */
     comGraphics.SetGraphicsControllerType(comGuestType.GetRecommendedGraphicsController());
 

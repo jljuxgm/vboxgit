@@ -1,4 +1,4 @@
-/* $Id: UISnapshotDetailsWidget.cpp 81964 2019-11-18 20:42:02Z vboxsync $ */
+/* $Id: UISnapshotDetailsWidget.cpp 82008 2019-11-19 20:50:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotDetailsWidget class implementation.
  */
@@ -43,7 +43,6 @@
 
 /* COM includes: */
 #include "CAudioAdapter.h"
-#include "CGraphicsAdapter.h"
 #include "CRecordingSettings.h"
 #include "CRecordingScreenSettings.h"
 #include "CMachine.h"
@@ -1313,6 +1312,7 @@ QString UISnapshotDetailsWidget::detailsReport(DetailsElementType enmType,
         {
             const CGraphicsAdapter &comGraphics = comMachine.GetGraphicsAdapter();
             const CGraphicsAdapter &comGraphicsOld = comMachineOld.GetGraphicsAdapter();
+
             /* Video Memory: */
             ++iRowCount;
             const QString strVram = QApplication::translate("UIDetails", "%1 MB", "details").arg(comGraphics.GetVRAMSize());
