@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibClipboard.cpp 80886 2019-09-18 11:27:18Z vboxsync $ */
+/* $Id: VBoxGuestR3LibClipboard.cpp 80905 2019-09-19 12:14:07Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Shared Clipboard.
  */
@@ -1262,11 +1262,17 @@ static int vbglR3ClipboardTransferStart(PVBGLR3SHCLCMDCTX pCmdCtx, PSHCLTRANSFER
     int rc = SharedClipboardTransferCreate(&pTransfer);
     if (RT_SUCCESS(rc))
     {
+        SharedClipboardTransferSetCallbacks(pTransfer, &pCmdCtx->Transfers.Callbacks);
+
         rc = SharedClipboardTransferCtxTransferRegisterByIndex(pTransferCtx, pTransfer, uTransferID);
         if (RT_SUCCESS(rc))
         {
             rc = SharedClipboardTransferInit(pTransfer, uTransferID, enmDir, enmSource);
-            if (RT_FAILURE(rc))
+            if (RT_SUCCESS(rc))
+            {
+                rc = SharedClipboardTransferStart(pTransfer);
+            }
+            else
                 SharedClipboardTransferCtxTransferUnregister(pTransferCtx, uTransferID);
         }
     }
@@ -1358,7 +1364,7 @@ VBGLR3DECL(int) VbglR3ClipboardEventGetNextEx(uint32_t idMsg, uint32_t cParms,
 
                 switch (transferReport.uStatus)
                 {
-                    case SHCLTRANSFERSTATUS_READY:
+                    case SHCLTRANSFERSTATUS_INITIALIZED:
                         RT_FALL_THROUGH();
                     case SHCLTRANSFERSTATUS_STARTED:
                     {
