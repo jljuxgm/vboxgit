@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 83906 2020-04-21 17:36:02Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 83920 2020-04-22 11:27:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -685,8 +685,8 @@ void UIChooserModel::sltCloudMachineRegistered(const QString &strProviderName, c
     /* Existing VM unregistered? */
     if (!fRegistered)
     {
-        /* Update tree for main root: */
-        updateTreeForMainRoot();
+        /* Rebuild tree for main root: */
+        buildTreeForMainRoot();
     }
     /* New VM registered? */
     else
@@ -1734,8 +1734,17 @@ void UIChooserModel::unregisterCloudMachines(const QList<CCloudMachine> &machine
         // WORKAROUND:
         // Hehey! Now we have to remove deleted VM nodes and then update tree for the main root node
         // ourselves cause there is no corresponding event yet. So we are calling actual handler to do that.
-        sltCloudMachineRegistered(QString() /* provider name */,
-                                  QString() /* profile name */,
+        UIChooserItem *pItem = root()->searchForItem(uId.toString(),
+                                                     UIChooserItemSearchFlag_Machine |
+                                                     UIChooserItemSearchFlag_ExactId);
+        AssertPtrReturnVoid(pItem);
+        AssertReturnVoid(pItem->node()->toMachineNode()->cache()->itemType() == UIVirtualMachineItem::ItemType_CloudReal);
+        AssertPtrReturnVoid(pItem->parentItem());
+        AssertPtrReturnVoid(pItem->parentItem()->parentItem());
+        const QString strProviderShortName = pItem->parentItem()->parentItem()->name();
+        const QString strProfileName = pItem->parentItem()->name();
+        sltCloudMachineRegistered(strProviderShortName,
+                                  strProfileName,
                                   uId /* machine ID */,
                                   false /* registered? */);
     }
