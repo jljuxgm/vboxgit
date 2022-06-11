@@ -1,4 +1,4 @@
-/* $Id: SharedClipboard-transfers.h 81223 2019-10-11 12:06:49Z vboxsync $ */
+/* $Id: SharedClipboard-transfers.h 81229 2019-10-11 14:33:25Z vboxsync $ */
 /** @file
  * Shared Clipboard - Shared transfer functions between host and guest.
  */
@@ -396,6 +396,10 @@ typedef struct _SHCLREPLY
         {
             SHCLLISTHANDLE uHandle;
         } ListOpen;
+        struct
+        {
+            SHCLLISTHANDLE uHandle;
+        } ListClose;
         struct
         {
             SHCLOBJHANDLE uHandle;
