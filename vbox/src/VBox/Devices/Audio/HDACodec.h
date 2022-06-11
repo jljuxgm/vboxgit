@@ -1,4 +1,4 @@
-/* $Id: HDACodec.h 82399 2019-12-04 20:50:10Z vboxsync $ */
+/* $Id: HDACodec.h 82406 2019-12-05 00:47:02Z vboxsync $ */
 /** @file
  * HDACodec - VBox HD Audio Codec.
  */
@@ -61,7 +61,7 @@ union CODECNODE;
 typedef union CODECNODE CODECNODE, *PCODECNODE;
 
 /**
- * Structure for keeping a HDA codec state.
+ * HDA codec state.
  */
 typedef struct HDACODEC
 {

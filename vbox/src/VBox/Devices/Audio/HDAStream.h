@@ -1,4 +1,4 @@
-/* $Id: HDAStream.h 82345 2019-12-03 14:40:21Z vboxsync $ */
+/* $Id: HDAStream.h 82406 2019-12-05 00:47:02Z vboxsync $ */
 /** @file
  * HDAStream.h - Stream functions for HD Audio.
  */
@@ -248,7 +248,7 @@ typedef HDASTREAM *PHDASTREAM;
 
 #ifdef VBOX_WITH_AUDIO_HDA_ASYNC_IO
 /**
- * Structure for keeping a HDA stream thread context.
+ * HDA stream thread context (arguments).
  */
 typedef struct HDASTREAMTHREADCTX
 {

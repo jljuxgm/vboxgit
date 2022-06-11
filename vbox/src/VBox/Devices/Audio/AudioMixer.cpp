@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 82255 2019-11-27 23:20:26Z vboxsync $ */
+/* $Id: AudioMixer.cpp 82406 2019-12-05 00:47:02Z vboxsync $ */
 /** @file
  * Audio mixing routines for multiplexing audio sources in device emulations.
  *
@@ -521,7 +521,7 @@ int AudioMixerSinkAddStream(PAUDMIXSINK pSink, PAUDMIXSTREAM pStream)
     if (    (pSink->fStatus & AUDMIXSINK_STS_RUNNING)
         && !(pSink->fStatus & AUDMIXSINK_STS_PENDING_DISABLE))
     {
-        rc = audioMixerStreamCtlInternal(pStream, PDMAUDIOSTREAMCMD_ENABLE, AUDMIXSTRMCTL_FLAG_NONE);
+        rc = audioMixerStreamCtlInternal(pStream, PDMAUDIOSTREAMCMD_ENABLE, AUDMIXSTRMCTL_F_NONE);
     }
 
     if (RT_SUCCESS(rc))
@@ -728,7 +728,7 @@ int AudioMixerSinkCtl(PAUDMIXSINK pSink, AUDMIXSINKCMD enmSinkCmd)
         {
             if (pStream == pSink->In.pStreamRecSource)
             {
-                int rc2 = audioMixerStreamCtlInternal(pStream, enmCmdStream, AUDMIXSTRMCTL_FLAG_NONE);
+                int rc2 = audioMixerStreamCtlInternal(pStream, enmCmdStream, AUDMIXSTRMCTL_F_NONE);
                 if (rc2 == VERR_NOT_SUPPORTED)
                     rc2 = VINF_SUCCESS;
 
@@ -742,7 +742,7 @@ int AudioMixerSinkCtl(PAUDMIXSINK pSink, AUDMIXSINKCMD enmSinkCmd)
     {
         RTListForEach(&pSink->lstStreams, pStream, AUDMIXSTREAM, Node)
         {
-            int rc2 = audioMixerStreamCtlInternal(pStream, enmCmdStream, AUDMIXSTRMCTL_FLAG_NONE);
+            int rc2 = audioMixerStreamCtlInternal(pStream, enmCmdStream, AUDMIXSTRMCTL_F_NONE);
             if (rc2 == VERR_NOT_SUPPORTED)
                 rc2 = VINF_SUCCESS;
 
