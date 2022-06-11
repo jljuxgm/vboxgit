@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageExpert.cpp 79575 2019-07-07 12:03:22Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageExpert.cpp 79579 2019-07-07 15:59:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageExpert class implementation.
  */
@@ -160,9 +160,6 @@ UIWizardNewCloudVMPageExpert::UIWizardNewCloudVMPageExpert()
         }
     }
 
-    /* Populate destinations: */
-    populateDestinations();
-
     /* Setup connections: */
     if (gpManager)
         connect(gpManager, &UIVirtualBoxManager::sigCloudProfileManagerChange,
@@ -223,6 +220,9 @@ void UIWizardNewCloudVMPageExpert::initializePage()
     /* If wasn't polished yet: */
     if (!m_fPolished)
     {
+        /* Populate destinations: */
+        populateDestinations();
+        /* Choose one of them, asynchronously: */
         QMetaObject::invokeMethod(this, "sltHandleDestinationChange", Qt::QueuedConnection);
         m_fPolished = true;
     }
