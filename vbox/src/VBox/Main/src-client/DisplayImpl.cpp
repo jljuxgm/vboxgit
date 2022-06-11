@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 83257 2020-03-11 12:42:35Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 83514 2020-04-02 16:00:58Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -3555,6 +3555,8 @@ DECLCALLBACK(void) Display::i_displayVBVAReportCursorPosition(PPDMIDISPLAYCONNEC
 
     PDRVMAINDISPLAY pDrv = PDMIDISPLAYCONNECTOR_2_MAINDISPLAY(pInterface);
     Display *pThis = pDrv->pDisplay;
+
+    AssertReturnVoid(aScreenId < pThis->mcMonitors);
 
     if (fFlags & VBVA_CURSOR_SCREEN_RELATIVE)
     {
