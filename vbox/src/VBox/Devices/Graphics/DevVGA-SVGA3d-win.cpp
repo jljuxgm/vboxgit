@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-win.cpp 81022 2019-09-26 14:28:27Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-win.cpp 81080 2019-09-30 12:52:30Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -2480,7 +2480,7 @@ int vmsvga3dBackSurfaceDMACopyBox(PVGASTATE pThis, PVMSVGA3DSTATE pState, PVMSVG
                                1); /* Buffers are 1-dimensional */
         AssertRC(rc);
 
-        Log4(("Buffer first line:\n%.*Rhxd\n", cbWidth, (uint8_t *)pMipLevel->pSurfaceData + offHst));
+        Log4(("Buffer content (updated at [0x%x;0x%x):\n%.*Rhxd\n", offHst, offHst + cbWidth, pMipLevel->cbSurface, pMipLevel->pSurfaceData));
 
         /* Do not bother to copy the data to the D3D resource now. vmsvga3dDrawPrimitives will do that.
          * The SVGA driver may use the same surface for both index and vertex data.
