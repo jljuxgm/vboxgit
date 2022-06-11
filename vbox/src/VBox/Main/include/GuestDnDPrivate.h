@@ -1,4 +1,4 @@
-/* $Id: GuestDnDPrivate.h 78095 2019-04-10 15:23:03Z vboxsync $ */
+/* $Id: GuestDnDPrivate.h 78653 2019-05-22 10:00:33Z vboxsync $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget +
  * GuestDnDSource.
@@ -183,6 +183,9 @@ protected:
 
         if (cbSize == cbData)
             return VINF_SUCCESS;
+
+        if (cbSize > _32M) /* Meta data can be up to 32MB. */
+            return VERR_INVALID_PARAMETER;
 
         void *pvTmp = NULL;
         if (!cbData)
