@@ -1,4 +1,4 @@
-/* $Id: VBoxManageList.cpp 79778 2019-07-15 00:36:08Z vboxsync $ */
+/* $Id: VBoxManageList.cpp 79847 2019-07-17 21:20:04Z vboxsync $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
@@ -812,7 +812,7 @@ static HRESULT showDhcpConfig(ComPtr<IDHCPConfig> ptrConfig)
     else
         RTPrintf("    maxLeaseTime:     %u sec\n", secs);
 
-    com::SafeArray<DhcpOpt_T>            Options;
+    com::SafeArray<DHCPOption_T>         Options;
     com::SafeArray<DHCPOptionEncoding_T> Encodings;
     com::SafeArray<BSTR>                 Values;
     HRESULT hrc;
