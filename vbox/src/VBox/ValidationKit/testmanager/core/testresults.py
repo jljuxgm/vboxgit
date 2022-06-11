@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testresults.py 79919 2019-07-22 10:13:20Z vboxsync $
+# $Id: testresults.py 80128 2019-08-05 11:06:37Z vboxsync $
 # pylint: disable=too-many-lines
 
 ## @todo Rename this file to testresult.py!
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79919 $"
+__version__ = "$Revision: 80128 $"
 
 
 # Standard python imports.
@@ -219,7 +219,7 @@ class TestResultDataEx(TestResultData):
         """
         Get a list of test results instances actually contributing to cErrors.
 
-        Returns a list of TestResultDataEx instance from this tree. (shared!)
+        Returns a list of TestResultDataEx instances from this tree. (shared!)
         """
         # Check each child (if any).
         aoRet = [];
@@ -232,6 +232,25 @@ class TestResultDataEx(TestResultData):
         # Did we contribute as well?
         if self.cErrors > cChildErrors:
             aoRet.append(self);
+
+        return aoRet;
+
+    def getListOfLogFilesByKind(self, asKinds):
+        """
+        Get a list of test results instances actually contributing to cErrors.
+
+        Returns a list of TestResultFileDataEx instances from this tree. (shared!)
+        """
+        aoRet = [];
+
+        # Check the children first.
+        for oChild in self.aoChildren:
+            aoRet.extend(oChild.getListOfLogFilesByKind(asKinds));
+
+        # Check our own files next.
+        for oFile in self.aoFiles:
+            if oFile.sKind in asKinds:
+                aoRet.append(oFile);
 
         return aoRet;
 
@@ -401,7 +420,7 @@ class TestResultFileData(ModelDataBase):
     ksKind_LogReleaseVm         = 'log/release/vm';
     ksKind_LogDebugVm           = 'log/debug/vm';
     ksKind_LogReleaseSvc        = 'log/release/svc';
-    ksKind_LogRebugSvc          = 'log/debug/svc';
+    ksKind_LogDebugSvc          = 'log/debug/svc';
     ksKind_LogReleaseClient     = 'log/release/client';
     ksKind_LogDebugClient       = 'log/debug/client';
     ksKind_LogInstaller         = 'log/installer';
@@ -426,7 +445,7 @@ class TestResultFileData(ModelDataBase):
         ksKind_LogReleaseVm,
         ksKind_LogDebugVm,
         ksKind_LogReleaseSvc,
-        ksKind_LogRebugSvc,
+        ksKind_LogDebugSvc,
         ksKind_LogReleaseClient,
         ksKind_LogDebugClient,
         ksKind_LogInstaller,
