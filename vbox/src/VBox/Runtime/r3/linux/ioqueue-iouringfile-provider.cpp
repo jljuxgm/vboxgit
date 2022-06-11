@@ -1,4 +1,4 @@
-/* $Id: ioqueue-iouringfile-provider.cpp 79949 2019-07-24 11:05:45Z vboxsync $ */
+/* $Id: ioqueue-iouringfile-provider.cpp 79953 2019-07-24 11:24:43Z vboxsync $ */
 /** @file
  * IPRT - I/O queue, Linux io_uring interface I/O file provider.
  */
@@ -532,7 +532,7 @@ static DECLCALLBACK(bool) rtIoQueueLnxIoURingFileProv_IsSupported(void)
     int rc = rtIoQueueLnxIoURingSetup(16, &Params, &iFdIoCtx);
     if (RT_SUCCESS(rc))
     {
-        int rcLnx = close(iFdIoCtx); Assert(!rcLnx);
+        int rcLnx = close(iFdIoCtx); Assert(!rcLnx); RT_NOREF(rcLnx);
         return true;
     }
 
