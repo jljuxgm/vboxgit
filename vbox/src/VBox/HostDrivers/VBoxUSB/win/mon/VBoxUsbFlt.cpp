@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbFlt.cpp 82444 2019-12-06 07:28:14Z vboxsync $ */
+/* $Id: VBoxUsbFlt.cpp 82445 2019-12-06 08:04:33Z vboxsync $ */
 /** @file
  * VBox USB Monitor Device Filtering functionality
  */
@@ -658,7 +658,7 @@ static NTSTATUS vboxUsbFltDevPopulate(PVBOXUSBFLT_DEVICE pDevice, PDEVICE_OBJECT
             WARN(("IoGetDevicePropertyData failed for DEVPKEY_Device_LocationPaths, Status (0x%x)", Status));
             break;
         }
-	LOG_STRW(pDevice->szLocationPath);
+        LOG_STRW(pDevice->szLocationPath);
 
         /* Query the location information. The hub number is iffy because the numbering is
          * non-obvious and not necessarily stable, but the port number is well defined and useful.
