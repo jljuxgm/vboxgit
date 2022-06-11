@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbFlt.cpp 78998 2019-06-05 14:30:40Z vboxsync $ */
+/* $Id: VBoxUsbFlt.cpp 79000 2019-06-05 14:35:52Z vboxsync $ */
 /** @file
  * VBox USB Monitor Device Filtering functionality
  */
@@ -1430,7 +1430,7 @@ NTSTATUS VBoxUsbFltInit()
      * querying string descriptors fail is set in the registry,
      * see @bugref{9479}.
      */
-    RTL_QUERY_REGISTRY_TABLE aParams[] = 
+    RTL_QUERY_REGISTRY_TABLE aParams[] =
     {
         {vboxUsbFltRegKeyQuery, 0, L"ForceReplugWhenDevPopulateFails", &g_VBoxUsbFltGlobals.dwForceReplugWhenDevPopulateFails, REG_DWORD, &g_VBoxUsbFltGlobals.dwForceReplugWhenDevPopulateFails, sizeof(ULONG) },
         {                 NULL, 0,                               NULL,                                                   NULL,         0,                                                     0,             0 }
