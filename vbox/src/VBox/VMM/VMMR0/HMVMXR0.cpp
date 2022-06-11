@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 79101 2019-06-12 08:35:25Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 79102 2019-06-12 08:43:57Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -772,7 +772,7 @@ static bool hmR0VmxIsPinCtlsSet(PVMCPU pVCpu, PCVMXTRANSIENT pVmxTransient, uint
  * @returns @c true if set, @c false otherwise.
  * @param   pVCpu           The cross context virtual CPU structure.
  * @param   pVmxTransient   The VMX-transient structure.
- * @param   uPinCtls        The Processor-based VM-execution controls to check.
+ * @param   uProcCtls       The Processor-based VM-execution controls to check.
  *
  * @remarks This will not check merged controls when executing a nested-guest
  *          but the original control specified by the guest hypervisor.
@@ -795,7 +795,7 @@ static bool hmR0VmxIsProcCtlsSet(PVMCPU pVCpu, PCVMXTRANSIENT pVmxTransient, uin
  * @returns @c true if set, @c false otherwise.
  * @param   pVCpu           The cross context virtual CPU structure.
  * @param   pVmxTransient   The VMX-transient structure.
- * @param   uPinCtls        The Secondary Processor-based VM-execution controls to
+ * @param   uProcCtls2      The Secondary Processor-based VM-execution controls to
  *                          check.
  *
  * @remarks This will not check merged controls when executing a nested-guest
@@ -819,7 +819,7 @@ static bool hmR0VmxIsProcCtls2Set(PVMCPU pVCpu, PCVMXTRANSIENT pVmxTransient, ui
  * @returns @c true if set, @c false otherwise.
  * @param   pVCpu           The cross context virtual CPU structure.
  * @param   pVmxTransient   The VMX-transient structure.
- * @param   uPinCtls        The VM-entry controls to check.
+ * @param   uEntryCtls      The VM-entry controls to check.
  *
  * @remarks This will not check merged controls when executing a nested-guest
  *          but the original control specified by the guest hypervisor.
@@ -841,7 +841,7 @@ static bool hmR0VmxIsEntryCtlsSet(PVMCPU pVCpu, PCVMXTRANSIENT pVmxTransient, ui
  * @returns @c true if set, @c false otherwise.
  * @param   pVCpu           The cross context virtual CPU structure.
  * @param   pVmxTransient   The VMX-transient structure.
- * @param   uPinCtls        The VM-exit controls to check.
+ * @param   uExitCtls       The VM-exit controls to check.
  *
  * @remarks This will not check merged controls when executing a nested-guest
  *          but the original control specified by the guest hypervisor.
