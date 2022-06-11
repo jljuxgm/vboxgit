@@ -1,4 +1,4 @@
-/* $Id: SharedClipboardPrivate.cpp 78686 2019-05-23 10:31:45Z vboxsync $ */
+/* $Id: SharedClipboardPrivate.cpp 78690 2019-05-23 11:15:34Z vboxsync $ */
 /** @file
  * Private Shared Clipboard code.
  */
@@ -57,6 +57,8 @@ DECLCALLBACK(int) SharedClipboard::hostServiceCallback(void *pvExtension, uint32
 {
     LogFlowFunc(("pvExtension=%p, u32Function=%RU32, pvParms=%p, cbParms=%RU32\n",
                  pvExtension, u32Function, pvParms, cbParms));
+
+    RT_NOREF(pvParms, cbParms);
 
     SharedClipboard *pSharedClipboard = reinterpret_cast<SharedClipboard *>(pvExtension);
     AssertPtrReturn(pSharedClipboard, VERR_INVALID_POINTER);
