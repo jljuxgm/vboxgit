@@ -1,4 +1,4 @@
-/* $Id: VBoxClipboard.cpp 81843 2019-11-14 16:30:44Z vboxsync $ */
+/* $Id: VBoxClipboard.cpp 81960 2019-11-18 19:00:50Z vboxsync $ */
 /** @file
  * VBoxClipboard - Shared clipboard, Windows Guest Implementation.
  */
@@ -1144,7 +1144,7 @@ DECLCALLBACK(int) VBoxShClWorker(void *pInstance, bool volatile *pfShutdown)
             break;
     }
 
-    LogRel(("Shared Clipboard: Worker loop ended\n"));
+    LogRel2(("Shared Clipboard: Worker loop ended\n"));
 
 #ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS
     OleSetClipboard(NULL); /* Make sure to flush the clipboard on destruction. */

@@ -1,4 +1,4 @@
-/** $Id: clipboard.cpp 81871 2019-11-15 13:09:11Z vboxsync $ */
+/** $Id: clipboard.cpp 81960 2019-11-18 19:00:50Z vboxsync $ */
 /** @file
  * Guest Additions - X11 Shared Clipboard.
  */
@@ -229,6 +229,12 @@ static int vboxClipboardConnect(void)
         if (RT_SUCCESS(rc))
         {
             rc = VbglR3ClipboardConnectEx(&g_Ctx.CmdCtx);
+#ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS
+            if (RT_SUCCESS(rc))
+                rc = ShClTransferCtxInit(&g_Ctx.TransferCtx);
+#endif
+            if (RT_FAILURE(rc))
+                ClipStopX11(g_Ctx.pBackend);
         }
     }
     else
@@ -457,6 +463,11 @@ static int run(struct VBCLSERVICE **ppInterface, bool fDaemonised)
 static void cleanup(struct VBCLSERVICE **ppInterface)
 {
     RT_NOREF(ppInterface);
+
+#ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS
+    ShClTransferCtxDestroy(&g_Ctx.TransferCtx);
+#endif
+
     VbglR3Term();
 }
 
