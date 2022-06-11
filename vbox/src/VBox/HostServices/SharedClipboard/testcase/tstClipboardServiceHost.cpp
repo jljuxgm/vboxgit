@@ -1,4 +1,4 @@
-/* $Id: tstClipboardServiceHost.cpp 80623 2019-09-06 10:05:11Z vboxsync $ */
+/* $Id: tstClipboardServiceHost.cpp 80626 2019-09-06 10:17:12Z vboxsync $ */
 /** @file
  * Shared Clipboard host service test case.
  */
@@ -89,7 +89,7 @@ static void testSetMode(void)
     HGCMSvcSetU32(&parms[0], 99);
     rc = table.pfnHostCall(NULL, VBOX_SHARED_CLIPBOARD_HOST_FN_SET_MODE,
                            1, parms);
-    RTTESTI_CHECK_RC_OK(rc);
+    RTTESTI_CHECK_RC(rc, VERR_NOT_SUPPORTED);
     u32Mode = TestClipSvcGetMode();
     RTTESTI_CHECK_MSG(u32Mode == VBOX_SHARED_CLIPBOARD_MODE_OFF,
                       ("u32Mode=%u\n", (unsigned) u32Mode));
