@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 80606 2019-09-05 12:45:46Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 80607 2019-09-05 13:58:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -2657,7 +2657,8 @@ void UIMachineLogic::sltSwitchKeyboardLedsToGuestLeds()
 #if defined(VBOX_WS_MAC)
     if (m_pHostLedsState == NULL)
         m_pHostLedsState = DarwinHidDevicesKeepLedsState();
-    DarwinHidDevicesBroadcastLeds(m_pHostLedsState, uisession()->isNumLock(), uisession()->isCapsLock(), uisession()->isScrollLock());
+    if (m_pHostLedsState != NULL)
+        DarwinHidDevicesBroadcastLeds(m_pHostLedsState, uisession()->isNumLock(), uisession()->isCapsLock(), uisession()->isScrollLock());
 #elif defined(VBOX_WS_WIN)
     if (m_pHostLedsState == NULL)
         m_pHostLedsState = WinHidDevicesKeepLedsState();
