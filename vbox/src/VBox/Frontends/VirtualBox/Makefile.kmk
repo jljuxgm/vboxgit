@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 81001 2019-09-25 08:58:55Z vboxsync $
+# $Id: Makefile.kmk 81257 2019-10-14 13:09:01Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -784,7 +784,6 @@ UICommon_QT_MOCHDRS = \
 	src/extensions/QILabelSeparator.h \
 	src/extensions/QILineEdit.h \
 	src/extensions/QIMainDialog.h \
-	src/extensions/QIMainWindow.h \
 	src/extensions/QIManagerDialog.h \
 	src/extensions/QIMenu.h \
 	src/extensions/QIMessageBox.h \
@@ -1266,7 +1265,6 @@ UICommon_SOURCES = \
 	src/extensions/QILabelSeparator.cpp \
 	src/extensions/QILineEdit.cpp \
 	src/extensions/QIMainDialog.cpp \
-	src/extensions/QIMainWindow.cpp \
 	src/extensions/QIManagerDialog.cpp \
 	src/extensions/QIMenu.cpp \
 	src/extensions/QIMessageBox.cpp \

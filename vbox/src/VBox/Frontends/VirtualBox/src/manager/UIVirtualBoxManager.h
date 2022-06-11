@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 81248 2019-10-14 10:31:23Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.h 81257 2019-10-14 13:09:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -22,10 +22,11 @@
 #endif
 
 /* Qt includes: */
+#include <QMainWindow>
 #include <QUrl>
 
 /* GUI includes: */
-#include "QIMainWindow.h"
+#include "QIWithRestorableGeometry.h"
 #include "QIWithRetranslateUI.h"
 #include "UICommon.h"
 
@@ -38,10 +39,12 @@ class UIVirtualBoxManagerWidget;
 class UIVirtualMachineItem;
 
 /* Type definitions: */
+typedef QIWithRestorableGeometry<QMainWindow> QMainWindowWithRestorableGeometry;
+typedef QIWithRetranslateUI<QMainWindowWithRestorableGeometry> QMainWindowWithRestorableGeometryAndRetranslateUi;
 typedef QMap<QString, QIManagerDialog*> VMLogViewerMap;
 
-/** Singleton QIMainWindow extension used as VirtualBox Manager instance. */
-class UIVirtualBoxManager : public QIWithRetranslateUI<QIMainWindow>
+/** Singleton QMainWindow extension used as VirtualBox Manager instance. */
+class UIVirtualBoxManager : public QMainWindowWithRestorableGeometryAndRetranslateUi
 {
     Q_OBJECT;
 
