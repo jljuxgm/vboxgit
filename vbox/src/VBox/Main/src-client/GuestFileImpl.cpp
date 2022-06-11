@@ -1,4 +1,4 @@
-/* $Id: GuestFileImpl.cpp 79254 2019-06-20 02:27:10Z vboxsync $ */
+/* $Id: GuestFileImpl.cpp 79278 2019-06-21 13:52:35Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest file handling.
  */
@@ -1401,6 +1401,10 @@ HRESULT GuestFile::read(ULONG aToRead, ULONG aTimeoutMS, std::vector<BYTE> &aDat
 
     LogFlowThisFuncEnter();
 
+    /* Cap the read at 1MiB because that's all the guest will return anyway. */
+    if (aToRead > _1M)
+        aToRead = _1M;
+
     aData.resize(aToRead);
 
     HRESULT hr = S_OK;
@@ -1435,6 +1439,10 @@ HRESULT GuestFile::readAt(LONG64 aOffset, ULONG aToRead, ULONG aTimeoutMS, std::
         return setError(E_INVALIDARG, tr("The size to read is zero"));
 
     LogFlowThisFuncEnter();
+
+    /* Cap the read at 1MiB because that's all the guest will return anyway. */
+    if (aToRead > _1M)
+        aToRead = _1M;
 
     aData.resize(aToRead);
 
