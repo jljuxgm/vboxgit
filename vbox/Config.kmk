@@ -1,4 +1,4 @@
-# $Id: Config.kmk 83996 2020-04-27 11:08:00Z vboxsync $
+# $Id: Config.kmk 84052 2020-04-28 15:58:56Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -5733,6 +5733,7 @@ endif
 TEMPLATE_VBOXR3HARDENEDEXE = Hardened VBox Ring-3 EXE
 TEMPLATE_VBOXR3HARDENEDEXE_EXTENDS = VBOXR3EXE
 TEMPLATE_VBOXR3HARDENEDEXE_DEBUG_INST.win = $(INST_DEBUG)hardened-exes/
+TEMPLATE_VBOXR3HARDENEDEXE_DEFS  = $(TEMPLATE_VBOXR3EXE_DEFS) RTMEM_NO_WRAP_TO_EF_APIS
 ifdef VBOX_WITH_HARDENING
  TEMPLATE_VBOXR3HARDENEDEXE_LIBS = $(VBOX_LIB_SUPHARDENED) $(TEMPLATE_VBOXR3EXE_LIBS)
 else
@@ -8114,7 +8115,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 83996 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 84052 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
