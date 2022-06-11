@@ -1,4 +1,4 @@
-/* $Id: UartCore.cpp 77806 2019-03-20 12:52:20Z vboxsync $ */
+/* $Id: UartCore.cpp 78662 2019-05-22 13:28:07Z vboxsync $ */
 /** @file
  * UartCore - UART  (16550A up to 16950) emulation.
  *
@@ -1487,6 +1487,8 @@ static DECLCALLBACK(void) uartR3TxUnconnectedTimer(PPDMDEVINS pDevIns, PTMTIMER 
             UART_REG_SET(pThis->uRegLsr, UART_REG_LSR_DR);
             uartIrqUpdate(pThis);
         }
+        else
+            ASMAtomicSubU32(&pThis->cbAvailRdr, 1);
     }
     if (cbRead == 1)
         TMTimerSetRelative(pThis->CTX_SUFF(pTimerTxUnconnected), pThis->cSymbolXferTicks, NULL);
