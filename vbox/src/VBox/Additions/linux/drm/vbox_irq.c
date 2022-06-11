@@ -1,4 +1,4 @@
-/* $Id: vbox_irq.c 77850 2019-03-22 14:49:18Z vboxsync $ */
+/* $Id: vbox_irq.c 80712 2019-09-10 19:25:36Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -35,6 +35,9 @@
 
 #if LINUX_VERSION_CODE < KERNEL_VERSION(5, 1, 0)
 #include <drm/drm_crtc_helper.h>
+# if defined(RHEL_81)
+#  include <drm/drm_probe_helper.h>
+# endif
 #else
 #include <drm/drm_probe_helper.h>
 #endif

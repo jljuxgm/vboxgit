@@ -1,4 +1,4 @@
-/* $Id: vbox_drv.h 79025 2019-06-06 14:33:47Z vboxsync $ */
+/* $Id: vbox_drv.h 80712 2019-09-10 19:25:36Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -50,6 +50,15 @@
 #include <linux/string.h>
 
 #if defined(RHEL_MAJOR) && defined(RHEL_MINOR)
+# if RHEL_MAJOR == 8 && RHEL_MINOR >= 1
+#  define RHEL_81
+# endif
+# if RHEL_MAJOR == 8 && RHEL_MINOR >= 0
+#  define RHEL_80
+# endif
+# if RHEL_MAJOR == 7 && RHEL_MINOR >= 7
+#  define RHEL_77
+# endif
 # if RHEL_MAJOR == 7 && RHEL_MINOR >= 6
 #  define RHEL_76
 # endif
@@ -187,7 +196,7 @@ struct vbox_private {
 	int fb_mtrr;
 
 	struct {
-#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 0, 0)
+#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 0, 0) && !defined(RHEL_77) && !defined(RHEL_81)
 		struct drm_global_reference mem_global_ref;
 		struct ttm_bo_global_ref bo_global_ref;
 #endif

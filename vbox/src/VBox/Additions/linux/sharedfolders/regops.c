@@ -1,4 +1,4 @@
-/* $Id: regops.c 80582 2019-09-04 10:27:59Z vboxsync $ */
+/* $Id: regops.c 80712 2019-09-10 19:25:36Z vboxsync $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, regular file inode and file operations.
  */
@@ -79,6 +79,11 @@
 # define PageUptodate(a_pPage) Page_Uptodate(a_pPage)
 #endif
 
+#ifdef RHEL_RELEASE_CODE
+# if RHEL_RELEASE_CODE >= RHEL_RELEASE_VERSION(8, 1)
+#  define RHEL_81
+# endif
+#endif
 
 /*********************************************************************************************************************************
 *   Structures and Typedefs                                                                                                      *
@@ -1408,7 +1413,7 @@ static int vbsf_lock_user_pages_failed_check_kernel(uintptr_t uPtrFrom, size_t c
     /*
      * Check that this is valid user memory that is actually in the kernel range.
      */
-#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 0, 0)
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 0, 0) || defined(RHEL_81)
     if (   access_ok((void *)uPtrFrom, cPages << PAGE_SHIFT)
         && uPtrFrom >= USER_DS.seg)
 #else
