@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 82013 2019-11-20 08:39:55Z vboxsync $ */
+/* $Id: DevACPI.cpp 82014 2019-11-20 08:40:15Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -899,7 +899,7 @@ static void apicR3UpdateGpe0(PPDMDEVINS pDevIns, ACPIState *pThis, uint32_t sts,
 static VBOXSTRICTRC acpiR3DoPowerOff(PPDMDEVINS pDevIns)
 {
     VBOXSTRICTRC rc = PDMDevHlpVMPowerOff(pDevIns);
-    AssertRC(rc);
+    AssertRC(VBOXSTRICTRC_VAL(rc));
     return rc;
 }
 
