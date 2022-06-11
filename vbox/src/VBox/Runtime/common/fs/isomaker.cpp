@@ -1,4 +1,4 @@
-/* $Id: isomaker.cpp 77734 2019-03-16 03:53:06Z vboxsync $ */
+/* $Id: isomaker.cpp 78731 2019-05-24 13:48:20Z vboxsync $ */
 /** @file
  * IPRT - ISO Image Maker.
  */
@@ -1772,7 +1772,6 @@ static int rtFsIsoMakerWalkPathBySpec(PRTFSISOMAKERNAMESPACE pNamespace, const c
      */
     while (RTPATH_IS_SLASH(*pszPath))
         pszPath++;
-    AssertReturn(*pszPath, VERR_ISOMK_IPE_EMPTY_PATH);
 
     PRTFSISOMAKERNAME pCur = pNamespace->pRoot;
     if (!pCur)
