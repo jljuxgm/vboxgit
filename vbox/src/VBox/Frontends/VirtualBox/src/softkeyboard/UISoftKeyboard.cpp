@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboard.cpp 79404 2019-06-28 10:11:45Z vboxsync $ */
+/* $Id: UISoftKeyboard.cpp 79407 2019-06-28 11:05:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class implementation.
  */
@@ -792,6 +792,7 @@ void UILayoutEditor::setKey(UISoftKeyboardKey *pKey)
         m_pAltGrCaptionEdit->setText(captions.m_strAltGr);
     if (m_pShiftAltGrCaptionEdit)
         m_pShiftAltGrCaptionEdit->setText(captions.m_strShiftAltGr);
+    m_pBaseCaptionEdit->setFocus();
 }
 
 void UILayoutEditor::setLayoutToEdit(UISoftKeyboardLayout *pLayout)
