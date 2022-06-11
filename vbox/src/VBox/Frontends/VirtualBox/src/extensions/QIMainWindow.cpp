@@ -1,4 +1,4 @@
-/* $Id: QIMainWindow.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
+/* $Id: QIMainWindow.cpp 81224 2019-10-11 12:27:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - QIMainWindow class implementation.
  */
@@ -33,10 +33,10 @@ void QIMainWindow::restoreGeometry()
     /* Use the old approach for OSX/Win: */
     move(m_geometry.topLeft());
     resize(m_geometry.size());
-#elif defined(VBOX_WS_X11)
-    /* Use the new approach for X11: */
+#else /* !VBOX_WS_MAC && !VBOX_WS_WIN */
+    /* Use the new approach otherwise: */
     UICommon::setTopLevelGeometry(this, m_geometry);
-#endif /* VBOX_WS_X11 */
+#endif /* !VBOX_WS_MAC && !VBOX_WS_WIN */
 
     /* Maximize (if necessary): */
     if (shouldBeMaximized())
