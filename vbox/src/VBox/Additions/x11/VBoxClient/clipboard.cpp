@@ -1,4 +1,4 @@
-/** $Id: clipboard.cpp 81040 2019-09-27 09:45:46Z vboxsync $ */
+/** $Id: clipboard.cpp 81043 2019-09-27 10:40:04Z vboxsync $ */
 /** @file
  * Guest Additions - X11 Shared Clipboard.
  */
@@ -307,7 +307,7 @@ static int run(struct VBCLSERVICE **ppInterface, bool fDaemonised)
 
 static void cleanup(struct VBCLSERVICE **ppInterface)
 {
-    NOREF(ppInterface);
+    RT_NOREF(ppInterface);
     VbglR3Term();
 }
 
