@@ -1,4 +1,4 @@
-/* $Id: TMAll.cpp 81153 2019-10-08 13:59:03Z vboxsync $ */
+/* $Id: TMAll.cpp 82333 2019-12-03 01:03:18Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, all contexts.
  */
@@ -1249,6 +1249,7 @@ static int tmTimerVirtualSyncSet(PVMCC pVM, PTMTIMER pTimer, uint64_t u64Expire)
 VMMDECL(int) TMTimerSet(PTMTIMER pTimer, uint64_t u64Expire)
 {
     PVMCC pVM = pTimer->CTX_SUFF(pVM);
+    STAM_COUNTER_INC(&pTimer->StatSetAbsolute);
 
     /* Treat virtual sync timers specially. */
     if (pTimer->enmClock == TMCLOCK_VIRTUAL_SYNC)
@@ -1555,6 +1556,7 @@ static int tmTimerVirtualSyncSetRelative(PVMCC pVM, PTMTIMER pTimer, uint64_t cT
 VMMDECL(int) TMTimerSetRelative(PTMTIMER pTimer, uint64_t cTicksToNext, uint64_t *pu64Now)
 {
     PVMCC pVM = pTimer->CTX_SUFF(pVM);
+    STAM_COUNTER_INC(&pTimer->StatSetRelative);
 
     /* Treat virtual sync timers specially. */
     if (pTimer->enmClock == TMCLOCK_VIRTUAL_SYNC)
@@ -1877,6 +1879,7 @@ static int tmTimerVirtualSyncStop(PVMCC pVM, PTMTIMER pTimer)
 VMMDECL(int) TMTimerStop(PTMTIMER pTimer)
 {
     PVMCC pVM = pTimer->CTX_SUFF(pVM);
+    STAM_COUNTER_INC(&pTimer->StatStop);
 
     /* Treat virtual sync timers specially. */
     if (pTimer->enmClock == TMCLOCK_VIRTUAL_SYNC)
@@ -1984,6 +1987,7 @@ VMMDECL(int) TMTimerStop(PTMTIMER pTimer)
 VMMDECL(uint64_t) TMTimerGet(PTMTIMER pTimer)
 {
     PVMCC pVM = pTimer->CTX_SUFF(pVM);
+    STAM_COUNTER_INC(&pTimer->StatGet);
 
     uint64_t u64;
     switch (pTimer->enmClock)

@@ -1,4 +1,4 @@
-/* $Id: TMInternal.h 80281 2019-08-15 07:29:37Z vboxsync $ */
+/* $Id: TMInternal.h 82333 2019-12-03 01:03:18Z vboxsync $ */
 /** @file
  * TM - Internal header file.
  */
@@ -204,6 +204,14 @@ typedef struct TMTIMER
     R3PTRTYPE(const char *) pszDesc;
 #if HC_ARCH_BITS == 32
     uint32_t                padding0; /**< pad structure to multiple of 8 bytes. */
+#endif
+#ifdef VBOX_WITH_STATISTICS
+    STAMPROFILE             StatTimer;
+    STAMPROFILE             StatCritSectEnter;
+    STAMCOUNTER             StatGet;
+    STAMCOUNTER             StatSetAbsolute;
+    STAMCOUNTER             StatSetRelative;
+    STAMCOUNTER             StatStop;
 #endif
 } TMTIMER;
 AssertCompileMemberSize(TMTIMER, enmState, sizeof(uint32_t));
