@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboard.h 78812 2019-05-28 11:32:39Z vboxsync $ */
+/* $Id: UISoftKeyboard.h 78845 2019-05-29 12:32:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class declaration.
  */
@@ -55,7 +55,6 @@ public:
 protected:
 
     virtual void retranslateUi();
-    virtual void resizeEvent(QResizeEvent *pEvent);
 
 private slots:
 
@@ -71,17 +70,13 @@ private:
     void saveSettings();
     void loadSettings();
     void parseLayout();
-    void updateLayout();
     CKeyboard& keyboard() const;
 
     UISession     *m_pSession;
     QHBoxLayout   *m_pMainLayout;
     UISoftKeyboardWidget       *m_pContainerWidget;
     QString       m_strMachineName;
-    int           m_iTotalRowHeight;
-    int           m_iMaxRowWidth;
     QVector<UISoftKeyboardKey*> m_pressedModifiers;
-    QVector<QVector<UISoftKeyboardKey*> > m_keys;
     bool          m_fKeepAspectRatio;
 
     int m_iXSpacing;
