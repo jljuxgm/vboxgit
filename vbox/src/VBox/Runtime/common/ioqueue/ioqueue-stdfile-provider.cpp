@@ -1,4 +1,4 @@
-/* $Id: ioqueue-stdfile-provider.cpp 79949 2019-07-24 11:05:45Z vboxsync $ */
+/* $Id: ioqueue-stdfile-provider.cpp 79983 2019-07-25 17:21:24Z vboxsync $ */
 /** @file
  * IPRT - I/O queue, Standard file provider.
  */
@@ -101,9 +101,9 @@ typedef const RTIOQUEUESSQENTRY *PCRTIOQUEUESSQENTRY;
 typedef struct RTIOQUEUEPROVINT
 {
     /** Size of the submission queue in entries. */
-    size_t                      cSqEntries;
+    uint32_t                    cSqEntries;
     /** Size of the completion queue in entries. */
-    size_t                      cCqEntries;
+    uint32_t                    cCqEntries;
     /** Pointer to the submission queue base. */
     PRTIOQUEUESSQENTRY          paSqEntryBase;
     /** Submission queue producer index. */
@@ -256,21 +256,21 @@ static DECLCALLBACK(bool) rtIoQueueStdFileProv_IsSupported(void)
 
 /** @interface_method_impl{RTIOQUEUEPROVVTABLE,pfnQueueInit} */
 static DECLCALLBACK(int) rtIoQueueStdFileProv_QueueInit(RTIOQUEUEPROV hIoQueueProv, uint32_t fFlags,
-                                                        size_t cSqEntries, size_t cCqEntries)
+                                                        uint32_t cSqEntries, uint32_t cCqEntries)
 {
     RT_NOREF(fFlags);
 
     PRTIOQUEUEPROVINT pThis = hIoQueueProv;
     int rc = VINF_SUCCESS;
 
-    pThis->cSqEntries    = cSqEntries;
-    pThis->cCqEntries    = cCqEntries;
-    pThis->idxSqProd = 0;
-    pThis->idxSqCons = 0;
-    pThis->idxCqProd = 0;
-    pThis->idxCqCons = 0;
-    pThis->fShutdown     = false;
-    pThis->fState        = 0;
+    pThis->cSqEntries = cSqEntries;
+    pThis->cCqEntries = cCqEntries;
+    pThis->idxSqProd  = 0;
+    pThis->idxSqCons  = 0;
+    pThis->idxCqProd  = 0;
+    pThis->idxCqCons  = 0;
+    pThis->fShutdown  = false;
+    pThis->fState     = 0;
 
     pThis->paSqEntryBase = (PRTIOQUEUESSQENTRY)RTMemAllocZ(cSqEntries * sizeof(RTIOQUEUESSQENTRY));
     if (RT_LIKELY(pThis->paSqEntryBase))
