@@ -1,4 +1,4 @@
-/* $Id: UIPerformanceMonitor.cpp 80252 2019-08-13 13:02:10Z vboxsync $ */
+/* $Id: UIPerformanceMonitor.cpp 80330 2019-08-16 13:14:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPerformanceMonitor class implementation.
  */
@@ -20,16 +20,13 @@
 #include <QLabel>
 #include <QPainter>
 #include <QGridLayout>
+#include <QStyle>
 #include <QTimer>
 
 /* GUI includes: */
 #include "UICommon.h"
-#include "UIPerformanceMonitor.h"
-#include "UIInformationDataItem.h"
-#include "UIInformationItem.h"
-#include "UIInformationView.h"
 #include "UIExtraDataManager.h"
-#include "UIInformationModel.h"
+#include "UIPerformanceMonitor.h"
 #include "UISession.h"
 
 #include "CGuest.h"

@@ -1,4 +1,4 @@
-/* $Id: UIPerformanceMonitor.h 80250 2019-08-13 12:45:41Z vboxsync $ */
+/* $Id: UIPerformanceMonitor.h 80330 2019-08-16 13:14:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPerformanceMonitor class declaration.
  */
@@ -37,7 +37,6 @@
 
 /* GUI includes: */
 #include "QIWithRetranslateUI.h"
-#include "UIMainEventListener.h"
 
 /* Forward declarations: */
 class QTimer;
