@@ -1,4 +1,4 @@
-; $Id: VBoxMouse.inf 82326 2019-12-02 15:46:56Z vboxsync $
+; $Id: VBoxMouse.inf 82372 2019-12-04 10:21:55Z vboxsync $
 ;; @file
 ; INF file for installing the VBox Guest Mouse (driver for Windows NT5+).
 ;
@@ -33,18 +33,25 @@ VBoxMouse.sys = 1
 [DestinationDirs]
 DefaultDestDir = 12     ; DIRID_DRIVERS
 
-[Manufacturer]
-;x86   %ORACLE%=VBoxMouse
-;amd64 %ORACLE%=VBoxMouse, NTamd64
+; Disabled install via [Manufacturer], not working. See [DefaultInstall].
+;[Manufacturer]
+;;x86   %ORACLE%=VBoxMouse
+;;amd64 %ORACLE%=VBoxMouse, NTamd64
+;
+;;x86   [VBoxMouse]
+;;amd64 [VBoxMouse.NTamd64]
+;%ORACLE%=VBoxMouse_Install
+;
+;[VBoxMouse_Install]
+;CopyFiles = @VBoxMouse.sys
+;
+;[VBoxMouse_Install.Services]
+;AddService = VBoxMouse,,VBoxMouse.Service
 
-;x86   [VBoxMouse]
-;amd64 [VBoxMouse.NTamd64]
-%ORACLE%=VBoxMouse_Install
-
-[VBoxMouse_Install]
+[DefaultInstall@DOT-NT-ARCH@]
 CopyFiles = @VBoxMouse.sys
 
-[VBoxMouse_Install.Services]
+[DefaultInstall@DOT-NT-ARCH@.Services]
 AddService = VBoxMouse,,VBoxMouse.Service
 
 [VBoxMouse.AddRegistry]
