@@ -1,4 +1,4 @@
-/* $Id: UIChooser.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIChooser.h 83064 2020-02-12 19:24:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooser class declaration.
  */
@@ -56,6 +56,12 @@ signals:
 
         /** Notifies listeners about tool popup-menu request for certain tool @a enmClass and in specified @a position. */
         void sigToolMenuRequested(UIToolClass enmClass, const QPoint &position);
+    /** @} */
+
+    /** @name Cloud machine stuff.
+      * @{ */
+        /** Notifies about state change for cloud machine with certain @a strId. */
+        void sigCloudMachineStateChange(const QString &strId);
     /** @} */
 
     /** @name Group saving stuff.

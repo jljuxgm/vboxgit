@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.cpp 83063 2020-02-12 19:10:32Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.cpp 83064 2020-02-12 19:24:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class implementation.
  */
@@ -307,6 +307,13 @@ void UIChooserAbstractModel::sltHandleCloudAcquireInstancesTaskComplete(UITask *
                                  guiCloudMachine);
 }
 #endif /* VBOX_GUI_WITH_CLOUD_VMS */
+
+void UIChooserAbstractModel::sltHandleCloudMachineStateChange()
+{
+    UIVirtualMachineItem *pCache = qobject_cast<UIVirtualMachineItem*>(sender());
+    AssertPtrReturnVoid(pCache);
+    sigCloudMachineStateChange(pCache->id());
+}
 
 void UIChooserAbstractModel::sltGroupDefinitionsSaveComplete()
 {

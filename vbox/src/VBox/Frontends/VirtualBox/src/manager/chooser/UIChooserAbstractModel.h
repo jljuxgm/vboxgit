@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.h 83041 2020-02-10 17:22:07Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.h 83064 2020-02-12 19:24:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class declaration.
  */
@@ -48,6 +48,12 @@ class UIChooserAbstractModel : public QObject
     Q_OBJECT;
 
 signals:
+
+    /** @name Cloud machine stuff.
+      * @{ */
+        /** Notifies about state change for cloud machine with certain @a strId. */
+        void sigCloudMachineStateChange(const QString &strId);
+    /** @} */
 
     /** @name Group saving stuff.
       * @{ */
@@ -103,7 +109,13 @@ public:
 
 public slots:
 
-   /** @name Group saving stuff.
+    /** @name Cloud machine stuff.
+      * @{ */
+        /** Handles cloud machine state change. */
+        void sltHandleCloudMachineStateChange();
+    /** @} */
+
+    /** @name Group saving stuff.
       * @{ */
         /** Handles group definition saving complete. */
         void sltGroupDefinitionsSaveComplete();

@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.h 83059 2020-02-12 13:27:13Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.h 83064 2020-02-12 19:24:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class declaration.
  */
@@ -64,6 +64,9 @@ signals:
 
     /** Notifies listeners about current Snapshots pane item change. */
     void sigCurrentSnapshotItemChange();
+
+    /** Notifies about state change for cloud machine with certain @a strMachineId. */
+    void sigCloudMachineStateChange(const QString &strMachineId);
 
 public:
 

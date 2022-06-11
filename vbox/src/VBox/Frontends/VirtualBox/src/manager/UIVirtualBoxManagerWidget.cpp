@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 83059 2020-02-12 13:27:13Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 83064 2020-02-12 19:24:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -370,6 +370,9 @@ void UIVirtualBoxManagerWidget::prepareWidgets()
             m_pPaneChooser = new UIChooser(this);
             if (m_pPaneChooser)
             {
+                /* Configure Chooser-pane: */
+                connect(m_pPaneChooser, &UIChooser::sigCloudMachineStateChange,
+                        this, &UIVirtualBoxManagerWidget::sigCloudMachineStateChange);
                 /* Add into splitter: */
                 m_pSplitter->addWidget(m_pPaneChooser);
             }

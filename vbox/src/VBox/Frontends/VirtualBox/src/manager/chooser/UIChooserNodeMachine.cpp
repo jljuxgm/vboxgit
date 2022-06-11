@@ -1,4 +1,4 @@
-/* $Id: UIChooserNodeMachine.cpp 83055 2020-02-11 20:29:39Z vboxsync $ */
+/* $Id: UIChooserNodeMachine.cpp 83064 2020-02-12 19:24:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserNodeMachine class implementation.
  */
@@ -16,6 +16,7 @@
  */
 
 /* GUI includes: */
+#include "UIChooserAbstractModel.h"
 #include "UIChooserNodeMachine.h"
 #include "UIVirtualMachineItemCloud.h"
 #include "UIVirtualMachineItemLocal.h"
@@ -40,11 +41,13 @@ UIChooserNodeMachine::UIChooserNodeMachine(UIChooserNode *pParent,
     : UIChooserNode(pParent, fFavorite)
     , m_pCache(new UIVirtualMachineItemCloud(guiCloudMachine))
 {
+    if (parentNode())
+        parentNode()->addNode(this, iPosition);
     /* Cloud VM item can notify machine node only directly (no console), we have to setup listener: */
     connect(static_cast<UIVirtualMachineItemCloud*>(m_pCache), &UIVirtualMachineItemCloud::sigStateChange,
             this, &UIChooserNodeMachine::sltHandleStateChange);
-    if (parentNode())
-        parentNode()->addNode(this, iPosition);
+    connect(static_cast<UIVirtualMachineItemCloud*>(m_pCache), &UIVirtualMachineItemCloud::sigStateChange,
+            static_cast<UIChooserAbstractModel*>(model()), &UIChooserAbstractModel::sltHandleCloudMachineStateChange);
     retranslateUi();
 }
 

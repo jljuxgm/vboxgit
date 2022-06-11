@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 83011 2020-02-06 18:07:29Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.h 83064 2020-02-12 19:24:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -129,6 +129,9 @@ private slots:
 
         /** Handles current snapshot item change. */
         void sltCurrentSnapshotItemChange();
+
+        /** Handles state change for cloud machine with specified @a strMachineId. */
+        void sltHandleCloudMachineStateChange(const QString strMachineId);
     /** @} */
 
     /** @name CVirtualBox event handling stuff.
