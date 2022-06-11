@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 83308 $"
+__version__ = "$Revision: 83310 $"
 
 # Standard Python imports.
 import errno
@@ -3687,16 +3687,14 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
                 if fExistsResult != fFileExists:
                     fRc = reporter.error('sPath=%s type=%s: fileExists returned %s, expected %s!'
                                          % (oFsObj.sPath, type(oFsObj), fExistsResult, fFileExists));
-
-            if not self.fSkipKnownBugs: ## @todo At least two different failures here.
-                try:
-                    fExistsResult = oGuestSession.directoryExists(oFsObj.sPath, False);
-                except:
-                    fRc = reporter.errorXcpt('sPath=%s type=%s: directoryExists trouble!' % (oFsObj.sPath, type(oFsObj),));
-                else:
-                    if fExistsResult != fDirExists:
-                        fRc = reporter.error('sPath=%s type=%s: directoryExists returned %s, expected %s!'
-                                             % (oFsObj.sPath, type(oFsObj), fExistsResult, fDirExists));
+            try:
+                fExistsResult = oGuestSession.directoryExists(oFsObj.sPath, False);
+            except:
+                fRc = reporter.errorXcpt('sPath=%s type=%s: directoryExists trouble!' % (oFsObj.sPath, type(oFsObj),));
+            else:
+                if fExistsResult != fDirExists:
+                    fRc = reporter.error('sPath=%s type=%s: directoryExists returned %s, expected %s!'
+                                            % (oFsObj.sPath, type(oFsObj), fExistsResult, fDirExists));
 
         fRc = oTest.closeSession() and fRc;
         return (fRc, oTxsSession);
