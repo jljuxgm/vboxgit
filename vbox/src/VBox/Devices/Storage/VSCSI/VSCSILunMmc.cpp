@@ -1,4 +1,4 @@
-/* $Id: VSCSILunMmc.cpp 80589 2019-09-04 18:20:28Z vboxsync $ */
+/* $Id: VSCSILunMmc.cpp 82244 2019-11-27 15:05:00Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: MMC LUN implementation (CD/DVD-ROM)
  */
@@ -1256,7 +1256,12 @@ static DECLCALLBACK(int) vscsiLunMmcReqProcess(PVSCSILUNINT pVScsiLun, PVSCSIREQ
                 rc = vscsiLunMediumQueryRegionPropertiesForLba(pVScsiLun, uLbaStart,
                                                                NULL, NULL, &cbSectorRegion,
                                                                &enmDataForm);
-                AssertRC(rc);
+                if (RT_FAILURE(rc))
+                {
+                    rcReq = vscsiLunReqSenseErrorSet(pVScsiLun, pVScsiReq, SCSI_SENSE_ILLEGAL_REQUEST,
+                                                     SCSI_ASC_LOGICAL_BLOCK_OOR, 0x00);
+                    break;
+                }
 
                 if (enmDataForm == VDREGIONDATAFORM_CDDA)
                 {
