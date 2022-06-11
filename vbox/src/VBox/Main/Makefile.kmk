@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 83820 2020-04-19 01:08:36Z vboxsync $
+# $Id: Makefile.kmk 84339 2020-05-18 17:35:01Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -1205,6 +1205,7 @@ VBoxCOM_SOURCES         = \
 	glue/GetVBoxUserHomeDirectory.cpp \
 	glue/initterm.cpp \
 	glue/string.cpp \
+	glue/string-base64.cpp \
 	glue/AutoLock.cpp \
 	glue/EventQueue.cpp \
 	glue/NativeEventQueue.cpp \
