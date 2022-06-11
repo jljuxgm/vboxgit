@@ -1,4 +1,4 @@
-/* $Id: ClipboardDataObjectImpl-win.cpp 80664 2019-09-09 10:00:04Z vboxsync $ */
+/* $Id: ClipboardDataObjectImpl-win.cpp 80845 2019-09-17 09:05:21Z vboxsync $ */
 /** @file
  * ClipboardDataObjectImpl-win.cpp - Shared Clipboard IDataObject implementation.
  */
@@ -405,7 +405,7 @@ DECLCALLBACK(int) SharedClipboardWinDataObject::readThread(RTTHREAD ThreadSelf, 
  * @param   phGlobal            Where to store the allocated HGLOBAL object on success.
  */
 int SharedClipboardWinDataObject::createFileGroupDescriptorFromTransfer(PSHCLURITRANSFER pTransfer,
-                                                                      bool fUnicode, HGLOBAL *phGlobal)
+                                                                        bool fUnicode, HGLOBAL *phGlobal)
 {
     AssertPtrReturn(pTransfer, VERR_INVALID_POINTER);
     AssertPtrReturn(phGlobal,  VERR_INVALID_POINTER);
