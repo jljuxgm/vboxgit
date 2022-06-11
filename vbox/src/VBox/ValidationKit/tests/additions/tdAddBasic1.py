@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 83977 2020-04-24 17:20:24Z vboxsync $
+# $Id: tdAddBasic1.py 84017 2020-04-27 16:28:19Z vboxsync $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 83977 $"
+__version__ = "$Revision: 84017 $"
 
 # Standard Python imports.
 import os;
@@ -336,6 +336,18 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
 
         return (fRc, oTxsSession);
 
+    def getAdditionsInstallerResult(self, oTxsSession):
+        """
+        Extracts the Guest Additions installer exit code from a run before.
+        Assumes that nothing else has been run on the same TXS session in the meantime.
+        """
+        iRc = 0;
+        (_, sOpcode, abPayload) = oTxsSession.getLastReply();
+        if sOpcode.startswith('PROC NOK '): # Extract process rc
+            iRc = abPayload[0]; # ASSUMES 8-bit rc for now.
+        ## @todo Parse more statuses here.
+        return iRc;
+
     def testLinuxInstallAdditions(self, oSession, oTxsSession, oTestVm):
         _ = oSession;
         _ = oTestVm;
@@ -349,11 +361,18 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
         # Make sure to add "--nox11" to the makeself wrapper in order to not getting any blocking
         # xterm window spawned.
         fRc = self.txsRunTest(oTxsSession, 'VBoxLinuxAdditions.run', 30 * 60 * 1000,
-                              '/bin/sh', ('/bin/sh', '${CDROM}/VBoxLinuxAdditions.run', '--nox11'),
-                              fCheckSessionStatus = True);
+                              '/bin/sh', ('/bin/sh', '${CDROM}/VBoxLinuxAdditions.run', '--nox11'));
         if not fRc:
-            reporter.error('Installing Linux Additions failed (isSuccess=%s, iResult=%d, see log file for details)'
-                            % (oTxsSession.isSuccess(), oTxsSession.getResult()));
+            iRc = self.getAdditionsInstallerResult(oTxsSession);
+            # Check for rc == 0 just for completeness.
+            if iRc == 0 \
+            or iRc == 2: # Can happen if the GA installer has detected older VBox kernel modules running and needs a reboot.
+                reporter.log('Guest has old(er) VBox kernel modules still running; requires a reboot');
+                fRc = True;
+
+            if not fRc:
+                reporter.error('Installing Linux Additions failed (isSuccess=%s, lastReply=%s, see log file for details)'
+                               % (oTxsSession.isSuccess(), oTxsSession.getLastReply()));
 
         #
         # Download log files.
@@ -367,7 +386,7 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
         if fRc:
             reporter.testStart('Rebooting guest w/ updated Guest Additions active');
             (fRc, oTxsSession) = self.txsRebootAndReconnectViaTcp(oSession, oTxsSession, 15 * 60 * 1000,
-                                                                    sFileCdWait = self.sFileCdWait);
+                                                                  sFileCdWait = self.sFileCdWait);
             if fRc:
                 pass
             else:
