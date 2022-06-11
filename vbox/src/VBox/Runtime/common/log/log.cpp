@@ -1,4 +1,4 @@
-/* $Id: log.cpp 83510 2020-04-02 13:09:35Z vboxsync $ */
+/* $Id: log.cpp 83645 2020-04-09 10:16:24Z vboxsync $ */
 /** @file
  * Runtime VBox - Logger.
  */
@@ -3213,7 +3213,7 @@ static int rtlogFileOpen(PRTLOGGER pLogger, PRTERRINFO pErrInfo)
     unsigned cBackoff = 0;
     int rc = RTFileOpen(&pLogger->pInt->hFile, pLogger->pInt->szFilename, fOpen);
     while (   (   rc == VERR_SHARING_VIOLATION
-               || (rc == VERR_ALREADY_EXISTS && !(pLogger->fFlags & RTLOGFLAGS_APPEND)))
+               /*|| (rc == VERR_ALREADY_EXISTS && !(pLogger->fFlags & RTLOGFLAGS_APPEND))*/)
            && cBackoff < RT_ELEMENTS(g_acMsLogBackoff))
     {
         RTThreadSleep(g_acMsLogBackoff[cBackoff++]);
