@@ -1,4 +1,4 @@
-/* $Id: UIResourceMonitor.h 83509 2020-04-02 08:38:43Z vboxsync $ */
+/* $Id: UIResourceMonitor.h 83600 2020-04-07 08:10:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIResourceMonitor class declaration.
  */
@@ -87,6 +87,7 @@ private:
     void setColumnVisible(int iColumnId, bool fVisible);
     bool columnVisible(int iColumnId) const;
     void updateModelColumVisibilityCache();
+    void computeMinimumColumnWidths();
 
     /** @name Prepare/cleanup cascade.
       * @{ */
@@ -113,7 +114,8 @@ private:
         UIVMResourceMonitorTableView       *m_pTableView;
         UIResourceMonitorProxyModel        *m_pProxyModel;
         UIResourceMonitorModel             *m_pModel;
-        QVector<QString>                    m_columnCaptions;
+        /* The key is the column id (VMResourceMonitorColumn) and value is column title. */
+        QMap<int, QString>                  m_columnCaptions;
         /* The key is the column id (VMResourceMonitorColumn) and value is true if the column is visible. */
         QMap<int, bool>                     m_columnVisible;
         UIVMResourceMonitorHostStatsWidget *m_pHostStatsWidget;
