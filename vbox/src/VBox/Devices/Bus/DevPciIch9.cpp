@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 82298 2019-11-29 23:33:45Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 82299 2019-11-29 23:42:05Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation device.
  *
@@ -2576,6 +2576,8 @@ static int devpciR3UnmapRegion(PPDMDEVINS pDevIns, PPDMPCIDEV pDev, int iRegion)
 #ifdef VBOX_STRICT
                 PDEVPCIBUSCC pBusCC     = PDMINS_2_DATA_CC(pDevIns, PDEVPCIBUSCC);
                 Assert(!pBusCC->pPciHlpR3->pfnIsMMIOExBase(pDevIns, pDev->Int.s.pDevInsR3, GCPhysBase));
+#else
+                RT_NOREF(pDevIns);
 #endif
                 rc = PDMDevHlpMMIODeregister(pDev->Int.s.pDevInsR3, GCPhysBase, pRegion->size);
                 AssertRC(rc);
