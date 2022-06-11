@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 79044 2019-06-07 16:36:53Z vboxsync $ */
+/* $Id: UIMessageCenter.h 79256 2019-06-20 13:40:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -377,6 +377,8 @@ public:
     void cannotAcquireCloudProfileParameter(const CCloudProfile &comProfile, QWidget *pParent = 0) const;
     void cannotAssignCloudProfileParameter(const CCloudProfile &comProfile, QWidget *pParent = 0) const;
     void cannotCreateCloudClient(const CCloudProfile &comProfile, QWidget *pParent = 0) const;
+    void cannotCreateCloudMachine(const CCloudClient &comClient, QWidget *pParent = 0) const;
+    void cannotCreateCloudMachine(const CProgress &comProgress, QWidget *pParent = 0) const;
     void cannotAcquireCloudClientParameter(const CCloudClient &comClient, QWidget *pParent = 0) const;
     void cannotAcquireCloudClientParameter(const CProgress &comProgress, QWidget *pParent = 0) const;
     bool confirmCloudProfileRemoval(const QString &strName, QWidget *pParent = 0) const;
@@ -407,6 +409,7 @@ public:
     void cannotCreateAppliance(const CVirtualBox &comVBox, QWidget *pParent = 0) const;
     void cannotCreateVirtualSystemDescription(const CAppliance &comAppliance, QWidget *pParent = 0) const;
     void cannotAcquireVirtualSystemDescription(const CAppliance &comAppliance, QWidget *pParent = 0) const;
+    void cannotAddVirtualSystemDescriptionValue(const CVirtualSystemDescription &comDescription, QWidget *pParent = 0) const;
     void cannotAcquireVirtualSystemDescriptionFormProperty(const CVirtualSystemDescriptionForm &comForm, QWidget *pParent = 0) const;
     void cannotImportAppliance(CAppliance &appliance, QWidget *pParent = 0) const;
     void cannotImportAppliance(const CProgress &progress, const QString &strPath, QWidget *pParent = 0) const;

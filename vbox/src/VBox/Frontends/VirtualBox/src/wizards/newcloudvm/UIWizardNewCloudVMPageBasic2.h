@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageBasic2.h 79244 2019-06-19 14:19:05Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageBasic2.h 79256 2019-06-20 13:40:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageBasic2 class declaration.
  */
@@ -28,7 +28,7 @@
 /* Forward declarations: */
 class QIRichTextLabel;
 
-/** UIWizardPageBase extension for 2nd page of the Import Appliance wizard. */
+/** UIWizardPageBase extension for 2nd page of the New Cloud VM wizard. */
 class UIWizardNewCloudVMPage2 : public UIWizardPageBase
 {
 protected:
@@ -43,15 +43,14 @@ protected:
     UIFormEditorWidgetPointer  m_pFormEditor;
 };
 
-/** UIWizardPage extension for 2nd page of the Import Appliance wizard, extends UIWizardNewCloudVMPage2 as well. */
+/** UIWizardPage extension for 2nd page of the New Cloud VM wizard, extends UIWizardNewCloudVMPage2 as well. */
 class UIWizardNewCloudVMPageBasic2 : public UIWizardPage, public UIWizardNewCloudVMPage2
 {
     Q_OBJECT;
 
 public:
 
-    /** Constructs 2nd basic page.
-      * @param  strFileName  Brings appliance file name. */
+    /** Constructs 2nd basic page. */
     UIWizardNewCloudVMPageBasic2();
 
 protected:

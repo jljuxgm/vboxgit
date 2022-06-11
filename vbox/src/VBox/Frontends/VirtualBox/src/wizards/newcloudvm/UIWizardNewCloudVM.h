@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVM.h 79244 2019-06-19 14:19:05Z vboxsync $ */
+/* $Id: UIWizardNewCloudVM.h 79256 2019-06-20 13:40:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVM class declaration.
  */
@@ -24,7 +24,7 @@
 /* GUI includes: */
 #include "UIWizard.h"
 
-/** Import Appliance wizard. */
+/** New Cloud VM wizard. */
 class UIWizardNewCloudVM : public UIWizard
 {
     Q_OBJECT;
@@ -44,27 +44,22 @@ public:
         PageExpert
     };
 
-    /** Constructs import appliance wizard passing @a pParent to the base-class. */
-    UIWizardNewCloudVM(QWidget *pParent, bool fImportFromOCIByDefault);
+    /** Constructs new cloud vm wizard passing @a pParent to the base-class. */
+    UIWizardNewCloudVM(QWidget *pParent);
 
     /** Prepares all. */
     virtual void prepare() /* override */;
 
-    /** Imports appliance. */
-    bool importAppliance();
+    /** Create cloud VM. */
+    bool createCloudVM();
 
 protected:
 
     /** Handles translation event. */
     virtual void retranslateUi() /* override */;
-
-private:
-
-    /** Holds whether default source should be Import from OCI. */
-    bool  m_fImportFromOCIByDefault;
 };
 
-/** Safe pointer to appliance wizard. */
+/** Safe pointer to new cloud vm wizard. */
 typedef QPointer<UIWizardNewCloudVM> UISafePointerWizardNewCloudVM;
 
 #endif /* !FEQT_INCLUDED_SRC_wizards_newcloudvm_UIWizardNewCloudVM_h */
