@@ -1,4 +1,4 @@
-/* $Id: slirp.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: slirp.h 80980 2019-09-24 15:31:55Z vboxsync $ */
 /** @file
  * NAT - slirp (declarations/defines).
  */
@@ -528,10 +528,6 @@ static inline struct mbuf *slirpServiceMbufAlloc(PNATState pData, uint8_t u8Serv
     return m;
 }
 
-static inline struct mbuf *slirpTftpMbufAlloc(PNATState pData)
-{
-    return slirpServiceMbufAlloc(pData, CTL_TFTP);
-}
 static inline struct mbuf *slirpDnsMbufAlloc(PNATState pData)
 {
     return slirpServiceMbufAlloc(pData, CTL_DNS);
