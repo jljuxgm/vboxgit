@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-darwin.cpp 78623 2019-05-21 09:11:59Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-darwin.cpp 78942 2019-06-03 19:10:19Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Mac OS X host.
  */
@@ -270,3 +270,42 @@ void VBoxClipboardSvcImplWriteData(PVBOXCLIPBOARDCLIENTDATA pClientData, void *p
 
     VBoxSvcClipboardUnlock();
 }
+
+#ifdef VBOX_WITH_SHARED_CLIPBOARD_URI_LIST
+int VBoxClipboardSvcImplURIReadDir(PVBOXCLIPBOARDCLIENTDATA pClientData, PVBOXCLIPBOARDDIRDATA pDirData)
+{
+    RT_NOREF(pClientData, pDirData);
+    return VERR_NOT_IMPLEMENTED;
+}
+
+int VBoxClipboardSvcImplURIWriteDir(PVBOXCLIPBOARDCLIENTDATA pClientData, PVBOXCLIPBOARDDIRDATA pDirData)
+{
+    RT_NOREF(pClientData, pDirData);
+    return VERR_NOT_IMPLEMENTED;
+}
+
+int VBoxClipboardSvcImplURIReadFileHdr(PVBOXCLIPBOARDCLIENTDATA pClientData, PVBOXCLIPBOARDFILEHDR pFileHdr)
+{
+    RT_NOREF(pClientData, pFileHdr);
+    return VERR_NOT_IMPLEMENTED;
+}
+
+int VBoxClipboardSvcImplURIWriteFileHdr(PVBOXCLIPBOARDCLIENTDATA pClientData, PVBOXCLIPBOARDFILEHDR pFileHdr)
+{
+    RT_NOREF(pClientData, pFileHdr);
+    return VERR_NOT_IMPLEMENTED;
+}
+
+int VBoxClipboardSvcImplURIReadFileData(PVBOXCLIPBOARDCLIENTDATA pClientData, PVBOXCLIPBOARDFILEDATA pFileData)
+{
+    RT_NOREF(pClientData, pFileData);
+    return VERR_NOT_IMPLEMENTED;
+}
+
+int VBoxClipboardSvcImplURIWriteFileData(PVBOXCLIPBOARDCLIENTDATA pClientData, PVBOXCLIPBOARDFILEDATA pFileData)
+{
+    RT_NOREF(pClientData, pFileData);
+    return VERR_NOT_IMPLEMENTED;
+}
+#endif /* VBOX_WITH_SHARED_CLIPBOARD_URI_LIST */
+

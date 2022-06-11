@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 78898 2019-05-31 15:31:01Z vboxsync $
+# $Id: Makefile.kmk 78942 2019-06-03 19:10:19Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -687,7 +687,7 @@ ifdef VBOX_WITH_HOSTNETIF_API
 endif
 
 ifdef VBOX_WITH_SHARED_CLIPBOARD_URI_LIST
- VBoxSVC_SOURCES += $(PATH_ROOT)/src/VBox/GuestHost/SharedClipboard/ClipboardCache.cpp
+ VBoxSVC_SOURCES += $(PATH_ROOT)/src/VBox/GuestHost/SharedClipboard/ClipboardArea.cpp
 endif
 
 $(call KB_FN_DO_PASS0_ON_TARGET,VBoxSVC) # Sets VBoxSVC_0_OUTDIR

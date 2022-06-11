@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 78725 2019-05-24 13:15:59Z vboxsync $
+# $Id: Makefile.kmk 78942 2019-06-03 19:10:19Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox Guest Addition X11 Client.
 #
@@ -106,7 +106,8 @@ ifdef VBOX_WITH_SHARED_CLIPBOARD
 	$(PATH_ROOT)/src/VBox/GuestHost/SharedClipboard/ClipboardURIList.cpp \
 	$(PATH_ROOT)/src/VBox/GuestHost/SharedClipboard/ClipboardURIObject.cpp \
 	$(PATH_ROOT)/src/VBox/GuestHost/SharedClipboard/ClipboardPath.cpp \
-	$(PATH_ROOT)/src/VBox/GuestHost/SharedClipboard/ClipboardProvider.cpp
+	$(PATH_ROOT)/src/VBox/GuestHost/SharedClipboard/ClipboardProvider.cpp \
+	$(PATH_ROOT)/src/VBox/GuestHost/SharedClipboard/ClipboardProvider-VbglR3.cpp
   ifdef VBOX_WITH_LIBFUSE_DISABLED
    VBoxClient_SOURCES += \
 	clipboard-fuse.cpp
