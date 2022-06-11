@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-win.cpp 79267 2019-06-21 10:11:59Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-win.cpp 79269 2019-06-21 10:24:21Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Win32 host.
  */
@@ -697,7 +697,7 @@ int VBoxClipboardSvcImplReadData(PVBOXCLIPBOARDCLIENTDATA pClientData, uint32_t 
 #ifdef VBOX_WITH_SHARED_CLIPBOARD_URI_LIST
         else if (u32Format & VBOX_SHARED_CLIPBOARD_FMT_URI_LIST)
         {
-            AssertFailed(); /* @todo */
+            AssertFailed(); /** @todo */
         }
 #endif /* VBOX_WITH_SHARED_CLIPBOARD_URI_LIST */
         VBoxClipboardWinClose();
