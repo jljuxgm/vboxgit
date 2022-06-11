@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 80253 2019-08-13 15:49:33Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 80293 2019-08-15 15:38:39Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -1042,7 +1042,19 @@ VMMDECL(CPUMCPUVENDOR) CPUMGetHostCpuVendor(PVM pVM)
 
 
 /**
- * Gets the CPU vendor.
+ * Gets the host CPU microarchitecture.
+ *
+ * @returns CPU microarchitecture.
+ * @param   pVM     The cross context VM structure.
+ */
+VMMDECL(CPUMMICROARCH) CPUMGetHostMicroarch(PCVM pVM)
+{
+    return pVM->cpum.s.HostFeatures.enmMicroarch;
+}
+
+
+/**
+ * Gets the guest CPU vendor.
  *
  * @returns CPU vendor.
  * @param   pVM     The cross context VM structure.
@@ -1050,6 +1062,18 @@ VMMDECL(CPUMCPUVENDOR) CPUMGetHostCpuVendor(PVM pVM)
 VMMDECL(CPUMCPUVENDOR) CPUMGetGuestCpuVendor(PVM pVM)
 {
     return (CPUMCPUVENDOR)pVM->cpum.s.GuestFeatures.enmCpuVendor;
+}
+
+
+/**
+ * Gets the guest CPU microarchitecture.
+ *
+ * @returns CPU microarchitecture.
+ * @param   pVM     The cross context VM structure.
+ */
+VMMDECL(CPUMMICROARCH) CPUMGetGuestMicroarch(PCVM pVM)
+{
+    return pVM->cpum.s.GuestFeatures.enmMicroarch;
 }
 
 
