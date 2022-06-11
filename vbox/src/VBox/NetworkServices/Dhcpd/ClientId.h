@@ -1,4 +1,4 @@
-/* $Id: ClientId.h 79524 2019-07-04 10:14:02Z vboxsync $ */
+/* $Id: ClientId.h 79529 2019-07-04 18:17:50Z vboxsync $ */
 /** @file
  * DHCP server - client identifier
  */
@@ -56,9 +56,9 @@ public:
     const RTMAC       &mac() const  { return m_mac; }
     const OptClientId &id() const   { return m_id; }
 
-    /** @name String formatting stuff
+    /** @name String formatting of %R[id].
      * @{ */
-    static void registerFormat(); /* %R[id] */
+    static void registerFormat();
 private:
     static DECLCALLBACK(size_t) rtStrFormat(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, const char *pszType,
                                             void const *pvValue, int cchWidth, int cchPrecision, unsigned fFlags, void *pvUser);
