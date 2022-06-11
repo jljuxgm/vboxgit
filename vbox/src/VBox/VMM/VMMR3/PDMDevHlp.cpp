@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 81519 2019-10-24 13:25:31Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 81525 2019-10-25 09:53:00Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -1082,6 +1082,13 @@ static DECLCALLBACK(int) pdmR3DevHlp_TimerSave(PPDMDEVINS pDevIns, TMTIMERHANDLE
 static DECLCALLBACK(int) pdmR3DevHlp_TimerLoad(PPDMDEVINS pDevIns, TMTIMERHANDLE hTimer, PSSMHANDLE pSSM)
 {
     return TMR3TimerLoad(pdmR3DevHlp_TimerToPtr(pDevIns, hTimer), pSSM);
+}
+
+
+/** @interface_method_impl{PDMDEVHLPR3,pfnTimerDestroy} */
+static DECLCALLBACK(int) pdmR3DevHlp_TimerDestroy(PPDMDEVINS pDevIns, TMTIMERHANDLE hTimer)
+{
+    return TMR3TimerDestroy(pdmR3DevHlp_TimerToPtr(pDevIns, hTimer));
 }
 
 
@@ -4560,6 +4567,7 @@ const PDMDEVHLPR3 g_pdmR3DevHlpTrusted =
     pdmR3DevHlp_TimerSetCritSect,
     pdmR3DevHlp_TimerSave,
     pdmR3DevHlp_TimerLoad,
+    pdmR3DevHlp_TimerDestroy,
     pdmR3DevHlp_TMUtcNow,
     CFGMR3Exists,
     CFGMR3QueryType,
@@ -5026,6 +5034,7 @@ const PDMDEVHLPR3 g_pdmR3DevHlpUnTrusted =
     pdmR3DevHlp_TimerSetCritSect,
     pdmR3DevHlp_TimerSave,
     pdmR3DevHlp_TimerLoad,
+    pdmR3DevHlp_TimerDestroy,
     pdmR3DevHlp_TMUtcNow,
     CFGMR3Exists,
     CFGMR3QueryType,
