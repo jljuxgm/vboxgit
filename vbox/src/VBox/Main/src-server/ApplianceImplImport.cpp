@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 81964 2019-11-18 20:42:02Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 82337 2019-12-03 10:22:30Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -1818,7 +1818,7 @@ HRESULT Appliance::i_importCloudImpl(TaskCloud *pTask)
 
                             /* Write the file on the disk */
                             vrc = RTVfsFileOpenNormal(strAbsDstPath.c_str(),
-                                                      RTFILE_O_WRITE | RTFILE_O_DENY_ALL | RTFILE_O_CREATE,
+                                                      RTFILE_O_WRITE | RTFILE_O_DENY_ALL | RTFILE_O_CREATE_REPLACE,
                                                       &hVfsDstFile);
                             if (RT_FAILURE(vrc))
                                 throw  setErrorVrc(vrc, tr("Could not create the file '%s' (%Rrc)"), strAbsDstPath.c_str(), vrc);
