@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 79911 2019-07-21 14:14:57Z vboxsync $
+# $Id: vboxwrappers.py 79912 2019-07-21 15:41:29Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79911 $"
+__version__ = "$Revision: 79912 $"
 
 
 # Standard Python imports.
@@ -1452,9 +1452,10 @@ class SessionWrapper(TdTaskBase):
                 reporter.errorXcpt();
             if sRetName == '':
                 # Create a new host-only interface.
+                reporter.log("Creating host only NIC ...");
                 try:
-                    (oIHostOnly, oIProgress) = self.oVBox.host.createHostOnlyNetworkInterface();
-                    oProgress = ProgressWrapper(oIProgress, self.oVBoxMgr, self.oTstDrv, 'Create host only interface');
+                    (oIProgress, oIHostOnly) = self.oVBox.host.createHostOnlyNetworkInterface();
+                    oProgress = ProgressWrapper(oIProgress, self.oVBoxMgr, self.oTstDrv, 'Create host only NIC');
                     oProgress.wait();
                     if oProgress.logResult() is False:
                         return '';
@@ -1462,6 +1463,7 @@ class SessionWrapper(TdTaskBase):
                 except:
                     reporter.errorXcpt();
                     return '';
+                reporter.log("Created host only NIC: '%s'" % (sRetName,));
 
         elif eAttachmentType == vboxcon.NetworkAttachmentType_Internal:
             sRetName = 'VBoxTest';
