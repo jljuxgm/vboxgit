@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 77755 2019-03-18 12:24:20Z vboxsync $
+# $Id: tdAddBasic1.py 78642 2019-05-21 16:41:35Z vboxsync $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 77755 $"
+__version__ = "$Revision: 78642 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -50,6 +50,7 @@ from testdriver import vboxcon;
 # Sub test driver imports.
 sys.path.append(os.path.dirname(os.path.abspath(__file__))); # For sub-test drivers.
 from tdAddGuestCtrl import SubTstDrvAddGuestCtrl;
+#from tdAddSharedFolders1 import SubTstDrvAddSharedFolders1;
 
 
 class tdAddBasic1(vbox.TestDriver):                                         # pylint: disable=R0902
@@ -63,11 +64,12 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
     def __init__(self):
         vbox.TestDriver.__init__(self);
         self.oTestVmSet = self.oTestVmManager.getSmokeVmSet('nat');
-        self.asTestsDef = ['install', 'guestprops', 'stdguestprops', 'guestcontrol'];
+        self.asTestsDef = ['install', 'guestprops', 'stdguestprops', 'guestcontrol', 'sharedfolders'];
         self.asTests    = self.asTestsDef;
         self.asRsrcs    = None
 
         self.addSubTestDriver(SubTstDrvAddGuestCtrl(self));
+        #self.addSubTestDriver(SubTstDrvAddSharedFolders1(self));
 
     #
     # Overridden methods.
@@ -160,6 +162,12 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
             if not fSkip:
                 fRc, oTxsSession = self.aoSubTstDrvs[0].testIt(oTestVm, oSession, oTxsSession);
             reporter.testDone(fSkip);
+
+            #fSkip = 'sharedfolders' not in self.asTests;
+            #reporter.testStart('Shared Folders');
+            #if not fSkip:
+            #    fRc, oTxsSession = self.aoSubTstDrvs[1].testIt(oTestVm, oSession, oTxsSession);
+            #reporter.testDone(fSkip or fRc is None);
 
             ## @todo Save and restore test.
 
