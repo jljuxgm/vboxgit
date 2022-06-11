@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-x11.cpp 82880 2020-01-27 17:52:41Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-x11.cpp 82893 2020-01-28 16:53:51Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Linux host.
  */
@@ -353,11 +353,9 @@ DECLCALLBACK(int) ShClX11RequestDataForX11Callback(PSHCLCONTEXT pCtx, SHCLFORMAT
             {
                 *ppv = pPayload ? pPayload->pvData : NULL;
                 *pcb = pPayload ? pPayload->cbData : 0;
-
-                /* Detach the payload, as the caller then will own the data. */
-                ShClEventPayloadDetach(&pCtx->pClient->EventSrc, idEvent);
             }
 
+            ShClEventRelease(&pCtx->pClient->EventSrc, idEvent);
             ShClEventUnregister(&pCtx->pClient->EventSrc, idEvent);
         }
     }

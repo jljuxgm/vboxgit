@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-win.cpp 82881 2020-01-27 17:59:52Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-win.cpp 82893 2020-01-28 16:53:51Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Win32 host.
  */
@@ -187,16 +187,9 @@ static int vboxClipboardSvcWinDataRead(PSHCLCONTEXT pCtx, UINT uFormat, void **p
         {
             *ppvData = pPayload ? pPayload->pvData : NULL;
             *pcbData = pPayload ? pPayload->cbData : 0;
-
-            /* Detach the payload, as the caller then will own the data. */
-            ShClEventPayloadDetach(&pCtx->pClient->EventSrc, idEvent);
-            /**
-             * @todo r=bird: The payload has already been detached,
-             * ShClEventPayloadDetach and ShClEventWait does the exact same
-             * thing, except for the extra waiting in the latter.
-             */
         }
 
+        ShClEventRelease(&pCtx->pClient->EventSrc, idEvent);
         ShClEventUnregister(&pCtx->pClient->EventSrc, idEvent);
     }
 

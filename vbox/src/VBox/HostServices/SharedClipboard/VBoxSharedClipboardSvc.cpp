@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc.cpp 82889 2020-01-28 15:48:36Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc.cpp 82893 2020-01-28 16:53:51Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Host service entry points.
  */
@@ -1203,6 +1203,8 @@ int ShClSvcDataReadRequest(PSHCLCLIENT pClient, SHCLFORMATS fFormats, PSHCLEVENT
 
     int rc = VERR_NOT_SUPPORTED;
 
+    SHCLEVENTID idEvent = NIL_SHCLEVENTID;
+
     while (fFormats)
     {
         SHCLFORMAT fFormat = VBOX_SHCL_FMT_NONE;
@@ -1237,7 +1239,7 @@ int ShClSvcDataReadRequest(PSHCLCLIENT pClient, SHCLFORMATS fFormats, PSHCLEVENT
              */
             RTCritSectEnter(&pClient->CritSect);
 
-            const SHCLEVENTID idEvent = ShClEventIdGenerateAndRegister(&pClient->EventSrc);
+            idEvent = ShClEventIdGenerateAndRegister(&pClient->EventSrc);
             if (idEvent != NIL_SHCLEVENTID)
             {
                 LogFlowFunc(("fFormats=%#x -> fFormat=%#x, idEvent=%#x\n", fFormats, fFormat, idEvent));
@@ -1272,12 +1274,18 @@ int ShClSvcDataReadRequest(PSHCLCLIENT pClient, SHCLFORMATS fFormats, PSHCLEVENT
     {
         RTCritSectEnter(&pClient->CritSect);
 
+        /* Retain the last event generated (in case there were multiple clipboard formats)
+         * if we need to return the event ID to the caller. */
+        if (pidEvent)
+        {
+            ShClEventRetain(&pClient->EventSrc, idEvent);
+            *pidEvent = idEvent;
+        }
+
         shClSvcClientWakeup(pClient);
 
         RTCritSectLeave(&pClient->CritSect);
     }
-
-    /** @todo BUGBUG What to do with allocated events? Which one to return? */
 
     LogFlowFuncLeaveRC(rc);
     return rc;
