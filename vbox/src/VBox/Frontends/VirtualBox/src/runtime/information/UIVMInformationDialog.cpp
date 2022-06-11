@@ -1,4 +1,4 @@
-/* $Id: UIVMInformationDialog.cpp 80933 2019-09-22 11:03:14Z vboxsync $ */
+/* $Id: UIVMInformationDialog.cpp 80988 2019-09-24 16:26:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMInformationDialog class implementation.
  */
@@ -166,10 +166,6 @@ void UIVMInformationDialog::prepare()
     prepareThis();
     /* Load settings: */
     loadSettings();
-
-    /* Start local scope medium-enumeration (if necessary): */
-    if (!uiCommon().isFullMediumEnumerationRequested())
-        uiCommon().enumerateMedia(m_pMachineWindow->uisession()->machineMedia());
 }
 
 void UIVMInformationDialog::prepareThis()
