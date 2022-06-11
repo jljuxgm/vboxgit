@@ -1,4 +1,4 @@
-/* $Id: tstClipboardServiceHost.cpp 79497 2019-07-03 13:28:33Z vboxsync $ */
+/* $Id: tstClipboardServiceHost.cpp 79547 2019-07-05 08:20:28Z vboxsync $ */
 /** @file
  * Shared Clipboard host service test case.
  */
@@ -117,6 +117,7 @@ static void testGetHostMsg(void)
     HGCMSvcSetU32(&parms[0], 0);
     HGCMSvcSetU32(&parms[1], 0);
     call.rc = VERR_TRY_AGAIN;
+    table.pfnConnect(NULL, 1 /* clientId */, &g_Client, 0, 0);
     table.pfnCall(NULL, &call, 1 /* clientId */, &g_Client, VBOX_SHARED_CLIPBOARD_GUEST_FN_GET_HOST_MSG_OLD,
                   2, parms, 0);
     RTTESTI_CHECK_RC(call.rc, VERR_TRY_AGAIN);  /* This should get updated only when the guest call completes. */
@@ -274,9 +275,10 @@ int main(int argc, char *argv[])
 
 int VBoxClipboardSvcImplInit() { return VINF_SUCCESS; }
 void VBoxClipboardSvcImplDestroy() { }
-int VBoxClipboardSvcImplDisconnect(PVBOXCLIPBOARDCLIENTDATA) { AssertFailed(); return VINF_SUCCESS; }
+int VBoxClipboardSvcImplDisconnect(PVBOXCLIPBOARDCLIENTDATA)
+{ return VINF_SUCCESS; }
 int VBoxClipboardSvcImplConnect(PVBOXCLIPBOARDCLIENTDATA, bool)
-{ AssertFailed(); return VERR_WRONG_ORDER; }
+{ return VINF_SUCCESS; }
 int VBoxClipboardSvcImplFormatAnnounce(PVBOXCLIPBOARDCLIENTDATA, unsigned int)
 { AssertFailed(); return VINF_SUCCESS; }
 int VBoxClipboardSvcImplReadData(PVBOXCLIPBOARDCLIENTDATA, unsigned int, void *, unsigned int, unsigned int *)
