@@ -1,4 +1,4 @@
-; $Id: VMMR0.def 80531 2019-09-01 23:03:34Z vboxsync $
+; $Id: VMMR0.def 82094 2019-11-22 00:58:02Z vboxsync $
 ;; @file
 ; VMM Ring 0 DLL - Definition file.
 
@@ -38,8 +38,8 @@ EXPORTS
     PGMPhysSimpleDirtyWriteGCPtr
     PDMR0DeviceRegisterModule
     PDMR0DeviceDeregisterModule
-    IOMMMIOResetRegion
-    IOMMMIOMapMMIO2Page
+    IOMMmioResetRegion
+    IOMMmioMapMmio2Page
     RTLogDefaultInstance
     RTLogDefaultInstanceEx
     RTLogRelGetDefaultInstance

@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 82088 2019-11-21 21:59:57Z vboxsync $ */
+/* $Id: DevVGA.h 82094 2019-11-22 00:58:02Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -561,6 +561,9 @@ typedef struct VGAState
             } dummy;
         };
     } pendingVhwaCommands;
+
+    /** The MMIO handle of the legacy graphics buffer/regs at 0xa0000-0xbffff. */
+    PGMMMIO2HANDLE              hMmioLegacy;
 
     /** @name I/O ports for range 0x3c0-3cf.
      * @{ */
