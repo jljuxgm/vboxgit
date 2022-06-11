@@ -1,4 +1,4 @@
-/* $Id: clipboard-win.cpp 78809 2019-05-28 10:54:53Z vboxsync $ */
+/* $Id: clipboard-win.cpp 78897 2019-05-31 15:23:14Z vboxsync $ */
 /** @file
  * Shared Clipboard: Windows-specific functions for clipboard handling.
  */
@@ -748,13 +748,16 @@ int VBoxClipboardWinDropFilesToStringList(DROPFILES *pDropFiles, char **ppszbDat
  *
  * @returns VBox status code.
  * @param   pURI                URI clipboard information struct to initialize.
- * @param   enmType             What type of clipboard provider to use.
+ * @param   pCtx                Shared Clipboard provider creation context to use.
  */
-int VBoxClipboardWinURIInit(PVBOXCLIPBOARDWINURI pURI, SharedClipboardProvider::SourceType enmType)
+int VBoxClipboardWinURIInit(PVBOXCLIPBOARDWINURI pURI, PSHAREDCLIPBOARDPROVIDERCREATIONCTX pCtx)
 {
+    AssertPtrReturn(pURI, VERR_INVALID_POINTER);
+    AssertPtrReturn(pCtx, VERR_INVALID_POINTER);
+
     LogFlowFuncEnter();
 
-    pURI->Transfer.pProvider = SharedClipboardProvider::Create(enmType);
+    pURI->Transfer.pProvider = SharedClipboardProvider::Create(pCtx);
     if (!pURI->Transfer.pProvider)
         return VERR_NO_MEMORY;
 
@@ -770,6 +773,8 @@ int VBoxClipboardWinURIInit(PVBOXCLIPBOARDWINURI pURI, SharedClipboardProvider::
  */
 void VBoxClipboardWinURIDestroy(PVBOXCLIPBOARDWINURI pURI)
 {
+    AssertPtrReturnVoid(pURI);
+
     LogFlowFuncEnter();
 
     if (pURI->Transfer.pProvider)
@@ -786,6 +791,8 @@ void VBoxClipboardWinURIDestroy(PVBOXCLIPBOARDWINURI pURI)
  */
 void VBoxClipboardWinURIReset(PVBOXCLIPBOARDWINURI pURI)
 {
+    AssertPtrReturnVoid(pURI);
+
     LogFlowFuncEnter();
 
     pURI->cTransfers = 0;

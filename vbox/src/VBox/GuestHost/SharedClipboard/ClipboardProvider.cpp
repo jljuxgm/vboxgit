@@ -1,4 +1,4 @@
-/* $Id: ClipboardProvider.cpp 78809 2019-05-28 10:54:53Z vboxsync $ */
+/* $Id: ClipboardProvider.cpp 78897 2019-05-31 15:23:14Z vboxsync $ */
 /** @file
  * Shared Clipboard - Provider implementation.
  */
@@ -51,23 +51,25 @@ SharedClipboardProvider::~SharedClipboardProvider(void)
  * Creates a Shared Clipboard provider.
  *
  * @returns New Shared Clipboard provider instance.
- * @param   enmSource           Source type to create provider for.
+ * @param   pCtx                Pointer to creation context.
  */
 /* static */
-SharedClipboardProvider *SharedClipboardProvider::Create(SourceType enmSource)
+SharedClipboardProvider *SharedClipboardProvider::Create(PSHAREDCLIPBOARDPROVIDERCREATIONCTX pCtx)
 {
+    AssertPtrReturn(pCtx, NULL);
+
     SharedClipboardProvider *pProvider = NULL;
 
-    switch (enmSource)
+    switch (pCtx->enmSource)
     {
 #ifdef VBOX_WITH_SHARED_CLIPBOARD_GUEST
-        case SourceType_VbglR3:
-            pProvider = new SharedClipboardProviderVbglR3();
+        case SHAREDCLIPBOARDPROVIDERSOURCE_VBGLR3:
+            pProvider = new SharedClipboardProviderVbglR3(pCtx->u.VBGLR3.uClientID);
             break;
 #endif
 
 #ifdef VBOX_WITH_SHARED_CLIPBOARD_HOST
-        case SourceType_HostService:
+        case SHAREDCLIPBOARDPROVIDERSOURCE_HOSTSERVICE:
             pProvider = new SharedClipboardProviderHostService();
             break;
 #endif

@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-internal.h 78809 2019-05-28 10:54:53Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-internal.h 78897 2019-05-31 15:23:14Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Internal header.
  */
@@ -53,9 +53,9 @@ typedef struct _VBOXCLIPBOARDCLIENTURITRANSFER
     RTLISTNODE                     Node;
     /** Pointer to the client state (parent). */
     VBOXCLIPBOARDCLIENTSTATE      *pState;
-    /** The transfer's own (local) cache.
+    /** The transfer's own (local) area.
      *  The cache itself has a clipboard area ID assigned. */
-    SharedClipboardCache           Cache;
+    SharedClipboardArea            Cache;
     /** The transfer's URI list, containing the fs object root entries. */
     SharedClipboardURIList         List;
     /** Current object being handled. */

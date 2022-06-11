@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 78683 2019-05-23 10:07:21Z vboxsync $
+# $Id: Makefile.kmk 78897 2019-05-31 15:23:14Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -135,6 +135,12 @@ VBOX_MAIN_DEFS += VBOX_WITH_RAW_RING1
 endif
 ifdef VBOX_WITH_SDS
 VBOX_MAIN_DEFS += VBOX_WITH_SDS
+endif
+ifdef VBOX_WITH_SHARED_CLIPBOARD
+VBOX_MAIN_DEFS += VBOX_WITH_SHARED_CLIPBOARD
+ if VBOX_WITH_SHARED_CLIPBOARD_URI_LIST
+  VBOX_MAIN_DEFS += VBOX_WITH_SHARED_CLIPBOARD_URI_LIST
+ endif
 endif
 ifdef VBOX_WITH_USB_CARDREADER
 VBOX_MAIN_DEFS += VBOX_WITH_USB_CARDREADER
@@ -678,6 +684,10 @@ ifdef VBOX_WITH_HOSTNETIF_API
  if1of ($(KBUILD_TARGET), linux darwin solaris freebsd)
   VBoxSVC_SOURCES        += src-server/generic/NetIf-generic.cpp
  endif
+endif
+
+ifdef VBOX_WITH_SHARED_CLIPBOARD_URI_LIST
+ VBoxSVC_SOURCES += $(PATH_ROOT)/src/VBox/GuestHost/SharedClipboard/ClipboardCache.cpp
 endif
 
 $(call KB_FN_DO_PASS0_ON_TARGET,VBoxSVC) # Sets VBoxSVC_0_OUTDIR

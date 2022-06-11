@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 78779 2019-05-27 10:22:15Z vboxsync $ */
+/* $Id: ConsoleImpl.h 78897 2019-05-31 15:23:14Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -863,6 +863,14 @@ private:
     void i_guestPropertiesVRDPUpdateOtherInfoChange(uint32_t u32ClientId, const char *pszOtherInfo);
     void i_guestPropertiesVRDPUpdateDisconnect(uint32_t u32ClientId);
 #endif
+
+#ifdef VBOX_WITH_SHARED_CLIPBOARD
+    /** @name Shared Clipboard support
+     * @{ */
+    static DECLCALLBACK(int) i_sharedClipboardServiceCallback(void *pvExtension, uint32_t u32Function,
+                                                              void *pvParms, uint32_t cbParms);
+    /** @} */
+#endif /* VBOX_WITH_SHARED_CLIPBOARD_URI_LIST */
 
     /** @name Disk encryption support
      * @{ */
