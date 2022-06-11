@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 78509 2019-05-14 15:16:21Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.cpp 80023 2019-07-28 13:29:43Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -280,11 +280,7 @@ HRESULT SystemProperties::getMaxBootPosition(ULONG *aMaxBootPosition)
 
 HRESULT SystemProperties::getRawModeSupported(BOOL *aRawModeSupported)
 {
-#ifdef VBOX_WITH_RAW_MODE
-    *aRawModeSupported = TRUE;
-#else
     *aRawModeSupported = FALSE;
-#endif
     return S_OK;
 }
 
