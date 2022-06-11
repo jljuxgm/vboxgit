@@ -1,4 +1,4 @@
-/* $Id: QIMessageBox.cpp 83524 2020-04-03 11:37:46Z vboxsync $ */
+/* $Id: QIMessageBox.cpp 83535 2020-04-03 15:45:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIMessageBox class implementation.
  */
@@ -212,7 +212,7 @@ void QIMessageBox::prepare()
             AssertPtrReturnVoid(m_pLabelText);
             {
                 /* Configure text-label: */
-                m_pLabelText->setText(m_strMessage);
+                m_pLabelText->setText(compressLongWords(m_strMessage));
                 /* Add text-label into top-layout: */
                 pTopLayout->addWidget(m_pLabelText);
             }
@@ -365,4 +365,27 @@ QPixmap QIMessageBox::standardPixmap(AlertIconType iconType, QWidget *pWidget /*
     QStyle *pStyle = pWidget ? pWidget->style() : QApplication::style();
     int iSize = pStyle->pixelMetric(QStyle::PM_MessageBoxIconSize, 0, pWidget);
     return icon.pixmap(iSize, iSize);
+}
+
+/* static */
+QString QIMessageBox::compressLongWords(QString strText)
+{
+    // WORKAROUND:
+    // The idea is to compress long words of more than 100 symbols in size consisting of alphanumeric
+    // characters with ellipsiss using the following template:
+    // "[50 first symbols]...[50 last symbols]"
+    QRegExp re("[a-zA-Z0-9]{101,}");
+    int iPosition = re.indexIn(strText);
+    bool fChangeAllowed = iPosition != -1;
+    while (fChangeAllowed)
+    {
+        QString strNewText = strText;
+        const QString strFound = re.cap(0);
+        strNewText.replace(iPosition, strFound.size(), strFound.left(50) + "..." + strFound.right(50));
+        fChangeAllowed = fChangeAllowed && strText != strNewText;
+        strText = strNewText;
+        iPosition = re.indexIn(strText);
+        fChangeAllowed = fChangeAllowed && iPosition != -1;
+    }
+    return strText;
 }

@@ -1,4 +1,4 @@
-/* $Id: QIMessageBox.h 83524 2020-04-03 11:37:46Z vboxsync $ */
+/* $Id: QIMessageBox.h 83535 2020-04-03 15:45:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIMessageBox class declaration.
  */
@@ -154,6 +154,9 @@ private:
 
     /** Generates standard pixmap for passed @a iconType using @a pWidget as hint. */
     static QPixmap standardPixmap(AlertIconType iconType, QWidget *pWidget = 0);
+
+    /** Compresses @a strText with ellipsis on the basis of certain logic. */
+    static QString compressLongWords(QString strText);
 
     /** Holds the title. */
     QString m_strTitle;
