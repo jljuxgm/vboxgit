@@ -1,4 +1,4 @@
-/* $Id: UICloudMachine.h 83050 2020-02-11 15:41:55Z vboxsync $ */
+/* $Id: UICloudMachine.h 83051 2020-02-11 16:00:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudMachine class declaration.
  */
@@ -55,14 +55,12 @@ public:
     const QString  m_strName;
 };
 
-/** QObject subclass representing cloud VM wrapper.
+/** Class representing cloud VM wrapper.
   * This is temporary class before ICloudMachine interface is represented.
   * This class is based on explicitly-shared memory and thus optimized
   * for being passed across as copied object, not just reference. */
-class UICloudMachine : public QObject
+class UICloudMachine
 {
-    Q_OBJECT;
-
 public:
 
     /** Constructs cloud VM wrapper on the basis of arguments.
