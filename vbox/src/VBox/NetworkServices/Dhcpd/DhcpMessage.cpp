@@ -1,4 +1,4 @@
-/* $Id: DhcpMessage.cpp 79865 2019-07-18 20:31:15Z vboxsync $ */
+/* $Id: DhcpMessage.cpp 79906 2019-07-20 00:11:21Z vboxsync $ */
 /** @file
  * DHCP Message and its de/serialization.
  */
@@ -391,6 +391,9 @@ int DhcpServerMessage::encode(octets_t &data)
 
     data.insert(data.end(), (uint8_t *)&bp, (uint8_t *)&bp.bp_vend.Dhcp.dhcp_opts);
 
+    /** @todo TFTP, bootfile name, etc. pick from extended options if no
+     *        override in effect? */
+
     /*
      * Options
      */
@@ -409,6 +412,8 @@ int DhcpServerMessage::encode(octets_t &data)
     AssertCompile(RTNET_DHCP_NORMAL_SIZE == 548);
     if (data.size() < RTNET_DHCP_NORMAL_SIZE)
         data.resize(RTNET_DHCP_NORMAL_SIZE);
+
+    /** @todo dump it */
 
     return VINF_SUCCESS;
 }
