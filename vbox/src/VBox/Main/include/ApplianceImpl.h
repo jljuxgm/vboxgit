@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 84153 2020-05-05 20:00:32Z vboxsync $ */
+/* $Id: ApplianceImpl.h 84312 2020-05-14 17:46:45Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -171,6 +171,8 @@ private:
     HRESULT i_readManifestFile(TaskOVF *pTask, RTVFSIOSTREAM hIosMf, const char *pszSubFileNm);
     HRESULT i_readSignatureFile(TaskOVF *pTask, RTVFSIOSTREAM hIosCert, const char *pszSubFileNm);
     HRESULT i_readTailProcessing(TaskOVF *pTask);
+    HRESULT i_readTailProcessingSignedData(PRTERRINFOSTATIC pErrInfo);
+    HRESULT i_readTailProcessingGetManifestData(void **ppvData, size_t *pcbData);
     HRESULT i_gettingCloudData(TaskCloud *pTask);
 
     /** @}  */
