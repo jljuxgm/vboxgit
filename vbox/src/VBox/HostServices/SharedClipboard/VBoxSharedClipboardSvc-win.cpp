@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-win.cpp 78618 2019-05-21 08:36:42Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-win.cpp 78623 2019-05-21 09:11:59Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Win32 host.
  */
@@ -42,7 +42,7 @@
 #include <process.h>
 #include <shlobj.h> /* Needed for shell objects. */
 
-#include "VBoxClipboard.h"
+#include "VBoxSharedClipboardSvc-internal.h"
 
 /** Static window class name. */
 static char s_szClipWndClassName[] = VBOX_CLIPBOARD_WNDCLASS_NAME;

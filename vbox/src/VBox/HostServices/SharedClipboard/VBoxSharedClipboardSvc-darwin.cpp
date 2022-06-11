@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-darwin.cpp 78618 2019-05-21 08:36:42Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-darwin.cpp 78623 2019-05-21 09:11:59Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Mac OS X host.
  */
@@ -26,7 +26,7 @@
 #include <iprt/asm.h>
 #include <iprt/thread.h>
 
-#include "VBoxClipboard.h"
+#include "VBoxSharedClipboardSvc-internal.h"
 #include "darwin-pasteboard.h"
 
 

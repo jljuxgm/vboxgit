@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-x11-stubs.cpp 78618 2019-05-21 08:36:42Z vboxsync $*/
+/* $Id: VBoxSharedClipboardSvc-x11-stubs.cpp 78623 2019-05-21 09:11:59Z vboxsync $*/
 /** @file
  * Shared Clipboard Service - Linux host, a stub version with no functionality for use on headless hosts.
  */
@@ -34,8 +34,7 @@
 #include <stdio.h>
 #include <stdint.h>
 
-#include "VBoxClipboard.h"
-
+#include "VBoxSharedClipboardSvc-internal.h"
 
 
 /** Initialise the host side of the shared clipboard - called by the hgcm layer. */
