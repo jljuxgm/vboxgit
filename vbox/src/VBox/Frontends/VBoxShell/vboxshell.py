@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: vboxshell.py 80824 2019-09-16 13:18:44Z vboxsync $
+# $Id: vboxshell.py 81603 2019-10-31 09:25:18Z vboxsync $
 
 """
 VirtualBox Python Shell.
@@ -33,7 +33,7 @@ Foundation, in version 2 as it comes in the "COPYING" file of the
 VirtualBox OSE distribution. VirtualBox OSE is distributed in the
 hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
 """
-__version__ = "$Revision: 80824 $"
+__version__ = "$Revision: 81603 $"
 
 
 import gc
@@ -1647,7 +1647,8 @@ def monitorVBoxCmd(ctx, args):
 
 def getAdapterType(ctx, natype):
     if (natype == ctx['global'].constants.NetworkAdapterType_Am79C970A or
-        natype == ctx['global'].constants.NetworkAdapterType_Am79C973):
+        natype == ctx['global'].constants.NetworkAdapterType_Am79C973 or
+        natype == ctx['global'].constants.NetworkAdapterType_Am79C960):
         return "pcnet"
     elif (natype == ctx['global'].constants.NetworkAdapterType_I82540EM or
           natype == ctx['global'].constants.NetworkAdapterType_I82545EM or

@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 81428 2019-10-21 18:38:38Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 81603 2019-10-31 09:25:18Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -1515,6 +1515,7 @@ inline static const char *networkAdapterTypeToName(NetworkAdapterType_T adapterT
     {
         case NetworkAdapterType_Am79C970A:
         case NetworkAdapterType_Am79C973:
+        case NetworkAdapterType_Am79C960:
             return "pcnet";
 #ifdef VBOX_WITH_E1000
         case NetworkAdapterType_I82540EM:

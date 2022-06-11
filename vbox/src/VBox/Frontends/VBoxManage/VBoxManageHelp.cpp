@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 81287 2019-10-15 16:38:43Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 81603 2019-10-31 09:25:18Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -590,7 +590,7 @@ void printUsage(USAGECATEGORY enmCommand, uint64_t fSubcommandScope, PRTSTREAM p
                      "|\n"
                      "                                        generic|natnetwork"
                      "]\n"
-                     "                            [--nictype<1-N> Am79C970A|Am79C973"
+                     "                            [--nictype<1-N> Am79C970A|Am79C973|Am79C960"
 #ifdef VBOX_WITH_E1000
                   "|\n                                            82540EM|82543GC|82545EM"
 #endif
