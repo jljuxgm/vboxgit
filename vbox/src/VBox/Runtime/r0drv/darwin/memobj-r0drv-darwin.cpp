@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-darwin.cpp 82877 2020-01-27 13:52:44Z vboxsync $ */
+/* $Id: memobj-r0drv-darwin.cpp 82886 2020-01-27 22:26:05Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Darwin.
  */
@@ -957,18 +957,14 @@ DECLHIDDEN(int) rtR0MemObjNativeMapKernel(PPRTR0MEMOBJINTERNAL ppMem, RTR0MEMOBJ
     if (pMemToMapDarwin->pMemDesc)
     {
         /* The kIOMapPrefault option was added in 10.10.0; causes PTEs to be populated with
-           INTEL_PTE_WIRED to be set, just like we desire (see further down). */
-#if MAC_OS_X_VERSION_MIN_REQUIRED >= 101000
-        IOMemoryMap *pMemMap = pMemToMapDarwin->pMemDesc->createMappingInTask(kernel_task,
-                                                                              0,
-                                                                              kIOMapAnywhere | kIOMapDefaultCache | kIOMapPrefault,
-                                                                              offSub,
-                                                                              cbSub);
-#elif MAC_OS_X_VERSION_MIN_REQUIRED >= 1050
+           INTEL_PTE_WIRED to be set, just like we desire (see further down).  However, till
+           10.13.0 it was not available for use on kernel mappings. Oh, fudge. */
+#if MAC_OS_X_VERSION_MIN_REQUIRED >= 1050
         static uint32_t volatile s_fOptions = UINT32_MAX;
         uint32_t fOptions = s_fOptions;
         if (RT_UNLIKELY(fOptions == UINT32_MAX))
-            s_fOptions = fOptions = version_major >= 14 ? 0x10000000 /*kIOMapPrefault*/ : 0; /* Since 10.10.0. */
+            s_fOptions = fOptions = version_major >= 17 ? 0x10000000 /*kIOMapPrefault*/ : 0; /* Since 10.13.0 (High Sierra). */
+
         IOMemoryMap *pMemMap = pMemToMapDarwin->pMemDesc->createMappingInTask(kernel_task,
                                                                               0,
                                                                               kIOMapAnywhere | kIOMapDefaultCache | fOptions,
