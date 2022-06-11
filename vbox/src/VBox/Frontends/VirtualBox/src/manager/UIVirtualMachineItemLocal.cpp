@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItemLocal.cpp 83290 2020-03-13 16:43:36Z vboxsync $ */
+/* $Id: UIVirtualMachineItemLocal.cpp 83755 2020-04-17 13:57:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItem class implementation.
  */
@@ -166,11 +166,6 @@ void UIVirtualMachineItemLocal::recachePixmap()
     }
 }
 
-bool UIVirtualMachineItemLocal::canSwitchTo() const
-{
-    return const_cast <CMachine&>(m_comMachine).CanShowConsoleWindow();
-}
-
 bool UIVirtualMachineItemLocal::switchTo()
 {
 #ifdef VBOX_WS_MAC
@@ -278,6 +273,12 @@ bool UIVirtualMachineItemLocal::isItemStuck() const
 {
     return    accessible()
            && machineState() == KMachineState_Stuck;
+}
+
+bool UIVirtualMachineItemLocal::isItemCanBeSwitchedTo() const
+{
+    return    const_cast<CMachine&>(m_comMachine).CanShowConsoleWindow()
+           || isItemRunningHeadless();
 }
 
 void UIVirtualMachineItemLocal::retranslateUi()

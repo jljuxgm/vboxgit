@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItemCloud.cpp 83700 2020-04-15 13:48:33Z vboxsync $ */
+/* $Id: UIVirtualMachineItemCloud.cpp 83755 2020-04-17 13:57:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItemCloud class implementation.
  */
@@ -218,6 +218,11 @@ bool UIVirtualMachineItemCloud::isItemStuck() const
 {
     return    accessible()
            && machineState() == KMachineState_Stuck;
+}
+
+bool UIVirtualMachineItemCloud::isItemCanBeSwitchedTo() const
+{
+    return false;
 }
 
 void UIVirtualMachineItemCloud::retranslateUi()
