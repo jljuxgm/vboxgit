@@ -1,4 +1,4 @@
-/* $Id: mappings.h 76570 2019-01-01 04:36:36Z vboxsync $ */
+/* $Id: mappings.h 78903 2019-05-31 19:20:16Z vboxsync $ */
 /** @file
  * Shared folders service - Mappings header.
  */
@@ -73,7 +73,9 @@ int vbsfMappingsQueryHostRootEx(SHFLROOT hRoot, const char **ppszRoot, uint32_t 
 bool vbsfIsGuestMappingCaseSensitive(SHFLROOT root);
 bool vbsfIsHostMappingCaseSensitive(SHFLROOT root);
 
-int vbsfMappingLoaded(MAPPING const *pLoadedMapping, SHFLROOT root);
+void vbsfMappingLoadingStart(void);
+int  vbsfMappingLoaded(MAPPING const *pLoadedMapping, SHFLROOT root);
+void vbsfMappingLoadingDone(void);
 PMAPPING vbsfMappingGetByRoot(SHFLROOT root);
 
 #endif /* !VBOX_INCLUDED_SRC_SharedFolders_mappings_h */
