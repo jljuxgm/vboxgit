@@ -1,4 +1,4 @@
-/* $Id: base64.h 84296 2020-05-13 16:46:27Z vboxsync $ */
+/* $Id: base64.h 84297 2020-05-13 16:52:47Z vboxsync $ */
 /** @file
  * IPRT - Base64, MIME content transfer encoding, internal header.
  */
@@ -23,6 +23,12 @@
  * You may elect to license modified versions of this file under the
  * terms and conditions of either the GPL or the CDDL or both.
  */
+
+#ifndef IPRT_INCLUDED_SRC_common_string_base64_h
+#define IPRT_INCLUDED_SRC_common_string_base64_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 
 /*********************************************************************************************************************************
@@ -82,3 +88,4 @@ DECLINLINE(ssize_t) rtBase64DecodedSizeRecalc(uint32_t c6Bits, unsigned cbPad)
    return cb;
 }
 
+#endif /* !IPRT_INCLUDED_SRC_common_string_base64_h */
