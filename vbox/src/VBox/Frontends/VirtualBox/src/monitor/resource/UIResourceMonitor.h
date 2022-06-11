@@ -1,4 +1,4 @@
-/* $Id: UIResourceMonitor.h 83466 2020-03-27 12:57:00Z vboxsync $ */
+/* $Id: UIResourceMonitor.h 83469 2020-03-27 14:44:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIResourceMonitor class declaration.
  */
@@ -79,6 +79,7 @@ private:
 
     void setColumnVisible(int iColumnId, bool fVisible);
     bool columnVisible(int iColumnId) const;
+    void updateModelColumVisibilityCache();
 
     /** @name Prepare/cleanup cascade.
       * @{ */
