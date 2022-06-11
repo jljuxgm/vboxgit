@@ -1,5 +1,5 @@
 @echo off
-rem $Id: Combined-3-RepackAdditions.cmd 83007 2020-02-06 14:54:25Z vboxsync $
+rem $Id: Combined-3-RepackAdditions.cmd 83010 2020-02-06 17:25:49Z vboxsync $
 rem rem @file
 rem Windows NT batch script for repacking signed amd64 and x86 drivers.
 rem
@@ -180,7 +180,7 @@ set _MY_OPT_SIGNED_AMD64="%_MY_OPT_OUTDIR%/VBoxDrivers-@VBOX_VERSION_STRING@r@VB
 :skip_set_default_amd64_signed
 
 if not ".%_MY_OPT_SIGNED_X86%" == "." goto skip_set_default_x86_signed
-set _MY_OPT_SIGNED_AMD64="%_MY_OPT_OUTDIR%/VBoxDrivers-@VBOX_VERSION_STRING@r@VBOX_SVN_REV@-x86.cab.Signed.zip"
+set _MY_OPT_SIGNED_X86="%_MY_OPT_OUTDIR%/VBoxDrivers-@VBOX_VERSION_STRING@r@VBOX_SVN_REV@-x86.cab.Signed.zip"
 :skip_set_default_x86_signed
 
 if not exist "%_MY_OPT_SIGNED_AMD64%"   goto error_signed_amd64_not_found
