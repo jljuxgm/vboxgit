@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 78869 2019-05-30 08:32:28Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 78981 2019-06-05 08:56:32Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -2805,8 +2805,7 @@ VMM_INT_DECL(bool) CPUMIsGuestNmiBlocking(PVMCPU pVCpu)
      * Return the state of virtual-NMI blocking, if we are executing a
      * VMX nested-guest with virtual-NMIs enabled.
      */
-    Assert(CPUMIsGuestVmxPinCtlsSet(pVCpu, pCtx, VMX_PIN_CTLS_VIRT_NMI));
-    return pCtx->hwvirt.vmx.fVirtNmiBlocking;
+    return CPUMIsGuestVmxVirtNmiBlocking(pVCpu, pCtx);
 #else
     return VMCPU_FF_IS_SET(pVCpu, VMCPU_FF_BLOCK_NMIS);
 #endif
