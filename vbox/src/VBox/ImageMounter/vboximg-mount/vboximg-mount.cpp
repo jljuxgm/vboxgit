@@ -1,4 +1,4 @@
-/* $Id: vboximg-mount.cpp 80526 2019-09-01 13:56:52Z vboxsync $ */
+/* $Id: vboximg-mount.cpp 80529 2019-09-01 22:43:57Z vboxsync $ */
 /** @file
  * vboximg-mount - Disk Image Flattening FUSE Program.
  */
@@ -592,7 +592,7 @@ vboximgOp_getattr(const char *pszPath, struct stat *stbuf)
 #else
                 RTTimeSpecGetTimespec(&ObjInfo.AccessTime, &stbuf->st_atim);
                 RTTimeSpecGetTimespec(&ObjInfo.ModificationTime, &stbuf->st_mtim);
-                RTTimeSpecGetTimespec(&ObjInfo.ChangeTime, &stbuf->st_ctim); 
+                RTTimeSpecGetTimespec(&ObjInfo.ChangeTime, &stbuf->st_ctim);
 #endif
 
                 switch (ObjInfo.Attr.fMode & RTFS_TYPE_MASK)
