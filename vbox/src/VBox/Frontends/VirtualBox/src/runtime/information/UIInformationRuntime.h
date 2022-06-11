@@ -1,4 +1,4 @@
-/* $Id: UIInformationRuntime.h 80525 2019-09-01 13:39:49Z vboxsync $ */
+/* $Id: UIInformationRuntime.h 80543 2019-09-02 09:34:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationRuntime class declaration.
  */
@@ -156,6 +156,8 @@ private slots:
     void sltGuestAdditionsStateChange();
     void sltGuestMonitorChange(KGuestMonitorChangedEventType changeType, ulong uScreenId, QRect screenGeo);
     void sltVRDEChange();
+    void sltClipboardChange(KClipboardMode enmMode);
+    void sltDnDModeChange(KDnDMode enmMode);
 
 private:
 

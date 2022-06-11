@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.h 80044 2019-07-29 12:57:31Z vboxsync $ */
+/* $Id: UIMainEventListener.h 80543 2019-09-02 09:34:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMainEventListener class declaration.
  */
@@ -166,6 +166,10 @@ signals:
         void sigShowWindow(qint64 &winId); /* use Qt::DirectConnection */
         /** Notifies about audio adapter state change. */
         void sigAudioAdapterChange();
+        /** Notifies about the clipboard mode change. */
+        void sigClipboardModeChange(KClipboardMode enmClipboardMode);
+        /** Notifies about the drag and drop mode change. */
+        void sigDnDModeChange(KDnDMode enmDnDMode);
     /** @} */
 
     /** @name Progress related signals
@@ -215,4 +219,3 @@ public:
 typedef ListenerImpl<UIMainEventListener, QObject*> UIMainEventListenerImpl;
 
 #endif /* !FEQT_INCLUDED_SRC_globals_UIMainEventListener_h */
-
