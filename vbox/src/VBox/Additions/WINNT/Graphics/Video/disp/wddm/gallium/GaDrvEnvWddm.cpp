@@ -1,4 +1,4 @@
-/* $Id: GaDrvEnvWddm.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: GaDrvEnvWddm.cpp 82411 2019-12-05 12:11:24Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver interface to the WDDM miniport driver.
  */
@@ -217,12 +217,11 @@ GaDrvEnvWddm::gaEnvWddmSurfaceDefine(void *pvEnv,
     memcpy(pu8Req, pCreateParms, sizeof(GASURFCREATE));
     memcpy(&pu8Req[sizeof(GASURFCREATE)], paSizes, cSizes * sizeof(GASURFSIZE));
 
-    ddiEscape.hDevice               = 0; // pThis->mWddmCallbacks.hDevice;
-    ddiEscape.Flags.Value           = 0;
-    ddiEscape.Flags.HardwareAccess  = 1;
+    // ddiEscape.hDevice               = 0; // pThis->mWddmCallbacks.hDevice;
+    // ddiEscape.Flags.Value           = 0;
     ddiEscape.pPrivateDriverData    = pData;
     ddiEscape.PrivateDriverDataSize = cbAlloc;
-    ddiEscape.hContext              = 0;
+    // ddiEscape.hContext              = 0;
 
     hr = pThis->mWddmCallbacks.DeviceCallbacks.pfnEscapeCb(pThis->mWddmCallbacks.hAdapter, &ddiEscape);
     if (FAILED(hr))
@@ -251,12 +250,11 @@ GaDrvEnvWddm::gaEnvWddmSurfaceDestroy(void *pvEnv,
     // data.EscapeHdr.cmdSpecific = 0;
     data.u32Sid                = u32Sid;
 
-    ddiEscape.hDevice               = 0; // pThis->mWddmCallbacks.hDevice;
-    ddiEscape.Flags.Value           = 0;
-    ddiEscape.Flags.HardwareAccess  = 1;
+    // ddiEscape.hDevice               = 0; // pThis->mWddmCallbacks.hDevice;
+    // ddiEscape.Flags.Value           = 0;
     ddiEscape.pPrivateDriverData    = &data;
     ddiEscape.PrivateDriverDataSize = sizeof(data);
-    ddiEscape.hContext              = 0;
+    // ddiEscape.hContext              = 0;
 
     hr = pThis->mWddmCallbacks.DeviceCallbacks.pfnEscapeCb(pThis->mWddmCallbacks.hAdapter, &ddiEscape);
     Assert(SUCCEEDED(hr));
