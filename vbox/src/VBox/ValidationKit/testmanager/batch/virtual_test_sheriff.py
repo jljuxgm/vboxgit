@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 78770 2019-05-26 22:36:10Z vboxsync $
-# pylint: disable=C0301
+# $Id: virtual_test_sheriff.py 79087 2019-06-11 11:58:28Z vboxsync $
+# pylint: disable=line-too-long
 
 """
 Virtual Test Sheriff.
@@ -35,7 +35,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 78770 $"
+__version__ = "$Revision: 79087 $"
 
 
 # Standard python imports
@@ -274,7 +274,7 @@ class VirtualTestSheriffCaseFile(object):
 
 
 
-class VirtualTestSheriff(object): # pylint: disable=R0903
+class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
     """
     Add build info into Test Manager database.
     """
@@ -318,7 +318,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
 
         if self.oConfig.sLogFile:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 78770 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 79087 $ \n');
 
 
     def eprint(self, sText):
@@ -688,7 +688,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.getFailureReason(tReason);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 78770 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 79087 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 

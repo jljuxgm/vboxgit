@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: db.py 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: db.py 79087 2019-06-11 11:58:28Z vboxsync $
 
 """
 Test Manager - Database Interface.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 76553 $"
+__version__ = "$Revision: 79087 $"
 
 
 # Standard python imports.
@@ -213,13 +213,13 @@ class TMDatabaseConnection(object):
             dArgs['host'] = config.g_ksDatabaseAddress;
         if config.g_ksDatabasePort is not None:
             dArgs['port'] = config.g_ksDatabasePort;
-        self._oConn             = psycopg2.connect(**dArgs); # pylint: disable=W0142
+        self._oConn             = psycopg2.connect(**dArgs); # pylint: disable=star-args
         self._oConn.set_client_encoding('UTF-8');
         self._oCursor           = self._oConn.cursor();
         self._oExplainConn      = None;
         self._oExplainCursor    = None;
         if config.g_kfWebUiSqlTraceExplain and config.g_kfWebUiSqlTrace:
-            self._oExplainConn  = psycopg2.connect(**dArgs); # pylint: disable=W0142
+            self._oExplainConn  = psycopg2.connect(**dArgs); # pylint: disable=star-args
             self._oExplainConn.set_client_encoding('UTF-8');
             self._oExplainCursor = self._oExplainConn.cursor();
         self._fTransaction      = False;
@@ -700,7 +700,7 @@ class TMDatabaseConnection(object):
                 dArgs['host'] = config.g_ksDatabaseAddress;
             if config.g_ksDatabasePort is not None:
                 dArgs['port'] = config.g_ksDatabasePort;
-            self._oExplainConn  = psycopg2.connect(**dArgs); # pylint: disable=W0142
+            self._oExplainConn  = psycopg2.connect(**dArgs); # pylint: disable=star-args
             self._oExplainCursor = self._oExplainConn.cursor();
         return True;
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdNetBenchmark1.py 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: tdNetBenchmark1.py 79087 2019-06-11 11:58:28Z vboxsync $
 
 """
 VirtualBox Validation Kit - Networking benchmark #1.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 76553 $"
+__version__ = "$Revision: 79087 $"
 
 
 # Standard Python imports.
@@ -48,7 +48,7 @@ from testdriver import vbox;
 from testdriver import vboxcon;
 
 
-class tdNetBenchmark1(vbox.TestDriver):                                         # pylint: disable=R0902
+class tdNetBenchmark1(vbox.TestDriver):                                         # pylint: disable=too-many-instance-attributes
     """
     Networking benchmark #1.
     """
@@ -129,7 +129,7 @@ class tdNetBenchmark1(vbox.TestDriver):                                         
         reporter.log('                     --throughput-sizes 8192 --test-vms tst-rhel5:tst-win2k3ent:tst-sol10');
         return rc;
 
-    def parseOption(self, asArgs, iArg):                                        # pylint: disable=R0912,R0915
+    def parseOption(self, asArgs, iArg):                                        # pylint: disable=too-many-branches,too-many-statements
         if asArgs[iArg] == '--remote-host':
             iArg += 1;
             if iArg >= len(asArgs): raise base.InvalidOption('The "--remote-host" takes an IP address or a hostname');

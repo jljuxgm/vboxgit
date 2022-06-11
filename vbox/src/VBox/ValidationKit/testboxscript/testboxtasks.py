@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testboxtasks.py 77165 2019-02-05 13:59:37Z vboxsync $
+# $Id: testboxtasks.py 79087 2019-06-11 11:58:28Z vboxsync $
 
 """
 TestBox Script - Async Tasks.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 77165 $"
+__version__ = "$Revision: 79087 $"
 
 
 # Standard python imports.
@@ -431,7 +431,7 @@ class TestBoxTestDriverTask(TestBoxBaseTask):
                                             universal_newlines = True,
                                             close_fds  = (False if utils.getHostOs() == 'win' else True),
                                             preexec_fn = (None if utils.getHostOs() in ['win', 'os2']
-                                                          else os.setsid)); # pylint: disable=E1101
+                                                          else os.setsid)); # pylint: disable=no-member
         except Exception as oXcpt:
             self._log('Error creating child process %s: %s' % (asArgs, oXcpt));
             return (False, None);
@@ -517,7 +517,7 @@ class TestBoxTestDriverTask(TestBoxBaseTask):
 
             if iProcGroup > 0:
                 try:
-                    os.killpg(iProcGroup, signal.SIGTERM); # pylint: disable=E1101
+                    os.killpg(iProcGroup, signal.SIGTERM); # pylint: disable=no-member
                 except Exception as oXcpt:
                     self._log('killpg() failed: %s' % (oXcpt,));
 
@@ -533,7 +533,7 @@ class TestBoxTestDriverTask(TestBoxBaseTask):
         #
         if iProcGroup > 0:
             try:
-                os.killpg(iProcGroup, signal.SIGKILL); # pylint: disable=E1101
+                os.killpg(iProcGroup, signal.SIGKILL); # pylint: disable=no-member
             except Exception as oXcpt:
                 self._log('killpg() failed: %s' % (oXcpt,));
 

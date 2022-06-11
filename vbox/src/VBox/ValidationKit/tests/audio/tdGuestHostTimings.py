@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tdGuestHostTimings.py 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: tdGuestHostTimings.py 79087 2019-06-11 11:58:28Z vboxsync $
 
 """
 ????????
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 76553 $"
+__version__ = "$Revision: 79087 $"
 
 
 import os
@@ -49,7 +49,7 @@ from testdriver import vbox
 from testdriver import vboxcon
 from testdriver import vboxtestvms
 
-class tdGuestHostTimings(vbox.TestDriver):                                         # pylint: disable=R0902
+class tdGuestHostTimings(vbox.TestDriver):                                         # pylint: disable=too-many-instance-attributes
 
     def __init__(self):
         vbox.TestDriver.__init__(self);
@@ -74,7 +74,7 @@ class tdGuestHostTimings(vbox.TestDriver):                                      
         reporter.log(' --runningvmname <vmname>');
         return rc;
 
-    def parseOption(self, asArgs, iArg):                                        # pylint: disable=R0912,R0915
+    def parseOption(self, asArgs, iArg):                                        # pylint: disable=too-many-branches,too-many-statements
         if asArgs[iArg] == '--runningvmname':
             iArg += 1
             if iArg >= len(asArgs):

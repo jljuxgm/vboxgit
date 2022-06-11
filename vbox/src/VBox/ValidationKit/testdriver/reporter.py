@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-# $Id: reporter.py 78973 2019-06-04 16:41:27Z vboxsync $
-# pylint: disable=C0302
+# $Id: reporter.py 79087 2019-06-11 11:58:28Z vboxsync $
+# pylint: disable=too-many-lines
 
 """
 Testdriver reporter module.
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 78973 $"
+__version__ = "$Revision: 79087 $"
 
 
 # Standard Python imports.
@@ -676,14 +676,14 @@ class RemoteReporter(ReporterBase):
 
         if     sys.version_info[0] >= 3 \
            or (sys.version_info[0] == 2 and sys.version_info[1] >= 6):
-            if self._oParsedTmUrl.scheme == 'https': # pylint: disable=E1101
+            if self._oParsedTmUrl.scheme == 'https': # pylint: disable=no-member
                 self._fnTmConnect = lambda: httplib.HTTPSConnection(self._oParsedTmUrl.hostname,
                                                                     timeout = self.kcSecTestManagerRequestTimeout);
             else:
                 self._fnTmConnect = lambda: httplib.HTTPConnection( self._oParsedTmUrl.hostname,
                                                                     timeout = self.kcSecTestManagerRequestTimeout);
         else:
-            if self._oParsedTmUrl.scheme == 'https': # pylint: disable=E1101
+            if self._oParsedTmUrl.scheme == 'https': # pylint: disable=no-member
                 self._fnTmConnect = lambda: httplib.HTTPSConnection(self._oParsedTmUrl.hostname);
             else:
                 self._fnTmConnect = lambda: httplib.HTTPConnection( self._oParsedTmUrl.hostname);
@@ -703,7 +703,7 @@ class RemoteReporter(ReporterBase):
             constants.tbreq.RESULT_PARAM_TEST_SET_ID:   self.idTestSet,
         };
         self._sTmServerPath = '/%s/testboxdisp.py?%s' \
-                            % ( self._oParsedTmUrl.path.strip('/'), # pylint: disable=E1101
+                            % ( self._oParsedTmUrl.path.strip('/'), # pylint: disable=no-member
                                 self._fnUrlEncode(dParams), );
 
     def __del__(self):
@@ -1686,7 +1686,7 @@ def logAllStacks(cFrames = None):
     g_oLock.acquire();
 
     cThread = 0;
-    for idThread, oStack in sys._current_frames().items(): # >=2.5, a bit ugly - pylint: disable=W0212
+    for idThread, oStack in sys._current_frames().items(): # >=2.5, a bit ugly - pylint: disable=protected-access
         try:
             if cThread > 0:
                 g_oReporter.log(1, '', sCaller, sTsPrf);

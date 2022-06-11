@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: reader.py 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: reader.py 79087 2019-06-11 11:58:28Z vboxsync $
 
 """
 XML reader module.
@@ -29,14 +29,14 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 76553 $"
+__version__ = "$Revision: 79087 $"
 __all__     = ['ParseTestResult', ]
 
 # Standard python imports.
 import os
 import traceback
 
-# pylint: disable=C0111
+# pylint: disable=missing-docstring
 
 class Value(object):
     """

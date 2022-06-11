@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxcon.py 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: vboxcon.py 79087 2019-06-11 11:58:28Z vboxsync $
 
 """
 VirtualBox Constants.
@@ -28,14 +28,14 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 76553 $"
+__version__ = "$Revision: 79087 $"
 
 
 # Standard Python imports.
 import sys
 
 
-class VBoxConstantWrappingHack(object):                                         # pylint: disable=R0903
+class VBoxConstantWrappingHack(object):                                         # pylint: disable=too-few-public-methods
     """
     This is a hack to avoid the self.oVBoxMgr.constants.MachineState_Running
     ugliness that forces one into the right margin...  Anyone using this module
@@ -79,6 +79,6 @@ class VBoxConstantWrappingHack(object):                                         
                 raise;
 
 
-goHackModuleClass = VBoxConstantWrappingHack(sys.modules[__name__]);                         # pylint: disable=C0103
+goHackModuleClass = VBoxConstantWrappingHack(sys.modules[__name__]);                         # pylint: disable=invalid-name
 sys.modules[__name__] = goHackModuleClass;
 

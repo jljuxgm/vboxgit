@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-# $Id: schedulerbase.py 76553 2019-01-01 01:45:53Z vboxsync $
-# pylint: disable=C0302
+# $Id: schedulerbase.py 79087 2019-06-11 11:58:28Z vboxsync $
+# pylint: disable=too-many-lines
 
 
 """
@@ -28,7 +28,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 76553 $"
+__version__ = "$Revision: 79087 $"
 
 
 # Standard python imports.
@@ -351,7 +351,7 @@ class SchedQueueData(ModelDataBase):
         self.idTestSetGangLeader    = None;
         self.cMissingGangMembers    = 1;
 
-    def initFromValues(self, idSchedGroup, idGenTestCaseArgs, idTestGroup, aidTestGroupPreReqs, # pylint: disable=R0913
+    def initFromValues(self, idSchedGroup, idGenTestCaseArgs, idTestGroup, aidTestGroupPreReqs, # pylint: disable=too-many-arguments
                        bmHourlySchedule, cMissingGangMembers,
                        idItem = None, offQueue = None, tsConfig = None, tsLastScheduled = None, idTestSetGangLeader = None):
         """
@@ -1505,7 +1505,7 @@ class SchedulerBase(object):
 # Unit testing.
 #
 
-# pylint: disable=C0111
+# pylint: disable=missing-docstring
 class SchedQueueDataTestCase(ModelDataBaseTestCase):
     def setUp(self):
         self.aoSamples = [SchedQueueData(),];

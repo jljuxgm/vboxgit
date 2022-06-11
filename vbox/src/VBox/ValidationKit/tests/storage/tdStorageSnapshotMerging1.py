@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdStorageSnapshotMerging1.py 79022 2019-06-06 12:39:01Z vboxsync $
+# $Id: tdStorageSnapshotMerging1.py 79087 2019-06-11 11:58:28Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage snapshotting and merging testcase.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79022 $"
+__version__ = "$Revision: 79087 $"
 
 
 # Standard Python imports.
@@ -78,7 +78,7 @@ def crc32_of_file(filepath):
     return current % 2**32;
 
 
-class tdStorageSnapshot(vbox.TestDriver):                                      # pylint: disable=R0902
+class tdStorageSnapshot(vbox.TestDriver):                                      # pylint: disable=too-many-instance-attributes
     """
     Storage benchmark.
     """
@@ -108,7 +108,7 @@ class tdStorageSnapshot(vbox.TestDriver):                                      #
         reporter.log('      Default: %s' % (':'.join(self.asDiskFormats)));
         return rc;
 
-    def parseOption(self, asArgs, iArg):                                        # pylint: disable=R0912,R0915
+    def parseOption(self, asArgs, iArg):                                        # pylint: disable=too-many-branches,too-many-statements
         if asArgs[iArg] == '--storage-ctrls':
             iArg += 1;
             if iArg >= len(asArgs):

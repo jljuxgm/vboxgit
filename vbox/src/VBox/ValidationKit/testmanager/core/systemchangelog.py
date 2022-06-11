@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: systemchangelog.py 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: systemchangelog.py 79087 2019-06-11 11:58:28Z vboxsync $
 
 """
 Test Manager - System changelog compilation.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 76553 $"
+__version__ = "$Revision: 79087 $"
 
 
 # Validation Kit imports.
@@ -35,7 +35,7 @@ from testmanager.core.useraccount import UserAccountLogic;
 from testmanager.core.systemlog   import SystemLogData;
 
 
-class SystemChangelogEntry(object): # pylint: disable=R0902
+class SystemChangelogEntry(object): # pylint: disable=too-many-instance-attributes
     """
     System changelog entry.
     """
@@ -70,7 +70,7 @@ class SystemChangelogLogic(ModelLogicBase):
     ## @}
 
     ## Mapping a changelog entry kind to a table, key and clue.
-    kdWhatToTable = dict({  # pylint: disable=W0142
+    kdWhatToTable = dict({  # pylint: disable=star-args
         ksWhat_TestBox:          ( 'TestBoxes',          'idTestBox',           None, ),
         ksWhat_TestCase:         ( 'TestCasees',         'idTestCase',          None, ),
         ksWhat_Blacklisting:     ( 'Blacklist',          'idBlacklisting',      None, ),

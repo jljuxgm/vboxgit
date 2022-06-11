@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdGuestOsInstTest1.py 78824 2019-05-28 15:15:37Z vboxsync $
+# $Id: tdGuestOsInstTest1.py 79087 2019-06-11 11:58:28Z vboxsync $
 
 """
 VirtualBox Validation Kit - Guest OS installation tests.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 78824 $"
+__version__ = "$Revision: 79087 $"
 
 
 # Standard Python imports.
@@ -222,7 +222,7 @@ class tdGuestOsInstTest1(vbox.TestDriver):
         #
         oSet = vboxtestvms.TestVmSet(self.oTestVmManager, fIgnoreSkippedVm = True);
         oSet.aoTestVms.extend([
-            # pylint: disable=C0301
+            # pylint: disable=line-too-long
             InstallTestVm(oSet, 'tst-fedora4',      'Fedora',           'fedora4-txs.iso',          InstallTestVm.ksIdeController,   8, InstallTestVm.kf32Bit),
             InstallTestVm(oSet, 'tst-fedora5',      'Fedora',           'fedora5-txs.iso',          InstallTestVm.ksSataController,  8, InstallTestVm.kf32Bit | InstallTestVm.kfReqPae | InstallTestVm.kfReqIoApicSmp),
             InstallTestVm(oSet, 'tst-fedora6',      'Fedora',           'fedora6-txs.iso',          InstallTestVm.ksSataController,  8, InstallTestVm.kf32Bit | InstallTestVm.kfReqIoApic),
@@ -260,7 +260,7 @@ class tdGuestOsInstTest1(vbox.TestDriver):
             InstallTestVm(oSet, 'tst-w81-64',       'Windows81_64',     'win81-x64-txs.iso',        InstallTestVm.ksSataController, 25, InstallTestVm.kf64Bit),
             InstallTestVm(oSet, 'tst-w10-32',       'Windows10',        'win10-x86-txs.iso',        InstallTestVm.ksSataController, 25, InstallTestVm.kf32Bit | InstallTestVm.kfReqPae),
             InstallTestVm(oSet, 'tst-w10-64',       'Windows10_64',     'win10-x64-txs.iso',        InstallTestVm.ksSataController, 25, InstallTestVm.kf64Bit),
-            # pylint: enable=C0301
+            # pylint: enable=line-too-long
         ]);
         self.oTestVmSet = oSet;
 

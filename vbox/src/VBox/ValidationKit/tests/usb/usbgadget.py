@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-# $Id: usbgadget.py 76553 2019-01-01 01:45:53Z vboxsync $
-# pylint: disable=C0302
+# $Id: usbgadget.py 79087 2019-06-11 11:58:28Z vboxsync $
+# pylint: disable=too-many-lines
 
 """
 UTS (USB Test Service) client.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 76553 $"
+__version__ = "$Revision: 79087 $"
 
 # Standard Python imports.
 import array
@@ -192,7 +192,7 @@ def zeroByteArray(cb):
     """Returns an array with the given size containing 0."""
     abArray = array.array('B', (0, ));
     cb = cb - 1;
-    for i in range(cb): # pylint: disable=W0612
+    for i in range(cb): # pylint: disable=unused-variable
         abArray.append(0);
     return abArray;
 
@@ -984,7 +984,7 @@ class TransportTcp(TransportBase):
                 try:
                     if oXcpt[0] == errno.EWOULDBLOCK:
                         return True;
-                    if utils.getHostOs == 'win' and oXcpt[0] == errno.WSAEWOULDBLOCK: # pylint: disable=E1101
+                    if utils.getHostOs == 'win' and oXcpt[0] == errno.WSAEWOULDBLOCK: # pylint: disable=no-member
                         return True;
                 except: pass;
         except:
@@ -1122,7 +1122,7 @@ class TransportTcp(TransportBase):
         oWakeupR = None;
         oWakeupW = None;
         if hasattr(socket, 'socketpair'):
-            try:    (oWakeupR, oWakeupW) = socket.socketpair();         # pylint: disable=E1101
+            try:    (oWakeupR, oWakeupW) = socket.socketpair();         # pylint: disable=no-member
             except: reporter.logXcpt('socket.socketpair() failed');
 
         # Update the state.

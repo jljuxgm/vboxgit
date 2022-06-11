@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 79071 2019-06-11 00:44:53Z vboxsync $
+# $Id: vboxtestvms.py 79087 2019-06-11 11:58:28Z vboxsync $
 
 """
 VirtualBox Test VMs
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79071 $"
+__version__ = "$Revision: 79087 $"
 
 # Standard Python imports.
 import copy;
@@ -70,9 +70,9 @@ g_kfGrpExotic    = 0x2000;                          ##< Exotic OS.
 
 ## @name Flags.
 ## @{
-g_k32           = 32;                   # pylint: disable=C0103
-g_k64           = 64;                   # pylint: disable=C0103
-g_k32_64        = 96;                   # pylint: disable=C0103
+g_k32           = 32;                   # pylint: disable=invalid-name
+g_k64           = 64;                   # pylint: disable=invalid-name
+g_k32_64        = 96;                   # pylint: disable=invalid-name
 g_kiArchMask    = 96;
 g_kiNoRaw       = 128;                  ##< No raw mode.
 ## @}
@@ -86,7 +86,7 @@ g_iMaxCpu      = 4;
 g_iRegEx       = 5;
 
 # Table translating from VM name core to a more detailed guest info.
-# pylint: disable=C0301
+# pylint: disable=line-too-long
 ## @todo what's the difference between the first two columns again?
 g_aaNameToDetails = \
 [
@@ -178,7 +178,7 @@ g_kdaParavirtProvidersSupported = {
 }
 
 
-# pylint: enable=C0301
+# pylint: enable=line-too-long
 
 def _intersects(asSet1, asSet2):
     """
@@ -198,7 +198,7 @@ class BaseTestVm(object):
     Base class for Test VMs.
     """
 
-    def __init__(self, # pylint: disable=R0913
+    def __init__(self, # pylint: disable=too-many-arguments
                  sVmName,                                   # type: str
                  fGrouping = 0,                             # type: int
                  oSet = None,                               # type: TestVmSet
@@ -903,7 +903,7 @@ class TestVm(object):
     This is just a data object.
     """
 
-    def __init__(self, # pylint: disable=R0913
+    def __init__(self, # pylint: disable=too-many-arguments
                  sVmName,                                   # type: str
                  fGrouping = 0,                             # type: int
                  oSet = None,                               # type: TestVmSet
@@ -1394,7 +1394,7 @@ class AncientTestVm(TestVm):
     """
 
 
-    def __init__(self, # pylint: disable=R0913
+    def __init__(self, # pylint: disable=too-many-arguments
                  sVmName,                                   # type: str
                  fGrouping = g_kfGrpAncient | g_kfGrpNoTxs, # type: int
                  sHd = None,                                # type: str
@@ -1702,7 +1702,7 @@ class TestVmSet(object):
 
         return True;
 
-    def actionExecute(self, oTestDrv, fnCallback): # pylint: disable=R0914
+    def actionExecute(self, oTestDrv, fnCallback): # pylint: disable=too-many-locals
         """
         For base.TestDriver.actionExecute.  Calls the callback function for
         each of the VMs and basic configuration variations (virt-mode and cpu

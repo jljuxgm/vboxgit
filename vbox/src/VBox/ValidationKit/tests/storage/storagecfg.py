@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: storagecfg.py 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: storagecfg.py 79087 2019-06-11 11:58:28Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage test configuration API.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 76553 $"
+__version__ = "$Revision: 79087 $"
 
 # Standard Python imports.
 import os;
@@ -427,7 +427,7 @@ class StorageCfg(object):
         if sTargetOs == 'solaris':
             oStorOs = StorageConfigOsSolaris();
         elif sTargetOs == 'linux':
-            oStorOs = StorageConfigOsLinux(); # pylint: disable=R0204
+            oStorOs = StorageConfigOsLinux(); # pylint: disable=redefined-variable-type
         else:
             fRc = False;
 
@@ -449,11 +449,11 @@ class StorageCfg(object):
         """
 
         # Destroy all volumes first.
-        for sMountPoint in self.dVols.keys(): # pylint: disable=C0201
+        for sMountPoint in self.dVols.keys(): # pylint: disable=consider-iterating-dictionary
             self.destroyVolume(sMountPoint);
 
         # Destroy all pools.
-        for sPool in self.dPools.keys(): # pylint: disable=C0201
+        for sPool in self.dPools.keys(): # pylint: disable=consider-iterating-dictionary
             self.destroyStoragePool(sPool);
 
         self.dVols.clear();

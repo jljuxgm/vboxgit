@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: buildsource.py 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: buildsource.py 79087 2019-06-11 11:58:28Z vboxsync $
 
 """
 Test Manager - Build Sources.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 76553 $"
+__version__ = "$Revision: 79087 $"
 
 
 # Standard python imports.
@@ -149,7 +149,7 @@ class BuildSourceData(ModelDataBase):
 
         return (oNewValue, sError);
 
-class BuildSourceLogic(ModelLogicBase): # pylint: disable=R0903
+class BuildSourceLogic(ModelLogicBase): # pylint: disable=too-few-public-methods
     """
     Build source database logic.
     """
@@ -503,7 +503,7 @@ class BuildSourceLogic(ModelLogicBase): # pylint: disable=R0903
 # Unit testing.
 #
 
-# pylint: disable=C0111
+# pylint: disable=missing-docstring
 class BuildSourceDataTestCase(ModelDataBaseTestCase):
     def setUp(self):
         self.aoSamples = [BuildSourceData(),];

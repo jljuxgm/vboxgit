@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: winbase.py 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: winbase.py 79087 2019-06-11 11:58:28Z vboxsync $
 
 """
 This module is here to externalize some Windows specifics that gives pychecker
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 76553 $"
+__version__ = "$Revision: 79087 $"
 
 
 # Standard Python imports.
@@ -142,7 +142,7 @@ def processCheckPidAndName(uPid, sName):
     fRc = processExists(uPid);
     if fRc is True:
         try:
-            from win32com.client import GetObject; # pylint: disable=F0401
+            from win32com.client import GetObject; # pylint: disable=import-error
             oWmi = GetObject('winmgmts:');
             aoProcesses = oWmi.InstancesOf('Win32_Process');
             for oProcess in aoProcesses:

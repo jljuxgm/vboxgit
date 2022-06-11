@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testset.py 78780 2019-05-27 10:33:51Z vboxsync $
+# $Id: testset.py 79087 2019-06-11 11:58:28Z vboxsync $
 
 """
 Test Manager - TestSet.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 78780 $"
+__version__ = "$Revision: 79087 $"
 
 
 # Standard python imports.
@@ -536,7 +536,7 @@ class TestSetLogic(ModelLogicBase):
         self._oDb.maybeCommit(fCommit);
         return True;
 
-    def createFile(self, oTestSet, sName, sMime, sKind, sDesc, cbFile, fCommit = False): # pylint: disable=R0914
+    def createFile(self, oTestSet, sName, sMime, sKind, sDesc, cbFile, fCommit = False): # pylint: disable=too-many-locals
         """
         Creates a file and associating with the current test result record in
         the test set.
@@ -824,7 +824,7 @@ class TestSetLogic(ModelLogicBase):
 # Unit testing.
 #
 
-# pylint: disable=C0111
+# pylint: disable=missing-docstring
 class TestSetDataTestCase(ModelDataBaseTestCase):
     def setUp(self):
         self.aoSamples = [TestSetData(),];

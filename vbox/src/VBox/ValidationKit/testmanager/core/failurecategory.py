@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: failurecategory.py 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: failurecategory.py 79087 2019-06-11 11:58:28Z vboxsync $
 
 """
 Test Manager - Failure Categories.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 76553 $"
+__version__ = "$Revision: 79087 $"
 
 
 # Standard Python imports.
@@ -108,7 +108,7 @@ class FailureCategoryData(ModelDataBase):
         return self.initFromDbRow(aoRow);
 
 
-class FailureCategoryLogic(ModelLogicBase): # pylint: disable=R0903
+class FailureCategoryLogic(ModelLogicBase): # pylint: disable=too-few-public-methods
     """
     Failure Category logic.
     """
@@ -148,7 +148,7 @@ class FailureCategoryLogic(ModelLogicBase): # pylint: disable=R0903
         return aoRows
 
 
-    def fetchForChangeLog(self, idFailureCategory, iStart, cMaxRows, tsNow): # pylint: disable=R0914
+    def fetchForChangeLog(self, idFailureCategory, iStart, cMaxRows, tsNow): # pylint: disable=too-many-locals
         """
         Fetches change log entries for a failure reason.
 

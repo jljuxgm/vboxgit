@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: close_orphaned_testsets.py 76553 2019-01-01 01:45:53Z vboxsync $
-# pylint: disable=C0301
+# $Id: close_orphaned_testsets.py 79087 2019-06-11 11:58:28Z vboxsync $
+# pylint: disable=line-too-long
 
 """
 Maintenance tool for closing orphaned testsets.
@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 76553 $"
+__version__ = "$Revision: 79087 $"
 
 # Standard python imports
 import sys

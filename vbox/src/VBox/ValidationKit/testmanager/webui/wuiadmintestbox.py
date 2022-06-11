@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuiadmintestbox.py 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: wuiadmintestbox.py 79087 2019-06-11 11:58:28Z vboxsync $
 
 """
 Test Manager WUI - TestBox.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 76553 $"
+__version__ = "$Revision: 79087 $"
 
 
 # Standard python imports.
@@ -238,7 +238,7 @@ class WuiTestBoxList(WuiListContentWithActionBase):
                      % (len(self._aoEntries), cActive, cDead,)
         return (sTitle, sBody);
 
-    def _formatListEntry(self, iEntry): # pylint: disable=R0914
+    def _formatListEntry(self, iEntry): # pylint: disable=too-many-locals
         from testmanager.webui.wuiadmin import WuiAdmin;
         oEntry  = self._aoEntries[iEntry];
 
@@ -273,7 +273,7 @@ class WuiTestBoxList(WuiListContentWithActionBase):
                 oState = str(oEntry.oStatus.enmState);
             else:
                 from testmanager.webui.wuimain import WuiMain;
-                oState = WuiTmLink(oEntry.oStatus.enmState, WuiMain.ksScriptName,                       # pylint: disable=R0204
+                oState = WuiTmLink(oEntry.oStatus.enmState, WuiMain.ksScriptName,                       # pylint: disable=redefined-variable-type
                                    { WuiMain.ksParamAction: WuiMain.ksActionTestResultDetails,
                                      TestSetData.ksParam_idTestSet: oEntry.oStatus.idTestSet, },
                                    sTitle = '#%u' % (oEntry.oStatus.idTestSet,),

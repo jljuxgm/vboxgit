@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Id: tdStorageStress1.py 76553 2019-01-01 01:45:53Z vboxsync $"
+__version__ = "$Id: tdStorageStress1.py 79087 2019-06-11 11:58:28Z vboxsync $"
 
 
 # Standard Python imports.
@@ -59,7 +59,7 @@ def _ControllerTypeToName(eControllerType):
         sType = "Storage Controller";
     return sType;
 
-class tdStorageStress(vbox.TestDriver):                                      # pylint: disable=R0902
+class tdStorageStress(vbox.TestDriver):                                      # pylint: disable=too-many-instance-attributes
     """
     Storage testcase.
     """
@@ -124,7 +124,7 @@ class tdStorageStress(vbox.TestDriver):                                      # p
         reporter.log('      Skip the specified VMs when testing.');
         return rc;
 
-    def parseOption(self, asArgs, iArg):                                        # pylint: disable=R0912,R0915
+    def parseOption(self, asArgs, iArg):                                        # pylint: disable=too-many-branches,too-many-statements
         if asArgs[iArg] == '--virt-modes':
             iArg += 1;
             if iArg >= len(asArgs): raise base.InvalidOption('The "--virt-modes" takes a colon separated list of modes');
@@ -325,7 +325,7 @@ class tdStorageStress(vbox.TestDriver):                                      # p
         reporter.testDone(not fRc);
         return fRc;
 
-    # pylint: disable=R0913
+    # pylint: disable=too-many-arguments
 
     def test1OneCfg(self, sVmName, eStorageController, sDiskFormat, sDiskPath1, sDiskPath2, \
                     sGuestFs, cCpus, fHwVirt, fNestedPaging):

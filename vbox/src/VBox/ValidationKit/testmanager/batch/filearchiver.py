@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: filearchiver.py 76553 2019-01-01 01:45:53Z vboxsync $
-# pylint: disable=C0301
+# $Id: filearchiver.py 79087 2019-06-11 11:58:28Z vboxsync $
+# pylint: disable=line-too-long
 
 """
 A cronjob that compresses logs and other files, moving them to the
@@ -31,7 +31,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 76553 $"
+__version__ = "$Revision: 79087 $"
 
 # Standard python imports
 import sys
@@ -52,7 +52,7 @@ from testmanager.core.testset   import TestSetData, TestSetLogic;
 
 
 
-class FileArchiverBatchJob(object): # pylint: disable=R0903
+class FileArchiverBatchJob(object): # pylint: disable=too-few-public-methods
     """
     Log+files comp
     """

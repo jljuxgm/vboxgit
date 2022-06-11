@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testcaseargs.py 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: testcaseargs.py 79087 2019-06-11 11:58:28Z vboxsync $
 
 """
 Test Manager - Test Case Arguments Variations.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 76553 $"
+__version__ = "$Revision: 79087 $"
 
 
 # Standard python imports.
@@ -41,7 +41,7 @@ from testmanager.core.testcase          import TestCaseData, TestCaseDependencyL
 
 # Python 3 hacks:
 if sys.version_info[0] >= 3:
-    long = int;     # pylint: disable=W0622,C0103
+    long = int;     # pylint: disable=redefined-builtin,invalid-name
 
 
 class TestCaseArgsData(ModelDataBase):
@@ -134,7 +134,7 @@ class TestCaseArgsData(ModelDataBase):
         oDb.execute('SELECT * FROM TestCaseArgs WHERE idGenTestCaseArgs = %s', (idGenTestCaseArgs,));
         return self.initFromDbRow(oDb.fetchOne());
 
-    def initFromValues(self, sArgs, cSecTimeout = None, sTestBoxReqExpr = None, sBuildReqExpr = None,  # pylint: disable=R0913
+    def initFromValues(self, sArgs, cSecTimeout = None, sTestBoxReqExpr = None, sBuildReqExpr = None,  # pylint: disable=too-many-arguments
                        cGangMembers = 1, idTestCase = None, idTestCaseArgs = None, tsEffective = None, tsExpire = None,
                        uidAuthor = None, idGenTestCaseArgs = None, sSubName = None):
         """
@@ -395,7 +395,7 @@ class TestCaseArgsLogic(ModelLogicBase):
 # Unit testing.
 #
 
-# pylint: disable=C0111
+# pylint: disable=missing-docstring
 class TestCaseArgsDataTestCase(ModelDataBaseTestCase):
     def setUp(self):
         self.aoSamples = [TestCaseArgsData(),];

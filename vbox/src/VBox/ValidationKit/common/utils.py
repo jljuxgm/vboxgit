@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-# $Id: utils.py 78472 2019-05-12 18:28:36Z vboxsync $
-# pylint: disable=C0302
+# $Id: utils.py 79087 2019-06-11 11:58:28Z vboxsync $
+# pylint: disable=too-many-lines
 
 """
 Common Utility Functions.
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 78472 $"
+__version__ = "$Revision: 79087 $"
 
 
 # Standard Python imports.
@@ -319,7 +319,7 @@ def openNoInherit(sFile, sMode = 'r'):
         oFile = open(sFile, sMode);
     else:
         try:
-            from fcntl import FD_CLOEXEC, F_GETFD, F_SETFD, fcntl; # pylint: disable=F0401
+            from fcntl import FD_CLOEXEC, F_GETFD, F_SETFD, fcntl; # pylint: disable=import-error
         except:
             # On windows, we can use the 'N' flag introduced in Visual C++ 7.0 or 7.1 with python 2.x.
             if getHostOs() == 'win':
@@ -398,7 +398,7 @@ def openNoDenyDeleteNoInherit(sFile, sMode = 'r'):
         uPythonVer = (sys.version_info[0] << 16) | (sys.version_info[1] & 0xffff);
         if uPythonVer < ((3 << 16) | 4):
             try:
-                from fcntl import FD_CLOEXEC, F_GETFD, F_SETFD, fcntl; # pylint: disable=F0401
+                from fcntl import FD_CLOEXEC, F_GETFD, F_SETFD, fcntl; # pylint: disable=import-error
             except:
                 pass;
             else:
@@ -410,7 +410,7 @@ def noxcptReadLink(sPath, sXcptRet, sEncoding = 'utf-8'):
     No exceptions os.readlink wrapper.
     """
     try:
-        sRet = os.readlink(sPath); # pylint: disable=E1101
+        sRet = os.readlink(sPath); # pylint: disable=no-member
     except:
         return sXcptRet;
     if hasattr(sRet, 'decode'):
@@ -582,7 +582,7 @@ def getDiskUsage(sPath):
                                                    ctypes.pointer(oCTypeFreeSpace));
         cbFreeSpace = oCTypeFreeSpace.value;
     else:
-        oStats = os.statvfs(sPath); # pylint: disable=E1101
+        oStats = os.statvfs(sPath); # pylint: disable=no-member
         cbFreeSpace = long(oStats.f_frsize) * oStats.f_bfree;
 
     # Convert to MB
@@ -684,7 +684,7 @@ def _sudoFixArguments(aPositionalArgs, dKeywordArgs, fInitialEnv = True):
     # Are we root?
     fIsRoot = True;
     try:
-        fIsRoot = os.getuid() == 0; # pylint: disable=E1101
+        fIsRoot = os.getuid() == 0; # pylint: disable=no-member
     except:
         pass;
 
@@ -796,7 +796,7 @@ def sendUserSignal1(uPid):
         fRc = False;
     else:
         try:
-            os.kill(uPid, signal.SIGUSR1); # pylint: disable=E1101
+            os.kill(uPid, signal.SIGUSR1); # pylint: disable=no-member
             fRc = True;
         except:
             fRc = False;
@@ -839,7 +839,7 @@ def processKill(uPid):
         fRc = processTerminate(uPid);
     else:
         try:
-            os.kill(uPid, signal.SIGKILL); # pylint: disable=E1101
+            os.kill(uPid, signal.SIGKILL); # pylint: disable=no-member
             fRc = True;
         except:
             fRc = False;
@@ -897,7 +897,7 @@ def processCheckPidAndName(uPid, sName):
 
     if sys.platform == 'win32':
         try:
-            from win32com.client import GetObject; # pylint: disable=F0401
+            from win32com.client import GetObject; # pylint: disable=import-error
             oWmi = GetObject('winmgmts:');
             aoProcesses = oWmi.InstancesOf('Win32_Process');
             for oProcess in aoProcesses:
@@ -1091,7 +1091,7 @@ class ProcessInfo(object):
         return sRet;
 
 
-def processListAll(): # pylint: disable=R0914
+def processListAll():
     """
     Return a list of ProcessInfo objects for all the processes in the system
     that the current user can see.
@@ -1100,7 +1100,7 @@ def processListAll(): # pylint: disable=R0914
 
     sOs = getHostOs();
     if sOs == 'win':
-        from win32com.client import GetObject; # pylint: disable=F0401
+        from win32com.client import GetObject; # pylint: disable=import-error
         oWmi = GetObject('winmgmts:');
         aoProcesses = oWmi.InstancesOf('Win32_Process');
         for oProcess in aoProcesses:
@@ -2137,7 +2137,7 @@ def areBytesEqual(oLeft, oRight):
 # Unit testing.
 #
 
-# pylint: disable=C0111
+# pylint: disable=missing-docstring
 # pylint: disable=undefined-variable
 class BuildCategoryDataTestCase(unittest.TestCase):
     def testIntervalSeconds(self):

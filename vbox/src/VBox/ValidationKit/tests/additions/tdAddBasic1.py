@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 79067 2019-06-10 22:56:46Z vboxsync $
+# $Id: tdAddBasic1.py 79087 2019-06-11 11:58:28Z vboxsync $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79067 $"
+__version__ = "$Revision: 79087 $"
 
 # Standard Python imports.
 import os;
@@ -52,7 +52,7 @@ from tdAddGuestCtrl import SubTstDrvAddGuestCtrl;
 from tdAddSharedFolders1 import SubTstDrvAddSharedFolders1;
 
 
-class tdAddBasic1(vbox.TestDriver):                                         # pylint: disable=R0902
+class tdAddBasic1(vbox.TestDriver):                                         # pylint: disable=too-many-instance-attributes
     """
     Additions Basics #1.
     """
@@ -83,7 +83,7 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
         reporter.log('      Same as --virt-modes hwvirt --cpu-counts 1.');
         return rc;
 
-    def parseOption(self, asArgs, iArg):                                        # pylint: disable=R0912,R0915
+    def parseOption(self, asArgs, iArg):                                  # pylint: disable=too-many-branches,too-many-statements
         if asArgs[iArg] == '--tests':
             iArg += 1;
             if iArg >= len(asArgs): raise base.InvalidOption('The "--tests" takes a colon separated list of tests');
