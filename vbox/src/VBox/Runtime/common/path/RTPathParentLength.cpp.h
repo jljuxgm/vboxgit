@@ -1,4 +1,4 @@
-/* $Id: RTPathParentLength.cpp.h 78702 2019-05-24 00:11:00Z vboxsync $ */
+/* $Id: RTPathParentLength.cpp.h 78705 2019-05-24 01:42:36Z vboxsync $ */
 /** @file
  * IPRT - RTPathParentLength - Code Template.
  *
@@ -31,7 +31,7 @@
 /**
  * @copydoc RTPathParentLengthEx
  */
-static int RTPATH_STYLE_FN(rtPathParentLength)(const char *pszPath, uint32_t fFlags)
+static size_t RTPATH_STYLE_FN(rtPathParentLength)(const char *pszPath, uint32_t fFlags)
 {
     /*
      * Determin the length of the root component so we can make sure
