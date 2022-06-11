@@ -1,4 +1,4 @@
-/* $Id: EMR0.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: EMR0.cpp 78431 2019-05-07 14:01:45Z vboxsync $ */
 /** @file
  * EM - Host Context Ring 0.
  */
@@ -38,7 +38,12 @@
  * @param   pGVM            The ring-0 VM structure.
  * @param   pVM             The cross context VM structure.
  */
+#ifdef VBOX_BUGREF_9217
+VMMR0_INT_DECL(int) EMR0InitVM(PGVM pGVM)
+# define pVM pGVM /* temp hack */
+#else
 VMMR0_INT_DECL(int) EMR0InitVM(PGVM pGVM, PVM pVM)
+#endif
 {
     /*
      * Override ring-0 exit optimizations settings.
@@ -49,7 +54,11 @@ VMMR0_INT_DECL(int) EMR0InitVM(PGVM pGVM, PVM pVM)
     bool fEnabledR0PreemptDisabled = fEnabledR0
                                   && pVM->aCpus[0].em.s.fExitOptimizationEnabledR0PreemptDisabled
                                   && RTThreadPreemptIsPendingTrusty();
+#ifdef VBOX_BUGREF_9217
+    for (VMCPUID i = 0; i < pGVM->cCpusSafe; i++)
+#else
     for (VMCPUID i = 0; i < pGVM->cCpus; i++)
+#endif
     {
         pVM->aCpus[i].em.s.fExitOptimizationEnabledR0                = fEnabledR0;
         pVM->aCpus[i].em.s.fExitOptimizationEnabledR0PreemptDisabled = fEnabledR0PreemptDisabled;

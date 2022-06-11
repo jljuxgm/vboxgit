@@ -1,4 +1,4 @@
-/* $Id: tstInt.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: tstInt.cpp 78431 2019-05-07 14:01:45Z vboxsync $ */
 /** @file
  * SUP Testcase - Test the interrupt gate feature of the support library.
  */
@@ -97,7 +97,9 @@ int main(int argc, char **argv)
                 AssertRelease(pVM->pVMR0 == CreateVMReq.pVMR0);
                 AssertRelease(pVM->pSession == pSession);
                 AssertRelease(pVM->cCpus == 1);
+#ifdef VBOX_WITH_RAW_MODE
                 AssertRelease(pVM->offVMCPU == RT_UOFFSETOF(VM, aCpus));
+#endif
                 pVM->enmVMState = VMSTATE_CREATED;
                 PVMR0 const pVMR0 = pVM->pVMR0;
 

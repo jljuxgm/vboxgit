@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 77196 2019-02-07 13:33:50Z vboxsync $ */
+/* $Id: VM.cpp 78431 2019-05-07 14:01:45Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -592,7 +592,9 @@ static int vmR3CreateU(PUVM pUVM, uint32_t cCpus, PFNCFGMCONSTRUCTOR pfnCFGMCons
         AssertRelease(pVM->pSession == pUVM->vm.s.pSession);
         AssertRelease(pVM->cCpus == cCpus);
         AssertRelease(pVM->uCpuExecutionCap == 100);
+#ifdef VBOX_WITH_RAW_MODE
         AssertRelease(pVM->offVMCPU == RT_UOFFSETOF(VM, aCpus));
+#endif
         AssertCompileMemberAlignment(VM, cpum, 64);
         AssertCompileMemberAlignment(VM, tm, 64);
         AssertCompileMemberAlignment(VM, aCpus, PAGE_SIZE);

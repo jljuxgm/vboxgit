@@ -1,4 +1,4 @@
-# $Id: Config.kmk 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: Config.kmk 78431 2019-05-07 14:01:45Z vboxsync $
 ## @file
 # kBuild Configuration file for the VMM.
 #
@@ -80,6 +80,9 @@ ifdef VBOXSTRICTRC_STRICT_ENABLED
 endif
 ifeq ($(KBUILD_TARGET),amd64)
  VMM_COMMON_DEFS += VBOX_WITH_MORE_RING0_MEM_MAPPINGS
+endif
+ifdef VBOX_BUGREF_9217
+ VMM_COMMON_DEFS += VBOX_BUGREF_9217
 endif
 
 # VMM_COMMON_DEFS += VBOX_WITH_NS_ACCOUNTING_STATS
