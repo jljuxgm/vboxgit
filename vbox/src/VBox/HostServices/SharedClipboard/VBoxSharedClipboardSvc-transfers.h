@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-transfers.h 80862 2019-09-17 14:45:21Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-transfers.h 80863 2019-09-17 14:53:27Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Internal header for transfer (list) handling.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef VBOX_INCLUDED_SRC_SharedClipboard_VBoxSharedClipboardSvc_uri_h
-#define VBOX_INCLUDED_SRC_SharedClipboard_VBoxSharedClipboardSvc_uri_h
+#ifndef VBOX_INCLUDED_SRC_SharedClipboard_VBoxSharedClipboardSvc_transfers_h
+#define VBOX_INCLUDED_SRC_SharedClipboard_VBoxSharedClipboardSvc_transfers_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -29,5 +29,5 @@ int sharedClipboardSvcTransferAreaUnregister(PSHCLCLIENTSTATE pClientState, PSHC
 int sharedClipboardSvcTransferAreaAttach(PSHCLCLIENTSTATE pClientState, PSHCLTRANSFER pTransfer, SHCLAREAID uID);
 int sharedClipboardSvcTransferAreaDetach(PSHCLCLIENTSTATE pClientState, PSHCLTRANSFER pTransfer);
 
-#endif /* !VBOX_INCLUDED_SRC_SharedClipboard_VBoxSharedClipboardSvc_uri_h */
+#endif /* !VBOX_INCLUDED_SRC_SharedClipboard_VBoxSharedClipboardSvc_transfers_h */
 
