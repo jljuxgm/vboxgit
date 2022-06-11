@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 81591 2019-10-30 14:14:10Z vboxsync $ */
+/* $Id: DevE1000.cpp 81624 2019-11-01 20:46:49Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -7879,7 +7879,7 @@ static DECLCALLBACK(int) e1kR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFGM
     rc = PDMDevHlpIoPortCreate(pDevIns, E1K_IOPORT_SIZE, pDevIns->apPciDevs[0], 2 /*iPciRegion*/,
                                e1kIOPortOut, e1kIOPortIn, NULL /*pvUser*/, "E1000", s_aExtDescs, &pThis->hIoPorts);
     AssertRCReturn(rc, rc);
-    rc = PDMDevHlpPCIIORegionRegisterIo(pDevIns, 2, E1K_IOPORT_SIZE, pThis->hIoPorts, NULL);
+    rc = PDMDevHlpPCIIORegionRegisterIo(pDevIns, 2, E1K_IOPORT_SIZE, pThis->hIoPorts);
     AssertRCReturn(rc, rc);
 
     /* Create transmit queue */

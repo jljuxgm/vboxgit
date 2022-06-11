@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 81514 2019-10-24 11:25:11Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 81624 2019-11-01 20:46:49Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation device.
  *
@@ -2542,7 +2542,8 @@ static int devpciR3UnmapRegion(PPDMDEVINS pDevIns, PPDMPCIDEV pDev, int iRegion)
     int rc = VINF_SUCCESS;
     if (pRegion->addr != INVALID_PCI_ADDRESS)
     {
-        if (pRegion->hHandle != UINT64_MAX)
+        if (   (pRegion->hHandle != UINT64_MAX)
+            || (pRegion->fFlags & PDMPCIDEV_IORGN_F_NEW_STYLE))
         {
             /*
              * New style device with a IOM handle.  Do callout first (optional),
@@ -2565,6 +2566,16 @@ static int devpciR3UnmapRegion(PPDMDEVINS pDevIns, PPDMPCIDEV pDev, int iRegion)
                 case PDMPCIDEV_IORGN_F_MMIO_HANDLE:
                     rc = PDMDevHlpMmioUnmap(pDev->Int.s.pDevInsR3, (IOMMMIOHANDLE)pRegion->hHandle);
                     AssertRC(rc);
+                    break;
+
+                case PDMPCIDEV_IORGN_F_MMIO2_HANDLE:
+                    rc = PDMDevHlpMmio2Unmap(pDev->Int.s.pDevInsR3, (PGMMMIO2HANDLE)pRegion->hHandle);
+                    AssertRC(rc);
+                    break;
+
+                case PDMPCIDEV_IORGN_F_NO_HANDLE:
+                    Assert(pRegion->fFlags & PDMPCIDEV_IORGN_F_NEW_STYLE);
+                    Assert(pRegion->hHandle == UINT64_MAX);
                     break;
 
                 default:
@@ -2746,6 +2757,11 @@ static VBOXSTRICTRC devpciR3UpdateMappings(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDe
                             case PDMPCIDEV_IORGN_F_MMIO_HANDLE:
                                 rc = PDMDevHlpMmioMap(pPciDev->Int.s.pDevInsR3, (IOMMMIOHANDLE)pRegion->hHandle, uNew);
                                 AssertLogRelRC(rc);
+                                break;
+
+                            case PDMPCIDEV_IORGN_F_MMIO2_HANDLE:
+                                rc = PDMDevHlpMmio2Map(pPciDev->Int.s.pDevInsR3, (PGMMMIO2HANDLE)pRegion->hHandle, uNew);
+                                AssertRC(rc);
                                 break;
 
                             default:
