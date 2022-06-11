@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 79687 2019-07-11 09:08:08Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 79689 2019-07-11 11:31:56Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -49,6 +49,7 @@
 # define HMVMX_ALWAYS_SAVE_GUEST_RFLAGS
 # define HMVMX_ALWAYS_SAVE_FULL_GUEST_STATE
 # define HMVMX_ALWAYS_SYNC_FULL_GUEST_STATE
+# define HMVMX_ALWAYS_CLEAN_TRANSIENT
 # define HMVMX_ALWAYS_CHECK_GUEST_STATE
 # define HMVMX_ALWAYS_TRAP_ALL_XCPTS
 # define HMVMX_ALWAYS_TRAP_PF
@@ -11438,6 +11439,25 @@ static void hmR0VmxPostRunGuest(PVMCPU pVCpu, PVMXTRANSIENT pVmxTransient, int r
     Assert(!ASMIntAreEnabled());
     ASMSetFlags(pVmxTransient->fEFlags);                                /* Enable interrupts. */
     Assert(!VMMRZCallRing3IsEnabled(pVCpu));
+
+#ifdef HMVMX_ALWAYS_CLEAN_TRANSIENT
+    /*
+     * Clean all the VMCS fields in the transient structure before reading
+     * anything from the VMCS.
+     */
+    pVmxTransient->uExitReason            = 0;
+    pVmxTransient->uExitIntErrorCode      = 0;
+    pVmxTransient->uExitQual              = 0;
+    pVmxTransient->uGuestLinearAddr       = 0;
+    pVmxTransient->uExitIntInfo           = 0;
+    pVmxTransient->cbInstr                = 0;
+    pVmxTransient->ExitInstrInfo.u        = 0;
+    pVmxTransient->uEntryIntInfo          = 0;
+    pVmxTransient->uEntryXcptErrorCode    = 0;
+    pVmxTransient->cbEntryInstr           = 0;
+    pVmxTransient->uIdtVectoringInfo      = 0;
+    pVmxTransient->uIdtVectoringErrorCode = 0;
+#endif
 
     /*
      * Save the basic VM-exit reason and check if the VM-entry failed.
