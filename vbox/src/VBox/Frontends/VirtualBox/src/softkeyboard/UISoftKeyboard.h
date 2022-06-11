@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboard.h 79641 2019-07-09 12:58:12Z vboxsync $ */
+/* $Id: UISoftKeyboard.h 79729 2019-07-12 12:22:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class declaration.
  */
@@ -66,6 +66,9 @@ private slots:
 
     void sltKeyboardLedsChange();
     void sltPutKeyboardSequence(QVector<LONG> sequence);
+    void sltPutUsageCodesPress(QVector<QPair<LONG, LONG> > sequence);
+    void sltPutUsageCodesRelease(QVector<QPair<LONG, LONG> > sequence);
+
     void sltStatusBarContextMenuRequest(const QPoint &point);
     /** Handles the signal we get from the layout selector widget.
       * Selection changed is forwarded to the keyboard widget. */
