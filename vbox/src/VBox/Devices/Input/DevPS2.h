@@ -1,4 +1,4 @@
-/* $Id: DevPS2.h 82190 2019-11-25 17:44:40Z vboxsync $ */
+/* $Id: DevPS2.h 82191 2019-11-25 17:48:55Z vboxsync $ */
 /** @file
  * PS/2 devices - Internal header file.
  */
@@ -374,18 +374,6 @@ typedef struct KBDSTATE
 
 /* Shared keyboard/aux internal interface. */
 void KBCUpdateInterrupts(void *pKbc);
-
-
-///@todo: This should live with the KBC implementation.
-/** AT to PC scancode translator state.  */
-typedef enum
-{
-    XS_IDLE,    /**< Starting state. */
-    XS_BREAK,   /**< F0 break byte was received. */
-    XS_HIBIT    /**< Break code still active. */
-} xlat_state_t;
-
-int32_t XlateAT2PC(int32_t state, uint8_t scanIn, uint8_t *pScanOut);
 
 /** @}  */
 
