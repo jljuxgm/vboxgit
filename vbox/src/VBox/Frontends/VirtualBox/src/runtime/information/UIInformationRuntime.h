@@ -1,4 +1,4 @@
-/* $Id: UIInformationRuntime.h 80406 2019-08-23 21:06:48Z vboxsync $ */
+/* $Id: UIInformationRuntime.h 80409 2019-08-23 22:43:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationRuntime class declaration.
  */
@@ -150,7 +150,6 @@ private:
     void enableDisableGuestAdditionDependedWidgets(bool fEnable);
     void updateCPUGraphsAndMetric(ULONG iLoadPercentage, ULONG iOtherPercentage);
     void updateRAMGraphsAndMetric(quint64 iTotalRAM, quint64 iFreeRAM);
-    void updateNetworkGraphsAndMetric(qulonglong iReceiveRate, qulonglong iTransmitRate);
     void updateNetworkDebuggerGraphsAndMetric(qulonglong iReceiveTotal, qulonglong iTransmitTotal);
 
     QString dataColorString(const QString &strChartName, int iDataIndex);
@@ -182,8 +181,7 @@ private:
         QString m_strCPUMetricName;
         QString m_strRAMMetricName;
         QString m_strDiskMetricName;
-        QString m_strNetMetricName;
-        QString m_strNetDebuggerMetricName;
+        QString m_strNetworkMetricName;
     /** @} */
 
     /** @name Cached translated strings.
@@ -198,13 +196,15 @@ private:
         QString m_strRAMInfoLabelFree;
         QString m_strRAMInfoLabelUsed;
         /** Net traffic info label strings. */
-        QString m_strNetInfoLabelTitle;
-        QString m_strNetInfoLabelReceived;
-        QString m_strNetInfoLabelTransmitted;
-        QString m_strNetInfoLabelMaximum;
+        QString m_strNetworkInfoLabelTitle;
+        QString m_strNetworkInfoLabelReceived;
+        QString m_strNetworkInfoLabelTransmitted;
+        QString m_strNetworkInfoLabelReceivedTotal;
+        QString m_strNetworkInfoLabelTransmittedTotal;
     /** @} */
     /** The following string is used while querrying CMachineDebugger. */
     QString m_strQueryString;
+    qulonglong m_iTimeStep;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_runtime_information_UIInformationRuntime_h */
