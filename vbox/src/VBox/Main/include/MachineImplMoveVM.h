@@ -1,4 +1,4 @@
-/* $Id: MachineImplMoveVM.h 81393 2019-10-21 08:33:26Z vboxsync $ */
+/* $Id: MachineImplMoveVM.h 81394 2019-10-21 09:16:17Z vboxsync $ */
 /** @file
  * Definition of MachineMoveVM
  */
@@ -65,6 +65,7 @@ struct fileList_t;
 
 class MachineMoveVM : public ThreadTask
 {
+    std::vector<ComObjPtr<Machine> >        machineList;
     RTCList<MEDIUMTASKCHAINMOVE>            m_llMedias;
     RTCList<SAVESTATETASKMOVE>              m_llSaveStateFiles;
     std::map<Utf8Str, MEDIUMTASKMOVE>       m_finalMediumsMap;
@@ -109,9 +110,9 @@ public:
     }
 
 private:
-    HRESULT createMachineList(const ComPtr<ISnapshot> &pSnapshot, std::vector<ComObjPtr<Machine> > &aMachineList) const;
+    HRESULT createMachineList(const ComPtr<ISnapshot> &pSnapshot);
     inline HRESULT queryBaseName(const ComPtr<IMedium> &pMedium, Utf8Str &strBaseName) const;
-    HRESULT queryMediasForAllStates(const std::vector<ComObjPtr<Machine> > &aMachineList);
+    HRESULT queryMediasForAllStates();
     void updateProgressStats(MEDIUMTASKCHAINMOVE &mtc, ULONG &uCount, ULONG &uTotalWeight) const;
     HRESULT addSaveState(const ComObjPtr<Machine> &machine);
     void printStateFile(settings::SnapshotsList &snl);
