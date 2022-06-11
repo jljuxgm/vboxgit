@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 79002 2019-06-05 15:39:36Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 80303 2019-08-15 16:53:10Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -38,9 +38,6 @@
 #include <iprt/alloca.h>
 
 #include <VBox/vmm/pdmdrv.h>
-#if defined(DEBUG) || defined(VBOX_STRICT) /* for VM_ASSERT_EMT(). */
-# include <VBox/vmm/vm.h>
-#endif
 
 #ifdef VBOX_WITH_VIDEOHWACCEL
 # include <VBoxVideo.h>
