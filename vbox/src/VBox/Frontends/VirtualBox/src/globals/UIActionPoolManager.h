@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIActionPoolManager.h 83304 2020-03-17 12:08:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class declaration.
  */
@@ -122,6 +122,7 @@ enum UIActionIndexST
     UIActionIndexST_M_Tools_M_Global_S_VirtualMediaManager,
     UIActionIndexST_M_Tools_M_Global_S_HostNetworkManager,
     UIActionIndexST_M_Tools_M_Global_S_CloudProfileManager,
+    UIActionIndexST_M_Tools_M_Global_S_VMResourceMonitor,
 
     /* Snapshot Pane actions: */
     UIActionIndexST_M_Snapshot,

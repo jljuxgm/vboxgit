@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxEventHandler.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIVirtualBoxEventHandler.h 83304 2020-03-17 12:08:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxEventHandler class declaration.
  */
@@ -112,4 +112,3 @@ private:
 #define gVBoxEvents UIVirtualBoxEventHandler::instance()
 
 #endif /* !FEQT_INCLUDED_SRC_globals_UIVirtualBoxEventHandler_h */
-

@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.cpp 83059 2020-02-12 13:27:13Z vboxsync $ */
+/* $Id: UIActionPoolManager.cpp 83304 2020-03-17 12:08:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class implementation.
  */
@@ -1634,6 +1634,36 @@ protected:
     }
 };
 
+/** Simple action extension, used as 'Show VM Resource Monitor' action class. */
+class UIActionSimpleSelectorToolsGlobalShowVMResourceMonitor : public UIActionSimple
+{
+    Q_OBJECT;
+
+public:
+
+    /** Constructs action passing @a pParent to the base-class. */
+    UIActionSimpleSelectorToolsGlobalShowVMResourceMonitor(UIActionPool *pParent)
+        : UIActionSimple(pParent,
+                         ":/cloud_profile_manager_24px.png", ":/cloud_profile_manager_16px.png",
+                         ":/cloud_profile_manager_disabled_24px.png", ":/cloud_profile_manager_disabled_16px.png")
+    {}
+
+protected:
+
+    /** Returns shortcut extra-data ID. */
+    virtual QString shortcutExtraDataID() const /* override */
+    {
+        return QString("ToolsGlobalVMResourceMonitor");
+    }
+
+    /** Handles translation event. */
+    virtual void retranslateUi() /* override */
+    {
+        setName(QApplication::translate("UIActionPool", "&VM Resource Monitor"));
+        setStatusTip(QApplication::translate("UIActionPool", "Open the VM Resource Monitor"));
+    }
+};
+
 
 /** Menu action extension, used as 'Snapshot' menu class. */
 class UIActionMenuSelectorSnapshot : public UIActionMenu
@@ -2864,6 +2894,7 @@ void UIActionPoolManager::preparePool()
     m_pool[UIActionIndexST_M_Tools_M_Global_S_VirtualMediaManager] = new UIActionSimpleSelectorToolsGlobalShowVirtualMediaManager(this);
     m_pool[UIActionIndexST_M_Tools_M_Global_S_HostNetworkManager] = new UIActionSimpleSelectorToolsGlobalShowHostNetworkManager(this);
     m_pool[UIActionIndexST_M_Tools_M_Global_S_CloudProfileManager] = new UIActionSimpleSelectorToolsGlobalShowCloudProfileManager(this);
+    m_pool[UIActionIndexST_M_Tools_M_Global_S_VMResourceMonitor] = new UIActionSimpleSelectorToolsGlobalShowVMResourceMonitor(this);
 
     /* Snapshot Pane actions: */
     m_pool[UIActionIndexST_M_Snapshot] = new UIActionMenuSelectorSnapshot(this);
