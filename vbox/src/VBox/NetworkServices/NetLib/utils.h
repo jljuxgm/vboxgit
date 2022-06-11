@@ -1,4 +1,4 @@
-/* $Id: utils.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: utils.h 84364 2020-05-19 11:21:19Z vboxsync $ */
 /** @file
  * ComHostUtils.cpp
  */
@@ -84,14 +84,15 @@ int hostDnsDomain(const ComHostPtr&, std::string& domainStr);
 
 class NATNetworkEventAdapter
 {
-    public:
+public:
+    virtual ~NATNetworkEventAdapter() { /* Make VC++ 19.2 happy. */ }
     virtual HRESULT HandleEvent(VBoxEventType_T aEventType, IEvent *pEvent) = 0;
 };
 
 
 class NATNetworkListener
 {
-    public:
+public:
     NATNetworkListener():m_pNAT(NULL){}
 
     HRESULT init(NATNetworkEventAdapter *pNAT)
@@ -118,7 +119,7 @@ class NATNetworkListener
             return E_FAIL;
     }
 
-    private:
+private:
     NATNetworkEventAdapter *m_pNAT;
 };
 typedef ListenerImpl<NATNetworkListener, NATNetworkEventAdapter*> NATNetworkListenerImpl;
