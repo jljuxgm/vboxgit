@@ -1,4 +1,4 @@
-/* $Id: FlashCore.h 81250 2019-10-14 11:41:24Z vboxsync $ */
+/* $Id: FlashCore.h 81458 2019-10-22 16:50:13Z vboxsync $ */
 /** @file
  * A simple Flash device
  *
@@ -147,7 +147,7 @@ DECLHIDDEN(int) flashR3LoadFromFile(PFLASHCORE pThis, const char *pszFilename);
  * @param   pvBuf               The buffer to load the content from.
  * @param   cbBuf               Size of the buffer in bytes.
  */
-DECLHIDDEN(int) flashR3LoadFromBuf(PFLASHCORE pThis, void *pvBuf, size_t cbBuf);
+DECLHIDDEN(int) flashR3LoadFromBuf(PFLASHCORE pThis, void const *pvBuf, size_t cbBuf);
 
 /**
  * Saves the flash content to the given file.

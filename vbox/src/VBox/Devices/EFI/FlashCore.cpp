@@ -1,4 +1,4 @@
-/* $Id: FlashCore.cpp 81266 2019-10-14 17:56:25Z vboxsync $ */
+/* $Id: FlashCore.cpp 81458 2019-10-22 16:50:13Z vboxsync $ */
 /** @file
  * DevFlash - A simple Flash device
  *
@@ -283,7 +283,7 @@ DECLHIDDEN(int) flashR3LoadFromFile(PFLASHCORE pThis, const char *pszFilename)
     return VINF_SUCCESS;
 }
 
-DECLHIDDEN(int) flashR3LoadFromBuf(PFLASHCORE pThis, void *pvBuf, size_t cbBuf)
+DECLHIDDEN(int) flashR3LoadFromBuf(PFLASHCORE pThis, void const *pvBuf, size_t cbBuf)
 {
     AssertReturn(pThis->cbFlashSize >= cbBuf, VERR_BUFFER_OVERFLOW);
 
