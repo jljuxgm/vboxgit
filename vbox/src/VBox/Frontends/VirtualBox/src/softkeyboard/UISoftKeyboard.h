@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboard.h 78567 2019-05-17 12:27:12Z vboxsync $ */
+/* $Id: UISoftKeyboard.h 78595 2019-05-20 11:17:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class declaration.
  */
@@ -35,8 +35,10 @@
 
 /* Forward declarations: */
 class UISoftKeyboardKey;
+class QHBoxLayout;
 class QVBoxLayout;
 class UIToolBar;
+
 
 class UISoftKeyboard : public QIWithRetranslateUI<QWidget>
 {
@@ -50,7 +52,8 @@ public:
 
 protected:
 
-    void retranslateUi();
+    virtual void retranslateUi();
+    virtual void resizeEvent(QResizeEvent *pEvent);
 
 private slots:
 
@@ -63,7 +66,8 @@ private:
     void loadSettings();
     void parseLayout();
 
-    QVBoxLayout   *m_pMainLayout;
+    QHBoxLayout   *m_pMainLayout;
+    QVBoxLayout   *m_pContainerLayout;
     UIToolBar     *m_pToolBar;
     const bool    m_fShowToolbar;
     QString       m_strMachineName;
