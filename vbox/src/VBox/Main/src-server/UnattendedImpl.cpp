@@ -1,4 +1,4 @@
-/* $Id: UnattendedImpl.cpp 79926 2019-07-22 19:47:29Z vboxsync $ */
+/* $Id: UnattendedImpl.cpp 79931 2019-07-23 14:33:10Z vboxsync $ */
 /** @file
  * Unattended class implementation
  */
@@ -417,6 +417,16 @@ HRESULT Unattended::i_innerDetectIsoOSWindows(RTVFS hVfsIso, DETECTBUFFER *pBuf,
                 if (   RTStrNICmp(pBuf->sz, RT_STR_TUPLE("vista")) == 0
                     || RTStrNICmp(pBuf->sz, RT_STR_TUPLE("winmain_beta")) == 0)
                     *penmOsType = (VBOXOSTYPE)((*penmOsType & VBOXOSTYPE_x64) | VBOXOSTYPE_WinVista);
+                else if (RTStrNICmp(pBuf->sz, RT_STR_TUPLE("lh_sp2rtm")) == 0)
+                {
+                    *penmOsType = (VBOXOSTYPE)((*penmOsType & VBOXOSTYPE_x64) | VBOXOSTYPE_WinVista);
+                    pszVersion = "sp2";
+                }
+                else if (RTStrNICmp(pBuf->sz, RT_STR_TUPLE("longhorn_rtm")) == 0)
+                {
+                    *penmOsType = (VBOXOSTYPE)((*penmOsType & VBOXOSTYPE_x64) | VBOXOSTYPE_WinVista);
+                    pszVersion = "sp1";
+                }
                 else if (RTStrNICmp(pBuf->sz, RT_STR_TUPLE("win7")) == 0)
                     *penmOsType = (VBOXOSTYPE)((*penmOsType & VBOXOSTYPE_x64) | VBOXOSTYPE_Win7);
                 else if (   RTStrNICmp(pBuf->sz, RT_STR_TUPLE("winblue")) == 0
