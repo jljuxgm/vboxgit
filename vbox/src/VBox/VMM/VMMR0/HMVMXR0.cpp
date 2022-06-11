@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 78691 2019-05-23 11:23:39Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 78707 2019-05-24 04:57:21Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -4560,7 +4560,7 @@ static uint32_t hmR0VmxGetGuestIntrState(PVMCPU pVCpu, PCVMXVMCSINFO pVmcsInfo)
  */
 static int hmR0VmxExportGuestXcptIntercepts(PVMCPU pVCpu, PVMXTRANSIENT pVmxTransient)
 {
-    if (ASMAtomicUoReadU64(&pVCpu->hm.s.fCtxChanged) & HM_CHANGED_VMX_GUEST_XCPT_INTERCEPTS)
+    if (ASMAtomicUoReadU64(&pVCpu->hm.s.fCtxChanged) & HM_CHANGED_VMX_XCPT_INTERCEPTS)
     {
         /* When executing a nested-guest, we do not need to trap GIM hypercalls by intercepting #UD. */
         if (   !pVmxTransient->fIsNestedGuest
@@ -4570,7 +4570,7 @@ static int hmR0VmxExportGuestXcptIntercepts(PVMCPU pVCpu, PVMXTRANSIENT pVmxTran
             hmR0VmxRemoveXcptIntercept(pVCpu, pVmxTransient, X86_XCPT_UD);
 
         /* Other exception intercepts are handled elsewhere, e.g. while exporting guest CR0. */
-        ASMAtomicUoAndU64(&pVCpu->hm.s.fCtxChanged, ~HM_CHANGED_VMX_GUEST_XCPT_INTERCEPTS);
+        ASMAtomicUoAndU64(&pVCpu->hm.s.fCtxChanged, ~HM_CHANGED_VMX_XCPT_INTERCEPTS);
     }
     return VINF_SUCCESS;
 }
