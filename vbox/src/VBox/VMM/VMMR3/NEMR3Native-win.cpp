@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-win.cpp 80531 2019-09-01 23:03:34Z vboxsync $ */
+/* $Id: NEMR3Native-win.cpp 81376 2019-10-19 13:58:24Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, native ring-3 Windows backend.
  *
@@ -1286,6 +1286,8 @@ int nemR3NativeInit(PVM pVM, bool fFallback, bool fForced)
                                               "/NEM/R0Stats/cPagesInUse");
                     }
                 }
+                else
+                    rc = RTErrInfoSetF(pErrInfo, rc, "VMMR0_DO_NEM_INIT_VM failed: %Rrc", rc);
             }
         }
     }
