@@ -1,4 +1,4 @@
-/* $Id: clipboard-transfers.cpp 81260 2019-10-14 14:14:33Z vboxsync $ */
+/* $Id: clipboard-transfers.cpp 81290 2019-10-15 16:53:56Z vboxsync $ */
 /** @file
  * Shared Clipboard: Common Shared Clipboard transfer handling code.
  */
@@ -1666,46 +1666,6 @@ static int sharedClipboardTransferListHdrFromDir(PSHCLLISTHDR pHdr, const char *
 
     LogFlowFuncLeaveRC(rc);
     return rc;
-}
-
-/**
- * Translates an absolute path to a relative one.
- *
- * @returns Translated, allocated path on success, or NULL on failure.
- *          Must be free'd with RTStrFree().
- * @param   pszPath             Absolute path to translate.
- */
-static char *sharedClipboardPathTranslate(const char *pszPath)
-{
-    AssertPtrReturn(pszPath, NULL);
-
-    LogFlowFunc(("pszPath=%s\n", pszPath));
-
-    char *pszPathTranslated = NULL;
-
-    char *pszSrcPath = RTStrDup(pszPath);
-    if (pszSrcPath)
-    {
-        size_t cbSrcPathLen = RTPathStripTrailingSlash(pszSrcPath);
-        if (cbSrcPathLen)
-        {
-            char *pszFileName = RTPathFilename(pszSrcPath);
-            if (pszFileName)
-            {
-                Assert(pszFileName >= pszSrcPath);
-                size_t cchDstBase = pszFileName - pszSrcPath;
-
-                pszPathTranslated = RTStrDup(&pszSrcPath[cchDstBase]);
-
-                LogFlowFunc(("pszSrcPath=%s, pszFileName=%s -> pszPathTranslated=%s\n",
-                             pszSrcPath, pszFileName, pszPathTranslated));
-            }
-        }
-
-        RTStrFree(pszSrcPath);
-    }
-
-    return pszPathTranslated;
 }
 
 /**
