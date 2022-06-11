@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.h 78432 2019-05-07 14:01:55Z vboxsync $ */
+/* $Id: UIMediumManager.h 78721 2019-05-24 12:01:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class declaration.
  */
@@ -57,7 +57,7 @@ public:
 
 
 /** Medium manager progress-bar.
-  * Reflects medium-enumeration progress, stays hidden otherwise. */
+  * Reflects media-enumeration progress, stays hidden otherwise. */
 class UIEnumerationProgressBar : public QWidget
 {
     Q_OBJECT;
