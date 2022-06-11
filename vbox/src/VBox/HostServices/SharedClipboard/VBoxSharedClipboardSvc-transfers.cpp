@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-transfers.cpp 81352 2019-10-18 12:55:34Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-transfers.cpp 81449 2019-10-22 13:03:29Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Internal code for transfer (list) handling.
  */
@@ -2199,7 +2199,8 @@ int shclSvcTransferStop(PSHCLCLIENT pClient, PSHCLTRANSFER pTransfer)
  */
 int shclSvcTransferModeSet(uint32_t fMode)
 {
-    AssertReturn(!(fMode & ~VBOX_SHCL_TRANSFER_MODE_VALID_MASK), VERR_INVALID_FLAGS);
+    if (fMode & ~VBOX_SHCL_TRANSFER_MODE_VALID_MASK)
+        return VERR_INVALID_FLAGS;
 
     g_fTransferMode = fMode;
 

@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc.cpp 81445 2019-10-22 10:23:38Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc.cpp 81449 2019-10-22 13:03:29Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Host service entry points.
  */
@@ -1849,10 +1849,10 @@ static DECLCALLBACK(int) svcHostCall(void *,
             }
             else
             {
-                uint32_t u32TransferMode;
-                rc = HGCMSvcGetU32(&paParms[0], &u32TransferMode);
+                uint32_t fTransferMode;
+                rc = HGCMSvcGetU32(&paParms[0], &fTransferMode);
                 if (RT_SUCCESS(rc))
-                    rc = shclSvcTransferModeSet(u32TransferMode);
+                    rc = shclSvcTransferModeSet(fTransferMode);
             }
             break;
         }
