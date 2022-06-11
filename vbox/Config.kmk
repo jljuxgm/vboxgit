@@ -1,4 +1,4 @@
-# $Id: Config.kmk 83804 2020-04-18 22:44:09Z vboxsync $
+# $Id: Config.kmk 83835 2020-04-19 14:34:22Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1649,9 +1649,13 @@ endif
 # Decide which Visual C++ compiler version we're using for newer stuff.
 #
 ifndef VBOX_NEWER_VCC_TOOL_STEM
- VBOX_NEWER_VCC_TOOL_STEM := VCC120
-else ifn1of ($(VBOX_NEWER_VCC_TOOL_STEM), VCC120)
- $(error VBox: VBOX_NEWER_VCC_TOOL_STEM='$(VBOX_NEWER_VCC_TOOL_STEM)' is not supported, only VCC120 is)
+ if "$(VBOX_VCC_TOOL_STEM)" >= "VCC120"
+  VBOX_NEWER_VCC_TOOL_STEM := $(VBOX_VCC_TOOL_STEM)
+ else
+  VBOX_NEWER_VCC_TOOL_STEM := VCC120
+ endif
+else ifn1of ($(VBOX_NEWER_VCC_TOOL_STEM), VCC120 VCC140 VCC141 VCC142)
+ $(error VBox: VBOX_NEWER_VCC_TOOL_STEM='$(VBOX_NEWER_VCC_TOOL_STEM)' is not supported)
 endif
 ifndef VBOX_NEWER_VCC_TOOL
  VBOX_NEWER_VCC_TOOL := $(VBOX_NEWER_VCC_TOOL_STEM)$(toupper $(KBUILD_TARGET_ARCH))
@@ -7994,7 +7998,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 83804 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 83835 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
