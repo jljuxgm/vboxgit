@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControl.h 76563 2019-01-01 03:53:56Z vboxsync $ */
+/* $Id: VBoxServiceControl.h 79296 2019-06-24 09:09:21Z vboxsync $ */
 /** @file
  * VBoxServiceControl.h - Internal guest control definitions.
  */
@@ -67,6 +67,8 @@ typedef struct VBOXSERVICECTRLFILE
     uint32_t                        uHandle;
     /** Context ID. */
     uint32_t                        uContextID;
+    /** RTFILE_O_XXX flags. */
+    uint64_t                        fOpen;
 } VBOXSERVICECTRLFILE;
 /** Pointer to thread data. */
 typedef VBOXSERVICECTRLFILE *PVBOXSERVICECTRLFILE;
@@ -293,6 +295,7 @@ RT_C_DECLS_BEGIN
 extern RTLISTANCHOR             g_lstControlSessionThreads;
 extern VBOXSERVICECTRLSESSION   g_Session;
 extern uint32_t                 g_idControlSvcClient;
+extern uint64_t                 g_fControlHostFeatures0;
 extern bool                     g_fControlSupportsOptimizations;
 
 

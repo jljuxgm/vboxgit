@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImpl.cpp 78744 2019-05-25 14:21:47Z vboxsync $ */
+/* $Id: GuestCtrlImpl.cpp 79296 2019-06-24 09:09:21Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -94,6 +94,23 @@ DECLCALLBACK(int) Guest::i_notifyCtrlDispatcher(void    *pvExtension,
                      sizeof(VBOXGUESTCTRLHOSTCALLBACK), cbData), VERR_INVALID_PARAMETER);
     PVBOXGUESTCTRLHOSTCALLBACK pSvcCb = (PVBOXGUESTCTRLHOSTCALLBACK)pvData;
     AssertPtrReturn(pSvcCb, VERR_INVALID_POINTER);
+
+    /*
+     * Deal with GUEST_MSG_REPORT_FEATURES here as it shouldn't be handed
+     * i_dispatchToSession() and has different parameters.
+     */
+    if (idMessage == GUEST_MSG_REPORT_FEATURES)
+    {
+        Assert(pSvcCb->mParms == 2);
+        Assert(pSvcCb->mpaParms[0].type == VBOX_HGCM_SVC_PARM_64BIT);
+        Assert(pSvcCb->mpaParms[1].type == VBOX_HGCM_SVC_PARM_64BIT);
+        Assert(pSvcCb->mpaParms[1].u.uint64 & VBOX_GUESTCTRL_GF_1_MUST_BE_ONE);
+        pGuest->mData.mfGuestFeatures0 = pSvcCb->mpaParms[0].u.uint64;
+        pGuest->mData.mfGuestFeatures1 = pSvcCb->mpaParms[1].u.uint64;
+        LogRel(("Guest Control: GUEST_MSG_REPORT_FEATURES: %#RX64, %#RX64\n",
+                pGuest->mData.mfGuestFeatures0, pGuest->mData.mfGuestFeatures1));
+        return VINF_SUCCESS;
+    }
 
     /*
      * For guest control 2.0 using the legacy messages we need to do the following here:
