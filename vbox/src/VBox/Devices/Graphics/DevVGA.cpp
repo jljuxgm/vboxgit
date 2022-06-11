@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 82097 2019-11-22 08:24:11Z vboxsync $ */
+/* $Id: DevVGA.cpp 82102 2019-11-22 14:52:24Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -3743,7 +3743,7 @@ static VBOXSTRICTRC vgaLFBAccess(PVMCC pVM, PVGASTATE pThis, RTGCPHYS GCPhys, RT
                             ||  rc == VERR_PAGE_TABLE_NOT_PRESENT
                             ||  rc == VERR_PAGE_NOT_PRESENT,
                             ("PGMShwModifyPage -> GCPtr=%RGv rc=%d\n", GCPtr, rc),
-                            rc);
+                            VBOXSTRICTRC_VAL(rc));
 #else  /* IN_RING3 - We don't have any virtual page address of the access here. */
             PDMDevHlpCritSectLeave(pThis->CTX_SUFF(pDevIns), &pThis->CritSect);
             Assert(GCPtr == 0);
@@ -3753,7 +3753,7 @@ static VBOXSTRICTRC vgaLFBAccess(PVMCC pVM, PVGASTATE pThis, RTGCPHYS GCPhys, RT
         }
 
         PDMDevHlpCritSectLeave(pThis->CTX_SUFF(pDevIns), &pThis->CritSect);
-        AssertMsgFailed(("PGMHandlerPhysicalPageTempOff -> rc=%d\n", rc));
+        AssertMsgFailed(("PGMHandlerPhysicalPageTempOff -> rc=%d\n", VBOXSTRICTRC_VAL(rc)));
     }
     return rc;
 }
