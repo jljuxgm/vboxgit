@@ -1,4 +1,4 @@
-/* $Id: FsPerf.cpp 78673 2019-05-22 17:43:36Z vboxsync $ */
+/* $Id: FsPerf.cpp 78781 2019-05-27 10:34:15Z vboxsync $ */
 /** @file
  * FsPerf - File System (Shared Folders) Performance Benchmark.
  */
@@ -375,6 +375,7 @@ static const RTGETOPTDEF g_aCmdOptions[] =
     { "--tree-depth",               kCmdOpt_ManyTreeDepth,          RTGETOPT_REQ_UINT32 },
     { "--max-buffer-size",          kCmdOpt_MaxBufferSize,          RTGETOPT_REQ_UINT32 },
     { "--mmap-placement",           kCmdOpt_MMapPlacement,          RTGETOPT_REQ_STRING },
+    /// @todo { "--timestamp-style",           kCmdOpt_TimestampStyle,          RTGETOPT_REQ_STRING },
 
     { "--open",                     kCmdOpt_Open,                   RTGETOPT_REQ_NOTHING },
     { "--no-open",                  kCmdOpt_NoOpen,                 RTGETOPT_REQ_NOTHING },
@@ -6649,7 +6650,7 @@ int main(int argc, char *argv[])
 
             case 'V':
             {
-                char szRev[] = "$Revision: 78673 $";
+                char szRev[] = "$Revision: 78781 $";
                 szRev[RT_ELEMENTS(szRev) - 2] = '\0';
                 RTPrintf(RTStrStrip(strchr(szRev, ':') + 1));
                 return RTEXITCODE_SUCCESS;
