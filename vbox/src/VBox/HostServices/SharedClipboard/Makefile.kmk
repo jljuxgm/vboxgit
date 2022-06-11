@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 79497 2019-07-03 13:28:33Z vboxsync $
+# $Id: Makefile.kmk 79631 2019-07-09 08:23:52Z vboxsync $
 ## @file
 # Sub-Makefile for the Shared Clipboard Host Service.
 #
@@ -50,8 +50,6 @@ ifdef VBOX_WITH_SHARED_CLIPBOARD_URI_LIST
 	VBoxSharedClipboardSvc-utils.cpp \
 	$(PATH_ROOT)/src/VBox/GuestHost/SharedClipboard/ClipboardArea.cpp \
 	$(PATH_ROOT)/src/VBox/GuestHost/SharedClipboard/ClipboardPath.cpp \
-	$(PATH_ROOT)/src/VBox/GuestHost/SharedClipboard/ClipboardURIList.cpp \
-	$(PATH_ROOT)/src/VBox/GuestHost/SharedClipboard/ClipboardURIObject.cpp \
 	$(PATH_ROOT)/src/VBox/GuestHost/SharedClipboard/clipboard-uri.cpp
  VBoxSharedClipboard_SOURCES.win += \
 	$(PATH_ROOT)/src/VBox/GuestHost/SharedClipboard/ClipboardDataObjectImpl-win.cpp \

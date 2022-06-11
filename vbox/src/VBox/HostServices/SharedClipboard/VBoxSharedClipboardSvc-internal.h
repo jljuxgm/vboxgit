@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-internal.h 79630 2019-07-09 08:14:01Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-internal.h 79631 2019-07-09 08:23:52Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Internal header.
  */
@@ -41,15 +41,6 @@
 using namespace HGCM;
 
 #ifdef VBOX_WITH_SHARED_CLIPBOARD_URI_LIST
-/**
- * Structure for handling a single URI object context.
- */
-typedef struct _VBOXCLIPBOARDCLIENTURIOBJCTX
-{
-    /** Pointer to current object being processed. */
-    SharedClipboardURIObject      *pObj;
-} VBOXCLIPBOARDCLIENTURIOBJCTX, *PVBOXCLIPBOARDCLIENTURIOBJCTX;
-
 struct VBOXCLIPBOARDCLIENTSTATE;
 #endif /* VBOX_WITH_SHARED_CLIPBOARD_URI_LIST */
 
