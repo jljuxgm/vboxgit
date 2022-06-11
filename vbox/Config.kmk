@@ -1,4 +1,4 @@
-# $Id: Config.kmk 79483 2019-07-03 02:37:12Z vboxsync $
+# $Id: Config.kmk 79504 2019-07-03 14:10:51Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -349,6 +349,17 @@ endif
 # (Used by the additions build server, don't invert it.)
 #VBOX_WITHOUT_ADDITIONS_ISO = 1
 ## @}
+# Set build options right for building the Additions as an RPM package.
+# VBOX_ONLY_RPM_ADDITIONS = 1
+ifdef VBOX_ONLY_RPM_ADDITIONS
+ VBOX_ONLY_ADDITIONS=1
+ VBOX_ONLY_ADDITIONS_WITHOUT_RTISOMAKER=1
+ # We build the RPMs using public sources.
+ VBOX_OSE=1
+ # We want to re-use parts of the packing pass, but not all.
+ VBOX_WITHOUT_LINUX_GUEST_PACKAGE=1
+ VBOX_WITHOUT_ADDITIONS_ISO=1
+endif
 
 ## @name Documentation
 ## @{
@@ -932,7 +943,10 @@ VBOX_WITH_DARWIN_R0_DARWIN_IMAGE_VERIFICATION = 1
 # Strip binaries of release and profile builds before packing them into the installer
 # archive. When building .deb/.rpms, don't strip the symbols as they are required for
 # the debug packages containing symbols for gdb located in /usr/lib/debug.
-VBOX_DO_STRIP := $(if $(filter release profile,$(KBUILD_TYPE)),1,)
+# In rpm Additions we also need to do part of packing without strip.
+ifndef VBOX_ONLY_RPM_ADDITIONS
+ VBOX_DO_STRIP := $(if $(filter release profile,$(KBUILD_TYPE)),1,)
+endif
 
 
 #
@@ -7704,7 +7718,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 79483 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 79504 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
