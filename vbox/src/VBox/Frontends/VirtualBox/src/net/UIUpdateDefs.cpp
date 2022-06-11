@@ -1,4 +1,4 @@
-/* $Id: UIUpdateDefs.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIUpdateDefs.cpp 84319 2020-05-15 12:08:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Update routine related implementations.
  */
@@ -81,13 +81,13 @@ VBoxUpdateData::VBoxUpdateData(PeriodType enmPeriodIndex, BranchType enmBranchIn
 
 bool VBoxUpdateData::isNoNeedToCheck() const
 {
-    /* Return 'false' if Period == Never: */
+    /* No need to check if Period == Never: */
     return m_enmPeriodIndex == PeriodNever;
 }
 
 bool VBoxUpdateData::isNeedToCheck() const
 {
-    /* Return 'false' if Period == Never: */
+    /* Return 'false' if there is no need to check: */
     if (isNoNeedToCheck())
         return false;
 
