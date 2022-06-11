@@ -1,4 +1,4 @@
-/* $Id: VBoxClipboard.cpp 79271 2019-06-21 10:30:21Z vboxsync $ */
+/* $Id: VBoxClipboard.cpp 79299 2019-06-24 10:18:19Z vboxsync $ */
 /** @file
  * VBoxClipboard - Shared clipboard, Windows Guest Implementation.
  */
@@ -346,7 +346,8 @@ static LRESULT vboxClipboardWinProcessMsg(PVBOXCLIPBOARDCONTEXT pCtx, HWND hwnd,
 
                             SHAREDCLIPBOARDPROVIDERCREATIONCTX creationCtx;
                             RT_ZERO(creationCtx);
-                            creationCtx.enmSource = SHAREDCLIPBOARDPROVIDERSOURCE_VBGLR3;
+                            creationCtx.enmSource = SHAREDCLIPBOARDURIPROVIDERSOURCE_VBGLR3;
+                            creationCtx.enmDir    = SHAREDCLIPBOARDURITRANSFERDIR_READ;
                             creationCtx.u.VbglR3.uClientID = pCtx->u32ClientID;
 
                             rc = SharedClipboardURITransferProviderCreate(pTransfer, &creationCtx);
@@ -468,7 +469,8 @@ static LRESULT vboxClipboardWinProcessMsg(PVBOXCLIPBOARDCONTEXT pCtx, HWND hwnd,
 
                         SHAREDCLIPBOARDPROVIDERCREATIONCTX creationCtx;
                         RT_ZERO(creationCtx);
-                        creationCtx.enmSource = SHAREDCLIPBOARDPROVIDERSOURCE_VBGLR3;
+                        creationCtx.enmSource = SHAREDCLIPBOARDURIPROVIDERSOURCE_VBGLR3;
+                        creationCtx.enmDir    = SHAREDCLIPBOARDURITRANSFERDIR_WRITE;
                         creationCtx.u.VbglR3.uClientID = pCtx->u32ClientID;
 
                         rc = SharedClipboardURITransferProviderCreate(pTransfer, &creationCtx);

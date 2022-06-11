@@ -1,4 +1,4 @@
-/* $Id: ClipboardProvider.cpp 79267 2019-06-21 10:11:59Z vboxsync $ */
+/* $Id: ClipboardProvider.cpp 79299 2019-06-24 10:18:19Z vboxsync $ */
 /** @file
  * Shared Clipboard - Provider base class implementation.
  */
@@ -147,6 +147,7 @@ uint32_t SharedClipboardProvider::Event::DataSize(void)
 
 SharedClipboardProvider::SharedClipboardProvider(void)
     : m_cRefs(0)
+    , m_enmDir(SHAREDCLIPBOARDURITRANSFERDIR_UNKNOWN)
     , m_uTimeoutMs(30 * 1000 /* 30s timeout by default */)
 {
     LogFlowFuncEnter();
@@ -177,13 +178,13 @@ SharedClipboardProvider *SharedClipboardProvider::Create(PSHAREDCLIPBOARDPROVIDE
     switch (pCtx->enmSource)
     {
 #ifdef VBOX_WITH_SHARED_CLIPBOARD_GUEST
-        case SHAREDCLIPBOARDPROVIDERSOURCE_VBGLR3:
+        case SHAREDCLIPBOARDURIPROVIDERSOURCE_VBGLR3:
             pProvider = new SharedClipboardProviderVbglR3(pCtx->u.VbglR3.uClientID);
             break;
 #endif
 
 #ifdef VBOX_WITH_SHARED_CLIPBOARD_HOST
-        case SHAREDCLIPBOARDPROVIDERSOURCE_HOSTSERVICE:
+        case SHAREDCLIPBOARDURIPROVIDERSOURCE_HOSTSERVICE:
             pProvider = new SharedClipboardProviderHostService(pCtx->u.HostService.pArea);
             break;
 #endif
@@ -244,6 +245,11 @@ void SharedClipboardProvider::SetCallbacks(PSHAREDCLIPBOARDPROVIDERCALLBACKS pCa
 /*
  * Stubs.
  */
+
+int SharedClipboardProvider::Prepare(void)
+{
+    return VINF_SUCCESS;
+}
 
 int SharedClipboardProvider::ReadDataHdr(PVBOXCLIPBOARDDATAHDR *ppDataHdr)
 {

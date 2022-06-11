@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc.cpp 79275 2019-06-21 12:40:08Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc.cpp 79299 2019-06-24 10:18:19Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Host service entry points.
  */
@@ -637,7 +637,8 @@ static DECLCALLBACK(void) svcCall(void *,
                                     {
                                         SHAREDCLIPBOARDPROVIDERCREATIONCTX creationCtx;
                                         RT_ZERO(creationCtx);
-                                        creationCtx.enmSource = SHAREDCLIPBOARDPROVIDERSOURCE_HOSTSERVICE;
+                                        creationCtx.enmSource = SHAREDCLIPBOARDURIPROVIDERSOURCE_HOSTSERVICE;
+                                        creationCtx.enmDir    = SHAREDCLIPBOARDURITRANSFERDIR_READ;
                                         creationCtx.u.HostService.pArea = pTransfer->pArea;
 
                                         rc = SharedClipboardURITransferProviderCreate(pTransfer, &creationCtx);
