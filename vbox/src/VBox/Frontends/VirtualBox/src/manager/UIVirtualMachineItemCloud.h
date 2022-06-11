@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItemCloud.h 83129 2020-02-21 11:11:18Z vboxsync $ */
+/* $Id: UIVirtualMachineItemCloud.h 83130 2020-02-21 12:11:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItemCloud class declaration.
  */
@@ -128,8 +128,11 @@ private:
 
     /** @name Data attributes.
       * @{ */
-        /** Updates cloud VM info on the basis of string @a infoMap value. */
+        /** Updates cloud VM info on the basis of @a infoMap value. */
         void updateInfo(const QMap<KVirtualSystemDescriptionType, QString> &infoMap);
+
+        /** Updates cloud VM state on the basis of @a strInfo value. */
+        void updateState(const QString &strInfo);
     /** @} */
 
     /** @name Arguments.

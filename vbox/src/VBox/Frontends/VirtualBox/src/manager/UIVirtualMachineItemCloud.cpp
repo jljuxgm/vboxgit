@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItemCloud.cpp 83129 2020-02-21 11:11:18Z vboxsync $ */
+/* $Id: UIVirtualMachineItemCloud.cpp 83130 2020-02-21 12:11:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItemCloud class implementation.
  */
@@ -328,6 +328,18 @@ void UIVirtualMachineItemCloud::sltHandleGetCloudInstanceInfoDone(UITask *pTask)
 
 void UIVirtualMachineItemCloud::updateInfo(const QMap<KVirtualSystemDescriptionType, QString> &infoMap)
 {
+    /* Update info: */
+    updateState(infoMap.value(KVirtualSystemDescriptionType_CloudInstanceState));
+
+    /* Recache: */
+    recache();
+
+    /* Notify listeners finally: */
+    emit sigStateChange();
+}
+
+void UIVirtualMachineItemCloud::updateState(const QString &strInfo)
+{
     /* Prepare a map of known states: */
     QMap<QString, KMachineState> states;
     states["RUNNING"] = KMachineState_Running;
@@ -335,12 +347,6 @@ void UIVirtualMachineItemCloud::updateInfo(const QMap<KVirtualSystemDescriptionT
     states["STOPPING"] = KMachineState_Stopping;
     states["STARTING"] = KMachineState_Starting;
 
-    /* Update our state value: */
-    m_enmMachineState = states.value(infoMap.value(KVirtualSystemDescriptionType_CloudInstanceState), KMachineState_PoweredOff);
-
-    /* Recache: */
-    recache();
-
-    /* Notify listeners finally: */
-    emit sigStateChange();
+    /* Update state value: */
+    m_enmMachineState = states.value(strInfo, KMachineState_PoweredOff);
 }
