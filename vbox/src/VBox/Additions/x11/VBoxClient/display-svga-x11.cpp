@@ -1,4 +1,4 @@
-/* $Id: display-svga-x11.cpp 83035 2020-02-10 14:56:41Z vboxsync $ */
+/* $Id: display-svga-x11.cpp 83037 2020-02-10 16:35:23Z vboxsync $ */
 /** @file
  * X11 guest client - VMSVGA emulation resize event pass-through to X.Org
  * guest driver.
@@ -654,8 +654,8 @@ static int run(struct VBCLSERVICE **ppInterface, bool fDaemonised)
         eventMask |= RRProviderChangeNotifyMask |
             RRProviderPropertyNotifyMask |
             RRResourceChangeNotifyMask;
-    if (x11Context.hRandRMinor >= 6)
-        eventMask |= RRLeaseNotifyMask;
+    // if (x11Context.hRandRMinor >= 6)
+    //     eventMask |= RRLeaseNotifyMask;
 
 
     for (;;)
