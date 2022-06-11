@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 81207 2019-10-10 11:12:13Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 81209 2019-10-10 11:19:15Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -9169,8 +9169,8 @@ static VBOXSTRICTRC hmR0VmxExportGuestStateOptimal(PVMCPUCC pVCpu, PVMXTRANSIENT
     VBOXSTRICTRC   rcStrict;
     uint64_t const fCtxMask     = HM_CHANGED_ALL_GUEST & ~HM_CHANGED_VMX_HOST_GUEST_SHARED_STATE;
     uint64_t const fMinimalMask = HM_CHANGED_GUEST_RIP | HM_CHANGED_GUEST_RSP | HM_CHANGED_GUEST_RFLAGS | HM_CHANGED_GUEST_HWVIRT;
-
     uint64_t const fCtxChanged  = ASMAtomicUoReadU64(&pVCpu->hm.s.fCtxChanged);
+
     /* If only RIP/RSP/RFLAGS/HWVIRT changed, export only those (quicker, happens more often).*/
     if (    (fCtxChanged & fMinimalMask)
         && !(fCtxChanged & (fCtxMask & ~fMinimalMask)))
