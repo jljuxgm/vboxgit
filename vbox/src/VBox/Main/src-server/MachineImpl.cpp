@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 80573 2019-09-04 05:54:47Z vboxsync $ */
+/* $Id: MachineImpl.cpp 80586 2019-09-04 14:14:03Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -7797,7 +7797,7 @@ bool Machine::i_checkForSpawnFailure()
            when reporting startup issues. */
         Utf8Str strHardeningLogFile = i_getHardeningLogFilename();
         uint64_t cbStartupLogFile = 0;
-        int vrc2 = RTFileQuerySize(strHardeningLogFile.c_str(), &cbStartupLogFile);
+        int vrc2 = RTFileQuerySizeByPath(strHardeningLogFile.c_str(), &cbStartupLogFile);
         if (RT_SUCCESS(vrc2) && cbStartupLogFile > 0)
             strExtraInfo.append(Utf8StrFmt(tr(".  More details may be available in '%s'"), strHardeningLogFile.c_str()));
 #endif
