@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 82135 2019-11-23 23:18:35Z vboxsync $ */
+/* $Id: DevPCNet.cpp 82136 2019-11-23 23:20:22Z vboxsync $ */
 /** @file
  * DevPCNet - AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  *
@@ -1640,18 +1640,6 @@ static void pcnetWakeupReceive(PPDMDEVINS pDevIns)
         AssertRC(rc);
     }
 }
-
-#ifdef IN_RING3
-
-static DECLCALLBACK(bool) pcnetCanRxQueueConsumer(PPDMDEVINS pDevIns, PPDMQUEUEITEMCORE pItem)
-{
-    RT_NOREF(pItem);
-    pcnetWakeupReceive(pDevIns);
-    return true;
-}
-
-#endif /* IN_RING3 */
-
 
 /**
  * Poll Receive Descriptor Table Entry and cache the results in the appropriate registers.
