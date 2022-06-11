@@ -1,4 +1,4 @@
-/* $Id: DevVirtioSCSI.cpp 81680 2019-11-05 17:16:34Z vboxsync $ $Revision: 81680 $ $Date: 2019-11-06 01:16:34 +0800 (Wed, 06 Nov 2019) $ $Author: vboxsync $ */
+/* $Id: DevVirtioSCSI.cpp 81689 2019-11-06 00:52:45Z vboxsync $ $Revision: 81689 $ $Date: 2019-11-06 08:52:45 +0800 (Wed, 06 Nov 2019) $ $Author: vboxsync $ */
 /** @file
  * VBox storage devices - Virtio SCSI Driver
  *
@@ -2478,9 +2478,6 @@ static DECLCALLBACK(int) virtioScsiR3Construct(PPDMDEVINS pDevIns, int iInstance
                             rc);
 
             pTarget->pMediaNotify = PDMIBASE_QUERY_INTERFACE(pTarget->pDrvBase, PDMIMEDIANOTIFY);
-            AssertMsgReturn(VALID_PTR(pTarget->pMediaNotify),
-                            ("virtio-scsi configuration error: LUN#%u: Failed to get set Media notify obj!\n", iTarget),
-                            VERR_PDM_MISSING_INTERFACE);
 
         }
         else if (rc == VERR_PDM_NO_ATTACHED_DRIVER)
