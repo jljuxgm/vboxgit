@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoLog.h 76563 2019-01-01 03:53:56Z vboxsync $ */
+/* $Id: VBoxVideoLog.h 80422 2019-08-26 13:56:24Z vboxsync $ */
 /** @file
  * VBox Video drivers, logging helper
  */
@@ -65,7 +65,7 @@
 # define VBOX_VIDEO_LOG_SUFFIX_PARMS
 #endif
 
-#ifdef DEBUG_misha
+#ifdef DEBUG_sunlover
 # define BP_WARN() AssertFailed()
 #else
 # define BP_WARN() do {} while(0)

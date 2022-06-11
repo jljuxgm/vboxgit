@@ -1,4 +1,4 @@
-/* $Id: VBoxMPSa.cpp 78190 2019-04-18 00:07:07Z vboxsync $ */
+/* $Id: VBoxMPSa.cpp 80422 2019-08-26 13:56:24Z vboxsync $ */
 
 /** @file
  * Sorted array impl
@@ -16,7 +16,7 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#include <cr_error.h>
+#include "common/VBoxMPUtils.h"
 #include <iprt/err.h>
 #include <iprt/mem.h>
 

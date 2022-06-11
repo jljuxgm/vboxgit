@@ -1,4 +1,4 @@
-/* $Id: VBoxDispKmt.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxDispKmt.cpp 80422 2019-08-26 13:56:24Z vboxsync $ */
 /** @file
  * VBoxVideo Display D3D User Mode Dll.
  */
@@ -367,6 +367,7 @@ HRESULT vboxDispKmtDestroyDevice(PVBOXDISPKMT_DEVICE pDevice)
     return E_FAIL;
 }
 
+/// @todo Used for resize and seamless. Drop crVersion* params.
 HRESULT vboxDispKmtCreateContext(PVBOXDISPKMT_DEVICE pDevice, PVBOXDISPKMT_CONTEXT pContext,
                                     VBOXWDDM_CONTEXT_TYPE enmType,
                                     uint32_t crVersionMajor, uint32_t crVersionMinor,
@@ -385,7 +386,7 @@ HRESULT vboxDispKmtCreateContext(PVBOXDISPKMT_DEVICE pDevice, PVBOXDISPKMT_CONTE
     ContextData.EngineAffinity = VBOXWDDM_ENGINE_ID_3D_KMT;
     ContextData.pPrivateDriverData = &Info;
     ContextData.PrivateDriverDataSize = sizeof (Info);
-    ContextData.ClientHint = enmType == VBOXWDDM_CONTEXT_TYPE_CUSTOM_UHGSMI_GL ? D3DKMT_CLIENTHINT_OPENGL : D3DKMT_CLIENTHINT_DX9;
+    ContextData.ClientHint = D3DKMT_CLIENTHINT_DX9;
     NTSTATUS Status = pDevice->pAdapter->pCallbacks->pfnD3DKMTCreateContext(&ContextData);
     Assert(!Status);
     if (!Status)

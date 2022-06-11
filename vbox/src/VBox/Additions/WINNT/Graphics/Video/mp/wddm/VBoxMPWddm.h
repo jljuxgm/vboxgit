@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.h 76563 2019-01-01 03:53:56Z vboxsync $ */
+/* $Id: VBoxMPWddm.h 80422 2019-08-26 13:56:24Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -193,8 +193,6 @@ DECLINLINE(int) vboxWddmScreenInfoInit(VBVAINFOSCREEN RT_UNTRUSTED_VOLATILE_HOST
 bool vboxWddmGhDisplayCheckSetInfoFromSource(PVBOXMP_DEVEXT pDevExt, PVBOXWDDM_SOURCE pSource);
 
 #ifdef VBOX_WITH_CROGL
-#define VBOXWDDMENTRY_2_SWAPCHAIN(_pE) ((PVBOXWDDM_SWAPCHAIN)((uint8_t*)(_pE) - RT_UOFFSETOF(VBOXWDDM_SWAPCHAIN, DevExtListEntry)))
-
 BOOLEAN DxgkDdiInterruptRoutineNew(
     IN CONST PVOID MiniportDeviceContext,
     IN ULONG MessageNumber
