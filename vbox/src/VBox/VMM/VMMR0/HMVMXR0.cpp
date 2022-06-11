@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 79664 2019-07-10 08:47:15Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 79665 2019-07-10 08:57:08Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -10613,12 +10613,13 @@ static DECLCALLBACK(void) hmR0DispatchHostNmi(RTCPUID idCpu, void *pvUser1, void
 
 
 /**
- * Dispatching a host NMI on the host CPU that received the NMI.
+ * Dispatching an NMI on the host CPU that received it.
  *
  * @returns VBox status code.
  * @param   pVCpu       The cross context virtual CPU structure.
  * @param   pVmcsInfo   The VMCS info. object corresponding to the VMCS that was
- *                      executing when receiving the host NMI.
+ *                      executing when receiving the host NMI in VMX non-root
+ *                      operation.
  */
 static int hmR0VmxExitHostNmi(PVMCPU pVCpu, PCVMXVMCSINFO pVmcsInfo)
 {
