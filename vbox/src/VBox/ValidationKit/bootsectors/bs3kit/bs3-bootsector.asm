@@ -1,4 +1,4 @@
-; $Id: bs3-bootsector.asm 83019 2020-02-07 13:29:49Z vboxsync $
+; $Id: bs3-bootsector.asm 83020 2020-02-07 13:35:07Z vboxsync $
 ;; @file
 ; Generic bootsector for BS3.
 ;
@@ -489,10 +489,7 @@ BEGINPROC bs3InitLoadImage
         ; Something went wrong, display a message.
         ;
 .failure:
-%if 1
-        hlt
-        jmp .failure
-%else
+%if 1 ; Disable to save space for debugging.
         push    ax
 
         ; print message
@@ -505,13 +502,16 @@ BEGINPROC bs3InitLoadImage
 
         ; panic
         pop     ax
-%if 1
+ %if 1
         mov     al, ah
         push    bs3PrintHexInAl
-%endif
+ %endif
         call    Bs3Panic
 .s_szErrMsg:
         db 13, 10, 'rd err! '
+%else
+        hlt
+        jmp .failure
 %endif
 .s_szErrMsgEnd:
 ;ENDPROC bs3InitLoadImage - don't want the padding.
