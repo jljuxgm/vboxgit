@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84220 $"
+__version__ = "$Revision: 84244 $"
 
 # Standard Python imports.
 import errno
@@ -2992,6 +2992,25 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
                                        afFlags = [ vboxcon.ProcessCreateFlag_WaitForStdOut,
                                                    vboxcon.ProcessCreateFlag_WaitForStdErr ]),
                             tdTestResultExec(fRc = True) ]);
+
+        # Test very long arguments.
+        if self.oTstDrv.fpApiVer >= 6.1:
+            if oTestVm.isWindows() \
+            or oTestVm.isOS2():
+                sEcho = sShell;
+            else:
+                sEcho       = "/bin/echo";
+                # The suffix acts as an indicator / beacon to see if the actual (random) args were received fully.
+                sEchoSuffix = "-n";
+
+            for _ in xrange(0, 16):
+                ## @todo Check limits; on Ubuntu with 256KB IPRT returns VERR_NOT_IMPLEMENTED.
+                atExec.append([ tdTestExec(sCmd = sEcho,
+                                           asArgs = [ sEcho, sShellOpt,
+                                                      self.oTestFiles.generateFilenameEx(128 * 1024, 2048), sEchoSuffix ],
+                                           afFlags = [ vboxcon.ProcessCreateFlag_WaitForStdOut,
+                                                       vboxcon.ProcessCreateFlag_WaitForStdErr ]),
+                                tdTestResultExec(fRc = True) ]);
 
         # Build up the final test array for the first batch.
         atTests = atInvalid + atExec;
