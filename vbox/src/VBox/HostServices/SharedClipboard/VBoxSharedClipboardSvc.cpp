@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc.cpp 80995 2019-09-25 07:07:18Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc.cpp 80996 2019-09-25 07:13:06Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Host service entry points.
  */
@@ -264,7 +264,7 @@ uint32_t TestClipSvcGetMode(void)
 #endif
 
 /** Getter for headless setting. Also needed by testcase. */
-bool VBoxSvcClipboardGetHeadless(void)
+bool ShClSvcGetHeadless(void)
 {
     return g_fHeadless;
 }
@@ -1166,7 +1166,7 @@ static DECLCALLBACK(int) svcConnect(void *, uint32_t u32ClientID, void *pvClient
         rc = shclSvcClientStateInit(&pClient->State, u32ClientID);
         if (RT_SUCCESS(rc))
         {
-            rc = ShClSvcImplConnect(pClient, VBoxSvcClipboardGetHeadless());
+            rc = ShClSvcImplConnect(pClient, ShClSvcGetHeadless());
 #ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS
             if (RT_SUCCESS(rc))
                 rc = SharedClipboardTransferCtxInit(&pClient->TransferCtx);
