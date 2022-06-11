@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 78531 2019-05-15 13:13:12Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 78537 2019-05-16 08:50:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class implementation.
  */
@@ -1937,7 +1937,7 @@ void StorageModel::clear()
 QMap<KStorageBus, int> StorageModel::currentControllerTypes() const
 {
     QMap<KStorageBus, int> currentMap;
-    for (int iStorageBusType = KStorageBus_IDE; iStorageBusType <= KStorageBus_USB; ++iStorageBusType)
+    for (int iStorageBusType = KStorageBus_IDE; iStorageBusType < KStorageBus_Max; ++iStorageBusType)
     {
         currentMap.insert((KStorageBus)iStorageBusType,
                           static_cast<RootItem*>(mRootItem)->childCount((KStorageBus)iStorageBusType));
@@ -1948,7 +1948,7 @@ QMap<KStorageBus, int> StorageModel::currentControllerTypes() const
 QMap<KStorageBus, int> StorageModel::maximumControllerTypes() const
 {
     QMap<KStorageBus, int> maximumMap;
-    for (int iStorageBusType = KStorageBus_IDE; iStorageBusType <= KStorageBus_USB; ++iStorageBusType)
+    for (int iStorageBusType = KStorageBus_IDE; iStorageBusType < KStorageBus_Max; ++iStorageBusType)
     {
         maximumMap.insert((KStorageBus)iStorageBusType,
                           vboxGlobal().virtualBox().GetSystemProperties().GetMaxInstancesOfStorageBus(chipsetType(), (KStorageBus)iStorageBusType));
@@ -2424,7 +2424,7 @@ bool UIMachineSettingsStorage::validate(QList<UIValidationMessage> &messages)
     QStringList excessiveList;
     const QMap<KStorageBus, int> currentType = m_pModelStorage->currentControllerTypes();
     const QMap<KStorageBus, int> maximumType = m_pModelStorage->maximumControllerTypes();
-    for (int iStorageBusType = KStorageBus_IDE; iStorageBusType <= KStorageBus_USB; ++iStorageBusType)
+    for (int iStorageBusType = KStorageBus_IDE; iStorageBusType < KStorageBus_Max; ++iStorageBusType)
     {
         if (currentType[(KStorageBus)iStorageBusType] > maximumType[(KStorageBus)iStorageBusType])
         {
