@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 77910 2019-03-27 11:33:01Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 78979 2019-06-05 08:15:31Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -1793,8 +1793,8 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> pVirtualBox,
                 RTPrintf(" (Driver: %s, Controller: %s, Codec: %s)", pszDrv, pszCtrl, pszCodec);
             RTPrintf("\n");
         }
-        SHOW_BOOLEAN_PROP(AudioAdapter, EnabledIn,  "audio_in",  "Audio playback:");
-        SHOW_BOOLEAN_PROP(AudioAdapter, EnabledOut, "audio_out", "Audio capture:");
+        SHOW_BOOLEAN_PROP(AudioAdapter, EnabledOut,  "audio_out",  "Audio playback:");
+        SHOW_BOOLEAN_PROP(AudioAdapter, EnabledIn, "audio_in", "Audio capture:");
     }
 
     /* Shared clipboard */
