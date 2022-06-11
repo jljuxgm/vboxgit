@@ -1,4 +1,4 @@
-;$Id: HMInternal.mac 78220 2019-04-20 04:08:44Z vboxsync $
+;$Id: HMInternal.mac 80036 2019-07-29 07:44:29Z vboxsync $
 ;; @file
 ; HM - Internal header file.
 ;
@@ -86,7 +86,6 @@ struc HMCPU
     .u32HMError             resd    1
     alignb 8
     .fCtxChanged            resq    1
-    .u64HostTscAux          resq    1
 
     ; incomplete to save unnecessary pain...
 endstruc

@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 79649 2019-07-10 04:55:06Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 80036 2019-07-29 07:44:29Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -4625,8 +4625,8 @@ static void hmR0SvmPreRunGuestCommitted(PVMCPU pVCpu, PSVMTRANSIENT pSvmTransien
         && !(pVmcb->ctrl.u64InterceptCtrl & SVM_CTRL_INTERCEPT_RDTSCP))
     {
         uint64_t const uGuestTscAux = CPUMGetGuestTscAux(pVCpu);
-        pVCpu->hm.s.u64HostTscAux   = ASMRdMsr(MSR_K8_TSC_AUX);
-        if (uGuestTscAux != pVCpu->hm.s.u64HostTscAux)
+        pVCpu->hm.s.svm.u64HostTscAux   = ASMRdMsr(MSR_K8_TSC_AUX);
+        if (uGuestTscAux != pVCpu->hm.s.svm.u64HostTscAux)
             ASMWrMsr(MSR_K8_TSC_AUX, uGuestTscAux);
         hmR0SvmSetMsrPermission(pVCpu, pbMsrBitmap, MSR_K8_TSC_AUX, SVMMSREXIT_PASSTHRU_READ, SVMMSREXIT_PASSTHRU_WRITE);
         pSvmTransient->fRestoreTscAuxMsr = true;
@@ -4722,8 +4722,8 @@ static void hmR0SvmPostRunGuest(PVMCPU pVCpu, PSVMTRANSIENT pSvmTransient, int r
     {
         uint64_t u64GuestTscAuxMsr = ASMRdMsr(MSR_K8_TSC_AUX);
         CPUMSetGuestTscAux(pVCpu, u64GuestTscAuxMsr);
-        if (u64GuestTscAuxMsr != pVCpu->hm.s.u64HostTscAux)
-            ASMWrMsr(MSR_K8_TSC_AUX, pVCpu->hm.s.u64HostTscAux);
+        if (u64GuestTscAuxMsr != pVCpu->hm.s.svm.u64HostTscAux)
+            ASMWrMsr(MSR_K8_TSC_AUX, pVCpu->hm.s.svm.u64HostTscAux);
     }
 
     STAM_PROFILE_ADV_STOP_START(&pVCpu->hm.s.StatInGC, &pVCpu->hm.s.StatPreExit, x);

@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 79971 2019-07-25 06:41:20Z vboxsync $ */
+/* $Id: HMInternal.h 80036 2019-07-29 07:44:29Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -972,8 +972,6 @@ typedef struct HMCPU
     int32_t                     rcLastExitToR3;
     /** CPU-context changed flags (see HM_CHANGED_xxx). */
     uint64_t                    fCtxChanged;
-    /** Host's TSC_AUX MSR (used when RDTSCP doesn't cause VM-exits). */
-    uint64_t                    u64HostTscAux;  /** @todo r=ramshankar: Can be removed and put in SVMTRANSIENT instead! */
 
     union /* no tag! */
     {
@@ -1081,6 +1079,9 @@ typedef struct HMCPU
              *  we should check if the VTPR changed on every VM-exit. */
             bool                        fSyncVTpr;
             uint8_t                     au8Alignment0[7];
+
+            /** Host's TSC_AUX MSR (used when RDTSCP doesn't cause VM-exits). */
+            uint64_t                    u64HostTscAux;
 
             /** Cache of the nested-guest's VMCB fields that we modify in order to run the
              *  nested-guest using AMD-V. This will be restored on \#VMEXIT. */
