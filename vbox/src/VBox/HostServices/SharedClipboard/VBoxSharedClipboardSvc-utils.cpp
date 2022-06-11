@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-utils.cpp 80444 2019-08-27 17:47:44Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-utils.cpp 80662 2019-09-09 08:43:14Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Host service utility functions.
  */
@@ -92,7 +92,7 @@ bool vboxSvcClipboardURIMsgIsAllowed(uint32_t uMode, uint32_t uMsg)
 }
 
 #if 0
-int vboxSvcClipboardURIReportMsg(PVBOXCLIPBOARDCLIENT pClient, uint32_t uMsg, uint32_t uParm)
+int vboxSvcClipboardURIReportMsg(PSHCLCLIENT pClient, uint32_t uMsg, uint32_t uParm)
 {
     AssertPtrReturn(pClient, VERR_INVALID_POINTER);
 
@@ -114,7 +114,7 @@ int vboxSvcClipboardURIReportMsg(PVBOXCLIPBOARDCLIENT pClient, uint32_t uMsg, ui
             }
 
             pClient->State.URI.fTransferStart = true;
-            pClient->State.URI.enmTransferDir = (SHAREDCLIPBOARDURITRANSFERDIR)uParm;
+            pClient->State.URI.enmTransferDir = (SHCLURITRANSFERDIR)uParm;
             break;
 
         }
@@ -129,7 +129,7 @@ int vboxSvcClipboardURIReportMsg(PVBOXCLIPBOARDCLIENT pClient, uint32_t uMsg, ui
     return rc;
 }
 
-bool vboxSvcClipboardURIReturnMsg(PVBOXCLIPBOARDCLIENT pClient, uint32_t cParms, VBOXHGCMSVCPARM paParms[])
+bool vboxSvcClipboardURIReturnMsg(PSHCLCLIENT pClient, uint32_t cParms, VBOXHGCMSVCPARM paParms[])
 {
     RT_NOREF(pClient, cParms, paParms);
 

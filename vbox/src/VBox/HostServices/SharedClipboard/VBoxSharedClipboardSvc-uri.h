@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-uri.h 79497 2019-07-03 13:28:33Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-uri.h 80662 2019-09-09 08:43:14Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Internal header for URI (list) handling.
  */
@@ -21,13 +21,13 @@
 # pragma once
 #endif
 
-int vboxSvcClipboardURIHandler(PVBOXCLIPBOARDCLIENT pClient, VBOXHGCMCALLHANDLE callHandle, uint32_t u32Function, uint32_t cParms, VBOXHGCMSVCPARM paParms[], uint64_t tsArrival);
+int vboxSvcClipboardURIHandler(PSHCLCLIENT pClient, VBOXHGCMCALLHANDLE callHandle, uint32_t u32Function, uint32_t cParms, VBOXHGCMSVCPARM paParms[], uint64_t tsArrival);
 int vboxSvcClipboardURIHostHandler(uint32_t u32Function, uint32_t cParms, VBOXHGCMSVCPARM paParms[]);
 
-int vboxSvcClipboardURIAreaRegister(PVBOXCLIPBOARDCLIENTSTATE pClientState, PSHAREDCLIPBOARDURITRANSFER pTransfer);
-int vboxSvcClipboardURIAreaUnregister(PVBOXCLIPBOARDCLIENTSTATE pClientState, PSHAREDCLIPBOARDURITRANSFER pTransfer);
-int vboxSvcClipboardURIAreaAttach(PVBOXCLIPBOARDCLIENTSTATE pClientState, PSHAREDCLIPBOARDURITRANSFER pTransfer, SHAREDCLIPBOARDAREAID uID);
-int vboxSvcClipboardURIAreaDetach(PVBOXCLIPBOARDCLIENTSTATE pClientState, PSHAREDCLIPBOARDURITRANSFER pTransfer);
+int vboxSvcClipboardURIAreaRegister(PSHCLCLIENTSTATE pClientState, PSHCLURITRANSFER pTransfer);
+int vboxSvcClipboardURIAreaUnregister(PSHCLCLIENTSTATE pClientState, PSHCLURITRANSFER pTransfer);
+int vboxSvcClipboardURIAreaAttach(PSHCLCLIENTSTATE pClientState, PSHCLURITRANSFER pTransfer, SHCLAREAID uID);
+int vboxSvcClipboardURIAreaDetach(PSHCLCLIENTSTATE pClientState, PSHCLURITRANSFER pTransfer);
 
 #endif /* !VBOX_INCLUDED_SRC_SharedClipboard_VBoxSharedClipboardSvc_uri_h */
 

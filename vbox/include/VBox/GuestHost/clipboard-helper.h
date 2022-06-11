@@ -1,4 +1,4 @@
-/* $Id: clipboard-helper.h 80285 2019-08-15 09:11:47Z vboxsync $ */
+/* $Id: clipboard-helper.h 80662 2019-09-09 08:43:14Z vboxsync $ */
 /** @file
  * Shared Clipboard - Some helper function for converting between the various EOLs.
  */
@@ -188,7 +188,7 @@ int VBoxClipboardDbgDumpHtml(const char *pszSrc, size_t cbSrc);
  * @param   cb                  Size (in bytes) of data to dump.
  * @param   u32Format           Clipboard format to use for dumping.
  */
-void VBoxClipboardDbgDumpData(const void *pv, size_t cb, VBOXCLIPBOARDFORMAT u32Format);
+void VBoxClipboardDbgDumpData(const void *pv, size_t cb, SHCLFORMAT u32Format);
 #endif /* LOG_ENABLED */
 
 /**
