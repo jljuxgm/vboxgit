@@ -1,4 +1,4 @@
-/* $Id: gvm.h 80309 2019-08-15 19:53:56Z vboxsync $ */
+/* $Id: gvm.h 80310 2019-08-15 20:00:58Z vboxsync $ */
 /** @file
  * GVM - The Global VM Data.
  */
@@ -145,12 +145,15 @@ AssertCompileSize(        GVMCPU,            64 + 64);
  * Unlike VM, there are no special alignment restrictions here. The
  * paddings are checked by compile time assertions.
  */
-#ifdef VBOX_BUGREF_9217
+#if defined(VBOX_BUGREF_9217) && defined(__cplusplus)
 typedef struct GVM : public VM
 #else
 typedef struct GVM
 #endif
 {
+#if defined(VBOX_BUGREF_9217) && !defined(__cplusplus)
+    VM              s;
+#endif
     /** Magic / eye-catcher (GVM_MAGIC). */
     uint32_t        u32Magic;
     /** The global VM handle for this VM. */
