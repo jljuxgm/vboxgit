@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-darwin.cpp 82818 2020-01-22 10:49:51Z vboxsync $ */
+/* $Id: SUPDrv-darwin.cpp 82858 2020-01-26 14:11:56Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Darwin Specific Code.
  */
@@ -1443,6 +1443,7 @@ int  VBOXCALL   supdrvOSLdrOpen(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pImage, c
                             pImage->pvImage     = pvImageBits;
                             RTMemTmpFree(pErrInfo);
                             /** @todo Call RTLdrDone. */
+                            kprintf("VBoxDrv: Loaded %s at %p\n", pImage->szName, pvImageBits);
                             return VINF_SUCCESS;
                         }
 
@@ -1993,6 +1994,7 @@ RTDECL(int) SUPR0Printf(const char *pszFormat, ...)
     szMsg[sizeof(szMsg) - 1] = '\0';
 
     printf("%s", szMsg);
+    kprintf("%s", szMsg);
 
     IPRT_DARWIN_RESTORE_EFL_AC();
     return 0;
