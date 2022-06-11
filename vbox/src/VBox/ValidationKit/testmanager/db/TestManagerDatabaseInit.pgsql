@@ -1,4 +1,4 @@
--- $Id: TestManagerDatabaseInit.pgsql 82968 2020-02-04 10:35:17Z vboxsync $
+-- $Id: TestManagerDatabaseInit.pgsql 83398 2020-03-24 20:22:44Z vboxsync $
 --- @file
 -- VBox Test Manager Database Creation script.
 --
@@ -1904,6 +1904,9 @@ CREATE TABLE SchedQueues (
     --
     cMissingGangMembers smallint    DEFAULT 1  NOT NULL,
 
+    --- @todo
+    --- The number of times this has been considered for scheduling.
+    -- cConsidered SMALLINT DEFAULT 0 NOT NULL,
 
     PRIMARY KEY (idSchedGroup, idItem)
 );
