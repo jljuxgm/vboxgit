@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 80191 2019-08-08 00:36:57Z vboxsync $ */
+/* $Id: HM.cpp 80202 2019-08-09 05:02:52Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -1488,7 +1488,7 @@ static int hmR3InitFinalizeR0Intel(PVM pVM)
         LogRel(("HM: Nested-guest:\n"));
         for (VMCPUID idCpu = 0; idCpu < pVM->cCpus; idCpu++)
         {
-            PCVMXVMCSINFO pVmcsInfoNstGst = &pVM->aCpus[idCpu]->hm.s.vmx.VmcsInfoNstGst;
+            PCVMXVMCSINFO pVmcsInfoNstGst = &pVM->apCpusR3[idCpu]->hm.s.vmx.VmcsInfoNstGst;
             LogRel(("HM: VCPU%3d:   MSR bitmap physaddr    = %#RHp\n", idCpu, pVmcsInfoNstGst->HCPhysMsrBitmap));
             LogRel(("HM: VCPU%3d:   VMCS physaddr          = %#RHp\n", idCpu, pVmcsInfoNstGst->HCPhysVmcs));
         }
