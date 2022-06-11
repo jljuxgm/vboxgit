@@ -1,4 +1,4 @@
-/* $Id: UICloudMachine.cpp 83144 2020-02-25 11:06:13Z vboxsync $ */
+/* $Id: UICloudMachine.cpp 83146 2020-02-25 11:20:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudMachine class implementation.
  */
@@ -51,6 +51,10 @@ UICloudMachineData::~UICloudMachineData()
 /*********************************************************************************************************************************
 *   Class UICloudMachine implementation.                                                                                         *
 *********************************************************************************************************************************/
+
+UICloudMachine::UICloudMachine()
+{
+}
 
 UICloudMachine::UICloudMachine(const CCloudClient &comCloudClient,
                                const QString &strId,
