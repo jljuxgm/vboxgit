@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 79660 2019-07-10 08:39:52Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 79664 2019-07-10 08:47:15Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -10607,7 +10607,7 @@ static int hmR0VmxMapHCApicAccessPage(PVMCPU pVCpu)
  */
 static DECLCALLBACK(void) hmR0DispatchHostNmi(RTCPUID idCpu, void *pvUser1, void *pvUser2)
 {
-    RT_NOREF2(pvUser1, pvUser2);
+    RT_NOREF3(idCpu, pvUser1, pvUser2);
     VMXDispatchHostNmi();
 }
 
