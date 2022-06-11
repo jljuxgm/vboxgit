@@ -1,4 +1,4 @@
-/* $Id: UICloudNetworkingStuff.h 83643 2020-04-09 09:43:07Z vboxsync $ */
+/* $Id: UICloudNetworkingStuff.h 83704 2020-04-15 15:28:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudNetworkingStuff namespace declaration.
  */
@@ -27,12 +27,30 @@
 
 /* COM includes: */
 #include "COMEnums.h"
+#include "CCloudProfile.h"
+#include "CCloudProvider.h"
+#include "CCloudProviderManager.h"
 #include "CCloudClient.h"
 #include "CCloudMachine.h"
 
 /** Cloud networking stuff namespace. */
 namespace UICloudNetworkingStuff
 {
+    /** Acquires cloud provider manager. */
+    SHARED_LIBRARY_STUFF CCloudProviderManager cloudProviderManager();
+    /** Acquires cloud provider specified by @a strProviderShortName. */
+    SHARED_LIBRARY_STUFF CCloudProvider cloudProviderByShortName(const QString &strProviderShortName);
+    /** Acquires cloud profile specified by @a strProviderShortName and @a strProfileName. */
+    SHARED_LIBRARY_STUFF CCloudProfile cloudProfileByName(const QString &strProviderShortName,
+                                                          const QString &strProfileName);
+    /** Acquires cloud client specified by @a strProviderShortName and @a strProfileName. */
+    SHARED_LIBRARY_STUFF CCloudClient cloudClientByName(const QString &strProviderShortName,
+                                                        const QString &strProfileName);
+    /** Acquires cloud machine specified by @a strProviderShortName, @a strProfileName and @a uMachineId. */
+    SHARED_LIBRARY_STUFF CCloudMachine cloudMachineById(const QString &strProviderShortName,
+                                                        const QString &strProfileName,
+                                                        const QUuid &uMachineId);
+
     /** Acquires instance list.
       * @param  comCloudClient   Brings cloud client object.
       * @param  strErrorMessage  Brings error message container.
