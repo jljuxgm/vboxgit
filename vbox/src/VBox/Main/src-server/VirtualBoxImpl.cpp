@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 78565 2019-05-17 12:06:36Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 78763 2019-05-26 04:39:45Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -4382,18 +4382,12 @@ void VirtualBox::i_saveMediaRegistry(settings::MediaRegistry &mediaRegistry,
             // levels up to whoever triggered saveSettings, as there are
             // lots of places which would need to handle saving more settings.
             pDesc->pVirtualBox = this;
-            HRESULT hr = S_OK;
-            try
-            {
-                //the function createThread() takes ownership of pDesc
-                //so there is no need to use delete operator for pDesc
-                //after calling this function
-                hr = pDesc->createThread();
-            }
-            catch(...)
-            {
-                hr = E_FAIL;
-            }
+
+            //the function createThread() takes ownership of pDesc
+            //so there is no need to use delete operator for pDesc
+            //after calling this function
+            HRESULT hr = pDesc->createThread();
+            pDesc = NULL;
 
             if (FAILED(hr))
             {
