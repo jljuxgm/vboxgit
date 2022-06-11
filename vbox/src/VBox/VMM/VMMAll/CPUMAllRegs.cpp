@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 80333 2019-08-16 20:28:38Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 80763 2019-09-13 06:20:53Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -2438,7 +2438,7 @@ VMM_INT_DECL(bool) CPUMGetVmxIoBitmapPermission(void const *pvIoBitmapA, void co
      *
      * See Intel spec. 25.1.3 "Instructions That Cause VM Exits Conditionally".
      */
-    /** @todo r=ramshankar: Reading 1, 2, 4 bytes at ports 0xffff, 0xfffe and 0xfffc
+    /** @todo r=ramshankar: Reading 1, 2, 4 bytes at ports 0xfffe, 0xfffd and 0xfffb
      *        respectively are valid and do not constitute a wrap around from what I
      *        understand. Verify this later. */
     uint32_t const uPortLast = uPort + cbAccess;
