@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d.h 82053 2019-11-20 20:49:19Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d.h 82089 2019-11-21 22:18:59Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device - 3D part.
  */
@@ -51,7 +51,7 @@
 
 
 /* DevVGA-SVGA.cpp: */
-void vmsvga3dSurfaceUpdateHeapBuffersOnFifoThread(PPDMDEVINS pDevIns, PVGASTATE pThis, uint32_t sid);
+void vmsvgaR33dSurfaceUpdateHeapBuffersOnFifoThread(PPDMDEVINS pDevIns, PVGASTATE pThis, uint32_t sid);
 
 
 /* DevVGA-SVGA3d-ogl.cpp & DevVGA-SVGA3d-win.cpp: */
