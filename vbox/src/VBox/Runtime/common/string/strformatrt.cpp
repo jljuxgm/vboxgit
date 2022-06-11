@@ -1,4 +1,4 @@
-/* $Id: strformatrt.cpp 84063 2020-04-28 19:32:41Z vboxsync $ */
+/* $Id: strformatrt.cpp 84207 2020-05-08 11:54:10Z vboxsync $ */
 /** @file
  * IPRT - IPRT String Formatter Extensions.
  */
@@ -987,6 +987,8 @@ DECLHIDDEN(size_t) rtstrFormatRt(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, co
 
                                 /*
                                  * Hex string.
+                                 * The default separator is ' ', RTSTR_F_THOUSAND_SEP changes it to ':',
+                                 * and RTSTR_F_SPECIAL removes it.
                                  */
                                 case 's':
                                 {
@@ -997,8 +999,15 @@ DECLHIDDEN(size_t) rtstrFormatRt(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, co
                                         else
                                             cch = RTStrFormat(pfnOutput, pvArgOutput, NULL, 0, "%0*llx: %02x",
                                                               cchMemAddrWidth, uMemAddr, *pu8++);
-                                        for (; cchPrecision > 0; cchPrecision--, pu8++)
-                                            cch += RTStrFormat(pfnOutput, pvArgOutput, NULL, 0, " %02x", *pu8);
+                                        if (!(fFlags & (RTSTR_F_SPECIAL | RTSTR_F_THOUSAND_SEP)))
+                                            for (; cchPrecision > 0; cchPrecision--, pu8++)
+                                                cch += RTStrFormat(pfnOutput, pvArgOutput, NULL, 0, " %02x", *pu8);
+                                        else if (fFlags & RTSTR_F_SPECIAL)
+                                            for (; cchPrecision > 0; cchPrecision--, pu8++)
+                                                cch += RTStrFormat(pfnOutput, pvArgOutput, NULL, 0, "%02x", *pu8);
+                                        else
+                                            for (; cchPrecision > 0; cchPrecision--, pu8++)
+                                                cch += RTStrFormat(pfnOutput, pvArgOutput, NULL, 0, ":%02x", *pu8);
                                         return cch;
                                     }
                                     break;
