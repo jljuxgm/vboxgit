@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageBasic2.h 79587 2019-07-08 10:01:12Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageBasic2.h 79684 2019-07-11 07:57:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageBasic2 class declaration.
  */
@@ -49,6 +49,9 @@ protected:
     CCloudClient client() const;
     /** Returns Virtual System Description object. */
     CVirtualSystemDescription vsd() const;
+
+    /** Defines Virtual System Description @a comForm object. */
+    void setVSDForm(const CVirtualSystemDescriptionForm &comForm);
     /** Returns Virtual System Description Form object. */
     CVirtualSystemDescriptionForm vsdForm() const;
 

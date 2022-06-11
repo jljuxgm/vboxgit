@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageBasic2.cpp 79683 2019-07-11 07:27:15Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageBasic2.cpp 79684 2019-07-11 07:57:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageBasic2 class implementation.
  */
@@ -53,6 +53,11 @@ CCloudClient UIWizardNewCloudVMPage2::client() const
 CVirtualSystemDescription UIWizardNewCloudVMPage2::vsd() const
 {
     return qobject_cast<UIWizardNewCloudVM*>(wizardImp())->vsd();
+}
+
+void UIWizardNewCloudVMPage2::setVSDForm(const CVirtualSystemDescriptionForm &comForm)
+{
+    qobject_cast<UIWizardNewCloudVM*>(wizardImp())->setVSDForm(comForm);
 }
 
 CVirtualSystemDescriptionForm UIWizardNewCloudVMPage2::vsdForm() const
@@ -129,8 +134,7 @@ bool UIWizardNewCloudVMPageBasic2::isComplete() const
 
     /* Check cloud settings: */
     fResult =    client().isNotNull()
-              && vsd().isNotNull()
-              && vsdForm().isNotNull();
+              && vsd().isNotNull();
 
     /* Return result: */
     return fResult;
@@ -146,16 +150,14 @@ bool UIWizardNewCloudVMPageBasic2::validatePage()
 
     /* Check whether we have proper VSD form: */
     CVirtualSystemDescriptionForm comForm = vsdForm();
-    fResult = comForm.isNotNull();
-    Assert(fResult);
-
     /* Give changed VSD back: */
-    if (fResult)
+    if (comForm.isNotNull())
     {
         comForm.GetVirtualSystemDescription();
         fResult = comForm.isOk();
         if (!fResult)
             msgCenter().cannotAcquireVirtualSystemDescriptionFormProperty(comForm);
+        setVSDForm(CVirtualSystemDescriptionForm());
     }
 
     /* Try to create cloud VM: */
