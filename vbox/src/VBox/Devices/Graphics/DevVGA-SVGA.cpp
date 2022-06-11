@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 82114 2019-11-22 23:05:31Z vboxsync $ */
+/* $Id: DevVGA-SVGA.cpp 82115 2019-11-22 23:22:50Z vboxsync $ */
 /** @file
  * VMware SVGA device.
  *
@@ -244,7 +244,7 @@ typedef struct VMSVGAR3STATE
 # endif
 
     /** Information obout screens. */
-    VMSVGASCREENOBJECT aScreens[64];
+    VMSVGASCREENOBJECT      aScreens[64];
 
     /** Tracks how much time we waste reading SVGA_REG_BUSY with a busy FIFO. */
     STAMPROFILE             StatBusyDelayEmts;
