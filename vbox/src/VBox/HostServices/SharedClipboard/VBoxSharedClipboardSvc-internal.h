@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-internal.h 81286 2019-10-15 16:37:37Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-internal.h 81346 2019-10-18 10:40:15Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Internal header.
  */
@@ -48,7 +48,7 @@ struct SHCLCLIENTSTATE;
 typedef struct _SHCLMSGCTX
 {
     /** Context ID. */
-    uint32_t uContextID;
+    uint64_t uContextID;
 } SHCLMSGCTX, *PSHCLMSGCTX;
 
 /**
@@ -86,7 +86,7 @@ typedef struct SHCLCLIENTSTATE
     /** The client's HGCM ID. Not related to the session ID below! */
     uint32_t                uClientID;
     /** The client's session ID. */
-    uint32_t                uSessionID;
+    SHCLSESSIONID           uSessionID;
     /** Optional protocol version the client uses. Set to 0 by default. */
     uint32_t                uProtocolVer;
     /** Maximum chunk size to use for data transfers. Set to _64K by default. */
@@ -98,7 +98,7 @@ typedef struct SHCLCLIENTSTATE
 
 typedef struct _SHCLCLIENTCMDCTX
 {
-    uint32_t uContextID;
+    uint64_t uContextID;
 } SHCLCLIENTCMDCTX, *PSHCLCLIENTCMDCTX;
 
 typedef struct _SHCLCLIENT
