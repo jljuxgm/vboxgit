@@ -1,4 +1,4 @@
-/* $Id: UIAudioControllerEditor.h 80081 2019-07-31 16:19:53Z vboxsync $ */
+/* $Id: UIAudioControllerEditor.h 82829 2020-01-22 15:25:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIAudioControllerEditor class declaration.
  */
@@ -56,6 +56,9 @@ public:
     /** Returns editor value. */
     KAudioControllerType value() const;
 
+    /** Returns the vector of supported values. */
+    QVector<KAudioControllerType> supportedValues() const { return m_supportedValues; }
+
 protected:
 
     /** Handles translation event. */
@@ -75,6 +78,12 @@ private:
 
     /** Holds whether descriptive label should be created. */
     bool  m_fWithLabel;
+
+    /** Holds the value to be selected. */
+    KAudioControllerType  m_enmValue;
+
+    /** Holds the vector of supported values. */
+    QVector<KAudioControllerType>  m_supportedValues;
 
     /** Holds the label instance. */
     QLabel     *m_pLabel;
