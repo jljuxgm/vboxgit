@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHostonly.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxManageHostonly.cpp 79507 2019-07-03 14:45:47Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of hostonlyif command.
  */
@@ -86,6 +86,7 @@ static RTEXITCODE handleCreate(HandlerArg *a)
 
     if (fMachineReadable)
     {
+        progress->WaitForCompletion(10000); /* Ten seconds should probably be enough. */
         CHECK_PROGRESS_ERROR_RET(progress, (""), RTEXITCODE_FAILURE);
     }
     else
