@@ -1,4 +1,4 @@
-/* $Id: SelfSizingTable.h 76585 2019-01-01 06:31:29Z vboxsync $ $Revision: 76585 $ */
+/* $Id: SelfSizingTable.h 80511 2019-08-30 11:03:01Z vboxsync $ $Revision: 80511 $ */
 /** @file
  * vboxraw header file
  */
@@ -158,7 +158,7 @@ SELFSIZINGTABLE::~SelfSizingTable()
         while (pColData)
         {
             COLDATA *pColDataNext = pColData->next;
-            delete pColData->pszData;
+            delete[] pColData->pszData;
             delete pColData;
             pColData = pColDataNext;
         }
