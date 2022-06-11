@@ -1,4 +1,4 @@
-# $Id: Makefile-header.gmk 78447 2019-05-08 10:59:59Z vboxsync $
+# $Id: Makefile-header.gmk 80289 2019-08-15 10:32:58Z vboxsync $
 ## @file
 # VirtualBox Guest Additions kernel module Makefile, common parts.
 #
@@ -138,6 +138,12 @@ ifeq ($(KERNELRELEASE),)
  #
  ifeq ($(shell if grep '"[2]\.' $(KERN_DIR)/include/linux/version.h > /dev/null 2>&1; then echo yes; fi),yes)
   export KERN_VER KERN_DIR
+ else
+  # This makefile received some variables in the command line which should
+  # not be passed to the recursive make invocations (of the Linux makefile
+  # for building kernel modules), since they should derive KERN_DIR from the
+  # respective command line variables to come up with the value they expect.
+  unexport KERN_VER KERN_DIR MAKEFLAGS
  endif
 
 else # neq($(KERNELRELEASE),)
