@@ -1,4 +1,4 @@
-/* $Id: HGSMIHost.h 76565 2019-01-01 04:23:20Z vboxsync $ */
+/* $Id: HGSMIHost.h 80295 2019-08-15 15:46:09Z vboxsync $ */
 /** @file
  * VBox Host Guest Shared Memory Interface (HGSMI), host part.
  */
@@ -21,8 +21,7 @@
 # pragma once
 #endif
 
-#include <VBox/vmm/vm.h>
-
+#include <VBox/types.h>
 #include <HGSMI.h>
 #include <HGSMIChSetup.h>
 
