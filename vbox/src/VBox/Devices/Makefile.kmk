@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: Makefile.kmk 78504 2019-05-14 14:06:15Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -1418,7 +1418,11 @@ if defined(VBOX_WITH_EXTPACK_PUEL) && defined(VBOX_WITH_EXTPACK_PUEL_BUILD)
  #
  INSTALLS += VBoxExtPackPuelInsRoms
  VBoxExtPackPuelInsRoms_TEMPLATE = VBoxInsExtPackPuel
- VBoxExtPackPuelInsRoms_SOURCES = PC/PXE/PXE-Intel.rom=>PXE-Intel.rom
+ ifdef PXE_EXPERIMENTAL_BUILD_SETUP
+  VBoxExtPackPuelInsRoms_SOURCES = $(PATH_OUT)/obj/NetBiosBin/NetBiosBin.rom=>PXE-Intel.rom
+ else
+  VBoxExtPackPuelInsRoms_SOURCES = PC/PXE/PXE-Intel.rom=>PXE-Intel.rom
+ endif
 endif # VBOX_WITH_EXTPACK_PUEL
 
 
