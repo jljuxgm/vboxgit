@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 79147 2019-06-14 06:57:14Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 79148 2019-06-14 09:16:36Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -16009,7 +16009,7 @@ HMVMX_EXIT_DECL hmR0VmxExitXcptOrNmiNested(PVMCPU pVCpu, PVMXTRANSIENT pVmxTrans
                 ExitInfo.u64Qual = pVmxTransient->uExitQual;
 
                 VMXVEXITEVENTINFO ExitEventInfo;
-                RT_ZERO(ExitInfo);
+                RT_ZERO(ExitEventInfo);
                 ExitEventInfo.uExitIntInfo         = pVmxTransient->uExitIntInfo;
                 ExitEventInfo.uExitIntErrCode      = pVmxTransient->uExitIntErrorCode;
                 ExitEventInfo.uIdtVectoringInfo    = pVmxTransient->uIdtVectoringInfo;
