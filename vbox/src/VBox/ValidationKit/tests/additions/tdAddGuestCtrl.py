@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84179 $"
+__version__ = "$Revision: 84197 $"
 
 # Standard Python imports.
 import errno
@@ -2254,8 +2254,9 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
                                     reporter.maybeErrXcpt(fIsError, 'asArgs=%s' % (oTest.asArgs,));
                                 else:
                                     if abBuf:
-                                        reporter.log2('Process (PID %d) got %d bytes of %s data' % (iPid, len(abBuf), sFdNm,));
-                                        for sLine in abBuf.splitlines():
+                                        reporter.log2('Process (PID %d) got %d bytes of %s data (type: %s)'
+                                                      % (iPid, len(abBuf), sFdNm, type(abBuf)));
+                                        for sLine in abBuf.decode("utf-8").splitlines():
                                             reporter.log('%s: %s' % (sFdNm, sLine));
                                         acbFdOut[iFd] += len(abBuf);
                                         oTest.sBuf     = abBuf; ## @todo Figure out how to uniform + append!
