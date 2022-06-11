@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 78737 2019-05-24 22:22:04Z vboxsync $
+# $Id: virtual_test_sheriff.py 78768 2019-05-26 22:04:49Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -35,7 +35,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 78737 $"
+__version__ = "$Revision: 78768 $"
 
 
 # Standard python imports
@@ -318,7 +318,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
 
         if self.oConfig.sLogFile:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 78737 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 78768 $ \n');
 
 
     def eprint(self, sText):
@@ -602,6 +602,10 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
     ktReason_Panic_HugeMemory                          = ( 'Panic',             'Huge memory assertion' );
     ktReason_Panic_IOAPICDoesntWork                    = ( 'Panic',             'IO-APIC and timer does not work' );
     ktReason_Panic_TxUnitHang                          = ( 'Panic',             'Tx Unit Hang' );
+    ktReason_API_std_bad_alloc                         = ( 'API / (XP)COM',     'std::bad_alloc' );
+    ktReason_API_Digest_Mismatch                       = ( 'API / (XP)COM',     'Digest mismatch' );
+    ktReason_API_MoveVM_SharingViolation               = ( 'API / (XP)COM',     'MoveVM sharing violation' );
+    ktReason_API_MoveVM_InvalidParameter               = ( 'API / (XP)COM',     'MoveVM invalid parameter' );
     ktReason_XPCOM_Exit_Minus_11                       = ( 'API / (XP)COM',     'exit -11' );
     ktReason_XPCOM_VBoxSVC_Hang                        = ( 'API / (XP)COM',     'VBoxSVC hang' );
     ktReason_XPCOM_VBoxSVC_Hang_Plus_Heap_Corruption   = ( 'API / (XP)COM',     'VBoxSVC hang + heap corruption' );
@@ -683,7 +687,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.getFailureReason(tReason);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 78737 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 78768 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
@@ -993,6 +997,11 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         ( True,  ktReason_Host_Reboot_OSX_Watchdog_Timeout,         ': "OSX Watchdog Timeout: ' ),
         ( False, ktReason_XPCOM_NS_ERROR_CALL_FAILED,
           'Exception: 0x800706be (Call to remote object failed (NS_ERROR_CALL_FAILED))' ),
+        ( True,  ktReason_API_std_bad_alloc,                        'Unexpected exception: std::bad_alloc' ),
+        ( True,  ktReason_API_Digest_Mismatch,                      'Digest mismatch (VERR_NOT_EQUAL)' ),
+        ( True,  ktReason_API_MoveVM_SharingViolation,              'rc=VBOX_E_IPRT_ERROR text="Could not copy the log file ' ),
+        ( True,  ktReason_API_MoveVM_InvalidParameter,
+          'rc=VBOX_E_IPRT_ERROR text="Could not copy the setting file ' ),
         ( True,  ktReason_Host_HostMemoryLow,                       'HostMemoryLow' ),
         ( True,  ktReason_Host_HostMemoryLow,                       'Failed to procure handy pages; rc=VERR_NO_MEMORY' ),
         ( True,  ktReason_Unknown_File_Not_Found,
