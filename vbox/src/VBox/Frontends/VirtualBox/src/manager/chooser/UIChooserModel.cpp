@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 83897 2020-04-21 15:30:16Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 83905 2020-04-21 16:50:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -658,18 +658,6 @@ void UIChooserModel::sltLocalMachineRegistered(const QUuid &uId, const bool fReg
     {
         /* Update tree for main root: */
         updateTreeForMainRoot();
-
-        /* Make sure selected-item present, if possible: */
-        if (!firstSelectedItem() && !navigationItems().isEmpty())
-        {
-            setSelectedItem(navigationItems().first());
-            emit sigSelectionInvalidated();
-        }
-        /* Make sure current-item present, if possible: */
-        else if (!currentItem() && firstSelectedItem())
-            setCurrentItem(firstSelectedItem());
-        /* Notify about selected-item change: */
-        emit sigSelectionChanged();
     }
     /* New VM registered? */
     else
@@ -699,18 +687,6 @@ void UIChooserModel::sltCloudMachineRegistered(const QString &strProviderName, c
     {
         /* Update tree for main root: */
         updateTreeForMainRoot();
-
-        /* Make sure selected-item present, if possible: */
-        if (!firstSelectedItem() && !navigationItems().isEmpty())
-        {
-            setSelectedItem(navigationItems().first());
-            emit sigSelectionInvalidated();
-        }
-        /* Make sure current-item present, if possible: */
-        else if (!currentItem() && firstSelectedItem())
-            setCurrentItem(firstSelectedItem());
-        /* Notify about selected-item change: */
-        emit sigSelectionChanged();
     }
     /* New VM registered? */
     else
