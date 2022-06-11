@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 81710 2019-11-06 14:51:26Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 81714 2019-11-06 14:56:21Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -176,6 +176,7 @@ struct BootNic
     }
 };
 
+#ifndef VBOX_WITH_EFI_IN_DD2
 static int findEfiRom(IVirtualBox* vbox, FirmwareType_T aFirmwareType, Utf8Str *pEfiRomFile)
 {
     Bstr aFilePath, empty;
@@ -194,6 +195,7 @@ static int findEfiRom(IVirtualBox* vbox, FirmwareType_T aFirmwareType, Utf8Str *
 
     return VINF_SUCCESS;
 }
+#endif
 
 /**
  * @throws HRESULT on extra data retrival error.
