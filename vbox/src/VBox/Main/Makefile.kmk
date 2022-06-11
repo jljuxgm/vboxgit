@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 80370 2019-08-21 11:46:47Z vboxsync $
+# $Id: Makefile.kmk 80396 2019-08-23 13:27:22Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -852,9 +852,6 @@ VBoxC_DEFS = \
 	$(if $(VBOX_WITH_SHARED_CLIPBOARD_URI_LIST),VBOX_WITH_SHARED_CLIPBOARD_URI_LIST,) \
 	$(if $(VBOX_WITH_USB),VBOX_WITH_USB,) \
 	$(if $(VBOX_WITH_VRDEAUTH_IN_VBOXSVC),VBOX_WITH_VRDEAUTH_IN_VBOXSVC,)
-ifdef VBOX_WITH_CRHGSMI
- VBoxC_DEFS += VBOX_WITH_CRHGSMI
-endif
 ifdef VBOX_WITH_NETSHAPER
  VBoxC_DEFS += VBOX_WITH_NETSHAPER
 endif

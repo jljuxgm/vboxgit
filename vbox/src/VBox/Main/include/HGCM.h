@@ -1,4 +1,4 @@
-/* $Id: HGCM.h 76562 2019-01-01 03:22:50Z vboxsync $ */
+/* $Id: HGCM.h 80396 2019-08-23 13:27:22Z vboxsync $ */
 /** @file
  * HGCM - Host-Guest Communication Manager.
  */
@@ -48,13 +48,6 @@ void HGCMGuestCancelled(PPDMIHGCMPORT pHGCMPort, PVBOXHGCMCMD pCmdPtr, uint32_t 
 
 int HGCMHostCall(const char *pszServiceName, uint32_t function, uint32_t cParms, VBOXHGCMSVCPARM aParms[]);
 int HGCMBroadcastEvent(HGCMNOTIFYEVENT enmEvent);
-
-#ifdef VBOX_WITH_CRHGSMI
-int HGCMHostSvcHandleCreate(const char *pszServiceName, HGCMCVSHANDLE * phSvc);
-int HGCMHostSvcHandleDestroy(HGCMCVSHANDLE hSvc);
-int HGCMHostFastCallAsync(HGCMCVSHANDLE hSvc, uint32_t function, PVBOXHGCMSVCPARM pParm,
-                          PHGCMHOSTFASTCALLCB pfnCompletion, void *pvCompletion);
-#endif
 
 int HGCMHostSaveState(PSSMHANDLE pSSM);
 int HGCMHostLoadState(PSSMHANDLE pSSM, uint32_t uVersion);

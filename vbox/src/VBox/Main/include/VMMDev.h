@@ -1,4 +1,4 @@
-/* $Id: VMMDev.h 76562 2019-01-01 03:22:50Z vboxsync $ */
+/* $Id: VMMDev.h 80396 2019-08-23 13:27:22Z vboxsync $ */
 /** @file
  * VirtualBox Driver interface to VMM device
  */
@@ -62,11 +62,6 @@ public:
 #ifdef VBOX_WITH_HGCM
     int hgcmLoadService (const char *pszServiceLibrary, const char *pszServiceName);
     int hgcmHostCall (const char *pszServiceName, uint32_t u32Function, uint32_t cParms, PVBOXHGCMSVCPARM paParms);
-# ifdef VBOX_WITH_CRHGSMI
-    int hgcmHostSvcHandleCreate (const char *pszServiceName, HGCMCVSHANDLE * phSvc);
-    int hgcmHostSvcHandleDestroy (HGCMCVSHANDLE hSvc);
-    int hgcmHostFastCallAsync (HGCMCVSHANDLE hSvc, uint32_t function, PVBOXHGCMSVCPARM pParm, PHGCMHOSTFASTCALLCB pfnCompletion, void *pvCompletion);
-# endif
     void hgcmShutdown(bool fUvmIsInvalid = false);
 
     bool hgcmIsActive (void) { return ASMAtomicReadBool(&m_fHGCMActive); }
