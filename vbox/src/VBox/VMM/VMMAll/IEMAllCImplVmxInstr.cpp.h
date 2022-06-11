@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 80572 2019-09-04 04:39:54Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 80578 2019-09-04 07:33:11Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -7412,8 +7412,10 @@ IEM_STATIC VBOXSTRICTRC iemVmxVmlaunchVmresume(PVMCPUCC pVCpu, uint8_t cbInstr, 
 # endif
 
                                 /* Finally, done. */
-                                Log(("%s: cs:rip=%#04x:%#RX64 cr3=%#RX64\n", pszInstr, pVCpu->cpum.GstCtx.cs.Sel,
-                                     pVCpu->cpum.GstCtx.rip, pVCpu->cpum.GstCtx.cr3));
+                                Log(("%s: cs:rip=%#04x:%#RX64 cr3=%#RX64 cr4=%#RX64 (vmcs=%#RX64) efer=%#RX64 (vmcs=%#RX64)\n", pszInstr,
+                                     pVCpu->cpum.GstCtx.cs.Sel, pVCpu->cpum.GstCtx.rip, pVCpu->cpum.GstCtx.cr3,
+                                     pVmcs->u64GuestCr4.u,
+                                     pVCpu->cpum.GstCtx.cr4, pVCpu->cpum.GstCtx.msrEFER, pVmcs->u64GuestEferMsr.u));
                                 return VINF_SUCCESS;
                             }
                             return iemVmxVmexit(pVCpu, VMX_EXIT_ERR_MSR_LOAD | VMX_EXIT_REASON_ENTRY_FAILED,
