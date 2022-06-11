@@ -1,4 +1,4 @@
-# $Id: Config.kmk 78438 2019-05-07 15:57:37Z vboxsync $
+# $Id: Config.kmk 80024 2019-07-28 13:30:53Z vboxsync $
 ## @file
 # kBuild Configuration file for the VMM.
 #
@@ -65,9 +65,6 @@ ifdef VBOX_WITH_DTRACE_RC
 endif
 ifdef VBOX_WITH_SAFE_STR
  VMM_COMMON_DEFS += VBOX_WITH_SAFE_STR
-endif
-ifdef VBOX_WITH_RAW_RING1
- VMM_COMMON_DEFS += VBOX_WITH_RAW_RING1
 endif
 ifdef VBOX_WITH_64ON32_IDT
  VMM_COMMON_DEFS += VBOX_WITH_64ON32_IDT
