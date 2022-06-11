@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 80159 2019-08-06 15:32:11Z vboxsync $ */
+/* $Id: TM.cpp 80160 2019-08-06 15:32:54Z vboxsync $ */
 /** @file
  * TM - Time Manager.
  */
@@ -3771,7 +3771,7 @@ DECLINLINE(size_t) tmR3InfoCpuLoadAdjustWidth(size_t uPct, size_t cchWidth)
 
 
 /**
- * @callback_function_impl{FNDBGFINFOARGVINT}
+ * @callback_method_impl{FNDBGFINFOARGVINT}
  */
 static DECLCALLBACK(void) tmR3InfoCpuLoad(PVM pVM, PCDBGFINFOHLP pHlp, int cArgs, char **papszArgs)
 {
