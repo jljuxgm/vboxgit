@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 82238 2019-11-27 07:07:58Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 82239 2019-11-27 10:02:14Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -146,8 +146,8 @@
 # define IEM_VMX_VMENTRY_FAILED_RET(a_pVCpu, a_pszInstr, a_pszFailure, a_VmxDiag) \
     do \
     { \
-        Log(("%s: VM-entry failed! enmDiag=%u (%s) -> %s\n", (a_pszInstr), (a_VmxDiag), \
-            HMGetVmxDiagDesc(a_VmxDiag), (a_pszFailure))); \
+        LogRel(("%s: VM-entry failed! enmDiag=%u (%s) -> %s\n", (a_pszInstr), (a_VmxDiag), \
+               HMGetVmxDiagDesc(a_VmxDiag), (a_pszFailure))); \
         (a_pVCpu)->cpum.GstCtx.hwvirt.vmx.enmDiag = (a_VmxDiag); \
         return VERR_VMX_VMENTRY_FAILED; \
     } while (0)
@@ -156,8 +156,8 @@
 # define IEM_VMX_VMEXIT_FAILED_RET(a_pVCpu, a_uExitReason, a_pszFailure, a_VmxDiag) \
     do \
     { \
-        Log(("VM-exit failed! uExitReason=%u enmDiag=%u (%s) -> %s\n", (a_uExitReason), (a_VmxDiag), \
-            HMGetVmxDiagDesc(a_VmxDiag), (a_pszFailure))); \
+        LogRel(("VM-exit failed! uExitReason=%u enmDiag=%u (%s) -> %s\n", (a_uExitReason), (a_VmxDiag), \
+               HMGetVmxDiagDesc(a_VmxDiag), (a_pszFailure))); \
         (a_pVCpu)->cpum.GstCtx.hwvirt.vmx.enmDiag  = (a_VmxDiag); \
         return VERR_VMX_VMEXIT_FAILED; \
     } while (0)
