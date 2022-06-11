@@ -1,4 +1,4 @@
-/* $Id: DBGFCoreWrite.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: DBGFCoreWrite.cpp 83122 2020-02-20 08:13:10Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Guest Core Dump.
  */
@@ -376,6 +376,7 @@ static void dbgfR3GetCoreCpu(PVMCPU pVCpu, PDBGFCORECPU pDbgfCpu)
     pDbgfCpu->msrSFMASK       = pCtx->msrSFMASK;
     pDbgfCpu->msrKernelGSBase = pCtx->msrKERNELGSBASE;
     pDbgfCpu->msrApicBase     = APICGetBaseMsrNoCheck(pVCpu);
+    pDbgfCpu->msrTscAux       = CPUMGetGuestTscAux(pVCpu);
     pDbgfCpu->aXcr[0]         = pCtx->aXcr[0];
     pDbgfCpu->aXcr[1]         = pCtx->aXcr[1];
     AssertCompile(sizeof(pDbgfCpu->ext) == sizeof(*pCtx->pXStateR3));
