@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-x11.cpp 81175 2019-10-09 09:11:18Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-x11.cpp 81212 2019-10-10 12:22:34Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Linux host.
  */
@@ -359,6 +359,12 @@ int ShClSvcImplTransferCreate(PSHCLCLIENT pClient, PSHCLTRANSFER pTransfer)
 }
 
 int ShClSvcImplTransferDestroy(PSHCLCLIENT pClient, PSHCLTRANSFER pTransfer)
+{
+    RT_NOREF(pClient, pTransfer);
+    return VINF_SUCCESS;
+}
+
+int ShClSvcImplTransferGetRoots(PSHCLCLIENT pClient, PSHCLTRANSFER pTransfer)
 {
     RT_NOREF(pClient, pTransfer);
     return VINF_SUCCESS;

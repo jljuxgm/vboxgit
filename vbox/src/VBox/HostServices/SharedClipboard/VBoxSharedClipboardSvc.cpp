@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc.cpp 81152 2019-10-08 13:30:43Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc.cpp 81212 2019-10-10 12:22:34Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Host service entry points.
  */
@@ -1180,11 +1180,11 @@ static DECLCALLBACK(int) svcConnect(void *, uint32_t u32ClientID, void *pvClient
         rc = shclSvcClientStateInit(&pClient->State, u32ClientID);
         if (RT_SUCCESS(rc))
         {
-            rc = ShClSvcImplConnect(pClient, ShClSvcGetHeadless());
 #ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS
-            if (RT_SUCCESS(rc))
-                rc = SharedClipboardTransferCtxInit(&pClient->TransferCtx);
+            rc = SharedClipboardTransferCtxInit(&pClient->TransferCtx);
 #endif
+            if (RT_SUCCESS(rc))
+                rc = ShClSvcImplConnect(pClient, ShClSvcGetHeadless());
             if (RT_SUCCESS(rc))
             {
                 /* Assign weak pointer to client map .*/

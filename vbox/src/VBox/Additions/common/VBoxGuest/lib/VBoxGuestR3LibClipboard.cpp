@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibClipboard.cpp 81154 2019-10-08 14:24:01Z vboxsync $ */
+/* $Id: VBoxGuestR3LibClipboard.cpp 81212 2019-10-10 12:22:34Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Shared Clipboard.
  */
@@ -500,7 +500,13 @@ VBGLR3DECL(int) VbglR3ClipboardRootListRead(PVBGLR3SHCLCMDCTX pCtx, PSHCLROOTLIS
                 {
                     for (uint32_t i = 0; i < srcRootListHdr.cRoots; i++)
                     {
-                        rc = vbglR3ClipboardRootListEntryRead(pCtx, i, &pRootList->paEntries[i]);
+                        SHCLROOTLISTENTRY *pEntry = &pRootList->paEntries[i];
+                        AssertPtr(pEntry);
+
+                        rc = SharedClipboardTransferRootListEntryInit(pEntry);
+                        if (RT_SUCCESS(rc))
+                            rc = vbglR3ClipboardRootListEntryRead(pCtx, i, pEntry);
+
                         if (RT_FAILURE(rc))
                             break;
                     }
@@ -1265,7 +1271,7 @@ VBGLR3DECL(int) VbglR3ClipboardObjOpenSend(PVBGLR3SHCLCMDCTX pCtx, PSHCLOBJOPENC
     Msg.uContext.SetUInt32(pCtx->uContextID);
     Msg.uHandle.SetUInt64(0);
     Msg.cbPath.SetUInt32(pCreateParms->cbPath);
-    Msg.szPath.SetPtr((void *)pCreateParms->pszPath, pCreateParms->cbPath + 1 /* Include terminating zero */);
+    Msg.szPath.SetPtr((void *)pCreateParms->pszPath, pCreateParms->cbPath);
     Msg.fCreate.SetUInt32(pCreateParms->fCreate);
 
     int rc = VbglR3HGCMCall(&Msg.hdr, sizeof(Msg));
@@ -1439,10 +1445,10 @@ VBGLR3DECL(int) VbglR3ClipboardObjReadSend(PVBGLR3SHCLCMDCTX pCtx, SHCLOBJHANDLE
 
     Msg.uContext.SetUInt32(pCtx->uContextID);
     Msg.uHandle.SetUInt64(hObj);
-    Msg.pvData.SetPtr(pvData, cbData);
     Msg.cbData.SetUInt32(cbData);
-    Msg.pvChecksum.SetPtr(NULL, 0);
+    Msg.pvData.SetPtr(pvData, cbData);
     Msg.cbChecksum.SetUInt32(0);
+    Msg.pvChecksum.SetPtr(NULL, 0);
 
     int rc = VbglR3HGCMCall(&Msg.hdr, sizeof(Msg));
     if (RT_SUCCESS(rc))

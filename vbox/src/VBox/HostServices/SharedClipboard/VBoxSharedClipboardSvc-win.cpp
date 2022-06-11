@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-win.cpp 81041 2019-09-27 10:14:04Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-win.cpp 81212 2019-10-10 12:22:34Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Win32 host.
  */
@@ -886,6 +886,18 @@ int ShClSvcImplTransferDestroy(PSHCLCLIENT pClient, PSHCLTRANSFER pTransfer)
     SharedClipboardWinTransferDestroy(&pClient->State.pCtx->Win, pTransfer);
 
     return VINF_SUCCESS;
+}
+
+int ShClSvcImplTransferGetRoots(PSHCLCLIENT pClient, PSHCLTRANSFER pTransfer)
+{
+    LogFlowFuncEnter();
+
+    const PSHCLWINCTX pWinCtx = &pClient->State.pCtx->Win;
+
+    int rc = SharedClipboardWinGetRoots(pWinCtx, pTransfer);
+
+    LogFlowFuncLeaveRC(rc);
+    return rc;
 }
 #endif /* VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS */
 
