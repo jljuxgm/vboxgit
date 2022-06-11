@@ -1,4 +1,4 @@
-/* $Id: HDAStream.cpp 82323 2019-12-02 14:33:12Z vboxsync $ */
+/* $Id: HDAStream.cpp 82324 2019-12-02 14:53:47Z vboxsync $ */
 /** @file
  * HDAStream.cpp - Stream functions for HD Audio.
  */
@@ -1109,8 +1109,8 @@ int hdaR3StreamTransfer(PHDASTREAM pStream, uint32_t cbToProcessMax)
                      * and just discard the other channel's data.
                      *
                      * I know, the following code is horribly slow, but seems to work for now.
-                     ** @todo Optimize channel data extraction! Use some SSE(3) / intrinsics?
                      */
+                    /** @todo Optimize channel data extraction! Use some SSE(3) / intrinsics? */
                     for (unsigned m = 0; m < pStream->State.Mapping.cMappings; m++)
                     {
                         const uint32_t cbFrame  = pStream->State.Mapping.cbFrameSize;
