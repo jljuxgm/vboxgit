@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 79087 2019-06-11 11:58:28Z vboxsync $
+# $Id: vboxwrappers.py 79245 2019-06-19 15:11:15Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79087 $"
+__version__ = "$Revision: 79245 $"
 
 
 # Standard Python imports.
@@ -236,6 +236,8 @@ class ProgressWrapper(TdTaskBase):
                 self.o.waitForCompletion(cMsToWait);
             except KeyboardInterrupt: raise;
             except: pass;
+            if self.fnProcessEvents:
+                self.fnProcessEvents();
             reporter.doPollWork('ProgressWrapper.waitForTask');
             fState = self.pollTask(False);
         return fState;
@@ -695,6 +697,8 @@ class SessionWrapper(TdTaskBase):
             try:    self.oVBoxMgr.waitForEvents(cMsSleep);
             except KeyboardInterrupt: raise;
             except: pass;
+            if self.fnProcessEvents:
+                self.fnProcessEvents();
             reporter.doPollWork('SessionWrapper.waitForTask');
             fState = self.pollTask(False);
         return fState;
@@ -2977,7 +2981,8 @@ class SessionWrapper(TdTaskBase):
 
         # Kick off the task.
         try:
-            oTask = TxsConnectTask(self, cMsTimeout, sIpAddr, sMacAddr, fReversedSetup);
+            oTask = TxsConnectTask(self, cMsTimeout, sIpAddr, sMacAddr, fReversedSetup,
+                                   fnProcessEvents = self.oTstDrv.processPendingEvents);
         except:
             reporter.errorXcpt();
             oTask = None;
@@ -2997,7 +3002,8 @@ class SessionWrapper(TdTaskBase):
             raise base.GenError('Empty sHostname is not implemented yet');
 
         oTxsSession = txsclient.tryOpenTcpSession(cMsTimeout, sHostname, fReversedSetup = fReversed,
-                                                  cMsIdleFudge = cMsTimeout // 2);
+                                                  cMsIdleFudge = cMsTimeout // 2,
+                                                  fnProcessEvents = self.oTstDrv.processPendingEvents);
         if oTxsSession is None:
             return False;
 
@@ -3045,9 +3051,10 @@ class TxsConnectTask(TdTaskBase):
                     oParentTask._setIp(sValue);                                # pylint: disable=protected-access
 
 
-    def __init__(self, oSession, cMsTimeout, sIpAddr, sMacAddr, fReversedSetup):
+    def __init__(self, oSession, cMsTimeout, sIpAddr, sMacAddr, fReversedSetup, fnProcessEvents = None):
         TdTaskBase.__init__(self, utils.getCallerName());
         self.cMsTimeout         = cMsTimeout;
+        self.fnProcessEvents    = fnProcessEvents;
         self.sIpAddr            = None;
         self.sNextIpAddr        = None;
         self.sMacAddr           = sMacAddr;
@@ -3146,11 +3153,11 @@ class TxsConnectTask(TdTaskBase):
         """
         self.oCv.acquire();
         if self.oTxsSession is None:
-            reporter.log2('_openTcpSession: sIpAddr=%s, uPort=%d, fReversedSetup=%s' % \
+            reporter.log2('_openTcpSession: sIpAddr=%s, uPort=%d, fReversedSetup=%s' %
                           (sIpAddr, uPort if uPort is not None else 0, fReversedSetup));
             self.sIpAddr     = sIpAddr;
-            self.oTxsSession = txsclient.openTcpSession(self.cMsTimeout, sIpAddr, uPort, \
-                                                        fReversedSetup, cMsIdleFudge);
+            self.oTxsSession = txsclient.openTcpSession(self.cMsTimeout, sIpAddr, uPort, fReversedSetup,
+                                                        cMsIdleFudge, fnProcessEvents = self.fnProcessEvents);
             self.oTxsSession.setTaskOwner(self);
         else:
             self.sNextIpAddr = sIpAddr;

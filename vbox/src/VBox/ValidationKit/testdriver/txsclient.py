@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: txsclient.py 79219 2019-06-18 21:50:00Z vboxsync $
+# $Id: txsclient.py 79245 2019-06-19 15:11:15Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79219 $"
+__version__ = "$Revision: 79245 $"
 
 # Standard Python imports.
 import array;
@@ -385,14 +385,14 @@ class Session(TdTaskBase):
     A Test eXecution Service (TXS) client session.
     """
 
-    def __init__(self, oTransport, cMsTimeout, cMsIdleFudge, fTryConnect = False):
+    def __init__(self, oTransport, cMsTimeout, cMsIdleFudge, fTryConnect = False, fnProcessEvents = None):
         """
         Construct a TXS session.
 
         This starts by connecting to the TXS and will enter the signalled state
         when connected or the timeout has been reached.
         """
-        TdTaskBase.__init__(self, utils.getCallerName());
+        TdTaskBase.__init__(self, utils.getCallerName(), fnProcessEvents);
         self.oTransport     = oTransport;
         self.sStatus        = "";
         self.cMsTimeout     = 0;
@@ -2103,22 +2103,25 @@ class TransportTcp(TransportBase):
         return True;
 
 
-def openTcpSession(cMsTimeout, sHostname, uPort = None, fReversedSetup = False, cMsIdleFudge = 0):
+def openTcpSession(cMsTimeout, sHostname, uPort = None, fReversedSetup = False, cMsIdleFudge = 0, fnProcessEvents = None):
     """
     Opens a connection to a Test Execution Service via TCP, given its name.
+
+    The optional fnProcessEvents callback should be set to vbox.processPendingEvents
+    or similar.
     """
-    reporter.log2('openTcpSession(%s, %s, %s, %s, %s)' % \
+    reporter.log2('openTcpSession(%s, %s, %s, %s, %s)' %
                   (cMsTimeout, sHostname, uPort, fReversedSetup, cMsIdleFudge));
     try:
         oTransport = TransportTcp(sHostname, uPort, fReversedSetup);
-        oSession = Session(oTransport, cMsTimeout, cMsIdleFudge);
+        oSession = Session(oTransport, cMsTimeout, cMsIdleFudge, fnProcessEvents = fnProcessEvents);
     except:
         reporter.errorXcpt(None, 15);
         return None;
     return oSession;
 
 
-def tryOpenTcpSession(cMsTimeout, sHostname, uPort = None, fReversedSetup = False, cMsIdleFudge = 0):
+def tryOpenTcpSession(cMsTimeout, sHostname, uPort = None, fReversedSetup = False, cMsIdleFudge = 0, fnProcessEvents = None):
     """
     Tries to open a connection to a Test Execution Service via TCP, given its name.
 
@@ -2127,7 +2130,7 @@ def tryOpenTcpSession(cMsTimeout, sHostname, uPort = None, fReversedSetup = Fals
     """
     try:
         oTransport = TransportTcp(sHostname, uPort, fReversedSetup);
-        oSession = Session(oTransport, cMsTimeout, cMsIdleFudge, fTryConnect = True);
+        oSession = Session(oTransport, cMsTimeout, cMsIdleFudge, fTryConnect = True, fnProcessEvents = fnProcessEvents);
     except:
         reporter.errorXcpt(None, 15);
         return None;
