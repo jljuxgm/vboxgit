@@ -1,4 +1,4 @@
-/* $Id: SharedClipboard-transfers.h 81322 2019-10-17 15:09:15Z vboxsync $ */
+/* $Id: SharedClipboard-transfers.h 81324 2019-10-17 15:51:59Z vboxsync $ */
 /** @file
  * Shared Clipboard - Shared transfer functions between host and guest.
  */
@@ -786,9 +786,9 @@ typedef struct _SHCLTRANSFERSTATE
     SHCLTRANSFERID     uID;
     /** The transfer's current status. */
     SHCLTRANSFERSTATUS enmStatus;
-    /** The transfer's direction. */
+    /** The transfer's direction, seen from the perspective who created the transfer. */
     SHCLTRANSFERDIR    enmDir;
-    /** The transfer's source. */
+    /** The transfer's source, seen from the perspective who created the transfer. */
     SHCLSOURCE         enmSource;
 } SHCLTRANSFERSTATE, *PSHCLTRANSFERSTATE;
 
