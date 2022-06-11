@@ -1,4 +1,4 @@
-/* $Id: VBoxCpuReport.cpp 81605 2019-10-31 14:29:46Z vboxsync $ */
+/* $Id: VBoxCpuReport.cpp 81607 2019-10-31 14:49:26Z vboxsync $ */
 /** @file
  * VBoxCpuReport - Produces the basis for a CPU DB entry.
  */
@@ -4740,7 +4740,7 @@ static int produceCpuReport(void)
                        " */\n"
                        "\n"
                        "/*\n"
-                       " * Copyright (C) 2013-2017 Oracle Corporation\n"
+                       " * Copyright (C) 2013-2019 Oracle Corporation\n"
                        " *\n"
                        " * This file is part of VirtualBox Open Source Edition (OSE), as\n"
                        " * available from http://www.virtualbox.org. This file is free software;\n"
@@ -4753,6 +4753,9 @@ static int produceCpuReport(void)
                        "\n"
                        "#ifndef VBOX_CPUDB_%s_h\n"
                        "#define VBOX_CPUDB_%s_h\n"
+                       "#ifndef RT_WITHOUT_PRAGMA_ONCE\n"
+                       "# pragma once\n"
+                       "#endif\n"
                        "\n",
                        pszName,
                        szNow, RTBldCfgVersion(), RTBldCfgRevisionStr(), RTBldCfgTarget(), RTBldCfgTargetArch(),
