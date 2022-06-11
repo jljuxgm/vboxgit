@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 80191 2019-08-08 00:36:57Z vboxsync $ */
+/* $Id: CPUMR3CpuId.cpp 80305 2019-08-15 17:35:00Z vboxsync $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -2021,7 +2021,7 @@ int cpumR3CpuIdExplodeFeatures(PCCPUMCPUIDLEAF paLeaves, uint32_t cLeaves, PCCPU
  *
  *
  */
-#ifdef VBOX_IN_VMM
+#ifndef IN_VBOX_CPU_REPORT
 
 
 /**
@@ -7156,5 +7156,5 @@ DECLCALLBACK(void) cpumR3CpuIdInfo(PVM pVM, PCDBGFINFOHLP pHlp, const char *pszA
     pCurLeaf = cpumR3CpuIdInfoRawRange(pHlp, paLeaves, cLeaves, pCurLeaf, UINT32_C(0xffffffff), "Unknown CPUID Leaves");
 }
 
-#endif /* VBOX_IN_VMM */
+#endif /* !IN_VBOX_CPU_REPORT */
 

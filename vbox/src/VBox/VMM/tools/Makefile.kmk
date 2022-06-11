@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: Makefile.kmk 80305 2019-08-15 17:35:00Z vboxsync $
 ## @file
 # Sub-Makefile for VMM tools.
 #
@@ -54,7 +54,7 @@ endif
 #
 PROGRAMS += VBoxCpuReport
 VBoxCpuReport_TEMPLATE := VBoxR3Static
-VBoxCpuReport_DEFS      = IN_VMM_R3 IN_VBOX_CPU_REPORT
+VBoxCpuReport_DEFS      = VBOX_IN_VMM IN_VMM_R3 IN_VBOX_CPU_REPORT $(VMM_COMMON_DEFS)
 VBoxCpuReport_INCS      = ../include
 VBoxCpuReport_SOURCES   = \
 	VBoxCpuReport.cpp \

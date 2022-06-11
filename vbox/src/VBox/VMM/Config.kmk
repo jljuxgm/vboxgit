@@ -1,4 +1,4 @@
-# $Id: Config.kmk 80024 2019-07-28 13:30:53Z vboxsync $
+# $Id: Config.kmk 80305 2019-08-15 17:35:00Z vboxsync $
 ## @file
 # kBuild Configuration file for the VMM.
 #
@@ -28,7 +28,6 @@ endif
 
 ## DEFS variable that is picked up by all three VMM targets (R0, R3, RC).
 # Can be prepended to by setting it in LocalConfig.kmk
-VMM_COMMON_DEFS += VBOX_IN_VMM
 ifdef VBOX_WITH_3RD_IEM_STEP
  VMM_COMMON_DEFS += VBOX_WITH_3RD_IEM_STEP
 endif
