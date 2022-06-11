@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 81563 2019-10-29 10:23:58Z vboxsync $ */
+/* $Id: UICommon.cpp 82470 2019-12-06 17:27:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -3007,8 +3007,7 @@ void UICommon::prepareStorageMenu(QMenu &menu,
                                                         QString(), pListener, pszSlotName);
     pActionOpenExistingMedium->setData(QVariant::fromValue(UIMediumTarget(strControllerName, comCurrentAttachment.GetPort(),
                                                                           comCurrentAttachment.GetDevice(), enmMediumType)));
-    pActionOpenExistingMedium->setText(QApplication::translate("UIMachineSettingsStorage", "Choose/Create a disk image...",
-                                                               "This is used for hard disks, optical media and floppies"));
+    pActionOpenExistingMedium->setText(QApplication::translate("UIMachineSettingsStorage", "Choose/Create a disk image..."));
 
 
     /* Prepare open medium file action: */
@@ -3017,8 +3016,7 @@ void UICommon::prepareStorageMenu(QMenu &menu,
     pActionFileSelector->setData(QVariant::fromValue(UIMediumTarget(strControllerName, comCurrentAttachment.GetPort(),
                                                                     comCurrentAttachment.GetDevice(), enmMediumType,
                                                                     UIMediumTarget::UIMediumTargetType_WithFileDialog)));
-    pActionFileSelector->setText(QApplication::translate("UIMachineSettingsStorage", "Choose a disk file...",
-                                                         "This is used for selecting an existing disk file"));
+    pActionFileSelector->setText(QApplication::translate("UIMachineSettingsStorage", "Choose a disk file..."));
 
 
     /* Insert separator: */
