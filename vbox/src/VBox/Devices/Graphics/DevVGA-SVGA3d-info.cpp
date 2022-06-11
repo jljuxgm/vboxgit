@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-info.cpp 82099 2019-11-22 08:40:35Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-info.cpp 82109 2019-11-22 20:24:21Z vboxsync $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - Introspection and debugging.
  */
@@ -511,7 +511,7 @@ static int vmsvga3dSurfaceUpdateHeapBuffers(PVMSVGA3DSTATE pState, PVMSVGA3DSURF
 /**
  * Updates the heap buffers for all surfaces or one specific one.
  *
- * @param   pThis               The VGA device instance data.
+ * @param   pThis               The shared VGA instance data.
  * @param   sid                 The surface ID, UINT32_MAX if all.
  * @thread  VMSVGAFIFO
  */
