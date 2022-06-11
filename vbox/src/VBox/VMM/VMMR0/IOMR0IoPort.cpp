@@ -1,4 +1,4 @@
-/* $Id: IOMR0IoPort.cpp 81167 2019-10-09 08:15:37Z vboxsync $ */
+/* $Id: IOMR0IoPort.cpp 81197 2019-10-09 20:36:46Z vboxsync $ */
 /** @file
  * IOM - Host Context Ring 0, I/O ports.
  */
@@ -97,6 +97,7 @@ VMMR0_INT_DECL(int)  IOMR0IoPortSetUpContext(PGVM pGVM, PPDMDEVINS pDevIns, IOMI
     AssertReturn(pDevIns->pDevInsForR3 != NIL_RTR3PTR && !(pDevIns->pDevInsForR3 & PAGE_OFFSET_MASK), VERR_INVALID_PARAMETER);
     AssertReturn(pGVM->iomr0.s.paIoPortRing3Regs[hIoPorts].pDevIns == pDevIns->pDevInsForR3, VERR_IOM_INVALID_IOPORT_HANDLE);
     AssertReturn(pGVM->iomr0.s.paIoPortRegs[hIoPorts].pDevIns == NULL, VERR_WRONG_ORDER);
+    Assert(pGVM->iomr0.s.paIoPortRegs[hIoPorts].idxSelf == hIoPorts);
 
     AssertReturn(pfnOut || pfnIn || pfnOutStr || pfnInStr, VERR_INVALID_PARAMETER);
     AssertPtrNullReturn(pfnOut, VERR_INVALID_POINTER);

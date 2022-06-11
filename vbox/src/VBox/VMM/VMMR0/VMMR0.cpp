@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 81167 2019-10-09 08:15:37Z vboxsync $ */
+/* $Id: VMMR0.cpp 81197 2019-10-09 20:36:46Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -2202,7 +2202,7 @@ static int vmmR0EntryExWorker(PGVM pGVM, VMCPUID idCpu, VMMR0OPERATION enmOperat
         {
             if (pReqHdr || idCpu != 0)
                 return VERR_INVALID_PARAMETER;
-            rc = VERR_NOT_SUPPORTED; //rc = IOMR0MmioGrowRegistrationTables(pGVM, u64Arg);
+            rc = IOMR0MmioGrowRegistrationTables(pGVM, u64Arg);
             VMM_CHECK_SMAP_CHECK2(pGVM, RT_NOTHING);
             break;
         }
@@ -2211,7 +2211,7 @@ static int vmmR0EntryExWorker(PGVM pGVM, VMCPUID idCpu, VMMR0OPERATION enmOperat
         {
             if (pReqHdr || idCpu != 0)
                 return VERR_INVALID_PARAMETER;
-            rc = VERR_NOT_SUPPORTED; //rc = IOMR0MmioGrowStatisticsTable(pGVM, u64Arg);
+            rc = IOMR0MmioGrowStatisticsTable(pGVM, u64Arg);
             VMM_CHECK_SMAP_CHECK2(pGVM, RT_NOTHING);
             break;
         }

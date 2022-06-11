@@ -1,4 +1,4 @@
-/* $Id: IOMR0.cpp 81169 2019-10-09 08:36:54Z vboxsync $ */
+/* $Id: IOMR0.cpp 81197 2019-10-09 20:36:46Z vboxsync $ */
 /** @file
  * IOM - Host Context Ring 0.
  */
@@ -42,6 +42,7 @@ VMMR0_INT_DECL(void) IOMR0InitPerVMData(PGVM pGVM)
     AssertCompile(sizeof(pGVM->iomr0.s) <= sizeof(pGVM->iomr0.padding));
 
     iomR0IoPortInitPerVMData(pGVM);
+    iomR0MmioInitPerVMData(pGVM);
 }
 
 
@@ -51,5 +52,6 @@ VMMR0_INT_DECL(void) IOMR0InitPerVMData(PGVM pGVM)
 VMMR0_INT_DECL(void) IOMR0CleanupVM(PGVM pGVM)
 {
     iomR0IoPortCleanupVM(pGVM);
+    iomR0MmioCleanupVM(pGVM);
 }
 
