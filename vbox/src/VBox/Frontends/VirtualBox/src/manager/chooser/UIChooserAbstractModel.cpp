@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.cpp 83041 2020-02-10 17:22:07Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.cpp 83050 2020-02-11 15:41:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class implementation.
  */
@@ -28,6 +28,7 @@
 #include "UIVirtualBoxEventHandler.h"
 #include "UIVirtualMachineItem.h"
 #ifdef VBOX_GUI_WITH_CLOUD_VMS
+# include "UICloudMachine.h"
 # include "UITaskCloudAcquireInstances.h"
 # include "UIThreadPool.h"
 # include "UIVirtualMachineItemCloud.h"
@@ -299,13 +300,11 @@ void UIChooserAbstractModel::sltHandleCloudAcquireInstancesTaskComplete(UITask *
 
     /* Add real cloud VM items: */
     int iPosition = 1; /* we've got item with index 0 already, the "Empty" one .. */
-    foreach (const QString &strInstanceName, pAcquiringTask->instanceNames())
-    {
+    foreach (const UICloudMachine &guiCloudMachine, pAcquiringTask->instances())
         new UIChooserNodeMachine(pParentNode,
                                  false /* favorite */,
                                  iPosition++ /* position */,
-                                 strInstanceName);
-    }
+                                 guiCloudMachine);
 }
 #endif /* VBOX_GUI_WITH_CLOUD_VMS */
 

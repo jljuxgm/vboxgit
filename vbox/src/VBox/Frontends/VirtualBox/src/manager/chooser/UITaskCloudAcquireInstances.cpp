@@ -1,4 +1,4 @@
-/* $Id: UITaskCloudAcquireInstances.cpp 83008 2020-02-06 14:59:10Z vboxsync $ */
+/* $Id: UITaskCloudAcquireInstances.cpp 83050 2020-02-11 15:41:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UITaskCloudAcquireInstances class implementation.
  */
@@ -30,20 +30,12 @@ UITaskCloudAcquireInstances::UITaskCloudAcquireInstances(const CCloudClient &com
 {
 }
 
-QStringList UITaskCloudAcquireInstances::instanceNames() const
+QList<UICloudMachine> UITaskCloudAcquireInstances::instances() const
 {
     m_mutex.lock();
-    const QStringList instanceNames = m_instanceNames;
+    const QList<UICloudMachine> instances = m_instances;
     m_mutex.unlock();
-    return instanceNames;
-}
-
-QStringList UITaskCloudAcquireInstances::instanceIds() const
-{
-    m_mutex.lock();
-    const QStringList instanceIds = m_instanceIds;
-    m_mutex.unlock();
-    return instanceIds;
+    return instances;
 }
 
 CVirtualBoxErrorInfo UITaskCloudAcquireInstances::errorInfo()
@@ -84,9 +76,11 @@ void UITaskCloudAcquireInstances::run()
             break;
         }
 
-        /* Fetch acquired names/ids to lists: */
-        m_instanceNames = comNames.GetValues().toList();
-        m_instanceIds = comIDs.GetValues().toList();
+        /* Fetch acquired objects to lists: */
+        const QVector<QString> instanceIds = comIDs.GetValues();
+        const QVector<QString> instanceNames = comNames.GetValues();
+        for (int i = 0; i < instanceIds.size(); ++i)
+            m_instances << UICloudMachine(m_comCloudClient, instanceIds.at(i), instanceNames.at(i));
     }
     while (0);
 

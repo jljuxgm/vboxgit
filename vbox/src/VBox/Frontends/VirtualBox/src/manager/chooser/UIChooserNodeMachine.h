@@ -1,4 +1,4 @@
-/* $Id: UIChooserNodeMachine.h 83040 2020-02-10 17:08:22Z vboxsync $ */
+/* $Id: UIChooserNodeMachine.h 83050 2020-02-11 15:41:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserNodeMachine class declaration.
  */
@@ -25,6 +25,7 @@
 #include "UIChooserNode.h"
 
 /* Forward declarations: */
+class UICloudMachine;
 class UIVirtualMachineItem;
 class CMachine;
 
@@ -38,20 +39,20 @@ public:
 
     /** Constructs chooser node for local VM passing @a pParent to the base-class.
       * @param  fFavorite   Brings whether the node is favorite.
-      * @param  iPosition   Brings the initial node position.
+      * @param  iPosition   Brings initial node position.
       * @param  comMachine  Brings COM machine object. */
     UIChooserNodeMachine(UIChooserNode *pParent,
                          bool fFavorite,
                          int iPosition,
                          const CMachine &comMachine);
     /** Constructs chooser node for real cloud VM passing @a pParent to the base-class.
-      * @param  fFavorite  Brings whether the node is favorite.
-      * @param  iPosition  Brings the initial node position.
-      * @param  strName    Brings the cloud VM name. */
+      * @param  fFavorite        Brings whether the node is favorite.
+      * @param  iPosition        Brings initial node position.
+      * @param  guiCloudMachine  Brings cloud VM object. */
     UIChooserNodeMachine(UIChooserNode *pParent,
                          bool fFavorite,
                          int iPosition,
-                         const QString &strName);
+                         const UICloudMachine &guiCloudMachine);
     /** Constructs chooser node for fake cloud VM passing @a pParent to the base-class.
       * @param  fFavorite  Brings whether the node is favorite.
       * @param  iPosition  Brings the initial node position. */
