@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 81286 2019-10-15 16:37:37Z vboxsync $ */
+/* $Id: ConsoleImpl.h 81429 2019-10-21 18:42:31Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -45,7 +45,6 @@ class AudioVRDE;
 #ifdef VBOX_WITH_AUDIO_RECORDING
 class AudioVideoRec;
 #endif
-class Nvram;
 #ifdef VBOX_WITH_USB_CARDREADER
 class UsbCardReader;
 #endif
@@ -978,7 +977,6 @@ private:
 
     VMMDev *                    m_pVMMDev;
     AudioVRDE * const           mAudioVRDE;
-    Nvram   * const             mNvram;
 #ifdef VBOX_WITH_USB_CARDREADER
     UsbCardReader * const       mUsbCardReader;
 #endif
