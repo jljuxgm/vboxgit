@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 83846 2020-04-20 09:41:55Z vboxsync $
+# $Id: tdAddBasic1.py 83847 2020-04-20 09:49:44Z vboxsync $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 83846 $"
+__version__ = "$Revision: 83847 $"
 
 # Standard Python imports.
 import os;
@@ -345,7 +345,7 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
 
             # As Ubuntu 15.10 is EOL we need to tweak the package sources by hand first in order to have a working
             # package update path again; otherwise updating and installing packages will fail.
-            if 'ubuntu-15_10' in oTestVm.sKind:
+            if 'ubuntu-15_10' in oTestVm.sVmName:
                 fRc = self.txsRunTest(oTxsSession, 'Applying EOL upgrade path of Ubuntu 15.10', 5 * 60 *1000,
                                       '/bin/sed',
                                       ('/bin/sed', '-E', '-i',
