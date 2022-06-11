@@ -1,4 +1,4 @@
-/* $Id: VBoxDDR0.cpp 80531 2019-09-01 23:03:34Z vboxsync $ */
+/* $Id: VBoxDDR0.cpp 80537 2019-09-01 23:40:13Z vboxsync $ */
 /** @file
  * VBoxDDR0 - Built-in drivers & devices (part 1), ring-0 module.
  */
@@ -128,5 +128,4 @@ DECLEXPORT(void) ModuleTerm(void *hMod)
     LogFlow(("VBoxDDR0/ModuleTerm: %p\n", hMod));
     PDMR0DeviceDeregisterModule(hMod, &g_VBoxDDR0ModDevReg);
 }
-
 
