@@ -1,4 +1,4 @@
-/* $Id: UIApplianceImportEditorWidget.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIApplianceImportEditorWidget.h 79032 2019-06-07 07:28:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceImportEditorWidget class declaration.
  */
@@ -26,7 +26,6 @@
 
 /* Forward declarations: */
 class UIFilePathSelector;
-class QIRichTextLabel;
 class QComboBox;
 class QGridLayout;
 
@@ -69,7 +68,7 @@ private:
     void    sltHandleMACAddressImportPolicyComboChange();
     void    updateMACAddressImportPolicyComboToolTip();
 
-    QIRichTextLabel    *m_pPathSelectorLabel;
+    QLabel             *m_pPathSelectorLabel;
     UIFilePathSelector *m_pPathSelector;
     /** Holds the checkbox that controls 'import HDs as VDI' behaviour. */
     QCheckBox          *m_pImportHDsAsVDI;
