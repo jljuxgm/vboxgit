@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageBasic1.cpp 84275 2020-05-12 17:04:10Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageBasic1.cpp 84276 2020-05-12 17:43:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageBasic1 class implementation.
  */
@@ -722,8 +722,8 @@ void UIWizardNewCloudVMPageBasic1::retranslateUi()
 
     /* Translate description label: */
     m_pLabelDescription->setText(UIWizardNewCloudVM::tr("<p>Please choose one of cloud service accounts you have registered to "
-                                                        "create virtual machine for.  Existing custom images list will be "
-                                                        "updated.  To continue, select one of custom images to create virtual "
+                                                        "create virtual machine for.  Existing images list will be "
+                                                        "updated.  To continue, select one of images to create virtual "
                                                         "machine on the basis of it.</p>"));
 
     /* Translate cloud stuff: */
