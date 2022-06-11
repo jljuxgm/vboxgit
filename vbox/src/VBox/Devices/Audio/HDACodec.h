@@ -1,4 +1,4 @@
-/* $Id: HDACodec.h 82309 2019-12-01 01:25:09Z vboxsync $ */
+/* $Id: HDACodec.h 82399 2019-12-04 20:50:10Z vboxsync $ */
 /** @file
  * HDACodec - VBox HD Audio Codec.
  */
@@ -121,6 +121,10 @@ typedef struct HDACODEC
     DECLR3CALLBACKMEMBER(void, pfnDbgListNodes, (PHDACODEC pThis, PCDBGFINFOHLP pHlp, const char *pszArgs));
     DECLR3CALLBACKMEMBER(void, pfnDbgSelector, (PHDACODEC pThis, PCDBGFINFOHLP pHlp, const char *pszArgs));
     /** @} */
+
+#ifdef VBOX_WITH_STATISTICS
+    STAMCOUNTER             StatLookups;
+#endif
 } HDACODEC;
 
 int hdaCodecConstruct(PPDMDEVINS pDevIns, PHDACODEC pThis, uint16_t uLUN, PCFGMNODE pCfg);
