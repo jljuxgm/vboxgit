@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboard.cpp 79520 2019-07-04 09:21:00Z vboxsync $ */
+/* $Id: UISoftKeyboard.cpp 79523 2019-07-04 09:33:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class implementation.
  */
@@ -2014,7 +2014,8 @@ void UISoftKeyboardWidget::paintEvent(QPaintEvent *pEvent) /* override */
                     ledColor = color(KeyboardColorType_Font);
                 painter.setBrush(ledColor);
                 painter.setPen(ledColor);
-                QRectF rectangle(key.keyGeometry().width() - 2 * fLedMargin, fLedMargin, fLedRadius, fLedRadius);
+                QRectF rectangle(key.keyGeometry().width() - 2 * fLedMargin, key.keyGeometry().height() - 2 * fLedMargin,
+                                 fLedRadius, fLedRadius);
                 painter.drawEllipse(rectangle);
             }
             painter.translate(-key.keyGeometry().x(), -key.keyGeometry().y());
