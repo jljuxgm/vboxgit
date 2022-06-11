@@ -1,4 +1,4 @@
-/* $Id: UIMediaComboBox.cpp 80899 2019-09-18 17:44:43Z vboxsync $ */
+/* $Id: UIMediaComboBox.cpp 80900 2019-09-18 17:47:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediaComboBox class implementation.
  */
@@ -59,7 +59,8 @@ void UIMediaComboBox::refresh()
 void UIMediaComboBox::repopulate()
 {
     /* Start medium-enumeration (if necessary): */
-    if (!uiCommon().isFullMediumEnumerationRequested())
+    if (   m_enmMediaType == UIMediumDeviceType_DVD
+        && !uiCommon().isFullMediumEnumerationRequested())
     {
         CMediumVector comMedia;
         comMedia << uiCommon().host().GetDVDDrives();
