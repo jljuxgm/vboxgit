@@ -1,4 +1,4 @@
-/* $Id: ValidationKitCodingGuidelines.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: ValidationKitCodingGuidelines.cpp 83458 2020-03-26 21:15:25Z vboxsync $ */
 /** @file
  * VirtualBox Validation Kit - Coding Guidelines.
  */
@@ -53,7 +53,7 @@
  * Collection qualifiers:
  *      - 'a' for a list or an array.
  *      - 'd' for a dictionary.
- *      - 'h' for a hash.
+ *      - 'h' for a set (hashed).
  *      - 't' for a tuple.
  *
  * Other qualifiers:
