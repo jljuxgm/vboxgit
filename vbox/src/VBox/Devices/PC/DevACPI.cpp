@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: DevACPI.cpp 83104 2020-02-18 03:35:51Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -3255,7 +3255,7 @@ static int acpiR3PlantTables(PPDMDEVINS pDevIns, PACPISTATE pThis, PACPISTATER3 
         {
             /* Activate MEM4. See also DevPciIch9.cpp / ich9pciFakePCIBIOS() / uPciBiosMmio64 */
             pThis->u64PciPref64Min = u64PciPref64Min;
-            LogRel(("ACPI: enabling 64-bit prefetch root bus resource %#018RX64..%#018RX64\n",
+            LogRel(("ACPI: Enabling 64-bit prefetch root bus resource %#018RX64..%#018RX64\n",
                    u64PciPref64Min, pThis->u64PciPref64Max-1));
         }
         else
