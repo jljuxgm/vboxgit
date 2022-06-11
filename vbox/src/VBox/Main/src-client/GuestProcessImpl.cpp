@@ -1,4 +1,4 @@
-/* $Id: GuestProcessImpl.cpp 79369 2019-06-26 18:00:52Z vboxsync $ */
+/* $Id: GuestProcessImpl.cpp 81552 2019-10-25 16:13:17Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling.
  */
@@ -2013,10 +2013,11 @@ int GuestProcessTool::init(GuestSession *pGuestSession, const GuestProcessStartu
             && RT_FAILURE(vrcGuest)
            )
         {
-            if (prcGuest)
-                *prcGuest = vrcGuest;
             vrc = VERR_GSTCTL_GUEST_ERROR;
         }
+        
+        if (prcGuest)
+            *prcGuest = vrcGuest;
     }
 
     LogFlowFuncLeaveRC(vrc);
