@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 80053 2019-07-29 20:41:19Z vboxsync $
+# $Id: Makefile.kmk 80074 2019-07-31 14:18:34Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -113,7 +113,6 @@ VBoxVMM_SOURCES  = \
 	VMMR3/EMR3Dbg.cpp \
 	VMMR3/EMHM.cpp \
 	VMMR3/EMR3Nem.cpp \
-	VMMR3/FTM.cpp \
 	VMMR3/GIM.cpp \
 	VMMR3/GIMHv.cpp \
 	VMMR3/GIMKvm.cpp \
@@ -195,7 +194,6 @@ VBoxVMM_SOURCES  = \
 	VMMAll/PGMAllPool.cpp \
 	VMMAll/SELMAll.cpp \
 	VMMAll/EMAll.cpp \
-	VMMAll/FTMAll.cpp \
 	VMMAll/GIMAll.cpp \
 	VMMAll/GIMAllHv.cpp \
 	VMMAll/GIMAllKvm.cpp \
@@ -501,7 +499,6 @@ VMMR0_SOURCES   = \
 	VMMAll/CPUMAllMsrs.cpp \
 	VMMAll/DBGFAll.cpp \
 	VMMAll/EMAll.cpp \
-	VMMAll/FTMAll.cpp \
 	VMMAll/GIMAll.cpp \
 	VMMAll/GIMAllHv.cpp \
 	VMMAll/GIMAllKvm.cpp \

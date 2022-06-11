@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 79611 2019-07-08 23:33:59Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 80074 2019-07-31 14:18:34Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -729,13 +729,6 @@ void printUsage(USAGECATEGORY enmCommand, uint64_t fSubcommandScope, PRTSTREAM p
 #if 0
                      "                            [--iocache on|off]\n"
                      "                            [--iocachesize <I/O cache size in MB>]\n"
-#endif
-#if 0
-                     "                            [--faulttolerance master|standby]\n"
-                     "                            [--faulttoleranceaddress <name>]\n"
-                     "                            [--faulttoleranceport <port>]\n"
-                     "                            [--faulttolerancesyncinterval <msec>]\n"
-                     "                            [--faulttolerancepassword <password>]\n"
 #endif
 #ifdef VBOX_WITH_USB_CARDREADER
                      "                            [--usbcardreader on|off]\n"

@@ -1,4 +1,4 @@
-/* $Id: DrvVD.cpp 77856 2019-03-23 17:41:06Z vboxsync $ */
+/* $Id: DrvVD.cpp 80074 2019-07-31 14:18:34Z vboxsync $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
@@ -1555,9 +1555,6 @@ static DECLCALLBACK(int) drvvdWrite(PPDMIMEDIA pInterface,
         AssertMsgFailed(("Invalid state! Not mounted!\n"));
         return VERR_PDM_MEDIA_NOT_MOUNTED;
     }
-
-    /* Set an FTM checkpoint as this operation changes the state permanently. */
-    PDMDrvHlpFTSetCheckpoint(pThis->pDrvIns, FTMCHECKPOINTTYPE_STORAGE);
 
     int rc = drvvdKeyCheckPrereqs(pThis, true /* fSetError */);
     if (RT_FAILURE(rc))
@@ -3161,7 +3158,6 @@ DECLINLINE(bool) drvvdMediaExIoReqIsVmRunning(PVBOXDISK pThis)
     if (   enmVmState == VMSTATE_RESUMING
         || enmVmState == VMSTATE_RUNNING
         || enmVmState == VMSTATE_RUNNING_LS
-        || enmVmState == VMSTATE_RUNNING_FT
         || enmVmState == VMSTATE_RESETTING
         || enmVmState == VMSTATE_RESETTING_LS
         || enmVmState == VMSTATE_SOFT_RESETTING

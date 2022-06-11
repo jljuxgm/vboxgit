@@ -1,4 +1,4 @@
-/* $Id: PDMR0Device.cpp 80007 2019-07-26 13:57:38Z vboxsync $ */
+/* $Id: PDMR0Device.cpp 80074 2019-07-31 14:18:34Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, R0 Device parts.
  */
@@ -769,14 +769,6 @@ static DECLCALLBACK(bool) pdmR0DrvHlp_AssertOther(PPDMDRVINS pDrvIns, const char
 }
 
 
-/** @interface_method_impl{PDMDRVHLPR0,pfnFTSetCheckpoint} */
-static DECLCALLBACK(int) pdmR0DrvHlp_FTSetCheckpoint(PPDMDRVINS pDrvIns, FTMCHECKPOINTTYPE enmType)
-{
-    PDMDRV_ASSERT_DRVINS(pDrvIns);
-    return FTMSetCheckpoint(pDrvIns->Internal.s.pVMR0, enmType);
-}
-
-
 /**
  * The Ring-0 Context Driver Helper Callbacks.
  */
@@ -789,7 +781,6 @@ extern DECLEXPORT(const PDMDRVHLPR0) g_pdmR0DrvHlp =
     pdmR0DrvHlp_VMSetRuntimeErrorV,
     pdmR0DrvHlp_AssertEMT,
     pdmR0DrvHlp_AssertOther,
-    pdmR0DrvHlp_FTSetCheckpoint,
     PDM_DRVHLPRC_VERSION
 };
 

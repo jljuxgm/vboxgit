@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: DrvNAT.cpp 80074 2019-07-31 14:18:34Z vboxsync $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -597,9 +597,6 @@ static DECLCALLBACK(int) drvNATNetworkUp_SendBuf(PPDMINETWORKUP pInterface, PPDM
     int rc;
     if (pThis->pSlirpThread->enmState == PDMTHREADSTATE_RUNNING)
     {
-        /* Set an FTM checkpoint as this operation changes the state permanently. */
-        PDMDrvHlpFTSetCheckpoint(pThis->pDrvIns, FTMCHECKPOINTTYPE_NETWORK);
-
         rc = RTReqQueueCallEx(pThis->hSlirpReqQueue, NULL /*ppReq*/, 0 /*cMillies*/,
                               RTREQFLAGS_VOID | RTREQFLAGS_NO_WAIT,
                               (PFNRT)drvNATSendWorker, 2, pThis, pSgBuf);

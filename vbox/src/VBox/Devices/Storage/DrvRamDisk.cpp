@@ -1,4 +1,4 @@
-/* $Id: DrvRamDisk.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: DrvRamDisk.cpp 80074 2019-07-31 14:18:34Z vboxsync $ */
 /** @file
  * VBox storage devices: RAM disk driver.
  */
@@ -1042,7 +1042,6 @@ DECLINLINE(bool) drvramdiskMediaExIoReqIsVmRunning(PDRVRAMDISK pThis)
     if (   enmVmState == VMSTATE_RESUMING
         || enmVmState == VMSTATE_RUNNING
         || enmVmState == VMSTATE_RUNNING_LS
-        || enmVmState == VMSTATE_RUNNING_FT
         || enmVmState == VMSTATE_RESETTING
         || enmVmState == VMSTATE_RESETTING_LS
         || enmVmState == VMSTATE_SOFT_RESETTING

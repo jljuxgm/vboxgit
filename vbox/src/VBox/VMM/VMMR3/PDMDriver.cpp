@@ -1,4 +1,4 @@
-/* $Id: PDMDriver.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: PDMDriver.cpp 80074 2019-07-31 14:18:34Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Driver parts.
  */
@@ -1757,14 +1757,6 @@ static DECLCALLBACK(int) pdmR3DrvHlp_CallR0(PPDMDRVINS pDrvIns, uint32_t uOperat
 }
 
 
-/** @interface_method_impl{PDMDRVHLPR3,pfnFTSetCheckpoint} */
-static DECLCALLBACK(int) pdmR3DrvHlp_FTSetCheckpoint(PPDMDRVINS pDrvIns, FTMCHECKPOINTTYPE enmType)
-{
-    PDMDRV_ASSERT_DRVINS(pDrvIns);
-    return FTMSetCheckpoint(pDrvIns->Internal.s.pVMR3, enmType);
-}
-
-
 /** @interface_method_impl{PDMDRVHLPR3,pfnBlkCacheRetain} */
 static DECLCALLBACK(int) pdmR3DrvHlp_BlkCacheRetain(PPDMDRVINS pDrvIns, PPPDMBLKCACHE ppBlkCache,
                                                     PFNPDMBLKCACHEXFERCOMPLETEDRV pfnXferComplete,
@@ -1850,7 +1842,6 @@ const PDMDRVHLPR3 g_pdmR3DrvHlp =
     pdmR3DrvHlp_LdrGetR0InterfaceSymbols,
     pdmR3DrvHlp_CritSectInit,
     pdmR3DrvHlp_CallR0,
-    pdmR3DrvHlp_FTSetCheckpoint,
     pdmR3DrvHlp_BlkCacheRetain,
     pdmR3DrvHlp_VMGetSuspendReason,
     pdmR3DrvHlp_VMGetResumeReason,

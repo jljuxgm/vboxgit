@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 79969 2019-07-25 03:06:33Z vboxsync $
+# $Id: vboxwrappers.py 80074 2019-07-31 14:18:34Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79969 $"
+__version__ = "$Revision: 80074 $"
 
 
 # Standard Python imports.
@@ -92,12 +92,13 @@ def _nameMachineState(eState):
     if eState == vboxcon.MachineState_Restoring: return 'Restoring';
     if eState == vboxcon.MachineState_TeleportingPausedVM: return 'TeleportingPausedVM';
     if eState == vboxcon.MachineState_TeleportingIn: return 'TeleportingIn';
-    if eState == vboxcon.MachineState_FaultTolerantSyncing: return 'FaultTolerantSyncing';
     if eState == vboxcon.MachineState_DeletingSnapshotOnline: return 'DeletingSnapshotOnline';
     if eState == vboxcon.MachineState_DeletingSnapshotPaused: return 'DeletingSnapshotPaused';
     if eState == vboxcon.MachineState_RestoringSnapshot: return 'RestoringSnapshot';
     if eState == vboxcon.MachineState_DeletingSnapshot: return 'DeletingSnapshot';
     if eState == vboxcon.MachineState_SettingUp: return 'SettingUp';
+    if hasattr(vboxcon, 'MachineState_FaultTolerantSyncing'):
+        if eState == vboxcon.MachineState_FaultTolerantSyncing: return 'FaultTolerantSyncing';
     return 'Unknown-%s' % (eState,);
 
 
@@ -782,8 +783,9 @@ class SessionWrapper(TdTaskBase):
             return True;
         if eState == vboxcon.MachineState_TeleportingIn:
             return True;
-        if eState == vboxcon.MachineState_FaultTolerantSyncing:
-            return True;
+        if hasattr(vboxcon, 'MachineState_FaultTolerantSyncing'):
+            if eState == vboxcon.MachineState_FaultTolerantSyncing:
+                return True;
         return False;
 
     def assertPoweredOff(self):

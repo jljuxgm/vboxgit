@@ -1,4 +1,4 @@
-/* $Id: DrvUDPTunnel.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: DrvUDPTunnel.cpp 80074 2019-07-31 14:18:34Z vboxsync $ */
 /** @file
  * DrvUDPTunnel - UDP tunnel network transport driver
  *
@@ -200,9 +200,6 @@ static DECLCALLBACK(int) drvUDPTunnelUp_SendBuf(PPDMINETWORKUP pInterface, PPDMS
     AssertPtr(pSgBuf);
     Assert((pSgBuf->fFlags & PDMSCATTERGATHER_FLAGS_MAGIC_MASK) == PDMSCATTERGATHER_FLAGS_MAGIC);
     Assert(RTCritSectIsOwner(&pThis->XmitLock));
-
-    /* Set an FTM checkpoint as this operation changes the state permanently. */
-    PDMDrvHlpFTSetCheckpoint(pThis->pDrvIns, FTMCHECKPOINTTYPE_NETWORK);
 
     int rc;
     if (!pSgBuf->pvUser)

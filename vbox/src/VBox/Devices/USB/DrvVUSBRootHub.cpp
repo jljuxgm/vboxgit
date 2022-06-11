@@ -1,4 +1,4 @@
-/* $Id: DrvVUSBRootHub.cpp 77000 2019-01-26 10:30:14Z vboxsync $ */
+/* $Id: DrvVUSBRootHub.cpp 80074 2019-07-31 14:18:34Z vboxsync $ */
 /** @file
  * Virtual USB - Root Hub Driver.
  */
@@ -925,8 +925,7 @@ static DECLCALLBACK(int) vusbRhSetFrameProcessing(PVUSBIROOTHUBCONNECTOR pInterf
 
         VMSTATE enmState = PDMDrvHlpVMState(pThis->pDrvIns);
         if (   enmState == VMSTATE_RUNNING
-            || enmState == VMSTATE_RUNNING_LS
-            || enmState == VMSTATE_RUNNING_FT)
+            || enmState == VMSTATE_RUNNING_LS)
         {
             rc = PDMR3ThreadResume(pThis->hThreadPeriodFrame);
             AssertRCReturn(rc, rc);

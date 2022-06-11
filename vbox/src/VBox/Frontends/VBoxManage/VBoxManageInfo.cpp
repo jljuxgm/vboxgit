@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 78979 2019-06-05 08:15:31Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 80074 2019-07-31 14:18:34Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -178,8 +178,6 @@ const char *machineStateToName(MachineState_T machineState, bool fShort)
             return fShort ? "teleportingpausedvm"  : "teleporting paused vm";
         case MachineState_TeleportingIn:
             return fShort ? "teleportingin"        : "teleporting (incoming)";
-        case MachineState_FaultTolerantSyncing:
-            return fShort ? "faulttolerantsyncing" : "fault tolerant syncing";
         case MachineState_DeletingSnapshotOnline:
             return fShort ? "deletingsnapshotlive" : "deleting snapshot live";
         case MachineState_DeletingSnapshotPaused:
