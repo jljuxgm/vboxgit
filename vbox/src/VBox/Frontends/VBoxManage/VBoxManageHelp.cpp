@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 80074 2019-07-31 14:18:34Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 80707 2019-09-10 16:32:44Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -797,8 +797,10 @@ void printUsage(USAGECATEGORY enmCommand, uint64_t fSubcommandScope, PRTSTREAM p
                      "                                    [--cloudocivcn <OCI vcn id>]\n"
                      "                                    [--cloudocisubnet <OCI subnet id>]\n"
                      "                                    [--cloudkeepobject <true/false>]\n"
+                     "                                    [--cloudlaunchmode EMULATED|PARAVIRTUALIZED]\n"
                      "                                    [--cloudlaunchinstance <true/false>]\n"
                      "                                    [--cloudpublicip <true/false>]\n"
+                     "                                    [--cloudprivateip <ip>]\n"
                      "\n", SEP);
 
     if (enmCommand == USAGE_STARTVM || enmCommand == USAGE_S_ALL)
