@@ -1,4 +1,4 @@
-/* $Id: DevIommuAmd.cpp 84115 2020-04-30 16:23:25Z vboxsync $ */
+/* $Id: DevIommuAmd.cpp 84117 2020-04-30 17:32:47Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - AMD implementation.
  */
@@ -2875,7 +2875,7 @@ static VBOXSTRICTRC iommuAmdWriteRegister(PPDMDEVINS pDevIns, uint32_t off, uint
         case IOMMU_MMIO_OFF_MSI_VECTOR_1:        return iommuAmdIgnore_w(pDevIns, pThis, off, uValue);
         case IOMMU_MMIO_OFF_MSI_CAP_HDR:
         {
-            VBOXSTRICTRC rcStrict = iommuAmdIgnore_w(pDevIns, pThis, off, (uint32_t)uValue);
+            VBOXSTRICTRC rcStrict = iommuAmdMsiCapHdr_w(pDevIns, pThis, off, (uint32_t)uValue);
             if (cb == 4 || RT_FAILURE(rcStrict))
                 return rcStrict;
             uValue >>= 32;
