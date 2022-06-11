@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: Makefile.kmk 83487 2020-03-30 16:20:41Z vboxsync $
 ## @file
 # Sub-Makefile for the OpenGLTest helper app.
 #
@@ -69,7 +69,6 @@ if (   defined(VBOX_WITH_QTGUI) \
   endif
   if1of ($(KBUILD_TARGET), freebsd linux netbsd openbsd solaris) # the X11 gang
    VBoxTestOGL_LIBS += \
-  	Xmu \
   	X11 \
   	Xext
    VBoxTestOGL_LIBPATH = \
