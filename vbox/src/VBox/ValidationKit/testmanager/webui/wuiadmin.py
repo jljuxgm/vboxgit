@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuiadmin.py 83338 2020-03-19 17:51:47Z vboxsync $
+# $Id: wuiadmin.py 83341 2020-03-19 20:40:17Z vboxsync $
 
 """
 Test Manager Core - WUI - Admin Main page.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 83338 $"
+__version__ = "$Revision: 83341 $"
 
 
 # Standard python imports.
@@ -684,9 +684,14 @@ class WuiAdmin(WuiDispatcherBase):
                             #    self._sPageBody += '<p>%s.</p>' % (webutils.escapeElem(oError[0]),);
                             else:
                                 self._sPageBody += '<p>%s. [Cannot link to %s]</p>' \
-                                                 % (webutils.escapeElem(oError[0]), webutils.escapeElem(str(oError[1])));
+                                                 % (webutils.escapeElem(oError[0]), webutils.escapeElem(str(oError[1])),);
                     for sMsg in asMessages:
                         self._sPageBody += '<p>%s<p>\n' % (webutils.escapeElem(sMsg),);
+
+            # Remove leftovers from deleted scheduling groups.
+            self._sPageBody += '<h3>Cleanups</h3>\n';
+            cOrphans = SchedulerBase.cleanUpOrphanedQueues(self._oDb);
+            self._sPageBody += '<p>Removed %s orphaned (deleted) queue%s.<p>\n' % (cOrphans, '' if cOrphans == 1 else 's', );
         else:
             self._sPageBody = webutils.escapeElem('%s is a read only user and may not regenerate the scheduling queues!'
                                                   % (self._oCurUser.sUsername,));

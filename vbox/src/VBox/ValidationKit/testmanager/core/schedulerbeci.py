@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: schedulerbeci.py 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: schedulerbeci.py 83341 2020-03-19 20:40:17Z vboxsync $
 
 """
 Test Manager - Best-Effort-Continuous-Integration (BECI) scheduler.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 82968 $"
+__version__ = "$Revision: 83341 $"
 
 
 # Validation Kit imports.
@@ -56,7 +56,7 @@ class SchdulerBeci(SchedulerBase): # pylint: disable=too-few-public-methods
             for oTestCase in oTestGroup.aoTestCases:
                 iPrio = oTestCase.iSchedPriority;
                 assert iPrio in range(32);
-                iPrio = iPrio / 4;
+                iPrio = iPrio // 4;
                 assert iPrio in range(8);
                 if iPrio > iMaxPriority:
                     iMaxPriority = iPrio;
