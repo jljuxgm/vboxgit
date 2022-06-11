@@ -1,4 +1,4 @@
-/* $Id: DevIommuAmd.cpp 84227 2020-05-09 18:02:47Z vboxsync $ */
+/* $Id: DevIommuAmd.cpp 84228 2020-05-09 18:05:08Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - AMD implementation.
  */
@@ -4281,7 +4281,7 @@ static int iommuAmdLookupDeviceTables(PPDMDEVINS pDevIns, uint16_t uDevId, uint6
 
                 uint64_t const cbPhysPage = UINT64_C(1) << Iotlbe.cShift;
                 cbChecked += cbPhysPage;
-                if (cbAccess <= cbChecked)
+                if (cbChecked >= cbAccess)
                     break;
                 uBaseIova += cbPhysPage;
             }
