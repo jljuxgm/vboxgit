@@ -1,4 +1,4 @@
-/* $Id: UISearchLineEdit.cpp 78060 2019-04-09 13:42:43Z vboxsync $ */
+/* $Id: UISearchLineEdit.cpp 78459 2019-05-10 07:31:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIsearchLineEdit class definitions.
  */
@@ -80,6 +80,14 @@ void UISearchLineEdit::setScroolToIndex(int iScrollToIndex)
         return;
     m_iScrollToIndex = iScrollToIndex;
     repaint();
+}
+
+void UISearchLineEdit::reset()
+{
+    clear();
+    m_iMatchCount = 0;
+    m_iScrollToIndex = 0;
+    colorBackground(false);
 }
 
 void UISearchLineEdit::colorBackground(bool fWarning)

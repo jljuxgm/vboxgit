@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.cpp 77078 2019-01-31 15:34:30Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.cpp 78459 2019-05-10 07:31:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class implementation.
  */
@@ -311,7 +311,7 @@ void UIVMLogViewerWidget::sltHandleSearchUpdated()
         return;
     for (int i = 0; i < m_logPageList.size(); ++i)
         if (UIVMLogPage *pPage = qobject_cast<UIVMLogPage*>(m_logPageList[i]))
-            pPage->setSearchMatchCount(m_pSearchPanel->marchCount());
+            pPage->setSearchMatchCount(m_pSearchPanel->matchCount());
 }
 
 void UIVMLogViewerWidget::sltTabIndexChange(int tabIndex)
@@ -767,7 +767,7 @@ void UIVMLogViewerWidget::createLogPage(const QString &strFileName, const QStrin
             pLogPage->markForError();
         }
         pLogPage->setSearchResultOverlayShowHide(m_pSearchPanel->isVisible());
-        pLogPage->setSearchMatchCount(m_pSearchPanel->marchCount());
+        pLogPage->setSearchMatchCount(m_pSearchPanel->matchCount());
         pLogPage->setScrollBarMarkingsVector(m_pSearchPanel->matchLocationVector());
     }
 }
