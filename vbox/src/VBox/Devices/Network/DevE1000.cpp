@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 81471 2019-10-23 01:42:27Z vboxsync $ */
+/* $Id: DevE1000.cpp 81503 2019-10-24 01:43:10Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -7609,8 +7609,8 @@ static DECLCALLBACK(void) e1kR3Relocate(PPDMDEVINS pDevIns, RTGCINTPTR offDelta)
  */
 static DECLCALLBACK(int) e1kR3Destruct(PPDMDEVINS pDevIns)
 {
-    PE1KSTATE pThis = PDMINS_2_DATA(pDevIns, PE1KSTATE);
     PDMDEV_CHECK_VERSIONS_RETURN_QUIET(pDevIns);
+    PE1KSTATE pThis = PDMINS_2_DATA(pDevIns, PE1KSTATE);
 
     e1kDumpState(pThis);
     E1kLog(("%s Destroying instance\n", pThis->szPrf));

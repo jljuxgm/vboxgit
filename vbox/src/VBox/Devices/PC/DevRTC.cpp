@@ -1,4 +1,4 @@
-/* $Id: DevRTC.cpp 81472 2019-10-23 01:42:54Z vboxsync $ */
+/* $Id: DevRTC.cpp 81503 2019-10-24 01:43:10Z vboxsync $ */
 /** @file
  * Motorola MC146818 RTC/CMOS Device with PIIX4 extensions.
  */
@@ -223,7 +223,9 @@ typedef struct RTCSTATERC
 typedef RTCSTATERC *PRTCSTATERC;
 
 
-/** @def PRTCSTATECC
+/** @typedef RTCSTATECC
+ * The instance data for the current context. */
+/** @typedef PRTCSTATECC
  * Pointer to the instance data for the current context. */
 #ifdef IN_RING3
 typedef  RTCSTATER3  RTCSTATECC;
