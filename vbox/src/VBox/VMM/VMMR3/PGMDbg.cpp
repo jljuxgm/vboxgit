@@ -1,4 +1,4 @@
-/* $Id: PGMDbg.cpp 80333 2019-08-16 20:28:38Z vboxsync $ */
+/* $Id: PGMDbg.cpp 80673 2019-09-09 14:02:22Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - Debugger & Debugging APIs.
  */
@@ -1003,7 +1003,7 @@ VMMR3_INT_DECL(int) PGMR3DbgScanVirtual(PVM pVM, PVMCPU pVCpu, RTGCPTR GCPtr, RT
         /* Yield the PGM lock every now and then. */
         if (!--cYieldCountDown)
         {
-            fFullWalk = PDMR3CritSectYield(&pVM->pgm.s.CritSectX);
+            fFullWalk = PDMR3CritSectYield(pVM, &pVM->pgm.s.CritSectX);
             cYieldCountDown = cYieldCountDownReload;
         }
     }
