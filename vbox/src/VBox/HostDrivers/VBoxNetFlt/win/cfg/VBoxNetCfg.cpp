@@ -1,4 +1,4 @@
-/* $Id: VBoxNetCfg.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxNetCfg.cpp 83786 2020-04-17 23:41:46Z vboxsync $ */
 /** @file
  * VBoxNetCfg.cpp - Network Configuration API.
  */
@@ -1738,13 +1738,12 @@ static HRESULT netIfWinDhcpRediscover(IWbemServices * pSvc, BSTR ObjPath)
                         hr = netIfExecMethod(pSvc, pClass, ObjPath, bstr_t(L"RenewDHCPLease"), NULL, NULL, 0, pOutParams.asOutParam());
                         if (SUCCEEDED(hr))
                         {
-                            VARIANT varReturnValue;
                             hr = pOutParams->Get(bstr_t(L"ReturnValue"), 0, &varReturnValue, NULL, 0);
                             Assert(SUCCEEDED(hr));
                             if (SUCCEEDED(hr))
                             {
             //                    Assert(varReturnValue.vt == VT_UINT);
-                                int winEr = varReturnValue.uintVal;
+                                winEr = varReturnValue.uintVal;
                                 if (winEr == 0)
                                     hr = S_OK;
                                 else
@@ -2522,7 +2521,7 @@ static HRESULT rename_shellfolder (PCWSTR wGuid, PCWSTR wNewName)
 {
     /* This is the GUID for the network connections folder. It is constant.
      * {7007ACC7-3202-11D1-AAD2-00805FC1270E} */
-    const GUID CLSID_NetworkConnections = {
+    const GUID MY_CLSID_NetworkConnections = {
         0x7007ACC7, 0x3202, 0x11D1, {
             0xAA, 0xD2, 0x00, 0x80, 0x5F, 0xC1, 0x27, 0x0E
         }
@@ -2539,7 +2538,7 @@ static HRESULT rename_shellfolder (PCWSTR wGuid, PCWSTR wNewName)
     swprintf(szAdapterGuid, L"::%ls", wGuid);
 
     /* Create an instance of the network connections folder. */
-    hr = CoCreateInstance(CLSID_NetworkConnections, NULL,
+    hr = CoCreateInstance(MY_CLSID_NetworkConnections, NULL,
                           CLSCTX_INPROC_SERVER, IID_IShellFolder,
                           reinterpret_cast<LPVOID *>(&pShellFolder));
     /* Parse the display name. */
@@ -3138,24 +3137,18 @@ static HRESULT vboxNetCfgWinCreateHostOnlyNetworkInterface(IN LPCWSTR pInfPath, 
         /* enumerate the driver info list */
         while (TRUE)
         {
-            BOOL ret;
+            BOOL fRet = SetupDiEnumDriverInfo(hDeviceInfo, &DeviceInfoData, SPDIT_CLASSDRIVER, index, &DriverInfoData);
 
-            ret = SetupDiEnumDriverInfo (hDeviceInfo, &DeviceInfoData,
-                                         SPDIT_CLASSDRIVER, index, &DriverInfoData);
-
-            /* if the function failed and GetLastError() returned
+            /* if the function failed and GetLastError() returns
              * ERROR_NO_MORE_ITEMS, then we have reached the end of the
              * list.  Otherwise there was something wrong with this
              * particular driver. */
-            if (!ret)
+            if (!fRet)
             {
                 if (GetLastError() == ERROR_NO_MORE_ITEMS)
                     break;
-                else
-                {
-                    index++;
-                    continue;
-                }
+                index++;
+                continue;
             }
 
             pDriverInfoDetail = (PSP_DRVINFO_DETAIL_DATA) detailBuf;
