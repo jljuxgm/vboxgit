@@ -1,4 +1,4 @@
-/* $Id: CPUMAllMsrs.cpp 78526 2019-05-15 04:58:06Z vboxsync $ */
+/* $Id: CPUMAllMsrs.cpp 79164 2019-06-17 04:21:52Z vboxsync $ */
 /** @file
  * CPUM - CPU MSR Registers.
  */
@@ -295,7 +295,7 @@ static DECLCALLBACK(VBOXSTRICTRC) cpumMsrWr_Ia32BiosUpdateTrigger(PVMCPU pVCpu, 
  * @returns The MSR_IA32_SMM_MONITOR_CTL value.
  * @param   pVCpu           The cross context per CPU structure.
  */
-VMM_INT_DECL(uint64_t) CPUMGetGuestIa32SmmMonitorCtl(PVMCPU pVCpu)
+VMM_INT_DECL(uint64_t) CPUMGetGuestIa32SmmMonitorCtl(PCVMCPU pVCpu)
 {
     /* We do not support dual-monitor treatment for SMI and SMM. */
     /** @todo SMM. */
@@ -412,7 +412,7 @@ static DECLCALLBACK(VBOXSTRICTRC) cpumMsrWr_Ia32APerf(PVMCPU pVCpu, uint32_t idM
  * @returns Fixed IA32_MTRR_CAP value.
  * @param   pVCpu           The cross context per CPU structure.
  */
-VMM_INT_DECL(uint64_t) CPUMGetGuestIa32MtrrCap(PVMCPU pVCpu)
+VMM_INT_DECL(uint64_t) CPUMGetGuestIa32MtrrCap(PCVMCPU pVCpu)
 {
     RT_NOREF_PV(pVCpu);
 
