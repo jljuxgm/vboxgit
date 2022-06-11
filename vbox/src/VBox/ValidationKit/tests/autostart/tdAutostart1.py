@@ -26,11 +26,10 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Id: tdAutostart1.py 83970 2020-04-24 15:12:28Z vboxsync $"
+__version__ = "$Id: tdAutostart1.py 83971 2020-04-24 15:16:11Z vboxsync $"
 
 
 # Standard Python imports.
-import array;
 import os;
 import sys;
 import re;
