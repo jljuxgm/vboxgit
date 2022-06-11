@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElement.cpp 79982 2019-07-25 16:09:39Z vboxsync $ */
+/* $Id: UIDetailsElement.cpp 79997 2019-07-26 11:13:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement class implementation.
  */
@@ -511,7 +511,7 @@ void UIDetailsElement::sltHandleAnchorClicked(const QString &strAnchor)
             if (pPopup)
             {
                 /* Prepare editor: */
-                UIBaseMemoryEditor *pEditor = new UIBaseMemoryEditor(pPopup);
+                UIBaseMemoryEditor *pEditor = new UIBaseMemoryEditor(pPopup, true /* with label */);
                 if (pEditor)
                 {
                     pEditor->setValue(strData.section(',', 0, 0).toInt());
