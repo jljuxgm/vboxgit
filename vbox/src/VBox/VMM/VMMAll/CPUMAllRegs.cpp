@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 80803 2019-09-16 05:33:35Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 80804 2019-09-16 05:40:46Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -2434,11 +2434,14 @@ static bool cpumGetVmxIoBitmapPermission(void const *pvIoBitmap, uint16_t uPort,
      * If the I/O port access wraps around the 16-bit port I/O space, we must cause a
      * VM-exit.
      *
+     * Reading 1, 2, 4 bytes at ports 0xffff, 0xfffe and 0xfffc are valid and do not
+     * constitute a wrap around. However, reading 2 bytes at port 0xffff or 4 bytes
+     * from port 0xffff/0xfffe/0xfffd constitute a wrap around. In other words, any
+     * access to -both- ports 0xffff and port 0 is a wrap around.
+     *
      * See Intel spec. 25.1.3 "Instructions That Cause VM Exits Conditionally".
      */
-    /** @todo r=ramshankar: Reading 1, 2, 4 bytes at ports 0xfffe, 0xfffd and 0xfffb
-     *        respectively are valid and do not constitute a wrap around from what I
-     *        understand. Verify this later. */
+    /** @todo r=ramshankar: . Verify this later. */
     uint32_t const uPortLast = uPort + cbAccess;
     if (uPortLast > 0x10000)
         return true;
