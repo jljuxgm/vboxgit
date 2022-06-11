@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 82016 2019-11-20 10:09:45Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 82018 2019-11-20 10:30:36Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -4917,11 +4917,10 @@ static void hmR0VmxExportGuestApicTpr(PVMCPUCC pVCpu, PCVMXTRANSIENT pVmxTransie
  *
  * @returns Guest's interruptibility-state.
  * @param   pVCpu           The cross context virtual CPU structure.
- * @param   pVmxTransient   The VMX-transient structure.
  *
  * @remarks No-long-jump zone!!!
  */
-static uint32_t hmR0VmxGetGuestIntrState(PVMCPUCC pVCpu, PCVMXTRANSIENT pVmxTransient)
+static uint32_t hmR0VmxGetGuestIntrState(PVMCPUCC pVCpu)
 {
     /*
      * Check if we should inhibit interrupt delivery due to instructions like STI and MOV SS.
@@ -8578,7 +8577,7 @@ static VBOXSTRICTRC hmR0VmxEvaluatePendingEvent(PVMCPUCC pVCpu, PCVMXTRANSIENT p
     /** @todo r=ramshankar: Move this outside this function to the caller. */
     {
         /* Get the current interruptibility-state of the guest or nested-guest (this updates FFs). */
-        uint32_t const fIntrState = hmR0VmxGetGuestIntrState(pVCpu, pVmxTransient);
+        uint32_t const fIntrState = hmR0VmxGetGuestIntrState(pVCpu);
 
 #ifdef VBOX_STRICT
         /* Validate. */
