@@ -1,4 +1,4 @@
-/* $Id: VBoxManageList.cpp 81644 2019-11-04 10:36:44Z vboxsync $ */
+/* $Id: VBoxManageList.cpp 81943 2019-11-18 15:10:36Z vboxsync $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
@@ -213,6 +213,8 @@ static HRESULT listHostInfo(const ComPtr<IVirtualBox> pVirtualBox)
         { ProcessorFeature_PAE,          "PAE" },
         { ProcessorFeature_LongMode,     "long mode" },
         { ProcessorFeature_NestedPaging, "nested paging" },
+        { ProcessorFeature_UnrestrictedGuest, "unrestricted guest" },
+        { ProcessorFeature_NestedHWVirt, "nested HW virtualization" },
     };
     HRESULT rc;
     ComPtr<IHost> Host;
