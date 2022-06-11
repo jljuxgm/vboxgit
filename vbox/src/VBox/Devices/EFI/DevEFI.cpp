@@ -1,4 +1,4 @@
-/* $Id: DevEFI.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: DevEFI.cpp 83032 2020-02-10 10:11:30Z vboxsync $ */
 /** @file
  * DevEFI - EFI <-> VirtualBox Integration Framework.
  */
@@ -2638,7 +2638,8 @@ static DECLCALLBACK(int)  efiConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMN
      * Plant DMI and MPS tables in the ROM region.
      */
     rc = FwCommonPlantDMITable(pDevIns, pThisCC->au8DMIPage, VBOX_DMI_TABLE_SIZE, &pThisCC->aUuid,
-                               pDevIns->pCfg, pThisCC->cCpus, &pThisCC->cbDmiTables, &pThisCC->cNumDmiTables);
+                               pDevIns->pCfg, pThisCC->cCpus, &pThisCC->cbDmiTables, &pThisCC->cNumDmiTables,
+                               true /*fUefi*/);
     AssertRCReturn(rc, rc);
 
     /*

@@ -1,4 +1,4 @@
-/* $Id: DevFwCommon.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: DevFwCommon.h 83032 2020-02-10 10:11:30Z vboxsync $ */
 /** @file
  * FwCommon - Shared firmware code, header.
  */
@@ -25,7 +25,7 @@
 
 /* Plant DMI table */
 int FwCommonPlantDMITable(PPDMDEVINS pDevIns, uint8_t *pTable, unsigned cbMax, PCRTUUID pUuid, PCFGMNODE pCfg, uint16_t cCpus,
-                          uint16_t *pcbDmiTables, uint16_t *pcDmiTables);
+                          uint16_t *pcbDmiTables, uint16_t *pcDmiTables, bool fUefi);
 void FwCommonPlantSmbiosAndDmiHdrs(PPDMDEVINS pDevIns, uint8_t *pHdr, uint16_t cbDmiTables, uint16_t cNumDmiTables);
 
 /* Plant MPS table */
