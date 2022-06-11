@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 83888 2020-04-21 11:17:08Z vboxsync $
+# $Id: Makefile.kmk 83937 2020-04-22 22:03:34Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -2425,7 +2425,8 @@ VBoxRT-x86_SOURCES.win = $(filter-out %.def %.rc,$(VBoxRT_SOURCES.win)) \
 VBoxRT-x86_CLEAN += $(VBoxRT-x86_0_OUTDIR)/VBoxRT-x86.def
 if1of ($(DLLS), VBoxRT-x86)
 $$(VBoxRT-x86_0_OUTDIR)/VBoxRT-x86.def: \
-		$(PATH_SUB_CURRENT)/r3/win/VBoxRT-win32.def # Hopefully no need to export openssl here.
+		$(PATH_SUB_CURRENT)/r3/win/VBoxRT-win32.def \
+		| $$(dir $$@) # Hopefully no need to export openssl here.
 	$(RM) -f -- $@
 	$(REDIRECT) -wto $@ -- $(CAT_EXT) $^
 endif
