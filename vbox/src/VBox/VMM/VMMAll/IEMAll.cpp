@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 80349 2019-08-20 04:57:12Z vboxsync $ */
+/* $Id: IEMAll.cpp 80350 2019-08-20 04:59:06Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -16155,7 +16155,7 @@ PGM_ALL_CB2_DECL(VBOXSTRICTRC) iemVmxApicAccessPageHandler(PVMCC pVM, PVMCPUCC p
                                                            void *pvBuf, size_t cbBuf, PGMACCESSTYPE enmAccessType,
                                                            PGMACCESSORIGIN enmOrigin, void *pvUser)
 {
-    RT_NOREF4(pVM, pvPhys, enmOrigin, pvUser);
+    RT_NOREF3(pvPhys, enmOrigin, pvUser);
 
     RTGCPHYS const GCPhysAccessBase = GCPhysFault & ~(RTGCPHYS)PAGE_OFFSET_MASK;
     if (CPUMIsGuestInVmxNonRootMode(IEM_GET_CTX(pVCpu)))
