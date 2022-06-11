@@ -1,4 +1,4 @@
-/* $Id: APIC.cpp 80531 2019-09-01 23:03:34Z vboxsync $ */
+/* $Id: APIC.cpp 81591 2019-10-30 14:14:10Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller.
  */
@@ -1396,7 +1396,7 @@ DECLCALLBACK(int) apicR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFGMNODE p
     PDMDEV_CHECK_VERSIONS_RETURN(pDevIns);
     Assert(iInstance == 0); NOREF(iInstance);
 
-    PAPICDEV pApicDev = PDMINS_2_DATA(pDevIns, PAPICDEV);
+    PAPICDEV pApicDev = PDMDEVINS_2_DATA(pDevIns, PAPICDEV);
     PVM      pVM      = PDMDevHlpGetVM(pDevIns);
     PAPIC    pApic    = VM_TO_APIC(pVM);
 

@@ -1,4 +1,4 @@
-/* $Id: DevINIP.cpp 80704 2019-09-10 15:19:39Z vboxsync $ */
+/* $Id: DevINIP.cpp 81591 2019-10-30 14:14:10Z vboxsync $ */
 /** @file
  * DevINIP - Internal Network IP stack device/service.
  */
@@ -575,7 +575,7 @@ static DECLCALLBACK(void *) devINIPQueryInterface(PPDMIBASE pInterface,
  */
 static DECLCALLBACK(int) devINIPDestruct(PPDMDEVINS pDevIns)
 {
-    PDEVINTNETIP pThis = PDMINS_2_DATA(pDevIns, PDEVINTNETIP);
+    PDEVINTNETIP pThis = PDMDEVINS_2_DATA(pDevIns, PDEVINTNETIP);
 
     LogFlow(("%s: pDevIns=%p\n", __FUNCTION__, pDevIns));
     PDMDEV_CHECK_VERSIONS_RETURN_QUIET(pDevIns);
@@ -601,7 +601,7 @@ static DECLCALLBACK(int) devINIPDestruct(PPDMDEVINS pDevIns)
 static DECLCALLBACK(int) devINIPConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMNODE pCfg)
 {
     RT_NOREF(iInstance);
-    PDEVINTNETIP pThis = PDMINS_2_DATA(pDevIns, PDEVINTNETIP);
+    PDEVINTNETIP pThis = PDMDEVINS_2_DATA(pDevIns, PDEVINTNETIP);
 
     LogFlow(("%s: pDevIns=%p iInstance=%d pCfg=%p\n", __FUNCTION__,
              pDevIns, iInstance, pCfg));

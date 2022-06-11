@@ -1,4 +1,4 @@
-/* $Id: APICAll.cpp 81518 2019-10-24 13:23:41Z vboxsync $ */
+/* $Id: APICAll.cpp 81591 2019-10-30 14:14:10Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller - All Contexts.
  */
@@ -2935,7 +2935,7 @@ APICBOTHCBDECL(int) apicReadMmio(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS GCPh
     Assert(!(GCPhysAddr & 0xf));
     Assert(cb == 4); RT_NOREF_PV(cb);
 
-    PAPICDEV pApicDev = PDMINS_2_DATA(pDevIns, PAPICDEV);
+    PAPICDEV pApicDev = PDMDEVINS_2_DATA(pDevIns, PAPICDEV);
     PVMCPUCC pVCpu    = PDMDevHlpGetVMCPU(pDevIns);
     uint16_t offReg   = GCPhysAddr & 0xff0;
     uint32_t uValue   = 0;
@@ -2959,7 +2959,7 @@ APICBOTHCBDECL(int) apicWriteMmio(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS GCP
     Assert(!(GCPhysAddr & 0xf));
     Assert(cb == 4); RT_NOREF_PV(cb);
 
-    PAPICDEV pApicDev = PDMINS_2_DATA(pDevIns, PAPICDEV);
+    PAPICDEV pApicDev = PDMDEVINS_2_DATA(pDevIns, PAPICDEV);
     PVMCPUCC pVCpu    = PDMDevHlpGetVMCPU(pDevIns);
     uint16_t offReg   = GCPhysAddr & 0xff0;
     uint32_t uValue   = *(uint32_t *)pv;

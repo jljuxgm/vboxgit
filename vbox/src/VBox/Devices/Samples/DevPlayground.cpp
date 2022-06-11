@@ -1,4 +1,4 @@
-/* $Id: DevPlayground.cpp 81031 2019-09-26 19:26:33Z vboxsync $ */
+/* $Id: DevPlayground.cpp 81591 2019-10-30 14:14:10Z vboxsync $ */
 /** @file
  * DevPlayground - Device for making PDM/PCI/... experiments.
  *
@@ -129,7 +129,7 @@ static DECLCALLBACK(int) devPlaygroundMap(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDev
  */
 static DECLCALLBACK(int) devPlaygroundSaveExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM)
 {
-    PVBOXPLAYGROUNDDEVICE pThis = PDMINS_2_DATA(pDevIns, PVBOXPLAYGROUNDDEVICE);
+    PVBOXPLAYGROUNDDEVICE pThis = PDMDEVINS_2_DATA(pDevIns, PVBOXPLAYGROUNDDEVICE);
 
     /* dummy (real devices would need to save their state here) */
     RT_NOREF(pThis);
@@ -157,7 +157,7 @@ static DECLCALLBACK(int) devPlaygroundSaveExec(PPDMDEVINS pDevIns, PSSMHANDLE pS
  */
 static DECLCALLBACK(int) devPlaygroundLoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uint32_t uVersion, uint32_t uPass)
 {
-    PVBOXPLAYGROUNDDEVICE pThis = PDMINS_2_DATA(pDevIns, PVBOXPLAYGROUNDDEVICE);
+    PVBOXPLAYGROUNDDEVICE pThis = PDMDEVINS_2_DATA(pDevIns, PVBOXPLAYGROUNDDEVICE);
 
     if (uVersion > PLAYGROUND_SSM_VERSION)
         return VERR_SSM_UNSUPPORTED_DATA_UNIT_VERSION;
@@ -192,7 +192,7 @@ static DECLCALLBACK(int) devPlaygroundConstruct(PPDMDEVINS pDevIns, int iInstanc
     /*
      * Initialize the instance data so that the destructor won't mess up.
      */
-    PVBOXPLAYGROUNDDEVICE pThis = PDMINS_2_DATA(pDevIns, PVBOXPLAYGROUNDDEVICE);
+    PVBOXPLAYGROUNDDEVICE pThis = PDMDEVINS_2_DATA(pDevIns, PVBOXPLAYGROUNDDEVICE);
 
     /*
      * Validate and read the configuration.
