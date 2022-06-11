@@ -1,4 +1,4 @@
-/* $Id: string.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: string.h 84287 2020-05-13 13:59:34Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - Smart string classes declaration.
  */
@@ -659,6 +659,20 @@ public:
      */
     Bstr &erase(size_t offStart = 0, size_t cwcLength = RTSTR_MAX) RT_NOEXCEPT;
 
+
+    /** @name BASE64 related methods
+     * @{ */
+    /**
+     * Encodes the give data as BASE64.
+     *
+     * @returns S_OK or E_OUTOFMEMORY.
+     * @param   pvData          Pointer to the data to encode.
+     * @param   cbData          Number of bytes to encode.
+     * @param   fLineBreaks     Whether to add line breaks (true) or just encode it
+     *                          as a continuous string.
+     */
+    HRESULT base64Encode(const void *pvData, size_t cbData, bool fLineBreaks = false);
+    /** @} */
 
 #if defined(VBOX_WITH_XPCOM)
     /**
