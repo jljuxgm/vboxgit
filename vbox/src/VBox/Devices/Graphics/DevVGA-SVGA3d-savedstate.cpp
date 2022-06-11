@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-savedstate.cpp 82109 2019-11-22 20:24:21Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-savedstate.cpp 82110 2019-11-22 20:40:12Z vboxsync $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - Saved state and assocated stuff.
  */
@@ -148,7 +148,7 @@ static int vmsvga3dLoadReinitContext(PVGASTATE pThis, PVMSVGA3DCONTEXT pContext)
 
 int vmsvga3dLoadExec(PPDMDEVINS pDevIns, PVGASTATE pThis, PVGASTATECC pThisCC, PSSMHANDLE pSSM, uint32_t uVersion, uint32_t uPass)
 {
-    RT_NOREF(uPass);
+    RT_NOREF(pDevIns, pThisCC, uPass);
     PVMSVGA3DSTATE  pState = pThis->svga.p3dState;
     AssertReturn(pState, VERR_NO_MEMORY);
     PCPDMDEVHLPR3   pHlp = pDevIns->pHlpR3;

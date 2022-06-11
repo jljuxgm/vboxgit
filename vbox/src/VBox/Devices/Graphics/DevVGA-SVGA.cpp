@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 82109 2019-11-22 20:24:21Z vboxsync $ */
+/* $Id: DevVGA-SVGA.cpp 82110 2019-11-22 20:40:12Z vboxsync $ */
 /** @file
  * VMware SVGA device.
  *
@@ -5636,7 +5636,7 @@ int vmsvgaR3LoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uint32_t uVersion, uin
     }
 
 #  ifdef RT_OS_DARWIN  /** @todo r=bird: this is normally done on the EMT, so for DARWIN we do that when loading saved state too now. See DevVGA-SVGA3d-shared.h. */
-    vmsvga3dPowerOn(pDevIns, pThis, pThisCC);
+    vmsvga3dPowerOn(pDevIns, pThis, PDMDEVINS_2_DATA_CC(pDevIns, PVGASTATECC));
 #  endif
 
     VMSVGA_STATE_LOAD LoadState;

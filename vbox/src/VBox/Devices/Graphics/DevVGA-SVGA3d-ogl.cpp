@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-ogl.cpp 82109 2019-11-22 20:24:21Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-ogl.cpp 82110 2019-11-22 20:40:12Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -590,7 +590,7 @@ static DECLCALLBACK(bool) vmsvga3dShaderIfGetNextExtension(PVBOXVMSVGASHADERIF p
 int vmsvga3dInit(PPDMDEVINS pDevIns, PVGASTATE pThis, PVGASTATECC pThisCC)
 {
     int rc;
-    RT_NOREF(pThisCC);
+    RT_NOREF(pDevIns, pThisCC);
 
     AssertCompile(GL_TRUE == 1);
     AssertCompile(GL_FALSE == 0);
