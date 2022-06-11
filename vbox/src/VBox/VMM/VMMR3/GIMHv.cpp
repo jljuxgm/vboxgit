@@ -1,4 +1,4 @@
-/* $Id: GIMHv.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: GIMHv.cpp 79079 2019-06-11 06:41:03Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Hyper-V implementation.
  */
@@ -319,7 +319,7 @@ VMMR3_INT_DECL(int) gimR3HvInit(PVM pVM, PCFGMNODE pGimCfg)
     RTStrCopy(pRegion->szDescription, sizeof(pRegion->szDescription), "Hyper-V TSC page");
 
     /*
-     * Make sure the CPU ID bit are in accordance to the Hyper-V
+     * Make sure the CPU ID bit are in accordance with the Hyper-V
      * requirement and other paranoia checks.
      * See "Requirements for implementing the Microsoft hypervisor interface" spec.
      */
