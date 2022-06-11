@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-win.cpp 82114 2019-11-22 23:05:31Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-win.cpp 82431 2019-12-05 16:52:24Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -1289,7 +1289,7 @@ static PVMSVGA3DSHAREDSURFACE vmsvga3dSurfaceGetSharedCopy(PVMSVGA3DSTATE pState
                 }
             }
             else
-                AssertMsgFailed(("idAssociatedContext cid = %d, sid = %d\n", pSurface->idAssociatedContext, pSurface->id));
+                AssertMsgFailed(("idAssociatedContext cid=%u, sid=%u\n", pSurface->idAssociatedContext, pSurface->id));
         }
         else
         {

@@ -1,4 +1,4 @@
-/* $Id: QIComboBox.h 80199 2019-08-08 15:26:00Z vboxsync $ */
+/* $Id: QIComboBox.h 82432 2019-12-05 17:05:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIComboBox class declaration.
  */
@@ -113,6 +113,11 @@ public:
     /** Returns the index of the item containing the given @a strText; otherwise returns -1.
       * @param  flags  Specifies how the items in the combobox are searched. */
     int findText(const QString &strText, Qt::MatchFlags flags = static_cast<Qt::MatchFlags>(Qt::MatchExactly | Qt::MatchCaseSensitive)) const;
+
+    /** Returns size adjust policy. */
+    QComboBox::SizeAdjustPolicy sizeAdjustPolicy() const;
+    /** Defines size adjust @a enmPolicy. */
+    void setSizeAdjustPolicy(QComboBox::SizeAdjustPolicy enmPolicy);
 
 public slots:
 

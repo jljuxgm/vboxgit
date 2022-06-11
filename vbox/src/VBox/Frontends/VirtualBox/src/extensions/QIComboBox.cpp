@@ -1,4 +1,4 @@
-/* $Id: QIComboBox.cpp 80199 2019-08-08 15:26:00Z vboxsync $ */
+/* $Id: QIComboBox.cpp 82432 2019-12-05 17:05:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIComboBox class implementation.
  */
@@ -286,6 +286,20 @@ int QIComboBox::findText(const QString &strText,
     /* Redirect to combo-box: */
     AssertPtrReturn(m_pComboBox, -1);
     return m_pComboBox->findText(strText, flags);
+}
+
+QComboBox::SizeAdjustPolicy QIComboBox::sizeAdjustPolicy() const
+{
+    /* Redirect to combo-box: */
+    AssertPtrReturn(m_pComboBox, QComboBox::AdjustToContentsOnFirstShow);
+    return m_pComboBox->sizeAdjustPolicy();
+}
+
+void QIComboBox::setSizeAdjustPolicy(QComboBox::SizeAdjustPolicy enmPolicy)
+{
+    /* Redirect to combo-box: */
+    AssertPtrReturnVoid(m_pComboBox);
+    m_pComboBox->setSizeAdjustPolicy(enmPolicy);
 }
 
 void QIComboBox::clear()
