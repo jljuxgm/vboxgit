@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 79434 2019-07-01 11:31:44Z vboxsync $ */
+/* $Id: UIExtraDataDefs.cpp 79435 2019-07-01 11:43:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -205,7 +205,7 @@ const char *UIExtraDataDefs::GUI_GuestControl_ProcessControlDialogGeometry = "GU
 
 /* Soft Keyboard: */
 const char *UIExtraDataDefs::GUI_SoftKeyboard_DialogGeometry = "GUI/SoftKeyboardDialogGeometry";
-const char *UIExtraDataDefs::GUI_SoftKeyboard_ColorTheme  = "GUI/SoftKeyboardDialogGeometry";
+const char *UIExtraDataDefs::GUI_SoftKeyboard_ColorTheme  = "GUI/SoftKeyboardColorTheme";
 
 /* File Manager options: */
 const char *UIExtraDataDefs::GUI_GuestControl_FileManagerOptions = "GUI/GuestControl/FileManagerOptions";
