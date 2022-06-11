@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 83008 2020-02-06 14:59:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -704,6 +704,19 @@ void UIChooserModel::sltReloadMachine(const QUuid &uId)
     /* Notify listeners about selection change: */
     emit sigSelectionChanged();
 }
+
+#ifdef VBOX_GUI_WITH_CLOUD_VMS
+void UIChooserModel::sltHandleCloudAcquireInstancesTaskComplete(UITask *pTask)
+{
+    /* Call to base-class: */
+    UIChooserAbstractModel::sltHandleCloudAcquireInstancesTaskComplete(pTask);
+
+    /* Rebuild tree for main root: */
+    buildTreeForMainRoot();
+    updateNavigationItemList();
+    updateLayout();
+}
+#endif /* VBOX_GUI_WITH_CLOUD_VMS */
 
 void UIChooserModel::sltMakeSureCurrentItemVisible()
 {

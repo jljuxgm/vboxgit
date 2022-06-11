@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.h 83008 2020-02-06 14:59:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class declaration.
  */
@@ -35,6 +35,9 @@ class QUuid;
 class UIChooser;
 class UIChooserNode;
 class CMachine;
+#ifdef VBOX_GUI_WITH_CLOUD_VMS
+class UITask;
+#endif
 
 
 /** QObject extension used as VM Chooser-pane abstract model.
@@ -129,6 +132,14 @@ protected slots:
         /** Handles reload machine with certain @a uMachineId request. */
         virtual void sltReloadMachine(const QUuid &uMachineId);
     /** @} */
+
+#ifdef VBOX_GUI_WITH_CLOUD_VMS
+    /** @name Cloud stuff.
+      * @{ */
+        /** Handles acquire cloud instances task complete signal. */
+        virtual void sltHandleCloudAcquireInstancesTaskComplete(UITask *pTask);
+    /** @} */
+#endif /* VBOX_GUI_WITH_CLOUD_VMS */
 
 private slots:
 
