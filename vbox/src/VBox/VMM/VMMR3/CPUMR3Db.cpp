@@ -1,4 +1,4 @@
-/* $Id: CPUMR3Db.cpp 76886 2019-01-18 10:57:02Z vboxsync $ */
+/* $Id: CPUMR3Db.cpp 78632 2019-05-21 13:56:11Z vboxsync $ */
 /** @file
  * CPUM - CPU database part.
  */
@@ -608,7 +608,7 @@ int cpumR3MsrRangesInsert(PVM pVM, PCPUMMSRRANGE *ppaMsrRanges, uint32_t *pcMsrR
 int cpumR3MsrReconcileWithCpuId(PVM pVM)
 {
     PCCPUMMSRRANGE papToAdd[10];
-    uint32_t      cToAdd = 0;
+    uint32_t       cToAdd = 0;
 
     /*
      * The IA32_FLUSH_CMD MSR was introduced in MCUs for CVS-2018-3646 and associates.
@@ -629,6 +629,28 @@ int cpumR3MsrReconcileWithCpuId(PVM pVM)
             /*.szName = */      "IA32_FLUSH_CMD"
         };
         papToAdd[cToAdd++] = &s_FlushCmd;
+    }
+
+    /*
+     * The MSR_IA32_ARCH_CAPABILITIES was introduced in various spectre MCUs, or at least
+     * documented in relation to such.
+     */
+    if (pVM->cpum.s.GuestFeatures.fArchCap && !cpumLookupMsrRange(pVM, MSR_IA32_ARCH_CAPABILITIES))
+    {
+        static CPUMMSRRANGE const s_ArchCaps =
+        {
+            /*.uFirst =*/       MSR_IA32_ARCH_CAPABILITIES,
+            /*.uLast =*/        MSR_IA32_ARCH_CAPABILITIES,
+            /*.enmRdFn =*/      kCpumMsrRdFn_Ia32ArchCapabilities,
+            /*.enmWrFn =*/      kCpumMsrWrFn_ReadOnly,
+            /*.offCpumCpu =*/   UINT16_MAX,
+            /*.fReserved =*/    0,
+            /*.uValue =*/       0,
+            /*.fWrIgnMask =*/   0,
+            /*.fWrGpMask =*/    UINT64_MAX,
+            /*.szName = */      "IA32_ARCH_CAPABILITIES"
+        };
+        papToAdd[cToAdd++] = &s_ArchCaps;
     }
 
     /*

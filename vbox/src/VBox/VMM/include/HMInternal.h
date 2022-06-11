@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 78222 2019-04-20 04:23:29Z vboxsync $ */
+/* $Id: HMInternal.h 78632 2019-05-21 13:56:11Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -471,6 +471,12 @@ typedef struct HM
     bool                        fL1dFlushOnSched;
     /** Set if host manages speculation control settings. */
     bool                        fSpecCtrlByHost;
+    /** Set if MDS related buffers should be cleared on VM entry. */
+    bool                        fMdsClearOnVmEntry;
+    /** Set if MDS related buffers should be cleared on EMT scheduling. */
+    bool                        fMdsClearOnSched;
+    /** Alignment padding. */
+    bool                        afPaddingMinus1[6];
 
     /** Maximum ASID allowed. */
     uint32_t                    uMaxAsid;
@@ -1193,6 +1199,7 @@ DECLASM(int)                hmR0VMXStartVMWrapXMM(RTHCUINT fResume, PCPUMCTX pCt
 DECLASM(int)                hmR0SVMRunWrapXMM(RTHCPHYS pVmcbHostPhys, RTHCPHYS pVmcbPhys, PCPUMCTX pCtx, PVM pVM, PVMCPU pVCpu,
                                               PFNHMSVMVMRUN pfnVMRun);
 # endif
+DECLASM(void)               hmR0MdsClear(void);
 #endif /* IN_RING0 */
 
 VMM_INT_DECL(int)           hmEmulateSvmMovTpr(PVMCPU pVCpu);

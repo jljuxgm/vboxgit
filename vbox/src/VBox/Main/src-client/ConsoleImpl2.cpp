@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 78509 2019-05-14 15:16:21Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 78632 2019-05-21 13:56:11Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -1190,6 +1190,14 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
         BOOL fL1DFlushOnVMEntry = false;
         hrc = pMachine->GetCPUProperty(CPUPropertyType_L1DFlushOnVMEntry, &fL1DFlushOnVMEntry); H();
         InsertConfigInteger(pHM, "L1DFlushOnVMEntry", fL1DFlushOnVMEntry);
+
+        BOOL fMDSClearOnSched = true;
+        hrc = pMachine->GetCPUProperty(CPUPropertyType_MDSClearOnEMTScheduling, &fMDSClearOnSched); H();
+        InsertConfigInteger(pHM, "MDSClearOnSched", fMDSClearOnSched);
+
+        BOOL fMDSClearOnVMEntry = false;
+        hrc = pMachine->GetCPUProperty(CPUPropertyType_MDSClearOnVMEntry, &fMDSClearOnVMEntry); H();
+        InsertConfigInteger(pHM, "MDSClearOnVMEntry", fMDSClearOnVMEntry);
 
         /* Reset overwrite. */
         if (i_isResetTurnedIntoPowerOff())

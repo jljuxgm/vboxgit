@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 78622 2019-05-21 09:03:53Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 78632 2019-05-21 13:56:11Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -8933,6 +8933,8 @@ VMMR0DECL(int) VMXR0Enter(PVMCPU pVCpu)
          */
         if (pVCpu->CTX_SUFF(pVM)->hm.s.fL1dFlushOnSched)
             ASMWrMsr(MSR_IA32_FLUSH_CMD, MSR_IA32_FLUSH_CMD_F_L1D);
+        else if (pVCpu->CTX_SUFF(pVM)->hm.s.fMdsClearOnSched)
+            hmR0MdsClear();
     }
     return rc;
 }
