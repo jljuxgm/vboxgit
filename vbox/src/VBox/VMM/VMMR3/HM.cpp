@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 81766 2019-11-11 16:10:19Z vboxsync $ */
+/* $Id: HM.cpp 81790 2019-11-12 05:36:24Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -2941,6 +2941,7 @@ VMMR3_INT_DECL(void) HMR3CheckError(PVM pVM, int iStatusCode)
             {
                 LogRel(("HM: VERR_VMX_INVALID_GUEST_STATE:\n"));
                 LogRel(("HM: CPU[%u] HM error = %#RX32\n", idCpu, pVCpu->hm.s.u32HMError));
+                LogRel(("HM: CPU[%u] Guest-intr. state = %#RX32\n", idCpu, pVCpu->hm.s.vmx.LastError.u32GuestIntrState));
                 hmR3CheckErrorLogVmcsCtls(idCpu, pVmcsInfo);
                 break;
             }
