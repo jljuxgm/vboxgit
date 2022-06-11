@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 83653 2020-04-09 16:38:03Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 83671 2020-04-10 15:29:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -717,14 +717,14 @@ void UIChooserModel::sltReloadMachine(const QUuid &uId)
 }
 
 #ifdef VBOX_GUI_WITH_CLOUD_VMS
-void UIChooserModel::sltHandleCloudAcquireInstancesTaskComplete(UITask *pTask)
+void UIChooserModel::sltHandleCloudListMachinesTaskComplete(UITask *pTask)
 {
     /* Skip unrelated tasks: */
     if (!pTask || pTask->type() != UITask::Type_CloudAcquireInstances)
         return;
 
     /* Call to base-class: */
-    UIChooserAbstractModel::sltHandleCloudAcquireInstancesTaskComplete(pTask);
+    UIChooserAbstractModel::sltHandleCloudListMachinesTaskComplete(pTask);
 
     /* Remember first selected item definition: */
     const QString strDefinition = firstSelectedItem()->definition();

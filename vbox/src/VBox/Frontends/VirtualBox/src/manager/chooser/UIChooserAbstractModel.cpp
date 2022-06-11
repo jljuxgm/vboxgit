@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.cpp 83659 2020-04-09 17:20:05Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.cpp 83671 2020-04-10 15:29:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class implementation.
  */
@@ -266,7 +266,7 @@ void UIChooserAbstractModel::sltStartGroupSaving()
 }
 
 #ifdef VBOX_GUI_WITH_CLOUD_VMS
-void UIChooserAbstractModel::sltHandleCloudAcquireInstancesTaskComplete(UITask *pTask)
+void UIChooserAbstractModel::sltHandleCloudListMachinesTaskComplete(UITask *pTask)
 {
     /* Skip unrelated tasks: */
     if (!pTask || pTask->type() != UITask::Type_CloudAcquireInstances)
@@ -498,7 +498,7 @@ void UIChooserAbstractModel::loadTree()
                                     if (pTask)
                                     {
                                         connect(uiCommon().threadPoolCloud(), &UIThreadPool::sigTaskComplete,
-                                                this, &UIChooserAbstractModel::sltHandleCloudAcquireInstancesTaskComplete);
+                                                this, &UIChooserAbstractModel::sltHandleCloudListMachinesTaskComplete);
                                         uiCommon().threadPoolCloud()->enqueueTask(pTask);
                                     }
                                 }
