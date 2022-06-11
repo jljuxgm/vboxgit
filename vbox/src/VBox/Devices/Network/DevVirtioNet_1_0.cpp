@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet_1_0.cpp 82777 2020-01-16 12:08:37Z vboxsync $ $Revision: 82777 $ $Date: 2020-01-16 20:08:37 +0800 (Thu, 16 Jan 2020) $ $Author: vboxsync $ */
+/* $Id: DevVirtioNet_1_0.cpp 82778 2020-01-16 12:20:04Z vboxsync $ $Revision: 82778 $ $Date: 2020-01-16 20:20:04 +0800 (Thu, 16 Jan 2020) $ $Author: vboxsync $ */
 
 /** @file
  * VBox storage devices - Virtio NET Driver
@@ -1111,6 +1111,7 @@ static int virtioNetR3HandleRxPacket(PPDMDEVINS pDevIns, PVIRTIONET pThis, PVIRT
         AssertRC(rc == VINF_SUCCESS || rc == VERR_NOT_AVAILABLE, rc);
 
         /** @todo  Find a better way to deal with this */
+
         AssertMsgReturn(rc == VINF_SUCCESS && pDescChain->cbPhysSend,
                         ("Not enough Rx buffers in queue to accomodate ethernet packet\n"),
                         VERR_INTERNAL_ERROR);
