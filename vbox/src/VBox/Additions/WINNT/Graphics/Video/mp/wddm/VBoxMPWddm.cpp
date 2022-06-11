@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 81856 2019-11-14 23:46:05Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 82414 2019-12-05 12:41:21Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -1753,6 +1753,13 @@ NTSTATUS APIENTRY DxgkDdiQueryAdapterInfo(
                     pQAI->u32Version = VBOXVIDEOIF_VERSION;
                     pQAI->enmHwType = pDevExt->enmHwType;
                     pQAI->u32AdapterCaps = pDevExt->f3DEnabled ? VBOXWDDM_QAI_CAP_3D : 0;
+                    pQAI->u32AdapterCaps |= VBOXWDDM_QAI_CAP_DXVA; /** @todo Fetch from registry. */
+                    static int cLoggedCaps = 0;
+                    if (cLoggedCaps < 1)
+                    {
+                        ++cLoggedCaps;
+                        LOGREL_EXACT(("WDDM: addapter capabilities 0x%08X\n", pQAI->u32AdapterCaps));
+                    }
                     if (pDevExt->enmHwType == VBOXVIDEO_HWTYPE_VBOX)
                     {
                         pQAI->u.vbox.u32VBox3DCaps = 0;
@@ -4995,9 +5002,16 @@ DriverEntry(
     RTLogGroupSettings(0, "+default.e.l.f.l2.l3");
 #endif
 
-    LOGREL(("VBox WDDM Driver for Windows %s version %d.%d.%dr%d, %d bit; Built %s %s",
+#ifdef DEBUG
+#define VBOXWDDM_BUILD_TYPE "dbg"
+#else
+#define VBOXWDDM_BUILD_TYPE "rel"
+#endif
+
+    LOGREL(("VBox WDDM Driver for Windows %s version %d.%d.%dr%d %s, %d bit; Built %s %s",
             VBoxQueryWinVersion(NULL) >= WINVERSION_8 ? "8+" : "Vista and 7",
             VBOX_VERSION_MAJOR, VBOX_VERSION_MINOR, VBOX_VERSION_BUILD, VBOX_SVN_REV,
+            VBOXWDDM_BUILD_TYPE,
             (sizeof (void*) << 3), __DATE__, __TIME__));
 
     if (   !ARGUMENT_PRESENT(DriverObject)
