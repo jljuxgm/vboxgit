@@ -1,4 +1,4 @@
-/* $Id: UICloudMachine.cpp 83052 2020-02-11 16:31:09Z vboxsync $ */
+/* $Id: UICloudMachine.cpp 83144 2020-02-25 11:06:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudMachine class implementation.
  */
