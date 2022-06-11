@@ -1,4 +1,4 @@
-/* $Id: GuestProcessImpl.h 77587 2019-03-06 16:40:18Z vboxsync $ */
+/* $Id: GuestProcessImpl.h 79283 2019-06-21 20:35:57Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling implementation.
  */
@@ -80,7 +80,9 @@ public:
     static bool i_isGuestError(int guestRc);
     static HRESULT i_setErrorExternal(VirtualBoxBase *pInterface, int guestRc);
     static ProcessWaitResult_T i_waitFlagsToResultEx(uint32_t fWaitFlags, ProcessStatus_T oldStatus, ProcessStatus_T newStatus, uint32_t uProcFlags, uint32_t uProtocol);
+#if 0 /* unused */
     static bool i_waitResultImpliesEx(ProcessWaitResult_T waitResult, ProcessStatus_T procStatus, uint32_t uProtocol);
+#endif
     /** @}  */
 
 protected:
