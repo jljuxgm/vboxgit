@@ -1,4 +1,4 @@
-/* $Id: UIChooserNodeMachine.cpp 82917 2020-01-29 18:28:06Z vboxsync $ */
+/* $Id: UIChooserNodeMachine.cpp 82933 2020-01-30 16:24:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserNodeMachine class implementation.
  */
@@ -103,7 +103,7 @@ void UIChooserNodeMachine::removeNode(UIChooserNode *pNode)
 void UIChooserNodeMachine::removeAllNodes(const QUuid &uId)
 {
     /* Skip other ids: */
-    if (m_pCache->id() != uId)
+    if (QUuid(m_pCache->id()) != uId)
         return;
 
     /* Remove this node: */
@@ -113,7 +113,7 @@ void UIChooserNodeMachine::removeAllNodes(const QUuid &uId)
 void UIChooserNodeMachine::updateAllNodes(const QUuid &uId)
 {
     /* Skip other ids: */
-    if (m_pCache->id() != uId)
+    if (QUuid(m_pCache->id()) != uId)
         return;
 
     /* Update cache: */

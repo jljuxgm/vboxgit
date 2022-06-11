@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItem.cpp 82931 2020-01-30 14:48:06Z vboxsync $ */
+/* $Id: UIVirtualMachineItem.cpp 82933 2020-01-30 16:24:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItem class implementation.
  */
@@ -62,7 +62,7 @@ QPixmap UIVirtualMachineItem::osPixmap(QSize *pLogicalSize /* = 0 */) const
 void UIVirtualMachineItem::recache()
 {
     /* Determine attributes which are always available: */
-    m_uId = m_comMachine.GetId();
+    m_strId = m_comMachine.GetId().toString();
     m_strSettingsFile = m_comMachine.GetSettingsFilePath();
 
     /* Now determine whether VM is accessible: */
@@ -94,7 +94,7 @@ void UIVirtualMachineItem::recache()
         m_enmConfigurationAccessLevel = ::configurationAccessLevel(m_enmSessionState, m_enmMachineState);
         /* Also take restrictions into account: */
         if (   m_enmConfigurationAccessLevel != ConfigurationAccessLevel_Null
-            && !gEDataManager->machineReconfigurationEnabled(m_uId))
+            && !gEDataManager->machineReconfigurationEnabled(m_strId))
             m_enmConfigurationAccessLevel = ConfigurationAccessLevel_Null;
 
         /* Determine PID finally: */
@@ -112,7 +112,7 @@ void UIVirtualMachineItem::recache()
         }
 
         /* Determine whether we should show this VM details: */
-        m_fHasDetails = gEDataManager->showMachineInVirtualBoxManagerDetails(m_uId);
+        m_fHasDetails = gEDataManager->showMachineInVirtualBoxManagerDetails(m_strId);
     }
     else
     {
