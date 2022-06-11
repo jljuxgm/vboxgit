@@ -1,4 +1,4 @@
-/* $Id: tstRTSystemQueryFirmware.cpp 81137 2019-10-08 08:28:31Z vboxsync $ */
+/* $Id: tstRTSystemQueryFirmware.cpp 81140 2019-10-08 09:55:14Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTSystemQuerFirmware*.
  */
@@ -72,11 +72,11 @@ int main()
      */
     RTTestSub(hTest, "RTSystemQueryFirmwareBoolean");
     bool fValue;
-    rc = RTSystemQueryFirmwareBoolean(RTSYSFWPROP_SECURE_BOOT, &fValue);
+    rc = RTSystemQueryFirmwareBoolean(RTSYSFWBOOL_SECURE_BOOT, &fValue);
     if (RT_SUCCESS(rc))
         RTTestPrintf(hTest, RTTESTLVL_INFO, "  Secure Boot:   %s\n", fValue ? "enabled" : "disabled");
     else if (rc != VERR_NOT_SUPPORTED && rc != VERR_SYS_UNSUPPORTED_FIRMWARE_PROPERTY)
-        RTTestIFailed("RTSystemQueryFirmwareBoolean/RTSYSFWPROP_SECURE_BOOT failed: %Rrc", rc);
+        RTTestIFailed("RTSystemQueryFirmwareBoolean/RTSYSFWBOOL_SECURE_BOOT failed: %Rrc", rc);
 
     return RTTestSummaryAndDestroy(hTest);
 }
