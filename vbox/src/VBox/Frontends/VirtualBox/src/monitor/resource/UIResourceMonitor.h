@@ -1,4 +1,4 @@
-/* $Id: UIResourceMonitor.h 83334 2020-03-19 16:17:08Z vboxsync $ */
+/* $Id: UIResourceMonitor.h 83365 2020-03-23 10:35:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIResourceMonitor class declaration.
  */
@@ -71,6 +71,7 @@ public slots:
 
 private slots:
 
+    void sltHandleDataUpdate();
 
 private:
 
