@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 78386 2019-05-06 11:06:12Z vboxsync $ */
+/* $Id: UIMediumManager.cpp 78392 2019-05-06 14:41:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class implementation.
  */
@@ -272,9 +272,7 @@ void UIMediumManagerWidget::sltApplyMediumDetailsChanges()
     /* Try to assign new medium type: */
     if (   comMedium.isOk()
         && newData.m_options.m_enmMediumType != oldData.m_options.m_enmMediumType)
-    {
         pMediumItem->changeMediumType(oldData.m_options.m_enmMediumType, newData.m_options.m_enmMediumType);
-    }
 
     /* Try to assign new medium location: */
     if (   comMedium.isOk()
@@ -1045,7 +1043,7 @@ void UIMediumManagerWidget::refetchCurrentMediumItem(UIMediumDeviceType type)
     if (m_pDetailsWidget)
     {
         m_pDetailsWidget->setData(pMediumItem ? *pMediumItem : UIDataMedium(type));
-        if (pMediumItem)
+        if (pMediumItem && currentMediumItem())
             m_pDetailsWidget->enableDisableMediumModificationWidgets(currentMediumItem()->isMediumModifiable());
     }
 }

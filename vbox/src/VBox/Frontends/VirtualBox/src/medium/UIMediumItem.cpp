@@ -1,4 +1,4 @@
-/* $Id: UIMediumItem.cpp 78374 2019-05-03 11:41:50Z vboxsync $ */
+/* $Id: UIMediumItem.cpp 78392 2019-05-06 14:41:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumItem class implementation.
  */
@@ -231,17 +231,17 @@ bool UIMediumItem::changeMediumType(KMediumType enmOldType, KMediumType enmNewTy
 
     /* Attempt to change medium type: */
     comMedium.SetType(enmNewType);
-
+    bool fSuccess = true;
     /* Show error message if necessary: */
     if (!comMedium.isOk() && parentTree())
     {
         msgCenter().cannotChangeMediumType(comMedium, enmOldType, enmNewType, treeWidget());
-        return false;
+        fSuccess = false;
     }
     /* Reattach the medium to all the vms it was previously attached: */
     foreach (const AttachmentCache &attachmentCache, attachmentCacheList)
         attachTo(attachmentCache);
-    return true;
+    return fSuccess;
 }
 
 QString UIMediumItem::defaultText() const
