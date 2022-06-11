@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: utils.py 83416 2020-03-25 16:29:07Z vboxsync $
+# $Id: utils.py 83585 2020-04-06 10:58:19Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 83416 $"
+__version__ = "$Revision: 83585 $"
 
 
 # Standard Python imports.
@@ -1508,6 +1508,15 @@ def formatIsoTimestamp(oNow):
 def getIsoTimestamp():
     """Returns the current UTC timestamp as a string."""
     return formatIsoTimestamp(datetime.datetime.utcnow());
+
+def formatShortIsoTimestamp(oNow):
+    """Formats the datetime object as an ISO timestamp, but w/o microseconds."""
+    assert oNow.tzinfo is None or isinstance(oNow.tzinfo, UtcTzInfo);
+    return oNow.strftime('%Y-%m-%dT%H:%M:%SZ');
+
+def getShortIsoTimestamp():
+    """Returns the current UTC timestamp as a string, but w/o microseconds."""
+    return formatShortIsoTimestamp(datetime.datetime.utcnow());
 
 def convertDateTimeToZulu(oDateTime):
     """ Converts oDateTime to zulu time if it has timezone info. """
