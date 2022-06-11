@@ -1,4 +1,4 @@
-/* $Id: pkix-signature-rsa.cpp 84248 2020-05-11 11:46:40Z vboxsync $ */
+/* $Id: pkix-signature-rsa.cpp 84251 2020-05-11 12:00:59Z vboxsync $ */
 /** @file
  * IPRT - Crypto - Public Key Signature Schema Algorithm, RSA Providers.
  */
@@ -446,6 +446,8 @@ static const char * const g_apszHashWithRsaAliases[] =
     RTCR_PKCS1_SHA384_WITH_RSA_OID,
     RTCR_PKCS1_SHA512_WITH_RSA_OID,
     RTCR_PKCS1_SHA224_WITH_RSA_OID,
+    RTCR_PKCS1_SHA512T224_WITH_RSA_OID,
+    RTCR_PKCS1_SHA512T256_WITH_RSA_OID,
     /* Note: Note quite sure about these OIW oddballs. */
     "1.3.14.3.2.11" /* OIW rsaSignature */,
     "1.3.14.3.2.14" /* OIW mdc2WithRSASignature */,

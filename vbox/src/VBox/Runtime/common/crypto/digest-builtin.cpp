@@ -1,4 +1,4 @@
-/* $Id: digest-builtin.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: digest-builtin.cpp 84251 2020-05-11 12:00:59Z vboxsync $ */
 /** @file
  * IPRT - Crypto - Cryptographic Hash / Message Digest API, Built-in providers.
  */
@@ -518,6 +518,7 @@ static DECLCALLBACK(int) rtCrDigestSha512t224_Init(void *pvState, void *pvOpaque
 /** SHA-512/224 alias ODIs. */
 static const char * const g_apszSha512t224Aliases[] =
 {
+    RTCR_PKCS1_SHA512T224_WITH_RSA_OID,
     NULL
 };
 
@@ -573,6 +574,7 @@ static DECLCALLBACK(int) rtCrDigestSha512t256_Init(void *pvState, void *pvOpaque
 /** SHA-512/256 alias ODIs. */
 static const char * const g_apszSha512t256Aliases[] =
 {
+    RTCR_PKCS1_SHA512T256_WITH_RSA_OID,
     NULL
 };
 
