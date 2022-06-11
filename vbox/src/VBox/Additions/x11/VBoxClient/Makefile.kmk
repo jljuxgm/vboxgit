@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 78946 2019-06-03 19:46:30Z vboxsync $
+# $Id: Makefile.kmk 79483 2019-07-03 02:37:12Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox Guest Addition X11 Client.
 #
@@ -64,11 +64,6 @@ ifdef VBOX_WITH_DRAG_AND_DROP
 	Xtst
  endif
 endif
-
-# These are static replacements for gcc-specific parts of libstdc++
-VBoxClient_LIBS += \
-	supc++ \
-	gcc_eh
 
 # This forces the memcpy references in the static libraries to go to
 # __wrap_memcpy, which we can wrap around memcpy@GLIBC_2.2.5.  I do not know
