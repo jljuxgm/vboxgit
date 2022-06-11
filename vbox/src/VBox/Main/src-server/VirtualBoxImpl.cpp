@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 83169 2020-02-27 09:28:41Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 84343 2020-05-18 18:27:08Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -4086,7 +4086,7 @@ HRESULT VirtualBox::i_findMachineByName(const Utf8Str &aName,
     {
         ComObjPtr<Machine> &pMachine = *it;
         AutoCaller machCaller(pMachine);
-        if (machCaller.rc())
+        if (!machCaller.isOk())
             continue;       // we can't ask inaccessible machines for their names
 
         AutoReadLock machLock(pMachine COMMA_LOCKVAL_SRC_POS);

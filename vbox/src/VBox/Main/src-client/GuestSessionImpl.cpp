@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 83741 2020-04-17 08:59:30Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 84343 2020-05-18 18:27:08Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -2584,7 +2584,7 @@ inline int GuestSession::i_processGetByPID(ULONG uPID, ComObjPtr<GuestProcess> *
     {
         ComObjPtr<GuestProcess> pCurProc = itProcs->second;
         AutoCaller procCaller(pCurProc);
-        if (procCaller.rc())
+        if (!procCaller.isOk())
             return VERR_COM_INVALID_OBJECT_STATE;
 
         ULONG uCurPID;
