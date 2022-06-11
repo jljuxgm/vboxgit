@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 81406 2019-10-21 12:30:54Z vboxsync $
+# $Id: Makefile.kmk 82313 2019-12-01 03:38:40Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -180,7 +180,6 @@ VBoxVMM_SOURCES  = \
 	VMMAll/IEMAllAImpl.asm \
 	VMMAll/IEMAllAImplC.cpp \
 	VMMAll/IOMAll.cpp \
-	VMMAll/IOMAllMMIO.cpp \
 	VMMAll/IOMAllMmioNew.cpp \
 	VMMAll/MMAll.cpp \
 	VMMAll/MMAllHyper.cpp \
@@ -511,7 +510,6 @@ VMMR0_SOURCES   = \
 	VMMAll/IEMAllAImpl.asm \
 	VMMAll/IEMAllAImplC.cpp \
 	VMMAll/IOMAll.cpp \
-	VMMAll/IOMAllMMIO.cpp \
 	VMMAll/IOMAllMmioNew.cpp \
 	VMMAll/MMAll.cpp \
 	VMMAll/MMAllHyper.cpp \

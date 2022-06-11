@@ -1,4 +1,4 @@
-/* $Id: IOMAll.cpp 82311 2019-12-01 01:45:02Z vboxsync $ */
+/* $Id: IOMAll.cpp 82313 2019-12-01 03:38:40Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context.
  */
@@ -573,17 +573,5 @@ VMM_INT_DECL(VBOXSTRICTRC) IOMIOPortWriteString(PVMCC pVM, PVMCPU pVCpu, RTIOPOR
     Log3(("IOMIOPortWriteStr: uPort=%RTiop (unused) pvSrc=%p pcTransfer=%p:{%#x->%#x} cb=%d rc=VINF_SUCCESS\n",
           uPort, pvSrc, pcTransfers, cRequestedTransfers, *pcTransfers, cb));
     return VINF_SUCCESS;
-}
-
-
-/**
- * Fress an MMIO range after the reference counter has become zero.
- *
- * @param   pVM                 The cross context VM structure.
- * @param   pRange              The range to free.
- */
-void iomMmioFreeRange(PVMCC pVM, PIOMMMIORANGE pRange)
-{
-    MMHyperFree(pVM, pRange);
 }
 
