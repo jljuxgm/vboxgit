@@ -1,4 +1,4 @@
-/* $Id: poll.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: poll.cpp 78832 2019-05-28 22:42:24Z vboxsync $ */
 /** @file
  * IPRT - Polling I/O Handles, Windows+Posix Implementation.
  */
@@ -42,6 +42,9 @@
 # include <limits.h>
 # include <errno.h>
 # include <sys/poll.h>
+# if defined(RT_OS_SOLARIS)
+#  include <sys/socket.h>
+# endif
 #endif
 
 #include <iprt/poll.h>
@@ -416,7 +419,23 @@ static int rtPollNoResumeWorker(RTPOLLSETINTERNAL *pThis, uint64_t MsStart, RTMS
 # endif
                                                    )
                    )
-                *pfEvents |= RTPOLL_EVT_ERROR;
+                    *pfEvents |= RTPOLL_EVT_ERROR;
+
+# if defined(RT_OS_SOLARIS)
+                /* Solaris does not return POLLHUP for sockets, just POLLIN.  Check if a
+                   POLLIN should also have RTPOLL_EVT_ERROR set or not, so we present a
+                   behaviour more in line with linux and BSDs.  Note that this will not
+                   help is only RTPOLL_EVT_ERROR was requested, that will require
+                   extending this hack quite a bit further (restart poll):  */
+                if (   *pfEvents == RTPOLL_EVT_READ
+                    && pThis->paHandles[i].enmType == RTHANDLETYPE_SOCKET)
+                {
+                    uint8_t abBuf[64];
+                    ssize_t rcRecv = recv(pThis->paPollFds[i].fd, abBuf, sizeof(abBuf), MSG_PEEK | MSG_DONTWAIT);
+                    if (rcRecv == 0)
+                        *pfEvents |= RTPOLL_EVT_ERROR;
+                }
+# endif
             }
             if (pid)
                 *pid = pThis->paHandles[i].id;
