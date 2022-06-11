@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic3.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic3.cpp 79542 2019-07-05 07:41:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic3 class implementation.
  */
@@ -91,7 +91,7 @@ void UIWizardExportAppPage3::refreshApplianceSettingsWidget()
 void UIWizardExportAppPage3::refreshFormPropertiesTable()
 {
     /* Acquire VSD form: */
-    CVirtualSystemDescriptionForm comForm = fieldImp("vsdForm").value<CVirtualSystemDescriptionForm>();
+    CVirtualSystemDescriptionForm comForm = fieldImp("vsdExportForm").value<CVirtualSystemDescriptionForm>();
     /* Make sure the properties table get the new description form: */
     if (comForm.isNotNull())
         m_pFormEditor->setVirtualSystemDescriptionForm(comForm);
@@ -215,7 +215,7 @@ bool UIWizardExportAppPageBasic3::validatePage()
     if (fIsFormatCloudOne)
     {
         /* Check whether we have proper VSD form: */
-        CVirtualSystemDescriptionForm comForm = fieldImp("vsdForm").value<CVirtualSystemDescriptionForm>();
+        CVirtualSystemDescriptionForm comForm = fieldImp("vsdExportForm").value<CVirtualSystemDescriptionForm>();
         fResult = comForm.isNotNull();
         Assert(fResult);
 
