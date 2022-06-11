@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-win.cpp 82462 2019-12-06 14:22:03Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-win.cpp 82480 2019-12-07 00:32:57Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Win32 host.
  */
@@ -54,7 +54,7 @@
 *********************************************************************************************************************************/
 static int vboxClipboardSvcWinSyncInternal(PSHCLCONTEXT pCtx);
 
-struct _SHCLCONTEXT
+struct SHCLCONTEXT
 {
     /** Handle for window message handling thread. */
     RTTHREAD    hThread;
