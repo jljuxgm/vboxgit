@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 82387 2019-12-04 17:19:14Z vboxsync $
+# $Id: Makefile.kmk 82390 2019-12-04 17:32:24Z vboxsync $
 ## @file
 # Sub-Makefile for the Windows Guest Additions Installer.
 #
@@ -244,7 +244,7 @@ RePackScriptsAdd_TEMPLATE = DUMMY
 RePackScriptsAdd_INST = repack/
 RePackScriptsAdd_INSTTYPE = stage
 RePackScriptsAdd_SOURCES = \
-	$(RePackScriptsAddSRCDir)/UnpackBlessedDrivers.cmd \
+	../../../Installer/win/Scripts/UnpackBlessedDrivers.cmd \
 	$(RePackScriptsAdd_0_OUTDIR)/PackDriversForSubmission.cmd \
 	$(RePackScriptsAdd_0_OUTDIR)/Combined-1-Prepare.cmd \
 	$(RePackScriptsAdd_0_OUTDIR)/Combined-3-RepackAdditions.cmd
