@@ -1,4 +1,4 @@
-/* $Id: vbox_fb.c 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: vbox_fb.c 83073 2020-02-14 11:35:05Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -42,7 +42,6 @@
 #include <linux/fb.h>
 #include <linux/init.h>
 
-#include <drm/drmP.h>
 #include <drm/drm_crtc.h>
 #include <drm/drm_fb_helper.h>
 #include <drm/drm_crtc_helper.h>
