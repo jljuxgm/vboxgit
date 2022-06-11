@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 80585 2019-09-04 14:05:50Z vboxsync $
+# $Id: Makefile.kmk 80665 2019-09-09 10:43:23Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -140,7 +140,7 @@ PROGRAMS += \
 	tstTime-3 \
 	tstTime-4 \
 	tstTimer \
-	tstTimerLR \
+	tstRTTimerLR \
 	tstRTTimeSpec \
 	tstRTUdp-1 \
 	tstUtf8 \
@@ -697,8 +697,8 @@ tstTime-4_SOURCES = tstTime-4.cpp
 tstTimer_TEMPLATE = VBOXR3TSTEXE
 tstTimer_SOURCES = tstTimer.cpp
 
-tstTimerLR_TEMPLATE = VBOXR3TSTEXE
-tstTimerLR_SOURCES = tstTimerLR.cpp
+tstRTTimerLR_TEMPLATE = VBOXR3TSTEXE
+tstRTTimerLR_SOURCES = tstRTTimerLR.cpp
 
 tstRTTimeSpec_TEMPLATE = VBOXR3TSTEXE
 tstRTTimeSpec_SOURCES = tstRTTimeSpec.cpp
