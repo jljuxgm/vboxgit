@@ -1,4 +1,4 @@
-/* $Id: VBoxDispMpLogger.h 76563 2019-01-01 03:53:56Z vboxsync $ */
+/* $Id: VBoxDispMpLogger.h 80372 2019-08-21 14:32:40Z vboxsync $ */
 /** @file
  * VBox WDDM Display backdoor logger API
  */
@@ -28,17 +28,8 @@
 
 #include <iprt/cdefs.h>
 
-#if 0
-/* enable this in case we include this in a dll*/
-# ifdef IN_VBOXCRHGSMI
-#  define VBOXDISPMPLOGGER_DECL(a_Type) DECLEXPORT(a_Type) RTCALL
-# else
-#  define VBOXDISPMPLOGGER_DECL(a_Type) DECLIMPORT(a_Type) RTCALL
-# endif
-#else
 /*enable this in case we include this in a static lib*/
 # define VBOXDISPMPLOGGER_DECL(a_Type) a_Type RTCALL
-#endif
 
 RT_C_DECLS_BEGIN
 
