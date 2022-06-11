@@ -1,4 +1,4 @@
-/* $Id: display-svga-x11.cpp 83138 2020-02-21 22:22:43Z vboxsync $ */
+/* $Id: display-svga-x11.cpp 83139 2020-02-21 22:48:36Z vboxsync $ */
 /** @file
  * X11 guest client - VMSVGA emulation resize event pass-through to X.Org
  * guest driver.
@@ -211,9 +211,9 @@ static void monitorRandREvents()
 /**
  * @callback_method_impl{FNRTTHREAD}
  */
-static DECLCALLBACK(int) x11MonitorThreadFunction(RTTHREAD hThreadSelf, void *pvUser)
+static DECLCALLBACK(int) x11MonitorThreadFunction(RTTHREAD ThreadSelf, void *pvUser)
 {
-    RT_NOREF(hThreadSelf, pvUser);
+    RT_NOREF(ThreadSelf, pvUser);
     while (!ASMAtomicReadBool(&g_fMonitorThreadShutdown))
     {
         monitorRandREvents();
