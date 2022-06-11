@@ -1,4 +1,4 @@
-/* $Id: clipboard-win.cpp 81843 2019-11-14 16:30:44Z vboxsync $ */
+/* $Id: clipboard-win.cpp 82497 2019-12-08 00:26:17Z vboxsync $ */
 /** @file
  * Shared Clipboard: Windows-specific functions for clipboard handling.
  */
@@ -15,24 +15,23 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#include <iprt/alloc.h>
+#define LOG_GROUP LOG_GROUP_SHARED_CLIPBOARD
+#include <VBox/GuestHost/SharedClipboard.h>
+
 #include <iprt/assert.h>
 #include <iprt/errcore.h>
 #include <iprt/ldr.h>
+#include <iprt/mem.h>
 #include <iprt/thread.h>
-
 #ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS
 # include <iprt/win/windows.h>
 # include <iprt/win/shlobj.h> /* For CFSTR_FILEDESCRIPTORXXX + CFSTR_FILECONTENTS. */
 # include <iprt/utf16.h>
 #endif
 
-#define LOG_GROUP LOG_GROUP_SHARED_CLIPBOARD
 #include <VBox/log.h>
 
-#include <iprt/errcore.h>
-
-#include <VBox/GuestHost/SharedClipboard.h>
+#include <VBox/HostServices/VBoxClipboardSvc.h>
 #ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS
 # include <VBox/GuestHost/SharedClipboard-transfers.h>
 #endif
