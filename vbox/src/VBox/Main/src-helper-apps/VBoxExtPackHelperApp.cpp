@@ -1,4 +1,4 @@
-/* $Id: VBoxExtPackHelperApp.cpp 77178 2019-02-06 15:15:30Z vboxsync $ */
+/* $Id: VBoxExtPackHelperApp.cpp 80569 2019-09-03 14:34:21Z vboxsync $ */
 /** @file
  * VirtualBox Main - Extension Pack Helper Application, usually set-uid-to-root.
  */
@@ -1547,8 +1547,8 @@ static RTEXITCODE RelaunchElevatedNative(const char *pszExecPath, const char **p
          * program to complete.
          */
         RTPROCESS hProcess;
-        rc = RTProcCreateEx(papszArgs[iSuArg], &papszArgs[iSuArg], RTENV_DEFAULT, 0 /*fFlags*/,
-                            NULL /*phStdIn*/, NULL /*phStdOut*/, NULL /*phStdErr*/, NULL /*pszAsUser*/, NULL /*pszPassword*/,
+        rc = RTProcCreateEx(papszArgs[iSuArg], &papszArgs[iSuArg], RTENV_DEFAULT, 0 /*fFlags*/, NULL /*phStdIn*/,
+                            NULL /*phStdOut*/, NULL /*phStdErr*/, NULL /*pszAsUser*/, NULL /*pszPassword*/, NULL /* pvExtraData*/,
                             &hProcess);
         if (RT_SUCCESS(rc))
         {

@@ -1,4 +1,4 @@
-/* $Id: VBox-CodingGuidelines.cpp 79974 2019-07-25 09:01:39Z vboxsync $ */
+/* $Id: VBox-CodingGuidelines.cpp 80569 2019-09-03 14:34:21Z vboxsync $ */
 /** @file
  * VBox - Coding Guidelines.
  */
@@ -628,6 +628,7 @@
  *                                      NULL,           // phStdErr
  *                                      NULL,           // pszAsUser
  *                                      NULL,           // pszPassword
+ *                                      NULL,           // pExtraData
  *                                      &hProcess);
  *        @endcode
  *

@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlProcess.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxServiceControlProcess.cpp 80569 2019-09-03 14:34:21Z vboxsync $ */
 /** @file
  * VBoxServiceControlThread - Guest process handling.
  */
@@ -1297,7 +1297,7 @@ static int vgsvcGstCtrlProcessCreateProcess(const char *pszExec, const char * co
                  * likely local system. */
                 rc = RTProcCreateEx(szSysprepCmd, papszArgsExp, hEnv, 0 /* fFlags */,
                                     phStdIn, phStdOut, phStdErr, NULL /* pszAsUser */,
-                                    NULL /* pszPassword */, phProcess);
+                                    NULL /* pszPassword */, NULL, phProcess);
                 vgsvcGstCtrlProcessFreeArgv(papszArgsExp);
             }
         }
@@ -1389,6 +1389,7 @@ static int vgsvcGstCtrlProcessCreateProcess(const char *pszExec, const char * co
                                 phStdIn, phStdOut, phStdErr,
                                 pszUser,
                                 pszPassword && *pszPassword ? pszPassword : NULL,
+                                NULL /*pvExtraData*/,
                                 phProcess);
 #ifdef RT_OS_WINDOWS
             if (pszUserUPN)

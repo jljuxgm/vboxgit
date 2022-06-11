@@ -1,4 +1,4 @@
-/* $Id: VBoxBugReport.cpp 78088 2019-04-10 13:36:19Z vboxsync $ */
+/* $Id: VBoxBugReport.cpp 80569 2019-09-03 14:34:21Z vboxsync $ */
 /** @file
  * VBoxBugReport - VirtualBox command-line diagnostics tool, main file.
  */
@@ -366,7 +366,7 @@ PRTSTREAM BugReportCommand::getStream(void)
     RTPROCESS hProcess;
     handleRtError(RTProcCreateEx(m_papszArgs[0], m_papszArgs, RTENV_DEFAULT, 0,
                                  NULL, &hStdOutErr, &hStdOutErr,
-                                 NULL, NULL, &hProcess),
+                                 NULL, NULL, NULL, &hProcess),
                   "Failed to create process '%s'", m_papszArgs[0]);
     RTPROCSTATUS status;
     handleRtError(RTProcWait(hProcess, RTPROCWAIT_FLAGS_BLOCK, &status),
@@ -443,7 +443,7 @@ PRTSTREAM BugReportCommandTemp::getStream(void)
     RTPROCESS hProcess;
     handleRtError(RTProcCreateEx(m_papszArgs[0], m_papszArgs, RTENV_DEFAULT, 0,
                                  NULL, &hStdOutErr, &hStdOutErr,
-                                 NULL, NULL, &hProcess),
+                                 NULL, NULL, NULL, &hProcess),
                   "Failed to create process '%s'", m_papszArgs[0]);
     RTPROCSTATUS status;
     handleRtError(RTProcWait(hProcess, RTPROCWAIT_FLAGS_BLOCK, &status),

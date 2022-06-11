@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 79796 2019-07-15 15:32:29Z vboxsync $ */
+/* $Id: VBoxManage.h 80569 2019-09-03 14:34:21Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -36,6 +36,7 @@
 
 #ifndef VBOX_ONLY_DOCS
 # include "VBoxManageBuiltInHelp.h"
+# include "PasswordInput.h"
 #endif
 
 
@@ -217,9 +218,6 @@ HRESULT showProgress(ComPtr<IProgress> progress);
 void showLogo(PRTSTREAM pStrm);
 
 #ifndef VBOX_ONLY_DOCS
-RTEXITCODE readPasswordFile(const char *pszFilename, com::Utf8Str *pPasswd);
-RTEXITCODE readPasswordFromConsole(com::Utf8Str *pPassword, const char *pszPrompt, ...);
-
 RTEXITCODE handleInternalCommands(HandlerArg *a);
 #endif /* !VBOX_ONLY_DOCS */
 

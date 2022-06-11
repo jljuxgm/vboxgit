@@ -1,4 +1,4 @@
-/* $Id: RTProcDaemonize-generic.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: RTProcDaemonize-generic.cpp 80569 2019-09-03 14:34:21Z vboxsync $ */
 /** @file
  * IPRT - RTProcDaemonize, generic implementation.
  */
@@ -83,7 +83,7 @@ RTR3DECL(int) RTProcDaemonize(const char * const *papszArgs, const char *pszDaem
             rc = RTProcCreateEx(szExecPath, papszNewArgs, RTENV_DEFAULT,
                                 RTPROC_FLAGS_DETACHED | RTPROC_FLAGS_SAME_CONTRACT,
                                 &hStdIn, &hStdOutAndErr, &hStdOutAndErr,
-                                NULL /*pszAsUser*/,  NULL /*pszPassword*/, NULL /*phProcess*/);
+                                NULL /*pszAsUser*/,  NULL /*pszPassword*/, NULL /*pExtraData*/, NULL /*phProcess*/);
 
             RTFileClose(hStdOutAndErr.u.hFile);
         }

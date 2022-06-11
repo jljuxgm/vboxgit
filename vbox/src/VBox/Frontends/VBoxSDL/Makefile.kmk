@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: Makefile.kmk 80569 2019-09-03 14:34:21Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxSDL (a simple frontend based on SDL).
 #
@@ -45,7 +45,8 @@ VBoxSDL_SDKS       = LIBSDL
 VBoxSDL_SOURCES    = \
 	VBoxSDL.cpp \
 	Framebuffer.cpp \
-	Helper.cpp
+	Helper.cpp \
+	../Common/PasswordInput.cpp
 VBoxSDL_SOURCES.darwin = \
 	VBoxSDLMain-darwin.m \
        Framebuffer-darwin.m
@@ -69,7 +70,8 @@ VBoxSDL_DEFS.win.amd64 = _WIN32_WINNT=0x0510
 
 VBoxSDL_INCS = \
 	$(VBoxSDL_0_OUTDIR) \
-	$(VBOX_GRAPHICS_INCS)
+	$(VBOX_GRAPHICS_INCS) \
+	../Common
 ifeq ($(filter-out freebsd linux netbsd openbsd solaris,$(KBUILD_TARGET)),) # X11
 VBoxSDL_INCS += \
 	$(VBOX_XCURSOR_INCS)

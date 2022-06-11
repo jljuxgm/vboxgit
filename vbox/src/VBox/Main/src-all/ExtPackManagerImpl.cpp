@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.cpp 77624 2019-03-08 17:33:50Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.cpp 80569 2019-09-03 14:34:21Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -2507,6 +2507,7 @@ HRESULT ExtPackManager::i_runSetUidToRootHelper(Utf8Str const *a_pstrDisplayInfo
                          &hStdErrPipe,
                          NULL /*pszAsUser*/,
                          NULL /*pszPassword*/,
+                         NULL /*pvExtraData*/,
                          &hProcess);
     if (RT_SUCCESS(vrc))
     {

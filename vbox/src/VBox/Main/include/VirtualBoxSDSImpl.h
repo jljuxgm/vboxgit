@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxSDSImpl.h 76562 2019-01-01 03:22:50Z vboxsync $ */
+/* $Id: VirtualBoxSDSImpl.h 80569 2019-09-03 14:34:21Z vboxsync $ */
 /** @file
  * VBox Global COM Class definition
  */
@@ -93,6 +93,8 @@ private:
      * @{ */
     STDMETHOD(RegisterVBoxSVC)(IVBoxSVCRegistration *aVBoxSVC, LONG aPid, IUnknown **aExistingVirtualBox);
     STDMETHOD(DeregisterVBoxSVC)(IVBoxSVCRegistration *aVBoxSVC, LONG aPid);
+    STDMETHOD(LaunchVMProcess)(IN_BSTR aMachine, IN_BSTR aComment, IN_BSTR aFrontend, IN_BSTR aEnvironmentChanges,
+                               IN_BSTR aCmdOptions, ULONG aSessionId, ULONG *aPid);
     /** @} */
 
 

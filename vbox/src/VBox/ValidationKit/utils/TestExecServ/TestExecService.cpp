@@ -1,4 +1,4 @@
-/* $Id: TestExecService.cpp 79423 2019-06-28 20:35:10Z vboxsync $ */
+/* $Id: TestExecService.cpp 80569 2019-09-03 14:34:21Z vboxsync $ */
 /** @file
  * TestExecServ - Basic Remote Execution Service.
  */
@@ -2717,7 +2717,7 @@ static int txsDoExecHlp(PCTXSPKTHDR pPktHdr, uint32_t fFlags, const char *pszExe
         }
         rc = RTProcCreateEx(pszExecName, papszArgs, pTxsExec->hEnv, 0 /*fFlags*/,
                             pTxsExec->StdIn.phChild, pTxsExec->StdOut.phChild, pTxsExec->StdErr.phChild,
-                            *pszUsername ? pszUsername : NULL, NULL,
+                            *pszUsername ? pszUsername : NULL, NULL, NULL,
                             &pTxsExec->hProcess);
         if (RT_SUCCESS(rc))
         {
@@ -3605,7 +3605,7 @@ static RTEXITCODE txsParseArgv(int argc, char **argv, bool *pfExit)
                 break;
 
             case 'V':
-                RTPrintf("$Revision: 79423 $\n");
+                RTPrintf("$Revision: 80569 $\n");
                 *pfExit = true;
                 return RTEXITCODE_SUCCESS;
 

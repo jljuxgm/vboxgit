@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlSession.cpp 79326 2019-06-25 14:19:35Z vboxsync $ */
+/* $Id: VBoxServiceControlSession.cpp 80569 2019-09-03 14:34:21Z vboxsync $ */
 /** @file
  * VBoxServiceControlSession - Guest session handling. Also handles the spawned session processes.
  */
@@ -2250,6 +2250,7 @@ static int vgsvcVGSvcGstCtrlSessionThreadCreateProcess(const PVBOXSERVICECTRLSES
                                     &hStdIn, &hStdOutAndErr, &hStdOutAndErr,
                                     !fAnonymous ? pszUser : NULL,
                                     !fAnonymous ? pSessionThread->StartupInfo.szPassword : NULL,
+                                    NULL /*pvExtraData*/,
                                     &pSessionThread->hProcess);
             }
 #ifdef RT_OS_WINDOWS
