@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 83869 2020-04-20 17:30:04Z vboxsync $
+# $Id: tdAddBasic1.py 83873 2020-04-21 06:27:44Z vboxsync $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 83869 $"
+__version__ = "$Revision: 83873 $"
 
 # Standard Python imports.
 import os;
@@ -423,7 +423,7 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
             #
             # Make sure to add "--nox11" to the makeself wrapper in order to not getting any blocking
             # xterm window spawned.
-            fRc = self.txsRunTest(oTxsSession, 'VBoxLinuxAdditions.run', 5 * 60 * 1000,
+            fRc = self.txsRunTest(oTxsSession, 'VBoxLinuxAdditions.run', 30 * 60 * 1000,
                                   '/bin/sh', ('/bin/sh', '${CDROM}/VBoxLinuxAdditions.run', '--nox11'));
             ## @todo We need to figure out why the result is != 0 when running the .run installer. For now just ignore it.
             if not fRc:
