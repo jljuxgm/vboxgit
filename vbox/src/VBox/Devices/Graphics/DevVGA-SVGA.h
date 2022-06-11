@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.h 83274 2020-03-12 17:12:56Z vboxsync $ */
+/* $Id: DevVGA-SVGA.h 83278 2020-03-13 11:43:47Z vboxsync $ */
 /** @file
  * VMware SVGA device
  */
@@ -212,11 +212,12 @@ typedef struct VMSVGAState
     /** The legacy GFB mode registers. If used, they correspond to screen 0. */
     /** True when the guest modifies the GFB mode registers. */
     bool                        fGFBRegisters;
-    bool                        afPadding[2];
+    bool                        afPadding[6];
     uint32_t                    uWidth;
     uint32_t                    uHeight;
     uint32_t                    uBpp;
     uint32_t                    cbScanline;
+    uint32_t                    uHostBpp;
     /** Maximum width supported. */
     uint32_t                    u32MaxWidth;
     /** Maximum height supported. */
