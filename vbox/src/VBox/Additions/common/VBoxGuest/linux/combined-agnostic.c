@@ -1,4 +1,4 @@
-/* $Id: combined-agnostic.c 78905 2019-05-31 19:43:27Z vboxsync $ */
+/* $Id: combined-agnostic.c 78907 2019-05-31 23:19:50Z vboxsync $ */
 /** @file
  * VBoxGuest - Combine a bunch of OS agnostic sources into one compile unit.
  */
@@ -152,7 +152,7 @@
 # include "common/alloc/heapsimple.c"
 #endif
 
-#ifdef RT_ARCH_X86
+#if 0 //def RT_ARCH_X86 - iprt/nocrt/limit.h clashes.
 # include "common/math/gcc/divdi3.c"
 # include "common/math/gcc/moddi3.c"
 # include "common/math/gcc/udivdi3.c"
