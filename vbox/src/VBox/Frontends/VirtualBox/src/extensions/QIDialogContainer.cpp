@@ -1,4 +1,4 @@
-/* $Id: QIDialogContainer.cpp 79900 2019-07-19 18:33:40Z vboxsync $ */
+/* $Id: QIDialogContainer.cpp 79957 2019-07-24 13:42:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIDialogContainer class implementation.
  */
@@ -17,6 +17,7 @@
 
 /* Qt includes: */
 #include <QGridLayout>
+#include <QPushButton>
 
 /* GUI includes: */
 #include "QIDialogButtonBox.h"
@@ -26,6 +27,7 @@ QIDialogContainer::QIDialogContainer(QWidget *pParent /* = 0 */, Qt::WindowFlags
     : QDialog(pParent, enmFlags)
     , m_pLayout(0)
     , m_pWidget(0)
+    , m_pButtonBox(0)
 {
     prepare();
 }
@@ -38,6 +40,11 @@ void QIDialogContainer::setWidget(QWidget *pWidget)
         m_pLayout->addWidget(m_pWidget, 0, 0);
 }
 
+void QIDialogContainer::setOkButtonEnabled(bool fEnabled)
+{
+    m_pButtonBox->button(QDialogButtonBox::Ok)->setEnabled(fEnabled);
+}
+
 void QIDialogContainer::prepare()
 {
     /* Prepare layout: */
@@ -45,16 +52,16 @@ void QIDialogContainer::prepare()
     if (m_pLayout)
     {
         /* Prepare dialog button-box: */
-        QIDialogButtonBox *pButtonBox = new QIDialogButtonBox(this);
-        if (pButtonBox)
+        m_pButtonBox = new QIDialogButtonBox(this);
+        if (m_pButtonBox)
         {
-            pButtonBox->setStandardButtons(QDialogButtonBox::Ok);
-            connect(pButtonBox, &QIDialogButtonBox::accepted,
+            m_pButtonBox->setStandardButtons(QDialogButtonBox::Ok);
+            connect(m_pButtonBox, &QIDialogButtonBox::accepted,
                     this, &QDialog::accept);
-            connect(pButtonBox, &QIDialogButtonBox::rejected,
+            connect(m_pButtonBox, &QIDialogButtonBox::rejected,
                     this, &QDialog::reject);
 
-            m_pLayout->addWidget(pButtonBox, 1, 0);
+            m_pLayout->addWidget(m_pButtonBox, 1, 0);
         }
     }
 }
