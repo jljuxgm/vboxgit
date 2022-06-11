@@ -1,4 +1,4 @@
-/* $Id: UIErrorPane.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIErrorPane.h 84077 2020-04-29 12:20:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIErrorPane class declaration.
  */
@@ -29,7 +29,6 @@
 
 /* Forward declarations: */
 class QAction;
-class QLabel;
 class QString;
 class QTextBrowser;
 class QToolButton;
@@ -65,8 +64,6 @@ private:
     /** Holds the VM refresh button instance. */
     QToolButton *m_pButtonRefresh;
 
-    /** Holds the label instance. */
-    QLabel       *m_pLabel;
     /** Holds the text-browser instance. */
     QTextBrowser *m_pBrowserDetails;
 };
