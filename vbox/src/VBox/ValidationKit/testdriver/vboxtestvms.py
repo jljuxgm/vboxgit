@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 79046 2019-06-07 19:41:20Z vboxsync $
+# $Id: vboxtestvms.py 79071 2019-06-11 00:44:53Z vboxsync $
 
 """
 VirtualBox Test VMs
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79046 $"
+__version__ = "$Revision: 79071 $"
 
 # Standard Python imports.
 import copy;
@@ -682,6 +682,24 @@ class BaseTestVm(object):
                      % (self.sVmName, uFamily,));
         return True;
 
+    def getTestUser(self):
+        """
+        Gets the primary test user name.
+        """
+        if self.isWindows():
+            return 'Administrator';
+        return 'vbox';
+
+    def getTestUserPassword(self, sUser = None):
+        """
+        Gets the password for the primary user (or other specified one).
+        """
+        if sUser == 'test':
+            return '';
+        if sUser == 'vboxuser': # Default unattended installation user and password.
+            return 'changeme';
+        return 'password';
+
     def getCom1RawFile(self, oVM):
         """
         Gets the name of the COM1 raw file.
@@ -1323,6 +1341,25 @@ class TestVm(object):
         reporter.log('Skipping "%s" because host CPU is a family %u AMD, which may cause trouble for the guest OS installer.'
                      % (self.sVmName, uFamily,));
         return True;
+
+    def getTestUser(self):
+        """
+        Gets the primary test user name.
+        """
+        if self.isWindows():
+            return 'Administrator';
+        return 'vbox';
+
+    def getTestUserPassword(self, sUser = None):
+        """
+        Gets the password for the primary user (or other specified one).
+        """
+        if sUser == 'test':
+            return '';
+        if sUser == 'vboxuser': # Default unattended installation user and password.
+            return 'changeme';
+        return 'password';
+
 
 
 class BootSectorTestVm(TestVm):
