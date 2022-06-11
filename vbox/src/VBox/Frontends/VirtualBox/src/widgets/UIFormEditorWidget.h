@@ -1,4 +1,4 @@
-/* $Id: UIFormEditorWidget.h 78954 2019-06-04 08:26:16Z vboxsync $ */
+/* $Id: UIFormEditorWidget.h 78955 2019-06-04 08:36:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFormEditorWidget class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef FEQT_INCLUDED_SRC_wizards_importappliance_UIFormEditorWidget_h
-#define FEQT_INCLUDED_SRC_wizards_importappliance_UIFormEditorWidget_h
+#ifndef FEQT_INCLUDED_SRC_widgets_UIFormEditorWidget_h
+#define FEQT_INCLUDED_SRC_widgets_UIFormEditorWidget_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -64,4 +64,4 @@ private:
 /** Safe pointer to Form Editor widget. */
 typedef QPointer<UIFormEditorWidget> UIFormEditorWidgetPointer;
 
-#endif /* !FEQT_INCLUDED_SRC_wizards_importappliance_UIFormEditorWidget_h */
+#endif /* !FEQT_INCLUDED_SRC_widgets_UIFormEditorWidget_h */
