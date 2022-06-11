@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 78722 2019-05-24 12:09:08Z vboxsync $ */
+/* $Id: UIMediumManager.cpp 79153 2019-06-14 13:32:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class implementation.
  */
@@ -1351,6 +1351,17 @@ void UIMediumManagerWidget::updateMediumItem(const UIMedium &medium)
     /* Re-fetch medium-item if it is current one updated: */
     if (pMediumItem == mediumItem(type))
         refetchCurrentMediumItem(type);
+
+#ifdef VBOX_GUI_WITH_NEW_MEDIA_EVENTS
+    /* Update all the children recursively as well: */
+    foreach(const QUuid &uMediumId, vboxGlobal().mediumIDs())
+    {
+        UIMedium guiMedium = vboxGlobal().medium(uMediumId);
+        if (   !guiMedium.isNull()
+            && guiMedium.parentID() == medium.id())
+            updateMediumItem(guiMedium);
+    }
+#endif
 }
 
 void UIMediumManagerWidget::deleteMediumItem(const QUuid &uMediumID)
