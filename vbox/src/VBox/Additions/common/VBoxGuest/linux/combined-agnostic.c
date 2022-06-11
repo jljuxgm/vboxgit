@@ -1,4 +1,4 @@
-/* $Id: combined-agnostic.c 78902 2019-05-31 19:14:11Z vboxsync $ */
+/* $Id: combined-agnostic.c 78905 2019-05-31 19:43:27Z vboxsync $ */
 /** @file
  * VBoxGuest - Combine a bunch of OS agnostic sources into one compile unit.
  */
@@ -160,5 +160,4 @@
 # include "common/math/gcc/umoddi3.c"
 # include "common/math/gcc/qdivrem.c"
 #endif
-
 
