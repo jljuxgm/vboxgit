@@ -1,4 +1,4 @@
-/* $Id: UIInformationConfiguration.h 80351 2019-08-20 09:08:09Z vboxsync $ */
+/* $Id: UIInformationConfiguration.h 80352 2019-08-20 09:24:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationConfiguration class declaration.
  */
@@ -37,8 +37,6 @@
 
 /* Forward declarations: */
 class QVBoxLayout;
-class UIInformationView;
-class UIInformationModel;
 class QTableWidget;
 class QTableWidgetItem;
 class QTextDocument;
@@ -63,8 +61,7 @@ protected:
     void retranslateUi() /* override */;
 
 private:
-    /** Prepares model. */
-    void prepareModel();
+
     void prepareObjects();
     void createTableItems();
 
@@ -81,10 +78,6 @@ private:
     CConsole m_console;
     /** Holds the instance of layout we create. */
     QVBoxLayout *m_pMainLayout;
-    /** Holds the instance of model we create. */
-    UIInformationModel *m_pModel;
-    /** Holds the instance of view we create. */
-    UIInformationView *m_pView;
     QTableWidget *m_pTableWidget;
     //QMap<TableRow, UIInformationTableRow*> m_rows;
     QList<QTableWidgetItem*> m_tableItems;
