@@ -1,4 +1,4 @@
-/* $Id: UIMachineAttributeSetter.h 80083 2019-07-31 16:48:54Z vboxsync $ */
+/* $Id: UIMachineAttributeSetter.h 80139 2019-08-05 18:21:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineAttributeSetter namespace declaration.
  */
@@ -38,7 +38,12 @@ enum MachineAttribute
     MachineAttribute_GraphicsControllerType,
     MachineAttribute_AudioHostDriverType,
     MachineAttribute_AudioControllerType,
+    MachineAttribute_USBControllerType,
 };
+
+/** A set of USB controller types. */
+typedef QSet<KUSBControllerType> UIUSBControllerTypeSet;
+Q_DECLARE_METATYPE(UIUSBControllerTypeSet);
 
 /** Namespace used to assign CMachine attributes on more convenient basis. */
 namespace UIMachineAttributeSetter
