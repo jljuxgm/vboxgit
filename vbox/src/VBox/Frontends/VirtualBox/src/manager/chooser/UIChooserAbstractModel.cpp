@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.cpp 83673 2020-04-10 17:31:04Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.cpp 83682 2020-04-13 16:49:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class implementation.
  */
@@ -306,15 +306,10 @@ void UIChooserAbstractModel::sltHandleCloudListMachinesTaskComplete(UITask *pTas
         /* Add real cloud VM nodes: */
         int iPosition = 0;
         foreach (const CCloudMachine &comCloudMachine, machines)
-        {
-            /* Create new node: */
-            UIChooserNodeMachine *pNode = new UIChooserNodeMachine(pParentNode,
-                                                                   false /* favorite */,
-                                                                   iPosition++ /* position */,
-                                                                   comCloudMachine);
-            /* Request async node update: */
-            pNode->cache()->toCloud()->updateInfoAsync(false /* delayed? */);
-        }
+            new UIChooserNodeMachine(pParentNode,
+                                     false /* favorite */,
+                                     iPosition++ /* position */,
+                                     comCloudMachine);
     }
     else
     {
