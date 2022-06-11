@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibSeamless.cpp 83143 2020-02-24 19:30:58Z vboxsync $ */
+/* $Id: VBoxGuestR3LibSeamless.cpp 83246 2020-03-10 13:20:06Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Seamless mode.
  */
@@ -172,15 +172,15 @@ VBGLR3DECL(int) VbglR3SeamlessSendRects(uint32_t cRects, PRTRECT pRects)
 
 VBGLR3DECL(int) VbglR3SeamlessSendMonitorPositions(uint32_t cPositions, PRTPOINT pPositions)
 {
+    if (!pPositions || cPositions <= 0)
+        return VERR_INVALID_PARAMETER;
+
     VMMDevVideoUpdateMonitorPositions *pReq;
     int rc;
 
-    AssertPtrReturn(pPositions, VERR_INVALID_PARAMETER);
-
     rc = vbglR3GRAlloc((VMMDevRequestHeader **)&pReq,
                          sizeof(VMMDevVideoUpdateMonitorPositions)
-                       + cPositions * sizeof(RTPOINT)
-                       - sizeof(RTPOINT),
+                       + (cPositions - 1) * sizeof(RTPOINT),
                        VMMDevReq_VideoUpdateMonitorPositions);
     if (RT_SUCCESS(rc))
     {
