@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 78542 2019-05-16 11:00:44Z vboxsync $ */
+/* $Id: UIMessageCenter.h 78819 2019-05-28 13:47:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -383,6 +383,7 @@ public:
     void cannotAssignFormValue(const CBooleanFormValue &comValue, QWidget *pParent = 0) const;
     void cannotAssignFormValue(const CStringFormValue &comValue, QWidget *pParent = 0) const;
     void cannotAssignFormValue(const CChoiceFormValue &comValue, QWidget *pParent = 0) const;
+    void cannotAssignFormValue(const CRangedIntegerFormValue &comValue, QWidget *pParent = 0) const;
     void cannotAssignFormValue(const CProgress &comProgress, QWidget *pParent = 0) const;
 
     /* API: Wizards warnings: */
