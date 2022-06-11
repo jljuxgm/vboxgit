@@ -1,4 +1,4 @@
-/* $Id: vfsbase.cpp 79155 2019-06-14 16:33:05Z vboxsync $ */
+/* $Id: vfsbase.cpp 80518 2019-08-30 17:25:03Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Base.
  */
@@ -3202,6 +3202,25 @@ RTDECL(int) RTVfsDirReadEx(RTVFSDIR hVfsDir, PRTDIRENTRYEX pDirEntry, size_t *pc
      */
     RTVfsLockAcquireRead(pThis->Base.hLock);
     int rc = pThis->pOps->pfnReadDir(pThis->Base.pvThis, pDirEntry, pcbDirEntry, enmAddAttr);
+    RTVfsLockReleaseRead(pThis->Base.hLock);
+    return rc;
+}
+
+
+RTDECL(int) RTVfsDirRewind(RTVFSDIR hVfsDir)
+{
+    /*
+     * Validate input.
+     */
+    RTVFSDIRINTERNAL *pThis = hVfsDir;
+    AssertPtrReturn(pThis, VERR_INVALID_HANDLE);
+    AssertReturn(pThis->uMagic == RTVFSDIR_MAGIC, VERR_INVALID_HANDLE);
+
+    /*
+     * Call the directory method.
+     */
+    RTVfsLockAcquireRead(pThis->Base.hLock);
+    int rc = pThis->pOps->pfnRewindDir(pThis->Base.pvThis);
     RTVfsLockReleaseRead(pThis->Base.hLock);
     return rc;
 }
