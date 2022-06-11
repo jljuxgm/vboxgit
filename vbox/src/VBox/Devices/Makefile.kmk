@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 81250 2019-10-14 11:41:24Z vboxsync $
+# $Id: Makefile.kmk 81360 2019-10-18 15:58:52Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -296,7 +296,9 @@ VBOX_WITH_VMSVGA3D_DYNAMIC_LOAD = 1
   	Graphics/DevVGA-SVGA3d-savedstate.cpp
   if  "$(KBUILD_TARGET)" == "win" && !defined(VBOX_WITH_VMSVGA3D_USE_OPENGL)
    VBoxDD_DEFS          += VMSVGA3D_DIRECT3D
-   VBoxDD_SOURCES       += Graphics/DevVGA-SVGA3d-win.cpp
+   VBoxDD_SOURCES       += \
+       Graphics/DevVGA-SVGA3d-win.cpp \
+       Graphics/DevVGA-SVGA3d-win-d3d9.cpp
    VBoxDD_LIBS.win      += d3d9.lib $(PATH_TOOL_$(VBOX_VCC_TOOL)_LIB)/delayimp.lib
    VBoxDD_LDFLAGS.win   += /DELAYLOAD:d3d9.dll
   else
