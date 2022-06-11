@@ -1,4 +1,4 @@
-/* $Id: HMSVMAll.cpp 78869 2019-05-30 08:32:28Z vboxsync $ */
+/* $Id: HMSVMAll.cpp 78871 2019-05-30 10:15:36Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - All contexts.
  */
@@ -464,7 +464,7 @@ VMM_INT_DECL(bool) HMGetGuestSvmVirtIntrMasking(PCVMCPU pVCpu, bool *pfVIntrMask
  * @returns @c true on success, @c false otherwise.
  * @param   pVCpu               The cross context virtual CPU structure of the
  *                              calling EMT.
- * @param   pfNestedPagingCtrl  Where to store the nested-paging bit. Updated only
+ * @param   pfNestedPaging      Where to store the nested-paging bit. Updated only
  *                              when @c true is returned.
  */
 VMM_INT_DECL(bool) HMGetGuestSvmNestedPaging(PCVMCPU pVCpu, bool *pfNestedPaging)
