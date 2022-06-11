@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageBasic1.cpp 79065 2019-06-10 13:47:22Z vboxsync $ */
+/* $Id: UIWizardImportAppPageBasic1.cpp 79243 2019-06-19 12:02:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageBasic1 class implementation.
  */
@@ -673,7 +673,7 @@ UIWizardImportAppPageBasic1::UIWizardImportAppPageBasic1(bool fImportFromOCIByDe
                         pSubLayout->setSpacing(1);
 
                         /* Create account combo-box: */
-                        m_pAccountComboBox = new QComboBox;
+                        m_pAccountComboBox = new QIComboBox;
                         if (m_pAccountComboBox)
                         {
                             m_pAccountLabel->setBuddy(m_pAccountComboBox);
@@ -773,7 +773,7 @@ UIWizardImportAppPageBasic1::UIWizardImportAppPageBasic1(bool fImportFromOCIByDe
             this, &UIWizardImportAppPageBasic1::sltHandleSourceChange);
     connect(m_pFileSelector, &UIEmptyFilePathSelector::pathChanged,
             this, &UIWizardImportAppPageBasic1::completeChanged);
-    connect(m_pAccountComboBox, static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+    connect(m_pAccountComboBox, static_cast<void(QIComboBox::*)(int)>(&QIComboBox::currentIndexChanged),
             this, &UIWizardImportAppPageBasic1::sltHandleAccountComboChange);
     connect(m_pAccountToolButton, &QIToolButton::clicked,
             this, &UIWizardImportAppPageBasic1::sltHandleAccountButtonClick);

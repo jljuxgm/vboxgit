@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageExpert.cpp 78970 2019-06-04 15:02:03Z vboxsync $ */
+/* $Id: UIWizardImportAppPageExpert.cpp 79243 2019-06-19 12:02:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageExpert class implementation.
  */
@@ -115,7 +115,7 @@ UIWizardImportAppPageExpert::UIWizardImportAppPageExpert(bool fImportFromOCIByDe
                                 pSubLayout->setSpacing(1);
 
                                 /* Create account combo-box: */
-                                m_pAccountComboBox = new QComboBox(pCloudContainer);
+                                m_pAccountComboBox = new QIComboBox(pCloudContainer);
                                 if (m_pAccountComboBox)
                                 {
                                     /* Add into layout: */
@@ -267,7 +267,7 @@ UIWizardImportAppPageExpert::UIWizardImportAppPageExpert(bool fImportFromOCIByDe
             this, &UIWizardImportAppPageExpert::sltHandleSourceChange);
     connect(m_pFileSelector, &UIEmptyFilePathSelector::pathChanged,
             this, &UIWizardImportAppPageExpert::sltFilePathChangeHandler);
-    connect(m_pAccountComboBox, static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+    connect(m_pAccountComboBox, static_cast<void(QIComboBox::*)(int)>(&QIComboBox::currentIndexChanged),
             this, &UIWizardImportAppPageExpert::sltHandleAccountComboChange);
     connect(m_pAccountToolButton, &QIToolButton::clicked,
             this, &UIWizardImportAppPageExpert::sltHandleAccountButtonClick);

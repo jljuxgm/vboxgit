@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageBasic1.h 78850 2019-05-29 13:38:42Z vboxsync $ */
+/* $Id: UIWizardImportAppPageBasic1.h 79243 2019-06-19 12:02:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageBasic1 class declaration.
  */
@@ -146,7 +146,7 @@ protected:
     /** Holds the account label instance. */
     QLabel       *m_pAccountLabel;
     /** Holds the account combo-box instance. */
-    QComboBox    *m_pAccountComboBox;
+    QIComboBox   *m_pAccountComboBox;
     /** Holds the account management tool-button instance. */
     QIToolButton *m_pAccountToolButton;
     /** Holds the account property table instance. */
