@@ -1,5 +1,5 @@
 @echo off
-rem $Id: PackDriversForSubmission.cmd 82226 2019-11-26 18:18:16Z vboxsync $
+rem $Id: PackDriversForSubmission.cmd 82260 2019-11-27 23:51:00Z vboxsync $
 rem rem @file
 rem Windows NT batch script for preparing for signing submission.
 rem
@@ -101,7 +101,7 @@ echo This script creates a .cab file containing all drivers needing blessing fro
 echo Microsoft to run on recent Windows 10 installations.
 echo .
 echo Usage: PackDriversForSubmission.cmd [-b bindir] [-p pdbdir] [--no-main] [-n/--no-pdb] [-e expack]
-echo           [-x/--no-extpack] [-g/--ga/--additions] [-o output.cab] [-p output.ddf] [-a x86/amd64] 
+echo           [-x/--no-extpack] [-g/--ga/--additions] [-o output.cab] [-p output.ddf] [-a x86/amd64]
 echo .
 echo Warning! This script should normally be invoked from the repack directory w/o any parameters.
 goto end_failed
