@@ -1,4 +1,4 @@
-/* $Id: UICloudMachineSettingsDialogPage.cpp 84010 2020-04-27 14:46:33Z vboxsync $ */
+/* $Id: UICloudMachineSettingsDialogPage.cpp 84018 2020-04-27 16:28:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudMachineSettingsDialogPage class implementation.
  */
@@ -26,8 +26,9 @@
 #include "iprt/assert.h"
 
 
-UICloudMachineSettingsDialogPage::UICloudMachineSettingsDialogPage(QWidget *pParent)
+UICloudMachineSettingsDialogPage::UICloudMachineSettingsDialogPage(QWidget *pParent, bool fFullScale /* = true */)
     : QWidget(pParent)
+    , m_fFullScale(fFullScale)
 {
     prepare();
 }
@@ -68,7 +69,7 @@ void UICloudMachineSettingsDialogPage::prepare()
                                             : 0;
             if (iDefaultSectionHeight > 0)
             {
-                const int iProposedHeight = iDefaultSectionHeight * 12;
+                const int iProposedHeight = iDefaultSectionHeight * (m_fFullScale ? 12 : 6);
                 const int iProposedWidth = iProposedHeight * 1.66;
                 m_pFormEditor->setMinimumSize(iProposedWidth, iProposedHeight);
             }
