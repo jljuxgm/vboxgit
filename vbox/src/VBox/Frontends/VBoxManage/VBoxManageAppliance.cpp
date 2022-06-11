@@ -1,4 +1,4 @@
-/* $Id: VBoxManageAppliance.cpp 84164 2020-05-06 15:32:25Z vboxsync $ */
+/* $Id: VBoxManageAppliance.cpp 84167 2020-05-06 15:37:44Z vboxsync $ */
 /** @file
  * VBoxManage - The appliance-related commands.
  */
@@ -2002,12 +2002,12 @@ static int doTheOvaSigning(PRTCRX509CERTIFICATE pCertificate, RTCRKEY hPrivateKe
                         rc = RTVfsMemFileCreate(NIL_RTVFSIOSTREAM, _8K, &hVfsFileSignature);
                         if (RT_SUCCESS(rc))
                         {
-                            rc = RTVfsFilePrintf(hVfsFileSignature, "%s(%s) = %.*Rhxs\n\n",
-                                                 pszDigestType, pszManifestName, cbSignature, pvSignature);
+                            rc = (int)RTVfsFilePrintf(hVfsFileSignature, "%s(%s) = %.*Rhxs\n\n",
+                                                      pszDigestType, pszManifestName, cbSignature, pvSignature);
                             if (RT_SUCCESS(rc))
                             {
-                                rc = RTCrX509Certificate_WriteToVfsFile(hVfsFileSignature, pCertificate,
-                                                                        RTErrInfoInitStatic(pErrInfo));
+                                rc = (int)RTCrX509Certificate_WriteToVfsFile(hVfsFileSignature, pCertificate,
+                                                                             RTErrInfoInitStatic(pErrInfo));
                                 if (RT_SUCCESS(rc))
                                 {
                                     if (fPkcs7)
