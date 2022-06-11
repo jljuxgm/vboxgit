@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestInstallHelper.cpp 82625 2019-12-19 16:15:07Z vboxsync $ */
+/* $Id: VBoxGuestInstallHelper.cpp 82626 2019-12-19 16:21:19Z vboxsync $ */
 /** @file
  * VBoxGuestInstallHelper - Various helper routines for Windows guest installer.
  *                          Works with NSIS 3.x.
@@ -448,17 +448,15 @@ VBOXINSTALLHELPER_EXPORT VBoxTrayShowBallonMsg(HWND hwndParent, int string_size,
 
     EXDLL_INIT();
 
-    int rc = VINF_SUCCESS;
-
     TCHAR szMsg[256];
     TCHAR szTitle[128];
-    HRESULT hr = vboxPopString(szMsg, sizeof(szMsg) / sizeof(TCHAR));
-    if (SUCCEEDED(hr))
-        hr = vboxPopString(szTitle, sizeof(szTitle) / sizeof(TCHAR));
+    int rc = vboxPopString(szMsg, sizeof(szMsg) / sizeof(TCHAR));
+    if (RT_SUCCESS(rc))
+        rc = vboxPopString(szTitle, sizeof(szTitle) / sizeof(TCHAR));
 
     /** @todo Do we need to restore the stack on failure? */
 
-    if (SUCCEEDED(hr))
+    if (RT_SUCCESS(rc))
     {
         RTR3InitDll(0);
 
@@ -514,6 +512,10 @@ VBOXINSTALLHELPER_EXPORT VBoxTrayShowBallonMsg(HWND hwndParent, int string_size,
             }
             else
                 rc = VERR_NO_MEMORY;
+#ifdef UNICODE
+            RTStrFree(pszMsgUtf8);
+            RTStrFree(pszTitleUtf8);
+#endif
         }
     }
 
