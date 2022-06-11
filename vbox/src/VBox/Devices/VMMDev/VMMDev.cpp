@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 83142 2020-02-24 19:24:26Z vboxsync $ */
+/* $Id: VMMDev.cpp 83551 2020-04-04 11:42:04Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -3082,7 +3082,7 @@ vmmdevRequestHandler(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT offPort, uint32_
                 if (!pRequestHeaderFree)
                 { /* likely */ }
                 else
-                    RTMemFree(pRequestHeaderFree);
+                    RTMemFreeZ(pRequestHeaderFree, RT_MAX(requestHeader.size, 512));
                 return rcRet;
             }
 
