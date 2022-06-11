@@ -1,4 +1,4 @@
-/* $Id: SharedClipboard-transfers.h 80990 2019-09-25 06:20:09Z vboxsync $ */
+/* $Id: SharedClipboard-transfers.h 81025 2019-09-26 16:13:25Z vboxsync $ */
 /** @file
  * Shared Clipboard - Shared transfer functions between host and guest.
  */
@@ -917,6 +917,8 @@ typedef struct _SHCLTRANSFERCALLBACKDATA
     PSHCLTRANSFER pTransfer;
     /** Saved user pointer. */
     void         *pvUser;
+    /** Size (in bytes) of data at user pointer. */
+    size_t        cbUser;
 } SHCLTRANSFERCALLBACKDATA, *PSHCLTRANSFERCALLBACKDATA;
 
 /** Declares a Shared Clipboard transfer callback. */
@@ -947,8 +949,10 @@ SHCLTRANSFERCALLBACKDECL_VA(void, TRANSFERERROR, int rc)
  */
 typedef struct _SHCLTRANSFERCALLBACKS
 {
-    /** Saved user pointer. Optional and can be NULL. */
-    void *pvUser;
+    /** User pointer to data. Optional and can be NULL. */
+    void  *pvUser;
+    /** Size (in bytes) of user data pointing at. Optional and can be 0. */
+    size_t cbUser;
     /** Function pointer, called after the transfer has been initialized. */
     SHCLTRANSFERCALLBACKMEMBER(TRANSFERINITIALIZE, pfnTransferInitialize)
     /** Function pointer, called before the transfer will be started. */

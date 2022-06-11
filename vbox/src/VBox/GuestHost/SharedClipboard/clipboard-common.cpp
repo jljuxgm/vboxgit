@@ -1,4 +1,4 @@
-/* $Id: clipboard-common.cpp 80990 2019-09-25 06:20:09Z vboxsync $ */
+/* $Id: clipboard-common.cpp 81025 2019-09-26 16:13:25Z vboxsync $ */
 /** @file
  * Shared Clipboard: Some helper function for converting between the various eol.
  */
@@ -889,7 +889,6 @@ const char *VBoxShClGuestMsgToStr(uint32_t uMsg)
         RT_CASE_RET_STR(VBOX_SHCL_GUEST_FN_MSG_PEEK_NOWAIT);
         RT_CASE_RET_STR(VBOX_SHCL_GUEST_FN_MSG_PEEK_WAIT);
         RT_CASE_RET_STR(VBOX_SHCL_GUEST_FN_MSG_GET);
-        RT_CASE_RET_STR(VBOX_SHCL_GUEST_FN_STATUS);
         RT_CASE_RET_STR(VBOX_SHCL_GUEST_FN_REPLY);
         RT_CASE_RET_STR(VBOX_SHCL_GUEST_FN_ROOT_LIST_HDR_READ);
         RT_CASE_RET_STR(VBOX_SHCL_GUEST_FN_ROOT_LIST_HDR_WRITE);
