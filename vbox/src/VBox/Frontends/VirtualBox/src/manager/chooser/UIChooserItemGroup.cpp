@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGroup.cpp 79461 2019-07-02 09:41:51Z vboxsync $ */
+/* $Id: UIChooserItemGroup.cpp 82917 2020-01-29 18:28:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGroup class implementation.
  */
@@ -321,7 +321,7 @@ void UIChooserItemGroup::updateToolTip()
         /* Check if 'this' group contains started VMs: */
         int iCountOfStartedMachineItems = 0;
         foreach (UIChooserItem *pItem, items(UIChooserItemType_Machine))
-            if (UIVirtualMachineItem::isItemStarted(pItem->node()->toMachineNode()))
+            if (UIVirtualMachineItem::isItemStarted(pItem->node()->toMachineNode()->cache()))
                 ++iCountOfStartedMachineItems;
         /* Template: */
         QString strMachineCount = tr("%n machine(s)", "Group item tool-tip / Machine info", items(UIChooserItemType_Machine).size());

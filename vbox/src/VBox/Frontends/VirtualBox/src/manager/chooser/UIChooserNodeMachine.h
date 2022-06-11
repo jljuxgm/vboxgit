@@ -1,4 +1,4 @@
-/* $Id: UIChooserNodeMachine.h 77847 2019-03-22 13:22:06Z vboxsync $ */
+/* $Id: UIChooserNodeMachine.h 82917 2020-01-29 18:28:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserNodeMachine class declaration.
  */
@@ -27,7 +27,7 @@
 
 
 /** UIChooserNode subclass used as interface for invisible tree-view machine nodes. */
-class UIChooserNodeMachine : public UIChooserNode, public UIVirtualMachineItem
+class UIChooserNodeMachine : public UIChooserNode
 {
     Q_OBJECT;
 
@@ -86,10 +86,18 @@ public:
     /** Performs sorting of children nodes. */
     virtual void sortNodes() /* override */;
 
+    /** Returns virtual machine cache instance. */
+    UIVirtualMachineItem *cache() const { return m_pCache; }
+
 protected:
 
     /** Handles translation event. */
     virtual void retranslateUi() /* override */;
+
+private:
+
+    /** Holds virtual machine cache instance. */
+    UIVirtualMachineItem *m_pCache;
 };
 
 

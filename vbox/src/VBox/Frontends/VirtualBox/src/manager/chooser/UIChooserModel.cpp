@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 80881 2019-09-18 11:13:38Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 82917 2020-01-29 18:28:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -281,8 +281,11 @@ const QList<UIChooserItem*> &UIChooserModel::selectedItems() const
 UIVirtualMachineItem *UIChooserModel::firstSelectedMachineItem() const
 {
     /* Return first machine-item of the selected-item: */
-    return   firstSelectedItem() && firstSelectedItem()->firstMachineItem() && firstSelectedItem()->firstMachineItem()->node()
-           ? firstSelectedItem()->firstMachineItem()->node()->toMachineNode()
+    return      firstSelectedItem()
+             && firstSelectedItem()->firstMachineItem()
+             && firstSelectedItem()->firstMachineItem()->node()
+             && firstSelectedItem()->firstMachineItem()->node()->toMachineNode()
+           ? firstSelectedItem()->firstMachineItem()->node()->toMachineNode()->cache()
            : 0;
 }
 
@@ -296,7 +299,7 @@ QList<UIVirtualMachineItem*> UIChooserModel::selectedMachineItems() const
     /* Reintegrate machine-items into valid format: */
     QList<UIVirtualMachineItem*> currentMachineList;
     foreach (UIChooserItemMachine *pItem, currentMachineItemList)
-        currentMachineList << pItem->node()->toMachineNode();
+        currentMachineList << pItem->node()->toMachineNode()->cache();
     return currentMachineList;
 }
 
