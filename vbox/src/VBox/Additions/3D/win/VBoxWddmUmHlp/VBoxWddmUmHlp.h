@@ -1,4 +1,4 @@
-/* $Id: VBoxWddmUmHlp.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxWddmUmHlp.h 83832 2020-04-19 14:12:33Z vboxsync $ */
 /** @file
  * VBox WDDM User Mode Driver Helpers
  */
@@ -23,7 +23,7 @@
 
 #include <iprt/win/d3d9.h>
 #include <d3dumddi.h>
-#include <d3dkmthk.h>
+#include <iprt/win/d3dkmthk.h>
 
 #include <iprt/asm.h>
 #include <iprt/cdefs.h>

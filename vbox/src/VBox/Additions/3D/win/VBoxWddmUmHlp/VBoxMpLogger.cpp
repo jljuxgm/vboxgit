@@ -1,4 +1,4 @@
-/* $Id: VBoxMpLogger.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxMpLogger.cpp 83832 2020-04-19 14:12:33Z vboxsync $ */
 /** @file
  * VBox WDDM Display logger implementation
  */
@@ -106,7 +106,7 @@ DECLCALLBACK(void) VBoxWddmUmLog(const char *pszString)
     const int cbBuffer = sizeof(szBuffer);
     char *pszBuffer = &szBuffer[0];
 
-    int cbWritten = _snprintf(pszBuffer, cbBuffer, "['%s' 0x%x.0x%x]: ",
+    int cbWritten = _snprintf(pszBuffer, cbBuffer, "['%s' 0x%lx.0x%lx]: ",
                               vboxUmLogGetModuleName(), GetCurrentProcessId(), GetCurrentThreadId());
     if (cbWritten < 0 || cbWritten >= cbBuffer)
     {

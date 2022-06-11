@@ -1,4 +1,4 @@
-/* $Id: VBoxGaDriver.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxGaDriver.h 83832 2020-04-19 14:12:33Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver interface.
  */
@@ -71,6 +71,10 @@ typedef struct WDDMGalliumDriverEnv
                                                uint32_t u32GmrId,
                                                void *pvMap);
 } WDDMGalliumDriverEnv;
+
+struct pipe_context;
+struct pipe_screen;
+struct pipe_resource;
 
 typedef struct pipe_screen * WINAPI FNGaDrvScreenCreate(const WDDMGalliumDriverEnv *pEnv);
 typedef FNGaDrvScreenCreate *PFNGaDrvScreenCreate;

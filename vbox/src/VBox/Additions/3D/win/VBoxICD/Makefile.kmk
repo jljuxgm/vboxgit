@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: Makefile.kmk 83832 2020-04-19 14:12:33Z vboxsync $
 ## @file
 # Sub-Makefile for OpenGL ICD loader.
 #
@@ -25,7 +25,12 @@ DLLS.amd64 += VBoxICD-x86
 
 VBoxICD_TEMPLATE = VBoxMesa3DGuestR3DllMinVista
 # -wd4005: '__useHeader' : redefinition
-VBoxICD_CFLAGS   = -wd4005
+VBoxICD_CFLAGS  := -wd4005
+if "$(VBOX_NEWER_VCC_TOOL_STEM)" >= "VCC141"
+# -wd4255: 'PFND3DKMT_CHECKEXCLUSIVEOWNERSHIP': no function prototype given: converting '()' to '(void)'
+VBoxICD_CFLAGS  += -wd4255
+endif
+
 VBoxICD_INCS     = \
 	$(VBOX_PATH_3D)/win/include \
 	$(PATH_ROOT)/src/VBox/Additions/WINNT/Graphics/Video \
