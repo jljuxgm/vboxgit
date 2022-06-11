@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGroup.cpp 83884 2020-04-21 10:02:06Z vboxsync $ */
+/* $Id: UIChooserItemGroup.cpp 83906 2020-04-21 17:36:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGroup class implementation.
  */
@@ -485,8 +485,9 @@ UIChooserItem* UIChooserItemGroup::searchForItem(const QString &strSearchTag, in
         /* Are we searching by the exact ID? */
         if (iItemSearchFlags & UIChooserItemSearchFlag_ExactId)
         {
-            // Groups doesn't have IDs, but we should prevent
-            // search procedure from going to 'else' path..
+            /* Exact full-name matches? */
+            if (fullName() == strSearchTag)
+                return this;
         }
         /* Are we searching by the exact name? */
         else if (iItemSearchFlags & UIChooserItemSearchFlag_ExactName)
