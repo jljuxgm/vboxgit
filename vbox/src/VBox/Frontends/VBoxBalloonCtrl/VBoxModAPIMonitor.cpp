@@ -1,4 +1,4 @@
-/* $Id: VBoxModAPIMonitor.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxModAPIMonitor.cpp 83798 2020-04-18 14:13:58Z vboxsync $ */
 /** @file
  * VBoxModAPIMonitor - API monitor module for detecting host isolation.
  */
@@ -625,17 +625,19 @@ VBOXMODULE g_ModAPIMonitor =
     /* uPriority. */
     0 /* Not used */,
     /* pszUsage. */
-    " [--apimon-groups=<string[,stringN]>]\n"
-    " [--apimon-isln-response=<cmd>] [--apimon-isln-timeout=<ms>]\n"
-    " [--apimon-resp-timeout=<ms>]",
+    "           [--apimon-groups=<string[,stringN]>]\n"
+    "           [--apimon-isln-response=<cmd>] [--apimon-isln-timeout=<ms>]\n"
+    "           [--apimon-resp-timeout=<ms>]",
     /* pszOptions. */
-    "--apimon-groups        Sets the VM groups for monitoring (all),\n"
-    "                       comma-separated list.\n"
-    "--apimon-isln-response Sets the isolation response to one of:\n"
-    "                       none, pause, poweroff, save, shutdown\n"
-    "                       (none).\n"
-    "--apimon-isln-timeout  Sets the isolation timeout in ms (30s).\n"
-    "--apimon-resp-timeout  Sets the response timeout in ms (30s).\n",
+    "  --apimon-groups=<string[,...]>\n"
+    "      Sets the VM groups for monitoring (all), comma-separated list.\n"
+    "  --apimon-isln-response=<cmd>\n"
+    "      Sets the isolation response to one of: none, pause, poweroff,\n"
+    "      save, or shutdown.  Default: none\n"
+    "  --apimon-isln-timeout=<ms>\n"
+    "      Sets the isolation timeout in ms (30s).\n"
+    "  --apimon-resp-timeout=<ms>\n"
+    "      Sets the response timeout in ms (30s).\n",
     /* methods. */
     VBoxModAPIMonitorPreInit,
     VBoxModAPIMonitorOption,
