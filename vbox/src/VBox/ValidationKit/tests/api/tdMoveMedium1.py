@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdMoveMedium1.py 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: tdMoveMedium1.py 78391 2019-05-06 14:08:51Z vboxsync $
 
 """
 VirtualBox Validation Kit - Medium Move Test #1
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 76553 $"
+__version__ = "$Revision: 78391 $"
 
 
 # Standard Python imports.
@@ -111,7 +111,7 @@ class SubTstDrvMoveMedium1(base.SubTestDriverBase):
         """
         reporter.testStart('medium moving')
 
-        try:
+        try: ## @todo r=bird: Bad 'ing style.
             oVM = self.oTstDrv.createTestVM('test-medium-move', 1, None, 4)
             assert oVM is not None
 
@@ -194,8 +194,6 @@ class SubTstDrvMoveMedium1(base.SubTestDriverBase):
                 fRc = self.checkLocation(sOrigLoc, aoMediumAttachments, asSnapFiles) and fRc
 
             fRc = oSession.close() and fRc
-
-            assert fRc is True
         except:
             reporter.errorXcpt()
 
