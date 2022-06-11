@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-x11.cpp 80448 2019-08-27 18:30:26Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-x11.cpp 80464 2019-08-28 09:27:33Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Linux host.
  */
@@ -241,6 +241,7 @@ struct _CLIPREADCBREQ
  * @returns iprt status code on failure
  *
  * @param pClient               Context information about the guest VM
+ * @param pCmdCtx               Command context to use.
  * @param pData                 Data block to put read data into.
  * @param pcbActual             Where to write the actual size of the written data
  *
@@ -251,8 +252,10 @@ struct _CLIPREADCBREQ
  *
  */
 int VBoxClipboardSvcImplReadData(PVBOXCLIPBOARDCLIENT pClient,
-                                 PSHAREDCLIPBOARDDATABLOCK pData, uint32_t *pcbActual)
+                                 PVBOXCLIPBOARDCLIENTCMDCTX pCmdCtx, PSHAREDCLIPBOARDDATABLOCK pData, uint32_t *pcbActual)
 {
+    RT_NOREF(pCmdCtx);
+
     LogFlowFunc(("pClient=%p, uFormat=%02X, pv=%p, cb=%u, pcbActual=%p\n",
                  pClient, pData->uFormat, pData->pvData, pData->cbData, pcbActual));
 
