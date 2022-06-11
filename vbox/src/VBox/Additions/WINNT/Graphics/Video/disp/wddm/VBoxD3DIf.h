@@ -1,4 +1,4 @@
-/* $Id: VBoxD3DIf.h 76563 2019-01-01 03:53:56Z vboxsync $ */
+/* $Id: VBoxD3DIf.h 79739 2019-07-12 14:26:35Z vboxsync $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
@@ -140,10 +140,6 @@ DECLINLINE(IDirect3DDevice9*) VBoxD3DIfDeviceGet(PVBOXWDDMDISP_DEVICE pDevice)
 }
 
 #define VBOXDISPMODE_IS_3D(_p) ((_p)->f3D)
-#ifdef VBOXDISP_EARLYCREATEDEVICE
-#define VBOXDISP_D3DEV(_p) (_p)->pDevice9If
-#else
 #define VBOXDISP_D3DEV(_p) VBoxD3DIfDeviceGet(_p)
-#endif
 
 #endif /* !GA_INCLUDED_SRC_WINNT_Graphics_Video_disp_wddm_VBoxD3DIf_h */
