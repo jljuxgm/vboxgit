@@ -1,4 +1,4 @@
-/* $Id: VBox-doc.c 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBox-doc.c 80010 2019-07-26 15:05:06Z vboxsync $ */
 /** @file
  * VirtualBox Top Level Documentation File.
  */
@@ -26,7 +26,6 @@
  *    Monitor.
  *      - @ref pg_cfgm
  *      - @ref pg_cpum
- *      - @ref pg_csam
  *      - @ref pg_dbgf
  *          - @ref pg_dbgf_addr_space
  *          - @ref pg_dbgf_vmcore
@@ -47,7 +46,6 @@
  *              - @ref pg_pgm_pool
  *          - @ref pg_selm
  *      - @ref pg_iom
- *      - @ref pg_patm
  *      - @ref pg_pdm
  *          - Devices / USB Devices, Drivers and their public interfaces.
  *          - Async I/O Completion API.
