@@ -1,4 +1,4 @@
-/* $Id: DHCPD.cpp 79819 2019-07-16 19:57:16Z vboxsync $ */
+/* $Id: DHCPD.cpp 79825 2019-07-16 22:01:01Z vboxsync $ */
 /** @file
  * DHCP server - protocol logic
  */
@@ -330,9 +330,6 @@ DhcpServerMessage *DHCPD::i_doRequest(const DhcpClientMessage &req)
     OptParameterRequest optlist(req);
     optmap_t replyOptions;
     ack->addOptions(m_pConfig->getOptionsForClient(replyOptions, optlist, vecConfigs));
-
-    /** @todo r=bird: Sec 9.9 in rfc-2132 indicates the server only sends this in NACKs. Test code? */
-    ack->addOption(OptMessage("Ok, ok, here it is"));
 
     ack->maybeUnicast(req);
     return ack.release();

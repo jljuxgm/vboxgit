@@ -1,4 +1,4 @@
-/* $Id: Config.cpp 79824 2019-07-16 20:30:59Z vboxsync $ */
+/* $Id: Config.cpp 79825 2019-07-16 22:01:01Z vboxsync $ */
 /** @file
  * DHCP server - server configuration
  */
@@ -1156,33 +1156,6 @@ optmap_t &Config::getOptionsForClient(optmap_t &a_rRetOpts, const OptParameterRe
         else
             LogRel2(("... always supplied\n"));
     }
-
-
-#if 0 /* bird disabled this as it looks dubious and testing only. */
-    /** @todo XXX: testing ... */
-    if (vmopts != NULL)
-    {
-        for (optmap_t::const_iterator it = vmopts->begin(); it != vmopts->end(); ++it)
-        {
-            std::shared_ptr<DhcpOption> opt(it->second);
-            if (a_rRetOpts.count(opt->optcode()) == 0 && opt->optcode() > 127)
-            {
-                a_rRetOpts << opt;
-                LogRel2(("... forcing VM option %d (%#x)\n", opt->optcode(), opt->optcode()));
-            }
-        }
-    }
-
-    for (optmap_t::const_iterator it = m_GlobalOptions.begin(); it != m_GlobalOptions.end(); ++it)
-    {
-        std::shared_ptr<DhcpOption> opt(it->second);
-        if (a_rRetOpts.count(opt->optcode()) == 0 && opt->optcode() > 127)
-        {
-            a_rRetOpts << opt;
-            LogRel2(("... forcing global option %d (%#x)", opt->optcode(), opt->optcode()));
-        }
-    }
-#endif
 
     return a_rRetOpts;
 }
