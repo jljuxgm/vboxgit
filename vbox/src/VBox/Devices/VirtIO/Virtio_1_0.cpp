@@ -1,4 +1,4 @@
-/* $Id: Virtio_1_0.cpp 81015 2019-09-26 11:52:21Z vboxsync $ */
+/* $Id: Virtio_1_0.cpp 81019 2019-09-26 12:46:26Z vboxsync $ */
 /** @file
  * Virtio_1_0 - Virtio Common (PCI, feature & config mgt, queue mgt & proxy, notification mgt)
  */
@@ -778,7 +778,7 @@ PDMBOTHCBDECL(int) virtioR3MmioRead(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS G
     else {
        LogFunc(("Bad read access to mapped capabilities region:\n"
                 "                  pVirtio=%#p GCPhysAddr=%RGp cb=%u\n",
-                pVirtio, GCPhysAddr, pv, cb, pv, cb));
+                pVirtio, GCPhysAddr, cb));
     }
     return rc;
 }

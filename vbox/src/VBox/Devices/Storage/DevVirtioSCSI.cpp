@@ -1,4 +1,4 @@
-/* $Id: DevVirtioSCSI.cpp 81018 2019-09-26 12:33:19Z vboxsync $ $Revision: 81018 $ $Date: 2019-09-26 20:33:19 +0800 (Thu, 26 Sep 2019) $ $Author: vboxsync $ */
+/* $Id: DevVirtioSCSI.cpp 81019 2019-09-26 12:46:26Z vboxsync $ $Revision: 81019 $ $Date: 2019-09-26 20:46:26 +0800 (Thu, 26 Sep 2019) $ $Author: vboxsync $ */
 /** @file
  * VBox storage devices - Virtio SCSI Driver
  *
@@ -919,9 +919,11 @@ static DECLCALLBACK(int) virtioScsiIoReqFinish(PPDMIMEDIAEXPORT pInterface, PDMM
         }
     }
 
+    const char *getReqRespText = virtioGetReqRespText(respHdr.uResponse);
     Log2Func(("status: (%d) %s,   response: (%d) %s\n",
               pReq->uStatus, SCSIStatusText(pReq->uStatus),
-              respHdr.uResponse, virtioGetReqRespText(respHdr.uResponse)));
+              respHdr.uResponse, getReqRespText));
+    RT_NOREF(getReqRespText);
 
     if (RT_FAILURE(rcReq))
         Log2Func(("rcReq:  %s\n", RTErrGetDefine(rcReq)));
@@ -1488,7 +1490,6 @@ DECLINLINE(void) virtioScsiReportDeviceBusy(PVIRTIOSCSI pThis, uint16_t uTarget)
         virtioScsiSendEvent(pThis, uTarget, VIRTIOSCSI_T_ASYNC_NOTIFY,
                 VIRTIOSCSI_EVT_ASYNC_DEVICE_BUSY);
 }
-#endif
 
 DECLINLINE(void) virtioScsiReportParamChange(PVIRTIOSCSI pThis, uint16_t uTarget, uint32_t uSenseCode, uint32_t uSenseQualifier)
 {
@@ -1496,6 +1497,8 @@ DECLINLINE(void) virtioScsiReportParamChange(PVIRTIOSCSI pThis, uint16_t uTarget
     virtioScsiSendEvent(pThis, uTarget, VIRTIOSCSI_T_PARAM_CHANGE, uReason);
 
 }
+
+#endif
 
 static DECLCALLBACK(void) virtioScsiNotified(VIRTIOHANDLE hVirtio, void *pClient, uint16_t qIdx)
 {
