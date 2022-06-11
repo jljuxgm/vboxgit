@@ -1,4 +1,4 @@
-/* $Id: UINetworkManagerIndicator.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
+/* $Id: UINetworkManagerIndicator.cpp 80444 2019-08-27 17:47:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkManagerIndicator stuff implementation.
  */
@@ -116,8 +116,9 @@ void UINetworkManagerIndicator::sldRemoveNetworkManagerIndicatorDescription(cons
     int iIndexOfRequiredElement = m_ids.indexOf(uuid);
 
     /* Delete corresponding network-request: */
-    m_ids.remove(iIndexOfRequiredElement);
-    m_data.remove(iIndexOfRequiredElement);
+    RT_NOREF(iIndexOfRequiredElement);
+    //m_ids.remove(iIndexOfRequiredElement);
+    //m_data.remove(iIndexOfRequiredElement);
 
     /* Update appearance: */
     recalculateIndicatorState();

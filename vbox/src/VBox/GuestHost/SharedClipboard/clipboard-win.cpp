@@ -1,4 +1,4 @@
-/* $Id: clipboard-win.cpp 79672 2019-07-10 13:02:50Z vboxsync $ */
+/* $Id: clipboard-win.cpp 80444 2019-08-27 17:47:44Z vboxsync $ */
 /** @file
  * Shared Clipboard: Windows-specific functions for clipboard handling.
  */
@@ -383,12 +383,12 @@ VBOXCLIPBOARDFORMAT VBoxClipboardWinClipboardFormatToVBox(UINT uFormat)
  *
  * @returns VBox status code.
  * @param   pCtx                Windows clipboard context to retrieve formats for.
- * @param   pfFormats           Where to store the retrieved formats of type VBOX_SHARED_CLIPBOARD_FMT_ (bitmask).
+ * @param   pFormats            Where to store the retrieved formats.
  */
-int VBoxClipboardWinGetFormats(PVBOXCLIPBOARDWINCTX pCtx, PVBOXCLIPBOARDFORMATS pfFormats)
+int VBoxClipboardWinGetFormats(PVBOXCLIPBOARDWINCTX pCtx, PSHAREDCLIPBOARDFORMATDATA pFormats)
 {
-    AssertPtrReturn(pCtx, VERR_INVALID_POINTER);
-    AssertPtrReturn(pfFormats, VERR_INVALID_POINTER);
+    AssertPtrReturn(pCtx,     VERR_INVALID_POINTER);
+    AssertPtrReturn(pFormats, VERR_INVALID_POINTER);
 
     VBOXCLIPBOARDFORMATS fFormats = VBOX_SHARED_CLIPBOARD_FMT_NONE;
 
@@ -411,7 +411,9 @@ int VBoxClipboardWinGetFormats(PVBOXCLIPBOARDWINCTX pCtx, PVBOXCLIPBOARDFORMATS 
     else
     {
         LogFlowFunc(("fFormats=0x%08X\n", fFormats));
-        *pfFormats = fFormats;
+
+        pFormats->uFormats   = fFormats;
+        pFormats->fFlags = 0; /** @todo Handle flags. */
     }
 
     return rc;
