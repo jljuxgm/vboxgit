@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInLinux.cpp 78019 2019-04-04 14:06:32Z vboxsync $ */
+/* $Id: DBGPlugInLinux.cpp 79680 2019-07-10 20:16:11Z vboxsync $ */
 /** @file
  * DBGPlugInLinux - Debugger and Guest OS Digger Plugin For Linux.
  */
@@ -1326,7 +1326,7 @@ static int dbgDiggerLinuxFindStartOfNamesAndSymbolCount(PUVM pUVM, PDBGDIGGERLIN
                 if (   uBuf.au64[i] <= LNX_MAX_KALLSYMS_SYMBOLS
                     && uBuf.au64[i] >= LNX_MIN_KALLSYMS_SYMBOLS)
                 {
-                    uint8_t *pb = (uint8_t *)&uBuf.au64[i + 1];
+                    uint8_t *pb = (uint8_t *)&uBuf.au64[i];
                     if (   pb[0] <= LNX_MAX_KALLSYMS_ENC_LENGTH
                         && pb[0] >= LNX_MIN_KALLSYMS_ENC_LENGTH)
                     {
@@ -1374,7 +1374,7 @@ static int dbgDiggerLinuxFindStartOfNamesAndSymbolCount(PUVM pUVM, PDBGDIGGERLIN
                 if (   uBuf.au32[i] <= LNX_MAX_KALLSYMS_SYMBOLS
                     && uBuf.au32[i] >= LNX_MIN_KALLSYMS_SYMBOLS)
                 {
-                    uint8_t *pb = (uint8_t *)&uBuf.au32[i + 1];
+                    uint8_t *pb = (uint8_t *)&uBuf.au32[i];
                     if (   pb[0] <= LNX_MAX_KALLSYMS_ENC_LENGTH
                         && pb[0] >= LNX_MIN_KALLSYMS_ENC_LENGTH)
                     {
