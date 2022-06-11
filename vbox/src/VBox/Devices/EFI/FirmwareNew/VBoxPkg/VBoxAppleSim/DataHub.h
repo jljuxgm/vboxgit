@@ -1,4 +1,4 @@
-/* $Id: DataHub.h 80902 2019-09-18 21:02:07Z vboxsync $ */
+/* $Id: DataHub.h 80903 2019-09-18 21:10:26Z vboxsync $ */
 /** @file
  * DataHub.h
  */
@@ -68,7 +68,7 @@ EFI_STATUS
 
   Arguments:
     This         - Protocol instance pointer.
-    
+
 
   Returns:
     EFI_SUCCESS     - Data was logged.
@@ -92,7 +92,7 @@ EFI_STATUS
 
   Arguments:
     This         - Protocol instance pointer.
-    
+
 
   Returns:
     EFI_SUCCESS     - Data was logged.
@@ -117,7 +117,7 @@ EFI_STATUS
 
   Arguments:
     This         - Protocol instance pointer.
-    
+
 
   Returns:
     EFI_SUCCESS     - The filter driver event was registered.
@@ -139,7 +139,7 @@ EFI_STATUS
 
   Arguments:
     This         - Protocol instance pointer.
-    
+
 
   Returns:
     EFI_SUCCESS     - The filter driver represented by FilterEvent was shut off.
