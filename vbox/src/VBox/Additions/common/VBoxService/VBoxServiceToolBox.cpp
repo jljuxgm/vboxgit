@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceToolBox.cpp 83437 2020-03-26 13:55:15Z vboxsync $ */
+/* $Id: VBoxServiceToolBox.cpp 83463 2020-03-27 11:07:47Z vboxsync $ */
 /** @file
  * VBoxServiceToolbox - Internal (BusyBox-like) toolbox.
  */
@@ -851,7 +851,7 @@ static int vgsvcToolboxLsHandleDirSub(char *pszDir, size_t cchDir, PRTDIRENTRYEX
 {
     Assert(cchDir > 0); Assert(pszDir[cchDir] == '\0');
 
-    if (fFlags & VBOXSERVICETOOLBOXOUTPUTFLAG_PARSEABLE)
+    if (fOutputFlags & VBOXSERVICETOOLBOXOUTPUTFLAG_PARSEABLE)
         RTPrintf("dname=%s%c", pszDir, 0);
     else if (fFlags & VBOXSERVICETOOLBOXLSFLAG_RECURSIVE)
         RTPrintf("%s:\n", pszDir);
