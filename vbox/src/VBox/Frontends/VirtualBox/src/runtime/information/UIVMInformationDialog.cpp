@@ -1,4 +1,4 @@
-/* $Id: UIVMInformationDialog.cpp 81224 2019-10-11 12:27:18Z vboxsync $ */
+/* $Id: UIVMInformationDialog.cpp 81248 2019-10-14 10:31:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMInformationDialog class implementation.
  */
@@ -113,46 +113,6 @@ void UIVMInformationDialog::retranslateUi()
     m_pTabWidget->setTabText(1, tr("&Runtime Information"));
     m_pTabWidget->setTabText(2, tr("Performance &Monitor"));
     m_pTabWidget->setTabText(3, tr("Guest Control &Session Information"));
-}
-
-bool UIVMInformationDialog::event(QEvent *pEvent)
-{
-    /* Pre-process through base-class: */
-    const bool fResult = QIMainWindow::event(pEvent);
-
-    /* Process required events: */
-    switch (pEvent->type())
-    {
-        /* Handle Resize event to keep track of the geometry: */
-        case QEvent::Resize:
-        {
-            if (isVisible() && (windowState() & (Qt::WindowMaximized | Qt::WindowMinimized | Qt::WindowFullScreen)) == 0)
-            {
-                QResizeEvent *pResizeEvent = static_cast<QResizeEvent*>(pEvent);
-                m_geometry.setSize(pResizeEvent->size());
-            }
-            break;
-        }
-        /* Handle Move event to keep track of the geometry: */
-        case QEvent::Move:
-        {
-            if (isVisible() && (windowState() & (Qt::WindowMaximized | Qt::WindowMinimized | Qt::WindowFullScreen)) == 0)
-            {
-#ifdef VBOX_WS_MAC
-                QMoveEvent *pMoveEvent = static_cast<QMoveEvent*>(pEvent);
-                m_geometry.moveTo(pMoveEvent->pos());
-#else /* VBOX_WS_MAC */
-                m_geometry.moveTo(geometry().x(), geometry().y());
-#endif /* !VBOX_WS_MAC */
-            }
-            break;
-        }
-        default:
-            break;
-    }
-
-    /* Return result: */
-    return fResult;
 }
 
 void UIVMInformationDialog::sltHandlePageChanged(int iIndex)

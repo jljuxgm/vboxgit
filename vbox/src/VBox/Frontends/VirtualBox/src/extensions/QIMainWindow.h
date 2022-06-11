@@ -1,4 +1,4 @@
-/* $Id: QIMainWindow.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: QIMainWindow.h 81248 2019-10-14 10:31:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - QIMainWindow class declaration.
  */
@@ -43,6 +43,11 @@ public:
     QIMainWindow(QWidget *pParent = 0, Qt::WindowFlags enmFlags = 0);
 
 protected:
+
+    /** Handles move @a pEvent. */
+    virtual void moveEvent(QMoveEvent *pEvent) /* override */;
+    /** Handles resize @a pEvent. */
+    virtual void resizeEvent(QResizeEvent *pEvent) /* override */;
 
     /** Returns whether the window should be maximized when geometry being restored. */
     virtual bool shouldBeMaximized() const { return false; }

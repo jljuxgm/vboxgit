@@ -1,4 +1,4 @@
-/* $Id: UIVMInformationDialog.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIVMInformationDialog.h 81248 2019-10-14 10:31:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMInformationDialog class declaration.
  */
@@ -59,9 +59,6 @@ protected:
 
     /** Handles translation event. */
     void retranslateUi();
-
-    /** Handles any Qt @a pEvent. */
-    bool event(QEvent *pEvent);
 
 private slots:
 
