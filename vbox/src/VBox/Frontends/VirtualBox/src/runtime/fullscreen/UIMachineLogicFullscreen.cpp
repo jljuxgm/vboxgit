@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicFullscreen.cpp 80653 2019-09-08 19:13:14Z vboxsync $ */
+/* $Id: UIMachineLogicFullscreen.cpp 80818 2019-09-16 10:35:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicFullscreen class implementation.
  */
@@ -546,25 +546,28 @@ void UIMachineLogicFullscreen::prepareMachineWindows()
         /* Enable native fullscreen support: */
         foreach (UIMachineWindow *pMachineWindow, machineWindows())
         {
+            UIMachineWindowFullscreen *pMachineWindowFullscreen = qobject_cast<UIMachineWindowFullscreen*>(pMachineWindow);
+            if (!pMachineWindow)
+                continue;
             /* Logic => window signals: */
             connect(this, &UIMachineLogicFullscreen::sigNotifyAboutNativeFullscreenShouldBeEntered,
-                    qobject_cast<UIMachineWindowFullscreen*>(pMachineWindow), &UIMachineWindowFullscreen::sltEnterNativeFullscreen);
+                    pMachineWindowFullscreen, &UIMachineWindowFullscreen::sltEnterNativeFullscreen);
             connect(this, &UIMachineLogicFullscreen::sigNotifyAboutNativeFullscreenShouldBeExited,
-                    qobject_cast<UIMachineWindowFullscreen*>(pMachineWindow), &UIMachineWindowFullscreen::sltExitNativeFullscreen);
+                    pMachineWindowFullscreen, &UIMachineWindowFullscreen::sltExitNativeFullscreen);
             /* Window => logic signals: */
-            connect(qobject_cast<UIMachineWindowFullscreen*>(pMachineWindow), &UIMachineWindowFullscreen::sigNotifyAboutNativeFullscreenWillEnter,
+            connect(pMachineWindowFullscreen, &UIMachineWindowFullscreen::sigNotifyAboutNativeFullscreenWillEnter,
                     this, &UIMachineLogicFullscreen::sltHandleNativeFullscreenWillEnter,
                      Qt::QueuedConnection);
-            connect(qobject_cast<UIMachineWindowFullscreen*>(pMachineWindow), &UIMachineWindowFullscreen::sigNotifyAboutNativeFullscreenDidEnter,
+            connect(pMachineWindowFullscreen, &UIMachineWindowFullscreen::sigNotifyAboutNativeFullscreenDidEnter,
                     this, &UIMachineLogicFullscreen::sltHandleNativeFullscreenDidEnter,
                     Qt::QueuedConnection);
-            connect(qobject_cast<UIMachineWindowFullscreen*>(pMachineWindow), &UIMachineWindowFullscreen::sigNotifyAboutNativeFullscreenWillExit,
+            connect(pMachineWindowFullscreen, &UIMachineWindowFullscreen::sigNotifyAboutNativeFullscreenWillExit,
                     this, &UIMachineLogicFullscreen::sltHandleNativeFullscreenWillExit,
                     Qt::QueuedConnection);
-            connect(qobject_cast<UIMachineWindowFullscreen*>(pMachineWindow), &UIMachineWindowFullscreen::sigNotifyAboutNativeFullscreenDidExit,
+            connect(pMachineWindowFullscreen, &UIMachineWindowFullscreen::sigNotifyAboutNativeFullscreenDidExit,
                     this, &UIMachineLogicFullscreen::sltHandleNativeFullscreenDidExit,
                     Qt::QueuedConnection);
-            connect(qobject_cast<UIMachineWindowFullscreen*>(pMachineWindow), &UIMachineWindowFullscreen::sigNotifyAboutNativeFullscreenFailToEnter,
+            connect(pMachineWindowFullscreen, &UIMachineWindowFullscreen::sigNotifyAboutNativeFullscreenFailToEnter,
                     this, &UIMachineLogicFullscreen::sltHandleNativeFullscreenFailToEnter,
                     Qt::QueuedConnection);
         }
