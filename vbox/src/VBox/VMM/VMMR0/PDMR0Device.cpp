@@ -1,4 +1,4 @@
-/* $Id: PDMR0Device.cpp 81416 2019-10-21 15:14:39Z vboxsync $ */
+/* $Id: PDMR0Device.cpp 81475 2019-10-23 08:05:32Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, R0 Device parts.
  */
@@ -712,7 +712,7 @@ static DECLCALLBACK(bool) pdmR0DevHlp_QueueFlushIfNecessary(PPDMDEVINS pDevIns, 
 }
 
 
-/** @interface_method_impl{PDMDEVHLPR0,pfnTaskTrgger} */
+/** @interface_method_impl{PDMDEVHLPR0,pfnTaskTrigger} */
 static DECLCALLBACK(int) pdmR0DevHlp_TaskTrigger(PPDMDEVINS pDevIns, PDMTASKHANDLE hTask)
 {
     PDMDEV_ASSERT_DEVINS(pDevIns);
