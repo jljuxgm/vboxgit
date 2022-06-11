@@ -1,4 +1,4 @@
-/* $Id: VBoxDispDbg.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxDispDbg.cpp 79938 2019-07-23 18:09:28Z vboxsync $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
@@ -109,17 +109,6 @@ PVBOXWDDMDISP_DEVICE g_VBoxVDbgInternalDevice = NULL;
 PVBOXWDDMDISP_RESOURCE g_VBoxVDbgInternalRc = NULL;
 
 DWORD g_VBoxVDbgCfgCreateSwapchainOnDdiOnce = 0;
-
-void vboxDispLogDbgPrintF(char * szString, ...)
-{
-    char szBuffer[4096] = {0};
-    va_list pArgList;
-    va_start(pArgList, szString);
-    vboxDispLogDbgFormatStringV(szBuffer, sizeof (szBuffer), szString, pArgList);
-    va_end(pArgList);
-
-    OutputDebugStringA(szBuffer);
-}
 
 VOID vboxVDbgDoPrintDmlCmd(const char* pszDesc, const char* pszCmd)
 {
@@ -803,5 +792,16 @@ void vboxDispLogDrvF(char * szString, ...)
     va_end(pArgList);
 
     VBoxDispMpLoggerLog(szBuffer);
+}
+
+void vboxDispLogDbgPrintF(char * szString, ...)
+{
+    char szBuffer[4096] = { 0 };
+    va_list pArgList;
+    va_start(pArgList, szString);
+    vboxDispLogDbgFormatStringV(szBuffer, sizeof(szBuffer), szString, pArgList);
+    va_end(pArgList);
+
+    OutputDebugStringA(szBuffer);
 }
 #endif
