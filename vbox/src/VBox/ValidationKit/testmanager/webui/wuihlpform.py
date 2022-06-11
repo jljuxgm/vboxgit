@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuihlpform.py 83385 2020-03-24 14:46:13Z vboxsync $
+# $Id: wuihlpform.py 83386 2020-03-24 14:48:29Z vboxsync $
 
 """
 Test Manager Web-UI - Form Helpers.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 83385 $"
+__version__ = "$Revision: 83386 $"
 
 # Standard python imports.
 import copy;
@@ -862,8 +862,9 @@ class WuiHlpForm(object):
         return self._add(u' </tbody>\n'
                          u'</table>\n');
 
-    def addListOfSchedGroupBoxes(self, sName, aoSchedGroupBoxes, aoAllRelevantTestBoxes, sLabel, # pylint: disable=too-many-locals
-                                 idSchedGroup, fReadOnly = True): # (str, list[TestBoxDataEx], list[TestBoxDataEx], str, bool) -> str
+    def addListOfSchedGroupBoxes(self, sName, aoSchedGroupBoxes, # pylint: disable=too-many-locals
+                                 aoAllRelevantTestBoxes, sLabel, idSchedGroup,
+                                 fReadOnly = True): # (str, list[TestBoxDataEx], list[TestBoxDataEx], str, bool) -> str
         """
         For WuiAdminSchedGroup.
         """
