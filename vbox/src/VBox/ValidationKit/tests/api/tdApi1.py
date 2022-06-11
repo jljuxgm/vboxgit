@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdApi1.py 79069 2019-06-10 23:11:29Z vboxsync $
+# $Id: tdApi1.py 79070 2019-06-10 23:14:56Z vboxsync $
 
 """
 VirtualBox Validation Kit - API Test wrapper #1 combining all API sub-tests
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79069 $"
+__version__ = "$Revision: 79070 $"
 
 
 # Standard Python imports.
@@ -72,7 +72,8 @@ class tdApi1(vbox.TestDriver):
         """
         fRc = True;
         for oSubTstDrv in self.aoSubTstDrvs:
-            fRc &= oSubTstDrv.testIt();
+            if oSubTstDrv.fEnabled:
+                fRc = oSubTstDrv.testIt() and fRc;
         return fRc;
 
 
