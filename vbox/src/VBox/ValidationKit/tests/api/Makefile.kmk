@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: Makefile.kmk 83243 2020-03-10 11:22:14Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - API Tests.
 #
@@ -42,8 +42,12 @@ ValidationKitTestsApi_EXEC_SOURCES := \
 
 ifndef VBOX_OSE
  ValidationKitTestsApi_EXEC_SOURCES += \
+	$(PATH_SUB_CURRENT)/tdCloud1.py \
+	$(PATH_SUB_CURRENT)/tdOciConnection1.py \
  	$(PATH_SUB_CURRENT)/tdOciExport1.py \
+	$(PATH_SUB_CURRENT)/tdOciImage1.py \
  	$(PATH_SUB_CURRENT)/tdOciImport1.py \
+	$(PATH_SUB_CURRENT)/tdOciInstance1.py \
  	$(PATH_SUB_CURRENT)/tdOciProfile1.py
 endif
 ValidationKitTestsApi_SOURCES := \
