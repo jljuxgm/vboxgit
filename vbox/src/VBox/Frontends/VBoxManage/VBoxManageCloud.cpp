@@ -1,4 +1,4 @@
-/* $Id: VBoxManageCloud.cpp 78735 2019-05-24 19:46:11Z vboxsync $ */
+/* $Id: VBoxManageCloud.cpp 78736 2019-05-24 19:58:02Z vboxsync $ */
 /** @file
  * VBoxManageCloud - The cloud related commands.
  */
@@ -493,8 +493,8 @@ static RTEXITCODE showCloudInstanceInfo(HandlerArg *a, int iFirst, PCLOUDCOMMONO
     CHECK_ERROR2_RET(hrc, a->virtualBox, CreateAppliance(pAppliance.asOutParam()), RTEXITCODE_FAILURE);
 
     com::SafeIfaceArray<IVirtualSystemDescription> vsdArray;
-    uint32_t requestedVSDnums = 1;
-    uint32_t newVSDnums = 0;
+    ULONG requestedVSDnums = 1;
+    ULONG newVSDnums = 0;
     CHECK_ERROR2_RET(hrc, pAppliance, CreateVirtualSystemDescriptions(requestedVSDnums, &newVSDnums), RTEXITCODE_FAILURE);
     if (requestedVSDnums != newVSDnums)
         return RTEXITCODE_FAILURE;
