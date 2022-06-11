@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 79903 2019-07-19 19:27:57Z vboxsync $
+# $Id: Makefile.kmk 80069 2019-07-31 11:32:03Z vboxsync $
 ## @file
 # Some hacks to allow syntax and prerequisite include checking of headers.
 # This makefile doesn't and shouldn't build successfully.
@@ -127,6 +127,14 @@ VBOX_HDRS_OMIT := \
        \
 	$(foreach os,$(filter-out $(KBUILD_TARGET),$(KBUILD_OSES)),iprt/$(os)/% VBox/$(os)/%) \
 	$(foreach arch,$(KBUILD_ARCHES),iprt/nocrt/$(arch)/%)
+
+# AMD64 only headers.
+ifneq ($(KBUILD_TARGET_ARCH),amd64)
+VBOX_HDRS_OMIT += \
+	VBox/vmm/cpumctx.h \
+	VBox/vmm/cpumctx-v1_6.h \
+	VBox/vmm/dbgfcorefmt.h
+endif
 
 # We omit a few headers which have platform specific issues or are templates.
 VBOX_HDRS_ALL := $(filter-out $(VBOX_HDRS_OMIT), \
