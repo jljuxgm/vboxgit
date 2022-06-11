@@ -1,4 +1,4 @@
-/* $Id: DevVirtioSCSI.cpp 80058 2019-07-30 08:17:49Z vboxsync $ $Revision: 80058 $ $Date: 2019-07-30 16:17:49 +0800 (Tue, 30 Jul 2019) $ $Author: vboxsync $ */
+/* $Id: DevVirtioSCSI.cpp 80059 2019-07-30 08:29:36Z vboxsync $ $Revision: 80059 $ $Date: 2019-07-30 16:29:36 +0800 (Tue, 30 Jul 2019) $ $Author: vboxsync $ */
 /** @file
  * VBox storage devices - Virtio SCSI Driver
  *
@@ -376,8 +376,7 @@ static DECLCALLBACK(int) virtioScsiR3BiosIoPortReadStr(PPDMDEVINS pDevIns, void 
 /**
  * Turns on/off the write status LED.
  *
- * @returns VBox status code.
- * @param   pState          Pointer to the device state structure.
+ * @param   pTarget         Pointer to the target device
  * @param   fOn             New LED state.
  */
 void virtioScsiSetWriteLed(PVIRTIOSCSITARGET pTarget, bool fOn)
@@ -392,8 +391,7 @@ void virtioScsiSetWriteLed(PVIRTIOSCSITARGET pTarget, bool fOn)
 /**
  * Turns on/off the read status LED.
  *
- * @returns VBox status code.
- * @param   pState          Pointer to the device state structure.
+ * @param   pTarget         Pointer to the device state structure.
  * @param   fOn             New LED state.
  */
 void virtioScsiSetReadLed(PVIRTIOSCSITARGET pTarget, bool fOn)
