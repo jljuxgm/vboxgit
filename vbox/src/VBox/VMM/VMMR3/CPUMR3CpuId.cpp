@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 80305 2019-08-15 17:35:00Z vboxsync $ */
+/* $Id: CPUMR3CpuId.cpp 80317 2019-08-16 08:05:54Z vboxsync $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -2030,8 +2030,7 @@ int cpumR3CpuIdExplodeFeatures(PCCPUMCPUIDLEAF paLeaves, uint32_t cLeaves, PCCPU
  * This ignores the fSubLeafMask.
  *
  * @returns Pointer to the matching leaf, or NULL if not found.
- * @param   paLeaves            The CPUID leaves to search.  This is sorted.
- * @param   cLeaves             The number of leaves in the array.
+ * @param   pCpum               The CPUM instance data.
  * @param   uLeaf               The leaf to locate.
  * @param   uSubLeaf            The subleaf to locate.
  */
