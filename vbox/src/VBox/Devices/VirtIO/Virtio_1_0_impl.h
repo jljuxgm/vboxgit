@@ -1,4 +1,4 @@
-/* $Id: Virtio_1_0_impl.h 81031 2019-09-26 19:26:33Z vboxsync $ $Revision: 81031 $ $Date: 2019-09-27 03:26:33 +0800 (Fri, 27 Sep 2019) $ $Author: vboxsync $ */
+/* $Id: Virtio_1_0_impl.h 81122 2019-10-07 08:54:00Z vboxsync $ $Revision: 81122 $ $Date: 2019-10-07 16:54:00 +0800 (Mon, 07 Oct 2019) $ $Author: vboxsync $ */
 /** @file
  * Virtio_1_0_impl.h - Virtio Declarations
  */
@@ -188,6 +188,7 @@ typedef struct VIRTIOSTATE
     bool                      fGenUpdatePending;                 /**< If set, update cfg gen after driver reads */
     uint8_t                   uPciCfgDataOff;
     uint8_t                   uISR;                              /**< Interrupt Status Register.                */
+    uint8_t                   fMsiSupport;
 
 } VIRTIOSTATE, *PVIRTIOSTATE;
 
@@ -519,8 +520,7 @@ DECLINLINE(void) virtioLogDeviceStatus( uint8_t status)
 static int  virtioCommonCfgAccessed (PVIRTIOSTATE pVirtio, int fWrite, off_t uOffset, unsigned cb, void const *pv);
 static void virtioResetQueue        (PVIRTIOSTATE pVirtio, uint16_t qIdx);
 static void virtioNotifyGuestDriver (PVIRTIOSTATE pVirtio, uint16_t qIdx, bool fForce);
-static int  virtioRaiseInterrupt    (PVIRTIOSTATE pVirtio, uint8_t uCause, bool fForce);
-static void virtioLowerInterrupt    (PVIRTIOSTATE pVirtio);
+static int  virtioKick(PVIRTIOSTATE pVirtio, uint8_t uCause, uint16_t uVec, bool fForce);
 static void virtioQueueNotified     (PVIRTIOSTATE pVirtio, uint16_t qidx, uint16_t uDescIdx);
 static void virtioGuestResetted     (PVIRTIOSTATE pVirtio);
 
