@@ -1,4 +1,4 @@
-/* $Id: UIWizardPage.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
+/* $Id: UIWizardPage.cpp 79567 2019-07-06 12:43:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardPage class implementation.
  */
@@ -28,7 +28,7 @@
 *   Class UIWizardPageBase implementation.                                                                                       *
 *********************************************************************************************************************************/
 
-UIWizard *UIWizardPageBase::wizardImp()
+UIWizard *UIWizardPageBase::wizardImp() const
 {
     /* Should be reimplemented in sub-class to enable access to wizard! */
     AssertMsgFailed(("UIWizardPageBase::wizardImp() should be reimplemented!"));

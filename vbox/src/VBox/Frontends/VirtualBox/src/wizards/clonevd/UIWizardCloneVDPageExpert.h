@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageExpert.h 77154 2019-02-04 17:52:47Z vboxsync $ */
+/* $Id: UIWizardCloneVDPageExpert.h 79567 2019-07-06 12:43:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDPageExpert class declaration.
  */
@@ -52,7 +52,7 @@ public:
 protected:
 
     /** Allows to access 'wizard()' from base part. */
-    UIWizard* wizardImp() { return wizard(); }
+    UIWizard *wizardImp() const { return wizard(); }
     /** Allows to access 'this' from base part. */
     UIWizardPage* thisImp() { return this; }
     /** Allows to access 'field()' from base part. */

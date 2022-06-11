@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageExpert.h 79566 2019-07-06 11:41:55Z vboxsync $ */
+/* $Id: UIWizardExportAppPageExpert.h 79567 2019-07-06 12:43:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageExpert class declaration.
  */
@@ -63,7 +63,7 @@ protected:
     virtual bool event(QEvent *pEvent) /* override */;
 
     /** Allows access wizard from base part. */
-    UIWizard* wizardImp() { return UIWizardPage::wizard(); }
+    UIWizard *wizardImp() const { return UIWizardPage::wizard(); }
     /** Allows access page from base part. */
     UIWizardPage* thisImp() { return this; }
     /** Allows access wizard-field from base part. */

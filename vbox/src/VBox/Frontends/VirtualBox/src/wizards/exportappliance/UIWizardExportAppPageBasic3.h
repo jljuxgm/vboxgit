@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic3.h 78993 2019-06-05 13:02:13Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic3.h 79567 2019-07-06 12:43:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic3 class declaration.
  */
@@ -80,7 +80,7 @@ public:
 protected:
 
     /** Allows access wizard from base part. */
-    UIWizard* wizardImp() { return UIWizardPage::wizard(); }
+    UIWizard *wizardImp() const { return UIWizardPage::wizard(); }
     /** Allows access page from base part. */
     UIWizardPage* thisImp() { return this; }
     /** Allows access wizard-field from base part. */

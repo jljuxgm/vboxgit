@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.h 79567 2019-07-06 12:43:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class declaration.
  */
@@ -51,7 +51,7 @@ public:
 protected:
 
     /* Wrapper to access 'wizard' from base part: */
-    UIWizard* wizardImp() { return wizard(); }
+    UIWizard *wizardImp() const { return wizard(); }
     /* Wrapper to access 'this' from base part: */
     UIWizardPage* thisImp() { return this; }
     /* Wrapper to access 'wizard-field' from base part: */
