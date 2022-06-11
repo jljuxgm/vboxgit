@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 78923 2019-06-03 09:09:54Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 78929 2019-06-03 10:54:07Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -1382,7 +1382,7 @@ HRESULT Appliance::i_importCloudImpl(TaskCloud *pTask)
             {            
                 strOsType = Global::OSTypeId(guestOsType);
                 vsd->RemoveDescriptionByType(VirtualSystemDescriptionType_OS);
-                vsd->AddDescription(VirtualSystemDescriptionType_Name,
+                vsd->AddDescription(VirtualSystemDescriptionType_OS,
                                     Bstr(strOsType).raw(),
                                     Bstr(strOsType).raw());
             }
@@ -1391,7 +1391,7 @@ HRESULT Appliance::i_importCloudImpl(TaskCloud *pTask)
         else
         {
             strOsType = Global::OSTypeId(guestOsType);
-            vsd->AddDescription(VirtualSystemDescriptionType_Name,
+            vsd->AddDescription(VirtualSystemDescriptionType_OS,
                                 Bstr(strOsType).raw(),
                                 Bstr(strOsType).raw());
         }
@@ -1960,6 +1960,11 @@ HRESULT Appliance::i_importCloudImpl(TaskCloud *pTask)
         {
             LogRel(("%s: Cloud import (local phase) - exception occured (%Rrc).\n", __FUNCTION__, aRc));
             hrc = aRc;
+        }
+        catct (int aRc)
+        {
+            LogRel(("%s: Cloud import (local phase) - exception occured (%Rrc).\n", __FUNCTION__, aRc));
+            hrc = setErrorVrc(aRc);
         }
         catch (...)
         {
