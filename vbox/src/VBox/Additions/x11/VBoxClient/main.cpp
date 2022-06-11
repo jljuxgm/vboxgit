@@ -1,4 +1,4 @@
-/* $Id: main.cpp 78162 2019-04-17 14:04:17Z vboxsync $ */
+/* $Id: main.cpp 80378 2019-08-21 17:58:06Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions - X11 Client.
  */
@@ -202,7 +202,7 @@ static void vboxClientUsage(const char *pcszFileName)
 # ifdef VBOX_WITH_GUEST_PROPS
              "--checkhostversion|"
 #endif
-             "--seamless|check3d|"
+             "--seamless|"
              "--vmsvga|--vmsvga-x11"
              "[-d|--nodaemon]\n", pcszFileName);
     RTPrintf("Starts the VirtualBox DRM/X Window System guest services.\n\n");
@@ -217,7 +217,6 @@ static void vboxClientUsage(const char *pcszFileName)
 #ifdef VBOX_WITH_GUEST_PROPS
     RTPrintf("  --checkhostversion starts the host version notifier service\n");
 #endif
-    RTPrintf("  --check3d          tests whether 3D pass-through is enabled\n");
     RTPrintf("  --seamless         starts the seamless windows service\n");
     RTPrintf("  --vmsvga           starts VMSVGA dynamic resizing for DRM\n");
     RTPrintf("  --vmsvga-x11       starts VMSVGA dynamic resizing for X11\n");
@@ -326,12 +325,6 @@ int main(int argc, char *argv[])
             g_pService = VBClGetDragAndDropService();
         }
 #endif /* VBOX_WITH_DRAG_AND_DROP */
-        else if (!strcmp(argv[i], "--check3d"))
-        {
-            if (g_pService)
-                return vbclSyntaxOnlyOneService();
-            g_pService = VBClCheck3DService();
-        }
         else if (!strcmp(argv[i], "--vmsvga"))
         {
             if (g_pService)
