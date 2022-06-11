@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.h 83925 2020-04-22 13:04:01Z vboxsync $ */
+/* $Id: UIChooserModel.h 83949 2020-04-23 14:37:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class declaration.
  */
@@ -134,6 +134,9 @@ public:
         /** Clear selected-items list. */
         void clearSelectedItems();
 
+        /** Returns a list of selected-items. */
+        const QList<UIChooserItem*> &selectedItems() const;
+
         /** Adds @a pItem to list of selected. */
         void addToSelectedItems(UIChooserItem *pItem);
         /** Removes @a pItem from list of selected. */
@@ -141,13 +144,13 @@ public:
 
         /** Returns first selected-item. */
         UIChooserItem *firstSelectedItem() const;
-        /** Returns a list of selected-items. */
-        const QList<UIChooserItem*> &selectedItems() const;
-
         /** Returns first selected machine item. */
         UIVirtualMachineItem *firstSelectedMachineItem() const;
         /** Returns a list of selected machine items. */
         QList<UIVirtualMachineItem*> selectedMachineItems() const;
+
+        /** Makes sure at least one item selected. */
+        void makeSureAtLeastOneItemSelected();
 
         /** Returns whether group item is selected. */
         bool isGroupItemSelected() const;
