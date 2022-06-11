@@ -1,4 +1,4 @@
-﻿/* $Id: common.css 83396 2020-03-24 20:08:41Z vboxsync $ */
+﻿/* $Id: common.css 83410 2020-03-25 13:52:48Z vboxsync $ */
 /** @file
  * Test Manager - Common CSS.
  */
@@ -587,6 +587,18 @@ ul.sf-checkbox-expandable {
 .tmoddodd {
     background-color: #e8f0ff;
 }
+
+/*
+ * Multi color row/item coloring, 0..7.
+ */
+.tmshade0 { background-color: #ececec; }
+.tmshade1 { background-color: #fbfbfb; }
+.tmshade2 { background-color: #e4e4e4; }
+.tmshade3 { background-color: #f4f4f4; }
+.tmshade4 { background-color: #e0e0e0; }
+.tmshade5 { background-color: #f0f0f0; }
+.tmshade6 { background-color: #dcdcdc; }
+.tmshade7 { background-color: #fdfdfd; }
 
 
 /*
