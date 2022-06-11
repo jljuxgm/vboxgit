@@ -1,4 +1,4 @@
-/* $Id: MachineImplMoveVM.h 78836 2019-05-29 07:03:20Z vboxsync $ */
+/* $Id: MachineImplMoveVM.h 78968 2019-06-04 14:48:23Z vboxsync $ */
 /** @file
  * Definition of MachineMoveVM
  */
@@ -73,7 +73,9 @@ class MachineMoveVM : public ThreadTask
         {
         }
 
-        void printItem(bool fLog) const;
+#ifdef DEBUG
+        void logItem() const;
+#endif
 
         HRESULT m_code;
         Utf8Str m_description;
@@ -137,7 +139,7 @@ public:
                                     const Utf8Str& sourcePath, const Utf8Str& targetPath);
     HRESULT moveAllDisks(const std::map<Utf8Str, MEDIUMTASKMOVE>& listOfDisks, const Utf8Str* strTargetFolder = NULL);
     HRESULT restoreAllDisks(const std::map<Utf8Str, MEDIUMTASKMOVE>& listOfDisks);
-    bool isMediumTypeSupportedForMoving(const ComPtr<IMedium> &pMedium);
+    bool isMediumTypeSupportedForMovingThrowsHresult(const ComPtr<IMedium> &pMedium);
 };
 
 #endif /* !MAIN_INCLUDED_MachineImplMoveVM_h */
