@@ -1,4 +1,4 @@
-/* $Id: UIFormEditorWidget.cpp 83961 2020-04-24 09:26:59Z vboxsync $ */
+/* $Id: UIFormEditorWidget.cpp 84008 2020-04-27 14:27:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFormEditorWidget class implementation.
  */
@@ -1438,20 +1438,24 @@ QHeaderView *UIFormEditorWidget::verticalHeader() const
     return m_pTableView->verticalHeader();
 }
 
+void UIFormEditorWidget::setValues(const QVector<CFormValue> &values)
+{
+    m_pTableModel->setFormValues(values);
+    adjustTable();
+}
+
 void UIFormEditorWidget::setForm(const CForm &comForm)
 {
     AssertPtrReturnVoid(m_pTableModel);
     /// @todo add some check..
-    m_pTableModel->setFormValues(comForm.GetValues());
-    adjustTable();
+    setValues(comForm.GetValues());
 }
 
 void UIFormEditorWidget::setVirtualSystemDescriptionForm(const CVirtualSystemDescriptionForm &comForm)
 {
     AssertPtrReturnVoid(m_pTableModel);
     /// @todo add some check..
-    m_pTableModel->setFormValues(comForm.GetValues());
-    adjustTable();
+    setValues(comForm.GetValues());
 }
 
 void UIFormEditorWidget::makeSureEditorDataCommitted()
