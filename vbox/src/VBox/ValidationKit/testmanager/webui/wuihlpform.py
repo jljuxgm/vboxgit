@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuihlpform.py 83403 2020-03-25 12:09:58Z vboxsync $
+# $Id: wuihlpform.py 83406 2020-03-25 12:48:51Z vboxsync $
 
 """
 Test Manager Web-UI - Form Helpers.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 83403 $"
+__version__ = "$Revision: 83406 $"
 
 # Standard python imports.
 import copy;
@@ -883,9 +883,7 @@ class WuiHlpForm(object):
         oDefMember        = TestBoxDataForSchedGroup();
         aoSchedGroupBoxes = list(aoSchedGroupBoxes); # Copy it so we can pop.
 
-        from testmanager.webui.wuiadmin         import WuiAdmin;
-        from testmanager.webui.wuicontentbase   import WuiAdminLink;
-        from testmanager.webui.wuiadmintestbox  import WuiTestBoxDetailsLink;
+        from testmanager.webui.wuiadmintestbox import WuiTestBoxDetailsLink;
 
         if not fUseTable:
             #

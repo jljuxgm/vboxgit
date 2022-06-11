@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuiadminschedgroup.py 83403 2020-03-25 12:09:58Z vboxsync $
+# $Id: wuiadminschedgroup.py 83406 2020-03-25 12:48:51Z vboxsync $
 
 """
 Test Manager WUI - Scheduling groups.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 83403 $"
+__version__ = "$Revision: 83406 $"
 
 
 # Validation Kit imports.
@@ -34,7 +34,7 @@ from testmanager.core.buildsource       import BuildSourceData, BuildSourceLogic
 from testmanager.core.db                import isDbTimestampInfinity;
 from testmanager.core.schedgroup        import SchedGroupData, SchedGroupDataEx;
 from testmanager.core.testgroup         import TestGroupData, TestGroupLogic;
-from testmanager.core.testbox           import TestBoxData, TestBoxLogic;
+from testmanager.core.testbox           import TestBoxLogic;
 from testmanager.webui.wuicontentbase   import WuiFormContentBase, WuiListContentBase, WuiTmLink, WuiRawHtml;
 from testmanager.webui.wuiadmintestbox  import WuiTestBoxDetailsLink;
 
