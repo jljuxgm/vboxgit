@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdExoticOrAncient1.py 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: tdExoticOrAncient1.py 79046 2019-06-07 19:41:20Z vboxsync $
 
 """
 VirtualBox Validation Kit - Exotic and/or ancient OSes #1.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 76553 $"
+__version__ = "$Revision: 79046 $"
 
 
 # Standard Python imports.
@@ -102,6 +102,7 @@ class tdExoticOrAncient1(vbox.TestDriver):
         self.logVmInfo(oVM);
         if oTestVm.fGrouping & self.oTestVmManager.kfGrpNoTxs:
             sResult = self.runVmAndMonitorComRawFile(oTestVm.sVmName, oTestVm.sCom1RawFile);
+            ## @todo sResult = self.runVmAndMonitorComRawFile(oTestVm.sVmName, oTestVm.getCom1RawFile());
             return sResult == 'PASSED';
         oSession, _ = self.startVmAndConnectToTxsViaTcp(oTestVm.sVmName, fCdWait = True);
         if oSession is not None:
