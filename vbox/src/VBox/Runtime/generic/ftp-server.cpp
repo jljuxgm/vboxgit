@@ -1,4 +1,4 @@
-/* $Id: ftp-server.cpp 82822 2020-01-22 11:48:43Z vboxsync $ */
+/* $Id: ftp-server.cpp 82823 2020-01-22 11:51:34Z vboxsync $ */
 /** @file
  * Generic FTP server (RFC 959) implementation.
  * Partly also implements RFC 3659 (Extensions to FTP, for "SIZE", ++).
@@ -1594,7 +1594,7 @@ static DECLCALLBACK(int) rtFtpServerDataConnListThread(RTTHREAD ThreadSelf, void
     AssertPtrReturn(pszPath, VERR_NO_MEMORY);
     /* The paths already have been validated in the actual command handlers. */
 
-    void *pvHandle;
+    void *pvHandle = NULL; /* Shut up MSVC. */
     RTFTPSERVER_HANDLE_CALLBACK_VA(pfnOnDirOpen, pszPath, &pvHandle);
 
     for (;;)
