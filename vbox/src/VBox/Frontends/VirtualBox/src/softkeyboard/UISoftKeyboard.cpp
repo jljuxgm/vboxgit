@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboard.cpp 79546 2019-07-05 08:16:12Z vboxsync $ */
+/* $Id: UISoftKeyboard.cpp 79555 2019-07-05 12:04:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class implementation.
  */
@@ -2300,6 +2300,7 @@ void UISoftKeyboardWidget::updateLockKeyStates(bool fCapsLockState, bool fNumLoc
     if (!pPhysicalLayout)
         return;
     pPhysicalLayout->updateLockKeyStates(fCapsLockState, fNumLockState, fScrollLockState);
+    update();
 }
 
 void UISoftKeyboardWidget::deleteCurrentLayout()
