@@ -1,4 +1,4 @@
-# $Id: Config.kmk 83077 2020-02-14 16:00:59Z vboxsync $
+# $Id: Config.kmk 83093 2020-02-17 09:55:54Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -431,7 +431,7 @@ if1of ($(KBUILD_TARGET), win)
  VBOX_WITH_NATIVE_NEM = 1
 endif
 # Enables mapping guest RAM into host kernel space.
-if1of ($(KBUILD_TARGET), darwin win) # linux
+if1of ($(KBUILD_TARGET), darwin linux win)
  VBOX_WITH_RAM_IN_KERNEL := 1
 endif
 ## @}
@@ -7772,7 +7772,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 83077 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 83093 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
