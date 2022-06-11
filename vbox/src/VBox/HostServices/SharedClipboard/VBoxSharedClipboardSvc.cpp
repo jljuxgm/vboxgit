@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc.cpp 82534 2019-12-10 10:41:32Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc.cpp 82540 2019-12-10 13:04:09Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Host service entry points.
  */
@@ -1150,7 +1150,7 @@ int shClSvcClientWakeup(PSHCLCLIENT pClient)
  * @returns VBox status code.
  * @param   pClient             Client to request to read data form.
  * @param   fFormat             The format being requested (VBOX_SHCL_FMT_XXX).
- * @param   puEvent             Event ID for waiting for new data. Optional.
+ * @param   pidEvent            Event ID for waiting for new data. Optional.
  */
 int ShClSvcDataReadRequest(PSHCLCLIENT pClient, SHCLFORMAT fFormat, PSHCLEVENTID pidEvent)
 {
