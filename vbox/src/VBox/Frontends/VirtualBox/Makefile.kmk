@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 80043 2019-07-29 12:16:59Z vboxsync $
+# $Id: Makefile.kmk 80068 2019-07-31 11:20:37Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -892,6 +892,7 @@ UICommon_QT_MOCHDRS = \
 	src/widgets/UIBootOrderEditor.h \
 	src/widgets/UIFilePathSelector.h \
 	src/widgets/UIFilmContainer.h \
+	src/widgets/UIGraphicsControllerEditor.h \
 	src/widgets/UIHostComboEditor.h \
 	src/widgets/UIHotKeyEditor.h \
 	src/widgets/UIMediaComboBox.h \
@@ -1385,6 +1386,7 @@ UICommon_SOURCES = \
 	src/widgets/UIBootOrderEditor.cpp \
 	src/widgets/UIFilePathSelector.cpp \
 	src/widgets/UIFilmContainer.cpp \
+	src/widgets/UIGraphicsControllerEditor.cpp \
 	src/widgets/UIHostComboEditor.cpp \
 	src/widgets/UIHotKeyEditor.cpp \
 	src/widgets/UIMediaComboBox.cpp \
