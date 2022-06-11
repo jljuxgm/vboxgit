@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 82686 2020-01-09 10:36:05Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.cpp 82709 2020-01-10 10:12:15Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1452,7 +1452,7 @@ HRESULT SystemProperties::getSupportedNetworkAdapterTypes(std::vector<NetworkAda
         NetworkAdapterType_I82543GC,
         NetworkAdapterType_I82545EM,
         NetworkAdapterType_Virtio,
-#ifdef DEBUG
+#ifdef VBOX_WITH_VIRTIO_NET_1_0
         NetworkAdapterType_Virtio_1_0,
 #endif
     };
