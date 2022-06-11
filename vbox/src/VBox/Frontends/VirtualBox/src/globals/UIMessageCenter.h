@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 79256 2019-06-20 13:40:17Z vboxsync $ */
+/* $Id: UIMessageCenter.h 79901 2019-07-19 18:43:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -328,6 +328,7 @@ public:
     bool warnAboutNameShouldBeUnique(QWidget *pParent = 0) const;
     bool warnAboutRulesConflict(QWidget *pParent = 0) const;
     bool confirmCancelingPortForwardingDialog(QWidget *pParent = 0) const;
+    void cannotChangeMachineAttribute(const CMachine &comMachine, QWidget *pParent = 0) const;
     void cannotSaveMachineSettings(const CMachine &machine, QWidget *pParent = 0) const;
 
     /* API: Virtual Medium Manager warnings: */

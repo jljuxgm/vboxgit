@@ -1,4 +1,4 @@
-/* $Id: UICommon.h 79889 2019-07-19 15:45:15Z vboxsync $ */
+/* $Id: UICommon.h 79901 2019-07-19 18:43:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class declaration.
  */
@@ -475,6 +475,9 @@ public:
           * if yes, new session of required type will be opened and machine will be updated,
           * otherwise, no session will be created and machine will be left unchanged. */
         CSession tryToOpenSessionFor(CMachine &comMachine);
+
+        /** Changes @a comMachine @a strName. */
+        void setMachineName(const CMachine &comMachine, const QString &strName);
     /** @} */
 
     /** @name COM: Virtual Media stuff.

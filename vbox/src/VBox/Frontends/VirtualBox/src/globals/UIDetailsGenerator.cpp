@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGenerator.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
+/* $Id: UIDetailsGenerator.cpp 79901 2019-07-19 18:43:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsGenerator implementation.
  */
@@ -58,7 +58,13 @@ UITextTable UIDetailsGenerator::generateMachineInformationGeneral(CMachine &comM
 
     /* Name: */
     if (fOptions & UIExtraDataMetaDefs::DetailsElementOptionTypeGeneral_Name)
-        table << UITextTableLine(QApplication::translate("UIDetails", "Name", "details (general)"), comMachine.GetName());
+    {
+        /* Configure hovering anchor: */
+        const QString strAnchorType = QString("machine_name");
+        const QString strName = comMachine.GetName();
+        table << UITextTableLine(QApplication::translate("UIDetails", "Name", "details (general)"),
+                                 QString("<a href=#%1,%2>%2</a>").arg(strAnchorType, strName));
+    }
 
     /* Operating system: */
     if (fOptions & UIExtraDataMetaDefs::DetailsElementOptionTypeGeneral_OS)

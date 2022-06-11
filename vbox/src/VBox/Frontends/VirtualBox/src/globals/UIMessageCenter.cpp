@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 79901 2019-07-19 18:43:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -1223,6 +1223,14 @@ bool UIMessageCenter::confirmCancelingPortForwardingDialog(QWidget *pParent /* =
                           QString() /* ok button text */,
                           QString() /* cancel button text */,
                           false /* ok button by default? */);
+}
+
+void UIMessageCenter::cannotChangeMachineAttribute(const CMachine &comMachine, QWidget *pParent /* = 0 */) const
+{
+    error(pParent, MessageType_Error,
+          tr("Failed to change the attribute of the virtual machine <b>%1</b>.")
+             .arg(comMachine.GetName()),
+          UIErrorString::formatErrorInfo(comMachine));
 }
 
 void UIMessageCenter::cannotSaveMachineSettings(const CMachine &machine, QWidget *pParent /* = 0*/) const
