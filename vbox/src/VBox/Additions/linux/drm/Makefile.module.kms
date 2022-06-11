@@ -1,4 +1,4 @@
-# $Id: Makefile.module.kms 80270 2019-08-14 13:31:41Z vboxsync $
+# $Id: Makefile.module.kms 80271 2019-08-14 13:35:02Z vboxsync $
 ## @file
 # VirtualBox Guest Additions Module Makefile.
 #
@@ -48,8 +48,7 @@ VBOXMOD_OBJS = \
 	vbox_hgsmi.o
 VBOXMOD_INCL = \
 	$(VBOXDRM_DIR) \
-	include/drm
-## @todo r=bird: -Iinclude/drm is ambigious.
+	$(KERN_INCL)/drm
 
 include $(obj)/Makefile-footer.gmk
 
