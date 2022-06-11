@@ -1,4 +1,4 @@
-/* $Id: UIChooserNodeMachine.h 83055 2020-02-11 20:29:39Z vboxsync $ */
+/* $Id: UIChooserNodeMachine.h 83654 2020-04-09 16:48:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserNodeMachine class declaration.
  */
@@ -25,8 +25,8 @@
 #include "UIChooserNode.h"
 
 /* Forward declarations: */
-class UICloudMachine;
 class UIVirtualMachineItem;
+class CCloudMachine;
 class CMachine;
 
 
@@ -48,11 +48,11 @@ public:
     /** Constructs chooser node for real cloud VM passing @a pParent to the base-class.
       * @param  fFavorite        Brings whether the node is favorite.
       * @param  iPosition        Brings initial node position.
-      * @param  guiCloudMachine  Brings cloud VM object. */
+      * @param  comCloudMachine  Brings COM cloud machine object. */
     UIChooserNodeMachine(UIChooserNode *pParent,
                          bool fFavorite,
                          int iPosition,
-                         const UICloudMachine &guiCloudMachine);
+                         const CCloudMachine &comCloudMachine);
     /** Constructs chooser node for fake cloud VM passing @a pParent to the base-class.
       * @param  fFavorite  Brings whether the node is favorite.
       * @param  iPosition  Brings the initial node position. */

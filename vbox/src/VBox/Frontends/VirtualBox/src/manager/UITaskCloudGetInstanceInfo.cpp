@@ -1,4 +1,4 @@
-/* $Id: UITaskCloudGetInstanceInfo.cpp 83644 2020-04-09 10:14:36Z vboxsync $ */
+/* $Id: UITaskCloudGetInstanceInfo.cpp 83654 2020-04-09 16:48:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UITaskCloudGetInstanceInfo class implementation.
  */
@@ -16,12 +16,13 @@
  */
 
 /* GUI includes: */
+#include "UICloudNetworkingStuff.h"
 #include "UITaskCloudGetInstanceInfo.h"
 
 
-UITaskCloudGetInstanceInfo::UITaskCloudGetInstanceInfo(const UICloudMachine &guiCloudMachine)
+UITaskCloudGetInstanceInfo::UITaskCloudGetInstanceInfo(const CCloudMachine &comCloudMachine)
     : UITask(Type_CloudGetInstanceState)
-    , m_guiCloudMachine(guiCloudMachine)
+    , m_comCloudMachine(comCloudMachine)
 {
 }
 
@@ -36,6 +37,6 @@ QString UITaskCloudGetInstanceInfo::errorInfo()
 void UITaskCloudGetInstanceInfo::run()
 {
     m_mutex.lock();
-    m_guiCloudMachine.refresh();
+    refreshCloudMachineInfo(m_comCloudMachine, m_strErrorInfo);
     m_mutex.unlock();
 }
