@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 81375 2019-10-19 13:57:55Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 81382 2019-10-19 23:57:59Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -1061,6 +1061,13 @@ static DECLCALLBACK(int) pdmR3DevHlp_TimerStop(PPDMDEVINS pDevIns, TMTIMERHANDLE
 static DECLCALLBACK(void) pdmR3DevHlp_TimerUnlock(PPDMDEVINS pDevIns, TMTIMERHANDLE hTimer)
 {
     TMTimerUnlock(pdmR3DevHlp_TimerToPtr(pDevIns, hTimer));
+}
+
+
+/** @interface_method_impl{PDMDEVHLPR3,pfnTimerSetCritSect} */
+static DECLCALLBACK(int) pdmR3DevHlp_TimerSetCritSect(PPDMDEVINS pDevIns, TMTIMERHANDLE hTimer, PPDMCRITSECT pCritSect)
+{
+    return TMR3TimerSetCritSect(pdmR3DevHlp_TimerToPtr(pDevIns, hTimer), pCritSect);
 }
 
 
@@ -4247,6 +4254,7 @@ const PDMDEVHLPR3 g_pdmR3DevHlpTrusted =
     pdmR3DevHlp_TimerSetRelative,
     pdmR3DevHlp_TimerStop,
     pdmR3DevHlp_TimerUnlock,
+    pdmR3DevHlp_TimerSetCritSect,
     pdmR3DevHlp_TimerSave,
     pdmR3DevHlp_TimerLoad,
     pdmR3DevHlp_TMUtcNow,
@@ -4688,6 +4696,7 @@ const PDMDEVHLPR3 g_pdmR3DevHlpUnTrusted =
     pdmR3DevHlp_TimerSetRelative,
     pdmR3DevHlp_TimerStop,
     pdmR3DevHlp_TimerUnlock,
+    pdmR3DevHlp_TimerSetCritSect,
     pdmR3DevHlp_TimerSave,
     pdmR3DevHlp_TimerLoad,
     pdmR3DevHlp_TMUtcNow,
