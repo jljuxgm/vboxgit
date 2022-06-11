@@ -1,4 +1,4 @@
-/* $Id: Virtio_1_0.h 81973 2019-11-19 05:43:11Z vboxsync $ */
+/* $Id: Virtio_1_0.h 82004 2019-11-19 16:55:37Z vboxsync $ */
 /** @file
  * Virtio_1_0.h - Virtio Declarations
  */
@@ -449,7 +449,6 @@ DECLINLINE(uint64_t) virtioCoreGetAcceptedFeatures(PVIRTIOCORE pVirtio)
     return pVirtio->uDriverFeatures;
 }
 
-
 DECLINLINE(size_t) virtioCoreSgBufCalcTotalLength(PCVIRTIOSGBUF pGcSgBuf)
 {
     size_t   cb = 0;
@@ -469,7 +468,6 @@ void     virtioCoreSgBufInit(PVIRTIOSGBUF pGcSgBuf, PVIRTIOSGSEG paSegs, size_t 
 void     virtioCoreSgBufReset(PVIRTIOSGBUF pGcSgBuf);
 RTGCPHYS virtioCoreSgBufGetNextSegment(PVIRTIOSGBUF pGcSgBuf, size_t *pcbSeg);
 RTGCPHYS virtioCoreSgBufAdvance(PVIRTIOSGBUF pGcSgBuf, size_t cbAdvance);
-
 void     virtioCoreSgBufInit(PVIRTIOSGBUF pSgBuf, PVIRTIOSGSEG paSegs, size_t cSegs);
 size_t   virtioCoreSgBufCalcTotalLength(PCVIRTIOSGBUF pGcSgBuf);
 void     virtioCoreSgBufReset(PVIRTIOSGBUF pGcSgBuf);

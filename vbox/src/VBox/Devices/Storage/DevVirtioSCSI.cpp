@@ -1,4 +1,4 @@
-    /* $Id: DevVirtioSCSI.cpp 81973 2019-11-19 05:43:11Z vboxsync $ $Revision: 81973 $ $Date: 2019-11-19 13:43:11 +0800 (Tue, 19 Nov 2019) $ $Author: vboxsync $ */
+    /* $Id: DevVirtioSCSI.cpp 82004 2019-11-19 16:55:37Z vboxsync $ $Revision: 82004 $ $Date: 2019-11-20 00:55:37 +0800 (Wed, 20 Nov 2019) $ $Author: vboxsync $ */
 /** @file
  * VBox storage devices - Virtio SCSI Driver
  *
@@ -951,7 +951,6 @@ static DECLCALLBACK(int) virtioScsiR3IoReqFinish(PPDMIMEDIAEXPORT pInterface, PD
                        ("Guest expected less req data (space needed: %d, avail: %d)\n",
                          cbReqSgBuf, pReq->pDescChain->cbPhysReturn),
                        VERR_BUFFER_OVERFLOW);
-
 
         virtioCoreR3QueuePut(pDevIns, &pThis->Virtio, pReq->qIdx, pReqSegBuf, pReq->pDescChain, true /* fFence TBD */);
         virtioCoreQueueSync(pDevIns, &pThis->Virtio, pReq->qIdx);
