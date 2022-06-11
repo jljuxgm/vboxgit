@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibClipboard.cpp 80446 2019-08-27 17:56:22Z vboxsync $ */
+/* $Id: VBoxGuestR3LibClipboard.cpp 80450 2019-08-27 18:43:08Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Shared Clipboard.
  */
@@ -1495,7 +1495,7 @@ VBGLR3DECL(int) VbglR3ClipboardEventGetNext(PVBGLR3SHCLCMDCTX pCtx, PVBGLR3CLIPB
             default:
             {
 #ifdef VBOX_WITH_SHARED_CLIPBOARD_URI_LIST
-                rc = VbglR3ClipboardTransferEvent(&pEvent->cmdCtx, uMsg, cParms, NULL /* pTransfer */ ); /**** @todo FIX !!! */
+                rc = VbglR3ClipboardTransferEvent(&pEvent->cmdCtx, uMsg, cParms, NULL /* pTransfer */ ); /** @todo FIX !!! */
 #endif
                 rc = VERR_NOT_SUPPORTED;
                 break;
