@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 80784 2019-09-13 17:21:05Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 80785 2019-09-13 17:30:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -408,7 +408,7 @@ void UIChooserModel::setCurrentItem(UIChooserItem *pItem)
         disconnect(pOldCurrentItem, &UIChooserItem::destroyed, this, &UIChooserModel::sltCurrentItemDestroyed);
     /* Connect new current-item (if any): */
     if (m_pCurrentItem)
-        connect(m_pCurrentItem, &UIChooserItem::destroyed, this, &UIChooserModel::sltCurrentItemDestroyed);
+        connect(m_pCurrentItem.data(), &UIChooserItem::destroyed, this, &UIChooserModel::sltCurrentItemDestroyed);
 
     /* If dialog is visible and item exists => make it visible as well: */
     if (view() && view()->window() && root())
