@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 78293 2019-04-25 10:32:55Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 78495 2019-05-14 08:19:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class implementation.
  */
@@ -2824,7 +2824,9 @@ void UIMachineSettingsStorage::sltGetInformation()
             case AbstractItem::Type_ControllerItem:
             {
                 /* Getting Controller Name: */
-                mLeName->setText(m_pModelStorage->data(index, StorageModel::R_CtrName).toString());
+                const QString strCtrName = m_pModelStorage->data(index, StorageModel::R_CtrName).toString();
+                if (mLeName->text() != strCtrName)
+                    mLeName->setText(strCtrName);
 
                 /* Getting Controller Sub type: */
                 mCbType->clear();
