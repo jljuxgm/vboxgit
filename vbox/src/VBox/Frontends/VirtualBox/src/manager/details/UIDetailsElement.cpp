@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElement.cpp 79959 2019-07-24 13:57:03Z vboxsync $ */
+/* $Id: UIDetailsElement.cpp 79960 2019-07-24 14:01:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement class implementation.
  */
@@ -512,7 +512,7 @@ void UIDetailsElement::sltHandleAnchorClicked(const QString &strAnchor)
                 {
                     pEditor->setValue(strData.section(',', 0, 0).toInt());
                     connect(pEditor, &UIBaseMemoryEditor::sigValidChanged,
-                            pPopup, &QIDialogContainer::setOkButtonEnabled);
+                            pPopup.data(), &QIDialogContainer::setOkButtonEnabled);
                     pPopup->setWidget(pEditor);
                 }
 
