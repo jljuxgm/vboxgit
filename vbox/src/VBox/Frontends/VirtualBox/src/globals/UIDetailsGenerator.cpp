@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGenerator.cpp 83203 2020-03-04 16:37:11Z vboxsync $ */
+/* $Id: UIDetailsGenerator.cpp 83255 2020-03-11 10:34:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsGenerator implementation.
  */
@@ -130,7 +130,7 @@ UITextTable UIDetailsGenerator::generateMachineInformationGeneral(UICloudMachine
     if (guiCloudMachine.isNull())
         return table;
 
-    if (!guiCloudMachine.isAccessible())
+    if (!guiCloudMachine.accessible())
     {
         table << UITextTableLine(QApplication::translate("UIDetails", "Information Inaccessible", "details"), QString());
         return table;
@@ -291,7 +291,7 @@ UITextTable UIDetailsGenerator::generateMachineInformationSystem(UICloudMachine 
     if (guiCloudMachine.isNull())
         return table;
 
-    if (!guiCloudMachine.isAccessible())
+    if (!guiCloudMachine.accessible())
     {
         table << UITextTableLine(QApplication::translate("UIDetails", "Information Inaccessible", "details"), QString());
         return table;
@@ -570,7 +570,7 @@ UITextTable UIDetailsGenerator::generateMachineInformationStorage(UICloudMachine
     if (guiCloudMachine.isNull())
         return table;
 
-    if (!guiCloudMachine.isAccessible())
+    if (!guiCloudMachine.accessible())
     {
         table << UITextTableLine(QApplication::translate("UIDetails", "Information Inaccessible", "details"), QString());
         return table;
