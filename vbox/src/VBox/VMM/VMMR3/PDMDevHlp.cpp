@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 80673 2019-09-09 14:02:22Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 80677 2019-09-09 14:29:33Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -2549,15 +2549,6 @@ static DECLCALLBACK(bool)     pdmR3DevHlp_CritSectIsOwner(PPDMDEVINS pDevIns, PC
     PDMDEV_ASSERT_DEVINS(pDevIns);
     RT_NOREF(pDevIns); /** @todo pass pDevIns->Internal.s.pVMR3 to the crit sect code.   */
     return PDMCritSectIsOwner(pCritSect);
-}
-
-
-/** @interface_method_impl{PDMDEVHLPR3,pfnCritSectIsOwnerEx} */
-static DECLCALLBACK(bool)     pdmR3DevHlp_CritSectIsOwnerEx(PPDMDEVINS pDevIns, PCPDMCRITSECT pCritSect, PVMCPUCC pVCpu)
-{
-    PDMDEV_ASSERT_DEVINS(pDevIns);
-    RT_NOREF(pDevIns); /** @todo pass pDevIns->Internal.s.pVMR3 to the crit sect code.   */
-    return PDMCritSectIsOwnerEx(pCritSect, pVCpu);
 }
 
 
