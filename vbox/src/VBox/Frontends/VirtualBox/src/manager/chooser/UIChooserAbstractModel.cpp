@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.cpp 84105 2020-04-30 14:07:20Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.cpp 84186 2020-05-07 14:17:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class implementation.
  */
@@ -319,13 +319,13 @@ QString UIChooserAbstractModel::toOldStyleUuid(const QUuid &uId)
     return uId.toString().remove(QRegExp("[{}]"));
 }
 
-void UIChooserAbstractModel::sltMachineStateChanged(const QUuid &uMachineId, const KMachineState)
+void UIChooserAbstractModel::sltLocalMachineStateChanged(const QUuid &uMachineId, const KMachineState)
 {
     /* Update machine-nodes with passed id: */
     invisibleRoot()->updateAllNodes(uMachineId);
 }
 
-void UIChooserAbstractModel::sltMachineDataChanged(const QUuid &uMachineId)
+void UIChooserAbstractModel::sltLocalMachineDataChanged(const QUuid &uMachineId)
 {
     /* Update machine-nodes with passed id: */
     invisibleRoot()->updateAllNodes(uMachineId);
@@ -514,9 +514,9 @@ void UIChooserAbstractModel::prepareConnections()
 
     /* Setup global connections: */
     connect(gVBoxEvents, &UIVirtualBoxEventHandler::sigMachineStateChange,
-            this, &UIChooserAbstractModel::sltMachineStateChanged);
+            this, &UIChooserAbstractModel::sltLocalMachineStateChanged);
     connect(gVBoxEvents, &UIVirtualBoxEventHandler::sigMachineDataChange,
-            this, &UIChooserAbstractModel::sltMachineDataChanged);
+            this, &UIChooserAbstractModel::sltLocalMachineDataChanged);
     connect(gVBoxEvents, &UIVirtualBoxEventHandler::sigMachineRegistered,
             this, &UIChooserAbstractModel::sltLocalMachineRegistered);
     connect(gVBoxEvents, &UIVirtualBoxEventHandler::sigSessionStateChange,
