@@ -1,4 +1,4 @@
-/* $Id: clipboard-transfers.cpp 81342 2019-10-18 08:11:58Z vboxsync $ */
+/* $Id: clipboard-transfers.cpp 81343 2019-10-18 08:55:52Z vboxsync $ */
 /** @file
  * Shared Clipboard: Common Shared Clipboard transfer handling code.
  */
@@ -1386,7 +1386,6 @@ static int shClTransferResolvePathAbs(PSHCLTRANSFER pTransfer, const char *pszPa
     /* Paranoia. */
     if (   !strlen(pszPath)
         || !RTStrIsValidEncoding(pszPath)
-        ||  RTStrStr(pszPath, ".")
         ||  RTStrStr(pszPath, ".."))
     {
         LogRel(("Shared Clipboard: Resolving absolute path '%s' failed, invalid\n", pszPath));
