@@ -1,4 +1,4 @@
-/* $Id: DevHDACommon.cpp 87328 2021-01-20 17:07:12Z vboxsync $ */
+/* $Id: DevHDACommon.cpp 87863 2021-02-24 17:25:23Z vboxsync $ */
 /** @file
  * DevHDACommon.cpp - Shared HDA device functions.
  *
@@ -128,6 +128,48 @@ DECLINLINE(PHDASTREAMPERIOD) hdaR3SinkToStreamPeriod(PHDAMIXERSINK pSink)
     if (pStream)
         return &pStream->State.Period;
     return NULL;
+}
+
+/**
+ * Returns the current maximum value the wall clock counter can be set to.
+ *
+ * This maximum value depends on all currently handled HDA streams and their own current timing.
+ *
+ * @return  Current maximum value the wall clock counter can be set to.
+ * @param   pThis               The shared HDA device state.
+ * @param   pThisCC             The ring-3 HDA device state.
+ *
+ * @remark  Does not actually set the wall clock counter.
+ *
+ */
+uint64_t hdaR3WalClkGetMax(PHDASTATE pThis, PHDASTATER3 pThisCC)
+{
+    const uint64_t u64WalClkCur       = ASMAtomicReadU64(&pThis->u64WalClk);
+    const uint64_t u64FrontAbsWalClk  = pThisCC->SinkFront.pStreamShared
+                                      ? hdaR3StreamPeriodGetAbsElapsedWalClk(&pThisCC->SinkFront.pStreamShared->State.Period)  : 0;
+# ifdef VBOX_WITH_AUDIO_HDA_51_SURROUND
+#  error "Implement me!"
+# endif
+    const uint64_t u64LineInAbsWalClk = pThisCC->SinkLineIn.pStreamShared
+                                      ? hdaR3StreamPeriodGetAbsElapsedWalClk(&pThisCC->SinkLineIn.pStreamShared->State.Period) : 0;
+# ifdef VBOX_WITH_HDA_MIC_IN
+    const uint64_t u64MicInAbsWalClk  = pThisCC->SinkMicIn.pStreamShared
+                                      ? hdaR3StreamPeriodGetAbsElapsedWalClk(&pThisCC->SinkMicIn.pStreamShared->State.Period)  : 0;
+# endif
+
+    uint64_t u64WalClkNew = RT_MAX(u64WalClkCur, u64FrontAbsWalClk);
+# ifdef VBOX_WITH_AUDIO_HDA_51_SURROUND
+#  error "Implement me!"
+# endif
+    u64WalClkNew          = RT_MAX(u64WalClkNew, u64LineInAbsWalClk);
+# ifdef VBOX_WITH_HDA_MIC_IN
+    u64WalClkNew          = RT_MAX(u64WalClkNew, u64MicInAbsWalClk);
+# endif
+
+    Log3Func(("%RU64 -> Front=%RU64, LineIn=%RU64 -> %RU64\n",
+              u64WalClkCur, u64FrontAbsWalClk, u64LineInAbsWalClk, u64WalClkNew));
+
+    return u64WalClkNew;
 }
 
 /**

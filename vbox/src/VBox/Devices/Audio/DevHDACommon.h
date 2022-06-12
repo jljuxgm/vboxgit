@@ -1,4 +1,4 @@
-/* $Id: DevHDACommon.h 87758 2021-02-15 12:14:09Z vboxsync $ */
+/* $Id: DevHDACommon.h 87863 2021-02-24 17:25:23Z vboxsync $ */
 /** @file
  * DevHDACommon.h - Shared HDA device defines / functions.
  */
@@ -632,6 +632,7 @@ uint8_t       hdaSDFIFOWToBytes(uint16_t u16RegFIFOW);
  */
 uint64_t      hdaWalClkGetCurrent(PHDASTATE pThis);
 #ifdef IN_RING3
+uint64_t      hdaR3WalClkGetMax(PHDASTATE pThis, PHDASTATER3 pThisCC);
 bool          hdaR3WalClkSet(PHDASTATE pThis, PHDASTATER3 pThisCC, uint64_t u64WalClk, bool fForce);
 #endif
 /** @} */
