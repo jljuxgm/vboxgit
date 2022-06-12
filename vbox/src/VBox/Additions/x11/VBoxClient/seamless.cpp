@@ -1,4 +1,4 @@
-/* $Id: seamless.cpp 86871 2020-11-12 10:15:18Z vboxsync $ */
+/* $Id: seamless.cpp 86873 2020-11-12 10:30:55Z vboxsync $ */
 /** @file
  * X11 Guest client - seamless mode: main logic, communication with the host and
  * wrapper interface for the main code of the VBoxClient deamon.  The
@@ -314,26 +314,34 @@ int SeamlessMain::stopX11MonitorThread(void)
     return rc;
 }
 
-/** @copydoc VBCLSERVICE::pfnInit */
-static int vbclSeamlessInit(void)
+/**
+ * @interface_method_impl{VBCLSERVICE,pfnInit}
+ */
+static DECLCALLBACK(int) vbclSeamlessInit(void)
 {
     return g_Svc.mSeamless.init();
 }
 
-/** @copydoc VBCLSERVICE::pfnWorker */
-static int vbclSeamlessWorker(bool volatile *pfShutdown)
+/**
+ * @interface_method_impl{VBCLSERVICE,pfnWorker}
+ */
+static DECLCALLBACK(int) vbclSeamlessWorker(bool volatile *pfShutdown)
 {
     return g_Svc.mSeamless.worker(pfShutdown);
 }
 
-/** @copydoc VBCLSERVICE::pfnStop */
-static void vbclSeamlessStop(void)
+/**
+ * @interface_method_impl{VBCLSERVICE,pfnStop}
+ */
+static DECLCALLBACK(void) vbclSeamlessStop(void)
 {
     return g_Svc.mSeamless.stop();
 }
 
-/** @copydoc VBCLSERVICE::pfnTerm */
-static int vbclSeamlessTerm(void)
+/**
+ * @interface_method_impl{VBCLSERVICE,pfnTerm}
+ */
+static DECLCALLBACK(int) vbclSeamlessTerm(void)
 {
     return g_Svc.mSeamless.term();
 }
