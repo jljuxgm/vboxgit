@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 84964 2020-06-25 20:17:00Z vboxsync $ */
+/* $Id: UICommon.cpp 85489 2020-07-28 14:51:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -4089,22 +4089,6 @@ void UICommon::prepare()
             msgCenter().cannotInitCOM(rc);
         return;
     }
-
-#ifdef VBOX_WITH_SDS
-    // setup Client COM Security to enable impersonation required by VBOX_SDS
-    HRESULT hrGUICoInitializeSecurity = CoInitializeSecurity(NULL,
-                                                             -1,
-                                                             NULL,
-                                                             NULL,
-                                                             RPC_C_AUTHN_LEVEL_DEFAULT,
-                                                             RPC_C_IMP_LEVEL_IMPERSONATE,
-                                                             NULL,
-                                                             EOAC_NONE,
-                                                             NULL);
-    NOREF(hrGUICoInitializeSecurity);
-    Assert(RPC_E_TOO_LATE != hrGUICoInitializeSecurity);
-    Assert(hrGUICoInitializeSecurity == S_OK);
-#endif
 
     /* Make sure VirtualBoxClient instance created: */
     m_comVBoxClient.createInstance(CLSID_VirtualBoxClient);

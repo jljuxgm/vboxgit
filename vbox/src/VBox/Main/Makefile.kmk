@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 85365 2020-07-16 12:26:59Z vboxsync $
+# $Id: Makefile.kmk 85489 2020-07-28 14:51:29Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -1231,6 +1231,9 @@ VBoxCOM_INCS          += $(VBOX_MAIN_APIWRAPPER_INCS) \
 ifeq ($(KBUILD_TARGET),win)
  ifdef VBOX_WITH_MIDL_PROXY_STUB
   VBoxCOM_DEFS.win      = VBOX_WITH_AUTO_COM_REG_UPDATE
+ endif
+ ifdef VBOX_WITH_SDS
+  VBoxCOM_DEFS.win     += VBOX_WITH_SDS
  endif
  VBoxCOM_DEFS.x86       = _WIN32_WINNT=0x0500
  VBoxCOM_DEFS.amd64     = _WIN32_WINNT=0x0510

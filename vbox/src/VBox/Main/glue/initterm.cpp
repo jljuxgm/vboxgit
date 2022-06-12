@@ -1,4 +1,4 @@
-/* $Id: initterm.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
+/* $Id: initterm.cpp 85489 2020-07-28 14:51:29Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - Initialization and Termination.
  */
@@ -455,6 +455,21 @@ HRESULT Initialize(uint32_t fInitFlags /*=VBOX_COM_INIT_F_DEFAULT*/)
     /* the overall result must be either S_OK or S_FALSE (S_FALSE means
      * "already initialized using the same apartment model") */
     AssertMsg(rc == S_OK || rc == S_FALSE, ("rc=%08X\n", rc));
+
+#if defined(VBOX_WITH_SDS)
+    // Setup COM Security to enable impersonation
+    HRESULT hrGUICoInitializeSecurity = CoInitializeSecurity(NULL,
+                                                             -1,
+                                                             NULL,
+                                                             NULL,
+                                                             RPC_C_AUTHN_LEVEL_DEFAULT,
+                                                             RPC_C_IMP_LEVEL_IMPERSONATE,
+                                                             NULL,
+                                                             EOAC_NONE,
+                                                             NULL);
+    NOREF(hrGUICoInitializeSecurity);
+    Assert(SUCCEEDED(hrGUICoInitializeSecurity) || hrGUICoInitializeSecurity == RPC_E_TOO_LATE);
+#endif
 
     /*
      * IRundown has unsafe two methods we need to patch to prevent remote access.
