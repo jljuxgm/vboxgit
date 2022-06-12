@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElement.h 86223 2020-09-22 14:13:41Z vboxsync $ */
+/* $Id: UIDetailsElement.h 86226 2020-09-22 17:08:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement class declaration.
  */
@@ -222,8 +222,12 @@ private slots:
         /** Handles toggle finish. */
         void sltElementToggleFinish(bool fToggled);
 
-        /** Handles children anchor clicks. */
+        /** Handles child anchor clicks. */
         void sltHandleAnchorClicked(const QString &strAnchor);
+        /** Handles child copy request. */
+        void sltHandleCopyRequest();
+        /** Handles child edit request. */
+        void sltHandleEditRequest();
     /** @} */
 
     /** @name Layout stuff.
