@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 85778 2020-08-14 20:54:43Z vboxsync $ */
+/* $Id: VBoxManage.cpp 86434 2020-10-02 21:33:45Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -427,6 +427,12 @@ int main(int argc, char *argv[])
         {
             /* Print version number, and do nothing else. */
             RTPrintf("%sr%u\n", VBOX_VERSION_STRING, RTBldCfgRevision());
+            return 0;
+        }
+        if (!strcmp(argv[i], "--dump-build-type"))
+        {
+            /* Print the build type, and do nothing else. (Used by ValKit to detect build type.) */
+            RTPrintf("%s\n", RTBldCfgType());
             return 0;
         }
 #endif
