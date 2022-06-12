@@ -1,4 +1,4 @@
-/* $Id: UIStarter.cpp 88657 2021-04-22 15:11:09Z vboxsync $ */
+/* $Id: UIStarter.cpp 88664 2021-04-22 18:34:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIStarter class implementation.
  */
@@ -166,6 +166,9 @@ void UIStarter::sltHandleCommitDataRequest()
         return;
 
 #ifdef VBOX_RUNTIME_UI
-    gpMachine->uisession()->saveState();
+    /* Only for the case when we have this request
+     * earlier than the usual cleanup started: */
+    if (!UICommon::isCleaningUp())
+        gpMachine->uisession()->saveState();
 #endif
 }
