@@ -1,4 +1,4 @@
-/* $Id: NATNetworkImpl.cpp 87363 2021-01-22 00:48:31Z vboxsync $ */
+/* $Id: NATNetworkImpl.cpp 87421 2021-01-25 16:37:30Z vboxsync $ */
 /** @file
  * INATNetwork implementation.
  */
@@ -850,6 +850,7 @@ HRESULT  NATNetwork::start()
     if (!m->s.fEnabled) return S_OK;
     AssertReturn(!m->s.strNetworkName.isEmpty(), E_FAIL);
 
+    m->NATRunner.resetArguments();
     m->NATRunner.addArgPair(NetworkServiceRunner::kpszKeyNetwork, Utf8Str(m->s.strNetworkName).c_str());
     m->NATRunner.addArgPair(NetworkServiceRunner::kpszKeyTrunkType, Utf8Str(TRUNKTYPE_WHATEVER).c_str());
     m->NATRunner.addArgPair(NetworkServiceRunner::kpszIpAddress, Utf8Str(m->IPv4Gateway).c_str());
