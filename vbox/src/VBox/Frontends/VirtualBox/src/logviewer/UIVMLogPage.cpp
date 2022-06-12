@@ -1,4 +1,4 @@
-/* $Id: UIVMLogPage.cpp 88671 2021-04-23 11:09:03Z vboxsync $ */
+/* $Id: UIVMLogPage.cpp 88686 2021-04-23 18:55:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -329,4 +329,14 @@ void UIVMLogPage::setCurrentFont(QFont font)
 {
     if (m_pTextEdit)
         m_pTextEdit->setCurrentFont(font);
+}
+
+const QUuid &UIVMLogPage::machineId() const
+{
+    return m_machineId;
+}
+
+void UIVMLogPage::setMachineId(const QUuid &machineId)
+{
+    m_machineId = machineId;
 }
