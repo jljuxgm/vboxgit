@@ -1,4 +1,4 @@
-/* $Id: tstSupSem-Zombie.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: tstSupSem-Zombie.cpp 86397 2020-10-01 18:58:48Z vboxsync $ */
 /** @file
  * Support Library Testcase - Ring-3 Semaphore interface - Zombie bugs.
  */
@@ -55,7 +55,7 @@ static DECLCALLBACK(int) tstSupSemSRETimed(RTTHREAD hSelf, void *pvUser)
     SUPSEMEVENT hEvent = (SUPSEMEVENT)pvUser;
     RTThreadUserSignal(hSelf);
     int rc = SUPSemEventWaitNoResume(g_pSession, hEvent, 120*1000);
-    AssertReleaseMsgFailed(("%Rrc\n", rc));
+    AssertReleaseMsg(rc == VERR_INTERRUPTED, ("%Rrc\n", rc));
     return rc;
 }
 
@@ -65,7 +65,7 @@ static DECLCALLBACK(int) tstSupSemMRETimed(RTTHREAD hSelf, void *pvUser)
     SUPSEMEVENTMULTI hEventMulti = (SUPSEMEVENTMULTI)pvUser;
     RTThreadUserSignal(hSelf);
     int rc = SUPSemEventMultiWaitNoResume(g_pSession, hEventMulti, 120*1000);
-    AssertReleaseMsgFailed(("%Rrc\n", rc));
+    AssertReleaseMsg(rc == VERR_INTERRUPTED, ("%Rrc\n", rc));
     return rc;
 }
 
@@ -75,7 +75,7 @@ static DECLCALLBACK(int) tstSupSemSREInf(RTTHREAD hSelf, void *pvUser)
     SUPSEMEVENT hEvent = (SUPSEMEVENT)pvUser;
     RTThreadUserSignal(hSelf);
     int rc = SUPSemEventWaitNoResume(g_pSession, hEvent, RT_INDEFINITE_WAIT);
-    AssertReleaseMsgFailed(("%Rrc\n", rc));
+    AssertReleaseMsg(rc == VERR_INTERRUPTED, ("%Rrc\n", rc));
     return rc;
 }
 
@@ -85,7 +85,7 @@ static DECLCALLBACK(int) tstSupSemMREInf(RTTHREAD hSelf, void *pvUser)
     SUPSEMEVENTMULTI hEventMulti = (SUPSEMEVENTMULTI)pvUser;
     RTThreadUserSignal(hSelf);
     int rc = SUPSemEventMultiWaitNoResume(g_pSession, hEventMulti, RT_INDEFINITE_WAIT);
-    AssertReleaseMsgFailed(("%Rrc\n", rc));
+    AssertReleaseMsg(rc == VERR_INTERRUPTED, ("%Rrc\n", rc));
     return rc;
 }
 
