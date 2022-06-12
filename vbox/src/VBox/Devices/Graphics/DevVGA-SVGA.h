@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.h 88838 2021-05-03 14:21:10Z vboxsync $ */
+/* $Id: DevVGA-SVGA.h 88904 2021-05-06 14:02:43Z vboxsync $ */
 /** @file
  * VMware SVGA device
  */
@@ -628,7 +628,9 @@ typedef VMSVGAMOB const *PCVMSVGAMOB;
 
 int vmsvgaR3MobBackingStoreCreate(PVMSVGAR3STATE pSvgaR3State, PVMSVGAMOB pMob, uint32_t cbValid);
 void vmsvgaR3MobBackingStoreDelete(PVMSVGAR3STATE pSvgaR3State, PVMSVGAMOB pMob);
-void *vmsvgaR3MobBackingStoreGet(PVMSVGAMOB pMob, uint32_t off);
+int vmsvgaR3MobBackingStoreWriteToGuest(PVMSVGAR3STATE pSvgaR3State, PVMSVGAMOB pMob);
+int vmsvgaR3MobBackingStoreReadFromGuest(PVMSVGAR3STATE pSvgaR3State, PVMSVGAMOB pMob);
+void *vmsvgaR3MobBackingStorePtr(PVMSVGAMOB pMob, uint32_t off);
 
 DECLINLINE(uint32_t) vmsvgaR3MobSize(PVMSVGAMOB pMob)
 {
