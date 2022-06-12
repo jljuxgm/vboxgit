@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 87023 2020-12-01 14:42:29Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 88648 2021-04-22 11:16:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -2007,6 +2007,9 @@ void UIMachineLogic::sltToggleGuestAutoresize(bool fEnabled)
             pMachineWindow->normalizeGeometry(true /* adjust position */, true /* resize window to guest display size */);
         }
     }
+
+    /* Save value to extra-data finally: */
+    gEDataManager->setGuestScreenAutoResizeEnabled(fEnabled, uiCommon().managedVMUuid());
 }
 
 void UIMachineLogic::sltTakeScreenshot()
