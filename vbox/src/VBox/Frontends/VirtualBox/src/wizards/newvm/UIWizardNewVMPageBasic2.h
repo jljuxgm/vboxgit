@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic2.h 84874 2020-06-18 20:07:25Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic2.h 84878 2020-06-19 08:18:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic2 class declaration.
  */
@@ -43,7 +43,6 @@ protected:
 
     /* Widgets: */
     UIBaseMemoryEditor *m_pBaseMemoryEditor;
-    QLabel *m_pRamLabel;
 };
 
 /* 2nd page of the New Virtual Machine wizard (basic extension): */
