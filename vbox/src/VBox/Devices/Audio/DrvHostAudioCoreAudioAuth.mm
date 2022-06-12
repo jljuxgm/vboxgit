@@ -1,4 +1,4 @@
-/* $Id: DrvHostCoreAudio-auth.mm 86221 2020-09-22 14:10:23Z vboxsync $ */
+/* $Id: DrvHostAudioCoreAudioAuth.mm 88226 2021-03-22 09:13:05Z vboxsync $ */
 /** @file
  * VBox audio devices - Mac OS X CoreAudio audio driver, authorization helpers for Mojave+.
  */

@@ -1,4 +1,4 @@
-/* $Id: pulse_stubs.c 86496 2020-10-08 13:48:53Z vboxsync $ */
+/* $Id: DrvHostAudioPulseAudioStubs.cpp 88226 2021-03-22 09:13:05Z vboxsync $ */
 /** @file
  * Stubs for libpulse.
  */
@@ -27,7 +27,7 @@
 
 #include <pulse/pulseaudio.h>
 
-#include "pulse_stubs.h"
+#include "DrvHostAudioPulseAudioStubs.h"
 
 
 /*********************************************************************************************************************************
@@ -38,7 +38,7 @@
 #define PROXY_STUB(function, rettype, signature, shortsig) \
     static rettype (*g_pfn_ ## function) signature; \
     \
-    rettype VBox_##function signature; \
+    extern "C" rettype VBox_##function signature; \
     rettype VBox_##function signature \
     { \
         return g_pfn_ ## function shortsig; \
@@ -47,7 +47,7 @@
 #define PROXY_STUB_VOID(function, signature, shortsig) \
     static void (*g_pfn_ ## function) signature; \
     \
-    void VBox_##function signature; \
+    extern "C" void VBox_##function signature; \
     void VBox_##function signature \
     { \
         g_pfn_ ## function shortsig; \

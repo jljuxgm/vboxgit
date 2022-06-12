@@ -1,4 +1,4 @@
-/* $Id: pulse_mangling.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: DrvHostAudioPulseAudioStubsMangling.h 88226 2021-03-22 09:13:05Z vboxsync $ */
 /** @file
  * Mangle libpulse symbols.
  *
@@ -17,8 +17,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef VBOX_INCLUDED_SRC_Audio_pulse_mangling_h
-#define VBOX_INCLUDED_SRC_Audio_pulse_mangling_h
+#ifndef VBOX_INCLUDED_SRC_Audio_DrvHostAudioPulseAudioStubsMangling_h
+#define VBOX_INCLUDED_SRC_Audio_DrvHostAudioPulseAudioStubsMangling_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -89,5 +89,5 @@
 
 #define pa_usec_to_bytes                        PULSE_MANGLER(pa_usec_to_bytes)
 
-#endif /* !VBOX_INCLUDED_SRC_Audio_pulse_mangling_h */
+#endif /* !VBOX_INCLUDED_SRC_Audio_DrvHostAudioPulseAudioStubsMangling_h */
 

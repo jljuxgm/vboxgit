@@ -1,6 +1,6 @@
-/* $Id: pulse_stubs.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: DrvHostAudioAlsaStubs.h 88226 2021-03-22 09:13:05Z vboxsync $ */
 /** @file
- * Stubs for libpulse.
+ * Stubs for libasound.
  */
 
 /*
@@ -15,11 +15,17 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef VBOX_INCLUDED_SRC_Audio_pulse_stubs_h
-#define VBOX_INCLUDED_SRC_Audio_pulse_stubs_h
+#ifndef VBOX_INCLUDED_SRC_Audio_DrvHostAudioAlsaStubs_h
+#define VBOX_INCLUDED_SRC_Audio_DrvHostAudioAlsaStubs_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
-extern int audioLoadPulseLib(void);
-#endif /* !VBOX_INCLUDED_SRC_Audio_pulse_stubs_h */
+
+#include <iprt/cdefs.h>
+
+RT_C_DECLS_BEGIN
+extern int audioLoadAlsaLib(void);
+RT_C_DECLS_END
+
+#endif /* !VBOX_INCLUDED_SRC_Audio_DrvHostAudioAlsaStubs_h */
 

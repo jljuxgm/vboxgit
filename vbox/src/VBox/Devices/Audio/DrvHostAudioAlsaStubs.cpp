@@ -1,4 +1,4 @@
-/* $Id: alsa_stubs.c 88220 2021-03-21 01:55:01Z vboxsync $ */
+/* $Id: DrvHostAudioAlsaStubs.cpp 88226 2021-03-22 09:13:05Z vboxsync $ */
 /** @file
  * Stubs for libasound.
  */
@@ -14,6 +14,7 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
 #define LOG_GROUP LOG_GROUP_DRV_HOST_AUDIO
 #include <iprt/assert.h>
 #include <iprt/ldr.h>
@@ -22,14 +23,14 @@
 
 #include <alsa/asoundlib.h>
 
-#include "alsa_stubs.h"
+#include "DrvHostAudioAlsaStubs.h"
 
 #define VBOX_ALSA_LIB "libasound.so.2"
 
 #define PROXY_STUB(function, rettype, signature, shortsig) \
     static rettype (*pfn_ ## function) signature; \
     \
-    rettype VBox_##function signature; \
+    extern "C" rettype VBox_##function signature; \
     rettype VBox_##function signature \
     { \
         return pfn_ ## function shortsig; \
