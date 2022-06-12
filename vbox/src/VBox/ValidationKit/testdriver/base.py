@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 86503 2020-10-09 13:49:47Z vboxsync $
+# $Id: base.py 86511 2020-10-10 11:02:36Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 86503 $"
+__version__ = "$Revision: 86511 $"
 
 
 # Standard Python imports.
@@ -745,7 +745,7 @@ class Process(TdTaskBase):
             return False;
         if sys.platform == 'win32':
             return False;
-        return os.WIFEXITED(self.uExitCode);
+        return os.WIFEXITED(self.uExitCode); # pylint: disable=no-member
 
     def interrupt(self):
         """
