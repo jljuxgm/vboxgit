@@ -1,4 +1,4 @@
-/* $Id: HMAll.cpp 87547 2021-02-02 17:33:49Z vboxsync $ */
+/* $Id: HMAll.cpp 87563 2021-02-03 13:23:13Z vboxsync $ */
 /** @file
  * HM - All contexts.
  */
@@ -682,7 +682,7 @@ VMM_INT_DECL(bool) HMIsMsrBitmapActive(PVM pVM)
             return true;
 
         if (   pVM->hm.s.vmx.fSupported
-            && (  CTX_EXPR(pVM->hm.s.vmx.MsrsForRing3.ProcCtls.n.allowed1, g_HmMsrs.u.vmx.ProcCtls.n.allowed1, RT_NOTHING)
+            && (  CTX_EXPR(pVM->hm.s.ForR3.vmx.Msrs.ProcCtls.n.allowed1, g_HmMsrs.u.vmx.ProcCtls.n.allowed1, RT_NOTHING)
                 & VMX_PROC_CTLS_USE_MSR_BITMAPS))
             return true;
     }
