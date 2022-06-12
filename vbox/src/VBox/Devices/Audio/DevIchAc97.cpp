@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 88954 2021-05-09 00:48:03Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 88991 2021-05-12 00:46:35Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -973,14 +973,16 @@ static int ichac97R3StreamEnable(PPDMDEVINS pDevIns, PAC97STATE pThis, PAC97STAT
                 AssertRC(rc2);
             }
         }
+
+        if (RT_SUCCESS(rc))
+            rc = AudioMixerSinkStart(pSink);
     }
     else
-        rc = ichac97R3StreamClose(pStream);
-
-    if (RT_SUCCESS(rc))
     {
-        /* First, enable or disable the stream and the stream's sink, if any. */
-        rc = AudioMixerSinkEnable(pSink, fEnable);
+        rc = ichac97R3StreamClose(pStream);
+        if (RT_SUCCESS(rc))
+            rc = AudioMixerSinkDrainAndStop(pSink,
+                                            pStreamCC->State.pCircBuf ? (uint32_t)RTCircBufUsed(pStreamCC->State.pCircBuf) : 0);
     }
 
     /* Make sure to leave the lock before (eventually) starting the timer. */

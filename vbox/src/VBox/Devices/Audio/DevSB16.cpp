@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 88955 2021-05-09 00:48:25Z vboxsync $ */
+/* $Id: DevSB16.cpp 88991 2021-05-12 00:46:35Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  */
@@ -2044,9 +2044,17 @@ static int sb16StreamEnable(PSB16STATE pThis, PSB16STREAM pStream, bool fEnable,
         pStream->State.fRegisteredAsyncUpdateJob = RT_SUCCESS(rc) || rc == VERR_ALREADY_EXISTS;
     }
 
-    /* First, enable or disable the stream and the stream's sink. */
-    rc = AudioMixerSinkEnable(pSink, fEnable);
-    AssertRCReturn(rc, rc);
+    /* Tell the mixer. */
+    if (fEnable)
+    {
+        rc = AudioMixerSinkStart(pSink);
+        AssertRCReturn(rc, rc);
+    }
+    else
+    {
+        rc = AudioMixerSinkDrainAndStop(pSink, pStream->State.pCircBuf ? (uint32_t)RTCircBufUsed(pStream->State.pCircBuf) : 0);
+        AssertRCReturn(rc, rc);
+    }
 
     pStream->State.fEnabled = fEnable;
 

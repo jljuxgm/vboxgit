@@ -1,4 +1,4 @@
-/* $Id: pdmaudioinline.h 88892 2021-05-06 01:08:15Z vboxsync $ */
+/* $Id: pdmaudioinline.h 88991 2021-05-12 00:46:35Z vboxsync $ */
 /** @file
  * PDM - Audio Helpers, Inlined Code. (DEV,++)
  *
@@ -1146,6 +1146,7 @@ DECLINLINE(const char *) PDMHostAudioStreamStateGetName(PDMHOSTAUDIOSTREAMSTATE 
         case PDMHOSTAUDIOSTREAMSTATE_INITIALIZING:  return "initializing";
         case PDMHOSTAUDIOSTREAMSTATE_NOT_WORKING:   return "not-working";
         case PDMHOSTAUDIOSTREAMSTATE_OKAY:          return "okay";
+        case PDMHOSTAUDIOSTREAMSTATE_DRAINING:      return "draining";
         case PDMHOSTAUDIOSTREAMSTATE_INACTIVE:      return "inactive";
         /* no default: */
         case PDMHOSTAUDIOSTREAMSTATE_END:
