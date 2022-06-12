@@ -1,4 +1,4 @@
-/* $Id: dvm.cpp 86780 2020-11-02 11:51:44Z vboxsync $ */
+/* $Id: dvm.cpp 88948 2021-05-08 23:00:38Z vboxsync $ */
 /** @file
  * IPRT Disk Volume Management API (DVM) - generic code.
  */
@@ -776,6 +776,7 @@ RTDECL(uint32_t) RTDvmVolumeGetIndex(RTDVMVOLUME hVol, RTDVMVOLIDX enmIndex)
         enmIndex = RTDVMVOLIDX_USER_VISIBLE;
 #elif defined(RT_OS_LINUX) \
    || defined(RT_OS_FREEBSD) \
+   || defined(RT_OS_NETBSD) \
    || defined(RT_OS_SOLARIS) \
    || defined(RT_OS_DARWIN) \
    || defined(RT_OS_OS2) /*whatever*/
