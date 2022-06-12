@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic5.h 87888 2021-02-26 13:55:53Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic5.h 87889 2021-02-26 14:37:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic5 class declaration.
  */
@@ -67,10 +67,6 @@ protected:
     UIWizardPage* thisImp() { return this; }
     /** Wrapper to access 'wizard-field' from base part. */
     QVariant fieldImp(const QString &strFieldName) const { return UIWizardPage::field(strFieldName); }
-
-    /** We override mediumVariant access functions since for the guided new vm wizard it is set to KMediumVariant_Standard. */
-    virtual qulonglong mediumVariant() const /* override */;
-    virtual void setMediumVariant(qulonglong uMediumVariant) /* override */;
 
 private slots:
 
