@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.cpp 87354 2021-01-21 16:08:36Z vboxsync $ */
+/* $Id: UIActionPoolManager.cpp 87413 2021-01-25 11:03:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class implementation.
  */
@@ -81,10 +81,16 @@ protected:
         return QString("ExtensionPackManager");
     }
 
+    /** Returns default shortcut. */
+    virtual QKeySequence defaultShortcut(UIActionPoolType) const /* override */
+    {
+        return QKeySequence("Ctrl+T");
+    }
+
     /** Handles translation event. */
     virtual void retranslateUi() /* override */
     {
-        setName(QApplication::translate("UIActionPool", "&Extension Pack Manager..."));
+        setName(QApplication::translate("UIActionPool", "Ex&tension Pack Manager..."));
         setStatusTip(QApplication::translate("UIActionPool", "Display the Extension Pack Manager window"));
     }
 };
