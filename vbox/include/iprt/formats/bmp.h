@@ -1,4 +1,4 @@
-/* $Id: bmp.h 85856 2020-08-21 09:06:50Z vboxsync $ */
+/* $Id: bmp.h 85857 2020-08-21 09:10:49Z vboxsync $ */
 /** @file
  * Bitmap (BMP) format defines.
  */
@@ -29,6 +29,9 @@
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
+
+#include <iprt/types.h>
+#include <iprt/assertcompile.h>
 
 #pragma pack(1)
 
