@@ -1,4 +1,4 @@
-/* $Id: VBoxSeamless.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
+/* $Id: VBoxSeamless.cpp 86870 2020-11-12 09:59:28Z vboxsync $ */
 /** @file
  * VBoxSeamless - Seamless windows
  */
@@ -402,6 +402,7 @@ static DECLCALLBACK(int) VBoxSeamlessWorker(void *pvInstance, bool volatile *pfS
             break;
         }
 
+        /** @todo r=andy We do duplicate code here (see VbglR3SeamlessWaitEvent()). */
         uint32_t fEvent = 0;
         rc = VbglR3WaitEvent(VMMDEV_EVENT_SEAMLESS_MODE_CHANGE_REQUEST, 5000 /*ms*/, &fEvent);
 
