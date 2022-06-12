@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioWasApi.cpp 89128 2021-05-17 23:31:36Z vboxsync $ */
+/* $Id: DrvHostAudioWasApi.cpp 89129 2021-05-17 23:45:55Z vboxsync $ */
 /** @file
  * Host audio driver - Windows Audio Session API.
  */
@@ -318,7 +318,7 @@ static const char *drvHostWasStreamStatusString(PDRVHOSTAUDIOWASSTREAM pStreamWa
     memcpy(&pStreamWas->szStatus[off], pTuple->psz, pTuple->cch);
     off += pTuple->cch;
 
-    Assert(off < sizeof(pStreamCA->szStatus));
+    Assert(off < sizeof(pStreamWas->szStatus));
     pStreamWas->szStatus[off] = '\0';
     return pStreamWas->szStatus;
 }
