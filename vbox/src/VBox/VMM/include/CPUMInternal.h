@@ -1,4 +1,4 @@
-/* $Id: CPUMInternal.h 87345 2021-01-21 11:37:30Z vboxsync $ */
+/* $Id: CPUMInternal.h 87349 2021-01-21 12:11:34Z vboxsync $ */
 /** @file
  * CPUM - Internal header file.
  */
@@ -450,15 +450,13 @@ typedef struct CPUMCPU
     uint8_t                 abPadding3[4 + sizeof(RTHCPTR) + 1];
 #endif
 
-    /** Have we entered the recompiler? */
-    bool                    fRemEntered;
     /** Whether the X86_CPUID_FEATURE_EDX_APIC and X86_CPUID_AMD_FEATURE_EDX_APIC
      *  (?) bits are visible or not.  (The APIC is responsible for setting this
      *  when loading state, so we won't save it.) */
     bool                    fCpuIdApicFeatureVisible;
 
     /** Align the next member on a 64-byte boundary. */
-    uint8_t                 abPadding2[64 - (16 + 12 + 4 + 8 + 1 + 2)];
+    uint8_t                 abPadding2[64 - (16 + 12 + 4 + 8 + 1 + 1)];
 
     /** Saved host context.  Only valid while inside RC or HM contexts.
      * Must be aligned on a 64-byte boundary. */
