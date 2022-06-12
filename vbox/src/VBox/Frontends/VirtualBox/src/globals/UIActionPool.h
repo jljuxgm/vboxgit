@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.h 88242 2021-03-22 12:20:10Z vboxsync $ */
+/* $Id: UIActionPool.h 88834 2021-05-03 13:09:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPool class declaration.
  */
@@ -95,6 +95,7 @@ enum UIActionIndex
     UIActionIndex_M_Log_T_Bookmark,
     UIActionIndex_M_Log_T_Options,
     UIActionIndex_M_Log_S_Refresh,
+    UIActionIndex_M_Log_S_Reload,
     UIActionIndex_M_Log_S_Save,
 
     /* 'Performance' menu actions: */

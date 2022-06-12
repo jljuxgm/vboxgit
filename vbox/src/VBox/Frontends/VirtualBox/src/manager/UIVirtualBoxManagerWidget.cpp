@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 88520 2021-04-15 10:34:10Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 88834 2021-05-03 13:09:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -942,6 +942,7 @@ void UIVirtualBoxManagerWidget::updateToolbar()
                     m_pToolBar->addAction(actionPool()->action(UIActionIndex_M_Log_T_Bookmark));
                     m_pToolBar->addAction(actionPool()->action(UIActionIndex_M_Log_T_Options));
                     m_pToolBar->addAction(actionPool()->action(UIActionIndex_M_Log_S_Refresh));
+                    m_pToolBar->addAction(actionPool()->action(UIActionIndex_M_Log_S_Reload));
                     m_pToolBar->addSeparator();
                     m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_Settings));
                     m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_Discard));
