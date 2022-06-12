@@ -1,4 +1,4 @@
-/* $Id: ProgressImpl.cpp 85251 2020-07-11 23:17:17Z vboxsync $ */
+/* $Id: ProgressImpl.cpp 85300 2020-07-13 10:04:45Z vboxsync $ */
 /** @file
  * VirtualBox Progress COM class implementation
  */
@@ -910,7 +910,7 @@ HRESULT Progress::setCurrentOperationProgress(ULONG aPercent)
         m_ulOperationPercent = aPercent;
         ULONG actualPercent = 0;
         getPercent(&actualPercent);
-        fireProgressPercentageChangedEvent(pEventSource, mId.toUtf16().raw(), (LONG)actualPercent);
+        ::FireProgressPercentageChangedEvent(pEventSource, mId.toUtf16().raw(), (LONG)actualPercent);
     }
 
     return S_OK;
@@ -1067,7 +1067,7 @@ HRESULT Progress::setNextOperation(const com::Utf8Str &aNextOperationDescription
 
     ULONG actualPercent = 0;
     getPercent(&actualPercent);
-    fireProgressPercentageChangedEvent(pEventSource, mId.toUtf16().raw(), (LONG)actualPercent);
+    ::FireProgressPercentageChangedEvent(pEventSource, mId.toUtf16().raw(), (LONG)actualPercent);
 
     return S_OK;
 }
@@ -1161,7 +1161,7 @@ HRESULT Progress::i_notifyCompleteWorker(HRESULT aResultCode, const ComPtr<IVirt
     if (mWaitersCount > 0)
         RTSemEventMultiSignal(mCompletedSem);
 
-    fireProgressTaskCompletedEvent(pEventSource, mId.toUtf16().raw());
+    ::FireProgressTaskCompletedEvent(pEventSource, mId.toUtf16().raw());
 
     return S_OK;
 }

@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImpl.cpp 84814 2020-06-12 12:43:02Z vboxsync $ */
+/* $Id: GuestCtrlImpl.cpp 85300 2020-07-13 10:04:45Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -270,7 +270,7 @@ int Guest::i_sessionRemove(uint32_t uSessionID)
 
     alock.release(); /* Release lock before firing off event. */
 
-    fireGuestSessionRegisteredEvent(mEventSource, pSession, false /* Unregistered */);
+    ::FireGuestSessionRegisteredEvent(mEventSource, pSession, false /* Unregistered */);
     pSession.setNull();
 
     LogFlowFuncLeaveRC(rc);
@@ -358,8 +358,7 @@ int Guest::i_sessionCreate(const GuestSessionStartupInfo &ssInfo,
 
         alock.release(); /* Release lock before firing off event. */
 
-        fireGuestSessionRegisteredEvent(mEventSource, pGuestSession,
-                                        true /* Registered */);
+        ::FireGuestSessionRegisteredEvent(mEventSource, pGuestSession, true /* Registered */);
     }
     catch (int rc2)
     {

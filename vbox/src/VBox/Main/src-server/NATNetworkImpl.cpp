@@ -1,4 +1,4 @@
-/* $Id: NATNetworkImpl.cpp 85253 2020-07-11 23:26:53Z vboxsync $ */
+/* $Id: NATNetworkImpl.cpp 85300 2020-07-13 10:04:45Z vboxsync $ */
 /** @file
  * INATNetwork implementation.
  */
@@ -178,13 +178,13 @@ HRESULT NATNetwork::i_saveSettings(settings::NATNetwork &data)
                                           m->s.fNeedDhcpServer);
 
     /* Notify listerners listening on this network only */
-    fireNATNetworkSettingEvent(m->pEventSource,
-                               Bstr(m->s.strNetworkName).raw(),
-                               m->s.fEnabled,
-                               Bstr(m->s.strIPv4NetworkCidr).raw(),
-                               Bstr(m->IPv4Gateway).raw(),
-                               m->s.fAdvertiseDefaultIPv6Route,
-                               m->s.fNeedDhcpServer);
+    ::FireNATNetworkSettingEvent(m->pEventSource,
+                                 Bstr(m->s.strNetworkName).raw(),
+                                 m->s.fEnabled,
+                                 Bstr(m->s.strIPv4NetworkCidr).raw(),
+                                 Bstr(m->IPv4Gateway).raw(),
+                                 m->s.fAdvertiseDefaultIPv6Route,
+                                 m->s.fNeedDhcpServer);
 
     return S_OK;
 }
@@ -589,10 +589,10 @@ HRESULT NATNetwork::addPortForwardRule(BOOL aIsIpv6,
                                               Bstr(aGuestIp).raw(), aGuestPort);
 
     /* Notify listerners listening on this network only */
-    fireNATNetworkPortForwardEvent(m->pEventSource, Bstr(m->s.strNetworkName).raw(), TRUE,
-                                   aIsIpv6, Bstr(aPortForwardRuleName).raw(), aProto,
-                                   Bstr(aHostIp).raw(), aHostPort,
-                                   Bstr(aGuestIp).raw(), aGuestPort);
+    ::FireNATNetworkPortForwardEvent(m->pEventSource, Bstr(m->s.strNetworkName).raw(), TRUE,
+                                     aIsIpv6, Bstr(aPortForwardRuleName).raw(), aProto,
+                                     Bstr(aHostIp).raw(), aHostPort,
+                                     Bstr(aGuestIp).raw(), aGuestPort);
 
     return S_OK;
 }
@@ -634,10 +634,10 @@ HRESULT NATNetwork::removePortForwardRule(BOOL aIsIpv6, const com::Utf8Str &aPor
                                               Bstr(strGuestIP).raw(), u16GuestPort);
 
     /* Notify listerners listening on this network only */
-    fireNATNetworkPortForwardEvent(m->pEventSource, Bstr(m->s.strNetworkName).raw(), FALSE,
-                                   aIsIpv6, Bstr(aPortForwardRuleName).raw(), proto,
-                                   Bstr(strHostIP).raw(), u16HostPort,
-                                   Bstr(strGuestIP).raw(), u16GuestPort);
+    ::FireNATNetworkPortForwardEvent(m->pEventSource, Bstr(m->s.strNetworkName).raw(), FALSE,
+                                     aIsIpv6, Bstr(aPortForwardRuleName).raw(), proto,
+                                     Bstr(strHostIP).raw(), u16HostPort,
+                                     Bstr(strGuestIP).raw(), u16GuestPort);
     return S_OK;
 }
 

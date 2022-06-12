@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 85257 2020-07-11 23:54:09Z vboxsync $ */
+/* $Id: MachineImpl.cpp 85300 2020-07-13 10:04:45Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -6557,7 +6557,7 @@ HRESULT Machine::detachHostPCIDevice(LONG aHostAddress)
         Bstr mid;
         rc = this->COMGETTER(Id)(mid.asOutParam());
         Assert(SUCCEEDED(rc));
-        fireHostPCIDevicePlugEvent(es, mid.raw(), false /* unplugged */, true /* success */, pAttach, NULL);
+        ::FireHostPCIDevicePlugEvent(es, mid.raw(), false /* unplugged */, true /* success */, pAttach, NULL);
     }
 
     return fRemoved ? S_OK : setError(VBOX_E_OBJECT_NOT_FOUND,

@@ -1,4 +1,4 @@
-/* $Id: KeyboardImpl.cpp 85286 2020-07-12 23:08:50Z vboxsync $ */
+/* $Id: KeyboardImpl.cpp 85300 2020-07-13 10:04:45Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -212,7 +212,7 @@ HRESULT Keyboard::putScancodes(const std::vector<LONG> &aScancodes,
     for (size_t i = 0; i < aScancodes.size(); ++i)
         keys[i] = aScancodes[i];
 
-    fireGuestKeyboardEvent(mEventSource, ComSafeArrayAsInParam(keys));
+    ::FireGuestKeyboardEvent(mEventSource, ComSafeArrayAsInParam(keys));
 
     if (RT_FAILURE(vrc))
         return setErrorBoth(VBOX_E_IPRT_ERROR, vrc,

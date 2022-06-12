@@ -1,4 +1,4 @@
-/* $Id: MouseImpl.cpp 85286 2020-07-12 23:08:50Z vboxsync $ */
+/* $Id: MouseImpl.cpp 85300 2020-07-13 10:04:45Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -692,7 +692,7 @@ void Mouse::i_fireMouseEvent(bool fAbsolute, LONG x, LONG y, LONG dz, LONG dw,
         mode = GuestMouseEventMode_Relative;
 
     if (fButtons != 0)
-        fireGuestMouseEvent(mEventSource, mode, x, y, dz, dw, fButtons);
+        ::FireGuestMouseEvent(mEventSource, mode, x, y, dz, dw, fButtons);
     else
     {
         ComPtr<IEvent> ptrEvent;
@@ -722,8 +722,8 @@ void Mouse::i_fireMultiTouchEvent(uint8_t cContacts,
         contactFlags[i] = RT_BYTE2(u32Hi);
     }
 
-    fireGuestMultiTouchEvent(mEventSource, cContacts, ComSafeArrayAsInParam(xPositions), ComSafeArrayAsInParam(yPositions),
-                             ComSafeArrayAsInParam(contactIds), ComSafeArrayAsInParam(contactFlags), u32ScanTime);
+    ::FireGuestMultiTouchEvent(mEventSource, cContacts, ComSafeArrayAsInParam(xPositions), ComSafeArrayAsInParam(yPositions),
+                               ComSafeArrayAsInParam(contactIds), ComSafeArrayAsInParam(contactFlags), u32ScanTime);
 }
 
 /**
