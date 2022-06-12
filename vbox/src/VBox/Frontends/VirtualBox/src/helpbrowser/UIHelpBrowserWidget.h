@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.h 86799 2020-11-03 14:50:06Z vboxsync $ */
+/* $Id: UIHelpBrowserWidget.h 86806 2020-11-04 11:04:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class declaration.
  */
@@ -94,6 +94,9 @@ private slots:
     void sltHandleSearchingStarted();
     void sltHandleSearchStart();
     void sltHandleHelpBrowserViewerSourceChange(const QUrl &source);
+    void sltOpenLinksContextMenu(const QPoint &pos);
+    void sltOpenLinkInNewTab();
+    void sltOpenLink();
 
 private:
 
@@ -108,7 +111,9 @@ private:
     void saveOptions();
     void cleanup();
     QUrl findIndexHtml() const;
-    //bool eventFilter(QObject *pWatched, QEvent *pEvent);
+    /* Returns the url of the item with @p itemIndex. */
+    QUrl contentWidgetUrl(const QModelIndex &itemIndex);
+    void openLinkSlotHandler(QObject *pSenderObject, bool fOpenInNewTab);
 
     /** @name Event handling stuff.
      * @{ */
