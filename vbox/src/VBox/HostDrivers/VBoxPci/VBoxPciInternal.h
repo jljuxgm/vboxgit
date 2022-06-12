@@ -1,4 +1,4 @@
-/* $Id: VBoxPciInternal.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxPciInternal.h 85698 2020-08-11 17:05:29Z vboxsync $ */
 /** @file
  * VBoxPci - PCI driver (Host), Internal Header.
  */
@@ -37,7 +37,7 @@
 
 #ifdef RT_OS_LINUX
 
-#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 35) && defined(CONFIG_IOMMU_API)
+#if RTLNX_VER_MIN(2,6,35) && defined(CONFIG_IOMMU_API)
 # define VBOX_WITH_IOMMU
 #endif
 

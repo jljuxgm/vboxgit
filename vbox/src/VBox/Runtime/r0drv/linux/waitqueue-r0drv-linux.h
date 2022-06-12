@@ -1,4 +1,4 @@
-/* $Id: waitqueue-r0drv-linux.h 85649 2020-08-08 13:35:48Z vboxsync $ */
+/* $Id: waitqueue-r0drv-linux.h 85698 2020-08-11 17:05:29Z vboxsync $ */
 /** @file
  * IPRT - Linux Ring-0 Driver Helpers for Abstracting Wait Queues,
  */
@@ -183,7 +183,7 @@ DECLINLINE(int) rtR0SemLnxWaitInit(PRTR0SEMLNXWAIT pWait, uint32_t fFlags, uint6
     /*
      * Initialize the wait queue related bits.
      */
-#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 5, 39)
+#if RTLNX_VER_MIN(2,5,39)
     init_wait((&pWait->WaitQE));
 #else
     RT_ZERO(pWait->WaitQE);

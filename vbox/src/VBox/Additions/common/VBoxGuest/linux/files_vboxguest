@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: files_vboxguest 83917 2020-04-22 09:32:50Z vboxsync $
+# $Id: files_vboxguest 85698 2020-08-11 17:05:29Z vboxsync $
 ## @file
 # Shared file between Makefile.kmk and export_modules.sh.
 #
@@ -69,6 +69,7 @@ FILES_VBOXGUEST_NOBIN=" \
     ${PATH_ROOT}/include/iprt/uni.h=>include/iprt/uni.h \
     ${PATH_ROOT}/include/iprt/utf16.h=>include/iprt/utf16.h \
     ${PATH_ROOT}/include/iprt/x86.h=>include/iprt/x86.h \
+    ${PATH_ROOT}/include/iprt/linux/version.h=>include/iprt/linux/version.h \
     ${PATH_ROOT}/include/VBox/cdefs.h=>include/VBox/cdefs.h \
     ${PATH_ROOT}/include/VBox/err.h=>include/VBox/err.h \
     ${PATH_ROOT}/include/VBox/log.h=>include/VBox/log.h \
