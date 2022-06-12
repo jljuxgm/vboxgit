@@ -1,4 +1,4 @@
-/* $Id: HDAStream.cpp 87944 2021-03-04 09:14:58Z vboxsync $ */
+/* $Id: HDAStream.cpp 87953 2021-03-04 14:53:36Z vboxsync $ */
 /** @file
  * HDAStream.cpp - Stream functions for HD Audio.
  */
@@ -1867,6 +1867,8 @@ void hdaR3StreamUpdate(PPDMDEVINS pDevIns, PHDASTATE pThis, PHDASTATER3 pThisCC,
     }
 }
 
+#endif /* IN_RING3 */
+
 /**
  * Locks an HDA stream for serialized access.
  *
@@ -1896,6 +1898,8 @@ void hdaStreamUnlock(PHDASTREAM pStreamShared)
     AssertRC(rc2);
 # endif
 }
+
+#ifdef IN_RING3
 
 #if 0 /* unused - no prototype even */
 /**
