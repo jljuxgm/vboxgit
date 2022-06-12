@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 84376 2020-05-19 17:57:56Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 84377 2020-05-19 18:17:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -761,8 +761,8 @@ void UIChooserModel::sltHandleCloudListMachinesTaskComplete(UITask *pTask)
     /* Restore selection if there was some item before: */
     if (!strDefinition.isNull())
         setSelectedItem(strDefinition);
-    /* Else make sure at least one item selected: */
-    else
+    /* Make sure at least one item selected: */
+    if (!currentItem())
         makeSureAtLeastOneItemSelected();
 }
 
