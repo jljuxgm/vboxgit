@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 85220 2020-07-11 15:42:34Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -694,8 +694,20 @@ static int gctlPrintProgressError(ComPtr<IProgress> pProgress)
  */
 static RTEXITCODE gctrCmdCtxInit(PGCTLCMDCTX pCtx, HandlerArg *pArg)
 {
-    RT_ZERO(*pCtx);
-    pCtx->pArg = pArg;
+    pCtx->pArg                      = pArg;
+    pCtx->pCmdDef                   = NULL;
+    pCtx->pszVmNameOrUuid           = NULL;
+    pCtx->fPostOptionParsingInited  = false;
+    pCtx->fLockedVmSession          = false;
+    pCtx->fDetachGuestSession       = false;
+    pCtx->fInstalledSignalHandler   = false;
+    pCtx->cVerbose                  = 0;
+    pCtx->strUsername.setNull();
+    pCtx->strPassword.setNull();
+    pCtx->strDomain.setNull();
+    pCtx->pGuest.setNull();
+    pCtx->pGuestSession.setNull();
+    pCtx->uSessionID                = 0;
 
     /*
      * The user name defaults to the host one, if we can get at it.
@@ -703,7 +715,7 @@ static RTEXITCODE gctrCmdCtxInit(PGCTLCMDCTX pCtx, HandlerArg *pArg)
     char szUser[1024];
     int rc = RTProcQueryUsername(RTProcSelf(), szUser, sizeof(szUser), NULL);
     if (   RT_SUCCESS(rc)
-        && RTStrIsValidEncoding(szUser)) /* paranoia required on posix */
+        && RTStrIsValidEncoding(szUser)) /* paranoia was required on posix at some point, not needed any more! */
     {
         try
         {
