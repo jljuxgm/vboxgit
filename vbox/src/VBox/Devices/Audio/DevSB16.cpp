@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 88645 2021-04-22 08:32:12Z vboxsync $ */
+/* $Id: DevSB16.cpp 88646 2021-04-22 08:39:49Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  */
@@ -235,6 +235,7 @@ typedef struct SB16STATE
     uint8_t mixer_nreg;
     uint8_t mixer_regs[256];
 } SB16STATE;
+
 
 /*********************************************************************************************************************************
 *   Internal Functions                                                                                                           *
