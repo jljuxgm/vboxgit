@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 84439 2020-05-21 18:09:40Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.h 84456 2020-05-22 12:43:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -246,6 +246,9 @@ private slots:
 
         /** Handles call to create machine shortcut. */
         void sltPerformCreateMachineShortcut();
+
+        /** Handles call to sort group. */
+        void sltPerformGroupSorting();
 
         /** Handles call to show group Close menu. */
         void sltGroupCloseMenuAboutToShow();

@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.h 84439 2020-05-21 18:09:40Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.h 84456 2020-05-22 12:43:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class declaration.
  */
@@ -136,6 +136,8 @@ public:
 
         /** Opens group name editor. */
         void openGroupNameEditor();
+        /** Performs group sorting. */
+        void performGroupSorting();
     /** @} */
 
     /** @name Tools pane stuff.

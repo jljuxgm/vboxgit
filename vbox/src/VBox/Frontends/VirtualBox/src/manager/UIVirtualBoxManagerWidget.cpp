@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 84439 2020-05-21 18:09:40Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 84456 2020-05-22 12:43:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -113,6 +113,11 @@ bool UIVirtualBoxManagerWidget::isGroupSavingInProgress() const
 void UIVirtualBoxManagerWidget::openGroupNameEditor()
 {
     m_pPaneChooser->openGroupNameEditor();
+}
+
+void UIVirtualBoxManagerWidget::performGroupSorting()
+{
+    m_pPaneChooser->performGroupSorting();
 }
 
 void UIVirtualBoxManagerWidget::setToolsType(UIToolType enmType)

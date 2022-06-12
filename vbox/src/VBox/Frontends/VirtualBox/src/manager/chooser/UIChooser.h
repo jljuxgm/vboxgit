@@ -1,4 +1,4 @@
-/* $Id: UIChooser.h 84439 2020-05-21 18:09:40Z vboxsync $ */
+/* $Id: UIChooser.h 84456 2020-05-22 12:43:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooser class declaration.
  */
@@ -130,6 +130,8 @@ public:
       * @{ */
         /** Opens group name editor. */
         void openGroupNameEditor();
+        /** Performs group sorting. */
+        void performGroupSorting();
     /** @} */
 
 public slots:

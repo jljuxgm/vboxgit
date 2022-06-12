@@ -1,4 +1,4 @@
-/* $Id: UIChooser.cpp 84439 2020-05-21 18:09:40Z vboxsync $ */
+/* $Id: UIChooser.cpp 84456 2020-05-22 12:43:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooser class implementation.
  */
@@ -110,6 +110,12 @@ void UIChooser::openGroupNameEditor()
 {
     AssertPtrReturnVoid(model());
     model()->startEditingSelectedGroupItemName();
+}
+
+void UIChooser::performGroupSorting()
+{
+    AssertPtrReturnVoid(model());
+    model()->sortSelectedGroupItem();
 }
 
 void UIChooser::sltHandleToolbarResize(const QSize &newSize)
