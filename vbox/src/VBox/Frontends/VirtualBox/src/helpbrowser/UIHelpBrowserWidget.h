@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.h 86961 2020-11-23 17:26:14Z vboxsync $ */
+/* $Id: UIHelpBrowserWidget.h 86965 2020-11-24 10:06:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class declaration.
  */
@@ -63,7 +63,7 @@ class SHARED_LIBRARY_STUFF UIHelpBrowserWidget  : public QIWithRetranslateUI<QWi
 
 signals:
 
-    void sigSetCloseButtonShortCut(QKeySequence);
+    void sigCloseDialog();
 
 public:
 
@@ -169,7 +169,8 @@ private:
     UIHelpBrowserTabManager  *m_pTabManager;
     UIBookmarksListContainer *m_pBookmarksWidget;
     QWidget             *m_pSearchContainerWidget;
-    QAction             *m_pPrintDialogAction;
+    QAction             *m_pPrintAction;
+    QAction             *m_pCloseDialogAction;
     QAction             *m_pShowHideSideBarAction;
     QAction             *m_pShowHideToolBarAction;
     QAction             *m_pShowHideFontScaleWidget;
