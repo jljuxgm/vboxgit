@@ -1,4 +1,4 @@
-/* $Id: UnattendedInstaller.cpp 84795 2020-06-11 14:09:07Z vboxsync $ */
+/* $Id: UnattendedInstaller.cpp 85275 2020-07-12 13:44:42Z vboxsync $ */
 /** @file
  * UnattendedInstaller class and it's descendants implementation
  */
@@ -510,7 +510,7 @@ HRESULT UnattendedInstaller::newAuxIsoImageMaker(PRTFSISOMAKER phIsoMaker)
 {
     int vrc = RTFsIsoMakerCreate(phIsoMaker);
     if (RT_SUCCESS(vrc))
-        return vrc;
+        return S_OK;
     return mpParent->setErrorBoth(E_FAIL, vrc, mpParent->tr("RTFsIsoMakerCreate failed (%Rrc)"), vrc);
 }
 
