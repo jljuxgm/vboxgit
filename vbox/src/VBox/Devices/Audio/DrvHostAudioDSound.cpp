@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioDSound.cpp 88573 2021-04-16 19:31:14Z vboxsync $ */
+/* $Id: DrvHostAudioDSound.cpp 88691 2021-04-23 19:57:31Z vboxsync $ */
 /** @file
  * Host audio driver - DirectSound (Windows).
  */
@@ -2696,9 +2696,6 @@ static DECLCALLBACK(void) drvHostDSoundDestruct(PPDMDRVINS pDrvIns)
 
     PDMAudioHostEnumDelete(&pThis->DeviceEnum);
 
-    if (pThis->pDrvIns)
-        CoUninitialize();
-
     int rc2 = RTCritSectDelete(&pThis->CritSect);
     AssertRC(rc2);
 
@@ -2782,22 +2779,13 @@ static DECLCALLBACK(int) drvHostDSoundConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pC
     /*
      * Verify that IDirectSound is available.
      */
-    HRESULT hrc = CoInitializeEx(NULL, COINIT_MULTITHREADED);
+    LPDIRECTSOUND pDirectSound = NULL;
+    HRESULT hrc = CoCreateInstance(CLSID_DirectSound, NULL, CLSCTX_ALL, IID_IDirectSound, (void **)&pDirectSound);
     if (SUCCEEDED(hrc))
-    {
-        LPDIRECTSOUND pDirectSound = NULL;
-        hrc = CoCreateInstance(CLSID_DirectSound, NULL, CLSCTX_ALL, IID_IDirectSound, (void **)&pDirectSound);
-        if (SUCCEEDED(hrc))
-            IDirectSound_Release(pDirectSound);
-        else
-        {
-            LogRel(("DSound: DirectSound not available: %Rhrc\n", hrc));
-            return VERR_AUDIO_BACKEND_INIT_FAILED;
-        }
-    }
+        IDirectSound_Release(pDirectSound);
     else
     {
-        LogRel(("DSound: CoInitializeEx(,COINIT_MULTITHREADED) failed: %Rhrc\n", hrc));
+        LogRel(("DSound: DirectSound not available: %Rhrc\n", hrc));
         return VERR_AUDIO_BACKEND_INIT_FAILED;
     }
 

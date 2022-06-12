@@ -1,4 +1,4 @@
-/* $Id: DevHdaStream.cpp 88690 2021-04-23 19:25:40Z vboxsync $ */
+/* $Id: DevHdaStream.cpp 88691 2021-04-23 19:57:31Z vboxsync $ */
 /** @file
  * Intel HD Audio Controller Emulation - Streams.
  */
@@ -2537,7 +2537,7 @@ void hdaR3StreamUnregisterDMAHandlers(PHDASTREAM pStream)
  * Asynchronous I/O thread for a HDA stream.
  *
  * This will do the heavy lifting work for us as soon as it's getting notified
- * by another thread.}
+ * by the DMA timer callout.}
  */
 static DECLCALLBACK(int) hdaR3StreamAsyncIOThread(RTTHREAD hThreadSelf, void *pvUser)
 {
