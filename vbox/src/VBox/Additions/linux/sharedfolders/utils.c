@@ -1,4 +1,4 @@
-/* $Id: utils.c 88273 2021-03-24 12:18:49Z vboxsync $ */
+/* $Id: utils.c 88974 2021-05-11 10:49:05Z vboxsync $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, utility functions.
  *
@@ -816,7 +816,7 @@ int vbsf_inode_setattr(struct dentry *dentry, struct iattr *iattr)
      * from futimes() when asked to preserve times, see ticketref:18569.
      */
     iattr->ia_valid |= ATTR_FORCE;
-#if (RTLNX_VER_RANGE(3,16,39,  3,17,0)) || RTLNX_VER_MIN(4,9,0) || (RTLNX_VER_RANGE(4,1,37,  4,2,0))
+#if (RTLNX_VER_RANGE(3,16,39,  3,17,0)) || RTLNX_VER_MIN(4,9,0) || (RTLNX_VER_RANGE(4,1,37,  4,2,0)) || RTLNX_UBUNTU_MIN(4,4,3,210)
 # if RTLNX_VER_MIN(5,12,0)
     rc = setattr_prepare(ns, dentry, iattr);
 # else
