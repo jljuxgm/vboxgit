@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic3.cpp 87612 2021-02-04 18:55:43Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic3.cpp 87621 2021-02-05 08:31:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic3 class implementation.
  */
@@ -63,9 +63,9 @@ void UIWizardNewVMPage3::retranslateWidgets()
 {
     if (m_pEFICheckBox)
     {
-        m_pEFICheckBox->setText(UIWizardNewVM::tr("Enable &EFI (special OSes only)"));
-        m_pEFICheckBox->setWhatsThis(UIWizardNewVM::tr("When checked, the guest will support the "
-                                                       "Extended Firmware Interface (EFI), which is required to boot certain "
+        m_pEFICheckBox->setText(UIWizardNewVM::tr("Enable EFI (special OSes only)"));
+        m_pEFICheckBox->setToolTip(UIWizardNewVM::tr("When checked, the guest will support the\n"
+                                                       "Extended Firmware Interface (EFI), which is required to boot certain\n"
                                                        "guest OSes. Non-EFI aware OSes will not be able to boot if this option is activated."));
     }
 }

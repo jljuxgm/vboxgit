@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.h 87612 2021-02-04 18:55:43Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.h 87621 2021-02-05 08:31:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class declaration.
  */
@@ -99,8 +99,8 @@ private:
     {
         ExpertToolboxItems_NameAndOSType,
         ExpertToolboxItems_Unattended,
-        ExpertToolboxItems_Disk,
         ExpertToolboxItems_Hardware,
+        ExpertToolboxItems_Disk
     };
 
     /** Translation stuff. */
