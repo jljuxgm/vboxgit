@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.cpp 85752 2020-08-13 16:25:32Z vboxsync $ */
+/* $Id: UIActionPoolManager.cpp 85907 2020-08-27 14:38:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class implementation.
  */
@@ -2530,7 +2530,7 @@ protected:
     /** Returns standard shortcut. */
     virtual QKeySequence standardShortcut(UIActionPoolType) const /* override */
     {
-        return QKeySequence(QKeySequence::Find);
+        return actionPool()->isTemporary() ? QKeySequence() : QKeySequence(QKeySequence::Find);
     }
 
     /** Handles translation event. */
@@ -2577,7 +2577,7 @@ protected:
     /** Returns standard shortcut. */
     virtual QKeySequence standardShortcut(UIActionPoolType) const /* override */
     {
-        return QKeySequence(QKeySequence::Refresh);
+        return actionPool()->isTemporary() ? QKeySequence() : QKeySequence(QKeySequence::Refresh);
     }
 
     /** Handles translation event. */
@@ -2776,7 +2776,7 @@ protected:
     /** Returns standard shortcut. */
     virtual QKeySequence standardShortcut(UIActionPoolType) const /* override */
     {
-        return QKeySequence(QKeySequence::Refresh);
+        return actionPool()->isTemporary() ? QKeySequence() : QKeySequence(QKeySequence::Refresh);
     }
 
     /** Handles translation event. */
@@ -3062,7 +3062,7 @@ protected:
     /** Returns standard shortcut. */
     virtual QKeySequence standardShortcut(UIActionPoolType) const /* override */
     {
-        return QKeySequence(QKeySequence::HelpContents);
+        return actionPool()->isTemporary() ? QKeySequence() : QKeySequence(QKeySequence::HelpContents);
     }
 
     /** Handles translation event. */
