@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 85772 2020-08-14 14:06:17Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 86094 2020-09-11 14:02:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -2428,18 +2428,6 @@ QList<MachineSettingsPageType> UIExtraDataManager::restrictedMachineSettingsPage
     }
     /* Return result: */
     return result;
-}
-
-bool UIExtraDataManager::hostScreenSaverDisabled()
-{
-    /* 'False' unless feature allowed: */
-    return isFeatureAllowed(GUI_HostScreenSaverDisabled);
-}
-
-void UIExtraDataManager::setHostScreenSaverDisabled(bool fDisabled)
-{
-    /* 'True' if feature allowed, null-string otherwise: */
-    setExtraDataString(GUI_HostScreenSaverDisabled, toFeatureAllowed(fDisabled));
 }
 
 QString UIExtraDataManager::languageId()

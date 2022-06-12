@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 85454 2020-07-24 10:50:38Z vboxsync $ */
+/* $Id: UIExtraDataDefs.cpp 86094 2020-09-11 14:02:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -48,9 +48,6 @@ const char *UIExtraDataDefs::GUI_Progress_LegacyMode = "GUI/Progress/LegacyMode"
 const char *UIExtraDataDefs::GUI_Customizations = "GUI/Customizations";
 const char *UIExtraDataDefs::GUI_RestrictedGlobalSettingsPages = "GUI/RestrictedGlobalSettingsPages";
 const char *UIExtraDataDefs::GUI_RestrictedMachineSettingsPages = "GUI/RestrictedMachineSettingsPages";
-
-/* Settings: General: */
-const char *UIExtraDataDefs::GUI_HostScreenSaverDisabled = "GUI/HostScreenSaverDisabled";
 
 /* Settings: Language: */
 const char *UIExtraDataDefs::GUI_LanguageID = "GUI/LanguageID";
