@@ -1,4 +1,4 @@
-/* $Id: HostDnsService.h 84425 2020-05-20 17:31:18Z vboxsync $ */
+/* $Id: HostDnsService.h 85271 2020-07-12 12:36:21Z vboxsync $ */
 /** @file
  * Host DNS listener.
  */
@@ -37,11 +37,12 @@ typedef const HostDnsMonitorProxy *PCHostDnsMonitorProxy;
 
 class HostDnsInformation
 {
-  public:
+public:
     static const uint32_t IGNORE_SERVER_ORDER = RT_BIT_32(0);
     static const uint32_t IGNORE_SUFFIXES     = RT_BIT_32(1);
 
-  public:
+public:
+    /** @todo r=bird: Why on earth are we using std::string and not Utf8Str?   */
     std::vector<std::string> servers;
     std::string domain;
     std::vector<std::string> searchList;
