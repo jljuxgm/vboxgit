@@ -1,4 +1,4 @@
-/* $Id: VirtioCore.h 85032 2020-07-01 15:32:34Z vboxsync $ */
+/* $Id: VirtioCore.h 85045 2020-07-03 07:07:42Z vboxsync $ */
 
 /** @file
  * VirtioCore.h - Virtio Declarations
@@ -423,7 +423,7 @@ void  virtioCoreResetAll(PVIRTIOCORE pVirtio);
  *
  * @returns VBox status code.
  */
-int  virtioCoreVirtqAttach(PVIRTIOCORE pVirtio, uint16_t uVirtqNbr, const char *pcszName);
+int  virtioCoreR3VirtqAttach(PVIRTIOCORE pVirtio, uint16_t uVirtqNbr, const char *pcszName);
 
 /**
  * Enables or disables a virtq

@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet_1_0.cpp 85016 2020-07-01 05:28:16Z vboxsync $ $Revision: 85016 $ $Date: 2020-07-01 13:28:16 +0800 (Wed, 01 Jul 2020) $ $Author: vboxsync $ */
+/* $Id: DevVirtioNet_1_0.cpp 85045 2020-07-03 07:07:42Z vboxsync $ $Revision: 85045 $ $Date: 2020-07-03 15:07:42 +0800 (Fri, 03 Jul 2020) $ $Author: vboxsync $ */
 
 /** @file
  * VBox storage devices - Virtio NET Driver
@@ -2858,7 +2858,7 @@ static DECLCALLBACK(void) virtioNetR3StatusChanged(PVIRTIOCORE pVirtio, PVIRTIOC
         {
             PVIRTIONETVIRTQ pVirtq = &pThis->aVirtqs[uVirtqNbr];
             pVirtq->idx = uVirtqNbr;
-            (void) virtioCoreVirtqAttach(&pThis->Virtio, pVirtq->idx, pVirtq->szName);
+            (void) virtioCoreR3VirtqAttach(&pThis->Virtio, pVirtq->idx, pVirtq->szName);
             pVirtq->fAttachedToVirtioCore = true;
             if (IS_VIRTQ_EMPTY(pThisCC->pDevIns, &pThis->Virtio, pVirtq->idx))
                 virtioCoreVirtqEnableNotify(&pThis->Virtio, pVirtq->idx, true /* fEnable */);
