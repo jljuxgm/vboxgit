@@ -1,4 +1,4 @@
-/* $Id: UIChooser.cpp 86923 2020-11-19 17:37:32Z vboxsync $ */
+/* $Id: UIChooser.cpp 87102 2020-12-17 14:44:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooser class implementation.
  */
@@ -187,6 +187,12 @@ void UIChooser::setCurrentMachine(const QUuid &uId)
 {
     AssertPtrReturnVoid(model());
     model()->setCurrentMachineItem(uId);
+}
+
+void UIChooser::setCurrentGlobal()
+{
+    AssertPtrReturnVoid(model());
+    model()->setCurrentGlobalItem();
 }
 
 void UIChooser::setGlobalItemHeightHint(int iHeight)

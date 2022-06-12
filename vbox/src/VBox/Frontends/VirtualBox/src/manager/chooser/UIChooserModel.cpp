@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 86930 2020-11-20 10:31:46Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 87102 2020-12-17 14:44:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -1000,6 +1000,17 @@ void UIChooserModel::setCurrentMachineItem(const QUuid &uId)
     UIChooserItem *pItem = root()->searchForItem(uId.toString(),
                                                  UIChooserItemSearchFlag_Machine |
                                                  UIChooserItemSearchFlag_ExactId);
+
+    /* Select item if exists: */
+    if (pItem)
+        setSelectedItem(pItem);
+}
+
+void UIChooserModel::setCurrentGlobalItem()
+{
+    /* Look whether we have such item at all: */
+    UIChooserItem *pItem = root()->searchForItem(QString(),
+                                                 UIChooserItemSearchFlag_Global);
 
     /* Select item if exists: */
     if (pItem)

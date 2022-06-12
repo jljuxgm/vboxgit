@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 87101 2020-12-17 14:30:07Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 87102 2020-12-17 14:44:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -509,9 +509,9 @@ void UIVirtualBoxManagerWidget::sltSwitchToMachinePerformancePane(const QUuid &u
 
 void UIVirtualBoxManagerWidget::sltSwitchToResourcesPane()
 {
+    AssertPtrReturnVoid(m_pPaneChooser);
     AssertPtrReturnVoid(m_pPaneTools);
-    m_pPaneToolsGlobal->setActive(true);
-    switchToGlobalTool(UIToolType_Resources);
+    m_pPaneChooser->setCurrentGlobal();
     m_pPaneTools->setToolsType(UIToolType_Resources);
 }
 

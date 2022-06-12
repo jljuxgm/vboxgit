@@ -1,4 +1,4 @@
-/* $Id: UIChooser.h 86923 2020-11-19 17:37:32Z vboxsync $ */
+/* $Id: UIChooser.h 87102 2020-12-17 14:44:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooser class declaration.
  */
@@ -171,6 +171,8 @@ public:
         void setMachineSearchWidgetVisibility(bool fVisible);
         /** Changes current machine to the one with certain @a uId. */
         void setCurrentMachine(const QUuid &uId);
+        /** Set global tools to be the current item. */
+        void setCurrentGlobal();
     /** @} */
 
 public slots:
