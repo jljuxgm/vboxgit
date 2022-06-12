@@ -1,4 +1,4 @@
-/* $Id: DrvAudioCommon.cpp 88016 2021-03-08 13:14:14Z vboxsync $ */
+/* $Id: DrvAudioCommon.cpp 88017 2021-03-08 14:12:02Z vboxsync $ */
 /** @file
  * Intermedia audio driver, common routines.
  *
@@ -1027,17 +1027,6 @@ bool DrvAudioHlpIsBytesAligned(PCPDMAUDIOPCMPROPS pProps, uint32_t cb)
     uint32_t const cbFrame = PDMAUDIOPCMPROPS_F2B(pProps, 1 /* Frame */);
     AssertReturn(cbFrame, false);
     return cb % cbFrame == 0;
-}
-
-/**
- * Returns the bytes per second for given PCM properties.
- *
- * @returns Bytes per second.
- * @param   pProps              PCM properties to retrieve size for.
- */
-DECLINLINE(uint64_t) drvAudioHlpBytesPerSec(PCPDMAUDIOPCMPROPS pProps)
-{
-    return PDMAUDIOPCMPROPS_F2B(pProps, 1 /* Frame */) * pProps->uHz;
 }
 
 /**
