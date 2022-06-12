@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioDSound.cpp 88819 2021-05-03 10:26:28Z vboxsync $ */
+/* $Id: DrvHostAudioDSound.cpp 88853 2021-05-04 08:47:13Z vboxsync $ */
 /** @file
  * Host audio driver - DirectSound (Windows).
  */
@@ -2810,7 +2810,9 @@ static DECLCALLBACK(int) drvHostDSoundConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pC
 # endif
         try
         {
-            pThis->m_pNotificationClient = new DrvHostAudioDSoundMMNotifClient(pIHostAudioPort);
+            pThis->m_pNotificationClient = new DrvHostAudioDSoundMMNotifClient(pIHostAudioPort,
+                                                                               pThis->Cfg.pGuidCapture == NULL,
+                                                                               pThis->Cfg.pGuidPlay == NULL);
         }
         catch (std::bad_alloc &)
         {
