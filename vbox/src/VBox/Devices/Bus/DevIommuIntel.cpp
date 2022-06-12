@@ -1,4 +1,4 @@
-/* $Id: DevIommuIntel.cpp 88875 2021-05-05 12:55:23Z vboxsync $ */
+/* $Id: DevIommuIntel.cpp 88876 2021-05-05 13:00:27Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - Intel implementation.
  */
@@ -1538,9 +1538,9 @@ static int dmarIrReadIrte(PPDMDEVINS pDevIns, uint64_t uIrtaReg, uint16_t idxInt
  *
  * @param   fExtIntrMode    Whether extended interrupt mode is enabled (i.e
  *                          IRTA_REG.EIME).
+ * @param   pIrte           The IRTE used for the remapping.
  * @param   pMsiIn          The source MSI (currently unused).
  * @param   pMsiOut         Where to store the remapped MSI.
- * @param   pIrte           The IRTE used for the remapping.
  */
 static void dmarIrRemapFromIrte(bool fExtIntrMode, PCVTD_IRTE_T pIrte, PCMSIMSG pMsiIn, PMSIMSG pMsiOut)
 {
