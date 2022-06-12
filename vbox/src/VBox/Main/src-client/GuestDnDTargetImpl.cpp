@@ -1,4 +1,4 @@
-/* $Id: GuestDnDTargetImpl.cpp 85557 2020-07-30 13:28:57Z vboxsync $ */
+/* $Id: GuestDnDTargetImpl.cpp 85558 2020-07-30 13:33:43Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag'n drop target.
  */
@@ -198,7 +198,9 @@ HRESULT GuestDnDTarget::getFormats(GuestDnDMIMEList &aFormats)
 
     AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
 
-    return GuestDnDBase::i_getFormats(aFormats);
+    aFormats = GuestDnDBase::i_getFormats();
+
+    return S_OK;
 #endif /* VBOX_WITH_DRAG_AND_DROP */
 }
 

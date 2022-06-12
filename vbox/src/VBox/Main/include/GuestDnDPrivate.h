@@ -1,4 +1,4 @@
-/* $Id: GuestDnDPrivate.h 85557 2020-07-30 13:28:57Z vboxsync $ */
+/* $Id: GuestDnDPrivate.h 85558 2020-07-30 13:33:43Z vboxsync $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget +
  * GuestDnDSource.
@@ -998,7 +998,7 @@ protected:
     /** Shared (internal) IDnDBase method implementations.
      * @{ */
     HRESULT i_isFormatSupported(const com::Utf8Str &aFormat, BOOL *aSupported);
-    HRESULT i_getFormats(GuestDnDMIMEList &aFormats);
+    const GuestDnDMIMEList &i_getFormats(void) const;
     HRESULT i_addFormats(const GuestDnDMIMEList &aFormats);
     HRESULT i_removeFormats(const GuestDnDMIMEList &aFormats);
 
