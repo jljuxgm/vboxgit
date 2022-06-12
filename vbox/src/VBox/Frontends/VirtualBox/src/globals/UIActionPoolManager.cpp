@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.cpp 85611 2020-08-05 10:21:46Z vboxsync $ */
+/* $Id: UIActionPoolManager.cpp 85613 2020-08-05 12:52:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class implementation.
  */
@@ -1747,8 +1747,8 @@ public:
     {
         setProperty("UIToolType", QVariant::fromValue(UIToolType_Performance));
         /// @todo use icons with check-boxes
-        setIcon(UIIconPool::iconSetFull(":/resources_monitor_32px.png", ":/resources_monitor_16px.png",
-                                        ":/resources_monitor_disabled_32px.png", ":/resources_monitor_disabled_16px.png"));
+        setIcon(UIIconPool::iconSetFull(":/performance_monitor_32px.png", ":/performance_monitor_16px.png",
+                                        ":/performance_monitor_disabled_32px.png", ":/performance_monitor_disabled_16px.png"));
     }
 
 protected:
