@@ -1,4 +1,4 @@
-/* $Id: SUPDrvIOC.h 85507 2020-07-29 10:10:49Z vboxsync $ */
+/* $Id: SUPDrvIOC.h 85590 2020-07-31 20:06:15Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - IOCtl definitions.
  */
@@ -221,6 +221,7 @@ typedef SUPREQHDR *PSUPREQHDR;
  *
  * @todo Pending work on next major version change:
  *          - Nothing.
+ * @note 0x002f0000 is used by 6.0. The next version number must be 0x00300000.
  */
 #define SUPDRV_IOC_VERSION                              0x002e0000
 
