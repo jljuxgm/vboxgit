@@ -1,4 +1,4 @@
-/* $Id: UIToolBox.h 87722 2021-02-11 11:16:20Z vboxsync $ */
+/* $Id: UIToolBox.h 88271 2021-03-24 12:05:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolBox class declaration.
  */
@@ -33,6 +33,8 @@ class QVBoxLayout;
 class QLabel;
 class UIToolBoxPage;
 
+/** A Qframe extension with similar API and functionality like QToolBox. I needed some for
+  * flexibility (like a second icon at the right hand side of the title etc.). */
 class  SHARED_LIBRARY_STUFF UIToolBox : public QIWithRetranslateUI<QFrame>
 {
 
