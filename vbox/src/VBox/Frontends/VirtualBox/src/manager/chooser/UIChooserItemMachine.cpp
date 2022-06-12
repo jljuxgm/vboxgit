@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemMachine.cpp 84420 2020-05-20 16:49:00Z vboxsync $ */
+/* $Id: UIChooserItemMachine.cpp 84610 2020-05-29 14:10:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemMachine class implementation.
  */
@@ -465,19 +465,18 @@ void UIChooserItemMachine::processDrop(QGraphicsSceneDragDropEvent *pEvent, UICh
 
                 /* Group passed item with current-item into the new group: */
                 UIChooserNodeGroup *pNewGroupNode = new UIChooserNodeGroup(parentItem()->node(),
-                                                                           false /* favorite */,
                                                                            parentItem()->node()->nodes().size(),
+                                                                           true /* opened */,
                                                                            UIChooserModel::uniqueGroupName(parentItem()->node()),
-                                                                           parentItem()->node()->toGroupNode()->groupType(),
-                                                                           true /* true */);
+                                                                           parentItem()->node()->toGroupNode()->groupType());
                 UIChooserItemGroup *pNewGroupItem = new UIChooserItemGroup(parentItem(), pNewGroupNode);
                 UIChooserNodeMachine *pNewMachineNode1 = new UIChooserNodeMachine(pNewGroupNode,
-                                                                                  nodeToMachineType(),
-                                                                                  pNewGroupNode->nodes().size());
+                                                                                  pNewGroupNode->nodes().size(),
+                                                                                  nodeToMachineType());
                 new UIChooserItemMachine(pNewGroupItem, pNewMachineNode1);
                 UIChooserNodeMachine *pNewMachineNode2 = new UIChooserNodeMachine(pNewGroupNode,
-                                                                                  pNode->toMachineNode(),
-                                                                                  pNewGroupNode->nodes().size());
+                                                                                  pNewGroupNode->nodes().size(),
+                                                                                  pNode->toMachineNode());
                 new UIChooserItemMachine(pNewGroupItem, pNewMachineNode2);
 
                 /* If proposed action is 'move': */

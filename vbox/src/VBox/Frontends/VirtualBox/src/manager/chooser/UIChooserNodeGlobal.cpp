@@ -1,4 +1,4 @@
-/* $Id: UIChooserNodeGlobal.cpp 84412 2020-05-20 14:43:30Z vboxsync $ */
+/* $Id: UIChooserNodeGlobal.cpp 84610 2020-05-29 14:10:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserNodeGlobal class implementation.
  */
@@ -24,8 +24,8 @@
 
 
 UIChooserNodeGlobal::UIChooserNodeGlobal(UIChooserNode *pParent,
-                                         bool fFavorite,
                                          int iPosition,
+                                         bool fFavorite,
                                          const QString &)
     : UIChooserNode(pParent, fFavorite)
 {
@@ -38,8 +38,8 @@ UIChooserNodeGlobal::UIChooserNodeGlobal(UIChooserNode *pParent,
 }
 
 UIChooserNodeGlobal::UIChooserNodeGlobal(UIChooserNode *pParent,
-                                         UIChooserNodeGlobal *pCopyFrom,
-                                         int iPosition)
+                                         int iPosition,
+                                         UIChooserNodeGlobal *pCopyFrom)
     : UIChooserNode(pParent, pCopyFrom->isFavorite())
 {
     /* Add to parent: */

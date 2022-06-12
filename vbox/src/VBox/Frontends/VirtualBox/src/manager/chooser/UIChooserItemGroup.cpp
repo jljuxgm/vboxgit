@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGroup.cpp 84578 2020-05-27 17:49:22Z vboxsync $ */
+/* $Id: UIChooserItemGroup.cpp 84610 2020-05-29 14:10:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGroup class implementation.
  */
@@ -822,7 +822,7 @@ void UIChooserItemGroup::processDrop(QGraphicsSceneDragDropEvent *pEvent, UIChoo
                 }
 
                 /* Copy passed group-item into this group: */
-                UIChooserNodeGroup *pNewGroupNode = new UIChooserNodeGroup(node(), pNode->toGroupNode(), iPosition);
+                UIChooserNodeGroup *pNewGroupNode = new UIChooserNodeGroup(node(), iPosition, pNode->toGroupNode());
                 UIChooserItemGroup *pNewGroupItem = new UIChooserItemGroup(this, pNewGroupNode);
                 if (isClosed())
                     open(false);
@@ -876,7 +876,7 @@ void UIChooserItemGroup::processDrop(QGraphicsSceneDragDropEvent *pEvent, UIChoo
                 }
 
                 /* Copy passed machine-item into this group: */
-                UIChooserNodeMachine *pNewMachineNode = new UIChooserNodeMachine(node(), pNode->toMachineNode(), iPosition);
+                UIChooserNodeMachine *pNewMachineNode = new UIChooserNodeMachine(node(), iPosition, pNode->toMachineNode());
                 UIChooserItemMachine *pNewMachineItem = new UIChooserItemMachine(this, pNewMachineNode);
                 if (isClosed())
                     open(false);

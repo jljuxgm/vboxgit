@@ -1,4 +1,4 @@
-/* $Id: UIChooserHandlerKeyboard.cpp 84439 2020-05-21 18:09:40Z vboxsync $ */
+/* $Id: UIChooserHandlerKeyboard.cpp 84610 2020-05-29 14:10:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserHandlerKeyboard class implementation.
  */
@@ -368,13 +368,13 @@ void UIChooserHandlerKeyboard::shift(UIItemShiftDirection enmDirection, UIItemSh
     {
         case UIChooserNodeType_Group:
         {
-            UIChooserNodeGroup *pNewNode = new UIChooserNodeGroup(pParentNode, pCurrentNode->toGroupNode(), iNewCurrentNodePosition);
+            UIChooserNodeGroup *pNewNode = new UIChooserNodeGroup(pParentNode, iNewCurrentNodePosition, pCurrentNode->toGroupNode());
             pShiftedItem = new UIChooserItemGroup(pParentNode->item(), pNewNode);
             break;
         }
         case UIChooserNodeType_Machine:
         {
-            UIChooserNodeMachine *pNewNode = new UIChooserNodeMachine(pParentNode, pCurrentNode->toMachineNode(), iNewCurrentNodePosition);
+            UIChooserNodeMachine *pNewNode = new UIChooserNodeMachine(pParentNode, iNewCurrentNodePosition, pCurrentNode->toMachineNode());
             pShiftedItem = new UIChooserItemMachine(pParentNode->item(), pNewNode);
             break;
         }

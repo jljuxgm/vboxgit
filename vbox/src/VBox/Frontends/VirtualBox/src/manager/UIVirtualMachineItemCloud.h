@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItemCloud.h 84196 2020-05-08 04:02:37Z vboxsync $ */
+/* $Id: UIVirtualMachineItemCloud.h 84610 2020-05-29 14:10:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItemCloud class declaration.
  */
@@ -43,8 +43,8 @@ signals:
 
 public:
 
-    /** Constructs fake cloud VM item. */
-    UIVirtualMachineItemCloud();
+    /** Constructs fake cloud VM item of certain @a enmState. */
+    UIVirtualMachineItemCloud(UIFakeCloudVirtualMachineItemState enmState);
     /** Constructs real cloud VM item on the basis of taken @a comCloudMachine. */
     UIVirtualMachineItemCloud(const CCloudMachine &comCloudMachine);
     /** Destructs cloud VM item. */

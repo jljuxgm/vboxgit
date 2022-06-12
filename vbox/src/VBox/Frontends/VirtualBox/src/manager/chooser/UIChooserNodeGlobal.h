@@ -1,4 +1,4 @@
-/* $Id: UIChooserNodeGlobal.h 84373 2020-05-19 15:34:13Z vboxsync $ */
+/* $Id: UIChooserNodeGlobal.h 84610 2020-05-29 14:10:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserNodeGlobal class declaration.
  */
@@ -33,19 +33,19 @@ class UIChooserNodeGlobal : public UIChooserNode
 public:
 
     /** Constructs chooser node passing @a pParent to the base-class.
-      * @param  fFavorite  Brings whether the node is favorite.
       * @param  iPosition  Brings the initial node position.
+      * @param  fFavorite  Brings whether the node is favorite.
       * @param  strTip     Brings the dummy tip. */
     UIChooserNodeGlobal(UIChooserNode *pParent,
-                        bool fFavorite,
                         int iPosition,
+                        bool fFavorite,
                         const QString &strTip);
     /** Constructs chooser node passing @a pParent to the base-class.
-      * @param  pCopyFrom  Brings the node to copy data from.
-      * @param  iPosition  Brings the initial node position. */
+      * @param  iPosition  Brings the initial node position.
+      * @param  pCopyFrom  Brings the node to copy data from. */
     UIChooserNodeGlobal(UIChooserNode *pParent,
-                        UIChooserNodeGlobal *pCopyFrom,
-                        int iPosition);
+                        int iPosition,
+                        UIChooserNodeGlobal *pCopyFrom);
     /** Destructs chooser node. */
     virtual ~UIChooserNodeGlobal() /* override */;
 
