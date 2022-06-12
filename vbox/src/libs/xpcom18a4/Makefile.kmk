@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 86390 2020-10-01 15:59:35Z vboxsync $
+# $Id: Makefile.kmk 86391 2020-10-01 16:07:39Z vboxsync $
 ## @file
 # Sub-Makefile for XPCOM.
 #
@@ -473,8 +473,8 @@ ifeq ($(KBUILD_TARGET),os2)
  xpidl-DLLS_SOURCES += $(wildcard $(VBOX_PATH_LIBIDL)/lib/libIDL.dll)
 else
  # We do these ONCE.
- libIDL_config_cflags := $(shell "$(VBOX_LIBIDL_CONFIG)" --cflags)
- libIDL_config_libs   := $(shell "$(VBOX_LIBIDL_CONFIG)" --libs)
+ libIDL_config_cflags := $(shell $(VBOX_LIBIDL_CONFIG) --cflags)
+ libIDL_config_libs   := $(shell $(VBOX_LIBIDL_CONFIG) --libs)
  xpidl_CFLAGS = \
 	$(libIDL_config_cflags)
  ifeq ($(KBUILD_HOST),linux)
