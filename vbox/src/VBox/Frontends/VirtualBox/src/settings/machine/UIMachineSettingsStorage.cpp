@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 85711 2020-08-12 11:48:02Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 85827 2020-08-19 08:47:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class implementation.
  */
@@ -3292,7 +3292,7 @@ bool UIMachineSettingsStorage::validate(QList<UIValidationMessage> &messages)
                 fPass = false;
             }
             /* Check for coincidence: */
-            if (!uiCommon().medium(key).isNull() && config.contains(key))
+            if (!uiCommon().medium(key).isNull() && config.contains(key) && enmDeviceType != KDeviceType_DVD)
             {
                 message.second << tr("<i>%1</i> is using a disk that is already attached to <i>%2</i>.")
                                      .arg(value).arg(config[key]);
