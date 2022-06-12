@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 88908 2021-05-06 16:35:40Z vboxsync $ */
+/* $Id: DevSB16.cpp 88916 2021-05-06 19:55:49Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  */
@@ -2225,7 +2225,7 @@ static int sb16StreamEnable(PSB16STATE pThis, PSB16STREAM pStream, bool fEnable,
 
     /* First, enable or disable the stream and the stream's sink. */
     int rc = AudioMixerSinkCtl(sb16StreamIndexToSink(pThis, pStream->uIdx),
-                               fEnable ? AUDMIXSINKCMD_ENABLE : AUDMIXSINKCMD_DISABLE);
+                               fEnable ? PDMAUDIOSTREAMCMD_ENABLE : PDMAUDIOSTREAMCMD_DISABLE);
     AssertRCReturn(rc, rc);
 
     pStream->State.fEnabled = fEnable;
@@ -3147,7 +3147,7 @@ static DECLCALLBACK(int) sb16Construct(PPDMDEVINS pDevIns, int iInstance, PCFGMN
 
     AssertRCReturn(rc, rc);
     rc = AudioMixerCreateSink(pThis->pMixer, "PCM Output",
-                              AUDMIXSINKDIR_OUTPUT, pDevIns, &pThis->pSinkOut);
+                              PDMAUDIODIR_OUT, pDevIns, &pThis->pSinkOut);
     AssertRCReturn(rc, rc);
 
     /*
