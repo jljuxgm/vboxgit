@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboard.cpp 88874 2021-05-05 12:38:50Z vboxsync $ */
+/* $Id: UISoftKeyboard.cpp 88910 2021-05-06 17:28:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class implementation.
  */
@@ -3898,6 +3898,19 @@ void UISoftKeyboard::closeEvent(QCloseEvent *event)
     event->ignore();
 }
 
+void UISoftKeyboard::resizeEvent(QResizeEvent *pEvent)
+{
+    QMainWindowWithRestorableGeometryAndRetranslateUi::resizeEvent(pEvent);
+    saveDialogGeometry();
+}
+
+void UISoftKeyboard
+::moveEvent(QMoveEvent *pEvent)
+{
+    QMainWindowWithRestorableGeometryAndRetranslateUi::moveEvent(pEvent);
+    saveDialogGeometry();
+}
+
 bool UISoftKeyboard::event(QEvent *pEvent)
 {
     if (pEvent->type() == QEvent::WindowDeactivate)
@@ -4218,14 +4231,16 @@ void UISoftKeyboard::prepareConnections()
     connect(&uiCommon(), &UICommon::sigAskToCommitData, this, &UISoftKeyboard::sltReleaseKeys);
 }
 
-void UISoftKeyboard::sltSaveSettings()
+void UISoftKeyboard::saveDialogGeometry()
 {
-    /* Save geometry to extradata: */
     const QRect geo = currentGeometry();
     LogRel2(("GUI: UISoftKeyboard: Saving geometry as: Origin=%dx%d, Size=%dx%d\n",
              geo.x(), geo.y(), geo.width(), geo.height()));
     gEDataManager->setSoftKeyboardDialogGeometry(geo, isCurrentlyMaximized());
+}
 
+void UISoftKeyboard::sltSaveSettings()
+{
     /* Save other settings: */
     if (m_pKeyboardWidget)
     {
