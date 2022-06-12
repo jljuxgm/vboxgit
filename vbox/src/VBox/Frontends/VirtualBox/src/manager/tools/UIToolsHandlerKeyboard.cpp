@@ -1,4 +1,4 @@
-/* $Id: UIToolsHandlerKeyboard.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIToolsHandlerKeyboard.cpp 88251 2021-03-22 16:49:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsHandlerKeyboard class implementation.
  */
@@ -64,7 +64,15 @@ bool UIToolsHandlerKeyboard::handleKeyPress(QKeyEvent *pEvent) const
             if (iPosition > 0)
             {
                 if (pEvent->key() == Qt::Key_Up)
-                    pPreviousItem = model()->navigationList().at(iPosition - 1);
+                    for (int i = iPosition - 1; i >= 0; --i)
+                    {
+                        UIToolsItem *pIteratedItem = model()->navigationList().at(i);
+                        if (pIteratedItem->isEnabled())
+                        {
+                            pPreviousItem = pIteratedItem;
+                            break;
+                        }
+                    }
                 else if (pEvent->key() == Qt::Key_Home)
                     pPreviousItem = model()->navigationList().first();
             }
@@ -90,7 +98,15 @@ bool UIToolsHandlerKeyboard::handleKeyPress(QKeyEvent *pEvent) const
             if (iPosition < model()->navigationList().size() - 1)
             {
                 if (pEvent->key() == Qt::Key_Down)
-                    pNextItem = model()->navigationList().at(iPosition + 1);
+                    for (int i = iPosition + 1; i < model()->navigationList().size(); ++i)
+                    {
+                        UIToolsItem *pIteratedItem = model()->navigationList().at(i);
+                        if (pIteratedItem->isEnabled())
+                        {
+                            pNextItem = pIteratedItem;
+                            break;
+                        }
+                    }
                 else if (pEvent->key() == Qt::Key_End)
                     pNextItem = model()->navigationList().last();
             }
