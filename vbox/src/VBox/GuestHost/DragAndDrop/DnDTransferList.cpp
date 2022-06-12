@@ -1,4 +1,4 @@
-/* $Id: DnDTransferList.cpp 85373 2020-07-17 12:45:56Z vboxsync $ */
+/* $Id: DnDTransferList.cpp 85382 2020-07-18 11:33:58Z vboxsync $ */
 /** @file
  * DnD - transfer list implemenation.
  */
@@ -581,7 +581,7 @@ int DnDTransferListAppendPathsFromArray(PDNDTRANSFERLIST pList,
     /* If we don't have a root path set, try to find the common path of all handed-in paths. */
     if (!pList->pszPathRootAbs)
     {
-        size_t cchRootPath = RTPathFindCommon(papcszPaths, cPaths);
+        size_t cchRootPath = RTPathFindCommon(cPaths, papcszPaths);
         if (cchRootPath)
         {
             /* Just use the first path in the array as the reference. */

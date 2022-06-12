@@ -1,4 +1,4 @@
-/* $Id: tstDnDPath.cpp 85381 2020-07-18 10:04:38Z vboxsync $ */
+/* $Id: tstDnDPath.cpp 85382 2020-07-18 11:33:58Z vboxsync $ */
 /** @file
  * DnD path tests.
  */
@@ -17,7 +17,7 @@
 
 #include <iprt/assert.h>
 #include <iprt/env.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/path.h>
 #include <iprt/string.h>
 #include <iprt/test.h>
