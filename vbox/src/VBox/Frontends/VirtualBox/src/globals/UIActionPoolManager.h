@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.h 85445 2020-07-23 18:56:39Z vboxsync $ */
+/* $Id: UIActionPoolManager.h 85547 2020-07-30 09:14:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class declaration.
  */
@@ -195,6 +195,7 @@ enum UIActionIndexST
     /* VM resource Monitor actions: */
     UIActionIndexST_M_VMResourceMonitor,
     UIActionIndexST_M_VMResourceMonitor_M_Columns,
+    UIActionIndexST_M_VMResourceMonitor_S_SwitchToMachinePerformance,
 
     /* Maximum index: */
     UIActionIndexST_Max

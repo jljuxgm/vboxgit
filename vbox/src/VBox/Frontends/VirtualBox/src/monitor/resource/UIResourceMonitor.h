@@ -1,4 +1,4 @@
-/* $Id: UIResourceMonitor.h 85515 2020-07-29 10:46:40Z vboxsync $ */
+/* $Id: UIResourceMonitor.h 85547 2020-07-30 09:14:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIResourceMonitor class declaration.
  */
@@ -31,6 +31,7 @@
 /* Forward declarations: */
 class QAbstractButton;
 class QFrame;
+class QItemSelection;
 class QLabel;
 class QTableView;
 class QTreeWidgetItem;
@@ -72,6 +73,7 @@ protected:
     /** @name Event-handling stuff.
       * @{ */
         virtual void retranslateUi() /* override */;
+        virtual void showEvent(QShowEvent *pEvent) /* override */;
     /** @} */
 
 private slots:
@@ -82,6 +84,7 @@ private slots:
     void sltHandleHostStatsUpdate(const UIVMResourceMonitorHostStats &stats);
     void sltHandleTableContextMenuRequest(const QPoint &pos);
     void sltHandleShowPerformanceMonitor();
+    void sltHandleTableSelectionChanged(const QItemSelection &selected, const QItemSelection &deselected);
 
 private:
 

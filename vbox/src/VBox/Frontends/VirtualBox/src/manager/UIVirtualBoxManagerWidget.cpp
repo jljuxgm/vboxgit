@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 85508 2020-07-29 10:11:07Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 85547 2020-07-30 09:14:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -781,6 +781,7 @@ void UIVirtualBoxManagerWidget::updateToolbar()
                 case UIToolType_Resources:
                 {
                     m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_VMResourceMonitor_M_Columns));
+                    m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_VMResourceMonitor_S_SwitchToMachinePerformance));
                     QToolButton *pButton =
                         qobject_cast<QToolButton*>(m_pToolBar->widgetForAction(actionPool()->action(UIActionIndexST_M_VMResourceMonitor_M_Columns)));
                     if (pButton)
