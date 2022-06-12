@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 86197 2020-09-21 13:42:43Z vboxsync $ */
+/* $Id: DevVGA.h 87105 2020-12-18 18:27:04Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -192,7 +192,6 @@ typedef struct vga_retrace_s {
 
 #ifndef VBOX
 #define VGA_STATE_COMMON                                                \
-    uint8_t *vram_ptr;                                                  \
     unsigned long vram_offset;                                          \
     unsigned int vram_size;                                             \
     uint32_t latch;                                                     \
