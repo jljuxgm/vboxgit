@@ -1,4 +1,4 @@
-/* $Id: SharedFolderImpl.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: SharedFolderImpl.cpp 88637 2021-04-21 22:11:34Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -290,6 +290,14 @@ HRESULT SharedFolder::i_protectedInit(VirtualBoxBase *aParent,
 
         if (RTPathCompare(hostPath.c_str(), hostPathFull) != 0)
             return setError(E_INVALIDARG, tr("Shared folder path '%s' is not absolute"), hostPath.c_str());
+
+        RTFSOBJINFO ObjInfo;
+        vrc = RTPathQueryInfo(hostPathFull, &ObjInfo, RTFSOBJATTRADD_NOTHING);
+        if (RT_FAILURE(vrc))
+            return setError(E_INVALIDARG, tr("RTPathQueryInfo failed on shared folder path '%s': %Rrc"), hostPathFull, vrc);
+
+        if (!RTFS_IS_DIRECTORY(ObjInfo.Attr.fMode))
+            return setError(E_INVALIDARG, tr("Shared folder path '%s' is not a directory"), hostPathFull);
     }
 
     unconst(mParent) = aParent;
