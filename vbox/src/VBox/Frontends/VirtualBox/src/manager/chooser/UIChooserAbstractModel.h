@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.h 84625 2020-06-01 16:44:39Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.h 85036 2020-07-01 18:02:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class declaration.
  */
@@ -187,6 +187,11 @@ private:
 
     /** @name Children stuff.
       * @{ */
+        /** Reloads local tree. */
+        void reloadLocalTree();
+        /** Reloads cloud tree. */
+        void reloadCloudTree();
+
         /** Adds local machine item based on certain @a comMachine and optionally @a fMakeItVisible. */
         void addLocalMachineIntoTheTree(const CMachine &comMachine, bool fMakeItVisible = false);
         /** Adds cloud machine item based on certain @a comMachine and optionally @a fMakeItVisible, into @a strGroup. */
