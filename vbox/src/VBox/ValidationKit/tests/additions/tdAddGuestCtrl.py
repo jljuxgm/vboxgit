@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84588 $"
+__version__ = "$Revision: 84601 $"
 
 # Standard Python imports.
 import errno
@@ -2142,7 +2142,7 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
                                                    oTest.asArgs if self.oTstDrv.fpApiVer >= 5.0 else oTest.asArgs[1:],
                                                    oTest.aEnv, oTest.afFlags, oTest.timeoutMS);
         except:
-            reporter.maybeErrXcpt(fIsError, 'asArgs=%s' % (oTest.asArgs,));
+            reporter.maybeErrXcpt(fIsError, 'type=%s, asArgs=%s' % (type(oTest.asArgs), oTest.asArgs,));
             return False;
         if oProcess is None:
             return reporter.error('oProcess is None! (%s)' % (oTest.asArgs,));
@@ -2962,11 +2962,11 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
                 or oTestVm.isOS2():
                     sCmd   = sShell;
                     asArgs = [ sShell, sShellOpt, "echo",
-                               self.oTestFiles.generateFilenameEx(128 * 1024, 2048), "--end-marker" ],
+                               str(self.oTestFiles.generateFilenameEx(128 * 1024, 2048)), "--end-marker" ],
                 else:
                     sCmd   = oTestVm.pathJoin(self.oTstDrv.getGuestSystemDir(oTestVm), 'echo');
                     asArgs = [ sCmd,
-                               self.oTestFiles.generateFilenameEx(128 * 1024, 2048), "--end-marker" ],
+                               str(self.oTestFiles.generateFilenameEx(128 * 1024, 2048)), "--end-marker" ],
                 ## @todo Check limits; on Ubuntu with 256KB IPRT returns VERR_NOT_IMPLEMENTED.
                 atExec.append([ tdTestExec(sCmd, asArgs,
                                            afFlags = [ vboxcon.ProcessCreateFlag_WaitForStdOut,
