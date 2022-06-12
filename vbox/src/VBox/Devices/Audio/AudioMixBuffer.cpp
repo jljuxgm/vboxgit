@@ -1,4 +1,4 @@
-/* $Id: AudioMixBuffer.cpp 89400 2021-05-31 12:46:15Z vboxsync $ */
+/* $Id: AudioMixBuffer.cpp 89405 2021-05-31 13:58:57Z vboxsync $ */
 /** @file
  * Audio mixing buffer for converting reading/writing audio data.
  */
@@ -1562,6 +1562,8 @@ void AudioMixBufPeek(PCAUDIOMIXBUF pMixBuf, uint32_t offSrcFrame, uint32_t cMaxS
         if (cMaxSrcFrames > cSrcFrames1)
             pState->pfnEncode((uint8_t *)pvDst + cSrcFrames1 * pState->cbDstFrame,
                               &pMixBuf->pi32Samples[0], cMaxSrcFrames - cSrcFrames1, pState);
+
+        //Log9Func(("*pcbDstPeeked=%#x\n%32.*Rhxd\n", *pcbDstPeeked, *pcbDstPeeked, pvDst));
     }
     else
         AudioMixBufPeekResampling(pMixBuf, offSrcFrame, cMaxSrcFrames, pcSrcFramesPeeked, pState, pvDst, cbDst, pcbDstPeeked);
@@ -1658,14 +1660,22 @@ void AudioMixBufWrite(PAUDIOMIXBUF pMixBuf, PAUDIOMIXBUFWRITESTATE pState, const
         cMaxDstFrames       = RT_MIN(cMaxDstFrames, cbSrcBuf / pState->cbSrcFrame);
         *pcDstFramesWritten = cMaxDstFrames;
 
+        //Log10Func(("cbSrc=%#x\n%32.*Rhxd\n", pState->cbSrcFrame * cMaxDstFrames, pState->cbSrcFrame * cMaxDstFrames, pvSrcBuf));
+
         /* First chunk. */
         uint32_t const cDstFrames1 = RT_MIN(pMixBuf->cFrames - offDstFrame, cMaxDstFrames);
         pState->pfnDecode(&pMixBuf->pi32Samples[offDstFrame * pMixBuf->cChannels], pvSrcBuf, cDstFrames1, pState);
+        //Log8Func(("offDstFrame=%#x cDstFrames1=%#x\n%32.*Rhxd\n", offDstFrame, cDstFrames1,
+        //          cDstFrames1 * pMixBuf->cbFrame, &pMixBuf->pi32Samples[offDstFrame * pMixBuf->cChannels]));
 
         /* Another chunk from the start of the mixing buffer? */
         if (cMaxDstFrames > cDstFrames1)
+        {
             pState->pfnDecode(&pMixBuf->pi32Samples[0], (uint8_t *)pvSrcBuf + cDstFrames1 * pState->cbSrcFrame,
                               cMaxDstFrames - cDstFrames1, pState);
+            //Log8Func(("cDstFrames2=%#x\n%32.*Rhxd\n", cMaxDstFrames - cDstFrames1,
+            //          (cMaxDstFrames - cDstFrames1) * pMixBuf->cbFrame, &pMixBuf->pi32Samples[0]));
+        }
     }
     else
         audioMixBufWriteResampling(pMixBuf, pState, pvSrcBuf, cbSrcBuf, offDstFrame, cMaxDstFrames, pcDstFramesWritten);
