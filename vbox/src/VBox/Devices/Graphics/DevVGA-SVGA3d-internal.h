@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-internal.h 86838 2020-11-09 23:16:50Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-internal.h 86905 2020-11-17 23:36:12Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device - 3D part, internal header.
  */
@@ -553,7 +553,7 @@ typedef struct VMSVGA3DSURFACE
 #else
     uint32_t                idAssociatedContext;
 #endif
-    uint32_t                surfaceFlags;
+    SVGA3dSurface1Flags     surfaceFlags; /* @todo SVGA3dSurfaceAllFlags as an union. */
     SVGA3dSurfaceFormat     format;
 #ifdef VMSVGA3D_OPENGL
     GLint                   internalFormatGL;

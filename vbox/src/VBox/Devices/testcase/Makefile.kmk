@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 86043 2020-09-07 13:44:26Z vboxsync $
+# $Id: Makefile.kmk 86905 2020-11-17 23:36:12Z vboxsync $
 ## @file
 # Sub-Makefile for the device testcases.
 #
@@ -106,7 +106,7 @@ tstDeviceStructSize_INCS     = \
 	$(VBOX_PATH_DEVICES_SRC)/Bus \
 	$(VBOX_DEVICES_TEST_OUT_DIR) \
 	$(VBOX_GRAPHICS_INCS) \
-	$(VBOX_PATH_VMSVGA_INC)
+	$(VBOX_PATH_VMSVGA_DEVICE_INC)
 tstDeviceStructSize_SOURCES  = tstDeviceStructSize.cpp
 tstDeviceStructSize_CLEAN    = \
 	$(VBOX_DEVICES_TEST_OUT_DIR)/tstDeviceStructSizeRC.h \

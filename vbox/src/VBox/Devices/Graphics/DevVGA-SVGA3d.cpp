@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d.cpp 86838 2020-11-09 23:16:50Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d.cpp 86905 2020-11-17 23:36:12Z vboxsync $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - Common core code.
  */
@@ -54,7 +54,7 @@
  * @param   numMipLevels        .
  * @param   pMipLevel0Size      .
  */
-int vmsvga3dSurfaceDefine(PVGASTATECC pThisCC, uint32_t sid, SVGA3dSurfaceFlags surfaceFlags, SVGA3dSurfaceFormat format,
+int vmsvga3dSurfaceDefine(PVGASTATECC pThisCC, uint32_t sid, SVGA3dSurface1Flags surfaceFlags, SVGA3dSurfaceFormat format,
                           uint32_t multisampleCount, SVGA3dTextureFilter autogenFilter,
                           uint32_t numMipLevels, SVGA3dSize const *pMipLevel0Size)
 {
@@ -168,7 +168,7 @@ int vmsvga3dSurfaceDefine(PVGASTATECC pThisCC, uint32_t sid, SVGA3dSurfaceFlags 
     case SVGA3D_UYVY:
     case SVGA3D_YUY2:
     case SVGA3D_NV12:
-    case SVGA3D_AYUV:
+    case SVGA3D_FORMAT_DEAD2: /* Old SVGA3D_AYUV */
     case SVGA3D_ATI1:
     case SVGA3D_ATI2:
         break;
