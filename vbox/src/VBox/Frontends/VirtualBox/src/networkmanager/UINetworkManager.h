@@ -1,4 +1,4 @@
-/* $Id: UINetworkManager.h 87342 2021-01-21 09:28:42Z vboxsync $ */
+/* $Id: UINetworkManager.h 87565 2021-02-03 13:48:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkManager class declaration.
  */
@@ -139,8 +139,6 @@ private slots:
         /** Handles command to apply host network details changes. */
         void sltApplyDetailsChangesHostNetwork();
 
-        /** Handles NAT network tree-widget @a pItem change. */
-        void sltHandleItemChangeNATNetwork(QTreeWidgetItem *pItem);
         /** Handles NAT network tree-widget current item change.
           * @param  fHoldPosition  Holds whether we should try to keep
           *                        port forwarding rule position intact. */
