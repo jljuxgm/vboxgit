@@ -1,4 +1,4 @@
-/* $Id: display-svga-x11.cpp 89609 2021-06-10 16:15:40Z vboxsync $ */
+/* $Id: display-svga-x11.cpp 89635 2021-06-11 18:10:55Z vboxsync $ */
 /** @file
  * X11 guest client - VMSVGA emulation resize event pass-through to X.Org
  * guest driver.
@@ -869,6 +869,7 @@ static void x11Connect()
     x11Context.pXRRCreateMode = NULL;
     x11Context.pXRRGetOutputInfo = NULL;
     x11Context.pXRRGetCrtcInfo = NULL;
+    x11Context.pXRRFreeCrtcInfo = NULL;
     x11Context.pXRRAddOutputMode = NULL;
     x11Context.fWmwareCtrlExtention = false;
     x11Context.fMonitorInfoAvailable = false;
