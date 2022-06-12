@@ -1,4 +1,4 @@
-/* $Id: HMSVMAll.cpp 87511 2021-02-01 15:48:11Z vboxsync $ */
+/* $Id: HMSVMAll.cpp 87538 2021-02-02 15:03:56Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - All contexts.
  */
@@ -183,7 +183,7 @@ VMM_INT_DECL(void) HMNotifySvmNstGstVmexit(PVMCPUCC pVCpu, PCPUMCTX pCtx)
 VMM_INT_DECL(bool) HMIsSvmVGifActive(PCVMCC pVM)
 {
 #ifdef IN_RING0
-    bool const fVGif    = RT_BOOL(pVM->hmr0.s.svm.fFeatures & X86_CPUID_SVM_FEATURE_EDX_VGIF);
+    bool const fVGif    = RT_BOOL(g_fHmSvmFeatures & X86_CPUID_SVM_FEATURE_EDX_VGIF);
 #else
     bool const fVGif    = RT_BOOL(pVM->hm.s.svm.fFeaturesForRing3 & X86_CPUID_SVM_FEATURE_EDX_VGIF);
 #endif
