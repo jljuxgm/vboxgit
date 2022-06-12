@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-linux.c 83325 2020-03-19 12:13:48Z vboxsync $ */
+/* $Id: SUPDrv-linux.c 85431 2020-07-23 11:58:10Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Linux specifics.
  */
@@ -756,20 +756,25 @@ EXPORT_SYMBOL(SUPDrvLinuxIDC);
 
 RTCCUINTREG VBOXCALL supdrvOSChangeCR4(RTCCUINTREG fOrMask, RTCCUINTREG fAndMask)
 {
-#if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 20, 0)
-    RTCCUINTREG uOld = this_cpu_read(cpu_tlbstate.cr4);
-    RTCCUINTREG uNew = (uOld & fAndMask) | fOrMask;
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 8, 0)
+    RTCCUINTREG const uOld = __read_cr4();
+#elif LINUX_VERSION_CODE >= KERNEL_VERSION(3, 20, 0)
+    RTCCUINTREG const uOld = this_cpu_read(cpu_tlbstate.cr4);
+#else
+    RTCCUINTREG const uOld = ASMGetCR4();
+#endif
+    RTCCUINTREG const uNew = (uOld & fAndMask) | fOrMask;
     if (uNew != uOld)
     {
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 8, 0)
+        ASMSetCR4(uNew);
+#elif LINUX_VERSION_CODE >= KERNEL_VERSION(3, 20, 0)
         this_cpu_write(cpu_tlbstate.cr4, uNew);
         __write_cr4(uNew);
-    }
 #else
-    RTCCUINTREG uOld = ASMGetCR4();
-    RTCCUINTREG uNew = (uOld & fAndMask) | fOrMask;
-    if (uNew != uOld)
         ASMSetCR4(uNew);
 #endif
+    }
     return uOld;
 }
 
