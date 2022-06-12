@@ -1,6 +1,6 @@
-/* $Id: DevHdaCommon.cpp 88230 2021-03-22 09:55:26Z vboxsync $ */
+/* $Id: DevHdaCommon.cpp 88235 2021-03-22 10:44:43Z vboxsync $ */
 /** @file
- * DevHDACommon.cpp - Shared HDA device functions.
+ * Intel HD Audio Controller Emulation - Common stuff.
  *
  * @todo r=bird: Shared with whom exactly?
  */

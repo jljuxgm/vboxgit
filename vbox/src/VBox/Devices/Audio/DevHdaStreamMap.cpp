@@ -1,6 +1,6 @@
-/* $Id: DevHdaStreamMap.cpp 88234 2021-03-22 10:25:25Z vboxsync $ */
+/* $Id: DevHdaStreamMap.cpp 88235 2021-03-22 10:44:43Z vboxsync $ */
 /** @file
- * HDAStreamMap.cpp - Stream mapping functions for HD Audio.
+ * Intel HD Audio Controller Emulation - Stream mapping (e.g. 5.1 -> stereo).
  */
 
 /*

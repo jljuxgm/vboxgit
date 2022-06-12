@@ -1,9 +1,8 @@
-/* $Id: AudioHlp.cpp 88234 2021-03-22 10:25:25Z vboxsync $ */
+/* $Id: AudioHlp.cpp 88235 2021-03-22 10:44:43Z vboxsync $ */
 /** @file
- * Intermedia audio driver, common routines.
+ * Audio helper routines.
  *
- * These are also used in the drivers which are bound to Main, e.g. the VRDE
- * or the video audio recording drivers.
+ * These are used with both drivers and devices.
  */
 
 /*

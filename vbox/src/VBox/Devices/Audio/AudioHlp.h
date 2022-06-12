@@ -1,6 +1,6 @@
-/* $Id: AudioHlp.h 88234 2021-03-22 10:25:25Z vboxsync $ */
+/* $Id: AudioHlp.h 88235 2021-03-22 10:44:43Z vboxsync $ */
 /** @file
- * Intermediate audio driver header.
+ * Audio helper routines.
  */
 
 /*

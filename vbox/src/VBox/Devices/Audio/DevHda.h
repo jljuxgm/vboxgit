@@ -1,6 +1,6 @@
-/* $Id: DevHda.h 88228 2021-03-22 09:28:22Z vboxsync $ */
+/* $Id: DevHda.h 88235 2021-03-22 10:44:43Z vboxsync $ */
 /** @file
- * DevHDA.h - VBox Intel HD Audio Controller.
+ * Intel HD Audio Controller Emulation - Structures.
  */
 
 /*

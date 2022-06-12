@@ -1,6 +1,9 @@
-/* $Id: DevHdaCommon.h 88228 2021-03-22 09:28:22Z vboxsync $ */
+/* $Id: DevHdaCommon.h 88235 2021-03-22 10:44:43Z vboxsync $ */
 /** @file
- * DevHDACommon.h - Shared HDA device defines / functions.
+ * Intel HD Audio Controller Emulation - Common stuff.
+ *
+ * @todo r=bird: Wtf is this?   Do we have some other HDA implementations
+ *               that I'm not aware of that shares this code?
  */
 
 /*

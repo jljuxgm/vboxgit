@@ -1,6 +1,6 @@
-/* $Id: DrvHostAudioCoreAudio.cpp 88230 2021-03-22 09:55:26Z vboxsync $ */
+/* $Id: DrvHostAudioCoreAudio.cpp 88235 2021-03-22 10:44:43Z vboxsync $ */
 /** @file
- * VBox audio devices - Mac OS X CoreAudio audio driver.
+ * Host audio driver - Mac OS X CoreAudio.
  */
 
 /*

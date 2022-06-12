@@ -1,7 +1,6 @@
-/* $Id: DrvHostAudioDSoundMMNotifClient.h 88233 2021-03-22 10:06:14Z vboxsync $ */
+/* $Id: DrvHostAudioDSoundMMNotifClient.h 88235 2021-03-22 10:44:43Z vboxsync $ */
 /** @file
- * DrvHostAudioDSoundMMNotifClient.h - Implementation of the IMMNotificationClient interface
- *                              to detect audio endpoint changes.
+ * Host audio driver - DSound - Implementation of the IMMNotificationClient interface to detect audio endpoint changes.
  */
 
 /*

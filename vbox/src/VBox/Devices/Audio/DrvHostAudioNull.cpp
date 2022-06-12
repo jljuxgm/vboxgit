@@ -1,6 +1,6 @@
-/* $Id: DrvHostAudioNull.cpp 88230 2021-03-22 09:55:26Z vboxsync $ */
+/* $Id: DrvHostAudioNull.cpp 88235 2021-03-22 10:44:43Z vboxsync $ */
 /** @file
- * NULL audio driver.
+ * Host audio driver - NULL.
  *
  * This also acts as a fallback if no other backend is available.
  */

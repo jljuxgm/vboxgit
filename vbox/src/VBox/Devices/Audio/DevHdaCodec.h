@@ -1,6 +1,6 @@
-/* $Id: DevHdaCodec.h 88228 2021-03-22 09:28:22Z vboxsync $ */
+/* $Id: DevHdaCodec.h 88235 2021-03-22 10:44:43Z vboxsync $ */
 /** @file
- * HDACodec - VBox HD Audio Codec.
+ * Intel HD Audio Controller Emulation - Codec, Sigmatel/IDT STAC9220.
  */
 
 /*

@@ -1,6 +1,6 @@
-/* $Id: DevHdaCodec.cpp 88230 2021-03-22 09:55:26Z vboxsync $ */
+/* $Id: DevHdaCodec.cpp 88235 2021-03-22 10:44:43Z vboxsync $ */
 /** @file
- * HDACodec - VBox HD Audio Codec.
+ * Intel HD Audio Controller Emulation - Codec, Sigmatel/IDT STAC9220.
  *
  * Implemented based on the Intel HD Audio specification and the
  * Sigmatel/IDT STAC9220 datasheet.

@@ -1,6 +1,6 @@
-/* $Id: DevHdaStreamChannel.cpp 88228 2021-03-22 09:28:22Z vboxsync $ */
+/* $Id: DevHdaStreamChannel.cpp 88235 2021-03-22 10:44:43Z vboxsync $ */
 /** @file
- * HDAStreamChannel.cpp - Stream channel functions for HD Audio.
+ * Intel HD Audio Controller Emulation - Stream channel.
  */
 
 /*
