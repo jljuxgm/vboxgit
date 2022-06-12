@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.h 88149 2021-03-17 11:06:53Z vboxsync $ */
+/* $Id: UINameAndSystemEditor.h 88150 2021-03-17 11:41:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class declaration.
  */
@@ -127,6 +127,9 @@ public:
     /** Passes the @p fError and @a strErrorMessage to UIFilePathSelector::mark(bool)
       *  effectively changing the background color and error-text. */
     void markImageEditor(bool fError, const QString &strErrorMessage);
+
+    /** Returns 1st column width. */
+    int firstColumnWidth() const;
 
 protected:
 

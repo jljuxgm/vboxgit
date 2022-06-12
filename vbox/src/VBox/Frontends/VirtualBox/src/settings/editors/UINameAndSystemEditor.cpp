@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.cpp 88149 2021-03-17 11:06:53Z vboxsync $ */
+/* $Id: UINameAndSystemEditor.cpp 88150 2021-03-17 11:41:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class implementation.
  */
@@ -274,6 +274,22 @@ void UINameAndSystemEditor::markImageEditor(bool fError, const QString &strError
 {
     if (m_pImageSelector)
         m_pImageSelector->mark(fError, strErrorMessage);
+}
+
+int UINameAndSystemEditor::firstColumnWidth() const
+{
+    int iWidth = 0;
+    if (m_pNameLabel)
+        iWidth = qMax(iWidth, m_pNameLabel->width());
+    if (m_pPathLabel)
+        iWidth = qMax(iWidth, m_pPathLabel->width());
+    if (m_pImageLabel)
+        iWidth = qMax(iWidth, m_pImageLabel->width());
+    if (m_pLabelFamily)
+        iWidth = qMax(iWidth, m_pLabelFamily->width());
+    if (m_pLabelType)
+        iWidth = qMax(iWidth, m_pLabelType->width());
+    return iWidth;
 }
 
 void UINameAndSystemEditor::retranslateUi()

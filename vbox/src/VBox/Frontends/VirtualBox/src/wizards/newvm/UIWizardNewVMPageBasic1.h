@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic1.h 88116 2021-03-15 10:33:53Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic1.h 88150 2021-03-17 11:41:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic1 class declaration.
  */
@@ -88,8 +88,8 @@ protected:
     void setSkipCheckBoxEnable();
     /** @name Widgets
      * @{ */
+        QGridLayout           *m_pNameAndSystemLayout;
         UINameAndSystemEditor *m_pNameAndSystemEditor;
-        QLabel                *m_pISOPathSelectorLabel;
         QCheckBox             *m_pSkipUnattendedCheckBox;
     /** @} */
 
