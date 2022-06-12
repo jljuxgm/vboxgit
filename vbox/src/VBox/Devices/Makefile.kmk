@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 89174 2021-05-19 15:05:29Z vboxsync $
+# $Id: Makefile.kmk 89199 2021-05-20 09:59:01Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -562,8 +562,7 @@ endif
  ifdef VBOX_WITH_BUSLOGIC
   VBoxDD_DEFS           += VBOX_WITH_BUSLOGIC
   VBoxDD_SOURCES        += \
- 	Storage/DevBusLogic.cpp \
- 	Storage/VBoxSCSI.cpp
+ 	Storage/DevBusLogic.cpp
  endif
 
  ifdef VBOX_WITH_LSILOGIC
