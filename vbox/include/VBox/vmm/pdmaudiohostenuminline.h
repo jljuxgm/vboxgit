@@ -1,4 +1,4 @@
-/* $Id: pdmaudiohostenuminline.h 88061 2021-03-09 18:14:19Z vboxsync $ */
+/* $Id: pdmaudiohostenuminline.h 88355 2021-04-02 23:00:05Z vboxsync $ */
 /** @file
  * PDM - Audio Helpers for host audio device enumeration, Inlined Code. (DEV,++)
  *
@@ -105,7 +105,7 @@ DECLINLINE(void) PDMAudioHostDevFree(PPDMAUDIOHOSTDEV pDev)
  * @param   pDev            The audio device enum entry to duplicate.
  * @param   fOnlyCoreData
  */
-DECLINLINE(PPDMAUDIOHOSTDEV) PDMAudioHostDevDup(PPDMAUDIOHOSTDEV pDev, bool fOnlyCoreData)
+DECLINLINE(PPDMAUDIOHOSTDEV) PDMAudioHostDevDup(PCPDMAUDIOHOSTDEV pDev, bool fOnlyCoreData)
 {
     AssertPtrReturn(pDev, NULL);
     Assert(pDev->uMagic == PDMAUDIOHOSTDEV_MAGIC);
@@ -119,7 +119,7 @@ DECLINLINE(PPDMAUDIOHOSTDEV) PDMAudioHostDevDup(PPDMAUDIOHOSTDEV pDev, bool fOnl
     {
         memcpy(pDevDup, pDev, cbToDup);
         RTListInit(&pDevDup->ListEntry);
-        pDev->cbSelf = cbToDup;
+        pDevDup->cbSelf = cbToDup;
     }
 
     return pDevDup;
