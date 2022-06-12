@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioPulseAudio.cpp 89527 2021-06-06 23:07:39Z vboxsync $ */
+/* $Id: DrvHostAudioPulseAudio.cpp 89528 2021-06-06 23:15:41Z vboxsync $ */
 /** @file
  * Host audio driver - Pulse Audio.
  */
@@ -1205,7 +1205,7 @@ static DECLCALLBACK(int) drvHstAudPaHA_StreamCreate(PPDMIHOSTAUDIO pInterface, P
             pStreamPA->BufAttr.fragsize  = cbSchedHint;
 
             /* (tlength, minreq and prebuf are playback only) */
-            LogFunc(("Requesting: BufAttr: fragsize=%#RX32 maxLength=%#RX32\n",
+            LogRel2(("PulseAudio: Requesting: BufAttr: fragsize=%#RX32 maxLength=%#RX32\n",
                      pStreamPA->BufAttr.fragsize, pStreamPA->BufAttr.maxlength));
         }
         else
