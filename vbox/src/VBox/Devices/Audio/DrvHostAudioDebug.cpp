@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioDebug.cpp 88269 2021-03-24 11:45:54Z vboxsync $ */
+/* $Id: DrvHostAudioDebug.cpp 88286 2021-03-25 10:33:46Z vboxsync $ */
 /** @file
  * Host audio driver - Debug - For dumping and injecting audio data from/to the device emulation.
  */
@@ -216,14 +216,11 @@ static DECLCALLBACK(int) drvHostDebugAudioHA_StreamPlay(PPDMIHOSTAUDIO pInterfac
     RT_NOREF(pInterface);
 
     int rc = AudioHlpFileWrite(pStreamDbg->pFile, pvBuf, cbBuf, 0 /* fFlags */);
-    if (RT_FAILURE(rc))
-    {
+    if (RT_SUCCESS(rc))
+        *pcbWritten = cbBuf;
+    else
         LogRel(("DebugAudio: Writing output failed with %Rrc\n", rc));
-        return rc;
-    }
-
-    *pcbWritten = cbBuf;
-    return VINF_SUCCESS;
+    return rc;
 }
 
 
