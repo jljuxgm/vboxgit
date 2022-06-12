@@ -1,4 +1,4 @@
-/* $Id: UIResourceMonitor.h 83685 2020-04-14 08:51:31Z vboxsync $ */
+/* $Id: UIResourceMonitor.h 85303 2020-07-13 10:10:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIResourceMonitor class declaration.
  */
@@ -121,6 +121,7 @@ private:
     /** @} */
     /** Indicates if this widget's host tool is current tool. */
     bool    m_fIsCurrentTool;
+    int     m_iSortIndicatorWidth;
 };
 
 class UIResourceMonitorFactory : public QIManagerDialogFactory
