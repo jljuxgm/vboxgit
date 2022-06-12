@@ -1,4 +1,4 @@
-/* $Id: PCIDeviceAttachmentImpl.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: PCIDeviceAttachmentImpl.cpp 85245 2020-07-11 23:07:43Z vboxsync $ */
 /** @file
  * PCI attachment information implmentation.
  */
@@ -93,15 +93,17 @@ HRESULT PCIDeviceAttachment::initCopy(IMachine *aParent, PCIDeviceAttachment *aT
 HRESULT PCIDeviceAttachment::i_loadSettings(IMachine *aParent,
                                             const settings::HostPCIDeviceAttachment &hpda)
 {
-    return init(aParent, hpda.strDeviceName, hpda.uHostAddress, hpda.uGuestAddress, TRUE);
+    /** @todo r=bird: Inconsistent signed/unsigned crap. */
+    return init(aParent, hpda.strDeviceName, (LONG)hpda.uHostAddress, (LONG)hpda.uGuestAddress, TRUE);
 }
 
 
 HRESULT PCIDeviceAttachment::i_saveSettings(settings::HostPCIDeviceAttachment &data)
 {
     Assert(m);
-    data.uHostAddress = m->HostAddress;
-    data.uGuestAddress = m->GuestAddress;
+    /** @todo r=bird: Inconsistent signed/unsigned crap. */
+    data.uHostAddress  = (uint32_t)m->HostAddress;
+    data.uGuestAddress = (uint32_t)m->GuestAddress;
     data.strDeviceName = m->DevName;
 
     return S_OK;
