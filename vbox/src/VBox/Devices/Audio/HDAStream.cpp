@@ -1,4 +1,4 @@
-/* $Id: HDAStream.cpp 88162 2021-03-17 16:44:17Z vboxsync $ */
+/* $Id: HDAStream.cpp 88163 2021-03-17 17:09:22Z vboxsync $ */
 /** @file
  * HDAStream.cpp - Stream functions for HD Audio.
  */
@@ -1613,7 +1613,7 @@ static void hdaR3StreamPullFromMixer(PHDASTREAM pStreamShared, PHDASTREAMR3 pStr
 
             RTCircBufReleaseWriteBlock(pStreamR3->State.pCircBuf, cbDstBuf);
 
-            off += cbDstBuf;
+            off += (uint32_t)cbDstBuf;
         }
         Assert(off == cbRead);
 
@@ -2248,8 +2248,8 @@ void hdaR3StreamUpdate(PPDMDEVINS pDevIns, PHDASTATE pThis, PHDASTATER3 pThisCC,
                                                            &pvDstBuf, &cbDstBuf);
                                 RT_BZERO(pvDstBuf, cbDstBuf);
                                 RTCircBufReleaseWriteBlock(pStreamR3->State.pCircBuf, cbDstBuf);
-                                cbSilence    += cbDstBuf;
-                                cbStreamUsed += cbDstBuf;
+                                cbSilence    += (uint32_t)cbDstBuf;
+                                cbStreamUsed += (uint32_t)cbDstBuf;
                             }
                         }
 
