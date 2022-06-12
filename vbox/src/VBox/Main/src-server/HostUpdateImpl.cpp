@@ -1,4 +1,4 @@
-/* $Id: HostUpdateImpl.cpp 85737 2020-08-12 21:17:50Z vboxsync $ */
+/* $Id: HostUpdateImpl.cpp 85738 2020-08-13 01:16:12Z vboxsync $ */
 /** @file
  * IHostUpdate  COM class implementations.
  */
@@ -637,6 +637,7 @@ HRESULT HostUpdate::updateCheck(UpdateCheckType_T aCheckType,
 
     return rc;
 #else  /* !VBOX_WITH_HOST_UPDATE_CHECK */
+    RT_NOREF(aCheckType, aProgress);
     return setError(E_NOTIMPL, tr("Update checking support was not compiled into this VirtualBox build"));
 #endif /* !VBOX_WITH_HOST_UPDATE_CHECK */
 }
