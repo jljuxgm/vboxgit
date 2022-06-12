@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 87391 2021-01-22 23:47:33Z vboxsync $ */
+/* $Id: ConsoleImpl.h 88209 2021-03-19 17:45:52Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -672,12 +672,9 @@ private:
     HRESULT i_suspendBeforeConfigChange(PUVM pUVM, AutoWriteLock *pAlock, bool *pfResume);
     void    i_resumeAfterConfigChange(PUVM pUVM);
 
-    uint32_t i_getAudioDriverValU32(IVirtualBox *pVirtualBox, IMachine *pMachine,
-                                    const char *pszDriverName, const char *pszValue, uint32_t uDefault);
-
     static DECLCALLBACK(int) i_configConstructor(PUVM pUVM, PVM pVM, void *pvConsole);
-    int i_configAudioDriver(IAudioAdapter *pAudioAdapter, IVirtualBox *pVirtualBox, IMachine *pMachine,
-                            PCFGMNODE pLUN, const char *pszDriverName);
+    void i_configAudioDriver(IAudioAdapter *pAudioAdapter, IVirtualBox *pVirtualBox, IMachine *pMachine,
+                             PCFGMNODE pLUN, const char *pszDriverName);
     int i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock);
     int i_configCfgmOverlay(PCFGMNODE pRoot, IVirtualBox *pVirtualBox, IMachine *pMachine);
     int i_configDumpAPISettingsTweaks(IVirtualBox *pVirtualBox, IMachine *pMachine);
