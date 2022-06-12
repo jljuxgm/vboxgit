@@ -1,4 +1,4 @@
-/* $Id: UIFrameBuffer.cpp 84790 2020-06-11 10:30:36Z vboxsync $ */
+/* $Id: UIFrameBuffer.cpp 84800 2020-06-11 15:36:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFrameBuffer class implementation.
  */
@@ -62,9 +62,6 @@
 
 #ifdef VBOX_GUI_WITH_QTGLFRAMEBUFFER
 /* Experimental code. */
-# ifdef RT_OS_LINUX
-#include <GL/glx.h>
-# endif
 
 /* Qt OpenGL includes: */
 /* On Windows host they require the following two include files, otherwise compilation will fail with warnings.
@@ -75,6 +72,11 @@
 #include <QOpenGLFunctions>
 #include <QOpenGLTexture>
 #include <QOpenGLWidget>
+
+# ifdef RT_OS_LINUX
+/* GL/glx.h must be included after Qt GL headers (which define GL_GLEXT_LEGACY) to avoid GL_GLEXT_VERSION conflict. */
+#include <GL/glx.h>
+# endif
 
 class UIFrameBufferPrivate;
 class GLWidget;
