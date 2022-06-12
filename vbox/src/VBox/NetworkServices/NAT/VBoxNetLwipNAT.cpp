@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwipNAT.cpp 87375 2021-01-22 18:26:45Z vboxsync $ */
+/* $Id: VBoxNetLwipNAT.cpp 87379 2021-01-22 21:39:46Z vboxsync $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -427,7 +427,7 @@ HRESULT VBoxNetLwipNAT::HandleEvent(VBoxEventType_T aEventType, IEvent *pEvent)
     VBoxNetLwipNAT *self = static_cast<VBoxNetLwipNAT *>(arg);
 
     HRESULT hrc = com::Initialize();
-    Assert(!FAILED(hrc)); NOREF(hrc);
+    AssertComRCReturnVoid(hrc);
 
     proxy_arp_hook = pxremap_proxy_arp;
     proxy_ip4_divert_hook = pxremap_ip4_divert;
