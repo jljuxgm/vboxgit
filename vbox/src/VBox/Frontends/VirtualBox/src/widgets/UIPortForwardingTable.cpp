@@ -1,4 +1,4 @@
-/* $Id: UIPortForwardingTable.cpp 87245 2021-01-14 09:52:29Z vboxsync $ */
+/* $Id: UIPortForwardingTable.cpp 87246 2021-01-14 09:55:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPortForwardingTable class implementation.
  */
@@ -904,6 +904,12 @@ void UIPortForwardingTable::sltRemoveRule()
     m_pTableView->setFocus();
     sltCurrentChanged();
     sltAdjustTable();
+}
+
+void UIPortForwardingTable::sltTableDataChanged()
+{
+    m_fTableDataChanged = true;
+    emit sigDataChanged();
 }
 
 void UIPortForwardingTable::sltCurrentChanged()
