@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 89022 2021-05-12 22:05:33Z vboxsync $ */
+/* $Id: DrvAudio.cpp 89131 2021-05-17 23:55:04Z vboxsync $ */
 /** @file
  * Intermediate audio driver - Connects the audio device emulation with the host backend.
  */
@@ -2672,6 +2672,7 @@ static int drvAudioStreamControlInternal(PDRVAUDIO pThis, PDRVAUDIOSTREAM pStrea
                             pStreamEx->Out.enmPlayState = DRVAUDIOPLAYSTATE_PREBUF_COMMITTING;
                             pStreamEx->fStatus |= PDMAUDIOSTREAM_STS_PENDING_DISABLE;
                             PDMAUDIOSTREAM_STS_ASSERT_VALID(pStreamEx->fStatus);
+                            rc = VINF_SUCCESS;
                             break;
                         }
                         RT_FALL_THROUGH();
@@ -2711,6 +2712,7 @@ static int drvAudioStreamControlInternal(PDRVAUDIO pThis, PDRVAUDIOSTREAM pStrea
                                  pStreamEx->Core.szName));
                         pStreamEx->fStatus |= PDMAUDIOSTREAM_STS_PENDING_DISABLE;
                         PDMAUDIOSTREAM_STS_ASSERT_VALID(pStreamEx->fStatus);
+                        rc = VINF_SUCCESS;
                         break;
 
                     /* no default */
@@ -3190,7 +3192,7 @@ static DECLCALLBACK(uint32_t) drvAudioStreamGetReadable(PPDMIAUDIOCONNECTOR pInt
     }
 
     RTCritSectLeave(&pThis->CritSect);
-    Log3Func(("[%s] cbReadable=%RU32 (%RU64ms)\n",
+    Log3Func(("[%s] cbReadable=%#RX32 (%RU64ms)\n",
               pStreamEx->Core.szName, cbReadable, PDMAudioPropsBytesToMilli(&pStreamEx->Host.Cfg.Props, cbReadable)));
     return cbReadable;
 }
@@ -3294,7 +3296,7 @@ static DECLCALLBACK(uint32_t) drvAudioStreamGetWritable(PPDMIAUDIOCONNECTOR pInt
     }
 
     RTCritSectLeave(&pThis->CritSect);
-    Log3Func(("[%s] cbWritable=%RU32 (%RU64ms) enmPlayMode=%s enmBackendState=%s\n",
+    Log3Func(("[%s] cbWritable=%#RX32 (%RU64ms) enmPlayMode=%s enmBackendState=%s\n",
               pStreamEx->Core.szName, cbWritable, PDMAudioPropsBytesToMilli(&pStreamEx->Host.Cfg.Props, cbWritable),
               drvAudioPlayStateName(enmPlayMode), PDMHostAudioStreamStateGetName(enmBackendState) ));
     return cbWritable;
@@ -3409,7 +3411,7 @@ static DECLCALLBACK(int) drvAudioStreamPlay(PPDMIAUDIOCONNECTOR pInterface, PPDM
     Assert(pStreamEx->fNoMixBufs);
 
     AssertMsg(PDMAudioPropsIsSizeAligned(&pStreamEx->Guest.Cfg.Props, cbBuf),
-              ("Stream '%s' got a non-frame-aligned write (%RU32 bytes)\n", pStreamEx->Core.szName, cbBuf));
+              ("Stream '%s' got a non-frame-aligned write (%#RX32 bytes)\n", pStreamEx->Core.szName, cbBuf));
 
     int rc = RTCritSectEnter(&pThis->CritSect);
     AssertRCReturn(rc, rc);
