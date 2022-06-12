@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-glLdr.h 84725 2020-06-08 15:58:30Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-glLdr.h 84727 2020-06-08 17:08:24Z vboxsync $ */
 /** @file
  * DevVGA - VMWare SVGA device - 3D part, dynamic loading of GL function.
  */
@@ -240,7 +240,7 @@ GLPFN void (GLAPIENTRYP pfn_glNormalPointer)(GLenum type, GLsizei stride, const 
 
 GLPFN void (GLAPIENTRYP pfn_glOrtho)(GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble nearVal, GLdouble farVal);
 #define glOrtho pfn_glOrtho
- 
+
 GLPFN void (GLAPIENTRYP pfn_glPixelStorei)(GLenum pname, GLint param);
 #define glPixelStorei pfn_glPixelStorei
 
