@@ -1,4 +1,4 @@
-/* $Id: AudioMixBuffer.cpp 88434 2021-04-09 13:03:29Z vboxsync $ */
+/* $Id: AudioMixBuffer.cpp 88435 2021-04-09 13:04:05Z vboxsync $ */
 /** @file
  * Audio mixing buffer for converting reading/writing audio data.
  */
@@ -2391,7 +2391,6 @@ int AudioMixBufWriteCirc(PAUDIOMIXBUF pMixBuf, const void *pvBuf, uint32_t cbBuf
  * @retval  VERR_BUFFER_OVERFLOW no space is available for writing anymore.
  * @param   pMixBuf     Pointer to mixing buffer to write to.
  * @param   pSrcProps   The source format.
- * @param   enmFmt      Audio format supplied in the buffer.
  * @param   pvBuf       Pointer to audio buffer to be written.
  * @param   cbBuf       Size (in bytes) of audio buffer.
  * @param   pcWritten   Returns number of audio frames written. Optional.
