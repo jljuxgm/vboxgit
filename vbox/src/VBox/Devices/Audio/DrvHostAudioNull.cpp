@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioNull.cpp 89487 2021-06-03 20:16:17Z vboxsync $ */
+/* $Id: DrvHostAudioNull.cpp 89489 2021-06-03 23:00:02Z vboxsync $ */
 /** @file
  * Host audio driver - NULL (bitbucket).
  *
@@ -247,11 +247,11 @@ DECL_HIDDEN_CONST(PDMIHOSTAUDIO) const g_DrvHostAudioNull =
     /* .pfnStreamDestroy             =*/ drvHstAudNullHA_StreamDestroy,
     /* .pfnStreamNotifyDeviceChanged =*/ NULL,
     /* .pfnStreamControl             =*/ drvHstAudNullHA_StreamControl,
-    /* .pfnStreamGetReadable         =*/ drvHstAudNullHA_StreamGetReadable,
-    /* .pfnStreamGetWritable         =*/ drvHstAudNullHA_StreamGetWritable,
-    /* .pfnStreamGetPending          =*/ drvHstAudNullHA_StreamGetPending,
     /* .pfnStreamGetState            =*/ drvHstAudNullHA_StreamGetState,
+    /* .pfnStreamGetPending          =*/ drvHstAudNullHA_StreamGetPending,
+    /* .pfnStreamGetWritable         =*/ drvHstAudNullHA_StreamGetWritable,
     /* .pfnStreamPlay                =*/ drvHstAudNullHA_StreamPlay,
+    /* .pfnStreamGetReadable         =*/ drvHstAudNullHA_StreamGetReadable,
     /* .pfnStreamCapture             =*/ drvHstAudNullHA_StreamCapture,
 };
 
