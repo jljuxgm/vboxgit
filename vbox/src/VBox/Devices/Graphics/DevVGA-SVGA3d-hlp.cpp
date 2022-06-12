@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-hlp.cpp 86592 2020-10-15 14:21:21Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-hlp.cpp 86593 2020-10-15 21:23:03Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device helpers
  */
@@ -20,8 +20,8 @@
 
 #ifdef SHADER_VERIFY_STANDALONE
 # include <stdio.h>
-//# define Log3(a) printf a        - /* @todo r=bird: This is strictly forbidden. Noone redefines Log macros ever! */
-//# define LogRel(a) printf a      - /* @todo r=bird: This is strictly forbidden. Noone redefines Log macros ever! */
+//# define Log3(a) printf a        - /** @todo r=bird: This is strictly forbidden. Noone redefines Log macros ever! */
+//# define LogRel(a) printf a      - /** @todo r=bird: This is strictly forbidden. Noone redefines Log macros ever! */
 #else
 # include <VBox/log.h>
 #endif
