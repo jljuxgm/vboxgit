@@ -25,7 +25,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Id: tdAutostart1.py 87224 2021-01-12 11:03:22Z vboxsync $"
+__version__ = "$Id: tdAutostart1.py 87225 2021-01-12 11:24:54Z vboxsync $"
 
 # Standard Python imports.
 import os;
@@ -1352,7 +1352,7 @@ class tdAutostart(vbox.TestDriver):                                      # pylin
             self.asTestBuildDirs = asArgs[iArg].split(',');
             for oTestVm in self.oTestVmSet.aoTestVms:
                 oTestVm.asTestBuildDirs = self.asTestBuildDirs;
-        elif asArgs[iArg] in [ '--vbox-%s-build' % os for os in self.asTestVmClasses.keys()]:
+        elif asArgs[iArg] in [ '--vbox-%s-build' % sKey for sKey in self.asTestVmClasses.keys()]:
             iArg += 1;
             if iArg >= len(asArgs): raise base.InvalidOption('The "%s" take a path argument' % (asArgs[iArg - 1],));
             oMatch = re.match("--vbox-([^-]+)-build", asArgs[iArg - 1]);
