@@ -1,4 +1,4 @@
-/* $Id: UIChooserView.h 84587 2020-05-28 12:31:13Z vboxsync $ */
+/* $Id: UIChooserView.h 84596 2020-05-28 15:01:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserView class declaration.
  */
@@ -44,8 +44,7 @@ signals:
 
 public:
 
-    /** Constructs a Chooser-view passing @a pParent to the base-class.
-      * @param  pParent  Brings the chooser container to embed into. */
+    /** Constructs a Chooser-view passing @a pParent to the base-class. */
     UIChooserView(QWidget *pParent);
 
     /** @name General stuff.
@@ -62,6 +61,7 @@ public:
         bool isSearchWidgetVisible() const;
         /** Makes search widget @a fVisible. */
         void setSearchWidgetVisible(bool fVisible);
+
         /** Updates search widget's results count.
           * @param  iTotalMatchCount             Brings total search results count.
           * @param  iCurrentlyScrolledItemIndex  Brings the item index search currently scrolled to. */
@@ -112,8 +112,10 @@ private:
       * @{ */
         /** Prepares all. */
         void prepare();
-        /** Prepares palette. */
-        void preparePalette();
+        /** Prepares this. */
+        void prepareThis();
+        /** Prepares widgets. */
+        void prepareWidget();
     /** @} */
 
     /** @name General stuff.
