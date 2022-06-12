@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioAlsaStubsMangling.h 88966 2021-05-10 13:40:35Z vboxsync $ */
+/* $Id: DrvHostAudioAlsaStubsMangling.h 89471 2021-06-02 20:53:43Z vboxsync $ */
 /** @file
  * Mangle libasound symbols.
  *
@@ -43,6 +43,7 @@
 #define snd_pcm_prepare                         ALSA_MANGLER(snd_pcm_prepare)
 #define snd_pcm_readi                           ALSA_MANGLER(snd_pcm_readi)
 #define snd_pcm_resume                          ALSA_MANGLER(snd_pcm_resume)
+#define snd_pcm_set_chmap                       ALSA_MANGLER(snd_pcm_set_chmap)
 #define snd_pcm_start                           ALSA_MANGLER(snd_pcm_start)
 #define snd_pcm_state                           ALSA_MANGLER(snd_pcm_state)
 #define snd_pcm_state_name                      ALSA_MANGLER(snd_pcm_state_name)
