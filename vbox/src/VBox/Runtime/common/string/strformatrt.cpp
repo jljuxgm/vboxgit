@@ -1,4 +1,4 @@
-/* $Id: strformatrt.cpp 84207 2020-05-08 11:54:10Z vboxsync $ */
+/* $Id: strformatrt.cpp 88200 2021-03-18 23:19:57Z vboxsync $ */
 /** @file
  * IPRT - IPRT String Formatter Extensions.
  */
@@ -520,8 +520,8 @@ DECLHIDDEN(size_t) rtstrFormatRt(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, co
                     {
                         static const char s_szTrue[]  = "true ";
                         static const char s_szFalse[] = "false";
-                        if (u.u64 == 1)
-                            return pfnOutput(pvArgOutput, s_szTrue,  sizeof(s_szTrue) - 1);
+                        if (u.u64 == 1) /* 2021-03-19: Only trailing space for %#RTbool. */
+                            return pfnOutput(pvArgOutput, s_szTrue, sizeof(s_szTrue) - (fFlags & RTSTR_F_SPECIAL ? 1 : 2));
                         if (u.u64 == 0)
                             return pfnOutput(pvArgOutput, s_szFalse, sizeof(s_szFalse) - 1);
                         /* invalid boolean value */
