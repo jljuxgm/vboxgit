@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.h 88001 2021-03-08 10:50:59Z vboxsync $ */
+/* $Id: UIWizardNewVM.h 88019 2021-03-08 15:40:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class declaration.
  */
@@ -97,6 +97,7 @@ public:
     bool isGuestOSTypeWindows() const;
     CMedium &virtualDisk();
     void setVirtualDisk(const CMedium &medium);
+    void setVirtualDisk(const QUuid &mediumId);
 
 protected:
 

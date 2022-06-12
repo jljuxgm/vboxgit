@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic4.cpp 88014 2021-03-08 12:52:42Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic4.cpp 88019 2021-03-08 15:40:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic4 class implementation.
  */
@@ -428,19 +428,8 @@ void UIWizardNewVMPageBasic4::setEnableNewDiskWidgets(bool fEnable)
 
 void UIWizardNewVMPageBasic4::setVirtualDiskFromDiskCombo()
 {
-    QUuid currentId;
+    AssertReturnVoid(m_pDiskSelector);
     UIWizardNewVM *pWizard = wizardImp();
     AssertReturnVoid(pWizard);
-    if (!pWizard->virtualDisk().isNull())
-        currentId = pWizard->virtualDisk().GetId();
-    QUuid id = m_pDiskSelector->id();
-    /* Do nothing else if m_virtualMedium is already set to what combobox has: */
-    if (id == currentId)
-        return;
-    if (m_pDiskSelector)
-    {
-        CMedium medium = uiCommon().medium(id).medium();
-        if (!medium.isNull())
-            pWizard->setVirtualDisk(medium);
-    }
+    pWizard->setVirtualDisk(m_pDiskSelector->id());
 }

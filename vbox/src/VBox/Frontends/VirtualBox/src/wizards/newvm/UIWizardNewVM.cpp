@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 88014 2021-03-08 12:52:42Z vboxsync $ */
+/* $Id: UIWizardNewVM.cpp 88019 2021-03-08 15:40:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
@@ -630,6 +630,15 @@ CMedium &UIWizardNewVM::virtualDisk()
 void UIWizardNewVM::setVirtualDisk(const CMedium &medium)
 {
     m_virtualDisk = medium;
+}
+
+void UIWizardNewVM::setVirtualDisk(const QUuid &mediumId)
+{
+    if (m_virtualDisk.GetId() == mediumId)
+        return;
+    CMedium medium = uiCommon().medium(mediumId).medium();
+    if (!medium.isNull())
+        setVirtualDisk(medium);
 }
 
 const UIUnattendedInstallData &UIWizardNewVM::unattendedInstallData() const
