@@ -1,4 +1,4 @@
-/* $Id: dbgkrnlinfo-r0drv-darwin.cpp 86305 2020-09-26 12:10:23Z vboxsync $ */
+/* $Id: dbgkrnlinfo-r0drv-darwin.cpp 86578 2020-10-14 20:43:43Z vboxsync $ */
 /** @file
  * IPRT - Kernel Debug Information, R0 Driver, Darwin.
  */
@@ -337,7 +337,8 @@ static int rtR0DbgKrnlDarwinInitLoadDisplacements(RTDBGKRNLINFOINT *pThis)
 #endif
         KNOWN_ENTRY(vm_map_unwire),   /* __TEXT */
         KNOWN_ENTRY(kernel_map),      /* __HIB */
-        KNOWN_ENTRY(gIOServicePlane)  /* __DATA */
+        KNOWN_ENTRY(gIOServicePlane), /* __DATA (__HIB on ElCapitan) */
+        KNOWN_ENTRY(page_mask)        /* __DATA on ElCapitan */
 #undef KNOWN_ENTRY
     };
 
