@@ -1,4 +1,4 @@
-/* $Id: DBGCRemoteKd.cpp 86165 2020-09-18 09:54:18Z vboxsync $ */
+/* $Id: DBGCRemoteKd.cpp 86166 2020-09-18 09:57:10Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Windows Kd Remote Stub.
  */
@@ -2648,7 +2648,7 @@ static int dbgcKdCtxPktManipulate64WriteBkpt(PKDCTX pThis, PCKDPACKETMANIPULATE6
     WriteBkpt64.u64PtrBkpt = pPktManip->u.WriteBkpt.u64PtrBkpt;
 
     DBGFADDRESS BpAddr;
-    DBGFR3AddrFromFlat(pThis->Dbgc.pUVM, &BpAddr, pPktManip->u.WriteBkpt.u64PtrBkpt);
+    DBGFR3AddrFromFlat(pThis->Dbgc.pUVM, &BpAddr, KD_PTR_GET(pPktManip->u.WriteBkpt.u64PtrBkpt));
     int rc = DBGFR3BpSetInt3(pThis->Dbgc.pUVM, pThis->Dbgc.idCpu, &BpAddr,
                              1 /*iHitTrigger*/, UINT64_MAX /*iHitDisable*/, &WriteBkpt64.u32HndBkpt);
     if (RT_FAILURE(rc))
@@ -2694,7 +2694,7 @@ static int dbgcKdCtxPktManipulate64GetContextEx(PKDCTX pThis, PCKDPACKETMANIPULA
     aRespSegs[1].cbSeg = sizeof(ContextEx);
 
     int rc = VINF_SUCCESS;
-    size_t cbCtx = pThis->f32Bit ? sizeof(NtCtx.v32) : sizeof(NtCtx.v64);
+    uint32_t cbCtx = pThis->f32Bit ? sizeof(NtCtx.v32) : sizeof(NtCtx.v64);
     if (pThis->f32Bit)
         dbgcKdCtxQueryNtCtx32(pThis, pPktManip->Hdr.idCpu, &NtCtx.v32, NTCONTEXT32_F_FULL);
     else
