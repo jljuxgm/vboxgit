@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioWasApi.cpp 89258 2021-05-25 09:58:08Z vboxsync $ */
+/* $Id: DrvHostAudioWasApi.cpp 89260 2021-05-25 10:23:08Z vboxsync $ */
 /** @file
  * Host audio driver - Windows Audio Session API.
  */
@@ -2829,7 +2829,12 @@ static DECLCALLBACK(void) drvHostAudioWasPowerOff(PPDMDRVINS pDrvIns)
         {
             rc = pThis->pIHostAudioPort->pfnDoOnWorkerThread(pThis->pIHostAudioPort, NULL/*pStream*/,
                                                              DRVHOSTAUDIOWAS_DO_PURGE_CACHE, NULL /*pvUser*/);
-            AssertRC(rc);
+            if (RT_FAILURE(rc))
+            {
+                LogFunc(("pfnDoOnWorkerThread/DRVHOSTAUDIOWAS_DO_PURGE_CACHE failed: %Rrc\n", rc));
+                RTSemEventMultiDestroy(pThis->hEvtCachePurge);
+                pThis->hEvtCachePurge = NIL_RTSEMEVENTMULTI;
+            }
         }
     }
 #endif
