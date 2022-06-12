@@ -1,4 +1,4 @@
-/* $Id: UIRichTextString.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIRichTextString.cpp 88445 2021-04-09 17:57:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIRichTextString class implementation.
  */
@@ -67,10 +67,10 @@ QString UIRichTextString::toString() const
     return strString;
 }
 
-QList<QTextLayout::FormatRange> UIRichTextString::formatRanges(int iShift /* = 0 */) const
+QVector<QTextLayout::FormatRange> UIRichTextString::formatRanges(int iShift /* = 0 */) const
 {
     /* Prepare format range list: */
-    QList<QTextLayout::FormatRange> ranges;
+    QVector<QTextLayout::FormatRange> ranges;
 
     /* Add own format range first: */
     QTextLayout::FormatRange range;
