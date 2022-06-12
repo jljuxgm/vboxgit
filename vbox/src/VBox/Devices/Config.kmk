@@ -1,4 +1,4 @@
-# $Id: Config.kmk 86009 2020-09-02 23:01:09Z vboxsync $
+# $Id: Config.kmk 86011 2020-09-02 23:13:07Z vboxsync $
 ## @file
 # kBuild Configuration file for the Devices.
 #
@@ -25,11 +25,6 @@ endif
 # We need the VMM/Config.kmk one for the VMM_COMMON_DEFS variable.
 ifndef VBOX_VMM_CONFIG_KMK_INCLUDED
  include $(PATH_ROOT)/src/VBox/VMM/Config.kmk
-endif
-
-# We need the Additions/3D/Config.kmk for the VBOX_PATH_VMSVGA_INC variable.
-ifndef VBOX_MESA3D_CONFIG_KMK_INCLUDED
- include $(PATH_ROOT)/src/VBox/Additions/3D/Config.kmk
 endif
 
 VBOX_PATH_DEVICES_SRC := $(PATH_ROOT)/src/VBox/Devices
