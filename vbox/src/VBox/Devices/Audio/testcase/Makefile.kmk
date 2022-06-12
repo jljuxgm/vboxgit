@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 88234 2021-03-22 10:25:25Z vboxsync $
+# $Id: Makefile.kmk 89350 2021-05-28 12:11:51Z vboxsync $
 ## @file
 # Sub-Makefile for the audio testcases.
 #
@@ -24,7 +24,7 @@ if defined(VBOX_WITH_TESTCASES) && !defined(VBOX_ONLY_ADDITIONS) && !defined(VBO
  TESTING  += $(tstAudioMixBuffer_0_OUTDIR)/tstAudioMixBuffer.run
 
  tstAudioMixBuffer_TEMPLATE = VBOXR3TSTEXE
- tstAudioMixBuffer_DEFS = TESTCASE
+ tstAudioMixBuffer_DEFS = TESTCASE VBOX_AUDIO_MIX_BUFFER_TESTCASE
  tstAudioMixBuffer_DEFS.debug  = VBOX_WITH_EF_WRAPS
  tstAudioMixBuffer_SOURCES = \
 	tstAudioMixBuffer.cpp \
