@@ -1,4 +1,4 @@
-/* $Id: vkatCmdSelfTest.cpp 89643 2021-06-13 13:59:53Z vboxsync $ */
+/* $Id: vkatCmdSelfTest.cpp 89685 2021-06-14 15:41:09Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) - Self test code.
  */
@@ -167,7 +167,12 @@ RTEXITCODE audioTestDoSelftest(PSELFTESTCTX pCtx)
                               pCtx->Host.szGuestAtsAddr, pCtx->Host.uGuestAtsPort);
         if (RT_SUCCESS(rc))
         {
-            audioTestWorker(pTstEnv, &TstCust);
+            rc = audioTestWorker(pTstEnv, &TstCust);
+            if (RT_SUCCESS(rc))
+            {
+
+            }
+
             audioTestEnvDestroy(pTstEnv);
         }
     }

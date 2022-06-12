@@ -1,4 +1,4 @@
-/* $Id: AudioTestServiceClient.cpp 89618 2021-06-11 07:21:53Z vboxsync $ */
+/* $Id: AudioTestServiceClient.cpp 89685 2021-06-14 15:41:09Z vboxsync $ */
 /** @file
  * AudioTestServiceClient - Audio Test Service (ATS), Client helpers.
  *
@@ -474,7 +474,10 @@ int AudioTestSvcClientTestSetDownload(PATSCLIENT pClient, const char *pszTag, co
             rc = VINF_EOF;
         }
         else
-            AssertFailedStmt(rc = VERR_NET_PROTOCOL_ERROR);
+        {
+            AssertMsgFailed(("Got unexpected reply '%s'", Reply.szOp));
+            rc = VERR_NET_PROTOCOL_ERROR;
+        }
 
         audioTestSvcClientReplyDestroy(&Reply);
 

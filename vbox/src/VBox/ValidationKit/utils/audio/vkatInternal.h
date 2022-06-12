@@ -1,4 +1,4 @@
-/* $Id: vkatInternal.h 89643 2021-06-13 13:59:53Z vboxsync $ */
+/* $Id: vkatInternal.h 89685 2021-06-14 15:41:09Z vboxsync $ */
 /** @file
  * VKAT - Internal header file for common definitions + structs.
  */
@@ -212,8 +212,12 @@ typedef struct AUDIOTESTENV
         {
             /** Client connected to the ATS on the guest side. */
             ATSCLIENT       AtsClGuest;
+            /** Path to the guest's test set downloaded to the host. */
+            char            szPathTestSetGuest[RTPATH_MAX];
             /** Client connected to the Validation Kit audio driver ATS. */
             ATSCLIENT       AtsClValKit;
+            /** Path to the Validation Kit audio driver's test set downloaded to the host. */
+            char            szPathTestSetValKit[RTPATH_MAX];
         } Host;
     } u;
 } AUDIOTESTENV;

@@ -1,4 +1,4 @@
-/* $Id: vkatCommon.cpp 89643 2021-06-13 13:59:53Z vboxsync $ */
+/* $Id: vkatCommon.cpp 89685 2021-06-14 15:41:09Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) - Self test code.
  */
@@ -712,6 +712,7 @@ int audioTestEnvInit(PAUDIOTESTENV pTstEnv,
         Ctx.pTstEnv = pTstEnv;
 
         ATSCALLBACKS Callbacks;
+        RT_ZERO(Callbacks);
         Callbacks.pfnTestSetBegin     = audioTestGstAtsTestSetBeginCallback;
         Callbacks.pfnTestSetEnd       = audioTestGstAtsTestSetEndCallback;
         Callbacks.pfnTonePlay         = audioTestGstAtsTonePlayCallback;
