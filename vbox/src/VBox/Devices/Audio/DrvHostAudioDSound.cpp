@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioDSound.cpp 89057 2021-05-15 17:00:40Z vboxsync $ */
+/* $Id: DrvHostAudioDSound.cpp 89089 2021-05-17 10:43:13Z vboxsync $ */
 /** @file
  * Host audio driver - DirectSound (Windows).
  */
@@ -24,7 +24,7 @@
 #include <VBox/log.h>
 #include <iprt/win/windows.h>
 #include <dsound.h>
-#include <Mmdeviceapi.h>
+#include <mmdeviceapi.h>
 #include <functiondiscoverykeys_devpkey.h>
 
 #include <iprt/alloc.h>
