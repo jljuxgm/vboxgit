@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 85864 2020-08-21 12:44:56Z vboxsync $ */
+/* $Id: DevVGA.cpp 86197 2020-09-21 13:42:43Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -6385,6 +6385,7 @@ static DECLCALLBACK(int)   vgaR3Construct(PPDMDEVINS pDevIns, int iInstance, PCF
                                             "|MaxBiosYRes"
 # ifdef VBOX_WITH_VMSVGA
                                             "|VMSVGAEnabled"
+                                            "|VMSVGA10"
                                             "|VMSVGAPciId"
                                             "|VMSVGAPciBarLayout"
                                             "|VMSVGAFifoSize"
@@ -6426,6 +6427,10 @@ static DECLCALLBACK(int)   vgaR3Construct(PPDMDEVINS pDevIns, int iInstance, PCF
     rc = pHlp->pfnCFGMQueryBoolDef(pCfg, "VMSVGAEnabled", &pThis->fVMSVGAEnabled, false);
     AssertLogRelRCReturn(rc, rc);
     Log(("VMSVGA: VMSVGAEnabled   = %d\n", pThis->fVMSVGAEnabled));
+
+    rc = pHlp->pfnCFGMQueryBoolDef(pCfg, "VMSVGA10", &pThis->fVMSVGA10, false);
+    AssertLogRelRCReturn(rc, rc);
+    Log(("VMSVGA: VMSVGA10        = %d\n", pThis->fVMSVGA10));
 
     rc = pHlp->pfnCFGMQueryBoolDef(pCfg, "VMSVGAPciId", &pThis->fVMSVGAPciId, false);
     AssertLogRelRCReturn(rc, rc);
