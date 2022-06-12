@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.cpp 84702 2020-06-05 16:30:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowNormal class implementation.
  */
@@ -365,6 +365,7 @@ void UIMachineWindowNormal::loadSettings()
         m_pIndicatorsPool->setAutoUpdateIndicatorStates(statusBar()->isVisible() && uisession()->isRunning());
     }
 
+#ifndef VBOX_GUI_WITH_CUSTOMIZATIONS1
     /* Load window geometry: */
     {
         /* Load extra-data: */
@@ -418,6 +419,7 @@ void UIMachineWindowNormal::loadSettings()
         normalizeGeometry(true /* adjust position */);
 #endif /* !VBOX_WS_X11 */
     }
+#endif /* VBOX_GUI_WITH_CUSTOMIZATIONS1 */
 }
 
 void UIMachineWindowNormal::saveSettings()
