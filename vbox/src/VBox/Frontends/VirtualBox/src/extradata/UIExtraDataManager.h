@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 88205 2021-03-19 14:05:29Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 88411 2021-04-08 11:25:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -788,6 +788,8 @@ public:
       * @{ */
         void setHelpBrowserLastUrlList(const QStringList &urlList);
         QStringList helpBrowserLastUrlList();
+        void setHelpBrowserZoomPercentage(int iZoomPercentage);
+        int helpBrowserZoomPercentage();
         QRect helpBrowserDialogGeometry(QWidget *pWidget, QWidget *pParentWidget, const QRect &defaultGeometry);
         void setHelpBrowserDialogGeometry(const QRect &geometry, bool fMaximized);
         bool helpBrowserDialogShouldBeMaximized();

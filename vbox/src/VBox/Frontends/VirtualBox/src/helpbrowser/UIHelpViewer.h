@@ -1,4 +1,4 @@
-/* $Id: UIHelpViewer.h 88410 2021-04-08 10:49:01Z vboxsync $ */
+/* $Id: UIHelpViewer.h 88411 2021-04-08 11:25:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class declaration.
  */
@@ -66,6 +66,8 @@ public:
     void setFont(const QFont &);
     bool isFindInPageWidgetVisible() const;
     void zoom(ZoomOperation enmZoomOperation);
+    int zoomPercentage() const;
+    void setZoomPercentage(int iZoomPercentage);
 
     static const QPair<int, int> zoomPercentageMinMax;
 
