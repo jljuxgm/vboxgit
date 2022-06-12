@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.cpp 88266 2021-03-24 07:22:33Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.cpp 88268 2021-03-24 10:24:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class implementation.
  */
@@ -165,7 +165,7 @@ void UIWizardNewVMPageExpert::retranslateUi()
     {
         m_pToolBox->setPageTitle(ExpertToolboxItems_NameAndOSType, QString(UIWizardNewVM::tr("Name and &Operating System")));
         m_pToolBox->setPageTitle(ExpertToolboxItems_Unattended, UIWizardNewVM::tr("&Unattended Install"));
-        m_pToolBox->setPageTitle(ExpertToolboxItems_Disk, UIWizardNewVM::tr("&Hard Disk"));
+        m_pToolBox->setPageTitle(ExpertToolboxItems_Disk, UIWizardNewVM::tr("Hard Dis&k"));
         m_pToolBox->setPageTitle(ExpertToolboxItems_Hardware, UIWizardNewVM::tr("H&ardware"));
     }
 
@@ -184,7 +184,7 @@ void UIWizardNewVMPageExpert::retranslateUi()
     if (m_pDiskVariantGroupBox)
         m_pDiskVariantGroupBox->setTitle(UIWizardNewVM::tr("Storage on Physical Hard Disk"));
     if (m_pLocationLabel)
-        m_pLocationLabel->setText(UIWizardNewVM::tr("Disk Location:"));
+        m_pLocationLabel->setText(UIWizardNewVM::tr("Disk &Location:"));
 
     if (m_pNameAndSystemLayout && m_pNameAndSystemEditor)
         m_pNameAndSystemLayout->setColumnMinimumWidth(0, m_pNameAndSystemEditor->firstColumnWidth());
@@ -368,7 +368,7 @@ QWidget *UIWizardNewVMPageExpert::createNewDiskWidgets()
 
     /* Disk location widgets: */
 
-    m_pLocationLabel = new QLabel("Disk Location:");
+    m_pLocationLabel = new QLabel;
     m_pLocationLabel->setSizePolicy(QSizePolicy::Maximum, QSizePolicy::Fixed);
     m_pLocationEditor = new QLineEdit;
     m_pLocationOpenButton = new QIToolButton;

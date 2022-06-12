@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic4.cpp 88250 2021-03-22 16:09:00Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic4.cpp 88268 2021-03-24 10:24:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic4 class implementation.
  */
@@ -85,7 +85,7 @@ void UIWizardNewVMPage4::retranslateWidgets()
     if (m_pDiskNew)
         m_pDiskNew->setText(UIWizardNewVM::tr("&Create a Virtual Hard Disk Now"));
     if (m_pDiskExisting)
-        m_pDiskExisting->setText(UIWizardNewVM::tr("&Use an Existing Virtual Hard Disk File"));
+        m_pDiskExisting->setText(UIWizardNewVM::tr("U&se an Existing Virtual Hard Disk File"));
     if (m_pDiskSelectionButton)
         m_pDiskSelectionButton->setToolTip(UIWizardNewVM::tr("Choose a Virtual Hard Fisk File..."));
 }
