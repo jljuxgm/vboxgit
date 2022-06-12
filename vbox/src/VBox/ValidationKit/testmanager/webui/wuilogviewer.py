@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuilogviewer.py 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: wuilogviewer.py 86972 2020-11-25 08:47:32Z vboxsync $
 
 """
 Test Manager WUI - Log viewer
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 82968 $"
+__version__ = "$Revision: 86972 $"
 
 # Validation Kit imports.
 from common                             import webutils;
@@ -64,7 +64,7 @@ class WuiLogViewer(WuiContentBase):
         del dParams2[WuiMain.ksParamLogChunkNo];
         sHrefFmt        = '<a href="?%s&%s=%%s" title="%%s">%%s</a>' \
                         % (webutils.encodeUrlParams(dParams2).replace('%', '%%'), WuiMain.ksParamLogChunkNo,);
-        sHtmlWalker = self.genericPageWalker(self._iChunk, (cbFile + self._cbChunk - 1) / self._cbChunk,
+        sHtmlWalker = self.genericPageWalker(self._iChunk, (cbFile + self._cbChunk - 1) // self._cbChunk,
                                              sHrefFmt, 11, 0, 'chunk');
 
         #
@@ -94,14 +94,14 @@ class WuiLogViewer(WuiContentBase):
                                     WuiMain.ksParamGetFileId:         self._oLogFile.idTestResultFile,
                                     WuiMain.ksParamGetFileDownloadIt: False,
                                   },
-                                  sTitle = '%u MiB' % ((cbFile + 1048576 - 1) / 1048576,) );
+                                  sTitle = '%u MiB' % ((cbFile + 1048576 - 1) // 1048576,) );
         oDownloadLink = WuiTmLink('Download Log', '',
                                   { WuiMain.ksParamAction:            WuiMain.ksActionGetFile,
                                     WuiMain.ksParamGetFileSetId:      self._oTestSet.idTestSet,
                                     WuiMain.ksParamGetFileId:         self._oLogFile.idTestResultFile,
                                     WuiMain.ksParamGetFileDownloadIt: True,
                                   },
-                                  sTitle = '%u MiB' % ((cbFile + 1048576 - 1) / 1048576,) );
+                                  sTitle = '%u MiB' % ((cbFile + 1048576 - 1) // 1048576,) );
         oTestSetLink  = WuiTmLink('Test Set', '',
                                   { WuiMain.ksParamAction:            WuiMain.ksActionTestResultDetails,
                                     TestSetData.ksParam_idTestSet:    self._oTestSet.idTestSet,
