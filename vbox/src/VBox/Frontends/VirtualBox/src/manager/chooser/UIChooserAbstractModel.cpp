@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.cpp 85036 2020-07-01 18:02:06Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.cpp 85037 2020-07-01 18:06:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class implementation.
  */
@@ -848,6 +848,9 @@ void UIChooserAbstractModel::reloadCloudTree()
 #ifdef VBOX_GUI_WITH_CLOUD_VMS
     LogRelFlow(("UIChooserAbstractModel: Loading cloud providers/profiles...\n"));
 
+    /* Acquire Cloud Profile Manager restrictions: */
+    const QStringList restrictions = gEDataManager->cloudProfileManagerRestrictions();
+
     /* Iterate through existing providers: */
     foreach (CCloudProvider comCloudProvider, listCloudProviders())
     {
@@ -858,6 +861,11 @@ void UIChooserAbstractModel::reloadCloudTree()
         /* Acquire provider short name: */
         QString strProviderShortName;
         if (!cloudProviderShortName(comCloudProvider, strProviderShortName))
+            continue;
+
+        /* Make sure this provider isn't restricted: */
+        const QString strProviderPath = QString("/%1").arg(strProviderShortName);
+        if (restrictions.contains(strProviderPath))
             continue;
 
         /* Acquire list of profiles: */
@@ -887,6 +895,11 @@ void UIChooserAbstractModel::reloadCloudTree()
             /* Acquire profile name: */
             QString strProfileName;
             if (!cloudProfileName(comCloudProfile, strProfileName))
+                continue;
+
+            /* Make sure this profile isn't restricted: */
+            const QString strProfilePath = QString("/%1/%2").arg(strProviderShortName, strProfileName);
+            if (restrictions.contains(strProfilePath))
                 continue;
 
             /* Add profile sub-group node: */
