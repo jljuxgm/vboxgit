@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.cpp 86668 2020-10-21 16:15:11Z vboxsync $ */
+/* $Id: UIActionPoolManager.cpp 86922 2020-11-19 15:41:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class implementation.
  */
@@ -1079,27 +1079,10 @@ protected:
     /** Handles translation event. */
     virtual void retranslateUi() /* override */
     {
-        switch (state())
-        {
-            case 0:
-            {
-                setIconText(QApplication::translate("UIActionPool", "Discard"));
-                setName(QApplication::translate("UIActionPool", "D&iscard Saved State..."));
-                setStatusTip(QApplication::translate("UIActionPool", "Discard saved state of selected virtual machines"));
-                setToolTip(simplifyText(text()) + (shortcut().isEmpty() ? QString() : QString(" (%1)").arg(shortcut().toString())));
-                break;
-            }
-            case 1:
-            {
-                setIconText(QApplication::translate("UIActionPool", "Terminate"));
-                setName(QApplication::translate("UIActionPool", "&Terminate Cloud Instance..."));
-                setStatusTip(QApplication::translate("UIActionPool", "Terminate cloud instance of selected virtual machines"));
-                setToolTip(simplifyText(text()) + (shortcut().isEmpty() ? QString() : QString(" (%1)").arg(shortcut().toString())));
-                break;
-            }
-            default:
-                break;
-        }
+        setIconText(QApplication::translate("UIActionPool", "Discard"));
+        setName(QApplication::translate("UIActionPool", "D&iscard Saved State..."));
+        setStatusTip(QApplication::translate("UIActionPool", "Discard saved state of selected virtual machines"));
+        setToolTip(simplifyText(text()) + (shortcut().isEmpty() ? QString() : QString(" (%1)").arg(shortcut().toString())));
     }
 };
 
