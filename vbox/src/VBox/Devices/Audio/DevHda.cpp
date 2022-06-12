@@ -1,4 +1,4 @@
-/* $Id: DevHda.cpp 89562 2021-06-08 08:45:11Z vboxsync $ */
+/* $Id: DevHda.cpp 89563 2021-06-08 08:53:04Z vboxsync $ */
 /** @file
  * Intel HD Audio Controller Emulation.
  *
@@ -4670,6 +4670,8 @@ static DECLCALLBACK(int) hdaR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFGM
      * thread from the DMA timer callback.  Because it's used from the DMA timer
      * callback, it will implicitly be rounded up to the next timer period.
      * This is for adding a little host scheduling leeway into the playback. */
+    /** @todo InitialDelayMs is rather pointless, DrvAudio does pre-buffering in
+     * both directions now. (bird, 2021-06-08) */
     rc = pHlp->pfnCFGMQueryU16Def(pCfg, "InitialDelayMs", &pThis->msInitialDelay, 12);
     if (RT_FAILURE(rc))
          return PDMDEV_SET_ERROR(pDevIns, rc, N_("HDA configuration error: failed to read 'InitialDelayMs' as uint16_t"));
