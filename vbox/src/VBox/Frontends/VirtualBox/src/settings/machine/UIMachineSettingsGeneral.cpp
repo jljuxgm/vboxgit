@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsGeneral.cpp 87251 2021-01-14 16:20:01Z vboxsync $ */
+/* $Id: UIMachineSettingsGeneral.cpp 87608 2021-02-04 14:54:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsGeneral class implementation.
  */
@@ -276,7 +276,7 @@ void UIMachineSettingsGeneral::getFromCache()
     AssertPtrReturnVoid(m_pComboClipboard);
     AssertPtrReturnVoid(m_pComboDragAndDrop);
     m_pEditorSnapshotFolder->setPath(oldGeneralData.m_strSnapshotsFolder);
-    m_pEditorSnapshotFolder->setHomeDir(oldGeneralData.m_strSnapshotsHomeDir);
+    m_pEditorSnapshotFolder->setInitialPath(oldGeneralData.m_strSnapshotsHomeDir);
     const int iClipboardModePosition = m_pComboClipboard->findData(oldGeneralData.m_clipboardMode);
     m_pComboClipboard->setCurrentIndex(iClipboardModePosition == -1 ? 0 : iClipboardModePosition);
     const int iDnDModePosition = m_pComboDragAndDrop->findData(oldGeneralData.m_dndMode);

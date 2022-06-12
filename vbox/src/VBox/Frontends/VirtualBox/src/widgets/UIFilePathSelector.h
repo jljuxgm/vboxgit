@@ -1,4 +1,4 @@
-/* $Id: UIFilePathSelector.h 87317 2021-01-20 10:14:39Z vboxsync $ */
+/* $Id: UIFilePathSelector.h 87608 2021-02-04 14:54:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFilePathSelector class declaration.
  */
@@ -125,8 +125,8 @@ public slots:
     /** Defines the @a strPath and @a fRefreshText after that. */
     void setPath(const QString &strPath, bool fRefreshText = true);
 
-    /** Defines the @a strHomeDir. */
-    void setHomeDir(const QString &strHomeDir) { m_strHomeDir = strHomeDir; }
+    /** Defines the @a strInitialPath. */
+    void setInitialPath(const QString &strInitialPath) { m_strInitialPath = strInitialPath; }
 
 protected:
 
@@ -180,8 +180,8 @@ private:
 
     /** Holds the path. */
     QString  m_strPath;
-    /** Holds the home dir. */
-    QString  m_strHomeDir;
+    /** Holds the path which we pass to QFileDialog as initial path. */
+    QString  m_strInitialPath;
 
     /** Holds the file-dialog title. */
     QString  m_strFileDialogTitle;

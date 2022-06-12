@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSFDetails.cpp 86045 2020-09-07 14:58:04Z vboxsync $ */
+/* $Id: UIMachineSettingsSFDetails.cpp 87608 2021-02-04 14:54:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSFDetails class implementation.
  */
@@ -224,7 +224,7 @@ void UIMachineSettingsSFDetails::prepareWidgets()
         if (m_pSelectorPath)
         {
             m_pSelectorPath->setResetEnabled(false);
-            m_pSelectorPath->setHomeDir(QDir::homePath());
+            m_pSelectorPath->setInitialPath(QDir::homePath());
 
             pLayoutMain->addWidget(m_pSelectorPath, 0, 1);
         }

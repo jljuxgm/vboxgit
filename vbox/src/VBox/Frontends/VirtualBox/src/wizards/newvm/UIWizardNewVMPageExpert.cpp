@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.cpp 87607 2021-02-04 14:20:49Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.cpp 87608 2021-02-04 14:54:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class implementation.
  */
@@ -329,7 +329,7 @@ QWidget *UIWizardNewVMPageExpert::createUnattendedWidgets()
             m_pISOFilePathSelector->setResetEnabled(false);
             m_pISOFilePathSelector->setMode(UIFilePathSelector::Mode_File_Open);
             m_pISOFilePathSelector->setFileDialogFilters("*.iso *.ISO");
-            m_pISOFilePathSelector->setHomeDir(uiCommon().defaultFolderPathForType(UIMediumDeviceType_DVD));
+            m_pISOFilePathSelector->setInitialPath(uiCommon().defaultFolderPathForType(UIMediumDeviceType_DVD));
             pInstallationISOContainerLayout->addWidget(m_pISOFilePathSelector);
         }
         pLayout->addWidget(m_pInstallationISOContainer, iRow++, 0, 1, 4);

@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.cpp 87251 2021-01-14 16:20:01Z vboxsync $ */
+/* $Id: UIMachineSettingsDisplay.cpp 87608 2021-02-04 14:54:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsDisplay class implementation.
  */
@@ -527,7 +527,7 @@ void UIMachineSettingsDisplay::getFromCache()
 
     /* Load old 'Recording' data from the cache: */
     m_pCheckboxRecording->setChecked(oldDisplayData.m_fRecordingEnabled);
-    m_pEditorRecordingFilePath->setHomeDir(oldDisplayData.m_strRecordingFolder);
+    m_pEditorRecordingFilePath->setInitialPath(oldDisplayData.m_strRecordingFolder);
     m_pEditorRecordingFilePath->setPath(oldDisplayData.m_strRecordingFilePath);
     m_pSpinboxRecordingFrameWidth->setValue(oldDisplayData.m_iRecordingVideoFrameWidth);
     m_pSpinboxRecordingFrameHeight->setValue(oldDisplayData.m_iRecordingVideoFrameHeight);

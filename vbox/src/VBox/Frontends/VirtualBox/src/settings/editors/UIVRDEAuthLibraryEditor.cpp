@@ -1,4 +1,4 @@
-/* $Id: UIVRDEAuthLibraryEditor.cpp 86097 2020-09-11 14:38:13Z vboxsync $ */
+/* $Id: UIVRDEAuthLibraryEditor.cpp 87608 2021-02-04 14:54:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVRDEAuthLibraryEditor class implementation.
  */
@@ -92,7 +92,7 @@ void UIVRDEAuthLibraryEditor::prepare()
         {
             if (m_pLabel)
                 m_pLabel->setBuddy(m_pSelector);
-            m_pSelector->setHomeDir(uiCommon().homeFolder());
+            m_pSelector->setInitialPath(uiCommon().homeFolder());
             m_pSelector->setMode(UIFilePathSelector::Mode_File_Open);
             connect(m_pSelector, &UIFilePathSelector::pathChanged,
                     this, &UIVRDEAuthLibraryEditor::sltHandleSelectorPathChanged);
