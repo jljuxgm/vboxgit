@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: status.py 86933 2020-11-20 14:55:05Z vboxsync $
+# $Id: status.py 86934 2020-11-20 14:56:02Z vboxsync $
 
 """
 CGI - Administrator Web-UI.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 86933 $"
+__version__ = "$Revision: 86934 $"
 
 
 # Standard python imports.
@@ -376,7 +376,7 @@ FROM    TestSets
 INNER JOIN TestCases
         ON TestCases.idGenTestCase           = TestCases.idGenTestCase
 INNER JOIN TestBoxesWithStrings
-        ON TestBoxesWithStrings.idGenTestBox = TestSets.idGetTestBox
+        ON TestBoxesWithStrings.idGenTestBox = TestSets.idGenTestBox
 WHERE   TestSets.tsCreated                   > (CURRENT_TIMESTAMP - '%s hours'::interval)
 ''', (cHoursBack,));
         else:
@@ -389,9 +389,9 @@ INNER JOIN BuildCategories
         ON BuildCategories.idBuildCategory   = TestSets.idBuildCategory
        AND BuildCategories.sBuildCategories  = '%s'
 INNER JOIN TestCases
-        ON TestCases.idGenTestCase           = TestSets.idGetTestCase
+        ON TestCases.idGenTestCase           = TestSets.idGenTestCase
 INNER JOIN TestBoxesWithStrings
-        ON TestBoxesWithStrings.idGenTestBox = TestSets.idGetTestBox
+        ON TestBoxesWithStrings.idGenTestBox = TestSets.idGenTestBox
 WHERE   TestSets.tsCreated                   > (CURRENT_TIMESTAMP - '%s hours'::interval)
 ''', (sBranch, cHoursBack,));
 
