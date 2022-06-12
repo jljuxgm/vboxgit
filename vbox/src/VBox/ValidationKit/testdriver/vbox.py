@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 86507 2020-10-09 16:15:27Z vboxsync $
+# $Id: vbox.py 86508 2020-10-09 16:15:42Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 86507 $"
+__version__ = "$Revision: 86508 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -1930,7 +1930,7 @@ class TestDriver(base.TestDriver):                                              
         If your test driver overrides this, it should normally call us at the
         end of the job.
         """
-        cErrorEntry = reporter.getErrorCount();
+        cErrorsEntry = reporter.getErrorCount();
 
         # Kill any left over VM processes.
         self._powerOffAllVms();
@@ -1968,7 +1968,7 @@ class TestDriver(base.TestDriver):                                              
         fRc = base.TestDriver.actionCleanupAfter(self);
 
         # Flag failure if the error count increased.
-        if reporter.getErrorCount() > cErrorEntry:
+        if reporter.getErrorCount() > cErrorsEntry:
             fRc = False;
         return fRc;
 
