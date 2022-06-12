@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerSearchPanel.cpp 88734 2021-04-27 12:56:38Z vboxsync $ */
+/* $Id: UIVMLogViewerSearchPanel.cpp 88737 2021-04-27 14:10:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -57,7 +57,11 @@ UIVMLogViewerSearchPanel::UIVMLogViewerSearchPanel(QWidget *pParent, UIVMLogView
 void UIVMLogViewerSearchPanel::refresh()
 {
     /* We start the search from the end of the doc. assuming log's end is more interesting: */
-    performSearch(BackwardSearch, true);
+    if (isVisible())
+        performSearch(BackwardSearch, true);
+    else
+        reset();
+
     emit sigHighlightingUpdated();
 }
 
@@ -68,6 +72,7 @@ void UIVMLogViewerSearchPanel::reset()
     m_matchedCursorPosition.clear();
     if (m_pSearchEditor)
         m_pSearchEditor->reset();
+    emit sigHighlightingUpdated();
 }
 
 const QVector<float> &UIVMLogViewerSearchPanel::matchLocationVector() const

@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.cpp 88735 2021-04-27 13:22:01Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.cpp 88737 2021-04-27 14:10:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class implementation.
  */
@@ -416,7 +416,7 @@ void UIVMLogViewerWidget::sltCurrentTabChanged(int tabIndex)
 void UIVMLogViewerWidget::sltFilterApplied()
 {
     /* Reapply the search to get highlighting etc. correctly */
-    if (m_pSearchPanel && m_pSearchPanel->isVisible())
+    if (m_pSearchPanel)
         m_pSearchPanel->refresh();
 }
 
