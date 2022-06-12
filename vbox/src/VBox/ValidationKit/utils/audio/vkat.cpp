@@ -1,4 +1,4 @@
-/* $Id: vkat.cpp 88928 2021-05-07 14:25:30Z vboxsync $ */
+/* $Id: vkat.cpp 88929 2021-05-07 15:01:34Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) utility for testing and validating the audio stack.
  */
@@ -151,7 +151,7 @@ enum
     VKAT_TEST_OPT_BIT,
     VKAT_TEST_OPT_CHAN,
     VKAT_TEST_OPT_SIGNED,
-    VKAT_TEST_OPT_VOL,
+    VKAT_TEST_OPT_VOL
 };
 
 #if 0
