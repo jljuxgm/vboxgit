@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.cpp 88702 2021-04-26 10:40:36Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.cpp 88703 2021-04-26 11:48:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class implementation.
  */
@@ -928,19 +928,7 @@ void UIVMLogViewerWidget::createLogPage(const QString &strFileName, const QStrin
         strTabTitle.append(QFileInfo(strFileName).fileName());
         m_pTabWidget->insertTab(m_pTabWidget->count(), pLogPage, strTabTitle);
 
-        /* Set text edit since we want to display this text: */
-        if (!noLogsToShow)
-        {
-            pLogPage->setTextEditText(strLogContent);
-            /* Set the log string of the UIVMLogPage: */
-            pLogPage->setLogString(strLogContent);
-        }
-        /* In case there are some errors append the error text as html: */
-        else
-        {
-            pLogPage->setTextEditTextAsHtml(strLogContent);
-            pLogPage->markForError();
-        }
+        pLogPage->setLogContent(strLogContent, noLogsToShow);
         pLogPage->setScrollBarMarkingsVector(m_pSearchPanel->matchLocationVector());
     }
 }

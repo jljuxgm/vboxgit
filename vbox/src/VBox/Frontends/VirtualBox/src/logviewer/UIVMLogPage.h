@@ -1,4 +1,4 @@
-/* $Id: UIVMLogPage.h 88702 2021-04-26 10:40:36Z vboxsync $ */
+/* $Id: UIVMLogPage.h 88703 2021-04-26 11:48:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -62,18 +62,13 @@ public:
     QPlainTextEdit *textEdit();
     QTextDocument  *document();
 
+    void setLogContent(const QString &strLogContent, bool fError);
     /* Only to be called when log file is re-read. */
-    void setLogString(const QString &strLog);
+    // void setLogString(const QString &strLog);
     const QString& logString() const;
 
     void setLogFileName(const QString &strFileName);
     const QString& logFileName() const;
-
-    /** Set plaintextEdit's text. Note that the text we
-     *  show currently might be different than
-     *  m_strLog. For example during filtering. */
-    void setTextEditText(const QString &strText);
-    void setTextEditTextAsHtml(const QString &strText);
 
     /** Marks the plain text edit When we dont have a log content. */
     void markForError();
@@ -132,6 +127,12 @@ private:
     void retranslateUi();
     void updateTextEditBookmarkLineSet();
     void deleteBookmark(LogBookmark bookmark);
+
+    /** Set plaintextEdit's text. Note that the text we
+     *  show currently might be different than
+     *  m_strLog. For example during filtering. */
+    void setTextEditText(const QString &strText);
+    void setTextEditTextAsHtml(const QString &strText);
 
     QHBoxLayout    *m_pMainLayout;
     UIVMLogViewerTextEdit *m_pTextEdit;

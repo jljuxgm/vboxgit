@@ -1,4 +1,4 @@
-/* $Id: UIVMLogPage.cpp 88702 2021-04-26 10:40:36Z vboxsync $ */
+/* $Id: UIVMLogPage.cpp 88703 2021-04-26 11:48:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -105,9 +105,18 @@ void UIVMLogPage::cleanup()
 {
 }
 
-void UIVMLogPage::setLogString(const QString &strLog)
+void UIVMLogPage::setLogContent(const QString &strLogContent, bool fError)
 {
-    m_strLog = strLog;
+    if (!fError)
+    {
+        m_strLog = strLogContent;
+        setTextEditText(strLogContent);
+    }
+    else
+    {
+        markForError();
+        setTextEditTextAsHtml(strLogContent);
+    }
 }
 
 const QString& UIVMLogPage::logString() const
