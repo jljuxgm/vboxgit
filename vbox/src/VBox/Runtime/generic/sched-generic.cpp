@@ -1,4 +1,4 @@
-/* $Id: sched-generic.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: sched-generic.cpp 86525 2020-10-11 18:28:52Z vboxsync $ */
 /** @file
  * IPRT - Scheduling, generic stubs.
  */
@@ -52,15 +52,6 @@ DECLHIDDEN(int) rtSchedNativeCalcDefaultPriority(RTTHREADTYPE enmType)
 }
 
 
-/**
- * Validates and sets the process priority.
- * This will check that all rtThreadNativeSetPriority() will success for all the
- * thread types when applied to the current thread.
- *
- * @returns iprt status code.
- * @param   enmPriority     The priority to validate and set.
- * @remark  Located in sched.
- */
 DECLHIDDEN(int) rtProcNativeSetPriority(RTPROCPRIORITY enmPriority)
 {
     Assert(enmPriority > RTPROCPRIORITY_INVALID && enmPriority < RTPROCPRIORITY_LAST);
@@ -68,18 +59,6 @@ DECLHIDDEN(int) rtProcNativeSetPriority(RTPROCPRIORITY enmPriority)
 }
 
 
-/**
- * Sets the priority of the thread according to the thread type
- * and current process priority.
- *
- * The RTTHREADINT::enmType member has not yet been updated and will be updated by
- * the caller on a successful return.
- *
- * @returns iprt status code.
- * @param   pThread     The thread in question.
- * @param   enmType     The thread type.
- * @remark  Located in sched.
- */
 DECLHIDDEN(int) rtThreadNativeSetPriority(PRTTHREADINT pThread, RTTHREADTYPE enmType)
 {
     Assert(enmType > RTTHREADTYPE_INVALID && enmType < RTTHREADTYPE_END);
