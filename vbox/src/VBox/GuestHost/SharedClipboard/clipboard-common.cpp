@@ -1,4 +1,4 @@
-/* $Id: clipboard-common.cpp 86960 2020-11-23 12:02:35Z vboxsync $ */
+/* $Id: clipboard-common.cpp 87085 2020-12-11 08:28:10Z vboxsync $ */
 /** @file
  * Shared Clipboard: Some helper function for converting between the various eol.
  */
@@ -389,7 +389,7 @@ int ShClEventWait(PSHCLEVENTSOURCE pSource, SHCLEVENTID uID, RTMSINTERVAL uTimeo
         }
 
         if (RT_FAILURE(rc))
-            LogRel2(("Shared Clipboard: Waiting for even %RU32 failed, rc=%Rrc\n", uID, rc));
+            LogRel2(("Shared Clipboard: Waiting for event %RU32 failed, rc=%Rrc\n", uID, rc));
     }
     else
         rc = VERR_NOT_FOUND;
