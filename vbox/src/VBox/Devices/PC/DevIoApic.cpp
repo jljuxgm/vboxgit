@@ -1,4 +1,4 @@
-/* $Id: DevIoApic.cpp 86367 2020-10-01 04:59:16Z vboxsync $ */
+/* $Id: DevIoApic.cpp 86762 2020-10-30 05:28:17Z vboxsync $ */
 /** @file
  * IO APIC - Input/Output Advanced Programmable Interrupt Controller.
  */
@@ -534,10 +534,7 @@ static void ioapicSignalIntrForRte(PPDMDEVINS pDevIns, PIOAPIC pThis, PIOAPICCC 
             ioapicGetApicIntrFromMsi(&MsiOut, &ApicIntr);
         else
         {
-            if (rcRemap == VERR_IOMMU_INTR_REMAP_DENIED)
-                Log3(("IOAPIC: Interrupt (u8Vector=%#x) remapping denied. rc=%Rrc\n", ApicIntr.u8Vector, rcRemap));
-            else
-                Log(("IOAPIC: Interrupt (u8Vector=%#x) remapping failed. rc=%Rrc\n", ApicIntr.u8Vector, rcRemap));
+            Log(("IOAPIC: Interrupt (%#x) discarded (rc=%Rrc)\n", ApicIntr.u8Vector, rcRemap));
             return;
         }
 #else
