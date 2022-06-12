@@ -1,4 +1,4 @@
-/* $Id: DevIommuAmd.cpp 86867 2020-11-12 07:39:02Z vboxsync $ */
+/* $Id: DevIommuAmd.cpp 86880 2020-11-13 10:51:17Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - AMD implementation.
  */
@@ -3044,7 +3044,15 @@ static int iommuAmdLookupDeviceTable(PPDMDEVINS pDevIns, uint16_t uDevId, uint64
             {
                 /** @todo IOMMU: Split large pages into 4K IOTLB entries and add to IOTLB cache. */
 
+                /* If translation is disabled for this device (root paging mode is 0), we're done. */
+                if (WalkResult.cShift == 0)
+                {
+                    *pGCPhysSpa = uIova;
+                    break;
+                }
+
                 /* Store the translated base address before continuing to check permissions for any more pages. */
+                Assert(WalkResult.cShift >= X86_PAGE_4K_SHIFT);
                 if (cbRemaining == cbAccess)
                 {
                     uint64_t const offMask = ~(UINT64_C(0xffffffffffffffff) << WalkResult.cShift);
