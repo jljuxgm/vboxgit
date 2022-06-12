@@ -1,4 +1,4 @@
-/* $Id: QIInputDialog.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: QIInputDialog.h 87718 2021-02-11 08:50:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIInputDialog class declaration.
  */
@@ -43,7 +43,7 @@ class SHARED_LIBRARY_STUFF QIInputDialog : public QDialog
 public:
 
     /** Constructs the dialog passing @a pParent and @a enmFlags to the base-class. */
-    QIInputDialog(QWidget *pParent = 0, Qt::WindowFlags enmFlags = 0);
+    QIInputDialog(QWidget *pParent = 0, Qt::WindowFlags enmFlags = Qt::WindowFlags());
 
     /** Returns label text. */
     QString labelText() const;

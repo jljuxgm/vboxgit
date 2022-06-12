@@ -1,4 +1,4 @@
-/* $Id: QIMainDialog.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: QIMainDialog.h 87718 2021-02-11 08:50:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIMainDialog class declaration.
  */
@@ -41,10 +41,10 @@ class SHARED_LIBRARY_STUFF QIMainDialog : public QMainWindow
 
 public:
 
-    /** Constructs main-dialog passing @a pParent and @a fFlags to the base-class.
+    /** Constructs main-dialog passing @a pParent and @a enmFlags to the base-class.
       * @param  fIsAutoCentering  Brigs whether this dialog should be centered according it's parent. */
     QIMainDialog(QWidget *pParent = 0,
-                 Qt::WindowFlags fFlags = Qt::Dialog,
+                 Qt::WindowFlags enmFlags = Qt::Dialog,
                  bool fIsAutoCentering = true);
 
     /** Returns the dialog's result code. */

@@ -1,4 +1,4 @@
-/* $Id: QIWithRestorableGeometry.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: QIWithRestorableGeometry.h 87718 2021-02-11 08:50:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - QIWithRestorableGeometry class declaration.
  */
@@ -48,7 +48,7 @@ class QIWithRestorableGeometry : public Base
 public:
 
     /** Constructs main window passing @a pParent and @a enmFlags to base-class. */
-    QIWithRestorableGeometry(QWidget *pParent = 0, Qt::WindowFlags enmFlags = 0)
+    QIWithRestorableGeometry(QWidget *pParent = 0, Qt::WindowFlags enmFlags = Qt::WindowFlags())
         : Base(pParent, enmFlags)
     {}
 

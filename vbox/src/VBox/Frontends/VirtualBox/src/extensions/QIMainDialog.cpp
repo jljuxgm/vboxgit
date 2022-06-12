@@ -1,4 +1,4 @@
-/* $Id: QIMainDialog.cpp 86081 2020-09-10 11:41:22Z vboxsync $ */
+/* $Id: QIMainDialog.cpp 87718 2021-02-11 08:50:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIMainDialog class implementation.
  */
@@ -36,9 +36,9 @@
 
 
 QIMainDialog::QIMainDialog(QWidget *pParent /* = 0 */,
-                           Qt::WindowFlags fFlags /* = Qt::Dialog */,
+                           Qt::WindowFlags enmFlags /* = Qt::Dialog */,
                            bool fIsAutoCentering /* = true */)
-    : QMainWindow(pParent, fFlags)
+    : QMainWindow(pParent, enmFlags)
     , m_fIsAutoCentering(fIsAutoCentering)
     , m_fPolished(false)
     , m_iResult(QDialog::Rejected)

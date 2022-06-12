@@ -1,4 +1,4 @@
-/* $Id: QIWithRetranslateUI.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: QIWithRetranslateUI.h 87718 2021-02-11 08:50:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIWithRetranslateUI class declaration.
  */
@@ -82,8 +82,8 @@ class QIWithRetranslateUI2 : public Base
 {
 public:
 
-    /** Constructs translatable widget passing @a pParent and @a fFlags to the base-class. */
-    QIWithRetranslateUI2(QWidget *pParent = 0, Qt::WindowFlags fFlags = 0) : Base(pParent, fFlags)
+    /** Constructs translatable widget passing @a pParent and @a enmFlags to the base-class. */
+    QIWithRetranslateUI2(QWidget *pParent = 0, Qt::WindowFlags enmFlags = Qt::WindowFlags()) : Base(pParent, enmFlags)
     {
         qApp->installEventFilter(this);
     }

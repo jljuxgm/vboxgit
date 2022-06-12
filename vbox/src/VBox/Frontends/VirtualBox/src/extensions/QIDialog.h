@@ -1,4 +1,4 @@
-/* $Id: QIDialog.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: QIDialog.h 87718 2021-02-11 08:50:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIDialog class declaration.
  */
@@ -40,7 +40,7 @@ class SHARED_LIBRARY_STUFF QIDialog : public QDialog
 public:
 
     /** Constructs the dialog passing @a pParent and @a enmFlags to the base-class. */
-    QIDialog(QWidget *pParent = 0, Qt::WindowFlags enmFlags = 0);
+    QIDialog(QWidget *pParent = 0, Qt::WindowFlags enmFlags = Qt::WindowFlags());
 
     /** Defines whether the dialog is @a fVisible. */
     void setVisible(bool fVisible);

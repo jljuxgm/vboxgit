@@ -1,4 +1,4 @@
-/* $Id: QILabelSeparator.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: QILabelSeparator.cpp 87718 2021-02-11 08:50:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QILabelSeparator class implementation.
  */
@@ -23,15 +23,15 @@
 #include "QILabelSeparator.h"
 
 
-QILabelSeparator::QILabelSeparator(QWidget *pParent /* = 0 */, Qt::WindowFlags fFlags /* = 0 */)
-    : QWidget(pParent, fFlags)
+QILabelSeparator::QILabelSeparator(QWidget *pParent /* = 0 */, Qt::WindowFlags enmFlags /* = Qt::WindowFlags() */)
+    : QWidget(pParent, enmFlags)
     , m_pLabel(0)
 {
     prepare();
 }
 
-QILabelSeparator::QILabelSeparator(const QString &strText, QWidget *pParent /* = 0 */, Qt::WindowFlags fFlags /* = 0 */)
-    : QWidget(pParent, fFlags)
+QILabelSeparator::QILabelSeparator(const QString &strText, QWidget *pParent /* = 0 */, Qt::WindowFlags enmFlags /* = Qt::WindowFlags() */)
+    : QWidget(pParent, enmFlags)
     , m_pLabel(0)
 {
     prepare();

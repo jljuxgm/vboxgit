@@ -1,4 +1,4 @@
-/* $Id: QIDialog.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: QIDialog.cpp 87718 2021-02-11 08:50:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIDialog class implementation.
  */
@@ -23,7 +23,7 @@
 #include "UICommon.h"
 
 
-QIDialog::QIDialog(QWidget *pParent /* = 0 */, Qt::WindowFlags enmFlags /* = 0 */)
+QIDialog::QIDialog(QWidget *pParent /* = 0 */, Qt::WindowFlags enmFlags /* = Qt::WindowFlags() */)
     : QDialog(pParent, enmFlags)
     , m_fPolished(false)
 {

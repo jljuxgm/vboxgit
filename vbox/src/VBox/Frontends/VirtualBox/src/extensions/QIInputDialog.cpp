@@ -1,4 +1,4 @@
-/* $Id: QIInputDialog.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: QIInputDialog.cpp 87718 2021-02-11 08:50:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIInputDialog class implementation.
  */
@@ -26,7 +26,7 @@
 #include "QIInputDialog.h"
 
 
-QIInputDialog::QIInputDialog(QWidget *pParent /* = 0 */, Qt::WindowFlags enmFlags /* = 0 */)
+QIInputDialog::QIInputDialog(QWidget *pParent /* = 0 */, Qt::WindowFlags enmFlags /* = Qt::WindowFlags() */)
     : QDialog(pParent, enmFlags)
     , m_fDefaultLabelTextRedefined(false)
     , m_pLabel(0)

@@ -1,4 +1,4 @@
-/* $Id: UIPopupStack.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIPopupStack.cpp 87718 2021-02-11 08:50:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPopupStack class implementation.
  */
@@ -95,10 +95,10 @@ void UIPopupStack::setParent(QWidget *pParent)
     m_iParentStatusBarHeight = parentStatusBarHeight(pParent);
 }
 
-void UIPopupStack::setParent(QWidget *pParent, Qt::WindowFlags flags)
+void UIPopupStack::setParent(QWidget *pParent, Qt::WindowFlags enmFlags)
 {
     /* Call to base-class: */
-    QWidget::setParent(pParent, flags);
+    QWidget::setParent(pParent, enmFlags);
     /* Recalculate parent menu-bar height: */
     m_iParentMenuBarHeight = parentMenuBarHeight(pParent);
     /* Recalculate parent status-bar height: */

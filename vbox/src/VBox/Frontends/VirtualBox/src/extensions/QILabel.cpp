@@ -1,4 +1,4 @@
-/* $Id: QILabel.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: QILabel.cpp 87718 2021-02-11 08:50:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QILabel class implementation.
  */
@@ -42,13 +42,13 @@
 const QRegExp QILabel::s_regExpCopy = QRegExp("<[^>]*>");
 QRegExp QILabel::s_regExpElide = QRegExp("(<compact\\s+elipsis=\"(start|middle|end)\"?>([^<]*)</compact>)");
 
-QILabel::QILabel(QWidget *pParent /* = 0 */, Qt::WindowFlags enmFlags /* = 0 */)
+QILabel::QILabel(QWidget *pParent /* = 0 */, Qt::WindowFlags enmFlags /* = Qt::WindowFlags() */)
     : QLabel(pParent, enmFlags)
 {
     init();
 }
 
-QILabel::QILabel(const QString &strText, QWidget *pParent /* = 0 */, Qt::WindowFlags enmFlags /* = 0 */)
+QILabel::QILabel(const QString &strText, QWidget *pParent /* = 0 */, Qt::WindowFlags enmFlags /* = Qt::WindowFlags() */)
     : QLabel(pParent, enmFlags)
 {
     init();
