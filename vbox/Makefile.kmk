@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 89663 2021-06-13 23:39:40Z vboxsync $
+# $Id: Makefile.kmk 89665 2021-06-14 00:05:37Z vboxsync $
 ## @file
 # Top level makefile.
 #
@@ -1342,6 +1342,8 @@ additions-build-darwin.amd64.rsync-into-vm:
 		'--include=src/VBox/Devices/' \
 		'--include=src/VBox/Devices/Audio/' \
 		'--include=src/VBox/Devices/Audio/**' \
+		'--include=src/VBox/Devices/build/' \
+		'--include=src/VBox/Devices/build/**' \
 		'--exclude=src/VBox/Devices/**' \
 		'--exclude=src/VBox/Disassembler/**' \
 		'--exclude=src/VBox/ExtPacks/**' \
@@ -1379,6 +1381,8 @@ additions-build-darwin.x86.rsync-into-vm:
 		'--include=src/VBox/Devices/' \
 		'--include=src/VBox/Devices/Audio/' \
 		'--include=src/VBox/Devices/Audio/**' \
+		'--include=src/VBox/Devices/build/' \
+		'--include=src/VBox/Devices/build/**' \
 		'--exclude=src/VBox/Devices/**' \
 		'--exclude=src/VBox/Disassembler/**' \
 		'--exclude=src/VBox/ExtPacks/**' \
