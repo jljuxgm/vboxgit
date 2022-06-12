@@ -1,4 +1,4 @@
-/* $Id: TestExecService.cpp 83894 2020-04-21 14:50:30Z vboxsync $ */
+/* $Id: TestExecService.cpp 84683 2020-06-04 17:35:42Z vboxsync $ */
 /** @file
  * TestExecServ - Basic Remote Execution Service.
  */
@@ -896,7 +896,7 @@ static int txsDoGetFile(PCTXSPKTHDR pPktHdr)
         return rc;
 
     RTFILE hFile;
-    rc = RTFileOpen(&hFile, pszPath, RTFILE_O_READ | RTFILE_O_DENY_WRITE | RTFILE_O_OPEN);
+    rc = RTFileOpen(&hFile, pszPath, RTFILE_O_READ | RTFILE_O_DENY_NONE | RTFILE_O_OPEN);
     if (RT_SUCCESS(rc))
     {
         uint32_t uMyCrc32 = RTCrc32Start();
@@ -3611,7 +3611,7 @@ static RTEXITCODE txsParseArgv(int argc, char **argv, bool *pfExit)
                 break;
 
             case 'V':
-                RTPrintf("$Revision: 83894 $\n");
+                RTPrintf("$Revision: 84683 $\n");
                 *pfExit = true;
                 return RTEXITCODE_SUCCESS;
 
