@@ -1,4 +1,4 @@
-/* $Id: DevIommuAmd.cpp 87733 2021-02-12 13:40:48Z vboxsync $ */
+/* $Id: DevIommuAmd.cpp 87735 2021-02-12 13:59:57Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - AMD implementation.
  */
@@ -6085,7 +6085,7 @@ static DECLCALLBACK(int) iommuAmdR3Construct(PPDMDEVINS pDevIns, int iInstance, 
      */
     /* Don't remove the commented lines below as it lets us see all features at a glance. */
     pThis->ExtFeat.u64 = 0;
-    pThis->ExtFeat.n.u1PrefetchSup             = 0;
+    //pThis->ExtFeat.n.u1PrefetchSup           = 0;
     //pThis->ExtFeat.n.u1PprSup                = 0;
     //pThis->ExtFeat.n.u1X2ApicSup             = 0;
     //pThis->ExtFeat.n.u1NoExecuteSup          = 0;
