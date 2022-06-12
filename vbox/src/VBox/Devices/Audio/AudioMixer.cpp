@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 89130 2021-05-17 23:51:49Z vboxsync $ */
+/* $Id: AudioMixer.cpp 89187 2021-05-19 21:32:28Z vboxsync $ */
 /** @file
  * Audio mixing routines for multiplexing audio sources in device emulations.
  *
@@ -139,8 +139,8 @@ static const char *dbgAudioMixerSinkStatusToStr(uint32_t fStatus, char pszDst[AU
     {
         { RT_STR_TUPLE("RUNNING "),         AUDMIXSINK_STS_RUNNING },
         { RT_STR_TUPLE("DRAINING "),        AUDMIXSINK_STS_DRAINING },
-        { RT_STR_TUPLE("DRAINED_DMA"),      AUDMIXSINK_STS_DRAINED_DMA },
-        { RT_STR_TUPLE("DRAINED_MIXBUF"),   AUDMIXSINK_STS_DRAINED_MIXBUF },
+        { RT_STR_TUPLE("DRAINED_DMA "),     AUDMIXSINK_STS_DRAINED_DMA },
+        { RT_STR_TUPLE("DRAINED_MIXBUF "),  AUDMIXSINK_STS_DRAINED_MIXBUF },
         { RT_STR_TUPLE("DIRTY "),           AUDMIXSINK_STS_DIRTY },
     };
     char *psz = pszDst;
