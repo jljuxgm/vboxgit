@@ -1,4 +1,4 @@
-/* $Id: UIVMLogPage.cpp 89011 2021-05-12 12:53:25Z vboxsync $ */
+/* $Id: UIVMLogPage.cpp 89586 2021-06-09 16:53:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -34,9 +34,10 @@
 *   UIVMLogTab implementation.                                                                                        *
 *********************************************************************************************************************************/
 
-UIVMLogTab::UIVMLogTab(QWidget *pParent, const QUuid &uMachineId)
+UIVMLogTab::UIVMLogTab(QWidget *pParent, const QUuid &uMachineId, const QString &strMachineName)
     : QIWithRetranslateUI<QWidget>(pParent)
     , m_uMachineId(uMachineId)
+    , m_strMachineName(strMachineName)
 {
 }
 const QUuid &UIVMLogTab::machineId() const
@@ -44,12 +45,17 @@ const QUuid &UIVMLogTab::machineId() const
     return m_uMachineId;
 }
 
+const QString UIVMLogTab::machineName() const
+{
+    return m_strMachineName;
+}
+
 /*********************************************************************************************************************************
 *   UIVMLogPage implementation.                                                                                        *
 *********************************************************************************************************************************/
 
-UIVMLogPage::UIVMLogPage(QWidget *pParent, const QUuid &uMachineId)
-    : UIVMLogTab(pParent, uMachineId)
+UIVMLogPage::UIVMLogPage(QWidget *pParent, const QUuid &uMachineId, const QString &strMachineName)
+    : UIVMLogTab(pParent, uMachineId, strMachineName)
     , m_pMainLayout(0)
     , m_pTextEdit(0)
     , m_iSelectedBookmarkIndex(-1)

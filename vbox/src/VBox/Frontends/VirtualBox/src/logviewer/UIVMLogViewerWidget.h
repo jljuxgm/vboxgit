@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.h 89585 2021-06-09 16:03:51Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.h 89586 2021-06-09 16:53:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class declaration.
  */
@@ -140,6 +140,7 @@ private slots:
         void sltChangeFont(QFont font);
         void sltResetOptionsToDefault();
     /** @} */
+    void sltShowTabBarContextMenu(const QPoint &pos);
 
 private:
 
@@ -174,6 +175,7 @@ private:
 
     /** Returns the newly created log-page using @a strPage filename. */
     void createLogPage(const QString &strFileName,
+                       const QString &strMachineName,
                        const QUuid &machineId, int iLogFileId,
                        const QString &strLogContent, bool noLogsToShow);
 

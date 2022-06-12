@@ -1,4 +1,4 @@
-/* $Id: UIVMLogPage.h 89011 2021-05-12 12:53:25Z vboxsync $ */
+/* $Id: UIVMLogPage.h 89586 2021-06-09 16:53:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -48,12 +48,14 @@ class UIVMLogTab : public QIWithRetranslateUI<QWidget>
 
 public:
 
-    UIVMLogTab(QWidget *pParent, const QUuid &uMachineId);
+    UIVMLogTab(QWidget *pParent, const QUuid &uMachineId, const QString &strMachineName);
     const QUuid &machineId() const;
+    const QString machineName() const;
 
 private:
 
     QUuid m_uMachineId;
+    QString m_strMachineName;
 };
 
 /** UIVMLogPage defines data and functionalities of the each tab page of a UIVMLogViewerWidget.
@@ -69,7 +71,7 @@ signals:
 
 public:
 
-    UIVMLogPage(QWidget *pParent, const QUuid &uMachineId);
+    UIVMLogPage(QWidget *pParent, const QUuid &uMachineId, const QString &strMachineName);
     ~UIVMLogPage();
 
     /** Returns the width of the current log page. return 0 if there is no current log page: */
