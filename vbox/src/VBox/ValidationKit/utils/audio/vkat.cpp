@@ -1,4 +1,4 @@
-/* $Id: vkat.cpp 89439 2021-06-01 19:41:40Z vboxsync $ */
+/* $Id: vkat.cpp 89441 2021-06-01 20:11:36Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) utility for testing and validating the audio stack.
  */
@@ -1802,6 +1802,8 @@ static RTEXITCODE audioTestPlayOne(const char *pszFile, PCPDMDRVREG pDrvReg, con
                         rcExit = audioTestPlayOneInner(&Mix, &WaveFile, &CfgAcq, pszFile);
                     else
                         rcExit = RTMsgErrorExitFailure("Enabling the output stream failed: %Rrc", rc);
+
+                    AudioTestMixStreamTerm(&Mix);
                 }
                 audioTestDriverStackStreamDestroy(&DrvStack, pStream);
             }
