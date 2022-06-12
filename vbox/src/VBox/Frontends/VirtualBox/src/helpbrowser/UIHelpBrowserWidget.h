@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.h 86797 2020-11-03 13:26:45Z vboxsync $ */
+/* $Id: UIHelpBrowserWidget.h 86799 2020-11-03 14:50:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class declaration.
  */
@@ -37,6 +37,7 @@
 
 /* Forward declarations: */
 class QHBoxLayout;
+class QItemSelection;
 class QVBoxLayout;
 class QHelpEngine;
 class QHelpContentModel;
@@ -84,6 +85,7 @@ private slots:
 
     void sltHandleHelpEngineSetupFinished();
     void sltHandleContentWidgetItemClicked(const QModelIndex &index);
+    void sltHandleContentWidgetSelectionChanged(const QItemSelection &selected, const QItemSelection &deselected);
     void sltHandleSideBarVisibility(bool togggled);
     void sltHandleToolBarVisibility(bool togggled);
     void sltHandleContentsCreated();
@@ -106,7 +108,7 @@ private:
     void saveOptions();
     void cleanup();
     QUrl findIndexHtml() const;
-    bool eventFilter(QObject *pWatched, QEvent *pEvent);
+    //bool eventFilter(QObject *pWatched, QEvent *pEvent);
 
     /** @name Event handling stuff.
      * @{ */
