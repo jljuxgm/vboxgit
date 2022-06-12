@@ -1,4 +1,4 @@
-/* $Id: vkat.cpp 89520 2021-06-04 23:00:48Z vboxsync $ */
+/* $Id: vkat.cpp 89521 2021-06-05 00:19:23Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) utility for testing and validating the audio stack.
  */
@@ -1834,7 +1834,7 @@ static RTEXITCODE audioTestPlayOneInner(PAUDIOTESTDRVMIXSTREAM pMix, PAUDIOTESTW
             {
                 uint64_t const cNsWritten = PDMAudioPropsBytesToNano64(pMix->pProps, offStream);
                 uint64_t const cNsElapsed = RTTimeNanoTS() - nsStarted;
-                if (cNsWritten + RT_NS_10MS > cNsElapsed)
+                if (cNsWritten > cNsElapsed + RT_NS_10MS)
                     RTThreadSleep((cNsWritten - cNsElapsed - RT_NS_10MS / 2) / RT_NS_1MS);
             }
 
