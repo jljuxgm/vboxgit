@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 86823 2020-11-06 12:57:57Z vboxsync $
+# $Id: Makefile.kmk 86828 2020-11-06 14:10:34Z vboxsync $
 ## @file
 # Sub-Makefile for the Cross Platform Guest Addition Services.
 #
@@ -62,7 +62,7 @@ VBOX_WITH_VBOXSERVICE_CLIPBOARD     := 1
 endif
 
 # DRM Resize.
-ifeq ($(KBUILD_TARGET),linux) && defined(VBOX_WITH_GUEST_PROPS)
+if "$(KBUILD_TARGET)" == "linux" && defined(VBOX_WITH_GUEST_PROPS)
  # The DRM resizing code needs guest properties.
  VBOX_WITH_VBOXSERVICE_DRMRESIZE    := 1
 endif
