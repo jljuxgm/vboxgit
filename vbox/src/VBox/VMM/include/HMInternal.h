@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 87488 2021-01-29 18:17:10Z vboxsync $ */
+/* $Id: HMInternal.h 87489 2021-01-29 18:24:30Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -1009,7 +1009,7 @@ typedef struct HMCPU
             VMXVMCSINFOSHARED           VmcsInfoNstGst;
             /** Whether the nested-guest VMCS was the last current VMCS (shadow copy for ring-3).
              * @see HMR0PERVCPU::vmx.fSwitchedToNstGstVmcs  */
-            bool                        fSwitchedToNstGstVmcsShadow;
+            bool                        fSwitchedToNstGstVmcsCopyForRing3;
             /** Whether the static guest VMCS controls has been merged with the
              *  nested-guest VMCS controls. */
             bool                        fMergedNstGstCtls;
@@ -1308,7 +1308,7 @@ typedef struct HMR0PERVCPU
             /** Nested-guest VMCS information. */
             VMXVMCSINFO                 VmcsInfoNstGst;
             /* Whether the nested-guest VMCS was the last current VMCS (authoritative copy).
-             * @see HMCPU::vmx.fSwitchedToNstGstVmcsShadow  */
+             * @see HMCPU::vmx.fSwitchedToNstGstVmcsCopyForRing3  */
             bool                        fSwitchedToNstGstVmcs;
             bool                        afAlignment0[7];
             /** @} */

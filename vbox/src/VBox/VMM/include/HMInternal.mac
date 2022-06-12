@@ -1,4 +1,4 @@
-;$Id: HMInternal.mac 87488 2021-01-29 18:17:10Z vboxsync $
+;$Id: HMInternal.mac 87489 2021-01-29 18:24:30Z vboxsync $
 ;; @file
 ; HM - Internal header file.
 ;
@@ -117,7 +117,7 @@ endstruc
 struc HMCPUVMX
     .VmcsInfo                       resb    VMXVMCSINFOSHARED_size
     .VmcsInfoNstGst                 resb    VMXVMCSINFOSHARED_size
-    .fSwitchedToNstGstVmcsShadow    resb    1
+    .fSwitchedToNstGstVmcsCopyForRing3 resb 1
     .fMergedNstGstCtls              resb    1
     .fCopiedNstGstToShadowVmcs      resb    1
     .fSwitchedNstGstFlushTlb        resb    1
