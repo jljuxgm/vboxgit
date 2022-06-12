@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 88851 2021-05-03 22:12:53Z vboxsync $ */
+/* $Id: DrvAudio.cpp 88852 2021-05-03 23:59:01Z vboxsync $ */
 /** @file
  * Intermediate audio driver - Connects the audio device emulation with the host backend.
  */
@@ -1984,8 +1984,8 @@ static int drvAudioStreamReInitInternal(PDRVAUDIO pThis, PDRVAUDIOSTREAM pStream
         rc = drvAudioStreamCreateInternalBackend(pThis, pStreamEx, &pStreamEx->Host.Cfg, &CfgHostAcq);
         if (RT_SUCCESS(rc))
         {
-            LogFunc(("[%s] Acquired host format:\n", pStreamEx->Core.szName,
-                     PDMAudioStrmCfgToString(&CfgHostAcq, szTmp, sizeof(szTmp)) ));
+            LogFunc(("[%s] Acquired host format: %s\n",
+                     pStreamEx->Core.szName, PDMAudioStrmCfgToString(&CfgHostAcq, szTmp, sizeof(szTmp)) ));
             if (true) /** @todo Validate (re-)acquired configuration with pStreamEx->Core.Host.Cfg? */
             {
                 /*
