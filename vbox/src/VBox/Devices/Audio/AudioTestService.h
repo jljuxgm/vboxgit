@@ -1,4 +1,4 @@
-/* $Id: AudioTestService.h 89456 2021-06-02 08:43:16Z vboxsync $ */
+/* $Id: AudioTestService.h 89458 2021-06-02 09:04:06Z vboxsync $ */
 /** @file
  * AudioTestService - Audio test execution server, Public Header.
  */
@@ -55,21 +55,18 @@ typedef struct ATSCALLBACKS
      *
      * @returns VBox status code.
      * @param   pvUser          User-supplied pointer to context data. Optional.
-     * @param   pStreamCfg      Audio stream configuration to use for stream to play tone on.
      * @param   pToneParms      Tone parameters to use for playback.
      */
-    DECLR3CALLBACKMEMBER(int, pfnTonePlay, (void const *pvUser, PPDMAUDIOSTREAMCFG pStreamCfg, PAUDIOTESTTONEPARMS pToneParms));
+    DECLR3CALLBACKMEMBER(int, pfnTonePlay, (void const *pvUser, PAUDIOTESTTONEPARMS pToneParms));
 
     /**
      * Records a test tone.
      *
      * @returns VBox status code.
      * @param   pvUser          User-supplied pointer to context data. Optional.
-     * @param   pStreamCfg      Audio stream configuration to use for stream to play tone on.
-     * @param   cMsDelay        Delay (in ms) before start recording.
-     * @param   cMsDuration     Duration (in ms) to record.
+     * @param   pToneParms      Tone parameters to use for recording.
      */
-    DECLR3CALLBACKMEMBER(int, pfnToneRecord, (void const *pvUser, PPDMAUDIOSTREAMCFG pStreamCfg, PAUDIOTESTTONEPARMS pToneParms));
+    DECLR3CALLBACKMEMBER(int, pfnToneRecord, (void const *pvUser, PAUDIOTESTTONEPARMS pToneParms));
 
     /** Pointer to opaque user-provided context data. */
     void const *pvUser;

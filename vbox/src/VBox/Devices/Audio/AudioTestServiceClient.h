@@ -1,4 +1,4 @@
-/* $Id: AudioTestServiceClient.h 89456 2021-06-02 08:43:16Z vboxsync $ */
+/* $Id: AudioTestServiceClient.h 89458 2021-06-02 09:04:06Z vboxsync $ */
 /** @file
  * AudioTestServiceClient - Audio test execution server, Public Header.
  */
@@ -32,8 +32,8 @@ typedef ATSCLIENT *PATSCLIENT;
 int AudioTestSvcClientConnect(PATSCLIENT pClient, const char *pszAddr, uint32_t uPort);
 int AudioTestSvcClientTestSetBegin(PATSCLIENT pClient, const char *pszTag);
 int AudioTestSvcClientTestSetEnd(PATSCLIENT pClient, const char *pszTag);
-int AudioTestSvcClientTonePlay(PATSCLIENT pClient, PPDMAUDIOSTREAMCFG pStreamCfg, PAUDIOTESTTONEPARMS pToneParms);
-int AudioTestSvcClientToneRecord(PATSCLIENT pClient, PPDMAUDIOSTREAMCFG pStreamCfg, PAUDIOTESTTONEPARMS pToneParms);
+int AudioTestSvcClientTonePlay(PATSCLIENT pClient, PAUDIOTESTTONEPARMS pToneParms);
+int AudioTestSvcClientToneRecord(PATSCLIENT pClient, PAUDIOTESTTONEPARMS pToneParms);
 int AudioTestSvcClientClose(PATSCLIENT pClient);
 
 #endif /* !VBOX_INCLUDED_SRC_Audio_AudioTestServiceClient_h */
