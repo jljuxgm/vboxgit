@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdStorageBenchmark1.py 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: tdStorageBenchmark1.py 85159 2020-07-10 06:59:47Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage benchmark.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 82968 $"
+__version__ = "$Revision: 85159 $"
 
 
 # Standard Python imports.
@@ -1090,10 +1090,10 @@ class tdStorageBenchmark(vbox.TestDriver):                                      
         else:
             if iDiffLvl == 0:
                 tMediumVariant = self.convDiskToMediumVariant(sDiskVariant);
-                oHd = oSession.createBaseHd(sDiskPath + '/base.disk', sDiskFormat, cbDisk, \
+                oHd = oSession.createBaseHd(sDiskPath + '/base.img', sDiskFormat, cbDisk, \
                                             cMsTimeout = 3600 * 1000, tMediumVariant = tMediumVariant);
             else:
-                sDiskPath = sDiskPath + '/diff_%u.disk' % (iDiffLvl);
+                sDiskPath = sDiskPath + '/diff_%u.img' % (iDiffLvl);
                 oHd = oSession.createDiffHd(oHdParent, sDiskPath, None);
 
             if oHd is not None and iDiffLvl == 0 and self.fEncryptDisk:
