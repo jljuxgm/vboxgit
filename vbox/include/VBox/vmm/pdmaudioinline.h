@@ -1,4 +1,4 @@
-/* $Id: pdmaudioinline.h 88028 2021-03-08 19:31:22Z vboxsync $ */
+/* $Id: pdmaudioinline.h 88029 2021-03-08 19:37:54Z vboxsync $ */
 /** @file
  * PDM - Audio Helpers, Inlined Code. (DEV,++)
  *
@@ -868,4 +868,4 @@ DECLINLINE(void) PDMAudioPropsLog(PCPDMAUDIOPCMPROPS pProps)
          pProps->uHz, pProps->cChannels, pProps->cbSample * 8, pProps->fSigned ? "S" : "U"));
 }
 
-#endif
+#endif /* !VBOX_INCLUDED_vmm_pdmaudioinline_h */
