@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.cpp 88074 2021-03-10 18:14:34Z vboxsync $ */
+/* $Id: UIToolsModel.cpp 88082 2021-03-11 10:57:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class implementation.
  */
@@ -247,7 +247,7 @@ void UIToolsModel::setCurrentItem(UIToolsItem *pItem)
     actions[UIToolType_Media] = actionPool()->action(UIActionIndexMN_M_File_M_Tools_T_VirtualMediaManager);
     actions[UIToolType_Network] = actionPool()->action(UIActionIndexMN_M_File_M_Tools_T_NetworkManager);
     actions[UIToolType_Cloud] = actionPool()->action(UIActionIndexMN_M_File_M_Tools_T_CloudProfileManager);
-    actions[UIToolType_VMActivityOverview] = actionPool()->action(UIActionIndexMN_M_File_M_Tools_T_VMResourceMonitor);
+    actions[UIToolType_VMActivityOverview] = actionPool()->action(UIActionIndexMN_M_File_M_Tools_T_VMActivityOverview);
     if (actions.contains(enmType))
         actions.value(enmType)->setChecked(true);
 }
