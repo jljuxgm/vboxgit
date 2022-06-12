@@ -1,4 +1,4 @@
-/* $Id: UICloudNetworkingStuff.h 84196 2020-05-08 04:02:37Z vboxsync $ */
+/* $Id: UICloudNetworkingStuff.h 85190 2020-07-10 14:51:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudNetworkingStuff namespace declaration.
  */
@@ -136,6 +136,11 @@ namespace UICloudNetworkingStuff
     SHARED_LIBRARY_STUFF bool cloudMachineState(const CCloudMachine &comCloudMachine,
                                                 KCloudMachineState &enmResult,
                                                 QWidget *pParent = 0);
+    /** Acquires @a comCloudMachine console connection fingerprint as a @a strResult,
+      * using @a pParent to show messages according to. */
+    SHARED_LIBRARY_STUFF bool cloudMachineConsoleConnectionFingerprint(const CCloudMachine &comCloudMachine,
+                                                                       QString &strResult,
+                                                                       QWidget *pParent = 0);
 
     /** Refreshes @a comCloudMachine information, using @a pParent to show messages according to.
       * @note  Be aware, this is a blocking function, corresponding progress dialog will be executed. */

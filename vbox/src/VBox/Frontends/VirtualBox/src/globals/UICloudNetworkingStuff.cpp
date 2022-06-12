@@ -1,4 +1,4 @@
-/* $Id: UICloudNetworkingStuff.cpp 84196 2020-05-08 04:02:37Z vboxsync $ */
+/* $Id: UICloudNetworkingStuff.cpp 85190 2020-07-10 14:51:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudNetworkingStuff namespace implementation.
  */
@@ -442,6 +442,21 @@ bool UICloudNetworkingStuff::cloudMachineState(const CCloudMachine &comCloudMach
     else
     {
         enmResult = enmState;
+        return true;
+    }
+    return false;
+}
+
+bool UICloudNetworkingStuff::cloudMachineConsoleConnectionFingerprint(const CCloudMachine &comCloudMachine,
+                                                                      QString &strResult,
+                                                                      QWidget *pParent /* = 0 */)
+{
+    const QString strConsoleConnectionFingerprint = comCloudMachine.GetConsoleConnectionFingerprint();
+    if (!comCloudMachine.isOk())
+        msgCenter().cannotAcquireCloudMachineParameter(comCloudMachine, pParent);
+    else
+    {
+        strResult = strConsoleConnectionFingerprint;
         return true;
     }
     return false;
