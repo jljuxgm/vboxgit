@@ -1,4 +1,4 @@
-/* $Id: TestExecService.cpp 84787 2020-06-11 07:48:06Z vboxsync $ */
+/* $Id: TestExecService.cpp 84794 2020-06-11 13:34:08Z vboxsync $ */
 /** @file
  * TestExecServ - Basic Remote Execution Service.
  */
@@ -1694,7 +1694,7 @@ static int txsDoVer(PCTXSPKTHDR pPktHdr)
         char        abPadding[TXSPKT_ALIGNMENT];
     } Pkt;
 
-    if (RTStrPrintf2(Pkt.szVer, sizeof(Pkt.szVer), "%s r%s %s%s (%s %s)",
+    if (RTStrPrintf2(Pkt.szVer, sizeof(Pkt.szVer), "%s r%s %s.%s (%s %s)",
                      RTBldCfgVersion(), RTBldCfgRevisionStr(), KBUILD_TARGET, KBUILD_TARGET_ARCH, __DATE__, __TIME__) > 0)
     {
         return txsReplyInternal(&Pkt.Hdr, "ACK VER", strlen(Pkt.szVer) + 1);
@@ -3016,7 +3016,7 @@ static int txsDoExec(PCTXSPKTHDR pPktHdr)
  */
 static RTEXITCODE txsMainLoop(void)
 {
-    RTMsgInfo("Version %s r%s %s%s (%s %s)\n",
+    RTMsgInfo("Version %s r%s %s.%s (%s %s)\n",
               RTBldCfgVersion(), RTBldCfgRevisionStr(), KBUILD_TARGET, KBUILD_TARGET_ARCH, __DATE__, __TIME__);
 
     if (g_cVerbose > 0)
@@ -3701,7 +3701,7 @@ static RTEXITCODE txsParseArgv(int argc, char **argv, bool *pfExit)
                 break;
 
             case 'V':
-                RTPrintf("$Revision: 84787 $\n");
+                RTPrintf("$Revision: 84794 $\n");
                 *pfExit = true;
                 return RTEXITCODE_SUCCESS;
 
