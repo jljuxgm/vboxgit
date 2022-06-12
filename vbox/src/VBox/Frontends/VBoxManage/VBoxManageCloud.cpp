@@ -1,4 +1,4 @@
-/* $Id: VBoxManageCloud.cpp 84639 2020-06-02 13:41:42Z vboxsync $ */
+/* $Id: VBoxManageCloud.cpp 84640 2020-06-02 13:55:57Z vboxsync $ */
 /** @file
  * VBoxManageCloud - The cloud related commands.
  */
@@ -27,6 +27,7 @@
 #include <iprt/getopt.h>
 #include <iprt/stream.h>
 #include <iprt/string.h>
+#include <iprt/thread.h>
 #include <iprt/uuid.h>
 #include <iprt/file.h>
 #include <VBox/log.h>
@@ -2367,7 +2368,7 @@ static HRESULT createLocalGatewayImage(ComPtr<IVirtualBox> virtualBox, const Bst
 
     unsigned i = 0;
     const char progressChars[] = { '|', '/', '-', '\\'};
-    MachineState machineState;
+    MachineState_T machineState;
     uint64_t u64Started = RTTimeMilliTS();
     do
     {
