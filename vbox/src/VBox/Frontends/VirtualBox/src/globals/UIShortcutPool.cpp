@@ -1,4 +1,4 @@
-/* $Id: UIShortcutPool.cpp 85599 2020-08-03 13:25:05Z vboxsync $ */
+/* $Id: UIShortcutPool.cpp 88578 2021-04-19 13:46:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIShortcutPool class implementation.
  */
@@ -399,7 +399,8 @@ void UIShortcutPool::saveOverridesFor(const QString &strPoolExtraDataID)
         const UIShortcut &shortcut = m_shortcuts[strShortcutKey];
         /* Check if the sequence for that shortcut differs from default or standard: */
         if (   shortcut.sequences().contains(shortcut.defaultSequence())
-            || shortcut.sequences().contains(shortcut.standardSequence()))
+            || (   !shortcut.standardSequence().isEmpty()
+                && shortcut.sequences().contains(shortcut.standardSequence())))
             continue;
         /* Add the shortcut sequence into overrides list: */
         overrides << QString("%1=%2").arg(QString(strShortcutKey).remove(strShortcutPrefix),
