@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 86049 2020-09-07 15:57:34Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.cpp 86050 2020-09-07 16:00:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowNormal class implementation.
  */
@@ -426,7 +426,6 @@ void UIMachineWindowNormal::saveSettings()
 {
     /* Save window geometry: */
     {
-        m_normalGeometry.width(), m_normalGeometry.height());
         gEDataManager->setMachineWindowGeometry(machineLogic()->visualStateType(),
                                                 m_uScreenId, m_normalGeometry,
                                                 isMaximizedChecked(), uiCommon().managedVMUuid());
