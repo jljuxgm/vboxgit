@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInLinux.cpp 84980 2020-06-29 08:44:28Z vboxsync $ */
+/* $Id: DBGPlugInLinux.cpp 84982 2020-06-29 08:52:10Z vboxsync $ */
 /** @file
  * DBGPlugInLinux - Debugger and Guest OS Digger Plugin For Linux.
  */
@@ -251,7 +251,7 @@ static int dbgDiggerLinuxKrnlLogBufFindByNeedle(PDBGDIGGERLINUX pThis, PUVM pUVM
                        g_abKrnlLogNeedle, sizeof(g_abKrnlLogNeedle) - 1, &AddrHit);
     if (RT_SUCCESS(rc))
     {
-        size_t cbLogBuf = 0;
+        uint32_t cbLogBuf = 0;
         uint64_t tsLastNs = 0;
         DBGFADDRESS AddrCur;
 
@@ -979,7 +979,7 @@ static int dbgDiggerLinuxKrnLogBufferProcess(PDBGDIGGERLINUX pThis, PUVM pUVM, R
     if (cMessages < cLogMsgs)
     {
         uint32_t cToSkip = cLogMsgs - cMessages;
-        cLogMsgs - cToSkip;
+        cLogMsgs -= cToSkip;
 
         while (cToSkip > 0)
         {
