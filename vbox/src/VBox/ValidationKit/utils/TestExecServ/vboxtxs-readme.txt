@@ -1,4 +1,4 @@
-$Id: vboxtxs-readme.txt 84015 2020-04-27 15:03:05Z vboxsync $
+$Id: vboxtxs-readme.txt 84481 2020-05-25 07:56:41Z vboxsync $
 
 
 VirtualBox Test eXecution Service
@@ -120,6 +120,7 @@ Windows Installation
 9. Import the right service setup (see connection type above):
      nat)   start C:\Apps\vboxtxs-nat.reg
      other) start C:\Apps\vboxtxs.reg
+10. Make sure that the CD-ROM location is assigned to D: (via "Disk Management").
 11. reboot / done
 12. Do test.
 
