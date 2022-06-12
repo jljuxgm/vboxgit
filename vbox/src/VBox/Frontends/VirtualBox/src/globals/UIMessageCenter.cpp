@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 88208 2021-03-19 17:41:46Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 88247 2021-03-22 15:32:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -66,6 +66,7 @@
 #include "CCloudProviderManager.h"
 #include "CConsole.h"
 #include "CDHCPServer.h"
+#include "CDisplay.h"
 #include "CExtPack.h"
 #include "CExtPackFile.h"
 #include "CExtPackManager.h"
@@ -2837,6 +2838,13 @@ void UIMessageCenter::cannotAddDiskEncryptionPassword(const CConsole &console)
     error(0, MessageType_Error,
           tr("Bad password or authentication failure."),
           UIErrorString::formatErrorInfo(console));
+}
+
+void UIMessageCenter::cannotAcquireDispayParameter(const CDisplay &comDisplay)
+{
+    error(0, MessageType_Error,
+          tr("Failed to acquire display parameter."),
+          UIErrorString::formatErrorInfo(comDisplay));
 }
 
 #ifdef VBOX_GUI_WITH_NETWORK_MANAGER

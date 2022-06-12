@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicNormal.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIMachineLogicNormal.h 88247 2021-03-22 15:32:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicNormal class declaration.
  */
@@ -65,11 +65,6 @@ private slots:
     void sltStatusBarSettingsClosed();
     /** Toggles status-bar presence.*/
     void sltToggleStatusBar();
-
-    /** Handles guest-screen toggle requests. */
-    void sltHandleActionTriggerViewScreenToggle(int iIndex, bool fEnabled);
-    /** Handles guest-screen resize requests. */
-    void sltHandleActionTriggerViewScreenResize(int iIndex, const QSize &size);
 
     /** Handles host-screen available-area change. */
     virtual void sltHostScreenAvailableAreaChange() /* override */;

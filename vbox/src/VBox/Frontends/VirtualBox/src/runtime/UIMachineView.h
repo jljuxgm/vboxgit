@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.h 88245 2021-03-22 14:35:45Z vboxsync $ */
+/* $Id: UIMachineView.h 88247 2021-03-22 15:32:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class declaration.
  */
@@ -115,6 +115,15 @@ protected slots:
      *         tranformed to internal coordinate system and thus to be restored to
      *         guest coordinate system (absolute one) before passing to guest. */
     void sltPerformGuestResize(const QSize &toSize = QSize());
+
+    /** Handles guest-screen toggle request.
+      * @param  iScreen   Brings the number of screen being referred.
+      * @param  fEnabled  Brings whether this screen should be enabled. */
+    void sltHandleActionTriggerViewScreenToggle(int iScreen, bool fEnabled);
+    /** Handles guest-screen resize request.
+      * @param  iScreen  Brings the number of screen being referred.
+      * @param  size     Brings the size of screen to be applied. */
+    void sltHandleActionTriggerViewScreenResize(int iScreen, const QSize &size);
 
     /* Handler: Frame-buffer NotifyChange stuff: */
     virtual void sltHandleNotifyChange(int iWidth, int iHeight);

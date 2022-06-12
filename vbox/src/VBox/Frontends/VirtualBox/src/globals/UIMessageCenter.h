@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 87545 2021-02-02 17:14:24Z vboxsync $ */
+/* $Id: UIMessageCenter.h 88247 2021-03-22 15:32:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -501,6 +501,7 @@ public:
     bool cannotSwitchScreenInFullscreen(quint64 uMinVRAM) const;
     void cannotSwitchScreenInSeamless(quint64 uMinVRAM) const;
     void cannotAddDiskEncryptionPassword(const CConsole &console);
+    void cannotAcquireDispayParameter(const CDisplay &comDisplay);
 
 #ifdef VBOX_GUI_WITH_NETWORK_MANAGER
     /* API: Network management warnings: */
