@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioCoreAudio.cpp 89258 2021-05-25 09:58:08Z vboxsync $ */
+/* $Id: DrvHostAudioCoreAudio.cpp 89268 2021-05-25 11:37:03Z vboxsync $ */
 /** @file
  * Host audio driver - Mac OS X CoreAudio.
  *
@@ -51,6 +51,10 @@
 #include <CoreServices/CoreServices.h>
 #include <AudioToolbox/AudioQueue.h>
 #include <AudioUnit/AudioUnit.h>
+
+#if MAC_OS_X_VERSION_MIN_REQUIRED < 1090 /* possibly 1080 */
+# define kAudioHardwarePropertyTranslateUIDToDevice (AudioObjectPropertySelector)'uidd'
+#endif
 
 
 /*********************************************************************************************************************************
@@ -519,6 +523,8 @@ static AudioObjectID drvHstAudCaDeviceUidToId(CFStringRef hStrUid, const char *p
         Log9Func(("%s device UID '%s' -> %RU32\n", pszWhat, pszUid, idDevice));
         return idDevice;
     }
+    /** @todo test on < 10.9, see which status code and do a fallback using the
+     *        enumeration code.  */
     LogRelMax(64, ("CoreAudio: Failed to translate %s device UID '%s' to audio device ID: %#x\n", pszWhat, pszUid, orc));
     return kAudioDeviceUnknown;
 }
