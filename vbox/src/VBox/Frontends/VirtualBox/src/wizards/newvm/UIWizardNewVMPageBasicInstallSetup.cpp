@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasicInstallSetup.cpp 84961 2020-06-25 18:49:11Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasicInstallSetup.cpp 84965 2020-06-26 09:06:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasicInstallSetup class implementation.
  */
@@ -16,26 +16,16 @@
  */
 
 /* Qt includes: */
-#include <QComboBox>
-#include <QCompleter>
-#include <QIntValidator>
 #include <QGridLayout>
-#include <QSpacerItem>
 #include <QLabel>
-#include <QSortFilterProxyModel>
-#include <QSpinBox>
-#include <QStringListModel>
 #include <QStyle>
 #include <QToolButton>
 #include <QVBoxLayout>
 
 /* GUI includes: */
 #include "QIRichTextLabel.h"
-#include "UIBaseMemoryEditor.h"
-#include "UIBaseMemorySlider.h"
 #include "UICommon.h"
 #include "UIIconPool.h"
-#include "UIVirtualCPUEditor.h"
 #include "UIWizardNewVMPageBasicInstallSetup.h"
 #include "UIWizardNewVM.h"
 

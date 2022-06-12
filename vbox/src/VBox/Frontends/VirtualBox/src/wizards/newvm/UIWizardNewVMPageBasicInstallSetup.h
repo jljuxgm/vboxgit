@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasicInstallSetup.h 84961 2020-06-25 18:49:11Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasicInstallSetup.h 84965 2020-06-26 09:06:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasicInstallSetup class declaration.
  */
@@ -23,7 +23,6 @@
 
 /* Qt includes: */
 #include <QLineEdit>
-#include <QStringList>
 #include <QWidget>
 
 /* Local includes: */

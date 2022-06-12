@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasicProductKey.h 84961 2020-06-25 18:49:11Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasicProductKey.h 84965 2020-06-26 09:06:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasicProductKey class declaration.
  */
@@ -21,21 +21,15 @@
 # pragma once
 #endif
 
-/* Qt includes: */
-#include <QLineEdit>
-#include <QStringList>
-#include <QWidget>
 
 /* Local includes: */
 #include "QIWithRetranslateUI.h"
 #include "UIWizardPage.h"
 
 /* Forward declarations: */
-class QGridLayout;
 class QLabel;
-class QSpinBox;
+class QLineEdit;
 class QIRichTextLabel;
-struct UIUnattendedInstallData;
 
 class UIWizardNewVMPageProductKey : public UIWizardPageBase
 {

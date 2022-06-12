@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 84961 2020-06-25 18:49:11Z vboxsync $ */
+/* $Id: UIWizardNewVM.cpp 84965 2020-06-26 09:06:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
@@ -523,7 +523,7 @@ const UIUnattendedInstallData &UIWizardNewVM::unattendedInstallData() const
     m_unattendedInstallData.m_strDetectedOSFlavor = getStringFieldValue("detectedOSFlavor");
     m_unattendedInstallData.m_strDetectedOSLanguages = getStringFieldValue("detectedOSLanguages");
     m_unattendedInstallData.m_strDetectedOSHints = getStringFieldValue("detectedOSHints");
-
+    m_unattendedInstallData.m_strProductKey = getStringFieldValue("productKey");
 
     QVariant fieldValue = field("isUnattendedEnabled");
     if (!fieldValue.isNull() && fieldValue.isValid() && fieldValue.canConvert(QMetaType::Bool))
