@@ -1,4 +1,4 @@
-/* $Id: proxy.h 87620 2021-02-05 03:48:44Z vboxsync $ */
+/* $Id: proxy.h 87637 2021-02-08 13:18:11Z vboxsync $ */
 /** @file
  * NAT Network - common definitions and declarations.
  */
@@ -52,6 +52,7 @@ struct ip4_lomap_desc
 struct proxy_options {
     ip_addr_t ipv4_addr;
     ip_addr_t ipv4_mask;
+    ip6_addr_t ipv6_addr;
     int ipv6_enabled;
     int ipv6_defroute;
     SOCKET icmpsock4;
