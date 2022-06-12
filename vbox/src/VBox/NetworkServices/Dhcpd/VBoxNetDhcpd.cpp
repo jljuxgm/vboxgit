@@ -1,4 +1,4 @@
-/* $Id: VBoxNetDhcpd.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
+/* $Id: VBoxNetDhcpd.cpp 85506 2020-07-29 10:07:17Z vboxsync $ */
 /** @file
  * VBoxNetDhcpd - DHCP server for host-only and NAT networks.
  */
@@ -259,7 +259,7 @@ int VBoxNetDhcpd::vmmInit()
     if (RT_SUCCESS(rc))
         rc = RTPathAppend(szPathVMMR0, sizeof(szPathVMMR0), "VMMR0.r0");
     if (RT_SUCCESS(rc))
-        rc = SUPR3LoadVMM(szPathVMMR0);
+        rc = SUPR3LoadVMM(szPathVMMR0, NULL /*pErrInfo*/);
     return rc;
 }
 

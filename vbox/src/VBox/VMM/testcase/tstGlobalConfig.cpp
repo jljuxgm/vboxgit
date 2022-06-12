@@ -1,4 +1,4 @@
-/* $Id: tstGlobalConfig.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: tstGlobalConfig.cpp 85506 2020-07-29 10:07:17Z vboxsync $ */
 /** @file
  * Ring-3 Management program for the GCFGM mock-up.
  */
@@ -102,7 +102,7 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
         return 1;
     }
 
-    rc = SUPR3LoadVMM("./VMMR0.r0");
+    rc = SUPR3LoadVMM("./VMMR0.r0", NULL /*pErrInfo*/);
     if (RT_SUCCESS(rc))
     {
         Req.pSession = pSession;

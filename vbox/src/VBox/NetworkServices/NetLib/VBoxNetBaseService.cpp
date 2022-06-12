@@ -1,4 +1,4 @@
-/* $Id: VBoxNetBaseService.cpp 83806 2020-04-18 23:12:06Z vboxsync $ */
+/* $Id: VBoxNetBaseService.cpp 85506 2020-07-29 10:07:17Z vboxsync $ */
 /** @file
  * VBoxNetBaseService - common services for VBoxNetDHCP and VBoxNetNAT.
  */
@@ -383,7 +383,7 @@ int VBoxNetBaseService::tryGoOnline(void)
         return rc;
     }
 
-    rc = SUPR3LoadVMM(strcat(szPath, "/VMMR0.r0"));
+    rc = SUPR3LoadVMM(strcat(szPath, "/VMMR0.r0"), NULL);
     if (RT_FAILURE(rc))
     {
         LogRel(("VBoxNetBaseService: SUPR3LoadVMM(\"%s\") -> %Rrc\n", szPath, rc));
