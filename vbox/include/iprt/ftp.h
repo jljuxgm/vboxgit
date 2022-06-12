@@ -1,4 +1,4 @@
-/* $Id: ftp.h 85121 2020-07-08 19:33:26Z vboxsync $ */
+/* $Id: ftp.h 86973 2020-11-25 09:18:33Z vboxsync $ */
 /** @file
  * Header file for FTP client / server implementations.
  */
@@ -53,7 +53,7 @@ typedef RTFTPSERVER                            *PRTFTPSERVER;
 #define NIL_RTFTPSERVER                         ((RTFTPSERVER)0)
 
 /** Maximum length (in characters) a command can have (without parameters). */
-#define RTFTPSERVER_MAX_CMD_LEN                 64
+#define RTFTPSERVER_MAX_CMD_LEN                 8
 
 /**
  * Enumeration for defining the current server connection mode.
