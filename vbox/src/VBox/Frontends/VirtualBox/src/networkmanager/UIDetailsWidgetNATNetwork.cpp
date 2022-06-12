@@ -1,4 +1,4 @@
-/* $Id: UIDetailsWidgetNATNetwork.cpp 87622 2021-02-05 10:23:56Z vboxsync $ */
+/* $Id: UIDetailsWidgetNATNetwork.cpp 88750 2021-04-28 14:56:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsWidgetNATNetwork class implementation.
  */
@@ -107,7 +107,7 @@ bool UIDetailsWidgetNATNetwork::revalidate() const
     /* Make sure IPv6 prefix isn't empty if IPv6 is supported: */
     if (m_newData.m_fSupportsIPv6 && m_newData.m_strPrefixIPv6.isEmpty())
     {
-        msgCenter().warnAboutNoIPv4PrefixSpecified(m_newData.m_strName);
+        msgCenter().warnAboutNoIPv6PrefixSpecified(m_newData.m_strName);
         return false;
     }
 
