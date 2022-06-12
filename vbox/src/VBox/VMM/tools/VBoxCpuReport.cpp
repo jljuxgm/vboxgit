@@ -1,4 +1,4 @@
-/* $Id: VBoxCpuReport.cpp 85353 2020-07-15 16:40:28Z vboxsync $ */
+/* $Id: VBoxCpuReport.cpp 85355 2020-07-15 16:57:59Z vboxsync $ */
 /** @file
  * VBoxCpuReport - Produces the basis for a CPU DB entry.
  */
@@ -3376,7 +3376,7 @@ static int reportMsr_Ia32ApicBase(uint32_t uMsr, uint64_t uValue)
     if (!g_MsrAcc.fAtomic)
         fSkipMask |= UINT64_C(0x0000000ffffff000);
 
-    /* @todo This makes the host unstable on a AMD Ryzen 1800X CPU, skip everything for now.
+    /** @todo This makes the host unstable on a AMD Ryzen 1800X CPU, skip everything for now.
      * Figure out exactly what causes the issue.
      */
     if (   g_enmMicroarch >= kCpumMicroarch_AMD_Zen_First
