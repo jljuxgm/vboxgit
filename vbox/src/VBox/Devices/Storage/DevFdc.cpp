@@ -1,4 +1,4 @@
-/* $Id: DevFdc.cpp 87767 2021-02-16 16:41:18Z vboxsync $ */
+/* $Id: DevFdc.cpp 87773 2021-02-16 23:36:15Z vboxsync $ */
 /** @file
  * VBox storage devices - Floppy disk controller
  */
@@ -2932,7 +2932,7 @@ static DECLCALLBACK(int) fdcConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMNO
      */
     rc = PDMDevHlpTimerCreate(pDevIns, TMCLOCK_VIRTUAL_SYNC, fdcTransferDelayTimer, pThis,
                               TMTIMER_FLAGS_DEFAULT_CRIT_SECT | TMTIMER_FLAGS_NO_RING0,
-                              "FDC Transfer Delay Timer", &pThis->hXferDelayTimer);
+                              "FDC Transfer Delay", &pThis->hXferDelayTimer);
     AssertRCReturn(rc, rc);
 
     /*
@@ -2940,7 +2940,7 @@ static DECLCALLBACK(int) fdcConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMNO
      */
     rc = PDMDevHlpTimerCreate(pDevIns, TMCLOCK_VIRTUAL_SYNC, fdcIrqDelayTimer, pThis,
                               TMTIMER_FLAGS_DEFAULT_CRIT_SECT | TMTIMER_FLAGS_NO_RING0,
-                              "FDC IRQ Delay Timer", &pThis->hIrqDelayTimer);
+                              "FDC IRQ Delay", &pThis->hIrqDelayTimer);
     AssertRCReturn(rc, rc);
 
     pThis->uIrqDelayMsec = uIrqDelay;

@@ -1,4 +1,4 @@
-/* $Id: DevPit-i8254.cpp 87767 2021-02-16 16:41:18Z vboxsync $ */
+/* $Id: DevPit-i8254.cpp 87773 2021-02-16 23:36:15Z vboxsync $ */
 /** @file
  * DevPIT-i8254 - Intel 8254 Programmable Interval Timer (PIT) And Dummy Speaker Device.
  */
@@ -1423,8 +1423,7 @@ static DECLCALLBACK(int)  pitR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFG
      * Create the timer, make it take our critsect.
      */
     rc = PDMDevHlpTimerCreate(pDevIns, TMCLOCK_VIRTUAL_SYNC, pitR3Timer, &pThis->channels[0],
-                              TMTIMER_FLAGS_NO_CRIT_SECT | TMTIMER_FLAGS_RING0,
-                              "i8254 Programmable Interval Timer", &pThis->channels[0].hTimer);
+                              TMTIMER_FLAGS_NO_CRIT_SECT | TMTIMER_FLAGS_RING0, "i8254 PIT", &pThis->channels[0].hTimer);
     AssertRCReturn(rc, rc);
     rc = PDMDevHlpTimerSetCritSect(pDevIns, pThis->channels[0].hTimer, &pThis->CritSect);
     AssertRCReturn(rc, rc);

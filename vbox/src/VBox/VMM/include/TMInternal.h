@@ -1,4 +1,4 @@
-/* $Id: TMInternal.h 87771 2021-02-16 18:05:41Z vboxsync $ */
+/* $Id: TMInternal.h 87773 2021-02-16 23:36:15Z vboxsync $ */
 /** @file
  * TM - Internal header file.
  */
@@ -189,13 +189,8 @@ typedef struct TMTIMER
     PTMTIMERR3              pBigNext;
     /** Pointer to the previous timer in the list of all created timers. (TM::pTimers) */
     PTMTIMERR3              pBigPrev;
-//    /** The timer name. */
-//    char                    szName[32]
-    /** Pointer to the timer description. */
-    R3PTRTYPE(const char *) pszDesc;
-#if HC_ARCH_BITS == 32
-    uint32_t                padding0; /**< pad structure to multiple of 8 bytes. */
-#endif
+    /** The timer name. */
+    char                    szName[32];
 
 #ifdef VBOX_WITH_STATISTICS
     STAMPROFILE             StatTimer;

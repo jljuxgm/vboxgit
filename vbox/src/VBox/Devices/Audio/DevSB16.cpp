@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 87767 2021-02-16 16:41:18Z vboxsync $ */
+/* $Id: DevSB16.cpp 87773 2021-02-16 23:36:15Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  */
@@ -2429,10 +2429,10 @@ static DECLCALLBACK(int) sb16Construct(PPDMDEVINS pDevIns, int iInstance, PCFGMN
      * Create timers.
      */
     rc = PDMDevHlpTimerCreate(pDevIns, TMCLOCK_VIRTUAL, sb16TimerIRQ, pThis,
-                              TMTIMER_FLAGS_DEFAULT_CRIT_SECT | TMTIMER_FLAGS_NO_RING0, "SB16 IRQ timer", &pThis->hTimerIRQ);
+                              TMTIMER_FLAGS_DEFAULT_CRIT_SECT | TMTIMER_FLAGS_NO_RING0, "SB16 IRQ", &pThis->hTimerIRQ);
     AssertRCReturn(rc, rc);
     rc = PDMDevHlpTimerCreate(pDevIns, TMCLOCK_VIRTUAL, sb16TimerIO, pThis,
-                              TMTIMER_FLAGS_DEFAULT_CRIT_SECT | TMTIMER_FLAGS_NO_RING0, "SB16 IO timer", &pThis->hTimerIO);
+                              TMTIMER_FLAGS_DEFAULT_CRIT_SECT | TMTIMER_FLAGS_NO_RING0, "SB16 IO", &pThis->hTimerIO);
     AssertRCReturn(rc, rc);
     pThis->cTicksTimerIOInterval = PDMDevHlpTimerGetFreq(pDevIns, pThis->hTimerIO) / uTimerHz;
     pThis->tsTimerIO             = PDMDevHlpTimerGet(pDevIns, pThis->hTimerIO);

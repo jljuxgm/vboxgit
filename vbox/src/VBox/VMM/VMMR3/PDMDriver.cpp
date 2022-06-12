@@ -1,4 +1,4 @@
-/* $Id: PDMDriver.cpp 87772 2021-02-16 18:10:05Z vboxsync $ */
+/* $Id: PDMDriver.cpp 87773 2021-02-16 23:36:15Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Driver parts.
  */
@@ -1324,6 +1324,15 @@ static DECLCALLBACK(int) pdmR3DrvHlp_TimerCreate(PPDMDRVINS pDrvIns, TMCLOCK enm
     PDMDRV_ASSERT_DRVINS(pDrvIns);
     LogFlow(("pdmR3DrvHlp_TimerCreate: caller='%s'/%d: enmClock=%d pfnCallback=%p pvUser=%p fFlags=%#x pszDesc=%p:{%s} phTimer=%p\n",
              pDrvIns->pReg->szName, pDrvIns->iInstance, enmClock, pfnCallback, pvUser, fFlags, pszDesc, pszDesc, phTimer));
+
+    /* Mangle the timer name if there are more than once instance of this driver. */
+    char szName[32];
+    AssertReturn(strlen(pszDesc) < sizeof(szName) - 3, VERR_INVALID_NAME);
+    if (pDrvIns->iInstance > 0)
+    {
+        RTStrPrintf(szName, sizeof(szName), "%s[%u]", pszDesc, pDrvIns->iInstance);
+        pszDesc = szName;
+    }
 
     /* Clear the ring-0 flag if the driver isn't configured for ring-0. */
     if (fFlags & TMTIMER_FLAGS_RING0)

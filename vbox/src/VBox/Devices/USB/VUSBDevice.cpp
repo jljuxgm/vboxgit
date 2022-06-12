@@ -1,4 +1,4 @@
-/* $Id: VUSBDevice.cpp 87767 2021-02-16 16:41:18Z vboxsync $ */
+/* $Id: VUSBDevice.cpp 87773 2021-02-16 23:36:15Z vboxsync $ */
 /** @file
  * Virtual USB - Device.
  */
@@ -1812,7 +1812,7 @@ int vusbDevInit(PVUSBDEV pDev, PPDMUSBINS pUsbIns, const char *pszCaptureFilenam
      * Create the reset timer.
      */
     rc = PDMUsbHlpTimerCreate(pDev->pUsbIns, TMCLOCK_VIRTUAL, vusbDevResetDoneTimer, pDev, 0 /*fFlags*/,
-                              "USB Device Reset Timer",  &pDev->hResetTimer);
+                              "USB Reset", &pDev->hResetTimer);
     AssertRCReturn(rc, rc);
 
     if (pszCaptureFilename)

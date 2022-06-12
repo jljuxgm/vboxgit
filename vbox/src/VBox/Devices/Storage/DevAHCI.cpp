@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 87767 2021-02-16 16:41:18Z vboxsync $ */
+/* $Id: DevAHCI.cpp 87773 2021-02-16 23:36:15Z vboxsync $ */
 /** @file
  * DevAHCI - AHCI controller device (disk and cdrom).
  *
@@ -5936,7 +5936,7 @@ static DECLCALLBACK(int) ahciR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFG
      * Create the timer for command completion coalescing feature.
      */
     rc = PDMDevHlpTimerCreate(pDevIns, TMCLOCK_VIRTUAL, ahciCccTimer, pThis,
-                              TMTIMER_FLAGS_NO_CRIT_SECT | TMTIMER_FLAGS_RING0, "AHCI CCC Timer", &pThis->hHbaCccTimer);
+                              TMTIMER_FLAGS_NO_CRIT_SECT | TMTIMER_FLAGS_RING0, "AHCI CCC", &pThis->hHbaCccTimer);
     AssertRCReturn(rc, rc);
 
     /*

@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 87766 2021-02-16 14:27:43Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 87773 2021-02-16 23:36:15Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -421,11 +421,13 @@ static DECLCALLBACK(int) pdmR3DevHlp_TimerCreate(PPDMDEVINS pDevIns, TMCLOCK enm
     LogFlow(("pdmR3DevHlp_TimerCreate: caller='%s'/%d: enmClock=%d pfnCallback=%p pvUser=%p fFlags=%#x pszDesc=%p:{%s} phTimer=%p\n",
              pDevIns->pReg->szName, pDevIns->iInstance, enmClock, pfnCallback, pvUser, fFlags, pszDesc, pszDesc, phTimer));
 
-    if (pDevIns->iInstance > 0) /** @todo use a string cache here later. */
+    /* Mangle the timer name if there are more than one instance of this device. */
+    char szName[32];
+    AssertReturn(strlen(pszDesc) < sizeof(szName) - 3, VERR_INVALID_NAME);
+    if (pDevIns->iInstance > 0)
     {
-         char *pszDesc2 = MMR3HeapAPrintf(pVM, MM_TAG_PDM_DEVICE_DESC, "%s[%u]", pszDesc, pDevIns->iInstance);
-         if (pszDesc2)
-             pszDesc = pszDesc2;
+        RTStrPrintf(szName, sizeof(szName), "%s[%u]", pszDesc, pDevIns->iInstance);
+        pszDesc = szName;
     }
 
     /* Clear the ring-0 flag if the device isn't configured for ring-0. */

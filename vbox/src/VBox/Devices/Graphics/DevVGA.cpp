@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 87767 2021-02-16 16:41:18Z vboxsync $ */
+/* $Id: DevVGA.cpp 87773 2021-02-16 23:36:15Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -6783,7 +6783,7 @@ static DECLCALLBACK(int)   vgaR3Construct(PPDMDEVINS pDevIns, int iInstance, PCF
      * Create the refresh timer.
      */
     rc = PDMDevHlpTimerCreate(pDevIns, TMCLOCK_REAL, vgaR3TimerRefresh, NULL,
-                              TMTIMER_FLAGS_NO_CRIT_SECT | TMTIMER_FLAGS_NO_RING0, "VGA Refresh Timer", &pThis->hRefreshTimer);
+                              TMTIMER_FLAGS_NO_CRIT_SECT | TMTIMER_FLAGS_NO_RING0, "VGA Refresh", &pThis->hRefreshTimer);
     AssertRCReturn(rc, rc);
 
     /*

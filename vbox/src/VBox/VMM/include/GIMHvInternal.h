@@ -1,4 +1,4 @@
-/* $Id: GIMHvInternal.h 87766 2021-02-16 14:27:43Z vboxsync $ */
+/* $Id: GIMHvInternal.h 87773 2021-02-16 23:36:15Z vboxsync $ */
 /** @file
  * GIM - Hyper-V, Internal header file.
  */
@@ -1272,9 +1272,6 @@ typedef struct GIMHVSTIMER
     uint64_t                    uStimerConfigMsr;
     /** Synthetic timer count MSR. */
     uint64_t                    uStimerCountMsr;
-    /** Timer description. */
-    char                        szTimerDesc[24];
-
 } GIMHVSTIMER;
 /** Pointer to per-VCPU Hyper-V synthetic timer. */
 typedef GIMHVSTIMER *PGIMHVSTIMER;
