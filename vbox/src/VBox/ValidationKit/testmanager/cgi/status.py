@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: status.py 86934 2020-11-20 14:56:02Z vboxsync $
+# $Id: status.py 86935 2020-11-20 15:05:08Z vboxsync $
 
 """
 CGI - Administrator Web-UI.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 86934 $"
+__version__ = "$Revision: 86935 $"
 
 
 # Standard python imports.
@@ -101,7 +101,10 @@ def find_test_duration(created):
 
 def testbox_data_processing(oDb):
     testboxes_dict = {}
-    for line in oDb.fetchOne():
+    while True:
+        line = oDb.fetchOne();
+        if line is None:
+            break;
         testbox_name = line[0]
         test_result = line[1]
         test_created = line[2]
@@ -397,7 +400,10 @@ WHERE   TestSets.tsCreated                   > (CURRENT_TIMESTAMP - '%s hours'::
 
         # Process the data
         dResult = {};
-        for aoRow in oDb.fetchOne():
+        while True:
+            aoRow = oDb.fetchOne();
+            if aoRow is None:
+                break;
             os_results_separating(dResult, aoRow[1], aoRow[2], aoRow[0])  # save all test results
 
         # Format and output it.
