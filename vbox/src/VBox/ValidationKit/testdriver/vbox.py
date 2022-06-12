@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 86451 2020-10-05 08:50:29Z vboxsync $
+# $Id: vbox.py 86493 2020-10-08 10:29:57Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 86451 $"
+__version__ = "$Revision: 86493 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -922,6 +922,8 @@ class TestDriver(base.TestDriver):                                              
         if True is True: # pylint: disable=comparison-with-itself
             try:
                 self.oBuild = Build(self, None);
+                reporter.log('VBox %s build at %s (%s).'
+                             % (self.oBuild.sType, self.oBuild.sInstallPath, self.oBuild.sDesignation,));
                 return True;
             except base.GenError:
                 pass;
@@ -948,6 +950,8 @@ class TestDriver(base.TestDriver):                                              
         for sLoc in asLocs:
             try:
                 self.oBuild = Build(self, sLoc);
+                reporter.log('VBox %s build at %s (%s).'
+                             % (self.oBuild.sType, self.oBuild.sInstallPath, self.oBuild.sDesignation,));
                 return True;
             except base.GenError:
                 pass;
