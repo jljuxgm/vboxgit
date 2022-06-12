@@ -1,4 +1,4 @@
-/* $Id: regops.c 85703 2020-08-11 18:54:01Z vboxsync $ */
+/* $Id: regops.c 87053 2020-12-08 13:52:53Z vboxsync $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, regular file inode and file operations.
  */
@@ -147,7 +147,11 @@ static int vbsf_iov_iter_detect_type(struct iovec const *paIov, size_t cSegs)
     while (cSegs-- > 0) {
         if (paIov->iov_len > 0) {
             if (access_ok(VERIFY_READ, paIov->iov_base, paIov->iov_len))
+#if RTLNX_VER_MIN(5,10,0)
+                return (uintptr_t)paIov->iov_base >= TASK_SIZE_MAX ? ITER_KVEC : 0;
+#else
                 return (uintptr_t)paIov->iov_base >= USER_DS.seg ? ITER_KVEC : 0;
+#endif
             AssertMsgFailed(("%p LB %#zx\n", paIov->iov_base, paIov->iov_len));
             break;
         }
@@ -1401,7 +1405,10 @@ static int vbsf_lock_user_pages_failed_check_kernel(uintptr_t uPtrFrom, size_t c
     /*
      * Check that this is valid user memory that is actually in the kernel range.
      */
-#if RTLNX_VER_MIN(5,0,0) || RTLNX_RHEL_MIN(8,1)
+#if RTLNX_VER_MIN(5,10,0)
+    if (   access_ok((void *)uPtrFrom, cPages << PAGE_SHIFT)
+        && uPtrFrom >= TASK_SIZE_MAX)
+#elif RTLNX_VER_MIN(5,0,0) || RTLNX_RHEL_MIN(8,1)
     if (   access_ok((void *)uPtrFrom, cPages << PAGE_SHIFT)
         && uPtrFrom >= USER_DS.seg)
 #else
