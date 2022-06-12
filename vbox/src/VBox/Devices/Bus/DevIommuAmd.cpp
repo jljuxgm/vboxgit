@@ -1,4 +1,4 @@
-/* $Id: DevIommuAmd.cpp 86880 2020-11-13 10:51:17Z vboxsync $ */
+/* $Id: DevIommuAmd.cpp 86920 2020-11-19 13:48:30Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - AMD implementation.
  */
@@ -3554,7 +3554,6 @@ static DECLCALLBACK(int) iommuAmdDeviceMsiRemap(PPDMDEVINS pDevIns, uint16_t uDe
     if (Ctrl.n.u1IommuEn)
     {
         STAM_COUNTER_INC(&pThis->CTX_SUFF_Z(StatMsiRemap));
-        LogFlowFunc(("uDevId=%#x\n", uDevId));
         /** @todo Cache? */
 
         return iommuAmdLookupIntrTable(pDevIns, uDevId, IOMMUOP_INTR_REQ, pMsiIn, pMsiOut);
@@ -4644,6 +4643,7 @@ static DECLCALLBACK(void) iommuAmdR3DbgInfoDte(PPDMDEVINS pDevIns, PCDBGFINFOHLP
             rc = iommuAmdReadDte(pDevIns, uDevId, IOMMUOP_TRANSLATE_REQ,  &Dte);
             if (RT_SUCCESS(rc))
             {
+                pHlp->pfnPrintf(pHlp, "DTE for device %#x\n", uDevId);
                 iommuAmdR3DbgInfoDteWorker(pHlp, &Dte, " ");
                 return;
             }
