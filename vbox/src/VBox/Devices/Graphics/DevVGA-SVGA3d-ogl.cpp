@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-ogl.cpp 86905 2020-11-17 23:36:12Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-ogl.cpp 88787 2021-04-29 15:51:13Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -7715,4 +7715,10 @@ int vmsvga3dOcclusionQueryGetData(PVMSVGA3DSTATE pState, PVMSVGA3DCONTEXT pConte
 
     *pu32Pixels = (uint32_t)pixels;
     return VINF_SUCCESS;
+}
+
+int vmsvga3dQueryInterface(PVGASTATECC pThisCC, char const *pszInterfaceName, void *pvInterfaceFuncs, size_t cbInterfaceFuncs)
+{
+    RT_NOREF(pThisCC, pszInterfaceName, pvInterfaceFuncs, cbInterfaceFuncs);
+    return VERR_NOT_IMPLEMENTED;
 }

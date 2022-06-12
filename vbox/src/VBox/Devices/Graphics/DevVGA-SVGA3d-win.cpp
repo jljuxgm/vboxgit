@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-win.cpp 86905 2020-11-17 23:36:12Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-win.cpp 88787 2021-04-29 15:51:13Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -6171,3 +6171,8 @@ static void vmsvgaDumpD3DCaps(D3DCAPS9 *pCaps, D3DADAPTER_IDENTIFIER9 const *pai
     RTLogRelSetBuffering(fBufferingSaved);
 }
 
+int vmsvga3dQueryInterface(PVGASTATECC pThisCC, char const *pszInterfaceName, void *pvInterfaceFuncs, size_t cbInterfaceFuncs)
+{
+    RT_NOREF(pThisCC, pszInterfaceName, pvInterfaceFuncs, cbInterfaceFuncs);
+    return VERR_NOT_IMPLEMENTED;
+}

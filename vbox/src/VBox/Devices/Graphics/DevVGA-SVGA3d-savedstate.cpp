@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-savedstate.cpp 86839 2020-11-09 23:21:56Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-savedstate.cpp 88787 2021-04-29 15:51:13Z vboxsync $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - Saved state and assocated stuff.
  */
@@ -955,7 +955,7 @@ int vmsvga3dSaveExec(PPDMDEVINS pDevIns, PVGASTATECC pThisCC, PSSMHANDLE pSSM)
                         }
 
                         RTMemFree(pData);
-#elif defined(VMSVGA3D_DX)
+#elif defined(VMSVGA3D_D3D11)
                         /** @todo */
 #elif defined(VMSVGA3D_OPENGL)
                         void *pData = NULL;
