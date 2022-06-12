@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 86916 2020-11-19 11:06:19Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.cpp 87241 2021-01-13 15:56:05Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1809,6 +1809,20 @@ HRESULT SystemProperties::getSupportedChipsetTypes(std::vector<ChipsetType_T> &a
     };
     aSupportedChipsetTypes.assign(aChipsetTypes,
                                   aChipsetTypes + RT_ELEMENTS(aChipsetTypes));
+    return S_OK;
+}
+
+HRESULT SystemProperties::getSupportedIommuTypes(std::vector<IommuType_T> &aSupportedIommuTypes)
+{
+    static const IommuType_T aIommuTypes[] =
+    {
+        IommuType_None,
+        IommuType_Automatic,
+        IommuType_AMD,
+        /** @todo Add Intel when it's supported. */
+    };
+    aSupportedIommuTypes.assign(aIommuTypes,
+                                aIommuTypes + RT_ELEMENTS(aIommuTypes));
     return S_OK;
 }
 

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 86908 2020-11-18 10:56:12Z vboxsync $
+# $Id: Makefile.kmk 87241 2021-01-13 15:56:05Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -478,6 +478,7 @@ VBoxSVC_DEFS = \
 	$(if $(VBOX_USB_WITH_INOTIFY),VBOX_USB_WITH_INOTIFY,) \
 	$(if $(VBOX_WITH_NAT_SERVICE),VBOX_WITH_NAT_SERVICE,) \
 	$(if $(VBOX_WITH_LIBCURL),VBOX_WITH_HOST_UPDATE_CHECK,) \
+	$(if $(VBOX_WITH_IOMMU_AMD),VBOX_WITH_IOMMU_AMD,) \
 	$(if-expr defined(VBOX_WITH_SDS),VBOX_WITH_SDS,)
 ifdef VBOX_WITH_USB
  VBoxSVC_DEFS += \

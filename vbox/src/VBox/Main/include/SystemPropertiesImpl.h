@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.h 85683 2020-08-11 11:03:42Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.h 87241 2021-01-13 15:56:05Z vboxsync $ */
 
 /** @file
  *
@@ -141,6 +141,7 @@ private:
     HRESULT getSupportedStorageBuses(std::vector<StorageBus_T> &aSupportedStorageBuses) RT_OVERRIDE;
     HRESULT getSupportedStorageControllerTypes(std::vector<StorageControllerType_T> &aSupportedStorageControllerTypes) RT_OVERRIDE;
     HRESULT getSupportedChipsetTypes(std::vector<ChipsetType_T> &aSupportedChipsetTypes) RT_OVERRIDE;
+    HRESULT getSupportedIommuTypes(std::vector<IommuType_T> &aSupportedIommuTypes) RT_OVERRIDE;
     HRESULT getSupportedVBoxUpdateTargetTypes(std::vector<VBoxUpdateTarget_T> &aSupportedVBoxUpdateTargetTypes) RT_OVERRIDE;
     HRESULT getVBoxUpdateEnabled(BOOL *aVBoxUpdateEnabled) RT_OVERRIDE;
     HRESULT setVBoxUpdateEnabled(BOOL aVBoxUpdateEnabled) RT_OVERRIDE;

@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 86908 2020-11-18 10:56:12Z vboxsync $ */
+/* $Id: MachineImpl.h 87241 2021-01-13 15:56:05Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -318,6 +318,7 @@ public:
         KeyboardHIDType_T   mKeyboardHIDType;
         PointingHIDType_T   mPointingHIDType;
         ChipsetType_T       mChipsetType;
+        IommuType_T         mIommuType;
         ParavirtProvider_T  mParavirtProvider;
         Utf8Str             mParavirtDebug;
         BOOL                mEmulatedUSBCardReaderEnabled;
@@ -895,6 +896,8 @@ private:
     HRESULT setHPETEnabled(BOOL aHPETEnabled);
     HRESULT getChipsetType(ChipsetType_T *aChipsetType);
     HRESULT setChipsetType(ChipsetType_T aChipsetType);
+    HRESULT getIommuType(IommuType_T *aIommuType);
+    HRESULT setIommuType(IommuType_T aIommuType);
     HRESULT getSnapshotFolder(com::Utf8Str &aSnapshotFolder);
     HRESULT setSnapshotFolder(const com::Utf8Str &aSnapshotFolder);
     HRESULT getVRDEServer(ComPtr<IVRDEServer> &aVRDEServer);

@@ -1,4 +1,4 @@
-/* $Id: Global.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: Global.h 87241 2021-01-13 15:56:05Z vboxsync $ */
 /** @file
  * VirtualBox COM API - Global Declarations and Definitions.
  */
@@ -81,6 +81,7 @@ public:
         const StorageControllerType_T  hdStorageControllerType;
         const StorageBus_T             hdStorageBusType;
         const ChipsetType_T            chipsetType;
+        const IommuType_T              iommuType;
         const AudioControllerType_T    audioControllerType;
         const AudioCodecType_T         audioCodecType;
     };
