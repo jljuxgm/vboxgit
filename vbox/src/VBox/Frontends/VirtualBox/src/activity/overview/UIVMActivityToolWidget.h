@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityToolWidget.h 89094 2021-05-17 11:56:34Z vboxsync $ */
+/* $Id: UIVMActivityToolWidget.h 89096 2021-05-17 13:54:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMActivityToolWidget class declaration.
  */
@@ -32,12 +32,10 @@
 /* Forward declarations: */
 class UIActionPool;
 class QIToolBar;
-class UIVMActivityMonitor;
-class UIVMActivityListWidget;
 class UIVirtualMachineItem;
 class CMachine;
 
-/** QWidget extension to display a Linux top like utility that sort running vm wrt. resource allocations. */
+/** QTabWidget extension host machine activity widget(s) in the Manager UI. */
 class UIVMActivityToolWidget : public QIWithRetranslateUI<QTabWidget>
 {
     Q_OBJECT;
@@ -77,7 +75,6 @@ private slots:
 private:
 
     void setMachines(const QVector<QUuid> &machineIDs);
-
     /** @name Prepare/cleanup cascade.
       * @{ */
         void prepare();
