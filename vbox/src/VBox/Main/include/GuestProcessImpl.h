@@ -1,4 +1,4 @@
-/* $Id: GuestProcessImpl.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: GuestProcessImpl.h 84648 2020-06-03 08:11:04Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling implementation.
  */
@@ -76,9 +76,8 @@ public:
 
     /** @name Static internal methods.
      * @{ */
-    static Utf8Str i_guestErrorToString(int guestRc);
+    static Utf8Str i_guestErrorToString(int rcGuest, const char *pcszWhat);
     static bool i_isGuestError(int guestRc);
-    static HRESULT i_setErrorExternal(VirtualBoxBase *pInterface, int guestRc);
     static ProcessWaitResult_T i_waitFlagsToResultEx(uint32_t fWaitFlags, ProcessStatus_T oldStatus, ProcessStatus_T newStatus, uint32_t uProcFlags, uint32_t uProtocol);
 #if 0 /* unused */
     static bool i_waitResultImpliesEx(ProcessWaitResult_T waitResult, ProcessStatus_T procStatus, uint32_t uProtocol);
@@ -268,6 +267,11 @@ public:
     static int exitCodeToRc(const GuestProcessStartupInfo &startupInfo, int32_t iExitCode);
 
     static int exitCodeToRc(const char *pszTool, int32_t iExitCode);
+    /** @}  */
+
+    /** Wrapped @name Static guest error conversion methods.
+     * @{ */
+    static Utf8Str guestErrorToString(const char *pszTool, const GuestErrorInfo& guestErrorInfo);
     /** @}  */
 
 protected:

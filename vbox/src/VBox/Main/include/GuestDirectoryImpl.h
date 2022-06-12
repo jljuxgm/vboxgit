@@ -1,4 +1,4 @@
-/* $Id: GuestDirectoryImpl.h 83489 2020-03-30 16:38:23Z vboxsync $ */
+/* $Id: GuestDirectoryImpl.h 84648 2020-06-03 08:11:04Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest directory handling implementation.
  */
@@ -65,8 +65,7 @@ public:
 public:
     /** @name Public static internal methods.
      * @{ */
-    static Utf8Str i_guestErrorToString(int guestRc);
-    static HRESULT i_setErrorExternal(VirtualBoxBase *pInterface, int guestRc);
+    static Utf8Str i_guestErrorToString(int rcGuest, const char *pcszWhat);
     /** @}  */
 
 private:
