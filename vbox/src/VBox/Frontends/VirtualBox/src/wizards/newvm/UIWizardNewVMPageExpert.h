@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.h 85157 2020-07-09 19:48:19Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.h 87060 2020-12-09 10:05:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class declaration.
  */
@@ -78,7 +78,7 @@ private slots:
     void sltOsTypeChanged();
     void sltVirtualDiskSourceChanged();
     void sltGetWithFileOpenDialog();
-    void sltUnattendedCheckBoxToggle();
+    void sltUnattendedCheckBoxToggle(bool fEnable);
     void sltISOPathChanged(const QString &strPath);
     void sltInstallGACheckBoxToggle(bool fChecked);
     void sltGAISOPathChanged(const QString &strPath);
