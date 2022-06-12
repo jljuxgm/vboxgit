@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 84818 2020-06-12 17:11:33Z vboxsync $
+# $Id: tdAddBasic1.py 84929 2020-06-24 12:59:39Z vboxsync $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84818 $"
+__version__ = "$Revision: 84929 $"
 
 # Standard Python imports.
 import os;
@@ -135,7 +135,7 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
         #        automatic updating mechanism (uses hardcoded paths, e.g. "{CDROM}/linux/amd64/TestExecService").
         #
         ## @todo Find a solution for testing the automatic Guest Additions updates, which also looks at {CDROM}s root.
-        if self.fpApiVer >= 6.0 and 'sharedfolders' in self.asTests:
+        if self.fpApiVer >= 6.0:
             sGaViso = os.path.join(self.sScratchPath, 'AdditionsAndValKit.viso');
             ## @todo encode as bash cmd line:
             sVisoContent = '--iprt-iso-maker-file-marker-bourne-sh %s ' \
