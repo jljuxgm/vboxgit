@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwipNAT.cpp 87710 2021-02-11 02:14:40Z vboxsync $ */
+/* $Id: VBoxNetLwipNAT.cpp 87723 2021-02-11 13:55:09Z vboxsync $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -634,7 +634,7 @@ int VBoxNetLwipNAT::ipv4LoopbackMapInit()
     /*
      * Process mappings of the form "127.x.y.z=off"
      */
-    size_t dst = 0;
+    unsigned int dst = 0;      /* typeof(ip4_lomap_desc::num_lomap) */
     for (size_t i = 0; i < aStrLocalMappings.size(); ++i)
     {
         com::Utf8Str strMapping(aStrLocalMappings[i]);
