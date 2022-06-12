@@ -1,4 +1,4 @@
-/* $Id: DrvHostDSound.cpp 88053 2021-03-09 14:15:43Z vboxsync $ */
+/* $Id: DrvHostDSound.cpp 88055 2021-03-09 14:39:16Z vboxsync $ */
 /** @file
  * Windows host backend driver using DirectSound.
  */
@@ -1834,7 +1834,7 @@ static int dsoundDevicesEnumerate(PDRVHOSTDSOUND pThis, PPDMAUDIOHOSTENUM pDevEn
          * Query Information from all enumerated devices.
          */
         PDSOUNDDEV pDev;
-        RTListForEach(&pDevEnm->LstDevices, pDev, DSOUNDDEV, Core.Node)
+        RTListForEach(&pDevEnm->LstDevices, pDev, DSOUNDDEV, Core.ListEntry)
         {
             dsoundDeviceQueryInfo(pThis, pDev); /* ignore rc */
         }

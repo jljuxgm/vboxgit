@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 88053 2021-03-09 14:15:43Z vboxsync $ */
+/* $Id: DrvAudio.cpp 88055 2021-03-09 14:39:16Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -2172,7 +2172,7 @@ static int drvAudioDevicesEnumerateInternal(PDRVAUDIO pThis, bool fLog, PPDMAUDI
                 LogRel(("Audio: Found %RU16 devices for driver '%s'\n", DevEnum.cDevices, pThis->szName));
 
             PPDMAUDIOHOSTDEV pDev;
-            RTListForEach(&DevEnum.LstDevices, pDev, PDMAUDIOHOSTDEV, Node)
+            RTListForEach(&DevEnum.LstDevices, pDev, PDMAUDIOHOSTDEV, ListEntry)
             {
                 if (fLog)
                 {
