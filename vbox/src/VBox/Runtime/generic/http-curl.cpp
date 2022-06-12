@@ -1,4 +1,4 @@
-/* $Id: http-curl.cpp 85000 2020-06-29 16:51:21Z vboxsync $ */
+/* $Id: http-curl.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * IPRT - HTTP client API, cURL based.
  *
@@ -2859,7 +2859,7 @@ static int rtHttpGetCalcStatus(PRTHTTPINTERNAL pThis, CURLcode rcCurl, uint32_t 
 /**
  * cURL callback for reporting progress, we use it for checking for abort.
  */
-static int rtHttpProgress(void *pData, double rdTotalDownload, double rdDownloaded, double rdTotalUpload, double rdUploaded)
+static int rtHttpProgress(void *pData, double rdTotalDownload, double rdDownloaded, double rdTotalUpload, double rdUploaded) RT_NOTHROW_DEF
 {
     PRTHTTPINTERNAL pThis = (PRTHTTPINTERNAL)pData;
     AssertReturn(pThis->u32Magic == RTHTTP_MAGIC, 1);
@@ -3081,7 +3081,7 @@ static size_t rtHttpWriteDataToMemOutput(PRTHTTPINTERNAL pThis, RTHTTPOUTPUTDATA
 /**
  * cURL callback for writing body data.
  */
-static size_t rtHttpWriteBodyData(char *pchBuf, size_t cbUnit, size_t cUnits, void *pvUser)
+static size_t rtHttpWriteBodyData(char *pchBuf, size_t cbUnit, size_t cUnits, void *pvUser) RT_NOTHROW_DEF
 {
     PRTHTTPINTERNAL   pThis      = (PRTHTTPINTERNAL)pvUser;
     size_t const      cbToAppend = cbUnit * cUnits;

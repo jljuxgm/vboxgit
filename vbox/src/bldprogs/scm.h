@@ -1,4 +1,4 @@
-/* $Id: scm.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: scm.h 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -145,7 +145,7 @@ typedef SCMCOMMENTINFO const *PCSCMCOMMENTINFO;
  * @param   cchBody         The comment body length.
  * @param   pvUser          User callback argument.
  */
-typedef DECLCALLBACK(int) FNSCMCOMMENTENUMERATOR(PCSCMCOMMENTINFO pInfo, const char *pszBody, size_t cchBody, void *pvUser);
+typedef DECLCALLBACKTYPE(int, FNSCMCOMMENTENUMERATOR,(PCSCMCOMMENTINFO pInfo, const char *pszBody, size_t cchBody, void *pvUser));
 /** Poiter to a omment enumeration callback function. */
 typedef FNSCMCOMMENTENUMERATOR *PFNSCMCOMMENTENUMERATOR;
 

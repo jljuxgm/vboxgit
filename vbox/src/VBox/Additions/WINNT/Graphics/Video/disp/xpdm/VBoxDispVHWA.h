@@ -1,4 +1,4 @@
-/* $Id: VBoxDispVHWA.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxDispVHWA.h 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * VBox XPDM Display driver, helper functions which interacts with our miniport driver
  */
@@ -61,7 +61,8 @@ typedef struct _VBOXVHWASURFDESC
     VBOXVHWAREGION NonupdatedMemRegion;
 }VBOXVHWASURFDESC, *PVBOXVHWASURFDESC;
 
-typedef DECLCALLBACK(void) FNVBOXVHWACMDCOMPLETION(PVBOXDISPDEV pDev, VBOXVHWACMD RT_UNTRUSTED_VOLATILE_HOST *pCmd, void *pvContext);
+typedef DECLCALLBACKTYPE(void, FNVBOXVHWACMDCOMPLETION,(PVBOXDISPDEV pDev, VBOXVHWACMD RT_UNTRUSTED_VOLATILE_HOST *pCmd,
+                                                        void *pvContext));
 typedef FNVBOXVHWACMDCOMPLETION *PFNVBOXVHWACMDCOMPLETION;
 
 void VBoxDispVHWAInit(PVBOXDISPDEV pDev);

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 85007 2020-06-30 17:19:25Z vboxsync $
+# $Id: Makefile.kmk 85121 2020-07-08 19:33:26Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -1441,6 +1441,9 @@ if defined(VBOX_ONLY_SDK) || "$(KBUILD_TARGET)" == "win"
 		'#pragma warning(disable:4668 4255)' \
 		'#if _MSC_VER >= 1800 /* RT_MSC_VER_VC120 */' \
 		'# pragma warning(disable:4005)' \
+		'#endif' \
+		'#if _MSC_VER >= 1900 /* RT_MSC_VER_VC140 */' \
+		'# pragma warning(disable:5039)' \
 		'#endif' \
                ''
 	$(QUIET)$(CAT_EXT) "$1.tmp" >> "$1"

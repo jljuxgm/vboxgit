@@ -1,4 +1,4 @@
-/* $Id: DevVGA_VBVA.cpp 83562 2020-04-05 01:46:16Z vboxsync $ */
+/* $Id: DevVGA_VBVA.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * VirtualBox Video Acceleration (VBVA).
  */
@@ -1275,12 +1275,12 @@ static int vbvaVHWAReset(PPDMDEVINS pDevIns, PVGASTATE pThis, PVGASTATECC pThisC
     return VERR_OUT_OF_RESOURCES;
 }
 
-typedef DECLCALLBACK(bool) FNVBOXVHWAHHCMDPRECB(PPDMDEVINS pDevIns, PVGASTATE pThis, PVGASTATECC pThisCC, VBOXVHWACMD *pCmd,
-                                                uint32_t iDisplay, void *pvContext);
+typedef DECLCALLBACKTYPE(bool, FNVBOXVHWAHHCMDPRECB,(PPDMDEVINS pDevIns, PVGASTATE pThis, PVGASTATECC pThisCC, VBOXVHWACMD *pCmd,
+                                                uint32_t iDisplay, void *pvContext));
 typedef FNVBOXVHWAHHCMDPRECB *PFNVBOXVHWAHHCMDPRECB;
 
-typedef DECLCALLBACK(bool) FNVBOXVHWAHHCMDPOSTCB(PPDMDEVINS pDevIns, PVGASTATE pThis, PVGASTATECC pThisCC, VBOXVHWACMD *pCmd,
-                                                 uint32_t iDisplay, int rc, void *pvContext);
+typedef DECLCALLBACKTYPE(bool, FNVBOXVHWAHHCMDPOSTCB,(PPDMDEVINS pDevIns, PVGASTATE pThis, PVGASTATECC pThisCC, VBOXVHWACMD *pCmd,
+                                                 uint32_t iDisplay, int rc, void *pvContext));
 typedef FNVBOXVHWAHHCMDPOSTCB *PFNVBOXVHWAHHCMDPOSTCB;
 
 static int vbvaVHWAHHPost(PPDMDEVINS pDevIns, PVGASTATE pThis, PVGASTATECC pThisCC, VBOXVHWACMD *pCmd,

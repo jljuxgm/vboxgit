@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 83057 2020-02-12 05:07:09Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -320,7 +320,7 @@ typedef enum VMXMEMACCESS
 #ifndef HMVMX_USE_FUNCTION_TABLE
 typedef VBOXSTRICTRC               FNVMXEXITHANDLER(PVMCPUCC pVCpu, PVMXTRANSIENT pVmxTransient);
 #else
-typedef DECLCALLBACK(VBOXSTRICTRC) FNVMXEXITHANDLER(PVMCPUCC pVCpu, PVMXTRANSIENT pVmxTransient);
+typedef DECLCALLBACKTYPE(VBOXSTRICTRC, FNVMXEXITHANDLER,(PVMCPUCC pVCpu, PVMXTRANSIENT pVmxTransient));
 /** Pointer to VM-exit handler. */
 typedef FNVMXEXITHANDLER          *PFNVMXEXITHANDLER;
 #endif

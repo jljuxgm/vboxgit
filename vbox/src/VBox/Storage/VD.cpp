@@ -1,4 +1,4 @@
-/* $Id: VD.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VD.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * VD - Virtual disk container implementation.
  */
@@ -106,7 +106,7 @@ typedef enum VDIOCTXTXDIR
 } VDIOCTXTXDIR, *PVDIOCTXTXDIR;
 
 /** Transfer function */
-typedef DECLCALLBACK(int) FNVDIOCTXTRANSFER (PVDIOCTX pIoCtx);
+typedef DECLCALLBACKTYPE(int, FNVDIOCTXTRANSFER ,(PVDIOCTX pIoCtx));
 /** Pointer to a transfer function. */
 typedef FNVDIOCTXTRANSFER *PFNVDIOCTXTRANSFER;
 

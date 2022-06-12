@@ -1,4 +1,4 @@
-/* $Id: tstRTBigNum.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: tstRTBigNum.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * IPRT - Testcase for the RTBigNum* functions.
  */
@@ -41,7 +41,9 @@
 #include <iprt/time.h>
 
 #if 1
+# include "../include/internal/openssl-pre.h"
 # include <openssl/bn.h>
+# include "../include/internal/openssl-post.h"
 #endif
 
 

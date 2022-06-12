@@ -1,4 +1,4 @@
-/* $Id: errmsgwin-sorter.cpp 84070 2020-04-28 23:58:24Z vboxsync $ */
+/* $Id: errmsgwin-sorter.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * IPRT - Status code messages, Windows, sorter build program.
  */
@@ -120,7 +120,7 @@ static RTEXITCODE error(const char *pszFormat,  ...)
 
 
 /** qsort callback. */
-static int CompareWinErrMsg(const void *pv1, const void *pv2)
+static int CompareWinErrMsg(const void *pv1, const void *pv2) RT_NOTHROW_DEF
 {
     PCRTWINERRMSG p1 = (PCRTWINERRMSG)pv1;
     PCRTWINERRMSG p2 = (PCRTWINERRMSG)pv2;

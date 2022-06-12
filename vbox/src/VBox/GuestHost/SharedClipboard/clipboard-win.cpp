@@ -1,4 +1,4 @@
-/* $Id: clipboard-win.cpp 83953 2020-04-23 15:21:16Z vboxsync $ */
+/* $Id: clipboard-win.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * Shared Clipboard: Windows-specific functions for clipboard handling.
  */
@@ -310,7 +310,7 @@ int SharedClipboardWinChainRemove(PSHCLWINCTX pCtx)
  * @param   dwData              Pointer to user-provided data. Contains our Windows clipboard context.
  * @param   lResult             Additional data to pass. Not used currently.
  */
-VOID CALLBACK SharedClipboardWinChainPingProc(HWND hWnd, UINT uMsg, ULONG_PTR dwData, LRESULT lResult)
+VOID CALLBACK SharedClipboardWinChainPingProc(HWND hWnd, UINT uMsg, ULONG_PTR dwData, LRESULT lResult) RT_NOTHROW_DEF
 {
     RT_NOREF(hWnd);
     RT_NOREF(uMsg);

@@ -1,4 +1,4 @@
-/* $Id: VBoxSDL.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxSDL.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * VBox frontends: VBoxSDL (simple frontend based on SDL):
  * Main code
@@ -167,9 +167,9 @@ static void    UpdateTitlebar(TitlebarMode mode, uint32_t u32User = 0);
 static void    SetPointerShape(const PointerShapeChangeData *data);
 static void    HandleGuestCapsChanged(void);
 static int     HandleHostKey(const SDL_KeyboardEvent *pEv);
-static Uint32  StartupTimer(Uint32 interval, void *param);
-static Uint32  ResizeTimer(Uint32 interval, void *param);
-static Uint32  QuitTimer(Uint32 interval, void *param);
+static Uint32  StartupTimer(Uint32 interval, void *param) RT_NOTHROW_PROTO;
+static Uint32  ResizeTimer(Uint32 interval, void *param) RT_NOTHROW_PROTO;
+static Uint32  QuitTimer(Uint32 interval, void *param) RT_NOTHROW_PROTO;
 static int     WaitSDLEvent(SDL_Event *event);
 static void    SetFullscreen(bool enable);
 
@@ -5067,7 +5067,7 @@ static int HandleHostKey(const SDL_KeyboardEvent *pEv)
 /**
  * Timer callback function for startup processing
  */
-static Uint32 StartupTimer(Uint32 interval, void *param)
+static Uint32 StartupTimer(Uint32 interval, void *param) RT_NOTHROW_DEF
 {
     RT_NOREF(param);
 
@@ -5083,7 +5083,7 @@ static Uint32 StartupTimer(Uint32 interval, void *param)
 /**
  * Timer callback function to check if resizing is finished
  */
-static Uint32 ResizeTimer(Uint32 interval, void *param)
+static Uint32 ResizeTimer(Uint32 interval, void *param) RT_NOTHROW_DEF
 {
     RT_NOREF(interval, param);
 
@@ -5099,7 +5099,7 @@ static Uint32 ResizeTimer(Uint32 interval, void *param)
 /**
  * Timer callback function to check if an ACPI power button event was handled by the guest.
  */
-static Uint32 QuitTimer(Uint32 interval, void *param)
+static Uint32 QuitTimer(Uint32 interval, void *param) RT_NOTHROW_DEF
 {
     RT_NOREF(interval, param);
 

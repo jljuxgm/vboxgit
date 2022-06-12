@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestControlSvc.cpp 84509 2020-05-25 15:09:24Z vboxsync $ */
+/* $Id: VBoxGuestControlSvc.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * Guest Control Service: Controlling the guest.
  */
@@ -2483,7 +2483,7 @@ GstCtrlService::svcLoadState(void *pvService, uint32_t idClient, void *pvClient,
 
 
 /**
- * @copydoc VBOXHGCMSVCLOAD
+ * @copydoc FNVBOXHGCMSVCLOAD
  */
 extern "C" DECLCALLBACK(DECLEXPORT(int)) VBoxHGCMSvcLoad(VBOXHGCMSVCFNTABLE *pTable)
 {

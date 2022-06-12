@@ -1,4 +1,4 @@
-/* $Id: GIMInternal.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: GIMInternal.h 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * GIM - Internal header file.
  */
@@ -99,7 +99,7 @@ typedef GIMCPU *PGIMCPU;
  *
  * @param   pVM             The cross context VM structure.
  */
-typedef DECLCALLBACK(void) FNGIMDEBUGBUFREADCOMPLETED(PVM pVM);
+typedef DECLCALLBACKTYPE(void, FNGIMDEBUGBUFREADCOMPLETED,(PVM pVM));
 /** Pointer to GIM debug buffer read completion callback. */
 typedef FNGIMDEBUGBUFREADCOMPLETED *PFNGIMDEBUGBUFREADCOMPLETED;
 

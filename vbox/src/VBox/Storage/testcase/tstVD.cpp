@@ -1,4 +1,4 @@
-/* $Id: tstVD.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: tstVD.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * Simple VBox HDD container test utility.
  */
@@ -361,7 +361,7 @@ static void initializeRandomGenerator(PRNDCTX pCtx, uint32_t u32Seed)
     }
 }
 
-static int compareSegments(const void *left, const void *right)
+static int compareSegments(const void *left, const void *right) RT_NOTHROW_DEF
 {
     /* Note that no duplicates are allowed in the array being sorted. */
     return ((PSEGMENT)left)->u64Offset < ((PSEGMENT)right)->u64Offset ? -1 : 1;

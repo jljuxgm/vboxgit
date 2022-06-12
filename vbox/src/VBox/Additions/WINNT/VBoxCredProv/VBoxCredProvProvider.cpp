@@ -1,4 +1,4 @@
-/* $Id: VBoxCredProvProvider.cpp 83824 2020-04-19 01:20:58Z vboxsync $ */
+/* $Id: VBoxCredProvProvider.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * VBoxCredProvProvider - The actual credential provider class.
  */
@@ -22,7 +22,7 @@
 #include <new> /* For bad_alloc. */
 
 #include <iprt/win/windows.h>
-#include <credentialprovider.h>
+#include <iprt/win/credentialprovider.h>
 
 #include <iprt/errcore.h>
 #include <VBox/VBoxGuestLib.h>

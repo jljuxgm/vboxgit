@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 85015 2020-06-30 19:10:15Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1762,9 +1762,9 @@ HRESULT Display::setSeamlessMode(BOOL enabled)
     return S_OK;
 }
 
-/* static */
-int Display::i_displayTakeScreenshotEMT(Display *pDisplay, ULONG aScreenId, uint8_t **ppbData, size_t *pcbData,
-                                        uint32_t *pcx, uint32_t *pcy, bool *pfMemFree)
+/*static*/ DECLCALLBACK(int)
+Display::i_displayTakeScreenshotEMT(Display *pDisplay, ULONG aScreenId, uint8_t **ppbData, size_t *pcbData,
+                                    uint32_t *pcx, uint32_t *pcy, bool *pfMemFree)
 {
     int rc;
     if (   aScreenId == VBOX_VIDEO_PRIMARY_SCREEN
@@ -2146,8 +2146,8 @@ void Display::i_recordingScreenChanged(unsigned uScreenId)
 }
 #endif /* VBOX_WITH_RECORDING */
 
-int Display::i_drawToScreenEMT(Display *pDisplay, ULONG aScreenId, BYTE *address,
-                               ULONG x, ULONG y, ULONG width, ULONG height)
+/*static*/ DECLCALLBACK(int)
+Display::i_drawToScreenEMT(Display *pDisplay, ULONG aScreenId, BYTE *address, ULONG x, ULONG y, ULONG width, ULONG height)
 {
     int rc = VINF_SUCCESS;
 
@@ -2311,7 +2311,7 @@ HRESULT Display::drawToScreen(ULONG aScreenId, BYTE *aAddress, ULONG aX, ULONG a
     return rc;
 }
 
-int Display::i_InvalidateAndUpdateEMT(Display *pDisplay, unsigned uId, bool fUpdateAll)
+/*static*/ DECLCALLBACK(int) Display::i_InvalidateAndUpdateEMT(Display *pDisplay, unsigned uId, bool fUpdateAll)
 {
     LogRelFlowFunc(("uId=%d, fUpdateAll %d\n", uId, fUpdateAll));
 

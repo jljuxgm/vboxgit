@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbMon.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxUsbMon.h 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * VBox USB Monitor
  */
@@ -59,7 +59,7 @@ NTSTATUS VBoxUsbMonQueryBusRelations(PDEVICE_OBJECT pDevObj, PFILE_OBJECT pFileO
 
 void vboxUsbDbgPrintUnicodeString(PUNICODE_STRING pUnicodeString);
 
-typedef DECLCALLBACK(BOOLEAN) FNVBOXUSBMONDEVWALKER(PFILE_OBJECT pHubFile, PDEVICE_OBJECT pHubDo, PVOID pvContext);
+typedef DECLCALLBACKTYPE(BOOLEAN, FNVBOXUSBMONDEVWALKER,(PFILE_OBJECT pHubFile, PDEVICE_OBJECT pHubDo, PVOID pvContext));
 typedef FNVBOXUSBMONDEVWALKER *PFNVBOXUSBMONDEVWALKER;
 
 VOID vboxUsbMonHubDevWalk(PFNVBOXUSBMONDEVWALKER pfnWalker, PVOID pvWalker);

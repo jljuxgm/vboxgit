@@ -1,4 +1,4 @@
-/* $Id: VUSBDevice.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VUSBDevice.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * Virtual USB - Device.
  */
@@ -1399,7 +1399,7 @@ static DECLCALLBACK(void) vusbDevResetDoneTimer(PPDMUSBINS pUsbIns, PTMTIMER pTi
  *
  * @thread EMT or a VUSB reset thread.
  */
-static int vusbDevResetWorker(PVUSBDEV pDev, bool fResetOnLinux, bool fUseTimer, PVUSBRESETARGS pArgs)
+static DECLCALLBACK(int) vusbDevResetWorker(PVUSBDEV pDev, bool fResetOnLinux, bool fUseTimer, PVUSBRESETARGS pArgs)
 {
     int rc = VINF_SUCCESS;
     uint64_t u64EndTS = TMTimerGet(pDev->pResetTimer) + TMTimerFromMilli(pDev->pResetTimer, 10);

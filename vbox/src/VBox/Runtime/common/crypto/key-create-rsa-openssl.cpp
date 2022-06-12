@@ -1,4 +1,4 @@
-/* $Id: key-create-rsa-openssl.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: key-create-rsa-openssl.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * IPRT - Crypto - RSA Key Creation using OpenSSL.
  */
@@ -36,8 +36,10 @@
 # include <iprt/string.h>
 
 # include "internal/iprt-openssl.h"
+# include "internal/openssl-pre.h"
 # include <openssl/rsa.h>
 # include <openssl/err.h>
+# include "internal/openssl-post.h"
 
 # include "key-internal.h"
 

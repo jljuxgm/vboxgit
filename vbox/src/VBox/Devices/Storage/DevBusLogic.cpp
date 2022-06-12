@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 85103 2020-07-08 08:39:21Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * VBox storage devices - BusLogic SCSI host adapter BT-958.
  *
@@ -1015,8 +1015,8 @@ typedef struct BUSLOGICREQ
  *                  On return this contains the remaining amount if
  *                  cbCopy < *pcbSkip or 0 otherwise.
  */
-typedef DECLCALLBACK(void) FNBUSLOGICR3MEMCOPYCALLBACK(PPDMDEVINS pDevIns, PBUSLOGIC pThis, RTGCPHYS GCPhys,
-                                                       PRTSGBUF pSgBuf, size_t cbCopy, size_t *pcbSkip);
+typedef DECLCALLBACKTYPE(void, FNBUSLOGICR3MEMCOPYCALLBACK,(PPDMDEVINS pDevIns, PBUSLOGIC pThis, RTGCPHYS GCPhys,
+                                                       PRTSGBUF pSgBuf, size_t cbCopy, size_t *pcbSkip));
 /** Pointer to a memory copy buffer callback. */
 typedef FNBUSLOGICR3MEMCOPYCALLBACK *PFNBUSLOGICR3MEMCOPYCALLBACK;
 #endif

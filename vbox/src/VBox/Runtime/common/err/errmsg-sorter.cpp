@@ -1,4 +1,4 @@
-/* $Id: errmsg-sorter.cpp 84130 2020-05-02 15:42:40Z vboxsync $ */
+/* $Id: errmsg-sorter.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * IPRT - Status code messages, sorter build program.
  */
@@ -123,7 +123,7 @@ static RTEXITCODE error(const char *pszFormat,  ...)
 
 
 /** qsort callback. */
-static int CompareErrMsg(const void *pv1, const void *pv2)
+static int CompareErrMsg(const void *pv1, const void *pv2) RT_NOTHROW_DEF
 {
     PRTSTATUSMSGINT1 p1 = (PRTSTATUSMSGINT1)pv1;
     PRTSTATUSMSGINT1 p2 = (PRTSTATUSMSGINT1)pv2;

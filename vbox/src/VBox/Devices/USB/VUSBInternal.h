@@ -1,4 +1,4 @@
-/* $Id: VUSBInternal.h 84359 2020-05-19 08:10:45Z vboxsync $ */
+/* $Id: VUSBInternal.h 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * Virtual USB - Internal header.
  *
@@ -101,7 +101,7 @@ typedef struct VUSBURBVUSBINT
      * Callback which will free the URB once it's reaped and completed.
      * @param   pUrb    The URB.
      */
-    DECLCALLBACKMEMBER(void, pfnFree)(PVUSBURB pUrb);
+    DECLCALLBACKMEMBER(void, pfnFree,(PVUSBURB pUrb));
     /** Submit timestamp. (logging only) */
     uint64_t        u64SubmitTS;
 } VUSBURBVUSBINT;

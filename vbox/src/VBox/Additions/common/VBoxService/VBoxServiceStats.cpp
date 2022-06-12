@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceStats.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxServiceStats.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * VBoxStats - Guest statistics notification
  */
@@ -67,7 +67,7 @@
 /*********************************************************************************************************************************
 *   Structures and Typedefs                                                                                                      *
 *********************************************************************************************************************************/
-typedef struct _VBOXSTATSCONTEXT
+typedef struct VBOXSTATSCONTEXT
 {
     RTMSINTERVAL    cMsStatInterval;
 
@@ -77,10 +77,11 @@ typedef struct _VBOXSTATSCONTEXT
     uint64_t        au64LastCpuLoad_Nice[VMM_MAX_CPU_COUNT];
 
 #ifdef RT_OS_WINDOWS
-    NTSTATUS (WINAPI *pfnNtQuerySystemInformation)(SYSTEM_INFORMATION_CLASS SystemInformationClass, PVOID SystemInformation,
-                                                   ULONG SystemInformationLength, PULONG ReturnLength);
-    void     (WINAPI *pfnGlobalMemoryStatusEx)(LPMEMORYSTATUSEX lpBuffer);
-    BOOL     (WINAPI *pfnGetPerformanceInfo)(PPERFORMANCE_INFORMATION pPerformanceInformation, DWORD cb);
+    DECLCALLBACKMEMBER_EX(NTSTATUS, WINAPI, pfnNtQuerySystemInformation,(SYSTEM_INFORMATION_CLASS SystemInformationClass,
+                                                                         PVOID SystemInformation, ULONG SystemInformationLength,
+                                                                         PULONG ReturnLength));
+    DECLCALLBACKMEMBER_EX(void,     WINAPI, pfnGlobalMemoryStatusEx,(LPMEMORYSTATUSEX lpBuffer));
+    DECLCALLBACKMEMBER_EX(BOOL,     WINAPI, pfnGetPerformanceInfo,(PPERFORMANCE_INFORMATION pPerformanceInformation, DWORD cb));
 #endif
 } VBOXSTATSCONTEXT;
 

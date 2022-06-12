@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.cpp 83686 2020-04-14 08:54:17Z vboxsync $ */
+/* $Id: UIKeyboardHandler.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandler class implementation.
  */
@@ -1297,7 +1297,7 @@ bool UIKeyboardHandler::macKeyboardEvent(const void *pvCocoaEvent, EventRef even
 #elif defined(VBOX_WS_WIN)
 
 /* static */
-LRESULT CALLBACK UIKeyboardHandler::winKeyboardProc(int nCode, WPARAM wParam, LPARAM lParam)
+LRESULT CALLBACK UIKeyboardHandler::winKeyboardProc(int nCode, WPARAM wParam, LPARAM lParam) RT_NOTHROW_DEF
 {
     /* All keyboard class events needs to be handled: */
     if (nCode == HC_ACTION && m_spKeyboardHandler && m_spKeyboardHandler->winKeyboardEvent(wParam, *(KBDLLHOOKSTRUCT*)lParam))

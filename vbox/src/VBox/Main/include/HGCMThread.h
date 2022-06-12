@@ -1,4 +1,4 @@
-/* $Id: HGCMThread.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: HGCMThread.h 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * HGCMThread - Host-Guest Communication Manager worker threads header.
  */
@@ -54,9 +54,9 @@ typedef FNHGCMNEWMSGALLOC *PFNHGCMNEWMSGALLOC;
  * @retval VERR_NOT_AVAILABLE if HGCM has been disconnected from the VMMDev
  *         (shouldn't happen).
  */
-typedef DECLCALLBACK(int) HGCMMSGCALLBACK(int32_t result, HGCMMsgCore *pMsgCore);
+typedef DECLCALLBACKTYPE(int, FNHGCMMSGCALLBACK,(int32_t result, HGCMMsgCore *pMsgCore));
 /** Pointer to a message completeion callback function. */
-typedef HGCMMSGCALLBACK *PHGCMMSGCALLBACK;
+typedef FNHGCMMSGCALLBACK *PFNHGCMMSGCALLBACK;
 
 
 /** HGCM core message. */
@@ -75,7 +75,7 @@ class HGCMMsgCore : public HGCMReferencedObject
         HGCMThread *m_pThread;
 
         /** Callback function pointer. */
-        PHGCMMSGCALLBACK m_pfnCallback;
+        PFNHGCMMSGCALLBACK m_pfnCallback;
 
         /** Next element in a message queue. */
         HGCMMsgCore *m_pNext;
@@ -114,7 +114,7 @@ class HGCMMsgCore : public HGCMReferencedObject
  *  @param pThread       The HGCM thread instance.
  *  @param pvUser        User specified thread parameter.
  */
-typedef DECLCALLBACK(void) FNHGCMTHREAD(HGCMThread *pThread, void *pvUser);
+typedef DECLCALLBACKTYPE(void, FNHGCMTHREAD,(HGCMThread *pThread, void *pvUser));
 typedef FNHGCMTHREAD *PFNHGCMTHREAD;
 
 
@@ -178,7 +178,7 @@ int hgcmMsgAlloc(HGCMThread *pThread, HGCMMsgCore **ppHandle, uint32_t u32MsgId,
  *
  * @thread any
  */
-int hgcmMsgPost(HGCMMsgCore *pMsg, PHGCMMSGCALLBACK pfnCallback);
+int hgcmMsgPost(HGCMMsgCore *pMsg, PFNHGCMMSGCALLBACK pfnCallback);
 
 /** Send a message to HGCM worker thread.
  *

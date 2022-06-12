@@ -1,4 +1,4 @@
-/* $Id: VBoxCpuReport.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxCpuReport.h 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * VBoxCpuReport internal header file.
  */
@@ -31,14 +31,14 @@ typedef struct VBCPUREPMSRACCESSORS
      *  atomically, without allowing other code to be executed. */
     bool                    fAtomic;
     /** @copydoc SUPR3MsrProberRead  */
-    DECLCALLBACKMEMBER(int, pfnMsrProberRead)(uint32_t uMsr, RTCPUID idCpu, uint64_t *puValue, bool *pfGp);
+    DECLCALLBACKMEMBER(int, pfnMsrProberRead,(uint32_t uMsr, RTCPUID idCpu, uint64_t *puValue, bool *pfGp));
     /** @copydoc SUPR3MsrProberWrite  */
-    DECLCALLBACKMEMBER(int, pfnMsrProberWrite)(uint32_t uMsr, RTCPUID idCpu, uint64_t uValue, bool *pfGp);
+    DECLCALLBACKMEMBER(int, pfnMsrProberWrite,(uint32_t uMsr, RTCPUID idCpu, uint64_t uValue, bool *pfGp));
     /** @copydoc SUPR3MsrProberModify */
-    DECLCALLBACKMEMBER(int, pfnMsrProberModify)(uint32_t uMsr, RTCPUID idCpu, uint64_t fAndMask, uint64_t fOrMask,
-                                                PSUPMSRPROBERMODIFYRESULT pResult);
+    DECLCALLBACKMEMBER(int, pfnMsrProberModify,(uint32_t uMsr, RTCPUID idCpu, uint64_t fAndMask, uint64_t fOrMask,
+                                                PSUPMSRPROBERMODIFYRESULT pResult));
     /** Termination callback, optional. */
-    DECLCALLBACKMEMBER(void, pfnTerm)(void);
+    DECLCALLBACKMEMBER(void, pfnTerm,(void));
 } VBCPUREPMSRACCESSORS;
 typedef VBCPUREPMSRACCESSORS *PVBCPUREPMSRACCESSORS;
 

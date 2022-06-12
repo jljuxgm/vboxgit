@@ -1,4 +1,4 @@
-/* $Id: dbgmodcodeview.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: dbgmodcodeview.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * IPRT - Debug Module Reader For Microsoft CodeView and COFF.
  *
@@ -187,8 +187,8 @@ typedef RTDBGMODCV *PCRTDBGMODCV;
  * @param   cbSubSect       The size of the subsection data.
  * @param   pDirEnt         The directory entry.
  */
-typedef DECLCALLBACK(int) FNDBGMODCVSUBSECTCALLBACK(PRTDBGMODCV pThis, void const *pvSubSect, size_t cbSubSect,
-                                                    PCRTCVDIRENT32 pDirEnt);
+typedef DECLCALLBACKTYPE(int, FNDBGMODCVSUBSECTCALLBACK,(PRTDBGMODCV pThis, void const *pvSubSect, size_t cbSubSect,
+                                                         PCRTCVDIRENT32 pDirEnt));
 /** Pointer to a subsection callback. */
 typedef FNDBGMODCVSUBSECTCALLBACK *PFNDBGMODCVSUBSECTCALLBACK;
 

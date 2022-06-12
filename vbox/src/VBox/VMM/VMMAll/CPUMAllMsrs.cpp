@@ -1,4 +1,4 @@
-/* $Id: CPUMAllMsrs.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: CPUMAllMsrs.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * CPUM - CPU MSR Registers.
  */
@@ -71,7 +71,7 @@
  * @param   pRange      The MSR range descriptor.
  * @param   puValue     Where to return the value.
  */
-typedef DECLCALLBACK(VBOXSTRICTRC) FNCPUMRDMSR(PVMCPUCC pVCpu, uint32_t idMsr, PCCPUMMSRRANGE pRange, uint64_t *puValue);
+typedef DECLCALLBACKTYPE(VBOXSTRICTRC, FNCPUMRDMSR,(PVMCPUCC pVCpu, uint32_t idMsr, PCCPUMMSRRANGE pRange, uint64_t *puValue));
 /** Pointer to a RDMSR worker for a specific MSR or range of MSRs.  */
 typedef FNCPUMRDMSR *PFNCPUMRDMSR;
 
@@ -90,7 +90,8 @@ typedef FNCPUMRDMSR *PFNCPUMRDMSR;
  * @param   uValue      The value to set, ignored bits masked.
  * @param   uRawValue   The raw value with the ignored bits not masked.
  */
-typedef DECLCALLBACK(VBOXSTRICTRC) FNCPUMWRMSR(PVMCPUCC pVCpu, uint32_t idMsr, PCCPUMMSRRANGE pRange, uint64_t uValue, uint64_t uRawValue);
+typedef DECLCALLBACKTYPE(VBOXSTRICTRC, FNCPUMWRMSR,(PVMCPUCC pVCpu, uint32_t idMsr, PCCPUMMSRRANGE pRange,
+                                                    uint64_t uValue, uint64_t uRawValue));
 /** Pointer to a WRMSR worker for a specific MSR or range of MSRs.  */
 typedef FNCPUMWRMSR *PFNCPUMWRMSR;
 

@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: mp-r0drv.h 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, Internal Header.
  */
@@ -41,7 +41,7 @@ RT_C_DECLS_BEGIN
  * @param   pvUser1     The first user argument.
  * @param   pvUser2     The second user argument.
  */
-typedef DECLCALLBACK(void) FNMPWORKER(RTCPUID idCpu, void *pvUser1, void *pvUser2);
+typedef DECLCALLBACKTYPE(void, FNMPWORKER,(RTCPUID idCpu, void *pvUser1, void *pvUser2));
 /** Pointer to a FNMPWORKER(). */
 typedef FNMPWORKER *PFNMPWORKER;
 

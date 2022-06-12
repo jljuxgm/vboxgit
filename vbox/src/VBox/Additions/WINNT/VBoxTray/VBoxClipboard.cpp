@@ -1,4 +1,4 @@
-/* $Id: VBoxClipboard.cpp 83823 2020-04-19 01:18:53Z vboxsync $ */
+/* $Id: VBoxClipboard.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * VBoxClipboard - Shared clipboard, Windows Guest Implementation.
  */
@@ -748,7 +748,7 @@ static int vboxClipboardCreateWindow(PSHCLCONTEXT pCtx)
     return rc;
 }
 
-static int vboxClipboardWindowThread(RTTHREAD hThread, void *pvUser)
+static DECLCALLBACK(int) vboxClipboardWindowThread(RTTHREAD hThread, void *pvUser)
 {
     PSHCLCONTEXT pCtx = (PSHCLCONTEXT)pvUser;
     AssertPtr(pCtx);

@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-win.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxUtils-win.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Declarations of utility classes and functions for handling Windows specific tasks.
  */
@@ -23,12 +23,12 @@
 namespace NativeWindowSubsystem
 {
     /** Enumerates visible always-on-top (top-most) windows. */
-    BOOL CALLBACK EnumWindowsProc(HWND hWnd, LPARAM lParam);
+    BOOL CALLBACK EnumWindowsProc(HWND hWnd, LPARAM lParam) RT_NOTHROW_PROTO;
     /** Contains visible top-most-window rectangles. */
     QList<QRect> topMostRects;
 }
 
-BOOL CALLBACK NativeWindowSubsystem::EnumWindowsProc(HWND hWnd, LPARAM)
+BOOL CALLBACK NativeWindowSubsystem::EnumWindowsProc(HWND hWnd, LPARAM) RT_NOTHROW_DEF
 {
     /* Ignore NULL HWNDs: */
     if (!hWnd)

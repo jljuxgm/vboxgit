@@ -1,4 +1,4 @@
-/* $Id: DevINIP.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: DevINIP.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * DevINIP - Internal Network IP stack device/service.
  */
@@ -244,7 +244,7 @@ static err_t devINIPOutputRaw(struct netif *netif, struct pbuf *p)
  * @returns lwIP error code
  * @param   netif   Interface to configure.
  */
-static err_t devINIPInterface(struct netif *netif)
+static err_t devINIPInterface(struct netif *netif) RT_NOTHROW_DEF
 {
     LogFlow(("%s: netif=%p\n", __FUNCTION__, netif));
     Assert(g_pDevINIPData != NULL);

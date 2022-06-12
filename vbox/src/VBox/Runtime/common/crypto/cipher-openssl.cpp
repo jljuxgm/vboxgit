@@ -1,4 +1,4 @@
-/* $Id: cipher-openssl.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: cipher-openssl.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * IPRT - Crypto - Symmetric Cipher using OpenSSL.
  */
@@ -39,7 +39,9 @@
 # include <iprt/string.h>
 
 # include "internal/iprt-openssl.h"
-# include "openssl/evp.h"
+# include "internal/openssl-pre.h"
+# include <openssl/evp.h>
+# include "internal/openssl-post.h"
 
 # include "internal/magics.h"
 

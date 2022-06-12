@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoIPRT.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxVideoIPRT.h 85121 2020-07-08 19:33:26Z vboxsync $ */
 /*
  * Copyright (C) 2017-2020 Oracle Corporation
  *
@@ -109,7 +109,8 @@ RT_C_DECLS_END
 #endif
 
 #define DECLCALLBACK(type) type
-#define DECLCALLBACKMEMBER(type, name) type (* name)
+#define DECLCALLBACKTYPE(type, name, args) type name args
+#define DECLCALLBACKMEMB32(type, name, args) type (* name) args
 #if __GNUC__ >= 4
 # define DECLHIDDEN(type) __attribute__((visibility("hidden"))) type
 #else

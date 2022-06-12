@@ -1,4 +1,4 @@
-/* $Id: SUPDrvIDC.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: SUPDrvIDC.h 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Inter-Driver Communication (IDC) definitions.
  */
@@ -267,7 +267,7 @@ RT_C_DECLS_END
  * @param   cbReq       The size of the request packet.
  */
 /** @todo move this and change to function proto */
-typedef DECLCALLBACK(int) FNSUPDRVIDCENTRY(PSUPDRVSESSION pSession, uint32_t uReq, void *pvReq, uint32_t cbReq);
+typedef DECLCALLBACKTYPE(int, FNSUPDRVIDCENTRY,(PSUPDRVSESSION pSession, uint32_t uReq, void *pvReq, uint32_t cbReq));
 
 /** @} */
 

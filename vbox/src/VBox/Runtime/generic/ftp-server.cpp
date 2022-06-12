@@ -1,4 +1,4 @@
-/* $Id: ftp-server.cpp 84509 2020-05-25 15:09:24Z vboxsync $ */
+/* $Id: ftp-server.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * Generic FTP server (RFC 959) implementation.
  * Partly also implements RFC 3659 (Extensions to FTP, for "SIZE", ++).
@@ -267,7 +267,7 @@ typedef struct RTFTPSERVERCLIENT
 typedef RTFTPSERVERCLIENT *PRTFTPSERVERCLIENT;
 
 /** Function pointer declaration for a specific FTP server command handler. */
-typedef DECLCALLBACK(int) FNRTFTPSERVERCMD(PRTFTPSERVERCLIENT pClient, uint8_t cArgs, const char * const *apcszArgs);
+typedef DECLCALLBACKTYPE(int, FNRTFTPSERVERCMD,(PRTFTPSERVERCLIENT pClient, uint8_t cArgs, const char * const *apcszArgs));
 /** Pointer to a FNRTFTPSERVERCMD(). */
 typedef FNRTFTPSERVERCMD *PFNRTFTPSERVERCMD;
 

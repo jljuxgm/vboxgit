@@ -1,4 +1,4 @@
-/* $Id: init.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: init.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * IPRT - Init Ring-3.
  */
@@ -150,7 +150,7 @@ DECLHIDDEN(void) rtR3InitNativeObtrusive(uint32_t fFlags) { RT_NOREF_PV(fFlags);
  * This makes sure any loggers are flushed and will later also work the
  * termination callback chain.
  */
-static void rtR3ExitCallback(void)
+static void rtR3ExitCallback(void) RT_NOTHROW_DEF
 {
     ASMAtomicWriteBool(&g_frtAtExitCalled, true);
 

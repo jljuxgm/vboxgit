@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 84570 2020-05-27 15:40:56Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -376,7 +376,7 @@ void usageGuestControl(PRTSTREAM pStrm, const char *pcszSep1, const char *pcszSe
 
 
 #ifdef RT_OS_WINDOWS
-static BOOL WINAPI gctlSignalHandler(DWORD dwCtrlType)
+static BOOL WINAPI gctlSignalHandler(DWORD dwCtrlType) RT_NOTHROW_DEF
 {
     bool fEventHandled = FALSE;
     switch (dwCtrlType)
@@ -404,7 +404,7 @@ static BOOL WINAPI gctlSignalHandler(DWORD dwCtrlType)
  * a thread dedicated to delivering this signal.  Don't do anything
  * unnecessary here.
  */
-static void gctlSignalHandler(int iSignal)
+static void gctlSignalHandler(int iSignal) RT_NOTHROW_DEF
 {
     NOREF(iSignal);
     ASMAtomicWriteBool(&g_fGuestCtrlCanceled, true);

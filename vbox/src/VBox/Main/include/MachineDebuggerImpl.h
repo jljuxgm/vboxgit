@@ -1,4 +1,4 @@
-/* $Id: MachineDebuggerImpl.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: MachineDebuggerImpl.h 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -140,7 +140,7 @@ private:
     HRESULT i_setEmExecPolicyProperty(EMEXECPOLICY enmPolicy, BOOL fEnforce);
 
     /** RTLogGetFlags, RTLogGetGroupSettings and RTLogGetDestinations function. */
-    typedef DECLCALLBACK(int) FNLOGGETSTR(PRTLOGGER, char *, size_t);
+    typedef DECLCALLBACKTYPE(int, FNLOGGETSTR,(PRTLOGGER, char *, size_t));
     /** Function pointer.  */
     typedef FNLOGGETSTR *PFNLOGGETSTR;
     HRESULT i_logStringProps(PRTLOGGER pLogger, PFNLOGGETSTR pfnLogGetStr, const char *pszLogGetStr, Utf8Str *pstrSettings);

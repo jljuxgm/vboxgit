@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 84504 2020-05-25 14:51:42Z vboxsync $ */
+/* $Id: DevATA.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -2872,7 +2872,7 @@ static DECLCALLBACK(uint32_t) atapiR3GetConfigurationFillFeatureTimeout(PATADEVS
  * @param   pbBuf   The buffer to fill the data with.
  * @param   cbBuf   Size of the buffer.
  */
-typedef DECLCALLBACK(uint32_t) FNATAPIR3FEATUREFILL(PATADEVSTATE s, uint8_t *pbBuf, size_t cbBuf);
+typedef DECLCALLBACKTYPE(uint32_t, FNATAPIR3FEATUREFILL,(PATADEVSTATE s, uint8_t *pbBuf, size_t cbBuf));
 /** Pointer to a feature fill callback. */
 typedef FNATAPIR3FEATUREFILL *PFNATAPIR3FEATUREFILL;
 

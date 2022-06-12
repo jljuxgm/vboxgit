@@ -1,4 +1,4 @@
-/* $Id: VBoxMPLegacy.cpp 83840 2020-04-20 09:16:29Z vboxsync $ */
+/* $Id: VBoxMPLegacy.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver. The legacy VBoxVGA adapter support with 2D software unaccelerated
  * framebuffer operations.
@@ -51,7 +51,7 @@ typedef enum
 } VBOXVDMADDI_STATE;
 
 typedef struct VBOXVDMADDI_CMD *PVBOXVDMADDI_CMD;
-typedef DECLCALLBACK(VOID) FNVBOXVDMADDICMDCOMPLETE_DPC(PVBOXMP_DEVEXT pDevExt, PVBOXVDMADDI_CMD pCmd, PVOID pvContext);
+typedef DECLCALLBACKTYPE(VOID, FNVBOXVDMADDICMDCOMPLETE_DPC,(PVBOXMP_DEVEXT pDevExt, PVBOXVDMADDI_CMD pCmd, PVOID pvContext));
 typedef FNVBOXVDMADDICMDCOMPLETE_DPC *PFNVBOXVDMADDICMDCOMPLETE_DPC;
 
 typedef struct VBOXVDMADDI_CMD

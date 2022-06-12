@@ -1,4 +1,4 @@
-/* $Id: fuzzclientcmd.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: fuzzclientcmd.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * IPRT - Fuzzing framework API, fuzzed client command.
  */
@@ -45,8 +45,10 @@
 #include <iprt/vfs.h>
 
 
-
-typedef DECLCALLBACK(int) FNLLVMFUZZERTESTONEINPUT(const uint8_t *pbData, size_t cbData);
+/*********************************************************************************************************************************
+*   Structures and Typedefs                                                                                                      *
+*********************************************************************************************************************************/
+typedef DECLCALLBACKTYPE(int, FNLLVMFUZZERTESTONEINPUT,(const uint8_t *pbData, size_t cbData));
 typedef FNLLVMFUZZERTESTONEINPUT *PFNLLVMFUZZERTESTONEINPUT;
 
 

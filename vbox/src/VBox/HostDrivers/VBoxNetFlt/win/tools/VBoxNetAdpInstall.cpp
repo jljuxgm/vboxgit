@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdpInstall.cpp 83805 2020-04-18 23:08:25Z vboxsync $ */
+/* $Id: VBoxNetAdpInstall.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * NetAdpInstall - VBoxNetAdp installer command line tool.
  */
@@ -47,9 +47,9 @@
 #endif
 
 
-static VOID winNetCfgLogger(LPCSTR szString)
+static DECLCALLBACK(void) winNetCfgLogger(const char *pszString)
 {
-    printf("%s\n", szString);
+    printf("%s\n", pszString);
 }
 
 

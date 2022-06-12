@@ -1,4 +1,4 @@
-/* $Id: dbgmoddwarf.cpp 83084 2020-02-15 15:16:11Z vboxsync $ */
+/* $Id: dbgmoddwarf.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * IPRT - Debug Info Reader For DWARF.
  */
@@ -296,8 +296,8 @@ typedef RTDWARFLINESTATE *PRTDWARFLINESTATE;
  * @param   uForm           The data form.
  * @param   pCursor         The cursor to read data from.
  */
-typedef DECLCALLBACK(int) FNRTDWARFATTRDECODER(PRTDWARFDIE pDie, uint8_t *pbMember, PCRTDWARFATTRDESC pDesc,
-                                               uint32_t uForm, PRTDWARFCURSOR pCursor);
+typedef DECLCALLBACKTYPE(int, FNRTDWARFATTRDECODER,(PRTDWARFDIE pDie, uint8_t *pbMember, PCRTDWARFATTRDESC pDesc,
+                                                    uint32_t uForm, PRTDWARFCURSOR pCursor));
 /** Pointer to an attribute decoder callback. */
 typedef FNRTDWARFATTRDECODER *PFNRTDWARFATTRDECODER;
 

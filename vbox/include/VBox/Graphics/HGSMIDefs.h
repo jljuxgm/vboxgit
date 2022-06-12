@@ -1,4 +1,4 @@
-/* $Id: HGSMIDefs.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: HGSMIDefs.h 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * VBox Host Guest Shared Memory Interface (HGSMI) - shared part - types and defines.
  */
@@ -118,10 +118,10 @@ typedef struct HGSMIENV
     void *pvEnv;
 
     /* Allocate system memory. */
-    DECLCALLBACKMEMBER(void *, pfnAlloc)(void *pvEnv, HGSMISIZE cb);
+    DECLCALLBACKMEMBER(void *, pfnAlloc,(void *pvEnv, HGSMISIZE cb));
 
     /* Free system memory. */
-    DECLCALLBACKMEMBER(void, pfnFree)(void *pvEnv, void *pv);
+    DECLCALLBACKMEMBER(void, pfnFree,(void *pvEnv, void *pv));
 } HGSMIENV;
 
 #endif /* !VBOX_INCLUDED_Graphics_HGSMIDefs_h */

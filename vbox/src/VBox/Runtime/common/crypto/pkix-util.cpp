@@ -1,4 +1,4 @@
-/* $Id: pkix-util.cpp 84248 2020-05-11 11:46:40Z vboxsync $ */
+/* $Id: pkix-util.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * IPRT - Crypto - Public Key Infrastructure API, Utilities.
  */
@@ -39,7 +39,9 @@
 
 #ifdef IPRT_WITH_OPENSSL
 # include "internal/iprt-openssl.h"
-# include "openssl/evp.h"
+# include "internal/openssl-pre.h"
+# include <openssl/evp.h>
+# include "internal/openssl-post.h"
 #endif
 
 

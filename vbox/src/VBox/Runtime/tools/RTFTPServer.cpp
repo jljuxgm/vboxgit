@@ -1,4 +1,4 @@
-/* $Id: RTFTPServer.cpp 82843 2020-01-23 10:40:42Z vboxsync $ */
+/* $Id: RTFTPServer.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * IPRT - Utility for running a (simple) FTP server.
  */
@@ -109,12 +109,12 @@ typedef FTPSERVERVFSHANDLE *PFTPSERVERVFSHANDLE;
 *   Global Variables                                                                                                             *
 *********************************************************************************************************************************/
 /** Set by the signal handler when the FTP server shall be terminated. */
-static volatile bool  g_fCanceled  = false;
+static volatile bool  g_fCanceled = false;
 static FTPSERVERDATA  g_FTPServerData;
 
 
 #ifdef RT_OS_WINDOWS
-static BOOL WINAPI signalHandler(DWORD dwCtrlType)
+static BOOL WINAPI signalHandler(DWORD dwCtrlType) RT_NOTHROW_DEF
 {
     bool fEventHandled = FALSE;
     switch (dwCtrlType)
@@ -142,7 +142,7 @@ static BOOL WINAPI signalHandler(DWORD dwCtrlType)
  * a thread dedicated to delivering this signal.  Don't do anything
  * unnecessary here.
  */
-static void signalHandler(int iSignal)
+static void signalHandler(int iSignal) RT_NOTHROW_DEF
 {
     NOREF(iSignal);
     ASMAtomicWriteBool(&g_fCanceled, true);
@@ -572,7 +572,7 @@ int main(int argc, char **argv)
                 return RTEXITCODE_SUCCESS;
 
             case 'V':
-                RTPrintf("$Revision: 82843 $\n");
+                RTPrintf("$Revision: 85121 $\n");
                 return RTEXITCODE_SUCCESS;
 
             default:

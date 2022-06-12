@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain.cpp 85095 2020-07-07 18:55:26Z vboxsync $ */
+/* $Id: SUPR3HardenedMain.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main().
  */
@@ -484,12 +484,12 @@
 *   Structures and Typedefs                                                                                                      *
 *********************************************************************************************************************************/
 /** @see RTR3InitEx */
-typedef DECLCALLBACK(int) FNRTR3INITEX(uint32_t iVersion, uint32_t fFlags, int cArgs,
-                                       char **papszArgs, const char *pszProgramPath);
+typedef DECLCALLBACKTYPE(int, FNRTR3INITEX,(uint32_t iVersion, uint32_t fFlags, int cArgs,
+                                            char **papszArgs, const char *pszProgramPath));
 typedef FNRTR3INITEX *PFNRTR3INITEX;
 
 /** @see RTLogRelPrintf */
-typedef DECLCALLBACK(void) FNRTLOGRELPRINTF(const char *pszFormat, ...);
+typedef DECLCALLBACKTYPE(void, FNRTLOGRELPRINTF,(const char *pszFormat, ...));
 typedef FNRTLOGRELPRINTF *PFNRTLOGRELPRINTF;
 
 

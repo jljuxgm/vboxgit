@@ -1,4 +1,4 @@
-/* $Id: iprt-openssl.cpp 84310 2020-05-14 17:40:35Z vboxsync $ */
+/* $Id: iprt-openssl.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * IPRT - Crypto - OpenSSL Helpers.
  */
@@ -38,8 +38,10 @@
 # include <iprt/crypto/digest.h>
 
 # include "internal/iprt-openssl.h"
+# include "internal/openssl-pre.h"
 # include <openssl/x509.h>
 # include <openssl/err.h>
+# include "internal/openssl-post.h"
 
 
 DECLHIDDEN(void) rtCrOpenSslInit(void)

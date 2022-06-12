@@ -1,4 +1,4 @@
-/* $Id: VBoxMPShgsmi.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxMPShgsmi.h 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -32,12 +32,12 @@ typedef struct VBOXSHGSMI
     HGSMIHEAP Heap;
 } VBOXSHGSMI, *PVBOXSHGSMI;
 
-typedef DECLCALLBACK(void) FNVBOXSHGSMICMDCOMPLETION(PVBOXSHGSMI pHeap, void RT_UNTRUSTED_VOLATILE_HOST *pvCmd, void *pvContext);
+typedef DECLCALLBACKTYPE(void, FNVBOXSHGSMICMDCOMPLETION,(PVBOXSHGSMI pHeap, void RT_UNTRUSTED_VOLATILE_HOST *pvCmd, void *pvContext));
 typedef FNVBOXSHGSMICMDCOMPLETION *PFNVBOXSHGSMICMDCOMPLETION;
 
-typedef DECLCALLBACK(PFNVBOXSHGSMICMDCOMPLETION) FNVBOXSHGSMICMDCOMPLETION_IRQ(PVBOXSHGSMI pHeap,
-                                                                               void RT_UNTRUSTED_VOLATILE_HOST *pvCmd,
-                                                                               void *pvContext, void **ppvCompletion);
+typedef DECLCALLBACKTYPE(PFNVBOXSHGSMICMDCOMPLETION, FNVBOXSHGSMICMDCOMPLETION_IRQ,(PVBOXSHGSMI pHeap,
+                                                                                    void RT_UNTRUSTED_VOLATILE_HOST *pvCmd,
+                                                                                    void *pvContext, void **ppvCompletion));
 typedef FNVBOXSHGSMICMDCOMPLETION_IRQ *PFNVBOXSHGSMICMDCOMPLETION_IRQ;
 
 

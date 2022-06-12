@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMetrics.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxManageMetrics.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * VBoxManage - The 'metrics' command.
  */
@@ -364,7 +364,7 @@ static bool volatile g_fKeepGoing = true;
  *
  * @remarks This is called on a new thread.
  */
-static BOOL WINAPI ctrlHandler(DWORD dwCtrlType)
+static BOOL WINAPI ctrlHandler(DWORD dwCtrlType) RT_NOTHROW_DEF
 {
     switch (dwCtrlType)
     {

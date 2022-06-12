@@ -1,4 +1,4 @@
-/* $Id: VBoxCredProvPoller.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxCredProvPoller.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * VBoxCredPoller - Thread for querying / retrieving user credentials.
  */
@@ -31,9 +31,9 @@
 #include "VBoxCredProvUtils.h"
 
 
-VBoxCredProvPoller::VBoxCredProvPoller(void) :
-    m_hThreadPoller(NIL_RTTHREAD),
-    m_pProv(NULL)
+VBoxCredProvPoller::VBoxCredProvPoller(void)
+    : m_hThreadPoller(NIL_RTTHREAD)
+    , m_pProv(NULL)
 {
 }
 
@@ -145,4 +145,3 @@ VBoxCredProvPoller::threadPoller(RTTHREAD hThreadSelf, void *pvUser)
 
     return VINF_SUCCESS;
 }
-

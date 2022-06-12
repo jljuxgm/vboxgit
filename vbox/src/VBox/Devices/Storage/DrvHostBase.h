@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: DrvHostBase.h 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver.
  */
@@ -135,7 +135,7 @@ typedef struct DRVHOSTBASE
      * @param   pThis       Pointer to the instance data.
      * @param   fLock       Set if locking, clear if unlocking.
      */
-    DECLCALLBACKMEMBER(int, pfnDoLock)(PDRVHOSTBASE pThis, bool fLock);
+    DECLCALLBACKMEMBER(int, pfnDoLock,(PDRVHOSTBASE pThis, bool fLock));
 
     union
     {

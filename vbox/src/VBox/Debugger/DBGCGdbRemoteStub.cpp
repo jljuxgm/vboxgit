@@ -1,4 +1,4 @@
-/* $Id: DBGCGdbRemoteStub.cpp 84707 2020-06-05 18:12:41Z vboxsync $ */
+/* $Id: DBGCGdbRemoteStub.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, GDB Remote Stub.
  */
@@ -174,7 +174,7 @@ typedef PGDBSTUBCTX *PPGDBSTUBCTX;
  * @param   pbVal               Pointer to the remaining value.
  * @param   cbVal               Size of the remaining value in bytes.
  */
-typedef DECLCALLBACK(int) FNGDBSTUBQPKTPROC(PGDBSTUBCTX pThis, const uint8_t *pbVal, size_t cbVal);
+typedef DECLCALLBACKTYPE(int, FNGDBSTUBQPKTPROC,(PGDBSTUBCTX pThis, const uint8_t *pbVal, size_t cbVal));
 typedef FNGDBSTUBQPKTPROC *PFNGDBSTUBQPKTPROC;
 
 
@@ -226,7 +226,7 @@ typedef const GDBSTUBVPKTPROC *PCGDBSTUBVPKTPROC;
  * @param   pbVal               Pointer to the value.
  * @param   cbVal               Size of the value in bytes.
  */
-typedef DECLCALLBACK(int) FNGDBSTUBFEATHND(PGDBSTUBCTX pThis, const uint8_t *pbVal, size_t cbVal);
+typedef DECLCALLBACKTYPE(int, FNGDBSTUBFEATHND,(PGDBSTUBCTX pThis, const uint8_t *pbVal, size_t cbVal));
 typedef FNGDBSTUBFEATHND *PFNGDBSTUBFEATHND;
 
 

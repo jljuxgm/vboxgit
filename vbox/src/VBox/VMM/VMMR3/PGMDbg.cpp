@@ -1,4 +1,4 @@
-/* $Id: PGMDbg.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: PGMDbg.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - Debugger & Debugging APIs.
  */
@@ -104,8 +104,8 @@ typedef PGMR3DUMPHIERARCHYSTATE *PPGMR3DUMPHIERARCHYSTATE;
  * @param   cbNeedle        Size of what we're searching for.
  */
 
-typedef DECLCALLBACK(uint8_t const *) FNPGMR3DBGFIXEDMEMSCAN(void const *pvHaystack, uint32_t cbHaystack,
-                                                             void const *pvNeedle, size_t cbNeedle);
+typedef DECLCALLBACKTYPE(uint8_t const *, FNPGMR3DBGFIXEDMEMSCAN,(void const *pvHaystack, uint32_t cbHaystack,
+                                                                  void const *pvNeedle, size_t cbNeedle));
 /** Pointer to an fixed size and step assembly scanner function. */
 typedef FNPGMR3DBGFIXEDMEMSCAN *PFNPGMR3DBGFIXEDMEMSCAN;
 

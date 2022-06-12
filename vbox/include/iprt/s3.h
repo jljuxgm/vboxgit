@@ -1,4 +1,4 @@
-/* $Id: s3.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: s3.h 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * IPRT - Simple Storage Service (S3) Communication API.
  */
@@ -56,7 +56,7 @@ typedef RTS3                               *PRTS3;
  * @param   uPercent    The process completion percentage.
  * @param   pvUser      The user parameter given to RTS3SetProgressCallback.
  */
-typedef DECLCALLBACK(int) FNRTS3PROGRESS(unsigned uPercent, void *pvUser);
+typedef DECLCALLBACKTYPE(int, FNRTS3PROGRESS,(unsigned uPercent, void *pvUser));
 /** Pointer to a S3 progress callback. */
 typedef FNRTS3PROGRESS *PFNRTS3PROGRESS;
 

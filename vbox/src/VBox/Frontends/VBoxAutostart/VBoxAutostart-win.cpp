@@ -1,4 +1,4 @@
-/* $Id: VBoxAutostart-win.cpp 83797 2020-04-18 13:52:37Z vboxsync $ */
+/* $Id: VBoxAutostart-win.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * VirtualBox Autostart Service - Windows Specific Code.
  */
@@ -725,7 +725,8 @@ static bool autostartSvcWinSetServiceStatus(DWORD dwStatus, int iWaitHint, DWORD
  * @param   pvContext       The context pointer registered with the handler.
  *                          Currently not used.
  */
-static DWORD WINAPI autostartSvcWinServiceCtrlHandlerEx(DWORD dwControl, DWORD dwEventType, LPVOID pvEventData, LPVOID pvContext)
+static DWORD WINAPI
+autostartSvcWinServiceCtrlHandlerEx(DWORD dwControl, DWORD dwEventType, LPVOID pvEventData, LPVOID pvContext) RT_NOTHROW_DEF
 {
     LogFlow(("autostartSvcWinServiceCtrlHandlerEx: dwControl=%#x dwEventType=%#x pvEventData=%p\n",
              dwControl, dwEventType, pvEventData));

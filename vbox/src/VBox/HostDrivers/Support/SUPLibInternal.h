@@ -1,4 +1,4 @@
-/* $Id: SUPLibInternal.h 85095 2020-07-07 18:55:26Z vboxsync $ */
+/* $Id: SUPLibInternal.h 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Internal header.
  */
@@ -310,7 +310,7 @@ typedef SUPPREINITDATA const *PCSUPPREINITDATA;
 #define SUPPREINITDATA_MAGIC    UINT32_C(0xbeef0001)
 
 /** @copydoc supR3PreInit */
-typedef DECLCALLBACK(int) FNSUPR3PREINIT(PSUPPREINITDATA pPreInitData, uint32_t fFlags);
+typedef DECLCALLBACKTYPE(int, FNSUPR3PREINIT,(PSUPPREINITDATA pPreInitData, uint32_t fFlags));
 /** Pointer to supR3PreInit. */
 typedef FNSUPR3PREINIT *PFNSUPR3PREINIT;
 

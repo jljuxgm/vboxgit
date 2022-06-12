@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: PGMPhys.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -4785,7 +4785,7 @@ static DECLCALLBACK(VBOXSTRICTRC) pgmR3PhysUnmapChunkRendezvous(PVM pVM, PVMCPU 
  * @returns VBox status code.
  * @param   pVM         The cross context VM structure.
  */
-void pgmR3PhysUnmapChunk(PVM pVM)
+static DECLCALLBACK(void) pgmR3PhysUnmapChunk(PVM pVM)
 {
     int rc = VMMR3EmtRendezvous(pVM, VMMEMTRENDEZVOUS_FLAGS_TYPE_ONCE, pgmR3PhysUnmapChunkRendezvous, NULL);
     AssertRC(rc);

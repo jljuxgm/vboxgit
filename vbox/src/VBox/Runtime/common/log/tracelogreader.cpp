@@ -1,4 +1,4 @@
-/* $Id: tracelogreader.cpp 84500 2020-05-25 13:09:07Z vboxsync $ */
+/* $Id: tracelogreader.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * IPRT - Trace log reader.
  */
@@ -231,8 +231,8 @@ typedef RTTRACELOGRDRITINT *PRTTRACELOGRDRITINT;
  * @param   penmEvt             Where to store the event indicator if a user visible event happened.
  * @param   pfContinuePoll      Where to store the flag whether to continue polling.
  */
-typedef DECLCALLBACK(int) FNRTTRACELOGRDRSTATEHANDLER(PRTTRACELOGRDRINT pThis, RTTRACELOGRDRPOLLEVT *penmEvt,
-                                                      bool *pfContinuePoll);
+typedef DECLCALLBACKTYPE(int, FNRTTRACELOGRDRSTATEHANDLER,(PRTTRACELOGRDRINT pThis, RTTRACELOGRDRPOLLEVT *penmEvt,
+                                                           bool *pfContinuePoll));
 /** Pointer to a trace log reader state handler. */
 typedef FNRTTRACELOGRDRSTATEHANDLER *PFNRTTRACELOGRDRSTATEHANDLER;
 

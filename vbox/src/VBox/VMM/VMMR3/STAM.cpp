@@ -1,4 +1,4 @@
-/* $Id: STAM.cpp 82989 2020-02-05 11:16:44Z vboxsync $ */
+/* $Id: STAM.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * STAM - The Statistics Manager.
  */
@@ -81,7 +81,7 @@ typedef struct STAMR3PRINTONEARGS
 {
     PUVM        pUVM;
     void       *pvArg;
-    DECLCALLBACKMEMBER(void, pfnPrintf)(struct STAMR3PRINTONEARGS *pvArg, const char *pszFormat, ...);
+    DECLCALLBACKMEMBER(void, pfnPrintf,(struct STAMR3PRINTONEARGS *pvArg, const char *pszFormat, ...));
 } STAMR3PRINTONEARGS, *PSTAMR3PRINTONEARGS;
 
 

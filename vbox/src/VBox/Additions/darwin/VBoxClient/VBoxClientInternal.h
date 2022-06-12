@@ -1,4 +1,4 @@
-/** $Id: VBoxClientInternal.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/** $Id: VBoxClientInternal.h 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * VBoxClient - common definitions, Darwin.
  */
@@ -34,13 +34,13 @@ typedef struct
      * Start service.
      * @returns VBox status code.
      */
-    DECLCALLBACKMEMBER(int, pfnStart)(void);
+    DECLCALLBACKMEMBER(int, pfnStart,(void));
 
     /**
      * Stop service.
      * @returns VBox status code.
      */
-    DECLCALLBACKMEMBER(int, pfnStop)(void);
+    DECLCALLBACKMEMBER(int, pfnStop,(void));
 
 } VBOXCLIENTSERVICE;
 

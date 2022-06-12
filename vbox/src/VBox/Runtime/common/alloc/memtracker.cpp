@@ -1,4 +1,4 @@
-/* $Id: memtracker.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: memtracker.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * IPRT - Memory Tracker & Leak Detector.
  */
@@ -181,7 +181,7 @@ AssertCompileMemberAlignment(RTMEMTRACKERINT, FallbackUser, 8);
 typedef struct RTMEMTRACKEROUTPUT
 {
     /** The printf like callback. */
-    DECLCALLBACKMEMBER(void, pfnPrintf)(struct RTMEMTRACKEROUTPUT *pThis, const char *pszFormat, ...);
+    DECLCALLBACKMEMBER(void, pfnPrintf,(struct RTMEMTRACKEROUTPUT *pThis, const char *pszFormat, ...));
 
     /** The data. */
     union

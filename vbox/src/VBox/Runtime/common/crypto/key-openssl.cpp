@@ -1,4 +1,4 @@
-/* $Id: key-openssl.cpp 84230 2020-05-10 00:52:05Z vboxsync $ */
+/* $Id: key-openssl.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * IPRT - Crypto - Cryptographic Keys, OpenSSL glue.
  */
@@ -39,7 +39,9 @@
 #ifdef IPRT_WITH_OPENSSL
 # include "internal/iprt-openssl.h"
 # include "internal/magics.h"
-# include "openssl/evp.h"
+# include "internal/openssl-pre.h"
+# include <openssl/evp.h>
+# include "internal/openssl-post.h"
 # ifndef OPENSSL_VERSION_NUMBER
 #  error "Missing OPENSSL_VERSION_NUMBER!"
 # endif

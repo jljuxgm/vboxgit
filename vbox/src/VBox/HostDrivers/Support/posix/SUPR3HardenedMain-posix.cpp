@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain-posix.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: SUPR3HardenedMain-posix.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main(), posix bits.
  */
@@ -81,7 +81,7 @@
  * On Solaris dlsym() will return the value in the GOT/PLT entry.  We don't wish
  * to patch the lazy loader trampoline function, but rather the real function!
  */
-typedef DECLCALLBACK(void) FNSUPHARDENEDSYMRESOLVE(void);
+typedef DECLCALLBACKTYPE(void, FNSUPHARDENEDSYMRESOLVE,(void));
 /** Pointer to FNSUPHARDENEDSYMRESOLVE. */
 typedef FNSUPHARDENEDSYMRESOLVE *PFNSUPHARDENEDSYMRESOLVE;
 

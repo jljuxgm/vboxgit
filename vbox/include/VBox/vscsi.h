@@ -1,4 +1,4 @@
-/* $Id: vscsi.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: vscsi.h 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * VBox storage drivers - Virtual SCSI driver
  */
@@ -289,15 +289,15 @@ typedef VSCSILUNIOCALLBACKS *PVSCSILUNIOCALLBACKS;
 /**
  * The virtual SCSI request completed callback.
  */
-typedef DECLCALLBACK(void) FNVSCSIREQCOMPLETED(VSCSIDEVICE hVScsiDevice,
-                                               void *pvVScsiDeviceUser,
-                                               void *pvVScsiReqUser,
-                                               int rcScsiCode,
-                                               bool fRedoPossible,
-                                               int rcReq,
-                                               size_t cbXfer,
-                                               VSCSIXFERDIR enmXferDir,
-                                               size_t cbSense);
+typedef DECLCALLBACKTYPE(void, FNVSCSIREQCOMPLETED,(VSCSIDEVICE hVScsiDevice,
+                                                    void *pvVScsiDeviceUser,
+                                                    void *pvVScsiReqUser,
+                                                    int rcScsiCode,
+                                                    bool fRedoPossible,
+                                                    int rcReq,
+                                                    size_t cbXfer,
+                                                    VSCSIXFERDIR enmXferDir,
+                                                    size_t cbSense));
 /** Pointer to a virtual SCSI request completed callback. */
 typedef FNVSCSIREQCOMPLETED *PFNVSCSIREQCOMPLETED;
 

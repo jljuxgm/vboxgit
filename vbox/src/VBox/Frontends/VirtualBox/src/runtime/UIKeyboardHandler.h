@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIKeyboardHandler.h 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandler class declaration.
  */
@@ -156,7 +156,7 @@ protected:
     bool macKeyboardEvent(const void *pvCocoaEvent, EventRef inEvent);
 #elif defined(VBOX_WS_WIN)
     /** Win: Performs initial pre-processing of all the native keyboard events. */
-    static LRESULT CALLBACK winKeyboardProc(int nCode, WPARAM wParam, LPARAM lParam);
+    static LRESULT CALLBACK winKeyboardProc(int nCode, WPARAM wParam, LPARAM lParam) RT_NOTHROW_PROTO;
     /** Win: Performs initial pre-processing of all the native keyboard events. */
     bool winKeyboardEvent(UINT msg, const KBDLLHOOKSTRUCT &event);
 #endif /* VBOX_WS_WIN */

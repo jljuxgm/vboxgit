@@ -1,4 +1,4 @@
-/* $Id: SUPLib.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: SUPLib.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Common code.
  */
@@ -82,7 +82,7 @@
 /*********************************************************************************************************************************
 *   Structures and Typedefs                                                                                                      *
 *********************************************************************************************************************************/
-typedef DECLCALLBACK(int) FNCALLVMMR0(PVMR0 pVMR0, unsigned uOperation, void *pvArg);
+typedef DECLCALLBACKTYPE(int, FNCALLVMMR0,(PVMR0 pVMR0, unsigned uOperation, void *pvArg));
 typedef FNCALLVMMR0 *PFNCALLVMMR0;
 
 

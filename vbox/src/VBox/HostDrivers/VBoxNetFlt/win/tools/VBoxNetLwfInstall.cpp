@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwfInstall.cpp 83805 2020-04-18 23:08:25Z vboxsync $ */
+/* $Id: VBoxNetLwfInstall.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * NetLwfInstall - VBoxNetLwf installer command line tool
  */
@@ -33,7 +33,7 @@
 #define VBOX_NETLWF_RETRIES 10
 
 
-static VOID winNetCfgLogger(LPCSTR pszString)
+static DECLCALLBACK(void) winNetCfgLogger(const char *pszString)
 {
     printf("%s", pszString);
 }

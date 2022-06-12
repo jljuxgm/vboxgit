@@ -1,4 +1,4 @@
-/* $Id: VBoxInstallHelper.cpp 83807 2020-04-18 23:30:25Z vboxsync $ */
+/* $Id: VBoxInstallHelper.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * VBoxInstallHelper - Various helper routines for Windows host installer.
  */
@@ -524,17 +524,17 @@ static VOID vboxDrvLoggerCallback(VBOXDRVCFG_LOG_SEVERITY enmSeverity, char *psz
     }
 }
 
-static VOID netCfgLoggerCallback(LPCSTR szString)
+static DECLCALLBACK(void) netCfgLoggerCallback(const char *pszString)
 {
     if (g_hCurrentModule)
-        logString(g_hCurrentModule, szString);
+        logString(g_hCurrentModule, pszString);
 }
 
 static VOID netCfgLoggerDisable()
 {
     if (g_hCurrentModule)
     {
-        VBoxNetCfgWinSetLogging((LOG_ROUTINE)NULL);
+        VBoxNetCfgWinSetLogging(NULL);
         g_hCurrentModule = NULL;
     }
 }
@@ -548,7 +548,7 @@ static VOID netCfgLoggerEnable(MSIHANDLE hModule)
 
     g_hCurrentModule = hModule;
 
-    VBoxNetCfgWinSetLogging((LOG_ROUTINE)netCfgLoggerCallback);
+    VBoxNetCfgWinSetLogging(netCfgLoggerCallback);
     /* uncomment next line if you want to add logging information from VBoxDrvCfg.cpp */
 //    VBoxDrvCfgLoggerSet(vboxDrvLoggerCallback, NULL);
 }

@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltUninstall.cpp 83805 2020-04-18 23:08:25Z vboxsync $ */
+/* $Id: VBoxNetFltUninstall.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * NetFltUninstall - VBoxNetFlt uninstaller command line tool
  */
@@ -33,9 +33,9 @@
 #define VBOX_NETFLT_MP_INF L".\\VBoxNetFltM.inf"
 #define VBOX_NETFLT_RETRIES 10
 
-static VOID winNetCfgLogger(LPCSTR szString)
+static DECLCALLBACK(void) winNetCfgLogger(const char *pszString)
 {
-    printf("%s", szString);
+    printf("%s", pszString);
 }
 
 static int VBoxNetFltUninstall()

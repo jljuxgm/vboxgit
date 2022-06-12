@@ -1,4 +1,4 @@
-/* $Id: pkcs7-sign.cpp 84256 2020-05-11 15:15:35Z vboxsync $ */
+/* $Id: pkcs7-sign.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * IPRT - Crypto - PKCS \#7, Signing
  */
@@ -41,10 +41,12 @@
 
 #ifdef IPRT_WITH_OPENSSL
 # include "internal/iprt-openssl.h"
+# include "internal/openssl-pre.h"
 # include <openssl/pkcs7.h>
 # include <openssl/cms.h>
 # include <openssl/x509.h>
 # include <openssl/err.h>
+# include "internal/openssl-post.h"
 #endif
 
 

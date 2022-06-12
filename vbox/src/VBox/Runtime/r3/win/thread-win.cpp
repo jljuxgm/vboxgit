@@ -1,4 +1,4 @@
-/* $Id: thread-win.cpp 84840 2020-06-16 00:22:42Z vboxsync $ */
+/* $Id: thread-win.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * IPRT - Threads, Windows.
  */
@@ -58,7 +58,7 @@ static DWORD g_dwSelfTLS = TLS_OUT_OF_INDEXES;
 /*********************************************************************************************************************************
 *   Internal Functions                                                                                                           *
 *********************************************************************************************************************************/
-static unsigned __stdcall rtThreadNativeMain(void *pvArgs);
+static unsigned __stdcall rtThreadNativeMain(void *pvArgs) RT_NOTHROW_PROTO;
 static void rtThreadWinTellDebuggerThreadName(uint32_t idThread, const char *pszName);
 
 
@@ -242,7 +242,7 @@ static void rtThreadNativeUninitComAndOle(void)
 /**
  * Wrapper which unpacks the param stuff and calls thread function.
  */
-static unsigned __stdcall rtThreadNativeMain(void *pvArgs)
+static unsigned __stdcall rtThreadNativeMain(void *pvArgs) RT_NOTHROW_DEF
 {
     DWORD           dwThreadId = GetCurrentThreadId();
     PRTTHREADINT    pThread = (PRTTHREADINT)pvArgs;

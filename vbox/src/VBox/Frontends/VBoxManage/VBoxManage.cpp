@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 84692 2020-06-05 12:30:31Z vboxsync $ */
+/* $Id: VBoxManage.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -187,7 +187,7 @@ static PCVBMGCMD lookupCommand(const char *pszCommand)
  * a thread dedicated to delivering this signal.  Do not doing anything
  * unnecessary here.
  */
-static void showProgressSignalHandler(int iSignal)
+static void showProgressSignalHandler(int iSignal) RT_NOTHROW_DEF
 {
     NOREF(iSignal);
     ASMAtomicWriteBool(&g_fCanceled, true);

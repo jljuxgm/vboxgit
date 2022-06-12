@@ -1,4 +1,4 @@
-/* $Id: SerialTest.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: SerialTest.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * SerialTest - Serial port testing utility.
  */
@@ -82,7 +82,7 @@ typedef struct SERIALTEST *PSERIALTEST;
  * @returns IPRT status code.
  * @param   pSerialTest         The serial test instance data.
  */
-typedef DECLCALLBACK(int) FNSERIALTESTRUN(PSERIALTEST pSerialTest);
+typedef DECLCALLBACKTYPE(int, FNSERIALTESTRUN,(PSERIALTEST pSerialTest));
 /** Pointer to the serial test callback. */
 typedef FNSERIALTESTRUN *PFNSERIALTESTRUN;
 

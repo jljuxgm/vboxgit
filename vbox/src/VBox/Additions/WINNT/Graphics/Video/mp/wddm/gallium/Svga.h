@@ -1,4 +1,4 @@
-/* $Id: Svga.h 83578 2020-04-06 00:04:45Z vboxsync $ */
+/* $Id: Svga.h 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver VMSVGA.
  */
@@ -125,7 +125,7 @@ typedef struct VBOXWDDM_EXT_VMSVGA
 typedef struct VBOXWDDM_EXT_VMSVGA *PVBOXWDDM_EXT_VMSVGA;
 
 typedef struct SVGAHOSTOBJECT SVGAHOSTOBJECT;
-typedef DECLCALLBACK(NTSTATUS) FNHostObjectDestroy(SVGAHOSTOBJECT *pThis);
+typedef DECLCALLBACKTYPE(NTSTATUS, FNHostObjectDestroy,(SVGAHOSTOBJECT *pThis));
 typedef FNHostObjectDestroy *PFNHostObjectDestroy;
 
 #define SVGA_HOST_OBJECT_UNDEFINED 0

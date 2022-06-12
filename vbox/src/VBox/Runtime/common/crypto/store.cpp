@@ -1,4 +1,4 @@
-/* $Id: store.cpp 84329 2020-05-18 13:35:33Z vboxsync $ */
+/* $Id: store.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * IPRT - Cryptographic (Certificate) Store.
  */
@@ -40,7 +40,9 @@
 #include <iprt/crypto/x509.h>
 
 #ifdef IPRT_WITH_OPENSSL
+# include "internal/openssl-pre.h"
 # include <openssl/x509.h>
+# include "internal/openssl-post.h"
 #endif
 
 #include "store-internal.h"

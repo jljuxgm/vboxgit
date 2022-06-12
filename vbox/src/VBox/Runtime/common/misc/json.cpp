@@ -1,4 +1,4 @@
-/* $Id: json.cpp 83425 2020-03-25 19:37:25Z vboxsync $ */
+/* $Id: json.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * IPRT JSON parser API (JSON).
  */
@@ -145,8 +145,8 @@ typedef const RTJSONTOKEN *PCRTJSONTOKEN;
  * @param   cbBuf           How much to read.
  * @param   pcbRead         Where to store the amount of data read on succcess.
  */
-typedef DECLCALLBACK(int) FNRTJSONTOKENIZERREAD(void *pvUser, size_t offInput, void *pvBuf, size_t cbBuf,
-                                                size_t *pcbRead);
+typedef DECLCALLBACKTYPE(int, FNRTJSONTOKENIZERREAD,(void *pvUser, size_t offInput, void *pvBuf, size_t cbBuf,
+                                                     size_t *pcbRead));
 /** Pointer to a tokenizer read buffer callback. */
 typedef FNRTJSONTOKENIZERREAD *PFNRTJSONTOKENIZERREAD;
 

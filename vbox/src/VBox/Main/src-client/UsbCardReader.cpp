@@ -1,4 +1,4 @@
-/* $Id: UsbCardReader.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UsbCardReader.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * UsbCardReader - Driver Interface to USB Smart Card Reader emulation.
  */
@@ -594,7 +594,7 @@ static DECLCALLBACK(int) drvCardReaderThreadCmd(PPDMDRVINS pDrvIns, PPDMTHREAD p
     return rc;
 }
 
-static int drvCardReaderWakeupFunc(PUSBCARDREADER pThis)
+static DECLCALLBACK(int) drvCardReaderWakeupFunc(PUSBCARDREADER pThis)
 {
     NOREF(pThis);
     /* Returning a VINF_* will cause RTReqQueueProcess return. */

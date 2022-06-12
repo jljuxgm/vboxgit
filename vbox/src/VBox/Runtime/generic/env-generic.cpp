@@ -1,4 +1,4 @@
-/* $Id: env-generic.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: env-generic.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * IPRT - Environment, Generic.
  */
@@ -120,7 +120,7 @@ typedef struct RTENVINTERNAL
     char      **papszEnvOtherCP;
 
     /** The compare function we're using. */
-    DECLCALLBACKMEMBER(int, pfnCompare)(const char *psz1, const char *psz2, size_t cchMax);
+    DECLCALLBACKMEMBER(int, pfnCompare,(const char *psz1, const char *psz2, size_t cchMax));
 } RTENVINTERNAL, *PRTENVINTERNAL;
 
 

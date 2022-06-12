@@ -1,4 +1,4 @@
-/* $Id: gvmm.h 82989 2020-02-05 11:16:44Z vboxsync $ */
+/* $Id: gvmm.h 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * GVMM - The Global VM Manager.
  */
@@ -165,7 +165,7 @@ typedef const GVMMSTATS *PCGVMMSTATS;
  * @param   pGVM        The VM
  * @param   pvUser      The user parameter.
  *  */
-typedef DECLCALLBACK(int) FNGVMMR0ENUMCALLBACK(PGVM pGVM, void *pvUser);
+typedef DECLCALLBACKTYPE(int, FNGVMMR0ENUMCALLBACK,(PGVM pGVM, void *pvUser));
 /** Pointer to an VM enumeration callback function. */
 typedef FNGVMMR0ENUMCALLBACK *PFNGVMMR0ENUMCALLBACK;
 

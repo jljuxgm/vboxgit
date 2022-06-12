@@ -1,4 +1,4 @@
-/* $Id: VHD.cpp 84883 2020-06-19 17:18:56Z vboxsync $ */
+/* $Id: VHD.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * VHD Disk image, Core Code.
  */
@@ -2335,7 +2335,7 @@ static DECLCALLBACK(int) vhdCompact(void *pBackendData, unsigned uPercentStart,
     uint32_t *paBlocks = NULL;
     PVDINTERFACEPROGRESS pIfProgress = VDIfProgressGet(pVDIfsOperation);
 
-    DECLCALLBACKMEMBER(int, pfnParentRead)(void *, uint64_t, void *, size_t) = NULL;
+    PFNVDPARENTREAD pfnParentRead = NULL;
     void *pvParent = NULL;
     PVDINTERFACEPARENTSTATE pIfParentState = VDIfParentStateGet(pVDIfsOperation);
     if (pIfParentState)

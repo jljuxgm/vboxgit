@@ -1,4 +1,4 @@
-/* $Id: DevVGA_VDMA.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: DevVGA_VDMA.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * Video DMA (VDMA) support.
  */
@@ -68,7 +68,8 @@
 *********************************************************************************************************************************/
 struct VBOXVDMATHREAD;
 
-typedef DECLCALLBACKPTR(void, PFNVBOXVDMATHREAD_CHANGED)(struct VBOXVDMATHREAD *pThread, int rc, void *pvThreadContext, void *pvChangeContext);
+typedef DECLCALLBACKPTR(void, PFNVBOXVDMATHREAD_CHANGED,(struct VBOXVDMATHREAD *pThread, int rc,
+                                                         void *pvThreadContext, void *pvChangeContext));
 
 typedef struct VBOXVDMATHREAD
 {
@@ -130,7 +131,7 @@ typedef enum
 
 struct VBVAEXHOSTCTL;
 
-typedef DECLCALLBACK(void) FNVBVAEXHOSTCTL_COMPLETE(VBVAEXHOSTCONTEXT *pVbva, struct VBVAEXHOSTCTL *pCtl, int rc, void *pvComplete);
+typedef DECLCALLBACKTYPE(void, FNVBVAEXHOSTCTL_COMPLETE,(VBVAEXHOSTCONTEXT *pVbva, struct VBVAEXHOSTCTL *pCtl, int rc, void *pvComplete));
 typedef FNVBVAEXHOSTCTL_COMPLETE *PFNVBVAEXHOSTCTL_COMPLETE;
 
 typedef struct VBVAEXHOSTCTL

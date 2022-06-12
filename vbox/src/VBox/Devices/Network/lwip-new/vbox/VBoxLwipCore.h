@@ -1,4 +1,4 @@
-/* $Id: VBoxLwipCore.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxLwipCore.h 85121 2020-07-08 19:33:26Z vboxsync $ */
 
 /** @file
  * VBox Lwip Core Initiatetor/Finilizer.
@@ -22,12 +22,10 @@
 # pragma once
 #endif
 
-
-typedef DECLCALLBACKPTR(void, PFNRT1)(void *);
-
 /**
- * initiliazes LWIP core, and do callback on tcp/ip thread
+ * Initializes LWIP core, and do callback on tcp/ip thread.
  */
 int vboxLwipCoreInitialize(PFNRT1 pfnCallback, void * pfnCallbackArg);
 void vboxLwipCoreFinalize(PFNRT1 pfnCallback, void * pfnCallbackArg);
+
 #endif /* !VBOX_INCLUDED_SRC_Network_lwip_new_vbox_VBoxLwipCore_h */

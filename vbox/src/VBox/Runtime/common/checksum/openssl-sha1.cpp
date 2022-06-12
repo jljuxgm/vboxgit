@@ -1,4 +1,4 @@
-/* $Id: openssl-sha1.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: openssl-sha1.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * IPRT - SHA-1 hash functions.
  */
@@ -30,7 +30,9 @@
 *********************************************************************************************************************************/
 #include "internal/iprt.h"
 
+#include "internal/openssl-pre.h"
 #include <openssl/sha.h>
+#include "internal/openssl-post.h"
 
 #define RT_SHA1_PRIVATE_CONTEXT
 #include <iprt/sha.h>

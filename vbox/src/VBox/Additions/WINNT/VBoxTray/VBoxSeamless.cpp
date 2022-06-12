@@ -1,4 +1,4 @@
-/* $Id: VBoxSeamless.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxSeamless.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * VBoxSeamless - Seamless windows
  */
@@ -194,7 +194,7 @@ void VBoxSeamlessDisable(void)
     VBoxDispIfSeamlessTerm(&gVBoxDispIfSeamless);
 }
 
-BOOL CALLBACK VBoxEnumFunc(HWND hwnd, LPARAM lParam)
+BOOL CALLBACK VBoxEnumFunc(HWND hwnd, LPARAM lParam) RT_NOTHROW_DEF
 {
     PVBOX_ENUM_PARAM    lpParam = (PVBOX_ENUM_PARAM)lParam;
     DWORD               dwStyle, dwExStyle;

@@ -1,4 +1,4 @@
-/* $Id: ldrPE.cpp 84361 2020-05-19 09:47:34Z vboxsync $ */
+/* $Id: ldrPE.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Portable Executable (PE).
  */
@@ -163,7 +163,7 @@ typedef struct RTLDROPSPE
      * @param   pfnGetImport    The callback function to use to resolve imports (aka unresolved externals).
      * @param   pvUser          User argument to pass to the callback.
      */
-    DECLCALLBACKMEMBER(int, pfnResolveImports)(PRTLDRMODPE pModPe, const void *pvBitsR, void *pvBitsW, PFNRTLDRIMPORT pfnGetImport, void *pvUser);
+    DECLCALLBACKMEMBER(int, pfnResolveImports,(PRTLDRMODPE pModPe, const void *pvBitsR, void *pvBitsW, PFNRTLDRIMPORT pfnGetImport, void *pvUser));
 
     /** Dummy entry to make sure we've initialized it all. */
     RTUINT  uDummy;

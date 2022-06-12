@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbLib-win.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxUsbLib-win.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * VBox USB ring-3 Driver Interface library, Windows.
  */
@@ -1819,7 +1819,7 @@ USBLIB_DECL(int) USBLibRunFilters(void)
 }
 
 
-static VOID CALLBACK usbLibTimerCallback(__in PVOID lpParameter, __in BOOLEAN TimerOrWaitFired)
+static VOID CALLBACK usbLibTimerCallback(__in PVOID lpParameter, __in BOOLEAN TimerOrWaitFired) RT_NOTHROW_DEF
 {
     RT_NOREF2(lpParameter, TimerOrWaitFired);
     SetEvent(g_VBoxUsbGlobal.hNotifyEvent);
@@ -1885,8 +1885,8 @@ static LRESULT CALLBACK usbLibWndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARA
     return DefWindowProc (hwnd, uMsg, wParam, lParam);
 }
 
-/** @todo r=bird: Use an IPRT thread? */
-static DWORD WINAPI usbLibMsgThreadProc(__in LPVOID lpParameter)
+/** @todo r=bird: Use an IPRT thread!! */
+static DWORD WINAPI usbLibMsgThreadProc(__in LPVOID lpParameter) RT_NOTHROW_DEF
 {
     static LPCSTR   s_szVBoxUsbWndClassName = "VBoxUsbLibClass";
     const HINSTANCE hInstance               = (HINSTANCE)GetModuleHandle(NULL);
@@ -2049,6 +2049,8 @@ USBLIB_DECL(int) USBLibInit(void)
                         g_VBoxUsbGlobal.hTimerQueue = CreateTimerQueue();
                         if (g_VBoxUsbGlobal.hTimerQueue)
                         {
+/** @todo r=bird: Which lunatic used CreateThread here?!?
+ *  Only the CRT uses CreateThread. */
                             g_VBoxUsbGlobal.hThread = CreateThread(
                               NULL, /*__in_opt   LPSECURITY_ATTRIBUTES lpThreadAttributes, */
                               0, /*__in       SIZE_T dwStackSize, */

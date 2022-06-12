@@ -1,4 +1,4 @@
-/* $Id: HDACodec.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: HDACodec.h 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * HDACodec - VBox HD Audio Codec.
  */
@@ -37,7 +37,7 @@ typedef struct HDADRIVER *PHDADRIVER;
 /**
  * Verb processor method.
  */
-typedef DECLCALLBACK(int) FNHDACODECVERBPROCESSOR(PHDACODEC pThis, uint32_t cmd, uint64_t *pResp);
+typedef DECLCALLBACKTYPE(int, FNHDACODECVERBPROCESSOR,(PHDACODEC pThis, uint32_t cmd, uint64_t *pResp));
 typedef FNHDACODECVERBPROCESSOR *PFNHDACODECVERBPROCESSOR;
 
 /* PRM 5.3.1 */

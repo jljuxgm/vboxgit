@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestPropSvc.cpp 84508 2020-05-25 14:58:09Z vboxsync $ */
+/* $Id: VBoxGuestPropSvc.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * Guest Property Service: Host service entry points.
  */
@@ -1824,7 +1824,7 @@ int Service::uninit()
 using guestProp::Service;
 
 /**
- * @copydoc VBOXHGCMSVCLOAD
+ * @copydoc FNVBOXHGCMSVCLOAD
  */
 extern "C" DECLCALLBACK(DECLEXPORT(int)) VBoxHGCMSvcLoad(VBOXHGCMSVCFNTABLE *ptable)
 {

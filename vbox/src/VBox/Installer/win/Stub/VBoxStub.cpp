@@ -1,4 +1,4 @@
-/* $Id: VBoxStub.cpp 83808 2020-04-18 23:30:59Z vboxsync $ */
+/* $Id: VBoxStub.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * VBoxStub - VirtualBox's Windows installer stub.
  */
@@ -25,7 +25,7 @@
 #endif
 
 #include <iprt/win/windows.h>
-#include <commctrl.h>
+#include <iprt/win/commctrl.h>
 #include <fcntl.h>
 #include <io.h>
 #include <lmerr.h>

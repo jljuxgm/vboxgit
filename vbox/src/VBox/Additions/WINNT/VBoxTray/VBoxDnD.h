@@ -1,4 +1,4 @@
-/* $Id: VBoxDnD.h 83833 2020-04-19 14:14:35Z vboxsync $ */
+/* $Id: VBoxDnD.h 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * VBoxDnD.h - Windows-specific bits of the drag'n drop service.
  */
@@ -312,9 +312,8 @@ public:
 
 public:
 
-    /** The window's thread for the native message pump and
-     *  OLE context. */
-    static int Thread(RTTHREAD hThread, void *pvUser);
+    /** The window's thread for the native message pump and OLE context. */
+    static DECLCALLBACK(int) Thread(RTTHREAD hThread, void *pvUser);
 
 public:
 

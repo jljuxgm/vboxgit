@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdpUninstall.cpp 83805 2020-04-18 23:08:25Z vboxsync $ */
+/* $Id: VBoxNetAdpUninstall.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * NetAdpUninstall - VBoxNetAdp uninstaller command line tool
  */
@@ -36,9 +36,9 @@
 # define VBOX_NETADP_HWID L"sun_VBoxNetAdp"
 #endif
 
-static VOID winNetCfgLogger(LPCSTR szString)
+static DECLCALLBACK(void) winNetCfgLogger(const char *pszString)
 {
-    printf("%s", szString);
+    printf("%s", pszString);
 }
 
 static int VBoxNetAdpUninstall(void)

@@ -1,4 +1,4 @@
-/* $Id: HGSMIHost.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: HGSMIHost.h 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * VBox Host Guest Shared Memory Interface (HGSMI), host part.
  */
@@ -29,7 +29,7 @@ struct HGSMIINSTANCE;
 typedef struct HGSMIINSTANCE *PHGSMIINSTANCE;
 
 /** Callback for the guest notification about a new host buffer. */
-typedef DECLCALLBACK(void) FNHGSMINOTIFYGUEST(void *pvCallback);
+typedef DECLCALLBACKTYPE(void, FNHGSMINOTIFYGUEST,(void *pvCallback));
 typedef FNHGSMINOTIFYGUEST *PFNHGSMINOTIFYGUEST;
 
 /*

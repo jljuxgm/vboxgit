@@ -1,4 +1,4 @@
-/* $Id: openssl-md5.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: openssl-md5.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * IPRT - MD5 message digest functions, implemented using OpenSSL.
  */
@@ -30,7 +30,9 @@
 *********************************************************************************************************************************/
 #include "internal/iprt.h"
 
+#include "internal/openssl-pre.h"
 #include <openssl/md5.h>
+#include "internal/openssl-post.h"
 
 #define RT_MD5_OPENSSL_PRIVATE_CONTEXT
 #include <iprt/md5.h>

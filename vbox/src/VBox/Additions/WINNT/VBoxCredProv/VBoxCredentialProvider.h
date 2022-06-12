@@ -1,4 +1,4 @@
-/* $Id: VBoxCredentialProvider.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxCredentialProvider.h 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * VBoxCredentialProvider - Main file of the VirtualBox Credential Provider.
  */
@@ -22,7 +22,7 @@
 #endif
 
 #include <iprt/win/windows.h>
-#include <credentialprovider.h>
+#include <iprt/win/credentialprovider.h>
 #include <Shlguid.h>
 
 #include "VBoxCredProvUtils.h"

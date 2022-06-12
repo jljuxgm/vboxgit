@@ -1,4 +1,4 @@
-/* $Id: UartCore.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UartCore.h 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * UartCore - UART  (16550A up to 16950) emulation.
  *
@@ -67,7 +67,7 @@ typedef struct UARTCORE *PUARTCORE;
  * @param   iLUN                The LUN associated with the UART core.
  * @param   iLvl                The interrupt level.
  */
-typedef DECLCALLBACK(void) FNUARTCOREIRQREQ(PPDMDEVINS pDevIns, PUARTCORE pThis, unsigned iLUN, int iLvl);
+typedef DECLCALLBACKTYPE(void, FNUARTCOREIRQREQ,(PPDMDEVINS pDevIns, PUARTCORE pThis, unsigned iLUN, int iLvl));
 /** Pointer to a UART core IRQ request callback. */
 typedef FNUARTCOREIRQREQ *PFNUARTCOREIRQREQ;
 

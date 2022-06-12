@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileInternal.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileInternal.h 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -452,7 +452,7 @@ AssertCompileMemberAlignment(PDMASYNCCOMPLETIONENDPOINTFILE, StatRead, sizeof(ui
 #endif
 
 /** Request completion function */
-typedef DECLCALLBACK(void)   FNPDMACTASKCOMPLETED(PPDMACTASKFILE pTask, void *pvUser, int rc);
+typedef DECLCALLBACKTYPE(void, FNPDMACTASKCOMPLETED,(PPDMACTASKFILE pTask, void *pvUser, int rc));
 /** Pointer to a request completion function. */
 typedef FNPDMACTASKCOMPLETED *PFNPDMACTASKCOMPLETED;
 

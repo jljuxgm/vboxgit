@@ -1,4 +1,4 @@
-/* $Id: HGSMIHost.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: HGSMIHost.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * VBox Host Guest Shared Memory Interface (HGSMI), host part.
  *
@@ -191,7 +191,7 @@ typedef struct HGSMIINSTANCE
 } HGSMIINSTANCE;
 
 
-typedef DECLCALLBACK(void) FNHGSMIHOSTFIFOCALLBACK(void *pvCallback);
+typedef DECLCALLBACKTYPE(void, FNHGSMIHOSTFIFOCALLBACK,(void *pvCallback));
 typedef FNHGSMIHOSTFIFOCALLBACK *PFNHGSMIHOSTFIFOCALLBACK;
 
 typedef struct HGSMIHOSTFIFOENTRY

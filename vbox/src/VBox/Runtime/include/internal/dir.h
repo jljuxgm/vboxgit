@@ -1,4 +1,4 @@
-/* $Id: dir.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: dir.h 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * IPRT - Internal Header for RTDir.
  */
@@ -46,7 +46,7 @@ typedef struct RTDIRINTERNAL *PRTDIRINTERNAL;
  * @param   pDir        The directory handle.
  * @param   pszName     The path to match to the filter.
  */
-typedef DECLCALLBACK(bool) FNRTDIRFILTER(PRTDIRINTERNAL pDir, const char *pszName);
+typedef DECLCALLBACKTYPE(bool, FNRTDIRFILTER,(PRTDIRINTERNAL pDir, const char *pszName));
 /** Pointer to a filter function. */
 typedef FNRTDIRFILTER *PFNRTDIRFILTER;
 

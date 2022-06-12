@@ -1,4 +1,4 @@
-/** $Id: VDIoBackend.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/** $Id: VDIoBackend.h 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  *
  * VBox HDD container test utility, async I/O backend
@@ -43,7 +43,7 @@ typedef PVDIOSTORAGE *PPVDIOSTORAGE;
  * @param   pvUser    Opaque user data.
  * @param   rcReq     Completion code for the request.
  */
-typedef DECLCALLBACK(int) FNVDIOCOMPLETE(void *pvUser, int rcReq);
+typedef DECLCALLBACKTYPE(int, FNVDIOCOMPLETE,(void *pvUser, int rcReq));
 /** Pointer to a completion handler. */
 typedef FNVDIOCOMPLETE *PFNVDIOCOMPLETE;
 

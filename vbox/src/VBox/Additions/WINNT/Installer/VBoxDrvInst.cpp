@@ -1,4 +1,4 @@
-/* $Id: VBoxDrvInst.cpp 83826 2020-04-19 01:31:42Z vboxsync $ */
+/* $Id: VBoxDrvInst.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * VBoxDrvInst - Driver and service installation helper for Windows guests.
  */
@@ -398,7 +398,7 @@ int VBoxInstallDriver(const BOOL fInstall, const _TCHAR *pszDriverPath, BOOL fSi
 static UINT WINAPI vboxDrvInstExecuteInfFileCallback(PVOID Context,
                                                      UINT Notification,
                                                      UINT_PTR Param1,
-                                                     UINT_PTR Param2)
+                                                     UINT_PTR Param2) RT_NOTHROW_DEF
 {
 #ifdef DEBUG
     _tprintf (_T( "Got installation notification %u\n"), Notification);

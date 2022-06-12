@@ -1,4 +1,4 @@
-/* $Id: VBoxMPCm.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxMPCm.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -34,7 +34,8 @@ typedef enum
     VBOXVIDEOCM_CMD_CTL_KM_TYPE_DUMMY_32BIT = 0x7fffffff
 } VBOXVIDEOCM_CMD_CTL_KM_TYPE;
 
-typedef DECLCALLBACK(VOID) FNVBOXVIDEOCM_CMD_CB(PVBOXVIDEOCM_CTX pContext, struct VBOXVIDEOCM_CMD_CTL_KM *pCmd, PVOID pvContext);
+typedef DECLCALLBACKTYPE(VOID, FNVBOXVIDEOCM_CMD_CB,(PVBOXVIDEOCM_CTX pContext, struct VBOXVIDEOCM_CMD_CTL_KM *pCmd,
+                                                     PVOID pvContext));
 typedef FNVBOXVIDEOCM_CMD_CB *PFNVBOXVIDEOCM_CMD_CB;
 
 typedef struct VBOXVIDEOCM_CMD_CTL_KM

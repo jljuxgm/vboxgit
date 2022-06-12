@@ -1,4 +1,4 @@
-/* $Id: VBoxNetCfg-win.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxNetCfg-win.h 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * Network Configuration API for Windows platforms.
  */
@@ -121,8 +121,9 @@ VBOXNETCFGWIN_DECL(HRESULT) VBoxNetCfgWinEnableDynamicIpConfig(IN const GUID *pG
 VBOXNETCFGWIN_DECL(HRESULT) VBoxNetCfgWinDhcpRediscover(IN const GUID *pGuid);
 
 
-typedef VOID (*LOG_ROUTINE)(LPCSTR szString); /**< I'm not prefixed. */
-VBOXNETCFGWIN_DECL(VOID) VBoxNetCfgWinSetLogging(IN LOG_ROUTINE pfnLog);
+typedef DECLCALLBACKTYPE(void, FNVBOXNETCFGLOGGER,(const char *pszString));
+typedef FNVBOXNETCFGLOGGER *PFNVBOXNETCFGLOGGER;
+VBOXNETCFGWIN_DECL(void) VBoxNetCfgWinSetLogging(IN PFNVBOXNETCFGLOGGER pfnLogger);
 
 RT_C_DECLS_END
 

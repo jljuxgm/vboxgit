@@ -1,4 +1,4 @@
-/* $Id: pkix-verify.cpp 84230 2020-05-10 00:52:05Z vboxsync $ */
+/* $Id: pkix-verify.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * IPRT - Crypto - Public Key Infrastructure API, Verification.
  */
@@ -38,7 +38,9 @@
 
 #ifdef IPRT_WITH_OPENSSL
 # include "internal/iprt-openssl.h"
-# include "openssl/evp.h"
+# include "internal/openssl-pre.h"
+# include <openssl/evp.h>
+# include "internal/openssl-post.h"
 # ifndef OPENSSL_VERSION_NUMBER
 #  error "Missing OPENSSL_VERSION_NUMBER!"
 # endif

@@ -1,4 +1,4 @@
-/* $Id: VSCSILunMmc.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VSCSILunMmc.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: MMC LUN implementation (CD/DVD-ROM)
  */
@@ -89,7 +89,7 @@ typedef struct VSCSILUNMMC
  * @param   pbBuf           The buffer to use.
  * @param   cbBuf           Size of the buffer.
  */
-typedef DECLCALLBACK(size_t) FNVSCSILUNMMCFILLFEATURE(uint8_t *pbBuf, size_t cbBuf);
+typedef DECLCALLBACKTYPE(size_t, FNVSCSILUNMMCFILLFEATURE,(uint8_t *pbBuf, size_t cbBuf));
 /** Pointer to a fill feature callback. */
 typedef FNVSCSILUNMMCFILLFEATURE *PFNVSCSILUNMMCFILLFEATURE;
 

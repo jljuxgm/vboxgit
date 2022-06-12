@@ -1,4 +1,4 @@
-/* $Id: rc4-openssl.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: rc4-openssl.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * IPRT - Crypto - Alleged RC4 via OpenSSL.
  */
@@ -31,7 +31,9 @@
 #ifdef IPRT_WITH_OPENSSL
 # include "internal/iprt.h"
 # include "internal/iprt-openssl.h"
-# include "openssl/rc4.h"
+# include "internal/openssl-pre.h"
+# include <openssl/rc4.h>
+# include "internal/openssl-post.h"
 # include <iprt/crypto/rc4.h>
 
 # include <iprt/assert.h>

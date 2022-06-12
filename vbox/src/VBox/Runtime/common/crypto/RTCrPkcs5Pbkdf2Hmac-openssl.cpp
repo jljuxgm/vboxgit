@@ -1,4 +1,4 @@
-/* $Id: RTCrPkcs5Pbkdf2Hmac-openssl.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: RTCrPkcs5Pbkdf2Hmac-openssl.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * IPRT - Crypto - RTCrPkcs5Pbkdf2Hmac implementation using OpenSSL.
  */
@@ -37,7 +37,9 @@
 # include <iprt/assert.h>
 
 # include "internal/iprt-openssl.h"
-# include "openssl/evp.h"
+# include "internal/openssl-pre.h"
+# include <openssl/evp.h>
+# include "internal/openssl-post.h"
 
 
 RTDECL(int) RTCrPkcs5Pbkdf2Hmac(void const *pvInput, size_t cbInput, void const *pvSalt, size_t cbSalt, uint32_t cIterations,

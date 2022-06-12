@@ -1,4 +1,4 @@
-/* $Id: openssl-md4.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: openssl-md4.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * IPRT - Message-Digest Algorithm 4.
  */
@@ -30,7 +30,9 @@
 *********************************************************************************************************************************/
 #include "internal/iprt.h"
 
+#include "internal/openssl-pre.h"
 #include <openssl/opensslconf.h>
+#include "internal/openssl-post.h"
 #if 0 //ndef OPENSSL_NO_MD4
 # include <openssl/md4.h>
 

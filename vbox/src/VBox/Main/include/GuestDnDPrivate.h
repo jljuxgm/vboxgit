@@ -1,4 +1,4 @@
-/* $Id: GuestDnDPrivate.h 85018 2020-07-01 10:42:45Z vboxsync $ */
+/* $Id: GuestDnDPrivate.h 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget +
  * GuestDnDSource.
@@ -952,7 +952,7 @@ protected:
 };
 
 /** Guest DnD callback function definition. */
-typedef DECLCALLBACKPTR(int, PFNGUESTDNDCALLBACK) (uint32_t uMsg, void *pvParms, size_t cbParms, void *pvUser);
+typedef DECLCALLBACKPTR(int, PFNGUESTDNDCALLBACK,(uint32_t uMsg, void *pvParms, size_t cbParms, void *pvUser));
 
 /**
  * Structure for keeping a guest DnD callback.

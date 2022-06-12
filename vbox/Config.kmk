@@ -1,4 +1,4 @@
-# $Id: Config.kmk 85070 2020-07-06 13:04:40Z vboxsync $
+# $Id: Config.kmk 85121 2020-07-08 19:33:26Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3176,7 +3176,6 @@ endif
 #      -wd4244: 'conversion' conversion from 'type1' to 'type2', possible loss of data
 #      -wd4200: nonstandard extension used : zero-sized array in struct/union
 #               Cannot generate copy-ctor or copy-assignment operator when UDT contains a zero-sized array
-#      -wd5039: 'RTStrSpaceDestroy': pointer or reference to potentially throwing function passed to extern C function under -EHc. Undefined behavior may occur if this function throws an exception.
 VBOX_VCC_WARN_ALL := -W4 -Wall -wd4065 -wd4996 -wd4127 -wd4706 -wd4201 -wd4214 -wd4510 -wd4512 -wd4610 \
 	-wd4514 -wd4820 -wd4365 -wd4987 -wd4710 -wd4061 -wd4986 -wd4191 -wd4574 -wd4917 -wd4711 -wd4611 -wd4571 -wd4324 -wd4505 \
 	-wd4263 -wd4264 -wd4738 -wd4200 -wd4371 -wd4748
@@ -3196,7 +3195,7 @@ if "$(VBOX_VCC_TOOL_STEM)" >= "VCC140"
  #    -wd5026: 'SUPDRVTRACERDATA': move constructor was implicitly defined as deleted
  #    -wd5027: 'SUPDRVTRACERDATA': move assignment operator was implicitly defined as deleted
  #    -wd4435: 'xml::Input': Object layout under /vd2 will change due to virtual base 'xml::Stream'
- VBOX_VCC_WARN_ALL += -wd5045 -wd5039 -wd4464 -wd4623 -wd4625 -wd4626 -wd5026 -wd5027 -wd4435
+ VBOX_VCC_WARN_ALL += -wd5045 -wd4464 -wd4623 -wd4625 -wd4626 -wd5026 -wd5027 -wd4435
 endif
 VBOX_VCC_WARN_ALL += -wd4242 -wd4244
 ifndef VBOX_NEWER_VCC_WARN_ALL
@@ -8021,7 +8020,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 85070 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 85121 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)

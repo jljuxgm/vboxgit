@@ -1,4 +1,4 @@
-/* $Id: VBoxVideo.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxVideo.h 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * VirtualBox Video interface.
  */
@@ -858,7 +858,7 @@ typedef struct VBOXVHWACMD_HH_SAVESTATE_LOADPERFORM
     struct SSMHANDLE * pSSM;
 } VBOXVHWACMD_HH_SAVESTATE_LOADPERFORM;
 
-typedef DECLCALLBACK(void) FNVBOXVHWA_HH_CALLBACK(void*);
+typedef DECLCALLBACKTYPE(void, FNVBOXVHWA_HH_CALLBACK,(void *));
 typedef FNVBOXVHWA_HH_CALLBACK *PFNVBOXVHWA_HH_CALLBACK;
 
 #define VBOXVHWA_HH_CALLBACK_SET(_pCmd, _pfn, _parg) \

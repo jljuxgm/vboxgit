@@ -1,4 +1,4 @@
-/* $Id: ISCSI.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: ISCSI.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * iSCSI initiator driver, VD backend.
  */
@@ -392,12 +392,12 @@ typedef enum ISCSICMDTYPE
 
 
 /** The command completion function. */
-typedef DECLCALLBACK(void) FNISCSICMDCOMPLETED(PISCSIIMAGE pImage, int rcReq, void *pvUser);
+typedef DECLCALLBACKTYPE(void, FNISCSICMDCOMPLETED,(PISCSIIMAGE pImage, int rcReq, void *pvUser));
 /** Pointer to a command completion function. */
 typedef FNISCSICMDCOMPLETED *PFNISCSICMDCOMPLETED;
 
 /** The command execution function. */
-typedef DECLCALLBACK(int) FNISCSIEXEC(void *pvUser);
+typedef DECLCALLBACKTYPE(int, FNISCSIEXEC,(void *pvUser));
 /** Pointer to a command execution function. */
 typedef FNISCSIEXEC *PFNISCSIEXEC;
 

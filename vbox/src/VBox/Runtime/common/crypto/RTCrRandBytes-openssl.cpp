@@ -1,4 +1,4 @@
-/* $Id: RTCrRandBytes-openssl.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: RTCrRandBytes-openssl.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * IPRT - Crypto - RTCrRandBytes implementation using OpenSSL.
  */
@@ -37,7 +37,9 @@
 # include <iprt/err.h>
 
 # include "internal/iprt-openssl.h"
-# include "openssl/rand.h"
+# include "internal/openssl-pre.h"
+# include <openssl/rand.h>
+# include "internal/openssl-post.h"
 
 
 RTDECL(int) RTCrRandBytes(void *pvDst, size_t cbDst)

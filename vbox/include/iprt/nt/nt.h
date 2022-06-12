@@ -1,4 +1,4 @@
-/* $Id: nt.h 85088 2020-07-07 17:08:28Z vboxsync $ */
+/* $Id: nt.h 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * IPRT - Header for code using the Native NT API.
  */
@@ -227,6 +227,11 @@
 # if _MSC_VER >= 1800 /*RT_MSC_VER_VC120*/
 #  pragma warning(disable:4005) /* sdk/v7.1/include/sal_supp.h(57) : warning C4005: '__useHeader' : macro redefinition */
 #  pragma warning(disable:4471) /* wdm.h(11057) : warning C4471: '_POOL_TYPE' : a forward declaration of an unscoped enumeration must have an underlying type (int assumed) */
+# endif
+# if _MSC_VER >= 1900 /*RT_MSC_VER_VC140*/
+#  ifdef __cplusplus
+#   pragma warning(disable:5039) /* warning C5039: 'KeInitializeDpc': pointer or reference to potentially throwing function passed to 'extern "C"' function under -EHc. Undefined behavior may occur if this function throws an exception. */
+#  endif
 # endif
 
 # include <ntifs.h>

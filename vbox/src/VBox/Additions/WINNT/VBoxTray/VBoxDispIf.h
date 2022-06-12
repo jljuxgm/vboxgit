@@ -1,4 +1,4 @@
-/* $Id: VBoxDispIf.h 84728 2020-06-08 17:52:03Z vboxsync $ */
+/* $Id: VBoxDispIf.h 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * VBoxTray - Display Settings Interface abstraction for XPDM & WDDM
  */
@@ -57,15 +57,18 @@ typedef struct VBOXDISPIF
     {
         struct
         {
-            LONG (WINAPI *pfnChangeDisplaySettingsEx)(LPCSTR lpszDeviceName, LPDEVMODE lpDevMode, HWND hwnd, DWORD dwflags, LPVOID lParam);
+            DECLCALLBACKMEMBER_EX(LONG, WINAPI, pfnChangeDisplaySettingsEx,(LPCSTR lpszDeviceName, LPDEVMODE lpDevMode,
+                                                                            HWND hwnd, DWORD dwflags, LPVOID lParam));
         } xpdm;
 #ifdef VBOX_WITH_WDDM
         struct
         {
             /* ChangeDisplaySettingsEx does not exist in NT. ResizeDisplayDevice uses the function. */
-            LONG (WINAPI *pfnChangeDisplaySettingsEx)(LPCTSTR lpszDeviceName, LPDEVMODE lpDevMode, HWND hwnd, DWORD dwflags, LPVOID lParam);
+            DECLCALLBACKMEMBER_EX(LONG, WINAPI, pfnChangeDisplaySettingsEx,(LPCTSTR lpszDeviceName, LPDEVMODE lpDevMode,
+                                                                            HWND hwnd, DWORD dwflags, LPVOID lParam));
             /* EnumDisplayDevices does not exist in NT. isVBoxDisplayDriverActive et al. are using these functions. */
-            BOOL (WINAPI *pfnEnumDisplayDevices)(IN LPCSTR lpDevice, IN DWORD iDevNum, OUT PDISPLAY_DEVICEA lpDisplayDevice, IN DWORD dwFlags);
+            DECLCALLBACKMEMBER_EX(BOOL, WINAPI, pfnEnumDisplayDevices,(IN LPCSTR lpDevice, IN DWORD iDevNum,
+                                                                       OUT PDISPLAY_DEVICEA lpDisplayDevice, IN DWORD dwFlags));
 
             VBOXDISPKMT_CALLBACKS KmtCallbacks;
         } wddm;

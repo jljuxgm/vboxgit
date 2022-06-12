@@ -1,4 +1,4 @@
-/* $Id: zip.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: zip.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * IPRT - Compression.
  */
@@ -131,17 +131,17 @@ typedef struct RTZIPCOMP
     /**
      * @copydoc RTZipCompress
      */
-    DECLCALLBACKMEMBER(int, pfnCompress)(PRTZIPCOMP pZip, const void *pvBuf, size_t cbBuf);
+    DECLCALLBACKMEMBER(int, pfnCompress,(PRTZIPCOMP pZip, const void *pvBuf, size_t cbBuf));
 
     /**
      * @copydoc RTZipCompFinish
      */
-    DECLCALLBACKMEMBER(int, pfnFinish)(PRTZIPCOMP pZip);
+    DECLCALLBACKMEMBER(int, pfnFinish,(PRTZIPCOMP pZip));
 
     /**
      * @copydoc RTZipCompDestroy
      */
-    DECLCALLBACKMEMBER(int, pfnDestroy)(PRTZIPCOMP pZip);
+    DECLCALLBACKMEMBER(int, pfnDestroy,(PRTZIPCOMP pZip));
 
     /** Compression type. */
     RTZIPTYPE           enmType;
@@ -199,12 +199,12 @@ typedef struct RTZIPDECOMP
     /**
      * @copydoc RTZipDecompress
      */
-    DECLCALLBACKMEMBER(int, pfnDecompress)(PRTZIPDECOMP pZip, void *pvBuf, size_t cbBuf, size_t *pcbWritten);
+    DECLCALLBACKMEMBER(int, pfnDecompress,(PRTZIPDECOMP pZip, void *pvBuf, size_t cbBuf, size_t *pcbWritten));
 
     /**
      * @copydoc RTZipDecompDestroy
      */
-    DECLCALLBACKMEMBER(int, pfnDestroy)(PRTZIPDECOMP pZip);
+    DECLCALLBACKMEMBER(int, pfnDestroy,(PRTZIPDECOMP pZip));
 
     /** Compression type. */
     RTZIPTYPE           enmType;

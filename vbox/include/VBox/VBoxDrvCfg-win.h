@@ -1,4 +1,4 @@
-/* $Id: VBoxDrvCfg-win.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxDrvCfg-win.h 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * Windows Driver Manipulation API.
  */
@@ -54,12 +54,12 @@ typedef enum
     VBOXDRVCFG_LOG_SEVERITY_REL
 } VBOXDRVCFG_LOG_SEVERITY;
 
-typedef DECLCALLBACK(void) FNVBOXDRVCFG_LOG(VBOXDRVCFG_LOG_SEVERITY enmSeverity, char *pszMsg, void *pvContext);
+typedef DECLCALLBACKTYPE(void, FNVBOXDRVCFG_LOG,(VBOXDRVCFG_LOG_SEVERITY enmSeverity, char *pszMsg, void *pvContext));
 typedef FNVBOXDRVCFG_LOG *PFNVBOXDRVCFG_LOG;
 
 VBOXDRVCFG_DECL(void) VBoxDrvCfgLoggerSet(PFNVBOXDRVCFG_LOG pfnLog, void *pvLog);
 
-typedef DECLCALLBACK(void) FNVBOXDRVCFG_PANIC(void * pvPanic);
+typedef DECLCALLBACKTYPE(void, FNVBOXDRVCFG_PANIC,(void *pvPanic));
 typedef FNVBOXDRVCFG_PANIC *PFNVBOXDRVCFG_PANIC;
 VBOXDRVCFG_DECL(void) VBoxDrvCfgPanicSet(PFNVBOXDRVCFG_PANIC pfnPanic, void *pvPanic);
 

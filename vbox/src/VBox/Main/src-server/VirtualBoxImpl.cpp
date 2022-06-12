@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 84343 2020-05-18 18:27:08Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -1843,8 +1843,9 @@ void sanitiseMachineFilename(Utf8Str &strName)
 }
 
 #ifdef DEBUG
+typedef DECLCALLBACKTYPE(void, FNTESTPRINTF,(const char *, ...));
 /** Simple unit test/operation examples for sanitiseMachineFilename(). */
-static unsigned testSanitiseMachineFilename(DECLCALLBACKMEMBER(void, pfnPrintf)(const char *, ...))
+static unsigned testSanitiseMachineFilename(FNTESTPRINTF *pfnPrintf)
 {
     unsigned cErrors = 0;
 
