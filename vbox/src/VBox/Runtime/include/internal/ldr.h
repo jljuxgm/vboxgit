@@ -1,4 +1,4 @@
-/* $Id: ldr.h 85121 2020-07-08 19:33:26Z vboxsync $ */
+/* $Id: ldr.h 85626 2020-08-06 00:42:43Z vboxsync $ */
 /** @file
  * IPRT - Loader Internals.
  */
@@ -496,7 +496,7 @@ typedef struct RTLDROPS
      *
      * @param   pMod            Pointer to the loader module structure.
      * @param   pfnCallback     Callback that does the signature and certificate
-     *                          verficiation.
+     *                          verification.
      * @param   pvUser          User argument for the callback.
      * @param   pErrInfo        Pointer to an error info buffer. Optional.
      */
