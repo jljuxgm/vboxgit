@@ -1,4 +1,4 @@
-# $Id: Makefile-wrapper.gmk 87728 2021-02-12 02:24:07Z vboxsync $
+# $Id: Makefile-wrapper.gmk 87739 2021-02-12 16:36:17Z vboxsync $
 ## @file
 # Makefile template for a wrapper module.
 #
@@ -143,10 +143,14 @@ $(VBOX_MODULE_SRC_DIR)$(WRAPPED_MODULE_NAME).o: \
 		$(VBOX_MODULE_SRC_DIR)$(WRAPPED_MODULE_NAME).debug \
 		$(VBOX_MODULE_SRC_DIR)$(WRAPPED_MODULE_NAME).mangle-symbols \
 		$(VBOX_MODULE_SRC_DIR)Makefile-wrapper.gmk \
-		$(VBOX_MODULE_SRC_DIR)Makefile
+		$(VBOX_MODULE_SRC_DIR)Makefile \
+               $(if $(CONFIG_UNWINDER_ORC),$(objtool_dep),)
 	rm -f -- "$@" "$@-tmp"
 	eu-unstrip -o "$@-tmp" $(VBOX_MODULE_SRC_DIR)$(WRAPPED_MODULE_NAME).r0 $(VBOX_MODULE_SRC_DIR)$(WRAPPED_MODULE_NAME).debug
 	objcopy --redefine-syms=$(VBOX_MODULE_SRC_DIR)$(WRAPPED_MODULE_NAME).mangle-symbols "$@-tmp" "$@"
 	rm -f -- "$@-tmp"
+ifdef CONFIG_UNWINDER_ORC # Must generate the ORC sections.
+	$(__objtool_obj) $(objtool_args)  $@
+endif
 	touch $(VBOX_MODULE_SRC_DIR).$(WRAPPED_MODULE_NAME).o.cmd
 
