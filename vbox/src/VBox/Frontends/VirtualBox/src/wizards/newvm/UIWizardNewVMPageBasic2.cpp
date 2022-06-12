@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic2.cpp 87941 2021-03-03 16:11:56Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic2.cpp 88038 2021-03-09 09:11:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic2 class implementation.
  */
@@ -23,7 +23,6 @@
 #include <QLabel>
 #include <QLineEdit>
 #include <QSpacerItem>
-#include <QToolBox>
 #include <QVBoxLayout>
 
 /* GUI includes: */

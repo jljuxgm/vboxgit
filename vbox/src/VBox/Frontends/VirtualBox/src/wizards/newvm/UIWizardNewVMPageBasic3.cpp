@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic3.cpp 87941 2021-03-03 16:11:56Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic3.cpp 88038 2021-03-09 09:11:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic3 class implementation.
  */
@@ -17,7 +17,6 @@
 
 /* Qt includes: */
 #include <QCheckBox>
-#include <QFileInfo>
 #include <QGridLayout>
 #include <QMetaType>
 #include <QVBoxLayout>

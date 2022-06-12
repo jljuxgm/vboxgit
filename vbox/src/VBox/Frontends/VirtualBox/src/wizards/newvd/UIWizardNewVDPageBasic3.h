@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageBasic3.h 87972 2021-03-05 14:55:53Z vboxsync $ */
+/* $Id: UIWizardNewVDPageBasic3.h 88038 2021-03-09 09:11:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageBasic3 class declaration.
  */
@@ -79,8 +79,8 @@ protected:
      * @{ */
        QLineEdit *m_pLocationEditor;
        QIToolButton *m_pLocationOpenButton;
-       UIMediumSizeEditor *m_pSizeEditor;
-       QLabel          *m_pSizeEditorLabel;
+       UIMediumSizeEditor *m_pMediumSizeEditor;
+       QLabel          *m_pMediumSizeEditorLabel;
        QIRichTextLabel *m_pLocationLabel;
        QIRichTextLabel *m_pSizeLabel;
     /** @} */
