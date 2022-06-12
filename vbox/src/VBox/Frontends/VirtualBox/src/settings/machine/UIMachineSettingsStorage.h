@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.h 85872 2020-08-21 19:41:31Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.h 85952 2020-08-31 11:43:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class declaration.
  */
@@ -328,7 +328,7 @@ private:
         QITreeView       *m_pTreeStorage;
         /** Holds the toolbar layout instance. */
         QHBoxLayout      *m_pLayoutToolBar;
-        /** Holds the tree-view instance. */
+        /** Holds the toolbar instance. */
         UIToolBar        *m_pToolBar;
 
         /** Holds the right pane instance. */
