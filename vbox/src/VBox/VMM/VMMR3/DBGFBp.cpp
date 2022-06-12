@@ -1,4 +1,4 @@
-/* $Id: DBGFBp.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: DBGFBp.cpp 87346 2021-01-21 11:42:23Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Breakpoint Management.
  */
@@ -742,7 +742,7 @@ static DECLCALLBACK(VBOXSTRICTRC) dbgfR3BpRegRecalcOnCpu(PVM pVM, PVMCPU pVCpu, 
             }
     }
 
-    return CPUMRecalcHyperDRx(pVCpu, UINT8_MAX, false);
+    return CPUMRecalcHyperDRx(pVCpu, UINT8_MAX);
 }
 
 
