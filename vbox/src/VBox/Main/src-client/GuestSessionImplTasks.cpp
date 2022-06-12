@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.cpp 84649 2020-06-03 08:17:41Z vboxsync $ */
+/* $Id: GuestSessionImplTasks.cpp 84650 2020-06-03 08:28:13Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session tasks.
  */
@@ -2578,12 +2578,12 @@ int GuestSessionTaskUpdateAdditions::Run(void)
                             bool fOptional = false;
                             if (itFiles->fFlags & ISOFILE_FLAG_OPTIONAL)
                                 fOptional = true;
-                            rc = copyFileToGuest(pSession, hVfsIso, itFiles->strSource, itFiles->strDst, fOptional);
+                            rc = copyFileToGuest(pSession, hVfsIso, itFiles->strSource, itFiles->strDest, fOptional);
                             if (RT_FAILURE(rc))
                             {
                                 hr = setProgressErrorMsg(VBOX_E_IPRT_ERROR,
                                                          Utf8StrFmt(GuestSession::tr("Error while copying file \"%s\" to \"%s\" on the guest: %Rrc"),
-                                                                    itFiles->strSource.c_str(), itFiles->strDst.c_str(), rc));
+                                                                    itFiles->strSource.c_str(), itFiles->strDest.c_str(), rc));
                                 break;
                             }
                         }
