@@ -1,4 +1,4 @@
-/* $Id: ExtPackUtil.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: ExtPackUtil.cpp 85233 2020-07-11 16:30:55Z vboxsync $ */
 /** @file
  * VirtualBox Main - Extension Pack Utilities and definitions, VBoxC, VBoxSVC, ++.
  */
@@ -250,19 +250,19 @@ RTCString *VBoxExtPackLoadDesc(const char *a_pszDir, PVBOXEXTPACKDESC a_pExtPack
     char szFilePath[RTPATH_MAX];
     int vrc = RTPathJoin(szFilePath, sizeof(szFilePath), a_pszDir, VBOX_EXTPACK_DESCRIPTION_NAME);
     if (RT_FAILURE(vrc))
-        return new RTCString("RTPathJoin failed with %Rrc", vrc);
+        return new RTCStringFmt("RTPathJoin failed with %Rrc", vrc);
 
     RTFSOBJINFO ObjInfo;
     vrc = RTPathQueryInfoEx(szFilePath, &ObjInfo,  RTFSOBJATTRADD_UNIX, RTPATH_F_ON_LINK);
     if (RT_FAILURE(vrc))
-        return &(new RTCString())->printf("RTPathQueryInfoEx failed with %Rrc", vrc);
+        return new RTCStringFmt("RTPathQueryInfoEx failed with %Rrc", vrc);
     if (a_pObjInfo)
         *a_pObjInfo = ObjInfo;
     if (!RTFS_IS_FILE(ObjInfo.Attr.fMode))
     {
         if (RTFS_IS_SYMLINK(ObjInfo.Attr.fMode))
             return new RTCString("The XML file is symlinked, that is not allowed");
-        return &(new RTCString)->printf("The XML file is not a file (fMode=%#x)", ObjInfo.Attr.fMode);
+        return new RTCStringFmt("The XML file is not a file (fMode=%#x)", ObjInfo.Attr.fMode);
     }
 
     xml::Document       Doc;
