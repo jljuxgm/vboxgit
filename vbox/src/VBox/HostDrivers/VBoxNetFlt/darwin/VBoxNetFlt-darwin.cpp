@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-darwin.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxNetFlt-darwin.cpp 84759 2020-06-10 14:05:07Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Darwin Specific Code.
  */
@@ -917,8 +917,7 @@ static errno_t vboxNetFltDarwinIffInputOutputWorker(PVBOXNETFLTINS pThis, mbuf_t
      * TCP/IP checksums as long as possible.
      * ASSUMES this only applies to outbound IP packets.
      */
-    if (    (fSrc == INTNETTRUNKDIR_HOST)
-        &&  eProtocol == PF_INET)
+    if (fSrc == INTNETTRUNKDIR_HOST)
     {
         Assert(!pvFrame);
         mbuf_outbound_finalize(pMBuf, eProtocol, sizeof(RTNETETHERHDR));
