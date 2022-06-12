@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 89142 2021-05-18 14:33:03Z vboxsync $
+# $Id: Makefile.kmk 89150 2021-05-19 00:54:21Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - Bootsector Tests for Test Drivers or standalone testing.
 #
@@ -396,6 +396,9 @@ bs3-timing-1_SOURCES = \
 	bs3-timing-1.c \
 	bs3-timing-1-32.c32
 
+PROGRAMS += bs3-timing-1-exe
+bs3-timing-1-exe_TEMPLATE = VBoxR3Static
+bs3-timing-1-exe_SOURCES  = bs3-timing-1-exe.c
 endif # VBOX_WITH_BS3KIT
 
 
