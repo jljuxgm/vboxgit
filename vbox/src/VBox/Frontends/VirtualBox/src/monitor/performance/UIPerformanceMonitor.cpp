@@ -1,4 +1,4 @@
-/* $Id: UIPerformanceMonitor.cpp 87101 2020-12-17 14:30:07Z vboxsync $ */
+/* $Id: UIPerformanceMonitor.cpp 87103 2020-12-18 10:47:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPerformanceMonitor class implementation.
  */
@@ -765,6 +765,7 @@ UIPerformanceMonitor::UIPerformanceMonitor(EmbedTo enmEmbedding, QWidget *pParen
     retranslateUi();
     connect(gVBoxEvents, &UIVirtualBoxEventHandler::sigMachineStateChange, this, &UIPerformanceMonitor::sltMachineStateChange);
     setMachine(machine);
+    uiCommon().setHelpKeyword(this, "vm-session-information");
 }
 
 UIPerformanceMonitor::~UIPerformanceMonitor()

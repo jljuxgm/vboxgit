@@ -1,4 +1,4 @@
-/* $Id: UIDetails.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIDetails.cpp 87103 2020-12-18 10:47:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetails class implementation.
  */
@@ -19,6 +19,7 @@
 #include <QVBoxLayout>
 
 /* GUI includes: */
+#include "UICommon.h"
 #include "UIDetails.h"
 #include "UIDetailsModel.h"
 #include "UIDetailsView.h"
@@ -89,4 +90,7 @@ void UIDetails::prepare()
     /* Setup details-view connections: */
     connect(m_pDetailsView, &UIDetailsView::sigResized,
             m_pDetailsModel, &UIDetailsModel::sltHandleViewResize);
+
+    /* For context sensitive help: */
+    uiCommon().setHelpKeyword(this, "vm-details-tool");
 }

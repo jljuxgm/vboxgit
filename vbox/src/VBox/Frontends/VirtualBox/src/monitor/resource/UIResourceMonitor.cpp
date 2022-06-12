@@ -1,4 +1,4 @@
-/* $Id: UIResourceMonitor.cpp 86233 2020-09-23 12:10:51Z vboxsync $ */
+/* $Id: UIResourceMonitor.cpp 87103 2020-12-18 10:47:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIResourceMonitor class implementation.
  */
@@ -1357,6 +1357,7 @@ void UIResourceMonitorWidget::prepare()
     prepareActions();
     retranslateUi();
     updateModelColumVisibilityCache();
+    uiCommon().setHelpKeyword(this, "resource-monitor");
 }
 
 void UIResourceMonitorWidget::prepareWidgets()
