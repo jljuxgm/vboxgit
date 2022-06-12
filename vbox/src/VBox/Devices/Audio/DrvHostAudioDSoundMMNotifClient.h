@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioDSoundMMNotifClient.h 88628 2021-04-21 10:37:57Z vboxsync $ */
+/* $Id: DrvHostAudioDSoundMMNotifClient.h 88819 2021-05-03 10:26:28Z vboxsync $ */
 /** @file
  * Host audio driver - DSound - Implementation of the IMMNotificationClient interface to detect audio endpoint changes.
  */
@@ -42,7 +42,7 @@ class DrvHostAudioDSoundMMNotifClient : public IMMNotificationClient
 {
 public:
 
-    DrvHostAudioDSoundMMNotifClient(PPDMIAUDIONOTIFYFROMHOST pInterface);
+    DrvHostAudioDSoundMMNotifClient(PPDMIHOSTAUDIOPORT pInterface);
     virtual ~DrvHostAudioDSoundMMNotifClient();
 
     HRESULT Initialize();
@@ -63,7 +63,7 @@ private:
 
     long                        m_cRef;
 
-    PPDMIAUDIONOTIFYFROMHOST    m_pIAudioNotifyFromHost;
+    PPDMIHOSTAUDIOPORT           m_pIAudioNotifyFromHost;
 
     HRESULT AttachToDefaultEndpoint();
     void    DetachFromEndpoint();

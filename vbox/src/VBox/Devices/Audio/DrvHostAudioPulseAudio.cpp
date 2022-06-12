@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioPulseAudio.cpp 88761 2021-04-29 01:00:32Z vboxsync $ */
+/* $Id: DrvHostAudioPulseAudio.cpp 88819 2021-05-03 10:26:28Z vboxsync $ */
 /** @file
  * Host audio driver - Pulse Audio.
  */
@@ -1914,7 +1914,10 @@ static DECLCALLBACK(int) drvHostAudioPaConstruct(PPDMDRVINS pDrvIns, PCFGMNODE p
     pThis->IHostAudio.pfnGetConfig                  = drvHostAudioPaHA_GetConfig;
     pThis->IHostAudio.pfnGetDevices                 = drvHostAudioPaHA_GetDevices;
     pThis->IHostAudio.pfnGetStatus                  = drvHostAudioPaHA_GetStatus;
+    pThis->IHostAudio.pfnDoOnWorkerThread           = NULL;
+    pThis->IHostAudio.pfnStreamConfigHint           = NULL;
     pThis->IHostAudio.pfnStreamCreate               = drvHostAudioPaHA_StreamCreate;
+    pThis->IHostAudio.pfnStreamInitAsync            = NULL;
     pThis->IHostAudio.pfnStreamDestroy              = drvHostAudioPaHA_StreamDestroy;
     pThis->IHostAudio.pfnStreamNotifyDeviceChanged  = NULL;
     pThis->IHostAudio.pfnStreamControl              = drvHostAudioPaHA_StreamControl;

@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioDSoundMMNotifClient.cpp 88361 2021-04-05 00:23:47Z vboxsync $ */
+/* $Id: DrvHostAudioDSoundMMNotifClient.cpp 88819 2021-05-03 10:26:28Z vboxsync $ */
 /** @file
  * Host audio driver - DSound - Implementation of the IMMNotificationClient interface to detect audio endpoint changes.
  */
@@ -29,7 +29,7 @@
 #include <VBox/log.h>
 
 
-DrvHostAudioDSoundMMNotifClient::DrvHostAudioDSoundMMNotifClient(PPDMIAUDIONOTIFYFROMHOST pInterface)
+DrvHostAudioDSoundMMNotifClient::DrvHostAudioDSoundMMNotifClient(PPDMIHOSTAUDIOPORT pInterface)
     : m_fRegisteredClient(false)
     , m_cRef(1)
     , m_pIAudioNotifyFromHost(pInterface)
