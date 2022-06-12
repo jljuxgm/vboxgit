@@ -1,10 +1,10 @@
-# $Id: MACOSX105.kmk 3406 2020-07-17 20:02:41Z bird $
+# $Id: MACOSX1013.kmk 3406 2020-07-17 20:02:41Z bird $
 ## @file
-# kBuild SDK - Mac OS X v10.5 SDK.
+# kBuild SDK - Mac OS X v10.13 SDK.
 #
 
 #
-# Copyright (c) 2008-2017 knut st. osmundsen <bird-kBuild-spam-xviiv@anduin.net>
+# Copyright (c) 2008-2020 knut st. osmundsen <bird-kBuild-spam-xx@anduin.net>
 #
 # This file is part of kBuild.
 #
@@ -31,22 +31,32 @@
 #
 #
 
-SDK_MACOSX105 := Mac OS X v10.5 SDK
+ifndef INCLUDED_DARWIN_COMMON_KMK
+ include $(KBUILD_PATH)/darwin-common.kmk
+endif
+
+SDK_MACOSX1013 := Mac OS X v10.13 SDK
 
 # SDK Specific Properties
-ifndef PATH_SDK_MACOSX105
- PATH_SDK_MACOSX105 := /Developer/SDKs/MacOSX10.5.sdk
+ifndef PATH_SDK_MACOSX1013
+ PATH_SDK_MACOSX1013 := $(call DARWINCMN_FN_FIND_MACOSX_SDK,MacOSX10.13.sdk)
 else
  # Resolve any fancy stuff once and for all.
- PATH_SDK_MACOSX105 := $(PATH_SDK_MACOSX105)
+ PATH_SDK_MACOSX1013 := $(PATH_SDK_MACOSX1013)
 endif
+ifeq ($(PATH_SDK_MACOSX1013),)
+ $(warning $(call DARWINCMN_FN_ERROR_MACOSX_SDK,MacOSX10.13.sdk))
+endif
+
+## The MAC_OS_X_VERSION_MIN_REQUIRED and MAC_OS_X_VERSION_MAX_ALLOWED value for this SDK.
+SDK_MACOSX1013_VERSION_VALUE := 101300
 
 # General Properties (used by kBuild)
 # Note: The MAC_OS_X_VERSION_MAX_ALLOWED is left free for the SDK user to define.
-SDK_MACOSX105_DEFS        ?= MAC_OS_X_VERSION_MIN_REQUIRED=1050
-SDK_MACOSX105_CFLAGS      ?= -mmacosx-version-min=10.5 -isysroot $(PATH_SDK_MACOSX105)
-SDK_MACOSX105_CXXFLAGS    ?= -mmacosx-version-min=10.5 -isysroot $(PATH_SDK_MACOSX105)
-SDK_MACOSX105_OBJCFLAGS   ?= -mmacosx-version-min=10.5 -isysroot $(PATH_SDK_MACOSX105)
-SDK_MACOSX105_OBJCXXFLAGS ?= -mmacosx-version-min=10.5 -isysroot $(PATH_SDK_MACOSX105)
-SDK_MACOSX105_LDFLAGS     ?= -mmacosx-version-min=10.5 -Wl,-syslibroot,$(PATH_SDK_MACOSX105)
+SDK_MACOSX1013_DEFS        ?= MAC_OS_X_VERSION_MIN_REQUIRED=101300
+SDK_MACOSX1013_CFLAGS      ?= -mmacosx-version-min=10.13 -isysroot $(PATH_SDK_MACOSX1013)
+SDK_MACOSX1013_CXXFLAGS    ?= -mmacosx-version-min=10.13 -isysroot $(PATH_SDK_MACOSX1013)
+SDK_MACOSX1013_OBJCFLAGS   ?= -mmacosx-version-min=10.13 -isysroot $(PATH_SDK_MACOSX1013)
+SDK_MACOSX1013_OBJCXXFLAGS ?= -mmacosx-version-min=10.13 -isysroot $(PATH_SDK_MACOSX1013)
+SDK_MACOSX1013_LDFLAGS     ?= -mmacosx-version-min=10.13 -isysroot $(PATH_SDK_MACOSX1013)
 

@@ -1,10 +1,10 @@
-# $Id: W32API.kmk 3418 2020-08-21 11:02:13Z bird $
+# $Id: MACOSX1013INCS.kmk 3401 2020-07-05 15:58:36Z bird $
 ## @file
-# kBuild SDK - w32api (MinGW), targeting x86.
+# kBuild SDK - Mac OS X v10.13 SDK, includes only.
 #
 
 #
-# Copyright (c) 2004-2017 knut st. osmundsen <bird-kBuild-spam-xviiv@anduin.net>
+# Copyright (c) 2008-2020 knut st. osmundsen <bird-kBuild-spam-xx@anduin.net>
 #
 # This file is part of kBuild.
 #
@@ -20,7 +20,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with kBuild; if not, write to the Free Software
-# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #
 #
 # As a special exception you are granted permission to include this file, via
@@ -31,28 +31,19 @@
 #
 #
 
-SDK_W32API := w32api (MinGW), targeting x86.
+ifndef SDK_MACOSX1013
+ include $(KBUILD_PATH)/sdks/MACOSX1013.kmk
+endif
+
+SDK_MACOSX1013INCS := Mac OS X v10.13 SDK, include only.
 
 # SDK Specific Properties
-ifndef PATH_SDK_W32API
- PATH_SDK_W32API := $(wildcard $(KBUILD_DEVTOOLS)/win.x86/w32api/v*)
- ifeq ($(PATH_SDK_W32API),)
-  PATH_SDK_W32API := $(wildcard $(KBUILD_DEVTOOLS)/x86.win32/w32api/v*)
- endif
- ifneq ($(PATH_SDK_W32API),)
-  PATH_SDK_W32API := $(lastword $(sort $(PATH_SDK_W32API)))
- else
-  $(warning kBuild: PATH_SDK_W32API couldn't be determined!)
-  PATH_SDK_W32API := $(KBUILD_DEVTOOLS)/x86.win/w32api/not/found
- endif
+ifndef PATH_SDK_MACOSX1013INCS
+ PATH_SDK_MACOSX1013INCS := $(PATH_SDK_MACOSX1013)
 else
- # Resolve any fancy stuff once and for all.
- PATH_SDK_W32API := $(PATH_SDK_W32API)
+ PATH_SDK_MACOSX1013INCS := $(PATH_SDK_MACOSX1013INCS)
 endif
-PATH_SDK_W32API_INC ?= $(PATH_SDK_W32API)/include
-PATH_SDK_W32API_LIB ?= $(PATH_SDK_W32API)/lib
 
-# General Properties used by kBuild
-SDK_W32API_INCS	?= $(PATH_SDK_W32API_INC)
-SDK_W32API_LIBPATH ?= $(PATH_SDK_W32API_LIB)
+# General Properties (used by kBuild)
+SDK_MACOSX1013INCS_INCS = $(PATH_SDK_MACOSX1013INCS)/usr/include
 
