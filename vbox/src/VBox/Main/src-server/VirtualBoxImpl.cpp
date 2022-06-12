@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 86514 2020-10-10 13:07:10Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 86521 2020-10-11 18:04:47Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -5119,6 +5119,7 @@ HRESULT VirtualBox::i_registerMachine(Machine *aMachine)
  *                  created.
  * @param mediaTreeLock Reference to the AutoWriteLock holding the media tree
  *                  lock, necessary to release it in the right spot.
+ * @param fCalledFromMediumInit Flag whether this is called from Medium::init().
  * @return
  */
 HRESULT VirtualBox::i_registerMedium(const ComObjPtr<Medium> &pMedium,
