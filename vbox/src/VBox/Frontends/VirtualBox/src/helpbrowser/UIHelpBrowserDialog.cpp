@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserDialog.cpp 86913 2020-11-19 10:32:18Z vboxsync $ */
+/* $Id: UIHelpBrowserDialog.cpp 86914 2020-11-19 10:37:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserDialog class implementation.
  */
@@ -72,8 +72,10 @@ UIHelpBrowserDialog::UIHelpBrowserDialog(QWidget *pCenterWidget, const QString &
 
 void UIHelpBrowserDialog::showHelpForKeyword(const QString &strKeyword)
 {
+#if defined(RT_OS_LINUX) && defined(VBOX_WITH_DOCS_QHELP) && (QT_VERSION >= QT_VERSION_CHECK(5, 9, 0))
     if (m_pWidget)
         m_pWidget->showHelpForKeyword(strKeyword);
+#endif
 }
 
 void UIHelpBrowserDialog::retranslateUi()
