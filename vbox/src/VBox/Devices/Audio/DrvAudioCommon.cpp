@@ -1,4 +1,4 @@
-/* $Id: DrvAudioCommon.cpp 88033 2021-03-09 01:31:33Z vboxsync $ */
+/* $Id: DrvAudioCommon.cpp 88034 2021-03-09 01:32:50Z vboxsync $ */
 /** @file
  * Intermedia audio driver, common routines.
  *
@@ -159,7 +159,7 @@ PPDMAUDIODEVICE PDMAudioDeviceAlloc(size_t cb)
     PPDMAUDIODEVICE pDev = (PPDMAUDIODEVICE)RTMemAllocZ(RT_ALIGN_Z(cb, 64));
     if (pDev)
     {
-        pDev->uMagic == PDMAUDIODEVICE_MAGIC;
+        pDev->uMagic = PDMAUDIODEVICE_MAGIC;
         pDev->cbData = (uint32_t)(cb - sizeof(PDMAUDIODEVICE));
         RTListInit(&pDev->Node);
 
