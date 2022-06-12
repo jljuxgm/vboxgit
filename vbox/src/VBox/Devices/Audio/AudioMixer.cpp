@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 88914 2021-05-06 18:58:38Z vboxsync $ */
+/* $Id: AudioMixer.cpp 88915 2021-05-06 19:05:09Z vboxsync $ */
 /** @file
  * Audio mixing routines for multiplexing audio sources in device emulations.
  *
@@ -1699,25 +1699,25 @@ static int audioMixerSinkUpdateOutput(PAUDMIXSINK pSink)
                         cMarkedUnreliable++;
                         pMixStream->fUnreliable = true;
                         Log3Func(("%s: Marked '%s' as unreliable.\n", pSink->pszName, pMixStream->pszName));
-                        pMixStreamMin = pMixStreamMin;
+                        pMixStreamMin = pMixStream;
                     }
                     else
                     {
                         if (!pMixStreamMin || pMixStream->cFramesLastAvail < pMixStreamMin->cFramesLastAvail)
-                            pMixStreamMin = pMixStreamMin;
+                            pMixStreamMin = pMixStream;
                         cReliableStreams++;
                     }
                 }
             }
         }
 
-        if (cMarkedUnreliable == 0 && pMixStreamMin && cReliableStreams > 1)
+        if (cMarkedUnreliable == 0 && cReliableStreams > 1 && pMixStreamMin != NULL)
         {
             cReliableStreams--;
             cMarkedUnreliable++;
             pMixStreamMin->fUnreliable = true;
             Log3Func(("%s: Marked '%s' as unreliable (%u frames).\n",
-                      pSink->pszName, pMixStream->pszName, pMixStream->cFramesLastAvail));
+                      pSink->pszName, pMixStreamMin->pszName, pMixStreamMin->cFramesLastAvail));
         }
 
         if (cMarkedUnreliable > 0)
