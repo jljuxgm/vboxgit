@@ -1,4 +1,4 @@
-/* $Id: UIMediumItem.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIMediumItem.h 88746 2021-04-28 13:08:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumItem class declaration.
  */
@@ -120,14 +120,21 @@ protected:
     virtual QString defaultText() const /* override */;
 
 private:
+
     /** A simple struct used to save some parameters of machine device attachment.
-      * Used for re-attaching the medium to vms after a medium type change. */
+      * Used for re-attaching the medium to VMs after a medium type change. */
     struct AttachmentCache
     {
-        QString m_strControllerName;
-        QUuid   m_uMachineId;
-        LONG    m_port;
-        LONG    m_device;
+        /** Holds the machine ID. */
+        QUuid        m_uMachineId;
+        /** Holds the controller name. */
+        QString      m_strControllerName;
+        /** Holds the controller bus. */
+        KStorageBus  m_enmControllerBus;
+        /** Holds the attachment port. */
+        LONG         m_iAttachmentPort;
+        /** Holds the attachment device. */
+        LONG         m_iAttachmentDevice;
     };
 
     /** Refreshes item information such as icon, text and tool-tip. */
