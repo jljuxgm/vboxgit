@@ -1,4 +1,4 @@
-/* $Id: vfsstddir.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: vfsstddir.cpp 84509 2020-05-25 15:09:24Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Standard Directory Implementation.
  */
@@ -74,6 +74,7 @@ typedef struct RTVFSSTDSYMLINK
     /** Pointer to the VFS directory where the symbolic link lives . */
     PRTVFSSTDDIR    pDir;
     /** The symbolic link name. */
+    RT_FLEXIBLE_ARRAY_EXTENSION
     char            szSymlink[RT_FLEXIBLE_ARRAY];
 } RTVFSSTDSYMLINK;
 /** Pointer to the private data of a standard symbolic link. */

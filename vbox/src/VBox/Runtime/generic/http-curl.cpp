@@ -1,4 +1,4 @@
-/* $Id: http-curl.cpp 83356 2020-03-20 21:30:57Z vboxsync $ */
+/* $Id: http-curl.cpp 84509 2020-05-25 15:09:24Z vboxsync $ */
 /** @file
  * IPRT - HTTP client API, cURL based.
  *
@@ -127,7 +127,8 @@ typedef struct RTHTTPHEADER
     /** The value offset. */
     uint32_t            offValue;
     /** The full header field. */
-    char                szData[RT_FLEXIBLE_ARRAY];
+    RT_FLEXIBLE_ARRAY_EXTENSION
+    RT_GCC_EXTENSION char szData[RT_FLEXIBLE_ARRAY];
 } RTHTTPHEADER;
 /** Pointer to a HTTP header. */
 typedef RTHTTPHEADER *PRTHTTPHEADER;

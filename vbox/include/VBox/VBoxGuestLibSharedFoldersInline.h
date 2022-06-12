@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestLibSharedFoldersInline.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxGuestLibSharedFoldersInline.h 84509 2020-05-25 15:09:24Z vboxsync $ */
 /** @file
  * VBoxGuestLib - Shared Folders Host Request Helpers (ring-0).
  */
@@ -969,6 +969,7 @@ typedef struct VBOXSFREADEMBEDDEDREQ
     VBGLIOCIDCHGCMFASTCALL  Hdr;
     VMMDevHGCMCall          Call;
     VBoxSFParmRead          Parms;
+    RT_FLEXIBLE_ARRAY_EXTENSION
     uint8_t                 abData[RT_FLEXIBLE_ARRAY];
 } VBOXSFREADEMBEDDEDREQ;
 
@@ -1116,6 +1117,7 @@ typedef struct VBOXSFWRITEEMBEDDEDREQ
     VBGLIOCIDCHGCMFASTCALL  Hdr;
     VMMDevHGCMCall          Call;
     VBoxSFParmWrite         Parms;
+    RT_FLEXIBLE_ARRAY_EXTENSION
     uint8_t                 abData[RT_FLEXIBLE_ARRAY];
 } VBOXSFWRITEEMBEDDEDREQ;
 

@@ -1,4 +1,4 @@
-/* $Id: ldrLX.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: ldrLX.cpp 84509 2020-05-25 15:09:24Z vboxsync $ */
 /** @file
  * kLdr - The Module Interpreter for the Linear eXecutable (LX) Format.
  */
@@ -156,6 +156,7 @@ typedef struct KLDRMODLX
     /** Number of segments in aSegments. */
     uint32_t                cSegments;
     /** Segment info. */
+    RT_FLEXIBLE_ARRAY_EXTENSION
     RTLDRSEG                aSegments[RT_FLEXIBLE_ARRAY];
 } KLDRMODLX, *PKLDRMODLX;
 

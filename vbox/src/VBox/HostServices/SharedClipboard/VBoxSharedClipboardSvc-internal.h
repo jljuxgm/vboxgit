@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-internal.h 84142 2020-05-05 07:13:00Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-internal.h 84509 2020-05-25 15:09:24Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Internal header.
  */
@@ -56,6 +56,7 @@ typedef struct _SHCLCLIENTMSG
     /** Number of stored parameters in aParms. */
     uint32_t            cParms;
     /** HGCM parameters. */
+    RT_FLEXIBLE_ARRAY_EXTENSION
     VBOXHGCMSVCPARM     aParms[RT_FLEXIBLE_ARRAY];
 } SHCLCLIENTMSG;
 /** Pointer to a queue message for the guest.   */

@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestControlSvc.cpp 83506 2020-04-01 15:31:48Z vboxsync $ */
+/* $Id: VBoxGuestControlSvc.cpp 84509 2020-05-25 15:09:24Z vboxsync $ */
 /** @file
  * Guest Control Service: Controlling the guest.
  */
@@ -842,6 +842,7 @@ typedef struct GstCtrlPreparedSession
     /** The key size. */
     uint32_t    cbKey;
     /** The key bytes. */
+    RT_FLEXIBLE_ARRAY_EXTENSION
     uint8_t     abKey[RT_FLEXIBLE_ARRAY];
 } GstCtrlPreparedSession;
 

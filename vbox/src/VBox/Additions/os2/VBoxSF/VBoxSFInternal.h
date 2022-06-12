@@ -1,4 +1,4 @@
-/** $Id: VBoxSFInternal.h 79112 2019-06-13 03:33:29Z vboxsync $ */
+/** $Id: VBoxSFInternal.h 84509 2020-05-25 15:09:24Z vboxsync $ */
 /** @file
  * VBoxSF - OS/2 Shared Folder IFS, Internal Header.
  */
@@ -86,6 +86,7 @@ typedef struct VBOXSFFOLDER
     /** The length of the folder name. */
     uint8_t             cchName;
     /** The shared folder name.  If there is a tag it follows as a second string. */
+    RT_FLEXIBLE_ARRAY_EXTENSION
     char                szName[RT_FLEXIBLE_ARRAY];
 } VBOXSFFOLDER;
 /** Pointer to a shared folder. */

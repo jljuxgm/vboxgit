@@ -1,4 +1,4 @@
-/* $Id: VBoxBs3ObjConverter.cpp 83773 2020-04-17 17:50:10Z vboxsync $ */
+/* $Id: VBoxBs3ObjConverter.cpp 84509 2020-05-25 15:09:24Z vboxsync $ */
 /** @file
  * VirtualBox Validation Kit - Boot Sector 3 object file convert.
  */
@@ -3806,6 +3806,7 @@ typedef struct OMFDETAILSALLOC
     /** Pointer to the next allocation. */
     struct OMFDETAILSALLOC *pNext;
     /** The allocated bytes. */
+    RT_FLEXIBLE_ARRAY_EXTENSION
     uint8_t                 abData[RT_FLEXIBLE_ARRAY];
 } OMFDETAILSALLOC;
 typedef OMFDETAILSALLOC *POMFDETAILSALLOC;
@@ -5492,7 +5493,7 @@ int main(int argc, char **argv)
                         break;
 
                     case 'V':
-                        printf("%s\n", "$Revision: 83773 $");
+                        printf("%s\n", "$Revision: 84509 $");
                         return 0;
 
                     case '?':

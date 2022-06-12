@@ -1,4 +1,4 @@
-/* $Id: vfsfss2dir.cpp 84192 2020-05-07 20:56:01Z vboxsync $ */
+/* $Id: vfsfss2dir.cpp 84509 2020-05-25 15:09:24Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, FS write stream dumping in a normal directory.
  *
@@ -64,6 +64,7 @@ typedef struct RTVFSFSSWRITE2DIRENTRY
 #else
     /** The name (relative to RTVFSFSSWRITE2DIR::szBaseDir). */
 #endif
+    RT_FLEXIBLE_ARRAY_EXTENSION
     char            szName[RT_FLEXIBLE_ARRAY];
 } RTVFSFSSWRITE2DIRENTRY;
 /** Pointer to a RTVFSFSSWRITE2DIR undo entry. */
@@ -86,6 +87,7 @@ typedef struct RTVFSFSSWRITE2DIR
     RTVFSDIR        hVfsBaseDir;
 #else
     /** Path to the directory that all operations are relative to. */
+    RT_FLEXIBLE_ARRAY_EXTENSION
     char            szBaseDir[RT_FLEXIBLE_ARRAY];
 #endif
 } RTVFSFSSWRITE2DIR;

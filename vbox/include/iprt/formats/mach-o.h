@@ -1,4 +1,4 @@
-/* $Id: mach-o.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: mach-o.h 84509 2020-05-25 15:09:24Z vboxsync $ */
 /** @file
  * IPRT - Mach-O Structures and Constants.
  */
@@ -631,6 +631,7 @@ typedef struct build_version_command
     uint32_t            minos;      /**< Minimum OS version: 31..16=major, 15..8=minor, 7..0=patch */
     uint32_t            sdk;        /**< SDK version:        31..16=major, 15..8=minor, 7..0=patch */
     uint32_t            ntools;     /**< Number of build_tool_version entries following in aTools. */
+    RT_FLEXIBLE_ARRAY_EXTENSION
     build_tool_version_t aTools[RT_FLEXIBLE_ARRAY];
 } build_version_command_t;
 AssertCompileMemberOffset(build_version_command_t, aTools, 24);

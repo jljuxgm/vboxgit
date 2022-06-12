@@ -1,4 +1,4 @@
-/* $Id: FsPerf.cpp 83986 2020-04-27 08:13:56Z vboxsync $ */
+/* $Id: FsPerf.cpp 84509 2020-05-25 15:09:24Z vboxsync $ */
 /** @file
  * FsPerf - File System (Shared Folders) Performance Benchmark.
  */
@@ -267,6 +267,7 @@ typedef struct FSPERFNAMEENTRY
 {
     RTLISTNODE  Entry;
     uint16_t    cchName;
+    RT_FLEXIBLE_ARRAY_EXTENSION
     char        szName[RT_FLEXIBLE_ARRAY];
 } FSPERFNAMEENTRY;
 typedef FSPERFNAMEENTRY *PFSPERFNAMEENTRY;
@@ -6693,7 +6694,7 @@ int main(int argc, char *argv[])
 
             case 'V':
             {
-                char szRev[] = "$Revision: 83986 $";
+                char szRev[] = "$Revision: 84509 $";
                 szRev[RT_ELEMENTS(szRev) - 2] = '\0';
                 RTPrintf(RTStrStrip(strchr(szRev, ':') + 1));
                 return RTEXITCODE_SUCCESS;

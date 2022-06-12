@@ -1,4 +1,4 @@
-/* $Id: ftp-server.cpp 82842 2020-01-23 10:16:23Z vboxsync $ */
+/* $Id: ftp-server.cpp 84509 2020-05-25 15:09:24Z vboxsync $ */
 /** @file
  * Generic FTP server (RFC 959) implementation.
  * Partly also implements RFC 3659 (Extensions to FTP, for "SIZE", ++).
@@ -104,6 +104,7 @@ typedef struct RTFTPDIRENTRY
     /** The length of szName. */
     size_t      cchName;
     /** The entry name. */
+    RT_FLEXIBLE_ARRAY_EXTENSION
     char        szName[RT_FLEXIBLE_ARRAY];
 } RTFTPDIRENTRY;
 /** Pointer to a FTP directory entry. */

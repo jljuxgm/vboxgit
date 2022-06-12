@@ -1,4 +1,4 @@
-/* $Id: fatvfs.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: fatvfs.cpp 84509 2020-05-25 15:09:24Z vboxsync $ */
 /** @file
  * IPRT - FAT Virtual Filesystem.
  */
@@ -319,6 +319,7 @@ typedef struct RTFSFATCLUSTERMAPCACHE
     /** The cache name. */
     const char             *pszName;
     /** Cache entries. */
+    RT_FLEXIBLE_ARRAY_EXTENSION
     RTFSFATCLUSTERMAPENTRY  aEntries[RT_FLEXIBLE_ARRAY];
 } RTFSFATCLUSTERMAPCACHE;
 /** Pointer to a FAT linear metadata cache. */

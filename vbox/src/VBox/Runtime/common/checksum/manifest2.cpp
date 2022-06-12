@@ -1,4 +1,4 @@
-/* $Id: manifest2.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: manifest2.cpp 84509 2020-05-25 15:09:24Z vboxsync $ */
 /** @file
  * IPRT - Manifest, the core.
  */
@@ -64,6 +64,7 @@ typedef struct RTMANIFESTATTR
     /** Whether it was visited by the equals operation or not. */
     bool                fVisited;
     /** The normalized property name that StrCore::pszString points at. */
+    RT_FLEXIBLE_ARRAY_EXTENSION
     char                szName[RT_FLEXIBLE_ARRAY];
 } RTMANIFESTATTR;
 /** Pointer to a manifest attribute. */

@@ -1,4 +1,4 @@
-/* $Id: iso9660.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: iso9660.h 84509 2020-05-25 15:09:24Z vboxsync $ */
 /** @file
  * IPRT, ISO 9660 File System
  */
@@ -238,6 +238,7 @@ typedef struct ISO9660PATHREC
      * @note Endianess depends on table.  */
     uint16_t            idParentRec;
     /** 0x08: Directory identifier (d-characters or d1-characters). */
+    RT_FLEXIBLE_ARRAY_EXTENSION
     char                achDirId[RT_FLEXIBLE_ARRAY];
     /* There will be a zero padding byte following if the directory identifier length is odd. */
 } ISO9660PATHREC;
@@ -290,6 +291,7 @@ typedef struct ISO9660EXATTRREC
     /** 0x0f6: Length of the application use field. */
     ISO9660U16          cbAppUse;
     /** 0x0fa: Variable sized application use field. */
+    RT_FLEXIBLE_ARRAY_EXTENSION
     uint8_t             abAppUse[RT_FLEXIBLE_ARRAY];
     /* This is followed by escape sequences with length given by cbEscapeSequnces. */
 } ISO9660EXATTRREC;

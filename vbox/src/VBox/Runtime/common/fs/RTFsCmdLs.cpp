@@ -1,4 +1,4 @@
-/* $Id: RTFsCmdLs.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: RTFsCmdLs.cpp 84509 2020-05-25 15:09:24Z vboxsync $ */
 /** @file
  * IPRT - /bin/ls like utility for testing the VFS code.
  */
@@ -63,6 +63,7 @@ typedef struct RTCMDLSENTRY
     /** The length of szName. */
     size_t      cchName;
     /** The entry name. */
+    RT_FLEXIBLE_ARRAY_EXTENSION
     char        szName[RT_FLEXIBLE_ARRAY];
 } RTCMDLSENTRY;
 /** Pointer to a ls display entry. */
@@ -89,6 +90,7 @@ typedef struct RTCMDLSCOLLECTION
     uint64_t        cbTotalFiles;
 
     /** The collection name (path). */
+    RT_FLEXIBLE_ARRAY_EXTENSION
     char            szName[RT_FLEXIBLE_ARRAY];
 } RTCMDLSCOLLECTION;
 /** Pointer to a display entry collection.  */
