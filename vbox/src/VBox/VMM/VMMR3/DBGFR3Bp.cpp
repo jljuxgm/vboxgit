@@ -1,4 +1,4 @@
-/* $Id: DBGFR3Bp.cpp 86726 2020-10-28 10:10:29Z vboxsync $ */
+/* $Id: DBGFR3Bp.cpp 86728 2020-10-28 10:18:28Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Breakpoint Management.
  */
@@ -938,8 +938,8 @@ static int dbgfR3BpInt3L2BstCreate(PUVM pUVM, uint32_t idxL1, uint32_t u32EntryO
  * @returns VBox status code.
  * @param   pUVM                The user mode VM handle.
  * @param   idxL2Root           The index of the tree root in the L2 table.
- * @param   hBpRoot             The node DBGF handle to insert.
- * @param   GCPtrRoot           The nodes GC pointer to use as a key.
+ * @param   hBp                 The node DBGF handle to insert.
+ * @param   GCPtr               The nodes GC pointer to use as a key.
  */
 static int dbgfR3BpInt2L2BstNodeInsert(PUVM pUVM, uint32_t idxL2Root, DBGFBP hBp, RTGCUINTPTR GCPtr)
 {

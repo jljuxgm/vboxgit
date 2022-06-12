@@ -1,4 +1,4 @@
-/* $Id: DBGFInline.h 86726 2020-10-28 10:10:29Z vboxsync $ */
+/* $Id: DBGFInline.h 86728 2020-10-28 10:18:28Z vboxsync $ */
 /** @file
  * DBGF - Internal header file containing the inlined functions.
  */
@@ -94,7 +94,7 @@ DECLINLINE(void) dbgfBpL2TblEntryUpdateLeft(PDBGFBPL2ENTRY pL2Entry, uint32_t id
  *
  * @returns nothing.
  * @param   pL2Entry            The L2 entry to update.
- * @param   idxL2LRight         The new right L2 table index.
+ * @param   idxL2Right          The new right L2 table index.
  * @param   iDepth              The new depth of the tree.
  */
 DECLINLINE(void) dbgfBpL2TblEntryUpdateRight(PDBGFBPL2ENTRY pL2Entry, uint32_t idxL2Right, uint8_t iDepth)
