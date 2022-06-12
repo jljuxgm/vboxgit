@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.h 86731 2020-10-28 10:52:12Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.h 86734 2020-10-28 11:43:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class declaration.
  */
@@ -170,8 +170,9 @@ public:
         void removeCloudEntityKey(const UICloudEntityKey &key);
         /** Returns whether cloud entity @a key is a part of key set currently being updated. */
         bool containsCloudEntityKey(const UICloudEntityKey &key) const;
-        /** Returns whether at least one cloud entity update is in progress. */
-        bool isCloudUpdateInProgress() const;
+
+        /** Returns whether at least one cloud profile currently being updated. */
+        bool isCloudProfileUpdateInProgress() const;
     /** @} */
 
 public slots:

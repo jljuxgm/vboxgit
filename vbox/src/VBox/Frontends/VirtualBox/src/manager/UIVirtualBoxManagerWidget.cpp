@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 86687 2020-10-23 13:46:16Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 86734 2020-10-28 11:43:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -116,9 +116,9 @@ bool UIVirtualBoxManagerWidget::isGroupSavingInProgress() const
     return m_pPaneChooser->isGroupSavingInProgress();
 }
 
-bool UIVirtualBoxManagerWidget::isCloudUpdateInProgress() const
+bool UIVirtualBoxManagerWidget::isCloudProfileUpdateInProgress() const
 {
-    return m_pPaneChooser->isCloudUpdateInProgress();
+    return m_pPaneChooser->isCloudProfileUpdateInProgress();
 }
 
 void UIVirtualBoxManagerWidget::openGroupNameEditor()

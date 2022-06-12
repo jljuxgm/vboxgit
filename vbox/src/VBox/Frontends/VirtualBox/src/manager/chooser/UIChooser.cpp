@@ -1,4 +1,4 @@
-/* $Id: UIChooser.cpp 86655 2020-10-20 14:59:16Z vboxsync $ */
+/* $Id: UIChooser.cpp 86734 2020-10-28 11:43:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooser class implementation.
  */
@@ -45,10 +45,10 @@ bool UIChooser::isGroupSavingInProgress() const
     return model()->isGroupSavingInProgress();
 }
 
-bool UIChooser::isCloudUpdateInProgress() const
+bool UIChooser::isCloudProfileUpdateInProgress() const
 {
     AssertPtrReturn(model(), false);
-    return model()->isCloudUpdateInProgress();
+    return model()->isCloudProfileUpdateInProgress();
 }
 
 UIVirtualMachineItem *UIChooser::currentItem() const

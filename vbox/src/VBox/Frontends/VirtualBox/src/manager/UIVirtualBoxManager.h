@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 86687 2020-10-23 13:46:16Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.h 86734 2020-10-28 11:43:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -359,8 +359,8 @@ private:
         /** Returns whether single cloud profile group is selected. */
         bool isSingleCloudProfileGroupSelected() const;
 
-        /** Returns whether cloud update is in progress. */
-        bool isCloudUpdateInProgress() const;
+        /** Returns whether at least one cloud profile currently being updated. */
+        bool isCloudProfileUpdateInProgress() const;
     /** @} */
 
     /** @name Various VM helpers.

@@ -1,4 +1,4 @@
-/* $Id: UIChooser.h 86655 2020-10-20 14:59:16Z vboxsync $ */
+/* $Id: UIChooser.h 86734 2020-10-28 11:43:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooser class declaration.
  */
@@ -112,8 +112,8 @@ public:
 
     /** @name Cloud update stuff.
       * @{ */
-        /** Returns whether cloud update is in progress. */
-        bool isCloudUpdateInProgress() const;
+        /** Returns whether at least one cloud profile currently being updated. */
+        bool isCloudProfileUpdateInProgress() const;
     /** @} */
 
     /** @name Current-item stuff.
