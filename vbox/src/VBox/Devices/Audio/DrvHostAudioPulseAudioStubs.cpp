@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioPulseAudioStubs.cpp 89424 2021-06-01 10:22:01Z vboxsync $ */
+/* $Id: DrvHostAudioPulseAudioStubs.cpp 89426 2021-06-01 10:24:18Z vboxsync $ */
 /** @file
  * Stubs for libpulse.
  */
@@ -21,10 +21,10 @@
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_DRV_HOST_AUDIO
 #include <iprt/assert.h>
+#include <iprt/errcore.h>
 #include <iprt/ldr.h>
 #include <VBox/log.h>
 #include <iprt/once.h>
-#include <iprt/err.h>
 
 #include <pulse/pulseaudio.h>
 

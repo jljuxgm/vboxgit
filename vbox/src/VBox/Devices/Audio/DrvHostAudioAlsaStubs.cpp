@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioAlsaStubs.cpp 89425 2021-06-01 10:22:23Z vboxsync $ */
+/* $Id: DrvHostAudioAlsaStubs.cpp 89426 2021-06-01 10:24:18Z vboxsync $ */
 /** @file
  * Stubs for libasound.
  */
@@ -17,7 +17,7 @@
 
 #define LOG_GROUP LOG_GROUP_DRV_HOST_AUDIO
 #include <iprt/assert.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/ldr.h>
 #include <VBox/log.h>
 #include <iprt/once.h>
