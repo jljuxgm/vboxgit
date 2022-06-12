@@ -1,4 +1,4 @@
-/* $Id: ioqueue-aiofile-provider.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: ioqueue-aiofile-provider.cpp 86127 2020-09-15 11:21:56Z vboxsync $ */
 /** @file
  * IPRT - I/O queue, Async I/O file provider.
  */
@@ -128,6 +128,14 @@ static DECLCALLBACK(void) rtIoQueueAioFileProv_QueueDestroy(RTIOQUEUEPROV hIoQue
     PRTIOQUEUEPROVINT pThis = hIoQueueProv;
 
     RTFileAioCtxDestroy(pThis->hAioCtx);
+
+    while (pThis->cReqsFree--)
+    {
+        RTFILEAIOREQ hReq = pThis->pahReqsFree[pThis->cReqsFree];
+        RTFileAioReqDestroy(hReq);
+        pThis->pahReqsFree[pThis->cReqsFree] = NULL;
+    }
+
     RTMemFree(pThis->pahReqsFree);
     RTMemFree(pThis->pahReqsToCommit);
     RT_BZERO(pThis, sizeof(*pThis));
