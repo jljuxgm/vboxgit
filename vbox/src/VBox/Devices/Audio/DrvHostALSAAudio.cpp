@@ -1,4 +1,4 @@
-/* $Id: DrvHostALSAAudio.cpp 87300 2021-01-18 14:38:25Z vboxsync $ */
+/* $Id: DrvHostALSAAudio.cpp 87994 2021-03-07 15:22:36Z vboxsync $ */
 /** @file
  * ALSA audio driver.
  */
@@ -1500,7 +1500,7 @@ static DECLCALLBACK(uint32_t) drvHostALSAStreamGetPending(PPDMIHOSTAUDIO pInterf
 
     Log2Func(("cFramesDelay=%RI32, enmState=%d, rc=%d\n", cFramesDelay, enmState, rc));
 
-    return DrvAudioHlpFramesToBytes(cFramesDelay, &pStreamALSA->pCfg->Props);
+    return DrvAudioHlpFramesToBytes(&pStreamALSA->pCfg->Props, cFramesDelay);
 }
 
 
