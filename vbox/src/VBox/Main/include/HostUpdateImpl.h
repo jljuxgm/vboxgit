@@ -1,4 +1,4 @@
-/* $Id: HostUpdateImpl.h 85683 2020-08-11 11:03:42Z vboxsync $ */
+/* $Id: HostUpdateImpl.h 85728 2020-08-12 19:50:53Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -46,7 +46,7 @@ private:
     HRESULT getUpdateURL(com::Utf8Str &aUpdateURL);
     HRESULT getUpdateCheckNeeded(BOOL *aUpdateCheckNeeded);
 
-    Bstr platformInfo();
+    Utf8Str platformInfo();
 
     VirtualBox * const mVirtualBox;
     ComPtr<IHostUpdate> m_pHostUpdate;
