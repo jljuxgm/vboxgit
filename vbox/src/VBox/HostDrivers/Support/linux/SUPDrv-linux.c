@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-linux.c 85431 2020-07-23 11:58:10Z vboxsync $ */
+/* $Id: SUPDrv-linux.c 85505 2020-07-29 10:03:29Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Linux specifics.
  */
@@ -144,9 +144,9 @@ static int force_async_tsc = 0;
  * Memory for the executable memory heap (in IPRT).
  */
 # ifdef DEBUG
-#  define EXEC_MEMORY_SIZE   8388608    /* 8 MB */
+#  define EXEC_MEMORY_SIZE   10485760   /* 10 MB */
 # else
-#  define EXEC_MEMORY_SIZE   2097152    /* 2 MB */
+#  define EXEC_MEMORY_SIZE   8388608    /* 8 MB */
 # endif
 extern uint8_t g_abExecMemory[EXEC_MEMORY_SIZE];
 # ifndef VBOX_WITH_TEXT_MODMEM_HACK
