@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 84687 2020-06-05 08:20:38Z vboxsync $
+# $Id: tdAddBasic1.py 84695 2020-06-05 14:27:38Z vboxsync $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84687 $"
+__version__ = "$Revision: 84695 $"
 
 # Standard Python imports.
 import os;
@@ -315,6 +315,8 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
                     sShellOpt = '/C' if oTestVm.isWindows() or oTestVm.isOS2() else '-c';
                     reporter.log('Loaded processes:');
                     oTxsSession.syncExec(sShell, (sShell, sShellOpt, "tasklist.exe", "/FO", "CSV"), fIgnoreErrors = True);
+                    reporter.log('Listing autostart entries:');
+                    oTxsSession.syncExec("wmic.exe", ("wmic.exe", "startup", "get"), fIgnoreErrors = True);
                     reporter.log('Downloading logs ...');
                     self.txsDownloadFiles(oSession, oTxsSession,
                               [ ( self.getGuestVBoxTrayClientLogFile(oTestVm),
