@@ -1,4 +1,4 @@
-/* $Id: AudioTestServiceProtocol.h 89294 2021-05-26 14:14:21Z vboxsync $ */
+/* $Id: AudioTestServiceProtocol.h 89308 2021-05-27 09:36:18Z vboxsync $ */
 /** @file
  * AudioTestServiceProtocol - Audio test execution server, Protocol Header.
  */
@@ -134,7 +134,7 @@ typedef struct ATSPKTREQTONEPLAY
     PDMAUDIOSTREAMCFG  StreamCfg;
     /** Test tone parameters for playback. */
     AUDIOTESTTONEPARMS ToneParms;
-    uint8_t            aPadding[12];
+    uint8_t            aPadding[4];
 } ATSPKTREQTONEPLAY;
 AssertCompileSizeAlignment(ATSPKTREQTONEPLAY, ATSPKT_ALIGNMENT);
 /** Pointer to a ATSPKTREQTONEPLAY structure. */

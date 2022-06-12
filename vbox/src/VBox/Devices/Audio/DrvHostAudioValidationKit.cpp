@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioValidationKit.cpp 89294 2021-05-26 14:14:21Z vboxsync $ */
+/* $Id: DrvHostAudioValidationKit.cpp 89308 2021-05-27 09:36:18Z vboxsync $ */
 /** @file
  * Host audio driver - ValidationKit - For dumping and injecting audio data from/to the device emulation.
  */
@@ -148,7 +148,7 @@ static DECLCALLBACK(int) drvHostValKitAudioSvcTonePlayCallback(void const *pvUse
     memcpy(&pTestData->StreamCfg,        pStreamCfg, sizeof(PDMAUDIOSTREAMCFG));
     memcpy(&pTestData->t.TestTone.Parms, pToneParms, sizeof(AUDIOTESTTONEPARMS));
 
-    AudioTestToneInit(&pTestData->t.TestTone.Tone, &pStreamCfg->Props, pTestData->t.TestTone.Parms.uFreq);
+    AudioTestToneInit(&pTestData->t.TestTone.Tone, &pStreamCfg->Props, pTestData->t.TestTone.Parms.dbFreqHz);
 
     pTestData->t.TestTone.cbToWrite = PDMAudioPropsMilliToBytes(&pStreamCfg->Props,
                                                                 pTestData->t.TestTone.Parms.msDuration);
