@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 84973 2020-06-26 15:01:28Z vboxsync $
+# $Id: tdAddBasic1.py 84976 2020-06-26 16:00:05Z vboxsync $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84973 $"
+__version__ = "$Revision: 84976 $"
 
 # Standard Python imports.
 import os;
@@ -175,10 +175,11 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
         self.logVmInfo(oVM);
 
         # We skip Linux Guest Additions testing for VBox < 6.1 for now.
-        fVersionIgnored = oTestVm.isLinux() and self.fpApiVer <= 6.1;
+        fVersionIgnored = oTestVm.isLinux() and self.fpApiVer < 6.1;
 
         if fVersionIgnored:
             reporter.log('Skipping testing for "%s" because VBox version %s is ignored' % (oTestVm.sKind, self.fpApiVer,));
+            fRc = True;
         else:
             reporter.testStart('Waiting for TXS');
             if oTestVm.isWindows():
