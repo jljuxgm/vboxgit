@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 87109 2020-12-21 13:19:44Z vboxsync $ */
+/* $Id: DevE1000.cpp 87111 2020-12-21 13:36:06Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -1684,7 +1684,10 @@ DECLINLINE(bool) e1kUpdateTxDContext(PPDMDEVINS pDevIns, PE1KSTATE pThis, PE1KTX
 {
     Assert(e1kCsTxIsOwner(pThis));
     if (!e1kCsTxIsOwner(pThis))
+    {
+        memset(pContext, 0, sizeof(E1KTXDC));
         return false;
+    }
     pContext->tdlen = TDLEN;
     pContext->tdh   = TDH;
     pContext->tdt   = TDT;
