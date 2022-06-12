@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-dx-shader.h 88803 2021-04-30 13:23:05Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-dx-shader.h 88838 2021-05-03 14:21:10Z vboxsync $ */
 /** @file
  * DevVGA - VMWare SVGA device - VGPU10+ (DX) shader utilities.
  */
@@ -27,19 +27,12 @@
 
 #include <iprt/types.h>
 
-/* GCC complains that 'ISO C++ prohibits anonymous structs' when "-Wpedantic" is enabled. */
-#if RT_GNUC_PREREQ(4, 6)
-# pragma GCC diagnostic push
-# pragma GCC diagnostic ignored "-Wpedantic"
-#endif
-/* VMSVGA headers. */
+#include "vmsvga_headers_begin.h"
 #pragma pack(1) /* VMSVGA structures are '__packed'. */
 #include <svga3d_reg.h>
 #include <VGPU10ShaderTokens.h>
 #pragma pack()
-#if RT_GNUC_PREREQ(4, 6)
-# pragma GCC diagnostic pop
-#endif
+#include "vmsvga_headers_end.h"
 
 typedef struct DXShaderInfo
 {
