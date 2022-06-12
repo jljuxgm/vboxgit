@@ -1,4 +1,4 @@
-/* $Id: pdmaudioinline.h 88626 2021-04-21 09:58:08Z vboxsync $ */
+/* $Id: pdmaudioinline.h 88723 2021-04-27 10:03:19Z vboxsync $ */
 /** @file
  * PDM - Audio Helpers, Inlined Code. (DEV,++)
  *
@@ -434,7 +434,7 @@ DECLINLINE(bool) PDMAudioStrmStatusCanRead(PDMAUDIOSTREAMSTS fStatus)
     return (fStatus & (  PDMAUDIOSTREAMSTS_FLAGS_INITIALIZED
                        | PDMAUDIOSTREAMSTS_FLAGS_ENABLED
                        | PDMAUDIOSTREAMSTS_FLAGS_PAUSED
-                       | PDMAUDIOSTREAMSTS_FLAGS_PENDING_REINIT ))
+                       | PDMAUDIOSTREAMSTS_FLAGS_NEED_REINIT ))
         == (  PDMAUDIOSTREAMSTS_FLAGS_INITIALIZED
             | PDMAUDIOSTREAMSTS_FLAGS_ENABLED);
 }
@@ -458,7 +458,7 @@ DECLINLINE(bool) PDMAudioStrmStatusCanWrite(PDMAUDIOSTREAMSTS fStatus)
                        | PDMAUDIOSTREAMSTS_FLAGS_ENABLED
                        | PDMAUDIOSTREAMSTS_FLAGS_PAUSED
                        | PDMAUDIOSTREAMSTS_FLAGS_PENDING_DISABLE
-                       | PDMAUDIOSTREAMSTS_FLAGS_PENDING_REINIT))
+                       | PDMAUDIOSTREAMSTS_FLAGS_NEED_REINIT))
         == (  PDMAUDIOSTREAMSTS_FLAGS_INITIALIZED
             | PDMAUDIOSTREAMSTS_FLAGS_ENABLED);
 }
@@ -478,7 +478,7 @@ DECLINLINE(bool) PDMAudioStrmStatusIsReady(PDMAUDIOSTREAMSTS fStatus)
            && !(fStatus & PDMAUDIOSTREAMSTS_FLAGS_PENDING_REINIT);*/
     return (fStatus & (  PDMAUDIOSTREAMSTS_FLAGS_INITIALIZED
                        | PDMAUDIOSTREAMSTS_FLAGS_ENABLED
-                       | PDMAUDIOSTREAMSTS_FLAGS_PENDING_REINIT))
+                       | PDMAUDIOSTREAMSTS_FLAGS_NEED_REINIT))
         == (  PDMAUDIOSTREAMSTS_FLAGS_INITIALIZED
             | PDMAUDIOSTREAMSTS_FLAGS_ENABLED);
 }
