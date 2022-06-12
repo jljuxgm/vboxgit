@@ -1,4 +1,4 @@
-/* $Id: DevIommuIntel.cpp 88782 2021-04-29 13:28:15Z vboxsync $ */
+/* $Id: DevIommuIntel.cpp 88784 2021-04-29 13:41:46Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - Intel implementation.
  */
@@ -1021,13 +1021,12 @@ static void dmarFaultEventRaiseInterrupt(PPDMDEVINS pDevIns)
     {
         /* Software has unmasked the interrupt, raise it. */
         MSIMSG Msi;
-        Msi.Addr.u64 = RT_MAKE_U64(dmarRegReadRaw32(pThis, VTD_MMIO_OFF_FEADDR_REG),
-                                   dmarRegReadRaw32(pThis, VTD_MMIO_OFF_FEUADDR_REG));
+        Msi.Addr.au32[0] = dmarRegReadRaw32(pThis, VTD_MMIO_OFF_FEADDR_REG);
+        Msi.Addr.au32[1] = dmarRegReadRaw32(pThis, VTD_MMIO_OFF_FEUADDR_REG);
         Msi.Data.u32 = dmarRegReadRaw32(pThis, VTD_MMIO_OFF_FEDATA_REG);
 
         /** @todo Assert Msi.Addr is in the MSR_IA32_APICBASE_ADDR range and ensure on
          *        FEADD_REG write it can't be anything else. */
-
         pThisCC->CTX_SUFF(pIommuHlp)->pfnSendMsi(pDevIns, &Msi, 0 /* uTagSrc */);
 
         /* Clear interrupt pending bit. */
@@ -1063,8 +1062,8 @@ static void dmarR3InvEventRaiseInterrupt(PPDMDEVINS pDevIns)
     {
         /* Software has unmasked the interrupt, raise it. */
         MSIMSG Msi;
-        Msi.Addr.u64 = RT_MAKE_U64(dmarRegReadRaw32(pThis, VTD_MMIO_OFF_IEADDR_REG),
-                                   dmarRegReadRaw32(pThis, VTD_MMIO_OFF_IEUADDR_REG));
+        Msi.Addr.au32[0] = dmarRegReadRaw32(pThis, VTD_MMIO_OFF_IEADDR_REG);
+        Msi.Addr.au32[1] = dmarRegReadRaw32(pThis, VTD_MMIO_OFF_IEUADDR_REG);
         Msi.Data.u32 = dmarRegReadRaw32(pThis, VTD_MMIO_OFF_IEDATA_REG);
 
         pThisCC->CTX_SUFF(pIommuHlp)->pfnSendMsi(pDevIns, &Msi, 0 /* uTagSrc */);
