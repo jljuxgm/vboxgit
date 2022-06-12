@@ -1,4 +1,4 @@
-/* $Id: UISearchLineEdit.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UISearchLineEdit.h 86821 2020-11-06 12:19:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISearchLineEdit class declaration.
  */
@@ -40,7 +40,7 @@ public:
 
     UISearchLineEdit(QWidget *pParent = 0);
     void setMatchCount(int iMatchCount);
-    void setScroolToIndex(int iScrollToIndex);
+    void setScrollToIndex(int iScrollToIndex);
     void reset();
 
 protected:

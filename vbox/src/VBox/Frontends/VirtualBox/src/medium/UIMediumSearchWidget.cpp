@@ -1,4 +1,4 @@
-/* $Id: UIMediumSearchWidget.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIMediumSearchWidget.cpp 86821 2020-11-06 12:19:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSearchWidget class implementation.
  */
@@ -261,5 +261,5 @@ void UIMediumSearchWidget::updateSearchLineEdit(int iMatchCount, int iScrollToIn
     if (!m_pSearchTermLineEdit)
         return;
     m_pSearchTermLineEdit->setMatchCount(iMatchCount);
-    m_pSearchTermLineEdit->setScroolToIndex(iScrollToIndex);
+    m_pSearchTermLineEdit->setScrollToIndex(iScrollToIndex);
 }

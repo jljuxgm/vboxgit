@@ -1,4 +1,4 @@
-/* $Id: UIChooserSearchWidget.cpp 84587 2020-05-28 12:31:13Z vboxsync $ */
+/* $Id: UIChooserSearchWidget.cpp 86821 2020-11-06 12:19:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserSearchWidget class implementation.
  */
@@ -53,7 +53,7 @@ void UIChooserSearchWidget::setScroolToIndex(int iScrollToIndex)
 {
     if (!m_pLineEdit)
         return;
-    m_pLineEdit->setScroolToIndex(iScrollToIndex);
+    m_pLineEdit->setScrollToIndex(iScrollToIndex);
 }
 
 void UIChooserSearchWidget::appendToSearchString(const QString &strSearchText)
