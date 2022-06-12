@@ -1,4 +1,4 @@
-/* $Id: UIHelpViewer.h 89390 2021-05-31 10:14:43Z vboxsync $ */
+/* $Id: UIHelpViewer.h 89409 2021-05-31 17:20:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class declaration.
  */
@@ -75,12 +75,12 @@ public:
     bool hasSelectedText() const;
     static const QPair<int, int> zoomPercentageMinMax;
     void toggleFindInPageWidget(bool fVisible);
-    void reload();
 
 public slots:
 
     void sltSelectPreviousMatch();
     void sltSelectNextMatch();
+    virtual void reload() /* overload */;
 
 protected:
 
