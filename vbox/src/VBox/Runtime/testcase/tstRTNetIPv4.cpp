@@ -1,4 +1,4 @@
-/* $Id: tstRTNetIPv4.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: tstRTNetIPv4.cpp 87338 2021-01-21 02:31:28Z vboxsync $ */
 /** @file
  * IPRT Testcase - IPv4.
  */
@@ -317,7 +317,6 @@ int main()
     BADCIDR("1.2.3.4/0");       /* prefix can't be zero */
     BADCIDR("1.2.3.4/33");      /* prefix is too big */
     BADCIDR("1.2.3.4/-1");      /* prefix is negative */
-    BADCIDR("1.2.3.4/");        /* prefix is missing */
     BADCIDR("1.2.3.4/");        /* prefix is missing */
     BADCIDR("1.2.3.4/a");       /* prefix is not a number */
     BADCIDR("1.2.3.4/0xa");     /* prefix is not decimal */
