@@ -1,4 +1,4 @@
-/* $Id: DBGCEmulateCodeView.cpp 86098 2020-09-13 07:17:19Z vboxsync $ */
+/* $Id: DBGCEmulateCodeView.cpp 86178 2020-09-19 19:38:45Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, CodeView / WinDbg Emulation.
  */
@@ -3148,7 +3148,7 @@ static DECLCALLBACK(int) dbgcCmdDumpDT(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, PUVM
         cArgs = 1;
         paArgs = &Var;
         Var.enmType = DBGCVAR_TYPE_NUMBER;
-        Var.u.u64Number = 0;
+        Var.u.u64Number = fGdt ? 0 : 4;
         Var.enmRangeType = DBGCVAR_RANGE_ELEMENTS;
         Var.u64Range = 1024;
     }
