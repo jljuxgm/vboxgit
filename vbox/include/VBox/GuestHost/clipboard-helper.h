@@ -1,4 +1,4 @@
-/* $Id: clipboard-helper.h 85856 2020-08-21 09:06:50Z vboxsync $ */
+/* $Id: clipboard-helper.h 86959 2020-11-23 11:25:53Z vboxsync $ */
 /** @file
  * Shared Clipboard - Some helper function for converting between the various EOLs.
  */
@@ -233,6 +233,8 @@ const char *ShClHostMsgToStr(uint32_t uMsg);
  * @param   uMsg                The message to translate.
  */
 const char *ShClGuestMsgToStr(uint32_t uMsg);
+
+char *ShClFormatsToStrA(SHCLFORMATS fFormats);
 
 #endif /* !VBOX_INCLUDED_GuestHost_clipboard_helper_h */
 
