@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVRDE.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: DrvAudioVRDE.cpp 87995 2021-03-07 19:44:29Z vboxsync $ */
 /** @file
  * VRDE audio backend for Main.
  */
@@ -94,7 +94,7 @@ static int vrdeCreateStreamIn(PVRDESTREAM pStreamVRDE, PPDMAUDIOSTREAMCFG pCfgRe
     /* According to the VRDP docs, the VRDP server stores audio in 200ms chunks. */
     const uint32_t cFramesVrdpServer = DrvAudioHlpMilliToFrames(200  /* ms */, &pCfgAcq->Props);
 
-    int rc = RTCircBufCreate(&pStreamVRDE->In.pCircBuf, DrvAudioHlpFramesToBytes(cFramesVrdpServer, &pCfgAcq->Props));
+    int rc = RTCircBufCreate(&pStreamVRDE->In.pCircBuf, DrvAudioHlpFramesToBytes(&pCfgAcq->Props, cFramesVrdpServer));
     if (RT_SUCCESS(rc))
     {
         /*
