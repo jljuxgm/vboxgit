@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwipNAT.cpp 87723 2021-02-11 13:55:09Z vboxsync $ */
+/* $Id: VBoxNetLwipNAT.cpp 87738 2021-02-12 16:30:08Z vboxsync $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -77,7 +77,6 @@
 
 #include <stdio.h>
 
-#include "../NetLib/VBoxNetLib.h"
 #include "../NetLib/VBoxNetBaseService.h"
 #include "../NetLib/utils.h"
 #include "../NetLib/VBoxPortForwardString.h"
