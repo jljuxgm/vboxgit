@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 86327 2020-09-28 16:20:50Z vboxsync $ */
+/* $Id: VM.cpp 88689 2021-04-23 19:25:21Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -493,7 +493,8 @@ static int vmR3CreateUVM(uint32_t cCpus, PCVMM2USERMETHODS pVmm2UserMethods, PUV
                                 for (i = 0; i < cCpus; i++)
                                 {
                                     rc = RTThreadCreateF(&pUVM->aCpus[i].vm.s.ThreadEMT, vmR3EmulationThread, &pUVM->aCpus[i],
-                                                         _1M, RTTHREADTYPE_EMULATION, RTTHREADFLAGS_WAITABLE,
+                                                         _1M, RTTHREADTYPE_EMULATION,
+                                                         RTTHREADFLAGS_WAITABLE | RTTHREADFLAGS_COM_MTA,
                                                          cCpus > 1 ? "EMT-%u" : "EMT", i);
                                     if (RT_FAILURE(rc))
                                         break;
