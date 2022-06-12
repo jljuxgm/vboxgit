@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 84599 2020-05-29 01:12:32Z vboxsync $
+# $Id: base.py 84603 2020-05-29 09:05:10Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84599 $"
+__version__ = "$Revision: 84603 $"
 
 
 # Standard python imports.
@@ -1099,7 +1099,7 @@ class ModelDataBase(ModelBase): # pylint: disable=too-few-public-methods
         return sJson + u' ]';
 
     @staticmethod
-    def datetimeToJson(oDateTime, dOptions = None):
+    def datetimeToJson(oDateTime):
         """ Converts a datetime instance to a JSON string. """
         return '"%s"' % (oDateTime,);
 
@@ -1114,7 +1114,7 @@ class ModelDataBase(ModelBase): # pylint: disable=too-few-public-methods
         if isinstance(oValue, (list, tuple, set, frozenset)):
             return ModelDataBase.listToJson(oValue, dOptions);
         if isinstance(oValue, datetime.datetime):
-            return ModelDataBase.datetimeToJson(oValue, dOptions)
+            return ModelDataBase.datetimeToJson(oValue)
         return json.dumps(oValue);
 
     def attribValueToJson(self, sAttr, oValue, dOptions = None):
