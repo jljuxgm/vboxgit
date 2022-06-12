@@ -1,4 +1,4 @@
-/* $Id: DevIommuIntel.cpp 88327 2021-03-31 03:00:55Z vboxsync $ */
+/* $Id: DevIommuIntel.cpp 88328 2021-03-31 04:07:48Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - Intel implementation.
  */
@@ -160,7 +160,7 @@ typedef struct IOMMURC
 /** Pointer to the raw-mode IOMMU device state. */
 typedef IOMMURC *PIOMMURC;
 /** Pointer to the const raw-mode IOMMU device state. */
-typedef const IOMMURC *CPIOMMURC;
+typedef const IOMMURC *PCIOMMURC;
 
 /** The IOMMU device state for the current context. */
 typedef CTX_SUFF(IOMMU)  IOMMUCC;
