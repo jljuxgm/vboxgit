@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: webservergluebase.py 84604 2020-05-29 09:09:31Z vboxsync $
+# $Id: webservergluebase.py 86974 2020-11-25 14:38:52Z vboxsync $
 
 """
 Test Manager Core - Web Server Abstraction Base Class.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84604 $"
+__version__ = "$Revision: 86974 $"
 
 
 # Standard python imports.
@@ -278,6 +278,12 @@ class WebServerGlueBase(object):
         Returns file object for reading the HTML body.
         """
         raise WebServerGlueException('getUrlPath is not implemented');
+
+    def getBodyIoStreamBinary(self):
+        """
+        Returns file object for reading the binary HTML body.
+        """
+        raise WebServerGlueException('getBodyIoStreamBinary is not implemented');
 
     #
     # Output stuff.

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: webservergluecgi.py 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: webservergluecgi.py 86974 2020-11-25 14:38:52Z vboxsync $
 
 """
 Test Manager Core - Web Server Abstraction Base Class.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 82968 $"
+__version__ = "$Revision: 86974 $"
 
 
 # Standard python imports.
@@ -82,4 +82,9 @@ class WebServerGlueCgi(WebServerGlueBase):
 
     def getBodyIoStream(self):
         return sys.stdin;
+
+    def getBodyIoStreamBinary(self):
+        # Python 3: sys.stdin.read() returns a string. To get untranslated
+        #           binary data we use the sys.stdin.buffer object instead.
+        return getattr(sys.stdin, 'buffer', sys.stdin);
 

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testboxcontroller.py 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: testboxcontroller.py 86974 2020-11-25 14:38:52Z vboxsync $
 
 """
 Test Manager Core - Web Server Abstraction Base Class.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 82968 $"
+__version__ = "$Revision: 86974 $"
 
 
 # Standard python imports.
@@ -729,7 +729,7 @@ class TestBoxController(object): # pylint: disable=too-few-public-methods
                                                 cbFile = cbFile, fCommit = True);
 
         offFile  = 0;
-        oSrcFile = self._oSrvGlue.getBodyIoStream();
+        oSrcFile = self._oSrvGlue.getBodyIoStreamBinary();
         while offFile < cbFile:
             cbToRead = cbFile - offFile;
             if cbToRead > 256*1024:
