@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 88452 2021-04-10 00:19:06Z vboxsync $ */
+/* $Id: AudioMixer.cpp 88720 2021-04-26 22:46:21Z vboxsync $ */
 /** @file
  * Audio mixing routines for multiplexing audio sources in device emulations.
  *
@@ -1829,8 +1829,8 @@ static int audioMixerSinkUpdateOutput(PAUDMIXSINK pSink)
                         /* Write it to the backend.  Since've checked that there is buffer
                            space available, this should always write the whole buffer. */
                         uint32_t cbDstWritten = 0;
-                        int rc2 = pMixStream->pConn->pfnStreamWrite(pMixStream->pConn, pMixStream->pStream,
-                                                                    &Buf, cbDstPeeked, &cbDstWritten);
+                        int rc2 = pMixStream->pConn->pfnStreamPlay(pMixStream->pConn, pMixStream->pStream,
+                                                                   &Buf, cbDstPeeked, &cbDstWritten);
                         Log3Func(("%s: %#x L %#x => %#x bytes; wrote %#x rc2=%Rrc %s\n", pSink->pszName, offSrcFrame,
                                   cSrcFramesPeeked - cSrcFramesPeeked, cbDstPeeked, cbDstWritten, rc2, pMixStream->pszName));
                         if (RT_SUCCESS(rc2))
@@ -1875,7 +1875,7 @@ static int audioMixerSinkUpdateOutput(PAUDMIXSINK pSink)
     }
 
     /*
-     * Iterate buffers (pfnStreamPlay is not used any more).
+     * Iterate buffers.
      */
     RTListForEach(&pSink->lstStreams, pMixStream, AUDMIXSTREAM, Node)
     {
