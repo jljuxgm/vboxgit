@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.h 83840 2020-04-20 09:16:29Z vboxsync $ */
+/* $Id: VBoxMPWddm.h 84658 2020-06-03 11:30:37Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -37,6 +37,7 @@
 #define VBOXWDDM_CFG_LOG_UM_BACKDOOR 0x00000001
 #define VBOXWDDM_CFG_LOG_UM_DBGPRINT 0x00000002
 #define VBOXWDDM_CFG_STR_LOG_UM L"VBoxLogUm"
+#define VBOXWDDM_CFG_STR_RATE L"RefreshRate"
 
 #define VBOXWDDM_REG_DRV_FLAGS_NAME L"VBoxFlags"
 #define VBOXWDDM_REG_DRV_DISPFLAGS_PREFIX L"VBoxDispFlags"
@@ -56,6 +57,7 @@
 #define VBOXWDDM_REG_DISPLAYSETTINGS_ATTACH_DESKTOP L"Attach.ToDesktop"
 
 extern DWORD g_VBoxLogUm;
+extern DWORD g_RefreshRate;
 
 RT_C_DECLS_BEGIN
 NTSTATUS DriverEntry(IN PDRIVER_OBJECT DriverObject, IN PUNICODE_STRING RegistryPath);

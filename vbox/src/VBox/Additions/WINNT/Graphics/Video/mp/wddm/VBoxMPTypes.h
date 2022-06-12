@@ -1,4 +1,4 @@
-/* $Id: VBoxMPTypes.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxMPTypes.h 84658 2020-06-03 11:30:37Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -37,6 +37,8 @@ typedef struct VBOXWDDM_ALLOCATION *PVBOXWDDM_ALLOCATION;
 #if 0
 #include <iprt/avl.h>
 #endif
+
+#define VBOXWDDM_DEFAULT_REFRESH_RATE 60
 
 #ifndef VBOX_WITH_MESA3D
 /* one page size */
