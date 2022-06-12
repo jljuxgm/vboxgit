@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 88801 2021-04-30 12:58:12Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 88802 2021-04-30 13:07:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -1644,7 +1644,9 @@ void UIMachineLogic::sltShowSoftKeyboard()
 
 void UIMachineLogic::sltCloseSoftKeyboard()
 {
-    delete m_pSoftKeyboardDialog;
+    if (!m_pSoftKeyboardDialog)
+        return;
+    m_pSoftKeyboardDialog->deleteLater();
     m_pSoftKeyboardDialog = 0;
 }
 
