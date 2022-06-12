@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 87767 2021-02-16 16:41:18Z vboxsync $ */
+/* $Id: DevPCNet.cpp 87768 2021-02-16 17:18:38Z vboxsync $ */
 /** @file
  * DevPCNet - AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  *
@@ -5053,7 +5053,7 @@ static DECLCALLBACK(void) pcnetR3Reset(PPDMDEVINS pDevIns)
     {
         pThis->cLinkDownReported = 0x10000;
         PDMDevHlpTimerStop(pDevIns, pThis->hTimerRestore);
-        pcnetR3TimerRestore(pDevIns, NULL /* pTimer - not used */, pThis);
+        pcnetR3TimerRestore(pDevIns, pThis->hTimerRestore, pThis);
     }
 
     /** @todo How to flush the queues? */
