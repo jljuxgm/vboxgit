@@ -1,4 +1,4 @@
-/* $Id: DevIommuAmd.cpp 88998 2021-05-12 06:56:32Z vboxsync $ */
+/* $Id: DevIommuAmd.cpp 89034 2021-05-13 14:14:49Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - AMD implementation.
  */
@@ -2790,6 +2790,7 @@ static VBOXSTRICTRC iommuAmdRegisterWrite(PPDMDEVINS pDevIns, uint32_t off, uint
     Assert(off & 7);
     Assert(off >= 4);
     uint64_t u64Read;
+    IOMMU_LOCK_RET(pDevIns, pThisCC, VINF_IOM_R3_MMIO_WRITE);
     if (pReg->pfnRead)
         rcStrict = pReg->pfnRead(pDevIns, pThis, off - 4, &u64Read);
     else
