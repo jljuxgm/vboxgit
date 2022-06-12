@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 83104 2020-02-18 03:35:51Z vboxsync $ */
+/* $Id: DevACPI.cpp 85347 2020-07-15 10:17:15Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -195,7 +195,9 @@ enum
     SYSTEM_INFO_INDEX_PARALLEL1_IRQ     = 29,
     SYSTEM_INFO_INDEX_PREF64_MEMORY_MAX = 30,
     SYSTEM_INFO_INDEX_NVME_ADDRESS      = 31, /**< First NVMe controller PCI address, or 0 */
-    SYSTEM_INFO_INDEX_END               = 32,
+    SYSTEM_INFO_INDEX_IOMMU_AMD_ADDRESS = 32, /**< AMD IOMMU PCI address, or 0 */
+    SYSTEM_INFO_INDEX_SB_IOAPIC_ADDRESS = 33, /**< Southbridge I/O APIC (needed by AMD IOMMU) PCI address, or 0 */
+    SYSTEM_INFO_INDEX_END               = 34,
     SYSTEM_INFO_INDEX_INVALID           = 0x80,
     SYSTEM_INFO_INDEX_VALID             = 0x200
 };
