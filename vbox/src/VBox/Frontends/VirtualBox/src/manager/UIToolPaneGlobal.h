@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneGlobal.h 86687 2020-10-23 13:46:16Z vboxsync $ */
+/* $Id: UIToolPaneGlobal.h 86997 2020-11-26 17:22:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolPaneGlobal class declaration.
  */
@@ -33,8 +33,8 @@ class QStackedLayout;
 class QVBoxLayout;
 class UIActionPool;
 class UICloudProfileManagerWidget;
-class UIHostNetworkManagerWidget;
 class UIMediumManagerWidget;
+class UINetworkManagerWidget;
 class UIResourceMonitorWidget;
 class UIVirtualMachineItem;
 class UIWelcomePane;
@@ -94,7 +94,7 @@ private:
     /** Holds the Virtual Media Manager instance. */
     UIMediumManagerWidget       *m_pPaneMedia;
     /** Holds the Host Network Manager instance. */
-    UIHostNetworkManagerWidget  *m_pPaneNetwork;
+    UINetworkManagerWidget      *m_pPaneNetwork;
     /** Holds the Cloud Profile Manager instance. */
     UICloudProfileManagerWidget *m_pPaneCloud;
     /** Holds the VM Resource Monitor instance. */
