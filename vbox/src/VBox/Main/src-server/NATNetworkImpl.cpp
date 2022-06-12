@@ -1,4 +1,4 @@
-/* $Id: NATNetworkImpl.cpp 87688 2021-02-10 15:28:46Z vboxsync $ */
+/* $Id: NATNetworkImpl.cpp 87948 2021-03-04 12:24:04Z vboxsync $ */
 /** @file
  * INATNetwork implementation.
  */
@@ -208,7 +208,7 @@ HRESULT NATNetwork::getNetworkName(com::Utf8Str &aNetworkName)
 
 HRESULT NATNetwork::setNetworkName(const com::Utf8Str &aNetworkName)
 {
-    if (m->s.strNetworkName.isEmpty())
+    if (aNetworkName.isEmpty())
         return setError(E_INVALIDARG,
                         tr("Network name cannot be empty"));
     {
