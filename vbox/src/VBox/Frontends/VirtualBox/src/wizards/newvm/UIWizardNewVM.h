@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.h 87872 2021-02-25 10:55:32Z vboxsync $ */
+/* $Id: UIWizardNewVM.h 87885 2021-02-26 13:23:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class declaration.
  */
@@ -119,6 +119,9 @@ private:
     QString getNextControllerName(KStorageBus type);
     void setFieldsFromDefaultUnttendedInstallData();
 
+    CMedium virtualDisk() const;
+    void setVirtualDisk(const CMedium &medium);
+
     /* Variables: */
     CMachine m_machine;
     QString m_strGroup;
@@ -128,7 +131,6 @@ private:
     int m_iFloppyCount;
     int m_iSASCount;
     int m_iUSBCount;
-    CMedium m_virtualDisk;
 
     mutable UIUnattendedInstallData m_unattendedInstallData;
 };

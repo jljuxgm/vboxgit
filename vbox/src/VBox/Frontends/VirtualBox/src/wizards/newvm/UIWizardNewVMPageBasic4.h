@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic4.h 87883 2021-02-26 10:45:10Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic4.h 87885 2021-02-26 13:23:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic4 class declaration.
  */
@@ -41,6 +41,11 @@ class UIMediaComboBox;
 class UIWizardNewVMPage4 : public UIWizardPageBase
 {
 
+public:
+
+    const CMedium &virtualDisk() const { return m_virtualDisk; }
+    void setVirtualDisk(const CMedium &virtualDisk) { m_virtualDisk = virtualDisk; }
+
 protected:
 
     /** Constructor. */
@@ -54,8 +59,6 @@ protected:
 
     /** @name Property getters/setters
      * @{ */
-       CMedium virtualDisk() const { return m_virtualDisk; }
-       void setVirtualDisk(const CMedium &virtualDisk) { m_virtualDisk = virtualDisk; }
        QUuid virtualDiskId() const { return m_uVirtualDiskId; }
        void setVirtualDiskId(const QUuid &uVirtualDiskId) { m_uVirtualDiskId = uVirtualDiskId; }
     /** @} */
