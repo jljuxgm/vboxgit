@@ -1,4 +1,4 @@
-/* $Id: DevPCI.cpp 85478 2020-07-27 18:20:55Z vboxsync $ */
+/* $Id: DevPCI.cpp 87789 2021-02-18 15:16:05Z vboxsync $ */
 /** @file
  * DevPCI - PCI BUS Device.
  *
@@ -655,20 +655,24 @@ static void pci_bios_init_device(PPDMDEVINS pDevIns, PDEVPCIROOT pGlobals, PDEVP
                         else
                         {
                             paddr = &pGlobals->uPciBiosMmio;
-                            bool fPrefetch =    (u8ResourceType & ((uint8_t)(PCI_ADDRESS_SPACE_MEM_PREFETCH | PCI_ADDRESS_SPACE_IO)))
-                                             == PCI_ADDRESS_SPACE_MEM_PREFETCH;
-
-                            if (devclass == 0x0300 && (vendor_id == 0x80ee || vendor_id == 0x15ad) && fPrefetch)
+                            if (devclass == 0x0300)
                             {
-                                /* VGA: map frame buffer to default Bochs VBE address */
-                                paddr = &uPciBiosSpecialVRAM;
                                 /*
-                                 * For VBoxVGA must enable I/O decoding, because legacy
-                                 * VGA I/O ports are implicitly decoded by a VGA class
-                                 * device. Not needed for VMSVGA or VBoxSVGA, because
-                                 * they have an explicit I/O BAR.
+                                 * Because legacy VGA I/O ports are implicitly decoded
+                                 * by a VGA class device without needing a BAR, we must
+                                 * enable I/O decoding for such devices.
                                  */
                                 fActiveIORegion = true;
+
+                                if (vendor_id == 0x80ee || vendor_id == 0x15ad)
+                                {
+                                    bool fPrefetch =    (u8ResourceType & ((uint8_t)(PCI_ADDRESS_SPACE_MEM_PREFETCH | PCI_ADDRESS_SPACE_IO)))
+                                                     == PCI_ADDRESS_SPACE_MEM_PREFETCH;
+                                    /* VGA: map frame buffer to default Bochs VBE address. Only
+                                     * needed for legacy guest drivers. */
+                                    if (fPrefetch)
+                                        paddr = &uPciBiosSpecialVRAM;
+                                }
                             }
                         }
                         uint32_t uNew = *paddr;
