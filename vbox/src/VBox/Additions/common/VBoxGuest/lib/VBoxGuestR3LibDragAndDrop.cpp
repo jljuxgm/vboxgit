@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibDragAndDrop.cpp 85022 2020-07-01 11:45:34Z vboxsync $ */
+/* $Id: VBoxGuestR3LibDragAndDrop.cpp 85023 2020-07-01 11:47:15Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Drag & Drop.
  */
@@ -1066,7 +1066,7 @@ VBGLR3DECL(int) VbglR3DnDConnect(PVBGLR3GUESTDNDCMDCTX pCtx)
      *       does not implement this command.
      */
     HGCMMsgConnect Msg;
-    VBGL_HGCM_HDR_INIT(&Msg.hdr, pCtx->uClientID, GUEST_DND_CONNECT, 2);
+    VBGL_HGCM_HDR_INIT(&Msg.hdr, pCtx->uClientID, GUEST_DND_CONNECT, 3);
     /** @todo Context ID not used yet. */
     Msg.u.v3.uContext.SetUInt32(0);
     Msg.u.v3.uProtocol.SetUInt32(pCtx->uProtocol);
