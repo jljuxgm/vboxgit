@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 87024 2020-12-01 14:59:35Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 87104 2020-12-18 18:04:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -3238,7 +3238,7 @@ void UIMessageCenter::sltShowUserManual(const QString &strLocation)
     AssertRC(rc);
     QProcess::startDetached(QString(szViewerPath) + "/kchmviewer", QStringList(strLocation));
 # else /* #ifndef VBOX_OSE */
-    vboxGlobal().openURL("file://" + strLocation);
+    uiCommon().openURL("file://" + strLocation);
 # endif /* #ifdef VBOX_OSE */
 #elif defined (VBOX_WS_MAC)
     uiCommon().openURL("file://" + strLocation);
