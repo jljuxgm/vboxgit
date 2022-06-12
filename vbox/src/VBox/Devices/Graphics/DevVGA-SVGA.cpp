@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 87633 2021-02-05 21:37:09Z vboxsync $ */
+/* $Id: DevVGA-SVGA.cpp 88538 2021-04-15 12:47:26Z vboxsync $ */
 /** @file
  * VMware SVGA device.
  *
@@ -1888,7 +1888,7 @@ static VBOXSTRICTRC vmsvgaWritePort(PPDMDEVINS pDevIns, PVGASTATE pThis, PVGASTA
 
         case SVGA_REG_WIDTH:
             STAM_REL_COUNTER_INC(&pThis->svga.StatRegWidthWr);
-            if (pThis->svga.uWidth != u32)
+            if (u32 <= pThis->svga.u32MaxWidth && u32 != pThis->svga.uWidth)
             {
 #if defined(IN_RING3) || defined(IN_RING0)
                 pThis->svga.uWidth = u32;
@@ -1904,7 +1904,7 @@ static VBOXSTRICTRC vmsvgaWritePort(PPDMDEVINS pDevIns, PVGASTATE pThis, PVGASTA
 
         case SVGA_REG_HEIGHT:
             STAM_REL_COUNTER_INC(&pThis->svga.StatRegHeightWr);
-            if (pThis->svga.uHeight != u32)
+            if (u32 <= pThis->svga.u32MaxHeight && u32 != pThis->svga.uHeight)
             {
                 pThis->svga.uHeight = u32;
                 if (pThis->svga.fEnabled)
