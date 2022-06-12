@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityMonitor.cpp 88748 2021-04-28 14:50:26Z vboxsync $ */
+/* $Id: UIVMActivityMonitor.cpp 88749 2021-04-28 14:55:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMActivityMonitor class implementation.
  */
@@ -684,6 +684,7 @@ void UIMetric::addData(int iDataSeriesIndex, quint64 iData)
     if (m_data[iDataSeriesIndex].size() > g_iMaximumQueueSize)
     {
         bool fSearchMax = false;
+        /* Check if the dequeued value is the Max value. In which case we will scan and find a new Max: */
         if (m_fAutoUpdateMaximum && m_data[iDataSeriesIndex].head() >= m_iMaximum)
             fSearchMax = true;
         m_data[iDataSeriesIndex].dequeue();
