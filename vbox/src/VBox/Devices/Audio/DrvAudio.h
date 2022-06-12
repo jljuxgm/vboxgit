@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.h 88041 2021-03-09 12:40:47Z vboxsync $ */
+/* $Id: DrvAudio.h 88044 2021-03-09 13:18:37Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  */
@@ -210,20 +210,19 @@ int DrvAudioHlpFileNameGet(char *pszFile, size_t cchFile, const char *pszPath, c
  * @{ */
 PPDMAUDIODEVICE PDMAudioDeviceAlloc(size_t cb);
 void            PDMAudioDeviceFree(PPDMAUDIODEVICE pDev);
-PPDMAUDIODEVICE PDMAudioDeviceDup(const PPDMAUDIODEVICE pDev, bool fCopyUserData);
+PPDMAUDIODEVICE PDMAudioDeviceDup(const PPDMAUDIODEVICE pDev, bool fOnlyCoreData);
 /** @}  */
 
 /** @name Audio device enumeration methods.
  * @{ */
-int DrvAudioHlpDeviceEnumInit(PPDMAUDIODEVICEENUM pDevEnm);
-void DrvAudioHlpDeviceEnumFree(PPDMAUDIODEVICEENUM pDevEnm);
-int DrvAudioHlpDeviceEnumAdd(PPDMAUDIODEVICEENUM pDevEnm, PPDMAUDIODEVICE pDev);
-/*PPDMAUDIODEVICEENUM DrvAudioHlpDeviceEnumDup(const PPDMAUDIODEVICEENUM pDevEnm); - unused */
-int DrvAudioHlpDeviceEnumCopy(PPDMAUDIODEVICEENUM pDstDevEnm, PCPDMAUDIODEVICEENUM pSrcDevEnm);
-int DrvAudioHlpDeviceEnumCopyEx(PPDMAUDIODEVICEENUM pDstDevEnm, PCPDMAUDIODEVICEENUM pSrcDevEnm, PDMAUDIODIR enmUsage, bool fCopyUserData);
-PPDMAUDIODEVICE DrvAudioHlpDeviceEnumGetDefaultDevice(PCPDMAUDIODEVICEENUM pDevEnm, PDMAUDIODIR enmDir);
-uint32_t    DrvAudioHlpDeviceEnumGetDeviceCount(PCPDMAUDIODEVICEENUM pDevEnm, PDMAUDIODIR enmUsage);
-void        DrvAudioHlpDeviceEnumLog(PCPDMAUDIODEVICEENUM pDevEnm, const char *pszDesc);
+void            PDMAudioHostEnumInit(PPDMAUDIOHOSTENUM pDevEnm);
+void            PDMAudioHostEnumDelete(PPDMAUDIOHOSTENUM pDevEnm);
+void            PDMAudioHostEnumAppend(PPDMAUDIOHOSTENUM pDevEnm, PPDMAUDIODEVICE pDev);
+int             PDMAudioHostEnumCopy(PPDMAUDIOHOSTENUM pDstDevEnm, PCPDMAUDIOHOSTENUM pSrcDevEnm,
+                                     PDMAUDIODIR enmUsage, bool fOnlyCoreData);
+PPDMAUDIODEVICE PDMAudioHostEnumGetDefault(PCPDMAUDIOHOSTENUM pDevEnm, PDMAUDIODIR enmDir);
+uint32_t        PDMAudioHostEnumCountMatching(PCPDMAUDIOHOSTENUM pDevEnm, PDMAUDIODIR enmUsage);
+void            PDMAudioHostEnumLog(PCPDMAUDIOHOSTENUM pDevEnm, const char *pszDesc);
 /** @}  */
 
 /** @name Audio string-ify methods.
