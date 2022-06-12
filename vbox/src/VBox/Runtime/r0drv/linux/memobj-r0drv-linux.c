@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-linux.c 87074 2020-12-09 18:59:04Z vboxsync $ */
+/* $Id: memobj-r0drv-linux.c 87180 2021-01-05 16:35:27Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Linux.
  */
@@ -600,7 +600,11 @@ static int rtR0MemObjLinuxVMap(PRTR0MEMOBJLNX pMemLnx, bool fExecutable)
 # ifdef IPRT_USE_ALLOC_VM_AREA_FOR_EXEC
         if (fExecutable)
         {
+#  if RTLNX_VER_MIN(3,2,51)
             pte_t **papPtes = (pte_t **)kmalloc_array(pMemLnx->cPages, sizeof(papPtes[0]), GFP_KERNEL);
+#  else
+            pte_t **papPtes = (pte_t **)kmalloc(pMemLnx->cPages * sizeof(papPtes[0]), GFP_KERNEL);
+#  endif
             if (papPtes)
             {
                 pMemLnx->pArea = alloc_vm_area(pMemLnx->Core.cb, papPtes); /* Note! pArea->nr_pages is not set. */
