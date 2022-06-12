@@ -1,4 +1,4 @@
-/* $Id: rest-primary-object-types.cpp 85084 2020-07-07 16:53:19Z vboxsync $ */
+/* $Id: rest-primary-object-types.cpp 87619 2021-02-05 03:39:42Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestObjectBase implementation.
  */
@@ -2266,6 +2266,12 @@ int RTCRestDataObject::deserializeMemberFromJson(RTCRestJsonCursor const &a_rCur
 
 int RTCRestDataObject::deserializeFromJson(RTCRestJsonCursor const &a_rCursor) RT_NOEXCEPT
 {
+    if (RTJsonValueGetType(a_rCursor.m_hValue) == RTJSONVALTYPE_NULL)
+    {
+        setNull();
+        return VINF_SUCCESS;
+    }
+
     /*
      * Make sure the object starts out with default values.
      */
