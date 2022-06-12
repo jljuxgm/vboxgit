@@ -1,4 +1,4 @@
-/* $Id: DevIommuAmd.cpp 87838 2021-02-23 06:53:00Z vboxsync $ */
+/* $Id: DevIommuAmd.cpp 87839 2021-02-23 07:30:40Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - AMD implementation.
  */
@@ -6514,6 +6514,15 @@ static DECLCALLBACK(int) iommuAmdR3LoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM,
     rc = pHlp->pfnSSMGetU64(pSSM, &pThis->PprLogBOverflowEarly.u64);
     AssertRCReturn(rc, rc);
     Assert(!pThis->ExtFeat.n.u1PprLogOverflowWarn);
+
+    /* End marker. */
+    {
+        uint32_t uEndMarker;
+        rc = pHlp->pfnSSMGetU32(pSSM, &uEndMarker);
+        AssertLogRelMsgRCReturn(rc, ("Failed to read end marker. rc=%Rrc\n", rc), VERR_SSM_DATA_UNIT_FORMAT_CHANGED);
+        AssertLogRelMsgReturn(uEndMarker == UINT32_MAX, ("End marker invalid (%#x expected %#x)\n", uEndMarker, UINT32_MAX),
+                              rcDataError);
+    }
 
     /** @todo Kick the command thread, anything else to do on restore? */
 
