@@ -1,4 +1,4 @@
-# $Id: Config.kmk 84803 2020-06-12 06:17:35Z vboxsync $
+# $Id: Config.kmk 84804 2020-06-12 06:27:21Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -465,7 +465,7 @@ VBOX_WITH_VIRTIO = 1
 # Enable the Virtio SCSI device.
 VBOX_WITH_VIRTIO_SCSI = 1
 #TODO: PAUL! REMOVE THIS !
-VBOX_WITH_VIRTIO_NET_1_0 = 1 
+VBOX_WITH_VIRTIO_NET_1_0 = 1
 # HDA emulation is Intel HDA by default.
 VBOX_WITH_INTEL_HDA = 1
 ifn1of ($(KBUILD_TARGET), win darwin)
@@ -8124,7 +8124,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 84803 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 84804 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)

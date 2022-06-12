@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet_1_0.cpp 84803 2020-06-12 06:17:35Z vboxsync $ $Revision: 84803 $ $Date: 2020-06-12 14:17:35 +0800 (Fri, 12 Jun 2020) $ $Author: vboxsync $ */
+/* $Id: DevVirtioNet_1_0.cpp 84804 2020-06-12 06:27:21Z vboxsync $ $Revision: 84804 $ $Date: 2020-06-12 14:27:21 +0800 (Fri, 12 Jun 2020) $ $Author: vboxsync $ */
 
 /** @file
  * VBox storage devices - Virtio NET Driver
@@ -662,7 +662,7 @@ static DECLCALLBACK(void) virtioNetVirtqNotified(PPDMDEVINS pDevIns, PVIRTIOCORE
         }
     }
     else
-        LogRelFunc(("%s unrecognized queue %s (idx=%d) notified\n", pVirtq->szName, idxVirtq));
+        LogRelFunc(("%s unrecognized queue %s (idx=%d) notified\n", pThis->szInst, pVirtq->szName, idxVirtq));
 }
 
 #ifdef IN_RING3 /* spans most of the file, at the moment. */
