@@ -1,4 +1,4 @@
-/* $Id: vkatInternal.h 89575 2021-06-09 09:16:59Z vboxsync $ */
+/* $Id: vkatInternal.h 89584 2021-06-09 14:43:34Z vboxsync $ */
 /** @file
  * VKAT - Internal header file for common definitions + structs.
  */
@@ -407,6 +407,12 @@ int         AudioTestMixStreamCapture(PAUDIOTESTDRVMIXSTREAM pMix, void *pvBuf, 
  * @{ */
 int         audioTestDeviceOpen(PPDMAUDIOHOSTDEV pDev);
 int         audioTestDeviceClose(PPDMAUDIOHOSTDEV pDev);
+/** @}  */
+
+/** @name ATS routines
+ * @{ */
+int         audioTestEnvConnectToHostAts(PAUDIOTESTENV pTstEnv,
+                                         const char *pszHostTcpAddr, uint32_t uHostTcpPort);
 /** @}  */
 
 /** @name Test environment handling
