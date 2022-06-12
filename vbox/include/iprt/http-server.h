@@ -1,4 +1,4 @@
-/* $Id: http-server.h 87007 2020-11-27 16:46:50Z vboxsync $ */
+/* $Id: http-server.h 87012 2020-11-27 17:55:37Z vboxsync $ */
 /** @file
  * Header file for HTTP server implementation.
  */
@@ -36,12 +36,8 @@
 
 RT_C_DECLS_BEGIN
 
-/** @defgroup grp_rt_http       RTHttp - HTTP server.
- * @ingroup grp_rt
- * @{
- */
-
 /** @defgroup grp_rt_httpserver  RTHttpServer - HTTP server implementation.
+ * @ingroup grp_rt
  * @{
  */
 
@@ -152,8 +148,6 @@ RTR3DECL(int) RTHttpServerCreate(PRTHTTPSERVER phHttpServer, const char *pcszAdd
  * @param   hHttpServer          Handle to the HTTP server handle.
  */
 RTR3DECL(int) RTHttpServerDestroy(RTHTTPSERVER hHttpServer);
-
-/** @} */
 
 /** @} */
 RT_C_DECLS_END
