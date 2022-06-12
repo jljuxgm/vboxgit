@@ -1,10 +1,10 @@
-/* $Id: UIGlobalSettingsDisplay.h 86978 2020-11-25 16:56:23Z vboxsync $ */
+/* $Id: UIGlobalSettingsDisplay.h 89323 2021-05-27 14:23:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsDisplay class declaration.
  */
 
 /*
- * Copyright (C) 2012-2020 Oracle Corporation
+ * Copyright (C) 2012-2021 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -72,8 +72,8 @@ private:
     /** Cleanups all. */
     void cleanup();
 
-    /** Saves existing data from the cache. */
-    bool saveDisplayData();
+    /** Saves existing data from cache. */
+    bool saveData();
 
     /** Holds the page data cache instance. */
     UISettingsCacheGlobalDisplay *m_pCache;

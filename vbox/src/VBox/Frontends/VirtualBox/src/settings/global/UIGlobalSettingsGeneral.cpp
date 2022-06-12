@@ -1,10 +1,10 @@
-/* $Id: UIGlobalSettingsGeneral.cpp 86122 2020-09-14 17:06:31Z vboxsync $ */
+/* $Id: UIGlobalSettingsGeneral.cpp 89323 2021-05-27 14:23:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsGeneral class implementation.
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2021 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -56,6 +56,10 @@ struct UIDataSettingsGlobalGeneral
     QString  m_strVRDEAuthLibrary;
 };
 
+
+/*********************************************************************************************************************************
+*   Class UIGlobalSettingsGeneral implementation.                                                                                *
+*********************************************************************************************************************************/
 
 UIGlobalSettingsGeneral::UIGlobalSettingsGeneral()
     : m_pCache(0)
@@ -195,7 +199,8 @@ bool UIGlobalSettingsGeneral::saveData()
     /* Prepare result: */
     bool fSuccess = true;
     /* Save settings from cache: */
-    if (fSuccess && m_pCache->wasChanged())
+    if (   fSuccess
+        && m_pCache->wasChanged())
     {
         /* Get old data from cache: */
         const UIDataSettingsGlobalGeneral &oldData = m_pCache->base();
