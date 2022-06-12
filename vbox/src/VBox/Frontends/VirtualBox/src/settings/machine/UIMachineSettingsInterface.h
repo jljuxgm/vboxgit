@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsInterface.h 85679 2020-08-11 06:47:35Z vboxsync $ */
+/* $Id: UIMachineSettingsInterface.h 85972 2020-09-01 08:54:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsInterface class declaration.
  */
@@ -77,6 +77,8 @@ private:
     void prepare();
     /** Prepares widgets. */
     void prepareWidgets();
+    /** Prepares connections. */
+    void prepareConnections();
     /** Cleanups all. */
     void cleanup();
 
@@ -101,13 +103,20 @@ private:
 
     /** @name Widgets
      * @{ */
-        UIStatusBarEditorWidget *m_pStatusBarEditor;
-        UIMenuBarEditorWidget *m_pMenuBarEditor;
-        QCheckBox *m_pCheckBoxShowMiniToolBar;
-        QCheckBox *m_pComboToolBarAlignment;
-        QLabel *m_pLabelVisualState;
-        UIVisualStateEditor *m_pVisualStateEditor;
-        QLabel *m_pLabelMiniToolBar;
+        /** Holds the menu-bar editor instance. */
+        UIMenuBarEditorWidget   *m_pEditorMenuBar;
+        /** Holds the visual state label instance. */
+        QLabel                  *m_pLabelVisualState;
+        /** Holds the visual state label instance. */
+        UIVisualStateEditor     *m_pEditorVisualState;
+        /** Holds the mini-toolbar label instance. */
+        QLabel                  *m_pLabelMiniToolBar;
+        /** Holds the show mini-toolbar check-box instance. */
+        QCheckBox               *m_pCheckBoxShowMiniToolBar;
+        /** Holds the mini-toolbar alignment check-box instance. */
+        QCheckBox               *m_pCheckBoxToolBarAlignment;
+        /** Holds the status-bar editor instance. */
+        UIStatusBarEditorWidget *m_pEditorStatusBar;
     /** @} */
 };
 
