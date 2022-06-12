@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 87760 2021-02-15 22:45:27Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 87764 2021-02-15 23:49:16Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -466,7 +466,8 @@ static DECLCALLBACK(uint64_t) pdmR3DevHlp_TimerFromMicro(PPDMDEVINS pDevIns, TMT
 /** @interface_method_impl{PDMDEVHLPR3,pfnTimerFromMilli} */
 static DECLCALLBACK(uint64_t) pdmR3DevHlp_TimerFromMilli(PPDMDEVINS pDevIns, TMTIMERHANDLE hTimer, uint64_t cMilliSecs)
 {
-    return TMTimerFromMilli(pdmR3DevHlp_TimerToPtr(pDevIns, hTimer), cMilliSecs);
+    PDMDEV_ASSERT_DEVINS(pDevIns);
+    return TMTimerFromMilli(pDevIns->Internal.s.pVMR3, pdmR3DevHlp_TimerToPtr(pDevIns, hTimer), cMilliSecs);
 }
 
 
