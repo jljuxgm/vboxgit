@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 86573 2020-10-14 12:06:06Z vboxsync $ */
+/* $Id: UICommon.cpp 86581 2020-10-15 09:26:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -1371,13 +1371,13 @@ QString UICommon::helpFile()
     const QString strName = "UserManual";
     const QString strSuffix = "pdf";
 #elif defined(VBOX_WS_X11)
-# if defined(VBOX_OSE) || !defined(VBOX_WITH_KCHMVIEWER)
+    //# if defined(VBOX_OSE) || !defined(VBOX_WITH_KCHMVIEWER)
     const QString strName = "UserManual";
-    const QString strSuffix = "pdf";
-# else
-    const QString strName = "VirtualBox";
-    const QString strSuffix = "chm";
-# endif
+    const QString strSuffix = "qhc";
+    //# else
+    // const QString strName = "VirtualBox";
+    // const QString strSuffix = "chm";
+    //# endif
 #endif
 
     /* Where are the docs located? */

@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 86341 2020-09-30 10:22:52Z vboxsync $ */
+/* $Id: UIMessageCenter.h 86581 2020-10-15 09:26:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -597,7 +597,7 @@ private:
                        const QString &strButtonText1, const QString &strButtonText2, const QString &strButtonText3,
                        const QString &strAutoConfirmId) const;
 
-    void showHelpBrowser(const QString strHelpFileLocation, QWidget *pParent = 0);
+    void showHelpBrowser(const QString strHelpFilePath, QWidget *pParent = 0);
 
     /** Holds the list of shown warnings. */
     mutable QStringList m_warnings;
