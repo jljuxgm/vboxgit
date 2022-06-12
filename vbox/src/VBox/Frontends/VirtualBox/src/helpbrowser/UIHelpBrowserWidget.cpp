@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.cpp 86921 2020-11-19 14:33:34Z vboxsync $ */
+/* $Id: UIHelpBrowserWidget.cpp 86942 2020-11-20 17:44:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class implementation.
  */
@@ -1303,16 +1303,20 @@ void UIHelpBrowserViewer::highlightFinds(int iSearchTermLength)
     pDocument->undo();
 
     QTextCursor highlightCursor(pDocument);
-    QTextCharFormat colorFormat(highlightCursor.charFormat());
+
+
     QTextCursor cursor(pDocument);
     cursor.beginEditBlock();
-    colorFormat.setBackground(Qt::yellow);
     for (int i = 0; i < m_matchedCursorPosition.size(); ++i)
     {
         highlightCursor.setPosition(m_matchedCursorPosition[i]);
+
+        QTextCharFormat colorFormat(highlightCursor.charFormat());
+        colorFormat.setBackground(Qt::yellow);
+
         highlightCursor.setPosition(m_matchedCursorPosition[i] + iSearchTermLength, QTextCursor::KeepAnchor);
         if (!highlightCursor.isNull())
-            highlightCursor.mergeCharFormat(colorFormat);
+            highlightCursor.setCharFormat(colorFormat);
     }
     cursor.endEditBlock();
 }
