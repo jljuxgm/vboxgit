@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 84802 2020-06-11 22:44:48Z vboxsync $ */
+/* $Id: DevVGA-SVGA.cpp 84851 2020-06-16 15:44:23Z vboxsync $ */
 /** @file
  * VMware SVGA device.
  *
@@ -3255,7 +3255,7 @@ static int vmsvgaR3RunExtCmdOnFifoThread(PPDMDEVINS pDevIns, PVGASTATE pThis, PV
          * We ASSUME not racing code here, both wrt thread state and ext commands.
          */
         Log(("vmsvgaR3RunExtCmdOnFifoThread: uExtCmd=%d enmState=RUNNING\n", uExtCmd));
-        Assert(uExtCmd == VMSVGA_FIFO_EXTCMD_RESET || uExtCmd == VMSVGA_FIFO_EXTCMD_UPDATE_SURFACE_HEAP_BUFFERS);
+        Assert(uExtCmd == VMSVGA_FIFO_EXTCMD_RESET || uExtCmd == VMSVGA_FIFO_EXTCMD_UPDATE_SURFACE_HEAP_BUFFERS || uExtCmd == VMSVGA_FIFO_EXTCMD_POWEROFF);
 
         /* Post the request. */
         pThisCC->svga.pvFIFOExtCmdParam = pvParam;
