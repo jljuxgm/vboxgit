@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 88023 2021-03-08 18:01:15Z vboxsync $ */
+/* $Id: AudioMixer.cpp 88025 2021-03-08 18:31:56Z vboxsync $ */
 /** @file
  * Audio mixing routines for multiplexing audio sources in device emulations.
  *
@@ -2179,19 +2179,19 @@ static int audioMixerStreamUpdateStatus(PAUDMIXSTREAM pMixStream)
     {
         const uint32_t fStreamStatus = pMixStream->pConn->pfnStreamGetStatus(pMixStream->pConn, pMixStream->pStream);
 
-        if (DrvAudioHlpStreamStatusIsReady(fStreamStatus))
+        if (PDMAudioStrmStatusIsReady(fStreamStatus))
             pMixStream->fStatus |= AUDMIXSTREAM_STATUS_ENABLED;
 
         AssertPtr(pMixStream->pSink);
         switch (pMixStream->pSink->enmDir)
         {
             case AUDMIXSINKDIR_INPUT:
-                if (DrvAudioHlpStreamStatusCanRead(fStreamStatus))
+                if (PDMAudioStrmStatusCanRead(fStreamStatus))
                    pMixStream->fStatus |= AUDMIXSTREAM_STATUS_CAN_READ;
                 break;
 
             case AUDMIXSINKDIR_OUTPUT:
-                if (DrvAudioHlpStreamStatusCanWrite(fStreamStatus))
+                if (PDMAudioStrmStatusCanWrite(fStreamStatus))
                    pMixStream->fStatus |= AUDMIXSTREAM_STATUS_CAN_WRITE;
                 break;
 
