@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-internal.h 86006 2020-09-02 17:29:20Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-internal.h 86007 2020-09-02 17:35:05Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Internal header.
  */
@@ -173,7 +173,7 @@ typedef struct _SHCLCLIENT
     /** The client's message queue (SHCLCLIENTMSG). */
     RTLISTANCHOR                MsgQueue;
     /** Number of allocated messages (updated atomically, not under critsect). */
-    uint32_t volatile           cAllocatedMessages;
+    uint32_t volatile           cMsgAllocated;
     /** Legacy cruft we have to keep to support old(er) Guest Additions. */
     SHCLCLIENTLEGACYSTATE       Legacy;
     /** The client's own event source.
