@@ -1,4 +1,4 @@
-/* $Id: VBoxManageSnapshot.cpp 85106 2020-07-08 10:24:23Z vboxsync $ */
+/* $Id: VBoxManageSnapshot.cpp 85138 2020-07-09 07:26:26Z vboxsync $ */
 /** @file
  * VBoxManage - The 'snapshot' command.
  */
@@ -647,7 +647,7 @@ RTEXITCODE handleSnapshot(HandlerArg *a)
             DumpSnapshot(sessionMachine);
         else
         {
-            errorSyntax("Invalid parameter '%s'", Utf8Str(a->argv[1]).c_str());
+            errorSyntax("Invalid parameter '%s'", a->argv[1]);
             rc = E_FAIL;
         }
     } while (0);
