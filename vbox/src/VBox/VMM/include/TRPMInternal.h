@@ -1,4 +1,4 @@
-/* $Id: TRPMInternal.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: TRPMInternal.h 87777 2021-02-17 13:48:25Z vboxsync $ */
 /** @file
  * TRPM - Internal header file.
  */
@@ -44,11 +44,11 @@ RT_C_DECLS_BEGIN
 typedef struct TRPM
 {
 #ifdef VBOX_WITH_STATISTICS
-    /** Statistics for interrupt handlers (allocated on the hypervisor heap) - R3
-     * pointer. */
-    R3PTRTYPE(PSTAMCOUNTER) paStatForwardedIRQR3;
+    /** Statistics for interrupt handlers. */
+    STAMCOUNTER             aStatForwardedIRQ[256];
+#else
+    uint64_t                uWhatever;
 #endif
-    uint64_t                u64Dummy;
 } TRPM;
 
 /** Pointer to TRPM Data. */
