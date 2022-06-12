@@ -1,4 +1,4 @@
-/* $Id: server.cpp 85268 2020-07-12 01:11:33Z vboxsync $ */
+/* $Id: server.cpp 85270 2020-07-12 12:21:59Z vboxsync $ */
 /** @file
  * XPCOM server process (VBoxSVC) start point.
  */
@@ -163,7 +163,7 @@ public:
 
                 int vrc = RTTimerLRStart(sTimer, gShutdownDelayMs * RT_NS_1MS_64);
                 AssertRC(vrc);
-                timerStarted = RT_SUCCESS(vrc);
+                timerStarted = RT_BOOL(RT_SUCCESS(vrc));
             }
             else
             {
