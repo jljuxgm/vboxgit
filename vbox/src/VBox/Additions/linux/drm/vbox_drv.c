@@ -1,4 +1,4 @@
-/*  $Id: vbox_drv.c 88510 2021-04-14 17:59:01Z vboxsync $ */
+/*  $Id: vbox_drv.c 89689 2021-06-14 18:01:38Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -379,11 +379,19 @@ static int __init vbox_init(void)
 	printk("vboxvideo: loading version " VBOX_VERSION_STRING " r" __stringify(VBOX_SVN_REV) "\n");
 #if defined(CONFIG_VGA_CONSOLE) || RTLNX_VER_MIN(4,7,0)
 	if (vgacon_text_force() && vbox_modeset == -1)
+	{
+		printk("vboxvideo: kernel is running with *nomodeset* parameter,\n");
+		printk("vboxvideo: please consider either to remove it or load driver\n");
+		printk("vboxvideo: with parameter modeset=1, unloading\n");
 		return -EINVAL;
+	}
 #endif
 
 	if (vbox_modeset == 0)
+	{
+		printk("vboxvideo: driver loaded with modeset=0 parameter, unloading\n");
 		return -EINVAL;
+	}
 
 #if RTLNX_VER_MIN(3,18,0) || RTLNX_RHEL_MAJ_PREREQ(7,3)
 	return pci_register_driver(&vbox_pci_driver);
