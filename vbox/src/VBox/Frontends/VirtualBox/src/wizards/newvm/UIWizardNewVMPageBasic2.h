@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic2.h 85090 2020-07-07 17:20:27Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic2.h 85104 2020-07-08 08:48:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic2 class declaration.
  */
@@ -122,7 +122,7 @@ private:
     void initializePage();
     bool isComplete() const;
     /** Returns true if we show the widgets for guest os product key. */
-    bool isProductKeyWidgetVisible() const;
+    bool isProductKeyWidgetEnabled() const;
 
     QIRichTextLabel *m_pLabel;
     QToolBox *m_pToolBox;

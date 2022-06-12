@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic1.h 85090 2020-07-07 17:20:27Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic1.h 85104 2020-07-08 08:48:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic1 class declaration.
  */
@@ -127,6 +127,7 @@ private:
 /** 1st page of the New Virtual Machine wizard (basic extension). */
 class UIWizardNewVMPageBasic1 : public UIWizardPage, public UIWizardNewVMPage1
 {
+
     Q_OBJECT;
     Q_PROPERTY(QString machineFilePath READ machineFilePath WRITE setMachineFilePath);
     Q_PROPERTY(QString machineFolder READ machineFolder WRITE setMachineFolder);
@@ -136,7 +137,6 @@ class UIWizardNewVMPageBasic1 : public UIWizardPage, public UIWizardNewVMPage1
     Q_PROPERTY(bool isUnattendedEnabled READ isUnattendedEnabled);
     Q_PROPERTY(bool startHeadless READ startHeadless);
     Q_PROPERTY(QString detectedOSTypeId READ detectedOSTypeId);
-
 
 public:
 

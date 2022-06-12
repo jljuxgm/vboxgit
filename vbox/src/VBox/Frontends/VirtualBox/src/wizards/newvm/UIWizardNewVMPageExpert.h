@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.h 85090 2020-07-07 17:20:27Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.h 85104 2020-07-08 08:48:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class declaration.
  */
@@ -82,6 +82,7 @@ private slots:
     void sltISOPathChanged(const QString &strPath);
     void sltInstallGACheckBoxToggle(bool fChecked);
     void sltGAISOPathChanged(const QString &strPath);
+    void sltOSFamilyTypeChanged();
 
 private:
     enum ExpertToolboxItems
@@ -106,8 +107,13 @@ private:
     bool isComplete() const;
     bool validatePage();
 
+    bool isProductKeyWidgetEnabled() const;
+    void disableEnableUnattendedRelatedWidgets(bool fEnabled);
+
     /** Widgets. */
     QWidget *m_pNameAndSystemContainer;
+    QWidget *m_pGAInstallContainer;
+    QWidget *m_pUsernameHostnameContainer;
     QToolBox  *m_pToolBox;
 };
 
