@@ -1,4 +1,4 @@
-# $Id: Config.kmk 86643 2020-10-20 10:42:24Z vboxsync $
+# $Id: Config.kmk 86666 2020-10-21 15:01:32Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -445,6 +445,8 @@ endif
 if1of ($(KBUILD_TARGET), darwin linux win)
  VBOX_WITH_RAM_IN_KERNEL := 1
 endif
+# Enables the new breakpoint handling code, see @bugref{9837}
+# VBOX_WITH_LOTS_OF_DBGF_BPS = 1
 ## @}
 
 
@@ -8134,7 +8136,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 86643 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 86666 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
