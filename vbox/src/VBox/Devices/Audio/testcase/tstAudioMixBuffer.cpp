@@ -1,4 +1,4 @@
-/* $Id: tstAudioMixBuffer.cpp 89335 2021-05-28 08:44:41Z vboxsync $ */
+/* $Id: tstAudioMixBuffer.cpp 89339 2021-05-28 09:05:28Z vboxsync $ */
 /** @file
  * Audio testcase - Mixing buffer.
  */
@@ -267,7 +267,7 @@ static void tstSimple(RTTEST hTest)
     /*
      * Writes and reads (used to be circular).
      */
-    AudioMixBufReset(&mb);
+    AudioMixBufDrop(&mb);
 
     cFramesWrittenAbs = AudioMixBufUsed(&mb);
 

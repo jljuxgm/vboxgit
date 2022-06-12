@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 89332 2021-05-28 08:23:42Z vboxsync $ */
+/* $Id: AudioMixer.cpp 89339 2021-05-28 09:05:28Z vboxsync $ */
 /** @file
  * Audio mixing routines for multiplexing audio sources in device emulations.
  *
@@ -1258,7 +1258,7 @@ static void audioMixerSinkReset(PAUDMIXSINK pSink)
 
     LogFunc(("[%s]\n", pSink->pszName));
 
-    AudioMixBufReset(&pSink->MixBuf);
+    AudioMixBufDrop(&pSink->MixBuf);
 
     /* Update last updated timestamp. */
     pSink->tsLastUpdatedMs = 0;
