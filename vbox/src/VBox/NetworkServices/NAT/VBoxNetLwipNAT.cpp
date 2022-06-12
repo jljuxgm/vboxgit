@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwipNAT.cpp 87598 2021-02-04 00:09:16Z vboxsync $ */
+/* $Id: VBoxNetLwipNAT.cpp 87599 2021-02-04 00:14:40Z vboxsync $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -170,8 +170,8 @@ public:
     virtual int run();
 
 private:
-    int logInit();
     int comInit();
+    int logInit();
 
     static void reportError(const char *a_pcszFormat, ...) RT_IPRT_FORMAT_ATTR(1, 2);
 
