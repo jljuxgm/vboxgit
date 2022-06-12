@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 86541 2020-10-12 12:30:09Z vboxsync $ */
+/* $Id: UIExtraDataDefs.cpp 86716 2020-10-26 17:54:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -236,6 +236,9 @@ const char *UIExtraDataDefs::GUI_LogViewerWrapLinesEnabled = "WrapLines";
 const char *UIExtraDataDefs::GUI_LogViewerShowLineNumbersDisabled = "showLineNumbersDisabled";
 const char *UIExtraDataDefs::GUI_LogViewerNoFontStyleName = "noFontStyleName";
 const char *UIExtraDataDefs::GUI_GuestControl_LogViewerVisiblePanels = "GUI/LogViewerVisiblePanels";
+
+/* Help Browser */
+const char *UIExtraDataDefs::GUI_HelpBrowserLastURL = "GUI/HelpBrowserLastURL";
 
 /* VM Resource Monitor: */
 const char *UIExtraDataDefs::GUI_VMResourceManager_HiddenColumns = "GUI/VMResourceManagerHiddenColumns";

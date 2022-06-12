@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 86541 2020-10-12 12:30:09Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 86716 2020-10-26 17:54:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -4589,6 +4589,16 @@ void UIExtraDataManager::setLogViewerVisiblePanels(const QStringList &panelNameL
 QStringList UIExtraDataManager::logViewerVisiblePanels()
 {
     return extraDataStringList(GUI_GuestControl_LogViewerVisiblePanels);
+}
+
+void UIExtraDataManager::setHelpBrowserLastUrl(const QString &url)
+{
+    setExtraDataString(GUI_HelpBrowserLastURL, url);
+}
+
+QString UIExtraDataManager::helpBrowserLastUrl()
+{
+    return extraDataString(GUI_HelpBrowserLastURL);
 }
 
 void UIExtraDataManager::setVMResourceMonitorHiddenColumnList(const QStringList &hiddenColumnList)

@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 86541 2020-10-12 12:30:09Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 86716 2020-10-26 17:54:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -782,6 +782,12 @@ public:
         QFont logViewerFont();
         void setLogViewerVisiblePanels(const QStringList &panelNameList);
         QStringList logViewerVisiblePanels();
+    /** @} */
+
+    /** @name Help Browser
+      * @{ */
+        void setHelpBrowserLastUrl(const QString &url);
+        QString helpBrowserLastUrl();
     /** @} */
 
     /** @name Manager UI: VM Resource Monitor
