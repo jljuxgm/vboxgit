@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwipNAT.cpp 87637 2021-02-08 13:18:11Z vboxsync $ */
+/* $Id: VBoxNetLwipNAT.cpp 87688 2021-02-10 15:28:46Z vboxsync $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -271,13 +271,6 @@ VBoxNetLwipNAT::VBoxNetLwipNAT()
     mac.au8[4] = 0x35;
     mac.au8[5] = 0;
     setMacAddress(mac);
-
-    RTNETADDRIPV4 address;
-    address.u     = RT_MAKE_U32_FROM_U8( 10,  0,  2,  2); // NB: big-endian
-    setIpv4Address(address);
-
-    address.u     = RT_H2N_U32_C(0xffffff00);
-    setIpv4Netmask(address);
 
     /* tell the base class about our command line options */
     for (PCRTGETOPTDEF pcOpt = &s_aGetOptDef[0]; pcOpt->iShort != 0; ++pcOpt)
@@ -576,6 +569,16 @@ int VBoxNetLwipNAT::ipv4Init()
     const RTNETADDRIPV4 &CmdLineMask4 = getIpv4Netmask();
     AssertReturn(CmdLineMask4.u == 0 || CmdLineMask4.u == Mask4.u,
                  VERR_INVALID_PARAMETER);
+
+    /*
+     * Transitional: tell the base class just in case, though it's not
+     * used as far as I can tell.
+     */
+    if (CmdLineAddr4.u == 0)
+    {
+        setIpv4Address(Addr4);
+        setIpv4Netmask(Mask4);
+    }
 
     memcpy(&m_ProxyOptions.ipv4_addr, &Addr4, sizeof(ip_addr));
     memcpy(&m_ProxyOptions.ipv4_mask, &Mask4, sizeof(ip_addr));
