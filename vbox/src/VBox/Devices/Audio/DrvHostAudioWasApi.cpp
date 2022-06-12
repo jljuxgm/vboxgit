@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioWasApi.cpp 89229 2021-05-23 01:21:16Z vboxsync $ */
+/* $Id: DrvHostAudioWasApi.cpp 89258 2021-05-25 09:58:08Z vboxsync $ */
 /** @file
  * Host audio driver - Windows Audio Session API.
  */
@@ -2944,6 +2944,7 @@ static DECLCALLBACK(int) drvHostAudioWasConstruct(PPDMDRVINS pDrvIns, PCFGMNODE 
     /* IHostAudio */
     pThis->IHostAudio.pfnGetConfig                  = drvHostAudioWasHA_GetConfig;
     pThis->IHostAudio.pfnGetDevices                 = drvHostAudioWasHA_GetDevices;
+    pThis->IHostAudio.pfnSetDevice                  = NULL;
     pThis->IHostAudio.pfnGetStatus                  = drvHostAudioWasHA_GetStatus;
     pThis->IHostAudio.pfnDoOnWorkerThread           = drvHostAudioWasHA_DoOnWorkerThread;
     pThis->IHostAudio.pfnStreamConfigHint           = drvHostAudioWasHA_StreamConfigHint;

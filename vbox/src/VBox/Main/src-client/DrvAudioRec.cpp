@@ -1,4 +1,4 @@
-/* $Id: DrvAudioRec.cpp 89218 2021-05-21 11:57:55Z vboxsync $ */
+/* $Id: DrvAudioRec.cpp 89258 2021-05-25 09:58:08Z vboxsync $ */
 /** @file
  * Video recording audio backend for Main.
  *
@@ -1105,6 +1105,7 @@ static int avRecSinkInit(PDRVAUDIORECORDING pThis, PAVRECSINK pSink, PAVRECCONTA
     /* IHostAudio */
     pThis->IHostAudio.pfnGetConfig                  = drvAudioVideoRecHA_GetConfig;
     pThis->IHostAudio.pfnGetDevices                 = NULL;
+    pThis->IHostAudio.pfnSetDevice                  = NULL;
     pThis->IHostAudio.pfnGetStatus                  = drvAudioVideoRecHA_GetStatus;
     pThis->IHostAudio.pfnDoOnWorkerThread           = NULL;
     pThis->IHostAudio.pfnStreamConfigHint           = NULL;

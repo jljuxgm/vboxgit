@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 89229 2021-05-23 01:21:16Z vboxsync $ */
+/* $Id: DrvAudio.cpp 89258 2021-05-25 09:58:08Z vboxsync $ */
 /** @file
  * Intermediate audio driver - Connects the audio device emulation with the host backend.
  */
@@ -4551,6 +4551,7 @@ static int drvAudioHostInit(PDRVAUDIO pThis)
     AssertPtrReturn(pIHostDrvAudio, VERR_INVALID_POINTER);
     AssertPtrReturn(pIHostDrvAudio->pfnGetConfig, VERR_INVALID_POINTER);
     AssertPtrNullReturn(pIHostDrvAudio->pfnGetDevices, VERR_INVALID_POINTER);
+    AssertPtrNullReturn(pIHostDrvAudio->pfnSetDevice, VERR_INVALID_POINTER);
     AssertPtrNullReturn(pIHostDrvAudio->pfnGetStatus, VERR_INVALID_POINTER);
     AssertPtrNullReturn(pIHostDrvAudio->pfnDoOnWorkerThread, VERR_INVALID_POINTER);
     AssertPtrNullReturn(pIHostDrvAudio->pfnStreamConfigHint, VERR_INVALID_POINTER);
