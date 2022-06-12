@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlSession.cpp 84548 2020-05-26 17:43:31Z vboxsync $ */
+/* $Id: VBoxServiceControlSession.cpp 84549 2020-05-26 17:45:56Z vboxsync $ */
 /** @file
  * VBoxServiceControlSession - Guest session handling. Also handles the spawned session processes.
  */
@@ -1022,7 +1022,8 @@ static int vgsvcGstCtrlSessionHandleShutdown(PVBOXSERVICECTRLSESSION pSession, P
                                   fAction | RTSYSTEM_SHUTDOWN_PLANNED,
                                   "VBoxService");
             if (RT_FAILURE(rc))
-                VGSvcError("%s system failed with %Rrc\n", (fAction & RTSYSTEM_SHUTDOWN_REBOOT) ? "Rebooting" : "Shuting down");
+                VGSvcError("%s system failed with %Rrc\n",
+                           (fAction & RTSYSTEM_SHUTDOWN_REBOOT) ? "Rebooting" : "Shuting down", rc);
         }
     }
     else
