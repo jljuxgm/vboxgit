@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 83211 2020-03-05 16:03:50Z vboxsync $
+# $Id: tdUnitTest1.py 84374 2020-05-19 16:49:56Z vboxsync $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 83211 $"
+__version__ = "$Revision: 84374 $"
 
 
 # Standard Python imports.
@@ -172,6 +172,7 @@ class tdUnitTest1(vbox.TestDriver):
         'tstTestCallTemplates': '',                     # some strange xpcom18a4 test, segfaults
         'testcase/tstRTFilesystem': '',                 # parameters required
         'testcase/tstRTDvm': '',                        # parameters required
+        'tstSSLCertDownloads': '',                      # Obsolete.
         # later
         'testcase/tstIntNetR0': '',                     # RTSPINLOCK_FLAGS_INTERRUPT_SAFE == RTSPINLOCK_FLAGS_INTERRUPT_UNSAFE
         # slow stuff
