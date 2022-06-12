@@ -1,4 +1,4 @@
-/* $Id: DevIommuAmd.cpp 88078 2021-03-10 19:25:11Z vboxsync $ */
+/* $Id: DevIommuAmd.cpp 88098 2021-03-12 05:12:16Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - AMD implementation.
  */
@@ -23,7 +23,6 @@
 #include <VBox/msi.h>
 #include <VBox/iommu-amd.h>
 #include <VBox/vmm/pdmdev.h>
-#include <VBox/AssertGuest.h>
 
 #include <iprt/x86.h>
 #include <iprt/string.h>
