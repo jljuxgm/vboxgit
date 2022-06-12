@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 85617 2020-08-05 13:50:22Z vboxsync $
+# $Id: Makefile.kmk 85664 2020-08-10 14:26:15Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -3233,6 +3233,7 @@ RuntimeR0Drv_SOURCES.darwin = \
 	common/string/memchr.asm \
 	common/string/mempcpy.asm \
 	common/string/strpbrk.cpp \
+	common/string/strstrip.cpp \
 	common/string/RTStrPrintHexBytes.cpp \
 	darwin/RTErrConvertFromDarwin.cpp \
 	darwin/RTErrConvertFromDarwinIO.cpp \
