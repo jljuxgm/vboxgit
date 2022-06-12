@@ -1,4 +1,4 @@
-/* $Id: DrvRamDisk.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: DrvRamDisk.cpp 87560 2021-02-03 11:33:24Z vboxsync $ */
 /** @file
  * VBox storage devices: RAM disk driver.
  */
@@ -1152,6 +1152,15 @@ static DECLCALLBACK(int) drvramdiskQueryFeatures(PPDMIMEDIAEX pInterface, uint32
 
 
 /**
+ * @interface_method_impl{PDMIMEDIAEX,pfnNotifySuspend}
+ */
+static DECLCALLBACK(void) drvramdiskNotifySuspend(PPDMIMEDIAEX pInterface)
+{
+    RT_NOREF(pInterface);
+}
+
+
+/**
  * @interface_method_impl{PDMIMEDIAEX,pfnIoReqAllocSizeSet}
  */
 static DECLCALLBACK(int) drvramdiskIoReqAllocSizeSet(PPDMIMEDIAEX pInterface, size_t cbIoReqAlloc)
@@ -1709,6 +1718,7 @@ static DECLCALLBACK(int) drvramdiskConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg,
 
     /* IMediaEx */
     pThis->IMediaEx.pfnQueryFeatures            = drvramdiskQueryFeatures;
+    pThis->IMediaEx.pfnNotifySuspend            = drvramdiskNotifySuspend;
     pThis->IMediaEx.pfnIoReqAllocSizeSet        = drvramdiskIoReqAllocSizeSet;
     pThis->IMediaEx.pfnIoReqAlloc               = drvramdiskIoReqAlloc;
     pThis->IMediaEx.pfnIoReqFree                = drvramdiskIoReqFree;
