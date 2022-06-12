@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityOverviewWidget.cpp 88999 2021-05-12 07:16:14Z vboxsync $ */
+/* $Id: UIVMActivityOverviewWidget.cpp 89000 2021-05-12 08:37:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMActivityOverviewWidget class implementation.
  */
@@ -1722,71 +1722,5 @@ bool UIVMActivityOverviewWidget::columnVisible(int iColumnId) const
 {
     return m_columnVisible.value(iColumnId, true);
 }
-
-
-/*********************************************************************************************************************************
-*   Class UIVMActivityOverviewFactory implementation.                                                                            *
-*********************************************************************************************************************************/
-
-UIVMActivityOverviewFactory::UIVMActivityOverviewFactory(UIActionPool *pActionPool /* = 0 */)
-    : m_pActionPool(pActionPool)
-{
-}
-
-void UIVMActivityOverviewFactory::create(QIManagerDialog *&pDialog, QWidget *pCenterWidget)
-{
-    pDialog = new UIVMActivityOverviewDialog(pCenterWidget, m_pActionPool);
-}
-
-
-/*********************************************************************************************************************************
-*   Class UIActivityOverview implementation.                                                                                     *
-*********************************************************************************************************************************/
-
-UIVMActivityOverviewDialog::UIVMActivityOverviewDialog(QWidget *pCenterWidget, UIActionPool *pActionPool)
-    : QIWithRetranslateUI<QIManagerDialog>(pCenterWidget)
-    , m_pActionPool(pActionPool)
-{
-}
-
-void UIVMActivityOverviewDialog::retranslateUi()
-{
-    setWindowTitle(UIVMActivityOverviewWidget::tr("VM Activity Overview"));
-}
-
-void UIVMActivityOverviewDialog::configure()
-{
-    /* Apply window icons: */
-    setWindowIcon(UIIconPool::iconSetFull(":/host_iface_manager_32px.png", ":/host_iface_manager_16px.png"));
-}
-
-void UIVMActivityOverviewDialog::configureCentralWidget()
-{
-    UIVMActivityOverviewWidget *pWidget = new UIVMActivityOverviewWidget(EmbedTo_Dialog, m_pActionPool, true, this);
-    AssertPtrReturnVoid(pWidget);
-    {
-        setWidget(pWidget);
-        setWidgetMenu(pWidget->menu());
-#ifdef VBOX_WS_MAC
-        setWidgetToolbar(pWidget->toolbar());
-#endif
-        centralWidget()->layout()->addWidget(pWidget);
-    }
-}
-
-void UIVMActivityOverviewDialog::configureButtonBox()
-{
-}
-
-void UIVMActivityOverviewDialog::finalize()
-{
-    retranslateUi();
-}
-
-UIVMActivityOverviewWidget *UIVMActivityOverviewDialog::widget()
-{
-    return qobject_cast<UIVMActivityOverviewWidget*>(QIManagerDialog::widget());
-}
-
 
 #include "UIVMActivityOverviewWidget.moc"

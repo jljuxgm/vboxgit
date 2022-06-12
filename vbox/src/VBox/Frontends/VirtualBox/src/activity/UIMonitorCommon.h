@@ -1,4 +1,4 @@
-/* $Id: UIMonitorCommon.h 88119 2021-03-15 11:26:51Z vboxsync $ */
+/* $Id: UIMonitorCommon.h 89000 2021-05-12 08:37:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMonitorCommon class declaration.
  */
@@ -39,7 +39,7 @@ class SHARED_LIBRARY_STUFF UIMonitorCommon
 
 public:
 
-    /** @name Static utlity methods that query and parse IMachineDebugger outputs for specific metrix types.
+    /** @name Static utility methods that query and parse IMachineDebugger outputs for specific metrix types.
       * @{ */
         static void getNetworkLoad(CMachineDebugger &debugger, quint64 &uOutNetworkReceived, quint64 &uOutNetworkTransmitted);
         static void getDiskLoad(CMachineDebugger &debugger, quint64 &uOutDiskWritten, quint64 &uOutDiskRead);
