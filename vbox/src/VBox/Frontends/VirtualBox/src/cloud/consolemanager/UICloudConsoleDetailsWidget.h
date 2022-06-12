@@ -1,4 +1,4 @@
-/* $Id: UICloudConsoleDetailsWidget.h 85486 2020-07-28 11:34:21Z vboxsync $ */
+/* $Id: UICloudConsoleDetailsWidget.h 85530 2020-07-29 17:37:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudConsoleDetailsWidget class declaration.
  */
@@ -148,10 +148,6 @@ protected:
 
     /** Handles translation event. */
     virtual void retranslateUi() /* override */;
-    /** Handles editor translation. */
-    void retranslateEditor();
-    /** Handles buttons translation. */
-    void retranslateButtons();
 
 private slots:
 
