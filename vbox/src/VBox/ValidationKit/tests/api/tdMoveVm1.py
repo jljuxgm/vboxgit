@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# "$Id: tdMoveVm1.py 85464 2020-07-27 09:32:26Z vboxsync $"
+# "$Id: tdMoveVm1.py 85465 2020-07-27 09:40:13Z vboxsync $"
 
 """
 VirtualBox Validation Kit - VM Move Test #1
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 85464 $"
+__version__ = "$Revision: 85465 $"
 
 # Standard Python imports.
 import os
@@ -536,7 +536,8 @@ class SubTstDrvMoveVm1(base.SubTestDriverBase):
             sFloppyLoc = sOldLoc + os.sep + sFloppyImageName
             sController=self.dsKeys['FloppyImage']
             fRc = fRc and oSession.attachFloppy(sFloppyLoc, sController, 0, 0)
-            dsReferenceFiles['FloppyImage'].add(os.path.normcase(os.path.join(os.path.join(sNewLoc, oMachine.name), sFloppyImageName)))
+            dsReferenceFiles['FloppyImage'].add(os.path.normcase(os.path.join(os.path.join(sNewLoc, oMachine.name),
+                                                                                           sFloppyImageName)))
 
         if fRc is True:
             fRc = self.moveVMToLocation(sNewLoc, oSession.o.machine)
