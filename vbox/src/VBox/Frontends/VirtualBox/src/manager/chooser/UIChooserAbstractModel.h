@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.h 84412 2020-05-20 14:43:30Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.h 84415 2020-05-20 15:28:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class declaration.
  */
@@ -211,10 +211,10 @@ private:
         /** Returns whether global node within the @a pParentNode is favorite. */
         bool isGlobalNodeFavorite(UIChooserNode *pParentNode) const;
 
-        /** Acquires desired position for a child of @a pParentNode with specified @a enmType and @a strName. */
-        int getDesiredNodePosition(UIChooserNode *pParentNode, UIChooserNodeType enmType, const QString &strName);
-        /** Acquires defined position for a child of @a pParentNode with specified @a enmType and @a strName. */
-        int getDefinedNodePosition(UIChooserNode *pParentNode, UIChooserNodeType enmType, const QString &strName);
+        /** Acquires desired position for a child of @a pParentNode with specified @a enmDataType and @a strName. */
+        int getDesiredNodePosition(UIChooserNode *pParentNode, UIChooserNodeDataPrefixType enmDataType, const QString &strName);
+        /** Acquires defined position for a child of @a pParentNode with specified @a enmDataType and @a strName. */
+        int getDefinedNodePosition(UIChooserNode *pParentNode, UIChooserNodeDataPrefixType enmDataType, const QString &strName);
 
         /** Creates local machine node based on certain @a comMachine as a child of specified @a pParentNode. */
         void createLocalMachineNode(UIChooserNode *pParentNode, const CMachine &comMachine);
