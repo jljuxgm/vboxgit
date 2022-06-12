@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 86482 2020-10-08 06:53:02Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 87162 2021-01-04 13:00:19Z vboxsync $ */
 /** @file
  * VBox storage devices - BusLogic SCSI host adapter BT-958.
  *
@@ -2693,7 +2693,7 @@ static int buslogicRegisterWrite(PPDMDEVINS pDevIns, PBUSLOGIC pThis, unsigned i
                         AssertMsgFailed(("Invalid operation code %#x\n", uVal));
                 }
             }
-            else
+            else if (pThis->cbCommandParametersLeft)
             {
 #ifndef IN_RING3
                 /* This command must be executed in R3 as it rehooks the ISA I/O port. */
