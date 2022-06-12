@@ -1,4 +1,4 @@
-/* $Id: tstDnDTransferList.cpp 86368 2020-10-01 05:05:09Z vboxsync $ */
+/* $Id: tstDnDTransferList.cpp 86411 2020-10-02 10:27:10Z vboxsync $ */
 /** @file
  * DnD transfer list  tests.
  */
@@ -143,10 +143,18 @@ int main()
                                                                 DNDTRANSFERLIST_FLAGS_NONE), VINF_SUCCESS);
     RTTEST_CHECK(hTest, DnDTransferListGetRootCount(&list) == 2);
     RTTEST_CHECK(hTest, RTPathCompare(DnDTransferListGetRootPathAbs(&list), szPathTest) == 0);
+
+    pszBuf = NULL;
     RTTEST_CHECK_RC(hTest, DnDTransferListGetRootsEx(&list, DNDTRANSFERLISTFMT_NATIVE, "/native/base/path", "\n", &pszBuf, &cbBuf), VINF_SUCCESS);
     RTTestPrintf(hTest, RTTESTLVL_ALWAYS, "Roots (URI, new base):\n%s\n", pszBuf);
+    RTStrFree(pszBuf);
+
+    pszBuf = NULL;
     RTTEST_CHECK_RC(hTest, DnDTransferListGetRootsEx(&list, DNDTRANSFERLISTFMT_NATIVE, "\\windows\\path", "\n", &pszBuf, &cbBuf), VINF_SUCCESS);
     RTTestPrintf(hTest, RTTESTLVL_ALWAYS, "Roots (URI, new base):\n%s\n", pszBuf);
+    RTStrFree(pszBuf);
+
+    pszBuf = NULL;
     RTTEST_CHECK_RC(hTest, DnDTransferListGetRootsEx(&list, DNDTRANSFERLISTFMT_NATIVE, "\\\\windows\\\\path", "\n", &pszBuf, &cbBuf), VINF_SUCCESS);
     RTTestPrintf(hTest, RTTESTLVL_ALWAYS, "Roots (URI, new base):\n%s\n", pszBuf);
     RTStrFree(pszBuf);
