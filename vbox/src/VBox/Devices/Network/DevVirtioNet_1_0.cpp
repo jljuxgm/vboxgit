@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet_1_0.cpp 84351 2020-05-19 05:26:12Z vboxsync $ $Revision: 84351 $ $Date: 2020-05-19 13:26:12 +0800 (Tue, 19 May 2020) $ $Author: vboxsync $ */
+/* $Id: DevVirtioNet_1_0.cpp 84383 2020-05-20 03:35:33Z vboxsync $ $Revision: 84383 $ $Date: 2020-05-20 11:35:33 +0800 (Wed, 20 May 2020) $ $Author: vboxsync $ */
 
 /** @file
  * VBox storage devices - Virtio NET Driver
@@ -944,6 +944,7 @@ static DECLCALLBACK(int) virtioNetR3LoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM
         LogRel(("%s: The mac address differs: config=%RTmac saved=%RTmac\n",
             INSTANCE(pThis), &pThis->macConfigured, &macConfigured));
 #endif
+
 #if FEATURE_OFFERED(MQ)
         pHlp->pfnSSMGetU16( pSSM, &pThis->virtioNetConfig.uMaxVirtqPairs);
 #endif
@@ -2527,7 +2528,25 @@ static DECLCALLBACK(int) virtioNetR3NetworkConfig_SetLinkState(PPDMINETWORKCONFI
     bool fCachedLinkIsUp = IS_LINK_UP(pThis);
     bool fActiveLinkIsUp = (enmState == PDMNETWORKLINKSTATE_UP);
 
-    Log7Func(("%s enmState=%d\n", INSTANCE(pThis), enmState));
+    if (LogIs7Enabled())
+    {
+        LogFunc(("%s", INSTANCE(pThis)));
+        switch(enmState)
+        {
+        case PDMNETWORKLINKSTATE_UP:
+            Log(("UP\n"));
+            break;
+        case PDMNETWORKLINKSTATE_DOWN:
+            Log(("DOWN\n"));
+            break;
+        case PDMNETWORKLINKSTATE_DOWN_RESUME:
+            Log(("DOWN (RESUME)\n"));
+            break;
+        default:
+            Log(("UNKNOWN)\n"));
+        }
+    }
+
     if (enmState == PDMNETWORKLINKSTATE_DOWN_RESUME)
     {
         if (fCachedLinkIsUp)
@@ -2739,7 +2758,8 @@ static DECLCALLBACK(int) virtioNetR3Attach(PPDMDEVINS pDevIns, unsigned iLUN, ui
 
     RT_NOREF(pThis);
 
-    int rc = PDMDevHlpDriverAttach(pDevIns, 0, &pDevIns->IBase, &pThisCC->pDrvBase, "Network Port");
+//    int rc = PDMDevHlpDriverAttach(pDevIns, 0, &pDevIns->IBase, &pThisCC->pDrvBase, "Network Port");
+    int rc = PDMDevHlpDriverAttach(pDevIns, 0, &pThisCC->IBase, &pThisCC->pDrvBase, "Network Port");
     if (RT_SUCCESS(rc))
     {
         pThisCC->pDrv = PDMIBASE_QUERY_INTERFACE(pThisCC->pDrvBase, PDMINETWORKUP);
