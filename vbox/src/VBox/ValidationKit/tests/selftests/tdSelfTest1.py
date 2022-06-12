@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdSelfTest1.py 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: tdSelfTest1.py 86439 2020-10-04 11:36:59Z vboxsync $
 
 """
 Test Manager Self Test - Dummy Test Driver.
@@ -27,16 +27,23 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 82968 $"
+__version__ = "$Revision: 86439 $"
 
 
 import sys;
+import os;
 
 print('dummydriver.py: hello world!');
 print('dummydriver.py: args: %s' % (sys.argv,));
+
+print('dummydriver.py: environment:')
+for sVar in sorted(os.environ.keys()):
+    print('%s=%s' % (sVar, os.environ[sVar]));
+
 if sys.argv[-1] in [ 'all', 'execute' ]:
 
     import time;
+
     for i in range(10, 1, -1):
         print('dummydriver.py: %u...', i);
         sys.stdout.flush();
