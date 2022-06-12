@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 89620 2021-06-11 08:51:10Z vboxsync $ */
+/* $Id: PDMInternal.h 89621 2021-06-11 08:53:55Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -1214,7 +1214,7 @@ typedef enum PDMDEVHLPTASKOP
     PDMDEVHLPTASKOP_IOAPIC_SET_IRQ,
     /** IoApicSendMsi */
     PDMDEVHLPTASKOP_IOAPIC_SEND_MSI,
-    /** IoApicBroadcastEoi */
+    /** IoApicSettEoi */
     PDMDEVHLPTASKOP_IOAPIC_SET_EOI,
     /** The usual 32-bit hack. */
     PDMDEVHLPTASKOP_32BIT_HACK = 0x7fffffff
