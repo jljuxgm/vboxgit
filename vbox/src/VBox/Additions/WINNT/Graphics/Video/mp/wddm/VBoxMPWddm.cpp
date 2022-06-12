@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 84658 2020-06-03 11:30:37Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 84729 2020-06-08 17:58:44Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -3397,6 +3397,7 @@ DxgkDdiEscape(
                     return Status;
                 }
 
+                Status = STATUS_SUCCESS;
                 break;
             }
             case VBOXESC_TARGET_CONNECTIVITY:
@@ -3429,6 +3430,7 @@ DxgkDdiEscape(
                 pTarget->fDisabled = !RT_BOOL(pData->fu32Connect & 1);
                 pTarget->u8SyncState &= ~VBOXWDDM_HGSYNC_F_SYNCED_TOPOLOGY;
 
+                Status = STATUS_SUCCESS;
                 break;
             }
             case VBOXESC_DBGPRINT:
