@@ -1,4 +1,4 @@
-/* $Id: tstSeamlessX11.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: tstSeamlessX11.cpp 86871 2020-11-12 10:15:18Z vboxsync $ */
 /** @file
  * Linux seamless guest additions simulator in host.
  */
@@ -57,6 +57,16 @@ void VBClLogFatalError(const char *pszFormat, ...)
     RTStrFree(psz);
 
     exit(1);
+}
+
+void VBClLogVerbose(unsigned iLevel, const char *pszFormat, ...)
+{
+    RT_NOREF(iLevel);
+
+    va_list va;
+    va_start(va, pszFormat);
+    RTPrintf("%s", pszFormat);
+    va_end(va);
 }
 
 int VBClStartVTMonitor()
@@ -155,7 +165,8 @@ int main( int argc, char **argv)
     {
         RTPrintf("Failed to initialise seamless Additions, rc = %Rrc\n", rc);
     }
-    rc = seamless.run();
+    bool fShutdown = false;
+    rc = seamless.worker(&fShutdown);
     if (rc != VINF_SUCCESS)
     {
         RTPrintf("Failed to run seamless Additions, rc = %Rrc\n", rc);
