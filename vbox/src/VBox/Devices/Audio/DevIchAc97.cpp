@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 84815 2020-06-12 12:52:16Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 86520 2020-10-11 18:04:15Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -773,6 +773,8 @@ static const IOMIOPORTDESC g_aNabmPorts[] =
     { NULL,                 NULL,               NULL, NULL },
 };
 
+/** @name Source indices
+ * @{ */
 #define AC97SOUNDSOURCE_PI_INDEX        0           /**< PCM in */
 #define AC97SOUNDSOURCE_PO_INDEX        1           /**< PCM out */
 #define AC97SOUNDSOURCE_MC_INDEX        2           /**< Mic in */
@@ -794,6 +796,7 @@ static const IOMIOPORTDESC g_aNabmPorts[] =
 #define AC97_NABM_OFF_PIV               0xa         /**< Prefetched Index Value */
 #define AC97_NABM_OFF_CR                0xb         /**< Control Register */
 #define AC97_NABM_OFF_MASK              0xf         /**< Mask for getting the the per-stream register. */
+/** @} */
 
 #endif
 
