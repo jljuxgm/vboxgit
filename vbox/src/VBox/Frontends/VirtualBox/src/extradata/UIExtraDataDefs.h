@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 86978 2020-11-25 16:56:23Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 87316 2021-01-20 09:50:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -823,7 +823,6 @@ enum GlobalSettingsPageType
 #endif
     GlobalSettingsPageType_Language,
     GlobalSettingsPageType_Display,
-    GlobalSettingsPageType_Network,
     GlobalSettingsPageType_Extensions,
 #ifdef VBOX_GUI_WITH_NETWORK_MANAGER
     GlobalSettingsPageType_Proxy,
