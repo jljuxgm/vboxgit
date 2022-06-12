@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 85467 2020-07-27 12:46:25Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 85486 2020-07-28 11:34:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -2811,6 +2811,7 @@ void UIVirtualBoxManager::updateMenuMachineConsole(QMenu *pMenu)
                                                         .arg(applicationValues.value(0)),
                                                     this, &UIVirtualBoxManager::sltExecuteExternalApplication);
                 pAction->setProperty("path", applicationValues.value(1));
+                pAction->setProperty("arguments", applicationValues.value(2));
             }
         }
         /* Terminal application configuration tool: */
