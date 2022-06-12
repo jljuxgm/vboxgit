@@ -1,4 +1,4 @@
-/* $Id: VMDK.cpp 85946 2020-08-28 22:12:25Z vboxsync $ */
+/* $Id: VMDK.cpp 86298 2020-09-25 21:07:47Z vboxsync $ */
 /** @file
  * VMDK disk image, core code.
  */
@@ -6294,7 +6294,7 @@ static char *vmdkStrReplace(const char *pszWhere, const char *pszWhat,
         return NULL;
     }
     size_t cbFinal = strlen(pszWhere) + 1 + strlen(pszByWhat) - strlen(pszWhat);
-    char *pszNewStr = (char *)RTMemAlloc(cbFinal);
+    char *pszNewStr = RTStrAlloc(cbFinal);
     if (pszNewStr)
     {
         char *pszTmp = pszNewStr;
