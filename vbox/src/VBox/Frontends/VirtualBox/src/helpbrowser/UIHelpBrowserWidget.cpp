@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.cpp 89349 2021-05-28 11:18:24Z vboxsync $ */
+/* $Id: UIHelpBrowserWidget.cpp 89353 2021-05-28 12:26:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class implementation.
  */
@@ -669,6 +669,7 @@ void UIHelpBrowserTab::prepareWidgets(const QUrl &initialUrl)
 {
     m_pContentViewer = new UIHelpViewer(m_pHelpEngine);
     AssertReturnVoid(m_pContentViewer);
+    setFocusProxy(m_pContentViewer);
     m_pMainLayout->setContentsMargins(0, 0, 0, 0);
     m_pMainLayout->setSpacing(0);
 
@@ -908,7 +909,7 @@ void UIHelpBrowserTabManager::addNewTab(const QUrl &initialUrl, bool fBackground
 
     pTabWidget->setZoomPercentage(zoomPercentage());
     pTabWidget->setHelpFileList(m_helpFileList);
-
+    setFocusProxy(pTabWidget);
     if (!fBackground)
         setCurrentIndex(index);
 }
@@ -1711,14 +1712,16 @@ void UIHelpBrowserWidget::retranslateUi()
 void UIHelpBrowserWidget::showEvent(QShowEvent *pEvent)
 {
     QWidget::showEvent(pEvent);
-   if (m_fIsPolished)
+    if (m_fIsPolished)
         return;
     m_fIsPolished = true;
+    if (m_pTabManager)
+        m_pTabManager->setFocus();
 }
 
 void UIHelpBrowserWidget::keyPressEvent(QKeyEvent *pEvent)
 {
-   QWidget::keyPressEvent(pEvent);
+    QWidget::keyPressEvent(pEvent);
 }
 
 void UIHelpBrowserWidget::findAndShowUrlForKeyword(const QString &strKeyword)

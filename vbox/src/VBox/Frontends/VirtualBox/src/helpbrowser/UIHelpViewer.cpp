@@ -1,4 +1,4 @@
-/* $Id: UIHelpViewer.cpp 88707 2021-04-26 16:17:35Z vboxsync $ */
+/* $Id: UIHelpViewer.cpp 89353 2021-05-28 12:26:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class implementation.
  */
@@ -729,6 +729,23 @@ void UIHelpViewer::keyPressEvent(QKeyEvent *pEvent)
 {
     if (pEvent && pEvent->key() == Qt::Key_Escape)
         clearOverlay();
+    if (pEvent && pEvent->modifiers() &Qt::ControlModifier)
+    {
+        switch (pEvent->key())
+        {
+            case Qt::Key_Equal:
+                zoom(ZoomOperation_In);
+                break;
+            case Qt::Key_Minus:
+                zoom(ZoomOperation_Out);
+                break;
+            case Qt::Key_0:
+                zoom(ZoomOperation_Reset);
+                break;
+            default:
+                break;
+        }
+    }
     QIWithRetranslateUI<QTextBrowser>::keyPressEvent(pEvent);
 }
 
