@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibDragAndDrop.cpp 85021 2020-07-01 11:42:30Z vboxsync $ */
+/* $Id: VBoxGuestR3LibDragAndDrop.cpp 85022 2020-07-01 11:45:34Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Drag & Drop.
  */
@@ -1057,7 +1057,7 @@ VBGLR3DECL(int) VbglR3DnDConnect(PVBGLR3GUESTDNDCMDCTX pCtx)
      * This is not fatal in case we're running with an ancient VBox version.
      */
     pCtx->uSessionID = 0;
-    int rc2 = VbglR3GetSessionId(&pCtx->uSessionID);
+    int rc2 = VbglR3GetSessionId(&pCtx->uSessionID); RT_NOREF(rc2);
     LogFlowFunc(("uSessionID=%RU64, rc=%Rrc\n", pCtx->uSessionID, rc2));
 
     /*
