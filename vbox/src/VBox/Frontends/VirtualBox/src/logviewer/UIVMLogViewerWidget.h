@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.h 88018 2021-03-08 15:12:30Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.h 88634 2021-04-21 13:14:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class declaration.
  */
@@ -42,6 +42,7 @@ class QVBoxLayout;
 class UIActionPool;
 class UIDialogPanel;
 class QIToolBar;
+class QIToolButton;
 class UIVMLogPage;
 class UIVMLogViewerBookmarksPanel;
 class UIVMLogViewerFilterPanel;
@@ -235,6 +236,8 @@ private:
         bool  m_bWrapLines;
         QFont m_font;
     /** @} */
+    QIToolButton *m_pCornerButton;
+    QMenu *m_pMachineSelectionMenu;
     friend class UIVMLogViewerFilterPanel;
     friend class UIVMLogViewerPanel;
     friend class UIVMLogViewerDialog;

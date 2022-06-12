@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.cpp 88018 2021-03-08 15:12:30Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.cpp 88634 2021-04-21 13:14:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class implementation.
  */
@@ -44,6 +44,7 @@
 #include "UIVMLogViewerSearchPanel.h"
 #include "UIVMLogViewerOptionsPanel.h"
 #include "QIToolBar.h"
+#include "QIToolButton.h"
 #include "UICommon.h"
 
 /* COM includes: */
@@ -72,6 +73,8 @@ UIVMLogViewerWidget::UIVMLogViewerWidget(EmbedTo enmEmbedding,
     , m_bShowLineNumbers(true)
     , m_bWrapLines(false)
     , m_font(QFontDatabase::systemFont(QFontDatabase::FixedFont))
+    , m_pCornerButton(0)
+    , m_pMachineSelectionMenu(0)
 {
     /* Prepare VM Log-Viewer: */
     prepare();
@@ -491,6 +494,14 @@ void UIVMLogViewerWidget::prepareWidgets()
         {
             /* Add into layout: */
             m_pMainLayout->addWidget(m_pTabWidget);
+            m_pCornerButton = new QIToolButton(m_pTabWidget);
+            if (m_pCornerButton)
+            {
+                m_pTabWidget->setCornerWidget(m_pCornerButton, Qt::TopLeftCorner);
+                m_pCornerButton->setIcon(UIIconPool::iconSet(":/machine_16px.png"));
+                m_pMachineSelectionMenu = new QMenu(this);
+                m_pCornerButton->setMenu(m_pMachineSelectionMenu);
+            }
         }
 
         /* Create VM Log-Viewer search-panel: */
