@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGroup.h 84625 2020-06-01 16:44:39Z vboxsync $ */
+/* $Id: UIChooserItemGroup.h 86652 2020-10-20 14:37:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGroup class declaration.
  */
@@ -95,6 +95,10 @@ public:
 
     /** @name Navigation stuff.
       * @{ */
+        /** Returns scrolling location value in pixels. */
+        int scrollingValue() const;
+        /** Defines scrolling location @a iValue in pixels. */
+        void setScrollingValue(int iValue);
         /** Performs scrolling by @a iDelta pixels. */
         void scrollBy(int iDelta);
 

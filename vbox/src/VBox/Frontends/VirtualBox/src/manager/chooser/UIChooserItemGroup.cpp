@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGroup.cpp 84625 2020-06-01 16:44:39Z vboxsync $ */
+/* $Id: UIChooserItemGroup.cpp 86652 2020-10-20 14:37:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGroup class implementation.
  */
@@ -144,6 +144,16 @@ void UIChooserItemGroup::updateFavorites()
 
     /* Relayout model: */
     model()->updateLayout();
+}
+
+int UIChooserItemGroup::scrollingValue() const
+{
+    return m_pScrollArea->scrollingValue();
+}
+
+void UIChooserItemGroup::setScrollingValue(int iValue)
+{
+    m_pScrollArea->setScrollingValue(iValue);
 }
 
 void UIChooserItemGroup::scrollBy(int iDelta)

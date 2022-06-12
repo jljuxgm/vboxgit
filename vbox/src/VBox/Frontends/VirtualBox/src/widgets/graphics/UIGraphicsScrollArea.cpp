@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsScrollArea.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIGraphicsScrollArea.cpp 86652 2020-10-20 14:37:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGraphicsScrollArea class implementation.
  */
@@ -111,6 +111,18 @@ void UIGraphicsScrollArea::setViewport(QIGraphicsWidget *pViewport)
 QIGraphicsWidget *UIGraphicsScrollArea::viewport() const
 {
     return m_pViewport;
+}
+
+int UIGraphicsScrollArea::scrollingValue() const
+{
+    return m_pScrollBar->value();
+}
+
+void UIGraphicsScrollArea::setScrollingValue(int iValue)
+{
+    iValue = qMax(iValue, 0);
+    iValue = qMin(iValue, m_pScrollBar->maximum());
+    m_pScrollBar->setValue(iValue);
 }
 
 void UIGraphicsScrollArea::scrollBy(int iDelta)

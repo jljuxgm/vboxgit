@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 86651 2020-10-20 14:33:08Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 86652 2020-10-20 14:37:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -1657,6 +1657,9 @@ QList<UIChooserItem*> UIChooserModel::createNavigationItemList(UIChooserItem *pI
 
 void UIChooserModel::buildTreeForMainRoot(bool fPreserveSelection /* = false */)
 {
+    /* Remember scrolling location: */
+    const int iScrollLocation = m_pRoot ? m_pRoot->toGroupItem()->scrollingValue() : 0;
+
     /* Remember all selected items if requested: */
     QStringList selectedItemDefinitions;
     if (fPreserveSelection && !selectedItems().isEmpty())
@@ -1691,6 +1694,9 @@ void UIChooserModel::buildTreeForMainRoot(bool fPreserveSelection /* = false */)
         setCurrentItem(firstSelectedItem());
         makeSureAtLeastOneItemSelected();
     }
+
+    /* Restore scrolling location: */
+    m_pRoot->toGroupItem()->setScrollingValue(iScrollLocation);
 
     /* Repeat search if search widget is visible: */
     if (view() && view()->isSearchWidgetVisible())
