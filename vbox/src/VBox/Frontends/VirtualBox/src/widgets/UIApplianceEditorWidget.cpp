@@ -1,4 +1,4 @@
-/* $Id: UIApplianceEditorWidget.cpp 83388 2020-03-24 15:50:54Z vboxsync $ */
+/* $Id: UIApplianceEditorWidget.cpp 87495 2021-02-01 08:43:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceEditorWidget class implementation.
  */
@@ -314,6 +314,7 @@ void UIVirtualSystemItem::putBack(QVector<BOOL> &finalStates, QVector<QString> &
 {
     /* Resize the vectors */
     unsigned long iCount = m_comDescription.GetCount();
+    AssertReturnVoid(iCount > 0);
     finalStates.resize(iCount);
     finalValues.resize(iCount);
     finalExtraValues.resize(iCount);
