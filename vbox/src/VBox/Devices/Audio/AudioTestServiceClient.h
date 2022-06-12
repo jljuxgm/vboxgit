@@ -1,4 +1,4 @@
-/* $Id: AudioTestServiceClient.h 89431 2021-06-01 12:57:36Z vboxsync $ */
+/* $Id: AudioTestServiceClient.h 89456 2021-06-02 08:43:16Z vboxsync $ */
 /** @file
  * AudioTestServiceClient - Audio test execution server, Public Header.
  */
@@ -33,6 +33,7 @@ int AudioTestSvcClientConnect(PATSCLIENT pClient, const char *pszAddr, uint32_t 
 int AudioTestSvcClientTestSetBegin(PATSCLIENT pClient, const char *pszTag);
 int AudioTestSvcClientTestSetEnd(PATSCLIENT pClient, const char *pszTag);
 int AudioTestSvcClientTonePlay(PATSCLIENT pClient, PPDMAUDIOSTREAMCFG pStreamCfg, PAUDIOTESTTONEPARMS pToneParms);
+int AudioTestSvcClientToneRecord(PATSCLIENT pClient, PPDMAUDIOSTREAMCFG pStreamCfg, PAUDIOTESTTONEPARMS pToneParms);
 int AudioTestSvcClientClose(PATSCLIENT pClient);
 
 #endif /* !VBOX_INCLUDED_SRC_Audio_AudioTestServiceClient_h */
