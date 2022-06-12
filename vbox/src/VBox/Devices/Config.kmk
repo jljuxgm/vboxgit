@@ -1,4 +1,4 @@
-# $Id: Config.kmk 86905 2020-11-17 23:36:12Z vboxsync $
+# $Id: Config.kmk 88770 2021-04-29 09:46:34Z vboxsync $
 ## @file
 # kBuild Configuration file for the Devices.
 #
@@ -131,6 +131,7 @@ endif
 # Disabled for AC'97 for now.
 #VBOX_AUDIO_DEFS  += VBOX_WITH_AUDIO_AC97_ASYNC_IO
 VBOX_AUDIO_DEFS += VBOX_WITH_AUDIO_HDA_ASYNC_IO
+VBOX_AUDIO_DEFS += VBOX_WITH_AUDIO_SB16_ASYNC_IO
 
 # Not yet enabled: Callbacks for the device emulation to let the backends
 #                  tell the emulation when and how to process data.
