@@ -1,4 +1,4 @@
-/* $Id: PGMAllHandler.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: PGMAllHandler.cpp 86473 2020-10-07 17:30:25Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -20,6 +20,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_PGM
+#define VBOX_WITHOUT_PAGING_BIT_FIELDS /* 64-bit bitfields are just asking for trouble. See @bugref{9841} and others. */
 #include <VBox/vmm/dbgf.h>
 #include <VBox/vmm/pgm.h>
 #include <VBox/vmm/iom.h>
