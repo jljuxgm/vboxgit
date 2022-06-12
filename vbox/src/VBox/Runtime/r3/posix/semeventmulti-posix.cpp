@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-posix.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: semeventmulti-posix.cpp 88294 2021-03-25 17:50:38Z vboxsync $ */
 /** @file
  * IPRT - Multiple Release Event Semaphore, POSIX.
  */
@@ -456,7 +456,7 @@ static int rtSemEventMultiPosixWaitTimed(struct RTSEMEVENTMULTIINTERNAL *pThis, 
      * Convert uTimeout to a relative value in nano seconds.
      */
     if (fFlags & RTSEMWAIT_FLAGS_MILLISECS)
-        uTimeout = uTimeout < UINT64_MAX / UINT32_C(1000000) * UINT32_C(1000000)
+        uTimeout = uTimeout < UINT64_MAX / UINT32_C(1000000)
                  ? uTimeout * UINT32_C(1000000)
                  : UINT64_MAX;
     if (uTimeout == UINT64_MAX) /* unofficial way of indicating an indefinite wait */
