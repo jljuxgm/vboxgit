@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 84519 2020-05-25 17:29:52Z vboxsync $ */
+/* $Id: VBoxManage.h 85665 2020-08-10 15:00:05Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -72,7 +72,6 @@ typedef enum
     USAGE_SETEXTRADATA,
     USAGE_SETPROPERTY,
     USAGE_USBFILTER,
-    USAGE_SHAREDFOLDER,
     USAGE_I_LOADSYMS,
     USAGE_I_LOADMAP,
     USAGE_I_SETHDUUID,
@@ -123,9 +122,6 @@ typedef enum
 #define HELP_SCOPE_USBFILTER_ADD        RT_BIT_64(0)
 #define HELP_SCOPE_USBFILTER_MODIFY     RT_BIT_64(1)
 #define HELP_SCOPE_USBFILTER_REMOVE     RT_BIT_64(2)
-
-#define HELP_SCOPE_SHAREDFOLDER_ADD     RT_BIT_64(0)
-#define HELP_SCOPE_SHAREDFOLDER_REMOVE  RT_BIT_64(1)
 
 #ifdef VBOX_WITH_GUEST_CONTROL
 # define HELP_SCOPE_GSTCTRL_RUN             RT_BIT(0)

@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 85575 2020-07-31 12:45:54Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 85665 2020-08-10 15:00:05Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -1142,22 +1142,6 @@ void printUsage(USAGECATEGORY enmCommand, uint64_t fSubcommandScope, PRTSTREAM p
             RTStrmPrintf(pStrm,
                                "%s usbfilter %s       remove <index,0-N>\n"
                          "                            --target <uuid|vmname>|global\n"
-                         "\n", SEP);
-    }
-
-    if (enmCommand == USAGE_SHAREDFOLDER || enmCommand == USAGE_S_ALL)
-    {
-        if (fSubcommandScope & HELP_SCOPE_SHAREDFOLDER_ADD)
-            RTStrmPrintf(pStrm,
-                               "%s sharedfolder %s    add <uuid|vmname>\n"
-                         "                            --name <name> --hostpath <hostpath>\n"
-                         "                            [--transient] [--readonly] [--automount]\n"
-                         "\n", SEP);
-
-        if (fSubcommandScope & HELP_SCOPE_SHAREDFOLDER_REMOVE)
-            RTStrmPrintf(pStrm,
-                               "%s sharedfolder %s    remove <uuid|vmname>\n"
-                         "                            --name <name> [--transient]\n"
                          "\n", SEP);
     }
 

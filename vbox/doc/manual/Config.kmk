@@ -1,4 +1,4 @@
-# $Id: Config.kmk 85654 2020-08-09 14:12:34Z vboxsync $
+# $Id: Config.kmk 85665 2020-08-10 15:00:05Z vboxsync $
 ## @file
 # kBuild Configuration file for the manual.
 #
@@ -38,6 +38,7 @@ VBOX_MANUAL_XML_REFENTRY_FILES := \
 	man_VBoxManage-snapshot.xml \
 	man_VBoxManage-clonevm.xml \
 	man_VBoxManage-mediumio.xml \
+	man_VBoxManage-sharedfolder.xml \
 	man_VBoxManage-dhcpserver.xml \
 	man_VBoxManage-debugvm.xml \
 	man_VBoxManage-extpack.xml \
