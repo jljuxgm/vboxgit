@@ -1,4 +1,4 @@
-/* $Id: clipboard-transfers.cpp 87068 2020-12-09 14:53:08Z vboxsync $ */
+/* $Id: clipboard-transfers.cpp 87069 2020-12-09 14:55:12Z vboxsync $ */
 /** @file
  * Shared Clipboard: Common Shared Clipboard transfer handling code.
  */
@@ -2655,7 +2655,7 @@ int ShClTransferCtxInit(PSHCLTRANSFERCTX pTransferCtx)
 
         pTransferCtx->cTransfers  = 0;
         pTransferCtx->cRunning    = 0;
-        pTransferCtx->cMaxRunning = UINT16_MAX; /** @todo Make this configurable? */
+        pTransferCtx->cMaxRunning = 64; /** @todo Make this configurable? */
 
         RT_ZERO(pTransferCtx->bmTransferIds);
 
