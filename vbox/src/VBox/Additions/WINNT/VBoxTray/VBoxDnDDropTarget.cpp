@@ -1,4 +1,4 @@
-/* $Id: VBoxDnDDropTarget.cpp 85694 2020-08-11 16:30:25Z vboxsync $ */
+/* $Id: VBoxDnDDropTarget.cpp 85746 2020-08-13 08:47:12Z vboxsync $ */
 /** @file
  * VBoxDnDTarget.cpp - IDropTarget implementation.
  */
@@ -483,7 +483,7 @@ STDMETHODIMP VBoxDnDDropTarget::Drop(IDataObject *pDataObject, DWORD grfKeyState
                             {
                                 /* Add separation between filenames.
                                  * Note: Also do this for the last element of the list. */
-                                rc = RTStrAAppendExN(&pszFiles, 1 /* cPairs */, DND_PATH_SEPARATOR, 2 /* Bytes */);
+                                rc = RTStrAAppendExN(&pszFiles, 1 /* cPairs */, DND_PATH_SEPARATOR_STR, 2 /* Bytes */);
                                 if (RT_SUCCESS(rc))
                                     cchFiles += 2; /* Include \r\n */
                             }

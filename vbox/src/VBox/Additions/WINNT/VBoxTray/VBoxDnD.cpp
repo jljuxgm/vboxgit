@@ -1,4 +1,4 @@
-/* $Id: VBoxDnD.cpp 85745 2020-08-13 08:37:09Z vboxsync $ */
+/* $Id: VBoxDnD.cpp 85746 2020-08-13 08:47:12Z vboxsync $ */
 /** @file
  * VBoxDnD.cpp - Windows-specific bits of the drag and drop service.
  */
@@ -557,7 +557,7 @@ LRESULT CALLBACK VBoxDnDWnd::WndProc(HWND a_hWnd, UINT a_uMsg, WPARAM a_wParam, 
                     if (pVbglR3Event->u.HG_Enter.cbFormats)
                     {
                         RTCList<RTCString> lstFormats =
-                            RTCString(pVbglR3Event->u.HG_Enter.pszFormats, pVbglR3Event->u.HG_Enter.cbFormats - 1).split(DND_FORMATS_SEPARATOR);
+                            RTCString(pVbglR3Event->u.HG_Enter.pszFormats, pVbglR3Event->u.HG_Enter.cbFormats - 1).split(DND_FORMATS_SEPARATOR_STR);
                         rc = OnHgEnter(lstFormats, pVbglR3Event->u.HG_Enter.dndLstActionsAllowed);
                         if (RT_FAILURE(rc))
                             break;
@@ -1096,7 +1096,7 @@ int VBoxDnDWnd::OnHgDataReceive(PVBGLR3GUESTDNDMETADATA pMeta)
                     /* Note: The transfer list already has its root set to a temporary directory, so no need to set/add a new
                      *       path base here. */
                     rc = DnDTransferListGetRootsEx(&pMeta->u.URI.Transfer, DNDTRANSFERLISTFMT_NATIVE, NULL /* pszPathBase */,
-                                                   DND_PATH_SEPARATOR, &pszBuf, &cbBuf);
+                                                   DND_PATH_SEPARATOR_STR, &pszBuf, &cbBuf);
                     if (RT_SUCCESS(rc))
                     {
                         rc = m_startupInfo.pDataObject->Signal(m_strFmtReq, pszBuf, cbBuf);

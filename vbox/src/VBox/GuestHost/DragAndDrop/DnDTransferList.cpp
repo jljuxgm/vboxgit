@@ -1,4 +1,4 @@
-/* $Id: DnDTransferList.cpp 85659 2020-08-10 11:29:08Z vboxsync $ */
+/* $Id: DnDTransferList.cpp 85746 2020-08-13 08:47:12Z vboxsync $ */
 /** @file
  * DnD - transfer list implemenation.
  */
@@ -1122,7 +1122,7 @@ int DnDTransferListGetRootsEx(PDNDTRANSFERLIST pList,
 int DnDTransferListGetRoots(PDNDTRANSFERLIST pList,
                             DNDTRANSFERLISTFMT enmFmt, char **ppszBuffer, size_t *pcbBuffer)
 {
-    return DnDTransferListGetRootsEx(pList, enmFmt, "" /* pcszPathRoot */, DND_PATH_SEPARATOR,
+    return DnDTransferListGetRootsEx(pList, enmFmt, "" /* pcszPathRoot */, DND_PATH_SEPARATOR_STR,
                                      ppszBuffer, pcbBuffer);
 }
 

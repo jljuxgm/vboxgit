@@ -1,4 +1,4 @@
-/* $Id: draganddrop.cpp 85745 2020-08-13 08:37:09Z vboxsync $ */
+/* $Id: draganddrop.cpp 85746 2020-08-13 08:47:12Z vboxsync $ */
 /** @file
  * X11 guest client - Drag and drop implementation.
  */
@@ -1944,7 +1944,7 @@ int DragInstance::hgDataReceive(PVBGLR3GUESTDNDMETADATA pMeta)
 
             /* Note: Use the URI format here, as X' DnD spec says so. */
             rc = DnDTransferListGetRootsEx(&pMeta->u.URI.Transfer, DNDTRANSFERLISTFMT_URI, pcszRootPath,
-                                           DND_PATH_SEPARATOR, (char **)&pvData, &cbData);
+                                           DND_PATH_SEPARATOR_STR, (char **)&pvData, &cbData);
             break;
         }
 

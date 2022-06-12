@@ -1,4 +1,4 @@
-/* $Id: VBoxDnDDataObject.cpp 85694 2020-08-11 16:30:25Z vboxsync $ */
+/* $Id: VBoxDnDDataObject.cpp 85746 2020-08-13 08:47:12Z vboxsync $ */
 /** @file
  * VBoxDnDDataObject.cpp - IDataObject implementation.
  */
@@ -223,7 +223,7 @@ STDMETHODIMP VBoxDnDDataObject::GetData(LPFORMATETC pFormatEtc, LPSTGMEDIUM pMed
         {
             char **papszFiles;
             size_t cFiles;
-            int rc = RTStrSplit((const char *)m_pvData, m_cbData, DND_PATH_SEPARATOR, &papszFiles, &cFiles);
+            int rc = RTStrSplit((const char *)m_pvData, m_cbData, DND_PATH_SEPARATOR_STR, &papszFiles, &cFiles);
             if (   RT_SUCCESS(rc)
                 && cFiles)
             {

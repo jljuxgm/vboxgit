@@ -1,4 +1,4 @@
-/* $Id: GuestDnDPrivate.h 85744 2020-08-13 08:28:29Z vboxsync $ */
+/* $Id: GuestDnDPrivate.h 85746 2020-08-13 08:47:12Z vboxsync $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget +
  * GuestDnDSource.
@@ -949,7 +949,7 @@ public:
     /** @name Static helper methods.
      * @{ */
     static bool                     isFormatInFormatList(const com::Utf8Str &strFormat, const GuestDnDMIMEList &lstFormats);
-    static GuestDnDMIMEList         toFormatList(const com::Utf8Str &strFormats, const com::Utf8Str &strSep = DND_FORMATS_SEPARATOR);
+    static GuestDnDMIMEList         toFormatList(const com::Utf8Str &strFormats, const com::Utf8Str &strSep = DND_FORMATS_SEPARATOR_STR);
     static com::Utf8Str             toFormatString(const GuestDnDMIMEList &lstFormats);
     static GuestDnDMIMEList         toFilteredFormatList(const GuestDnDMIMEList &lstFormatsSupported, const GuestDnDMIMEList &lstFormatsWanted);
     static GuestDnDMIMEList         toFilteredFormatList(const GuestDnDMIMEList &lstFormatsSupported, const com::Utf8Str &strFormatsWanted);

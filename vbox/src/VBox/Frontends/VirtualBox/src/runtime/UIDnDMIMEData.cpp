@@ -1,4 +1,4 @@
-/* $Id: UIDnDMIMEData.cpp 85477 2020-07-27 18:13:30Z vboxsync $ */
+/* $Id: UIDnDMIMEData.cpp 85746 2020-08-13 08:47:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDnDMIMEData class implementation.
  */
@@ -235,7 +235,7 @@ int UIDnDMIMEData::getDataAsVariant(const QVector<uint8_t> &vecData,
         case QVariant::List: /* Used on OS X for representing URI lists. */
         {
             QString strData = QString(reinterpret_cast<const char*>(vecData.constData()));
-            QStringList lstString = strData.split(DND_PATH_SEPARATOR, QString::SkipEmptyParts);
+            QStringList lstString = strData.split(DND_PATH_SEPARATOR_STR, QString::SkipEmptyParts);
 
             QVariantList lstVariant;
 
@@ -254,7 +254,7 @@ int UIDnDMIMEData::getDataAsVariant(const QVector<uint8_t> &vecData,
         case QVariant::StringList:
         {
             QString strData = QString(reinterpret_cast<const char*>(vecData.constData()));
-            QStringList lstString = strData.split(DND_PATH_SEPARATOR, QString::SkipEmptyParts);
+            QStringList lstString = strData.split(DND_PATH_SEPARATOR_STR, QString::SkipEmptyParts);
 
             LogFlowFunc(("\tStringList has %d entries\n", lstString.size()));
 # ifdef DEBUG
