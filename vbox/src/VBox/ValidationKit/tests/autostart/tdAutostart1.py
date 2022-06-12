@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Id: tdAutostart1.py 85469 2020-07-27 13:09:38Z vboxsync $"
+__version__ = "$Id: tdAutostart1.py 85470 2020-07-27 13:16:41Z vboxsync $"
 
 
 # Standard Python imports.
@@ -393,7 +393,7 @@ class tdAutostartOs(object):
                                         acbFdOut[iFd] += len(abBuf);
                                         ## @todo Figure out how to uniform + append!
                                         sBuf = '';
-                                        if sys.version_info >= (2, 7) and isinstance(abBuf, memoryview): ## @todo Why is this happening?
+                                        if sys.version_info >= (2, 7) and isinstance(abBuf, memoryview):
                                             abBuf = abBuf.tobytes();
                                             sBuf  = abBuf.decode("utf-8");
                                         else:
