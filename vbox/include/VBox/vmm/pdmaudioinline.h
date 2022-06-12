@@ -1,4 +1,4 @@
-/* $Id: pdmaudioinline.h 88887 2021-05-05 23:38:58Z vboxsync $ */
+/* $Id: pdmaudioinline.h 88892 2021-05-06 01:08:15Z vboxsync $ */
 /** @file
  * PDM - Audio Helpers, Inlined Code. (DEV,++)
  *
@@ -1154,64 +1154,6 @@ DECLINLINE(const char *) PDMHostAudioStreamStateGetName(PDMHOSTAUDIOSTREAMSTATE 
     }
     AssertMsgFailedReturn(("Invalid host audio stream state: %d\n", enmHostAudioStreamState), "illegal");
 }
-
-/**
- * Checks if the stream status is one that can be read from.
- *
- * @returns @c true if ready to be read from, @c false if not.
- * @param   fStatus     Stream status to evaluate, PDMAUDIOSTREAM_STS_XXX.
- * @note    Not for backend statuses (use PDMAudioStrmStatusBackendCanRead)!
- */
-DECLINLINE(bool) PDMAudioStrmStatusCanRead(uint32_t fStatus)
-{
-    PDMAUDIOSTREAM_STS_ASSERT_VALID(fStatus);
-    AssertReturn(!(fStatus & ~PDMAUDIOSTREAM_STS_VALID_MASK), false);
-    return (fStatus & (  PDMAUDIOSTREAM_STS_INITIALIZED
-                       | PDMAUDIOSTREAM_STS_ENABLED
-                       | PDMAUDIOSTREAM_STS_PAUSED
-                       | PDMAUDIOSTREAM_STS_NEED_REINIT))
-        == (  PDMAUDIOSTREAM_STS_INITIALIZED
-            | PDMAUDIOSTREAM_STS_ENABLED);
-}
-
-/**
- * Checks if the stream status is one that can be written to.
- *
- * @returns @c true if ready to be written to, @c false if not.
- * @param   fStatus     Stream status to evaluate, PDMAUDIOSTREAM_STS_XXX.
- * @note    Not for backend statuses (use PDMAudioStrmStatusBackendCanWrite)!
- */
-DECLINLINE(bool) PDMAudioStrmStatusCanWrite(uint32_t fStatus)
-{
-    PDMAUDIOSTREAM_STS_ASSERT_VALID(fStatus);
-    AssertReturn(!(fStatus & ~PDMAUDIOSTREAM_STS_VALID_MASK), false);
-    return (fStatus & (  PDMAUDIOSTREAM_STS_INITIALIZED
-                       | PDMAUDIOSTREAM_STS_ENABLED
-                       | PDMAUDIOSTREAM_STS_PAUSED
-                       | PDMAUDIOSTREAM_STS_PENDING_DISABLE
-                       | PDMAUDIOSTREAM_STS_NEED_REINIT))
-        == (  PDMAUDIOSTREAM_STS_INITIALIZED
-            | PDMAUDIOSTREAM_STS_ENABLED);
-}
-
-/**
- * Checks if the stream status is a ready-to-operate one.
- *
- * @returns @c true if ready to operate, @c false if not.
- * @param   fStatus     Stream status to evaluate, PDMAUDIOSTREAM_STS_XXX.
- * @note    Not for backend statuses!
- */
-DECLINLINE(bool) PDMAudioStrmStatusIsReady(uint32_t fStatus)
-{
-    PDMAUDIOSTREAM_STS_ASSERT_VALID(fStatus);
-    AssertReturn(!(fStatus & ~PDMAUDIOSTREAM_STS_VALID_MASK), false);
-    return (fStatus & (  PDMAUDIOSTREAM_STS_INITIALIZED
-                       | PDMAUDIOSTREAM_STS_ENABLED
-                       | PDMAUDIOSTREAM_STS_NEED_REINIT))
-        == (  PDMAUDIOSTREAM_STS_INITIALIZED
-            | PDMAUDIOSTREAM_STS_ENABLED);
-}
-
 
 /** @} */
 
