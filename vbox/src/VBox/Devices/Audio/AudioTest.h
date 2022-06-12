@@ -1,4 +1,4 @@
-/* $Id: AudioTest.h 89461 2021-06-02 10:10:57Z vboxsync $ */
+/* $Id: AudioTest.h 89463 2021-06-02 11:03:47Z vboxsync $ */
 /** @file
  * Audio testing routines.
  * Common code which is being used by the ValidationKit audio test (VKAT)
@@ -365,7 +365,7 @@ int    AudioTestPathCreateTemp(char *pszPath, size_t cbPath, const char *pszUUID
 int    AudioTestPathCreate(char *pszPath, size_t cbPath, const char *pszUUID);
 
 int    AudioTestSetObjCreateAndRegister(PAUDIOTESTSET pSet, const char *pszName, PAUDIOTESTOBJ *ppObj);
-int    AudioTestSetObjWrite(PAUDIOTESTOBJ pObj, void *pvBuf, size_t cbBuf);
+int    AudioTestSetObjWrite(PAUDIOTESTOBJ pObj, const void *pvBuf, size_t cbBuf);
 int    AudioTestSetObjAddMetadataStr(PAUDIOTESTOBJ pObj, const char *pszFormat, ...);
 int    AudioTestSetObjClose(PAUDIOTESTOBJ pObj);
 

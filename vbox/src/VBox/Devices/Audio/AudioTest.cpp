@@ -1,4 +1,4 @@
-/* $Id: AudioTest.cpp 89436 2021-06-01 15:05:48Z vboxsync $ */
+/* $Id: AudioTest.cpp 89463 2021-06-02 11:03:47Z vboxsync $ */
 /** @file
  * Audio testing routines.
  * Common code which is being used by the ValidationKit and the debug / ValdikationKit audio driver(s).
@@ -1054,7 +1054,7 @@ int AudioTestSetObjCreateAndRegister(PAUDIOTESTSET pSet, const char *pszName, PA
  * @param   pvBuf               Pointer to data to write.
  * @param   cbBuf               Size (in bytes) of \a pvBuf to write.
  */
-int AudioTestSetObjWrite(PAUDIOTESTOBJ pObj, void *pvBuf, size_t cbBuf)
+int AudioTestSetObjWrite(PAUDIOTESTOBJ pObj, const void *pvBuf, size_t cbBuf)
 {
     /** @todo Generalize this function more once we have more object types. */
     AssertReturn(pObj->enmType == AUDIOTESTOBJTYPE_FILE, VERR_INVALID_PARAMETER);
