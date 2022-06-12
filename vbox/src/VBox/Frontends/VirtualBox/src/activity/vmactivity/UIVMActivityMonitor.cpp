@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityMonitor.cpp 88881 2021-05-05 16:02:32Z vboxsync $ */
+/* $Id: UIVMActivityMonitor.cpp 88886 2021-05-05 19:16:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMActivityMonitor class implementation.
  */
@@ -660,6 +660,7 @@ void UIChart::sltSetUseAreaChart(bool fUseAreaChart)
 {
     setUseAreaChart(fUseAreaChart);
 }
+
 
 /*********************************************************************************************************************************
 *   UIMetric implementation.                                                                                                     *
