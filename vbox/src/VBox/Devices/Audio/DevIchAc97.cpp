@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 88692 2021-04-23 19:59:42Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 88849 2021-05-03 19:50:41Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -4516,7 +4516,8 @@ const PDMDEVREG g_DeviceICHAC97 =
     /* .u32Version = */             PDM_DEVREG_VERSION,
     /* .uReserved0 = */             0,
     /* .szName = */                 "ichac97",
-    /* .fFlags = */                 PDM_DEVREG_FLAGS_DEFAULT_BITS | PDM_DEVREG_FLAGS_RZ | PDM_DEVREG_FLAGS_NEW_STYLE,
+    /* .fFlags = */                 PDM_DEVREG_FLAGS_DEFAULT_BITS | PDM_DEVREG_FLAGS_RZ | PDM_DEVREG_FLAGS_NEW_STYLE
+                                    | PDM_DEVREG_FLAGS_FIRST_POWEROFF_NOTIFICATION /* stream clearnup with working drivers */,
     /* .fClass = */                 PDM_DEVREG_CLASS_AUDIO,
     /* .cMaxInstances = */          1,
     /* .uSharedVersion = */         42,
