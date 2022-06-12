@@ -1,4 +1,4 @@
-/* $Id: DisplayResampleImage.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: DisplayResampleImage.cpp 85210 2020-07-11 10:51:30Z vboxsync $ */
 /** @file
  * Image resampling code, used for snapshot thumbnails.
  */
@@ -88,7 +88,6 @@ void BitmapScale32 (uint8_t *dst,
                 {
                     FIXEDPOINT xportion;
                     FIXEDPOINT pcontribution;
-                    int p;
                     if (FIXEDPOINT_FLOOR (sx) == FIXEDPOINT_FLOOR (sx1))
                     {
                         xportion = INT_TO_FIXEDPOINT(1) - FIXEDPOINT_FRACTION(sx);
@@ -110,7 +109,7 @@ void BitmapScale32 (uint8_t *dst,
                         pcontribution = xportion * yportion;
                     }
                     /* Color depth specific code begin */
-                    p = *(uint32_t *)(pu8SrcLine + FIXEDPOINT_TO_INT(sx) * 4);
+                    int32_t p = *(int32_t *)(pu8SrcLine + FIXEDPOINT_TO_INT(sx) * 4);
                     /* Color depth specific code end */
                     red   += trueColorGetRed (p) * pcontribution;
                     green += trueColorGetGreen (p) * pcontribution;
