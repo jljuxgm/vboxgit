@@ -1,4 +1,4 @@
-/* $Id: AudioTest.h 89293 2021-05-26 14:04:25Z vboxsync $ */
+/* $Id: AudioTest.h 89294 2021-05-26 14:14:21Z vboxsync $ */
 /** @file
  * Audio testing routines.
  * Common code which is being used by the ValidationKit audio test (VKAT)
@@ -77,6 +77,9 @@ typedef struct AUDIOTESTTONEPARMS
 {
     /** The PCM properties. */
     PDMAUDIOPCMPROPS Props;
+    /** Tone frequency (in Hz) to use.
+     *  Will be later converted to a double value. */
+    uint16_t         uFreq;
     /** Prequel (in ms) to play silence. Optional and can be set to 0. */
     RTMSINTERVAL     msPrequel;
     /** Duration (in ms) to play the test tone. */
