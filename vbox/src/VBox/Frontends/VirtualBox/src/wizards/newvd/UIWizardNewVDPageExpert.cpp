@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageExpert.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIWizardNewVDPageExpert.cpp 85452 2020-07-24 09:12:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageExpert class implementation.
  */
@@ -43,6 +43,8 @@
 /* COM includes: */
 #include "CSystemProperties.h"
 
+/* Other VBox includes: */
+#include <iprt/path.h>
 
 UIWizardNewVDPageExpert::UIWizardNewVDPageExpert(const QString &strDefaultName, const QString &strDefaultPath, qulonglong uDefaultSize)
     : UIWizardNewVDPage3(strDefaultName, strDefaultPath)
@@ -210,9 +212,18 @@ void UIWizardNewVDPageExpert::sltMediumFormatChanged()
     if (!m_pLocationEditor->text().isEmpty() && !m_strDefaultExtension.isEmpty())
     {
         QFileInfo fileInfo(m_pLocationEditor->text());
-        if (fileInfo.completeSuffix() != m_strDefaultExtension)
+        QString strSuffix = fileInfo.suffix();
+        if (strSuffix != m_strDefaultExtension)
         {
-            QString strNewFilePath = QString("%1/%2.%3").arg(fileInfo.absoluteDir().absolutePath()).arg(fileInfo.fileName()).arg(m_strDefaultExtension);
+            /* QFileInfo::baseName() removes completeSuffix() from the fileName(), which is everthing coming after the 'first'
+               dot. I want to allow disk names with dots in it. So I remove the string from fileName()
+               that comes after the 'last' dot: */
+            QByteArray strFileName = fileInfo.fileName().toUtf8();
+            RTPathStripSuffix(strFileName.data());
+            QString strNewFilePath = QString("%1/%2.%3")
+                .arg(fileInfo.absoluteDir().absolutePath())
+                .arg(QString(strFileName))
+                .arg(m_strDefaultExtension);
             m_pLocationEditor->setText(strNewFilePath);
         }
     }
