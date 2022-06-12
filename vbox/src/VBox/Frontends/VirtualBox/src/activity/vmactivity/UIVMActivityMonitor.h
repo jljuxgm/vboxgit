@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityMonitor.h 88881 2021-05-05 16:02:32Z vboxsync $ */
+/* $Id: UIVMActivityMonitor.h 88895 2021-05-06 10:23:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMActivityMonitor class declaration.
  */
@@ -147,7 +147,8 @@ public:
 
 protected:
 
-    void retranslateUi();
+    virtual void retranslateUi() /* override */;
+    virtual bool eventFilter(QObject *pObj, QEvent *pEvent) /* override */;
 
 private slots:
 
