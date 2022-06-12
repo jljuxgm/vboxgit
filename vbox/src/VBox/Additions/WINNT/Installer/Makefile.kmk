@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 84945 2020-06-25 10:22:05Z vboxsync $
+# $Id: Makefile.kmk 84972 2020-06-26 14:58:51Z vboxsync $
 ## @file
 # Sub-Makefile for the Windows Guest Additions Installer.
 #
@@ -90,7 +90,8 @@ ifeq ($(KBUILD_TARGET_ARCH),amd64)
 endif
 ifeq ($(KBUILD_TARGET_ARCH),x86)
 DRIVER_FILES += \
-	$(PATH_STAGE_BIN)/additions/VBoxMouseNT.sys
+	$(PATH_STAGE_BIN)/additions/VBoxMouseNT.sys \
+	$(PATH_STAGE_BIN)/additions/VBoxSFW2K.sys
 endif
 DRIVER_FILES += \
 	$(PATH_STAGE_BIN)/additions/VBoxVideo.inf \
