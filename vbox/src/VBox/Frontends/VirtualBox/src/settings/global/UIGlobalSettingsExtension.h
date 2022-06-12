@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsExtension.h 86005 2020-09-02 15:46:14Z vboxsync $ */
+/* $Id: UIGlobalSettingsExtension.h 86020 2020-09-03 13:10:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsExtension class declaration.
  */
@@ -108,9 +108,9 @@ private:
         QITreeWidget     *m_pTreeWidget;
         /** Holds the toolbar instance. */
         UIToolBar        *m_pToolbar;
-        /** Holds the Add action instance. */
+        /** Holds the 'add package' action instance. */
         QAction          *m_pActionAdd;
-        /** Holds the Remove action instance. */
+        /** Holds the 'remove package' action instance. */
         QAction          *m_pActionRemove;
     /** @} */
 };

@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsLanguage.cpp 85990 2020-09-02 10:06:55Z vboxsync $ */
+/* $Id: UIGlobalSettingsLanguage.cpp 86020 2020-09-03 13:10:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsLanguage class implementation.
  */
@@ -363,12 +363,11 @@ void UIGlobalSettingsLanguage::prepareWidgets()
     QGridLayout *pLayoutMain = new QGridLayout(this);
     if (pLayoutMain)
     {
-        pLayoutMain->setContentsMargins(0, 0, 0, 0);
-
         /* Prepare separator: */
         m_pLabelSeparator = new QILabelSeparator(this);
         if (m_pLabelSeparator)
             pLayoutMain->addWidget(m_pLabelSeparator, 0, 0);
+
         /* Prepare tree-widget: */
         m_pTreeWidget = new QITreeWidget(this);
         if (m_pTreeWidget)
@@ -399,10 +398,8 @@ void UIGlobalSettingsLanguage::prepareWidgets()
 
 void UIGlobalSettingsLanguage::prepareConnection()
 {
-    connect(m_pTreeWidget, &QITreeWidget::painted,
-            this, &UIGlobalSettingsLanguage::sltHandleItemPainting);
-    connect(m_pTreeWidget, &QITreeWidget::currentItemChanged,
-            this, &UIGlobalSettingsLanguage::sltHandleCurrentItemChange);
+    connect(m_pTreeWidget, &QITreeWidget::painted, this, &UIGlobalSettingsLanguage::sltHandleItemPainting);
+    connect(m_pTreeWidget, &QITreeWidget::currentItemChanged, this, &UIGlobalSettingsLanguage::sltHandleCurrentItemChange);
 }
 
 void UIGlobalSettingsLanguage::cleanup()

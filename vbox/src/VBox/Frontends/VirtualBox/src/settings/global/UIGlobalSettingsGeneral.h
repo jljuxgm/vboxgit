@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsGeneral.h 85978 2020-09-01 13:52:24Z vboxsync $ */
+/* $Id: UIGlobalSettingsGeneral.h 86020 2020-09-03 13:10:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsGeneral class declaration.
  */
@@ -84,9 +84,9 @@ private:
         /** Holds machine folder selector instance. */
         UIFilePathSelector *m_pSelectorMachineFolder;
         /** Holds VRDP library name label instance. */
-        QLabel             *m_pLabelVRDPLibName;
+        QLabel             *m_pLabelVRDPLibraryName;
         /** Holds VRDP library name selector instance. */
-        UIFilePathSelector *m_pSelectorVRDPLibName;
+        UIFilePathSelector *m_pSelectorVRDPLibraryName;
         /** Holds screen-saver label instance. */
         QLabel             *m_pLabelHostScreenSaver;
         /** Holds disable screen-saver check-box instance. */

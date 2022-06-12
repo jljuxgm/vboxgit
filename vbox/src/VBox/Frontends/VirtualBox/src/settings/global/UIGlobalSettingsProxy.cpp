@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsProxy.cpp 86019 2020-09-03 09:35:52Z vboxsync $ */
+/* $Id: UIGlobalSettingsProxy.cpp 86020 2020-09-03 13:10:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsProxy class implementation.
  */
@@ -252,7 +252,6 @@ void UIGlobalSettingsProxy::prepareWidgets()
     QGridLayout *pLayoutMain = new QGridLayout(this);
     if (pLayoutMain)
     {
-        pLayoutMain->setContentsMargins(0, 0, 0, 0);
         pLayoutMain->setRowStretch(4, 1);
 
         /* Prepare button-group: */
