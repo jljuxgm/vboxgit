@@ -1,4 +1,4 @@
-/* $Id: DBGFR3Tracer.cpp 84823 2020-06-15 06:58:36Z vboxsync $ */
+/* $Id: DBGFR3Tracer.cpp 84825 2020-06-15 07:06:39Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, tracing parts.
  */
@@ -775,7 +775,7 @@ static DECLCALLBACK(int) dbgfR3TracerThreadFlush(RTTHREAD ThreadSelf, void *pvUs
         if (!ASMAtomicXchgBool(&pShared->fEvtsWaiting, false))
         {
             int rc = SUPSemEventWaitNoResume(pSession, pShared->hSupSemEvtFlush, RT_INDEFINITE_WAIT);
-            Assert(RT_SUCCESS(rc) || rc == VERR_INTERRUPTED);
+            Assert(RT_SUCCESS(rc) || rc == VERR_INTERRUPTED); RT_NOREF(rc);
 
             if (RT_UNLIKELY(ASMAtomicReadBool(&pThis->fShutdown)))
                 break;
