@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackendGlobal.cpp 83653 2020-04-09 16:38:03Z vboxsync $ */
+/* $Id: UIConverterBackendGlobal.cpp 84904 2020-06-22 14:12:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConverterBackendGlobal implementation.
  */
@@ -1545,6 +1545,25 @@ template<> UIToolType fromInternalString<UIToolType>(const QString &strToolType)
         return UIToolType_Invalid;
     /* Corresponding type for known words: */
     return values.at(keys.indexOf(QRegExp(strToolType, Qt::CaseInsensitive)));
+}
+
+/* QString <= UIVisualStateType: */
+template<> QString toString(const UIVisualStateType &visualStateType)
+{
+    QString strResult;
+    switch (visualStateType)
+    {
+        case UIVisualStateType_Normal:     strResult = QApplication::translate("UICommon", "Normal (window)", "visual state"); break;
+        case UIVisualStateType_Fullscreen: strResult = QApplication::translate("UICommon", "Full-screen", "visual state"); break;
+        case UIVisualStateType_Seamless:   strResult = QApplication::translate("UICommon", "Seamless", "visual state"); break;
+        case UIVisualStateType_Scale:      strResult = QApplication::translate("UICommon", "Scaled", "visual state"); break;
+        default:
+        {
+            AssertMsgFailed(("No text for visual state type=%d", visualStateType));
+            break;
+        }
+    }
+    return strResult;
 }
 
 /* QString <= UIVisualStateType: */

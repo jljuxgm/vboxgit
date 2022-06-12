@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackend.h 84189 2020-05-07 15:13:27Z vboxsync $ */
+/* $Id: UIConverterBackend.h 84904 2020-06-22 14:12:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConverterBackend declaration.
  */
@@ -219,6 +219,7 @@ template<> SHARED_LIBRARY_STUFF QString toInternalString(const UIExtraDataMetaDe
 template<> SHARED_LIBRARY_STUFF UIExtraDataMetaDefs::DetailsElementOptionTypeDescription fromInternalString<UIExtraDataMetaDefs::DetailsElementOptionTypeDescription>(const QString &strDetailsElementOptionTypeDescription);
 template<> SHARED_LIBRARY_STUFF QString toInternalString(const UIToolType &enmToolType);
 template<> SHARED_LIBRARY_STUFF UIToolType fromInternalString<UIToolType>(const QString &strToolType);
+template<> SHARED_LIBRARY_STUFF QString toString(const UIVisualStateType &visualStateType);
 template<> SHARED_LIBRARY_STUFF QString toInternalString(const UIVisualStateType &visualStateType);
 template<> SHARED_LIBRARY_STUFF UIVisualStateType fromInternalString<UIVisualStateType>(const QString &strVisualStateType);
 template<> SHARED_LIBRARY_STUFF QString toString(const DetailsElementType &detailsElementType);

@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsInterface.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIMachineSettingsInterface.h 84904 2020-06-22 14:12:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsInterface class declaration.
  */
@@ -83,6 +83,8 @@ private:
     bool saveStatusBarData();
     /** Saves existing 'Mini-toolbar' data from the cache. */
     bool saveMiniToolbarData();
+    /** Saves existing 'Visual State' data from the cache. */
+    bool saveVisualStateData();
 
     /** Holds the machine ID copy. */
     const QUuid    m_uMachineId;
