@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageExpert.cpp 86346 2020-09-30 13:02:39Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageExpert.cpp 86590 2020-10-15 11:42:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageExpert class implementation.
  */
@@ -215,6 +215,9 @@ void UIWizardNewCloudVMPageExpert::retranslateUi()
     /* Translate source tab-bar: */
     m_pSourceTabBar->setTabText(0, UIWizardNewCloudVM::tr("&Boot Volumes"));
     m_pSourceTabBar->setTabText(1, UIWizardNewCloudVM::tr("&Images"));
+
+    /* Translate profile stuff: */
+    m_pProfileToolButton->setToolTip(UIWizardNewCloudVM::tr("Open Cloud Profile Manager..."));
 
     /* Translate settings container: */
     m_pSettingsCnt->setTitle(UIWizardNewCloudVM::tr("Settings"));

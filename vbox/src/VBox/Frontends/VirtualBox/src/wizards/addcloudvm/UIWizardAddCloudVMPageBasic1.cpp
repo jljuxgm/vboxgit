@@ -1,4 +1,4 @@
-/* $Id: UIWizardAddCloudVMPageBasic1.cpp 86355 2020-09-30 17:12:41Z vboxsync $ */
+/* $Id: UIWizardAddCloudVMPageBasic1.cpp 86590 2020-10-15 11:42:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardAddCloudVMPageBasic1 class implementation.
  */
@@ -512,8 +512,9 @@ void UIWizardAddCloudVMPageBasic1::retranslateUi()
                                                         "updated.  To continue, select at least one instance to add virtual "
                                                         "machine on the basis of it.</p>"));
 
-    /* Translate cloud stuff: */
+    /* Translate profile stuff: */
     m_pProfileLabel->setText(UIWizardAddCloudVM::tr("&Profile:"));
+    m_pProfileToolButton->setToolTip(UIWizardAddCloudVM::tr("Open Cloud Profile Manager..."));
     m_pProfileInstanceLabel->setText(UIWizardAddCloudVM::tr("&Instances:"));
 
     /* Adjust label widths: */

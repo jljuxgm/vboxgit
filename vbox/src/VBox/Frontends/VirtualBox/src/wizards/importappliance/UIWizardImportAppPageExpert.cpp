@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageExpert.cpp 86355 2020-09-30 17:12:41Z vboxsync $ */
+/* $Id: UIWizardImportAppPageExpert.cpp 86590 2020-10-15 11:42:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageExpert class implementation.
  */
@@ -287,6 +287,9 @@ void UIWizardImportAppPageExpert::retranslateUi()
     m_pFileSelector->setChooseButtonToolTip(UIWizardImportApp::tr("Choose a virtual appliance file to import..."));
     m_pFileSelector->setFileDialogTitle(UIWizardImportApp::tr("Please choose a virtual appliance file to import"));
     m_pFileSelector->setFileFilters(UIWizardImportApp::tr("Open Virtualization Format (%1)").arg("*.ova *.ovf"));
+
+    /* Translate profile stuff: */
+    m_pProfileToolButton->setToolTip(UIWizardImportApp::tr("Open Cloud Profile Manager..."));
 
     /* Translate settings container: */
     m_pSettingsCnt->setTitle(UIWizardImportApp::tr("Settings"));

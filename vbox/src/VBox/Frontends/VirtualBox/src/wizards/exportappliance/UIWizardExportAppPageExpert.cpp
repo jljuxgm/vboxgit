@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageExpert.cpp 86587 2020-10-15 10:36:33Z vboxsync $ */
+/* $Id: UIWizardExportAppPageExpert.cpp 86590 2020-10-15 11:42:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageExpert class implementation.
  */
@@ -511,8 +511,9 @@ void UIWizardExportAppPageExpert::retranslateUi()
     m_pIncludeISOsCheckbox->setToolTip(UIWizardExportApp::tr("Include ISO image files into exported VM archive."));
     m_pIncludeISOsCheckbox->setText(UIWizardExportApp::tr("&Include ISO image files"));
 
-    /* Translate Profile label: */
+    /* Translate profile stuff: */
     m_pProfileLabel->setText(UIWizardExportApp::tr("&Profile:"));
+    m_pProfileToolButton->setToolTip(UIWizardExportApp::tr("Open Cloud Profile Manager..."));
 
     /* Translate option label: */
     m_pMachineLabel->setText(UIWizardExportApp::tr("Machine Creation:"));
