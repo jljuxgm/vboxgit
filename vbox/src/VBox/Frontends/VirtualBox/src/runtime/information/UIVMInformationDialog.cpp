@@ -1,4 +1,4 @@
-/* $Id: UIVMInformationDialog.cpp 83345 2020-03-20 09:24:43Z vboxsync $ */
+/* $Id: UIVMInformationDialog.cpp 85297 2020-07-13 09:17:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMInformationDialog class implementation.
  */
@@ -199,9 +199,11 @@ void UIVMInformationDialog::prepareTabWidget()
 
         /* Create Performance Monitor tab: */
         UIPerformanceMonitor *pPerformanceMonitorWidget =
-            new UIPerformanceMonitor(this, m_pMachineWindow->machine(), m_pMachineWindow->console(), m_pMachineWindow->uisession());
+            new UIPerformanceMonitor(this, m_pMachineWindow->machine(), m_pMachineWindow->console());
         if (pPerformanceMonitorWidget)
         {
+            connect(m_pMachineWindow->uisession(), &UISession::sigAdditionsStateChange,
+                    pPerformanceMonitorWidget, &UIPerformanceMonitor::sltGuestAdditionsStateChange);
             m_tabs.insert(2, pPerformanceMonitorWidget);
             m_pTabWidget->addTab(m_tabs.value(2), QString());
         }
