@@ -1,4 +1,4 @@
-/* $Id: DevHdaStream.h 88572 2021-04-16 19:30:00Z vboxsync $ */
+/* $Id: DevHdaStream.h 88662 2021-04-22 18:24:15Z vboxsync $ */
 /** @file
  * Intel HD Audio Controller Emulation - Streams.
  */
@@ -325,6 +325,11 @@ typedef struct HDASTREAMR3
         STAMCOUNTER             StatDmaFlowErrors;
         /** Number of bytes involved in unresolved flow errors. */
         STAMCOUNTER             StatDmaFlowErrorBytes;
+
+        STAMPROFILE             StatStart;
+        STAMPROFILE             StatReset;
+        STAMPROFILE             StatStop;
+        STAMPROFILE             StatUnusedPadding;
     } State;
     /** Debug bits. */
     HDASTREAMDEBUG              Dbg;
