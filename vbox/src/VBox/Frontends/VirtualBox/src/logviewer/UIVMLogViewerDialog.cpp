@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerDialog.cpp 88901 2021-05-06 13:10:03Z vboxsync $ */
+/* $Id: UIVMLogViewerDialog.cpp 88903 2021-05-06 13:47:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerDialog class implementation.
  */
@@ -65,6 +65,13 @@ UIVMLogViewerDialog::UIVMLogViewerDialog(QWidget *pCenterWidget, UIActionPool *p
     , m_pActionPool(pActionPool)
     , m_comMachine(comMachine)
 {
+}
+
+UIVMLogViewerDialog::~UIVMLogViewerDialog()
+{
+    UIVMLogViewerWidget *pWidget = qobject_cast<UIVMLogViewerWidget*>(widget());
+    if (pWidget)
+        pWidget->setDialogBeingClosed(true);
 }
 
 void UIVMLogViewerDialog::retranslateUi()
