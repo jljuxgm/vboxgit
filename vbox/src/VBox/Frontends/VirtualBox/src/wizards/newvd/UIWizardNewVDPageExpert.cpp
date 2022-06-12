@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageExpert.cpp 87929 2021-03-03 08:45:46Z vboxsync $ */
+/* $Id: UIWizardNewVDPageExpert.cpp 87940 2021-03-03 15:22:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageExpert class implementation.
  */
@@ -219,8 +219,6 @@ void UIWizardNewVDPageExpert::retranslateUi()
     }
     if (m_pVariantGroupBox)
         m_pVariantGroupBox->setTitle(UIWizardNewVD::tr("Storage on physical hard disk"));
-    if (m_pFixedCheckBox)
-        m_pFixedCheckBox->setText(UIWizardNewVD::tr("&Fixed size"));
     if (m_pSplitBox)
         m_pSplitBox->setText(UIWizardNewVD::tr("&Split into files of less than 2GB"));
 }
