@@ -1,4 +1,4 @@
-/* $Id: GuestFileImpl.cpp 84054 2020-04-28 16:05:00Z vboxsync $ */
+/* $Id: GuestFileImpl.cpp 84508 2020-05-25 14:58:09Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest file handling.
  */
@@ -442,6 +442,7 @@ int GuestFile::i_onFileNotify(PVBOXGUESTCTRLHOSTCBCTX pCbCtx, PVBOXGUESTCTRLHOST
 
     int idx = 1; /* Current parameter index. */
     CALLBACKDATA_FILE_NOTIFY dataCb;
+    RT_ZERO(dataCb);
     /* pSvcCb->mpaParms[0] always contains the context ID. */
     HGCMSvcGetU32(&pSvcCbData->mpaParms[idx++], &dataCb.uType);
     HGCMSvcGetU32(&pSvcCbData->mpaParms[idx++], &dataCb.rc);

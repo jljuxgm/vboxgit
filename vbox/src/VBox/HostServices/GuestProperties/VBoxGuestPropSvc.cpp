@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestPropSvc.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxGuestPropSvc.cpp 84508 2020-05-25 14:58:09Z vboxsync $ */
 /** @file
  * Guest Property Service: Host service entry points.
  */
@@ -1290,7 +1290,7 @@ int Service::doNotifications(const char *pszProperty, uint64_t nsTimestamp)
     CallList::iterator it = mGuestWaiters.begin();
     if (it != mGuestWaiters.end())
     {
-        const char *pszPatterns;
+        const char *pszPatterns = NULL;
         uint32_t    cchPatterns;
         HGCMSvcGetCStr(&it->mParms[0], &pszPatterns, &cchPatterns);
 
