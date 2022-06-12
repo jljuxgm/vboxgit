@@ -1,4 +1,4 @@
-/* $Id: AudioMixBuffer.cpp 89350 2021-05-28 12:11:51Z vboxsync $ */
+/* $Id: AudioMixBuffer.cpp 89351 2021-05-28 12:13:29Z vboxsync $ */
 /** @file
  * Audio mixing buffer for converting reading/writing audio data.
  */
@@ -840,19 +840,6 @@ uint32_t AudioMixBufUsedBytes(PCAUDIOMIXBUF pMixBuf)
     AssertPtrReturn(pMixBuf, 0);
     Assert(pMixBuf->uMagic == AUDIOMIXBUF_MAGIC);
     return AUDIOMIXBUF_F2B(pMixBuf, audioMixBufUsedInternal(pMixBuf));
-}
-
-
-/**
- * Get the number of readable frames in the buffer.
- *
- * @returns Number of frames.
- * @param   pMixBuf     The mixing buffer.
- * @todo Exactly same as AudioMixBufUsed.
- */
-uint32_t AudioMixBufLive(PCAUDIOMIXBUF pMixBuf)
-{
-    return AudioMixBufUsed(pMixBuf);
 }
 
 

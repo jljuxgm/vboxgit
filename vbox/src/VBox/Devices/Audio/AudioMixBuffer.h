@@ -1,4 +1,4 @@
-/* $Id: AudioMixBuffer.h 89350 2021-05-28 12:11:51Z vboxsync $ */
+/* $Id: AudioMixBuffer.h 89351 2021-05-28 12:13:29Z vboxsync $ */
 /** @file
  * Audio Mixing bufer convert audio samples to/from different rates / formats.
  */
@@ -191,7 +191,6 @@ uint32_t    AudioMixBufSize(PCAUDIOMIXBUF pMixBuf);
 uint32_t    AudioMixBufSizeBytes(PCAUDIOMIXBUF pMixBuf);
 uint32_t    AudioMixBufUsed(PCAUDIOMIXBUF pMixBuf);
 uint32_t    AudioMixBufUsedBytes(PCAUDIOMIXBUF pMixBuf);
-uint32_t    AudioMixBufLive(PCAUDIOMIXBUF pMixBuf);
 uint32_t    AudioMixBufFree(PCAUDIOMIXBUF pMixBuf);
 uint32_t    AudioMixBufFreeBytes(PCAUDIOMIXBUF pMixBuf);
 bool        AudioMixBufIsEmpty(PCAUDIOMIXBUF pMixBuf);
