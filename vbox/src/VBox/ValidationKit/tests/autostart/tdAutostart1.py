@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Id: tdAutostart1.py 86003 2020-09-02 14:56:10Z vboxsync $"
+__version__ = "$Id: tdAutostart1.py 86062 2020-09-08 11:19:39Z vboxsync $"
 
 
 # Standard Python imports.
@@ -1129,7 +1129,7 @@ class tdAutostartOsWin(tdAutostartOs):
             if self.sTestBuild.endswith('.msi'):
                 sLogFile = 'C:/Temp/VBoxInstallLog.txt';
                 (fRc, _, _, _) = self.guestProcessExecute(oGuestSession, 'Installing VBox',
-                                                        240 * 1000, 'C:\\Windows\\System32\\msiexec.exe',
+                                                        600 * 1000, 'C:\\Windows\\System32\\msiexec.exe',
                                                         ['msiexec', '/quiet', '/norestart', '/i',
                                                          'C:\\Temp\\' + os.path.basename(self.sTestBuild),
                                                         '/lv', sLogFile],
@@ -1139,7 +1139,7 @@ class tdAutostartOsWin(tdAutostartOs):
             else:
                 sLogFile = 'C:/Temp/Virtualbox/VBoxInstallLog.txt';
                 (fRc, _, _, _) = self.guestProcessExecute(oGuestSession, 'Installing VBox',
-                                                        240 * 1000, 'C:\\Temp\\' + os.path.basename(self.sTestBuild),
+                                                        600 * 1000, 'C:\\Temp\\' + os.path.basename(self.sTestBuild),
                                                         ['C:\\Temp\\' + os.path.basename(self.sTestBuild), '-vvvv',
                                                          '--silent', '--logging',
                                                          '--msiparams', 'REBOOT=ReallySuppress'],
