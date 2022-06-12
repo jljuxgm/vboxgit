@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-hlp.cpp 86576 2020-10-14 15:09:53Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-hlp.cpp 86589 2020-10-15 11:32:19Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device helpers
  */
@@ -20,8 +20,8 @@
 
 #ifdef SHADER_VERIFY_STANDALONE
 # include <stdio.h>
-# define Log3(a) printf a
-# define LogRel(a) printf a
+//# define Log3(a) printf a        - /* @todo r=bird: This is strictly forbidden. Noone redefines Log macros ever! */
+//# define LogRel(a) printf a      - /* @todo r=bird: This is strictly forbidden. Noone redefines Log macros ever! */
 #else
 # include <VBox/log.h>
 #endif
@@ -31,10 +31,9 @@
 #include <iprt/types.h>
 #include <iprt/string.h>
 
-#include "svga3d_reg.h"
-#include "svga3d_shaderdefs.h"
+#include "DevVGA-SVGA.h"
 
- /** Per shader data is stored in this structure. */
+/** Per shader data is stored in this structure. */
 typedef struct VMSVGA3DSHADERPARSECONTEXT
 {
     /** Version token. */
