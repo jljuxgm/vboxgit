@@ -1,4 +1,4 @@
-/* $Id: DevPS2K.cpp 83443 2020-03-26 16:49:44Z vboxsync $ */
+/* $Id: DevPS2K.cpp 87378 2021-01-22 20:10:24Z vboxsync $ */
 /** @file
  * PS2K - PS/2 keyboard emulation.
  */
@@ -433,7 +433,8 @@ static void ps2kR3NotifyLedsState(PPS2KR3 pThisCC, uint8_t u8State)
     if (u8State & 0x04)
         enmLeds = (PDMKEYBLEDS)(enmLeds | PDMKEYBLEDS_CAPSLOCK);
 
-    pThisCC->Keyboard.pDrv->pfnLedStatusChange(pThisCC->Keyboard.pDrv, enmLeds);
+    if (pThisCC->Keyboard.pDrv)
+        pThisCC->Keyboard.pDrv->pfnLedStatusChange(pThisCC->Keyboard.pDrv, enmLeds);
 }
 
 #endif /* IN_RING3 */
