@@ -1,4 +1,4 @@
-/* $Id: utils.h 87696 2021-02-10 17:10:58Z vboxsync $ */
+/* $Id: utils.h 87698 2021-02-10 17:21:46Z vboxsync $ */
 /** @file
  * ComHostUtils.cpp
  */
@@ -39,8 +39,6 @@ typedef std::map<RTNETADDRIPV4, int> AddressToOffsetMapping;
 
 
 int localMappings(const ComNatPtr&, AddressToOffsetMapping&);
-int hostDnsSearchList(const ComHostPtr&, std::vector<std::string>&);
-int hostDnsDomain(const ComHostPtr&, std::string& domainStr);
 
 
 class NATNetworkEventAdapter
