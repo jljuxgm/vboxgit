@@ -1,4 +1,4 @@
-/*  $Id: vbox_drv.c 88405 2021-04-07 17:33:33Z vboxsync $ */
+/*  $Id: vbox_drv.c 88510 2021-04-14 17:59:01Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -376,6 +376,7 @@ static struct drm_driver driver = {
 
 static int __init vbox_init(void)
 {
+	printk("vboxvideo: loading version " VBOX_VERSION_STRING " r" __stringify(VBOX_SVN_REV) "\n");
 #if defined(CONFIG_VGA_CONSOLE) || RTLNX_VER_MIN(4,7,0)
 	if (vgacon_text_force() && vbox_modeset == -1)
 		return -EINVAL;
