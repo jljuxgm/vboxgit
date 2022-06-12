@@ -1,4 +1,4 @@
-/* $Id: vcsrevisions.js 84620 2020-05-30 22:34:30Z vboxsync $ */
+/* $Id: vcsrevisions.js 84885 2020-06-21 01:35:38Z vboxsync $ */
 /** @file
  * Common JavaScript functions
  */
@@ -39,8 +39,7 @@ function vcsRevisionFormatDate(tsDate)
  */
 function vcsRevisionFormatTime(tsDate)
 {
-    var sRet = tsDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit'} );
-    return sRet.replace(' ', '\u00a0');
+    return formatTimeHHMM(tsDate, true /*fNbsp*/);
 }
 
 /**
