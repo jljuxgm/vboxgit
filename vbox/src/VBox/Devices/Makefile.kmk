@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 86043 2020-09-07 13:44:26Z vboxsync $
+# $Id: Makefile.kmk 86265 2020-09-24 12:42:43Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -302,7 +302,9 @@ if !defined(VBOX_ONLY_EXTPACKS) && "$(intersects $(KBUILD_TARGET_ARCH),$(VBOX_SU
  ifdef VBOX_WITH_VMSVGA
   VBoxDD_DEFS           += VBOX_WITH_VMSVGA
   VBoxDD_INCS           += $(VBOX_PATH_VMSVGA_INC)
-  VBoxDD_SOURCES        += Graphics/DevVGA-SVGA.cpp
+  VBoxDD_SOURCES        += \
+  	Graphics/DevVGA-SVGA.cpp \
+  	Graphics/DevVGA-SVGA-cmd.cpp
  endif
  ifdef VBOX_WITH_VMSVGA3D
   if1of ($(KBUILD_TARGET), linux win)
