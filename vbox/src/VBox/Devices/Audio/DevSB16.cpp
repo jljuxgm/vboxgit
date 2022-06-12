@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 88300 2021-03-26 14:31:55Z vboxsync $ */
+/* $Id: DevSB16.cpp 88356 2021-04-04 22:45:13Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  */
@@ -1774,7 +1774,7 @@ static int sb16CreateDrvStream(PPDMAUDIOSTREAMCFG pCfg, PSB16DRIVER pDrv)
     /* Disable pre-buffering for SB16; not needed for that bit of data. */
     pCfgHost->Backend.cFramesPreBuffering = 0;
 
-    int rc = pDrv->pConnector->pfnStreamCreate(pDrv->pConnector, pCfgHost, pCfg /* pCfgGuest */, &pDrv->Out.pStream);
+    int rc = pDrv->pConnector->pfnStreamCreate(pDrv->pConnector, 0 /*fFlags*/, pCfgHost, pCfg /* pCfgGuest */, &pDrv->Out.pStream);
     if (RT_SUCCESS(rc))
     {
         pDrv->pConnector->pfnStreamRetain(pDrv->pConnector, pDrv->Out.pStream);

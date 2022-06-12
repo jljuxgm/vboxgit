@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 88320 2021-03-29 20:58:59Z vboxsync $ */
+/* $Id: AudioMixer.cpp 88356 2021-04-04 22:45:13Z vboxsync $ */
 /** @file
  * Audio mixing routines for multiplexing audio sources in device emulations.
  *
@@ -650,7 +650,7 @@ int AudioMixerSinkCreateStream(PAUDMIXSINK pSink, PPDMIAUDIOCONNECTOR pConn, PPD
                      * Create the stream.
                      */
                     PPDMAUDIOSTREAM pStream;
-                    rc = pConn->pfnStreamCreate(pConn, &CfgHost, pCfg, &pStream);
+                    rc = pConn->pfnStreamCreate(pConn, 0 /*fFlags*/, &CfgHost, pCfg, &pStream);
                     if (RT_SUCCESS(rc))
                     {
                         /* Save the audio stream pointer to this mixing stream. */
