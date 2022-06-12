@@ -1,4 +1,4 @@
-/* $Id: UIFileManager.h 89107 2021-05-17 15:33:21Z vboxsync $ */
+/* $Id: UIFileManager.h 89109 2021-05-17 15:51:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManager class declaration.
  */
@@ -119,6 +119,7 @@ private slots:
     /** Performs whatever necessary when some signal about option change has been receieved. */
     void sltHandleOptionsUpdated();
     void sltHandleHidePanel(UIDialogPanel *pPanel);
+    void sltCleanupListenerAndGuest();
 
 private:
 

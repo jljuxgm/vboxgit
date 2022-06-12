@@ -1,4 +1,4 @@
-/* $Id: UIFileManager.cpp 89107 2021-05-17 15:33:21Z vboxsync $ */
+/* $Id: UIFileManager.cpp 89109 2021-05-17 15:51:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManager class implementation.
  */
@@ -135,18 +135,11 @@ UIFileManager::UIFileManager(EmbedTo enmEmbedding, UIActionPool *pActionPool,
     restorePanelVisibility();
     UIFileManagerOptions::create();
     uiCommon().setHelpKeyword(this, "guestadd-gc-file-manager");
+    connect(&uiCommon(), &UICommon::sigAskToDetachCOM, this, &UIFileManager::sltCleanupListenerAndGuest);
 }
 
 UIFileManager::~UIFileManager()
 {
-    if (m_comGuest.isOk() && m_pQtGuestListener && m_comGuestListener.isOk())
-        cleanupListener(m_pQtGuestListener, m_comGuestListener, m_comGuest.GetEventSource());
-    if (m_comGuestSession.isOk() && m_pQtSessionListener && m_comSessionListener.isOk())
-        cleanupListener(m_pQtSessionListener, m_comSessionListener, m_comGuestSession.GetEventSource());
-
-    if (m_comGuestSession.isOk())
-        m_comGuestSession.Close();
-
     saveOptions();
     UIFileManagerOptions::destroy();
 }
@@ -534,6 +527,17 @@ void UIFileManager::sltHandleOptionsUpdated()
 void UIFileManager::sltHandleHidePanel(UIDialogPanel *pPanel)
 {
     hidePanel(pPanel);
+}
+
+void UIFileManager::sltCleanupListenerAndGuest()
+{
+    if (m_comGuest.isOk() && m_pQtGuestListener && m_comGuestListener.isOk())
+        cleanupListener(m_pQtGuestListener, m_comGuestListener, m_comGuest.GetEventSource());
+    if (m_comGuestSession.isOk() && m_pQtSessionListener && m_comSessionListener.isOk())
+        cleanupListener(m_pQtSessionListener, m_comSessionListener, m_comGuestSession.GetEventSource());
+
+    if (m_comGuestSession.isOk())
+        m_comGuestSession.Close();
 }
 
 void UIFileManager::copyToHost()
