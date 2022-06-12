@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioAlsaStubs.h 89472 2021-06-02 21:01:43Z vboxsync $ */
+/* $Id: DrvHostAudioAlsaStubs.h 89474 2021-06-02 21:18:32Z vboxsync $ */
 /** @file
  * Stubs for libasound.
  */
@@ -30,7 +30,7 @@
 RT_C_DECLS_BEGIN
 extern int audioLoadAlsaLib(void);
 
-#if VBOX_ALSA_VER < VBOX_ALSA_MAKE_VER(1,0,0)   /* added in 1.0.0 */
+#if VBOX_ALSA_VER < VBOX_ALSA_MAKE_VER(1,0,18)   /* added in 1.0.18 */
 extern int  snd_pcm_avail_delay(snd_pcm_t *, snd_pcm_sframes_t *, snd_pcm_sframes_t *);
 #endif
 
