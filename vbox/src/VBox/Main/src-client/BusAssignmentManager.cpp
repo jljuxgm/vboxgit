@@ -1,4 +1,4 @@
-/* $Id: BusAssignmentManager.cpp 85011 2020-06-30 17:28:26Z vboxsync $ */
+/* $Id: BusAssignmentManager.cpp 86733 2020-10-28 11:27:16Z vboxsync $ */
 /** @file
  * VirtualBox bus slots assignment manager
  */
@@ -240,7 +240,7 @@ static const DeviceAssignmentRule g_aIch9Rules[] =
 static const DeviceAssignmentRule g_aIch9IommuLsiRules[] =
 {
     /* AMD IOMMU. */
-    {"iommu-amd",     0,  0,  2, 0},
+    {"iommu-amd",     0,  0,  0, 0},
     /* AMD IOMMU: Reserved for southbridge I/O APIC. */
     {"sb-ioapic",     0, 20,  0, 0},
 
