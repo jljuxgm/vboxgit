@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGroup.cpp 89237 2021-05-24 13:53:07Z vboxsync $ */
+/* $Id: UIChooserItemGroup.cpp 89241 2021-05-24 14:15:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGroup class implementation.
  */
@@ -1688,9 +1688,7 @@ void UIChooserItemGroup::paintFrame(QPainter *pPainter, const QRect &rectangle)
     const int iFullHeaderHeight = 2 * iMarginV + m_minimumHeaderSize.height();
 
     /* Prepare color: */
-    const QColor frameColor = QApplication::palette().color(QPalette::Active,
-                                                            model()->selectedItems().contains(this) ?
-                                                            QPalette::Highlight : QPalette::Midlight).darker(headerDarkness() + 10);
+    const QColor frameColor = QApplication::palette().color(QPalette::Active, QPalette::Highlight).darker(headerDarkness() + 10);
 
     /* Create/assign pen: */
     QPen pen(frameColor);
