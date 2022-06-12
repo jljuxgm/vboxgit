@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: virtual_test_sheriff.py 86891 2020-11-16 14:39:15Z vboxsync $
 # pylint: disable=line-too-long
 
 """
@@ -35,7 +35,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 82968 $"
+__version__ = "$Revision: 86891 $"
 
 
 # Standard python imports
@@ -337,7 +337,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
 
         if self.oConfig.sLogFile:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 82968 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 86891 $ \n');
 
 
     def eprint(self, sText):
@@ -347,7 +347,10 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
         """
         print('error: %s' % (sText,));
         if self.oLogFile is not None:
-            self.oLogFile.write((u'error: %s\n' % (sText,)).encode('utf-8'));
+            if sys.version_info[0] >= 3:
+                self.oLogFile.write(u'error: %s\n' % (sText,));
+            else:
+                self.oLogFile.write((u'error: %s\n' % (sText,)).encode('utf-8'));
         return 1;
 
     def dprint(self, sText):
@@ -358,7 +361,10 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
             if not self.oConfig.fQuiet:
                 print('debug: %s' % (sText, ));
             if self.oLogFile is not None:
-                self.oLogFile.write((u'debug: %s\n' % (sText,)).encode('utf-8'));
+                if sys.version_info[0] >= 3:
+                    self.oLogFile.write(u'debug: %s\n' % (sText,));
+                else:
+                    self.oLogFile.write((u'debug: %s\n' % (sText,)).encode('utf-8'));
         return 0;
 
     def vprint(self, sText):
@@ -368,7 +374,10 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
         if not self.oConfig.fQuiet:
             print('info: %s' % (sText,));
         if self.oLogFile is not None:
-            self.oLogFile.write((u'info: %s\n' % (sText,)).encode('utf-8'));
+            if sys.version_info[0] >= 3:
+                self.oLogFile.write(u'info: %s\n' % (sText,));
+            else:
+                self.oLogFile.write((u'info: %s\n' % (sText,)).encode('utf-8'));
         return 0;
 
     def getFailureReason(self, tReason):
@@ -719,7 +728,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.getFailureReason(tReason);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 82968 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 86891 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
