@@ -1,4 +1,4 @@
-/** $Id: clipboard.cpp 86967 2020-11-24 13:42:29Z vboxsync $ */
+/** $Id: clipboard.cpp 86969 2020-11-24 13:51:30Z vboxsync $ */
 /** @file
  * Guest Additions - X11 Shared Clipboard.
  */
@@ -52,7 +52,9 @@
 
 /** Only one context is supported at a time for now. */
 SHCLCONTEXT g_Ctx;
+#ifdef VBOX_WITH_SHARED_CLIPBOARD_FUSE
 SHCLFUSECTX g_FuseCtx;
+#endif
 
 
 #ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS
@@ -61,7 +63,7 @@ static DECLCALLBACK(int) vbclShClOnTransferInitCallback(PSHCLTRANSFERCALLBACKDAT
 # ifdef VBOX_WITH_SHARED_CLIPBOARD_FUSE
     return ShClFuseOnTransferInitCallback(pData);
 # else
-    # error "Implement me!"
+    RT_NOREF(pData);
     return VERR_NOT_IMPLEMENTED;
 # endif
 }
@@ -71,7 +73,7 @@ static DECLCALLBACK(int)  vbclShClOnTransferStartCallback(PSHCLTRANSFERCALLBACKD
 # ifdef VBOX_WITH_SHARED_CLIPBOARD_FUSE
     return ShClFuseOnTransferStartCallback(pData);
 # else
-    # error "Implement me!"
+    RT_NOREF(pData);
     return VERR_NOT_IMPLEMENTED;
 # endif
 }
@@ -81,7 +83,7 @@ static DECLCALLBACK(void) vbclShClOnTransferCompleteCallback(PSHCLTRANSFERCALLBA
 # ifdef VBOX_WITH_SHARED_CLIPBOARD_FUSE
     return ShClFuseOnTransferCompleteCallback(pData, rc);
 # else
-    # error "Implement me!"
+    RT_NOREF(pData, rc);
 # endif
 }
 
@@ -90,7 +92,7 @@ static DECLCALLBACK(void) vbclShClOnTransferErrorCallback(PSHCLTRANSFERCALLBACKD
 # ifdef VBOX_WITH_SHARED_CLIPBOARD_FUSE
     return ShClFuseOnTransferErrorCallback(pData, rc);
 # else
-    # error "Implement me!"
+    RT_NOREF(pData, rc);
 # endif
 }
 #endif /* VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS */
