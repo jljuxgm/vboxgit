@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 86986 2020-11-26 14:22:34Z vboxsync $ */
+/* $Id: UIMediumManager.cpp 87001 2020-11-27 09:48:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class implementation.
  */
@@ -1661,7 +1661,7 @@ void UIMediumManager::retranslateUi()
     button(ButtonType_Reset)->setShortcut(QString("Ctrl+Backspace"));
     button(ButtonType_Apply)->setShortcut(QString("Ctrl+Return"));
     button(ButtonType_Close)->setShortcut(Qt::Key_Escape);
-    button(ButtonType_Help)->setShortcut(Qt::Key_F1);
+    button(ButtonType_Help)->setShortcut(QKeySequence::HelpContents);
     button(ButtonType_Reset)->setToolTip(tr("Reset Changes (%1)").arg(button(ButtonType_Reset)->shortcut().toString()));
     button(ButtonType_Apply)->setToolTip(tr("Apply Changes (%1)").arg(button(ButtonType_Apply)->shortcut().toString()));
     button(ButtonType_Close)->setToolTip(tr("Close Window (%1)").arg(button(ButtonType_Close)->shortcut().toString()));

@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialog.cpp 86998 2020-11-26 17:26:38Z vboxsync $ */
+/* $Id: UISettingsDialog.cpp 87001 2020-11-27 09:48:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISettingsDialog class implementation.
  */
@@ -770,7 +770,7 @@ void UISettingsDialog::prepareWidgets()
     m_pButtonBox->setObjectName(QStringLiteral("m_pButtonBox"));
     m_pButtonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::NoButton|
                                      QDialogButtonBox::Ok| QDialogButtonBox::Help);
-    m_pButtonBox->button(QDialogButtonBox::Help)->setShortcut(Qt::Key_F1);
+    m_pButtonBox->button(QDialogButtonBox::Help)->setShortcut(QKeySequence::HelpContents);
 
     pMainLayout->addWidget(m_pButtonBox, 2, 0, 1, 2);
 

@@ -1,4 +1,4 @@
-/* $Id: QIManagerDialog.cpp 86998 2020-11-26 17:26:38Z vboxsync $ */
+/* $Id: QIManagerDialog.cpp 87001 2020-11-27 09:48:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIManagerDialog class implementation.
  */
@@ -175,7 +175,7 @@ void QIManagerDialog::prepareButtonBox()
 
         /* Assign shortcuts: */
         button(ButtonType_Close)->setShortcut(Qt::Key_Escape);
-        button(ButtonType_Help)->setShortcut(Qt::Key_F1);
+        button(ButtonType_Help)->setShortcut(QKeySequence::HelpContents);
 
         /* Hide 'Reset' and 'Apply' initially: */
         button(ButtonType_Reset)->hide();

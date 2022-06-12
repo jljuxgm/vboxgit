@@ -1,4 +1,4 @@
-/* $Id: UIVMInformationDialog.cpp 86998 2020-11-26 17:26:38Z vboxsync $ */
+/* $Id: UIVMInformationDialog.cpp 87001 2020-11-27 09:48:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMInformationDialog class implementation.
  */
@@ -124,7 +124,7 @@ void UIVMInformationDialog::retranslateUi()
         m_pButtonBox->button(QDialogButtonBox::Close)->setStatusTip(tr("Close dialog without saving"));
         m_pButtonBox->button(QDialogButtonBox::Help)->setStatusTip(tr("Show dialog help"));
         m_pButtonBox->button(QDialogButtonBox::Close)->setShortcut(Qt::Key_Escape);
-        m_pButtonBox->button(QDialogButtonBox::Help)->setShortcut(Qt::Key_F1);
+        m_pButtonBox->button(QDialogButtonBox::Help)->setShortcut(QKeySequence::HelpContents);
         m_pButtonBox->button(QDialogButtonBox::Close)->setToolTip(tr("Reset Changes (%1)").arg(m_pButtonBox->button(QDialogButtonBox::Close)->shortcut().toString()));
         m_pButtonBox->button(QDialogButtonBox::Help)->setToolTip(tr("Show Help (%1)").arg(m_pButtonBox->button(QDialogButtonBox::Help)->shortcut().toString()));
     }
@@ -261,7 +261,7 @@ void UIVMInformationDialog::prepareButtonBox()
         /* Configure button-box: */
         m_pButtonBox->setStandardButtons(QDialogButtonBox::Close | QDialogButtonBox::Help);
         m_pButtonBox->button(QDialogButtonBox::Close)->setShortcut(Qt::Key_Escape);
-        m_pButtonBox->button(QDialogButtonBox::Help)->setShortcut(Qt::Key_F1);
+        m_pButtonBox->button(QDialogButtonBox::Help)->setShortcut(QKeySequence::HelpContents);
         uiCommon().setHelpKeyword(m_pButtonBox->button(QDialogButtonBox::Help), "guestadd-guestprops");
         connect(m_pButtonBox, &QIDialogButtonBox::rejected, this, &UIVMInformationDialog::close);
         connect(m_pButtonBox->button(QDialogButtonBox::Help), &QPushButton::pressed,

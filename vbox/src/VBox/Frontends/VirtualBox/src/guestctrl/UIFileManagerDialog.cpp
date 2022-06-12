@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerDialog.cpp 86995 2020-11-26 15:37:23Z vboxsync $ */
+/* $Id: UIFileManagerDialog.cpp 87001 2020-11-27 09:48:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerDialog class implementation.
  */
@@ -78,7 +78,7 @@ void UIFileManagerDialog::retranslateUi()
     button(ButtonType_Close)->setStatusTip(UIFileManager::tr("Close dialog without saving"));
     button(ButtonType_Help)->setStatusTip(UIFileManager::tr("Show dialog help"));
     button(ButtonType_Close)->setShortcut(Qt::Key_Escape);
-    button(ButtonType_Help)->setShortcut(Qt::Key_F1);
+    button(ButtonType_Help)->setShortcut(QKeySequence::HelpContents);
     button(ButtonType_Close)->setToolTip(UIFileManager::tr("Reset Changes (%1)").arg(button(ButtonType_Close)->shortcut().toString()));
     button(ButtonType_Help)->setToolTip(UIFileManager::tr("Show Help (%1)").arg(button(ButtonType_Help)->shortcut().toString()));
 }
