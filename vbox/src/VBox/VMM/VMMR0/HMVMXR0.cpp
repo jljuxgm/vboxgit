@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 87550 2021-02-03 09:54:10Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 87551 2021-02-03 10:07:37Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -10500,6 +10500,9 @@ static int hmR0VmxMergeVmcsNested(PVMCPUCC pVCpu)
     /*
      * Pause-Loop exiting.
      */
+    /** @todo r=bird: given that both pVM->hm.s.vmx.cPleGapTicks and
+     *        pVM->hm.s.vmx.cPleWindowTicks defaults to zero, I cannot see how
+     *        this will work... */
     uint32_t const cPleGapTicks    = RT_MIN(pVM->hm.s.vmx.cPleGapTicks,    pVmcsNstGst->u32PleGap);
     uint32_t const cPleWindowTicks = RT_MIN(pVM->hm.s.vmx.cPleWindowTicks, pVmcsNstGst->u32PleWindow);
 
