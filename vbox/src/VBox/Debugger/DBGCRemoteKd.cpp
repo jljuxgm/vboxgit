@@ -1,4 +1,4 @@
-/* $Id: DBGCRemoteKd.cpp 86105 2020-09-13 08:28:59Z vboxsync $ */
+/* $Id: DBGCRemoteKd.cpp 86107 2020-09-13 08:35:35Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Windows Kd Remote Stub.
  */
@@ -797,6 +797,7 @@ typedef PKDCTX *PPKDCTX;
 *********************************************************************************************************************************/
 
 
+#ifdef LOG_ENABLED
 /**
  * Returns a human readable string of the given packet sub type.
  *
@@ -956,6 +957,7 @@ static void dbgcKdPktDump(PCKDPACKETHDR pPktHdr, PCRTSGSEG paSegs, uint32_t cSeg
             break;
     }
 }
+#endif
 
 
 /**
@@ -1342,7 +1344,9 @@ static int dbgcKdCtxPktSendSg(PKDCTX pThis, uint32_t u32Signature, uint16_t u16S
     Hdr.idPacket     = pThis->idPktNext;
     Hdr.u32ChkSum    = u32ChkSum;
 
+#ifdef LOG_ENABLED
     dbgcKdPktDump(&Hdr, paSegs, cSegs, false /*fRx*/);
+#endif
 
     while (cRetriesLeft--)
     {
