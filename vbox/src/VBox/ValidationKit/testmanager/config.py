@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: config.py 83418 2020-03-25 16:39:08Z vboxsync $
+# $Id: config.py 84550 2020-05-26 18:50:43Z vboxsync $
 
 """
 Test Manager Configuration.
@@ -26,14 +26,14 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 83418 $"
+__version__ = "$Revision: 84550 $"
 
 import os;
 
 ## Test Manager version string.
 g_ksVersion             = 'v0.1.0';
 ## Test Manager revision string.
-g_ksRevision            = ('$Revision: 83418 $')[11:-2];
+g_ksRevision            = ('$Revision: 84550 $')[11:-2];
 
 ## Enable VBox specific stuff.
 g_kfVBoxSpecific        = True;
@@ -147,6 +147,49 @@ g_kcMaxUploads          = 256;
 ## @}
 
 
+## @name Bug Trackers and VCS reference tags.
+## @{
+class BugTrackerConfig(object):
+    """ Bug tracker config """
+    def __init__(self, sDbId, sName, sBugUrl, asCommitTags):
+        assert len(sDbId) == 4;
+        self.sDbId        = sDbId;
+        self.sName        = sName;
+        self.sBugUrl      = sBugUrl;
+        self.asCommitTags = asCommitTags;
+
+## The key is the database table
+g_kaBugTrackers = {
+    'xtrk': BugTrackerConfig('xtrk', 'xTracker',        'https://linserv.de.oracle.com/vbox/xTracker/index.php?bug=',
+                             ['bugref:',    '@bugref{',    'bugef:', 'bugrf:', ], ),
+    'bgdb': BugTrackerConfig('bgdb', 'BugDB',           'https://bug.oraclecorp.com/pls/bug/webbug_edit.edit_info_top?rptno=',
+                             ['bugdbref:',  '@bugdbref{',  'bugdb:', ], ),
+    'vorg': BugTrackerConfig('vorg', 'External Trac',   'https://www.virtualbox.org/ticket/',
+                             ['ticketref:', '@ticketref{', 'ticket:', ], ),
+};
+## @}
+
+
+
+## @name Virtual Sheriff email alerts
+## @{
+
+## SMTP server host name.
+g_ksSmtpHost            = 'internal-mail-router.oracle.com';
+## SMTP server port number.
+g_kcSmtpPort            = 25;
+## Default email 'From' for email alert.
+g_ksAlertFrom           = 'vsheriff@oracle.com';
+## Subject for email alert.
+g_ksAlertSubject        = 'Virtual Test Sheriff Alert';
+## List of users to send alerts.
+g_asAlertList           = ['lelik', 'werner'];
+## iLOM password.
+g_ksLomPassword         = 'password';
+
+## @}
+
+
 ## @name Partial Database Dump
 ## @{
 
@@ -206,20 +249,3 @@ g_kfProfileIndex        = False;
 g_ksTestBoxDispXpctLog  = '/tmp/testmanager-testboxdisp-xcpt.log'
 ## @}
 
-## @name Virtual Sheriff email alerts
-## @{
-
-## SMTP server host name.
-g_ksSmtpHost            = 'internal-mail-router.oracle.com';
-## SMTP server port number.
-g_kcSmtpPort            = 25;
-## Default email 'From' for email alert.
-g_ksAlertFrom           = 'vsheriff@oracle.com';
-## Subject for email alert.
-g_ksAlertSubject        = 'Virtual Test Sheriff Alert';
-## List of users to send alerts.
-g_asAlertList           = ['lelik', 'werner'];
-## iLOM password.
-g_ksLomPassword         = 'password';
-
-## @}
