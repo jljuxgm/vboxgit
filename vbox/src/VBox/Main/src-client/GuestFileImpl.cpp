@@ -1,4 +1,4 @@
-/* $Id: GuestFileImpl.cpp 84745 2020-06-09 19:24:27Z vboxsync $ */
+/* $Id: GuestFileImpl.cpp 84865 2020-06-17 19:49:37Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest file handling.
  */
@@ -416,8 +416,8 @@ Utf8Str GuestFile::i_guestErrorToString(int rcGuest, const char *pcszWhat)
 
     Utf8Str strErr;
 
-#define CASE_MSG(a_iRc, a_strFormatString, ...) \
-    case a_iRc: strErr = Utf8StrFmt(a_strFormatString, ##__VA_ARGS__); break;
+#define CASE_MSG(a_iRc, ...) \
+    case a_iRc: strErr = Utf8StrFmt(__VA_ARGS__); break;
 
     /** @todo pData->u32Flags: int vs. uint32 -- IPRT errors are *negative* !!! */
     switch (rcGuest)
