@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic2.cpp 87783 2021-02-17 15:17:35Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic2.cpp 87930 2021-03-03 09:48:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic2 class implementation.
  */
@@ -317,7 +317,6 @@ void UIWizardNewVMPageBasic2::prepare()
     registerField("guestAdditionsISOPath", this, "guestAdditionsISOPath");
     registerField("productKey", this, "productKey");
 
-    retranslateUi();
     createConnections();
 }
 
