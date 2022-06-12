@@ -1,4 +1,4 @@
-/* $Id: UIFormEditorWidget.cpp 84114 2020-04-30 16:12:19Z vboxsync $ */
+/* $Id: UIFormEditorWidget.cpp 88104 2021-03-12 13:33:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFormEditorWidget class implementation.
  */
@@ -728,7 +728,7 @@ void UIFormEditorRow::setBool(bool fBool)
     {
         /* Show "Acquire export form" progress: */
         msgCenter().showModalProgressDialog(comProgress, UIFormEditorWidget::tr("Assign value ..."),
-                                            ":/progress_reading_appliance_90px.png",
+                                            ":/progress_refresh_90px.png",
                                             table()->window(), 0 /* duration */);
 
         /* Show error message if necessary: */
@@ -764,7 +764,7 @@ void UIFormEditorRow::setText(const TextData &text)
     {
         /* Show "Acquire export form" progress: */
         msgCenter().showModalProgressDialog(comProgress, UIFormEditorWidget::tr("Assign value ..."),
-                                            ":/progress_reading_appliance_90px.png",
+                                            ":/progress_refresh_90px.png",
                                             table()->window(), 0 /* duration */);
 
         /* Show error message if necessary: */
@@ -794,7 +794,7 @@ void UIFormEditorRow::setString(const QString &strString)
     {
         /* Show "Acquire export form" progress: */
         msgCenter().showModalProgressDialog(comProgress, UIFormEditorWidget::tr("Assign value ..."),
-                                            ":/progress_reading_appliance_90px.png",
+                                            ":/progress_refresh_90px.png",
                                             table()->window(), 0 /* duration */);
 
         /* Show error message if necessary: */
@@ -828,7 +828,7 @@ void UIFormEditorRow::setChoice(const ChoiceData &choice)
     {
         /* Show "Acquire export form" progress: */
         msgCenter().showModalProgressDialog(comProgress, UIFormEditorWidget::tr("Assign value ..."),
-                                            ":/progress_reading_appliance_90px.png",
+                                            ":/progress_refresh_90px.png",
                                             table()->window(), 0 /* duration */);
 
         /* Show error message if necessary: */
@@ -858,7 +858,7 @@ void UIFormEditorRow::setRangedInteger(const RangedIntegerData &rangedInteger)
     {
         /* Show "Acquire export form" progress: */
         msgCenter().showModalProgressDialog(comProgress, UIFormEditorWidget::tr("Assign value ..."),
-                                            ":/progress_reading_appliance_90px.png",
+                                            ":/progress_refresh_90px.png",
                                             table()->window(), 0 /* duration */);
 
         /* Show error message if necessary: */
