@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerDialog.h 86939 2020-11-20 16:44:12Z vboxsync $ */
+/* $Id: UIFileManagerDialog.h 86986 2020-11-26 14:22:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerDialog class declaration.
  */
@@ -85,8 +85,6 @@ protected:
         virtual void configure() /* override */;
         /** Configures central-widget. */
         virtual void configureCentralWidget() /* override */;
-        /** Configures button box. */
-        virtual void configureButtonBox() /* override */;
         /** Perform final preparations. */
         virtual void finalize() /* override */;
         /** Loads dialog setting from extradata. */

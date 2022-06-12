@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportApp.cpp 86924 2020-11-19 17:38:39Z vboxsync $ */
+/* $Id: UIWizardImportApp.cpp 86986 2020-11-26 14:22:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportApp class implementation.
  */
@@ -161,6 +161,7 @@ UIWizardImportApp::UIWizardImportApp(QWidget *pParent, bool fImportFromOCIByDefa
 
 void UIWizardImportApp::prepare()
 {
+    enableHelpButton("ovf");
     /* Create corresponding pages: */
     switch (mode())
     {
@@ -182,7 +183,6 @@ void UIWizardImportApp::prepare()
             break;
         }
     }
-    enableHelpButton("ovf");
     /* Call to base-class: */
     UIWizard::prepare();
 }

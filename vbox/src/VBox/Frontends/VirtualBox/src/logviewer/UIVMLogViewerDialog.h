@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerDialog.h 86939 2020-11-20 16:44:12Z vboxsync $ */
+/* $Id: UIVMLogViewerDialog.h 86986 2020-11-26 14:22:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerDialog class declaration.
  */
@@ -92,7 +92,6 @@ protected:
         virtual void configure() /* override */;
         /** Configures central-widget. */
         virtual void configureCentralWidget() /* override */;
-        virtual void configureButtonBox() /* override */;
         /** Perform final preparations. */
         virtual void finalize() /* override */;
         /** Loads dialog setting from extradata. */

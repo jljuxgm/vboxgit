@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.cpp 86233 2020-09-23 12:10:51Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.cpp 86986 2020-11-26 14:22:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class implementation.
  */
@@ -434,6 +434,7 @@ void UIVMLogViewerWidget::prepare()
     sltRefresh();
     /* Setup escape shortcut: */
     manageEscapeShortCut();
+    uiCommon().setHelpKeyword(this, "collect-debug-info");
 }
 
 void UIVMLogViewerWidget::prepareActions()

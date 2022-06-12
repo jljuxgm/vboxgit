@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 86608 2020-10-16 14:19:08Z vboxsync $ */
+/* $Id: UICommon.cpp 86986 2020-11-26 14:22:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -3902,6 +3902,21 @@ QPixmap UICommon::joinPixmaps(const QPixmap &pixmap1, const QPixmap &pixmap2)
     painter.end();
 
     return result;
+}
+
+/* static */
+void UICommon::setHelpKeyword(QObject *pObject, const QString &strHelpKeyword)
+{
+    if (pObject)
+        pObject->setProperty("helpkeyword", strHelpKeyword);
+}
+
+/* static */
+QString UICommon::helpKeyword(const QObject *pObject)
+{
+    if (!pObject)
+        return QString();
+    return pObject->property("helpkeyword").toString();
 }
 
 bool UICommon::openURL(const QString &strUrl) const

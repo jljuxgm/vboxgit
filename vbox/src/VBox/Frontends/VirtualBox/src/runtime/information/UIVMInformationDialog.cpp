@@ -1,4 +1,4 @@
-/* $Id: UIVMInformationDialog.cpp 86939 2020-11-20 16:44:12Z vboxsync $ */
+/* $Id: UIVMInformationDialog.cpp 86986 2020-11-26 14:22:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMInformationDialog class implementation.
  */
@@ -115,6 +115,19 @@ void UIVMInformationDialog::retranslateUi()
     m_pTabWidget->setTabText(1, tr("&Runtime Information"));
     m_pTabWidget->setTabText(2, tr("Performance &Monitor"));
     m_pTabWidget->setTabText(3, tr("&Guest Control"));
+
+    /* Retranslate button box buttons: */
+    if (m_pButtonBox)
+    {
+        m_pButtonBox->button(QDialogButtonBox::Close)->setText(tr("Close"));
+        m_pButtonBox->button(QDialogButtonBox::Help)->setText(tr("Help"));
+        m_pButtonBox->button(QDialogButtonBox::Close)->setStatusTip(tr("Close dialog without saving"));
+        m_pButtonBox->button(QDialogButtonBox::Help)->setStatusTip(tr("Show dialog help"));
+        m_pButtonBox->button(QDialogButtonBox::Close)->setShortcut(Qt::Key_Escape);
+        m_pButtonBox->button(QDialogButtonBox::Help)->setShortcut(Qt::Key_F1);
+        m_pButtonBox->button(QDialogButtonBox::Close)->setToolTip(tr("Reset Changes (%1)").arg(m_pButtonBox->button(QDialogButtonBox::Close)->shortcut().toString()));
+        m_pButtonBox->button(QDialogButtonBox::Help)->setToolTip(tr("Reset Changes (%1)").arg(m_pButtonBox->button(QDialogButtonBox::Help)->shortcut().toString()));
+    }
 }
 
 void UIVMInformationDialog::sltHandlePageChanged(int iIndex)
@@ -248,7 +261,7 @@ void UIVMInformationDialog::prepareButtonBox()
         /* Configure button-box: */
         m_pButtonBox->setStandardButtons(QDialogButtonBox::Close | QDialogButtonBox::Help);
         m_pButtonBox->button(QDialogButtonBox::Close)->setShortcut(Qt::Key_Escape);
-        m_pButtonBox->button(QDialogButtonBox::Help)->setProperty("helptag", "guestadd-guestprops");
+        uiCommon().setHelpKeyword(m_pButtonBox->button(QDialogButtonBox::Help), "guestadd-guestprops");
         connect(m_pButtonBox, &QIDialogButtonBox::rejected, this, &UIVMInformationDialog::close);
         connect(m_pButtonBox->button(QDialogButtonBox::Help), &QPushButton::pressed,
                 &(msgCenter()), &UIMessageCenter::sltHandleDialogHelpButtonPress);

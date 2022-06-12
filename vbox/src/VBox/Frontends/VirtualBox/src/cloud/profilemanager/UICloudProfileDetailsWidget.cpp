@@ -1,4 +1,4 @@
-/* $Id: UICloudProfileDetailsWidget.cpp 85387 2020-07-20 10:39:24Z vboxsync $ */
+/* $Id: UICloudProfileDetailsWidget.cpp 86986 2020-11-26 14:22:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudProfileDetailsWidget class implementation.
  */
@@ -186,6 +186,7 @@ void UICloudProfileDetailsWidget::prepare()
 
     /* Update button states finally: */
     updateButtonStates();
+    uiCommon().setHelpKeyword(this, "ovf-cloud-profile-manager");
 }
 
 void UICloudProfileDetailsWidget::prepareWidgets()

@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 86963 2020-11-24 09:43:55Z vboxsync $ */
+/* $Id: UIMessageCenter.h 86986 2020-11-26 14:22:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -266,7 +266,7 @@ public:
     void cannotAcquireVirtualBoxParameter(const CVirtualBox &comVBox, QWidget *pParent = 0) const;
     void cannotAcquireMachineParameter(const CMachine &comMachine, QWidget *pParent = 0) const;
     void cannotFindHelpFile(const QString &strFileLocation) const;
-    void cannotFindHelpTag() const;
+    void cannotFindHelpKeyword() const;
 
     /* API: Selector warnings: */
     void cannotOpenMachine(const CVirtualBox &vbox, const QString &strMachinePath) const;
@@ -554,6 +554,7 @@ public slots:
     void sltShowUserManual(const QString &strLocation);
     void sltHelpBrowserClosed();
     void sltHandleDialogHelpButtonPress();
+    void sltHandleHelpRequest(const QString &strHelpKeyword);
 
 private slots:
 

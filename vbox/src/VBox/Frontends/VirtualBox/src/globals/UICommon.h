@@ -1,4 +1,4 @@
-/* $Id: UICommon.h 86608 2020-10-16 14:19:08Z vboxsync $ */
+/* $Id: UICommon.h 86986 2020-11-26 14:22:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class declaration.
  */
@@ -692,6 +692,17 @@ public:
 
         /** Joins two pixmaps horizontally with 2px space between them and returns the result. */
         static QPixmap joinPixmaps(const QPixmap &pixmap1, const QPixmap &pixmap2);
+    /** @} */
+
+    /** @name Context sensitive help related functionality
+     * @{ */
+        /** Sets the property for help keyword on a QObject
+          * @param  pObject      The object to set the help keyword property on
+          * @param  strKeyword   The values of the key word property. */
+        static void setHelpKeyword(QObject *pObject, const QString &strHelpKeyword);
+        /** Returns the property for help keyword of a QObject. If no such property exists returns an empty QString.
+          * @param  pWidget      The object to get the help keyword property from. */
+        static QString helpKeyword(const QObject *pWidget);
     /** @} */
 
 public slots:

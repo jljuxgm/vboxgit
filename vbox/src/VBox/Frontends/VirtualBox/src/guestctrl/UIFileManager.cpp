@@ -1,4 +1,4 @@
-/* $Id: UIFileManager.cpp 86541 2020-10-12 12:30:09Z vboxsync $ */
+/* $Id: UIFileManager.cpp 86986 2020-11-26 14:22:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManager class implementation.
  */
@@ -134,6 +134,7 @@ UIFileManager::UIFileManager(EmbedTo enmEmbedding, UIActionPool *pActionPool,
     retranslateUi();
     restorePanelVisibility();
     UIFileManagerOptions::create();
+    uiCommon().setHelpKeyword(this, "guestadd-gc-file-manager");
 }
 
 UIFileManager::~UIFileManager()

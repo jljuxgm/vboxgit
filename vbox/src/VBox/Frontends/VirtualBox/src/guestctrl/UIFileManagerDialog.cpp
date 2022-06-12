@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerDialog.cpp 86939 2020-11-20 16:44:12Z vboxsync $ */
+/* $Id: UIFileManagerDialog.cpp 86986 2020-11-26 14:22:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerDialog class implementation.
  */
@@ -99,11 +99,6 @@ void UIFileManagerDialog::configureCentralWidget()
         /* Add into layout: */
         centralWidget()->layout()->addWidget(pWidget);
     }
-}
-
-void UIFileManagerDialog::configureButtonBox()
-{
-    configureButtonBoxHelpButton("guestadd-gc-file-manager");
 }
 
 void UIFileManagerDialog::finalize()
