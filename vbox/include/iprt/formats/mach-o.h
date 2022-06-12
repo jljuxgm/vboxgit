@@ -1,4 +1,4 @@
-/* $Id: mach-o.h 84509 2020-05-25 15:09:24Z vboxsync $ */
+/* $Id: mach-o.h 85339 2020-07-14 13:29:53Z vboxsync $ */
 /** @file
  * IPRT - Mach-O Structures and Constants.
  */
@@ -364,6 +364,7 @@ typedef struct segment_command_64
 #define SG_FVMLIB           UINT32_C(0x00000002)
 #define SG_NORELOC          UINT32_C(0x00000004)
 #define SG_PROTECTED_VERSION_1 UINT32_C(0x00000008)
+#define SG_READ_ONLY        UINT32_C(0x00000010) /**< Make it read-only after applying fixups. @since 10.14 */
 
 /* maxprot/initprot */
 #ifndef VM_PROT_NONE

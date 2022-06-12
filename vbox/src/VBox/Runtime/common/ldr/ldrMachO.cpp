@@ -1,4 +1,4 @@
-/* $Id: ldrMachO.cpp 83084 2020-02-15 15:16:11Z vboxsync $ */
+/* $Id: ldrMachO.cpp 85339 2020-07-14 13:29:53Z vboxsync $ */
 /** @file
  * kLdr - The Module Interpreter for the MACH-O format.
  */
@@ -99,6 +99,16 @@
 # define RTLDRMODMACHO_CHECK_RETURN(expr, rc)  AssertReturn(expr, rc)
 #else
 # define RTLDRMODMACHO_CHECK_RETURN(expr, rc)  do { if (RT_LIKELY(expr)) {/* likely */ } else return (rc); } while (0)
+#endif
+
+/** @def RTLDRMODMACHO_CHECK_MSG_RETURN
+ * Checks that an expression is true and return if it isn't.
+ * This is a debug aid.
+ */
+#ifdef RTLDRMODMACHO_STRICT2
+# define RTLDRMODMACHO_CHECK_MSG_RETURN(expr, msgargs, rc)  AssertMsgReturn(expr, msgargs, rc)
+#else
+# define RTLDRMODMACHO_CHECK_MSG_RETURN(expr, msgargs, rc)  do { if (RT_LIKELY(expr)) {/* likely */ } else return (rc); } while (0)
 #endif
 
 /** @def RTLDRMODMACHO_CHECK_RETURN
@@ -709,8 +719,9 @@ static int kldrModMachOPreParseLoadCommands(uint8_t *pbLoadCommands, const mach_
                                           VERR_LDRMACHO_BAD_LOAD_COMMAND); \
                 RTLDRMODMACHO_CHECK_RETURN(!(~pSrcSeg->maxprot & pSrcSeg->initprot), \
                                           VERR_LDRMACHO_BAD_LOAD_COMMAND); \
-                RTLDRMODMACHO_CHECK_RETURN(!(pSrcSeg->flags & ~(SG_HIGHVM | SG_FVMLIB | SG_NORELOC | SG_PROTECTED_VERSION_1)), \
-                                          VERR_LDRMACHO_BAD_LOAD_COMMAND); \
+                RTLDRMODMACHO_CHECK_MSG_RETURN(!(pSrcSeg->flags & ~(SG_HIGHVM | SG_FVMLIB | SG_NORELOC | SG_PROTECTED_VERSION_1 | SG_READ_ONLY)), \
+                                               ("flags=%#x %s\n", pSrcSeg->flags, pSrcSeg->segname), \
+                                               VERR_LDRMACHO_BAD_LOAD_COMMAND); \
                 RTLDRMODMACHO_CHECK_RETURN(   pSrcSeg->nsects * sizeof(section_##a_cBits##_t) \
                                           <= u.pLoadCmd->cmdsize - sizeof(segment_command_##a_cBits##_t), \
                                           VERR_LDRMACHO_BAD_LOAD_COMMAND); \
