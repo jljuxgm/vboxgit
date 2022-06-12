@@ -1,4 +1,4 @@
-/* $Id: ProgressImpl.h 85251 2020-07-11 23:17:17Z vboxsync $ */
+/* $Id: ProgressImpl.h 86648 2020-10-20 13:59:45Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -156,6 +156,7 @@ public:
     static DECLCALLBACK(int) i_iprtProgressCallback(unsigned uPercentage, void *pvUser);
     static DECLCALLBACK(int) i_vdProgressCallback(void *pvUser, unsigned uPercentage);
 
+    HRESULT i_addOperations(ULONG cOperations, ULONG ulTotalOperationsWeight);
 protected:
     DECLARE_EMPTY_CTOR_DTOR(Progress)
 
