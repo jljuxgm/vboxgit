@@ -1,4 +1,4 @@
-/* $Id: AudioTest.h 89139 2021-05-18 13:29:24Z vboxsync $ */
+/* $Id: AudioTest.h 89230 2021-05-23 01:21:26Z vboxsync $ */
 /** @file
  * Audio testing routines.
  * Common code which is being used by the ValidationKit audio test (VKAT)
@@ -231,6 +231,9 @@ typedef struct AUDIOTESTSET
     AUDIOTESTSETMODE enmMode;
     union
     {
+        /** @todo r=bird: RTSTREAM not RTFILE.  That means you don't have to check
+         *        every write status code and it's buffered and thus faster.  Also,
+         *        you don't have to re-invent fprintf-style RTFileWrite wrappers. */
         RTFILE       hFile;
         RTINIFILE    hIniFile;
     } f;
