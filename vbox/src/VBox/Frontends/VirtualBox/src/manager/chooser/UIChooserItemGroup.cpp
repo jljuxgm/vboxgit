@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGroup.cpp 86743 2020-10-28 17:22:07Z vboxsync $ */
+/* $Id: UIChooserItemGroup.cpp 86744 2020-10-28 17:35:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGroup class implementation.
  */
@@ -521,8 +521,8 @@ UIChooserItem* UIChooserItemGroup::searchForItem(const QString &strSearchTag, in
         /* Are we searching by the exact ID? */
         if (iSearchFlags & UIChooserItemSearchFlag_ExactId)
         {
-            /* Exact full-name matches? */
-            if (fullName() == strSearchTag)
+            /* Exact ID matches? */
+            if (id().toString() == strSearchTag)
                 return this;
         }
         /* Are we searching by the exact name? */
@@ -530,6 +530,13 @@ UIChooserItem* UIChooserItemGroup::searchForItem(const QString &strSearchTag, in
         {
             /* Exact name matches? */
             if (name() == strSearchTag)
+                return this;
+        }
+        /* Are we searching by the full name? */
+        else if (iSearchFlags & UIChooserItemSearchFlag_FullName)
+        {
+            /* Full name matches? */
+            if (fullName() == strSearchTag)
                 return this;
         }
         /* Are we searching by the few first symbols? */
