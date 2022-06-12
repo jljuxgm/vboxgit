@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic2.cpp 88250 2021-03-22 16:09:00Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic2.cpp 88266 2021-03-24 07:22:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic2 class implementation.
  */
@@ -193,7 +193,7 @@ void UIWizardNewVMPage2::markWidgets() const
 void UIWizardNewVMPage2::retranslateWidgets()
 {
     if (m_pHostnameLabel)
-        m_pHostnameLabel->setText(UIWizardNewVM::tr("&Hostname:"));
+        m_pHostnameLabel->setText(UIWizardNewVM::tr("Hostna&me:"));
 
     if (m_pGAISOPathLabel)
         m_pGAISOPathLabel->setText(UIWizardNewVM::tr("&GA Installation ISO:"));
