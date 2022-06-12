@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 87556 2021-02-03 11:02:09Z vboxsync $ */
+/* $Id: HM.cpp 87557 2021-02-03 11:07:24Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -1739,7 +1739,7 @@ static int hmR3InitFinalizeR0Intel(PVM pVM)
     if (pVM->hm.s.fPostedIntrs)
         LogRel(("HM: Enabled posted-interrupt processing support\n"));
 
-    if (pVM->hm.s.vmx.fUseVmcsShadowing)
+    if (pVM->hm.s.vmx.fUseVmcsShadowingForRing3)
     {
         bool const fFullVmcsShadow = RT_BOOL(pVM->hm.s.vmx.MsrsForRing3.u64Misc & VMX_MISC_VMWRITE_ALL);
         LogRel(("HM: Enabled %s VMCS shadowing\n", fFullVmcsShadow ? "full" : "partial"));
