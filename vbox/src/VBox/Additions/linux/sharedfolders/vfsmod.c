@@ -1,4 +1,4 @@
-/* $Id: vfsmod.c 86722 2020-10-27 12:19:37Z vboxsync $ */
+/* $Id: vfsmod.c 86897 2020-11-16 19:12:15Z vboxsync $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, module init/term, super block management.
  */
@@ -772,7 +772,7 @@ static int vbsf_remount_fs(struct super_block *sb, int *flags, char *data)
     err = vbsf_stat(__func__, pSuperInfo, sf_i->path, &fsinfo, 0);
     BUG_ON(err != 0);
     vbsf_init_inode(iroot, sf_i, &fsinfo, pSuperInfo);
-    /*unlock_new_inode(iroot); */
+    iput(iroot);
     return 0;
 #else  /* < 2.4.23 */
     return -ENOSYS;
