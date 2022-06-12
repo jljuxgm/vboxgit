@@ -1,4 +1,4 @@
-/* $Id: DrvHostPulseAudio.cpp 85531 2020-07-29 20:41:39Z vboxsync $ */
+/* $Id: DrvHostPulseAudio.cpp 85570 2020-07-30 20:26:54Z vboxsync $ */
 /** @file
  * VBox audio devices: Pulse Audio audio driver.
  */
@@ -675,20 +675,17 @@ static DECLCALLBACK(int) drvHostPulseAudioHA_Init(PPDMIHOSTAUDIO pInterface)
     LogRel(("PulseAudio: Using v%s\n", pa_get_library_version()));
 
     pThis->fAbortLoop = false;
-    pThis->pMainLoop = NULL;
+    pThis->pMainLoop = pa_threaded_mainloop_new();
+    if (!pThis->pMainLoop)
+    {
+        LogRel(("PulseAudio: Failed to allocate main loop: %s\n", pa_strerror(pa_context_errno(pThis->pContext))));
+        return VERR_NO_MEMORY;
+    }
 
     bool fLocked = false;
 
     do
     {
-        if (!(pThis->pMainLoop = pa_threaded_mainloop_new()))
-        {
-            LogRel(("PulseAudio: Failed to allocate main loop: %s\n",
-                     pa_strerror(pa_context_errno(pThis->pContext))));
-            rc = VERR_NO_MEMORY;
-            break;
-        }
-
         if (!(pThis->pContext = pa_context_new(pa_threaded_mainloop_get_api(pThis->pMainLoop), "VirtualBox")))
         {
             LogRel(("PulseAudio: Failed to allocate context: %s\n",
