@@ -1,4 +1,4 @@
-/* $Id: UIFilePathSelector.cpp 85136 2020-07-09 07:02:48Z vboxsync $ */
+/* $Id: UIFilePathSelector.cpp 87317 2021-01-20 10:14:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFilePathSelector class implementation.
  */
@@ -158,6 +158,16 @@ void UIFilePathSelector::setResetEnabled(bool fEnabled)
         setItemIcon(ResetId, UIIconPool::iconSet(":/eraser_16px.png"));
     }
     retranslateUi();
+}
+
+bool UIFilePathSelector::isValid() const
+{
+    if (m_strPath.isNull() || m_strPath.isEmpty())
+        return false;
+    QFileInfo fileInfo(m_strPath);
+    if (!fileInfo.exists() || !fileInfo.isReadable())
+        return false;
+    return true;
 }
 
 void UIFilePathSelector::setToolTip(const QString &strToolTip)

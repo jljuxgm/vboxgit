@@ -1,4 +1,4 @@
-/* $Id: UIFilePathSelector.h 85137 2020-07-09 07:21:07Z vboxsync $ */
+/* $Id: UIFilePathSelector.h 87317 2021-01-20 10:14:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFilePathSelector class declaration.
  */
@@ -109,6 +109,9 @@ public:
 
     /** Returns the path. */
     QString path() const { return m_strPath; }
+
+    /** Returns true if the selected path points to an existing/readable file. */
+    bool isValid() const;
 
     /** Sets overriden widget's @a strToolTip.
       * @note If nothing set it's generated automatically. */
