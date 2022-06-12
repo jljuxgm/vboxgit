@@ -1,4 +1,4 @@
-/* $Id: HostHardwareLinux.cpp 86138 2020-09-16 17:12:55Z vboxsync $ */
+/* $Id: HostHardwareLinux.cpp 86383 2020-10-01 14:22:01Z vboxsync $ */
 /** @file
  * VirtualBox Main - Code for handling hardware detection under Linux, VBoxSVC.
  */
@@ -933,7 +933,7 @@ static int readFilePathsFromDir(const char *pcszPath, DIR *pDir, VECTOR_PTR(char
 # pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 #endif
     for (err = readdir_r(pDir, &entry, &pResult);
-         pResult /** @todo r=bird: && err == 0 ? */;
+         pResult != NULL && err == 0;
          err = readdir_r(pDir, &entry, &pResult))
 #if RT_GNUC_PREREQ(4, 6)
 # pragma GCC diagnostic pop
