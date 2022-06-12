@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 86503 2020-10-09 13:49:47Z vboxsync $
+# $Id: vbox.py 86507 2020-10-09 16:15:27Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 86503 $"
+__version__ = "$Revision: 86507 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -1316,6 +1316,7 @@ class TestDriver(base.TestDriver):                                              
                         self.oVBoxSvcProcess.wait(7500);
             else:
                 reporter.log('VBoxSVC is no longer running...');
+
             if not self.oVBoxSvcProcess.isRunning():
                 iExit = self.oVBoxSvcProcess.getExitCode();
                 if iExit != 0 or not self.oVBoxSvcProcess.isNormalExit():
@@ -1929,6 +1930,7 @@ class TestDriver(base.TestDriver):                                              
         If your test driver overrides this, it should normally call us at the
         end of the job.
         """
+        cErrorEntry = reporter.getErrorCount();
 
         # Kill any left over VM processes.
         self._powerOffAllVms();
@@ -1963,7 +1965,13 @@ class TestDriver(base.TestDriver):                                              
             # Testbox debugging - END   - TEMPORARY, REMOVE ASAP.
 
         # Finally, call the base driver to wipe the scratch space.
-        return base.TestDriver.actionCleanupAfter(self);
+        fRc = base.TestDriver.actionCleanupAfter(self);
+
+        # Flag failure if the error count increased.
+        if reporter.getErrorCount() > cErrorEntry:
+            fRc = False;
+        return fRc;
+
 
     def actionAbort(self):
         """
