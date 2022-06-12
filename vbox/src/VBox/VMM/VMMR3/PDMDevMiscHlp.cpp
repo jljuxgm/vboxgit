@@ -1,4 +1,4 @@
-/* $Id: PDMDevMiscHlp.cpp 84678 2020-06-04 13:26:18Z vboxsync $ */
+/* $Id: PDMDevMiscHlp.cpp 84826 2020-06-15 08:20:40Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Misc. Device Helpers.
  */
@@ -203,20 +203,22 @@ static DECLCALLBACK(void) pdmR3PciHlp_IsaSetIrq(PPDMDEVINS pDevIns, int iIrq, in
 
 
 /** @interface_method_impl{PDMPCIHLPR3,pfnIoApicSetIrq} */
-static DECLCALLBACK(void) pdmR3PciHlp_IoApicSetIrq(PPDMDEVINS pDevIns, int iIrq, int iLevel, uint32_t uTagSrc)
+static DECLCALLBACK(void) pdmR3PciHlp_IoApicSetIrq(PPDMDEVINS pDevIns, PCIBDF uBusDevFn, int iIrq, int iLevel, uint32_t uTagSrc)
 {
     PDMDEV_ASSERT_DEVINS(pDevIns);
-    Log4(("pdmR3PciHlp_IoApicSetIrq: iIrq=%d iLevel=%d uTagSrc=%#x\n", iIrq, iLevel, uTagSrc));
-    PDMIoApicSetIrq(pDevIns->Internal.s.pVMR3, iIrq, iLevel, uTagSrc);
+    Log4(("pdmR3PciHlp_IoApicSetIrq: uBusDevFn=%#x iIrq=%d iLevel=%d uTagSrc=%#x\n", uBusDevFn, iIrq, iLevel, uTagSrc));
+    PDMIoApicSetIrq(pDevIns->Internal.s.pVMR3, uBusDevFn, iIrq, iLevel, uTagSrc);
 }
 
 
 /** @interface_method_impl{PDMPCIHLPR3,pfnIoApicSendMsi} */
-static DECLCALLBACK(void) pdmR3PciHlp_IoApicSendMsi(PPDMDEVINS pDevIns, RTGCPHYS GCPhys, uint32_t uValue, uint32_t uTagSrc)
+static DECLCALLBACK(void) pdmR3PciHlp_IoApicSendMsi(PPDMDEVINS pDevIns, PCIBDF uBusDevFn, PCMSIMSG pMsi, uint32_t uTagSrc)
 {
     PDMDEV_ASSERT_DEVINS(pDevIns);
-    Log4(("pdmR3PciHlp_IoApicSendMsi: address=%p value=%x uTagSrc=%#x\n", GCPhys, uValue, uTagSrc));
-    PDMIoApicSendMsi(pDevIns->Internal.s.pVMR3, GCPhys, uValue, uTagSrc);
+    Assert(PCIBDF_IS_VALID(uBusDevFn));
+    Log4(("pdmR3PciHlp_IoApicSendMsi: uBusDevFn=%#x Msi (Addr=%#RX64 Data=%#x) uTagSrc=%#x\n", uBusDevFn,
+          pMsi->Addr.u64, pMsi->Data.u32, uTagSrc));
+    PDMIoApicSendMsi(pDevIns->Internal.s.pVMR3, uBusDevFn, pMsi, uTagSrc);
 }
 
 

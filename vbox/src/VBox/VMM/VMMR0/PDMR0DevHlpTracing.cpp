@@ -1,4 +1,4 @@
-/* $Id: PDMR0DevHlpTracing.cpp 84809 2020-06-12 06:49:41Z vboxsync $ */
+/* $Id: PDMR0DevHlpTracing.cpp 84826 2020-06-15 08:20:40Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helper variants when tracing is enabled.
  */
@@ -321,7 +321,7 @@ pdmR0DevHlpTracing_PCIPhysRead(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDev, RTGCPHYS 
         PPDMPCIBUSR0 pBus = &pGVM->pdmr0.s.aPciBuses[idxBus];
 
         RTGCPHYS GCPhysOut;
-        uint16_t const uDeviceId = VBOX_PCI_BUSDEVFN_MAKE(pBus->iBus, pPciDev->uDevFn);
+        uint16_t const uDeviceId = PCIBDF_MAKE(pBus->iBus, pPciDev->uDevFn);
         int rc = pIommu->pfnMemRead(pDevInsIommu, uDeviceId, GCPhys, cbRead, &GCPhysOut);
         if (RT_FAILURE(rc))
         {
@@ -373,7 +373,7 @@ pdmR0DevHlpTracing_PCIPhysWrite(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDev, RTGCPHYS
         PPDMPCIBUSR0 pBus = &pGVM->pdmr0.s.aPciBuses[idxBus];
 
         RTGCPHYS GCPhysOut;
-        uint16_t const uDeviceId = VBOX_PCI_BUSDEVFN_MAKE(pBus->iBus, pPciDev->uDevFn);
+        uint16_t const uDeviceId = PCIBDF_MAKE(pBus->iBus, pPciDev->uDevFn);
         int rc = pIommu->pfnMemWrite(pDevInsIommu, uDeviceId, GCPhys, cbWrite, &GCPhysOut);
         if (RT_FAILURE(rc))
         {

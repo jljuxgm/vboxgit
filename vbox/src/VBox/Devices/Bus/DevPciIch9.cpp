@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 84826 2020-06-15 08:20:40Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation device.
  *
@@ -546,6 +546,7 @@ static void ich9pciApicSetIrq(PPDMDEVINS pDevIns, PDEVPCIBUS pBus, PDEVPCIBUSCC 
 {
     /* This is only allowed to be called with a pointer to the root bus. */
     AssertMsg(pBus->iBus == 0, ("iBus=%u\n", pBus->iBus));
+    uint16_t const uBusDevFn = PCIBDF_MAKE(pBus->iBus, uDevFn);
 
     if (iForcedIrq == -1)
     {
@@ -562,7 +563,7 @@ static void ich9pciApicSetIrq(PPDMDEVINS pDevIns, PDEVPCIBUS pBus, PDEVPCIBUSCC 
         apic_level = pPciRoot->auPciApicIrqLevels[irq_num] != 0;
         Log3Func(("%s: irq_num1=%d level=%d apic_irq=%d apic_level=%d irq_num1=%d uTagSrc=%#x\n",
                   R3STRING(pPciDev->pszNameR3), irq_num1, iLevel, apic_irq, apic_level, irq_num, uTagSrc));
-        pBusCC->CTX_SUFF(pPciHlp)->pfnIoApicSetIrq(pDevIns, apic_irq, apic_level, uTagSrc);
+        pBusCC->CTX_SUFF(pPciHlp)->pfnIoApicSetIrq(pDevIns, uBusDevFn, apic_irq, apic_level, uTagSrc);
 
         if ((iLevel & PDM_IRQ_LEVEL_FLIP_FLOP) == PDM_IRQ_LEVEL_FLIP_FLOP)
         {
@@ -575,12 +576,12 @@ static void ich9pciApicSetIrq(PPDMDEVINS pDevIns, PDEVPCIBUS pBus, PDEVPCIBUSCC 
             apic_level = pPciRoot->auPciApicIrqLevels[irq_num] != 0;
             Log3Func(("%s: irq_num1=%d level=%d apic_irq=%d apic_level=%d irq_num1=%d uTagSrc=%#x (flop)\n",
                       R3STRING(pPciDev->pszNameR3), irq_num1, iLevel, apic_irq, apic_level, irq_num, uTagSrc));
-            pBusCC->CTX_SUFF(pPciHlp)->pfnIoApicSetIrq(pDevIns, apic_irq, apic_level, uTagSrc);
+            pBusCC->CTX_SUFF(pPciHlp)->pfnIoApicSetIrq(pDevIns, uBusDevFn, apic_irq, apic_level, uTagSrc);
         }
     } else {
         Log3Func(("(forced) %s: irq_num1=%d level=%d acpi_irq=%d uTagSrc=%#x\n",
                   R3STRING(pPciDev->pszNameR3), irq_num1, iLevel, iForcedIrq, uTagSrc));
-        pBusCC->CTX_SUFF(pPciHlp)->pfnIoApicSetIrq(pDevIns, iForcedIrq, iLevel, uTagSrc);
+        pBusCC->CTX_SUFF(pPciHlp)->pfnIoApicSetIrq(pDevIns, uBusDevFn, iForcedIrq, iLevel, uTagSrc);
     }
 }
 
