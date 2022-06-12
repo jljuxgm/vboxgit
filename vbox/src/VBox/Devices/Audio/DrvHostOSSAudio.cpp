@@ -1,4 +1,4 @@
-/* $Id: DrvHostOSSAudio.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: DrvHostOSSAudio.cpp 88022 2021-03-08 17:50:57Z vboxsync $ */
 /** @file
  * OSS (Open Sound System) host audio backend.
  */
@@ -355,8 +355,8 @@ static int ossControlStreamOut(PPDMAUDIOBACKENDSTREAM pStream, PDMAUDIOSTREAMCMD
         case PDMAUDIOSTREAMCMD_ENABLE:
         case PDMAUDIOSTREAMCMD_RESUME:
         {
-            DrvAudioHlpClearBuf(&pStreamOSS->pCfg->Props, pStreamOSS->pvBuf, pStreamOSS->cbBuf,
-                                PDMAUDIOPCMPROPS_B2F(&pStreamOSS->pCfg->Props, pStreamOSS->cbBuf));
+            PDMAudioPropsClearBuffer(&pStreamOSS->pCfg->Props, pStreamOSS->pvBuf, pStreamOSS->cbBuf,
+                                     PDMAUDIOPCMPROPS_B2F(&pStreamOSS->pCfg->Props, pStreamOSS->cbBuf));
 
             int mask = PCM_ENABLE_OUTPUT;
             if (ioctl(pStreamOSS->hFile, SNDCTL_DSP_SETTRIGGER, &mask) < 0)

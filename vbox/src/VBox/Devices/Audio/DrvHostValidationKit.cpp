@@ -1,4 +1,4 @@
-/* $Id: DrvHostValidationKit.cpp 87994 2021-03-07 15:22:36Z vboxsync $ */
+/* $Id: DrvHostValidationKit.cpp 88022 2021-03-08 17:50:57Z vboxsync $ */
 /** @file
  * ValidationKit audio driver - host backend for dumping and injecting audio data
  *                              from/to the device emulation.
@@ -144,7 +144,7 @@ static int drvHostValKitAudioCreateStreamOut(PDRVHOSTVAKITAUDIO pDrv, PVAKITAUDI
     pStreamDbg->tsStarted = 0;
     pStreamDbg->uSamplesSinceStarted = 0;
     pStreamDbg->Out.tsLastPlayed  = 0;
-    pStreamDbg->Out.cbPlayBuffer  = DrvAudioHlpFramesToBytes(&pCfgReq->Props, pCfgReq->Backend.cFramesBufferSize);
+    pStreamDbg->Out.cbPlayBuffer  = PDMAudioPropsFramesToBytes(&pCfgReq->Props, pCfgReq->Backend.cFramesBufferSize);
     pStreamDbg->Out.pu8PlayBuffer = (uint8_t *)RTMemAlloc(pStreamDbg->Out.cbPlayBuffer);
     AssertReturn(pStreamDbg->Out.pu8PlayBuffer, VERR_NO_MEMORY);
 

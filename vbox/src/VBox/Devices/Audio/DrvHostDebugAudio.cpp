@@ -1,4 +1,4 @@
-/* $Id: DrvHostDebugAudio.cpp 88002 2021-03-08 11:28:46Z vboxsync $ */
+/* $Id: DrvHostDebugAudio.cpp 88022 2021-03-08 17:50:57Z vboxsync $ */
 /** @file
  * Debug audio driver.
  *
@@ -348,7 +348,7 @@ static DECLCALLBACK(uint32_t) drvHostDebugAudioHA_StreamGetReadable(PPDMIHOSTAUD
 
     AssertPtr(pStreamDbg->pCfg);
 
-    return DrvAudioHlpMilliToBytes(&pStreamDbg->pCfg->Props, 10 /*ms*/);
+    return PDMAudioPropsMilliToBytes(&pStreamDbg->pCfg->Props, 10 /*ms*/);
 }
 
 

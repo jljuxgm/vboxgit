@@ -1,4 +1,4 @@
-/* $Id: DrvHostCoreAudio.cpp 87994 2021-03-07 15:22:36Z vboxsync $ */
+/* $Id: DrvHostCoreAudio.cpp 88022 2021-03-08 17:50:57Z vboxsync $ */
 /** @file
  * VBox audio devices - Mac OS X CoreAudio audio driver.
  */
@@ -1304,7 +1304,7 @@ static DECLCALLBACK(int) coreAudioQueueThread(RTTHREAD hThreadSelf, void *pvUser
     if (err != noErr)
         return VERR_GENERAL_FAILURE; /** @todo Fudge! */
 
-    const size_t cbBufSize = DrvAudioHlpFramesToBytes(&pCAStream->pCfg->Props, pCAStream->pCfg->Backend.cFramesPeriod);
+    const size_t cbBufSize = PDMAudioPropsFramesToBytes(&pCAStream->pCfg->Props, pCAStream->pCfg->Backend.cFramesPeriod);
 
     /*
      * Allocate audio buffers.
