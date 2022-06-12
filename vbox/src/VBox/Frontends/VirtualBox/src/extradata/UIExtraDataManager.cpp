@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 86791 2020-11-03 11:21:51Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 86958 2020-11-23 11:23:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -1982,7 +1982,8 @@ QStringList UIExtraDataManagerWindow::knownExtraDataKeys()
            << GUI_ExtraDataManager_Geometry << GUI_ExtraDataManager_SplitterHints
            << GUI_LogWindowGeometry
            << GUI_HelpBrowserLastURLList
-           << GUI_HelpBrowserDialogGeometry;
+           << GUI_HelpBrowserDialogGeometry
+           << GUI_HelpBrowserBookmarks;
 }
 
 #endif /* VBOX_GUI_WITH_EXTRADATA_MANAGER_UI */
@@ -4630,6 +4631,16 @@ bool UIExtraDataManager::helpBrowserDialogShouldBeMaximized()
 
     /* Make sure 5th item has required value: */
     return data.size() == 5 && data[4] == GUI_Geometry_State_Max;
+}
+
+void UIExtraDataManager::setHelpBrowserBookmarks(const QStringList &bookmarks)
+{
+    setExtraDataStringList(GUI_HelpBrowserBookmarks, bookmarks);
+}
+
+QStringList UIExtraDataManager::helpBrowserBookmarks()
+{
+    return extraDataStringList(GUI_HelpBrowserBookmarks);
 }
 
 void UIExtraDataManager::setVMResourceMonitorHiddenColumnList(const QStringList &hiddenColumnList)
