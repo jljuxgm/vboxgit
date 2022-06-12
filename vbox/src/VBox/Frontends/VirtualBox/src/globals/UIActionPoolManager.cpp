@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.cpp 85613 2020-08-05 12:52:47Z vboxsync $ */
+/* $Id: UIActionPoolManager.cpp 85633 2020-08-06 10:35:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class implementation.
  */
@@ -1112,8 +1112,8 @@ protected:
     }
 };
 
-/** Polymorphic menu action extension, used as 'Perform Discard' action class. */
-class UIActionSimpleManagerCommonPerformDiscard : public UIActionPolymorphicMenu
+/** Simple menu action extension, used as 'Perform Discard' action class. */
+class UIActionSimpleManagerCommonPerformDiscard : public UIActionSimple
 {
     Q_OBJECT;
 
@@ -1121,13 +1121,10 @@ public:
 
     /** Constructs action passing @a pParent to the base-class. */
     UIActionSimpleManagerCommonPerformDiscard(UIActionPool *pParent)
-        : UIActionPolymorphicMenu(pParent,
-                                  ":/vm_discard_32px.png", ":/vm_discard_16px.png",
-                                  ":/vm_discard_disabled_32px.png", ":/vm_discard_disabled_16px.png")
-    {
-        /* Hide menu always: */
-        hideMenu();
-    }
+        : UIActionSimple(pParent,
+                         ":/vm_discard_32px.png", ":/vm_discard_16px.png",
+                         ":/vm_discard_disabled_32px.png", ":/vm_discard_disabled_16px.png")
+    {}
 
 protected:
 
