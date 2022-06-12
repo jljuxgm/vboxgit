@@ -1,4 +1,4 @@
-/* $Id: PGMInline.h 86465 2020-10-07 10:58:48Z vboxsync $ */
+/* $Id: PGMInline.h 86488 2020-10-08 08:32:24Z vboxsync $ */
 /** @file
  * PGM - Inlined functions.
  */
@@ -637,7 +637,7 @@ DECL_FORCE_INLINE(bool) pgmGst32BitIsPageSizeExtActive(PVMCPUCC pVCpu)
 DECLINLINE(RTGCPHYS) pgmGstGet4MBPhysPage(PVMCC pVM, X86PDE Pde)
 {
     RTGCPHYS GCPhys = Pde.u & X86_PDE4M_PG_MASK;
-    GCPhys |= (RTGCPHYS)Pde.b.u8PageNoHigh << 32;
+    GCPhys |= (RTGCPHYS)(Pde.u & X86_PDE4M_PG_HIGH_MASK) << X86_PDE4M_PG_HIGH_SHIFT;
 
     return GCPhys & pVM->pgm.s.GCPhys4MBPSEMask;
 }

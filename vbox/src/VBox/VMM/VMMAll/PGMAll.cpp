@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 86476 2020-10-07 19:53:07Z vboxsync $ */
+/* $Id: PGMAll.cpp 86488 2020-10-08 08:32:24Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -1417,7 +1417,7 @@ int pgmShwMakePageSupervisorAndWritable(PVMCPUCC pVCpu, RTGCPTR GCPtr, bool fBig
                 PX86PDE pPde = pgmShwGet32BitPDEPtr(pVCpu, GCPtr);
                 AssertReturn(pPde, VERR_INTERNAL_ERROR_3);
                 Log(("pgmShwMakePageSupervisorAndWritable: PDE=%#llx", pPde->u));
-                pPde->n.u1Write = 1;
+                pPde->u |= X86_PDE_RW;
                 Log(("-> PDE=%#llx (32)\n", pPde->u));
                 break;
             }
