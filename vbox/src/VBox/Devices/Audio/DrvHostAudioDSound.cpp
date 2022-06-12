@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioDSound.cpp 88566 2021-04-16 13:55:05Z vboxsync $ */
+/* $Id: DrvHostAudioDSound.cpp 88573 2021-04-16 19:31:14Z vboxsync $ */
 /** @file
  * Host audio driver - DirectSound (Windows).
  */
@@ -240,7 +240,7 @@ static int      dsoundDevicesEnumerate(PDRVHOSTDSOUND pThis, PDMAUDIOHOSTENUM pD
 static void     dsoundUpdateStatusInternal(PDRVHOSTDSOUND pThis);
 
 
-#if defined(LOG_ENABLED) // || defined(RTLOG_REL_ENABLED)
+#if defined(LOG_ENABLED) || defined(RTLOG_REL_ENABLED)
 /**
  * Gets the stream status as a string for logging purposes.
  *
