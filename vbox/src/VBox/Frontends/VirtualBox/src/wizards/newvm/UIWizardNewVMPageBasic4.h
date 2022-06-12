@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic4.h 87414 2021-01-25 11:16:38Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic4.h 87423 2021-01-25 18:48:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic4 class declaration.
  */
@@ -33,7 +33,6 @@
 
 /* Forward declarations: */
 class QRadioButton;
-class QToolBox;
 class QIRichTextLabel;
 class QIToolButton;
 class UIBaseMemoryEditor;
@@ -45,13 +44,6 @@ class UIWizardNewVMPage4 : public UIWizardPageBase
 {
 
 protected:
-
-    enum
-    {
-        ToolBoxItems_Disk,
-        ToolBoxItems_Hardware
-    };
-
 
     /** Constructor. */
     UIWizardNewVMPage4();
@@ -154,7 +146,6 @@ private:
 
     /** Widgets. */
     QIRichTextLabel *m_pLabel;
-    QToolBox     *m_pToolBox;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_wizards_newvm_UIWizardNewVMPageBasic4_h */
