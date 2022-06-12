@@ -1,4 +1,4 @@
-/* $Id: DevHDACommon.h 87863 2021-02-24 17:25:23Z vboxsync $ */
+/* $Id: DevHDACommon.h 88080 2021-03-10 21:22:36Z vboxsync $ */
 /** @file
  * DevHDACommon.h - Shared HDA device defines / functions.
  */
@@ -668,14 +668,6 @@ int           hdaR3BDLEFetch(PPDMDEVINS pDevIns, PHDABDLE pBDLE, uint64_t u64Bas
 bool          hdaR3BDLEIsComplete(PHDABDLE pBDLE);
 bool          hdaR3BDLENeedsInterrupt(PHDABDLE pBDLE);
 #endif /* IN_RING3 */
-/** @} */
-
-/** @name Device timer functions.
- * @{
- */
-#ifdef IN_RING3
-bool          hdaR3TimerSet(PPDMDEVINS pDevIns, PHDASTREAM pStreamShared, uint64_t u64Expire, bool fForce, uint64_t tsNow);
-#endif
 /** @} */
 
 #endif /* !VBOX_INCLUDED_SRC_Audio_DevHDACommon_h */
