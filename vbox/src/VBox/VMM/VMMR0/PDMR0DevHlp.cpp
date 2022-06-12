@@ -1,4 +1,4 @@
-/* $Id: PDMR0DevHlp.cpp 88638 2021-04-22 05:40:05Z vboxsync $ */
+/* $Id: PDMR0DevHlp.cpp 88639 2021-04-22 05:52:42Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, R0 Device Helper parts.
  */
@@ -150,7 +150,7 @@ static DECLCALLBACK(int) pdmR0DevHlp_PCIPhysRead(PPDMDEVINS pDevIns, PPDMPCIDEV 
     }
 #endif
 
-#ifdef VBOX_WITH_IOMMU_AMD
+#if defined(VBOX_WITH_IOMMU_AMD) || defined(VBOX_WITH_IOMMU_INTEL)
     int rc = pdmIommuMemAccessRead(pDevIns, pPciDev, GCPhys, pvBuf, cbRead, fFlags);
     if (   rc == VERR_IOMMU_NOT_PRESENT
         || rc == VERR_IOMMU_CANNOT_CALL_SELF)
@@ -187,7 +187,7 @@ static DECLCALLBACK(int) pdmR0DevHlp_PCIPhysWrite(PPDMDEVINS pDevIns, PPDMPCIDEV
     }
 #endif
 
-#ifdef VBOX_WITH_IOMMU_AMD
+#if defined(VBOX_WITH_IOMMU_AMD) || defined(VBOX_WITH_IOMMU_INTEL)
     int rc = pdmIommuMemAccessWrite(pDevIns, pPciDev, GCPhys, pvBuf, cbWrite, fFlags);
     if (   rc == VERR_IOMMU_NOT_PRESENT
         || rc == VERR_IOMMU_CANNOT_CALL_SELF)
@@ -1535,7 +1535,7 @@ static DECLCALLBACK(int) pdmR0IoApicHlp_IommuMsiRemap(PPDMDEVINS pDevIns, uint16
     LogFlow(("pdmR0IoApicHlp_IommuMsiRemap: caller='%s'/%d: pMsiIn=(%#RX64, %#RU32)\n", pDevIns->pReg->szName,
              pDevIns->iInstance, pMsiIn->Addr.u64, pMsiIn->Data.u32));
 
-#ifdef VBOX_WITH_IOMMU_AMD
+#if defined(VBOX_WITH_IOMMU_AMD) || defined(VBOX_WITH_IOMMU_INTEL)
     if (pdmIommuIsPresent(pDevIns))
     {
         PGVM pGVM = pDevIns->Internal.s.pGVM;

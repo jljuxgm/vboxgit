@@ -1,4 +1,4 @@
-/* $Id: PDMDevMiscHlp.cpp 88631 2021-04-21 11:54:19Z vboxsync $ */
+/* $Id: PDMDevMiscHlp.cpp 88639 2021-04-22 05:52:42Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Misc. Device Helpers.
  */
@@ -147,7 +147,7 @@ static DECLCALLBACK(int) pdmR3IoApicHlp_IommuMsiRemap(PPDMDEVINS pDevIns, uint16
     LogFlow(("pdmR3IoApicHlp_IommuRemapMsi: caller='%s'/%d: pMsiIn=(%#RX64, %#RU32)\n", pDevIns->pReg->szName,
              pDevIns->iInstance, pMsiIn->Addr.u64, pMsiIn->Data.u32));
 
-#ifdef VBOX_WITH_IOMMU_AMD
+#if defined(VBOX_WITH_IOMMU_AMD) || defined(VBOX_WITH_IOMMU_INTEL)
     if (pdmIommuIsPresent(pDevIns))
         return pdmIommuMsiRemap(pDevIns, idDevice, pMsiIn, pMsiOut);
 #else
