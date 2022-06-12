@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.h 85508 2020-07-29 10:11:07Z vboxsync $ */
+/* $Id: UIChooserModel.h 86202 2020-09-21 14:42:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class declaration.
  */
@@ -267,6 +267,8 @@ protected slots:
           * @param  strProfileName   Brings profile name. */
         virtual void sltCloudMachineRegistered(const QString &strProviderName, const QString &strProfileName,
                                                const QUuid &uId, const bool fRegistered);
+        /** Handles event about cloud provider with @a uId being uninstalled. */
+        virtual void sltHandleCloudProviderUninstall(const QUuid &uId);
     /** @} */
 
     /** @name Children stuff.
