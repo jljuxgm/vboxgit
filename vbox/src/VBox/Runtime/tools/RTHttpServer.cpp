@@ -1,4 +1,4 @@
-/* $Id: RTHttpServer.cpp 87017 2020-11-30 16:51:08Z vboxsync $ */
+/* $Id: RTHttpServer.cpp 87018 2020-11-30 17:19:29Z vboxsync $ */
 /** @file
  * IPRT - Utility for running a (simple) HTTP server.
  *
@@ -351,7 +351,7 @@ static int pathResolve(PHTTPSERVERDATA pThis, const char *pszUrl, char **ppszPat
 #ifdef VBOX_STRICT
     RTFSOBJINFO objInfo;
     int rc2 = RTPathQueryInfo(pszPathAbs, &objInfo, RTFSOBJATTRADD_NOTHING);
-    AssertRCReturn(rc, rc);
+    AssertRCReturn(rc2, rc2); RT_NOREF(rc2);
     AssertReturn(!RTFS_IS_SYMLINK(objInfo.Attr.fMode), VERR_NOT_SUPPORTED);
 #endif
 
@@ -619,7 +619,7 @@ int main(int argc, char **argv)
                 return RTEXITCODE_SUCCESS;
 
             case 'V':
-                RTPrintf("$Revision: 87017 $\n");
+                RTPrintf("$Revision: 87018 $\n");
                 return RTEXITCODE_SUCCESS;
 
             default:

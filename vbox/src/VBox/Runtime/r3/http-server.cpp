@@ -1,4 +1,4 @@
-/* $Id: http-server.cpp 87016 2020-11-30 16:45:54Z vboxsync $ */
+/* $Id: http-server.cpp 87018 2020-11-30 17:19:29Z vboxsync $ */
 /** @file
  * Simple HTTP server (RFC 7231) implementation.
  *
@@ -599,7 +599,7 @@ static DECLCALLBACK(int) rtHttpServerHandleGET(PRTHTTPSERVERCLIENT pClient, PRTH
     if (RT_FAILURE(rc))
         return rc;
 
-    void *pvHandle;
+    void *pvHandle = NULL;
     RTHTTPSERVER_HANDLE_CALLBACK_VA(pfnOpen, pReq->pszUrl, &pvHandle);
 
     if (RT_SUCCESS(rc))
