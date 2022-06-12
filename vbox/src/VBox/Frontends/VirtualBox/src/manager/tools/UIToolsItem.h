@@ -1,4 +1,4 @@
-/* $Id: UIToolsItem.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIToolsItem.h 89243 2021-05-24 15:39:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsItem class declaration.
  */
@@ -288,18 +288,18 @@ private:
         /** Holds the animated value. */
         int                 m_iAnimatedValue;
 
-        /** Holds minimum default lightness tone. */
-        int  m_iDefaultLightnessMin;
-        /** Holds maximum default lightness tone. */
-        int  m_iDefaultLightnessMax;
-        /** Holds minimum hover lightness tone. */
-        int  m_iHoverLightnessMin;
-        /** Holds maximum hover lightness tone. */
-        int  m_iHoverLightnessMax;
-        /** Holds minimum highlight lightness tone. */
-        int  m_iHighlightLightnessMin;
-        /** Holds maximum highlight lightness tone. */
-        int  m_iHighlightLightnessMax;
+        /** Holds start default lightness tone. */
+        int  m_iDefaultLightnessStart;
+        /** Holds final default lightness tone. */
+        int  m_iDefaultLightnessFinal;
+        /** Holds start hover lightness tone. */
+        int  m_iHoverLightnessStart;
+        /** Holds final hover lightness tone. */
+        int  m_iHoverLightnessFinal;
+        /** Holds start highlight lightness tone. */
+        int  m_iHighlightLightnessStart;
+        /** Holds final highlight lightness tone. */
+        int  m_iHighlightLightnessFinal;
     /** @} */
 
     /** @name Layout stuff.
