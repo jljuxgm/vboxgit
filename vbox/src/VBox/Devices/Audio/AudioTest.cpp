@@ -1,4 +1,4 @@
-/* $Id: AudioTest.cpp 88967 2021-05-10 17:33:06Z vboxsync $ */
+/* $Id: AudioTest.cpp 88968 2021-05-10 17:40:28Z vboxsync $ */
 /** @file
  * Audio testing routines.
  * Common code which is being used by the ValidationKit and the debug / ValdikationKit audio driver(s).
@@ -227,8 +227,8 @@ int AudioTestPathCreate(char *pszPath, size_t cbPath, const char *pszTag)
     }
 
     char szName[128];
-    rc = RTStrPrintf(szName, sizeof(szName), "%s%s", AUDIOTEST_PATH_PREFIX_STR, szTag);
-    AssertRCReturn(rc, rc);
+    if (RTStrPrintf2(szName, sizeof(szName), "%s%s", AUDIOTEST_PATH_PREFIX_STR, szTag) < 0)
+        AssertFailedReturn(VERR_BUFFER_OVERFLOW);
 
     rc = RTPathAppend(pszPath, cbPath, szName);
     AssertRCReturn(rc, rc);
