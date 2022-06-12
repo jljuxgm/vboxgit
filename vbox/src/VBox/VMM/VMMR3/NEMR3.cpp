@@ -1,4 +1,4 @@
-/* $Id: NEMR3.cpp 86056 2020-09-07 20:07:22Z vboxsync $ */
+/* $Id: NEMR3.cpp 86115 2020-09-14 06:52:26Z vboxsync $ */
 /** @file
  * NEM - Native execution manager.
  */
@@ -82,6 +82,7 @@ VMMR3_INT_DECL(int) NEMR3InitConfig(PVM pVM)
                                   "/NEM/",
                                   "Enabled"
                                   "|Allow64BitGuests"
+                                  "|LovelyMesaDrvWorkaround"
 #ifdef RT_OS_WINDOWS
                                   "|UseRing0Runloop"
 #endif
@@ -106,6 +107,18 @@ VMMR3_INT_DECL(int) NEMR3InitConfig(PVM pVM)
 #else
     pVM->nem.s.fAllow64BitGuests = false;
 #endif
+
+    /** @cfgm{/HM/LovelyMesaDrvWorkaround,bool}
+     * Workaround for mesa vmsvga 3d driver making incorrect assumptions about
+     * the hypervisor it is running under. */
+    bool f;
+    rc = CFGMR3QueryBoolDef(pCfgNem, "LovelyMesaDrvWorkaround", &f, false);
+    AssertLogRelRCReturn(rc, rc);
+    for (VMCPUID idCpu = 0; idCpu < pVM->cCpus; idCpu++)
+    {
+        PVMCPU pVCpu = pVM->apCpusR3[idCpu];
+        pVCpu->nem.s.fTrapXcptGpForLovelyMesaDrv = f;
+    }
 
 #ifdef RT_OS_WINDOWS
     /** @cfgm{/NEM/UseRing0Runloop, bool, true}

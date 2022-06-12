@@ -1,4 +1,4 @@
-/* $Id: NEMInternal.h 86056 2020-09-07 20:07:22Z vboxsync $ */
+/* $Id: NEMInternal.h 86115 2020-09-14 06:52:26Z vboxsync $ */
 /** @file
  * NEM - Internal header file.
  */
@@ -227,6 +227,8 @@ typedef struct NEMCPU
     uint32_t                    u32Magic;
     /** Whether \#UD needs to be intercepted and presented to GIM. */
     bool                        fGIMTrapXcptUD : 1;
+    /** Whether \#GP needs to be intercept for mesa driver workaround. */
+    bool                        fTrapXcptGpForLovelyMesaDrv: 1;
 #ifdef RT_OS_WINDOWS
     /** The current state of the interrupt windows (NEM_WIN_INTW_F_XXX). */
     uint8_t                     fCurrentInterruptWindows;
