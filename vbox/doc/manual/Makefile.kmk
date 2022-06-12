@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: Makefile.kmk 85654 2020-08-09 14:12:34Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox User Manual, SDK reference and other manuals.
 #
@@ -95,7 +95,7 @@ VBOXMANAGEHELP_PATH       ?= $(PATH_STAGE_BIN)/VBoxManageHelp$(SUFF_EXE)
 VBOX_PDFLATEX_INTERACTION ?= batchmode
 ifeq ($(KBUILD_HOST),win)
  ifndef VBOX_PDFLATEX
-  VBOX_PDFLATEX           := $(firstword $(rsort $(wildcard $(PATH_DEVTOOLS)/win.x86/miktex-portable/*/miktex/bin/pdflatex.exe)))
+  VBOX_PDFLATEX           := $(firstword $(rsort $(wildcard $(KBUILD_DEVTOOLS)/win.x86/miktex-portable/*/miktex/bin/pdflatex.exe)))
   ifneq ($(VBOX_PDFLATEX),)
    VBOX_PDFLATEX_CMD       = $(VBOX_PDFLATEX) -halt-on-error -interaction $(VBOX_PDFLATEX_INTERACTION)
   endif

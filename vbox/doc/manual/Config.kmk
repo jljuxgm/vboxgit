@@ -1,4 +1,4 @@
-# $Id: Config.kmk 84692 2020-06-05 12:30:31Z vboxsync $
+# $Id: Config.kmk 85654 2020-08-09 14:12:34Z vboxsync $
 ## @file
 # kBuild Configuration file for the manual.
 #
@@ -79,8 +79,8 @@ VBOX_MANUAL_XML_FILES_COMMON = \
 # Tool locations.
 ifndef VBOX_OSE
  # use docbook from our tools directory
- VBOX_PATH_DOCBOOK        ?= $(PATH_DEVTOOLS)/common/DocBook/v1.69.1
- VBOX_PATH_DOCBOOK_DTD    ?= $(PATH_DEVTOOLS)/common/docbook-xml/v4.5
+ VBOX_PATH_DOCBOOK        ?= $(KBUILD_DEVTOOLS)/common/DocBook/v1.69.1
+ VBOX_PATH_DOCBOOK_DTD    ?= $(KBUILD_DEVTOOLS)/common/docbook-xml/v4.5
 else
  # use docbook of the build host
  VBOX_PATH_DOCBOOK        ?= /usr/share/xml/docbook/stylesheet/docbook-xsl

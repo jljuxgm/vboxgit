@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 84940 2020-06-25 09:44:14Z vboxsync $
+# $Id: Makefile.kmk 85654 2020-08-09 14:12:34Z vboxsync $
 ## @file
 # Sub-Makefile for XPCOM.
 #
@@ -447,7 +447,7 @@ xpidl_SOURCES = \
 ifeq ($(KBUILD_TARGET),os2)
  # glib and libIDL needed by XPCOM on OS/2.
  ifeq ($(VBOX_PATH_GLIB),)
- VBOX_PATH_GLIB := $(lastword $(sort $(wildcard $(PATH_DEVTOOLS_TRG)/glibidl/*/glibidl/gcc335)))
+ VBOX_PATH_GLIB := $(lastword $(sort $(wildcard $(KBUILD_DEVTOOLS_TRG)/glibidl/*/glibidl/gcc335)))
  endif
  VBOX_PATH_LIBIDL ?= $(VBOX_PATH_GLIB)
  ifeq ($(wildcard $(VBOX_PATH_GLIB)),)
