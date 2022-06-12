@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 87558 2021-02-03 11:21:28Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 87562 2021-02-03 12:42:15Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -2700,7 +2700,6 @@ static int hmR0VmxCheckCachedVmcsCtls(PVMCPUCC pVCpu, PCVMXVMCSINFO pVmcsInfo, b
 /**
  * Verifies that our cached host EFER MSR value has not changed since we cached it.
  *
- * @param   pVCpu       The cross context virtual CPU structure.
  * @param   pVmcsInfo   The VMCS info. object.
  */
 static void hmR0VmxCheckHostEferMsr(PCVMXVMCSINFO pVmcsInfo)
