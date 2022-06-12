@@ -1,4 +1,4 @@
-/* $Id: display-drm.cpp 84607 2020-05-29 10:44:19Z vboxsync $ */
+/* $Id: display-drm.cpp 84609 2020-05-29 12:49:06Z vboxsync $ */
 /** @file
  * X11 guest client - VMSVGA emulation resize event pass-through to drm guest
  * driver.
@@ -163,9 +163,7 @@ static void drmSendHints(struct DRMCONTEXT *pContext, struct DRMVMWRECT *paRects
 {
     uid_t guid = getuid();
     if (setreuid(0, 0) == -1)
-    {
         perror("setreuid failed during drm ioctl.");
-    }
     int rc;
     struct DRMVMWUPDATELAYOUT ioctlLayout;
 
