@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic1.h 85135 2020-07-09 06:59:35Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic1.h 85168 2020-07-10 10:13:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic1 class declaration.
  */
@@ -78,8 +78,8 @@ protected:
     void setTypeByISODetectedOSType(const QString &strDetectedOSType);
     /** Colors the widgets red if they cause isComplete to fail. */
     void markWidgets() const;
-
     bool isISOFileSelectorComplete() const;
+    void retranslateWidgets();
 
     /** @name Widgets
      * @{ */
