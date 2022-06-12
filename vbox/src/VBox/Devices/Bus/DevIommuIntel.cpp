@@ -1,4 +1,4 @@
-/* $Id: DevIommuIntel.cpp 88310 2021-03-29 12:52:12Z vboxsync $ */
+/* $Id: DevIommuIntel.cpp 88321 2021-03-30 05:36:28Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - Intel implementation.
  */
@@ -541,7 +541,7 @@ static void iommuIntelRegWrite64(PIOMMU pThis, uint16_t offReg, uint64_t uReg)
  * @param   offReg  The MMIO offset of the register.
  * @param   uReg    The 32-bit value to write.
  */
-static void iommuIntelRegWrite32(PIOMMU pThis, uint16_t offReg, uint64_t uReg)
+static void iommuIntelRegWrite32(PIOMMU pThis, uint16_t offReg, uint32_t uReg)
 {
     /* Read current value from the 32-bit register. */
     uint32_t uCurReg;
