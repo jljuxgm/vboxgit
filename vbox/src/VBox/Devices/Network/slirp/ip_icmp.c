@@ -1,4 +1,4 @@
-/* $Id: ip_icmp.c 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: ip_icmp.c 85082 2020-07-07 14:04:23Z vboxsync $ */
 /** @file
  * NAT - IP/ICMP handling.
  */
@@ -486,6 +486,7 @@ icmp_input(PNATState pData, struct mbuf *m, int hlen)
                 ip->ip_dst.s_addr = ip->ip_src.s_addr;
                 ip->ip_src.s_addr = dst;
                 icmp_reflect(pData, m);
+                m = NULL;       /* m was consumed and freed */
                 goto done;
             }
 
@@ -549,7 +550,7 @@ icmp_input(PNATState pData, struct mbuf *m, int hlen)
                     if (rc >= 0)
                     {
                         icmp_attach(pData, m);
-                        /* don't let m_freem at the end free atached buffer */
+                        m = NULL; /* m was stashed away for safekeeping */
                         goto done;
                     }
 
@@ -561,6 +562,8 @@ icmp_input(PNATState pData, struct mbuf *m, int hlen)
                         fIcmpSocketErrorReported = true;
                     }
                     icmp_error(pData, m, ICMP_UNREACH, ICMP_UNREACH_NET, 0, strerror(errno));
+                    m = NULL;   /* m was consumed and freed */
+                    goto done;
                 }
             }
 #endif  /* !RT_OS_WINDOWS */
@@ -584,7 +587,8 @@ icmp_input(PNATState pData, struct mbuf *m, int hlen)
     } /* switch */
 
 end_error_free_m:
-    m_freem(pData, m);
+    if (m != NULL)
+        m_freem(pData, m);
 
 done:
     if (icp_buf)
