@@ -1,4 +1,4 @@
-/* $Id: UIProgressTask.cpp 86773 2020-10-30 17:32:17Z vboxsync $ */
+/* $Id: UIProgressTask.cpp 86793 2020-11-03 11:25:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIProgressTask class implementation.
  */
@@ -61,16 +61,26 @@ void UIProgressTask::start()
     /* Call for a virtual stuff to create progress-wrapper itself: */
     m_comProgress = createProgress();
 
-    /* Prepare progress-object: */
-    m_pProgressObject = new UIProgressObject(m_comProgress, this);
-    if (m_pProgressObject)
+    /* Make sure progress valid: */
+    if (m_comProgress.isNull())
     {
-        /* Setup connections: */
-        connect(m_pProgressObject.data(), &UIProgressObject::sigProgressEventHandlingFinished,
-                this, &UIProgressTask::sltHandleProgressEventHandlingFinished);
-
         /* Notify external listeners: */
         emit sigProgressStarted();
+        emit sigProgressFinished();
+    }
+    else
+    {
+        /* Prepare progress-object: */
+        m_pProgressObject = new UIProgressObject(m_comProgress, this);
+        if (m_pProgressObject)
+        {
+            /* Setup connections: */
+            connect(m_pProgressObject.data(), &UIProgressObject::sigProgressEventHandlingFinished,
+                    this, &UIProgressTask::sltHandleProgressEventHandlingFinished);
+
+            /* Notify external listeners: */
+            emit sigProgressStarted();
+        }
     }
 }
 
