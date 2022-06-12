@@ -1,4 +1,4 @@
-/* $Id: VBoxClipboard.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
+/* $Id: VBoxClipboard.cpp 86948 2020-11-20 18:35:24Z vboxsync $ */
 /** @file
  * VBoxClipboard - Shared clipboard, Windows Guest Implementation.
  */
@@ -160,10 +160,8 @@ static DECLCALLBACK(int) vboxClipboardOnTransferStartCallback(PSHCLTRANSFERCALLB
     {
         /* The IDataObject *must* be created on the same thread as our (proxy) window, so post a message to it
          * to do the stuff for us. */
-        const SHCLEVENTID idEvent = ShClEventIDGenerate(&pTransfer->Events);
-
-        rc = ShClEventRegister(&pTransfer->Events, idEvent);
-        if (RT_SUCCESS(rc))
+        const SHCLEVENTID idEvent = ShClEventIdGenerateAndRegister(&pTransfer->Events);
+        if (idEvent != NIL_SHCLEVENTID)
         {
             /* Don't want to rely on SendMessage (synchronous) here, so just post and wait the event getting signalled. */
             ::PostMessage(pCtx->Win.hWnd, SHCL_WIN_WM_TRANSFER_START, (WPARAM)pTransfer, (LPARAM)idEvent);

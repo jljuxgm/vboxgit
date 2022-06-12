@@ -1,4 +1,4 @@
-/* $Id: ClipboardStreamImpl-win.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: ClipboardStreamImpl-win.cpp 86948 2020-11-20 18:35:24Z vboxsync $ */
 /** @file
  * ClipboardStreamImpl-win.cpp - Shared Clipboard IStream object implementation (guest and host side).
  */
@@ -50,8 +50,8 @@ SharedClipboardWinStreamImpl::SharedClipboardWinStreamImpl(SharedClipboardWinDat
     : m_pParent(pParent)
     , m_lRefCount(1) /* Our IDataObjct *always* holds the last reference to this object; needed for the callbacks. */
     , m_pTransfer(pTransfer)
-    , m_strPath(strPath)
     , m_hObj(SHCLOBJHANDLE_INVALID)
+    , m_strPath(strPath)
     , m_objInfo(*pObjInfo)
     , m_cbProcessed(0)
     , m_fIsComplete(false)
