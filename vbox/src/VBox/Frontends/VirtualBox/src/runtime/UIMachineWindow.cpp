@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 84741 2020-06-09 15:30:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class implementation.
  */
@@ -135,6 +135,8 @@ void UIMachineWindow::prepare()
         strWindowName = QString("VirtualBox Machine UUID: %1").arg(uiCommon().managedVMUuid().toString());
     /* Assign WM_CLASS property: */
     UICommon::setWMClass(this, strWindowName, strWindowClass);
+    /* Tell the WM we are well behaved wrt Xwayland keyboard-grabs: */
+    UICommon::setXwaylandMayGrabKeyboardFlag(this);
 #endif
 }
 

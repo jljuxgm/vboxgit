@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 84336 2020-05-18 16:43:17Z vboxsync $ */
+/* $Id: UICommon.cpp 84741 2020-06-09 15:30:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -2205,6 +2205,12 @@ void UICommon::setWMClass(QWidget *pWidget, const QString &strNameString, const 
     XSetClassHint(QX11Info::display(), pWidget->window()->winId(), &windowClass);
 }
 
+/* static */
+void UICommon::setXwaylandMayGrabKeyboardFlag(QWidget *pWidget)
+{
+    XXSendClientMessage(QX11Info::display(), pWidget->window()->winId(),
+                        "_XWAYLAND_MAY_GRAB_KEYBOARD", 1);
+}
 #endif /* VBOX_WS_X11 */
 
 /* static */
