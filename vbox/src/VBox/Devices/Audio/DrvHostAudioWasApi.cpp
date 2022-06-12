@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioWasApi.cpp 88868 2021-05-04 17:55:52Z vboxsync $ */
+/* $Id: DrvHostAudioWasApi.cpp 88878 2021-05-05 15:36:34Z vboxsync $ */
 /** @file
  * Host audio driver - Windows Audio Session API.
  */
@@ -3061,12 +3061,10 @@ static DECLCALLBACK(int) drvHostAudioWasConstruct(PPDMDRVINS pDrvIns, PCFGMNODE 
     AssertPtr(pThis->pIEnumerator);
 
     /*
-     * Resolve the notification interface.
+     * Resolve the interface to the driver above us.
      */
     pThis->pIHostAudioPort = PDMIBASE_QUERY_INTERFACE(pDrvIns->pUpBase, PDMIHOSTAUDIOPORT);
-# ifdef VBOX_WITH_AUDIO_CALLBACKS
-    AssertPtr(pThis->pIHostAudioPort);
-# endif
+    AssertPtrReturn(pThis->pIHostAudioPort, VERR_PDM_MISSING_INTERFACE_ABOVE);
 
     /*
      * Instantiate and register the notification client with the enumerator.
