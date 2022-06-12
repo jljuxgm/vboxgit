@@ -1,4 +1,4 @@
-# $Id: Config.kmk 74279 2018-09-14 18:20:05Z vboxsync $
+# $Id: Config.kmk 86257 2020-09-24 10:01:42Z vboxsync $
 ## @file
 # XPCOM kBuild Configuration file.
 #
@@ -153,6 +153,19 @@ endif
 
 # When using IPRT in NSRP or/and using IPRT for logging, link with IPRT.
 TEMPLATE_XPCOM_LIBS               += $(LIB_RUNTIME)
+
+
+#
+# Same as XPCOM except using YASM/NASM instead of the gnu/unix assembler.
+#
+TEMPLATE_XPCOMYASM = XPCOM w/ yasm
+TEMPLATE_XPCOMYASM_EXTENDS = XPCOM
+TEMPLATE_XPCOMYASM_ASTOOL        = $(TEMPLATE_VBOXR3NP_ASTOOL)
+TEMPLATE_XPCOMYASM_ASFLAGS       = $(TEMPLATE_VBOXR3NP_ASFLAGS)
+TEMPLATE_XPCOMYASM_ASFLAGS.x86   = $(TEMPLATE_VBOXR3NP_ASFLAGS.x86)
+TEMPLATE_XPCOMYASM_ASFLAGS.amd64 = $(TEMPLATE_VBOXR3NP_ASFLAGS.amd64)
+TEMPLATE_XPCOMYASM_ASDEFS        = $(TEMPLATE_VBOXR3NP_DEFS)
+
 
 #
 # Template for building the XPCOM executables.
