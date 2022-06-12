@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioOss.cpp 88887 2021-05-05 23:38:58Z vboxsync $ */
+/* $Id: DrvHostAudioOss.cpp 88923 2021-05-07 13:34:51Z vboxsync $ */
 /** @file
  * Host audio driver - OSS (Open Sound System).
  */
@@ -27,6 +27,7 @@
 #include <unistd.h>
 
 #include <iprt/alloc.h>
+#include <iprt/thread.h>
 #include <iprt/uuid.h> /* For PDMIBASE_2_PDMDRV. */
 
 #define LOG_GROUP LOG_GROUP_DRV_HOST_AUDIO
@@ -34,7 +35,11 @@
 #include <VBox/vmm/pdmaudioifs.h>
 #include <VBox/vmm/pdmaudioinline.h>
 
-#include "VBoxDD.h"
+#ifdef VBOX_AUDIO_VKAT
+# include "VBoxDDVKAT.h"
+#else
+# include "VBoxDD.h"
+#endif
 
 
 /*********************************************************************************************************************************
@@ -879,6 +884,7 @@ static DECLCALLBACK(int) drvHostOSSAudioConstruct(PPDMDRVINS pDrvIns, PCFGMNODE 
     return VINF_SUCCESS;
 }
 
+#ifndef VBOX_AUDIO_VKAT
 /**
  * Char driver registration record.
  */
@@ -929,4 +935,14 @@ const PDMDRVREG g_DrvHostOSSAudio =
     /* u32EndVersion */
     PDM_DRVREG_VERSION
 };
+#else
+const PDMDRVREG g_DrvVKATOSS =
+{
+    /* cbInstance */
+    sizeof(DRVHOSTOSSAUDIO),
+    drvHostOSSAudioConstruct,
+    /* pfnDestruct */
+    NULL
+};
+#endif
 
