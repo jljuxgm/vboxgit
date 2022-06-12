@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 88587 2021-04-19 20:43:19Z vboxsync $
+# $Id: Makefile.kmk 89018 2021-05-12 16:28:56Z vboxsync $
 ## @file
 # Sub-Makefile for the support library and the drivers/modules/kexts it uses.
 #
@@ -634,6 +634,9 @@ if1of ($(KBUILD_TARGET), darwin freebsd solaris win)
  endif
  if defined(VBOX_WITH_DARWIN_R0_DARWIN_IMAGE_VERIFICATION) && defined(VBOX_SIGNING_MODE)
   VBoxDrv_DEFS.darwin    += VBOX_WITH_DARWIN_R0_DARWIN_IMAGE_VERIFICATION
+  ifeq ($(VBOX_SIGNING_MODE),test)
+   VBoxDrv_DEFS.darwin   += VBOX_WITH_DARWIN_R0_TEST_SIGN
+  endif
  endif
  ifdef VBOX_WITH_NETFLT
   VBoxDrv_DEFS.solaris   += VBOX_WITH_NETFLT

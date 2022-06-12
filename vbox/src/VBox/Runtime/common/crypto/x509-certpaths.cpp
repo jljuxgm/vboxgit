@@ -1,4 +1,4 @@
-/* $Id: x509-certpaths.cpp 84670 2020-06-03 19:53:34Z vboxsync $ */
+/* $Id: x509-certpaths.cpp 89018 2021-05-12 16:28:56Z vboxsync $ */
 /** @file
  * IPRT - Crypto - X.509, Simple Certificate Path Builder & Validator.
  */
@@ -2582,6 +2582,8 @@ static bool rtCrX509CpvCheckCriticalExtensions(PRTCRX509CERTPATHSINT pThis, PRTC
                 && RTAsn1ObjId_CompareWithString(&pCur->ExtnId, RTCR_APPLE_CS_DEVID_APPLICATION_OID) != 0
                 && RTAsn1ObjId_CompareWithString(&pCur->ExtnId, RTCR_APPLE_CS_DEVID_INSTALLER_OID) != 0
                 && RTAsn1ObjId_CompareWithString(&pCur->ExtnId, RTCR_APPLE_CS_DEVID_KEXT_OID) != 0
+                && RTAsn1ObjId_CompareWithString(&pCur->ExtnId, RTCR_APPLE_CS_DEVID_IPHONE_SW_DEV_OID) != 0
+                && RTAsn1ObjId_CompareWithString(&pCur->ExtnId, RTCR_APPLE_CS_DEVID_MAC_SW_DEV_OID) != 0
                )
                 return rtCrX509CpvFailed(pThis, VERR_CR_X509_CPV_UNKNOWN_CRITICAL_EXTENSION,
                                          "Node #%u has an unknown critical extension: %s", pThis->v.iNode, pCur->ExtnId.szObjId);
