@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic1.h 87073 2020-12-09 17:30:53Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic1.h 87081 2020-12-10 08:03:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic1 class declaration.
  */
@@ -25,6 +25,7 @@
 #include "UIWizardPage.h"
 
 /* Forward declarations: */
+class QBoxLayout;
 class QCheckBox;
 class QLabel;
 class QRadioButton;
@@ -101,6 +102,7 @@ protected:
 private:
 
     bool checkISOFile() const;
+    void addLine(QBoxLayout *pLayout);
 
     /** Full path (including the file name) of the machine's configuration file. */
     QString m_strMachineFilePath;
