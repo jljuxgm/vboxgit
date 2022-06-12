@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsUpdate.h 85800 2020-08-17 13:04:27Z vboxsync $ */
+/* $Id: UIGlobalSettingsUpdate.h 85982 2020-09-01 16:51:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsUpdate class declaration.
  */
@@ -80,6 +80,8 @@ private:
     void prepare();
     /** Prepares widgets. */
     void prepareWidgets();
+    /** Prepares connections. */
+    void prepareConnections();
     /** Cleanups all. */
     void cleanup();
 
@@ -91,24 +93,21 @@ private:
     /** Saves existing update data from the cache. */
     bool saveUpdateData();
 
-    /** Holds the last checked button reference. */
-    QRadioButton *m_pLastChosenRadio;
-
     /** Holds the page data cache instance. */
     UISettingsCacheGlobalUpdate *m_pCache;
 
     /** @name Widgets
      * @{ */
-       QLabel *m_pUpdateDateText;
-       QLabel *m_pUpdateDateLabel;
-       QLabel *m_pUpdatePeriodLabel;
-       QLabel *m_pUpdateFilterLabel;
-       QCheckBox *m_pCheckBoxUpdate;
-       QComboBox *m_pComboBoxUpdatePeriod;
-       QRadioButton *m_pRadioUpdateFilterBetas;
-       QRadioButton *m_pRadioUpdateFilterEvery;
-       QRadioButton *m_pRadioUpdateFilterStable;
-       QWidget *m_pContainerUpdate;
+        QCheckBox *m_pCheckBoxUpdate;
+        QWidget *m_pWidgetUpdateSettings;
+        QLabel *m_pLabelUpdatePeriod;
+        QComboBox *m_pComboUpdatePeriod;
+        QLabel *m_pLabelUpdateDate;
+        QLabel *m_pFieldUpdateDate;
+        QLabel *m_pLabelUpdateFilter;
+        QRadioButton *m_pRadioUpdateFilterStable;
+        QRadioButton *m_pRadioUpdateFilterEvery;
+        QRadioButton *m_pRadioUpdateFilterBetas;
     /** @} */
 };
 
