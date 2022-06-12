@@ -1,4 +1,4 @@
-/* $Id: UIPerformanceMonitor.h 85406 2020-07-22 08:29:51Z vboxsync $ */
+/* $Id: UIPerformanceMonitor.h 85413 2020-07-22 13:37:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPerformanceMonitor class declaration.
  */
@@ -152,6 +152,15 @@ private:
         void updateNetworkGraphsAndMetric(quint64 iReceiveTotal, quint64 iTransmitTotal);
         void updateDiskIOGraphsAndMetric(quint64 uDiskIOTotalWritten, quint64 uDiskIOTotalRead);
         void updateVMExitMetric(quint64 uTotalVMExits);
+    /** @} */
+
+    /** @name The following functions reset corresponding info labels
+      * @{ */
+        void resetCPUInfoLabel();
+        void resetRAMInfoLabel();
+        void resetNetworkInfoLabel();
+        void resetDiskIOInfoLabel();
+        void resetVMExitInfoLabel();
     /** @} */
 
     /** Returns a QColor for the chart with @p strChartName and data series with @p iDataIndex. */
