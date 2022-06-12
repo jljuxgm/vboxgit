@@ -1,4 +1,4 @@
-/* $Id: QIToolBar.cpp 88862 2021-05-04 16:05:25Z vboxsync $ */
+/* $Id: QIToolBar.cpp 88863 2021-05-04 16:21:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - QIToolBar class implementation.
  */
@@ -20,6 +20,7 @@
 #include <QMainWindow>
 #include <QResizeEvent>
 #ifdef VBOX_WS_MAC
+# include <QApplication>
 # include <QPainter>
 #endif
 
