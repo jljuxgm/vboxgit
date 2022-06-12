@@ -1,4 +1,4 @@
-/* $Id: DarwinKeyboard.cpp 85326 2020-07-14 09:46:56Z vboxsync $ */
+/* $Id: DarwinKeyboard.cpp 85327 2020-07-14 09:50:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Declarations of utility functions for handling Darwin Keyboard specific tasks.
  */
@@ -1932,7 +1932,8 @@ static int darwinAddCarbonHandler(VBoxHidsState_t *pHidState)
         return kIOReturnError;
     }
 
-    pTapRef = CGEventTapCreate(kCGSessionEventTap, kCGTailAppendEventTap, 0, fMask, darwinCarbonCallback, (void *)pHidState);
+    pTapRef = CGEventTapCreate(kCGSessionEventTap, kCGTailAppendEventTap, kCGEventTapOptionDefault, fMask,
+                               darwinCarbonCallback, (void *)pHidState);
     if (pTapRef)
     {
         CFRunLoopSourceRef pLoopSourceRef;
