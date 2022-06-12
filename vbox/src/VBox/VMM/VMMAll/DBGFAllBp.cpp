@@ -1,4 +1,4 @@
-/* $Id: DBGFAllBp.cpp 87130 2020-12-27 19:32:53Z vboxsync $ */
+/* $Id: DBGFAllBp.cpp 87132 2020-12-27 20:10:03Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, All Context breakpoint management part.
  */
@@ -161,7 +161,7 @@ DECLINLINE(int) dbgfBpHit(PVMCC pVM, PVMCPUCC pVCpu, PCPUMCTXCORE pRegFrame,
                           DBGFBP hBp, PDBGFBPINT pBp)
 # endif
 {
-    uint64_t cHits = ASMAtomicIncU64(&pBp->Pub.cHits);
+    uint64_t cHits = ASMAtomicIncU64(&pBp->Pub.cHits); RT_NOREF(cHits);
 
     RT_NOREF(pRegFrame);
     LogFlow(("dbgfBpHit: hit breakpoint %u at %04x:%RGv cHits=0x%RX64\n",
