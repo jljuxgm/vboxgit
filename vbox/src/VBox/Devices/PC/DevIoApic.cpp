@@ -1,4 +1,4 @@
-/* $Id: DevIoApic.cpp 88581 2021-04-19 15:53:34Z vboxsync $ */
+/* $Id: DevIoApic.cpp 88612 2021-04-21 02:39:05Z vboxsync $ */
 /** @file
  * IO APIC - Input/Output Advanced Programmable Interrupt Controller.
  */
@@ -539,7 +539,7 @@ static void ioapicSignalIntrForRte(PPDMDEVINS pDevIns, PIOAPIC pThis, PIOAPICCC 
         if (RT_SUCCESS(rcRemap))
         {
             STAM_COUNTER_INC(&pThis->StatIommuRemappedIntr);
-            LogFlow(("IOAPIC: IOMMU remapped interrupt %#x to %#x\n", rcRemap, MsiIn.Data.n.u8Vector, MsiOut.Data.n.u8Vector));
+            LogFlow(("IOAPIC: IOMMU remapped interrupt %#x to %#x\n", MsiIn.Data.n.u8Vector, MsiOut.Data.n.u8Vector));
             ioapicGetApicIntrFromMsi(&MsiOut, &ApicIntr);
             Assert(ApicIntr.u8Polarity == IOAPIC_RTE_GET_POLARITY(u64Rte)); /* Ensure polarity hasn't changed. */
             Assert(ApicIntr.u8TriggerMode == u8TriggerMode);                /* Ensure trigger mode hasn't changed. */
