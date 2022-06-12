@@ -1,4 +1,4 @@
-/* $Id: vfsmod.c 87461 2021-01-28 14:44:55Z vboxsync $ */
+/* $Id: vfsmod.c 88570 2021-04-16 16:26:42Z vboxsync $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, module init/term, super block management.
  */
@@ -1677,15 +1677,15 @@ static int __init init(void)
                  */
                 rc = register_filesystem(&g_vboxsf_fs_type);
                 if (rc == 0) {
-                    printk(KERN_INFO "vboxsf: Successfully loaded version " VBOX_VERSION_STRING "\n");
+                    printk(KERN_INFO "vboxsf: Successfully loaded version " VBOX_VERSION_STRING " r" __stringify(VBOX_SVN_REV) "\n");
 #ifdef VERMAGIC_STRING
-                    LogRel(("vboxsf: Successfully loaded version " VBOX_VERSION_STRING " on %s (LINUX_VERSION_CODE=%#x)\n",
+                    LogRel(("vboxsf: Successfully loaded version " VBOX_VERSION_STRING " r" __stringify(VBOX_SVN_REV) " on %s (LINUX_VERSION_CODE=%#x)\n",
                             VERMAGIC_STRING, LINUX_VERSION_CODE));
 #elif defined(UTS_RELEASE)
-                    LogRel(("vboxsf: Successfully loaded version " VBOX_VERSION_STRING " on %s (LINUX_VERSION_CODE=%#x)\n",
+                    LogRel(("vboxsf: Successfully loaded version " VBOX_VERSION_STRING " r" __stringify(VBOX_SVN_REV) " on %s (LINUX_VERSION_CODE=%#x)\n",
                             UTS_RELEASE, LINUX_VERSION_CODE));
 #else
-                    LogRel(("vboxsf: Successfully loaded version " VBOX_VERSION_STRING " (LINUX_VERSION_CODE=%#x)\n", LINUX_VERSION_CODE));
+                    LogRel(("vboxsf: Successfully loaded version " VBOX_VERSION_STRING " r" __stringify(VBOX_SVN_REV) " (LINUX_VERSION_CODE=%#x)\n", LINUX_VERSION_CODE));
 #endif
                     return 0;
                 }
