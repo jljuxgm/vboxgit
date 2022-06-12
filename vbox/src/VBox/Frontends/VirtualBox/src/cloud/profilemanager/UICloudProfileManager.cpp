@@ -1,4 +1,4 @@
-/* $Id: UICloudProfileManager.cpp 86687 2020-10-23 13:46:16Z vboxsync $ */
+/* $Id: UICloudProfileManager.cpp 86688 2020-10-23 14:01:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudProfileManager class implementation.
  */
@@ -955,20 +955,6 @@ void UICloudProfileManagerWidget::createItemForCloudProfile(QTreeWidgetItem *pPa
         pItem->updateFields();
         /* Add item to the parent: */
         pParent->addChild(pItem);
-        /* And choose it as current if necessary: */
-        if (fChooseItem)
-            m_pTreeWidget->setCurrentItem(pItem);
-    }
-}
-
-void UICloudProfileManagerWidget::updateItemForCloudProfile(const UIDataCloudProfile &profileData, bool fChooseItem, UIItemCloudProfile *pItem)
-{
-    /* Update passed item: */
-    if (pItem)
-    {
-        /* Configure item: */
-        pItem->UIDataCloudProfile::operator=(profileData);
-        pItem->updateFields();
         /* And choose it as current if necessary: */
         if (fChooseItem)
             m_pTreeWidget->setCurrentItem(pItem);

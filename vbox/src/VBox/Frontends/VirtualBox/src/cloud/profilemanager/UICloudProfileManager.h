@@ -1,4 +1,4 @@
-/* $Id: UICloudProfileManager.h 86687 2020-10-23 13:46:16Z vboxsync $ */
+/* $Id: UICloudProfileManager.h 86688 2020-10-23 14:01:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudProfileManager class declaration.
  */
@@ -174,12 +174,9 @@ private:
         /** Creates a new tree-widget item
           * on the basis of passed @a providerData, @a fChooseItem if requested. */
         void createItemForCloudProvider(const UIDataCloudProvider &providerData, bool fChooseItem);
-
         /** Creates a new tree-widget item as a child of certain @a pParent,
           * on the basis of passed @a profileData, @a fChooseItem if requested. */
         void createItemForCloudProfile(QTreeWidgetItem *pParent, const UIDataCloudProfile &profileData, bool fChooseItem);
-        /** Updates the passed tree-widget item on the basis of passed @a profileData, @a fChooseItem if requested. */
-        void updateItemForCloudProfile(const UIDataCloudProfile &profileData, bool fChooseItem, UIItemCloudProfile *pItem);
 
         /* Gathers a list of Cloud Profile Manager restrictions starting from @a pParentItem. */
         QStringList gatherCloudProfileManagerRestrictions(QTreeWidgetItem *pParentItem);
@@ -188,11 +185,11 @@ private:
     /** @name General variables.
       * @{ */
         /** Holds the widget embedding type. */
-        const EmbedTo m_enmEmbedding;
+        const EmbedTo  m_enmEmbedding;
         /** Holds the action-pool reference. */
-        UIActionPool *m_pActionPool;
+        UIActionPool  *m_pActionPool;
         /** Holds whether we should create/show toolbar. */
-        const bool    m_fShowToolbar;
+        const bool     m_fShowToolbar;
     /** @} */
 
     /** @name Toolbar and menu variables.
