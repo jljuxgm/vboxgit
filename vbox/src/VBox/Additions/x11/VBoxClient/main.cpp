@@ -1,4 +1,4 @@
-/* $Id: main.cpp 84501 2020-05-25 13:36:55Z vboxsync $ */
+/* $Id: main.cpp 84503 2020-05-25 14:35:54Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions - X11 Client.
  */
@@ -21,6 +21,7 @@
 *********************************************************************************************************************************/
 #include <sys/wait.h>
 #include <stdlib.h>       /* For exit */
+#include <signal.h>
 #include <X11/Xlib.h>
 #include "product-generated.h"
 #include <iprt/buildconfig.h>
