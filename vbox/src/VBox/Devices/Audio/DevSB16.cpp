@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 88797 2021-04-30 12:39:40Z vboxsync $ */
+/* $Id: DevSB16.cpp 88799 2021-04-30 12:51:06Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  */
@@ -197,12 +197,20 @@ typedef struct SB16STREAMDEBUG
     SB16STREAMDEBUGRT               Runtime;
 } SB16STREAMDEBUG;
 
+/**
+ * Structure for keeping a SB16 hardware stream configuration.
+ */
 typedef struct SB16STREAMHWCFG
 {
+    /** IRQ # to use. */
     uint8_t                         uIrq;
+    /** Low DMA channel to use. */
     uint8_t                         uDmaChanLow;
+    /** High DMA channel to use. */
     uint8_t                         uDmaChanHigh;
+    /** IO port to use. */
     RTIOPORT                        uPort;
+    /** DSP version to expose. */
     uint16_t                        uVer;
 } SB16STREAMHWCFG;
 
