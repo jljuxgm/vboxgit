@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic1.cpp 88068 2021-03-10 13:16:37Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic1.cpp 88101 2021-03-12 13:26:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic1 class implementation.
  */
@@ -238,7 +238,8 @@ QWidget *UIWizardNewVMPage1::createNameOSTypeWidgets()
     m_pNameAndSystemEditor = new UINameAndSystemEditor(0,
                                                        true /* fChooseName? */,
                                                        true /* fChoosePath? */,
-                                                       true /* fChooseType? */);
+                                                       true /* fChooseType? */,
+                                                       true /* fChooseISOFile? */);
     return m_pNameAndSystemEditor;
 }
 

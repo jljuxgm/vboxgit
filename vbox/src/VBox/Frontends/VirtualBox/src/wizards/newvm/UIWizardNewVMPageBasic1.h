@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic1.h 88065 2021-03-10 11:05:15Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic1.h 88101 2021-03-12 13:26:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic1 class declaration.
  */
@@ -80,11 +80,9 @@ protected:
     void retranslateWidgets();
     QString ISOFilePath() const;
     bool determineOSType(const QString &strISOPath);
-    bool isISOFileSelectorComplete() const;
     void setTypeByISODetectedOSType(const QString &strDetectedOSType);
     /** Return false if ISO path is not empty but points to an missing or unreadable file. */
     bool checkISOFile() const;
-
 
     /** @name Widgets
      * @{ */
