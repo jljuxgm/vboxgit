@@ -1,4 +1,4 @@
-/* $Id: GuestProcessImpl.cpp 84648 2020-06-03 08:11:04Z vboxsync $ */
+/* $Id: GuestProcessImpl.cpp 84649 2020-06-03 08:17:41Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling.
  */
@@ -2660,7 +2660,7 @@ Utf8Str GuestProcessTool::guestErrorToString(const char *pszTool, const GuestErr
 
         default:
             strErr = Utf8StrFmt(Guest::tr("Unhandled error %Rrc for \"%s\" occurred for tool \"%s\" on guest -- please file a bug report"),
-                                guestErrorInfo.getRc(), guestErrorInfo.getWhat(), pszTool);
+                                guestErrorInfo.getRc(), guestErrorInfo.getWhat().c_str(), pszTool);
             break;
     }
 
