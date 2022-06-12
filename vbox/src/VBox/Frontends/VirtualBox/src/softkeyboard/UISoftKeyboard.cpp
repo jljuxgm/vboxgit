@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboard.cpp 89042 2021-05-14 12:43:04Z vboxsync $ */
+/* $Id: UISoftKeyboard.cpp 89568 2021-06-08 10:36:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class implementation.
  */
@@ -35,7 +35,6 @@
 #include <QStatusBar>
 #include <QStyle>
 #include <QStackedWidget>
-#include <QTableWidget>
 #include <QToolButton>
 #include <QXmlStreamReader>
 #include <QVBoxLayout>
