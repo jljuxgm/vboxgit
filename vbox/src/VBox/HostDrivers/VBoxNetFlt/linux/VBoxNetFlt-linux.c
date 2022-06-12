@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-linux.c 85582 2020-07-31 16:38:53Z vboxsync $ */
+/* $Id: VBoxNetFlt-linux.c 85588 2020-07-31 17:36:53Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Linux Specific Code.
  */
@@ -216,6 +216,7 @@ typedef struct VBOXNETFLTNOTIFIER *PVBOXNETFLTNOTIFIER;
 #  define OPENSUSE_152
 # endif
 #endif
+
 
 /*********************************************************************************************************************************
 *   Internal Functions                                                                                                           *
