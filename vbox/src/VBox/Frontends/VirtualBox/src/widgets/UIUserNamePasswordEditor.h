@@ -1,4 +1,4 @@
-/* $Id: UIUserNamePasswordEditor.h 87731 2021-02-12 11:00:29Z vboxsync $ */
+/* $Id: UIUserNamePasswordEditor.h 87734 2021-02-12 13:47:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class declaration.
  */
@@ -31,7 +31,7 @@
 /* Forward declarations: */
 class QGridLayout;
 class QLabel;
-class QLineEdit;
+class QILineEdit;
 class UIPasswordLineEdit;
 
 class UIUserNamePasswordEditor : public QIWithRetranslateUI<QWidget>
@@ -77,13 +77,11 @@ private:
     void prepare();
     template <class T>
     void addLineEdit(int &iRow, QLabel *&pLabel, T *&pLineEdit, QGridLayout *pLayout);
-    /** Changes @p pLineEdit's base color to indicate an error or reverts it to the original color. */
-    void markLineEdit(QLineEdit *pLineEdit, bool fError);
 
     bool isUserNameComplete();
     bool isPasswordComplete();
 
-    QLineEdit          *m_pUserNameLineEdit;
+    QILineEdit         *m_pUserNameLineEdit;
     UIPasswordLineEdit *m_pPasswordLineEdit;
     UIPasswordLineEdit *m_pPasswordRepeatLineEdit;
 
