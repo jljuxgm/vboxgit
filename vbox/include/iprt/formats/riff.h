@@ -1,4 +1,4 @@
-/* $Id: riff.h 89073 2021-05-17 07:43:09Z vboxsync $ */
+/* $Id: riff.h 89078 2021-05-17 08:59:39Z vboxsync $ */
 /** @file
  * IPRT - Resource Interchange File Format (RIFF), WAVE, ++.
  */
@@ -156,7 +156,11 @@ typedef struct RTRIFFWAVEDATACHUNK
 } RTRIFFWAVEDATACHUNK;
 
 /** Magic value for RTRIFFWAVEFMT::uMagic ('data'). */
-#define RTRIFFWAVEDATACHUNK_MAGIC RT_BE2H_U32_C(0x64617461)
+#define RTRIFFWAVEDATACHUNK_MAGIC   RT_BE2H_U32_C(0x64617461)
+
+
+/** Magic value padding chunks ('PAD '). */
+#define RTRIFFPADCHUNK_MAGIC        RT_BE2H_U32_C(0x50414420)
 
 /** @} */
 
