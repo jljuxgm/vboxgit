@@ -1,4 +1,4 @@
-/* $Id: APICInternal.h 85965 2020-08-31 23:47:31Z vboxsync $ */
+/* $Id: APICInternal.h 86529 2020-10-11 18:50:58Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller.
  */
@@ -844,7 +844,7 @@ typedef enum APICMSRACCESS
     /** Count of enum members (don't use). */
     APICMSRACCESS_COUNT
 } APICMSRACCESS;
-/** @} */
+
 
 /** @def APIC_CACHE_LINE_SIZE
  * Padding (in bytes) for aligning data in different cache lines. Present
