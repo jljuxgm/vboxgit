@@ -1,4 +1,4 @@
-# $Id: .scm-settings 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: .scm-settings 86898 2020-11-17 03:57:58Z vboxsync $
 ## @file
 # Source code massager settings for graphics.
 #
@@ -63,7 +63,8 @@
 /shaderlib/wine/vbox/VBoxWineEx.h:       --no-external-copyright --no-lgpl-disclaimer --convert-tabs --fix-todos --strip-trailing-blanks
 /shaderlib/winoverride.h:                --no-external-copyright --no-lgpl-disclaimer --convert-tabs --fix-todos --strip-trailing-blanks
 
-/vmsvga/*.h: --external-copyright --no-convert-tabs
+--filter-out-dirs  "/vmsvga_include/."
+
 /vmsvga_glext/*.h: --external-copyright --no-convert-tabs --no-strip-trailing-blanks
 
 /DevVGATmpl.h:                          --no-fix-header-guards
