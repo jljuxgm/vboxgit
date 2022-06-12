@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 85246 2020-07-11 23:08:39Z vboxsync $
+# $Id: Makefile.kmk 85338 2020-07-14 12:57:12Z vboxsync $
 ## @file
 # Sub-Makefile for the OpenGLTest helper app.
 #
@@ -30,6 +30,7 @@ VBoxOGLTest_SOURCES = OpenGLTest.cpp
 else
 VBoxOGLTest_TEMPLATE = VBoxR3Dll
 VBoxOGLTest_SOURCES.darwin = OpenGLTestDarwin.cpp
+VBoxOGLTest_CXXFLAGS.darwin = $(VBOX_GCC_Wno-deprecated-declarations)
 endif
 
 #
