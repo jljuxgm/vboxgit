@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 87361 2021-01-21 21:13:55Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 87372 2021-01-22 15:01:51Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -4318,20 +4318,7 @@ DECLINLINE(int) hmR0SvmRunGuest(PVMCPUCC pVCpu, RTHCPHYS HCPhysVmcb)
 {
     /* Mark that HM is the keeper of all guest-CPU registers now that we're going to execute guest code. */
     pVCpu->cpum.GstCtx.fExtrn |= HMSVM_CPUMCTX_EXTRN_ALL | CPUMCTX_EXTRN_KEEPER_HM;
-
-    /*
-     * 64-bit Windows uses XMM registers in the kernel as the Microsoft compiler expresses
-     * floating-point operations using SSE instructions. Some XMM registers (XMM6-XMM15) are
-     * callee-saved and thus the need for this XMM wrapper.
-     *
-     * Refer MSDN "Configuring Programs for 64-bit/x64 Software Conventions / Register Usage".
-     */
-    PVMCC pVM = pVCpu->CTX_SUFF(pVM);
-#ifdef VBOX_WITH_KERNEL_USING_XMM
-    return hmR0SVMRunWrapXMM(pVM, pVCpu, HCPhysVmcb, pVCpu->hm.s.svm.pfnVMRun);
-#else
-    return pVCpu->hm.s.svm.pfnVMRun(pVM, pVCpu, HCPhysVmcb);
-#endif
+    return pVCpu->hm.s.svm.pfnVMRun(pVCpu->CTX_SUFF(pVM), pVCpu, HCPhysVmcb);
 }
 
 

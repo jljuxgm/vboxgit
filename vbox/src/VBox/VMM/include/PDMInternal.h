@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 86661 2020-10-21 11:39:04Z vboxsync $ */
+/* $Id: PDMInternal.h 87371 2021-01-22 14:42:17Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -699,7 +699,7 @@ typedef struct PDMIOMMU
     PPDMDEVINSR3                pDevInsR3;
     /** @copydoc PDMIOMMUREGR3::pfnMemAccess */
     DECLR3CALLBACKMEMBER(int,   pfnMemAccess,(PPDMDEVINS pDevIns, uint16_t uDevId, uint64_t uDva, size_t cbAccess,
-                                              uint32_t fFlags, PRTGCPHYS pGCPhysSpa));
+                                              uint32_t fFlags, PRTGCPHYS pGCPhysSpa, size_t *pcbContig));
     /** @copydoc PDMIOMMUREGR3::pfnMemBulkAccess */
     DECLR3CALLBACKMEMBER(int,   pfnMemBulkAccess,(PPDMDEVINS pDevIns, uint16_t uDevId, size_t cIovas, uint64_t const *pauIovas,
                                                   uint32_t fFlags, PRTGCPHYS paGCPhysSpa));
@@ -721,7 +721,7 @@ typedef struct PDMIOMMUR0
     PPDMDEVINSR0                pDevInsR0;
     /** @copydoc PDMIOMMUREGR3::pfnMemAccess */
     DECLR0CALLBACKMEMBER(int,   pfnMemAccess,(PPDMDEVINS pDevIns, uint16_t uDevId, uint64_t uDva, size_t cbAccess,
-                                              uint32_t fFlags, PRTGCPHYS pGCPhysSpa));
+                                              uint32_t fFlags, PRTGCPHYS pGCPhysSpa, size_t *pcbContig));
     /** @copydoc PDMIOMMUREGR3::pfnMemBulkAccess */
     DECLR0CALLBACKMEMBER(int,   pfnMemBulkAccess,(PPDMDEVINS pDevIns, uint16_t uDevId, size_t cIovas, uint64_t const *pauIovas,
                                                   uint32_t fFlags, PRTGCPHYS paGCPhysSpa));
