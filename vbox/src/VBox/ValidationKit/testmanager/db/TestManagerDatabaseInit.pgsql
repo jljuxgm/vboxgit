@@ -1,4 +1,4 @@
--- $Id: TestManagerDatabaseInit.pgsql 84599 2020-05-29 01:12:32Z vboxsync $
+-- $Id: TestManagerDatabaseInit.pgsql 84884 2020-06-20 21:53:12Z vboxsync $
 --- @file
 -- VBox Test Manager Database Creation script.
 --
@@ -1312,6 +1312,7 @@ CREATE TABLE VcsRevisions (
 
     UNIQUE (sRepository, iRevision)
 );
+CREATE INDEX VcsRevisionsByDate ON VcsRevisions (tsCreated DESC);
 
 
 --- @table VcsBugReferences
