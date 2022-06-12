@@ -1,4 +1,4 @@
-/* $Id: RTFileQuerySectorSize-solaris.cpp 85875 2020-08-24 16:22:01Z vboxsync $ */
+/* $Id: RTFileQuerySectorSize-solaris.cpp 87844 2021-02-23 11:08:43Z vboxsync $ */
 /** @file
  * IPRT - RTFileQuerySectorSize, Solaris.
  */
@@ -59,7 +59,7 @@ RTDECL(int) RTFileQuerySectorSize(RTFILE hFile, uint32_t *pcbSector)
             {
                 AssertReturn(MediaInfo.dki_lbsize > 0, VERR_INVALID_FUNCTION);
                 *pcbSector = MediaInfo.dki_lbsize;
-                return rc;
+                return VINF_SUCCESS;
             }
             rc = RTErrConvertFromErrno(errno);
             AssertMsgFailed(("ioctl failed: errno=%d / %Rrc\n", errno, rc));
