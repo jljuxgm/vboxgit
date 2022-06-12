@@ -1,4 +1,4 @@
-/* $Id: PDMUsb.cpp 83196 2020-03-04 08:32:25Z vboxsync $ */
+/* $Id: PDMUsb.cpp 87760 2021-02-15 22:45:27Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, USB part.
  */
@@ -1828,6 +1828,8 @@ static DECLCALLBACK(int) pdmR3UsbHlp_TMTimerCreate(PPDMUSBINS pUsbIns, TMCLOCK e
     char *pszDesc2 = MMR3HeapAPrintf(pVM, MM_TAG_PDM_USB_DESC, "%s[%s:%u]", pszDesc, pUsbIns->Internal.s.pUsbDev->pReg->szName, pUsbIns->iInstance);
     if (pszDesc2)
         pszDesc = pszDesc2;
+
+    AssertStmt(!(fFlags & TMTIMER_FLAGS_RING0), fFlags &= ~TMTIMER_FLAGS_RING0);
 
     int rc = TMR3TimerCreateUsb(pVM, pUsbIns, enmClock, pfnCallback, pvUser, fFlags, pszDesc, ppTimer);
 

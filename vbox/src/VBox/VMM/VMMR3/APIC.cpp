@@ -1,4 +1,4 @@
-/* $Id: APIC.cpp 87519 2021-02-01 21:17:51Z vboxsync $ */
+/* $Id: APIC.cpp 87760 2021-02-15 22:45:27Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller.
  */
@@ -1501,8 +1501,8 @@ DECLCALLBACK(int) apicR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFGMNODE p
         PVMCPU   pVCpu    = pVM->apCpusR3[idCpu];
         PAPICCPU pApicCpu = VMCPU_TO_APICCPU(pVCpu);
         RTStrPrintf(&pApicCpu->szTimerDesc[0], sizeof(pApicCpu->szTimerDesc), "APIC Timer %u", pVCpu->idCpu);
-        rc = PDMDevHlpTimerCreate(pDevIns, TMCLOCK_VIRTUAL_SYNC, apicR3TimerCallback, pVCpu, TMTIMER_FLAGS_NO_CRIT_SECT,
-                                  pApicCpu->szTimerDesc, &pApicCpu->hTimer);
+        rc = PDMDevHlpTimerCreate(pDevIns, TMCLOCK_VIRTUAL_SYNC, apicR3TimerCallback, pVCpu,
+                                  TMTIMER_FLAGS_NO_CRIT_SECT | TMTIMER_FLAGS_RING0, pApicCpu->szTimerDesc, &pApicCpu->hTimer);
         AssertRCReturn(rc, rc);
     }
 

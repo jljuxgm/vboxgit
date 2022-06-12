@@ -1,4 +1,4 @@
-/* $Id: DevPS2M.cpp 83444 2020-03-26 17:38:39Z vboxsync $ */
+/* $Id: DevPS2M.cpp 87760 2021-02-15 22:45:27Z vboxsync $ */
 /** @file
  * PS2M - PS/2 auxiliary device (mouse) emulation.
  */
@@ -1084,14 +1084,15 @@ int PS2MR3Construct(PPDMDEVINS pDevIns, PPS2M pThis, PPS2MR3 pThisCC)
      * Create the input rate throttling timer. Does not use virtual time!
      */
     int rc = PDMDevHlpTimerCreate(pDevIns, TMCLOCK_REAL, ps2mR3ThrottleTimer, pThis,
-                                  TMTIMER_FLAGS_DEFAULT_CRIT_SECT, "PS2M Throttle Timer", &pThis->hThrottleTimer);
+                                  TMTIMER_FLAGS_DEFAULT_CRIT_SECT | TMTIMER_FLAGS_NO_RING0,
+                                  "PS2M Throttle Timer", &pThis->hThrottleTimer);
     AssertRCReturn(rc, rc);
 
     /*
      * Create the command delay timer.
      */
     rc = PDMDevHlpTimerCreate(pDevIns, TMCLOCK_VIRTUAL, ps2mR3DelayTimer, pThis,
-                              TMTIMER_FLAGS_DEFAULT_CRIT_SECT, "PS2M Delay Timer", &pThis->hDelayTimer);
+                              TMTIMER_FLAGS_DEFAULT_CRIT_SECT | TMTIMER_FLAGS_RING0, "PS2M Delay Timer", &pThis->hDelayTimer);
     AssertRCReturn(rc, rc);
 
     /*

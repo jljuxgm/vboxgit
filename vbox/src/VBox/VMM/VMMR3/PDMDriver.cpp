@@ -1,4 +1,4 @@
-/* $Id: PDMDriver.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: PDMDriver.cpp 87760 2021-02-15 22:45:27Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Driver parts.
  */
@@ -1323,6 +1323,14 @@ static DECLCALLBACK(int) pdmR3DrvHlp_TMTimerCreate(PPDMDRVINS pDrvIns, TMCLOCK e
     PDMDRV_ASSERT_DRVINS(pDrvIns);
     LogFlow(("pdmR3DrvHlp_TMTimerCreate: caller='%s'/%d: enmClock=%d pfnCallback=%p pvUser=%p fFlags=%#x pszDesc=%p:{%s} ppTimer=%p\n",
              pDrvIns->pReg->szName, pDrvIns->iInstance, enmClock, pfnCallback, pvUser, fFlags, pszDesc, pszDesc, ppTimer));
+
+    /* Clear the ring-0 flag if the driver isn't configured for ring-0. */
+    if (fFlags & TMTIMER_FLAGS_RING0)
+    {
+        Assert(pDrvIns->Internal.s.pDrv->pReg->fFlags & PDM_DRVREG_FLAGS_R0);
+        /** @todo if (!(pDrvIns->Internal.s.fIntFlags & PDMDRVINSINT_FLAGS_R0_ENABLED))   */
+            fFlags &= ~TMTIMER_FLAGS_RING0;
+    }
 
     int rc = TMR3TimerCreateDriver(pDrvIns->Internal.s.pVMR3, pDrvIns, enmClock, pfnCallback, pvUser, fFlags, pszDesc, ppTimer);
 

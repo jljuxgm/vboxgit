@@ -1,4 +1,4 @@
-/* $Id: DevOHCI.cpp 87190 2021-01-07 14:30:00Z vboxsync $ */
+/* $Id: DevOHCI.cpp 87760 2021-02-15 22:45:27Z vboxsync $ */
 /** @file
  * DevOHCI - Open Host Controller Interface for USB.
  */
@@ -5821,7 +5821,8 @@ static DECLCALLBACK(int) ohciR3LoadDone(PPDMDEVINS pDevIns, PSSMHANDLE pSSM)
     if (pThisCC->pLoad)
     {
         int rc = PDMDevHlpTimerCreate(pDevIns, TMCLOCK_VIRTUAL, ohciR3LoadReattachDevices, NULL /*pvUser*/,
-                                      TMTIMER_FLAGS_NO_CRIT_SECT, "OHCI reattach devices on load", &pThisCC->pLoad->hTimer);
+                                      TMTIMER_FLAGS_NO_CRIT_SECT | TMTIMER_FLAGS_NO_RING0, "OHCI reattach devices on load",
+                                      &pThisCC->pLoad->hTimer);
         if (RT_SUCCESS(rc))
             rc = PDMDevHlpTimerSetMillies(pDevIns, pThisCC->pLoad->hTimer, 250);
         return rc;

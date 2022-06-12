@@ -1,4 +1,4 @@
-/* $Id: DevPS2K.cpp 87378 2021-01-22 20:10:24Z vboxsync $ */
+/* $Id: DevPS2K.cpp 87760 2021-02-15 22:45:27Z vboxsync $ */
 /** @file
  * PS2K - PS/2 keyboard emulation.
  */
@@ -1400,21 +1400,23 @@ int PS2KR3Construct(PPDMDEVINS pDevIns, PPS2K pThis, PPS2KR3 pThisCC, PCFGMNODE 
      * Create the input rate throttling timer.
      */
     rc = PDMDevHlpTimerCreate(pDevIns, TMCLOCK_VIRTUAL, ps2kR3ThrottleTimer, pThis,
-                              TMTIMER_FLAGS_DEFAULT_CRIT_SECT, "PS2K Throttle Timer", &pThis->hThrottleTimer);
+                              TMTIMER_FLAGS_DEFAULT_CRIT_SECT | TMTIMER_FLAGS_RING0,
+                              "PS2K Throttle Timer", &pThis->hThrottleTimer);
     AssertRCReturn(rc, rc);
 
     /*
      * Create the typematic delay/repeat timer.
      */
     rc = PDMDevHlpTimerCreate(pDevIns, TMCLOCK_VIRTUAL, ps2kR3TypematicTimer, pThis,
-                              TMTIMER_FLAGS_DEFAULT_CRIT_SECT, "PS2K Typematic Timer", &pThis->hKbdTypematicTimer);
+                              TMTIMER_FLAGS_DEFAULT_CRIT_SECT | TMTIMER_FLAGS_RING0,
+                              "PS2K Typematic Timer", &pThis->hKbdTypematicTimer);
     AssertRCReturn(rc, rc);
 
     /*
      * Create the command delay timer.
      */
     rc = PDMDevHlpTimerCreate(pDevIns, TMCLOCK_VIRTUAL, ps2kR3DelayTimer, pThis,
-                              TMTIMER_FLAGS_DEFAULT_CRIT_SECT, "PS2K Delay Timer", &pThis->hKbdDelayTimer);
+                              TMTIMER_FLAGS_DEFAULT_CRIT_SECT | TMTIMER_FLAGS_RING0, "PS2K Delay Timer", &pThis->hKbdDelayTimer);
     AssertRCReturn(rc, rc);
 
     /*

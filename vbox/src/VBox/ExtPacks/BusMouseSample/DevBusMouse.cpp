@@ -1,4 +1,4 @@
-/* $Id: DevBusMouse.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: DevBusMouse.cpp 87760 2021-02-15 22:45:27Z vboxsync $ */
 /** @file
  * BusMouse - Microsoft Bus (parallel) mouse controller device.
  */
@@ -715,7 +715,7 @@ static DECLCALLBACK(int) bmsR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFGM
      * Create the interrupt timer.
      */
     rc = PDMDevHlpTimerCreate(pDevIns, TMCLOCK_VIRTUAL, bmsR3TimerCallback, pThis,
-                              TMTIMER_FLAGS_DEFAULT_CRIT_SECT, "Bus Mouse Timer", &pThis->hMouseTimer);
+                              TMTIMER_FLAGS_DEFAULT_CRIT_SECT | TMTIMER_FLAGS_NO_RING0, "Bus Mouse Timer", &pThis->hMouseTimer);
     AssertRCReturn(rc, rc);
 
     /*

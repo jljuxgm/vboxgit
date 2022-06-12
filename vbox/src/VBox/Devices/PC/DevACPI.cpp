@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 86408 2020-10-02 08:24:37Z vboxsync $ */
+/* $Id: DevACPI.cpp 87760 2021-02-15 22:45:27Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -4387,7 +4387,7 @@ static DECLCALLBACK(int) acpiR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFG
      * Create the PM timer.
      */
     rc = PDMDevHlpTimerCreate(pDevIns, TMCLOCK_VIRTUAL_SYNC, acpiR3PmTimer, NULL /*pvUser*/,
-                              TMTIMER_FLAGS_NO_CRIT_SECT, "ACPI PM Timer", &pThis->hPmTimer);
+                              TMTIMER_FLAGS_NO_CRIT_SECT | TMTIMER_FLAGS_RING0, "ACPI PM Timer", &pThis->hPmTimer);
     AssertRCReturn(rc, rc);
 
     PDMDevHlpTimerLockClock(pDevIns, pThis->hPmTimer, VERR_IGNORED);

@@ -1,4 +1,4 @@
-/* $Id: TMInternal.h 87750 2021-02-13 03:37:09Z vboxsync $ */
+/* $Id: TMInternal.h 87760 2021-02-15 22:45:27Z vboxsync $ */
 /** @file
  * TM - Internal header file.
  */
@@ -205,6 +205,11 @@ typedef struct TMTIMER
 #if HC_ARCH_BITS == 32
     uint32_t                padding0; /**< pad structure to multiple of 8 bytes. */
 #endif
+
+    /** TMTIMER_FLAGS_XXX.   */
+    uint32_t                fFlags;
+    uint32_t                u32Pading;
+
 #ifdef VBOX_WITH_STATISTICS
     STAMPROFILE             StatTimer;
     STAMPROFILE             StatCritSectEnter;

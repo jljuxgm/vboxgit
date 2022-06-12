@@ -1,4 +1,4 @@
-/* $Id: UartCore.cpp 87726 2021-02-11 21:29:13Z vboxsync $ */
+/* $Id: UartCore.cpp 87760 2021-02-15 22:45:27Z vboxsync $ */
 /** @file
  * UartCore - UART  (16550A up to 16950) emulation.
  *
@@ -2069,7 +2069,7 @@ DECLHIDDEN(int) uartR3Init(PPDMDEVINS pDevIns, PUARTCORE pThis, PUARTCORECC pThi
      * Create the receive FIFO character timeout indicator timer.
      */
     rc = PDMDevHlpTimerCreate(pDevIns, TMCLOCK_VIRTUAL, uartR3RcvFifoTimeoutTimer, pThisCC,
-                              TMTIMER_FLAGS_NO_CRIT_SECT, "UART Rcv FIFO Timer",
+                              TMTIMER_FLAGS_NO_CRIT_SECT | TMTIMER_FLAGS_RING0, "UART Rcv FIFO Timer",
                               &pThis->hTimerRcvFifoTimeout);
     AssertRCReturn(rc, rc);
 
@@ -2080,7 +2080,7 @@ DECLHIDDEN(int) uartR3Init(PPDMDEVINS pDevIns, PUARTCORE pThis, PUARTCORECC pThi
      * Create the transmit timer when no device is connected.
      */
     rc = PDMDevHlpTimerCreate(pDevIns, TMCLOCK_VIRTUAL_SYNC, uartR3TxUnconnectedTimer, pThisCC,
-                              TMTIMER_FLAGS_NO_CRIT_SECT, "UART TX uncon. Timer",
+                              TMTIMER_FLAGS_NO_CRIT_SECT | TMTIMER_FLAGS_NO_RING0, "UART TX uncon. Timer",
                               &pThis->hTimerTxUnconnected);
     AssertRCReturn(rc, rc);
 

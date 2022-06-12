@@ -1,4 +1,4 @@
-/* $Id: DevHPET.cpp 86591 2020-10-15 13:42:24Z vboxsync $ */
+/* $Id: DevHPET.cpp 87760 2021-02-15 22:45:27Z vboxsync $ */
 /** @file
  * HPET virtual device - High Precision Event Timer emulation.
  */
@@ -1464,7 +1464,8 @@ static DECLCALLBACK(int) hpetR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFG
         PHPETTIMER pHpetTimer = &pThis->aTimers[i];
 
         rc = PDMDevHlpTimerCreate(pDevIns, TMCLOCK_VIRTUAL_SYNC, hpetR3Timer, pHpetTimer,
-                                  TMTIMER_FLAGS_NO_CRIT_SECT, s_apszTimerNames[i], &pThis->aTimers[i].hTimer);
+                                  TMTIMER_FLAGS_NO_CRIT_SECT | TMTIMER_FLAGS_RING0,
+                                  s_apszTimerNames[i], &pThis->aTimers[i].hTimer);
         AssertRCReturn(rc, rc);
         /** @todo r=bird: This is TOTALLY MESSED UP!  Why do we need
          *        DEVHPET_LOCK_BOTH_RETURN() when the timers use the same critsect as
