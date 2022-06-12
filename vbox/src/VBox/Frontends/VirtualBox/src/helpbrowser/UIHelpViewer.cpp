@@ -1,4 +1,4 @@
-/* $Id: UIHelpViewer.cpp 88489 2021-04-13 10:27:54Z vboxsync $ */
+/* $Id: UIHelpViewer.cpp 88493 2021-04-13 12:00:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class implementation.
  */
@@ -577,7 +577,7 @@ void UIHelpViewer::wheelEvent(QWheelEvent *pEvent)
     /* QTextBrowser::wheelEvent scales font when some modifiers are pressed. We dont want that: */
     if (pEvent->modifiers() == Qt::NoModifier)
         QTextBrowser::wheelEvent(pEvent);
-    else if (pEvent->modifiers() == Qt::ShiftModifier)
+    else if (pEvent->modifiers() & Qt::ControlModifier)
     {
         if (pEvent->angleDelta().y() < 0)
             zoom(ZoomOperation_In);
