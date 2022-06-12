@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 84020 2020-04-27 17:02:01Z vboxsync $
+# $Id: Makefile.kmk 84375 2020-05-19 17:00:03Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -1893,23 +1893,6 @@ ifdef VBOX_WITH_TESTCASES
  tstDarwinKeyboard_LIBS = \
  	$(LIB_RUNTIME)
  tstDarwinKeyboard_LIBS += $(PATH_STAGE_DLL)/UICommon$(VBOX_SUFF_DLL)
-endif
-
-
-#
-# Testcase for SSL certificate downloading.
-#
-if defined(VBOX_WITH_TESTCASES) && defined(VBOX_GUI_WITH_NETWORK_MANAGER)
- PROGRAMS += tstSSLCertDownloads
- tstSSLCertDownloads_TEMPLATE   = VBOXQTGUIEXE
- tstSSLCertDownloads_USES       = qt5
- tstSSLCertDownloads_QTTOOL     = QT5
- tstSSLCertDownloads_QT_MODULES = Core Gui
- tstSSLCertDownloads_DEFS = VBOX_GUI_IN_TST_SSL_CERT_DOWNLOADS
- tstSSLCertDownloads_INCS = \
- 	$(VBOX_GUI_INC_DIRS)
- tstSSLCertDownloads_SOURCES = \
- 	src/net/tstSSLCertDownloads.cpp
 endif
 
 
