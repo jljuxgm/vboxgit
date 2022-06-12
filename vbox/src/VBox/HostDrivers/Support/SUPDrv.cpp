@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 87705 2021-02-11 00:02:04Z vboxsync $ */
+/* $Id: SUPDrv.cpp 87746 2021-02-13 02:56:04Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -5108,6 +5108,7 @@ static int supdrvIOCtl_LdrOpen(PSUPDRVDEVEXT pDevExt, PSUPDRVSESSION pSession, P
         if (    pImage->szName[cchName] == '\0'
             &&  !memcmp(pImage->szName, pReq->u.In.szName, cchName))
         {
+            /** @todo Add an _1M (or something) per session reference. */
             if (RT_LIKELY(pImage->cImgUsage < UINT32_MAX / 2U))
             {
                 /** @todo check cbImageBits and cbImageWithEverything here, if they differs
