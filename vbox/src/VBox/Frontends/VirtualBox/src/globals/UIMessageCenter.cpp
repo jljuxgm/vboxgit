@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 86998 2020-11-26 17:26:38Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 87024 2020-12-01 14:59:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -617,11 +617,6 @@ void UIMessageCenter::cannotAcquireMachineParameter(const CMachine &comMachine, 
 void UIMessageCenter::cannotFindHelpFile(const QString &strFileLocation) const
 {
     alert(0, MessageType_Error, QString("<p>%1:</p>%2").arg(tr("Failed to find the following help file")).arg(strFileLocation));
-}
-
-void UIMessageCenter::cannotFindHelpKeyword() const
-{
-    alert(0, MessageType_Error, QString("<p>%1</p>").arg(tr("There is no help page for this dialog.")));
 }
 
 void UIMessageCenter::cannotOpenMachine(const CVirtualBox &vbox, const QString &strMachinePath) const
@@ -3469,11 +3464,6 @@ void UIMessageCenter::sltHandleHelpRequest()
 void UIMessageCenter::sltHandleHelpRequestWithKeyword(const QString &strHelpKeyword)
 {
 # if defined(VBOX_WITH_DOCS_QHELP) && (QT_VERSION >= QT_VERSION_CHECK(5, 9, 0))
-    if (strHelpKeyword.isEmpty())
-    {
-        cannotFindHelpKeyword();
-        return;
-    }
     /* First open or show the help browser: */
     showHelpBrowser(uiCommon().helpFile());
     /* Show the help page for the @p strHelpKeyword: */
