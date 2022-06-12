@@ -1,4 +1,4 @@
-/* $Id: DevIoApic.cpp 84867 2020-06-18 08:17:47Z vboxsync $ */
+/* $Id: DevIoApic.cpp 84868 2020-06-18 09:11:33Z vboxsync $ */
 /** @file
  * IO APIC - Input/Output Advanced Programmable Interrupt Controller.
  */
@@ -444,6 +444,7 @@ DECLINLINE(void) ioapicGetApicIntrFromMsi(PCMSIMSG pMsi, PXAPICINTR pIntr)
 }
 
 
+#ifdef VBOX_WITH_IOMMU_AMD
 /**
  * Convert an APIC interrupt to an MSI message.
  *
@@ -465,6 +466,7 @@ DECLINLINE(void) ioapicGetMsiFromApicIntr(PCXAPICINTR pIntr, PMSIMSG pMsi)
     /** @todo r=ramshankar: Level triggered MSIs don't make much sense though
      *        possible in theory? Maybe document this more explicitly... */
 }
+#endif
 
 
 /**
