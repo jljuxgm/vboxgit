@@ -1,4 +1,4 @@
-/* $Id: HDAStream.h 87944 2021-03-04 09:14:58Z vboxsync $ */
+/* $Id: HDAStream.h 87952 2021-03-04 14:44:20Z vboxsync $ */
 /** @file
  * HDAStream.h - Streams for HD Audio.
  */
@@ -264,14 +264,14 @@ typedef struct HDASTREAMR3
 /** Pointer to an HDA stream (SDI / SDO).  */
 typedef HDASTREAMR3 *PHDASTREAMR3;
 
-#ifdef IN_RING3
-
 /** @name Stream functions (shared).
  * @{
  */
 void                hdaStreamLock(PHDASTREAM pStreamShared);
 void                hdaStreamUnlock(PHDASTREAM pStreamShared);
 /** @} */
+
+#ifdef IN_RING3
 
 /** @name Stream functions (ring-3).
  * @{
