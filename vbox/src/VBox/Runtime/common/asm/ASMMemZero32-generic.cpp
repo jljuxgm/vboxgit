@@ -1,4 +1,4 @@
-/* $Id: ASMMemZero32-generic.cpp 87185 2021-01-06 12:27:54Z vboxsync $ */
+/* $Id: ASMMemZero32-generic.cpp 87203 2021-01-08 15:11:34Z vboxsync $ */
 /** @file
  * IPRT - ASMMemZero32 - generic C implementation.
  */
@@ -34,7 +34,7 @@
 #include <iprt/string.h>
 
 
-RT_ASM_DECL_PRAGMA_WATCOM(void) ASMMemZero32(volatile void RT_FAR *pv, size_t cb) RT_NOTHROW_DEF
+RTDECL(void) ASMMemZero32(volatile void RT_FAR *pv, size_t cb) RT_NOTHROW_DEF
 {
     memset((void *)pv, 0, cb);
 }

@@ -1,4 +1,4 @@
-/* $Id: ASMMemZeroPage-generic.cpp 87184 2021-01-06 12:17:39Z vboxsync $ */
+/* $Id: ASMMemZeroPage-generic.cpp 87203 2021-01-08 15:11:34Z vboxsync $ */
 /** @file
  * IPRT - ASMMemZeroPage - generic C implementation.
  */
@@ -34,7 +34,7 @@
 #include <iprt/string.h>
 
 
-RT_ASM_DECL_PRAGMA_WATCOM(void) ASMMemZeroPage(volatile void RT_FAR *pv) RT_NOTHROW_DEF
+RTDECL(void) ASMMemZeroPage(volatile void RT_FAR *pv) RT_NOTHROW_DEF
 {
     memset((void *)pv, 0, RT_ASM_PAGE_SIZE);
 }

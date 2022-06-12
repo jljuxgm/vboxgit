@@ -1,4 +1,4 @@
-/* $Id: ASMMemFirstNonZero-generic.cpp 87186 2021-01-06 12:47:49Z vboxsync $ */
+/* $Id: ASMMemFirstNonZero-generic.cpp 87203 2021-01-08 15:11:34Z vboxsync $ */
 /** @file
  * IPRT - ASMMemZeroPage - generic C implementation.
  */
@@ -32,7 +32,7 @@
 #include "internal/iprt.h"
 
 
-DECLASM(void RT_FAR *) ASMMemFirstNonZero(void const RT_FAR *pv, size_t cb) RT_NOTHROW_DEF
+RTDECL(void RT_FAR *) ASMMemFirstNonZero(void const RT_FAR *pv, size_t cb) RT_NOTHROW_DEF
 {
     uint8_t const *pb = (uint8_t const RT_FAR *)pv;
 

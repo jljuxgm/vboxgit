@@ -1,4 +1,4 @@
-/* $Id: ASMMemFill32-generic.cpp 87185 2021-01-06 12:27:54Z vboxsync $ */
+/* $Id: ASMMemFill32-generic.cpp 87203 2021-01-08 15:11:34Z vboxsync $ */
 /** @file
  * IPRT - ASMMemZeroPage - generic C implementation.
  */
@@ -35,7 +35,7 @@
 #include <iprt/assert.h>
 
 
-RT_ASM_DECL_PRAGMA_WATCOM(void) ASMMemFill32(volatile void RT_FAR *pv, size_t cb, uint32_t u32) RT_NOTHROW_DEF
+RTDECL(void) ASMMemFill32(volatile void RT_FAR *pv, size_t cb, uint32_t u32) RT_NOTHROW_DEF
 {
     Assert(!(cb & 3));
     size_t cFills = cb / sizeof(uint32_t);
