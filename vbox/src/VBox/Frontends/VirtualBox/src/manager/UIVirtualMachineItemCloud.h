@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItemCloud.h 86207 2020-09-21 19:49:36Z vboxsync $ */
+/* $Id: UIVirtualMachineItemCloud.h 86215 2020-09-22 10:40:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItemCloud class declaration.
  */
@@ -33,6 +33,7 @@
 #include "CProgress.h"
 
 /* Forward declarations: */
+class QTimer;
 class UIProgress;
 
 /** UIVirtualMachineItem sub-class used as cloud Virtual Machine item interface. */
@@ -132,6 +133,14 @@ private slots:
 
 private:
 
+    /** @name Prepare/Cleanup cascade.
+      * @{ */
+        /** Prepares all. */
+        void prepare();
+        /** Cleanups all. */
+        void cleanup();
+    /** @} */
+
     /** @name Arguments.
       * @{ */
         /** Holds cached cloud machine object. */
@@ -148,6 +157,8 @@ private:
         /** Holds fake cloud item error message. */
         QString                             m_strFakeCloudItemErrorMessage;
 
+        /** Holds the machine refresh timer instance. */
+        QTimer               *m_pTimer;
         /** Holds the machine refresh progress object instance. */
         CProgress             m_comProgress;
         /** Holds the machine refresh progress handler instance. */
