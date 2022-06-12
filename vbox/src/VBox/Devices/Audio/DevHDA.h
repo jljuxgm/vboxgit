@@ -1,4 +1,4 @@
-/* $Id: DevHDA.h 87836 2021-02-22 16:30:18Z vboxsync $ */
+/* $Id: DevHDA.h 87861 2021-02-24 15:04:02Z vboxsync $ */
 /** @file
  * DevHDA.h - VBox Intel HD Audio Controller.
  */
@@ -270,7 +270,7 @@ typedef struct HDASTATER3
         /** Whether debugging is enabled or not. */
         bool                    fEnabled;
         /** Path where to dump the debug output to.
-         *  Defaults to VBOX_AUDIO_DEBUG_DUMP_PCM_DATA_PATH. */
+         *  Can be NULL, in which the system's temporary directory will be used then. */
         R3PTRTYPE(char *)       pszOutPath;
     } Dbg;
 } HDASTATER3;

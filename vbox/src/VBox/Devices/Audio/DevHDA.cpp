@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 87852 2021-02-23 17:45:39Z vboxsync $ */
+/* $Id: DevHDA.cpp 87861 2021-02-24 15:04:02Z vboxsync $ */
 /** @file
  * DevHDA.cpp - VBox Intel HD Audio Controller.
  *
@@ -2933,6 +2933,7 @@ static DECLCALLBACK(VBOXSTRICTRC) hdaR3DmaAccessHandler(PVM pVM, PVMCPU pVCpu, R
                      ASMDivU64ByU32RetU32(pStreamDbg->cbWrittenTotal, pStreamDbg->cWritesTotal)));
 #  endif
 
+#  ifdef VBOX_AUDIO_DEBUG_DUMP_PCM_DATA
             if (pThis->fDebugEnabled)
             {
                 RTFILE fh;
@@ -2941,6 +2942,7 @@ static DECLCALLBACK(VBOXSTRICTRC) hdaR3DmaAccessHandler(PVM pVM, PVMCPU pVCpu, R
                 RTFileWrite(fh, pvBuf, cbBuf, NULL);
                 RTFileClose(fh);
             }
+#  endif
 
 #  ifdef HDA_USE_DMA_ACCESS_HANDLER_WRITING
             PRTCIRCBUF pCircBuf = pStream->State.pCircBuf;
@@ -4822,7 +4824,7 @@ static DECLCALLBACK(int) hdaR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFGM
         return PDMDEV_SET_ERROR(pDevIns, rc,
                                 N_("HDA configuration error: failed to read debugging enabled flag as boolean"));
 
-    rc = pHlp->pfnCFGMQueryStringAllocDef(pCfg, "DebugPathOut", &pThisCC->Dbg.pszOutPath, VBOX_AUDIO_DEBUG_DUMP_PCM_DATA_PATH);
+    rc = pHlp->pfnCFGMQueryStringAllocDef(pCfg, "DebugPathOut", &pThisCC->Dbg.pszOutPath, NULL);
     if (RT_FAILURE(rc))
         return PDMDEV_SET_ERROR(pDevIns, rc,
                                 N_("HDA configuration error: failed to read debugging output path flag as string"));

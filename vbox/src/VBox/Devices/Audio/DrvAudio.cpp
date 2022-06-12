@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 87854 2021-02-23 17:49:17Z vboxsync $ */
+/* $Id: DrvAudio.cpp 87861 2021-02-24 15:04:02Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -2326,7 +2326,9 @@ static int drvAudioGetCfgFromCFGM(PDRVAUDIO pThis, PCFGMNODE pNode, PDMAUDIODIR 
     if (   RT_FAILURE(rc2)
         || !strlen(pCfg->Dbg.szPathOut))
     {
-        RTStrPrintf(pCfg->Dbg.szPathOut, sizeof(pCfg->Dbg.szPathOut), VBOX_AUDIO_DEBUG_DUMP_PCM_DATA_PATH);
+        rc2 = RTPathTemp(pCfg->Dbg.szPathOut, sizeof(pCfg->Dbg.szPathOut));
+        if (RT_FAILURE(rc2))
+            LogRel(("Audio: Error retrieving temporary directory, rc=%Rrc\n", rc2));
     }
 
     if (pCfg->Dbg.fEnabled)

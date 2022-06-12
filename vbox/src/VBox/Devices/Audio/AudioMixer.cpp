@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 87857 2021-02-24 09:09:18Z vboxsync $ */
+/* $Id: AudioMixer.cpp 87861 2021-02-24 15:04:02Z vboxsync $ */
 /** @file
  * Audio mixing routines for multiplexing audio sources in device emulations.
  *
@@ -1509,25 +1509,18 @@ int AudioMixerSinkSetFormat(PAUDMIXSINK pSink, PPDMAUDIOPCMPROPS pPCMProps)
     {
         DrvAudioHlpFileClose(pSink->Dbg.pFile);
 
-        char szTemp[RTPATH_MAX];
-        int rc2 = RTPathTemp(szTemp, sizeof(szTemp));
+        char szName[64];
+        RTStrPrintf(szName, sizeof(szName), "MixerSink-%s", pSink->pszName);
+
+        char szFile[RTPATH_MAX];
+        int rc2 = DrvAudioHlpFileNameGet(szFile, RT_ELEMENTS(szFile), NULL /* Use temporary directory */, szName,
+                                         0 /* Instance */, PDMAUDIOFILETYPE_WAV, PDMAUDIOFILENAME_FLAGS_NONE);
         if (RT_SUCCESS(rc2))
         {
-            /** @todo Sanitize sink name. */
-
-            char szName[64];
-            RTStrPrintf(szName, sizeof(szName), "MixerSink-%s", pSink->pszName);
-
-            char szFile[RTPATH_MAX];
-            rc2 = DrvAudioHlpFileNameGet(szFile, RT_ELEMENTS(szFile), szTemp, szName,
-                                         0 /* Instance */, PDMAUDIOFILETYPE_WAV, PDMAUDIOFILENAME_FLAGS_NONE);
+            rc2 = DrvAudioHlpFileCreate(PDMAUDIOFILETYPE_WAV, szFile, PDMAUDIOFILE_FLAGS_NONE,
+                                        &pSink->Dbg.pFile);
             if (RT_SUCCESS(rc2))
-            {
-                rc2 = DrvAudioHlpFileCreate(PDMAUDIOFILETYPE_WAV, szFile, PDMAUDIOFILE_FLAGS_NONE,
-                                            &pSink->Dbg.pFile);
-                if (RT_SUCCESS(rc2))
-                    rc2 = DrvAudioHlpFileOpen(pSink->Dbg.pFile, PDMAUDIOFILE_DEFAULT_OPEN_FLAGS, &pSink->PCMProps);
-            }
+                rc2 = DrvAudioHlpFileOpen(pSink->Dbg.pFile, PDMAUDIOFILE_DEFAULT_OPEN_FLAGS, &pSink->PCMProps);
         }
     }
 
