@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 82907 2020-01-29 13:06:32Z vboxsync $
+# $Id: Makefile.kmk 85296 2020-07-13 09:08:12Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox Shared Clipboard guest/host code.
 #
@@ -19,7 +19,7 @@ SUB_DEPTH = ../../../..
 include $(KBUILD_PATH)/subheader.kmk
 
 ifdef VBOX_WITH_TESTCASES
- include $(PATH_SUB_CURRENT)/testcases/Makefile.kmk
+ include $(PATH_SUB_CURRENT)/testcase/Makefile.kmk
 endif
 
 include $(FILE_KBUILD_SUB_FOOTER)
