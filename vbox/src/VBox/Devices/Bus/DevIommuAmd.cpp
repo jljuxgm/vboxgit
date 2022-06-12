@@ -1,4 +1,4 @@
-/* $Id: DevIommuAmd.cpp 88261 2021-03-23 13:44:52Z vboxsync $ */
+/* $Id: DevIommuAmd.cpp 88568 2021-04-16 15:33:53Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - AMD implementation.
  */
@@ -7139,6 +7139,7 @@ static DECLCALLBACK(int) iommuAmdRZConstruct(PPDMDEVINS pDevIns)
     AssertReturn(pThisCC->CTX_SUFF(pIommuHlp)->u32TheEnd  == CTX_SUFF(PDM_IOMMUHLP)_VERSION, VERR_VERSION_MISMATCH);
     AssertPtrReturn(pThisCC->CTX_SUFF(pIommuHlp)->pfnLock,   VERR_INVALID_POINTER);
     AssertPtrReturn(pThisCC->CTX_SUFF(pIommuHlp)->pfnUnlock, VERR_INVALID_POINTER);
+    AssertPtrReturn(pThisCC->CTX_SUFF(pIommuHlp)->pfnLockIsOwner, VERR_INVALID_POINTER);
     return VINF_SUCCESS;
 }
 #endif
