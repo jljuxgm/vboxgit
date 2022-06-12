@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasicUnattended.cpp 84886 2020-06-21 15:03:55Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasicUnattended.cpp 84917 2020-06-23 12:06:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasicUnattended class implementation.
  */
@@ -114,7 +114,6 @@ UIWizardNewVMPageBasicUnattended::UIWizardNewVMPageBasicUnattended()
 bool UIWizardNewVMPageBasicUnattended::isComplete() const
 {
     bool fISOFileOK = checkISOFile();
-    //emit completeChanged();
     return fISOFileOK;
 }
 

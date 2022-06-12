@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasicUnattended.h 84886 2020-06-21 15:03:55Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasicUnattended.h 84917 2020-06-23 12:06:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasicUnattended class declaration.
  */
@@ -90,7 +90,7 @@ private:
     void cleanupPage();
 
     /* Validation stuff: */
-    bool validatePage();
+    virtual bool validatePage() /* override */;
 
     /* Widgets: */
     QIRichTextLabel *m_pLabel;

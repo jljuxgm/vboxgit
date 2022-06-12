@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasicNameType.h 84890 2020-06-22 09:16:52Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasicNameType.h 84917 2020-06-23 12:06:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasicNameType class declaration.
  */
@@ -116,7 +116,7 @@ private:
     void cleanupPage();
 
     /* Validation stuff: */
-    bool validatePage();
+    virtual bool validatePage() /* override */;
 
     /* Widgets: */
     QIRichTextLabel *m_pLabel;

@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasicInstallSetup.h 84915 2020-06-23 10:39:22Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasicInstallSetup.h 84917 2020-06-23 12:06:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasicInstallSetup class declaration.
  */
@@ -69,6 +69,11 @@ class UIUserNamePasswordEditor : public QIWithRetranslateUI<QWidget>
 
     Q_OBJECT;
 
+signals:
+
+    /** this is emitted whenever the content of one of the line edits is changed. */
+    void sigSomeTextChanged();
+
 public:
 
     UIUserNamePasswordEditor(QWidget *pParent = 0);
@@ -78,6 +83,9 @@ public:
 
     QString password() const;
     void setPassword(const QString &strPassword);
+
+    /** Returns false if username or password fields are empty, or password fields do not match. */
+    bool isComplete();
 
 protected:
 
@@ -113,8 +121,6 @@ public:
     QString password() const;
 
 protected:
-
-
 
     /* Widgets: */
     UIUserNamePasswordEditor *m_pUserNamePasswordEditor;
