@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageHardware.cpp 88577 2021-04-19 13:23:37Z vboxsync $ */
+/* $Id: UIWizardNewVMPageHardware.cpp 88599 2021-04-20 09:13:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageHardware class implementation.
  */
@@ -28,7 +28,7 @@
 #include "UIVirtualCPUEditor.h"
 #include "UIWizardNewVM.h"
 #include "UIWizardNewVMPageHardware.h"
-#include "UIWizardNewVDPageBasic3.h"
+#include "UIWizardNewVDPageSizeLocation.h"
 
 /* COM includes: */
 #include "CGuestOSType.h"

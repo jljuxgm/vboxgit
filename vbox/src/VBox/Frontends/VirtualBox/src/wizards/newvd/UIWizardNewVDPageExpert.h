@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageExpert.h 88598 2021-04-20 08:16:05Z vboxsync $ */
+/* $Id: UIWizardNewVDPageExpert.h 88599 2021-04-20 09:13:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageExpert class declaration.
  */
@@ -24,7 +24,7 @@
 /* GUI includes: */
 #include "UIWizardNewVDPageFileType.h"
 #include "UIWizardNewVDPageVariant.h"
-#include "UIWizardNewVDPageBasic3.h"
+#include "UIWizardNewVDPageSizeLocation.h"
 
 /* Forward declarations: */
 class QGroupBox;
@@ -33,7 +33,7 @@ class QGroupBox;
 class SHARED_LIBRARY_STUFF UIWizardNewVDPageExpert : public UIWizardPage,
                                                      public UIWizardNewVDPageBaseFileType,
                                                      public UIWizardNewVDPageBaseVariant,
-                                                     public UIWizardNewVDPage3
+                                                     public UIWizardNewVDPageBaseSizeLocation
 {
     Q_OBJECT;
     Q_PROPERTY(CMediumFormat mediumFormat READ mediumFormat WRITE setMediumFormat);

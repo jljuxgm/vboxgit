@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVD.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIWizardNewVD.h 88599 2021-04-20 09:13:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVD class declaration.
  */
@@ -67,7 +67,7 @@ protected:
     bool createVirtualDisk();
 
     /* Who will be able to create virtual-disk: */
-    friend class UIWizardNewVDPageBasic3;
+    friend class UIWizardNewVDPageSizeLocation;
     friend class UIWizardNewVDPageExpert;
 
 private:

@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageDisk.h 88598 2021-04-20 08:16:05Z vboxsync $ */
+/* $Id: UIWizardNewVMPageDisk.h 88599 2021-04-20 09:13:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageDisk class declaration.
  */
@@ -28,7 +28,7 @@
 #include "UIWizardPage.h"
 #include "UIWizardNewVDPageFileType.h"
 #include "UIWizardNewVDPageVariant.h"
-#include "UIWizardNewVDPageBasic3.h"
+#include "UIWizardNewVDPageSizeLocation.h"
 #include "UIWizardNewVM.h"
 
 /* COM includes: */
@@ -81,7 +81,7 @@ class UIWizardNewVMPageDisk : public UIWizardPage,
                                 public UIWizardNewVMPageDiskBase,
                                 public UIWizardNewVDPageBaseFileType,
                                 public UIWizardNewVDPageBaseVariant,
-                                public UIWizardNewVDPage3
+                                public UIWizardNewVDPageBaseSizeLocation
 {
     Q_OBJECT;
     Q_PROPERTY(SelectedDiskSource selectedDiskSource READ selectedDiskSource WRITE setSelectedDiskSource);

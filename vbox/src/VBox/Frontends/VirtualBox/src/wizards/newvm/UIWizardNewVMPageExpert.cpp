@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.cpp 88598 2021-04-20 08:16:05Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.cpp 88599 2021-04-20 09:13:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class implementation.
  */
@@ -159,7 +159,7 @@ void UIWizardNewVMPageExpert::retranslateUi()
     UIWizardNewVMPageDiskBase::retranslateWidgets();
     UIWizardNewVDPageBaseFileType::retranslateWidgets();
     UIWizardNewVDPageBaseVariant::retranslateWidgets();
-    UIWizardNewVDPage3::retranslateWidgets();
+    UIWizardNewVDPageBaseSizeLocation::retranslateWidgets();
 
     if (m_pToolBox)
     {
@@ -488,7 +488,7 @@ bool UIWizardNewVMPageExpert::validatePage()
             return fResult;
         }
         /* Check FAT size limitation of the host hard drive: */
-        fResult = UIWizardNewVDPage3::checkFATSizeLimitation(fieldImp("mediumVariant").toULongLong(),
+        fResult = UIWizardNewVDPageBaseSizeLocation::checkFATSizeLimitation(fieldImp("mediumVariant").toULongLong(),
                                                              fieldImp("mediumPath").toString(),
                                                              fieldImp("mediumSize").toULongLong());
         if (!fResult)

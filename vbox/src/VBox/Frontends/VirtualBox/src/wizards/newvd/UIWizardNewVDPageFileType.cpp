@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageFileType.cpp 88597 2021-04-20 08:02:57Z vboxsync $ */
+/* $Id: UIWizardNewVDPageFileType.cpp 88599 2021-04-20 09:13:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageFileType class implementation.
  */
@@ -23,7 +23,7 @@
 /* GUI includes: */
 #include "UIConverter.h"
 #include "UIWizardNewVDPageFileType.h"
-#include "UIWizardNewVDPageBasic3.h"
+#include "UIWizardNewVDPageSizeLocation.h"
 #include "UIWizardNewVD.h"
 #include "UICommon.h"
 #include "QIRichTextLabel.h"
@@ -72,7 +72,7 @@ void UIWizardNewVDPageBaseFileType::addFormatButton(QWidget *pParent, QVBoxLayou
         m_formats << medFormat;
         m_formatNames << medFormat.GetName();
         m_pFormatButtonGroup->addButton(pFormatButton, m_formatNames.size() - 1);
-        m_formatExtensions << UIWizardNewVDPage3::defaultExtension(medFormat);
+        m_formatExtensions << UIWizardNewVDPageBaseSizeLocation::defaultExtension(medFormat);
     }
 }
 
