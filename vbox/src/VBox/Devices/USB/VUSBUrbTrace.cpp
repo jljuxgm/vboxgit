@@ -1,4 +1,4 @@
-/* $Id: VUSBUrbTrace.cpp 87627 2021-02-05 16:49:57Z vboxsync $ */
+/* $Id: VUSBUrbTrace.cpp 87628 2021-02-05 17:28:12Z vboxsync $ */
 /** @file
  * Virtual USB - URBs.
  */
@@ -224,7 +224,7 @@ DECLHIDDEN(void) vusbUrbTrace(PVUSBURB pUrb, const char *pszMsg, bool fComplete)
              * misinterpret them.
              */
             if (    ((pSetup->bmRequestType >> 5) & 0x3) == 1   /* class */
-                && (RT_HIBYTE(pSetup->wValue) == 0x22) || (RT_HIBYTE(pSetup->wValue) == 0x23))
+                && ((RT_HIBYTE(pSetup->wValue) == 0x22) || (RT_HIBYTE(pSetup->wValue) == 0x23)))
             {
                 fDescriptors = false;
             }
