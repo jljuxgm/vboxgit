@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.h 86923 2020-11-19 17:37:32Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.h 87022 2020-12-01 13:33:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class declaration.
  */
@@ -206,6 +206,12 @@ public:
       * @{ */
         /** Updates tool-bar menu buttons. */
         void updateToolBarMenuButtons(bool fSeparateMenuSection);
+    /** @} */
+
+    /** @name Help browser stuff.
+      * @{ */
+        /** Shpws the help browser. */
+        void showHelpBrowser();
     /** @} */
 
 public slots:

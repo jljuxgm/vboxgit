@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 86925 2020-11-19 18:19:19Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.h 87022 2020-12-01 13:33:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -308,6 +308,9 @@ private slots:
 
         /** Handles call to toggle machine search widget visibility to be @a fVisible. */
         void sltPerformMachineSearchWidgetVisibilityToggling(bool fVisible);
+
+        /** Handles call to show help viewer. */
+        void sltPerformShowHelpBrowser();
     /** @} */
 
 private:

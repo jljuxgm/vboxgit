@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneMachine.h 85396 2020-07-21 09:43:03Z vboxsync $ */
+/* $Id: UIToolPaneMachine.h 87022 2020-12-01 13:33:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolPaneMachine class declaration.
  */
@@ -96,6 +96,9 @@ public:
 
     /** Returns whether current-state item of Snapshot pane is selected. */
     bool isCurrentStateItemSelected() const;
+
+    /** Returns the help keyword of the current tool's widget. */
+    QString currentHelpKeyword() const;
 
 private:
 

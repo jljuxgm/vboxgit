@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneGlobal.h 86997 2020-11-26 17:22:29Z vboxsync $ */
+/* $Id: UIToolPaneGlobal.h 87022 2020-12-01 13:33:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolPaneGlobal class declaration.
  */
@@ -71,6 +71,8 @@ public:
     void openTool(UIToolType enmType);
     /** Closes tool of passed @a enmType, deletes one if exists. */
     void closeTool(UIToolType enmType);
+    /** Returns the help keyword of the current tool's widget. */
+    QString currentHelpKeyword() const;
 
 private:
 

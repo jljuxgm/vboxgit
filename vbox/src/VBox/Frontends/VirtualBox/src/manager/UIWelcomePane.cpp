@@ -1,4 +1,4 @@
-/* $Id: UIWelcomePane.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIWelcomePane.cpp 87022 2020-12-01 13:33:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWelcomePane class implementation.
  */
@@ -23,6 +23,7 @@
 
 /* GUI includes */
 #include "QIWithRetranslateUI.h"
+#include "UICommon.h"
 #include "UIIconPool.h"
 #include "UIWelcomePane.h"
 
@@ -212,6 +213,8 @@ void UIWelcomePane::prepare()
         /* Add stretch: */
         pMainLayout->addStretch();
     }
+
+    uiCommon().setHelpKeyword(this, "intro-starting");
 
     /* Translate finally: */
     retranslateUi();

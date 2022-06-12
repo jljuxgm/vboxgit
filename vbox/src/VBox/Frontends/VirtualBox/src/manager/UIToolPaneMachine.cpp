@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneMachine.cpp 85571 2020-07-31 07:22:55Z vboxsync $ */
+/* $Id: UIToolPaneMachine.cpp 87022 2020-12-01 13:33:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolPaneMachine class implementation.
  */
@@ -308,6 +308,32 @@ bool UIToolPaneMachine::isCurrentStateItemSelected() const
     if (!m_pPaneSnapshots)
         return false;
     return m_pPaneSnapshots->isCurrentStateItemSelected();
+}
+
+QString UIToolPaneMachine::currentHelpKeyword() const
+{
+    QWidget *pCurrentToolWidget = 0;
+    switch (currentTool())
+    {
+        case UIToolType_Error:
+            pCurrentToolWidget = m_pPaneError;
+            break;
+        case UIToolType_Details:
+            pCurrentToolWidget = m_pPaneDetails;
+            break;
+        case UIToolType_Snapshots:
+            pCurrentToolWidget = m_pPaneSnapshots;
+            break;
+        case UIToolType_Logs:
+            pCurrentToolWidget = m_pPaneLogViewer;
+            break;
+        case UIToolType_Performance:
+            pCurrentToolWidget = m_pPanePerformanceMonitor;
+            break;
+        default:
+            break;
+    }
+    return uiCommon().helpKeyword(pCurrentToolWidget);
 }
 
 void UIToolPaneMachine::prepare()

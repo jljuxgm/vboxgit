@@ -1,4 +1,4 @@
-/* $Id: UISnapshotPane.cpp 86233 2020-09-23 12:10:51Z vboxsync $ */
+/* $Id: UISnapshotPane.cpp 87022 2020-12-01 13:33:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class implementation.
  */
@@ -1203,6 +1203,9 @@ void UISnapshotPane::prepare()
 
     /* Load settings: */
     loadSettings();
+
+
+    uiCommon().setHelpKeyword(this, "snapshots");
 
     /* Apply language settings: */
     retranslateUi();
