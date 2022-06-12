@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 86903 2020-11-17 20:11:49Z vboxsync $
+# $Id: Makefile.kmk 86904 2020-11-17 20:12:27Z vboxsync $
 ## @file
 # Sub-Makefile for various generic build tools (there is currently only one of them).
 #
@@ -98,7 +98,6 @@ gccplugin$(SUFF_DLL): VBoxCompilerPlugInsGcc.cpp VBoxCompilerPlugInsCommon.cpp V
 		-o $@ \
 		VBoxCompilerPlugInsGcc.cpp \
 		VBoxCompilerPlugInsCommon.cpp
-
 
 include $(FILE_KBUILD_SUB_FOOTER)
 
