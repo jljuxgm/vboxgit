@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 88916 2021-05-06 19:55:49Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 88917 2021-05-06 21:24:44Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -1867,7 +1867,7 @@ static int ichac97R3MixerAddDrvStream(PPDMDEVINS pDevIns, PAUDMIXSINK pMixSink, 
         AssertMsg(pDrvStream->pMixStrm == NULL, ("[LUN#%RU8] Driver stream already present when it must not\n", pDrv->uLUN));
 
         PAUDMIXSTREAM pMixStrm;
-        rc = AudioMixerSinkCreateStream(pMixSink, pDrv->pConnector, pStreamCfg, 0 /* fFlags */, pDevIns, &pMixStrm);
+        rc = AudioMixerSinkCreateStream(pMixSink, pDrv->pConnector, pStreamCfg, pDevIns, &pMixStrm);
         LogFlowFunc(("LUN#%RU8: Created stream \"%s\" for sink, rc=%Rrc\n", pDrv->uLUN, pStreamCfg->szName, rc));
         if (RT_SUCCESS(rc))
         {
