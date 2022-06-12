@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 86438 2020-10-04 11:36:35Z vboxsync $
+# $Id: vbox.py 86440 2020-10-04 11:39:48Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 86438 $"
+__version__ = "$Revision: 86440 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -461,9 +461,9 @@ class Build(object): # pylint: disable=too-few-public-methods
             ## @todo Much more work is required here.
 
             # Determine the build type.
-            (iExit, sStdOut, sStdErr) = utils.processOutputUnchecked([os.path.join(self.sInstallPath,
-                                                                                   'VBoxManage' + base.exeSuff()),
-                                                                      '--dump-build-type']);
+            (iExit, sStdOut, _) = utils.processOutputUnchecked([os.path.join(self.sInstallPath,
+                                                                             'VBoxManage' + base.exeSuff()),
+                                                                '--dump-build-type']);
             sStdOut = sStdOut.strip();
             if iExit == 0 and sStdOut in ('release', 'debug', 'strict', 'dbgopt', 'asan'):
                 self.sType = sStdOut;
