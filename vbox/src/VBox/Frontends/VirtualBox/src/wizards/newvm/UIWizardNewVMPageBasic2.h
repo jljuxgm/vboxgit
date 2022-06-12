@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic2.h 87571 2021-02-03 15:22:37Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic2.h 88147 2021-03-17 07:21:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic2 class declaration.
  */
@@ -87,17 +87,15 @@ protected:
         QGroupBox *m_pUserNameContainer;
         QGroupBox *m_pAdditionalOptionsContainer;
         QGroupBox *m_pGAInstallationISOContainer;
-
         QCheckBox *m_pStartHeadlessCheckBox;
         UIUserNamePasswordEditor *m_pUserNamePasswordEditor;
         QLineEdit *m_pHostnameLineEdit;
-        QLabel  *m_pHostnameLabel;
-        QCheckBox *m_pGAInstallCheckBox;
-        QLabel  *m_pGAISOPathLabel;
+        QLabel    *m_pHostnameLabel;
+        QLabel    *m_pGAISOPathLabel;
         UIFilePathSelector *m_pGAISOFilePathSelector;
         /** Product key stuff. */
         QLineEdit *m_pProductKeyLineEdit;
-        QLabel  *m_pProductKeyLabel;
+        QLabel     *m_pProductKeyLabel;
     /** @} */
 
 private:
