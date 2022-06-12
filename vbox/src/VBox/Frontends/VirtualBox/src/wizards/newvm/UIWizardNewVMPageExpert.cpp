@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.cpp 88147 2021-03-17 07:21:33Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.cpp 88149 2021-03-17 11:06:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class implementation.
  */
@@ -206,7 +206,7 @@ void UIWizardNewVMPageExpert::createConnections()
                 this, &UIWizardNewVMPageExpert::sltOsTypeChanged);
         connect(m_pNameAndSystemEditor, &UINameAndSystemEditor::sigOSFamilyChanged,
                 this, &UIWizardNewVMPageExpert::sltOSFamilyTypeChanged);
-        connect(m_pNameAndSystemEditor, &UINameAndSystemEditor::sigISOPathChanged,
+        connect(m_pNameAndSystemEditor, &UINameAndSystemEditor::sigImageChanged,
                 this, &UIWizardNewVMPageExpert::sltISOPathChanged);
     }
 

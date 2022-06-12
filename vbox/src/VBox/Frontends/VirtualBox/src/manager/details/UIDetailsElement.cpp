@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElement.cpp 86275 2020-09-24 20:04:03Z vboxsync $ */
+/* $Id: UIDetailsElement.cpp 88149 2021-03-17 11:06:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement class implementation.
  */
@@ -890,7 +890,11 @@ void UIDetailsElement::popupNameAndSystemEditor(bool fChooseName, bool fChoosePa
     if (pPopup)
     {
         /* Prepare editor: */
-        UINameAndSystemEditor *pEditor = new UINameAndSystemEditor(pPopup, fChooseName, fChoosePath, fChooseType);
+        UINameAndSystemEditor *pEditor = new UINameAndSystemEditor(pPopup,
+                                                                   fChooseName,
+                                                                   fChoosePath,
+                                                                   false /* image? */,
+                                                                   fChooseType);
         if (pEditor)
         {
             if (fChooseName)
