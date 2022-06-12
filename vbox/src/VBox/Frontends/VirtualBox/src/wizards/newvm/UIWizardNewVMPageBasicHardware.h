@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasicHardware.h 84886 2020-06-21 15:03:55Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasicHardware.h 84889 2020-06-22 07:33:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasicHardware class declaration.
  */
@@ -25,7 +25,6 @@
 #include "UIWizardPage.h"
 
 /* Forward declarations: */
-class UIBaseMemorySlider;
 class UIBaseMemoryEditor;
 class UIVirtualCPUEditor;
 class QSpinBox;
