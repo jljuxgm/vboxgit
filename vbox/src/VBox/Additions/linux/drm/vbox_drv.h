@@ -1,4 +1,4 @@
-/* $Id: vbox_drv.h 88274 2021-03-24 12:49:44Z vboxsync $ */
+/* $Id: vbox_drv.h 89278 2021-05-25 16:23:05Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -173,7 +173,9 @@
 #include <drm/ttm/ttm_bo_api.h>
 #include <drm/ttm/ttm_bo_driver.h>
 #include <drm/ttm/ttm_placement.h>
-#include <drm/ttm/ttm_memory.h>
+#if RTLNX_VER_MAX(5,13,0)
+# include <drm/ttm/ttm_memory.h>
+#endif
 #if RTLNX_VER_MAX(5,12,0)
 # include <drm/ttm/ttm_module.h>
 #endif
@@ -263,7 +265,11 @@ struct vbox_private {
 		struct drm_global_reference mem_global_ref;
 		struct ttm_bo_global_ref bo_global_ref;
 #endif
+#if RTLNX_VER_MIN(5,13,0)
+		struct ttm_device bdev;
+#else
 		struct ttm_bo_device bdev;
+#endif
 		bool mm_initialised;
 	} ttm;
 
