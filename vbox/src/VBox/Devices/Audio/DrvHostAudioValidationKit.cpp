@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioValidationKit.cpp 89469 2021-06-02 13:18:42Z vboxsync $ */
+/* $Id: DrvHostAudioValidationKit.cpp 89487 2021-06-03 20:16:17Z vboxsync $ */
 /** @file
  * Host audio driver - ValidationKit - For dumping and injecting audio data from/to the device emulation.
  */
@@ -333,41 +333,20 @@ static DECLCALLBACK(PDMAUDIOBACKENDSTS) drvHostValKitAudioHA_GetStatus(PPDMIHOST
 }
 
 
-static int drvHostValKitAudioCreateStreamIn(PDRVHOSTVALKITAUDIO pThis, PVALKITAUDIOSTREAM pStreamDbg,
-                                            PPDMAUDIOSTREAMCFG pCfgReq, PPDMAUDIOSTREAMCFG pCfgAcq)
-{
-    RT_NOREF(pThis, pStreamDbg, pCfgReq, pCfgAcq);
-
-    return VINF_SUCCESS;
-}
-
-
-static int drvHostValKitAudioCreateStreamOut(PDRVHOSTVALKITAUDIO pThis, PVALKITAUDIOSTREAM pStreamDbg,
-                                             PPDMAUDIOSTREAMCFG pCfgReq, PPDMAUDIOSTREAMCFG pCfgAcq)
-{
-    RT_NOREF(pThis, pStreamDbg, pCfgReq, pCfgAcq);
-
-    return VINF_SUCCESS;
-}
-
-
 /**
  * @interface_method_impl{PDMIHOSTAUDIO,pfnStreamCreate}
  */
 static DECLCALLBACK(int) drvHostValKitAudioHA_StreamCreate(PPDMIHOSTAUDIO pInterface, PPDMAUDIOBACKENDSTREAM pStream,
-                                                           PPDMAUDIOSTREAMCFG pCfgReq, PPDMAUDIOSTREAMCFG pCfgAcq)
+                                                           PCPDMAUDIOSTREAMCFG pCfgReq, PPDMAUDIOSTREAMCFG pCfgAcq)
 {
     PDRVHOSTVALKITAUDIO pThis      = RT_FROM_MEMBER(pInterface, DRVHOSTVALKITAUDIO, IHostAudio);
     PVALKITAUDIOSTREAM  pStreamDbg = (PVALKITAUDIOSTREAM)pStream;
     AssertPtrReturn(pStreamDbg, VERR_INVALID_POINTER);
     AssertPtrReturn(pCfgReq, VERR_INVALID_POINTER);
     AssertPtrReturn(pCfgAcq, VERR_INVALID_POINTER);
+    RT_NOREF(pThis);
 
-    int rc;
-    if (pCfgReq->enmDir == PDMAUDIODIR_IN)
-        rc = drvHostValKitAudioCreateStreamIn( pThis, pStreamDbg, pCfgReq, pCfgAcq);
-    else
-        rc = drvHostValKitAudioCreateStreamOut(pThis, pStreamDbg, pCfgReq, pCfgAcq);
+    int rc = VINF_SUCCESS;
     PDMAudioStrmCfgCopy(&pStreamDbg->Cfg, pCfgAcq);
     return rc;
 }

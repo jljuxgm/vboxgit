@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVRDE.cpp 89415 2021-05-31 20:31:47Z vboxsync $ */
+/* $Id: DrvAudioVRDE.cpp 89487 2021-06-03 20:16:17Z vboxsync $ */
 /** @file
  * VRDE audio backend for Main.
  */
@@ -356,7 +356,7 @@ static int vrdeCreateStreamOut(PPDMAUDIOSTREAMCFG pCfgAcq)
  * @interface_method_impl{PDMIHOSTAUDIO,pfnStreamCreate}
  */
 static DECLCALLBACK(int) drvAudioVrdeHA_StreamCreate(PPDMIHOSTAUDIO pInterface, PPDMAUDIOBACKENDSTREAM pStream,
-                                                     PPDMAUDIOSTREAMCFG pCfgReq, PPDMAUDIOSTREAMCFG pCfgAcq)
+                                                     PCPDMAUDIOSTREAMCFG pCfgReq, PPDMAUDIOSTREAMCFG pCfgAcq)
 {
     PDRVAUDIOVRDE pThis       = RT_FROM_MEMBER(pInterface, DRVAUDIOVRDE, IHostAudio);
     PVRDESTREAM   pStreamVRDE = (PVRDESTREAM)pStream;

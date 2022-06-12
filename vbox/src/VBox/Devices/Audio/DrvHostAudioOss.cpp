@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioOss.cpp 89479 2021-06-03 12:35:28Z vboxsync $ */
+/* $Id: DrvHostAudioOss.cpp 89487 2021-06-03 20:16:17Z vboxsync $ */
 /** @file
  * Host audio driver - OSS (Open Sound System).
  */
@@ -351,7 +351,7 @@ static int drvHstAudOssStreamConfigure(int hFile, bool fInput, PDRVHSTAUDOSSSTRE
  * @interface_method_impl{PDMIHOSTAUDIO,pfnStreamCreate}
  */
 static DECLCALLBACK(int) drvHstAudOssHA_StreamCreate(PPDMIHOSTAUDIO pInterface, PPDMAUDIOBACKENDSTREAM pStream,
-                                                     PPDMAUDIOSTREAMCFG pCfgReq, PPDMAUDIOSTREAMCFG pCfgAcq)
+                                                     PCPDMAUDIOSTREAMCFG pCfgReq, PPDMAUDIOSTREAMCFG pCfgAcq)
 {
     AssertPtr(pInterface); RT_NOREF(pInterface);
     PDRVHSTAUDOSSSTREAM pStreamOSS = (PDRVHSTAUDOSSSTREAM)pStream;

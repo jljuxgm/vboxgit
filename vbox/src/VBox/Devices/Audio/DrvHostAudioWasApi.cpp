@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioWasApi.cpp 89420 2021-06-01 08:15:35Z vboxsync $ */
+/* $Id: DrvHostAudioWasApi.cpp 89487 2021-06-03 20:16:17Z vboxsync $ */
 /** @file
  * Host audio driver - Windows Audio Session API.
  */
@@ -1793,7 +1793,7 @@ static DECLCALLBACK(void) drvHostAudioWasHA_StreamConfigHint(PPDMIHOSTAUDIO pInt
  * @interface_method_impl{PDMIHOSTAUDIO,pfnStreamCreate}
  */
 static DECLCALLBACK(int) drvHostAudioWasHA_StreamCreate(PPDMIHOSTAUDIO pInterface, PPDMAUDIOBACKENDSTREAM pStream,
-                                                        PPDMAUDIOSTREAMCFG pCfgReq, PPDMAUDIOSTREAMCFG pCfgAcq)
+                                                        PCPDMAUDIOSTREAMCFG pCfgReq, PPDMAUDIOSTREAMCFG pCfgAcq)
 {
     PDRVHOSTAUDIOWAS        pThis      = RT_FROM_MEMBER(pInterface, DRVHOSTAUDIOWAS, IHostAudio);
     PDRVHOSTAUDIOWASSTREAM  pStreamWas = (PDRVHOSTAUDIOWASSTREAM)pStream;

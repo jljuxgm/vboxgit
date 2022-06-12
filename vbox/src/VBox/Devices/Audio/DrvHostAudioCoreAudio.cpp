@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioCoreAudio.cpp 89344 2021-05-28 10:33:09Z vboxsync $ */
+/* $Id: DrvHostAudioCoreAudio.cpp 89487 2021-06-03 20:16:17Z vboxsync $ */
 /** @file
  * Host audio driver - Mac OS X CoreAudio.
  *
@@ -1515,7 +1515,7 @@ static void drvHstAudCaPropsToAsbd(PCPDMAUDIOPCMPROPS pProps, AudioStreamBasicDe
  * @interface_method_impl{PDMIHOSTAUDIO,pfnStreamCreate}
  */
 static DECLCALLBACK(int) drvHstAudCaHA_StreamCreate(PPDMIHOSTAUDIO pInterface, PPDMAUDIOBACKENDSTREAM pStream,
-                                                    PPDMAUDIOSTREAMCFG pCfgReq, PPDMAUDIOSTREAMCFG pCfgAcq)
+                                                    PCPDMAUDIOSTREAMCFG pCfgReq, PPDMAUDIOSTREAMCFG pCfgAcq)
 {
     PDRVHOSTCOREAUDIO pThis     = RT_FROM_MEMBER(pInterface, DRVHOSTCOREAUDIO, IHostAudio);
     PCOREAUDIOSTREAM  pStreamCA = (PCOREAUDIOSTREAM)pStream;

@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioNull.cpp 89484 2021-06-03 13:00:54Z vboxsync $ */
+/* $Id: DrvHostAudioNull.cpp 89487 2021-06-03 20:16:17Z vboxsync $ */
 /** @file
  * Host audio driver - NULL (bitbucket).
  *
@@ -82,7 +82,7 @@ static DECLCALLBACK(PDMAUDIOBACKENDSTS) drvHstAudNullHA_GetStatus(PPDMIHOSTAUDIO
  * @interface_method_impl{PDMIHOSTAUDIO,pfnStreamCreate}
  */
 static DECLCALLBACK(int) drvHstAudNullHA_StreamCreate(PPDMIHOSTAUDIO pInterface, PPDMAUDIOBACKENDSTREAM pStream,
-                                                      PPDMAUDIOSTREAMCFG pCfgReq, PPDMAUDIOSTREAMCFG pCfgAcq)
+                                                      PCPDMAUDIOSTREAMCFG pCfgReq, PPDMAUDIOSTREAMCFG pCfgAcq)
 {
     RT_NOREF(pInterface);
     PDRVHSTAUDNULLSTREAM pStreamNull = (PDRVHSTAUDNULLSTREAM)pStream;
