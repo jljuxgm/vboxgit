@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 86186 2020-09-20 12:13:15Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 86730 2020-10-28 10:44:37Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -7413,7 +7413,7 @@ HMSVM_EXIT_DECL hmR0SvmExitXcptDB(PVMCPUCC pVCpu, PSVMTRANSIENT pSvmTransient)
     PVMCC      pVM   = pVCpu->CTX_SUFF(pVM);
     PSVMVMCB pVmcb = pVCpu->hm.s.svm.pVmcb;
     PCPUMCTX pCtx  = &pVCpu->cpum.GstCtx;
-    int rc = DBGFRZTrap01Handler(pVM, pVCpu, CPUMCTX2CORE(pCtx), pVmcb->guest.u64DR6, pVCpu->hm.s.fSingleInstruction);
+    int rc = DBGFTrap01Handler(pVM, pVCpu, CPUMCTX2CORE(pCtx), pVmcb->guest.u64DR6, pVCpu->hm.s.fSingleInstruction);
     if (rc == VINF_EM_RAW_GUEST_TRAP)
     {
         Log5(("hmR0SvmExitXcptDB: DR6=%#RX64 -> guest trap\n", pVmcb->guest.u64DR6));
@@ -7477,7 +7477,7 @@ HMSVM_EXIT_DECL hmR0SvmExitXcptBP(PVMCPUCC pVCpu, PSVMTRANSIENT pSvmTransient)
     STAM_COUNTER_INC(&pVCpu->hm.s.StatExitGuestBP);
 
     PCPUMCTX pCtx = &pVCpu->cpum.GstCtx;
-    int rc = DBGFRZTrap03Handler(pVCpu->CTX_SUFF(pVM), pVCpu, CPUMCTX2CORE(pCtx));
+    int rc = DBGFTrap03Handler(pVCpu->CTX_SUFF(pVM), pVCpu, CPUMCTX2CORE(pCtx));
     if (rc == VINF_EM_RAW_GUEST_TRAP)
     {
         SVMEVENT Event;
