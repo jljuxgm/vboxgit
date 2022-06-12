@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: AudioMixer.h 87270 2021-01-15 13:06:46Z vboxsync $ */
 /** @file
  * VBox audio - Mixing routines.
  *
@@ -193,6 +193,10 @@ typedef struct AUDMIXSINK
     /** This sink's mixing buffer, acting as
      * a parent buffer for all streams this sink owns. */
     PDMAUDIOMIXBUF          MixBuf;
+    /** Scratch buffer for multiplexing / mixing. Might be NULL if not needed. */
+    uint8_t                *pabScratchBuf;
+    /** Size (in bytes) of pabScratchBuf. Might be 0 if not needed. */
+    size_t                  cbScratchBuf;
     /** Union for input/output specifics. */
     union
     {
