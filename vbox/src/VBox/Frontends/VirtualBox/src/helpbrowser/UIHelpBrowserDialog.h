@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserDialog.h 87015 2020-11-30 16:15:43Z vboxsync $ */
+/* $Id: UIHelpBrowserDialog.h 89300 2021-05-26 16:39:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserDialog class declaration.
  */
@@ -35,7 +35,6 @@ class SHARED_LIBRARY_STUFF UIHelpBrowserDialog : public QIWithRetranslateUI<QIWi
 public:
 
     UIHelpBrowserDialog(QWidget *pParent, QWidget *pCenterWidget, const QString &strHelpFilePath);
-    ~UIHelpBrowserDialog();
     /** A passthru function for QHelpIndexWidget::showHelpForKeyword. */
     void showHelpForKeyword(const QString &strKeyword);
 
@@ -43,13 +42,14 @@ protected:
 
     /** Handles translation event. */
     virtual void retranslateUi() /* override */;
+    virtual bool event(QEvent *pEvent) /* override */;
 
     /** @name Prepare/cleanup cascade.
      * @{ */
 
         virtual void prepareCentralWidget() /* override */;
         virtual void loadSettings() /* override */;
-        virtual void saveSettings() /* override */;
+        virtual void saveDialogGeometry() /* override */;
     /** @} */
 
     /** Returns whether the window should be maximized when geometry being restored. */
@@ -65,6 +65,7 @@ private:
     QString m_strHelpFilePath;
     UIHelpBrowserWidget *m_pWidget;
     QWidget *m_pCenterWidget;
+    int m_iGeometrySaveTimerId;
 };
 
 
