@@ -1,4 +1,4 @@
-/* $Id: tstDevicePdmDevHlp.cpp 84431 2020-05-21 08:42:19Z vboxsync $ */
+/* $Id: tstDevicePdmDevHlp.cpp 84715 2020-06-06 10:29:22Z vboxsync $ */
 /** @file
  * tstDevice - Test framework for PDM devices/drivers, PDM helper implementation.
  */
@@ -3505,24 +3505,6 @@ static DECLCALLBACK(void) pdmR3DevHlp_ISASetIrq(PPDMDEVINS pDevIns, int iIrq, in
 static DECLCALLBACK(void) pdmR3DevHlp_ISASetIrqNoWait(PPDMDEVINS pDevIns, int iIrq, int iLevel)
 {
     pdmR3DevHlp_ISASetIrq(pDevIns, iIrq, iLevel);
-}
-
-
-/** @interface_method_impl{PDMDEVHLPR3,pfnIoApicSendMsi} */
-static DECLCALLBACK(void) pdmR3DevHlp_IoApicSendMsi(PPDMDEVINS pDevIns, RTGCPHYS GCPhys, uint32_t uValue)
-{
-    PDMDEV_ASSERT_DEVINS(pDevIns);
-    LogFlow(("pdmR3DevHlp_IoApicSendMsi: caller='%s'/%d: GCPhys=%RGp uValue=%#x\n", pDevIns->pReg->szName, pDevIns->iInstance, GCPhys, uValue));
-
-    /*
-     * Validate input.
-     */
-    Assert(GCPhys != 0);
-    Assert(uValue != 0);
-
-    AssertFailed();
-
-    LogFlow(("pdmR3DevHlp_IoApicSendMsi: caller='%s'/%d: returns void\n", pDevIns->pReg->szName, pDevIns->iInstance));
 }
 
 

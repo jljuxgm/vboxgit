@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlpTracing.cpp 84553 2020-05-27 07:35:16Z vboxsync $ */
+/* $Id: PDMDevHlpTracing.cpp 84715 2020-06-06 10:29:22Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helper variants when tracing is enabled.
  */
@@ -586,38 +586,6 @@ DECLHIDDEN(DECLCALLBACK(void)) pdmR3DevHlpTracing_ISASetIrq(PPDMDEVINS pDevIns, 
 DECLHIDDEN(DECLCALLBACK(void)) pdmR3DevHlpTracing_ISASetIrqNoWait(PPDMDEVINS pDevIns, int iIrq, int iLevel)
 {
     pdmR3DevHlpTracing_ISASetIrq(pDevIns, iIrq, iLevel);
-}
-
-
-/** @interface_method_impl{PDMDEVHLPR3,pfnIoApicSendMsi} */
-DECLHIDDEN(DECLCALLBACK(void)) pdmR3DevHlpTracing_IoApicSendMsi(PPDMDEVINS pDevIns, RTGCPHYS GCPhys, uint32_t uValue)
-{
-    PDMDEV_ASSERT_DEVINS(pDevIns);
-    LogFlow(("pdmR3DevHlp_IoApicSendMsi: caller='%s'/%d: GCPhys=%RGp uValue=%#x\n", pDevIns->pReg->szName, pDevIns->iInstance, GCPhys, uValue));
-
-    /*
-     * Validate input.
-     */
-    Assert(GCPhys != 0);
-    Assert(uValue != 0);
-
-    PVM pVM = pDevIns->Internal.s.pVMR3;
-
-    DBGFTracerEvtIoApicMsi(pVM, pDevIns->Internal.s.hDbgfTraceEvtSrc, GCPhys, uValue);
-
-    /*
-     * Do the job.
-     */
-    pdmLock(pVM);
-    uint32_t uTagSrc;
-    pDevIns->Internal.s.uLastIrqTag = uTagSrc = pdmCalcIrqTag(pVM, pDevIns->idTracing);
-    VBOXVMM_PDM_IRQ_HILO(VMMGetCpu(pVM), RT_LOWORD(uTagSrc), RT_HIWORD(uTagSrc));
-
-    PDMIoApicSendMsi(pVM, GCPhys, uValue, uTagSrc);  /* (The API takes the lock recursively.) */
-
-    pdmUnlock(pVM);
-
-    LogFlow(("pdmR3DevHlp_IoApicSendMsi: caller='%s'/%d: returns void\n", pDevIns->pReg->szName, pDevIns->iInstance));
 }
 
 

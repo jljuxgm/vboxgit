@@ -1,4 +1,4 @@
-/* $Id: PDMR0DevHlpTracing.cpp 84553 2020-05-27 07:35:16Z vboxsync $ */
+/* $Id: PDMR0DevHlpTracing.cpp 84715 2020-06-06 10:29:22Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helper variants when tracing is enabled.
  */
@@ -471,28 +471,6 @@ DECLHIDDEN(DECLCALLBACK(void)) pdmR0DevHlpTracing_ISASetIrq(PPDMDEVINS pDevIns, 
         VBOXVMM_PDM_IRQ_LOW(VMMGetCpu(pGVM), RT_LOWORD(uTagSrc), RT_HIWORD(uTagSrc));
     pdmUnlock(pGVM);
     LogFlow(("pdmR0DevHlpTracing_ISASetIrq: caller=%p/%d: returns void; uTagSrc=%#x\n", pDevIns, pDevIns->iInstance, uTagSrc));
-}
-
-
-/** @interface_method_impl{PDMDEVHLPR0,pfnIoApicSendMsi} */
-DECLHIDDEN(DECLCALLBACK(void)) pdmR0DevHlpTracing_IoApicSendMsi(PPDMDEVINS pDevIns, RTGCPHYS GCPhys, uint32_t uValue)
-{
-    PDMDEV_ASSERT_DEVINS(pDevIns);
-    LogFlow(("pdmR0DevHlpTracing_IoApicSendMsi: caller='%s'/%d: GCPhys=%RGp uValue=%#x\n", pDevIns->pReg->szName, pDevIns->iInstance, GCPhys, uValue));
-    PGVM pGVM = pDevIns->Internal.s.pGVM;
-
-    DBGFTracerEvtIoApicMsi(pGVM, pDevIns->Internal.s.hDbgfTraceEvtSrc, GCPhys, uValue);
-
-    uint32_t uTagSrc;
-    pDevIns->Internal.s.pIntR3R0->uLastIrqTag = uTagSrc = pdmCalcIrqTag(pGVM, pDevIns->Internal.s.pInsR3R0->idTracing);
-    VBOXVMM_PDM_IRQ_HILO(VMMGetCpu(pGVM), RT_LOWORD(uTagSrc), RT_HIWORD(uTagSrc));
-
-    if (pGVM->pdm.s.IoApic.pDevInsR0)
-        pGVM->pdm.s.IoApic.pfnSendMsiR0(pGVM->pdm.s.IoApic.pDevInsR0, GCPhys, uValue, uTagSrc);
-    else
-        AssertFatalMsgFailed(("Lazy bastards!"));
-
-    LogFlow(("pdmR0DevHlpTracing_IoApicSendMsi: caller='%s'/%d: returns void\n", pDevIns->pReg->szName, pDevIns->iInstance));
 }
 
 
