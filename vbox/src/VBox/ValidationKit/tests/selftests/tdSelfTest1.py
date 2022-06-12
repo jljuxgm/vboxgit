@@ -1,10 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdSelfTest1.py 86446 2020-10-04 12:28:15Z vboxsync $
+# $Id: tdSelfTest1.py 86447 2020-10-04 12:29:28Z vboxsync $
 
 """
 Test Manager Self Test - Dummy Test Driver.
 """
+
+from __future__ import print_function;
 
 __copyright__ = \
 """
@@ -27,10 +29,9 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 86446 $"
+__version__ = "$Revision: 86447 $"
 
 
-from __future__ import print_function;
 import sys;
 import os;
 
