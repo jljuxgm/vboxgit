@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 84826 2020-06-15 08:20:40Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 84854 2020-06-16 17:25:11Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -141,6 +141,12 @@ static DECLCALLBACK(int) pdmR3DevHlp_MmioCreateEx(PPDMDEVINS pDevIns, RTGCPHYS c
     PVM pVM = pDevIns->Internal.s.pVMR3;
     VM_ASSERT_EMT0_RETURN(pVM, VERR_VM_THREAD_NOT_EMT);
     VM_ASSERT_STATE_RETURN(pVM, VMSTATE_CREATING, VERR_VM_INVALID_VM_STATE);
+
+    if (pDevIns->iInstance > 0)
+    {
+        pszDesc = MMR3HeapAPrintf(pVM, MM_TAG_PDM_DEVICE_DESC, "%s [%u]", pszDesc, pDevIns->iInstance);
+        AssertReturn(pszDesc, VERR_NO_STR_MEMORY);
+    }
 
     /* HACK ALERT! Round the size up to page size.  The PCI bus should do something similar before mapping it. */
     /** @todo It's possible we need to do dummy MMIO fill-in of the PCI bus or
