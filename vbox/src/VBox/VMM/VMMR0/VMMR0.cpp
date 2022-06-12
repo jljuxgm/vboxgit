@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 86704 2020-10-26 12:04:05Z vboxsync $ */
+/* $Id: VMMR0.cpp 87107 2020-12-19 15:10:18Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -2292,6 +2292,15 @@ static int vmmR0EntryExWorker(PGVM pGVM, VMCPUID idCpu, VMMR0OPERATION enmOperat
             if (!pReqHdr || u64Arg || idCpu != 0)
                 return VERR_INVALID_PARAMETER;
             rc = DBGFR0BpL2TblChunkAllocReqHandler(pGVM, (PDBGFBPL2TBLCHUNKALLOCREQ)pReqHdr);
+            VMM_CHECK_SMAP_CHECK2(pGVM, RT_NOTHING);
+            break;
+        }
+
+        case VMMR0_DO_DBGF_BP_OWNER_INIT:
+        {
+            if (!pReqHdr || u64Arg || idCpu != 0)
+                return VERR_INVALID_PARAMETER;
+            rc = DBGFR0BpOwnerInitReqHandler(pGVM, (PDBGFBPOWNERINITREQ)pReqHdr);
             VMM_CHECK_SMAP_CHECK2(pGVM, RT_NOTHING);
             break;
         }
