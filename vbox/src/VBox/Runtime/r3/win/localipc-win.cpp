@@ -1,4 +1,4 @@
-/* $Id: localipc-win.cpp 85112 2020-07-08 16:17:35Z vboxsync $ */
+/* $Id: localipc-win.cpp 86536 2020-10-12 09:16:36Z vboxsync $ */
 /** @file
  * IPRT - Local IPC, Windows Implementation Using Named Pipes.
  */
@@ -823,15 +823,14 @@ RTDECL(int) RTLocalIpcSessionConnect(PRTLOCALIPCSESSION phSession, const char *p
                     SecAttrs.lpSecurityDescriptor = pSecDesc;
                     SecAttrs.bInheritHandle       = FALSE;
 
+                    /* The SECURITY_XXX flags are needed in order to prevent the server from impersonating with
+                       this thread's security context (supported at least back to NT 3.51). See @bugref{9773}. */
                     HANDLE hPipe = CreateFileW(pwszFullName,
                                                GENERIC_READ | GENERIC_WRITE,
                                                0 /*no sharing*/,
                                                &SecAttrs,
                                                OPEN_EXISTING,
-                                               FILE_FLAG_OVERLAPPED
-                                               /* Needed in order to prevent the server to impersonate with this thread's
-                                                * security context. See #9773. */
-                                               | SECURITY_SQOS_PRESENT | SECURITY_ANONYMOUS,
+                                               FILE_FLAG_OVERLAPPED | SECURITY_SQOS_PRESENT | SECURITY_ANONYMOUS,
                                                NULL /*no template handle*/);
                     if (hPipe != INVALID_HANDLE_VALUE)
                     {
