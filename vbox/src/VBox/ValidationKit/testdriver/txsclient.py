@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: txsclient.py 84659 2020-06-03 11:44:11Z vboxsync $
+# $Id: txsclient.py 84764 2020-06-10 15:37:14Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84659 $"
+__version__ = "$Revision: 84764 $"
 
 # Standard Python imports.
 import array;
@@ -1260,6 +1260,12 @@ class Session(TdTaskBase):
                 rc = False;
         return rc;
 
+    def taskPackFile(self, sRemoteFile, sRemoteSource):
+        rc = self.sendMsg('PKFILE', (sRemoteFile, sRemoteSource));
+        if rc is True:
+            rc = self.recvAckLogged('PKFILE');
+        return rc;
+
     def taskUnpackFile(self, sRemoteFile, sRemoteDir):
         rc = self.sendMsg('UNPKFILE', (sRemoteFile, sRemoteDir));
         if rc is True:
@@ -1716,6 +1722,21 @@ class Session(TdTaskBase):
         """Synchronous version."""
         return self.asyncToSync(self.asyncDownloadString, sRemoteFile, sEncoding, fIgnoreEncodingErrors,
                                 cMsTimeout, fIgnoreErrors);
+
+    def asyncPackFile(self, sRemoteFile, sRemoteSource, cMsTimeout = 120000, fIgnoreErrors = False):
+        """
+        Initiates a packing file/directory task.
+
+        Returns True on success, False on failure (logged).
+
+        The task returns True on success, False on failure (logged).
+        """
+        return self.startTask(cMsTimeout, fIgnoreErrors, "packFile", self.taskPackFile,
+                              (sRemoteFile, sRemoteSource));
+
+    def syncPackFile(self, sRemoteFile, sRemoteSource, cMsTimeout = 120000, fIgnoreErrors = False):
+        """Synchronous version."""
+        return self.asyncToSync(self.asyncPackFile, sRemoteFile, sRemoteSource, cMsTimeout, fIgnoreErrors);
 
     def asyncUnpackFile(self, sRemoteFile, sRemoteDir, cMsTimeout = 120000, fIgnoreErrors = False):
         """
