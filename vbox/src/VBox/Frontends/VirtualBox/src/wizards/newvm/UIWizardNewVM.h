@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.h 87249 2021-01-14 13:35:18Z vboxsync $ */
+/* $Id: UIWizardNewVM.h 87322 2021-01-20 12:45:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class declaration.
  */
@@ -81,10 +81,8 @@ public:
     QUuid createdMachineId() const;
     void setDefaultUnattendedInstallData(const UIUnattendedInstallData &unattendedInstallData);
     const UIUnattendedInstallData &unattendedInstallData() const;
-    bool isUnattendedInstallEnabled() const;
+    bool isUnattendedEnabled() const;
     bool isGuestOSTypeWindows() const;
-    /** Increases the amoun of the left marign of @p pLayout. */
-    static void increaseLayoutLeftMargin(QLayout *pLayout, float mult = 2);
 
 protected:
 

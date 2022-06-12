@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.h 87318 2021-01-20 10:17:56Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.h 87322 2021-01-20 12:45:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class declaration.
  */
@@ -51,7 +51,7 @@ class UIWizardNewVMPageExpert : public UIWizardPage,
     Q_PROPERTY(QString userName READ userName WRITE setUserName);
     Q_PROPERTY(QString password READ password WRITE setPassword);
     Q_PROPERTY(QString hostname READ hostname WRITE setHostname);
-    Q_PROPERTY(bool installGuestAdditions READ installGuestAdditions WRITE setInstallGuestAdditions);
+    Q_PROPERTY(bool installGuestAdditions READ installGuestAdditions);
     Q_PROPERTY(QString guestAdditionsISOPath READ guestAdditionsISOPath WRITE setGuestAdditionsISOPath);
     Q_PROPERTY(QString productKey READ productKey);
     Q_PROPERTY(int VCPUCount READ VCPUCount);
@@ -78,9 +78,7 @@ private slots:
     void sltOsTypeChanged();
     void sltVirtualDiskSourceChanged();
     void sltGetWithFileOpenDialog();
-    void sltUnattendedCheckBoxToggle(bool fEnable);
     void sltISOPathChanged(const QString &strPath);
-    void sltInstallGACheckBoxToggle(bool fChecked);
     void sltGAISOPathChanged(const QString &strPath);
     void sltOSFamilyTypeChanged();
 
