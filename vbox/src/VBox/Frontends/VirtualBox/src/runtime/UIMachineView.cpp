@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 88249 2021-03-22 15:44:52Z vboxsync $ */
+/* $Id: UIMachineView.cpp 88678 2021-04-23 13:33:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -1006,8 +1006,11 @@ void UIMachineView::prepareConsoleConnections()
 
 void UIMachineView::cleanupFrameBuffer()
 {
+    /* Make sure framebuffer assigned at all: */
+    if (!m_pFrameBuffer)
+        return;
+
     /* Make sure proper framebuffer assigned: */
-    AssertReturnVoid(m_pFrameBuffer);
     AssertReturnVoid(m_pFrameBuffer == uisession()->frameBuffer(screenId()));
 
     /* Mark framebuffer as unused: */

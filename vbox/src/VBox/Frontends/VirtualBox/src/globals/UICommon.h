@@ -1,4 +1,4 @@
-/* $Id: UICommon.h 88656 2021-04-22 14:55:38Z vboxsync $ */
+/* $Id: UICommon.h 88678 2021-04-23 13:33:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class declaration.
  */
@@ -72,12 +72,6 @@ signals:
 
     /** @name Common stuff.
      * @{ */
-        /** Asks #UIStarter listener to commit data. */
-        void sigAskToCommitData();
-    /** @} */
-
-    /** @name COM stuff.
-     * @{ */
         /** Asks #UIStarter listener to restart UI. */
         void sigAskToRestartUI();
         /** Asks #UIStarter listener to close UI. */
@@ -85,6 +79,11 @@ signals:
 
         /** Notifies listeners about the VBoxSVC availability change. */
         void sigVBoxSVCAvailabilityChange();
+
+        /** Asks listeners to commit data. */
+        void sigAskToCommitData();
+        /** Asks listeners to detach COM. */
+        void sigAskToDetachCOM();
     /** @} */
 
     /** @name Cloud Virtual Machine stuff.

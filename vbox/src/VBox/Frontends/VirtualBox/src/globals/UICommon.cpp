@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 88664 2021-04-22 18:34:11Z vboxsync $ */
+/* $Id: UICommon.cpp 88678 2021-04-23 13:33:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -4657,6 +4657,7 @@ void UICommon::cleanup()
     m_comCleanupProtectionToken.lockForWrite();
     {
         /* First, make sure we don't use COM any more: */
+        emit sigAskToDetachCOM();
         m_comHost.detach();
         m_comVBox.detach();
         m_comVBoxClient.detach();
