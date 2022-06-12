@@ -1,4 +1,4 @@
-' $Id: configure.vbs 85782 2020-08-15 19:07:33Z vboxsync $
+' $Id: configure.vbs 85783 2020-08-15 19:08:12Z vboxsync $
 '' @file
 ' The purpose of this script is to check for all external tools, headers, and
 ' libraries VBox OSE depends on.
@@ -2066,7 +2066,8 @@ sub usage
    Print "Configuration:"
    Print "  -h, --help              Display this."
    Print "  --target-arch=x86|amd64 The target architecture."
-   Print "  --internal-last         Check internal (tools/win.*) last instad of first."
+   Print "  --internal-last         Check internal tools (tools/win.*) last."
+   Print "  --internal-first        Check internal tools (tools/win.*) first (default)."
    Print ""
    Print "Components:"
    Print "  --disable-COM           Disables all frontends and API."
