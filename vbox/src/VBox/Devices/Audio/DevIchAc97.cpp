@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 88991 2021-05-12 00:46:35Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 89186 2021-05-19 21:32:08Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -2889,8 +2889,9 @@ ichac97IoPortNabmWrite(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT offPort, uint3
 
                             /* Make sure that Run/Pause Bus Master bit (RPBM) is cleared (0). */
                             Assert((pRegs->cr & AC97_CR_RPBM) == 0);
+                            if (pRegs->cr & AC97_CR_RPBM)
+                                ichac97R3StreamEnable(pDevIns, pThis, pThisCC, pStream, pStreamCC, false /* fEnable */);
 
-                            ichac97R3StreamEnable(pDevIns, pThis, pThisCC, pStream, pStreamCC, false /* fEnable */);
                             ichac97R3StreamReset(pThis, pStream, pStreamCC);
 
                             ichac97StreamUpdateSR(pDevIns, pThis, pStream, AC97_SR_DCH); /** @todo Do we need to do that? */
