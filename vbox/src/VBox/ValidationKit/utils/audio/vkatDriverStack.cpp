@@ -1,4 +1,4 @@
-/* $Id: vkatDriverStack.cpp 89401 2021-05-31 13:17:26Z vboxsync $ */
+/* $Id: vkatDriverStack.cpp 89417 2021-05-31 20:58:14Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) - Driver stack code.
  */
@@ -28,30 +28,13 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#include <iprt/buildconfig.h>
-#include <iprt/ctype.h>
-#include <iprt/dir.h>
 #include <iprt/errcore.h>
-#include <iprt/initterm.h>
-#include <iprt/getopt.h>
 #include <iprt/message.h>
-#include <iprt/path.h>
-#include <iprt/process.h>
-#include <iprt/rand.h>
 #include <iprt/stream.h>
 #include <iprt/string.h>
 #include <iprt/uuid.h>
 #include <iprt/test.h>
 
-#include <package-generated.h>
-#include "product-generated.h"
-
-#include <VBox/version.h>
-#include <VBox/log.h>
-
-#ifdef RT_OS_WINDOWS
-# include <iprt/win/windows.h> /* for CoInitializeEx */
-#endif
 
 /**
  * Internal driver instance data
