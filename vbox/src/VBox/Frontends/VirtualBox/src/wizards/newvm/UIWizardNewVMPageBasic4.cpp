@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic4.cpp 87912 2021-03-02 12:46:18Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic4.cpp 87913 2021-03-02 13:25:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic4 class implementation.
  */
@@ -239,13 +239,6 @@ CMediumFormat UIWizardNewVMPageBasic4::mediumFormat() const
 QString UIWizardNewVMPageBasic4::mediumPath() const
 {
     return absoluteFilePath(toFileName(m_strDefaultName, m_strDefaultExtension), m_strDefaultPath);
-}
-
-int UIWizardNewVMPageBasic4::nextId() const
-{
-    if (m_pDiskNew->isChecked())
-        return UIWizardNewVM::Page5;
-    return UIWizardNewVM::Page8;
 }
 
 void UIWizardNewVMPageBasic4::prepare()
