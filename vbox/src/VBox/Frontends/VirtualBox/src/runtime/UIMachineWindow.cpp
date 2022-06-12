@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 86046 2020-09-07 15:27:58Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 86051 2020-09-07 16:17:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class implementation.
  */
@@ -222,6 +222,13 @@ const QString& UIMachineWindow::machineName() const
     return uisession()->machineName();
 }
 
+bool UIMachineWindow::shouldResizeToGuestDisplay() const
+{
+    return    actionPool()
+           && actionPool()->action(UIActionIndexRT_M_View_T_GuestAutoresize)
+           && actionPool()->action(UIActionIndexRT_M_View_T_GuestAutoresize)->isChecked();
+}
+
 void UIMachineWindow::adjustMachineViewSize()
 {
     /* We need to adjust guest-screen size if necessary: */
@@ -232,13 +239,6 @@ void UIMachineWindow::sendMachineViewSizeHint()
 {
     /* Send machine-view size-hint to the guest: */
     machineView()->resendSizeHint();
-}
-
-bool UIMachineWindow::shouldResizeToGuestDisplay() const
-{
-    return actionPool() &&
-           actionPool()->action(UIActionIndexRT_M_View_T_GuestAutoresize) &&
-           actionPool()->action(UIActionIndexRT_M_View_T_GuestAutoresize)->isChecked();
 }
 
 #ifdef VBOX_WITH_MASKED_SEAMLESS
