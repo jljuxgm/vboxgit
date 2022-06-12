@@ -1,4 +1,4 @@
-# $Id: .scm-settings 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: .scm-settings 89464 2021-06-02 12:04:25Z vboxsync $
 ## @file
 # Source code massager settings for the EFI Firmware.
 #
@@ -130,7 +130,7 @@
 #
 /VBoxPkg/VBoxFsDxe/test/*: --external-copyright --no-strip-trailing-blanks --no-fix-todos --strip-no-trailing-lines
 /VBoxPkg/VBoxVgaMiniPortDxe/VBoxVgaFont*.h: --external-copyright
-
+/VBoxPkg/E1kNetDxe/*.*: --external-copyright
 
 #/src/VBox/Devices/EFI/Firmware2/VBoxPkg/VBoxVgaDxe/Edid.c: --no-convert-tabs
 #/src/VBox/Devices/EFI/Firmware2/VBoxPkg/VBoxFsDxe/*.*: --no-convert-tabs
