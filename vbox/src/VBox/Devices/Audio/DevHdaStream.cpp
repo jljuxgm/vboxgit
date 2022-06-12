@@ -1,4 +1,4 @@
-/* $Id: DevHdaStream.cpp 89562 2021-06-08 08:45:11Z vboxsync $ */
+/* $Id: DevHdaStream.cpp 89638 2021-06-11 22:03:42Z vboxsync $ */
 /** @file
  * Intel HD Audio Controller Emulation - Streams.
  */
@@ -706,7 +706,7 @@ int hdaR3StreamSetUp(PPDMDEVINS pDevIns, PHDASTATE pThis, PHDASTREAM pStreamShar
     LogRel2(("HDA: Stream #%RU8 default ring buffer size is %RU32 bytes / %RU64 ms\n",
              uSD, cbCircBuf, PDMAudioPropsBytesToMilli(&pCfg->Props, cbCircBuf)));
 
-    uint32_t msCircBufCfg = hdaGetDirFromSD(uSD) == PDMAUDIODIR_IN ? pThis->cbCircBufInMs : pThis->cbCircBufOutMs;
+    uint32_t msCircBufCfg = hdaGetDirFromSD(uSD) == PDMAUDIODIR_IN ? pThis->cMsCircBufIn : pThis->cMsCircBufOut;
     if (msCircBufCfg) /* Anything set via CFGM? */
     {
         cbCircBuf = PDMAudioPropsMilliToBytes(&pCfg->Props, msCircBufCfg);
