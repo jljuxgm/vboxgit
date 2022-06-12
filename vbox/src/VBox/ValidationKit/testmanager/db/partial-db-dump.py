@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: partial-db-dump.py 86985 2020-11-26 13:57:42Z vboxsync $
+# $Id: partial-db-dump.py 86987 2020-11-26 14:25:20Z vboxsync $
 # pylint: disable=line-too-long
 
 """
@@ -28,7 +28,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 86985 $"
+__version__ = "$Revision: 86987 $"
 
 # Standard python imports
 import sys;
@@ -117,6 +117,7 @@ class PartialDbDump(object): # pylint: disable=too-few-public-methods
         'TestResultValues',             # 2016-05-25: ca. 3728 MB
         'TestResultFailures',
         'Builds',
+        'TestBoxStrTab',
         'SystemLog',
     ];
 
@@ -183,13 +184,6 @@ class PartialDbDump(object): # pylint: disable=too-few-public-methods
             idLastTestResult = oDb.fetchOne()[0];
         print('Last test result ID: %s' % (idLastTestResult,));
 
-        # Get the build ID range.
-        oDb.execute('SELECT MIN(idBuild), MIN(idBuildTestSuite) FROM TestSets WHERE idTestSet >= %s', (idFirstTestSet,));
-        idFirstBuild = 0;
-        if oDb.getRowCount() > 0:
-            idFirstBuild = min(oDb.fetchOne());
-        print('First build ID: %s' % (idFirstBuild,));
-
         # Tables with idTestSet member.
         for sTable in [ 'TestSets', 'TestResults', 'TestResultValues' ]:
             self._doCopyTo(sTable, oZipFile, oDb,
@@ -221,10 +215,31 @@ class PartialDbDump(object): # pylint: disable=too-few-public-methods
                            (tsEffective,));
 
         # The builds table.
+        oDb.execute('SELECT MIN(idBuild), MIN(idBuildTestSuite) FROM TestSets WHERE idTestSet >= %s', (idFirstTestSet,));
+        idFirstBuild = 0;
+        if oDb.getRowCount() > 0:
+            idFirstBuild = min(oDb.fetchOne());
+        print('First build ID: %s' % (idFirstBuild,));
         for sTable in [ 'Builds', ]:
             self._doCopyTo(sTable, oZipFile, oDb,
                            'COPY (SELECT * FROM ' + sTable + ' WHERE idBuild >= %s) TO STDOUT WITH (FORMAT TEXT)',
                            (idFirstBuild,));
+
+        # The test box string table.
+        self._doCopyTo('TestBoxStrTab', oZipFile, oDb, '''
+COPY (SELECT * FROM TestBoxStrTab WHERE idStr IN (
+                ( SELECT 0
+        ) UNION ( SELECT idStrComment     FROM TestBoxes WHERE tsExpire >= %s
+        ) UNION ( SELECT idStrCpuArch     FROM TestBoxes WHERE tsExpire >= %s
+        ) UNION ( SELECT idStrCpuName     FROM TestBoxes WHERE tsExpire >= %s
+        ) UNION ( SELECT idStrCpuVendor   FROM TestBoxes WHERE tsExpire >= %s
+        ) UNION ( SELECT idStrDescription FROM TestBoxes WHERE tsExpire >= %s
+        ) UNION ( SELECT idStrOS          FROM TestBoxes WHERE tsExpire >= %s
+        ) UNION ( SELECT idStrOsVersion   FROM TestBoxes WHERE tsExpire >= %s
+        ) UNION ( SELECT idStrReport      FROM TestBoxes WHERE tsExpire >= %s
+        ) ) ) TO STDOUT WITH (FORMAT TEXT)
+''', (tsEffectiveSafe, tsEffectiveSafe, tsEffectiveSafe, tsEffectiveSafe,
+      tsEffectiveSafe, tsEffectiveSafe, tsEffectiveSafe, tsEffectiveSafe,));
 
         oZipFile.close();
         print('Done!');
@@ -250,7 +265,6 @@ class PartialDbDump(object): # pylint: disable=too-few-public-methods
             'TestGroups',
             'TestGroupMembers',
             'SchedGroups',
-            'TestBoxStrTab',
             'TestBoxes',
             'SchedGroupMembers',
             'TestBoxesInSchedGroups',
