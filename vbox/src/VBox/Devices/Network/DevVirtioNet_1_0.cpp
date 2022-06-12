@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet_1_0.cpp 84388 2020-05-20 06:01:50Z vboxsync $ $Revision: 84388 $ $Date: 2020-05-20 14:01:50 +0800 (Wed, 20 May 2020) $ $Author: vboxsync $ */
+/* $Id: DevVirtioNet_1_0.cpp 84389 2020-05-20 06:19:44Z vboxsync $ $Revision: 84389 $ $Date: 2020-05-20 14:19:44 +0800 (Wed, 20 May 2020) $ $Author: vboxsync $ */
 
 /** @file
  * VBox storage devices - Virtio NET Driver
@@ -1862,10 +1862,7 @@ static uint8_t virtioNetR3CtrlRx(PPDMDEVINS pDevIns, PVIRTIONET pThis, PVIRTIONE
     }
 
     if (pThisCC->pDrv && fPromiscChanged)
-    {
-        bool fPromiscuous = pThis->fPromiscuous | pThis->fAllMulticast;
-        pThisCC->pDrv->pfnSetPromiscuousMode(pThisCC->pDrv, (uint8_t)fPromiscuous);
-    }
+        pThisCC->pDrv->pfnSetPromiscuousMode(pThisCC->pDrv, pThis->fPromiscuous | pThis->fAllMulticast);
 
     return VIRTIONET_OK;
 }
@@ -2075,7 +2072,7 @@ static void virtioNetR3Ctrl(PPDMDEVINS pDevIns, PVIRTIONET pThis, PVIRTIONETCC p
              INSTANCE(pThis), uAck == VIRTIONET_OK ? "VIRTIONET_OK" : "VIRTIONET_ERROR"));
 }
 
-static int virtioNetR3ReadHeader(PPDMDEVINS pDevIns, RTGCPHYS GCPhys, PVIRTIONET_PKT_HDR_T pPktHdr, uint32_t cbFrame)
+static int virtioNetR3ReadHeader(PPDMDEVINS pDevIns, RTGCPHYS GCPhys, PVIRTIONET_PKT_HDR_T pPktHdr, size_t cbFrame)
 {
     int rc = PDMDevHlpPCIPhysRead(pDevIns, GCPhys, pPktHdr, sizeof(*pPktHdr));
     if (RT_FAILURE(rc))
