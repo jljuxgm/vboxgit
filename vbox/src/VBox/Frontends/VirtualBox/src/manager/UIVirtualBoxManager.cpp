@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 84516 2020-05-25 16:12:58Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 84517 2020-05-25 16:23:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -774,6 +774,11 @@ void UIVirtualBoxManager::sltPerformMachineMove()
             msgCenter().cannotMoveMachine(comMachine);
     }
     comSession.UnlockMachine();
+}
+
+void UIVirtualBoxManager::sltPerformMachineRemove()
+{
+    m_pWidget->removeMachine();
 }
 
 void UIVirtualBoxManager::sltPerformMachineMoveToNewGroup()
@@ -1611,6 +1616,8 @@ void UIVirtualBoxManager::prepareConnections()
             this, &UIVirtualBoxManager::sltPerformMachineMove);
     connect(actionPool()->action(UIActionIndexST_M_Machine_S_ExportToOCI), &UIAction::triggered,
             this, &UIVirtualBoxManager::sltOpenExportApplianceWizard);
+    connect(actionPool()->action(UIActionIndexST_M_Machine_S_Remove), &UIAction::triggered,
+            this, &UIVirtualBoxManager::sltPerformMachineRemove);
     connect(actionPool()->action(UIActionIndexST_M_Machine_M_MoveToGroup_S_New), &UIAction::triggered,
             this, &UIVirtualBoxManager::sltPerformMachineMoveToNewGroup);
     connect(actionPool()->action(UIActionIndexST_M_Machine_M_StartOrShow), &UIAction::triggered,

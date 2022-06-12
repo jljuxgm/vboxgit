@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 84516 2020-05-25 16:12:58Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.h 84517 2020-05-25 16:23:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -209,6 +209,9 @@ private slots:
 
         /** Handles call to move machine. */
         void sltPerformMachineMove();
+
+        /** Handles call to remove machine. */
+        void sltPerformMachineRemove();
 
         /** Handles call to move machine to a new group. */
         void sltPerformMachineMoveToNewGroup();

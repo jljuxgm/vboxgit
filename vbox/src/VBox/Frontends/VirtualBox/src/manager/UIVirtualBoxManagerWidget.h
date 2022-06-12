@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.h 84516 2020-05-25 16:12:58Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.h 84517 2020-05-25 16:23:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class declaration.
  */
@@ -141,6 +141,8 @@ public:
         void openGroupNameEditor();
         /** Disbands group. */
         void disbandGroup();
+        /** Removes machine. */
+        void removeMachine();
         /** Moves machine to a new group. */
         void moveMachineToNewGroup();
         /** Refreshes machine. */
