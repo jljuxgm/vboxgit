@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioCoreAudio.cpp 89209 2021-05-20 21:55:29Z vboxsync $ */
+/* $Id: DrvHostAudioCoreAudio.cpp 89212 2021-05-21 08:22:44Z vboxsync $ */
 /** @file
  * Host audio driver - Mac OS X CoreAudio.
  *
@@ -2678,7 +2678,12 @@ static DECLCALLBACK(int) drvHostAudioCaConstruct(PPDMDRVINS pDrvIns, PCFGMNODE p
     /*
      * Create worker thread for running callbacks on.
      */
-    CFMachPortContext PortCtx = { .version = 0, .info = pThis, .retain = NULL, .release = NULL, .copyDescription = NULL };
+    CFMachPortContext PortCtx;
+    PortCtx.version         = 0;
+    PortCtx.info            = pThis;
+    PortCtx.retain          = NULL;
+    PortCtx.release         = NULL;
+    PortCtx.copyDescription = NULL;
     pThis->hThreadPort = CFMachPortCreate(NULL /*allocator*/, drvHostAudioCaThreadPortCallback, &PortCtx, NULL);
     AssertLogRelReturn(pThis->hThreadPort != NULL, VERR_NO_MEMORY);
 
