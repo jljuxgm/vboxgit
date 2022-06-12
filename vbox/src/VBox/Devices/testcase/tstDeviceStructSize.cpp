@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSize.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: tstDeviceStructSize.cpp 88229 2021-03-22 09:33:04Z vboxsync $ */
 /** @file
  * tstDeviceStructSize - testcase for check structure sizes/alignment
  *                       and to verify that HC and RC uses the same
@@ -135,7 +135,7 @@
 #undef LOG_GROUP
 #include "../Audio/DevIchAc97.cpp"
 #undef LOG_GROUP
-#include "../Audio/DevHDA.cpp"
+#include "../Audio/DevHda.h"
 
 
 /* Check that important preprocessor macros didn't get redefined: */
