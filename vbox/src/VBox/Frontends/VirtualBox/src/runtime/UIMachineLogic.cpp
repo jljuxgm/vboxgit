@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 88780 2021-04-29 11:13:13Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 88785 2021-04-29 14:02:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -1626,25 +1626,25 @@ void UIMachineLogic::sltShowSoftKeyboard()
         return;
 
     /* Create the soft keyboard only once: */
+    if (!m_pSoftKeyboardDialog)
+    {
+        QWidget *pCenterWidget = windowManager().realParentWindow(activeMachineWindow());
+        m_pSoftKeyboardDialog = new UISoftKeyboard(0, uisession(), pCenterWidget, machine().GetName());
+        connect(m_pSoftKeyboardDialog, &UISoftKeyboard::sigClose, this, &UIMachineLogic::sltCloseSoftKeyboard);
+    }
+
     if (m_pSoftKeyboardDialog)
     {
         m_pSoftKeyboardDialog->show();
         m_pSoftKeyboardDialog->raise();
         m_pSoftKeyboardDialog->setWindowState(m_pSoftKeyboardDialog->windowState() & ~Qt::WindowMinimized);
         m_pSoftKeyboardDialog->activateWindow();
-        return;
-    }
-    QWidget *pCenterWidget = windowManager().realParentWindow(activeMachineWindow());
-    m_pSoftKeyboardDialog = new UISoftKeyboard(0, uisession(), pCenterWidget, machine().GetName());
-    if (m_pSoftKeyboardDialog)
-    {
-        connect(m_pSoftKeyboardDialog, &QMainWindow::destroyed, this, &UIMachineLogic::sltSoftKeyboardClosed);
-        m_pSoftKeyboardDialog->show();
     }
 }
 
-void UIMachineLogic::sltSoftKeyboardClosed()
+void UIMachineLogic::sltCloseSoftKeyboard()
 {
+    delete m_pSoftKeyboardDialog;
     m_pSoftKeyboardDialog = 0;
 }
 
@@ -2809,6 +2809,7 @@ void UIMachineLogic::sltHandleCommitData()
 #endif
     sltCloseFileManagerDialog();
     sltCloseVMInformationDialog();
+    sltCloseSoftKeyboard();
 }
 
 void UIMachineLogic::typeHostKeyComboPressRelease(bool fToggleSequence)
