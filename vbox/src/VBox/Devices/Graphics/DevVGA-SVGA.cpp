@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 84750 2020-06-10 09:39:34Z vboxsync $ */
+/* $Id: DevVGA-SVGA.cpp 84754 2020-06-10 12:09:27Z vboxsync $ */
 /** @file
  * VMware SVGA device.
  *
@@ -3657,12 +3657,13 @@ static DECLCALLBACK(int) vmsvgaR3FifoLoop(PPDMDEVINS pDevIns, PPDMTHREAD pThread
     PVMSVGAR3STATE  pSVGAState = pThisCC->svga.pSvgaR3State;
     int             rc;
 
-#if 0 /** @todo r=aeichner Crashes on the testboxes and locally due to a NULL pointer dereference, glLdrInit() probably not called.
-       * Is this really necessary as glLdrInit() will call XInitThreads() itself. */
-# ifdef RT_OS_LINUX
-    XInitThreads();
+# if defined(VBOX_WITH_VMSVGA3D) && defined(RT_OS_LINUX)
+    if (pThis->svga.f3DEnabled)
+    {
+        /* The FIFO thread may use X API for accelerated screen output. */
+        XInitThreads();
+    }
 # endif
-#endif
 
     if (pThread->enmState == PDMTHREADSTATE_INITIALIZING)
         return VINF_SUCCESS;
