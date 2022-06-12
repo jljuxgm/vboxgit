@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageBasic1.cpp 87025 2020-12-01 15:33:14Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageBasic1.cpp 88103 2021-03-12 13:32:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageBasic1 class implementation.
  */
@@ -258,7 +258,8 @@ void UIWizardNewCloudVMPage1::populateSourceImages()
             }
 
             /* Show "Acquire cloud images" progress: */
-            msgCenter().showModalProgressDialog(comProgress, QString(), ":/progress_reading_appliance_90px.png", 0, 0);
+            msgCenter().showModalProgressDialog(comProgress, QString(),
+                                                ":/progress_reading_appliance_90px.png", 0, 0);
             if (comProgress.GetCanceled())
             {
                 wizardImp()->reject();

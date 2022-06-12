@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageBasic1.cpp 86687 2020-10-23 13:46:16Z vboxsync $ */
+/* $Id: UIWizardImportAppPageBasic1.cpp 88103 2021-03-12 13:32:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageBasic1 class implementation.
  */
@@ -253,7 +253,7 @@ void UIWizardImportAppPage1::populateProfileInstances()
             }
 
             /* Show "Acquire cloud instances" progress: */
-            msgCenter().showModalProgressDialog(comProgress, UIWizardImportApp::tr("Acquire cloud instances ..."),
+            msgCenter().showModalProgressDialog(comProgress, QString(),
                                                 ":/progress_reading_appliance_90px.png", 0, 0);
             if (!comProgress.isOk() || comProgress.GetResultCode() != 0)
             {
