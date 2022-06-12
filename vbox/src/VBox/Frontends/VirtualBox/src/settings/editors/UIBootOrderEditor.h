@@ -1,4 +1,4 @@
-/* $Id: UIBootOrderEditor.h 86085 2020-09-10 13:57:52Z vboxsync $ */
+/* $Id: UIBootOrderEditor.h 86089 2020-09-11 09:54:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIBootListWidget class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef FEQT_INCLUDED_SRC_widgets_UIBootOrderEditor_h
-#define FEQT_INCLUDED_SRC_widgets_UIBootOrderEditor_h
+#ifndef FEQT_INCLUDED_SRC_settings_editors_UIBootOrderEditor_h
+#define FEQT_INCLUDED_SRC_settings_editors_UIBootOrderEditor_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -137,4 +137,4 @@ private:
 };
 
 
-#endif /* !FEQT_INCLUDED_SRC_widgets_UIBootOrderEditor_h */
+#endif /* !FEQT_INCLUDED_SRC_settings_editors_UIBootOrderEditor_h */

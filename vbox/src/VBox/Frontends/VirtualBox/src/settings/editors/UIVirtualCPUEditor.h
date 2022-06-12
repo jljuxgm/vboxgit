@@ -1,4 +1,4 @@
-/* $Id: UIVirtualCPUEditor.h 86085 2020-09-10 13:57:52Z vboxsync $ */
+/* $Id: UIVirtualCPUEditor.h 86089 2020-09-11 09:54:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualCPUEditor class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef FEQT_INCLUDED_SRC_widgets_UIVirtualCPUEditor_h
-#define FEQT_INCLUDED_SRC_widgets_UIVirtualCPUEditor_h
+#ifndef FEQT_INCLUDED_SRC_settings_editors_UIVirtualCPUEditor_h
+#define FEQT_INCLUDED_SRC_settings_editors_UIVirtualCPUEditor_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -82,4 +82,4 @@ private:
 
 };
 
-#endif /* !FEQT_INCLUDED_SRC_widgets_UIVirtualCPUEditor_h */
+#endif /* !FEQT_INCLUDED_SRC_settings_editors_UIVirtualCPUEditor_h */

@@ -1,4 +1,4 @@
-/* $Id: UIHostComboEditor.h 86085 2020-09-10 13:57:52Z vboxsync $ */
+/* $Id: UIHostComboEditor.h 86089 2020-09-11 09:54:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHostComboEditor class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef FEQT_INCLUDED_SRC_widgets_UIHostComboEditor_h
-#define FEQT_INCLUDED_SRC_widgets_UIHostComboEditor_h
+#ifndef FEQT_INCLUDED_SRC_settings_editors_UIHostComboEditor_h
+#define FEQT_INCLUDED_SRC_settings_editors_UIHostComboEditor_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -244,4 +244,4 @@ private:
 };
 
 
-#endif /* !FEQT_INCLUDED_SRC_widgets_UIHostComboEditor_h */
+#endif /* !FEQT_INCLUDED_SRC_settings_editors_UIHostComboEditor_h */
