@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic1.h 87322 2021-01-20 12:45:43Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic1.h 87368 2021-01-22 13:34:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic1 class declaration.
  */
@@ -104,7 +104,6 @@ private:
 
     /** Return false if ISO path is not empty but points to an missing or unreadable file. */
     bool checkISOFile() const;
-    QFrame *horizontalLine();
 
     /** Full path (including the file name) of the machine's configuration file. */
     QString m_strMachineFilePath;
