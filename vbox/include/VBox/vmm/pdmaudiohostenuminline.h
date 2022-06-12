@@ -1,4 +1,4 @@
-/* $Id: pdmaudiohostenuminline.h 88047 2021-03-09 14:06:20Z vboxsync $ */
+/* $Id: pdmaudiohostenuminline.h 88048 2021-03-09 14:07:00Z vboxsync $ */
 /** @file
  * PDM - Audio Helpers, Inlined Code. (DEV,++)
  *
@@ -349,4 +349,4 @@ DECLINLINE(void) PDMAudioHostEnumLog(PCPDMAUDIOHOSTENUM pDevEnm, const char *psz
     }
 }
 
-#endif /* VBOX_INCLUDED_vmm_pdmaudiohostenuminline_h */
+#endif /* !VBOX_INCLUDED_vmm_pdmaudiohostenuminline_h */
