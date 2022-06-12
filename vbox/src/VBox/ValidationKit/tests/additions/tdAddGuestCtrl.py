@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84921 $"
+__version__ = "$Revision: 84927 $"
 
 # Standard Python imports.
 import errno
@@ -1657,7 +1657,7 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
                                         'HKLM\\SYSTEM\\CurrentControlSet\\Services\\VBoxService',
                                         '/v', 'ImagePath', '/t', 'REG_SZ', '/d', sImagePath, '/f'));
             elif oTestVm.isLinux():
-                sPathSed = '/bin/sed';
+                sPathSed = oTestVm.pathJoin(self.oTstDrv.getGuestSystemDir(oTestVm), 'sed');
                 fRestartVBoxService = self.oTstDrv.txsRunTest(oTxsSession, 'Enabling VBoxService verbose logging', 30 * 1000,
                                          sPathSed,
                                         (sPathSed, '-i', '-e', 's/'
