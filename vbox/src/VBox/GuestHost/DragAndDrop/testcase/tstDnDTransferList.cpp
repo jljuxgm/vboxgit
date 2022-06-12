@@ -1,4 +1,4 @@
-/* $Id: tstDnDTransferList.cpp 85660 2020-08-10 11:29:43Z vboxsync $ */
+/* $Id: tstDnDTransferList.cpp 85663 2020-08-10 13:58:32Z vboxsync $ */
 /** @file
  * DnD transfer list  tests.
  */
@@ -125,19 +125,22 @@ int main()
     DnDTransferListDestroy(&list);
 
     /* From URI data. */
-    const char szURI[] =
 #ifdef RT_OS_WINDOWS
-    "file:///C:/Windows/System32/Boot/\r\n"
-    "file:///C:/Windows/System/\r\n";
+    RTStrPrintf(szPathTest, sizeof(szPathTest),  "C:/Windows/");
+    const char szURI[] =
+        "file:///C:/Windows/System32/Boot/\r\n"
+        "file:///C:/Windows/System/\r\n";
 #else
-    "file:///bin/\r\n"
-    "file:///usr/bin/\r\n";
+    RTStrPrintf(szPathTest, sizeof(szPathTest), "/usr/");
+    const char szURI[] =
+        "file:///usr/local\r\n"
+        "file:///usr/bin/\r\n";
 #endif
 
     RTTEST_CHECK_RC(hTest, DnDTransferListAppendPathsFromBuffer(&list, DNDTRANSFERLISTFMT_URI, szURI, sizeof(szURI), "\r\n",
                                                                 DNDTRANSFERLIST_FLAGS_NONE), VINF_SUCCESS);
     RTTEST_CHECK(hTest, DnDTransferListGetRootCount(&list) == 2);
-    RTTEST_CHECK(hTest, RTPathCompare(DnDTransferListGetRootPathAbs(&list), "C:/Windows/") == 0);
+    RTTEST_CHECK(hTest, RTPathCompare(DnDTransferListGetRootPathAbs(&list), szPathTest) == 0);
     RTTEST_CHECK_RC(hTest, DnDTransferListGetRootsEx(&list, DNDTRANSFERLISTFMT_NATIVE, "/native/base/path", "\n", &pszBuf, &cbBuf), VINF_SUCCESS);
     RTTestPrintf(hTest, RTTESTLVL_ALWAYS, "Roots (URI, new base):\n%s\n", pszBuf);
     RTTEST_CHECK_RC(hTest, DnDTransferListGetRootsEx(&list, DNDTRANSFERLISTFMT_NATIVE, "\\windows\\path", "\n", &pszBuf, &cbBuf), VINF_SUCCESS);
