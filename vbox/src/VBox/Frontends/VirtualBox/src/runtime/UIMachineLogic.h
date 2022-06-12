@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIMachineLogic.h 84990 2020-06-29 11:34:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -226,7 +226,7 @@ protected:
     virtual void prepareSessionConnections();
     virtual void prepareActionGroups();
     virtual void prepareActionConnections();
-    virtual void prepareOtherConnections() {}
+    virtual void prepareOtherConnections();
     virtual void prepareHandlers();
     virtual void prepareMachineWindows() = 0;
     virtual void prepareMenu() {}
@@ -351,6 +351,9 @@ private slots:
 
     /** Close Runtime UI. */
     void sltCloseRuntimeUI() { closeRuntimeUI(); }
+
+    /** Handles request for visual state change. */
+    void sltHandleVisualStateChange();
 
 private:
 

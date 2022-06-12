@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 84790 2020-06-11 10:30:36Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 84990 2020-06-29 11:34:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -79,6 +79,9 @@ signals:
     void sigDetailsCategoriesChange();
     /** Notifies about VirtualBox Manager / Details pane options change. */
     void sigDetailsOptionsChange(DetailsElementType enmType);
+
+    /** Notifies about visual state change. */
+    void sigVisualStateChange(const QUuid &uMachineID);
 
     /** Notifies about menu-bar configuration change. */
     void sigMenuBarConfigurationChange(const QUuid &uMachineID);

@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 84790 2020-06-11 10:30:36Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 84990 2020-06-29 11:34:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -4626,6 +4626,11 @@ void UIExtraDataManager::sltExtraDataChange(const QUuid &uMachineID, const QStri
                  strKey == GUI_RestrictedStatusBarIndicators ||
                  strKey == GUI_StatusBar_IndicatorOrder)
             emit sigStatusBarConfigurationChange(uMachineID);
+        /* Visual state change: */
+        else if (strKey == GUI_Fullscreen ||
+                 strKey == GUI_Seamless ||
+                 strKey == GUI_Scale)
+            emit sigVisualStateChange(uMachineID);
         /* Scale-factor change: */
         else if (strKey == GUI_ScaleFactor)
             emit sigScaleFactorChange(uMachineID);
