@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 88823 2021-05-03 10:49:09Z vboxsync $ */
+/* $Id: DrvAudio.cpp 88824 2021-05-03 10:50:04Z vboxsync $ */
 /** @file
  * Intermediate audio driver - Connects the audio device emulation with the host backend.
  */
@@ -974,7 +974,7 @@ static DECLCALLBACK(void) drvAudioStreamConfigHint(PPDMIAUDIOCONNECTOR pInterfac
  */
 static DECLCALLBACK(void) drvAudioStreamInitAsync(PDRVAUDIO pThis, PDRVAUDIOSTREAM pStreamEx)
 {
-    LogFlow(("pThis=%p pStreamEx=%p (%s)\n", pThis, pStreamEx->Core.szName));
+    LogFlow(("pThis=%p pStreamEx=%p (%s)\n", pThis, pStreamEx, pStreamEx->Core.szName));
 
     /*
      * Do the init job.
