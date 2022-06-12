@@ -1,4 +1,4 @@
-# $Id: Config.kmk 89610 2021-06-10 16:32:50Z vboxsync $
+# $Id: Config.kmk 89626 2021-06-11 10:58:34Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -160,6 +160,7 @@ INST_PACKAGES         = packages/
 VBOX_PATH_SDK         = $(patsubst %/,%,$(PATH_STAGE)/$(INST_SDK))
 VBOX_PATH_DIST        = $(patsubst %/,%,$(PATH_STAGE)/$(INST_DIST))
 VBOX_PATH_VALIDATIONKIT = $(patsubst %/,%,$(PATH_STAGE)/$(INST_VALIDATIONKIT))
+VBOX_PATH_VALIDATIONKIT_BIN := $(VBOX_PATH_VALIDATIONKIT)/$(KBUILD_TARGET)/$(KBUILD_TARGET_ARCH)
 VBOX_PATH_ADDITIONS   = $(patsubst %/,%,$(PATH_STAGE)/$(INST_ADDITIONS))
 VBOX_PATH_ADDITIONS_ISO = $(patsubst %/,%,$(PATH_STAGE)/$(INST_ADDITIONS_ISO))
 VBOX_PATH_ADDITIONS_LIB = $(patsubst %/,%,$(PATH_STAGE)/$(INST_ADDITIONS_LIB))
@@ -8235,7 +8236,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 89610 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 89626 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
