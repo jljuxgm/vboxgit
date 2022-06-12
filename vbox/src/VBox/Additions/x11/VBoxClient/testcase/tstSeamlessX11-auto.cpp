@@ -1,4 +1,4 @@
-/* $Id: tstSeamlessX11-auto.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: tstSeamlessX11-auto.cpp 86395 2020-10-01 17:08:02Z vboxsync $ */
 /** @file
  * Automated test of the X11 seamless Additions code.
  * @todo Better separate test data from implementation details!
@@ -747,6 +747,11 @@ int main( int argc, char **argv)
     g_pszTestName = RTPathFilename(argv[0]);
 
     RTPrintf("%s: TESTING\n", g_pszTestName);
+
+/** @todo r=bird: This testcase is broken and we didn't notice because we
+ *        don't run it on the testboxes! */
+RTPrintf("%s: Note! This testcase is broken!\n", g_pszTestName);
+
     cErrs += smlsDoFixture(&g_testMove,
                            "ConfigureNotify event (window moved)");
     // Currently not working
