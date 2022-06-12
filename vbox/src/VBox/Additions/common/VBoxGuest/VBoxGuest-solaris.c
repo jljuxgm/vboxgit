@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-solaris.c 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxGuest-solaris.c 87579 2021-02-03 15:48:28Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions Driver for Solaris.
  */
@@ -1085,13 +1085,6 @@ static uint_t vgdrvSolarisISR(caddr_t Arg)
 }
 
 
-/**
- * Poll notifier for mouse poll events.
- *
- * @param   pDevExt   Pointer to the device extension.
- *
- * @remarks This must be called without holding any spinlocks.
- */
 void VGDrvNativeISRMousePollEvent(PVBOXGUESTDEVEXT pDevExt)
 {
     LogFlow(("VGDrvNativeISRMousePollEvent:\n"));

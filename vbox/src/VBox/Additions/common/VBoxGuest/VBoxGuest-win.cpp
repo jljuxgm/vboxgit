@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-win.cpp 83821 2020-04-19 01:10:05Z vboxsync $ */
+/* $Id: VBoxGuest-win.cpp 87579 2021-02-03 15:48:28Z vboxsync $ */
 /** @file
  * VBoxGuest - Windows specifics.
  */
@@ -3084,11 +3084,6 @@ static BOOLEAN NTAPI vgdrvNtIsrHandler(PKINTERRUPT pInterrupt, PVOID pServiceCon
 }
 
 
-/**
- * Overridden routine for mouse polling events.
- *
- * @param pDevExt     Device extension structure.
- */
 void VGDrvNativeISRMousePollEvent(PVBOXGUESTDEVEXT pDevExt)
 {
     NOREF(pDevExt);
