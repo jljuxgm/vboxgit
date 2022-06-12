@@ -1,4 +1,4 @@
-/* $Id: SUPDrvInternal.h 87706 2021-02-11 00:03:12Z vboxsync $ */
+/* $Id: SUPDrvInternal.h 87709 2021-02-11 00:11:20Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
@@ -92,6 +92,10 @@
 #       include <linux/module.h>
 #       if (defined(RT_ARCH_X86) || defined(RT_ARCH_AMD64)) && defined(SUPDRV_AGNOSTIC) /* fix conflicts with iprt/x86.h */
 #           undef CS
+#           undef DS
+#           undef ES
+#           undef FS
+#           undef GS
 #           undef SS
 #           undef EFLAGS
 #           undef R15
