@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 86125 2020-09-14 17:55:07Z vboxsync $ */
+/* $Id: MediumImpl.cpp 86295 2020-09-25 21:04:21Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -4797,19 +4797,20 @@ void Medium::i_saveSettingsOne(settings::Medium &data, const Utf8Str &strHardDis
             for (MediumFormat::PropertyArray::const_iterator itf = m->formatObj->i_getProperties().begin();
                  itf != m->formatObj->i_getProperties().end();
                  ++itf)
-             {
-                if (itf->strName.equals(name) &&
-                    (itf->flags & VD_CFGKEY_CREATEONLY))
+            {
+                if (   itf->strName.equals(name)
+                    && (itf->flags & VD_CFGKEY_CREATEONLY))
                 {
-                        fCreateOnly = true;
-                        break;
+                    fCreateOnly = true;
+                    break;
                 }
             }
             if (!fCreateOnly)
                 /* do NOT store the plain InitiatorSecret */
                 if (   !fHaveInitiatorSecretEncrypted
                     || !name.equals("InitiatorSecret"))
-                            data.properties[name] = value;        }
+                    data.properties[name] = value;
+        }
     }
     if (fHaveInitiatorSecretEncrypted)
         data.properties["InitiatorSecretEncrypted"] = strCiphertext;
