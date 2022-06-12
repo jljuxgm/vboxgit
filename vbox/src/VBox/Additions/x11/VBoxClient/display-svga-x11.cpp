@@ -1,4 +1,4 @@
-/* $Id: display-svga-x11.cpp 84831 2020-06-15 12:28:46Z vboxsync $ */
+/* $Id: display-svga-x11.cpp 84832 2020-06-15 12:41:21Z vboxsync $ */
 /** @file
  * X11 guest client - VMSVGA emulation resize event pass-through to X.Org
  * guest driver.
@@ -649,10 +649,11 @@ static bool callVMWCTRL(struct RANDROUTPUT *paOutputs)
         extents[i].height = hHeight;
         hRunningOffset += hWidth;
     }
-    return VMwareCtrlSetTopology(x11Context.pDisplay, x11Context.hVMWCtrlMajorOpCode,
-                                 DefaultScreen(x11Context.pDisplay),
-                                 extents, x11Context.hOutputCount);
+    bool fResult = VMwareCtrlSetTopology(x11Context.pDisplay, x11Context.hVMWCtrlMajorOpCode,
+                                         DefaultScreen(x11Context.pDisplay),
+                                         extents, x11Context.hOutputCount);
     free(extents);
+    return fResult;
 }
 
 /**
