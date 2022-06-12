@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 88027 2021-03-08 18:55:08Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 88028 2021-03-08 19:31:22Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -23,6 +23,7 @@
 #include <VBox/log.h>
 #include <VBox/vmm/pdmdev.h>
 #include <VBox/vmm/pdmaudioifs.h>
+#include <VBox/vmm/pdmaudioinline.h>
 
 #include <iprt/assert.h>
 #ifdef IN_RING3

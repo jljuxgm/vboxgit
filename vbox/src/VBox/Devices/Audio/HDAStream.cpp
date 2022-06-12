@@ -1,4 +1,4 @@
-/* $Id: HDAStream.cpp 88022 2021-03-08 17:50:57Z vboxsync $ */
+/* $Id: HDAStream.cpp 88028 2021-03-08 19:31:22Z vboxsync $ */
 /** @file
  * HDAStream.cpp - Stream functions for HD Audio.
  */
@@ -28,6 +28,7 @@
 #include <VBox/AssertGuest.h>
 #include <VBox/vmm/pdmdev.h>
 #include <VBox/vmm/pdmaudioifs.h>
+#include <VBox/vmm/pdmaudioinline.h>
 
 #include "DrvAudio.h"
 

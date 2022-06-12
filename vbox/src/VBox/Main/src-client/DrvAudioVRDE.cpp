@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVRDE.cpp 88023 2021-03-08 18:01:15Z vboxsync $ */
+/* $Id: DrvAudioVRDE.cpp 88028 2021-03-08 19:31:22Z vboxsync $ */
 /** @file
  * VRDE audio backend for Main.
  */
@@ -27,16 +27,15 @@
 #include "ConsoleImpl.h"
 #include "ConsoleVRDPServer.h"
 
-#include "../../Devices/Audio/DrvAudio.h"
-
 #include <iprt/mem.h>
 #include <iprt/cdefs.h>
 #include <iprt/circbuf.h>
 
-#include <VBox/vmm/pdmaudioifs.h>
-#include <VBox/vmm/pdmdrv.h>
-#include <VBox/RemoteDesktop/VRDE.h>
 #include <VBox/vmm/cfgm.h>
+#include <VBox/vmm/pdmdrv.h>
+#include <VBox/vmm/pdmaudioifs.h>
+#include <VBox/vmm/pdmaudioinline.h>
+#include <VBox/RemoteDesktop/VRDE.h>
 #include <VBox/err.h>
 
 

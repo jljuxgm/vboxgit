@@ -1,4 +1,4 @@
-/* $Id: DrvHostPulseAudio.cpp 88027 2021-03-08 18:55:08Z vboxsync $ */
+/* $Id: DrvHostPulseAudio.cpp 88028 2021-03-08 19:31:22Z vboxsync $ */
 /** @file
  * VBox audio devices: Pulse Audio audio driver.
  */
@@ -22,6 +22,7 @@
 #define LOG_GROUP LOG_GROUP_DRV_HOST_AUDIO
 #include <VBox/log.h>
 #include <VBox/vmm/pdmaudioifs.h>
+#include <VBox/vmm/pdmaudioinline.h>
 
 #include <stdio.h>
 
@@ -31,8 +32,8 @@
 #include <iprt/semaphore.h>
 
 RT_C_DECLS_BEGIN
- #include "pulse_mangling.h"
- #include "pulse_stubs.h"
+# include "pulse_mangling.h"
+# include "pulse_stubs.h"
 RT_C_DECLS_END
 
 #include <pulse/pulseaudio.h>

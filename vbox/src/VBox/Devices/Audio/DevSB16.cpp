@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 88025 2021-03-08 18:31:56Z vboxsync $ */
+/* $Id: DevSB16.cpp 88028 2021-03-08 19:31:22Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  */
@@ -55,6 +55,7 @@
 
 #include <VBox/vmm/pdmdev.h>
 #include <VBox/vmm/pdmaudioifs.h>
+#include <VBox/vmm/pdmaudioinline.h>
 #include <VBox/AssertGuest.h>
 
 #include "VBoxDD.h"

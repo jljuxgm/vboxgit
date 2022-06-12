@@ -1,4 +1,4 @@
-/* $Id: HDAStreamPeriod.cpp 88016 2021-03-08 13:14:14Z vboxsync $ */
+/* $Id: HDAStreamPeriod.cpp 88028 2021-03-08 19:31:22Z vboxsync $ */
 /** @file
  * HDAStreamPeriod.cpp - Stream period functions for HD Audio.
  *
@@ -34,6 +34,7 @@
 
 #include <VBox/vmm/pdmdev.h>
 #include <VBox/vmm/pdmaudioifs.h>
+#include <VBox/vmm/pdmaudioinline.h>
 
 #include "DrvAudio.h"
 #include "HDAStreamPeriod.h"

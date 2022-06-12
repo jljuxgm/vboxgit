@@ -1,4 +1,4 @@
-/* $Id: HDACodec.cpp 88027 2021-03-08 18:55:08Z vboxsync $ */
+/* $Id: HDACodec.cpp 88028 2021-03-08 19:31:22Z vboxsync $ */
 /** @file
  * HDACodec - VBox HD Audio Codec.
  *
@@ -28,6 +28,7 @@
 #include <VBox/AssertGuest.h>
 #include <VBox/vmm/pdmdev.h>
 #include <VBox/vmm/pdmaudioifs.h>
+#include <VBox/vmm/pdmaudioinline.h>
 
 #include <iprt/assert.h>
 #include <iprt/uuid.h>

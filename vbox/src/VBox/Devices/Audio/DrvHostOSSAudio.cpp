@@ -1,4 +1,4 @@
-/* $Id: DrvHostOSSAudio.cpp 88023 2021-03-08 18:01:15Z vboxsync $ */
+/* $Id: DrvHostOSSAudio.cpp 88028 2021-03-08 19:31:22Z vboxsync $ */
 /** @file
  * OSS (Open Sound System) host audio backend.
  */
@@ -28,6 +28,7 @@
 #define LOG_GROUP LOG_GROUP_DRV_HOST_AUDIO
 #include <VBox/log.h>
 #include <VBox/vmm/pdmaudioifs.h>
+#include <VBox/vmm/pdmaudioinline.h>
 
 #include "DrvAudio.h"
 #include "VBoxDD.h"

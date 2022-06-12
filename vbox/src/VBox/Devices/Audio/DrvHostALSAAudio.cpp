@@ -1,4 +1,4 @@
-/* $Id: DrvHostALSAAudio.cpp 88023 2021-03-08 18:01:15Z vboxsync $ */
+/* $Id: DrvHostALSAAudio.cpp 88028 2021-03-08 19:31:22Z vboxsync $ */
 /** @file
  * ALSA audio driver.
  */
@@ -49,10 +49,11 @@
 #include <iprt/alloc.h>
 #include <iprt/uuid.h> /* For PDMIBASE_2_PDMDRV. */
 #include <VBox/vmm/pdmaudioifs.h>
+#include <VBox/vmm/pdmaudioinline.h>
 
 RT_C_DECLS_BEGIN
- #include "alsa_stubs.h"
- #include "alsa_mangling.h"
+# include "alsa_stubs.h"
+# include "alsa_mangling.h"
 RT_C_DECLS_END
 
 #include <alsa/asoundlib.h>

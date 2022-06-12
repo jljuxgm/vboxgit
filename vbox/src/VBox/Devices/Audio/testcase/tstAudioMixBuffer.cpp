@@ -1,4 +1,4 @@
-/* $Id: tstAudioMixBuffer.cpp 88022 2021-03-08 17:50:57Z vboxsync $ */
+/* $Id: tstAudioMixBuffer.cpp 88028 2021-03-08 19:31:22Z vboxsync $ */
 /** @file
  * Audio testcase - Mixing buffer.
  */
@@ -27,6 +27,7 @@
 #include <iprt/string.h>
 #include <iprt/test.h>
 
+#include <VBox/vmm/pdmaudioinline.h>
 
 #include "../AudioMixBuffer.h"
 #include "../DrvAudio.h"

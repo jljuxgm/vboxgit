@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 88026 2021-03-08 18:41:53Z vboxsync $ */
+/* $Id: AudioMixer.cpp 88028 2021-03-08 19:31:22Z vboxsync $ */
 /** @file
  * Audio mixing routines for multiplexing audio sources in device emulations.
  *
@@ -79,6 +79,7 @@
 #include <VBox/err.h>
 #include <VBox/vmm/mm.h>
 #include <VBox/vmm/pdmaudioifs.h>
+#include <VBox/vmm/pdmaudioinline.h>
 
 #include <iprt/alloc.h>
 #include <iprt/asm-math.h>
