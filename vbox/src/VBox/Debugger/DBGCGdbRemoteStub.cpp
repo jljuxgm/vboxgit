@@ -1,4 +1,4 @@
-/* $Id: DBGCGdbRemoteStub.cpp 86327 2020-09-28 16:20:50Z vboxsync $ */
+/* $Id: DBGCGdbRemoteStub.cpp 86755 2020-10-29 08:30:25Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, GDB Remote Stub.
  */
@@ -2381,22 +2381,22 @@ static int dbgcGdbStubCtxProcessEvent(PGDBSTUBCTX pThis, PCDBGFEVENT pEvent)
         case DBGFEVENT_BREAKPOINT_MMIO:
         case DBGFEVENT_BREAKPOINT_HYPER:
         {
-            rc = dbgcBpExec(pDbgc, pEvent->u.Bp.iBp);
+            rc = dbgcBpExec(pDbgc, pEvent->u.Bp.hBp);
             switch (rc)
             {
                 case VERR_DBGC_BP_NOT_FOUND:
                     rc = pDbgc->CmdHlp.pfnPrintf(&pDbgc->CmdHlp, NULL, "\ndbgf event: Unknown breakpoint %u! (%s)\n",
-                                                 pEvent->u.Bp.iBp, dbgcGetEventCtx(pEvent->enmCtx));
+                                                 pEvent->u.Bp.hBp, dbgcGetEventCtx(pEvent->enmCtx));
                     break;
 
                 case VINF_DBGC_BP_NO_COMMAND:
                     rc = pDbgc->CmdHlp.pfnPrintf(&pDbgc->CmdHlp, NULL, "\ndbgf event: Breakpoint %u! (%s)\n",
-                                                 pEvent->u.Bp.iBp, dbgcGetEventCtx(pEvent->enmCtx));
+                                                 pEvent->u.Bp.hBp, dbgcGetEventCtx(pEvent->enmCtx));
                     break;
 
                 case VINF_BUFFER_OVERFLOW:
                     rc = pDbgc->CmdHlp.pfnPrintf(&pDbgc->CmdHlp, NULL, "\ndbgf event: Breakpoint %u! Command too long to execute! (%s)\n",
-                                                 pEvent->u.Bp.iBp, dbgcGetEventCtx(pEvent->enmCtx));
+                                                 pEvent->u.Bp.hBp, dbgcGetEventCtx(pEvent->enmCtx));
                     break;
 
                 default:
