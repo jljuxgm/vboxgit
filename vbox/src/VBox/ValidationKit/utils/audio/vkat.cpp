@@ -1,4 +1,4 @@
-/* $Id: vkat.cpp 88987 2021-05-11 16:39:05Z vboxsync $ */
+/* $Id: vkat.cpp 88997 2021-05-12 06:33:12Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) utility for testing and validating the audio stack.
  */
@@ -868,14 +868,14 @@ int audioTestMain(int argc, char **argv)
  */
 int audioVerifyOne(const char *pszPath, const char *pszTag)
 {
-    RTTestSubF(g_hTest, "Verifying test set (tag '%s') ...", pszTag ? pszTag : "<Default>");
+    RTTestSubF(g_hTest, "Verifying test set (tag '%s') ...", pszTag ? pszTag : "default");
 
     AUDIOTESTSET tstSet;
     int rc = AudioTestSetOpen(&tstSet, pszPath);
     if (RT_SUCCESS(rc))
     {
         AUDIOTESTERRORDESC errDesc;
-        rc = AudioTestSetVerify(&tstSet, pszTag, &errDesc);
+        rc = AudioTestSetVerify(&tstSet, pszTag ? pszTag : "default", &errDesc);
         if (RT_SUCCESS(rc))
         {
             if (AudioTestErrorDescFailed(&errDesc))
