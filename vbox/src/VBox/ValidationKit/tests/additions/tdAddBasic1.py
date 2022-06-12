@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 84428 2020-05-20 19:15:45Z vboxsync $
+# $Id: tdAddBasic1.py 84429 2020-05-20 20:44:26Z vboxsync $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84428 $"
+__version__ = "$Revision: 84429 $"
 
 # Standard Python imports.
 import os;
@@ -201,7 +201,7 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
             reporter.testStart('Enabling udev logging ...');
             oSession, oTxsSession = self.startVmAndConnectToTxsViaTcp(oTestVm.sVmName, fCdWait = False,
                                                                       cMsCdWait = 5 * 60 * 1000);
-            oTxsSession.syncExec("/bin/sed", ("/bin/sed", "-i", "'s/.*udev_log.*/udev_log=\"debug\"/'", "/etc/udev/udev.conf"), 
+            oTxsSession.syncExec("/bin/sed", ("/bin/sed", "-i", "'s/.*udev_log.*/udev_log=\"debug\"/'", "/etc/udev/udev.conf"),
                                  fIgnoreErrors = True);
             reporter.testDone();
 
@@ -226,7 +226,7 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
 
         reporter.testStart('Waiting for TXS + CD (%s)' % (self.sFileCdWait,));
         if oTestVm.isLinux():
-            (fRc, oTxsSession) = self.txsRebootAndReconnectViaTcp(oTestVm.sVmName, fCdWait = True,
+            (fRc, oTxsSession) = self.txsRebootAndReconnectViaTcp(oSession, oTxsSession, fCdWait = True,
                                                                   cMsCdWait = 5 * 60 * 1000,
                                                                   sFileCdWait = self.sFileCdWait);
         else:
