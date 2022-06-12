@@ -1,4 +1,4 @@
-/* $Id: DevIommuAmd.cpp 88621 2021-04-21 03:19:56Z vboxsync $ */
+/* $Id: DevIommuAmd.cpp 88622 2021-04-21 03:42:46Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - AMD implementation.
  */
@@ -696,17 +696,19 @@ typedef FNIOPAGELOOKUP      *PFNIOPAGELOOKUP;
 /*********************************************************************************************************************************
 *   Global Variables                                                                                                             *
 *********************************************************************************************************************************/
-#if defined(IN_RING3) || defined(LOG_ENABLED)
-/**
- * The IOMMU I/O permission names.
- */
-static const char * const g_aszPerm[] = { "none", "read", "write", "read+write" };
-
+#ifdef IN_RING3
 /**
  * An array of the number of device table segments supported.
  * Indexed by u2DevTabSegSup.
  */
 static uint8_t const g_acDevTabSegs[] = { 0, 2, 4, 8 };
+#endif
+
+#if defined(IN_RING3) || defined(LOG_ENABLED)
+/**
+ * The IOMMU I/O permission names.
+ */
+static const char * const g_aszPerm[] = { "none", "read", "write", "read+write" };
 #endif
 
 /**
