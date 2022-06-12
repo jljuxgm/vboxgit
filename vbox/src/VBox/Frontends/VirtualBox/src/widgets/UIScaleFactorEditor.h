@@ -1,4 +1,4 @@
-/* $Id: UIScaleFactorEditor.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIScaleFactorEditor.h 85810 2020-08-18 09:09:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIScaleFactorEditor class declaration.
  */
@@ -77,6 +77,8 @@ private:
 
     /** Prepares all. */
     void prepare();
+    /** Prepare min/max values of related widgets wrt. device pixel ratio(s). */
+    void prepareScaleFactorMinMaxValues();
 
     /** Defines whether scale factor is @a fGlobal one. */
     void setIsGlobalScaleFactor(bool fGlobal);
@@ -89,16 +91,15 @@ private:
 
     /** Sets the spinbox and slider to scale factor of currently selected monitor. */
     void updateValuesAfterMonitorChange();
-    /** Sets the min/max values of related widgets wrt. device pixel ratio(s) */
-    void configureScaleFactorMinMaxValues();
+
     /** @name Member widgets.
       * @{ */
-        QSpinBox         *m_pScaleSpinBox;
         QGridLayout      *m_pMainLayout;
         QComboBox        *m_pMonitorComboBox;
         QIAdvancedSlider *m_pScaleSlider;
-        QLabel           *m_pMaxScaleLabel;
+        QSpinBox         *m_pScaleSpinBox;
         QLabel           *m_pMinScaleLabel;
+        QLabel           *m_pMaxScaleLabel;
     /** @} */
 
     /** Holds the per-monitor scale factors. The 0th item is for all monitors (global). */
