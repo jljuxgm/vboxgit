@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 84558 2020-05-27 12:01:54Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.h 84869 2020-06-18 09:33:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -334,6 +334,8 @@ private:
       * @{ */
         /** Opens add machine dialog specifying initial name with @a strFileName. */
         void openAddMachineDialog(const QString &strFileName = QString());
+       /** Creates an uattended installer and uses that to install guest os to newly created vm. */
+       void startUnattendedInstall(const QUuid &uMachineUid, const QString &strISOPath, bool fStartHeadless);
     /** @} */
 
     /** @name VM launching stuff.
