@@ -1,4 +1,4 @@
-/* $Id: QIRichTextLabel.h 86892 2020-11-16 15:06:40Z vboxsync $ */
+/* $Id: QIRichTextLabel.h 86893 2020-11-16 15:08:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIRichTextLabel class declaration.
  */
@@ -33,6 +33,11 @@ class SHARED_LIBRARY_STUFF QIRichTextLabel : public QWidget
 {
     Q_OBJECT;
     Q_PROPERTY(QString text READ text WRITE setText);
+
+signals:
+
+    /** Notifies listeners about @a link clicked. */
+    void sigLinkClicked(const QUrl &link);
 
 public:
 

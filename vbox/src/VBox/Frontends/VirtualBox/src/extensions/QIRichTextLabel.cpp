@@ -1,4 +1,4 @@
-/* $Id: QIRichTextLabel.cpp 86892 2020-11-16 15:06:40Z vboxsync $ */
+/* $Id: QIRichTextLabel.cpp 86893 2020-11-16 15:08:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIRichTextLabel class implementation.
  */
@@ -58,6 +58,9 @@ QIRichTextLabel::QIRichTextLabel(QWidget *pParent)
             pal.setColor(QPalette::Inactive, QPalette::Text, pal.color(QPalette::Inactive, QPalette::WindowText));
             pal.setColor(QPalette::Disabled, QPalette::Text, pal.color(QPalette::Disabled, QPalette::WindowText));
             m_pTextBrowser->viewport()->setPalette(pal);
+
+            /* Setup connections finally: */
+            connect(m_pTextBrowser, &QTextBrowser::anchorClicked, this, &QIRichTextLabel::sigLinkClicked);
         }
 
         /* Add into layout: */
