@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 87792 2021-02-18 18:38:24Z vboxsync $
+# $Id: Makefile.kmk 88153 2021-03-17 12:56:48Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -67,6 +67,9 @@ VBoxVMM_DEFS    += VBOX_WITH_NETSHAPER
 endif
 ifdef VBOX_WITH_IOMMU_AMD
 VBoxVMM_DEFS    += VBOX_WITH_IOMMU_AMD
+endif
+ifdef VBOX_WITH_IOMMU_INTEL
+VBoxVMM_DEFS    += VBOX_WITH_IOMMU_INTEL
 endif
 ifdef VBOX_WITH_DBGF_TRACING
 VBoxVMM_DEFS    += VBOX_WITH_DBGF_TRACING
@@ -189,7 +192,7 @@ VBoxVMM_SOURCES  = \
 	VMMAll/PDMAllCritSect.cpp \
 	VMMAll/PDMAllCritSectRw.cpp \
 	VMMAll/PDMAllCritSectBoth.cpp \
-	$(if-expr defined(VBOX_WITH_IOMMU_AMD), VMMAll/PDMAllIommu.cpp,) \
+	$(if-expr defined(VBOX_WITH_IOMMU_AMD) || defined(VBOX_WITH_IOMMU_INTEL), VMMAll/PDMAllIommu.cpp,) \
 	VMMAll/PDMAllQueue.cpp \
 	VMMAll/PDMAllTask.cpp \
 	VMMAll/PGMAll.cpp \
@@ -533,7 +536,7 @@ VMMR0_SOURCES   = \
 	VMMAll/PDMAllCritSect.cpp \
 	VMMAll/PDMAllCritSectRw.cpp \
 	VMMAll/PDMAllCritSectBoth.cpp \
-	$(if-expr defined(VBOX_WITH_IOMMU_AMD), VMMAll/PDMAllIommu.cpp,) \
+	$(if-expr defined(VBOX_WITH_IOMMU_AMD) || defined(VBOX_WITH_IOMMU_INTEL), VMMAll/PDMAllIommu.cpp,) \
 	VMMAll/PDMAllQueue.cpp \
 	VMMAll/PDMAllTask.cpp \
 	VMMAll/PGMAll.cpp \

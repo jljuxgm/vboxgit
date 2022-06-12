@@ -1,4 +1,4 @@
-/* $Id: VBoxDDR0.cpp 85816 2020-08-18 11:23:19Z vboxsync $ */
+/* $Id: VBoxDDR0.cpp 88153 2021-03-17 12:56:48Z vboxsync $ */
 /** @file
  * VBoxDDR0 - Built-in drivers & devices (part 1), ring-0 module.
  */
@@ -109,6 +109,9 @@ static PCPDMDEVREGR0 g_apVBoxDDR0DevRegs[] =
 #endif
 #ifdef VBOX_WITH_IOMMU_AMD
     &g_DeviceIommuAmd,
+#endif
+#ifdef VBOX_WITH_IOMMU_INTEL
+    &g_DeviceIommuIntel,
 #endif
 };
 
