@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 88785 2021-04-29 14:02:38Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 88801 2021-04-30 12:58:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -1838,7 +1838,9 @@ void UIMachineLogic::sltShowInformationDialog()
 
 void UIMachineLogic::sltCloseVMInformationDialog()
 {
-    delete m_pVMInformationDialog;
+    if (!m_pVMInformationDialog)
+        return;
+    m_pVMInformationDialog->deleteLater();
     m_pVMInformationDialog = 0;
 }
 
