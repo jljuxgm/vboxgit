@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-linux.c 85698 2020-08-11 17:05:29Z vboxsync $ */
+/* $Id: VBoxNetAdp-linux.c 87823 2021-02-20 13:35:47Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Virtual Network Adapter Driver (Host), Linux Specific Code.
  */
@@ -274,6 +274,9 @@ static void vboxNetAdpNetDevInit(struct net_device *pNetDev)
     pNetDev->hard_start_xmit = vboxNetAdpLinuxXmit;
     pNetDev->get_stats = vboxNetAdpLinuxGetStats;
 #endif /* RTLNX_VER_MAX(2,6,29) */
+#if RTLNX_VER_MIN(4,10,0)
+    pNetDev->max_mtu = 16110;
+#endif /* RTLNX_VER_MIN(4,10,0) */
 
     pNetDev->ethtool_ops = &gEthToolOpsVBoxNetAdp;
 
