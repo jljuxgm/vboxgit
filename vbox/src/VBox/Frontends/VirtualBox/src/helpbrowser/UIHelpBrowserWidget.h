@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.h 86794 2020-11-03 12:22:16Z vboxsync $ */
+/* $Id: UIHelpBrowserWidget.h 86797 2020-11-03 13:26:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class declaration.
  */
@@ -106,6 +106,8 @@ private:
     void saveOptions();
     void cleanup();
     QUrl findIndexHtml() const;
+    bool eventFilter(QObject *pWatched, QEvent *pEvent);
+
     /** @name Event handling stuff.
      * @{ */
     /** Handles translation event. */
