@@ -1,4 +1,4 @@
-/* $Id: thread-posix.cpp 88189 2021-03-18 11:07:36Z vboxsync $ */
+/* $Id: thread-posix.cpp 89646 2021-06-13 21:18:18Z vboxsync $ */
 /** @file
  * IPRT - Threads, POSIX.
  */
@@ -76,10 +76,10 @@
 /*********************************************************************************************************************************
 *   Defined Constants And Macros                                                                                                 *
 *********************************************************************************************************************************/
-#ifndef IN_GUEST
+/*#ifndef IN_GUEST - shouldn't need to exclude this now with the non-obtrusive init option. */
 /** Includes RTThreadPoke. */
 # define RTTHREAD_POSIX_WITH_POKE
-#endif
+/*#endif*/
 
 
 /*********************************************************************************************************************************
