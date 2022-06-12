@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 87330 2021-01-20 19:02:24Z vboxsync $ */
+/* $Id: HMInternal.h 87359 2021-01-21 19:56:26Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -701,7 +701,7 @@ typedef DECLCALLBACKTYPE(int, FNHMVMXSTARTVM,(RTHCUINT fResume, PCPUMCTX pCtx, v
 typedef R0PTRTYPE(FNHMVMXSTARTVM *) PFNHMVMXSTARTVM;
 
 /** SVM VMRun function, see SVMR0VMRun(). */
-typedef DECLCALLBACKTYPE(int, FNHMSVMVMRUN,(PVMCC pVM, PVMCPUCC pVCpu, RTHCPHYS HCPhyspVMCB));
+typedef DECLCALLBACKTYPE(int, FNHMSVMVMRUN,(PVMCC pVM, PVMCPUCC pVCpu, RTHCPHYS HCPhysVMCB));
 /** Pointer to a SVM VMRun function. */
 typedef R0PTRTYPE(FNHMSVMVMRUN *) PFNHMSVMVMRUN;
 
