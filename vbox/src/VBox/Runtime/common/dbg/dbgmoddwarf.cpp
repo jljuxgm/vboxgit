@@ -1,4 +1,4 @@
-/* $Id: dbgmoddwarf.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
+/* $Id: dbgmoddwarf.cpp 86522 2020-10-11 18:05:10Z vboxsync $ */
 /** @file
  * IPRT - Debug Info Reader For DWARF.
  */
@@ -234,7 +234,8 @@ typedef struct RTDWARFCURSOR
  */
 typedef struct RTDWARFLINESTATE
 {
-    /** Virtual Line Number Machine Registers. */
+    /** @name Virtual Line Number Machine Registers.
+     * @{ */
     struct
     {
         uint64_t        uAddress;
