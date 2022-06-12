@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet_1_0.cpp 84390 2020-05-20 06:27:41Z vboxsync $ $Revision: 84390 $ $Date: 2020-05-20 14:27:41 +0800 (Wed, 20 May 2020) $ $Author: vboxsync $ */
+/* $Id: DevVirtioNet_1_0.cpp 84391 2020-05-20 06:38:33Z vboxsync $ $Revision: 84391 $ $Date: 2020-05-20 14:38:33 +0800 (Wed, 20 May 2020) $ $Author: vboxsync $ */
 
 /** @file
  * VBox storage devices - Virtio NET Driver
@@ -1862,10 +1862,16 @@ static uint8_t virtioNetR3CtrlRx(PPDMDEVINS pDevIns, PVIRTIONET pThis, PVIRTIONE
     }
 
     if (pThisCC->pDrv && fPromiscChanged)
+    {
         if (pThis->fPromiscuous | pThis->fAllMulticast)
+        {
             pThisCC->pDrv->pfnSetPromiscuousMode(pThisCC->pDrv, true);
+        }
         else
+        {
             pThisCC->pDrv->pfnSetPromiscuousMode(pThisCC->pDrv, false);
+        }
+    }
 
     return VIRTIONET_OK;
 }
@@ -2752,7 +2758,6 @@ static DECLCALLBACK(int) virtioNetR3Attach(PPDMDEVINS pDevIns, unsigned iLUN, ui
 
     RT_NOREF(pThis);
 
-//    int rc = PDMDevHlpDriverAttach(pDevIns, 0, &pDevIns->IBase, &pThisCC->pDrvBase, "Network Port");
     int rc = PDMDevHlpDriverAttach(pDevIns, 0, &pThisCC->IBase, &pThisCC->pDrvBase, "Network Port");
     if (RT_SUCCESS(rc))
     {
@@ -2765,8 +2770,6 @@ static DECLCALLBACK(int) virtioNetR3Attach(PPDMDEVINS pDevIns, unsigned iLUN, ui
                     Log(("%s No attached driver!\n", INSTANCE(pThis)));
 
     LEAVE_CRITICAL_SECTION;
-    return rc;
-
     AssertRelease(!pThisCC->pDrvBase);
     return rc;
 }

@@ -1,4 +1,4 @@
-/* $Id: DevVirtioSCSI.cpp 84390 2020-05-20 06:27:41Z vboxsync $ */
+/* $Id: DevVirtioSCSI.cpp 84391 2020-05-20 06:38:33Z vboxsync $ */
 /** @file
  * VBox storage devices - Virtio SCSI Driver
  *
@@ -885,7 +885,7 @@ static int virtioScsiR3ReqErr4(PPDMDEVINS pDevIns, PVIRTIOSCSI pThis, PVIRTIOSCS
 {
     REQ_RESP_HDR_T RespHdr;
     RespHdr.cbSenseLen       = cbSense & UINT32_MAX;
-    RespHdr.uResidual        = cbResidual;
+    RespHdr.uResidual        = cbResidual & UINT32_MAX;
     RespHdr.uStatusQualifier = 0;
     RespHdr.uStatus          = bStatus;
     RespHdr.uResponse        = bResponse;
@@ -1337,7 +1337,7 @@ static int virtioScsiR3ReqSubmit(PPDMDEVINS pDevIns, PVIRTIOSCSI pThis, PVIRTIOS
         respHdr.cbSenseLen = sizeof(abSense);
         respHdr.uStatus    = SCSI_STATUS_CHECK_CONDITION;
         respHdr.uResponse  = VIRTIOSCSI_S_FAILURE;
-        respHdr.uResidual  = cbDataIn + cbDataOut;
+        respHdr.uResidual  = (cbDataIn + cbDataOut) & UINT32_MAX;
         virtioScsiR3ReqErr(pDevIns, pThis, pThisCC, qIdx, pDescChain, &respHdr, abSense, cbSenseCfg);
         virtioScsiR3FreeReq(pTarget, pReq);
     }
