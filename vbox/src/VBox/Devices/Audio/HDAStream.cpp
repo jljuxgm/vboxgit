@@ -1,4 +1,4 @@
-/* $Id: HDAStream.cpp 87961 2021-03-04 20:29:46Z vboxsync $ */
+/* $Id: HDAStream.cpp 87962 2021-03-04 22:57:26Z vboxsync $ */
 /** @file
  * HDAStream.cpp - Stream functions for HD Audio.
  */
@@ -507,7 +507,6 @@ int hdaR3StreamSetUp(PPDMDEVINS pDevIns, PHDASTATE pThis, PHDASTREAM pStreamShar
                 cbTransferHeuristicsCur += bd.u32BufSize;
         }
 
-#if 0
         /* !!! HACK ALERT BEGIN !!! */
 
         /* Windows 10's audio driver expects a transfer all ~10.1ms (~1764 bytes), although
@@ -539,7 +538,6 @@ int hdaR3StreamSetUp(PPDMDEVINS pDevIns, PHDASTATE pThis, PHDASTREAM pStreamShar
         }
 
         /* !!! HACK ALERT END !!! */
-#endif
 
         else
         {
