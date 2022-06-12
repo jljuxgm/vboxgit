@@ -1,11 +1,10 @@
-' $Id: envSub.vbs 85846 2020-08-20 16:45:34Z vboxsync $
+' $Id: envSub.vbs 85847 2020-08-20 16:55:33Z vboxsync $
 ''  @file
 ' VBScript worker for env.cmd
 '
 
 '
 ' Copyright (C) 2006-2020 Oracle Corporation
-'
 '
 ' This file is part of VirtualBox Open Source Edition (OSE), as
 ' available from http://www.virtualbox.org. This file is free software;
