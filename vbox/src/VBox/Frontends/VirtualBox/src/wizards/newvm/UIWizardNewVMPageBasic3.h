@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic3.h 85067 2020-07-06 12:49:55Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic3.h 85090 2020-07-07 17:20:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic3 class declaration.
  */
@@ -95,7 +95,6 @@ protected:
 
     /** @name Widgets
      * @{ */
-       QToolBox     *m_pToolBox;
        QRadioButton *m_pDiskSkip;
        QRadioButton *m_pDiskCreate;
        QRadioButton *m_pDiskPresent;
@@ -154,6 +153,7 @@ private:
 
     /** Widgets. */
     QIRichTextLabel *m_pLabel;
+    QToolBox     *m_pToolBox;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_wizards_newvm_UIWizardNewVMPageBasic3_h */
