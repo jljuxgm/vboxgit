@@ -1,4 +1,4 @@
-/* $Id: clipboard-common.cpp 85828 2020-08-19 09:12:33Z vboxsync $ */
+/* $Id: clipboard-common.cpp 85829 2020-08-19 09:36:24Z vboxsync $ */
 /** @file
  * Shared Clipboard: Some helper function for converting between the various eol.
  */
@@ -638,7 +638,7 @@ int ShClConvUtf16ToUtf8HTML(RTUTF16 *pwcSrc, size_t cwSrc, char **ppszDst, size_
     AssertPtrReturn(ppszDst, VERR_INVALID_POINTER);
     AssertPtrReturn(pcbDst,  VERR_INVALID_POINTER);
 
-    int rc;
+    int rc = VINF_SUCCESS;
 
     size_t   cwTmp = cwSrc;
     RTUTF16 *pwTmp = pwcSrc;
