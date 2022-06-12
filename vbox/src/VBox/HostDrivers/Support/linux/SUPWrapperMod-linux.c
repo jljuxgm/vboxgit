@@ -1,4 +1,4 @@
-/* $Id: SUPWrapperMod-linux.c 87700 2021-02-10 20:21:04Z vboxsync $ */
+/* $Id: SUPWrapperMod-linux.c 87708 2021-02-11 00:09:46Z vboxsync $ */
 /** @file
  * Linux .r0 wrapper module template.
  */
@@ -86,6 +86,11 @@
 /** @def WRAPPED_MODULE_LICENSE_PROPRIETARY
  * Define to select proprietary license instead of GPL. */
 # define WRAPPED_MODULE_LICENSE_PROPRIETARY
+#endif
+#ifdef DOXYGEN_RUNNING
+/** @def WRAPPED_MODULE_SYMBOL_INCLUDE
+ * The include with SYMBOL_ENTRY() invocations for all exported symbols.  */
+# define WRAPPED_MODULE_SYMBOL_INCLUDE      "iprt/cdefs.h"
 #endif
 
 
