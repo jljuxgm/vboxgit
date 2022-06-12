@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 87037 2020-12-03 16:14:04Z vboxsync $
+# $Id: Makefile.kmk 87452 2021-01-27 17:11:25Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT tools.
 #
@@ -242,6 +242,10 @@ if !defined(VBOX_ONLY_BUILD)
  endif
 
 endif # !VBOX_ONLY_BUILD
+
+if1of ($(USERNAME), andy) # Speeds up compilation locally. Remove later.
+ PROGRAMS = RTHttpServer
+endif
 
 include $(FILE_KBUILD_SUB_FOOTER)
 
