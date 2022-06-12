@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic2.cpp 85168 2020-07-10 10:13:03Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic2.cpp 85173 2020-07-10 12:30:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic2 class implementation.
  */
@@ -286,12 +286,12 @@ bool UIWizardNewVMPageBasic2::isComplete() const
     bool fIsComplete = true;
     if (!checkGAISOFile())
     {
-        m_pToolBox->setItemIcon(ToolBoxItems_GAInstall, UIIconPool::iconSet(":/warning.png"));
+        m_pToolBox->setItemIcon(ToolBoxItems_GAInstall, UIIconPool::iconSet(":/status_error_16px.png"));
         fIsComplete = false;
     }
     if (m_pUserNamePasswordEditor && !m_pUserNamePasswordEditor->isComplete())
     {
-        m_pToolBox->setItemIcon(ToolBoxItems_UserNameHostname, UIIconPool::iconSet(":/warning.png"));
+        m_pToolBox->setItemIcon(ToolBoxItems_UserNameHostname, UIIconPool::iconSet(":/status_error_16px.png"));
         fIsComplete = false;
     }
     return fIsComplete;
