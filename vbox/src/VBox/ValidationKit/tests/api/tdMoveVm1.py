@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# "$Id: tdMoveVm1.py 86648 2020-10-20 13:59:45Z vboxsync $"
+# "$Id: tdMoveVm1.py 86650 2020-10-20 14:26:02Z vboxsync $"
 
 """
 VirtualBox Validation Kit - VM Move Test #1
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 86648 $"
+__version__ = "$Revision: 86650 $"
 
 # Standard Python imports.
 import os
@@ -144,6 +144,10 @@ class SubTstDrvMoveVm1(base.SubTestDriverBase):
         """
         fRc = True
         try:
+
+            ## @todo r=bird: Too much unncessary crap inside try clause.  Only oVM.moveTo needs to be here.
+            ##               Though, you could make an argument for oVM.name too, perhaps.
+
             # move machine
             reporter.log('Moving machine "%s" to the "%s"' % (oVM.name, sLocation))
             sType = 'basic'
@@ -231,7 +235,7 @@ class SubTstDrvMoveVm1(base.SubTestDriverBase):
                     reporter.log('Item location "%s" isn\'t correct' % (eachItem))
 
                 reporter.log('####### Reference locations: #######')
-                for eachItem in aReferences:
+                for eachItem in aActuals:
                     reporter.log(' "%s"' % (eachItem))
 
                 if len(intersection) != len(aActuals):

@@ -1,4 +1,4 @@
-/* $Id: VBoxManageAppliance.cpp 86648 2020-10-20 13:59:45Z vboxsync $ */
+/* $Id: VBoxManageAppliance.cpp 86650 2020-10-20 14:26:02Z vboxsync $ */
 /** @file
  * VBoxManage - The appliance-related commands.
  */
@@ -1112,10 +1112,6 @@ RTEXITCODE handleImportAppliance(HandlerArg *arg)
                         case VirtualSystemDescriptionType_CloudOCISubnetCompartment:
                         case VirtualSystemDescriptionType_CloudPublicSSHKey:
                         case VirtualSystemDescriptionType_BootingFirmware:
-                        case VirtualSystemDescriptionType_CloudInstanceMetadata:
-                        case VirtualSystemDescriptionType_CloudInstanceFreeFormTags:
-                        case VirtualSystemDescriptionType_CloudImageFreeFormTags:
-
                             /** @todo  VirtualSystemDescriptionType_Miscellaneous? */
                             break;
 

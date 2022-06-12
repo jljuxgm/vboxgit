@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 86648 2020-10-20 13:59:45Z vboxsync $ */
+/* $Id: ApplianceImpl.h 86650 2020-10-20 14:26:02Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -144,8 +144,6 @@ private:
     static void i_importOrExportThreadTask(TaskOVF *pTask);
     static void i_exportOPCThreadTask(TaskOPC *pTask);
     static void i_importOrExportCloudThreadTask(TaskCloud *pTask);
-
-    HRESULT i_findFirstBootableImage(ComPtr<IMedium>& bootMedium, const ComPtr<IMachine> &pMachine);
 
     HRESULT i_initBackendNames();
 
