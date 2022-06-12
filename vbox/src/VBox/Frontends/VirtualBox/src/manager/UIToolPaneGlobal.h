@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneGlobal.h 85493 2020-07-28 17:56:08Z vboxsync $ */
+/* $Id: UIToolPaneGlobal.h 85508 2020-07-29 10:11:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolPaneGlobal class declaration.
  */
@@ -50,7 +50,9 @@ signals:
 
     /** Notifies listeners about Cloud Profile Manager change. */
     void sigCloudProfileManagerChange();
-    void sigSwitchMachinePerformancePane(const QUuid &machineUid);
+
+    /** Notifies listeners about request to switch to Performance pane of machine with @a uMachineId. */
+    void sigSwitchToMachinePerformancePane(const QUuid &uMachineId);
 
 public:
 

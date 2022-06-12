@@ -1,4 +1,4 @@
-/* $Id: UIResourceMonitor.h 85493 2020-07-28 17:56:08Z vboxsync $ */
+/* $Id: UIResourceMonitor.h 85508 2020-07-29 10:11:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIResourceMonitor class declaration.
  */
@@ -50,7 +50,7 @@ class UIResourceMonitorWidget : public QIWithRetranslateUI<QWidget>
 
 signals:
 
-    void sigSwitchMachinePerformancePane(const QUuid &machineId);
+    void sigSwitchToMachinePerformancePane(const QUuid &uMachineId);
 
 public:
 

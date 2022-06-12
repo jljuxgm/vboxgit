@@ -1,4 +1,4 @@
-/* $Id: UIChooser.h 84595 2020-05-28 14:47:42Z vboxsync $ */
+/* $Id: UIChooser.h 85508 2020-07-29 10:11:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooser class declaration.
  */
@@ -151,6 +151,8 @@ public:
         void sortGroup();
         /** Toggle machine search widget to be @a fVisible. */
         void setMachineSearchWidgetVisibility(bool fVisible);
+        /** Changes current machine to the one with certain @a uId. */
+        void setCurrentMachine(const QUuid &uId);
     /** @} */
 
 public slots:

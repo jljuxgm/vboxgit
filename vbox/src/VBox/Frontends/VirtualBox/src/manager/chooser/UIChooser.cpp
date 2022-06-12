@@ -1,4 +1,4 @@
-/* $Id: UIChooser.cpp 84595 2020-05-28 14:47:42Z vboxsync $ */
+/* $Id: UIChooser.cpp 85508 2020-07-29 10:11:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooser class implementation.
  */
@@ -157,6 +157,12 @@ void UIChooser::setMachineSearchWidgetVisibility(bool fVisible)
 {
     AssertPtrReturnVoid(view());
     view()->setSearchWidgetVisible(fVisible);
+}
+
+void UIChooser::setCurrentMachine(const QUuid &uId)
+{
+    AssertPtrReturnVoid(model());
+    model()->setCurrentMachineItem(uId);
 }
 
 void UIChooser::setGlobalItemHeightHint(int iHeight)

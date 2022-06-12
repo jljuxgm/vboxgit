@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.h 85080 2020-07-07 10:37:23Z vboxsync $ */
+/* $Id: UIChooserModel.h 85508 2020-07-29 10:11:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class declaration.
  */
@@ -221,6 +221,8 @@ public:
         void refreshSelectedMachineItems();
         /** Sorts selected [parent] group item. */
         void sortSelectedGroupItem();
+        /** Changes current machine item to the one with certain @a uId. */
+        void setCurrentMachineItem(const QUuid &uId);
 
         /** Defines current @a pDragObject. */
         void setCurrentDragObject(QDrag *pDragObject);

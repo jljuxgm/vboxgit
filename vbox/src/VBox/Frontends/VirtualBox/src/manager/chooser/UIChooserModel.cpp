@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 85111 2020-07-08 15:41:24Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 85508 2020-07-29 10:11:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -958,6 +958,18 @@ void UIChooserModel::sortSelectedGroupItem()
 
     /* Rebuild tree for main root: */
     buildTreeForMainRoot(true /* preserve selection */);
+}
+
+void UIChooserModel::setCurrentMachineItem(const QUuid &uId)
+{
+    /* Look whether we have such item at all: */
+    UIChooserItem *pItem = root()->searchForItem(uId.toString(),
+                                                 UIChooserItemSearchFlag_Machine |
+                                                 UIChooserItemSearchFlag_ExactId);
+
+    /* Select item if exists: */
+    if (pItem)
+        setSelectedItem(pItem);
 }
 
 void UIChooserModel::setCurrentDragObject(QDrag *pDragObject)
