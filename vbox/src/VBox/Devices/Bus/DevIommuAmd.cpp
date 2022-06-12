@@ -1,4 +1,4 @@
-/* $Id: DevIommuAmd.cpp 87967 2021-03-05 05:21:14Z vboxsync $ */
+/* $Id: DevIommuAmd.cpp 87999 2021-03-08 07:28:55Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - AMD implementation.
  */
@@ -1032,7 +1032,7 @@ static void iommuAmdDteCacheRemoveAll(PPDMDEVINS pDevIns)
  * @param   pThisR3     The ring-3 IOMMU device state.
  * @param   pIotlbe     The IOTLB entry to move.
  */
-static void iommuAmdIotlbEntryMoveToLru(PIOMMUR3 pThisR3, PIOTLBE pIotlbe)
+DECLINLINE(void) iommuAmdIotlbEntryMoveToLru(PIOMMUR3 pThisR3, PIOTLBE pIotlbe)
 {
     if (!RTListNodeIsFirst(&pThisR3->LstLruIotlbe, &pIotlbe->NdLru))
     {
@@ -6603,6 +6603,12 @@ static DECLCALLBACK(int) iommuAmdR3LoadDone(PPDMDEVINS pDevIns, PSSMHANDLE pSSM)
     iommuAmdCmdThreadWakeUpIfNeeded(pDevIns);
 
     IOMMU_UNLOCK(pDevIns, pThisR3);
+
+    LogRel(("%s: Restored: DSFX=%u.%u DSCX=%u.%u DSSX=%u.%u ExtFeat=%#RX64\n", IOMMU_LOG_PFX,
+            pThis->DevSpecificFeat.n.u4RevMajor, pThis->DevSpecificFeat.n.u4RevMinor,
+            pThis->DevSpecificCtrl.n.u4RevMajor, pThis->DevSpecificCtrl.n.u4RevMinor,
+            pThis->DevSpecificStatus.n.u4RevMajor, pThis->DevSpecificStatus.n.u4RevMinor,
+            pThis->ExtFeat.u64));
     return rc;
 }
 
