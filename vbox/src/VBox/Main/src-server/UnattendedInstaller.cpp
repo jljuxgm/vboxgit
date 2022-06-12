@@ -1,4 +1,4 @@
-/* $Id: UnattendedInstaller.cpp 85275 2020-07-12 13:44:42Z vboxsync $ */
+/* $Id: UnattendedInstaller.cpp 86270 2020-09-24 16:05:49Z vboxsync $ */
 /** @file
  * UnattendedInstaller class and it's descendants implementation
  */
@@ -73,9 +73,12 @@ using namespace std;
             pUinstaller = new UnattendedUbuntuInstaller(pParent);
         else if (enmOsType >= VBOXOSTYPE_RedHat && enmOsType <= VBOXOSTYPE_RedHat_x64)
         {
-            if (   strDetectedOSVersion.isEmpty()
-                || RTStrVersionCompare(strDetectedOSVersion.c_str(), "6") >= 0)
-                pUinstaller = new UnattendedRhel6And7Installer(pParent);
+            if (RTStrVersionCompare(strDetectedOSVersion.c_str(), "8") >= 0)
+                pUinstaller = new UnattendedRhel8Installer(pParent);
+            else if (RTStrVersionCompare(strDetectedOSVersion.c_str(), "7") >= 0)
+                pUinstaller = new UnattendedRhel7Installer(pParent);
+            else if (RTStrVersionCompare(strDetectedOSVersion.c_str(), "6") >= 0)
+                pUinstaller = new UnattendedRhel6Installer(pParent);
             else if (RTStrVersionCompare(strDetectedOSVersion.c_str(), "5") >= 0)
                 pUinstaller = new UnattendedRhel5Installer(pParent);
             else if (RTStrVersionCompare(strDetectedOSVersion.c_str(), "4") >= 0)
@@ -83,12 +86,21 @@ using namespace std;
             else if (RTStrVersionCompare(strDetectedOSVersion.c_str(), "3") >= 0)
                 pUinstaller = new UnattendedRhel3Installer(pParent);
             else
-                pUinstaller = new UnattendedRhel6And7Installer(pParent);
+                pUinstaller = new UnattendedRhel6Installer(pParent);
         }
         else if (enmOsType >= VBOXOSTYPE_FedoraCore && enmOsType <= VBOXOSTYPE_FedoraCore_x64)
             pUinstaller = new UnattendedFedoraInstaller(pParent);
         else if (enmOsType >= VBOXOSTYPE_Oracle && enmOsType <= VBOXOSTYPE_Oracle_x64)
-            pUinstaller = new UnattendedOracleLinuxInstaller(pParent);
+        {
+            if (RTStrVersionCompare(strDetectedOSVersion.c_str(), "8") >= 0)
+                pUinstaller = new UnattendedOracleLinux8Installer(pParent);
+            else if (RTStrVersionCompare(strDetectedOSVersion.c_str(), "7") >= 0)
+                pUinstaller = new UnattendedOracleLinux7Installer(pParent);
+            else if (RTStrVersionCompare(strDetectedOSVersion.c_str(), "6") >= 0)
+                pUinstaller = new UnattendedOracleLinux6Installer(pParent);
+            else
+                pUinstaller = new UnattendedOracleLinux6Installer(pParent);
+        }
 #if 0 /* doesn't work, so convert later. */
         else if (enmOsType == VBOXOSTYPE_OpenSUSE || enmOsType == VBOXOSTYPE_OpenSUSE_x64)
             pUinstaller = new UnattendedSuseInstaller(new UnattendedSUSEXMLScript(pParent), pParent);
@@ -1076,11 +1088,11 @@ HRESULT UnattendedDebianInstaller::editDebianTxtCfg(GeneralTextScript *pEditor)
 /*
 *
 *
-*  Implementation UnattendedRhel6And7Installer functions
+*  Implementation UnattendedRhel6Installer functions
 *
 */
 //////////////////////////////////////////////////////////////////////////////////////////////////////
-HRESULT UnattendedRhel6And7Installer::addFilesToAuxVisoVectors(RTCList<RTCString> &rVecArgs, RTCList<RTCString> &rVecFiles,
+HRESULT UnattendedRhel6Installer::addFilesToAuxVisoVectors(RTCList<RTCString> &rVecArgs, RTCList<RTCString> &rVecFiles,
                                                                RTVFS hVfsOrgIso, bool fOverwrite)
 {
     Utf8Str strIsoLinuxCfg;
