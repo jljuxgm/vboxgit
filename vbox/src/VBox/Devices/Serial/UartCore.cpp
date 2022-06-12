@@ -1,4 +1,4 @@
-/* $Id: UartCore.cpp 84689 2020-06-05 09:07:54Z vboxsync $ */
+/* $Id: UartCore.cpp 84907 2020-06-22 14:43:28Z vboxsync $ */
 /** @file
  * UartCore - UART  (16550A up to 16950) emulation.
  *
@@ -1970,7 +1970,9 @@ DECLHIDDEN(void) uartR3Detach(PPDMDEVINS pDevIns, PUARTCORE pThis, PUARTCORECC p
     /* Zero out important members. */
     pThisCC->pDrvBase   = NULL;
     pThisCC->pDrvSerial = NULL;
+    PDMDevHlpCritSectEnter(pDevIns, &pThis->CritSect, VERR_IGNORED);
     uartR3XferReset(pDevIns, pThis, pThisCC);
+    PDMDevHlpCritSectLeave(pDevIns, &pThis->CritSect);
 }
 
 
