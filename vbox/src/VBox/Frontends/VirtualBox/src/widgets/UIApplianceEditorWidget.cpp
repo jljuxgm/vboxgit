@@ -1,4 +1,4 @@
-/* $Id: UIApplianceEditorWidget.cpp 87719 2021-02-11 09:42:30Z vboxsync $ */
+/* $Id: UIApplianceEditorWidget.cpp 88447 2021-04-09 18:11:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceEditorWidget class implementation.
  */
@@ -1705,7 +1705,7 @@ bool UIApplianceSortProxyModel::filterAcceptsRow(int iSourceRow, const QModelInd
     /* By default enable all, we will explicitly filter out below */
     if (srcParenIdx.isValid())
     {
-        QModelIndex i = srcParenIdx.child(iSourceRow, 0);
+        QModelIndex i = index(iSourceRow, 0, srcParenIdx);
         if (i.isValid())
         {
             UIApplianceModelItem *pItem = static_cast<UIApplianceModelItem*>(i.internalPointer());
