@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 85398 2020-07-21 10:54:57Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 85399 2020-07-21 11:03:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -1257,7 +1257,7 @@ void UIVirtualBoxManager::sltExecuteExternalApplication()
 #endif
 
     /* Execute console application finally: */
-    QProcess::startDetached(strPath, arguments);
+    QProcess::startDetached(QString("%1 %2").arg(strPath, arguments.join(' ')));
 }
 
 void UIVirtualBoxManager::sltPerformCopyCommandSerial()
