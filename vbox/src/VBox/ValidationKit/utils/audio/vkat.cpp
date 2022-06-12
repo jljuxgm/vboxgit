@@ -1,4 +1,4 @@
-/* $Id: vkat.cpp 89617 2021-06-11 07:14:34Z vboxsync $ */
+/* $Id: vkat.cpp 89642 2021-06-13 13:38:33Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) utility for testing and validating the audio stack.
  */
@@ -733,6 +733,17 @@ static DECLCALLBACK(RTEXITCODE) audioTestMain(PRTGETOPTSTATE pGetState)
 }
 
 
+const VKATCMD g_CmdTest =
+{
+    "test",
+    audioTestMain,
+    "Runs audio tests and creates an audio test set.",
+    g_aCmdTestOptions,
+    RT_ELEMENTS(g_aCmdTestOptions),
+    audioTestCmdTestHelp
+};
+
+
 /*********************************************************************************************************************************
 *   Command: verify                                                                                                              *
 *********************************************************************************************************************************/
@@ -894,112 +905,20 @@ static DECLCALLBACK(RTEXITCODE) audioVerifyMain(PRTGETOPTSTATE pGetState)
 }
 
 
-/*********************************************************************************************************************************
-*   Command: enum                                                                                                                *
-*********************************************************************************************************************************/
-
-/**
- * Options for 'enum'.
- */
-static const RTGETOPTDEF g_aCmdEnumOptions[] =
+const VKATCMD g_CmdVerify =
 {
-    { "--backend",          'b',                          RTGETOPT_REQ_STRING  },
+    "verify",
+    audioVerifyMain,
+    "Verifies a formerly created audio test set.",
+    g_aCmdVerifyOptions,
+    RT_ELEMENTS(g_aCmdVerifyOptions),
+    NULL,
 };
 
-/** The 'enum' command option help. */
-static DECLCALLBACK(const char *) audioTestCmdEnumHelp(PCRTGETOPTDEF pOpt)
-{
-    switch (pOpt->iShort)
-    {
-        case 'b': return "The audio backend to use.";
-        default:  return NULL;
-    }
-}
 
-/**
- * The 'enum' command handler.
- *
- * @returns Program exit code.
- * @param   pGetState   RTGetOpt state.
- */
-static DECLCALLBACK(RTEXITCODE) audioTestCmdEnumHandler(PRTGETOPTSTATE pGetState)
-{
-    /*
-     * Parse options.
-     */
-    /* Option values: */
-    PCPDMDRVREG pDrvReg = g_aBackends[0].pDrvReg;
-
-    /* Argument processing loop: */
-    int           rc;
-    RTGETOPTUNION ValueUnion;
-    while ((rc = RTGetOpt(pGetState, &ValueUnion)) != 0)
-    {
-        switch (rc)
-        {
-            case 'b':
-                pDrvReg = audioTestFindBackendOpt(ValueUnion.psz);
-                if (pDrvReg == NULL)
-                    return RTEXITCODE_SYNTAX;
-                break;
-
-            AUDIO_TEST_COMMON_OPTION_CASES(ValueUnion);
-
-            default:
-                return RTGetOptPrintError(rc, &ValueUnion);
-        }
-    }
-
-    /*
-     * Do the enumeration.
-     */
-    RTEXITCODE          rcExit = RTEXITCODE_FAILURE;
-    AUDIOTESTDRVSTACK   DrvStack;
-    rc = audioTestDriverStackInit(&DrvStack, pDrvReg, false /*fWithDrvAudio*/);
-    if (RT_SUCCESS(rc))
-    {
-        if (DrvStack.pIHostAudio->pfnGetDevices)
-        {
-            PDMAUDIOHOSTENUM Enum;
-            rc = DrvStack.pIHostAudio->pfnGetDevices(DrvStack.pIHostAudio, &Enum);
-            if (RT_SUCCESS(rc))
-            {
-                RTPrintf("Found %u device%s\n", Enum.cDevices, Enum.cDevices != 1 ? "s" : "");
-
-                PPDMAUDIOHOSTDEV pHostDev;
-                RTListForEach(&Enum.LstDevices, pHostDev, PDMAUDIOHOSTDEV, ListEntry)
-                {
-                    RTPrintf("\nDevice \"%s\":\n", pHostDev->pszName);
-
-                    char szFlags[PDMAUDIOHOSTDEV_MAX_FLAGS_STRING_LEN];
-                    if (pHostDev->cMaxInputChannels && !pHostDev->cMaxOutputChannels && pHostDev->enmUsage == PDMAUDIODIR_IN)
-                        RTPrintf("    Input:  max %u channels (%s)\n",
-                                 pHostDev->cMaxInputChannels, PDMAudioHostDevFlagsToString(szFlags, pHostDev->fFlags));
-                    else if (!pHostDev->cMaxInputChannels && pHostDev->cMaxOutputChannels && pHostDev->enmUsage == PDMAUDIODIR_OUT)
-                        RTPrintf("    Output: max %u channels (%s)\n",
-                                 pHostDev->cMaxOutputChannels, PDMAudioHostDevFlagsToString(szFlags, pHostDev->fFlags));
-                    else
-                        RTPrintf("    %s: max %u output channels, max %u input channels (%s)\n",
-                                 PDMAudioDirGetName(pHostDev->enmUsage), pHostDev->cMaxOutputChannels,
-                                 pHostDev->cMaxInputChannels, PDMAudioHostDevFlagsToString(szFlags, pHostDev->fFlags));
-
-                    if (pHostDev->pszId && *pHostDev->pszId)
-                        RTPrintf("    ID:     \"%s\"\n", pHostDev->pszId);
-                }
-
-                PDMAudioHostEnumDelete(&Enum);
-            }
-            else
-                rcExit = RTMsgErrorExitFailure("Enumeration failed: %Rrc\n", rc);
-        }
-        else
-            rcExit = RTMsgErrorExitFailure("Enumeration not supported by backend '%s'\n", pDrvReg->szName);
-        audioTestDriverStackDelete(&DrvStack);
-    }
-    else
-        rcExit = RTMsgErrorExitFailure("Driver stack construction failed: %Rrc", rc);
-    return RTEXITCODE_SUCCESS;
-}
+/*********************************************************************************************************************************
+*   Main                                                                                                                         *
+*********************************************************************************************************************************/
 
 /**
  * Ctrl-C signal handler.
@@ -1016,26 +935,17 @@ static void audioTestSignalHandler(int iSig) RT_NOEXCEPT
     signal(SIGINT, SIG_DFL);
 }
 
-const VKATCMD g_aCommands[] =
+/**
+ * Commands.
+ */
+const VKATCMD *g_apCommands[] =
 {
-    {
-        "test",     audioTestMain,
-        "Runs audio tests and creates an audio test set.",
-        g_aCmdTestOptions,      RT_ELEMENTS(g_aCmdTestOptions),     audioTestCmdTestHelp
-    },
-    {
-        "verify",   audioVerifyMain,
-        "Verifies a formerly created audio test set.",
-        g_aCmdVerifyOptions,    RT_ELEMENTS(g_aCmdVerifyOptions),   NULL,
-    },
-    {
-        "enum",     audioTestCmdEnumHandler,
-        "Enumerates audio devices.",
-        g_aCmdEnumOptions,      RT_ELEMENTS(g_aCmdEnumOptions),     audioTestCmdEnumHelp,
-    },
-    g_cmdPlay,
-    g_cmdRec,
-    g_cmdSelfTest
+    &g_CmdTest,
+    &g_CmdVerify,
+    &g_CmdEnum,
+    &g_CmdPlay,
+    &g_CmdRec,
+    &g_CmdSelfTest
 };
 
 /**
@@ -1062,16 +972,17 @@ RTEXITCODE audioTestUsage(PRTSTREAM pStrm)
                  "    Displays help.\n"
                  );
 
-    for (uintptr_t iCmd = 0; iCmd < RT_ELEMENTS(g_aCommands); iCmd++)
+    for (uintptr_t iCmd = 0; iCmd < RT_ELEMENTS(g_apCommands); iCmd++)
     {
+        PCVKATCMD const pCmd = g_apCommands[iCmd];
         RTStrmPrintf(pStrm,
                      "\n"
                      "Command '%s':\n"
                      "    %s\n"
                      "Options for '%s':\n",
-                     g_aCommands[iCmd].pszCommand, g_aCommands[iCmd].pszDesc, g_aCommands[iCmd].pszCommand);
-        PCRTGETOPTDEF const paOptions = g_aCommands[iCmd].paOptions;
-        for (unsigned i = 0; i < g_aCommands[iCmd].cOptions; i++)
+                     pCmd->pszCommand, pCmd->pszDesc, pCmd->pszCommand);
+        PCRTGETOPTDEF const paOptions = pCmd->paOptions;
+        for (unsigned i = 0; i < pCmd->cOptions; i++)
         {
             if (RT_C_IS_PRINT(paOptions[i].iShort))
                 RTStrmPrintf(pStrm, "  -%c, %s\n", paOptions[i].iShort, paOptions[i].pszLong);
@@ -1079,8 +990,8 @@ RTEXITCODE audioTestUsage(PRTSTREAM pStrm)
                 RTStrmPrintf(pStrm, "  %s\n", paOptions[i].pszLong);
 
             const char *pszHelp = NULL;
-            if (g_aCommands[iCmd].pfnOptionHelp)
-                pszHelp = g_aCommands[iCmd].pfnOptionHelp(&paOptions[i]);
+            if (pCmd->pfnOptionHelp)
+                pszHelp = pCmd->pfnOptionHelp(&paOptions[i]);
             if (pszHelp)
                 RTStrmPrintf(pStrm, "    %s\n", pszHelp);
         }
@@ -1181,23 +1092,25 @@ int main(int argc, char **argv)
 
             case VINF_GETOPT_NOT_OPTION:
             {
-                for (uintptr_t i = 0; i < RT_ELEMENTS(g_aCommands); i++)
-                    if (strcmp(ValueUnion.psz, g_aCommands[i].pszCommand) == 0)
+                for (uintptr_t iCmd = 0; iCmd < RT_ELEMENTS(g_apCommands); iCmd++)
+                {
+                    PCVKATCMD const pCmd = g_apCommands[iCmd];
+                    if (strcmp(ValueUnion.psz, pCmd->pszCommand) == 0)
                     {
-                        size_t const cCombinedOptions  = g_aCommands[i].cOptions + RT_ELEMENTS(g_aCmdCommonOptions);
+                        size_t const cCombinedOptions  = pCmd->cOptions + RT_ELEMENTS(g_aCmdCommonOptions);
                         PRTGETOPTDEF paCombinedOptions = (PRTGETOPTDEF)RTMemAlloc(cCombinedOptions * sizeof(RTGETOPTDEF));
                         if (paCombinedOptions)
                         {
                             memcpy(paCombinedOptions, g_aCmdCommonOptions, sizeof(g_aCmdCommonOptions));
                             memcpy(&paCombinedOptions[RT_ELEMENTS(g_aCmdCommonOptions)],
-                                   g_aCommands[i].paOptions, g_aCommands[i].cOptions * sizeof(RTGETOPTDEF));
+                                   pCmd->paOptions, pCmd->cOptions * sizeof(RTGETOPTDEF));
 
                             rc = RTGetOptInit(&GetState, argc, argv, paCombinedOptions, cCombinedOptions,
                                               GetState.iNext /*idxFirst*/, RTGETOPTINIT_FLAGS_OPTS_FIRST);
                             if (RT_SUCCESS(rc))
                             {
 
-                                rcExit = g_aCommands[i].pfnHandler(&GetState);
+                                rcExit = pCmd->pfnHandler(&GetState);
                                 RTMemFree(paCombinedOptions);
                                 return rcExit;
                             }
@@ -1205,6 +1118,7 @@ int main(int argc, char **argv)
                         }
                         return RTMsgErrorExitFailure("Out of memory!");
                     }
+                }
                 RTMsgError("Unknown command '%s'!\n", ValueUnion.psz);
                 audioTestUsage(g_pStdErr);
                 return RTEXITCODE_SYNTAX;

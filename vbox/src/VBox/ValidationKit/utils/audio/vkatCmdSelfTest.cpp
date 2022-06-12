@@ -1,4 +1,4 @@
-/* $Id: vkatCmdSelfTest.cpp 89617 2021-06-11 07:14:34Z vboxsync $ */
+/* $Id: vkatCmdSelfTest.cpp 89642 2021-06-13 13:38:33Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) - Self test code.
  */
@@ -328,10 +328,16 @@ DECLCALLBACK(RTEXITCODE) audioTestCmdSelftestHandler(PRTGETOPTSTATE pGetState)
     return RTTestSummaryAndDestroy(g_hTest);
 }
 
-const VKATCMD g_cmdSelfTest =
+/**
+ * Command table entry for 'selftest'.
+ */
+const VKATCMD g_CmdSelfTest =
 {
-    "selftest", audioTestCmdSelftestHandler,
+    "selftest",
+    audioTestCmdSelftestHandler,
     "Performs self-tests.",
-    s_aCmdSelftestOptions,  RT_ELEMENTS(s_aCmdSelftestOptions), audioTestCmdSelftestHelp,
+    s_aCmdSelftestOptions,
+    RT_ELEMENTS(s_aCmdSelftestOptions),
+    audioTestCmdSelftestHelp,
 };
 
