@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioCoreAudio.cpp 88534 2021-04-15 12:16:56Z vboxsync $ */
+/* $Id: DrvHostAudioCoreAudio.cpp 88718 2021-04-26 21:21:24Z vboxsync $ */
 /** @file
  * Host audio driver - Mac OS X CoreAudio.
  */
@@ -373,6 +373,9 @@ typedef struct COREAUDIOSTREAMOUT
  */
 typedef struct COREAUDIOSTREAM
 {
+    /** Common part. */
+    PDMAUDIOBACKENDSTREAM       Core;
+
     /** The stream's acquired configuration. */
     PPDMAUDIOSTREAMCFG          pCfg;
     /** Stream-specific data, depending on the stream type. */

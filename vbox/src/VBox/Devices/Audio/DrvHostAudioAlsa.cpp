@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioAlsa.cpp 88672 2021-04-23 11:53:54Z vboxsync $ */
+/* $Id: DrvHostAudioAlsa.cpp 88718 2021-04-26 21:21:24Z vboxsync $ */
 /** @file
  * Host audio driver - Advanced Linux Sound Architecture (ALSA).
  */
@@ -108,15 +108,18 @@ typedef ALSAAUDIOSTREAMCFG *PALSAAUDIOSTREAMCFG;
  */
 typedef struct ALSAAUDIOSTREAM
 {
+    /** Common part. */
+    PDMAUDIOBACKENDSTREAM   Core;
+
     /** Handle to the ALSA PCM stream. */
-    snd_pcm_t          *hPCM;
+    snd_pcm_t              *hPCM;
     /** Internal stream offset (for debugging). */
-    uint64_t            offInternal;
+    uint64_t                offInternal;
 
     /** The stream's acquired configuration. */
-    PDMAUDIOSTREAMCFG   Cfg;
+    PDMAUDIOSTREAMCFG       Cfg;
     /** The acquired ALSA stream config (same as Cfg). */
-    ALSAAUDIOSTREAMCFG  AlsaCfg;
+    ALSAAUDIOSTREAMCFG      AlsaCfg;
 } ALSAAUDIOSTREAM;
 /** Pointer to the ALSA host audio specific stream data. */
 typedef ALSAAUDIOSTREAM *PALSAAUDIOSTREAM;

@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioNull.cpp 88693 2021-04-23 21:49:34Z vboxsync $ */
+/* $Id: DrvHostAudioNull.cpp 88718 2021-04-26 21:21:24Z vboxsync $ */
 /** @file
  * Host audio driver - NULL (bitbucket).
  *
@@ -37,8 +37,10 @@
 /** Null audio stream. */
 typedef struct NULLAUDIOSTREAM
 {
+    /** Common part. */
+    PDMAUDIOBACKENDSTREAM   Core;
     /** The stream's acquired configuration. */
-    PDMAUDIOSTREAMCFG   Cfg;
+    PDMAUDIOSTREAMCFG       Cfg;
 } NULLAUDIOSTREAM;
 /** Pointer to a null audio stream.   */
 typedef NULLAUDIOSTREAM *PNULLAUDIOSTREAM;

@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioWasApi.cpp 88706 2021-04-26 15:59:11Z vboxsync $ */
+/* $Id: DrvHostAudioWasApi.cpp 88718 2021-04-26 21:21:24Z vboxsync $ */
 /** @file
  * Host audio driver - Windows Audio Session API.
  */
@@ -137,6 +137,9 @@ typedef struct DRVHOSTAUDIOWASCACHEDEV
  */
 typedef struct DRVHOSTAUDIOWASSTREAM
 {
+    /** Common part. */
+    PDMAUDIOBACKENDSTREAM       Core;
+
     /** Entry in DRVHOSTAUDIOWAS::StreamHead. */
     RTLISTNODE                  ListEntry;
     /** The stream's acquired configuration. */

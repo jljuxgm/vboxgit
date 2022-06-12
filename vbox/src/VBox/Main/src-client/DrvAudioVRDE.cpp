@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVRDE.cpp 88534 2021-04-15 12:16:56Z vboxsync $ */
+/* $Id: DrvAudioVRDE.cpp 88718 2021-04-26 21:21:24Z vboxsync $ */
 /** @file
  * VRDE audio backend for Main.
  */
@@ -47,14 +47,16 @@
  */
 typedef struct VRDESTREAM
 {
+    /** Common part. */
+    PDMAUDIOBACKENDSTREAM   Core;
     /** The stream's acquired configuration. */
-    PDMAUDIOSTREAMCFG   Cfg;
+    PDMAUDIOSTREAMCFG       Cfg;
     union
     {
         struct
         {
             /** Circular buffer for holding the recorded audio frames from the host. */
-            PRTCIRCBUF  pCircBuf;
+            PRTCIRCBUF      pCircBuf;
         } In;
     };
 } VRDESTREAM;

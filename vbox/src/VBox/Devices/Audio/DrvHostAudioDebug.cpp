@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioDebug.cpp 88534 2021-04-15 12:16:56Z vboxsync $ */
+/* $Id: DrvHostAudioDebug.cpp 88718 2021-04-26 21:21:24Z vboxsync $ */
 /** @file
  * Host audio driver - Debug - For dumping and injecting audio data from/to the device emulation.
  */
@@ -42,22 +42,24 @@
  */
 typedef struct DEBUGAUDIOSTREAM
 {
+    /** Common part. */
+    PDMAUDIOBACKENDSTREAM   Core;
     /** The stream's acquired configuration. */
-    PDMAUDIOSTREAMCFG   Cfg;
+    PDMAUDIOSTREAMCFG       Cfg;
     /** Audio file to dump output to or read input from. */
-    PAUDIOHLPFILE       pFile;
+    PAUDIOHLPFILE           pFile;
     union
     {
         struct
         {
             /** Current sample index for generate the sine wave. */
-            uint64_t    uSample;
+            uint64_t        uSample;
             /** The fixed portion of the sin() input. */
-            double      rdFixed;
+            double          rdFixed;
             /** Timestamp of last captured samples. */
-            uint64_t    tsLastCaptured;
+            uint64_t        tsLastCaptured;
             /** Frequency (in Hz) of the sine wave to generate. */
-            double      rdFreqHz;
+            double          rdFreqHz;
         } In;
     };
 } DEBUGAUDIOSTREAM;
