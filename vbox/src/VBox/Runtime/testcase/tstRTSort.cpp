@@ -1,4 +1,4 @@
-/* $Id: tstRTSort.cpp 86381 2020-10-01 14:20:32Z vboxsync $ */
+/* $Id: tstRTSort.cpp 86382 2020-10-01 14:21:30Z vboxsync $ */
 /** @file
  * IPRT Testcase - Sorting.
  */
@@ -133,6 +133,8 @@ static void testSorter(RTTEST hTest, FNRTSORT pfnSorter, const char *pszName)
 
         RTTestGuardedFree(hTest, pbArray);
     }
+
+    RTRandAdvDestroy(hRand);
 }
 
 
