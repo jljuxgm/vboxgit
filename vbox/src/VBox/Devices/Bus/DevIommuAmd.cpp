@@ -1,4 +1,4 @@
-/* $Id: DevIommuAmd.cpp 87817 2021-02-20 08:24:14Z vboxsync $ */
+/* $Id: DevIommuAmd.cpp 87818 2021-02-20 08:27:51Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - AMD implementation.
  */
@@ -4515,11 +4515,7 @@ static int iommuAmdIntrTableLookup(PPDMDEVINS pDevIns, uint16_t uDevId, IOMMUOP 
     if (RT_SUCCESS(rc))
     {
 #ifdef IOMMU_WITH_IRTE_CACHE
-        int rc2 = iommuAmdDteCacheAdd(pDevIns, uDevId, &Dte, 0 /* fFlags */);
-        if (RT_FAILURE(rc2))
-        {
-            LogRelMax(10, ("%s: IOMMU DTE cache is full.\n", IOMMU_LOG_PFX));
-        }
+        iommuAmdDteCacheAdd(pDevIns, uDevId, &Dte, 0 /* fFlags */);
 #endif
         /* If the DTE is not valid, all interrupts are forwarded without remapping. */
         if (Dte.n.u1IntrMapValid)
