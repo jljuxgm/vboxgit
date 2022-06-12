@@ -1,4 +1,4 @@
-/* $Id: asm-fake.cpp 87187 2021-01-06 12:51:53Z vboxsync $ */
+/* $Id: asm-fake.cpp 87192 2021-01-07 20:43:08Z vboxsync $ */
 /** @file
  * IPRT - Fake asm.h routines for use early in a new port.
  */
@@ -294,32 +294,6 @@ RTDECL(bool) ASMBitTest(const volatile void *pvBitmap, int32_t iBit)
 {
     uint8_t volatile *pau8Bitmap = (uint8_t volatile *)pvBitmap;
     return  pau8Bitmap[iBit / 8] & (uint8_t)RT_BIT_32(iBit & 7) ? true : false;
-}
-
-RTDECL(int) ASMBitFirstClear(const volatile void *pvBitmap, uint32_t cBits)
-{
-    uint32_t           iBit = 0;
-    uint8_t volatile *pu8 = (uint8_t volatile *)pvBitmap;
-
-    while (iBit < cBits)
-    {
-        uint8_t u8 = *pu8;
-        if (u8 != UINT8_MAX)
-        {
-            while (u8 & 1)
-            {
-                u8 >>= 1;
-                iBit++;
-            }
-            if (iBit >= cBits)
-                return -1;
-            return iBit;
-        }
-
-        iBit += 8;
-        pu8++;
-    }
-    return -1;
 }
 
 RTDECL(int) ASMBitNextClear(const volatile void *pvBitmap, uint32_t cBits, uint32_t iBitPrev)
