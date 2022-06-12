@@ -1,4 +1,4 @@
-/* $Id: SUPDrvInternal.h 85698 2020-08-11 17:05:29Z vboxsync $ */
+/* $Id: SUPDrvInternal.h 85766 2020-08-14 12:27:41Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
@@ -1107,6 +1107,7 @@ DECLASM(void)   supdrvTracerProbeFireStub(void);
 
 #ifdef VBOX_WITH_NATIVE_DTRACE
 const SUPDRVTRACERREG * VBOXCALL supdrvDTraceInit(void);
+void                    VBOXCALL supdrvDTraceFini(void);
 #endif
 
 RT_C_DECLS_END
