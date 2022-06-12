@@ -1,4 +1,4 @@
-/* $Id: vbox_fb.c 84255 2020-05-11 14:32:23Z vboxsync $ */
+/* $Id: vbox_fb.c 85684 2020-08-11 11:18:43Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -341,7 +341,7 @@ static int vboxfb_create(struct drm_fb_helper *helper,
          * also backported to older RedHat based 4.18.0 Linux kernels.
          */
 	drm_fb_helper_fill_info(info, &fbdev->helper, sizes);
-#elif (LINUX_VERSION_CODE >= KERNEL_VERSION(4, 11, 0) || defined(RHEL_72)) && !defined(RHEL_82)
+#elif LINUX_VERSION_CODE >= KERNEL_VERSION(4, 11, 0) || VBOX_RHEL_MAJ_PREREQ(7, 5)
 	drm_fb_helper_fill_fix(info, fb->pitches[0], fb->format->depth);
 #else
 	drm_fb_helper_fill_fix(info, fb->pitches[0], fb->depth);

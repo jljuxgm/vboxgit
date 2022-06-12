@@ -1,4 +1,4 @@
-/* $Id: vbox_drv.h 85649 2020-08-08 13:35:48Z vboxsync $ */
+/* $Id: vbox_drv.h 85684 2020-08-11 11:18:43Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -50,7 +50,13 @@
 #include <linux/string.h>
 #include <linux/pci.h>
 
+/** @def VBOX_RHEL_MAJ_PREREQ
+ * Require a minium minor release number for the given RedHat release.
+ * @param a_iMajor      RHEL_MAJOR must _equal_ this.
+ * @param a_iMinor      RHEL_MINOR must be greater or equal to this.
+ */
 #if defined(RHEL_MAJOR) && defined(RHEL_MINOR)
+# define VBOX_RHEL_MAJ_PREREQ(a_iMajor, a_iMinor) ((RHEL_MAJOR) == (a_iMajor) && (RHEL_MINOR) >= (a_iMinor))
 # if RHEL_MAJOR == 8 && RHEL_MINOR >= 2
 #  define RHEL_82
 # endif
@@ -84,6 +90,8 @@
 # if RHEL_MAJOR == 7 && RHEL_MINOR >= 0
 #  define RHEL_70
 # endif
+#else
+# define VBOX_RHEL_MAJ_PREREQ(a_iMajor, a_iMinor) 0
 #endif
 
 #if defined(CONFIG_SUSE_VERSION)
