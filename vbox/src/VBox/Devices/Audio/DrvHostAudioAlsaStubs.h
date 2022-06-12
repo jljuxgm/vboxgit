@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioAlsaStubs.h 88966 2021-05-10 13:40:35Z vboxsync $ */
+/* $Id: DrvHostAudioAlsaStubs.h 89099 2021-05-17 14:15:33Z vboxsync $ */
 /** @file
  * Stubs for libasound.
  */
@@ -22,15 +22,16 @@
 #endif
 
 #include <iprt/cdefs.h>
+#include <alsa/version.h>
 
 RT_C_DECLS_BEGIN
 extern int audioLoadAlsaLib(void);
 
-#ifndef SND_PCM_NO_SOFTVOL  /* probably not a good indicator ... */
+#if (((SND_LIB_MAJOR) << 16) | ((SND_LIB_MAJOR) << 8) | (SND_LIB_SUBMINOR)) >= 0x10000 /* was added in 1.0.0 */
 extern int  snd_pcm_avail_delay(snd_pcm_t *, snd_pcm_sframes_t *, snd_pcm_sframes_t *);
 #endif
 
-#ifndef SND_CTL_TLVT_CHMAP_FIXED /* probably not a good indicator ... */
+#if (((SND_LIB_MAJOR) << 16) | ((SND_LIB_MAJOR) << 8) | (SND_LIB_SUBMINOR)) >= 0x1000e /* was added in 1.0.14a */
 extern int  snd_device_name_hint(int, const char *, void ***);
 extern int  snd_device_name_free_hint(void **);
 extern char *snd_device_name_get_hint(const void *, const char *);
