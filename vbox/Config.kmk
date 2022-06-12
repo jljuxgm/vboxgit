@@ -1,4 +1,4 @@
-# $Id: Config.kmk 85170 2020-07-10 12:08:38Z vboxsync $
+# $Id: Config.kmk 85176 2020-07-10 12:54:06Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -5184,6 +5184,20 @@ ifn1of ($(KBUILD_TARGET), darwin os2 win solaris freebsd)
  TEMPLATE_VBOXR0DRV_CXXFLAGS  += -include $(PATH_ROOT)/include/VBox/SUPDrvMangling.h
 endif
 
+ifeq ($(KBUILD_TARGET),darwin)
+#
+# A variant of VBOXR0DRV that uses the 10.10 SDK.
+#
+TEMPLATE_VBoxR0DrvOSX10.10 = VBoxR0Drv variant using the 10.10 SDK
+TEMPLATE_VBoxR0DrvOSX10.10_EXTENDS  = VBOXR0DRV
+TEMPLATE_VBoxR0DrvOSX10.10_SDKS     = MACOSX1010
+TEMPLATE_VBoxR0DrvOSX10.10_INCS     = $(filter-out $(VBOX_PATH_MACOSX_SDK)/%,$(TEMPLATE_VBOXR0DRV_INCS)) \
+	$(PATH_SDK_MACOSX1010)/System/Library/Frameworks/Kernel.framework/PrivateHeaders \
+	$(PATH_SDK_MACOSX1010)/System/Library/Frameworks/Kernel.framework/Headers
+TEMPLATE_VBoxR0DrvOSX10.10_DEFS     = $(filter-out $(VBOX_DARWIN_DEF_SDK_DEFS),$(TEMPLATE_VBOXR0DRV_DEFS))
+
+endif
+
 #
 # Template for building libraries used by ring-0 drivers.
 #
@@ -8028,7 +8042,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 85170 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 85176 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
