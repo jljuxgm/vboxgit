@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgStatsQt.cpp 87677 2021-02-10 11:57:49Z vboxsync $ */
+/* $Id: VBoxDbgStatsQt.cpp 87684 2021-02-10 12:54:23Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Statistics.
  */
@@ -2874,8 +2874,9 @@ void
 VBoxDbgStatsView::setSubTreeExpanded(QModelIndex const &a_rIndex, bool a_fExpanded)
 {
     int cRows = m_pModel->rowCount(a_rIndex);
-    for (int i = 0; i < cRows; i++)
-        setSubTreeExpanded(a_rIndex.child(i, 0), a_fExpanded);
+    if (a_rIndex.model())
+        for (int i = 0; i < cRows; i++)
+            setSubTreeExpanded(a_rIndex.model()->index(i, 0, a_rIndex), a_fExpanded);
     setExpanded(a_rIndex, a_fExpanded);
 }
 
