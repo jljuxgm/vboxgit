@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsLanguage.h 85822 2020-08-18 14:22:24Z vboxsync $ */
+/* $Id: UIGlobalSettingsLanguage.h 85990 2020-09-02 10:06:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsLanguage class declaration.
  */
@@ -82,6 +82,8 @@ private:
     void prepare();
     /** Prepares widgets. */
     void prepareWidgets();
+    /** Prepares connections. */
+    void prepareConnection();
     /** Cleanups all. */
     void cleanup();
 
@@ -92,16 +94,19 @@ private:
     bool saveLanguageData();
 
     /** Holds whether the page is polished. */
-    bool m_fPolished;
+    bool  m_fPolished;
 
     /** Holds the page data cache instance. */
     UISettingsCacheGlobalLanguage *m_pCache;
 
     /** @name Widgets
      * @{ */
-       QITreeWidget *m_pLanguageTree;
-       QILabelSeparator *m_pLanguageLabel;
-       QIRichTextLabel *m_pLanguageInfo;
+        /** Holds the tree-widget instance. */
+        QITreeWidget     *m_pTreeWidget;
+        /** Holds the separator label instance. */
+        QILabelSeparator *m_pLabelSeparator;
+        /** Holds the info label instance. */
+        QIRichTextLabel  *m_pLabelInfo;
     /** @} */
 };
 
