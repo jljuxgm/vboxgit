@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84657 $"
+__version__ = "$Revision: 84669 $"
 
 # Standard Python imports.
 import errno
@@ -3338,9 +3338,6 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
             [ tdTestDirCreate(sDirectory = '/' ), tdTestResultFailure() ],
             [ tdTestDirCreate(sDirectory = '/..' ), tdTestResultFailure() ],
             [ tdTestDirCreate(sDirectory = '/../' ), tdTestResultFailure() ],
-            # Format strings. Dangerous.
-            [ tdTestDirCreate(sDirectory = 'foo%sbar%sbaz%d' ), tdTestResultFailure() ],
-            [ tdTestDirCreate(sDirectory = '%f%%boo%%bar%RI32' ), tdTestResultFailure() ],
         ];
         if oTestVm.isWindows() or oTestVm.isOS2():
             atTests.extend([
@@ -3365,6 +3362,9 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
                               afFlags = (vboxcon.DirectoryCreateFlag_Parents,) ), tdTestResultSuccess() ],
             [ tdTestDirCreate(sDirectory = oTestVm.pathJoin(sScratch, 'foo', 'bar', 'baz'),
                               afFlags = (vboxcon.DirectoryCreateFlag_Parents,) ), tdTestResultSuccess() ],
+            # Try format strings as directories.
+            [ tdTestDirCreate(sDirectory = oTestVm.pathJoin(sScratch, 'foo%sbar%sbaz%d' )), tdTestResultSuccess() ],
+            [ tdTestDirCreate(sDirectory = oTestVm.pathJoin(sScratch, '%f%%boo%%bar%RI32' )), tdTestResultSuccess() ],
             # Long random names.
             [ tdTestDirCreate(sDirectory = oTestVm.pathJoin(sScratch, self.oTestFiles.generateFilenameEx(36, 28))),
               tdTestResultSuccess() ],
