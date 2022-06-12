@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 85121 2020-07-08 19:33:26Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 85286 2020-07-12 23:08:50Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -90,8 +90,12 @@ public:
     typedef std::list<ComPtr<IInternalSessionControl> > InternalControlList;
     typedef ObjectsList<Machine> MachinesOList;
 
+#if 0 /* obsoleted by AsyncEvent */
     class CallbackEvent;
     friend class CallbackEvent;
+#endif
+    class AsyncEvent;
+    friend class AsyncEvent;
 
 #ifndef VBOX_WITH_XPCOM
 # ifdef VBOX_WITH_SDS
