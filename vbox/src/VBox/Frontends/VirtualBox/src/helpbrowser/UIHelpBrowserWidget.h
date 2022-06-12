@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.h 86716 2020-10-26 17:54:33Z vboxsync $ */
+/* $Id: UIHelpBrowserWidget.h 86718 2020-10-27 09:39:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class declaration.
  */
@@ -92,6 +92,8 @@ private:
 
     void saveOptions();
     void cleanup();
+    QUrl findIndexHtml() const;
+    void show404Error();
     /** @name Event handling stuff.
       * @{ */
         /** Handles translation event. */
@@ -132,6 +134,7 @@ private:
     QHelpIndexWidget    *m_pIndexWidget;
     QWidget             *m_pBookmarksWidget;
     QAction             *m_pShowHideTabWidgetAction;
+    QString              m_strPageNotFoundText;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_helpbrowser_UIHelpBrowserWidget_h */
