@@ -1,4 +1,4 @@
-/* $Id: HDAStreamPeriod.h 87810 2021-02-19 16:08:22Z vboxsync $ */
+/* $Id: HDAStreamPeriod.h 88138 2021-03-16 12:23:50Z vboxsync $ */
 /** @file
  * HDAStreamPeriod.h - Stream period functions for HD Audio.
  */
@@ -77,6 +77,8 @@ typedef struct HDASTREAMPERIOD
 #ifdef LOG_ENABLED
     /** Debugging state. */
     HDASTREAMPERIODDEBUG    Dbg;
+#else
+    uint64_t                uPlaceholder;
 #endif
 } HDASTREAMPERIOD;
 AssertCompileSizeAlignment(HDASTREAMPERIOD, 8);
