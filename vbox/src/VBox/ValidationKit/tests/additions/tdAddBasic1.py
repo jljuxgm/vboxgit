@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 84426 2020-05-20 18:46:10Z vboxsync $
+# $Id: tdAddBasic1.py 84427 2020-05-20 18:56:56Z vboxsync $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84426 $"
+__version__ = "$Revision: 84427 $"
 
 # Standard Python imports.
 import os;
@@ -198,7 +198,7 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
         self.logVmInfo(oVM);
 
         if oTestVm.isLinux():
-            reporter.testStart('Enabling udev logging ...' % (self.sFileCdWait,));
+            reporter.testStart('Enabling udev logging ...');
             oSession, oTxsSession = self.startVmAndConnectToTxsViaTcp(oTestVm.sVmName, fCdWait = False,
                                                                       cMsCdWait = 5 * 60 * 1000);
             oTxsSession.syncExec("/bin/sed", ("/bin/sed", "-i", "'s/.*udev_log.*/udev_log=\"debug\"/'", "/etc/udev/udev.conf"), 
@@ -207,9 +207,9 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
 
         reporter.testStart('Waiting for TXS + CD (%s)' % (self.sFileCdWait,));
         if oTestVm.isLinux():
-            oSession, oTxsSession = self.txsRebootAndReconnectViaTcp(oTestVm.sVmName, fCdWait = True,
-                                                                     cMsCdWait = 5 * 60 * 1000,
-                                                                     sFileCdWait = self.sFileCdWait);
+            (fRc, oTxsSession) = self.txsRebootAndReconnectViaTcp(oTestVm.sVmName, fCdWait = True,
+                                                                  cMsCdWait = 5 * 60 * 1000,
+                                                                  sFileCdWait = self.sFileCdWait);
         else:
             oSession, oTxsSession = self.startVmAndConnectToTxsViaTcp(oTestVm.sVmName, fCdWait = True,
                                                                       cMsCdWait = 5 * 60 * 1000,
