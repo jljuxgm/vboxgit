@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic5.cpp 87887 2021-02-26 13:48:32Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic5.cpp 87888 2021-02-26 13:55:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic5 class implementation.
  */
@@ -64,6 +64,17 @@ UIWizardNewVMPageBasic5::UIWizardNewVMPageBasic5()
 CMediumFormat UIWizardNewVMPageBasic5::mediumFormat() const
 {
     return m_mediumFormat;
+}
+
+qulonglong UIWizardNewVMPageBasic5::mediumVariant() const
+{
+    return (qulonglong)KMediumVariant_Standard;
+}
+
+void UIWizardNewVMPageBasic5::setMediumVariant(qulonglong uMediumVariant)
+{
+    Q_UNUSED(uMediumVariant);
+    /* No set here since we dont allow changing medium variant for this wizard mode: */
 }
 
 void UIWizardNewVMPageBasic5::prepare()
