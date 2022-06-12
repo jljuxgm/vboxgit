@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.cpp 86881 2020-11-13 11:47:47Z vboxsync $ */
+/* $Id: UIHelpBrowserWidget.cpp 86882 2020-11-13 14:25:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class implementation.
  */
@@ -1655,6 +1655,11 @@ bool UIHelpBrowserWidget::shouldBeMaximized() const
 void UIHelpBrowserWidget::prepare()
 {
     m_pMainLayout = new QVBoxLayout(this);
+    m_pMainLayout->setContentsMargins(0.2 * qApp->style()->pixelMetric(QStyle::PM_LayoutLeftMargin),
+                                      qApp->style()->pixelMetric(QStyle::PM_LayoutTopMargin),
+                                      0.2 * qApp->style()->pixelMetric(QStyle::PM_LayoutRightMargin),
+                                      0.2 * qApp->style()->pixelMetric(QStyle::PM_LayoutBottomMargin));
+
     AssertReturnVoid(m_pMainLayout);
 
     prepareActions();
