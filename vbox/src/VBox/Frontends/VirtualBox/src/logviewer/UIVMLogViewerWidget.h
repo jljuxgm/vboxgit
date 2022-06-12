@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.h 88816 2021-05-03 10:01:31Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.h 88817 2021-05-03 10:07:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class declaration.
  */
@@ -182,6 +182,8 @@ private:
     void createLogViewerPages(const QVector<QUuid> &machineList);
     /** Removes the log pages/tabs that shows logs of the machines from @p machineList. */
     void removeLogViewerPages(const QVector<QUuid> &machineList);
+    /** We alternate tab colors between two `darker and lighter` one per machine. This function goes over tabs and
+      * sets tab data so tab our QTabBar extension can color tabs correctly. */
     void setTabColorPerMachine();
 
     /** Resets document (of the curent tab) and scrollbar highligthing */
