@@ -1,4 +1,4 @@
-/* $Id: string.cpp 85306 2020-07-13 12:10:02Z vboxsync $ */
+/* $Id: string.cpp 85314 2020-07-13 17:24:18Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - UTF-8 and UTF-16 string classes.
  */
@@ -729,6 +729,17 @@ HRESULT Utf8Str::cloneToEx(char **pstr) const
     return E_OUTOFMEMORY;
 }
 #endif
+
+HRESULT Utf8Str::cloneToEx(BSTR *pbstr) const RT_NOEXCEPT
+{
+    if (!pbstr)
+        return S_OK;
+    Bstr bstr;
+    HRESULT hrc = bstr.assignEx(*this);
+    if (SUCCEEDED(hrc))
+        hrc = bstr.detachToEx(pbstr);
+    return hrc;
+}
 
 Utf8Str& Utf8Str::stripTrailingSlash()
 {

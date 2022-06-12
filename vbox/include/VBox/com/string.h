@@ -1,4 +1,4 @@
-/* $Id: string.h 85308 2020-07-13 12:38:55Z vboxsync $ */
+/* $Id: string.h 85314 2020-07-13 17:24:18Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - Smart string classes declaration.
  */
@@ -1283,13 +1283,7 @@ public:
      * @param   pbstr Where to store a clone of the string.
      * @returns S_OK or E_OUTOFMEMORY (COM status codes).
      */
-    HRESULT cloneToEx(BSTR *pbstr) const
-    {
-        if (!pbstr)
-            return S_OK;
-        Bstr bstr(*this);
-        return bstr.detachToEx(pbstr);
-    }
+    HRESULT cloneToEx(BSTR *pbstr) const RT_NOEXCEPT;
 
     /**
      * Safe assignment from BSTR.
