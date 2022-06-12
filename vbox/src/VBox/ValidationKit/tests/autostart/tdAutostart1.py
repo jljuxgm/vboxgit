@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Id: tdAutostart1.py 86555 2020-10-13 10:30:53Z vboxsync $"
+__version__ = "$Id: tdAutostart1.py 86556 2020-10-13 10:36:06Z vboxsync $"
 
 
 # Standard Python imports.
@@ -1228,10 +1228,10 @@ class tdAutostartOsWin(tdAutostartOs):
             sSecPolicyEditor = """
 $oUser = New-Object System.Security.Principal.NTAccount("%s")
 $oSID = $oUser.Translate([System.Security.Principal.SecurityIdentifier])
-$sExportFile = '.\cfg.inf'
-$sSecDb = '.\secedt.sdb'
-$sSecDb1 = '.\secedt.jfm'
-$sImportFile = '.\newcfg.inf'
+$sExportFile = '.\\cfg.inf'
+$sSecDb = '.\\secedt.sdb'
+$sSecDb1 = '.\\secedt.jfm'
+$sImportFile = '.\\newcfg.inf'
 secedit /export /cfg $sExportFile
 $sCurrServiceLogonRight = Get-Content -Path $sExportFile |
     Where-Object -FilterScript {$PSItem -match 'SeServiceLogonRight'}
