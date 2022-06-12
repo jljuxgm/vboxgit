@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.cpp 86946 2020-11-20 18:13:28Z vboxsync $ */
+/* $Id: UIHelpBrowserWidget.cpp 86947 2020-11-20 18:27:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class implementation.
  */
@@ -2303,6 +2303,10 @@ void UIHelpBrowserWidget::sltHandleFontSizeactions()
         iFontPointSize += iFontPointSizeChangeStep;
     else if (sender() == m_pFontSizeSmallerAction)
         iFontPointSize -= iFontPointSizeChangeStep;
+
+    if (iFontPointSize >= fontScaleMinMax.second * m_pTabManager->initialFontPointSize() ||
+        iFontPointSize <= fontScaleMinMax.first * m_pTabManager->initialFontPointSize())
+        return;
     m_pTabManager->setFontPointSize(iFontPointSize);
 }
 
