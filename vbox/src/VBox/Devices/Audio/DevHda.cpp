@@ -1,4 +1,4 @@
-/* $Id: DevHda.cpp 88917 2021-05-06 21:24:44Z vboxsync $ */
+/* $Id: DevHda.cpp 88919 2021-05-06 23:05:19Z vboxsync $ */
 /** @file
  * Intel HD Audio Controller Emulation.
  *
@@ -4528,6 +4528,9 @@ static void hdaR3DetachInternal(PPDMDEVINS pDevIns, PHDASTATER3 pThisCC, PHDADRI
 
     /* Next, search backwards for a capable (attached) driver which now will be the
      * new recording source. */
+/** @todo r=bird: This looks completely wrong.  What if the detatched devices wasn't the recording source
+ * and we pick a different one here?  I also don't get why we need to do this in revese order, given that
+ * the primary device is first.  I guess this code isn't really tested. */
     PHDADRIVER pDrvCur;
     RTListForEachReverse(&pThisCC->lstDrv, pDrvCur, HDADRIVER, Node)
     {

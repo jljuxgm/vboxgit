@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 88918 2021-05-06 22:17:08Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 88919 2021-05-06 23:05:19Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -4023,6 +4023,9 @@ static void ichac97R3DetachInternal(PPDMDEVINS pDevIns, PAC97STATER3 pThisCC, PA
 
     /* Next, search backwards for a capable (attached) driver which now will be the
      * new recording source. */
+/** @todo r=bird: This looks completely wrong.  What if the detatched devices wasn't the recording source
+ * and we pick a different one here?  I also don't get why we need to do this in revese order, given that
+ * the primary device is first.  I guess this code isn't really tested. */
     PDMAUDIODSTSRCUNION dstSrc;
     PAC97DRIVER pDrvCur;
     RTListForEachReverse(&pThisCC->lstDrv, pDrvCur, AC97DRIVER, Node)
