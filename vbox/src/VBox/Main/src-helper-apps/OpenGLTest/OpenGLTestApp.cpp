@@ -1,4 +1,4 @@
-/* $Id: OpenGLTestApp.cpp 86857 2020-11-11 09:12:23Z vboxsync $ */
+/* $Id: OpenGLTestApp.cpp 86859 2020-11-11 12:45:11Z vboxsync $ */
 /** @file
  * VBox host opengl support test application.
  */
@@ -49,14 +49,14 @@
 # include <VBox/version.h>
 #endif /* VBOXGLTEST_WITH_LOGGING */
 
-#ifndef RT_OS_WINDOWS
-# include <GL/gl.h> /* For GLubyte and friends. */
-#endif
-
 #ifdef VBOX_WITH_VIDEOHWACCEL
 # include <QGLWidget>
 # include <QApplication>
 # include <VBox/VBoxGL2D.h>
+#endif
+
+#ifndef RT_OS_WINDOWS
+# include <GL/gl.h> /* For GLubyte and friends. */
 #endif
 
 /**
@@ -459,7 +459,7 @@ int main(int argc, char **argv)
                     break;
 
                 case 'V':
-                    RTPrintf("$Revision: 86857 $\n");
+                    RTPrintf("$Revision: 86859 $\n");
                     return 0;
 
                 case VERR_GETOPT_UNKNOWN_OPTION:
