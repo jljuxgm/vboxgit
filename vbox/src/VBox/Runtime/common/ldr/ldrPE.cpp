@@ -1,4 +1,4 @@
-/* $Id: ldrPE.cpp 86549 2020-10-12 23:59:53Z vboxsync $ */
+/* $Id: ldrPE.cpp 86550 2020-10-13 00:01:19Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Portable Executable (PE).
  */
@@ -2542,7 +2542,7 @@ static void rtldrPE_VerifySignatureDestroy(PRTLDRMODPE pModPe, PRTLDRPESIGNATURE
 {
     RT_NOREF_PV(pModPe);
     RTCrPkcs7ContentInfo_Delete(&pSignature->PrimaryContentInfo);
-    if (pSignature->paNested > 0)
+    if (pSignature->paNested)
     {
         RTMemTmpFree(pSignature->paNested);
         pSignature->paNested = NULL;
