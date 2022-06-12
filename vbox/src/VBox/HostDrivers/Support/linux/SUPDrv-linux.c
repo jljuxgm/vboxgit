@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-linux.c 87728 2021-02-12 02:24:07Z vboxsync $ */
+/* $Id: SUPDrv-linux.c 87729 2021-02-12 02:47:03Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Linux specifics.
  */
@@ -760,6 +760,7 @@ EXPORT_SYMBOL(SUPDrvLinuxIDC);
 SUPR0DECL(int)  SUPDrvLinuxLdrRegisterWrappedModule(PCSUPLDRWRAPPEDMODULE pWrappedModInfo,
                                                     const char *pszLnxModName, void **phMod)
 {
+#if RTLNX_VER_MIN(2,6,30)
     /* Locate the module structure for the caller so can later reference
        and dereference it to prevent unloading while it is being used.
 
@@ -776,11 +777,20 @@ SUPR0DECL(int)  SUPDrvLinuxLdrRegisterWrappedModule(PCSUPLDRWRAPPEDMODULE pWrapp
        Sigh^2. */
     AssertPtrReturn(pszLnxModName, VERR_INVALID_POINTER);
     AssertReturn(*pszLnxModName, VERR_INVALID_NAME);
-    struct module *pLnxModule = find_module(pszLnxModName);
-    if (pLnxModule)
-        return supdrvLdrRegisterWrappedModule(&g_DevExt, pWrappedModInfo, pLnxModule, phMod);
-    printk("vboxdrv: find_module(%s) failed in SUPDrvLinuxLdrRegisterWrappedModule!\n", pszLnxModName);
-    return VERR_MODULE_NOT_FOUND;
+    if (mutex_lock_interruptible(&module_mutex) == 0)
+    {
+        struct module *pLnxModule = find_module(pszLnxModName);
+        mutex_unlock(&module_mutex);
+        if (pLnxModule)
+            return supdrvLdrRegisterWrappedModule(&g_DevExt, pWrappedModInfo, pLnxModule, phMod);
+        printk("vboxdrv: find_module(%s) failed in SUPDrvLinuxLdrRegisterWrappedModule!\n", pszLnxModName);
+        return VERR_MODULE_NOT_FOUND;
+    }
+    return VERR_INTERRUPTED;
+#else
+    printk("vboxdrv: wrapper modules are not supported on 2.6.29 and earlier. sorry.\n");
+    return VERR_NOT_SUPPORTED;
+#endif
 }
 EXPORT_SYMBOL(SUPDrvLinuxLdrRegisterWrappedModule);
 
