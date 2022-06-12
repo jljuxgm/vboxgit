@@ -1,4 +1,4 @@
-/* $Id: UIProgressDialog.h 86321 2020-09-28 14:32:36Z vboxsync $ */
+/* $Id: UIProgressDialog.h 86325 2020-09-28 15:34:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIProgressDialog class declaration.
  */
@@ -195,6 +195,9 @@ signals:
 
     /** Notifies listeners about wrapped CProgress complete. */
     void sigProgressComplete();
+
+    /** Notifies listeners about CProgress event handling finished. */
+    void sigProgressEventHandlingFinished();
 
 public:
 

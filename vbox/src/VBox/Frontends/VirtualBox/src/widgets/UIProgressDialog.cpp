@@ -1,4 +1,4 @@
-/* $Id: UIProgressDialog.cpp 86206 2020-09-21 19:41:18Z vboxsync $ */
+/* $Id: UIProgressDialog.cpp 86325 2020-09-28 15:34:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIProgressDialog class implementation.
  */
@@ -649,6 +649,8 @@ void UIProgress::prepare()
             this, &UIProgress::sltHandleProgressPercentageChange);
     connect(m_pEventHandler, &UIProgressEventHandler::sigProgressTaskComplete,
             this, &UIProgress::sltHandleProgressTaskComplete);
+    connect(m_pEventHandler, &UIProgressEventHandler::sigHandlingFinished,
+            this, &UIProgress::sigProgressEventHandlingFinished);
 }
 
 void UIProgress::cleanup()
