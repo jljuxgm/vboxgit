@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioDebug.cpp 88462 2021-04-12 10:59:57Z vboxsync $ */
+/* $Id: DrvHostAudioDebug.cpp 88534 2021-04-15 12:16:56Z vboxsync $ */
 /** @file
  * Host audio driver - Debug - For dumping and injecting audio data from/to the device emulation.
  */
@@ -105,11 +105,12 @@ static DECLCALLBACK(int) drvHostDebugAudioHA_GetConfig(PPDMIHOSTAUDIO pInterface
     RT_NOREF(pInterface);
     AssertPtrReturn(pBackendCfg, VERR_INVALID_POINTER);
 
+    /*
+     * Fill in the config structure.
+     */
     RTStrCopy(pBackendCfg->szName, sizeof(pBackendCfg->szName), "DebugAudio");
-
-    pBackendCfg->cbStreamOut    = sizeof(DEBUGAUDIOSTREAM);
-    pBackendCfg->cbStreamIn     = sizeof(DEBUGAUDIOSTREAM);
-
+    pBackendCfg->cbStream       = sizeof(DEBUGAUDIOSTREAM);
+    pBackendCfg->fFlags         = 0;
     pBackendCfg->cMaxStreamsOut = 1; /* Output; writing to a file. */
     pBackendCfg->cMaxStreamsIn  = 1; /* Input; generates a sine wave. */
 

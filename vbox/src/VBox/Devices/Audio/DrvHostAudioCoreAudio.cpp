@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioCoreAudio.cpp 88468 2021-04-12 12:08:08Z vboxsync $ */
+/* $Id: DrvHostAudioCoreAudio.cpp 88534 2021-04-15 12:16:56Z vboxsync $ */
 /** @file
  * Host audio driver - Mac OS X CoreAudio.
  */
@@ -2161,18 +2161,15 @@ static int coreAudioStreamControl(PDRVHOSTCOREAUDIO pThis, PCOREAUDIOSTREAM pCAS
  */
 static DECLCALLBACK(int) drvHostCoreAudioHA_GetConfig(PPDMIHOSTAUDIO pInterface, PPDMAUDIOBACKENDCFG pBackendCfg)
 {
-    AssertPtrReturn(pInterface,  VERR_INVALID_POINTER);
+    PDRVHOSTCOREAUDIO pThis = PDMIHOSTAUDIO_2_DRVHOSTCOREAUDIO(pInterface);
     AssertPtrReturn(pBackendCfg, VERR_INVALID_POINTER);
 
-    PDRVHOSTCOREAUDIO pThis = PDMIHOSTAUDIO_2_DRVHOSTCOREAUDIO(pInterface);
-
-    RT_BZERO(pBackendCfg, sizeof(PDMAUDIOBACKENDCFG));
-
-    RTStrPrintf2(pBackendCfg->szName, sizeof(pBackendCfg->szName), "Core Audio");
-
-    pBackendCfg->cbStreamIn  = sizeof(COREAUDIOSTREAM);
-    pBackendCfg->cbStreamOut = sizeof(COREAUDIOSTREAM);
-
+    /*
+     * Fill in the config structure.
+     */
+    RTStrCopy(pBackendCfg->szName, sizeof(pBackendCfg->szName), "Core Audio");
+    pBackendCfg->cbStream       = sizeof(COREAUDIOSTREAM);
+    pBackendCfg->fFlags         = 0;
     /* For Core Audio we provide one stream per device for now. */
     pBackendCfg->cMaxStreamsIn  = PDMAudioHostEnumCountMatching(&pThis->Devices, PDMAUDIODIR_IN);
     pBackendCfg->cMaxStreamsOut = PDMAudioHostEnumCountMatching(&pThis->Devices, PDMAUDIODIR_OUT);

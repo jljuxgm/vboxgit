@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioValidationKit.cpp 88462 2021-04-12 10:59:57Z vboxsync $ */
+/* $Id: DrvHostAudioValidationKit.cpp 88534 2021-04-15 12:16:56Z vboxsync $ */
 /** @file
  * Host audio driver - ValidationKit - For dumping and injecting audio data from/to the device emulation.
  */
@@ -95,11 +95,12 @@ static DECLCALLBACK(int) drvHostValKitAudioHA_GetConfig(PPDMIHOSTAUDIO pInterfac
     RT_NOREF(pInterface);
     AssertPtrReturn(pBackendCfg, VERR_INVALID_POINTER);
 
-    RTStrPrintf2(pBackendCfg->szName, sizeof(pBackendCfg->szName), "Validation Kit");
-
-    pBackendCfg->cbStreamOut    = sizeof(VAKITAUDIOSTREAM);
-    pBackendCfg->cbStreamIn     = sizeof(VAKITAUDIOSTREAM);
-
+    /*
+     * Fill in the config structure.
+     */
+    RTStrCopy(pBackendCfg->szName, sizeof(pBackendCfg->szName), "Validation Kit");
+    pBackendCfg->cbStream       = sizeof(VAKITAUDIOSTREAM);
+    pBackendCfg->fFlags         = 0;
     pBackendCfg->cMaxStreamsOut = 1; /* Output */
     pBackendCfg->cMaxStreamsIn  = 0; /* No input supported yet. */
 

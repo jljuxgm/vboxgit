@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioAlsa.cpp 88453 2021-04-10 00:23:14Z vboxsync $ */
+/* $Id: DrvHostAudioAlsa.cpp 88534 2021-04-15 12:16:56Z vboxsync $ */
 /** @file
  * Host audio driver - Advanced Linux Sound Architecture (ALSA).
  */
@@ -239,8 +239,8 @@ static DECLCALLBACK(int) drvHostAlsaAudioHA_GetConfig(PPDMIHOSTAUDIO pInterface,
      * Fill in the config structure.
      */
     RTStrCopy(pBackendCfg->szName, sizeof(pBackendCfg->szName), "ALSA");
-    pBackendCfg->cbStreamIn     = sizeof(ALSAAUDIOSTREAM);
-    pBackendCfg->cbStreamOut    = sizeof(ALSAAUDIOSTREAM);
+    pBackendCfg->cbStream       = sizeof(ALSAAUDIOSTREAM);
+    pBackendCfg->fFlags         = 0;
     /* ALSA allows exactly one input and one output used at a time for the selected device(s). */
     pBackendCfg->cMaxStreamsIn  = 1;
     pBackendCfg->cMaxStreamsOut = 1;

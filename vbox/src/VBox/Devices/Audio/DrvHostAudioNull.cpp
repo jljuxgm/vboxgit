@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioNull.cpp 88462 2021-04-12 10:59:57Z vboxsync $ */
+/* $Id: DrvHostAudioNull.cpp 88534 2021-04-15 12:16:56Z vboxsync $ */
 /** @file
  * Host audio driver - NULL (bitbucket).
  *
@@ -68,11 +68,12 @@ static DECLCALLBACK(int) drvHostNullAudioHA_GetConfig(PPDMIHOSTAUDIO pInterface,
     NOREF(pInterface);
     AssertPtrReturn(pBackendCfg, VERR_INVALID_POINTER);
 
+    /*
+     * Fill in the config structure.
+     */
     RTStrCopy(pBackendCfg->szName, sizeof(pBackendCfg->szName), "NULL audio");
-
-    pBackendCfg->cbStreamOut    = sizeof(NULLAUDIOSTREAM);
-    pBackendCfg->cbStreamIn     = sizeof(NULLAUDIOSTREAM);
-
+    pBackendCfg->cbStream       = sizeof(NULLAUDIOSTREAM);
+    pBackendCfg->fFlags         = 0;
     pBackendCfg->cMaxStreamsOut = 1; /* Output */
     pBackendCfg->cMaxStreamsIn  = 2; /* Line input + microphone input. */
 
