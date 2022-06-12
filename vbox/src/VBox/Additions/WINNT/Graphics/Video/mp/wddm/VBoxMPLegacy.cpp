@@ -1,4 +1,4 @@
-/* $Id: VBoxMPLegacy.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
+/* $Id: VBoxMPLegacy.cpp 86027 2020-09-03 17:45:50Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver. The legacy VBoxVGA adapter support with 2D software unaccelerated
  * framebuffer operations.
@@ -648,16 +648,19 @@ static NTSTATUS vboxVdmaProcessBltCmd(PVBOXMP_DEVEXT pDevExt, VBOXWDDM_CONTEXT *
     NTSTATUS Status = STATUS_SUCCESS;
     PVBOXWDDM_ALLOCATION pDstAlloc = pBlt->Blt.DstAlloc.pAlloc;
 //    PVBOXWDDM_ALLOCATION pSrcAlloc = pBlt->Blt.SrcAlloc.pAlloc;
-    BOOLEAN fVRAMUpdated = FALSE;
     {
         /* the allocations contain a real data in VRAM, do blitting */
         vboxVdmaGgDmaBlt(pDevExt, &pBlt->Blt);
-        fVRAMUpdated = TRUE;
 
-        VBOXWDDM_SOURCE *pSource = &pDevExt->aSources[pDstAlloc->AllocData.SurfDesc.VidPnSourceId];
-        Assert(pDstAlloc->AllocData.SurfDesc.VidPnSourceId < VBOX_VIDEO_MAX_SCREENS);
-        Assert(pSource->pPrimaryAllocation == pDstAlloc);
-        vboxVdmaBltDirtyRectsUpdate(pDevExt, pSource, pBlt->Blt.DstRects.UpdateRects.cRects, pBlt->Blt.DstRects.UpdateRects.aRects);
+        if (pDstAlloc->bAssigned && pDstAlloc->bVisible)
+        {
+            /* Only for visible framebuffer allocations. */
+            VBOXWDDM_SOURCE *pSource = &pDevExt->aSources[pDstAlloc->AllocData.SurfDesc.VidPnSourceId];
+            /* Assert but otherwise ignore wrong allocations. */
+            AssertReturn(pDstAlloc->AllocData.SurfDesc.VidPnSourceId < VBOX_VIDEO_MAX_SCREENS, STATUS_SUCCESS);
+            AssertReturn(pSource->pPrimaryAllocation == pDstAlloc, STATUS_SUCCESS);
+            vboxVdmaBltDirtyRectsUpdate(pDevExt, pSource, pBlt->Blt.DstRects.UpdateRects.cRects, pBlt->Blt.DstRects.UpdateRects.aRects);
+        }
     }
     return Status;
 }
