@@ -1,4 +1,4 @@
-/* $Id: VBoxDragAndDropSvc.cpp 85318 2020-07-13 21:07:41Z vboxsync $ */
+/* $Id: VBoxDragAndDropSvc.cpp 85403 2020-07-21 15:33:15Z vboxsync $ */
 /** @file
  * Drag and Drop Service.
  */
@@ -589,7 +589,7 @@ do { \
                     {
                         if (cParms == 4)
                         {
-                            rc = HGCMSvcGetU32(&paParms[0], &data.uStatus);
+                            rc = HGCMSvcGetU32(&paParms[0], &data.hdr.uContextID);
                             if (RT_SUCCESS(rc))
                                 rc = HGCMSvcGetU32(&paParms[1], &data.uStatus);
                             if (RT_SUCCESS(rc))
