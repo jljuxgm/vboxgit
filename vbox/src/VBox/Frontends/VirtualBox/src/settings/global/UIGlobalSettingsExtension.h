@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsExtension.h 85822 2020-08-18 14:22:24Z vboxsync $ */
+/* $Id: UIGlobalSettingsExtension.h 86005 2020-09-02 15:46:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsExtension class declaration.
  */
@@ -25,6 +25,7 @@
 #include "UISettingsPage.h"
 
 /* Forward declarations: */
+class QHBoxLayout;
 class QITreeWidget;
 class QTreeWidgetItem;
 class QILabelSeparator;
@@ -82,24 +83,35 @@ private:
     void prepare();
     /** Prepares widgets. */
     void prepareWidgets();
+    /** Prepares tree-widget. */
+    void prepareTreeWidget();
+    /** Prepares toolbar. */
+    void prepareToolbar();
+    /** Prepares connections. */
+    void prepareConnections();
     /** Cleanups all. */
     void cleanup();
 
     /** Uploads @a package data into passed @a item. */
     void loadData(const CExtPack &package, UIDataSettingsGlobalExtensionItem &item) const;
 
-    /** Holds the Add action instance. */
-    QAction *m_pActionAdd;
-    /** Holds the Remove action instance. */
-    QAction *m_pActionRemove;
-
     /** Holds the page data cache instance. */
     UISettingsCacheGlobalExtension *m_pCache;
+
     /** @name Widgets
      * @{ */
-       QITreeWidget *m_pPackagesTree;
-       QILabelSeparator *m_pEntensionLabel;
-       UIToolBar *m_pPackagesToolbar;
+        /** Holds the separator label instance. */
+        QILabelSeparator *m_pLabelSeparator;
+        /** Holds the packages layout instance. */
+        QHBoxLayout      *m_pLayoutPackages;
+        /** Holds the tree-widget instance. */
+        QITreeWidget     *m_pTreeWidget;
+        /** Holds the toolbar instance. */
+        UIToolBar        *m_pToolbar;
+        /** Holds the Add action instance. */
+        QAction          *m_pActionAdd;
+        /** Holds the Remove action instance. */
+        QAction          *m_pActionRemove;
     /** @} */
 };
 
