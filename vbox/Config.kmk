@@ -1,4 +1,4 @@
-# $Id: Config.kmk 88069 2021-03-10 14:35:13Z vboxsync $
+# $Id: Config.kmk 88127 2021-03-15 19:05:57Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2310,7 +2310,10 @@ ifneq ($(KBUILD_TARGET),win)
  ifneq ($(KBUILD_TARGET),os2)
   # libIDL-config (for xpcom18a4)
   ifeq ($(origin VBOX_LIBIDL_CONFIG),undefined)
-   export VBOX_LIBIDL_CONFIG := $(firstword $(which libIDL-config-2 libIDL-config) libIDL-config-2-not-found)
+   ifeq ($(KBUILD_HOST),solaris)
+    VBOX_LIBIDL_CONFIG_FALLBACK = $(lastword $(wildcard $(KBUILD_DEVTOOLS)/solaris.amd64/libIDL/*/bin/libIDL-config-2))
+   endif
+   export VBOX_LIBIDL_CONFIG := $(firstword $(which libIDL-config-2 libIDL-config $(VBOX_LIBIDL_CONFIG_FALLBACK)) libIDL-config-2-not-found)
   endif
  endif
 endif
@@ -2938,10 +2941,10 @@ $(PATH_OUT)/DynamicConfig.kmk: \
 		$(AUTOCFG) \
 		$(VBOX_GCC_PATH_CC) \
 		$(VBOX_GCC_PATH_CXX) \
-               $(VBOX_GCC_LIBGCC) \
+		$(VBOX_GCC_LIBGCC) \
 		$(VBOX_GCC32_PATH_CC) \
 		$(VBOX_GCC32_PATH_CXX) \
-               $(VBOX_GCC32_LIBGCC) \
+		$(VBOX_GCC32_LIBGCC) \
 		$(if-expr "$(KBUILD_HOST).$(KBUILD_HOST_ARCH)" == "solaris.amd64" && $(KBUILD_HOST_VERSION_MINOR) >= 11 \
 			, /platform/i86pc/kernel/$(KBUILD_HOST_ARCH)/unix,) \
         	| $(PATH_OUT)/DynamicConfig.c $(PATH_OUT)/DynamicConfig.cpp
@@ -8191,7 +8194,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 88069 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 88127 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
