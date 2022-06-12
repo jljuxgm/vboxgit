@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 86461 2020-10-06 16:40:59Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 86462 2020-10-06 16:43:10Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -4560,7 +4560,9 @@ DECLINLINE(void) pgmPoolTrackDerefPDPTPae(PPGMPOOL pPool, PPGMPOOLPAGE pPage, PX
     {
         Assert((pShwPDPT->a[i].u & (X86_PDPE_PAE_MBZ_MASK | UINT64_C(0x7ff0000000000200))) == 0);
         if (    pShwPDPT->a[i].n.u1Present
+#ifndef PGM_WITHOUT_MAPPINGS
             &&  !(pShwPDPT->a[i].u & PGM_PLXFLAGS_MAPPING)
+#endif
            )
         {
             PPGMPOOLPAGE pSubPage = (PPGMPOOLPAGE)RTAvloHCPhysGet(&pPool->HCPhysTree, pShwPDPT->a[i].u & X86_PDPE_PG_MASK);

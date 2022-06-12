@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 86461 2020-10-06 16:40:59Z vboxsync $ */
+/* $Id: PGMAllBth.h 86462 2020-10-06 16:43:10Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -1073,7 +1073,9 @@ PGM_BTH_DECL(int, InvalidatePage)(PVMCPUCC pVCpu, RTGCPTR GCPtrPage)
     if (!pPdptDst->a[iPdpt].n.u1Present)
 #  endif
     {
+#ifndef PGM_WITHOUT_MAPPINGS
         Assert(!pPdptDst || !(pPdptDst->a[iPdpt].u & PGM_PLXFLAGS_MAPPING));
+#endif
         STAM_COUNTER_INC(&pVCpu->pgm.s.CTX_SUFF(pStats)->CTX_MID_Z(Stat,InvalidatePageSkipped));
         PGM_INVL_PG(pVCpu, GCPtrPage);
         return VINF_SUCCESS;
