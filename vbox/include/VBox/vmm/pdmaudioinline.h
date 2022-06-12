@@ -1,4 +1,4 @@
-/* $Id: pdmaudioinline.h 88029 2021-03-08 19:37:54Z vboxsync $ */
+/* $Id: pdmaudioinline.h 88052 2021-03-09 14:14:37Z vboxsync $ */
 /** @file
  * PDM - Audio Helpers, Inlined Code. (DEV,++)
  *
@@ -47,6 +47,11 @@
 #include <iprt/mem.h>
 #include <iprt/string.h>
 
+
+/** @defgroup grp_pdm_audio_inline      The PDM Audio Helper APIs
+ * @ingroup grp_pdm
+ * @{
+ */
 
 /* Fix later: */
 DECLINLINE(bool) PDMAudioPropsAreValid(PCPDMAUDIOPCMPROPS pProps);
@@ -867,5 +872,7 @@ DECLINLINE(void) PDMAudioPropsLog(PCPDMAUDIOPCMPROPS pProps)
     Log(("uHz=%RU32, cChannels=%RU8, cBits=%RU8%s",
          pProps->uHz, pProps->cChannels, pProps->cbSample * 8, pProps->fSigned ? "S" : "U"));
 }
+
+/** @} */
 
 #endif /* !VBOX_INCLUDED_vmm_pdmaudioinline_h */
