@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicNormal.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIMachineLogicNormal.cpp 84698 2020-06-05 15:18:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicNormal class implementation.
  */
@@ -248,7 +248,7 @@ void UIMachineLogicNormal::sltHandleActionTriggerViewScreenResize(int iIndex, co
 
 void UIMachineLogicNormal::sltHostScreenAvailableAreaChange()
 {
-#ifdef VBOX_WS_X11
+#if defined(VBOX_WS_X11) && !defined(VBOX_GUI_WITH_CUSTOMIZATIONS1)
     /* Prevent handling if fake screen detected: */
     if (gpDesktop->isFakeScreenDetected())
         return;
@@ -257,7 +257,7 @@ void UIMachineLogicNormal::sltHostScreenAvailableAreaChange()
     foreach (UIMachineWindow *pMachineWindow, machineWindows())
         if (!pMachineWindow->isMaximized())
             pMachineWindow->restoreCachedGeometry();
-#endif /* VBOX_WS_X11 */
+#endif /* VBOX_WS_X11 && !VBOX_GUI_WITH_CUSTOMIZATIONS1 */
 
     /* Call to base-class: */
     UIMachineLogic::sltHostScreenAvailableAreaChange();
