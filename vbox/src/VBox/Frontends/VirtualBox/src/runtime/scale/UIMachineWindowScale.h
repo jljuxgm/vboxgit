@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowScale.h 86061 2020-09-08 10:25:36Z vboxsync $ */
+/* $Id: UIMachineWindowScale.h 88651 2021-04-22 12:12:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowScale class declaration.
  */
@@ -46,8 +46,6 @@ private:
     /** Load settings routine. */
     void loadSettings();
 
-    /** Save settings routine. */
-    void saveSettings();
 #ifdef VBOX_WS_MAC
     /** Cleanup visual-state routine. */
     void cleanupVisualState();
@@ -71,7 +69,9 @@ private:
     bool isMaximizedChecked();
 
     /** Holds the current window geometry. */
-    QRect m_normalGeometry;
+    QRect  m_geometry;
+    /** Holds the geometry save timer ID. */
+    int  m_iGeometrySaveTimerId;
 
     /** Factory support. */
     friend class UIMachineWindow;
