@@ -1,4 +1,4 @@
-/* $Id: GuestDnDSourceImpl.h 85740 2020-08-13 07:14:45Z vboxsync $ */
+/* $Id: GuestDnDSourceImpl.h 85741 2020-08-13 07:16:36Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag'n drop source.
  */
@@ -56,6 +56,8 @@ private:
     HRESULT getFormats(GuestDnDMIMEList &aFormats);
     HRESULT addFormats(const GuestDnDMIMEList &aFormats);
     HRESULT removeFormats(const GuestDnDMIMEList &aFormats);
+
+    HRESULT getProtocolVersion(ULONG *aProtocolVersion);
     /** @}  */
 
     /** Private wrapped @name IDnDSource methods.

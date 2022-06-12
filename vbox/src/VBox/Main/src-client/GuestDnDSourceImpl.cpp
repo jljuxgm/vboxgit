@@ -1,4 +1,4 @@
-/* $Id: GuestDnDSourceImpl.cpp 85740 2020-08-13 07:14:45Z vboxsync $ */
+/* $Id: GuestDnDSourceImpl.cpp 85741 2020-08-13 07:16:36Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag and drop source.
  */
@@ -249,6 +249,23 @@ HRESULT GuestDnDSource::removeFormats(const GuestDnDMIMEList &aFormats)
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
     return GuestDnDBase::i_removeFormats(aFormats);
+#endif /* VBOX_WITH_DRAG_AND_DROP */
+}
+
+HRESULT GuestDnDSource::getProtocolVersion(ULONG *aProtocolVersion)
+{
+#if !defined(VBOX_WITH_DRAG_AND_DROP)
+    ReturnComNotImplemented();
+#else /* VBOX_WITH_DRAG_AND_DROP */
+
+    AutoCaller autoCaller(this);
+    if (FAILED(autoCaller.rc())) return autoCaller.rc();
+
+    AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
+
+    *aProtocolVersion = m_pResp->m_uProtocolVersion;
+
+    return S_OK;
 #endif /* VBOX_WITH_DRAG_AND_DROP */
 }
 
