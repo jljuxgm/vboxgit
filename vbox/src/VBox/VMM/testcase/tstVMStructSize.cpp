@@ -1,4 +1,4 @@
-/* $Id: tstVMStructSize.cpp 87466 2021-01-28 16:33:07Z vboxsync $ */
+/* $Id: tstVMStructSize.cpp 87469 2021-01-28 17:01:06Z vboxsync $ */
 /** @file
  * tstVMStructSize - testcase for check structure sizes/alignment
  *                   and to verify that HC and GC uses the same
@@ -377,7 +377,7 @@ int main()
     CHECK_MEMBER_ALIGNMENT(HMR0PERVCPU, vmx.pfnStartVm, 8);
     CHECK_MEMBER_ALIGNMENT(HMCPU, vmx.VmcsInfo, 8);
     CHECK_MEMBER_ALIGNMENT(HMCPU, vmx.VmcsInfoNstGst, 8);
-    CHECK_MEMBER_ALIGNMENT(HMCPU, vmx.RestoreHost, 8);
+    CHECK_MEMBER_ALIGNMENT(HMR0PERVCPU, vmx.RestoreHost, 8);
     CHECK_MEMBER_ALIGNMENT(HMCPU, vmx.LastError, 8);
     CHECK_MEMBER_ALIGNMENT(HMCPU, svm, 8);
     CHECK_MEMBER_ALIGNMENT(HMR0PERVCPU, svm.pfnVMRun, 8);
