@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.cpp 89011 2021-05-12 12:53:25Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.cpp 89036 2021-05-14 08:14:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class implementation.
  */
@@ -207,6 +207,7 @@ QMenu *UIVMLogViewerWidget::menu() const
 {
     return m_pActionPool->action(UIActionIndex_M_LogWindow)->menu();
 }
+
 
 void UIVMLogViewerWidget::setSelectedVMListItems(const QList<UIVirtualMachineItem*> &items)
 {
