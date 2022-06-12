@@ -1,4 +1,4 @@
-/* $Id: tstCFGM.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: tstCFGM.cpp 85169 2020-07-10 10:33:31Z vboxsync $ */
 /** @file
  * Testcase for CFGM.
  */
@@ -104,7 +104,7 @@ static void doInVmmTests(RTTEST hTest)
     RTTESTI_CHECK_RC_RETV(SUPR3PageAlloc(RT_ALIGN_Z(sizeof(*pVM), PAGE_SIZE) >> PAGE_SHIFT, (void **)&pVM), VINF_SUCCESS);
 
 
-    PUVM pUVM = (PUVM)RTMemPageAlloc(sizeof(*pUVM));
+    PUVM pUVM = (PUVM)RTMemPageAllocZ(sizeof(*pUVM));
     pUVM->u32Magic = UVM_MAGIC;
     pUVM->pVM = pVM;
     pVM->pUVM = pUVM;
