@@ -1,4 +1,4 @@
-/* $Id: DevIommuAmd.cpp 89497 2021-06-04 07:41:33Z vboxsync $ */
+/* $Id: DevIommuAmd.cpp 89554 2021-06-08 06:40:52Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - AMD implementation.
  */
@@ -3911,6 +3911,7 @@ static int iommuAmdLookupIoAddrRange(PPDMDEVINS pDevIns, PFNIOPAGELOOKUP pfnIoPa
             }
             else
             {
+                /* Caller (PDM) doesn't expect more data accessed than what was requested. */
                 cbRemaining = 0;
                 break;
             }
