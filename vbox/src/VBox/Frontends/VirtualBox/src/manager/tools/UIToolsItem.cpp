@@ -1,4 +1,4 @@
-/* $Id: UIToolsItem.cpp 89251 2021-05-24 16:59:24Z vboxsync $ */
+/* $Id: UIToolsItem.cpp 89252 2021-05-24 17:04:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsItem class definition.
  */
@@ -449,15 +449,15 @@ void UIToolsItem::prepare()
     m_iHighlightLightnessStart = 155;
     m_iHighlightLightnessFinal = 145;
 #elif defined(VBOX_WS_WIN)
-    m_iDefaultLightnessStart = 190;
-    m_iDefaultLightnessFinal = 160;
+    m_iDefaultLightnessStart = 120;
+    m_iDefaultLightnessFinal = 110;
     m_iHoverLightnessStart = 190;
     m_iHoverLightnessFinal = 160;
     m_iHighlightLightnessStart = 160;
     m_iHighlightLightnessFinal = 130;
 #else /* !VBOX_WS_MAC && !VBOX_WS_WIN */
-    m_iDefaultLightnessStart = 190;
-    m_iDefaultLightnessFinal = 160;
+    m_iDefaultLightnessStart = 110;
+    m_iDefaultLightnessFinal = 100;
     m_iHoverLightnessStart = 190;
     m_iHoverLightnessFinal = 160;
     m_iHighlightLightnessStart = 160;
