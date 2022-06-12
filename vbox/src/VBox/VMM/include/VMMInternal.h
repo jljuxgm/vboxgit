@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 87766 2021-02-16 14:27:43Z vboxsync $ */
+/* $Id: VMMInternal.h 87819 2021-02-20 10:24:03Z vboxsync $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -191,6 +191,7 @@ typedef struct VMM
     /** Alignment padding. */
     bool                        afPadding0[7];
 
+#if 0 /* pointless when timers doesn't run on EMT */
     /** The EMT yield timer. */
     TMTIMERHANDLE               hYieldTimer;
     /** The period to the next timeout when suspended or stopped.
@@ -200,6 +201,7 @@ typedef struct VMM
     uint32_t                    cYieldEveryMillies;
     /** The timestamp of the previous yield. (nano) */
     uint64_t                    u64LastYield;
+#endif
 
     /** @name EMT Rendezvous
      * @{ */
