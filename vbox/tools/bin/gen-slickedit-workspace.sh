@@ -1,5 +1,5 @@
 # !kmk_ash
-# $Id: gen-slickedit-workspace.sh 85089 2020-07-07 17:08:54Z vboxsync $
+# $Id: gen-slickedit-workspace.sh 85098 2020-07-07 19:01:33Z vboxsync $
 ## @file
 # Script for generating a SlickEdit workspace.
 #
@@ -861,9 +861,15 @@ EOF
         -e 's/(type) DECLHIDDEN(type)/(type) type/' \
         -e 's/(type) DECLEXPORT(type)/(type) type/' \
         -e 's/(type) DECLIMPORT(type)/(type) type/' \
+        -e 's/(type) DECL_HIDDEN_NOTHROW(type)/(type) type/' \
+        -e 's/(type) DECL_EXPORT_NOTHROW(type)/(type) type/' \
+        -e 's/(type) DECL_IMPORT_NOTHROW(type)/(type) type/' \
         -e 's/(a_Type) DECLHIDDEN(a_Type)/(a_Type) a_Type/' \
         -e 's/(a_Type) DECLEXPORT(a_Type)/(a_Type) a_Type/' \
         -e 's/(a_Type) DECLIMPORT(a_Type)/(a_Type) a_Type/' \
+        -e 's/(a_Type) DECL_HIDDEN_NOTHROW(a_Type)/(a_Type) a_Type/' \
+        -e 's/(a_Type) DECL_EXPORT_NOTHROW(a_Type)/(a_Type) a_Type/' \
+        -e 's/(a_Type) DECL_IMPORT_NOTHROW(a_Type)/(a_Type) a_Type/' \
         \
         --append "${MY_FILE}" \
         ${MY_HDR_FILES}
