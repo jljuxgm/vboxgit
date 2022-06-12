@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 86282 2020-09-25 07:03:18Z vboxsync $
+# $Id: Makefile.kmk 86285 2020-09-25 08:02:30Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox User Manual, SDK reference and other manuals.
 #
@@ -822,6 +822,7 @@ html:: $(VBOX_PATH_MANUAL_OUTBASE)/en_US/html-single/UserManual.xhtml
 html:: $(VBOX_PATH_MANUAL_OUTBASE)/en_US/html-chunks/index.html
 html:: $(VBOX_PATH_MANUAL_OUTBASE)/en_US/html-single/manual.qhp
 html:: $(VBOX_PATH_MANUAL_OUTBASE)/en_US/html-single/manual.qhcp
+html:: $(VBOX_PATH_MANUAL_OUTBASE)/en_US/html-single/manual.qhc
 html-zip:: $(VBOX_PATH_MANUAL_OUTBASE)/en_US/UserManual.zip
 
 
@@ -903,7 +904,9 @@ $(VBOX_PATH_MANUAL_OUTBASE)/en_US/html-single/manual.qhcp:
 	$(call MSG_L1,Copying manual.qhcp file)
 	$(QUIET)$(INSTALL_STAGING) -m0664 -- $(addprefix $(VBOX_PATH_MANUAL_SRC)/, $(VBOX_QHCP_FILES)) $@
 	
-$(VBOX_PATH_MANUAL_OUTBASE)/en_US/html-single/manual.qhc: 
+$(VBOX_PATH_MANUAL_OUTBASE)/en_US/html-single/manual.qhc: \
+	$(VBOX_PATH_MANUAL_OUTBASE)/en_US/html-single/manual.qhcp
+	qcollectiongenerator $<
 
 
 # Handy aliases.
