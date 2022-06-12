@@ -1,4 +1,4 @@
-/* $Id: DevHDACommon.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: DevHDACommon.h 87320 2021-01-20 10:51:20Z vboxsync $ */
 /** @file
  * DevHDACommon.h - Shared HDA device defines / functions.
  */
@@ -622,6 +622,10 @@ void          hdaProcessInterrupt(PPDMDEVINS pDevIns, PHDASTATE pThis, const cha
 void          hdaProcessInterrupt(PPDMDEVINS pDevIns, PHDASTATE pThis);
 # define HDA_PROCESS_INTERRUPT(a_pDevIns, a_pThis)  hdaProcessInterrupt((a_pDevIns), (a_pThis))
 #endif
+/** @} */
+
+/** @name Register utility functions. */
+uint8_t       hdaSDFIFOWToBytes(uint16_t u16RegFIFOW);
 /** @} */
 
 /** @name Wall clock (WALCLK) functions.
