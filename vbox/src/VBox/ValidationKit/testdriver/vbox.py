@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 84767 2020-06-10 17:40:46Z vboxsync $
+# $Id: vbox.py 84788 2020-06-11 07:56:16Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84767 $"
+__version__ = "$Revision: 84788 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -3483,6 +3483,10 @@ class TestDriver(base.TestDriver):                                              
 
     def txsDisconnect(self, oSession, oTxsSession, cMsTimeout = 30000, fIgnoreErrors = False):
         return self.txsDoTask(oSession, oTxsSession, oTxsSession.asyncDisconnect,
+                              (self.adjustTimeoutMs(cMsTimeout), fIgnoreErrors));
+
+    def txsVer(self, oSession, oTxsSession, cMsTimeout = 30000, fIgnoreErrors = False):
+        return self.txsDoTask(oSession, oTxsSession, oTxsSession.asyncVer,
                               (self.adjustTimeoutMs(cMsTimeout), fIgnoreErrors));
 
     def txsUuid(self, oSession, oTxsSession, cMsTimeout = 30000, fIgnoreErrors = False):
