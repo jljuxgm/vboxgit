@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 88503 2021-04-14 11:43:28Z vboxsync $
+# $Id: Makefile.kmk 88626 2021-04-21 09:58:08Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -663,7 +663,8 @@ endif
 
  ifeq ($(KBUILD_TARGET),win)
   VBoxDD_SOURCES += \
-	Audio/DrvHostAudioDSound.cpp
+	Audio/DrvHostAudioDSound.cpp \
+	Audio/DrvHostAudioWasApi.cpp
   ifdef VBOX_WITH_AUDIO_MMNOTIFICATION_CLIENT
    VBoxDD_DEFS    += VBOX_WITH_AUDIO_MMNOTIFICATION_CLIENT
    VBoxDD_SOURCES += \

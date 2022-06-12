@@ -1,4 +1,4 @@
-/* $Id: pdmaudioinline.h 88486 2021-04-13 09:36:47Z vboxsync $ */
+/* $Id: pdmaudioinline.h 88626 2021-04-21 09:58:08Z vboxsync $ */
 /** @file
  * PDM - Audio Helpers, Inlined Code. (DEV,++)
  *
@@ -876,6 +876,25 @@ DECLINLINE(uint64_t) PDMAudioPropsFramesToNano(PCPDMAUDIOPCMPROPS pProps, uint32
     uint32_t const uHz = pProps->uHz;
     if (uHz)
         return ASMMultU32ByU32DivByU32(cFrames, RT_NS_1SEC, uHz);
+    return 0;
+}
+
+/**
+ * Converts frames to NT ticks (100 ns units).
+ *
+ * @returns NT ticks.
+ * @param   pProps      The PCM properties to use.
+ * @param   cFrames     Number of audio frames to convert.
+ * @note    No rounding here, result is floored.
+ */
+DECLINLINE(uint64_t) PDMAudioPropsFramesToNtTicks(PCPDMAUDIOPCMPROPS pProps, uint32_t cFrames)
+{
+    AssertPtrReturn(pProps, 0);
+
+    /* Check input to prevent division by chainsaw: */
+    uint32_t const uHz = pProps->uHz;
+    if (uHz)
+        return ASMMultU32ByU32DivByU32(cFrames, RT_NS_1SEC / 100, uHz);
     return 0;
 }
 
