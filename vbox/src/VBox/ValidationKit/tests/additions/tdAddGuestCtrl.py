@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84279 $"
+__version__ = "$Revision: 84445 $"
 
 # Standard Python imports.
 import errno
@@ -1612,16 +1612,19 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
 
         fRc = False;
 
-        eStatusOld = vboxcon.AdditionsFacilityStatus_Unknown;
+        eStatusOld = None;
         tsStart    = base.timestampMilli();
         while base.timestampMilli() - tsStart < cMsTimeout:
             try:
                 eStatus, _ = oSession.o.console.guest.getFacilityStatus(eFacilityType);
+                reporter.log('Current status is %s' % (str(eStatus)));
+                if eStatusOld is None:
+                    eStatusOld = eStatus;
             except:
                 reporter.errorXcpt('Getting facility status failed');
                 break;
             if eStatus != eStatusOld:
-                reporter.log('Status is now %s' % (str(eStatus)));
+                reporter.log('Status changed to %s' % (str(eStatus)));
                 eStatusOld = eStatus;
             if eStatus == eFacilityStatus:
                 fRc = True;
