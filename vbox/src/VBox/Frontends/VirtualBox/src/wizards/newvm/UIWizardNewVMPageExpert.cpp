@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.cpp 85108 2020-07-08 12:02:10Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.cpp 85110 2020-07-08 14:23:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class implementation.
  */
@@ -349,6 +349,11 @@ bool UIWizardNewVMPageExpert::isComplete() const
             return false;
         /* Check the GA installation medium: */
         if (!checkGAISOFile())
+            return false;
+    }
+    if (m_pUserNamePasswordEditor)
+    {
+        if (!m_pUserNamePasswordEditor->isComplete())
             return false;
     }
     return true;

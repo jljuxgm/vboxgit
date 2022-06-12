@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic1.cpp 85090 2020-07-07 17:20:27Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic1.cpp 85110 2020-07-08 14:23:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic1 class implementation.
  */
@@ -206,11 +206,7 @@ void UIWizardNewVMPage1::onNameChanged(QString strNewName)
         if (strNewName.contains(gs_OSTypePattern[i].pattern))
         {
             if (m_pNameAndSystemEditor)
-            {
-                m_pNameAndSystemEditor->blockSignals(true);
                 m_pNameAndSystemEditor->setType(uiCommon().vmGuestOSType(gs_OSTypePattern[i].pcstId));
-                m_pNameAndSystemEditor->blockSignals(false);
-            }
             break;
         }
 }
