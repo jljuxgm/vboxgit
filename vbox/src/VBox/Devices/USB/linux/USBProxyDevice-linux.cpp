@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-linux.cpp 84002 2020-04-27 11:56:11Z vboxsync $ */
+/* $Id: USBProxyDevice-linux.cpp 87855 2021-02-24 07:31:59Z vboxsync $ */
 /** @file
  * USB device proxy - the Linux backend.
  */
@@ -129,9 +129,9 @@ typedef struct USBPROXYDEVLNX
     RTLISTANCHOR        ListInFlight;
     /** Are we using sysfs to find the active configuration? */
     bool                fUsingSysfs;
-    /** Pipe handle for waiking up - writing end. */
+    /** Pipe handle for waking up - writing end. */
     RTPIPE              hPipeWakeupW;
-    /** Pipe handle for waiking up - reading end. */
+    /** Pipe handle for waking up - reading end. */
     RTPIPE              hPipeWakeupR;
     /** The device node/sysfs path of the device.
      * Used to figure out the configuration after a reset. */
