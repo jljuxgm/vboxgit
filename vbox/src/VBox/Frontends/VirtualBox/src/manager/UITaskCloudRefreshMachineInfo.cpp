@@ -1,4 +1,4 @@
-/* $Id: UITaskCloudRefreshMachineInfo.cpp 86200 2020-09-21 14:34:41Z vboxsync $ */
+/* $Id: UITaskCloudRefreshMachineInfo.cpp 86205 2020-09-21 19:32:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UITaskCloudRefreshMachineInfo class implementation.
  */
@@ -51,7 +51,7 @@ void UITaskCloudRefreshMachineInfo::run()
     {
         /* Show "Refresh cloud machine information" progress: */
         QPointer<UIProgress> pObject = new UIProgress(m_comCloudMachineRefreshProgress, this);
-        pObject->run();
+        pObject->exec();
         if (pObject)
             delete pObject;
         else

@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsGeneral.cpp 86161 2020-09-17 17:24:19Z vboxsync $ */
+/* $Id: UIMachineSettingsGeneral.cpp 86205 2020-09-21 19:32:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsGeneral class implementation.
  */
@@ -1165,7 +1165,7 @@ bool UIMachineSettingsGeneral::saveEncryptionData()
                             connect(pObject.data(), &UIProgress::sigProgressError,
                                     this, &UIMachineSettingsGeneral::sigOperationProgressError,
                                     Qt::BlockingQueuedConnection);
-                            pObject->run();
+                            pObject->exec();
                             if (pObject)
                                 delete pObject;
                             else
