@@ -1,4 +1,4 @@
-/* $Id: vkat.cpp 88962 2021-05-10 11:50:21Z vboxsync $ */
+/* $Id: vkat.cpp 88963 2021-05-10 11:54:36Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) utility for testing and validating the audio stack.
  */
@@ -52,10 +52,16 @@
 
 
 /*********************************************************************************************************************************
+*   Prototypes                                                                                                                   *
+*********************************************************************************************************************************/
+struct AUDIOTESTENV;
+struct AUDIOTESTDESC;
+struct AUDIOTESTPARMS;
+
+
+/*********************************************************************************************************************************
 *   Structures and Typedefs                                                                                                      *
 *********************************************************************************************************************************/
-
-
 /**
  * Audio test request data.
  */
@@ -81,9 +87,6 @@ typedef struct AUDIOTESTPARMS
 } AUDIOTESTPARMS;
 /** Pointer to a test parameter structure. */
 typedef AUDIOTESTPARMS *PAUDIOTESTPARMS;
-
-struct AUDIOTESTENV;
-struct AUDIOTESTDESC;
 
 /**
  * Callback to set up the test parameters for a specific test.
@@ -141,9 +144,14 @@ typedef AUDIOTESTDESC *PAUDIOTESTDESC;
 
 
 /*********************************************************************************************************************************
+*   Forward declarations                                                                                                         *
+*********************************************************************************************************************************/
+static int audioTestCombineParms(PAUDIOTESTPARMS pBaseParms, PAUDIOTESTPARMS pOverrideParms);
+
+
+/*********************************************************************************************************************************
 *   Global Variables                                                                                                             *
 *********************************************************************************************************************************/
-
 enum
 {
     VKAT_TEST_OPT_COUNT = 900,
@@ -187,12 +195,6 @@ static const RTGETOPTDEF g_aCmdTestOptions[] =
 static RTTEST g_hTest;
 /** The driver instance data. */
 PDMDRVINS g_DrvIns;
-
-
-/*********************************************************************************************************************************
-*   Prototypes                                                                                                                   *
-*********************************************************************************************************************************/
-static int audioTestCombineParms(PAUDIOTESTPARMS pBaseParms, PAUDIOTESTPARMS pOverrideParms);
 
 
 /*********************************************************************************************************************************
