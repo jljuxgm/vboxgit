@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.cpp 88728 2021-04-27 11:51:02Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.cpp 88735 2021-04-27 13:22:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class implementation.
  */
@@ -404,7 +404,7 @@ void UIVMLogViewerWidget::sltCurrentTabChanged(int tabIndex)
     Q_UNUSED(tabIndex);
 
     /* Dont refresh the search here as it is refreshed by the filtering mechanism
-       which is updated as tab current index changes: */
+       which is updated as tab current index changes (see sltFilterApplied): */
     if (m_pFilterPanel)
         m_pFilterPanel->applyFilter();
 
@@ -413,10 +413,8 @@ void UIVMLogViewerWidget::sltCurrentTabChanged(int tabIndex)
         m_pBookmarksPanel->updateBookmarkList(currentLogPage()->bookmarkVector());
 }
 
-void UIVMLogViewerWidget::sltFilterApplied(bool isOriginal)
+void UIVMLogViewerWidget::sltFilterApplied()
 {
-    if (currentLogPage())
-        currentLogPage()->setFiltered(!isOriginal);
     /* Reapply the search to get highlighting etc. correctly */
     if (m_pSearchPanel && m_pSearchPanel->isVisible())
         m_pSearchPanel->refresh();

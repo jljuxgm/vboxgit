@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerFilterPanel.cpp 88734 2021-04-27 12:56:38Z vboxsync $ */
+/* $Id: UIVMLogViewerFilterPanel.cpp 88735 2021-04-27 13:22:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -270,6 +270,7 @@ void UIVMLogViewerFilterPanel::applyFilter()
     else
         resetFiltering();
     retranslateUi();
+    emit sigFilterApplied();
 }
 
 void UIVMLogViewerFilterPanel::filter()
@@ -320,8 +321,6 @@ void UIVMLogViewerFilterPanel::filter()
     QTextCursor cursor = pCurrentTextEdit->textCursor();
     cursor.movePosition(QTextCursor::End, QTextCursor::MoveAnchor);
     pCurrentTextEdit->setTextCursor(cursor);
-
-    emit sigFilterApplied(false /* isOriginalLog */);
     logPage->scrollToEnd();
 }
 
@@ -397,7 +396,7 @@ void UIVMLogViewerFilterPanel::sltClearFilterTerms()
     if (m_filterTermSet.empty())
         return;
     m_filterTermSet.clear();
-    resetFiltering();
+    applyFilter();
     if (m_pFilterTermsLineEdit)
         m_pFilterTermsLineEdit->clearAll();
 }
