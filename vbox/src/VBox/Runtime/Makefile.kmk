@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 87150 2020-12-31 10:12:32Z vboxsync $
+# $Id: Makefile.kmk 87184 2021-01-06 12:17:39Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -767,8 +767,10 @@ RuntimeR3_SOURCES.amd64 += \
 	common/misc/RTSystemIsInsideVM-amd64-x86.cpp \
 	common/string/RTStrMemFind32.asm
 RuntimeR3_SOURCES.arm32 := \
+	common/asm/ASMMemZeroPage-generic.cpp \
 	common/misc/zero-alt.S
 RuntimeR3_SOURCES.arm64 := \
+	common/asm/ASMMemZeroPage-generic.cpp \
 	common/misc/zero-alt.S
 RuntimeR3_SOURCES.sparc32 += \
 	generic/RTMpGetDescription-generic-stub.cpp \
