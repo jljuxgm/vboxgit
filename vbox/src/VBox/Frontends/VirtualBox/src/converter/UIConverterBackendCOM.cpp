@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackendCOM.cpp 85178 2020-07-10 12:58:02Z vboxsync $ */
+/* $Id: UIConverterBackendCOM.cpp 87250 2021-01-14 15:54:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConverterBackendCOM implementation.
  */
@@ -279,6 +279,7 @@ template<> QString toString(const KPointingHIDType &type)
 {
     switch (type)
     {
+        case KPointingHIDType_None:          return QApplication::translate("UICommon", "None", "PointingHIDType");
         case KPointingHIDType_PS2Mouse:      return QApplication::translate("UICommon", "PS/2 Mouse", "PointingHIDType");
         case KPointingHIDType_USBMouse:      return QApplication::translate("UICommon", "USB Mouse", "PointingHIDType");
         case KPointingHIDType_USBTablet:     return QApplication::translate("UICommon", "USB Tablet", "PointingHIDType");
