@@ -1,4 +1,4 @@
-/* $Id: UIProgressDialog.h 86205 2020-09-21 19:32:28Z vboxsync $ */
+/* $Id: UIProgressDialog.h 86206 2020-09-21 19:41:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIProgressDialog class declaration.
  */
@@ -193,6 +193,9 @@ signals:
       * @param strErrorInfo holds the details of the error happened. */
     void sigProgressError(QString strErrorInfo);
 
+    /** Notifies listeners about wrapped CProgress complete. */
+    void sigProgressComplete();
+
 public:
 
     /** Constructs progress handler passing @a pParent to the base-class.
@@ -203,6 +206,8 @@ public:
 
     /** Executes the progress within local event-loop. */
     void exec();
+    /** Cancels the progress within local event-loop. */
+    void cancel();
 
 private slots:
 
@@ -230,6 +235,8 @@ private:
 
     /** Holds the exec event-loop instance. */
     QPointer<QEventLoop>  m_pEventLoopExec;
+    /** Holds the cancel event-loop instance. */
+    QPointer<QEventLoop>  m_pEventLoopCancel;
 };
 
 
