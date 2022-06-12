@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 88923 2021-05-07 13:34:51Z vboxsync $
+# $Id: Makefile.kmk 89083 2021-05-17 09:31:37Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - Utilities.
 #
@@ -44,7 +44,6 @@ ifeq ($(KBUILD_TARGET),linux)
  include $(PATH_SUB_CURRENT)/usb/Makefile.kmk
 endif
 
-# Disabled for now; does not work without WinMM.dll.
 ifdef VBOX_WITH_AUDIO_VALIDATIONKIT
  include $(PATH_SUB_CURRENT)/audio/Makefile.kmk
 endif
