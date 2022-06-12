@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.h 86757 2020-10-29 12:16:42Z vboxsync $ */
+/* $Id: UIHelpBrowserWidget.h 86776 2020-10-30 18:29:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class declaration.
  */
@@ -100,7 +100,7 @@ private slots:
     void sltHandleIndexingFinished();
     void sltHandleSearchingStarted();
     void sltHandleSearchStart();
-
+    void sltAnchorClicked(const QUrl &link);
 private:
 
     void prepare();

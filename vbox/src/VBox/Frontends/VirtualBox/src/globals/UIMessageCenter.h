@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 86672 2020-10-22 15:25:35Z vboxsync $ */
+/* $Id: UIMessageCenter.h 86776 2020-10-30 18:29:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -33,6 +33,7 @@
 #include "CProgress.h"
 
 /* Forward declarations: */
+class QIManagerDialog;
 class UIMedium;
 struct StorageSlot;
 #ifdef VBOX_WITH_DRAG_AND_DROP
@@ -602,6 +603,9 @@ private:
 
     /** Holds the list of shown warnings. */
     mutable QStringList m_warnings;
+
+    /** Holds UIHelpBrowserDialog instance. */
+    QIManagerDialog *m_pHelpBrowserDialog;
 
     /** Holds the singleton message-center instance. */
     static UIMessageCenter *s_pInstance;
