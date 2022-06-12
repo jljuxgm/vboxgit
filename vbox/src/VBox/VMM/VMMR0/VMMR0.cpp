@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 87829 2021-02-22 04:24:22Z vboxsync $ */
+/* $Id: VMMR0.cpp 88330 2021-03-31 09:28:53Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -600,6 +600,7 @@ VMMR0_INT_DECL(int) VMMR0TermVM(PGVM pGVM, VMCPUID idCpu)
     return VINF_SUCCESS;
 }
 
+#if 0 /** @todo broken see oem2 ticket 40 */
 
 /**
  * An interrupt or unhalt force flag is set, deal with it.
@@ -868,6 +869,7 @@ static int vmmR0DoHalt(PGVM pGVM, PGVMCPU pGVCpu)
     return VINF_EM_HALT;
 }
 
+#endif
 
 /**
  * VMM ring-0 thread-context callback.
@@ -1467,7 +1469,7 @@ VMMR0DECL(void) VMMR0EntryFast(PGVM pGVM, PVMCC pVMIgnored, VMCPUID idCpu, VMMR0
 #ifdef VBOX_WITH_STATISTICS
                     vmmR0RecordRC(pGVM, pGVCpu, rc);
 #endif
-#if 1
+#if 0 /** @todo broken see oem2 ticket 40 */
                     /*
                      * If this is a halt.
                      */
