@@ -1,4 +1,4 @@
-/* $Id: DrvAudioRec.cpp 88362 2021-04-05 00:31:17Z vboxsync $ */
+/* $Id: DrvAudioRec.cpp 88378 2021-04-07 07:58:26Z vboxsync $ */
 /** @file
  * Video recording audio backend for Main.
  *
@@ -1157,10 +1157,6 @@ DECLCALLBACK(int) AudioVideoRec::drvConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg
     pThis->IHostAudio.pfnStreamCapture      = drvAudioVideoRecHA_StreamCapture;
     pThis->IHostAudio.pfnGetDevices         = NULL;
     pThis->IHostAudio.pfnStreamGetPending   = NULL;
-    pThis->IHostAudio.pfnStreamPlayBegin    = NULL;
-    pThis->IHostAudio.pfnStreamPlayEnd      = NULL;
-    pThis->IHostAudio.pfnStreamCaptureBegin = NULL;
-    pThis->IHostAudio.pfnStreamCaptureEnd   = NULL;
 
     /*
      * Get the Console object pointer.

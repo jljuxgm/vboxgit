@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioDSound.cpp 88376 2021-04-06 20:35:18Z vboxsync $ */
+/* $Id: DrvHostAudioDSound.cpp 88378 2021-04-07 07:58:26Z vboxsync $ */
 /** @file
  * Host audio driver - DirectSound (Windows).
  */
@@ -2707,10 +2707,6 @@ static DECLCALLBACK(int) drvHostDSoundConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pC
     pThis->IHostAudio.pfnStreamCapture      = drvHostDSoundHA_StreamCapture;
     pThis->IHostAudio.pfnGetDevices         = drvHostDSoundHA_GetDevices;
     pThis->IHostAudio.pfnStreamGetPending   = NULL;
-    pThis->IHostAudio.pfnStreamPlayBegin    = NULL;
-    pThis->IHostAudio.pfnStreamPlayEnd      = NULL;
-    pThis->IHostAudio.pfnStreamCaptureBegin = NULL;
-    pThis->IHostAudio.pfnStreamCaptureEnd   = NULL;
 
     /*
      * Init the static parts.
