@@ -1,4 +1,4 @@
-/* $Id: DrvAudioRec.cpp 88394 2021-04-07 11:03:58Z vboxsync $ */
+/* $Id: DrvAudioRec.cpp 88395 2021-04-07 11:06:11Z vboxsync $ */
 /** @file
  * Video recording audio backend for Main.
  *
@@ -654,7 +654,7 @@ static DECLCALLBACK(int) drvAudioVideoRecHA_StreamCapture(PPDMIHOSTAUDIO pInterf
 static DECLCALLBACK(int) drvAudioVideoRecHA_StreamPlay(PPDMIHOSTAUDIO pInterface, PPDMAUDIOBACKENDSTREAM pStream,
                                                        const void *pvBuf, uint32_t cbBuf, uint32_t *pcbWritten)
 {
-    RT_NOREF(pThis);
+    RT_NOREF(pInterface);
     PAVRECSTREAM pStreamAV = (PAVRECSTREAM)pStream;
     AssertPtrReturn(pStreamAV, VERR_INVALID_POINTER);
     AssertPtrReturn(pvBuf, VERR_INVALID_POINTER);
