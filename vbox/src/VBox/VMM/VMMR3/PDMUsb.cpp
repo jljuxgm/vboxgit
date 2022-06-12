@@ -1,4 +1,4 @@
-/* $Id: PDMUsb.cpp 87773 2021-02-16 23:36:15Z vboxsync $ */
+/* $Id: PDMUsb.cpp 89437 2021-06-01 15:50:07Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, USB part.
  */
@@ -1830,11 +1830,9 @@ static DECLCALLBACK(int) pdmR3UsbHlp_TimerCreate(PPDMUSBINS pUsbIns, TMCLOCK enm
     /* Mangle the timer name if there are more than one instance of this device. */
     char szName[32];
     AssertReturn(strlen(pszDesc) < sizeof(szName) - 8, VERR_INVALID_NAME);
-    if (pUsbIns->iInstance > 0)
-    {
-        RTStrPrintf(szName, sizeof(szName), "%s[%u:%s]", pszDesc, pUsbIns->iInstance, pUsbIns->Internal.s.pUsbDev->pReg->szName);
-        pszDesc = szName;
-    }
+    /* Try to use unique names for USB timers in order not to confuse STAM (see xtracker#10021). */
+    RTStrPrintf(szName, sizeof(szName), "%s[%u:%s]", pszDesc, pUsbIns->iInstance, pUsbIns->Internal.s.pUsbDev->pReg->szName);
+    pszDesc = szName;
 
     int rc = TMR3TimerCreateUsb(pVM, pUsbIns, enmClock, pfnCallback, pvUser, fFlags, pszDesc, phTimer);
 
