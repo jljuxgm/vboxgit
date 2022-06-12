@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.h 86664 2020-10-21 14:11:10Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.h 86665 2020-10-21 14:21:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class declaration.
  */
@@ -305,6 +305,14 @@ private:
         void makeSureGroupSettingsSaveIsFinished();
         /** Makes sure group definitions saving is finished. */
         void makeSureGroupDefinitionsSaveIsFinished();
+    /** @} */
+
+    /** @name Cloud stuff.
+      * @{ */
+        /** Searches for profile node with passed @a strProviderShortName and @a strProfileName. */
+        UIChooserNode *searchProfileNode(const QString &strProviderShortName, const QString &strProfileName);
+        /** Searches for fake node under passed @a pProfileNode. */
+        UIChooserNode *searchFakeNode(UIChooserNode *pProfileNode);
     /** @} */
 
     /** @name General stuff.
