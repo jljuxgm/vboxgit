@@ -1,4 +1,4 @@
-/* $Id: udivmoddi4.c 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: udivmoddi4.c 84506 2020-05-25 14:56:35Z vboxsync $ */
 /** @file
  * IPRT - __udivmoddi4 implementation
  */
@@ -46,6 +46,8 @@ uint64_t __udivmoddi4(uint64_t u64A, uint64_t u64B, uint64_t *pu64R)
     RTUINT64U Reminder;
     Divident.u = u64A;
     Divisor.u  = u64B;
+    Quotient.u = 0; /* shut up gcc 10 */
+    Reminder.u = 0; /* shut up gcc 10 */
     RTUInt64DivRem(&Quotient, &Reminder, &Divident, &Divisor);
     if (pu64R)
         *pu64R = Reminder.u;

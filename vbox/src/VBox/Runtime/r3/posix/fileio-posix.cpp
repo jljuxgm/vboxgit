@@ -1,4 +1,4 @@
-/* $Id: fileio-posix.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: fileio-posix.cpp 84506 2020-05-25 14:56:35Z vboxsync $ */
 /** @file
  * IPRT - File I/O, POSIX, Part 1.
  */
@@ -730,7 +730,7 @@ RTR3DECL(int) RTFileQuerySize(RTFILE hFile, uint64_t *pcbSize)
 
 #else
         /* PORTME! Avoid this path when possible. */
-        uint64_t offSaved;
+        uint64_t offSaved = UINT64_MAX;
         int rc = RTFileSeek(hFile, 0, RTFILE_SEEK_CURRENT, &offSaved);
         if (RT_SUCCESS(rc))
         {
@@ -750,7 +750,7 @@ RTR3DECL(int) RTFileQueryMaxSizeEx(RTFILE hFile, PRTFOFF pcbMax)
     /*
      * Save the current location
      */
-    uint64_t offOld;
+    uint64_t offOld = UINT64_MAX;
     int rc = RTFileSeek(hFile, 0, RTFILE_SEEK_CURRENT, &offOld);
     if (RT_FAILURE(rc))
         return rc;
