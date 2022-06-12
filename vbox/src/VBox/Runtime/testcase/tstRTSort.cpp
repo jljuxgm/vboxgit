@@ -1,4 +1,4 @@
-/* $Id: tstRTSort.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: tstRTSort.cpp 86381 2020-10-01 14:20:32Z vboxsync $ */
 /** @file
  * IPRT Testcase - Sorting.
  */
@@ -91,6 +91,8 @@ static void testApvSorter(FNRTSORTAPV pfnSorter, const char *pszName)
         if (!RTSortApvIsSorted(&Data.apv[0], cElements, testApvCompare, &Data))
             RTTestIFailed("failed sorting %u elements", cElements);
     }
+
+    RTRandAdvDestroy(hRand);
 }
 
 
