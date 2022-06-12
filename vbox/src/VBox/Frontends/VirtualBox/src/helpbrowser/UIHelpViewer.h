@@ -1,4 +1,4 @@
-/* $Id: UIHelpViewer.h 89409 2021-05-31 17:20:54Z vboxsync $ */
+/* $Id: UIHelpViewer.h 89546 2021-06-07 12:06:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class declaration.
  */
@@ -51,6 +51,7 @@ signals:
     void sigAddBookmark();
     void sigZoomPercentageChanged(int iPercentage);
     void sigOverlayModeChanged(bool fEnabled);
+    void sigMouseOverImage(const QString &strImageName);
 
 public:
 
@@ -128,6 +129,7 @@ private:
     /** If there is image at @p globalPosition then its data is loaded to m_overlayPixmap. */
     void loadImageAtPosition(const QPoint &globalPosition);
     void clearOverlay();
+    void setImageOverCursor(QPoint globalPosition);
 
     const QHelpEngine* m_pHelpEngine;
     UIFindInPageWidget *m_pFindInPageWidget;
