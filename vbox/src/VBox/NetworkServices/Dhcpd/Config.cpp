@@ -1,4 +1,4 @@
-/* $Id: Config.cpp 87693 2021-02-10 16:58:22Z vboxsync $ */
+/* $Id: Config.cpp 87694 2021-02-10 17:00:01Z vboxsync $ */
 /** @file
  * DHCP server - server configuration
  */
@@ -429,7 +429,7 @@ Config *Config::create(int argc, char **argv) RT_NOEXCEPT
 
 /**
  *
- * @note The release log has is not operational when this method is called.
+ * @note The release log is not operational when this method is called.
  */
 Config *Config::i_read(const char *pszFileName, bool fStrict) RT_NOEXCEPT
 {
