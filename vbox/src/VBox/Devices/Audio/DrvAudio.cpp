@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 89208 2021-05-20 21:52:42Z vboxsync $ */
+/* $Id: DrvAudio.cpp 89210 2021-05-21 07:23:39Z vboxsync $ */
 /** @file
  * Intermediate audio driver - Connects the audio device emulation with the host backend.
  */
@@ -1932,7 +1932,6 @@ static DECLCALLBACK(int) drvAudioStreamCreate(PPDMIAUDIOCONNECTOR pInterface, ui
      * Give back the stream count, we couldn't use it after all.
      */
     RTCritSectRwEnterExcl(&pThis->CritSectGlobals);
-    Assert(*pcFreeStreams >= 0);
     *pcFreeStreams += 1;
     RTCritSectRwLeaveExcl(&pThis->CritSectGlobals);
 
