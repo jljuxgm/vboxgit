@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxEventHandler.h 86154 2020-09-17 13:19:41Z vboxsync $ */
+/* $Id: UIVirtualBoxEventHandler.h 86545 2020-10-12 14:54:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxEventHandler class declaration.
  */
@@ -62,6 +62,10 @@ signals:
     void sigCloudProviderUninstall(const QUuid &uId);
     /** Notifies about cloud provider list changed. */
     void sigCloudProviderListChanged();
+    /** Notifies about cloud profile with specified @a strName of provider with specified @a uProviderId is @a fRegistered. */
+    void sigCloudProfileRegistered(const QUuid &uProviderId, const QString &strName, bool fRegistered);
+    /** Notifies about cloud profile with specified @a strName of provider with specified @a uProviderId is changed. */
+    void sigCloudProfileChanged(const QUuid &uProviderId, const QString &strName);
 
     /** Notifies about storage controller change.
       * @param  uMachineId         Brings the ID of machine corresponding controller belongs to.

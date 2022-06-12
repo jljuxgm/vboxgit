@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.h 86323 2020-09-28 14:59:10Z vboxsync $ */
+/* $Id: UIMainEventListener.h 86545 2020-10-12 14:54:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMainEventListener class declaration.
  */
@@ -106,6 +106,10 @@ signals:
         void sigCloudProviderUninstall(const QUuid &uId);
         /** Notifies about cloud provider list changed. */
         void sigCloudProviderListChanged();
+        /** Notifies about cloud profile with specified @a strName of provider with specified @a uProviderId is @a fRegistered. */
+        void sigCloudProfileRegistered(const QUuid &uProviderId, const QString &strName, bool fRegistered);
+        /** Notifies about cloud profile with specified @a strName of provider with specified @a uProviderId is changed. */
+        void sigCloudProfileChanged(const QUuid &uProviderId, const QString &strName);
     /** @} */
 
     /** @name VirtualBox Extra-data related signals

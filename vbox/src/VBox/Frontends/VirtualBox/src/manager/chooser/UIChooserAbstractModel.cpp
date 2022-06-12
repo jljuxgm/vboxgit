@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.cpp 86544 2020-10-12 14:51:37Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.cpp 86545 2020-10-12 14:54:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class implementation.
  */
@@ -817,6 +817,10 @@ void UIChooserAbstractModel::prepareConnections()
     connect(gVBoxEvents, &UIVirtualBoxEventHandler::sigSnapshotRestore,
             this, &UIChooserAbstractModel::sltSnapshotChanged);
     connect(gVBoxEvents, &UIVirtualBoxEventHandler::sigCloudProviderListChanged,
+            this, &UIChooserAbstractModel::sltHandleCloudProfileManagerCumulativeChange);
+    connect(gVBoxEvents, &UIVirtualBoxEventHandler::sigCloudProfileRegistered,
+            this, &UIChooserAbstractModel::sltHandleCloudProfileManagerCumulativeChange);
+    connect(gVBoxEvents, &UIVirtualBoxEventHandler::sigCloudProfileChanged,
             this, &UIChooserAbstractModel::sltHandleCloudProfileManagerCumulativeChange);
     connect(gVBoxEvents, &UIVirtualBoxEventHandler::sigCloudProviderUninstall,
             this, &UIChooserAbstractModel::sltHandleCloudProviderUninstall);
