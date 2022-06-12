@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 88709 2021-04-26 16:38:03Z vboxsync $ */
+/* $Id: DrvAudio.cpp 88710 2021-04-26 16:41:12Z vboxsync $ */
 /** @file
  * Intermediate audio driver - Connects the audio device emulation with the host backend.
  */
@@ -356,7 +356,6 @@ static int drvAudioStreamDestroyInternalBackend(PDRVAUDIO pThis, PDRVAUDIOSTREAM
 static void drvAudioStreamFree(PDRVAUDIOSTREAM pStream);
 static int drvAudioStreamUninitInternal(PDRVAUDIO pThis, PDRVAUDIOSTREAM pStreamEx);
 static int drvAudioStreamIterateInternal(PDRVAUDIO pThis, PDRVAUDIOSTREAM pStreamEx);
-static int drvAudioStreamPlayLocked(PDRVAUDIO pThis, PDRVAUDIOSTREAM pStreamEx, uint32_t *pcFramesPlayed);
 static void drvAudioStreamDropInternal(PDRVAUDIO pThis, PDRVAUDIOSTREAM pStreamEx);
 static void drvAudioStreamResetInternal(PDRVAUDIO pThis, PDRVAUDIOSTREAM pStreamEx);
 
