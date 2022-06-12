@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageBasic1.cpp 86590 2020-10-15 11:42:18Z vboxsync $ */
+/* $Id: UIWizardImportAppPageBasic1.cpp 86687 2020-10-23 13:46:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageBasic1 class implementation.
  */
@@ -32,6 +32,7 @@
 #include "UIEmptyFilePathSelector.h"
 #include "UIIconPool.h"
 #include "UIMessageCenter.h"
+#include "UIVirtualBoxEventHandler.h"
 #include "UIVirtualBoxManager.h"
 #include "UIWizardImportApp.h"
 #include "UIWizardImportAppPageBasic1.h"
@@ -634,9 +635,10 @@ UIWizardImportAppPageBasic1::UIWizardImportAppPageBasic1(bool fImportFromOCIByDe
     populateProfileInstances();
 
     /* Setup connections: */
-    if (gpManager)
-        connect(gpManager, &UIVirtualBoxManager::sigCloudProfileManagerChange,
-                this, &UIWizardImportAppPageBasic1::sltHandleSourceChange);
+    connect(gVBoxEvents, &UIVirtualBoxEventHandler::sigCloudProfileRegistered,
+            this, &UIWizardImportAppPageBasic1::sltHandleSourceChange);
+    connect(gVBoxEvents, &UIVirtualBoxEventHandler::sigCloudProfileChanged,
+            this, &UIWizardImportAppPageBasic1::sltHandleSourceChange);
     connect(m_pSourceComboBox, static_cast<void(QIComboBox::*)(int)>(&QIComboBox::activated),
             this, &UIWizardImportAppPageBasic1::sltHandleSourceChange);
     connect(m_pFileSelector, &UIEmptyFilePathSelector::pathChanged,

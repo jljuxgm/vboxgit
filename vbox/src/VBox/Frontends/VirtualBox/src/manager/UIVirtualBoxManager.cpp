@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 86655 2020-10-20 14:59:16Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 86687 2020-10-23 13:46:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -630,8 +630,6 @@ void UIVirtualBoxManager::sltOpenCloudProfileManagerWindow()
         UICloudProfileManagerFactory(m_pActionPool).prepare(m_pManagerCloudProfile, this);
         connect(m_pManagerCloudProfile, &QIManagerDialog::sigClose,
                 this, &UIVirtualBoxManager::sltCloseCloudProfileManagerWindow);
-        connect(m_pManagerCloudProfile, &QIManagerDialog::sigChange,
-                this, &UIVirtualBoxManager::sigCloudProfileManagerChange);
     }
 
     /* Show instance: */
@@ -2099,8 +2097,6 @@ void UIVirtualBoxManager::prepareConnections()
             this, &UIVirtualBoxManager::sltHandleCloudMachineStateChange);
     connect(m_pWidget, &UIVirtualBoxManagerWidget::sigToolTypeChange,
             this, &UIVirtualBoxManager::sltHandleToolTypeChange);
-    connect(m_pWidget, &UIVirtualBoxManagerWidget::sigCloudProfileManagerChange,
-            this, &UIVirtualBoxManager::sigCloudProfileManagerChange);
     connect(m_pWidget, &UIVirtualBoxManagerWidget::sigMachineSettingsLinkClicked,
             this, &UIVirtualBoxManager::sltOpenMachineSettingsDialog);
     connect(m_pWidget, &UIVirtualBoxManagerWidget::sigCurrentSnapshotItemChange,

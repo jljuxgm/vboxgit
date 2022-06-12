@@ -1,4 +1,4 @@
-/* $Id: QIManagerDialog.h 86233 2020-09-23 12:10:51Z vboxsync $ */
+/* $Id: QIManagerDialog.h 86687 2020-10-23 13:46:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIManagerDialog class declaration.
  */
@@ -90,9 +90,6 @@ class SHARED_LIBRARY_STUFF QIManagerDialog : public QIWithRestorableGeometry<QMa
     Q_OBJECT;
 
 signals:
-
-    /** Notifies listeners about dialog change. */
-    void sigChange();
 
     /** Notifies listeners about dialog should be closed. */
     void sigClose();

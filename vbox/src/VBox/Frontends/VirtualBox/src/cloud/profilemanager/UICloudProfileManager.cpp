@@ -1,4 +1,4 @@
-/* $Id: UICloudProfileManager.cpp 86672 2020-10-22 15:25:35Z vboxsync $ */
+/* $Id: UICloudProfileManager.cpp 86687 2020-10-23 13:46:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudProfileManager class implementation.
  */
@@ -317,9 +317,6 @@ void UICloudProfileManagerWidget::sltApplyCloudProfileDetailsChanges()
             }
         }
     }
-
-    /* Notify listeners: */
-    emit sigChange();
 }
 
 void UICloudProfileManagerWidget::sltAddCloudProfile()
@@ -387,9 +384,6 @@ void UICloudProfileManagerWidget::sltAddCloudProfile()
             }
         }
     }
-
-    /* Notify listeners: */
-    emit sigChange();
 }
 
 void UICloudProfileManagerWidget::sltImportCloudProfiles()
@@ -432,9 +426,6 @@ void UICloudProfileManagerWidget::sltImportCloudProfiles()
                 msgCenter().cannotImportCloudProfiles(comCloudProvider, this);
         }
     }
-
-    /* Notify listeners: */
-    emit sigChange();
 }
 
 void UICloudProfileManagerWidget::sltRemoveCloudProfile()
@@ -494,9 +485,6 @@ void UICloudProfileManagerWidget::sltRemoveCloudProfile()
             }
         }
     }
-
-    /* Notify listeners: */
-    emit sigChange();
 }
 
 void UICloudProfileManagerWidget::sltToggleCloudProfileDetailsVisibility(bool fVisible)
@@ -1085,8 +1073,6 @@ void UICloudProfileManager::configureCentralWidget()
 #ifdef VBOX_WS_MAC
         setWidgetToolbar(pWidget->toolbar());
 #endif
-        connect(pWidget, &UICloudProfileManagerWidget::sigChange,
-                this, &UICloudProfileManager::sigChange);
         connect(this, &UICloudProfileManager::sigDataChangeRejected,
                 pWidget, &UICloudProfileManagerWidget::sltResetCloudProfileDetailsChanges);
         connect(this, &UICloudProfileManager::sigDataChangeAccepted,

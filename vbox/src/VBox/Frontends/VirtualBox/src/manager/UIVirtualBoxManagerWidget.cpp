@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 86655 2020-10-20 14:59:16Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 86687 2020-10-23 13:46:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -573,8 +573,6 @@ void UIVirtualBoxManagerWidget::prepareWidgets()
                         {
                             if (m_pPaneChooser->isGlobalItemSelected())
                                 m_pPaneToolsGlobal->setActive(true);
-                            connect(m_pPaneToolsGlobal, &UIToolPaneGlobal::sigCloudProfileManagerChange,
-                                    this, &UIVirtualBoxManagerWidget::sigCloudProfileManagerChange);
                             connect(m_pPaneToolsGlobal, &UIToolPaneGlobal::sigSwitchToMachinePerformancePane,
                                     this, &UIVirtualBoxManagerWidget::sltSwitchToMachinePerformancePane);
 

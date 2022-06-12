@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.h 86655 2020-10-20 14:59:16Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.h 86687 2020-10-23 13:46:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class declaration.
  */
@@ -85,12 +85,6 @@ signals:
       * @{ */
         /** Notifies about Tool type change. */
         void sigToolTypeChange();
-    /** @} */
-
-    /** @name Tools / Cloud Profile Manager stuff.
-      * @{ */
-        /** Notifies listeners about Cloud Profile Manager change. */
-        void sigCloudProfileManagerChange();
     /** @} */
 
     /** @name Tools / Details pane stuff.

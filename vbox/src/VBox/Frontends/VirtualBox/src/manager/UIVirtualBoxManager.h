@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 86655 2020-10-20 14:59:16Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.h 86687 2020-10-23 13:46:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -56,9 +56,6 @@ signals:
 
     /** Notifies listeners about this window remapped to another screen. */
     void sigWindowRemapped();
-
-    /** Notifies listeners about Cloud Profile Manager change. */
-    void sigCloudProfileManagerChange();
 
 public:
 
