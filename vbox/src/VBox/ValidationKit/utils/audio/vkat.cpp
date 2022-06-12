@@ -1,4 +1,4 @@
-/* $Id: vkat.cpp 89217 2021-05-21 11:57:52Z vboxsync $ */
+/* $Id: vkat.cpp 89225 2021-05-21 13:04:46Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) utility for testing and validating the audio stack.
  */
@@ -2507,6 +2507,10 @@ static int audioTestDoSelftestSvc(void)
             if (RT_SUCCESS(rc))
                 rc = rc2;
         }
+
+        int rc2 = AudioTestSvcDestroy(&Srv);
+        if (RT_SUCCESS(rc))
+            rc = rc2;
     }
 
     return rc;
