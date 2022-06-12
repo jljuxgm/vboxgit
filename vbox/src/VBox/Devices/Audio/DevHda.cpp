@@ -1,4 +1,4 @@
-/* $Id: DevHda.cpp 89341 2021-05-28 10:19:50Z vboxsync $ */
+/* $Id: DevHda.cpp 89344 2021-05-28 10:33:09Z vboxsync $ */
 /** @file
  * Intel HD Audio Controller Emulation.
  *
@@ -2707,7 +2707,7 @@ static DECLCALLBACK(VBOXSTRICTRC) hdaR3DmaAccessHandler(PVM pVM, PVMCPU pVCpu, R
                      ASMDivU64ByU32RetU32(pStreamDbg->cbWrittenTotal, pStreamDbg->cWritesTotal)));
 #  endif
 
-#  ifdef VBOX_AUDIO_DEBUG_DUMP_PCM_DATA
+#  ifdef VBOX_AUDIO_DEBUG_DUMP_PCM_DATA_PATH
             if (pThis->fDebugEnabled)
             {
                 RTFILE fh;

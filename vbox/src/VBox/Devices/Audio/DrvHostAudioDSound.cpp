@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioDSound.cpp 89269 2021-05-25 12:10:57Z vboxsync $ */
+/* $Id: DrvHostAudioDSound.cpp 89344 2021-05-28 10:33:09Z vboxsync $ */
 /** @file
  * Host audio driver - DirectSound (Windows).
  */
@@ -2606,7 +2606,7 @@ static DECLCALLBACK(int) drvHostDSoundHA_StreamCapture(PPDMIHOSTAUDIO pInterface
                      drvHostDSoundStreamStatusString(pStreamDS) ));
     }
 
-#ifdef VBOX_AUDIO_DEBUG_DUMP_PCM_DATA
+#ifdef VBOX_AUDIO_DEBUG_DUMP_PCM_DATA_PATH
     if (cbRead)
     {
         RTFILE hFile;

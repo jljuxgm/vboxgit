@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioCoreAudio.cpp 89268 2021-05-25 11:37:03Z vboxsync $ */
+/* $Id: DrvHostAudioCoreAudio.cpp 89344 2021-05-28 10:33:09Z vboxsync $ */
 /** @file
  * Host audio driver - Mac OS X CoreAudio.
  *
@@ -2879,7 +2879,7 @@ static DECLCALLBACK(int) drvHstAudCaConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg
     /*
      * Cleanup debug dumps from previous run.
      */
-#ifdef VBOX_AUDIO_DEBUG_DUMP_PCM_DATA
+#ifdef VBOX_AUDIO_DEBUG_DUMP_PCM_DATA_PATH
     RTFileDelete(VBOX_AUDIO_DEBUG_DUMP_PCM_DATA_PATH "caConverterCbInput.pcm");
     RTFileDelete(VBOX_AUDIO_DEBUG_DUMP_PCM_DATA_PATH "caPlayback.pcm");
 #endif
