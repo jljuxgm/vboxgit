@@ -1,4 +1,4 @@
-/* $Id: PDMCritSect.cpp 87122 2020-12-24 14:12:03Z vboxsync $ */
+/* $Id: PDMCritSect.cpp 87123 2020-12-24 14:18:03Z vboxsync $ */
 /** @file
  * PDM - Critical Sections, Ring-3.
  */
@@ -156,7 +156,7 @@ static int pdmR3CritSectInitOne(PVM pVM, PPDMCRITSECTINT pCritSect, void *pvKey,
         char *pszName = RTStrAPrintf2V(pszNameFmt, va); /** @todo plug the "leak"... */
         if (pszName)
         {
-            RT_SRC_POS_NOREF();
+            RT_SRC_POS_NOREF(); RT_NOREF(fUniqueClass);
 #ifndef PDMCRITSECT_STRICT
             pCritSect->Core.pValidatorRec = NULL;
 #else
