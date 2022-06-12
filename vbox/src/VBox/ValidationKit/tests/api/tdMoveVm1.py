@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# "$Id: tdMoveVm1.py 85465 2020-07-27 09:40:13Z vboxsync $"
+# "$Id: tdMoveVm1.py 86504 2020-10-09 13:51:02Z vboxsync $"
 
 """
 VirtualBox Validation Kit - VM Move Test #1
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 85465 $"
+__version__ = "$Revision: 86504 $"
 
 # Standard Python imports.
 import os
@@ -379,10 +379,12 @@ class SubTstDrvMoveVm1(base.SubTestDriverBase):
         """
 
         # Run VM and get new Session object.
-        oSession = self.oTstDrv.startVm(oMachine)
+        oSession = self.oTstDrv.startVm(oMachine);
+        if not oSession:
+            return False;
 
         # Some time interval should be here for not closing VM just after start.
-        time.sleep(1)
+        self.oTstDrv.waitForTasks(1000);
 
         if oMachine.state != self.oTstDrv.oVBoxMgr.constants.MachineState_Running:
             reporter.log("Machine '%s' is not Running" % (oMachine.name))
