@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 86046 2020-09-07 15:27:58Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.cpp 86048 2020-09-07 15:53:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowNormal class implementation.
  */
@@ -426,7 +426,6 @@ void UIMachineWindowNormal::saveSettings()
 {
     /* Save window geometry: */
     {
-        printf("UIMachineWindowNormal::saveSettings %d %d %d %d\n", m_normalGeometry.x(), m_normalGeometry.y(),
         m_normalGeometry.width(), m_normalGeometry.height());
         gEDataManager->setMachineWindowGeometry(machineLogic()->visualStateType(),
                                                 m_uScreenId, m_normalGeometry,
