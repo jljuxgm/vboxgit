@@ -1,4 +1,4 @@
-/* $Id: UISnapshotDetailsWidget.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UISnapshotDetailsWidget.cpp 84790 2020-06-11 10:30:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotDetailsWidget class implementation.
  */
@@ -1717,11 +1717,6 @@ QString UISnapshotDetailsWidget::displayAccelerationReport(CGraphicsAdapter comG
 {
     /* Prepare report: */
     QStringList aReport;
-#ifdef VBOX_WITH_VIDEOHWACCEL
-    /* 2D Video Acceleration? */
-    if (comGraphics.GetAccelerate2DVideoEnabled())
-        aReport << QApplication::translate("UIDetails", "2D Video", "details (display)");
-#endif
     /* 3D Acceleration? */
     if (comGraphics.GetAccelerate3DEnabled() && uiCommon().is3DAvailable())
         aReport << QApplication::translate("UIDetails", "3D", "details (display)");

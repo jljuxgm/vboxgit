@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsGeneral.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIMachineSettingsGeneral.h 84790 2020-06-11 10:30:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsGeneral class declaration.
  */
@@ -47,10 +47,6 @@ public:
     CGuestOSType guestOSType() const;
     /** Returns whether 64bit OS type ID is selected. */
     bool is64BitOSTypeSelected() const;
-#ifdef VBOX_WITH_VIDEOHWACCEL
-    /** Returns whether Windows OS type ID is selected. */
-    bool isWindowsOSTypeSelected() const;
-#endif /* VBOX_WITH_VIDEOHWACCEL */
 
     /** Defines whether HW virtualization extension is enabled. */
     void setHWVirtExEnabled(bool fEnabled);

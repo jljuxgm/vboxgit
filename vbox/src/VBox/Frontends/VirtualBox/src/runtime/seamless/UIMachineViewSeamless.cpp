@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewSeamless.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIMachineViewSeamless.cpp 84790 2020-06-11 10:30:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineViewSeamless class implementation.
  */
@@ -46,18 +46,8 @@
 
 
 
-UIMachineViewSeamless::UIMachineViewSeamless(  UIMachineWindow *pMachineWindow
-                                             , ulong uScreenId
-#ifdef VBOX_WITH_VIDEOHWACCEL
-                                             , bool bAccelerate2DVideo
-#endif
-                                             )
-    : UIMachineView(  pMachineWindow
-                    , uScreenId
-#ifdef VBOX_WITH_VIDEOHWACCEL
-                    , bAccelerate2DVideo
-#endif
-                    )
+UIMachineViewSeamless::UIMachineViewSeamless(UIMachineWindow *pMachineWindow, ulong uScreenId)
+    : UIMachineView(pMachineWindow, uScreenId)
 {
     /* Prepare seamless view: */
     prepareSeamless();

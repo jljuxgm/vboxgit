@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGenerator.cpp 84107 2020-04-30 14:27:30Z vboxsync $ */
+/* $Id: UIDetailsGenerator.cpp 84790 2020-06-11 10:30:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsGenerator implementation.
  */
@@ -412,11 +412,6 @@ UITextTable UIDetailsGenerator::generateMachineInformationDisplay(CMachine &comM
     if (fOptions & UIExtraDataMetaDefs::DetailsElementOptionTypeDisplay_Acceleration)
     {
         QStringList acceleration;
-#ifdef VBOX_WITH_VIDEOHWACCEL
-        /* 2D acceleration: */
-        if (comGraphics.GetAccelerate2DVideoEnabled())
-            acceleration << QApplication::translate("UIDetails", "2D Video", "details (display)");
-#endif
         /* 3D acceleration: */
         if (comGraphics.GetAccelerate3DEnabled())
             acceleration << QApplication::translate("UIDetails", "3D", "details (display)");

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 84540 2020-05-26 15:06:13Z vboxsync $
+# $Id: Makefile.kmk 84790 2020-06-11 10:30:36Z vboxsync $
 ## @file
 # Sub-Makefile for the OpenGLTest helper app.
 #
@@ -28,6 +28,19 @@ ifneq ($(KBUILD_TARGET),darwin)
   VBoxOGLTest_SOURCES = OpenGLTest.cpp
 endif
 VBoxOGLTest_SOURCES.darwin = OpenGLTestDarwin.cpp
+
+#
+# App for testing GL support
+#
+if defined(VBOX_WITH_VIDEOHWACCEL)
+ if1of ($(KBUILD_TARGET), win linux freebsd)
+  LIBRARIES += VBoxOGL2D
+  VBoxOGL2D_TEMPLATE = $(if $(VBOX_WITH_VIDEOHWACCEL),$(if $(VBOX_WITH_HARDENING),VBOXQTGUI,VBOXQTGUIEXE),VBOXMAINEXE)
+  VBoxOGL2D_DEFS = QT_NO_DEBUG QT_THREAD_SUPPORT QT_SHARED HAVE_CONFIG_H VBOX_WITH_VIDEOHWACCEL VBOX_GUI_USE_QGL
+  VBoxOGL2D_QT_MODULES += OpenGL
+  VBoxOGL2D_SOURCES = VBoxGLSupportInfo.cpp
+ endif
+endif
 
 #
 # VBoxTestOGL - OpenGL support test app.

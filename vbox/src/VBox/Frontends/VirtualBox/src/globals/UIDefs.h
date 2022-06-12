@@ -1,4 +1,4 @@
-/* $Id: UIDefs.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIDefs.h 84790 2020-06-11 10:30:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Global definitions.
  */
@@ -61,9 +61,6 @@ namespace UIDefs
         ActivateActionEventType = QEvent::User + 101,
 #ifdef VBOX_WS_MAC
         ShowWindowEventType,
-#endif
-#ifdef VBOX_GUI_USE_QGL
-        VHWACommandProcessType,
 #endif
     };
 

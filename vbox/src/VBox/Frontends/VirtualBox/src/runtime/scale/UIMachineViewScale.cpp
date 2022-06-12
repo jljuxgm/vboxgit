@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewScale.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIMachineViewScale.cpp 84790 2020-06-11 10:30:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineViewScale class implementation.
  */
@@ -39,18 +39,8 @@
 #include <VBox/VBoxOGL.h>
 
 
-UIMachineViewScale::UIMachineViewScale(  UIMachineWindow *pMachineWindow
-                                       , ulong uScreenId
-#ifdef VBOX_WITH_VIDEOHWACCEL
-                                       , bool bAccelerate2DVideo
-#endif
-                                       )
-    : UIMachineView(  pMachineWindow
-                    , uScreenId
-#ifdef VBOX_WITH_VIDEOHWACCEL
-                    , bAccelerate2DVideo
-#endif
-                    )
+UIMachineViewScale::UIMachineViewScale(UIMachineWindow *pMachineWindow, ulong uScreenId)
+    : UIMachineView(pMachineWindow, uScreenId)
 {
 }
 

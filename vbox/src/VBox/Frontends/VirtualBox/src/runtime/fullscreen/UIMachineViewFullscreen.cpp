@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewFullscreen.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIMachineViewFullscreen.cpp 84790 2020-06-11 10:30:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineViewFullscreen class implementation.
  */
@@ -42,18 +42,8 @@
 #endif /* VBOX_WS_X11 */
 
 
-UIMachineViewFullscreen::UIMachineViewFullscreen(  UIMachineWindow *pMachineWindow
-                                                 , ulong uScreenId
-#ifdef VBOX_WITH_VIDEOHWACCEL
-                                                 , bool bAccelerate2DVideo
-#endif
-                                                 )
-    : UIMachineView(  pMachineWindow
-                    , uScreenId
-#ifdef VBOX_WITH_VIDEOHWACCEL
-                    , bAccelerate2DVideo
-#endif
-                    )
+UIMachineViewFullscreen::UIMachineViewFullscreen(UIMachineWindow *pMachineWindow, ulong uScreenId)
+    : UIMachineView(pMachineWindow, uScreenId)
     , m_bIsGuestAutoresizeEnabled(actionPool()->action(UIActionIndexRT_M_View_T_GuestAutoresize)->isChecked())
 {
 }

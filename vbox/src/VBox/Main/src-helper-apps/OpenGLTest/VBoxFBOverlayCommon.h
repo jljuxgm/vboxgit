@@ -1,4 +1,4 @@
-/* $Id: VBoxFBOverlayCommon.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxFBOverlayCommon.h 84790 2020-06-11 10:30:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxFrameBuffer Overlay classes declarations.
  */

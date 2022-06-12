@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewNormal.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIMachineViewNormal.h 84790 2020-06-11 10:30:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineViewNormal class declaration.
  */
@@ -31,12 +31,7 @@ class UIMachineViewNormal : public UIMachineView
 protected:
 
     /* Normal machine-view constructor: */
-    UIMachineViewNormal(  UIMachineWindow *pMachineWindow
-                        , ulong uScreenId
-#ifdef VBOX_WITH_VIDEOHWACCEL
-                        , bool bAccelerate2DVideo
-#endif
-    );
+    UIMachineViewNormal(UIMachineWindow *pMachineWindow, ulong uScreenId);
     /* Normal machine-view destructor: */
     virtual ~UIMachineViewNormal() {}
 

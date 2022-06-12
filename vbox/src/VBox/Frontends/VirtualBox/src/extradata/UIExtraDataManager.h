@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 83452 2020-03-26 19:36:19Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 84790 2020-06-11 10:30:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -547,19 +547,6 @@ public:
 
         /** Returns whether automatic mounting/unmounting of guest-screens enabled. */
         bool autoMountGuestScreensEnabled(const QUuid &uID);
-
-#ifdef VBOX_WITH_VIDEOHWACCEL
-        /** Returns whether 2D acceleration should use linear sretch. */
-        bool useLinearStretch(const QUuid &uID);
-        /** Returns whether 2D acceleration should use YV12 pixel format. */
-        bool usePixelFormatYV12(const QUuid &uID);
-        /** Returns whether 2D acceleration should use UYVY pixel format. */
-        bool usePixelFormatUYVY(const QUuid &uID);
-        /** Returns whether 2D acceleration should use YUY2 pixel format. */
-        bool usePixelFormatYUY2(const QUuid &uID);
-        /** Returns whether 2D acceleration should use AYUV pixel format. */
-        bool usePixelFormatAYUV(const QUuid &uID);
-#endif /* VBOX_WITH_VIDEOHWACCEL */
 
 #ifndef VBOX_WS_MAC
         /** Returns whether mini-toolbar is enabled for full and seamless screens. */

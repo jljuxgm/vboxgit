@@ -1,4 +1,4 @@
-/* $Id: VBoxGLSupportInfo.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxGLSupportInfo.cpp 84790 2020-06-11 10:30:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - OpenGL support info used for 2D support detection.
  */

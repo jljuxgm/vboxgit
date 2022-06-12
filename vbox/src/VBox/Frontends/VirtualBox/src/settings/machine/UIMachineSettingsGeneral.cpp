@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsGeneral.cpp 83902 2020-04-21 16:20:39Z vboxsync $ */
+/* $Id: UIMachineSettingsGeneral.cpp 84790 2020-06-11 10:30:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsGeneral class implementation.
  */
@@ -140,14 +140,6 @@ bool UIMachineSettingsGeneral::is64BitOSTypeSelected() const
            ? m_pNameAndSystemEditor->type().GetIs64Bit()
            : false;
 }
-
-#ifdef VBOX_WITH_VIDEOHWACCEL
-bool UIMachineSettingsGeneral::isWindowsOSTypeSelected() const
-{
-    AssertPtrReturn(m_pNameAndSystemEditor, false);
-    return m_pNameAndSystemEditor->familyId() == "Windows";
-}
-#endif /* VBOX_WITH_VIDEOHWACCEL */
 
 void UIMachineSettingsGeneral::setHWVirtExEnabled(bool fEnabled)
 {

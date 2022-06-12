@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewSeamless.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIMachineViewSeamless.h 84790 2020-06-11 10:30:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineViewSeamless class declaration.
  */
@@ -31,12 +31,7 @@ class UIMachineViewSeamless : public UIMachineView
 protected:
 
     /* Seamless machine-view constructor: */
-    UIMachineViewSeamless(  UIMachineWindow *pMachineWindow
-                          , ulong uScreenId
-#ifdef VBOX_WITH_VIDEOHWACCEL
-                          , bool bAccelerate2DVideo
-#endif
-    );
+    UIMachineViewSeamless(UIMachineWindow *pMachineWindow, ulong uScreenId);
     /* Seamless machine-view destructor: */
     virtual ~UIMachineViewSeamless() { cleanupSeamless(); }
 
