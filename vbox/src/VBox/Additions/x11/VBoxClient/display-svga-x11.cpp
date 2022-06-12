@@ -1,4 +1,4 @@
-/* $Id: display-svga-x11.cpp 84479 2020-05-25 07:38:25Z vboxsync $ */
+/* $Id: display-svga-x11.cpp 84561 2020-05-27 13:33:38Z vboxsync $ */
 /** @file
  * X11 guest client - VMSVGA emulation resize event pass-through to X.Org
  * guest driver.
@@ -686,8 +686,11 @@ static bool init()
 {
     if (isXwayland())
     {
-        VBClLogFatalError("The parent session seems to be non-X11. Exiting...\n");
-        VBClLogInfo("This service needs X display server for resizing and multi monitor handling to work\n");
+        VBClLogInfo("The parent session seems to be running on Wayland. Starting DRM client\n");
+        char* argv[] = {NULL};
+        char* env[] = {NULL};
+        execve("./VBoxDRMClient", argv, env);
+        perror("Could not start the DRM Client.");
         return false;
     }
     x11Connect();
