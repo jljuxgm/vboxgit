@@ -1,4 +1,4 @@
-/* $Id: VBoxManageCloud.cpp 85143 2020-07-09 09:16:23Z vboxsync $ */
+/* $Id: VBoxManageCloud.cpp 85144 2020-07-09 09:19:57Z vboxsync $ */
 /** @file
  * VBoxManageCloud - The cloud related commands.
  */
@@ -2110,6 +2110,7 @@ static int composeTemplatePath(const char *pcszTemplate, Bstr& strFullPath)
 static bool getSystemProxyForUrl(const com::Utf8Str &strUrl, Bstr &strProxy)
 {
 #ifndef VBOX_WITH_PROXY_INFO
+    RT_NOREF(strUrl, strProxy);
     LogRel(("OCI-NET: Proxy support is disabled. Using direct connection.\n"));
     return false;
 #else /* VBOX_WITH_PROXY_INFO */
