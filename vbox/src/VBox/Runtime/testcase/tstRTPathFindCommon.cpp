@@ -1,4 +1,4 @@
-/* $Id: tstRTPathFindCommon.cpp 85311 2020-07-13 16:07:10Z vboxsync $ */
+/* $Id: tstRTPathFindCommon.cpp 85312 2020-07-13 16:12:42Z vboxsync $ */
 /** @file
  * IPRT Testcase - String splitting.
  */
@@ -45,10 +45,10 @@ int main()
 
     struct
     {
-        char  *papszPath1;
-        char  *papszPath2;
-        char  *papszPath3;
-        char  *papszPatCommon;
+        char const *papszPath1;
+        char const *papszPath2;
+        char const *papszPath3;
+        char const *papszPatCommon;
     } aTests[] =
     {
         /* Simple stuff first. */
