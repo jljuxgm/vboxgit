@@ -1,4 +1,4 @@
-/* $Id: DBGFR3FlowTrace.cpp 87781 2021-02-17 14:02:53Z vboxsync $ */
+/* $Id: DBGFR3FlowTrace.cpp 87787 2021-02-18 15:09:53Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Guest Execution Flow Tracing.
  */
@@ -1686,6 +1686,27 @@ VMMR3DECL(uint32_t) DBGFR3FlowTraceReportGetRecordCount(DBGFFLOWTRACEREPORT hFlo
     AssertPtrReturn(pReport, 0);
 
     return pReport->cRecords;
+}
+
+
+/**
+ * Queries the specified record contained in the given report.
+ *
+ * @returns VBox status code.
+ * @param   hFlowTraceReport        Flow trace report handle.
+ * @param   idxRec                  The record index to query.
+ * @param   phFlowTraceRec          Where to store the retained handle of the record on success.
+ */
+VMMR3DECL(int) DBGFR3FlowTraceReportQueryRecord(DBGFFLOWTRACEREPORT hFlowTraceReport, uint32_t idxRec, PDBGFFLOWTRACERECORD phFlowTraceRec)
+{
+    PDBGFFLOWTRACEREPORTINT pReport = hFlowTraceReport;
+    AssertPtrReturn(pReport, 0);
+    AssertPtrReturn(phFlowTraceRec, VERR_INVALID_POINTER);
+    AssertReturn(idxRec < pReport->cRecords, VERR_INVALID_PARAMETER);
+
+    DBGFR3FlowTraceRecordRetain(pReport->apRec[idxRec]);
+    *phFlowTraceRec = pReport->apRec[idxRec];
+    return VINF_SUCCESS;
 }
 
 
