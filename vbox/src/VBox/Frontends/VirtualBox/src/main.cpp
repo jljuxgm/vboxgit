@@ -1,4 +1,4 @@
-/* $Id: main.cpp 88043 2021-03-09 13:13:20Z vboxsync $ */
+/* $Id: main.cpp 88141 2021-03-16 16:39:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - The main() function.
  */
@@ -491,12 +491,6 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char ** /*envp*/)
         /* Disable menu icons on MacOS X host: */
         ::darwinDisableIconsInMenus();
 
-# if QT_VERSION >= QT_VERSION_CHECK(5, 15, 2)
-        // WORKAROUND:
-        // Unable to detect fusion if app
-        // built with SDK less than 10.14
-        a.setStyle("fusion");
-# endif
 #endif /* VBOX_WS_MAC */
 
 #ifdef VBOX_WS_X11
