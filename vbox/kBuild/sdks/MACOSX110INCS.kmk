@@ -1,10 +1,10 @@
-# $Id: StandardDTrace.kmk 3496 2021-03-31 18:12:42Z bird $
+# $Id: MACOSX110INCS.kmk 3495 2020-12-23 20:18:20Z bird $
 ## @file
-# Standard DTrace tool.
+# kBuild SDK - Mac OS X v11.0 SDK, includes only.
 #
 
 #
-# Copyright (c) 2012-2017 knut st. osmundsen <bird-kBuild-spam-xviiv@anduin.net>
+# Copyright (c) 2008-2020 knut st. osmundsen <bird-kBuild-spam-xx@anduin.net>
 #
 # This file is part of kBuild.
 #
@@ -31,24 +31,19 @@
 #
 #
 
-TOOL_StandardDTrace := Standard DTrace or similar.
-TOOL_StandardDTrace_DTRACE := dtrace
+ifndef SDK_MACOSX110
+ include $(KBUILD_PATH)/sdks/MACOSX110.kmk
+endif
 
-TOOL_StandardDTrace_DTRACE_HDR_FLAGS := -h
-define TOOL_StandardDTrace_DTRACE_HDR_CMDS 
-	$(QUIET)$(TOOL_StandardDTrace_DTRACE) $(flags) \
-		-o "$(out)" -s "$(source)"
-endef
+SDK_MACOSX110INCS := Mac OS X v11.0 SDK, include only.
 
-TOOL_StandardDTrace_DTRACE_OBJ_NOT_NEEDED := darwin
-TOOL_StandardDTrace_DTRACE_OBJ_FLAGS := -G
-# Note! We have to exclude gcc style precompiled headers here as they are automatically
-#       added to the list of object files (see func_kbuild_source_one in kbuild.c).
-define TOOL_StandardDTrace_DTRACE_OBJ_CMDS  
-	$(QUIET)$(TOOL_StandardDTrace_DTRACE) \
-		$(if-expr $(intersects $(bld_trg_arch),$(KBUILD_ARCHES_64)),-64,-32) \
-		$(flags) \
-		-o "$(out)" -s "$(source)" \
-		$$(filter-out %-dtrace-object-format.o $$($(target)_1_GCC_PCH_FILE), $$($(target)_2_OBJS))
-endef
+# SDK Specific Properties
+ifndef PATH_SDK_MACOSX110INCS
+ PATH_SDK_MACOSX110INCS := $(PATH_SDK_MACOSX110)
+else
+ PATH_SDK_MACOSX110INCS := $(PATH_SDK_MACOSX110INCS)
+endif
+
+# General Properties (used by kBuild)
+SDK_MACOSX110INCS_INCS = $(PATH_SDK_MACOSX110INCS)/usr/include
 

@@ -1,10 +1,10 @@
-# $Id: MACOSX104.kmk 3489 2020-09-22 13:44:52Z bird $
+# $Id: MACOSX110.kmk 3495 2020-12-23 20:18:20Z bird $
 ## @file
-# kBuild SDK - Mac OS X v10.4 SDK.
+# kBuild SDK - Mac OS X v11.0 SDK.
 #
 
 #
-# Copyright (c) 2008-2017 knut st. osmundsen <bird-kBuild-spam-xviiv@anduin.net>
+# Copyright (c) 2008-2020 knut st. osmundsen <bird-kBuild-spam-xx@anduin.net>
 #
 # This file is part of kBuild.
 #
@@ -31,22 +31,32 @@
 #
 #
 
-SDK_MACOSX104 := Mac OS X v10.4 SDK
+ifndef INCLUDED_DARWIN_COMMON_KMK
+ include $(KBUILD_PATH)/darwin-common.kmk
+endif
+
+SDK_MACOSX110 := Mac OS X v11.0 SDK
 
 # SDK Specific Properties
-ifndef PATH_SDK_MACOSX104
- PATH_SDK_MACOSX104 := /Developer/SDKs/MacOSX10.4u.sdk
+ifndef PATH_SDK_MACOSX110
+ PATH_SDK_MACOSX110 := $(call DARWINCMN_FN_FIND_MACOSX_SDK,MacOSX11.0.sdk)
 else
  # Resolve any fancy stuff once and for all.
- PATH_SDK_MACOSX104 := $(PATH_SDK_MACOSX104)
+ PATH_SDK_MACOSX110 := $(PATH_SDK_MACOSX110)
 endif
+ifeq ($(PATH_SDK_MACOSX110),)
+ $(warning $(call DARWINCMN_FN_ERROR_MACOSX_SDK,MacOSX11.0.sdk))
+endif
+
+## The MAC_OS_X_VERSION_MIN_REQUIRED and MAC_OS_X_VERSION_MAX_ALLOWED value for this SDK.
+SDK_MACOSX110_VERSION_VALUE := 110000
 
 # General Properties (used by kBuild)
 # Note: The MAC_OS_X_VERSION_MAX_ALLOWED is left free for the SDK user to define.
-SDK_MACOSX104_DEFS        ?= MAC_OS_X_VERSION_MIN_REQUIRED=1040
-SDK_MACOSX104_CFLAGS      ?= -mmacosx-version-min=10.4 -isysroot "$(PATH_SDK_MACOSX104)"
-SDK_MACOSX104_CXXFLAGS    ?= -mmacosx-version-min=10.4 -isysroot "$(PATH_SDK_MACOSX104)"
-SDK_MACOSX104_OBJCFLAGS   ?= -mmacosx-version-min=10.4 -isysroot "$(PATH_SDK_MACOSX104)"
-SDK_MACOSX104_OBJCXXFLAGS ?= -mmacosx-version-min=10.4 -isysroot "$(PATH_SDK_MACOSX104)"
-SDK_MACOSX104_LDFLAGS     ?= -mmacosx-version-min=10.4 -Wl,-syslibroot,"$(PATH_SDK_MACOSX104)"
+SDK_MACOSX110_DEFS        ?= MAC_OS_X_VERSION_MIN_REQUIRED=110000
+SDK_MACOSX110_CFLAGS      ?= -mmacosx-version-min=11.0 -isysroot "$(PATH_SDK_MACOSX110)"
+SDK_MACOSX110_CXXFLAGS    ?= -mmacosx-version-min=11.0 -isysroot "$(PATH_SDK_MACOSX110)"
+SDK_MACOSX110_OBJCFLAGS   ?= -mmacosx-version-min=11.0 -isysroot "$(PATH_SDK_MACOSX110)"
+SDK_MACOSX110_OBJCXXFLAGS ?= -mmacosx-version-min=11.0 -isysroot "$(PATH_SDK_MACOSX110)"
+SDK_MACOSX110_LDFLAGS     ?= -mmacosx-version-min=11.0 -isysroot "$(PATH_SDK_MACOSX110)"
 
