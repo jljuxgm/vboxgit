@@ -1,4 +1,4 @@
-/* $Id: AudioTestService.cpp 89226 2021-05-21 15:02:10Z vboxsync $ */
+/* $Id: AudioTestService.cpp 89228 2021-05-21 15:09:16Z vboxsync $ */
 /** @file
  * AudioTestService - Audio test execution server.
  */
@@ -770,6 +770,7 @@ static DECLCALLBACK(int) atsMainThread(RTTHREAD hThread, void *pvUser)
  *
  * @returns VBox status code.
  * @param   pThis               The ATS instance.
+ * @param   pCallbacks          The callbacks table to use.
  *  */
 int AudioTestSvcInit(PATSSERVER pThis, PCATSCALLBACKS pCallbacks)
 {
