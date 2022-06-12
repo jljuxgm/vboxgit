@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 88071 2021-03-10 15:10:39Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 88074 2021-03-10 18:14:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -896,7 +896,7 @@ enum UIToolType
     UIToolType_Network,
     UIToolType_Cloud,
     UIToolType_CloudConsole,
-    UIToolType_Resources,
+    UIToolType_VMActivityOverview,
     /* Machine types: */
     UIToolType_Error,
     UIToolType_Details,

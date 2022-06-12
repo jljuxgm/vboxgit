@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.h 88071 2021-03-10 15:10:39Z vboxsync $ */
+/* $Id: UIActionPool.h 88074 2021-03-10 18:14:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPool class declaration.
  */
@@ -100,7 +100,7 @@ enum UIActionIndex
     /* 'Performance' menu actions: */
     UIActionIndex_M_Performance,
     UIActionIndex_M_Performance_S_Export,
-    UIActionIndex_M_Performance_S_ToResources,
+    UIActionIndex_M_Performance_S_ToVMActivityOverview,
 
     /* File Manager actions: */
     UIActionIndex_M_FileManager,
