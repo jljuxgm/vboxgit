@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic4.cpp 87589 2021-02-03 17:17:19Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic4.cpp 87858 2021-02-24 13:00:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic4 class implementation.
  */
@@ -233,7 +233,7 @@ void UIWizardNewVMPageBasic4::sltGetWithFileOpenDialog()
 
 void UIWizardNewVMPageBasic4::retranslateUi()
 {
-    setTitle(UIWizardNewVM::tr("Hard disk and Hardware"));
+    setTitle(UIWizardNewVM::tr("Virtual Hard disk"));
 
     QString strRecommendedHDD = field("type").value<CGuestOSType>().isNull() ? QString() :
                                 UICommon::formatSize(field("type").value<CGuestOSType>().GetRecommendedHDD());
