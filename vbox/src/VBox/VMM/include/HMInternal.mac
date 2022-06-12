@@ -1,4 +1,4 @@
-;$Id: HMInternal.mac 87330 2021-01-20 19:02:24Z vboxsync $
+;$Id: HMInternal.mac 87333 2021-01-20 20:21:38Z vboxsync $
 ;; @file
 ; HM - Internal header file.
 ;
@@ -165,11 +165,11 @@ struc HMCPU
     .fCtxChanged                    resq    1
 
     alignb 8
-%if HMCPUVMX_size > HMCPUSVM_size
+;%if HMCPUVMX_size > HMCPUSVM_size
     .u                              resb    HMCPUVMX_size
-%else
-    .u                              resb    HMCPUSVM_size
-%endif
+;%else
+;    .u                              resb    HMCPUSVM_size
+;%endif
 
     .Event.fPending                 resd    1
     .Event.u32ErrCode               resd    1
