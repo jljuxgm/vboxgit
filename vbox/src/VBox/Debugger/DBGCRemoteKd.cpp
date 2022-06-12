@@ -1,4 +1,4 @@
-/* $Id: DBGCRemoteKd.cpp 86107 2020-09-13 08:35:35Z vboxsync $ */
+/* $Id: DBGCRemoteKd.cpp 86108 2020-09-13 08:37:06Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Windows Kd Remote Stub.
  */
@@ -1682,7 +1682,7 @@ static int dbgcKdCtxPktManipulate64ReadCtrlSpace(PKDCTX pThis, PCKDPACKETMANIPUL
     KDPACKETMANIPULATEHDR RespHdr;
     KDPACKETMANIPULATE_XFERCTRLSPACE64 XferCtrlSpace64;
     uint8_t abResp[sizeof(NTKCONTEXT64)];
-    size_t cbData = 0;
+    uint32_t cbData = 0;
     RT_ZERO(RespHdr); RT_ZERO(XferCtrlSpace64);
     RT_ZERO(abResp);
 
