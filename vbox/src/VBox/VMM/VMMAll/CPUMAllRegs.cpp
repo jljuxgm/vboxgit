@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 87346 2021-01-21 11:42:23Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 87361 2021-01-21 21:13:55Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -1615,7 +1615,9 @@ VMMDECL(bool) CPUMIsHostUsingSysCall(PVM pVM)
  */
 VMMDECL(bool) CPUMIsGuestFPUStateActive(PVMCPU pVCpu)
 {
-    return RT_BOOL(pVCpu->cpum.s.fUseFlags & CPUM_USED_FPU_GUEST);
+    bool fRet = RT_BOOL(pVCpu->cpum.s.fUseFlags & CPUM_USED_FPU_GUEST);
+    AssertMsg(fRet == pVCpu->cpum.s.Guest.fUsedFpuGuest, ("fRet=%d\n", fRet));
+    return fRet;
 }
 
 
@@ -1627,7 +1629,9 @@ VMMDECL(bool) CPUMIsGuestFPUStateActive(PVMCPU pVCpu)
  */
 VMMDECL(bool) CPUMIsGuestFPUStateLoaded(PVMCPU pVCpu)
 {
-    return RT_BOOL(pVCpu->cpum.s.fUseFlags & CPUM_USED_FPU_GUEST);
+    bool fRet = RT_BOOL(pVCpu->cpum.s.fUseFlags & CPUM_USED_FPU_GUEST);
+    AssertMsg(fRet == pVCpu->cpum.s.Guest.fUsedFpuGuest, ("fRet=%d\n", fRet));
+    return fRet;
 }
 
 

@@ -1,4 +1,4 @@
- ; $Id: CPUMRZA.asm 82968 2020-02-04 10:35:17Z vboxsync $
+ ; $Id: CPUMRZA.asm 87361 2021-01-21 21:13:55Z vboxsync $
 ;; @file
 ; CPUM - Raw-mode and Ring-0 Context Assembly Routines.
 ;
@@ -210,6 +210,7 @@ SEH64_END_PROLOGUE
  %endif
 
         and     dword [pCpumCpu + CPUMCPU.fUseFlags], ~CPUM_USED_FPU_GUEST
+        mov     byte [pCpumCpu + CPUMCPU.Guest.fUsedFpuGuest], 0
  %ifdef IN_RC
         test    byte [ebp + 0ch], 1     ; fLeaveFpuAccessible
         jz      .no_cr0_restore
