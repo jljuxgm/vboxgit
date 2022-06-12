@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.h 84186 2020-05-07 14:17:42Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.h 84376 2020-05-19 17:57:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class declaration.
  */
@@ -64,6 +64,17 @@ signals:
 
 public:
 
+    /** Extra-data node definition option types. */
+    enum NodeDef
+    {
+        NodeDef_GlobalPrefix,
+        NodeDef_GlobalOptionFavorite,
+        NodeDef_GlobalValueDefault,
+        NodeDef_MachinePrefix,
+        NodeDef_GroupPrefix,
+        NodeDef_GroupOptionOpened,
+    };
+
     /** Constructs abstract Chooser-model passing @a pParent to the base-class. */
     UIChooserAbstractModel(UIChooser *pParent);
 
@@ -108,6 +119,9 @@ public:
         /** Returns QString representation for passed @a uId, wiping out {} symbols.
           * @note  Required for backward compatibility after QString=>QUuid change. */
         static QString toOldStyleUuid(const QUuid &uId);
+
+        /** Returns extra-data node definition option of certain @a enmType. */
+        static QString definitionOption(NodeDef enmType);
     /** @} */
 
 public slots:

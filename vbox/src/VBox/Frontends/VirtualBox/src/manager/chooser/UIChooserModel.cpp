@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 84371 2020-05-19 14:55:55Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 84376 2020-05-19 17:57:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -221,7 +221,7 @@ void UIChooserModel::setSelectedItem(const QString &strDefinition)
     const QString strItemType = strDefinition.section('=', 0, 0);
     const QString strItemDescriptor = strDefinition.section('=', 1, -1);
     /* Its a group-item definition? */
-    if (strItemType == "g")
+    if (strItemType == definitionOption(NodeDef_GroupPrefix))
     {
         /* Search for group-item with passed descriptor (name): */
         pItem = root()->searchForItem(strItemDescriptor,
@@ -231,7 +231,7 @@ void UIChooserModel::setSelectedItem(const QString &strDefinition)
                                       UIChooserItemSearchFlag_ExactId);
     }
     /* Its a global-item definition? */
-    else if (strItemType == "n")
+    else if (strItemType == definitionOption(NodeDef_GlobalPrefix))
     {
         /* Search for global-item with required name: */
         pItem = root()->searchForItem(strItemDescriptor,
@@ -239,7 +239,7 @@ void UIChooserModel::setSelectedItem(const QString &strDefinition)
                                       UIChooserItemSearchFlag_ExactName);
     }
     /* Its a machine-item definition? */
-    else if (strItemType == "m")
+    else if (strItemType == definitionOption(NodeDef_MachinePrefix))
     {
         /* Search for machine-item with required ID: */
         pItem = root()->searchForItem(strItemDescriptor,

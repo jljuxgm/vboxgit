@@ -1,4 +1,4 @@
-/* $Id: UIChooserNodeGroup.cpp 84373 2020-05-19 15:34:13Z vboxsync $ */
+/* $Id: UIChooserNodeGroup.cpp 84376 2020-05-19 17:57:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserNodeGroup class implementation.
  */
@@ -16,6 +16,7 @@
  */
 
 /* GUI includes: */
+#include "UIChooserAbstractModel.h"
 #include "UIChooserNodeGroup.h"
 #include "UIChooserNodeGlobal.h"
 #include "UIChooserNodeMachine.h"
@@ -106,9 +107,11 @@ QString UIChooserNodeGroup::description() const
 
 QString UIChooserNodeGroup::definition(bool fFull /* = false */) const
 {
+    const QString strNodePrefix = UIChooserAbstractModel::definitionOption(UIChooserAbstractModel::NodeDef_GroupPrefix);
+    const QString strNodeOptionOpened = UIChooserAbstractModel::definitionOption(UIChooserAbstractModel::NodeDef_GroupOptionOpened);
     return   fFull
-           ? QString("g%1=%2").arg(isOpened() ? "o" : "").arg(name())
-           : QString("g=%1").arg(fullName());
+           ? QString("%1%2=%3").arg(strNodePrefix).arg(isOpened() ? strNodeOptionOpened : "").arg(name())
+           : QString("%1=%2").arg(strNodePrefix).arg(fullName());
 }
 
 bool UIChooserNodeGroup::hasNodes(UIChooserNodeType enmType /* = UIChooserNodeType_Any */) const

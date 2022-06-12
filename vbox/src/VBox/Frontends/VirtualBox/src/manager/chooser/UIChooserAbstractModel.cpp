@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.cpp 84373 2020-05-19 15:34:13Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.cpp 84376 2020-05-19 17:57:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class implementation.
  */
@@ -313,6 +313,24 @@ bool UIChooserAbstractModel::isGroupSavingInProgress() const
 QString UIChooserAbstractModel::toOldStyleUuid(const QUuid &uId)
 {
     return uId.toString().remove(QRegExp("[{}]"));
+}
+
+/* static */
+QString UIChooserAbstractModel::definitionOption(NodeDef enmOption)
+{
+    switch (enmOption)
+    {
+        /* Global nodes: */
+        case NodeDef_GlobalPrefix:         return "n";
+        case NodeDef_GlobalOptionFavorite: return "f";
+        case NodeDef_GlobalValueDefault:   return "GLOBAL";
+        /* Machine nodes: */
+        case NodeDef_MachinePrefix:        return "m";
+        /* Group nodes: */
+        case NodeDef_GroupPrefix:          return "g";
+        case NodeDef_GroupOptionOpened:    return "o";
+    }
+    return QString();
 }
 
 void UIChooserAbstractModel::sltLocalMachineStateChanged(const QUuid &uMachineId, const KMachineState)
@@ -698,7 +716,9 @@ bool UIChooserAbstractModel::shouldGroupNodeBeOpened(UIChooserNode *pParentNode,
         return false;
 
     /* Prepare required group definition reg-exp: */
-    const QString strDefinitionTemplate = QString("g(\\S)*=%1").arg(strName);
+    const QString strNodePrefix = definitionOption(NodeDef_GroupPrefix);
+    const QString strNodeOptionOpened = definitionOption(NodeDef_GroupOptionOpened);
+    const QString strDefinitionTemplate = QString("%1(\\S)*=%2").arg(strNodePrefix, strName);
     const QRegExp definitionRegExp(strDefinitionTemplate);
     /* For each the group definition: */
     foreach (const QString &strDefinition, definitions)
@@ -708,7 +728,7 @@ bool UIChooserAbstractModel::shouldGroupNodeBeOpened(UIChooserNode *pParentNode,
         {
             /* Get group descriptor: */
             const QString strDescriptor(definitionRegExp.cap(1));
-            if (strDescriptor.contains('o'))
+            if (strDescriptor.contains(strNodeOptionOpened))
                 return true;
         }
     }
@@ -743,8 +763,11 @@ bool UIChooserAbstractModel::isGlobalNodeFavorite(UIChooserNode *pParentNode) co
         return false;
 
     /* Prepare required group definition reg-exp: */
-    const QString strDefinitionTemplate = QString("n(\\S)*=GLOBAL");
-    const QRegExp definitionRegExp = QRegExp(strDefinitionTemplate);
+    const QString strNodePrefix = definitionOption(NodeDef_GlobalPrefix);
+    const QString strNodeOptionFavorite = definitionOption(NodeDef_GlobalOptionFavorite);
+    const QString strNodeValueDefault = definitionOption(NodeDef_GlobalValueDefault);
+    const QString strDefinitionTemplate = QString("%1(\\S)*=%2").arg(strNodePrefix, strNodeValueDefault);
+    const QRegExp definitionRegExp(strDefinitionTemplate);
     /* For each the group definition: */
     foreach (const QString &strDefinition, definitions)
     {
@@ -753,7 +776,7 @@ bool UIChooserAbstractModel::isGlobalNodeFavorite(UIChooserNode *pParentNode) co
         {
             /* Get group descriptor: */
             const QString strDescriptor(definitionRegExp.cap(1));
-            if (strDescriptor.contains('f'))
+            if (strDescriptor.contains(strNodeOptionFavorite))
                 return true;
         }
     }
