@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 85287 2020-07-12 23:44:17Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 85292 2020-07-13 08:19:48Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -3736,7 +3736,7 @@ void VirtualBox::i_onNatRedirectChange(const Guid &aMachineId, ULONG ulSlot, boo
                          aHostPort, aGuestIp, aGuestPort);
 }
 
-/**  @todo +d  */
+/** @todo +d  */
 void VirtualBox::i_onNATNetworkChange(IN_BSTR aName)
 {
     fireNATNetworkChangedEvent(m->pEventSource, aName);
