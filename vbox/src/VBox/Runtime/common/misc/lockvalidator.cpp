@@ -1,4 +1,4 @@
-/* $Id: lockvalidator.cpp 83739 2020-04-17 08:51:27Z vboxsync $ */
+/* $Id: lockvalidator.cpp 87151 2020-12-31 10:12:45Z vboxsync $ */
 /** @file
  * IPRT - Lock Validator.
  */
@@ -1043,10 +1043,10 @@ RTDECL(int) RTLockValidatorClassCreateExV(PRTLOCKVALCLASS phClass, PCRTLOCKVALSR
      * Figure out the file and function name lengths and allocate memory for
      * it all.
      */
-    size_t const       cbFile   = pSrcPos->pszFile ? strlen(pSrcPos->pszFile) + 1 : 0;
-    size_t const     cbFunction = pSrcPos->pszFile ? strlen(pSrcPos->pszFunction) + 1 : 0;
-    RTLOCKVALCLASSINT *pThis    = (RTLOCKVALCLASSINT *)RTMemAllocVarTag(sizeof(*pThis) + cbFile + cbFunction + cbName,
-                                                                        "may-leak:RTLockValidatorClassCreateExV");
+    size_t const       cbFile     = pSrcPos->pszFile     ? strlen(pSrcPos->pszFile)     + 1 : 0;
+    size_t const       cbFunction = pSrcPos->pszFunction ? strlen(pSrcPos->pszFunction) + 1 : 0;
+    RTLOCKVALCLASSINT *pThis      = (RTLOCKVALCLASSINT *)RTMemAllocVarTag(sizeof(*pThis) + cbFile + cbFunction + cbName,
+                                                                          "may-leak:RTLockValidatorClassCreateExV");
     if (!pThis)
         return VERR_NO_MEMORY;
     RTMEM_MAY_LEAK(pThis);
