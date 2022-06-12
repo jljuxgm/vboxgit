@@ -1,4 +1,4 @@
-/* $Id: TestExecService.cpp 84683 2020-06-04 17:35:42Z vboxsync $ */
+/* $Id: TestExecService.cpp 84763 2020-06-10 15:28:53Z vboxsync $ */
 /** @file
  * TestExecServ - Basic Remote Execution Service.
  */
@@ -820,6 +820,60 @@ static int txsDoExpandString(PCTXSPKTHDR pPktHdr)
     }
 
     RTStrFree(pszExpanded);
+    return rc;
+}
+
+/**
+ * Packs a tar file / directory.
+ *
+ * @returns IPRT status code from send.
+ * @param   pPktHdr             The pack file packet.
+ */
+static int txsDoPackFile(PCTXSPKTHDR pPktHdr)
+{
+    int rc;
+    char *pszFile = NULL;
+    char *pszSource = NULL;
+
+    /* Packet cursor. */
+    const char *pch = (const char *)(pPktHdr + 1);
+
+    if (txsIsStringValid(pPktHdr, "file", pch, &pszFile, &pch, &rc))
+    {
+        if (txsIsStringValid(pPktHdr, "source", pch, &pszSource, &pch, &rc))
+        {
+            char *pszSuff = RTPathSuffix(pszFile);
+
+            const char *apszArgs[7];
+            unsigned cArgs = 0;
+
+            apszArgs[cArgs++] = "RTTar";
+            apszArgs[cArgs++] = "--create";
+
+            apszArgs[cArgs++] = "--file";
+            apszArgs[cArgs++] = pszFile;
+
+            if (   pszSuff
+                && (   !RTStrICmp(pszSuff, ".gz")
+                    || !RTStrICmp(pszSuff, ".tgz")))
+                apszArgs[cArgs++] = "--gzip";
+
+            apszArgs[cArgs++] = pszSource;
+
+            RTEXITCODE rcExit = RTZipTarCmd(cArgs, (char **)apszArgs);
+            if (rcExit != RTEXITCODE_SUCCESS)
+                rc = VERR_GENERAL_FAILURE; /** @todo proper return code. */
+            else
+                rc = VINF_SUCCESS;
+
+            rc = txsReplyRC(pPktHdr, rc, "RTZipTarCmd(\"%s\",\"%s\")",
+                            pszFile, pszSource);
+
+            RTStrFree(pszSource);
+        }
+        RTStrFree(pszFile);
+    }
+
     return rc;
 }
 
@@ -3008,6 +3062,8 @@ static RTEXITCODE txsMainLoop(void)
             rc = txsDoPutFile(pPktHdr, true /*fHasMode*/);
         else if (txsIsSameOpcode(pPktHdr, "GET FILE"))
             rc = txsDoGetFile(pPktHdr);
+        else if (txsIsSameOpcode(pPktHdr, "PKFILE"))
+            rc = txsDoPackFile(pPktHdr);
         else if (txsIsSameOpcode(pPktHdr, "UNPKFILE"))
             rc = txsDoUnpackFile(pPktHdr);
         /* Misc: */
@@ -3611,7 +3667,7 @@ static RTEXITCODE txsParseArgv(int argc, char **argv, bool *pfExit)
                 break;
 
             case 'V':
-                RTPrintf("$Revision: 84683 $\n");
+                RTPrintf("$Revision: 84763 $\n");
                 *pfExit = true;
                 return RTEXITCODE_SUCCESS;
 
