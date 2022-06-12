@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.h 86202 2020-09-21 14:42:17Z vboxsync $ */
+/* $Id: UIChooserModel.h 86544 2020-10-12 14:51:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class declaration.
  */
@@ -281,8 +281,8 @@ protected slots:
       * @{ */
         /** Handles list cloud machines task complete signal. */
         virtual void sltHandleCloudListMachinesTaskComplete(UITask *pTask) /* override */;
-        /** Handles Cloud Profile Manager restriction changes. */
-        virtual void sltHandleCloudProfileManagerRestrictionChange() /* override */;
+        /** Handles Cloud Profile Manager cumulative changes. */
+        virtual void sltHandleCloudProfileManagerCumulativeChange() /* override */;
     /** @} */
 
 private slots:

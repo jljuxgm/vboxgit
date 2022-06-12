@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.h 86077 2020-09-09 16:03:14Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.h 86544 2020-10-12 14:51:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class declaration.
  */
@@ -153,8 +153,6 @@ protected slots:
         virtual void sltSessionStateChanged(const QUuid &uMachineId, const KSessionState enmState);
         /** Handles snapshot change for machine/snapshot with certain @a uMachineId / @a uSnapshotId. */
         virtual void sltSnapshotChanged(const QUuid &uMachineId, const QUuid &uSnapshotId);
-        /** Handles event about cloud provider list changed. */
-        virtual void sltHandleCloudProviderListChanged();
         /** Handles event about cloud provider with @a uId being uninstalled. */
         virtual void sltHandleCloudProviderUninstall(const QUuid &uId);
     /** @} */
@@ -169,8 +167,8 @@ protected slots:
       * @{ */
         /** Handles list cloud machines task complete signal. */
         virtual void sltHandleCloudListMachinesTaskComplete(UITask *pTask);
-        /** Handles Cloud Profile Manager restriction change. */
-        virtual void sltHandleCloudProfileManagerRestrictionChange();
+        /** Handles Cloud Profile Manager cumulative change. */
+        virtual void sltHandleCloudProfileManagerCumulativeChange();
     /** @} */
 
 private slots:

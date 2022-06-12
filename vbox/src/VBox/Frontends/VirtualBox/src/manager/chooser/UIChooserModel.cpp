@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 86344 2020-09-30 12:31:29Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 86544 2020-10-12 14:51:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -1193,10 +1193,10 @@ void UIChooserModel::sltHandleCloudListMachinesTaskComplete(UITask *pTask)
     buildTreeForMainRoot(true /* preserve selection */);
 }
 
-void UIChooserModel::sltHandleCloudProfileManagerRestrictionChange()
+void UIChooserModel::sltHandleCloudProfileManagerCumulativeChange()
 {
     /* Call to base-class: */
-    UIChooserAbstractModel::sltHandleCloudProfileManagerRestrictionChange();
+    UIChooserAbstractModel::sltHandleCloudProfileManagerCumulativeChange();
 
     /* Build tree for main root: */
     buildTreeForMainRoot(true /* preserve selection */);

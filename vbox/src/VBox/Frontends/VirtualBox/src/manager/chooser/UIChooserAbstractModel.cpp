@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.cpp 86539 2020-10-12 10:20:49Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.cpp 86544 2020-10-12 14:51:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class implementation.
  */
@@ -688,12 +688,6 @@ void UIChooserAbstractModel::sltSnapshotChanged(const QUuid &uMachineId, const Q
     invisibleRoot()->updateAllNodes(uMachineId);
 }
 
-void UIChooserAbstractModel::sltHandleCloudProviderListChanged()
-{
-    /* Reload cloud tree: */
-    reloadCloudTree();
-}
-
 void UIChooserAbstractModel::sltHandleCloudProviderUninstall(const QUuid &uId)
 {
     /* Search for top-level provider node: */
@@ -784,7 +778,7 @@ void UIChooserAbstractModel::sltHandleCloudListMachinesTaskComplete(UITask *pTas
     }
 }
 
-void UIChooserAbstractModel::sltHandleCloudProfileManagerRestrictionChange()
+void UIChooserAbstractModel::sltHandleCloudProfileManagerCumulativeChange()
 {
     /* Reload cloud tree: */
     reloadCloudTree();
@@ -823,7 +817,7 @@ void UIChooserAbstractModel::prepareConnections()
     connect(gVBoxEvents, &UIVirtualBoxEventHandler::sigSnapshotRestore,
             this, &UIChooserAbstractModel::sltSnapshotChanged);
     connect(gVBoxEvents, &UIVirtualBoxEventHandler::sigCloudProviderListChanged,
-            this, &UIChooserAbstractModel::sltHandleCloudProviderListChanged);
+            this, &UIChooserAbstractModel::sltHandleCloudProfileManagerCumulativeChange);
     connect(gVBoxEvents, &UIVirtualBoxEventHandler::sigCloudProviderUninstall,
             this, &UIChooserAbstractModel::sltHandleCloudProviderUninstall);
 
@@ -834,7 +828,7 @@ void UIChooserAbstractModel::prepareConnections()
 
     /* Setup extra-data connections: */
     connect(gEDataManager, &UIExtraDataManager::sigCloudProfileManagerRestrictionChange,
-            this, &UIChooserAbstractModel::sltHandleCloudProfileManagerRestrictionChange);
+            this, &UIChooserAbstractModel::sltHandleCloudProfileManagerCumulativeChange);
 }
 
 void UIChooserAbstractModel::reloadLocalTree()
