@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.h 85150 2020-07-09 12:56:45Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.h 85157 2020-07-09 19:48:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class declaration.
  */
@@ -88,12 +88,11 @@ private:
     enum ExpertToolboxItems
     {
         ExpertToolboxItems_NameAndOSType,
+        ExpertToolboxItems_Disk,
+        ExpertToolboxItems_Hardware,
         ExpertToolboxItems_UsernameHostname,
         ExpertToolboxItems_GAInstall,
-        ExpertToolboxItems_ProductKey,
-        ExpertToolboxItems_Disk,
-        ExpertToolboxItems_Hardware
-
+        ExpertToolboxItems_ProductKey
     };
     /** Translation stuff. */
     void retranslateUi();
