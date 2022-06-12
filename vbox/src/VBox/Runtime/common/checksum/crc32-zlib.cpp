@@ -1,4 +1,4 @@
-/* $Id: crc32-zlib.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: crc32-zlib.cpp 85068 2020-07-06 12:57:54Z vboxsync $ */
 /** @file
  * IPRT - CRC-32 on top of zlib (very fast).
  */
@@ -51,7 +51,7 @@ static uint32_t rtCrc32ProcessTooBig(uint32_t uCRC32, const void *pv, size_t cb)
     return uCRC32;
 }
 
-RTDECL(uint32_t) RTCrc32(const void *pv, register size_t cb)
+RTDECL(uint32_t) RTCrc32(const void *pv, size_t cb)
 {
     uint32_t uCrc = crc32(0, NULL, 0);
     if (RT_UNLIKELY((uInt)cb == cb))
