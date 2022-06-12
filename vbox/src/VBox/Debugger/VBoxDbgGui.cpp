@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgGui.cpp 86120 2020-09-14 10:39:46Z vboxsync $ */
+/* $Id: VBoxDbgGui.cpp 87676 2021-02-10 11:47:43Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - The Manager.
  */
@@ -25,8 +25,8 @@
 #include <iprt/errcore.h>
 
 #include "VBoxDbgGui.h"
-#include <QDesktopWidget>
 #include <QApplication>
+#include <QScreen>
 
 
 
@@ -224,9 +224,9 @@ void
 VBoxDbgGui::updateDesktopSize()
 {
     QRect Rct(0, 0, 1600, 1200);
-    QDesktopWidget *pDesktop = QApplication::desktop();
-    if (pDesktop)
-        Rct = pDesktop->availableGeometry(QPoint(m_x, m_y));
+    QScreen *pScreen = QApplication::screenAt(QPoint(m_x, m_y));
+    if (pScreen)
+        Rct = pScreen->availableGeometry();
     m_xDesktop = Rct.x();
     m_yDesktop = Rct.y();
     m_cxDesktop = Rct.width();
