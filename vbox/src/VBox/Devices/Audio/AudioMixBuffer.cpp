@@ -1,4 +1,4 @@
-/* $Id: AudioMixBuffer.cpp 88269 2021-03-24 11:45:54Z vboxsync $ */
+/* $Id: AudioMixBuffer.cpp 88277 2021-03-24 13:46:08Z vboxsync $ */
 /** @file
  * Audio mixing buffer for converting reading/writing audio data.
  */
@@ -45,7 +45,7 @@
 # define LOG_ENABLED
 # include <iprt/stream.h>
 #endif
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <VBox/vmm/pdmaudioinline.h>
 
 #include "AudioMixBuffer.h"
