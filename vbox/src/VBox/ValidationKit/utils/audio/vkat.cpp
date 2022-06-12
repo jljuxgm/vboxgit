@@ -1,4 +1,4 @@
-/* $Id: vkat.cpp 89213 2021-05-21 10:00:12Z vboxsync $ */
+/* $Id: vkat.cpp 89215 2021-05-21 10:47:13Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) utility for testing and validating the audio stack.
  */
@@ -2489,21 +2489,23 @@ static DECLCALLBACK(const char *) audioTestCmdSelftestHelp(PCRTGETOPTDEF pOpt)
  */
 static int audioTestDoSelftestSvc(void)
 {
-    int rc = AudioTestSvcInit();
+    ATSSERVER Srv;
+    int rc = AudioTestSvcInit(&Srv);
     if (RT_SUCCESS(rc))
     {
+        rc = AudioTestSvcStart(&Srv);
         if (RT_SUCCESS(rc))
         {
-            rc = AudioTestSvcStart();
+            ATSCLIENT Conn;
+            rc = AudioTestSvcClientConnect(&Conn, NULL);
             if (RT_SUCCESS(rc))
             {
-                ATSCLIENT Conn;
-                rc = AudioTestSvcClientConnect(&Conn);
-                if (RT_SUCCESS(rc))
-                {
-                    rc = AudioTestSvcClientClose(&Conn);
-                }
+                rc = AudioTestSvcClientClose(&Conn);
             }
+
+            int rc2 = AudioTestSvcShutdown(&Srv);
+            if (RT_SUCCESS(rc))
+                rc = rc2;
         }
     }
 

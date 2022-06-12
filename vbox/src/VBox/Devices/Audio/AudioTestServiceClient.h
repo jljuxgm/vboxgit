@@ -1,4 +1,4 @@
-/* $Id: AudioTestServiceClient.h 89205 2021-05-20 16:37:01Z vboxsync $ */
+/* $Id: AudioTestServiceClient.h 89215 2021-05-21 10:47:13Z vboxsync $ */
 /** @file
  * AudioTestServiceClient - Audio test execution server, Public Header.
  */
@@ -29,7 +29,7 @@ typedef struct ATSCLIENT
 } ATSCLIENT;
 typedef ATSCLIENT *PATSCLIENT;
 
-int AudioTestSvcClientConnect(PATSCLIENT pClient);
+int AudioTestSvcClientConnect(PATSCLIENT pClient, const char *pszAddr);
 int AudioTestSvcClientClose(PATSCLIENT pClient);
 
 #endif /* !VBOX_INCLUDED_SRC_Audio_AudioTestServiceClient_h */

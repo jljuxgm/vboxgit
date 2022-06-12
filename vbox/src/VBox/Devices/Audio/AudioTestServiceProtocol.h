@@ -1,4 +1,4 @@
-/* $Id: AudioTestServiceProtocol.h 89204 2021-05-20 16:33:56Z vboxsync $ */
+/* $Id: AudioTestServiceProtocol.h 89215 2021-05-21 10:47:13Z vboxsync $ */
 /** @file
  * AudioTestServiceProtocol - Audio test execution server, Protocol Header.
  */
@@ -130,12 +130,9 @@ typedef struct ATSPKTREQTONEPLAY
     /** Embedded packet header. */
     ATSPKTHDR          Hdr;
     AUDIOTESTTONEPARMS Parms;
-        /** Packet opcode, an unterminated ASCII string.  */
-    uint8_t            achOpcode[8];
-    /** Packet opcode, an unterminated ASCII string.  */
-    uint8_t            au8Padding[2];
+    uint8_t            au8Padding[8];
 } ATSPKTREQTONEPLAY;
-//AssertCompileSizeAlignment(ATSPKTREQTONEPLAY, ATSPKT_ALIGNMENT);
+AssertCompileSizeAlignment(ATSPKTREQTONEPLAY, ATSPKT_ALIGNMENT);
 /** Pointer to a ATSPKTREQTONEPLAY structure. */
 typedef ATSPKTREQTONEPLAY *PATSPKTREQTONEPLAY;
 
