@@ -1,4 +1,4 @@
-/* $Id: HostImpl.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: HostImpl.h 85683 2020-08-11 11:03:42Z vboxsync $ */
 /** @file
  * Implementation of IHost.
  */
@@ -116,6 +116,10 @@ private:
     HRESULT getAcceleration3DAvailable(BOOL *aAcceleration3DAvailable);
     HRESULT getVideoInputDevices(std::vector<ComPtr<IHostVideoInputDevice> > &aVideoInputDevices);
     HRESULT getUpdate(ComPtr<IHostUpdate> &aUpdate);
+    HRESULT getUpdateResponse(BOOL *aUpdateNeeded);
+    HRESULT getUpdateVersion(com::Utf8Str &aUpdateVersion);
+    HRESULT getUpdateURL(com::Utf8Str &aUpdateURL);
+    HRESULT getUpdateCheckNeeded(BOOL *aUpdateCheckNeeded);
 
     // wrapped IHost methods
     HRESULT getProcessorSpeed(ULONG aCpuId,
@@ -160,6 +164,8 @@ private:
                                const std::vector<com::Utf8Str> &aPropertyNames, const std::vector<com::Utf8Str> &aPropertyValues);
 
     HRESULT removeUSBDeviceSource(const com::Utf8Str &aId);
+    HRESULT UpdateCheck(UpdateCheckType_T aCheckType,
+                        ComPtr<IProgress> &aProgress);
 
     // Internal Methods.
 

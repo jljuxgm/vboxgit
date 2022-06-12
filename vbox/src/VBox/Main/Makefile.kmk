@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 85574 2020-07-31 12:45:16Z vboxsync $
+# $Id: Makefile.kmk 85683 2020-08-11 11:03:42Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -578,6 +578,7 @@ VBoxSVC_SOURCES = \
 	src-server/HostImpl.cpp \
 	src-server/HostNetworkInterfaceImpl.cpp \
 	src-server/HostPower.cpp \
+	src-server/HostUpdateImpl.cpp \
 	src-server/HostVideoInputDeviceImpl.cpp \
 	src-server/MachineImpl.cpp \
 	src-all/MachineLaunchVMCommonWorker.cpp \

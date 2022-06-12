@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 85665 2020-08-10 15:00:05Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 85683 2020-08-11 11:03:42Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -1235,6 +1235,17 @@ void printUsage(USAGECATEGORY enmCommand, uint64_t fSubcommandScope, PRTSTREAM p
                      "                            --address <address>\n"
                            "%s usbdevsource %s    remove <source name>\n"
                      "\n", SEP, SEP);
+    }
+
+    if (enmCommand == USAGE_UPDATECHECK || enmCommand == USAGE_S_ALL)
+    {
+        RTStrmPrintf(pStrm,
+                           "%s updatecheck %s     perform\n"
+                           "%s updatecheck %s     getsettings\n"
+                           "%s updatecheck %s     modifysettings [--enable|--disable]\n"
+                     "                                           [--target=stable|withbetas|allreleases]\n"
+                     "                                           [--frequency=<days>]\n"
+                     "\n", SEP, SEP, SEP);
     }
 
 #ifndef VBOX_ONLY_DOCS /* Converted to man page, not needed. */
