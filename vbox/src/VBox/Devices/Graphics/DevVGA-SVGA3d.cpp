@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d.cpp 84742 2020-06-09 17:49:09Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d.cpp 84747 2020-06-09 19:57:44Z vboxsync $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - Common core code.
  */
@@ -986,7 +986,12 @@ int vmsvga3dDefineScreen(PVGASTATECC pThisCC, VMSVGASCREENOBJECT *pScreen)
         vmsvga3dBackDestroyScreen(pThisCC, pScreen);
     }
 
-    return vmsvga3dBackDefineScreen(pThisCC, pScreen);
+    int rc = vmsvga3dBackDefineScreen(pThisCC, pScreen);
+    if (RT_SUCCESS(rc))
+    {
+        LogRelMax(1, ("VMSVGA: using accelerated graphics output\n"));
+    }
+    return rc;
 }
 
 int vmsvga3dDestroyScreen(PVGASTATECC pThisCC, VMSVGASCREENOBJECT *pScreen)
