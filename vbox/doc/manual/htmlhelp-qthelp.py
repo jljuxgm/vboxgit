@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-# $Id: htmlhelp-qthelp.py 87716 2021-02-11 07:54:41Z vboxsync $
+# $Id: htmlhelp-qthelp.py 87727 2021-02-11 21:47:15Z vboxsync $
 ## @file
 # A python script to create a .qhp file out of a given htmlhelp
 # folder. Lots of things about the said folder is assumed. Please
@@ -12,7 +12,7 @@ import re
 import codecs
 import logging
 
-if sys.version_info.major >= 3:
+if sys.version_info >= (3, 0):
     from html.parser import HTMLParser
 else:
     from HTMLParser import HTMLParser
