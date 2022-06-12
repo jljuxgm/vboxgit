@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 84869 2020-06-18 09:33:37Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 84871 2020-06-18 12:22:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -1872,17 +1872,19 @@ void UIVirtualBoxManager::openAddMachineDialog(const QString &strFileName /* = Q
 
 void UIVirtualBoxManager::startUnattendedInstall(const QUuid &uMachineUid, const QString &strISOPath, bool fStartHeadless)
 {
+    CVirtualBox comVBox = uiCommon().virtualBox();
+    CMachine comMachine = comVBox.FindMachine(uMachineUid.toString());
+    if (comMachine.isNull())
+        return;
+
     if (!QFileInfo(strISOPath).exists())
     {
         /// @todo Show a relavant error message here
         return;
     }
 
-    CVirtualBox comVBox = uiCommon().virtualBox();
     CUnattended comUnattendedInstaller = comVBox.CreateUnattendedInstaller();
     AssertMsgReturnVoid(!comUnattendedInstaller.isNull(), ("Could not create unattended installer!\n"));
-    CMachine comMachine = comVBox.FindMachine(uMachineUid.toString());
-    AssertMsgReturnVoid(!comMachine.isNull(), ("Failed to find CMachine for the uuid %u!\n", uMachineUid));
 
     comUnattendedInstaller.SetIsoPath(strISOPath);
     checkUnattendedInstallError(comUnattendedInstaller);
