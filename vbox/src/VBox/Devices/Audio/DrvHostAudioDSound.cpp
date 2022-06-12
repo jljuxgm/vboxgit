@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioDSound.cpp 89055 2021-05-15 16:03:07Z vboxsync $ */
+/* $Id: DrvHostAudioDSound.cpp 89057 2021-05-15 17:00:40Z vboxsync $ */
 /** @file
  * Host audio driver - DirectSound (Windows).
  */
@@ -35,7 +35,7 @@
 #include <VBox/vmm/pdmaudioinline.h>
 #include <VBox/vmm/pdmaudiohostenuminline.h>
 
-#include "VBoxDDVKAT.h"
+#include "VBoxDD.h"
 
 #ifdef VBOX_WITH_AUDIO_MMNOTIFICATION_CLIENT
 # include <new> /* For bad_alloc. */
