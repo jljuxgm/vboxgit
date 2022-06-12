@@ -1,4 +1,4 @@
-/* $Id: VBoxDDVKAT.h 88958 2021-05-10 06:57:45Z vboxsync $ */
+/* $Id: VBoxDDVKAT.h 88959 2021-05-10 07:19:31Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) header for handling the device drivers.
  *
@@ -148,6 +148,13 @@ extern const PDMDRVREG g_DrvHostALSAAudio;
 #endif
 #ifdef VBOX_WITH_AUDIO_OSS
 extern const PDMDRVREG g_DrvHostOSSAudio;
+#endif
+#if defined(RT_OS_WINDOWS)
+extern const PDMDRVREG g_DrvHostAudioWas;
+extern const PDMDRVREG g_DrvHostDSound;
+#endif
+#if defined(RT_OS_DARWIN)
+extern const PDMDRVREG g_DrvHostCoreAudio;
 #endif
 
 #endif /* !VBOX_INCLUDED_SRC_Audio_VBoxDDVKAT_h */

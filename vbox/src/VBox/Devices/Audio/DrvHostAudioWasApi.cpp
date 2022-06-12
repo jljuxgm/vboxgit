@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioWasApi.cpp 88887 2021-05-05 23:38:58Z vboxsync $ */
+/* $Id: DrvHostAudioWasApi.cpp 88959 2021-05-10 07:19:31Z vboxsync $ */
 /** @file
  * Host audio driver - Windows Audio Session API.
  */
@@ -44,7 +44,11 @@
 
 #include <new> /* std::bad_alloc */
 
-#include "VBoxDD.h"
+#ifdef VBOX_AUDIO_VKAT
+# include "VBoxDDVKAT.h"
+#else
+# include "VBoxDD.h"
+#endif
 
 
 /*********************************************************************************************************************************
