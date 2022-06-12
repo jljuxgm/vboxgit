@@ -1,4 +1,4 @@
-# $Id: Config.kmk 86697 2020-10-23 18:52:19Z vboxsync $
+# $Id: Config.kmk 86698 2020-10-23 19:19:47Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -6938,7 +6938,7 @@ ifdef VBOX_WITH_QTGUI
      VBOX_QT_MOD += Qt5Help Qt5Network Qt5CLucene Qt5Sql
    endif # linux
  endif
- 
+
  VBOX_QT_MOD_NAMES = $(foreach qtmod,$(VBOX_QT_MOD),$(qtmod)$(VBOX_QT_INFIX))
 
  # Hack LD_LIBRARY_PATH for stuff in tools.
@@ -8138,7 +8138,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 86697 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 86698 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
