@@ -1,4 +1,4 @@
-/* $Id: dvmmbr.cpp 85897 2020-08-27 09:32:14Z vboxsync $ */
+/* $Id: dvmmbr.cpp 86169 2020-09-18 11:11:52Z vboxsync $ */
 /** @file
  * IPRT Disk Volume Management API (DVM) - MBR format backend.
  */
@@ -864,7 +864,7 @@ static DECLCALLBACK(uint64_t) rtDvmFmtMbrVolumeGetFlags(RTDVMVOLUMEFMT hVolFmt)
     PRTDVMVOLUMEFMTINTERNAL pVol = hVolFmt;
 
     uint64_t fFlags = DVMVOLUME_F_CONTIGUOUS;
-    if (pVol->pEntry->bType & 0x80)
+    if (pVol->pEntry->fFlags & 0x80)
         fFlags |= DVMVOLUME_FLAGS_BOOTABLE | DVMVOLUME_FLAGS_ACTIVE;
 
     return fFlags;
