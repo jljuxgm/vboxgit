@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 86847 2020-11-10 12:27:08Z vboxsync $ */
+/* $Id: DevAHCI.cpp 87047 2020-12-07 14:34:09Z vboxsync $ */
 /** @file
  * DevAHCI - AHCI controller device (disk and cdrom).
  *
@@ -243,8 +243,6 @@ typedef struct AHCIREQ
     uint8_t                    cmdFis[AHCI_CMDFIS_TYPE_H2D_SIZE];
     /** The ATAPI command data. */
     uint8_t                    aATAPICmd[ATAPI_PACKET_SIZE];
-    /** Size of one sector for the ATAPI transfer. */
-    uint32_t                   cbATAPISector;
     /** Physical address of the command header. - GC */
     RTGCPHYS                   GCPhysCmdHdrAddr;
     /** Physical address of the PRDT */
