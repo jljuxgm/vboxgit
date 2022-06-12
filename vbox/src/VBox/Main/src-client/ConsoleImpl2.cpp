@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 85357 2020-07-15 18:33:39Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 85537 2020-07-30 06:55:32Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -3185,7 +3185,7 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
             {
                 rc = HGCMHostRegisterServiceExtension(&m_hHgcmSvcExtDragAndDrop, "VBoxDragAndDropSvc",
                                                       &GuestDnD::notifyDnDDispatcher,
-                                                      GUESTDNDINST());
+                                                      GuestDnDInst());
                 if (RT_FAILURE(rc))
                     Log(("Cannot register VBoxDragAndDropSvc extension, rc=%Rrc\n", rc));
                 else
