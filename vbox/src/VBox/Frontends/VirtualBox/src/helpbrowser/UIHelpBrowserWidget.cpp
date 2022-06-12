@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.cpp 87217 2021-01-11 17:31:52Z vboxsync $ */
+/* $Id: UIHelpBrowserWidget.cpp 87642 2021-02-08 20:09:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class implementation.
  */
@@ -19,7 +19,7 @@
 #include <QClipboard>
 #include <QComboBox>
 #include <QtGlobal>
-#if defined(RT_OS_LINUX) && defined(VBOX_WITH_DOCS_QHELP) && (QT_VERSION >= QT_VERSION_CHECK(5, 9, 0))
+#if defined(RT_OS_LINUX) && (QT_VERSION >= QT_VERSION_CHECK(5, 9, 0))
  #include <QtHelp/QHelpEngine>
  #include <QtHelp/QHelpContentWidget>
  #include <QtHelp/QHelpIndexWidget>
@@ -55,7 +55,7 @@
 #include "COMEnums.h"
 #include "CSystemProperties.h"
 
-#if defined(RT_OS_LINUX) && defined(VBOX_WITH_DOCS_QHELP) && (QT_VERSION >= QT_VERSION_CHECK(5, 9, 0))
+#if defined(RT_OS_LINUX) && (QT_VERSION >= QT_VERSION_CHECK(5, 9, 0))
 
 enum HelpBrowserTabs
 {
@@ -1902,4 +1902,4 @@ void UIHelpBrowserWidget::sltHandleCurrentTabChanged(int iIndex)
 
 #include "UIHelpBrowserWidget.moc"
 
-#endif /*#if defined(RT_OS_LINUX) && defined(VBOX_WITH_DOCS_QHELP) && (QT_VERSION >= QT_VERSION_CHECK(5, 9, 0))*/
+#endif /*#if defined(RT_OS_LINUX) && (QT_VERSION >= QT_VERSION_CHECK(5, 9, 0))*/
