@@ -1,4 +1,4 @@
-/* $Id: DevHda.cpp 89563 2021-06-08 08:53:04Z vboxsync $ */
+/* $Id: DevHda.cpp 89611 2021-06-10 23:04:30Z vboxsync $ */
 /** @file
  * Intel HD Audio Controller Emulation.
  *
@@ -4182,7 +4182,7 @@ static void hdaR3DbgPrintBDL(PPDMDEVINS pDevIns, PHDASTATE pThis, PCDBGFINFOHLP 
 
         cbTotal += bd.u32BufSize;
     }
-    pHlp->pfnPrintf(pHlp, "  Total: %#RX64 bytes (%RU64), %u ms\n", cbTotal, cbTotal,
+    pHlp->pfnPrintf(pHlp, "  Total: %#RX64 bytes (%RU64), %RU64 ms\n", cbTotal, cbTotal,
                     PDMAudioPropsBytesToMilli(pGuestProps, (uint32_t)cbTotal));
     if (cbTotal != u32CBL)
         pHlp->pfnPrintf(pHlp, "  Warning: %#RX64 bytes does not match CBL (%#RX64)!\n", cbTotal, u32CBL);
@@ -4231,7 +4231,7 @@ static DECLCALLBACK(void) hdaR3DbgInfoStream(PPDMDEVINS pDevIns, PCDBGFINFOHLP p
 }
 
 /**
- * @callback_method_impl{FNDBGFHANDLERDEV, hdabdle}
+ * @callback_method_impl{FNDBGFHANDLERDEV, hdabdl}
  */
 static DECLCALLBACK(void) hdaR3DbgInfoBDL(PPDMDEVINS pDevIns, PCDBGFINFOHLP pHlp, const char *pszArgs)
 {
