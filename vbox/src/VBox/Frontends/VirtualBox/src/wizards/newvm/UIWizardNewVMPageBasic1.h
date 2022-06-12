@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic1.h 87249 2021-01-14 13:35:18Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic1.h 87294 2021-01-18 11:12:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic1 class declaration.
  */
@@ -94,8 +94,7 @@ protected:
        QCheckBox *m_pStartHeadlessCheckBox;
        /** We have two UINameAndSystemEditor instance since name/vm path fields and OS type fields
         * are separated. */
-       UINameAndSystemEditor *m_pNameAndFolderEditor;
-       UINameAndSystemEditor *m_pSystemTypeEditor;
+       UINameAndSystemEditor *m_pNameAndSystemEditor;
        QIRichTextLabel *m_pUnattendedLabel;
        QIRichTextLabel *m_pNameOSTypeLabel;
     /** @} */
