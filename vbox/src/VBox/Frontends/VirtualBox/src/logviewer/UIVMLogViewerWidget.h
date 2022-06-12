@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.h 89586 2021-06-09 16:53:46Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.h 89594 2021-06-10 10:19:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class declaration.
  */
@@ -141,6 +141,7 @@ private slots:
         void sltResetOptionsToDefault();
     /** @} */
     void sltShowTabBarContextMenu(const QPoint &pos);
+    void sltCloseMachineLogs();
 
 private:
 
