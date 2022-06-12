@@ -1,4 +1,4 @@
-/* $Id: AudioTestServiceClient.cpp 89614 2021-06-11 06:34:13Z vboxsync $ */
+/* $Id: AudioTestServiceClient.cpp 89618 2021-06-11 07:21:53Z vboxsync $ */
 /** @file
  * AudioTestServiceClient - Audio Test Service (ATS), Client helpers.
  *
@@ -438,7 +438,7 @@ int AudioTestSvcClientToneRecord(PATSCLIENT pClient, PAUDIOTESTTONEPARMS pTonePa
  * @returns VBox status code.
  * @param   pClient             Client to issue command for.
  * @param   pszTag              Tag of test set to send.
- * @note    pszPathOutAbs       Absolute path where to store the downloaded test set archive.
+ * @param   pszPathOutAbs       Absolute path where to store the downloaded test set archive.
  */
 int AudioTestSvcClientTestSetDownload(PATSCLIENT pClient, const char *pszTag, const char *pszPathOutAbs)
 {
