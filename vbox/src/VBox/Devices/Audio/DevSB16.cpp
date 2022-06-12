@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 88028 2021-03-08 19:31:22Z vboxsync $ */
+/* $Id: DevSB16.cpp 88230 2021-03-22 09:55:26Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  */
@@ -62,7 +62,7 @@
 
 #include "AudioMixBuffer.h"
 #include "AudioMixer.h"
-#include "DrvAudio.h"
+#include "DrvAudioCommon.h"
 
 
 /*********************************************************************************************************************************

@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioValidationKit.cpp 88226 2021-03-22 09:13:05Z vboxsync $ */
+/* $Id: DrvHostAudioValidationKit.cpp 88230 2021-03-22 09:55:26Z vboxsync $ */
 /** @file
  * ValidationKit audio driver - host backend for dumping and injecting audio data
  *                              from/to the device emulation.
@@ -24,7 +24,7 @@
 #include <VBox/vmm/pdmaudioifs.h>
 #include <VBox/vmm/pdmaudioinline.h>
 
-#include "DrvAudio.h"
+#include "DrvAudioCommon.h"
 #include "VBoxDD.h"
 
 

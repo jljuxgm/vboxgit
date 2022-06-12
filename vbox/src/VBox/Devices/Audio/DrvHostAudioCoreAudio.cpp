@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioCoreAudio.cpp 88226 2021-03-22 09:13:05Z vboxsync $ */
+/* $Id: DrvHostAudioCoreAudio.cpp 88230 2021-03-22 09:55:26Z vboxsync $ */
 /** @file
  * VBox audio devices - Mac OS X CoreAudio audio driver.
  */
@@ -24,7 +24,6 @@
 #include <VBox/vmm/pdmaudioinline.h>
 #include <VBox/vmm/pdmaudiohostenuminline.h>
 
-#include "DrvAudio.h"
 #include "VBoxDD.h"
 
 #include <iprt/asm.h>
