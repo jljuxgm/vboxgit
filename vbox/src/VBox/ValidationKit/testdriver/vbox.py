@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 84789 2020-06-11 08:32:01Z vboxsync $
+# $Id: vbox.py 84798 2020-06-11 15:17:48Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84789 $"
+__version__ = "$Revision: 84798 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -3800,12 +3800,11 @@ class TestDriver(base.TestDriver):                                              
                     if fRc is not True:
                         reporter.error('startVmAndConnectToTxsViaTcp: txsCdWait failed');
 
-                sVer = self.txsVer(oSession, oTxsSession, cMsTimeout);
+                sVer = self.txsVer(oSession, oTxsSession, cMsTimeout, fIgnoreErrors = True);
                 if sVer is not False:
                     reporter.log('startVmAndConnectToTxsViaTcp: TestExecService version %s' % (sVer,));
                 else:
                     reporter.log('startVmAndConnectToTxsViaTcp: Unable to retrieve TestExecService version');
-                    # Not fatal.
 
                 if fRc is True:
                     # Success!
@@ -3872,12 +3871,11 @@ class TestDriver(base.TestDriver):                                              
                                 if fRc is not True:
                                     reporter.error('txsRebootAndReconnectViaTcp: txsCdWait failed');
 
-                            sVer = self.txsVer(oSession, oTxsSession, cMsTimeout);
+                            sVer = self.txsVer(oSession, oTxsSession, cMsTimeout, fIgnoreErrors = True);
                             if sVer is not False:
                                 reporter.log('txsRebootAndReconnectViaTcp: TestExecService version %s' % (sVer,));
                             else:
                                 reporter.log('txsRebootAndReconnectViaTcp: Unable to retrieve TestExecService version');
-                                # Not fatal.
                         else:
                             reporter.error('txsRebootAndReconnectViaTcp: failed to get UUID (after)');
                     else:
