@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioWasApi.cpp 89487 2021-06-03 20:16:17Z vboxsync $ */
+/* $Id: DrvHostAudioWasApi.cpp 89491 2021-06-03 23:03:16Z vboxsync $ */
 /** @file
  * Host audio driver - Windows Audio Session API.
  */
@@ -1951,7 +1951,7 @@ static DECLCALLBACK(int) drvHostAudioWasHA_StreamInitAsync(PPDMIHOSTAUDIO pInter
     AssertPtrReturn(pStreamWas->pDevCfg, VERR_INTERNAL_ERROR_2);
     AssertPtrReturn(pStreamWas->pDevCfg->pDevEntry, VERR_INTERNAL_ERROR_3);
     AssertPtrReturn(pStreamWas->pDevCfg->pDevEntry->pIDevice, VERR_INTERNAL_ERROR_4);
-    AssertReturn(pStreamWas->pDevCfg->pDevEntry->enmDir == pStreamWas->Core.pStream->enmDir, VERR_INTERNAL_ERROR_4);
+    AssertReturn(pStreamWas->pDevCfg->pDevEntry->enmDir == pStreamWas->Core.pStream->Cfg.enmDir, VERR_INTERNAL_ERROR_4);
     AssertReturn(pStreamWas->pDevCfg->pIAudioClient == NULL, VERR_INTERNAL_ERROR_5);
     AssertReturn(pStreamWas->pDevCfg->pIAudioRenderClient == NULL, VERR_INTERNAL_ERROR_5);
     AssertReturn(pStreamWas->pDevCfg->pIAudioCaptureClient == NULL, VERR_INTERNAL_ERROR_5);
