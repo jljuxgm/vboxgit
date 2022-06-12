@@ -1,4 +1,4 @@
-/* $Id: UIPerformanceMonitor.cpp 85297 2020-07-13 09:17:08Z vboxsync $ */
+/* $Id: UIPerformanceMonitor.cpp 85328 2020-07-14 09:54:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPerformanceMonitor class implementation.
  */
@@ -586,17 +586,22 @@ UIMetric::UIMetric(const QString &strName, const QString &strUnit, int iMaximumQ
     : m_strName(strName)
     , m_strUnit(strUnit)
     , m_iMaximum(0)
+#if 0 /* Unused according to Clang 11. */
     , m_iMaximumQueueSize(iMaximumQueueSize) /** @todo r=bird: m_iMaximumQueueSize is not used anywhere that I can see. */
+#endif
     , m_fRequiresGuestAdditions(false)
     , m_fIsInitialized(false)
 {
+    RT_NOREF(iMaximumQueueSize); /* Unused according to Clang 11. */
     m_iTotal[0] = 0;
     m_iTotal[1] = 0;
 }
 
 UIMetric::UIMetric()
     : m_iMaximum(0)
+#if 0 /* Unused according to Clang 11. */
     , m_iMaximumQueueSize(0)
+#endif
     , m_fRequiresGuestAdditions(false)
     , m_fIsInitialized(false)
 {
