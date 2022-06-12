@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 84949 2020-06-25 12:20:51Z vboxsync $
+# $Id: tdAddBasic1.py 84963 2020-06-25 19:26:43Z vboxsync $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84949 $"
+__version__ = "$Revision: 84963 $"
 
 # Standard Python imports.
 import os;
@@ -174,18 +174,26 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
 
         self.logVmInfo(oVM);
 
+        reporter.testStart('Waiting for TXS');
         if oTestVm.isWindows():
             self.sFileCdWait = ('%s/VBoxWindowsAdditions.exe' % (self.sGstPathGaPrefix,));
         elif oTestVm.isLinux():
             self.sFileCdWait = ('%s/VBoxLinuxAdditions.run' % (self.sGstPathGaPrefix,));
 
-        reporter.log2('Waiting for TXS + CD: %s' % (self.sFileCdWait,));
-
-        reporter.testStart('Waiting for TXS + CD');
         oSession, oTxsSession = self.startVmAndConnectToTxsViaTcp(oTestVm.sVmName, fCdWait = True,
                                                                   cMsCdWait = 5 * 60 * 1000,
                                                                   sFileCdWait = self.sFileCdWait);
         reporter.testDone();
+
+        # Certain Linux guests don't behave accordingly so that detecting the CD isn't working properly.
+        # So reboot those guests in the hope that it works finally.
+        ### @todo Needs investigation; probably only udev or something is broken there (?).
+        if oTestVm.isLinux():
+            reporter.testStart('Rebooting and reconnecting to TXS');
+            fRc, oTxsSession = self.txsRebootAndReconnectViaTcp(oSession, oTxsSession, fCdWait = True,
+                                                                cMsCdWait = 5 * 60 * 1000,
+                                                                sFileCdWait = self.sFileCdWait);
+            reporter.testDone();
 
         if oSession is not None:
             self.addTask(oTxsSession);
