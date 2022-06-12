@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 88880 2021-05-05 15:45:29Z vboxsync $ */
+/* $Id: DevSB16.cpp 88899 2021-05-06 12:37:27Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  */
@@ -1989,11 +1989,8 @@ static int sb16AddDrvStream(PPDMDEVINS pDevIns, PAUDMIXSINK pMixSink, PPDMAUDIOS
     if (!pStreamCfg)
         return VERR_NO_MEMORY;
 
-    if (!RTStrPrintf(pStreamCfg->szName, sizeof(pStreamCfg->szName), "%s", pCfg->szName))
-    {
-        PDMAudioStrmCfgFree(pStreamCfg);
-        return VERR_BUFFER_OVERFLOW;
-    }
+    AssertCompile(sizeof(pStreamCfg->szName) == sizeof(pCfg->szName));
+    RTStrCopy(pStreamCfg->szName, sizeof(pStreamCfg->szName), pCfg->szName);
 
     LogFunc(("[LUN#%RU8] %s\n", pDrv->uLUN, pStreamCfg->szName));
 

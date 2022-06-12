@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 88880 2021-05-05 15:45:29Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 88899 2021-05-06 12:37:27Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -1854,11 +1854,8 @@ static int ichac97R3MixerAddDrvStream(PPDMDEVINS pDevIns, PAUDMIXSINK pMixSink, 
     if (!pStreamCfg)
         return VERR_NO_MEMORY;
 
-    if (!RTStrPrintf(pStreamCfg->szName, sizeof(pStreamCfg->szName), "%s", pCfg->szName))
-    {
-        PDMAudioStrmCfgFree(pStreamCfg);
-        return VERR_BUFFER_OVERFLOW;
-    }
+    AssertCompile(sizeof(pStreamCfg->szName) == sizeof(pCfg->szName));
+    RTStrCopy(pStreamCfg->szName, sizeof(pStreamCfg->szName), pCfg->szName);
 
     LogFunc(("[LUN#%RU8] %s\n", pDrv->uLUN, pStreamCfg->szName));
 
