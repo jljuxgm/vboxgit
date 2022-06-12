@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVM.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIWizardCloneVM.cpp 86979 2020-11-26 07:04:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVM class implementation.
  */
@@ -187,6 +187,7 @@ void UIWizardCloneVM::retranslateUi()
 
 void UIWizardCloneVM::prepare()
 {
+    enableHelpButton("clone");
     QString strDefaultMachineFolder = uiCommon().virtualBox().GetSystemProperties().GetDefaultMachineFolder();
     /* Create corresponding pages: */
     switch (mode())

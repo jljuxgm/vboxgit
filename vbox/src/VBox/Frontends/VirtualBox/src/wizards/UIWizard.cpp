@@ -1,4 +1,4 @@
-/* $Id: UIWizard.cpp 86907 2020-11-18 10:41:44Z vboxsync $ */
+/* $Id: UIWizard.cpp 86979 2020-11-26 07:04:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizard class implementation.
  */
@@ -270,12 +270,10 @@ void UIWizard::assignBackground(const QString &strBackground)
 void UIWizard::enableHelpButton(const QString &strHelpTag /* = QString() */)
 {
     setOptions(options() | QWizard::HaveHelpButton);
+    setProperty("helptag", strHelpTag);
     if (button(QWizard::HelpButton))
-    {
-        button(QWizard::HelpButton)->setProperty("helptag", strHelpTag);
-        connect(button(QWizard::HelpButton), &QAbstractButton::pressed,
-                &(msgCenter()), &UIMessageCenter::sltHandleDialogHelpButtonPress);
-    }
+        button(QWizard::HelpButton)->setShortcut(Qt::Key_F1);
+    connect(this, &UIWizard::helpRequested, &msgCenter(), &UIMessageCenter::sltHandleDialogHelpButtonPress);
 }
 
 void UIWizard::setHelpButtonHelpTag(const QString &strHelpTag /* = QString() */)

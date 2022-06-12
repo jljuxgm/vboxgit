@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 86907 2020-11-18 10:41:44Z vboxsync $ */
+/* $Id: UIWizardNewVM.cpp 86979 2020-11-26 07:04:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
@@ -71,6 +71,7 @@ UIWizardNewVM::UIWizardNewVM(QWidget *pParent, const QString &strGroup /* = QStr
 
 void UIWizardNewVM::prepare()
 {
+    enableHelpButton("gui-createvm");
     /* Create corresponding pages: */
     switch (mode())
     {
@@ -93,7 +94,6 @@ void UIWizardNewVM::prepare()
             break;
         }
     }
-    enableHelpButton("gui-createvm");
     /* Call to base-class: */
     UIWizard::prepare();
 }
