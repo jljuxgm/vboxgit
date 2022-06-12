@@ -1,4 +1,4 @@
-; $Id: bootsector2-test1.asm 82968 2020-02-04 10:35:17Z vboxsync $
+; $Id: bootsector2-test1.asm 85120 2020-07-08 19:14:39Z vboxsync $
 ;; @file
 ; Bootsector that benchmarks I/O and MMIO roundtrip time.
 ;   VBoxManage setextradata bs-test1 VBoxInternal/Devices/VMMDev/0/Config/TestingEnabled  1
@@ -70,6 +70,20 @@ BEGINPROC main
         call    Bs2EnableA20_r86
         call    Bs2PanicIfVMMDevTestingIsMissing_r86
 
+%if 0
+        ;
+        ; IA32_FLUSH_CMD.
+        ;
+        mov     ax, .s_szTstFlushCmd
+        call    TestSub_r86
+        call    BenchmarkFlushCmd_rm_pp32
+        call    BenchmarkFlushCmd_rm_pae32
+        call    BenchmarkFlushCmd_rm_lm64
+        call    BenchmarkFlushCmd_rm_pe16
+        call    BenchmarkFlushCmd_rm_pe32
+        call    BenchmarkFlushCmd_rm_rm
+%endif
+
         ;
         ; CPUID.
         ;
@@ -140,6 +154,8 @@ BEGINPROC main
         db      'tstIOIntr', 0
 .s_szTstCpuId:
         db      'CPUID EAX=1', 0
+.s_szTstFlushCmd:
+        db      'IA32_FLUSH_CMD', 0
 .s_szTstRdTsc:
         db      'RDTSC', 0
 .s_szTstRdCr4:
