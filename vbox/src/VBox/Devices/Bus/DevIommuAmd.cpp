@@ -1,4 +1,4 @@
-/* $Id: DevIommuAmd.cpp 87714 2021-02-11 07:12:58Z vboxsync $ */
+/* $Id: DevIommuAmd.cpp 87715 2021-02-11 07:17:35Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - AMD implementation.
  */
@@ -172,12 +172,6 @@
 
 /** Releases the PDM lock.   */
 # define IOMMU_UNLOCK(a_pDevIns, a_pThisCC)         (a_pThisCC)->CTX_SUFF(pIommuHlp)->pfnUnlock((a_pDevIns))
-
-/** Asserts that the lock is owned by this thread. */
-#define IOMMU_ASSERT_LOCKED(a_pDevIns)              do { } while (0)
-
-/** Asserts that the lock isn't owned by this thread. */
-#define IOMMU_ASSERT_NOT_LOCKED(a_pDevIns)          do { } while (0)
 
 
 /*********************************************************************************************************************************
@@ -2547,8 +2541,6 @@ static int iommuAmdEvtLogEntryWrite(PPDMDEVINS pDevIns, PCEVT_GENERIC_T pEvent)
  */
 static void iommuAmdHwErrorSet(PPDMDEVINS pDevIns, PCEVT_GENERIC_T pEvent)
 {
-    IOMMU_ASSERT_LOCKED(pDevIns);
-
     PIOMMU pThis = PDMDEVINS_2_DATA(pDevIns, PIOMMU);
     if (pThis->ExtFeat.n.u1HwErrorSup)
     {
