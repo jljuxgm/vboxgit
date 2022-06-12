@@ -1,4 +1,4 @@
-/* $Id: thread-posix.cpp 86725 2020-10-28 09:21:24Z vboxsync $ */
+/* $Id: thread-posix.cpp 86727 2020-10-28 10:14:40Z vboxsync $ */
 /** @file
  * IPRT - Threads, POSIX.
  */
@@ -267,7 +267,7 @@ static void rtThreadPosixBlockSignals(void)
         sigfillset(&SigAct.sa_mask);
 
         int rc = sigaction(g_iSigPokeThread, &SigAct, &SigActOld);
-        AssertMsg(rc == 0, ("rc=%Rrc errno=%d\n", RTErrConvertFromErrno(errno), errno));
+        AssertMsg(rc == 0, ("rc=%Rrc errno=%d\n", RTErrConvertFromErrno(errno), errno)); RT_NOREF(rc);
         AssertMsg(rc || SigActOld.sa_handler == rtThreadPosixPokeSignal, ("%p\n", SigActOld.sa_handler));
 # else
         siginterrupt(g_iSigPokeThread, 1);
