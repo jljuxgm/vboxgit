@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsPortForwardingDlg.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIGlobalSettingsPortForwardingDlg.cpp 87245 2021-01-14 09:52:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsPortForwardingDlg class implementation.
  */
@@ -21,6 +21,7 @@
 #include <QTabWidget>
 
 /* GUI includes: */
+#include "UIDesktopWidgetWatchdog.h"
 #include "UIGlobalSettingsPortForwardingDlg.h"
 #include "UIIconPool.h"
 #include "UIMessageCenter.h"
@@ -65,6 +66,9 @@ UIGlobalSettingsPortForwardingDlg::UIGlobalSettingsPortForwardingDlg(QWidget *pP
 
     /* Retranslate dialog: */
     retranslateUi();
+
+    /* Limit the minimum size to 33% of screen size: */
+    setMinimumSize(gpDesktop->screenGeometry(this).size() / 3);
 }
 
 const UIPortForwardingDataList UIGlobalSettingsPortForwardingDlg::ipv4rules() const

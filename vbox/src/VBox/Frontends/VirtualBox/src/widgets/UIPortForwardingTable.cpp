@@ -1,4 +1,4 @@
-/* $Id: UIPortForwardingTable.cpp 86233 2020-09-23 12:10:51Z vboxsync $ */
+/* $Id: UIPortForwardingTable.cpp 87245 2021-01-14 09:52:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPortForwardingTable class implementation.
  */
@@ -28,7 +28,6 @@
 
 /* GUI includes: */
 #include "QITableView.h"
-#include "UIDesktopWidgetWatchdog.h"
 #include "UIConverter.h"
 #include "UIIconPool.h"
 #include "UIMessageCenter.h"
@@ -965,9 +964,6 @@ void UIPortForwardingTable::prepare()
 
     /* Apply language settings: */
     retranslateUi();
-
-    /* Limit the minimum size to 33% of screen size: */
-    setMinimumSize(gpDesktop->screenGeometry(this).size() / 3);
 }
 
 void UIPortForwardingTable::prepareLayout()
