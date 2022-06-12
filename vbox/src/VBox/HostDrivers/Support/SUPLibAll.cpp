@@ -1,4 +1,4 @@
-/* $Id: SUPLibAll.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: SUPLibAll.cpp 85213 2020-07-11 12:28:47Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - All Contexts Code.
  */
@@ -294,7 +294,7 @@ DECLINLINE(uint16_t) supGetGipCpuIndex(PSUPGLOBALINFOPAGE pGip)
  * @param   pGip        The GIP.
  * @internal
  */
-SUPDECL(uint64_t) SUPGetTscDeltaSlow(PSUPGLOBALINFOPAGE pGip)
+SUPDECL(int64_t) SUPGetTscDeltaSlow(PSUPGLOBALINFOPAGE pGip)
 {
     uint16_t iGipCpu = supGetGipCpuIndex(pGip);
     if (RT_LIKELY(iGipCpu < pGip->cCpus))
