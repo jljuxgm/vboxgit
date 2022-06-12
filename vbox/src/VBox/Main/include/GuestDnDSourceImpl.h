@@ -1,4 +1,4 @@
-/* $Id: GuestDnDSourceImpl.h 85371 2020-07-17 10:02:58Z vboxsync $ */
+/* $Id: GuestDnDSourceImpl.h 85402 2020-07-21 15:10:32Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag'n drop source.
  */
@@ -93,7 +93,7 @@ protected:
     /** @name Callbacks for dispatch handler.
      * @{ */
     static DECLCALLBACK(int) i_receiveRawDataCallback(uint32_t uMsg, void *pvParms, size_t cbParms, void *pvUser);
-    static DECLCALLBACK(int) i_receiveURIDataCallback(uint32_t uMsg, void *pvParms, size_t cbParms, void *pvUser);
+    static DECLCALLBACK(int) i_receiveTransferDataCallback(uint32_t uMsg, void *pvParms, size_t cbParms, void *pvUser);
     /** @}  */
 
 protected:

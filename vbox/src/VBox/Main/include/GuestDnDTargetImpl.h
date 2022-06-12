@@ -1,4 +1,4 @@
-/* $Id: GuestDnDTargetImpl.h 85371 2020-07-17 10:02:58Z vboxsync $ */
+/* $Id: GuestDnDTargetImpl.h 85402 2020-07-21 15:10:32Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag'n drop target.
  */
@@ -80,7 +80,7 @@ protected:
 
     /** @name Callbacks for dispatch handler.
      * @{ */
-    static DECLCALLBACK(int) i_sendURIDataCallback(uint32_t uMsg, void *pvParms, size_t cbParms, void *pvUser);
+    static DECLCALLBACK(int) i_sendTransferDataCallback(uint32_t uMsg, void *pvParms, size_t cbParms, void *pvUser);
     /** @}  */
 
 protected:
