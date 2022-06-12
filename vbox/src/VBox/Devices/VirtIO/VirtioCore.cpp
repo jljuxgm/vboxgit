@@ -1,11 +1,11 @@
-/* $Id: VirtioCore.cpp 88827 2021-05-03 11:46:01Z vboxsync $ */
+/* $Id: VirtioCore.cpp 88828 2021-05-03 12:04:56Z vboxsync $ */
 
 /** @file
  * VirtioCore - Virtio Core (PCI, feature & config mgt, queue mgt & proxy, notification mgt)
  */
 
 /*
- * Copyright (C) 2009-2020 Oracle Corporation
+ * Copyright (C) 2009-2021 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -1417,7 +1417,8 @@ static DECLCALLBACK(VBOXSTRICTRC) virtioMmioRead(PPDMDEVINS pDevIns, void *pvUse
         return VINF_SUCCESS;
     }
 
-    ASSERT_GUEST_MSG_FAILED(("Bad read access to mapped capabilities region: off=%RGp cb=%u\n"));
+    ASSERT_GUEST_MSG_FAILED(("Bad read access to mapped capabilities region: off=%RGp cb=%u\n",
+                              off, cb));
     return VINF_IOM_MMIO_UNUSED_00;
 }
 
