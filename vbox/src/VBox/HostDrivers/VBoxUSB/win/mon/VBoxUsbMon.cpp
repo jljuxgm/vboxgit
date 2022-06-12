@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbMon.cpp 83803 2020-04-18 18:20:34Z vboxsync $ */
+/* $Id: VBoxUsbMon.cpp 88531 2021-04-15 12:05:51Z vboxsync $ */
 /** @file
  * VBox USB Monitor
  */
@@ -1287,7 +1287,7 @@ static NTSTATUS vboxUsbMonIoctlDispatch(PVBOXUSBMONCTX pContext, ULONG Ctl, PVOI
 
         case SUPUSBFLT_IOCTL_GET_DEVICE:
         {
-            HVBOXUSBDEVUSR hDevice = *((HVBOXUSBDEVUSR*)pvBuffer);
+            HVBOXUSBDEVUSR hDevice;
             PUSBSUP_GETDEV_MON pOut = (PUSBSUP_GETDEV_MON)pvBuffer;
             if (!pvBuffer || cbInBuffer != sizeof (hDevice) || cbOutBuffer < sizeof (*pOut))
             {
@@ -1296,6 +1296,7 @@ static NTSTATUS vboxUsbMonIoctlDispatch(PVBOXUSBMONCTX pContext, ULONG Ctl, PVOI
                 Status = STATUS_INVALID_PARAMETER;
                 break;
             }
+            hDevice = *(HVBOXUSBDEVUSR*)pvBuffer;
             if (!hDevice)
             {
                 WARN(("SUPUSBFLT_IOCTL_GET_DEVICE: hDevice is NULL!",
