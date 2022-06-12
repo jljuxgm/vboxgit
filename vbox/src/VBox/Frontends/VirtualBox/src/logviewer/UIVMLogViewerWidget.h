@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.h 88686 2021-04-23 18:55:55Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.h 88699 2021-04-26 08:16:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class declaration.
  */
@@ -198,6 +198,7 @@ private:
         - assigned it to the most recently "unhidden" panel */
     void manageEscapeShortCut();
     void updateMachineSelectionMenu();
+    void setMachines(const QVector<QUuid> &machineIDs);
 
     /** Holds the widget's embedding type. */
     const EmbedTo m_enmEmbedding;
