@@ -1,4 +1,4 @@
-/* $Id: DevIommuIntel.cpp 89524 2021-06-05 07:34:32Z vboxsync $ */
+/* $Id: DevIommuIntel.cpp 89537 2021-06-07 03:53:21Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - Intel implementation.
  */
@@ -581,8 +581,18 @@ typedef DMARMEMREQREMAP *PDMARMEMREQREMAP;
 /** Pointer to a const DMA remap info. */
 typedef DMARMEMREQREMAP const *PCDMARMEMREQREMAP;
 
+/**
+ * Callback function to lookup a DMA address.
+ *
+ * @returns VBox status code.
+ * @param   pDevIns     The IOMMU device instance.
+ * @param   pMemReqIn   The DMA memory request input.
+ * @param   pMemReqAux  The DMA memory request auxiliary info.
+ * @param   pIoPageOut  Where to store the output of the lookup.
+ */
 typedef DECLCALLBACKTYPE(int, FNDMADDRLOOKUP,(PPDMDEVINS pDevIns, PCDMARMEMREQIN pMemReqIn, PCDMARMEMREQAUX pMemReqAux,
                                               PDMARIOPAGE pIoPageOut));
+/** Pointer to a DMA address-lookup function. */
 typedef FNDMADDRLOOKUP *PFNDMADDRLOOKUP;
 
 
@@ -2567,16 +2577,10 @@ static int dmarDrLegacyModeRemapAddr(PPDMDEVINS pDevIns, uint64_t uRtaddrReg, PD
  */
 static int dmarDrScalableModeRemapAddr(PPDMDEVINS pDevIns, uint64_t uRtaddrReg, PDMARMEMREQREMAP pMemReqRemap)
 {
-    NOREF(pMemReqRemap);
-
+    RT_NOREF2(uRtaddrReg, pMemReqRemap);
     PCDMAR pThis = PDMDEVINS_2_DATA(pDevIns, PDMAR);
-    if (pThis->fExtCapReg & VTD_BF_ECAP_REG_SMTS_MASK)
-    {
-        RT_NOREF1(uRtaddrReg);
-        return VERR_NOT_IMPLEMENTED;
-    }
-
-    return VERR_IOMMU_ADDR_TRANSLATION_FAILED;
+    Assert(pThis->fExtCapReg & VTD_BF_ECAP_REG_SMTS_MASK);
+    return VERR_NOT_IMPLEMENTED;
 }
 
 
@@ -3118,9 +3122,9 @@ static void dmarR3InvQueueProcessRequests(PPDMDEVINS pDevIns, void const *pvRequ
 
     /*
      * The below check is redundant since we check both TTM and DW for each
-     * descriptor type we process. However, the error reported by hardware
-     * may differ hence this is kept commented out but not removed from the code
-     * if we need to change this in the future.
+     * descriptor type we process. However, the order errors reported by hardware
+     * may differ hence this is kept commented out but not removed if we need to
+     * change this in the future.
      *
      * In our implementation, we would report the descriptor type as invalid,
      * while on real hardware it may report descriptor width as invalid.
