@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 85007 2020-06-30 17:19:25Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 86070 2020-09-09 09:50:01Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -1833,7 +1833,9 @@ pdmR3DevHlp_PCIPhysRead(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDev, RTGCPHYS GCPhys,
         RTGCPHYS GCPhysOut;
         uint16_t const uDevId = PCIBDF_MAKE(pBus->iBus, pPciDev->uDevFn);
         int rc = pIommu->pfnMemRead(pDevInsIommu, uDevId, GCPhys, cbRead, &GCPhysOut);
-        if (RT_FAILURE(rc))
+        if (RT_SUCCESS(rc))
+            GCPhys = GCPhysOut;
+        else
         {
             Log(("pdmR3DevHlp_PCIPhysRead: IOMMU translation failed. uDevId=%#x GCPhys=%#RGp cb=%u rc=%Rrc\n", uDevId, GCPhys,
                  cbRead, rc));
@@ -1885,7 +1887,9 @@ pdmR3DevHlp_PCIPhysWrite(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDev, RTGCPHYS GCPhys
         RTGCPHYS GCPhysOut;
         uint16_t const uDevId = PCIBDF_MAKE(pBus->iBus, pPciDev->uDevFn);
         int rc = pIommu->pfnMemWrite(pDevInsIommu, uDevId, GCPhys, cbWrite, &GCPhysOut);
-        if (RT_FAILURE(rc))
+        if (RT_SUCCESS(rc))
+            GCPhys = GCPhysOut;
+        else
         {
             Log(("pdmR3DevHlp_PCIPhysRead: IOMMU translation failed. uDevId=%#x GCPhys=%#RGp cb=%u rc=%Rrc\n", uDevId, GCPhys,
                  cbWrite, rc));

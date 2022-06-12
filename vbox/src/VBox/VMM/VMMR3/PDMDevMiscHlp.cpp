@@ -1,4 +1,4 @@
-/* $Id: PDMDevMiscHlp.cpp 84826 2020-06-15 08:20:40Z vboxsync $ */
+/* $Id: PDMDevMiscHlp.cpp 86070 2020-09-09 09:50:01Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Misc. Device Helpers.
  */
@@ -156,17 +156,17 @@ static DECLCALLBACK(int) pdmR3IoApicHlp_IommuMsiRemap(PPDMDEVINS pDevIns, uint16
         && pDevInsIommu != pDevIns)
     {
         int rc = pIommu->pfnMsiRemap(pDevInsIommu, uDevId, pMsiIn, pMsiOut);
-        if (RT_FAILURE(rc))
-        {
-            Log(("pdmR3IoApicHlp_IommuRemapMsi: IOMMU MSI remap failed. uDevId=%#x pMsiIn=(%#RX64, %#RU32) rc=%Rrc\n",
-                 uDevId, pMsiIn->Addr.u64, pMsiIn->Data.u32, rc));
+        if (RT_SUCCESS(rc))
             return rc;
-        }
+
+        Log(("pdmR3IoApicHlp_IommuRemapMsi: IOMMU MSI remap failed. uDevId=%#x pMsiIn=(%#RX64, %#RU32) rc=%Rrc\n",
+             uDevId, pMsiIn->Addr.u64, pMsiIn->Data.u32, rc));
+        return rc;
     }
 #else
     RT_NOREF(pDevIns, uDevId);
-    *pMsiOut = *pMsiIn;
 #endif
+    *pMsiOut = *pMsiIn;
     return VINF_SUCCESS;
 }
 
