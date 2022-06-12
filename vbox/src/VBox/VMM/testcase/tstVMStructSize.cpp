@@ -1,4 +1,4 @@
-/* $Id: tstVMStructSize.cpp 87469 2021-01-28 17:01:06Z vboxsync $ */
+/* $Id: tstVMStructSize.cpp 87493 2021-01-30 01:57:34Z vboxsync $ */
 /** @file
  * tstVMStructSize - testcase for check structure sizes/alignment
  *                   and to verify that HC and GC uses the same
@@ -383,7 +383,7 @@ int main()
     CHECK_MEMBER_ALIGNMENT(HMR0PERVCPU, svm.pfnVMRun, 8);
     CHECK_MEMBER_ALIGNMENT(HMCPU, Event, 8);
     CHECK_MEMBER_ALIGNMENT(HMCPU, Event.u64IntInfo, 8);
-    CHECK_MEMBER_ALIGNMENT(HMCPU, DisState, 8);
+    CHECK_MEMBER_ALIGNMENT(HMR0PERVCPU, svm.DisState, 8);
     CHECK_MEMBER_ALIGNMENT(HMCPU, StatEntry, 8);
 
     /* Make sure the set is large enough and has the correct size. */
