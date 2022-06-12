@@ -1,4 +1,4 @@
-/* $Id: HDAStream.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: HDAStream.h 87267 2021-01-15 12:43:52Z vboxsync $ */
 /** @file
  * HDAStream.h - Streams for HD Audio.
  */
@@ -210,6 +210,8 @@ typedef struct HDASTREAM
     uint16_t                    u16FIFOS;
     /** FIFO Watermark. */
     uint16_t                    u16FIFOW;
+    /** FIFO scratch buffer, to avoid intermediate (re-)allocations. */
+    uint8_t                     abFIFO[HDA_FIFO_MAX + 1];
     /** Last Valid Index (SDnLVI).
      *  Will be updated in hdaR3StreamInit(). */
     uint16_t                    u16LVI;
