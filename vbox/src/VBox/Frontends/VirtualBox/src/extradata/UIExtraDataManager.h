@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 86958 2020-11-23 11:23:43Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 86977 2020-11-25 15:18:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -225,9 +225,9 @@ public:
     /** @name Settings: Display
       * @{ */
         /** Returns maximum guest-screen resolution policy. */
-        MaxGuestResolutionPolicy maxGuestResolutionPolicy();
+        MaximumGuestScreenSizePolicy maxGuestResolutionPolicy();
         /** Defines maximum guest-screen resolution @a enmPolicy or @a resolution itself for Fixed policy. */
-        void setMaxGuestScreenResolution(MaxGuestResolutionPolicy enmPolicy, const QSize resolution = QSize());
+        void setMaxGuestScreenResolution(MaximumGuestScreenSizePolicy enmPolicy, const QSize resolution = QSize());
         /** Returns maximum guest-screen resolution for fixed policy. */
         QSize maxGuestResolutionForPolicyFixed();
         /** Defines maximum guest-screen @a resolution for fixed policy. */

@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.h 84790 2020-06-11 10:30:36Z vboxsync $ */
+/* $Id: UIMachineView.h 86977 2020-11-25 15:18:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class declaration.
  */
@@ -349,9 +349,8 @@ protected:
     /** Holds current host-screen number. */
     int m_iHostScreenNumber;
 
-    /** The policy for calculating the maximum guest resolution which we wish
-     * to handle. */
-    MaxGuestResolutionPolicy m_maxGuestSizePolicy;
+    /** Holds the maximum guest screen size policy. */
+    MaximumGuestScreenSizePolicy m_enmMaximumGuestScreenSizePolicy;
     /** The maximum guest size for fixed size policy. */
     QSize m_fixedMaxGuestSize;
     /** Maximum guest resolution which we wish to handle.  Must be accessed
