@@ -1,4 +1,4 @@
-/* $Id: HostPower.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: HostPower.cpp 85280 2020-07-12 14:31:42Z vboxsync $ */
 /** @file
  * VirtualBox interface to host's power notification service
  */
@@ -175,7 +175,7 @@ void HostPowerService::notify(Reason_T aReason)
                     {
                         LONG iRc;
                         progress->COMGETTER(ResultCode)(&iRc);
-                        rc = iRc;
+                        rc = (HRESULT)iRc;
                     }
 
                     AssertMsg(SUCCEEDED(rc), ("SaveState WaitForCompletion failed with %Rhrc (%#08X)\n", rc, rc));
