@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 86485 2020-10-08 06:56:12Z vboxsync $ */
+/* $Id: DevPCNet.cpp 87285 2021-01-15 20:51:06Z vboxsync $ */
 /** @file
  * DevPCNet - AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  *
@@ -190,7 +190,7 @@
 #define CSR_PROM(S)      !!((S)->aCSR[15] & 0x8000) /**< Promiscuous Mode */
 /** @} */
 
-#if !defined(RT_ARCH_X86) && !defined(RT_ARCH_AMD64)
+#if defined(RT_BIG_ENDIAN) || !defined(RT_LITTLE_ENDIAN)
 # error fix macros (and more in this file) for big-endian machines
 #endif
 
