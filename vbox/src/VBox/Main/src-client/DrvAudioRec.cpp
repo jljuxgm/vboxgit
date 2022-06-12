@@ -1,4 +1,4 @@
-/* $Id: DrvAudioRec.cpp 88002 2021-03-08 11:28:46Z vboxsync $ */
+/* $Id: DrvAudioRec.cpp 88016 2021-03-08 13:14:14Z vboxsync $ */
 /** @file
  * Video recording audio backend for Main.
  */
@@ -1231,7 +1231,7 @@ DECLCALLBACK(int) AudioVideoRec::drvConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg
     pPCMProps->fSigned     = true;
     pPCMProps->fSwapEndian = false;
 
-    AssertMsgReturn(DrvAudioHlpPCMPropsAreValid(pPCMProps),
+    AssertMsgReturn(DrvAudioHlpPcmPropsAreValid(pPCMProps),
                     ("Configuration error: Audio configuration is invalid!\n"), VERR_PDM_DRVINS_UNKNOWN_CFG_VALUES);
 
     pThis->pAudioVideoRec = (AudioVideoRec *)pvUser;

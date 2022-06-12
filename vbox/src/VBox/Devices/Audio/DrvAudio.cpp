@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 88006 2021-03-08 12:08:34Z vboxsync $ */
+/* $Id: DrvAudio.cpp 88016 2021-03-08 13:14:14Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -3205,7 +3205,7 @@ static int drvAudioStreamCreateInternalBackend(PDRVAUDIO pThis,
     pCfgReq->Props.cShift = PDMAUDIOPCMPROPS_MAKE_SHIFT_PARMS(pCfgReq->Props.cbSample, pCfgReq->Props.cChannels);
 
     /* Validate PCM properties. */
-    if (!DrvAudioHlpPCMPropsAreValid(&pCfgReq->Props))
+    if (!DrvAudioHlpPcmPropsAreValid(&pCfgReq->Props))
     {
         LogRel(("Audio: Invalid custom PCM properties set for stream '%s', cannot create stream\n", pStream->szName));
         return VERR_INVALID_PARAMETER;

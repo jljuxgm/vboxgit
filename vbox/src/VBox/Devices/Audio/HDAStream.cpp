@@ -1,4 +1,4 @@
-/* $Id: HDAStream.cpp 88006 2021-03-08 12:08:34Z vboxsync $ */
+/* $Id: HDAStream.cpp 88016 2021-03-08 13:14:14Z vboxsync $ */
 /** @file
  * HDAStream.cpp - Stream functions for HD Audio.
  */
@@ -867,7 +867,7 @@ int hdaR3StreamEnable(PHDASTREAM pStreamShared, PHDASTREAMR3 pStreamR3, bool fEn
         && fEnable
         && pStreamR3->Dbg.Runtime.fEnabled)
     {
-        Assert(DrvAudioHlpPCMPropsAreValid(&pStreamShared->State.Cfg.Props));
+        Assert(DrvAudioHlpPcmPropsAreValid(&pStreamShared->State.Cfg.Props));
 
         if (fEnable)
         {

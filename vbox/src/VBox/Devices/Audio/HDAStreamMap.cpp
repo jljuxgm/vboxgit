@@ -1,4 +1,4 @@
-/* $Id: HDAStreamMap.cpp 87942 2021-03-03 17:26:37Z vboxsync $ */
+/* $Id: HDAStreamMap.cpp 88016 2021-03-08 13:14:14Z vboxsync $ */
 /** @file
  * HDAStreamMap.cpp - Stream mapping functions for HD Audio.
  */
@@ -48,7 +48,7 @@ int hdaR3StreamMapInit(PHDASTREAMMAP pMap, PPDMAUDIOPCMPROPS pProps)
     AssertPtrReturn(pMap, VERR_INVALID_POINTER);
     AssertPtrReturn(pProps,   VERR_INVALID_POINTER);
 
-    if (!DrvAudioHlpPCMPropsAreValid(pProps))
+    if (!DrvAudioHlpPcmPropsAreValid(pProps))
         return VERR_INVALID_PARAMETER;
 
     hdaR3StreamMapReset(pMap);
