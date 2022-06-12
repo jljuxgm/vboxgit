@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.h 86740 2020-10-28 16:08:53Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.h 86745 2020-10-28 17:42:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class declaration.
  */
@@ -344,6 +344,8 @@ private:
 
     /** @name Cloud stuff.
       * @{ */
+        /** Searches for provider node with passed @a uProviderId. */
+        UIChooserNode *searchProviderNode(const QUuid &uProviderId);
         /** Searches for provider node with passed @a strProviderShortName. */
         UIChooserNode *searchProviderNode(const QString &strProviderShortName);
 

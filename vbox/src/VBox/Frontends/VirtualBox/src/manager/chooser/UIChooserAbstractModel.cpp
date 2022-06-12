@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.cpp 86744 2020-10-28 17:35:28Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.cpp 86745 2020-10-28 17:42:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class implementation.
  */
@@ -1716,6 +1716,18 @@ void UIChooserAbstractModel::makeSureGroupDefinitionsSaveIsFinished()
     /* Cleanup if necessary: */
     if (UIThreadGroupDefinitionsSave::instance())
         UIThreadGroupDefinitionsSave::cleanup();
+}
+
+UIChooserNode *UIChooserAbstractModel::searchProviderNode(const QUuid &uProviderId)
+{
+    /* Search for a list of nodes matching passed name: */
+    QList<UIChooserNode*> providerNodes;
+    invisibleRoot()->searchForNodes(uProviderId.toString(),
+                                    UIChooserItemSearchFlag_CloudProvider | UIChooserItemSearchFlag_ExactId,
+                                    providerNodes);
+
+    /* Return 1st node if any: */
+    return providerNodes.value(0);
 }
 
 UIChooserNode *UIChooserAbstractModel::searchProviderNode(const QString &strProviderShortName)
