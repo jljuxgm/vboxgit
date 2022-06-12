@@ -1,4 +1,4 @@
-/* $Id: Intel_80386.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: Intel_80386.h 85573 2020-07-31 12:41:14Z vboxsync $ */
 /** @file
  * CPU database entry "Intel 80386".
  * Handcrafted.
@@ -59,7 +59,7 @@ static CPUMDBENTRY const g_Entry_Intel_80386 =
     /*.uStepping        = */ 0,
     /*.enmMicroarch     = */ kCpumMicroarch_Intel_80386,
     /*.uScalableBusFreq = */ CPUM_SBUSFREQ_UNKNOWN,
-    /*.fFlags           = */ CPUDB_F_EXECUTE_ALL_IN_IEM,
+    /*.fFlags           = */ CPUMDB_F_EXECUTE_ALL_IN_IEM,
     /*.cMaxPhysAddrWidth= */ 24,
     /*.fMxCsrMask       = */ 0,
     /*.paCpuIdLeaves    = */ NULL_ALONE(g_aCpuIdLeaves_Intel_80386),
