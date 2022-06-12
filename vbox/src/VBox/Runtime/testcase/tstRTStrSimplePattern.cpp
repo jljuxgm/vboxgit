@@ -1,4 +1,4 @@
-/* $Id: tstStrSimplePattern.cpp 86358 2020-09-30 18:09:08Z vboxsync $ */
+/* $Id: tstRTStrSimplePattern.cpp 86360 2020-09-30 18:14:19Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTStrSimplePattern.
  */
