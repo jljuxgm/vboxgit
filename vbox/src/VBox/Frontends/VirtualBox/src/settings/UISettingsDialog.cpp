@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialog.cpp 87001 2020-11-27 09:48:39Z vboxsync $ */
+/* $Id: UISettingsDialog.cpp 87498 2021-02-01 12:16:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISettingsDialog class implementation.
  */
@@ -116,8 +116,10 @@ void UISettingsDialog::reject()
 
 void UISettingsDialog::sltCategoryChanged(int cId)
 {
+#ifndef VBOX_WS_MAC
     if (m_pButtonBox)
         uiCommon().setHelpKeyword(m_pButtonBox->button(QDialogButtonBox::Help), m_pageHelpKeywords[cId]);
+#endif
     const int iIndex = m_pages.value(cId);
 
 #ifdef VBOX_WS_MAC
@@ -768,18 +770,24 @@ void UISettingsDialog::prepareWidgets()
 
     m_pButtonBox = new QIDialogButtonBox(pCentralWidget);
     m_pButtonBox->setObjectName(QStringLiteral("m_pButtonBox"));
+#ifndef VBOX_WS_MAC
     m_pButtonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::NoButton|
                                      QDialogButtonBox::Ok| QDialogButtonBox::Help);
     m_pButtonBox->button(QDialogButtonBox::Help)->setShortcut(QKeySequence::HelpContents);
-
+#else
+    m_pButtonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::NoButton|
+                                     QDialogButtonBox::Ok);
+#endif
     pMainLayout->addWidget(m_pButtonBox, 2, 0, 1, 2);
 
     setCentralWidget(pCentralWidget);
 
     QObject::connect(m_pButtonBox, &QIDialogButtonBox::rejected, this, &UISettingsDialog::reject);
     QObject::connect(m_pButtonBox, &QIDialogButtonBox::accepted, this, &UISettingsDialog::accept);
+#ifndef VBOX_WS_MAC
     connect(m_pButtonBox->button(QDialogButtonBox::Help), &QAbstractButton::pressed,
                                  &(msgCenter()), &UIMessageCenter::sltHandleHelpRequest);
+#endif
 }
 
 void UISettingsDialog::assignValidator(UISettingsPage *pPage)
