@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: status.py 86931 2020-11-20 14:43:44Z vboxsync $
+# $Id: status.py 86932 2020-11-20 14:46:49Z vboxsync $
 
 """
 CGI - Administrator Web-UI.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 86931 $"
+__version__ = "$Revision: 86932 $"
 
 
 # Standard python imports.
@@ -294,11 +294,10 @@ class StatusDispatcher(object): # pylint: disable=too-few-public-methods
         """
         return (TMDatabaseConnection(self._oSrvGlue.dprint),);
 
-    def _actionMagicMirrorTestBoxes(self, sCmd):
+    def _actionMagicMirrorTestBoxes(self):
         """
         Produces test result status for the magic mirror dashboard
         """
-        _ = sCmd;
 
         #
         # Parse arguments and connect to the database.
@@ -345,7 +344,7 @@ LEFT OUTER JOIN TestSets
 
         return True;
 
-    def _actionMagicMirrorTestResults(self, sCmd):
+    def _actionMagicMirrorTestResults(self):
         """
         Produces test result status for the magic mirror dashboard
         """
@@ -353,7 +352,6 @@ LEFT OUTER JOIN TestSets
         #
         # Parse arguments and connect to the database.
         #
-        _ = sCmd;
         sBranch = self._getStringParam('sBranch');
         cHoursBack = self._getIntParam('cHours', 1, 24*14, 6); ## @todo why 6 hours here and 12 for test boxes?
         self._checkForUnknownParameters();
