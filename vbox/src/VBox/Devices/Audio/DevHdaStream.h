@@ -1,4 +1,4 @@
-/* $Id: DevHdaStream.h 88943 2021-05-08 11:40:49Z vboxsync $ */
+/* $Id: DevHdaStream.h 89379 2021-05-30 14:33:49Z vboxsync $ */
 /** @file
  * Intel HD Audio Controller Emulation - Streams.
  */
@@ -157,6 +157,7 @@ typedef struct HDASTREAMSTATE
     /** Current loop number within the current scheduling step.  */
     uint32_t                idxScheduleLoop;
 
+    uint64_t                u64Padding;
     /** Buffer descriptors and additional timer scheduling state.
      * (Same as HDABDLEDESC, with more sensible naming.)  */
     struct

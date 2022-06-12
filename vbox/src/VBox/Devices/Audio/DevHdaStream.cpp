@@ -1,4 +1,4 @@
-/* $Id: DevHdaStream.cpp 89302 2021-05-26 21:00:51Z vboxsync $ */
+/* $Id: DevHdaStream.cpp 89379 2021-05-30 14:33:49Z vboxsync $ */
 /** @file
  * Intel HD Audio Controller Emulation - Streams.
  */
@@ -547,8 +547,7 @@ int hdaR3StreamSetUp(PPDMDEVINS pDevIns, PHDASTATE pThis, PHDASTREAM pStreamShar
 # ifdef VBOX_WITH_AUDIO_HDA_MIC_IN
 #  error "Implement me!"
 # else
-            pCfg->enmPath   = PDMAUDIOPATH_IN_LINE;
-            pCfg->enmLayout = PDMAUDIOSTREAMLAYOUT_NON_INTERLEAVED;
+            pCfg->enmPath = PDMAUDIOPATH_IN_LINE;
             RTStrCopy(pCfg->szName, sizeof(pCfg->szName), "Line In");
 # endif
             break;

@@ -1,4 +1,4 @@
-/* $Id: AudioHlp.cpp 89342 2021-05-28 10:27:05Z vboxsync $ */
+/* $Id: AudioHlp.cpp 89379 2021-05-30 14:33:49Z vboxsync $ */
 /** @file
  * Audio helper routines.
  *
@@ -152,20 +152,13 @@ char *DrvAudioDbgGetFileNameA(uint8_t uInstance, const char *pszPath, const char
 bool AudioHlpStreamCfgIsValid(PCPDMAUDIOSTREAMCFG pCfg)
 {
     /* Ugly! HDA attach code calls us with uninitialized (all zero) config. */
-    if (   pCfg->enmLayout != PDMAUDIOSTREAMLAYOUT_INVALID
-        || PDMAudioPropsHz(&pCfg->Props) != 0)
+    if (PDMAudioPropsHz(&pCfg->Props) != 0)
     {
         if (PDMAudioStrmCfgIsValid(pCfg))
         {
             if (   pCfg->enmDir == PDMAUDIODIR_IN
                 || pCfg->enmDir == PDMAUDIODIR_OUT)
-            {
-                /* As stated elsewhere, the following is non-sense and must be eliminated. */
-                if (   pCfg->enmLayout == PDMAUDIOSTREAMLAYOUT_NON_INTERLEAVED
-                    || pCfg->enmLayout == PDMAUDIOSTREAMLAYOUT_INTERLEAVED
-                    || pCfg->enmLayout == PDMAUDIOSTREAMLAYOUT_RAW)
-                    return AudioHlpPcmPropsAreValid(&pCfg->Props);
-            }
+                return AudioHlpPcmPropsAreValid(&pCfg->Props);
         }
     }
     return false;

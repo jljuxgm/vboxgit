@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVRDE.cpp 89258 2021-05-25 09:58:08Z vboxsync $ */
+/* $Id: DrvAudioVRDE.cpp 89379 2021-05-30 14:33:49Z vboxsync $ */
 /** @file
  * VRDE audio backend for Main.
  */
@@ -312,7 +312,6 @@ static int vrdeCreateStreamIn(PVRDESTREAM pStreamVRDE, PPDMAUDIOSTREAMCFG pCfgAc
      * raw mixer frames (somewhat akind to stereo signed 64-bit, see
      * st_sample_t and PDMAUDIOFRAME).
      */
-    pCfgAcq->enmLayout = PDMAUDIOSTREAMLAYOUT_RAW;
     PDMAudioPropsInitEx(&pCfgAcq->Props, 8 /*64-bit*/, true /*fSigned*/, 2 /*stereo*/, 22050 /*Hz*/,
                         true /*fLittleEndian*/, true /*fRaw*/);
 
@@ -342,7 +341,6 @@ static int vrdeCreateStreamOut(PPDMAUDIOSTREAMCFG pCfgAcq)
      * the raw data from the mixer (somewhat akind to stereo signed 64-bit,
      * see st_sample_t and PDMAUDIOFRAME).
      */
-    pCfgAcq->enmLayout = PDMAUDIOSTREAMLAYOUT_RAW;
     PDMAudioPropsInitEx(&pCfgAcq->Props, 8 /*64-bit*/, true /*fSigned*/, 2 /*stereo*/, 22050 /*Hz*/,
                         true /*fLittleEndian*/, true /*fRaw*/);
 

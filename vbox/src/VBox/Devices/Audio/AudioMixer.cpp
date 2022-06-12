@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 89371 2021-05-28 20:52:58Z vboxsync $ */
+/* $Id: AudioMixer.cpp 89379 2021-05-30 14:33:49Z vboxsync $ */
 /** @file
  * Audio mixing routines for multiplexing audio sources in device emulations.
  *
@@ -2270,7 +2270,6 @@ int AudioMixerSinkCreateStream(PAUDMIXSINK pSink, PPDMIAUDIOCONNECTOR pConn, PPD
                 AssertRC(rc); /* cannot fail */
                 CfgHost.enmDir    = pSink->enmDir;
                 CfgHost.enmPath   = pCfg->enmPath;
-                CfgHost.enmLayout = pCfg->enmLayout;
                 CfgHost.Device    = pCfg->Device;
                 RTStrCopy(CfgHost.szName, sizeof(CfgHost.szName), pCfg->szName);
 

@@ -1,4 +1,4 @@
-/* $Id: DevHdaStreamMap.cpp 88300 2021-03-26 14:31:55Z vboxsync $ */
+/* $Id: DevHdaStreamMap.cpp 89379 2021-05-30 14:33:49Z vboxsync $ */
 /** @file
  * Intel HD Audio Controller Emulation - Stream mapping (e.g. 5.1 -> stereo).
  */
@@ -348,7 +348,6 @@ int hdaR3StreamMapInit(PHDASTREAMMAP pMap, uint8_t cHostChannels, PPDMAUDIOPCMPR
                      PDMAudioPropsChannels(pProps), PDMAudioPropsSampleSize(pProps), pMap->cbGuestFrame));
 
             Assert(pMap->cbGuestFrame); /* Frame size must not be 0. */
-            pMap->enmLayout = PDMAUDIOSTREAMLAYOUT_INTERLEAVED;
             return VINF_SUCCESS;
         }
     }
@@ -384,8 +383,6 @@ void hdaR3StreamMapDestroy(PHDASTREAMMAP pMap)
 void hdaR3StreamMapReset(PHDASTREAMMAP pMap)
 {
     AssertPtrReturnVoid(pMap);
-
-    pMap->enmLayout = PDMAUDIOSTREAMLAYOUT_UNKNOWN;
 
     if (pMap->paMappings)
     {
