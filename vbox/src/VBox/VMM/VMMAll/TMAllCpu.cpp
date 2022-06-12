@@ -1,4 +1,4 @@
-/* $Id: TMAllCpu.cpp 87634 2021-02-05 21:52:24Z vboxsync $ */
+/* $Id: TMAllCpu.cpp 89087 2021-05-17 10:02:15Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, CPU Time, All Contexts.
  */
@@ -587,6 +587,7 @@ VMM_INT_DECL(int) TMCpuTickSetLastSeen(PVMCPUCC pVCpu, uint64_t u64LastSeenTick)
     VMCPU_ASSERT_EMT(pVCpu);
 
     LogFlow(("TMCpuTickSetLastSeen %RX64\n", u64LastSeenTick));
+    /** @todo deal with wraparound!   */
     if (pVCpu->tm.s.u64TSCLastSeen < u64LastSeenTick)
         pVCpu->tm.s.u64TSCLastSeen = u64LastSeenTick;
     return VINF_SUCCESS;
