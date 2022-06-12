@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic1.cpp 87865 2021-02-24 18:35:22Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic1.cpp 87892 2021-02-26 18:26:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic1 class implementation.
  */
@@ -16,7 +16,6 @@
  */
 
 /* Qt includes: */
-#include <QButtonGroup>
 #include <QCheckBox>
 #include <QDir>
 #include <QGridLayout>

@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic1.h 87602 2021-02-04 09:16:15Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic1.h 87892 2021-02-26 18:26:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic1 class declaration.
  */
@@ -35,7 +35,6 @@ class QGridLayout;
 class QIRichTextLabel;
 class UIFilePathSelector;
 class UINameAndSystemEditor;
-class QButtonGroup;
 
 /** 1st page of the New Virtual Machine wizard (base part): */
 class UIWizardNewVMPage1 : public UIWizardPageBase
