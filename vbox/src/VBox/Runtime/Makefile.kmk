@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 85378 2020-07-17 17:55:47Z vboxsync $
+# $Id: Makefile.kmk 85614 2020-08-05 13:27:58Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -359,6 +359,7 @@ RuntimeR3_SOURCES       = \
 	common/checksum/alt-sha1.cpp \
 	common/checksum/alt-sha256.cpp \
 	common/checksum/alt-sha512.cpp \
+	common/checksum/alt-sha3.cpp \
 	common/checksum/md2str.cpp \
 	common/checksum/md4str.cpp \
 	common/checksum/md5str.cpp \
