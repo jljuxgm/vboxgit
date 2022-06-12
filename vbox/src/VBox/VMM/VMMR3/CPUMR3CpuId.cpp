@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 86219 2020-09-22 12:38:11Z vboxsync $ */
+/* $Id: CPUMR3CpuId.cpp 87003 2020-11-27 14:28:41Z vboxsync $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -7166,6 +7166,9 @@ DECLCALLBACK(void) cpumR3CpuIdInfo(PVM pVM, PCDBGFINFOHLP pHlp, const char *pszA
                                 (uEAX >> 0) & 0xff,
                                 (uEAX >> 8) & 0xff,
                                 (uEAX >> 16) & 0xff);
+
+                /** @todo 0x80000008:ECX is reserved on Intel (we'll get incorrect physical core
+                 *        count here). */
                 pHlp->pfnPrintf(pHlp,
                                 "Physical Core Count:             %d\n",
                                 ((uECX >> 0) & 0xff) + 1);
