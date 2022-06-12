@@ -1,4 +1,4 @@
-/* $Id: DevIommuIntel.cpp 89589 2021-06-10 08:41:38Z vboxsync $ */
+/* $Id: DevIommuIntel.cpp 89590 2021-06-10 08:43:08Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - Intel implementation.
  */
@@ -850,10 +850,6 @@ AssertCompile(RT_ELEMENTS(g_auNdMask) >= DMAR_ND);
 
 
 #ifndef VBOX_DEVICE_STRUCT_TESTCASE
-/** @todo Add IOMMU struct size/alignment verification, see
- *        Devices/testcase/Makefile.kmk and
- *        Devices/testcase/tstDeviceStructSize[RC].cpp  */
-
 /**
  * Returns the supported adjusted guest-address width (SAGAW) given the maximum
  * guest address width (MGAW).
