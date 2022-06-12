@@ -1,4 +1,4 @@
-/* $Id: PDMDevMiscHlp.cpp 84677 2020-06-04 13:12:06Z vboxsync $ */
+/* $Id: PDMDevMiscHlp.cpp 84678 2020-06-04 13:26:18Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Misc. Device Helpers.
  */
@@ -164,6 +164,7 @@ static DECLCALLBACK(int) pdmR3IoApicHlp_IommuMsiRemap(PPDMDEVINS pDevIns, uint16
         }
     }
 #else
+    RT_NOREF(pDevIns, uDevId);
     *pMsiOut = *pMsiIn;
 #endif
     return VINF_SUCCESS;
