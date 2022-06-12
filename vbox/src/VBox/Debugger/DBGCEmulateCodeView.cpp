@@ -1,4 +1,4 @@
-/* $Id: DBGCEmulateCodeView.cpp 87594 2021-02-03 20:23:46Z vboxsync $ */
+/* $Id: DBGCEmulateCodeView.cpp 87776 2021-02-17 12:21:16Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, CodeView / WinDbg Emulation.
  */
@@ -961,9 +961,9 @@ static DECLCALLBACK(int) dbgcEnumBreakpointsCallback(PUVM pUVM, void *pvUser, DB
     /*
      * BP type and size.
      */
-    DBGCCmdHlpPrintf(&pDbgc->CmdHlp, "%#4x %c ", hBp, DBGF_BP_PUB_IS_ENABLED(pBp->fFlagsAndType) ? 'e' : 'd');
+    DBGCCmdHlpPrintf(&pDbgc->CmdHlp, "%#4x %c ", hBp, DBGF_BP_PUB_IS_ENABLED(pBp) ? 'e' : 'd');
     bool fHasAddress = false;
-    switch (DBGF_BP_PUB_GET_TYPE(pBp->fFlagsAndType))
+    switch (DBGF_BP_PUB_GET_TYPE(pBp))
     {
         case DBGFBPTYPE_INT3:
             DBGCCmdHlpPrintf(&pDbgc->CmdHlp, " p %RGv", pBp->u.Int3.GCPtr);
@@ -990,8 +990,8 @@ static DECLCALLBACK(int) dbgcEnumBreakpointsCallback(PUVM pUVM, void *pvUser, DB
         case DBGFBPTYPE_PORT_IO:
         case DBGFBPTYPE_MMIO:
         {
-            uint32_t fAccess = DBGF_BP_PUB_GET_TYPE(pBp->fFlagsAndType) == DBGFBPTYPE_PORT_IO ? pBp->u.PortIo.fAccess : pBp->u.Mmio.fAccess;
-            DBGCCmdHlpPrintf(&pDbgc->CmdHlp, DBGF_BP_PUB_GET_TYPE(pBp->fFlagsAndType) == DBGFBPTYPE_PORT_IO ?  " i" : " m");
+            uint32_t fAccess = DBGF_BP_PUB_GET_TYPE(pBp) == DBGFBPTYPE_PORT_IO ? pBp->u.PortIo.fAccess : pBp->u.Mmio.fAccess;
+            DBGCCmdHlpPrintf(&pDbgc->CmdHlp, DBGF_BP_PUB_GET_TYPE(pBp) == DBGFBPTYPE_PORT_IO ?  " i" : " m");
             DBGCCmdHlpPrintf(&pDbgc->CmdHlp, " %c%c%c%c%c%c",
                              fAccess & DBGFBPIOACCESS_READ_MASK   ? 'r' : '-',
                              fAccess & DBGFBPIOACCESS_READ_BYTE   ? '1' : '-',
@@ -1006,7 +1006,7 @@ static DECLCALLBACK(int) dbgcEnumBreakpointsCallback(PUVM pUVM, void *pvUser, DB
                              fAccess & DBGFBPIOACCESS_WRITE_DWORD ? '4' : '-',
                              fAccess & DBGFBPIOACCESS_WRITE_QWORD ? '8' : '-',
                              fAccess & DBGFBPIOACCESS_WRITE_OTHER ? '+' : '-');
-            if (DBGF_BP_PUB_GET_TYPE(pBp->fFlagsAndType) == DBGFBPTYPE_PORT_IO)
+            if (DBGF_BP_PUB_GET_TYPE(pBp) == DBGFBPTYPE_PORT_IO)
                 DBGCCmdHlpPrintf(&pDbgc->CmdHlp, " %04x-%04x",
                                  pBp->u.PortIo.uPort, pBp->u.PortIo.uPort + pBp->u.PortIo.cPorts - 1);
             else
@@ -1015,7 +1015,7 @@ static DECLCALLBACK(int) dbgcEnumBreakpointsCallback(PUVM pUVM, void *pvUser, DB
         }
 
         default:
-            DBGCCmdHlpPrintf(&pDbgc->CmdHlp, " unknown type %d!!", DBGF_BP_PUB_GET_TYPE(pBp->fFlagsAndType));
+            DBGCCmdHlpPrintf(&pDbgc->CmdHlp, " unknown type %d!!", DBGF_BP_PUB_GET_TYPE(pBp));
             AssertFailed();
             break;
 

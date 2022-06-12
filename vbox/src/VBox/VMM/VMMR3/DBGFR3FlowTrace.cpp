@@ -1,4 +1,4 @@
-/* $Id: DBGFR3FlowTrace.cpp 87577 2021-02-03 15:41:34Z vboxsync $ */
+/* $Id: DBGFR3FlowTrace.cpp 87776 2021-02-17 12:21:16Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Guest Execution Flow Tracing.
  */
@@ -764,9 +764,9 @@ static void dbgfR3FlowTraceModProbeCollectData(PUVM pUVM, VMCPUID idCpu,
 /**
  * @callback_method_impl{FNDBGFBPHIT}
  */
-static DECLCALLBACK(VBOXSTRICTRC) dbgfR3FlowTraceModProbeFiredWorker(PVM pVM, VMCPUID idCpu, void *pvUserBp, DBGFBP hBp, PCDBGFBPPUB pBpPub)
+static DECLCALLBACK(VBOXSTRICTRC) dbgfR3FlowTraceModProbeFiredWorker(PVM pVM, VMCPUID idCpu, void *pvUserBp, DBGFBP hBp, PCDBGFBPPUB pBpPub, uint16_t fFlags)
 {
-    RT_NOREF(pVM, hBp, pBpPub);
+    RT_NOREF(pVM, hBp, pBpPub, fFlags);
     LogFlowFunc(("pVM=%#p idCpu=%u pvUserBp=%#p hBp=%#x pBpPub=%p\n",
                  pVM, idCpu, pvUserBp, hBp, pBpPub));
 
@@ -856,7 +856,7 @@ static DECLCALLBACK(VBOXSTRICTRC) dbgfR3FlowTraceModEnableWorker(PVM pVM, PVMCPU
     RTListForEach(&pThis->LstProbes, pProbeLoc, DBGFFLOWTRACEMODPROBELOC, NdProbes)
     {
         rc = DBGFR3BpSetInt3Ex(pThis->pUVM, pThis->hBpOwner, pProbeLoc,
-                               0 /*idSrcCpu*/, &pProbeLoc->AddrProbe,
+                               0 /*idSrcCpu*/, &pProbeLoc->AddrProbe, DBGF_BP_F_DEFAULT,
                                0 /*iHitTrigger*/, ~0ULL /*iHitDisable*/, &pProbeLoc->hBp);
         if (RT_FAILURE(rc))
             break;
