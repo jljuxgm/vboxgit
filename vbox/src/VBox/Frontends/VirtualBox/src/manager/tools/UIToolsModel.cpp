@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.cpp 88122 2021-03-15 15:44:48Z vboxsync $ */
+/* $Id: UIToolsModel.cpp 88252 2021-03-22 17:09:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class implementation.
  */
@@ -169,7 +169,7 @@ void UIToolsModel::setToolClassEnabled(UIToolClass enmClass, bool fEnabled)
     {
         m_enabledToolClasses[enmClass] = fEnabled;
         foreach (UIToolsItem *pItem, items())
-            pItem->setEnabled(   m_enabledToolClasses.value(enmClass)
+            pItem->setEnabled(   m_enabledToolClasses.value(pItem->itemClass())
                               && !m_restrictedToolTypes.contains(pItem->itemType()));
     }
 }
