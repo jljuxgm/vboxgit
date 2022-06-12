@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 84810 2020-06-12 08:52:50Z vboxsync $
+# $Id: tdAddBasic1.py 84811 2020-06-12 08:59:23Z vboxsync $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84810 $"
+__version__ = "$Revision: 84811 $"
 
 # Standard Python imports.
 import os;
@@ -213,7 +213,7 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
         elif oTestVm.isLinux():
             self.sFileCdWait = ('%s/VBoxLinuxAdditions.run' % (self.sPathGaISO,));
 
-        reporter.log2('Waiting for TXS + CD' % self.sFileCdWait);
+        reporter.log2('Waiting for TXS + CD: %s' % (self.sFileCdWait,));
 
         reporter.testStart('Waiting for TXS + CD');
         if oTestVm.isLinux():
