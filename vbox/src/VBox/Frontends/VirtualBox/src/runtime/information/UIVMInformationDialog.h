@@ -1,4 +1,4 @@
-/* $Id: UIVMInformationDialog.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIVMInformationDialog.h 88721 2021-04-27 08:05:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMInformationDialog class declaration.
  */
@@ -73,6 +73,7 @@ private slots:
     void suicide() { delete this; }
     /** Handles tab-widget page change. */
     void sltHandlePageChanged(int iIndex);
+    void sltSaveSettings();
 
 private:
 
@@ -90,11 +91,6 @@ private:
     void prepareButtonBox();
     /** Loads settings. */
     void loadSettings();
-
-    /** Saves settings. */
-    void saveSettings();
-    /** Cleanups all. */
-    void cleanup();
 
     /** @name General variables.
      * @{ */
@@ -116,4 +112,3 @@ private:
 };
 
 #endif /* !FEQT_INCLUDED_SRC_runtime_information_UIVMInformationDialog_h */
-

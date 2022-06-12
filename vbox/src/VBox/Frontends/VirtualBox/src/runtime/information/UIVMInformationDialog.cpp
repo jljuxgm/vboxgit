@@ -1,4 +1,4 @@
-/* $Id: UIVMInformationDialog.cpp 88071 2021-03-10 15:10:39Z vboxsync $ */
+/* $Id: UIVMInformationDialog.cpp 88721 2021-04-27 08:05:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMInformationDialog class implementation.
  */
@@ -93,9 +93,6 @@ UIVMInformationDialog::UIVMInformationDialog(UIMachineWindow *pMachineWindow)
 
 UIVMInformationDialog::~UIVMInformationDialog()
 {
-    /* Cleanup: */
-    cleanup();
-
     /* Deinitialize instance: */
     s_pInstance = 0;
 }
@@ -136,12 +133,25 @@ void UIVMInformationDialog::sltHandlePageChanged(int iIndex)
     m_pTabWidget->widget(iIndex)->setFocus();
 }
 
+void UIVMInformationDialog::sltSaveSettings()
+{
+    /* Save window geometry: */
+    {
+        const QRect geo = currentGeometry();
+        LogRel2(("GUI: UIVMInformationDialog: Saving geometry as: Origin=%dx%d, Size=%dx%d\n",
+                 geo.x(), geo.y(), geo.width(), geo.height()));
+        gEDataManager->setSessionInformationDialogGeometry(geo, isCurrentlyMaximized());
+    }
+}
+
 void UIVMInformationDialog::prepare()
 {
     /* Prepare dialog: */
     prepareThis();
     /* Load settings: */
     loadSettings();
+    connect(&uiCommon(), &UICommon::sigAskToCommitData,
+            this, &UIVMInformationDialog::sltSaveSettings);
 }
 
 void UIVMInformationDialog::prepareThis()
@@ -280,21 +290,4 @@ void UIVMInformationDialog::loadSettings()
                  geo.x(), geo.y(), geo.width(), geo.height()));
         restoreGeometry(geo);
     }
-}
-
-void UIVMInformationDialog::saveSettings()
-{
-    /* Save window geometry: */
-    {
-        const QRect geo = currentGeometry();
-        LogRel2(("GUI: UIVMInformationDialog: Saving geometry as: Origin=%dx%d, Size=%dx%d\n",
-                 geo.x(), geo.y(), geo.width(), geo.height()));
-        gEDataManager->setSessionInformationDialogGeometry(geo, isCurrentlyMaximized());
-    }
-}
-
-void UIVMInformationDialog::cleanup()
-{
-    /* Save settings: */
-    saveSettings();
 }

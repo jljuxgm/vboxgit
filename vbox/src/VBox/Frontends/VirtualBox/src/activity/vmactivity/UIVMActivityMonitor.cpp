@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityMonitor.cpp 88242 2021-03-22 12:20:10Z vboxsync $ */
+/* $Id: UIVMActivityMonitor.cpp 88721 2021-04-27 08:05:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMActivityMonitor class implementation.
  */
@@ -799,12 +799,8 @@ UIVMActivityMonitor::UIVMActivityMonitor(EmbedTo enmEmbedding, QWidget *pParent,
     setContextMenuPolicy(Qt::CustomContextMenu);
     connect(this, &UIVMActivityMonitor::customContextMenuRequested,
             this, &UIVMActivityMonitor::sltCreateContextMenu);
-}
-
-UIVMActivityMonitor::~UIVMActivityMonitor()
-{
-    if (!m_comSession.isNull())
-        m_comSession.UnlockMachine();
+    connect(&uiCommon(), &UICommon::sigAskToDetachCOM,
+            this, &UIVMActivityMonitor::sltClearCOMData);
 }
 
 void UIVMActivityMonitor::setMachine(const CMachine &comMachine)
@@ -1069,6 +1065,12 @@ void UIVMActivityMonitor::sltGuestAdditionsStateChange()
         return;
     m_fGuestAdditionsAvailable = fGuestAdditionsAvailable;
     enableDisableGuestAdditionDependedWidgets(m_fGuestAdditionsAvailable);
+}
+
+void UIVMActivityMonitor::sltClearCOMData()
+{
+    if (!m_comSession.isNull())
+        m_comSession.UnlockMachine();
 }
 
 void UIVMActivityMonitor::prepareMetrics()

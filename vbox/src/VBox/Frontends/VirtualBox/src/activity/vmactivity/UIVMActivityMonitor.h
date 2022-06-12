@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityMonitor.h 88119 2021-03-15 11:26:51Z vboxsync $ */
+/* $Id: UIVMActivityMonitor.h 88721 2021-04-27 08:05:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMActivityMonitor class declaration.
  */
@@ -124,7 +124,6 @@ public:
       * @param machine is machine reference. */
     UIVMActivityMonitor(EmbedTo enmEmbedding, QWidget *pParent, const CMachine &machine,
                          UIActionPool *pActionPool,bool fShowToolbar = false);
-    ~UIVMActivityMonitor();
     void setMachine(const CMachine &machine);
 
 #ifdef VBOX_WS_MAC
@@ -150,6 +149,7 @@ private slots:
     void sltMachineStateChange(const QUuid &uId);
     void sltExportMetricsToFile();
     void sltCreateContextMenu(const QPoint &point);
+    void sltClearCOMData();
 
 private:
 

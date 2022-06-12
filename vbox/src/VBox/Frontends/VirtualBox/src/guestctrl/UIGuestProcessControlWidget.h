@@ -1,4 +1,4 @@
-/* $Id: UIGuestProcessControlWidget.h 86233 2020-09-23 12:10:51Z vboxsync $ */
+/* $Id: UIGuestProcessControlWidget.h 88721 2021-04-27 08:05:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestProcessControlWidget class declaration.
  */
@@ -54,7 +54,6 @@ public:
 
     UIGuestProcessControlWidget(EmbedTo enmEmbedding, const CGuest &comGuest, QWidget *pParent,
                                 QString strMachineName = QString(), bool fShowToolbar = false);
-    ~UIGuestProcessControlWidget();
     /** When true we delete the corresponding tree item as soon as the guest session/process is unregistered. */
     static const bool           m_fDeleteAfterUnregister;
 
@@ -70,6 +69,8 @@ private slots:
     void sltTreeItemUpdated();
     void sltCloseSessionOrProcess();
     void sltShowProperties();
+    void sltSaveSettings();
+    void sltCleanupListener();
 
 private:
 
@@ -79,9 +80,7 @@ private:
     void prepareListener();
     void initGuestSessionTree();
     void updateTreeWidget();
-    void cleanupListener();
     void addGuestSession(CGuestSession guestSession);
-    void saveSettings();
     void loadSettings();
 
     CGuest                    m_comGuest;
