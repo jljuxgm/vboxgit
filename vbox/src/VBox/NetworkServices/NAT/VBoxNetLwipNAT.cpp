@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwipNAT.cpp 87826 2021-02-21 23:08:44Z vboxsync $ */
+/* $Id: VBoxNetLwipNAT.cpp 87827 2021-02-22 02:52:34Z vboxsync $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -1943,7 +1943,7 @@ VBoxNetLwipNAT::netifLinkoutput(netif *pNetif, pbuf *pPBuf) RT_NOTHROW_DEF
     if (RT_FAILURE(rc))
         return ERR_MEM;
 
-    pbuf_copy_partial(pPBuf, frame.pvFrame, cbFrame, ETH_PAD_SIZE);
+    pbuf_copy_partial(pPBuf, frame.pvFrame, (u16_t)cbFrame, ETH_PAD_SIZE);
     rc = self->m_IntNetIf.ifOutput(frame);
     if (RT_FAILURE(rc))
         return ERR_IF;
