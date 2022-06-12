@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasicNameType.cpp 84886 2020-06-21 15:03:55Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasicNameType.cpp 84890 2020-06-22 09:16:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasicNameType class implementation.
  */
@@ -342,6 +342,14 @@ UIWizardNewVMPageBasicNameType::UIWizardNewVMPageBasicNameType(const QString &st
     registerField("machineFilePath", this, "machineFilePath");
     registerField("machineFolder", this, "machineFolder");
     registerField("machineBaseName", this, "machineBaseName");
+}
+
+int UIWizardNewVMPageBasicNameType::nextId() const
+{
+    UIWizardNewVM *pWizard = qobject_cast<UIWizardNewVM*>(wizard());
+    if (!pWizard || !pWizard->isUnattendedInstallEnabled())
+        return UIWizardNewVM::PageHardware;
+    return UIWizardNewVM::PageInstallSetup;
 }
 
 void UIWizardNewVMPageBasicNameType::sltNameChanged(const QString &strNewName)
