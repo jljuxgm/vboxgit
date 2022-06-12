@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioDebug.cpp 88923 2021-05-07 13:34:51Z vboxsync $ */
+/* $Id: DrvHostAudioDebug.cpp 89051 2021-05-14 18:58:11Z vboxsync $ */
 /** @file
  * Host audio driver - Debug - For dumping and injecting audio data from/to the device emulation.
  */
@@ -263,7 +263,7 @@ static DECLCALLBACK(int) drvHostDebugAudioHA_StreamCapture(PPDMIHOSTAUDIO pInter
 /** @todo rate limit this?  */
 
     uint32_t cbWritten;
-    int rc = AudioTestToneWrite(&pStreamDbg->In, pvBuf, cbBuf, &cbWritten);
+    int rc = AudioTestToneGenerate(&pStreamDbg->In, pvBuf, cbBuf, &cbWritten);
     if (RT_SUCCESS(rc))
     {
         /*
