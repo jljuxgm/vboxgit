@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 87720 2021-02-11 09:42:55Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 88244 2021-03-22 12:49:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class implementation.
  */
@@ -571,8 +571,21 @@ void UIMachineWindow::updateAppearanceOf(int iElement)
         const QString strUserProductName = uisession()->machineWindowNamePostfix();
         strMachineName += " - " + (strUserProductName.isEmpty() ? defaultWindowTitle() : strUserProductName);
 #endif /* !VBOX_WS_MAC */
-        if (machine().GetGraphicsAdapter().GetMonitorCount() > 1)
-            strMachineName += QString(" : %1").arg(m_uScreenId + 1);
+        /* Check if we can get graphics adapter: */
+        CGraphicsAdapter comAdapter = machine().GetGraphicsAdapter();
+        if (!machine().isOk())
+        {
+            // What can I say, we really want to notify user about this
+            // one, but if that happens on VM shutdown/poweroff there
+            // will no be a chance to do it, cause application got exited.
+            msgCenter().cannotAcquireMachineParameter(machine());
+        }
+        else
+        {
+            /* Append screen number only if there are more than one present: */
+            if (comAdapter.GetMonitorCount() > 1)
+                strMachineName += QString(" : %1").arg(m_uScreenId + 1);
+        }
         setWindowTitle(strMachineName);
     }
 }
