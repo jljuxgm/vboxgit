@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic2.cpp 86346 2020-09-30 13:02:39Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic2.cpp 86355 2020-09-30 17:12:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic2 class implementation.
  */
@@ -763,6 +763,7 @@ UIWizardExportAppPageBasic2::UIWizardExportAppPageBasic2(bool fExportToOCIByDefa
 #endif
                     m_pSettingsLayout2->setColumnStretch(0, 0);
                     m_pSettingsLayout2->setColumnStretch(1, 1);
+                    m_pSettingsLayout2->setRowStretch(4, 1);
 
                     /* Create profile label: */
                     m_pProfileLabel = new QLabel;

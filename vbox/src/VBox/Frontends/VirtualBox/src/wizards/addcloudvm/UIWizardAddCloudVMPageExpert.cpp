@@ -1,4 +1,4 @@
-/* $Id: UIWizardAddCloudVMPageExpert.cpp 86346 2020-09-30 13:02:39Z vboxsync $ */
+/* $Id: UIWizardAddCloudVMPageExpert.cpp 86355 2020-09-30 17:12:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardAddCloudVMPageExpert class implementation.
  */
@@ -60,7 +60,7 @@ UIWizardAddCloudVMPageExpert::UIWizardAddCloudVMPageExpert()
                 if (m_pCloudContainerLayout)
                 {
                     m_pCloudContainerLayout->setContentsMargins(0, 0, 0, 0);
-                    m_pCloudContainerLayout->setRowStretch(3, 1);
+                    m_pCloudContainerLayout->setRowStretch(1, 1);
 
                     /* Create sub-layout: */
                     QHBoxLayout *pSubLayout = new QHBoxLayout;
