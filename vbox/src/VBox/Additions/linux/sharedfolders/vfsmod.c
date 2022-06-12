@@ -1,4 +1,4 @@
-/* $Id: vfsmod.c 85699 2020-08-11 17:24:32Z vboxsync $ */
+/* $Id: vfsmod.c 86722 2020-10-27 12:19:37Z vboxsync $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, module init/term, super block management.
  */
@@ -763,7 +763,8 @@ static int vbsf_remount_fs(struct super_block *sb, int *flags, char *data)
         }
     }
 
-    iroot = ilookup(sb, 0);
+    /* '.' and '..' entries are st_ino == 0 so root is #1 */
+    iroot = ilookup(sb, 1);
     if (!iroot)
         return -ENOSYS;
 
