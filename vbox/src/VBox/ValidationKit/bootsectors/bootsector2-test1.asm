@@ -1,4 +1,4 @@
-; $Id: bootsector2-test1.asm 85120 2020-07-08 19:14:39Z vboxsync $
+; $Id: bootsector2-test1.asm 87744 2021-02-12 21:00:51Z vboxsync $
 ;; @file
 ; Bootsector that benchmarks I/O and MMIO roundtrip time.
 ;   VBoxManage setextradata bs-test1 VBoxInternal/Devices/VMMDev/0/Config/TestingEnabled  1
@@ -33,6 +33,9 @@
 
 ;; The number of instructions to test.
 %define TEST_INSTRUCTION_COUNT_IO       2000000
+
+;; The number of CPUID instructions to test.
+%define TEST_INSTRUCTION_COUNT_CPUID    8000000
 
 ;; The number of RDTSC instructions to test.
 %define TEST_INSTRUCTION_COUNT_RDTSC    4000000
