@@ -1,4 +1,4 @@
-/* $Id: xptcstubs_arm64_vbox.cpp 87254 2021-01-14 22:58:44Z vboxsync $ */
+/* $Id: xptcstubs_arm64_vbox.cpp 87272 2021-01-15 13:16:33Z vboxsync $ */
 /** @file
  * XPCOM - XPTC stubs for arm64.
  */
@@ -89,7 +89,7 @@ extern "C" __attribute__((naked)) nsresult CommonXPTCStub(void)
         bl      " NAME_PREFIX_STR "CommonXPTCStubCWorker \n\
 "
         /* Epilogue (clang does not emit the .cfi's here, so drop them too?): */ "\
-        ldp	x29, x30, [sp, %[cbGPRs]] \n\
+        ldp	x29, x30, [sp, %[cbGPRandFPRs]] \n\
         add     sp, sp, %[cbGPRandFPRs] + 16 \n\
         .cfi_def_cfa sp, 0 \n\
         .cfi_restore x29 \n\
@@ -188,7 +188,7 @@ CommonXPTCStubCWorker(nsXPTCStubBase *pThis, uint32_t idxMethod, uint64_t *pauGp
     /*
      * Populate the dispatcher parameter array.
      */
-    unsigned idxGprArgs = 0;
+    unsigned idxGprArgs = 1;    /* The 'pThis' pointer (x0) is not included in cParams. */
     unsigned idxFprArgs = 0;
     for (PRUint8 i = 0; i < cParams; i++)
     {
