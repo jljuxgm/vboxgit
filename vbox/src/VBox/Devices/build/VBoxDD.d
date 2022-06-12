@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.d 87989 2021-03-06 11:19:57Z vboxsync $ */
+/* $Id: VBoxDD.d 88944 2021-05-08 13:29:43Z vboxsync $ */
 /** @file
  * VBoxDD - Static dtrace probes
  */
@@ -30,8 +30,9 @@ provider vboxdd
     probe hda__stream__dma__out(uint32_t idxStream, uint32_t cb, uint64_t off);
     probe hda__stream__dma__in(uint32_t idxStream, uint32_t cb, uint64_t off);
     probe hda__stream__dma__flowerror(uint32_t idxStream, uint32_t cbFree, uint32_t cbPeriod, int32_t fOverflow);
-    probe hda__stream__aio__out(uint32_t idxStream, uint32_t cb, uint64_t off);
-    probe hda__stream__aio__in(uint32_t idxStream, uint32_t cb, uint64_t off);
+
+    probe audio__mixer__sink__aio__out(uint32_t idxStream, uint32_t cb, uint64_t off);
+    probe audio__mixer__sink__aio__in(uint32_t idxStream, uint32_t cb, uint64_t off);
 };
 
 #pragma D attributes Evolving/Evolving/Common provider vboxdd provider
