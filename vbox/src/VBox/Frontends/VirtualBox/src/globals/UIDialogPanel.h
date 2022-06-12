@@ -1,4 +1,4 @@
-/* $Id: UIDialogPanel.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIDialogPanel.h 88018 2021-03-08 15:12:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -46,6 +46,7 @@ public:
 signals:
 
     void sigHidePanel(UIDialogPanel *pPanel);
+    void sigShowPanel(UIDialogPanel *pPanel);
 
 protected:
 

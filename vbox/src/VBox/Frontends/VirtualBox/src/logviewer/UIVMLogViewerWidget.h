@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.h 86233 2020-09-23 12:10:51Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.h 88018 2021-03-08 15:12:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class declaration.
  */
@@ -123,6 +123,7 @@ private slots:
        of UIVMLogPage is changed. */
     void sltLogPageFilteredChanged(bool isFiltered);
     void sltHandleHidePanel(UIDialogPanel *pPanel);
+    void sltHandleShowPanel(UIDialogPanel *pPanel);
 
     /** @name Slots to handle signals from settings panel
      * @{ */

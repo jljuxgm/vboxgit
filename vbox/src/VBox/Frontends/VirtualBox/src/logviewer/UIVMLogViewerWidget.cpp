@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.cpp 87108 2020-12-21 12:00:50Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.cpp 88018 2021-03-08 15:12:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class implementation.
  */
@@ -347,6 +347,11 @@ void UIVMLogViewerWidget::sltHandleHidePanel(UIDialogPanel *pPanel)
     hidePanel(pPanel);
 }
 
+void UIVMLogViewerWidget::sltHandleShowPanel(UIDialogPanel *pPanel)
+{
+    showPanel(pPanel);
+}
+
 void UIVMLogViewerWidget::sltShowLineNumbers(bool bShowLineNumbers)
 {
     if (m_bShowLineNumbers == bShowLineNumbers)
@@ -501,6 +506,8 @@ void UIVMLogViewerWidget::prepareWidgets()
                     this, &UIVMLogViewerWidget::sltHandleSearchUpdated);
             connect(m_pSearchPanel, &UIVMLogViewerSearchPanel::sigHidePanel,
                     this, &UIVMLogViewerWidget::sltHandleHidePanel);
+            connect(m_pSearchPanel, &UIVMLogViewerSearchPanel::sigShowPanel,
+                    this, &UIVMLogViewerWidget::sltHandleShowPanel);
             m_panelActionMap.insert(m_pSearchPanel, m_pActionPool->action(UIActionIndex_M_Log_T_Find));
 
             /* Add into layout: */
@@ -518,6 +525,8 @@ void UIVMLogViewerWidget::prepareWidgets()
                     this, &UIVMLogViewerWidget::sltFilterApplied);
             connect(m_pFilterPanel, &UIVMLogViewerFilterPanel::sigHidePanel,
                     this, &UIVMLogViewerWidget::sltHandleHidePanel);
+           connect(m_pFilterPanel, &UIVMLogViewerFilterPanel::sigShowPanel,
+                    this, &UIVMLogViewerWidget::sltHandleShowPanel);
             m_panelActionMap.insert(m_pFilterPanel, m_pActionPool->action(UIActionIndex_M_Log_T_Filter));
 
             /* Add into layout: */
@@ -539,7 +548,8 @@ void UIVMLogViewerWidget::prepareWidgets()
             m_panelActionMap.insert(m_pBookmarksPanel, m_pActionPool->action(UIActionIndex_M_Log_T_Bookmark));
             connect(m_pBookmarksPanel, &UIVMLogViewerBookmarksPanel::sigHidePanel,
                     this, &UIVMLogViewerWidget::sltHandleHidePanel);
-
+            connect(m_pBookmarksPanel, &UIVMLogViewerBookmarksPanel::sigShowPanel,
+                    this, &UIVMLogViewerWidget::sltHandleShowPanel);
             /* Add into layout: */
             m_pMainLayout->addWidget(m_pBookmarksPanel);
         }
@@ -559,6 +569,7 @@ void UIVMLogViewerWidget::prepareWidgets()
             connect(m_pOptionsPanel, &UIVMLogViewerOptionsPanel::sigChangeFont, this, &UIVMLogViewerWidget::sltChangeFont);
             connect(m_pOptionsPanel, &UIVMLogViewerOptionsPanel::sigResetToDefaults, this, &UIVMLogViewerWidget::sltResetOptionsToDefault);
             connect(m_pOptionsPanel, &UIVMLogViewerOptionsPanel::sigHidePanel, this, &UIVMLogViewerWidget::sltHandleHidePanel);
+            connect(m_pOptionsPanel, &UIVMLogViewerOptionsPanel::sigShowPanel, this, &UIVMLogViewerWidget::sltHandleShowPanel);
 
             m_panelActionMap.insert(m_pOptionsPanel, m_pActionPool->action(UIActionIndex_M_Log_T_Options));
 

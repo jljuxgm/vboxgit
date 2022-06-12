@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerSearchPanel.cpp 86821 2020-11-06 12:19:28Z vboxsync $ */
+/* $Id: UIVMLogViewerSearchPanel.cpp 88018 2021-03-08 15:12:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -342,8 +342,7 @@ bool UIVMLogViewerSearchPanel::eventFilter(QObject *pObject, QEvent *pEvent)
                      pKeyEvent->key() == Qt::Key_F)
             {
                 /* Make sure current log-page is visible: */
-                if (isHidden())
-                    show();
+                emit sigShowPanel(this);
                 /* Set focus on search-editor: */
                 m_pSearchEditor->setFocus();
                 return true;
@@ -353,8 +352,7 @@ bool UIVMLogViewerSearchPanel::eventFilter(QObject *pObject, QEvent *pEvent)
                      pKeyEvent->key() >= Qt::Key_Exclam && pKeyEvent->key() <= Qt::Key_AsciiTilde)
             {
                 /* Make sure current log-page is visible: */
-                if (isHidden())
-                    show();
+                emit sigShowPanel(this);
                 /* Set focus on search-editor: */
                 m_pSearchEditor->setFocus();
                 /* Insert the text to search-editor, which triggers the search-operation for new text: */
