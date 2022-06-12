@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 87728 2021-02-12 02:24:07Z vboxsync $
+# $Id: Makefile.kmk 88331 2021-03-31 15:34:52Z vboxsync $
 ## @file
 # Sub-Makefile for the support library and the drivers/modules/kexts it uses.
 #
@@ -776,7 +776,7 @@ $$(vboxdrv-src_0_OUTDIR)/Makefile: \
 		$(if-expr !defined(VBOX_WITH_RAM_IN_KERNEL) \
 		 , -e 's;VBOX_WITHOUT_EFLAGS_AC_SET_IN_VBOXDRV;;g' -e 's;IPRT_WITHOUT_EFLAGS_AC_PRESERVING;;g',) \
 		--output $@ $<
-	%$(QUIET2)$(APPEND) -t '$(PATH_TARGET)/vboxdrv-src-1.dep' \
+	%$(QUIET2)$(APPEND) -t -n '$(PATH_TARGET)/vboxdrv-src-1.dep' \
 		'Support/$(KBUILD_TARGET)/Makefile_VBOX_HARDENED=$(VBOX_WITH_HARDENING)' \
 		'Support/$(KBUILD_TARGET)/Makefile_VBOX_RAM_IN_KERNEL=$(VBOX_WITH_RAM_IN_KERNEL)'
 
