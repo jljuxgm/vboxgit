@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-linux.c 85703 2020-08-11 18:54:01Z vboxsync $ */
+/* $Id: VBoxNetFlt-linux.c 87785 2021-02-17 19:25:12Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Linux Specific Code.
  */
@@ -35,9 +35,12 @@
 #include "revision-generated.h"
 #include "product-generated.h"
 #if RTLNX_VER_MIN(2,6,24)
-#include <linux/nsproxy.h>
+# include <linux/nsproxy.h>
 #endif
 #include <linux/netdevice.h>
+#if RTLNX_VER_MAX(2,6,29) || RTLNX_VER_MIN(5,11,0)
+# include <linux/ethtool.h>
+#endif
 #include <linux/etherdevice.h>
 #include <linux/rtnetlink.h>
 #include <linux/miscdevice.h>
@@ -46,7 +49,7 @@
 #include <linux/ip.h>
 #include <linux/if_vlan.h>
 #if RTLNX_VER_MIN(4,5,0)
-#include <uapi/linux/pkt_cls.h>
+# include <uapi/linux/pkt_cls.h>
 #endif
 #include <net/ipv6.h>
 #include <net/if_inet6.h>
@@ -329,8 +332,6 @@ static void __exit VBoxNetFltLinuxUnload(void)
 #ifdef VBOXNETFLT_WITH_HOST2WIRE_FILTER
 
 # if RTLNX_VER_MAX(2,6,29)
-
-# include <linux/ethtool.h>
 
 typedef struct ethtool_ops OVR_OPSTYPE;
 # define OVR_OPS  ethtool_ops
