@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.cpp 87718 2021-02-11 08:50:48Z vboxsync $ */
+/* $Id: UIFileManagerTable.cpp 88793 2021-04-30 12:12:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class implementation.
  */
@@ -395,9 +395,9 @@ UIFileManagerBreadCrumbs::UIFileManagerBreadCrumbs(QWidget *pParent /* = 0 */)
     setFrameShape(QFrame::Box);
     setLineWidth(1);
     setAutoFillBackground(true);
-    QPalette newPalette = palette();
-    newPalette.setColor(QPalette::Background, qApp->palette().color(QPalette::Light));
-    setPalette(newPalette);
+    QPalette pal = QApplication::palette();
+    pal.setColor(QPalette::Active, QPalette::Window, pal.color(QPalette::Active, QPalette::Base));
+    setPalette(pal);
     /* Allow the labe become smaller than the current text. calling setpath in resizeEvent truncated the text anyway: */
     setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
 }
