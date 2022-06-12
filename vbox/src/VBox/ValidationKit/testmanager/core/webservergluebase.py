@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: webservergluebase.py 84599 2020-05-29 01:12:32Z vboxsync $
+# $Id: webservergluebase.py 84604 2020-05-29 09:09:31Z vboxsync $
 
 """
 Test Manager Core - Web Server Abstraction Base Class.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84599 $"
+__version__ = "$Revision: 84604 $"
 
 
 # Standard python imports.
@@ -372,7 +372,7 @@ class WebServerGlueBase(object):
         if self._cchCached > 0:
             self.flush();
 
-        sys.stderr.write('writeRaw: cb=%s\n' % (len(writeRaw),))
+        sys.stderr.write('writeRaw: cb=%s\n' % (len(abChunk),))
         self.oOutputRaw.write(abChunk);
         return True;
 
