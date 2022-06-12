@@ -1,4 +1,4 @@
-# $Id: Config.kmk 85337 2020-07-14 12:32:31Z vboxsync $
+# $Id: Config.kmk 85359 2020-07-15 19:08:02Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1275,8 +1275,6 @@ ifdef VBOX_OSE
   VBOX_WITH_RECORDING=
   VBOX_WITH_AUDIO_RECORDING=
  endif
- # Disable cloud network support
- VBOX_WITH_CLOUD_NET=
  # Disable building and packing vboximg-mount.
  VBOX_WITH_VBOXIMGMOUNT=
  VBOX_WITH_FUSE_PACKING=
@@ -8046,7 +8044,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 85337 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 85359 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
