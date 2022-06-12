@@ -1,4 +1,4 @@
-/* $Id: UIHelpViewer.cpp 88401 2021-04-07 14:39:51Z vboxsync $ */
+/* $Id: UIHelpViewer.cpp 88408 2021-04-08 09:22:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class implementation.
  */
@@ -48,6 +48,9 @@
 #include "CSystemProperties.h"
 
 #ifdef VBOX_WITH_QHELP_VIEWER
+
+//static int iZoomPercentageStep = 20;
+const QPair<int, int> UIHelpViewer::zoomPercentageMinMax = QPair<int, int>(20, 300);
 
 
 /*********************************************************************************************************************************
@@ -434,6 +437,12 @@ bool UIHelpViewer::isFindInPageWidgetVisible() const
         return m_pFindInPageWidget->isVisible();
     return false;
 }
+
+void UIHelpViewer::zoom(ZoomOperation enmZoomOperation)
+{
+    Q_UNUSED(enmZoomOperation);
+}
+
 
 void UIHelpViewer::contextMenuEvent(QContextMenuEvent *event)
 {

@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.h 88401 2021-04-07 14:39:51Z vboxsync $ */
+/* $Id: UIHelpBrowserWidget.h 88408 2021-04-08 09:22:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class declaration.
  */
@@ -66,8 +66,6 @@ public:
 #ifdef VBOX_WS_MAC
     QIToolBar *toolbar() const { return m_pToolBar; }
 #endif
-
-    static const QPair<float, float> fontScaleMinMax;
 
 protected:
 
@@ -166,10 +164,10 @@ private:
     QAction             *m_pCloseDialogAction;
     QAction             *m_pShowHideSideBarAction;
     QAction             *m_pShowHideToolBarAction;
-    QAction             *m_pShowHideFontScaleWidgetAction;
+    QAction             *m_pShowHideZoomWidgetAction;
     QAction             *m_pShowHideStatusBarAction;
-    QAction             *m_pFontSizeLargerAction;
-    QAction             *m_pFontSizeSmallerAction;
+    QAction             *m_pZoomInAction;
+    QAction             *m_pZoomOutAction;
     QAction             *m_pFontSizeResetAction;
 
     /* This is set t true when handling QHelpContentModel::contentsCreated signal. */
