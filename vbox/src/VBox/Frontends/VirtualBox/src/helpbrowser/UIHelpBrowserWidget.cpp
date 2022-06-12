@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.cpp 86944 2020-11-20 17:57:56Z vboxsync $ */
+/* $Id: UIHelpBrowserWidget.cpp 86945 2020-11-20 18:03:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class implementation.
  */
@@ -1136,6 +1136,11 @@ void UIHelpBrowserViewer::setSource(const QUrl &url)
     if (!pDocument || pDocument->isEmpty())
     {
         setText(tr("<div><p><h3>404. Not found.</h3>The page <b>%1</b> could not be found.</p></div>").arg(url.toString()));
+    }
+    if (m_pFindInPageWidget && m_pFindInPageWidget->isVisible())
+    {
+        document()->undo();
+        m_pFindInPageWidget->clearSearchField();
     }
 }
 
