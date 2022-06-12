@@ -1,4 +1,4 @@
-/* $Id: DnDURIObject.cpp 84998 2020-06-29 16:34:22Z vboxsync $ */
+/* $Id: DnDURIObject.cpp 84999 2020-06-29 16:37:55Z vboxsync $ */
 /** @file
  * DnD - URI object class. For handling creation/reading/writing to files and directories on host or guest side.
  */
@@ -32,7 +32,7 @@
 #include <VBox/log.h>
 
 
-DnDURIObject::DnDURIObject(Type enmType = /* Type_Unknown */, const RTCString &strPathAbs /* = "" */)
+DnDURIObject::DnDURIObject(Type enmType /* = Type_Unknown */, const RTCString &strPathAbs /* = "" */)
 {
     int rc2 = Init(enmType, strPathAbs);
     AssertRC(rc2);
