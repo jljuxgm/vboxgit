@@ -1,4 +1,4 @@
-/* $Id: tstGuestCtrlParseBuffer.cpp 86371 2020-10-01 05:23:53Z vboxsync $ */
+/* $Id: tstGuestCtrlParseBuffer.cpp 86543 2020-10-12 14:46:02Z vboxsync $ */
 /** @file
  * Output stream parsing test cases.
  */
@@ -188,7 +188,9 @@ int main()
     }
 
 #ifdef DEBUG_andy
-    rc = manualTest();
+    int rc = manualTest();
+    if (RT_FAILURE(rc))
+        return RTEXITCODE_FAILURE;
 #endif
 
     RTTestIPrintf(RTTESTLVL_INFO, "Doing basic tests ...\n");
