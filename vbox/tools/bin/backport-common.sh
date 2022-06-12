@@ -1,4 +1,4 @@
-# $Id: backport-common.sh 85586 2020-07-31 16:53:31Z vboxsync $
+# $Id: backport-common.sh 85589 2020-07-31 19:26:03Z vboxsync $
 ## @file
 # Common backport script bits.
 #
@@ -96,7 +96,7 @@ do
             ;;
 
         [0-9][0-9][0-9][0-9][0-9]|[0-9][0-9][0-9][0-9][0-9][0-9]|[0-9][0-9][0-9][0-9][0-9][0-9][0-9])
-            AddRevision ${MY_ARG}
+            AddRevision ${ARG}
             ;;
 
         --trunk-dir)
