@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-win.cpp 85983 2020-09-01 16:55:10Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-win.cpp 86247 2020-09-23 16:44:40Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Win32 host.
  */
@@ -796,7 +796,7 @@ int ShClBackendReadData(PSHCLCLIENT pClient, PSHCLCLIENTCMDCTX pCmdCtx,
                         /** @todo r=andy Add data overflow handling. */
                         vboxClipboardSvcWinGetData(VBOX_SHCL_FMT_HTML, lp, GlobalSize(hClip),
                                                    pvData, cbData, pcbActual);
-#ifdef VBOX_STRICT
+#ifdef LOG_ENABLED
                         LogFlowFunc(("Raw HTML clipboard data from host:"));
                         ShClDbgDumpHtml((char *)pvData, cbData);
 #endif
