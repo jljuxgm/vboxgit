@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 84851 2020-06-16 15:44:23Z vboxsync $ */
+/* $Id: DevVGA-SVGA.cpp 84919 2020-06-23 15:01:25Z vboxsync $ */
 /** @file
  * VMware SVGA device.
  *
@@ -4456,7 +4456,8 @@ static DECLCALLBACK(int) vmsvgaR3FifoLoop(PPDMDEVINS pDevIns, PPDMTHREAD pThread
                 vmsvgaR3ChangeMode(pThis, pThisCC);
 
 # ifdef VBOX_WITH_VMSVGA3D
-                vmsvga3dDefineScreen(pThisCC, pScreen);
+                if (RT_LIKELY(pThis->svga.f3DEnabled))
+                    vmsvga3dDefineScreen(pThisCC, pScreen);
 # endif
                 break;
             }
@@ -4479,7 +4480,8 @@ static DECLCALLBACK(int) vmsvgaR3FifoLoop(PPDMDEVINS pDevIns, PPDMTHREAD pThread
                 pScreen->idScreen  = idScreen;
 
 # ifdef VBOX_WITH_VMSVGA3D
-                vmsvga3dDestroyScreen(pThisCC, pScreen);
+                if (RT_LIKELY(pThis->svga.f3DEnabled))
+                    vmsvga3dDestroyScreen(pThisCC, pScreen);
 # endif
                 vmsvgaR3ChangeMode(pThis, pThisCC);
                 break;
