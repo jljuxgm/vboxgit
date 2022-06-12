@@ -1,4 +1,4 @@
-/* $Id: AudioMixBuffer.h 89302 2021-05-26 21:00:51Z vboxsync $ */
+/* $Id: AudioMixBuffer.h 89314 2021-05-27 11:33:04Z vboxsync $ */
 /** @file
  * Audio Mixing bufer convert audio samples to/from different rates / formats.
  */
@@ -328,7 +328,7 @@ int         AudioMixBufAcquireReadBlockEx(PAUDIOMIXBUF pMixBuf, PCPDMAUDIOPCMPRO
 void AudioMixBufReleaseReadBlock(PAUDIOMIXBUF pMixBuf, uint32_t cFrames);
 uint32_t AudioMixBufReadPos(PAUDIOMIXBUF pMixBuf);
 void AudioMixBufReset(PAUDIOMIXBUF pMixBuf);
-void AudioMixBufSetVolume(PAUDIOMIXBUF pMixBuf, PPDMAUDIOVOLUME pVol);
+void AudioMixBufSetVolume(PAUDIOMIXBUF pMixBuf, PCPDMAUDIOVOLUME pVol);
 uint32_t AudioMixBufSize(PAUDIOMIXBUF pMixBuf);
 uint32_t AudioMixBufSizeBytes(PAUDIOMIXBUF pMixBuf);
 void AudioMixBufUnlink(PAUDIOMIXBUF pMixBuf);
