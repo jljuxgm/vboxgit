@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioOss.cpp 89055 2021-05-15 16:03:07Z vboxsync $ */
+/* $Id: DrvHostAudioOss.cpp 89213 2021-05-21 10:00:12Z vboxsync $ */
 /** @file
  * Host audio driver - OSS (Open Sound System).
  */
@@ -429,9 +429,10 @@ static DECLCALLBACK(int) drvHostOssAudioHA_StreamCreate(PPDMIHOSTAUDIO pInterfac
 /**
  * @interface_method_impl{PDMIHOSTAUDIO,pfnStreamDestroy}
  */
-static DECLCALLBACK(int) drvHostOssAudioHA_StreamDestroy(PPDMIHOSTAUDIO pInterface, PPDMAUDIOBACKENDSTREAM pStream)
+static DECLCALLBACK(int) drvHostOssAudioHA_StreamDestroy(PPDMIHOSTAUDIO pInterface, PPDMAUDIOBACKENDSTREAM pStream,
+                                                         bool fImmediate)
 {
-    RT_NOREF(pInterface);
+    RT_NOREF(pInterface, fImmediate);
     POSSAUDIOSTREAM pStreamOSS = (POSSAUDIOSTREAM)pStream;
     AssertPtrReturn(pStreamOSS, VERR_INVALID_POINTER);
 

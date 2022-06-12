@@ -1,4 +1,4 @@
-/* $Id: DrvAudioRec.cpp 88991 2021-05-12 00:46:35Z vboxsync $ */
+/* $Id: DrvAudioRec.cpp 89213 2021-05-21 10:00:12Z vboxsync $ */
 /** @file
  * Video recording audio backend for Main.
  *
@@ -525,11 +525,13 @@ static int avRecDestroyStreamOut(PDRVAUDIORECORDING pThis, PAVRECSTREAM pStreamA
 /**
  * @interface_method_impl{PDMIHOSTAUDIO,pfnStreamDestroy}
  */
-static DECLCALLBACK(int) drvAudioVideoRecHA_StreamDestroy(PPDMIHOSTAUDIO pInterface, PPDMAUDIOBACKENDSTREAM pStream)
+static DECLCALLBACK(int) drvAudioVideoRecHA_StreamDestroy(PPDMIHOSTAUDIO pInterface, PPDMAUDIOBACKENDSTREAM pStream,
+                                                          bool fImmediate)
 {
     PDRVAUDIORECORDING pThis     = RT_FROM_CPP_MEMBER(pInterface, DRVAUDIORECORDING, IHostAudio);
     PAVRECSTREAM       pStreamAV = (PAVRECSTREAM)pStream;
     AssertPtrReturn(pStream, VERR_INVALID_POINTER);
+    RT_NOREF(fImmediate);
 
     int rc = VINF_SUCCESS;
     if (pStreamAV->Cfg.enmDir == PDMAUDIODIR_OUT)

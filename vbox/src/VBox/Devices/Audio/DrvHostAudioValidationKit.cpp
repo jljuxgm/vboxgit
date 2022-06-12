@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioValidationKit.cpp 89174 2021-05-19 15:05:29Z vboxsync $ */
+/* $Id: DrvHostAudioValidationKit.cpp 89213 2021-05-21 10:00:12Z vboxsync $ */
 /** @file
  * Host audio driver - ValidationKit - For dumping and injecting audio data from/to the device emulation.
  */
@@ -219,9 +219,10 @@ static DECLCALLBACK(int) drvHostValKitAudioHA_StreamCreate(PPDMIHOSTAUDIO pInter
 /**
  * @interface_method_impl{PDMIHOSTAUDIO,pfnStreamDestroy}
  */
-static DECLCALLBACK(int) drvHostValKitAudioHA_StreamDestroy(PPDMIHOSTAUDIO pInterface, PPDMAUDIOBACKENDSTREAM pStream)
+static DECLCALLBACK(int) drvHostValKitAudioHA_StreamDestroy(PPDMIHOSTAUDIO pInterface, PPDMAUDIOBACKENDSTREAM pStream,
+                                                            bool fImmediate)
 {
-    RT_NOREF(pInterface); //PDRVHOSTVAKITAUDIO pThis     = RT_FROM_MEMBER(pInterface, DRVHOSTVAKITAUDIO, IHostAudio);
+    RT_NOREF(pInterface, fImmediate);
     PVAKITAUDIOSTREAM  pStreamDbg = (PVAKITAUDIOSTREAM)pStream;
     AssertPtrReturn(pStreamDbg, VERR_INVALID_POINTER);
 

@@ -1,4 +1,4 @@
-/* $Id: vkat.cpp 89204 2021-05-20 16:33:56Z vboxsync $ */
+/* $Id: vkat.cpp 89213 2021-05-21 10:00:12Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) utility for testing and validating the audio stack.
  */
@@ -965,7 +965,7 @@ static int audioTestDriverStackStreamCreateOutput(PAUDIOTESTDRVSTACK pDrvStack, 
                             RTTestFailed(g_hTest, "pfnStreamCreate returned unexpected info status: %Rrc", rc);
                             rc = VERR_IPE_UNEXPECTED_INFO_STATUS;
                         }
-                        pDrvStack->pIHostAudio->pfnStreamDestroy(pDrvStack->pIHostAudio, &pStreamAt->Backend);
+                        pDrvStack->pIHostAudio->pfnStreamDestroy(pDrvStack->pIHostAudio, &pStreamAt->Backend, true /*fImmediate*/);
                     }
                     else
                         RTTestFailed(g_hTest, "pfnStreamCreate failed: %Rrc\n", rc);
@@ -997,14 +997,14 @@ static void audioTestDriverStackStreamDestroy(PAUDIOTESTDRVSTACK pDrvStack, PPDM
     {
         if (pDrvStack->pIAudioConnector)
         {
-            int rc = pDrvStack->pIAudioConnector->pfnStreamDestroy(pDrvStack->pIAudioConnector, pStream);
+            int rc = pDrvStack->pIAudioConnector->pfnStreamDestroy(pDrvStack->pIAudioConnector, pStream, true /*fImmediate*/);
             if (RT_FAILURE(rc))
                 RTTestFailed(g_hTest, "pfnStreamDestroy failed: %Rrc", rc);
         }
         else
         {
             PAUDIOTESTDRVSTACKSTREAM pStreamAt = (PAUDIOTESTDRVSTACKSTREAM)pStream;
-            int rc = pDrvStack->pIHostAudio->pfnStreamDestroy(pDrvStack->pIHostAudio, &pStreamAt->Backend);
+            int rc = pDrvStack->pIHostAudio->pfnStreamDestroy(pDrvStack->pIHostAudio, &pStreamAt->Backend, true /*fImmediate*/);
             if (RT_SUCCESS(rc))
             {
                 pStreamAt->Core.uMagic    = ~PDMAUDIOSTREAM_MAGIC;
@@ -1460,7 +1460,7 @@ static int audioTestStreamDestroy(PAUDIOTESTENV pTstEnv, PAUDIOTESTSTREAM pStrea
 
     /** @todo Anything else to do here, e.g. test if there are left over samples or some such? */
 
-    int rc = pTstEnv->DrvStack.pIHostAudio->pfnStreamDestroy(pTstEnv->DrvStack.pIHostAudio, &pStream->Backend);
+    int rc = pTstEnv->DrvStack.pIHostAudio->pfnStreamDestroy(pTstEnv->DrvStack.pIHostAudio, &pStream->Backend, true /*fImmediate*/);
     if (RT_SUCCESS(rc))
         RT_BZERO(pStream, sizeof(PDMAUDIOBACKENDSTREAM));
 

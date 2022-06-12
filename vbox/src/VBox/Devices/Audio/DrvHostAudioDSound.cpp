@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioDSound.cpp 89089 2021-05-17 10:43:13Z vboxsync $ */
+/* $Id: DrvHostAudioDSound.cpp 89213 2021-05-21 10:00:12Z vboxsync $ */
 /** @file
  * Host audio driver - DirectSound (Windows).
  */
@@ -1722,12 +1722,14 @@ static DECLCALLBACK(int) drvHostDSoundHA_StreamCreate(PPDMIHOSTAUDIO pInterface,
 /**
  * @interface_method_impl{PDMIHOSTAUDIO,pfnStreamDestroy}
  */
-static DECLCALLBACK(int) drvHostDSoundHA_StreamDestroy(PPDMIHOSTAUDIO pInterface, PPDMAUDIOBACKENDSTREAM pStream)
+static DECLCALLBACK(int) drvHostDSoundHA_StreamDestroy(PPDMIHOSTAUDIO pInterface, PPDMAUDIOBACKENDSTREAM pStream,
+                                                       bool fImmediate)
 {
     PDRVHOSTDSOUND pThis     = RT_FROM_MEMBER(pInterface, DRVHOSTDSOUND, IHostAudio);
     PDSOUNDSTREAM  pStreamDS = (PDSOUNDSTREAM)pStream;
     AssertPtrReturn(pStreamDS, VERR_INVALID_POINTER);
     LogFlowFunc(("Stream '%s' {%s}\n", pStreamDS->Cfg.szName, drvHostDSoundStreamStatusString(pStreamDS)));
+    RT_NOREF(fImmediate);
 
     RTCritSectEnter(&pThis->CritSect);
     RTListNodeRemove(&pStreamDS->ListEntry);

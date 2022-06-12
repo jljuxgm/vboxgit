@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVRDE.cpp 88991 2021-05-12 00:46:35Z vboxsync $ */
+/* $Id: DrvAudioVRDE.cpp 89213 2021-05-21 10:00:12Z vboxsync $ */
 /** @file
  * VRDE audio backend for Main.
  */
@@ -397,11 +397,13 @@ static DECLCALLBACK(int) drvAudioVrdeHA_StreamCreate(PPDMIHOSTAUDIO pInterface, 
 /**
  * @interface_method_impl{PDMIHOSTAUDIO,pfnStreamDestroy}
  */
-static DECLCALLBACK(int) drvAudioVrdeHA_StreamDestroy(PPDMIHOSTAUDIO pInterface, PPDMAUDIOBACKENDSTREAM pStream)
+static DECLCALLBACK(int) drvAudioVrdeHA_StreamDestroy(PPDMIHOSTAUDIO pInterface, PPDMAUDIOBACKENDSTREAM pStream,
+                                                      bool fImmediate)
 {
     PDRVAUDIOVRDE pDrv        = RT_FROM_MEMBER(pInterface, DRVAUDIOVRDE, IHostAudio);
     PVRDESTREAM   pStreamVRDE = (PVRDESTREAM)pStream;
     AssertPtrReturn(pStreamVRDE, VERR_INVALID_POINTER);
+    RT_NOREF(fImmediate);
 
     if (pStreamVRDE->Cfg.enmDir == PDMAUDIODIR_OUT)
     {

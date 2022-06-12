@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioWasApi.cpp 89129 2021-05-17 23:45:55Z vboxsync $ */
+/* $Id: DrvHostAudioWasApi.cpp 89213 2021-05-21 10:00:12Z vboxsync $ */
 /** @file
  * Host audio driver - Windows Audio Session API.
  */
@@ -1920,12 +1920,14 @@ static DECLCALLBACK(int) drvHostAudioWasHA_StreamInitAsync(PPDMIHOSTAUDIO pInter
 /**
  * @interface_method_impl{PDMIHOSTAUDIO,pfnStreamDestroy}
  */
-static DECLCALLBACK(int) drvHostAudioWasHA_StreamDestroy(PPDMIHOSTAUDIO pInterface, PPDMAUDIOBACKENDSTREAM pStream)
+static DECLCALLBACK(int) drvHostAudioWasHA_StreamDestroy(PPDMIHOSTAUDIO pInterface, PPDMAUDIOBACKENDSTREAM pStream,
+                                                         bool fImmediate)
 {
     PDRVHOSTAUDIOWAS        pThis      = RT_FROM_MEMBER(pInterface, DRVHOSTAUDIOWAS, IHostAudio);
     PDRVHOSTAUDIOWASSTREAM  pStreamWas = (PDRVHOSTAUDIOWASSTREAM)pStream;
     AssertPtrReturn(pStreamWas, VERR_INVALID_POINTER);
     LogFlowFunc(("Stream '%s'\n", pStreamWas->Cfg.szName));
+    RT_NOREF(fImmediate);
     HRESULT hrc;
 
     if (RTCritSectIsInitialized(&pStreamWas->CritSect))

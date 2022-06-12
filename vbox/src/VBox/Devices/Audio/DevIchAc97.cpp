@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 89189 2021-05-19 21:48:58Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 89213 2021-05-21 10:00:12Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -1546,7 +1546,7 @@ static int ichac97R3MixerAddDrvStream(PPDMDEVINS pDevIns, PAUDMIXSINK pMixSink, 
                     AudioMixerSinkRemoveStream(pMixSink, pMixStrm);
             }
             if (RT_FAILURE(rc))
-                AudioMixerStreamDestroy(pMixStrm, pDevIns);
+                AudioMixerStreamDestroy(pMixStrm, pDevIns, true /*fImmediate*/);
         }
 
         if (RT_SUCCESS(rc))
@@ -1647,7 +1647,7 @@ static void ichac97R3MixerRemoveDrv(PPDMDEVINS pDevIns, PAC97STATER3 pThisCC, PA
             AudioMixerSinkSetRecordingSource(pThisCC->pSinkMicIn, NULL);
 
         AudioMixerSinkRemoveStream(pThisCC->pSinkMicIn,  pDrv->MicIn.pMixStrm);
-        AudioMixerStreamDestroy(pDrv->MicIn.pMixStrm, pDevIns);
+        AudioMixerStreamDestroy(pDrv->MicIn.pMixStrm, pDevIns, true /*fImmediate*/);
         pDrv->MicIn.pMixStrm = NULL;
     }
 
@@ -1657,14 +1657,14 @@ static void ichac97R3MixerRemoveDrv(PPDMDEVINS pDevIns, PAC97STATER3 pThisCC, PA
             AudioMixerSinkSetRecordingSource(pThisCC->pSinkLineIn, NULL);
 
         AudioMixerSinkRemoveStream(pThisCC->pSinkLineIn, pDrv->LineIn.pMixStrm);
-        AudioMixerStreamDestroy(pDrv->LineIn.pMixStrm, pDevIns);
+        AudioMixerStreamDestroy(pDrv->LineIn.pMixStrm, pDevIns, true /*fImmediate*/);
         pDrv->LineIn.pMixStrm = NULL;
     }
 
     if (pDrv->Out.pMixStrm)
     {
         AudioMixerSinkRemoveStream(pThisCC->pSinkOut,    pDrv->Out.pMixStrm);
-        AudioMixerStreamDestroy(pDrv->Out.pMixStrm, pDevIns);
+        AudioMixerStreamDestroy(pDrv->Out.pMixStrm, pDevIns, true /*fImmediate*/);
         pDrv->Out.pMixStrm = NULL;
     }
 
@@ -1690,7 +1690,7 @@ static void ichac97R3MixerRemoveDrvStream(PPDMDEVINS pDevIns, PAUDMIXSINK pMixSi
         {
             AudioMixerSinkRemoveStream(pMixSink, pDrvStream->pMixStrm);
 
-            AudioMixerStreamDestroy(pDrvStream->pMixStrm, pDevIns);
+            AudioMixerStreamDestroy(pDrvStream->pMixStrm, pDevIns, false /*fImmediate*/);
             pDrvStream->pMixStrm = NULL;
         }
     }

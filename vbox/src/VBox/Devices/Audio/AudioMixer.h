@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.h 88991 2021-05-12 00:46:35Z vboxsync $ */
+/* $Id: AudioMixer.h 89213 2021-05-21 10:00:12Z vboxsync $ */
 /** @file
  * VBox audio - Mixing routines.
  *
@@ -323,7 +323,7 @@ int         AudioMixerSinkLock(PAUDMIXSINK pSink);
 int         AudioMixerSinkTryLock(PAUDMIXSINK pSink);
 int         AudioMixerSinkUnlock(PAUDMIXSINK pSink);
 
-void AudioMixerStreamDestroy(PAUDMIXSTREAM pStream, PPDMDEVINS pDevIns);
+void AudioMixerStreamDestroy(PAUDMIXSTREAM pStream, PPDMDEVINS pDevIns, bool fImmediate);
 
 #endif /* !VBOX_INCLUDED_SRC_Audio_AudioMixer_h */
 
