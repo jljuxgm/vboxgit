@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 86069 2020-09-09 03:03:23Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 86501 2020-10-09 12:28:32Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -276,7 +276,7 @@ public:
     int i_calculateFullPath(const Utf8Str &strPath, Utf8Str &aResult);
     void i_copyPathRelativeToConfig(const Utf8Str &strSource, Utf8Str &strTarget);
     HRESULT i_registerMedium(const ComObjPtr<Medium> &pMedium, ComObjPtr<Medium> *ppMedium,
-                             AutoWriteLock &mediaTreeLock);
+                             AutoWriteLock &mediaTreeLock, bool fCalledFromMediumInit = false);
     HRESULT i_unregisterMedium(Medium *pMedium);
     void i_pushMediumToListWithChildren(MediaList &llMedia, Medium *pMedium);
     HRESULT i_unregisterMachineMedia(const Guid &id);

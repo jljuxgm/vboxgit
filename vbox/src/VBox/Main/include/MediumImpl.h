@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 85284 2020-07-12 15:11:52Z vboxsync $ */
+/* $Id: MediumImpl.h 86501 2020-10-09 12:28:32Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -78,13 +78,14 @@ public:
                     const Guid &uuidMachineRegistry,
                     const settings::Medium &data,
                     const Utf8Str &strMachineFolder);
-    HRESULT init(VirtualBox *aVirtualBox,
-                 Medium *aParent,
-                 DeviceType_T aDeviceType,
-                 const Guid &uuidMachineRegistry,
-                 const settings::Medium &data,
-                 const Utf8Str &strMachineFolder,
-                 AutoWriteLock &mediaTreeLock);
+    HRESULT initFromSettings(VirtualBox *aVirtualBox,
+                             Medium *aParent,
+                             DeviceType_T aDeviceType,
+                             const Guid &uuidMachineRegistry,
+                             const settings::Medium &data,
+                             const Utf8Str &strMachineFolder,
+                             AutoWriteLock &mediaTreeLock,
+                             ComObjPtr<Medium> *ppRegistered);
 
     // initializer for host floppy/DVD
     HRESULT init(VirtualBox *aVirtualBox,
@@ -118,6 +119,7 @@ public:
 
     /* handles caller/locking itself */
     bool i_addRegistry(const Guid &id);
+    bool i_addRegistryNoCallerCheck(const Guid &id);
     /* handles caller/locking itself, caller is responsible for tree lock */
     bool i_addRegistryRecursive(const Guid &id);
     /* handles caller/locking itself */
