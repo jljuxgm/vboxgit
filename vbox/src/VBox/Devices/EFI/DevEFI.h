@@ -1,4 +1,4 @@
-/* $Id: DevEFI.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: DevEFI.h 85950 2020-08-31 11:40:19Z vboxsync $ */
 /** @file
  * EFI for VirtualBox Common Definitions.
  *
@@ -71,8 +71,16 @@ typedef enum
     EFI_INFO_INDEX_VERTICAL_RESOLUTION,
     EFI_INFO_INDEX_MCFG_BASE,
     EFI_INFO_INDEX_MCFG_SIZE,
+    EFI_INFO_INDEX_APIC_MODE,
     EFI_INFO_INDEX_END
 } EfiInfoIndex;
+
+/** @name APIC mode defines as returned by EFI_INFO_INDEX_APIC_MODE
+ * @{ */
+#define EFI_APIC_MODE_DISABLED          0
+#define EFI_APIC_MODE_APIC              1
+#define EFI_APIC_MODE_X2APIC            2
+/** @} */
 
 /** Panic port.
  * Write causes action to be taken according to the value written,

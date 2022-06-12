@@ -1,4 +1,4 @@
-/* $Id: DevEFI.cpp 83032 2020-02-10 10:11:30Z vboxsync $ */
+/* $Id: DevEFI.cpp 85950 2020-08-31 11:40:19Z vboxsync $ */
 /** @file
  * DevEFI - EFI <-> VirtualBox Integration Framework.
  */
@@ -1201,8 +1201,26 @@ static uint32_t efiInfoSize(PDEVEFIR3 pThisCC)
         case EFI_INFO_INDEX_MCFG_BASE:
         case EFI_INFO_INDEX_MCFG_SIZE:
             return 8;
+        case EFI_INFO_INDEX_APIC_MODE:
+            return 1;
     }
     return UINT32_MAX;
+}
+
+
+/**
+ * efiInfoNextByte for a uint8_t value.
+ *
+ * @returns Next (current) byte.
+ * @param   pThisCC             The EFI state for the current context.
+ * @param   u8                  The value.
+ */
+static uint8_t efiInfoNextByteU8(PDEVEFIR3 pThisCC, uint8_t u8)
+{
+    uint32_t off = pThisCC->offInfo;
+    if (off >= 1)
+        return 0;
+    return (uint8_t)u8;
 }
 
 
@@ -1281,6 +1299,7 @@ static uint8_t efiInfoNextByte(PDEVEFIR3 pThisCC)
         case EFI_INFO_INDEX_STACK_SIZE:         return efiInfoNextByteU32(pThisCC, _128K);
         case EFI_INFO_INDEX_MCFG_BASE:          return efiInfoNextByteU64(pThisCC, pThisCC->u64McfgBase);
         case EFI_INFO_INDEX_MCFG_SIZE:          return efiInfoNextByteU64(pThisCC, pThisCC->cbMcfgLength);
+        case EFI_INFO_INDEX_APIC_MODE:          return efiInfoNextByteU8(pThisCC, pThisCC->u8APIC);
 
         default:
             PDMDevHlpDBGFStop(pThisCC->pDevIns, RT_SRC_POS, "%#x", pThisCC->iInfoSelector);
