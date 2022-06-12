@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.cpp 87951 2021-03-04 14:33:44Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.cpp 87954 2021-03-04 15:05:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class implementation.
  */
@@ -87,29 +87,6 @@ UIWizardNewVMPageExpert::UIWizardNewVMPageExpert(const QString &strGroup)
     registerField("productKey", this, "productKey");
     registerField("VCPUCount", this, "VCPUCount");
     registerField("EFIEnabled", this, "EFIEnabled");
-
-    const QPalette pal = palette();
-    QColor tabBackgroundColor = pal.color(QPalette::Active, QPalette::Highlight).lighter(110);
-    QColor textColor = pal.color(QPalette::Active, QPalette::Text).lighter();
-    QColor disabledTextColor = pal.color(QPalette::Disabled, QPalette::Text).lighter();
-
-    m_pToolBox->setStyleSheet(QString::fromUtf8("QToolBox::tab {\n"
-                                                "    background: %1; \n"
-                                                "    border-radius: 5px;\n"
-                                                "    color: %2;\n"
-                                                "}\n"
-                                                "\n"
-                                                "QToolBox::tab:selected {\n"
-                                                "    font: bold;\n"
-                                                "}\n"
-                                                "\n"
-                                                "QToolBox::tab:hover {\n"
-                                                "    font: bold;\n"
-                                                "}\n"
-                                                "QToolBox::tab:disabled {\n"
-                                                "    font: italic;\n"
-                                                "    color: %3;\n"
-                                                "}").arg(tabBackgroundColor.name()).arg(textColor.name()).arg(disabledTextColor.name()));
 
     disableEnableUnattendedRelatedWidgets(isUnattendedEnabled());
 }
