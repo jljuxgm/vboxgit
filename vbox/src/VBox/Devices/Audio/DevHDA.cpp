@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 87944 2021-03-04 09:14:58Z vboxsync $ */
+/* $Id: DevHDA.cpp 87945 2021-03-04 09:17:43Z vboxsync $ */
 /** @file
  * DevHDA.cpp - VBox Intel HD Audio Controller.
  *
@@ -2647,6 +2647,8 @@ static DECLCALLBACK(void) hdaR3Timer(PPDMDEVINS pDevIns, TMTIMERHANDLE hTimer, v
 
     Assert(PDMDevHlpCritSectIsOwner(pDevIns, &pThis->CritSect));
     Assert(PDMDevHlpTimerIsLockOwner(pDevIns, hTimer));
+
+    RT_NOREF(hTimer);
 
     hdaR3StreamTimerMain(pDevIns, pThis, pThisCC, pStreamShared, pStreamR3);
 }
