@@ -1,4 +1,4 @@
-/* $Id: QISplitter.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: QISplitter.cpp 88792 2021-04-30 12:08:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QISplitter class implementation.
  */
@@ -131,12 +131,12 @@ void QIFlatSplitterHandle::paintEvent(QPaintEvent *pEvent)
 QIShadeSplitterHandle::QIShadeSplitterHandle(Qt::Orientation enmOrientation, QISplitter *pParent)
     : QSplitterHandle(enmOrientation, pParent)
 {
-    QPalette pal = qApp->palette();
-    QColor windowColor = pal.color(QPalette::Active, QPalette::Window);
-    QColor darkColor = pal.color(QPalette::Active, QPalette::Dark);
+    QColor windowColor = QApplication::palette().color(QPalette::Active, QPalette::Window);
+    QColor frameColor = QApplication::palette().color(QPalette::Active, QPalette::Text);
+    frameColor.setAlpha(100);
     m_color1 = windowColor;
     m_color2 = windowColor;
-    m_color = darkColor;
+    m_color = frameColor;
 }
 
 void QIShadeSplitterHandle::configureColors(const QColor &color1, const QColor &color2)
