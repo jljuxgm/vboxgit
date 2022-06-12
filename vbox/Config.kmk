@@ -1,4 +1,4 @@
-# $Id: Config.kmk 86625 2020-10-19 10:06:01Z vboxsync $
+# $Id: Config.kmk 86636 2020-10-20 09:47:53Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -612,8 +612,6 @@ endif
 VBOX_WITH_USB_CARDREADER = 1
 # Disk crypt plugin
 VBOX_WITH_PLUGIN_CRYPT = 1
-# Make disk crypt plugin use IPRT for crypto.
-VD_WITH_IPRT_CRYPTO = 1
 # VirtualKD stub/loader device, only relevant on Windows host
 VBOX_WITH_VIRTUALKD = 1
 # NVMe device emulation
@@ -8148,7 +8146,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 86625 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 86636 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
