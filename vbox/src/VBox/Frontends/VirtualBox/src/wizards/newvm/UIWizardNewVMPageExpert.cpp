@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.cpp 88110 2021-03-12 17:24:08Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.cpp 88115 2021-03-15 09:34:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class implementation.
  */
@@ -82,7 +82,7 @@ UIWizardNewVMPageExpert::UIWizardNewVMPageExpert(const QString &strGroup)
     registerField("guestOSFamiyId", this, "guestOSFamiyId");
     registerField("ISOFilePath", this, "ISOFilePath");
     registerField("isUnattendedEnabled", this, "isUnattendedEnabled");
-    registerField("skipUnattendedInstall", this, "skipUnattendedInstall");
+    //registerField("skipUnattendedInstall", this, "skipUnattendedInstall");
     registerField("startHeadless", this, "startHeadless");
     registerField("detectedOSTypeId", this, "detectedOSTypeId");
     registerField("userName", this, "userName");
