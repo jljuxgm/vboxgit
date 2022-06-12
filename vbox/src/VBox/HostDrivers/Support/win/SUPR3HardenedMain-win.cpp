@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain-win.cpp 85873 2020-08-21 22:14:38Z vboxsync $ */
+/* $Id: SUPR3HardenedMain-win.cpp 86532 2020-10-11 19:12:11Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main(), windows bits.
  */
@@ -337,7 +337,7 @@ static PVERIFIERCACHEIMPORT volatile g_pVerifierCacheTodoImports = NULL;
 /** The windows path to dir \\SystemRoot\\System32 directory (technically
  *  this whatever \\KnownDlls\\KnownDllPath points to). */
 SUPSYSROOTDIRBUF            g_System32WinPath;
-/** @ */
+/** @} */
 
 /** Positive if the DLL notification callback has been registered, counts
  * registration attempts as negative. */
