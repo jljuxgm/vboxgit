@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 87120 2020-12-24 10:17:49Z vboxsync $ */
+/* $Id: DevATA.cpp 88730 2021-04-27 11:59:39Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -4198,7 +4198,7 @@ static bool ataR3InitDevParmSS(PPDMDEVINS pDevIns, PATACONTROLLER pCtl, PATADEVS
     RT_NOREF(pDevR3);
     LogFlowFunc(("\n"));
     LogRel(("ATA: LUN#%d: INITIALIZE DEVICE PARAMETERS: %u logical sectors, %u heads\n",
-            s->iLUN, s->uATARegNSector, s->uATARegSelect & 0x0f));
+            s->iLUN, s->uATARegNSector, (s->uATARegSelect & 0x0f) + 1));
     ataR3LockLeave(pDevIns, pCtl);
     RTThreadSleep(pCtl->msDelayIRQ);
     ataR3LockEnter(pDevIns, pCtl);
