@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Id: tdAutostart1.py 84641 2020-06-02 13:57:33Z vboxsync $"
+__version__ = "$Id: tdAutostart1.py 84642 2020-06-02 14:07:45Z vboxsync $"
 
 
 # Standard Python imports.
@@ -1153,7 +1153,7 @@ class tdAutostartOsWin(tdAutostartOs):
                                               '--password-file=C:\\ProgramData\\password.cfg'],
                                              False, True);
                 if not fRc:
-                    reporter.error('Install autostart service for user %s failed' % (sVmName, sUser));
+                    reporter.error('Install autostart service for user %s failed' % sUser);
             fRc1 = self.closeSession(oGuestSession, True);
             if not fRc1:
                 reporter.error('Closing session for user %s failed' % sUser);
