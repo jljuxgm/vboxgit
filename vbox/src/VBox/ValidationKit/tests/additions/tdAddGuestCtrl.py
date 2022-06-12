@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84927 $"
+__version__ = "$Revision: 84928 $"
 
 # Standard Python imports.
 import errno
@@ -1805,6 +1805,13 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
         """
         Helper function to copy a directory from the guest to the host.
         """
+
+        # As we pass-in randomly generated directories, the source sometimes can be empty, which
+        # in turn will result in a (correct) error by the API. Simply skip this function then.
+        if not oTest.sSrc:
+            reporter.log2('Skipping guest dir "%s"' % (limitString(oTest.sSrc)));
+            return True;
+
         #
         # Do the copying.
         #
