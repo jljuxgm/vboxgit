@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasicNameType.cpp 84890 2020-06-22 09:16:52Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasicNameType.cpp 84915 2020-06-23 10:39:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasicNameType class implementation.
  */
@@ -346,9 +346,9 @@ UIWizardNewVMPageBasicNameType::UIWizardNewVMPageBasicNameType(const QString &st
 
 int UIWizardNewVMPageBasicNameType::nextId() const
 {
-    UIWizardNewVM *pWizard = qobject_cast<UIWizardNewVM*>(wizard());
-    if (!pWizard || !pWizard->isUnattendedInstallEnabled())
-        return UIWizardNewVM::PageHardware;
+    // UIWizardNewVM *pWizard = qobject_cast<UIWizardNewVM*>(wizard());
+    // if (!pWizard || !pWizard->isUnattendedInstallEnabled())
+    //     return UIWizardNewVM::PageHardware;
     return UIWizardNewVM::PageInstallSetup;
 }
 

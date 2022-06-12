@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 84906 2020-06-22 14:34:49Z vboxsync $ */
+/* $Id: UIWizardNewVM.cpp 84915 2020-06-23 10:39:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
@@ -380,34 +380,6 @@ bool UIWizardNewVM::attachDefaultDevices(const CGuestOSType &comGuestType)
 
     return true;
 }
-
-// int UIWizardNewVM::nextId() const
-// {
-//     switch (currentId())
-//     {
-//         case PageUnattended:
-//             return PageNameType;
-//             break;
-//         case PageNameType:
-//             if (!isUnattendedInstallEnabled())
-//                 return PageHardware;
-//             else
-//                 return PageInstallSetup;
-//             break;
-//         case PageInstallSetup:
-//                 return PageHardware;
-//         case PageHardware:
-//             return PageDisk;
-//             break;
-//         case PageDisk:
-//             return UIWizard::nextId();
-//         case PageMax:
-//         default:
-//             return PageUnattended;
-//             break;
-//     }
-//     return UIWizard::nextId();
-// }
 
 void UIWizardNewVM::sltHandleWizardCancel()
 {
