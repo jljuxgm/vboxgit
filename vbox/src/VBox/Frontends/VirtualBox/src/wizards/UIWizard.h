@@ -1,4 +1,4 @@
-/* $Id: UIWizard.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIWizard.h 86907 2020-11-18 10:41:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizard class declaration.
  */
@@ -77,6 +77,10 @@ protected:
     /** Assigns @a strBackground. */
     void assignBackground(const QString &strBackground);
 #endif
+    /** Inserts the standard help button to the button box of the wizard. Optional @param strHelpTag
+      * is set as property. This is used for context sensitive help. */
+    void enableHelpButton(const QString &strHelpTag = QString());
+    void setHelpButtonHelpTag(const QString &strHelpTag = QString());
 
 protected slots:
 
