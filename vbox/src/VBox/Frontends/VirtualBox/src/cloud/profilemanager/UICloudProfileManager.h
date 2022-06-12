@@ -1,4 +1,4 @@
-/* $Id: UICloudProfileManager.h 83950 2020-04-23 14:40:55Z vboxsync $ */
+/* $Id: UICloudProfileManager.h 85033 2020-07-01 16:27:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudProfileManager class declaration.
  */
@@ -132,6 +132,8 @@ private:
         void prepareTreeWidget();
         /** Prepares details-widget. */
         void prepareDetailsWidget();
+        /** Prepares connections. */
+        void prepareConnections();
         /** Load settings: */
         void loadSettings();
     /** @} */
