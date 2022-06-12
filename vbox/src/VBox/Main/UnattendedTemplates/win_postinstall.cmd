@@ -1,5 +1,5 @@
 @echo off
-rem $Id: win_postinstall.cmd 82968 2020-02-04 10:35:17Z vboxsync $
+rem $Id: win_postinstall.cmd 84875 2020-06-19 05:45:20Z vboxsync $
 rem rem @file
 rem Post installation script template for Windows.
 rem
@@ -29,6 +29,13 @@ echo *** Environment BEGIN >> %MY_LOG_FILE%
 set >> %MY_LOG_FILE%
 echo *** Environment END >> %MY_LOG_FILE%
 
+@@VBOX_COND_HAS_PROXY@@
+set PROXY=@@VBOX_INSERT_PROXY@@
+set HTTP_PROXY=%PROXY%
+set HTTPS_PROXY=%PROXY%
+echo HTTP proxy is %HTTP_PROXY% >> %MY_LOG_FILE%
+echo HTTPS proxy is %HTTPS_PROXY% >> %MY_LOG_FILE%
+@@VBOX_COND_END@@
 
 @@VBOX_COND_IS_INSTALLING_ADDITIONS@@
 rem
