@@ -1,4 +1,4 @@
-/* $Id: test.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: test.cpp 88311 2021-03-29 12:59:22Z vboxsync $ */
 /** @file
  * IPRT - Testcase Framework.
  */
@@ -124,6 +124,9 @@ typedef struct RTTESTINT
     uint32_t            cSubTests;
     /** The number of sub tests that failed. */
     uint32_t            cSubTestsFailed;
+
+    /** Error context message. */
+    char               *pszErrCtx;
 
     /** Set if XML output is enabled. */
     bool                fXmlEnabled;
@@ -519,6 +522,8 @@ RTR3DECL(int) RTTestDestroy(RTTEST hTest)
     pTest->pszSubTest = NULL;
     RTStrFree((char *)pTest->pszTest);
     pTest->pszTest = NULL;
+    RTStrFree(pTest->pszErrCtx);
+    pTest->pszErrCtx = NULL;
     RTMemFree(pTest);
     return VINF_SUCCESS;
 }
@@ -1258,6 +1263,8 @@ static int rtTestSubCleanup(PRTTESTINT pTest)
         pTest->pszSubTest = NULL;
         pTest->fSubTestReported = true;
     }
+    RTStrFree(pTest->pszErrCtx);
+    pTest->pszErrCtx = NULL;
     return cch;
 }
 
@@ -1710,6 +1717,12 @@ RTR3DECL(int) RTTestFailedV(RTTEST hTest, const char *pszFormat, va_list va)
 
         RTCritSectEnter(&pTest->OutputLock);
         cch += rtTestPrintf(pTest, fHasNewLine ? "%N" : "%N\n", pszFormat, &va2);
+        if (pTest->pszErrCtx)
+        {
+            cch += rtTestPrintf(pTest, "context: %s\n", pTest->pszErrCtx);
+            RTStrFree(pTest->pszErrCtx);
+            pTest->pszErrCtx = NULL;
+        }
         RTCritSectLeave(&pTest->OutputLock);
 
         va_end(va2);
@@ -1771,6 +1784,35 @@ RTR3DECL(int) RTTestFailureDetails(RTTEST hTest, const char *pszFormat, ...)
     int cch = RTTestFailureDetailsV(hTest, pszFormat, va);
     va_end(va);
     return cch;
+}
+
+
+RTR3DECL(int) RTTestErrContextV(RTTEST hTest, const char *pszFormat, va_list va)
+{
+    PRTTESTINT pTest = hTest;
+    RTTEST_GET_VALID_RETURN(pTest);
+
+    RTStrFree(pTest->pszErrCtx);
+    pTest->pszErrCtx = NULL;
+
+    if (pszFormat && *pszFormat)
+    {
+        pTest->pszErrCtx = RTStrAPrintf2V(pszFormat, va);
+        AssertReturn(pTest->pszErrCtx, VERR_NO_STR_MEMORY);
+        RTStrStripR(pTest->pszErrCtx);
+    }
+
+    return VINF_SUCCESS;
+}
+
+
+RTR3DECL(int) RTTestErrContext(RTTEST hTest, const char *pszFormat, ...)
+{
+    va_list va;
+    va_start(va, pszFormat);
+    int rc = RTTestErrContextV(hTest, pszFormat, va);
+    va_end(va);
+    return rc;
 }
 
 
