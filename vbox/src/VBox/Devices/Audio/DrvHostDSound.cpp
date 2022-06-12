@@ -1,4 +1,4 @@
-/* $Id: DrvHostDSound.cpp 88031 2021-03-09 00:13:46Z vboxsync $ */
+/* $Id: DrvHostDSound.cpp 88041 2021-03-09 12:40:47Z vboxsync $ */
 /** @file
  * Windows host backend driver using DirectSound.
  */
@@ -1879,8 +1879,8 @@ static void dsoundUpdateStatusInternal(PDRVHOSTDSOUND pThis)
              *        let the connector know that something has changed within the host backend. */
         }
 #endif
-        pThis->fEnabledIn  = RT_BOOL(DrvAudioHlpDeviceEnumGetDeviceCount(&pThis->DeviceEnum, PDMAUDIODIR_IN));
-        pThis->fEnabledOut = RT_BOOL(DrvAudioHlpDeviceEnumGetDeviceCount(&pThis->DeviceEnum, PDMAUDIODIR_OUT));
+        pThis->fEnabledIn  = DrvAudioHlpDeviceEnumGetDeviceCount(&pThis->DeviceEnum, PDMAUDIODIR_IN)  != 0;
+        pThis->fEnabledOut = DrvAudioHlpDeviceEnumGetDeviceCount(&pThis->DeviceEnum, PDMAUDIODIR_OUT) != 0;
     }
 
     LogFlowFuncLeaveRC(rc);
