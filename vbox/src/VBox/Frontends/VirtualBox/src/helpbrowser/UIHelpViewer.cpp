@@ -1,4 +1,4 @@
-/* $Id: UIHelpViewer.cpp 87211 2021-01-11 12:44:28Z vboxsync $ */
+/* $Id: UIHelpViewer.cpp 87217 2021-01-11 17:31:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class implementation.
  */
@@ -519,6 +519,17 @@ void UIHelpViewer::wheelEvent(QWheelEvent *pEvent)
         emit sigFontPointSizeChanged(font().pointSize());
 }
 
+void UIHelpViewer::mousePressEvent(QMouseEvent *pEvent)
+{
+    QString strAnchor = anchorAt(pEvent->pos());
+    if (!strAnchor.isEmpty())
+    {
+        QString strLink = source().resolved(strAnchor).toString();
+        emit sigOpenLinkInNewTab(strLink, true);
+    }
+    QIWithRetranslateUI<QTextBrowser>::mousePressEvent(pEvent);
+}
+
 void UIHelpViewer::retranslateUi()
 {
 }
@@ -615,7 +626,7 @@ void UIHelpViewer::sltHandleOpenLinkInNewTab()
         return;
     QUrl url = pSender->data().toUrl();
     if (url.isValid())
-        emit sigOpenLinkInNewTab(url);
+        emit sigOpenLinkInNewTab(url, false);
 }
 
 void UIHelpViewer::sltHandleOpenLink()
