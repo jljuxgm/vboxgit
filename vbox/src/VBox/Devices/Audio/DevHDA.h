@@ -1,4 +1,4 @@
-/* $Id: DevHDA.h 87799 2021-02-19 10:44:27Z vboxsync $ */
+/* $Id: DevHDA.h 87836 2021-02-22 16:30:18Z vboxsync $ */
 /** @file
  * DevHDA.h - VBox Intel HD Audio Controller.
  */
@@ -35,7 +35,7 @@
 #ifdef DEBUG_andy
 /** Enables strict mode, which checks for stuff which isn't supposed to happen.
  *  Be prepared for assertions coming in! */
-# define HDA_STRICT
+//# define HDA_STRICT
 #endif
 
 /**

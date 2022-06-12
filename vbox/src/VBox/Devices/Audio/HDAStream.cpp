@@ -1,4 +1,4 @@
-/* $Id: HDAStream.cpp 87811 2021-02-19 16:56:39Z vboxsync $ */
+/* $Id: HDAStream.cpp 87836 2021-02-22 16:30:18Z vboxsync $ */
 /** @file
  * HDAStream.cpp - Stream functions for HD Audio.
  */
@@ -1748,7 +1748,9 @@ void hdaR3StreamUpdate(PPDMDEVINS pDevIns, PHDASTATE pThis, PHDASTATER3 pThisCC,
 
                     if (!cbRead)
                     {
+#ifdef HDA_STRICT
                         AssertMsgFailed(("Nothing read from sink, even if %RU32 bytes were (still) announced\n", cbSinkReadable));
+#endif
                         break;
                     }
 
