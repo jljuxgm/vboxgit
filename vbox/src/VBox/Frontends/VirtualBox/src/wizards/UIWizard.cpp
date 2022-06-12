@@ -1,4 +1,4 @@
-/* $Id: UIWizard.cpp 83653 2020-04-09 16:38:03Z vboxsync $ */
+/* $Id: UIWizard.cpp 86356 2020-09-30 17:14:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizard class implementation.
  */
@@ -406,19 +406,13 @@ double UIWizard::ratio() const
     switch (m_enmType)
     {
         case WizardType_CloneVM:
+        case WizardType_ExportAppliance:
+        case WizardType_ImportAppliance:
             dRatio -= 0.4;
             break;
         case WizardType_NewVD:
         case WizardType_CloneVD:
             dRatio += 0.1;
-            break;
-        case WizardType_ExportAppliance:
-        case WizardType_ImportAppliance:
-            dRatio += 0.3;
-            break;
-        case WizardType_NewCloudVM:
-        case WizardType_AddCloudVM:
-            dRatio += 0.7;
             break;
         case WizardType_FirstRun:
             dRatio += 0.3;
