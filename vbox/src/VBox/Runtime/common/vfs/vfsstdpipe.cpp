@@ -1,4 +1,4 @@
-/* $Id: vfsstdpipe.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: vfsstdpipe.cpp 86413 2020-10-02 11:40:15Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Standard Pipe I/O stream Implementation.
  */
@@ -66,11 +66,7 @@ static DECLCALLBACK(int) rtVfsStdPipe_Close(void *pvThis)
 {
     PRTVFSSTDPIPE pThis = (PRTVFSSTDPIPE)pvThis;
 
-    int rc;
-    if (!pThis->fLeaveOpen)
-        rc = RTPipeClose(pThis->hPipe);
-    else
-        rc = VINF_SUCCESS;
+    int rc = RTPipeCloseEx(pThis->hPipe, pThis->fLeaveOpen);
     pThis->hPipe = NIL_RTPIPE;
 
     return rc;
