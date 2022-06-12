@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.h 88944 2021-05-08 13:29:43Z vboxsync $ */
+/* $Id: AudioMixer.h 88957 2021-05-09 13:16:44Z vboxsync $ */
 /** @file
  * VBox audio - Mixing routines.
  *
@@ -265,7 +265,7 @@ PDMAUDIODIR   AudioMixerSinkGetDir(PAUDMIXSINK pSink);
 PAUDMIXSTREAM AudioMixerSinkGetRecordingSource(PAUDMIXSINK pSink);
 uint32_t AudioMixerSinkGetStatus(PAUDMIXSINK pSink);
 bool AudioMixerSinkIsActive(PAUDMIXSINK pSink);
-int AudioMixerSinkRead(PAUDMIXSINK pSink, AUDMIXOP enmOp, void *pvBuf, uint32_t cbBuf, uint32_t *pcbRead);
+int AudioMixerSinkRead(PAUDMIXSINK pSink, void *pvBuf, uint32_t cbBuf, uint32_t *pcbRead);
 void AudioMixerSinkRemoveStream(PAUDMIXSINK pSink, PAUDMIXSTREAM pStream);
 void AudioMixerSinkRemoveAllStreams(PAUDMIXSINK pSink);
 void AudioMixerSinkReset(PAUDMIXSINK pSink);
