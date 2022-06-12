@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserDialog.h 86906 2020-11-18 07:06:07Z vboxsync $ */
+/* $Id: UIHelpBrowserDialog.h 86913 2020-11-19 10:32:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserDialog class declaration.
  */
@@ -37,7 +37,7 @@
 class QDialogButtonBox;
 class QVBoxLayout;
 class UIHelpBrowserDialog;
-
+class UIHelpBrowserWidget;
 
 /** QIManagerDialogFactory extension used as a factory for Log Viewer dialog. */
 class SHARED_LIBRARY_STUFF UIHelpBrowserDialogFactory : public QIManagerDialogFactory
@@ -45,9 +45,8 @@ class SHARED_LIBRARY_STUFF UIHelpBrowserDialogFactory : public QIManagerDialogFa
 
 public:
 
-    /** @param strHelpFilePath: the full path of the qHelp archive file.
-      * @param strKeyword: optional keyword string. Used in context sensitive help. */
-    UIHelpBrowserDialogFactory(const QString &strHelpFilePath, const QString &strKeyword = QString());
+    /** @param strHelpFilePath: the full path of the qHelp archive file. */
+    UIHelpBrowserDialogFactory(const QString &strHelpFilePath);
     UIHelpBrowserDialogFactory();
 
 protected:
@@ -59,7 +58,6 @@ protected:
 private:
 
     QString m_strHelpFilePath;
-    QString    m_strKeyword;
 };
 
 class SHARED_LIBRARY_STUFF UIHelpBrowserDialog : public QIWithRetranslateUI<QIManagerDialog>
@@ -68,8 +66,9 @@ class SHARED_LIBRARY_STUFF UIHelpBrowserDialog : public QIWithRetranslateUI<QIMa
 
 public:
 
-    UIHelpBrowserDialog(QWidget *pCenterWidget, const QString &strHelpFilePath,
-                        const QString &strKeyword = QString());
+    UIHelpBrowserDialog(QWidget *pCenterWidget, const QString &strHelpFilePath);
+    /** A passthru function for QHelpIndexWidget::showHelpForKeyword. */
+    void showHelpForKeyword(const QString &strKeyword);
 
 protected:
 
@@ -108,7 +107,7 @@ private slots:
 private:
 
     QString m_strHelpFilePath;
-    QString m_strKeyword;
+    UIHelpBrowserWidget *m_pWidget;
 };
 
 

@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 86906 2020-11-18 07:06:07Z vboxsync $ */
+/* $Id: UIMessageCenter.h 86913 2020-11-19 10:32:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -265,7 +265,8 @@ public:
     void warnAboutInvalidEncryptionPassword(const QString &strPasswordId, QWidget *pParent = 0);
     void cannotAcquireVirtualBoxParameter(const CVirtualBox &comVBox, QWidget *pParent = 0) const;
     void cannotAcquireMachineParameter(const CMachine &comMachine, QWidget *pParent = 0) const;
-    void cannotFindHelpFile(const QString &strFileLocation, QWidget *pParent = 0) const;
+    void cannotFindHelpFile(const QString &strFileLocation) const;
+    void cannotFindHelpTag() const;
 
     /* API: Selector warnings: */
     void cannotOpenMachine(const CVirtualBox &vbox, const QString &strMachinePath) const;
