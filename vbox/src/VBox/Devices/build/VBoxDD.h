@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.h 88153 2021-03-17 12:56:48Z vboxsync $ */
+/* $Id: VBoxDD.h 88561 2021-04-16 11:39:41Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1) header.
  */
@@ -137,6 +137,7 @@ extern const PDMDRVREG g_DrvHostDebugAudio;
 extern const PDMDRVREG g_DrvHostValidationKitAudio;
 #endif
 extern const PDMDRVREG g_DrvHostNullAudio;
+extern DECL_HIDDEN_DATA(struct PDMIHOSTAUDIO) const g_DrvHostAudioNull;
 #if defined(RT_OS_WINDOWS)
 extern const PDMDRVREG g_DrvHostDSound;
 #endif
