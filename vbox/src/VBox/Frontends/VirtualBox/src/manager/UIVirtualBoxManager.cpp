@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 85457 2020-07-24 13:48:23Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 85459 2020-07-24 18:11:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -189,7 +189,9 @@ void UIAcquirePublicKeyDialog::sltRevalidate()
 
 void UIAcquirePublicKeyDialog::retranslateUi()
 {
-    setWindowTitle(tr("Provide a public key"));
+    setWindowTitle(tr("Public key"));
+    m_pTextEditor->setPlaceholderText(tr("Paste public key"));
+    m_pButtonBox->button(QDialogButtonBox::Open)->setText(tr("Browse"));
 }
 
 void UIAcquirePublicKeyDialog::prepare()
