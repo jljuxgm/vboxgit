@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGroup.h 86743 2020-10-28 17:22:07Z vboxsync $ */
+/* $Id: UIChooserItemGroup.h 86767 2020-10-30 11:34:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGroup class declaration.
  */
@@ -225,11 +225,6 @@ private slots:
         void sltGroupToggleStart();
         /** Handles group toggle finish for group finally @a fToggled. */
         void sltGroupToggleFinish(bool fToggled);
-
-        /** Handles root indentation. */
-        void sltIndentRoot();
-        /** Handles root unindentation. */
-        void sltUnindentRoot();
     /** @} */
 
 private:

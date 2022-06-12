@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGroup.cpp 86744 2020-10-28 17:35:28Z vboxsync $ */
+/* $Id: UIChooserItemGroup.cpp 86767 2020-10-30 11:34:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGroup class implementation.
  */
@@ -1034,18 +1034,6 @@ void UIChooserItemGroup::sltGroupToggleFinish(bool fToggled)
 
     /* Toggle finished: */
     emit sigToggleFinished();
-}
-
-void UIChooserItemGroup::sltIndentRoot()
-{
-    /* Unhover before indenting: */
-    setHovered(false);
-}
-
-void UIChooserItemGroup::sltUnindentRoot()
-{
-    /* Unhover before unindenting: */
-    setHovered(false);
 }
 
 void UIChooserItemGroup::prepare()

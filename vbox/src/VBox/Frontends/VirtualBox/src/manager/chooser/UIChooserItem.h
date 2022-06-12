@@ -1,4 +1,4 @@
-/* $Id: UIChooserItem.h 84625 2020-06-01 16:44:39Z vboxsync $ */
+/* $Id: UIChooserItem.h 86767 2020-10-30 11:34:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItem class declaration.
  */
@@ -139,8 +139,6 @@ public:
 
         /** Returns whether item is hovered. */
         bool isHovered() const;
-        /** Defines whether item is @a fHovered. */
-        void setHovered(bool fHovered);
 
         /** Starts item editing. */
         virtual void startEditing() = 0;

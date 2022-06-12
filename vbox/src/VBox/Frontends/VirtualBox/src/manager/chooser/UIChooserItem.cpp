@@ -1,4 +1,4 @@
-/* $Id: UIChooserItem.cpp 84583 2020-05-28 11:43:07Z vboxsync $ */
+/* $Id: UIChooserItem.cpp 86767 2020-10-30 11:34:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItem class definition.
  */
@@ -400,15 +400,6 @@ int UIChooserItem::position() const
 bool UIChooserItem::isHovered() const
 {
     return m_fHovered;
-}
-
-void UIChooserItem::setHovered(bool fHovered)
-{
-    m_fHovered = fHovered;
-    if (m_fHovered)
-        emit sigHoverEnter();
-    else
-        emit sigHoverLeave();
 }
 
 void UIChooserItem::setDisabledEffect(bool fOn)
