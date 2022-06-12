@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioCoreAudio.cpp 88270 2021-03-24 11:52:37Z vboxsync $ */
+/* $Id: DrvHostAudioCoreAudio.cpp 88358 2021-04-04 23:35:36Z vboxsync $ */
 /** @file
  * Host audio driver - Mac OS X CoreAudio.
  */
@@ -298,9 +298,9 @@ typedef enum COREAUDIOSTATUS
     COREAUDIOSTATUS_IN_UNINIT,
 #ifndef VBOX_WITH_AUDIO_CALLBACKS
     /** The device has to be reinitialized.
-     *  Note: Only needed if VBOX_WITH_AUDIO_CALLBACKS is not defined, as otherwise
-     *        the Audio Connector will take care of this as soon as this backend
-     *        tells it to do so via the provided audio callback. */
+     * @note Only needed if VBOX_WITH_AUDIO_CALLBACKS is not defined, as otherwise
+     *       the Audio Connector will take care of this as soon as this backend
+     *       tells it to do so via the provided audio callback. */
     COREAUDIOSTATUS_REINIT,
 #endif
     /** The usual 32-bit hack. */
