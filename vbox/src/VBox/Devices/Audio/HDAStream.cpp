@@ -1,4 +1,4 @@
-/* $Id: HDAStream.cpp 87970 2021-03-05 10:56:12Z vboxsync $ */
+/* $Id: HDAStream.cpp 87975 2021-03-05 16:12:18Z vboxsync $ */
 /** @file
  * HDAStream.cpp - Stream functions for HD Audio.
  */
@@ -482,7 +482,8 @@ int hdaR3StreamSetUp(PPDMDEVINS pDevIns, PHDASTATE pThis, PHDASTREAM pStreamShar
             HDABDLEDESC bd = { 0, 0, 0 };
             PDMDevHlpPhysRead(pDevIns, u64BDLBase + i * sizeof(HDABDLEDESC), &bd, sizeof(bd));
 
-            LogRel2(("HDA: Stream #%RU8 BDLE #%RU8: %R[bdle]\n", uSD, i, &bd));
+            LogRel2(("HDA: Stream #%RU8 BDLE%03u: %#RX64 LB %#x %s (%#x)\n", uSD, i,
+                     bd.u64BufAddr, bd.u32BufSize, bd.fFlags & HDA_BDLE_F_IOC ? " IOC=1" : "", bd.fFlags));
 
             /* Position adjustment (still) needed / active? */
             if (cbTransferHeuristicsPosAdjust)
