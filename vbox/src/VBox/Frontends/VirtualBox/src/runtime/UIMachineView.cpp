@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 84792 2020-06-11 13:12:17Z vboxsync $ */
+/* $Id: UIMachineView.cpp 86046 2020-09-07 15:27:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -374,7 +374,7 @@ void UIMachineView::sltHandleNotifyChange(int iWidth, int iHeight)
         /* Normalize 'normal' machine-window geometry if necessary: */
         if (visualStateType() == UIVisualStateType_Normal &&
             frameBufferSizeNew != frameBufferSizeOld)
-            machineWindow()->normalizeGeometry(true /* adjust position */);
+            machineWindow()->normalizeGeometry(true /* adjust position */, machineWindow()->shouldResizeToGuestDisplay());
     }
 
     /* Perform frame-buffer rescaling: */
@@ -1073,7 +1073,7 @@ void UIMachineView::handleScaleChange()
 
             /* Normalize 'normal' machine-window geometry: */
             if (visualStateType() == UIVisualStateType_Normal)
-                machineWindow()->normalizeGeometry(true /* adjust position */);
+                machineWindow()->normalizeGeometry(true /* adjust position */, machineWindow()->shouldResizeToGuestDisplay());
         }
 
         /* Perform frame-buffer rescaling: */

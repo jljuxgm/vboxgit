@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.h 86046 2020-09-07 15:27:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowNormal class declaration.
  */
@@ -117,7 +117,7 @@ private:
 
     /** Performs window geometry normalization according to guest-size and host's available geometry.
       * @param  fAdjustPosition  Determines whether is it necessary to adjust position as well. */
-    virtual void normalizeGeometry(bool fAdjustPosition) /* override */;
+    virtual void normalizeGeometry(bool fAdjustPosition, bool fResizeToGuestDisplay) /* override */;
 
     /** Common update routine. */
     void updateAppearanceOf(int aElement);

@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 84990 2020-06-29 11:34:28Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 86046 2020-09-07 15:27:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -682,7 +682,6 @@ void UIMachineLogic::sltAdditionsStateChanged()
 {
     /* Update action states: */
     LogRel3(("GUI: UIMachineLogic::sltAdditionsStateChanged: Adjusting actions availability according to GA state.\n"));
-    actionPool()->action(UIActionIndexRT_M_View_T_GuestAutoresize)->setEnabled(uisession()->isGuestSupportsGraphics());
     actionPool()->action(UIActionIndexRT_M_View_T_Seamless)->setEnabled(uisession()->isVisualStateAllowed(UIVisualStateType_Seamless) &&
                                                                         uisession()->isGuestSupportsSeamless());
 }
@@ -1978,7 +1977,7 @@ void UIMachineLogic::sltAdjustMachineWindows()
             pMachineWindow->showNormal();
 
         /* Normalize window geometry: */
-        pMachineWindow->normalizeGeometry(true /* adjust position */);
+        pMachineWindow->normalizeGeometry(true /* adjust position */, true /* resize window to guest display size */);
     }
 }
 

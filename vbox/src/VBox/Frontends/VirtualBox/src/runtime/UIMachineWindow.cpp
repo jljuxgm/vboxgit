@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 84790 2020-06-11 10:30:36Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 86046 2020-09-07 15:27:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class implementation.
  */
@@ -23,6 +23,7 @@
 #include <QTimer>
 
 /* GUI includes: */
+#include "UIActionPoolRuntime.h"
 #include "UICommon.h"
 #include "UIConverter.h"
 #include "UIModalWindowManager.h"
@@ -231,6 +232,13 @@ void UIMachineWindow::sendMachineViewSizeHint()
 {
     /* Send machine-view size-hint to the guest: */
     machineView()->resendSizeHint();
+}
+
+bool UIMachineWindow::shouldResizeToGuestDisplay() const
+{
+    return actionPool() &&
+           actionPool()->action(UIActionIndexRT_M_View_T_GuestAutoresize) &&
+           actionPool()->action(UIActionIndexRT_M_View_T_GuestAutoresize)->isChecked();
 }
 
 #ifdef VBOX_WITH_MASKED_SEAMLESS
