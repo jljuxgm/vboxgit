@@ -1,4 +1,4 @@
-/* $Id: draganddrop.cpp 85925 2020-08-28 10:33:48Z vboxsync $ */
+/* $Id: draganddrop.cpp 85926 2020-08-28 10:35:13Z vboxsync $ */
 /** @file
  * X11 guest client - Drag and drop implementation.
  */
@@ -1666,13 +1666,6 @@ int DragInstance::hgEnter(const RTCList<RTCString> &lstFormats, uint32_t dndList
 
         rc = wndXDnDSetActionList(m_wndProxy.hWnd, lstActions);
         AssertRCBreak(rc);
-
-        Atom atmEnabled = 1;
-        XChangeProperty(m_pDisplay, m_wndProxy.hWnd, xAtom(XA_XdndActionAsk), XA_ATOM, 32, PropModeReplace,
-                        reinterpret_cast<unsigned char*>(&atmEnabled), 1);
-
-        XChangeProperty(m_pDisplay, m_wndProxy.hWnd, xAtom(XA_XdndActionDescription), XA_STRING, 8, PropModeReplace,
-                        (const unsigned char *)"VBox DnD", sizeof("VBox DnD"));
 
         /* Set the DnD selection owner to our window. */
         /** @todo Don't use CurrentTime -- according to ICCCM section 2.1. */
