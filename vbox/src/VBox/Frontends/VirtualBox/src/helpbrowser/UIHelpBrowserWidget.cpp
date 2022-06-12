@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.cpp 88522 2021-04-15 11:24:13Z vboxsync $ */
+/* $Id: UIHelpBrowserWidget.cpp 88523 2021-04-15 11:24:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class implementation.
  */
@@ -841,6 +841,7 @@ void UIHelpBrowserTab::sltFindInPageWidgetVisibilityChanged(bool fVisible)
     }
     emit sigFindInPageWidgetVisibilityChanged(fVisible);
 }
+
 
 /*********************************************************************************************************************************
 *   UIHelpBrowserTabManager definition.                                                                                          *
