@@ -1,4 +1,4 @@
-/* $Id: AudioTest.cpp 89052 2021-05-14 19:02:25Z vboxsync $ */
+/* $Id: AudioTest.cpp 89053 2021-05-14 19:08:43Z vboxsync $ */
 /** @file
  * Audio testing routines.
  * Common code which is being used by the ValidationKit and the debug / ValdikationKit audio driver(s).
@@ -761,6 +761,8 @@ int AudioTestSetObjCreateAndRegister(PAUDIOTESTSET pSet, const char *pszName, PA
  *
  * @returns VBox status code.
  * @param   pObj                Audio test object to write to.
+ * @param   pvBuf               Pointer to data to write.
+ * @param   cbBuf               Size (in bytes) of \a pvBuf to write.
  */
 int AudioTestSetObjWrite(PAUDIOTESTOBJ pObj, void *pvBuf, size_t cbBuf)
 {
