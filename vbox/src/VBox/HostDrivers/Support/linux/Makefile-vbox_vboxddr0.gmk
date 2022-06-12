@@ -1,4 +1,4 @@
-# $Id: Makefile-vbox_vboxddr0.gmk 87700 2021-02-10 20:21:04Z vboxsync $
+# $Id: Makefile-vbox_vboxddr0.gmk 87728 2021-02-12 02:24:07Z vboxsync $
 ## @file
 # Makefile for the VBoxDDR0.r0 wrapper module.
 #
@@ -29,6 +29,6 @@ WRAPPED_MODULE_NAME  := VBoxDDR0
 WRAPPED_MODULE_FLAGS := 0
 WRAPPER_NEED_VMMR0   := yes
 
-include $(dir $(lastword $(MAKEFILE_LIST)))/Makefile-wrapper.gmk
+include $(dir $(lastword $(MAKEFILE_LIST)))Makefile-wrapper.gmk
 
 
