@@ -1,4 +1,4 @@
-/* $Id: AudioTest.cpp 89115 2021-05-17 16:54:36Z vboxsync $ */
+/* $Id: AudioTest.cpp 89116 2021-05-17 17:00:42Z vboxsync $ */
 /** @file
  * Audio testing routines.
  * Common code which is being used by the ValidationKit and the debug / ValdikationKit audio driver(s).
@@ -745,7 +745,7 @@ int AudioTestSetWipe(PAUDIOTESTSET pSet)
 {
     AssertPtrReturn(pSet, VERR_INVALID_POINTER);
 
-    int rc;
+    int rc = VINF_SUCCESS;
     char szFilePath[RTPATH_MAX];
 
     PAUDIOTESTOBJ pObj;
