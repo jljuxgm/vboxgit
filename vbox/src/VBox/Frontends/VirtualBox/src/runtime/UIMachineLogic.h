@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 88785 2021-04-29 14:02:38Z vboxsync $ */
+/* $Id: UIMachineLogic.h 89040 2021-05-14 11:18:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -267,7 +267,8 @@ private slots:
     /* "Machine" menu functionality: */
     void sltShowKeyboardSettings();
     void sltShowSoftKeyboard();
-    void sltCloseSoftKeyboard();
+    void sltCloseSoftKeyboard(bool fAsync = false);
+    void sltCloseSoftKeyboardDefault() { sltCloseSoftKeyboard(true); }
     void sltToggleMouseIntegration(bool fEnabled);
     void sltTypeCAD();
 #ifdef VBOX_WS_X11
@@ -280,7 +281,8 @@ private slots:
     void sltTypeHostKeyComboPressRelease(bool fToggleSequence);
     void sltTakeSnapshot();
     void sltShowInformationDialog();
-    void sltCloseVMInformationDialog();
+    void sltCloseVMInformationDialog(bool fAsync = false);
+    void sltCloseVMInformationDialogDefault() { sltCloseVMInformationDialog(true); }
     void sltShowFileManagerDialog();
     void sltCloseFileManagerDialog();
     void sltReset();
