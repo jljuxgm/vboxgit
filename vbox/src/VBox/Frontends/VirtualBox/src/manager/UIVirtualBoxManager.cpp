@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 86846 2020-11-10 11:13:28Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 86848 2020-11-10 16:49:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -134,6 +134,10 @@ private:
 
     /** Prepares all. */
     void prepare();
+    /** Prepares widgets. */
+    void prepareWidgets();
+    /** Prepare editor contents. */
+    void prepareEditorContents();
 
     /** Loads file contents.
       * @returns Whether file was really loaded. */
@@ -202,6 +206,20 @@ void UIAcquirePublicKeyDialog::retranslateUi()
 
 void UIAcquirePublicKeyDialog::prepare()
 {
+    /* Prepare widgets: */
+    prepareWidgets();
+    /* Prepare editor contents: */
+    prepareEditorContents();
+    /* Apply language settings: */
+    retranslateUi();
+
+    /* Resize to suitable size: */
+    const int iMinimumHeightHint = minimumSizeHint().height();
+    resize(iMinimumHeightHint * 2, iMinimumHeightHint);
+}
+
+void UIAcquirePublicKeyDialog::prepareWidgets()
+{
     /* Prepare layout: */
     QVBoxLayout *pLayout = new QVBoxLayout(this);
     if (pLayout)
@@ -223,16 +241,11 @@ void UIAcquirePublicKeyDialog::prepare()
             pLayout->addWidget(m_pButtonBox);
         }
     }
+}
 
-    /* Apply language settings: */
-    retranslateUi();
-
-    /* Load last remembered file contents: */
+void UIAcquirePublicKeyDialog::prepareEditorContents()
+{
     loadFileContents(gEDataManager->cloudConsolePublicKeyPath(), true /* ignore errors */);
-
-    /* Resize to suitable size: */
-    const int iMinimumHeightHint = minimumSizeHint().height();
-    resize(iMinimumHeightHint * 2, iMinimumHeightHint);
 }
 
 bool UIAcquirePublicKeyDialog::loadFileContents(const QString &strPath, bool fIgnoreErrors /* = false */)
