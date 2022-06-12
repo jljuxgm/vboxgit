@@ -1,4 +1,4 @@
-/* $Id: CPUMInternal.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: CPUMInternal.h 86218 2020-09-22 12:36:57Z vboxsync $ */
 /** @file
  * CPUM - Internal header file.
  */
@@ -341,7 +341,8 @@ typedef struct CPUM
      */
     uint32_t                fHostUseFlags;
 
-    /** CR4 mask */
+    /** CR4 mask
+     * @todo obsolete? */
     struct
     {
         uint32_t            AndMask; /**< @todo Move these to the per-CPU structure and fix the switchers. Saves a register! */
