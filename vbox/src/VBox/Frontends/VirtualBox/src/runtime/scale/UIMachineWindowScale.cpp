@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowScale.cpp 86053 2020-09-07 17:58:16Z vboxsync $ */
+/* $Id: UIMachineWindowScale.cpp 86054 2020-09-07 18:22:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowScale class implementation.
  */
@@ -121,7 +121,7 @@ void UIMachineWindowScale::loadSettings()
 #ifdef VBOX_WS_X11
         QTimer::singleShot(0, this, SLOT(sltNormalizeGeometry()));
 #else /* !VBOX_WS_X11 */
-        normalizeGeometry(true /* adjust position */);
+        normalizeGeometry(true /* adjust position */, true /* resize to fit guest display. ignored in scaled case */);
 #endif /* !VBOX_WS_X11 */
     }
 }
