@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 89040 2021-05-14 11:18:18Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 89700 2021-06-15 10:21:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -707,6 +707,11 @@ void UIMachineLogic::sltMouseCapabilityChanged()
 void UIMachineLogic::sltHidLedsSyncStateChanged(bool fEnabled)
 {
     m_fIsHidLedsSyncEnabled = fEnabled;
+}
+
+void UIMachineLogic::sltDisableHostScreenSaverStateChanged(bool fDisabled)
+{
+    Q_UNUSED(fDisabled);
 }
 
 void UIMachineLogic::sltKeyboardLedsChanged()
@@ -1486,6 +1491,11 @@ void UIMachineLogic::loadSettings()
 #endif /* VBOX_WS_MAC || VBOX_WS_WIN */
     /* HID LEDs sync initialization: */
     sltSwitchKeyboardLedsToGuestLeds();
+    /* */
+#if defined(VBOX_WS_X11)
+    connect(gEDataManager, &UIExtraDataManager::sigDisableHostScreenSaverStateChange,
+            this, &UIMachineLogic::sltDisableHostScreenSaverStateChanged);
+#endif
 }
 
 void UIMachineLogic::saveSettings()

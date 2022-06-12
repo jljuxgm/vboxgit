@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 89040 2021-05-14 11:18:18Z vboxsync $ */
+/* $Id: UIMachineLogic.h 89700 2021-06-15 10:21:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -349,6 +349,9 @@ private slots:
     void sltHidLedsSyncStateChanged(bool fEnabled);
     void sltSwitchKeyboardLedsToGuestLeds();
     void sltSwitchKeyboardLedsToPreviousLeds();
+
+    /* Handle disabling/enabling host screen saver. */
+    void sltDisableHostScreenSaverStateChanged(bool fDisabled);
 
     /** Show Global Preferences. */
     void sltShowGlobalPreferences();

@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 89688 2021-06-14 17:10:09Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 89700 2021-06-15 10:21:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -114,6 +114,11 @@ signals:
     /** Mac OS X: Notifies about 'dock icon overlay' appearance change. */
     void sigDockIconOverlayAppearanceChange(bool fEnabled);
 #endif /* VBOX_WS_MAC */
+
+#ifdef VBOX_WS_X11
+    /* Is emitted when host screen saver inhibition state changes. */
+    void sigDisableHostScreenSaverStateChange(bool fDisable);
+#endif
 
 public:
 
