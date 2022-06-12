@@ -1,4 +1,4 @@
-/* $Id: AudioTestServiceProtocol.h 89182 2021-05-19 15:59:03Z vboxsync $ */
+/* $Id: AudioTestServiceProtocol.h 89204 2021-05-20 16:33:56Z vboxsync $ */
 /** @file
  * AudioTestServiceProtocol - Audio test execution server, Protocol Header.
  */
@@ -94,7 +94,7 @@ typedef struct ATSPKTREQHOWDY
     /** Version of the protocol the client wants to use. */
     uint32_t        uVersion;
     /** Alignment. */
-    uint8_t        au8Padding[12];
+    uint8_t         au8Padding[12];
 } ATSPKTREQHOWDY;
 AssertCompileSizeAlignment(ATSPKTREQHOWDY, ATSPKT_ALIGNMENT);
 /** Pointer to a HOWDY request structure. */

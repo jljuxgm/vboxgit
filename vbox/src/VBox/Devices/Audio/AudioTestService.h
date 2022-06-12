@@ -1,4 +1,4 @@
-/* $Id: AudioTestService.h 89182 2021-05-19 15:59:03Z vboxsync $ */
+/* $Id: AudioTestService.h 89204 2021-05-20 16:33:56Z vboxsync $ */
 /** @file
  * AudioTestService - Audio test execution server, Public Header.
  */
@@ -23,9 +23,8 @@
 
 #include "AudioTestServiceInternal.h"
 
-
-int atsInit(void);
-int atsStart(void);
+int AudioTestSvcInit(void);
+int AudioTestSvcStart(void);
 
 #endif /* !VBOX_INCLUDED_SRC_Audio_AudioTestService_h */
 

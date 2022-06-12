@@ -1,4 +1,4 @@
-/* $Id: AudioTestServiceTcp.cpp 89180 2021-05-19 15:46:15Z vboxsync $ */
+/* $Id: AudioTestServiceTcp.cpp 89204 2021-05-20 16:33:56Z vboxsync $ */
 /** @file
  * AudioTestServiceTcp - Audio test execution server, TCP/IP Transport Layer.
  */
@@ -39,8 +39,9 @@
 /*********************************************************************************************************************************
 *   Defined Constants And Macros                                                                                                 *
 *********************************************************************************************************************************/
-/** The default server port. */
-#define ATS_TCP_DEF_BIND_PORT                   6042
+/** The default server port.
+ *  Note: Do not choose/use 6042, as the Validation Kit TxsService already might use that port. */
+#define ATS_TCP_DEF_BIND_PORT                   6052
 /** The default server bind address. */
 #define ATS_TCP_DEF_BIND_ADDRESS                ""
 
