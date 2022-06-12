@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: status.py 86937 2020-11-20 15:35:35Z vboxsync $
+# $Id: status.py 86938 2020-11-20 15:37:27Z vboxsync $
 
 """
 CGI - Administrator Web-UI.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 86937 $"
+__version__ = "$Revision: 86938 $"
 
 
 # Standard python imports.
@@ -325,8 +325,7 @@ SELECT  TestBoxesWithStrings.sName,
         TestSets.tsCreated,
         TestBoxesWithStrings.sOS,
         SchedGroupNames.sSchedGroupNames
-FROM    TestBoxesWithStrings,
-        (SELECT TestBoxesInSchedGroups.idTestBox AS idTestBox,
+FROM    (SELECT TestBoxesInSchedGroups.idTestBox AS idTestBox,
                 STRING_AGG(SchedGroups.sName, ',') AS sSchedGroupNames
          FROM   TestBoxesInSchedGroups
          INNER JOIN SchedGroups
@@ -334,7 +333,8 @@ FROM    TestBoxesWithStrings,
          WHERE  TestBoxesInSchedGroups.tsExpire = 'infinity'::TIMESTAMP
             AND SchedGroups.tsExpire            = 'infinity'::TIMESTAMP
          GROUP BY TestBoxesInSchedGroups.idTestBox)
-        AS SchedGroupNames
+        AS SchedGroupNames,
+        TestBoxesWithStrings
 LEFT OUTER JOIN TestSets
              ON TestSets.idGenTestBox = TestBoxesWithStrings.idGenTestBox
             AND (   TestSets.tsCreated > (CURRENT_TIMESTAMP - '%s hours'::interval)
