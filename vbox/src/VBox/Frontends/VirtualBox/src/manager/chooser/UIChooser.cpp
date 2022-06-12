@@ -1,4 +1,4 @@
-/* $Id: UIChooser.cpp 84512 2020-05-25 15:44:36Z vboxsync $ */
+/* $Id: UIChooser.cpp 84513 2020-05-25 15:56:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooser class implementation.
  */
@@ -122,6 +122,12 @@ void UIChooser::disbandGroup()
 {
     AssertPtrReturnVoid(model());
     model()->disbandSelectedGroupItem();
+}
+
+void UIChooser::moveMachineToNewGroup()
+{
+    AssertPtrReturnVoid(model());
+    model()->moveSelectedMachineItemsToNewGroupItem();
 }
 
 void UIChooser::sortGroup()

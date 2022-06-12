@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.h 84463 2020-05-22 14:53:47Z vboxsync $ */
+/* $Id: UIChooserModel.h 84513 2020-05-25 15:56:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class declaration.
  */
@@ -219,6 +219,8 @@ public:
         void startEditingSelectedGroupItemName();
         /** Disbands selected group item. */
         void disbandSelectedGroupItem();
+        /** Moves selected machine items to new group item. */
+        void moveSelectedMachineItemsToNewGroupItem();
         /** Starts or shows selected items. */
         void startOrShowSelectedItems();
         /** Sorts selected [parent] group item. */
@@ -294,8 +296,6 @@ private slots:
 
     /** @name Children stuff.
       * @{ */
-        /** Handles group selected machines request. */
-        void sltGroupSelectedMachines();
         /** Handles refresh request. */
         void sltPerformRefreshAction();
         /** Handles remove selected machine request. */
