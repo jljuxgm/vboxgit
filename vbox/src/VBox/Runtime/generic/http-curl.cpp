@@ -1,4 +1,4 @@
-/* $Id: http-curl.cpp 86650 2020-10-20 14:26:02Z vboxsync $ */
+/* $Id: http-curl.cpp 86983 2020-11-26 11:33:39Z vboxsync $ */
 /** @file
  * IPRT - HTTP client API, cURL based.
  *
@@ -2103,7 +2103,7 @@ static int rtHttpUpdateUserAgentHeader(PRTHTTPINTERNAL pThis, PRTHTTPHEADER pNew
 
 
 /**
- * Free the headers associated with the insance (w/o telling cURL about it).
+ * Free the headers associated with the instance (w/o telling cURL about it).
  *
  * @param   pThis       The HTTP client instance.
  */
