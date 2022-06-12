@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageBasic1.cpp 87859 2021-02-24 13:01:12Z vboxsync $ */
+/* $Id: UIWizardNewVDPageBasic1.cpp 87907 2021-03-02 08:58:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageBasic1 class implementation.
  */
@@ -146,12 +146,15 @@ void UIWizardNewVDPage1::setMediumFormat(const CMediumFormat &mediumFormat)
 
 void UIWizardNewVDPage1::retranslateWidgets()
 {
-    QList<QAbstractButton*> buttons = m_pFormatButtonGroup->buttons();
-    for (int i = 0; i < buttons.size(); ++i)
+    if (m_pFormatButtonGroup)
     {
-        QAbstractButton *pButton = buttons[i];
-        UIMediumFormat enmFormat = gpConverter->fromInternalString<UIMediumFormat>(m_formatNames[m_pFormatButtonGroup->id(pButton)]);
-        pButton->setText(gpConverter->toString(enmFormat));
+        QList<QAbstractButton*> buttons = m_pFormatButtonGroup->buttons();
+        for (int i = 0; i < buttons.size(); ++i)
+        {
+            QAbstractButton *pButton = buttons[i];
+            UIMediumFormat enmFormat = gpConverter->fromInternalString<UIMediumFormat>(m_formatNames[m_pFormatButtonGroup->id(pButton)]);
+            pButton->setText(gpConverter->toString(enmFormat));
+        }
     }
 }
 

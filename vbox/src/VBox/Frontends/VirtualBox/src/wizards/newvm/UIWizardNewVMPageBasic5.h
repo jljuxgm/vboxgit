@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic5.h 87901 2021-03-01 17:33:17Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic5.h 87907 2021-03-02 08:58:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic5 class declaration.
  */
@@ -44,7 +44,6 @@ class UIWizardNewVMPageBasic5 : public UIWizardPage,
                                 public UIWizardNewVDPage1,
                                 public UIWizardNewVDPage2,
                                 public UIWizardNewVDPage3
-
 {
 
     Q_OBJECT;
