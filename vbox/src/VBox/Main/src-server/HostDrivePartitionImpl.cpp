@@ -1,4 +1,4 @@
-/* $Id: HostDrivePartitionImpl.cpp 85931 2020-08-28 16:45:39Z vboxsync $ */
+/* $Id: HostDrivePartitionImpl.cpp 85934 2020-08-28 16:49:16Z vboxsync $ */
 /** @file
  * VirtualBox Main - IHostDrivePartition implementation, VBoxSVC.
  */
@@ -19,7 +19,7 @@
 #include "HostDrivePartitionImpl.h"
 #include "LoggingNew.h"
 
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 
 /*
  * HostDrivePartition implementation.
