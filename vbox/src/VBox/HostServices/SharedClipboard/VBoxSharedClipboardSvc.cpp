@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc.cpp 87657 2021-02-09 13:21:04Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc.cpp 89555 2021-06-08 08:02:04Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Host service entry points.
  */
@@ -2574,7 +2574,9 @@ static DECLCALLBACK(int) svcLoadState(void *, uint32_t u32ClientID, void *pvClie
                 AssertRCReturnStmt(rc, shClSvcMsgFree(pClient, pMsg), rc);
             }
 
+            RTCritSectEnter(&pClient->CritSect);
             shClSvcMsgAdd(pClient, pMsg, true /* fAppend */);
+            RTCritSectLeave(&pClient->CritSect);
         }
 
         if (lenOrVer >= VBOX_SHCL_SAVED_STATE_LEGACY_CID)
