@@ -1,4 +1,4 @@
-/* $Id: tarcmd.cpp 84753 2020-06-10 11:40:56Z vboxsync $ */
+/* $Id: tarcmd.cpp 84760 2020-06-10 14:28:10Z vboxsync $ */
 /** @file
  * IPRT - A mini TAR Command.
  */
@@ -1720,8 +1720,8 @@ RTDECL(RTEXITCODE) RTZipTarCmd(unsigned cArgs, char **papszArgs)
         Opts.cFiles     = cArgs - GetState.iNext + 1;
     }
 
-    if (!Opts.cFiles)
-        return RTMsgErrorExitFailure("No input file(s) specified");
+    if (!Opts.pszFile)
+        return RTMsgErrorExitFailure("No archive specified");
 
     /*
      * Post proceess the options.
