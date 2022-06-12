@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxManageControlVM.cpp 84575 2020-05-27 17:14:25Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of the controlvm command.
  */
@@ -675,6 +675,27 @@ RTEXITCODE handleControlVM(HandlerArg *a)
         else if (!strcmp(a->argv[1], "acpisleepbutton"))
         {
             CHECK_ERROR_BREAK(console, SleepButton());
+        }
+        else if (   !strcmp(a->argv[1], "reboot")
+                 || !strcmp(a->argv[1], "shutdown")) /* With shutdown we mean gracefully powering off the VM by letting the guest OS do its thing. */
+        {
+            ComPtr<IGuest> guest;
+            CHECK_ERROR_BREAK(console, COMGETTER(Guest)(guest.asOutParam()));
+
+            const bool fReboot = !strcmp(a->argv[1], "reboot");
+
+            com::SafeArray<GuestShutdownFlag_T> aShutdownFlags;
+            if (fReboot)
+                aShutdownFlags.push_back(GuestShutdownFlag_Reboot);
+            else
+                aShutdownFlags.push_back(GuestShutdownFlag_PowerOff);
+            CHECK_ERROR(guest, Shutdown(ComSafeArrayAsInParam(aShutdownFlags)));
+            if (FAILED(rc))
+            {
+                if (rc == VBOX_E_NOT_SUPPORTED)
+                    RTPrintf("Current installed Guest Additions don't support %s the guest.",
+                             fReboot ? "rebooting" : "shutting down");
+            }
         }
         else if (!strcmp(a->argv[1], "keyboardputscancode"))
         {
