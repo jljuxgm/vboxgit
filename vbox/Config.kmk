@@ -1,4 +1,4 @@
-# $Id: Config.kmk 88935 2021-05-07 16:27:27Z vboxsync $
+# $Id: Config.kmk 88981 2021-05-11 13:23:37Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2553,7 +2553,14 @@ VBOX_PATH_MACOSX_SDK := $(firstword $(wildcard $(addsuffix /MacOSX$(VBOX_DEF_MAC
  ifdef VBOX_WITH_EVEN_NEWER_XCODE
   VBOX_DARWIN_DEF_SDK_SDKS        := MACOSX$(VBOX_DEF_MACOSX_VERSION_MIN_NO_DOT)
   VBOX_DARWIN_DEF_SDK_DEFS        := MAC_OS_X_VERSION_MAX_ALLOWED=$(SDK_MACOSX$(VBOX_DEF_MACOSX_VERSION_MIN_NO_DOT)_VERSION_VALUE)
-  VBOX_DARWIN_DEF_SDK_LDFLAGS      = $(VBOX_DARWIN_CLASSIC_LINKER) $(VBOX_DARWIN_NO_COMPACT_LINKEDIT)
+  # When using SDK 10.13 with quite new Xcode/clang there is (unfortunately)
+  # completely silent failure to detect the SDK version (2nd parameter to
+  # the -platform_version linker parameter normally emitted by the clang
+  # driver) which leads to non-working .dylib files because SIP assigns
+  # magic meaning to the pretty new SDK version information, rejecting such
+  # files as allegedly unsigned when the hardened runtime is enabled.
+  # Causes a warning from the linker, but better than broken .dylibs.
+  VBOX_DARWIN_DEF_SDK_LDFLAGS      = $(VBOX_DARWIN_CLASSIC_LINKER) $(VBOX_DARWIN_NO_COMPACT_LINKEDIT) $(if-expr "$(VBOX_DEF_MACOSX_VERSION_MIN)" == "10.13",-Wl$(COMMA)-platform_version$(COMMA)macos$(COMMA)$(VBOX_DEF_MACOSX_VERSION_MIN)$(COMMA)$(VBOX_DEF_MACOSX_VERSION_MIN),)
  else
   VBOX_DARWIN_DEF_SDK_DEFS        := MAC_OS_X_VERSION_MIN_REQUIRED=$(VBOX_DEF_MACOSX_VERSION_MIN_NO_DOT)0 \
                                      MAC_OS_X_VERSION_MAX_ALLOWED=$(VBOX_DEF_MACOSX_VERSION_MIN_NO_DOT)0
@@ -8222,7 +8229,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 88935 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 88981 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
