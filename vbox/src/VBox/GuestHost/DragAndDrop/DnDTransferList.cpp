@@ -1,4 +1,4 @@
-/* $Id: DnDTransferList.cpp 86370 2020-10-01 05:13:42Z vboxsync $ */
+/* $Id: DnDTransferList.cpp 86409 2020-10-02 10:21:42Z vboxsync $ */
 /** @file
  * DnD - transfer list implemenation.
  */
@@ -543,6 +543,7 @@ static int dndTransferListAppendDirectory(PDNDTRANSFERLIST pList, char* pszPathA
             break;
     }
 
+    RTDirClose(hDir);
     return rc;
 }
 
