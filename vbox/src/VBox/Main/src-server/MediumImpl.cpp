@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 85284 2020-07-12 15:11:52Z vboxsync $ */
+/* $Id: MediumImpl.cpp 85820 2020-08-18 13:23:26Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -4293,6 +4293,17 @@ HRESULT Medium::i_addBackReference(const Guid &aMachineId,
         m->backRefs.push_back(ref);
 
         return S_OK;
+    }
+
+    {
+        // Allow MediumType_Readonly mediums and DVD in particular to be attached twice.
+        AutoReadLock arlock(this COMMA_LOCKVAL_SRC_POS);
+        if (m->type == MediumType_Readonly || m->devType == DeviceType_DVD)
+        {
+            BackRef ref(aMachineId, aSnapshotId);
+            m->backRefs.push_back(ref);
+            return S_OK;
+        }
     }
 
     // if the caller has not supplied a snapshot ID, then we're attaching
