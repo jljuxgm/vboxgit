@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 87330 2021-01-20 19:02:24Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 87332 2021-01-20 19:03:48Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -4278,9 +4278,8 @@ DECLINLINE(int) hmR0SvmRunGuest(PVMCPUCC pVCpu, RTHCPHYS HCPhysVmcb)
     PVMCC pVM = pVCpu->CTX_SUFF(pVM);
 #ifdef VBOX_WITH_KERNEL_USING_XMM
     return hmR0SVMRunWrapXMM(pVM, pVCpu, HCPhysVmcb, pVCpu->hm.s.svm.pfnVMRun);
-        //pVCpu->hm.s.svm.HCPhysVmcbHost, HCPhysVmcb, pVM, pVCpu, pVCpu->hm.s.svm.pfnVMRun);
 #else
-    return pVCpu->hm.s.svm.pfnVMRun(pVM, pvCpu, HCPhysVmcb);
+    return pVCpu->hm.s.svm.pfnVMRun(pVM, pVCpu, HCPhysVmcb);
 #endif
 }
 
