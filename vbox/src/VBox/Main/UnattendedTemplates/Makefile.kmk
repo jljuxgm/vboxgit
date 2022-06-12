@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: Makefile.kmk 84639 2020-06-02 13:41:42Z vboxsync $
 ## @file
 # Top-level makefile for src/VBox/Main/UnattendedTemplates.
 #
@@ -41,6 +41,12 @@ ifdef VBOX_WITH_UNATTENDED
  	debian_postinstall.sh \
  	redhat_postinstall.sh \
  	win_postinstall.cmd
+
+ ifndef VBOX_OSE
+  VBoxUnattendedTemplates_SOURCES += \
+ 	lgw_ks.cfg \
+ 	lgw_postinstall.sh
+ endif
 
 endif # VBOX_WITH_UNATTENDED
 
