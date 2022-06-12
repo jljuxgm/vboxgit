@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.h 86193 2020-09-21 12:37:31Z vboxsync $ */
+/* $Id: DevVGA-SVGA.h 86237 2020-09-23 13:00:37Z vboxsync $ */
 /** @file
  * VMware SVGA device
  */
@@ -53,11 +53,13 @@
 # pragma GCC diagnostic ignored "-Wpedantic"
 #endif
 /* VMSVGA headers from SVGA Gallium driver. */
+#pragma pack(1) /* VMSVGA structures are '__packed'. */
 #include <svga3d_caps.h>
 #include <svga3d_reg.h>
 #include <svga3d_shaderdefs.h>
 #include <svga_escape.h>
 #include <svga_overlay.h>
+#pragma pack()
 #if RT_GNUC_PREREQ(4, 6)
 # pragma GCC diagnostic pop
 #endif
