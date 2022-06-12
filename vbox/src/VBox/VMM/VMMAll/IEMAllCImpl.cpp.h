@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 86183 2020-09-20 11:58:23Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 86185 2020-09-20 12:10:51Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -4308,8 +4308,8 @@ IEM_CIMPL_DEF_0(iemCImpl_sysenter)
     pVCpu->cpum.GstCtx.cs.u32Limit      = UINT32_MAX;
     pVCpu->cpum.GstCtx.cs.fFlags        = CPUMSELREG_FLAGS_VALID;
 
-    pVCpu->cpum.GstCtx.ss.Sel           = uNewCs & X86_SEL_MASK_OFF_RPL + 8;
-    pVCpu->cpum.GstCtx.ss.ValidSel      = uNewCs & X86_SEL_MASK_OFF_RPL + 8;
+    pVCpu->cpum.GstCtx.ss.Sel           = (uNewCs & X86_SEL_MASK_OFF_RPL) + 8;
+    pVCpu->cpum.GstCtx.ss.ValidSel      = (uNewCs & X86_SEL_MASK_OFF_RPL) + 8;
     pVCpu->cpum.GstCtx.ss.u64Base       = 0;
     pVCpu->cpum.GstCtx.ss.u32Limit      = UINT32_MAX;
     pVCpu->cpum.GstCtx.ss.Attr.u        = X86DESCATTR_D | X86DESCATTR_G | X86DESCATTR_P | X86DESCATTR_DT
