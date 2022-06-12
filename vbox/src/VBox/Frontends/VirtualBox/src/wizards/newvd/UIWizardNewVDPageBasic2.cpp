@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageBasic2.cpp 87859 2021-02-24 13:01:12Z vboxsync $ */
+/* $Id: UIWizardNewVDPageBasic2.cpp 87871 2021-02-25 10:17:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageBasic2 class implementation.
  */
@@ -28,7 +28,6 @@
 
 /* COM includes: */
 #include "CMediumFormat.h"
-
 
 UIWizardNewVDPage2::UIWizardNewVDPage2()
 {
