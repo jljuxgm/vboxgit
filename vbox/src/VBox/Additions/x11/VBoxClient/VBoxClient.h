@@ -1,4 +1,4 @@
-/* $Id: VBoxClient.h 83218 2020-03-06 10:10:00Z vboxsync $ */
+/* $Id: VBoxClient.h 84501 2020-05-25 13:36:55Z vboxsync $ */
 /** @file
  *
  * VirtualBox additions user session daemon.
@@ -29,6 +29,8 @@
 void VBClLogInfo(const char *pszFormat, ...);
 void VBClLogError(const char *pszFormat, ...);
 void VBClLogFatalError(const char *pszFormat, ...);
+void VBClLogDestroy(void);
+int VBClLogCreate(const char *pszLogFile);
 
 /** Call clean-up for the current service and exit. */
 extern void VBClCleanUp(bool fExit = true);
