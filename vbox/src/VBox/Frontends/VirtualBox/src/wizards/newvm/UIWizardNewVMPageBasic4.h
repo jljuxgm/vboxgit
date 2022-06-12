@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic4.h 87946 2021-03-04 11:11:22Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic4.h 87956 2021-03-04 17:56:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic4 class declaration.
  */
@@ -60,7 +60,7 @@ protected:
     bool getWithNewVirtualDiskWizard();
 
     virtual QWidget *createDiskWidgets();
-    virtual QWidget *createDiskVariantAndSizeWidgets();
+    virtual QWidget *createNewDiskWidgets();
     void getWithFileOpenDialog();
     void retranslateWidgets();
 
@@ -127,7 +127,7 @@ private:
 
     void prepare();
     void createConnections();
-    QWidget *createDiskVariantAndSizeWidgets();
+    QWidget *createNewDiskWidgets();
     void retranslateUi();
     void initializePage();
     void cleanupPage();

@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.h 87951 2021-03-04 14:33:44Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.h 87956 2021-03-04 17:56:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class declaration.
  */
@@ -126,10 +126,16 @@ private:
     void disableEnableUnattendedRelatedWidgets(bool fEnabled);
     void markWidgets() const;
     QWidget *createUnattendedWidgets();
-    virtual QWidget *createDiskWidgets() /* override */;
+    virtual QWidget *createNewDiskWidgets() /* override */;
 
     UIToolBox  *m_pToolBox;
     QGroupBox *m_pInstallationISOContainer;
+
+    QGroupBox *m_pDiskFormatGroupBox;
+    QGroupBox *m_pDiskVariantGroupBox;
+    QGroupBox *m_pDiskLocationGroupBox;
+    QGroupBox *m_pDiskSizeGroupBox;
+
 
     /** Set of widgets which user explicitly modified their values. They are exempt from
       * adjusting when OS type changes. */

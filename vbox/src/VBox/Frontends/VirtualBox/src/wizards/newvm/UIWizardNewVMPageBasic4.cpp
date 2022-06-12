@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic4.cpp 87955 2021-03-04 15:10:44Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic4.cpp 87956 2021-03-04 17:56:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic4 class implementation.
  */
@@ -118,7 +118,7 @@ void UIWizardNewVMPage4::setVirtualDiskFromDiskCombo()
     }
 }
 
-QWidget *UIWizardNewVMPage4::createDiskVariantAndSizeWidgets()
+QWidget *UIWizardNewVMPage4::createNewDiskWidgets()
 {
     return new QWidget();
 }
@@ -149,7 +149,7 @@ QWidget *UIWizardNewVMPage4::createDiskWidgets()
         m_pDiskSelectionButton->setIcon(UIIconPool::iconSet(":/select_file_16px.png", ":/select_file_disabled_16px.png"));
     }
     pDiskLayout->addWidget(m_pDiskNew, 0, 0, 1, 6);
-    pDiskLayout->addWidget(createDiskVariantAndSizeWidgets(), 1, 2, 3, 4);
+    pDiskLayout->addWidget(createNewDiskWidgets(), 1, 2, 3, 4);
     pDiskLayout->addWidget(m_pDiskExisting, 4, 0, 1, 6);
     pDiskLayout->addWidget(m_pDiskSelector, 5, 2, 1, 3);
     pDiskLayout->addWidget(m_pDiskSelectionButton, 5, 5, 1, 1);
@@ -219,7 +219,7 @@ void UIWizardNewVMPageBasic4::prepare()
     createConnections();
 }
 
-QWidget *UIWizardNewVMPageBasic4::createDiskVariantAndSizeWidgets()
+QWidget *UIWizardNewVMPageBasic4::createNewDiskWidgets()
 {
     QWidget *pWidget = new QWidget;
     QVBoxLayout *pLayout = new QVBoxLayout(pWidget);
