@@ -1,4 +1,4 @@
-/* $Id: AudioTestService.cpp 89174 2021-05-19 15:05:29Z vboxsync $ */
+/* $Id: AudioTestService.cpp 89175 2021-05-19 15:09:54Z vboxsync $ */
 /** @file
  * AudioTestService - Audio test execution server.
  */
@@ -704,7 +704,7 @@ static DECLCALLBACK(int) atsClientWorker(RTTHREAD hThread, void *pvUser)
  *
  * @returns VBox status code.
  */
-int atsMainThread(RTTHREAD hThread, void *pvUser)
+static DECLCALLBACK(int) atsMainThread(RTTHREAD hThread, void *pvUser)
 {
     RT_NOREF(hThread, pvUser);
 
