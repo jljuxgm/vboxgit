@@ -1,4 +1,4 @@
-' $Id: configure.vbs 85840 2020-08-19 17:32:39Z vboxsync $
+' $Id: configure.vbs 86249 2020-09-23 17:03:12Z vboxsync $
 '' @file
 ' The purpose of this script is to check for all external tools, headers, and
 ' libraries VBox OSE depends on.
@@ -808,12 +808,12 @@ class VisualCPPState
          ' Check that it's a supported version
          checkClExe = True
          if InStr(1, strVer, "16.") = 1 then
-            m_strVersion = "VCC110"
+            m_strVersion = "VCC100"
          elseif InStr(1, strVer, "17.") = 1 then
-            m_strVersion = "VCC111"
+            m_strVersion = "VCC110"
             LogPrint "The Visual C++ compiler ('" & strClExe & "') version isn't really supported, but may work: " & strVer
          elseif InStr(1, strVer, "18.") = 1 then
-            m_strVersion = "VCC112"
+            m_strVersion = "VCC120"
             LogPrint "The Visual C++ compiler ('" & strClExe & "') version isn't really supported, but may work: " & strVer
          elseif InStr(1, strVer, "19.0") = 1 then
             m_strVersion = "VCC140"
