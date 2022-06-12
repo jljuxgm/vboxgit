@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic2.h 84879 2020-06-19 10:29:46Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic2.h 84880 2020-06-19 12:07:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic2 class declaration.
  */
@@ -41,6 +41,7 @@ protected:
     UIWizardNewVMPage2();
 
     int baseMemory() const;
+    int VCPUCount() const;
 
     /* Widgets: */
     UIBaseMemoryEditor *m_pBaseMemoryEditor;
@@ -52,6 +53,7 @@ class UIWizardNewVMPageBasic2 : public UIWizardPage, public UIWizardNewVMPage2
 {
     Q_OBJECT;
     Q_PROPERTY(int baseMemory READ baseMemory);
+    Q_PROPERTY(int VCPUCount READ VCPUCount);
 
 public:
 
