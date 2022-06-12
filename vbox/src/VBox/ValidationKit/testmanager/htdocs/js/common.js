@@ -1,4 +1,4 @@
-/* $Id: common.js 84885 2020-06-21 01:35:38Z vboxsync $ */
+/* $Id: common.js 84891 2020-06-22 10:12:49Z vboxsync $ */
 /** @file
  * Common JavaScript functions
  */
@@ -241,7 +241,7 @@ function parseIsoTimestamp(sTs)
 
 /** 
  * @param   oDate   Date object. 
- */ 
+ */
 function formatTimeHHMM(oDate, fNbsp)
 {
     var sTime = oDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit'} );
