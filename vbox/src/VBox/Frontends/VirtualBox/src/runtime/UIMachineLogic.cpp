@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 88779 2021-04-29 11:10:01Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 88780 2021-04-29 11:13:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -2805,10 +2805,10 @@ void UIMachineLogic::sltHandleCommitData()
     /* Cleanup debugger before VBoxDbg module handle cleaned up: */
     cleanupDebugger();
     sltCloseLogViewerWindow();
+    sltCloseGuestControlConsoleDialog();
 #endif
     sltCloseFileManagerDialog();
     sltCloseVMInformationDialog();
-    sltCloseGuestControlConsoleDialog();
 }
 
 void UIMachineLogic::typeHostKeyComboPressRelease(bool fToggleSequence)
