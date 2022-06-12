@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 85389 2020-07-20 12:42:14Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 85454 2020-07-24 10:50:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -449,6 +449,14 @@ public:
         bool cloudConsoleManagerDetailsExpanded();
         /** Defines whether Cloud Console Manager details @a fExpanded. */
         void setCloudConsoleManagerDetailsExpanded(bool fExpanded);
+    /** @} */
+
+    /** @name Cloud Console
+      * @{ */
+        /** Returns Cloud Console public key path. */
+        QString cloudConsolePublicKeyPath();
+        /** Defines Cloud Console public key @a strPath. */
+        void setCloudConsolePublicKeyPath(const QString &strPath);
     /** @} */
 
     /** @name Wizards
