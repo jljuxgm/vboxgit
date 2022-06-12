@@ -1,4 +1,4 @@
-/* $Id: VRDEServerImpl.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VRDEServerImpl.cpp 85255 2020-07-11 23:39:31Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -285,13 +285,13 @@ static int i_portParseNumber(uint16_t *pu16Port, const char *pszStart, const cha
      *       only digits and pszEnd points to the char after last
      *       digit.
      */
-    size_t cch = pszEnd - pszStart;
+    size_t cch = (size_t)(pszEnd - pszStart);
     if (cch > 0 && cch <= 5) /* Port is up to 5 decimal digits. */
     {
         unsigned uPort = 0;
         while (pszStart != pszEnd)
         {
-            uPort = uPort * 10 + *pszStart - '0';
+            uPort = uPort * 10 + (unsigned)(*pszStart - '0');
             pszStart++;
         }
 
