@@ -1,4 +1,4 @@
-/* $Id: BandwidthControlImpl.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: BandwidthControlImpl.cpp 85243 2020-07-11 23:06:35Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -500,7 +500,7 @@ HRESULT BandwidthControl::i_loadSettings(const settings::IOSettings &data)
          ++it)
     {
         const settings::BandwidthGroup &gr = *it;
-        rc = createBandwidthGroup(gr.strName, gr.enmType, gr.cMaxBytesPerSec);
+        rc = createBandwidthGroup(gr.strName, gr.enmType, (LONG64)gr.cMaxBytesPerSec);
         if (FAILED(rc)) break;
     }
 
@@ -524,7 +524,7 @@ HRESULT BandwidthControl::i_saveSettings(settings::IOSettings &data)
 
         group.strName      = (*it)->i_getName();
         group.enmType      = (*it)->i_getType();
-        group.cMaxBytesPerSec = (*it)->i_getMaxBytesPerSec();
+        group.cMaxBytesPerSec = (uint64_t)(*it)->i_getMaxBytesPerSec();
 
         data.llBandwidthGroups.push_back(group);
     }
