@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 87270 2021-01-15 13:06:46Z vboxsync $ */
+/* $Id: AudioMixer.cpp 87273 2021-01-15 13:37:58Z vboxsync $ */
 /** @file
  * Audio mixing routines for multiplexing audio sources in device emulations.
  *
@@ -1711,7 +1711,7 @@ static int audioMixerSinkUpdateInternal(PAUDMIXSINK pSink)
     while (cbToWriteToStreams)
     {
         uint32_t cfChunk;
-        rc  = AudioMixBufAcquireReadBlock(&pSink->MixBuf, pSink->pabScratchBuf, RT_MIN(cbToWriteToStreams, pSink->cbScratchBuf),
+        rc  = AudioMixBufAcquireReadBlock(&pSink->MixBuf, pSink->pabScratchBuf, RT_MIN(cbToWriteToStreams, (uint32_t)pSink->cbScratchBuf),
                                           &cfChunk);
         if (RT_FAILURE(rc))
             break;
