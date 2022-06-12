@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioCoreAudio.cpp 88269 2021-03-24 11:45:54Z vboxsync $ */
+/* $Id: DrvHostAudioCoreAudio.cpp 88270 2021-03-24 11:52:37Z vboxsync $ */
 /** @file
  * Host audio driver - Mac OS X CoreAudio.
  */
@@ -147,7 +147,6 @@ DECLHIDDEN(int) coreAudioInputPermissionCheck(void);
 
 static void coreAudioPrintASBD(const char *pszDesc, const AudioStreamBasicDescription *pASBD)
 {
-    char pszSampleRate[32];
     LogRel2(("CoreAudio: %s description:\n", pszDesc));
     LogRel2(("CoreAudio:  Format ID: %RU32 (%c%c%c%c)\n", pASBD->mFormatID,
              RT_BYTE4(pASBD->mFormatID), RT_BYTE3(pASBD->mFormatID),
