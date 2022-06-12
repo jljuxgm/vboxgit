@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 86508 2020-10-09 16:15:42Z vboxsync $
+# $Id: vbox.py 86627 2020-10-19 10:44:40Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 86508 $"
+__version__ = "$Revision: 86627 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -474,7 +474,7 @@ class Build(object): # pylint: disable=too-few-public-methods
                 except:
                     reporter.logXcpt('Build: Running "%s --dump-build-type" failed!' % (sVBoxManage,));
             else:
-                reporter.log('Build: sVBoxManage=%s not found!' % (sVBoxManage,));
+                reporter.log3('Build: sVBoxManage=%s not found' % (sVBoxManage,));
 
             # Do some checks.
             sVMMR0 = os.path.join(self.sInstallPath, 'VMMR0.r0');
