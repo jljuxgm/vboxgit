@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 85438 2020-07-23 14:30:53Z vboxsync $ */
+/* $Id: DevVGA-SVGA.cpp 85476 2020-07-27 18:09:47Z vboxsync $ */
 /** @file
  * VMware SVGA device.
  *
@@ -5719,7 +5719,7 @@ DECLCALLBACK(int) vmsvgaR3PciIORegionFifoMapUnmap(PPDMDEVINS pDevIns, PPDMPCIDEV
             pThis->svga.GCPhysFIFO = GCPhysAddress;
             Log(("vmsvgaR3IORegionMap: GCPhysFIFO=%RGp cbFIFO=%#x\n", GCPhysAddress, pThis->svga.cbFIFO));
         }
-        rc = VINF_PCI_MAPPING_DONE; /* caller only cares about this status, so it is okay that we overwrite erros here. */
+        rc = VINF_PCI_MAPPING_DONE; /* caller only cares about this status, so it is okay that we overwrite errors here. */
     }
     else
     {
