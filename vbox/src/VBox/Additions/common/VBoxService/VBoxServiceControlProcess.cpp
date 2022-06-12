@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlProcess.cpp 84873 2020-06-18 15:37:09Z vboxsync $ */
+/* $Id: VBoxServiceControlProcess.cpp 84881 2020-06-19 12:42:31Z vboxsync $ */
 /** @file
  * VBoxServiceControlThread - Guest process handling.
  */
@@ -1854,6 +1854,7 @@ int VGSvcGstCtrlProcessStart(const PVBOXSERVICECTRLSESSION pSession,
             VGSvcError("Creating thread for guest process '%s' failed: rc=%Rrc, pProcess=%p\n",
                        pStartupInfo->pszCmd, rc, pProcess);
 
+            /* Process has not been added to the session's process list yet, so skip VGSvcGstCtrlSessionProcessRemove() here. */
             VGSvcGstCtrlProcessFree(pProcess);
         }
         else
@@ -1871,6 +1872,8 @@ int VGSvcGstCtrlProcessStart(const PVBOXSERVICECTRLSESSION pSession,
                 int rc2 = RTThreadWait(pProcess->Thread, RT_MS_1SEC * 30, NULL);
                 if (RT_SUCCESS(rc2))
                     pProcess->Thread = NIL_RTTHREAD;
+
+                VGSvcGstCtrlSessionProcessRemove(pSession, pProcess);
                 VGSvcGstCtrlProcessFree(pProcess);
             }
             else
