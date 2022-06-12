@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgConsole.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxDbgConsole.cpp 86004 2020-09-02 15:27:35Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Console.
  */
@@ -638,6 +638,12 @@ VBoxDbgConsole::~VBoxDbgConsole()
     m_pFocusToInput = NULL;
     delete m_pFocusToOutput;
     m_pFocusToOutput = NULL;
+
+    if (m_pszOutputBuf)
+    {
+        RTMemFree(m_pszOutputBuf);
+        m_pszOutputBuf = NULL;
+    }
 }
 
 
