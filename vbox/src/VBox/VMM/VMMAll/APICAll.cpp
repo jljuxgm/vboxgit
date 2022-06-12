@@ -1,4 +1,4 @@
-/* $Id: APICAll.cpp 85964 2020-08-31 23:42:54Z vboxsync $ */
+/* $Id: APICAll.cpp 85965 2020-08-31 23:47:31Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller - All Contexts.
  */
@@ -3100,6 +3100,8 @@ bool apicPostInterrupt(PVMCPUCC pVCpu, uint8_t uVector, XAPICTRIGGERMODE enmTrig
     bool     fAccepted = true;
 
     STAM_PROFILE_START(&pApicCpu->StatPostIntr, a);
+    STAM_REL_COUNTER_INC(&pApicCpu->StatPostIntrCnt);
+    STAM_REL_COUNTER_INC(&pApicCpu->aStatVectors[uVector]);
 
     /*
      * Only post valid interrupt vectors.
