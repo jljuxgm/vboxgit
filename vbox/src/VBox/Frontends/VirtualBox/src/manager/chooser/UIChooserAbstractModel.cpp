@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.cpp 86745 2020-10-28 17:42:08Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.cpp 86746 2020-10-28 17:44:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class implementation.
  */
@@ -729,23 +729,8 @@ void UIChooserAbstractModel::sltSnapshotChanged(const QUuid &uMachineId, const Q
 
 void UIChooserAbstractModel::sltHandleCloudProviderUninstall(const QUuid &uProviderId)
 {
-    /* Search for top-level provider node: */
-    foreach (UIChooserNode *pNode, m_pInvisibleRootNode->nodes(UIChooserNodeType_Group))
-    {
-        /* Skip unrelated nodes: */
-        AssertPtrReturnVoid(pNode);
-        UIChooserNodeGroup *pGroupNode = pNode->toGroupNode();
-        AssertPtrReturnVoid(pGroupNode);
-        if (pGroupNode->groupType() != UIChooserNodeGroupType_Provider)
-            continue;
-        const QUuid uIteratedId = pGroupNode->property("id").toUuid();
-        AssertReturnVoid(!uIteratedId.isNull());
-        if (uIteratedId != uProviderId)
-            continue;
-
-        /* Remove found provider node: */
-        delete pNode;
-    }
+    /* Search and delete corresponding cloud provider node if present: */
+    delete searchProviderNode(uProviderId);
 }
 
 void UIChooserAbstractModel::sltReloadMachine(const QUuid &uMachineId)
@@ -1084,7 +1069,6 @@ void UIChooserAbstractModel::reloadCloudTree()
                                    shouldGroupNodeBeOpened(invisibleRoot(),
                                                            UIChooserNodeDataPrefixType_Provider,
                                                            strProviderShortName));
-        pProviderNode->setProperty("id", uProviderId);
 
         /* Iterate through provider's profiles: */
         foreach (CCloudProfile comCloudProfile, profiles)
