@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.cpp 85675 2020-08-10 16:14:31Z vboxsync $ */
+/* $Id: UIActionPoolManager.cpp 85752 2020-08-13 16:25:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class implementation.
  */
@@ -3920,6 +3920,14 @@ void UIActionPoolManager::updateMenuGroup()
     /* Clear contents: */
     pMenu->clear();
 
+#ifdef VBOX_WS_MAC
+    // WORKAROUND:
+    // On macOS you can't leave menu empty and still have it in
+    // the menu-bar, you have to leave there at least something.
+    // Remaining stuff will be appended from UIVirtualBoxManager.
+    pMenu->addAction(action(UIActionIndexMN_M_Group_S_New));
+#endif
+
     /* This menu always remains invalid.. */
 }
 
@@ -3930,6 +3938,14 @@ void UIActionPoolManager::updateMenuMachine()
     AssertPtrReturnVoid(pMenu);
     /* Clear contents: */
     pMenu->clear();
+
+#ifdef VBOX_WS_MAC
+    // WORKAROUND:
+    // On macOS you can't leave menu empty and still have it in
+    // the menu-bar, you have to leave there at least something.
+    // Remaining stuff will be appended from UIVirtualBoxManager.
+    pMenu->addAction(action(UIActionIndexMN_M_Machine_S_New));
+#endif
 
     /* This menu always remains invalid.. */
 }
