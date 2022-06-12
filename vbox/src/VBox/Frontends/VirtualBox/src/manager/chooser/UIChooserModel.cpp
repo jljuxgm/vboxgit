@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 84461 2020-05-22 13:31:42Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 84463 2020-05-22 14:53:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -395,6 +395,11 @@ bool UIChooserModel::isAllItemsOfOneGroupSelected() const
 
     /* Check if both sets contains the same: */
     return currentItemSet == firstParentItemSet;
+}
+
+QString UIChooserModel::fullGroupName() const
+{
+    return isSingleGroupSelected() ? firstSelectedItem()->fullName() : firstSelectedItem()->parentItem()->fullName();
 }
 
 UIChooserItem *UIChooserModel::findClosestUnselectedItem() const
@@ -911,62 +916,6 @@ void UIChooserModel::sltCurrentItemDestroyed()
     AssertMsgFailed(("Current-item destroyed!"));
 }
 
-void UIChooserModel::sltCreateNewMachine()
-{
-    /* Check if at least one of actions is enabled: */
-    if (   !actionPool()->action(UIActionIndexST_M_Welcome_S_New)->isEnabled()
-        && !actionPool()->action(UIActionIndexST_M_Machine_S_New)->isEnabled()
-        && !actionPool()->action(UIActionIndexST_M_Group_S_New)->isEnabled())
-        return;
-
-    /* Lock the action preventing cascade calls: */
-    actionPool()->action(UIActionIndexST_M_Welcome_S_New)->setEnabled(false);
-    actionPool()->action(UIActionIndexST_M_Machine_S_New)->setEnabled(false);
-    actionPool()->action(UIActionIndexST_M_Group_S_New)->setEnabled(false);
-
-    /* What first item do we have? */
-    if (  !firstSelectedMachineItem()
-        ||firstSelectedMachineItem()->itemType() == UIVirtualMachineItemType_Local)
-    {
-        /* Select the parent: */
-        UIChooserNode *pGroup = 0;
-        if (isSingleGroupSelected())
-            pGroup = firstSelectedItem()->node();
-        else if (!selectedItems().isEmpty())
-            pGroup = firstSelectedItem()->parentItem()->node();
-        QString strGroupName;
-        if (pGroup)
-            strGroupName = pGroup->fullName();
-
-        /* Use the "safe way" to open stack of Mac OS X Sheets: */
-        QWidget *pWizardParent = windowManager().realParentWindow(chooser()->managerWidget());
-        UISafePointerWizardNewVM pWizard = new UIWizardNewVM(pWizardParent, strGroupName);
-        windowManager().registerNewParent(pWizard, pWizardParent);
-        pWizard->prepare();
-
-        /* Execute wizard: */
-        pWizard->exec();
-        delete pWizard;
-    }
-    else
-    {
-        /* Use the "safe way" to open stack of Mac OS X Sheets: */
-        QWidget *pWizardParent = windowManager().realParentWindow(chooser()->managerWidget());
-        UISafePointerWizardNewCloudVM pWizard = new UIWizardNewCloudVM(pWizardParent);
-        windowManager().registerNewParent(pWizard, pWizardParent);
-        pWizard->prepare();
-
-        /* Execute wizard: */
-        pWizard->exec();
-        delete pWizard;
-    }
-
-    /* Unlock the action allowing further calls: */
-    actionPool()->action(UIActionIndexST_M_Welcome_S_New)->setEnabled(true);
-    actionPool()->action(UIActionIndexST_M_Machine_S_New)->setEnabled(true);
-    actionPool()->action(UIActionIndexST_M_Group_S_New)->setEnabled(true);
-}
-
 void UIChooserModel::sltGroupSelectedMachines()
 {
     /* Check if action is enabled: */
@@ -1361,12 +1310,6 @@ void UIChooserModel::prepareHandlers()
 void UIChooserModel::prepareConnections()
 {
     /* Setup action connections: */
-    connect(actionPool()->action(UIActionIndexST_M_Welcome_S_New), &UIAction::triggered,
-            this, &UIChooserModel::sltCreateNewMachine);
-    connect(actionPool()->action(UIActionIndexST_M_Group_S_New), &UIAction::triggered,
-            this, &UIChooserModel::sltCreateNewMachine);
-    connect(actionPool()->action(UIActionIndexST_M_Machine_S_New), &UIAction::triggered,
-            this, &UIChooserModel::sltCreateNewMachine);
     connect(actionPool()->action(UIActionIndexST_M_Machine_S_Remove), &UIAction::triggered,
             this, &UIChooserModel::sltRemoveSelectedMachine);
     connect(actionPool()->action(UIActionIndexST_M_Machine_M_MoveToGroup_S_New), &UIAction::triggered,

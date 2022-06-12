@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 84461 2020-05-22 13:31:42Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.h 84463 2020-05-22 14:53:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -184,6 +184,8 @@ private slots:
 
     /** @name Machine menu stuff.
       * @{ */
+        /** Handles call to open new machine wizard. */
+        void sltOpenNewMachineWizard();
         /** Handles call to open add machine dialog. */
         void sltOpenAddMachineDialog();
 

@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.h 84461 2020-05-22 13:31:42Z vboxsync $ */
+/* $Id: UIChooserModel.h 84463 2020-05-22 14:53:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class declaration.
  */
@@ -174,6 +174,9 @@ public:
         /** Returns whether all machine items of one group is selected. */
         bool isAllItemsOfOneGroupSelected() const;
 
+        /** Returns full name of currently selected group. */
+        QString fullGroupName() const;
+
         /** Finds closest non-selected-item. */
         UIChooserItem *findClosestUnselectedItem() const;
 
@@ -291,8 +294,6 @@ private slots:
 
     /** @name Children stuff.
       * @{ */
-        /** Handles create new machine request. */
-        void sltCreateNewMachine();
         /** Handles group selected machines request. */
         void sltGroupSelectedMachines();
         /** Handles refresh request. */
