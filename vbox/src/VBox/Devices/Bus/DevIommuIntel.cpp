@@ -1,4 +1,4 @@
-/* $Id: DevIommuIntel.cpp 89538 2021-06-07 04:07:22Z vboxsync $ */
+/* $Id: DevIommuIntel.cpp 89548 2021-06-07 12:13:55Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - Intel implementation.
  */
@@ -2217,7 +2217,7 @@ static DECLCALLBACK(int) dmarDrSecondLevelTranslate(PPDMDEVINS pDevIns, PCDMARME
         uint8_t const fReqPerm = pMemReqIn->AddrRange.fPerm & pThis->fPermValidMask;
         uint8_t const fPtPerm  = uPtEntity & pThis->fPermValidMask;
         Assert(!(fReqPerm & DMAR_PERM_EXE));                        /* No Execute-requests support yet. */
-        Assert(pThis->fExtCapReg & VTD_BF_ECAP_REG_SLADS_MASK);     /* No Second-level access/dirty support. */
+        Assert(!(pThis->fExtCapReg & VTD_BF_ECAP_REG_SLADS_MASK));  /* No Second-level access/dirty support. */
         if ((fPtPerm & fReqPerm) == fReqPerm)
         { /* likely */ }
         else
