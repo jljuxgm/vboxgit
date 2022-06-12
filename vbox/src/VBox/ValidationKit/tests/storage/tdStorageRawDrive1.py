@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Id: tdStorageRawDrive1.py 87681 2021-02-10 12:29:18Z vboxsync $"
+__version__ = "$Id: tdStorageRawDrive1.py 87683 2021-02-10 12:47:51Z vboxsync $"
 
 # Standard Python imports.
 import os;
@@ -1093,7 +1093,7 @@ class tdStorageRawDriveOs(vboxtestvms.BaseTestVm):
                     sDictValue = asHeader[sKey];
                     if sDictValue == '$':
                         sDictValue = asAction[sKey];
-                    if sDictValue != '*' and sDictValue != sValue:
+                    if sDictValue not in ('*', sValue):
                         return reporter.error("VMDK descriptor has value which was not expected");
                     continue;
 
@@ -1127,7 +1127,7 @@ class tdStorageRawDriveOs(vboxtestvms.BaseTestVm):
                 if sKey not in asDatabase.keys():
                     return reporter.error("VMDK descriptor has invalid format");
                 sDictValue = asDatabase[sKey];
-                if sDictValue != '*' and sDictValue != sValue:
+                if sDictValue not in ('*', sValue):
                     return reporter.error("VMDK descriptor has value which was not expected");
                 continue;
         return iParseState == DescriptorParseState.kiDatabase;
