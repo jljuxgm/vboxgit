@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.h 87060 2020-12-09 10:05:23Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.h 87244 2021-01-13 19:38:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class declaration.
  */
@@ -109,10 +109,7 @@ private:
     bool isProductKeyWidgetEnabled() const;
     void disableEnableUnattendedRelatedWidgets(bool fEnabled);
     void markWidgets() const;
-    /** Widgets. */
-    QWidget *m_pNameAndSystemContainer;
-    QWidget *m_pGAInstallContainer;
-    QWidget *m_pUsernameHostnameContainer;
+
     QToolBox  *m_pToolBox;
 };
 

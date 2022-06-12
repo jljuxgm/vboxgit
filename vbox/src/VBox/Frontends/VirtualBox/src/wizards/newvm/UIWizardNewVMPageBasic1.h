@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic1.h 87240 2021-01-13 14:41:41Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic1.h 87244 2021-01-13 19:38:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic1 class declaration.
  */
@@ -23,6 +23,7 @@
 
 /* Local includes: */
 #include "UIWizardPage.h"
+#include "UIExtraDataDefs.h"
 
 /* Forward declarations: */
 class QBoxLayout;
@@ -75,7 +76,8 @@ protected:
     bool determineOSType(const QString &strISOPath);
     /** calls CVirtualBox::ComposeMachineFilename(...) and sets related member variables */
     void composeMachineFilePath();
-    /** Creates the page widgets and adds them into the @p pGridLayout. */
+
+    QWidget *createNameOSTypeWidgets(WizardMode mode, bool fCreateLabels = true);
     int createNameOSTypeWidgets(QGridLayout *pLayout, bool fCreateLabels = true);
     void setTypeByISODetectedOSType(const QString &strDetectedOSType);
     /** Colors the widgets red if they cause isComplete to fail. */
