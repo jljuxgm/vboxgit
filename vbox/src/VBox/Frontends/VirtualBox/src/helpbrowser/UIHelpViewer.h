@@ -1,4 +1,4 @@
-/* $Id: UIHelpViewer.h 87656 2021-02-09 13:14:33Z vboxsync $ */
+/* $Id: UIHelpViewer.h 88392 2021-04-07 10:41:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class declaration.
  */
@@ -86,6 +86,7 @@ private:
     void findAllMatches(const QString &searchString);
     void highlightFinds(int iSearchTermLength);
     void selectMatch(int iMatchIndex, int iSearchStringLength);
+    void iterateDocumentImages();
     const QHelpEngine* m_pHelpEngine;
     UIFindInPageWidget *m_pFindInPageWidget;
     /* Initilized as false and set to true once the user drag moves the find widget. */
@@ -96,6 +97,7 @@ private:
     int m_iSelectedMatchIndex;
     int m_iSearchTermLength;
     int m_iInitialFontPointSize;
+    QMap<QString, qreal> m_imageSizesMap;
 };
 
 #endif /* #ifdef VBOX_WITH_QHELP_VIEWER */
