@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 87200 2021-01-08 15:01:19Z vboxsync $
+# $Id: Makefile.kmk 88058 2021-03-09 15:17:28Z vboxsync $
 ## @file
 # Some hacks to allow syntax and prerequisite include checking of headers.
 # This makefile doesn't and shouldn't build successfully.
@@ -25,6 +25,8 @@ LIBRARIES += SyntaxVBoxIncludeR3 SyntaxVBoxIncludeR0
 VBOX_HDRS_CPP_FEATURES := \
 	VBox/vmm/hm.h \
 	VBox/vmm/hm_vmx.h \
+	VBox/vmm/pdmaudioinline.h \
+	VBox/vmm/pdmaudiohostenuminline.h \
 	VBox/HostServices/GuestControlSvc.h \
 	VBox/HostServices/DragAndDropSvc.h \
 	VBox/HostServices/Service.h \
