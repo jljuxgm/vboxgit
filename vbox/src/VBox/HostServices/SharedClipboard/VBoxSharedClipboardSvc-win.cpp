@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-win.cpp 86889 2020-11-16 14:23:04Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-win.cpp 86890 2020-11-16 14:34:39Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Win32 host.
  */
@@ -91,7 +91,7 @@ static int vboxClipboardSvcWinDataGet(uint32_t u32Format, const void *pvSrc, uin
             {
                 /* Do not copy data. The dst buffer is not enough. */
                 RTMemFree(pszBuf);
-                return;
+                return VERR_BUFFER_OVERFLOW;
             }
             memcpy(pvDst, pszBuf, cbBuf);
             RTMemFree(pszBuf);
