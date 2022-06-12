@@ -1,4 +1,4 @@
-' $Id: configure.vbs 82968 2020-02-04 10:35:17Z vboxsync $
+' $Id: configure.vbs 84726 2020-06-08 16:51:48Z vboxsync $
 '' @file
 ' The purpose of this script is to check for all external tools, headers, and
 ' libraries VBox OSE depends on.
@@ -1113,6 +1113,7 @@ sub CheckForVisualCPP(strOptVC, strOptVCCommon, blnOptVCExpressEdition)
       CfgPrint "PATH_TOOL_VCC100      := " & g_strPathVCC
       CfgPrint "PATH_TOOL_VCC100X86   := $(PATH_TOOL_VCC100)"
       CfgPrint "PATH_TOOL_VCC100AMD64 := $(PATH_TOOL_VCC100)"
+      CfgPrint "VBOX_WITH_NEW_VCC     :="
       if LogFileExists(strPathVC, "atlmfc/include/atlbase.h") then
          PrintResult "Visual C++ v10 with ATL", g_strPathVCC
       elseif   LogFileExists(g_strPathDDK, "inc/atl71/atlbase.h") _
