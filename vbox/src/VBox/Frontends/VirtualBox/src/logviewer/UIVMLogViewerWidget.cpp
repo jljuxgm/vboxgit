@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.cpp 86986 2020-11-26 14:22:34Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.cpp 87108 2020-12-21 12:00:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class implementation.
  */
@@ -644,7 +644,6 @@ void UIVMLogViewerWidget::saveOptions()
     foreach(UIDialogPanel* pPanel, m_visiblePanelsList)
         strNameList.append(pPanel->panelName());
     gEDataManager->setLogViewerVisiblePanels(strNameList);
-
     gEDataManager->setLogViweverOptions(m_font, m_bWrapLines, m_bShowLineNumbers);
 }
 
@@ -887,7 +886,8 @@ void UIVMLogViewerWidget::showPanel(UIDialogPanel* panel)
         if (!iterator.value()->isChecked())
             iterator.value()->setChecked(true);
     }
-    m_visiblePanelsList.push_back(panel);
+    if (!m_visiblePanelsList.contains(panel))
+        m_visiblePanelsList.push_back(panel);
     manageEscapeShortCut();
 }
 

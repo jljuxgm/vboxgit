@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerBookmarksPanel.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIVMLogViewerBookmarksPanel.cpp 87108 2020-12-21 12:00:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -85,7 +85,7 @@ void UIVMLogViewerBookmarksPanel::disableEnableBookmarking(bool flag)
 
 QString UIVMLogViewerBookmarksPanel::panelName() const
 {
-    return "FilterPanel";
+    return "BookmarksPanel";
 }
 
 void UIVMLogViewerBookmarksPanel::setBookmarkIndex(int index)
