@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInWinNt.cpp 86106 2020-09-13 08:33:57Z vboxsync $ */
+/* $Id: DBGPlugInWinNt.cpp 86111 2020-09-13 08:49:37Z vboxsync $ */
 /** @file
  * DBGPlugInWindows - Debugger and Guest OS Digger Plugin For Windows NT.
  */
@@ -521,7 +521,7 @@ static DECLCALLBACK(int) dbgDiggerWinNtIWinNt_QueryVersion(struct DBGFOSIWINNT *
 
 
 /**
- * @interface_method_impl{DBGFOSIWINNT,pfnQueryVersion}
+ * @interface_method_impl{DBGFOSIWINNT,pfnQueryKernelPtrs}
  */
 static DECLCALLBACK(int) dbgDiggerWinNtIWinNt_QueryKernelPtrs(struct DBGFOSIWINNT *pThis, PUVM pUVM,
                                                               PRTGCUINTPTR pGCPtrKernBase, PRTGCUINTPTR pGCPtrPsLoadedModuleList)
