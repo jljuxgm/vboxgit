@@ -1,4 +1,4 @@
-/* $Id: TMInternal.h 87812 2021-02-19 20:54:49Z vboxsync $ */
+/* $Id: TMInternal.h 87813 2021-02-19 21:40:11Z vboxsync $ */
 /** @file
  * TM - Internal header file.
  */
@@ -284,11 +284,13 @@ typedef struct TMTIMERQUEUE
     bool                    fCannotGrow;
     /** Align on 64-byte boundrary. */
     bool                    afAlignment1[7];
+
     /** Time spent doing scheduling and timer callbacks. */
     STAMPROFILE             StatDo;
     /** The current max timer Hz hint. */
     uint32_t volatile       uMaxHzHint;
     uint32_t                u64Alignment2[7];
+
     /** Lock serializing the active timer list and associated work. */
     PDMCRITSECT             TimerLock;
     /** Lock serializing timer allocation and deallocation.
