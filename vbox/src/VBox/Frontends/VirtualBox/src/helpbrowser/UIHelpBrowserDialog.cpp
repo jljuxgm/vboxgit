@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserDialog.cpp 86791 2020-11-03 11:21:51Z vboxsync $ */
+/* $Id: UIHelpBrowserDialog.cpp 86844 2020-11-10 08:48:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserDialog class implementation.
  */
@@ -86,7 +86,7 @@ void UIHelpBrowserDialog::configureCentralWidget()
     {
         /* Configure widget: */
         setWidget(pWidget);
-        setWidgetMenu(pWidget->menu());
+        setWidgetMenus(pWidget->menus());
 #ifdef VBOX_WS_MAC
         setWidgetToolbar(pWidget->toolbar());
 #endif
