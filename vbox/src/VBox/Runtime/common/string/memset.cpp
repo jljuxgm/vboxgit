@@ -1,4 +1,4 @@
-/* $Id: memset.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: memset.cpp 85075 2020-07-06 17:17:30Z vboxsync $ */
 /** @file
  * IPRT - CRT Strings, memset().
  */
@@ -49,7 +49,7 @@ void *memset(void *pvDst, int ch, size_t cb)
 void *memset(void *pvDst, int ch, size_t cb)
 #endif
 {
-    register union
+    union
     {
         uint8_t  *pu8;
         uint32_t *pu32;
@@ -58,9 +58,9 @@ void *memset(void *pvDst, int ch, size_t cb)
     u.pvDst = pvDst;
 
     /* 32-bit word moves. */
-    register uint32_t u32 = ch | (ch << 8);
+    uint32_t u32 = ch | (ch << 8);
     u32 |= u32 << 16;
-    register size_t c = cb >> 2;
+    size_t c = cb >> 2;
     while (c-- > 0)
         *u.pu32++ = u32;
 

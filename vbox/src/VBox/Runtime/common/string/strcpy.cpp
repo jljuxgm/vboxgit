@@ -1,4 +1,4 @@
-/* $Id: strcpy.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: strcpy.cpp 85075 2020-07-06 17:17:30Z vboxsync $ */
 /** @file
  * IPRT - CRT Strings, strcpy().
  */
@@ -38,9 +38,9 @@
  * @param   pszDst      Will contain a copy of pszSrc.
  * @param   pszSrc      Zero terminated string.
  */
-char* strcpy(char *pszDst, register const char *pszSrc)
+char* strcpy(char *pszDst, const char *pszSrc)
 {
-    register char *psz = pszDst;
+    char *psz = pszDst;
     while ((*psz++ = *pszSrc++))
         ;
 

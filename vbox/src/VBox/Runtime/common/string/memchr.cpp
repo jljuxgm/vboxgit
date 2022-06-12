@@ -1,4 +1,4 @@
-/* $Id: memchr.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: memchr.cpp 85075 2020-07-06 17:17:30Z vboxsync $ */
 /** @file
  * IPRT - CRT Strings, memcpy().
  */
@@ -50,8 +50,8 @@ void *memchr(const void *pv, int ch, size_t cb)
 void *memchr(const void *pv, int ch, size_t cb)
 #endif
 {
-    register uint8_t const *pu8 = (uint8_t const *)pv;
-    register size_t cb2 = cb;
+    uint8_t const *pu8 = (uint8_t const *)pv;
+    size_t cb2 = cb;
     while (cb2-- > 0)
     {
         if (*pu8 == ch)

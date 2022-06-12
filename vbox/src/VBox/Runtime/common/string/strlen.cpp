@@ -1,4 +1,4 @@
-/* $Id: strlen.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: strlen.cpp 85075 2020-07-06 17:17:30Z vboxsync $ */
 /** @file
  * IPRT - CRT Strings, strlen().
  */
@@ -47,7 +47,7 @@ size_t strlen(const char *pszString)
 size_t strlen(const char *pszString)
 #endif
 {
-    register const char *psz = pszString;
+    const char *psz = pszString;
     while (*psz)
         psz++;
     return psz - pszString;
