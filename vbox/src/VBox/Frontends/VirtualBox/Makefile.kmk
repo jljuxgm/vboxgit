@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 86571 2020-10-14 11:22:35Z vboxsync $
+# $Id: Makefile.kmk 86577 2020-10-14 17:39:59Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -1528,7 +1528,7 @@ UICommon_QT_MODULES.solaris += X11Extras
 UICommon_QT_MODULES.freebsd += X11Extras
 UICommon_QT_MODULES.darwin  += MacExtras
 UICommon_QT_MODULES.win     += WinExtras
-UICommon_QT_MODULES         += Help
+UICommon_QT_MODULES.linux   += Help
 ifdef VBOX_GUI_WITH_QTGLFRAMEBUFFER
  UICommon_QT_MODULES += OpenGL
 endif
