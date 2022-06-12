@@ -1,4 +1,4 @@
-/* $Id: VBoxManageAppliance.cpp 84534 2020-05-26 10:48:28Z vboxsync $ */
+/* $Id: VBoxManageAppliance.cpp 85361 2020-07-16 09:48:35Z vboxsync $ */
 /** @file
  * VBoxManage - The appliance-related commands.
  */
@@ -33,7 +33,6 @@
 #include <VBox/param.h>
 
 #include <VBox/version.h>
-#include <revision-generated.h> /* VBOX_SVN_REV - PCH prevents putting it in DEFS. */
 
 #include <list>
 #include <map>
