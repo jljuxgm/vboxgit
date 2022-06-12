@@ -1,4 +1,4 @@
-/* $Id: AudioHlp.cpp 88357 2021-04-04 22:58:35Z vboxsync $ */
+/* $Id: AudioHlp.cpp 89062 2021-05-16 19:57:58Z vboxsync $ */
 /** @file
  * Audio helper routines.
  *
@@ -187,7 +187,9 @@ bool AudioHlpStreamCfgIsValid(PCPDMAUDIOSTREAMCFG pCfg)
             if (   pCfg->enmDir == PDMAUDIODIR_IN
                 || pCfg->enmDir == PDMAUDIODIR_OUT)
             {
+                /* As stated elsewhere, the following is non-sense and must be eliminated. */
                 if (   pCfg->enmLayout == PDMAUDIOSTREAMLAYOUT_NON_INTERLEAVED
+                    || pCfg->enmLayout == PDMAUDIOSTREAMLAYOUT_INTERLEAVED
                     || pCfg->enmLayout == PDMAUDIOSTREAMLAYOUT_RAW)
                     return AudioHlpPcmPropsAreValid(&pCfg->Props);
             }
