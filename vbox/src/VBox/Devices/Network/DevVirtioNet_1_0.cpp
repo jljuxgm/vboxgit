@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet_1_0.cpp 84391 2020-05-20 06:38:33Z vboxsync $ $Revision: 84391 $ $Date: 2020-05-20 14:38:33 +0800 (Wed, 20 May 2020) $ $Author: vboxsync $ */
+/* $Id: DevVirtioNet_1_0.cpp 84392 2020-05-20 07:11:14Z vboxsync $ $Revision: 84392 $ $Date: 2020-05-20 15:11:14 +0800 (Wed, 20 May 2020) $ $Author: vboxsync $ */
 
 /** @file
  * VBox storage devices - Virtio NET Driver
@@ -393,7 +393,6 @@ typedef struct VIRTIONET
 
     /** Quiescing I/O activity flag */
     uint8_t                 fQuiescing;
-
 
     /** Promiscuous mode -- RX filter accepts all packets. */
     uint8_t                 fPromiscuous;
