@@ -1,4 +1,4 @@
-/* $Id: APICInternal.h 84652 2020-06-03 09:08:30Z vboxsync $ */
+/* $Id: APICInternal.h 85964 2020-08-31 23:42:54Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller.
  */
@@ -939,8 +939,12 @@ typedef struct APIC
     bool                        fRCEnabled;
     /** Whether Hyper-V x2APIC compatibility mode is enabled. */
     bool                        fHyperVCompatMode;
-    /** Alignment padding. */
-    bool                        afAlignment[1];
+    /** Enable horrible macOS workaround where the ID register has the value
+     * shifted up 24 bits to be compatible with buggy code in
+     * i386_init.c/vstart().  Only applied if we're in typical macOS 64-bit
+     * kernel load area and macOS kernel selector value (8), as we must not ever
+     * apply this to the EFI code. */
+    bool                        fMacOSWorkaround;
     /** The max supported APIC mode from CFGM.  */
     PDMAPICMODE                 enmMaxMode;
     /** @} */

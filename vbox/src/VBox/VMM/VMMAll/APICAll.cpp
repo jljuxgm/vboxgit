@@ -1,4 +1,4 @@
-/* $Id: APICAll.cpp 84652 2020-06-03 09:08:30Z vboxsync $ */
+/* $Id: APICAll.cpp 85964 2020-08-31 23:42:54Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller - All Contexts.
  */
@@ -20,6 +20,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_DEV_APIC
+#define VMCPU_INCL_CPUM_GST_CTX /* for macOS hack */
 #include "APICInternal.h"
 #include <VBox/vmm/apic.h>
 #include <VBox/vmm/pdmdev.h>
@@ -968,6 +969,8 @@ DECLINLINE(VBOXSTRICTRC) apicSendIpi(PVMCPUCC pVCpu, int rcRZ)
 
     PX2APICPAGE pX2ApicPage = VMCPU_TO_X2APICPAGE(pVCpu);
     uint32_t const fDest    = XAPIC_IN_X2APIC_MODE(pVCpu) ? pX2ApicPage->icr_hi.u32IcrHi : pXApicPage->icr_hi.u.u8Dest;
+    Log5(("apicSendIpi: delivery=%u mode=%u init=%u trigger=%u short=%u vector=%#x fDest=%#x\n",
+          enmDeliveryMode, enmDestMode, enmInitLevel, enmTriggerMode, enmDestShorthand, uVector, fDest));
 
 #if XAPIC_HARDWARE_VERSION == XAPIC_HARDWARE_VERSION_P4
     /*
@@ -1929,6 +1932,19 @@ VMM_INT_DECL(VBOXSTRICTRC) APICReadMsr(PVMCPUCC pVCpu, uint32_t u32Reg, uint64_t
             case MSR_IA32_X2APIC_ID:
             {
                 STAM_COUNTER_INC(&pVCpu->apic.s.StatIdMsrRead);
+                /* Horrible macOS hack (sample rdmsr addres: 0008:ffffff801686f21a). */
+                if (   !pApic->fMacOSWorkaround
+                    || pVCpu->cpum.GstCtx.cs.Sel != 8
+                    || pVCpu->cpum.GstCtx.rip < UINT64_C(0xffffff8000000000))
+                { /* likely */ }
+                else
+                {
+                    PCX2APICPAGE pX2ApicPage = VMCPU_TO_CX2APICPAGE(pVCpu);
+                    uint32_t const idApic = pX2ApicPage->id.u32ApicId;
+                    *pu64Value = (idApic << 24) | idApic;
+                    Log(("APIC: Applying macOS hack to MSR_IA32_X2APIC_ID: %#RX64\n", *pu64Value));
+                    break;
+                }
                 RT_FALL_THRU();
             }
             case MSR_IA32_X2APIC_VERSION:
