@@ -1,4 +1,4 @@
-/* $Id: UIHelpViewer.h 88550 2021-04-15 16:45:15Z vboxsync $ */
+/* $Id: UIHelpViewer.h 89390 2021-05-31 10:14:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class declaration.
  */
@@ -65,7 +65,7 @@ public:
     UIHelpViewer(const QHelpEngine *pHelpEngine, QWidget *pParent = 0);
     virtual QVariant loadResource(int type, const QUrl &name) /* override */;
     void emitHistoryChangedSignal();
-    void setSource(const QUrl &url) /* override */;
+    virtual void setSource(const QUrl &url) /* override */;
     void setFont(const QFont &);
     bool isFindInPageWidgetVisible() const;
     void zoom(ZoomOperation enmZoomOperation);
@@ -75,6 +75,7 @@ public:
     bool hasSelectedText() const;
     static const QPair<int, int> zoomPercentageMinMax;
     void toggleFindInPageWidget(bool fVisible);
+    void reload();
 
 public slots:
 

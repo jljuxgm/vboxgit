@@ -1,4 +1,4 @@
-/* $Id: UIHelpViewer.cpp 89369 2021-05-28 19:03:56Z vboxsync $ */
+/* $Id: UIHelpViewer.cpp 89390 2021-05-31 10:14:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class implementation.
  */
@@ -433,6 +433,11 @@ void UIHelpViewer::toggleFindInPageWidget(bool fVisible)
     else
         m_pFindInPageWidget->setFocus();
     emit sigFindInPageWidgetToogle(fVisible);
+}
+
+void UIHelpViewer::reload()
+{
+    setSource(source());
 }
 
 void UIHelpViewer::sltToggleFindInPageWidget(bool fVisible)
