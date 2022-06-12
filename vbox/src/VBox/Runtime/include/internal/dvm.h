@@ -1,4 +1,4 @@
-/* $Id: dvm.h 85887 2020-08-25 21:05:37Z vboxsync $ */
+/* $Id: dvm.h 85894 2020-08-26 20:50:52Z vboxsync $ */
 /** @file
  * IPRT - Disk Volume Management Internals.
  */
@@ -182,6 +182,29 @@ typedef struct RTDVMFMTOPS
      *                          volume data of the next volume on success.
      */
     DECLCALLBACKMEMBER(int, pfnQueryNextVolume,(RTDVMFMT hVolMgrFmt, RTDVMVOLUMEFMT hVolFmt, PRTDVMVOLUMEFMT phVolFmtNext));
+
+    /**
+     * Query the partition table locations.
+     *
+     * @returns IPRT status code.
+     * @retval  VERR_BUFFER_OVERFLOW if the table is too small, @a *pcActual will be
+     *          set to the required size.
+     * @retval  VERR_BUFFER_UNDERFLOW if the table is too big and @a pcActual is
+     *          NULL.
+     * @param   hVolMgrFmt      The format specific volume manager handle.
+     * @param   fFlags          Flags, see RTDVMMAPQTABLOC_F_XXX.
+     * @param   paLocations     Where to return the info. Ignored if @a cLocations
+     *                          is zero, then only @a pcActual matters.
+     * @param   cLocations      The size of @a paLocations in items.
+     * @param   pcActual        Where to return the actual number of locations, or
+     *                          on VERR_BUFFER_OVERFLOW the necessary table size.
+     *                          Optional, when not specified the cLocations value
+     *                          must match exactly or it fails with
+     *                          VERR_BUFFER_UNDERFLOW.
+     * @sa RTDvmMapQueryTableLocations
+     */
+    DECLCALLBACKMEMBER(int, pfnQueryTableLocations,(RTDVMFMT hVolMgrFmt, uint32_t fFlags, PRTDVMTABLELOCATION paLocations,
+                                                    size_t cLocations, size_t *pcActual));
 
     /**
      * Closes a volume handle.
