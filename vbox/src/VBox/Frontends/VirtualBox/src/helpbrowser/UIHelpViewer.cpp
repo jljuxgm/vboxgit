@@ -1,4 +1,4 @@
-/* $Id: UIHelpViewer.cpp 88499 2021-04-13 17:33:29Z vboxsync $ */
+/* $Id: UIHelpViewer.cpp 88516 2021-04-15 07:50:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class implementation.
  */
@@ -953,6 +953,9 @@ void UIHelpViewer::loadImageAtPosition(const QPoint &globalPosition)
     QPoint viewportCoordinates = viewport()->mapFromGlobal(globalPosition);
     QTextCursor cursor = cursorForPosition(viewportCoordinates);
     if (!cursor.charFormat().isImageFormat())
+        return;
+    /* Dont zoom into image if mouse button released after a mouse drag: */
+    if (textCursor().hasSelection())
         return;
 
     QTextImageFormat imageFormat = cursor.charFormat().toImageFormat();
