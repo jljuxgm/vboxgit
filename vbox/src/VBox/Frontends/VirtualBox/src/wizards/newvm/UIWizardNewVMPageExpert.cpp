@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.cpp 87883 2021-02-26 10:45:10Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.cpp 87886 2021-02-26 13:36:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class implementation.
  */
@@ -75,7 +75,6 @@ UIWizardNewVMPageExpert::UIWizardNewVMPageExpert(const QString &strGroup)
     registerField("machineBaseName", this, "machineBaseName");
     registerField("baseMemory", this, "baseMemory");
     registerField("virtualDisk", this, "virtualDisk");
-    registerField("virtualDiskId", this, "virtualDiskId");
     registerField("guestOSFamiyId", this, "guestOSFamiyId");
     registerField("ISOFilePath", this, "ISOFilePath");
     registerField("isUnattendedEnabled", this, "isUnattendedEnabled");

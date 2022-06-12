@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic4.cpp 87883 2021-02-26 10:45:10Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic4.cpp 87886 2021-02-26 13:36:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic4 class implementation.
  */
@@ -53,14 +53,14 @@ void UIWizardNewVMPage4::updateVirtualDiskSource()
     m_pVMMButton->setEnabled(m_pDiskPresent->isChecked());
 
     /* Fetch filed values: */
-    if (m_pDiskSkip->isChecked())
-    {
-        m_uVirtualDiskId = QUuid();
-    }
-    else if (m_pDiskPresent->isChecked())
-    {
-        m_uVirtualDiskId = m_pDiskSelector->id();
-    }
+    // if (m_pDiskSkip->isChecked())
+    // {
+    //     m_uVirtualDiskId = QUuid();
+    // }
+    // else if (m_pDiskPresent->isChecked())
+    // {
+    //     m_uVirtualDiskId = m_pDiskSelector->id();
+    // }
 }
 
 void UIWizardNewVMPage4::getWithFileOpenDialog()
@@ -180,7 +180,6 @@ UIWizardNewVMPageBasic4::UIWizardNewVMPageBasic4()
     prepare();
     qRegisterMetaType<CMedium>();
     registerField("virtualDisk", this, "virtualDisk");
-    registerField("virtualDiskId", this, "virtualDiskId");
 }
 
 int UIWizardNewVMPageBasic4::nextId() const
