@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: status.py 86950 2020-11-20 19:21:17Z vboxsync $
+# $Id: status.py 86951 2020-11-20 19:35:30Z vboxsync $
 
 """
 CGI - Administrator Web-UI.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 86950 $"
+__version__ = "$Revision: 86951 $"
 
 
 # Standard python imports.
@@ -441,7 +441,7 @@ SELECT  TestSets.enmStatus,
         TestBoxesWithStrings.sOS
 FROM    TestSets
 INNER JOIN TestCases
-        ON TestCases.idGenTestCase         = TestCases.idGenTestCase
+        ON TestCases.idGenTestCase         = TestSets.idGenTestCase
 INNER JOIN TestBoxesWithStrings
         ON TestBoxesWithStrings.idTestBox  = TestSets.idTestBox
        AND TestBoxesWithStrings.tsExpire   = 'infinity'::TIMESTAMP
