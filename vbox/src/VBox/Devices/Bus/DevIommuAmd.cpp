@@ -1,4 +1,4 @@
-/* $Id: DevIommuAmd.cpp 86661 2020-10-21 11:39:04Z vboxsync $ */
+/* $Id: DevIommuAmd.cpp 86662 2020-10-21 12:02:38Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - AMD implementation.
  */
@@ -3138,7 +3138,7 @@ static DECLCALLBACK(int) iommuAmdDeviceMemAccess(PPDMDEVINS pDevIns, uint16_t uD
  * @returns VBox status code.
  * @param   pDevIns         The IOMMU device instance.
  * @param   uDevId          The device ID (bus, device, function).
- * @param   cPages          The number of pages being written.
+ * @param   cIovas          The number of addresses being accessed.
  * @param   pauIovas        The I/O virtual addresses for each page being accessed.
  * @param   fFlags          The access flags, see PDMIOMMU_MEM_F_XXX.
  * @param   paGCPhysSpa     Where to store the translated physical addresses.
