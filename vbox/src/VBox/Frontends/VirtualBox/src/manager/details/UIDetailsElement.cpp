@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElement.cpp 86226 2020-09-22 17:08:09Z vboxsync $ */
+/* $Id: UIDetailsElement.cpp 86275 2020-09-24 20:04:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement class implementation.
  */
@@ -1403,12 +1403,9 @@ void UIDetailsElement::popupCloudEditor(const QString &strValue)
             if (strIteratedLabel != strValue)
                 continue;
 
-            /* Acquire resulting value in full and compressed form: */
-            const QString strIteratedResultFull = UIDetailsGenerator::generateFormValueInformation(comIteratedValue);
-            const QString strIteratedResultShort =    strIteratedResultFull.size() > 10
-                                                   && strIteratedResultFull.startsWith("ocid1.")
-                                                 ? QString("...%1").arg(strIteratedResultFull.right(10))
-                                                 : strIteratedResultFull;
+            /* Acquire resulting value in short and full form: */
+            const QString strIteratedResultShort = UIDetailsGenerator::generateFormValueInformation(comIteratedValue);
+            const QString strIteratedResultFull = UIDetailsGenerator::generateFormValueInformation(comIteratedValue, true /* full */);
 
             /* Add 'Copy' action: */
             QAction *pAction = menu.addAction(tr("Copy value (%1)").arg(strIteratedResultShort),

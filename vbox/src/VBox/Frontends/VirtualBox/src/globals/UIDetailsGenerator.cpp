@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGenerator.cpp 86225 2020-09-22 16:25:07Z vboxsync $ */
+/* $Id: UIDetailsGenerator.cpp 86275 2020-09-24 20:04:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsGenerator implementation.
  */
@@ -176,7 +176,7 @@ UITextTable UIDetailsGenerator::generateMachineInformationGeneral(CCloudMachine 
     return table;
 }
 
-QString UIDetailsGenerator::generateFormValueInformation(const CFormValue &comFormValue)
+QString UIDetailsGenerator::generateFormValueInformation(const CFormValue &comFormValue, bool fFull /* = false */)
 {
     /* Handle possible form value types: */
     QString strResult;
@@ -193,7 +193,9 @@ QString UIDetailsGenerator::generateFormValueInformation(const CFormValue &comFo
         case KFormValueType_String:
         {
             CStringFormValue comValue(comFormValue);
-            strResult = comValue.GetString();
+            const QString strValue = comValue.GetString();
+            const QString strClipboardValue = comValue.GetClipboardString();
+            strResult = fFull && !strClipboardValue.isEmpty() ? strClipboardValue : strValue;
             break;
         }
         case KFormValueType_Choice:
