@@ -1,4 +1,4 @@
-/* $Id: UIPerformanceMonitor.cpp 85444 2020-07-23 18:42:00Z vboxsync $ */
+/* $Id: UIPerformanceMonitor.cpp 85463 2020-07-27 09:14:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPerformanceMonitor class implementation.
  */
@@ -905,10 +905,6 @@ void UIPerformanceMonitor::prepareObjects()
     QWidget *bottomSpacerWidget = new QWidget(this);
     bottomSpacerWidget->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
     bottomSpacerWidget->setVisible(true);
-    // QPalette pal = bottomSpacerWidget->palette();
-    // pal.setColor(QPalette::Background, Qt::green);
-    // bottomSpacerWidget->setAutoFillBackground(true);
-    // bottomSpacerWidget->setPalette(pal);
     pContainerLayout->addWidget(bottomSpacerWidget, iRow, 0, 1, 2);
 }
 
