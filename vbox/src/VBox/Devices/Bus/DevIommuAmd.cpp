@@ -1,4 +1,4 @@
-/* $Id: DevIommuAmd.cpp 86926 2020-11-20 08:35:32Z vboxsync $ */
+/* $Id: DevIommuAmd.cpp 86962 2020-11-24 08:05:43Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - AMD implementation.
  */
@@ -3144,7 +3144,7 @@ static DECLCALLBACK(int) iommuAmdDeviceMemAccess(PPDMDEVINS pDevIns, uint16_t uD
         if (RT_SUCCESS(rc))
         { /* likely */ }
         else
-            LogFunc(("DTE lookup failed! uDevId=%#x uIova=%#RX64 fAccess=%s cbAccess=%zu rc=%Rrc\n", uDevId, uIova, fAccess,
+            LogFunc(("DTE lookup failed! uDevId=%#x uIova=%#RX64 fAccess=%u cbAccess=%zu rc=%#Rrc\n", uDevId, uIova, fAccess,
                      cbAccess, rc));
         return rc;
     }
