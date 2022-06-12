@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElements.h 83719 2020-04-16 16:30:01Z vboxsync $ */
+/* $Id: UIDetailsElements.h 89101 2021-05-17 14:58:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement[Name] classes declaration.
  */
@@ -90,6 +90,9 @@ public:
       * @param fOpened brings whether the details-element should be opened. */
     UIDetailsElementPreview(UIDetailsSet *pParent, bool fOpened);
 
+    /** Updates layout. */
+    virtual void updateLayout() /* override */;
+
 private slots:
 
     /** Handles preview size-hint changes. */
@@ -106,8 +109,6 @@ private:
       * @param fClosed allows to specify whether the hint should
       *                be calculated for the closed element. */
     int minimumHeightHintForElement(bool fClosed) const;
-    /** Updates layout. */
-    void updateLayout();
 
     /** Updates appearance. */
     void updateAppearance();

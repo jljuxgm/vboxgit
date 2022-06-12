@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElement.h 89100 2021-05-17 14:48:19Z vboxsync $ */
+/* $Id: UIDetailsElement.h 89101 2021-05-17 14:58:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement class declaration.
  */
@@ -111,6 +111,9 @@ public:
 
     /** @name Layout stuff.
       * @{ */
+        /** Updates layout. */
+        virtual void updateLayout() /* override */;
+
         /** Returns minimum width-hint. */
         virtual int minimumWidthHint() const /* override */;
         /** Returns minimum height-hint. */
@@ -196,9 +199,6 @@ protected:
 
     /** @name Layout stuff.
       * @{ */
-        /** Updates layout. */
-        virtual void updateLayout() /* override */;
-
         /** Returns minimum width-hint for @a fClosed element. */
         virtual int minimumHeightHintForElement(bool fClosed) const;
 
