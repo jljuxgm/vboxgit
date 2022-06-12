@@ -1,4 +1,4 @@
-/* $Id: DevIommuIntel.cpp 88260 2021-03-23 13:41:27Z vboxsync $ */
+/* $Id: DevIommuIntel.cpp 88310 2021-03-29 12:52:12Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - Intel implementation.
  */
@@ -20,12 +20,10 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_DEV_IOMMU
-#include <VBox/vmm/pdmdev.h>
-#include <VBox/iommu-intel.h>
+#include "VBoxDD.h"
+#include "DevIommuIntel.h"
 
 #include <iprt/string.h>
-
-#include "VBoxDD.h"
 
 
 /*********************************************************************************************************************************

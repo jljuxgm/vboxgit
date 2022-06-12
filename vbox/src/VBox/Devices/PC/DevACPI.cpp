@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 88281 2021-03-24 15:03:53Z vboxsync $ */
+/* $Id: DevACPI.cpp 88310 2021-03-29 12:52:12Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -46,6 +46,9 @@
 #include "VBoxDD.h"
 #ifdef VBOX_WITH_IOMMU_AMD
 # include "../Bus/DevIommuAmd.h"
+#endif
+#ifdef VBOX_WITH_IOMMU_INTEL
+# include "../Bus/DevIommuIntel.h"
 #endif
 
 #ifdef LOG_ENABLED
@@ -862,6 +865,7 @@ typedef struct ACPITBLVTD
 {
     ACPIDMAR            Dmar;
     ACPIDRHD            Drhd;
+    /* ACPIDMARDEVSCOPE    DevScope; */
 } ACPITBLDMAR;
 #endif  /* VBOX_WITH_IOMMU_INTEL */
 
@@ -3356,7 +3360,7 @@ static void acpiR3SetupIommuAmd(PPDMDEVINS pDevIns, PACPISTATE pThis, RTGCPHYS32
     /* Plant the ACPI table. */
     acpiR3PhysCopy(pDevIns, addr, (const uint8_t *)&Ivrs, sizeof(Ivrs));
 }
-#endif
+#endif  /* VBOX_WITH_IOMMU_AMD */
 
 
 #ifdef VBOX_WITH_IOMMU_INTEL
@@ -3368,10 +3372,21 @@ static void acpiR3SetupIommuIntel(PPDMDEVINS pDevIns, PACPISTATE pThis, RTGCPHYS
     ACPITBLVTD VtdTable;
     RT_ZERO(VtdTable);
 
-    /* VT-d/DMAR header. */
+    /* VT-d Table. */
     acpiR3PrepareHeader(pThis, &VtdTable.Dmar.Hdr, "DMAR", sizeof(ACPITBLVTD), ACPI_DMAR_REVISION);
 
-    /** @todo Populate rest of DMAR table. */
+    /* DMAR. */
+    uint8_t cPhysAddrBits;
+    uint8_t cLinearAddrBits;
+    PDMDevHlpCpuGetGuestAddrWidths(pDevIns, &cPhysAddrBits, &cLinearAddrBits);
+    Assert(cPhysAddrBits > 0); NOREF(cLinearAddrBits);
+    VtdTable.Dmar.uHostAddrWidth = cPhysAddrBits - 1;
+    VtdTable.Dmar.fFlags         = VTD_ACPI_DMAR_FLAGS;
+
+    /* DRHD. */
+    VtdTable.Drhd.cbLength     = sizeof(ACPIDRHD) /* + sizeof(VtdTable.DevScope) */;
+    VtdTable.Drhd.fFlags       = ACPI_DRHD_F_INCLUDE_PCI_ALL;
+    VtdTable.Drhd.uRegBaseAddr = VTD_MMIO_BASE_ADDR;
 
     /* Finally, compute checksum. */
     VtdTable.Dmar.Hdr.u8Checksum = acpiR3Checksum(&VtdTable, sizeof(VtdTable));
@@ -3379,7 +3394,7 @@ static void acpiR3SetupIommuIntel(PPDMDEVINS pDevIns, PACPISTATE pThis, RTGCPHYS
     /* Plant the ACPI table. */
     acpiR3PhysCopy(pDevIns, addr, (const uint8_t *)&VtdTable, sizeof(VtdTable));
 }
-#endif
+#endif  /* VBOX_WITH_IOMMU_INTEL */
 
 
 /**
