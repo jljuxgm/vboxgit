@@ -1,4 +1,4 @@
-/* $Id: AudioTest.cpp 89135 2021-05-18 10:38:17Z vboxsync $ */
+/* $Id: AudioTest.cpp 89136 2021-05-18 10:58:33Z vboxsync $ */
 /** @file
  * Audio testing routines.
  * Common code which is being used by the ValidationKit and the debug / ValdikationKit audio driver(s).
@@ -937,9 +937,44 @@ int AudioTestSetTestBegin(PAUDIOTESTSET pSet, const char *pszDesc, PAUDIOTESTPAR
 
     rc = audioTestManifestWriteSectionHdr(pSet, "test%04RU32", pSet->cTests);
     AssertRCReturn(rc, rc);
-
-    rc = audioTestManifestWrite(pSet, "desc=%s\n", pszDesc);
+    rc = audioTestManifestWrite(pSet, "test_desc=%s\n", pszDesc);
     AssertRCReturn(rc, rc);
+    rc = audioTestManifestWrite(pSet, "test_type=%RU32\n", pParms->enmType);
+    AssertRCReturn(rc, rc);
+    rc = audioTestManifestWrite(pSet, "test_iterations=%RU32\n", pParms->cIterations);
+    AssertRCReturn(rc, rc);
+    rc = audioTestManifestWrite(pSet, "test_delay_ms=%RU32\n", pParms->msDelay);
+    AssertRCReturn(rc, rc);
+    rc = audioTestManifestWrite(pSet, "audio_direction=%s\n", PDMAudioDirGetName(pParms->enmDir));
+    AssertRCReturn(rc, rc);
+
+    switch (pParms->enmType)
+    {
+        case AUDIOTESTTYPE_TESTTONE:
+        {
+            rc = audioTestManifestWrite(pSet, "tone_prequel_ms=%RU32\n", pParms->TestTone.msPrequel);
+            AssertRCReturn(rc, rc);
+            rc = audioTestManifestWrite(pSet, "tone_duration_ms=%RU32\n", pParms->TestTone.msDuration);
+            AssertRCReturn(rc, rc);
+            rc = audioTestManifestWrite(pSet, "tone_sequel_ms=%RU32\n", pParms->TestTone.msSequel);
+            AssertRCReturn(rc, rc);
+            rc = audioTestManifestWrite(pSet, "tone_volume_percent=%RU32\n", pParms->TestTone.uVolumePercent);
+            AssertRCReturn(rc, rc);
+            rc = audioTestManifestWrite(pSet, "tone_pcm_hz=%RU32\n", PDMAudioPropsHz(&pParms->TestTone.Props));
+            AssertRCReturn(rc, rc);
+            rc = audioTestManifestWrite(pSet, "tone_pcm_channels=%RU8\n", PDMAudioPropsChannels(&pParms->TestTone.Props));
+            AssertRCReturn(rc, rc);
+            rc = audioTestManifestWrite(pSet, "tone_pcm_bits=%RU8\n", PDMAudioPropsSampleBits(&pParms->TestTone.Props));
+            AssertRCReturn(rc, rc);
+            rc = audioTestManifestWrite(pSet, "tone_pcm_is_signed=%RTbool\n", PDMAudioPropsIsSigned(&pParms->TestTone.Props));
+            AssertRCReturn(rc, rc);
+            break;
+        }
+
+        default:
+            AssertFailed();
+            break;
+    }
 
     RTListAppend(&pSet->lstTest, &pEntry->Node);
     pSet->cTests++;
