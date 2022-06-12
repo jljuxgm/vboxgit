@@ -1,4 +1,4 @@
-/* $Id: UIMediumSearchWidget.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIMediumSearchWidget.h 87722 2021-02-11 11:16:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSearchWidget class declaration.
  */
@@ -59,12 +59,12 @@ public:
       * then the next marched item is selected. */
     void    search(QITreeWidget* pTreeWidget, bool fGotoNext = true);
 
- protected:
+protected:
 
     void retranslateUi() /* override */;
     virtual void showEvent(QShowEvent *pEvent) /* override */;
 
- private slots:
+private slots:
 
     void sltShowNextMatchingItem();
     void sltShowPreviousMatchingItem();

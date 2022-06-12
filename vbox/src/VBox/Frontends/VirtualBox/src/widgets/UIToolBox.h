@@ -1,4 +1,4 @@
-/* $Id: UIToolBox.h 87364 2021-01-22 12:24:00Z vboxsync $ */
+/* $Id: UIToolBox.h 87722 2021-02-11 11:16:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolBox class declaration.
  */
@@ -47,7 +47,7 @@ public:
     bool insertPage(int iIndex, QWidget *pWidget, const QString &strTitle, bool fAddEnableCheckBox = false);
     void setPageEnabled(int iIndex, bool fEnabled);
     void setPageTitle(int iIndex, const QString &strTitle);
-    void setPageTitleIcon(int iIndex, const QIcon &icon);
+    void setPageTitleIcon(int iIndex, const QIcon &icon, const QString &strIconToolTip = QString());
     void setCurrentPage(int iIndex);
 
 protected:
