@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityOverviewWidget.h 88173 2021-03-18 08:11:08Z vboxsync $ */
+/* $Id: UIVMActivityOverviewWidget.h 88204 2021-03-19 13:42:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMActivityOverviewWidget class declaration.
  */
@@ -103,7 +103,6 @@ private:
         void prepareActions();
         void updateColumnsMenu();
         void loadSettings();
-        void loadHiddenColumnList();
         void saveSettings();
     /** @} */
 

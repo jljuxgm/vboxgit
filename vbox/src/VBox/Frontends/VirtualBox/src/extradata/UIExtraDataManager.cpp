@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 88082 2021-03-11 10:57:36Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 88204 2021-03-19 13:42:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -4651,6 +4651,16 @@ void UIExtraDataManager::setVMActivityOverviewHiddenColumnList(const QStringList
 QStringList UIExtraDataManager::VMActivityOverviewHiddenColumnList()
 {
     return extraDataStringList(GUI_VMResourceManager_HiddenColumns);
+}
+
+bool UIExtraDataManager::activityOverviewShowAllMachines()
+{
+    return isFeatureAllowed(GUI_VMResourceManager_ShowAllMachines);
+}
+
+void UIExtraDataManager::setActivityOverviewShowAllMachines(bool fShow)
+{
+    setExtraDataString(GUI_VMResourceManager_ShowAllMachines, toFeatureAllowed(fShow));
 }
 
 void UIExtraDataManager::sltExtraDataChange(const QUuid &uMachineID, const QString &strKey, const QString &strValue)
