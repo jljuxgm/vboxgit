@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Id: tdStorageRawDrive1.py 87673 2021-02-10 10:14:50Z vboxsync $"
+__version__ = "$Id: tdStorageRawDrive1.py 87674 2021-02-10 10:24:01Z vboxsync $"
 
 # Standard Python imports.
 import os;
@@ -1047,9 +1047,9 @@ class tdStorageRawDriveOs(vboxtestvms.BaseTestVm):
 
         # pylint: disable=no-init
         class DescriptorParseState(object):
-            Header   = 1,
-            Extent   = 2,
-            Database = 3
+            Header   = 1;
+            Extent   = 2;
+            Database = 3;
 
         asHddData = self.asHdds[sHdd];
         iParseState = DescriptorParseState.Header;
@@ -1068,7 +1068,7 @@ class tdStorageRawDriveOs(vboxtestvms.BaseTestVm):
                        'ddb.uuid.parentmodification' : '00000000-0000-0000-0000-000000000000'
                      };
 
-        oRegExp = re.compile('^\s*([^=]+)\s*=\s*\"*([^\"]+)\"*\s*$');
+        oRegExp = re.compile(r'^\s*([^=]+)\s*=\s*\"*([^\"]+)\"*\s*$');
         iExtentIdx = 0;
 
         for sLine in asDescriptor:
@@ -1554,7 +1554,6 @@ class tdStorageRawDrive(vbox.TestDriver):                                      #
     ksOsDarwin  = 'tst-darwin';
     ksOsSolaris = 'tst-solaris';
     ksOsFreeBSD = 'tst-freebsd';
-
     BootSectorPath = '6.1/storage/t-bootsector.bin';
     asHdds = ['6.1/storage/t-gpt.vdi', '6.1/storage/t-mbr.vdi'];
 
