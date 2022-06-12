@@ -1,10 +1,10 @@
-/* $Id: DrvHostAudioValidationKit.cpp 88887 2021-05-05 23:38:58Z vboxsync $ */
+/* $Id: DrvHostAudioValidationKit.cpp 89174 2021-05-19 15:05:29Z vboxsync $ */
 /** @file
  * Host audio driver - ValidationKit - For dumping and injecting audio data from/to the device emulation.
  */
 
 /*
- * Copyright (C) 2016-2020 Oracle Corporation
+ * Copyright (C) 2016-2021 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -30,8 +30,10 @@
 #include <VBox/vmm/pdmaudioifs.h>
 #include <VBox/vmm/pdmaudioinline.h>
 
-#include "AudioHlp.h"
 #include "VBoxDD.h"
+#include "AudioHlp.h"
+#include "AudioTest.h"
+#include "AudioTestService.h"
 
 
 /*********************************************************************************************************************************

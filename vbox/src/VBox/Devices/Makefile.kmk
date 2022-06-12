@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 89163 2021-05-19 13:12:44Z vboxsync $
+# $Id: Makefile.kmk 89174 2021-05-19 15:05:29Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -651,7 +651,10 @@ endif
 
  if defined(VBOX_WITH_AUDIO_DEBUG) || defined(VBOX_WITH_AUDIO_VALIDATIONKIT)
   VBoxDD_SOURCES += \
- 	Audio/AudioTest.cpp
+ 	Audio/AudioTest.cpp \
+ 	Audio/AudioTestService.cpp \
+ 	Audio/AudioTestServiceTcp.cpp \
+ 	Audio/AudioTestServiceProtocol.cpp
  endif
 
  ifdef VBOX_WITH_AUDIO_DEBUG
