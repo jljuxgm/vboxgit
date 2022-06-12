@@ -1,4 +1,4 @@
-/* $Id: VD.cpp 85944 2020-08-28 20:57:37Z vboxsync $ */
+/* $Id: VD.cpp 85947 2020-08-28 22:41:14Z vboxsync $ */
 /** @file
  * VD - Virtual disk container implementation.
  */
@@ -6230,7 +6230,7 @@ VBOXDDU_DECL(int) VDCreateBase(PVDISK pDisk, const char *pszBackend,
          *        complicated AssertMsgBreakStmt. */
         /* sanity check */
         AssertPtrBreakStmt(pDisk, rc = VERR_INVALID_PARAMETER);
-        AssertMsgBreakStmt(pDisk->u32Signature == VDISK_SIGNATURE, ("u32Signature=%08x\n", pDisk->u32Signature), 
+        AssertMsgBreakStmt(pDisk->u32Signature == VDISK_SIGNATURE, ("u32Signature=%08x\n", pDisk->u32Signature),
                            rc = VERR_INVALID_MAGIC);
 
         /* Check arguments. */
