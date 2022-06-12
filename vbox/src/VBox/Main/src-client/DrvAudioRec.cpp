@@ -1,4 +1,4 @@
-/* $Id: DrvAudioRec.cpp 88382 2021-04-07 09:16:12Z vboxsync $ */
+/* $Id: DrvAudioRec.cpp 88390 2021-04-07 10:35:06Z vboxsync $ */
 /** @file
  * Video recording audio backend for Main.
  *
@@ -1136,8 +1136,6 @@ int AudioVideoRec::configureDriver(PCFGMNODE pLunCfg)
     /* IBase */
     pDrvIns->IBase.pfnQueryInterface = drvAudioVideoRecQueryInterface;
     /* IHostAudio */
-    pThis->IHostAudio.pfnInit               = NULL;
-    pThis->IHostAudio.pfnShutdown           = NULL;
     pThis->IHostAudio.pfnGetConfig          = drvAudioVideoRecHA_GetConfig;
     pThis->IHostAudio.pfnGetStatus          = drvAudioVideoRecHA_GetStatus;
     pThis->IHostAudio.pfnStreamCreate       = drvAudioVideoRecHA_StreamCreate;

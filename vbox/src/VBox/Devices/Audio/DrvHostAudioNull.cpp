@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioNull.cpp 88381 2021-04-07 08:43:55Z vboxsync $ */
+/* $Id: DrvHostAudioNull.cpp 88390 2021-04-07 10:35:06Z vboxsync $ */
 /** @file
  * Host audio driver - NULL.
  *
@@ -315,8 +315,6 @@ static DECLCALLBACK(int) drvHostNullAudioConstruct(PPDMDRVINS pDrvIns, PCFGMNODE
     /* IBase */
     pDrvIns->IBase.pfnQueryInterface = drvHostNullAudioQueryInterface;
     /* IHostAudio */
-    pThis->IHostAudio.pfnInit               = NULL;
-    pThis->IHostAudio.pfnShutdown           = NULL;
     pThis->IHostAudio.pfnGetConfig          = drvHostNullAudioHA_GetConfig;
     pThis->IHostAudio.pfnGetStatus          = drvHostNullAudioHA_GetStatus;
     pThis->IHostAudio.pfnStreamCreate       = drvHostNullAudioHA_StreamCreate;

@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioValidationKit.cpp 88381 2021-04-07 08:43:55Z vboxsync $ */
+/* $Id: DrvHostAudioValidationKit.cpp 88390 2021-04-07 10:35:06Z vboxsync $ */
 /** @file
  * Host audio driver - ValidationKit - For dumping and injecting audio data from/to the device emulation.
  */
@@ -383,8 +383,6 @@ static DECLCALLBACK(int) drvHostValKitAudioConstruct(PPDMDRVINS pDrvIns, PCFGMNO
     /* IBase */
     pDrvIns->IBase.pfnQueryInterface = drvHostValKitAudioQueryInterface;
     /* IHostAudio */
-    pThis->IHostAudio.pfnInit               = NULL;
-    pThis->IHostAudio.pfnShutdown           = NULL;
     pThis->IHostAudio.pfnGetConfig          = drvHostValKitAudioHA_GetConfig;
     pThis->IHostAudio.pfnGetStatus          = drvHostValKitAudioHA_GetStatus;
     pThis->IHostAudio.pfnStreamCreate       = drvHostValKitAudioHA_StreamCreate;

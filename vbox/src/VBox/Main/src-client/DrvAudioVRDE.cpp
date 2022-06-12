@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVRDE.cpp 88382 2021-04-07 09:16:12Z vboxsync $ */
+/* $Id: DrvAudioVRDE.cpp 88390 2021-04-07 10:35:06Z vboxsync $ */
 /** @file
  * VRDE audio backend for Main.
  */
@@ -714,8 +714,6 @@ DECLCALLBACK(int) AudioVRDE::drvConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, ui
     /* IBase */
     pDrvIns->IBase.pfnQueryInterface = drvAudioVrdeQueryInterface;
     /* IHostAudio */
-    pThis->IHostAudio.pfnInit              = NULL;
-    pThis->IHostAudio.pfnShutdown          = NULL;
     pThis->IHostAudio.pfnGetConfig         = drvAudioVrdeHA_GetConfig;
     pThis->IHostAudio.pfnGetDevices        = NULL;
     pThis->IHostAudio.pfnGetStatus         = drvAudioVrdeHA_GetStatus;

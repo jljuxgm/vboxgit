@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioDebug.cpp 88381 2021-04-07 08:43:55Z vboxsync $ */
+/* $Id: DrvHostAudioDebug.cpp 88390 2021-04-07 10:35:06Z vboxsync $ */
 /** @file
  * Host audio driver - Debug - For dumping and injecting audio data from/to the device emulation.
  */
@@ -377,8 +377,6 @@ static DECLCALLBACK(int) drvHostDebugAudioConstruct(PPDMDRVINS pDrvIns, PCFGMNOD
     /* IBase */
     pDrvIns->IBase.pfnQueryInterface = drvHostDebugAudioQueryInterface;
     /* IHostAudio */
-    pThis->IHostAudio.pfnInit               = NULL;
-    pThis->IHostAudio.pfnShutdown           = NULL;
     pThis->IHostAudio.pfnGetConfig          = drvHostDebugAudioHA_GetConfig;
     pThis->IHostAudio.pfnGetStatus          = drvHostDebugAudioHA_GetStatus;
     pThis->IHostAudio.pfnStreamCreate       = drvHostDebugAudioHA_StreamCreate;
