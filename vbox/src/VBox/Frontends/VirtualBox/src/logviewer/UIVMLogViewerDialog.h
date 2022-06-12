@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerDialog.h 88903 2021-05-06 13:47:30Z vboxsync $ */
+/* $Id: UIVMLogViewerDialog.h 89049 2021-05-14 14:59:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerDialog class declaration.
  */
@@ -85,8 +85,7 @@ protected:
       * @{ */
         /** Handles translation event. */
         virtual void retranslateUi() /* override */;
-        virtual void resizeEvent(QResizeEvent *pEvent) /* override */;
-        virtual void moveEvent(QMoveEvent *pEvent) /* override */;
+        virtual bool event(QEvent *pEvent) /* override */;
     /** @} */
 
     /** @name Prepare/cleanup cascade.
@@ -122,6 +121,7 @@ private:
     UIActionPool *m_pActionPool;
     /** Holds the machine reference. */
     CMachine      m_comMachine;
+    int m_iGeometrySaveTimerId;
 };
 
 
