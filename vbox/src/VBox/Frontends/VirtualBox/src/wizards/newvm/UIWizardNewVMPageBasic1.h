@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic1.h 88110 2021-03-12 17:24:08Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic1.h 88114 2021-03-15 08:25:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic1 class declaration.
  */
@@ -85,7 +85,7 @@ protected:
     void setTypeByISODetectedOSType(const QString &strDetectedOSType);
     /** Return false if ISO path is not empty but points to an missing or unreadable file. */
     bool checkISOFile() const;
-
+    void setSkipCheckBoxEnable(bool fEnable);
     /** @name Widgets
      * @{ */
         UINameAndSystemEditor *m_pNameAndSystemEditor;

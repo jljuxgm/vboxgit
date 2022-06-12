@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic1.cpp 88110 2021-03-12 17:24:08Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic1.cpp 88114 2021-03-15 08:25:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic1 class implementation.
  */
@@ -421,6 +421,12 @@ bool UIWizardNewVMPage1::checkISOFile() const
     return true;
 }
 
+void UIWizardNewVMPage1::setSkipCheckBoxEnable(bool fEnable)
+{
+    if (m_pSkipUnattendedCheckBox)
+        m_pSkipUnattendedCheckBox->setEnabled(fEnable);
+}
+
 void UIWizardNewVMPage1::setTypeByISODetectedOSType(const QString &strDetectedOSType)
 {
     Q_UNUSED(strDetectedOSType);
@@ -535,6 +541,7 @@ void UIWizardNewVMPageBasic1::initializePage()
     retranslateUi();
     if (m_pNameAndSystemEditor)
         m_pNameAndSystemEditor->setFocus();
+    setSkipCheckBoxEnable(isUnattendedEnabled());
 }
 
 void UIWizardNewVMPageBasic1::cleanupPage()
@@ -559,6 +566,6 @@ void UIWizardNewVMPageBasic1::sltISOPathChanged(const QString &strPath)
     QFileInfo fileInfo(strPath);
     if (fileInfo.exists() && fileInfo.isReadable())
         uiCommon().updateRecentlyUsedMediumListAndFolder(UIMediumDeviceType_DVD, strPath);
-
+    setSkipCheckBoxEnable(isUnattendedEnabled());
     emit completeChanged();
 }
