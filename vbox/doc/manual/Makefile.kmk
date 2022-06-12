@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 86707 2020-10-26 13:36:51Z vboxsync $
+# $Id: Makefile.kmk 87643 2021-02-08 21:49:00Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox User Manual, SDK reference and other manuals.
 #
@@ -955,7 +955,7 @@ $(VBOX_PATH_MANUAL_OUTBASE)/en_US/qhelp/UserManual.qhc: \
 	$(VBOX_PATH_MANUAL_OUTBASE)/en_US/qhelp/UserManual.qhcp \
 	$(VBOX_PATH_MANUAL_OUTBASE)/en_US/qhelp/UserManual.qhp \
 	$(addprefix $(VBOX_PATH_MANUAL_OUTBASE)/en_US/qhelp/, $(VBOX_MANUAL_PNG_FILES_en_US))
-	qcollectiongenerator $<
+	$(PATH_TOOL_QT5_BIN)/qcollectiongenerator $<
 
 $(VBOX_PATH_MANUAL_OUTBASE)/en_US/qhelp/UserManual.qch: \
 	$(VBOX_PATH_MANUAL_OUTBASE)/en_US/qhelp/UserManual.qhc
