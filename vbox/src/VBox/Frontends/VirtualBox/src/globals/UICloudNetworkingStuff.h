@@ -1,4 +1,4 @@
-/* $Id: UICloudNetworkingStuff.h 86076 2020-09-09 15:34:50Z vboxsync $ */
+/* $Id: UICloudNetworkingStuff.h 86199 2020-09-21 14:33:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudNetworkingStuff namespace declaration.
  */
@@ -146,14 +146,6 @@ namespace UICloudNetworkingStuff
                                                                        QString &strResult,
                                                                        QWidget *pParent = 0);
 
-    /** Refreshes @a comCloudMachine information, using @a pParent to show messages according to.
-      * @note  Be aware, this is a blocking function, corresponding progress dialog will be executed. */
-    SHARED_LIBRARY_STUFF bool refreshCloudMachineInfo(CCloudMachine comCloudMachine,
-                                                      QWidget *pParent = 0);
-    /** Refreshes @a comCloudMachine information, using @a pParent to show messages according to.
-      * @note  Be aware, this is a blocking function, it will hang for a time of progress being executed. */
-    SHARED_LIBRARY_STUFF bool refreshCloudMachineInfo(CCloudMachine comCloudMachine,
-                                                      QString &strErrorMessage);
     /** Acquires @a comCloudMachine settings form as a @a comResult, using @a pParent to show messages according to.
       * @note  Be aware, this is a blocking function, corresponding progress dialog will be executed. */
     SHARED_LIBRARY_STUFF bool cloudMachineSettingsForm(CCloudMachine comCloudMachine,

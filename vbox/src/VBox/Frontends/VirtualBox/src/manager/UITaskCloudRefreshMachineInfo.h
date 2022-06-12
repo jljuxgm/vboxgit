@@ -1,4 +1,4 @@
-/* $Id: UITaskCloudRefreshMachineInfo.h 83658 2020-04-09 17:13:38Z vboxsync $ */
+/* $Id: UITaskCloudRefreshMachineInfo.h 86199 2020-09-21 14:33:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UITaskCloudRefreshMachineInfo class declaration.
  */
@@ -31,6 +31,7 @@
 /* COM includes: */
 #include "COMEnums.h"
 #include "CCloudMachine.h"
+#include "CProgress.h"
 
 
 /** UITask extension used to refresh cloud machine info. */
@@ -59,6 +60,8 @@ private:
 
     /** Holds the cloud machine object. */
     CCloudMachine  m_comCloudMachine;
+    /** Holds the cloud machine refresh progress object. */
+    CProgress      m_comCloudMachineRefreshProgress;
 
     /** Holds the error info. */
     QString  m_strErrorInfo;
