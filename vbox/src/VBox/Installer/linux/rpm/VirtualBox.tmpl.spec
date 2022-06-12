@@ -1,4 +1,4 @@
-# $Id: VirtualBox.tmpl.spec 87446 2021-01-26 21:36:49Z vboxsync $
+# $Id: VirtualBox.tmpl.spec 87455 2021-01-27 20:01:03Z vboxsync $
 ## @file
 # Spec file for creating VirtualBox rpm packages
 #
@@ -20,8 +20,7 @@
 %define %PYTHON% 1
 %define %CHM% 1
 %define VBOXDOCDIR %{_defaultdocdir}/%NAME%
-%global __requires_exclude_from ^/usr/lib/virtualbox/VBoxPython.*$
-%global __requires_exclude ^/usr/bin/python([23](\\.[0-9]+))?$
+%global __requires_exclude_from ^/usr/lib/virtualbox/VBoxPython.*$|^/usr/lib/python.*$|^.*\\.py$
 %{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")}
 
 Summary:   Oracle VM VirtualBox
