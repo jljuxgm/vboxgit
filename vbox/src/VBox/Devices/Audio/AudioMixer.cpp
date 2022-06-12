@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 89489 2021-06-03 23:00:02Z vboxsync $ */
+/* $Id: AudioMixer.cpp 89558 2021-06-08 08:11:48Z vboxsync $ */
 /** @file
  * Audio mixing routines for multiplexing audio sources in device emulations.
  *
@@ -174,7 +174,7 @@ int AudioMixerCreate(const char *pszName, uint32_t fFlags, PAUDIOMIXER *ppMixer)
     AssertPtrReturn(ppMixer, VERR_INVALID_POINTER);
 
     int         rc;
-    PAUDIOMIXER pMixer = (PAUDIOMIXER)RTMemAllocZ(sizeof(AUDIOMIXER) + cchName + 1);
+    PAUDIOMIXER pMixer = (PAUDIOMIXER)RTMemAllocZVar(sizeof(AUDIOMIXER) + cchName + 1);
     if (pMixer)
     {
         rc = RTCritSectInit(&pMixer->CritSect);
@@ -378,7 +378,7 @@ int AudioMixerCreateSink(PAUDIOMIXER pMixer, const char *pszName, PDMAUDIODIR en
     /*
      * Allocate the data and initialize the critsect.
      */
-    PAUDMIXSINK pSink = (PAUDMIXSINK)RTMemAllocZ(sizeof(AUDMIXSINK) + cchName + 1);
+    PAUDMIXSINK pSink = (PAUDMIXSINK)RTMemAllocZVar(sizeof(AUDMIXSINK) + cchName + 1);
     if (pSink)
     {
         rc = RTCritSectInit(&pSink->CritSect);
