@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.h 87244 2021-01-13 19:38:24Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.h 87301 2021-01-18 17:29:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class declaration.
  */
@@ -27,7 +27,7 @@
 #include "UIWizardNewVMPageBasic3.h"
 
 /* Forward declarations: */
-class QToolBox;
+class UIToolBox;
 
 /** Expert page of the New Virtual Machine wizard. */
 class UIWizardNewVMPageExpert : public UIWizardPage,
@@ -110,7 +110,7 @@ private:
     void disableEnableUnattendedRelatedWidgets(bool fEnabled);
     void markWidgets() const;
 
-    QToolBox  *m_pToolBox;
+    UIToolBox  *m_pToolBox;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_wizards_newvm_UIWizardNewVMPageExpert_h */
