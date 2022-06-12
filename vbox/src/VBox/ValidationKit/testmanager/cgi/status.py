@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: status.py 86941 2020-11-20 17:40:57Z vboxsync $
+# $Id: status.py 86950 2020-11-20 19:21:17Z vboxsync $
 
 """
 CGI - Administrator Web-UI.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 86941 $"
+__version__ = "$Revision: 86950 $"
 
 
 # Standard python imports.
@@ -159,42 +159,34 @@ def dict_update(target_dict, key_name, test_result):
     return target_dict
 
 
-def format_data(target_dict):
-    content = ""
-    for key in target_dict:
-        if "hours_running" in target_dict[key].keys():
-            content += "{};{};{} | running: {};{} | success: {} | skipped: {} | ".format(key,
-                                                                                         target_dict[key]["testbox_os"],
-                                                                                         target_dict[key]["sched_group"],
-                                                                                         target_dict[key]["running"],
-                                                                                         target_dict[key]["hours_running"],
-                                                                                         target_dict[key]["success"],
-                                                                                         target_dict[key]["skipped"],
-                                                                                         )
-        elif "testbox_os" in target_dict[key].keys():
-            content += "{};{};{} | running: {} | success: {} | skipped: {} | ".format(key,
-                                                                                      target_dict[key]["testbox_os"],
-                                                                                      target_dict[key]["sched_group"],
-                                                                                      target_dict[key]["running"],
-                                                                                      target_dict[key]["success"],
-                                                                                      target_dict[key]["skipped"],
-                                                                                      )
+def formatDataEntry(sKey, dEntry):
+    # There are variations in the first and second "columns".
+    if "hours_running" in dEntry:
+        sRet = "%s;%s;%s | running: %s;%s" \
+             % (sKey, dEntry["testbox_os"], dEntry["sched_group"], dEntry["running"], dEntry["hours_running"]);
+    else:
+        if "testbox_os" in dEntry:
+            sRet = "%s;%s;%s" % (sKey, dEntry["testbox_os"], dEntry["sched_group"],);
         else:
-            content += "{} | running: {} | success: {} | skipped: {} | ".format(key,
-                                                                                target_dict[key]["running"],
-                                                                                target_dict[key]["success"],
-                                                                                target_dict[key]["skipped"],
-                                                                                )
-        content += "bad-testbox: {} | aborted: {} | failure: {} | ".format(
-                                                                            target_dict[key]["bad-testbox"],
-                                                                            target_dict[key]["aborted"],
-                                                                            target_dict[key]["failure"],
-                                                                            )
-        content += "timed-out: {} | rebooted: {} | \n".format(
-                                                             target_dict[key]["timed-out"],
-                                                             target_dict[key]["rebooted"],
-                                                             )
-    return content
+            sRet = sKey;
+        sRet += " | running: %s" % (dEntry["running"],)
+
+    # The rest is currently identical:
+    sRet += " | success: %s | skipped: %s | bad-testbox: %s | aborted: %s | failure: %s | timed-out: %s | rebooted: %s | \n" \
+          % (dEntry["success"], dEntry["skipped"], dEntry["bad-testbox"], dEntry["aborted"],
+             dEntry["failure"], dEntry["timed-out"], dEntry["rebooted"],);
+    return sRet;
+
+
+def format_data(dData, fSorted):
+    sRet = "";
+    if not fSorted:
+        for sKey in dData:
+            sRet += formatDataEntry(sKey, dData[sKey]);
+    else:
+        for sKey in sorted(dData.keys()):
+            sRet += formatDataEntry(sKey, dData[sKey]);
+    return sRet;
 
 ######
 
@@ -273,6 +265,16 @@ class StatusDispatcher(object): # pylint: disable=too-few-public-methods
                                             % (self._sAction, sName, iValue, iMin, iMax));
         return iValue;
 
+    def _getBoolParam(self, sName, fDefValue = None):
+        """
+        Gets a boolean parameter.
+
+        Raises exception if not found and no default is provided, or if not a
+        valid boolean.
+        """
+        sValue = self._getStringParam(sName, [ 'True', 'true', '1', 'False', 'false', '0'], sDefValue = str(fDefValue));
+        return sValue in ('True', 'true', '1',);
+
     def _checkForUnknownParameters(self):
         """
         Check if we've handled all parameters, raises exception if anything
@@ -307,6 +309,7 @@ class StatusDispatcher(object): # pylint: disable=too-few-public-methods
         # Parse arguments and connect to the database.
         #
         cHoursBack = self._getIntParam('cHours', 1, 24*14, 12);
+        fSorted   = self._getBoolParam('fSorted', False);
         self._checkForUnknownParameters();
 
         #
@@ -392,7 +395,8 @@ class StatusDispatcher(object): # pylint: disable=too-few-public-methods
                 AND TestSets.tsDone IS NULL
     WHERE   TestBoxesWithStrings.tsExpire = 'infinity'::TIMESTAMP
       AND   SchedGroupNames.idTestBox = TestBoxesWithStrings.idTestBox
-)''', (cHoursBack, cHoursBack,));
+)
+''', (cHoursBack, cHoursBack,));
 
 
         #
@@ -400,7 +404,7 @@ class StatusDispatcher(object): # pylint: disable=too-few-public-methods
         #
         dResult = testbox_data_processing(oDb);
         self._oSrvGlue.setContentType('text/plain');
-        self._oSrvGlue.write(format_data(dResult));
+        self._oSrvGlue.write(format_data(dResult, fSorted));
 
         return True;
 
@@ -414,6 +418,7 @@ class StatusDispatcher(object): # pylint: disable=too-few-public-methods
         #
         sBranch = self._getStringParam('sBranch');
         cHoursBack = self._getIntParam('cHours', 1, 24*14, 6); ## @todo why 6 hours here and 12 for test boxes?
+        fSorted   = self._getBoolParam('fSorted', False);
         self._checkForUnknownParameters();
 
         #
@@ -469,7 +474,7 @@ WHERE   TestSets.tsCreated                >= (CURRENT_TIMESTAMP - '%s hours'::in
 
         # Format and output it.
         self._oSrvGlue.setContentType('text/plain');
-        self._oSrvGlue.write(format_data(dResult));
+        self._oSrvGlue.write(format_data(dResult, fSorted));
 
         return True;
 
