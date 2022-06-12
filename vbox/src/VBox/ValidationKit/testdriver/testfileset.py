@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testfileset.py 84894 2020-06-22 11:11:34Z vboxsync $
+# $Id: testfileset.py 84909 2020-06-22 14:57:16Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84894 $"
+__version__ = "$Revision: 84909 $"
 
 
 # Standard Python imports.
@@ -620,6 +620,7 @@ class TestFileSet(object):
     def chooseRandomDirFromTree(self, fLeaf = False, fNonEmpty = False, cMaxRetries = 1024):
         """
         Returns a random directory from the tree (self.oTreeDir).
+        Will return None if no directory with given parameters was found.
         """
         cRetries = 0;
         while cRetries < cMaxRetries:
@@ -640,7 +641,6 @@ class TestFileSet(object):
                     oParent = oParent.oParent;
             cRetries += 1;
 
-        reporter.errorXcpt('chooseRandomDirFromTree() failed; cMaxRetries=%d' % (cMaxRetries));
         return None; # make pylint happy
 
 #
