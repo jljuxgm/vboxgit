@@ -1,4 +1,4 @@
-/* $Id: iokit.cpp 87376 2021-01-22 19:22:03Z vboxsync $ */
+/* $Id: iokit.cpp 87377 2021-01-22 19:29:15Z vboxsync $ */
 /** @file
  * Main - Darwin IOKit Routines.
  *
@@ -48,8 +48,8 @@
 #endif
 
 #include <VBox/log.h>
-#include <VBox/err.h>
 #include <VBox/usblib.h>
+#include <iprt/errcore.h>
 #include <iprt/mem.h>
 #include <iprt/string.h>
 #include <iprt/process.h>
