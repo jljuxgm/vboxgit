@@ -1,4 +1,4 @@
-/* $Id: asm-fake.cpp 84992 2020-06-29 13:28:48Z vboxsync $ */
+/* $Id: asm-fake.cpp 87187 2021-01-06 12:51:53Z vboxsync $ */
 /** @file
  * IPRT - Fake asm.h routines for use early in a new port.
  */
@@ -206,33 +206,6 @@ RTDECL(uint64_t) ASMAtomicReadU64(volatile uint64_t *pu64)
 RTDECL(uint64_t) ASMAtomicUoReadU64(volatile uint64_t *pu64)
 {
     return *pu64;
-}
-
-RTDECL(void) ASMMemZeroPage(volatile void *pv)
-{
-    uintptr_t volatile *puPtr = (uintptr_t volatile *)pv;
-    uint32_t            cbLeft = PAGE_SIZE / sizeof(uintptr_t);
-    while (cbLeft-- > 0)
-        *puPtr++ = 0;
-}
-
-RTDECL(void) ASMMemZero32(volatile void *pv, size_t cb)
-{
-    uint32_t volatile *pu32   = (uint32_t volatile *)pv;
-    uint32_t           cbLeft = cb / sizeof(uint32_t);
-    while (cbLeft-- > 0)
-        *pu32++ = 0;
-}
-
-RTDECL(void) ASMMemFill32(volatile void *pv, size_t cb, uint32_t u32)
-{
-    uint32_t volatile *pu32 = (uint32_t volatile *)pv;
-    while (cb > 0)
-    {
-        *pu32 = u32;
-        cb -= sizeof(uint32_t);
-        pu32++;
-    }
 }
 
 RTDECL(uint8_t) ASMProbeReadByte(const void *pvByte)
