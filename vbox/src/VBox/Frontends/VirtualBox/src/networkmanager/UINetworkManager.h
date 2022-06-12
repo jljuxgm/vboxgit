@@ -1,4 +1,4 @@
-/* $Id: UINetworkManager.h 87565 2021-02-03 13:48:29Z vboxsync $ */
+/* $Id: UINetworkManager.h 87576 2021-02-03 15:35:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkManager class declaration.
  */
@@ -130,8 +130,6 @@ private slots:
         /** Handles command to adjust tree-widget. */
         void sltAdjustTreeWidgets();
 
-        /** Handles host network tree-widget @a pItem change. */
-        void sltHandleItemChangeHostNetwork(QTreeWidgetItem *pItem);
         /** Handles host network tree-widget current item change. */
         void sltHandleCurrentItemChangeHostNetwork();
         /** Handles host network context-menu request for tree-widget @a position. */
