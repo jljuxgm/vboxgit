@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic1.cpp 87571 2021-02-03 15:22:37Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic1.cpp 87575 2021-02-03 15:28:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic1 class implementation.
  */
@@ -496,7 +496,7 @@ int UIWizardNewVMPageBasic1::nextId() const
 {
     if (isUnattendedEnabled())
         return UIWizardNewVM::Page2;
-    return UIWizardNewVM::Page4;
+    return UIWizardNewVM::Page3;
 }
 
 void UIWizardNewVMPageBasic1::sltNameChanged(const QString &strNewName)
