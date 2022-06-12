@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.h 87861 2021-02-24 15:04:02Z vboxsync $ */
+/* $Id: DrvAudio.h 87875 2021-02-25 16:35:19Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  */
@@ -142,6 +142,10 @@ typedef struct DRVAUDIO
 #endif
     /** Audio configuration settings retrieved from the backend. */
     PDMAUDIOBACKENDCFG      BackendCfg;
+    /** Commonly used scratch buffer. */
+    void                   *pvScratchBuf;
+    /** Size (in bytes) of commonly used scratch buffer. */
+    size_t                  cbScratchBuf;
 #ifdef VBOX_WITH_STATISTICS
     /** Statistics for the statistics manager (STAM). */
     DRVAUDIOSTATS           Stats;
