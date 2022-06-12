@@ -1,4 +1,4 @@
-/* $Id: UIGuestProcessControlWidget.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIGuestProcessControlWidget.h 86233 2020-09-23 12:10:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestProcessControlWidget class declaration.
  */
@@ -42,7 +42,7 @@ class UIGuestControlConsole;
 class UIGuestControlInterface;
 class UIGuestSessionsEventHandler;
 class UIGuestControlTreeWidget;
-class UIToolBar;
+class QIToolBar;
 
 /** QWidget extension
   * providing GUI with guest session information and control tab in session-information window. */
@@ -89,7 +89,7 @@ private:
     QSplitter                *m_pSplitter;
     UIGuestControlTreeWidget *m_pTreeWidget;
     const EmbedTo             m_enmEmbedding;
-    UIToolBar                *m_pToolBar;
+    QIToolBar                *m_pToolBar;
 
     /** Holds the Qt event listener instance. */
     ComObjPtr<UIMainEventListenerImpl> m_pQtListener;

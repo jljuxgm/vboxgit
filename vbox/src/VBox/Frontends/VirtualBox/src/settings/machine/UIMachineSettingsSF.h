@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSF.h 86095 2020-09-11 14:28:34Z vboxsync $ */
+/* $Id: UIMachineSettingsSF.h 86233 2020-09-23 12:10:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSF class declaration.
  */
@@ -33,7 +33,7 @@ class QTreeWidgetItem;
 class QITreeWidget;
 class QILabelSeparator;
 class SFTreeViewItem;
-class UIToolBar;
+class QIToolBar;
 
 struct UIDataSettingsSharedFolder;
 struct UIDataSettingsSharedFolders;
@@ -162,7 +162,7 @@ private:
         /** Holds the tree-widget instance. */
         QITreeWidget     *m_pTreeWidget;
         /** Holds the toolbar instance. */
-        UIToolBar        *m_pToolbar;
+        QIToolBar        *m_pToolbar;
         /** Holds the 'add shared folder' action instance. */
         QAction          *m_pActionAdd;
         /** Holds the 'edit shared folder' action instance. */

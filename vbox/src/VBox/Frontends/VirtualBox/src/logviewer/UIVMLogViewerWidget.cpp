@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.cpp 86233 2020-09-23 12:10:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class implementation.
  */
@@ -43,7 +43,7 @@
 #include "UIVMLogViewerFilterPanel.h"
 #include "UIVMLogViewerSearchPanel.h"
 #include "UIVMLogViewerOptionsPanel.h"
-#include "UIToolBar.h"
+#include "QIToolBar.h"
 #include "UICommon.h"
 
 /* COM includes: */
@@ -570,7 +570,7 @@ void UIVMLogViewerWidget::prepareWidgets()
 void UIVMLogViewerWidget::prepareToolBar()
 {
     /* Create toolbar: */
-    m_pToolBar = new UIToolBar(parentWidget());
+    m_pToolBar = new QIToolBar(parentWidget());
     if (m_pToolBar)
     {
         /* Configure toolbar: */

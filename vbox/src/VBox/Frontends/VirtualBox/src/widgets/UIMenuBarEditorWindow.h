@@ -1,4 +1,4 @@
-/* $Id: UIMenuBarEditorWindow.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIMenuBarEditorWindow.h 86233 2020-09-23 12:10:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMenuBarEditorWindow class declaration.
  */
@@ -43,7 +43,7 @@ class QWidget;
 class QIToolButton;
 class UIAction;
 class UIActionPool;
-class UIToolBar;
+class QIToolBar;
 class UIMachineWindow;
 
 
@@ -223,7 +223,7 @@ private:
         /** Holds the main-layout instance. */
         QHBoxLayout             *m_pMainLayout;
         /** Holds the tool-bar instance. */
-        UIToolBar               *m_pToolBar;
+        QIToolBar               *m_pToolBar;
         /** Holds the close-button instance. */
         QIToolButton            *m_pButtonClose;
 #ifndef VBOX_WS_MAC

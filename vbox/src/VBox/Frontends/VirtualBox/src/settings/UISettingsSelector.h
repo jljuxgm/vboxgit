@@ -1,4 +1,4 @@
-/* $Id: UISettingsSelector.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UISettingsSelector.h 86233 2020-09-23 12:10:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISettingsSelector class declaration.
  */
@@ -37,7 +37,7 @@ class QITreeWidget;
 class UISelectorActionItem;
 class UISelectorItem;
 class UISettingsPage;
-class UIToolBar;
+class QIToolBar;
 
 
 /** QObject subclass providing settings dialog
@@ -275,7 +275,7 @@ private:
     UISelectorActionItem *findActionItemByTabWidget(QTabWidget *pTabWidget, int iIndex) const;
 
     /** Holds the toolbar instance. */
-    UIToolBar *m_pToolBar;
+    QIToolBar *m_pToolBar;
     /** Holds the action group instance. */
     QActionGroup *m_pActionGroup;
 };

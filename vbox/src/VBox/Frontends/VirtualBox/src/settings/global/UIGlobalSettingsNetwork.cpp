@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsNetwork.cpp 86038 2020-09-07 11:18:55Z vboxsync $ */
+/* $Id: UIGlobalSettingsNetwork.cpp 86233 2020-09-23 12:10:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsNetwork class implementation.
  */
@@ -30,7 +30,7 @@
 #include "UIGlobalSettingsNetworkDetailsNAT.h"
 #include "UIIconPool.h"
 #include "UIMessageCenter.h"
-#include "UIToolBar.h"
+#include "QIToolBar.h"
 
 /* COM includes: */
 #include "CDHCPServer.h"
@@ -550,7 +550,7 @@ void UIGlobalSettingsNetwork::prepareNATNetworkTreeWidget()
 void UIGlobalSettingsNetwork::prepareNATNetworkToolbar()
 {
     /* Prepare NAT network toolbar: */
-    m_pToolbarNATNetwork = new UIToolBar(this);
+    m_pToolbarNATNetwork = new QIToolBar(this);
     if (m_pToolbarNATNetwork)
     {
         const int iIconMetric = QApplication::style()->pixelMetric(QStyle::PM_SmallIconSize);

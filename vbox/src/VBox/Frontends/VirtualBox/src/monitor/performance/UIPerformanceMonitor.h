@@ -1,4 +1,4 @@
-/* $Id: UIPerformanceMonitor.h 85571 2020-07-31 07:22:55Z vboxsync $ */
+/* $Id: UIPerformanceMonitor.h 86233 2020-09-23 12:10:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPerformanceMonitor class declaration.
  */
@@ -48,7 +48,7 @@ class UIActionPool;
 class UIChart;
 class UISession;
 class UIRuntimeInfoWidget;
-class UIToolBar;
+class QIToolBar;
 
 #define DATA_SERIES_SIZE 2
 
@@ -121,7 +121,7 @@ public:
     void setMachine(const CMachine &machine);
 
 #ifdef VBOX_WS_MAC
-    UIToolBar *toolbar() const { return m_pToolBar; }
+    QIToolBar *toolbar() const { return m_pToolBar; }
 #endif
 
  public slots:
@@ -187,7 +187,7 @@ private:
     /** Holds the instance of layout we create. */
     QVBoxLayout *m_pMainLayout;
     QTimer      *m_pTimer;
-    UIToolBar   *m_pToolBar;
+    QIToolBar   *m_pToolBar;
 
     /** @name The following are used during UIPerformanceCollector::QueryMetricsData(..)
       * @{ */

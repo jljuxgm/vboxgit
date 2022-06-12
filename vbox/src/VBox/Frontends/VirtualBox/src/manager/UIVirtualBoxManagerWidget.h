@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.h 85636 2020-08-06 13:11:52Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.h 86233 2020-09-23 12:10:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class declaration.
  */
@@ -36,7 +36,7 @@ class QISplitter;
 class UIActionPool;
 class UIChooser;
 class UITabBar;
-class UIToolBar;
+class QIToolBar;
 class UITools;
 class UIVirtualBoxManager;
 class UIVirtualMachineItem;
@@ -300,7 +300,7 @@ private:
     QISplitter *m_pSplitter;
 
     /** Holds the main toolbar instance. */
-    UIToolBar *m_pToolBar;
+    QIToolBar *m_pToolBar;
 
     /** Holds the Chooser-pane instance. */
     UIChooser          *m_pPaneChooser;

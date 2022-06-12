@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIFileManagerTable.cpp 86233 2020-09-23 12:10:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class implementation.
  */
@@ -40,7 +40,7 @@
 #include "UIFileManager.h"
 #include "UIIconPool.h"
 #include "UIPathOperations.h"
-#include "UIToolBar.h"
+#include "QIToolBar.h"
 
 /* COM includes: */
 #include "CFsObjInfo.h"
@@ -734,7 +734,7 @@ void UIFileManagerTable::prepareObjects()
     m_pMainLayout->setContentsMargins(0, 0, 0, 0);
     setLayout(m_pMainLayout);
 
-    m_pToolBar = new UIToolBar;
+    m_pToolBar = new QIToolBar;
     if (m_pToolBar)
         m_pMainLayout->addWidget(m_pToolBar, 0, 0, 1, 7);
 

@@ -1,4 +1,4 @@
-/* $Id: UIBootOrderEditor.h 86089 2020-09-11 09:54:24Z vboxsync $ */
+/* $Id: UIBootOrderEditor.h 86233 2020-09-23 12:10:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIBootListWidget class declaration.
  */
@@ -33,7 +33,7 @@
 
 /* Forward declarations: */
 class QLabel;
-class UIToolBar;
+class QIToolBar;
 class UIBootListWidget;
 class CMachine;
 
@@ -129,7 +129,7 @@ private:
     /** Holds the table instance. */
     UIBootListWidget *m_pTable;
     /** Holds the toolbar instance. */
-    UIToolBar        *m_pToolbar;
+    QIToolBar        *m_pToolbar;
     /** Holds the move up action. */
     QAction          *m_pMoveUp;
     /** Holds the move down action. */

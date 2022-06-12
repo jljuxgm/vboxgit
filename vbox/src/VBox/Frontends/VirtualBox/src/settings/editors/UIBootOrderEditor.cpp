@@ -1,4 +1,4 @@
-/* $Id: UIBootOrderEditor.cpp 86085 2020-09-10 13:57:52Z vboxsync $ */
+/* $Id: UIBootOrderEditor.cpp 86233 2020-09-23 12:10:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIBootListWidget class implementation.
  */
@@ -25,7 +25,7 @@
 #include "UICommon.h"
 #include "UIConverter.h"
 #include "UIIconPool.h"
-#include "UIToolBar.h"
+#include "QIToolBar.h"
 
 /* COM includes: */
 #include "COMEnums.h"
@@ -519,7 +519,7 @@ void UIBootOrderEditor::prepare()
             }
 
             /* Create tool-bar: */
-            m_pToolbar = new UIToolBar(this);
+            m_pToolbar = new QIToolBar(this);
             if (m_pToolbar)
             {
                 m_pToolbar->setIconSize(QSize(16, 16));

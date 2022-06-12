@@ -1,4 +1,4 @@
-/* $Id: UIMiniToolBar.cpp 84911 2020-06-22 18:24:00Z vboxsync $ */
+/* $Id: UIMiniToolBar.cpp 86233 2020-09-23 12:10:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMiniToolBar class implementation.
  */
@@ -44,9 +44,9 @@
 #endif
 
 
-/** UIToolBar reimplementation
+/** QIToolBar reimplementation
   * providing UIMiniToolBar with mini-toolbar. */
-class UIMiniToolBarPrivate : public UIToolBar
+class UIMiniToolBarPrivate : public QIToolBar
 {
     Q_OBJECT;
 

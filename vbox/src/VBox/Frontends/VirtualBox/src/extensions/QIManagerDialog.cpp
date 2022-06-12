@@ -1,4 +1,4 @@
-/* $Id: QIManagerDialog.cpp 86231 2020-09-23 10:55:30Z vboxsync $ */
+/* $Id: QIManagerDialog.cpp 86233 2020-09-23 12:10:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIManagerDialog class implementation.
  */
@@ -27,7 +27,7 @@
 #include "UICommon.h"
 #include "UIDesktopWidgetWatchdog.h"
 #ifdef VBOX_WS_MAC
-# include "UIToolBar.h"
+# include "QIToolBar.h"
 # include "UIWindowMenuManager.h"
 #endif
 

@@ -1,4 +1,4 @@
-/* $Id: UIPerformanceMonitor.cpp 85635 2020-08-06 10:40:53Z vboxsync $ */
+/* $Id: UIPerformanceMonitor.cpp 86233 2020-09-23 12:10:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPerformanceMonitor class implementation.
  */
@@ -31,7 +31,7 @@
 #include "UIActionPool.h"
 #include "UICommon.h"
 #include "UIPerformanceMonitor.h"
-#include "UIToolBar.h"
+#include "QIToolBar.h"
 #include "UIVirtualBoxEventHandler.h"
 
 /* COM includes: */
@@ -1071,7 +1071,7 @@ void UIPerformanceMonitor::prepareMetrics()
 void UIPerformanceMonitor::prepareToolBar()
 {
     /* Create toolbar: */
-    m_pToolBar = new UIToolBar(parentWidget());
+    m_pToolBar = new QIToolBar(parentWidget());
     AssertPtrReturnVoid(m_pToolBar);
     {
         /* Configure toolbar: */

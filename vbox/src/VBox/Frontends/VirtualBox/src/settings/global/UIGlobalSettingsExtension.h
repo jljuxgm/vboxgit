@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsExtension.h 86095 2020-09-11 14:28:34Z vboxsync $ */
+/* $Id: UIGlobalSettingsExtension.h 86233 2020-09-23 12:10:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsExtension class declaration.
  */
@@ -29,7 +29,7 @@ class QHBoxLayout;
 class QITreeWidget;
 class QTreeWidgetItem;
 class QILabelSeparator;
-class UIToolBar;
+class QIToolBar;
 struct UIDataSettingsGlobalExtension;
 struct UIDataSettingsGlobalExtensionItem;
 typedef UISettingsCache<UIDataSettingsGlobalExtension> UISettingsCacheGlobalExtension;
@@ -107,7 +107,7 @@ private:
         /** Holds the tree-widget instance. */
         QITreeWidget     *m_pTreeWidget;
         /** Holds the toolbar instance. */
-        UIToolBar        *m_pToolbar;
+        QIToolBar        *m_pToolbar;
         /** Holds the 'add package' action instance. */
         QAction          *m_pActionAdd;
         /** Holds the 'remove package' action instance. */

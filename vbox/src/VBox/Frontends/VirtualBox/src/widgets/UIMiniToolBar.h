@@ -1,4 +1,4 @@
-/* $Id: UIMiniToolBar.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIMiniToolBar.h 86233 2020-09-23 12:10:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMiniToolBar class declaration.
  */
@@ -22,7 +22,7 @@
 #endif
 
 /* GUI includes: */
-#include "UIToolBar.h"
+#include "QIToolBar.h"
 
 /* Forward declarations: */
 class QMenu;

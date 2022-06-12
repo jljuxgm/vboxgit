@@ -1,4 +1,4 @@
-/* $Id: UIHostNetworkManager.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIHostNetworkManager.h 86233 2020-09-23 12:10:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHostNetworkManager class declaration.
  */
@@ -37,7 +37,7 @@ class QITreeWidget;
 class UIActionPool;
 class UIHostNetworkDetailsWidget;
 class UIItemHostNetwork;
-class UIToolBar;
+class QIToolBar;
 struct UIDataHostNetwork;
 
 
@@ -67,7 +67,7 @@ public:
 
 #ifdef VBOX_WS_MAC
     /** Returns the toolbar. */
-    UIToolBar *toolbar() const { return m_pToolBar; }
+    QIToolBar *toolbar() const { return m_pToolBar; }
 #endif
 
 protected:
@@ -170,7 +170,7 @@ private:
     /** @name Toolbar and menu variables.
       * @{ */
         /** Holds the toolbar instance. */
-        UIToolBar *m_pToolBar;
+        QIToolBar *m_pToolBar;
     /** @} */
 
     /** @name Splitter variables.

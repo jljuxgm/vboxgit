@@ -1,4 +1,4 @@
-/* $Id: UIHostNetworkManager.cpp 85597 2020-08-03 12:17:47Z vboxsync $ */
+/* $Id: UIHostNetworkManager.cpp 86233 2020-09-23 12:10:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHostNetworkManager class implementation.
  */
@@ -31,7 +31,7 @@
 #include "UIHostNetworkManager.h"
 #include "UIHostNetworkUtils.h"
 #include "UIMessageCenter.h"
-#include "UIToolBar.h"
+#include "QIToolBar.h"
 #ifdef VBOX_WS_MAC
 # include "UIWindowMenuManager.h"
 #endif /* VBOX_WS_MAC */
@@ -732,7 +732,7 @@ void UIHostNetworkManagerWidget::prepareWidgets()
 void UIHostNetworkManagerWidget::prepareToolBar()
 {
     /* Create toolbar: */
-    m_pToolBar = new UIToolBar(parentWidget());
+    m_pToolBar = new QIToolBar(parentWidget());
     AssertPtrReturnVoid(m_pToolBar);
     {
         /* Configure toolbar: */

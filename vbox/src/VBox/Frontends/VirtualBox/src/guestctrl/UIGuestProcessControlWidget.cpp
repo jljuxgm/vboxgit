@@ -1,4 +1,4 @@
-/* $Id: UIGuestProcessControlWidget.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIGuestProcessControlWidget.cpp 86233 2020-09-23 12:10:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestProcessControlWidget class implementation.
  */
@@ -29,7 +29,7 @@
 #include "UIGuestControlInterface.h"
 #include "UIGuestControlTreeItem.h"
 #include "UIGuestProcessControlWidget.h"
-#include "UIToolBar.h"
+#include "QIToolBar.h"
 #include "UIIconPool.h"
 #include "UIVMInformationDialog.h"
 #include "UICommon.h"
@@ -480,7 +480,7 @@ void UIGuestProcessControlWidget::prepareListener()
 void UIGuestProcessControlWidget::prepareToolBar()
 {
     /* Create toolbar: */
-    m_pToolBar = new UIToolBar(parentWidget());
+    m_pToolBar = new QIToolBar(parentWidget());
     if (m_pToolBar)
     {
         /* Configure toolbar: */

@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 85597 2020-08-03 12:17:47Z vboxsync $ */
+/* $Id: UIMediumManager.cpp 86233 2020-09-23 12:10:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class implementation.
  */
@@ -39,7 +39,7 @@
 #include "UIMediumSearchWidget.h"
 #include "UIWizardCloneVD.h"
 #include "UIMessageCenter.h"
-#include "UIToolBar.h"
+#include "QIToolBar.h"
 #include "UIIconPool.h"
 #include "UIMedium.h"
 #include "UIVirtualBoxEventHandler.h"
@@ -795,7 +795,7 @@ void UIMediumManagerWidget::prepareWidgets()
 void UIMediumManagerWidget::prepareToolBar()
 {
     /* Create toolbar: */
-    m_pToolBar = new UIToolBar(parentWidget());
+    m_pToolBar = new QIToolBar(parentWidget());
     AssertPtrReturnVoid(m_pToolBar);
     {
         /* Configure toolbar: */

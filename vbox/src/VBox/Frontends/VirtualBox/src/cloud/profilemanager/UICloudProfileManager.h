@@ -1,4 +1,4 @@
-/* $Id: UICloudProfileManager.h 85387 2020-07-20 10:39:24Z vboxsync $ */
+/* $Id: UICloudProfileManager.h 86233 2020-09-23 12:10:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudProfileManager class declaration.
  */
@@ -33,7 +33,7 @@ class UIActionPool;
 class UICloudProfileDetailsWidget;
 class UIItemCloudProfile;
 class UIItemCloudProvider;
-class UIToolBar;
+class QIToolBar;
 struct UIDataCloudProfile;
 struct UIDataCloudProvider;
 class CCloudProfile;
@@ -69,7 +69,7 @@ public:
 
 #ifdef VBOX_WS_MAC
     /** Returns the toolbar. */
-    UIToolBar *toolbar() const { return m_pToolBar; }
+    QIToolBar *toolbar() const { return m_pToolBar; }
 #endif
 
 protected:
@@ -189,7 +189,7 @@ private:
     /** @name Toolbar and menu variables.
       * @{ */
         /** Holds the toolbar instance. */
-        UIToolBar *m_pToolBar;
+        QIToolBar *m_pToolBar;
     /** @} */
 
     /** @name Splitter variables.

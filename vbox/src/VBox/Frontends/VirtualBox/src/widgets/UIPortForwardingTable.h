@@ -1,4 +1,4 @@
-/* $Id: UIPortForwardingTable.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIPortForwardingTable.h 86233 2020-09-23 12:10:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPortForwardingTable class declaration.
  */
@@ -38,7 +38,7 @@ class QHBoxLayout;
 class QIDialogButtonBox;
 class QITableView;
 class UIPortForwardingModel;
-class UIToolBar;
+class QIToolBar;
 
 
 /** QString subclass used to distinguish name data from simple QString. */
@@ -277,7 +277,7 @@ private:
     /** Holds the table-view instance. */
     QITableView *m_pTableView;
     /** Holds the tool-bar instance. */
-    UIToolBar   *m_pToolBar;
+    QIToolBar   *m_pToolBar;
 
     /** Holds the table-model instance. */
     UIPortForwardingModel *m_pTableModel;

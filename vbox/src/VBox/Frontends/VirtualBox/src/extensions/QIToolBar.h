@@ -1,6 +1,6 @@
-/* $Id: UIToolBar.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: QIToolBar.h 86233 2020-09-23 12:10:51Z vboxsync $ */
 /** @file
- * VBox Qt GUI - UIToolBar class declaration.
+ * VBox Qt GUI - QIToolBar class declaration.
  */
 
 /*
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef FEQT_INCLUDED_SRC_widgets_UIToolBar_h
-#define FEQT_INCLUDED_SRC_widgets_UIToolBar_h
+#ifndef FEQT_INCLUDED_SRC_extensions_QIToolBar_h
+#define FEQT_INCLUDED_SRC_extensions_QIToolBar_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -36,7 +36,7 @@ class QPaintEvent;
 #endif
 
 /** QToolBar extension with few settings presets. */
-class SHARED_LIBRARY_STUFF UIToolBar : public QToolBar
+class SHARED_LIBRARY_STUFF QIToolBar : public QToolBar
 {
     Q_OBJECT;
 
@@ -48,7 +48,7 @@ signals:
 public:
 
     /** Constructs tool-bar passing @a pParent to the base-class. */
-    UIToolBar(QWidget *pParent = 0);
+    QIToolBar(QWidget *pParent = 0);
 
     /** Defines whether tool-bar should use text-labels. */
     void setUseTextLabels(bool fEnable);
@@ -89,4 +89,4 @@ private:
 #endif
 };
 
-#endif /* !FEQT_INCLUDED_SRC_widgets_UIToolBar_h */
+#endif /* !FEQT_INCLUDED_SRC_extensions_QIToolBar_h */

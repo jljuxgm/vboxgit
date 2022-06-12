@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIVisoCreator.h 86233 2020-09-23 12:10:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator class declaration.
  */
@@ -33,7 +33,7 @@ class QMenu;
 class QGridLayout;
 class QIDialogButtonBox;
 class UIDialogPanel;
-class UIToolBar;
+class QIToolBar;
 class UIVisoHostBrowser;
 class UIVisoContentBrowser;
 class UIVisoCreatorOptionsPanel;
@@ -60,7 +60,7 @@ public:
 
 #ifdef VBOX_WS_MAC
     /** Returns the toolbar. */
-    UIToolBar *toolbar() const { return m_pToolBar; }
+    QIToolBar *toolbar() const { return m_pToolBar; }
 #endif
 
 protected:
@@ -138,8 +138,8 @@ private:
     UIVisoHostBrowser    *m_pHostBrowser;
     UIVisoContentBrowser *m_pVisoBrowser;
     QIDialogButtonBox    *m_pButtonBox;
-    UIToolBar            *m_pToolBar;
-    UIToolBar            *m_pVerticalToolBar;
+    QIToolBar            *m_pToolBar;
+    QIToolBar            *m_pVerticalToolBar;
     VisoOptions           m_visoOptions;
     BrowserOptions        m_browserOptions;
     QWidget              *m_pCentralWidget;

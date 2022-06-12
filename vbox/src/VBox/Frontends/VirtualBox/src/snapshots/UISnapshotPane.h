@@ -1,4 +1,4 @@
-/* $Id: UISnapshotPane.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UISnapshotPane.h 86233 2020-09-23 12:10:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class declaration.
  */
@@ -38,7 +38,7 @@ class UIActionPool;
 class UISnapshotDetailsWidget;
 class UISnapshotItem;
 class UISnapshotTree;
-class UIToolBar;
+class QIToolBar;
 
 
 /** Snapshot age format. */
@@ -239,7 +239,7 @@ private:
     /** @name Widget variables.
       * @{ */
         /** Holds the toolbar instance. */
-        UIToolBar *m_pToolBar;
+        QIToolBar *m_pToolBar;
 
         /** Holds the snapshot tree instance. */
         UISnapshotTree *m_pSnapshotTree;

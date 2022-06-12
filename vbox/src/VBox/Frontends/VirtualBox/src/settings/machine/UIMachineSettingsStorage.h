@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.h 86095 2020-09-11 14:28:34Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.h 86233 2020-09-23 12:10:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class declaration.
  */
@@ -42,7 +42,7 @@ class QIToolButton;
 class QITreeView;
 class StorageModel;
 class UIMediumIDHolder;
-class UIToolBar;
+class QIToolBar;
 struct UIDataSettingsMachineStorage;
 struct UIDataSettingsMachineStorageController;
 struct UIDataSettingsMachineStorageAttachment;
@@ -312,7 +312,7 @@ private:
         /** Holds the toolbar layout instance. */
         QHBoxLayout                            *m_pLayoutToolbar;
         /** Holds the toolbar instance. */
-        UIToolBar                              *m_pToolbar;
+        QIToolBar                              *m_pToolbar;
         /** Holds the 'Add Controller' action instance. */
         QAction                                *m_pActionAddController;
         /** Holds the 'Remove Controller' action instance. */

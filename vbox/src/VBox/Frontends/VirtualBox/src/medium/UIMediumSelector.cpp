@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIMediumSelector.cpp 86233 2020-09-23 12:10:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class implementation.
  */
@@ -38,7 +38,7 @@
 #include "UIIconPool.h"
 #include "UIMedium.h"
 #include "UIMediumItem.h"
-#include "UIToolBar.h"
+#include "QIToolBar.h"
 
 /* COM includes: */
 #include "COMEnums.h"
@@ -372,7 +372,7 @@ void UIMediumSelector::prepareWidgets()
 
     m_pMainMenu = menuBar()->addMenu(tr("Medium"));
 
-    m_pToolBar = new UIToolBar;
+    m_pToolBar = new QIToolBar;
     if (m_pToolBar)
     {
         /* Configure toolbar: */

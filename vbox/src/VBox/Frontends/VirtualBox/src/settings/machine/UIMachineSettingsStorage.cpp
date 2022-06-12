@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 86045 2020-09-07 14:58:04Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 86233 2020-09-23 12:10:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class implementation.
  */
@@ -48,7 +48,7 @@
 #include "UIMedium.h"
 #include "UIMediumSelector.h"
 #include "UIMessageCenter.h"
-#include "UIToolBar.h"
+#include "QIToolBar.h"
 
 /* COM includes: */
 #include "CMediumAttachment.h"
@@ -4612,7 +4612,7 @@ void UIMachineSettingsStorage::prepareTreeView()
 void UIMachineSettingsStorage::prepareToolBar()
 {
     /* Prepare toolbar: */
-    m_pToolbar = new UIToolBar(m_pWidgetLeftPane);
+    m_pToolbar = new QIToolBar(m_pWidgetLeftPane);
     if (m_pToolbar)
     {
         /* Configure toolbar: */

@@ -1,4 +1,4 @@
-/* $Id: UICloudConsoleManager.cpp 85597 2020-08-03 12:17:47Z vboxsync $ */
+/* $Id: UICloudConsoleManager.cpp 86233 2020-09-23 12:10:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudConsoleManager class implementation.
  */
@@ -35,7 +35,7 @@
 #include "UICloudConsoleDetailsWidget.h"
 #include "UICloudConsoleManager.h"
 #include "UIMessageCenter.h"
-#include "UIToolBar.h"
+#include "QIToolBar.h"
 
 
 /** Tree-widget item types. */
@@ -822,7 +822,7 @@ void UICloudConsoleManagerWidget::prepareWidgets()
 void UICloudConsoleManagerWidget::prepareToolBar()
 {
     /* Create toolbar: */
-    m_pToolBar = new UIToolBar(parentWidget());
+    m_pToolBar = new QIToolBar(parentWidget());
     if (m_pToolBar)
     {
         /* Configure toolbar: */

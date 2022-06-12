@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIMediumSelector.h 86233 2020-09-23 12:10:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class declaration.
  */
@@ -37,7 +37,7 @@ class QVBoxLayout;
 class QIDialogButtonBox;
 class UIMediumItem;
 class UIMediumSearchWidget;
-class UIToolBar;
+class QIToolBar;
 
 
 /** QIDialog extension providing GUI with a dialog to select an existing medium. */
@@ -131,7 +131,7 @@ private slots:
     QPushButton          *m_pChooseButton;
     QPushButton          *m_pLeaveEmptyButton;
     QMenu                *m_pMainMenu;
-    UIToolBar            *m_pToolBar;
+    QIToolBar            *m_pToolBar;
     QAction              *m_pActionAdd;
     QAction              *m_pActionCreate;
     QAction              *m_pActionRefresh;

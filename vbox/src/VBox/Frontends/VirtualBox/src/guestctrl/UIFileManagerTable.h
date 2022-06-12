@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIFileManagerTable.h 86233 2020-09-23 12:10:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class declaration.
  */
@@ -54,7 +54,7 @@ class UICustomFileSystemModel;
 class UICustomFileSystemProxyModel;
 class UIFileManagerNavigationWidget;
 class UIGuestControlFileView;
-class UIToolBar;
+class QIToolBar;
 
 /** A simple struck to store some statictics for a directory. Mainly used by  UIDirectoryDiskUsageComputer instances. */
 class UIDirectoryStatistics
@@ -239,7 +239,7 @@ protected:
     QILabel                 *m_pLocationLabel;
     UIPropertiesDialog      *m_pPropertiesDialog;
     UIActionPool            *m_pActionPool;
-    UIToolBar               *m_pToolBar;
+    QIToolBar               *m_pToolBar;
 
     /** Stores the drive letters the file system has (for windows system). For non-windows
      *  systems this is empty and for windows system it should at least contain C:/ */

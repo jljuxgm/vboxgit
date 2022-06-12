@@ -1,4 +1,4 @@
-/* $Id: UICloudProfileManager.cpp 85597 2020-08-03 12:17:47Z vboxsync $ */
+/* $Id: UICloudProfileManager.cpp 86233 2020-09-23 12:10:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudProfileManager class implementation.
  */
@@ -32,7 +32,7 @@
 #include "UICloudProfileDetailsWidget.h"
 #include "UICloudProfileManager.h"
 #include "UIMessageCenter.h"
-#include "UIToolBar.h"
+#include "QIToolBar.h"
 
 /* COM includes: */
 #include "CCloudProfile.h"
@@ -647,7 +647,7 @@ void UICloudProfileManagerWidget::prepareWidgets()
 void UICloudProfileManagerWidget::prepareToolBar()
 {
     /* Create toolbar: */
-    m_pToolBar = new UIToolBar(parentWidget());
+    m_pToolBar = new QIToolBar(parentWidget());
     if (m_pToolBar)
     {
         /* Configure toolbar: */
