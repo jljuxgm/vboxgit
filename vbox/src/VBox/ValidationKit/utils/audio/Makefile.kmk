@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: Makefile.kmk 88882 2021-05-05 17:53:50Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - Audio Utilities.
 #
@@ -33,6 +33,8 @@ include $(KBUILD_PATH)/subheader.kmk
 PROGRAMS.win += ntPlayToneWaveX
 ntPlayToneWaveX_TEMPLATE = VBoxValidationKitR3
 ntPlayToneWaveX_SOURCES  = ntPlayToneWaveX.cpp
+ntPlayToneWaveX_LIBS    += \
+ WinMM.Lib
 
 include $(FILE_KBUILD_SUB_FOOTER)
 
