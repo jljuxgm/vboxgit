@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceCpuHotPlug.cpp 86188 2020-09-21 08:43:10Z vboxsync $ */
+/* $Id: VBoxServiceCpuHotPlug.cpp 86189 2020-09-21 08:52:32Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions CPU Hot-Plugging Service.
  */
@@ -380,6 +380,8 @@ static int vgsvcCpuHotPlugGetACPIDevicePath(char **ppszPath, uint32_t idCpuCore,
 
                         /* Open the directory */
                         rc = RTDirOpenFiltered(&pAcpiCpuPathLvl->hDir, pszPathDir, RTDIRFILTER_WINNT, 0 /*fFlags*/);
+                        RTStrFree(pszPathDir);
+                        pszPathDir = NULL;
                         if (RT_FAILURE(rc))
                             break;
                     }
