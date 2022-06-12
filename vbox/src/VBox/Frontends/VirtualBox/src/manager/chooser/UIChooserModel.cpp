@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 88681 2021-04-23 15:15:11Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 88683 2021-04-23 15:26:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -1202,6 +1202,7 @@ void UIChooserModel::sltDetachCOM()
 {
     /* Clean tree for main root: */
     clearTreeForMainRoot();
+    emit sigSelectionInvalidated();
 
     /* Call to base-class: */
     UIChooserAbstractModel::sltDetachCOM();
