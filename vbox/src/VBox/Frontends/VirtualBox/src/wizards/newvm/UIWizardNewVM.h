@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.h 84890 2020-06-22 09:16:52Z vboxsync $ */
+/* $Id: UIWizardNewVM.h 84892 2020-06-22 10:23:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class declaration.
  */
@@ -72,6 +72,7 @@ public:
 
     /** Returns the Id of newly created VM. */
     QUuid createdMachineId() const;
+    void setDefaultUnattendedInstallData(const UIUnattendedInstallData &unattendedInstallData);
     const UIUnattendedInstallData &unattendedInstallData() const;
     bool isUnattendedInstallEnabled() const;
 

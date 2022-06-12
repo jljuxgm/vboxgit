@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 84890 2020-06-22 09:16:52Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.h 84892 2020-06-22 10:23:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -35,7 +35,7 @@ class QMenu;
 class QIManagerDialog;
 class UIAction;
 class UIActionPool;
-class UIUnattendedInstallData;
+struct UIUnattendedInstallData;
 class UIVirtualBoxManagerWidget;
 class UIVirtualMachineItem;
 
