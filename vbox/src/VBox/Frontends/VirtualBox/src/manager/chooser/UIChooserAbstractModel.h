@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.h 84376 2020-05-19 17:57:56Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.h 84378 2020-05-19 18:23:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class declaration.
  */
@@ -71,7 +71,9 @@ public:
         NodeDef_GlobalOptionFavorite,
         NodeDef_GlobalValueDefault,
         NodeDef_MachinePrefix,
-        NodeDef_GroupPrefix,
+        NodeDef_GroupPrefixLocal,
+        NodeDef_GroupPrefixProvider,
+        NodeDef_GroupPrefixProfile,
         NodeDef_GroupOptionOpened,
     };
 

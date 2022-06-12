@@ -1,4 +1,4 @@
-/* $Id: UIChooserNodeGroup.cpp 84376 2020-05-19 17:57:56Z vboxsync $ */
+/* $Id: UIChooserNodeGroup.cpp 84378 2020-05-19 18:23:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserNodeGroup class implementation.
  */
@@ -107,7 +107,19 @@ QString UIChooserNodeGroup::description() const
 
 QString UIChooserNodeGroup::definition(bool fFull /* = false */) const
 {
-    const QString strNodePrefix = UIChooserAbstractModel::definitionOption(UIChooserAbstractModel::NodeDef_GroupPrefix);
+    QString strNodePrefix;
+    switch (groupType())
+    {
+        case UIChooserNodeGroupType_Local:
+            strNodePrefix = UIChooserAbstractModel::definitionOption(UIChooserAbstractModel::NodeDef_GroupPrefixLocal);
+            break;
+        case UIChooserNodeGroupType_Provider:
+            strNodePrefix = UIChooserAbstractModel::definitionOption(UIChooserAbstractModel::NodeDef_GroupPrefixProvider);
+            break;
+        case UIChooserNodeGroupType_Profile:
+            strNodePrefix = UIChooserAbstractModel::definitionOption(UIChooserAbstractModel::NodeDef_GroupPrefixProfile);
+            break;
+    }
     const QString strNodeOptionOpened = UIChooserAbstractModel::definitionOption(UIChooserAbstractModel::NodeDef_GroupOptionOpened);
     return   fFull
            ? QString("%1%2=%3").arg(strNodePrefix).arg(isOpened() ? strNodeOptionOpened : "").arg(name())
