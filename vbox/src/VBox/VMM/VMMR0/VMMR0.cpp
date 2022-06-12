@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 85187 2020-07-10 13:24:00Z vboxsync $ */
+/* $Id: VMMR0.cpp 86452 2020-10-05 17:25:53Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -1054,6 +1054,22 @@ DECLINLINE(bool) vmmR0ThreadCtxHookIsEnabled(PVMCPUCC pVCpu)
 VMMR0_INT_DECL(bool) VMMR0ThreadCtxHookIsEnabled(PVMCPUCC pVCpu)
 {
     return vmmR0ThreadCtxHookIsEnabled(pVCpu);
+}
+
+
+/**
+ * Returns the ring-0 release logger instance.
+ *
+ * @returns Pointer to release logger, NULL if not configured.
+ * @param   pVCpu       The cross context virtual CPU structure of the caller.
+ * @thread  EMT(pVCpu)
+ */
+VMMR0_INT_DECL(PRTLOGGER) VMMR0GetReleaseLogger(PVMCPUCC pVCpu)
+{
+    PVMMR0LOGGER pLogger = pVCpu->vmm.s.pR0RelLoggerR0;
+    if (pLogger)
+        return &pLogger->Logger;
+    return NULL;
 }
 
 
