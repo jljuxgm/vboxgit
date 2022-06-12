@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 85397 2020-07-21 09:49:12Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 85398 2020-07-21 10:54:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -756,7 +756,7 @@ void UIVirtualBoxManagerWidget::updateToolbar()
                     m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Cloud_S_Help));
                     break;
                 }
-                case UIToolType_VMResourceMonitor:
+                case UIToolType_Resources:
                 {
                     m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_VMResourceMonitor_M_Columns));
                     QToolButton *pButton =
@@ -827,7 +827,7 @@ void UIVirtualBoxManagerWidget::updateToolbar()
                     m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Machine_M_StartOrShow));
                     break;
                 }
-                case UIToolType_PerformanceMonitor:
+                case UIToolType_Performance:
                 {
                     break;
                 }
@@ -942,13 +942,13 @@ void UIVirtualBoxManagerWidget::recacheCurrentItemInformation(bool fDontRaiseErr
     QList<UIToolType> retrictedTypes;
     if (pItem && pItem->itemType() != UIVirtualMachineItemType_Local)
     {
-        retrictedTypes << UIToolType_Snapshots << UIToolType_Logs << UIToolType_PerformanceMonitor;
+        retrictedTypes << UIToolType_Snapshots << UIToolType_Logs << UIToolType_Performance;
         if (retrictedTypes.contains(m_pPaneTools->toolsType()))
             m_pPaneTools->setToolsType(UIToolType_Details);
     }
     else if (pItem && !pItem->isItemRunning())
     {
-        retrictedTypes << UIToolType_PerformanceMonitor;
+        retrictedTypes << UIToolType_Performance;
     }
     m_pPaneTools->setRestrictedToolTypes(retrictedTypes);
     /* Update machine tools availability: */
