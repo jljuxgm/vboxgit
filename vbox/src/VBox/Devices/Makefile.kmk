@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 87002 2020-11-27 10:06:09Z vboxsync $
+# $Id: Makefile.kmk 87050 2020-12-08 12:51:48Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -102,6 +102,8 @@ if !defined(VBOX_ONLY_EXTPACKS)
  	$(PATH_STAGE_LIB)/StorageLib$(VBOX_SUFF_LIB)
  VBoxDDU_LIBS.freebsd    += \
  	geom
+ VBoxDDU_LIBS.solaris    += \
+    efi
  if defined(VBOX_WITH_USB) && "$(intersects $(KBUILD_TARGET_ARCH),$(VBOX_SUPPORTED_HOST_ARCHS))" != ""
   VBoxDDU_LIBS           += \
  	$(PATH_STAGE_LIB)/USBLib$(VBOX_SUFF_LIB)

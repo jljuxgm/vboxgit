@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 87002 2020-11-27 10:06:09Z vboxsync $
+# $Id: Makefile.kmk 87050 2020-12-08 12:51:48Z vboxsync $
 ## @file
 # Sub-Makefile for the storage device & driver testcases.
 #
@@ -158,7 +158,7 @@ if defined(VBOX_WITH_TESTCASES) || defined(VBOX_WITH_VBOX_IMG)
  else ifeq ($(KBUILD_TARGET),win)
   vbox-img_SDKS.win = VBOX_NTDLL
  else ifeq ($(KBUILD_TARGET),solaris)
-  vbox-img_LIBS += kstat
+  vbox-img_LIBS += kstat efi
   ifdef SDK_VBOX_LIBXML2_LIBS
    vbox-img_LIBS += xml2
   endif
