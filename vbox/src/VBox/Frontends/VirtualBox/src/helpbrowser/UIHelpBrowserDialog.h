@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserDialog.h 86963 2020-11-24 09:43:55Z vboxsync $ */
+/* $Id: UIHelpBrowserDialog.h 86964 2020-11-24 09:49:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserDialog class declaration.
  */
@@ -21,22 +21,11 @@
 # pragma once
 #endif
 
-/* Qt includes: */
-#include <QMap>
-#include <QString>
-
 /* GUI includes: */
-#include "QIManagerDialog.h"
+#include "QIWithRestorableGeometry.h"
 #include "QIWithRetranslateUI.h"
-#include "UILibraryDefs.h"
-
-/* COM includes: */
-#include "COMEnums.h"
 
 /* Forward declarations: */
-class QDialogButtonBox;
-class QVBoxLayout;
-class UIHelpBrowserDialog;
 class UIHelpBrowserWidget;
 
 class SHARED_LIBRARY_STUFF UIHelpBrowserDialog : public QIWithRetranslateUI<QIWithRestorableGeometry<QMainWindow> >
