@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 87961 2021-03-04 20:29:46Z vboxsync $ */
+/* $Id: DevHDA.cpp 87989 2021-03-06 11:19:57Z vboxsync $ */
 /** @file
  * DevHDA.cpp - VBox Intel HD Audio Controller.
  *
@@ -5142,6 +5142,14 @@ static DECLCALLBACK(int) hdaR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFGM
     PDMDevHlpSTAMRegister(pDevIns, &pThis->StatRegWritesBlockedByReset, STAMTYPE_COUNTER, "RegWritesBlockedByReset", STAMUNIT_OCCURENCES, "Writes blocked by pending reset (GCTL/CRST)");
     PDMDevHlpSTAMRegister(pDevIns, &pThis->StatRegWritesBlockedByRun,   STAMTYPE_COUNTER, "RegWritesBlockedByRun",   STAMUNIT_OCCURENCES, "Writes blocked by byte RUN bit.");
 # endif
+
+    for (uint8_t idxStream = 0; idxStream < RT_ELEMENTS(pThisCC->aStreams); idxStream++)
+        if (hdaGetDirFromSD(idxStream) == PDMAUDIODIR_OUT)
+            PDMDevHlpSTAMRegisterF(pDevIns, &pThisCC->aStreams[idxStream].State.StatDmaFlowErrors, STAMTYPE_COUNTER, STAMVISIBILITY_USED, STAMUNIT_OCCURENCES,
+                                   "Number of DMA overflows.",  "Stream%u/DMAOverflows", idxStream);
+        else
+            PDMDevHlpSTAMRegisterF(pDevIns, &pThisCC->aStreams[idxStream].State.StatDmaFlowErrors, STAMTYPE_COUNTER, STAMVISIBILITY_USED, STAMUNIT_OCCURENCES,
+                                   "Number of DMA underflows.", "Stream%u/DMAUnderflows", idxStream);
 
     return VINF_SUCCESS;
 }

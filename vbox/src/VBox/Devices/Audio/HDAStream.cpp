@@ -1,4 +1,4 @@
-/* $Id: HDAStream.cpp 87988 2021-03-05 21:44:36Z vboxsync $ */
+/* $Id: HDAStream.cpp 87989 2021-03-06 11:19:57Z vboxsync $ */
 /** @file
  * HDAStream.cpp - Stream functions for HD Audio.
  */
@@ -1193,8 +1193,14 @@ static int hdaR3StreamTransfer(PPDMDEVINS pDevIns, PHDASTATE pThis, PHDASTATER3 
     {
         /** @todo account for this or something so we can try get back in sync
          *        later... */
-        LogFlowFunc(("Internal DMA/AIO buffer underflow (%#x, wanted at least %#x)\n", cbToProcessMax, pStreamShared->State.cbTransferSize));
-        /// @todo STAM_REL_COUNTER_INC(&pStreamR3->State.StatDmaUnderflow);
+        LogFlowFunc(("Internal DMA/AIO buffer %s (%#x, wanted at least %#x)\n",
+                     hdaGetDirFromSD(uSD) == PDMAUDIODIR_OUT ? "overflow" : "underflow",
+                     cbToProcessMax, pStreamShared->State.cbTransferSize));
+        STAM_REL_COUNTER_INC(&pStreamR3->State.StatDmaFlowErrors);
+#ifdef VBOX_WITH_DTRACE
+        VBOXDD_HDA_STREAM_DMA_FLOWERROR(uSD, cbToProcessMax, pStreamShared->State.cbTransferSize,
+                                        hdaGetDirFromSD(uSD) == PDMAUDIODIR_OUT ? 1 : 0);
+#endif
     }
 
     hdaStreamLock(pStreamShared);
