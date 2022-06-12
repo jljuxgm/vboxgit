@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 88158 2021-03-17 14:39:22Z vboxsync $ */
+/* $Id: DevHDA.cpp 88164 2021-03-17 17:13:24Z vboxsync $ */
 /** @file
  * DevHDA.cpp - VBox Intel HD Audio Controller.
  *
@@ -498,7 +498,7 @@ static SSMFIELD const g_aSSMBDLEStateFields6[] =
 {
     SSMFIELD_ENTRY(HDABDLESTATELEGACY, u32BDLIndex),
     SSMFIELD_ENTRY(HDABDLESTATELEGACY, cbBelowFIFOW),
-    SSMFIELD_ENTRY_OLD(FIFO,           HDA_FIFO_MAX), /* Deprecated; now is handled in the stream's circular buffer. */
+    SSMFIELD_ENTRY_OLD(FIFO,           256),            /* Deprecated; now is handled in the stream's circular buffer. */
     SSMFIELD_ENTRY(HDABDLESTATELEGACY, u32BufOff),
     SSMFIELD_ENTRY_TERM()
 };
