@@ -1,4 +1,4 @@
-/* $Id: AudioTest.cpp 89082 2021-05-17 09:29:53Z vboxsync $ */
+/* $Id: AudioTest.cpp 89092 2021-05-17 11:26:07Z vboxsync $ */
 /** @file
  * Audio testing routines.
  * Common code which is being used by the ValidationKit and the debug / ValdikationKit audio driver(s).
@@ -1075,7 +1075,7 @@ void AudioTestWaveFileClose(PAUDIOTESTWAVEFILE pWaveFile)
  */
 int AudioTestWaveFileRead(PAUDIOTESTWAVEFILE pWaveFile, void *pvBuf, size_t cbBuf, size_t *pcbRead)
 {
-    int rc = RTFileReadAt(pWaveFile->hFile, pWaveFile->offCur, pvBuf, cbBuf, pcbRead);
+    int rc = RTFileReadAt(pWaveFile->hFile, pWaveFile->offSamples + pWaveFile->offCur, pvBuf, cbBuf, pcbRead);
     if (RT_SUCCESS(rc))
     {
         if (pcbRead)
