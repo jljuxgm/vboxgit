@@ -1,4 +1,4 @@
-/* $Id: DnDDroppedFiles.cpp 85427 2020-07-23 10:58:15Z vboxsync $ */
+/* $Id: DnDDroppedFiles.cpp 85433 2020-07-23 12:57:54Z vboxsync $ */
 /** @file
  * DnD - Directory handling.
  */
@@ -44,6 +44,7 @@ static int dndDroppedFilesInitInternal(PDNDDROPPEDFILES pDF)
     pDF->m_fOpen = 0;
     pDF->m_hDir  = NIL_RTDIR;
 
+    RTListInit(&pDF->m_lstDirs);
     RTListInit(&pDF->m_lstFiles);
 
     return VINF_SUCCESS;
