@@ -1,4 +1,4 @@
-/* $Id: AudioMixBuffer.h 89351 2021-05-28 12:13:29Z vboxsync $ */
+/* $Id: AudioMixBuffer.h 89352 2021-05-28 12:18:56Z vboxsync $ */
 /** @file
  * Audio Mixing bufer convert audio samples to/from different rates / formats.
  */
@@ -217,12 +217,6 @@ void        AudioMixBufBlend(PAUDIOMIXBUF pMixBuf, PAUDIOMIXBUFWRITESTATE pState
 void        AudioMixBufBlendGap(PAUDIOMIXBUF pMixBuf, PAUDIOMIXBUFWRITESTATE pState, uint32_t cFrames);
 void        AudioMixBufCommit(PAUDIOMIXBUF pMixBuf, uint32_t cFrames);
 /** @} */
-
-
-#ifdef DEBUG
-void AudioMixBufDbgPrint(PAUDIOMIXBUF pMixBuf);
-void AudioMixBufDbgPrintChain(PAUDIOMIXBUF pMixBuf);
-#endif
 
 #endif /* !VBOX_INCLUDED_SRC_Audio_AudioMixBuffer_h */
 
