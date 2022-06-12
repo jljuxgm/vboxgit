@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElement.cpp 88149 2021-03-17 11:06:53Z vboxsync $ */
+/* $Id: UIDetailsElement.cpp 88862 2021-05-04 16:05:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement class implementation.
  */
@@ -1471,7 +1471,7 @@ void UIDetailsElement::paintBackground(QPainter *pPainter, const QStyleOptionGra
                          : optionRect;
 
     /* Acquire palette: */
-    const QPalette pal = palette();
+    const QPalette pal = QApplication::palette();
 
     /* Paint default background: */
     const QColor defaultColor = pal.color(QPalette::Active, QPalette::Mid);
@@ -1515,8 +1515,8 @@ void UIDetailsElement::paintFrame(QPainter *pPainter, const QStyleOptionGraphics
                           : optionRect;
 
     /* Paint frame: */
-    const QColor strokeColor = palette().color(QPalette::Active, QPalette::Mid).lighter(m_iDefaultToneStart);
-    QPen pen(strokeColor);
+    const QColor frameColor = QApplication::palette().color(QPalette::Active, QPalette::Mid).lighter(m_iDefaultToneStart);
+    QPen pen(frameColor);
     pen.setWidth(0);
     pPainter->setPen(pen);
     pPainter->drawLine(rectangle.topLeft(),    rectangle.topRight());
@@ -1540,7 +1540,7 @@ void UIDetailsElement::paintElementInfo(QPainter *pPainter, const QStyleOptionGr
     const int iMaximumHeight = qMax(iPixmapHeight, iNameHeight);
 
     /* Prepare color: */
-    const QPalette pal = palette();
+    const QPalette pal = QApplication::palette();
     const QColor buttonTextColor = pal.color(QPalette::Active, QPalette::ButtonText);
     const QColor linkTextColor = pal.color(QPalette::Active, QPalette::Link);
 

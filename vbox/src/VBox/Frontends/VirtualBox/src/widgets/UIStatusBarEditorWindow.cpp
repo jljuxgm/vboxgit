@@ -1,4 +1,4 @@
-/* $Id: UIStatusBarEditorWindow.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIStatusBarEditorWindow.cpp 88862 2021-05-04 16:05:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIStatusBarEditorWindow class implementation.
  */
@@ -498,7 +498,7 @@ void UIStatusBarEditorWidget::paintEvent(QPaintEvent *)
     QPainter painter(this);
 
     /* Prepare palette colors: */
-    const QPalette pal = palette();
+    const QPalette pal = QApplication::palette();
     QColor color0 = pal.color(QPalette::Window);
     QColor color1 = pal.color(QPalette::Window).lighter(110);
     color1.setAlpha(0);

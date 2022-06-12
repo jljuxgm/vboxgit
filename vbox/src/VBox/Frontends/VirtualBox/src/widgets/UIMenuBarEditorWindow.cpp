@@ -1,4 +1,4 @@
-/* $Id: UIMenuBarEditorWindow.cpp 86233 2020-09-23 12:10:51Z vboxsync $ */
+/* $Id: UIMenuBarEditorWindow.cpp 88862 2021-05-04 16:05:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMenuBarEditorWindow class implementation.
  */
@@ -673,7 +673,7 @@ void UIMenuBarEditorWidget::paintEvent(QPaintEvent *)
     QPainter painter(this);
 
     /* Prepare palette colors: */
-    const QPalette pal = palette();
+    const QPalette pal = QApplication::palette();
     QColor color0 = pal.color(QPalette::Window);
     QColor color1 = pal.color(QPalette::Window).lighter(110);
     color1.setAlpha(0);

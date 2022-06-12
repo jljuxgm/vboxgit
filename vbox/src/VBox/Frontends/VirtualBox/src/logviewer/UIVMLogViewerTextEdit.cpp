@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerTextEdit.cpp 88734 2021-04-27 12:56:38Z vboxsync $ */
+/* $Id: UIVMLogViewerTextEdit.cpp 88862 2021-05-04 16:05:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -202,7 +202,7 @@ void UIVMLogViewerTextEdit::configure()
     setMouseTracking(true);
 
     /* Prepare modified standard palette: */
-    QPalette pal = style() ? style()->standardPalette() : palette(); // fallback if no style exist.
+    QPalette pal = style() ? style()->standardPalette() : QApplication::palette(); // fallback if no style exist.
     pal.setColor(QPalette::Inactive, QPalette::Highlight, pal.color(QPalette::Active, QPalette::Highlight));
     pal.setColor(QPalette::Inactive, QPalette::HighlightedText, pal.color(QPalette::Active, QPalette::HighlightedText));
     setPalette(pal);

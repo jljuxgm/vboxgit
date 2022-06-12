@@ -1,4 +1,4 @@
-/* $Id: UISlidingToolBar.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UISlidingToolBar.cpp 88862 2021-05-04 16:05:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISlidingToolBar class implementation.
  */
@@ -164,7 +164,7 @@ void UISlidingToolBar::prepareContents()
             {
                 /* Configure child-widget: */
                 QPalette pal2 = m_pWidget->palette();
-                pal2.setColor(QPalette::Window, palette().color(QPalette::Window));
+                pal2.setColor(QPalette::Window, QApplication::palette().color(QPalette::Window));
                 m_pWidget->setPalette(pal2);
                 /* Using abstract (old-style) connection here(!) since the base classes can be different: */
                 connect(m_pWidget, SIGNAL(sigCancelClicked()), this, SLOT(close()));

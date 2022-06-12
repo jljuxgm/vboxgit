@@ -1,4 +1,4 @@
-/* $Id: UIToolsItem.cpp 88855 2021-05-04 13:49:27Z vboxsync $ */
+/* $Id: UIToolsItem.cpp 88862 2021-05-04 16:05:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsItem class definition.
  */
@@ -708,7 +708,7 @@ void UIToolsItem::paintBackground(QPainter *pPainter, const QRect &rectangle) co
     pPainter->save();
 
     /* Prepare variables: */
-    const QPalette pal = palette();
+    const QPalette pal = QApplication::palette();
 
     /* Selection background: */
     if (model()->currentItem() == this)
@@ -816,7 +816,7 @@ void UIToolsItem::paintFrame(QPainter *pPainter, const QRect &rectangle) const
     pPainter->save();
 
     /* Prepare colors: */
-    const QPalette pal = palette();
+    const QPalette pal = QApplication::palette();
     QColor strokeColor;
 
     /* Selection frame: */
@@ -850,7 +850,7 @@ void UIToolsItem::paintToolInfo(QPainter *pPainter, const QRect &rectangle) cons
     const int iFullHeight = rectangle.height();
     const int iMargin = data(ToolsItemData_Margin).toInt();
     const int iSpacing = data(ToolsItemData_Spacing).toInt();
-    const QPalette pal = palette();
+    const QPalette pal = QApplication::palette();
 
     /* Selected or hovered item foreground: */
     if (model()->currentItem() == this || isHovered())

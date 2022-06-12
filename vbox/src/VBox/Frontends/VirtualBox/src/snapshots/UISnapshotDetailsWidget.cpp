@@ -1,4 +1,4 @@
-/* $Id: UISnapshotDetailsWidget.cpp 84792 2020-06-11 13:12:17Z vboxsync $ */
+/* $Id: UISnapshotDetailsWidget.cpp 88862 2021-05-04 16:05:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotDetailsWidget class implementation.
  */
@@ -251,7 +251,7 @@ void UISnapshotDetailsElement::paintEvent(QPaintEvent * /* pEvent */)
     QPainter painter(this);
 
     /* Prepare palette colors: */
-    const QPalette pal = palette();
+    const QPalette pal = QApplication::palette();
     QColor color0 = pal.color(QPalette::Window);
     QColor color1 = pal.color(QPalette::Window).lighter(110);
     color1.setAlpha(0);

@@ -1,4 +1,4 @@
-/* $Id: UISearchLineEdit.cpp 86821 2020-11-06 12:19:28Z vboxsync $ */
+/* $Id: UISearchLineEdit.cpp 88862 2021-05-04 16:05:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIsearchLineEdit class definitions.
  */
@@ -92,7 +92,7 @@ void UISearchLineEdit::reset()
 
 void UISearchLineEdit::colorBackground(bool fWarning)
 {
-    QPalette mPalette = palette();
+    QPalette mPalette = QApplication::palette();
     /** Make sure we reset color. */
     if (!fWarning || !m_fMark)
     {

@@ -1,4 +1,4 @@
-/* $Id: UIPopupBox.cpp 84911 2020-06-22 18:24:00Z vboxsync $ */
+/* $Id: UIPopupBox.cpp 88862 2021-05-04 16:05:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPopupBox/UIPopupBoxGroup classes implementation.
  */
@@ -281,7 +281,7 @@ void UIPopupBox::paintEvent(QPaintEvent *pEvent)
     QPainter painter(this);
     painter.setClipRect(pEvent->rect());
 
-    QPalette pal = palette();
+    QPalette pal = QApplication::palette();
     painter.setClipPath(*m_pLabelPath);
     QColor base = pal.color(QPalette::Active, QPalette::Window);
     QRect rect = QRect(QPoint(0, 0), size()).adjusted(0, 0, -1, -1);

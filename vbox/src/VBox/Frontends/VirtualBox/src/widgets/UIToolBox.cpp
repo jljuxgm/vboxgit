@@ -1,4 +1,4 @@
-/* $Id: UIToolBox.cpp 88369 2021-04-05 10:17:38Z vboxsync $ */
+/* $Id: UIToolBox.cpp 88862 2021-05-04 16:05:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolBox class implementation.
  */
@@ -365,7 +365,7 @@ bool UIToolBox::insertPage(int iIndex, QWidget *pWidget, const QString &strTitle
     pNewPage->setIndex(iIndex);
     pNewPage->setTitle(strTitle);
 
-    const QPalette pal = palette();
+    const QPalette pal = QApplication::palette();
     QColor tabBackgroundColor = pal.color(QPalette::Active, QPalette::Highlight).lighter(130);
     pNewPage->setTitleBackgroundColor(tabBackgroundColor);
 

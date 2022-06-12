@@ -1,4 +1,4 @@
-/* $Id: UIPopupPane.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIPopupPane.cpp 88862 2021-05-04 16:05:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPopupPane class implementation.
  */
@@ -239,7 +239,7 @@ void UIPopupPane::prepare()
 void UIPopupPane::prepareBackground()
 {
     /* Prepare palette: */
-    QPalette pal = palette();
+    QPalette pal = QApplication::palette();
     pal.setColor(QPalette::Window, QApplication::palette().color(QPalette::Window));
     setPalette(pal);
 }

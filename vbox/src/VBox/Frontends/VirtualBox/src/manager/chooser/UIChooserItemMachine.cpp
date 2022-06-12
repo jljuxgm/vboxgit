@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemMachine.cpp 88857 2021-05-04 14:05:11Z vboxsync $ */
+/* $Id: UIChooserItemMachine.cpp 88862 2021-05-04 16:05:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemMachine class implementation.
  */
@@ -902,7 +902,7 @@ void UIChooserItemMachine::paintBackground(QPainter *pPainter, const QRect &rect
     pPainter->save();
 
     /* Prepare color: */
-    const QPalette pal = palette();
+    const QPalette pal = QApplication::palette();
 
     /* Selected-item background: */
     if (model()->selectedItems().contains(unconst(this)))
@@ -1044,7 +1044,7 @@ void UIChooserItemMachine::paintFrame(QPainter *pPainter, const QRect &rectangle
     pPainter->save();
 
     /* Prepare color: */
-    const QPalette pal = palette();
+    const QPalette pal = QApplication::palette();
     QColor strokeColor;
 
     /* Selected-item frame: */
