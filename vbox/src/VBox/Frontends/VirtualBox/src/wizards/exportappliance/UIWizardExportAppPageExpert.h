@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageExpert.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIWizardExportAppPageExpert.h 86343 2020-09-30 11:19:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageExpert class declaration.
  */
@@ -59,9 +59,6 @@ public:
     UIWizardExportAppPageExpert(const QStringList &selectedVMNames, bool fExportToOCIByDefault);
 
 protected:
-
-    /** Handle any Qt @a pEvent. */
-    virtual bool event(QEvent *pEvent) /* override */;
 
     /** Allows access wizard from base part. */
     UIWizard *wizardImp() const { return UIWizardPage::wizard(); }

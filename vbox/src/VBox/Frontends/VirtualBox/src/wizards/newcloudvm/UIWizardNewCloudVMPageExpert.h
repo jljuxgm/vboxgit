@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageExpert.h 84289 2020-05-13 15:19:41Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageExpert.h 86343 2020-09-30 11:19:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageExpert class declaration.
  */
@@ -46,9 +46,6 @@ protected:
 
     /** Allows access wizard from base part. */
     virtual UIWizard *wizardImp() const /* override */ { return UIWizardPage::wizard(); }
-
-    /** Handle any Qt @a pEvent. */
-    virtual bool event(QEvent *pEvent) /* override */;
 
     /** Handles translation event. */
     virtual void retranslateUi() /* override */;

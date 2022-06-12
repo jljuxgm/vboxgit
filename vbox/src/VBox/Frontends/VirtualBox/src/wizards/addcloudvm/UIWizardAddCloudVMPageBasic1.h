@@ -1,4 +1,4 @@
-/* $Id: UIWizardAddCloudVMPageBasic1.h 83857 2020-04-20 13:54:44Z vboxsync $ */
+/* $Id: UIWizardAddCloudVMPageBasic1.h 86343 2020-09-30 11:19:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardAddCloudVMPageBasic1 class declaration.
  */
@@ -66,17 +66,13 @@ protected:
     void populateSources();
     /** Populates accounts. */
     void populateAccounts();
-    /** Populates account properties. */
-    void populateAccountProperties();
+    /** Populates account. */
+    void populateAccount();
     /** Populates account instances. */
     void populateAccountInstances();
 
     /** Updates source combo tool-tips. */
     void updateSourceComboToolTip();
-    /** Updates account property table tool-tips. */
-    void updateAccountPropertyTableToolTips();
-    /** Adjusts account property table. */
-    void adjustAccountPropertyTable();
 
     /** Defines @a strSource. */
     void setSource(const QString &strSource);
@@ -120,8 +116,6 @@ protected:
     QIComboBox   *m_pAccountComboBox;
     /** Holds the account management tool-button instance. */
     QIToolButton *m_pAccountToolButton;
-    /** Holds the account property table instance. */
-    QTableWidget *m_pAccountPropertyTable;
     /** Holds the account instance label instance. */
     QLabel       *m_pAccountInstanceLabel;
     /** Holds the account instance list instance. */
@@ -145,9 +139,6 @@ protected:
 
     /** Allows access wizard from base part. */
     virtual UIWizard *wizardImp() const /* override */ { return UIWizardPage::wizard(); }
-
-    /** Handle any Qt @a pEvent. */
-    virtual bool event(QEvent *pEvent) /* override */;
 
     /** Handles translation event. */
     virtual void retranslateUi() /* override */;

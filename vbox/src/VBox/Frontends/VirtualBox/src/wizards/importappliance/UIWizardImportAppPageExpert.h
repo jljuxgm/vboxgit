@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageExpert.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIWizardImportAppPageExpert.h 86343 2020-09-30 11:19:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageExpert class declaration.
  */
@@ -52,9 +52,6 @@ protected:
 
     /** Allows to access 'field()' from base part. */
     virtual QVariant fieldImp(const QString &strFieldName) const /* override */ { return UIWizardPage::field(strFieldName); }
-
-    /** Handle any Qt @a pEvent. */
-    virtual bool event(QEvent *pEvent) /* override */;
 
     /** Handles translation event. */
     virtual void retranslateUi() /* override */;
