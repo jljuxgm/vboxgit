@@ -1,4 +1,4 @@
-/* $Id: AudioTest.cpp 89387 2021-05-31 09:55:04Z vboxsync $ */
+/* $Id: AudioTest.cpp 89388 2021-05-31 10:03:25Z vboxsync $ */
 /** @file
  * Audio testing routines.
  * Common code which is being used by the ValidationKit and the debug / ValdikationKit audio driver(s).
@@ -1410,14 +1410,15 @@ int AudioTestWaveFileOpen(const char *pszFile, PAUDIOTESTWAVEFILE pWaveFile, PRT
                      */
                     if (uBuf.Wave.u.Fmt.Data.uFormatTag == RTRIFFWAVEFMT_TAG_EXTENSIBLE)
                     {
-                        unsigned iCh = 0;
+                        static unsigned const   s_cStdIds = (unsigned)PDMAUDIOCHANNELID_END_STANDARD
+                                                          - (unsigned)PDMAUDIOCHANNELID_FIRST_STANDARD;
+                        unsigned                iCh       = 0;
                         for (unsigned idCh = 0; idCh < 32 && iCh < uBuf.Wave.u.Fmt.Data.cChannels; idCh++)
                             if (uBuf.Wave.u.FmtExt.Data.fChannelMask & RT_BIT_32(idCh))
                             {
-                                pWaveFile->Props.aidChannels[iCh] = idCh <   PDMAUDIOCHANNELID_END_STANDARD
-                                                                           - PDMAUDIOCHANNELID_FIRST_STANDARD
-                                                                  ? idCh + PDMAUDIOCHANNELID_END_STANDARD
-                                                                  : PDMAUDIOCHANNELID_UNKNOWN;
+                                pWaveFile->Props.aidChannels[iCh] = idCh < s_cStdIds
+                                                                  ? idCh + (unsigned)PDMAUDIOCHANNELID_FIRST_STANDARD
+                                                                  : (unsigned)PDMAUDIOCHANNELID_UNKNOWN;
                                 iCh++;
                             }
                     }
