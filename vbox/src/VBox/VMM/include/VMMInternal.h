@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 87819 2021-02-20 10:24:03Z vboxsync $ */
+/* $Id: VMMInternal.h 88347 2021-04-01 13:17:16Z vboxsync $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -435,7 +435,13 @@ typedef struct VMMCPU
     STAMCOUNTER                 StatR0HaltExec;
     STAMCOUNTER                 StatR0HaltExecFromBlock;
     STAMCOUNTER                 StatR0HaltExecFromSpin;
+    STAMCOUNTER                 StatR0HaltToR3;
     STAMCOUNTER                 StatR0HaltToR3FromSpin;
+    STAMCOUNTER                 StatR0HaltToR3Other;
+    STAMCOUNTER                 StatR0HaltToR3PendingFF;
+    STAMCOUNTER                 StatR0HaltToR3SmallDelta;
+    STAMCOUNTER                 StatR0HaltToR3PostNoInt;
+    STAMCOUNTER                 StatR0HaltToR3PostPendingFF;
 } VMMCPU;
 AssertCompileMemberAlignment(VMMCPU, TracerCtx, 8);
 /** Pointer to VMMCPU. */
