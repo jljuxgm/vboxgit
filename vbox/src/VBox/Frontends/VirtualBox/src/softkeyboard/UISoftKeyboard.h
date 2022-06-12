@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboard.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UISoftKeyboard.h 86995 2020-11-26 15:37:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class declaration.
  */
@@ -53,6 +53,10 @@ class UISoftKeyboard : public QMainWindowWithRestorableGeometryAndRetranslateUi
 {
     Q_OBJECT;
 
+signals:
+
+    void sigHelpRequested(const QString &strHelpKeyword);
+
 public:
 
     UISoftKeyboard(QWidget *pParent, UISession *pSession, QWidget *pCenterWidget,
@@ -97,6 +101,7 @@ private slots:
     void sltShowHideMultimediaKeys(bool fHide);
     void sltHandleColorCellClick(int iColorRow);
     void sltResetKeyboard();
+    void sltHandleHelpRequest();
 
 private:
 
