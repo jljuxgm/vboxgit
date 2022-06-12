@@ -1,4 +1,4 @@
-/* $Id: vkat.cpp 89466 2021-06-02 13:03:44Z vboxsync $ */
+/* $Id: vkat.cpp 89467 2021-06-02 13:10:04Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) utility for testing and validating the audio stack.
  */
@@ -2109,7 +2109,6 @@ static RTEXITCODE audioTestRecOneInner(PAUDIOTESTDRVMIXSTREAM pMix, PAUDIOTESTWA
                                        PCPDMAUDIOSTREAMCFG pCfgAcq, uint64_t cMaxFrames, const char *pszFile)
 {
     int             rc;
-    uint32_t const  cbPreBuffer = PDMAudioPropsFramesToBytes(pMix->pProps, pCfgAcq->Backend.cFramesPreBuffering);
     uint64_t const  nsStarted   = RTTimeNanoTS();
 
     /*
