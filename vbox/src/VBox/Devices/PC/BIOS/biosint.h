@@ -1,4 +1,4 @@
-/* $Id: biosint.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: biosint.h 84752 2020-06-10 10:58:33Z vboxsync $ */
 /** @file
  * PC BIOS - BIOS internal definitions.
  */
@@ -285,6 +285,7 @@ extern  bx_bool     set_enable_a20(bx_bool val);
 #endif
 #ifdef VBOX
 #define BX_INFO(...)    do { put_str(BIOS_PRINTF_INFO, bios_prefix_string); bios_printf(BIOS_PRINTF_INFO, __VA_ARGS__); } while (0)
+#define BX_INFO_CON(...)do { put_str(BIOS_PRINTF_INFO, bios_prefix_string); bios_printf(BIOS_PRINTF_ALL, __VA_ARGS__); } while (0)
 #else /* !VBOX */
 #define BX_INFO(...)    bios_printf(BIOS_PRINTF_INFO, __VA_ARGS__)
 #endif /* !VBOX */

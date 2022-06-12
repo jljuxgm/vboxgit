@@ -1,4 +1,4 @@
-/* $Id: inlines.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: inlines.h 84752 2020-06-10 10:58:33Z vboxsync $ */
 /** @file
  * Inline routines for Watcom C.
  */
@@ -98,6 +98,20 @@ void halt_forever(void);
     "hlt"                   \
     "jmp forever"           \
     modify exact [] nomemory aborts;
+
+/* Output a null-terminated string to a specified port, without the
+ * terminating null character.
+ */
+static void out_ctrl_str_asm(uint16_t port, const char *s);
+#pragma aux out_ctrl_str_asm =   \
+    "mov    al, [bx]"       \
+    "next:"                 \
+    "out    dx, al"         \
+    "inc    bx"             \
+    "mov    al, [bx]"       \
+    "or     al, al"         \
+    "jnz    next"           \
+    parm [dx] [bx] modify exact [ax bx] nomemory;
 
 #ifdef __386__
 

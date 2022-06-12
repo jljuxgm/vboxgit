@@ -1,4 +1,4 @@
-; $Id: orgs.asm 84673 2020-06-04 09:38:05Z vboxsync $
+; $Id: orgs.asm 84752 2020-06-10 10:58:33Z vboxsync $
 ;; @file
 ; ???
 ;
@@ -1579,8 +1579,10 @@ int18_handler:
                 C_SETUP
                 call    _int18_panic_msg
                 ;; TODO: handle failure better?
+                sti
+stay_here:
                 hlt
-                iret
+                jmp     stay_here
 
 ;;
 ;; INT 19h - boot service - relocated

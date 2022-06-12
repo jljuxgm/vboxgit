@@ -1,4 +1,4 @@
-/* $Id: bios.c 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: bios.c 84752 2020-06-10 10:58:33Z vboxsync $ */
 /** @file
  * PC BIOS - ???
  */
@@ -56,6 +56,7 @@
 #include <stdint.h>
 #include "inlines.h"
 #include "biosint.h"
+#include "VBox/bios.h"
 #ifndef VBOX_VERSION_STRING
 #include <VBox/version.h>
 #endif
@@ -120,7 +121,8 @@ void BIOSCALL nmi_handler_msg(void)
 
 void BIOSCALL int18_panic_msg(void)
 {
-    BX_PANIC("INT18: BOOT FAILURE\n");
+    BX_INFO("INT18: BOOT FAILURE\n");
+    out_ctrl_str_asm(VBOX_BIOS_SHUTDOWN_PORT, "Bootfail");
 }
 
 void BIOSCALL log_bios_start(void)
