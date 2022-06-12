@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain-win.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
+/* $Id: SUPR3HardenedMain-win.cpp 85873 2020-08-21 22:14:38Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main(), windows bits.
  */
@@ -2583,6 +2583,7 @@ static void supR3HardNtDprintCtx(PCONTEXT pCtx, const char *pszLeadIn)
                  "  eip=%08RX32 esp=%08RX32 ebp=%08RX32 eflags=%08RX32\n"
                  "  cs=%04RX16 ds=%04RX16 es=%04RX16 fs=%04RX16 gs=%04RX16\n"
                  "  dr0=%08RX32 dr1=%08RX32 dr2=%08RX32 dr3=%08RX32 dr6=%08RX32 dr7=%08RX32\n",
+                 pszLeadIn,
                  pCtx->Eax, pCtx->Ebx, pCtx->Ecx, pCtx->Edx, pCtx->Esi, pCtx->Edi,
                  pCtx->Eip, pCtx->Esp, pCtx->Ebp, pCtx->EFlags,
                  pCtx->SegCs, pCtx->SegDs, pCtx->SegEs, pCtx->SegFs, pCtx->SegGs,
@@ -2590,7 +2591,7 @@ static void supR3HardNtDprintCtx(PCONTEXT pCtx, const char *pszLeadIn)
 #else
 # error "Unsupported arch."
 #endif
-
+    RT_NOREF(pCtx, pszLeadIn);
 }
 
 
