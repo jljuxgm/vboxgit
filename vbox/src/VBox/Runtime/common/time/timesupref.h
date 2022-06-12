@@ -1,4 +1,4 @@
-/* $Id: timesupref.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: timesupref.h 87626 2021-02-05 12:58:54Z vboxsync $ */
 /** @file
  * IPRT - Time using SUPLib, the C Code Template.
  */
@@ -40,8 +40,9 @@
  *
  * @returns Nanosecond timestamp.
  * @param   pData       Pointer to the data structure.
+ * @param   pExtra      Where to return extra time info. Optional.
  */
-RTDECL(uint64_t) rtTimeNanoTSInternalRef(PRTTIMENANOTSDATA pData)
+RTDECL(uint64_t) rtTimeNanoTSInternalRef(PRTTIMENANOTSDATA pData, PRTITMENANOTSEXTRA pExtra)
 {
 #if TMPL_MODE == TMPL_MODE_SYNC_INVAR_WITH_DELTA && defined(IN_RING3)
     PSUPGIPCPU pGipCpuAttemptedTscRecalibration = NULL;
@@ -245,6 +246,9 @@ RTDECL(uint64_t) rtTimeNanoTSInternalRef(PRTTIMENANOTSDATA pData)
                             ASMSetFlags(uFlags);
 #endif
 
+                            if (pExtra)
+                                pExtra->uTSCValue = u64Delta;
+
                             /*
                              * Calc NanoTS delta.
                              */
@@ -373,9 +377,9 @@ RTDECL(uint64_t) rtTimeNanoTSInternalRef(PRTTIMENANOTSDATA pData)
   || (   TMPL_GET_CPU_METHOD != SUPGIPGETCPU_APIC_ID \
       && TMPL_GET_CPU_METHOD != SUPGIPGETCPU_APIC_ID_EXT_0B /*?*/ \
       && TMPL_GET_CPU_METHOD != SUPGIPGETCPU_APIC_ID_EXT_8000001E /*?*/)
-                return pData->pfnBadCpuIndex(pData, UINT16_MAX-1, iCpuSet, iGipCpu);
+                return pData->pfnBadCpuIndex(pData, pExtra, UINT16_MAX-1, iCpuSet, iGipCpu);
 # else
-                return pData->pfnBadCpuIndex(pData, idApic, UINT16_MAX-1, iGipCpu);
+                return pData->pfnBadCpuIndex(pData, pExtra, idApic, UINT16_MAX-1, iGipCpu);
 # endif
             }
 #endif
@@ -388,7 +392,7 @@ RTDECL(uint64_t) rtTimeNanoTSInternalRef(PRTTIMENANOTSDATA pData)
 #ifndef IN_RING3
         ASMSetFlags(uFlags);
 #endif
-        return pData->pfnRediscover(pData);
+        return pData->pfnRediscover(pData, pExtra);
     }
 }
 

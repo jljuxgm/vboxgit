@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: TM.cpp 87626 2021-02-05 12:58:54Z vboxsync $ */
 /** @file
  * TM - Time Manager.
  */
@@ -228,7 +228,6 @@ VMM_INT_DECL(int) TMR3Init(PVM pVM)
     pVM->tm.s.paTimerQueuesR3[TMCLOCK_REAL].u64Expire          = INT64_MAX;
     pVM->tm.s.paTimerQueuesR3[TMCLOCK_TSC].enmClock            = TMCLOCK_TSC;
     pVM->tm.s.paTimerQueuesR3[TMCLOCK_TSC].u64Expire           = INT64_MAX;
-
 
     /*
      * We directly use the GIP to calculate the virtual time. We map the

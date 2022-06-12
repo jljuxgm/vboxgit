@@ -1,4 +1,4 @@
-/* $Id: TMInternal.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: TMInternal.h 87626 2021-02-05 12:58:54Z vboxsync $ */
 /** @file
  * TM - Internal header file.
  */
@@ -800,9 +800,9 @@ int                     tmVirtualPauseLocked(PVMCC pVM);
 int                     tmVirtualResumeLocked(PVMCC pVM);
 DECLCALLBACK(DECLEXPORT(void))      tmVirtualNanoTSBad(PRTTIMENANOTSDATA pData, uint64_t u64NanoTS,
                                                        uint64_t u64DeltaPrev, uint64_t u64PrevNanoTS);
-DECLCALLBACK(DECLEXPORT(uint64_t))  tmVirtualNanoTSRediscover(PRTTIMENANOTSDATA pData);
-DECLCALLBACK(DECLEXPORT(uint64_t))  tmVirtualNanoTSBadCpuIndex(PRTTIMENANOTSDATA pData, uint16_t idApic,
-                                                               uint16_t iCpuSet, uint16_t iGipCpu);
+DECLCALLBACK(DECLEXPORT(uint64_t))  tmVirtualNanoTSRediscover(PRTTIMENANOTSDATA pData, PRTITMENANOTSEXTRA pExtra);
+DECLCALLBACK(DECLEXPORT(uint64_t))  tmVirtualNanoTSBadCpuIndex(PRTTIMENANOTSDATA pData, PRTITMENANOTSEXTRA pExtra,
+                                                               uint16_t idApic, uint16_t iCpuSet, uint16_t iGipCpu);
 
 /**
  * Try take the timer lock, wait in ring-3 return VERR_SEM_BUSY in R0/RC.
