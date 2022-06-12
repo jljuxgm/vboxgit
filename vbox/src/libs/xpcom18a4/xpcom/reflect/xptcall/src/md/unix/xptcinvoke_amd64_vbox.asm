@@ -1,4 +1,4 @@
-; $Id: xptcinvoke_amd64_vbox.asm 86280 2020-09-24 20:45:32Z vboxsync $
+; $Id: xptcinvoke_amd64_vbox.asm 86293 2020-09-25 20:36:35Z vboxsync $
 ;; @file
 ; XPCOM - Implementation XPTC_InvokeByIndex in assembly.
 ;
@@ -130,7 +130,7 @@ BEGINPROC_EXPORTED XPTC_InvokeByIndex
         call    r11                     ; note! stack is aligned here.
 
 .fast_return:
-        lea     rsp, [rbp - 8*3]
+        lea     rsp, [rbp - 8*2]
         pop     r12
         pop     rbx
         leave
