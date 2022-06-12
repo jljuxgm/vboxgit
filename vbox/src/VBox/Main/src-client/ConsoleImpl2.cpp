@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 89580 2021-06-09 13:22:55Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 89581 2021-06-09 13:45:38Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -3698,8 +3698,6 @@ void Console::i_configAudioDriver(IVirtualBox *pVirtualBox, IMachine *pMachine, 
 #define H()     AssertLogRelMsgStmt(!FAILED(hrc), ("hrc=%Rhrc\n", hrc), \
                                     throw ConfigError(__FUNCTION__, VERR_MAIN_CONFIG_CONSTRUCTOR_COM_ERROR, "line: " RT_XSTR(__LINE__)))
 
-    HRESULT hrc;
-
     InsertConfigString(pLUN, "Driver", "AUDIO");
 
     PCFGMNODE pCfg;
@@ -3781,7 +3779,7 @@ void Console::i_configAudioDriver(IVirtualBox *pVirtualBox, IMachine *pMachine, 
     if (strcmp(pszDrvName, "HostAudioWas") == 0)
     {
         Bstr bstrTmp;
-        hrc = pMachine->COMGETTER(Id)(bstrTmp.asOutParam());                                    H();
+        HRESULT hrc = pMachine->COMGETTER(Id)(bstrTmp.asOutParam());                            H();
         InsertConfigString(pCfg, "VmUuid", bstrTmp);
     }
 #endif
@@ -3791,7 +3789,7 @@ void Console::i_configAudioDriver(IVirtualBox *pVirtualBox, IMachine *pMachine, 
         || strcmp(pszDrvName, "PulseAudio") == 0)
     {
         Bstr bstrTmp;
-        hrc = pMachine->COMGETTER(Name)(bstrTmp.asOutParam());                                  H();
+        HRESULT hrc = pMachine->COMGETTER(Name)(bstrTmp.asOutParam());                          H();
         InsertConfigString(pCfg, "VmName", bstrTmp);
     }
 #endif
