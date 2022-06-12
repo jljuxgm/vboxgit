@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 84948 2020-06-25 12:15:56Z vboxsync $
+# $Id: tdAddBasic1.py 84949 2020-06-25 12:20:51Z vboxsync $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -27,16 +27,12 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84948 $"
+__version__ = "$Revision: 84949 $"
 
 # Standard Python imports.
 import os;
 import sys;
 import uuid;
-if sys.version_info[0] >= 3:
-    from io       import StringIO as StringIO;      # pylint: disable=import-error,no-name-in-module,useless-import-alias
-else:
-    from StringIO import StringIO as StringIO;      # pylint: disable=import-error,no-name-in-module,useless-import-alias
 
 # Only the main script needs to modify the path.
 try:    __file__
@@ -186,14 +182,9 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
         reporter.log2('Waiting for TXS + CD: %s' % (self.sFileCdWait,));
 
         reporter.testStart('Waiting for TXS + CD');
-        if oTestVm.isLinux():
-            fRc, oTxsSession = self.txsRebootAndReconnectViaTcp(oSession, oTxsSession, fCdWait = True,
-                                                                cMsCdWait = 5 * 60 * 1000,
-                                                                sFileCdWait = self.sFileCdWait);
-        else:
-            oSession, oTxsSession = self.startVmAndConnectToTxsViaTcp(oTestVm.sVmName, fCdWait = True,
-                                                                      cMsCdWait = 5 * 60 * 1000,
-                                                                      sFileCdWait = self.sFileCdWait);
+        oSession, oTxsSession = self.startVmAndConnectToTxsViaTcp(oTestVm.sVmName, fCdWait = True,
+                                                                  cMsCdWait = 5 * 60 * 1000,
+                                                                  sFileCdWait = self.sFileCdWait);
         reporter.testDone();
 
         if oSession is not None:
