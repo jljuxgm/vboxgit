@@ -1,4 +1,4 @@
-/* $Id: krnlmod-solaris.cpp 86300 2020-09-26 09:59:44Z vboxsync $ */
+/* $Id: krnlmod-solaris.cpp 86301 2020-09-26 10:06:13Z vboxsync $ */
 /** @file
  * IPRT - Kernel module, Linux.
  */
@@ -334,7 +334,7 @@ RTDECL(int) RTKrnlModLoadByName(const char *pszName)
 
 RTDECL(int) RTKrnlModLoadByPath(const char *pszPath)
 {
-    AssertPtrReturn(pszName, VERR_INVALID_PARAMETER);
+    AssertPtrReturn(pszPath, VERR_INVALID_PARAMETER);
 
     return VERR_NOT_SUPPORTED;
 }
