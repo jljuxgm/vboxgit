@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.h 86724 2020-10-27 14:39:16Z vboxsync $ */
+/* $Id: UIHelpBrowserWidget.h 86735 2020-10-28 11:43:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class declaration.
  */
@@ -82,7 +82,11 @@ private slots:
     void sltHandleTabVisibility(bool togggled);
     void sltHandleHelpBrowserViewerSourceChange(const QUrl &source);
     void sltHandleContentsCreated();
-    void sltHandleGoHomeAction();
+    void sltHandleHomeAction();
+    void sltHandleForwardAction();
+    void sltHandleBackwardAction();
+    void sltHandleForwardAvailable(bool fAvailable);
+    void sltHandleBackwardAvailable(bool fAvailable);
 
 private:
 
@@ -138,7 +142,9 @@ private:
     QHelpContentModel   *m_pContentModel;
     QWidget             *m_pBookmarksWidget;
     QAction             *m_pShowHideTabWidgetAction;
-    QAction             *m_pGoHomeAction;
+    QAction             *m_pHomeAction;
+    QAction             *m_pForwardAction;
+    QAction             *m_pBackwardAction;
     QString              m_strPageNotFoundText;
     /* This is set t true when handling QHelpContentModel::contentsCreated signal. */
     bool                 m_fModelContentCreated;
