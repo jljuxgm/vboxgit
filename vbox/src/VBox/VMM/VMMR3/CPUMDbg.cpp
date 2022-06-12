@@ -1,4 +1,4 @@
-/* $Id: CPUMDbg.cpp 83771 2020-04-17 16:26:56Z vboxsync $ */
+/* $Id: CPUMDbg.cpp 86146 2020-09-17 11:20:34Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager, Debugger & Debugging APIs.
  */
@@ -207,8 +207,17 @@ static DECLCALLBACK(int) cpumR3RegGet_gdtr(void *pvUser, PCDBGFREGDESC pDesc, PD
  */
 static DECLCALLBACK(int) cpumR3RegSet_gdtr(void *pvUser, PCDBGFREGDESC pDesc, PCDBGFREGVAL pValue, PCDBGFREGVAL pfMask)
 {
-    NOREF(pvUser); NOREF(pDesc); NOREF(pValue); NOREF(pfMask);
-    return VERR_NOT_IMPLEMENTED;
+    RT_NOREF(pfMask);
+
+    PVMCPU    pVCpu = (PVMCPU)pvUser;
+    VBOXGDTR *pGdtr = (VBOXGDTR *)((uint8_t *)&pVCpu->cpum + pDesc->offRegister);
+
+    VMCPU_ASSERT_EMT(pVCpu);
+    Assert(pDesc->enmType == DBGFREGVALTYPE_DTR);
+
+    pGdtr->cbGdt = pValue->dtr.u32Limit;
+    pGdtr->pGdt  = pValue->dtr.u64Base;
+    return VINF_SUCCESS;
 }
 
 
@@ -234,8 +243,17 @@ static DECLCALLBACK(int) cpumR3RegGet_idtr(void *pvUser, PCDBGFREGDESC pDesc, PD
  */
 static DECLCALLBACK(int) cpumR3RegSet_idtr(void *pvUser, PCDBGFREGDESC pDesc, PCDBGFREGVAL pValue, PCDBGFREGVAL pfMask)
 {
-    NOREF(pvUser); NOREF(pDesc); NOREF(pValue); NOREF(pfMask);
-    return VERR_NOT_IMPLEMENTED;
+    RT_NOREF(pfMask);
+
+    PVMCPU    pVCpu = (PVMCPU)pvUser;
+    VBOXIDTR *pIdtr = (VBOXIDTR *)((uint8_t *)&pVCpu->cpum + pDesc->offRegister);
+
+    VMCPU_ASSERT_EMT(pVCpu);
+    Assert(pDesc->enmType == DBGFREGVALTYPE_DTR);
+
+    pIdtr->cbIdt = pValue->dtr.u32Limit;
+    pIdtr->pIdt = pValue->dtr.u64Base;
+    return VINF_SUCCESS;
 }
 
 
