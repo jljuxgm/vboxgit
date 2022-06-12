@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 85178 2020-07-10 12:58:02Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -1412,6 +1412,22 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> pVirtualBox,
                             strAttachment = Utf8StrFmt("NAT Network '%s'", Utf8Str(strNetwork).c_str());
                         break;
                     }
+
+#ifdef VBOX_WITH_CLOUD_NET
+                    case NetworkAttachmentType_Cloud:
+                    {
+                        Bstr strNetwork;
+                        nic->COMGETTER(CloudNetwork)(strNetwork.asOutParam());
+                        if (details == VMINFO_MACHINEREADABLE)
+                        {
+                            RTPrintf("cloud-network%d=\"%ls\"\n", currentNIC + 1, strNetwork.raw());
+                            strAttachment = "cloudnetwork";
+                        }
+                        else
+                            strAttachment = Utf8StrFmt("Cloud Network '%s'", Utf8Str(strNetwork).c_str());
+                        break;
+                    }
+#endif /* VBOX_WITH_CLOUD_NET */
 
                     default:
                         strAttachment = "unknown";

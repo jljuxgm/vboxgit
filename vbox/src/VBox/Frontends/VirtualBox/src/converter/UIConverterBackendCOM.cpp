@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackendCOM.cpp 84962 2020-06-25 19:00:34Z vboxsync $ */
+/* $Id: UIConverterBackendCOM.cpp 85178 2020-07-10 12:58:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConverterBackendCOM implementation.
  */
@@ -381,7 +381,7 @@ template<> QString toString(const KNetworkAttachmentType &type)
         case KNetworkAttachmentType_Generic:    return QApplication::translate("UICommon", "Generic Driver", "NetworkAttachmentType");
         case KNetworkAttachmentType_NATNetwork: return QApplication::translate("UICommon", "NAT Network", "NetworkAttachmentType");
 #ifdef VBOX_WITH_CLOUD_NET
-        case KNetworkAttachmentType_Cloud:      return QApplication::translate("UICommon", "Cloud Network", "NetworkAttachmentType");
+        case KNetworkAttachmentType_Cloud:      return QApplication::translate("UICommon", "Cloud Network [EXPERIMENTAL]", "NetworkAttachmentType");
 #endif /* VBOX_WITH_CLOUD_NET */
         default: AssertMsgFailed(("No text for %d", type)); break;
     }
