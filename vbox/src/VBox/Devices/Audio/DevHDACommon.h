@@ -1,4 +1,4 @@
-/* $Id: DevHDACommon.h 87320 2021-01-20 10:51:20Z vboxsync $ */
+/* $Id: DevHDACommon.h 87573 2021-02-03 15:27:46Z vboxsync $ */
 /** @file
  * DevHDACommon.h - Shared HDA device defines / functions.
  */
@@ -624,7 +624,8 @@ void          hdaProcessInterrupt(PPDMDEVINS pDevIns, PHDASTATE pThis);
 #endif
 /** @} */
 
-/** @name Register utility functions. */
+/** @name Register utility functions.
+ * @{  */
 uint8_t       hdaSDFIFOWToBytes(uint16_t u16RegFIFOW);
 /** @} */
 
