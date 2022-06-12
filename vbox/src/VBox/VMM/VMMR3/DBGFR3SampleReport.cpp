@@ -1,4 +1,4 @@
-/* $Id: DBGFR3SampleReport.cpp 89695 2021-06-15 09:51:59Z vboxsync $ */
+/* $Id: DBGFR3SampleReport.cpp 89698 2021-06-15 09:57:22Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Sample report creation.
  */
@@ -630,7 +630,7 @@ VMMR3DECL(uint32_t) DBGFR3SampleReportRelease(DBGFSAMPLEREPORT hSample)
         return 0;
     AssertPtrReturn(pThis, UINT32_MAX);
     AssertReturn(ASMAtomicReadU32((volatile uint32_t *)&pThis->enmState) == DBGFSAMPLEREPORTSTATE_READY,
-                 VERR_INVALID_STATE);
+                 0);
 
     uint32_t cRefs = ASMAtomicDecU32(&pThis->cRefs);
     AssertMsg(cRefs < _1M, ("%#x %p\n", cRefs, pThis));
