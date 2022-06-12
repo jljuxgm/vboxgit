@@ -1,4 +1,4 @@
-/* $Id: HostUpdateImpl.h 85730 2020-08-12 19:57:59Z vboxsync $ */
+/* $Id: HostUpdateImpl.h 85735 2020-08-12 20:48:55Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -22,6 +22,7 @@
 #endif
 
 #include "HostUpdateWrap.h"
+#include <iprt/http.h> /* RTHTTP */
 
 
 class ATL_NO_VTABLE HostUpdate
@@ -51,6 +52,8 @@ private:
     class UpdateCheckTask;
     HRESULT i_updateCheckTask(UpdateCheckTask *pTask);
     HRESULT i_checkForVBoxUpdate();
+    HRESULT i_checkForVBoxUpdateInner(RTHTTP hHttp, com::Utf8Str const &strUrl, com::Utf8Str const &strUserAgent,
+                                      ComPtr<ISystemProperties> const &ptrSystemProperties);
 
     /** @name Data members.
      * @{  */
