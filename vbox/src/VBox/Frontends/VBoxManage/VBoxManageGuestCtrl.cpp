@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 84524 2020-05-25 18:19:14Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 84526 2020-05-25 18:42:48Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -2845,7 +2845,8 @@ static DECLCALLBACK(RTEXITCODE) gctlHandleUpdateAdditions(PGCTLCMDCTX pCtx, int 
                 break;
 
             case KGSTCTRLUPDATEADDITIONSOPT_VERIFY:
-                fVerify = true;
+                fVerify         = true;
+                fRebootOnFinish = true; /* Verification needs a mandatory reboot after successful update. */
                 break;
 
             case VINF_GETOPT_NOT_OPTION:
