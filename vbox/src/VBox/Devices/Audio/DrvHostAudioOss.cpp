@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioOss.cpp 88380 2021-04-07 08:04:04Z vboxsync $ */
+/* $Id: DrvHostAudioOss.cpp 88385 2021-04-07 09:23:28Z vboxsync $ */
 /** @file
  * Host audio driver - OSS (Open Sound System).
  */
@@ -179,26 +179,6 @@ static int ossStreamClose(int *phFile)
     }
 
     return rc;
-}
-
-
-/**
- * @interface_method_impl{PDMIHOSTAUDIO,pfnInit}
- */
-static DECLCALLBACK(int) drvHostOssAudioHA_Init(PPDMIHOSTAUDIO pInterface)
-{
-    RT_NOREF(pInterface);
-
-    return VINF_SUCCESS;
-}
-
-
-/**
- * @interface_method_impl{PDMIHOSTAUDIO,pfnShutdown}
- */
-static DECLCALLBACK(void) drvHostOssAudioHA_Shutdown(PPDMIHOSTAUDIO pInterface)
-{
-    RT_NOREF(pInterface);
 }
 
 
@@ -729,8 +709,8 @@ static DECLCALLBACK(int) drvHostOSSAudioConstruct(PPDMDRVINS pDrvIns, PCFGMNODE 
     /* IBase */
     pDrvIns->IBase.pfnQueryInterface = drvHostOSSAudioQueryInterface;
     /* IHostAudio */
-    pThis->IHostAudio.pfnInit               = drvHostOssAudioHA_Init;
-    pThis->IHostAudio.pfnShutdown           = drvHostOssAudioHA_Shutdown;
+    pThis->IHostAudio.pfnInit               = NULL;
+    pThis->IHostAudio.pfnShutdown           = NULL;
     pThis->IHostAudio.pfnGetConfig          = drvHostOssAudioHA_GetConfig;
     pThis->IHostAudio.pfnGetStatus          = drvHostOssAudioHA_GetStatus;
     pThis->IHostAudio.pfnStreamCreate       = drvHostOssAudioHA_StreamCreate;
