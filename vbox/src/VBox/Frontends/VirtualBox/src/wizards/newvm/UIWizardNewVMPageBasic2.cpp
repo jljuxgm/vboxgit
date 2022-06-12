@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic2.cpp 88266 2021-03-24 07:22:33Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic2.cpp 88267 2021-03-24 08:48:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic2 class implementation.
  */
@@ -196,7 +196,7 @@ void UIWizardNewVMPage2::retranslateWidgets()
         m_pHostnameLabel->setText(UIWizardNewVM::tr("Hostna&me:"));
 
     if (m_pGAISOPathLabel)
-        m_pGAISOPathLabel->setText(UIWizardNewVM::tr("&GA Installation ISO:"));
+        m_pGAISOPathLabel->setText(UIWizardNewVM::tr("GA I&nstallation ISO:"));
     if (m_pGAISOFilePathSelector)
         m_pGAISOFilePathSelector->setToolTip(UIWizardNewVM::tr("Please select an installation medium (ISO file)"));
     if (m_pGAInstallationISOContainer)

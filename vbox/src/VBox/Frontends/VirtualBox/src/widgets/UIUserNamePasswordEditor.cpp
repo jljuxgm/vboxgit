@@ -1,4 +1,4 @@
-/* $Id: UIUserNamePasswordEditor.cpp 88152 2021-03-17 12:47:59Z vboxsync $ */
+/* $Id: UIUserNamePasswordEditor.cpp 88267 2021-03-24 08:48:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class implementation.
  */
@@ -299,9 +299,9 @@ void UIUserNamePasswordEditor::setLabelsVisible(bool fVisible)
 
 void UIUserNamePasswordEditor::retranslateUi()
 {
-    QString strPassword = UIUserNamePasswordEditor::tr("Password");
-    QString strRepeatPassword = UIUserNamePasswordEditor::tr("Repeat Password");
-    QString strUsername = UIUserNamePasswordEditor::tr("Username");
+    QString strPassword = UIUserNamePasswordEditor::tr("Pass&word");
+    QString strRepeatPassword = UIUserNamePasswordEditor::tr("&Repeat Password");
+    QString strUsername = UIUserNamePasswordEditor::tr("U&sername");
     if (m_pUserNameLabel)
     {
         m_pUserNameLabel->setText(QString("%1%2").arg(strUsername).arg(":"));
