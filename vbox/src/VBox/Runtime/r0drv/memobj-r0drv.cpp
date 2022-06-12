@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: memobj-r0drv.cpp 88979 2021-05-11 12:16:23Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Common Code.
  */
@@ -358,6 +358,10 @@ RTR0DECL(int) RTR0MemObjFree(RTR0MEMOBJ MemObj, bool fFreeMappings)
                 pMem->uRel.Parent.papMappings[pMem->uRel.Parent.cMappings++] = pChild;
                 return rc;
             }
+
+            pChild->u32Magic++;
+            pChild->enmType = RTR0MEMOBJTYPE_END;
+            RTMemFree(pChild);
         }
     }
 
