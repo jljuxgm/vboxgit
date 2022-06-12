@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 88411 2021-04-08 11:25:05Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 88585 2021-04-19 16:35:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -2787,20 +2787,28 @@ void UIExtraDataManager::setSelectorWindowStatusBarVisible(bool fVisible)
     setExtraDataString(GUI_Statusbar, toFeatureRestricted(!fVisible));
 }
 
-void UIExtraDataManager::clearSelectorWindowGroupsDefinitions()
+QStringList UIExtraDataManager::knownMachineGroupDefinitionKeys()
 {
-    /* Wipe-out each the group definition record: */
+    /* Acquire a list of known group definition keys: */
+    QStringList result;
     foreach (const QString &strKey, m_data.value(GlobalID).keys())
         if (strKey.startsWith(GUI_GroupDefinitions))
-            setExtraDataString(strKey, QString());
+        {
+            QString strGroupID = strKey;
+            strGroupID.remove(GUI_GroupDefinitions);
+            result << strGroupID;
+        }
+
+    /* Return result: */
+    return result;
 }
 
-QStringList UIExtraDataManager::selectorWindowGroupsDefinitions(const QString &strGroupID)
+QStringList UIExtraDataManager::machineGroupDefinitions(const QString &strGroupID)
 {
     return extraDataStringList(GUI_GroupDefinitions + strGroupID);
 }
 
-void UIExtraDataManager::setSelectorWindowGroupsDefinitions(const QString &strGroupID, const QStringList &definitions)
+void UIExtraDataManager::setMachineGroupDefinitions(const QString &strGroupID, const QStringList &definitions)
 {
     setExtraDataStringList(GUI_GroupDefinitions + strGroupID, definitions);
 }
