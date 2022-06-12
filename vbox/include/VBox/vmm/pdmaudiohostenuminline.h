@@ -1,4 +1,4 @@
-/* $Id: pdmaudiohostenuminline.h 88055 2021-03-09 14:39:16Z vboxsync $ */
+/* $Id: pdmaudiohostenuminline.h 88061 2021-03-09 18:14:19Z vboxsync $ */
 /** @file
  * PDM - Audio Helpers for host audio device enumeration, Inlined Code. (DEV,++)
  *
@@ -91,7 +91,7 @@ DECLINLINE(void) PDMAudioHostDevFree(PPDMAUDIOHOSTDEV pDev)
     {
         Assert(pDev->uMagic == PDMAUDIOHOSTDEV_MAGIC);
         Assert(pDev->cRefCount == 0);
-        pDev->uMagic = PDMAUDIOHOSTDEV_MAGIC_DEAD;
+        pDev->uMagic = ~PDMAUDIOHOSTDEV_MAGIC;
         pDev->cbSelf = 0;
 
         RTMemFree(pDev);
