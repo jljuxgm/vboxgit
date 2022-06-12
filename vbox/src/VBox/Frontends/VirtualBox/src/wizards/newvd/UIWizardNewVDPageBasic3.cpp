@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageBasic3.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIWizardNewVDPageBasic3.cpp 87850 2021-02-23 16:38:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageBasic3 class implementation.
  */
@@ -153,14 +153,17 @@ QString UIWizardNewVDPage3::absoluteFilePath(const QString &strFileName, const Q
 /* static */
 QString UIWizardNewVDPage3::defaultExtension(const CMediumFormat &mediumFormatRef)
 {
-    /* Load extension / device list: */
-    QVector<QString> fileExtensions;
-    QVector<KDeviceType> deviceTypes;
-    CMediumFormat mediumFormat(mediumFormatRef);
-    mediumFormat.DescribeFileExtensions(fileExtensions, deviceTypes);
-    for (int i = 0; i < fileExtensions.size(); ++i)
-        if (deviceTypes[i] == KDeviceType_HardDisk)
-            return fileExtensions[i].toLower();
+    if (!mediumFormatRef.isNull())
+    {
+        /* Load extension / device list: */
+        QVector<QString> fileExtensions;
+        QVector<KDeviceType> deviceTypes;
+        CMediumFormat mediumFormat(mediumFormatRef);
+        mediumFormat.DescribeFileExtensions(fileExtensions, deviceTypes);
+        for (int i = 0; i < fileExtensions.size(); ++i)
+            if (deviceTypes[i] == KDeviceType_HardDisk)
+                return fileExtensions[i].toLower();
+    }
     AssertMsgFailed(("Extension can't be NULL!\n"));
     return QString();
 }

@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageExpert.h 87845 2021-02-23 11:17:12Z vboxsync $ */
+/* $Id: UIWizardNewVDPageExpert.h 87850 2021-02-23 16:38:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageExpert class declaration.
  */
@@ -79,7 +79,7 @@ private:
     /* Widgets: */
     QGroupBox *m_pFormatGroupBox;
     QGroupBox *m_pVariantGroupBox;
-    QGroupBox *m_pLocationCnt;
+    QGroupBox *m_pLocationGroupBox;
     QGroupBox *m_pSizeGroupBox;
 };
 
