@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 88879 2021-05-05 15:42:48Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 89004 2021-05-12 08:48:33Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -1767,6 +1767,8 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
                 InsertConfigInteger(pInst, "Trusted",      1); /* boolean */
                 InsertConfigNode(pInst,    "Config", &pCfg);
                 InsertConfigInteger(pCfg,  "NumCPUs", cCpus);
+                if (iommuType == IommuType_Intel)
+                    InsertConfigString(pCfg, "ChipType", "DMAR");
             }
         }
 
