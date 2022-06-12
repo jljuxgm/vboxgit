@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.cpp 88576 2021-04-19 13:00:07Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.cpp 88577 2021-04-19 13:23:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class implementation.
  */
@@ -155,8 +155,8 @@ void UIWizardNewVMPageExpert::retranslateUi()
 {
     UIWizardNewVMPageBaseNameOSType::retranslateWidgets();
     UIWizardNewVMPageBaseUnattended::retranslateWidgets();
-    UIWizardNewVMPage3::retranslateWidgets();
-    UIWizardNewVMPage4::retranslateWidgets();
+    UIWizardNewVMPageHardwareBase::retranslateWidgets();
+    UIWizardNewVMPageDiskBase::retranslateWidgets();
     UIWizardNewVDPage1::retranslateWidgets();
     UIWizardNewVDPage2::retranslateWidgets();
     UIWizardNewVDPage3::retranslateWidgets();

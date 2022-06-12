@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.h 88246 2021-03-22 15:25:33Z vboxsync $ */
+/* $Id: UIWizardNewVM.h 88577 2021-04-19 13:23:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class declaration.
  */
@@ -111,7 +111,7 @@ protected:
     QString getStringFieldValue(const QString &strFieldName) const;
     bool getBoolFieldValue(const QString &strFieldName) const;
 
-    friend class UIWizardNewVMPageBasic4;
+    friend class UIWizardNewVMPageDisk;
     friend class UIWizardNewVMPageExpert;
 
 private slots:
