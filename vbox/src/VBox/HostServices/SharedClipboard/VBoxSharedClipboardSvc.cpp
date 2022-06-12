@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc.cpp 86008 2020-09-02 17:49:55Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc.cpp 86363 2020-09-30 20:52:28Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Host service entry points.
  */
@@ -631,14 +631,18 @@ void shClSvcClientDestroy(PSHCLCLIENT pClient)
 
     shClSvcClientStateDestroy(&pClient->State);
 
+    PSHCLCLIENTLEGACYCID pCidIter, pCidIterNext;
+    RTListForEachSafe(&pClient->Legacy.lstCID, pCidIter, pCidIterNext, SHCLCLIENTLEGACYCID, Node)
+    {
+        RTMemFree(pCidIter);
+    }
+
     int rc2 = RTCritSectDelete(&pClient->CritSect);
     AssertRC(rc2);
 
     ClipboardClientMap::iterator itClient = g_mapClients.find(pClient->State.uClientID);
     if (itClient != g_mapClients.end())
-    {
         g_mapClients.erase(itClient);
-    }
     else
         AssertFailed();
 
