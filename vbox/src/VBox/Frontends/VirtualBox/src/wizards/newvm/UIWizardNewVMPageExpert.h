@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.h 88599 2021-04-20 09:13:59Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.h 88837 2021-05-03 13:50:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class declaration.
  */
@@ -147,7 +147,7 @@ private:
        QLabel *m_pLocationLabel;
        /** Set of widgets which user explicitly modified their values. They are exempt from
          * adjusting when OS type changes. */
-       QSet<QWidget*> m_userSetWidgets;
+       QSet<QObject*> m_userSetWidgets;
     /** @} */
 };
 
