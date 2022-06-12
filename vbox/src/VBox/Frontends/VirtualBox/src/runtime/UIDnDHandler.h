@@ -1,4 +1,4 @@
-/* $Id: UIDnDHandler.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIDnDHandler.h 85681 2020-08-11 09:36:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDnDHandler class declaration..
  */
@@ -37,6 +37,9 @@ class QMimeData;
 class UIDnDMIMEData;
 class UISession;
 
+/**
+ * Main class for implementing Drag'n'Drop in the frontend.
+ */
 class UIDnDHandler: public QObject
 {
     Q_OBJECT;

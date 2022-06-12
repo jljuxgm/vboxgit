@@ -1,4 +1,4 @@
-/* $Id: UIDnDDropSource_win.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIDnDDropSource_win.h 85681 2020-08-11 09:36:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDnDDropSource class declaration.
  */
@@ -55,6 +55,7 @@ protected:
 
     /** Pointer to parent widget. */
     QWidget         *m_pParent;
+    /** Pointer to current data object. */
     UIDnDDataObject *m_pDataObject;
     /** The current reference count. */
     LONG             m_cRefCount;

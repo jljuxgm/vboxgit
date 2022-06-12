@@ -1,4 +1,4 @@
-/* $Id: VBoxDragAndDropSvc.cpp 85407 2020-07-22 08:45:18Z vboxsync $ */
+/* $Id: VBoxDragAndDropSvc.cpp 85681 2020-08-11 09:36:37Z vboxsync $ */
 /** @file
  * Drag and Drop Service.
  */
@@ -17,7 +17,7 @@
 
 /** @page pg_svc_dnd    Drag and drop HGCM Service
  *
- * TODO
+ * @sa See src/VBox/Main/src-client/GuestDnDPrivate.cpp for more information.
  */
 
 
