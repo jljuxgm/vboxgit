@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 85126 2020-07-08 23:04:57Z vboxsync $ */
+/* $Id: PDMInternal.h 86426 2020-10-02 15:47:58Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -1607,7 +1607,7 @@ void        pdmR3DrvDestroyChain(PPDMDRVINS pDrvIns, uint32_t fFlags);
 PPDMDRV     pdmR3DrvLookup(PVM pVM, const char *pszName);
 
 int         pdmR3LdrInitU(PUVM pUVM);
-void        pdmR3LdrTermU(PUVM pUVM);
+void        pdmR3LdrTermU(PUVM pUVM, bool fFinal);
 char       *pdmR3FileR3(const char *pszFile, bool fShared);
 int         pdmR3LoadR3U(PUVM pUVM, const char *pszFilename, const char *pszName);
 
