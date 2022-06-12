@@ -1,4 +1,4 @@
-/* $Id: ComHostUtils.cpp 87698 2021-02-10 17:21:46Z vboxsync $ */
+/* $Id: ComHostUtils.cpp 87710 2021-02-11 02:14:40Z vboxsync $ */
 /** @file
  * ComHostUtils.cpp
  */
@@ -72,51 +72,6 @@
 
 
 VBOX_LISTENER_DECLARE(NATNetworkListenerImpl)
-
-
-int localMappings(const ComNatPtr& nat, AddressToOffsetMapping& mapping)
-{
-    mapping.clear();
-
-    ComBstrArray strs;
-    size_t cStrs;
-    HRESULT hrc = nat->COMGETTER(LocalMappings)(ComSafeArrayAsOutParam(strs));
-    if (   SUCCEEDED(hrc)
-        && (cStrs = strs.size()))
-    {
-        for (size_t i = 0; i < cStrs; ++i)
-        {
-            char szAddr[17];
-            RTNETADDRIPV4 ip4addr;
-            char *pszTerm;
-            uint32_t u32Off;
-            com::Utf8Str strLo2Off(strs[i]);
-            const char *pszLo2Off = strLo2Off.c_str();
-
-            RT_ZERO(szAddr);
-
-            pszTerm = RTStrStr(pszLo2Off, "=");
-
-            if (   pszTerm
-                   && (pszTerm - pszLo2Off) <= INET_ADDRSTRLEN)
-            {
-                memcpy(szAddr, pszLo2Off, (pszTerm - pszLo2Off));
-                int rc = RTNetStrToIPv4Addr(szAddr, &ip4addr);
-                if (RT_SUCCESS(rc))
-                {
-                    u32Off = RTStrToUInt32(pszTerm + 1);
-                    if (u32Off != 0)
-                        mapping.insert(
-                          AddressToOffsetMapping::value_type(ip4addr, u32Off));
-                }
-            }
-        }
-    }
-    else
-        return VERR_NOT_FOUND;
-
-    return VINF_SUCCESS;
-}
 
 
 int createNatListener(ComNatListenerPtr& listener, const ComVirtualBoxPtr& vboxptr,

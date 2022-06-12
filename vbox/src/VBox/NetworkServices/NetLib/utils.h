@@ -1,4 +1,4 @@
-/* $Id: utils.h 87698 2021-02-10 17:21:46Z vboxsync $ */
+/* $Id: utils.h 87710 2021-02-11 02:14:40Z vboxsync $ */
 /** @file
  * ComHostUtils.cpp
  */
@@ -33,12 +33,6 @@ typedef ComPtr<IDHCPServer> ComDhcpServerPtr;
 typedef ComPtr<IHost> ComHostPtr;
 typedef ComPtr<INATNetwork> ComNatPtr;
 typedef com::SafeArray<BSTR> ComBstrArray;
-
-typedef std::vector<RTNETADDRIPV4> AddressList;
-typedef std::map<RTNETADDRIPV4, int> AddressToOffsetMapping;
-
-
-int localMappings(const ComNatPtr&, AddressToOffsetMapping&);
 
 
 class NATNetworkEventAdapter
