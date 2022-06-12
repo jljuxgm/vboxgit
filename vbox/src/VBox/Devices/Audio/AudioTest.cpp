@@ -1,4 +1,4 @@
-/* $Id: AudioTest.cpp 89074 2021-05-17 08:00:46Z vboxsync $ */
+/* $Id: AudioTest.cpp 89075 2021-05-17 08:04:09Z vboxsync $ */
 /** @file
  * Audio testing routines.
  * Common code which is being used by the ValidationKit and the debug / ValdikationKit audio driver(s).
@@ -930,19 +930,16 @@ int AudioTestWaveFileOpen(const char *pszFile, PAUDIOTESTWAVEFILE pWaveFile)
     rc = RTFileQuerySize(pWaveFile->hFile, &cbFile);
     if (RT_SUCCESS(rc))
     {
-        struct
+        union
         {
-            union
+            uint8_t                 ab[512];
+            struct
             {
-                uint8_t                 ab[512];
-                struct
-                {
-                    RTRIFFHDR           Hdr;
-                    RTRIFFWAVEFMTCHUNK  Fmt;
-                } Wave;
-                RTRIFFLIST              List;
-                RTRIFFWAVEDATACHUNK     Data;
-            };
+                RTRIFFHDR           Hdr;
+                RTRIFFWAVEFMTCHUNK  Fmt;
+            } Wave;
+            RTRIFFLIST              List;
+            RTRIFFWAVEDATACHUNK     Data;
         } uBuf;
 
         rc = RTFileRead(pWaveFile->hFile, &uBuf.Wave, sizeof(uBuf.Wave), NULL);
