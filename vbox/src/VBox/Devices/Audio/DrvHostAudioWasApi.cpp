@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioWasApi.cpp 88772 2021-04-29 09:49:46Z vboxsync $ */
+/* $Id: DrvHostAudioWasApi.cpp 88776 2021-04-29 10:09:01Z vboxsync $ */
 /** @file
  * Host audio driver - Windows Audio Session API.
  */
@@ -569,8 +569,7 @@ static void drvHostAudioWasWaveFmtExFromCfg(PCPDMAUDIOSTREAMCFG pCfg, PWAVEFORMA
  *
  * @returns VINF_SUCCESS on success, VERR_AUDIO_STREAM_COULD_NOT_CREATE if not
  *          supported.
- * @param   pProps      The stream properties to update (input:
- *                      requested config; output: acquired).
+ * @param   pProps      The output properties structure.
  * @param   pFmt        The windows wave format structure.
  * @param   pszStream   The stream name for error logging.
  * @param   pwszDevId   The device ID for error logging.
