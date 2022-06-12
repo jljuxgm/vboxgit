@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-win-dx.cpp 89121 2021-05-17 19:30:44Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-win-dx.cpp 89122 2021-05-17 19:41:23Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -3365,7 +3365,7 @@ static int vmsvga3dBackShaderSetConst(PVGASTATECC pThisCC, uint32_t cid, uint32_
 /**
  * Destroy backend specific surface bits (part of SVGA_3D_CMD_SURFACE_DESTROY).
  *
- * @param   pState              The VMSVGA3d state.
+ * @param   pThisCC             The device context.
  * @param   pSurface            The surface being destroyed.
  */
 static void vmsvga3dBackSurfaceDestroy(PVGASTATECC pThisCC, PVMSVGA3DSURFACE pSurface)
@@ -3620,7 +3620,7 @@ static int vmsvga3dBackSurfaceDMACopyBox(PVGASTATE pThis, PVGASTATECC pThisCC, P
  *
  * Surfaces are created when needed.
  *
- * @param   pState              The VMSVGA3d state.
+ * @param   pThisCC             The device context.
  * @param   pContext            The context.
  * @param   idAssociatedContext Probably the same as pContext->id.
  * @param   pSurface            The surface to create the texture for.

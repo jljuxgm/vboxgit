@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 89121 2021-05-17 19:30:44Z vboxsync $ */
+/* $Id: DevVGA-SVGA.cpp 89122 2021-05-17 19:41:23Z vboxsync $ */
 /** @file
  * VMware SVGA device.
  *
@@ -5712,10 +5712,10 @@ int vmsvgaR3SaveExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM)
 }
 
 /**
- * Destructor for PVMSVGAR3STATE structure.
+ * Destructor for PVMSVGAR3STATE structure. The structure is not deallocated.
  *
  * @param   pThis          The shared VGA/VMSVGA instance data.
- * @param   pSVGAState     Pointer to the structure. It is not deallocated.
+ * @param   pThisCC        The device context.
  */
 static void vmsvgaR3StateTerm(PVGASTATE pThis, PVGASTATECC pThisCC)
 {
