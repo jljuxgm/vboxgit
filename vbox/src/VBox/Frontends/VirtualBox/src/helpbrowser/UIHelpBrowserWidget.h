@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.h 86583 2020-10-15 09:41:04Z vboxsync $ */
+/* $Id: UIHelpBrowserWidget.h 86603 2020-10-16 11:02:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class declaration.
  */
@@ -44,6 +44,7 @@ class QITabWidget;
 class QIToolBar;
 class UIActionPool;
 class UIDialogPanel;
+class QSplitter;
 
 /** QWidget extension providing GUI for VirtualBox LogViewer. It
  *  encapsulates log pages, toolbar, a tab widget and manages
@@ -129,6 +130,7 @@ private:
     QHelpEngine  *m_pHelpEngine;
 #endif
     UIHelpBrowserViewer *m_pTextBrowser;
+    QSplitter           *m_pSplitter;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_helpbrowser_UIHelpBrowserWidget_h */
