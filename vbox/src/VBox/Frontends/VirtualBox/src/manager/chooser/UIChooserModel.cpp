@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 86608 2020-10-16 14:19:08Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 86609 2020-10-16 14:30:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -922,7 +922,8 @@ void UIChooserModel::refreshSelectedMachineItems()
                 UIChooserItem *pParentOfParent = pParent->parentItem();
                 AssertPtrReturnVoid(pParentOfParent);
                 UITaskCloudListMachines *pTask = new UITaskCloudListMachines(pParentOfParent->name(),
-                                                                             pParent->name());
+                                                                             pParent->name(),
+                                                                             true /* with refresh? */);
                 AssertPtrReturnVoid(pTask);
                 uiCommon().threadPoolCloud()->enqueueTask(pTask);
 

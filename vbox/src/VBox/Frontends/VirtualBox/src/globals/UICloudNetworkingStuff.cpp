@@ -1,4 +1,4 @@
-/* $Id: UICloudNetworkingStuff.cpp 86199 2020-09-21 14:33:29Z vboxsync $ */
+/* $Id: UICloudNetworkingStuff.cpp 86609 2020-10-16 14:30:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudNetworkingStuff namespace implementation.
  */
@@ -367,6 +367,48 @@ QVector<CCloudMachine> UICloudNetworkingStuff::listCloudMachines(CCloudClient co
             strErrorMessage = UIErrorString::formatErrorInfo(comProgress);
         else
             return comCloudClient.GetCloudMachineList();
+    }
+    /* Return empty list by default: */
+    return QVector<CCloudMachine>();
+}
+
+QVector<CCloudMachine> UICloudNetworkingStuff::listCloudMachineStubs(CCloudClient comCloudClient,
+                                                                     QWidget *pParent /* = 0 */)
+{
+    /* Execute ReadCloudMachineStubList async method: */
+    CProgress comProgress = comCloudClient.ReadCloudMachineStubList();
+    if (!comCloudClient.isOk())
+        msgCenter().cannotAcquireCloudClientParameter(comCloudClient, pParent);
+    else
+    {
+        /* Show "Read cloud machine stubs" progress: */
+        msgCenter().showModalProgressDialog(comProgress,
+                                            QString(),
+                                            ":/progress_reading_appliance_90px.png", pParent, 0);
+        if (!comProgress.isOk() || comProgress.GetResultCode() != 0)
+            msgCenter().cannotAcquireCloudClientParameter(comProgress, pParent);
+        else
+            return comCloudClient.GetCloudMachineStubList();
+    }
+    /* Return empty list by default: */
+    return QVector<CCloudMachine>();
+}
+
+QVector<CCloudMachine> UICloudNetworkingStuff::listCloudMachineStubs(CCloudClient comCloudClient,
+                                                                     QString &strErrorMessage)
+{
+    /* Execute ReadCloudMachineStubList async method: */
+    CProgress comProgress = comCloudClient.ReadCloudMachineStubList();
+    if (!comCloudClient.isOk())
+        strErrorMessage = UIErrorString::formatErrorInfo(comCloudClient);
+    else
+    {
+        /* Show "Read cloud machine stubs" progress: */
+        comProgress.WaitForCompletion(-1);
+        if (!comProgress.isOk() || comProgress.GetResultCode() != 0)
+            strErrorMessage = UIErrorString::formatErrorInfo(comProgress);
+        else
+            return comCloudClient.GetCloudMachineStubList();
     }
     /* Return empty list by default: */
     return QVector<CCloudMachine>();

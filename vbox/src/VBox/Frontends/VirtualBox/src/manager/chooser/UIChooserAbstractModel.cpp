@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.cpp 86608 2020-10-16 14:19:08Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.cpp 86609 2020-10-16 14:30:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class implementation.
  */
@@ -980,7 +980,8 @@ void UIChooserAbstractModel::reloadCloudTree()
 
             /* Create list cloud machines task: */
             UITaskCloudListMachines *pTask = new UITaskCloudListMachines(strProviderShortName,
-                                                                         strProfileName);
+                                                                         strProfileName,
+                                                                         true /* with refresh? */);
             if (pTask)
                 uiCommon().threadPoolCloud()->enqueueTask(pTask);
         }
