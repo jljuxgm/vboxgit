@@ -1,4 +1,4 @@
-/* $Id: UIHelpViewer.cpp 89353 2021-05-28 12:26:21Z vboxsync $ */
+/* $Id: UIHelpViewer.cpp 89369 2021-05-28 19:03:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class implementation.
  */
@@ -586,7 +586,8 @@ void UIHelpViewer::contextMenuEvent(QContextMenuEvent *event)
 
 void UIHelpViewer::resizeEvent(QResizeEvent *pEvent)
 {
-    clearOverlay();
+    if (m_fOverlayMode)
+        clearOverlay();
     /* Make sure the widget stays inside the parent during parent resize: */
     if (m_pFindInPageWidget)
     {
@@ -685,7 +686,7 @@ void UIHelpViewer::paintEvent(QPaintEvent *pEvent)
     }
     if (m_pOverlayLabel)
     {
-        if (m_fOverlayMode)
+        if (m_fOverlayMode && !m_pOverlayLabel->isVisible())
         {
             /* Scale the image to 1:1 as long as it fits into avaible space (minus some margins and scrollbar sizes): */
             int vWidth = 0;
@@ -703,13 +704,14 @@ void UIHelpViewer::paintEvent(QPaintEvent *pEvent)
             QSize size(qMin(width() - hMargin, m_overlayPixmap.width()),
                        qMin(height() - vMargin, m_overlayPixmap.height()));
             m_pOverlayLabel->setPixmap(m_overlayPixmap.scaled(size,  Qt::KeepAspectRatio, Qt::SmoothTransformation));
+            m_pOverlayLabel->show();
+
             /* Center the label: */
             int x = 0.5 * (width() - vWidth - m_pOverlayLabel->width());
             int y = 0.5 * (height() - hHeight - m_pOverlayLabel->height());
             m_pOverlayLabel->move(x, y);
-            m_pOverlayLabel->show();
         }
-        else
+        if (!m_fOverlayMode && m_pOverlayLabel->isVisible())
             m_pOverlayLabel->hide();
     }
 }
