@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 87130 2020-12-27 19:32:53Z vboxsync $ */
+/* $Id: EM.cpp 87594 2021-02-03 20:23:46Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -838,11 +838,7 @@ static VBOXSTRICTRC emR3Debug(PVM pVM, PVMCPU pVCpu, VBOXSTRICTRC rc)
                 break;
 
             case VINF_EM_DBG_BREAKPOINT:
-#ifdef VBOX_WITH_LOTS_OF_DBGF_BPS
                 rc = DBGFR3BpHit(pVM, pVCpu);
-#else
-                rc = DBGFR3EventBreakpoint(pVM, DBGFEVENT_BREAKPOINT);
-#endif
                 break;
 
             case VINF_EM_DBG_STOP:
