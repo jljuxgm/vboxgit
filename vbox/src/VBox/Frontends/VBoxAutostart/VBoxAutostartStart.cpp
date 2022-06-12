@@ -1,4 +1,4 @@
-/* $Id: VBoxAutostartStart.cpp 89360 2021-05-28 13:55:18Z vboxsync $ */
+/* $Id: VBoxAutostartStart.cpp 89571 2021-06-08 17:34:49Z vboxsync $ */
 /** @file
  * VBoxAutostart - VirtualBox Autostart service, start machines during system boot.
  */
@@ -174,7 +174,10 @@ DECLHIDDEN(RTEXITCODE) autostartStartMain(PCFGAST pCfgAst)
                         }
                     }
                 }
-                g_pSession->UnlockMachine();
+                SessionState_T enmSessionState;
+                CHECK_ERROR(g_pSession, COMGETTER(State)(&enmSessionState));
+                if (SUCCEEDED(rc) && enmSessionState == SessionState_Locked)
+                    g_pSession->UnlockMachine();
             }
         }
     }
