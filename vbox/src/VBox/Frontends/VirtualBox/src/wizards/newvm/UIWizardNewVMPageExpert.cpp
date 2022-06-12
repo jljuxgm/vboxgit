@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.cpp 87731 2021-02-12 11:00:29Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.cpp 87833 2021-02-22 10:09:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class implementation.
  */
@@ -406,10 +406,10 @@ bool UIWizardNewVMPageExpert::isComplete() const
         fIsComplete = false;
     }
 
-    if (!m_pDiskSkip->isChecked() && !m_pDiskPresent->isChecked() && uiCommon().medium(m_pDiskSelector->id()).isNull())
+    if (m_pDiskPresent->isChecked() && uiCommon().medium(m_pDiskSelector->id()).isNull())
     {
         m_pToolBox->setPageTitleIcon(ExpertToolboxItems_Disk,
-                                UIIconPool::iconSet(":/status_error_16px.png"));
+                                     UIIconPool::iconSet(":/status_error_16px.png"), UIWizardNewVM::tr("No valid disk is selected"));
         fIsComplete = false;
     }
     /* Check unattended install related stuff: */
