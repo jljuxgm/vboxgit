@@ -1,4 +1,4 @@
-/* $Id: PDMR0DevHlpTracing.cpp 84459 2020-05-22 12:55:07Z vboxsync $ */
+/* $Id: PDMR0DevHlpTracing.cpp 84553 2020-05-27 07:35:16Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helper variants when tracing is enabled.
  */
@@ -74,8 +74,12 @@ static DECLCALLBACK(VBOXSTRICTRC) pdmR0DevHlpTracing_IoPortNewInStr(PPDMDEVINS p
     PCPDMDEVINSDBGFTRACK pTrack = (PCPDMDEVINSDBGFTRACK)pvUser;
 
     Assert(!pTrack->fMmio);
+    PGVM pGVM = pDevIns->Internal.s.pGVM;
+    uint32_t cTransfersReq = *pcTransfers;
     VBOXSTRICTRC rcStrict = pTrack->u.IoPort.pfnInStr(pDevIns, pTrack->pvUser, offPort, pbDst, pcTransfers, cb);
-    /** @todo */
+    if (RT_SUCCESS(rcStrict))
+        DBGFTracerEvtIoPortReadStr(pGVM, pDevIns->Internal.s.hDbgfTraceEvtSrc, pTrack->u.IoPort.hIoPorts, offPort, pbDst, cb,
+                                   cTransfersReq, cTransfersReq - *pcTransfers);
 
     return rcStrict;
 }
@@ -101,8 +105,12 @@ static DECLCALLBACK(VBOXSTRICTRC) pdmR0DevHlpTracing_IoPortNewOutStr(PPDMDEVINS 
     PCPDMDEVINSDBGFTRACK pTrack = (PCPDMDEVINSDBGFTRACK)pvUser;
 
     Assert(!pTrack->fMmio);
+    PGVM pGVM = pDevIns->Internal.s.pGVM;
+    uint32_t cTransfersReq = *pcTransfers;
     VBOXSTRICTRC rcStrict = pTrack->u.IoPort.pfnOutStr(pDevIns, pTrack->pvUser, offPort, pbSrc, pcTransfers, cb);
-    /** @todo */
+    if (RT_SUCCESS(rcStrict))
+        DBGFTracerEvtIoPortWriteStr(pGVM, pDevIns->Internal.s.hDbgfTraceEvtSrc, pTrack->u.IoPort.hIoPorts, offPort, pbSrc, cb,
+                                    cTransfersReq, cTransfersReq - *pcTransfers);
 
     return rcStrict;
 }
