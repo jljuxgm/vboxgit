@@ -1,4 +1,4 @@
-/* $Id: UIHelpViewer.cpp 88438 2021-04-09 14:55:26Z vboxsync $ */
+/* $Id: UIHelpViewer.cpp 88439 2021-04-09 15:08:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class implementation.
  */
@@ -453,6 +453,7 @@ bool UIHelpViewer::isFindInPageWidgetVisible() const
 
 void UIHelpViewer::zoom(ZoomOperation enmZoomOperation)
 {
+    clearOverlay();
     int iPrevZoom = m_iZoomPercentage;
     switch (enmZoomOperation)
     {
