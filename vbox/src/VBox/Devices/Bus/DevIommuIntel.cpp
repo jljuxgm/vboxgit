@@ -1,4 +1,4 @@
-/* $Id: DevIommuIntel.cpp 88221 2021-03-21 09:51:00Z vboxsync $ */
+/* $Id: DevIommuIntel.cpp 88222 2021-03-21 10:03:48Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - Intel implementation.
  */
@@ -544,9 +544,9 @@ static DECLCALLBACK(VBOXSTRICTRC) iommuIntelMmioRead(PPDMDEVINS pDevIns, void *p
 
     PIOMMU         pThis   = PDMDEVINS_2_DATA(pDevIns, PIOMMU);
     uint16_t const offReg  = off;
-    uint16_t const offLast = offReg + cb;
-    if (   offLast <= VTD_MMIO_GROUP_0_OFF_END
-        || offLast <= VTD_MMIO_GROUP_1_OFF_END)
+    uint16_t const offLast = offReg + cb - 1;
+    if (   offLast < VTD_MMIO_GROUP_0_OFF_END
+        || offLast - VTD_MMIO_GROUP_1_OFF_FIRST < VTD_MMIO_GROUP_1_SIZE)
     {
         if (cb == 8)
             *(uint64_t *)pv = iommuIntelRegRead64(pThis, offReg);
