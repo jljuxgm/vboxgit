@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityMonitor.cpp 88753 2021-04-28 17:32:04Z vboxsync $ */
+/* $Id: UIVMActivityMonitor.cpp 88754 2021-04-28 17:35:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMActivityMonitor class implementation.
  */
@@ -442,7 +442,7 @@ void UIChart::paintEvent(QPaintEvent *pEvent)
                 }
             }
         }
-    }// else of if (if (iMaximum == 0)
+    }// else of if (iMaximum == 0)
 
     QFontMetrics fontMetrics(painter.font());
     int iFontHeight = fontMetrics.height();
