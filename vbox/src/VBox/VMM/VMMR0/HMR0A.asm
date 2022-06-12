@@ -1,4 +1,4 @@
-; $Id: HMR0A.asm 87500 2021-02-01 14:16:43Z vboxsync $
+; $Id: HMR0A.asm 87503 2021-02-01 14:38:38Z vboxsync $
 ;; @file
 ; HM - Ring-0 VMX, SVM world-switch and helper routines.
 ;
@@ -1349,7 +1349,7 @@ BEGINPROC RT_CONCAT(hmR0SvmVmRun,%1)
  %endif
 
         ; Save host fs, gs, sysenter msr etc.
-        mov     rax, [rsi + VMCPU.hm + HMCPU.svm + HMCPUSVM.HCPhysVmcbHost]
+        mov     rax, [rsi + GVMCPU.hmr0 + HMR0PERVCPU.svm + HMR0CPUSVM.HCPhysVmcbHost]
         mov     qword [rbp + frm_HCPhysVmcbHost], rax ; save for the vmload after vmrun
         lea     rsi, [rsi + VMCPU.cpum.GstCtx]
         mov     qword [rbp + frm_pGstCtx], rsi
