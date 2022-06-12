@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.h 88038 2021-03-09 09:11:02Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.h 88108 2021-03-12 14:16:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class declaration.
  */
@@ -141,7 +141,6 @@ private:
     /** @name Variables
      * @{ */
        UIToolBox  *m_pToolBox;
-       QGroupBox *m_pInstallationISOGroupBox;
        QGroupBox *m_pDiskFormatGroupBox;
        QGroupBox *m_pDiskVariantGroupBox;
        QLabel *m_pLocationLabel;

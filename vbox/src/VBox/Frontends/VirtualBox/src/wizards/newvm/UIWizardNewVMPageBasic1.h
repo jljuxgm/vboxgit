@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic1.h 88107 2021-03-12 13:57:02Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic1.h 88108 2021-03-12 14:16:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic1 class declaration.
  */
@@ -163,7 +163,6 @@ private:
     /** @name Widgets
      * @{ */
         QIRichTextLabel *m_pNameOSTypeLabel;
-        QIRichTextLabel *m_pUnattendedLabel;
     /** @} */
 };
 
