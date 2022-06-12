@@ -1,4 +1,4 @@
-/* $Id: UIVMInformationDialog.h 88721 2021-04-27 08:05:03Z vboxsync $ */
+/* $Id: UIVMInformationDialog.h 88741 2021-04-27 19:48:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMInformationDialog class declaration.
  */
@@ -48,13 +48,11 @@ class UIVMInformationDialog : public QMainWindowWithRestorableGeometryAndRetrans
 {
     Q_OBJECT;
 
+signals:
+
+    void sigClose();
+
 public:
-
-    /** Shows (and creates if necessary)
-      * information-dialog for passed @a pMachineWindow. */
-    static void invoke(UIMachineWindow *pMachineWindow);
-
-protected:
 
     /** Constructs information dialog for passed @a pMachineWindow. */
     UIVMInformationDialog(UIMachineWindow *pMachineWindow);
@@ -64,16 +62,15 @@ protected:
     /** Returns whether the dialog should be maximized when geometry being restored. */
     virtual bool shouldBeMaximized() const /* override */;
 
+protected:
+
     /** Handles translation event. */
     void retranslateUi();
 
 private slots:
 
-    /** Destroys dialog immediately. */
-    void suicide() { delete this; }
     /** Handles tab-widget page change. */
     void sltHandlePageChanged(int iIndex);
-    void sltSaveSettings();
 
 private:
 
@@ -91,12 +88,7 @@ private:
     void prepareButtonBox();
     /** Loads settings. */
     void loadSettings();
-
-    /** @name General variables.
-     * @{ */
-    /** Holds the dialog instance. */
-    static UIVMInformationDialog *s_pInstance;
-    /** @} */
+    void saveSettings();
 
     /** @name Widget variables.
      * @{ */
