@@ -1,4 +1,4 @@
-# $Id: Config.kmk 88323 2021-03-30 15:25:06Z vboxsync $
+# $Id: Config.kmk 88334 2021-03-31 17:44:44Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -4529,7 +4529,7 @@ define TOOL_DTraceAndVBoxTpG_DTRACE_HDR_CMDS
 	$(MV) -f -- "$(out).tmp" "$(out)"
 endef
 TOOL_DTraceAndVBoxTpG_DTRACE_OBJ_NOT_NEEDED = $(TOOL_StandardDTrace_DTRACE_OBJ_NOT_NEEDED)
-TOOL_DTraceAndVBoxTpG_DTRACE_OBJ_CMDS = $(TOOL_StandardDTrace_DTRACE_OBJ_CMDS)
+TOOL_DTraceAndVBoxTpG_DTRACE_OBJ_CMDS = $(filter-out %.gch,$(TOOL_StandardDTrace_DTRACE_OBJ_CMDS))
 
 
 ifdef VBOX_WITH_RAW_MODE
@@ -8217,7 +8217,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 88323 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 88334 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
