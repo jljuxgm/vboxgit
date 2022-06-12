@@ -1,4 +1,4 @@
-# $Id: Config.kmk 88463 2021-04-12 11:01:15Z vboxsync $
+# $Id: Config.kmk 88473 2021-04-12 17:02:45Z vboxsync $
 ## @file
 # OpenSSL kBuild Configuration file.
 #
@@ -233,6 +233,9 @@ endif
 ifeq ($(KBUILD_TARGET),os2)
 TEMPLATE_LIBCRYPTO_DEFS += \
 	OPENSSL_NO_SECURE_MEMORY
+endif
+if defined(VBOX_WITH_PARFAIT) #&& VBOX_GCC_VERSION_CC == 50301
+ TEMPLATE_LIBCRYPTO_DEFS += __STDC_NO_ATOMICS__
 endif
 # Enable for running with valgrind:
 #TEMPLATE_LIBCRYPTO_DEFS += PURIFY
