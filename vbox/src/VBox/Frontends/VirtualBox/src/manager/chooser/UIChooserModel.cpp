@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 86929 2020-11-20 10:30:04Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 86930 2020-11-20 10:31:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -624,8 +624,8 @@ void UIChooserModel::startEditingSelectedGroupItemName()
 
 void UIChooserModel::disbandSelectedGroupItem()
 {
-    /* Only for single selected group: */
-    if (!isSingleGroupSelected())
+    /* Only for single selected local group: */
+    if (!isSingleLocalGroupSelected())
         return;
 
     /* Check if we have collisions between disbandable group children and their potential siblings: */
