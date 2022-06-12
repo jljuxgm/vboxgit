@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 86759 2020-10-29 14:28:00Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 86760 2020-10-29 14:30:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -1913,10 +1913,16 @@ void UIChooserModel::unregisterCloudMachineItems(const QList<UIChooserItemMachin
     QSet<UICloudEntityKey> changedCloudEntityKeys;
     foreach (UIChooserItemMachine *pMachineItem, machineItems)
     {
-        /* Compose cloud entity keys for profile: */
+        /* Compose cloud entity keys for profile and machine: */
         const QString strProviderShortName = pMachineItem->parentItem()->parentItem()->name();
         const QString strProfileName = pMachineItem->parentItem()->name();
+        const QUuid uMachineId = pMachineItem->id();
         const UICloudEntityKey cloudEntityKeyForProfile = UICloudEntityKey(strProviderShortName, strProfileName);
+        const UICloudEntityKey cloudEntityKeyForMachine = UICloudEntityKey(strProviderShortName, strProfileName, uMachineId);
+
+        /* Stop refreshing machine being deleted: */
+        if (containsCloudEntityKey(cloudEntityKeyForMachine))
+            pMachineItem->cache()->toCloud()->waitForAsyncInfoUpdateFinished();
 
         /* Acquire cloud machine: */
         CCloudMachine comMachine = pMachineItem->cache()->toCloud()->machine();
