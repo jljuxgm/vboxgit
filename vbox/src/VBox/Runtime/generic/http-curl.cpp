@@ -1,4 +1,4 @@
-/* $Id: http-curl.cpp 87004 2020-11-27 16:18:47Z vboxsync $ */
+/* $Id: http-curl.cpp 87032 2020-12-02 16:33:29Z vboxsync $ */
 /** @file
  * IPRT - HTTP client API, cURL based.
  *
@@ -2395,6 +2395,9 @@ RTR3DECL(int) RTHttpSignHeaders(RTHTTP hHttp, RTHTTPMETHOD enmMethod, const char
         case RTHTTPMETHOD_HEAD:     pszMethodSp = "head "; break;
         case RTHTTPMETHOD_OPTIONS:  pszMethodSp = "options "; break;
         case RTHTTPMETHOD_TRACE:    pszMethodSp = "trace "; break;
+#ifdef RTHTTP_WITH_WEBDAV
+        case RTHTTPMETHOD_PROPFIND: pszMethodSp = "propfind "; break;
+#endif
         /* no default! */
         case RTHTTPMETHOD_INVALID:
         case RTHTTPMETHOD_END:
@@ -3733,6 +3736,10 @@ RTR3DECL(int) RTHttpPerform(RTHTTP hHttp, const char *pszUrl, RTHTTPMETHOD enmMe
             case RTHTTPMETHOD_TRACE:
                 rcCurl = curl_easy_setopt(pThis->pCurl, CURLOPT_CUSTOMREQUEST, "TRACE");
                 break;
+#ifdef RTHTTP_WITH_WEBDAV
+            case RTHTTPMETHOD_PROPFIND:
+                RT_FALL_THROUGH();
+#endif
             case RTHTTPMETHOD_END:
             case RTHTTPMETHOD_INVALID:
             case RTHTTPMETHOD_32BIT_HACK:
