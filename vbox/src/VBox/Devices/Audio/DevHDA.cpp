@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 87811 2021-02-19 16:56:39Z vboxsync $ */
+/* $Id: DevHDA.cpp 87835 2021-02-22 16:29:40Z vboxsync $ */
 /** @file
  * DevHDA.cpp - VBox Intel HD Audio Controller.
  *
@@ -1582,6 +1582,8 @@ static VBOXSTRICTRC hdaRegWriteSDSTS(PPDMDEVINS pDevIns, PHDASTATE pThis, uint32
     if (cTicksToNext) /* Only do any calculations if the stream currently is set up for transfers. */
     {
         const uint64_t tsNow = PDMDevHlpTimerGet(pDevIns, pStreamShared->hTimer);
+        if (!pStreamShared->State.tsTransferLast)
+            pStreamShared->State.tsTransferLast = tsNow;
         Assert(tsNow >= pStreamShared->State.tsTransferLast);
 
         const uint64_t cTicksElapsed = tsNow - pStreamShared->State.tsTransferLast;
