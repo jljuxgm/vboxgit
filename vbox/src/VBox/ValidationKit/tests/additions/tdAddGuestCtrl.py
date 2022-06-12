@@ -27,12 +27,13 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84730 $"
+__version__ = "$Revision: 84734 $"
 
 # Standard Python imports.
 import errno
 import os
 import random
+import string
 import struct
 import sys
 import threading
@@ -2981,7 +2982,8 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
 
                 # Append a random number of arguments with random length.
                 for _ in xrange(0, self.oTestFiles.oRandom.randrange(1, 16)):
-                    asArgs.append(self.oTestFiles.generateFilenameEx((16 * 1024) - len(str(sEndMarker)), 1));
+                    asArgs.append(''.join(random.choice(string.lowercase)
+                                          for _ in range(self.oTestFiles.oRandom.randrange(1, 16 * 1024))));
 
                 asArgs.append(sEndMarker);
 
