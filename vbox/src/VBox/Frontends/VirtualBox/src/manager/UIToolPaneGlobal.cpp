@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneGlobal.cpp 88089 2021-03-11 13:40:14Z vboxsync $ */
+/* $Id: UIToolPaneGlobal.cpp 88090 2021-03-11 13:43:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolPaneGlobal class implementation.
  */
@@ -204,7 +204,7 @@ void UIToolPaneGlobal::openTool(UIToolType enmType)
             }
             case UIToolType_VMActivityOverview:
             {
-                /* Create VM Resource Monitor: */
+                /* Create VM Activity Overview Widget: */
                 m_pPaneVMActivityOverview = new UIVMActivityOverviewWidget(EmbedTo_Stack, m_pActionPool, false /* show toolbar */);
                 AssertPtrReturnVoid(m_pPaneVMActivityOverview);
                 {
