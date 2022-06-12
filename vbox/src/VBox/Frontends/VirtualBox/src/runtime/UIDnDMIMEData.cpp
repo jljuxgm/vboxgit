@@ -1,4 +1,4 @@
-/* $Id: UIDnDMIMEData.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIDnDMIMEData.cpp 85477 2020-07-27 18:13:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDnDMIMEData class implementation.
  */
@@ -29,6 +29,8 @@
 /* Other VBox includes: */
 #include <VBox/log.h>
 #include <iprt/errcore.h>
+
+#include <VBox/GuestHost/DragAndDrop.h>
 
 
 UIDnDMIMEData::UIDnDMIMEData(UIDnDHandler *pDnDHandler,
@@ -233,7 +235,7 @@ int UIDnDMIMEData::getDataAsVariant(const QVector<uint8_t> &vecData,
         case QVariant::List: /* Used on OS X for representing URI lists. */
         {
             QString strData = QString(reinterpret_cast<const char*>(vecData.constData()));
-            QStringList lstString = strData.split("\r\n", QString::SkipEmptyParts);
+            QStringList lstString = strData.split(DND_PATH_SEPARATOR, QString::SkipEmptyParts);
 
             QVariantList lstVariant;
 
@@ -252,7 +254,7 @@ int UIDnDMIMEData::getDataAsVariant(const QVector<uint8_t> &vecData,
         case QVariant::StringList:
         {
             QString strData = QString(reinterpret_cast<const char*>(vecData.constData()));
-            QStringList lstString = strData.split("\r\n", QString::SkipEmptyParts);
+            QStringList lstString = strData.split(DND_PATH_SEPARATOR, QString::SkipEmptyParts);
 
             LogFlowFunc(("\tStringList has %d entries\n", lstString.size()));
 # ifdef DEBUG
