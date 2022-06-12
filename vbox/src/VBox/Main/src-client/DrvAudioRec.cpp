@@ -1,4 +1,4 @@
-/* $Id: DrvAudioRec.cpp 88718 2021-04-26 21:21:24Z vboxsync $ */
+/* $Id: DrvAudioRec.cpp 88724 2021-04-27 10:24:18Z vboxsync $ */
 /** @file
  * Video recording audio backend for Main.
  *
@@ -610,11 +610,10 @@ static DECLCALLBACK(uint32_t) drvAudioVideoRecHA_StreamGetWritable(PPDMIHOSTAUDI
 /**
  * @interface_method_impl{PDMIHOSTAUDIO,pfnStreamGetStatus}
  */
-static DECLCALLBACK(PDMAUDIOSTREAMSTS) drvAudioVideoRecHA_StreamGetStatus(PPDMIHOSTAUDIO pInterface,
-                                                                          PPDMAUDIOBACKENDSTREAM pStream)
+static DECLCALLBACK(uint32_t) drvAudioVideoRecHA_StreamGetStatus(PPDMIHOSTAUDIO pInterface, PPDMAUDIOBACKENDSTREAM pStream)
 {
     RT_NOREF(pInterface, pStream);
-    return PDMAUDIOSTREAMSTS_FLAGS_INITIALIZED | PDMAUDIOSTREAMSTS_FLAGS_ENABLED;
+    return PDMAUDIOSTREAM_STS_INITIALIZED | PDMAUDIOSTREAM_STS_ENABLED;
 }
 
 

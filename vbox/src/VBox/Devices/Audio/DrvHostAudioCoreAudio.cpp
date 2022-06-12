@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioCoreAudio.cpp 88718 2021-04-26 21:21:24Z vboxsync $ */
+/* $Id: DrvHostAudioCoreAudio.cpp 88724 2021-04-27 10:24:18Z vboxsync $ */
 /** @file
  * Host audio driver - Mac OS X CoreAudio.
  */
@@ -2425,19 +2425,19 @@ static DECLCALLBACK(uint32_t) drvHostCoreAudioHA_StreamGetWritable(PPDMIHOSTAUDI
 /**
  * @interface_method_impl{PDMIHOSTAUDIO,pfnStreamGetStatus}
  */
-static DECLCALLBACK(PDMAUDIOSTREAMSTS) drvHostCoreAudioHA_StreamGetStatus(PPDMIHOSTAUDIO pInterface, PPDMAUDIOBACKENDSTREAM pStream)
+static DECLCALLBACK(uint32_t) drvHostCoreAudioHA_StreamGetStatus(PPDMIHOSTAUDIO pInterface, PPDMAUDIOBACKENDSTREAM pStream)
 {
     RT_NOREF(pInterface);
     AssertPtrReturn(pStream, VERR_INVALID_POINTER);
 
     PCOREAUDIOSTREAM pCAStream = (PCOREAUDIOSTREAM)pStream;
 
-    PDMAUDIOSTREAMSTS fStrmStatus = PDMAUDIOSTREAMSTS_FLAGS_NONE;
+    uint32_t fStrmStatus = PDMAUDIOSTREAM_STS_NONE;
 
     if (pCAStream->pCfg) /* Configured?  */
     {
         if (ASMAtomicReadU32(&pCAStream->enmStatus) == COREAUDIOSTATUS_INIT)
-            fStrmStatus |= PDMAUDIOSTREAMSTS_FLAGS_INITIALIZED | PDMAUDIOSTREAMSTS_FLAGS_ENABLED;
+            fStrmStatus |= PDMAUDIOSTREAM_STS_INITIALIZED | PDMAUDIOSTREAM_STS_ENABLED;
     }
 
     return fStrmStatus;
