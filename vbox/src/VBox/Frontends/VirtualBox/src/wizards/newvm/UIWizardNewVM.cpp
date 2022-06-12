@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 87322 2021-01-20 12:45:43Z vboxsync $ */
+/* $Id: UIWizardNewVM.cpp 87355 2021-01-21 16:24:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
@@ -524,6 +524,7 @@ void UIWizardNewVM::setFieldsFromDefaultUnttendedInstallData()
     setField("userName", m_unattendedInstallData.m_strUserName);
     setField("password", m_unattendedInstallData.m_strPassword);
     setField("hostname", m_unattendedInstallData.m_strHostname);
+    setField("installGuestAdditions", m_unattendedInstallData.m_fInstallGuestAdditions);
     setField("guestAdditionsISOPath", m_unattendedInstallData.m_strGuestAdditionsISOPath);
 }
 
