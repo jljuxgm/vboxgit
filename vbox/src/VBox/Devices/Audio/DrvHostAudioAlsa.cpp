@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioAlsa.cpp 88958 2021-05-10 06:57:45Z vboxsync $ */
+/* $Id: DrvHostAudioAlsa.cpp 88966 2021-05-10 13:40:35Z vboxsync $ */
 /** @file
  * Host audio driver - Advanced Linux Sound Architecture (ALSA).
  */
@@ -52,13 +52,10 @@
 #include <VBox/vmm/pdmaudioinline.h>
 #include <VBox/vmm/pdmaudiohostenuminline.h>
 
-RT_C_DECLS_BEGIN
-#include "DrvHostAudioAlsaStubs.h"
 #include "DrvHostAudioAlsaStubsMangling.h"
-RT_C_DECLS_END
-
 #include <alsa/asoundlib.h>
 #include <alsa/control.h> /* For device enumeration. */
+#include "DrvHostAudioAlsaStubs.h"
 
 #ifdef VBOX_AUDIO_VKAT
 # include "VBoxDDVKAT.h"
