@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic5.cpp 87884 2021-02-26 11:22:00Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic5.cpp 87887 2021-02-26 13:48:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic5 class implementation.
  */
@@ -39,7 +39,7 @@ UIWizardNewVMPageBasic5::UIWizardNewVMPageBasic5()
     prepare();
     qRegisterMetaType<CMedium>();
     registerField("mediumFormat", this, "mediumFormat");
-    registerField("mediumVariant", this, "mediumVariant");
+    registerField("mediumVariant" /* KMediumVariant */, this, "mediumVariant");
     registerField("mediumPath", this, "mediumPath");
     registerField("mediumSize", this, "mediumSize");
 
