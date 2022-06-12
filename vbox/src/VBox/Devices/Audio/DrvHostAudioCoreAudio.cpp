@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioCoreAudio.cpp 88819 2021-05-03 10:26:28Z vboxsync $ */
+/* $Id: DrvHostAudioCoreAudio.cpp 88820 2021-05-03 10:35:05Z vboxsync $ */
 /** @file
  * Host audio driver - Mac OS X CoreAudio.
  */
@@ -108,7 +108,7 @@ typedef struct DRVHOSTCOREAUDIO
     PCOREAUDIODEVICEDATA    pDefaultDevOut;
 #ifdef VBOX_WITH_AUDIO_CALLBACKS
     /** Upwards notification interface. */
-    PPDMIAUDIONOTIFYFROMHOST pIAudioNotifyFromHost;
+    PPDMIHOSTAUDIOPORT      pIHostAudioPort;
 #endif
     /** Indicates whether we've registered default input device change listener. */
     bool                     fRegisteredDefaultInputListener;
@@ -1069,8 +1069,8 @@ static DECLCALLBACK(OSStatus) coreAudioDefaultDeviceChangedCb(AudioObjectID prop
 
 #ifdef VBOX_WITH_AUDIO_CALLBACKS
     /* Notify the driver/device above us about possible changes in devices. */
-    if (pThis->pIAudioNotifyFromHost)
-        pThis->pIAudioNotifyFromHost->pfnNotifyDevicesChanged(pThis->pIAudioNotifyFromHost);
+    if (pThis->pIHostAudioPort)
+        pThis->pIHostAudioPort->pfnNotifyDevicesChanged(pThis->pIHostAudioPort);
 #endif
 
     return noErr;
@@ -2598,8 +2598,8 @@ static DECLCALLBACK(int) drvHostCoreAudioConstruct(PPDMDRVINS pDrvIns, PCFGMNODE
     /*
      * Query the notification interface from the driver/device above us.
      */
-    pThis->pIAudioNotifyFromHost = PDMIBASE_QUERY_INTERFACE(pDrvIns->pUpBase, PDMIAUDIONOTIFYFROMHOST);
-    Assert(pThis->pIAudioNotifyFromHost);
+    pThis->pIHostAudioPort = PDMIBASE_QUERY_INTERFACE(pDrvIns->pUpBase, PDMIHOSTAUDIOPORT);
+    Assert(pThis->pIHostAudioPort);
 #endif
 
 #ifdef VBOX_AUDIO_DEBUG_DUMP_PCM_DATA
