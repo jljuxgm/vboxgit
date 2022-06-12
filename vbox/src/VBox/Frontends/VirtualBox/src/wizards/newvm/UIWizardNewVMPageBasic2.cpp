@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic2.cpp 87355 2021-01-21 16:24:07Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic2.cpp 87366 2021-01-22 13:22:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic2 class implementation.
  */
@@ -183,9 +183,10 @@ bool UIWizardNewVMPage2::checkGAISOFile() const
 {
     if (!m_pGAISOFilePathSelector)
         return false;
+    /* GA ISO selector should not be empty since GA install check box is checked at this point: */
     const QString &strPath = m_pGAISOFilePathSelector->path();
     if (strPath.isNull() || strPath.isEmpty())
-        return true;
+        return false;
     QFileInfo fileInfo(strPath);
     if (!fileInfo.exists() || !fileInfo.isReadable())
         return false;
@@ -194,7 +195,7 @@ bool UIWizardNewVMPage2::checkGAISOFile() const
 
 void UIWizardNewVMPage2::markWidgets() const
 {
-    if (m_pGAISOFilePathSelector)
+    if (m_pGAISOFilePathSelector && m_pGAInstallCheckBox->isChecked())
         m_pGAISOFilePathSelector->mark(!checkGAISOFile());
 }
 
