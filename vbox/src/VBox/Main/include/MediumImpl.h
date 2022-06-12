@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: MediumImpl.h 85284 2020-07-12 15:11:52Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -206,7 +206,7 @@ public:
     void i_cancelMergeTo(MediumLockList *aChildrenToReparent,
                        MediumLockList *aMediumLockList);
 
-    HRESULT i_resize(LONG64 aLogicalSize,
+    HRESULT i_resize(uint64_t aLogicalSize,
                      MediumLockList *aMediumLockList,
                      ComObjPtr<Progress> *aProgress,
                      bool aWait,
