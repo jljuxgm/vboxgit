@@ -1,4 +1,4 @@
-/* $Id: UICloudEntityKey.cpp 86783 2020-11-02 16:50:56Z vboxsync $ */
+/* $Id: UICloudEntityKey.cpp 86784 2020-11-02 16:54:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudEntityKey class implementation.
  */
@@ -38,9 +38,14 @@ UICloudEntityKey::UICloudEntityKey(const UICloudEntityKey &another)
 bool UICloudEntityKey::operator==(const UICloudEntityKey &another) const
 {
     return    true
-           && m_strProviderShortName == another.m_strProviderShortName
-           && m_strProfileName == another.m_strProfileName
-           && m_uMachineId == another.m_uMachineId
+           && toString() == another.toString()
+              ;
+}
+
+bool UICloudEntityKey::operator<(const UICloudEntityKey &another) const
+{
+    return    true
+           && toString() < another.toString()
               ;
 }
 
