@@ -1,4 +1,4 @@
-;$Id: HMInternal.mac 87500 2021-02-01 14:16:43Z vboxsync $
+;$Id: HMInternal.mac 87502 2021-02-01 14:29:19Z vboxsync $
 ;; @file
 ; HM - Internal header file.
 ;
@@ -21,7 +21,6 @@
 
 struc VMXVMCSINFOSHARED
     .fWasInRealMode                 resb    1
-    .fSwitchedTo64on32Obsolete      resb    1
     alignb 8
     .RealMode.AttrCS                resd    1
     .RealMode.AttrDS                resd    1

@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 87500 2021-02-01 14:16:43Z vboxsync $ */
+/* $Id: HMInternal.h 87502 2021-02-01 14:29:19Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -689,10 +689,8 @@ typedef struct VMXVMCSINFOSHARED
      * @{ */
     /** Set if guest was executing in real mode (extra checks). */
     bool                        fWasInRealMode;
-    /** Set if the guest switched to 64-bit mode on a 32-bit host. */
-    bool                        fSwitchedTo64on32Obsolete;
     /** Padding. */
-    bool                        afPadding0[6];
+    bool                        afPadding0[7];
     struct
     {
         X86DESCATTR             AttrCS;

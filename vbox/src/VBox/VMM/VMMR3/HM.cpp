@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 87501 2021-02-01 14:27:26Z vboxsync $ */
+/* $Id: HM.cpp 87502 2021-02-01 14:29:19Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -2047,14 +2047,10 @@ VMMR3_INT_DECL(void) HMR3ResetCpu(PVMCPU pVCpu)
     pVCpu->hm.s.fActive                        = false;
     pVCpu->hm.s.Event.fPending                 = false;
     pVCpu->hm.s.vmx.u64GstMsrApicBase          = 0;
-    pVCpu->hm.s.vmx.VmcsInfo.fSwitchedTo64on32Obsolete = false;
     pVCpu->hm.s.vmx.VmcsInfo.fWasInRealMode    = true;
 #ifdef VBOX_WITH_NESTED_HWVIRT_VMX
     if (pVCpu->CTX_SUFF(pVM)->cpum.ro.GuestFeatures.fVmx)
-    {
-        pVCpu->hm.s.vmx.VmcsInfoNstGst.fSwitchedTo64on32Obsolete = false;
         pVCpu->hm.s.vmx.VmcsInfoNstGst.fWasInRealMode    = true;
-    }
 #endif
 }
 
