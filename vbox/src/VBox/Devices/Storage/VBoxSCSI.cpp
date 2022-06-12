@@ -1,4 +1,4 @@
-/* $Id: VBoxSCSI.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxSCSI.cpp 87165 2021-01-04 13:20:13Z vboxsync $ */
 /** @file
  * VBox storage devices - Simple SCSI interface for BIOS access.
  */
@@ -425,11 +425,11 @@ int vboxscsiReadString(PPDMDEVINS pDevIns, PVBOXSCSI pVBoxSCSI, uint8_t iRegiste
     uint32_t cbTransfer = *pcTransfers * cb;
     if (pVBoxSCSI->cbBufLeft > 0)
     {
-        Assert(cbTransfer <= pVBoxSCSI->cbBuf);
-        if (cbTransfer > pVBoxSCSI->cbBuf)
+        Assert(cbTransfer <= pVBoxSCSI->cbBufLeft);
+        if (cbTransfer > pVBoxSCSI->cbBufLeft)
         {
-            memset(pbDst + pVBoxSCSI->cbBuf, 0xff, cbTransfer - pVBoxSCSI->cbBuf);
-            cbTransfer = pVBoxSCSI->cbBuf;  /* Ignore excess data (not supposed to happen). */
+            memset(pbDst + pVBoxSCSI->cbBuf, 0xff, cbTransfer - pVBoxSCSI->cbBufLeft);
+            cbTransfer = pVBoxSCSI->cbBufLeft;  /* Ignore excess data (not supposed to happen). */
         }
 
         /* Copy the data and adance the buffer position. */
