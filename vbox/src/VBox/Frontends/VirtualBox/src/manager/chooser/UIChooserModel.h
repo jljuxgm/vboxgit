@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.h 86656 2020-10-20 15:58:07Z vboxsync $ */
+/* $Id: UIChooserModel.h 86705 2020-10-26 13:12:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class declaration.
  */
@@ -459,8 +459,6 @@ private:
 
     /** @name Cloud stuff.
       * @{ */
-        /** Holds whether cloud profile update is restricted. */
-        bool    m_fPreventCloudProfileUpdate;
         /** Holds cloud profile update timer instance. */
         QTimer *m_pTimerCloudProfileUpdate;
     /** @} */
