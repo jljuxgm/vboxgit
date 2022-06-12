@@ -1,5 +1,5 @@
 #!/usr/bin/make -f
-# $Id: rules 84959 2020-06-25 18:03:25Z vboxsync $
+# $Id: rules 84960 2020-06-25 18:15:58Z vboxsync $
 ## @file
 # VirtualBox rules.
 #
@@ -175,7 +175,7 @@ bld_flags := AUTOCFG=$(current)/rpm/AutoConfig.kmk \
 		$(firstword $(wildcard /usr/local/bin/python2.7) $(wildcard /usr/bin/python2.7) \
 		$(wildcard /usr/bin/python2.6) $(wildcard /usr/bin/python2) $(wildcard /usr/bin/python))),) \
 	     $(doc_dir) \
-	     $(if $(STAGEDCHM),VBOX_WITH_DOCS_CHM=1,) \
+	     $(if $(STAGEDCHM),VBOX_WITH_DOCS_CHM=1,VBOX_WITH_KCHMVIEWER=) \
 	     VBOX_PACKAGE_DIST=$(rpmdist) \
 	     $(if $(svnrev),VBOX_SVN_REV=$(svnrev),) \
 	     $(if $(NODOCS),VBOX_WITH_DOCS= ,) \
