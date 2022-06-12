@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 88673 2021-04-23 12:42:47Z vboxsync $ */
+/* $Id: DevSB16.cpp 88675 2021-04-23 12:59:30Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  */
@@ -1647,7 +1647,7 @@ static DECLCALLBACK(uint32_t) sb16DMARead(PPDMDEVINS pDevIns, void *pvUser, unsi
         }
     }
 
-    STAM_REL_COUNTER_ADD(&pThis->StatBytesRead, copy);
+    STAM_COUNTER_ADD(&pThis->StatBytesRead, copy);
 
     uint32_t cbWritten;
     int rc = sb16WriteAudio(pThis, pStream, uChannel, off, cb, copy, &cbWritten);
