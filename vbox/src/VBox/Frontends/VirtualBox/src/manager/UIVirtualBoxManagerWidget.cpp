@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 86923 2020-11-19 17:37:32Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 86925 2020-11-19 18:19:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -837,7 +837,11 @@ void UIVirtualBoxManagerWidget::updateToolbar()
                         m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Group_S_New));
                         m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Group_S_Add));
                         m_pToolBar->addSeparator();
-                        m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Group_S_Discard));
+                        if (isSingleLocalGroupSelected())
+                            m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Group_S_Discard));
+                        else if (   isSingleCloudProviderGroupSelected()
+                                 || isSingleCloudProfileGroupSelected())
+                            m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Group_M_Close_S_Terminate));
                         m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Group_M_StartOrShow));
                     }
                     else
@@ -846,7 +850,10 @@ void UIVirtualBoxManagerWidget::updateToolbar()
                         m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_Add));
                         m_pToolBar->addSeparator();
                         m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_Settings));
-                        m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_Discard));
+                        if (isLocalMachineItemSelected())
+                            m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_Discard));
+                        else if (isCloudMachineItemSelected())
+                            m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Machine_M_Close_S_Terminate));
                         m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Machine_M_StartOrShow));
                     }
                     break;

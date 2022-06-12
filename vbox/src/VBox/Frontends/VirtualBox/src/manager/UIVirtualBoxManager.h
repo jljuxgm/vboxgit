@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 86734 2020-10-28 11:43:13Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.h 86925 2020-11-19 18:19:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -273,6 +273,8 @@ private slots:
         void sltPerformDetachMachineUI();
         /** Handles call to save machine state. */
         void sltPerformSaveMachineState();
+        /** Handles call to terminate machine. */
+        void sltPerformTerminateMachine();
         /** Handles call to ask machine for shutdown. */
         void sltPerformShutdownMachine();
         /** Handles call to power machine off. */
@@ -410,6 +412,8 @@ private:
 
         /** Returns whether all passed @a items are local. */
         static bool isItemsLocal(const QList<UIVirtualMachineItem*> &items);
+        /** Returns whether all passed @a items are cloud. */
+        static bool isItemsCloud(const QList<UIVirtualMachineItem*> &items);
         /** Returns whether all passed @a items are powered off. */
         static bool isItemsPoweredOff(const QList<UIVirtualMachineItem*> &items);
         /** Returns whether at least one of passed @a items is able to shutdown. */
