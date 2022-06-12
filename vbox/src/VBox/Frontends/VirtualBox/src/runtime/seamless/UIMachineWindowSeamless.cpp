@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowSeamless.cpp 88635 2021-04-21 14:05:26Z vboxsync $ */
+/* $Id: UIMachineWindowSeamless.cpp 88649 2021-04-22 11:25:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowSeamless class implementation.
  */
@@ -87,7 +87,6 @@ void UIMachineWindowSeamless::sltRevokeWindowActivation()
 void UIMachineWindowSeamless::sltHandleMiniToolBarAutoHideToggled(bool fEnabled)
 {
     /* Save mini-toolbar settings: */
-    printf("save mini-toolbar auto-hide feature status as: %d\n", (int)fEnabled);
     gEDataManager->setAutoHideMiniToolbar(fEnabled, uiCommon().managedVMUuid());
 }
 #endif /* VBOX_WS_WIN || VBOX_WS_X11 */
