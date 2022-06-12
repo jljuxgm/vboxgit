@@ -1,4 +1,4 @@
-/* $Id: tstDBGCStubs.cpp 86098 2020-09-13 07:17:19Z vboxsync $ */
+/* $Id: tstDBGCStubs.cpp 86101 2020-09-13 08:17:45Z vboxsync $ */
 /** @file
  * DBGC Testcase - Command Parser, VMM Stub Functions.
  */
@@ -565,6 +565,12 @@ VMMR3DECL(int) DBGFR3FormatBugCheck(PUVM pUVM, char *pszDetails, size_t cbDetail
 {
     pszDetails[0] = '\0';
     return VERR_INTERNAL_ERROR;
+}
+
+VMMR3DECL(PDBGFADDRESS) DBGFR3AddrAdd(PDBGFADDRESS pAddress, RTGCUINTPTR uAddend)
+{
+    RT_NOREF(uAddend);
+    return pAddress;
 }
 
 #include <VBox/vmm/cfgm.h>
