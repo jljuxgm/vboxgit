@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic1.cpp 87608 2021-02-04 14:54:27Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic1.cpp 87629 2021-02-05 17:37:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic1 class implementation.
  */
@@ -416,8 +416,8 @@ bool UIWizardNewVMPage1::checkISOFile() const
 void UIWizardNewVMPage1::setTypeByISODetectedOSType(const QString &strDetectedOSType)
 {
     Q_UNUSED(strDetectedOSType);
-    // if (!strDetectedOSType.isEmpty())
-    //     onNameChanged(strDetectedOSType);
+    if (!strDetectedOSType.isEmpty())
+        onNameChanged(strDetectedOSType);
 }
 
 UIWizardNewVMPageBasic1::UIWizardNewVMPageBasic1(const QString &strGroup)
