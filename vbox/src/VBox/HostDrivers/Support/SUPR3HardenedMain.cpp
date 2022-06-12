@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain.cpp 87030 2020-12-02 10:46:49Z vboxsync $ */
+/* $Id: SUPR3HardenedMain.cpp 87593 2021-02-03 20:21:54Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main().
  */
@@ -1428,7 +1428,6 @@ static bool supR3HardenedMainIsProcSelfExeAccssible(void)
 
 
 /**
- * @copydoc RTPathExecDir
  * @remarks not quite like RTPathExecDir actually...
  */
 DECLHIDDEN(int) supR3HardenedPathAppBin(char *pszPath, size_t cchPath)
