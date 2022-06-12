@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 85936 2020-08-28 16:54:48Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 87435 2021-01-26 15:43:48Z vboxsync $ */
 /** @file
  * VBoxManage - The disk/medium related commands.
  */
@@ -575,12 +575,17 @@ RTEXITCODE handleCreateMedium(HandlerArg *a)
             {
                 const char * const pszKey = it->m_pszKey;
                 bool fBinary = true;
+                bool fPropertyFound = false;
                 for (size_t i = 0; i < propertyNames.size(); ++i)
                     if (RTUtf16CmpUtf8(propertyNames[i], pszKey) == 0)
                     {
                         fBinary = propertyTypes[i] == DataType_Int8;
+                        fPropertyFound = true;
                         break;
                     }
+                if (!fPropertyFound)
+                    return RTMsgErrorExit(RTEXITCODE_FAILURE, "The %s is not found in the property list of the requested medium format.",
+                                          pszKey);
                 if (!fBinary)
                     CHECK_ERROR2I_RET(pMedium, SetProperty(Bstr(pszKey).raw(), Bstr(it->m_pszValue).raw()),
                                       RTEXITCODE_FAILURE);
