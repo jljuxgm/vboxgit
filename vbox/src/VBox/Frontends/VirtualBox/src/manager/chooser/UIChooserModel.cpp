@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 87516 2021-02-01 19:32:18Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 87517 2021-02-01 20:00:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -1410,6 +1410,7 @@ void UIChooserModel::prepareContextMenu()
         pMenuGlobal->addAction(actionPool()->action(UIActionIndexMN_M_File_S_ExportAppliance));
 # ifdef VBOX_GUI_WITH_EXTRADATA_MANAGER_UI
         pMenuGlobal->addAction(actionPool()->action(UIActionIndexMN_M_File_S_ShowExtraDataManager));
+        pMenuGlobal->addSeparator();
 # endif
         pMenuGlobal->addAction(actionPool()->action(UIActionIndexMN_M_File_M_Tools));
 
