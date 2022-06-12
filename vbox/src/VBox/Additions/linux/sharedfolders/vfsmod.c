@@ -1,4 +1,4 @@
-/* $Id: vfsmod.c 87056 2020-12-08 16:28:25Z vboxsync $ */
+/* $Id: vfsmod.c 87095 2020-12-16 17:20:26Z vboxsync $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, module init/term, super block management.
  */
@@ -45,7 +45,7 @@
 #include "version-generated.h"
 #include "revision-generated.h"
 #include "product-generated.h"
-#if RTLNX_VER_MIN(5,0,0)
+#if RTLNX_VER_MIN(5,0,0) || RTLNX_RHEL_MIN(8,4)
 # include <uapi/linux/mount.h> /* for MS_REMOUNT */
 #elif RTLNX_VER_MAX(3,3,0)
 # include <linux/mount.h>
