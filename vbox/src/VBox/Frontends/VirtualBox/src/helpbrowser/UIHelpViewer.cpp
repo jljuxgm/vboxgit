@@ -1,4 +1,4 @@
-/* $Id: UIHelpViewer.cpp 88430 2021-04-09 11:42:55Z vboxsync $ */
+/* $Id: UIHelpViewer.cpp 88436 2021-04-09 13:35:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class implementation.
  */
@@ -76,12 +76,6 @@ public:
     UIContextMenuNavigationAction(QObject *pParent = 0);
     void setBackwardAvailable(bool fAvailable);
     void setForwardAvailable(bool fAvailable);
-
-protected:
-
-
-private slots:
-
 
 private:
 
@@ -184,7 +178,6 @@ void UIContextMenuNavigationAction::prepare()
     pMainLayout->addWidget(m_pHomeButton);
     pMainLayout->addWidget(m_pAddBookmarkButton);
     pMainLayout->setContentsMargins(0, 0, 0, 0);
-    //pMainLayout->addSpacerItem(new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Fixed));
 
     connect(m_pBackwardButton, &QIToolButton::pressed,
             this, &UIContextMenuNavigationAction::sigGoBackward);
