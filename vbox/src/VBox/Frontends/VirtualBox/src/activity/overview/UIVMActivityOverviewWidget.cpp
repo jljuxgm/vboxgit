@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityOverviewWidget.cpp 89000 2021-05-12 08:37:23Z vboxsync $ */
+/* $Id: UIVMActivityOverviewWidget.cpp 89039 2021-05-14 10:27:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMActivityOverviewWidget class implementation.
  */
@@ -368,6 +368,11 @@ class UIVMActivityOverviewDelegate : public QItemDelegate
 {
 
     Q_OBJECT;
+
+public:
+
+    UIVMActivityOverviewDelegate(QObject *pParent = 0)
+        : QItemDelegate(pParent){}
 
 protected:
 
@@ -1483,7 +1488,7 @@ void UIVMActivityOverviewWidget::prepareWidgets()
         m_pProxyModel->setSourceModel(m_pModel);
         m_pProxyModel->setNotRunningVMVisibility(m_fShowNotRunningVMs);
         m_pTableView->setModel(m_pProxyModel);
-        m_pTableView->setItemDelegate(new UIVMActivityOverviewDelegate);
+        m_pTableView->setItemDelegate(new UIVMActivityOverviewDelegate(this));
         m_pTableView->setSelectionMode(QAbstractItemView::SingleSelection);
         m_pTableView->setSelectionBehavior(QAbstractItemView::SelectRows);
         m_pTableView->setShowGrid(false);
