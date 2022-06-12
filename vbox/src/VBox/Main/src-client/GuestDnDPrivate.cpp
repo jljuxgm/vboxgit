@@ -1,4 +1,4 @@
-/* $Id: GuestDnDPrivate.cpp 85553 2020-07-30 12:47:52Z vboxsync $ */
+/* $Id: GuestDnDPrivate.cpp 85554 2020-07-30 13:07:17Z vboxsync $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget + GuestDnDSource.
  */
@@ -1364,7 +1364,7 @@ int GuestDnDBase::sendCancel(void)
     GuestDnDMsg Msg;
     Msg.setType(HOST_DND_CANCEL);
     if (m_DataBase.uProtocolVersion >= 3)
-        Msg.setNextUInt32(0); /** @todo ContextID not used yet. */
+        Msg.appendUInt32(0); /** @todo ContextID not used yet. */
 
     LogRel2(("DnD: Cancelling operation on guest ...\n"));
 
