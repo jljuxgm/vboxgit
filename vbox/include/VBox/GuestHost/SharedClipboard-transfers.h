@@ -1,4 +1,4 @@
-/* $Id: SharedClipboard-transfers.h 87651 2021-02-09 12:20:04Z vboxsync $ */
+/* $Id: SharedClipboard-transfers.h 87653 2021-02-09 12:54:29Z vboxsync $ */
 /** @file
  * Shared Clipboard - Shared transfer functions between host and guest.
  */
@@ -925,6 +925,7 @@ int ShClTransferListEntryInit(PSHCLLISTENTRY pListEntry);
 void ShClTransferListEntryDestroy(PSHCLLISTENTRY pListEntry);
 bool ShClTransferListEntryIsValid(PSHCLLISTENTRY pListEntry);
 
+void ShClTransferCopyCallbacks(PSHCLTRANSFERCALLBACKTABLE pCallbacksDst, PSHCLTRANSFERCALLBACKTABLE pCallbacksSrc);
 void ShClTransferSetCallbacks(PSHCLTRANSFER pTransfer, PSHCLTRANSFERCALLBACKTABLE pCallbacks);
 int ShClTransferSetProviderIface(PSHCLTRANSFER pTransfer, PSHCLTXPROVIDERCREATIONCTX pCreationCtx);
 int ShClTransferRootsSet(PSHCLTRANSFER pTransfer, const char *pszRoots, size_t cbRoots);

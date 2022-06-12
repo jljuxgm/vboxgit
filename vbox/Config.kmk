@@ -1,4 +1,4 @@
-# $Id: Config.kmk 87594 2021-02-03 20:23:46Z vboxsync $
+# $Id: Config.kmk 87654 2021-02-09 12:55:43Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -743,6 +743,9 @@ VBOX_WITH_SHARED_CLIPBOARD = 1
 # Enable shared clipboard (file) transfers
 #if1of ($(KBUILD_TARGET), win linux)
 # VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS = 1
+#  if1of ($(KBUILD_TARGET), linux)
+#   VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS_HTTP = 1
+# endif
 #endif
 # Enable the host/guest information service (aka guest properties).
 VBOX_WITH_GUEST_PROPS = 1
@@ -8180,7 +8183,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 87594 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 87654 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
