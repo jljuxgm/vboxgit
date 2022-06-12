@@ -1,4 +1,4 @@
-/* $Id: UIScaleFactorEditor.cpp 85848 2020-08-20 18:40:35Z vboxsync $ */
+/* $Id: UIScaleFactorEditor.cpp 85869 2020-08-21 14:34:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIScaleFactorEditor class implementation.
  */
@@ -212,8 +212,6 @@ void UIScaleFactorEditor::prepare()
         QGridLayout *pSliderLayout = new QGridLayout;
         if (pSliderLayout)
         {
-            pSliderLayout->setSpacing(0);
-
             m_pScaleSlider = new QIAdvancedSlider;
             {
                 m_pScaleSlider->setPageStep(10);
