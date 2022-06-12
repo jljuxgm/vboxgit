@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 89700 2021-06-15 10:21:35Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 89704 2021-06-15 12:34:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -4742,8 +4742,10 @@ void UIExtraDataManager::sltExtraDataChange(const QUuid &uMachineID, const QStri
             /* Cloud Console Manager restrictions changed: */
             else if (strKey == GUI_CloudConsoleManager_Restrictions)
                 emit sigCloudConsoleManagerRestrictionChange();
+#ifdef VBOX_WS_X11
             else if (strKey == GUI_DisableHostScreenSaver)
                 emit sigDisableHostScreenSaverStateChange(isFeatureAllowed(GUI_DisableHostScreenSaver));
+#endif
             /* Details categories: */
             else if (strKey == GUI_Details_Elements)
                 emit sigDetailsCategoriesChange();
