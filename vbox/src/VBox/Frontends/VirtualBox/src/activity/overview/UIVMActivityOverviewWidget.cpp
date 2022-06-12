@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityOverviewWidget.cpp 88131 2021-03-16 09:46:13Z vboxsync $ */
+/* $Id: UIVMActivityOverviewWidget.cpp 88133 2021-03-16 10:53:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMActivityOverviewWidget class implementation.
  */
@@ -990,7 +990,7 @@ QVariant UIActivityOverviewModel::data(const QModelIndex &index, int role) const
             font.setItalic(true);
             return font;
         }
-        if (role == Qt::ForegroundRole || role == Qt::TextColorRole)
+        if (role == Qt::ForegroundRole)
             return m_defaultViewFontColor.lighter(250);
     }
     if (!index.isValid() || role != Qt::DisplayRole || index.row() >= rowCount())
