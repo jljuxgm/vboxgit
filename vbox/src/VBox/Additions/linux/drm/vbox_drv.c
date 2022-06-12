@@ -1,4 +1,4 @@
-/*  $Id: vbox_drv.c 85707 2020-08-11 19:43:16Z vboxsync $ */
+/*  $Id: vbox_drv.c 86172 2020-09-18 13:58:09Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -61,7 +61,7 @@ MODULE_DEVICE_TABLE(pci, pciidlist);
 
 static int vbox_pci_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
 {
-#if RTLNX_VER_MAX(4,19,0)
+#if RTLNX_VER_MAX(4,19,0) && RTLNX_RHEL_MAX(8,3)
 	return drm_get_pci_dev(pdev, ent, &driver);
 #else
 	struct drm_device *dev = NULL;
@@ -303,19 +303,19 @@ static void vbox_master_drop(struct drm_device *dev, struct drm_file *file_priv)
 }
 
 static struct drm_driver driver = {
-#if RTLNX_VER_MAX(5,4,0)
+#if RTLNX_VER_MAX(5,4,0) && RTLNX_RHEL_MAX(8,3)
 	.driver_features =
 	    DRIVER_MODESET | DRIVER_GEM | DRIVER_HAVE_IRQ |
 # if RTLNX_VER_MAX(5,1,0) && !RTLNX_RHEL_MAJ_PREREQ(8,1)
 	    DRIVER_IRQ_SHARED |
 # endif
 	    DRIVER_PRIME,
-#else  /* >= 5.4.0 */
+#else  /* >= 5.4.0 && RHEL >= 8.3 */
         .driver_features = DRIVER_MODESET | DRIVER_GEM | DRIVER_HAVE_IRQ,
-#endif /* <  5.4.0 */
+#endif /* <  5.4.0 && < RHEL 8.3 */
 	.dev_priv_size = 0,
 
-#if RTLNX_VER_MAX(4,19,0)
+#if RTLNX_VER_MAX(4,19,0) && RTLNX_RHEL_MAX(8,3)
     /* Legacy hooks, but still supported. */
 	.load = vbox_driver_load,
 	.unload = vbox_driver_unload,
