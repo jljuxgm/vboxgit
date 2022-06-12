@@ -22,7 +22,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Id: tdAutostart1.py 87114 2020-12-22 16:17:19Z vboxsync $"
+__version__ = "$Id: tdAutostart1.py 87115 2020-12-22 16:42:15Z vboxsync $"
 # Standard Python imports.
 import os;
 import sys;
@@ -540,7 +540,7 @@ class tdAutostartOs(vboxtestvms.BaseTestVm):
         """
         _ = oGuestSession;
         _ = sDefaultPolicy;
-        _ = asUserAllow;
+        _ = asUserAllow; # pylint: disable=redefined-variable-type
         _ = asUserDeny;
         reporter.error('Not implemented');
         return False;
