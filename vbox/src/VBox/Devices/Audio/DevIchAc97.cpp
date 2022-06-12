@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 89637 2021-06-11 22:02:49Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 89639 2021-06-11 22:05:13Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -1843,8 +1843,8 @@ static int ichac97R3StreamOpen(PPDMDEVINS pDevIns, PAC97STATE pThis, PAC97STATER
             { /* likely */ }
             else
             {
-                LogFunc(("[SD%RU8] Adjusting uTimerHz=%u to %u\n",
-                         pStreamCC->State.uTimerHz, Cfg.Props.uHz > 44100 ? 200 : AC97_TIMER_HZ_DEFAULT));
+                LogFunc(("[SD%RU8] Adjusting uTimerHz=%u to %u\n", pStream->u8SD, pStreamCC->State.uTimerHz,
+                         Cfg.Props.uHz > 44100 ? 200 : AC97_TIMER_HZ_DEFAULT));
                 pStreamCC->State.uTimerHz = Cfg.Props.uHz > 44100 ? 200 : AC97_TIMER_HZ_DEFAULT;
             }
 
