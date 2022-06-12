@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.cpp 87722 2021-02-11 11:16:20Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.cpp 87724 2021-02-11 15:21:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class implementation.
  */
@@ -437,7 +437,7 @@ bool UIWizardNewVMPageExpert::isComplete() const
             {
                 m_pToolBox->setPageTitleIcon(ExpertToolboxItems_Unattended,
                                              UIIconPool::iconSet(":/status_error_16px.png"),
-                                             UIWizardNewVM::tr("Invalid username and password"));
+                                             UIWizardNewVM::tr("Invalid username and/or password"));
                 fIsComplete = false;
             }
         }
