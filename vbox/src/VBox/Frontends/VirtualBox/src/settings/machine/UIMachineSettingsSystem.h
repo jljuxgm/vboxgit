@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSystem.h 85839 2020-08-19 16:45:20Z vboxsync $ */
+/* $Id: UIMachineSettingsSystem.h 86045 2020-09-07 14:58:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSystem class declaration.
  */
@@ -243,7 +243,7 @@ private:
         /** Holds the paravirtualization provider combo instance. */
         QComboBox *m_pComboParavirtProvider;
         /** Holds the virtualization label instance. */
-        QLabel *m_pLabelVirtualization;
+        QLabel    *m_pLabelVirtualization;
         /** Holds the virtualization check-box instance. */
         QCheckBox *m_pCheckBoxVirtualization;
         /** Holds the nested paging check-box instance. */

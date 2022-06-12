@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsUSB.h 85953 2020-08-31 11:43:58Z vboxsync $ */
+/* $Id: UIMachineSettingsUSB.h 86045 2020-09-07 14:58:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsUSB class declaration.
  */
@@ -173,7 +173,7 @@ private:
         /** Holds the USB filters tree-widget instance. */
         QITreeWidget     *m_pTreeWidgetFilters;
         /** Holds the USB filters toolbar instance. */
-        UIToolBar        *m_pToolBarFilters;
+        UIToolBar        *m_pToolbarFilters;
         /** Holds the New action instance. */
         QAction          *m_pActionNew;
         /** Holds the Add action instance. */

@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsAudio.h 85883 2020-08-25 11:35:49Z vboxsync $ */
+/* $Id: UIMachineSettingsAudio.h 86045 2020-09-07 14:58:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsAudio class declaration.
  */
@@ -92,14 +92,14 @@ private:
         QCheckBox               *m_pCheckBoxAudio;
         /** Holds the audio settings widget instance. */
         QWidget                 *m_pWidgetAudioSettings;
-        /** Holds the host audio driver label instance. */
-        QLabel                  *m_pAudioHostDriverLabel;
-        /** Holds the host audio driver editor instance. */
-        UIAudioHostDriverEditor *m_pAudioHostDriverEditor;
-        /** Holds the host audio controller label instance. */
-        QLabel                  *m_pAudioControllerLabel;
-        /** Holds the host audio controller instance instance. */
-        UIAudioControllerEditor *m_pAudioControllerEditor;
+        /** Holds the audio host driver label instance. */
+        QLabel                  *m_pLabelAudioHostDriver;
+        /** Holds the audio host driver editor instance. */
+        UIAudioHostDriverEditor *m_pEditorAudioHostDriver;
+        /** Holds the audio host controller label instance. */
+        QLabel                  *m_pLabelAudioController;
+        /** Holds the audio host controller instance instance. */
+        UIAudioControllerEditor *m_pEditorAudioController;
         /** Holds the audio extended label instance. */
         QLabel                  *m_pLabelAudioExtended;
         /** Holds the audio output check-box instance. */

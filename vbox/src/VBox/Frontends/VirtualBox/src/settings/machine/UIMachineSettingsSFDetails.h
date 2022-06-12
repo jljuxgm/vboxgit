@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSFDetails.h 85961 2020-08-31 16:30:54Z vboxsync $ */
+/* $Id: UIMachineSettingsSFDetails.h 86045 2020-09-07 14:58:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSFDetails class declaration.
  */
@@ -106,11 +106,11 @@ private:
         /** Holds the auto-mount point editor instance. */
         QLineEdit          *m_pEditorAutoMountPoint;
         /** Holds the read-only check-box instance. */
-        QCheckBox          *m_pReadonlyCheckBox;
+        QCheckBox          *m_pCheckBoxReadonly;
         /** Holds the auto-mount check-box instance. */
-        QCheckBox          *m_pAutoMountCheckBox;
+        QCheckBox          *m_pCheckBoxAutoMount;
         /** Holds the permanent check-box instance. */
-        QCheckBox          *m_pPermanentCheckBox;
+        QCheckBox          *m_pCheckBoxPermanent;
         /** Holds the button-box instance. */
         QIDialogButtonBox  *m_pButtonBox;
     /** @} */
