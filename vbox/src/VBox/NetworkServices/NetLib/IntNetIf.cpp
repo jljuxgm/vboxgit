@@ -1,4 +1,4 @@
-/* $Id: IntNetIf.cpp 87824 2021-02-21 22:18:43Z vboxsync $ */
+/* $Id: IntNetIf.cpp 87825 2021-02-21 22:31:27Z vboxsync $ */
 /** @file
  * IntNetIf - Convenience class implementing an IntNet connection.
  */
@@ -470,7 +470,9 @@ IntNetIf::setInputGSOCallback(PFNINPUTGSO pfnInputGSO, void *pvUserGSO)
  * Process incoming packets forever.
  *
  * User call this method on its receive thread.  The packets are
- * passed to the user callback.
+ * passed to the user inpiut callbacks.  If the GSO input callback is
+ * not registered, a GSO input frame is carved into normal frames and
+ * those frames are passed to the normal input callback.
  */
 int
 IntNetIf::ifPump()
