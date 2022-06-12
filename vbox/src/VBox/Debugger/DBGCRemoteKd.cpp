@@ -1,4 +1,4 @@
-/* $Id: DBGCRemoteKd.cpp 86181 2020-09-20 10:23:14Z vboxsync $ */
+/* $Id: DBGCRemoteKd.cpp 86182 2020-09-20 10:24:38Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Windows Kd Remote Stub.
  */
@@ -941,7 +941,7 @@ typedef const KDPACKETMANIPULATE_QUERYMEMORY *PCKDPACKETMANIPULATE_QUERYMEMORY;
 /** Session memory space. */
 #define KD_PACKET_MANIPULATE64_QUERY_MEMORY_ADDR_SPACE_SESSION  UINT32_C(1)
 /** Kernel memory space. */
-#define KD_PACKET_MANIPULATE64_QUERY_MEMORY_ADDR_KERNEL_SESSION UINT32_C(2)
+#define KD_PACKET_MANIPULATE64_QUERY_MEMORY_ADDR_SPACE_KERNEL UINT32_C(2)
 /** @} */
 
 
@@ -2877,7 +2877,7 @@ static int dbgcKdCtxPktManipulate64QueryMemory(PKDCTX pThis, PCKDPACKETMANIPULAT
 
     /** @todo Need DBGF API to query protection and privilege level from guest page tables. */
     QueryMemory.u64GCPtr     = pPktManip->u.QueryMemory.u64GCPtr;
-    QueryMemory.u32AddrSpace = KD_PACKET_MANIPULATE64_QUERY_MEMORY_ADDR_KERNEL_SESSION;
+    QueryMemory.u32AddrSpace = KD_PACKET_MANIPULATE64_QUERY_MEMORY_ADDR_SPACE_KERNEL;
     QueryMemory.u32Flags     =   KD_PACKET_MANIPULATE64_QUERY_MEMORY_ADDR_F_READ
                                | KD_PACKET_MANIPULATE64_QUERY_MEMORY_ADDR_F_WRITE
                                | KD_PACKET_MANIPULATE64_QUERY_MEMORY_ADDR_F_EXEC;
