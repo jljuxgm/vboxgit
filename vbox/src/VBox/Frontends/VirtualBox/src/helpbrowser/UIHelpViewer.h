@@ -1,4 +1,4 @@
-/* $Id: UIHelpViewer.h 88488 2021-04-13 10:10:31Z vboxsync $ */
+/* $Id: UIHelpViewer.h 88496 2021-04-13 16:56:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class declaration.
  */
@@ -108,9 +108,11 @@ private:
     struct DocumentImage
     {
         qreal m_fInitialWidth;
+        qreal m_fScaledWidth;
         //int m_iPosition;
         QTextCursor m_textCursor;
         QPixmap m_pixmap;
+        QString m_strName;
     };
 
     void retranslateUi();

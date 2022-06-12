@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.cpp 88485 2021-04-13 08:04:22Z vboxsync $ */
+/* $Id: UIHelpBrowserWidget.cpp 88496 2021-04-13 16:56:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class implementation.
  */
@@ -926,7 +926,6 @@ void UIHelpBrowserTabManager::setSource(const QUrl &url, bool fNewTab /* = false
     }
     else
         addNewTab(url, false);
-
     updateTabUrlTitleList();
 }
 
