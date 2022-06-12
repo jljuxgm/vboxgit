@@ -1,4 +1,4 @@
-/* $Id: GuestDnDPrivate.cpp 85558 2020-07-30 13:33:43Z vboxsync $ */
+/* $Id: GuestDnDPrivate.cpp 85559 2020-07-30 13:37:36Z vboxsync $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget + GuestDnDSource.
  */
@@ -1163,16 +1163,12 @@ GuestDnDBase::GuestDnDBase(void)
 /**
  * Checks whether a given DnD format is supported or not.
  *
- * @returns HRESULT
+ * @returns \c true if supported, \c false if not.
  * @param   aFormat             DnD format to check.
- * @param   aSupported          Where to return \c TRUE if supported, or \c FALSE if not.
  */
-HRESULT GuestDnDBase::i_isFormatSupported(const com::Utf8Str &aFormat, BOOL *aSupported)
+bool GuestDnDBase::i_isFormatSupported(const com::Utf8Str &aFormat) const
 {
-    *aSupported = std::find(m_lstFmtSupported.begin(),
-                            m_lstFmtSupported.end(), aFormat) != m_lstFmtSupported.end()
-                ? TRUE : FALSE;
-    return S_OK;
+    return std::find(m_lstFmtSupported.begin(), m_lstFmtSupported.end(), aFormat) != m_lstFmtSupported.end();
 }
 
 /**
