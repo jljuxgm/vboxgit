@@ -1,4 +1,4 @@
-/* $Id: VBoxManageList.cpp 85575 2020-07-31 12:45:54Z vboxsync $ */
+/* $Id: VBoxManageList.cpp 85579 2020-07-31 13:09:16Z vboxsync $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
@@ -1308,7 +1308,9 @@ static HRESULT displayCPUProfile(ICPUProfile *pProfile, size_t idx, int cchIdx, 
         case CPUArchitecture_x86:       pszArchitecture = "x86"; break;
         case CPUArchitecture_AMD64:     pszArchitecture = "AMD64"; break;
 
+#ifdef VBOX_WITH_XPCOM_CPP_ENUM_HACK
         case CPUArchitecture_32BitHack:
+#endif
         case CPUArchitecture_Any:
             break;
     }
