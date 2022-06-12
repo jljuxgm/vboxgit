@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGroup.cpp 84402 2020-05-20 13:57:03Z vboxsync $ */
+/* $Id: UIChooserItemGroup.cpp 84416 2020-05-20 15:30:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGroup class implementation.
  */
@@ -938,7 +938,13 @@ void UIChooserItemGroup::sltNameEditingFinished()
     /* Enumerate all the group names: */
     QStringList groupNames;
     foreach (UIChooserItem *pItem, parentItem()->items(UIChooserNodeType_Group))
-        groupNames << pItem->name();
+    {
+        AssertPtrReturnVoid(pItem);
+        UIChooserItemGroup *pGroupItem = pItem->toGroupItem();
+        AssertPtrReturnVoid(pGroupItem);
+        if (pGroupItem->groupType() == UIChooserNodeGroupType_Local)
+            groupNames << pItem->name();
+    }
     /* If proposed name is empty or not unique, reject it: */
     QString strNewName = m_pNameEditorWidget->text().trimmed();
     if (strNewName.isEmpty() || groupNames.contains(strNewName))
