@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 88887 2021-05-05 23:38:58Z vboxsync $ */
+/* $Id: AudioMixer.cpp 88888 2021-05-05 23:40:45Z vboxsync $ */
 /** @file
  * Audio mixing routines for multiplexing audio sources in device emulations.
  *
@@ -747,7 +747,7 @@ int AudioMixerSinkCtl(PAUDMIXSINK pSink, AUDMIXSINKCMD enmSinkCmd)
  *        driver chain will mess up the whole thing.  Either we or DrvAudio
  *        need to take note of this and somehow gloss over it...  DevHDA with a
  *        linux guest completely freezes up the audio in the guest if we fail
- *        here. (Buggy VRDE code.) */
+ *        here. (Buggy VRDE code, see r144223.) */
     PAUDMIXSTREAM pStream;
     if (   pSink->enmDir == AUDMIXSINKDIR_INPUT
         && pSink->In.pStreamRecSource) /* Any recording source set? */

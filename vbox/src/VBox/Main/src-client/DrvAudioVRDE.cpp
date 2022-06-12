@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVRDE.cpp 88887 2021-05-05 23:38:58Z vboxsync $ */
+/* $Id: DrvAudioVRDE.cpp 88888 2021-05-05 23:40:45Z vboxsync $ */
 /** @file
  * VRDE audio backend for Main.
  */
@@ -414,7 +414,6 @@ static DECLCALLBACK(int) drvAudioVrdeHA_StreamDestroy(PPDMIHOSTAUDIO pInterface,
             pStreamVRDE->In.pCircBuf = NULL;
         }
     }
-    pDrv->pConsoleVRDPServer = NULL;   /** @todo r=bird: WTF? */
 
     return VINF_SUCCESS;
 }
