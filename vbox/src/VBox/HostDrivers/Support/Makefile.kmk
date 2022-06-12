@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 87233 2021-01-13 12:19:11Z vboxsync $
+# $Id: Makefile.kmk 87646 2021-02-08 22:17:04Z vboxsync $
 ## @file
 # Sub-Makefile for the support library and the drivers/modules/kexts it uses.
 #
@@ -816,6 +816,14 @@ ifeq ($(KBUILD_TARGET), win)
 	$(call VBOX_MAKE_CAT_FN, $(@D),$@)
  endif # signing
 endif # win
+
+#
+# Linux only.
+#
+PROGRAMS.linux += LnxPerfHack
+LnxPerfHack_TEMPLATE = VBoxR3Tool
+LnxPerfHack_SOURCES = linux/LnxPerfHack.cpp
+
 
 
 endif # !VBOX_ONLY_DOCS && !VBOX_ONLY_EXTPACKS && !VBOX_ONLY_VALIDATIONKIT
