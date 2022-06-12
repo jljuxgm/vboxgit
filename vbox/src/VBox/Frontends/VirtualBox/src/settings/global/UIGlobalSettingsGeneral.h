@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsGeneral.h 86095 2020-09-11 14:28:34Z vboxsync $ */
+/* $Id: UIGlobalSettingsGeneral.h 86096 2020-09-11 14:31:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsGeneral class declaration.
  */
@@ -37,10 +37,10 @@ class SHARED_LIBRARY_STUFF UIGlobalSettingsGeneral : public UISettingsPageGlobal
 
 public:
 
-    /** Constructs General settings page. */
+    /** Constructs settings page. */
     UIGlobalSettingsGeneral();
-    /** Destructs General settings page. */
-    ~UIGlobalSettingsGeneral();
+    /** Destructs settings page. */
+    virtual ~UIGlobalSettingsGeneral() /* override */;
 
 protected:
 
@@ -70,7 +70,7 @@ private:
     /** Cleanups all. */
     void cleanup();
 
-    /** Saves existing general data from the cache. */
+    /** Saves existing data from cache. */
     bool saveGeneralData();
 
     /** Holds the page data cache instance. */
@@ -78,14 +78,14 @@ private:
 
     /** @name Widgets
      * @{ */
-        /** Holds machine folder label instance. */
-        QLabel             *m_pLabelMachineFolder;
-        /** Holds machine folder selector instance. */
-        UIFilePathSelector *m_pSelectorMachineFolder;
-        /** Holds VRDP library name label instance. */
-        QLabel             *m_pLabelVRDPLibraryName;
-        /** Holds VRDP library name selector instance. */
-        UIFilePathSelector *m_pSelectorVRDPLibraryName;
+        /** Holds 'default machine folder' label instance. */
+        QLabel             *m_pLabelDefaultMachineFolder;
+        /** Holds 'default machine folder' selector instance. */
+        UIFilePathSelector *m_pSelectorDefaultMachineFolder;
+        /** Holds 'VRDE auth library' label instance. */
+        QLabel             *m_pLabelVRDEAuthLibrary;
+        /** Holds 'VRDE auth library' selector instance. */
+        UIFilePathSelector *m_pSelectorVRDEAuthLibrary;
     /** @} */
 };
 
