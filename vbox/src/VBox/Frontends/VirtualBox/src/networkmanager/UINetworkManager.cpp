@@ -1,4 +1,4 @@
-/* $Id: UINetworkManager.cpp 87313 2021-01-20 09:01:11Z vboxsync $ */
+/* $Id: UINetworkManager.cpp 87353 2021-01-21 15:58:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkManager class implementation.
  */
@@ -1692,15 +1692,16 @@ void UINetworkManagerWidget::loadNATNetwork(const CNATNetwork &comNetwork, UIDat
 
 void UINetworkManagerWidget::createItemForHostNetwork(const UIDataHostNetwork &data, bool fChooseItem)
 {
-    /* Create new item: */
+    /* Prepare new item: */
     UIItemHostNetwork *pItem = new UIItemHostNetwork;
     if (pItem)
     {
-        /* Configure item: */
         pItem->UIDataHostNetwork::operator=(data);
         pItem->updateFields();
+
         /* Add item to the tree: */
         m_pTreeWidgetHostNetwork->addTopLevelItem(pItem);
+
         /* And choose it as current if necessary: */
         if (fChooseItem)
             m_pTreeWidgetHostNetwork->setCurrentItem(pItem);
