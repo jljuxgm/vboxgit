@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIMachineView.cpp 84499 2020-05-25 13:05:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -575,10 +575,17 @@ void UIMachineView::sltMachineStateChanged()
                 && (   state           != KMachineState_TeleportingPausedVM
                     || m_previousState != KMachineState_Teleporting))
             {
-                /* Take live pause-pixmap: */
-                takePausePixmapLive();
-                /* Fully repaint to pick up pause-pixmap: */
-                viewport()->update();
+                // WORKAROUND:
+                // We can't take pause pixmap if actual state is Saving, this produces
+                // a lock and GUI will be frozen until SaveState call is complete...
+                const KMachineState enmActualState = machine().GetState();
+                if (enmActualState != KMachineState_Saving)
+                {
+                    /* Take live pause-pixmap: */
+                    takePausePixmapLive();
+                    /* Fully repaint to pick up pause-pixmap: */
+                    viewport()->update();
+                }
             }
             break;
         }
