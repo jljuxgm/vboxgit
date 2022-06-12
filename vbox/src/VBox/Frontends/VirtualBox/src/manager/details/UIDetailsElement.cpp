@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElement.cpp 89250 2021-05-24 16:55:43Z vboxsync $ */
+/* $Id: UIDetailsElement.cpp 89408 2021-05-31 17:12:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement class implementation.
  */
@@ -1498,7 +1498,7 @@ void UIDetailsElement::paintElementInfo(QPainter *pPainter, const QStyleOptionGr
 
     /* Prepare color: */
     const QPalette pal = QApplication::palette();
-    const QColor buttonTextColor = pal.color(QPalette::Active, QPalette::ButtonText);
+    const QColor buttonTextColor = pal.color(QPalette::Active, QPalette::Text);
     const QColor linkTextColor = pal.color(QPalette::Active, QPalette::Link);
 
     /* Paint pixmap: */
