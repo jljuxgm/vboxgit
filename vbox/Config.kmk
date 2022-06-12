@@ -1,4 +1,4 @@
-# $Id: Config.kmk 89021 2021-05-12 20:15:51Z vboxsync $
+# $Id: Config.kmk 89081 2021-05-17 09:15:52Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -793,7 +793,7 @@ endif
 VBOX_WITH_AUDIO_VRDE = 1
 ifdef VBOX_WITH_VALIDATIONKIT
  # Enable more platforms later.
- if1of ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH), linux.amd64)
+ if1of ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH), win.x86 win.amd64 linux.amd64)
   VBOX_WITH_AUDIO_VALIDATIONKIT = 1
  endif
 endif
@@ -8229,7 +8229,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 89021 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 89081 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
