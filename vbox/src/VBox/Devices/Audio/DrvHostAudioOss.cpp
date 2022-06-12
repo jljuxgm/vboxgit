@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioOss.cpp 88291 2021-03-25 12:11:23Z vboxsync $ */
+/* $Id: DrvHostAudioOss.cpp 88362 2021-04-05 00:31:17Z vboxsync $ */
 /** @file
  * Host audio driver - OSS (Open Sound System).
  */
@@ -757,7 +757,6 @@ static DECLCALLBACK(int) drvHostOSSAudioConstruct(PPDMDRVINS pDrvIns, PCFGMNODE 
     pThis->IHostAudio.pfnStreamIterate      = drvHostOssAudioHA_StreamIterate;
     pThis->IHostAudio.pfnStreamPlay         = drvHostOssAudioHA_StreamPlay;
     pThis->IHostAudio.pfnStreamCapture      = drvHostOssAudioHA_StreamCapture;
-    pThis->IHostAudio.pfnSetCallback        = NULL;
     pThis->IHostAudio.pfnGetDevices         = NULL;
     pThis->IHostAudio.pfnStreamGetPending   = NULL;
     pThis->IHostAudio.pfnStreamPlayBegin    = NULL;

@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioCoreAudio.cpp 88360 2021-04-05 00:15:13Z vboxsync $ */
+/* $Id: DrvHostAudioCoreAudio.cpp 88362 2021-04-05 00:31:17Z vboxsync $ */
 /** @file
  * Host audio driver - Mac OS X CoreAudio.
  */
@@ -2562,7 +2562,6 @@ static DECLCALLBACK(int) drvHostCoreAudioConstruct(PPDMDRVINS pDrvIns, PCFGMNODE
     pThis->IHostAudio.pfnStreamIterate      = drvHostCoreAudioHA_StreamIterate;
     pThis->IHostAudio.pfnStreamPlay         = drvHostCoreAudioHA_StreamPlay;
     pThis->IHostAudio.pfnStreamCapture      = drvHostCoreAudioHA_StreamCapture;
-    pThis->IHostAudio.pfnSetCallback        = NULL;
     pThis->IHostAudio.pfnGetDevices         = drvHostCoreAudioHA_GetDevices;
     pThis->IHostAudio.pfnStreamGetPending   = NULL;
     pThis->IHostAudio.pfnStreamPlayBegin    = NULL;

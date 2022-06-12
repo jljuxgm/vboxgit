@@ -1,4 +1,4 @@
-/* $Id: DrvAudioRec.cpp 88300 2021-03-26 14:31:55Z vboxsync $ */
+/* $Id: DrvAudioRec.cpp 88362 2021-04-05 00:31:17Z vboxsync $ */
 /** @file
  * Video recording audio backend for Main.
  *
@@ -1155,7 +1155,6 @@ DECLCALLBACK(int) AudioVideoRec::drvConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg
     pThis->IHostAudio.pfnStreamIterate      = drvAudioVideoRecHA_StreamIterate;
     pThis->IHostAudio.pfnStreamPlay         = drvAudioVideoRecHA_StreamPlay;
     pThis->IHostAudio.pfnStreamCapture      = drvAudioVideoRecHA_StreamCapture;
-    pThis->IHostAudio.pfnSetCallback        = NULL;
     pThis->IHostAudio.pfnGetDevices         = NULL;
     pThis->IHostAudio.pfnStreamGetPending   = NULL;
     pThis->IHostAudio.pfnStreamPlayBegin    = NULL;

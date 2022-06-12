@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioAlsa.cpp 88283 2021-03-24 19:00:13Z vboxsync $ */
+/* $Id: DrvHostAudioAlsa.cpp 88362 2021-04-05 00:31:17Z vboxsync $ */
 /** @file
  * Host audio driver - Advanced Linux Sound Architecture (ALSA).
  */
@@ -1503,7 +1503,6 @@ static DECLCALLBACK(int) drvHostAlsaAudioConstruct(PPDMDRVINS pDrvIns, PCFGMNODE
     pThis->IHostAudio.pfnStreamIterate      = drvHostAlsaAudioHA_StreamIterate;
     pThis->IHostAudio.pfnStreamPlay         = drvHostAlsaAudioHA_StreamPlay;
     pThis->IHostAudio.pfnStreamCapture      = drvHostAlsaAudioHA_StreamCapture;
-    pThis->IHostAudio.pfnSetCallback        = NULL;
     pThis->IHostAudio.pfnGetDevices         = NULL;
     pThis->IHostAudio.pfnStreamGetPending   = drvHostALSAStreamGetPending;
     pThis->IHostAudio.pfnStreamPlayBegin    = NULL;
