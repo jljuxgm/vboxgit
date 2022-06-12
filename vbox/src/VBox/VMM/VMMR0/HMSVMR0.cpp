@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 87373 2021-01-22 15:08:37Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 87387 2021-01-22 23:12:45Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -711,8 +711,8 @@ DECLINLINE(void) hmR0SvmFreeStructs(PVMCC pVM)
  *      - pVCpu->hm.s.fLoadSaveGuestXcr0
  *      - CPUMCTX_WSF_IBPB_ENTRY in pVCpu->cpum.GstCtx.fWorldSwitcher
  *      - CPUMCTX_WSF_IBPB_EXIT  in pVCpu->cpum.GstCtx.fWorldSwitcher
- *      - CPUMIsGuestFPUStateActive() (windows only)
- *      - CPUMCTX.fXStateMask (windows only)
+ *      - Perhaps: CPUMIsGuestFPUStateActive() (windows only)
+ *      - Perhaps: CPUMCTX.fXStateMask (windows only)
  *
  * We currently ASSUME that neither CPUMCTX_WSF_IBPB_ENTRY nor
  * CPUMCTX_WSF_IBPB_EXIT cannot be changed at runtime.
