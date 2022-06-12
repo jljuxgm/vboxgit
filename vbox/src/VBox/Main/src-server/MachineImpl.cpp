@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 85769 2020-08-14 12:59:51Z vboxsync $ */
+/* $Id: MachineImpl.cpp 85908 2020-08-27 17:10:34Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -3515,7 +3515,8 @@ HRESULT Machine::attachDevice(const com::Utf8Str &aName,
     AutoWriteLock mediumLock(medium COMMA_LOCKVAL_SRC_POS);
 
     if (    (pAttachTemp = i_findAttachment(*mMediumAttachments.data(), medium))
-         && !medium.isNull()
+         && !medium.isNull() && medium->i_getType() != MediumType_Readonly
+         &&  medium->i_getDeviceType() != DeviceType_DVD
        )
         return setError(VBOX_E_OBJECT_IN_USE,
                         tr("Medium '%s' is already attached to this virtual machine"),
