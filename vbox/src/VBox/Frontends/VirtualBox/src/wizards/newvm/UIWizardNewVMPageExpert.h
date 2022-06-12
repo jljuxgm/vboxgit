@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.h 85055 2020-07-03 12:41:08Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.h 85063 2020-07-06 10:19:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class declaration.
  */
@@ -23,7 +23,6 @@
 
 /* Local includes: */
 #include "UIWizardNewVMPageBasic1.h"
-#include "UIWizardNewVMPageBasicHardware.h"
 #include "UIWizardNewVMPageBasicDisk.h"
 
 /* Forward declarations: */
@@ -32,7 +31,6 @@ class QGroupBox;
 /* Expert page of the New Virtual Machine wizard: */
 class UIWizardNewVMPageExpert : public UIWizardPage,
                                 public UIWizardNewVMPage1,
-                                public UIWizardNewVMPageHardware,
                                 public UIWizardNewVMPageDisk
 {
     Q_OBJECT;

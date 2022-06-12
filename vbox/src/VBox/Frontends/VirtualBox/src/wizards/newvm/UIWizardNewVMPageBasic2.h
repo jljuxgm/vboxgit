@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic2.h 85056 2020-07-03 14:59:53Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic2.h 85063 2020-07-06 10:19:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic2 class declaration.
  */
@@ -59,13 +59,16 @@ public:
     /** @} */
 
 protected:
-    enum Tabs
+    enum
     {
-        Tabs_UserNameHostname,
-        Tabs_GAInstall,
-        Tabs_ProductKey,
-        Tabs_Max
+        ToolBoxItems_UserNameHostname,
+        ToolBoxItems_GAInstall,
+        ToolBoxItems_ProductKey
     };
+
+    void createUserNameHostNameWidgets();
+    void createGAInstallWidgets();
+    void createProductKeyWidgets();
 
     bool checkGAISOFile() const;
 
@@ -115,9 +118,7 @@ private slots:
 private:
 
     void prepare();
-    void createUserNameHostNameWidgets();
-    void createGAInstallWidgets();
-    void createProductKeyWidgets();
+    void createConnections();
     void retranslateUi();
     void initializePage();
     bool isComplete() const;

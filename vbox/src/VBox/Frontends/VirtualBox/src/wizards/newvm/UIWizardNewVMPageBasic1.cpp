@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic1.cpp 85055 2020-07-03 12:41:08Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic1.cpp 85063 2020-07-06 10:19:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic1 class implementation.
  */
@@ -507,7 +507,7 @@ int UIWizardNewVMPageBasic1::nextId() const
 {
     UIWizardNewVM *pWizard = qobject_cast<UIWizardNewVM*>(wizard());
     if (!pWizard || !pWizard->isUnattendedInstallEnabled())
-        return UIWizardNewVM::PageHardware;
+        return UIWizardNewVM::PageDisk;
     return UIWizardNewVM::Page2;
 }
 

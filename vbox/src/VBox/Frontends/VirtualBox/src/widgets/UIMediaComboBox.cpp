@@ -1,4 +1,4 @@
-/* $Id: UIMediaComboBox.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIMediaComboBox.cpp 85063 2020-07-06 10:19:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediaComboBox class implementation.
  */
@@ -25,7 +25,7 @@
 #include "UIMedium.h"
 
 
-UIMediaComboBox::UIMediaComboBox(QWidget *pParent)
+UIMediaComboBox::UIMediaComboBox(QWidget *pParent /* = 0 */)
     : QComboBox(pParent)
     , m_enmMediaType(UIMediumDeviceType_Invalid)
     , m_uMachineId(QUuid())
