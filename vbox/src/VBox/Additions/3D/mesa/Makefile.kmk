@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 84533 2020-05-26 10:43:04Z vboxsync $
+# $Id: Makefile.kmk 84540 2020-05-26 15:06:13Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox Guest Mesa 3D components
 #
@@ -122,7 +122,7 @@ TEMPLATE_VBoxMesa3DGuestR3Lib_INCS          = \
 	$(VBOX_MESA)/src/compiler/nir \
 	$(VBOX_MESA)/src/gallium/state_trackers/wgl \
 	$(TEMPLATE_VBoxMesa3DGuestR3Dll_INCS)
-ifdef KMK_WITH_QUOTING
+ifdef VBOX_WITH_AUTOMATIC_DEFS_QUOTING
 TEMPLATE_VBoxMesa3DGuestR3Lib_DEFS          = \
 	$(TEMPLATE_VBoxMesa3DGuestR3Dll_DEFS) \
 	PACKAGE_VERSION="$(VBOX_MESA)" \

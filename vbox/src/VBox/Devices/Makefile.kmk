@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 84533 2020-05-26 10:43:04Z vboxsync $
+# $Id: Makefile.kmk 84540 2020-05-26 15:06:13Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -1304,7 +1304,7 @@ endif
    PROGRAMS += tstIntNetHardened-1
    tstIntNetHardened-1_TEMPLATE = VBoxR3HardenedTstExe
    tstIntNetHardened-1_NAME     = tstIntNet-1
-   ifdef KMK_WITH_QUOTING
+   ifdef VBOX_WITH_AUTOMATIC_DEFS_QUOTING
     tstIntNetHardened-1_DEFS    = PROGRAM_NAME_STR="tstIntNet-1"
    else
     tstIntNetHardened-1_DEFS    = PROGRAM_NAME_STR=\"tstIntNet-1\"
@@ -1510,7 +1510,7 @@ if defined(VBOX_WITH_VMSVGA3D) && !defined(VBOX_ONLY_EXTPACKS) && "$(intersects 
  	IN_vmsvgashader_STATIC \
  	IN_VMSVGA3D \
  	VBOX_WINE_WITH_IPRT
- ifdef KMK_WITH_QUOTING
+ ifdef VBOX_WITH_AUTOMATIC_DEFS_QUOTING
  VBoxSVGA3D_DEFS        += \
  	WINE_UNICODE_API= \
  	DLLDIR="" \

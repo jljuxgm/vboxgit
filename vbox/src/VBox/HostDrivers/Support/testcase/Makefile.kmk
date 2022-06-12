@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 84533 2020-05-26 10:43:04Z vboxsync $
+# $Id: Makefile.kmk 84540 2020-05-26 15:06:13Z vboxsync $
 ## @file
 # Sub-Makefile for the SUPLib testcases.
 #
@@ -108,7 +108,7 @@ ifdef VBOX_WITH_TESTCASES
 endif
 
 tstGIP-2Hardened_TEMPLATE = VBoxR3HardenedTstExe
-ifdef KMK_WITH_QUOTING
+ifdef VBOX_WITH_AUTOMATIC_DEFS_QUOTING
  tstGIP-2Hardened_DEFS = PROGRAM_NAME_STR="tstGIP-2"
 else
  tstGIP-2Hardened_DEFS = PROGRAM_NAME_STR=\"tstGIP-2\"
