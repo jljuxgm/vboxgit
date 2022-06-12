@@ -1,4 +1,4 @@
-/* $Id: DevHPET.cpp 88353 2021-04-02 21:52:41Z vboxsync $ */
+/* $Id: DevHPET.cpp 88354 2021-04-02 22:00:23Z vboxsync $ */
 /** @file
  * HPET virtual device - High Precision Event Timer emulation.
  *
@@ -470,8 +470,8 @@ DECLINLINE(void) hpetTimerSetFrequencyHint(PPDMDEVINS pDevIns, PHPET pThis, PHPE
  * @param   pThis       The HPET instance data.
  * @param   pHpetTimer  The HPET timer to program.  The wrap-around indicator is
  *                      updates, and for periodic timer the comparator.
- * @param   tsNow       The current virtual sync clock time. 
- * @note    Caller must both the virtual sync (timer) and HPET locks. 
+ * @param   tsNow       The current virtual sync clock time.
+ * @note    Caller must both the virtual sync (timer) and HPET locks.
  */
 static void hpetProgramTimer(PPDMDEVINS pDevIns, PHPET pThis, PHPETTIMER pHpetTimer, uint64_t const tsNow)
 {
