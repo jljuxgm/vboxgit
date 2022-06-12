@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 84459 2020-05-22 12:55:07Z vboxsync $ */
+/* $Id: PDM.cpp 84493 2020-05-25 11:08:45Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -836,6 +836,14 @@ VMMR3_INT_DECL(int) PDMR3Term(PVM pVM)
             RTMemFree(pDevIns->Internal.s.paDbgfTraceTrack);
             pDevIns->Internal.s.paDbgfTraceTrack = NULL;
         }
+
+#ifdef VBOX_WITH_DBGF_TRACING
+        if (pDevIns->Internal.s.hDbgfTraceEvtSrc != NIL_DBGFTRACEREVTSRC)
+        {
+            DBGFR3TracerDeregisterEvtSrc(pVM, pDevIns->Internal.s.hDbgfTraceEvtSrc);
+            pDevIns->Internal.s.hDbgfTraceEvtSrc = NIL_DBGFTRACEREVTSRC;
+        }
+#endif
 
         TMR3TimerDestroyDevice(pVM, pDevIns);
         SSMR3DeregisterDevice(pVM, pDevIns, NULL, 0);
