@@ -1,4 +1,4 @@
-/* $Id: VBoxAutostart-win.cpp 89321 2021-05-27 14:07:04Z vboxsync $ */
+/* $Id: VBoxAutostart-win.cpp 89322 2021-05-27 14:10:31Z vboxsync $ */
 /** @file
  * VirtualBox Autostart Service - Windows Specific Code.
  */
@@ -903,7 +903,7 @@ static RTEXITCODE autostartStartVMs()
  */
 static VOID WINAPI autostartSvcWinServiceMain(DWORD cArgs, LPWSTR *papwszArgs)
 {
-    RT_NOREF(papwszArgs);
+    RT_NOREF(cArgs, papwszArgs);
     LogFlowFuncEnter();
 
     /* Give this thread a name in the logs. */
