@@ -1,4 +1,4 @@
-/* $Id: VBoxX11Helper.h 89704 2021-06-15 12:34:59Z vboxsync $ */
+/* $Id: VBoxX11Helper.h 89708 2021-06-15 14:25:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBox X11 helper functions.
  */
@@ -57,6 +57,9 @@ SHARED_LIBRARY_STUFF bool X11CheckExtension(const char *extensionName);
 SHARED_LIBRARY_STUFF QStringList X11ScrenSaverServices();
 
 /* Disables Screen Saver through QDBus. */
-SHARED_LIBRARY_STUFF  void X11InhibitScrenSaver(const QStringList &serviceNameList);
+SHARED_LIBRARY_STUFF  void X11InhibitScrenSaver(const QStringList &serviceNameList, QMap<QString, uint> &outCookies);
+
+/* Enables Screen Saver through QDBus. */
+SHARED_LIBRARY_STUFF  void X11UninhibitScrenSaver(const QMap<QString, uint> &cookies);
 
 #endif /* !FEQT_INCLUDED_SRC_platform_x11_VBoxX11Helper_h */
