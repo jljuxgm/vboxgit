@@ -1,4 +1,4 @@
-/* $Id: NEMInternal.h 86018 2020-09-03 09:13:51Z vboxsync $ */
+/* $Id: NEMInternal.h 86056 2020-09-07 20:07:22Z vboxsync $ */
 /** @file
  * NEM - Internal header file.
  */
@@ -191,8 +191,6 @@ typedef struct NEM
 
     /** Number of currently mapped pages. */
     uint32_t volatile           cMappedPages;
-    /** Maximum number of mappd pages before unmapping everything, 0 disables this. */
-    uint32_t                    cMappedPagesMaxBeforeUnmap;
 
     /** Info about the VidGetHvPartitionId I/O control interface. */
     NEMWINIOCTL                 IoCtlGetHvPartitionId;

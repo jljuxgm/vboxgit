@@ -1,4 +1,4 @@
-/* $Id: NEMAllNativeTemplate-win.cpp.h 86018 2020-09-03 09:13:51Z vboxsync $ */
+/* $Id: NEMAllNativeTemplate-win.cpp.h 86056 2020-09-07 20:07:22Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, Windows code template ring-0/3.
  */
@@ -4038,18 +4038,17 @@ NEM_TMPL_STATIC VBOXSTRICTRC nemHCWinRunGC(PVMCC pVM, PVMCPUCC pVCpu)
     VBOXSTRICTRC    rcStrict            = VINF_SUCCESS;
     for (unsigned iLoop = 0;; iLoop++)
     {
-//# ifndef NEM_WIN_USE_HYPERCALLS_FOR_PAGES
+# ifndef NEM_WIN_USE_HYPERCALLS_FOR_PAGES
         /*
          * Hack alert!
          */
         uint32_t const cMappedPages = pVM->nem.s.cMappedPages;
-        if (   cMappedPages >= pVM->nem.s.cMappedPagesMaxBeforeUnmap
-            && pVM->nem.s.cMappedPagesMaxBeforeUnmap != 0)
+        if (cMappedPages >= 4000)
         {
             PGMPhysNemEnumPagesByState(pVM, pVCpu, NEM_WIN_PAGE_STATE_READABLE, nemHCWinUnmapOnePageCallback, NULL);
             Log(("nemHCWinRunGC: Unmapped all; cMappedPages=%u -> %u\n", cMappedPages, pVM->nem.s.cMappedPages));
         }
-//# endif
+# endif
 
         /*
          * Pending interrupts or such?  Need to check and deal with this prior
