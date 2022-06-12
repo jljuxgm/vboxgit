@@ -1,4 +1,4 @@
-/* $Id: tstClipboardGH-X11.cpp 86712 2020-10-26 16:19:35Z vboxsync $ */
+/* $Id: tstClipboardGH-X11.cpp 86737 2020-10-28 14:00:58Z vboxsync $ */
 /** @file
  * Shared Clipboard guest/host X11 code test cases.
  */
@@ -913,8 +913,6 @@ int main()
                         sizeof("hello world") * 2);
     tstNoSelectionOwnership(&X11Ctx, "reading from VBox, headless clipboard");
 
-    ShClX11Destroy(&X11Ctx);
-    /* Note: Doing this twice is intentional. */
     ShClX11Destroy(&X11Ctx);
 
     return RTTestSummaryAndDestroy(hTest);
