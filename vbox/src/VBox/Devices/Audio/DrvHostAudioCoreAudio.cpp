@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioCoreAudio.cpp 88724 2021-04-27 10:24:18Z vboxsync $ */
+/* $Id: DrvHostAudioCoreAudio.cpp 88761 2021-04-29 01:00:32Z vboxsync $ */
 /** @file
  * Host audio driver - Mac OS X CoreAudio.
  */
@@ -2544,18 +2544,19 @@ static DECLCALLBACK(int) drvHostCoreAudioConstruct(PPDMDRVINS pDrvIns, PCFGMNODE
     /* IBase */
     pDrvIns->IBase.pfnQueryInterface = drvHostCoreAudioQueryInterface;
     /* IHostAudio */
-    pThis->IHostAudio.pfnGetConfig          = drvHostCoreAudioHA_GetConfig;
-    pThis->IHostAudio.pfnGetStatus          = drvHostCoreAudioHA_GetStatus;
-    pThis->IHostAudio.pfnStreamCreate       = drvHostCoreAudioHA_StreamCreate;
-    pThis->IHostAudio.pfnStreamDestroy      = drvHostCoreAudioHA_StreamDestroy;
-    pThis->IHostAudio.pfnStreamControl      = drvHostCoreAudioHA_StreamControl;
-    pThis->IHostAudio.pfnStreamGetReadable  = drvHostCoreAudioHA_StreamGetReadable;
-    pThis->IHostAudio.pfnStreamGetWritable  = drvHostCoreAudioHA_StreamGetWritable;
-    pThis->IHostAudio.pfnStreamGetStatus    = drvHostCoreAudioHA_StreamGetStatus;
-    pThis->IHostAudio.pfnStreamPlay         = drvHostCoreAudioHA_StreamPlay;
-    pThis->IHostAudio.pfnStreamCapture      = drvHostCoreAudioHA_StreamCapture;
-    pThis->IHostAudio.pfnGetDevices         = drvHostCoreAudioHA_GetDevices;
-    pThis->IHostAudio.pfnStreamGetPending   = NULL;
+    pThis->IHostAudio.pfnGetConfig                  = drvHostCoreAudioHA_GetConfig;
+    pThis->IHostAudio.pfnGetStatus                  = drvHostCoreAudioHA_GetStatus;
+    pThis->IHostAudio.pfnStreamCreate               = drvHostCoreAudioHA_StreamCreate;
+    pThis->IHostAudio.pfnStreamDestroy              = drvHostCoreAudioHA_StreamDestroy;
+    pThis->IHostAudio.pfnStreamNotifyDeviceChanged  = NULL;
+    pThis->IHostAudio.pfnStreamControl              = drvHostCoreAudioHA_StreamControl;
+    pThis->IHostAudio.pfnStreamGetReadable          = drvHostCoreAudioHA_StreamGetReadable;
+    pThis->IHostAudio.pfnStreamGetWritable          = drvHostCoreAudioHA_StreamGetWritable;
+    pThis->IHostAudio.pfnStreamGetPending           = NULL;
+    pThis->IHostAudio.pfnStreamGetStatus            = drvHostCoreAudioHA_StreamGetStatus;
+    pThis->IHostAudio.pfnStreamPlay                 = drvHostCoreAudioHA_StreamPlay;
+    pThis->IHostAudio.pfnStreamCapture              = drvHostCoreAudioHA_StreamCapture;
+    pThis->IHostAudio.pfnGetDevices                 = drvHostCoreAudioHA_GetDevices;
 
     int rc = RTCritSectInit(&pThis->CritSect);
     AssertRCReturn(rc, rc);

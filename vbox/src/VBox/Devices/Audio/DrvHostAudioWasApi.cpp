@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioWasApi.cpp 88724 2021-04-27 10:24:18Z vboxsync $ */
+/* $Id: DrvHostAudioWasApi.cpp 88761 2021-04-29 01:00:32Z vboxsync $ */
 /** @file
  * Host audio driver - Windows Audio Session API.
  */
@@ -2505,19 +2505,20 @@ static DECLCALLBACK(int) drvHostAudioWasConstruct(PPDMDRVINS pDrvIns, PCFGMNODE 
     /* IBase */
     pDrvIns->IBase.pfnQueryInterface        = drvHostAudioWasQueryInterface;
     /* IHostAudio */
-    pThis->IHostAudio.pfnGetConfig          = drvHostAudioWasHA_GetConfig;
-    pThis->IHostAudio.pfnGetDevices         = drvHostAudioWasHA_GetDevices;
-    pThis->IHostAudio.pfnGetStatus          = drvHostAudioWasHA_GetStatus;
-    pThis->IHostAudio.pfnStreamConfigHint   = drvHostAudioWasHA_StreamConfigHint;
-    pThis->IHostAudio.pfnStreamCreate       = drvHostAudioWasHA_StreamCreate;
-    pThis->IHostAudio.pfnStreamDestroy      = drvHostAudioWasHA_StreamDestroy;
-    pThis->IHostAudio.pfnStreamControl      = drvHostAudioWasHA_StreamControl;
-    pThis->IHostAudio.pfnStreamGetReadable  = drvHostAudioWasHA_StreamGetReadable;
-    pThis->IHostAudio.pfnStreamGetWritable  = drvHostAudioWasHA_StreamGetWritable;
-    pThis->IHostAudio.pfnStreamGetPending   = drvHostAudioWasHA_StreamGetPending;
-    pThis->IHostAudio.pfnStreamGetStatus    = drvHostAudioWasHA_StreamGetStatus;
-    pThis->IHostAudio.pfnStreamPlay         = drvHostAudioWasHA_StreamPlay;
-    pThis->IHostAudio.pfnStreamCapture      = drvHostAudioWasHA_StreamCapture;
+    pThis->IHostAudio.pfnGetConfig                  = drvHostAudioWasHA_GetConfig;
+    pThis->IHostAudio.pfnGetDevices                 = drvHostAudioWasHA_GetDevices;
+    pThis->IHostAudio.pfnGetStatus                  = drvHostAudioWasHA_GetStatus;
+    pThis->IHostAudio.pfnStreamConfigHint           = drvHostAudioWasHA_StreamConfigHint;
+    pThis->IHostAudio.pfnStreamCreate               = drvHostAudioWasHA_StreamCreate;
+    pThis->IHostAudio.pfnStreamDestroy              = drvHostAudioWasHA_StreamDestroy;
+    pThis->IHostAudio.pfnStreamNotifyDeviceChanged  = NULL;
+    pThis->IHostAudio.pfnStreamControl              = drvHostAudioWasHA_StreamControl;
+    pThis->IHostAudio.pfnStreamGetReadable          = drvHostAudioWasHA_StreamGetReadable;
+    pThis->IHostAudio.pfnStreamGetWritable          = drvHostAudioWasHA_StreamGetWritable;
+    pThis->IHostAudio.pfnStreamGetPending           = drvHostAudioWasHA_StreamGetPending;
+    pThis->IHostAudio.pfnStreamGetStatus            = drvHostAudioWasHA_StreamGetStatus;
+    pThis->IHostAudio.pfnStreamPlay                 = drvHostAudioWasHA_StreamPlay;
+    pThis->IHostAudio.pfnStreamCapture              = drvHostAudioWasHA_StreamCapture;
 
     /*
      * Validate and read the configuration.

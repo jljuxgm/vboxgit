@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioOss.cpp 88724 2021-04-27 10:24:18Z vboxsync $ */
+/* $Id: DrvHostAudioOss.cpp 88761 2021-04-29 01:00:32Z vboxsync $ */
 /** @file
  * Host audio driver - OSS (Open Sound System).
  */
@@ -857,18 +857,19 @@ static DECLCALLBACK(int) drvHostOSSAudioConstruct(PPDMDRVINS pDrvIns, PCFGMNODE 
     /* IBase */
     pDrvIns->IBase.pfnQueryInterface = drvHostOSSAudioQueryInterface;
     /* IHostAudio */
-    pThis->IHostAudio.pfnGetConfig          = drvHostOssAudioHA_GetConfig;
-    pThis->IHostAudio.pfnGetDevices         = NULL;
-    pThis->IHostAudio.pfnGetStatus          = drvHostOssAudioHA_GetStatus;
-    pThis->IHostAudio.pfnStreamCreate       = drvHostOssAudioHA_StreamCreate;
-    pThis->IHostAudio.pfnStreamDestroy      = drvHostOssAudioHA_StreamDestroy;
-    pThis->IHostAudio.pfnStreamControl      = drvHostOssAudioHA_StreamControl;
-    pThis->IHostAudio.pfnStreamGetReadable  = drvHostOssAudioHA_StreamGetReadable;
-    pThis->IHostAudio.pfnStreamGetWritable  = drvHostOssAudioHA_StreamGetWritable;
-    pThis->IHostAudio.pfnStreamGetStatus    = drvHostOssAudioHA_StreamGetStatus;
-    pThis->IHostAudio.pfnStreamPlay         = drvHostOssAudioHA_StreamPlay;
-    pThis->IHostAudio.pfnStreamCapture      = drvHostOssAudioHA_StreamCapture;
-    pThis->IHostAudio.pfnStreamGetPending   = NULL;
+    pThis->IHostAudio.pfnGetConfig                  = drvHostOssAudioHA_GetConfig;
+    pThis->IHostAudio.pfnGetDevices                 = NULL;
+    pThis->IHostAudio.pfnGetStatus                  = drvHostOssAudioHA_GetStatus;
+    pThis->IHostAudio.pfnStreamCreate               = drvHostOssAudioHA_StreamCreate;
+    pThis->IHostAudio.pfnStreamDestroy              = drvHostOssAudioHA_StreamDestroy;
+    pThis->IHostAudio.pfnStreamNotifyDeviceChanged  = NULL;
+    pThis->IHostAudio.pfnStreamControl              = drvHostOssAudioHA_StreamControl;
+    pThis->IHostAudio.pfnStreamGetReadable          = drvHostOssAudioHA_StreamGetReadable;
+    pThis->IHostAudio.pfnStreamGetWritable          = drvHostOssAudioHA_StreamGetWritable;
+    pThis->IHostAudio.pfnStreamGetPending           = NULL;
+    pThis->IHostAudio.pfnStreamGetStatus            = drvHostOssAudioHA_StreamGetStatus;
+    pThis->IHostAudio.pfnStreamPlay                 = drvHostOssAudioHA_StreamPlay;
+    pThis->IHostAudio.pfnStreamCapture              = drvHostOssAudioHA_StreamCapture;
 
     return VINF_SUCCESS;
 }

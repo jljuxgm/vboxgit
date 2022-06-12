@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVRDE.cpp 88724 2021-04-27 10:24:18Z vboxsync $ */
+/* $Id: DrvAudioVRDE.cpp 88761 2021-04-29 01:00:32Z vboxsync $ */
 /** @file
  * VRDE audio backend for Main.
  */
@@ -721,18 +721,19 @@ DECLCALLBACK(int) AudioVRDE::drvConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, ui
     /* IBase */
     pDrvIns->IBase.pfnQueryInterface = drvAudioVrdeQueryInterface;
     /* IHostAudio */
-    pThis->IHostAudio.pfnGetConfig         = drvAudioVrdeHA_GetConfig;
-    pThis->IHostAudio.pfnGetDevices        = NULL;
-    pThis->IHostAudio.pfnGetStatus         = drvAudioVrdeHA_GetStatus;
-    pThis->IHostAudio.pfnStreamCreate      = drvAudioVrdeHA_StreamCreate;
-    pThis->IHostAudio.pfnStreamDestroy     = drvAudioVrdeHA_StreamDestroy;
-    pThis->IHostAudio.pfnStreamControl     = drvAudioVrdeHA_StreamControl;
-    pThis->IHostAudio.pfnStreamGetReadable = drvAudioVrdeHA_StreamGetReadable;
-    pThis->IHostAudio.pfnStreamGetWritable = drvAudioVrdeHA_StreamGetWritable;
-    pThis->IHostAudio.pfnStreamGetPending  = NULL;
-    pThis->IHostAudio.pfnStreamGetStatus   = drvAudioVrdeHA_StreamGetStatus;
-    pThis->IHostAudio.pfnStreamPlay        = drvAudioVrdeHA_StreamPlay;
-    pThis->IHostAudio.pfnStreamCapture     = drvAudioVrdeHA_StreamCapture;
+    pThis->IHostAudio.pfnGetConfig                  = drvAudioVrdeHA_GetConfig;
+    pThis->IHostAudio.pfnGetDevices                 = NULL;
+    pThis->IHostAudio.pfnGetStatus                  = drvAudioVrdeHA_GetStatus;
+    pThis->IHostAudio.pfnStreamCreate               = drvAudioVrdeHA_StreamCreate;
+    pThis->IHostAudio.pfnStreamDestroy              = drvAudioVrdeHA_StreamDestroy;
+    pThis->IHostAudio.pfnStreamNotifyDeviceChanged  = NULL;
+    pThis->IHostAudio.pfnStreamControl              = drvAudioVrdeHA_StreamControl;
+    pThis->IHostAudio.pfnStreamGetReadable          = drvAudioVrdeHA_StreamGetReadable;
+    pThis->IHostAudio.pfnStreamGetWritable          = drvAudioVrdeHA_StreamGetWritable;
+    pThis->IHostAudio.pfnStreamGetPending           = NULL;
+    pThis->IHostAudio.pfnStreamGetStatus            = drvAudioVrdeHA_StreamGetStatus;
+    pThis->IHostAudio.pfnStreamPlay                 = drvAudioVrdeHA_StreamPlay;
+    pThis->IHostAudio.pfnStreamCapture              = drvAudioVrdeHA_StreamCapture;
 
     /*
      * Get the ConsoleVRDPServer object pointer.
