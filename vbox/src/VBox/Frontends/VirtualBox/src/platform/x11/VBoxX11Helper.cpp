@@ -1,4 +1,4 @@
-/* $Id: VBoxX11Helper.cpp 89702 2021-06-15 12:23:18Z vboxsync $ */
+/* $Id: VBoxX11Helper.cpp 89703 2021-06-15 12:34:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBox X11 helper functions.
  */
@@ -18,10 +18,6 @@
 /* Qt includes: */
 #include <QString>
 #include <QX11Info>
-#include <QtDBus/QDBusConnection>
-#include <QtDBus/QDBusReply>
-#include <QtDBus/QDBusInterface>
-#include <QtDBus/QDBusConnectionInterface>
 
 /* GUI includes: */
 #include "VBoxX11Helper.h"
@@ -159,26 +155,3 @@ SHARED_LIBRARY_STUFF bool X11CheckExtension(const char *extensionName)
     int first_error;
     return XQueryExtension(pDisplay, extensionName, &major_opcode, &first_event, &first_error);
 }
-
-QStringList X11ScrenSaverServices()
-{
-    QStringList serviceNames;
-    QDBusConnection bus = QDBusConnection::sessionBus();
-    QDBusReply<QStringList> replyr = bus.interface()->registeredServiceNames();
-    if (!replyr.isValid())
-        return serviceNames;
-    for (int i = 0; i < replyr.value().size(); ++i)
-    {
-        const QString strServiceName = replyr.value()[i];
-        if (strServiceName.contains("screensaver", Qt::CaseInsensitive))
-        {
-            printf("%s\n", qPrintable(strServiceName));
-            serviceNames << strServiceName;
-        }
-    }
-    return serviceNames;
-}
-
-
-#ifdef VBOX_WS_X11
-#endif

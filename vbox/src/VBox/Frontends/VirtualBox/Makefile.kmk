@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 89702 2021-06-15 12:23:18Z vboxsync $
+# $Id: Makefile.kmk 89703 2021-06-15 12:34:16Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -1555,7 +1555,6 @@ endif
 #
 UICommon_QT_MODULES = Core Gui Widgets
 UICommon_QT_MODULES.linux   += X11Extras
-UICommon_QT_MODULES.linux   += DBus
 UICommon_QT_MODULES.solaris += X11Extras
 UICommon_QT_MODULES.freebsd += X11Extras
 UICommon_QT_MODULES.darwin  += MacExtras
