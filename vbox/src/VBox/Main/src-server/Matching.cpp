@@ -1,4 +1,4 @@
-/* $Id: Matching.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: Matching.cpp 85236 2020-07-11 16:35:49Z vboxsync $ */
 /** @file
  * @todo r=bird: brief description, please.
  *
@@ -111,7 +111,7 @@ size_t ParsedIntervalFilter_base::parseValue (
 
     AssertReturn(endptr, 0);
 
-    size_t parsed = endptr - aFilter;
+    size_t parsed = (size_t)(endptr - aFilter);
 
     // return parsed if not able to parse to the end
     if (parsed != aEnd)
