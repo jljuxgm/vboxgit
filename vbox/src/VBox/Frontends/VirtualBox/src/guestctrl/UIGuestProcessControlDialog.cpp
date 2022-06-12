@@ -1,4 +1,4 @@
-/* $Id: UIGuestProcessControlDialog.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIGuestProcessControlDialog.cpp 86231 2020-09-23 10:55:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestProcessControlDialog class implementation.
  */
@@ -118,7 +118,7 @@ void UIGuestProcessControlDialog::loadSettings()
     restoreGeometry(geo);
 }
 
-void UIGuestProcessControlDialog::saveSettings() const
+void UIGuestProcessControlDialog::saveSettings()
 {
     /* Save geometry to extradata: */
     const QRect geo = currentGeometry();

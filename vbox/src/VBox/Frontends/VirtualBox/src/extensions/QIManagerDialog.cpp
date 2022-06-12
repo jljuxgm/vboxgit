@@ -1,4 +1,4 @@
-/* $Id: QIManagerDialog.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: QIManagerDialog.cpp 86231 2020-09-23 10:55:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIManagerDialog class implementation.
  */
@@ -64,6 +64,18 @@ QIManagerDialog::QIManagerDialog(QWidget *pCenterWidget)
 #endif
     , m_pButtonBox(0)
 {
+}
+
+void QIManagerDialog::closeEvent(QCloseEvent *pEvent)
+{
+    /* Ignore the event itself: */
+    pEvent->ignore();
+    /* But tell the listener to close us (once): */
+    if (!m_fCloseEmitted)
+    {
+        m_fCloseEmitted = true;
+        emit sigClose();
+    }
 }
 
 void QIManagerDialog::prepare()
@@ -217,16 +229,4 @@ void QIManagerDialog::cleanup()
     saveSettings();
     /* Cleanup menu-bar: */
     cleanupMenuBar();
-}
-
-void QIManagerDialog::closeEvent(QCloseEvent *pEvent)
-{
-    /* Ignore the event itself: */
-    pEvent->ignore();
-    /* But tell the listener to close us (once): */
-    if (!m_fCloseEmitted)
-    {
-        m_fCloseEmitted = true;
-        emit sigClose();
-    }
 }

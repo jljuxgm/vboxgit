@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerDialog.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIFileManagerDialog.cpp 86231 2020-09-23 10:55:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerDialog class implementation.
  */
@@ -117,7 +117,7 @@ void UIFileManagerDialog::loadSettings()
     restoreGeometry(geo);
 }
 
-void UIFileManagerDialog::saveSettings() const
+void UIFileManagerDialog::saveSettings()
 {
     /* Save geometry to extradata: */
     const QRect geo = currentGeometry();

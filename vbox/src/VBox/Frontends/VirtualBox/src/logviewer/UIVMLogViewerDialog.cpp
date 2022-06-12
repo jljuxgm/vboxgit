@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerDialog.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIVMLogViewerDialog.cpp 86231 2020-09-23 10:55:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerDialog class implementation.
  */
@@ -135,7 +135,7 @@ void UIVMLogViewerDialog::loadSettings()
     restoreGeometry(geo);
 }
 
-void UIVMLogViewerDialog::saveSettings() const
+void UIVMLogViewerDialog::saveSettings()
 {
     /* Save geometry to extradata: */
     const QRect geo = currentGeometry();

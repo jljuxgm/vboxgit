@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerDialog.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIVMLogViewerDialog.h 86231 2020-09-23 10:55:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerDialog class declaration.
  */
@@ -94,11 +94,11 @@ protected:
         virtual void configureCentralWidget() /* override */;
         /** Perform final preparations. */
         virtual void finalize() /* override */;
-        /** Loads dialog setting such as geometry from extradata. */
+        /** Loads dialog setting from extradata. */
         virtual void loadSettings() /* override */;
 
         /** Saves dialog setting into extradata. */
-        virtual void saveSettings() const /* override */;
+        virtual void saveSettings() /* override */;
     /** @} */
 
     /** @name Functions related to geometry restoration.
