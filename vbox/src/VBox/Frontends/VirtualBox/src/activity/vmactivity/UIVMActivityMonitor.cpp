@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityMonitor.cpp 89036 2021-05-14 08:14:18Z vboxsync $ */
+/* $Id: UIVMActivityMonitor.cpp 89038 2021-05-14 10:22:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMActivityMonitor class implementation.
  */
@@ -1063,11 +1063,11 @@ void UIVMActivityMonitor::prepareWidgets()
     int iRow = 0;
     foreach (const QString &strMetricName, chartOrder)
     {
+        if (!m_metrics.contains(strMetricName))
+            continue;
         QHBoxLayout *pChartLayout = new QHBoxLayout;
         pChartLayout->setSpacing(0);
 
-        if (!m_metrics.contains(strMetricName))
-            continue;
         QLabel *pLabel = new QLabel(this);
         pLabel->setAlignment(Qt::AlignLeft | Qt::AlignTop);
         pChartLayout->addWidget(pLabel);
