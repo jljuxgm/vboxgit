@@ -1,4 +1,4 @@
-/* $Id: DrvHostNullAudio.cpp 88022 2021-03-08 17:50:57Z vboxsync $ */
+/* $Id: DrvHostNullAudio.cpp 88023 2021-03-08 18:01:15Z vboxsync $ */
 /** @file
  * NULL audio driver.
  *
@@ -213,7 +213,7 @@ static DECLCALLBACK(int) drvHostNullAudioHA_StreamCreate(PPDMIHOSTAUDIO pInterfa
 
     if (RT_SUCCESS(rc))
     {
-        pStreamNull->pCfg = DrvAudioHlpStreamCfgDup(pCfgAcq);
+        pStreamNull->pCfg = PDMAudioStrmCfgDup(pCfgAcq);
         if (!pStreamNull->pCfg)
             rc = VERR_NO_MEMORY;
     }
@@ -257,7 +257,7 @@ static DECLCALLBACK(int) drvHostNullAudioHA_StreamDestroy(PPDMIHOSTAUDIO pInterf
 
     if (RT_SUCCESS(rc))
     {
-        DrvAudioHlpStreamCfgFree(pStreamNull->pCfg);
+        PDMAudioStrmCfgFree(pStreamNull->pCfg);
         pStreamNull->pCfg = NULL;
     }
 

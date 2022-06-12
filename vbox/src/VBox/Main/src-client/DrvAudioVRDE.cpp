@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVRDE.cpp 88022 2021-03-08 17:50:57Z vboxsync $ */
+/* $Id: DrvAudioVRDE.cpp 88023 2021-03-08 18:01:15Z vboxsync $ */
 /** @file
  * VRDE audio backend for Main.
  */
@@ -436,7 +436,7 @@ static DECLCALLBACK(int) drvAudioVrdeHA_StreamCreate(PPDMIHOSTAUDIO pInterface, 
 
     if (RT_SUCCESS(rc))
     {
-        pStreamVRDE->pCfg = DrvAudioHlpStreamCfgDup(pCfgAcq);
+        pStreamVRDE->pCfg = PDMAudioStrmCfgDup(pCfgAcq);
         if (!pStreamVRDE->pCfg)
             rc = VERR_NO_MEMORY;
     }
@@ -467,7 +467,7 @@ static DECLCALLBACK(int) drvAudioVrdeHA_StreamDestroy(PPDMIHOSTAUDIO pInterface,
 
     if (RT_SUCCESS(rc))
     {
-        DrvAudioHlpStreamCfgFree(pStreamVRDE->pCfg);
+        PDMAudioStrmCfgFree(pStreamVRDE->pCfg);
         pStreamVRDE->pCfg = NULL;
     }
 

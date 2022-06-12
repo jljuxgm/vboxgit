@@ -1,4 +1,4 @@
-/* $Id: DrvAudioRec.cpp 88022 2021-03-08 17:50:57Z vboxsync $ */
+/* $Id: DrvAudioRec.cpp 88023 2021-03-08 18:01:15Z vboxsync $ */
 /** @file
  * Video recording audio backend for Main.
  */
@@ -939,7 +939,7 @@ static DECLCALLBACK(int) drvAudioVideoRecHA_StreamCreate(PPDMIHOSTAUDIO pInterfa
     int rc = avRecCreateStreamOut(pThis, pStreamAV, pSink, pCfgReq, pCfgAcq);
     if (RT_SUCCESS(rc))
     {
-        pStreamAV->pCfg = DrvAudioHlpStreamCfgDup(pCfgAcq);
+        pStreamAV->pCfg = PDMAudioStrmCfgDup(pCfgAcq);
         if (!pStreamAV->pCfg)
             rc = VERR_NO_MEMORY;
     }
@@ -969,7 +969,7 @@ static DECLCALLBACK(int) drvAudioVideoRecHA_StreamDestroy(PPDMIHOSTAUDIO pInterf
 
     if (RT_SUCCESS(rc))
     {
-        DrvAudioHlpStreamCfgFree(pStreamAV->pCfg);
+        PDMAudioStrmCfgFree(pStreamAV->pCfg);
         pStreamAV->pCfg = NULL;
     }
 

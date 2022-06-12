@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 88022 2021-03-08 17:50:57Z vboxsync $ */
+/* $Id: AudioMixer.cpp 88023 2021-03-08 18:01:15Z vboxsync $ */
 /** @file
  * Audio mixing routines for multiplexing audio sources in device emulations.
  *
@@ -617,7 +617,7 @@ int AudioMixerSinkCreateStream(PAUDMIXSINK pSink,
               ("%s: Does not (yet) have a format set when it must\n", pSink->pszName));
 
     PDMAUDIOSTREAMCFG CfgHost;
-    rc = DrvAudioHlpStreamCfgInitFromPcmProps(&CfgHost, &pSink->PCMProps);
+    rc = PDMAudioStrmCfgInitWithProps(&CfgHost, &pSink->PCMProps);
     AssertRCReturn(rc, rc);
 
     /* Apply the sink's direction for the configuration to use to

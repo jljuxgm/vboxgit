@@ -1,4 +1,4 @@
-/* $Id: DrvHostCoreAudio.cpp 88022 2021-03-08 17:50:57Z vboxsync $ */
+/* $Id: DrvHostCoreAudio.cpp 88023 2021-03-08 18:01:15Z vboxsync $ */
 /** @file
  * VBox audio devices - Mac OS X CoreAudio audio driver.
  */
@@ -1592,7 +1592,7 @@ static int coreAudioStreamInitQueue(PCOREAUDIOSTREAM pCAStream, PPDMAUDIOSTREAMC
 
     /* Create the recording device's out format based on our required audio settings. */
     Assert(pCAStream->pCfg == NULL);
-    pCAStream->pCfg = DrvAudioHlpStreamCfgDup(pCfgReq);
+    pCAStream->pCfg = PDMAudioStrmCfgDup(pCfgReq);
     if (!pCAStream->pCfg)
         rc = VERR_NO_MEMORY;
 
@@ -1655,7 +1655,7 @@ static int coreAudioStreamUninitQueue(PCOREAUDIOSTREAM pCAStream)
 
     if (pCAStream->pCfg)
     {
-        DrvAudioHlpStreamCfgFree(pCAStream->pCfg);
+        PDMAudioStrmCfgFree(pCAStream->pCfg);
         pCAStream->pCfg = NULL;
     }
 

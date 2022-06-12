@@ -1,4 +1,4 @@
-/* $Id: DrvHostOSSAudio.cpp 88022 2021-03-08 17:50:57Z vboxsync $ */
+/* $Id: DrvHostOSSAudio.cpp 88023 2021-03-08 18:01:15Z vboxsync $ */
 /** @file
  * OSS (Open Sound System) host audio backend.
  */
@@ -970,7 +970,7 @@ static DECLCALLBACK(int) drvHostOssAudioHA_StreamCreate(PPDMIHOSTAUDIO pInterfac
 
     if (RT_SUCCESS(rc))
     {
-        pStreamOSS->pCfg = DrvAudioHlpStreamCfgDup(pCfgAcq);
+        pStreamOSS->pCfg = PDMAudioStrmCfgDup(pCfgAcq);
         if (!pStreamOSS->pCfg)
             rc = VERR_NO_MEMORY;
     }
@@ -1000,7 +1000,7 @@ static DECLCALLBACK(int) drvHostOssAudioHA_StreamDestroy(PPDMIHOSTAUDIO pInterfa
 
     if (RT_SUCCESS(rc))
     {
-        DrvAudioHlpStreamCfgFree(pStreamOSS->pCfg);
+        PDMAudioStrmCfgFree(pStreamOSS->pCfg);
         pStreamOSS->pCfg = NULL;
     }
 

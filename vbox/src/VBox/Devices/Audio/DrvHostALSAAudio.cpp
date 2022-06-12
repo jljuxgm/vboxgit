@@ -1,4 +1,4 @@
-/* $Id: DrvHostALSAAudio.cpp 88022 2021-03-08 17:50:57Z vboxsync $ */
+/* $Id: DrvHostALSAAudio.cpp 88023 2021-03-08 18:01:15Z vboxsync $ */
 /** @file
  * ALSA audio driver.
  */
@@ -1364,7 +1364,7 @@ static DECLCALLBACK(int) drvHostAlsaAudioHA_StreamCreate(PPDMIHOSTAUDIO pInterfa
 
     if (RT_SUCCESS(rc))
     {
-        pStreamALSA->pCfg = DrvAudioHlpStreamCfgDup(pCfgAcq);
+        pStreamALSA->pCfg = PDMAudioStrmCfgDup(pCfgAcq);
         if (!pStreamALSA->pCfg)
             rc = VERR_NO_MEMORY;
     }
@@ -1394,7 +1394,7 @@ static DECLCALLBACK(int) drvHostAlsaAudioHA_StreamDestroy(PPDMIHOSTAUDIO pInterf
 
     if (RT_SUCCESS(rc))
     {
-        DrvAudioHlpStreamCfgFree(pStreamALSA->pCfg);
+        PDMAudioStrmCfgFree(pStreamALSA->pCfg);
         pStreamALSA->pCfg = NULL;
     }
 

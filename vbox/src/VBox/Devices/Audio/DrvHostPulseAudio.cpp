@@ -1,4 +1,4 @@
-/* $Id: DrvHostPulseAudio.cpp 88022 2021-03-08 17:50:57Z vboxsync $ */
+/* $Id: DrvHostPulseAudio.cpp 88023 2021-03-08 18:01:15Z vboxsync $ */
 /** @file
  * VBox audio devices: Pulse Audio audio driver.
  */
@@ -1519,7 +1519,7 @@ static DECLCALLBACK(int) drvHostPulseAudioHA_StreamCreate(PPDMIHOSTAUDIO pInterf
 
     if (RT_SUCCESS(rc))
     {
-        pStreamPA->pCfg = DrvAudioHlpStreamCfgDup(pCfgAcq);
+        pStreamPA->pCfg = PDMAudioStrmCfgDup(pCfgAcq);
         if (!pStreamPA->pCfg)
             rc = VERR_NO_MEMORY;
     }
@@ -1552,7 +1552,7 @@ static DECLCALLBACK(int) drvHostPulseAudioHA_StreamDestroy(PPDMIHOSTAUDIO pInter
 
     if (RT_SUCCESS(rc))
     {
-        DrvAudioHlpStreamCfgFree(pStreamPA->pCfg);
+        PDMAudioStrmCfgFree(pStreamPA->pCfg);
         pStreamPA->pCfg = NULL;
     }
 

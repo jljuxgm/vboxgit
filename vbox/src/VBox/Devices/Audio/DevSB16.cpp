@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 88015 2021-03-08 13:05:26Z vboxsync $ */
+/* $Id: DevSB16.cpp 88023 2021-03-08 18:01:15Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  */
@@ -1767,7 +1767,7 @@ static int sb16CreateDrvStream(PPDMAUDIOSTREAMCFG pCfg, PSB16DRIVER pDrv)
     AssertReturn(pCfg->enmDir == PDMAUDIODIR_OUT, VERR_INVALID_PARAMETER);
     Assert(DrvAudioHlpStreamCfgIsValid(pCfg));
 
-    PPDMAUDIOSTREAMCFG pCfgHost = DrvAudioHlpStreamCfgDup(pCfg);
+    PPDMAUDIOSTREAMCFG pCfgHost = PDMAudioStrmCfgDup(pCfg);
     if (!pCfgHost)
         return VERR_NO_MEMORY;
 
@@ -1785,7 +1785,7 @@ static int sb16CreateDrvStream(PPDMAUDIOSTREAMCFG pCfg, PSB16DRIVER pDrv)
         LogFlowFunc(("LUN#%RU8: Created output \"%s\", rc=%Rrc\n", pDrv->uLUN, pCfg->szName, rc));
     }
 
-    DrvAudioHlpStreamCfgFree(pCfgHost);
+    PDMAudioStrmCfgFree(pCfgHost);
 
     return rc;
 }
@@ -1838,7 +1838,7 @@ static int sb16CheckAndReOpenOut(PPDMDEVINS pDevIns, PSB16STATE pThis)
         Cfg.Props.fSigned   = RT_BOOL(pThis->fmt_signed);
         Cfg.Props.cShift    = PDMAUDIOPCMPROPS_MAKE_SHIFT_PARMS(Cfg.Props.cbSample, Cfg.Props.cChannels);
 
-        if (!DrvAudioHlpStreamCfgMatchesPcmProps(&Cfg, &pThis->Out.Cfg.Props))
+        if (!PDMAudioStrmCfgMatchesProps(&Cfg, &pThis->Out.Cfg.Props))
         {
             Cfg.enmDir      = PDMAUDIODIR_OUT;
             Cfg.u.enmDst    = PDMAUDIOPLAYBACKDST_FRONT;
@@ -1868,7 +1868,7 @@ static int sb16OpenOut(PPDMDEVINS pDevIns, PSB16STATE pThis, PPDMAUDIOSTREAMCFG 
     if (!DrvAudioHlpStreamCfgIsValid(pCfg))
         return VERR_INVALID_PARAMETER;
 
-    int rc = DrvAudioHlpStreamCfgCopy(&pThis->Out.Cfg, pCfg);
+    int rc = PDMAudioStrmCfgCopy(&pThis->Out.Cfg, pCfg);
     if (RT_SUCCESS(rc))
     {
         /* Set scheduling hint (if available). */
