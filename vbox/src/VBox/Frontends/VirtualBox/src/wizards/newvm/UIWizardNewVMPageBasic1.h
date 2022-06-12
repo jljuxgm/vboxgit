@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasicNameType.h 85042 2020-07-03 06:10:45Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic1.h 85044 2020-07-03 06:18:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasicNameType class declaration.
  */

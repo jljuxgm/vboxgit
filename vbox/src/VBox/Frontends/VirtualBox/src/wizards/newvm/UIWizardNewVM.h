@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.h 85043 2020-07-03 06:13:12Z vboxsync $ */
+/* $Id: UIWizardNewVM.h 85044 2020-07-03 06:18:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class declaration.
  */
@@ -59,7 +59,7 @@ public:
     /* Page IDs: */
     enum
     {
-        PageNameType,
+        Page1,
         PageUserNameHostname,
         PageGAInstall,
         PageProductKey,

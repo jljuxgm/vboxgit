@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.h 84886 2020-06-21 15:03:55Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.h 85044 2020-07-03 06:18:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class declaration.
  */
@@ -22,7 +22,7 @@
 #endif
 
 /* Local includes: */
-#include "UIWizardNewVMPageBasicNameType.h"
+#include "UIWizardNewVMPageBasic1.h"
 #include "UIWizardNewVMPageBasicHardware.h"
 #include "UIWizardNewVMPageBasicDisk.h"
 
