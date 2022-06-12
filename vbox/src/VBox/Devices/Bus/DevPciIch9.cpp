@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 85490 2020-07-28 15:57:10Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 85904 2020-08-27 13:19:54Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation device.
  *
@@ -2244,6 +2244,19 @@ static void ich9pciBiosInitAllDevicesOnBus(PPDMDEVINS pDevIns, PDEVPCIROOT pPciR
                 devpciR3SetWord(pDevIns, pPciDev, VBOX_PCI_COMMAND, uCmd | VBOX_PCI_COMMAND_IO);
                 break;
             }
+#ifdef VBOX_WITH_IOMMU_AMD
+            case 0x0806:
+            {
+                /* IOMMU. */
+                uint16_t const uVendorId = devpciR3GetWord(pPciDev, VBOX_PCI_VENDOR_ID);
+                if (uVendorId == 0x1022 /* IOMMU_PCI_VENDOR_ID => AMD. */)
+                {
+                    /* AMD. */
+                    devpciR3SetDWord(pDevIns, pPciDev, 0x44, 0xfeb80001); /* set MMIO region address + enable (bit 0). */
+                }
+                break;
+            }
+#endif
             default:
                 break;
         }
