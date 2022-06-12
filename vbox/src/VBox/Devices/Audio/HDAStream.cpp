@@ -1,4 +1,4 @@
-/* $Id: HDAStream.cpp 87969 2021-03-05 10:46:57Z vboxsync $ */
+/* $Id: HDAStream.cpp 87970 2021-03-05 10:56:12Z vboxsync $ */
 /** @file
  * HDAStream.cpp - Stream functions for HD Audio.
  */
@@ -509,7 +509,7 @@ int hdaR3StreamSetUp(PPDMDEVINS pDevIns, PHDASTATE pThis, PHDASTREAM pStreamShar
                     /** @todo r=bird: you need to find the smallest common denominator here, not
                      *        just the minimum.  Ignoring this for now as windows has two equal
                      *        sized buffers both with IOC set. */
-                    LogRel(("HDA: Uneven IRQ buffer config; i=%u cbCur=%#x cbMin=%#x.\n", i, cbTransferHeuristicsCur, cbTransferHeuristics));
+                    LogRelMax(32, ("HDA: Uneven IRQ buffer config; i=%u cbCur=%#x cbMin=%#x.\n", i, cbTransferHeuristicsCur, cbTransferHeuristics));
                     cbTransferHeuristics = RT_MIN(cbTransferHeuristicsCur, cbTransferHeuristics);
                 }
                 cbTransferHeuristicsCur = 0;
