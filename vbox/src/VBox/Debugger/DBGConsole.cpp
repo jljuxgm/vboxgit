@@ -1,4 +1,4 @@
-/* $Id: DBGConsole.cpp 86755 2020-10-29 08:30:25Z vboxsync $ */
+/* $Id: DBGConsole.cpp 87788 2021-02-18 15:12:31Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console.
  */
@@ -1164,6 +1164,7 @@ int dbgcCreate(PDBGC *ppDbgc, PCDBGCIO pIo, unsigned fFlags)
     //pDbgc->paVars           = NULL;
     //pDbgc->pPlugInHead      = NULL;
     //pDbgc->pFirstBp         = NULL;
+    RTListInit(&pDbgc->LstTraceFlowMods);
     //pDbgc->abSearch         = {0};
     //pDbgc->cbSearch         = 0;
     pDbgc->cbSearchUnit       = 1;
