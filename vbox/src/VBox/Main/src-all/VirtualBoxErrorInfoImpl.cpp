@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxErrorInfoImpl.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VirtualBoxErrorInfoImpl.cpp 85237 2020-07-11 16:37:08Z vboxsync $ */
 /** @file
  * VirtualBoxErrorInfo COM class implementation
  */
@@ -85,7 +85,7 @@ STDMETHODIMP VirtualBoxErrorInfo::COMGETTER(ResultCode)(LONG *aResultCode)
 {
     CheckComArgOutPointerValid(aResultCode);
 
-    *aResultCode = m_resultCode;
+    *aResultCode = (LONG)m_resultCode;
     return S_OK;
 }
 
@@ -250,7 +250,7 @@ NS_IMETHODIMP VirtualBoxErrorInfo::GetResult(nsresult *aResult)
     PRInt32 lrc;
     nsresult rc = COMGETTER(ResultCode)(&lrc);
     if (SUCCEEDED(rc))
-      *aResult = lrc;
+      *aResult = (nsresult)lrc;
     return rc;
 }
 
