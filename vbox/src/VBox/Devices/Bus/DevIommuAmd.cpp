@@ -1,4 +1,4 @@
-/* $Id: DevIommuAmd.cpp 87426 2021-01-26 04:56:25Z vboxsync $ */
+/* $Id: DevIommuAmd.cpp 87458 2021-01-28 13:26:28Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - AMD implementation.
  */
@@ -627,10 +627,11 @@ static PIOWALKRESULT iommuAmdIotlbLookup(PIOMMU pThis, uint64_t uDomainId, uint6
  * Adds an IOTLB entry corresponding to the given I/O page walk result.
  *
  * @param   pThis           The IOMMU device state.
+ * @param   uDomainId       The domain ID.
  * @param   uIova           The I/O virtual address being accessed.
  * @param   pWalkResult     The I/O page walk result of the access.
  */
-static void iommuAmdIotlbAdd(PIOMMU pThis, uint64_t uIova, PCIOWALKRESULT pWalkResult)
+static void iommuAmdIotlbAdd(PIOMMU pThis, uint16_t uDomainId, uint64_t uIova, PCIOWALKRESULT pWalkResult)
 {
     Assert(!(uIova & X86_PAGE_4K_OFFSET_MASK));
     Assert(pWalkResult);
@@ -661,8 +662,8 @@ static void iommuAmdIotlbAdd(PIOMMU pThis, uint64_t uIova, PCIOWALKRESULT pWalkR
     RT_ZERO(*pIotlbe);
 
     /* Update the entry with the result of the page walk. */
-    pIotlbe->Core.Key     = uIova;
-    pIotlbe->Core.KeyLast = uIova + RT_BIT_64(pWalkResult->cShift) - 1;
+    pIotlbe->Core.Key     = iommuAmdIotlbConstructKey(uDomainId, uIova);
+    pIotlbe->Core.KeyLast = iommuAmdIotlbConstructKey(uDomainId, uIova + RT_BIT_64(pWalkResult->cShift) - 1);
     pIotlbe->WalkResult   = *pWalkResult;
 
     /* Add the entry to the cache. */
