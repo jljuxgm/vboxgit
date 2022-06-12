@@ -1,4 +1,4 @@
-/* $Id: DnDDroppedFiles.cpp 85026 2020-07-01 14:27:44Z vboxsync $ */
+/* $Id: DnDDroppedFiles.cpp 85027 2020-07-01 14:30:46Z vboxsync $ */
 /** @file
  * DnD - Directory handling.
  */
@@ -170,19 +170,19 @@ int DnDDroppedFiles::OpenEx(const char *pszPath, DNDURIDROPPEDFILEFLAGS fFlags /
 
         /* The actually drop directory consist of the current time stamp and a
          * unique number when necessary. */
-        char pszTime[64];
+        char szTime[64];
         RTTIMESPEC time;
-        if (!RTTimeSpecToString(RTTimeNow(&time), pszTime, sizeof(pszTime)))
+        if (!RTTimeSpecToString(RTTimeNow(&time), szTime, sizeof(szTime)))
         {
             rc = VERR_BUFFER_OVERFLOW;
             break;
         }
 
-        rc = DnDPathSanitizeFilename(pszTime, sizeof(pszTime));
+        rc = DnDPathSanitizeFilename(szTime, sizeof(szTime));
         if (RT_FAILURE(rc))
             break;
 
-        rc = RTPathAppend(szDropDir, sizeof(szDropDir), pszTime);
+        rc = RTPathAppend(szDropDir, sizeof(szDropDir), szTime);
         if (RT_FAILURE(rc))
             break;
 
