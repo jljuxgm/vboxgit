@@ -1,4 +1,4 @@
-/* $Id: ProgressImpl.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: ProgressImpl.h 85251 2020-07-11 23:17:17Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -234,6 +234,7 @@ private:
                            const ComPtr<IVirtualBoxErrorInfo> &aErrorInfo);
 
     // internal helper methods
+    HRESULT i_notifyCompleteWorker(HRESULT aResultCode, const ComPtr<IVirtualBoxErrorInfo> &aErrorInfo);
     double i_calcTotalPercent();
     void i_checkForAutomaticTimeout(void);
 
