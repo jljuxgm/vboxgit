@@ -1,4 +1,4 @@
-# $Id: VirtualBox.tmpl.spec 88318 2021-03-29 20:26:05Z vboxsync $
+# $Id: VirtualBox.tmpl.spec 88319 2021-03-29 20:36:56Z vboxsync $
 ## @file
 # Spec file for creating VirtualBox rpm packages
 #
@@ -206,10 +206,6 @@ if [ -f $RPM_BUILD_ROOT/usr/lib/virtualbox/libQt5CoreVBox.so.5 ]; then
   echo "[Paths]" > $RPM_BUILD_ROOT/usr/lib/virtualbox/qt.conf
   echo "Plugins = /usr/lib/virtualbox/plugins" >> $RPM_BUILD_ROOT/usr/lib/virtualbox/qt.conf
   rm $RPM_BUILD_ROOT/usr/lib/virtualbox/chrpath
-fi
-if [ -d $RPM_BUILD_ROOT/usr/lib/virtualbox/legacy ]; then
-  mv $RPM_BUILD_ROOT/usr/lib/virtualbox/legacy/* $RPM_BUILD_ROOT/usr/lib/virtualbox
-  rmdir $RPM_BUILD_ROOT/usr/lib/virtualbox/legacy
 fi
 ln -s ../VBoxVMM.so $RPM_BUILD_ROOT/usr/lib/virtualbox/components/VBoxVMM.so
 for i in VBoxHeadless VBoxNetDHCP VBoxNetNAT VBoxNetAdpCtl; do
