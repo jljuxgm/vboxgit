@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-glLdr.h 84727 2020-06-08 17:08:24Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-glLdr.h 85368 2020-07-17 09:55:56Z vboxsync $ */
 /** @file
  * DevVGA - VMWare SVGA device - 3D part, dynamic loading of GL function.
  */
@@ -420,6 +420,15 @@ GLPFN int (* (* pfn_XSetErrorHandler)(int (*handler)(Display *, XErrorEvent *)))
 
 GLPFN int (* pfn_XSync)(Display *display, Bool discard);
 #define XSync pfn_XSync
+
+GLPFN int (* pfn_XScreenNumberOfScreen)(Screen *screen);
+#define XScreenNumberOfScreen pfn_XScreenNumberOfScreen
+
+GLPFN int (* pfn_XMapWindow)(Display *display, Window w);
+#define XMapWindow pfn_XMapWindow
+
+GLPFN Status (* pfn_XGetWindowAttributes)(Display *display, Window w, XWindowAttributes *window_attributes_return);
+#define XGetWindowAttributes pfn_XGetWindowAttributes
 
 #endif
 

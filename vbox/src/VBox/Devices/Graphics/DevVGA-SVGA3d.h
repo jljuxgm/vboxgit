@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d.h 85121 2020-07-08 19:33:26Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d.h 85368 2020-07-17 09:55:56Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device - 3D part.
  */
@@ -81,7 +81,7 @@ int vmsvga3dContextDestroy(PVGASTATECC pThisCC, uint32_t cid);
 
 int vmsvga3dChangeMode(PVGASTATECC pThisCC);
 
-int vmsvga3dDefineScreen(PVGASTATECC pThisCC, VMSVGASCREENOBJECT *pScreen);
+int vmsvga3dDefineScreen(PVGASTATE pThis, PVGASTATECC pThisCC, VMSVGASCREENOBJECT *pScreen);
 int vmsvga3dDestroyScreen(PVGASTATECC pThisCC, VMSVGASCREENOBJECT *pScreen);
 
 int vmsvga3dSetTransform(PVGASTATECC pThisCC, uint32_t cid, SVGA3dTransformType type, float matrix[16]);

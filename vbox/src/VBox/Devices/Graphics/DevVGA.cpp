@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 84834 2020-06-15 16:09:20Z vboxsync $ */
+/* $Id: DevVGA.cpp 85368 2020-07-17 09:55:56Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -6475,6 +6475,7 @@ static DECLCALLBACK(int)   vgaR3Construct(PPDMDEVINS pDevIns, int iInstance, PCF
 # endif
 # ifdef VBOX_WITH_VMSVGA3D
                                             "|VMSVGA3dEnabled"
+                                            "|VMSVGA3dOverlayEnabled"
 # endif
                                             "|SuppressNewYearSplash"
                                             "|3DEnabled";
@@ -6530,6 +6531,10 @@ static DECLCALLBACK(int)   vgaR3Construct(PPDMDEVINS pDevIns, int iInstance, PCF
     rc = pHlp->pfnCFGMQueryBoolDef(pCfg, "VMSVGA3dEnabled", &pThis->svga.f3DEnabled, false);
     AssertLogRelRCReturn(rc, rc);
     Log(("VMSVGA: VMSVGA3dEnabled = %d\n", pThis->svga.f3DEnabled));
+
+    rc = pHlp->pfnCFGMQueryBoolDef(pCfg, "VMSVGA3dOverlayEnabled", &pThis->svga.f3DOverlayEnabled, false);
+    AssertLogRelRCReturn(rc, rc);
+    Log(("VMSVGA: VMSVGA3dOverlayEnabled = %d\n", pThis->svga.f3DOverlayEnabled));
 # endif
 
 # ifdef VBOX_WITH_VMSVGA

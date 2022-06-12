@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.h 84802 2020-06-11 22:44:48Z vboxsync $ */
+/* $Id: DevVGA-SVGA.h 85368 2020-07-17 09:55:56Z vboxsync $ */
 /** @file
  * VMware SVGA device
  */
@@ -221,7 +221,9 @@ typedef struct VMSVGAState
     /** The legacy GFB mode registers. If used, they correspond to screen 0. */
     /** True when the guest modifies the GFB mode registers. */
     bool                        fGFBRegisters;
-    bool                        afPadding[6];
+    /** SVGA 3D overlay enabled or not. */
+    bool                        f3DOverlayEnabled;
+    bool                        afPadding[5];
     uint32_t                    uWidth;
     uint32_t                    uHeight;
     uint32_t                    uBpp;
