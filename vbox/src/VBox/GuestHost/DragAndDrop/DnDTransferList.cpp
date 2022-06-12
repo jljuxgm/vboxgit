@@ -1,4 +1,4 @@
-/* $Id: DnDTransferList.cpp 85435 2020-07-23 13:38:14Z vboxsync $ */
+/* $Id: DnDTransferList.cpp 85462 2020-07-27 07:18:57Z vboxsync $ */
 /** @file
  * DnD - transfer list implemenation.
  */
@@ -121,20 +121,19 @@ void DnDTransferListDestroy(PDNDTRANSFERLIST pList)
 }
 
 /**
- * Resets a transfer list.
+ * Resets a transfer list to its initial state.
  *
- * Note: Does *not* clear the root path!
- *
- * @param   pList               Transfer list to clear.
+ * @param   pList               Transfer list to reset.
  */
 void DnDTransferListReset(PDNDTRANSFERLIST pList)
 {
     AssertPtrReturnVoid(pList);
 
-    /* Note: This does not clear the root path! */
-
     if (!pList->pszPathRootAbs)
         return;
+
+    RTStrFree(pList->pszPathRootAbs);
+    pList->pszPathRootAbs = NULL;
 
     PDNDTRANSFERLISTROOT pRootCur, pRootNext;
     RTListForEachSafe(&pList->lstRoot, pRootCur, pRootNext, DNDTRANSFERLISTROOT, Node)
