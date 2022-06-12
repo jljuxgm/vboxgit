@@ -1,4 +1,4 @@
-/* $Id: AudioHlp.h 88923 2021-05-07 13:34:51Z vboxsync $ */
+/* $Id: AudioHlp.h 89342 2021-05-28 10:27:05Z vboxsync $ */
 /** @file
  * Audio helper routines.
  */
@@ -43,11 +43,6 @@ bool     AudioHlpPcmPropsAreValid(PCPDMAUDIOPCMPROPS pProps);
 /** @name Audio configuration helper methods.
  * @{ */
 bool    AudioHlpStreamCfgIsValid(PCPDMAUDIOSTREAMCFG pCfg);
-/** @}  */
-
-/** @name Audio string-ify methods.
- * @{ */
-PDMAUDIOFMT AudioHlpStrToAudFmt(const char *pszFmt);
 /** @}  */
 
 

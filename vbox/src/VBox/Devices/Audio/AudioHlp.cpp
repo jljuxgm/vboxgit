@@ -1,4 +1,4 @@
-/* $Id: AudioHlp.cpp 89062 2021-05-16 19:57:58Z vboxsync $ */
+/* $Id: AudioHlp.cpp 89342 2021-05-28 10:27:05Z vboxsync $ */
 /** @file
  * Audio helper routines.
  *
@@ -140,33 +140,6 @@ char *DrvAudioDbgGetFileNameA(uint8_t uInstance, const char *pszPath, const char
 }
 
 #endif /* unused */
-
-/**
- * Converts a given string to an audio format.
- *
- * @returns Audio format for the given string, or PDMAUDIOFMT_INVALID if not found.
- * @param   pszFmt              String to convert to an audio format.
- */
-PDMAUDIOFMT AudioHlpStrToAudFmt(const char *pszFmt)
-{
-    AssertPtrReturn(pszFmt, PDMAUDIOFMT_INVALID);
-
-    if (!RTStrICmp(pszFmt, "u8"))
-        return PDMAUDIOFMT_U8;
-    if (!RTStrICmp(pszFmt, "u16"))
-        return PDMAUDIOFMT_U16;
-    if (!RTStrICmp(pszFmt, "u32"))
-        return PDMAUDIOFMT_U32;
-    if (!RTStrICmp(pszFmt, "s8"))
-        return PDMAUDIOFMT_S8;
-    if (!RTStrICmp(pszFmt, "s16"))
-        return PDMAUDIOFMT_S16;
-    if (!RTStrICmp(pszFmt, "s32"))
-        return PDMAUDIOFMT_S32;
-
-    AssertMsgFailed(("Invalid audio format '%s'\n", pszFmt));
-    return PDMAUDIOFMT_INVALID;
-}
 
 /**
  * Checks whether a given stream configuration is valid or not.
