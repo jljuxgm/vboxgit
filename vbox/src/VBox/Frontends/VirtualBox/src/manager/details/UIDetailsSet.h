@@ -1,4 +1,4 @@
-/* $Id: UIDetailsSet.h 84623 2020-05-31 17:15:24Z vboxsync $ */
+/* $Id: UIDetailsSet.h 89103 2021-05-17 15:11:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsSet class declaration.
  */
@@ -74,6 +74,12 @@ public:
         ConfigurationAccessLevel configurationAccessLevel() const { return m_configurationAccessLevel; }
     /** @} */
 
+    /** @name Layout stuff.
+      * @{ */
+        /** Updates layout. */
+        virtual void updateLayout() /* override */;
+    /** @} */
+
 protected slots:
 
     /** @name Item stuff.
@@ -121,9 +127,6 @@ protected:
 
     /** @name Layout stuff.
       * @{ */
-        /** Updates layout. */
-        virtual void updateLayout() /* override */;
-
         /** Returns minimum width-hint. */
         virtual int minimumWidthHint() const /* override */;
         /** Returns minimum height-hint. */
