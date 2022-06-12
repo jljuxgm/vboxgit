@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioAlsa.cpp 88923 2021-05-07 13:34:51Z vboxsync $ */
+/* $Id: DrvHostAudioAlsa.cpp 88924 2021-05-07 13:41:46Z vboxsync $ */
 /** @file
  * Host audio driver - Advanced Linux Sound Architecture (ALSA).
  */
@@ -1102,7 +1102,7 @@ static DECLCALLBACK(uint32_t) drvHostAlsaAudioHA_StreamGetPending(PPDMIHOSTAUDIO
             case SND_PCM_STATE_DRAINING:
                 if (rc >= 0)
                 {
-                    if (cFramesAvail >= pStreamALSA->Cfg.Backend.cFramesBufferSize)
+                    if ((uint32_t)cFramesAvail >= pStreamALSA->Cfg.Backend.cFramesBufferSize)
                         cbPending = 0;
                     else
                         cbPending = PDMAudioPropsFramesToBytes(&pStreamALSA->Cfg.Props, cFramesDelay);
