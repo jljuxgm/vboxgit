@@ -1,4 +1,4 @@
-/* $Id: d3d9main.cpp 84664 2020-06-03 13:30:21Z vboxsync $ */
+/* $Id: d3d9main.cpp 84749 2020-06-09 22:11:12Z vboxsync $ */
 /** @file
  * Gallium D3D testcase. Win32 application to run Gallium D3D9 tests.
  */
@@ -57,12 +57,12 @@ private:
 
 D3D9Test::D3D9Test()
     :
+    miRenderId(3),
+    miRenderMode(RenderModeStep),
     mHwnd(0),
     mpD3D9(0),
     mcDevices(1),
-    mpRender(0),
-    miRenderId(3),
-    miRenderMode(RenderModeStep)
+    mpRender(0)
 {
     memset(&mpaDevices, 0, sizeof(mpaDevices));
     memset(&mPP, 0, sizeof(mPP));
