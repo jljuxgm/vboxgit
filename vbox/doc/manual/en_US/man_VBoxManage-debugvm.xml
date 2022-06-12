@@ -16,7 +16,7 @@
 <refentry id="vboxmanage-debugvm" lang="en">
 
   <refentryinfo>
-    <pubdate>$Date: 2020-02-04 18:54:12 +0800 (Tue, 04 Feb 2020) $</pubdate>
+    <pubdate>$Date: 2020-05-29 11:00:39 +0800 (Fri, 29 May 2020) $</pubdate>
     <title>VBoxManage debugvm</title>
   </refentryinfo>
 
@@ -176,7 +176,7 @@
       </para>
       <variablelist>
         <varlistentry>
-          <term><replaceable>info</replaceable></term>
+          <term><replaceable>item</replaceable></term>
           <listitem>
             <para>Name of the info item to display.  The special name
             <option>help</option> will list all the available info items and
