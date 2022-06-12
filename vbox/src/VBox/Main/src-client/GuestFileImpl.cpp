@@ -1,4 +1,4 @@
-/* $Id: GuestFileImpl.cpp 84508 2020-05-25 14:58:09Z vboxsync $ */
+/* $Id: GuestFileImpl.cpp 84564 2020-05-27 14:10:26Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest file handling.
  */
@@ -302,7 +302,7 @@ HRESULT GuestFile::getOffset(LONG64 *aOffset)
      * confirmation messages are recevied.
      *
      * Note! This will not be accurate with older (< 5.2.32, 6.0.0 - 6.0.9)
-     *       guest additions when using writeAt, readAt or writing to a file
+     *       Guest Additions when using writeAt, readAt or writing to a file
      *       opened in append mode.
      */
     *aOffset = mData.mOffCurrent;

@@ -1,4 +1,4 @@
-/* $Id: AdditionsFacilityImpl.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: AdditionsFacilityImpl.h 84564 2020-05-27 14:10:26Z vboxsync $ */
 /** @file
  * VirtualBox Main - Additions facility class.
  */
@@ -27,7 +27,7 @@
 class Guest;
 
 /**
- * A guest additions facility.
+ * A Guest Additions facility.
  */
 class ATL_NO_VTABLE AdditionsFacility :
     public AdditionsFacilityWrap

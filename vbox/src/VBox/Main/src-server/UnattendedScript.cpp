@@ -1,4 +1,4 @@
-/* $Id: UnattendedScript.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UnattendedScript.cpp 84564 2020-05-27 14:10:26Z vboxsync $ */
 /** @file
  * Classes for reading/parsing/saving scripts for unattended installation.
  */
@@ -433,7 +433,7 @@ HRESULT UnattendedScriptTemplate::getConditional(const char *pachPlaceholder, si
         (   cchPlaceholder == sizeof("@@VBOX_COND_" a_szMatch "@@") - 1U \
          && memcmp(pachPlaceholder, "@@VBOX_COND_" a_szMatch "@@", sizeof("@@VBOX_COND_" a_szMatch "@@") - 1U) == 0)
 
-    /* Install guest additions: */
+    /* Install Guest Additions: */
     if (IS_PLACEHOLDER_MATCH("IS_INSTALLING_ADDITIONS"))
         *pfOutputting = mpUnattended->i_getInstallGuestAdditions();
     else if (IS_PLACEHOLDER_MATCH("IS_NOT_INSTALLING_ADDITIONS"))

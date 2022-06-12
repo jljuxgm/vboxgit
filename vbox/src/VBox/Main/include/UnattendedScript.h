@@ -1,4 +1,4 @@
-/* $Id: UnattendedScript.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UnattendedScript.h 84564 2020-05-27 14:10:26Z vboxsync $ */
 /** @file
  * Classes for reading/parsing/saving scripts for unattended installation.
  */
@@ -74,7 +74,7 @@ protected:
      *                              value or is just syntax checking excluded
      *                              template parts.  Intended for voiding triggering
      *                              sanity checks regarding which replacements
-     *                              should be used and not (e.g. no guest additions
+     *                              should be used and not (e.g. no Guest Additions
      *                              path when installing GAs aren't enabled).
      * @param   rValue              Where to return the value.
      * @throws  std::bad_alloc

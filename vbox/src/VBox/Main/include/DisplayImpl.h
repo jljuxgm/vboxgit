@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 84342 2020-05-18 18:24:58Z vboxsync $ */
+/* $Id: DisplayImpl.h 84564 2020-05-27 14:10:26Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -97,7 +97,7 @@ typedef struct _DISPLAYFBINFO
 
 /* The legacy VBVA (VideoAccel) data.
  *
- * Backward compatibility with the guest additions 3.x or older.
+ * Backward compatibility with the Guest Additions 3.x or older.
  */
 typedef struct VIDEOACCEL
 {
@@ -107,7 +107,7 @@ typedef struct VIDEOACCEL
     uint8_t    *pu8VbvaPartial;
     uint32_t    cbVbvaPartial;
 
-    /* Old guest additions (3.x and older) use both VMMDev and DevVGA refresh timer
+    /* Old Guest Additions (3.x and older) use both VMMDev and DevVGA refresh timer
      * to process the VBVABUFFER memory. Therefore the legacy VBVA (VideoAccel) host
      * code can be executed concurrently by VGA refresh timer and the guest VMMDev
      * request in SMP VMs. The semaphore serialized this.

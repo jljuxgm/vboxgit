@@ -1,4 +1,4 @@
-/* $Id: UnattendedImpl.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UnattendedImpl.cpp 84564 2020-05-27 14:10:26Z vboxsync $ */
 /** @file
  * Unattended class implementation
  */
@@ -1239,7 +1239,7 @@ HRESULT Unattended::prepare()
         return setErrorBoth(E_FAIL, VERR_FILE_NOT_FOUND, tr("Could not locate the installation ISO file '%s'"),
                             mStrIsoPath.c_str());
     if (mfInstallGuestAdditions && !RTFileExists(mStrAdditionsIsoPath.c_str()))
-        return setErrorBoth(E_FAIL, VERR_FILE_NOT_FOUND, tr("Could not locate the guest additions ISO file '%s'"),
+        return setErrorBoth(E_FAIL, VERR_FILE_NOT_FOUND, tr("Could not locate the Guest Additions ISO file '%s'"),
                             mStrAdditionsIsoPath.c_str());
     if (mfInstallTestExecService && !RTFileExists(mStrValidationKitIsoPath.c_str()))
         return setErrorBoth(E_FAIL, VERR_FILE_NOT_FOUND, tr("Could not locate the validation kit ISO file '%s'"),

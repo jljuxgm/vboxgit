@@ -1,4 +1,4 @@
-/* $Id: UnattendedInstaller.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UnattendedInstaller.h 84564 2020-05-27 14:10:26Z vboxsync $ */
 /** @file
  * UnattendedInstaller class header
  */
@@ -119,7 +119,7 @@ public:
 
 #if 0 /* These are now in the AUX VISO. */
     /**
-     * Whether the VBox guest additions ISO is needed or not.
+     * Whether the VBox Guest Additions ISO is needed or not.
      *
      * The default implementation always returns false when a VISO is used, see
      * UnattendedInstaller::addFilesToAuxVisoVectors.

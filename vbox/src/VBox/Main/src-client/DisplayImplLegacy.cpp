@@ -1,9 +1,9 @@
-/* $Id: DisplayImplLegacy.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: DisplayImplLegacy.cpp 84564 2020-05-27 14:10:26Z vboxsync $ */
 /** @file
  * VirtualBox IDisplay implementation, helpers for legacy GAs.
  *
- * Methods and helpers to support old guest additions 3.x or older.
- * This is not used by the current guest additions.
+ * Methods and helpers to support old Guest Additions 3.x or older.
+ * This is not used by the current Guest Additions.
  */
 
 /*
