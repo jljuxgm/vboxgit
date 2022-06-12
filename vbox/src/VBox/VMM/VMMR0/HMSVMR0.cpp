@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 86730 2020-10-28 10:44:37Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 87309 2021-01-19 23:38:01Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -6786,8 +6786,8 @@ HMSVM_EXIT_DECL hmR0SvmExitNestedPF(PVMCPUCC pVCpu, PSVMTRANSIENT pSvmTransient)
     uint32_t u32ErrCode      = pVmcb->ctrl.u64ExitInfo1;    /* Note! High bits in EXITINFO1 may contain additional info and are
                                                                thus intentionally not copied into u32ErrCode. */
 
-    Log4Func(("#NPF at CS:RIP=%04x:%#RX64 GCPhysFaultAddr=%RGp ErrCode=%#x \n", pCtx->cs.Sel, pCtx->rip, GCPhysFaultAddr,
-              u32ErrCode));
+    Log4Func(("#NPF at CS:RIP=%04x:%#RX64 GCPhysFaultAddr=%RGp ErrCode=%#x cbInstrFetched=%u %.15Rhxs\n", pCtx->cs.Sel, pCtx->rip, GCPhysFaultAddr,
+              u32ErrCode, pVmcb->ctrl.cbInstrFetched, pVmcb->ctrl.abInstr));
 
     /*
      * TPR patching for 32-bit guests, using the reserved bit in the page tables for MMIO regions.
