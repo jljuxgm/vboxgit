@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 84403 2020-05-20 14:09:21Z vboxsync $
+# $Id: vbox.py 84413 2020-05-20 14:57:03Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84403 $"
+__version__ = "$Revision: 84413 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -3545,7 +3545,6 @@ class TestDriver(base.TestDriver):                                              
                     reporter.error('txsCdWait: timed out');
                     fRc = False;
                     break;
-
                 # delay.
                 self.sleep(1);
 
@@ -3566,6 +3565,9 @@ class TestDriver(base.TestDriver):                                              
             fIsNotWindows = True;
             reporter.log('txsCdWait: Listing root contents of ${CDROM}:');
             if fIsNotWindows:
+                reporter.log('txsCdWait: Tiggering udevadm ...');
+                oTxsSession.syncExec("/sbin/udevadm", ("/sbin/udevadm", "trigger", "--verbose"), fIgnoreErrors = True);
+                time.sleep(15);
                 oTxsSession.syncExec("/bin/ls", ("/bin/ls", "-al", "${CDROM}"), fIgnoreErrors = True);
                 reporter.log('txsCdWait: Listing media directory:');
                 oTxsSession.syncExec('/bin/ls', ('/bin/ls', '-l', '-a', '-R', '/media'), fIgnoreErrors = True);
