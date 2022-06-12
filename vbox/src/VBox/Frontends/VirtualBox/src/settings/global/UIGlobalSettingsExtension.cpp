@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsExtension.cpp 85822 2020-08-18 14:22:24Z vboxsync $ */
+/* $Id: UIGlobalSettingsExtension.cpp 85973 2020-09-01 09:02:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsExtension class implementation.
  */
@@ -487,6 +487,7 @@ void UIGlobalSettingsExtension::prepareWidgets()
     pLayout1->setObjectName(QStringLiteral("pLayout1"));
     m_pPackagesTree = new QITreeWidget(pExtensionPackContainer);
     m_pPackagesTree->setObjectName(QStringLiteral("m_pPackagesTree"));
+    m_pPackagesTree->setColumnCount(3);
     QSizePolicy sizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding);
     sizePolicy.setHorizontalStretch(0);
     sizePolicy.setVerticalStretch(0);
