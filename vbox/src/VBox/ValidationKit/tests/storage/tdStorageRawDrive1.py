@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Id: tdStorageRawDrive1.py 87680 2021-02-10 12:13:03Z vboxsync $"
+__version__ = "$Id: tdStorageRawDrive1.py 87681 2021-02-10 12:29:18Z vboxsync $"
 
 # Standard Python imports.
 import os;
@@ -149,7 +149,7 @@ class tdStorageRawDriveOs(vboxtestvms.BaseTestVm):
                 {
                     'action'     : 'whole drive',
                     'options'    : [],
-                    'data-crc'   : None,
+                    'data-crc'   : {},
                     'createType' : 'fullDevice',
                     'extents'    : { '6.1/storage/t-mbr.vdi' : ['RW 0 FLAT "$(disk)" 0',],
                                      '6.1/storage/t-gpt.vdi' : ['RW 0 FLAT "$(disk)" 0',],
@@ -1200,7 +1200,7 @@ class tdStorageRawDriveOs(vboxtestvms.BaseTestVm):
                                 fRc = self.checkVMDKDescriptor(asDescriptor, sHdd, sRawDrive, action);
                                 if not fRc:
                                     reporter.error('Cheking vmdktest.vmdk from guest filed');
-                                elif action['data-crc'] is not None:
+                                elif action['data-crc']:
                                     sSrcFile = self.sVMDKPath + self.sPathDelimiter + 'vmdktest-pt.vmdk';
                                     sDstFile = os.path.join(self.oTstDrv.sScratchPath, 'guest-vmdktest-pt.vmdk');
                                     reporter.log2('Downloading file "%s" to "%s" ...' % (sSrcFile, sDstFile));
