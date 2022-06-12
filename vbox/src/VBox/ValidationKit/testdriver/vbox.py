@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 84399 2020-05-20 13:12:08Z vboxsync $
+# $Id: vbox.py 84403 2020-05-20 14:09:21Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84399 $"
+__version__ = "$Revision: 84403 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -3580,6 +3580,10 @@ class TestDriver(base.TestDriver):                                              
                                      ('/bin/journalctl', '-x', '-b', '/usr/lib/udisks2/udisksd'), fIgnoreErrors = True);
                 oTxsSession.syncExec('/usr/bin/udisksctl',
                                      ('/usr/bin/udisksctl', 'info', '-b', '/dev/sr0'), fIgnoreErrors = True);
+                oTxsSession.syncExec('/bin/systemctl',
+                                     ('/bin/systemctl', 'status', 'udisks2'), fIgnoreErrors = True);
+                oTxsSession.syncExec('/bin/ps',
+                                     ('/bin/ps', '-a', '-u', '-x'), fIgnoreErrors = True);
                 reporter.log('txsCdWait: Mounting manually ...');
                 for _ in range(3):
                     oTxsSession.syncExec('/bin/mount', ('/bin/mount', '/dev/sr0', '${CDROM}'), fIgnoreErrors = True);
