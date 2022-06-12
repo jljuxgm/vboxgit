@@ -1,4 +1,4 @@
-/* $Id: DevLsiLogicSCSI.cpp 88530 2021-04-15 12:05:36Z vboxsync $ */
+/* $Id: DevLsiLogicSCSI.cpp 88643 2021-04-22 07:57:03Z vboxsync $ */
 /** @file
  * DevLsiLogicSCSI - LsiLogic LSI53c1030 SCSI controller.
  */
@@ -3677,10 +3677,8 @@ static void lsilogicR3InitializeConfigurationPages(PPDMDEVINS pDevIns, PLSILOGIC
 
     LogFlowFunc(("pThis=%#p\n", pThis));
 
-    /* Clear everything first. */
     AssertPtrReturnVoid(pThisCC->pConfigurationPages);
     PMptConfigurationPagesSupported pPages = pThisCC->pConfigurationPages;
-    memset(pPages, 0, sizeof(MptConfigurationPagesSupported));
 
     /* Manufacturing Page 0. */
     MPT_CONFIG_PAGE_HEADER_INIT_MANUFACTURING(&pPages->ManufacturingPage0,
