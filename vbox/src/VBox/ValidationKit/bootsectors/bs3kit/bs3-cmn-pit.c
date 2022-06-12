@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-pit.c 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: bs3-cmn-pit.c 88839 2021-05-03 14:28:49Z vboxsync $ */
 /** @file
  * BS3Kit - PIT Setup and Disable code.
  */
@@ -64,6 +64,13 @@ BS3_CMN_DEF(void, Bs3PitSetupAndEnablePeriodTimer,(uint16_t cHzDesired))
     Bs3TrapSetHandlerEx(0x70, bs3PitIrqHandler_c16, bs3PitIrqHandler_c32, bs3PitIrqHandler_c64);
 
     /*
+     * Reset the counters.
+     */
+    g_cBs3PitNs         = 0;
+    g_cBs3PitMs         = 0;
+    g_cBs3PitTicks      = 0;
+
+    /*
      * Calculate an interval.
      */
     if (cHzDesired <= 18)
@@ -118,7 +125,7 @@ BS3_CMN_DEF(void, Bs3PitSetupAndEnablePeriodTimer,(uint16_t cHzDesired))
 #undef Bs3PitDisable
 BS3_CMN_DEF(void, Bs3PitDisable,(void))
 {
-    if (g_cBs3PitIntervalMs != 0)
+    if (g_cBs3PitIntervalHz != 0)
     {
         RTCCUINTREG fSaved = ASMIntDisableFlags();
 
@@ -144,11 +151,8 @@ BS3_CMN_DEF(void, Bs3PitDisable,(void))
     }
 
     /*
-     * Reset all the values.
+     * Reset the interval values (leave the ticks and elapsed ns/ms values as-is).
      */
-    g_cBs3PitNs         = 0;
-    g_cBs3PitMs         = 0;
-    g_cBs3PitTicks      = 0;
     g_cBs3PitIntervalNs = 0;
     g_cBs3PitIntervalMs = 0;
     g_cBs3PitIntervalHz = 0;
