@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 86242 2020-09-23 14:55:37Z vboxsync $ */
+/* $Id: UIMessageCenter.h 86337 2020-09-29 11:56:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -545,6 +545,7 @@ public slots:
     void sltShowHelpHelpDialog();
     void sltResetSuppressedMessages();
     void sltShowUserManual(const QString &strLocation);
+    void sltCloseHelpBrowser();
 
 private slots:
 
@@ -595,6 +596,8 @@ private:
                        int iButton1, int iButton2, int iButton3,
                        const QString &strButtonText1, const QString &strButtonText2, const QString &strButtonText3,
                        const QString &strAutoConfirmId) const;
+
+    void showHelpBrowser(const QString strHelpFileLocation, QWidget *pParent = 0);
 
     /** Holds the list of shown warnings. */
     mutable QStringList m_warnings;
