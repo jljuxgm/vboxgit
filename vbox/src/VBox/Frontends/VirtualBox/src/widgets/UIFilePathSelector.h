@@ -1,4 +1,4 @@
-/* $Id: UIFilePathSelector.h 85135 2020-07-09 06:59:35Z vboxsync $ */
+/* $Id: UIFilePathSelector.h 85136 2020-07-09 07:02:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFilePathSelector class declaration.
  */
@@ -215,7 +215,6 @@ private:
 
     /** Path is set to m_strDefaultPath when it is reset. */
     QString m_strDefaultPath;
-
 };
 
 #endif /* !FEQT_INCLUDED_SRC_widgets_UIFilePathSelector_h */
