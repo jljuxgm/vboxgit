@@ -1,4 +1,4 @@
-/* $Id: DevHdaStream.cpp 88944 2021-05-08 13:29:43Z vboxsync $ */
+/* $Id: DevHdaStream.cpp 88954 2021-05-09 00:48:03Z vboxsync $ */
 /** @file
  * Intel HD Audio Controller Emulation - Streams.
  */
@@ -2161,7 +2161,7 @@ static void hdaR3StreamUpdateDma(PPDMDEVINS pDevIns, PHDASTATE pThis, PHDASTATER
 
 
 /**
- * @callback_method_impl{FNRTTHREAD, Asynchronous I/O thread for a HDA stream.}
+ * @callback_method_impl{FNAUDMIXSINKUPDATE}
  *
  * For output streams this moves data from the internal DMA buffer (in which
  * hdaR3StreamUpdateDma put it), thru the mixer and to the various backend audio
