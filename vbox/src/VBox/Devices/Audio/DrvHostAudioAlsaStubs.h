@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioAlsaStubs.h 89471 2021-06-02 20:53:43Z vboxsync $ */
+/* $Id: DrvHostAudioAlsaStubs.h 89472 2021-06-02 21:01:43Z vboxsync $ */
 /** @file
  * Stubs for libasound.
  */
@@ -24,7 +24,7 @@
 #include <iprt/cdefs.h>
 #include <alsa/version.h>
 
-#define VBOX_ALSA_MAKE_VER(a,b,c)   ( ((a) << 24) | ((b) << 16) | (a) )
+#define VBOX_ALSA_MAKE_VER(a,b,c)   ( ((a) << 24) | ((b) << 16) | (c) )
 #define VBOX_ALSA_VER               VBOX_ALSA_MAKE_VER(SND_LIB_MAJOR, SND_LIB_MINOR, SND_LIB_SUBMINOR)
 
 RT_C_DECLS_BEGIN
@@ -51,7 +51,7 @@ typedef struct snd_pcm_chmap
 {
     unsigned int channels, pos[0];
 } snd_pcm_chmap_t;
-extern int snd_pcm_set_chmap(snd_pcm_t *, const snd_pcm_chmap_t *);
+extern int snd_pcm_set_chmap(snd_pcm_t *, snd_pcm_chmap_t const *);
 #endif
 
 RT_C_DECLS_END
