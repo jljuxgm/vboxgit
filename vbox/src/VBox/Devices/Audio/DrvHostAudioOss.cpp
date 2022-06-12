@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioOss.cpp 88928 2021-05-07 14:25:30Z vboxsync $ */
+/* $Id: DrvHostAudioOss.cpp 88958 2021-05-10 06:57:45Z vboxsync $ */
 /** @file
  * Host audio driver - OSS (Open Sound System).
  */
@@ -884,7 +884,7 @@ static DECLCALLBACK(int) drvHostOSSAudioConstruct(PPDMDRVINS pDrvIns, PCFGMNODE 
     return VINF_SUCCESS;
 }
 
-#ifndef VBOX_AUDIO_VKAT
+
 /**
  * Char driver registration record.
  */
@@ -935,16 +935,4 @@ const PDMDRVREG g_DrvHostOSSAudio =
     /* u32EndVersion */
     PDM_DRVREG_VERSION
 };
-#else
-const PDMDRVREG g_DrvVKATOss =
-{
-    /* szName */
-    "OSSAudio",
-    /* cbInstance */
-    sizeof(DRVHOSTOSSAUDIO),
-    drvHostOSSAudioConstruct,
-    /* pfnDestruct */
-    NULL
-};
-#endif
 

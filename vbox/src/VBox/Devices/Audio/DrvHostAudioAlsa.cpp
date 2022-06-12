@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioAlsa.cpp 88928 2021-05-07 14:25:30Z vboxsync $ */
+/* $Id: DrvHostAudioAlsa.cpp 88958 2021-05-10 06:57:45Z vboxsync $ */
 /** @file
  * Host audio driver - Advanced Linux Sound Architecture (ALSA).
  */
@@ -1453,7 +1453,6 @@ static DECLCALLBACK(int) drvHostAlsaAudioConstruct(PPDMDRVINS pDrvIns, PCFGMNODE
 }
 
 
-#ifndef VBOX_AUDIO_VKAT
 /**
  * ALSA audio driver registration record.
  */
@@ -1504,16 +1503,4 @@ const PDMDRVREG g_DrvHostALSAAudio =
     /* u32EndVersion */
     PDM_DRVREG_VERSION
 };
-#else /* VBOX_AUDIO_VKAT */
-const PDMDRVREG g_DrvVKATAlsa =
-{
-    /* szName */
-    "ALSAAudio",
-    /* cbInstance */
-    sizeof(DRVHOSTALSAAUDIO),
-    drvHostAlsaAudioConstruct,
-    /* pfnDestruct */
-    NULL
-};
-#endif /* VBOX_AUDIO_VKAT */
 
