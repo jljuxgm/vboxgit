@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc.cpp 87566 2021-02-03 13:48:48Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc.cpp 87657 2021-02-09 13:21:04Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Host service entry points.
  */
@@ -748,8 +748,10 @@ static int shClSvcClientReportFeatures(PSHCLCLIENT pClient, VBOXHGCMCALLHANDLE h
     {
         pClient->State.fGuestFeatures0 = fFeatures0;
         pClient->State.fGuestFeatures1 = fFeatures1;
-        Log(("[Client %RU32] features: %#RX64 %#RX64\n", pClient->State.uClientID, fFeatures0, fFeatures1));
-        LogRel2(("Shared Clipboard: Guest reported the following features: %#RX64\n", fFeatures0)); /* fFeatures1 not used yet. */
+        LogRel2(("Shared Clipboard: Guest reported the following features: %#RX64\n",
+                 pClient->State.fGuestFeatures0)); /* Note: fFeatures1 not used yet. */
+        if (pClient->State.fGuestFeatures0 & VBOX_SHCL_GF_0_TRANSFERS)
+            LogRel2(("Shared Clipboard: Guest supports file transfers\n"));
     }
     else
         LogFunc(("pfnCallComplete -> %Rrc\n", rc));
