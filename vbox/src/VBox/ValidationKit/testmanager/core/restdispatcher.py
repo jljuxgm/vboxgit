@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: restdispatcher.py 84599 2020-05-29 01:12:32Z vboxsync $
+# $Id: restdispatcher.py 84606 2020-05-29 09:26:53Z vboxsync $
 
 """
 Test Manager Core - REST cgi handler.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84599 $"
+__version__ = "$Revision: 84606 $"
 
 
 # Standard python imports.
@@ -444,5 +444,4 @@ class RestMain(object): # pylint: disable=too-few-public-methods
         assert utils.isString(self._sPath);
 
         return self._dispatchRequestCommon();
-
 
