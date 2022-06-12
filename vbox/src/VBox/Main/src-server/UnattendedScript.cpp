@@ -1,4 +1,4 @@
-/* $Id: UnattendedScript.cpp 84564 2020-05-27 14:10:26Z vboxsync $ */
+/* $Id: UnattendedScript.cpp 84645 2020-06-02 17:21:10Z vboxsync $ */
 /** @file
  * Classes for reading/parsing/saving scripts for unattended installation.
  */
@@ -417,6 +417,8 @@ HRESULT UnattendedScriptTemplate::getUnescapedReplacement(const char *pachPlaceh
         rValue.assign(mpUnattended->i_getHostname(), 0, RT_MIN(mpUnattended->i_getHostname().find("."), 15));
     else if (IS_PLACEHOLDER_MATCH("HOSTNAME_DOMAIN"))
         rValue.assign(mpUnattended->i_getHostname(), mpUnattended->i_getHostname().find(".") + 1);
+    else if (IS_PLACEHOLDER_MATCH("PROXY"))
+        rValue = mpUnattended->i_getProxy();
     else
     {
         rValue.setNull();
@@ -468,6 +470,8 @@ HRESULT UnattendedScriptTemplate::getConditional(const char *pachPlaceholder, si
         *pfOutputting = mpUnattended->i_isRtcUsingUtc();
     else if (IS_PLACEHOLDER_MATCH("IS_NOT_RTC_USING_UTC"))
         *pfOutputting = !mpUnattended->i_isRtcUsingUtc();
+    else if (IS_PLACEHOLDER_MATCH("HAS_PROXY"))
+        *pfOutputting = mpUnattended->i_getProxy().isNotEmpty();
     else
         return mpSetError->setErrorBoth(E_FAIL, VERR_NOT_FOUND, mpSetError->tr("Unknown conditional placeholder '%.*s'"),
                                         cchPlaceholder, pachPlaceholder);
