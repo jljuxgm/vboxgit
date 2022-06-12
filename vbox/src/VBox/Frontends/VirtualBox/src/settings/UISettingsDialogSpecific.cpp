@@ -1,10 +1,10 @@
-/* $Id: UISettingsDialogSpecific.cpp 87418 2021-01-25 14:18:00Z vboxsync $ */
+/* $Id: UISettingsDialogSpecific.cpp 89324 2021-05-27 14:28:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISettingsDialogSpecific class implementation.
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2021 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -34,6 +34,9 @@
 #include "UIGlobalSettingsGeneral.h"
 #include "UIGlobalSettingsInput.h"
 #include "UIGlobalSettingsLanguage.h"
+#ifdef VBOX_WS_WIN
+# include "UIGlobalSettingsInterface.h"
+#endif
 #ifdef VBOX_GUI_WITH_NETWORK_MANAGER
 # include "UIGlobalSettingsProxy.h"
 # include "UIGlobalSettingsUpdate.h"
@@ -101,6 +104,11 @@ void UISettingsDialogGlobal::retranslateUi()
 #ifdef VBOX_GUI_WITH_NETWORK_MANAGER
     /* Proxy page: */
     m_pSelector->setItemText(GlobalSettingsPageType_Proxy, tr("Proxy"));
+#endif
+
+#ifdef VBOX_WS_WIN
+    /* Interface page: */
+    m_pSelector->setItemText(GlobalSettingsPageType_Interface, tr("Interface"));
 #endif
 
     /* Polish the selector: */
@@ -241,6 +249,17 @@ void UISettingsDialogGlobal::prepare()
                     break;
                 }
 #endif /* VBOX_GUI_WITH_NETWORK_MANAGER */
+#ifdef VBOX_WS_WIN
+                /* Interface page: */
+                case GlobalSettingsPageType_Interface:
+                {
+                    pSettingsPage = new UIGlobalSettingsInterface;
+                    addItem(":/interface_32px.png", ":/interface_24px.png", ":/interface_16px.png",
+                            iPageIndex, "#userInterface", pSettingsPage);
+                    addPageHelpKeyword(iPageIndex, "globalsettings");
+                    break;
+                }
+#endif /* VBOX_WS_WIN */
                 default:
                     break;
             }

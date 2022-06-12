@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 89299 2021-05-26 15:43:54Z vboxsync $
+# $Id: Makefile.kmk 89324 2021-05-27 14:28:17Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -866,6 +866,7 @@ UICommon_QT_MOCHDRS = \
 	src/settings/global/UIGlobalSettingsInput.h \
 	src/settings/global/UIGlobalSettingsLanguage.h \
 	src/settings/global/UIGlobalSettingsDisplay.h \
+	src/settings/global/UIGlobalSettingsInterface.h \
 	src/settings/machine/UIMachineSettingsAudio.h \
 	src/settings/machine/UIMachineSettingsDisplay.h \
 	src/settings/machine/UIMachineSettingsGeneral.h \
@@ -1407,6 +1408,7 @@ UICommon_SOURCES = \
 	src/settings/global/UIGlobalSettingsInput.cpp \
 	src/settings/global/UIGlobalSettingsLanguage.cpp \
 	src/settings/global/UIGlobalSettingsDisplay.cpp \
+	src/settings/global/UIGlobalSettingsInterface.cpp \
 	src/settings/machine/UIMachineSettingsAudio.cpp \
 	src/settings/machine/UIMachineSettingsDisplay.cpp \
 	src/settings/machine/UIMachineSettingsGeneral.cpp \
