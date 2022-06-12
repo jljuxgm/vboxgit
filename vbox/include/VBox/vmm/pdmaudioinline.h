@@ -1,4 +1,4 @@
-/* $Id: pdmaudioinline.h 88057 2021-03-09 15:11:22Z vboxsync $ */
+/* $Id: pdmaudioinline.h 88136 2021-03-16 12:17:42Z vboxsync $ */
 /** @file
  * PDM - Audio Helpers, Inlined Code. (DEV,++)
  *
@@ -489,6 +489,21 @@ DECLINLINE(uint32_t) PDMAudioPropsFloorBytesToFrame(PCPDMAUDIOPCMPROPS pProps, u
 {
     AssertPtrReturn(pProps, 0);
     return PDMAUDIOPCMPROPS_F2B(pProps, PDMAUDIOPCMPROPS_B2F(pProps, cb));
+}
+
+/**
+ * Rounds up the given byte amount to the nearest frame boundrary.
+ *
+ * @returns Rounded byte amount.
+ * @param   pProps      PCM properties to use.
+ * @param   cb          The size (in bytes) to round.
+ */
+DECLINLINE(uint32_t) PDMAudioPropsRoundUpBytesToFrame(PCPDMAUDIOPCMPROPS pProps, uint32_t cb)
+{
+    AssertPtrReturn(pProps, 0);
+    uint32_t const cbFrame = PDMAUDIOPCMPROPS_F2B(pProps, 1 /* Frame */);
+    AssertReturn(cbFrame, 0);
+    return PDMAUDIOPCMPROPS_F2B(pProps, PDMAUDIOPCMPROPS_B2F(pProps, cb + cbFrame - 1));
 }
 
 /**
