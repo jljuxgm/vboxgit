@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: Makefile.kmk 86908 2020-11-18 10:56:12Z vboxsync $
 ## @file
 # Sub-Makefile for the Shared Clipboard Host Service.
 #
@@ -48,7 +48,6 @@ ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS
  VBoxSharedClipboard_SOURCES += \
 	VBoxSharedClipboardSvc-transfers.cpp \
 	VBoxSharedClipboardSvc-utils.cpp \
-	$(PATH_ROOT)/src/VBox/GuestHost/SharedClipboard/ClipboardArea.cpp \
 	$(PATH_ROOT)/src/VBox/GuestHost/SharedClipboard/ClipboardPath.cpp \
 	$(PATH_ROOT)/src/VBox/GuestHost/SharedClipboard/clipboard-transfers.cpp
  VBoxSharedClipboard_SOURCES.win += \

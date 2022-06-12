@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 86753 2020-10-29 04:04:15Z vboxsync $
+# $Id: Makefile.kmk 86908 2020-11-18 10:56:12Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -723,10 +723,6 @@ ifdef VBOX_WITH_HOSTNETIF_API
  if1of ($(KBUILD_TARGET), linux darwin solaris freebsd)
   VBoxSVC_SOURCES        += src-server/generic/NetIf-generic.cpp
  endif
-endif
-
-ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS
- VBoxSVC_SOURCES += $(PATH_ROOT)/src/VBox/GuestHost/SharedClipboard/ClipboardArea.cpp
 endif
 
 $(call KB_FN_DO_PASS0_ON_TARGET,VBoxSVC) # Sets VBoxSVC_0_OUTDIR

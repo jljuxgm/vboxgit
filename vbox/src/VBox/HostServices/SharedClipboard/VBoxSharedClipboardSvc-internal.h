@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-internal.h 86531 2020-10-11 19:04:15Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-internal.h 86908 2020-11-18 10:56:12Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Internal header.
  */
@@ -388,7 +388,6 @@ int ShClBackendTransferGetRoots(PSHCLCLIENT pClient, PSHCLTRANSFER pTransfer);
 /** @name Internal Shared Clipboard transfer host service functions.
  * @{
  */
-int shClSvcTransferAreaDetach(PSHCLCLIENTSTATE pClientState, PSHCLTRANSFER pTransfer);
 int shClSvcTransferHandler(PSHCLCLIENT pClient, VBOXHGCMCALLHANDLE callHandle, uint32_t u32Function,
                            uint32_t cParms, VBOXHGCMSVCPARM paParms[], uint64_t tsArrival);
 int shClSvcTransferHostHandler(uint32_t u32Function, uint32_t cParms, VBOXHGCMSVCPARM paParms[]);
