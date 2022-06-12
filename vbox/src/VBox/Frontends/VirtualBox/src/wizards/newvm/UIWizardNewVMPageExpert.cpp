@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.cpp 88019 2021-03-08 15:40:22Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.cpp 88020 2021-03-08 16:00:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class implementation.
  */
@@ -106,12 +106,9 @@ UIWizardNewVMPageExpert::UIWizardNewVMPageExpert(const QString &strGroup)
 
 void UIWizardNewVMPageExpert::sltNameChanged(const QString &strNewText)
 {
-    /* Call to base-class: */
     onNameChanged(strNewText);
-
     composeMachineFilePath();
     updateVirtualDiskPathFromMachinePathName();
-    /* Broadcast complete-change: */
     emit completeChanged();
 }
 
@@ -299,19 +296,13 @@ void UIWizardNewVMPageExpert::setOSTypeDependedValues()
         if (recommendedDiskSize != 0)
         {
             if (m_pDiskNew)
-            {
-                m_pDiskNew->setFocus();
                 m_pDiskNew->setChecked(true);
-            }
             m_fRecommendedNoDisk = false;
         }
         else
         {
             if (m_pDiskEmpty)
-            {
-                m_pDiskEmpty->setFocus();
                 m_pDiskEmpty->setChecked(true);
-            }
             m_fRecommendedNoDisk = true;
         }
         if (m_pDiskSelector)
