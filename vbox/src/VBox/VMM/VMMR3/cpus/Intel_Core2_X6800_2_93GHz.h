@@ -1,4 +1,4 @@
-/* $Id: Intel_Core2_X6800_2_93GHz.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: Intel_Core2_X6800_2_93GHz.h 87603 2021-02-04 09:53:08Z vboxsync $ */
 /** @file
  * CPU database entry "Intel Core2 X6800 2.93GHz".
  * Generated at 2017-11-04T22:32:41Z by VBoxCpuReport v5.2.1r118907 on linux.amd64.
@@ -223,6 +223,8 @@ static CPUMMSRRANGE const g_aMsrRanges_Intel_Core2_X6800_2_93GHz[] =
     MFN(0xc0000081, "AMD64_STAR", Amd64SyscallTarget, Amd64SyscallTarget), /* Might bite. value=0x230010`00000000 */
     MFN(0xc0000082, "AMD64_STAR64", Amd64LongSyscallTarget, Amd64LongSyscallTarget), /* Might bite. value=0xffffffff`81844650 */
     MFN(0xc0000083, "AMD64_STARCOMPAT", Amd64CompSyscallTarget, Amd64CompSyscallTarget), /* Might bite. value=0xffffffff`81846c90 */
+    /** @todo r=bird: This seems wrong, all others CPUs \#GP if any of thie high
+     *        bits are set. */
     MFN(0xc0000084, "AMD64_SYSCALL_FLAG_MASK", Amd64SyscallFlagMask, Amd64SyscallFlagMask), /* Might bite. value=0x47700 */
     MFN(0xc0000100, "AMD64_FS_BASE", Amd64FsBase, Amd64FsBase), /* Might bite. value=0x7fb5`e58d0740 */
     MFN(0xc0000101, "AMD64_GS_BASE", Amd64GsBase, Amd64GsBase), /* Might bite. value=0xffff8801`2fc00000 */

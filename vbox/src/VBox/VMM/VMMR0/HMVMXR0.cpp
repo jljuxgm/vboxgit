@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 87564 2021-02-03 13:32:10Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 87603 2021-02-04 09:53:08Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -2583,7 +2583,10 @@ static void hmR0VmxLazyLoadGuestMsrs(PVMCPUCC pVCpu)
             ASMWrMsr(MSR_K8_KERNEL_GS_BASE, pCtx->msrKERNELGSBASE);
             ASMWrMsr(MSR_K8_LSTAR,          pCtx->msrLSTAR);
             ASMWrMsr(MSR_K6_STAR,           pCtx->msrSTAR);
-            ASMWrMsr(MSR_K8_SF_MASK,        pCtx->msrSFMASK);
+            /* The system call flag mask register isn't as benign and accepting of all
+               values as the above, so mask it to avoid #GP'ing on corrupted input. */
+            Assert(!(pCtx->msrSFMASK & ~(uint64_t)UINT32_MAX));
+            ASMWrMsr(MSR_K8_SF_MASK,        pCtx->msrSFMASK & UINT32_MAX);
         }
     }
     pVCpu->hmr0.s.vmx.fLazyMsrs |= VMX_LAZY_MSRS_LOADED_GUEST;
