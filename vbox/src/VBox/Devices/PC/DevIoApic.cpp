@@ -1,4 +1,4 @@
-/* $Id: DevIoApic.cpp 85007 2020-06-30 17:19:25Z vboxsync $ */
+/* $Id: DevIoApic.cpp 85009 2020-06-30 17:22:52Z vboxsync $ */
 /** @file
  * IO APIC - Input/Output Advanced Programmable Interrupt Controller.
  */
@@ -23,7 +23,7 @@
 #include <VBox/log.h>
 #include <VBox/vmm/hm.h>
 #include <VBox/msi.h>
-#include <Vbox/pci.h>
+#include <VBox/pci.h>
 #include <VBox/vmm/pdmdev.h>
 
 #include "VBoxDD.h"
