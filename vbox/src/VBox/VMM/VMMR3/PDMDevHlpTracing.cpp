@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlpTracing.cpp 87371 2021-01-22 14:42:17Z vboxsync $ */
+/* $Id: PDMDevHlpTracing.cpp 87474 2021-01-29 04:21:52Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helper variants when tracing is enabled.
  */
@@ -410,8 +410,8 @@ pdmR3DevHlpTracing_PCIPhysRead(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDev, RTGCPHYS 
     { /* likely */ }
     else
     {
-        Log(("pdmR3DevHlp_PCIPhysRead: caller='%s'/%d: returns %Rrc - Not bus master! GCPhys=%RGp cbRead=%#zx\n",
-             pDevIns->pReg->szName, pDevIns->iInstance, VERR_PDM_NOT_PCI_BUS_MASTER, GCPhys, cbRead));
+        LogFunc(("caller='%s'/%d: returns %Rrc - Not bus master! GCPhys=%RGp cbRead=%#zx\n", pDevIns->pReg->szName,
+                 pDevIns->iInstance, VERR_PDM_NOT_PCI_BUS_MASTER, GCPhys, cbRead));
         memset(pvBuf, 0xff, cbRead);
         return VERR_PDM_NOT_PCI_BUS_MASTER;
     }
@@ -450,8 +450,7 @@ pdmR3DevHlpTracing_PCIPhysRead(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDev, RTGCPHYS 
             }
             else
             {
-                Log(("pdmR3DevHlp_PCIPhysRead: IOMMU translation failed. uDevId=%#x GCPhys=%#RGp cb=%u rc=%Rrc\n", uDevId, GCPhys,
-                     cbRead, rc));
+                LogFunc(("IOMMU translation failed. uDevId=%#x GCPhys=%#RGp cb=%u rc=%Rrc\n", uDevId, GCPhys, cbRead, rc));
                 break;
             }
         }
