@@ -1,4 +1,4 @@
-; $Id: VBoxRTImp.def 85140 2020-07-09 08:16:57Z vboxsync $
+; $Id: VBoxRTImp.def 85141 2020-07-09 08:28:48Z vboxsync $
 ;; @file
 ; VirtualBox Runtime DLL - Stable Interface Definition file.
 ;
@@ -2229,13 +2229,6 @@ EXPORTS
     SUPR3LoadModule
     SUPR3TracerOpen
     SUPR3TracerIoCtl
-
-    ; Proxy info retrieval
-    RTHttpCreate
-    RTHttpDestroy
-    RTHttpFreeProxyInfo
-    RTHttpGetProxyInfoForUrl
-    RTHttpUseSystemProxySettings
 
     ; Very temporary stuff:
     RTHttpRawGetResponseCode
