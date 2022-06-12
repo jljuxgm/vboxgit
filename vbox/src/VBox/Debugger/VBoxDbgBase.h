@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgBase.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxDbgBase.h 86327 2020-09-28 16:20:50Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Base classes.
  */
@@ -86,7 +86,7 @@ public:
     /**
      * Wrapper for DBGCCreate().
      */
-    int dbgcCreate(PDBGCBACK pBack, unsigned fFlags);
+    int dbgcCreate(PCDBGCIO pIo, unsigned fFlags);
     /** @} */
 
 

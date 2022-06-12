@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgBase.cpp 85844 2020-08-20 13:14:20Z vboxsync $ */
+/* $Id: VBoxDbgBase.cpp 86327 2020-09-28 16:20:50Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Base classes.
  */
@@ -95,12 +95,12 @@ VBoxDbgBase::stamEnum(const QString &rPat, PFNSTAMR3ENUM pfnEnum, void *pvUser)
 
 
 int
-VBoxDbgBase::dbgcCreate(PDBGCBACK pBack, unsigned fFlags)
+VBoxDbgBase::dbgcCreate(PCDBGCIO pIo, unsigned fFlags)
 {
     PUVM pUVM = m_pUVM;
     if (    pUVM
         &&  VMR3GetStateU(pUVM) < VMSTATE_DESTROYING)
-        return DBGCCreate(pUVM, pBack, fFlags);
+        return DBGCCreate(pUVM, pIo, fFlags);
     return VERR_INVALID_HANDLE;
 }
 
