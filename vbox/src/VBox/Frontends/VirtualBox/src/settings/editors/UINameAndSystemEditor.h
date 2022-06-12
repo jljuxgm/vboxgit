@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.h 88101 2021-03-12 13:26:56Z vboxsync $ */
+/* $Id: UINameAndSystemEditor.h 88107 2021-03-12 13:57:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class declaration.
  */
@@ -65,6 +65,7 @@ signals:
     void sigOsTypeChanged();
     /** Notifies listeners about VM OS family change. */
     void sigOSFamilyChanged();
+    void sigISOPathChanged(const QString &strISOPath);
 
 public:
 
@@ -108,6 +109,8 @@ public:
     /** Returns the VM OS family ID. */
     QString familyId() const;
 
+    QString ISOFilePath() const;
+
     /** Defines the VM OS @a enmType. */
     void setType(const CGuestOSType &enmType);
     /** Returns the VM OS type. */
@@ -118,6 +121,8 @@ public:
 
     /** Passes the @p fError to QILineEdit::mark(bool) effectively changing the background color. */
     void markNameLineEdit(bool fError);
+
+    void markISOFileSelector(bool fError, const QString &strErrorMessage);
 
 protected:
 

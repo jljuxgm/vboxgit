@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic1.h 88101 2021-03-12 13:26:56Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic1.h 88107 2021-03-12 13:57:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic1 class declaration.
  */
@@ -87,7 +87,6 @@ protected:
     /** @name Widgets
      * @{ */
         UINameAndSystemEditor *m_pNameAndSystemEditor;
-        UIFilePathSelector    *m_pISOFilePathSelector;
         QLabel                *m_pISOPathSelectorLabel;
     /** @} */
 
