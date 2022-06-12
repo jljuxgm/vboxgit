@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.h 88047 2021-03-09 14:06:20Z vboxsync $ */
+/* $Id: DrvAudio.h 88216 2021-03-20 01:50:05Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  */
@@ -132,8 +132,6 @@ typedef struct DRVAUDIO
     PPDMDRVINS              pDrvIns;
     /** Pointer to audio driver below us. */
     PPDMIHOSTAUDIO          pHostDrvAudio;
-    /** Pointer to CFGM configuration node of this driver. */
-    PCFGMNODE               pCFGMNode;
     /** List of audio streams. */
     RTLISTANCHOR            lstStreams;
 #ifdef VBOX_WITH_AUDIO_ENUM
