@@ -1,4 +1,4 @@
-/* $Id: pathint-nt.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: pathint-nt.cpp 85898 2020-08-27 09:33:08Z vboxsync $ */
 /** @file
  * IPRT - Native NT, Internal Path stuff.
  */
@@ -567,7 +567,7 @@ RTDECL(int) RTNtPathEnsureSpace(struct _UNICODE_STRING *pNtName, size_t cwcMin)
  *
  * @returns IPRT status code.
  * @param   pNtName             Where to return the NT path.  Free using
- *                              RTUtf16Alloc.
+ *                              RTNtPathFree.
  * @param   hHandle             The handle.
  * @param   cwcExtra            How much extra space is needed.
  */

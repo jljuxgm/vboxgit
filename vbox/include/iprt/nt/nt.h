@@ -1,4 +1,4 @@
-/* $Id: nt.h 85121 2020-07-08 19:33:26Z vboxsync $ */
+/* $Id: nt.h 85898 2020-08-27 09:33:08Z vboxsync $ */
 /** @file
  * IPRT - Header for code using the Native NT API.
  */
@@ -404,7 +404,7 @@ RTDECL(int) RTNtPathEnsureSpace(struct _UNICODE_STRING *pNtName, size_t cwcMin);
  *
  * @returns IPRT status code.
  * @param   pNtName             Where to return the NT path.  Free using
- *                              RTUtf16Alloc.
+ *                              RTNtPathFree.
  * @param   hHandle             The handle.
  * @param   cwcExtra            How much extra space is needed.
  */
