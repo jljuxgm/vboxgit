@@ -1,4 +1,4 @@
-/* $Id: DevHdaStream.cpp 89271 2021-05-25 12:27:06Z vboxsync $ */
+/* $Id: DevHdaStream.cpp 89302 2021-05-26 21:00:51Z vboxsync $ */
 /** @file
  * Intel HD Audio Controller Emulation - Streams.
  */
@@ -1948,7 +1948,7 @@ static void hdaR3StreamUpdateDma(PPDMDEVINS pDevIns, PHDASTATE pThis, PHDASTATER
             if (RT_SUCCESS(rc))
             {
                 hdaR3StreamPushToMixer(pStreamShared, pStreamR3, pSink, tsNowNs);
-                AudioMixerSinkUpdate(pSink);
+                AudioMixerSinkUpdate(pSink, 0, 0);
                 AudioMixerSinkUnlock(pSink);
             }
             else
@@ -2087,7 +2087,7 @@ static void hdaR3StreamUpdateDma(PPDMDEVINS pDevIns, PHDASTATE pThis, PHDASTATER
             int rc = AudioMixerSinkTryLock(pSink);
             if (RT_SUCCESS(rc))
             {
-                AudioMixerSinkUpdate(pSink);
+                AudioMixerSinkUpdate(pSink, cbStreamUsed, cbPeriod);
                 hdaR3StreamPullFromMixer(pStreamR3, pSink);
                 AudioMixerSinkUnlock(pSink);
             }
