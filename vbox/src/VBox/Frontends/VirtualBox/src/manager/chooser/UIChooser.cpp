@@ -1,4 +1,4 @@
-/* $Id: UIChooser.cpp 84513 2020-05-25 15:56:53Z vboxsync $ */
+/* $Id: UIChooser.cpp 84516 2020-05-25 16:12:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooser class implementation.
  */
@@ -128,6 +128,12 @@ void UIChooser::moveMachineToNewGroup()
 {
     AssertPtrReturnVoid(model());
     model()->moveSelectedMachineItemsToNewGroupItem();
+}
+
+void UIChooser::refreshMachine()
+{
+    AssertPtrReturnVoid(model());
+    model()->refreshSelectedMachineItems();
 }
 
 void UIChooser::sortGroup()

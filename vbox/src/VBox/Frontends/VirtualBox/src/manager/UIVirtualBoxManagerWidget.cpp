@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 84513 2020-05-25 15:56:53Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 84516 2020-05-25 16:12:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -128,6 +128,11 @@ void UIVirtualBoxManagerWidget::disbandGroup()
 void UIVirtualBoxManagerWidget::moveMachineToNewGroup()
 {
     m_pPaneChooser->moveMachineToNewGroup();
+}
+
+void UIVirtualBoxManagerWidget::refreshMachine()
+{
+    m_pPaneChooser->refreshMachine();
 }
 
 void UIVirtualBoxManagerWidget::sortGroup()

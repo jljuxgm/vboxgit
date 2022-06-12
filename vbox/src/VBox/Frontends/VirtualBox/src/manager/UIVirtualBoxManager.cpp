@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 84513 2020-05-25 15:56:53Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 84516 2020-05-25 16:12:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -1307,6 +1307,11 @@ void UIVirtualBoxManager::sltCloseLogViewerWindow()
     }
 }
 
+void UIVirtualBoxManager::sltPerformRefreshMachine()
+{
+    m_pWidget->refreshMachine();
+}
+
 void UIVirtualBoxManager::sltShowMachineInFileManager()
 {
     /* Get selected items: */
@@ -1584,6 +1589,8 @@ void UIVirtualBoxManager::prepareConnections()
             this, &UIVirtualBoxManager::sltPerformDiscardMachineState);
     connect(actionPool()->action(UIActionIndexST_M_Group_S_ShowLogDialog), &UIAction::triggered,
             this, &UIVirtualBoxManager::sltOpenLogViewerWindow);
+    connect(actionPool()->action(UIActionIndexST_M_Group_S_Refresh), &UIAction::triggered,
+            this, &UIVirtualBoxManager::sltPerformRefreshMachine);
     connect(actionPool()->action(UIActionIndexST_M_Group_S_ShowInFileManager), &UIAction::triggered,
             this, &UIVirtualBoxManager::sltShowMachineInFileManager);
     connect(actionPool()->action(UIActionIndexST_M_Group_S_CreateShortcut), &UIAction::triggered,
@@ -1616,6 +1623,8 @@ void UIVirtualBoxManager::prepareConnections()
             this, &UIVirtualBoxManager::sltPerformDiscardMachineState);
     connect(actionPool()->action(UIActionIndexST_M_Machine_S_ShowLogDialog), &UIAction::triggered,
             this, &UIVirtualBoxManager::sltOpenLogViewerWindow);
+    connect(actionPool()->action(UIActionIndexST_M_Machine_S_Refresh), &UIAction::triggered,
+            this, &UIVirtualBoxManager::sltPerformRefreshMachine);
     connect(actionPool()->action(UIActionIndexST_M_Machine_S_ShowInFileManager), &UIAction::triggered,
             this, &UIVirtualBoxManager::sltShowMachineInFileManager);
     connect(actionPool()->action(UIActionIndexST_M_Machine_S_CreateShortcut), &UIAction::triggered,

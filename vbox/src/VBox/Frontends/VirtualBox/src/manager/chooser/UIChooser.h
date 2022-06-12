@@ -1,4 +1,4 @@
-/* $Id: UIChooser.h 84513 2020-05-25 15:56:53Z vboxsync $ */
+/* $Id: UIChooser.h 84516 2020-05-25 16:12:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooser class declaration.
  */
@@ -137,6 +137,8 @@ public:
         void disbandGroup();
         /** Moves machine to a new group. */
         void moveMachineToNewGroup();
+        /** Refreshes machine. */
+        void refreshMachine();
         /** Sorts group. */
         void sortGroup();
     /** @} */
