@@ -1,4 +1,4 @@
-/* $Id: tstAudioMixBuffer.cpp 88002 2021-03-08 11:28:46Z vboxsync $ */
+/* $Id: tstAudioMixBuffer.cpp 88003 2021-03-08 11:46:08Z vboxsync $ */
 /** @file
  * Audio testcase - Mixing buffer.
  */
@@ -60,6 +60,9 @@ static void tstBasics(RTTEST hTest)
         /* a_cShift: */         PDMAUDIOPCMPROPS_MAKE_SHIFT_PARMS(4 /* cb */, 2 /* cChannels */),
         /* a_fSwapEndian: */    false
     );
+
+    RTTESTI_CHECK(DrvAudioHlpGetBitrate(&s_Cfg441StereoS16) == 44100*4*8);
+    RTTESTI_CHECK(DrvAudioHlpGetBitrate(&s_Cfg441StereoU32) == 44100*8*8);
 
     RTTESTI_CHECK_MSG(PDMAUDIOPCMPROPS_F2B(&s_Cfg441StereoS16, 1) == 4,
                       ("got %x, expected 4\n", PDMAUDIOPCMPROPS_F2B(&s_Cfg441StereoS16, 1)));
