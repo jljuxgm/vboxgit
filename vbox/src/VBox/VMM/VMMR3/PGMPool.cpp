@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 85179 2020-07-10 13:19:09Z vboxsync $ */
+/* $Id: PGMPool.cpp 86461 2020-10-06 16:40:59Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -542,7 +542,9 @@ DECLCALLBACK(VBOXSTRICTRC) pgmR3PoolClearAllRendezvous(PVM pVM, PVMCPU pVCpu, vo
                             if (    pShwPD->a[i].n.u1Present
                                 &&  pShwPD->a[i].b.u1Size)
                             {
+# ifndef PGM_WITHOUT_MAPPINGS
                                 Assert(!(pShwPD->a[i].u & PGM_PDFLAGS_MAPPING));
+# endif
                                 pShwPD->a[i].u = 0;
                                 Assert(pPage->cPresent);
                                 pPage->cPresent--;
@@ -563,7 +565,9 @@ DECLCALLBACK(VBOXSTRICTRC) pgmR3PoolClearAllRendezvous(PVM pVM, PVMCPU pVCpu, vo
                             if (    pShwPD->a[i].n.u1Present
                                 &&  pShwPD->a[i].b.u1Size)
                             {
+# ifndef PGM_WITHOUT_MAPPINGS
                                 Assert(!(pShwPD->a[i].u & PGM_PDFLAGS_MAPPING));
+# endif
                                 pShwPD->a[i].u = 0;
                                 Assert(pPage->cPresent);
                                 pPage->cPresent--;

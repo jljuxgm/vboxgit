@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 85121 2020-07-08 19:33:26Z vboxsync $ */
+/* $Id: PGMInternal.h 86461 2020-10-06 16:40:59Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -180,8 +180,10 @@
 /** Indicates the original entry was a big page.
  * @remarks This is currently only used for statistics and can be recycled.  */
 #define PGM_PDFLAGS_BIG_PAGE            RT_BIT_64(9)
+#ifndef PGM_WITHOUT_MAPPINGS
 /** Mapping (hypervisor allocated pagetable). */
-#define PGM_PDFLAGS_MAPPING             RT_BIT_64(10)
+# define PGM_PDFLAGS_MAPPING            RT_BIT_64(10)
+#endif
 /** Made read-only to facilitate dirty bit tracking. */
 #define PGM_PDFLAGS_TRACK_DIRTY         RT_BIT_64(11)
 /** @} */
