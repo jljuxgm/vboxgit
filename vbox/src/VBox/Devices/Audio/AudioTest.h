@@ -1,4 +1,4 @@
-/* $Id: AudioTest.h 89289 2021-05-26 09:48:37Z vboxsync $ */
+/* $Id: AudioTest.h 89293 2021-05-26 14:04:25Z vboxsync $ */
 /** @file
  * Audio testing routines.
  * Common code which is being used by the ValidationKit audio test (VKAT)
@@ -292,7 +292,7 @@ typedef struct AUDIOTESTWAVEFILE
 typedef AUDIOTESTWAVEFILE *PAUDIOTESTWAVEFILE;
 
 
-void   AudioTestToneInit(PAUDIOTESTTONE pTone, PPDMAUDIOPCMPROPS pProps, double dbFreq);
+double AudioTestToneInit(PAUDIOTESTTONE pTone, PPDMAUDIOPCMPROPS pProps, double dbFreq);
 double AudioTestToneInitRandom(PAUDIOTESTTONE pTone, PPDMAUDIOPCMPROPS pProps);
 int    AudioTestToneGenerate(PAUDIOTESTTONE pTone, void *pvBuf, uint32_t cbBuf, uint32_t *pcbWritten);
 
