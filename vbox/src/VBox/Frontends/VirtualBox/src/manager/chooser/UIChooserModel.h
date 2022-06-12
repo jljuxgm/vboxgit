@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.h 84567 2020-05-27 14:41:06Z vboxsync $ */
+/* $Id: UIChooserModel.h 84569 2020-05-27 15:15:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class declaration.
  */
@@ -360,8 +360,8 @@ private:
 
     /** @name Children stuff.
       * @{ */
-        /** Build tree for main root. */
-        void buildTreeForMainRoot();
+        /** [Re]builds tree for main root, preserves selection if requested. */
+        void buildTreeForMainRoot(bool fPreserveSelection = false);
         /** Update tree for main root. */
         void updateTreeForMainRoot();
 
