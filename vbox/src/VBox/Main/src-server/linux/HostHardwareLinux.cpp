@@ -1,4 +1,4 @@
-/* $Id: HostHardwareLinux.cpp 85929 2020-08-28 14:40:55Z vboxsync $ */
+/* $Id: HostHardwareLinux.cpp 85932 2020-08-28 16:46:50Z vboxsync $ */
 /** @file
  * VirtualBox Main - Code for handling hardware detection under Linux, VBoxSVC.
  */
@@ -268,7 +268,7 @@ static bool isCdromDevNum(dev_t Number) RT_NOTHROW_DEF
  * @param pszVendor  where to store the vendor id string on success (optional)
  * @param cbVendor   the size of the @a pszVendor buffer
  * @param pszModel   where to store the product id string on success (optional)
- * @param cchModel   the size of the @a pszModel buffer
+ * @param cbModel    the size of the @a pszModel buffer
  * @note check documentation on the SCSI INQUIRY command and the Linux kernel
  *       SCSI headers included above if you want to understand what is going
  *       on in this method.
