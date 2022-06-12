@@ -1,4 +1,4 @@
-/* $Id: AudioTest.cpp 88987 2021-05-11 16:39:05Z vboxsync $ */
+/* $Id: AudioTest.cpp 88996 2021-05-12 06:32:36Z vboxsync $ */
 /** @file
  * Audio testing routines.
  * Common code which is being used by the ValidationKit and the debug / ValdikationKit audio driver(s).
@@ -21,19 +21,25 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 
-#include <VBox/vmm/pdmaudioifs.h>
-#include <VBox/vmm/pdmaudioinline.h>
+#include <package-generated.h>
+#include "product-generated.h"
 
+#include <iprt/buildconfig.h>
 #include <iprt/dir.h>
 #include <iprt/file.h>
 #include <iprt/inifile.h>
 #include <iprt/list.h>
 #include <iprt/rand.h>
+#include <iprt/system.h>
 #include <iprt/uuid.h>
 #include <iprt/vfs.h>
 
 #define _USE_MATH_DEFINES
 #include <math.h> /* sin, M_PI */
+
+#include <VBox/version.h>
+#include <VBox/vmm/pdmaudioifs.h>
+#include <VBox/vmm/pdmaudioinline.h>
 
 #include "AudioTest.h"
 
@@ -420,15 +426,31 @@ int AudioTestSetCreate(PAUDIOTESTSET pSet, const char *pszPath, const char *pszT
         rc = audioTestManifestWriteLn(pSet, "tag=%s", pszTag);
         AssertRCReturn(rc, rc);
 
-        char szTime[64];
+        char szVal[64];
         RTTIMESPEC time;
-        if (!RTTimeSpecToString(RTTimeNow(&time), szTime, sizeof(szTime)))
+        if (!RTTimeSpecToString(RTTimeNow(&time), szVal, sizeof(szVal)))
             AssertFailedReturn(VERR_BUFFER_OVERFLOW);
 
-        rc = audioTestManifestWriteLn(pSet, "date_created=%s", szTime);
+        rc = audioTestManifestWriteLn(pSet, "date_created=%s", szVal);
         AssertRCReturn(rc, rc);
 
-        /** @todo Add more stuff here, like hostname, ++? */
+        rc = RTSystemQueryOSInfo(RTSYSOSINFO_PRODUCT, szVal, sizeof(szVal));
+        AssertRCReturn(rc, rc);
+        rc = audioTestManifestWriteLn(pSet, "os_product=%s", szVal);
+        AssertRCReturn(rc, rc);
+        rc = RTSystemQueryOSInfo(RTSYSOSINFO_RELEASE, szVal, sizeof(szVal));
+        AssertRCReturn(rc, rc);
+        rc = audioTestManifestWriteLn(pSet, "os_rel=%s", szVal);
+        AssertRCReturn(rc, rc);
+        rc = RTSystemQueryOSInfo(RTSYSOSINFO_VERSION, szVal, sizeof(szVal));
+        AssertRCReturn(rc, rc);
+        rc = audioTestManifestWriteLn(pSet, "os_ver=%s", szVal);
+        AssertRCReturn(rc, rc);
+
+        rc = audioTestManifestWriteLn(pSet, "vbox_ver=%s r%u %s (%s %s)",
+                                      VBOX_VERSION_STRING, RTBldCfgRevision(),
+                                      RTBldCfgTargetDotArch(), __DATE__, __TIME__);
+        AssertRCReturn(rc, rc);
 
         pSet->enmMode = AUDIOTESTSETMODE_TEST;
     }
