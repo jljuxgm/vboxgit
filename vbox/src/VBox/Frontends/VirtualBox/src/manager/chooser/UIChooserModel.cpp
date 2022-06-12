@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 87517 2021-02-01 20:00:24Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 88102 2021-03-12 13:31:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -1946,7 +1946,7 @@ void UIChooserModel::unregisterCloudMachineItems(const QList<UIChooserItemMachin
             continue;
         }
         /* And show unregister progress finally: */
-        msgCenter().showModalProgressDialog(comProgress, comMachine.GetName(), ":/progress_delete_90px.png", 0, 0);
+        msgCenter().showModalProgressDialog(comProgress, comMachine.GetName(), ":/progress_delete_cloud_vm_90px.png", 0, 0);
         if (!comProgress.isOk() || comProgress.GetResultCode() != 0)
         {
             msgCenter().cannotRemoveCloudMachine(comMachine, comProgress);
