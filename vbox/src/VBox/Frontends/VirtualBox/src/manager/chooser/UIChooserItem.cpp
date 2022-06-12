@@ -1,4 +1,4 @@
-/* $Id: UIChooserItem.cpp 86767 2020-10-30 11:34:06Z vboxsync $ */
+/* $Id: UIChooserItem.cpp 86768 2020-10-30 11:40:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItem class definition.
  */
@@ -227,6 +227,7 @@ UIChooserItem::UIChooserItem(UIChooserItem *pParent, UIChooserNode *pNode,
     , m_pParent(pParent)
     , m_pNode(pNode)
     , m_fHovered(false)
+    , m_fSelected(false)
     , m_pHoveringMachine(0)
     , m_pHoveringAnimationForward(0)
     , m_pHoveringAnimationBackward(0)
@@ -400,6 +401,16 @@ int UIChooserItem::position() const
 bool UIChooserItem::isHovered() const
 {
     return m_fHovered;
+}
+
+bool UIChooserItem::isSelected() const
+{
+    return m_fSelected;
+}
+
+void UIChooserItem::setSelected(bool fSelected)
+{
+    m_fSelected = fSelected;
 }
 
 void UIChooserItem::setDisabledEffect(bool fOn)
