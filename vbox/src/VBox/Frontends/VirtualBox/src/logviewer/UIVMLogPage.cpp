@@ -1,4 +1,4 @@
-/* $Id: UIVMLogPage.cpp 88686 2021-04-23 18:55:55Z vboxsync $ */
+/* $Id: UIVMLogPage.cpp 88702 2021-04-26 10:40:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -39,6 +39,7 @@ UIVMLogPage::UIVMLogPage(QWidget *pParent /* = 0 */)
     , m_bFiltered(false)
     , m_iFilteredLineCount(-1)
     , m_iUnfilteredLineCount(-1)
+    , m_iLogFileId(-1)
 {
     prepare();
 }
@@ -339,4 +340,14 @@ const QUuid &UIVMLogPage::machineId() const
 void UIVMLogPage::setMachineId(const QUuid &machineId)
 {
     m_machineId = machineId;
+}
+
+void UIVMLogPage::setLogFileId(int iLogFileId)
+{
+    m_iLogFileId = iLogFileId;
+}
+
+int UIVMLogPage::logFileId() const
+{
+    return m_iLogFileId;
 }
