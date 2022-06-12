@@ -1,4 +1,4 @@
-/* $Id: display-svga-x11.cpp 84561 2020-05-27 13:33:38Z vboxsync $ */
+/* $Id: display-svga-x11.cpp 84584 2020-05-28 12:09:35Z vboxsync $ */
 /** @file
  * X11 guest client - VMSVGA emulation resize event pass-through to X.Org
  * guest driver.
@@ -684,7 +684,7 @@ static bool isXwayland(void)
 
 static bool init()
 {
-    if (isXwayland())
+    if (1 || isXwayland())
     {
         VBClLogInfo("The parent session seems to be running on Wayland. Starting DRM client\n");
         char* argv[] = {NULL};
