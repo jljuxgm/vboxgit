@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 88762 2021-04-29 01:20:46Z vboxsync $ */
+/* $Id: DrvAudio.cpp 88763 2021-04-29 01:23:22Z vboxsync $ */
 /** @file
  * Intermediate audio driver - Connects the audio device emulation with the host backend.
  */
@@ -3555,7 +3555,7 @@ static DECLCALLBACK(int) drvAudioStreamCapture(PPDMIAUDIOCONNECTOR pInterface,
  */
 static void drvAudioStreamMarkNeedReInit(PDRVAUDIOSTREAM pStreamEx, const char *pszCaller)
 {
-    LogFlow((LOG_FN_FMT ": Flagging %s for re-init.\n", pStreamEx->Core.szName)); RT_NOREF(pszCaller);
+    LogFlow((LOG_FN_FMT ": Flagging %s for re-init.\n", pszCaller, pStreamEx->Core.szName)); RT_NOREF(pszCaller);
     pStreamEx->Core.fStatus |= PDMAUDIOSTREAM_STS_NEED_REINIT;
     PDMAUDIOSTREAM_STS_ASSERT_VALID(pStreamEx->Core.fStatus);
     pStreamEx->cTriesReInit  = 0;
