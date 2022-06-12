@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 87697 2021-02-10 17:20:34Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 87699 2021-02-10 17:38:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -3394,7 +3394,7 @@ void UIMessageCenter::sltShowUserManual(const QString &strLocation)
     showHelpBrowser(strLocation);
 #else
  #if defined (VBOX_WS_WIN)
-	HtmlHelp(GetDesktopWindow(), strLocation.utf16(), HH_DISPLAY_TOPIC, NULL);
+        HtmlHelp(GetDesktopWindow(), strLocation.utf16(), HH_DISPLAY_TOPIC, NULL);
  #endif
 
  #if !defined(VBOX_OSE)
