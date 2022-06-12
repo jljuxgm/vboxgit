@@ -1,4 +1,4 @@
-/* $Id: VirtioCore.h 86405 2020-10-02 05:58:42Z vboxsync $ */
+/* $Id: VirtioCore.h 86406 2020-10-02 06:09:58Z vboxsync $ */
 
 /** @file
  * VirtioCore.h - Virtio Declarations
@@ -62,6 +62,7 @@ DECLINLINE(void) virtioLogLevel(int logLevel, const char *format...)
     if (LogIsItEnabled(logLevel, LOG_GROUP))
         VIRTIOLOG(format);
     va_end(arglist);
+    RT_NOREF(logLevel);
 }
 
 /** Pointer to the shared VirtIO state. */
