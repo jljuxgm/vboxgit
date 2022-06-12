@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 88490 2021-04-13 10:55:07Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 88653 2021-04-22 14:00:28Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -3055,6 +3055,9 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
                     InsertConfigInteger(pCfg,       "Version",              0x0405);
                     if (uTimerHz)
                         InsertConfigInteger(pCfg,   "TimerHz",              uTimerHz);
+                    InsertConfigInteger(pCfg,       "DebugEnabled",         fDebugEnabled);
+                    if (strDebugPathOut.isNotEmpty())
+                        InsertConfigString(pCfg,    "DebugPathOut",         strDebugPathOut);
                     break;
                 }
                 case AudioControllerType_HDA:
