@@ -1,4 +1,4 @@
-/* $Id: UIDetailsWidgetHostNetwork.h 87232 2021-01-13 11:00:34Z vboxsync $ */
+/* $Id: UIDetailsWidgetHostNetwork.h 87275 2021-01-15 13:53:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsWidgetHostNetwork class declaration.
  */
@@ -43,7 +43,8 @@ struct UIDataHostNetworkInterface
 {
     /** Constructs data. */
     UIDataHostNetworkInterface()
-        : m_strName(QString())
+        : m_fExists(false)
+        , m_strName(QString())
         , m_fDHCPEnabled(false)
         , m_strAddress(QString())
         , m_strMask(QString())
@@ -56,6 +57,7 @@ struct UIDataHostNetworkInterface
     bool equal(const UIDataHostNetworkInterface &other) const
     {
         return true
+               && (m_fExists == other.m_fExists)
                && (m_strName == other.m_strName)
                && (m_fDHCPEnabled == other.m_fDHCPEnabled)
                && (m_strAddress == other.m_strAddress)
@@ -71,6 +73,8 @@ struct UIDataHostNetworkInterface
     /** Returns whether the @a other passed data is different from this one. */
     bool operator!=(const UIDataHostNetworkInterface &other) const { return !equal(other); }
 
+    /** Holds this interface is not NULL. */
+    bool     m_fExists;
     /** Holds interface name. */
     QString  m_strName;
     /** Holds whether DHCP is enabled for that interface. */
