@@ -1,4 +1,4 @@
-/* $Id: socket.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: socket.h 86843 2020-11-10 04:26:48Z vboxsync $ */
 /** @file
  * NAT - socket handling (declarations/defines).
  */
@@ -59,6 +59,8 @@ struct socket
     struct tcpiphdr *so_ti;      /* Pointer to the original ti within
                                   * so_mconn, for non-blocking connections */
     uint8_t         *so_ohdr;    /* unmolested IP header of the datagram in so_m */
+    caddr_t         so_optp;     /* tcp options in so_m */
+    int             so_optlen;   /* length of options in so_m */
     int             so_urgc;
     struct in_addr  so_faddr;    /* foreign host table entry */
     struct in_addr  so_laddr;    /* local host table entry */
