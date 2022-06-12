@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: utils.py 86918 2020-11-19 11:08:06Z vboxsync $
+# $Id: utils.py 86919 2020-11-19 11:09:11Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 86918 $"
+__version__ = "$Revision: 86919 $"
 
 
 # Standard Python imports.
@@ -1581,7 +1581,7 @@ def parseIsoTimestamp(sTs):
     iHour = int(sTime[0:2]);
     assert(sTime[2] == ':');
     iMin  = int(sTime[3:5]);
-    if (sTime[5] == ':')
+    if sTime[5] == ':':
         iSec = int(sTime[6:8]);
 
         # Fraction?
