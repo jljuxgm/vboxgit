@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 87773 2021-02-16 23:36:15Z vboxsync $ */
+/* $Id: DevE1000.cpp 88372 2021-04-06 18:17:00Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -1737,16 +1737,16 @@ DECLINLINE(bool) e1kUpdateRxDContext(PPDMDEVINS pDevIns, PE1KSTATE pThis, PE1KRX
              pThis->szPrf, pcszCallee, pContext->rdh, cRxRingSize));
         return VINF_SUCCESS;
     }
-    if (pContext->rdt >= cRxRingSize)
+    if (pContext->rdt > cRxRingSize)
     {
-        Log(("%s e1kUpdateRxDContext: called from %s, will return false because RDT too big (%u >= %u)\n",
+        Log(("%s e1kUpdateRxDContext: called from %s, will return false because RDT too big (%u > %u)\n",
              pThis->szPrf, pcszCallee, pContext->rdt, cRxRingSize));
         return VINF_SUCCESS;
     }
 #else /* !DEBUG */
     RT_NOREF(pcszCallee);
 #endif /* !DEBUG */
-    return pContext->rdh < cRxRingSize && pContext->rdt < cRxRingSize; // && (RCTL & RCTL_EN);
+    return pContext->rdh < cRxRingSize && pContext->rdt <= cRxRingSize; // && (RCTL & RCTL_EN);
 }
 #endif /* E1K_WITH_RXD_CACHE */
 
