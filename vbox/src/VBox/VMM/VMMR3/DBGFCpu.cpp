@@ -1,4 +1,4 @@
-/* $Id: DBGFCpu.cpp 84709 2020-06-05 18:26:07Z vboxsync $ */
+/* $Id: DBGFCpu.cpp 84710 2020-06-05 18:32:02Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, CPU State Accessors.
  */
@@ -190,11 +190,9 @@ VMMR3DECL(const char *) DBGFR3CpuGetState(PUVM pUVM, VMCPUID idCpu)
         case VMCPUSTATE_STARTED_EXEC_NEM_CANCELED: return "Started (Exec NEM Canceled)";
         case VMCPUSTATE_STARTED_HALTED:            return "Started (Halted)";
         case VMCPUSTATE_END:                       return "END";
-        default:
-            AssertMsgFailedReturn(("Unknown CPU state %u\n", enmCpuState), "<UNKNOWN>");
+        default: break;
     }
 
-    /* This indicates a compiler bug. */
-    return NULL;
+    AssertMsgFailedReturn(("Unknown CPU state %u\n", enmCpuState), "<UNKNOWN>");
 }
 
