@@ -1,4 +1,4 @@
-/* $Id: DBGCInternal.h 83088 2020-02-16 20:12:37Z vboxsync $ */
+/* $Id: DBGCInternal.h 84627 2020-06-01 20:13:57Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Internal Header File.
  */
@@ -585,6 +585,9 @@ int     dbgcCreate(PDBGC *ppDbgc, PDBGCBACK pBack, unsigned fFlags);
 int     dbgcRun(PDBGC pDbgc);
 int     dbgcProcessInput(PDBGC pDbgc, bool fNoExecute);
 void    dbgcDestroy(PDBGC pDbgc);
+
+
+DECLHIDDEN(int) dbgcGdbStubCreate(PUVM pUVM, PDBGCBACK pBack, unsigned fFlags);
 
 
 /*******************************************************************************
