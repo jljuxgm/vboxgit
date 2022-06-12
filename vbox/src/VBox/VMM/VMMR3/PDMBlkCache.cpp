@@ -1,4 +1,4 @@
-/* $Id: PDMBlkCache.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: PDMBlkCache.cpp 86527 2020-10-11 18:41:41Z vboxsync $ */
 /** @file
  * PDM Block Cache.
  */
@@ -1453,12 +1453,6 @@ static DECLCALLBACK(int) pdmBlkCacheEntryDestroy(PAVLRU64NODECORE pNode, void *p
     return VINF_SUCCESS;
 }
 
-/**
- * Destroys all cache resources used by the given endpoint.
- *
- * @returns nothing.
- * @param   pBlkCache       Block cache handle.
- */
 VMMR3DECL(void) PDMR3BlkCacheRelease(PPDMBLKCACHE pBlkCache)
 {
     PPDMBLKCACHEGLOBAL pCache = pBlkCache->pCache;
