@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElement.h 86217 2020-09-22 12:02:49Z vboxsync $ */
+/* $Id: UIDetailsElement.h 86223 2020-09-22 14:13:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement class declaration.
  */
@@ -292,12 +292,16 @@ private:
         void popupUSBControllerTypeEditor(const QString &strValue);
         /** Popups visual-state type editor. */
         void popupVisualStateTypeEditor(const QString &strValue);
+#ifndef VBOX_WS_MAC
         /** Popups menu-bar editor. */
         void popupMenuBarEditor(const QString &strValue);
+#endif
         /** Popups status-bar editor. */
         void popupStatusBarEditor(const QString &strValue);
+#ifndef VBOX_WS_MAC
         /** Popups mini-toolbar editor. */
         void popupMiniToolbarEditor(const QString &strValue);
+#endif
         /** Popups cloud editor. */
         void popupCloudEditor(const QString &strValue);
     /** @} */
