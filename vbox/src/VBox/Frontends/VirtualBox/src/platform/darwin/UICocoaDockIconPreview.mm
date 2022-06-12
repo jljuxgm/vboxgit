@@ -1,4 +1,4 @@
-/* $Id: UICocoaDockIconPreview.mm 85331 2020-07-14 10:21:57Z vboxsync $ */
+/* $Id: UICocoaDockIconPreview.mm 85335 2020-07-14 11:47:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Cocoa helper for the dock icon preview.
  */
@@ -159,7 +159,7 @@ void UICocoaDockIconPreview::setOriginalSize(int width, int height)
 - (void)drawRect:(NSRect)aRect
 {
     NSImage *dockMonitor = ::darwinToNSImageRef(p->m_dockMonitor);
-#if MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_12
+#if MAC_OS_X_VERSION_MIN_REQUIRED >= 101200
     [dockMonitor drawInRect:NSRectFromCGRect(p->flipRect(p->m_monitorRect)) fromRect:aRect operation:NSCompositingOperationSourceOver fraction:1.0];
 #else
     [dockMonitor drawInRect:NSRectFromCGRect(p->flipRect(p->m_monitorRect)) fromRect:aRect operation:NSCompositeSourceOver fraction:1.0];
