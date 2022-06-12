@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.cpp 88700 2021-04-26 08:30:53Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.cpp 88701 2021-04-26 09:03:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class implementation.
  */
@@ -885,7 +885,7 @@ void UIVMLogViewerWidget::createLogPage(const QString &strFileName, const QStrin
             pLogPage->setLogFileName(strFileName);
 
         /* Add page-container to viewer-container: */
-        bool fTitleWithMachineName = true;
+        bool fTitleWithMachineName = m_enmEmbedding == EmbedTo_Stack;
         QString strTabTitle;
         if (fTitleWithMachineName)
         {
