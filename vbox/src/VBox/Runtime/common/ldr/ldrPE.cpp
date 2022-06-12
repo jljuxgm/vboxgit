@@ -1,4 +1,4 @@
-/* $Id: ldrPE.cpp 86550 2020-10-13 00:01:19Z vboxsync $ */
+/* $Id: ldrPE.cpp 86551 2020-10-13 00:09:10Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Portable Executable (PE).
  */
@@ -3005,12 +3005,13 @@ static int rtldrPE_VerifySignatureValidateOneImageHash(PRTLDRMODPE pModPe, PRTLD
             /*
              * Verify other signatures with the same digest type.
              */
-            RTLDRPEHASHRESUNION const * const pHashRes = &pInfo->HashRes;
+            RTLDRPEHASHRESUNION const * const pHashRes      = &pInfo->HashRes;
+            RTDIGESTTYPE const                enmDigestType = pInfo->enmDigest;
             for (uint32_t i = 0; i < pSignature->cNested; i++)
             {
                 pInfo = &pSignature->paNested[i]; /* Note! pInfo changes! */
                 if (   !pInfo->fValidatedImageHash
-                    && pInfo->enmDigest == pInfo->enmDigest
+                    && pInfo->enmDigest == enmDigestType
                     /* paranoia from the top of this function: */
                     && pInfo->pIndData
                     && RTASN1CORE_IS_PRESENT(&pInfo->pIndData->DigestInfo.Digest.Asn1Core)
