@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibClipboard.cpp 83624 2020-04-08 16:29:25Z vboxsync $ */
+/* $Id: VBoxGuestR3LibClipboard.cpp 84733 2020-06-09 07:17:47Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Shared Clipboard.
  */
@@ -71,6 +71,13 @@
 VBGLR3DECL(int) VbglR3ClipboardConnect(HGCMCLIENTID *pidClient)
 {
     int rc = VbglR3HGCMConnect("VBoxSharedClipboard", pidClient);
+    if (RT_FAILURE(rc))
+    {
+        if (rc == VERR_HGCM_SERVICE_NOT_FOUND)
+            LogRel(("Shared Clipboard: Unabled to connect, as host service was not found, skipping\n"));
+        else
+            LogRel(("Shared Clipboard: Unabled to connect to host service, rc=%Rrc\n", rc));
+    }
     LogFlowFuncLeaveRC(rc);
     return rc;
 }
