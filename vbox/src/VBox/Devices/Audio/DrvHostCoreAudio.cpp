@@ -1,4 +1,4 @@
-/* $Id: DrvHostCoreAudio.cpp 85655 2020-08-10 08:02:03Z vboxsync $ */
+/* $Id: DrvHostCoreAudio.cpp 87639 2021-02-08 15:01:05Z vboxsync $ */
 /** @file
  * VBox audio devices - Mac OS X CoreAudio audio driver.
  */
@@ -786,6 +786,9 @@ int coreAudioDevicesEnumerateAll(PDRVHOSTCOREAUDIO pThis, PPDMAUDIODEVICEENUM pE
                         {
                             pDevDst->enmUsage           = PDMAUDIODIR_ANY;
                             pDevDst->cMaxOutputChannels = pDevSrcOut->cMaxOutputChannels;
+
+                            if (pDevSrcOut->fFlags & PDMAUDIODEV_FLAGS_DEFAULT)
+                                pDevDst->fFlags |= PDMAUDIODEV_FLAGS_DEFAULT;
                             break;
                         }
                     }
