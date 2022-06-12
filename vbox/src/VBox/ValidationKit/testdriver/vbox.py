@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 85448 2020-07-24 05:31:57Z vboxsync $
+# $Id: vbox.py 85496 2020-07-29 07:22:14Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 85448 $"
+__version__ = "$Revision: 85496 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -3114,8 +3114,8 @@ class TestDriver(base.TestDriver):                                              
                                      ('phys', ''),
                                      ('clocks', ''),
                                      ('timers', ''),
-                                     ('gdtguest', ''),
-                                     ('ldtguest', ''),
+                                     ('gdt', ''),
+                                     ('ldt', ''),
                                     ]:
                     if sInfo in ['apic',] and self.fpApiVer < 5.1: # asserts and burns
                         continue;
