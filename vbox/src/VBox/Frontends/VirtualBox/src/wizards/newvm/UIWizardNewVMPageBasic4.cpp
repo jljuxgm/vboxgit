@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic4.cpp 87981 2021-03-05 17:46:36Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic4.cpp 88000 2021-03-08 08:29:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic4 class implementation.
  */
@@ -418,7 +418,12 @@ bool UIWizardNewVMPageBasic4::validatePage()
         if (!fResult)
             return fResult;
     }
+
     fResult = qobject_cast<UIWizardNewVM*>(wizard())->createVM();
+    /* Try to delete the hard disk: */
+    if (!fResult)
+        qobject_cast<UIWizardNewVM*>(wizard())->deleteVirtualDisk();
+
     endProcessing();
 
     return fResult;

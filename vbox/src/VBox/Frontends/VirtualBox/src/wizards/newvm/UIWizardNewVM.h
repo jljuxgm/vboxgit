@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.h 87916 2021-03-02 15:21:30Z vboxsync $ */
+/* $Id: UIWizardNewVM.h 88000 2021-03-08 08:29:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class declaration.
  */
@@ -100,6 +100,7 @@ protected:
 
     bool createVM();
     bool createVirtualDisk();
+    void deleteVirtualDisk();
 
     void configureVM(const QString &strGuestTypeId, const CGuestOSType &comGuestType);
     bool attachDefaultDevices(const CGuestOSType &comGuestType);

@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 87932 2021-03-03 09:49:57Z vboxsync $ */
+/* $Id: UIWizardNewVM.cpp 88000 2021-03-08 08:29:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
@@ -227,6 +227,31 @@ bool UIWizardNewVM::createVirtualDisk()
     setVirtualDisk(virtualDisk);
 
     return true;
+}
+
+void UIWizardNewVM::deleteVirtualDisk()
+{
+    CMedium comDisk = virtualDisk();
+    /* Make sure virtual-disk valid: */
+    if (comDisk.isNull())
+        return;
+
+    /* Remember virtual-disk attributes: */
+    QString strLocation = comDisk.GetLocation();
+    /* Prepare delete storage progress: */
+    CProgress progress = comDisk.DeleteStorage();
+    if (comDisk.isOk())
+    {
+        /* Show delete storage progress: */
+        msgCenter().showModalProgressDialog(progress, windowTitle(), ":/progress_media_delete_90px.png", this);
+        if (!progress.isOk() || progress.GetResultCode() != 0)
+            msgCenter().cannotDeleteHardDiskStorage(progress, strLocation, this);
+    }
+    else
+        msgCenter().cannotDeleteHardDiskStorage(comDisk, strLocation, this);
+
+    /* Detach virtual-disk anyway: */
+    comDisk.detach();
 }
 
 void UIWizardNewVM::configureVM(const QString &strGuestTypeId, const CGuestOSType &comGuestType)
