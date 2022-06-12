@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.h 88082 2021-03-11 10:57:36Z vboxsync $ */
+/* $Id: UIActionPoolManager.h 88089 2021-03-11 13:40:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class declaration.
  */
@@ -189,7 +189,7 @@ enum UIActionIndexMN
     UIActionIndexMN_M_CloudConsole_S_ProfileRemove,
     UIActionIndexMN_M_CloudConsole_T_Details,
 
-    /* VM Resource Monitor actions: */
+    /* VM VM Activity Overview Widget actions: */
     UIActionIndexMN_M_VMActivityOverview,
     UIActionIndexMN_M_VMActivityOverview_M_Columns,
     UIActionIndexMN_M_VMActivityOverview_S_SwitchToMachinePerformance,
@@ -297,9 +297,9 @@ private:
     /** Updates 'Cloud Console' @a pMenu. */
     void updateMenuCloudConsoleWrapper(UIMenu *pMenu);
 
-    /** Updates 'VM Resource Monitor' menu. */
+    /** Updates 'VM VM Activity Overview' menu. */
     void updateMenuVMActivityOverview();
-    /** Updates 'VM Resource Monitor' @a pMenu. */
+    /** Updates 'VM VM Activity Overview' @a pMenu. */
     void updateMenuVMActivityOverviewWrapper(UIMenu *pMenu);
 
     /** Updates 'Snapshot' menu. */
