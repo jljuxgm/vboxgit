@@ -1,4 +1,4 @@
-/* $Id: vkat.cpp 89259 2021-05-25 09:58:10Z vboxsync $ */
+/* $Id: vkat.cpp 89261 2021-05-25 10:23:37Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) utility for testing and validating the audio stack.
  */
@@ -47,6 +47,10 @@
 #include "product-generated.h"
 
 #include <VBox/version.h>
+
+#ifdef RT_OS_WINDOWS
+# include <iprt/win/windows.h> /* for CoInitializeEx */
+#endif
 
 /**
  * Internal driver instance data
@@ -2847,6 +2851,12 @@ int main(int argc, char **argv)
     RTEXITCODE rcExit = RTTestInitAndCreate("AudioTest", &g_hTest);
     if (rcExit != RTEXITCODE_SUCCESS)
         return rcExit;
+
+#ifdef RT_OS_WINDOWS
+    HRESULT hrc = CoInitializeEx(NULL /*pReserved*/, COINIT_MULTITHREADED | COINIT_SPEED_OVER_MEMORY | COINIT_DISABLE_OLE1DDE);
+    if (FAILED(hrc))
+        RTMsgWarning("CoInitializeEx failed: %#x", hrc);
+#endif
 
     /*
      * Process common options.
