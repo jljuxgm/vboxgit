@@ -1,4 +1,4 @@
-/* $Id: PDMDriver.cpp 88665 2021-04-22 23:42:24Z vboxsync $ */
+/* $Id: PDMDriver.cpp 88811 2021-05-01 01:06:48Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Driver parts.
  */
@@ -1518,7 +1518,6 @@ static DECLCALLBACK(int) pdmR3DrvHlp_STAMDeregister(PPDMDRVINS pDrvIns, void *pv
 static DECLCALLBACK(int) pdmR3DrvHlp_STAMDeregisterByPrefix(PPDMDRVINS pDrvIns, const char *pszPrefix)
 {
     PDMDRV_ASSERT_DRVINS(pDrvIns);
-    VM_ASSERT_EMT(pDrvIns->Internal.s.pVMR3);
 
     if (*pszPrefix == '/')
         return STAMR3DeregisterByPrefix(pDrvIns->Internal.s.pVMR3->pUVM, pszPrefix);
