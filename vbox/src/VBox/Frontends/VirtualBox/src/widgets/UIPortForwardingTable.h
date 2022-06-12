@@ -1,4 +1,4 @@
-/* $Id: UIPortForwardingTable.h 87246 2021-01-14 09:55:00Z vboxsync $ */
+/* $Id: UIPortForwardingTable.h 87247 2021-01-14 10:00:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPortForwardingTable class declaration.
  */
@@ -214,7 +214,9 @@ public:
     UIPortForwardingTable(const UIPortForwardingDataList &rules, bool fIPv6, bool fAllowEmptyGuestIPs);
 
     /** Returns the list of port forwarding rules. */
-    const UIPortForwardingDataList rules() const;
+    UIPortForwardingDataList rules() const;
+    /** Defines the list of port forwarding @a newRules. */
+    void setRules(const UIPortForwardingDataList &newRules);
 
     /** Validates the table. */
     bool validate() const;
@@ -267,8 +269,8 @@ private:
     /** Prepares toolbar. */
     void prepareToolbar();
 
-    /** Holds the _initial_ list of Port Forwarding rules. */
-    const UIPortForwardingDataList &m_rules;
+    /** Holds the list of port forwarding rules. */
+    UIPortForwardingDataList  m_rules;
 
     /** Holds whether this table contains IPv6 rules, not IPv4. */
     bool  m_fIPv6               : 1;
