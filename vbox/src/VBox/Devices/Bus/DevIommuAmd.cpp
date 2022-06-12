@@ -1,4 +1,4 @@
-/* $Id: DevIommuAmd.cpp 88840 2021-05-03 16:10:17Z vboxsync $ */
+/* $Id: DevIommuAmd.cpp 88998 2021-05-12 06:56:32Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - AMD implementation.
  */
@@ -5350,12 +5350,7 @@ static DECLCALLBACK(void) iommuAmdR3DbgInfo(PPDMDEVINS pDevIns, PCDBGFINFOHLP pH
     PCPDMPCIDEV pPciDev = pDevIns->apPciDevs[0];
     PDMPCIDEV_ASSERT_VALID(pDevIns, pPciDev);
 
-    bool fVerbose;
-    if (   pszArgs
-        && !strncmp(pszArgs, RT_STR_TUPLE("verbose")))
-        fVerbose = true;
-    else
-        fVerbose = false;
+    bool const fVerbose = RTStrCmp(pszArgs, "verbose") == 0;
 
     pHlp->pfnPrintf(pHlp, "AMD-IOMMU:\n");
     /* Device Table Base Addresses (all segments). */
