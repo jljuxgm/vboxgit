@@ -1,4 +1,4 @@
-/* $Id: DrvAudioCommon.cpp 88010 2021-03-08 12:39:21Z vboxsync $ */
+/* $Id: DrvAudioCommon.cpp 88012 2021-03-08 12:41:31Z vboxsync $ */
 /** @file
  * Intermedia audio driver, common routines.
  *
@@ -1429,7 +1429,7 @@ uint32_t DrvAudioHlpBytesPerFrame(PCPDMAUDIOPCMPROPS pProps)
  *
  * @param   pProps              Stream configuration to log.
  */
-void DrvAudioHlpPCMPropsPrint(PCPDMAUDIOPCMPROPS pProps)
+void DrvAudioHlpPcmPropsLog(PCPDMAUDIOPCMPROPS pProps)
 {
     AssertPtrReturnVoid(pProps);
 
