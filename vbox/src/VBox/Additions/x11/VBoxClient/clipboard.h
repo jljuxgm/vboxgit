@@ -1,4 +1,4 @@
-/** $Id: clipboard.h 86968 2020-11-24 13:46:03Z vboxsync $ */
+/** $Id: clipboard.h 86970 2020-11-24 14:04:43Z vboxsync $ */
 /** @file
  * Guest Additions - X11 Shared Clipboard - Main header.
  */
@@ -15,6 +15,12 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#ifndef GA_INCLUDED_SRC_x11_VBoxClient_clipboard_h
+#define GA_INCLUDED_SRC_x11_VBoxClient_clipboard_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
+
 /**
  * Struct keeping a Shared Clipboard context.
  */
@@ -30,3 +36,4 @@ struct SHCLCONTEXT
     SHCLX11CTX       X11;
 };
 
+#endif /* !GA_INCLUDED_SRC_x11_VBoxClient_clipboard_h */
