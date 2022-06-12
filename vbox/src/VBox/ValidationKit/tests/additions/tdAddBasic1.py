@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 84442 2020-05-22 07:43:49Z vboxsync $
+# $Id: tdAddBasic1.py 84443 2020-05-22 07:50:54Z vboxsync $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84442 $"
+__version__ = "$Revision: 84443 $"
 
 # Standard Python imports.
 import os;
@@ -425,7 +425,7 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
             ## @todo !!! HACK ALERT !!! Add the value directly into the testing source image. Later.
             fHaveSetupApiDevLog = self.txsRunTest(oTxsSession, 'Enabling setupapi.dev.log', 30 * 1000,
                                                   'reg.exe',
-                                                  (reg.exe', 'add',
+                                                  ('reg.exe', 'add',
                                                    '"HKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\Setup"',
                                                    '/v', 'LogLevel', '/t', 'REG_DWORD', '/d', '0xFF'),
                                                    fCheckSessionStatus = True);
