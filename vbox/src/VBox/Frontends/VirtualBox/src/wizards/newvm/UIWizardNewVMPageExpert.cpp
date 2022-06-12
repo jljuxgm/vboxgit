@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.cpp 87570 2021-02-03 15:07:34Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.cpp 87571 2021-02-03 15:22:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class implementation.
  */
@@ -182,7 +182,7 @@ void UIWizardNewVMPageExpert::sltOSFamilyTypeChanged()
 void UIWizardNewVMPageExpert::retranslateUi()
 {
     UIWizardNewVMPage1::retranslateWidgets();
-    UIWizardNewVMPage3::retranslateWidgets();
+    UIWizardNewVMPage2::retranslateWidgets();
     UIWizardNewVMPage4::retranslateWidgets();
     UIWizardNewVMPage5::retranslateWidgets();
 
@@ -304,7 +304,7 @@ void UIWizardNewVMPageExpert::cleanupPage()
 void UIWizardNewVMPageExpert::markWidgets() const
 {
     UIWizardNewVMPage1::markWidgets();
-    UIWizardNewVMPage3::markWidgets();
+    UIWizardNewVMPage2::markWidgets();
 }
 
 QWidget *UIWizardNewVMPageExpert::createUnattendedWidgets()
