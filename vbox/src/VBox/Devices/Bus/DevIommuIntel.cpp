@@ -1,4 +1,4 @@
-/* $Id: DevIommuIntel.cpp 89246 2021-05-24 16:13:21Z vboxsync $ */
+/* $Id: DevIommuIntel.cpp 89247 2021-05-24 16:39:31Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - Intel implementation.
  */
@@ -1822,7 +1822,7 @@ static int dmarDrReadRootEntry(PPDMDEVINS pDevIns, uint64_t uRtaddrReg, uint8_t 
  * @param   pDevIns         The IOMMU device instance.
  * @param   GCPhysCtxTable  The physical address of the context table.
  * @param   idxCtxEntry     The index of the context entry to read.
- * @param   pRootEntry      Where to store the read context entry.
+ * @param   pCtxEntry       Where to store the read context entry.
  */
 static int dmarDrReadCtxEntry(PPDMDEVINS pDevIns, RTGCPHYS GCPhysCtxTable, uint8_t idxCtxEntry, PVTD_CONTEXT_ENTRY_T pCtxEntry)
 {
