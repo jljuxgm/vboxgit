@@ -1,4 +1,4 @@
-/* $Id: qtpatching.cpp 87756 2021-02-15 10:34:48Z vboxsync $ */
+/* $Id: qtpatching.cpp 87757 2021-02-15 10:44:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt patching related stuff tucked away here to not clutter the rest of the code.
  */
@@ -283,7 +283,7 @@ static DECLCALLBACK(int32_t) uiCommonQtRuntimeQTextBrowserPatch(void *pvUser)
             if (fValid)
             {
                 /* Allocate executable memory, assemble the patches and last make the area to patch writable and insert the trampoline. */
-                g_pbExecMemory = (uint8_t *)RTMemExecAlloc(2 * (cbInsnMov1 + cbInsnMov2 + cbInsnMov3) + 128 /** @todo */);
+                g_pbExecMemory = (uint8_t *)RTMemExecAlloc(2 * (cbInsnMov1 + cbInsnMov2 + cbInsnMov3) + 64);
                 if (g_pbExecMemory)
                 {
                     uint8_t *pbPatch = g_pbExecMemory;
