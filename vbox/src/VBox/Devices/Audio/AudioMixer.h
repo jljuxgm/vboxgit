@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.h 88907 2021-05-06 15:23:35Z vboxsync $ */
+/* $Id: AudioMixer.h 88909 2021-05-06 16:37:24Z vboxsync $ */
 /** @file
  * VBox audio - Mixing routines.
  *
@@ -254,9 +254,6 @@ typedef enum AUDMIXOP
     AUDMIXOP_32BIT_HACK = 0x7fffffff
 } AUDMIXOP;
 
-/** No flags specified. */
-#define AUDMIXSTRMCTL_F_NONE            0
-
 /** No mixer flags specified. */
 #define AUDMIXER_FLAGS_NONE             0
 /** Debug mode enabled.
@@ -272,7 +269,7 @@ void AudioMixerInvalidate(PAUDIOMIXER pMixer);
 int AudioMixerSetMasterVolume(PAUDIOMIXER pMixer, PPDMAUDIOVOLUME pVol);
 void AudioMixerDebug(PAUDIOMIXER pMixer, PCDBGFINFOHLP pHlp, const char *pszArgs);
 
-int AudioMixerSinkAddStream(PAUDMIXSINK pSink, PAUDMIXSTREAM pStream);
+int     AudioMixerSinkAddStream(PAUDMIXSINK pSink, PAUDMIXSTREAM pStream);
 int     AudioMixerSinkCreateStream(PAUDMIXSINK pSink, PPDMIAUDIOCONNECTOR pConnector, PPDMAUDIOSTREAMCFG pCfg,
                                    AUDMIXSTREAMFLAGS fFlags, PPDMDEVINS pDevIns, PAUDMIXSTREAM *ppStream);
 int AudioMixerSinkCtl(PAUDMIXSINK pSink, AUDMIXSINKCMD enmCmd);
