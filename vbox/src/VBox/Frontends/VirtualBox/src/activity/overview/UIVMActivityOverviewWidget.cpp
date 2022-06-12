@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityOverviewWidget.cpp 88712 2021-04-26 17:28:13Z vboxsync $ */
+/* $Id: UIVMActivityOverviewWidget.cpp 88999 2021-05-12 07:16:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMActivityOverviewWidget class implementation.
  */
@@ -344,8 +344,8 @@ private:
     QTimer *m_pTimer;
     /** @name The following are used during UIPerformanceCollector::QueryMetricsData(..)
      * @{ */
-    QVector<QString> m_nameList;
-    QVector<CUnknown> m_objectList;
+       QVector<QString> m_nameList;
+       QVector<CUnknown> m_objectList;
     /** @} */
     CPerformanceCollector m_performanceCollector;
     QMap<int, bool> m_columnVisible;

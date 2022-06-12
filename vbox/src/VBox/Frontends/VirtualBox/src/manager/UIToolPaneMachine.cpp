@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneMachine.cpp 88686 2021-04-23 18:55:55Z vboxsync $ */
+/* $Id: UIToolPaneMachine.cpp 88999 2021-05-12 07:16:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolPaneMachine class implementation.
  */
@@ -272,13 +272,13 @@ void UIToolPaneMachine::setItems(const QList<UIVirtualMachineItem*> &items)
     /* Cache passed value: */
     m_items = items;
 
-    /* Update details pane is it is open: */
+    /* Update details pane is open: */
     if (isToolOpened(UIToolType_Details))
     {
         AssertPtrReturnVoid(m_pPaneDetails);
         m_pPaneDetails->setItems(m_items);
     }
-    /* Update logs pane is it is open: */
+    /* Update logs pane is open: */
     if (isToolOpened(UIToolType_Logs))
     {
         AssertPtrReturnVoid(m_pPaneLogViewer);
