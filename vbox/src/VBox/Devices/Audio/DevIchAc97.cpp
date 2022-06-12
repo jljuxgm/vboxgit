@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 88919 2021-05-06 23:05:19Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 88937 2021-05-07 18:19:53Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -1342,22 +1342,12 @@ static int ichac97R3StreamRead(PAC97STREAMR3 pSrcStreamCC, PAUDMIXSINK pDstMixSi
  */
 static DECLCALLBACK(int) ichac97R3StreamAsyncIOThread(RTTHREAD hThreadSelf, void *pvUser)
 {
-    PAC97STREAMTHREADCTX pCtx = (PAC97STREAMTHREADCTX)pvUser;
-    AssertPtr(pCtx);
-
-    PAC97STATE pThis = pCtx->pThis;
-    AssertPtr(pThis);
-
-    PAC97STATER3 pThisCC = pCtx->pThisCC;
-    AssertPtr(pThisCC);
-
-    PAC97STREAM pStream = pCtx->pStream;
-    AssertPtr(pStream);
-
-    PAC97STREAMR3 pStreamCC = pCtx->pStreamCC;
-    AssertPtr(pStreamCC);
-
-    PAC97STREAMSTATEAIO pAIO = &pStreamCC->State.AIO;
+    PAC97STREAMTHREADCTX    pCtx = (PAC97STREAMTHREADCTX)pvUser;
+    PAC97STATE              pThis     = pCtx->pThis;
+    PAC97STATER3            pThisCC   = pCtx->pThisCC;
+    PAC97STREAM             pStream   = pCtx->pStream;
+    PAC97STREAMR3           pStreamCC = pCtx->pStreamCC;
+    PAC97STREAMSTATEAIO     pAIO      = &pStreamCC->State.AIO;
 
     ASMAtomicXchgBool(&pAIO->fStarted, true);
 
