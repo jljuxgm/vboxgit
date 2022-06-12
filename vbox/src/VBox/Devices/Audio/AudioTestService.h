@@ -1,4 +1,4 @@
-/* $Id: AudioTestService.h 89273 2021-05-25 14:12:33Z vboxsync $ */
+/* $Id: AudioTestService.h 89399 2021-05-31 12:43:16Z vboxsync $ */
 /** @file
  * AudioTestService - Audio test execution server, Public Header.
  */
@@ -23,6 +23,9 @@
 
 #include "AudioTestServiceInternal.h"
 
+
+/** Default TCP/IP port the ATS (Audio Test Service) is running on. */
+#define ATS_DEFAULT_PORT        6052
 
 /**
  * Structure for keeping an Audio Test Service (ATS) callback table.
