@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGroup.h 89249 2021-05-24 16:54:47Z vboxsync $ */
+/* $Id: UIChooserItemGroup.h 89253 2021-05-24 17:10:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGroup class declaration.
  */
@@ -328,6 +328,8 @@ private:
         int  m_iItemBackgroundDarknessStart;
         /** Holds item final background darkness. */
         int  m_iItemBackgroundDarknessFinal;
+        /** Holds item header highlight lightness. */
+        int  m_iHighlightLightness;
 
         /** Holds aditional height. */
         int  m_iAdditionalHeight;

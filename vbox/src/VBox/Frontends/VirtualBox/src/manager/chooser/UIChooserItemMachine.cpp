@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemMachine.cpp 89249 2021-05-24 16:54:47Z vboxsync $ */
+/* $Id: UIChooserItemMachine.cpp 89253 2021-05-24 17:10:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemMachine class implementation.
  */
@@ -554,17 +554,17 @@ void UIChooserItemMachine::prepare()
 #elif defined(VBOX_WS_WIN)
     m_iDefaultLightnessStart = 120;
     m_iDefaultLightnessFinal = 110;
-    m_iHoverLightnessStart = 190;
-    m_iHoverLightnessFinal = 160;
-    m_iHighlightLightnessStart = 160;
-    m_iHighlightLightnessFinal = 130;
+    m_iHoverLightnessStart = 220;
+    m_iHoverLightnessFinal = 210;
+    m_iHighlightLightnessStart = 190;
+    m_iHighlightLightnessFinal = 180;
 #else /* !VBOX_WS_MAC && !VBOX_WS_WIN */
     m_iDefaultLightnessStart = 110;
     m_iDefaultLightnessFinal = 100;
-    m_iHoverLightnessStart = 190;
-    m_iHoverLightnessFinal = 160;
-    m_iHighlightLightnessStart = 160;
-    m_iHighlightLightnessFinal = 130;
+    m_iHoverLightnessStart = 125;
+    m_iHoverLightnessFinal = 115;
+    m_iHighlightLightnessStart = 110;
+    m_iHighlightLightnessFinal = 100;
 #endif /* !VBOX_WS_MAC && !VBOX_WS_WIN */
 
     /* Fonts: */
