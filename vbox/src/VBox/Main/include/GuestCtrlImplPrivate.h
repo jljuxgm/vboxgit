@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImplPrivate.h 84844 2020-06-16 09:46:56Z vboxsync $ */
+/* $Id: GuestCtrlImplPrivate.h 84857 2020-06-17 07:46:06Z vboxsync $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -1284,6 +1284,7 @@ public:
 public:
 
     static FsObjType_T fileModeToFsObjType(RTFMODE fMode);
+    static Utf8Str getErrorAsString(const Utf8Str &strAction, const GuestErrorInfo& guestErrorInfo);
     static Utf8Str getErrorAsString(const GuestErrorInfo &guestErrorInfo);
 
 protected:
