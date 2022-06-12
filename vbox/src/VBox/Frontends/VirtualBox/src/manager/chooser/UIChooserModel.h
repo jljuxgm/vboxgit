@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.h 87102 2020-12-17 14:44:51Z vboxsync $ */
+/* $Id: UIChooserModel.h 88560 2021-04-16 10:56:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class declaration.
  */
@@ -359,11 +359,9 @@ private:
         void prepareCloudUpdateTimer();
         /** Prepares connections. */
         void prepareConnections();
-        /** Loads last selected-items. */
-        void loadLastSelectedItem();
+        /** Loads settings. */
+        void loadSettings();
 
-        /** Saves last selected-items. */
-        void saveLastSelectedItem();
         /** Cleanups connections. */
         void cleanupConnections();
         /** Cleanups cloud update timer.*/
@@ -398,6 +396,8 @@ private:
 
     /** @name Children stuff.
       * @{ */
+        /** Clears tree for main root. */
+        void clearTreeForMainRoot();
         /** [Re]builds tree for main root, preserves selection if requested. */
         void buildTreeForMainRoot(bool fPreserveSelection = false);
         /** Update tree for main root. */
@@ -439,6 +439,9 @@ private:
       * @{ */
         /** Holds the current-item reference. */
         QPointer<UIChooserItem>  m_pCurrentItem;
+
+        /** Holds whether selection save allowed. */
+        bool  m_fSelectionSaveAllowed;
     /** @} */
 
     /** @name Search stuff.
