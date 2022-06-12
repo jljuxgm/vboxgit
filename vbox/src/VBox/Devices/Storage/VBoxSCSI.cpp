@@ -1,4 +1,4 @@
-/* $Id: VBoxSCSI.cpp 87165 2021-01-04 13:20:13Z vboxsync $ */
+/* $Id: VBoxSCSI.cpp 88532 2021-04-15 12:07:52Z vboxsync $ */
 /** @file
  * VBox storage devices - Simple SCSI interface for BIOS access.
  */
@@ -428,7 +428,7 @@ int vboxscsiReadString(PPDMDEVINS pDevIns, PVBOXSCSI pVBoxSCSI, uint8_t iRegiste
         Assert(cbTransfer <= pVBoxSCSI->cbBufLeft);
         if (cbTransfer > pVBoxSCSI->cbBufLeft)
         {
-            memset(pbDst + pVBoxSCSI->cbBuf, 0xff, cbTransfer - pVBoxSCSI->cbBufLeft);
+            memset(pbDst + pVBoxSCSI->cbBufLeft, 0xff, cbTransfer - pVBoxSCSI->cbBufLeft);
             cbTransfer = pVBoxSCSI->cbBufLeft;  /* Ignore excess data (not supposed to happen). */
         }
 
