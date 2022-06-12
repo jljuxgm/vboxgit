@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 85114 2020-07-08 16:38:45Z vboxsync $ */
+/* $Id: DevPCNet.cpp 85116 2020-07-08 17:08:51Z vboxsync $ */
 /** @file
  * DevPCNet - AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  *
@@ -875,14 +875,14 @@ DECLINLINE(void) pcnetTmdStorePassHost(PPDMDEVINS pDevIns, PPCNETSTATE pThis, TM
         xda[1] = ((((uint32_t *)tmd)[0] >> 16) &   0xff) | ((((uint32_t *)tmd)[1]>>16) & 0xff00);
         xda[1] &= ~RT_BIT(15);
         xda[3] =   ((uint32_t *)tmd)[2] >> 16;
-        /** @todo: The WORD containing status bits may not need to be written unless the ERR bit is set. */
+        /** @todo The WORD containing status bits may not need to be written unless the ERR bit is set. */
         pcnetPhysWrite(pDevIns, pThis, addr + 3 * sizeof(uint16_t), (void*)&xda[3], sizeof(uint16_t));
         pcnetPhysWrite(pDevIns, pThis, addr + 1 * sizeof(uint16_t), (void*)&xda[1], sizeof(uint16_t));
     }
     else if (RT_LIKELY(BCR_SWSTYLE(pThis) != 3))
     {
         /* For SWSTYLE=0, write TMD2 first, then TMD1. */
-        /** @todo: The DWORD containing status bits may not need to be written unless the ERR bit is set. */
+        /** @todo The DWORD containing status bits may not need to be written unless the ERR bit is set. */
         pcnetPhysWrite(pDevIns, pThis, addr + 2 * sizeof(uint32_t), (uint32_t*)tmd + 2, sizeof(uint32_t));
         ((uint32_t*)tmd)[1] &= ~RT_BIT(31);
         pcnetPhysWrite(pDevIns, pThis, addr + 1 * sizeof(uint32_t), (uint32_t*)tmd + 1, sizeof(uint32_t));
