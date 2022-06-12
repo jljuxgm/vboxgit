@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 88363 2021-04-05 06:22:36Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 89597 2021-06-10 12:41:30Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -931,6 +931,8 @@ void printUsage(USAGECATEGORY enmCommand, uint64_t fSubcommandScope, PRTSTREAM p
                      "                                                file <file>|\n"
                      "                                                <devicename>\n"
                      "                            vm-process-priority default|flat|low|normal|high\n"
+                     "                            autostart-enabled on|off\n"
+                     "                            autostart-delay <seconds>\n"
                      "\n", SEP);
     }
 
