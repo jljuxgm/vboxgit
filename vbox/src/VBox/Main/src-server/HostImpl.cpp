@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 85929 2020-08-28 14:40:55Z vboxsync $ */
+/* $Id: HostImpl.cpp 85937 2020-08-28 17:01:56Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -3260,7 +3260,7 @@ HRESULT Host::i_getFixedDrivesFromHal(std::list<std::pair<com::Utf8Str, com::Utf
                                 Utf8Str strDescription;
                                 if (pszProduct != NULL && pszProduct[0] != '\0')
                                 {
-                                    int rc;
+                                    int vrc;
                                     if (pszVendor != NULL && pszVendor[0] != '\0')
                                         vrc = strDescription.printfNoThrow("%s %s", pszVendor, pszProduct);
                                     else
