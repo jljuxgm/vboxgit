@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 88768 2021-04-29 09:42:12Z vboxsync $ */
+/* $Id: DevSB16.cpp 88769 2021-04-29 09:45:57Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  */
@@ -2122,7 +2122,7 @@ static void sb16RemoveDrvStream(PPDMDEVINS pDevIns, PAUDMIXSINK pMixSink, PDMAUD
  * Removes all driver streams from a specific mixer sink.
  *
  * @param   pDevIns     The device instance.
- * @param   pThisCC     The SB16 state.
+ * @param   pThis       The SB16 state.
  * @param   pMixSink    Mixer sink to remove audio streams from.
  * @param   enmDir      Stream direction to remove.
  * @param   dstSrc      Stream destination / source to remove.
@@ -2305,7 +2305,7 @@ DECLINLINE(PDMAUDIODIR) sb16GetDirFromIndex(uint8_t uIdx)
  * Creates a SB16 audio stream.
  *
  * @returns VBox status code.
- * @param   pThisCC             The SB16 state.
+ * @param   pThis               The SB16 state.
  * @param   pStream             The SB16 stream to create.
  * @param   uIdx                Stream index to assign.
  */
