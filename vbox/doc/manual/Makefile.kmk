@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 87670 2021-02-09 20:58:15Z vboxsync $
+# $Id: Makefile.kmk 87725 2021-02-11 20:30:47Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox User Manual, SDK reference and other manuals.
 #
@@ -952,7 +952,7 @@ ifdef VBOX_WITH_DOCS_QHELP
 		| $$$$(dir $$$$@)
 	$$(call MSG_L1,htmlhelp-qthelp.py $$<,=> $$@)
 	$$(QUIET)$$(RM) -f $$@
-	$$(QUIET)$$(VBOX_PATH_MANUAL_SRC)/htmlhelp-qthelp.py -d $$(<D) -o $$@
+	$$(QUIET)$$(VBOX_BLD_PYTHON) $$(VBOX_PATH_MANUAL_SRC)/htmlhelp-qthelp.py -d $$(<D) -o $$@
  endef
  $(foreach lang,$(VBOX_MANUAL_LANGUAGES),$(evalcall2 def_vbox_usermanual_hhp_qhelp_to_qhp))
 
