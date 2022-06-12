@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 84482 2020-05-25 08:16:03Z vboxsync $
+# $Id: vbox.py 84581 2020-05-28 11:11:14Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84482 $"
+__version__ = "$Revision: 84581 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -2630,9 +2630,9 @@ class TestDriver(base.TestDriver):                                              
         sWinDir = '';
         if oTestVm.isWindows():
             if oTestVm.sKind in ['WindowsNT4', 'WindowsNT3x',]:
-                sWinDir = 'C:/WinNT/';
+                sWinDir = 'C:\\WinNT\\';
             else:
-                sWinDir = 'C:/Windows/';
+                sWinDir = 'C:\\Windows\\';
         assert sWinDir != '', 'Retrieving Windows directory for non-Windows OS';
         return sWinDir;
 
