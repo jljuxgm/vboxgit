@@ -1,4 +1,4 @@
-# $Id: Config.kmk 86642 2020-10-20 10:41:40Z vboxsync $
+# $Id: Config.kmk 86643 2020-10-20 10:42:24Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -423,8 +423,6 @@ VBOX_WITH_PREALLOC_RAM_BY_DEFAULT =
 VBOX_WITH_DEBUGGER = 1
 # Enable the debugger GUI.
 VBOX_WITH_DEBUGGER_GUI = 1
-# Enables the third step using IEM (the interpreter).
-VBOX_WITH_3RD_IEM_STEP = 1
 # Nested hardware virtualization (64-bit hosts only).
 ifeq ($(KBUILD_TARGET_ARCH),amd64)
  # Enables SVM nested hardware virtualization support.
@@ -8136,7 +8134,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 86642 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 86643 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
