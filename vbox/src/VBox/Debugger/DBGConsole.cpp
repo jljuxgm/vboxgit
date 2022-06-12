@@ -1,4 +1,4 @@
-/* $Id: DBGConsole.cpp 86098 2020-09-13 07:17:19Z vboxsync $ */
+/* $Id: DBGConsole.cpp 86105 2020-09-13 08:28:59Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console.
  */
@@ -1052,7 +1052,7 @@ static int dbgcReadConfig(PDBGC pDbgc, PUVM pUVM)
                                   "HistoryFile|"
                                   "LocalInitScript|"
                                   "GlobalInitScript|"
-                                  "GdbStub",
+                                  "StubType",
                                   "", "DBGC", 0);
     AssertRCReturn(rc, rc);
 

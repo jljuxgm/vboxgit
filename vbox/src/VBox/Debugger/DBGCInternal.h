@@ -1,4 +1,4 @@
-/* $Id: DBGCInternal.h 85121 2020-07-08 19:33:26Z vboxsync $ */
+/* $Id: DBGCInternal.h 86105 2020-09-13 08:28:59Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Internal Header File.
  */
@@ -602,6 +602,7 @@ DECLHIDDEN(const char *) dbgcGetEventCtx(DBGFEVENTCTX enmCtx);
 DECLHIDDEN(PCDBGCSXEVT) dbgcEventLookup(DBGFEVENTTYPE enmType);
 
 DECLHIDDEN(int) dbgcGdbStubCreate(PUVM pUVM, PDBGCBACK pBack, unsigned fFlags);
+DECLHIDDEN(int) dbgcKdStubCreate(PUVM pUVM, PDBGCBACK pBack, unsigned fFlags);
 
 
 /*******************************************************************************
