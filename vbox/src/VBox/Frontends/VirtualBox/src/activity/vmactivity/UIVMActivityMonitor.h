@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityMonitor.h 89036 2021-05-14 08:14:18Z vboxsync $ */
+/* $Id: UIVMActivityMonitor.h 89041 2021-05-14 11:48:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMActivityMonitor class declaration.
  */
@@ -128,6 +128,7 @@ public:
       * @param machine is machine reference. */
     UIVMActivityMonitor(EmbedTo enmEmbedding, QWidget *pParent, const CMachine &machine,
                         UIActionPool *pActionPool);
+    ~UIVMActivityMonitor();
     void setMachine(const CMachine &machine);
     QUuid machineId() const;
     QString machineName() const;

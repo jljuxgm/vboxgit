@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityMonitor.cpp 89038 2021-05-14 10:22:30Z vboxsync $ */
+/* $Id: UIVMActivityMonitor.cpp 89041 2021-05-14 11:48:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMActivityMonitor class implementation.
  */
@@ -906,6 +906,11 @@ UIVMActivityMonitor::UIVMActivityMonitor(EmbedTo enmEmbedding, QWidget *pParent,
             this, &UIVMActivityMonitor::sltCreateContextMenu);
     connect(&uiCommon(), &UICommon::sigAskToDetachCOM,
             this, &UIVMActivityMonitor::sltClearCOMData);
+}
+
+UIVMActivityMonitor::~UIVMActivityMonitor()
+{
+    sltClearCOMData();
 }
 
 void UIVMActivityMonitor::setMachine(const CMachine &comMachine)

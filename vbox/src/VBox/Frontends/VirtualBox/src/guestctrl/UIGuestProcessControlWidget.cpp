@@ -1,4 +1,4 @@
-/* $Id: UIGuestProcessControlWidget.cpp 88874 2021-05-05 12:38:50Z vboxsync $ */
+/* $Id: UIGuestProcessControlWidget.cpp 89041 2021-05-14 11:48:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestProcessControlWidget class implementation.
  */
@@ -314,6 +314,7 @@ UIGuestProcessControlWidget::UIGuestProcessControlWidget(EmbedTo enmEmbedding, c
 
 UIGuestProcessControlWidget::~UIGuestProcessControlWidget()
 {
+    sltCleanupListener();
 }
 
 void UIGuestProcessControlWidget::retranslateUi()
@@ -392,8 +393,6 @@ void UIGuestProcessControlWidget::prepareConnections()
     }
     connect(&uiCommon(), &UICommon::sigAskToCommitData,
             this, &UIGuestProcessControlWidget::sltSaveSettings);
-    connect(&uiCommon(), &UICommon::sigAskToDetachCOM,
-            this, &UIGuestProcessControlWidget::sltCleanupListener);
 }
 
 void UIGuestProcessControlWidget::sltGuestSessionsUpdated()
