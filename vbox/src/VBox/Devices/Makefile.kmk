@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 86024 2020-09-03 14:37:31Z vboxsync $
+# $Id: Makefile.kmk 86032 2020-09-06 08:24:52Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -168,6 +168,7 @@ if !defined(VBOX_ONLY_EXTPACKS) && "$(intersects $(KBUILD_TARGET_ARCH),$(VBOX_SU
  	PC/DevPcBios.cpp \
  	PC/DevFwCommon.cpp \
  	PC/DevPcArch.cpp \
+ 	PC/DevQemuFwCfg.cpp \
 	$(if $(VBOX_WITH_NEW_LPC_DEVICE),PC/DevLpc-new.cpp,) \
 	GIMDev/GIMDev.cpp \
 	GIMDev/DrvUDP.cpp \

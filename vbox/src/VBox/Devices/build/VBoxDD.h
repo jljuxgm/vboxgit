@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.h 85816 2020-08-18 11:23:19Z vboxsync $ */
+/* $Id: VBoxDD.h 86032 2020-09-06 08:24:52Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1) header.
  */
@@ -105,6 +105,7 @@ extern const PDMDEVREG g_DeviceLPC;
 #ifdef VBOX_WITH_VIRTUALKD
 extern const PDMDEVREG g_DeviceVirtualKD;
 #endif
+extern const PDMDEVREG g_DeviceQemuFwCfg;
 
 extern const PDMDRVREG g_DrvMouseQueue;
 extern const PDMDRVREG g_DrvKeyboardQueue;
