@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 84456 2020-05-22 12:43:11Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.h 84461 2020-05-22 13:31:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -189,6 +189,8 @@ private slots:
 
         /** Handles call to open group name editor. */
         void sltOpenGroupNameEditor();
+        /** Handles call to disband group. */
+        void sltDisbandGroup();
 
         /** Handles call to open Machine Settings dialog.
           * @param strCategory can bring the settings category to start from.
