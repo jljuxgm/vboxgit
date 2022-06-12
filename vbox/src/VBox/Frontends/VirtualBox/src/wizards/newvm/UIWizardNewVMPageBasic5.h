@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic5.h 87890 2021-02-26 15:18:33Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic5.h 87891 2021-02-26 16:54:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic5 class declaration.
  */
@@ -70,6 +70,7 @@ protected:
 
 private slots:
 
+    void sltHandleSizeEditorChange();
 
 private:
 
@@ -82,7 +83,8 @@ private:
     void cleanupPage();
 
     bool isComplete() const;
-
+    /** this is set to true when user manually set the size. */
+    bool m_fUserSetSize;
 
     /** For guided new vm wizard VDI is the only format. Thus we have no UI item for it. */
     CMediumFormat m_mediumFormat;

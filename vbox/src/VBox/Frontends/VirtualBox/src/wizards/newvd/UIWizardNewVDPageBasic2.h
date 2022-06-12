@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageBasic2.h 87890 2021-02-26 15:18:33Z vboxsync $ */
+/* $Id: UIWizardNewVDPageBasic2.h 87891 2021-02-26 16:54:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageBasic2 class declaration.
  */
@@ -63,7 +63,6 @@ protected:
     /** @} */
 };
 
-
 /* 2nd page of the New Virtual Hard Drive wizard (basic extension): */
 class SHARED_LIBRARY_STUFF UIWizardNewVDPageBasic2 : public UIWizardPage, public UIWizardNewVDPage2
 {
@@ -72,18 +71,12 @@ class SHARED_LIBRARY_STUFF UIWizardNewVDPageBasic2 : public UIWizardPage, public
 
 public:
 
-    /* Constructor: */
     UIWizardNewVDPageBasic2();
 
 private:
 
-    /* Translation stuff: */
     void retranslateUi();
-
-    /* Prepare stuff: */
     void initializePage();
-
-    /* Validation stuff: */
     bool isComplete() const;
 };
 
