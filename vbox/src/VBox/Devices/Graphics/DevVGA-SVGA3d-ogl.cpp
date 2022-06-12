@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-ogl.cpp 86838 2020-11-09 23:16:50Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-ogl.cpp 86864 2020-11-12 06:05:51Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -1374,7 +1374,7 @@ static uint32_t vmsvga3dGetDepthFormatSupport(PVMSVGA3DSTATE pState3D, uint32_t 
 #endif
 
 
-int vmsvga3dQueryCaps(PVGASTATECC pThisCC, uint32_t idx3dCaps, uint32_t *pu32Val)
+int vmsvga3dQueryCaps(PVGASTATECC pThisCC, SVGA3dDevCapIndex idx3dCaps, uint32_t *pu32Val)
 {
     PVMSVGA3DSTATE pState = pThisCC->svga.p3dState;
     AssertReturn(pState, VERR_NO_MEMORY);

@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 86856 2020-11-11 01:12:44Z vboxsync $ */
+/* $Id: DevVGA-SVGA.cpp 86864 2020-11-12 06:05:51Z vboxsync $ */
 /** @file
  * VMware SVGA device.
  *
@@ -5764,7 +5764,7 @@ static void vmsvgaR3InitFifo3DCaps(PVGASTATE pThis, PVGASTATECC pThisCC)
     for (unsigned i = 0; i < RT_ELEMENTS(pThis->svga.au32DevCaps); ++i)
     {
         uint32_t val = 0;
-        int rc = vmsvga3dQueryCaps(pThisCC, i, &val);
+        int rc = vmsvga3dQueryCaps(pThisCC, (SVGA3dDevCapIndex)i, &val);
         if (RT_SUCCESS(rc))
             pThis->svga.au32DevCaps[i] = val;
         else
