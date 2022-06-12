@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageExpert.cpp 87972 2021-03-05 14:55:53Z vboxsync $ */
+/* $Id: UIWizardNewVDPageExpert.cpp 87973 2021-03-05 15:18:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageExpert class implementation.
  */
@@ -131,17 +131,14 @@ UIWizardNewVDPageExpert::UIWizardNewVDPageExpert(const QString &strDefaultName, 
 
 void UIWizardNewVDPageExpert::sltMediumFormatChanged()
 {
-    /* Get medium format: */
-    CMediumFormat mf = mediumFormat();
-    if (mf.isNull())
+    CMediumFormat comMediumFormat = mediumFormat();
+    if (comMediumFormat.isNull())
     {
         AssertMsgFailed(("No medium format set!"));
         return;
     }
-
-    updateMediumVariantWidgetsAfterFormatChange(mf);
-
-    updateLocationEditorAfterFormatChange(mf, m_formatExtensions);
+    updateMediumVariantWidgetsAfterFormatChange(comMediumFormat);
+    updateLocationEditorAfterFormatChange(comMediumFormat, m_formatExtensions);
 
     /* Broadcast complete-change: */
     completeChanged();
