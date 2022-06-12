@@ -1,4 +1,4 @@
-/* $Id: GuestDnDTargetImpl.h 85742 2020-08-13 07:18:38Z vboxsync $ */
+/* $Id: GuestDnDTargetImpl.h 85743 2020-08-13 07:36:01Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag'n drop target.
  */
@@ -39,7 +39,7 @@ public:
      * @{ */
     DECLARE_EMPTY_CTOR_DTOR(GuestDnDTarget)
 
-    int     init(const ComObjPtr<Guest>& pGuest);
+    HRESULT init(const ComObjPtr<Guest>& pGuest);
     void    uninit(void);
 
     HRESULT FinalConstruct(void);

@@ -1,4 +1,4 @@
-/* $Id: GuestDnDTargetImpl.cpp 85742 2020-08-13 07:18:38Z vboxsync $ */
+/* $Id: GuestDnDTargetImpl.cpp 85743 2020-08-13 07:36:01Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag'n drop target.
  */
@@ -143,7 +143,7 @@ void GuestDnDTarget::FinalRelease(void)
 // public initializer/uninitializer for internal purposes only
 /////////////////////////////////////////////////////////////////////////////
 
-int GuestDnDTarget::init(const ComObjPtr<Guest>& pGuest)
+HRESULT GuestDnDTarget::init(const ComObjPtr<Guest>& pGuest)
 {
     LogFlowThisFuncEnter();
 
@@ -161,12 +161,12 @@ int GuestDnDTarget::init(const ComObjPtr<Guest>& pGuest)
      *  nor 2) mixed transfers (G->H + H->G at the same time).
      */
     m_pResp = GuestDnDInst()->response();
-    AssertPtrReturn(m_pResp, VERR_INVALID_POINTER);
+    AssertPtrReturn(m_pResp, E_POINTER);
 
     /* Confirm a successful initialization when it's the case. */
     autoInitSpan.setSucceeded();
 
-    return VINF_SUCCESS;
+    return S_OK;
 }
 
 /**

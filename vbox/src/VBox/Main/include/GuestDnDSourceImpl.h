@@ -1,4 +1,4 @@
-/* $Id: GuestDnDSourceImpl.h 85742 2020-08-13 07:18:38Z vboxsync $ */
+/* $Id: GuestDnDSourceImpl.h 85743 2020-08-13 07:36:01Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag'n drop source.
  */
@@ -41,7 +41,7 @@ public:
      * @{ */
     DECLARE_EMPTY_CTOR_DTOR(GuestDnDSource)
 
-    int     init(const ComObjPtr<Guest>& pGuest);
+    HRESULT init(const ComObjPtr<Guest>& pGuest);
     void    uninit(void);
 
     HRESULT FinalConstruct(void);
