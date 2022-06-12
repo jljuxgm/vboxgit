@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 88047 2021-03-09 14:06:20Z vboxsync $ */
+/* $Id: DrvAudio.cpp 88053 2021-03-09 14:15:43Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -2179,7 +2179,7 @@ static int drvAudioDevicesEnumerateInternal(PDRVAUDIO pThis, bool fLog, PPDMAUDI
                     char szFlags[PDMAUDIOHOSTDEV_MAX_FLAGS_STRING_LEN];
                     LogRel(("Audio: Device '%s':\n", pDev->szName));
                     LogRel(("Audio:   Usage           = %s\n",   PDMAudioDirGetName(pDev->enmUsage)));
-                    LogRel(("Audio:   Flags           = %s\n",   PDMAudioDeviceFlagsToString(szFlags, pDev->fFlags)));
+                    LogRel(("Audio:   Flags           = %s\n",   PDMAudioHostDevFlagsToString(szFlags, pDev->fFlags)));
                     LogRel(("Audio:   Input channels  = %RU8\n", pDev->cMaxInputChannels));
                     LogRel(("Audio:   Output channels = %RU8\n", pDev->cMaxOutputChannels));
                 }
