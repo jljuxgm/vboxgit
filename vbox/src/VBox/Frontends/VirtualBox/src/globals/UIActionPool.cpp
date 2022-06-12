@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.cpp 85613 2020-08-05 12:52:47Z vboxsync $ */
+/* $Id: UIActionPool.cpp 85619 2020-08-05 18:34:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPool class implementation.
  */
@@ -195,7 +195,7 @@ QString UIAction::nameInMenu() const
 
 void UIAction::updateIcon()
 {
-    QAction::setIcon(m_icons.value(m_iState));
+    QAction::setIcon(m_icons.value(m_iState, m_icons.value(0)));
 }
 
 void UIAction::updateText()
@@ -263,7 +263,9 @@ UIActionMenu::UIActionMenu(UIActionPool *pParent,
 
 void UIActionMenu::setShowToolTip(bool fShowToolTip)
 {
-    qobject_cast<UIMenu*>(menu())->setShowToolTip(fShowToolTip);
+    UIMenu *pMenu = qobject_cast<UIMenu*>(menu());
+    AssertPtrReturnVoid(pMenu);
+    pMenu->setShowToolTip(fShowToolTip);
 }
 
 void UIActionMenu::prepare()
@@ -420,7 +422,9 @@ UIActionPolymorphicMenu::~UIActionPolymorphicMenu()
 
 void UIActionPolymorphicMenu::setShowToolTip(bool fShowToolTip)
 {
-    qobject_cast<UIMenu*>(menu())->setShowToolTip(fShowToolTip);
+    UIMenu *pMenu = qobject_cast<UIMenu*>(menu());
+    if (pMenu)
+        pMenu->setShowToolTip(fShowToolTip);
 }
 
 void UIActionPolymorphicMenu::showMenu()
