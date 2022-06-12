@@ -1,4 +1,4 @@
-/* $Id: UIStarter.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIStarter.cpp 88656 2021-04-22 14:55:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIStarter class implementation.
  */
@@ -60,16 +60,10 @@ UIStarter::UIStarter()
 {
     /* Assign instance: */
     s_pInstance = this;
-
-    /* Prepare: */
-    prepare();
 }
 
 UIStarter::~UIStarter()
 {
-    /* Cleanup: */
-    cleanup();
-
     /* Unassign instance: */
     s_pInstance = 0;
 }
@@ -79,6 +73,8 @@ void UIStarter::init()
     /* Listen for UICommon signals: */
     connect(&uiCommon(), &UICommon::sigAskToRestartUI,
             this, &UIStarter::sltRestartUI);
+    connect(&uiCommon(), &UICommon::sigAskToCloseUI,
+            this, &UIStarter::sltCloseUI);
     connect(&uiCommon(), &UICommon::sigAskToCommitData,
             this, &UIStarter::sltHandleCommitDataRequest);
 }
@@ -88,15 +84,10 @@ void UIStarter::deinit()
     /* Listen for UICommon signals no more: */
     disconnect(&uiCommon(), &UICommon::sigAskToRestartUI,
                this, &UIStarter::sltRestartUI);
+    disconnect(&uiCommon(), &UICommon::sigAskToCloseUI,
+               this, &UIStarter::sltCloseUI);
     disconnect(&uiCommon(), &UICommon::sigAskToCommitData,
                this, &UIStarter::sltHandleCommitDataRequest);
-}
-
-void UIStarter::prepare()
-{
-    /* Listen for QApplication signals: */
-    connect(qApp, &QGuiApplication::aboutToQuit,
-            this, &UIStarter::cleanup);
 }
 
 void UIStarter::sltStartUI()
@@ -155,7 +146,7 @@ void UIStarter::sltRestartUI()
 #endif
 }
 
-void UIStarter::cleanup()
+void UIStarter::sltCloseUI()
 {
 #ifndef VBOX_RUNTIME_UI
     /* Destroy Manager UI: */

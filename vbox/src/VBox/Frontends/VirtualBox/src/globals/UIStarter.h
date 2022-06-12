@@ -1,4 +1,4 @@
-/* $Id: UIStarter.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIStarter.h 88656 2021-04-22 14:55:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIStarter class declaration.
  */
@@ -52,16 +52,12 @@ public:
 
 private slots:
 
-    /** Prepares everything. */
-    void prepare();
-
     /** Starts corresponding part of the UI. */
     void sltStartUI();
     /** Restarts corresponding part of the UI. */
     void sltRestartUI();
-
-    /** Cleanups everything. */
-    void cleanup();
+    /** Closes corresponding part of the UI. */
+    void sltCloseUI();
 
     /** Handles commit data request. */
     void sltHandleCommitDataRequest();
