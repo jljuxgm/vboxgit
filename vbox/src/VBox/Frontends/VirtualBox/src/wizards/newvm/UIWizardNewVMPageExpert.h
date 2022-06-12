@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.h 88116 2021-03-15 10:33:53Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.h 88576 2021-04-19 13:00:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class declaration.
  */
@@ -25,8 +25,8 @@
 #include <QSet>
 
 /* Local includes: */
-#include "UIWizardNewVMPageBasic1.h"
-#include "UIWizardNewVMPageBasic2.h"
+#include "UIWizardNewVMPageNameOSType.h"
+#include "UIWizardNewVMPageUnattended.h"
 #include "UIWizardNewVMPageBasic3.h"
 #include "UIWizardNewVMPageBasic4.h"
 #include "UIWizardNewVDPageBasic3.h"
@@ -37,8 +37,8 @@ class UIToolBox;
 
 /** Expert page of the New Virtual Machine wizard. */
 class UIWizardNewVMPageExpert : public UIWizardPage,
-                                public UIWizardNewVMPage1,
-                                public UIWizardNewVMPage2,
+                                public UIWizardNewVMPageBaseNameOSType,
+                                public UIWizardNewVMPageBaseUnattended,
                                 public UIWizardNewVMPage3,
                                 public UIWizardNewVMPage4,
                                 public UIWizardNewVDPage1,
