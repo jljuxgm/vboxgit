@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic5.h 87878 2021-02-25 17:17:43Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic5.h 87883 2021-02-26 10:45:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic5 class declaration.
  */
@@ -46,6 +46,7 @@ class UIWizardNewVMPageBasic5 : public UIWizardPage,
                                 public UIWizardNewVDPage3
 
 {
+
     Q_OBJECT;
     Q_PROPERTY(CMediumFormat mediumFormat READ mediumFormat);
     Q_PROPERTY(qulonglong mediumVariant READ mediumVariant WRITE setMediumVariant);
