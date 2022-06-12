@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSFDetails.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIMachineSettingsSFDetails.h 85645 2020-08-07 18:04:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSFDetails class declaration.
  */
@@ -22,14 +22,18 @@
 #endif
 
 /* Includes */
-#include "UIMachineSettingsSFDetails.gen.h"
 #include "QIDialog.h"
 #include "QIWithRetranslateUI.h"
 #include "UIMachineSettingsSF.h"
 
+class UIFilePathSelector;
+class QCheckBox;
+class QLabel;
+class QLineEdit;
+class QIDialogButtonBox;
+
 /* Shared folders details dialog: */
-class SHARED_LIBRARY_STUFF UIMachineSettingsSFDetails : public QIWithRetranslateUI2<QIDialog>,
-                                                        public Ui::UIMachineSettingsSFDetails
+class SHARED_LIBRARY_STUFF UIMachineSettingsSFDetails : public QIWithRetranslateUI2<QIDialog>
 {
     Q_OBJECT;
 
@@ -75,9 +79,26 @@ private slots:
 
 private:
 
+    void prepareWidgets();
+
     SFDialogType  m_type;
     bool          m_fUsePermanent;
     QStringList   m_usedNames;
+    UISettingsCacheSharedFolders *m_pCache;
+
+    /** @name Widgets
+      * @{ */
+        UIFilePathSelector *m_pPathSelector;
+        QCheckBox *m_pPermanentCheckBox;
+        QLineEdit *m_pNameLineEdit;
+        QCheckBox *m_pReadonlyCheckBox;
+        QCheckBox *m_pAutoMountCheckBox;
+        QLineEdit *m_pAutoMountPointLineEdit;
+        QLabel *m_pPathLabel;
+        QLabel *m_pNameLabel;
+        QLabel *m_pAutoMountPointLabel;
+        QIDialogButtonBox *m_pButtonBox;
+    /** @} */
 };
 
 #endif /* !FEQT_INCLUDED_SRC_settings_machine_UIMachineSettingsSFDetails_h */
