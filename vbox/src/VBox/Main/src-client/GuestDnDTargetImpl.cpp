@@ -1,4 +1,4 @@
-/* $Id: GuestDnDTargetImpl.cpp 85018 2020-07-01 10:42:45Z vboxsync $ */
+/* $Id: GuestDnDTargetImpl.cpp 85019 2020-07-01 10:45:14Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag'n drop target.
  */
@@ -638,8 +638,6 @@ HRESULT GuestDnDTarget::sendData(ULONG aScreenId, const com::Utf8Str &aFormat, c
     {
         //pSendCtx is passed into SendDataTask where one is deleted in destructor
         pSendCtx = new GuestDnDSendCtx();
-        RT_BZERO(pSendCtx, sizeof(GuestDnDSendCtx));
-
         pSendCtx->mpTarget      = this;
         pSendCtx->mpResp        = pResp;
         pSendCtx->mScreenID     = aScreenId;
