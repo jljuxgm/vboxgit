@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 86046 2020-09-07 15:27:58Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 86072 2020-09-09 10:13:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -1989,7 +1989,19 @@ void UIMachineLogic::sltToggleGuestAutoresize(bool fEnabled)
 
     /* Toggle guest-autoresize feature for all view(s)! */
     foreach(UIMachineWindow *pMachineWindow, machineWindows())
+    {
         pMachineWindow->machineView()->setGuestAutoresizeEnabled(fEnabled);
+        /* Normalize machine windows if auto resize option is toggled to true. */
+        if (fEnabled)
+        {
+            /* Exit maximized window state if actual: */
+            if (pMachineWindow->isMaximized())
+                pMachineWindow->showNormal();
+
+            /* Normalize window geometry: */
+            pMachineWindow->normalizeGeometry(true /* adjust position */, true /* resize window to guest display size */);
+        }
+    }
 }
 
 void UIMachineLogic::sltTakeScreenshot()
