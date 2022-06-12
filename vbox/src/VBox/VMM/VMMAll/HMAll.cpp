@@ -1,4 +1,4 @@
-/* $Id: HMAll.cpp 87488 2021-01-29 18:17:10Z vboxsync $ */
+/* $Id: HMAll.cpp 87497 2021-02-01 11:39:30Z vboxsync $ */
 /** @file
  * HM - All contexts.
  */
@@ -789,7 +789,8 @@ VMM_INT_DECL(void) HMHCChangedPagingMode(PVM pVM, PVMCPUCC pVCpu, PGMMODE enmSha
      * If the guest left protected mode VMX execution, we'll have to be
      * extra careful if/when the guest switches back to protected mode.
      */
-    if (enmGuestMode == PGMMODE_REAL)
+    if (   enmGuestMode == PGMMODE_REAL
+        && pVM->hm.s.vmx.fEnabled)
     {
         PVMXVMCSINFOSHARED pVmcsInfoShared = hmGetVmxActiveVmcsInfoShared(pVCpu);
         pVmcsInfoShared->fWasInRealMode = true;
