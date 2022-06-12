@@ -1,6 +1,6 @@
-/* $Id: UIResourceMonitor.cpp 88083 2021-03-11 10:58:18Z vboxsync $ */
+/* $Id: UIVMActivityOverviewWidget.cpp 88084 2021-03-11 11:06:53Z vboxsync $ */
 /** @file
- * VBox Qt GUI - UIResourceMonitor class implementation.
+ * VBox Qt GUI - UIVMActivityOverviewWidget class implementation.
  */
 
 /*
@@ -38,7 +38,7 @@
 #include "UIExtraDataManager.h"
 #include "UIIconPool.h"
 #include "UIVMActivityMonitor.h"
-#include "UIResourceMonitor.h"
+#include "UIVMActivityOverviewWidget.h"
 #include "UIMessageCenter.h"
 #include "QIToolBar.h"
 #include "UIVirtualBoxEventHandler.h"
@@ -1659,4 +1659,4 @@ UIVMActivityOverviewWidget *UIVMActivityOverviewDialog::widget()
 }
 
 
-#include "UIResourceMonitor.moc"
+#include "UIVMActivityOverviewWidget.moc"
