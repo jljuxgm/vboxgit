@@ -1,4 +1,4 @@
-/* $Id: UIVMLogPage.cpp 88734 2021-04-27 12:56:38Z vboxsync $ */
+/* $Id: UIVMLogPage.cpp 88877 2021-05-05 13:01:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -149,7 +149,8 @@ void UIVMLogPage::setTextEditTextAsHtml(const QString &strText)
 {
     if (!m_pTextEdit)
         return;
-    m_pTextEdit->appendHtml(strText);
+    if (document())
+        document()->setHtml(strText);
     update();
 }
 
