@@ -1,4 +1,4 @@
-/* $Id: GuestDnDPrivate.h 85746 2020-08-13 08:47:12Z vboxsync $ */
+/* $Id: GuestDnDPrivate.h 86530 2020-10-11 18:53:11Z vboxsync $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget +
  * GuestDnDSource.
@@ -929,7 +929,8 @@ public:
     GuestDnDMIMEList  defaultFormats(void) const { return m_strDefaultFormats; }
     /** @}  */
 
-    /** @name Source / target management. */
+    /** @name Source / target management.
+     * @{ */
     int               registerSource(const ComObjPtr<GuestDnDSource> &Source);
     int               unregisterSource(const ComObjPtr<GuestDnDSource> &Source);
     size_t            getSourceCount(void);

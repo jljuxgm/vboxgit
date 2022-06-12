@@ -1,4 +1,4 @@
-/* $Id: HostUpdateImpl.h 85737 2020-08-12 21:17:50Z vboxsync $ */
+/* $Id: HostUpdateImpl.h 86530 2020-10-11 18:53:11Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -40,7 +40,7 @@ public:
 
 private:
     /** @name wrapped IHostUpdate attributes and methods
-     * @ */
+     * @{ */
     HRESULT updateCheck(UpdateCheckType_T aCheckType, ComPtr<IProgress> &aProgress) RT_OVERRIDE;
     HRESULT getUpdateResponse(BOOL *aUpdateNeeded) RT_OVERRIDE;
     HRESULT getUpdateVersion(com::Utf8Str &aUpdateVersion) RT_OVERRIDE;
@@ -58,7 +58,7 @@ private:
 #endif
 
     /** @name Data members.
-     * @{  */
+     * @{ */
     VirtualBox * const mVirtualBox;
     BOOL     m_updateNeeded;
     Utf8Str  m_updateVersion;
