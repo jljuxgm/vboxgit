@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet_1_0.cpp 84430 2020-05-21 06:29:44Z vboxsync $ $Revision: 84430 $ $Date: 2020-05-21 14:29:44 +0800 (Thu, 21 May 2020) $ $Author: vboxsync $ */
+/* $Id: DevVirtioNet_1_0.cpp 84468 2020-05-23 07:17:02Z vboxsync $ $Revision: 84468 $ $Date: 2020-05-23 15:17:02 +0800 (Sat, 23 May 2020) $ $Author: vboxsync $ */
 
 /** @file
  * VBox storage devices - Virtio NET Driver
@@ -1599,14 +1599,7 @@ static int virtioNetR3CopyRxPktToGuest(PPDMDEVINS pDevIns, PVIRTIONET pThis, con
                   ("Failure updating descriptor count in pkt hdr in guest physical memory\n"),
                   rc);
 
-    /** @todo   WHY *must* we *force* notifying guest that we filled its Rx buffer(s)?
-     *          If we don't notify the guest, it doesn't detect it and stalls, even though
-     *          guest is responsible for setting the used-ring flag in the Rx queue that tells
-     *          us to skip the notification interrupt! Obviously forcing the interrupt is
-     *          non-optimal performance-wise and seems to contradict the Virtio spec.
-     *          Is that a bug in the linux virtio_net.c driver? */
-
-    virtioCoreQueueSync(pDevIns, &pThis->Virtio, RXQIDX(idxRxQueue), /* fForce */ true);
+    virtioCoreQueueSync(pDevIns, &pThis->Virtio, RXQIDX(idxRxQueue));
 
     return VINF_SUCCESS;
 }
@@ -2062,7 +2055,7 @@ static void virtioNetR3Ctrl(PPDMDEVINS pDevIns, PVIRTIONET pThis, PVIRTIONETCC p
     RTSgBufInit(pReturnSegBuf, paReturnSegs, cSegs);
 
     virtioCoreR3QueuePut(pDevIns, &pThis->Virtio, CTRLQIDX, pReturnSegBuf, pDescChain, true);
-    virtioCoreQueueSync(pDevIns, &pThis->Virtio, CTRLQIDX, false);
+    virtioCoreQueueSync(pDevIns, &pThis->Virtio, CTRLQIDX);
 
     for (int i = 0; i < cSegs; i++)
         RTMemFree(paReturnSegs[i].pvSeg);
@@ -2320,7 +2313,7 @@ static void virtioNetR3TransmitPendingPackets(PPDMDEVINS pDevIns, PVIRTIONET pTh
             virtioCoreR3QueuePut(pVirtio->pDevInsR3, pVirtio, idxTxQueue, NULL, pDescChain, false);
 
             /* Update used ring idx and notify guest that we've transmitted the data it sent */
-            virtioCoreQueueSync(pVirtio->pDevInsR3, pVirtio, idxTxQueue, false);
+            virtioCoreQueueSync(pVirtio->pDevInsR3, pVirtio, idxTxQueue);
         }
 
         virtioCoreR3DescChainRelease(pVirtio, pDescChain);
@@ -2763,7 +2756,6 @@ static DECLCALLBACK(int) virtioNetR3Attach(PPDMDEVINS pDevIns, unsigned iLUN, ui
                     Log(("%s No attached driver!\n", INSTANCE(pThis)));
 
     LEAVE_CRITICAL_SECTION;
-    AssertRelease(!pThisCC->pDrvBase);
     return rc;
 }
 
