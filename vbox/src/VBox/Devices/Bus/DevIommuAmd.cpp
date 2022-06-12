@@ -1,4 +1,4 @@
-/* $Id: DevIommuAmd.cpp 88098 2021-03-12 05:12:16Z vboxsync $ */
+/* $Id: DevIommuAmd.cpp 88261 2021-03-23 13:44:52Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - AMD implementation.
  */
@@ -7154,7 +7154,7 @@ const PDMDEVREG g_DeviceIommuAmd =
     /* .szName = */                 "iommu-amd",
     /* .fFlags = */                 PDM_DEVREG_FLAGS_DEFAULT_BITS | PDM_DEVREG_FLAGS_RZ | PDM_DEVREG_FLAGS_NEW_STYLE,
     /* .fClass = */                 PDM_DEVREG_CLASS_PCI_BUILTIN,
-    /* .cMaxInstances = */          ~0U,
+    /* .cMaxInstances = */          1,
     /* .uSharedVersion = */         42,
     /* .cbInstanceShared = */       sizeof(IOMMU),
     /* .cbInstanceCC = */           sizeof(IOMMUCC),
