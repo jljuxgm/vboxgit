@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.cpp 86581 2020-10-15 09:26:34Z vboxsync $ */
+/* $Id: UIHelpBrowserWidget.cpp 86582 2020-10-15 09:31:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class implementation.
  */
@@ -73,6 +73,9 @@ UIHelpBrowserViewer::UIHelpBrowserViewer(const QHelpEngine *pHelpEngine, QWidget
     , m_pHelpEngine(pHelpEngine)
 #endif
 {
+#ifndef VBOX_WS_X11
+    Q_UNUSED(pHelpEngine);
+#endif
 }
 
 QVariant UIHelpBrowserViewer::loadResource(int type, const QUrl &name)
