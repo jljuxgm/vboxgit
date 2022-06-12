@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic5.cpp 87891 2021-02-26 16:54:52Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic5.cpp 87901 2021-03-01 17:33:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic5 class implementation.
  */
@@ -72,6 +72,11 @@ CMediumFormat UIWizardNewVMPageBasic5::mediumFormat() const
     return m_mediumFormat;
 }
 
+QString UIWizardNewVMPageBasic5::mediumPath() const
+{
+    return absoluteFilePath(toFileName(m_strDefaultName, m_strDefaultExtension), m_strDefaultPath);
+}
+
 void UIWizardNewVMPageBasic5::prepare()
 {
 
@@ -83,9 +88,7 @@ void UIWizardNewVMPageBasic5::prepare()
     m_pSizeEditor = new UIMediumSizeEditor;
 
     pMainLayout->addWidget(m_pSizeLabel);
-
     pMainLayout->addWidget(m_pSizeEditor);
-
     pMainLayout->addStretch();
 
     createConnections();

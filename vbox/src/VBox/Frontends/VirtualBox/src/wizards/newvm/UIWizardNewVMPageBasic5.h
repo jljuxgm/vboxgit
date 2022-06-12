@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic5.h 87891 2021-02-26 16:54:52Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic5.h 87901 2021-03-01 17:33:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic5 class declaration.
  */
@@ -60,7 +60,9 @@ public:
     CMediumFormat mediumFormat() const;
 
 protected:
-
+    /** For the guide wizard mode medium path, name and extention is static and we have
+      * no UI element for this. thus override. */
+    virtual QString mediumPath() const /*override */;
     /** Wrapper to access 'wizard' from base part. */
     UIWizard *wizardImp() const { return wizard(); }
     /** Wrapper to access 'this' from base part. */

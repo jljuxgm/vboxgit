@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageBasic3.h 87891 2021-02-26 16:54:52Z vboxsync $ */
+/* $Id: UIWizardNewVDPageBasic3.h 87901 2021-03-01 17:33:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageBasic3 class declaration.
  */
@@ -55,7 +55,7 @@ protected:
     /** Returns the full image file path including the extension. */
     static QString absoluteFilePath(const QString &strFileName, const QString &strPath, const QString &strExtension);
 
-    QString mediumPath() const;
+    virtual QString mediumPath() const;
 
     qulonglong mediumSize() const;
     void setMediumSize(qulonglong uMediumSize);

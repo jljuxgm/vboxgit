@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic4.cpp 87899 2021-03-01 16:43:03Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic4.cpp 87901 2021-03-01 17:33:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic4 class implementation.
  */
@@ -183,7 +183,7 @@ UIWizardNewVMPageBasic4::UIWizardNewVMPageBasic4()
     qRegisterMetaType<CMedium>();
     qRegisterMetaType<SelectedDiskSource>();
     registerField("virtualDisk", this, "virtualDisk");
-    registerField("diskSource", this, "diskSource");
+    registerField("selectedDiskSource", this, "selectedDiskSource");
 }
 
 int UIWizardNewVMPageBasic4::nextId() const

@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic8.cpp 87899 2021-03-01 16:43:03Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic8.cpp 87901 2021-03-01 17:33:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic8 class implementation.
  */
@@ -164,8 +164,6 @@ bool UIWizardNewVMPageBasic8::validatePage()
         return fResult;
     }
 
-
-
     startProcessing();
 
     SelectedDiskSource enmDiskSource = field("selectedDiskSource").value<SelectedDiskSource>();
@@ -182,9 +180,7 @@ bool UIWizardNewVMPageBasic8::validatePage()
         }
     }
     fResult = qobject_cast<UIWizardNewVM*>(wizard())->createVM();
-
     endProcessing();
-
 
     return fResult;
 }
