@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.cpp 83902 2020-04-21 16:20:39Z vboxsync $ */
+/* $Id: UINameAndSystemEditor.cpp 85051 2020-07-03 11:15:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class implementation.
  */
@@ -251,7 +251,7 @@ void UINameAndSystemEditor::retranslateUi()
     if (m_pNameLabel)
         m_pNameLabel->setText(tr("Name:"));
     if (m_pPathLabel)
-        m_pPathLabel->setText(tr("Machine Folder:"));
+        m_pPathLabel->setText(tr("Folder:"));
     if (m_pLabelFamily)
         m_pLabelFamily->setText(tr("&Type:"));
     if (m_pLabelType)
