@@ -1,4 +1,4 @@
-/* $Id: UIWizardAddCloudVMPageExpert.h 86343 2020-09-30 11:19:51Z vboxsync $ */
+/* $Id: UIWizardAddCloudVMPageExpert.h 86346 2020-09-30 13:02:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardAddCloudVMPageExpert class declaration.
  */
@@ -63,11 +63,11 @@ private slots:
     /** Handles change in source combo-box. */
     void sltHandleSourceChange();
 
-    /** Handles change in account combo-box. */
-    void sltHandleAccountComboChange();
+    /** Handles change in profile combo-box. */
+    void sltHandleProfileComboChange();
 
-    /** Handles account tool-button click. */
-    void sltHandleAccountButtonClick();
+    /** Handles profile tool-button click. */
+    void sltHandleProfileButtonClick();
 
 private:
 

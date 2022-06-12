@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageExpert.h 86343 2020-09-30 11:19:51Z vboxsync $ */
+/* $Id: UIWizardImportAppPageExpert.h 86346 2020-09-30 13:02:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageExpert class declaration.
  */
@@ -76,10 +76,10 @@ private slots:
     /** Handles file-path change. */
     void sltFilePathChangeHandler();
 
-    /** Handles change in account combo-box. */
-    void sltHandleAccountComboChange();
-    /** Handles account tool-button click. */
-    void sltHandleAccountButtonClick();
+    /** Handles change in profile combo-box. */
+    void sltHandleProfileComboChange();
+    /** Handles profile tool-button click. */
+    void sltHandleProfileButtonClick();
 
     /** Handles change in instance list. */
     void sltHandleInstanceListChange();
