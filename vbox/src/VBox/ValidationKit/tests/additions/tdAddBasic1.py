@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 84684 2020-06-04 17:38:50Z vboxsync $
+# $Id: tdAddBasic1.py 84686 2020-06-05 08:17:44Z vboxsync $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84684 $"
+__version__ = "$Revision: 84686 $"
 
 # Standard Python imports.
 import os;
@@ -338,7 +338,7 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
         _ = oSession;
         if oTestVm.isWindows():
             sPathRegExe   = oTestVm.pathJoin(self.getGuestSystemDir(oTestVm), 'reg.exe');
-            self.txsRunTest(oTxsSession, ('Setting system-wide environment variable \"%s\" ...' % (sName,)),
+            self.txsRunTest(oTxsSession, ('Set env var \"%s\" ...' % (sName,)),
                             30 * 1000, sPathRegExe,
                             (sPathRegExe, 'add',
                              '"HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Environment"', '/v',
