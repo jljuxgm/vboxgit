@@ -1,4 +1,4 @@
-/* $Id: DevIoApic.cpp 84859 2020-06-17 09:12:19Z vboxsync $ */
+/* $Id: DevIoApic.cpp 84860 2020-06-17 09:34:43Z vboxsync $ */
 /** @file
  * IO APIC - Input/Output Advanced Programmable Interrupt Controller.
  */
@@ -883,6 +883,7 @@ static DECLCALLBACK(void) ioapicSendMsi(PPDMDEVINS pDevIns, PCIBDF uBusDevFn, PC
         return;
     }
 #else
+    NOREF(uBusDevFn);
     ioapicGetApicIntrFromMsi(pMsi, &ApicIntr);
 #endif
 
