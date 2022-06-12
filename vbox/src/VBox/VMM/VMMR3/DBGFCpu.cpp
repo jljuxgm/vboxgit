@@ -1,4 +1,4 @@
-/* $Id: DBGFCpu.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: DBGFCpu.cpp 84706 2020-06-05 18:11:25Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, CPU State Accessors.
  */
@@ -159,5 +159,43 @@ VMMR3DECL(VMCPUID) DBGFR3CpuGetCount(PUVM pUVM)
 {
     UVM_ASSERT_VALID_EXT_RETURN(pUVM, 1);
     return pUVM->cCpus;
+}
+
+
+/**
+ * Returns the state of the given CPU as a human readable string.
+ *
+ * @returns Pointer to the human readable CPU state string.
+ * @param   pUVM        The user mode VM handle.
+ * @param   idCpu       The target CPU ID.
+ */
+VMMR3DECL(const char *) DBGFR3CpuGetState(PUVM pUVM, VMCPUID idCpu)
+{
+    UVM_ASSERT_VALID_EXT_RETURN(pUVM, NULL);
+    VM_ASSERT_VALID_EXT_RETURN(pUVM->pVM, NULL);
+    AssertReturn(idCpu < pUVM->pVM->cCpus, NULL);
+
+    PVMCPU pVCpu = VMMGetCpuById(pUVM->pVM, idCpu);
+    VMCPUSTATE enmCpuState;
+    ASMAtomicReadSize(&pVCpu->enmState, &enmCpuState);
+
+    switch (enmCpuState)
+    {
+        case VMCPUSTATE_INVALID:                   return "<INVALID>";
+        case VMCPUSTATE_STOPPED:                   return "Stopped";
+        case VMCPUSTATE_STARTED:                   return "Started";
+        case VMCPUSTATE_STARTED_HM:                return "Started (HM)";
+        case VMCPUSTATE_STARTED_EXEC:              return "Started (Exec)";
+        case VMCPUSTATE_STARTED_EXEC_NEM:          return "Started (Exec NEM)";
+        case VMCPUSTATE_STARTED_EXEC_NEM_WAIT:     return "Started (Exec NEM Wait)";
+        case VMCPUSTATE_STARTED_EXEC_NEM_CANCELED: return "Started (Exec NEM Canceled)";
+        case VMCPUSTATE_STARTED_HALTED:            return "Started (Halted)";
+        case VMCPUSTATE_END:                       return "END";
+        default:
+            AssertMsgFailedReturn(("Unknown CPU state %u\n", enmCpuState), "<UNKNOWN>");
+    }
+
+    /* This indicates a compiler bug. */
+    return NULL;
 }
 
