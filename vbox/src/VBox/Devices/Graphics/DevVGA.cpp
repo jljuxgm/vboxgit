@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 87904 2021-03-01 18:14:51Z vboxsync $ */
+/* $Id: DevVGA.cpp 88545 2021-04-15 13:59:03Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -3921,6 +3921,26 @@ static int vbeR3ParseBitmap(PVGASTATECC pThisCC)
         AssertLogRelMsgReturn(pThisCC->LogoCompression == BMP_COMPRESSION_TYPE_NONE,
                                ("Unsupported %u compression.\n", pThisCC->LogoCompression),
                                VERR_INVALID_PARAMETER);
+
+        AssertLogRelMsgReturn(pFileHdr->cbFileSize > pFileHdr->offBits,
+                               ("Wrong bitmap data offset %u.\n", pFileHdr->offBits),
+                               VERR_INVALID_PARAMETER);
+
+        uint32_t cbFileData = pFileHdr->cbFileSize - pFileHdr->offBits;
+        uint32_t cbImageData = pThisCC->cxLogo * pThisCC->cyLogo * pThisCC->cLogoPlanes;
+
+        /* TBD: Take 32bit rows padding into account */
+        if (pThisCC->cLogoBits == 4)
+        {
+            cbImageData /= 2;
+        } else if (pThisCC->cLogoBits == 24)
+        {
+            cbImageData *= 3;
+        }
+
+        AssertLogRelMsgReturn(cbImageData <= cbFileData,
+            ("Wrong BMP header data %d\n", cbImageData),
+            VERR_INVALID_PARAMETER);
 
         /*
          * Read bitmap palette
