@@ -1,4 +1,4 @@
-/* $Id: DBGFInternal.h 86666 2020-10-21 15:01:32Z vboxsync $ */
+/* $Id: DBGFInternal.h 86683 2020-10-23 09:06:16Z vboxsync $ */
 /** @file
  * DBGF - Internal header file.
  */
@@ -1184,6 +1184,10 @@ DECLHIDDEN(int) dbgfR3DisasInstrStateEx(PUVM pUVM, VMCPUID idCpu, PDBGFADDRESS p
                                         char *pszOutput, uint32_t cbOutput, PDBGFDISSTATE pDisState);
 
 #endif /* IN_RING3 */
+
+#ifdef IN_RING0
+DECLHIDDEN(void) dbgfR0TracerDestroy(PGVM pGVM, PDBGFTRACERINSR0 pTracer);
+#endif /* !IN_RING0 */
 
 /** @} */
 

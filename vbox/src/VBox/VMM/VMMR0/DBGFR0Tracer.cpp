@@ -1,4 +1,4 @@
-/* $Id: DBGFR0Tracer.cpp 84823 2020-06-15 06:58:36Z vboxsync $ */
+/* $Id: DBGFR0Tracer.cpp 86683 2020-10-23 09:06:16Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, R0 tracing part.
  */
@@ -53,7 +53,7 @@
  * @param   pGVM        The global (ring-0) VM structure.
  * @param   pTracer     The device instance.
  */
-DECLHIDDEN(int) dbgfR0TracerDestroy(PGVM pGVM, PDBGFTRACERINSR0 pTracer)
+DECLHIDDEN(void) dbgfR0TracerDestroy(PGVM pGVM, PDBGFTRACERINSR0 pTracer)
 {
     RT_NOREF(pGVM);
 
@@ -67,8 +67,6 @@ DECLHIDDEN(int) dbgfR0TracerDestroy(PGVM pGVM, PDBGFTRACERINSR0 pTracer)
     hMemObj = pTracer->hMemObj;
     pTracer->hMemObj = NIL_RTR0MEMOBJ;
     RTR0MemObjFree(hMemObj, true);
-
-    return VINF_SUCCESS;
 }
 
 

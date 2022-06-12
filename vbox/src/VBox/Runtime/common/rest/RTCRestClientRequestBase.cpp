@@ -1,4 +1,4 @@
-/* $Id: RTCRestClientRequestBase.cpp 86681 2020-10-22 23:36:16Z vboxsync $ */
+/* $Id: RTCRestClientRequestBase.cpp 86682 2020-10-22 23:46:13Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestClientRequestBase implementation.
  */
@@ -215,7 +215,7 @@ int RTCRestClientRequestBase::doHeaderParameters(RTHTTP a_hHttp, HEADERPARAMDESC
                              getOperationName(), a_paHeaderParams[i].pszName),
                             VERR_REST_REQUIRED_HEADER_PARAMETER_NOT_SET);
             AssertMsgReturn(a_papHeaderParamObjs[i] != NULL,
-                            ("Required header parameter '%s' is not set!\n",
+                            ("%s: Required header parameter '%s' is not set!\n",
                              getOperationName(), a_paHeaderParams[i].pszName),
                             VERR_REST_REQUIRED_HEADER_PARAMETER_NOT_SET);
 
