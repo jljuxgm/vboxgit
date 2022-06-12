@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-# $Id: htmlhelp-qthelp.py 86895 2020-11-16 16:46:13Z vboxsync $
+# $Id: htmlhelp-qthelp.py 87630 2021-02-05 18:00:24Z vboxsync $
 ## @file
 # A python 2.x script to create a .qhp file outof a given htmlhelp
 # folder. Lots of things about the said folder is assumed. Please
@@ -217,7 +217,7 @@ def create_toc(folder):
     return toc_string_list
 
 def usage(arg):
-    print 'test.py -d <helphtmlfolder> -o <outputfilename>'
+    print 'htmlhelp-qthelp.py -d <helphtmlfolder> -o <outputfilename>'
     sys.exit(arg)
 
 def main(argv):
