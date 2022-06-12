@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowScale.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIMachineWindowScale.cpp 84701 2020-06-05 15:37:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowScale class implementation.
  */
@@ -177,7 +177,6 @@ void UIMachineWindowScale::restoreCachedGeometry()
 
 void UIMachineWindowScale::normalizeGeometry(bool fAdjustPosition)
 {
-#ifndef VBOX_GUI_WITH_CUSTOMIZATIONS1
     /* Skip if maximized: */
     if (isMaximized())
         return;
@@ -197,11 +196,6 @@ void UIMachineWindowScale::normalizeGeometry(bool fAdjustPosition)
     /* Finally, set the frame geometry: */
     UICommon::setTopLevelGeometry(this, frGeo.left() + dl, frGeo.top() + dt,
                                     frGeo.width() - dl - dr, frGeo.height() - dt - db);
-#else /* VBOX_GUI_WITH_CUSTOMIZATIONS1 */
-    /* Customer request: There should no be
-     * machine-window resize/move on machine-view resize: */
-    Q_UNUSED(fAdjustPosition);
-#endif /* VBOX_GUI_WITH_CUSTOMIZATIONS1 */
 }
 
 bool UIMachineWindowScale::event(QEvent *pEvent)
