@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 88420 2021-04-08 15:16:03Z vboxsync $
+# $Id: Makefile.kmk 88422 2021-04-08 15:59:56Z vboxsync $
 ## @file
 # Sub-Makefile for the Solaris installer.
 #
@@ -361,6 +361,7 @@ ifdef VBOX_WITH_QTGUI
   	libQt5XcbQpaVBox.so.5 \
   	libQt5PrintSupportVBox.so.5 \
   	libQt5HelpVBox.so.5 \
+  	libQt5NetworkVBox.so.5 \
   	libQt5SqlVBox.so.5 \
   	libQt5DBusVBox.so.5 \
   	libQt5X11ExtrasVBox.so.5 \
