@@ -1,4 +1,4 @@
-/* $Id: http-server.cpp 87004 2020-11-27 16:18:47Z vboxsync $ */
+/* $Id: http-server.cpp 87006 2020-11-27 16:28:54Z vboxsync $ */
 /** @file
  * Simple HTTP server (RFC 7231) implementation.
  *
@@ -505,9 +505,9 @@ static DECLCALLBACK(int) rtHttpServerHandleGET(PRTHTTPSERVERCLIENT pClient, PRTH
 
             RTHttpHeaderListDestroy(HdrLst);
 
-            size_t cbToRead = fsObj.cbObject;
-            size_t cbRead;
-            size_t cbWritten;
+            size_t cbToRead  = fsObj.cbObject;
+            size_t cbRead    = 0; /* Shut up GCC. */
+            size_t cbWritten = 0; /* Ditto. */
             while (cbToRead)
             {
                 RTHTTPSERVER_HANDLE_CALLBACK_VA(pfnRead, uID, pvBuf, RT_MIN(cbBuf, cbToRead), &cbRead);

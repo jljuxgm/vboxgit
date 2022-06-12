@@ -1,4 +1,4 @@
-/* $Id: http-server.h 87004 2020-11-27 16:18:47Z vboxsync $ */
+/* $Id: http-server.h 87006 2020-11-27 16:28:54Z vboxsync $ */
 /** @file
  * Header file for HTTP server implementation.
  */
@@ -90,7 +90,7 @@ typedef RTHTTPSERVERRESP *PRTHTTPSERVERRESP;
  */
 typedef struct RTHTTPSERVERCLIENTSTATE
 {
-
+    uint32_t         fUnused;
 } RTHTTPSERVERCLIENTSTATE;
 /** Pointer to a FTP server client state. */
 typedef RTHTTPSERVERCLIENTSTATE *PRTHTTPSERVERCLIENTSTATE;
