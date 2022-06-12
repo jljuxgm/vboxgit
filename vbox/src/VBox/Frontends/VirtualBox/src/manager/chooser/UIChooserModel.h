@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.h 86629 2020-10-19 13:05:06Z vboxsync $ */
+/* $Id: UIChooserModel.h 86649 2020-10-20 14:12:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class declaration.
  */
@@ -187,6 +187,9 @@ public:
 
     /** @name Search stuff.
       * @{ */
+        /** Performs a search for an item matching @a strDefinition. */
+        UIChooserItem *searchItemByDefinition(const QString &strDefinition) const;
+
         /** Performs a search using @a strSearchTerm and @a iSearchFlags specified. */
         virtual void performSearch(const QString &strSearchTerm, int iSearchFlags) /* override */;
         /** Resets the search result data members and disables item's visual effects.
