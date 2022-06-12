@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityMonitor.h 88071 2021-03-10 15:10:39Z vboxsync $ */
+/* $Id: UIVMActivityMonitor.h 88073 2021-03-10 17:29:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMActivityMonitor class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef FEQT_INCLUDED_SRC_monitor_performance_UIVMActivityMonitor_h
-#define FEQT_INCLUDED_SRC_monitor_performance_UIVMActivityMonitor_h
+#ifndef FEQT_INCLUDED_SRC_monitor_vmactivity_UIVMActivityMonitor_h
+#define FEQT_INCLUDED_SRC_monitor_vmactivity_UIVMActivityMonitor_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -252,4 +252,4 @@ private:
     UIActionPool *m_pActionPool;
 };
 
-#endif /* !FEQT_INCLUDED_SRC_monitor_performance_UIVMActivityMonitor_h */
+#endif /* !FEQT_INCLUDED_SRC_monitor_vmactivity_UIVMActivityMonitor_h */
