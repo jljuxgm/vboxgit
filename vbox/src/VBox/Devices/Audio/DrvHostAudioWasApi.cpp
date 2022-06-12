@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioWasApi.cpp 89510 2021-06-04 13:20:02Z vboxsync $ */
+/* $Id: DrvHostAudioWasApi.cpp 89551 2021-06-08 01:25:04Z vboxsync $ */
 /** @file
  * Host audio driver - Windows Audio Session API.
  */
@@ -2601,7 +2601,7 @@ static DECLCALLBACK(int) drvHostAudioWasHA_StreamPlay(PPDMIHOSTAUDIO pInterface,
     /*
      * Done.
      */
-    uint64_t const msPrev = pStreamWas->msLastTransfer;
+    uint64_t const msPrev = pStreamWas->msLastTransfer; RT_NOREF(msPrev);
     if (cbWritten)
         pStreamWas->msLastTransfer = msNow;
 
@@ -2797,7 +2797,7 @@ static DECLCALLBACK(int) drvHostAudioWasHA_StreamCapture(PPDMIHOSTAUDIO pInterfa
     /*
      * Done.
      */
-    uint64_t const msPrev = pStreamWas->msLastTransfer;
+    uint64_t const msPrev = pStreamWas->msLastTransfer; RT_NOREF(msPrev);
     uint64_t const msNow  = RTTimeMilliTS();
     if (cbRead)
         pStreamWas->msLastTransfer = msNow;
