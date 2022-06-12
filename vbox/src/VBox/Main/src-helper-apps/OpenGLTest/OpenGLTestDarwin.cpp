@@ -1,4 +1,4 @@
-/* $Id: OpenGLTestDarwin.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: OpenGLTestDarwin.cpp 85246 2020-07-11 23:08:39Z vboxsync $ */
 /** @file
  * VBox host opengl support test
  */
@@ -145,6 +145,7 @@ bool RTCALL VBoxOglIs3DAccelerationSupported(void)
              * the GL_EXT_texture_rectangle extension. If they are not
              * available, disable 3D support.
              */
+#pragma clang diagnostic ignored "-Wdeprecated-declarations" /* gluCheckExtension deprecated since 10.10 - use MetalKit. */
             CGLSetCurrentContext(pCglContext);
             const GLubyte *pszExts = glGetString(GL_EXTENSIONS);
             isSupported = gluCheckExtension((const GLubyte *)"GL_EXT_framebuffer_object", pszExts);
