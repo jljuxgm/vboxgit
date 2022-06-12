@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic4.h 87892 2021-02-26 18:26:25Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic4.h 87899 2021-03-01 16:43:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic4 class declaration.
  */
@@ -26,6 +26,7 @@
 
 /* GUI includes: */
 #include "UIWizardPage.h"
+#include "UIWizardNewVM.h"
 
 /* COM includes: */
 #include "COMEnums.h"
@@ -38,13 +39,6 @@ class QIRichTextLabel;
 class QIToolButton;
 class UIMediaComboBox;
 
-enum SelectedDiskSource
-{
-    SelectedDiskSource_Empty = 0,
-    SelectedDiskSource_New,
-    SelectedDiskSource_Existing,
-    SelectedDiskSource_Max
-};
 
 class UIWizardNewVMPage4 : public UIWizardPageBase
 {

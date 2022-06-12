@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic4.cpp 87892 2021-02-26 18:26:25Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic4.cpp 87899 2021-03-01 16:43:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic4 class implementation.
  */
@@ -31,10 +31,7 @@
 #include "UIMediumSelector.h"
 #include "UIMessageCenter.h"
 #include "UIWizardNewVD.h"
-#include "UIWizardNewVM.h"
 #include "UIWizardNewVMPageBasic4.h"
-
-Q_DECLARE_METATYPE(SelectedDiskSource);
 
 UIWizardNewVMPage4::UIWizardNewVMPage4()
     : m_fRecommendedNoDisk(false)
@@ -75,6 +72,7 @@ void UIWizardNewVMPage4::getWithFileOpenDialog()
         m_pDiskSelector->setCurrentItem(uMediumId);
         /* Focus on hard disk combo: */
         m_pDiskSelector->setFocus();
+        m_virtualDisk = uiCommon().medium(uMediumId).medium();
     }
 }
 

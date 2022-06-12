@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic8.cpp 87878 2021-02-25 17:17:43Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic8.cpp 87899 2021-03-01 16:43:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic8 class implementation.
  */
@@ -164,19 +164,23 @@ bool UIWizardNewVMPageBasic8::validatePage()
         return fResult;
     }
 
-    fResult = UIWizardNewVDPage3::checkFATSizeLimitation(fieldImp("mediumVariant").toULongLong(),
-                                                         fieldImp("mediumPath").toString(),
-                                                         fieldImp("mediumSize").toULongLong());
-    if (!fResult)
-    {
-        msgCenter().cannotCreateHardDiskStorageInFAT(strMediumPath, this);
-        return fResult;
-    }
 
 
     startProcessing();
 
-    fResult = qobject_cast<UIWizardNewVM*>(wizard())->createVirtualDisk();
+    SelectedDiskSource enmDiskSource = field("selectedDiskSource").value<SelectedDiskSource>();
+    if (enmDiskSource == SelectedDiskSource_New)
+    {
+        fResult = qobject_cast<UIWizardNewVM*>(wizard())->createVirtualDisk();
+        fResult = UIWizardNewVDPage3::checkFATSizeLimitation(fieldImp("mediumVariant").toULongLong(),
+                                                             fieldImp("mediumPath").toString(),
+                                                             fieldImp("mediumSize").toULongLong());
+        if (!fResult)
+        {
+            msgCenter().cannotCreateHardDiskStorageInFAT(strMediumPath, this);
+            return fResult;
+        }
+    }
     fResult = qobject_cast<UIWizardNewVM*>(wizard())->createVM();
 
     endProcessing();
