@@ -1,4 +1,4 @@
-/* $Id: TestExecService.cpp 84923 2020-06-24 08:57:02Z vboxsync $ */
+/* $Id: TestExecService.cpp 84924 2020-06-24 09:40:54Z vboxsync $ */
 /** @file
  * TestExecServ - Basic Remote Execution Service.
  */
@@ -2789,21 +2789,22 @@ static int txsDoExecHlp(PCTXSPKTHDR pPktHdr, uint32_t fFlags, const char *pszExe
         rc = txsExecSetupPollSet(pTxsExec);
     if (RT_SUCCESS(rc))
     {
-        char *pszExecResolved = RTPathRealDup(pszExecName);
-        if (pszExecResolved)
+        char szPathResolved[RTPATH_MAX + 1];
+        rc = RTPathReal(pszExecName, szPathResolved, sizeof(szPathResolved));
+        if (RT_SUCCESS(rc))
         {
             /*
              * Create the process.
              */
             if (g_fDisplayOutput)
             {
-                RTPrintf("txs: Executing \"%s\" -> \"%s\": ", pszExecName, pszExecResolved);
+                RTPrintf("txs: Executing \"%s\" -> \"%s\": ", pszExecName, szPathResolved);
                 for (uint32_t i = 0; i < cArgs; i++)
                     RTPrintf(" \"%s\"", papszArgs[i]);
                 RTPrintf("\n");
             }
 
-            rc = RTProcCreateEx(pszExecResolved, papszArgs, pTxsExec->hEnv, 0 /*fFlags*/,
+            rc = RTProcCreateEx(szPathResolved, papszArgs, pTxsExec->hEnv, 0 /*fFlags*/,
                                 pTxsExec->StdIn.phChild, pTxsExec->StdOut.phChild, pTxsExec->StdErr.phChild,
                                 *pszUsername ? pszUsername : NULL, NULL, NULL,
                                 &pTxsExec->hProcess);
@@ -2830,14 +2831,11 @@ static int txsDoExecHlp(PCTXSPKTHDR pPktHdr, uint32_t fFlags, const char *pszExe
                  */
                 rc = txsDoExecHlp2(pTxsExec);
             }
-            else
-                rc = txsReplyFailure(pPktHdr, "FAILED  ", "Executing process \"%s\" failed with %Rrc",
-                                     pszExecResolved, rc);
-
-            RTStrFree(pszExecResolved);
         }
-        else
-            rc = VERR_NO_MEMORY;
+
+        if (RT_FAILURE(rc))
+           rc = txsReplyFailure(pPktHdr, "FAILED  ", "Executing process \"%s\" failed with %Rrc",
+                                pszExecName, rc);
     }
     else
         rc = pTxsExec->rcReplySend;
@@ -3711,7 +3709,7 @@ static RTEXITCODE txsParseArgv(int argc, char **argv, bool *pfExit)
                 break;
 
             case 'V':
-                RTPrintf("$Revision: 84923 $\n");
+                RTPrintf("$Revision: 84924 $\n");
                 *pfExit = true;
                 return RTEXITCODE_SUCCESS;
 
