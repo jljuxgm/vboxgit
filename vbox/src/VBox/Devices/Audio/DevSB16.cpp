@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 87773 2021-02-16 23:36:15Z vboxsync $ */
+/* $Id: DevSB16.cpp 88015 2021-03-08 13:05:26Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  */
@@ -1838,7 +1838,7 @@ static int sb16CheckAndReOpenOut(PPDMDEVINS pDevIns, PSB16STATE pThis)
         Cfg.Props.fSigned   = RT_BOOL(pThis->fmt_signed);
         Cfg.Props.cShift    = PDMAUDIOPCMPROPS_MAKE_SHIFT_PARMS(Cfg.Props.cbSample, Cfg.Props.cChannels);
 
-        if (!DrvAudioHlpPCMPropsAreEqual(&Cfg.Props, &pThis->Out.Cfg.Props))
+        if (!DrvAudioHlpStreamCfgMatchesPcmProps(&Cfg, &pThis->Out.Cfg.Props))
         {
             Cfg.enmDir      = PDMAUDIODIR_OUT;
             Cfg.u.enmDst    = PDMAUDIOPLAYBACKDST_FRONT;
