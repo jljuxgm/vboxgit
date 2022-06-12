@@ -1,4 +1,4 @@
-;$Id: HMInternal.mac 87633 2021-02-05 21:37:09Z vboxsync $
+;$Id: HMInternal.mac 87754 2021-02-13 17:44:31Z vboxsync $
 ;; @file
 ; HM - Internal header file.
 ;
@@ -247,6 +247,7 @@ struc HMR0PERVCPU
 
     alignb 4
     .fWorldSwitcher                 resd    1
+    .uTscExit                       resq    1
 
     alignb 8
     .vmx                            resb    HMR0CPUVMX_size
