@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 84847 2020-06-16 11:51:42Z vboxsync $ */
+/* $Id: UICommon.cpp 84964 2020-06-25 20:17:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -1370,7 +1370,7 @@ QString UICommon::helpFile()
     const QString strName = "UserManual";
     const QString strSuffix = "pdf";
 #elif defined(VBOX_WS_X11)
-# if defined VBOX_OSE
+# if defined(VBOX_OSE) || !defined(VBOX_WITH_KCHMVIEWER)
     const QString strName = "UserManual";
     const QString strSuffix = "pdf";
 # else
