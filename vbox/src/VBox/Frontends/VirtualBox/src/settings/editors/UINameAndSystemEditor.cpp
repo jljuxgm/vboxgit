@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.cpp 88237 2021-03-22 11:37:53Z vboxsync $ */
+/* $Id: UINameAndSystemEditor.cpp 88239 2021-03-22 11:55:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class implementation.
  */
@@ -473,7 +473,7 @@ void UINameAndSystemEditor::prepareWidgets()
             m_pPathSelector = new UIFilePathSelector(this);
             if (m_pPathSelector)
             {
-                m_pPathLabel->setBuddy(m_pPathSelector);
+                m_pPathLabel->setBuddy(m_pPathSelector->focusProxy());
                 QString strDefaultMachineFolder = uiCommon().virtualBox().GetSystemProperties().GetDefaultMachineFolder();
                 m_pPathSelector->setPath(strDefaultMachineFolder);
                 m_pPathSelector->setDefaultPath(strDefaultMachineFolder);
@@ -499,11 +499,11 @@ void UINameAndSystemEditor::prepareWidgets()
             m_pImageSelector = new UIFilePathSelector(this);
             if (m_pImageSelector)
             {
+                m_pImageLabel->setBuddy(m_pImageSelector->focusProxy());
                 m_pImageSelector->setResetEnabled(false);
                 m_pImageSelector->setMode(UIFilePathSelector::Mode_File_Open);
                 m_pImageSelector->setFileDialogFilters("ISO Images(*.iso *.ISO)");
                 m_pImageSelector->setInitialPath(uiCommon().defaultFolderPathForType(UIMediumDeviceType_DVD));
-                m_pImageLabel->setBuddy(m_pImageSelector);
 
                 m_pMainLayout->addWidget(m_pImageSelector, iRow, 1, 1, 2);
             }
