@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoIPRT.h 85122 2020-07-08 19:39:54Z vboxsync $ */
+/* $Id: VBoxVideoIPRT.h 85123 2020-07-08 20:15:47Z vboxsync $ */
 /*
  * Copyright (C) 2017-2020 Oracle Corporation
  *
@@ -108,9 +108,9 @@ RT_C_DECLS_END
 # define AssertRC(expr) do { } while(0)
 #endif
 
-#define DECLCALLBACK(type) type
-#define DECLCALLBACKTYPE(type, name, args) type name args
-#define DECLCALLBACKMEMBER(type, name, args) type (* name) args
+#define DECLCALLBACK(a_RetType) a_RetType
+#define DECLCALLBACKTYPE(a_RetType, a_Name, a_Args) a_RetType a_Name a_Args
+#define DECLCALLBACKMEMBER(a_RetType, a_Name, a_Args) a_RetType (*a_Name) a_Args
 #if __GNUC__ >= 4
 # define DECLHIDDEN(type) __attribute__((visibility("hidden"))) type
 #else
