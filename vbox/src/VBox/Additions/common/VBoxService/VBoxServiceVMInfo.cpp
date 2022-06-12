@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo.cpp 83974 2020-04-24 16:05:50Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo.cpp 87846 2021-02-23 11:50:05Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host.
  */
@@ -1326,7 +1326,7 @@ static int vgsvcVMInfoWriteNetwork(void)
             struct lifreq   IfReq;
             RT_ZERO(IfReq);
             AssertCompile(sizeof(IfReq.lifr_name) >= sizeof(pCur->ifr_name));
-            strncpy(IfReq.lifr_name, pCur->ifr_name, sizeof(pCur->ifr_name));
+            strncpy(IfReq.lifr_name, pCur->ifr_name, sizeof(IfReq.lifr_name));
             if (ioctl(sd, SIOCGLIFADDR, &IfReq) >= 0)
             {
                 struct arpreq ArpReq;
