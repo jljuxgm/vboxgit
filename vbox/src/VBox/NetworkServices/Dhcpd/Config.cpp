@@ -1,4 +1,4 @@
-/* $Id: Config.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: Config.cpp 87473 2021-01-29 00:10:32Z vboxsync $ */
 /** @file
  * DHCP server - server configuration
  */
@@ -1063,7 +1063,7 @@ void HostConfig::initFromXml(const xml::ElementNode *pElmConfig, bool fStrict, C
 
     /* Name - optional: */
     if (!pElmConfig->getAttributeValue("name", m_strName))
-        m_strName.printf("MAC:%RTmac", m_MACAddress);
+        m_strName.printf("MAC:%RTmac", &m_MACAddress);
 
     /* Fixed IP address assignment - optional: */
     const char *pszFixedAddress = pElmConfig->findAttributeValue("fixedAddress");
