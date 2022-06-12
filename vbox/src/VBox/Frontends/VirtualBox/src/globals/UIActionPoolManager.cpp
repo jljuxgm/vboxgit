@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.cpp 85598 2020-08-03 12:23:52Z vboxsync $ */
+/* $Id: UIActionPoolManager.cpp 85599 2020-08-03 13:25:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class implementation.
  */
@@ -3567,8 +3567,8 @@ void UIActionPoolManager::preparePool()
 void UIActionPoolManager::prepareConnections()
 {
     /* Prepare connections: */
-    connect(gShortcutPool, &UIShortcutPool::sigSelectorShortcutsReloaded, this, &UIActionPoolManager::sltApplyShortcuts);
-    connect(gShortcutPool, &UIShortcutPool::sigMachineShortcutsReloaded, this, &UIActionPoolManager::sltApplyShortcuts);
+    connect(gShortcutPool, &UIShortcutPool::sigManagerShortcutsReloaded, this, &UIActionPoolManager::sltApplyShortcuts);
+    connect(gShortcutPool, &UIShortcutPool::sigRuntimeShortcutsReloaded, this, &UIActionPoolManager::sltApplyShortcuts);
 
     /* Call to base-class: */
     UIActionPool::prepareConnections();

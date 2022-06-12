@@ -1,4 +1,4 @@
-/* $Id: UIShortcutPool.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIShortcutPool.cpp 85599 2020-08-03 13:25:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIShortcutPool class implementation.
  */
@@ -236,8 +236,8 @@ void UIShortcutPool::sltReloadSelectorShortcuts()
     /* Load selector overrides: */
     loadOverridesFor(GUI_Input_SelectorShortcuts);
 
-    /* Notify selector shortcuts reloaded: */
-    emit sigSelectorShortcutsReloaded();
+    /* Notify manager shortcuts reloaded: */
+    emit sigManagerShortcutsReloaded();
 }
 
 void UIShortcutPool::sltReloadMachineShortcuts()
@@ -253,8 +253,8 @@ void UIShortcutPool::sltReloadMachineShortcuts()
     /* Load machine overrides: */
     loadOverridesFor(GUI_Input_MachineShortcuts);
 
-    /* Notify machine shortcuts reloaded: */
-    emit sigMachineShortcutsReloaded();
+    /* Notify runtime shortcuts reloaded: */
+    emit sigRuntimeShortcutsReloaded();
 }
 
 UIShortcutPool::UIShortcutPool()

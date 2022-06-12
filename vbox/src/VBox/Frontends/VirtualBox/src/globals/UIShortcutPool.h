@@ -1,4 +1,4 @@
-/* $Id: UIShortcutPool.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIShortcutPool.h 85599 2020-08-03 13:25:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIShortcutPool class declaration.
  */
@@ -118,10 +118,10 @@ class SHARED_LIBRARY_STUFF UIShortcutPool : public QIWithRetranslateUI3<QObject>
 
 signals:
 
-    /** Notifies about Selector UI shortcuts changed. */
-    void sigSelectorShortcutsReloaded();
+    /** Notifies about Manager UI shortcuts changed. */
+    void sigManagerShortcutsReloaded();
     /** Notifies about Runtime UI shortcuts changed. */
-    void sigMachineShortcutsReloaded();
+    void sigRuntimeShortcutsReloaded();
 
 public:
 
