@@ -1,4 +1,4 @@
-/* $Id: vbox_mode.c 86196 2020-09-21 13:17:37Z vboxsync $ */
+/* $Id: vbox_mode.c 86542 2020-10-12 13:35:53Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -884,7 +884,11 @@ out_unmap_bo:
 out_unreserve_bo:
 	vbox_bo_unreserve(bo);
 out_unref_obj:
+#if RTLNX_VER_MIN(5,9,0)
+	drm_gem_object_put(obj);
+#else
 	drm_gem_object_put_unlocked(obj);
+#endif
 
 	return ret;
 }

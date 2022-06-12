@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-linux.c 85703 2020-08-11 18:54:01Z vboxsync $ */
+/* $Id: memobj-r0drv-linux.c 86542 2020-10-12 13:35:53Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Linux.
  */
@@ -1181,7 +1181,9 @@ DECLHIDDEN(int) rtR0MemObjNativeLockUser(PPRTR0MEMOBJINTERNAL ppMem, RTR3PTR R3P
          */
         else
             rc = get_user_pages_remote(
+# if GET_USER_PAGES_API < KERNEL_VERSION(5, 9, 0)
                                 pTask,                  /* Task for fault accounting. */
+# endif
                                 pTask->mm,              /* Whose pages. */
                                 R3Ptr,                  /* Where from. */
                                 cPages,                 /* How many pages. */

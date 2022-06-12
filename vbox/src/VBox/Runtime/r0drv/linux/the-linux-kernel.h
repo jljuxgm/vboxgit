@@ -1,4 +1,4 @@
-/* $Id: the-linux-kernel.h 85702 2020-08-11 18:38:50Z vboxsync $ */
+/* $Id: the-linux-kernel.h 86542 2020-10-12 13:35:53Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the Linux kernel.
  */
@@ -137,7 +137,11 @@
 #include <linux/interrupt.h>
 #include <linux/completion.h>
 #include <linux/compiler.h>
-#ifndef HAVE_UNLOCKED_IOCTL /* linux/fs.h defines this */
+/* linux/fs.h defines HAVE_UNLOCKED_IOCTL from 2.6.11 till 5.9, but its meaning remains valid */
+#if RTLNX_VER_MIN(5,9,0)
+# define HAVE_UNLOCKED_IOCTL 1
+#endif
+#if !defined(HAVE_UNLOCKED_IOCTL) && RTLNX_VER_MAX(2,6,38)
 # include <linux/smp_lock.h>
 #endif
 /* For the shared folders module */
