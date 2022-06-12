@@ -1,4 +1,4 @@
-/* $Id: HDAStreamMap.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: HDAStreamMap.h 87942 2021-03-03 17:26:37Z vboxsync $ */
 /** @file
  * HDAStreamMap.h - Stream map functions for HD Audio.
  */
@@ -26,8 +26,12 @@
  */
 typedef struct HDASTREAMMAP
 {
+    /** The PCM properties which have been used. */
+    PDMAUDIOPCMPROPS                PCMProps;
     /** The stream's layout. */
     PDMAUDIOSTREAMLAYOUT            enmLayout;
+    /** The mapping's overall audio frame size (in bytes).
+     *  This includes all mappings in \a paMappings. */
     uint8_t                         cbFrameSize;
     /** Number of mappings in paMappings. */
     uint8_t                         cMappings;

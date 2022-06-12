@@ -1,4 +1,4 @@
-/* $Id: HDAStreamMap.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: HDAStreamMap.cpp 87942 2021-03-03 17:26:37Z vboxsync $ */
 /** @file
  * HDAStreamMap.cpp - Stream mapping functions for HD Audio.
  */
@@ -122,6 +122,8 @@ void hdaR3StreamMapReset(PHDASTREAMMAP pMap)
 
         pMap->cMappings = 0;
     }
+
+    RT_ZERO(pMap->PCMProps);
 }
 
 
@@ -164,6 +166,8 @@ static int hdaR3StreamMapSetup(PHDASTREAMMAP pMap, PPDMAUDIOPCMPROPS pProps)
 
         rc = hdaR3StreamChannelDataInit(&pMapLR->Data, PDMAUDIOSTREAMCHANNELDATA_FLAGS_NONE);
         AssertRC(rc);
+
+        memcpy(&pMap->PCMProps, pProps, sizeof(PDMAUDIOPCMPROPS));
     }
     else
         rc = VERR_NOT_SUPPORTED; /** @todo r=andy Support more setups. */
