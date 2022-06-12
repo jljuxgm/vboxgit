@@ -1,4 +1,4 @@
-;$Id: HMInternal.mac 87490 2021-01-29 18:42:54Z vboxsync $
+;$Id: HMInternal.mac 87491 2021-01-30 01:15:50Z vboxsync $
 ;; @file
 ; HM - Internal header file.
 ;
@@ -191,6 +191,11 @@ struc HMCPU
     .enmShadowMode                  resd    1
     alignb 8
     .aPdpes                         resq    4
+
+    .DisState                       resb    0d8h
+
+    .StatVmxWriteHostRip            resq    1
+    .StatVmxWriteHostRsp            resq    1
 
     ; The remainer is disassembly state and statistics.
 endstruc

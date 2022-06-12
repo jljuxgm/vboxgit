@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 87490 2021-01-29 18:42:54Z vboxsync $ */
+/* $Id: HMInternal.h 87491 2021-01-30 01:15:50Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -1102,6 +1102,13 @@ typedef struct HMCPU
     /** For saving stack space, the disassembler state is allocated here instead of
      * on the stack. */
     DISCPUSTATE             DisState;
+
+    /* These two comes because they are accessed from assembly and we don't
+       want to detail all the stats in the assembly version of this structure. */
+    STAMCOUNTER             StatVmxWriteHostRip;
+    STAMCOUNTER             StatVmxWriteHostRsp;
+    STAMCOUNTER             StatVmxVmLaunch;
+    STAMCOUNTER             StatVmxVmResume;
 
     STAMPROFILEADV          StatEntry;
     STAMPROFILEADV          StatPreExit;
