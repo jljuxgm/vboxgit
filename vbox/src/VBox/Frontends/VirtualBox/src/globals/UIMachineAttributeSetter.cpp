@@ -1,4 +1,4 @@
-/* $Id: UIMachineAttributeSetter.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIMachineAttributeSetter.cpp 88105 2021-03-12 13:34:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineAttributeSetter namespace implementation.
  */
@@ -114,7 +114,7 @@ void UIMachineAttributeSetter::setMachineAttribute(const CMachine &comConstMachi
                     break;
                 }
                 /* Show machine move progress: */
-                msgCenter().showModalProgressDialog(comProgress, comMachine.GetName(), ":/progress_clone_90px.png");
+                msgCenter().showModalProgressDialog(comProgress, comMachine.GetName(), ":/progress_dnd_hg_90px.png");
                 if (!comProgress.isOk() || comProgress.GetResultCode() != 0)
                 {
                     msgCenter().cannotMoveMachine(comProgress, comMachine.GetName());
