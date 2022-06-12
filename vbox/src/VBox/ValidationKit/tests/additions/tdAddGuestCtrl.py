@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84772 $"
+__version__ = "$Revision: 84805 $"
 
 # Standard Python imports.
 import errno
@@ -1487,7 +1487,7 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
         # Upload VBoxService logs on failure.
         if  not fRc \
         and self.oDebug.sVBoxServiceLogPath:
-            sVBoxServiceLogsTarGz    = 'VBoxServiceLogs-%s.tar.gz' % oTestVm.sVmName;
+            sVBoxServiceLogsTarGz    = 'ga-vboxservice-logs-%s.tar.gz' % oTestVm.sVmName;
             sVBoxServiceLogsTarGzAbs = oTestVm.pathJoin(self.oTstDrv.getGuestTempDir(oTestVm), sVBoxServiceLogsTarGz);
             if self.oTstDrv.txsPackFile(oSession, oTxsSession, \
                                         sVBoxServiceLogsTarGzAbs, self.oDebug.sVBoxServiceLogPath, fIgnoreErrors = True):
