@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 84575 2020-05-27 17:14:25Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 84576 2020-05-27 17:18:25Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -832,7 +832,9 @@ void printUsage(USAGECATEGORY enmCommand, uint64_t fSubcommandScope, PRTSTREAM p
         RTStrmPrintf(pStrm,
                            "%s controlvm %s       <uuid|vmname>\n"
                      "                            pause|resume|reset|poweroff|savestate|\n"
+#ifdef VBOX_WITH_GUEST_CONTROL
                      "                            reboot|shutdown|\n"
+#endif
                      "                            acpipowerbutton|acpisleepbutton|\n"
                      "                            keyboardputscancode <hex> [<hex> ...]|\n"
                      "                            keyboardputstring <string1> [<string2> ...]|\n"
