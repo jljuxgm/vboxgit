@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 88333 2021-03-31 16:29:39Z vboxsync $ */
+/* $Id: DevACPI.cpp 88340 2021-04-01 04:03:48Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -866,7 +866,7 @@ typedef struct ACPITBLVTD
     ACPIDMAR            Dmar;
     ACPIDRHD            Drhd;
     /* ACPIDMARDEVSCOPE    DevScope; */
-} ACPITBLDMAR;
+} ACPITBLVTD;
 #endif  /* VBOX_WITH_IOMMU_INTEL */
 
 /** MCFG Descriptor Structure */
