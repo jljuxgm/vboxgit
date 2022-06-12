@@ -1,4 +1,4 @@
-/* $Id: DevIommuIntel.cpp 88201 2021-03-19 08:03:46Z vboxsync $ */
+/* $Id: DevIommuIntel.cpp 88202 2021-03-19 09:07:29Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - Intel implementation.
  */
@@ -23,7 +23,6 @@
 #include <VBox/vmm/pdmdev.h>
 #include <VBox/iommu-intel.h>
 
-#include <iprt/assertcompile.h>
 #include <iprt/string.h>
 
 #include "VBoxDD.h"
