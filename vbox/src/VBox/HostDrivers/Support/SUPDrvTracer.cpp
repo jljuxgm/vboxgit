@@ -1,4 +1,4 @@
-/* $Id: SUPDrvTracer.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: SUPDrvTracer.cpp 85606 2020-08-04 15:57:21Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Tracer Interface.
  */
@@ -1472,29 +1472,32 @@ SUPR0DECL(int) SUPR0TracerDeregisterImpl(void *hMod, PSUPDRVSESSION pSession)
 __asm__("\
         .section .text                                                  \n\
                                                                         \n\
-        .p2align 2,,3                                                   \n\
+        .p2align 4                                                      \n\
         .global SUPR0TracerFireProbe                                    \n\
+        .type   SUPR0TracerFireProbe, @function                         \n\
 SUPR0TracerFireProbe:                                                   \n\
 ");
 # if   defined(RT_ARCH_AMD64)
-__asm__(" \
-            movq    g_pfnSupdrvProbeFireKernel(%rip), %rax                  \n\
+__asm__("\
+            movq    g_pfnSupdrvProbeFireKernel(%rip), %rax              \n\
             jmp     *%rax \n\
 ");
 # elif defined(RT_ARCH_X86)
 __asm__("\
-            movl    g_pfnSupdrvProbeFireKernel, %eax                        \n\
+            movl    g_pfnSupdrvProbeFireKernel, %eax                    \n\
             jmp     *%eax \n\
 ");
 # else
 #  error "Which arch is this?"
 # endif
 __asm__("\
+        .size SUPR0TracerFireProbe, . - SUPR0TracerFireProbe            \n\
                                                                         \n\
         .type supdrvTracerProbeFireStub,@function                       \n\
         .global supdrvTracerProbeFireStub                               \n\
 supdrvTracerProbeFireStub:                                              \n\
         ret                                                             \n\
+        .size supdrvTracerProbeFireStub, . - supdrvTracerProbeFireStub  \n\
                                                                         \n\
         .previous                                                       \n\
 ");
