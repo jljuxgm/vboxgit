@@ -1,4 +1,4 @@
-# $Id: Config.kmk 86432 2020-10-02 21:16:23Z vboxsync $
+# $Id: Config.kmk 86433 2020-10-02 21:16:35Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3051,7 +3051,7 @@ ifeq ($(KBUILD_HOST),linux)
 	$(QUIET)$(APPEND) '$@' 'VBOX_LD_HAS_LIBXCB             ?= $(shell /sbin/ldconfig -p|grep -q "\<libxcb\.so\.1\>" && echo "1")'
 endif
 if1of ($(KBUILD_TARGET), linux)
- ifeq ($(KBUILD_TARGET),$(KBUILD_HOST)
+ ifeq ($(KBUILD_TARGET),$(KBUILD_HOST))
 	$(QUIET)$(RM) -f -- "$@.sanitizer.so" "$@.sanitizer32.so" '$@.sanitizer.c'
 	$(APPEND) -t '$@.sanitizer.c' 'int foo() { return 42; }'
 	$(QUIET)$(APPEND)  '$@' 'VBOX_GCC_SANITIZER_SO_FILES := \'
@@ -8121,7 +8121,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 86432 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 86433 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
