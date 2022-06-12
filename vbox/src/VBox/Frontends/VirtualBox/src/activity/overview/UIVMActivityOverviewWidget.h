@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityOverviewWidget.h 88145 2021-03-17 06:54:41Z vboxsync $ */
+/* $Id: UIVMActivityOverviewWidget.h 88173 2021-03-18 08:11:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMActivityOverviewWidget class declaration.
  */
@@ -85,7 +85,7 @@ private slots:
     void sltHandleTableContextMenuRequest(const QPoint &pos);
     void sltHandleShowVMActivityMonitor();
     void sltHandleTableSelectionChanged(const QItemSelection &selected, const QItemSelection &deselected);
-    void sltNonRunningVMVisibility(bool fShow);
+    void sltNotRunningVMVisibility(bool fShow);
 
 private:
 
@@ -131,7 +131,7 @@ private:
     /** Indicates if this widget's host tool is current tool. */
     bool    m_fIsCurrentTool;
     int     m_iSortIndicatorWidth;
-    bool    m_fShowNonRunningVMs;
+    bool    m_fShowNotRunningVMs;
 };
 
 class UIVMActivityOverviewFactory : public QIManagerDialogFactory

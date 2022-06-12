@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackendGlobal.cpp 88093 2021-03-11 14:47:43Z vboxsync $ */
+/* $Id: UIConverterBackendGlobal.cpp 88173 2021-03-18 08:11:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConverterBackendGlobal implementation.
  */
@@ -2625,7 +2625,7 @@ template<> QString toInternalString(const VMActivityOverviewColumn &enmVMActivit
         case VMActivityOverviewColumn_VMExits:           strResult = "VMExits"; break;
         default:
             {
-                AssertMsgFailed(("No text for VM Activity Overview Widget Column=%d", enmVMActivityOverviewColumn));
+                AssertMsgFailed(("No text for VM Activity Overview Column=%d", enmVMActivityOverviewColumn));
                 break;
             }
     }

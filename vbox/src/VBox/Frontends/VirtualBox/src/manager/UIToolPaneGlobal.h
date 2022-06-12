@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneGlobal.h 88089 2021-03-11 13:40:14Z vboxsync $ */
+/* $Id: UIToolPaneGlobal.h 88173 2021-03-18 08:11:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolPaneGlobal class declaration.
  */
@@ -102,7 +102,7 @@ private:
     UINetworkManagerWidget       *m_pPaneNetwork;
     /** Holds the Cloud Profile Manager instance. */
     UICloudProfileManagerWidget  *m_pPaneCloud;
-    /** Holds the VM Activity Overview Widget instance. */
+    /** Holds the VM Activity Overview instance. */
     UIVMActivityOverviewWidget   *m_pPaneVMActivityOverview;
 
     /** Holds whether this pane is active. */

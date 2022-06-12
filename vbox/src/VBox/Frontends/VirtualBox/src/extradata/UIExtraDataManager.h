@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 88089 2021-03-11 13:40:14Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 88173 2021-03-18 08:11:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -795,7 +795,7 @@ public:
         QStringList helpBrowserBookmarks();
     /** @} */
 
-    /** @name Manager UI: VM Activity Overview Widget
+    /** @name Manager UI: VM Activity Overview
       * @{ */
         void setVMActivityOverviewHiddenColumnList(const QStringList &hiddenColumnList);
         QStringList VMActivityOverviewHiddenColumnList();

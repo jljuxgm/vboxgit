@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.cpp 88093 2021-03-11 14:47:43Z vboxsync $ */
+/* $Id: UIActionPool.cpp 88173 2021-03-18 08:11:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPool class implementation.
  */
@@ -2292,8 +2292,8 @@ protected:
     {
         setName(QApplication::translate("UIActionPool", "&Activity Overview..."));
         setShortcutScope(QApplication::translate("UIActionPool", "Activity Monitor"));
-        setStatusTip(QApplication::translate("UIActionPool", "Navigate to the vm activity overview widget"));
-        setToolTip(  QApplication::translate("UIActionPool", "Navigate to the VM Activity Overview Widget")
+        setStatusTip(QApplication::translate("UIActionPool", "Navigate to the vm activity overview"));
+        setToolTip(  QApplication::translate("UIActionPool", "Navigate to the VM Activity Overview")
                    + (shortcut().isEmpty() ? QString() : QString(" (%1)").arg(shortcut().toString())));
     }
 };
