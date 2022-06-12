@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 86814 2020-11-05 19:22:07Z vboxsync $
+# $Id: Makefile.kmk 86978 2020-11-25 16:56:23Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -849,6 +849,7 @@ UICommon_QT_MOCHDRS = \
 	src/settings/editors/UIHostComboEditor.h \
 	src/settings/editors/UIHotKeyEditor.h \
 	src/settings/editors/UILanguageSettingsEditor.h \
+	src/settings/editors/UIMaximumGuestScreenSizeEditor.h \
 	src/settings/editors/UINameAndSystemEditor.h \
 	src/settings/editors/UINetworkAttachmentEditor.h \
 	src/settings/editors/UIScaleFactorEditor.h \
@@ -1375,6 +1376,7 @@ UICommon_SOURCES = \
 	src/settings/editors/UIHostComboEditor.cpp \
 	src/settings/editors/UIHotKeyEditor.cpp \
 	src/settings/editors/UILanguageSettingsEditor.cpp \
+	src/settings/editors/UIMaximumGuestScreenSizeEditor.cpp \
 	src/settings/editors/UINameAndSystemEditor.cpp \
 	src/settings/editors/UINetworkAttachmentEditor.cpp \
 	src/settings/editors/UIScaleFactorEditor.cpp \

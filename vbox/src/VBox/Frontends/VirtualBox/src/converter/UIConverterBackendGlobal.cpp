@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackendGlobal.cpp 86977 2020-11-25 15:18:10Z vboxsync $ */
+/* $Id: UIConverterBackendGlobal.cpp 86978 2020-11-25 16:56:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConverterBackendGlobal implementation.
  */
@@ -2457,6 +2457,24 @@ template<> QIcon toIcon(const InformationElementType &informationElementType)
 }
 
 /* QString <= MaximumGuestScreenSizePolicy: */
+template<> QString toString(const MaximumGuestScreenSizePolicy &enmMaximumGuestScreenSizePolicy)
+{
+    QString strResult;
+    switch (enmMaximumGuestScreenSizePolicy)
+    {
+        case MaximumGuestScreenSizePolicy_Any:       strResult = QApplication::translate("UICommon", "None", "Maximum Guest Screen Size"); break;
+        case MaximumGuestScreenSizePolicy_Fixed:     strResult = QApplication::translate("UICommon", "Hint", "Maximum Guest Screen Size"); break;
+        case MaximumGuestScreenSizePolicy_Automatic: strResult = QApplication::translate("UICommon", "Automatic", "Maximum Guest Screen Size"); break;
+        default:
+        {
+            AssertMsgFailed(("No text for maximum guest resolution policy=%d", enmMaximumGuestScreenSizePolicy));
+            break;
+        }
+    }
+    return strResult;
+}
+
+/* QString <= MaximumGuestScreenSizePolicy: */
 template<> QString toInternalString(const MaximumGuestScreenSizePolicy &enmMaximumGuestScreenSizePolicy)
 {
     QString strResult;
@@ -2466,7 +2484,7 @@ template<> QString toInternalString(const MaximumGuestScreenSizePolicy &enmMaxim
         case MaximumGuestScreenSizePolicy_Any:       strResult = "any"; break;
         default:
         {
-            AssertMsgFailed(("No text for max guest resolution policy=%d", enmMaximumGuestScreenSizePolicy));
+            AssertMsgFailed(("No text for maximum guest resolution policy=%d", enmMaximumGuestScreenSizePolicy));
             break;
         }
     }

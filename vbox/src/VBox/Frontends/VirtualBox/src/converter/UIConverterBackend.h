@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackend.h 86977 2020-11-25 15:18:10Z vboxsync $ */
+/* $Id: UIConverterBackend.h 86978 2020-11-25 16:56:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConverterBackend declaration.
  */
@@ -261,6 +261,7 @@ template<> SHARED_LIBRARY_STUFF InformationElementType fromString<InformationEle
 template<> SHARED_LIBRARY_STUFF QString toInternalString(const InformationElementType &informationElementType);
 template<> SHARED_LIBRARY_STUFF InformationElementType fromInternalString<InformationElementType>(const QString &strInformationElementType);
 template<> SHARED_LIBRARY_STUFF QIcon toIcon(const InformationElementType &informationElementType);
+template<> SHARED_LIBRARY_STUFF QString toString(const MaximumGuestScreenSizePolicy &enmMaximumGuestScreenSizePolicy);
 template<> SHARED_LIBRARY_STUFF QString toInternalString(const MaximumGuestScreenSizePolicy &enmMaximumGuestScreenSizePolicy);
 template<> SHARED_LIBRARY_STUFF MaximumGuestScreenSizePolicy fromInternalString<MaximumGuestScreenSizePolicy>(const QString &strMaximumGuestScreenSizePolicy);
 template<> SHARED_LIBRARY_STUFF QString toString(const UIMediumFormat &enmUIMediumFormat);

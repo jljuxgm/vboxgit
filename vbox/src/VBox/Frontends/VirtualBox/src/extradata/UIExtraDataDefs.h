@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 86977 2020-11-25 15:18:10Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 86978 2020-11-25 16:56:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -1070,6 +1070,7 @@ enum MaximumGuestScreenSizePolicy
     /** Anything up to host-screen available space. */
     MaximumGuestScreenSizePolicy_Automatic
 };
+Q_DECLARE_METATYPE(MaximumGuestScreenSizePolicy);
 
 
 /** Manager UI: VM resource Monitor Column types.
