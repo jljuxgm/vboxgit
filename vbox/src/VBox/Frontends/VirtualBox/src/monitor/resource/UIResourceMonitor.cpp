@@ -1,4 +1,4 @@
-/* $Id: UIResourceMonitor.cpp 85595 2020-08-03 11:04:44Z vboxsync $ */
+/* $Id: UIResourceMonitor.cpp 85596 2020-08-03 11:36:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIResourceMonitor class implementation.
  */
@@ -219,7 +219,6 @@ public:
     UIResourceMonitorItem(const QUuid &uid, const QString &strVMName);
     UIResourceMonitorItem(const QUuid &uid);
     UIResourceMonitorItem();
-    UIResourceMonitorItem(const UIResourceMonitorItem &item);
     ~UIResourceMonitorItem();
     bool operator==(const UIResourceMonitorItem& other) const;
     bool isWithGuestAdditions();
