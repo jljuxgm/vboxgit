@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 85854 2020-08-21 07:14:06Z vboxsync $ */
+/* $Id: HM.cpp 86183 2020-09-20 11:58:23Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -1839,6 +1839,35 @@ static int hmR3InitFinalizeR0Amd(PVM pVM)
     if (RTR0IsPostIpiSupport())
         pVM->hm.s.fPostedIntrs = true;
 #endif
+
+    /*
+     * Determine whether we need to intercept #UD in SVM mode for emulating
+     * intel SYSENTER/SYSEXIT on AMD64, as these instructions results in #UD
+     * when executed in long-mode.  This is only really applicable when
+     * non-default CPU profiles are in effect, i.e. guest vendor differs
+     * from the host one.
+     */
+    if (CPUMGetGuestCpuVendor(pVM) != CPUMGetHostCpuVendor(pVM))
+        switch (CPUMGetGuestCpuVendor(pVM))
+        {
+            case CPUMCPUVENDOR_INTEL:
+            case CPUMCPUVENDOR_VIA: /*?*/
+            case CPUMCPUVENDOR_SHANGHAI: /*?*/
+                switch (CPUMGetHostCpuVendor(pVM))
+                {
+                    case CPUMCPUVENDOR_AMD:
+                    case CPUMCPUVENDOR_HYGON:
+                        if (pVM->hm.s.fAllow64BitGuests)
+                        {
+                            LogRel(("HM: Intercepting #UD for emulating SYSENTER/SYSEXIT in long mode.\n"));
+                            for (VMCPUID idCpu = 0; idCpu < pVM->cCpus; idCpu++)
+                                pVM->apCpusR3[idCpu]->hm.s.svm.fEmulateLongModeSysEnterExit = true;
+                        }
+                        break;
+                    default: break;
+                }
+            default: break;
+        }
 
     /*
      * Call ring-0 to set up the VM.
