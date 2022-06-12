@@ -1,4 +1,4 @@
-/* $Id: draganddrop.cpp 85473 2020-07-27 18:05:42Z vboxsync $ */
+/* $Id: draganddrop.cpp 85498 2020-07-29 08:01:49Z vboxsync $ */
 /** @file
  * X11 guest client - Drag and drop implementation.
  */
@@ -1915,7 +1915,7 @@ int DragInstance::hgDataReceive(PVBGLR3GUESTDNDMETADATA pMeta)
     void  *pvData = NULL;
     size_t cbData = 0;
 
-    int rc;
+    int rc = VINF_SUCCESS; /* Shut up GCC. */
 
     switch (pMeta->enmType)
     {
