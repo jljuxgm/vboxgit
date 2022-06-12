@@ -1,4 +1,4 @@
-/* $Id: tstClipboardGH-X11.cpp 86537 2020-10-12 09:33:02Z vboxsync $ */
+/* $Id: tstClipboardGH-X11.cpp 86538 2020-10-12 09:40:13Z vboxsync $ */
 /** @file
  * Shared Clipboard guest/host X11 code test cases.
  */
@@ -186,7 +186,7 @@ static const char *g_tst_apszSupAtoms[] =
 Atom XInternAtom(Display *, const char *pcsz, int)
 {
     Atom atom = 0;
-    const size_t const cFormats = clipReportMaxX11Formats();
+    size_t const cFormats = clipReportMaxX11Formats();
     size_t i;
     for (i = 0; i < cFormats; ++i)
     {
