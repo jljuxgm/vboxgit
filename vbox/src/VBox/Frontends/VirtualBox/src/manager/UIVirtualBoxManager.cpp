@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 88519 2021-04-15 10:20:22Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 88650 2021-04-22 11:50:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -560,6 +560,7 @@ bool UIVirtualBoxManager::event(QEvent *pEvent)
                          geo.x(), geo.y(), geo.width(), geo.height()));
                 gEDataManager->setSelectorWindowGeometry(geo, isCurrentlyMaximized());
             }
+            break;
         }
         default:
             break;
