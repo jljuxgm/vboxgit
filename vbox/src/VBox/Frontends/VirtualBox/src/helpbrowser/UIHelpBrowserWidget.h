@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.h 87656 2021-02-09 13:14:33Z vboxsync $ */
+/* $Id: UIHelpBrowserWidget.h 88401 2021-04-07 14:39:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class declaration.
  */
@@ -92,7 +92,7 @@ private slots:
     void sltOpenLink();
     void sltCopyLink();
     void sltAddNewBookmark(const QUrl &url, const QString &strTitle);
-    void sltHandleFontSizeActions();
+    void sltHandleZoomActions();
     void sltHandleTabListChanged(const QStringList &titleList);
     void sltHandleTabChoose();
     void sltHandleCurrentTabChanged(int iIndex);
