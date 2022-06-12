@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
+/* $Id: DevATA.cpp 86481 2020-10-08 06:52:28Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -5610,7 +5610,7 @@ static void ataR3DMATransfer(PPDMDEVINS pDevIns, PATACONTROLLER pCtl, PATACONTRO
         }
         else
         {
-            PDMDevHlpPhysReadMeta(pDevIns, GCPhysDesc, &DMADesc, sizeof(BMDMADesc));
+            PDMDevHlpPCIPhysReadMeta(pDevIns, GCPhysDesc, &DMADesc, sizeof(BMDMADesc));
             GCPhysBuffer = RT_LE2H_U32(DMADesc.GCPhysBuffer);
             cbBuffer = RT_LE2H_U32(DMADesc.cbBuffer);
             fLastDesc = RT_BOOL(cbBuffer & UINT32_C(0x80000000));
