@@ -1,4 +1,4 @@
-/* $Id: UIPerformanceMonitor.cpp 85406 2020-07-22 08:29:51Z vboxsync $ */
+/* $Id: UIPerformanceMonitor.cpp 85410 2020-07-22 10:02:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPerformanceMonitor class implementation.
  */
@@ -1246,12 +1246,20 @@ void UIPerformanceMonitor::reset()
     m_fGuestAdditionsAvailable = false;
     if (m_pTimer)
         m_pTimer->stop();
+    /* reset the metrics. this will delete their data cache: */
     for (QMap<QString, UIMetric>::iterator iterator =  m_metrics.begin();
          iterator != m_metrics.end(); ++iterator)
         iterator.value().reset();
+    /* force update on the charts to draw now emptied metrics' data: */
     for (QMap<QString, UIChart*>::iterator iterator =  m_charts.begin();
          iterator != m_charts.end(); ++iterator)
         iterator.value()->update();
+    /* Reset the info labels: */
+    updateRAMGraphsAndMetric(0, 0);
+    updateCPUGraphsAndMetric(0, 0);
+    updateNetworkGraphsAndMetric(0, 0);
+    updateDiskIOGraphsAndMetric(0, 0);
+    updateVMExitMetric(0);
 }
 
 void UIPerformanceMonitor::start()
