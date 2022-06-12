@@ -1,4 +1,4 @@
-/* $Id: clipboard-transfers.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: clipboard-transfers.cpp 86644 2020-10-20 11:01:39Z vboxsync $ */
 /** @file
  * Shared Clipboard: Common Shared Clipboard transfer handling code.
  */
@@ -2598,10 +2598,10 @@ static int shClTransferThreadCreate(PSHCLTRANSFER pTransfer, PFNRTTHREAD pfnThre
 
     /* Already marked for stopping? */
     AssertMsgReturn(pTransfer->Thread.fStop == false,
-                    ("Thransfer thread already marked for stopping"), VERR_WRONG_ORDER);
+                    ("Transfer thread already marked for stopping"), VERR_WRONG_ORDER);
     /* Already started? */
     AssertMsgReturn(pTransfer->Thread.fStarted == false,
-                    ("Thransfer thread already started"), VERR_WRONG_ORDER);
+                    ("Transfer thread already started"), VERR_WRONG_ORDER);
 
     /* Spawn a worker thread, so that we don't block the window thread for too long. */
     int rc = RTThreadCreate(&pTransfer->Thread.hThread, pfnThreadFunc,
