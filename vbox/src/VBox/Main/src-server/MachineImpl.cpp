@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 88364 2021-04-05 06:23:12Z vboxsync $ */
+/* $Id: MachineImpl.cpp 88365 2021-04-05 06:28:17Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -1258,7 +1258,7 @@ HRESULT Machine::setIommuType(IommuType_T aIommuType)
         {
 #ifndef VBOX_WITH_IOMMU_INTEL
             LogRelFunc(("Setting Intel IOMMU when Intel IOMMU support not available!\n"));
-            return NS_ERROR_UNEXPECTED;
+            return E_UNEXPECTED;
 #endif
         }
 
