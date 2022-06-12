@@ -1,4 +1,4 @@
-/* $Id: GuestDnDTargetImpl.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: GuestDnDTargetImpl.h 85018 2020-07-01 10:42:45Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag'n drop target.
  */
@@ -27,8 +27,7 @@
 #include <VBox/GuestHost/DragAndDrop.h>
 #include <VBox/HostServices/DragAndDropSvc.h>
 
-struct SENDDATACTX;
-typedef struct SENDDATACTX *PSENDDATACTX;
+struct GuestDnDSendCtx;
 class SendDataTask;
 
 class ATL_NO_VTABLE GuestDnDTarget :
@@ -86,15 +85,15 @@ protected:
 
 protected:
 
-    int i_sendData(PSENDDATACTX pCtx, RTMSINTERVAL msTimeout);
-    int i_sendDataBody(PSENDDATACTX pCtx, GuestDnDData *pData);
-    int i_sendDataHeader(PSENDDATACTX pCtx, GuestDnDData *pData, GuestDnDURIData *pURIData /* = NULL */);
-    int i_sendDirectory(PSENDDATACTX pCtx, GuestDnDURIObjCtx *pObjCtx, GuestDnDMsg *pMsg);
-    int i_sendFile(PSENDDATACTX pCtx, GuestDnDURIObjCtx *pObjCtx, GuestDnDMsg *pMsg);
-    int i_sendFileData(PSENDDATACTX pCtx, GuestDnDURIObjCtx *pObjCtx, GuestDnDMsg *pMsg);
-    int i_sendRawData(PSENDDATACTX pCtx, RTMSINTERVAL msTimeout);
-    int i_sendURIData(PSENDDATACTX pCtx, RTMSINTERVAL msTimeout);
-    int i_sendURIDataLoop(PSENDDATACTX pCtx, GuestDnDMsg *pMsg);
+    int i_sendData(GuestDnDSendCtx *pCtx, RTMSINTERVAL msTimeout);
+    int i_sendDataBody(GuestDnDSendCtx *pCtx, GuestDnDData *pData);
+    int i_sendDataHeader(GuestDnDSendCtx *pCtx, GuestDnDData *pData, GuestDnDURIData *pURIData /* = NULL */);
+    int i_sendDirectory(GuestDnDSendCtx *pCtx, GuestDnDURIObjCtx *pObjCtx, GuestDnDMsg *pMsg);
+    int i_sendFile(GuestDnDSendCtx *pCtx, GuestDnDURIObjCtx *pObjCtx, GuestDnDMsg *pMsg);
+    int i_sendFileData(GuestDnDSendCtx *pCtx, GuestDnDURIObjCtx *pObjCtx, GuestDnDMsg *pMsg);
+    int i_sendRawData(GuestDnDSendCtx *pCtx, RTMSINTERVAL msTimeout);
+    int i_sendURIData(GuestDnDSendCtx *pCtx, RTMSINTERVAL msTimeout);
+    int i_sendURIDataLoop(GuestDnDSendCtx *pCtx, GuestDnDMsg *pMsg);
 
 protected:
 
