@@ -1,4 +1,4 @@
-/* $Id: unzipcmd.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: unzipcmd.cpp 84753 2020-06-10 11:40:56Z vboxsync $ */
 /** @file
  * IPRT - A mini UNZIP Command.
  */
@@ -444,6 +444,9 @@ RTDECL(RTEXITCODE) RTZipUnzipCmd(unsigned cArgs, char **papszArgs)
             Opts.cFiles     = cArgs - GetState.iNext;
         }
     }
+
+    if (!Opts.cFiles)
+        return RTMsgErrorExit(RTEXITCODE_FAILURE, "No input file(s) specified");
 
     RTFOFF cBytes = 0;
     uint32_t cFiles = 0;
