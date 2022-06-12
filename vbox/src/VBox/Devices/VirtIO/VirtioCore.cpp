@@ -1,4 +1,4 @@
-/* $Id: VirtioCore.cpp 85045 2020-07-03 07:07:42Z vboxsync $ */
+/* $Id: VirtioCore.cpp 85054 2020-07-03 11:52:21Z vboxsync $ */
 
 /** @file
  * VirtioCore - Virtio Core (PCI, feature & config mgt, queue mgt & proxy, notification mgt)
@@ -1791,6 +1791,7 @@ int virtioCoreR3LoadExec(PVIRTIOCORE pVirtio, PCPDMDEVHLPR3 pHlp, PSSMHANDLE pSS
 
     return VINF_SUCCESS;
 }
+
 
 /*********************************************************************************************************************************
 *   Device Level                                                                                                                 *
