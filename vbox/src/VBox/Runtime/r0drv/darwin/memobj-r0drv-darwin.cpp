@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-darwin.cpp 83087 2020-02-16 20:11:06Z vboxsync $ */
+/* $Id: memobj-r0drv-darwin.cpp 85167 2020-07-10 10:06:55Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Darwin.
  */
@@ -1375,7 +1375,7 @@ static int rtR0MemObjNativeProtectWorker(PRTR0MEMOBJINTERNAL pMem, size_t offSub
         {
             s_cComplaints++;
             printf("rtR0MemObjNativeProtect: vm_protect(%p,%p,%p,false,%#x) -> %d\n",
-                   pVmMap, (void *)Start, (void *)cbSub, fMachProt, krc);
+                   (void *)pVmMap, (void *)Start, (void *)cbSub, fMachProt, krc);
 
             kern_return_t               krc2;
             vm_offset_t                 pvReal = Start;
