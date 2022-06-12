@@ -1,4 +1,4 @@
-/* $Id: DarwinKeyboard.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: DarwinKeyboard.cpp 85326 2020-07-14 09:46:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Declarations of utility functions for handling Darwin Keyboard specific tasks.
  */
@@ -1753,9 +1753,10 @@ static int darwinUsbHidSubscribeInterestNotifications(VBoxHidsState_t *pHidState
             CFRunLoopAddSource(CFRunLoopGetCurrent(), IONotificationPortGetRunLoopSource(pHidState->pNotificationPrortRef), kCFRunLoopDefaultMode);
 
             rc = IOServiceAddMatchingNotification(pHidState->pNotificationPrortRef, kIOMatchedNotification,
-                pDictionary, darwinUsbHidDeviceMatchCb, pHidState, &pHidState->pUsbHidDeviceMatchNotify);
+                                                  pDictionary, darwinUsbHidDeviceMatchCb, pHidState,
+                                                  &pHidState->pUsbHidDeviceMatchNotify);
 
-            if (rc == kIOReturnSuccess && &pHidState->pUsbHidDeviceMatchNotify != NULL)
+            if (rc == kIOReturnSuccess && pHidState->pUsbHidDeviceMatchNotify != IO_OBJECT_NULL)
             {
                 darwinUsbHidDeviceMatchCb(pHidState, pHidState->pUsbHidDeviceMatchNotify);
                 LogRel2(("Successfully subscribed to IOUSBInterface IOService match notifications\n"));
