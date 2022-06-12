@@ -1,4 +1,4 @@
-/* $Id: DevHda.cpp 89406 2021-05-31 14:01:31Z vboxsync $ */
+/* $Id: DevHda.cpp 89562 2021-06-08 08:45:11Z vboxsync $ */
 /** @file
  * Intel HD Audio Controller Emulation.
  *
@@ -686,12 +686,8 @@ static int hdaR3CmdSync(PPDMDEVINS pDevIns, PHDASTATE pThis, bool fLocal)
         if (pThis->u64CORBBase)
         {
             Assert(pThis->cbCorbBuf);
-
-/** @todo r=bird: An explanation is required why PDMDevHlpPhysRead is used with
- *        the CORB and PDMDevHlpPCIPhysWrite with RIRB below.  There are
- *        similar unexplained inconsistencies in DevHDACommon.cpp. */
-            rc = PDMDevHlpPhysRead(pDevIns, pThis->u64CORBBase, pThis->au32CorbBuf,
-                                   RT_MIN(pThis->cbCorbBuf, sizeof(pThis->au32CorbBuf)));
+            rc = PDMDevHlpPCIPhysRead(pDevIns, pThis->u64CORBBase, pThis->au32CorbBuf,
+                                      RT_MIN(pThis->cbCorbBuf, sizeof(pThis->au32CorbBuf)));
             Log3Func(("CORB: read %RGp LB %#x (%Rrc)\n", pThis->u64CORBBase, pThis->cbCorbBuf, rc));
             AssertRCReturn(rc, rc);
         }

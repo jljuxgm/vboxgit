@@ -1,4 +1,4 @@
-/* $Id: DevHdaStream.cpp 89406 2021-05-31 14:01:31Z vboxsync $ */
+/* $Id: DevHdaStream.cpp 89562 2021-06-08 08:45:11Z vboxsync $ */
 /** @file
  * Intel HD Audio Controller Emulation - Streams.
  */
@@ -1592,7 +1592,7 @@ static void hdaR3StreamDoDmaOutput(PPDMDEVINS pDevIns, PHDASTATE pThis, PHDASTRE
                 RTCircBufAcquireWriteBlock(pCircBuf, cbChunk, &pvBufDst, &cbBufDst);
                 AssertBreakStmt(cbBufDst, RTCircBufReleaseWriteBlock(pCircBuf, 0));
 
-                int rc2 = PDMDevHlpPhysRead(pDevIns, GCPhys, pvBufDst, cbBufDst);
+                int rc2 = PDMDevHlpPCIPhysRead(pDevIns, GCPhys, pvBufDst, cbBufDst);
                 AssertRC(rc2);
 
 #ifdef HDA_DEBUG_SILENCE
@@ -1648,7 +1648,7 @@ static void hdaR3StreamDoDmaOutput(PPDMDEVINS pDevIns, PHDASTATE pThis, PHDASTRE
             {
                 /* Read into the bounce buffer. */
                 uint32_t const cbToRead = RT_MIN(cbChunk, sizeof(abBounce) - cbBounce);
-                int rc2 = PDMDevHlpPhysRead(pDevIns, GCPhys, &abBounce[cbBounce], cbToRead);
+                int rc2 = PDMDevHlpPCIPhysRead(pDevIns, GCPhys, &abBounce[cbBounce], cbToRead);
                 AssertRC(rc2);
                 cbBounce += cbToRead;
 
