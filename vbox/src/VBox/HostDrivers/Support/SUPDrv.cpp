@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 87701 2021-02-10 20:36:30Z vboxsync $ */
+/* $Id: SUPDrv.cpp 87705 2021-02-11 00:02:04Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -5640,6 +5640,7 @@ static int supdrvIOCtl_LdrLoad(PSUPDRVDEVEXT pDevExt, PSUPDRVSESSION pSession, P
  * Registers a .r0 module wrapped in a native one and manually loaded.
  *
  * @returns VINF_SUCCESS or error code (no info statuses).
+ * @param   pDevExt             Device globals.
  * @param   pWrappedModInfo     The wrapped module info.
  * @param   pvNative            OS specific information.
  * @param   phMod               Where to store the module handle.
@@ -5998,6 +5999,7 @@ static int supdrvIOCtl_LdrFree(PSUPDRVDEVEXT pDevExt, PSUPDRVSESSION pSession, P
 /**
  * Deregisters a wrapped .r0 module.
  *
+ * @param   pDevExt             Device globals.
  * @param   pWrappedModInfo     The wrapped module info.
  * @param   phMod               Where to store the module is stored (NIL'ed on
  *                              success).
