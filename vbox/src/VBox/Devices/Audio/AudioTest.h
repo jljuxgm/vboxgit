@@ -1,4 +1,4 @@
-/* $Id: AudioTest.h 89465 2021-06-02 13:03:23Z vboxsync $ */
+/* $Id: AudioTest.h 89468 2021-06-02 13:18:28Z vboxsync $ */
 /** @file
  * Audio testing routines.
  * Common code which is being used by the ValidationKit audio test (VKAT)
@@ -341,6 +341,7 @@ int    AudioTestToneGenerate(PAUDIOTESTTONE pTone, void *pvBuf, uint32_t cbBuf, 
 
 int    AudioTestToneParamsInitRandom(PAUDIOTESTTONEPARMS pToneParams, PPDMAUDIOPCMPROPS pProps);
 
+int    AudioTestPathGetTemp(char *pszPath, size_t cbPath);
 int    AudioTestPathCreateTemp(char *pszPath, size_t cbPath, const char *pszUUID);
 int    AudioTestPathCreate(char *pszPath, size_t cbPath, const char *pszUUID);
 
