@@ -1,4 +1,4 @@
-/* $Id: string.h 84341 2020-05-18 17:40:10Z vboxsync $ */
+/* $Id: string.h 85288 2020-07-13 00:19:47Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - Smart string classes declaration.
  */
@@ -170,6 +170,30 @@ public:
     {
         cleanup();
         return *this;
+    }
+
+    /**
+     * Extended assignment method that returns a COM status code instead of an
+     * exception on failure.
+     *
+     * @returns S_OK or E_OUTOFMEMORY.
+     * @param   a_rSrcStr   The source string
+     */
+    HRESULT assignEx(const Bstr &a_rSrcStr) RT_NOEXCEPT
+    {
+        return cleanupAndCopyFromEx((const OLECHAR *)a_rSrcStr.m_bstr);
+    }
+
+    /**
+     * Extended assignment method that returns a COM status code instead of an
+     * exception on failure.
+     *
+     * @returns S_OK or E_OUTOFMEMORY.
+     * @param   a_pSrcStr   The source string
+     */
+    HRESULT assignEx(CBSTR a_pSrcStr) RT_NOEXCEPT
+    {
+        return cleanupAndCopyFromEx((const OLECHAR *)a_pSrcStr);
     }
 
 #ifdef _MSC_VER
@@ -949,6 +973,20 @@ protected:
 
     /** cleanup() + copyFrom() - for assignment operators.  */
     void cleanupAndCopyFrom(const OLECHAR *a_bstrSrc);
+
+    /**
+     * Protected internal helper to copy a string, implying cleanup().
+     *
+     * This variant copies from a zero-terminated UTF-16 string (which need not be a
+     * BSTR, i.e. need not have a length prefix).
+     *
+     * If the source is empty, this sets the member string to NULL.
+     *
+     * @param   a_bstrSrc           The source string.  The caller guarantees
+     *                              that this is valid UTF-16.
+     * @returns S_OK or E_OUTOFMEMORY
+     */
+    HRESULT cleanupAndCopyFromEx(const OLECHAR *a_bstrSrc) RT_NOEXCEPT;
 
     /**
      * Protected internal helper to copy a string. This ignores the previous object
