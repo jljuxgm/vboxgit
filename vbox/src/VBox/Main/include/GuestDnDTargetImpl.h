@@ -1,4 +1,4 @@
-/* $Id: GuestDnDTargetImpl.h 85018 2020-07-01 10:42:45Z vboxsync $ */
+/* $Id: GuestDnDTargetImpl.h 85020 2020-07-01 10:48:57Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag'n drop target.
  */
@@ -28,7 +28,7 @@
 #include <VBox/HostServices/DragAndDropSvc.h>
 
 struct GuestDnDSendCtx;
-class SendDataTask;
+class GuestDnDSendDataTask;
 
 class ATL_NO_VTABLE GuestDnDTarget :
     public GuestDnDTargetWrap,
@@ -75,7 +75,7 @@ protected:
 
     /** @name Thread task workers.
      * @{ */
-    static void i_sendDataThreadTask(SendDataTask *pTask);
+    static void i_sendDataThreadTask(GuestDnDSendDataTask *pTask);
     /** @}  */
 
     /** @name Callbacks for dispatch handler.
@@ -104,7 +104,7 @@ protected:
         uint32_t mcbBlockSize;
     } mData;
 
-    friend class SendDataTask;
+    friend class GuestDnDSendDataTask;
 };
 
 #endif /* !MAIN_INCLUDED_GuestDnDTargetImpl_h */

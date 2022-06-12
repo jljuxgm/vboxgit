@@ -1,4 +1,4 @@
-/* $Id: GuestDnDSourceImpl.cpp 85018 2020-07-01 10:42:45Z vboxsync $ */
+/* $Id: GuestDnDSourceImpl.cpp 85020 2020-07-01 10:48:57Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag and drop source.
  */
@@ -70,11 +70,11 @@ protected:
  * Task structure for receiving data from a source using
  * a worker thread.
  */
-class RecvDataTask : public GuestDnDSourceTask
+class GuestDnDRecvDataTask : public GuestDnDSourceTask
 {
 public:
 
-    RecvDataTask(GuestDnDSource *pSource, GuestDnDRecvCtx *pCtx)
+    GuestDnDRecvDataTask(GuestDnDSource *pSource, GuestDnDRecvCtx *pCtx)
         : GuestDnDSourceTask(pSource)
         , mpCtx(pCtx)
     {
@@ -86,7 +86,7 @@ public:
         GuestDnDSource::i_receiveDataThreadTask(this);
     }
 
-    virtual ~RecvDataTask(void) { }
+    virtual ~GuestDnDRecvDataTask(void) { }
 
     GuestDnDRecvCtx *getCtx(void) { return mpCtx; }
 
@@ -354,7 +354,7 @@ HRESULT GuestDnDSource::drop(const com::Utf8Str &aFormat, DnDAction_T aAction, C
     if (FAILED(hr))
         return hr;
 
-    RecvDataTask *pTask = NULL;
+    GuestDnDRecvDataTask *pTask = NULL;
 
     try
     {
@@ -366,7 +366,7 @@ HRESULT GuestDnDSource::drop(const com::Utf8Str &aFormat, DnDAction_T aAction, C
 
         LogRel2(("DnD: Requesting data from guest in format: %s\n", aFormat.c_str()));
 
-        pTask = new RecvDataTask(this, &mData.mRecvCtx);
+        pTask = new GuestDnDRecvDataTask(this, &mData.mRecvCtx);
         if (!pTask->isOk())
         {
             delete pTask;
@@ -1050,7 +1050,7 @@ int GuestDnDSource::i_receiveData(GuestDnDRecvCtx *pCtx, RTMSINTERVAL msTimeout)
 }
 
 /* static */
-void GuestDnDSource::i_receiveDataThreadTask(RecvDataTask *pTask)
+void GuestDnDSource::i_receiveDataThreadTask(GuestDnDRecvDataTask *pTask)
 {
     LogFlowFunc(("pTask=%p\n", pTask));
     AssertPtrReturnVoid(pTask);

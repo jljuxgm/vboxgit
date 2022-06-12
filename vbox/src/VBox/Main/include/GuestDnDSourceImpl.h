@@ -1,4 +1,4 @@
-/* $Id: GuestDnDSourceImpl.h 85018 2020-07-01 10:42:45Z vboxsync $ */
+/* $Id: GuestDnDSourceImpl.h 85020 2020-07-01 10:48:57Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag'n drop source.
  */
@@ -29,7 +29,7 @@ using namespace DragAndDropSvc;
 #include "GuestDnDSourceWrap.h"
 #include "GuestDnDPrivate.h"
 
-class RecvDataTask;
+class GuestDnDRecvDataTask;
 struct GuestDnDRecvCtx;
 
 class ATL_NO_VTABLE GuestDnDSource :
@@ -87,7 +87,7 @@ protected:
 
     /** @name Thread task .
      * @{ */
-    static void i_receiveDataThreadTask(RecvDataTask *pTask);
+    static void i_receiveDataThreadTask(GuestDnDRecvDataTask *pTask);
     /** @}  */
 
     /** @name Callbacks for dispatch handler.
@@ -113,7 +113,7 @@ protected:
         GuestDnDRecvCtx mRecvCtx;
     } mData;
 
-    friend class RecvDataTask;
+    friend class GuestDnDRecvDataTask;
 };
 
 #endif /* !MAIN_INCLUDED_GuestDnDSourceImpl_h */
