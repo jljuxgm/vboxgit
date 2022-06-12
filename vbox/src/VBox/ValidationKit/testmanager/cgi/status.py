@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: status.py 86940 2020-11-20 17:32:53Z vboxsync $
+# $Id: status.py 86941 2020-11-20 17:40:57Z vboxsync $
 
 """
 CGI - Administrator Web-UI.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 86940 $"
+__version__ = "$Revision: 86941 $"
 
 
 # Standard python imports.
@@ -450,7 +450,7 @@ SELECT  TestSets.enmStatus,
 FROM    TestSets
 INNER JOIN BuildCategories
         ON BuildCategories.idBuildCategory = TestSets.idBuildCategory
-       AND BuildCategories.sBranch         = '%s'
+       AND BuildCategories.sBranch         = %s
 INNER JOIN TestCases
         ON TestCases.idGenTestCase         = TestSets.idGenTestCase
 INNER JOIN TestBoxesWithStrings
