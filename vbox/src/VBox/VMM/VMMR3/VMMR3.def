@@ -1,4 +1,4 @@
-; $Id: VMMR3.def 86104 2020-09-13 08:27:47Z vboxsync $
+; $Id: VMMR3.def 86147 2020-09-17 11:21:16Z vboxsync $
 ;; @file
 ; VMM Ring-3 Context DLL - Definition file.
 
@@ -121,6 +121,7 @@ EXPORTS
     DBGFR3RegNmQuery
     DBGFR3RegNmQueryAll
     DBGFR3RegNmQueryAllCount
+    DBGFR3RegNmSetBatch
     DBGFR3OSDeregister
     DBGFR3OSRegister
     DBGFR3OSQueryInterface
