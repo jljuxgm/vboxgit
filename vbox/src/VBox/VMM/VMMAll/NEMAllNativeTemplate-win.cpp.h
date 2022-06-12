@@ -1,4 +1,4 @@
-/* $Id: NEMAllNativeTemplate-win.cpp.h 88736 2021-04-27 13:58:03Z vboxsync $ */
+/* $Id: NEMAllNativeTemplate-win.cpp.h 88739 2021-04-27 15:26:07Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, Windows code template ring-0/3.
  */
@@ -4330,8 +4330,10 @@ NEM_TMPL_STATIC VBOXSTRICTRC nemHCWinRunGC(PVMCC pVM, PVMCPUCC pVCpu)
                 WHV_RUN_VP_EXIT_CONTEXT ExitReason;
                 RT_ZERO(ExitReason);
                 LogFlow(("NEM/%u: Entry @ %04X:%08RX64 IF=%d (~~may be stale~~)\n", pVCpu->idCpu, pVCpu->cpum.GstCtx.cs.Sel, pVCpu->cpum.GstCtx.rip, pVCpu->cpum.GstCtx.rflags.Bits.u1IF));
+                TMNotifyStartOfExecution(pVM, pVCpu);
                 HRESULT hrc = WHvRunVirtualProcessor(pVM->nem.s.hPartition, pVCpu->idCpu, &ExitReason, sizeof(ExitReason));
                 VMCPU_CMPXCHG_STATE(pVCpu, VMCPUSTATE_STARTED_EXEC_NEM, VMCPUSTATE_STARTED_EXEC_NEM_WAIT);
+                TMNotifyEndOfExecution(pVM, pVCpu, ASMReadTSC());
                 LogFlow(("NEM/%u: Exit  @ %04X:%08RX64 IF=%d CR8=%#x \n", pVCpu->idCpu, ExitReason.VpContext.Cs.Selector, ExitReason.VpContext.Rip, RT_BOOL(ExitReason.VpContext.Rflags & X86_EFL_IF), ExitReason.VpContext.Cr8));
                 if (SUCCEEDED(hrc))
 # endif
