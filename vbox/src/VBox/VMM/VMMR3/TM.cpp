@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 87792 2021-02-18 18:38:24Z vboxsync $ */
+/* $Id: TM.cpp 87794 2021-02-18 19:19:10Z vboxsync $ */
 /** @file
  * TM - Time Manager.
  */
@@ -1125,8 +1125,7 @@ VMM_INT_DECL(int) TMR3InitFinalize(PVM pVM)
     static struct { uint32_t idxQueue, cExtra; } s_aExtra[] = { {TMCLOCK_VIRTUAL, 128}, {TMCLOCK_REAL, 32} };
     for (uint32_t i = 0; i < RT_ELEMENTS(s_aExtra); i++)
     {
-        uint32_t const cExtra = s_aExtra[i].cExtra;
-        PTMTIMERQUEUE  pQueue = &pVM->tm.s.aTimerQueues[s_aExtra[i].idxQueue];
+        PTMTIMERQUEUE pQueue = &pVM->tm.s.aTimerQueues[s_aExtra[i].idxQueue];
         if (s_aExtra[i].cExtra > pQueue->cTimersFree)
         {
             uint32_t cTimersAlloc = pQueue->cTimersAlloc + s_aExtra[i].cExtra - pQueue->cTimersFree;

@@ -1,4 +1,4 @@
-/* $Id: TMInternal.h 87792 2021-02-18 18:38:24Z vboxsync $ */
+/* $Id: TMInternal.h 87794 2021-02-18 19:19:10Z vboxsync $ */
 /** @file
  * TM - Internal header file.
  */
@@ -180,7 +180,7 @@ typedef struct TMTIMER
     /** Timer state. */
     volatile TMTIMERSTATE   enmState;
     /** The index of the next next timer in the schedule list. */
-    int32_t volatile        idxScheduleNext;
+    uint32_t volatile       idxScheduleNext;
 
     /** The index of the next timer in the chain. */
     uint32_t                idxNext;
