@@ -1,4 +1,4 @@
-;$Id: HMInternal.mac 87503 2021-02-01 14:38:38Z vboxsync $
+;$Id: HMInternal.mac 87504 2021-02-01 15:12:21Z vboxsync $
 ;; @file
 ; HM - Internal header file.
 ;
@@ -136,12 +136,9 @@ struc HMCPUVMX
 endstruc
 
 struc HMCPUSVM
-    .fSyncVTpr                      resb    1
     .fEmulateLongModeSysEnterExit   resb    1
 
     alignb 8
-    .u64HostTscAux                  resq    1
-
     .NstGstVmcbCache                resb    40
 endstruc
 
@@ -221,6 +218,12 @@ struc HMR0CPUSVM
     .hMemObjMsrBitmap               RTR0PTR_RES  1
     .pvMsrBitmap                    RTR0PTR_RES  1
 
+    .fSyncVTpr                      resb    1
+
+    alignb 8
+    .u64HostTscAux                  resq    1
+
+    alignb 8
     .DisState                       resb    0d8h
 endstruc
 
