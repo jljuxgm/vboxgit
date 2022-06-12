@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioDSoundMMNotifClient.h 88361 2021-04-05 00:23:47Z vboxsync $ */
+/* $Id: DrvHostAudioDSoundMMNotifClient.h 88628 2021-04-21 10:37:57Z vboxsync $ */
 /** @file
  * Host audio driver - DSound - Implementation of the IMMNotificationClient interface to detect audio endpoint changes.
  */
@@ -38,7 +38,7 @@
 #include <VBox/vmm/pdmaudioifs.h>
 
 
-class DrvHostAudioDSoundMMNotifClient : IMMNotificationClient
+class DrvHostAudioDSoundMMNotifClient : public IMMNotificationClient
 {
 public:
 
@@ -77,9 +77,6 @@ private:
     IFACEMETHODIMP OnDeviceRemoved(LPCWSTR pwstrDeviceId);
     IFACEMETHODIMP OnDefaultDeviceChanged(EDataFlow flow, ERole role, LPCWSTR pwstrDefaultDeviceId);
     IFACEMETHODIMP OnPropertyValueChanged(LPCWSTR /*pwstrDeviceId*/, const PROPERTYKEY /*key*/) { return S_OK; }
-    IFACEMETHODIMP OnDeviceQueryRemove() { return S_OK; }
-    IFACEMETHODIMP OnDeviceQueryRemoveFailed() { return S_OK; }
-    IFACEMETHODIMP OnDeviceRemovePending() { return S_OK; }
     /** @} */
 
     /** @name IUnknown interface
