@@ -1,4 +1,4 @@
-/* $Id: HDAStream.cpp 87985 2021-03-05 20:59:57Z vboxsync $ */
+/* $Id: HDAStream.cpp 87988 2021-03-05 21:44:36Z vboxsync $ */
 /** @file
  * HDAStream.cpp - Stream functions for HD Audio.
  */
@@ -1186,6 +1186,16 @@ static int hdaR3StreamTransfer(PPDMDEVINS pDevIns, PHDASTATE pThis, PHDASTATER3 
 {
     uint8_t const uSD = pStreamShared->u8SD;
     LogFlowFunc(("ENTER - #%u cbToProcessMax=%#x\n", uSD, cbToProcessMax));
+
+    if (RT_LIKELY(cbToProcessMax >= pStreamShared->State.cbTransferSize))
+    { /*likely*/ }
+    else
+    {
+        /** @todo account for this or something so we can try get back in sync
+         *        later... */
+        LogFlowFunc(("Internal DMA/AIO buffer underflow (%#x, wanted at least %#x)\n", cbToProcessMax, pStreamShared->State.cbTransferSize));
+        /// @todo STAM_REL_COUNTER_INC(&pStreamR3->State.StatDmaUnderflow);
+    }
 
     hdaStreamLock(pStreamShared);
 
