@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 85396 2020-07-21 09:43:03Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.h 85425 2020-07-23 10:31:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -359,18 +359,21 @@ private:
         bool isSingleCloudProfileGroupSelected() const;
     /** @} */
 
-    /** @name VM add stuff.
+    /** @name Various VM helpers.
       * @{ */
         /** Opens add machine dialog specifying initial name with @a strFileName. */
         void openAddMachineDialog(const QString &strFileName = QString());
-       /** Creates an uattended installer and uses that to install guest os to newly created vm. */
-        void startUnattendedInstall(CUnattended &comUnattendedInstaller, const UIUnattendedInstallData &unattendedData);
-    /** @} */
 
-    /** @name VM launching stuff.
-      * @{ */
+        /** Creates an unattended installer and uses it to install guest os to newly created vm. */
+        void startUnattendedInstall(CUnattended &comUnattendedInstaller, const UIUnattendedInstallData &unattendedData);
+
         /** Launches or shows virtual machines represented by passed @a items in corresponding @a enmLaunchMode (for launch). */
         void performStartOrShowVirtualMachines(const QList<UIVirtualMachineItem*> &items, UICommon::LaunchMode enmLaunchMode);
+
+#ifndef VBOX_WS_WIN
+        /** Parses serialized @a strArguments string according to shell rules. */
+        QStringList parseShellArguments(const QString &strArguments);
+#endif
     /** @} */
 
     /** @name Action update stuff.
