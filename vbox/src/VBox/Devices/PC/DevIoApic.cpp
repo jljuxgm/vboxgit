@@ -1,4 +1,4 @@
-/* $Id: DevIoApic.cpp 84663 2020-06-03 13:24:01Z vboxsync $ */
+/* $Id: DevIoApic.cpp 84665 2020-06-03 13:30:23Z vboxsync $ */
 /** @file
  * IO APIC - Input/Output Advanced Programmable Interrupt Controller.
  */
@@ -27,6 +27,7 @@
 
 #include "VBoxDD.h"
 #include <iprt/x86.h>
+#include <iprt/string.h>
 
 
 /*********************************************************************************************************************************
