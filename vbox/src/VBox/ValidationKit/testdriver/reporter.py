@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: reporter.py 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: reporter.py 84421 2020-05-20 16:50:27Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 82968 $"
+__version__ = "$Revision: 84421 $"
 
 
 # Standard Python imports.
@@ -1211,11 +1211,17 @@ class FileWrapper(object):
 
     def write(self, sText):
         """file.write"""
-        if isinstance(sText, array.array):
-            try:
-                sText = sText.tostring();
-            except:
-                pass;
+        if not utils.isString(sText):
+            if isinstance(sText, array.array):
+                try:
+                    sText = sText.tostring();
+                except:
+                    pass;
+            if hasattr(sText, 'decode'):
+                try:
+                    sText = sText.decode('utf-8', 'ignore');
+                except:
+                    pass;
         g_oLock.acquire();
         try:
             sTsPrf  = utils.getTimePrefix();
@@ -1270,7 +1276,7 @@ class FileWrapperTestPipe(object):
             if isinstance(sText, array.array):
                 try:    sText = sText.tostring();
                 except: pass;
-            if not utils.isString(sText) and hasattr(sText, 'decode'):
+            if hasattr(sText, 'decode'):
                 try:    sText = sText.decode('utf-8', 'ignore');
                 except: pass;
 
