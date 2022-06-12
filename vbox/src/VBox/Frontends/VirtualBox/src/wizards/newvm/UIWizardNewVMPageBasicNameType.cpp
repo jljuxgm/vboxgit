@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasicNameType.cpp 84917 2020-06-23 12:06:12Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasicNameType.cpp 84918 2020-06-23 13:12:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasicNameType class implementation.
  */
@@ -354,7 +354,6 @@ int UIWizardNewVMPageBasicNameType::nextId() const
 
 void UIWizardNewVMPageBasicNameType::sltNameChanged(const QString &strNewName)
 {
-    /* Call to base-class: */
     onNameChanged(strNewName);
     composeMachineFilePath();
 }
