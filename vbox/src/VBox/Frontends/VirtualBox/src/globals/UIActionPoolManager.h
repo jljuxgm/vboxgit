@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.h 87505 2021-02-01 15:14:07Z vboxsync $ */
+/* $Id: UIActionPoolManager.h 87507 2021-02-01 15:19:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class declaration.
  */
@@ -43,6 +43,7 @@ enum UIActionIndexMN
     UIActionIndexMN_M_File_S_ImportAppliance,
     UIActionIndexMN_M_File_S_ExportAppliance,
     UIActionIndexMN_M_File_M_Tools,
+    UIActionIndexMN_M_File_M_Tools_S_WelcomePane,
     UIActionIndexMN_M_File_M_Tools_S_ExtensionPackManager,
     UIActionIndexMN_M_File_M_Tools_S_VirtualMediaManager,
     UIActionIndexMN_M_File_M_Tools_S_NetworkManager,

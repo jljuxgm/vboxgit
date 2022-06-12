@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.cpp 87505 2021-02-01 15:14:07Z vboxsync $ */
+/* $Id: UIActionPoolManager.cpp 87507 2021-02-01 15:19:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class implementation.
  */
@@ -297,6 +297,34 @@ protected:
     virtual void retranslateUi() /* override */
     {
         setName(QApplication::translate("UIActionPool", "&Global Tools Menu"));
+    }
+};
+
+/** Simple action extension, used as 'Show Welcome Screen' action class. */
+class UIActionSimpleManagerToolsGlobalShowWelcomeScreen : public UIActionSimple
+{
+    Q_OBJECT;
+
+public:
+
+    /** Constructs action passing @a pParent to the base-class. */
+    UIActionSimpleManagerToolsGlobalShowWelcomeScreen(UIActionPool *pParent)
+        : UIActionSimple(pParent, ":/welcome_screen_24px.png")
+    {}
+
+protected:
+
+    /** Returns shortcut extra-data ID. */
+    virtual QString shortcutExtraDataID() const /* override */
+    {
+        return QString("ToolsGlobalWelcomeScreen");
+    }
+
+    /** Handles translation event. */
+    virtual void retranslateUi() /* override */
+    {
+        setName(QApplication::translate("UIActionPool", "&Welcome Screen"));
+        setStatusTip(QApplication::translate("UIActionPool", "Open the Welcome Screen"));
     }
 };
 
@@ -3563,6 +3591,7 @@ void UIActionPoolManager::preparePool()
     m_pool[UIActionIndexMN_M_File_S_ImportAppliance] = new UIActionSimpleManagerFileShowImportApplianceWizard(this);
     m_pool[UIActionIndexMN_M_File_S_ExportAppliance] = new UIActionSimpleManagerFileShowExportApplianceWizard(this);
     m_pool[UIActionIndexMN_M_File_M_Tools] = new UIActionMenuManagerToolsGlobal(this);
+    m_pool[UIActionIndexMN_M_File_M_Tools_S_WelcomePane] = new UIActionSimpleManagerToolsGlobalShowWelcomeScreen(this);
     m_pool[UIActionIndexMN_M_File_M_Tools_S_ExtensionPackManager] = new UIActionSimpleManagerToolsGlobalShowExtensionPackManager(this);
     m_pool[UIActionIndexMN_M_File_M_Tools_S_VirtualMediaManager] = new UIActionSimpleManagerToolsGlobalShowVirtualMediaManager(this);
     m_pool[UIActionIndexMN_M_File_M_Tools_S_NetworkManager] = new UIActionSimpleManagerToolsGlobalShowHostNetworkManager(this);
