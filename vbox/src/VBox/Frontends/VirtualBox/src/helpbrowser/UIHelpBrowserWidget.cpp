@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.cpp 88437 2021-04-09 14:26:44Z vboxsync $ */
+/* $Id: UIHelpBrowserWidget.cpp 88465 2021-04-12 11:20:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class implementation.
  */
@@ -377,6 +377,7 @@ void UIZoomMenuAction::prepare()
     pMainLayout->addWidget(m_pMinusButton);
     pMainLayout->addWidget(m_pValueLabel, Qt::AlignCenter);
     pMainLayout->addWidget(m_pPlusButton);
+    setZoomPercentage(100);
 }
 
 void UIZoomMenuAction::sltZoomOperation()
