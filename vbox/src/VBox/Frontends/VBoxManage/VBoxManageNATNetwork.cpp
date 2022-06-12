@@ -1,4 +1,4 @@
-/* $Id: VBoxManageNATNetwork.cpp 83796 2020-04-18 13:33:35Z vboxsync $ */
+/* $Id: VBoxManageNATNetwork.cpp 87370 2021-01-22 14:14:51Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of NAT Network command command.
  */
@@ -102,7 +102,7 @@ static HRESULT printNATNetwork(const ComPtr<INATNetwork> &pNATNet)
         if (fVal)
         {
             CHECK_ERROR_BREAK(pNATNet, COMGETTER(IPv6Prefix)(strVal.asOutParam()));
-            RTPrintf("IPv6 Prefix: %s\n", strVal.raw());
+            RTPrintf("IPv6 Prefix: %ls\n", strVal.raw());
         }
         CHECK_ERROR_BREAK(pNATNet, COMGETTER(Enabled)(&fVal));
         RTPrintf("Enabled:     %s\n",  fVal ? "Yes" : "No");
