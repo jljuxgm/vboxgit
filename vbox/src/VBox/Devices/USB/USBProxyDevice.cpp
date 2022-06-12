@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice.cpp 86491 2020-10-08 10:09:52Z vboxsync $ */
+/* $Id: USBProxyDevice.cpp 86515 2020-10-10 13:07:10Z vboxsync $ */
 /** @file
  * USBProxy - USB device proxy.
  */
@@ -1193,10 +1193,10 @@ static DECLCALLBACK(int) usbProxyConstruct(PPDMUSBINS pUsbIns, int iInstance, PC
     }
 
     /*
-     * Disable remote wakeup capability, see @bugref{9839}. This is done on 
-     * a device/configuration level, no need to dig too deep through the descriptors. 
-     * On most backends, we can't perform a real selective suspend, and more importantly 
-     * can't receive a remote wake notification. If a guest suspends the device and waits 
+     * Disable remote wakeup capability, see @bugref{9839}. This is done on
+     * a device/configuration level, no need to dig too deep through the descriptors.
+     * On most backends, we can't perform a real selective suspend, and more importantly
+     * can't receive a remote wake notification. If a guest suspends the device and waits
      * for a remote wake, the device is effectively dead.
      */
     if (fEditRemoteWake)
