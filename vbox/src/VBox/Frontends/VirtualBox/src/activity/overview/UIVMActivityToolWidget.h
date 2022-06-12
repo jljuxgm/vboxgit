@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityToolWidget.h 89036 2021-05-14 08:14:18Z vboxsync $ */
+/* $Id: UIVMActivityToolWidget.h 89037 2021-05-14 08:20:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMActivityToolWidget class declaration.
  */
@@ -34,6 +34,7 @@ class QIToolBar;
 class UIVMActivityMonitor;
 class UIVMActivityListWidget;
 class UIVirtualMachineItem;
+class CMachine;
 
 /** QWidget extension to display a Linux top like utility that sort running vm wrt. resource allocations. */
 class UIVMActivityToolWidget : public QIWithRetranslateUI<QTabWidget>
