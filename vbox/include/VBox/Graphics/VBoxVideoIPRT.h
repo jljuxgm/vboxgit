@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoIPRT.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxVideoIPRT.h 87261 2021-01-15 11:13:04Z vboxsync $ */
 /** @file
  * VirtualBox Video driver, common code - iprt and VirtualBox macros and definitions.
  */
@@ -42,7 +42,7 @@
 #include <iprt/stdint.h>
 #include <iprt/types.h>
 
-#if !defined VBOX_XPDM_MINIPORT && !defined RT_OS_OS2
+#if !defined VBOX_XPDM_MINIPORT && !defined RT_OS_OS2 && (defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86))
 # include <iprt/asm-amd64-x86.h>
 #endif
 
