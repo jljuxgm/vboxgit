@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 85788 2020-08-17 07:03:03Z vboxsync $
+# $Id: Makefile.kmk 86559 2020-10-13 17:08:05Z vboxsync $
 ## @file
 # Top level makefile.
 #
@@ -262,7 +262,7 @@ else # win x11
     # ugly but we need to prevent kBuild from hard-linking otherwise we
     # (indirectly) change the binaries in tools
     ifneq ($(KBUILD_TARGET),solaris)
-     QT5_VERSION = 5.6.1
+     QT5_VERSION = 5.6.3
     else
      QT5_VERSION = 5.6.2
     endif
