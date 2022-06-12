@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.h 86734 2020-10-28 11:43:13Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.h 86923 2020-11-19 17:37:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class declaration.
  */
@@ -50,9 +50,11 @@ class UIVirtualBoxManagerWidget : public QIWithRetranslateUI<QWidget>
     enum SelectionType
     {
         SelectionType_Invalid,
-        SelectionType_SingleGroupItem,
+        SelectionType_SingleLocalGroupItem,
+        SelectionType_SingleCloudGroupItem,
         SelectionType_FirstIsGlobalItem,
-        SelectionType_FirstIsMachineItem
+        SelectionType_FirstIsLocalMachineItem,
+        SelectionType_FirstIsCloudMachineItem
     };
 
 signals:
@@ -125,11 +127,17 @@ public:
         bool isGlobalItemSelected() const;
         /** Returns whether machine item is selected. */
         bool isMachineItemSelected() const;
+        /** Returns whether local machine item is selected. */
+        bool isLocalMachineItemSelected() const;
+        /** Returns whether cloud machine item is selected. */
+        bool isCloudMachineItemSelected() const;
 
         /** Returns whether single group is selected. */
         bool isSingleGroupSelected() const;
         /** Returns whether single local group is selected. */
         bool isSingleLocalGroupSelected() const;
+        /** Returns whether single cloud provider group is selected. */
+        bool isSingleCloudProviderGroupSelected() const;
         /** Returns whether single cloud profile group is selected. */
         bool isSingleCloudProfileGroupSelected() const;
         /** Returns whether all items of one group are selected. */
