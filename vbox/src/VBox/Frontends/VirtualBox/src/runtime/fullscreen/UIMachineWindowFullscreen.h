@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIMachineWindowFullscreen.h 88635 2021-04-21 14:05:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowFullscreen class declaration.
  */
@@ -69,6 +69,10 @@ private slots:
 
     /** Revokes window activation. */
     void sltRevokeWindowActivation();
+
+    /** Handles signal about mini-toolbar auto-hide toggled.
+      * @param  fEnabled  Brings whether auto-hide is enabled. */
+    void sltHandleMiniToolBarAutoHideToggled(bool fEnabled);
 #endif /* VBOX_WS_WIN || VBOX_WS_X11 */
 
 #ifdef RT_OS_DARWIN

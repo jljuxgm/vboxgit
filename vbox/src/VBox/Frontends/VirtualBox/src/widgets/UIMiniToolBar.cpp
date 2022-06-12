@@ -1,4 +1,4 @@
-/* $Id: UIMiniToolBar.cpp 86233 2020-09-23 12:10:51Z vboxsync $ */
+/* $Id: UIMiniToolBar.cpp 88635 2021-04-21 14:05:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMiniToolBar class implementation.
  */
@@ -560,6 +560,7 @@ void UIMiniToolBar::sltAutoHideToggled()
 {
     /* Propagate from child: */
     setAutoHide(m_pToolbar->autoHide(), false);
+    emit sigAutoHideToggled(m_pToolbar->autoHide());
 }
 
 void UIMiniToolBar::sltHoverEnter()

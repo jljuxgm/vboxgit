@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowSeamless.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIMachineWindowSeamless.cpp 88635 2021-04-21 14:05:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowSeamless class implementation.
  */
@@ -83,6 +83,13 @@ void UIMachineWindowSeamless::sltRevokeWindowActivation()
 #endif /* VBOX_WS_X11 */
     activateWindow();
 }
+
+void UIMachineWindowSeamless::sltHandleMiniToolBarAutoHideToggled(bool fEnabled)
+{
+    /* Save mini-toolbar settings: */
+    printf("save mini-toolbar auto-hide feature status as: %d\n", (int)fEnabled);
+    gEDataManager->setAutoHideMiniToolbar(fEnabled, uiCommon().managedVMUuid());
+}
 #endif /* VBOX_WS_WIN || VBOX_WS_X11 */
 
 void UIMachineWindowSeamless::sltShowMinimized()
@@ -146,6 +153,8 @@ void UIMachineWindowSeamless::prepareMiniToolbar()
                 actionPool()->action(UIActionIndex_M_Application_S_Close), &UIAction::trigger);
         connect(m_pMiniToolBar, &UIMiniToolBar::sigNotifyAboutWindowActivationStolen,
                 this, &UIMachineWindowSeamless::sltRevokeWindowActivation, Qt::QueuedConnection);
+        connect(m_pMiniToolBar, &UIMiniToolBar::sigAutoHideToggled,
+                this, &UIMachineWindowSeamless::sltHandleMiniToolBarAutoHideToggled);
     }
 }
 #endif /* VBOX_WS_WIN || VBOX_WS_X11 */
@@ -153,12 +162,6 @@ void UIMachineWindowSeamless::prepareMiniToolbar()
 #if defined(VBOX_WS_WIN) || defined(VBOX_WS_X11)
 void UIMachineWindowSeamless::cleanupMiniToolbar()
 {
-    /* Make sure mini-toolbar was created: */
-    if (!m_pMiniToolBar)
-        return;
-
-    /* Save mini-toolbar settings: */
-    gEDataManager->setAutoHideMiniToolbar(m_pMiniToolBar->autoHide(), uiCommon().managedVMUuid());
     /* Delete mini-toolbar: */
     delete m_pMiniToolBar;
     m_pMiniToolBar = 0;
