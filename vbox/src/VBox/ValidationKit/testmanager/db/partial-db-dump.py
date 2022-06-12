@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: partial-db-dump.py 86990 2020-11-26 14:32:06Z vboxsync $
+# $Id: partial-db-dump.py 86992 2020-11-26 14:58:19Z vboxsync $
 # pylint: disable=line-too-long
 
 """
@@ -28,7 +28,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 86990 $"
+__version__ = "$Revision: 86992 $"
 
 # Standard python imports
 import sys;
@@ -75,6 +75,8 @@ class PartialDbDump(object): # pylint: disable=too-few-public-methods
                            help = 'How many days to dump (counting backward from current date).');
         oParser.add_option('--load-dump-into-database', dest = 'fLoadDumpIntoDatabase', action = 'store_true',
                            default = False, help = 'For loading instead of dumping.');
+        oParser.add_option('--lmza', dest = 'fLmza', action = 'store_true',
+                           default = False, help = 'Use LMZA instead of Deflate compression.');
 
         (self.oConfig, _) = oParser.parse_args();
 
@@ -139,7 +141,10 @@ class PartialDbDump(object): # pylint: disable=too-few-public-methods
     def _doDump(self, oDb):
         """ Does the dumping of the database. """
 
-        oZipFile = zipfile.ZipFile(self.oConfig.sFilename, 'w', zipfile.ZIP_DEFLATED);
+        enmCompression = zipfile.ZIP_DEFLATED;
+        if self.oConfig.fLmza:
+            enmCompression = getattr(zipfile. 'ZIP_LZMA', zipfile.ZIP_DEFLATED);
+        oZipFile = zipfile.ZipFile(self.oConfig.sFilename, 'w', enmCompression);
 
         oDb.begin();
 
