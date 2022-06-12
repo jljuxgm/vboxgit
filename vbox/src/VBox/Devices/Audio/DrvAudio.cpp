@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 88534 2021-04-15 12:16:56Z vboxsync $ */
+/* $Id: DrvAudio.cpp 88559 2021-04-16 10:26:45Z vboxsync $ */
 /** @file
  * Intermediate audio driver - Connects the audio device emulation with the host backend.
  */
@@ -3785,6 +3785,21 @@ static int drvAudioDoAttachInternal(PDRVAUDIO pThis, uint32_t fFlags)
             rc = PDMDRV_SET_ERROR(pThis->pDrvIns, VERR_PDM_MISSING_INTERFACE_BELOW,
                                   N_("The host audio driver does not implement PDMIHOSTAUDIO!"));
         }
+    }
+
+    /*
+     * Do some status code simplification for beningn host driver init failures.
+     * The device above us will then replace it will the Null driver.
+     */
+    /** @todo Do the Null driver replacment here, then we don't have to duplicate
+     *        it in 3+ devices! */
+    if (   rc == VERR_MODULE_NOT_FOUND
+        || rc == VERR_SYMBOL_NOT_FOUND
+        || rc == VERR_FILE_NOT_FOUND
+        || rc == VERR_PATH_NOT_FOUND)
+    {
+        LogRel(("Audio: %Rrc -> VERR_AUDIO_BACKEND_INIT_FAILED\n", rc));
+        rc = VERR_AUDIO_BACKEND_INIT_FAILED;
     }
 
     LogFunc(("[%s] rc=%Rrc\n", pThis->szName, rc));
