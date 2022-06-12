@@ -1,4 +1,4 @@
-/* $Id: GuestOSTypeImpl.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: GuestOSTypeImpl.h 85215 2020-07-11 13:30:59Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -97,7 +97,6 @@ private:
     const GraphicsControllerType_T mGraphicsControllerType;
     const uint32_t mVRAMSize;
     const uint64_t mHDDSize;
-    const uint32_t mMonitorCount;
     const NetworkAdapterType_T mNetworkAdapterType;
     const uint32_t mNumSerialEnabled;
     const StorageControllerType_T mDVDStorageControllerType;
