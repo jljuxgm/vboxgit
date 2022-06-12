@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 83551 2020-04-04 11:42:04Z vboxsync $ */
+/* $Id: VMMDev.cpp 87283 2021-01-15 20:49:58Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -97,7 +97,9 @@
 #include <VBox/version.h>
 
 #include <iprt/asm.h>
-#include <iprt/asm-amd64-x86.h>
+#if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
+# include <iprt/asm-amd64-x86.h> /* ASMReadTsc */
+#endif
 #include <iprt/assert.h>
 #include <iprt/buildconfig.h>
 #include <iprt/string.h>
