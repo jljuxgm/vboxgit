@@ -1,4 +1,4 @@
-/* $Id: DevHdaStream.cpp 88572 2021-04-16 19:30:00Z vboxsync $ */
+/* $Id: DevHdaStream.cpp 88690 2021-04-23 19:25:40Z vboxsync $ */
 /** @file
  * Intel HD Audio Controller Emulation - Streams.
  */
@@ -2610,8 +2610,8 @@ int hdaR3StreamAsyncIOCreate(PHDASTREAMR3 pStreamR3)
             rc = RTCritSectInit(&pAIO->CritSect);
             if (RT_SUCCESS(rc))
             {
-                rc = RTThreadCreateF(&pAIO->hThread, hdaR3StreamAsyncIOThread, pStreamR3, 0 /*cbStack*/,
-                                     RTTHREADTYPE_IO, RTTHREADFLAGS_WAITABLE, "hdaAIO%RU8", pStreamR3->u8SD);
+                rc = RTThreadCreateF(&pAIO->hThread, hdaR3StreamAsyncIOThread, pStreamR3, 0 /*cbStack*/, RTTHREADTYPE_IO,
+                                     RTTHREADFLAGS_WAITABLE | RTTHREADFLAGS_COM_MTA, "hdaAIO%RU8", pStreamR3->u8SD);
                 if (RT_SUCCESS(rc))
                     rc = RTThreadUserWait(pAIO->hThread, 10 * 1000 /* 10s timeout */);
             }
