@@ -1,4 +1,4 @@
-/* $Id: mappings.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: mappings.cpp 86396 2020-10-01 18:52:12Z vboxsync $ */
 /** @file
  * Shared Folders Service - Mappings support.
  */
@@ -457,9 +457,11 @@ int vbsfMappingsRemove(PSHFLSTRING pMapName)
 
                     RTStrFree(g_FolderMapping[i].pszFolderName);
                     RTMemFree(g_FolderMapping[i].pMapName);
-                    g_FolderMapping[i].pszFolderName = NULL;
-                    g_FolderMapping[i].pMapName      = NULL;
-                    g_FolderMapping[i].fValid        = false;
+                    RTMemFree(g_FolderMapping[i].pAutoMountPoint);
+                    g_FolderMapping[i].pszFolderName   = NULL;
+                    g_FolderMapping[i].pMapName        = NULL;
+                    g_FolderMapping[i].pAutoMountPoint = NULL;
+                    g_FolderMapping[i].fValid          = false;
                     vbsfRootHandleRemove(i);
                     vbsfMappingsWakeupAllWaiters();
                     if (rc == VERR_FILE_NOT_FOUND)
