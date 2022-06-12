@@ -1,4 +1,4 @@
-/* $Id: UISearchLineEdit.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UISearchLineEdit.cpp 86816 2020-11-06 06:50:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIsearchLineEdit class definitions.
  */
@@ -29,8 +29,8 @@ UISearchLineEdit::UISearchLineEdit(QWidget *pParent /* = 0 */)
     , m_fMark(true)
     , m_unmarkColor(palette().color(QPalette::Base))
     , m_markColor(QColor(m_unmarkColor.red(),
-                         0.5 * m_unmarkColor.green(),
-                         0.5 * m_unmarkColor.blue()))
+                         0.7 * m_unmarkColor.green(),
+                         0.7 * m_unmarkColor.blue()))
 {
 }
 
@@ -57,7 +57,7 @@ void UISearchLineEdit::paintEvent(QPaintEvent *pEvent)
     int iTopMargin = (height() - textSize.height()) / 2;
     int iRightMargin = iTopMargin;
 
-    QColor fontColor(Qt::darkGray);
+    QColor fontColor(Qt::black);
     painter.setPen(fontColor);
     painter.setFont(pfont);
 
