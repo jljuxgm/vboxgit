@@ -1,4 +1,4 @@
-/* $Id: SharedClipboard-transfers.h 87611 2021-02-04 16:31:28Z vboxsync $ */
+/* $Id: SharedClipboard-transfers.h 87651 2021-02-09 12:20:04Z vboxsync $ */
 /** @file
  * Shared Clipboard - Shared transfer functions between host and guest.
  */
@@ -55,6 +55,9 @@ typedef struct SHCLTRANSFER *PSHCLTRANSFER;
 /** @name Shared Clipboard transfer definitions.
  *  @{
  */
+
+/** Defines the maximum length (in chars) a Shared Clipboard transfer path can have. */
+#define SHCL_TRANSFER_PATH_MAX          RTPATH_MAX
 
 /**
  * Defines the transfer status codes.

@@ -1,4 +1,4 @@
-/* $Id: clipboard-transfers.cpp 87611 2021-02-04 16:31:28Z vboxsync $ */
+/* $Id: clipboard-transfers.cpp 87651 2021-02-09 12:20:04Z vboxsync $ */
 /** @file
  * Shared Clipboard: Common Shared Clipboard transfer handling code.
  */
@@ -396,10 +396,10 @@ int ShClTransferListOpenParmsInit(PSHCLLISTOPENPARMS pParms)
 
     RT_BZERO(pParms, sizeof(SHCLLISTOPENPARMS));
 
-    pParms->cbFilter  = 64; /** @todo Make this dynamic. */
+    pParms->cbFilter  = SHCL_TRANSFER_PATH_MAX; /** @todo Make this dynamic. */
     pParms->pszFilter = RTStrAlloc(pParms->cbFilter);
 
-    pParms->cbPath    = RTPATH_MAX;
+    pParms->cbPath    = SHCL_TRANSFER_PATH_MAX; /** @todo Make this dynamic. */
     pParms->pszPath   = RTStrAlloc(pParms->cbPath);
 
     LogFlowFuncLeave();
