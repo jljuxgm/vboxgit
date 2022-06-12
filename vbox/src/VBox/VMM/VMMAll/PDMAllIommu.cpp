@@ -1,4 +1,4 @@
-/* $Id: PDMAllIommu.cpp 88078 2021-03-10 19:25:11Z vboxsync $ */
+/* $Id: PDMAllIommu.cpp 88631 2021-04-21 11:54:19Z vboxsync $ */
 /** @file
  * PDM IOMMU - All Contexts.
  */
@@ -63,6 +63,19 @@ DECL_FORCE_INLINE(uint16_t) pdmIommuGetPciDeviceId(PPDMDEVINS pDevIns, PPDMPCIDE
     PCPDMPCIBUS pBus = &pVM->pdm.s.aPciBuses[idxBus];
 #endif
     return PCIBDF_MAKE(pBus->iBus, pPciDev->uDevFn);
+}
+
+
+/**
+ * Returns whether an IOMMU instance is present.
+ *
+ * @returns @c true if an IOMMU is present, @c false otherwise.
+ * @param   pDevIns     The device instance.
+ */
+bool pdmIommuIsPresent(PPDMDEVINS pDevIns)
+{
+    PPDMIOMMU pIommu = PDMDEVINS_TO_IOMMU(pDevIns);
+    return pIommu != 0;
 }
 
 
