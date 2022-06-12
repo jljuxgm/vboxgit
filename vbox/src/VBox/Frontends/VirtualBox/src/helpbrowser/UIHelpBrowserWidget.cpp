@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.cpp 86831 2020-11-09 08:20:42Z vboxsync $ */
+/* $Id: UIHelpBrowserWidget.cpp 86832 2020-11-09 09:03:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class implementation.
  */
@@ -307,7 +307,14 @@ bool UIFindInPageWidget::eventFilter(QObject *pObject, QEvent *pEvent)
 {
     if (pObject == m_pDragMoveLabel)
     {
-        if (pEvent->type() == QEvent::MouseMove)
+        if (pEvent->type() == QEvent::Enter)
+            m_pDragMoveLabel->setCursor(Qt::CrossCursor);
+        else if (pEvent->type() == QEvent::Leave)
+        {
+            if (parentWidget())
+                m_pDragMoveLabel->setCursor(parentWidget()->cursor());
+        }
+        else if (pEvent->type() == QEvent::MouseMove)
         {
             QMouseEvent *pMouseEvent = static_cast<QMouseEvent*>(pEvent);
             if (pMouseEvent->buttons() == Qt::LeftButton)
@@ -315,10 +322,14 @@ bool UIFindInPageWidget::eventFilter(QObject *pObject, QEvent *pEvent)
                 if (m_previousMousePosition != QPoint(-1, -1))
                     emit sigDragging(pMouseEvent->globalPos() - m_previousMousePosition);
                 m_previousMousePosition = pMouseEvent->globalPos();
+                m_pDragMoveLabel->setCursor(Qt::ClosedHandCursor);
             }
         }
         else if (pEvent->type() == QEvent::MouseButtonRelease)
+        {
             m_previousMousePosition = QPoint(-1, -1);
+            m_pDragMoveLabel->setCursor(Qt::CrossCursor);
+        }
     }
     return QIWithRetranslateUI<QWidget>::eventFilter(pObject, pEvent);
 }
