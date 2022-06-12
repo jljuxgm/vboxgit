@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 89512 2021-06-04 15:27:51Z vboxsync $ */
+/* $Id: DrvAudio.cpp 89556 2021-06-08 08:03:03Z vboxsync $ */
 /** @file
  * Intermediate audio driver - Connects the audio device emulation with the host backend.
  */
@@ -857,6 +857,8 @@ static DECLCALLBACK(int) drvAudioEnable(PPDMIAUDIOCONNECTOR pInterface, PDMAUDIO
         {
             if (pStreamEx->Core.Cfg.enmDir == enmDir)
             {
+                RTCritSectEnter(&pStreamEx->Core.CritSect);
+
                 /*
                  * When (re-)enabling a stream, clear the disabled warning bit again.
                  */
@@ -909,6 +911,8 @@ static DECLCALLBACK(int) drvAudioEnable(PPDMIAUDIOCONNECTOR pInterface, PDMAUDIO
                                         * about individual stream by the caller... */
                     }
                 }
+
+                RTCritSectLeave(&pStreamEx->Core.CritSect);
             }
         }
 
