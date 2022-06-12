@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-dtrace.cpp 85767 2020-08-14 12:43:19Z vboxsync $ */
+/* $Id: SUPDrv-dtrace.cpp 85771 2020-08-14 13:33:12Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - DTrace Provider.
  */
@@ -88,7 +88,7 @@
 #  include <dtrace/enabling.h> /* Missing from provider.h. */
 #  include <dtrace/arg.h> /* Missing from provider.h. */
 # endif
-# include <linux/kallsyms.h>
+# include <linux/module.h>
 /** Status code fixer (UEK uses linux convension unlike the others). */
 # define FIX_UEK_RC(a_rc) (-(a_rc))
 #else
