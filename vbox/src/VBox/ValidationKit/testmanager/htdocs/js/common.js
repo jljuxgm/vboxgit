@@ -1,4 +1,4 @@
-/* $Id: common.js 84620 2020-05-30 22:34:30Z vboxsync $ */
+/* $Id: common.js 84621 2020-05-31 15:13:42Z vboxsync $ */
 /** @file
  * Common JavaScript functions
  */
@@ -207,7 +207,7 @@ function parseIsoTimestamp(sTs)
     var iMilliseconds = (iMicroseconds + 499) / 1000;
 
     /* Naive? */
-    var oDate = new Date(Date.UTC(iYear, iMonth, iDay, iHour, iMin, iSec, iMilliseconds));
+    var oDate = new Date(Date.UTC(iYear, iMonth - 1, iDay, iHour, iMin, iSec, iMilliseconds));
     if (offTime >= sTime.length)
         return oDate;
 
