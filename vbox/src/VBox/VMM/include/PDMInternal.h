@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 88562 2021-04-16 12:18:03Z vboxsync $ */
+/* $Id: PDMInternal.h 88563 2021-04-16 12:19:49Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -1669,7 +1669,7 @@ int         pdmR3BlkCacheResume(PVM pVM);
 void        pdmLock(PVMCC pVM);
 int         pdmLockEx(PVMCC pVM, int rc);
 void        pdmUnlock(PVMCC pVM);
-bool        pdmLockIsOwned(PCVMCC pVM);
+bool        pdmLockIsOwner(PCVMCC pVM);
 
 #if defined(VBOX_WITH_IOMMU_AMD) || defined(VBOX_WITH_IOMMU_INTEL)
 int         pdmIommuMsiRemap(PPDMDEVINS pDevIns, uint16_t idDevice, PCMSIMSG pMsiIn, PMSIMSG pMsiOut);
