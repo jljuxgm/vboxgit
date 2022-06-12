@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testfileset.py 84893 2020-06-22 11:06:48Z vboxsync $
+# $Id: testfileset.py 84894 2020-06-22 11:11:34Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84893 $"
+__version__ = "$Revision: 84894 $"
 
 
 # Standard Python imports.
@@ -638,7 +638,7 @@ class TestFileSet(object):
                     if oParent is self.oTreeDir:
                         return oDir;
                     oParent = oParent.oParent;
-            cRetries++;
+            cRetries += 1;
 
         reporter.errorXcpt('chooseRandomDirFromTree() failed; cMaxRetries=%d' % (cMaxRetries));
         return None; # make pylint happy
