@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.cpp 83870 2020-04-20 18:17:37Z vboxsync $ */
+/* $Id: GuestSessionImplTasks.cpp 84551 2020-05-27 07:32:21Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session tasks.
  */
@@ -2286,17 +2286,16 @@ int GuestSessionTaskUpdateAdditions::Run(void)
             else /* Everything else hopefully means Linux :-). */
                 osType = eOSType_Linux;
 
-#if 1 /* Only Windows is supported (and tested) at the moment. */
             if (   RT_SUCCESS(rc)
                 && (   osType != eOSType_Windows
                     && osType != eOSType_Linux))
+                /** @todo Support Solaris. */
             {
                 hr = setProgressErrorMsg(VBOX_E_NOT_SUPPORTED,
                                          Utf8StrFmt(GuestSession::tr("Detected guest OS (%s) does not support automatic Guest Additions updating, please update manually"),
                                                     strOSType.c_str()));
                 rc = VERR_NOT_SUPPORTED;
             }
-#endif
         }
     }
 
