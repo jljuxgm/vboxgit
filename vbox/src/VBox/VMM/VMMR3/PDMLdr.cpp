@@ -1,4 +1,4 @@
-/* $Id: PDMLdr.cpp 86499 2020-10-08 17:06:45Z vboxsync $ */
+/* $Id: PDMLdr.cpp 86510 2020-10-09 22:38:04Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager, module loader.
  */
@@ -134,6 +134,7 @@ void pdmR3LdrTermU(PUVM pUVM, bool fFinal)
     RTCritSectEnter(&pUVM->pdm.s.ListCritSect);
     PPDMMOD pModule = pUVM->pdm.s.pModules;
     pUVM->pdm.s.pModules = NULL;
+    PPDMMOD *ppNext = &pUVM->pdm.s.pModules;
     while (pModule)
     {
         /* free loader item. */
@@ -161,8 +162,11 @@ void pdmR3LdrTermU(PUVM pUVM, bool fFinal)
                 /* Postpone ring-0 module till the PDMR3TermUVM() phase as VMMR0.r0 is still
                    busy when we're called the first time very very early in vmR3Destroy().  */
                 PPDMMOD pNextModule = pModule->pNext;
-                pModule->pNext = pUVM->pdm.s.pModules;
-                pUVM->pdm.s.pModules = pModule;
+
+                pModule->pNext = NULL;
+                *ppNext = pModule;
+                ppNext = &pModule->pNext;
+
                 pModule = pNextModule;
                 continue;
             }
