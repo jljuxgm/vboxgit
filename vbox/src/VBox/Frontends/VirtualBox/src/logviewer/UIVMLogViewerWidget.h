@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.h 88702 2021-04-26 10:40:36Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.h 88728 2021-04-27 11:51:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class declaration.
  */
@@ -118,7 +118,7 @@ private slots:
     void sltSearchResultHighLigting();
     void sltHandleSearchUpdated();
     /** Handles the tab change of the logviewer. */
-    void sltTabIndexChange(int tabIndex);
+    void sltCurrentTabChanged(int tabIndex);
     /* if @a isOriginal true than the result of the filtering is equal to
        the original log file for some reason. */
     void sltFilterApplied(bool isOriginal);

@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.cpp 88707 2021-04-26 16:17:35Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.cpp 88728 2021-04-27 11:51:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class implementation.
  */
@@ -399,12 +399,14 @@ void UIVMLogViewerWidget::sltHandleSearchUpdated()
         return;
 }
 
-void UIVMLogViewerWidget::sltTabIndexChange(int tabIndex)
+void UIVMLogViewerWidget::sltCurrentTabChanged(int tabIndex)
 {
     Q_UNUSED(tabIndex);
 
     /* Dont refresh the search here as it is refreshed by the filtering mechanism
        which is updated as tab current index changes: */
+    if (m_pFilterPanel)
+        m_pFilterPanel->applyFilter();
 
     /* We keep a separate QVector<LogBookmark> for each log page: */
     if (m_pBookmarksPanel && currentLogPage())
@@ -585,6 +587,7 @@ void UIVMLogViewerWidget::prepareWidgets()
         {
             /* Add into layout: */
             m_pMainLayout->addWidget(m_pTabWidget);
+            connect(m_pTabWidget, &QITabWidget::currentChanged, this, &UIVMLogViewerWidget::sltCurrentTabChanged);
 #if 0
             m_pCornerButton = new QIToolButton(m_pTabWidget);
 #endif
