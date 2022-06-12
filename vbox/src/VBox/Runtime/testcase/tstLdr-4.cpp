@@ -1,4 +1,4 @@
-/* $Id: tstLdr-4.cpp 85500 2020-07-29 08:54:12Z vboxsync $ */
+/* $Id: tstLdr-4.cpp 85541 2020-07-30 09:05:37Z vboxsync $ */
 /** @file
  * IPRT - Testcase for RTLdrOpen using ldrLdrObjR0.r0.
  */
@@ -59,6 +59,16 @@ static DECLCALLBACK(int) testEnumSegment(RTLDRMOD hLdrMod, PCRTLDRSEG pSeg, void
              "     link=%RTptr LB %RTptr align=%RTptr fProt=%#x offFile=%RTfoff\n"
              , *piSeg, pSeg->RVA, pSeg->cbMapped, pSeg->pszName,
              pSeg->LinkAddress, pSeg->cb, pSeg->Alignment, pSeg->fProt, pSeg->offFile);
+
+    if (pSeg->RVA != NIL_RTLDRADDR)
+    {
+        RTTESTI_CHECK(pSeg->cbMapped != NIL_RTLDRADDR);
+        RTTESTI_CHECK(pSeg->cbMapped >= pSeg->cb);
+    }
+    else
+    {
+        RTTESTI_CHECK(pSeg->cbMapped == NIL_RTLDRADDR);
+    }
 
     /*
      * Do some address conversion tests:
