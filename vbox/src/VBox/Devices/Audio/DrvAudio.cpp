@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 87179 2021-01-05 15:58:39Z vboxsync $ */
+/* $Id: DrvAudio.cpp 87252 2021-01-14 17:05:30Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -3308,11 +3308,19 @@ static int drvAudioStreamCreateInternalBackend(PDRVAUDIO pThis,
                  pStream->szName, DrvAudioHlpFramesToMilli(pCfgAcq->Backend.cFramesPeriod, &pCfgAcq->Props), pCfgAcq->Backend.cFramesPeriod));
 
     /* Was pre-buffering requested, but the acquired configuration from the backend told us something else? */
-    if (   pCfgReq->Backend.cFramesPreBuffering
-        && pCfgAcq->Backend.cFramesPreBuffering != pCfgReq->Backend.cFramesPreBuffering)
+    if (pCfgReq->Backend.cFramesPreBuffering)
     {
-        LogRel2(("Audio: Pre-buffering size overwritten by backend for stream '%s' (now %RU64ms, %RU32 frames)\n",
-                 pStream->szName, DrvAudioHlpFramesToMilli(pCfgAcq->Backend.cFramesPreBuffering, &pCfgAcq->Props), pCfgAcq->Backend.cFramesPreBuffering));
+        if (pCfgAcq->Backend.cFramesPreBuffering != pCfgReq->Backend.cFramesPreBuffering)
+            LogRel2(("Audio: Pre-buffering size overwritten by backend for stream '%s' (now %RU64ms, %RU32 frames)\n",
+                     pStream->szName, DrvAudioHlpFramesToMilli(pCfgAcq->Backend.cFramesPreBuffering, &pCfgAcq->Props), pCfgAcq->Backend.cFramesPreBuffering));
+
+        if (pCfgAcq->Backend.cFramesPreBuffering > pCfgAcq->Backend.cFramesBufferSize)
+        {
+            pCfgAcq->Backend.cFramesPreBuffering = pCfgAcq->Backend.cFramesBufferSize;
+            LogRel2(("Audio: Pre-buffering size bigger than buffer size for stream '%s', adjusting to %RU64ms (%RU32 frames)\n",
+                     pStream->szName, DrvAudioHlpFramesToMilli(pCfgAcq->Backend.cFramesPreBuffering, &pCfgAcq->Props), pCfgAcq->Backend.cFramesPreBuffering,
+                    pCfgAcq->Backend.cFramesPreBuffering));
+        }
     }
     else if (pCfgReq->Backend.cFramesPreBuffering == 0) /* Was the pre-buffering requested as being disabeld? Tell the users. */
     {
