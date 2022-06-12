@@ -1,4 +1,4 @@
-/* $Id: VirtioCore.h 85121 2020-07-08 19:33:26Z vboxsync $ */
+/* $Id: VirtioCore.h 85194 2020-07-10 15:10:39Z vboxsync $ */
 
 /** @file
  * VirtioCore.h - Virtio Declarations
@@ -812,7 +812,6 @@ void     virtioCoreGCPhysChainInit(PVIRTIOSGBUF pGcSgBuf, PVIRTIOSGSEG paSegs, s
 void     virtioCoreGCPhysChainReset(PVIRTIOSGBUF pGcSgBuf);
 RTGCPHYS virtioCoreGCPhysChainGetNextSeg(PVIRTIOSGBUF pGcSgBuf, size_t *pcbSeg);
 RTGCPHYS virtioCoreGCPhysChainAdvance(PVIRTIOSGBUF pGcSgBuf, size_t cbAdvance);
-size_t   virtioCoreGCPhysChainCalcBufSize(PCVIRTIOSGBUF pGcSgBuf);
 
 
 /** Misc VM and PDM boilerplate */
