@@ -1,4 +1,4 @@
-# $Id: Config.kmk 85533 2020-07-29 22:31:37Z vboxsync $
+# $Id: Config.kmk 85591 2020-08-02 11:54:11Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -4651,7 +4651,7 @@ TEMPLATE_VBoxR0_CXXFLAGS.freebsd    = -ffreestanding
  ## @todo WTF doesn't the globals work? Debug info is supposed to be split everywhere. GRR
  TEMPLATE_VBoxR0_LD_DEBUG           = split
  endif
- if1of ($(KBUILD_TARGET), linux)
+ if1of ($(KBUILD_TARGET), linux solaris)
 VBOX_WITH_VBOXR0_AS_DLL = 1
 TEMPLATE_VBoxR0_DLLSUFF             = .r0
 TEMPLATE_VBoxR0_CFLAGS             += -fPIC
@@ -8073,7 +8073,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 85533 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 85591 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
