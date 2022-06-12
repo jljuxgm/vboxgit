@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.cpp 87589 2021-02-03 17:17:19Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.cpp 87592 2021-02-03 17:50:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class implementation.
  */
@@ -23,7 +23,6 @@
 #include <QHBoxLayout>
 #include <QLabel>
 #include <QRadioButton>
-#include <QSpacerItem>
 #include <QSpinBox>
 #include <QVBoxLayout>
 
