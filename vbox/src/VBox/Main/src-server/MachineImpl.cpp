@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 87298 2021-01-18 14:00:26Z vboxsync $ */
+/* $Id: MachineImpl.cpp 87968 2021-03-05 09:20:03Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -5172,6 +5172,8 @@ void Machine::i_deleteConfigHandler(DeleteConfigTask &task)
                     log.printf("%s%cVBox.png.%u", logFolder.c_str(), RTPATH_DELIMITER, i);
                     RTFileDelete(log.c_str());
                 }
+                log.printf("%s%cVBoxUI.log", logFolder.c_str(), RTPATH_DELIMITER);
+                RTFileDelete(log.c_str());
 #if defined(RT_OS_WINDOWS)
                 log.printf("%s%cVBoxStartup.log", logFolder.c_str(), RTPATH_DELIMITER);
                 RTFileDelete(log.c_str());
