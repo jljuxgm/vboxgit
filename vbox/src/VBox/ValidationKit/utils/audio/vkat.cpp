@@ -1,4 +1,4 @@
-/* $Id: vkat.cpp 89310 2021-05-27 10:11:23Z vboxsync $ */
+/* $Id: vkat.cpp 89328 2021-05-28 00:22:28Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) utility for testing and validating the audio stack.
  */
@@ -1356,7 +1356,7 @@ static int audioTestDriverStackStreamCapture(PAUDIOTESTDRVSTACK pDrvStack, PPDMA
     int rc;
     if (pDrvStack->pIAudioConnector)
     {
-        rc = pDrvStack->pIAudioConnector->pfnStreamCapture(pDrvStack->pIAudioConnector, pStream, pcbCaptured);
+        rc = pDrvStack->pIAudioConnector->pfnStreamCapture(pDrvStack->pIAudioConnector, pStream, pvBuf, cbBuf, pcbCaptured);
         if (RT_FAILURE(rc))
             RTTestFailed(g_hTest, "pfnStreamCapture(,,,%#x) failed: %Rrc", cbBuf, rc);
     }
