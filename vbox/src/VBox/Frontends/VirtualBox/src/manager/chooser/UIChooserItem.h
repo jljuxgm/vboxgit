@@ -1,4 +1,4 @@
-/* $Id: UIChooserItem.h 86768 2020-10-30 11:40:37Z vboxsync $ */
+/* $Id: UIChooserItem.h 89172 2021-05-19 14:12:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItem class declaration.
  */
@@ -98,7 +98,7 @@ public:
       * @param  iDefaultValue  Brings default value for hovering animation.
       * @param  iHoveredValue  Brings hovered value for hovering animation. */
     UIChooserItem(UIChooserItem *pParent, UIChooserNode *pNode,
-                  int iDefaultValue = 100, int iHoveredValue = 90);
+                  int iDefaultValue = 0, int iHoveredValue = 100);
 
     /** @name Item stuff.
       * @{ */

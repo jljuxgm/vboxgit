@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemMachine.cpp 89137 2021-05-18 12:36:28Z vboxsync $ */
+/* $Id: UIChooserItemMachine.cpp 89172 2021-05-19 14:12:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemMachine class implementation.
  */
@@ -35,7 +35,7 @@
 
 
 UIChooserItemMachine::UIChooserItemMachine(UIChooserItem *pParent, UIChooserNodeMachine *pNode)
-    : UIChooserItem(pParent, pNode, 0, 100)
+    : UIChooserItem(pParent, pNode)
     , m_iDefaultLightnessMin(0)
     , m_iDefaultLightnessMax(0)
     , m_iHoverLightnessMin(0)

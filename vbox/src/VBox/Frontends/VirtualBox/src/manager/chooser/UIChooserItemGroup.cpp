@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGroup.cpp 89170 2021-05-19 14:09:35Z vboxsync $ */
+/* $Id: UIChooserItemGroup.cpp 89172 2021-05-19 14:12:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGroup class implementation.
  */
@@ -1623,8 +1623,8 @@ void UIChooserItemGroup::paintBackground(QPainter *pPainter, const QRect &rect)
 
         /* Prepare top gradient: */
         QLinearGradient tGradient(tRect.bottomLeft(), tRect.topLeft());
-        tGradient.setColorAt(1, headerColor.darker(animatedValue()));
-        tGradient.setColorAt(0, headerColor.darker(headerDarkness()));
+        tGradient.setColorAt(1, headerColor.lighter(100 + (double)animatedValue() / 100 * 30));
+        tGradient.setColorAt(0, headerColor);
 
         /* Fill top rectangle: */
         pPainter->fillRect(tRect, tGradient);
@@ -1636,7 +1636,7 @@ void UIChooserItemGroup::paintBackground(QPainter *pPainter, const QRect &rect)
             bRect.setTop(bRect.top() + iFullHeaderHeight);
 
             /* Fill top rectangle: */
-            pPainter->fillRect(bRect, headerColor.darker(headerDarkness()));
+            pPainter->fillRect(bRect, headerColor);
         }
 
         /* Paint drag token UP? */
