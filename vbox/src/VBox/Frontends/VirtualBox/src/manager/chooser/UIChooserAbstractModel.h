@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.h 86739 2020-10-28 16:02:34Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.h 86740 2020-10-28 16:08:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class declaration.
  */
@@ -344,10 +344,23 @@ private:
 
     /** @name Cloud stuff.
       * @{ */
+        /** Searches for provider node with passed @a strProviderShortName. */
+        UIChooserNode *searchProviderNode(const QString &strProviderShortName);
+
+        /** Searches for profile node with passed @a strProfileName under passed @a pProviderNode. */
+        UIChooserNode *searchProfileNode(UIChooserNode *pProviderNode, const QString &strProfileName);
         /** Searches for profile node with passed @a strProviderShortName and @a strProfileName. */
         UIChooserNode *searchProfileNode(const QString &strProviderShortName, const QString &strProfileName);
+
+        /** Searches for machine node with passed @a uMachineId under passed @a pProfileNode. */
+        UIChooserNode *searchMachineNode(UIChooserNode *pProfileNode, const QUuid &uMachineId);
+        /** Searches for machine with passed @a strProviderShortName, @a strProfileName and @a uMachineId. */
+        UIChooserNode *searchMachineNode(const QString &strProviderShortName, const QString &strProfileName, const QUuid &uMachineId);
+
         /** Searches for fake node under passed @a pProfileNode. */
         UIChooserNode *searchFakeNode(UIChooserNode *pProfileNode);
+        /** Searches for fake with passed @a strProviderShortName and @a strProfileName. */
+        UIChooserNode *searchFakeNode(const QString &strProviderShortName, const QString &strProfileName);
     /** @} */
 
     /** @name General stuff.
