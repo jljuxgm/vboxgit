@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 85929 2020-08-28 14:40:55Z vboxsync $
+# $Id: Makefile.kmk 86753 2020-10-29 04:04:15Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -301,6 +301,7 @@ VBoxAPIWrap_PCH_HDR       := $(PATH_SUB_CURRENT)/src-all/xpcom/VBoxAPIWrap-preco
  	$(if-expr defined(VBOX_ONLY_EXTPACKS) \
 	, $(addprefix $(VBoxAPIWrap_0_OUTDIR)/,$(filter \
 	Cloud%\
+	DataStreamWrap.cpp\
 	%FormValueWrap.cpp\
 	%FormWrap.cpp\
 	StringArrayWrap.cpp\
