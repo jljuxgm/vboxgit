@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.h 87101 2020-12-17 14:30:07Z vboxsync $ */
+/* $Id: UIActionPool.h 88071 2021-03-10 15:10:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPool class declaration.
  */
@@ -587,7 +587,7 @@ protected:
     /** Updates 'Log Viewer' @a pMenu. */
     void updateMenuLogViewerWrapper(UIMenu *pMenu);
     /** Updates 'Performance Monitor' menu. */
-    void updateMenuPerformanceMonitor();
+    void updateMenuVMActivityMonitor();
     /** Updates 'File Manager' menu. */
     void updateMenuFileManager();
     /** Updates 'File Manager' @a pMenu. */

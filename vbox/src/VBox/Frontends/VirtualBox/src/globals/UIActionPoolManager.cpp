@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.cpp 87516 2021-02-01 19:32:18Z vboxsync $ */
+/* $Id: UIActionPoolManager.cpp 88071 2021-03-10 15:10:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class implementation.
  */
@@ -1882,7 +1882,7 @@ public:
     UIActionToggleManagerToolsMachineShowPerformance(UIActionPool *pParent)
         : UIActionToggle(pParent)
     {
-        setProperty("UIToolType", QVariant::fromValue(UIToolType_Performance));
+        setProperty("UIToolType", QVariant::fromValue(UIToolType_VMActivity));
         /// @todo use icons with check-boxes
         setIcon(UIIconPool::iconSetFull(":/performance_monitor_32px.png", ":/performance_monitor_16px.png",
                                         ":/performance_monitor_disabled_32px.png", ":/performance_monitor_disabled_16px.png"));
@@ -1893,7 +1893,7 @@ protected:
     /** Returns shortcut extra-data ID. */
     virtual QString shortcutExtraDataID() const /* override */
     {
-        return QString("ToolsMachinePerformanceMonitor");
+        return QString("ToolsMachineVMActivityMonitor");
     }
 
     /** Handles translation event. */
@@ -3799,7 +3799,7 @@ void UIActionPoolManager::updateMenus()
     updateMenuLogViewer();
     /* 'Performance' menu: */
     addMenu(m_mainMenus, action(UIActionIndex_M_Performance));
-    updateMenuPerformanceMonitor();
+    updateMenuVMActivityMonitor();
 
     /* 'Help' menu: */
     addMenu(m_mainMenus, action(UIActionIndex_Menu_Help));

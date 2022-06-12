@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneMachine.h 87101 2020-12-17 14:30:07Z vboxsync $ */
+/* $Id: UIToolPaneMachine.h 88071 2021-03-10 15:10:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolPaneMachine class declaration.
  */
@@ -38,7 +38,7 @@ class QVBoxLayout;
 class UIActionPool;
 class UIDetails;
 class UIErrorPane;
-class UIPerformanceMonitor;
+class UIVMActivityMonitor;
 class UISnapshotPane;
 class UIVirtualMachineItem;
 class UIVMLogViewerWidget;
@@ -132,7 +132,7 @@ private:
     /** Holds the Logviewer pane instance. */
     UIVMLogViewerWidget *m_pPaneLogViewer;
     /** Holds the Performance Monitor pane instance. */
-    UIPerformanceMonitor *m_pPanePerformanceMonitor;
+    UIVMActivityMonitor *m_pPaneVMActivityMonitor;
 
     /** Holds whether this pane is active. */
     bool  m_fActive;

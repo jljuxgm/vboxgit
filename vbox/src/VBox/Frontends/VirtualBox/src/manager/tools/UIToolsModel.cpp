@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.cpp 87516 2021-02-01 19:32:18Z vboxsync $ */
+/* $Id: UIToolsModel.cpp 88071 2021-03-10 15:10:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class implementation.
  */
@@ -460,7 +460,7 @@ void UIToolsModel::retranslateUi()
             case UIToolType_Details:     pItem->reconfigure(tr("Details")); break;
             case UIToolType_Snapshots:   pItem->reconfigure(tr("Snapshots")); break;
             case UIToolType_Logs:        pItem->reconfigure(tr("Logs")); break;
-            case UIToolType_Performance: pItem->reconfigure(tr("Performance")); break;
+            case UIToolType_VMActivity: pItem->reconfigure(tr("Performance")); break;
             default: break;
         }
     }
@@ -535,7 +535,7 @@ void UIToolsModel::prepareItems()
                                UIIconPool::iconSet(":/vm_show_logs_24px.png", ":/vm_show_logs_disabled_24px.png"));
 
     /* Performance: */
-    m_items << new UIToolsItem(scene(), UIToolClass_Machine, UIToolType_Performance, QString(),
+    m_items << new UIToolsItem(scene(), UIToolClass_Machine, UIToolType_VMActivity, QString(),
                                UIIconPool::iconSet(":/performance_monitor_24px.png", ":/performance_monitor_disabled_24px.png"));
 }
 

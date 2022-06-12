@@ -1,4 +1,4 @@
-/* $Id: UIResourceMonitor.h 86233 2020-09-23 12:10:51Z vboxsync $ */
+/* $Id: UIResourceMonitor.h 88071 2021-03-10 15:10:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIResourceMonitor class declaration.
  */
@@ -83,7 +83,7 @@ private slots:
     void sltHandleColumnAction(bool fChecked);
     void sltHandleHostStatsUpdate(const UIVMResourceMonitorHostStats &stats);
     void sltHandleTableContextMenuRequest(const QPoint &pos);
-    void sltHandleShowPerformanceMonitor();
+    void sltHandleShowVMActivityMonitor();
     void sltHandleTableSelectionChanged(const QItemSelection &selected, const QItemSelection &deselected);
 
 private:
@@ -125,7 +125,7 @@ private:
         /* The key is the column id (VMResourceMonitorColumn) and value is true if the column is visible. */
         QMap<int, bool>                     m_columnVisible;
         UIVMResourceMonitorHostStatsWidget *m_pHostStatsWidget;
-        QAction                            *m_pShowPerformanceMonitorAction;
+        QAction                            *m_pVMActivityMonitorAction;
     /** @} */
     /** Indicates if this widget's host tool is current tool. */
     bool    m_fIsCurrentTool;

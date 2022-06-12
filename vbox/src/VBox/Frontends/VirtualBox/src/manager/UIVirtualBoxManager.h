@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 87516 2021-02-01 19:32:18Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.h 88071 2021-03-10 15:10:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -279,12 +279,6 @@ private slots:
         void sltOpenLogViewerWindow();
         /** Handles call to close machine Log Viewer window. */
         void sltCloseLogViewerWindow();
-
-        /** Handles call to open machine Performance Monitor window. */
-        void sltOpenPerformanceMonitorWindow();
-
-        /** Handles call to close machine Performance Monitor window. */
-        void sltClosePerformanceMonitorWindow();
 
         /** Handles call to refresh machine. */
         void sltPerformRefreshMachine();
