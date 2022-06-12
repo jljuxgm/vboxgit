@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 88651 2021-04-22 12:12:33Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.cpp 88655 2021-04-22 14:42:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowNormal class implementation.
  */
@@ -499,7 +499,7 @@ bool UIMachineWindowNormal::event(QEvent *pEvent)
             if (m_iGeometrySaveTimerId != -1)
                 killTimer(m_iGeometrySaveTimerId);
             m_iGeometrySaveTimerId = startTimer(300);
-            
+
             /* Let listeners know about geometry changes: */
             emit sigGeometryChange(geometry());
             break;
