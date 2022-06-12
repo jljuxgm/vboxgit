@@ -1,4 +1,4 @@
-/* $Id: UIHelpViewer.h 88430 2021-04-09 11:42:55Z vboxsync $ */
+/* $Id: UIHelpViewer.h 88437 2021-04-09 14:26:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class declaration.
  */
@@ -90,6 +90,7 @@ protected:
     virtual void mouseDoubleClickEvent(QMouseEvent *pEvent) /* override */;
     virtual void paintEvent(QPaintEvent *pEvent) /* override */;
     virtual bool eventFilter(QObject *pObject, QEvent *pEvent) /* override */;
+    virtual void keyPressEvent(QKeyEvent *pEvent) /* override */;
 
 private slots:
 

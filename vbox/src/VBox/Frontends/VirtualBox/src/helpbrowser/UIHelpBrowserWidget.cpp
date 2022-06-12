@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.cpp 88436 2021-04-09 13:35:23Z vboxsync $ */
+/* $Id: UIHelpBrowserWidget.cpp 88437 2021-04-09 14:26:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class implementation.
  */
@@ -347,8 +347,6 @@ void UIZoomMenuAction::prepare()
 {
     QWidget *pWidget = new QWidget;
     setDefaultWidget(pWidget);
-    // if (pWidget)
-    //     pWidget->setSizePolicy(QSizePolicy::Maximum, QSizePolicy::Fixed);
 
     QHBoxLayout *pMainLayout = new QHBoxLayout(pWidget);
     pMainLayout->setSpacing(0);

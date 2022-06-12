@@ -1,4 +1,4 @@
-/* $Id: UIHelpViewer.cpp 88436 2021-04-09 13:35:23Z vboxsync $ */
+/* $Id: UIHelpViewer.cpp 88437 2021-04-09 14:26:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class implementation.
  */
@@ -651,6 +651,13 @@ bool UIHelpViewer::eventFilter(QObject *pObject, QEvent *pEvent)
             clearOverlay();
     }
     return QIWithRetranslateUI<QTextBrowser>::eventFilter(pObject, pEvent);
+}
+
+void UIHelpViewer::keyPressEvent(QKeyEvent *pEvent)
+{
+    if (pEvent && pEvent->key() == Qt::Key_Escape)
+        clearOverlay();
+    QIWithRetranslateUI<QTextBrowser>::keyPressEvent(pEvent);
 }
 
 void UIHelpViewer::retranslateUi()
