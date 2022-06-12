@@ -1,4 +1,4 @@
-/* $Id: DBGFRZ.cpp 86701 2020-10-25 18:20:09Z vboxsync $ */
+/* $Id: DBGFRZ.cpp 86704 2020-10-26 12:04:05Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, RZ part.
  */
@@ -237,6 +237,7 @@ DECLINLINE(int) dbgfRZBpHit(PVMCC pVM, PVMCPUCC pVCpu, PCPUMCTXCORE pRegFrame,
     pVCpu->dbgf.s.hBpActive = hBp;
 
     /** @todo Owner handling. */
+    RT_NOREF(pVM, pRegFrame, pBpR0);
 
     LogFlow(("dbgfRZBpHit: hit breakpoint %u at %04x:%RGv cHits=0x%RX64\n",
              hBp, pRegFrame->cs.Sel, pRegFrame->rip, cHits));
