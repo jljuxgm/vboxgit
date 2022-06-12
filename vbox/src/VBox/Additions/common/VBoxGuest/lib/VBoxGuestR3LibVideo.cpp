@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibVideo.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxGuestR3LibVideo.cpp 86819 2020-11-06 11:43:05Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Video.
  */
@@ -404,6 +404,7 @@ VBGLR3DECL(int) VbglR3VideoModeGetHighestSavedScreen(unsigned *pcScreen)
         *pcScreen = cHighestScreen;
     return rc;
 #else /* !VBOX_WITH_GUEST_PROPS */
+    RT_NOREF(pcScreen);
     return VERR_NOT_SUPPORTED;
 #endif /* !VBOX_WITH_GUEST_PROPS */
 }
@@ -481,6 +482,7 @@ VBGLR3DECL(int) VbglR3SaveVideoMode(unsigned idScreen, unsigned cx, unsigned cy,
     }
     return rc;
 #else /* !VBOX_WITH_GUEST_PROPS */
+    RT_NOREF(idScreen, cx, cy, cBits, x, y, fEnabled);
     return VERR_NOT_SUPPORTED;
 #endif /* !VBOX_WITH_GUEST_PROPS */
 }
@@ -570,6 +572,7 @@ VBGLR3DECL(int) VbglR3RetrieveVideoMode(unsigned idScreen,
 
     return rc;
 #else /* !VBOX_WITH_GUEST_PROPS */
+    RT_NOREF(idScreen, pcx, pcy, pcBits, px, py, pfEnabled);
     return VERR_NOT_SUPPORTED;
 #endif /* !VBOX_WITH_GUEST_PROPS */
 }
