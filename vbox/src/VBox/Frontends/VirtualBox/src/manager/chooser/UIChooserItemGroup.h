@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGroup.h 86652 2020-10-20 14:37:58Z vboxsync $ */
+/* $Id: UIChooserItemGroup.h 86743 2020-10-28 17:22:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGroup class declaration.
  */
@@ -72,7 +72,8 @@ public:
       * @{ */
         /** Returns group node reference. */
         UIChooserNodeGroup *nodeToGroupType() const;
-
+        /** Returns item machine id. */
+        QUuid id() const;
         /** Returns group node type. */
         UIChooserNodeGroupType groupType() const;
 

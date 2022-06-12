@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGroup.cpp 86652 2020-10-20 14:37:58Z vboxsync $ */
+/* $Id: UIChooserItemGroup.cpp 86743 2020-10-28 17:22:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGroup class implementation.
  */
@@ -92,6 +92,11 @@ UIChooserItemGroup::~UIChooserItemGroup()
 UIChooserNodeGroup *UIChooserItemGroup::nodeToGroupType() const
 {
     return node() ? node()->toGroupNode() : 0;
+}
+
+QUuid UIChooserItemGroup::id() const
+{
+    return nodeToGroupType() ? nodeToGroupType()->id() : QUuid();
 }
 
 UIChooserNodeGroupType UIChooserItemGroup::groupType() const
