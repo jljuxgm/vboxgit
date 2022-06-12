@@ -1,4 +1,4 @@
-/* $Id: the-linux-kernel.h 86547 2020-10-12 18:57:00Z vboxsync $ */
+/* $Id: the-linux-kernel.h 89690 2021-06-14 18:33:10Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the Linux kernel.
  */
@@ -137,7 +137,7 @@
 #include <linux/interrupt.h>
 #include <linux/completion.h>
 #include <linux/compiler.h>
-#if RTLNX_VER_MIN(5,9,0) /* linux/fs.h defined HAVE_UNLOCKED_IOCTL from 2.6.11 up to 5.9, when it became an implicit assumption. */
+#if RTLNX_VER_MIN(5,9,0) || RTLNX_SUSE_MAJ_PREREQ(15,3) /* linux/fs.h defined HAVE_UNLOCKED_IOCTL from 2.6.11 up to 5.9 (also 5.3.18-56 in SLES15-SP3), when it became an implicit assumption. */
 # define HAVE_UNLOCKED_IOCTL 1 /* We use this in a couple of places, so for now just define it for 5.9+ too. */
 #endif
 #if !defined(HAVE_UNLOCKED_IOCTL) && RTLNX_VER_MAX(2,6,38)
