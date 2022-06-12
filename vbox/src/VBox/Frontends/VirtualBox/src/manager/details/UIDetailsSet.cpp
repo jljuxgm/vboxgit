@@ -1,4 +1,4 @@
-/* $Id: UIDetailsSet.cpp 84623 2020-05-31 17:15:24Z vboxsync $ */
+/* $Id: UIDetailsSet.cpp 88805 2021-04-30 13:29:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsSet class implementation.
  */
@@ -764,8 +764,8 @@ void UIDetailsSet::paintBackground(QPainter *pPainter, const QStyleOptionGraphic
     const QRect optionRect = pOptions->rect;
 
     /* Paint default background: */
-    const QColor defaultColor = palette().color(QPalette::Active, QPalette::Midlight).darker(110);
-    pPainter->fillRect(optionRect, defaultColor);
+    const QColor backgroundColor = QApplication::palette().color(QPalette::Active, QPalette::Window);
+    pPainter->fillRect(optionRect, backgroundColor);
 
     /* Restore painter: */
     pPainter->restore();

@@ -1,4 +1,4 @@
-/* $Id: UITools.cpp 88508 2021-04-14 14:00:09Z vboxsync $ */
+/* $Id: UITools.cpp 88805 2021-04-30 13:29:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UITools class implementation.
  */
@@ -99,21 +99,11 @@ UIToolsItem *UITools::currentItem() const
 void UITools::prepare()
 {
     /* Prepare everything: */
-    preparePalette();
     prepareContents();
     prepareConnections();
 
     /* Init model finally: */
     initModel();
-}
-
-void UITools::preparePalette()
-{
-    setAutoFillBackground(true);
-    QPalette pal = palette();
-    QColor bodyColor = pal.color(QPalette::Active, QPalette::Midlight).darker(110);
-    pal.setColor(QPalette::Window, bodyColor);
-    setPalette(pal);
 }
 
 void UITools::prepareContents()

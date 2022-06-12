@@ -1,4 +1,4 @@
-/* $Id: UITools.h 88508 2021-04-14 14:00:09Z vboxsync $ */
+/* $Id: UITools.h 88805 2021-04-30 13:29:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UITools class declaration.
  */
@@ -109,8 +109,6 @@ private:
       * @{ */
         /** Prepares all. */
         void prepare();
-        /** Prepares palette. */
-        void preparePalette();
         /** Prepares contents. */
         void prepareContents();
         /** Prepares model. */

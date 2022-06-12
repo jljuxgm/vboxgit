@@ -1,4 +1,4 @@
-/* $Id: UIChooser.h 87102 2020-12-17 14:44:51Z vboxsync $ */
+/* $Id: UIChooser.h 88805 2021-04-30 13:29:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooser class declaration.
  */
@@ -197,8 +197,6 @@ private:
       * @{ */
         /** Prepares all. */
         void prepare();
-        /** Prepares palette. */
-        void preparePalette();
         /** Prepares model. */
         void prepareModel();
         /** Prepares widgets. */
