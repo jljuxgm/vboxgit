@@ -1,4 +1,4 @@
-/* $Id: DevIoApic.cpp 88638 2021-04-22 05:40:05Z vboxsync $ */
+/* $Id: DevIoApic.cpp 88822 2021-05-03 10:46:39Z vboxsync $ */
 /** @file
  * IO APIC - Input/Output Advanced Programmable Interrupt Controller.
  */
@@ -524,7 +524,7 @@ static void ioapicSignalIntrForRte(PPDMDEVINS pDevIns, PIOAPIC pThis, PIOAPICCC 
         ApicIntr.u8TriggerMode  = u8TriggerMode;
         ApicIntr.u8RedirHint    = 0;
 
-#ifdef VBOX_WITH_IOMMU_AMD
+#if defined(VBOX_WITH_IOMMU_AMD) || defined(VBOX_WITH_IOMMU_INTEL)
         /*
          * The interrupt may need to be remapped (or discarded) if an IOMMU is present.
          * For line-based interrupts we must use the southbridge I/O APIC's BDF as
