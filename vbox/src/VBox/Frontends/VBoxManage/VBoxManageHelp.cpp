@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 85178 2020-07-10 12:58:02Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 85575 2020-07-31 12:45:54Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -479,9 +479,9 @@ void printUsage(USAGECATEGORY enmCommand, uint64_t fSubcommandScope, PRTSTREAM p
                      "                            usbhost|usbfilters|systemproperties|extpacks|\n"
                      "                            groups|webcams|screenshotformats|cloudproviders|\n"
 #if defined(VBOX_WITH_CLOUD_NET)
-                     "                            cloudprofiles|cloudnets\n"
+                     "                            cloudprofiles|cloudnets|cpu-profiles\n"
 #else
-                     "                            cloudprofiles\n"
+                     "                            cloudprofiles|cpu-profiles\n"
 #endif
                      "\n", SEP);
 
