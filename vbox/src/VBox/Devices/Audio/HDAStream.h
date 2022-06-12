@@ -1,4 +1,4 @@
-/* $Id: HDAStream.h 88080 2021-03-10 21:22:36Z vboxsync $ */
+/* $Id: HDAStream.h 88094 2021-03-11 15:00:17Z vboxsync $ */
 /** @file
  * HDAStream.h - Streams for HD Audio.
  */
@@ -267,7 +267,9 @@ typedef struct HDASTREAMR3
         /** Asynchronous I/O state members. */
         HDASTREAMSTATEAIO       AIO;
 #endif
-        /** Under/overflow statistics counter.   */
+        /** Counter for all under/overflows problems. */
+        STAMCOUNTER             StatDmaFlowProblems;
+        /** Counter for unresovled under/overflows problems. */
         STAMCOUNTER             StatDmaFlowErrors;
     } State;
     /** Debug bits. */
