@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-solaris.c 87700 2021-02-10 20:21:04Z vboxsync $ */
+/* $Id: SUPDrv-solaris.c 88169 2021-03-17 19:35:16Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Solaris specifics.
  */
@@ -1158,8 +1158,6 @@ int  VBOXCALL   supdrvOSLdrLoad(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pImage, c
             {
                 case SUPLDRLOADEP_VMMR0:
                 {
-                    if (RT_SUCCESS(rc))
-                        rc = supdrvSolLdrResolvEp(pImage, "VMMR0EntryInt",  (void **)&pReq->u.In.EP.VMMR0.pvVMMR0EntryInt);
                     if (RT_SUCCESS(rc))
                         rc = supdrvSolLdrResolvEp(pImage, "VMMR0EntryFast", (void **)&pReq->u.In.EP.VMMR0.pvVMMR0EntryFast);
                     if (RT_SUCCESS(rc))
