@@ -1,4 +1,4 @@
-/* $Id: DevVirtioSCSI.cpp 84774 2020-06-11 06:01:00Z vboxsync $ */
+/* $Id: DevVirtioSCSI.cpp 84786 2020-06-11 07:35:40Z vboxsync $ */
 /** @file
  * VBox storage devices - Virtio SCSI Driver
  *
@@ -124,6 +124,7 @@
 
 #define IS_VIRTQ_EMPTY(pDevIns, pVirtio, idxQueue) \
             (virtioCoreQueueAvailCount(pDevIns, pVirtio, idxQueue) == 0)
+
 
 /*********************************************************************************************************************************
 *   Structures and Typedefs                                                                                                      *
