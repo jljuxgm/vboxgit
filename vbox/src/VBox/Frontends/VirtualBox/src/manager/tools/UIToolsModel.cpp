@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.cpp 85398 2020-07-21 10:54:57Z vboxsync $ */
+/* $Id: UIToolsModel.cpp 85513 2020-07-29 10:34:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class implementation.
  */
@@ -524,7 +524,7 @@ void UIToolsModel::prepareItems()
 
     /* Performance: */
     m_items << new UIToolsItem(scene(), UIToolClass_Machine, UIToolType_Performance, QString(),
-                               UIIconPool::iconSet(":/resources_monitor_24px.png", ":/resources_monitor_disabled_24px.png"));
+                               UIIconPool::iconSet(":/performance_monitor_24px.png", ":/performance_monitor_disabled_24px.png"));
 }
 
 void UIToolsModel::prepareHandlers()
