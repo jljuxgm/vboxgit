@@ -1,4 +1,4 @@
-/* $Id: UIVMInformationDialog.cpp 88874 2021-05-05 12:38:50Z vboxsync $ */
+/* $Id: UIVMInformationDialog.cpp 88900 2021-05-06 12:53:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMInformationDialog class implementation.
  */
@@ -110,21 +110,30 @@ void UIVMInformationDialog::closeEvent(QCloseEvent *pEvent)
     }
 }
 
+void UIVMInformationDialog::resizeEvent(QResizeEvent *pEvent)
+{
+    saveDialogGeometry();
+    QMainWindowWithRestorableGeometryAndRetranslateUi::resizeEvent(pEvent);
+}
+
+void UIVMInformationDialog::moveEvent(QMoveEvent *pEvent)
+{
+    QMainWindowWithRestorableGeometryAndRetranslateUi::moveEvent(pEvent);
+    saveDialogGeometry();
+}
+
 void UIVMInformationDialog::sltHandlePageChanged(int iIndex)
 {
     /* Focus the browser on shown page: */
     m_pTabWidget->widget(iIndex)->setFocus();
 }
 
-void UIVMInformationDialog::sltSaveSettings()
+void UIVMInformationDialog::saveDialogGeometry()
 {
-    /* Save window geometry: */
-    {
-        const QRect geo = currentGeometry();
-        LogRel2(("GUI: UIVMInformationDialog: Saving geometry as: Origin=%dx%d, Size=%dx%d\n",
-                 geo.x(), geo.y(), geo.width(), geo.height()));
-        gEDataManager->setSessionInformationDialogGeometry(geo, isCurrentlyMaximized());
-    }
+    const QRect geo = currentGeometry();
+    LogRel2(("GUI: UIVMInformationDialog: Saving geometry as: Origin=%dx%d, Size=%dx%d\n",
+             geo.x(), geo.y(), geo.width(), geo.height()));
+    gEDataManager->setSessionInformationDialogGeometry(geo, isCurrentlyMaximized());
 }
 
 void UIVMInformationDialog::prepare()
@@ -132,9 +141,7 @@ void UIVMInformationDialog::prepare()
     /* Prepare dialog: */
     prepareThis();
     /* Load settings: */
-    loadSettings();
-    connect(&uiCommon(), &UICommon::sigAskToCommitData,
-            this, &UIVMInformationDialog::sltSaveSettings);
+    loadDialogGeometry();
 }
 
 void UIVMInformationDialog::prepareThis()
@@ -259,13 +266,10 @@ void UIVMInformationDialog::prepareButtonBox()
     }
 }
 
-void UIVMInformationDialog::loadSettings()
+void UIVMInformationDialog::loadDialogGeometry()
 {
-    /* Load window geometry: */
-    {
-        const QRect geo = gEDataManager->sessionInformationDialogGeometry(this, m_pMachineWindow);
-        LogRel2(("GUI: UIVMInformationDialog: Restoring geometry to: Origin=%dx%d, Size=%dx%d\n",
-                 geo.x(), geo.y(), geo.width(), geo.height()));
-        restoreGeometry(geo);
-    }
+    const QRect geo = gEDataManager->sessionInformationDialogGeometry(this, m_pMachineWindow);
+    LogRel2(("GUI: UIVMInformationDialog: Restoring geometry to: Origin=%dx%d, Size=%dx%d\n",
+             geo.x(), geo.y(), geo.width(), geo.height()));
+    restoreGeometry(geo);
 }
