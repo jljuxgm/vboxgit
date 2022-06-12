@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.cpp 89608 2021-06-10 16:09:26Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.cpp 89623 2021-06-11 09:46:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class implementation.
  */
@@ -310,7 +310,7 @@ void UIVMLogViewerWidget::markLabelTabs()
         if (qobject_cast<UILabelTab*>(m_pTabWidget->widget(i)))
         {
             pTabBar->setTabData(i, true);
-            /* Add close button only for manager UI. */
+            /* Add close button only for dialog mode in manager UI. */
             if (uiCommon().uiType() == UICommon::UIType_SelectorUI && m_enmEmbedding == EmbedTo_Dialog)
             {
                 UIVMLogTab *pTab = logTab(i);
