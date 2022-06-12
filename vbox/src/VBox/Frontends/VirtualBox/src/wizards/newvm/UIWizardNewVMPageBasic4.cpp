@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic4.cpp 87938 2021-03-03 13:49:58Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic4.cpp 87941 2021-03-03 16:11:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic4 class implementation.
  */
@@ -295,8 +295,8 @@ void UIWizardNewVMPageBasic4::retranslateUi()
                                 UICommon::formatSize(field("type").value<CGuestOSType>().GetRecommendedHDD());
     if (m_pLabel)
         m_pLabel->setText(UIWizardNewVM::tr("<p>If you wish you can add a virtual hard disk to the new machine. "
-                                            "You can either create a new hard disk file or select one from the list "
-                                            "or from another location using the folder icon.</p>"));
+                                            "You can either create a new hard disk file or select an existing one. "
+                                            "Alternatively you can create a virtual machine without a virtual hard disk.</p>"));
 
     UIWizardNewVMPage4::retranslateWidgets();
     UIWizardNewVDPage1::retranslateWidgets();

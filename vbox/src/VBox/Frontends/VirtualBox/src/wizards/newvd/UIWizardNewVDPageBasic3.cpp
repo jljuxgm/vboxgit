@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageBasic3.cpp 87938 2021-03-03 13:49:58Z vboxsync $ */
+/* $Id: UIWizardNewVDPageBasic3.cpp 87941 2021-03-03 16:11:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageBasic3 class implementation.
  */
@@ -243,7 +243,7 @@ void UIWizardNewVDPage3::retranslateWidgets()
                                                 "This size is the limit on the amount of file data "
                                                 "that a virtual machine will be able to store on the hard disk."));
     if (m_pSizeEditorLabel)
-        m_pSizeEditorLabel->setText(UIWizardNewVD::tr("Disk size:"));
+        m_pSizeEditorLabel->setText(UIWizardNewVD::tr("D&isk size:"));
 }
 
 UIWizardNewVDPageBasic3::UIWizardNewVDPageBasic3(const QString &strDefaultName, const QString &strDefaultPath, qulonglong uDefaultSize)
