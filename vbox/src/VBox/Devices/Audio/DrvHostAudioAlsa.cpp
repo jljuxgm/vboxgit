@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioAlsa.cpp 88448 2021-04-09 19:52:39Z vboxsync $ */
+/* $Id: DrvHostAudioAlsa.cpp 88449 2021-04-09 19:53:05Z vboxsync $ */
 /** @file
  * Host audio driver - Advanced Linux Sound Architecture (ALSA).
  */
@@ -1453,7 +1453,7 @@ const PDMDRVREG g_DrvHostALSAAudio =
     /* pszDescription */
     "ALSA host audio driver",
     /* fFlags */
-     PDM_DRVREG_FLAGS_HOST_BITS_DEFAULT,
+    PDM_DRVREG_FLAGS_HOST_BITS_DEFAULT,
     /* fClass. */
     PDM_DRVREG_CLASS_AUDIO,
     /* cMaxInstances */
