@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGlobal.h 89237 2021-05-24 13:53:07Z vboxsync $ */
+/* $Id: UIChooserItemGlobal.h 89249 2021-05-24 16:54:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGlobal class declaration.
  */
@@ -218,10 +218,12 @@ private:
 
     /** @name Item stuff.
       * @{ */
-        /** Holds item start default lightness. */
-        int  m_iDefaultLightnessStart;
-        /** Holds item final default lightness. */
-        int  m_iDefaultLightnessFinal;
+#ifdef VBOX_WS_MAC
+        /** Holds item start default darkness. */
+        int  m_iDefaultDarknessStart;
+        /** Holds item final default darkness. */
+        int  m_iDefaultDarknessFinal;
+#endif
         /** Holds item start hover lightness. */
         int  m_iHoverLightnessStart;
         /** Holds item final hover lightness. */

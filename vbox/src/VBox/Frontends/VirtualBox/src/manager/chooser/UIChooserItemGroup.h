@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGroup.h 89237 2021-05-24 13:53:07Z vboxsync $ */
+/* $Id: UIChooserItemGroup.h 89249 2021-05-24 16:54:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGroup class declaration.
  */
@@ -254,9 +254,6 @@ private:
         /** Returns abstractly stored data value for certain @a iKey. */
         QVariant data(int iKey) const;
 
-        /** Returns item's header darkness. */
-        int headerDarkness() const { return m_iHeaderDarkness; }
-
         /** Returns additional height. */
         int additionalHeight() const;
         /** Defines @a iAdditionalHeight. */
@@ -327,11 +324,13 @@ private:
         int  m_iRootBackgroundDarknessStart;
         /** Holds root final background darkness. */
         int  m_iRootBackgroundDarknessFinal;
+        /** Holds item start background darkness. */
+        int  m_iItemBackgroundDarknessStart;
+        /** Holds item final background darkness. */
+        int  m_iItemBackgroundDarknessFinal;
 
         /** Holds aditional height. */
         int  m_iAdditionalHeight;
-        /** Holds the header darkness. */
-        int  m_iHeaderDarkness;
 
         /** Holds group children pixmap. */
         QPixmap  m_groupsPixmap;
