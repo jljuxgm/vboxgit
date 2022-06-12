@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 84798 2020-06-11 15:17:48Z vboxsync $
+# $Id: vbox.py 84925 2020-06-24 09:49:34Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84798 $"
+__version__ = "$Revision: 84925 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -2601,6 +2601,12 @@ class TestDriver(base.TestDriver):                                              
             return oTestVm.pathJoin(TestDriver.getGuestWinDir(oTestVm), 'System32');
         if oTestVm.isOS2():
             return 'C:\\OS2\\DLL';
+
+        # OL / RHEL symlinks "/bin"/ to "/usr/bin". To avoid (unexpectedly) following symlinks, use "/usr/bin" then instead.
+        if  not sPathPrefix \
+        and oTestVm.sKind in ('Oracle_64', 'Oracle'): ## @todo Does this apply for "RedHat" as well?
+            return "/usr/bin";
+
         return sPathPrefix + "/bin";
 
     @staticmethod
@@ -2617,6 +2623,12 @@ class TestDriver(base.TestDriver):                                              
             return oTestVm.pathJoin(TestDriver.getGuestWinDir(oTestVm), 'System32');
         if oTestVm.isOS2():
             return 'C:\\OS2\\DLL'; ## @todo r=andy Not sure here.
+
+        # OL / RHEL symlinks "/sbin"/ to "/usr/sbin". To avoid (unexpectedly) following symlinks, use "/usr/sbin" then instead.
+        if  not sPathPrefix \
+        and oTestVm.sKind in ('Oracle_64', 'Oracle'): ## @todo Does this apply for "RedHat" as well?
+            return "/usr/sbin";
+
         return sPathPrefix + "/sbin";
 
     @staticmethod
