@@ -1,5 +1,5 @@
 # !kmk_ash
-# $Id: gen-slickedit-workspace.sh 84937 2020-06-25 09:37:15Z vboxsync $
+# $Id: gen-slickedit-workspace.sh 84987 2020-06-29 10:15:05Z vboxsync $
 ## @file
 # Script for generating a SlickEdit workspace.
 #
@@ -63,10 +63,6 @@ MY_DBG=""
 MY_WINDOWS_HOST=""
 MY_OPT_MINIMAL=""
 MY_OPT_USE_WILDCARDS="yes"
-
-#MY_KBUILD_PATH="${KBUILD_PATH}"
-#test -z "${MY_KBUILD_PATH}" && MY_KBUILD_PATH="${PATH_KBUILD}"
-#MY_KBUILD=""
 
 
 ##
