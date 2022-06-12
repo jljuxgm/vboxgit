@@ -1,4 +1,4 @@
-/* $Id: IoPerf.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: IoPerf.cpp 86518 2020-10-11 16:59:25Z vboxsync $ */
 /** @file
  * IoPerf - Storage I/O Performance Benchmark.
  */
@@ -392,11 +392,11 @@ static RTIOQUEUEOP ioPerfJobTestGetIoQOp(PIOPERFJOB pJob)
     {
         case IOPERFTEST_FIRST_WRITE:
         case IOPERFTEST_SEQ_WRITE:
-        case IOPERFTEST_SEQ_READ:
         case IOPERFTEST_REV_WRITE:
         case IOPERFTEST_RND_WRITE:
             return RTIOQUEUEOP_WRITE;
 
+        case IOPERFTEST_SEQ_READ:
         case IOPERFTEST_RND_READ:
         case IOPERFTEST_REV_READ:
             return RTIOQUEUEOP_READ;
@@ -1337,7 +1337,7 @@ int main(int argc, char *argv[])
 
             case 'V':
             {
-                char szRev[] = "$Revision: 82968 $";
+                char szRev[] = "$Revision: 86518 $";
                 szRev[RT_ELEMENTS(szRev) - 2] = '\0';
                 RTPrintf(RTStrStrip(strchr(szRev, ':') + 1));
                 return RTEXITCODE_SUCCESS;
