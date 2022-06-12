@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.h 85396 2020-07-21 09:43:03Z vboxsync $ */
+/* $Id: UIActionPoolManager.h 85426 2020-07-23 10:52:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class declaration.
  */
@@ -82,7 +82,6 @@ enum UIActionIndexST
     UIActionIndexST_M_Group_M_Tools_T_Details,
     UIActionIndexST_M_Group_M_Tools_T_Snapshots,
     UIActionIndexST_M_Group_M_Tools_T_Logs,
-    UIActionIndexST_M_Group_M_Tools_T_PerformanceMonitor,
     UIActionIndexST_M_Group_S_Discard,
     UIActionIndexST_M_Group_S_ShowLogDialog,
     UIActionIndexST_M_Group_S_Refresh,
@@ -122,6 +121,7 @@ enum UIActionIndexST
     UIActionIndexST_M_Machine_M_Tools_T_Details,
     UIActionIndexST_M_Machine_M_Tools_T_Snapshots,
     UIActionIndexST_M_Machine_M_Tools_T_Logs,
+    UIActionIndexST_M_Machine_M_Tools_T_PerformanceMonitor,
     UIActionIndexST_M_Machine_S_Discard,
     UIActionIndexST_M_Machine_S_ShowLogDialog,
     UIActionIndexST_M_Machine_S_Refresh,
@@ -281,6 +281,10 @@ protected:
 
     /** Updates 'Snapshot' menu. */
     void updateMenuSnapshot();
+
+    /** Updates 'Performance' menu. */
+    void updateMenuPerformanceMonitor();
+
 
     /** Updates shortcuts. */
     virtual void updateShortcuts() /* override */;
