@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 86512 2020-10-10 11:20:58Z vboxsync $ */
+/* $Id: SUPDrv.cpp 87534 2021-02-02 12:56:28Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -4626,9 +4626,6 @@ SUPR0DECL(int) SUPR0GetHwvirtMsrs(PSUPHWVIRTMSRS pMsrs, uint32_t fCaps, bool fFo
     /*
      * Query the MSRs from the hardware.
      */
-    /** @todo Cache MSR values so future accesses can avoid querying the hardware as
-     *        it may be expensive (esp. in nested virtualization scenarios). Do this
-     *        with proper locking and race safety. */
     SUPHWVIRTMSRS Msrs;
     RT_ZERO(Msrs);
 
