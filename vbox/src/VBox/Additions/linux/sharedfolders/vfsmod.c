@@ -1,4 +1,4 @@
-/* $Id: vfsmod.c 85065 2020-07-06 11:12:22Z vboxsync $ */
+/* $Id: vfsmod.c 85432 2020-07-23 11:59:16Z vboxsync $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, module init/term, super block management.
  */
@@ -52,7 +52,7 @@
 #endif
 #include <linux/seq_file.h>
 #include <linux/vfs.h>
-#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 5, 62)
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 5, 62) && LINUX_VERSION_CODE < KERNEL_VERSION(5, 8, 0)
 # include <linux/vermagic.h>
 #endif
 #include <VBox/err.h>
