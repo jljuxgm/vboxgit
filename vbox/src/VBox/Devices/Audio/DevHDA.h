@@ -1,4 +1,4 @@
-/* $Id: DevHDA.h 87436 2021-01-26 16:59:29Z vboxsync $ */
+/* $Id: DevHDA.h 87567 2021-02-03 14:25:29Z vboxsync $ */
 /** @file
  * DevHDA.h - VBox Intel HD Audio Controller.
  */
@@ -32,7 +32,11 @@
 #include "HDAStreamMap.h"
 #include "HDAStreamPeriod.h"
 
-
+#ifdef DEBUG_andy
+/** Enables strict mode, which checks for stuff which isn't supposed to happen.
+ *  Be prepared for assertions coming in! */
+# define HDA_STRICT
+#endif
 
 /**
  * HDA mixer sink definition (ring-3).
