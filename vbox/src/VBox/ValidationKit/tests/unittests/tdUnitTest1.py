@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 84374 2020-05-19 16:49:56Z vboxsync $
+# $Id: tdUnitTest1.py 86615 2020-10-16 17:35:06Z vboxsync $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84374 $"
+__version__ = "$Revision: 86615 $"
 
 
 # Standard Python imports.
@@ -94,6 +94,7 @@ class tdUnitTest1(vbox.TestDriver):
             'testcase/tstRTTemp': '',                   # ??
             'testcase/tstRTTime': '',                   # ??
             'testcase/tstTime-2': '',                   # Total time differs too much! ... delta=-10859859
+            'testcase/tstTime-4': '',                   # Needs to be converted to DLL; ditto for tstTime-2.
             'testcase/tstUtf8': '',                     # ??
             'testcase/tstVMMR0CallHost-2': '',          # STATUS_STACK_OVERFLOW
             'testcase/tstX86-1': '',                    # Fails on win.x86.
@@ -262,7 +263,9 @@ class tdUnitTest1(vbox.TestDriver):
         'testcase/tstMMHyperHeap',
         'testcase/tstPage',
         'testcase/tstPin',
-        'testcase/tstRTTime', 'testcase/tstTime', # GIP test case.
+        'testcase/tstRTTime',   'testcase/tstTime',   # GIP test case.
+        'testcase/tstRTTime-2', 'testcase/tstTime-2', # GIP test case.
+        'testcase/tstRTTime-4', 'testcase/tstTime-4', # GIP test case.
         'testcase/tstSSM',
         'testcase/tstSupSem-Zombie',
     ]
