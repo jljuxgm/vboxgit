@@ -1,4 +1,4 @@
-/* $Id: sysfs.cpp 84681 2020-06-04 15:29:43Z vboxsync $ */
+/* $Id: sysfs.cpp 86579 2020-10-14 20:53:56Z vboxsync $ */
 /** @file
  * IPRT - Linux sysfs access.
  */
@@ -124,6 +124,22 @@ DECLINLINE(int) rtLinuxConstructPath(char *pszBuf, size_t cchBuf,
 DECLINLINE(int) rtLinuxSysFsConstructPath(char *pszBuf, size_t cchBuf, const char *pszFormat, va_list va)
 {
     return rtLinuxConstructPathV(pszBuf, cchBuf, "/sys/", pszFormat, va);
+}
+
+
+RTDECL(int) RTLinuxConstructPathV(char *pszPath, size_t cbPath, const char *pszFormat, va_list va)
+{
+    return rtLinuxSysFsConstructPath(pszPath, cbPath, pszFormat, va);
+}
+
+
+RTDECL(int) RTLinuxConstructPath(char *pszPath, size_t cbPath, const char *pszFormat, ...)
+{
+    va_list va;
+    va_start(va, pszFormat);
+    int rc = rtLinuxSysFsConstructPath(pszPath, cbPath, pszFormat, va);
+    va_end(va);
+    return rc;
 }
 
 
