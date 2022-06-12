@@ -1,4 +1,4 @@
-/* $Id: UICloudProfileDetailsWidget.cpp 83950 2020-04-23 14:40:55Z vboxsync $ */
+/* $Id: UICloudProfileDetailsWidget.cpp 85387 2020-07-20 10:39:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudProfileDetailsWidget class implementation.
  */
@@ -35,10 +35,12 @@
 UICloudProfileDetailsWidget::UICloudProfileDetailsWidget(EmbedTo enmEmbedding, QWidget *pParent /* = 0 */)
     : QIWithRetranslateUI<QWidget>(pParent)
     , m_enmEmbedding(enmEmbedding)
+    , m_pLabelName(0)
+    , m_pEditorName(0)
+    , m_pLabelTableWidget(0)
     , m_pTableWidget(0)
     , m_pButtonBox(0)
 {
-    /* Prepare: */
     prepare();
 }
 
