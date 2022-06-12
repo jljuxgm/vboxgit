@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 85063 2020-07-06 10:19:00Z vboxsync $ */
+/* $Id: UIWizardNewVM.cpp 85064 2020-07-06 10:42:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
@@ -20,7 +20,7 @@
 #include "UIWizardNewVM.h"
 #include "UIWizardNewVMPageBasic1.h"
 #include "UIWizardNewVMPageBasic2.h"
-#include "UIWizardNewVMPageBasicDisk.h"
+#include "UIWizardNewVMPageBasic3.h"
 #include "UIWizardNewVMPageExpert.h"
 #include "UIMessageCenter.h"
 #include "UIMedium.h"
@@ -75,7 +75,7 @@ void UIWizardNewVM::prepare()
         {
             setPage(Page1, new UIWizardNewVMPageBasic1(m_strGroup));
             setPage(Page2, new UIWizardNewVMPageBasic2);
-            setPage(PageDisk, new UIWizardNewVMPageBasicDisk);
+            setPage(Page3, new UIWizardNewVMPageBasic3);
             setStartId(Page1);
             break;
         }
