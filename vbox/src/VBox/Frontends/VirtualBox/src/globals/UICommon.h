@@ -1,10 +1,10 @@
-/* $Id: UICommon.h 88678 2021-04-23 13:33:28Z vboxsync $ */
+/* $Id: UICommon.h 89298 2021-05-26 15:32:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class declaration.
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2021 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -314,6 +314,11 @@ public:
         static QString languageId();
         /** Returns the system language ID. */
         static QString systemLanguageId();
+
+#ifdef VBOX_WS_WIN
+        /** Loads the color theme. */
+        static void loadColorTheme();
+#endif
 
         /** Loads the language by language ID.
           * @param  strLangId  Brings the language ID in in form of xx_YY.
