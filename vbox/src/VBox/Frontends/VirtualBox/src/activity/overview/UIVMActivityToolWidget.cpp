@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityToolWidget.cpp 89079 2021-05-17 09:03:37Z vboxsync $ */
+/* $Id: UIVMActivityToolWidget.cpp 89080 2021-05-17 09:08:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMActivityToolWidget class implementation.
  */
@@ -26,7 +26,6 @@
 #include <QPushButton>
 #include <QTableView>
 #include <QTimer>
-#include <QUuid>
 #include <QVBoxLayout>
 #include <QSortFilterProxyModel>
 

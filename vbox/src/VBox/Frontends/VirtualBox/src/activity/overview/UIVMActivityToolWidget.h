@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityToolWidget.h 89037 2021-05-14 08:20:03Z vboxsync $ */
+/* $Id: UIVMActivityToolWidget.h 89080 2021-05-17 09:08:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMActivityToolWidget class declaration.
  */
@@ -23,6 +23,7 @@
 
 /* Qt includes: */
 #include <QTabWidget>
+#include <QUuid>
 
 /* GUI includes: */
 #include "QIManagerDialog.h"
