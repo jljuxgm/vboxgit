@@ -1,4 +1,4 @@
-# $Id: Config.kmk 86433 2020-10-02 21:16:35Z vboxsync $
+# $Id: Config.kmk 86444 2020-10-04 12:23:48Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1975,10 +1975,27 @@ ifndef VBOX_BLD_PYTHON
  if1of ($(KBUILD_HOST), win)
   VBOX_BLD_PYTHON := $(firstword $(rsort $(wildcard $(KBUILD_DEVTOOLS)/win.x86/python/v*/python$(HOSTSUFF_EXE))) \
   				   python-not-found.exe)
+ else ifndef VBOX_WITH_PYTHON2_PREFERENCE
+  VBOX_BLD_PYTHON := $(firstword \
+	$(which python3$(HOSTSUFF_EXE)) \
+	$(which python3.10$(HOSTSUFF_EXE)) \
+	$(which python3.9$(HOSTSUFF_EXE)) \
+	$(which python3.8$(HOSTSUFF_EXE)) \
+	$(which python3.7$(HOSTSUFF_EXE)) \
+	$(which python3.6$(HOSTSUFF_EXE)) \
+	$(which python3.5$(HOSTSUFF_EXE)) \
+	$(which python3.4$(HOSTSUFF_EXE)) \
+	$(which python2.7$(HOSTSUFF_EXE)) \
+	$(which python$(HOSTSUFF_EXE)) \
+	$(which python2.6$(HOSTSUFF_EXE)) \
+	python-not-found$(HOSTSUFF_EXE) )
  else
-  VBOX_BLD_PYTHON := $(firstword $(which python2.7$(HOSTSUFF_EXE)) $(which python2.6$(HOSTSUFF_EXE)) \
-                                 $(which python$(HOSTSUFF_EXE)) $(which python3$(HOSTSUFF_EXE)) \
-				   python-not-found)
+  VBOX_BLD_PYTHON := $(firstword \
+	$(which python2.7$(HOSTSUFF_EXE)) \
+	$(which python2.6$(HOSTSUFF_EXE)) \
+	$(which python$(HOSTSUFF_EXE)) \
+	$(which python3$(HOSTSUFF_EXE)) \
+	python-not-found$(HOSTSUFF_EXE) )
  endif
 endif
 ## For running python unittests in the validation kit.
@@ -8121,7 +8138,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 86433 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 86444 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
