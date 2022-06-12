@@ -1,4 +1,4 @@
-# $Id: Config.kmk 88302 2021-03-26 17:58:21Z vboxsync $
+# $Id: Config.kmk 88303 2021-03-26 18:27:19Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -386,8 +386,9 @@ VBOX_WITH_DOCS = 1
 # Include documentation in the package
 VBOX_WITH_DOCS_PACKING = 1
 # Include CHM when building docs (unset in LocalConfig.kmk to suppress CHM)
+## @todo CHM docs are on the way out...
 if1of ($(KBUILD_TARGET), win)
- VBOX_WITH_DOCS_CHM = 1
+ VBOX_WITH_DOCS_CHM =
 endif
 # By default only include translations in documentation-only builds
 ifdef VBOX_ONLY_DOCS
@@ -721,7 +722,8 @@ VBOX_WITH_MULTIVERSION_PYTHON ?= 1
 # Only build the limited Python extension API version for 3.3 and later.
 VBOX_WITH_ONLY_PYTHON_LIMITED_API = 1
 # Enable the kchmviewer.
-VBOX_WITH_KCHMVIEWER = 1
+## @todo CHM docs are on the way out...
+VBOX_WITH_KCHMVIEWER =
 # Build the Validation Kit.
 VBOX_WITH_VALIDATIONKIT = 1
 # Build the testcases.
@@ -8207,7 +8209,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 88302 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 88303 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
