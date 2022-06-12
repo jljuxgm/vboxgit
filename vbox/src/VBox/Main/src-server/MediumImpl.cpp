@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 86047 2020-09-07 15:37:43Z vboxsync $ */
+/* $Id: MediumImpl.cpp 86052 2020-09-07 17:40:09Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1511,7 +1511,7 @@ void Medium::uninit()
     Assert(!pVirtualBox->i_getMediaTreeLockHandle().isWriteLockOnCurrentThread());
 
     AutoWriteLock treeLock(pVirtualBox->i_getMediaTreeLockHandle() COMMA_LOCKVAL_SRC_POS);
-#if DEBUG
+#ifdef DEBUG
     if (!m->backRefs.empty())
         i_dumpBackRefs();
 #endif
