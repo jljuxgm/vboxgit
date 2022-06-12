@@ -1,4 +1,4 @@
-/* $Id: AudioTestService.h 89226 2021-05-21 15:02:10Z vboxsync $ */
+/* $Id: AudioTestService.h 89273 2021-05-25 14:12:33Z vboxsync $ */
 /** @file
  * AudioTestService - Audio test execution server, Public Header.
  */
@@ -25,7 +25,7 @@
 
 
 /**
- * Structure for keeping an Audio Test Server (ATS) callback table.
+ * Structure for keeping an Audio Test Service (ATS) callback table.
  */
 typedef struct ATSCALLBACKS
 {
@@ -45,7 +45,7 @@ typedef struct ATSCALLBACKS
 typedef const struct ATSCALLBACKS *PCATSCALLBACKS;
 
 /**
- * Structure for keeping an Audio Test Server (ATS) instance.
+ * Structure for keeping an Audio Test Service (ATS) instance.
  */
 typedef struct ATSSERVER
 {
@@ -72,7 +72,7 @@ typedef struct ATSSERVER
     /** List of new clients waiting to be picked up by the client worker thread. */
     RTLISTANCHOR         LstClientsNew;
 } ATSSERVER;
-/** Pointer to an Audio Test Server (ATS) instance. */
+/** Pointer to an Audio Test Service (ATS) instance. */
 typedef ATSSERVER *PATSSERVER;
 
 
