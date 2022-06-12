@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioNull.cpp 88380 2021-04-07 08:04:04Z vboxsync $ */
+/* $Id: DrvHostAudioNull.cpp 88381 2021-04-07 08:43:55Z vboxsync $ */
 /** @file
  * Host audio driver - NULL.
  *
@@ -97,27 +97,6 @@ static DECLCALLBACK(int) drvHostNullAudioHA_GetConfig(PPDMIHOSTAUDIO pInterface,
     pBackendCfg->cMaxStreamsIn  = 2; /* Line input + microphone input. */
 
     return VINF_SUCCESS;
-}
-
-
-/**
- * @interface_method_impl{PDMIHOSTAUDIO,pfnInit}
- */
-static DECLCALLBACK(int) drvHostNullAudioHA_Init(PPDMIHOSTAUDIO pInterface)
-{
-    NOREF(pInterface);
-
-    LogFlowFuncLeaveRC(VINF_SUCCESS);
-    return VINF_SUCCESS;
-}
-
-
-/**
- * @interface_method_impl{PDMIHOSTAUDIO,pfnShutdown}
- */
-static DECLCALLBACK(void) drvHostNullAudioHA_Shutdown(PPDMIHOSTAUDIO pInterface)
-{
-    RT_NOREF(pInterface);
 }
 
 
@@ -336,8 +315,8 @@ static DECLCALLBACK(int) drvHostNullAudioConstruct(PPDMDRVINS pDrvIns, PCFGMNODE
     /* IBase */
     pDrvIns->IBase.pfnQueryInterface = drvHostNullAudioQueryInterface;
     /* IHostAudio */
-    pThis->IHostAudio.pfnInit               = drvHostNullAudioHA_Init;
-    pThis->IHostAudio.pfnShutdown           = drvHostNullAudioHA_Shutdown;
+    pThis->IHostAudio.pfnInit               = NULL;
+    pThis->IHostAudio.pfnShutdown           = NULL;
     pThis->IHostAudio.pfnGetConfig          = drvHostNullAudioHA_GetConfig;
     pThis->IHostAudio.pfnGetStatus          = drvHostNullAudioHA_GetStatus;
     pThis->IHostAudio.pfnStreamCreate       = drvHostNullAudioHA_StreamCreate;

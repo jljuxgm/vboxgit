@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioValidationKit.cpp 88380 2021-04-07 08:04:04Z vboxsync $ */
+/* $Id: DrvHostAudioValidationKit.cpp 88381 2021-04-07 08:43:55Z vboxsync $ */
 /** @file
  * Host audio driver - ValidationKit - For dumping and injecting audio data from/to the device emulation.
  */
@@ -91,27 +91,6 @@ static DECLCALLBACK(int) drvHostValKitAudioHA_GetConfig(PPDMIHOSTAUDIO pInterfac
     pBackendCfg->cMaxStreamsIn  = 0; /* No input supported yet. */
 
     return VINF_SUCCESS;
-}
-
-
-/**
- * @interface_method_impl{PDMIHOSTAUDIO,pfnInit}
- */
-static DECLCALLBACK(int) drvHostValKitAudioHA_Init(PPDMIHOSTAUDIO pInterface)
-{
-    RT_NOREF(pInterface);
-
-    LogFlowFuncLeaveRC(VINF_SUCCESS);
-    return VINF_SUCCESS;
-}
-
-
-/**
- * @interface_method_impl{PDMIHOSTAUDIO,pfnShutdown}
- */
-static DECLCALLBACK(void) drvHostValKitAudioHA_Shutdown(PPDMIHOSTAUDIO pInterface)
-{
-    RT_NOREF(pInterface);
 }
 
 
@@ -404,8 +383,8 @@ static DECLCALLBACK(int) drvHostValKitAudioConstruct(PPDMDRVINS pDrvIns, PCFGMNO
     /* IBase */
     pDrvIns->IBase.pfnQueryInterface = drvHostValKitAudioQueryInterface;
     /* IHostAudio */
-    pThis->IHostAudio.pfnInit               = drvHostValKitAudioHA_Init;
-    pThis->IHostAudio.pfnShutdown           = drvHostValKitAudioHA_Shutdown;
+    pThis->IHostAudio.pfnInit               = NULL;
+    pThis->IHostAudio.pfnShutdown           = NULL;
     pThis->IHostAudio.pfnGetConfig          = drvHostValKitAudioHA_GetConfig;
     pThis->IHostAudio.pfnGetStatus          = drvHostValKitAudioHA_GetStatus;
     pThis->IHostAudio.pfnStreamCreate       = drvHostValKitAudioHA_StreamCreate;

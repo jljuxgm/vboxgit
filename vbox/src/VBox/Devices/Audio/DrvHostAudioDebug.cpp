@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioDebug.cpp 88380 2021-04-07 08:04:04Z vboxsync $ */
+/* $Id: DrvHostAudioDebug.cpp 88381 2021-04-07 08:43:55Z vboxsync $ */
 /** @file
  * Host audio driver - Debug - For dumping and injecting audio data from/to the device emulation.
  */
@@ -85,27 +85,6 @@ static DECLCALLBACK(int) drvHostDebugAudioHA_GetConfig(PPDMIHOSTAUDIO pInterface
     pBackendCfg->cMaxStreamsIn  = 1; /* Input; generates a sine wave. */
 
     return VINF_SUCCESS;
-}
-
-
-/**
- * @interface_method_impl{PDMIHOSTAUDIO,pfnInit}
- */
-static DECLCALLBACK(int) drvHostDebugAudioHA_Init(PPDMIHOSTAUDIO pInterface)
-{
-    RT_NOREF(pInterface);
-
-    LogFlowFuncLeaveRC(VINF_SUCCESS);
-    return VINF_SUCCESS;
-}
-
-
-/**
- * @interface_method_impl{PDMIHOSTAUDIO,pfnShutdown}
- */
-static DECLCALLBACK(void) drvHostDebugAudioHA_Shutdown(PPDMIHOSTAUDIO pInterface)
-{
-    RT_NOREF(pInterface);
 }
 
 
@@ -398,8 +377,8 @@ static DECLCALLBACK(int) drvHostDebugAudioConstruct(PPDMDRVINS pDrvIns, PCFGMNOD
     /* IBase */
     pDrvIns->IBase.pfnQueryInterface = drvHostDebugAudioQueryInterface;
     /* IHostAudio */
-    pThis->IHostAudio.pfnInit               = drvHostDebugAudioHA_Init;
-    pThis->IHostAudio.pfnShutdown           = drvHostDebugAudioHA_Shutdown;
+    pThis->IHostAudio.pfnInit               = NULL;
+    pThis->IHostAudio.pfnShutdown           = NULL;
     pThis->IHostAudio.pfnGetConfig          = drvHostDebugAudioHA_GetConfig;
     pThis->IHostAudio.pfnGetStatus          = drvHostDebugAudioHA_GetStatus;
     pThis->IHostAudio.pfnStreamCreate       = drvHostDebugAudioHA_StreamCreate;
