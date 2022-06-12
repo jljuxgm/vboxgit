@@ -1,4 +1,4 @@
-/* $Id: DevIommuIntel.h 88484 2021-04-13 05:50:44Z vboxsync $ */
+/* $Id: DevIommuIntel.h 89589 2021-06-10 08:41:38Z vboxsync $ */
 /** @file
  * DevIommuIntel - I/O Memory Management Unit (Intel), header shared with the IOMMU, ACPI, chipset/firmware code.
  */
@@ -20,8 +20,6 @@
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
-
-#include <VBox/iommu-intel.h>
 
 /** Intel vendor ID for the DMAR unit. */
 #define DMAR_PCI_VENDOR_ID                          0x8086
