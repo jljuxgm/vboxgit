@@ -1,4 +1,4 @@
-; $Id: VBoxInstallHelper.def 82968 2020-02-04 10:35:17Z vboxsync $
+; $Id: VBoxInstallHelper.def 86782 2020-11-02 16:31:41Z vboxsync $
 ;; @file
 ; VBoxInstallHelper - Defines the exports the MSI engine uses.
 ;
@@ -19,6 +19,8 @@ LIBRARY "VBoxInstallHelper"
 EXPORTS
     IsSerialCheckNeeded
     CheckSerial
+    IsPythonInstalled
+    ArePythonAPIDepsInstalled
     InstallPythonAPI
     InstallBranding
     UninstallBranding
@@ -34,4 +36,3 @@ EXPORTS
     RemoveHostOnlyInterfaces
     Ndis6CreateHostOnlyInterface
     Ndis6UpdateHostOnlyInterfaces
-
