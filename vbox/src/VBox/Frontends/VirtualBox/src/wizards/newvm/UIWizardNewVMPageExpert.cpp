@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.cpp 87912 2021-03-02 12:46:18Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.cpp 87914 2021-03-02 14:13:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class implementation.
  */
@@ -149,8 +149,6 @@ void UIWizardNewVMPageExpert::sltVirtualDiskSourceChanged()
 
 void UIWizardNewVMPageExpert::sltGetWithFileOpenDialog()
 {
-    /* Call to base-class: */
-    getWithFileOpenDialog();
 }
 
 void UIWizardNewVMPageExpert::sltISOPathChanged(const QString &strPath)
@@ -336,8 +334,6 @@ void UIWizardNewVMPageExpert::initializePage()
 
 void UIWizardNewVMPageExpert::cleanupPage()
 {
-    /* Call to base-class: */
-    ensureNewVirtualDiskDeleted();
     cleanupMachineFolder();
 }
 
@@ -461,8 +457,6 @@ bool UIWizardNewVMPageExpert::validatePage()
         {
             if (m_pDiskNew->isChecked())
             {
-                /* Show the New Virtual Hard Drive wizard if necessary: */
-                fResult = getWithNewVirtualDiskWizard();
             }
         }
     }

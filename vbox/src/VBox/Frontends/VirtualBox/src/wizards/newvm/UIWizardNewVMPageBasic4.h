@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic4.h 87913 2021-03-02 13:25:35Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic4.h 87914 2021-03-02 14:13:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic4 class declaration.
  */
@@ -58,18 +58,15 @@ protected:
 
     SelectedDiskSource selectedDiskSource() const;
     void setSelectedDiskSource(SelectedDiskSource enmSelectedDiskSource);
-
-    void getWithFileOpenDialog();
     bool getWithNewVirtualDiskWizard();
-
 
     QWidget *createDiskWidgets();
     virtual QWidget *createDiskVariantAndSizeWidgets();
-
-    void ensureNewVirtualDiskDeleted();
+    void getWithFileOpenDialog();
     void retranslateWidgets();
 
     void setEnableDiskSelectionWidgets(bool fEnable);
+    void setVirtualDiskFromDiskCombo();
     bool m_fRecommendedNoDisk;
 
     /** @name Variables
