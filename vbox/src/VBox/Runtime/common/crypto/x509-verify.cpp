@@ -1,6 +1,6 @@
-/* $Id: x509-verify.cpp 84310 2020-05-14 17:40:35Z vboxsync $ */
+/* $Id: x509-verify.cpp 85627 2020-08-06 00:43:00Z vboxsync $ */
 /** @file
- * IPRT - Crypto - X.509, Signature verficiation.
+ * IPRT - Crypto - X.509, Signature verification.
  */
 
 /*
