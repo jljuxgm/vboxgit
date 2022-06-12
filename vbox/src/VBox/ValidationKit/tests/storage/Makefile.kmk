@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: Makefile.kmk 87672 2021-02-10 09:57:14Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - Storage Tests.
 #
@@ -35,6 +35,7 @@ ValidationKitTestsStorage_EXEC_SOURCES := \
 	$(PATH_SUB_CURRENT)/tdStorageBenchmark1.py \
 	$(PATH_SUB_CURRENT)/tdStorageSnapshotMerging1.py \
 	$(PATH_SUB_CURRENT)/tdStorageStress1.py \
+	$(PATH_SUB_CURRENT)/tdStorageRawDrive1.py \
 	$(PATH_SUB_CURRENT)/remoteexecutor.py \
 	$(PATH_SUB_CURRENT)/storagecfg.py
 
