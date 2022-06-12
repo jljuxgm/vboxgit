@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserDialog.h 86337 2020-09-29 11:56:22Z vboxsync $ */
+/* $Id: UIHelpBrowserDialog.h 86340 2020-09-30 09:43:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserDialog class declaration.
  */
@@ -44,7 +44,7 @@ class SHARED_LIBRARY_STUFF UIHelpBrowserDialogFactory : public QIManagerDialogFa
 {
 public:
 
-    UIHelpBrowserDialogFactory();
+    UIHelpBrowserDialogFactory(const QString &strHelpFilePath = QString());
 
 protected:
 
@@ -52,6 +52,9 @@ protected:
       * @param  pCenterWidget  Brings the widget to center wrt. pCenterWidget. */
     virtual void create(QIManagerDialog *&pDialog, QWidget *pCenterWidget) /* override */;
 
+private:
+
+    QString m_strHelpFilePath;
 };
 
 
@@ -62,7 +65,7 @@ class SHARED_LIBRARY_STUFF UIHelpBrowserDialog : public QIWithRetranslateUI<QIMa
 
 public:
 
-    UIHelpBrowserDialog(QWidget *pCenterWidget);
+    UIHelpBrowserDialog(QWidget *pCenterWidget, const QString &strHelpFilePath);
 
 protected:
 
@@ -100,6 +103,7 @@ private slots:
 
 private:
 
+    QString m_strHelpFilePath;
 };
 
 
