@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 85286 2020-07-12 23:08:50Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 85287 2020-07-12 23:44:17Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -3322,7 +3322,6 @@ BOOL VirtualBox::i_onExtraDataCanChange(const Guid &aId, IN_BSTR aKey, IN_BSTR a
     ComPtr<IEvent> ptrEvent;
     HRESULT hrc = CreateExtraDataCanChangeEvent(ptrEvent.asOutParam(), m->pEventSource, aId.toUtf16().raw(), aKey, aValue);
     AssertComRCReturn(hrc, TRUE);
-    i_postEvent(new AsyncEvent(this, ptrEvent));
 
     VBoxEventDesc EvtDesc(ptrEvent, m->pEventSource);
     BOOL fDelivered = EvtDesc.fire(3000); /* Wait up to 3 secs for delivery */
