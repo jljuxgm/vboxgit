@@ -1,4 +1,4 @@
-/* $Id: TestExecService.cpp 84794 2020-06-11 13:34:08Z vboxsync $ */
+/* $Id: TestExecService.cpp 84855 2020-06-16 20:03:06Z vboxsync $ */
 /** @file
  * TestExecServ - Basic Remote Execution Service.
  */
@@ -552,9 +552,8 @@ static int txsReplaceStringVariables(PCTXSPKTHDR pPktHdr, const char *pszSrc, ch
     size_t  cchNew    = strlen(pszSrc);
     char   *pszNew    = RTStrDup(pszSrc);
     char   *pszDollar = pszNew;
-    while ((pszDollar = strchr(pszDollar, '$')) != NULL)
+    while (pszDollar && (pszDollar = strchr(pszDollar, '$')) != NULL)
     {
-        /** @todo employ $$ as escape sequence here. */
         if (pszDollar[1] == '{')
         {
             char *pszEnd = strchr(&pszDollar[2], '}');
@@ -638,6 +637,8 @@ static int txsReplaceStringVariables(PCTXSPKTHDR pPktHdr, const char *pszSrc, ch
             pszDollar[cchLeft] = '\0';
             cchNew -= 1;
         }
+        else /* No match, move to next char to avoid endless looping. */
+            pszDollar++;
     }
 
     *ppszNew = pszNew;
@@ -3701,7 +3702,7 @@ static RTEXITCODE txsParseArgv(int argc, char **argv, bool *pfExit)
                 break;
 
             case 'V':
-                RTPrintf("$Revision: 84794 $\n");
+                RTPrintf("$Revision: 84855 $\n");
                 *pfExit = true;
                 return RTEXITCODE_SUCCESS;
 
