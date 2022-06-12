@@ -1,4 +1,4 @@
-/* $Id: VD.cpp 85975 2020-09-01 11:31:28Z vboxsync $ */
+/* $Id: VD.cpp 86044 2020-09-07 13:48:31Z vboxsync $ */
 /** @file
  * VD - Virtual disk container implementation.
  */
@@ -6276,8 +6276,6 @@ VBOXDDU_DECL(int) VDCreateBase(PVDISK pDisk, const char *pszBackend,
         AssertMsgBreakStmt((uOpenFlags & ~VD_OPEN_FLAGS_MASK) == 0,
                            ("uOpenFlags=%#x\n", uOpenFlags),
                            rc = VERR_INVALID_PARAMETER);
-
-        AssertPtrBreakStmt(pVDIfsImage, rc = VERR_INVALID_PARAMETER);
 
         /* Check state. Needs a temporary read lock. Holding the write lock
          * all the time would be blocking other activities for too long. */
