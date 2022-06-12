@@ -1,4 +1,4 @@
-/* $Id: VBoxX11Helper.cpp 89708 2021-06-15 14:25:25Z vboxsync $ */
+/* $Id: VBoxX11Helper.cpp 89712 2021-06-15 15:09:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBox X11 helper functions.
  */
@@ -174,6 +174,9 @@ QStringList X11ScrenSaverServices()
         if (strServiceName.contains("screensaver", Qt::CaseInsensitive))
             serviceNames << strServiceName;
     }
+    if (serviceNames.isEmpty())
+        LogRel(("No screen saver service found among registered DBus services."));
+
     return serviceNames;
 }
 
