@@ -1,4 +1,4 @@
-/* $Id: UIUserNamePasswordEditor.cpp 85110 2020-07-08 14:23:18Z vboxsync $ */
+/* $Id: UIUserNamePasswordEditor.cpp 85115 2020-07-08 16:52:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class implementation.
  */
@@ -42,17 +42,18 @@ void UIPasswordLineEdit::toggleTextVisibility(bool fTextVisible)
     {
         setEchoMode(QLineEdit::Normal);
         if(m_pTextVisibilityButton)
-            m_pTextVisibilityButton->setIcon(UIIconPool::iconSet(":/eye-off.png"));
+            m_pTextVisibilityButton->setIcon(UIIconPool::iconSet(":/eye_closed_10px.png"));
         return;
     }
     setEchoMode(QLineEdit::Password);
     if(m_pTextVisibilityButton)
-        m_pTextVisibilityButton->setIcon(UIIconPool::iconSet(":/eye-on.png"));
+        m_pTextVisibilityButton->setIcon(UIIconPool::iconSet(":/eye_10px.png"));
 }
 
 void UIPasswordLineEdit::prepare()
 {
     m_pTextVisibilityButton = new QToolButton(this);
+    m_pTextVisibilityButton->setIconSize(QSize(10, 10));
     m_pTextVisibilityButton->setFocusPolicy(Qt::ClickFocus);
     m_pTextVisibilityButton->setAutoRaise(true);
     m_pTextVisibilityButton->setCursor(Qt::ArrowCursor);
