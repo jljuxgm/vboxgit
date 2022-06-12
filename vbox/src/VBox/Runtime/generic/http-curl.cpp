@@ -1,4 +1,4 @@
-/* $Id: http-curl.cpp 85139 2020-07-09 07:49:52Z vboxsync $ */
+/* $Id: http-curl.cpp 85142 2020-07-09 08:39:43Z vboxsync $ */
 /** @file
  * IPRT - HTTP client API, cURL based.
  *
@@ -3560,9 +3560,13 @@ RTR3DECL(int) RTHttpGetProxyInfoForUrl(RTHTTP hHttp, const char *pcszUrl, PRTHTT
         case CURLPROXY_HTTP_1_0:
             pProxy->enmProxyType = RTHTTPPROXYTYPE_HTTP;
             break;
+#ifdef CURL_AT_LEAST_VERSION
+# if CURL_AT_LEAST_VERSION(7,52,0)
         case CURLPROXY_HTTPS:
             pProxy->enmProxyType = RTHTTPPROXYTYPE_HTTPS;
             break;
+# endif
+#endif
         case CURLPROXY_SOCKS4:
         case CURLPROXY_SOCKS4A:
             pProxy->enmProxyType = RTHTTPPROXYTYPE_SOCKS4;
