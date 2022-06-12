@@ -1,4 +1,4 @@
-/* $Id: gvm.h 84458 2020-05-22 12:51:49Z vboxsync $ */
+/* $Id: gvm.h 86699 2020-10-25 10:44:39Z vboxsync $ */
 /** @file
  * GVM - The Global VM Data.
  */
@@ -233,14 +233,14 @@ typedef struct GVM
 #if defined(VMM_INCLUDED_SRC_include_DBGFInternal_h) && defined(IN_RING0)
         struct DBGFR0PERVM   s;
 #endif
-        uint8_t             padding[64];
+        uint8_t             padding[1024];
     } dbgfr0;
 
     /** Padding so aCpus starts on a page boundrary.  */
 #ifdef VBOX_WITH_NEM_R0
-    uint8_t         abPadding2[4096*2 - 64 - 256 - 1024 - 256 - 64 - 2176 - 640 - 512 - 64 - 64 - sizeof(PGVMCPU) * VMM_MAX_CPU_COUNT];
+    uint8_t         abPadding2[4096*2 - 64 - 256 - 1024 - 256 - 64 - 2176 - 640 - 512 - 64 - 1024 - sizeof(PGVMCPU) * VMM_MAX_CPU_COUNT];
 #else
-    uint8_t         abPadding2[4096*2 - 64 - 256 - 1024       - 64 - 2176 - 640 - 512 - 64 - 64 - sizeof(PGVMCPU) * VMM_MAX_CPU_COUNT];
+    uint8_t         abPadding2[4096*2 - 64 - 256 - 1024       - 64 - 2176 - 640 - 512 - 64 - 1024 - sizeof(PGVMCPU) * VMM_MAX_CPU_COUNT];
 #endif
 
     /** For simplifying CPU enumeration in VMMAll code. */
