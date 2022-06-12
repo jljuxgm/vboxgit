@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 88402 2021-04-07 14:48:44Z vboxsync $
+# $Id: Makefile.kmk 89486 2021-06-03 15:51:10Z vboxsync $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -520,6 +520,7 @@ BLDDIRS += $(foreach d,\
 	  archive/plugins/platforms \
 	  archive/plugins/platformthemes \
 	  archive/plugins/sqldrivers \
+	  archive/plugins/styles \
 	  archive/plugins/xcbglintegrations,) \
 	$(if $(VBOX_WITH_PYTHON),\
 	  archive/sdk/installer \
