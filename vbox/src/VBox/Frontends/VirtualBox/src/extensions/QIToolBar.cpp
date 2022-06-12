@@ -1,4 +1,4 @@
-/* $Id: QIToolBar.cpp 88863 2021-05-04 16:21:07Z vboxsync $ */
+/* $Id: QIToolBar.cpp 89248 2021-05-24 16:53:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - QIToolBar class implementation.
  */
@@ -111,10 +111,10 @@ void QIToolBar::paintEvent(QPaintEvent *pEvent)
         const QRect rectangle = pEvent->rect();
 
         /* Prepare gradient: */
-        const QColor backgroundColor = QApplication::palette().color(QPalette::Active, QPalette::Mid);
+        const QColor backgroundColor = QApplication::palette().color(QPalette::Active, QPalette::Window);
         QLinearGradient gradient(rectangle.topLeft(), rectangle.bottomLeft());
-        gradient.setColorAt(0, backgroundColor.lighter(130));
-        gradient.setColorAt(1, backgroundColor.lighter(125));
+        gradient.setColorAt(0, backgroundColor.darker(105));
+        gradient.setColorAt(1, backgroundColor.darker(115));
 
         /* Fill background: */
         QPainter painter(this);
