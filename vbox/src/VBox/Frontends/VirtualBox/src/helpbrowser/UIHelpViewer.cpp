@@ -1,4 +1,4 @@
-/* $Id: UIHelpViewer.cpp 87160 2021-01-04 12:09:20Z vboxsync $ */
+/* $Id: UIHelpViewer.cpp 87175 2021-01-05 10:44:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class implementation.
  */
@@ -42,6 +42,7 @@
 #include "UISearchLineEdit.h"
 
 /* COM includes: */
+#include "COMEnums.h"
 #include "CSystemProperties.h"
 
 #if defined(RT_OS_LINUX) && defined(VBOX_WITH_DOCS_QHELP) && (QT_VERSION >= QT_VERSION_CHECK(5, 9, 0))
