@@ -1,4 +1,4 @@
-/* $Id: QIManagerDialog.h 86687 2020-10-23 13:46:16Z vboxsync $ */
+/* $Id: QIManagerDialog.h 86833 2020-11-09 12:26:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIManagerDialog class declaration.
  */
@@ -125,8 +125,10 @@ protected:
       * @{ */
         /** Defines the @a pWidget instance. */
         void setWidget(QWidget *pWidget) { m_pWidget = pWidget; }
-        /** Defines the @a pWidgetMenu instance. */
-        void setWidgetMenu(QMenu *pWidgetMenu) { m_pWidgetMenu = pWidgetMenu; }
+        /** Defines the reference to widget menu, replacing current one. */
+        void setWidgetMenu(QMenu *pWidgetMenu) { m_widgetMenus = QList<QMenu*>() << pWidgetMenu; }
+        /** Defines the list of references to widget menus, replacing current one. */
+        void setWidgetMenus(QList<QMenu*> widgetMenus) { m_widgetMenus = widgetMenus; }
 #ifdef VBOX_WS_MAC
         /** Defines the @a pWidgetToolbar instance. */
         void setWidgetToolbar(QIToolBar *pWidgetToolbar) { m_pWidgetToolbar = pWidgetToolbar; }
@@ -185,8 +187,9 @@ private:
         /** Holds the widget instance. */
         QWidget *m_pWidget;
 
-        /** Holds the widget menu instance. */
-        QMenu     *m_pWidgetMenu;
+        /** Holds a list of widget menu references. */
+        QList<QMenu*> m_widgetMenus;
+
 #ifdef VBOX_WS_MAC
         /** Holds the widget toolbar instance. */
         QIToolBar *m_pWidgetToolbar;
