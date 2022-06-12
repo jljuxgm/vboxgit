@@ -1,4 +1,4 @@
-/* $Id: vbox.dsl 85349 2020-07-15 12:20:45Z vboxsync $ */
+/* $Id: vbox.dsl 86408 2020-10-02 08:24:37Z vboxsync $ */
 /** @file
  * VirtualBox ACPI
  */
@@ -1193,6 +1193,24 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "VBOX  ", "VBOXBIOS", 2)
                   {
                      Return (CRS)
                   }
+                }
+
+                // AMD IOMMU (AMD-Vi), I/O Virtualization Reporting Structure
+                Device (IVRS)
+                {
+                    Method(_ADR, 0, NotSerialized)
+                    {
+                        Return (IOMA)
+                    }
+                    Method (_STA, 0, NotSerialized)
+                    {
+                        if (LEqual (IOMA, Zero)) {
+                            Return (0x00)
+                        }
+                        else {
+                            Return (0x0F)
+                        }
+                    }
                 }
 
                 // System Management Controller
