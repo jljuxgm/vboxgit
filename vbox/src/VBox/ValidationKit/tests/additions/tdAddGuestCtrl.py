@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84950 $"
+__version__ = "$Revision: 84951 $"
 
 # Standard Python imports.
 import errno
@@ -1644,6 +1644,10 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
         # so check the version here first and skip enabling verbose logging if needed.
         if sTxsVer is None:
             fEnableVerboseLogging = False;
+
+        # On Windows guests we always can enable verbose logging.
+        if oTestVm.isWindows():
+            fEnableVerboseLogging = True;
 
         # If debugging mode is enabled, skip this.
         if self.oDebug.sImgPath:
