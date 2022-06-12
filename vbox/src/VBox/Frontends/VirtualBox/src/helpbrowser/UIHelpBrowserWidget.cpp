@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.cpp 87176 2021-01-05 10:54:49Z vboxsync $ */
+/* $Id: UIHelpBrowserWidget.cpp 87208 2021-01-11 09:04:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class implementation.
  */
@@ -763,7 +763,7 @@ void UIHelpBrowserTab::sltHandleBackwardAction()
 void UIHelpBrowserTab::sltHandleFindInPageAction(bool fToggled)
 {
     if (m_pContentViewer)
-        m_pContentViewer->toggleFindInPageWidget(fToggled);
+        m_pContentViewer->sltToggleFindInPageWidget(fToggled);
 }
 
 void UIHelpBrowserTab::sltHandleHistoryChanged()

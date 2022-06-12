@@ -1,4 +1,4 @@
-/* $Id: UIHelpViewer.h 87160 2021-01-04 12:09:20Z vboxsync $ */
+/* $Id: UIHelpViewer.h 87208 2021-01-11 09:04:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class declaration.
  */
@@ -52,12 +52,12 @@ public:
     virtual QVariant loadResource(int type, const QUrl &name) /* override */;
     void emitHistoryChangedSignal();
     void setSource(const QUrl &url) /* override */;
-    void toggleFindInPageWidget(bool fVisible);
     int initialFontPointSize() const;
     void setFont(const QFont &);
+    bool isFindInPageWidgetVisible() const;
 
 public slots:
-
+    void sltToggleFindInPageWidget(bool fVisible);
 
 protected:
 
