@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 85176 2020-07-10 12:54:06Z vboxsync $
+# $Id: Makefile.kmk 87259 2021-01-15 11:10:47Z vboxsync $
 ## @file
 # Sub-Makefile for the Darwin VBoxUSB kernel extension.
 #
@@ -26,7 +26,7 @@
 
 SUB_DEPTH = ../../../../..
 include $(KBUILD_PATH)/subheader.kmk
-
+ifn1of ($(KBUILD_TARGET_ARCH), arm64)
 
 #
 # VBoxUSB.kext - The Darwin Kernel Extension.
@@ -89,5 +89,6 @@ tstOpenUSBDev_SOURCES = testcase/tstOpenUSBDev.cpp
 tstOpenUSBDev_LDFLAGS = -framework CoreFoundation -framework IOKit
 endif
 
+endif # ! arm64
 include $(FILE_KBUILD_SUB_FOOTER)
 
