@@ -1,4 +1,4 @@
-/* $Id: vkat.cpp 88985 2021-05-11 16:31:00Z vboxsync $ */
+/* $Id: vkat.cpp 88987 2021-05-11 16:39:05Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) utility for testing and validating the audio stack.
  */
@@ -225,6 +225,7 @@ static RTTEST g_hTest;
 PDMDRVINS g_DrvIns;
 /** The current verbosity level. */
 unsigned  g_uVerbosity = 0;
+
 
 /*********************************************************************************************************************************
 *   Test callbacks                                                                                                               *

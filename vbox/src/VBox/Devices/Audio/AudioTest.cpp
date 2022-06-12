@@ -1,4 +1,4 @@
-/* $Id: AudioTest.cpp 88985 2021-05-11 16:31:00Z vboxsync $ */
+/* $Id: AudioTest.cpp 88987 2021-05-11 16:39:05Z vboxsync $ */
 /** @file
  * Audio testing routines.
  * Common code which is being used by the ValidationKit and the debug / ValdikationKit audio driver(s).
@@ -46,6 +46,7 @@
 #define AUDIOTEST_MANIFEST_VER      1
 
 #define AUDIOTEST_INI_SEC_HDR_STR   "header"
+
 
 /*********************************************************************************************************************************
 *   Structures and Typedefs                                                                                                      *
