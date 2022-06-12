@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioCoreAudio.cpp 89229 2021-05-23 01:21:16Z vboxsync $ */
+/* $Id: DrvHostAudioCoreAudio.cpp 89233 2021-05-23 13:04:22Z vboxsync $ */
 /** @file
  * Host audio driver - Mac OS X CoreAudio.
  *
@@ -883,7 +883,7 @@ static int drvHstAudCaCFStringToBuf(CFStringRef hStr, char *pszDst, size_t cbDst
     /* Second fallback: */
     CFIndex cbMax = CFStringGetMaximumSizeForEncoding(CFStringGetLength(hStr), kCFStringEncodingUTF8) + 1;
     AssertReturn(cbMax > 0, VERR_INVALID_UTF8_ENCODING);
-    AssertReturn(cbMax < _16M, VERR_OUT_OF_RANGE);
+    AssertReturn(cbMax < (CFIndex)_16M, VERR_OUT_OF_RANGE);
 
     char *pszTmp = (char *)RTMemTmpAlloc(cbMax);
     AssertReturn(pszTmp, VERR_NO_TMP_MEMORY);
