@@ -1,4 +1,4 @@
-/* $Id: DevIommuIntel.cpp 89194 2021-05-20 09:28:17Z vboxsync $ */
+/* $Id: DevIommuIntel.cpp 89195 2021-05-20 09:30:42Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - Intel implementation.
  */
@@ -1057,7 +1057,7 @@ static void dmarInvQueueThreadWakeUpIfNeeded(PPDMDEVINS pDevIns)
     if (    dmarInvQueueCanProcessRequests(pThis)
         && !dmarInvQueueIsEmpty(pThis))
     {
-        Log4Func(("Signaling the invalidation-queue thread!!\n"));
+        Log4Func(("Signaling the invalidation-queue thread\n"));
         PDMDevHlpSUPSemEventSignal(pDevIns, pThis->hEvtInvQueue);
     }
 }
