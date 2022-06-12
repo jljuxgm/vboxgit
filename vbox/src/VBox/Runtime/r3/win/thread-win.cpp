@@ -1,4 +1,4 @@
-/* $Id: thread-win.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: thread-win.cpp 84840 2020-06-16 00:22:42Z vboxsync $ */
 /** @file
  * IPRT - Threads, Windows.
  */
@@ -133,6 +133,7 @@ DECLHIDDEN(void) rtThreadNativeInformDebugger(PRTTHREADINT pThread)
  */
 static void rtThreadWinTellDebuggerThreadName(uint32_t idThread, const char *pszName)
 {
+    /// @todo check out SetThreadDescription from W10-1607
     struct
     {
         uint32_t    uType;
