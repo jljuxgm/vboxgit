@@ -1,4 +1,4 @@
-/* $Id: UIHelpViewer.cpp 88496 2021-04-13 16:56:17Z vboxsync $ */
+/* $Id: UIHelpViewer.cpp 88497 2021-04-13 16:59:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class implementation.
  */
@@ -656,7 +656,7 @@ void UIHelpViewer::paintEvent(QPaintEvent *pEvent)
         int iMargin = 3;
         QRectF fillRect(imageRect.x() - iMargin, imageRect.y() - iMargin,
                         imageRect.width() + 2 * iMargin, imageRect.height() + 2 * iMargin);
-
+        /** @todo I need to find the default color somehow and replace hard coded Qt::white. */
         painter.fillRect(fillRect, Qt::white);
         painter.drawPixmap(imageRect, newPixmap, newPixmap.rect());
      }
