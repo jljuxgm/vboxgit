@@ -1,4 +1,4 @@
-/* $Id: DevIommuAmd.cpp 88619 2021-04-21 03:05:24Z vboxsync $ */
+/* $Id: DevIommuAmd.cpp 88620 2021-04-21 03:14:16Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - AMD implementation.
  */
@@ -4777,10 +4777,13 @@ static DECLCALLBACK(VBOXSTRICTRC) iommuAmdMmioRead(PPDMDEVINS pDevIns, void *pvU
 
     uint64_t uResult;
     VBOXSTRICTRC rcStrict = iommuAmdRegisterRead(pDevIns, off, &uResult);
-    if (cb == 8)
-        *(uint64_t *)pv = uResult;
-    else
-        *(uint32_t *)pv = (uint32_t)uResult;
+    if (rcStrict == VINF_SUCCESS)
+    {
+        if (cb == 8)
+            *(uint64_t *)pv = uResult;
+        else
+            *(uint32_t *)pv = (uint32_t)uResult;
+    }
 
     return rcStrict;
 }
