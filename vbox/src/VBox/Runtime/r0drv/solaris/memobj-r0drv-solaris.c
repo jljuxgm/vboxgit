@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-solaris.c 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: memobj-r0drv-solaris.c 87106 2020-12-18 21:09:01Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Solaris.
  */
@@ -976,7 +976,7 @@ DECLHIDDEN(int) rtR0MemObjNativeMapKernel(PPRTR0MEMOBJINTERNAL ppMem, RTR0MEMOBJ
     size_t off = 0;
     while (off < cbSub)
     {
-        RTHCPHYS HCPhys = RTR0MemObjGetPagePhysAddr(pMemToMap, (offSub + offSub) >> PAGE_SHIFT);
+        RTHCPHYS HCPhys = RTR0MemObjGetPagePhysAddr(pMemToMap, (offSub + off) >> PAGE_SHIFT);
         AssertBreakStmt(HCPhys != NIL_RTHCPHYS, rc = VERR_INTERNAL_ERROR_2);
         pfn_t pfn = HCPhys >> PAGE_SHIFT;
         AssertBreakStmt(((RTHCPHYS)pfn << PAGE_SHIFT) == HCPhys, rc = VERR_INTERNAL_ERROR_3);
