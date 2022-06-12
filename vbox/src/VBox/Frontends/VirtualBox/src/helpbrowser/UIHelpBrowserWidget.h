@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.h 89410 2021-05-31 17:53:35Z vboxsync $ */
+/* $Id: UIHelpBrowserWidget.h 89542 2021-06-07 09:49:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class declaration.
  */
@@ -55,7 +55,6 @@ class SHARED_LIBRARY_STUFF UIHelpBrowserWidget  : public QIWithRetranslateUI<QWi
 signals:
 
     void sigCloseDialog();
-    void sigLinkHighlighted(const QString &strLink);
     void sigStatusBarVisible(bool fToggled);
     void sigZoomPercentageChanged(int iPercentage);
     void sigGoBackward();
@@ -63,7 +62,7 @@ signals:
     void sigGoHome();
     void sigReloadPage();
     void sigAddBookmark();
-
+    void sigStatusBarMessage(const QString &strMessage, int iTimeOut);
 public:
 
     UIHelpBrowserWidget(EmbedTo enmEmbedding, const QString &strHelpFilePath, QWidget *pParent = 0);
@@ -110,6 +109,7 @@ private slots:
     void sltFindNextInPage();
     void sltFindPreviousInPage();
     void sltHistoryChanged(bool fBackwardAvailable, bool fForwardAvailable);
+    void sltLinkHighlighted(const QString &strLink);
 
 private:
 

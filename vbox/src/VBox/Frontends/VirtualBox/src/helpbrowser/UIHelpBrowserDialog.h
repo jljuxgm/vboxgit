@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserDialog.h 89318 2021-05-27 13:02:27Z vboxsync $ */
+/* $Id: UIHelpBrowserDialog.h 89542 2021-06-07 09:49:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserDialog class declaration.
  */
@@ -58,7 +58,7 @@ protected:
 
 private slots:
 
-    void sltLinkHighlighted(const QString& strLink);
+    void sltStatusBarMessage(const QString& strLink, int iTimeOut);
     void sltStatusBarVisibilityChange(bool fVisible);
     void sltZoomPercentageChanged(int iPercentage);
 
