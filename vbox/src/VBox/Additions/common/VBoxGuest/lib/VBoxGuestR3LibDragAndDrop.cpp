@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibDragAndDrop.cpp 85585 2020-07-31 16:52:28Z vboxsync $ */
+/* $Id: VBoxGuestR3LibDragAndDrop.cpp 85587 2020-07-31 17:14:22Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Drag & Drop.
  */
@@ -1666,7 +1666,7 @@ static int vbglR3DnDGHSendRawData(PVBGLR3GUESTDNDCMDCTX pCtx, void *pvData, size
     VBOXDNDDATAHDR dataHdr;
     RT_ZERO(dataHdr);
 
-    /* For raw data only the total size is required to be specified. */
+    dataHdr.cbMeta  = (uint32_t)cbData;
     dataHdr.cbTotal = cbData;
 
     return vbglR3DnDGHSendDataInternal(pCtx, pvData, cbData, &dataHdr);
@@ -1756,6 +1756,8 @@ VBGLR3DECL(int) VbglR3DnDGHSendData(PVBGLR3GUESTDNDCMDCTX pCtx, const char *pszF
 
     LogFlowFunc(("pszFormat=%s, pvData=%p, cbData=%RU32\n", pszFormat, pvData, cbData));
 
+    LogRel2(("DnD: Sending %RU32 bytes meta data in format '%s'\n", cbData, pszFormat));
+
     int rc;
     if (DnDMIMEHasFileURLs(pszFormat, strlen(pszFormat)))
     {
@@ -1775,18 +1777,20 @@ VBGLR3DECL(int) VbglR3DnDGHSendData(PVBGLR3GUESTDNDCMDCTX pCtx, const char *pszF
                 rc = vbglR3DnDGHSendTransferData(pCtx, &lstTransfer);
             DnDTransferListDestroy(&lstTransfer);
         }
-
-        if (RT_FAILURE(rc))
-            LogRel(("DnD: Sending guest meta data to host failed with %Rrc\n", rc));
     }
     else
         rc = vbglR3DnDGHSendRawData(pCtx, pvData, cbData);
 
     if (RT_FAILURE(rc))
     {
-        int rc2 = VbglR3DnDGHSendError(pCtx, rc);
-        if (RT_FAILURE(rc2))
-            LogFlowFunc(("Unable to send error (%Rrc) to host, rc=%Rrc\n", rc, rc2));
+        LogRel(("DnD: Sending data failed with rc=%Rrc\n", rc));
+
+        if (rc != VERR_CANCELLED)
+        {
+            int rc2 = VbglR3DnDGHSendError(pCtx, rc);
+            if (RT_FAILURE(rc2))
+                LogFlowFunc(("Unable to send error (%Rrc) to host, rc=%Rrc\n", rc, rc2));
+        }
     }
 
     return rc;
