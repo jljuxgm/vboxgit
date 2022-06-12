@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioDSound.cpp 88390 2021-04-07 10:35:06Z vboxsync $ */
+/* $Id: DrvHostAudioDSound.cpp 88412 2021-04-08 12:00:08Z vboxsync $ */
 /** @file
  * Host audio driver - DirectSound (Windows).
  */
@@ -2064,10 +2064,8 @@ static DECLCALLBACK(int) drvHostDSoundHA_StreamPlay(PPDMIHOSTAUDIO pInterface, P
     return VINF_SUCCESS;
 }
 
-static int dsoundDestroyStreamOut(PDRVHOSTDSOUND pThis, PPDMAUDIOBACKENDSTREAM pStream)
+static int dsoundDestroyStreamOut(PDRVHOSTDSOUND pThis, PDSOUNDSTREAM pStreamDS)
 {
-    PDSOUNDSTREAM pStreamDS = (PDSOUNDSTREAM)pStream;
-
     LogFlowFuncEnter();
 
     HRESULT hr = directSoundPlayStop(pThis, pStreamDS, true /* fFlush */);
