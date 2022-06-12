@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioAlsa.cpp 89505 2021-06-04 12:03:25Z vboxsync $ */
+/* $Id: DrvHostAudioAlsa.cpp 89508 2021-06-04 12:14:16Z vboxsync $ */
 /** @file
  * Host audio driver - Advanced Linux Sound Architecture (ALSA).
  */
@@ -1466,7 +1466,7 @@ static DECLCALLBACK(void *) drvHstAudAlsaQueryInterface(PPDMIBASE pInterface, co
 *********************************************************************************************************************************/
 
 /**
- * @interface_method_impl{PDMDRVREG::pfnDestruct,
+ * @interface_method_impl{PDMDRVREG,pfnDestruct,
  * Destructs an ALSA host audio driver instance.}
  */
 static DECLCALLBACK(void) drvHstAudAlsaDestruct(PPDMDRVINS pDrvIns)
@@ -1488,7 +1488,7 @@ static DECLCALLBACK(void) drvHstAudAlsaDestruct(PPDMDRVINS pDrvIns)
 
 
 /**
- * @interface_method_impl{PDMDRVREG::pfnConstruct,
+ * @interface_method_impl{PDMDRVREG,pfnConstruct,
  * Construct an ALSA host audio driver instance.}
  */
 static DECLCALLBACK(int) drvHstAudAlsaConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uint32_t fFlags)
