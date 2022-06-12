@@ -1,4 +1,4 @@
-/* $Id: SrvIntNetR0.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: SrvIntNetR0.cpp 88866 2021-05-04 17:41:57Z vboxsync $ */
 /** @file
  * Internal networking - The ring 0 service.
  *
@@ -649,7 +649,7 @@ DECLINLINE(bool) intnetR0SgReadPart(PCINTNETSG pSG, uint32_t off, uint32_t cb, v
     if (RT_LIKELY(    pSG->cSegsUsed == 1
                   ||  pSG->aSegs[0].cb >= off + cb))
     {
-        Assert(pSG->cbTotal == pSG->aSegs[0].cb);
+        AssertMsg(pSG->cbTotal == pSG->aSegs[0].cb, ("%#x vs %#x\n", pSG->cbTotal, pSG->aSegs[0].cb));
         memcpy(pvBuf, (uint8_t const *)pSG->aSegs[0].pv + off, cb);
         return true;
     }
