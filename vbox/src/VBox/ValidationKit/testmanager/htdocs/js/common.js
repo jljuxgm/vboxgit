@@ -1,4 +1,4 @@
-/* $Id: common.js 84896 2020-06-22 12:19:32Z vboxsync $ */
+/* $Id: common.js 84898 2020-06-22 12:43:53Z vboxsync $ */
 /** @file
  * Common JavaScript functions
  */
@@ -239,7 +239,7 @@ function parseIsoTimestamp(sTs)
     return oDate;
 }
 
-/** 
+/**
  * @param   oDate   Date object.
  */
 function formatTimeHHMM(oDate, fNbsp)
