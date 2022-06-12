@@ -1,4 +1,4 @@
-/* $Id: VMDK.cpp 85105 2020-07-08 09:32:18Z vboxsync $ */
+/* $Id: VMDK.cpp 85200 2020-07-10 15:16:34Z vboxsync $ */
 /** @file
  * VMDK disk image, core code.
  */
@@ -4784,7 +4784,7 @@ static int vmdkAllocGrainGTUpdate(PVMDKIMAGE pImage, PVMDKEXTENT pExtent, PVDIOC
 /**
  * Internal - complete the grain allocation by updating disk grain table if required.
  */
-static int vmdkAllocGrainComplete(void *pBackendData, PVDIOCTX pIoCtx, void *pvUser, int rcReq)
+static DECLCALLBACK(int) vmdkAllocGrainComplete(void *pBackendData, PVDIOCTX pIoCtx, void *pvUser, int rcReq)
 {
     RT_NOREF1(rcReq);
     int rc = VINF_SUCCESS;
