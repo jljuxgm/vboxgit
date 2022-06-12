@@ -1,4 +1,4 @@
-/* $Id: UICloudConsoleManager.cpp 85392 2020-07-20 15:17:30Z vboxsync $ */
+/* $Id: UICloudConsoleManager.cpp 85441 2020-07-23 17:45:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudConsoleManager class implementation.
  */
@@ -192,7 +192,7 @@ private:
 UIItemCloudConsoleApplication::UIItemCloudConsoleApplication()
 {
     /* Assign icon: */
-    setIcon(Column_Name, UIIconPool::iconSet(":/cloud_console_application_16px.png")); /// @todo use proper icon
+    setIcon(Column_Name, UIIconPool::iconSet(":/cloud_console_application_16px.png"));
     /* Assign item data: */
     setData(Column_Name, Data_ItemType, QVariant::fromValue(CloudConsoleItemType_Application));
 }
@@ -214,7 +214,7 @@ void UIItemCloudConsoleApplication::updateFields()
 UIItemCloudConsoleProfile::UIItemCloudConsoleProfile()
 {
     /* Assign icon: */
-    setIcon(Column_Name, UIIconPool::iconSet(":/cloud_console_profile_16px.png")); /// @todo use proper icon
+    setIcon(Column_Name, UIIconPool::iconSet(":/cloud_console_profile_16px.png"));
     /* Assign item data: */
     setData(Column_Name, Data_ItemType, QVariant::fromValue(CloudConsoleItemType_Profile));
 }
