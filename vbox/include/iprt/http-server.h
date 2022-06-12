@@ -1,4 +1,4 @@
-/* $Id: http-server.h 87006 2020-11-27 16:28:54Z vboxsync $ */
+/* $Id: http-server.h 87007 2020-11-27 16:46:50Z vboxsync $ */
 /** @file
  * Header file for HTTP server implementation.
  */
@@ -134,7 +134,7 @@ typedef RTHTTPSERVERCALLBACKS *PRTHTTPSERVERCALLBACKS;
  * Creates a HTTP server instance.
  *
  * @returns IPRT status code.
- * @param   phHTTPServer        Where to store the HTTP server handle.
+ * @param   phHttpServer        Where to store the HTTP server handle.
  * @param   pcszAddress         The address for creating a listening socket.
  *                              If NULL or empty string the server is bound to all interfaces.
  * @param   uPort               The port for creating a listening socket.

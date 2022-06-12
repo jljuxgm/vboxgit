@@ -1,4 +1,4 @@
-/* $Id: http-server.cpp 87006 2020-11-27 16:28:54Z vboxsync $ */
+/* $Id: http-server.cpp 87007 2020-11-27 16:46:50Z vboxsync $ */
 /** @file
  * Simple HTTP server (RFC 7231) implementation.
  *
@@ -408,7 +408,7 @@ static int rtHttpServerSendResponseHdrEx(PRTHTTPSERVERCLIENT pClient,
  *
  * @returns VBox status code.
  * @param   pClient             Client to reply to.
- * @param   enmStatus           Status code to send.
+ * @param   enmSts              Status code to send.
  * @param   pHdrLst             Header list to send. Optional and can be NULL.
  */
 static int rtHttpServerSendResponseEx(PRTHTTPSERVERCLIENT pClient, RTHTTPSTATUS enmSts, PRTHTTPHEADERLIST pHdrLst)
