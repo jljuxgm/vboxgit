@@ -1,4 +1,4 @@
-/* $Id: DevIommuIntel.cpp 88584 2021-04-19 15:54:58Z vboxsync $ */
+/* $Id: DevIommuIntel.cpp 88589 2021-04-20 02:21:27Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - Intel implementation.
  */
@@ -816,7 +816,6 @@ static uint8_t dmarRtAddrRegGetTtm(PCDMAR pThis)
  * Raises an IQE (invalidation queue error) fault.
  *
  * @param   pDevIns     The IOMMU device instance.
- * @param   pThis       The shared DMAR device state.
  * @param   enmIqei     The IQE information.
  * @param   enmDiag     The diagnostic reason.
  */
