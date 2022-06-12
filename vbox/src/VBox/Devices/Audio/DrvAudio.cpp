@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 88724 2021-04-27 10:24:18Z vboxsync $ */
+/* $Id: DrvAudio.cpp 88725 2021-04-27 10:27:55Z vboxsync $ */
 /** @file
  * Intermediate audio driver - Connects the audio device emulation with the host backend.
  */
@@ -2440,9 +2440,7 @@ static DECLCALLBACK(uint32_t) drvAudioStreamGetReadable(PPDMIAUDIOCONNECTOR pInt
              * situations, but the device emulation needs input data to keep the DMA transfers moving.
              * Reading the actual data from a stream then will return silence then.
              */
-            uint32_t fStatus = PDMAUDIOSTREAM_STS_NONE;
-            if (pThis->pHostDrvAudio->pfnStreamGetStatus)
-                fStatus = pThis->pHostDrvAudio->pfnStreamGetStatus(pThis->pHostDrvAudio, pStreamEx->pBackend);
+            uint32_t fStatus = pThis->pHostDrvAudio->pfnStreamGetStatus(pThis->pHostDrvAudio, pStreamEx->pBackend);
             if (   !PDMAudioStrmStatusCanRead(fStatus)
                 || fDisabled)
             {
