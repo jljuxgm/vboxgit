@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-x11.cpp 85980 2020-09-01 15:06:44Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-x11.cpp 85983 2020-09-01 16:55:10Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Linux host.
  */
@@ -236,17 +236,14 @@ int ShClBackendReadData(PSHCLCLIENT pClient,
 int ShClBackendWriteData(PSHCLCLIENT pClient,
                          PSHCLCLIENTCMDCTX pCmdCtx, SHCLFORMAT uFormat, void *pvData, uint32_t cbData)
 {
-    AssertPtrReturn(pClient, VERR_INVALID_POINTER);
-    AssertPtrReturn(pCmdCtx, VERR_INVALID_POINTER);
-    AssertPtrReturn(pvData,  VERR_INVALID_POINTER);
+    RT_NOREF(pClient, pCmdCtx, uFormat, pvData, cbData);
 
-    LogFlowFunc(("pClient=%p, pv=%p, cb=%RU32, uFormat=%02X\n",
-                 pClient, pvData, cbData, uFormat));
+    LogFlowFuncEnter();
 
-    int rc = ShClSvcGuestDataReceived(pClient, pCmdCtx, uFormat, pvData, cbData);
+    /* Nothing to do here yet. */
 
-    LogFlowFuncLeaveRC(rc);
-    return rc;
+    LogFlowFuncLeave();
+    return VINF_SUCCESS;
 }
 
 /**
