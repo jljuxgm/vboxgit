@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIMainEventListener.cpp 86077 2020-09-09 16:03:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMainEventListener class implementation.
  */
@@ -28,6 +28,8 @@
 #include "COMEnums.h"
 #include "CCanShowWindowEvent.h"
 #include "CClipboardModeChangedEvent.h"
+#include "CCloudProviderListChangedEvent.h"
+#include "CCloudProviderUninstallEvent.h"
 #include "CCursorPositionChangedEvent.h"
 #include "CDnDModeChangedEvent.h"
 #include "CEvent.h"
@@ -284,6 +286,17 @@ STDMETHODIMP UIMainEventListener::HandleEvent(VBoxEventType_T, IEvent *pEvent)
         {
             CSnapshotRestoredEvent comEventSpecific(pEvent);
             emit sigSnapshotRestore(comEventSpecific.GetMachineId(), comEventSpecific.GetSnapshotId());
+            break;
+        }
+        case KVBoxEventType_OnCloudProviderListChanged:
+        {
+            emit sigCloudProviderListChanged();
+            break;
+        }
+        case KVBoxEventType_OnCloudProviderUninstall:
+        {
+            CCloudProviderUninstallEvent comEventSpecific(pEvent);
+            emit sigCloudProviderUninstall(comEventSpecific.GetId());
             break;
         }
 

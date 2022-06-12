@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIMainEventListener.h 86077 2020-09-09 16:03:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMainEventListener class declaration.
  */
@@ -95,6 +95,10 @@ signals:
         void sigSnapshotChange(const QUuid &uId, const QUuid &uSnapshotId);
         /** Notifies about snapshot with @a uSnapshotId was restored for the machine with @a uId. */
         void sigSnapshotRestore(const QUuid &uId, const QUuid &uSnapshotId);
+        /** Notifies about request to uninstall cloud provider with @a uId. */
+        void sigCloudProviderUninstall(const QUuid &uId);
+        /** Notifies about cloud provider list changed. */
+        void sigCloudProviderListChanged();
     /** @} */
 
     /** @name VirtualBox Extra-data related signals
