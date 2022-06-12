@@ -1,4 +1,4 @@
-/* $Id: DevHDACommon.cpp 87319 2021-01-20 10:44:22Z vboxsync $ */
+/* $Id: DevHDACommon.cpp 87328 2021-01-20 17:07:12Z vboxsync $ */
 /** @file
  * DevHDACommon.cpp - Shared HDA device functions.
  *
@@ -84,7 +84,7 @@ void hdaProcessInterrupt(PPDMDEVINS pDevIns, PHDASTATE pThis)
  * Retrieves the number of bytes of a FIFOW register.
  *
  * @return Number of bytes of a given FIFOW register.
- * @param  u16RegFIFOS         FIFOW register to convert.
+ * @param  u16RegFIFOW          FIFOW register to convert.
  */
 uint8_t hdaSDFIFOWToBytes(uint16_t u16RegFIFOW)
 {
