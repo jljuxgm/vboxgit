@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 86730 2020-10-28 10:44:37Z vboxsync $
+# $Id: Makefile.kmk 86749 2020-10-28 21:04:02Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -171,6 +171,7 @@ VBoxVMM_SOURCES  = \
 	VMMAll/CPUMAllRegs.cpp \
 	VMMAll/CPUMAllMsrs.cpp \
 	VMMAll/DBGFAll.cpp \
+	$(if-expr defined(VBOX_WITH_LOTS_OF_DBGF_BPS), VMMAll/DBGFAllBp.cpp,) \
 	$(if-expr defined(VBOX_WITH_DBGF_TRACING), VMMAll/DBGFAllTracer.cpp,) \
 	VMMAll/HMAll.cpp \
 	VMMAll/HMSVMAll.cpp \
