@@ -1,4 +1,4 @@
-/* $Id: UICocoaDockIconPreview.mm 85329 2020-07-14 10:07:53Z vboxsync $ */
+/* $Id: UICocoaDockIconPreview.mm 85330 2020-07-14 10:15:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Cocoa helper for the dock icon preview.
  */
@@ -145,7 +145,7 @@ void UICocoaDockIconPreview::setOriginalSize(int width, int height)
         mScreenContent = [[NSImageView alloc] initWithFrame:NSRectFromCGRect(p->flipRect(p->m_updateRect))];
 //        [mScreenContent setImageAlignment: NSImageAlignCenter];
         [mScreenContent setImageAlignment: NSImageAlignTopLeft];
-        [mScreenContent setImageScaling: NSScaleToFit];
+        [mScreenContent setImageScaling: NSImageScaleAxesIndependently];
         [self addSubview: mScreenContent];
         /* The state view */
         mMonitorGlossy = [[NSImageView alloc] initWithFrame:NSRectFromCGRect(p->flipRect(p->m_monitorRect))];
