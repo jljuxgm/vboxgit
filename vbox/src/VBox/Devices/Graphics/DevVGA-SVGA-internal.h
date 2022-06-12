@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA-internal.h 86885 2020-11-14 01:44:16Z vboxsync $ */
+/* $Id: DevVGA-SVGA-internal.h 86886 2020-11-14 02:30:53Z vboxsync $ */
 /** @file
  * VMWare SVGA device - internal header for DevVGA-SVGA* source files.
  */
@@ -189,6 +189,8 @@ typedef struct VMSVGAR3STATE
     RTLISTANCHOR            MOBLRUList;
 
 # ifdef VBOX_WITH_VMSVGA3D
+    VMSVGA3DBACKENDFUNCSMAP *pFuncsMap;
+    VMSVGA3DBACKENDFUNCSGBO *pFuncsGBO;
     VMSVGA3DBACKENDFUNCSDX  *pFuncsDX;
 # endif
 
