@@ -1,4 +1,4 @@
-/* $Id: vkat.cpp 89081 2021-05-17 09:15:52Z vboxsync $ */
+/* $Id: vkat.cpp 89085 2021-05-17 09:51:52Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) utility for testing and validating the audio stack.
  */
@@ -2243,9 +2243,9 @@ static RTEXITCODE audioTestUsage(PRTSTREAM pStrm)
         for (unsigned i = 0; i < g_aCommands[iCmd].cOptions; i++)
         {
             if (RT_C_IS_PRINT(paOptions[i].iShort))
-                RTStrmPrintf(pStrm, "  -%c, %s\n", g_aCmdTestOptions[i].iShort, g_aCmdTestOptions[i].pszLong);
+                RTStrmPrintf(pStrm, "  -%c, %s\n", paOptions[i].iShort, paOptions[i].pszLong);
             else
-                RTStrmPrintf(pStrm, "  %s\n", g_aCmdTestOptions[i].pszLong);
+                RTStrmPrintf(pStrm, "  %s\n", paOptions[i].pszLong);
 
             const char *pszHelp = NULL;
             if (g_aCommands[iCmd].pfnOptionHelp)
