@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet_1_0.cpp 84774 2020-06-11 06:01:00Z vboxsync $ $Revision: 84774 $ $Date: 2020-06-11 14:01:00 +0800 (Thu, 11 Jun 2020) $ $Author: vboxsync $ */
+/* $Id: DevVirtioNet_1_0.cpp 84775 2020-06-11 06:15:59Z vboxsync $ $Revision: 84775 $ $Date: 2020-06-11 14:15:59 +0800 (Thu, 11 Jun 2020) $ $Author: vboxsync $ */
 
 /** @file
  * VBox storage devices - Virtio NET Driver
@@ -2821,7 +2821,7 @@ static DECLCALLBACK(int) virtioNetR3WorkerThread(PPDMDEVINS pDevIns, PPDMTHREAD 
     LogFunc(("%s worker thread started for %s\n", pThis->szInst, pQueue->szName));
 
  /** @todo Race w/guest enabling/disabling guest notifications cyclically.
-           that causes the controlq activity to hang sporadically. See BugRef #8651, Comment #82 */
+           See BugRef #8651, Comment #82 */
 
     virtioCoreQueueNotifyEnable(&pThis->Virtio, pQueue->idx, true /* fEnable */);
 
