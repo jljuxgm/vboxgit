@@ -1,4 +1,4 @@
-/* $Id: DevHdaStreamChannel.h 88228 2021-03-22 09:28:22Z vboxsync $ */
+/* $Id: DevHdaStreamChannel.h 88231 2021-03-22 09:56:20Z vboxsync $ */
 /** @file
  * HDAStreamChannel.h - Stream channel functions for HD Audio.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef VBOX_INCLUDED_SRC_Audio_HDAStreamChannel_h
-#define VBOX_INCLUDED_SRC_Audio_HDAStreamChannel_h
+#ifndef VBOX_INCLUDED_SRC_Audio_DevHdaStreamChannel_h
+#define VBOX_INCLUDED_SRC_Audio_DevHdaStreamChannel_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -26,5 +26,5 @@ void hdaR3StreamChannelDataDestroy(PPDMAUDIOSTREAMCHANNELDATA pChanData);
 int  hdaR3StreamChannelAcquireData(PPDMAUDIOSTREAMCHANNELDATA pChanData, void *ppvData, size_t *pcbData);
 int  hdaR3StreamChannelReleaseData(PPDMAUDIOSTREAMCHANNELDATA pChanData);
 
-#endif /* !VBOX_INCLUDED_SRC_Audio_HDAStreamChannel_h */
+#endif /* !VBOX_INCLUDED_SRC_Audio_DevHdaStreamChannel_h */
 
