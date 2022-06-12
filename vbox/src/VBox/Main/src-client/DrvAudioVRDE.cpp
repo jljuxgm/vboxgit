@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVRDE.cpp 88460 2021-04-12 10:51:18Z vboxsync $ */
+/* $Id: DrvAudioVRDE.cpp 88469 2021-04-12 12:43:41Z vboxsync $ */
 /** @file
  * VRDE audio backend for Main.
  */
@@ -504,7 +504,7 @@ static DECLCALLBACK(uint32_t) drvAudioVrdeHA_StreamGetReadable(PPDMIHOSTAUDIO pI
     {
         /* Return frames instead of bytes here
          * (since we specified PDMAUDIOSTREAMLAYOUT_RAW as the audio data layout). */
-        return (uint32_t)PDMAudioPropsBytesToFrames(&pStreamVRDE->Cfg.Props, RTCircBufUsed(pStreamVRDE->In.pCircBuf));
+        return PDMAudioPropsBytesToFrames(&pStreamVRDE->Cfg.Props, (uint32_t)RTCircBufUsed(pStreamVRDE->In.pCircBuf));
     }
     return 0;
 }
