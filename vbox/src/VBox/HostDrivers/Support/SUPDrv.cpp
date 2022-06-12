@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 85545 2020-07-30 09:07:13Z vboxsync $ */
+/* $Id: SUPDrv.cpp 85748 2020-08-13 10:20:38Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -4451,6 +4451,8 @@ int VBOXCALL supdrvQueryVTCapsInternal(uint32_t *pfCaps)
                 ASMCpuId(0x8000000a, &uDummy, &uDummy, &uDummy, &fSvmFeatures);
                 if (fSvmFeatures & X86_CPUID_SVM_FEATURE_EDX_NESTED_PAGING)
                     *pfCaps |= SUPVTCAPS_NESTED_PAGING;
+                if (fSvmFeatures & X86_CPUID_SVM_FEATURE_EDX_VIRT_VMSAVE_VMLOAD)
+                    *pfCaps |= SUPVTCAPS_AMDV_VIRT_VMSAVE_VMLOAD;
             }
         }
     }
