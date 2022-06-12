@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.h 85038 2020-07-01 18:37:27Z vboxsync $ */
+/* $Id: UIChooserModel.h 85080 2020-07-07 10:37:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class declaration.
  */
@@ -378,8 +378,10 @@ private:
         /** Holds the keyboard handler instance. */
         UIChooserHandlerKeyboard *m_pKeyboardHandler;
 
-        /** Holds the map of context-menu instances. */
-        QMap<UIChooserNodeType, QMenu*>  m_menus;
+        /** Holds the map of local context-menu instances. */
+        QMap<UIChooserNodeType, QMenu*>  m_localMenus;
+        /** Holds the map of cloud context-menu instances. */
+        QMap<UIChooserNodeType, QMenu*>  m_cloudMenus;
     /** @} */
 
     /** @name Selection stuff.
