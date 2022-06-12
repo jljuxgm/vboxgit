@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 84892 2020-06-22 10:23:02Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 84906 2020-06-22 14:34:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -1893,6 +1893,8 @@ void UIVirtualBoxManager::startUnattendedInstall(CUnattended &comUnattendedInsta
     checkUnattendedInstallError(comUnattendedInstaller);
     comUnattendedInstaller.SetMachine(comMachine);
     checkUnattendedInstallError(comUnattendedInstaller);
+    comUnattendedInstaller.SetUser(unattendedData.m_strUserName);
+    comUnattendedInstaller.SetPassword(unattendedData.m_strPassword);
     comUnattendedInstaller.Prepare();
     checkUnattendedInstallError(comUnattendedInstaller);
     comUnattendedInstaller.ConstructMedia();
