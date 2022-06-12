@@ -1,4 +1,4 @@
-/* $Id: HostUpdateImpl.cpp 85729 2020-08-12 19:55:32Z vboxsync $ */
+/* $Id: HostUpdateImpl.cpp 85730 2020-08-12 19:57:59Z vboxsync $ */
 /** @file
  * IHostUpdate  COM class implementations.
  */
@@ -489,13 +489,6 @@ void HostUpdate::uninit()
     AutoUninitSpan autoUninitSpan(this);
     if (autoUninitSpan.uninitDone())
         return;
-}
-
-HRESULT HostUpdate::getUpdate(ComPtr<IHostUpdate> &aUpdate)
-{
-    AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
-    aUpdate = m_pHostUpdate;
-    return S_OK;
 }
 
 HRESULT HostUpdate::updateCheck(UpdateCheckType_T aCheckType,
