@@ -1,4 +1,4 @@
-/* $Id: DevIommuAmd.cpp 88611 2021-04-21 02:37:15Z vboxsync $ */
+/* $Id: DevIommuAmd.cpp 88613 2021-04-21 02:41:55Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - AMD implementation.
  */
@@ -5201,7 +5201,7 @@ static int iommuAmdR3MmioSetup(PPDMDEVINS pDevIns)
         int rc = PDMDevHlpMmioUnmap(pDevIns, pThis->hMmio);
         if (RT_FAILURE(rc))
         {
-            LogFunc(("Failed to unmap MMIO region at %#RGp. rc=%Rrc\n", rc));
+            LogFunc(("Failed to unmap MMIO region at %#RGp. rc=%Rrc\n", GCPhysMmioBasePrev, rc));
             return rc;
         }
     }
