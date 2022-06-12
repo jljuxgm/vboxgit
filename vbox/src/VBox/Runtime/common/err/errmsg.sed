@@ -1,4 +1,4 @@
-# $Id: errmsg.sed 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: errmsg.sed 88965 2021-05-10 12:19:27Z vboxsync $
 ## @file
 # IPRT - SED script for converting */err.h.
 #
@@ -43,7 +43,7 @@ b end
 ##
 # Convert the defines
 :defines
-s/^[[:space:]]*#[[:space:]]*define[[:space:]]*\([[:alnum:]_]*\)[[:space:]]*\(.*\)[[:space:]]*$/    "\1",\n     \1 }, /
+s/^[[:space:]]*#[[:space:]]*define[[:space:]]*\([[:alnum:]_]*\)[[:space:]]*\(.*\)[[:space:]]*$/    "\1",\n     \1, false }, /
 b end
 
 ##

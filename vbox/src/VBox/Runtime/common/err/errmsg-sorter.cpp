@@ -1,4 +1,4 @@
-/* $Id: errmsg-sorter.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
+/* $Id: errmsg-sorter.cpp 88965 2021-05-10 12:19:27Z vboxsync $ */
 /** @file
  * IPRT - Status code messages, sorter build program.
  */
@@ -106,7 +106,7 @@ static RTSTATUSMSGINT1 g_aStatusMsgs[] =
 #if !defined(IPRT_NO_ERROR_DATA) && !defined(DOXYGEN_RUNNING)
 # include "errmsgdata.h"
 #else
-    { "Success.", "Success.", "VINF_SUCCESS", 0 },
+    { "Success.", "Success.", "VINF_SUCCESS", 0, false },
 #endif
 };
 
