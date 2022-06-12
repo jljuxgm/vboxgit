@@ -1,4 +1,4 @@
-/* $Id: TMInline.h 87813 2021-02-19 21:40:11Z vboxsync $ */
+/* $Id: TMInline.h 87814 2021-02-19 22:03:56Z vboxsync $ */
 /** @file
  * TM - Common Inlined functions.
  */
@@ -140,7 +140,7 @@ DECL_FORCE_INLINE(void) tmTimerQueueUnlinkActive(PVMCC pVM, PTMTIMERQUEUECC pQue
 {
 #ifdef VBOX_STRICT
     TMTIMERSTATE const enmState = pTimer->enmState;
-    Assert(  pTimer->enmClock == TMCLOCK_VIRTUAL_SYNC
+    Assert(  pQueue->enmClock == TMCLOCK_VIRTUAL_SYNC
            ? enmState == TMTIMERSTATE_ACTIVE
            : enmState == TMTIMERSTATE_PENDING_SCHEDULE || enmState == TMTIMERSTATE_PENDING_STOP_SCHEDULE);
 #endif

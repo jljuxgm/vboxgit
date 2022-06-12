@@ -1,4 +1,4 @@
-/* $Id: TMR0.cpp 87796 2021-02-18 19:44:31Z vboxsync $ */
+/* $Id: TMR0.cpp 87814 2021-02-19 22:03:56Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, host ring-0 context.
  */
@@ -138,7 +138,6 @@ VMMR0_INT_DECL(int) TMR0TimerQueueGrow(PGVM pGVM, uint32_t idxQueue, uint32_t cM
             while (i-- > cOldEntries)
             {
                 paTimers[i].u64Expire       = UINT64_MAX;
-                paTimers[i].enmClock        = TMCLOCK_MAX;
                 paTimers[i].enmType         = TMTIMERTYPE_INVALID;
                 paTimers[i].enmState        = TMTIMERSTATE_FREE;
                 paTimers[i].idxScheduleNext = UINT32_MAX;
