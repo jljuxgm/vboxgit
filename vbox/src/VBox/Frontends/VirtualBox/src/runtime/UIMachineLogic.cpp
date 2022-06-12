@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 84696 2020-06-05 14:40:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -795,29 +795,44 @@ void UIMachineLogic::sltGuestMonitorChange(KGuestMonitorChangedEventType, ulong,
 
 void UIMachineLogic::sltHostScreenCountChange()
 {
+#ifdef VBOX_GUI_WITH_CUSTOMIZATIONS1
+    /* Customer request to skip host-screen count change: */
+    LogRel(("GUI: UIMachineLogic: Host-screen count change skipped\n"));
+#else /* !VBOX_GUI_WITH_CUSTOMIZATIONS1 */
     LogRel(("GUI: UIMachineLogic: Host-screen count changed\n"));
 
     /* Make sure all machine-window(s) have proper geometry: */
     foreach (UIMachineWindow *pMachineWindow, machineWindows())
         pMachineWindow->showInNecessaryMode();
+#endif /* !VBOX_GUI_WITH_CUSTOMIZATIONS1 */
 }
 
 void UIMachineLogic::sltHostScreenGeometryChange()
 {
+#ifdef VBOX_GUI_WITH_CUSTOMIZATIONS1
+    /* Customer request to skip host-screen geometry change: */
+    LogRel(("GUI: UIMachineLogic: Host-screen geometry change skipped\n"));
+#else /* !VBOX_GUI_WITH_CUSTOMIZATIONS1 */
     LogRel(("GUI: UIMachineLogic: Host-screen geometry changed\n"));
 
     /* Make sure all machine-window(s) have proper geometry: */
     foreach (UIMachineWindow *pMachineWindow, machineWindows())
         pMachineWindow->showInNecessaryMode();
+#endif /* !VBOX_GUI_WITH_CUSTOMIZATIONS1 */
 }
 
 void UIMachineLogic::sltHostScreenAvailableAreaChange()
 {
+#ifdef VBOX_GUI_WITH_CUSTOMIZATIONS1
+    /* Customer request to skip host-screen available-area change: */
+    LogRel(("GUI: UIMachineLogic: Host-screen available-area change skipped\n"));
+#else /* !VBOX_GUI_WITH_CUSTOMIZATIONS1 */
     LogRel(("GUI: UIMachineLogic: Host-screen available-area changed\n"));
 
     /* Make sure all machine-window(s) have proper geometry: */
     foreach (UIMachineWindow *pMachineWindow, machineWindows())
         pMachineWindow->showInNecessaryMode();
+#endif /* !VBOX_GUI_WITH_CUSTOMIZATIONS1 */
 }
 
 UIMachineLogic::UIMachineLogic(QObject *pParent, UISession *pSession, UIVisualStateType visualStateType)
