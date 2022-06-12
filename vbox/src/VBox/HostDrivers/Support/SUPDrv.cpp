@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 84938 2020-06-25 09:40:23Z vboxsync $ */
+/* $Id: SUPDrv.cpp 85041 2020-07-02 21:13:04Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -459,8 +459,6 @@ static SUPFUNC g_aFunctions[] =
     { "RTThreadWait",                           (void *)(uintptr_t)RTThreadWait },
     { "RTThreadWaitNoResume",                   (void *)(uintptr_t)RTThreadWaitNoResume },
     { "RTThreadYield",                          (void *)(uintptr_t)RTThreadYield },
-    { "RTTimeMilliTS",                          (void *)(uintptr_t)RTTimeMilliTS },
-    { "RTTimeNanoTS",                           (void *)(uintptr_t)RTTimeNanoTS },
     { "RTTimeNow",                              (void *)(uintptr_t)RTTimeNow },
     { "RTTimerCanDoHighResolution",             (void *)(uintptr_t)RTTimerCanDoHighResolution },
     { "RTTimerChangeInterval",                  (void *)(uintptr_t)RTTimerChangeInterval },

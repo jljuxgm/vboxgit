@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 84540 2020-05-26 15:06:13Z vboxsync $
+# $Id: Makefile.kmk 85041 2020-07-02 21:13:04Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -2686,7 +2686,6 @@ RuntimeR0_SOURCES      := \
 	common/string/RTStrCatEx.cpp \
 	common/string/RTStrCatP.cpp \
 	common/string/RTStrCatPEx.cpp \
-	common/string/RTStrCopy.cpp \
 	common/string/RTStrCopyEx.cpp \
 	common/string/RTStrCopyP.cpp \
 	common/string/RTStrCopyPEx.cpp \
