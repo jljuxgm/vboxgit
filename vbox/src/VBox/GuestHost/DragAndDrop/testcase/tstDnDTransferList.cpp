@@ -1,4 +1,4 @@
-/* $Id: tstDnDTransferList.cpp 85682 2020-08-11 09:44:30Z vboxsync $ */
+/* $Id: tstDnDTransferList.cpp 86368 2020-10-01 05:05:09Z vboxsync $ */
 /** @file
  * DnD transfer list  tests.
  */
@@ -51,9 +51,11 @@ int main()
     RT_ZERO(list);
 
     /* Invalid stuff. */
+    RTTestDisableAssertions(hTest);
     RTTEST_CHECK_RC(hTest, DnDTransferListInitEx(&list, "", DNDTRANSFERLISTFMT_NATIVE), VERR_INVALID_PARAMETER);
     RTTEST_CHECK_RC(hTest, DnDTransferListInitEx(&list, szPathWellKnown, DNDTRANSFERLISTFMT_NATIVE), VINF_SUCCESS);
     RTTEST_CHECK_RC(hTest, DnDTransferListInitEx(&list, szPathWellKnown, DNDTRANSFERLISTFMT_NATIVE), VERR_WRONG_ORDER);
+    RTTestRestoreAssertions(hTest);
     DnDTransferListDestroy(&list);
 
     /* Empty. */
