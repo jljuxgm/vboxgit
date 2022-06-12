@@ -1,4 +1,4 @@
-/* $Id: DBGFAddrSpace.cpp 87959 2021-03-04 20:27:13Z vboxsync $ */
+/* $Id: DBGFAddrSpace.cpp 89619 2021-06-11 08:09:52Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Address Space Management.
  */
@@ -1205,6 +1205,8 @@ VMMR3DECL(int) DBGFR3AsSymbolByAddr(PUVM pUVM, RTDBGAS hDbgAs, PCDBGFADDRESS pAd
         dbgfR3AsSymbolJoinNames(pSymbol, hMod);
         if (!phMod)
             RTDbgModRelease(hMod);
+        else
+            *phMod = hMod;
     }
 
     RTDbgAsRelease(hRealAS);
