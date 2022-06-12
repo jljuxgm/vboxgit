@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84739 $"
+__version__ = "$Revision: 84772 $"
 
 # Standard Python imports.
 import errno
@@ -1483,6 +1483,16 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
             if fRcTest is False and fMustSucceed is True:
                 reporter.log('Skipping any remaining tests since the previous one failed.');
                 break;
+
+        # Upload VBoxService logs on failure.
+        if  not fRc \
+        and self.oDebug.sVBoxServiceLogPath:
+            sVBoxServiceLogsTarGz    = 'VBoxServiceLogs-%s.tar.gz' % oTestVm.sVmName;
+            sVBoxServiceLogsTarGzAbs = oTestVm.pathJoin(self.oTstDrv.getGuestTempDir(oTestVm), sVBoxServiceLogsTarGz);
+            if self.oTstDrv.txsPackFile(oSession, oTxsSession, \
+                                        sVBoxServiceLogsTarGzAbs, self.oDebug.sVBoxServiceLogPath, fIgnoreErrors = True):
+                self.oTstDrv.txsDownloadFiles(oSession, oTxsSession, [ (sVBoxServiceLogsTarGzAbs, sVBoxServiceLogsTarGz) ], \
+                                              fIgnoreErrors = True);
 
         return (fRc, oTxsSession);
 
