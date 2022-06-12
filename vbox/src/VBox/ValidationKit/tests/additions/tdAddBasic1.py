@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 84482 2020-05-25 08:16:03Z vboxsync $
+# $Id: tdAddBasic1.py 84528 2020-05-26 07:57:22Z vboxsync $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84482 $"
+__version__ = "$Revision: 84528 $"
 
 # Standard Python imports.
 import os;
@@ -594,7 +594,7 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
             reporter.log3('%s -> %s' % (sDesc, eStatus,));
         except:
             if fMustSucceed:
-                reporter.errorXcpt('Getting facility status for %s failed' % (eFacilityType,));
+                reporter.errorXcpt('Getting facility status for "%s" failed' % (sDesc,));
                 fRc = False;
         else:
             if eStatus == vboxcon.AdditionsFacilityStatus_Inactive:
