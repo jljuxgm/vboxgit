@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 88071 2021-03-10 15:10:39Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.h 88519 2021-04-15 10:20:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -320,8 +320,6 @@ private:
         /** Loads settings. */
         void loadSettings();
 
-        /** Saves settings. */
-        void saveSettings();
         /** Cleanups connections. */
         void cleanupConnections();
         /** Cleanups widgets. */
@@ -457,6 +455,9 @@ private:
 
     /** Holds the central-widget instance. */
     UIVirtualBoxManagerWidget *m_pWidget;
+
+    /** Holds the geometry save timer ID. */
+    int  m_iGeometrySaveTimerId;
 };
 
 #define gpManager UIVirtualBoxManager::instance()
