@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: txsclient.py 84921 2020-06-23 20:30:13Z vboxsync $
+# $Id: txsclient.py 84966 2020-06-26 10:32:57Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84921 $"
+__version__ = "$Revision: 84966 $"
 
 # Standard Python imports.
 import array;
@@ -1372,7 +1372,7 @@ class Session(TdTaskBase):
 
         The task returns UUID string (in {}) on success and False on failure.
         """
-        return self.startTask(cMsTimeout, fIgnoreErrors, "bye", self.taskUuid);
+        return self.startTask(cMsTimeout, fIgnoreErrors, "uuid", self.taskUuid);
 
     def syncUuid(self, cMsTimeout = 30000, fIgnoreErrors = False):
         """Synchronous version."""
