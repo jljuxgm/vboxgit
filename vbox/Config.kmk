@@ -1,4 +1,4 @@
-# $Id: Config.kmk 86825 2020-11-06 13:02:10Z vboxsync $
+# $Id: Config.kmk 86827 2020-11-06 13:51:56Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -507,10 +507,7 @@ if1of ($(KBUILD_TARGET), linux solaris)
 endif
 # Enable building PAM modules.
 if1of ($(KBUILD_TARGET), linux solaris)
- # This PAM module requires guest properties.
- ifdef VBOX_WITH_GUEST_PROPS
-  VBOX_WITH_PAM = 1
- endif
+ VBOX_WITH_PAM = 1
 endif
 # Enable internal networking.
 VBOX_WITH_INTERNAL_NETWORKING = 1
@@ -8141,7 +8138,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 86825 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 86827 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
