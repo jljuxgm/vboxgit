@@ -1,4 +1,4 @@
-/* $Id: vfsmod.h 85703 2020-08-11 18:54:01Z vboxsync $ */
+/* $Id: vfsmod.h 87056 2020-12-08 16:28:25Z vboxsync $ */
 /** @file
  * vboxsf - Linux Shared Folders VFS, internal header.
  */
@@ -425,6 +425,17 @@ DECLINLINE(void) vbsf_dentry_chain_increase_parent_ttl(struct dentry *pDirEntry)
 #else
 # define VBSF_GET_F_DENTRY(f)   (f->f_dentry)
 #endif
+
+/**
+ * Macro for checking if the 'data' argument passed in via mount(2) was supplied
+ * by the mount.vboxsf command line utility as a page of data containing the
+ * vbsf_mount_info_new structure.
+ */
+#define VBSF_IS_MOUNT_VBOXSF_DATA(data)        \
+    (((struct vbsf_mount_info_new *)data)->nullchar == '\0' && \
+    ((struct vbsf_mount_info_new *)data)->signature[0] == VBSF_MOUNT_SIGNATURE_BYTE_0 && \
+    ((struct vbsf_mount_info_new *)data)->signature[1] == VBSF_MOUNT_SIGNATURE_BYTE_1 && \
+    ((struct vbsf_mount_info_new *)data)->signature[2] == VBSF_MOUNT_SIGNATURE_BYTE_2)
 
 extern int  vbsf_stat(const char *caller, struct vbsf_super_info *pSuperInfo, SHFLSTRING * path, PSHFLFSOBJINFO result,
                       int ok_to_fail);
