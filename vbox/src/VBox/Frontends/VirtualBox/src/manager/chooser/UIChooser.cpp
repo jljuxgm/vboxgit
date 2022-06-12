@@ -1,4 +1,4 @@
-/* $Id: UIChooser.cpp 84557 2020-05-27 11:56:13Z vboxsync $ */
+/* $Id: UIChooser.cpp 84578 2020-05-27 17:49:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooser class implementation.
  */
@@ -203,6 +203,7 @@ void UIChooser::preparePalette()
 
 void UIChooser::prepareModel()
 {
+    /* Prepare Chooser-model: */
     m_pChooserModel = new UIChooserModel(this);
 }
 
@@ -215,11 +216,12 @@ void UIChooser::prepareWidgets()
         pMainLayout->setContentsMargins(0, 0, 0, 0);
         pMainLayout->setSpacing(0);
 
-        /* Prepare chooser-view: */
+        /* Prepare Chooser-view: */
         m_pChooserView = new UIChooserView(this);
         if (m_pChooserView)
         {
             AssertPtrReturnVoid(model());
+            m_pChooserView->setModel(model());
             m_pChooserView->setScene(model()->scene());
             m_pChooserView->show();
             setFocusProxy(m_pChooserView);
