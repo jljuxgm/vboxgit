@@ -1,4 +1,4 @@
-/* $Id: PDMR0DevHlp.cpp 84755 2020-06-10 12:43:34Z vboxsync $ */
+/* $Id: PDMR0DevHlp.cpp 84809 2020-06-12 06:49:41Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, R0 Device Helper parts.
  */
@@ -157,8 +157,12 @@ static DECLCALLBACK(int) pdmR0DevHlp_PCIPhysRead(PPDMDEVINS pDevIns, PPDMPCIDEV 
     if (   pDevInsIommu
         && pDevInsIommu != pDevIns)
     {
+        size_t const idxBus = pPciDev->Int.s.idxPdmBus;
+        Assert(idxBus < RT_ELEMENTS(pGVM->pdmr0.s.aPciBuses));
+        PPDMPCIBUSR0 pBus = &pGVM->pdmr0.s.aPciBuses[idxBus];
+
         RTGCPHYS GCPhysOut;
-        uint16_t const uDeviceId = VBOX_PCI_BUSDEVFN_MAKE(pPciDev->Int.s.idxPdmBus, pPciDev->uDevFn);
+        uint16_t const uDeviceId = VBOX_PCI_BUSDEVFN_MAKE(pBus->iBus, pPciDev->uDevFn);
         int rc = pIommu->pfnMemRead(pDevInsIommu, uDeviceId, GCPhys, cbRead, &GCPhysOut);
         if (RT_FAILURE(rc))
         {
@@ -205,8 +209,12 @@ static DECLCALLBACK(int) pdmR0DevHlp_PCIPhysWrite(PPDMDEVINS pDevIns, PPDMPCIDEV
     if (   pDevInsIommu
         && pDevInsIommu != pDevIns)
     {
+        size_t const idxBus = pPciDev->Int.s.idxPdmBus;
+        Assert(idxBus < RT_ELEMENTS(pGVM->pdmr0.s.aPciBuses));
+        PPDMPCIBUSR0 pBus = &pGVM->pdmr0.s.aPciBuses[idxBus];
+
         RTGCPHYS GCPhysOut;
-        uint16_t const uDeviceId = VBOX_PCI_BUSDEVFN_MAKE(pPciDev->Int.s.idxPdmBus, pPciDev->uDevFn);
+        uint16_t const uDeviceId = VBOX_PCI_BUSDEVFN_MAKE(pBus->iBus, pPciDev->uDevFn);
         int rc = pIommu->pfnMemWrite(pDevInsIommu, uDeviceId, GCPhys, cbWrite, &GCPhysOut);
         if (RT_FAILURE(rc))
         {
