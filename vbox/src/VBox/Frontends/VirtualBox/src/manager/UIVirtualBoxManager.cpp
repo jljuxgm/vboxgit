@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 84537 2020-05-26 11:50:47Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 84542 2020-05-26 15:53:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -790,7 +790,7 @@ void UIVirtualBoxManager::sltPerformMachineRemove()
 
 void UIVirtualBoxManager::sltPerformMachineMoveToNewGroup()
 {
-    m_pWidget->moveMachineToNewGroup();
+    m_pWidget->moveMachineToGroup();
 }
 
 void UIVirtualBoxManager::sltPerformStartOrShowMachine()
