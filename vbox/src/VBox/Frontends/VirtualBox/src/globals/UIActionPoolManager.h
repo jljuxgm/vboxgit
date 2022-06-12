@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.h 85192 2020-07-10 15:05:54Z vboxsync $ */
+/* $Id: UIActionPoolManager.h 85389 2020-07-20 12:42:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class declaration.
  */
@@ -173,6 +173,15 @@ enum UIActionIndexST
     UIActionIndexST_M_Cloud_S_TryPage,
     UIActionIndexST_M_Cloud_S_Help,
 
+    /* Cloud Console Manager actions: */
+    UIActionIndexST_M_CloudConsoleWindow,
+    UIActionIndexST_M_CloudConsole,
+    UIActionIndexST_M_CloudConsole_S_ApplicationAdd,
+    UIActionIndexST_M_CloudConsole_S_ApplicationRemove,
+    UIActionIndexST_M_CloudConsole_S_ProfileAdd,
+    UIActionIndexST_M_CloudConsole_S_ProfileRemove,
+    UIActionIndexST_M_CloudConsole_T_Details,
+
     /* VM resource Monitor actions: */
     UIActionIndexST_M_VMResourceMonitor,
     UIActionIndexST_M_VMResourceMonitor_M_Columns,
@@ -254,6 +263,13 @@ protected:
     void updateMenuCloud();
     /** Updates 'Cloud' @a pMenu. */
     void updateMenuCloudWrapper(UIMenu *pMenu);
+
+    /** Updates 'Cloud Console' window menu. */
+    void updateMenuCloudConsoleWindow();
+    /** Updates 'Cloud Console' menu. */
+    void updateMenuCloudConsole();
+    /** Updates 'Cloud Console' @a pMenu. */
+    void updateMenuCloudConsoleWrapper(UIMenu *pMenu);
 
    /** Updates 'VM Resource Monitor' menu. */
     void updateMenuVMResourceMonitor();

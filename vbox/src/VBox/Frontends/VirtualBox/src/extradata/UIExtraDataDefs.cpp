@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 85035 2020-07-01 16:45:17Z vboxsync $ */
+/* $Id: UIExtraDataDefs.cpp 85389 2020-07-20 12:42:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -112,6 +112,11 @@ const char *UIExtraDataDefs::GUI_HostNetworkManager_Details_Expanded = "GUI/Host
 /* Cloud Profile Manager: */
 const char *UIExtraDataDefs::GUI_CloudProfileManager_Restrictions = "GUI/CloudProfileManager/Restrictions";
 const char *UIExtraDataDefs::GUI_CloudProfileManager_Details_Expanded = "GUI/CloudProfileManager/Details/Expanded";
+
+/* Cloud Console Manager: */
+const char *UIExtraDataDefs::GUI_CloudConsoleManager_Application = "GUI/CloudConsoleManager/Application";
+const char *UIExtraDataDefs::GUI_CloudConsoleManager_Restrictions = "GUI/CloudConsoleManager/Restrictions";
+const char *UIExtraDataDefs::GUI_CloudConsoleManager_Details_Expanded = "GUI/CloudConsoleManager/Details/Expanded";
 
 #ifdef VBOX_GUI_WITH_EXTRADATA_MANAGER_UI
 /* Extra-data Manager: */

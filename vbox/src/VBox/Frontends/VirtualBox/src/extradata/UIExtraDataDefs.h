@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 85035 2020-07-01 16:45:17Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 85389 2020-07-20 12:42:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -219,6 +219,16 @@ namespace UIExtraDataDefs
         SHARED_LIBRARY_STUFF extern const char *GUI_CloudProfileManager_Restrictions;
         /** Holds whether Cloud Profile Manager details expanded. */
         SHARED_LIBRARY_STUFF extern const char *GUI_CloudProfileManager_Details_Expanded;
+    /** @} */
+
+    /** @name Cloud Console Manager
+      * @{ */
+        /** Holds Cloud Console Manager applications/profiles. */
+        SHARED_LIBRARY_STUFF extern const char *GUI_CloudConsoleManager_Application;
+        /** Holds Cloud Console Manager restrictions. */
+        SHARED_LIBRARY_STUFF extern const char *GUI_CloudConsoleManager_Restrictions;
+        /** Holds whether Cloud Console Manager details expanded. */
+        SHARED_LIBRARY_STUFF extern const char *GUI_CloudConsoleManager_Details_Expanded;
     /** @} */
 
 #ifdef VBOX_GUI_WITH_EXTRADATA_MANAGER_UI
