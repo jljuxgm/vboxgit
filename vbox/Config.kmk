@@ -1,4 +1,4 @@
-# $Id: Config.kmk 87237 2021-01-13 13:29:22Z vboxsync $
+# $Id: Config.kmk 87260 2021-01-15 11:12:00Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1149,7 +1149,7 @@ ifeq ($(KBUILD_TARGET),win)
  VBOX_WITH_KCHMVIEWER=
 endif
 
-ifn1of ($(KBUILD_TARGET_ARCH), x86 amd64)
+ifn1of ($(KBUILD_TARGET_ARCH), x86 amd64 arm64)
  VBOX_WITH_ADDITION_DRIVERS=
  VBOX_WITH_DEBUGGER=
  VBOX_WITH_DOCS=
@@ -1969,6 +1969,8 @@ ifeq ($(KBUILD_TARGET),win)
 endif
 if1of ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH), win.amd64 linux.amd64)
  VBOX_LIB_VMM_LAZY      = $(PATH_STAGE_LIB)/VMMR3LazyImp$(VBOX_SUFF_LIB)
+else if1of ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH), darwin.arm64)
+ VBOX_LIB_VMM_LAZY      = $(PATH_STAGE_LIB)/VMMR3Imp.dylib
 else
  VBOX_LIB_VMM_LAZY      = $(LIB_VMM)
 endif
@@ -8180,7 +8182,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 87237 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 87260 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
