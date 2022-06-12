@@ -1,4 +1,4 @@
-/* $Id: DBGCRemoteKd.cpp 86110 2020-09-13 08:48:13Z vboxsync $ */
+/* $Id: DBGCRemoteKd.cpp 86113 2020-09-13 09:13:18Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Windows Kd Remote Stub.
  */
@@ -54,6 +54,7 @@
 #define NTSTATUS_UNSUCCESSFUL                       UINT32_C(0xc0000001)
 /** NT status code - operation not implemented. */
 #define NTSTATUS_NOT_IMPLEMENTED                    UINT32_C(0xc0000002)
+
 
 /*********************************************************************************************************************************
 *   Structures and Typedefs                                                                                                      *
