@@ -1,4 +1,4 @@
-/* $Id: UINetworkManager.h 87220 2021-01-12 07:56:08Z vboxsync $ */
+/* $Id: UINetworkManager.h 87232 2021-01-13 11:00:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkManager class declaration.
  */
@@ -160,9 +160,9 @@ private:
     /** @name Tree-widget stuff.
       * @{ */
         /** Creates a new host network tree-widget item on the basis of passed @a data, @a fChooseItem if requested. */
-        void createItemForNetworkHost(const UIDataHostNetwork &data, bool fChooseItem);
+        void createItemForHostNetwork(const UIDataHostNetwork &data, bool fChooseItem);
         /** Updates passed host network tree-widget item on the basis of passed @a data, @a fChooseItem if requested. */
-        void updateItemForNetworkHost(const UIDataHostNetwork &data, bool fChooseItem, UIItemHostNetwork *pItem);
+        void updateItemForHostNetwork(const UIDataHostNetwork &data, bool fChooseItem, UIItemHostNetwork *pItem);
     /** @} */
 
     /** @name General variables.
