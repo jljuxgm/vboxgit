@@ -1,4 +1,4 @@
-/* $Id: DrvAudioCommon.cpp 88034 2021-03-09 01:32:50Z vboxsync $ */
+/* $Id: DrvAudioCommon.cpp 88035 2021-03-09 01:34:12Z vboxsync $ */
 /** @file
  * Intermedia audio driver, common routines.
  *
@@ -197,6 +197,7 @@ void PDMAudioDeviceFree(PPDMAUDIODEVICE pDev)
 PPDMAUDIODEVICE PDMAudioDeviceDup(PPDMAUDIODEVICE pDev, bool fCopyUserData)
 {
     AssertPtrReturn(pDev, NULL);
+    Assert(pDev->uMagic == PDMAUDIODEVICE_MAGIC);
 
     PPDMAUDIODEVICE pDevDup = PDMAudioDeviceAlloc(sizeof(*pDev) + (fCopyUserData ? pDev->cbData : 0));
     if (pDevDup)
