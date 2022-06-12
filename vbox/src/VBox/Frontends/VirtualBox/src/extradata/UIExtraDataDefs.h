@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 86764 2020-10-30 10:08:52Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 86791 2020-11-03 11:21:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -437,7 +437,7 @@ namespace UIExtraDataDefs
 
     /** @name Help Browser
       * @{ */
-        SHARED_LIBRARY_STUFF extern const char *GUI_HelpBrowserLastURL;
+        SHARED_LIBRARY_STUFF extern const char *GUI_HelpBrowserLastURLList;
         SHARED_LIBRARY_STUFF extern const char *GUI_HelpBrowserDialogGeometry;
     /** @} */
 

@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 86764 2020-10-30 10:08:52Z vboxsync $ */
+/* $Id: UIExtraDataDefs.cpp 86791 2020-11-03 11:21:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -238,7 +238,7 @@ const char *UIExtraDataDefs::GUI_LogViewerNoFontStyleName = "noFontStyleName";
 const char *UIExtraDataDefs::GUI_GuestControl_LogViewerVisiblePanels = "GUI/LogViewerVisiblePanels";
 
 /* Help Browser */
-const char *UIExtraDataDefs::GUI_HelpBrowserLastURL = "GUI/HelpBrowserLastURL";
+const char *UIExtraDataDefs::GUI_HelpBrowserLastURLList = "GUI/HelpBrowserLastURLList";
 const char *UIExtraDataDefs::GUI_HelpBrowserDialogGeometry = "GUI/HelpBrowserDialogGeomety";
 
 /* VM Resource Monitor: */
