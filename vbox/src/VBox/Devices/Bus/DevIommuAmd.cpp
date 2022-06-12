@@ -1,4 +1,4 @@
-/* $Id: DevIommuAmd.cpp 86920 2020-11-19 13:48:30Z vboxsync $ */
+/* $Id: DevIommuAmd.cpp 86926 2020-11-20 08:35:32Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - AMD implementation.
  */
@@ -3315,13 +3315,12 @@ static int iommuAmdRemapIntr(PPDMDEVINS pDevIns, uint16_t uDevId, PCDTE_T pDte, 
             {
                 if (Irte.n.u3IntrType <= VBOX_MSI_DELIVERY_MODE_LOWEST_PRIO)
                 {
-                    /* Preserve all bits from the source MSI address that don't map 1:1 from the IRTE. */
-                    pMsiOut->Addr.u64 = pMsiIn->Addr.u64;
+                    /* Preserve all bits from the source MSI address and data that don't map 1:1 from the IRTE. */
+                    *pMsiOut = *pMsiIn;
+
                     pMsiOut->Addr.n.u1DestMode = Irte.n.u1DestMode;
                     pMsiOut->Addr.n.u8DestId   = Irte.n.u8Dest;
 
-                    /* Preserve all bits from the source MSI data that don't map 1:1 from the IRTE. */
-                    pMsiOut->Data.u32 = pMsiIn->Data.u32;
                     pMsiOut->Data.n.u8Vector       = Irte.n.u8Vector;
                     pMsiOut->Data.n.u3DeliveryMode = Irte.n.u3IntrType;
 
