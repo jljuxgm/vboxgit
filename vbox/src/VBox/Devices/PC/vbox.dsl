@@ -1,4 +1,4 @@
-/* $Id: vbox.dsl 85347 2020-07-15 10:17:15Z vboxsync $ */
+/* $Id: vbox.dsl 85349 2020-07-15 12:20:45Z vboxsync $ */
 /** @file
  * VirtualBox ACPI
  */
@@ -376,7 +376,7 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "VBOX  ", "VBOXBIOS", 2)
         Offset (0x200),
         VAIN, 32,
         IOMA, 32, // AMD IOMMU
-        SIOA, 32, // Southbridge IO APIC (when AMD IOMMU is present) 
+        SIOA, 32, // Southbridge IO APIC (when AMD IOMMU is present)
     }
 
     Scope (\_SB)
