@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 87743 2021-02-12 17:43:03Z vboxsync $
+# $Id: Makefile.kmk 87826 2021-02-21 23:08:44Z vboxsync $
 ## @file
 # Sub-makefile for NAT Networking
 #
@@ -92,11 +92,8 @@ VBoxNetNAT_INCS += . $(addprefix ../../Devices/Network/lwip-new/,$(LWIP_INCS))
 
 VBoxNetNAT_SOURCES = \
 	VBoxNetLwipNAT.cpp \
-	../NetLib/VBoxNetBaseService.cpp \
+	../NetLib/IntNetIf.cpp \
 	../NetLib/VBoxNetPortForwardString.cpp \
-	../NetLib/VBoxNetIntIf.cpp \
-	../NetLib/VBoxNetUDP.cpp \
-	../NetLib/VBoxNetARP.cpp \
 	$(addprefix ../../Devices/Network/lwip-new/,$(LWIP_SOURCES)) \
 	proxy_pollmgr.c \
 	proxy_rtadvd.c \
