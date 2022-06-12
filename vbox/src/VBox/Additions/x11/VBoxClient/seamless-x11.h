@@ -1,4 +1,4 @@
-/* $Id: seamless-x11.h 85121 2020-07-08 19:33:26Z vboxsync $ */
+/* $Id: seamless-x11.h 86394 2020-10-01 17:06:30Z vboxsync $ */
 /** @file
  * Seamless mode - X11 guests.
  */
@@ -223,15 +223,7 @@ public:
     /**
      * Shutdown seamless event monitoring.
      */
-    void uninit(void)
-    {
-        if (mHostCallback)
-            stop();
-        mHostCallback = NULL;
-        if (mDisplay)
-            XCloseDisplay(mDisplay);
-        mDisplay = NULL;
-    }
+    void uninit(void);
 
     /**
      * Initialise seamless event reporting in the guest.
