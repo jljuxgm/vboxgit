@@ -1,4 +1,4 @@
-# $Id: Config.kmk 89362 2021-05-28 14:33:26Z vboxsync $
+# $Id: Config.kmk 89428 2021-06-01 11:47:30Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2890,7 +2890,8 @@ ifeq ($(KBUILD_TARGET), darwin)
         /System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Commands \
         /System/Library/Frameworks/JavaVM.framework/Versions/1.6.0/Commands \
         $(if-expr $(VBOX_XCODE_VERSION_MAJOR) >= 4,/System/Library/Frameworks/JavaVM.framework/Versions/A/Commands,) \
-        ) /System/Library/Frameworks/JavaVM.framework/Versions/1.6.0/Commands)
+        $(if-expr $(VBOX_XCODE_VERSION_MAJOR) >= 10,/Library/Java/JavaVirtualMachines/jdk1.8.*.jdk/Contents/Home/bin,) \
+        ) /usr/bin)
  VBOX_JAVA      = $(VBOX_JAVA_COMMANDS)/java
  VBOX_JAVAC     = $(VBOX_JAVA_COMMANDS)/javac
  VBOX_JAVAH     = $(VBOX_JAVA_COMMANDS)/javah
@@ -2898,7 +2899,10 @@ ifeq ($(KBUILD_TARGET), darwin)
  VBOX_JAVADOC   = $(VBOX_JAVA_COMMANDS)/javadoc
  VBOX_WSIMPORT  = $(VBOX_JAVA_COMMANDS)/wsimport
  if $(VBOX_XCODE_VERSION_MAJOR) >= 4 # Lion (4.1-preview 5) has a broken CurrentJDK link.  Blindly applying it to 4.0.
-  VBOX_JAVA_INC = $(VBOX_PATH_MACOSX_SDK)/System/Library/Frameworks/JavaVM.framework/Versions/A/Headers
+  VBOX_JAVA_INC = $(firstword $(wildcard \
+        $(VBOX_PATH_MACOSX_SDK)/System/Library/Frameworks/JavaVM.framework/Versions/A/Headers \
+        /Library/Java/JavaVirtualMachines/jdk1.8.*.jdk/Contents/Home/include \
+        ) )
  else
   VBOX_JAVA_INC = $(VBOX_PATH_MACOSX_SDK)/System/Library/Frameworks/JavaVM.framework/Versions/1.6/Headers
  endif
@@ -8222,7 +8226,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 89362 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 89428 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
