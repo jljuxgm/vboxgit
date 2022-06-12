@@ -1,4 +1,4 @@
-/* $Id: UIStarter.cpp 88656 2021-04-22 14:55:38Z vboxsync $ */
+/* $Id: UIStarter.cpp 88657 2021-04-22 15:11:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIStarter class implementation.
  */
@@ -166,8 +166,6 @@ void UIStarter::sltHandleCommitDataRequest()
         return;
 
 #ifdef VBOX_RUNTIME_UI
-    /* Temporary override the default close action to 'SaveState' if necessary: */
-    if (gpMachine->uisession()->defaultCloseAction() == MachineCloseAction_Invalid)
-        gpMachine->uisession()->setDefaultCloseAction(MachineCloseAction_SaveState);
+    gpMachine->uisession()->saveState();
 #endif
 }
