@@ -1,4 +1,4 @@
-/* $Id: DevIoApic.cpp 89066 2021-05-17 05:41:08Z vboxsync $ */
+/* $Id: DevIoApic.cpp 89070 2021-05-17 05:49:28Z vboxsync $ */
 /** @file
  * IO APIC - Input/Output Advanced Programmable Interrupt Controller.
  */
@@ -1610,7 +1610,7 @@ static DECLCALLBACK(int) ioapicR3Construct(PPDMDEVINS pDevIns, int iInstance, PC
     AssertPtr(pThisCC->pIoApicHlp->pfnApicBusDeliver);
     AssertPtr(pThisCC->pIoApicHlp->pfnLock);
     AssertPtr(pThisCC->pIoApicHlp->pfnUnlock);
-    AssertPtr(pThisCC->pIoApicHlp->pfnIsLockOwner);
+    AssertPtr(pThisCC->pIoApicHlp->pfnLockIsOwner);
     AssertPtr(pThisCC->pIoApicHlp->pfnIommuMsiRemap);
 
     /*
@@ -1705,7 +1705,7 @@ static DECLCALLBACK(int) ioapicRZConstruct(PPDMDEVINS pDevIns)
     AssertPtr(pThisCC->pIoApicHlp->pfnApicBusDeliver);
     AssertPtr(pThisCC->pIoApicHlp->pfnLock);
     AssertPtr(pThisCC->pIoApicHlp->pfnUnlock);
-    AssertPtr(pThisCC->pIoApicHlp->pfnIsLockOwner);
+    AssertPtr(pThisCC->pIoApicHlp->pfnLockIsOwner);
     AssertPtr(pThisCC->pIoApicHlp->pfnIommuMsiRemap);
 
     rc = PDMDevHlpMmioSetUpContext(pDevIns, pThis->hMmio, ioapicMmioWrite, ioapicMmioRead, NULL /*pvUser*/);
