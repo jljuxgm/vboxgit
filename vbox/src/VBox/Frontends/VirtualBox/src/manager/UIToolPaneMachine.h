@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneMachine.h 83482 2020-03-30 13:35:12Z vboxsync $ */
+/* $Id: UIToolPaneMachine.h 85396 2020-07-21 09:43:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolPaneMachine class declaration.
  */
@@ -38,6 +38,7 @@ class QVBoxLayout;
 class UIActionPool;
 class UIDetails;
 class UIErrorPane;
+class UIPerformanceMonitor;
 class UISnapshotPane;
 class UIVirtualMachineItem;
 class UIVMLogViewerWidget;
@@ -124,6 +125,8 @@ private:
     UISnapshotPane      *m_pPaneSnapshots;
     /** Holds the Logviewer pane instance. */
     UIVMLogViewerWidget *m_pPaneLogViewer;
+    /** Holds the Performance Monitor pane instance. */
+    UIPerformanceMonitor *m_pPanePerformanceMonitor;
 
     /** Holds whether this pane is active. */
     bool  m_fActive;
@@ -135,4 +138,3 @@ private:
 };
 
 #endif /* !FEQT_INCLUDED_SRC_manager_UIToolPaneMachine_h */
-

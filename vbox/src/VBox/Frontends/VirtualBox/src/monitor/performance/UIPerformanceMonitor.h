@@ -1,4 +1,4 @@
-/* $Id: UIPerformanceMonitor.h 85328 2020-07-14 09:54:04Z vboxsync $ */
+/* $Id: UIPerformanceMonitor.h 85396 2020-07-21 09:43:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPerformanceMonitor class declaration.
  */
@@ -28,11 +28,11 @@
 
 /* COM includes: */
 #include "COMEnums.h"
-#include "CConsole.h"
 #include "CGuest.h"
 #include "CMachine.h"
 #include "CMachineDebugger.h"
 #include "CPerformanceCollector.h"
+#include "CSession.h"
 
 /* GUI includes: */
 #include "QIWithRetranslateUI.h"
@@ -108,10 +108,10 @@ class  SHARED_LIBRARY_STUFF UIPerformanceMonitor : public QIWithRetranslateUI<QW
 public:
 
     /** Constructs information-tab passing @a pParent to the QWidget base-class constructor.
-      * @param machine is machine reference.
-      * @param console is machine console reference. */
-    UIPerformanceMonitor(QWidget *pParent, const CMachine &machine, const CConsole &console);
+      * @param machine is machine reference. */
+    UIPerformanceMonitor(QWidget *pParent, const CMachine &machine);
     ~UIPerformanceMonitor();
+    void setMachine(const CMachine &machine);
 
  public slots:
 
@@ -149,12 +149,12 @@ private:
     QString dataColorString(const QString &strChartName, int iDataIndex);
 
     bool m_fGuestAdditionsAvailable;
-    CMachine m_machine;
-    CConsole m_console;
+    CMachine m_comMachine;
+    CSession m_comSession;
     CGuest m_comGuest;
 
     CPerformanceCollector m_performanceMonitor;
-    CMachineDebugger      m_machineDebugger;
+    CMachineDebugger      m_comMachineDebugger;
     /** Holds the instance of layout we create. */
     QVBoxLayout *m_pMainLayout;
     QTimer *m_pTimer;
