@@ -1,4 +1,4 @@
-' $Id: configure.vbs 86249 2020-09-23 17:03:12Z vboxsync $
+' $Id: configure.vbs 87407 2021-01-24 16:58:27Z vboxsync $
 '' @file
 ' The purpose of this script is to check for all external tools, headers, and
 ' libraries VBox OSE depends on.
@@ -139,6 +139,13 @@ end sub
 ' Append text to the log file.
 sub LogPrint(str)
    FileAppendLine g_strLogFile, str
+   'Wscript.Echo "dbg: " & str
+end sub
+
+''
+' Debug output.
+sub DbgPrint(str)
+   'FileAppendLine g_strLogFile, str
    'Wscript.Echo "dbg: " & str
 end sub
 

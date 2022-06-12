@@ -1,4 +1,4 @@
-' $Id: helpers.vbs 85842 2020-08-19 21:25:14Z vboxsync $
+' $Id: helpers.vbs 87407 2021-01-24 16:58:27Z vboxsync $
 '' @file
 ' Common VBScript helpers used by configure.vbs and later others.
 '
@@ -269,6 +269,7 @@ end sub
 ' Checks if the file exists.
 function FileExists(strFilename)
    FileExists = g_objFileSys.FileExists(DosSlashes(strFilename))
+   DbgPrint "FileExists(" & strFilename & ") -> " & FileExists
 end function
 
 
@@ -276,6 +277,7 @@ end function
 ' Checks if the directory exists.
 function DirExists(strDirectory)
    DirExists = g_objFileSys.FolderExists(DosSlashes(strDirectory))
+   DbgPrint "DirExists(" & strDirectory & ") -> " & DirExists
 end function
 
 
