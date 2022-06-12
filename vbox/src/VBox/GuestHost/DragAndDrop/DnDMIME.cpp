@@ -1,4 +1,4 @@
-/* $Id: DnDMIME.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: DnDMIME.cpp 85371 2020-07-17 10:02:58Z vboxsync $ */
 /** @file
  * DnD - Path list class.
  */
@@ -34,10 +34,6 @@ bool DnDMIMEHasFileURLs(const char *pcszFormat, size_t cchFormatMax)
 
 bool DnDMIMENeedsDropDir(const char *pcszFormat, size_t cchFormatMax)
 {
-    bool fNeedsDropDir = false;
-    if (!RTStrNICmp(pcszFormat, "text/uri-list", cchFormatMax)) /** @todo Add "x-special/gnome-icon-list"? */
-        fNeedsDropDir = true;
-
-    return fNeedsDropDir;
+    return DnDMIMEHasFileURLs(pcszFormat, cchFormatMax);
 }
 

@@ -1,4 +1,4 @@
-/* $Id: VBoxDnD.h 85121 2020-07-08 19:33:26Z vboxsync $ */
+/* $Id: VBoxDnD.h 85371 2020-07-17 10:02:58Z vboxsync $ */
 /** @file
  * VBoxDnD.h - Windows-specific bits of the drag'n drop service.
  */
@@ -70,7 +70,7 @@ public:
 
     int Abort(void);
     void SetStatus(Status status);
-    int Signal(const RTCString &strFormat, const void *pvData, uint32_t cbData);
+    int Signal(const RTCString &strFormat, const void *pvData, size_t cbData);
 
 protected:
 
@@ -87,7 +87,7 @@ protected:
     RTSEMEVENT  mEventDropped;
     RTCString   mstrFormat;
     void       *mpvData;
-    uint32_t    mcbData;
+    size_t      mcbData;
 };
 
 class VBoxDnDDropSource : public IDropSource
