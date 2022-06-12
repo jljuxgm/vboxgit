@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic4.h 87915 2021-03-02 15:13:46Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic4.h 87938 2021-03-03 13:49:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic4 class declaration.
  */
@@ -37,7 +37,6 @@
 
 /* Forward declarations: */
 class QButtonGroup;
-class QGroupBox;
 class QRadioButton;
 class QIRichTextLabel;
 class QIToolButton;
@@ -82,8 +81,6 @@ protected:
        QRadioButton *m_pDiskExisting;
        UIMediaComboBox *m_pDiskSelector;
        QIToolButton *m_pDiskSelectionButton;
-       QGroupBox *m_pMediumVariantContainer;
-       QGroupBox *m_pSizeContainer;
     /** @} */
     SelectedDiskSource m_enmSelectedDiskSource;
 };
