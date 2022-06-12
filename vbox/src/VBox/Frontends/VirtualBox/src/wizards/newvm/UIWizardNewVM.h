@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.h 84965 2020-06-26 09:06:12Z vboxsync $ */
+/* $Id: UIWizardNewVM.h 84971 2020-06-26 14:57:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class declaration.
  */
@@ -35,7 +35,6 @@ struct UIUnattendedInstallData
     bool m_fUnattendedEnabled;
     QUuid m_uMachineUid;
     QString m_strISOPath;
-    QString m_strGAIOSPath;
     bool m_fStartHeadless;
     QString m_strUserName;
     QString m_strPassword;
@@ -46,6 +45,8 @@ struct UIUnattendedInstallData
     QString m_strDetectedOSLanguages;
     QString m_strDetectedOSHints;
     QString m_strProductKey;
+    bool m_fInstallGuestAdditions;
+    QString m_strGuestAdditionsISOPath;
 };
 
 /** New Virtual Machine wizard: */

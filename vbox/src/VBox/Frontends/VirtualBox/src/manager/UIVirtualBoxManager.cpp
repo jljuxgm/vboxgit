@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 84965 2020-06-26 09:06:12Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 84971 2020-06-26 14:57:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -616,6 +616,8 @@ void UIVirtualBoxManager::sltOpenNewMachineWizard()
         unattendedInstallData.m_strUserName = comUnattendedInstaller.GetUser();
         unattendedInstallData.m_strPassword = comUnattendedInstaller.GetPassword();
         unattendedInstallData.m_strHostname = comUnattendedInstaller.GetHostname();
+        unattendedInstallData.m_fInstallGuestAdditions = comUnattendedInstaller.GetInstallGuestAdditions();
+        unattendedInstallData.m_strGuestAdditionsISOPath = comUnattendedInstaller.GetAdditionsIsoPath();
 
         pWizard->setDefaultUnattendedInstallData(unattendedInstallData);
 

@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasicInstallSetup.h 84969 2020-06-26 13:56:07Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasicInstallSetup.h 84971 2020-06-26 14:57:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasicInstallSetup class declaration.
  */
@@ -40,11 +40,14 @@ public:
 
     UIWizardNewVMPageInstallSetup();
 
-    /** @name Property getters
+    /** @name Property getters/setters
       * @{ */
         QString userName() const;
+        void setUserName(const QString &strName);
         QString password() const;
+        void setPassword(const QString &strPassword);
         QString hostname() const;
+        void setHostname(const QString &strHostName);
     /** @} */
 
 protected:
@@ -58,15 +61,14 @@ protected:
 class UIWizardNewVMPageBasicInstallSetup : public UIWizardPage, public UIWizardNewVMPageInstallSetup
 {
     Q_OBJECT;
-    Q_PROPERTY(QString userName READ userName);
-    Q_PROPERTY(QString password READ password);
-    Q_PROPERTY(QString hostname READ hostname);
+    Q_PROPERTY(QString userName READ userName WRITE setUserName);
+    Q_PROPERTY(QString password READ password WRITE setPassword);
+    Q_PROPERTY(QString hostname READ hostname WRITE setHostname);
 
 public:
 
     /* Constructor: */
     UIWizardNewVMPageBasicInstallSetup();
-    void setDefaultUnattendedInstallData(const UIUnattendedInstallData &unattendedInstallData);
     virtual int nextId() const /* override */;
 
 private slots:
