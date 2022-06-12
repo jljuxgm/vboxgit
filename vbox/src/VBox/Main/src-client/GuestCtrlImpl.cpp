@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImpl.cpp 84585 2020-05-28 12:14:17Z vboxsync $ */
+/* $Id: GuestCtrlImpl.cpp 84814 2020-06-12 12:43:02Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -504,7 +504,8 @@ HRESULT Guest::shutdown(const std::vector<GuestShutdownFlag_T> &aFlags)
         for (size_t i = 0; i < aFlags.size(); ++i)
             fFlags |= aFlags[i];
 
-    const uint32_t fValidFlags = GuestShutdownFlag_None | GuestShutdownFlag_PowerOff | GuestShutdownFlag_Reboot;
+    const uint32_t fValidFlags = GuestShutdownFlag_None
+                               | GuestShutdownFlag_PowerOff | GuestShutdownFlag_Reboot | GuestShutdownFlag_Force;
     if (fFlags & ~fValidFlags)
         return setError(E_INVALIDARG,tr("Unknown flags: flags value %#x, invalid: %#x"), fFlags, fFlags & ~fValidFlags);
 

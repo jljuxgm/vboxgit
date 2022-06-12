@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 84585 2020-05-28 12:14:17Z vboxsync $ */
+/* $Id: VBoxManageControlVM.cpp 84814 2020-06-12 12:43:02Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of the controlvm command.
  */
@@ -692,12 +692,15 @@ RTEXITCODE handleControlVM(HandlerArg *a)
             const bool fReboot = !strcmp(a->argv[1], "reboot");
 
             com::SafeArray<GuestShutdownFlag_T> aShutdownFlags;
-            aShutdownFlags.resize(1);
-
             if (fReboot)
                 aShutdownFlags.push_back(GuestShutdownFlag_Reboot);
             else
                 aShutdownFlags.push_back(GuestShutdownFlag_PowerOff);
+
+            if (   a->argc >= 3
+                && !strcmp(a->argv[2], "--force"))
+                aShutdownFlags.push_back(GuestShutdownFlag_Force);
+
             CHECK_ERROR(pGuest, Shutdown(ComSafeArrayAsInParam(aShutdownFlags)));
             if (FAILED(rc))
             {
