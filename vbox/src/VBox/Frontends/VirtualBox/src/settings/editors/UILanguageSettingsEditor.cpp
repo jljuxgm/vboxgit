@@ -1,4 +1,4 @@
-/* $Id: UILanguageSettingsEditor.cpp 87721 2021-02-11 09:44:37Z vboxsync $ */
+/* $Id: UILanguageSettingsEditor.cpp 88794 2021-04-30 12:14:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UILanguageSettingsEditor class implementation.
  */
@@ -291,7 +291,7 @@ void UILanguageSettingsEditor::sltHandleItemPainting(QTreeWidgetItem *pItem, QPa
     {
         /* We are drawing a separator line in the tree: */
         const QRect rect = m_pTreeWidget->visualItemRect(pLanguageItem);
-        pPainter->setPen(m_pTreeWidget->palette().color(QPalette::Mid));
+        pPainter->setPen(m_pTreeWidget->palette().color(QPalette::Window));
         pPainter->drawLine(rect.x(), rect.y() + rect.height() - 1,
                            rect.x() + rect.width(), rect.y() + rect.height() - 1);
     }
