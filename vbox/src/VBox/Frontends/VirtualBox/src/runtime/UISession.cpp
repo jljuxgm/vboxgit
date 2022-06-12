@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 84790 2020-06-11 10:30:36Z vboxsync $ */
+/* $Id: UISession.cpp 85772 2020-08-14 14:06:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -50,6 +50,7 @@
 #include "UIFrameBuffer.h"
 #include "UISettingsDialogSpecific.h"
 #ifdef VBOX_WS_MAC
+# include "UICocoaApplication.h"
 # include "VBoxUtils-darwin.h"
 #endif
 #ifdef VBOX_GUI_WITH_KEYS_RESET_HANDLER
@@ -1310,7 +1311,14 @@ void UISession::loadSessionSettings()
         QAction *pGuestAutoresizeSwitch = actionPool()->action(UIActionIndexRT_M_View_T_GuestAutoresize);
         pGuestAutoresizeSwitch->setChecked(gEDataManager->guestScreenAutoResizeEnabled(uMachineID));
 
-#ifndef VBOX_WS_MAC
+#ifdef VBOX_WS_MAC
+        /* User-element (Menu-bar and Dock) options: */
+        {
+            const bool fDisabled = gEDataManager->guiFeatureEnabled(GUIFeatureType_NoUserElements);
+            if (fDisabled)
+                UICocoaApplication::instance()->hideUserElements();
+        }
+#else /* !VBOX_WS_MAC */
         /* Menu-bar options: */
         {
             const bool fEnabledGlobally = !gEDataManager->guiFeatureEnabled(GUIFeatureType_NoMenuBar);

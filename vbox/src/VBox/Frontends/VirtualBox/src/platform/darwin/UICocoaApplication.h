@@ -1,4 +1,4 @@
-/* $Id: UICocoaApplication.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UICocoaApplication.h 85772 2020-08-14 14:06:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICocoaApplication class declaration.
  */
@@ -68,6 +68,9 @@ public:
 
     /** Hides the application. */
     void hide();
+
+    /** Hides user elements such as menu-bar and dock. */
+    void hideUserElements();
 
     /** Register native @a pfnCallback of the @a pvUser taking event @a fMask into account. */
     void registerForNativeEvents(uint32_t fMask, PFNVBOXCACALLBACK pfnCallback, void *pvUser);

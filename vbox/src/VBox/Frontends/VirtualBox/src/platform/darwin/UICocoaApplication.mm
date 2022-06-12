@@ -1,4 +1,4 @@
-/* $Id: UICocoaApplication.mm 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UICocoaApplication.mm 85772 2020-08-14 14:06:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICocoaApplication class implementation.
  */
@@ -321,6 +321,11 @@ bool UICocoaApplication::isActive() const
 void UICocoaApplication::hide()
 {
     [m_pNative hide:m_pNative];
+}
+
+void UICocoaApplication::hideUserElements()
+{
+    [m_pNative setPresentationOptions:NSApplicationPresentationHideMenuBar | NSApplicationPresentationHideDock];
 }
 
 void UICocoaApplication::registerForNativeEvents(uint32_t fMask, PFNVBOXCACALLBACK pfnCallback, void *pvUser)

@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 85454 2020-07-24 10:50:38Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 85772 2020-08-14 14:06:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -1909,6 +1909,7 @@ QStringList UIExtraDataManagerWindow::knownExtraDataKeys()
            << GUI_PreventApplicationUpdate << GUI_UpdateDate << GUI_UpdateCheckCount
 #endif /* VBOX_GUI_WITH_NETWORK_MANAGER */
            << GUI_Progress_LegacyMode
+           << GUI_Customizations
            << GUI_RestrictedGlobalSettingsPages << GUI_RestrictedMachineSettingsPages
            << GUI_LanguageID
            << GUI_ActivateHoveredMachineWindow
