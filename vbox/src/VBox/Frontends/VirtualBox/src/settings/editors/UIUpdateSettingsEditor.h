@@ -1,4 +1,4 @@
-/* $Id: UIUpdateSettingsEditor.h 86128 2020-09-15 16:14:08Z vboxsync $ */
+/* $Id: UIUpdateSettingsEditor.h 86151 2020-09-17 12:03:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUpdateSettingsEditor class declaration.
  */
@@ -35,25 +35,20 @@ class QCheckBox;
 class QComboBox;
 class QLabel;
 
-/** QWidget subclass used as a global update settings editor. */
+/** QWidget subclass used as a update settings editor. */
 class SHARED_LIBRARY_STUFF UIUpdateSettingsEditor : public QIWithRetranslateUI<QWidget>
 {
     Q_OBJECT;
 
 public:
 
-    /** Constructs global update settings editor passing @a pParent to the base-class. */
+    /** Constructs update settings editor passing @a pParent to the base-class. */
     UIUpdateSettingsEditor(QWidget *pParent = 0);
 
     /** Defines editor @a guiValue. */
     void setValue(const VBoxUpdateData &guiValue);
     /** Returns editor value. */
     VBoxUpdateData value() const;
-
-    /** Returns period type. */
-    VBoxUpdateData::PeriodType periodType() const;
-    /** Returns branch type. */
-    VBoxUpdateData::BranchType branchType() const;
 
 protected:
 
@@ -75,6 +70,11 @@ private:
     void prepareWidgets();
     /** Prepares connections. */
     void prepareConnections();
+
+    /** Returns period type. */
+    VBoxUpdateData::PeriodType periodType() const;
+    /** Returns branch type. */
+    VBoxUpdateData::BranchType branchType() const;
 
     /** Holds the value to be set. */
     VBoxUpdateData  m_guiValue;
