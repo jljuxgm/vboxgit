@@ -1,4 +1,4 @@
-/* $Id: VMEmt.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VMEmt.cpp 86118 2020-09-14 09:09:05Z vboxsync $ */
 /** @file
  * VM - Virtual Machine, The Emulation Thread.
  */
@@ -1151,11 +1151,12 @@ VMMR3_INT_DECL(int) VMR3WaitHalted(PVM pVM, PVMCPU pVCpu, bool fIgnoreInterrupts
     /*
      * Do the halt.
      */
-    VMCPU_ASSERT_STATE(pVCpu, VMCPUSTATE_STARTED);
+    VMCPU_ASSERT_STATE_2(pVCpu, VMCPUSTATE_STARTED, VMCPUSTATE_STARTED_EXEC_NEM);
+    VMCPUSTATE enmStateOld = VMCPU_GET_STATE(pVCpu);
     VMCPU_SET_STATE(pVCpu, VMCPUSTATE_STARTED_HALTED);
     PUVM pUVM = pUVCpu->pUVM;
     int rc = g_aHaltMethods[pUVM->vm.s.iHaltMethod].pfnHalt(pUVCpu, fMask, u64Now);
-    VMCPU_SET_STATE(pVCpu, VMCPUSTATE_STARTED);
+    VMCPU_SET_STATE(pVCpu, enmStateOld);
 
     /*
      * Notify TM and resume the yielder
