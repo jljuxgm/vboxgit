@@ -1,4 +1,4 @@
-/* $Id: DevHdaCodec.h 88502 2021-04-14 09:42:15Z vboxsync $ */
+/* $Id: DevHdaCodec.h 88503 2021-04-14 11:43:28Z vboxsync $ */
 /** @file
  * Intel HD Audio Controller Emulation - Codec, Sigmatel/IDT STAC9220.
  */
@@ -861,8 +861,10 @@ typedef struct HDACODEC
     uint8_t    au8VolKnobs[CODEC_NODES_MAX];
     uint8_t    au8Reserveds[CODEC_NODES_MAX];
 
-    STAMCOUNTER StatLookupsR0;
     STAMCOUNTER StatLookupsR3;
+#if 0 /* Codec is not yet kosher enough for ring-0.  @bugref{9890c64} */
+    STAMCOUNTER StatLookupsR0;
+#endif
 } HDACODEC;
 
 /**

@@ -1,4 +1,4 @@
-/* $Id: DevHda.h 88502 2021-04-14 09:42:15Z vboxsync $ */
+/* $Id: DevHda.h 88503 2021-04-14 11:43:28Z vboxsync $ */
 /** @file
  * Intel HD Audio Controller Emulation - Structures.
  */
@@ -218,8 +218,12 @@ typedef HDASTATE *PHDASTATE;
  */
 typedef struct HDASTATER0
 {
+# if 0 /* Codec is not yet kosher enough for ring-0.  @bugref{9890c64} */
     /** Pointer to HDA codec to use. */
     HDACODECR0              Codec;
+# else
+    uint32_t                u32Dummy;
+# endif
 } HDASTATER0;
 /** Pointer to a ring-0 HDA device state.  */
 typedef HDASTATER0 *PHDASTATER0;

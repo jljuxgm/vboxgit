@@ -1,4 +1,4 @@
-/* $Id: DevHdaCodec.cpp 88502 2021-04-14 09:42:15Z vboxsync $ */
+/* $Id: DevHdaCodec.cpp 88503 2021-04-14 11:43:28Z vboxsync $ */
 /** @file
  * Intel HD Audio Controller Emulation - Codec, Sigmatel/IDT STAC9220.
  *
@@ -2610,7 +2610,9 @@ int hdaR3CodecConstruct(PPDMDEVINS pDevIns, PHDACODEC pThis, PHDACODECR3 pThisCC
      * Statistics
      */
     PDMDevHlpSTAMRegister(pDevIns, &pThis->StatLookupsR3, STAMTYPE_COUNTER, "Codec/LookupsR0", STAMUNIT_OCCURENCES, "Number of R0 codecLookup calls");
+# if 0 /* Codec is not yet kosher enough for ring-0.  @bugref{9890c64} */
     PDMDevHlpSTAMRegister(pDevIns, &pThis->StatLookupsR0, STAMTYPE_COUNTER, "Codec/LookupsR3", STAMUNIT_OCCURENCES, "Number of R3 codecLookup calls");
+# endif
 
     return rc;
 }
