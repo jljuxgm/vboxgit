@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 88303 2021-03-26 18:27:19Z vboxsync $
+# $Id: Makefile.kmk 88315 2021-03-29 15:13:27Z vboxsync $
 ## @file
 # Top level makefile.
 #
@@ -248,6 +248,7 @@ else # win x11
     $(call VBOX_RE_SIGN_DLL_FN,qt5-bin,$(PATH_SDK_QT5)/plugins/platforms/qwindows$(SUFF_DLL))=>platforms/qwindows$(SUFF_DLL) \
     $(call VBOX_RE_SIGN_DLL_FN,qt5-bin,$(PATH_SDK_QT5)/plugins/platforms/qminimal$(SUFF_DLL))=>platforms/qminimal$(SUFF_DLL) \
     $(call VBOX_RE_SIGN_DLL_FN,qt5-bin,$(PATH_SDK_QT5)/plugins/platforms/qoffscreen$(SUFF_DLL))=>platforms/qoffscreen$(SUFF_DLL) \
+    $(call VBOX_RE_SIGN_DLL_FN,qt5-bin,$(PATH_SDK_QT5)/plugins/sqldrivers/qsqlite$(SUFF_DLL))=>sqldrivers/qsqlite$(SUFF_DLL) \
     $(call VBOX_RE_SIGN_DLL_FN,qt5-bin,$(PATH_SDK_QT5)/plugins/styles/qwindowsvistastyle$(SUFF_DLL))=>styles/qwindowsvistastyle$(SUFF_DLL)
    ifdef VBOX_WITH_QT_PDBS
     qt5-bin_SOURCES += \
