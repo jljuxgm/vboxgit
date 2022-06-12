@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.cpp 86804 2020-11-03 20:16:05Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.cpp 86909 2020-11-18 13:26:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class implementation.
  */
@@ -932,7 +932,8 @@ void UIChooserAbstractModel::sltHandleReadCloudMachineListTaskComplete()
                 UIChooserNode *pFakeNode = searchFakeNode(pProfileNode);
                 AssertPtrReturnVoid(pFakeNode);
                 pFakeNode->toMachineNode()->cache()->toCloud()->setFakeCloudItemState(UIFakeCloudVirtualMachineItemState_Done);
-                pFakeNode->item()->updateItem();
+                if (pFakeNode->item())
+                    pFakeNode->item()->updateItem();
             }
         }
     }
