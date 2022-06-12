@@ -1,4 +1,4 @@
-/* $Id: tstClipboardGH-X11Smoke.cpp 87566 2021-02-03 13:48:48Z vboxsync $ */
+/* $Id: tstClipboardGH-X11Smoke.cpp 87568 2021-02-03 14:31:27Z vboxsync $ */
 /** @file
  * Shared Clipboard guest/host X11 code smoke tests.
  */
@@ -44,7 +44,7 @@ DECLCALLBACK(void) ShClX11ReportFormatsCallback(PSHCLCONTEXT pCtx, SHCLFORMATS f
 DECLCALLBACK(void) ShClX11RequestFromX11CompleteCallback(PSHCLCONTEXT pCtx, int rcCompletion,
                                                          CLIPREADCBREQ *pReq, void *pv, uint32_t cb)
 {
-    RT_NOREF(pCtx, rc, pReq, pv, cb);
+    RT_NOREF(pCtx, rcCompletion, pReq, pv, cb);
 }
 
 int main()
