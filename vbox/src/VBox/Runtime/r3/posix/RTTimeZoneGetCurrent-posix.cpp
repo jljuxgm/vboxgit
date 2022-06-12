@@ -1,4 +1,4 @@
-/* $Id: RTTimeZoneGetCurrent-posix.cpp 86216 2020-09-22 11:30:56Z vboxsync $ */
+/* $Id: RTTimeZoneGetCurrent-posix.cpp 86220 2020-09-22 13:09:34Z vboxsync $ */
 /** @file
  * IPRT - RTTimeZoneGetCurrent, POSIX.
  */
@@ -41,7 +41,12 @@
 #include <iprt/symlink.h>
 #include <iprt/stream.h>
 
-#include <tzfile.h>
+#if defined(RT_OS_LINUX) || defined(RT_OS_FREEBSD) || defined(RT_OS_NETBSD)
+ #define TZDIR                   "/usr/share/zoneinfo"
+ #define TZ_MAGIC                "TZif"
+#else
+ #include <tzfile.h>
+#endif
 
 #define PATH_LOCALTIME           "/etc/localtime"
 #if defined(RT_OS_FREEBSD)
@@ -83,7 +88,7 @@ static int rtIsValidTimeZoneFile(const char *pszTimeZone)
     rc = RTFileOpen(&hFile, szTZPath, RTFILE_O_READ | RTFILE_O_OPEN | RTFILE_O_DENY_WRITE);
     if (RT_SUCCESS(rc))
     {
-        char achTZBuf[sizeof(struct tzhead)];
+        char achTZBuf[sizeof(TZ_MAGIC)];
 
         rc = RTFileRead(hFile, achTZBuf, sizeof(achTZBuf), NULL);
         if (RT_SUCCESS(rc))
