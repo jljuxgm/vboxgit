@@ -1,4 +1,4 @@
-/* $Id: sysfs.cpp 84632 2020-06-02 11:07:28Z vboxsync $ */
+/* $Id: sysfs.cpp 84681 2020-06-04 15:29:43Z vboxsync $ */
 /** @file
  * IPRT - Linux sysfs access.
  */
@@ -73,7 +73,7 @@ static int rtLinuxConstructPathV(char *pszBuf, size_t cchBuf,
     AssertReturn(cchBuf > cchPrefix + 1, VERR_INVALID_PARAMETER);
 
     ssize_t cch = RTStrPrintf2V(pszBuf, cchBuf, pszFormat, va);
-    AssertReturn(cch > 0, VERR_BUFFER_OVERFLOW);
+    AssertReturn(cch >= 0, VERR_BUFFER_OVERFLOW);
 
     if (*pszBuf != '/')
     {
