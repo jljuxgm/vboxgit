@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Id: tdStorageRawDrive1.py 87678 2021-02-10 12:09:44Z vboxsync $"
+__version__ = "$Id: tdStorageRawDrive1.py 87680 2021-02-10 12:13:03Z vboxsync $"
 
 # Standard Python imports.
 import os;
@@ -984,7 +984,7 @@ class tdStorageRawDriveOs(vboxtestvms.BaseTestVm):
                 # pylint: disable=no-init
                 class ParseState(object):
                     kiNothing   = 0;
-                    kikDrive    = 1;
+                    kiDrive     = 1;
                     kiPartition = 2;
 
                 iParseState = ParseState.kiNothing;
