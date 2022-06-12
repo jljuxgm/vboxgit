@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.h 86866 2020-11-12 07:28:34Z vboxsync $ */
+/* $Id: UIHelpBrowserWidget.h 86875 2020-11-12 11:51:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class declaration.
  */
@@ -86,8 +86,7 @@ private slots:
 
     void sltHandleHelpEngineSetupFinished();
     void sltHandleContentWidgetItemClicked(const QModelIndex &index);
-    void sltHandleSideBarVisibility(bool togggled);
-    void sltHandleToolBarVisibility(bool togggled);
+    void sltHandleWidgetVisibilityToggle(bool togggled);
     void sltShowPrintDialog();
     void sltHandleContentsCreated();
     void sltHandleIndexingStarted();
@@ -167,6 +166,7 @@ private:
     QAction             *m_pPrintDialogAction;
     QAction             *m_pShowHideSideBarAction;
     QAction             *m_pShowHideToolBarAction;
+    QAction             *m_pShowHideFontScaleWidget;
     QAction             *m_pFontSizeLargerAction;
     QAction             *m_pFontSizeSmallerAction;
     QAction             *m_pFontSizeResetAction;
