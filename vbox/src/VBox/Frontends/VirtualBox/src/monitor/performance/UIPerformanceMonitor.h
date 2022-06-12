@@ -1,4 +1,4 @@
-/* $Id: UIPerformanceMonitor.h 85413 2020-07-22 13:37:29Z vboxsync $ */
+/* $Id: UIPerformanceMonitor.h 85485 2020-07-28 07:16:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPerformanceMonitor class declaration.
  */
@@ -139,7 +139,7 @@ private slots:
 
 private:
 
-    void prepareObjects();
+    void prepareWidgets();
     void prepareMetrics();
     void prepareToolBar();
     bool guestAdditionsAvailable(int iMinimumMajorVersion);
