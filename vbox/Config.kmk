@@ -1,4 +1,4 @@
-# $Id: Config.kmk 84540 2020-05-26 15:06:13Z vboxsync $
+# $Id: Config.kmk 84712 2020-06-05 18:45:54Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -313,6 +313,8 @@ ifeq ($(KBUILD_HOST),darwin)
   VBOX_WITH_NEW_XCODE = 1
  endif
 endif
+# Select new VC++ on Windows.
+VBOX_WITH_NEW_VCC = 1
 
 ## @name Additions
 ## @{
@@ -8117,7 +8119,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 84540 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 84712 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
