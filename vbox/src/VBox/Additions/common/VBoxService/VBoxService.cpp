@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 86877 2020-11-12 18:32:51Z vboxsync $ */
+/* $Id: VBoxService.cpp 86878 2020-11-12 18:40:58Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -1159,7 +1159,7 @@ int main(int argc, char **argv)
         return rcExit;
 
 #ifdef VBOX_WITH_VBOXSERVICE_DRMRESIZE
-	if (VbglR3DRMClientIsNeeded())
+    if (VbglR3DRMClientIsNeeded())
     {
         rc = VbglR3DRMClientStart();
         if (RT_FAILURE(rc))

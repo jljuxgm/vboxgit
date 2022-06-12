@@ -1,4 +1,4 @@
-/* $Id: display-svga-x11.cpp 86877 2020-11-12 18:32:51Z vboxsync $ */
+/* $Id: display-svga-x11.cpp 86878 2020-11-12 18:40:58Z vboxsync $ */
 /** @file
  * X11 guest client - VMSVGA emulation resize event pass-through to X.Org
  * guest driver.
@@ -684,10 +684,12 @@ static bool isXwayland(void)
  */
 static DECLCALLBACK(int) vbclSVGAInit(void)
 {
+    int rc;
+
     /* In 32-bit guests GAs build on our release machines causes an xserver hang.
      * So for 32-bit GAs we use our DRM client. */
 #if ARCH_BITS == 32
-    int rc = VbglR3DRMClientStart();
+    rc = VbglR3DRMClientStart();
     if (RT_FAILURE(rc))
         VBClLogError("Starting DRM resizing client (32-bit) failed with %Rrc\n", rc);
     return VERR_NOT_AVAILABLE; /** @todo r=andy Why ignoring rc here? */
@@ -702,7 +704,7 @@ static DECLCALLBACK(int) vbclSVGAInit(void)
 
     if (isXwayland())
     {
-        int rc = VbglR3DRMClientStart();
+        rc = VbglR3DRMClientStart();
         if (RT_FAILURE(rc))
             VBClLogError("Starting DRM resizing client failed with %Rrc\n", rc);
         return rc;
