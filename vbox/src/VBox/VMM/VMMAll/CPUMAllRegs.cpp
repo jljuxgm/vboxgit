@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 87766 2021-02-16 14:27:43Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 88290 2021-03-25 11:54:08Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -1073,6 +1073,24 @@ VMMDECL(CPUMCPUVENDOR) CPUMGetGuestCpuVendor(PVM pVM)
 VMMDECL(CPUMMICROARCH) CPUMGetGuestMicroarch(PCVM pVM)
 {
     return pVM->cpum.s.GuestFeatures.enmMicroarch;
+}
+
+
+/**
+ * Gets the maximum number of physical and linear address bits supported by the
+ * guest.
+ *
+ * @param   pVM                 The cross context VM structure.
+ * @param   pcPhysAddrWidth     Where to store the physical address width.
+ * @param   pcLinearAddrWidth   Where to store the linear address width.
+ */
+VMMDECL(void) CPUMGetGuestAddrWidths(PCVM pVM, uint8_t *pcPhysAddrWidth, uint8_t *pcLinearAddrWidth)
+{
+    AssertPtr(pVM);
+    AssertReturnVoid(pcPhysAddrWidth);
+    AssertReturnVoid(pcLinearAddrWidth);
+    *pcPhysAddrWidth   = pVM->cpum.s.GuestFeatures.cMaxPhysAddrWidth;
+    *pcLinearAddrWidth = pVM->cpum.s.GuestFeatures.cMaxLinearAddrWidth;
 }
 
 
