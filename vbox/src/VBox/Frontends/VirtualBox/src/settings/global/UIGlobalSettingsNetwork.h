@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsNetwork.h 86020 2020-09-03 13:10:51Z vboxsync $ */
+/* $Id: UIGlobalSettingsNetwork.h 86038 2020-09-07 11:18:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsNetwork class declaration.
  */
@@ -140,11 +140,11 @@ private:
         /** Holds the NAT networt toolbar instance. */
         UIToolBar        *m_pToolbarNATNetwork;
         /** Holds the 'add NAT network' action instance. */
-        QAction          *m_pActionAddNATNetwork;
+        QAction          *m_pActionAdd;
         /** Holds the 'remove NAT network' action instance. */
-        QAction          *m_pActionRemoveNATNetwork;
+        QAction          *m_pActionRemove;
         /** Holds the 'edit NAT network' action instance. */
-        QAction          *m_pActionEditNATNetwork;
+        QAction          *m_pActionEdit;
     /** @} */
 };
 
