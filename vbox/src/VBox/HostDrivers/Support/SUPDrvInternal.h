@@ -1,4 +1,4 @@
-/* $Id: SUPDrvInternal.h 85766 2020-08-14 12:27:41Z vboxsync $ */
+/* $Id: SUPDrvInternal.h 86512 2020-10-10 11:20:58Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
@@ -372,6 +372,8 @@ typedef struct SUPDRVLDRIMAGE
     uint32_t volatile               cUsage;
     /** Pointer to the device extension. */
     struct SUPDRVDEVEXT            *pDevExt;
+    /** Image (VMMR0.r0) containing functions/data that this one uses. */
+    struct SUPDRVLDRIMAGE          *pImageImport;
 #ifdef RT_OS_WINDOWS
     /** The section object for the loaded image (fNative=true). */
     void                           *pvNtSectionObj;
@@ -557,7 +559,7 @@ typedef struct SUPDRVSESSION
     /** Handle table for IPRT semaphore wrapper APIs.
      * This takes care of its own locking in an IRQ safe manner. */
     RTHANDLETABLE                   hHandleTable;
-    /** Load usage records. (protected by SUPDRVDEVEXT::mtxLdr) */
+    /** Load usage records (LIFO!). (protected by SUPDRVDEVEXT::mtxLdr) */
     PSUPDRVLDRUSAGE volatile        pLdrUsage;
 
     /** Spinlock protecting the bundles, the GIP members and the
