@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 87725 2021-02-11 20:30:47Z vboxsync $
+# $Id: Makefile.kmk 89313 2021-05-27 11:32:53Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox User Manual, SDK reference and other manuals.
 #
@@ -935,9 +935,9 @@ ifdef VBOX_WITH_DOCS_QHELP
 		$$(out_dir)/qhelp/UserManual.qhp \
 		$$(addprefix $$(out_dir)/qhelp/,$$(VBOX_MANUAL_PNG_FILES_$(lang))) \
 		| $$$$(dir $$$$@)
-	$$(call MSG_L1,qcollectiongenerator $$<,=> $$@)
+	$$(call MSG_L1,qhelpgenerator $$<,=> $$@)
 	$$(QUIET)$$(RM) -f $$@
-	$$(QUIET)$$(REDIRECT) -E QT_QPA_PLATFORM_PLUGIN_PATH=$$(PATH_SDK_QT5)/plugins -- $$(PATH_TOOL_QT5_BIN)/qcollectiongenerator $$<
+	$$(QUIET)$$(REDIRECT) -E QT_QPA_PLATFORM_PLUGIN_PATH=$$(PATH_SDK_QT5)/plugins -- $$(PATH_TOOL_QT5_BIN)/qhelpgenerator $$<
 	$$(call MSG_L1,Fresh QCH is now at $$@)
  endef
  $(foreach lang,$(VBOX_MANUAL_LANGUAGES),$(evalcall2 def_vbox_usermanual_qhp_to_qch))
