@@ -1,4 +1,4 @@
-/* $Id: DBGFAll.cpp 86666 2020-10-21 15:01:32Z vboxsync $ */
+/* $Id: DBGFAll.cpp 86667 2020-10-21 15:19:41Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, All Context Code.
  */
@@ -231,7 +231,7 @@ VMM_INT_DECL(VBOXSTRICTRC)  DBGFBpCheckIo(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, 
 {
     uint32_t const uIoPortFirst = uIoPort;
     uint32_t const uIoPortLast  = uIoPortFirst + cbValue - 1;
- 
+
     /*
      * Check hyper breakpoints first as the VMM debugger has priority over
      * the guest.
