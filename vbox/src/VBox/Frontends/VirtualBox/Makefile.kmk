@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 87354 2021-01-21 16:08:36Z vboxsync $
+# $Id: Makefile.kmk 87414 2021-01-25 11:16:38Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -655,6 +655,7 @@ VirtualBox_QT_MOCHDRS = \
 	src/wizards/newvm/UIWizardNewVMPageBasic1.h \
 	src/wizards/newvm/UIWizardNewVMPageBasic2.h \
 	src/wizards/newvm/UIWizardNewVMPageBasic3.h \
+	src/wizards/newvm/UIWizardNewVMPageBasic4.h \
 	src/wizards/newvm/UIWizardNewVMPageExpert.h \
 	src/wizards/clonevm/UIWizardCloneVM.h \
 	src/wizards/clonevm/UIWizardCloneVMPageBasic1.h \
@@ -1138,6 +1139,7 @@ VirtualBox_SOURCES = \
 	src/wizards/newvm/UIWizardNewVMPageBasic1.cpp \
 	src/wizards/newvm/UIWizardNewVMPageBasic2.cpp \
 	src/wizards/newvm/UIWizardNewVMPageBasic3.cpp \
+	src/wizards/newvm/UIWizardNewVMPageBasic4.cpp \
 	src/wizards/newvm/UIWizardNewVMPageExpert.cpp \
 	src/wizards/clonevm/UIWizardCloneVM.cpp \
 	src/wizards/clonevm/UIWizardCloneVMPageBasic1.cpp \
