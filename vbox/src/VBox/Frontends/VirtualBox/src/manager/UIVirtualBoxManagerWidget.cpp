@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 88082 2021-03-11 10:57:36Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 88122 2021-03-15 15:44:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -1048,7 +1048,7 @@ void UIVirtualBoxManagerWidget::recacheCurrentItemInformation(bool fDontRaiseErr
         m_pPaneTools->setToolsType(UIToolType_Details);
     m_pPaneTools->setRestrictedToolTypes(retrictedTypes);
     /* Update machine tools availability: */
-    m_pPaneTools->setToolsEnabled(UIToolClass_Machine, fCurrentItemIsOk);
+    m_pPaneTools->setToolClassEnabled(UIToolClass_Machine, fCurrentItemIsOk);
 
     /* Propagate current item anyway: */
     m_pPaneToolsMachine->setCurrentItem(pItem);

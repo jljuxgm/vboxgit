@@ -1,4 +1,4 @@
-/* $Id: UITools.h 83023 2020-02-07 17:06:29Z vboxsync $ */
+/* $Id: UITools.h 88122 2021-03-15 15:44:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UITools class declaration.
  */
@@ -89,9 +89,9 @@ public:
         UIToolType lastSelectedToolMachine() const;
 
         /** Defines whether certain @a enmClass of tools is @a fEnabled.*/
-        void setToolsEnabled(UIToolClass enmClass, bool fEnabled);
+        void setToolClassEnabled(UIToolClass enmClass, bool fEnabled);
         /** Returns whether certain class of tools is enabled.*/
-        bool areToolsEnabled(UIToolClass enmClass) const;
+        bool toolClassEnabled(UIToolClass enmClass) const;
 
         /** Defines restructed tool @a types. */
         void setRestrictedToolTypes(const QList<UIToolType> &types);
