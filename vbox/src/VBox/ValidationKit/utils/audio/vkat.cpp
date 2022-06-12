@@ -1,4 +1,4 @@
-/* $Id: vkat.cpp 89091 2021-05-17 11:11:09Z vboxsync $ */
+/* $Id: vkat.cpp 89115 2021-05-17 16:54:36Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) utility for testing and validating the audio stack.
  */
@@ -1876,7 +1876,8 @@ static DECLCALLBACK(RTEXITCODE) audioTestMain(PRTGETOPTSTATE pGetState)
                 RTTestPrintf(g_hTest, RTTESTLVL_ALWAYS, "Test set packed up to '%s'\n", szFileOut);
 
             /* Clean up. */
-            AudioTestSetWipe(&TstEnv.Set);
+            int rc2 = AudioTestSetWipe(&TstEnv.Set);
+            AssertRC(rc2); /* Annoying, but not test-critical. */
 
             audioTestEnvDestroy(&TstEnv);
         }
