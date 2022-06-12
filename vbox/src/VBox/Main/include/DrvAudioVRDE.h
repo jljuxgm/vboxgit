@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVRDE.h 88382 2021-04-07 09:16:12Z vboxsync $ */
+/* $Id: DrvAudioVRDE.h 88885 2021-05-05 18:28:38Z vboxsync $ */
 /** @file
  * VirtualBox driver interface to VRDE backend.
  */
@@ -69,6 +69,8 @@ private:
 
     /** Pointer to the associated VRDE audio driver. */
     struct DRVAUDIOVRDE *mpDrv;
+    /** Protects accesses to mpDrv from racing driver destruction. */
+    RTCRITSECT mCritSect;
 };
 
 #endif /* !MAIN_INCLUDED_DrvAudioVRDE_h */
