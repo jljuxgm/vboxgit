@@ -1,4 +1,4 @@
-/* $Id: TestVBox.java 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: TestVBox.java 86279 2020-09-24 20:27:33Z vboxsync $ */
 /*! file
  * Small sample/testcase which demonstrates that the same source code can
  * be used to connect to the webservice and (XP)COM APIs.
@@ -16,7 +16,7 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-import org.virtualbox_5_0.*;
+import org.virtualbox_6_2.*;
 import java.util.List;
 import java.util.Arrays;
 import java.util.ArrayList;
