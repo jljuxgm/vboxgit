@@ -1,4 +1,4 @@
-/* $Id: DragAndDrop.h 85435 2020-07-23 13:38:14Z vboxsync $ */
+/* $Id: DragAndDrop.h 85471 2020-07-27 18:03:06Z vboxsync $ */
 /** @file
  * DnD - Shared functions between host and guest.
  */
@@ -209,7 +209,10 @@ int DnDTransferObjectQueryInfo(PDNDTRANSFEROBJECT pObj);
 int DnDTransferObjectRead(PDNDTRANSFEROBJECT pObj, void *pvBuf, size_t cbBuf, uint32_t *pcbRead);
 int DnDTransferObjectWrite(PDNDTRANSFEROBJECT pObj, const void *pvBuf, size_t cbBuf, uint32_t *pcbWritten);
 
-/** Default URI list path separator, if not specified otherwrise.
+/** Separator for a formats list. */
+#define DND_FORMATS_SEPARATOR                        "\r\n"
+
+/** Default URI list path separator, if not specified otherwise.
  *
  *  This is there for hysterical raisins, to not break older Guest Additions.
  ** @todo Get rid of this.  */
