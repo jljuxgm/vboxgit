@@ -1,4 +1,4 @@
-/* $Id: EventImpl.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: EventImpl.h 85240 2020-07-11 23:02:26Z vboxsync $ */
 /** @file
  * VirtualBox COM IEvent implementation
  */
@@ -166,8 +166,8 @@ public:
         if (mEventSource && mEvent)
         {
             BOOL fDelivered = FALSE;
-            int rc = mEventSource->FireEvent(mEvent, aTimeout, &fDelivered);
-            AssertRCReturn(rc, FALSE);
+            HRESULT hrc = mEventSource->FireEvent(mEvent, aTimeout, &fDelivered);
+            AssertComRCReturn(hrc, FALSE);
             return fDelivered;
         }
         return FALSE;
