@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet_1_0.cpp 85415 2020-07-22 14:44:19Z vboxsync $ $Revision: 85415 $ $Date: 2020-07-22 22:44:19 +0800 (Wed, 22 Jul 2020) $ $Author: vboxsync $ */
+/* $Id: DevVirtioNet_1_0.cpp 85608 2020-08-05 02:26:00Z vboxsync $ $Revision: 85608 $ $Date: 2020-08-05 10:26:00 +0800 (Wed, 05 Aug 2020) $ $Author: vboxsync $ */
 
 /** @file
  * VBox storage devices - Virtio NET Driver
@@ -125,7 +125,7 @@
 #define VIRTIONET_SAVED_STATE_VERSION   UINT32_C(1)
 
 #if FEATURE_OFFERED(MQ)
-#   define VIRTIONET_MAX_QPAIRS         1000
+#   define VIRTIONET_MAX_QPAIRS         1000 /* Instance data doesn't allow an array with VIRTIONET_CTRL_MQ_VQ_PAIRS_MAX entries */
 #else
 #   define VIRTIONET_MAX_QPAIRS         VIRTIONET_CTRL_MQ_VQ_PAIRS_MIN
 #endif
@@ -2986,7 +2986,7 @@ static DECLCALLBACK(int) virtioNetR3Construct(PPDMDEVINS pDevIns, int iInstance,
         pThis->virtioNetConfig.uStatus = 0;
 #   endif
 
-    pThis->virtioNetConfig.uMaxVirtqPairs   = VIRTIONET_CTRL_MQ_VQ_PAIRS_MAX;
+    pThis->virtioNetConfig.uMaxVirtqPairs   = VIRTIONET_MAX_QPAIRS;
 
     pThisCC->Virtio.pfnVirtqNotified        = virtioNetVirtqNotified;
     pThisCC->Virtio.pfnStatusChanged        = virtioNetR3StatusChanged;
