@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 88079 2021-03-10 20:48:09Z vboxsync $ */
+/* $Id: VBoxManageControlVM.cpp 88086 2021-03-11 12:50:12Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of the controlvm command.
  */
@@ -61,24 +61,6 @@ static unsigned parseNum(const char *psz, unsigned cMaxNum, const char *name)
         &&  u32 <= cMaxNum)
         return (unsigned)u32;
     errorArgument("Invalid %s number '%s'", name, psz);
-    return 0;
-}
-
-unsigned int getMaxNics(IVirtualBox* vbox, IMachine* mach)
-{
-    ComPtr<ISystemProperties> info;
-    ChipsetType_T aChipset;
-    ULONG NetworkAdapterCount = 0;
-    HRESULT rc;
-
-    do {
-        CHECK_ERROR_BREAK(vbox, COMGETTER(SystemProperties)(info.asOutParam()));
-        CHECK_ERROR_BREAK(mach, COMGETTER(ChipsetType)(&aChipset));
-        CHECK_ERROR_BREAK(info, GetMaxNetworkAdapters(aChipset, &NetworkAdapterCount));
-
-        return (unsigned int)NetworkAdapterCount;
-    } while (0);
-
     return 0;
 }
 

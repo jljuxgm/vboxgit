@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 85780 2020-08-14 21:29:46Z vboxsync $ */
+/* $Id: VBoxManage.h 88086 2021-03-11 12:50:12Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -220,9 +220,6 @@ RTEXITCODE handleInternalCommands(HandlerArg *a);
 
 /* VBoxManageControlVM.cpp */
 RTEXITCODE handleControlVM(HandlerArg *a);
-#ifndef VBOX_ONLY_DOCS
-unsigned int getMaxNics(IVirtualBox* vbox, IMachine* mach);
-#endif
 
 /* VBoxManageModifyVM.cpp */
 #ifndef VBOX_ONLY_DOCS

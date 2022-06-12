@@ -1,4 +1,4 @@
-/* $Id: VBoxManageUtils.h 88079 2021-03-10 20:48:09Z vboxsync $ */
+/* $Id: VBoxManageUtils.h 88086 2021-03-11 12:50:12Z vboxsync $ */
 /** @file
  * VBoxManageUtils.h - Declarations for VBoxManage utility functions.
  */
@@ -26,6 +26,9 @@
 #include <VBox/com/ptr.h>
 #include <VBox/com/VirtualBox.h>
 #endif
+
+unsigned int getMaxNics(const ComPtr<IVirtualBox> &pVirtualBox,
+                        const ComPtr<IMachine> &pMachine);
 
 void verifyHostNetworkInterfaceName(const ComPtr<IVirtualBox> &pVirtualBox,
                                     const char *pszTargetName,
