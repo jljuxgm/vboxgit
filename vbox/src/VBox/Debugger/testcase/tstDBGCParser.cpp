@@ -1,4 +1,4 @@
-/* $Id: tstDBGCParser.cpp 86327 2020-09-28 16:20:50Z vboxsync $ */
+/* $Id: tstDBGCParser.cpp 86365 2020-09-30 20:56:22Z vboxsync $ */
 /** @file
  * DBGC Testcase - Command Parser.
  */
@@ -1167,6 +1167,7 @@ int main()
     if (RT_SUCCESS(rc))
     {
         pDbgc->pVM = (PVM)pDbgc;
+        pDbgc->pUVM = (PUVM)pDbgc;
         rc = dbgcProcessInput(pDbgc, true /* fNoExecute */);
         tstCompleteOutput();
         if (RT_SUCCESS(rc))
