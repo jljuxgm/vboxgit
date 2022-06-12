@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 88936 2021-05-07 16:35:59Z vboxsync $ */
+/* $Id: DevSB16.cpp 88940 2021-05-07 19:27:14Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  */
@@ -3012,6 +3012,13 @@ static DECLCALLBACK(int) sb16Destruct(PPDMDEVINS pDevIns)
 
         RTListNodeRemove(&pDrv->Node);
         RTMemFree(pDrv);
+    }
+
+    /* We don't always go via PowerOff, so make sure the mixer is destroyed. */
+    if (pThis->pMixer)
+    {
+        AudioMixerDestroy(pThis->pMixer, pDevIns);
+        pThis->pMixer = NULL;
     }
 
     return VINF_SUCCESS;

@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 88939 2021-05-07 18:46:08Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 88940 2021-05-07 19:27:14Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -4067,6 +4067,13 @@ static DECLCALLBACK(int) ichac97R3Destruct(PPDMDEVINS pDevIns)
 
     /* Sanity. */
     Assert(RTListIsEmpty(&pThisCC->lstDrv));
+
+    /* We don't always go via PowerOff, so make sure the mixer is destroyed. */
+    if (pThisCC->pMixer)
+    {
+        AudioMixerDestroy(pThisCC->pMixer, pDevIns);
+        pThisCC->pMixer = NULL;
+    }
 
     return VINF_SUCCESS;
 }

@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 88920 2021-05-06 23:19:09Z vboxsync $ */
+/* $Id: AudioMixer.cpp 88940 2021-05-07 19:27:14Z vboxsync $ */
 /** @file
  * Audio mixing routines for multiplexing audio sources in device emulations.
  *
@@ -792,6 +792,7 @@ void AudioMixerSinkDestroy(PAUDMIXSINK pSink, PPDMDEVINS pDevIns)
     if (!pSink)
         return;
 
+    /** @todo wrong critsect for audioMixerRemoveSinkInternal...   */
     int rc2 = RTCritSectEnter(&pSink->CritSect);
     AssertRC(rc2);
 
