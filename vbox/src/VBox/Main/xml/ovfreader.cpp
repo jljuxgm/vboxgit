@@ -1,4 +1,4 @@
-/* $Id: ovfreader.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: ovfreader.cpp 84532 2020-05-26 10:39:05Z vboxsync $ */
 /** @file
  * OVF reader declarations.
  *
@@ -659,6 +659,15 @@ void OVFReader::HandleVirtualSystemContent(const xml::ElementNode *pelmVirtualSy
                             hdc.idController = i.ulInstanceID;
                             hdc.strControllerType = i.strResourceSubType;
 
+                            vsys.mapControllers[i.ulInstanceID] = hdc;
+                        }
+                        else if ( i.strResourceSubType.compare("VirtioSCSI", RTCString::CaseInsensitive) == 0 )
+                        {
+                            HardDiskController hdc;
+                            hdc.system = HardDiskController::VIRTIOSCSI;
+                            hdc.idController = i.ulInstanceID;
+                            //<rasd:ResourceSubType>VirtioSCSI</rasd:ResourceSubType>
+                            hdc.strControllerType = i.strResourceSubType;
                             vsys.mapControllers[i.ulInstanceID] = hdc;
                         }
                         else
