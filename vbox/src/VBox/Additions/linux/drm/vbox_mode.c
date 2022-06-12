@@ -1,4 +1,4 @@
-/* $Id: vbox_mode.c 86172 2020-09-18 13:58:09Z vboxsync $ */
+/* $Id: vbox_mode.c 86174 2020-09-18 15:35:52Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -398,7 +398,7 @@ static struct drm_encoder *drm_encoder_find(struct drm_device *dev, u32 id)
 static struct drm_encoder *vbox_best_single_encoder(struct drm_connector
 						    *connector)
 {
-#if RTLNX_VER_MIN(5,5,0) || RTLNX_RHEL_MIN(8,3)
+#if RTLNX_VER_MIN(5,5,0)
         struct drm_encoder *encoder;
 
         /* There is only one encoder per connector */
