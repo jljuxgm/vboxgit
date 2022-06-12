@@ -1,4 +1,4 @@
-/* $Id: DevIommuIntel.cpp 88574 2021-04-19 11:27:23Z vboxsync $ */
+/* $Id: DevIommuIntel.cpp 88584 2021-04-19 15:54:58Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - Intel implementation.
  */
@@ -1406,6 +1406,7 @@ static DECLCALLBACK(int) iommuIntelRZConstruct(PPDMDEVINS pDevIns)
     AssertPtrReturn(pThisCC->CTX_SUFF(pIommuHlp)->pfnLock,        VERR_INVALID_POINTER);
     AssertPtrReturn(pThisCC->CTX_SUFF(pIommuHlp)->pfnUnlock,      VERR_INVALID_POINTER);
     AssertPtrReturn(pThisCC->CTX_SUFF(pIommuHlp)->pfnLockIsOwner, VERR_INVALID_POINTER);
+    AssertPtrReturn(pThisCC->CTX_SUFF(pIommuHlp)->pfnSendMsi,     VERR_INVALID_POINTER);
 
     return VINF_SUCCESS;
 }
