@@ -1,4 +1,4 @@
-/* $Id: TRPM.cpp 87777 2021-02-17 13:48:25Z vboxsync $ */
+/* $Id: TRPM.cpp 87779 2021-02-17 13:54:41Z vboxsync $ */
 /** @file
  * TRPM - The Trap Monitor.
  */
@@ -394,7 +394,7 @@ VMMR3DECL(int) TRPMR3InjectEvent(PVM pVM, PVMCPU pVCpu, TRPMEVENT enmEvent, bool
             if (rcStrict != VINF_SUCCESS)
                 return VBOXSTRICTRC_TODO(rcStrict);
         }
-        STAM_COUNTER_INC(&pVM->trpm.s.aStatForwardedIRQ[u8Interrupt]);
+        STAM_REL_COUNTER_INC(&pVM->trpm.s.aStatForwardedIRQ[u8Interrupt]);
     }
     else
     {
