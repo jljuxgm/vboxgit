@@ -1,4 +1,4 @@
-/* $Id: UIUserNamePasswordEditor.cpp 85150 2020-07-09 12:56:45Z vboxsync $ */
+/* $Id: UIUserNamePasswordEditor.cpp 87249 2021-01-14 13:35:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class implementation.
  */
@@ -216,7 +216,11 @@ void UIUserNamePasswordEditor::addLineEdit(int &iRow, QLabel *&pLabel, T *&pLine
     pLabel = new QLabel;
     if (!pLabel)
         return;
-    pLayout->addWidget(pLabel, iRow, 0, 1, 1, Qt::AlignRight);
+    pLabel->setAlignment(Qt::AlignRight);
+    pLabel->setSizePolicy(QSizePolicy::Maximum, QSizePolicy::Fixed);
+
+    pLayout->addWidget(pLabel, iRow, 0, 1, 1);
+
 
     pLineEdit = new T;
     if (!pLineEdit)

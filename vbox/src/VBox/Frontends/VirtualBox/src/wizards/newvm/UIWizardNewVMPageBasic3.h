@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic3.h 85168 2020-07-10 10:13:03Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic3.h 87249 2021-01-14 13:35:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic3 class declaration.
  */
@@ -76,8 +76,8 @@ protected:
        int VCPUCount() const;
     /** @} */
 
-    QWidget *createDiskWidgets();
-    QWidget *createHardwareWidgets();
+    QWidget *createDiskWidgets(bool fIncreaseLeftIndent);
+    QWidget *createHardwareWidgets(bool fIncreaseLeftIndent);
 
     /** Helpers. */
     void ensureNewVirtualDiskDeleted();

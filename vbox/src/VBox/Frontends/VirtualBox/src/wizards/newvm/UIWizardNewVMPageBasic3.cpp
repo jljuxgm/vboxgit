@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic3.cpp 85637 2020-08-06 15:19:33Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic3.cpp 87249 2021-01-14 13:35:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic3 class implementation.
  */
@@ -163,11 +163,13 @@ void UIWizardNewVMPage3::retranslateWidgets()
     m_pVMMButton->setToolTip(UIWizardNewVM::tr("Choose a virtual hard disk file..."));
 }
 
-QWidget *UIWizardNewVMPage3::createDiskWidgets()
+QWidget *UIWizardNewVMPage3::createDiskWidgets(bool fIncreaseLeftIndent)
 {
     QWidget *pDiskContainer = new QWidget;
     QGridLayout *pDiskLayout = new QGridLayout(pDiskContainer);
-    pDiskLayout->setContentsMargins(0, 0, 0, 0);
+    if (fIncreaseLeftIndent)
+        UIWizardNewVM::increaseLayoutLeftMargin(pDiskLayout);
+
 
     m_pDiskSkip = new QRadioButton;
     m_pDiskCreate = new QRadioButton;
@@ -194,11 +196,12 @@ QWidget *UIWizardNewVMPage3::createDiskWidgets()
     return pDiskContainer;
 }
 
-QWidget *UIWizardNewVMPage3::createHardwareWidgets()
+QWidget *UIWizardNewVMPage3::createHardwareWidgets(bool fIncreaseLeftIndent)
 {
     QWidget *pHardwareContainer = new QWidget;
     QGridLayout *pHardwareLayout = new QGridLayout(pHardwareContainer);
-    pHardwareLayout->setContentsMargins(0, 0, 0, 0);
+    if (fIncreaseLeftIndent)
+        UIWizardNewVM::increaseLayoutLeftMargin(pHardwareLayout);
     m_pBaseMemoryEditor = new UIBaseMemoryEditor(0, true);
     m_pVirtualCPUEditor = new UIVirtualCPUEditor(0, true);
     pHardwareLayout->addWidget(m_pBaseMemoryEditor, 0, 0, 1, 4);
@@ -229,8 +232,8 @@ void UIWizardNewVMPageBasic3::prepare()
     pMainLayout->addWidget(m_pLabel);
     pMainLayout->addWidget(m_pToolBox);
 
-    m_pToolBox->insertItem(ToolBoxItems_Disk, createDiskWidgets(), QString());
-    m_pToolBox->insertItem(ToolBoxItems_Hardware, createHardwareWidgets(), QString());
+    m_pToolBox->insertItem(ToolBoxItems_Disk, createDiskWidgets(/* fIncreaseLeftIndent */ true), QString());
+    m_pToolBox->insertItem(ToolBoxItems_Hardware, createHardwareWidgets(/* fIncreaseLeftIndent */ true), QString());
     m_pToolBox->setStyleSheet("QToolBox::tab:selected { font: bold; }");
 
     pMainLayout->addStretch();
