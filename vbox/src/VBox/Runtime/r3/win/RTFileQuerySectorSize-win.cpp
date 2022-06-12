@@ -1,4 +1,4 @@
-/* $Id: RTFileQuerySectorSize-win.cpp 85875 2020-08-24 16:22:01Z vboxsync $ */
+/* $Id: RTFileQuerySectorSize-win.cpp 85882 2020-08-24 21:35:04Z vboxsync $ */
 /** @file
  * IPRT - RTFileQuerySectorSize, Windows.
  */
@@ -32,7 +32,7 @@
 #include <iprt/file.h>
 
 #include <iprt/assert.h>
-#include <iprt/errcore.h>
+#include <iprt/err.h>
 #include <iprt/string.h>
 
 #include <iprt/win/windows.h>
@@ -55,7 +55,7 @@ RTDECL(int) RTFileQuerySectorSize(RTFILE hFile, uint32_t *pcbSector)
         return VINF_SUCCESS;
     }
     int rc = RTErrConvertFromWin32(GetLastError());
-    AssertMsgFailed(("%d / %Rrc\n", GetLastError(), rc));
+    AssertMsg(rc == VERR_IO_NOT_READY, ("%d / %Rrc\n", GetLastError(), rc));
     return rc;
 }
 
