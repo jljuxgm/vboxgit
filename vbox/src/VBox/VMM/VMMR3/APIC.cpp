@@ -1,4 +1,4 @@
-/* $Id: APIC.cpp 86456 2020-10-06 08:43:49Z vboxsync $ */
+/* $Id: APIC.cpp 87519 2021-02-01 21:17:51Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller.
  */
@@ -1382,7 +1382,7 @@ DECLCALLBACK(int) apicR3InitComplete(PPDMDEVINS pDevIns)
 
     pApic->fSupportsTscDeadline = RT_BOOL(CpuLeaf.uEcx & X86_CPUID_FEATURE_ECX_TSCDEADL);
     pApic->fPostedIntrsEnabled  = HMR3IsPostedIntrsEnabled(pVM->pUVM);
-    pApic->fVirtApicRegsEnabled = HMR3IsVirtApicRegsEnabled(pVM->pUVM);
+    pApic->fVirtApicRegsEnabled = HMR3AreVirtApicRegsEnabled(pVM->pUVM);
 
     LogRel(("APIC: fPostedIntrsEnabled=%RTbool fVirtApicRegsEnabled=%RTbool fSupportsTscDeadline=%RTbool\n",
             pApic->fPostedIntrsEnabled, pApic->fVirtApicRegsEnabled, pApic->fSupportsTscDeadline));
