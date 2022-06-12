@@ -1,4 +1,4 @@
-/* $Id: AudioTestServiceClient.cpp 89215 2021-05-21 10:47:13Z vboxsync $ */
+/* $Id: AudioTestServiceClient.cpp 89226 2021-05-21 15:02:10Z vboxsync $ */
 /** @file
  * AudioTestServiceClient - Audio test execution server, Client helpers.
  *
@@ -222,6 +222,22 @@ int AudioTestSvcClientConnect(PATSCLIENT pClient, const char *pszAddr)
     {
         rc = audioTestSvcClientDoGreet(pClient);
     }
+
+    return rc;
+}
+
+int AudioTestSvcClientTonePlay(PATSCLIENT pClient, PPDMAUDIOSTREAMCFG pStreamCfg, PAUDIOTESTTONEPARMS pToneParms)
+{
+    ATSPKTREQTONEPLAY Req;
+
+    memcpy(&Req.StreamCfg, pStreamCfg, sizeof(PDMAUDIOSTREAMCFG));
+    memcpy(&Req.ToneParms, pToneParms, sizeof(AUDIOTESTTONEPARMS));
+
+    audioTestSvcClientReqHdrInit(&Req.Hdr, sizeof(Req), ATSPKT_OPCODE_TONE_PLAY, 0);
+
+    int rc = audioTestSvcClientSendMsg(pClient, &Req, sizeof(Req), NULL, 0);
+    if (RT_SUCCESS(rc))
+        rc = audioTestSvcClientRecvAck(pClient);
 
     return rc;
 }
