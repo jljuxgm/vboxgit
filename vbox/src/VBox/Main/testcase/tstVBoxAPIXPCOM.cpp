@@ -1,4 +1,4 @@
-/* $Id: tstVBoxAPIXPCOM.cpp 86616 2020-10-16 18:00:58Z vboxsync $ */
+/* $Id: tstVBoxAPIXPCOM.cpp 86617 2020-10-16 22:47:55Z vboxsync $ */
 /** @file
  *
  * tstVBoxAPIXPCOM - sample program to illustrate the VirtualBox
@@ -427,6 +427,12 @@ void createVM(IVirtualBox *virtualBox)
                 printf("Failed to delete the machine! rc=%#x\n",
                        NS_FAILED(rc) ? rc : resultCode);
         }
+
+        /* Release the media array: */
+        for (PRUint32 i = 0; i < cMedia; i++)
+            if (aMedia[i])
+                aMedia[i]->Release();
+        nsMemory::Free(aMedia);
     }
 }
 
