@@ -1,4 +1,4 @@
-/* $Id: UIDetailsModel.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIDetailsModel.h 88552 2021-04-15 17:10:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsModel class declaration.
  */
@@ -205,12 +205,6 @@ private:
           * @note enmType equal to DetailsElementType_Invalid means load everything. */
         void loadDetailsOptions(DetailsElementType enmType = DetailsElementType_Invalid);
 
-        /** Saves details options. */
-        void saveDetailsOptions();
-        /** Saves details categories. */
-        void saveDetailsCategories();
-        /** Saves settings. */
-        void saveSettings();
         /** Cleanups context-menu. */
         void cleanupContextMenu();
         /** Cleanups root. */
