@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 87001 2020-11-27 09:48:39Z vboxsync $ */
+/* $Id: UIMediumManager.cpp 88742 2021-04-28 10:50:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class implementation.
  */
@@ -678,6 +678,20 @@ void UIMediumManagerWidget::sltHandlePerformSearch()
     performSearch(true);
 }
 
+void UIMediumManagerWidget::sltDetachCOM()
+{
+    /* Clear tree-widgets: */
+    QITreeWidget *pTreeWidgetHD = treeWidget(UIMediumDeviceType_HardDisk);
+    if (pTreeWidgetHD)
+        pTreeWidgetHD->clear();
+    QITreeWidget *pTreeWidgetCD = treeWidget(UIMediumDeviceType_DVD);
+    if (pTreeWidgetCD)
+        pTreeWidgetCD->clear();
+    QITreeWidget *pTreeWidgetFD = treeWidget(UIMediumDeviceType_Floppy);
+    if (pTreeWidgetFD)
+        pTreeWidgetFD->clear();
+}
+
 void UIMediumManagerWidget::prepare()
 {
     /* Prepare connections: */
@@ -728,6 +742,10 @@ void UIMediumManagerWidget::prepareConnections()
             this, &UIMediumManagerWidget::sltHandleMediumEnumerated);
     connect(&uiCommon(), &UICommon::sigMediumEnumerationFinished,
             this, &UIMediumManagerWidget::sltHandleMediumEnumerationFinish);
+
+    /* Configure COM related connections: */
+    connect(&uiCommon(), &UICommon::sigAskToDetachCOM,
+            this, &UIMediumManagerWidget::sltDetachCOM);
 }
 
 void UIMediumManagerWidget::prepareActions()

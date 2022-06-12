@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.h 87342 2021-01-21 09:28:42Z vboxsync $ */
+/* $Id: UIMediumManager.h 88742 2021-04-28 10:50:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class declaration.
  */
@@ -202,10 +202,16 @@ private slots:
         void sltPerformTablesAdjustment();
     /** @} */
 
-   /** @name Medium search stuff.
+    /** @name Medium search stuff.
       * @{ */
         /** Adjusts tree-widgets according content. */
         void sltHandlePerformSearch();
+    /** @} */
+
+    /** @name Medium search stuff.
+      * @{ */
+        /** Handles command to detach COM stuff. */
+        void sltDetachCOM();
     /** @} */
 
 private:
