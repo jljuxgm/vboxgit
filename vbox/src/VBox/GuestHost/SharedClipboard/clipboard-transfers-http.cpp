@@ -1,4 +1,4 @@
-/* $Id: clipboard-transfers-http.cpp 87063 2020-12-09 13:53:36Z vboxsync $ */
+/* $Id: clipboard-transfers-http.cpp 87064 2020-12-09 13:55:42Z vboxsync $ */
 /** @file
  * Shared Clipboard: HTTP server implementation for Shared Clipboard transfers on UNIX-y hosts.
  */
@@ -502,6 +502,7 @@ char *ShClTransferHttpServerGetAddressA(PSHCLHTTPSERVER pSrv)
     shClTransferHttpServerLock(pSrv);
 
     char *pszAddress = RTStrAPrintf2("%s:%RU16", shClTransferHttpServerGetHost(pSrv), pSrv->uPort);
+    AssertPtr(pszAddress);
 
     shClTransferHttpServerUnlock(pSrv);
 
@@ -532,6 +533,7 @@ char *ShClTransferHttpServerGetUrlA(PSHCLHTTPSERVER pSrv, SHCLTRANSFERID idTrans
 
     AssertReturn(RTStrNLen(pSrvTx->szPathVirtual, RTPATH_MAX), NULL);
     char *pszUrl = RTStrAPrintf2("%s:%RU16/%s", shClTransferHttpServerGetHost(pSrv), pSrv->uPort, pSrvTx->szPathVirtual);
+    AssertPtr(pszUrl);
 
     shClTransferHttpServerUnlock(pSrv);
 
