@@ -1,4 +1,4 @@
-# $Id: Makefile 85519 2020-07-29 11:24:55Z vboxsync $
+# $Id: Makefile 85521 2020-07-29 11:39:20Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Linux Host Driver.
 #
@@ -41,7 +41,7 @@ VBOXMOD_OBJS = \
 	SUPLibAll.o \
 	common/string/strformatrt.o
 
-ifdef VBOX_WITHOUT_COMBINED_SOURCES
+ifndef VBOX_WITHOUT_COMBINED_SOURCES
 VBOXMOD_OBJS += \
 	combined-agnostic.o \
 	combined-os-specific.o
