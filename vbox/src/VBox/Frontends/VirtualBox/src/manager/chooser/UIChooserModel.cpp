@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 86202 2020-09-21 14:42:17Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 86344 2020-09-30 12:31:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -1288,7 +1288,6 @@ void UIChooserModel::prepareContextMenu()
         pMenuGlobal->addSeparator();
         pMenuGlobal->addAction(actionPool()->action(UIActionIndexMN_M_File_S_ImportAppliance));
         pMenuGlobal->addAction(actionPool()->action(UIActionIndexMN_M_File_S_ExportAppliance));
-        pMenuGlobal->addAction(actionPool()->action(UIActionIndexMN_M_File_S_NewCloudVM));
 # ifdef VBOX_GUI_WITH_EXTRADATA_MANAGER_UI
         pMenuGlobal->addAction(actionPool()->action(UIActionIndexMN_M_File_S_ShowExtraDataManager));
 # endif
@@ -1303,7 +1302,6 @@ void UIChooserModel::prepareContextMenu()
         pMenuGlobal->addSeparator();
         pMenuGlobal->addAction(actionPool()->action(UIActionIndexMN_M_File_S_ImportAppliance));
         pMenuGlobal->addAction(actionPool()->action(UIActionIndexMN_M_File_S_ExportAppliance));
-        pMenuGlobal->addAction(actionPool()->action(UIActionIndexMN_M_File_S_NewCloudVM));
         pMenuGlobal->addSeparator();
 # ifdef VBOX_GUI_WITH_EXTRADATA_MANAGER_UI
         pMenuGlobal->addAction(actionPool()->action(UIActionIndexMN_M_File_S_ShowExtraDataManager));

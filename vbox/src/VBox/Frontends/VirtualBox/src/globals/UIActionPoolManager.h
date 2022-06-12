@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.h 85662 2020-08-10 12:21:50Z vboxsync $ */
+/* $Id: UIActionPoolManager.h 86344 2020-09-30 12:31:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class declaration.
  */
@@ -41,7 +41,6 @@ enum UIActionIndexMN
     UIActionIndexMN_M_File_S_ShowCloudProfileManager,
     UIActionIndexMN_M_File_S_ImportAppliance,
     UIActionIndexMN_M_File_S_ExportAppliance,
-    UIActionIndexMN_M_File_S_NewCloudVM,
 #ifdef VBOX_GUI_WITH_EXTRADATA_MANAGER_UI
     UIActionIndexMN_M_File_S_ShowExtraDataManager,
 #endif

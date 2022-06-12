@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.cpp 85907 2020-08-27 14:38:18Z vboxsync $ */
+/* $Id: UIActionPoolManager.cpp 86344 2020-09-30 12:31:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class implementation.
  */
@@ -235,37 +235,6 @@ protected:
         setIconText(QApplication::translate("UIActionPool", "Export"));
         setName(QApplication::translate("UIActionPool", "&Export Appliance..."));
         setStatusTip(QApplication::translate("UIActionPool", "Export one or more VirtualBox virtual machines as an appliance"));
-        setToolTip(simplifyText(text()) + (shortcut().isEmpty() ? QString() : QString(" (%1)").arg(shortcut().toString())));
-    }
-};
-
-/** Simple action extension, used as 'Show New Cloud VM Wizard' action class. */
-class UIActionSimpleManagerFileShowNewCloudVMWizard : public UIActionSimple
-{
-    Q_OBJECT;
-
-public:
-
-    /** Constructs action passing @a pParent to the base-class. */
-    UIActionSimpleManagerFileShowNewCloudVMWizard(UIActionPool *pParent)
-        : UIActionSimple(pParent,
-                         ":/cloud_vm_new_32px.png", ":/cloud_vm_new_16px.png",
-                         ":/cloud_vm_new_disabled_32px.png", ":/cloud_vm_new_disabled_16px.png")
-    {}
-
-protected:
-
-    /** Returns shortcut extra-data ID. */
-    virtual QString shortcutExtraDataID() const /* override */
-    {
-        return QString("NewCloudVM");
-    }
-
-    /** Handles translation event. */
-    virtual void retranslateUi() /* override */
-    {
-        setName(QApplication::translate("UIActionPool", "&New Cloud VM..."));
-        setStatusTip(QApplication::translate("UIActionPool", "Create new cloud virtual machine"));
         setToolTip(simplifyText(text()) + (shortcut().isEmpty() ? QString() : QString(" (%1)").arg(shortcut().toString())));
     }
 };
@@ -3405,7 +3374,6 @@ void UIActionPoolManager::preparePool()
     m_pool[UIActionIndexMN_M_File_S_ShowCloudProfileManager] = new UIActionSimpleManagerFileShowCloudProfileManager(this);
     m_pool[UIActionIndexMN_M_File_S_ImportAppliance] = new UIActionSimpleManagerFileShowImportApplianceWizard(this);
     m_pool[UIActionIndexMN_M_File_S_ExportAppliance] = new UIActionSimpleManagerFileShowExportApplianceWizard(this);
-    m_pool[UIActionIndexMN_M_File_S_NewCloudVM] = new UIActionSimpleManagerFileShowNewCloudVMWizard(this);
 #ifdef VBOX_GUI_WITH_EXTRADATA_MANAGER_UI
     m_pool[UIActionIndexMN_M_File_S_ShowExtraDataManager] = new UIActionSimpleManagerFileShowExtraDataManager(this);
 #endif
@@ -3835,8 +3803,6 @@ void UIActionPoolManager::updateMenuFile()
     pMenu->addAction(action(UIActionIndexMN_M_File_S_ImportAppliance));
     /* 'Export Appliance' action goes to 'File' menu: */
     pMenu->addAction(action(UIActionIndexMN_M_File_S_ExportAppliance));
-    /* 'New Cloud VM' action goes to 'File' menu: */
-    pMenu->addAction(action(UIActionIndexMN_M_File_S_NewCloudVM));
 # ifdef VBOX_GUI_WITH_EXTRADATA_MANAGER_UI
     /* 'Show Extra-data Manager' action goes to 'File' menu for Debug build: */
     pMenu->addAction(action(UIActionIndexMN_M_File_S_ShowExtraDataManager));
@@ -3859,8 +3825,6 @@ void UIActionPoolManager::updateMenuFile()
     pMenu->addAction(action(UIActionIndexMN_M_File_S_ImportAppliance));
     /* 'Export Appliance' action goes to 'File' menu: */
     pMenu->addAction(action(UIActionIndexMN_M_File_S_ExportAppliance));
-    /* 'New Cloud VM' action goes to 'File' menu: */
-    pMenu->addAction(action(UIActionIndexMN_M_File_S_NewCloudVM));
     /* Separator after 'Export Appliance' action of the 'File' menu: */
     pMenu->addSeparator();
 # ifdef VBOX_GUI_WITH_EXTRADATA_MANAGER_UI

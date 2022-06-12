@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 85881 2020-08-24 18:48:40Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 86344 2020-09-30 12:31:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -716,23 +716,6 @@ void UIVirtualBoxManager::sltOpenExportApplianceWizard()
     UISafePointerWizard pWizard = new UIWizardExportApp(pWizardParent, names,
                                                         pAction &&
                                                         pAction == actionPool()->action(UIActionIndexMN_M_Machine_S_ExportToOCI));
-    windowManager().registerNewParent(pWizard, pWizardParent);
-    pWizard->prepare();
-    pWizard->exec();
-    delete pWizard;
-}
-
-void UIVirtualBoxManager::sltOpenNewCloudVMWizard()
-{
-    /* Lock the action preventing cascade calls: */
-    UIQObjectPropertySetter guardBlock(actionPool()->action(UIActionIndexMN_M_File_S_NewCloudVM), "opened", true);
-    connect(&guardBlock, &UIQObjectPropertySetter::sigAboutToBeDestroyed,
-            this, &UIVirtualBoxManager::sltHandleUpdateActionAppearanceRequest);
-    updateActionsAppearance();
-
-    /* Use the "safe way" to open stack of Mac OS X Sheets: */
-    QWidget *pWizardParent = windowManager().realParentWindow(this);
-    UISafePointerWizardNewCloudVM pWizard = new UIWizardNewCloudVM(pWizardParent);
     windowManager().registerNewParent(pWizard, pWizardParent);
     pWizard->prepare();
     pWizard->exec();
@@ -2138,8 +2121,6 @@ void UIVirtualBoxManager::prepareConnections()
             this, &UIVirtualBoxManager::sltOpenImportApplianceWizardDefault);
     connect(actionPool()->action(UIActionIndexMN_M_File_S_ExportAppliance), &UIAction::triggered,
             this, &UIVirtualBoxManager::sltOpenExportApplianceWizard);
-    connect(actionPool()->action(UIActionIndexMN_M_File_S_NewCloudVM), &UIAction::triggered,
-            this, &UIVirtualBoxManager::sltOpenNewCloudVMWizard);
 #ifdef VBOX_GUI_WITH_EXTRADATA_MANAGER_UI
     connect(actionPool()->action(UIActionIndexMN_M_File_S_ShowExtraDataManager), &UIAction::triggered,
             this, &UIVirtualBoxManager::sltOpenExtraDataManagerWindow);
@@ -2945,7 +2926,6 @@ void UIVirtualBoxManager::updateActionsAppearance()
     actionPool()->action(UIActionIndex_M_Application_S_Preferences)->setEnabled(isActionEnabled(UIActionIndex_M_Application_S_Preferences, items));
     actionPool()->action(UIActionIndexMN_M_File_S_ExportAppliance)->setEnabled(isActionEnabled(UIActionIndexMN_M_File_S_ExportAppliance, items));
     actionPool()->action(UIActionIndexMN_M_File_S_ImportAppliance)->setEnabled(isActionEnabled(UIActionIndexMN_M_File_S_ImportAppliance, items));
-    actionPool()->action(UIActionIndexMN_M_File_S_NewCloudVM)->setEnabled(isActionEnabled(UIActionIndexMN_M_File_S_NewCloudVM, items));
 
     /* Enable/disable welcome actions: */
     actionPool()->action(UIActionIndexMN_M_Welcome_S_New)->setEnabled(isActionEnabled(UIActionIndexMN_M_Welcome_S_New, items));
@@ -3130,7 +3110,6 @@ bool UIVirtualBoxManager::isActionEnabled(int iActionIndex, const QList<UIVirtua
         case UIActionIndex_M_Application_S_Preferences:
         case UIActionIndexMN_M_File_S_ExportAppliance:
         case UIActionIndexMN_M_File_S_ImportAppliance:
-        case UIActionIndexMN_M_File_S_NewCloudVM:
         case UIActionIndexMN_M_Welcome_S_New:
         case UIActionIndexMN_M_Welcome_S_Add:
             return true;

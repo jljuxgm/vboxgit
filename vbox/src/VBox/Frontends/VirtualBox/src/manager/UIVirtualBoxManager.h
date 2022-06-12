@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 85577 2020-07-31 12:51:37Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.h 86344 2020-09-30 12:31:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -182,8 +182,6 @@ private slots:
         void sltOpenImportApplianceWizardDefault() { sltOpenImportApplianceWizard(); }
         /** Handles call to open Export Appliance wizard. */
         void sltOpenExportApplianceWizard();
-        /** Handles call to open New Cloud VM wizard. */
-        void sltOpenNewCloudVMWizard();
 
 #ifdef VBOX_GUI_WITH_EXTRADATA_MANAGER_UI
         /** Handles call to open Extra-data Manager window. */
