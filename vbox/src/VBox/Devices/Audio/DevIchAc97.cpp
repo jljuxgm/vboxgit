@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 88917 2021-05-06 21:24:44Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 88918 2021-05-06 22:17:08Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -1023,8 +1023,7 @@ static int ichac97R3StreamEnable(PPDMDEVINS pDevIns, PAC97STATE pThis, PAC97STAT
     if (RT_SUCCESS(rc))
     {
         /* First, enable or disable the stream and the stream's sink, if any. */
-        rc = AudioMixerSinkCtl(ichac97R3IndexToSink(pThisCC, pStream->u8SD),
-                               fEnable ? PDMAUDIOSTREAMCMD_ENABLE : PDMAUDIOSTREAMCMD_DISABLE);
+        rc = AudioMixerSinkEnable(ichac97R3IndexToSink(pThisCC, pStream->u8SD), fEnable);
     }
 
 # ifdef VBOX_WITH_AUDIO_AC97_ASYNC_IO

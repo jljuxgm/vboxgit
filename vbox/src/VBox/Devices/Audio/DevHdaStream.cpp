@@ -1,4 +1,4 @@
-/* $Id: DevHdaStream.cpp 88916 2021-05-06 19:55:49Z vboxsync $ */
+/* $Id: DevHdaStream.cpp 88918 2021-05-06 22:17:08Z vboxsync $ */
 /** @file
  * Intel HD Audio Controller Emulation - Streams.
  */
@@ -902,7 +902,7 @@ int hdaR3StreamEnable(PHDASTATE pThis, PHDASTREAM pStreamShared, PHDASTREAMR3 pS
     int                 rc;
     if (   pStreamR3->pMixSink
         && pStreamR3->pMixSink->pMixSink)
-        rc = AudioMixerSinkCtl(pStreamR3->pMixSink->pMixSink, fEnable ? PDMAUDIOSTREAMCMD_ENABLE : PDMAUDIOSTREAMCMD_DISABLE);
+        rc = AudioMixerSinkEnable(pStreamR3->pMixSink->pMixSink, fEnable);
     else
         rc = VINF_SUCCESS;
 
