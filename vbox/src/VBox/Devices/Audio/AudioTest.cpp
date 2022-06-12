@@ -1,4 +1,4 @@
-/* $Id: AudioTest.cpp 89072 2021-05-17 07:20:36Z vboxsync $ */
+/* $Id: AudioTest.cpp 89073 2021-05-17 07:43:09Z vboxsync $ */
 /** @file
  * Audio testing routines.
  * Common code which is being used by the ValidationKit and the debug / ValdikationKit audio driver(s).
@@ -1070,14 +1070,14 @@ int AudioTestWaveFileRead(PAUDIOTESTWAVEFILE pWaveFile, void *pvBuf, size_t cbBu
     {
         if (pcbRead)
         {
-            pWaveFile->offCur += *pcbRead;
+            pWaveFile->offCur += (uint32_t)*pcbRead;
             if (cbBuf > *pcbRead)
                 rc = VINF_EOF;
             else if (!cbBuf && pWaveFile->offCur == pWaveFile->cbSamples)
                 rc = VINF_EOF;
         }
         else
-            pWaveFile->offCur += cbBuf;
+            pWaveFile->offCur += (uint32_t)cbBuf;
     }
     return rc;
 }
