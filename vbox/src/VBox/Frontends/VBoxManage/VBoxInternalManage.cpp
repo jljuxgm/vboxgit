@@ -1,4 +1,4 @@
-/* $Id: VBoxInternalManage.cpp 85884 2020-08-25 19:59:36Z vboxsync $ */
+/* $Id: VBoxInternalManage.cpp 85889 2020-08-26 11:47:12Z vboxsync $ */
 /** @file
  * VBoxManage - The 'internalcommands' command.
  *
@@ -1728,7 +1728,7 @@ static RTEXITCODE CmdCreateRawVMDK(int argc, char **argv, ComPtr<IVirtualBox> aV
 #endif
                 }
 
-                pPartDesc->pszRawDevice = pszRawName;
+                pPartDesc->pszRawDevice = (char *)pszRawName;
                 pPartDesc->offStartInDevice = uStartOffset;
             }
             else
