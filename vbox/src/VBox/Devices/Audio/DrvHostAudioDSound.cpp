@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioDSound.cpp 88541 2021-04-15 12:57:04Z vboxsync $ */
+/* $Id: DrvHostAudioDSound.cpp 88542 2021-04-15 12:57:36Z vboxsync $ */
 /** @file
  * Host audio driver - DirectSound (Windows).
  */
@@ -1150,7 +1150,7 @@ static int drvHostDSoundEnumerateDevices(PPDMAUDIOHOSTENUM pDevEnm)
     PDSOUNDDEV pDev;
     RTListForEach(&pDevEnm->LstDevices, pDev, DSOUNDDEV, Core.ListEntry)
     {
-        drvHostDSoundEnumOldStylQueryDeviceInfo(pDev); /* ignore rc */
+        drvHostDSoundEnumOldStyleQueryDeviceInfo(pDev); /* ignore rc */
     }
 
     DSLOG(("DSound: Enumerating devices done\n"));
