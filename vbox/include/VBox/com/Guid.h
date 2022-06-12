@@ -1,4 +1,4 @@
-/* $Id: Guid.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: Guid.h 85929 2020-08-28 14:40:55Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - Guid class declaration.
  */
@@ -322,6 +322,10 @@ public:
     bool operator<(const Guid &that) const { return ::RTUuidCompare(&mUuid, &that.mUuid)    < 0; }
     bool operator<(const GUID &guid) const { return ::RTUuidCompare(&mUuid, (PRTUUID)&guid) < 0; }
     bool operator<(const RTUUID &guid) const { return ::RTUuidCompare(&mUuid, &guid) < 0; }
+
+    /** Compare with a UUID string representation.
+     * @note Not an operator as that could lead to confusion.  */
+    bool equalsString(const char *pszUuid2) const { return ::RTUuidCompareStr(&mUuid, pszUuid2) == 0; }
 
     /**
      * To directly copy the contents to a GUID, or for passing it as an input

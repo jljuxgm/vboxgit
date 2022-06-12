@@ -1,4 +1,4 @@
-/* $Id: AutoCaller.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: AutoCaller.cpp 85929 2020-08-28 14:40:55Z vboxsync $ */
 /** @file
  * VirtualBox object state implementation
  */
@@ -293,12 +293,13 @@ void ObjectState::autoInitSpanDestructor(State aNewState, HRESULT aFailedRC, com
         RTSemEventMultiSignal(mInitUninitSem);
     }
 
-    if (aNewState == InitFailed)
+    if (aNewState == InitFailed || aNewState == Limited)
     {
         mFailedRC = aFailedRC;
-        /* apFailedEI may be NULL, when there is no explicit setFailed() call,
-         * which also implies that aFailedRC is S_OK. This case is used by
-         * objects (the majority) which don't want delayed error signalling. */
+        /* apFailedEI may be NULL, when there is no explicit setFailed() or
+         * setLimited() call, which also implies that aFailedRC is S_OK.
+         * This case is used by objects (the majority) which don't want
+         * delayed error signalling. */
         mpFailedEI = apFailedEI;
     }
     else

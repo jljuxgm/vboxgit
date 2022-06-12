@@ -1,4 +1,4 @@
-/* $Id: AutoCaller.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: AutoCaller.h 85929 2020-08-28 14:40:55Z vboxsync $ */
 /** @file
  *
  * VirtualBox object caller handling definitions
@@ -330,6 +330,19 @@ public:
      * place the managed VirtualBoxBase object to the Limited state.
      */
     void setLimited() { mResult = Limited; }
+
+    /**
+     * Sets the initialization status to Succeeded to indicate limited
+     * (partly successful) initialization but also adds the initialization
+     * error if required for further reporting. The AutoInitSpan destructor
+     * will place the managed VirtualBoxBase object to the Limited state.
+     */
+    void setLimited(HRESULT rc)
+    {
+        mResult = Limited;
+        mFailedRC = rc;
+        mpFailedEI = new ErrorInfo();
+    }
 
     /**
      * Sets the initialization status to Failure to indicates failed
