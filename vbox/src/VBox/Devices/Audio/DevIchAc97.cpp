@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 88561 2021-04-16 11:39:41Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 88677 2021-04-23 13:07:44Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -4395,7 +4395,7 @@ static DECLCALLBACK(int) ichac97R3Construct(PPDMDEVINS pDevIns, int iInstance, P
         {
             LogRel(("AC97: Falling back to NULL backend (no sound audible)\n"));
             ichac97R3Reset(pDevIns);
-            ichac97R3ReconfigLunWithNullAudio(pdEvIns, pThsiCC, iLun);
+            ichac97R3ReconfigLunWithNullAudio(pDevIns, pThisCC, pDrv->uLUN);
             PDMDevHlpVMSetRuntimeError(pDevIns, 0 /*fFlags*/, "HostAudioNotResponding",
                                        N_("No audio devices could be opened. "
                                           "Selecting the NULL audio backend with the consequence that no sound is audible"));
