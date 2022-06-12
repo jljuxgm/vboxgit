@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 85426 2020-07-23 10:52:05Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 85434 2020-07-23 13:33:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -2786,10 +2786,10 @@ void UIVirtualBoxManager::updateActionsVisibility()
     const bool fLogViewerMenuShown = (fMachineMenuShown || fGroupMenuShown) &&
                                      m_pWidget->currentMachineTool() == UIToolType_Logs;
     actionPool()->action(UIActionIndex_M_Log)->setVisible(fLogViewerMenuShown);
-
-    const bool fPerformanceMenuShown = fMachineMenuShown &&
-        m_pWidget->currentMachineTool() == UIToolType_Performance;
-    actionPool()->action(UIActionIndex_M_PerformanceMonitor)->setVisible(fPerformanceMenuShown);
+    /* Determine whether Performance menu should be visible: */
+    const bool fPerformanceMenuShown = (fMachineMenuShown || fGroupMenuShown) &&
+                                       m_pWidget->currentMachineTool() == UIToolType_Performance;
+    actionPool()->action(UIActionIndex_M_Performance)->setVisible(fPerformanceMenuShown);
 
     /* Hide action shortcuts: */
     if (!fGlobalMenuShown)
@@ -2980,7 +2980,8 @@ void UIVirtualBoxManager::updateActionsAppearance()
             }
             case UIToolType_Performance:
             {
-                actionPool()->action(UIActionIndexST_M_Machine_M_Tools_T_PerformanceMonitor)->setChecked(true);
+                actionPool()->action(UIActionIndexST_M_Group_M_Tools_T_Performance)->setChecked(true);
+                actionPool()->action(UIActionIndexST_M_Machine_M_Tools_T_Performance)->setChecked(true);
                 break;
             }
             default:

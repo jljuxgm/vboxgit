@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 85426 2020-07-23 10:52:05Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 85434 2020-07-23 13:33:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -829,7 +829,7 @@ void UIVirtualBoxManagerWidget::updateToolbar()
                 }
                 case UIToolType_Performance:
                 {
-                    m_pToolBar->addAction(actionPool()->action(UIActionIndex_M_PerformanceMonitor_S_Export));
+                    m_pToolBar->addAction(actionPool()->action(UIActionIndex_M_Performance_S_Export));
                     m_pToolBar->addSeparator();
                     m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Machine_S_Settings));
                     m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Machine_S_Discard));
