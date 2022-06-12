@@ -1,4 +1,4 @@
-/* $Id: VBoxManageAppliance.cpp 84349 2020-05-18 19:15:02Z vboxsync $ */
+/* $Id: VBoxManageAppliance.cpp 84534 2020-05-26 10:48:28Z vboxsync $ */
 /** @file
  * VBoxManage - The appliance-related commands.
  */
@@ -765,6 +765,22 @@ RTEXITCODE handleImportAppliance(HandlerArg *arg)
                                             aVBoxValues[a],
                                             i, a, i, a);
                             }
+                            break;
+
+                        case VirtualSystemDescriptionType_HardDiskControllerVirtioSCSI:
+                            if (fIgnoreThis)
+                            {
+                                RTPrintf("%2u: VirtioSCSI controller, type %ls -- disabled\n",
+                                         a,
+                                         aVBoxValues[a]);
+                                aEnabled[a] = false;
+                            }
+                            else
+                                RTPrintf("%2u: VirtioSCSI controller, type %ls"
+                                        "\n    (disable with \"--vsys %u --unit %u --ignore\")\n",
+                                        a,
+                                        aVBoxValues[a],
+                                        i, a);
                             break;
 
                         case VirtualSystemDescriptionType_HardDiskImage:
