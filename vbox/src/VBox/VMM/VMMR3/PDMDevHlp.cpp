@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 88639 2021-04-22 05:52:42Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 88640 2021-04-22 06:15:35Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -5388,6 +5388,12 @@ DECLCALLBACK(bool) pdmR3DevHlpQueueConsumer(PVM pVM, PPDMQUEUEITEMCORE pItem)
         {
             PDMIoApicSetIrq(pVM, pTask->u.IoApicSetIRQ.uBusDevFn, pTask->u.IoApicSetIRQ.iIrq, pTask->u.IoApicSetIRQ.iLevel,
                             pTask->u.IoApicSetIRQ.uTagSrc);
+            break;
+        }
+
+        case PDMDEVHLPTASKOP_IOAPIC_SEND_MSI:
+        {
+            PDMIoApicSendMsi(pVM, pTask->u.IoApicSendMsi.uBusDevFn, &pTask->u.IoApicSendMsi.Msi, pTask->u.IoApicSendMsi.uTagSrc);
             break;
         }
 
