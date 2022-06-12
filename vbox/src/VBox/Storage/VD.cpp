@@ -1,4 +1,4 @@
-/* $Id: VD.cpp 86526 2020-10-11 18:40:21Z vboxsync $ */
+/* $Id: VD.cpp 87238 2021-01-13 13:42:37Z vboxsync $ */
 /** @file
  * VD - Virtual disk container implementation.
  */
@@ -7214,7 +7214,7 @@ VBOXDDU_DECL(int) VDMerge(PVDISK pDisk, unsigned nImageFrom,
                 pTmp = pImg->pPrev;
             vdRemoveImageFromList(pDisk, pImg);
             pImg->Backend->pfnClose(pImg->pBackendData, true);
-            RTMemFree(pImg->pszFilename);
+            RTStrFree(pImg->pszFilename);
             RTMemFree(pImg);
             pImg = pTmp;
         }
