@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-netbsd.c 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxGuest-netbsd.c 88952 2021-05-09 00:01:37Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions Driver for NetBSD.
  */
@@ -416,7 +416,13 @@ static void VBoxGuestNetBSDWsmAttach(vboxguest_softc *sc)
     if (RT_FAILURE(rc))
         goto fail;
 
+#if __NetBSD_Prereq__(9,99,82)
+    config_found(sc->sc_dev, &am, wsmousedevprint,
+                 CFARG_IATTR, "wsmousedev",
+                 CFARG_EOL);
+#else
     sc->sc_wsmousedev = config_found_ia(sc->sc_dev, "wsmousedev", &am, wsmousedevprint);
+#endif
     if (sc->sc_wsmousedev == NULL)
         goto fail;
 
