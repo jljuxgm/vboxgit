@@ -1,4 +1,4 @@
-/* $Id: logging.cpp 86871 2020-11-12 10:15:18Z vboxsync $ */
+/* $Id: logging.cpp 88947 2021-05-08 22:57:37Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions - X11 Client.
  */
@@ -16,6 +16,7 @@
  */
 
 
+#include <sys/wait.h>
 #include <stdlib.h>
 #include <iprt/buildconfig.h>
 #include <iprt/file.h>
