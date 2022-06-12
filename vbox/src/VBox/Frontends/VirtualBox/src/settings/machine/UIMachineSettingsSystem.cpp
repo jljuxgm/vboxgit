@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSystem.cpp 85850 2020-08-20 18:42:35Z vboxsync $ */
+/* $Id: UIMachineSettingsSystem.cpp 85871 2020-08-21 19:20:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSystem class implementation.
  */
@@ -808,8 +808,9 @@ void UIMachineSettingsSystem::prepare()
     m_pCache = new UISettingsCacheMachineSystem;
     AssertPtrReturnVoid(m_pCache);
 
-    /* Prepare widgets: */
+    /* Prepare everything: */
     prepareWidgets();
+    prepareConnections();
 
     /* Apply language settings: */
     retranslateUi();
@@ -829,7 +830,6 @@ void UIMachineSettingsSystem::prepareWidgets()
             prepareTabMotherboard();
             prepareTabProcessor();
             prepareTabAcceleration();
-            prepareConnections();
 
             pLayoutMain->addWidget(m_pTabWidget);
         }
