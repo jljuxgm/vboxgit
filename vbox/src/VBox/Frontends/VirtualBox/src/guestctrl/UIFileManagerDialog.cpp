@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerDialog.cpp 88873 2021-05-05 09:13:45Z vboxsync $ */
+/* $Id: UIFileManagerDialog.cpp 89111 2021-05-17 16:19:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerDialog class implementation.
  */
@@ -63,6 +63,13 @@ UIFileManagerDialog::UIFileManagerDialog(QWidget *pCenterWidget,
     , m_comGuest(comGuest)
     , m_strMachineName(strMachineName)
 {
+}
+
+UIFileManagerDialog::~UIFileManagerDialog()
+{
+    UIFileManager *pWidget = qobject_cast<UIFileManager*>(widget());
+    if (pWidget)
+        pWidget->setDialogBeingClosed(true);
 }
 
 void UIFileManagerDialog::retranslateUi()

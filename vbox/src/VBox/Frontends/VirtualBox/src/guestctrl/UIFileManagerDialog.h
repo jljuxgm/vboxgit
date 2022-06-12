@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerDialog.h 86986 2020-11-26 14:22:34Z vboxsync $ */
+/* $Id: UIFileManagerDialog.h 89111 2021-05-17 16:19:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerDialog class declaration.
  */
@@ -70,6 +70,7 @@ public:
       * @param  pActionPool    Passes the action-pool reference.
       * @param  comGuest       Passes the com-guest reference. */
     UIFileManagerDialog(QWidget *pCenterWidget, UIActionPool *pActionPool, const CGuest &comGuest, const QString &strMachineName = QString());
+    ~UIFileManagerDialog();
 
 protected:
 
