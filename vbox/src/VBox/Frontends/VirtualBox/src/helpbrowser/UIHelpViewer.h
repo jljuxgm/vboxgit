@@ -1,4 +1,4 @@
-/* $Id: UIHelpViewer.h 88437 2021-04-09 14:26:44Z vboxsync $ */
+/* $Id: UIHelpViewer.h 88438 2021-04-09 14:55:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class declaration.
  */
@@ -85,6 +85,7 @@ protected:
     virtual void contextMenuEvent(QContextMenuEvent *event) /* override */;
     virtual void resizeEvent(QResizeEvent *pEvent) /* override */;
     virtual void wheelEvent(QWheelEvent *pEvent) /* override */;
+    virtual void mouseReleaseEvent(QMouseEvent *pEvent) /* override */;
     virtual void mousePressEvent(QMouseEvent *pEvent) /* override */;
     virtual void mouseMoveEvent(QMouseEvent *pEvent) /* override */;
     virtual void mouseDoubleClickEvent(QMouseEvent *pEvent) /* override */;
