@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 88344 2021-04-01 11:25:37Z vboxsync $ */
+/* $Id: VMM.cpp 88346 2021-04-01 13:16:25Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -2133,6 +2133,7 @@ VMMR3DECL(int) VMMR3EmtRendezvous(PVM pVM, uint32_t fFlags, PFNVMMEMTRENDEZVOUS 
  */
 VMMR3_INT_DECL(void) VMMR3SetMayHaltInRing0(PVMCPU pVCpu, bool fMayHaltInRing0, uint32_t cNsSpinBlockThreshold)
 {
+    LogFlow(("VMMR3SetMayHaltInRing0(#%u, %d, %u)\n", pVCpu->idCpu, fMayHaltInRing0, cNsSpinBlockThreshold));
     pVCpu->vmm.s.fMayHaltInRing0       = fMayHaltInRing0;
     pVCpu->vmm.s.cNsSpinBlockThreshold = cNsSpinBlockThreshold;
 }
