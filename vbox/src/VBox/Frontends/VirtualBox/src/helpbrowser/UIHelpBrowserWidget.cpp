@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.cpp 87664 2021-02-09 15:04:04Z vboxsync $ */
+/* $Id: UIHelpBrowserWidget.cpp 87697 2021-02-10 17:20:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class implementation.
  */
@@ -341,9 +341,7 @@ void UIFontScaleWidget::setFontPointSize(int iFontPointSize)
         return;
     m_iFontPointSize = iFontPointSize;
     if (m_pValueLabel && m_iInitialFontPointSize != 0)
-    {
-        m_pValueLabel->setText(QString("%1\%").arg(QString::number(fontPercentage())));
-    }
+        m_pValueLabel->setText(QString("%1%2").arg(QString::number(fontPercentage())).arg("%"));
 }
 
 int UIFontScaleWidget::fontPointSize() const
@@ -371,7 +369,7 @@ void UIFontScaleWidget::prepare()
                      m_pPlusButton &&
                      m_pValueLabel);
 
-    m_pValueLabel->setText(QString("%1\%").arg(QString::number(fontPercentage())));
+    m_pValueLabel->setText(QString("%1%2").arg(QString::number(fontPercentage())).arg("%"));
 
     m_pMinusButton->setIcon(UIIconPool::iconSet(":/help_browser_minus_32px.png"));
     m_pResetButton->setIcon(UIIconPool::iconSet(":/help_browser_reset_32px.png"));
@@ -1631,7 +1629,7 @@ void UIHelpBrowserWidget::sltHandleWidgetVisibilityToggle(bool fToggled)
 
 void UIHelpBrowserWidget::sltShowPrintDialog()
 {
-#ifndef VBOX_WS_MAC
+#ifdef VBOX_WS_X11
     if (!m_pTabManager)
         return;
     QPrinter printer;
