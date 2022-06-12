@@ -1,4 +1,4 @@
-/* $Id: UIUpdateDefs.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIUpdateDefs.h 86128 2020-09-15 16:14:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Update routine related declarations.
  */
@@ -79,9 +79,11 @@ public:
     static QStringList list();
 
     /** Constructs update description on the basis of passed @a strData. */
-    VBoxUpdateData(const QString &strData);
+    VBoxUpdateData(const QString &strData = QString());
     /** Constructs update description on the basis of passed @a enmPeriodIndex and @a enmBranchIndex. */
     VBoxUpdateData(PeriodType enmPeriodIndex, BranchType enmBranchIndex);
+    /** Constructs update description on the basis of @a another one. */
+    VBoxUpdateData(const VBoxUpdateData &another);
 
     /** Returns whether there is no need to check. */
     bool isNoNeedToCheck() const;
@@ -93,12 +95,21 @@ public:
     PeriodType periodIndex() const;
     /** Returns update date. */
     QString date() const;
+    /** Returns internal update date. */
+    QDate internalDate() const;
     /** Returns branch index. */
     BranchType branchIndex() const;
     /** Returns period name. */
     QString branchName() const;
     /** Returns version. */
     UIVersion version() const;
+
+    /** Returns whether this item equals to @a another one. */
+    bool isEqual(const VBoxUpdateData &another) const;
+    /** Returns whether this item equals to @a another one. */
+    bool operator==(const VBoxUpdateData &another) const;
+    /** Returns whether this item isn't equal to @a another one. */
+    bool operator!=(const VBoxUpdateData &another) const;
 
 private:
 

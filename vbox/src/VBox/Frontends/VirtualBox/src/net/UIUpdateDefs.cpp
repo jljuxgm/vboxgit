@@ -1,4 +1,4 @@
-/* $Id: UIUpdateDefs.cpp 84319 2020-05-15 12:08:09Z vboxsync $ */
+/* $Id: UIUpdateDefs.cpp 86128 2020-09-15 16:14:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Update routine related implementations.
  */
@@ -79,6 +79,15 @@ VBoxUpdateData::VBoxUpdateData(PeriodType enmPeriodIndex, BranchType enmBranchIn
     encode();
 }
 
+VBoxUpdateData::VBoxUpdateData(const VBoxUpdateData &another)
+    : m_strData(another.data())
+    , m_enmPeriodIndex(another.periodIndex())
+    , m_date(another.internalDate())
+    , m_enmBranchIndex(another.branchIndex())
+    , m_version(another.version())
+{
+}
+
 bool VBoxUpdateData::isNoNeedToCheck() const
 {
     /* No need to check if Period == Never: */
@@ -118,6 +127,11 @@ QString VBoxUpdateData::date() const
     return isNoNeedToCheck() ? QCoreApplication::translate("UIUpdateManager", "Never") : m_date.toString(Qt::LocaleDate);
 }
 
+QDate VBoxUpdateData::internalDate() const
+{
+    return m_date;
+}
+
 VBoxUpdateData::BranchType VBoxUpdateData::branchIndex() const
 {
     return m_enmBranchIndex;
@@ -140,6 +154,27 @@ QString VBoxUpdateData::branchName() const
 UIVersion VBoxUpdateData::version() const
 {
     return m_version;
+}
+
+bool VBoxUpdateData::isEqual(const VBoxUpdateData &another) const
+{
+    return    true
+           && (m_strData == another.data())
+           && (m_enmPeriodIndex == another.periodIndex())
+           && (m_date == another.internalDate())
+           && (m_enmBranchIndex == another.branchIndex())
+           && (m_version == another.version())
+              ;
+}
+
+bool VBoxUpdateData::operator==(const VBoxUpdateData &another) const
+{
+    return isEqual(another);
+}
+
+bool VBoxUpdateData::operator!=(const VBoxUpdateData &another) const
+{
+    return !isEqual(another);
 }
 
 void VBoxUpdateData::decode()
