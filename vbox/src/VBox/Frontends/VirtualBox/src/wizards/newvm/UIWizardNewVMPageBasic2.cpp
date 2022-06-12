@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic2.cpp 88152 2021-03-17 12:47:59Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic2.cpp 88206 2021-03-19 14:17:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic2 class implementation.
  */
@@ -208,7 +208,7 @@ void UIWizardNewVMPage2::retranslateWidgets()
     if (m_pProductKeyLabel)
         m_pProductKeyLabel->setText(UIWizardNewVM::tr("&Product Key:"));
     if (m_pUserNameContainer)
-        m_pUserNameContainer->setTitle(UIWizardNewVM::tr("User name and password"));
+        m_pUserNameContainer->setTitle(UIWizardNewVM::tr("Username and password"));
     if (m_pAdditionalOptionsContainer)
         m_pAdditionalOptionsContainer->setTitle(UIWizardNewVM::tr("Additional options"));
     if (m_pStartHeadlessCheckBox)
