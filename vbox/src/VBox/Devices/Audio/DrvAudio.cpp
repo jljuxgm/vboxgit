@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 88378 2021-04-07 07:58:26Z vboxsync $ */
+/* $Id: DrvAudio.cpp 88380 2021-04-07 08:04:04Z vboxsync $ */
 /** @file
  * Intermediate audio driver - Connects the audio device emulation with the host backend.
  */
@@ -1321,14 +1321,10 @@ static int drvAudioStreamIterateInternal(PDRVAUDIO pThis, PDRVAUDIOSTREAM pStrea
     /* Whether to try closing a pending to close stream. */
     bool fTryClosePending = false;
 
-    int rc;
+    int rc = VINF_SUCCESS;
 
     do
     {
-        rc = pThis->pHostDrvAudio->pfnStreamIterate(pThis->pHostDrvAudio, pStreamEx->pvBackend);
-        if (RT_FAILURE(rc))
-            break;
-
         if (pStreamEx->Core.enmDir == PDMAUDIODIR_OUT)
         {
             /* No audio frames to transfer from guest to host (anymore)?
@@ -2063,7 +2059,6 @@ static int drvAudioHostInit(PDRVAUDIO pThis)
     AssertPtrReturn(pHostDrvAudio->pfnStreamGetWritable, VERR_INVALID_POINTER);
     AssertPtrNullReturn(pHostDrvAudio->pfnStreamGetPending, VERR_INVALID_POINTER);
     AssertPtrReturn(pHostDrvAudio->pfnStreamGetStatus, VERR_INVALID_POINTER);
-    AssertPtrReturn(pHostDrvAudio->pfnStreamIterate, VERR_INVALID_POINTER);
     AssertPtrReturn(pHostDrvAudio->pfnStreamPlay, VERR_INVALID_POINTER);
     AssertPtrReturn(pHostDrvAudio->pfnStreamCapture, VERR_INVALID_POINTER);
 

@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioDebug.cpp 88378 2021-04-07 07:58:26Z vboxsync $ */
+/* $Id: DrvHostAudioDebug.cpp 88380 2021-04-07 08:04:04Z vboxsync $ */
 /** @file
  * Host audio driver - Debug - For dumping and injecting audio data from/to the device emulation.
  */
@@ -366,16 +366,6 @@ static DECLCALLBACK(PDMAUDIOSTREAMSTS) drvHostDebugAudioHA_StreamGetStatus(PPDMI
 
 
 /**
- * @interface_method_impl{PDMIHOSTAUDIO,pfnStreamIterate}
- */
-static DECLCALLBACK(int) drvHostDebugAudioHA_StreamIterate(PPDMIHOSTAUDIO pInterface, PPDMAUDIOBACKENDSTREAM pStream)
-{
-    RT_NOREF(pInterface, pStream);
-    return VINF_SUCCESS;
-}
-
-
-/**
  * @interface_method_impl{PDMIBASE,pfnQueryInterface}
  */
 static DECLCALLBACK(void *) drvHostDebugAudioQueryInterface(PPDMIBASE pInterface, const char *pszIID)
@@ -418,7 +408,6 @@ static DECLCALLBACK(int) drvHostDebugAudioConstruct(PPDMDRVINS pDrvIns, PCFGMNOD
     pThis->IHostAudio.pfnStreamGetReadable  = drvHostDebugAudioHA_StreamGetReadable;
     pThis->IHostAudio.pfnStreamGetWritable  = drvHostDebugAudioHA_StreamGetWritable;
     pThis->IHostAudio.pfnStreamGetStatus    = drvHostDebugAudioHA_StreamGetStatus;
-    pThis->IHostAudio.pfnStreamIterate      = drvHostDebugAudioHA_StreamIterate;
     pThis->IHostAudio.pfnStreamPlay         = drvHostDebugAudioHA_StreamPlay;
     pThis->IHostAudio.pfnStreamCapture      = drvHostDebugAudioHA_StreamCapture;
     pThis->IHostAudio.pfnGetDevices         = NULL;

@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioAlsa.cpp 88378 2021-04-07 07:58:26Z vboxsync $ */
+/* $Id: DrvHostAudioAlsa.cpp 88380 2021-04-07 08:04:04Z vboxsync $ */
 /** @file
  * Host audio driver - Advanced Linux Sound Architecture (ALSA).
  */
@@ -1443,21 +1443,6 @@ static DECLCALLBACK(PDMAUDIOSTREAMSTS) drvHostAlsaAudioHA_StreamGetStatus(PPDMIH
 
 
 /**
- * @interface_method_impl{PDMIHOSTAUDIO,pfnStreamIterate}
- */
-static DECLCALLBACK(int) drvHostAlsaAudioHA_StreamIterate(PPDMIHOSTAUDIO pInterface, PPDMAUDIOBACKENDSTREAM pStream)
-{
-    AssertPtrReturn(pInterface, VERR_INVALID_POINTER);
-    AssertPtrReturn(pStream,    VERR_INVALID_POINTER);
-
-    LogFlowFuncEnter();
-
-    /* Nothing to do here for ALSA. */
-    return VINF_SUCCESS;
-}
-
-
-/**
  * @interface_method_impl{PDMIBASE,pfnQueryInterface}
  */
 static DECLCALLBACK(void *) drvHostAlsaAudioQueryInterface(PPDMIBASE pInterface, const char *pszIID)
@@ -1500,7 +1485,6 @@ static DECLCALLBACK(int) drvHostAlsaAudioConstruct(PPDMDRVINS pDrvIns, PCFGMNODE
     pThis->IHostAudio.pfnStreamGetReadable  = drvHostAlsaAudioHA_StreamGetReadable;
     pThis->IHostAudio.pfnStreamGetWritable  = drvHostAlsaAudioHA_StreamGetWritable;
     pThis->IHostAudio.pfnStreamGetStatus    = drvHostAlsaAudioHA_StreamGetStatus;
-    pThis->IHostAudio.pfnStreamIterate      = drvHostAlsaAudioHA_StreamIterate;
     pThis->IHostAudio.pfnStreamPlay         = drvHostAlsaAudioHA_StreamPlay;
     pThis->IHostAudio.pfnStreamCapture      = drvHostAlsaAudioHA_StreamCapture;
     pThis->IHostAudio.pfnGetDevices         = NULL;
