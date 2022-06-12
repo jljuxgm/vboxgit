@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic1.h 88108 2021-03-12 14:16:01Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic1.h 88109 2021-03-12 17:14:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic1 class declaration.
  */
@@ -88,6 +88,7 @@ protected:
      * @{ */
         UINameAndSystemEditor *m_pNameAndSystemEditor;
         QLabel                *m_pISOPathSelectorLabel;
+        QCheckBox             *m_pSkipUnattendedCheckBox;
     /** @} */
 
     QString m_strDetectedOSTypeId;
