@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.h 83066 2020-02-13 04:15:25Z vboxsync $ */
+/* $Id: HMSVMR0.h 87330 2021-01-20 19:02:24Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Internal header file.
  */
@@ -56,13 +56,11 @@ VMMR0DECL(int)          SVMR0InvalidatePage(PVMCPUCC pVCpu, RTGCPTR GCVirt);
  * Prepares for and executes VMRUN (64-bit register context).
  *
  * @returns VBox status code.
- * @param   pVMCBHostPhys   Physical address of host VMCB.
- * @param   pVMCBPhys       Physical address of the VMCB.
- * @param   pCtx            Pointer to the guest CPU context.
  * @param   pVM             The cross context VM structure. (Not used.)
- * @param   pVCpu           The cross context virtual CPU structure. (Not used.)
+ * @param   pVCpu           The cross context virtual CPU structure.
+ * @param   HCPhyspVMCB     Physical address of the VMCB.
  */
-DECLASM(int) SVMR0VMRun(RTHCPHYS pVMCBHostPhys, RTHCPHYS pVMCBPhys, PCPUMCTX pCtx, PVMCC pVM, PVMCPUCC pVCpu);
+DECLASM(int) SVMR0VMRun(PVMCC pVM, PVMCPUCC pVCpu, RTHCPHYS HCPhyspVMCB);
 
 /**
  * Executes INVLPGA.
