@@ -1,4 +1,4 @@
-/* $Id: VBoxPresent.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxPresent.h 84367 2020-05-19 11:23:09Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium D3D9 state tracker interface.
  *
@@ -28,6 +28,13 @@
 typedef struct D3DWindowBuffer D3DWindowBuffer;
 
 #ifdef __cplusplus
+
+# include <iprt/cdefs.h>
+# pragma warning(push)
+# if RT_MSC_PREREQ(RT_MSC_VER_VC142)
+#  pragma warning(disable: 5204) /* warning C5204: 'ID3DPresent': class has virtual functions, but its trivial destructor is not virtual; instances of objects derived from this class may not be destructed correctly */
+# endif
+
 /*
  * Gallium only defines C interface for ID3DPresentGroup and ID3DPresent.
  *
@@ -72,6 +79,8 @@ class ID3DPresentGroup
         virtual HRESULT WINAPI CreateAdditionalPresent(D3DPRESENT_PARAMETERS *pPresentationParameters, ID3DPresent **ppPresent) = 0;
         virtual void    WINAPI GetVersion(int *major, int *minor) = 0;
 };
+
+# pragma warning(pop)
 
 class IGaDirect3DDevice9Ex;
 HRESULT WDDMPresentGroupCreate(IGaDirect3DDevice9Ex *pGaDevice, ID3DPresentGroup **ppOut);
