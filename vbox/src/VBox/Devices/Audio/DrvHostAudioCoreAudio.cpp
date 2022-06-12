@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioCoreAudio.cpp 89132 2021-05-17 23:58:37Z vboxsync $ */
+/* $Id: DrvHostAudioCoreAudio.cpp 89133 2021-05-18 00:06:53Z vboxsync $ */
 /** @file
  * Host audio driver - Mac OS X CoreAudio.
  *
@@ -64,6 +64,7 @@
 /** @todo
  * - Maybe make sure the threads are immediately stopped if playing/recording stops.
  */
+
 
 /*********************************************************************************************************************************
 *   Defined Constants And Macros                                                                                                 *
