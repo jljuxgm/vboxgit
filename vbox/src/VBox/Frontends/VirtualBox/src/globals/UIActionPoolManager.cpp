@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.cpp 85571 2020-07-31 07:22:55Z vboxsync $ */
+/* $Id: UIActionPoolManager.cpp 85572 2020-07-31 11:01:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class implementation.
  */
@@ -4200,21 +4200,6 @@ void UIActionPoolManager::updateMenuSnapshot()
 
     /* Mark menu as valid: */
     m_invalidations.remove(UIActionIndexST_M_Snapshot);
-}
-
-void UIActionPoolManager::updateMenuPerformanceMonitor()
-{
-    /* Get corresponding menu: */
-    UIMenu *pMenu = action(UIActionIndex_M_Performance)->menu();
-    AssertPtrReturnVoid(pMenu);
-    /* Clear contents: */
-    pMenu->clear();
-
-    /* Populate Performance-menu: */
-    pMenu->addAction(action(UIActionIndex_M_Performance_S_Export));
-
-    /* Mark menu as valid: */
-    m_invalidations.remove(UIActionIndex_M_Performance);
 }
 
 void UIActionPoolManager::updateShortcuts()

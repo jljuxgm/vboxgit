@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.h 85571 2020-07-31 07:22:55Z vboxsync $ */
+/* $Id: UIActionPoolManager.h 85572 2020-07-31 11:01:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class declaration.
  */
@@ -285,10 +285,6 @@ protected:
 
     /** Updates 'Snapshot' menu. */
     void updateMenuSnapshot();
-
-    /** Updates 'Performance' menu. */
-    void updateMenuPerformanceMonitor();
-
 
     /** Updates shortcuts. */
     virtual void updateShortcuts() /* override */;
