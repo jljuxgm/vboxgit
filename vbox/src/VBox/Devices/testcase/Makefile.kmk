@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 86905 2020-11-17 23:36:12Z vboxsync $
+# $Id: Makefile.kmk 88624 2021-04-21 08:00:07Z vboxsync $
 ## @file
 # Sub-Makefile for the device testcases.
 #
@@ -47,6 +47,7 @@ VBOX_DEVICES_TESTS_FEATURES = \
 	$(if $(VBOX_WITH_VMSVGA),VBOX_WITH_VMSVGA,) \
 	$(if $(VBOX_WITH_WDDM),VBOX_WITH_WDDM,) \
 	$(if $(VBOX_WITH_XHCI_IMPL),VBOX_WITH_XHCI_IMPL,) \
+	$(if $(VBOX_WITH_IOMMU_AMD),VBOX_WITH_IOMMU_AMD,) \
        $(VBOX_AUDIO_DEFS) \
        $(VMM_COMMON_DEFS)
 
