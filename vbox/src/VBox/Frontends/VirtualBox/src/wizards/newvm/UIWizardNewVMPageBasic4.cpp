@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic4.cpp 87865 2021-02-24 18:35:22Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic4.cpp 87869 2021-02-25 09:34:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic4 class implementation.
  */
@@ -189,6 +189,13 @@ UIWizardNewVMPageBasic4::UIWizardNewVMPageBasic4()
     registerField("virtualDiskLocation", this, "virtualDiskLocation");
 }
 
+int UIWizardNewVMPageBasic4::nextId() const
+{
+    if (m_pDiskCreate->isChecked())
+        return UIWizardNewVM::Page5;
+    return UIWizardNewVM::Page8;
+}
+
 void UIWizardNewVMPageBasic4::prepare()
 {
     QVBoxLayout *pMainLayout = new QVBoxLayout(this);
@@ -295,7 +302,6 @@ bool UIWizardNewVMPageBasic4::isComplete() const
         !m_pDiskPresent->isChecked() ||
         !uiCommon().medium(m_pDiskSelector->id()).isNull();
 }
-
 
 // bool UIWizardNewVMPageBasic4::validatePage()
 // {

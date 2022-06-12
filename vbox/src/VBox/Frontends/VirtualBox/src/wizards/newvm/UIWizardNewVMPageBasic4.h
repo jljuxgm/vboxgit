@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic4.h 87865 2021-02-24 18:35:22Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic4.h 87869 2021-02-25 09:34:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic4 class declaration.
  */
@@ -105,6 +105,7 @@ public:
 
     /** Constructor. */
     UIWizardNewVMPageBasic4();
+    virtual int nextId() const /* override */;
 
 protected:
 
