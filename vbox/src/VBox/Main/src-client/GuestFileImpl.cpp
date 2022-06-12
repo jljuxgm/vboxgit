@@ -1,4 +1,4 @@
-/* $Id: GuestFileImpl.cpp 84648 2020-06-03 08:11:04Z vboxsync $ */
+/* $Id: GuestFileImpl.cpp 84744 2020-06-09 18:55:07Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest file handling.
  */
@@ -1687,7 +1687,7 @@ HRESULT GuestFile::write(const std::vector<BYTE> &aData, ULONG aTimeoutMS, ULONG
     const void *pvData = (void *)&aData.front();
     int vrc = i_writeData(aTimeoutMS, pvData, cbData, (uint32_t*)aWritten);
     if (RT_FAILURE(vrc))
-        hr = setErrorBoth(VBOX_E_IPRT_ERROR, vrc, tr("Writing %zubytes to guest file \"%s\" failed: %Rrc"),
+        hr = setErrorBoth(VBOX_E_IPRT_ERROR, vrc, tr("Writing %zu bytes to guest file \"%s\" failed: %Rrc"),
                           aData.size(), mData.mOpenInfo.mFilename.c_str(), vrc);
 
     LogFlowFuncLeaveRC(vrc);
@@ -1710,7 +1710,7 @@ HRESULT GuestFile::writeAt(LONG64 aOffset, const std::vector<BYTE> &aData, ULONG
     const void *pvData = (void *)&aData.front();
     int vrc = i_writeDataAt(aOffset, aTimeoutMS, pvData, cbData, (uint32_t*)aWritten);
     if (RT_FAILURE(vrc))
-        hr = setErrorBoth(VBOX_E_IPRT_ERROR, vrc, tr("Writing %zubytes to file \"%s\" (at offset %RU64) failed: %Rrc"),
+        hr = setErrorBoth(VBOX_E_IPRT_ERROR, vrc, tr("Writing %zu bytes to file \"%s\" (at offset %RU64) failed: %Rrc"),
                           aData.size(), mData.mOpenInfo.mFilename.c_str(), aOffset, vrc);
 
     LogFlowFuncLeaveRC(vrc);
