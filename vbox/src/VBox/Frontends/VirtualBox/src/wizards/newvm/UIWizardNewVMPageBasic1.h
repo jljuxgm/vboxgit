@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic1.h 87368 2021-01-22 13:34:44Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic1.h 87369 2021-01-22 13:40:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic1 class declaration.
  */
@@ -40,6 +40,7 @@ class QButtonGroup;
 /** 1st page of the New Virtual Machine wizard (base part): */
 class UIWizardNewVMPage1 : public UIWizardPageBase
 {
+
 protected:
 
     /** Constructor. */
@@ -115,11 +116,9 @@ private:
     /** Base name of the machine is generated from the m_strMachineFilePath. */
     QString m_strMachineBaseName;
 
-
     QString m_strGroup;
     bool m_fSupportsHWVirtEx;
     bool m_fSupportsLongMode;
-
 
     friend class UIWizardNewVM;
 };
@@ -171,7 +170,6 @@ private:
 
     /** Validation stuff. */
     virtual bool validatePage() /* override */;
-
 };
 
 #endif /* !FEQT_INCLUDED_SRC_wizards_newvm_UIWizardNewVMPageBasic1_h */
