@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 84719 2020-06-07 18:47:59Z vboxsync $
+# $Id: tdAddBasic1.py 84769 2020-06-10 18:02:36Z vboxsync $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84719 $"
+__version__ = "$Revision: 84769 $"
 
 # Standard Python imports.
 import os;
@@ -484,7 +484,7 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
         # Ignore errors as all files above might not be present for whatever reason.
         #
         self.txsDownloadFiles(oSession, oTxsSession,
-                              [('/var/log/vboxadd-install.log', 'vboxadd-install-%s.log' % oTestVm.sName), ],
+                              [('/var/log/vboxadd-install.log', 'vboxadd-install-%s.log' % oTestVm.sVmName), ],
                               fIgnoreErrors = True);
 
         # Do the final reboot to get the just installed Guest Additions up and running.
