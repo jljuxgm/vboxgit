@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: reporter.py 84421 2020-05-20 16:50:27Z vboxsync $
+# $Id: reporter.py 84543 2020-05-26 16:05:57Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84421 $"
+__version__ = "$Revision: 84543 $"
 
 
 # Standard Python imports.
@@ -159,6 +159,14 @@ class ReporterBase(object):
     def incDebug(self):
         """Increases the debug level."""
         self.iDebug += 1;
+
+    def getVerbosity(self):
+        """Returns the current verbosity level."""
+        return self.iVerbose;
+
+    def getDebug(self):
+        """Returns the current debug level."""
+        return self.iDebug;
 
     def appendToProcessName(self, sAppend):
         """
@@ -1639,6 +1647,14 @@ def incVerbosity():
 def incDebug():
     """Increases the debug level."""
     return g_oReporter.incDebug()
+
+def getVerbosity():
+    """Returns the current verbosity level."""
+    return g_oReporter.getVerbosity()
+
+def getDebug():
+    """Returns the current debug level."""
+    return g_oReporter.getDebug()
 
 def appendToProcessName(sAppend):
     """
