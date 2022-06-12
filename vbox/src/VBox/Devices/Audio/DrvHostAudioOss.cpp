@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioOss.cpp 88390 2021-04-07 10:35:06Z vboxsync $ */
+/* $Id: DrvHostAudioOss.cpp 88413 2021-04-08 12:02:59Z vboxsync $ */
 /** @file
  * Host audio driver - OSS (Open Sound System).
  */
@@ -445,10 +445,8 @@ static int ossControlStreamIn(/*PPDMIHOSTAUDIO pInterface, PPDMAUDIOBACKENDSTREA
 }
 
 
-static int ossControlStreamOut(PPDMAUDIOBACKENDSTREAM pStream, PDMAUDIOSTREAMCMD enmStreamCmd)
+static int ossControlStreamOut(POSSAUDIOSTREAM pStreamOSS, PDMAUDIOSTREAMCMD enmStreamCmd)
 {
-    POSSAUDIOSTREAM pStreamOSS = (POSSAUDIOSTREAM)pStream;
-
     int rc = VINF_SUCCESS;
 
     switch (enmStreamCmd)
