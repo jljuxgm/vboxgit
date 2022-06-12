@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 88247 2021-03-22 15:32:40Z vboxsync $ */
+/* $Id: UIMachineView.cpp 88248 2021-03-22 15:39:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -399,8 +399,8 @@ void UIMachineView::sltHandleActionTriggerViewScreenToggle(int iScreen, bool fEn
          * Do not send a hint if nothing has changed to prevent the guest being notified about its own changes. */
         if (   !isFullscreenOrSeamless()
             && uisession()->isGuestSupportsGraphics()
-            && (   (int)m_pFrameBuffer->width() != uWidth
-                || (int)m_pFrameBuffer->height() != uHeight
+            && (   m_pFrameBuffer->width() != (int)uWidth
+                || m_pFrameBuffer->height() != (int)uHeight
                 || uisession()->isScreenVisible(screenId()) != uisession()->isScreenVisibleHostDesires(screenId())))
             storeGuestSizeHint(QSize(uWidth, uHeight));
 
