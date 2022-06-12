@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImplPrivate.h 84745 2020-06-09 19:24:27Z vboxsync $ */
+/* $Id: GuestCtrlImplPrivate.h 84844 2020-06-16 09:46:56Z vboxsync $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -1023,6 +1023,9 @@ public:
 
 protected:
 
+    /** Maximum allowed size the stream buffer can grow to.
+     *  Defaults to 32 MB. */
+    size_t m_cbMax;
     /** Currently allocated size of internal stream buffer. */
     size_t m_cbAllocated;
     /** Currently used size at m_offBuffer. */
@@ -1030,7 +1033,7 @@ protected:
     /** Current byte offset within the internal stream buffer. */
     size_t m_offBuffer;
     /** Internal stream buffer. */
-    BYTE *m_pbBuffer;
+    BYTE  *m_pbBuffer;
 };
 
 class Guest;
