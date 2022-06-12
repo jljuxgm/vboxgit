@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVM.cpp 86979 2020-11-26 07:04:40Z vboxsync $ */
+/* $Id: UIWizardCloneVM.cpp 88446 2021-04-09 18:04:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVM class implementation.
  */
@@ -115,7 +115,7 @@ bool UIWizardCloneVM::cloneVM()
     }
 
     /* Create a new machine object. */
-    CMachine cloneMachine = vbox.CreateMachine(strSettingsFile, strName, QVector<QString>(), QString::null, QString::null);
+    CMachine cloneMachine = vbox.CreateMachine(strSettingsFile, strName, QVector<QString>(), QString(), QString());
     if (!vbox.isOk())
     {
         msgCenter().cannotCreateMachine(vbox, this);

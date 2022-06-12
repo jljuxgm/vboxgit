@@ -1,4 +1,4 @@
-/* $Id: UIFilePathSelector.cpp 87608 2021-02-04 14:54:27Z vboxsync $ */
+/* $Id: UIFilePathSelector.cpp 88446 2021-04-09 18:04:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFilePathSelector class implementation.
  */
@@ -195,7 +195,7 @@ const QString& UIFilePathSelector::defaultPath() const
 
 void UIFilePathSelector::setPath(const QString &strPath, bool fRefreshText /* = true */)
 {
-    m_strPath = strPath.isEmpty() ? QString::null :
+    m_strPath = strPath.isEmpty() ? QString() :
             QDir::toNativeSeparators(strPath);
     if (fRefreshText)
         refreshText();
@@ -339,7 +339,7 @@ void UIFilePathSelector::onActivated(int iIndex)
         case ResetId:
         {
             if (m_strDefaultPath.isEmpty())
-                changePath(QString::null);
+                changePath(QString());
             else
                 changePath(m_strDefaultPath);
             break;

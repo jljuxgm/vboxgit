@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsGeneral.cpp 87608 2021-02-04 14:54:27Z vboxsync $ */
+/* $Id: UIMachineSettingsGeneral.cpp 88446 2021-04-09 18:04:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsGeneral class implementation.
  */
@@ -322,7 +322,7 @@ void UIMachineSettingsGeneral::putToCache()
     /* Gather new 'Description' data: */
     AssertPtrReturnVoid(m_pEditorDescription);
     newGeneralData.m_strDescription = m_pEditorDescription->toPlainText().isEmpty() ?
-                                      QString::null : m_pEditorDescription->toPlainText();
+                                      QString() : m_pEditorDescription->toPlainText();
 
     /* Gather new 'Encryption' data: */
     AssertPtrReturnVoid(m_pCheckBoxEncryption);
