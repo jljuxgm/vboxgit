@@ -1,4 +1,4 @@
-/* $Id: DevHDACommon.h 88164 2021-03-17 17:13:24Z vboxsync $ */
+/* $Id: DevHDACommon.h 88170 2021-03-18 01:38:31Z vboxsync $ */
 /** @file
  * DevHDACommon.h - Shared HDA device defines / functions.
  */
@@ -592,16 +592,6 @@ void          hdaProcessInterrupt(PPDMDEVINS pDevIns, PHDASTATE pThis);
 /** @name Register utility functions.
  * @{  */
 uint8_t       hdaSDFIFOWToBytes(uint16_t u16RegFIFOW);
-/** @} */
-
-/** @name Wall clock (WALCLK) functions.
- * @{
- */
-uint64_t      hdaWalClkGetCurrent(PHDASTATE pThis);
-#ifdef IN_RING3
-uint64_t      hdaR3WalClkGetMax(PHDASTATE pThis, PHDASTATER3 pThisCC);
-bool          hdaR3WalClkSet(PHDASTATE pThis, PHDASTATER3 pThisCC, uint64_t u64WalClk, bool fForce);
-#endif
 /** @} */
 
 /** @name Register functions.
