@@ -1,4 +1,4 @@
-/* $Id: VHDX.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VHDX.cpp 87753 2021-02-13 16:08:10Z vboxsync $ */
 /** @file
  * VHDX - VHDX Disk image, Core Code.
  */
@@ -635,7 +635,11 @@ DECLINLINE(void) vhdxConvUuidEndianess(VHDXECONV enmConv, PRTUUID pUuidConv, PRT
 {
     RT_NOREF1(enmConv);
 #if 1
-    memcpy(pUuidConv, pUuid, sizeof(RTUUID));
+    /** @todo r=andy Code looks temporary disabled to me, fixes strict release builds:
+     *        "accessing 16 bytes at offsets 0 and 0 overlaps 16 bytes at offset 0 [-Werror=restrict] */
+    RTUUID uuidTmp;
+    memcpy(&uuidTmp,  pUuid,    sizeof(RTUUID));
+    memcpy(pUuidConv, &uuidTmp, sizeof(RTUUID));
 #else
     pUuidConv->Gen.u32TimeLow              = SET_ENDIAN_U32(pUuid->Gen.u32TimeLow);
     pUuidConv->Gen.u16TimeMid              = SET_ENDIAN_U16(pUuid->Gen.u16TimeMid);
