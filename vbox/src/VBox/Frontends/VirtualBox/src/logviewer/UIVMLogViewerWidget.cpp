@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.cpp 88969 2021-05-10 17:50:38Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.cpp 88970 2021-05-11 07:43:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class implementation.
  */
@@ -105,9 +105,9 @@ UITabBar::UITabBar(QWidget *pParent /* = 0 */)
     :QTabBar(pParent)
 {
     QStyleOptionTab opt;
-    m_alternateColors << opt.palette.color(QPalette::Button).darker(230);
-    m_alternateColors << opt.palette.color(QPalette::Button).darker(140);
-    m_selectedTabColor = opt.palette.color(QPalette::Window).lighter(300);
+    m_alternateColors << opt.palette.color(QPalette::Button).darker(180);
+    m_alternateColors << opt.palette.color(QPalette::Button).darker(120);
+    m_selectedTabColor = opt.palette.color(QPalette::Button).lighter(300);
 
     QStyle *pFusionStyle = QStyleFactory::create("Fusion");
     if (pFusionStyle)
