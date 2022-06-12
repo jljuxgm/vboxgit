@@ -1,4 +1,4 @@
-/* $Id: ioqueue-iouringfile-provider.cpp 86126 2020-09-15 10:58:42Z vboxsync $ */
+/* $Id: ioqueue-iouringfile-provider.cpp 86519 2020-10-11 17:19:02Z vboxsync $ */
 /** @file
  * IPRT - I/O queue, Linux io_uring interface I/O file provider.
  */
@@ -578,6 +578,10 @@ static void rtIoQueueLnxIoURingFileProvCqCheck(PRTIOQUEUEPROVINT pThis, PRTIOQUE
         else
             paCEvt->rcReq = RTErrConvertFromErrno(-pCqe->rcLnx);
 
+#ifdef RT_STRICT /* poison */
+        memset((void *)pCqe, 0xff, sizeof(*pCqe));
+#endif
+
         paCEvt++;
         cCEvtSeen++;
         idxCqHead++;
@@ -793,6 +797,7 @@ static DECLCALLBACK(int) rtIoQueueLnxIoURingFileProv_ReqPrepare(RTIOQUEUEPROV hI
                                   VERR_INVALID_PARAMETER);
     }
 
+    pThis->Sq.paidxSqes[idx] = idx;
     pThis->idxSqTail++;
     pThis->cSqesToCommit++;
     return VINF_SUCCESS;
@@ -803,7 +808,6 @@ static DECLCALLBACK(int) rtIoQueueLnxIoURingFileProv_ReqPrepare(RTIOQUEUEPROV hI
 static DECLCALLBACK(int) rtIoQueueLnxIoURingFileProv_Commit(RTIOQUEUEPROV hIoQueueProv, uint32_t *pcReqsCommitted)
 {
     PRTIOQUEUEPROVINT pThis = hIoQueueProv;
-    RT_NOREF(pThis, pcReqsCommitted);
 
     ASMWriteFence();
     ASMAtomicWriteU32(pThis->Sq.pidxTail, pThis->idxSqTail);
