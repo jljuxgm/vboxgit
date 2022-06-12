@@ -1,4 +1,4 @@
-/* $Id: UIChooser.cpp 85508 2020-07-29 10:11:07Z vboxsync $ */
+/* $Id: UIChooser.cpp 86655 2020-10-20 14:59:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooser class implementation.
  */
@@ -43,6 +43,12 @@ bool UIChooser::isGroupSavingInProgress() const
 {
     AssertPtrReturn(model(), false);
     return model()->isGroupSavingInProgress();
+}
+
+bool UIChooser::isCloudUpdateInProgress() const
+{
+    AssertPtrReturn(model(), false);
+    return model()->isCloudUpdateInProgress();
 }
 
 UIVirtualMachineItem *UIChooser::currentItem() const
@@ -240,6 +246,8 @@ void UIChooser::prepareConnections()
             this, &UIChooser::sigCloudMachineStateChange);
     connect(model(), &UIChooserModel::sigGroupSavingStateChanged,
             this, &UIChooser::sigGroupSavingStateChanged);
+    connect(model(), &UIChooserModel::sigCloudUpdateStateChanged,
+            this, &UIChooser::sigCloudUpdateStateChanged);
 
     /* Chooser-model connections: */
     connect(model(), &UIChooserModel::sigToolMenuRequested,
@@ -286,6 +294,8 @@ void UIChooser::cleanupConnections()
                this, &UIChooser::sigCloudMachineStateChange);
     disconnect(model(), &UIChooserModel::sigGroupSavingStateChanged,
                this, &UIChooser::sigGroupSavingStateChanged);
+    disconnect(model(), &UIChooserModel::sigCloudUpdateStateChanged,
+               this, &UIChooser::sigCloudUpdateStateChanged);
 
     /* Chooser-model connections: */
     disconnect(model(), &UIChooserModel::sigToolMenuRequested,

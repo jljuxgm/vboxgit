@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.cpp 86631 2020-10-19 18:41:39Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.cpp 86655 2020-10-20 14:59:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class implementation.
  */
@@ -584,16 +584,23 @@ QString UIChooserAbstractModel::valueToString(UIChooserNodeDataValueType enmType
 void UIChooserAbstractModel::insertCloudAccountKey(const UICloudAccountKey &key)
 {
     m_cloudAccountKeysBeingUpdated.insert(key);
+    emit sigCloudUpdateStateChanged();
 }
 
 void UIChooserAbstractModel::removeCloudAccountKey(const UICloudAccountKey &key)
 {
     m_cloudAccountKeysBeingUpdated.remove(key);
+    emit sigCloudUpdateStateChanged();
 }
 
 bool UIChooserAbstractModel::containsCloudAccountKey(const UICloudAccountKey &key) const
 {
     return m_cloudAccountKeysBeingUpdated.contains(key);
+}
+
+bool UIChooserAbstractModel::isCloudUpdateInProgress() const
+{
+    return !m_cloudAccountKeysBeingUpdated.isEmpty();
 }
 
 void UIChooserAbstractModel::sltHandleCloudMachineStateChange()
@@ -1058,8 +1065,8 @@ void UIChooserAbstractModel::reloadCloudTree()
             UITaskCloudListMachines *pTask = new UITaskCloudListMachines(strProviderShortName,
                                                                          strProfileName,
                                                                          true /* with refresh? */);
-            if (pTask)
-                uiCommon().threadPoolCloud()->enqueueTask(pTask);
+            AssertPtrReturnVoid(pTask);
+            uiCommon().threadPoolCloud()->enqueueTask(pTask);
         }
     }
 

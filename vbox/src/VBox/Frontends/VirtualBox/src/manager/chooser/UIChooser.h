@@ -1,4 +1,4 @@
-/* $Id: UIChooser.h 85508 2020-07-29 10:11:07Z vboxsync $ */
+/* $Id: UIChooser.h 86655 2020-10-20 14:59:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooser class declaration.
  */
@@ -52,6 +52,12 @@ signals:
         void sigGroupSavingStateChanged();
     /** @} */
 
+    /** @name Cloud update stuff.
+      * @{ */
+        /** Notifies listeners about cloud update state change. */
+        void sigCloudUpdateStateChanged();
+    /** @} */
+
     /** @name Tool stuff.
       * @{ */
         /** Notifies listeners about tool popup-menu request for certain @a enmClass and @a position. */
@@ -102,6 +108,12 @@ public:
       * @{ */
         /** Returns whether group saving is in progress. */
         bool isGroupSavingInProgress() const;
+    /** @} */
+
+    /** @name Cloud update stuff.
+      * @{ */
+        /** Returns whether cloud update is in progress. */
+        bool isCloudUpdateInProgress() const;
     /** @} */
 
     /** @name Current-item stuff.

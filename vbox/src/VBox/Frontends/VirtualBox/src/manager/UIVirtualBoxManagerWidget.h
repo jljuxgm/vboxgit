@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.h 86233 2020-09-23 12:10:51Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.h 86655 2020-10-20 14:59:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class declaration.
  */
@@ -69,6 +69,8 @@ signals:
         void sigChooserPaneIndexChange();
         /** Notifies about Chooser-pane group saving change. */
         void sigGroupSavingStateChanged();
+        /** Notifies about Chooser-pane cloud update change. */
+        void sigCloudUpdateStateChanged();
 
         /** Notifies about state change for cloud machine with certain @a uId. */
         void sigCloudMachineStateChange(const QUuid &uId);
@@ -144,6 +146,8 @@ public:
 
         /** Returns whether group saving is in progress. */
         bool isGroupSavingInProgress() const;
+        /** Returns whether cloud update is in progress. */
+        bool isCloudUpdateInProgress() const;
 
         /** Opens group name editor. */
         void openGroupNameEditor();

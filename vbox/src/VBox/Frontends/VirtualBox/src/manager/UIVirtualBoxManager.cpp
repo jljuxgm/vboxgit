@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 86345 2020-09-30 12:37:06Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 86655 2020-10-20 14:59:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -507,6 +507,11 @@ void UIVirtualBoxManager::sltHandleChooserPaneIndexChange()
 }
 
 void UIVirtualBoxManager::sltHandleGroupSavingProgressChange()
+{
+    updateActionsAppearance();
+}
+
+void UIVirtualBoxManager::sltHandleCloudUpdateProgressChange()
 {
     updateActionsAppearance();
 }
@@ -2086,6 +2091,8 @@ void UIVirtualBoxManager::prepareConnections()
             this, &UIVirtualBoxManager::sltHandleChooserPaneIndexChange);
     connect(m_pWidget, &UIVirtualBoxManagerWidget::sigGroupSavingStateChanged,
             this, &UIVirtualBoxManager::sltHandleGroupSavingProgressChange);
+    connect(m_pWidget, &UIVirtualBoxManagerWidget::sigCloudUpdateStateChanged,
+            this, &UIVirtualBoxManager::sltHandleCloudUpdateProgressChange);
     connect(m_pWidget, &UIVirtualBoxManagerWidget::sigStartOrShowRequest,
             this, &UIVirtualBoxManager::sltPerformStartOrShowMachine);
     connect(m_pWidget, &UIVirtualBoxManagerWidget::sigCloudMachineStateChange,
@@ -2377,6 +2384,11 @@ bool UIVirtualBoxManager::isSingleLocalGroupSelected() const
 bool UIVirtualBoxManager::isSingleCloudProfileGroupSelected() const
 {
     return m_pWidget->isSingleCloudProfileGroupSelected();
+}
+
+bool UIVirtualBoxManager::isCloudUpdateInProgress() const
+{
+    return m_pWidget->isCloudUpdateInProgress();
 }
 
 void UIVirtualBoxManager::openAddMachineDialog(const QString &strFileName /* = QString() */)
@@ -3177,6 +3189,7 @@ bool UIVirtualBoxManager::isActionEnabled(int iActionIndex, const QList<UIVirtua
         case UIActionIndexMN_M_Machine_S_Remove:
         {
             return !isGroupSavingInProgress() &&
+                   (isItemsLocal(items) || !isCloudUpdateInProgress()) &&
                    isAtLeastOneItemRemovable(items);
         }
         case UIActionIndexMN_M_Group_M_MoveToGroup:

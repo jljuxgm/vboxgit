@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.h 86631 2020-10-19 18:41:39Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.h 86655 2020-10-20 14:59:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class declaration.
  */
@@ -62,6 +62,12 @@ signals:
         void sigStartGroupSaving();
         /** Notifies listeners about group saving state changed. */
         void sigGroupSavingStateChanged();
+    /** @} */
+
+    /** @name Cloud update stuff.
+      * @{ */
+        /** Notifies listeners about cloud update state changed. */
+        void sigCloudUpdateStateChanged();
     /** @} */
 
 public:
@@ -132,6 +138,8 @@ public:
         void removeCloudAccountKey(const UICloudAccountKey &key);
         /** Returns whether cloud account @a key is a part of key set currently being updated. */
         bool containsCloudAccountKey(const UICloudAccountKey &key) const;
+        /** Returns whether at least one cloud account update is in progress. */
+        bool isCloudUpdateInProgress() const;
     /** @} */
 
 public slots:

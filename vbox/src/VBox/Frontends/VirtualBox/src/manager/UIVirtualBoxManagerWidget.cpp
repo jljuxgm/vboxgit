@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 86344 2020-09-30 12:31:29Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 86655 2020-10-20 14:59:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -114,6 +114,11 @@ QString UIVirtualBoxManagerWidget::fullGroupName() const
 bool UIVirtualBoxManagerWidget::isGroupSavingInProgress() const
 {
     return m_pPaneChooser->isGroupSavingInProgress();
+}
+
+bool UIVirtualBoxManagerWidget::isCloudUpdateInProgress() const
+{
+    return m_pPaneChooser->isCloudUpdateInProgress();
 }
 
 void UIVirtualBoxManagerWidget::openGroupNameEditor()
@@ -674,6 +679,8 @@ void UIVirtualBoxManagerWidget::prepareConnections()
             m_pPaneToolsMachine, &UIToolPaneMachine::sigToggleFinished);
     connect(m_pPaneChooser, &UIChooser::sigGroupSavingStateChanged,
             this, &UIVirtualBoxManagerWidget::sigGroupSavingStateChanged);
+    connect(m_pPaneChooser, &UIChooser::sigCloudUpdateStateChanged,
+            this, &UIVirtualBoxManagerWidget::sigCloudUpdateStateChanged);
     connect(m_pPaneChooser, &UIChooser::sigToolMenuRequested,
             this, &UIVirtualBoxManagerWidget::sltHandleToolMenuRequested);
     connect(m_pPaneChooser, &UIChooser::sigCloudMachineStateChange,
@@ -939,6 +946,8 @@ void UIVirtualBoxManagerWidget::cleanupConnections()
                m_pPaneToolsMachine, &UIToolPaneMachine::sigToggleFinished);
     disconnect(m_pPaneChooser, &UIChooser::sigGroupSavingStateChanged,
                this, &UIVirtualBoxManagerWidget::sigGroupSavingStateChanged);
+    disconnect(m_pPaneChooser, &UIChooser::sigCloudUpdateStateChanged,
+               this, &UIVirtualBoxManagerWidget::sigCloudUpdateStateChanged);
     disconnect(m_pPaneChooser, &UIChooser::sigToolMenuRequested,
                this, &UIVirtualBoxManagerWidget::sltHandleToolMenuRequested);
     disconnect(m_pPaneChooser, &UIChooser::sigCloudMachineStateChange,
