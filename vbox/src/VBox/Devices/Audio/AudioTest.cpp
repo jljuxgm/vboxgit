@@ -1,4 +1,4 @@
-/* $Id: AudioTest.cpp 88968 2021-05-10 17:40:28Z vboxsync $ */
+/* $Id: AudioTest.cpp 88983 2021-05-11 13:47:16Z vboxsync $ */
 /** @file
  * Audio testing routines.
  * Common code which is being used by the ValidationKit and the debug / ValdikationKit audio driver(s).
@@ -277,9 +277,9 @@ void AudioTestSetDestroy(PAUDIOTESTSET pSet)
     RT_NOREF(pSet);
 }
 
-int AudioTestSetOpen(PAUDIOTESTSET pSet, const char *pszPath, const char *pszTag)
+int AudioTestSetOpen(PAUDIOTESTSET pSet, const char *pszPath)
 {
-    RT_NOREF(pSet, pszPath, pszTag);
+    RT_NOREF(pSet, pszPath);
 
     return VERR_NOT_IMPLEMENTED;
 }
