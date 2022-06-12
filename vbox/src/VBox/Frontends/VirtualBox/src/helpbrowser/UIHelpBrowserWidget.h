@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.h 89409 2021-05-31 17:20:54Z vboxsync $ */
+/* $Id: UIHelpBrowserWidget.h 89410 2021-05-31 17:53:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class declaration.
  */
@@ -109,6 +109,7 @@ private slots:
     void sltFindInPageWidgetVisibilityChanged(bool fVisible);
     void sltFindNextInPage();
     void sltFindPreviousInPage();
+    void sltHistoryChanged(bool fBackwardAvailable, bool fForwardAvailable);
 
 private:
 
