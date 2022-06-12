@@ -1,4 +1,4 @@
-/* $Id: UIChooser.cpp 84437 2020-05-21 16:36:05Z vboxsync $ */
+/* $Id: UIChooser.cpp 84439 2020-05-21 18:09:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooser class implementation.
  */
@@ -104,6 +104,12 @@ bool UIChooser::isGroupSavingInProgress() const
 {
     AssertPtrReturn(model(), false);
     return model()->isGroupSavingInProgress();
+}
+
+void UIChooser::openGroupNameEditor()
+{
+    AssertPtrReturnVoid(model());
+    model()->startEditingSelectedGroupItemName();
 }
 
 void UIChooser::sltHandleToolbarResize(const QSize &newSize)

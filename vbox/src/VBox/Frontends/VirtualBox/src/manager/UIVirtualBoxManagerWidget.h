@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.h 84438 2020-05-21 18:04:11Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.h 84439 2020-05-21 18:09:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class declaration.
  */
@@ -133,6 +133,9 @@ public:
 
         /** Returns whether group saving is in progress. */
         bool isGroupSavingInProgress() const;
+
+        /** Opens group name editor. */
+        void openGroupNameEditor();
     /** @} */
 
     /** @name Tools pane stuff.

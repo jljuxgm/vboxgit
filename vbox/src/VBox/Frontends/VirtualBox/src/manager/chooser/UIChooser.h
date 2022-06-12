@@ -1,4 +1,4 @@
-/* $Id: UIChooser.h 84438 2020-05-21 18:04:11Z vboxsync $ */
+/* $Id: UIChooser.h 84439 2020-05-21 18:09:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooser class declaration.
  */
@@ -124,6 +124,12 @@ public:
       * @{ */
         /** Returns whether group saving is in progress. */
         bool isGroupSavingInProgress() const;
+    /** @} */
+
+    /** @name Action handling stuff.
+      * @{ */
+        /** Opens group name editor. */
+        void openGroupNameEditor();
     /** @} */
 
 public slots:

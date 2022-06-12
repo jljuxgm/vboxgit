@@ -1,4 +1,4 @@
-/* $Id: UIChooserHandlerKeyboard.cpp 84437 2020-05-21 16:36:05Z vboxsync $ */
+/* $Id: UIChooserHandlerKeyboard.cpp 84439 2020-05-21 18:09:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserHandlerKeyboard class implementation.
  */
@@ -252,8 +252,8 @@ bool UIChooserHandlerKeyboard::handleKeyPress(QKeyEvent *pEvent) const
             /* If this item is of group type: */
             if (model()->currentItem()->type() == UIChooserNodeType_Group)
             {
-                /* Start embedded editing of current-item: */
-                model()->startEditingGroupItemName();
+                /* Start editing selected group item name: */
+                model()->startEditingSelectedGroupItemName();
                 /* Filter that event out: */
                 return true;
             }

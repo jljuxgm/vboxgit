@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 84438 2020-05-21 18:04:11Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 84439 2020-05-21 18:09:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -108,6 +108,11 @@ bool UIVirtualBoxManagerWidget::isAllItemsOfOneGroupSelected() const
 bool UIVirtualBoxManagerWidget::isGroupSavingInProgress() const
 {
     return m_pPaneChooser->isGroupSavingInProgress();
+}
+
+void UIVirtualBoxManagerWidget::openGroupNameEditor()
+{
+    m_pPaneChooser->openGroupNameEditor();
 }
 
 void UIVirtualBoxManagerWidget::setToolsType(UIToolType enmType)

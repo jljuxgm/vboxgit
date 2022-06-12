@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 84437 2020-05-21 16:36:05Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 84439 2020-05-21 18:09:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -554,9 +554,14 @@ UIChooserItem *UIChooserModel::root() const
     return m_pRoot.data();
 }
 
-void UIChooserModel::startEditingGroupItemName()
+void UIChooserModel::startEditingSelectedGroupItemName()
 {
-    sltEditGroupName();
+    /* Only for single selected group: */
+    if (!isSingleGroupSelected())
+        return;
+
+    /* Start editing first selected item name: */
+    firstSelectedItem()->startEditing();
 }
 
 void UIChooserModel::startOrShowSelectedItems()
@@ -788,19 +793,6 @@ void UIChooserModel::sltMakeSureCurrentItemVisible()
 void UIChooserModel::sltCurrentItemDestroyed()
 {
     AssertMsgFailed(("Current-item destroyed!"));
-}
-
-void UIChooserModel::sltEditGroupName()
-{
-    /* Check if action is enabled: */
-    if (!actionPool()->action(UIActionIndexST_M_Group_S_Rename)->isEnabled())
-        return;
-    /* Only for single selected group: */
-    if (!isSingleGroupSelected())
-        return;
-
-    /* Start editing group name: */
-    firstSelectedItem()->startEditing();
 }
 
 void UIChooserModel::sltSortGroup()
@@ -1388,8 +1380,6 @@ void UIChooserModel::prepareConnections()
             this, &UIChooserModel::sltCreateNewMachine);
     connect(actionPool()->action(UIActionIndexST_M_Machine_S_New), &UIAction::triggered,
             this, &UIChooserModel::sltCreateNewMachine);
-    connect(actionPool()->action(UIActionIndexST_M_Group_S_Rename), &UIAction::triggered,
-            this, &UIChooserModel::sltEditGroupName);
     connect(actionPool()->action(UIActionIndexST_M_Group_S_Remove), &UIAction::triggered,
             this, &UIChooserModel::sltUngroupSelectedGroup);
     connect(actionPool()->action(UIActionIndexST_M_Machine_S_Remove), &UIAction::triggered,

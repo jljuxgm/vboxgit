@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 84437 2020-05-21 16:36:05Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 84439 2020-05-21 18:09:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -597,6 +597,11 @@ void UIVirtualBoxManager::sltOpenAddMachineDialog()
         pWizard->exec();
         delete pWizard;
     }
+}
+
+void UIVirtualBoxManager::sltOpenGroupNameEditor()
+{
+    m_pWidget->openGroupNameEditor();
 }
 
 void UIVirtualBoxManager::sltOpenMachineSettingsDialog(QString strCategory /* = QString() */,
@@ -1502,6 +1507,8 @@ void UIVirtualBoxManager::prepareConnections()
     /* 'Group' menu connections: */
     connect(actionPool()->action(UIActionIndexST_M_Group_S_Add), &UIAction::triggered,
             this, &UIVirtualBoxManager::sltOpenAddMachineDialog);
+    connect(actionPool()->action(UIActionIndexST_M_Group_S_Rename), &UIAction::triggered,
+            this, &UIVirtualBoxManager::sltOpenGroupNameEditor);
     connect(actionPool()->action(UIActionIndexST_M_Group_M_StartOrShow), &UIAction::triggered,
             this, &UIVirtualBoxManager::sltPerformStartOrShowMachine);
     connect(actionPool()->action(UIActionIndexST_M_Group_T_Pause), &UIAction::toggled,
