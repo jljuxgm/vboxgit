@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 89581 2021-06-09 13:45:38Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 89592 2021-06-10 09:38:20Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -3173,10 +3173,10 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
 # endif
                     case AudioDriverType_DirectSound:
                         /* Use the windows audio session (WAS) API rather than Direct Sound on windows
-                           versions we've tested it on (currently W10+).  Since Vista, Direct Sound has
+                           versions we've tested it on (currently W7+).  Since Vista, Direct Sound has
                            been emulated on top of WAS according to the docs, so better use WAS directly. */
                         pszAudioDriver = "DSoundAudio";
-                        if (RTSystemGetNtVersion() >= RTSYSTEM_MAKE_NT_VERSION(10,0,0))
+                        if (RTSystemGetNtVersion() >= RTSYSTEM_MAKE_NT_VERSION(6,1,0))
                             pszAudioDriver = "HostAudioWas";
                         break;
 #endif /* RT_OS_WINDOWS */
