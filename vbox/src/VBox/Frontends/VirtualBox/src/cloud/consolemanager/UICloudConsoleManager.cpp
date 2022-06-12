@@ -1,4 +1,4 @@
-/* $Id: UICloudConsoleManager.cpp 85441 2020-07-23 17:45:20Z vboxsync $ */
+/* $Id: UICloudConsoleManager.cpp 85443 2020-07-23 18:05:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudConsoleManager class implementation.
  */
@@ -1156,7 +1156,7 @@ void UICloudConsoleManager::retranslateUi()
 void UICloudConsoleManager::configure()
 {
     /* Apply window icons: */
-    setWindowIcon(UIIconPool::iconSetFull(":/cloud_console_manager_32px.png", ":/cloud_console_manager_16px.png")); /// @todo use proper icon
+    setWindowIcon(UIIconPool::iconSetFull(":/cloud_console_manager_32px.png", ":/cloud_console_manager_16px.png"));
 }
 
 void UICloudConsoleManager::configureCentralWidget()
