@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 87354 2021-01-21 16:08:36Z vboxsync $ */
+/* $Id: UIExtraDataDefs.cpp 87475 2021-01-29 09:30:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -269,6 +269,7 @@ bool UIToolStuff::isTypeOfClass(UIToolType enmType, UIToolClass enmClass)
                 case UIToolType_Media:
                 case UIToolType_Network:
                 case UIToolType_Cloud:
+                case UIToolType_CloudConsole:
                 case UIToolType_Resources:
                     return true;
                 default:
