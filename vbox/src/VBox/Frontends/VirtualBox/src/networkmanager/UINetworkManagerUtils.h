@@ -1,4 +1,4 @@
-/* $Id: UINetworkManagerUtils.h 86997 2020-11-26 17:22:29Z vboxsync $ */
+/* $Id: UINetworkManagerUtils.h 87342 2021-01-21 09:28:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkManagerUtils namespace declaration.
  */
@@ -25,7 +25,7 @@
 #include <QStringList>
 
 
-/** Host Network Manager: Host network utilities. */
+/** Network Manager: Host network utilities. */
 namespace UINetworkManagerUtils
 {
     /** Converts IPv4 address from QString to quint32. */

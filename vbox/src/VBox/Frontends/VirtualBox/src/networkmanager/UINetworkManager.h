@@ -1,4 +1,4 @@
-/* $Id: UINetworkManager.h 87312 2021-01-20 08:58:56Z vboxsync $ */
+/* $Id: UINetworkManager.h 87342 2021-01-21 09:28:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkManager class declaration.
  */
@@ -254,7 +254,7 @@ private:
 };
 
 
-/** QIManagerDialogFactory extension used as a factory for Host Network Manager dialog. */
+/** QIManagerDialogFactory extension used as a factory for Network Manager dialog. */
 class UINetworkManagerFactory : public QIManagerDialogFactory
 {
 public:
@@ -296,7 +296,7 @@ private slots:
 
 private:
 
-    /** Constructs Host Network Manager dialog.
+    /** Constructs Network Manager dialog.
       * @param  pCenterWidget  Brings the widget reference to center according to.
       * @param  pActionPool    Brings the action-pool reference. */
     UINetworkManager(QWidget *pCenterWidget, UIActionPool *pActionPool);

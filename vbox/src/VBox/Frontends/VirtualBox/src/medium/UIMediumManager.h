@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.h 86233 2020-09-23 12:10:51Z vboxsync $ */
+/* $Id: UIMediumManager.h 87342 2021-01-21 09:28:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class declaration.
  */
@@ -423,7 +423,7 @@ private slots:
 
 private:
 
-    /** Constructs Host Network Manager dialog.
+    /** Constructs Medium Manager dialog.
       * @param  pCenterWidget  Brings the widget reference to center according to.
       * @param  pActionPool    Brings the action-pool reference. */
     UIMediumManager(QWidget *pCenterWidget, UIActionPool *pActionPool);
