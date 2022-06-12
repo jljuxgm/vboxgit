@@ -1,4 +1,4 @@
-/* $Id: UIChooserItem.h 83672 2020-04-10 16:27:16Z vboxsync $ */
+/* $Id: UIChooserItem.h 84582 2020-05-28 11:11:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItem class declaration.
  */
@@ -107,8 +107,6 @@ public:
 
         /** Returns model reference. */
         UIChooserModel *model() const;
-        /** Returns action-pool reference. */
-        UIActionPool *actionPool() const;
 
         /** Returns whether item is root. */
         bool isRoot() const;

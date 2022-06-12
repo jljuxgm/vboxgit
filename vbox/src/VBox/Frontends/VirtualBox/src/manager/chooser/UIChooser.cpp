@@ -1,4 +1,4 @@
-/* $Id: UIChooser.cpp 84578 2020-05-27 17:49:22Z vboxsync $ */
+/* $Id: UIChooser.cpp 84582 2020-05-28 11:11:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooser class implementation.
  */
@@ -23,12 +23,11 @@
 #include "UIChooser.h"
 #include "UIChooserModel.h"
 #include "UIChooserView.h"
-#include "UIVirtualBoxManagerWidget.h"
 
 
-UIChooser::UIChooser(UIVirtualBoxManagerWidget *pParent)
+UIChooser::UIChooser(QWidget *pParent, UIActionPool *pActionPool)
     : QWidget(pParent)
-    , m_pManagerWidget(pParent)
+    , m_pActionPool(pActionPool)
     , m_pChooserModel(0)
     , m_pChooserView(0)
 {
@@ -38,12 +37,6 @@ UIChooser::UIChooser(UIVirtualBoxManagerWidget *pParent)
 UIChooser::~UIChooser()
 {
     cleanup();
-}
-
-UIActionPool *UIChooser::actionPool() const
-{
-    AssertPtrReturn(managerWidget(), 0);
-    return managerWidget()->actionPool();
 }
 
 UIVirtualMachineItem *UIChooser::currentItem() const
@@ -204,7 +197,7 @@ void UIChooser::preparePalette()
 void UIChooser::prepareModel()
 {
     /* Prepare Chooser-model: */
-    m_pChooserModel = new UIChooserModel(this);
+    m_pChooserModel = new UIChooserModel(this, actionPool());
 }
 
 void UIChooser::prepareWidgets()

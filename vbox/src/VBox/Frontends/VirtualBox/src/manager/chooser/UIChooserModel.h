@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.h 84569 2020-05-27 15:15:14Z vboxsync $ */
+/* $Id: UIChooserModel.h 84582 2020-05-28 11:11:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class declaration.
  */
@@ -98,7 +98,7 @@ signals:
 public:
 
     /** Constructs Chooser-model passing @a pParent to the base-class. */
-    UIChooserModel(UIChooser *pParent);
+    UIChooserModel(UIChooser *pParent, UIActionPool *pActionPool);
     /** Destructs Chooser-model. */
     virtual ~UIChooserModel() /* override */;
 
@@ -109,8 +109,6 @@ public:
         /** Deinits model. */
         virtual void deinit() /* override */;
 
-        /** Returns the Chooser reference. */
-        UIChooser *chooser() const;
         /** Returns the action-pool reference. */
         UIActionPool *actionPool() const;
         /** Returns the scene reference. */
@@ -380,8 +378,8 @@ private:
 
     /** @name General stuff.
       * @{ */
-        /** Holds the Chooser reference. */
-        UIChooser *m_pChooser;
+        /** Holds the action-pool reference. */
+        UIActionPool *m_pActionPool;
 
         /** Holds the scene reference. */
         QGraphicsScene *m_pScene;

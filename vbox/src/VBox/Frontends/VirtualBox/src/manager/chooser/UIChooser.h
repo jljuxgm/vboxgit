@@ -1,4 +1,4 @@
-/* $Id: UIChooser.h 84557 2020-05-27 11:56:13Z vboxsync $ */
+/* $Id: UIChooser.h 84582 2020-05-28 11:11:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooser class declaration.
  */
@@ -31,7 +31,6 @@
 class UIActionPool;
 class UIChooserModel;
 class UIChooserView;
-class UIVirtualBoxManagerWidget;
 class UIVirtualMachineItem;
 
 /** QWidget extension used as VM Chooser-pane. */
@@ -79,18 +78,16 @@ signals:
 
 public:
 
-    /** Constructs Chooser-pane passing @a pParent to the base-class. */
-    UIChooser(UIVirtualBoxManagerWidget *pParent);
+    /** Constructs Chooser-pane passing @a pParent to the base-class.
+      * @param  pActionPool  Brings the action-pool reference.  */
+    UIChooser(QWidget *pParent, UIActionPool *pActionPool);
     /** Destructs Chooser-pane. */
     virtual ~UIChooser() /* override */;
 
     /** @name General stuff.
       * @{ */
-        /** Returns the manager-widget reference. */
-        UIVirtualBoxManagerWidget *managerWidget() const { return m_pManagerWidget; }
-
         /** Returns the action-pool reference. */
-        UIActionPool *actionPool() const;
+        UIActionPool *actionPool() const { return m_pActionPool; }
 
         /** Return the Chooser-model instance. */
         UIChooserModel *model() const { return m_pChooserModel; }
@@ -196,8 +193,8 @@ private:
 
     /** @name General stuff.
       * @{ */
-        /** Holds the manager-widget reference. */
-        UIVirtualBoxManagerWidget *m_pManagerWidget;
+        /** Holds the action-pool reference. */
+        UIActionPool *m_pActionPool;
 
         /** Holds the Chooser-model instane. */
         UIChooserModel *m_pChooserModel;

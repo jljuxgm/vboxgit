@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 84557 2020-05-27 11:56:13Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 84582 2020-05-28 11:11:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -493,7 +493,7 @@ void UIVirtualBoxManagerWidget::prepareWidgets()
             m_pSplitter->setHandleWidth(1);
 
             /* Create Chooser-pane: */
-            m_pPaneChooser = new UIChooser(this);
+            m_pPaneChooser = new UIChooser(this, actionPool());
             if (m_pPaneChooser)
             {
                 /* Add into splitter: */
