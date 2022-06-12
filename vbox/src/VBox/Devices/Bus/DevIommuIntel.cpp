@@ -1,4 +1,4 @@
-/* $Id: DevIommuIntel.cpp 88781 2021-04-29 13:27:08Z vboxsync $ */
+/* $Id: DevIommuIntel.cpp 88782 2021-04-29 13:28:15Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - Intel implementation.
  */
@@ -1059,7 +1059,7 @@ static void dmarR3InvEventRaiseInterrupt(PPDMDEVINS pDevIns)
         return;
 
     uint32_t uIectlReg = dmarRegReadRaw32(pThis, VTD_MMIO_OFF_IECTL_REG);
-    if (!(uIectlReg & VTD_BF_FECTL_REG_IM_MASK))
+    if (!(uIectlReg & VTD_BF_IECTL_REG_IM_MASK))
     {
         /* Software has unmasked the interrupt, raise it. */
         MSIMSG Msi;
