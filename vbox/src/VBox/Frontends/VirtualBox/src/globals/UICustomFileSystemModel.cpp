@@ -1,4 +1,4 @@
-/* $Id: UICustomFileSystemModel.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UICustomFileSystemModel.cpp 87719 2021-02-11 09:42:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICustomFileSystemModel class implementation.
  */
@@ -475,7 +475,7 @@ QVariant UICustomFileSystemModel::data(const QModelIndex &index, int role) const
 Qt::ItemFlags UICustomFileSystemModel::flags(const QModelIndex &index) const
 {
     if (!index.isValid())
-        return 0;
+        return Qt::ItemFlags();
     UICustomFileSystemItem *item = static_cast<UICustomFileSystemItem*>(index.internalPointer());
     if (!item)
         return QAbstractItemModel::flags(index);

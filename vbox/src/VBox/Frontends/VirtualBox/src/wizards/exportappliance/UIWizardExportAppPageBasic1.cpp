@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic1.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic1.cpp 87719 2021-02-11 09:42:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic1 class implementation.
  */
@@ -70,7 +70,7 @@ void UIWizardExportAppPage1::populateVMSelectorItems(const QStringList &selected
         }
         QListWidgetItem *pItem = new UIVMListWidgetItem(pixIcon, strName, uUuid, fInSaveState, m_pVMSelector);
         if (!fEnabled)
-            pItem->setFlags(0);
+            pItem->setFlags(Qt::ItemFlags());
         m_pVMSelector->addItem(pItem);
     }
     m_pVMSelector->sortItems();
