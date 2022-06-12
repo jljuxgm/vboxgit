@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic2.h 86346 2020-09-30 13:02:39Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic2.h 86587 2020-10-15 10:36:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic2 class declaration.
  */
@@ -239,12 +239,12 @@ protected:
 
     /** Holds the machine label instance. */
     QLabel       *m_pMachineLabel;
-    /** Holds the export then ask radio button instance. */
-    QRadioButton *m_pRadioExportThenAsk;
-    /** Holds the ask then export radio button instance. */
-    QRadioButton *m_pRadioAskThenExport;
     /** Holds the don't ask radio button instance. */
     QRadioButton *m_pRadioDoNotAsk;
+    /** Holds the ask then export radio button instance. */
+    QRadioButton *m_pRadioAskThenExport;
+    /** Holds the export then ask radio button instance. */
+    QRadioButton *m_pRadioExportThenAsk;
 };
 
 
