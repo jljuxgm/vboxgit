@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 88088 2021-03-11 13:05:43Z vboxsync $ */
+/* $Id: TM.cpp 88092 2021-03-11 14:43:20Z vboxsync $ */
 /** @file
  * TM - Time Manager.
  */
@@ -1978,7 +1978,7 @@ static int tmR3TimerDestroy(PVMCC pVM, PTMTIMERQUEUE pQueue, PTMTIMER pTimer)
         const PTMTIMER pPrev = tmTimerGetPrev(pQueue, pTimer);
         const PTMTIMER pNext = tmTimerGetNext(pQueue, pTimer);
         if (pPrev)
-            tmTimerSetPrev(pQueue, pPrev, pNext);
+            tmTimerSetNext(pQueue, pPrev, pNext);
         else
         {
             tmTimerQueueSetHead(pQueue, pQueue, pNext);
