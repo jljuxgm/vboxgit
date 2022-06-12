@@ -1,4 +1,4 @@
-/* $Id: SessionImpl.h 83788 2020-04-18 00:01:22Z vboxsync $ */
+/* $Id: SessionImpl.h 84411 2020-05-20 14:31:23Z vboxsync $ */
 /** @file
  * VBox Client Session COM Class definition
  */
@@ -28,7 +28,7 @@
 # include "win/resource.h"
 #endif
 
-#if defined(RT_OS_WINDOWS) && !RT_MSC_PREREQ(RT_MSC_VER_VC141)
+#if defined(RT_OS_WINDOWS) && !RT_MSC_PREREQ(RT_MSC_VER_VC140)
 [threading(free)]
 #endif
 class ATL_NO_VTABLE Session :

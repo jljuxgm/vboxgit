@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 83832 2020-04-19 14:12:33Z vboxsync $
+# $Id: Makefile.kmk 84411 2020-05-20 14:31:23Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxGL OpenGL state tracker.
 #
@@ -27,7 +27,7 @@ DLLS.amd64 += VBoxGL-x86
 VBoxGL_TEMPLATE = VBoxMesa3DGuestR3DllMinVista
 # -wd4005: '__useHeader' : redefinition
 VBoxGL_CFLAGS  := -wd4005
-if "$(VBOX_NEWER_VCC_TOOL_STEM)" >= "VCC141"
+if "$(VBOX_NEWER_VCC_TOOL_STEM)" >= "VCC140"
 # -wd4204: nonstandard extension used: non-constant aggregate initializer
 # -wd4459: stw_device.h(102): warning C4459: declaration of 'stw_dev' hides global declaration
 # -wd4668: c99_compat.h(99): warning C4668: '__STDC_VERSION__' is not defined as a preprocessor macro, replacing with '0' for '#if/#elif'
