@@ -1,4 +1,4 @@
-/* $Id: AudioTest.cpp 89005 2021-05-12 09:16:55Z vboxsync $ */
+/* $Id: AudioTest.cpp 89010 2021-05-12 12:52:13Z vboxsync $ */
 /** @file
  * Audio testing routines.
  * Common code which is being used by the ValidationKit and the debug / ValdikationKit audio driver(s).
@@ -92,6 +92,8 @@ double AudioTestToneInitRandom(PAUDIOTESTTONE pTone, PPDMAUDIOPCMPROPS pProps)
     pTone->uSample  = 0;
 
     memcpy(&pTone->Props, pProps, sizeof(PDMAUDIOPCMPROPS));
+
+    pTone->enmType = AUDIOTESTTONETYPE_SINE; /* Only type implemented so far. */
 
     return pTone->rdFreqHz;
 }
