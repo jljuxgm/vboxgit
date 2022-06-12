@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 87276 2021-01-15 13:57:42Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 87306 2021-01-19 16:00:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -1863,6 +1863,69 @@ void UIMessageCenter::cannotSaveDHCPServerParameter(const CDHCPServer &comServer
     error(pParent, MessageType_Error,
           tr("Failed to save DHCP server parameter."),
           UIErrorString::formatErrorInfo(comServer));
+}
+
+void UIMessageCenter::warnAboutDHCPServerIsNotEnabled(const QString &strName, QWidget *pParent /* = 0 */) const
+{
+    alert(pParent, MessageType_Error,
+          tr("Host interface <nobr><b>%1</b></nobr> is set to obtain the address "
+             "automatically but the corresponding DHCP server is not enabled.").arg(strName));
+}
+
+void UIMessageCenter::warnAboutInvalidIPv4Address(const QString &strName, QWidget *pParent /* = 0 */) const
+{
+    alert(pParent, MessageType_Error,
+          tr("Host interface <nobr><b>%1</b></nobr> does not "
+             "currently have a valid IPv4 address.").arg(strName));
+}
+
+void UIMessageCenter::warnAboutInvalidIPv4Mask(const QString &strName, QWidget *pParent /* = 0 */) const
+{
+    alert(pParent, MessageType_Error,
+          tr("Host interface <nobr><b>%1</b></nobr> does not "
+             "currently have a valid IPv4 network mask.").arg(strName));
+}
+
+void UIMessageCenter::warnAboutInvalidIPv6Address(const QString &strName, QWidget *pParent /* = 0 */) const
+{
+    alert(pParent, MessageType_Error,
+          tr("Host interface <nobr><b>%1</b></nobr> does not "
+             "currently have a valid IPv6 address.").arg(strName));
+}
+
+void UIMessageCenter::warnAboutInvalidIPv6PrefixLength(const QString &strName, QWidget *pParent /* = 0 */) const
+{
+    alert(pParent, MessageType_Error,
+          tr("Host interface <nobr><b>%1</b></nobr> does not "
+             "currently have a valid IPv6 prefix length.").arg(strName));
+}
+
+void UIMessageCenter::warnAboutInvalidDHCPServerAddress(const QString &strName, QWidget *pParent /* = 0 */) const
+{
+    alert(pParent, MessageType_Error,
+          tr("Host interface <nobr><b>%1</b></nobr> does not "
+             "currently have a valid DHCP server address.").arg(strName));
+}
+
+void UIMessageCenter::warnAboutInvalidDHCPServerMask(const QString &strName, QWidget *pParent /* = 0 */) const
+{
+    alert(pParent, MessageType_Error,
+          tr("Host interface <nobr><b>%1</b></nobr> does not "
+             "currently have a valid DHCP server mask.").arg(strName));
+}
+
+void UIMessageCenter::warnAboutInvalidDHCPServerLowerAddress(const QString &strName, QWidget *pParent /* = 0 */) const
+{
+    alert(pParent, MessageType_Error,
+          tr("Host interface <nobr><b>%1</b></nobr> does not "
+             "currently have a valid DHCP server lower address bound.").arg(strName));
+}
+
+void UIMessageCenter::warnAboutInvalidDHCPServerUpperAddress(const QString &strName, QWidget *pParent /* = 0 */) const
+{
+    alert(pParent, MessageType_Error,
+          tr("Host interface <nobr><b>%1</b></nobr> does not "
+             "currently have a valid DHCP server upper address bound.").arg(strName));
 }
 
 void UIMessageCenter::cannotAcquireNATNetworks(const CVirtualBox &comVBox, QWidget *pParent /* = 0 */) const

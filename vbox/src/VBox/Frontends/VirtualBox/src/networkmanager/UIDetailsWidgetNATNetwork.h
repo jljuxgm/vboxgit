@@ -1,4 +1,4 @@
-/* $Id: UIDetailsWidgetNATNetwork.h 87305 2021-01-19 09:56:36Z vboxsync $ */
+/* $Id: UIDetailsWidgetNATNetwork.h 87306 2021-01-19 16:00:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsWidgetNATNetwork class declaration.
  */
@@ -127,7 +127,7 @@ public:
     /** @name Change handling stuff.
       * @{ */
         /** Revalidates changes. */
-        bool revalidate();
+        bool revalidate() const;
 
         /** Updates button states. */
         void updateButtonStates();
