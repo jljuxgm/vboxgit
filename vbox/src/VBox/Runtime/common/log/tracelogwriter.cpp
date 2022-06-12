@@ -1,4 +1,4 @@
-/* $Id: tracelogwriter.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: tracelogwriter.cpp 86387 2020-10-01 14:44:33Z vboxsync $ */
 /** @file
  * IPRT - Trace log writer.
  */
@@ -858,8 +858,11 @@ RTDECL(int) RTTraceLogWrCreateTcpClient(PRTTRACELOGWR phTraceLogWr, const char *
 
 RTDECL(int) RTTraceLogWrDestroy(RTTRACELOGWR hTraceLogWr)
 {
+    if (hTraceLogWr == NIL_RTTRACELOGWR)
+        return VINF_SUCCESS;
     PRTTRACELOGWRINT pThis = hTraceLogWr;
     AssertPtrReturn(pThis, VERR_INVALID_HANDLE);
+    AssertReturn(pThis->u32Magic == RTTRACELOGWR_MAGIC, VERR_INVALID_HANDLE);
 
     pThis->u32Magic = RTTRACELOGWR_MAGIC_DEAD;
     pThis->pfnStreamClose(pThis->pvUser);
@@ -874,6 +877,7 @@ RTDECL(int) RTTraceLogWrAddEvtDesc(RTTRACELOGWR hTraceLogWr, PCRTTRACELOGEVTDESC
 {
     PRTTRACELOGWRINT pThis = hTraceLogWr;
     AssertPtrReturn(pThis, VERR_INVALID_HANDLE);
+    AssertReturn(pThis->u32Magic == RTTRACELOGWR_MAGIC, VERR_INVALID_HANDLE);
     AssertPtrReturn(pEvtDesc, VERR_INVALID_POINTER);
 
     return rtTraceLogWrEvtDescAdd(pThis, pEvtDesc, NULL);
@@ -886,6 +890,7 @@ RTDECL(int) RTTraceLogWrEvtAdd(RTTRACELOGWR hTraceLogWr, PCRTTRACELOGEVTDESC pEv
 {
     PRTTRACELOGWRINT pThis = hTraceLogWr;
     AssertPtrReturn(pThis, VERR_INVALID_HANDLE);
+    AssertReturn(pThis->u32Magic == RTTRACELOGWR_MAGIC, VERR_INVALID_HANDLE);
 
     int rc = VINF_SUCCESS;
     PRTTRACELOGWREVTDESC pEvtDescInt = rtTraceLogWrEvtDescGetInternal(pThis, pEvtDesc);
@@ -919,6 +924,7 @@ RTDECL(int) RTTraceLogWrEvtAddLV(RTTRACELOGWR hTraceLogWr, PCRTTRACELOGEVTDESC p
 {
     PRTTRACELOGWRINT pThis = hTraceLogWr;
     AssertPtrReturn(pThis, VERR_INVALID_HANDLE);
+    AssertReturn(pThis->u32Magic == RTTRACELOGWR_MAGIC, VERR_INVALID_HANDLE);
 
     int rc = VINF_SUCCESS;
     PRTTRACELOGWREVTDESC pEvtDescInt = rtTraceLogWrEvtDescGetInternal(pThis, pEvtDesc);
