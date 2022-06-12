@@ -1,4 +1,4 @@
-/* $Id: UIWizard.cpp 86356 2020-09-30 17:14:20Z vboxsync $ */
+/* $Id: UIWizard.cpp 86906 2020-11-18 07:06:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizard class implementation.
  */
@@ -25,6 +25,7 @@
 #include "UIWizard.h"
 #include "UIWizardPage.h"
 #include "UICommon.h"
+#include "UIMessageCenter.h"
 #include "QIRichTextLabel.h"
 #include "UIExtraDataManager.h"
 
@@ -49,6 +50,11 @@ void UIWizard::prepare()
 
     /* Make sure custom buttons shown even if final page is first to show: */
     sltCurrentIdChanged(startId());
+
+    /* If help button is enabled by the subclass, connect it to proper slot: */
+    if (button(QWizard::HelpButton))
+        connect(button(QWizard::HelpButton), &QAbstractButton::pressed,
+                &(msgCenter()), &UIMessageCenter::sltHandleDialogHelpButtonPress);
 }
 
 UIWizard::UIWizard(QWidget *pParent, WizardType enmType, WizardMode enmMode /* = WizardMode_Auto */)
@@ -532,4 +538,3 @@ void UIWizard::assignWatermarkHelper()
     setPixmap(QWizard::WatermarkPixmap, pixWatermarkNew);
 }
 #endif /* !VBOX_WS_MAC */
-

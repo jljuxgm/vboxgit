@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 85150 2020-07-09 12:56:45Z vboxsync $ */
+/* $Id: UIWizardNewVM.cpp 86906 2020-11-18 07:06:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
@@ -14,6 +14,9 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
+/* Qt includes: */
+#include <QAbstractButton>
 
 /* GUI includes: */
 #include "UICommon.h"
@@ -53,6 +56,9 @@ UIWizardNewVM::UIWizardNewVM(QWidget *pParent, const QString &strGroup /* = QStr
     , m_iSASCount(0)
     , m_iUSBCount(0)
 {
+    setOptions(options() | QWizard::HaveHelpButton);
+    if (button(QWizard::HelpButton))
+        button(QWizard::HelpButton)->setProperty("helptag", "gui-createvm");
 #ifndef VBOX_WS_MAC
     /* Assign watermark: */
     assignWatermark(":/wizard_new_welcome.png");
