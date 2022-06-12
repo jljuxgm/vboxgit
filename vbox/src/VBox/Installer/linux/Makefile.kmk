@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 88304 2021-03-26 18:51:28Z vboxsync $
+# $Id: Makefile.kmk 88318 2021-03-29 20:26:05Z vboxsync $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -520,6 +520,7 @@ BLDDIRS += $(foreach d,\
 	$(if $(VBOX_WITH_UNATTENDED),archive/unattended_templates,) \
 	$(if $(VBOX_WITH_ORACLE_QT), \
 	  archive/plugins/platforms \
+	  archive/plugins/sqldrivers \
 	  archive/plugins/xcbglintegrations \
 	  archive/legacy,) \
 	$(if $(VBOX_WITH_PYTHON),\
