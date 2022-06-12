@@ -1,4 +1,4 @@
-/* $Id: tstRTStrSplit.cpp 85348 2020-07-15 12:12:37Z vboxsync $ */
+/* $Id: tstRTStrSplit.cpp 86385 2020-10-01 14:26:12Z vboxsync $ */
 /** @file
  * IPRT Testcase - String splitting.
  */
@@ -38,15 +38,17 @@
 int main()
 {
     RTTEST hTest;
-    int rc = RTTestInitAndCreate("tstRTStrSplit", &hTest);
-    if (rc)
-        return rc;
+    RTEXITCODE rcExit = RTTestInitAndCreate("tstRTStrSplit", &hTest);
+    if (rcExit != RTEXITCODE_SUCCESS)
+        return rcExit;
     RTTestBanner(hTest);
 
     /* Invalid stuff. */
+    RTTestDisableAssertions(hTest);
     RTTEST_CHECK_RC(hTest, RTStrSplit(NULL, 0, NULL, NULL, NULL), VERR_INVALID_POINTER);
     RTTEST_CHECK_RC(hTest, RTStrSplit("foo", 0, NULL, NULL, NULL), VERR_INVALID_PARAMETER);
     RTTEST_CHECK_RC(hTest, RTStrSplit("foo", 42, NULL, NULL, NULL), VERR_INVALID_POINTER);
+    RTTestRestoreAssertions(hTest);
 
     char **papszStrings = NULL;
     size_t cStrings = 0;
