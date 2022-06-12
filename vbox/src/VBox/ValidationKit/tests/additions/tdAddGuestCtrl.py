@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84967 $"
+__version__ = "$Revision: 84979 $"
 
 # Standard Python imports.
 import errno
@@ -1711,12 +1711,9 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
         if cchHst > cchGst:
             cchMaxPath -= cchHst - cchGst;
             reporter.log('cchMaxPath=%s (cchHst=%s, cchGst=%s)' % (cchMaxPath, cchHst, cchGst,));
-        asCompatibleWith = None;
-        if oTestVm.isWindows():
-            asCompatibleWith = [ 'win' ];
         self.oTestFiles = vboxtestfileset.TestFileSet(oTestVm,
                                                       self.oTstDrv.getGuestTempDir(oTestVm), 'addgst-1',
-                                                      cchMaxPath = cchMaxPath, asCompatibleWith = asCompatibleWith);
+                                                      cchMaxPath = cchMaxPath, asCompatibleWith = [ oTestVm.getGuestOs() ]);
         return self.oTestFiles.upload(oTxsSession, self.oTstDrv);
 
 
