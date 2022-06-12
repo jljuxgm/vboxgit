@@ -1,4 +1,4 @@
-/* $Id: UIChooserNodeGroup.h 83884 2020-04-21 10:02:06Z vboxsync $ */
+/* $Id: UIChooserNodeGroup.h 84373 2020-05-19 15:34:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserNodeGroup class declaration.
  */
@@ -62,8 +62,12 @@ public:
     virtual QString fullName() const /* override */;
     /** Returns item description. */
     virtual QString description() const /* override */;
-    /** Returns item definition. */
-    virtual QString definition() const /* override */;
+    /** Returns item definition.
+      * @param  fFull  Brings whether full definition is required
+      *                which is used while saving group definitions,
+      *                otherwise short definition will be returned,
+      *                which is used while saving last chosen node. */
+    virtual QString definition(bool fFull = false) const /* override */;
 
     /** Returns whether there are children of certain @a enmType. */
     virtual bool hasNodes(UIChooserNodeType enmType = UIChooserNodeType_Any) const /* override */;

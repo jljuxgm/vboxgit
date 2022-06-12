@@ -1,4 +1,4 @@
-/* $Id: UIChooserNodeMachine.cpp 83946 2020-04-23 11:31:30Z vboxsync $ */
+/* $Id: UIChooserNodeMachine.cpp 84373 2020-05-19 15:34:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserNodeMachine class implementation.
  */
@@ -135,7 +135,7 @@ QString UIChooserNodeMachine::description() const
     return m_strDescription;
 }
 
-QString UIChooserNodeMachine::definition() const
+QString UIChooserNodeMachine::definition(bool) const
 {
     return QString("m=%1").arg(UIChooserAbstractModel::toOldStyleUuid(id()));
 }
