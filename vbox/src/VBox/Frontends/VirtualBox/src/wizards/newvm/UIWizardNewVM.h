@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.h 87575 2021-02-03 15:28:38Z vboxsync $ */
+/* $Id: UIWizardNewVM.h 87589 2021-02-03 17:17:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class declaration.
  */
@@ -62,7 +62,7 @@ public:
         Page1,
         Page2,
         Page3,
-        Page5,
+        Page4,
         PageMax
     };
 
@@ -98,7 +98,7 @@ protected:
     bool getBoolFieldValue(const QString &strFieldName) const;
 
     /* Who will be able to create virtual-machine: */
-    friend class UIWizardNewVMPageBasic5;
+    friend class UIWizardNewVMPageBasic4;
     friend class UIWizardNewVMPageExpert;
 
 private slots:

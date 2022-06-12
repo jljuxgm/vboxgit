@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.cpp 87575 2021-02-03 15:28:38Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.cpp 87589 2021-02-03 17:17:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class implementation.
  */
@@ -184,7 +184,7 @@ void UIWizardNewVMPageExpert::retranslateUi()
     UIWizardNewVMPage1::retranslateWidgets();
     UIWizardNewVMPage2::retranslateWidgets();
     UIWizardNewVMPage3::retranslateWidgets();
-    UIWizardNewVMPage5::retranslateWidgets();
+    UIWizardNewVMPage4::retranslateWidgets();
 
     if (m_pInstallationISOContainer)
         m_pInstallationISOContainer->setTitle(UIWizardNewVM::tr("Installation medium (ISO)"));

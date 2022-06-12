@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.h 87575 2021-02-03 15:28:38Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.h 87589 2021-02-03 17:17:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class declaration.
  */
@@ -25,7 +25,7 @@
 #include "UIWizardNewVMPageBasic1.h"
 #include "UIWizardNewVMPageBasic2.h"
 #include "UIWizardNewVMPageBasic3.h"
-#include "UIWizardNewVMPageBasic5.h"
+#include "UIWizardNewVMPageBasic4.h"
 
 /* Forward declarations: */
 class QGroupBox;
@@ -36,7 +36,7 @@ class UIWizardNewVMPageExpert : public UIWizardPage,
                                 public UIWizardNewVMPage1,
                                 public UIWizardNewVMPage2,
                                 public UIWizardNewVMPage3,
-                                public UIWizardNewVMPage5
+                                public UIWizardNewVMPage4
 {
 
     Q_OBJECT;
