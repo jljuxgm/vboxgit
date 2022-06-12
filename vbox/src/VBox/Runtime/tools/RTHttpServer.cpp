@@ -1,4 +1,4 @@
-/* $Id: RTHttpServer.cpp 87042 2020-12-04 12:10:36Z vboxsync $ */
+/* $Id: RTHttpServer.cpp 87046 2020-12-07 12:50:41Z vboxsync $ */
 /** @file
  * IPRT - Utility for running a (simple) HTTP server.
  *
@@ -471,7 +471,7 @@ static int pathResolve(PHTTPSERVERDATA pThis, const char *pszUrl, char **ppszPat
     return VINF_SUCCESS;
 }
 
-DECLCALLBACK(int) onOpen(PRTHTTPCALLBACKDATA pData, PRTHTTPSERVERREQ pReq, void **ppvHandle)
+static DECLCALLBACK(int) onOpen(PRTHTTPCALLBACKDATA pData, PRTHTTPSERVERREQ pReq, void **ppvHandle)
 {
     PHTTPSERVERDATA pThis = (PHTTPSERVERDATA)pData->pvUser;
     Assert(pData->cbUser == sizeof(HTTPSERVERDATA));
@@ -510,7 +510,7 @@ DECLCALLBACK(int) onOpen(PRTHTTPCALLBACKDATA pData, PRTHTTPSERVERREQ pReq, void 
     return rc;
 }
 
-DECLCALLBACK(int) onRead(PRTHTTPCALLBACKDATA pData, void *pvHandle, void *pvBuf, size_t cbBuf, size_t *pcbRead)
+static DECLCALLBACK(int) onRead(PRTHTTPCALLBACKDATA pData, void *pvHandle, void *pvBuf, size_t cbBuf, size_t *pcbRead)
 {
     PHTTPSERVERDATA pThis = (PHTTPSERVERDATA)pData->pvUser;
     Assert(pData->cbUser == sizeof(HTTPSERVERDATA));
@@ -543,7 +543,7 @@ DECLCALLBACK(int) onRead(PRTHTTPCALLBACKDATA pData, void *pvHandle, void *pvBuf,
     return rc;
 }
 
-DECLCALLBACK(int) onClose(PRTHTTPCALLBACKDATA pData, void *pvHandle)
+static DECLCALLBACK(int) onClose(PRTHTTPCALLBACKDATA pData, void *pvHandle)
 {
     PHTTPSERVERDATA pThis = (PHTTPSERVERDATA)pData->pvUser;
     Assert(pData->cbUser == sizeof(HTTPSERVERDATA));
@@ -568,8 +568,8 @@ DECLCALLBACK(int) onClose(PRTHTTPCALLBACKDATA pData, void *pvHandle)
     return rc;
 }
 
-DECLCALLBACK(int) onQueryInfo(PRTHTTPCALLBACKDATA pData,
-                              PRTHTTPSERVERREQ pReq, PRTFSOBJINFO pObjInfo, char **ppszMIMEHint)
+static DECLCALLBACK(int) onQueryInfo(PRTHTTPCALLBACKDATA pData,
+                                     PRTHTTPSERVERREQ pReq, PRTFSOBJINFO pObjInfo, char **ppszMIMEHint)
 {
     PHTTPSERVERDATA pThis = (PHTTPSERVERDATA)pData->pvUser;
     Assert(pData->cbUser == sizeof(HTTPSERVERDATA));
@@ -717,7 +717,7 @@ DECLCALLBACK(int) onQueryInfo(PRTHTTPCALLBACKDATA pData,
     return rc;
 }
 
-DECLCALLBACK(int) onDestroy(PRTHTTPCALLBACKDATA pData)
+static DECLCALLBACK(int) onDestroy(PRTHTTPCALLBACKDATA pData)
 {
     PHTTPSERVERDATA pThis = (PHTTPSERVERDATA)pData->pvUser;
     Assert(pData->cbUser == sizeof(HTTPSERVERDATA));
@@ -798,7 +798,7 @@ int main(int argc, char **argv)
                 return RTEXITCODE_SUCCESS;
 
             case 'V':
-                RTPrintf("$Revision: 87042 $\n");
+                RTPrintf("$Revision: 87046 $\n");
                 return RTEXITCODE_SUCCESS;
 
             default:
