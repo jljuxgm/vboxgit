@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 86372 2020-10-01 11:48:44Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 86614 2020-10-16 17:06:00Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -2118,7 +2118,7 @@ static DECLCALLBACK(int) pdmR3DevHlp_DriverReconfigure(PPDMDEVINS pDevIns, uint3
     {
         AssertPtrReturn(papszDrivers[i], VERR_INVALID_POINTER);
         size_t cchDriver = strlen(papszDrivers[i]);
-        AssertPtrReturn(cchDriver > 0 && cchDriver < RT_SIZEOFMEMB(PDMDRVREG, szName), VERR_OUT_OF_RANGE);
+        AssertReturn(cchDriver > 0 && cchDriver < RT_SIZEOFMEMB(PDMDRVREG, szName), VERR_OUT_OF_RANGE);
 
         if (papConfigs)
             AssertPtrNullReturn(papConfigs[i], VERR_INVALID_POINTER);
