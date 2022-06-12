@@ -1,4 +1,4 @@
-/* $Id: DevIommuAmd.cpp 88583 2021-04-19 15:54:35Z vboxsync $ */
+/* $Id: DevIommuAmd.cpp 88611 2021-04-21 02:37:15Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - AMD implementation.
  */
@@ -4876,7 +4876,6 @@ static int iommuAmdR3CmdProcess(PPDMDEVINS pDevIns, PCCMD_GENERIC_T pCmd, RTGCPH
 #ifdef IOMMU_WITH_IOTLBE_CACHE
                 uint64_t const uIova = RT_MAKE_U64(pCmdInvPages->n.u20AddrLo << X86_PAGE_4K_SHIFT, pCmdInvPages->n.u32AddrHi);
                 uint16_t const idDomain  = pCmdInvPages->n.u16DomainId;
-                bool const     fFlushPde = pCmdInvPages->n.u1PageDirEntries;
                 uint8_t cShift;
                 if (!pCmdInvPages->n.u1Size)
                     cShift = X86_PAGE_4K_SHIFT;
