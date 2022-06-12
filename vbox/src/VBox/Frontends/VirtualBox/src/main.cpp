@@ -1,4 +1,4 @@
-/* $Id: main.cpp 88141 2021-03-16 16:39:47Z vboxsync $ */
+/* $Id: main.cpp 88142 2021-03-16 17:31:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - The main() function.
  */
@@ -479,12 +479,6 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char ** /*envp*/)
          * thread to several seconds). */
         PlaySound(NULL, NULL, 0);
 
-# if QT_VERSION >= QT_VERSION_CHECK(5, 15, 2)
-        // WORKAROUND:
-        // Unable to detect fusion if app
-        // built with SDK less than 10.14
-        a.setStyle("fusion");
-# endif
 #endif /* VBOX_WS_WIN */
 
 #ifdef VBOX_WS_MAC
