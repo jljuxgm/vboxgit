@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA-internal.h 86855 2020-11-11 01:03:54Z vboxsync $ */
+/* $Id: DevVGA-SVGA-internal.h 86885 2020-11-14 01:44:16Z vboxsync $ */
 /** @file
  * VMWare SVGA device - internal header for DevVGA-SVGA* source files.
  */
@@ -187,6 +187,10 @@ typedef struct VMSVGAR3STATE
     /** Least Recently Used list of MOBs.
      * To unmap older MOBs when the guest exceeds SVGA_REG_SUGGESTED_GBOBJECT_MEM_SIZE_KB (SVGA_REG_GBOBJECT_MEM_SIZE_KB) value. */
     RTLISTANCHOR            MOBLRUList;
+
+# ifdef VBOX_WITH_VMSVGA3D
+    VMSVGA3DBACKENDFUNCSDX  *pFuncsDX;
+# endif
 
     /** Tracks how much time we waste reading SVGA_REG_BUSY with a busy FIFO. */
     STAMPROFILE             StatBusyDelayEmts;
