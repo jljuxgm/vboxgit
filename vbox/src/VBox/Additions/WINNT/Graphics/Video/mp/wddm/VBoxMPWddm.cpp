@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 85625 2020-08-05 23:41:43Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 86632 2020-10-19 19:38:37Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -1557,6 +1557,8 @@ VOID DxgkDdiUnload(
     {
         RTLogDestroy(pLogger);
     }
+
+    RTR0Term();
 }
 
 NTSTATUS DxgkDdiQueryInterface(
