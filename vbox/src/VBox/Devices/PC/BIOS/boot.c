@@ -1,4 +1,4 @@
-/* $Id: boot.c 84752 2020-06-10 10:58:33Z vboxsync $ */
+/* $Id: boot.c 84829 2020-06-15 10:23:18Z vboxsync $ */
 /** @file
  * PC BIOS - ???
  */
@@ -150,9 +150,10 @@ void print_boot_failure(uint8_t cdboot, uint8_t lanboot, uint8_t drive,
 
     if (lastdrive==1) {
         if (reason==0)
-            BX_INFO_CON("No bootable medium found! Please insert a bootable medium and reboot.\n");
+            BX_INFO_CON("No bootable medium found!\n");
         else
-            BX_PANIC("Could not read from the boot medium! System halted.\n");
+            BX_INFO_CON("Could not read from the boot medium!\n");
+        BX_INFO_CON("Please insert a bootable medium and reboot.\n");
     }
 }
 
