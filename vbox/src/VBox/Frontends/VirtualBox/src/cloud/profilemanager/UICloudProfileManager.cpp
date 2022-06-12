@@ -1,4 +1,4 @@
-/* $Id: UICloudProfileManager.cpp 86668 2020-10-21 16:15:11Z vboxsync $ */
+/* $Id: UICloudProfileManager.cpp 86669 2020-10-21 17:02:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudProfileManager class implementation.
  */
@@ -565,8 +565,8 @@ void UICloudProfileManagerWidget::sltHandleCurrentItemChange()
     UIItemCloudProfile *pItemProfile = qobject_cast<UIItemCloudProfile*>(pItem);
 
     /* Update actions availability: */
-    m_pActionPool->action(UIActionIndexMN_M_Cloud_S_Add)->setEnabled(pItemProvider || pItemProfile);
-    m_pActionPool->action(UIActionIndexMN_M_Cloud_S_Import)->setEnabled(pItemProvider || pItemProfile);
+    m_pActionPool->action(UIActionIndexMN_M_Cloud_S_Add)->setEnabled(pItemProvider);
+    m_pActionPool->action(UIActionIndexMN_M_Cloud_S_Import)->setEnabled(pItemProvider);
     m_pActionPool->action(UIActionIndexMN_M_Cloud_S_Remove)->setEnabled(pItemProfile);
     m_pActionPool->action(UIActionIndexMN_M_Cloud_T_Details)->setEnabled(pItemProvider || pItemProfile);
 
