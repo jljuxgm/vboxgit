@@ -1,4 +1,4 @@
-/* $Id: DrvAudioCommon.cpp 88006 2021-03-08 12:08:34Z vboxsync $ */
+/* $Id: DrvAudioCommon.cpp 88007 2021-03-08 12:12:40Z vboxsync $ */
 /** @file
  * Intermedia audio driver, common routines.
  *
@@ -1197,17 +1197,16 @@ DECLINLINE(uint64_t) drvAudioHlpBytesPerSec(PCPDMAUDIOPCMPROPS pProps)
 }
 
 /**
- * Returns the number of audio frames for a given amount of bytes.
+ * Converts bytes to frames (rounding down of course).
  *
- * @return Calculated audio frames for given bytes.
- * @param  cbBytes              Bytes to convert to audio frames.
- * @param  pProps               PCM properties to calulate frames for.
+ * @returns Number of frames.
+ * @param   pProps      PCM properties to use.
+ * @param   cb          The number of bytes to convert.
  */
-uint32_t DrvAudioHlpBytesToFrames(uint32_t cbBytes, PCPDMAUDIOPCMPROPS pProps)
+uint32_t DrvAudioHlpBytesToFrames(PCPDMAUDIOPCMPROPS pProps, uint32_t cb)
 {
     AssertPtrReturn(pProps, 0);
-
-    return PDMAUDIOPCMPROPS_B2F(pProps, cbBytes);
+    return PDMAUDIOPCMPROPS_B2F(pProps, cb);
 }
 
 /**
