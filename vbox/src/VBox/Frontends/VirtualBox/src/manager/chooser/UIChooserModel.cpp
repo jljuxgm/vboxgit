@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 86760 2020-10-29 14:30:30Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 86770 2020-10-30 12:31:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -180,10 +180,16 @@ void UIChooserModel::setSelectedItems(const QList<UIChooserItem*> &items)
 
     /* Update all the old items (they are no longer selected): */
     foreach (UIChooserItem *pItem, oldCurrentItems)
+    {
+        pItem->setSelected(false);
         pItem->update();
+    }
     /* Update all the new items (they are selected now): */
     foreach (UIChooserItem *pItem, m_selectedItems)
+    {
+        pItem->setSelected(true);
         pItem->update();
+    }
 
     /* Notify about selection changes: */
     emit sigSelectionChanged();
