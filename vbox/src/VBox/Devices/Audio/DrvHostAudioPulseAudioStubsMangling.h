@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioPulseAudioStubsMangling.h 88226 2021-03-22 09:13:05Z vboxsync $ */
+/* $Id: DrvHostAudioPulseAudioStubsMangling.h 88478 2021-04-13 00:03:47Z vboxsync $ */
 /** @file
  * Mangle libpulse symbols.
  *
@@ -33,7 +33,9 @@
 #define pa_context_disconnect                   PULSE_MANGLER(pa_context_disconnect)
 #define pa_context_get_server_info              PULSE_MANGLER(pa_context_get_server_info)
 #define pa_context_get_sink_info_by_name        PULSE_MANGLER(pa_context_get_sink_info_by_name)
+#define pa_context_get_sink_info_list           PULSE_MANGLER(pa_context_get_sink_info_list)
 #define pa_context_get_source_info_by_name      PULSE_MANGLER(pa_context_get_source_info_by_name)
+#define pa_context_get_source_info_list         PULSE_MANGLER(pa_context_get_source_info_list)
 #define pa_context_get_state                    PULSE_MANGLER(pa_context_get_state)
 #define pa_context_unref                        PULSE_MANGLER(pa_context_unref)
 #define pa_context_errno                        PULSE_MANGLER(pa_context_errno)
