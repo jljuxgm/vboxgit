@@ -1,4 +1,4 @@
-# $Id: Config.kmk 88871 2021-05-04 18:23:07Z vboxsync $
+# $Id: Config.kmk 88879 2021-05-05 15:42:48Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -503,9 +503,6 @@ endif
 # Enable building debugging backend.
 # Only will be used at runtime when "VBoxInternal2/Audio/Debug/Enabled" (VM / global) is set.
 VBOX_WITH_AUDIO_DEBUG = 1
-ifdef VBOX_WITH_VALIDATIONKIT ## @todo r=bird: test is too early!
- VBOX_WITH_AUDIO_VALIDATIONKIT = 1
-endif
 # Enables the audio endpoint detection on Windows hosts.
 VBOX_WITH_AUDIO_MMNOTIFICATION_CLIENT = 1
 # Enable PCI passthrough support.
@@ -794,6 +791,9 @@ if1of ($(KBUILD_TARGET), darwin linux solaris win)
 endif
 # Enable audio support for VRDE.
 VBOX_WITH_AUDIO_VRDE = 1
+ifdef VBOX_WITH_VALIDATIONKIT
+ VBOX_WITH_AUDIO_VALIDATIONKIT = 1
+endif
 # Use the VRDE external authentication library from VBoxSVC.
 if1of ($(KBUILD_TARGET), win)
  VBOX_WITH_VRDEAUTH_IN_VBOXSVC = 1
@@ -8219,7 +8219,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 88871 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 88879 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
