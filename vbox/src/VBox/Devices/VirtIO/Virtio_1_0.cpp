@@ -1,4 +1,4 @@
-/* $Id: Virtio_1_0.cpp 84775 2020-06-11 06:15:59Z vboxsync $ */
+/* $Id: Virtio_1_0.cpp 84776 2020-06-11 06:35:57Z vboxsync $ */
 /** @file
  * Virtio_1_0 - Virtio Common (PCI, feature & config mgt, queue mgt & proxy, notification mgt)
  */
@@ -239,9 +239,6 @@ DECLINLINE(void) virtioWriteUsedRingIdx(PPDMDEVINS pDevIns, PVIRTIOCORE pVirtio,
                           &uIdx, sizeof(uIdx));
 }
 
-#ifdef IN_RING3
-
-#ifdef LOG_ENABLED
 DECLINLINE(uint16_t) virtioReadUsedRingIdx(PPDMDEVINS pDevIns, PVIRTIOCORE pVirtio, uint16_t idxQueue)
 {
     uint16_t uIdx = 0;
@@ -251,7 +248,6 @@ DECLINLINE(uint16_t) virtioReadUsedRingIdx(PPDMDEVINS pDevIns, PVIRTIOCORE pVirt
                       &uIdx, sizeof(uIdx));
     return uIdx;
 }
-#endif
 
 DECLINLINE(uint16_t) virtioReadUsedRingFlags(PPDMDEVINS pDevIns, PVIRTIOCORE pVirtio, uint16_t idxQueue)
 {
@@ -1221,7 +1217,8 @@ int virtioCoreQueueSync(PPDMDEVINS pDevIns, PVIRTIOCORE pVirtio, uint16_t idxQue
                     ("Guest driver not in ready state.\n"), VERR_INVALID_STATE);
 
     Log6Func(("Updating %s used_idx from %u to %u\n",
-              VIRTQNAME(pVirtio, idxQueue), virtioReadUsedRingIdx(pDevIns, pVirtio, idxQueue), pVirtq->uUsedIdxShadow));
+              VIRTQNAME(pVirtio, idxQueue), virtioReadUsedRingIdx(pDevIns, pVirtio, idxQueue),
+              pVirtq->uUsedIdxShadow));
 
     virtioWriteUsedRingIdx(pDevIns, pVirtio, idxQueue, pVirtq->uUsedIdxShadow);
     virtioCoreNotifyGuestDriver(pDevIns, pVirtio, idxQueue);
