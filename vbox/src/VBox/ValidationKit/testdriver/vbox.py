@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 85496 2020-07-29 07:22:14Z vboxsync $
+# $Id: vbox.py 85532 2020-07-29 20:59:04Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 85496 $"
+__version__ = "$Revision: 85532 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -3237,8 +3237,13 @@ class TestDriver(base.TestDriver):                                              
             # Upload the raw log for manual annotation in case resolving failed.
             if not fRcTmp:
                 reporter.log('Failed to annotate hung VM process report, uploading raw report');
-                reporter.addLogString(sHostProcessInfoHung, 'vmprocess-hung.log', 'process/report/vm',
-                                      'Hung VM process state');
+                fRcTmp = reporter.addLogString(sHostProcessInfoHung, 'vmprocess-hung.log', 'process/report/vm',
+                                               'Hung VM process state');
+                if not fRcTmp:
+                    try: reporter.log('******* START vmprocess-hung.log *******\n%s\n******* END vmprocess-hung.log *******\n'
+                                      % (sHostProcessInfoHung,));
+                    except: pass; # paranoia
+
 
         return fRc;
 
