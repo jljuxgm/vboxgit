@@ -1,4 +1,4 @@
-/* $Id: dbgkrnlinfo-r0drv-darwin.cpp 86578 2020-10-14 20:43:43Z vboxsync $ */
+/* $Id: dbgkrnlinfo-r0drv-darwin.cpp 87146 2020-12-30 13:22:03Z vboxsync $ */
 /** @file
  * IPRT - Kernel Debug Information, R0 Driver, Darwin.
  */
@@ -96,6 +96,15 @@ RT_C_DECLS_END
 #elif defined(RT_ARCH_AMD64)
 # define MY_CPU_TYPE            CPU_TYPE_X86_64
 # define MY_CPU_SUBTYPE_ALL     CPU_SUBTYPE_X86_64_ALL
+# define MY_MACHO_HEADER        mach_header_64_t
+# define MY_MACHO_MAGIC         IMAGE_MACHO64_SIGNATURE
+# define MY_SEGMENT_COMMAND     segment_command_64_t
+# define MY_SECTION             section_64_t
+# define MY_NLIST               macho_nlist_64_t
+
+#elif defined(RT_ARCH_ARM64)
+# define MY_CPU_TYPE            CPU_TYPE_ARM64
+# define MY_CPU_SUBTYPE_ALL     CPU_SUBTYPE_ARM64_ALL
 # define MY_MACHO_HEADER        mach_header_64_t
 # define MY_MACHO_MAGIC         IMAGE_MACHO64_SIGNATURE
 # define MY_SEGMENT_COMMAND     segment_command_64_t
