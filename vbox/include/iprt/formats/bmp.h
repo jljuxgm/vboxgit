@@ -1,4 +1,4 @@
-/* $Id: bmp.h 85857 2020-08-21 09:10:49Z vboxsync $ */
+/* $Id: bmp.h 85859 2020-08-21 09:21:53Z vboxsync $ */
 /** @file
  * Bitmap (BMP) format defines.
  */
@@ -165,5 +165,5 @@ typedef WINHDR *PWINHDR;
 #define BMP_HEADER_WIN3      40
 /** @} . */
 
-#endif /* !IPRT_INCLUDED_formats_bmp_h . */
+#endif /* !IPRT_INCLUDED_formats_bmp_h */
 
