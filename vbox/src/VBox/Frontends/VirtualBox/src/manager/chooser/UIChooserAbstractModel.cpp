@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.cpp 84304 2020-05-14 13:39:18Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.cpp 84371 2020-05-19 14:55:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class implementation.
  */
@@ -357,7 +357,7 @@ void UIChooserAbstractModel::sltCloudMachineRegistered(const QString &strProvide
     const QString strGroupName = QString("/%1/%2").arg(strProviderShortName, strProfileName);
     /* Search for corresponding profile node: */
     QList<UIChooserNode*> profileNodes;
-    invisibleRoot()->searchForNodes(strGroupName, UIChooserItemSearchFlag_Group | UIChooserItemSearchFlag_ExactId, profileNodes);
+    invisibleRoot()->searchForNodes(strGroupName, UIChooserItemSearchFlag_CloudProfile | UIChooserItemSearchFlag_ExactId, profileNodes);
     /* Acquire corresponding profile node: */
     AssertReturnVoid(!profileNodes.isEmpty());
     UIChooserNodeGroup *pProfileNode = profileNodes.first()->toGroupNode();
@@ -443,7 +443,7 @@ void UIChooserAbstractModel::sltHandleCloudListMachinesTaskComplete(UITask *pTas
     /* Search for profile node: */
     const QString strProfileNodeName = QString("/%1/%2").arg(pAcquiringTask->providerShortName(), pAcquiringTask->profileName());
     QList<UIChooserNode*> profileNodes;
-    invisibleRoot()->searchForNodes(strProfileNodeName, UIChooserItemSearchFlag_Group | UIChooserItemSearchFlag_ExactId, profileNodes);
+    invisibleRoot()->searchForNodes(strProfileNodeName, UIChooserItemSearchFlag_CloudProfile | UIChooserItemSearchFlag_ExactId, profileNodes);
     UIChooserNode *pProfileNode = profileNodes.value(0);
     AssertPtrReturnVoid(pProfileNode);
 
