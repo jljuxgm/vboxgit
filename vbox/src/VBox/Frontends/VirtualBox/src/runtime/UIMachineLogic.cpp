@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 88648 2021-04-22 11:16:45Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 88713 2021-04-26 18:10:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -1217,6 +1217,13 @@ void UIMachineLogic::prepareOtherConnections()
     /* Extra-data connections: */
     connect(gEDataManager, &UIExtraDataManager::sigVisualStateChange,
             this, &UIMachineLogic::sltHandleVisualStateChange);
+
+    /* UICommon connections: */
+#ifdef VBOX_WITH_DEBUGGER_GUI
+    /* Cleanup debugger before VBoxDbg module handle cleaned up: */
+    connect(&uiCommon(), &UICommon::sigAskToCommitData,
+            this, &UIMachineLogic::sltCleanupDebugger);
+#endif
 }
 
 void UIMachineLogic::prepareHandlers()

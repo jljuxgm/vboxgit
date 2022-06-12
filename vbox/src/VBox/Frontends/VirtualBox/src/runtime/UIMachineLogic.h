@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 84990 2020-06-29 11:34:28Z vboxsync $ */
+/* $Id: UIMachineLogic.h 88713 2021-04-26 18:10:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -354,6 +354,11 @@ private slots:
 
     /** Handles request for visual state change. */
     void sltHandleVisualStateChange();
+
+#ifdef VBOX_WITH_DEBUGGER_GUI
+    /** Cleanups debugger. */
+    void sltCleanupDebugger() { cleanupDebugger(); }
+#endif
 
 private:
 
