@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 84528 2020-05-26 07:57:22Z vboxsync $
+# $Id: tdAddBasic1.py 84529 2020-05-26 08:29:44Z vboxsync $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84528 $"
+__version__ = "$Revision: 84529 $"
 
 # Standard Python imports.
 import os;
@@ -590,8 +590,7 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
         fRc = True;
 
         try:
-            eStatus, _ = oGuest.getFacilityStatus(eFacilityType);
-            reporter.log3('%s -> %s' % (sDesc, eStatus,));
+            eStatus, tsLastUpdatedMs = oGuest.getFacilityStatus(eFacilityType);
         except:
             if fMustSucceed:
                 reporter.errorXcpt('Getting facility status for "%s" failed' % (sDesc,));
@@ -616,11 +615,14 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
             elif eStatus == vboxcon.AdditionsFacilityStatus_Failed:
                 sStatus = "FAILED";
                 fRc = not fMustSucceed;
-            else:
+            elif eStatus == vboxcon.AdditionsFacilityStatus_Unknown:
                 sStatus = "UNKNOWN";
                 fRc = not fMustSucceed;
+            else:
+                sStatus = "???";
+                fRc = not fMustSucceed;
 
-        reporter.log('Guest Additions facility "%s": %s' % (sDesc, sStatus));
+        reporter.log('Guest Additions facility "%s": %s (last updated: %sms)' % (sDesc, sStatus, str(tsLastUpdatedMs)));
         if      fMustSucceed \
         and not fRc:
             reporter.error('Guest Additions facility "%s" did not report expected status (is "%s")' % (sDesc, sStatus));
