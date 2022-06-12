@@ -1,4 +1,4 @@
-/* $Id: SUPLibLdr.cpp 85511 2020-07-29 10:21:19Z vboxsync $ */
+/* $Id: SUPLibLdr.cpp 85517 2020-07-29 10:48:52Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Loader related bits.
  */
@@ -497,7 +497,7 @@ static DECLCALLBACK(int) supLoadModuleCompileSegmentsCB(RTLDRMOD hLdrMod, PCRTLD
 }
 
 
-/** 
+/**
  * Worker for supLoadModule().
  */
 static int supLoadModuleInner(RTLDRMOD hLdrMod, PSUPLDRLOAD pLoadReq, uint32_t cbImageWithEverything,
