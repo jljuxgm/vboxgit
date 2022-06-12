@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 85400 2020-07-21 11:32:18Z vboxsync $
+# $Id: Makefile.kmk 85401 2020-07-21 11:45:48Z vboxsync $
 ## @file
 # Sub-Makefile for the Windows Guest Additions Installer.
 #
@@ -264,6 +264,7 @@ endif
 $(call VBOX_EDIT_VERSION_AND_BUILD_RULE_FN,RePackScriptsAdd,../../../Installer/win/Scripts/PackDriversForSubmission.cmd,PackDriversForSubmission.cmd)
 $(call VBOX_EDIT_VERSION_AND_BUILD_RULE_FN,RePackScriptsAdd,../../../Installer/win/Scripts/Combined-1-Prepare.cmd,Combined-1-Prepare.cmd)
 ifndef VBOX_OSE
+$(call VBOX_EDIT_VERSION_AND_BUILD_RULE_FN,RePackScriptsAdd,../../../Installer/win/Scripts/Combined-0-Additions.cmd,Combined-0-Additions.cmd)
 $(call VBOX_EDIT_VERSION_AND_BUILD_RULE_FN,RePackScriptsAdd,../../../Installer/win/Scripts/Combined-2-SignAdditions.cmd,Combined-2-SignAdditions.cmd)
 endif
 $(call VBOX_EDIT_VERSION_AND_BUILD_RULE_FN,RePackScriptsAdd,../../../Installer/win/Scripts/Combined-3-RepackAdditions.cmd,Combined-3-RepackAdditions.cmd)
