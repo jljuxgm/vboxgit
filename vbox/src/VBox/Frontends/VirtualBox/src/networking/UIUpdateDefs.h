@@ -1,4 +1,4 @@
-/* $Id: UIUpdateDefs.h 86128 2020-09-15 16:14:08Z vboxsync $ */
+/* $Id: UIUpdateDefs.h 86996 2020-11-26 16:54:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Update routine related declarations.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef FEQT_INCLUDED_SRC_net_UIUpdateDefs_h
-#define FEQT_INCLUDED_SRC_net_UIUpdateDefs_h
+#ifndef FEQT_INCLUDED_SRC_networking_UIUpdateDefs_h
+#define FEQT_INCLUDED_SRC_networking_UIUpdateDefs_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -134,5 +134,5 @@ private:
 };
 
 
-#endif /* !FEQT_INCLUDED_SRC_net_UIUpdateDefs_h */
+#endif /* !FEQT_INCLUDED_SRC_networking_UIUpdateDefs_h */
 

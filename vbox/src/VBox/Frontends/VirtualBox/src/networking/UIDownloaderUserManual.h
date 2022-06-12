@@ -1,4 +1,4 @@
-/* $Id: UIDownloaderUserManual.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIDownloaderUserManual.h 86996 2020-11-26 16:54:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDownloaderUserManual class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef FEQT_INCLUDED_SRC_net_UIDownloaderUserManual_h
-#define FEQT_INCLUDED_SRC_net_UIDownloaderUserManual_h
+#ifndef FEQT_INCLUDED_SRC_networking_UIDownloaderUserManual_h
+#define FEQT_INCLUDED_SRC_networking_UIDownloaderUserManual_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -61,5 +61,5 @@ private:
     static UIDownloaderUserManual *s_pInstance;
 };
 
-#endif /* !FEQT_INCLUDED_SRC_net_UIDownloaderUserManual_h */
+#endif /* !FEQT_INCLUDED_SRC_networking_UIDownloaderUserManual_h */
 

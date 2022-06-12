@@ -1,4 +1,4 @@
-/* $Id: UIDownloader.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIDownloader.h 86996 2020-11-26 16:54:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDownloader class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef FEQT_INCLUDED_SRC_net_UIDownloader_h
-#define FEQT_INCLUDED_SRC_net_UIDownloader_h
+#ifndef FEQT_INCLUDED_SRC_networking_UIDownloader_h
+#define FEQT_INCLUDED_SRC_networking_UIDownloader_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -144,5 +144,5 @@ private:
     QString m_strPathSHA256SumsFile;
 };
 
-#endif /* !FEQT_INCLUDED_SRC_net_UIDownloader_h */
+#endif /* !FEQT_INCLUDED_SRC_networking_UIDownloader_h */
 

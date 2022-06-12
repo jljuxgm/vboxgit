@@ -1,4 +1,4 @@
-/* $Id: UINetworkCustomer.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UINetworkCustomer.h 86996 2020-11-26 16:54:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkCustomer class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef FEQT_INCLUDED_SRC_net_UINetworkCustomer_h
-#define FEQT_INCLUDED_SRC_net_UINetworkCustomer_h
+#ifndef FEQT_INCLUDED_SRC_networking_UINetworkCustomer_h
+#define FEQT_INCLUDED_SRC_networking_UINetworkCustomer_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -32,7 +32,7 @@
 class UINetworkReply;
 class QUrl;
 
-/** Interface to access UINetworkManager protected functionality. */
+/** Interface to access UINetworkRequestManager protected functionality. */
 class SHARED_LIBRARY_STUFF UINetworkCustomer : public QObject
 {
     Q_OBJECT;
@@ -68,5 +68,5 @@ private:
     bool m_fForceCall;
 };
 
-#endif /* !FEQT_INCLUDED_SRC_net_UINetworkCustomer_h */
+#endif /* !FEQT_INCLUDED_SRC_networking_UINetworkCustomer_h */
 

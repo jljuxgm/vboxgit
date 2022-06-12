@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 86988 2020-11-26 14:25:50Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 86996 2020-11-26 16:54:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -35,8 +35,8 @@
 #include "UIProgressDialog.h"
 #include "UIErrorString.h"
 #ifdef VBOX_GUI_WITH_NETWORK_MANAGER
-# include "UINetworkManager.h"
-# include "UINetworkManagerDialog.h"
+# include "UINetworkRequestManager.h"
+# include "UINetworkRequestManagerWindow.h"
 #endif /* VBOX_GUI_WITH_NETWORK_MANAGER */
 #include "UIModalWindowManager.h"
 #include "UIExtraDataManager.h"

@@ -1,4 +1,4 @@
-/* $Id: UINetworkCustomer.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UINetworkCustomer.cpp 86996 2020-11-26 16:54:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkCustomer class implementation.
  */
@@ -20,7 +20,7 @@
 
 /* Local includes: */
 #include "UINetworkCustomer.h"
-#include "UINetworkManager.h"
+#include "UINetworkRequestManager.h"
 
 
 UINetworkCustomer::UINetworkCustomer(QObject *pParent /* = 0 */, bool fForceCall /* = true */)

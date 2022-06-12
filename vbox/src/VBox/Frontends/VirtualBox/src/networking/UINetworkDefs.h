@@ -1,4 +1,4 @@
-/* $Id: UINetworkDefs.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UINetworkDefs.h 86996 2020-11-26 16:54:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Network routine related declarations.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef FEQT_INCLUDED_SRC_net_UINetworkDefs_h
-#define FEQT_INCLUDED_SRC_net_UINetworkDefs_h
+#ifndef FEQT_INCLUDED_SRC_networking_UINetworkDefs_h
+#define FEQT_INCLUDED_SRC_networking_UINetworkDefs_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -34,5 +34,5 @@ enum UINetworkRequestType
 /** User dictionary. */
 typedef QMap<QString, QString> UserDictionary;
 
-#endif /* !FEQT_INCLUDED_SRC_net_UINetworkDefs_h */
+#endif /* !FEQT_INCLUDED_SRC_networking_UINetworkDefs_h */
 

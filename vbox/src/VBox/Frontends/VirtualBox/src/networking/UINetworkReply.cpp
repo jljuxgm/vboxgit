@@ -1,4 +1,4 @@
-/* $Id: UINetworkReply.cpp 84375 2020-05-19 17:00:03Z vboxsync $ */
+/* $Id: UINetworkReply.cpp 86996 2020-11-26 16:54:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkReply stuff implementation.
  */
@@ -25,7 +25,7 @@
 
 /* GUI includes: */
 #include "UINetworkReply.h"
-#include "UINetworkManager.h"
+#include "UINetworkRequestManager.h"
 #include "UIExtraDataManager.h"
 #ifndef VBOX_GUI_IN_TST_SSL_CERT_DOWNLOADS
 # include "UICommon.h"

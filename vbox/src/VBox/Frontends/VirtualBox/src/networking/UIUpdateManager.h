@@ -1,4 +1,4 @@
-/* $Id: UIUpdateManager.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIUpdateManager.h 86996 2020-11-26 16:54:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUpdateManager class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef FEQT_INCLUDED_SRC_net_UIUpdateManager_h
-#define FEQT_INCLUDED_SRC_net_UIUpdateManager_h
+#ifndef FEQT_INCLUDED_SRC_networking_UIUpdateManager_h
+#define FEQT_INCLUDED_SRC_networking_UIUpdateManager_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -87,5 +87,5 @@ private:
 /** Singleton Update Manager 'official' name. */
 #define gUpdateManager UIUpdateManager::instance()
 
-#endif /* !FEQT_INCLUDED_SRC_net_UIUpdateManager_h */
+#endif /* !FEQT_INCLUDED_SRC_networking_UIUpdateManager_h */
 

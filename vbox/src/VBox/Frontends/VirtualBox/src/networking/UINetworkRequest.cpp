@@ -1,4 +1,4 @@
-/* $Id: UINetworkRequest.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UINetworkRequest.cpp 86996 2020-11-26 16:54:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkRequest class implementation.
  */
@@ -18,9 +18,9 @@
 /* GUI includes: */
 #include "UINetworkRequest.h"
 #include "UINetworkRequestWidget.h"
-#include "UINetworkManager.h"
-#include "UINetworkManagerDialog.h"
-#include "UINetworkManagerIndicator.h"
+#include "UINetworkRequestManager.h"
+#include "UINetworkRequestManagerWindow.h"
+#include "UINetworkRequestManagerIndicator.h"
 #include "UINetworkCustomer.h"
 #include "UICommon.h"
 
@@ -30,7 +30,7 @@ UINetworkRequest::UINetworkRequest(UINetworkRequestType enmType,
                                    const QString &strTarget,
                                    const UserDictionary &requestHeaders,
                                    UINetworkCustomer *pCustomer,
-                                   UINetworkManager *pNetworkManager)
+                                   UINetworkRequestManager *pNetworkManager)
     : QObject(pNetworkManager)
     , m_enmType(enmType)
     , m_urls(urls)
@@ -176,7 +176,7 @@ void UINetworkRequest::sltCancel()
 void UINetworkRequest::prepare()
 {
     /* Prepare listeners for network-manager: */
-    connect(manager(), &UINetworkManager::sigCancelNetworkRequests,
+    connect(manager(), &UINetworkRequestManager::sigCancelNetworkRequests,
             this, &UINetworkRequest::sltCancel, Qt::QueuedConnection);
 
     /* Choose first url as current: */

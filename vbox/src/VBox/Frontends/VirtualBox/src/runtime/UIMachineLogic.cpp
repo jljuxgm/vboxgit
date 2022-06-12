@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 86072 2020-09-09 10:13:28Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 86996 2020-11-26 16:54:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -33,7 +33,7 @@
 #include "QIFileDialog.h"
 #include "UIActionPoolRuntime.h"
 #ifdef VBOX_GUI_WITH_NETWORK_MANAGER
-# include "UINetworkManager.h"
+# include "UINetworkRequestManager.h"
 # include "UIDownloaderAdditions.h"
 #endif
 #include "UIHostComboEditor.h"
