@@ -1,4 +1,4 @@
-/* $Id: VBoxMPMisc.cpp 84658 2020-06-03 11:30:37Z vboxsync $ */
+/* $Id: VBoxMPMisc.cpp 84697 2020-06-05 15:03:45Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -1253,7 +1253,10 @@ NTSTATUS vboxWddmDrvCfgInit(PUNICODE_STRING pRegStr)
     g_RefreshRate = 0;
     Status = vboxWddmRegQueryValueDword(hKey, VBOXWDDM_CFG_STR_RATE, &dwValue);
     if (NT_SUCCESS(Status))
+    {
+        LOGREL(("WDDM: Guest refresh rate %u", dwValue));
         g_RefreshRate = dwValue;
+    }
 
     if (g_RefreshRate == 0 || g_RefreshRate > 240)
         g_RefreshRate = VBOXWDDM_DEFAULT_REFRESH_RATE;
