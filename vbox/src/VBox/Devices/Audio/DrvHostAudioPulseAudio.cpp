@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioPulseAudio.cpp 88923 2021-05-07 13:34:51Z vboxsync $ */
+/* $Id: DrvHostAudioPulseAudio.cpp 88928 2021-05-07 14:25:30Z vboxsync $ */
 /** @file
  * Host audio driver - Pulse Audio.
  */
@@ -2068,6 +2068,8 @@ const PDMDRVREG g_DrvHostPulseAudio =
 #else /* VBOX_AUDIO_VKAT */
 const PDMDRVREG g_DrvVKATPulseAudio =
 {
+    /* szName */
+    "PulseAudio",
     /* cbInstance */
     sizeof(DRVHOSTPULSEAUDIO),
     drvHostAudioPaConstruct,

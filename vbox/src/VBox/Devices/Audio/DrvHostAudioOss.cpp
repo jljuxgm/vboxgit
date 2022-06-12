@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioOss.cpp 88923 2021-05-07 13:34:51Z vboxsync $ */
+/* $Id: DrvHostAudioOss.cpp 88928 2021-05-07 14:25:30Z vboxsync $ */
 /** @file
  * Host audio driver - OSS (Open Sound System).
  */
@@ -936,8 +936,10 @@ const PDMDRVREG g_DrvHostOSSAudio =
     PDM_DRVREG_VERSION
 };
 #else
-const PDMDRVREG g_DrvVKATOSS =
+const PDMDRVREG g_DrvVKATOss =
 {
+    /* szName */
+    "OSSAudio",
     /* cbInstance */
     sizeof(DRVHOSTOSSAUDIO),
     drvHostOSSAudioConstruct,

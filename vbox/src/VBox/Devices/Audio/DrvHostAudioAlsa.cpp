@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioAlsa.cpp 88924 2021-05-07 13:41:46Z vboxsync $ */
+/* $Id: DrvHostAudioAlsa.cpp 88928 2021-05-07 14:25:30Z vboxsync $ */
 /** @file
  * Host audio driver - Advanced Linux Sound Architecture (ALSA).
  */
@@ -1507,6 +1507,8 @@ const PDMDRVREG g_DrvHostALSAAudio =
 #else /* VBOX_AUDIO_VKAT */
 const PDMDRVREG g_DrvVKATAlsa =
 {
+    /* szName */
+    "ALSAAudio",
     /* cbInstance */
     sizeof(DRVHOSTALSAAUDIO),
     drvHostAlsaAudioConstruct,
