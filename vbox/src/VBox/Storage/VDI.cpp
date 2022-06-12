@@ -1,4 +1,4 @@
-/* $Id: VDI.cpp 84475 2020-05-23 17:32:19Z vboxsync $ */
+/* $Id: VDI.cpp 84883 2020-06-19 17:18:56Z vboxsync $ */
 /** @file
  * Virtual Disk Image (VDI), Core Code.
  */
@@ -2893,7 +2893,7 @@ static DECLCALLBACK(int) vdiRepair(const char *pszFilename, PVDINTERFACE pVDIfsD
     int rc;
     PVDINTERFACEERROR pIfError;
     PVDINTERFACEIOINT pIfIo;
-    PVDIOSTORAGE pStorage;
+    PVDIOSTORAGE pStorage = NULL;
     uint64_t cbFile;
     PVDIIMAGEBLOCKPOINTER paBlocks = NULL;
     uint32_t *pu32BlockBitmap = NULL;
