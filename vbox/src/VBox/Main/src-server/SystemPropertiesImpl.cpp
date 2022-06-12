@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.cpp 84978 2020-06-26 18:27:38Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1788,7 +1788,7 @@ HRESULT SystemProperties::i_getDefaultAdditionsISO(com::Utf8Str &aDefaultAdditio
         if (m->strDefaultAdditionsISO.isEmpty())
         {
             ErrorInfoKeeper eik;
-            (void)setDefaultAdditionsISO("");
+            (void)i_setDefaultAdditionsISO("");
         }
         aDefaultAdditionsISO = m->strDefaultAdditionsISO;
     }
