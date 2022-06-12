@@ -1,4 +1,4 @@
-/* $Id: Virtio_1_0.h 84351 2020-05-19 05:26:12Z vboxsync $ */
+/* $Id: Virtio_1_0.h 84384 2020-05-20 05:07:26Z vboxsync $ */
 /** @file
  * Virtio_1_0.h - Virtio Declarations
  */
@@ -100,9 +100,9 @@ typedef struct VIRTIO_DESC_CHAIN
     uint32_t            u32Magic;                                   /**< Magic value, VIRTIO_DESC_CHAIN_MAGIC.    */
     uint32_t volatile   cRefs;                                      /**< Reference counter. */
     uint32_t            uHeadIdx;                                   /**< Head idx of associated desc chain        */
-    uint32_t            cbPhysSend;                                 /**< Total size of src buffer                 */
+    size_t              cbPhysSend;                                 /**< Total size of src buffer                 */
     PVIRTIOSGBUF        pSgPhysSend;                                /**< Phys S/G/ buf for data from guest        */
-    uint32_t            cbPhysReturn;                               /**< Total size of dst buffer                 */
+    size_t              cbPhysReturn;                               /**< Total size of dst buffer                 */
     PVIRTIOSGBUF        pSgPhysReturn;                              /**< Phys S/G buf to store result for guest   */
 
     /** @name Internal (bird combined 5 allocations into a single), fingers off.
