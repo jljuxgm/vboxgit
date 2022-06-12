@@ -1,4 +1,4 @@
-/* $Id: VBoxManageCloud.cpp 84645 2020-06-02 17:21:10Z vboxsync $ */
+/* $Id: VBoxManageCloud.cpp 84646 2020-06-02 18:07:19Z vboxsync $ */
 /** @file
  * VBoxManageCloud - The cloud related commands.
  */
@@ -2187,6 +2187,10 @@ static HRESULT createLocalGatewayImage(ComPtr<IVirtualBox> virtualBox, const Bst
     /* Initial configuration */
     hrc = machine->ApplyDefaults(NULL);
     if (errorOccured(hrc, "Failed to apply defaults to '%ls'.", strGatewayVM.raw()))
+        return hrc;
+
+    hrc = machine->COMSETTER(CPUCount)(2);
+    if (errorOccured(hrc, "Failed to adjust CPU count for '%ls'.", strGatewayVM.raw()))
         return hrc;
 
     hrc = machine->COMSETTER(MemorySize)(512/*MB*/);
