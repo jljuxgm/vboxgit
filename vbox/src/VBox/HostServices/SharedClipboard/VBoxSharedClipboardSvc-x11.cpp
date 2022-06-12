@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-x11.cpp 85763 2020-08-14 11:03:34Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-x11.cpp 85773 2020-08-14 15:00:24Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Linux host.
  */
@@ -205,11 +205,16 @@ int ShClBackendReadData(PSHCLCLIENT pClient,
                 rc = ShClEventWait(&pClient->EventSrc, idEvent, 30 * 1000, &pPayload);
                 if (RT_SUCCESS(rc))
                 {
-                    memcpy(pvData, pPayload->pvData, RT_MIN(cbData, pPayload->cbData));
+                    if (pPayload)
+                    {
+                        memcpy(pvData, pPayload->pvData, RT_MIN(cbData, pPayload->cbData));
 
-                    *pcbActual = (uint32_t)pPayload->cbData;
+                        *pcbActual = (uint32_t)pPayload->cbData;
 
-                    ShClPayloadFree(pPayload);
+                        ShClPayloadFree(pPayload);
+                    }
+                    else /* No payload given; could happen on invalid / not-expected formats. */
+                        *pcbActual = 0;
                 }
             }
 
