@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.cpp 87015 2020-11-30 16:15:43Z vboxsync $ */
+/* $Id: UIHelpBrowserWidget.cpp 87019 2020-11-30 17:56:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class implementation.
  */
@@ -161,7 +161,7 @@ private:
 
 
 /*********************************************************************************************************************************
-*   UIBookmarksListWidget definition.                                                                                         *
+*   UIBookmarksListWidget definition.                                                                                            *
 *********************************************************************************************************************************/
 class UIBookmarksListWidget : public QListWidget
 {
@@ -663,6 +663,7 @@ void UIBookmarksListWidget::mousePressEvent(QMouseEvent *pEvent)
     }
     QListWidget::mousePressEvent(pEvent);
 }
+
 
 /*********************************************************************************************************************************
 *   UIBookmarksListContainer implementation.                                                                                     *
