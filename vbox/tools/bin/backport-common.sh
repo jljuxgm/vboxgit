@@ -1,4 +1,4 @@
-# $Id: backport-common.sh 84269 2020-05-12 09:18:29Z vboxsync $
+# $Id: backport-common.sh 85586 2020-07-31 16:53:31Z vboxsync $
 ## @file
 # Common backport script bits.
 #
@@ -48,6 +48,16 @@ BranchDirToName()
     esac
 }
 
+AddRevision()
+{
+    if test -z "${MY_REVISIONS}"; then
+        MY_REVISIONS=$1
+        MY_REVISION_COUNT=1
+    else
+        MY_REVISIONS="${MY_REVISIONS} $1"
+        MY_REVISION_COUNT=$(${MY_EXPR} ${MY_REVISION_COUNT} + 1)
+    fi
+}
 
 #
 # Figure default branch given the script location.
@@ -80,23 +90,13 @@ do
     ARG=$1
     shift
     case "${ARG}" in
-        r[0-9][0-9]*)
+        r[0-9][0-9][0-9][0-9][0-9]|r[0-9][0-9][0-9][0-9][0-9][0-9]|r[0-9][0-9][0-9][0-9][0-9][0-9][0-9])
             MY_REV=`echo ${ARG} | "${MY_SED}" -e 's/^r//'`
-            if test -z "${MY_REVISIONS}"; then
-                MY_REVISIONS=${MY_REV}
-            else
-                MY_REVISIONS="${MY_REVISIONS} ${MY_REV}"
-            fi
-            MY_REVISION_COUNT=`${MY_EXPR} ${MY_REVISION_COUNT} + 1`
+            AddRevision ${MY_REV}
             ;;
 
-        [0-9][0-9]*)
-            if test -z "${MY_REVISIONS}"; then
-                MY_REVISIONS=${ARG}
-            else
-                MY_REVISIONS="${MY_REVISIONS} ${ARG}"
-            fi
-            MY_REVISION_COUNT=`${MY_EXPR} ${MY_REVISION_COUNT} + 1`
+        [0-9][0-9][0-9][0-9][0-9]|[0-9][0-9][0-9][0-9][0-9][0-9]|[0-9][0-9][0-9][0-9][0-9][0-9][0-9])
+            AddRevision ${MY_ARG}
             ;;
 
         --trunk-dir)
@@ -224,7 +224,7 @@ fi
 #
 # Stop if no revisions specified.
 #
-if test -z "${MY_REVISIONS}"; then
+if test -z "${MY_REVISIONS}" -a "${MY_SCRIPT_NAME}" '!=' "backport-commit.sh"; then
     echo "error: No revisions specified" 1>&2;
     exit 2;
 fi
