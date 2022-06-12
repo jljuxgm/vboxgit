@@ -1,4 +1,4 @@
-/* $Id: RAW.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: RAW.cpp 86500 2020-10-08 17:07:38Z vboxsync $ */
 /** @file
  * RawHDDCore - Raw Disk image, Core Code.
  */
@@ -597,7 +597,7 @@ static DECLCALLBACK(int) rawProbe(const char *pszFilename, PVDINTERFACE pVDIfsDi
             if (   RT_FAILURE(rc)
                 && (enmDesiredType == VDTYPE_INVALID || enmDesiredType == VDTYPE_FLOPPY)
                 && (cbFile % 512) == 0
-                && cbFile > 512
+                && cbFile >= 512
                 && cbFile <= RAW_MAX_FLOPPY_IMG_SIZE)
             {
                 /** @todo check if the content is DOSish.  */
