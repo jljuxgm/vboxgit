@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 89489 2021-06-03 23:00:02Z vboxsync $ */
+/* $Id: DrvAudio.cpp 89500 2021-06-04 10:30:47Z vboxsync $ */
 /** @file
  * Intermediate audio driver - Connects the audio device emulation with the host backend.
  */
@@ -763,12 +763,13 @@ static DECLCALLBACK(int) drvAudioDevicesEnumerateInternal(PDRVAUDIO pThis, bool 
                 RTListForEach(&DevEnum.LstDevices, pDev, PDMAUDIOHOSTDEV, ListEntry)
                 {
                     char szFlags[PDMAUDIOHOSTDEV_MAX_FLAGS_STRING_LEN];
-                    LogRel(("Audio: Device '%s'%s%s%s:\n"
+                    LogRel(("Audio: Device '%s':\n"
+                            "Audio:   ID              = %s\n"
                             "Audio:   Usage           = %s\n"
                             "Audio:   Flags           = %s\n"
                             "Audio:   Input channels  = %RU8\n"
                             "Audio:   Output channels = %RU8\n",
-                            pDev->szName, pDev->pszId ? " (ID '" : "", pDev->pszId ? pDev->pszId : "", pDev->pszId ? "')" : "",
+                            pDev->pszName, pDev->pszId ? pDev->pszId : "",
                             PDMAudioDirGetName(pDev->enmUsage), PDMAudioHostDevFlagsToString(szFlags, pDev->fFlags),
                             pDev->cMaxInputChannels, pDev->cMaxOutputChannels));
                 }
