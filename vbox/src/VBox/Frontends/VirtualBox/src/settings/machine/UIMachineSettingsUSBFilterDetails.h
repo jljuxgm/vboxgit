@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsUSBFilterDetails.h 85956 2020-08-31 12:58:46Z vboxsync $ */
+/* $Id: UIMachineSettingsUSBFilterDetails.h 85957 2020-08-31 13:32:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsUSBFilterDetails class declaration.
  */
@@ -27,7 +27,6 @@
 
 /* Forward declarations: */
 class QComboBox;
-class QGridLayout;
 class QLabel;
 class QLineEdit;
 class QIDialogButtonBox;
@@ -56,8 +55,6 @@ private:
 
     /** @name Widgets
      * @{ */
-        /** Holds the main layout instance. */
-        QGridLayout       *m_pLayoutMain;
         /** Holds the name label instance. */
         QLabel            *m_pLabelName;
         /** Holds the name editor instance. */
