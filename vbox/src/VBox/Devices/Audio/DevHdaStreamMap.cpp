@@ -1,4 +1,4 @@
-/* $Id: DevHdaStreamMap.cpp 88269 2021-03-24 11:45:54Z vboxsync $ */
+/* $Id: DevHdaStreamMap.cpp 88300 2021-03-26 14:31:55Z vboxsync $ */
 /** @file
  * Intel HD Audio Controller Emulation - Stream mapping (e.g. 5.1 -> stereo).
  */
@@ -317,7 +317,7 @@ static int hdaR3StreamMapSetup(PHDASTREAMMAP pMap, PPDMAUDIOPCMPROPS pProps, uin
 /**
  * Initializes a stream mapping structure according to the given PCM properties.
  *
- * @return  IPRT status code.
+ * @returns VBox status code.
  * @param   pMap            Pointer to mapping to initialize.
  * @param   cHostChannels   The number of host channels to map to.
  * @param   pProps          Input: The stream PCM properties from the guest.

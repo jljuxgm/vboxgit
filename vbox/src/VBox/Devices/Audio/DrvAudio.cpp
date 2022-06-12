@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 88298 2021-03-26 14:02:35Z vboxsync $ */
+/* $Id: DrvAudio.cpp 88300 2021-03-26 14:31:55Z vboxsync $ */
 /** @file
  * Intermediate audio driver - Connects the audio device emulation with the host backend.
  */
@@ -2007,7 +2007,7 @@ static int drvAudioDevicesEnumerateInternal(PDRVAUDIO pThis, bool fLog, PPDMAUDI
  *       Everything else is considered as fatal and must be handled separately in
  *       the device emulation!
  *
- * @return  IPRT status code.
+ * @returns VBox status code.
  * @param   pThis               Driver instance to be called.
  */
 static int drvAudioHostInit(PDRVAUDIO pThis)

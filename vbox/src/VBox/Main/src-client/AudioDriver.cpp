@@ -1,4 +1,4 @@
-/* $Id: AudioDriver.cpp 88269 2021-03-24 11:45:54Z vboxsync $ */
+/* $Id: AudioDriver.cpp 88300 2021-03-26 14:31:55Z vboxsync $ */
 /** @file
  * VirtualBox audio base class for Main audio drivers.
  */
@@ -78,7 +78,7 @@ int AudioDriver::InitializeConfig(AudioDriverCfg *pCfg)
 /**
  * Attaches the driver via EMT, if configured.
  *
- * @returns IPRT status code.
+ * @returns VBox status code.
  * @param   pUVM                The user mode VM handle for talking to EMT.
  * @param   pAutoLock           The callers auto lock instance.  Can be NULL if
  *                              not locked.
@@ -162,7 +162,7 @@ DECLCALLBACK(int) AudioDriver::attachDriverOnEmt(AudioDriver *pThis)
 /**
  * Detatches the driver via EMT, if configured.
  *
- * @returns IPRT status code.
+ * @returns VBox status code.
  * @param   pUVM                The user mode VM handle for talking to EMT.
  * @param   pAutoLock           The callers auto lock instance.  Can be NULL if
  *                              not locked.

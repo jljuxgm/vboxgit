@@ -1,4 +1,4 @@
-/* $Id: DevHdaCommon.cpp 88269 2021-03-24 11:45:54Z vboxsync $ */
+/* $Id: DevHdaCommon.cpp 88300 2021-03-26 14:31:55Z vboxsync $ */
 /** @file
  * Intel HD Audio Controller Emulation - Common stuff.
  *
@@ -259,7 +259,7 @@ uint32_t hdaGetINTSTS(PHDASTATE pThis)
 /**
  * Converts an HDA stream's SDFMT register into a given PCM properties structure.
  *
- * @return  IPRT status code.
+ * @returns VBox status code.
  * @param   u16SDFMT            The HDA stream's SDFMT value to convert.
  * @param   pProps              PCM properties structure to hold converted result on success.
  */

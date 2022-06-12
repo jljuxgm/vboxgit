@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 88269 2021-03-24 11:45:54Z vboxsync $ */
+/* $Id: DevSB16.cpp 88300 2021-03-26 14:31:55Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  */
@@ -1754,7 +1754,7 @@ static DECLCALLBACK(void) sb16TimerIO(PPDMDEVINS pDevIns, TMTIMERHANDLE hTimer, 
 /**
  * Creates the output PDM audio stream for a specific driver.
  *
- * @returns IPRT status code.
+ * @returns VBox status code.
  * @param   pCfg                Stream configuration to use.
  * @param   pDrv                Driver stream to create PDM stream for.
  */
