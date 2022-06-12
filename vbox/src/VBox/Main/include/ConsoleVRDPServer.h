@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.h 88253 2021-03-22 18:14:09Z vboxsync $ */
 /** @file
  * VBox Console VRDE Server Helper class and implementation of IVRDEServerInfo
  */
@@ -135,7 +135,7 @@ public:
     void SendResize (void);
     void SendUpdateBitmap (unsigned uScreenId, uint32_t x, uint32_t y, uint32_t w, uint32_t h) const;
 
-    void SendAudioSamples (void *pvSamples, uint32_t cSamples, VRDEAUDIOFORMAT format) const;
+    void SendAudioSamples (void const *pvSamples, uint32_t cSamples, VRDEAUDIOFORMAT format) const;
     void SendAudioVolume (uint16_t left, uint16_t right) const;
     void SendUSBRequest (uint32_t u32ClientId, void *pvParms, uint32_t cbParms) const;
 
