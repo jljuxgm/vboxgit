@@ -1,4 +1,4 @@
-/* $Id: lsilogic.c 89211 2021-05-21 08:18:45Z vboxsync $ */
+/* $Id: lsilogic.c 89267 2021-05-25 11:15:02Z vboxsync $ */
 /** @file
  * LsiLogic SCSI host adapter driver to boot from disks.
  */
@@ -535,7 +535,7 @@ static int lsilogic_scsi_hba_init(lsilogic_t __far *lsilogic)
 /**
  * Init the LsiLogic SCSI driver and detect attached disks.
  */
-int lsilogic_scsi_init(void __far *pvHba, void __far *pvSinkBuf, uint8_t u8Bus, uint8_t u8DevFn)
+int lsilogic_scsi_init(void __far *pvHba, void __far *pvSinkBuf, uint16_t cbSinkBuf, uint8_t u8Bus, uint8_t u8DevFn)
 {
     lsilogic_t __far *lsilogic = (lsilogic_t __far *)pvHba;
     uint32_t u32Bar;

@@ -1,4 +1,4 @@
-/* $Id: virtio.c 89211 2021-05-21 08:18:45Z vboxsync $ */
+/* $Id: virtio.c 89267 2021-05-25 11:15:02Z vboxsync $ */
 /** @file
  * VirtIO-SCSI host adapter driver to boot from disks.
  */
@@ -661,7 +661,7 @@ static int virtio_scsi_hba_init(virtio_t __far *virtio, uint8_t u8Bus, uint8_t u
 /**
  * Init the VirtIO SCSI driver and detect attached disks.
  */
-int virtio_scsi_init(void __far *pvHba, void __far *pvSinkBuf, uint8_t u8Bus, uint8_t u8DevFn)
+int virtio_scsi_init(void __far *pvHba, void __far *pvSinkBuf, uint16_t cbSinkBuf, uint8_t u8Bus, uint8_t u8DevFn)
 {
     virtio_t __far *virtio = (virtio_t __far *)pvHba;
     uint8_t     u8PciCapOff;
