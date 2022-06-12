@@ -1,4 +1,4 @@
-/* $Id: SSM.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: SSM.cpp 86375 2020-10-01 12:39:20Z vboxsync $ */
 /** @file
  * SSM - Saved State Manager.
  */
@@ -903,8 +903,9 @@ static int                  ssmR3DataReadRecHdrV2(PSSMHANDLE pSSM);
  * Cleans up resources allocated by SSM on VM termination.
  *
  * @param   pVM                 The cross context VM structure.
+ * @note    Not using VMMR3_INT_DECL because of testcases.
  */
-VMMR3_INT_DECL(void) SSMR3Term(PVM pVM)
+VMMR3DECL(void) SSMR3Term(PVM pVM)
 {
     if (pVM->ssm.s.fInitialized)
     {
