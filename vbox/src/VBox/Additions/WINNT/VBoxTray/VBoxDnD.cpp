@@ -1,4 +1,4 @@
-/* $Id: VBoxDnD.cpp 85371 2020-07-17 10:02:58Z vboxsync $ */
+/* $Id: VBoxDnD.cpp 85472 2020-07-27 18:03:56Z vboxsync $ */
 /** @file
  * VBoxDnD.cpp - Windows-specific bits of the drag and drop service.
  */
@@ -557,7 +557,7 @@ LRESULT CALLBACK VBoxDnDWnd::WndProc(HWND a_hWnd, UINT a_uMsg, WPARAM a_wParam, 
                     if (pVbglR3Event->u.HG_Enter.cbFormats)
                     {
                         RTCList<RTCString> lstFormats =
-                            RTCString(pVbglR3Event->u.HG_Enter.pszFormats, pVbglR3Event->u.HG_Enter.cbFormats - 1).split("\r\n");
+                            RTCString(pVbglR3Event->u.HG_Enter.pszFormats, pVbglR3Event->u.HG_Enter.cbFormats - 1).split(DND_FORMATS_SEPARATOR);
                         rc = OnHgEnter(lstFormats, pVbglR3Event->u.HG_Enter.dndLstActionsAllowed);
                         if (RT_FAILURE(rc))
                             break;
