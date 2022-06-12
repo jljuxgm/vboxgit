@@ -1,4 +1,4 @@
-/* $Id: UIVMInformationDialog.cpp 86995 2020-11-26 15:37:23Z vboxsync $ */
+/* $Id: UIVMInformationDialog.cpp 86998 2020-11-26 17:26:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMInformationDialog class implementation.
  */
@@ -265,7 +265,7 @@ void UIVMInformationDialog::prepareButtonBox()
         uiCommon().setHelpKeyword(m_pButtonBox->button(QDialogButtonBox::Help), "guestadd-guestprops");
         connect(m_pButtonBox, &QIDialogButtonBox::rejected, this, &UIVMInformationDialog::close);
         connect(m_pButtonBox->button(QDialogButtonBox::Help), &QPushButton::pressed,
-                &(msgCenter()), &UIMessageCenter::sltHandleDialogHelpButtonPress);
+                &(msgCenter()), &UIMessageCenter::sltHandleHelpRequest);
         /* add button-box into main-layout: */
         centralWidget()->layout()->addWidget(m_pButtonBox);
     }

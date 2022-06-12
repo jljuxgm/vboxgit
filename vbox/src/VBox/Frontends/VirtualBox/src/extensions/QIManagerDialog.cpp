@@ -1,4 +1,4 @@
-/* $Id: QIManagerDialog.cpp 86986 2020-11-26 14:22:34Z vboxsync $ */
+/* $Id: QIManagerDialog.cpp 86998 2020-11-26 17:26:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIManagerDialog class implementation.
  */
@@ -186,7 +186,7 @@ void QIManagerDialog::prepareButtonBox()
         connect(m_pButtonBox, &QIDialogButtonBox::rejected, this, &QIManagerDialog::close);
         /* Connections to enable the context sensitive help: */
         connect(m_pButtonBox, &QDialogButtonBox::helpRequested, this, &QIManagerDialog::sltHandleHelpRequested);
-        connect(this, &QIManagerDialog::sigHelpRequested, &msgCenter(), &UIMessageCenter::sltHandleHelpRequest);
+        connect(this, &QIManagerDialog::sigHelpRequested, &msgCenter(), &UIMessageCenter::sltHandleHelpRequestWithKeyword);
 
         /* Configure button-box: */
         configureButtonBox();

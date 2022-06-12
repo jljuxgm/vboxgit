@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialog.cpp 86986 2020-11-26 14:22:34Z vboxsync $ */
+/* $Id: UISettingsDialog.cpp 86998 2020-11-26 17:26:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISettingsDialog class implementation.
  */
@@ -779,7 +779,7 @@ void UISettingsDialog::prepareWidgets()
     QObject::connect(m_pButtonBox, &QIDialogButtonBox::rejected, this, &UISettingsDialog::reject);
     QObject::connect(m_pButtonBox, &QIDialogButtonBox::accepted, this, &UISettingsDialog::accept);
     connect(m_pButtonBox->button(QDialogButtonBox::Help), &QAbstractButton::pressed,
-                                 &(msgCenter()), &UIMessageCenter::sltHandleDialogHelpButtonPress);
+                                 &(msgCenter()), &UIMessageCenter::sltHandleHelpRequest);
 }
 
 void UISettingsDialog::assignValidator(UISettingsPage *pPage)

@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 86986 2020-11-26 14:22:34Z vboxsync $ */
+/* $Id: UIMessageCenter.h 86998 2020-11-26 17:26:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -553,8 +553,8 @@ public slots:
     void sltResetSuppressedMessages();
     void sltShowUserManual(const QString &strLocation);
     void sltHelpBrowserClosed();
-    void sltHandleDialogHelpButtonPress();
-    void sltHandleHelpRequest(const QString &strHelpKeyword);
+    void sltHandleHelpRequest();
+    void sltHandleHelpRequestWithKeyword(const QString &strHelpKeyword);
 
 private slots:
 

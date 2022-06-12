@@ -1,4 +1,4 @@
-/* $Id: UIWizard.cpp 86986 2020-11-26 14:22:34Z vboxsync $ */
+/* $Id: UIWizard.cpp 86998 2020-11-26 17:26:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizard class implementation.
  */
@@ -273,7 +273,7 @@ void UIWizard::enableHelpButton(const QString &strHelpKeyword)
     uiCommon().setHelpKeyword(this, strHelpKeyword);
     if (button(QWizard::HelpButton))
         button(QWizard::HelpButton)->setShortcut(Qt::Key_F1);
-    connect(this, &UIWizard::helpRequested, &msgCenter(), &UIMessageCenter::sltHandleDialogHelpButtonPress);
+    connect(this, &UIWizard::helpRequested, &msgCenter(), &UIMessageCenter::sltHandleHelpRequest);
 }
 
 void UIWizard::sltCurrentIdChanged(int iId)
