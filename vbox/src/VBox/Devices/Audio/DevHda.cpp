@@ -1,4 +1,4 @@
-/* $Id: DevHda.cpp 88662 2021-04-22 18:24:15Z vboxsync $ */
+/* $Id: DevHda.cpp 88674 2021-04-23 12:48:37Z vboxsync $ */
 /** @file
  * Intel HD Audio Controller Emulation.
  *
@@ -5104,7 +5104,7 @@ static DECLCALLBACK(int) hdaR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFGM
         {
             LogRel(("HDA: Falling back to NULL backend (no sound audible)\n"));
             hdaR3Reset(pDevIns);
-            hdaR3ReconfigLunWithNullAudio(pThis, pDrv->uLUN);
+            hdaR3ReconfigLunWithNullAudio(pDevIns, pThis, pThisCC, pDrv->uLUN);
             PDMDevHlpVMSetRuntimeError(pDevIns, 0 /*fFlags*/, "HostAudioNotResponding",
                                        N_("No audio devices could be opened. "
                                           "Selecting the NULL audio backend with the consequence that no sound is audible"));
