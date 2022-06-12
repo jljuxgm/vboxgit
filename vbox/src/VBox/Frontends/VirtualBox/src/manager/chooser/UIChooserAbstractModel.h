@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.h 84557 2020-05-27 11:56:13Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.h 84592 2020-05-28 14:19:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class declaration.
  */
@@ -46,7 +46,7 @@ signals:
 
     /** @name Cloud machine stuff.
       * @{ */
-        /** Notifies about state change for cloud machine with certain @a uId. */
+        /** Notifies listeners about state change for cloud machine with certain @a uId. */
         void sigCloudMachineStateChange(const QUuid &uId);
     /** @} */
 
@@ -54,7 +54,7 @@ signals:
       * @{ */
         /** Commands to start group saving. */
         void sigStartGroupSaving();
-        /** Notifies about group saving state changed. */
+        /** Notifies listeners about group saving state changed. */
         void sigGroupSavingStateChanged();
     /** @} */
 
