@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 85748 2020-08-13 10:20:38Z vboxsync $ */
+/* $Id: SUPDrv.cpp 86304 2020-09-26 11:36:16Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -1768,7 +1768,7 @@ static int supdrvIOCtlInnerUnrestricted(uintptr_t uIOCtl, PSUPDRVDEVEXT pDevExt,
                                 (long)pReq->u.In.cbStrTab, (long)pReq->u.In.cbImageWithEverything));
             REQ_CHECK_EXPR_FMT(   pReq->u.In.cSegments >= 1
                                && pReq->u.In.cSegments <= 128
-                               && pReq->u.In.cSegments <= pReq->u.In.cbImageBits / PAGE_SIZE
+                               && pReq->u.In.cSegments <= (pReq->u.In.cbImageBits + PAGE_SIZE - 1) / PAGE_SIZE
                                && pReq->u.In.offSegments >= pReq->u.In.cbImageBits
                                && pReq->u.In.offSegments < pReq->u.In.cbImageWithEverything
                                && pReq->u.In.offSegments + pReq->u.In.cSegments * sizeof(SUPLDRSEG) <= pReq->u.In.cbImageWithEverything,
