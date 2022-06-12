@@ -1,4 +1,4 @@
-/* $Id: UIHelpViewer.h 88392 2021-04-07 10:41:40Z vboxsync $ */
+/* $Id: UIHelpViewer.h 88393 2021-04-07 10:57:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class declaration.
  */
@@ -89,7 +89,7 @@ private:
     void iterateDocumentImages();
     const QHelpEngine* m_pHelpEngine;
     UIFindInPageWidget *m_pFindInPageWidget;
-    /* Initilized as false and set to true once the user drag moves the find widget. */
+    /** Initilized as false and set to true once the user drag moves the find widget. */
     bool m_fFindWidgetDragged;
     int m_iMarginForFindWidget;
     /** Document positions of the cursors within the document for all matches. */
@@ -97,6 +97,7 @@ private:
     int m_iSelectedMatchIndex;
     int m_iSearchTermLength;
     int m_iInitialFontPointSize;
+    /** A container to store the original image sizes in the document. key is image name value is the width. */
     QMap<QString, qreal> m_imageSizesMap;
 };
 
