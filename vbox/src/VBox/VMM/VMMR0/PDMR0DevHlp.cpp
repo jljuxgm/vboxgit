@@ -1,4 +1,4 @@
-/* $Id: PDMR0DevHlp.cpp 88592 2021-04-20 03:32:19Z vboxsync $ */
+/* $Id: PDMR0DevHlp.cpp 88593 2021-04-20 03:33:16Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, R0 Device Helper parts.
  */
@@ -1694,6 +1694,7 @@ static DECLCALLBACK(bool) pdmR0IommuHlp_LockIsOwner(PPDMDEVINS pDevIns)
     PDMDEV_ASSERT_DEVINS(pDevIns);
     return pdmLockIsOwner(pDevIns->Internal.s.pGVM);
 }
+
 
 /** @interface_method_impl{PDMIOMMUHLPR0,pfnSendMsi} */
 static DECLCALLBACK(int) pdmR0IommuHlp_SendMsi(PPDMDEVINS pDevIns, PCMSIMSG pMsi, uint32_t uTagSrc)
