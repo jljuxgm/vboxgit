@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 85039 2020-07-02 06:13:37Z vboxsync $ */
+/* $Id: UIMessageCenter.h 85111 2020-07-08 15:41:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -303,6 +303,11 @@ public:
     bool confirmStartMultipleMachines(const QString &strNames) const;
     void cannotMoveMachine(const CMachine &machine, QWidget *pParent = 0) const;
     void cannotMoveMachine(const CProgress &progress, const QString &strMachineName, QWidget *pParent = 0) const;
+    void cannotOpenPublicKeyFile(const QString &strPath, QWidget *pParent = 0) const;
+    void cannotCreateConsoleConnection(const CCloudMachine &comMachine, QWidget *pParent = 0);
+    void cannotCreateConsoleConnection(const CProgress &comProgress, const QString &strMachineName, QWidget *pParent = 0);
+    void cannotDeleteConsoleConnection(const CCloudMachine &comMachine, QWidget *pParent = 0);
+    void cannotDeleteConsoleConnection(const CProgress &comProgress, const QString &strMachineName, QWidget *pParent = 0);
 
     /* API: Snapshot warnings: */
     int confirmSnapshotRestoring(const QString &strSnapshotName, bool fAlsoCreateNewSnapshot) const;

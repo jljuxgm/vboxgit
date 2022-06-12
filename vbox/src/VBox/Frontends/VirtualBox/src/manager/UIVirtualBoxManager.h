@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 85080 2020-07-07 10:37:23Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.h 85111 2020-07-08 15:41:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -236,6 +236,11 @@ private slots:
         void sltPerformStartMachineHeadless();
         /** Handles call to start machine in detachable mode. */
         void sltPerformStartMachineDetachable();
+
+        /** Handles call to create console connection. */
+        void sltPerformCreateConsoleConnection();
+        /** Handles call to delete console connection. */
+        void sltPerformDeleteConsoleConnection();
 
         /** Handles call to discard machine state. */
         void sltPerformDiscardMachineState();

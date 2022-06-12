@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 85039 2020-07-02 06:13:37Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 85111 2020-07-08 15:41:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -1031,6 +1031,45 @@ void UIMessageCenter::cannotMoveMachine(const CProgress &progress, const QString
           tr("Failed to move the virtual machine <b>%1</b>.")
           .arg(strMachineName),
           UIErrorString::formatErrorInfo(progress));
+}
+
+void UIMessageCenter::cannotOpenPublicKeyFile(const QString &strPath, QWidget *pParent /* = 0 */) const
+{
+    alert(pParent, MessageType_Error,
+          tr("Failed to open the public key file <nobr><b>%1</b></nobr>. Check file permissions.")
+             .arg(strPath));
+}
+
+void UIMessageCenter::cannotCreateConsoleConnection(const CCloudMachine &comMachine, QWidget *pParent /* = 0 */)
+{
+    error(pParent, MessageType_Error,
+          tr("Failed to create console connection for cloud machine <b>%1</b>.")
+             .arg(CCloudMachine(comMachine).GetName()),
+          UIErrorString::formatErrorInfo(comMachine));
+}
+
+void UIMessageCenter::cannotCreateConsoleConnection(const CProgress &comProgress, const QString &strMachineName, QWidget *pParent /* = 0 */)
+{
+    error(pParent, MessageType_Error,
+          tr("Failed to create console connection for cloud machine <b>%1</b>.")
+             .arg(strMachineName),
+          UIErrorString::formatErrorInfo(comProgress));
+}
+
+void UIMessageCenter::cannotDeleteConsoleConnection(const CCloudMachine &comMachine, QWidget *pParent /* = 0 */)
+{
+    error(pParent, MessageType_Error,
+          tr("Failed to delete console connection for cloud machine <b>%1</b>.")
+             .arg(CCloudMachine(comMachine).GetName()),
+          UIErrorString::formatErrorInfo(comMachine));
+}
+
+void UIMessageCenter::cannotDeleteConsoleConnection(const CProgress &comProgress, const QString &strMachineName, QWidget *pParent /* = 0 */)
+{
+    error(pParent, MessageType_Error,
+          tr("Failed to delete console connection for cloud machine <b>%1</b>.")
+             .arg(strMachineName),
+          UIErrorString::formatErrorInfo(comProgress));
 }
 
 
