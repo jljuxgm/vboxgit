@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 89600 2021-06-10 13:17:07Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 89602 2021-06-10 13:22:56Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -5393,6 +5393,7 @@ DECLCALLBACK(bool) pdmR3DevHlpQueueConsumer(PVM pVM, PPDMQUEUEITEMCORE pItem)
 
         case PDMDEVHLPTASKOP_IOAPIC_SEND_MSI:
         {
+            Assert(pTask->pDevInsR3);
             PDMIoApicSendMsi(pTask->pDevInsR3, pTask->u.IoApicSendMsi.uBusDevFn, &pTask->u.IoApicSendMsi.Msi,
                              pTask->u.IoApicSendMsi.uTagSrc);
             break;
