@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.h 89302 2021-05-26 21:00:51Z vboxsync $ */
+/* $Id: AudioMixer.h 89332 2021-05-28 08:23:42Z vboxsync $ */
 /** @file
  * VBox audio - Mixing routines.
  *
@@ -203,6 +203,11 @@ typedef struct AUDMIXSINK
             /** The sink's peek state. */
             AUDIOMIXBUFPEEKSTATE    State;
         } In;
+        struct
+        {
+            /** The sink's write state. */
+            AUDIOMIXBUFWRITESTATE   State;
+        } Out;
     };
     struct
     {
@@ -308,7 +313,7 @@ void AudioMixerSinkRemoveAllStreams(PAUDMIXSINK pSink);
 void AudioMixerSinkReset(PAUDMIXSINK pSink);
 int AudioMixerSinkSetFormat(PAUDMIXSINK pSink, PCPDMAUDIOPCMPROPS pPCMProps);
 int AudioMixerSinkSetVolume(PAUDMIXSINK pSink, PPDMAUDIOVOLUME pVol);
-int AudioMixerSinkWrite(PAUDMIXSINK pSink, AUDMIXOP enmOp, const void *pvBuf, uint32_t cbBuf, uint32_t *pcbWritten);
+int AudioMixerSinkWrite(PAUDMIXSINK pSink, const void *pvBuf, uint32_t cbBuf, uint32_t *pcbWritten);
 int AudioMixerSinkUpdate(PAUDMIXSINK pSink, uint32_t cbDmaUsed, uint32_t cbDmaPeriod);
 
 int         AudioMixerSinkAddUpdateJob(PAUDMIXSINK pSink, PFNAUDMIXSINKUPDATE pfnUpdate, void *pvUser, uint32_t cMsTypicalInterval);
