@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItemCloud.cpp 86774 2020-10-30 17:48:02Z vboxsync $ */
+/* $Id: UIVirtualMachineItemCloud.cpp 86779 2020-11-02 11:35:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItemCloud class implementation.
  */
@@ -141,6 +141,16 @@ void UIVirtualMachineItemCloud::updateInfoAsync(bool fDelayed, bool fSubscribe /
     if (   !m_pProgressTaskRefresh->isScheduled()
         && !m_pProgressTaskRefresh->isRunning())
         m_pProgressTaskRefresh->schedule(fDelayed ? 10000 : 0);
+}
+
+void UIVirtualMachineItemCloud::stopAsyncUpdates()
+{
+    /* Ignore cancel request if progress-task is absent: */
+    if (!m_pProgressTaskRefresh)
+        return;
+
+    /* Mark update canceled in any case: */
+    m_fRefreshScheduled = false;
 }
 
 void UIVirtualMachineItemCloud::waitForAsyncInfoUpdateFinished()

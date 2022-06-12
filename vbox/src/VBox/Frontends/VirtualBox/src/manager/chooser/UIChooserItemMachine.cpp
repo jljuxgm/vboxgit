@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemMachine.cpp 86771 2020-10-30 13:18:39Z vboxsync $ */
+/* $Id: UIChooserItemMachine.cpp 86779 2020-11-02 11:35:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemMachine class implementation.
  */
@@ -234,7 +234,7 @@ void UIChooserItemMachine::setSelected(bool fSelected)
         if (fSelected && pCloudMachineItem->accessible())
             pCloudMachineItem->updateInfoAsync(false /* delayed? */, true /* subscribe */);
         else
-            pCloudMachineItem->waitForAsyncInfoUpdateFinished();
+            pCloudMachineItem->stopAsyncUpdates();
     }
 }
 

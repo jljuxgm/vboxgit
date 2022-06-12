@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItemCloud.h 86774 2020-10-30 17:48:02Z vboxsync $ */
+/* $Id: UIVirtualMachineItemCloud.h 86779 2020-11-02 11:35:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItemCloud class declaration.
  */
@@ -73,8 +73,11 @@ public:
         /** Returns fake cloud item error message. */
         QString fakeCloudItemErrorMessage() const { return m_strFakeCloudItemErrorMessage; }
 
-        /** Updates cloud VM info async way, @a fDelayed if requested or instant otherwise. */
+        /** Updates cloud VM info async way, @a fDelayed if requested or instant otherwise.
+          * @param  fSubscribe  Brings whether this update should be performed periodically. */
         void updateInfoAsync(bool fDelayed, bool fSubscribe = false);
+        /** Stop periodical updates previously requested. */
+        void stopAsyncUpdates();
         /** Makes sure async info update is finished.
           * @note  This method creates own event-loop to avoid blocking calling thread event processing,
           *        so it's safe to call it from the GUI thread, ofc the method itself will be blocked. */
