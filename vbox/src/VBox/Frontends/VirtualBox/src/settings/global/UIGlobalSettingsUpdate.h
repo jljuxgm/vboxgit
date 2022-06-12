@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsUpdate.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIGlobalSettingsUpdate.h 85800 2020-08-17 13:04:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsUpdate class declaration.
  */
@@ -23,16 +23,18 @@
 
 /* GUI includes: */
 #include "UISettingsPage.h"
-#include "UIGlobalSettingsUpdate.gen.h"
 #include "UIUpdateDefs.h"
 
 /* Forward declarations: */
+class QCheckBox;
+class QComboBox;
+class QLabel;
+class QRadioButton;
 struct UIDataSettingsGlobalUpdate;
 typedef UISettingsCache<UIDataSettingsGlobalUpdate> UISettingsCacheGlobalUpdate;
 
 /** Global settings: Update page. */
-class SHARED_LIBRARY_STUFF UIGlobalSettingsUpdate : public UISettingsPageGlobal,
-                                                    public Ui::UIGlobalSettingsUpdate
+class SHARED_LIBRARY_STUFF UIGlobalSettingsUpdate : public UISettingsPageGlobal
 {
     Q_OBJECT;
 
@@ -76,6 +78,8 @@ private:
 
     /** Prepares all. */
     void prepare();
+    /** Prepares widgets. */
+    void prepareWidgets();
     /** Cleanups all. */
     void cleanup();
 
@@ -92,6 +96,20 @@ private:
 
     /** Holds the page data cache instance. */
     UISettingsCacheGlobalUpdate *m_pCache;
+
+    /** @name Widgets
+     * @{ */
+       QLabel *m_pUpdateDateText;
+       QLabel *m_pUpdateDateLabel;
+       QLabel *m_pUpdatePeriodLabel;
+       QLabel *m_pUpdateFilterLabel;
+       QCheckBox *m_pCheckBoxUpdate;
+       QComboBox *m_pComboBoxUpdatePeriod;
+       QRadioButton *m_pRadioUpdateFilterBetas;
+       QRadioButton *m_pRadioUpdateFilterEvery;
+       QRadioButton *m_pRadioUpdateFilterStable;
+       QWidget *m_pContainerUpdate;
+    /** @} */
 };
 
 #endif /* !FEQT_INCLUDED_SRC_settings_global_UIGlobalSettingsUpdate_h */
