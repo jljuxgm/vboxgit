@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 88831 2021-05-03 12:37:23Z vboxsync $ */
+/* $Id: DevVGA-SVGA.cpp 88833 2021-05-03 13:07:36Z vboxsync $ */
 /** @file
  * VMware SVGA device.
  *
@@ -155,9 +155,7 @@
 #include <VBox/bioslogo.h>
 
 #ifdef LOG_ENABLED
-RT_C_DECLS_BEGIN
 #include "svgadump/svga_dump.h"
-RT_C_DECLS_END
 #endif
 
 /* should go BEFORE any other DevVGA include to make all DevVGA.h config defines be visible */
