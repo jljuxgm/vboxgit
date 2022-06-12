@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 85772 2020-08-14 14:06:17Z vboxsync $ */
+/* $Id: UISession.cpp 88633 2021-04-21 12:43:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -507,6 +507,16 @@ void UISession::changeVisualState(UIVisualStateType visualStateType)
     m_pMachine->asyncChangeVisualState(visualStateType);
 }
 
+void UISession::setRequestedVisualState(UIVisualStateType visualStateType)
+{
+    m_pMachine->setRequestedVisualState(visualStateType);
+}
+
+UIVisualStateType UISession::requestedVisualState() const
+{
+    return m_pMachine->requestedVisualState();
+}
+
 bool UISession::setPause(bool fOn)
 {
     if (fOn)
@@ -941,7 +951,6 @@ UISession::UISession(UIMachine *pMachine)
     , m_machineStatePrevious(KMachineState_Null)
     , m_machineState(KMachineState_Null)
     , m_pMachineWindowIcon(0)
-    , m_requestedVisualStateType(UIVisualStateType_Invalid)
 #ifdef VBOX_WS_WIN
     , m_alphaCursor(0)
 #endif /* VBOX_WS_WIN */
