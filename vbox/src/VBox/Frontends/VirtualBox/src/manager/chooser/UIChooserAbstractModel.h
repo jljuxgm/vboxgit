@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.h 86795 2020-11-03 12:29:09Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.h 86802 2020-11-03 20:07:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class declaration.
  */
@@ -248,8 +248,6 @@ private:
         /** Prepares connections. */
         void prepareConnections();
 
-        /** Cleanups tasks. */
-        void cleanupTasks();
         /** Cleanups connections. */
         void cleanupConnections();
         /** Cleanups all. */

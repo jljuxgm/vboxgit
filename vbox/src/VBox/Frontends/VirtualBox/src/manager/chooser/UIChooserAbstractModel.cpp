@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.cpp 86796 2020-11-03 12:30:02Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.cpp 86802 2020-11-03 20:07:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class implementation.
  */
@@ -1003,12 +1003,6 @@ void UIChooserAbstractModel::prepareConnections()
             this, &UIChooserAbstractModel::sltHandleCloudProfileManagerCumulativeChange);
 }
 
-void UIChooserAbstractModel::cleanupTasks()
-{
-    foreach (UIProgressTaskReadCloudMachineList *pTask, findChildren<UIProgressTaskReadCloudMachineList*>())
-        delete pTask;
-}
-
 void UIChooserAbstractModel::cleanupConnections()
 {
     /* Cloud VM registration connections: */
@@ -1054,7 +1048,6 @@ void UIChooserAbstractModel::cleanupConnections()
 
 void UIChooserAbstractModel::cleanup()
 {
-    cleanupTasks();
     cleanupConnections();
 }
 
