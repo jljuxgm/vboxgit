@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-ogl.cpp 86576 2020-10-14 15:09:53Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-ogl.cpp 86809 2020-11-04 21:12:25Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -3465,6 +3465,27 @@ int vmsvga3dContextDefineOgl(PVGASTATECC pThisCC, uint32_t cid, uint32_t fFlags)
 /*
  * HW accelerated graphics output.
  */
+
+/**
+ * VMSVGA3d screen data.
+ *
+ * Allocated on the heap and pointed to by VMSVGASCREENOBJECT::pHwScreen.
+ */
+typedef struct VMSVGAHWSCREEN
+{
+    /* OpenGL context, which is used for the screen updates. */
+    GLXContext glxctx;
+
+    /* The overlay window. */
+    Window xwindow;
+
+    /* The RGBA texture which hold the screen content. */
+    GLuint idScreenTexture;
+
+    /* Read and draw framebuffer objects for copying a surface to the screen texture. */
+    GLuint idReadFramebuffer;
+    GLuint idDrawFramebuffer;
+} VMSVGAHWSCREEN;
 
 /* Send a notification to the UI. */
 #if 0 /* Unused */

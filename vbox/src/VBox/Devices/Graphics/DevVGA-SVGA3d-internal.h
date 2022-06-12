@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-internal.h 86576 2020-10-14 15:09:53Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-internal.h 86809 2020-11-04 21:12:25Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device - 3D part, internal header.
  */
@@ -1167,30 +1167,6 @@ static SSMFIELD const g_aVMSVGA3DSTATEFields[] =
     SSMFIELD_ENTRY_TERM()
 };
 #endif /* VMSVGA3D_INCL_STRUCTURE_DESCRIPTORS */
-
-/**
- * VMSVGA3d screen data.
- *
- * Allocated on the heap and pointed to by VMSVGASCREENOBJECT::pHwScreen.
- */
-typedef struct VMSVGAHWSCREEN
-{
-    uint32_t u32Reserved0;
-#if defined(RT_OS_LINUX)
-    /* OpenGL context, which is used for the screen updates. */
-    GLXContext glxctx;
-
-    /* The overlay window. */
-    Window xwindow;
-
-    /* The RGBA texture which hold the screen content. */
-    GLuint idScreenTexture;
-
-    /* Read and draw framebuffer objects for copying a surface to the screen texture. */
-    GLuint idReadFramebuffer;
-    GLuint idDrawFramebuffer;
-#endif
-} VMSVGAHWSCREEN;
 
 int vmsvga3dBackDefineScreen(PVGASTATE pThis, PVGASTATECC pThisCC, VMSVGASCREENOBJECT *pScreen);
 int vmsvga3dBackDestroyScreen(PVGASTATECC pThisCC, VMSVGASCREENOBJECT *pScreen);
