@@ -1,4 +1,4 @@
-/* $Id: PerformanceSolaris.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: PerformanceSolaris.cpp 88297 2021-03-26 12:29:59Z vboxsync $ */
 /** @file
  * VBox Solaris-specific Performance Classes implementation.
  */
@@ -335,9 +335,9 @@ uint32_t CollectorSolaris::getInstance(const char *pszIfaceName, char *pszDevNam
      * Get the instance number from the interface name, then clip it off.
      */
     int cbInstance = 0;
-    int cbIface = strlen(pszIfaceName);
+    size_t cbIface = strlen(pszIfaceName);
     const char *pszEnd = pszIfaceName + cbIface - 1;
-    for (int i = 0; i < cbIface - 1; i++)
+    for (size_t i = 0; i < cbIface - 1; i++)
     {
         if (!RT_C_IS_DIGIT(*pszEnd))
             break;
