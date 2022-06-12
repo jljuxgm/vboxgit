@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 88002 2021-03-08 11:28:46Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 88009 2021-03-08 12:35:54Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -2811,7 +2811,7 @@ static int ichac97R3StreamTransfer(PPDMDEVINS pDevIns, PAC97STATE pThis, PAC97ST
         return VINF_SUCCESS;
 
 #ifdef VBOX_STRICT
-    const unsigned cbFrame = DrvAudioHlpPCMPropsBytesPerFrame(&pStreamCC->State.Cfg.Props);
+    const unsigned cbFrame = DrvAudioHlpBytesPerFrame(&pStreamCC->State.Cfg.Props);
 #endif
 
     /* Make sure to only process an integer number of audio frames. */

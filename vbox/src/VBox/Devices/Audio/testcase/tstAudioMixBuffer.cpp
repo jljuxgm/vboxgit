@@ -1,4 +1,4 @@
-/* $Id: tstAudioMixBuffer.cpp 88007 2021-03-08 12:12:40Z vboxsync $ */
+/* $Id: tstAudioMixBuffer.cpp 88009 2021-03-08 12:35:54Z vboxsync $ */
 /** @file
  * Audio testcase - Mixing buffer.
  */
@@ -70,6 +70,13 @@ static void tstBasics(RTTEST hTest)
                       ("got %x, expected 4\n", PDMAUDIOPCMPROPS_F2B(&s_Cfg441StereoU16, 1)));
     RTTESTI_CHECK_MSG(PDMAUDIOPCMPROPS_F2B(&s_Cfg441StereoU32, 1) == 8,
                       ("got %x, expected 4\n", PDMAUDIOPCMPROPS_F2B(&s_Cfg441StereoU32, 1)));
+
+    RTTESTI_CHECK_MSG(DrvAudioHlpBytesPerFrame(&s_Cfg441StereoS16) == 4,
+                      ("got %x, expected 4\n", DrvAudioHlpBytesPerFrame(&s_Cfg441StereoS16)));
+    RTTESTI_CHECK_MSG(DrvAudioHlpBytesPerFrame(&s_Cfg441StereoU16) == 4,
+                      ("got %x, expected 4\n", DrvAudioHlpBytesPerFrame(&s_Cfg441StereoU16)));
+    RTTESTI_CHECK_MSG(DrvAudioHlpBytesPerFrame(&s_Cfg441StereoU32) == 8,
+                      ("got %x, expected 4\n", DrvAudioHlpBytesPerFrame(&s_Cfg441StereoU32)));
 
     uint32_t u32;
     for (uint32_t i = 0; i < 256; i += 8)
