@@ -1,4 +1,4 @@
-/* $Id: UIInformationRuntime.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIInformationRuntime.h 85891 2020-08-26 16:56:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationRuntime class declaration.
  */
@@ -34,6 +34,7 @@
 #include "QIWithRetranslateUI.h"
 
 /* Forward declarations: */
+class QAction;
 class QVBoxLayout;
 class UISession;
 class UIRuntimeInfoWidget;
@@ -65,6 +66,8 @@ private slots:
         void sltClipboardChange(KClipboardMode enmMode);
         void sltDnDModeChange(KDnDMode enmMode);
     /** @} */
+    void sltHandleTableContextMenuRequest(const QPoint &position);
+    void sltHandleCopyWholeTable();
 
 private:
 
@@ -77,6 +80,7 @@ private:
     /** Holds the instance of layout we create. */
     QVBoxLayout *m_pMainLayout;
     UIRuntimeInfoWidget *m_pRuntimeInfoWidget;
+    QAction *m_pCopyWholeTableAction;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_runtime_information_UIInformationRuntime_h */
