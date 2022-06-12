@@ -1,4 +1,4 @@
-/* $Id: RTPathFindCommon.cpp.h 85384 2020-07-18 21:17:43Z vboxsync $ */
+/* $Id: RTPathFindCommon.cpp.h 85385 2020-07-18 21:31:07Z vboxsync $ */
 /** @file
  * IPRT - RTPathFindCommon - Code Template.
  *
@@ -254,5 +254,4 @@ static size_t RTPATH_STYLE_FN(rtPathFindCommon)(size_t cPaths, const char **paps
         }
     }
 }
-
 
