@@ -1,4 +1,4 @@
-/* $Id: DBGCIoProvTcp.cpp 86329 2020-09-28 16:40:45Z vboxsync $ */
+/* $Id: DBGCIoProvTcp.cpp 86330 2020-09-28 16:49:52Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, TCP I/O provider.
  */
@@ -214,7 +214,7 @@ static DECLCALLBACK(int) dbgcIoProvTcpWaitForConnect(DBGCIOPROV hDbgcIoProv, RTM
 
 
 /**
- * @interface_method_impl{DBGCIOPROV,pfnWaitInterrupt}
+ * @interface_method_impl{DBGCIOPROVREG,pfnWaitInterrupt}
  */
 static DECLCALLBACK(int) dbgcIoProvTcpWaitInterrupt(DBGCIOPROV hDbgcIoProv)
 {
