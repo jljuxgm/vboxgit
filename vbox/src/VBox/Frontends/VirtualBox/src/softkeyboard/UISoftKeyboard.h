@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboard.h 88911 2021-05-06 17:46:09Z vboxsync $ */
+/* $Id: UISoftKeyboard.h 88912 2021-05-06 18:06:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class declaration.
  */
@@ -115,6 +115,7 @@ private:
     void loadSettings();
     void saveCustomColorTheme();
     void saveSelectedColorThemeName();
+    void saveCurrentLayout();
     void saveDialogGeometry();
     void configure();
     void updateStatusBarMessage(const QString &strLayoutName);
