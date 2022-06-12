@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 84595 2020-05-28 14:47:42Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 84861 2020-06-17 10:30:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -597,6 +597,8 @@ void UIVirtualBoxManager::sltOpenNewMachineWizard()
 
         /* Execute wizard: */
         pWizard->exec();
+
+
         delete pWizard;
     }
     /* For cloud machine: */

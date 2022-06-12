@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIWizardNewVM.h 84861 2020-06-17 10:30:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class declaration.
  */
@@ -40,7 +40,8 @@ public:
     {
         Page1,
         Page2,
-        Page3
+        Page3,
+        Page4
     };
 
     /* Page IDs: */
@@ -70,6 +71,11 @@ protected:
     /* Who will be able to create virtual-machine: */
     friend class UIWizardNewVMPageBasic3;
     friend class UIWizardNewVMPageExpert;
+
+    QString unattendedISOFilePath() const;
+    bool isUnattendedInstallEnabled() const;
+    bool startHeadless() const;
+
 
 private slots:
 

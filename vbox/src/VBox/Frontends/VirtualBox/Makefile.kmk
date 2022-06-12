@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 84790 2020-06-11 10:30:36Z vboxsync $
+# $Id: Makefile.kmk 84861 2020-06-17 10:30:14Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -680,6 +680,7 @@ VirtualBox_QT_MOCHDRS = \
 	src/wizards/newcloudvm/UIWizardNewCloudVMPageBasic2.h \
 	src/wizards/newcloudvm/UIWizardNewCloudVMPageExpert.h \
 	src/wizards/newvm/UIWizardNewVM.h \
+	src/wizards/newvm/UIWizardNewVMPageBasic0.h \
 	src/wizards/newvm/UIWizardNewVMPageBasic1.h \
 	src/wizards/newvm/UIWizardNewVMPageBasic2.h \
 	src/wizards/newvm/UIWizardNewVMPageBasic3.h \
@@ -1138,6 +1139,7 @@ VirtualBox_SOURCES = \
 	src/wizards/newcloudvm/UIWizardNewCloudVMPageBasic2.cpp \
 	src/wizards/newcloudvm/UIWizardNewCloudVMPageExpert.cpp \
 	src/wizards/newvm/UIWizardNewVM.cpp \
+	src/wizards/newvm/UIWizardNewVMPageBasic0.cpp \
 	src/wizards/newvm/UIWizardNewVMPageBasic1.cpp \
 	src/wizards/newvm/UIWizardNewVMPageBasic2.cpp \
 	src/wizards/newvm/UIWizardNewVMPageBasic3.cpp \
