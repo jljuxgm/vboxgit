@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.cpp 85662 2020-08-10 12:21:50Z vboxsync $ */
+/* $Id: UIActionPoolManager.cpp 85675 2020-08-10 16:14:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class implementation.
  */
@@ -2527,10 +2527,10 @@ protected:
         return QString("ToggleMediumSearch");
     }
 
-    /** Returns default shortcut. */
-    virtual QKeySequence defaultShortcut(UIActionPoolType) const /* override */
+    /** Returns standard shortcut. */
+    virtual QKeySequence standardShortcut(UIActionPoolType) const /* override */
     {
-        return QKeySequence("");
+        return QKeySequence(QKeySequence::Find);
     }
 
     /** Handles translation event. */
@@ -2572,6 +2572,12 @@ protected:
     virtual QKeySequence defaultShortcut(UIActionPoolType) const /* override */
     {
         return QKeySequence("Ctrl+Shift+F");
+    }
+
+    /** Returns standard shortcut. */
+    virtual QKeySequence standardShortcut(UIActionPoolType) const /* override */
+    {
+        return QKeySequence(QKeySequence::Refresh);
     }
 
     /** Handles translation event. */
@@ -2765,6 +2771,12 @@ protected:
     virtual QKeySequence defaultShortcut(UIActionPoolType) const /* override */
     {
         return QKeySequence("Ctrl+Shift+F");
+    }
+
+    /** Returns standard shortcut. */
+    virtual QKeySequence standardShortcut(UIActionPoolType) const /* override */
+    {
+        return QKeySequence(QKeySequence::Refresh);
     }
 
     /** Handles translation event. */
@@ -3045,6 +3057,12 @@ protected:
     virtual QKeySequence defaultShortcut(UIActionPoolType) const /* override */
     {
         return QKeySequence("Ctrl+Shift+H");
+    }
+
+    /** Returns standard shortcut. */
+    virtual QKeySequence standardShortcut(UIActionPoolType) const /* override */
+    {
+        return QKeySequence(QKeySequence::HelpContents);
     }
 
     /** Handles translation event. */
