@@ -1,4 +1,4 @@
-/* $Id: DevHDA.h 88194 2021-03-18 14:24:00Z vboxsync $ */
+/* $Id: DevHda.h 88228 2021-03-22 09:28:22Z vboxsync $ */
 /** @file
  * DevHDA.h - VBox Intel HD Audio Controller.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef VBOX_INCLUDED_SRC_Audio_DevHDA_h
-#define VBOX_INCLUDED_SRC_Audio_DevHDA_h
+#ifndef VBOX_INCLUDED_SRC_Audio_DevHda_h
+#define VBOX_INCLUDED_SRC_Audio_DevHda_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -27,9 +27,9 @@
 
 #include "AudioMixer.h"
 
-#include "HDACodec.h"
-#include "HDAStream.h"
-#include "HDAStreamMap.h"
+#include "DevHdaCodec.h"
+#include "DevHdaStream.h"
+#include "DevHdaStreamMap.h"
 
 #ifdef DEBUG_andy
 /** Enables strict mode, which checks for stuff which isn't supposed to happen.
@@ -268,5 +268,5 @@ typedef struct HDASTATER3
 typedef HDASTATER3 *PHDASTATER3;
 
 
-#endif /* !VBOX_INCLUDED_SRC_Audio_DevHDA_h */
+#endif /* !VBOX_INCLUDED_SRC_Audio_DevHda_h */
 

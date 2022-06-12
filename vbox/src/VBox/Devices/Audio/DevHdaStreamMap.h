@@ -1,4 +1,4 @@
-/* $Id: HDAStreamMap.h 88178 2021-03-18 09:10:17Z vboxsync $ */
+/* $Id: DevHdaStreamMap.h 88228 2021-03-22 09:28:22Z vboxsync $ */
 /** @file
  * HDAStreamMap.h - Stream map functions for HD Audio.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef VBOX_INCLUDED_SRC_Audio_HDAStreamMap_h
-#define VBOX_INCLUDED_SRC_Audio_HDAStreamMap_h
+#ifndef VBOX_INCLUDED_SRC_Audio_DevHdaStreamMap_h
+#define VBOX_INCLUDED_SRC_Audio_DevHdaStreamMap_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -84,5 +84,5 @@ void hdaR3StreamMapReset(PHDASTREAMMAP pMapping);
 #endif
 /** @} */
 
-#endif /* !VBOX_INCLUDED_SRC_Audio_HDAStreamMap_h */
+#endif /* !VBOX_INCLUDED_SRC_Audio_DevHdaStreamMap_h */
 

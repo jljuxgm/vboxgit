@@ -1,4 +1,4 @@
-/* $Id: HDAStreamChannel.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: DevHdaStreamChannel.h 88228 2021-03-22 09:28:22Z vboxsync $ */
 /** @file
  * HDAStreamChannel.h - Stream channel functions for HD Audio.
  */

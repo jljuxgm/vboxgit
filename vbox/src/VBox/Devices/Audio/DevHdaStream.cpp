@@ -1,4 +1,4 @@
-/* $Id: HDAStream.cpp 88196 2021-03-18 16:43:03Z vboxsync $ */
+/* $Id: DevHdaStream.cpp 88228 2021-03-22 09:28:22Z vboxsync $ */
 /** @file
  * HDAStream.cpp - Stream functions for HD Audio.
  */
@@ -32,8 +32,8 @@
 
 #include "DrvAudio.h"
 
-#include "DevHDA.h"
-#include "HDAStream.h"
+#include "DevHda.h"
+#include "DevHdaStream.h"
 
 #ifdef VBOX_WITH_DTRACE
 # include "dtrace/VBoxDD.h"

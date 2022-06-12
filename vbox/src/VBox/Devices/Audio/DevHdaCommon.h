@@ -1,4 +1,4 @@
-/* $Id: DevHDACommon.h 88170 2021-03-18 01:38:31Z vboxsync $ */
+/* $Id: DevHdaCommon.h 88228 2021-03-22 09:28:22Z vboxsync $ */
 /** @file
  * DevHDACommon.h - Shared HDA device defines / functions.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef VBOX_INCLUDED_SRC_Audio_DevHDACommon_h
-#define VBOX_INCLUDED_SRC_Audio_DevHDACommon_h
+#ifndef VBOX_INCLUDED_SRC_Audio_DevHdaCommon_h
+#define VBOX_INCLUDED_SRC_Audio_DevHdaCommon_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -613,5 +613,5 @@ void          hdaR3BDLEDumpAll(PPDMDEVINS pDevIns, PHDASTATE pThis, uint64_t u64
 #endif /* IN_RING3 */
 /** @} */
 
-#endif /* !VBOX_INCLUDED_SRC_Audio_DevHDACommon_h */
+#endif /* !VBOX_INCLUDED_SRC_Audio_DevHdaCommon_h */
 

@@ -1,4 +1,4 @@
-/* $Id: DevHDACommon.cpp 88170 2021-03-18 01:38:31Z vboxsync $ */
+/* $Id: DevHdaCommon.cpp 88228 2021-03-22 09:28:22Z vboxsync $ */
 /** @file
  * DevHDACommon.cpp - Shared HDA device functions.
  *
@@ -31,10 +31,9 @@
 
 #include "DrvAudio.h"
 
-#include "DevHDA.h"
-#include "DevHDACommon.h"
-
-#include "HDAStream.h"
+#include "DevHda.h"
+#include "DevHdaCommon.h"
+#include "DevHdaStream.h"
 
 
 /**

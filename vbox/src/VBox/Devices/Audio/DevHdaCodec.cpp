@@ -1,4 +1,4 @@
-/* $Id: HDACodec.cpp 88198 2021-03-18 18:04:31Z vboxsync $ */
+/* $Id: DevHdaCodec.cpp 88228 2021-03-22 09:28:22Z vboxsync $ */
 /** @file
  * HDACodec - VBox HD Audio Codec.
  *
@@ -39,9 +39,9 @@
 
 #include "VBoxDD.h"
 #include "DrvAudio.h"
-#include "HDACodec.h"
-#include "DevHDACommon.h"
 #include "AudioMixer.h"
+#include "DevHdaCodec.h"
+#include "DevHdaCommon.h"
 
 
 /*********************************************************************************************************************************
