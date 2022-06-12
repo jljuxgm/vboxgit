@@ -1,4 +1,4 @@
-/* $Id: vboxfs_vfs.c 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: vboxfs_vfs.c 88189 2021-03-18 11:07:36Z vboxsync $ */
 /** @file
  * VirtualBox File System for Solaris Guests, VFS implementation.
  */
@@ -240,6 +240,7 @@ sf_pn_get(char *rawpath, struct mounta *uap, char **outpath)
 	return (0);
 }
 
+#ifdef DEBUG_ramshankar
 static void
 sffs_print(sffs_data_t *sffs)
 {
@@ -256,6 +257,7 @@ sffs_print(sffs_data_t *sffs)
 	cmn_err(CE_NOTE, "    char *sf_mntpath = %s\n", sffs->sf_mntpath);
 	cmn_err(CE_NOTE, "    sfp_mount_t *sf_handle = 0x%p\n", sffs->sf_handle);
 }
+#endif
 
 static int
 sffs_mount(vfs_t *vfsp, vnode_t *mvp, struct mounta *uap, cred_t *cr)

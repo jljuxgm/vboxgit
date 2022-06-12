@@ -1,4 +1,4 @@
-/* $Id: thread-posix.cpp 86727 2020-10-28 10:14:40Z vboxsync $ */
+/* $Id: thread-posix.cpp 88189 2021-03-18 11:07:36Z vboxsync $ */
 /** @file
  * IPRT - Threads, POSIX.
  */
@@ -350,7 +350,9 @@ static void *rtThreadNativeMain(void *pvArgs)
 {
     PRTTHREADINT  pThread = (PRTTHREADINT)pvArgs;
     pthread_t     Self    = pthread_self();
+#if !defined(RT_OS_SOLARIS) /* On Solaris sizeof(pthread_t) = 4 and sizeof(NIL_RTNATIVETHREAD) = 8 */
     Assert((uintptr_t)Self != NIL_RTNATIVETHREAD);
+#endif
     Assert(Self == (pthread_t)(RTNATIVETHREAD)Self);
 
 #if defined(RT_OS_LINUX)

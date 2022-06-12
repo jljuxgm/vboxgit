@@ -1,4 +1,4 @@
-/* $Id: coredumper-solaris.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: coredumper-solaris.cpp 88189 2021-03-18 11:07:36Z vboxsync $ */
 /** @file
  * IPRT - Custom Core Dumper, Solaris.
  */
@@ -1502,7 +1502,7 @@ static int ElfWriteNoteSection(PRTSOLCORE pSolCore, RTSOLCORETYPE enmType)
 
 #ifdef RT_OS_SOLARIS
     typedef int (*PFNELFWRITENOTEHDR)(PRTSOLCORE pSolCore, uint_t, const void *pcv, size_t cb);
-    typedef struct ELFWRITENOTE
+    typedef struct
     {
         const char        *pszType;
         uint_t             Type;

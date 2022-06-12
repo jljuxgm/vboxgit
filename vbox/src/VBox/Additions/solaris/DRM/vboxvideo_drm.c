@@ -1,4 +1,4 @@
-/* $Id: vboxvideo_drm.c 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: vboxvideo_drm.c 88189 2021-03-18 11:07:36Z vboxsync $ */
 /** @file
  * vboxvideo_drm - Direct Rendering Module, Solaris Specific Code.
  */
@@ -126,9 +126,6 @@ static drm_driver_t	g_VBoxVideoSolarisDRMDriver = { 0 };
 /*********************************************************************************************************************************
 *   Global Variables                                                                                                             *
 *********************************************************************************************************************************/
-/** Device handle (we support only one instance). */
-static dev_info_t *g_pDip;
-
 /** Soft state. */
 static void *g_pVBoxVideoSolarisState;
 
