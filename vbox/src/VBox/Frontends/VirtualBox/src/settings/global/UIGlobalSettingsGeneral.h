@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsGeneral.h 86097 2020-09-11 14:38:13Z vboxsync $ */
+/* $Id: UIGlobalSettingsGeneral.h 86122 2020-09-14 17:06:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsGeneral class declaration.
  */
@@ -72,7 +72,7 @@ private:
     void cleanup();
 
     /** Saves existing data from cache. */
-    bool saveGeneralData();
+    bool saveData();
 
     /** Holds the page data cache instance. */
     UISettingsCacheGlobalGeneral *m_pCache;
