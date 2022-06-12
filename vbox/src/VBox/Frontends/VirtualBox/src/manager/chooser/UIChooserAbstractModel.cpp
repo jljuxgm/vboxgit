@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.cpp 86803 2020-11-03 20:10:42Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.cpp 86804 2020-11-03 20:16:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class implementation.
  */
@@ -722,23 +722,40 @@ void UIChooserAbstractModel::sltSnapshotChanged(const QUuid &uMachineId, const Q
 
 void UIChooserAbstractModel::sltHandleCloudProviderUninstall(const QUuid &uProviderId)
 {
-    /* We should stop cloud machine updates currently being performed: */
+    /* We should stop cloud entity updates currently being performed: */
     foreach (const UICloudEntityKey &key, m_cloudEntityKeysBeingUpdated)
     {
-        /* Skip unrelated keys: */
+        /* For profiles: */
         if (key.m_uMachineId.isNull())
-            continue;
+        {
+            /* Search task child by key: */
+            UIProgressTaskReadCloudMachineList *pTask = findChild<UIProgressTaskReadCloudMachineList*>(key.toString());
+            AssertPtrReturnVoid(pTask);
 
-        /* Search machine node: */
-        UIChooserNode *pNode = searchMachineNode(key.m_strProviderShortName, key.m_strProfileName, key.m_uMachineId);
-        AssertPtrReturnVoid(pNode);
-        /* Acquire cloud machine item: */
-        UIVirtualMachineItemCloud *pCloudMachineItem = pNode->toMachineNode()->cache()->toCloud();
-        AssertPtrReturnVoid(pCloudMachineItem);
+            /* Wait for cloud profile refresh task to complete,
+             * then delete the task itself manually: */
+            pTask->cancel();
+            delete pTask;
+        }
+        /* For machines: */
+        else
+        {
+            /* Search machine node: */
+            UIChooserNode *pNode = searchMachineNode(key.m_strProviderShortName, key.m_strProfileName, key.m_uMachineId);
+            AssertPtrReturnVoid(pNode);
+            /* Acquire cloud machine item: */
+            UIVirtualMachineItemCloud *pCloudMachineItem = pNode->toMachineNode()->cache()->toCloud();
+            AssertPtrReturnVoid(pCloudMachineItem);
 
-        /* Wait for cloud machine refresh task to complete: */
-        pCloudMachineItem->waitForAsyncInfoUpdateFinished();
+            /* Wait for cloud machine refresh task to complete,
+             * task itself will be deleted with the machine-node: */
+            pCloudMachineItem->waitForAsyncInfoUpdateFinished();
+        }
     }
+
+    /* We haven't let tasks to unregister themselves
+     * so we have to cleanup task set ourselves: */
+    m_cloudEntityKeysBeingUpdated.clear();
 
     /* Search and delete corresponding cloud provider node if present: */
     delete searchProviderNode(uProviderId);
@@ -942,6 +959,9 @@ void UIChooserAbstractModel::createReadCloudMachineListTask(const UICloudEntityK
                                                                                        fWithRefresh);
     if (pTask)
     {
+        /* It's easy to find child by name later: */
+        pTask->setObjectName(guiCloudProfileKey.toString());
+
         /* Insert cloud profile key into a list of keys currently being updated: */
         insertCloudEntityKey(guiCloudProfileKey);
 
