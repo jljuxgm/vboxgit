@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 84540 2020-05-26 15:06:13Z vboxsync $
+# $Id: Makefile.kmk 87466 2021-01-28 16:33:07Z vboxsync $
 ## @file
 # Sub-Makefile for the VMM testcases.
 #
@@ -583,6 +583,7 @@ $(VBOX_VMM_TESTCASE_OUT_DIR)/tstAsmStructsAsm.mac: \
 		$(DEPTH)/include/iprt/asmdefs.mac \
 		$(DEPTH)/include/VBox/vmm/cpum.mac \
 		$(DEPTH)/include/VBox/vmm/vm.mac \
+		$(DEPTH)/include/VBox/vmm/gvm.mac \
 		$(DEPTH)/include/VBox/sup.mac \
 		$(DEPTH)/include/iprt/x86.mac \
 		$(VBOX_PATH_VMM_SRC)/include/CPUMInternal.mac \

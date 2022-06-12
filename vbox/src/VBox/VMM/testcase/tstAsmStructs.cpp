@@ -1,4 +1,4 @@
-/* $Id: tstAsmStructs.cpp 87330 2021-01-20 19:02:24Z vboxsync $ */
+/* $Id: tstAsmStructs.cpp 87466 2021-01-28 16:33:07Z vboxsync $ */
 /** @file
  * Testcase for checking offsets in the assembly structures shared with C/C++.
  */
@@ -26,6 +26,8 @@
 #undef  IPRT_WITHOUT_NAMED_UNIONS_AND_STRUCTS /* probably not necessary */
 #include "VMMInternal.h"
 #include <VBox/vmm/vm.h>
+#define GVM_C_STYLE_STRUCTURES
+#include <VBox/vmm/gvm.h>
 #include <VBox/vmm/hm_vmx.h>
 
 #include "tstHelp.h"
@@ -34,6 +36,8 @@
 /* Hack for validating nested HMCPU structures. */
 typedef HMCPU::HMCPUUNION::HMCPUVMX HMCPUVMX;
 typedef HMCPU::HMCPUUNION::HMCPUSVM HMCPUSVM;
+typedef HMR0PERVCPU::HMR0CPUUNION::HMR0CPUVMX HMR0CPUVMX;
+typedef HMR0PERVCPU::HMR0CPUUNION::HMR0CPUSVM HMR0CPUSVM;
 
 /* For sup.mac simplifications. */
 #define SUPDRVTRACERUSRCTX32    SUPDRVTRACERUSRCTX
