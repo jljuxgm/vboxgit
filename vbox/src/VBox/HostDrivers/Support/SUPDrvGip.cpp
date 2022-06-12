@@ -1,4 +1,4 @@
-/* $Id: SUPDrvGip.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: SUPDrvGip.cpp 87700 2021-02-10 20:21:04Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code for GIP.
  */
@@ -142,6 +142,7 @@ static int                  supdrvTscMeasureDeltaOne(PSUPDRVDEVEXT pDevExt, uint
 *   Global Variables                                                                                                             *
 *********************************************************************************************************************************/
 DECLEXPORT(PSUPGLOBALINFOPAGE) g_pSUPGlobalInfoPage = NULL;
+SUPR0_EXPORT_SYMBOL(g_pSUPGlobalInfoPage);
 
 
 
@@ -750,6 +751,7 @@ SUPR0DECL(int) SUPR0GipMap(PSUPDRVSESSION pSession, PRTR3PTR ppGipR3, PRTHCPHYS 
 #endif
     return rc;
 }
+SUPR0_EXPORT_SYMBOL(SUPR0GipMap);
 
 
 /**
@@ -825,6 +827,7 @@ SUPR0DECL(int) SUPR0GipUnmap(PSUPDRVSESSION pSession)
 
     return rc;
 }
+SUPR0_EXPORT_SYMBOL(SUPR0GipUnmap);
 
 
 /**
@@ -4827,6 +4830,7 @@ SUPR0DECL(int) SUPR0TscDeltaMeasureBySetIndex(PSUPDRVSESSION pSession, uint32_t 
 
     return rc;
 }
+SUPR0_EXPORT_SYMBOL(SUPR0TscDeltaMeasureBySetIndex);
 
 
 /**

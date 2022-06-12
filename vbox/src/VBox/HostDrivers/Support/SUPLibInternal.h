@@ -1,4 +1,4 @@
-/* $Id: SUPLibInternal.h 87030 2020-12-02 10:46:49Z vboxsync $ */
+/* $Id: SUPLibInternal.h 87700 2021-02-10 20:21:04Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Internal header.
  */
@@ -340,6 +340,7 @@ typedef enum SUPR3HARDENEDMAINSTATE
 *******************************************************************************/
 extern DECL_HIDDEN_DATA(uint32_t)               g_u32Cookie;
 extern DECL_HIDDEN_DATA(uint32_t)               g_u32SessionCookie;
+extern DECL_HIDDEN_DATA(uint32_t)               g_uSupSessionVersion;
 extern DECL_HIDDEN_DATA(SUPLIBDATA)             g_supLibData;
 extern DECL_HIDDEN_DATA(uint32_t)               g_uSupFakeMode;
 extern DECL_HIDDEN_DATA(PSUPGLOBALINFOPAGE)     g_pSUPGlobalInfoPageR0;

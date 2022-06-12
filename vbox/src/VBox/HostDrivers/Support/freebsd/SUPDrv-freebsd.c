@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-freebsd.c 77107 2019-02-01 10:31:54Z vboxsync $ */
+/* $Id: SUPDrv-freebsd.c 87700 2021-02-10 20:21:04Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - FreeBSD specifics.
  */
@@ -598,6 +598,19 @@ int  VBOXCALL   supdrvOSLdrQuerySymbol(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pI
     return VERR_WRONG_ORDER;
 }
 
+
+void VBOXCALL   supdrvOSLdrRetainWrapperModule(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pImage)
+{
+    RT_NOREF(pDevExt, pImage);
+    AssertFailed();
+}
+
+
+void VBOXCALL   supdrvOSLdrReleaseWrapperModule(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pImage)
+{
+    RT_NOREF(pDevExt, pImage);
+    AssertFailed();
+}
 
 #ifdef SUPDRV_WITH_MSR_PROBER
 

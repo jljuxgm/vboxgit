@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-win.cpp 84497 2020-05-25 12:49:55Z vboxsync $ */
+/* $Id: SUPDrv-win.cpp 87700 2021-02-10 20:21:04Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Windows NT specifics.
  */
@@ -2430,6 +2430,20 @@ void VBOXCALL   supdrvOSLdrUnload(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pImage)
         pImage->pvNtSectionObj = NULL;
     }
     NOREF(pDevExt);
+}
+
+
+void VBOXCALL   supdrvOSLdrRetainWrapperModule(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pImage)
+{
+    RT_NOREF(pDevExt, pImage);
+    AssertFailed();
+}
+
+
+void VBOXCALL   supdrvOSLdrReleaseWrapperModule(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pImage)
+{
+    RT_NOREF(pDevExt, pImage);
+    AssertFailed();
 }
 
 

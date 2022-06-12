@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-solaris.c 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: SUPDrv-solaris.c 87700 2021-02-10 20:21:04Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Solaris specifics.
  */
@@ -1251,6 +1251,19 @@ int  VBOXCALL   supdrvOSLdrQuerySymbol(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pI
     return VERR_WRONG_ORDER;
 }
 
+
+void VBOXCALL   supdrvOSLdrRetainWrapperModule(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pImage)
+{
+    RT_NOREF(pDevExt, pImage);
+    AssertFailed();
+}
+
+
+void VBOXCALL   supdrvOSLdrReleaseWrapperModule(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pImage)
+{
+    RT_NOREF(pDevExt, pImage);
+    AssertFailed();
+}
 
 #ifdef SUPDRV_WITH_MSR_PROBER
 
