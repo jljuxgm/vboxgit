@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 86434 2020-10-02 21:33:45Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 86435 2020-10-02 21:36:12Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -457,7 +457,7 @@ void printUsage(USAGECATEGORY enmCommand, uint64_t fSubcommandScope, PRTSTREAM p
                      "  [--settingspw <pw>]       provide the settings password\n"
                      "  [--settingspwfile <file>] provide a file containing the settings password\n"
                      "  [@<response-file>]        load arguments from the given response file (bourne style)\n"
-                     "\n
+                     "\n"
                      "\n"
                      "Commands:\n"
                      "\n");
