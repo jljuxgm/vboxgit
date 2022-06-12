@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageExpert.h 88597 2021-04-20 08:02:57Z vboxsync $ */
+/* $Id: UIWizardNewVDPageExpert.h 88598 2021-04-20 08:16:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageExpert class declaration.
  */
@@ -23,7 +23,7 @@
 
 /* GUI includes: */
 #include "UIWizardNewVDPageFileType.h"
-#include "UIWizardNewVDPageBasic2.h"
+#include "UIWizardNewVDPageVariant.h"
 #include "UIWizardNewVDPageBasic3.h"
 
 /* Forward declarations: */
@@ -32,7 +32,7 @@ class QGroupBox;
 /* Expert page of the New Virtual Hard Drive wizard: */
 class SHARED_LIBRARY_STUFF UIWizardNewVDPageExpert : public UIWizardPage,
                                                      public UIWizardNewVDPageBaseFileType,
-                                                     public UIWizardNewVDPage2,
+                                                     public UIWizardNewVDPageBaseVariant,
                                                      public UIWizardNewVDPage3
 {
     Q_OBJECT;

@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageDisk.cpp 88597 2021-04-20 08:02:57Z vboxsync $ */
+/* $Id: UIWizardNewVMPageDisk.cpp 88598 2021-04-20 08:16:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageDisk class implementation.
  */
@@ -309,7 +309,7 @@ void UIWizardNewVMPageDisk::retranslateUi()
 
     UIWizardNewVMPageDiskBase::retranslateWidgets();
     UIWizardNewVDPageBaseFileType::retranslateWidgets();
-    UIWizardNewVDPage2::retranslateWidgets();
+    UIWizardNewVDPageBaseVariant::retranslateWidgets();
     UIWizardNewVDPage3::retranslateWidgets();
 }
 

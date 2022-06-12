@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.h 88597 2021-04-20 08:02:57Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.h 88598 2021-04-20 08:16:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class declaration.
  */
@@ -42,7 +42,7 @@ class UIWizardNewVMPageExpert : public UIWizardPage,
                                 public UIWizardNewVMPageHardwareBase,
                                 public UIWizardNewVMPageDiskBase,
                                 public UIWizardNewVDPageBaseFileType,
-                                public UIWizardNewVDPage2,
+                                public UIWizardNewVDPageBaseVariant,
                                 public UIWizardNewVDPage3
 {
 
