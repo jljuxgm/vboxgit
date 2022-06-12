@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.h 86570 2020-10-14 11:20:30Z vboxsync $ */
+/* $Id: UIChooserModel.h 86572 2020-10-14 11:29:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class declaration.
  */
@@ -261,14 +261,14 @@ protected slots:
     /** @name Main event handling stuff.
       * @{ */
         /** Handles local machine registering/unregistering for machine with certain @a uMachineId. */
-        virtual void sltLocalMachineRegistered(const QUuid &uMachineId, const bool fRegistered) /* override */;
+        virtual void sltLocalMachineRegistrationChanged(const QUuid &uMachineId, const bool fRegistered) /* override */;
         /** Handles cloud machine registering/unregistering for machine with certain @a uMachineId.
           * @param  strProviderShortName  Brings provider short name.
           * @param  strProfileName        Brings profile name. */
-        virtual void sltCloudMachineRegistered(const QString &strProviderShortName, const QString &strProfileName,
-                                               const QUuid &uMachineId, const bool fRegistered);
+        virtual void sltCloudMachineRegistrationChanged(const QString &strProviderShortName, const QString &strProfileName,
+                                                        const QUuid &uMachineId, const bool fRegistered) /* override */;
         /** Handles event about cloud provider with @a uProviderId being uninstalled. */
-        virtual void sltHandleCloudProviderUninstall(const QUuid &uProviderId);
+        virtual void sltHandleCloudProviderUninstall(const QUuid &uProviderId) /* override */;
     /** @} */
 
     /** @name Children stuff.
