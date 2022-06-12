@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: SUPDrv.cpp 84938 2020-06-25 09:40:23Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -85,7 +85,7 @@
  *      Log5    - Native yet-to-be-defined noise.
  *      Log6    - Native ioctl flow noise.
  *
- * Logging requires BUILD_TYPE=debug and possibly changes to the logger
+ * Logging requires KBUILD_TYPE=debug and possibly changes to the logger
  * instantiation in log-vbox.c(pp).
  */
 
