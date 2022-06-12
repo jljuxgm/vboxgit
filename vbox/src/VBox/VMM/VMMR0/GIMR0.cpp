@@ -1,4 +1,4 @@
-/* $Id: GIMR0.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: GIMR0.cpp 86121 2020-09-14 16:56:09Z vboxsync $ */
 /** @file
  * Guest Interface Manager (GIM) - Host Context Ring-0.
  */
@@ -44,9 +44,6 @@ VMMR0_INT_DECL(int) GIMR0InitVM(PVMCC pVM)
         case GIMPROVIDERID_HYPERV:
             return gimR0HvInitVM(pVM);
 
-        case GIMPROVIDERID_KVM:
-            return gimR0KvmInitVM(pVM);
-
         default:
             break;
     }
@@ -69,9 +66,6 @@ VMMR0_INT_DECL(int) GIMR0TermVM(PVMCC pVM)
     {
         case GIMPROVIDERID_HYPERV:
             return gimR0HvTermVM(pVM);
-
-        case GIMPROVIDERID_KVM:
-            return gimR0KvmTermVM(pVM);
 
         default:
             break;
