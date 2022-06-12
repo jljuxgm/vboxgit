@@ -1,4 +1,4 @@
-/* $Id: UIHelpViewer.h 88522 2021-04-15 11:24:13Z vboxsync $ */
+/* $Id: UIHelpViewer.h 88526 2021-04-15 11:42:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class declaration.
  */
@@ -91,11 +91,11 @@ protected:
 
 private slots:
 
-    void sltHandleOpenLinkInNewTab();
-    void sltHandleOpenLink();
-    void sltHandleCopyLink();
-    void sltHandleFindWidgetDrag(const QPoint &delta);
-    void sltHandleFindInPageSearchTextChange(const QString &strSearchText);
+    void sltOpenLinkInNewTab();
+    void sltOpenLink();
+    void sltCopyLink();
+    void sltFindWidgetDrag(const QPoint &delta);
+    void sltFindInPageSearchTextChange(const QString &strSearchText);
     void sltSelectPreviousMatch();
     void sltSelectNextMatch();
     void sltToggleFindInPageWidget(bool fVisible);
