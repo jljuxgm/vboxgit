@@ -1,4 +1,4 @@
-# $Id: routines.sh 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: routines.sh 88546 2021-04-15 14:05:33Z vboxsync $
 # Oracle VM VirtualBox
 # VirtualBox installer shell routines
 #
@@ -394,7 +394,7 @@ maybe_run_python_bindings_installer() {
 
     # Check for python2 only, because the generic package does not provide
     # any XPCOM bindings support for python3 since there is no standard ABI.
-    for p in python python2 python2.6 python 2.7; do
+    for p in python python2 python2.6 python2.7; do
         if [ "`$p -c 'import sys
 if sys.version_info >= (2, 6) and sys.version_info < (3, 0):
     print \"test\"' 2> /dev/null`" = "test" ]; then
