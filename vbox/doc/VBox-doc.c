@@ -1,4 +1,4 @@
-/* $Id: VBox-doc.c 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBox-doc.c 85607 2020-08-05 00:59:26Z vboxsync $ */
 /** @file
  * VirtualBox Top Level Documentation File.
  */
@@ -109,7 +109,7 @@
  *      - @ref pg_netflt
  *      - @ref pg_rawpci
  *  - Host Services.
- *      - @ref pg_hostclip Shared Clipboard.
+ *      - @ref pg_hostclip
  *      - Shared Folders.
  *      - @ref pg_svc_guest_properties
  *      - @ref pg_svc_guest_control
