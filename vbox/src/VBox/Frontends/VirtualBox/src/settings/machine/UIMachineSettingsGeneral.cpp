@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsGeneral.cpp 86772 2020-10-30 16:02:16Z vboxsync $ */
+/* $Id: UIMachineSettingsGeneral.cpp 87251 2021-01-14 16:20:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsGeneral class implementation.
  */
@@ -413,10 +413,9 @@ bool UIMachineSettingsGeneral::validate(QList<UIValidationMessage> &messages)
     AssertPtrReturn(m_pCheckBoxEncryption, false);
     if (m_pCheckBoxEncryption->isChecked())
     {
-#ifdef VBOX_WITH_EXTPACK
         /* Encryption Extension Pack presence test: */
-        const CExtPack extPack = uiCommon().virtualBox().GetExtensionPackManager().Find(GUI_ExtPackName);
-        if (extPack.isNull() || !extPack.GetUsable())
+        CExtPackManager extPackManager = uiCommon().virtualBox().GetExtensionPackManager();
+        if (!extPackManager.isNull() && !extPackManager.IsExtPackUsable(GUI_ExtPackName))
         {
             message.second << tr("You are trying to enable disk encryption for this virtual machine. "
                                  "However, this requires the <i>%1</i> to be installed. "
@@ -424,7 +423,6 @@ bool UIMachineSettingsGeneral::validate(QList<UIValidationMessage> &messages)
                                  .arg(GUI_ExtPackName);
             fPass = false;
         }
-#endif /* VBOX_WITH_EXTPACK */
 
         /* Cipher should be chosen if once changed: */
         AssertPtrReturn(m_pComboCipher, false);

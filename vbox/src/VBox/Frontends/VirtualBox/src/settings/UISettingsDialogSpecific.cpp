@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialogSpecific.cpp 86986 2020-11-26 14:22:34Z vboxsync $ */
+/* $Id: UISettingsDialogSpecific.cpp 87251 2021-01-14 16:20:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISettingsDialogSpecific class implementation.
  */
@@ -54,6 +54,7 @@
 #include "UIMachineSettingsUSB.h"
 
 /* COM includes: */
+#include "CExtPackManager.h"
 #include "CGraphicsAdapter.h"
 #include "CUSBController.h"
 
@@ -324,6 +325,8 @@ bool UISettingsDialogGlobal::isPageAvailable(int iPageId) const
 #endif
             break;
         }
+        case GlobalSettingsPageType_Extensions:
+            return !uiCommon().virtualBox().GetExtensionPackManager().isNull();
         default:
             break;
     }
