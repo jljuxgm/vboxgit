@@ -1,4 +1,4 @@
-/* $Id: DevIommuIntel.h 88327 2021-03-31 03:00:55Z vboxsync $ */
+/* $Id: DevIommuIntel.h 88332 2021-03-31 16:28:43Z vboxsync $ */
 /** @file
  * DevIommuIntel - I/O Memory Management Unit (Intel), header shared with the IOMMU, ACPI, chipset/firmware code.
  */
@@ -35,7 +35,8 @@
 #define VTD_ACPI_DMAR_FLAGS                         (ACPI_DMAR_F_INTR_REMAP | ACPI_DMAR_F_X2APIC_OPT_OUT)
 
 /** The MMIO base address of the DMAR unit (taken from real hardware). */
-#define VTD_MMIO_BASE_ADDR                          0xfed90000
-
+#define VTD_MMIO_BASE_PHYSADDR                      UINT64_C(0xfed90000)
+/** The size of the MMIO region (in bytes). */
+#define VTD_MMIO_SIZE                               4096
 
 #endif /* !VBOX_INCLUDED_SRC_Bus_DevIommuIntel_h */

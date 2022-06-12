@@ -1,4 +1,4 @@
-/* $Id: DevIommuIntel.cpp 88329 2021-03-31 07:02:46Z vboxsync $ */
+/* $Id: DevIommuIntel.cpp 88332 2021-03-31 16:28:43Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - Intel implementation.
  */
@@ -807,6 +807,24 @@ static DECLCALLBACK(int) iommuIntelR3Construct(PPDMDEVINS pDevIns, int iInstance
      * This must be done -after- registering it as a PCI device!
      */
 #endif
+
+    /** @todo VTD: Intercept PCI config space accesses for debugging. */
+#if 0
+    /*
+     * Intercept PCI config. space accesses.
+     */
+    rc = PDMDevHlpPCIInterceptConfigAccesses(pDevIns, pPciDev, ..);
+    AssertLogRelRCReturn(rc, rc);
+#endif
+
+    /*
+     * Register MMIO region.
+     */
+    AssertCompile(!(VTD_MMIO_BASE_PHYSADDR & X86_PAGE_4K_OFFSET_MASK));
+    rc = PDMDevHlpMmioCreateAndMap(pDevIns, VTD_MMIO_BASE_PHYSADDR, VTD_MMIO_SIZE, iommuIntelMmioWrite, iommuIntelMmioRead,
+                                   IOMMMIO_FLAGS_READ_DWORD_QWORD | IOMMMIO_FLAGS_WRITE_DWORD_QWORD_ZEROED,
+                                   "Intel-IOMMU", &pThis->hMmio);
+    AssertRCReturn(rc, rc);
 
     return VERR_NOT_IMPLEMENTED;
 }
