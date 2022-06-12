@@ -1,4 +1,4 @@
-/* $Id: DrvHostPulseAudio.cpp 85570 2020-07-30 20:26:54Z vboxsync $ */
+/* $Id: DrvHostPulseAudio.cpp 87979 2021-03-05 16:48:14Z vboxsync $ */
 /** @file
  * VBox audio devices: Pulse Audio audio driver.
  */
@@ -637,7 +637,7 @@ static int paStreamOpen(PDRVHOSTPULSEAUDIO pThis, PPULSEAUDIOSTREAM pStreamPA, b
 
         pa_threaded_mainloop_unlock(pThis->pMainLoop);
         LogFlowFuncLeaveRC(VINF_SUCCESS);
-        return rc;
+        return VINF_SUCCESS;
 
     } while (0);
 
