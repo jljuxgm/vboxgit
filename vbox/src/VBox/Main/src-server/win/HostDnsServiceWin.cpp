@@ -1,4 +1,4 @@
-/* $Id: HostDnsServiceWin.cpp 87578 2021-02-03 15:43:22Z vboxsync $ */
+/* $Id: HostDnsServiceWin.cpp 87588 2021-02-03 17:14:01Z vboxsync $ */
 /** @file
  * Host DNS listener for Windows.
  */
@@ -56,7 +56,7 @@ DECLINLINE(int) registerNotification(const HKEY &hKey, HANDLE &hEvent)
     return VINF_SUCCESS;
 }
 
-static void appendTokenizedStrings(std::vector<std::string> &vecStrings, const std::string &strToAppend, char chDelim /* = ' ' */)
+static void appendTokenizedStrings(std::vector<std::string> &vecStrings, const std::string &strToAppend, char chDelim = ' ')
 {
     if (strToAppend.empty())
         return;
