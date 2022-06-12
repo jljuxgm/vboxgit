@@ -1,4 +1,4 @@
-/* $Id: HDACodec.cpp 87806 2021-02-19 12:05:16Z vboxsync $ */
+/* $Id: HDACodec.cpp 87807 2021-02-19 12:17:59Z vboxsync $ */
 /** @file
  * HDACodec - VBox HD Audio Codec.
  *
@@ -916,11 +916,14 @@ DECLINLINE(void) hdaCodecSetRegisterU8(uint32_t *pu32Reg, uint32_t u32Cmd, uint8
     hdaCodecSetRegister(pu32Reg, u32Cmd, u8Offset, CODEC_VERB_8BIT_DATA);
 }
 
+#ifdef IN_RING0
+
 DECLINLINE(void) hdaCodecSetRegisterU16(uint32_t *pu32Reg, uint32_t u32Cmd, uint8_t u8Offset)
 {
     hdaCodecSetRegister(pu32Reg, u32Cmd, u8Offset, CODEC_VERB_16BIT_DATA);
 }
 
+#endif
 
 /*
  * Verb processor functions.
