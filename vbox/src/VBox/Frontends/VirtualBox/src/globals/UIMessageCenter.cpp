@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 88100 2021-03-12 13:17:47Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 88208 2021-03-19 17:41:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -369,12 +369,13 @@ bool UIMessageCenter::showModalProgressDialog(CProgress &progress,
 
     /* Gather suitable dialog parent: */
     QWidget *pDlgParent = windowManager().realParentWindow(pParent ? pParent : windowManager().mainWindowShown());
-    AssertPtrReturn(pDlgParent, fRc);
 
     /* Prepare pixmap: */
     QPixmap pixmap;
     if (!strImage.isEmpty())
-        pixmap = UIIconPool::iconSet(strImage).pixmap(pDlgParent->windowHandle(), QSize(90, 90));
+        pixmap = pDlgParent
+               ? UIIconPool::iconSet(strImage).pixmap(pDlgParent->windowHandle(), QSize(90, 90))
+               : UIIconPool::iconSet(strImage).pixmap(QSize(90, 90));
 
     /* Create progress-dialog: */
     QPointer<UIProgressDialog> pProgressDlg = new UIProgressDialog(progress, strTitle, &pixmap, cMinDuration, pDlgParent);
