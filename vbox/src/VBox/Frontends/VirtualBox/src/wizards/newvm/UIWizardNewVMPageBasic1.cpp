@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic1.cpp 87629 2021-02-05 17:37:10Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic1.cpp 87782 2021-02-17 14:11:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic1 class implementation.
  */
@@ -354,7 +354,7 @@ void UIWizardNewVMPage1::markWidgets() const
     if (m_pNameAndSystemEditor)
         m_pNameAndSystemEditor->markNameLineEdit(m_pNameAndSystemEditor->name().isEmpty());
     if (m_pISOFilePathSelector)
-        m_pISOFilePathSelector->mark(!checkISOFile());
+        m_pISOFilePathSelector->mark(!checkISOFile(), UIWizardNewVM::tr("Invalid file path or unreadable file"));
 }
 
 void UIWizardNewVMPage1::retranslateWidgets()
