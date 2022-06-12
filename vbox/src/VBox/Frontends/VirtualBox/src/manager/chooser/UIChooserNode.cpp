@@ -1,4 +1,4 @@
-/* $Id: UIChooserNode.cpp 83063 2020-02-12 19:10:32Z vboxsync $ */
+/* $Id: UIChooserNode.cpp 84583 2020-05-28 11:43:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserNode class definition.
  */
@@ -81,5 +81,5 @@ void UIChooserNode::setDisabled(bool fDisabled)
         return;
     m_fDisabled = fDisabled;
     if (m_pItem)
-        m_pItem->disableEnableItem(m_fDisabled);
+        m_pItem->setDisabledEffect(m_fDisabled);
 }
