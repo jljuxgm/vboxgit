@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemMachine.h 86769 2020-10-30 12:27:58Z vboxsync $ */
+/* $Id: UIChooserItemMachine.h 89137 2021-05-18 12:36:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemMachine class declaration.
  */
@@ -242,11 +242,11 @@ private:
     /** @name Painting stuff.
       * @{ */
         /** Paints background using specified @a pPainter and certain @a rectangle. */
-        void paintBackground(QPainter *pPainter, const QRect &rectangle) const;
+        void paintBackground(QPainter *pPainter, const QRect &rectangle);
         /** Paints frame using specified @a pPainter and certain @a rectangle. */
-        void paintFrame(QPainter *pPainter, const QRect &rectangle) const;
+        void paintFrame(QPainter *pPainter, const QRect &rectangle);
         /** Paints machine info using specified @a pPainter and certain @a rectangle. */
-        void paintMachineInfo(QPainter *pPainter, const QRect &rectangle) const;
+        void paintMachineInfo(QPainter *pPainter, const QRect &rectangle);
     /** @} */
 
     /** @name Navigation stuff.
