@@ -1,4 +1,4 @@
-# $Id: Config.kmk 84144 2020-05-05 10:46:12Z vboxsync $
+# $Id: Config.kmk 84679 2020-06-04 13:38:15Z vboxsync $
 ## @file
 # kBuild Configuration file for the manual.
 #
@@ -42,6 +42,7 @@ VBOX_MANUAL_XML_REFENTRY_FILES := \
 	man_VBoxManage-debugvm.xml \
 	man_VBoxManage-extpack.xml \
 	man_VBoxManage-unattended.xml \
+	man_VBoxManage-cloud.xml \
 	man_VBoxManage-cloudprofile.xml \
 	man_VBoxManage-cloudlist.xml \
 	man_VBoxManage-cloudinstance.xml \
