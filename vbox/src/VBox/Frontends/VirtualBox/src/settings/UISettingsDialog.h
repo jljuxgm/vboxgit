@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialog.h 85881 2020-08-24 18:48:40Z vboxsync $ */
+/* $Id: UISettingsDialog.h 86081 2020-09-10 11:41:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISettingsDialog class declaration.
  */
@@ -90,8 +90,8 @@ protected:
     virtual bool eventFilter(QObject *pObject, QEvent *pEvent) /* override */;
     /** Handles translation event. */
     virtual void retranslateUi() /* override */;
-    /** Handles show @a pEvent. */
-    virtual void showEvent(QShowEvent *pEvent) /* override */;
+    /** Handles first show @a pEvent. */
+    virtual void polishEvent(QShowEvent *pEvent) /* override */;
 
     /** Returns the serialize process instance. */
     UISettingsSerializer *serializeProcess() const { return m_pSerializeProcess; }
@@ -168,9 +168,6 @@ private:
     void prepareWidgets();
     /** Assigns validater for passed @a pPage. */
     void assignValidator(UISettingsPage *pPage);
-
-    /** Holds whether the dialog is polished. */
-    bool  m_fPolished;
 
     /** Holds configuration access level. */
     ConfigurationAccessLevel  m_enmConfigurationAccessLevel;

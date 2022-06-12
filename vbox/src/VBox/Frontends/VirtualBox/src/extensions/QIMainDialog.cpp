@@ -1,4 +1,4 @@
-/* $Id: QIMainDialog.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: QIMainDialog.cpp 86081 2020-09-10 11:41:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIMainDialog class implementation.
  */
@@ -217,8 +217,12 @@ bool QIMainDialog::event(QEvent *pEvent)
 
 void QIMainDialog::showEvent(QShowEvent *pEvent)
 {
-    /* Call to polish-event: */
-    polishEvent(pEvent);
+    /* Polish dialog if necessary: */
+    if (!m_fPolished)
+    {
+        polishEvent(pEvent);
+        m_fPolished = true;
+    }
 
     /* Call to base-class: */
     QMainWindow::showEvent(pEvent);
@@ -226,16 +230,9 @@ void QIMainDialog::showEvent(QShowEvent *pEvent)
 
 void QIMainDialog::polishEvent(QShowEvent *)
 {
-    /* Make sure we should polish dialog: */
-    if (m_fPolished)
-        return;
-
     /* Explicit centering according to our parent: */
     if (m_fIsAutoCentering)
         UICommon::centerWidget(this, parentWidget(), false);
-
-    /* Mark dialog as polished: */
-    m_fPolished = true;
 }
 
 void QIMainDialog::resizeEvent(QResizeEvent *pEvent)
