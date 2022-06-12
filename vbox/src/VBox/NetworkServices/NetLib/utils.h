@@ -1,4 +1,4 @@
-/* $Id: utils.h 87695 2021-02-10 17:10:05Z vboxsync $ */
+/* $Id: utils.h 87696 2021-02-10 17:10:58Z vboxsync $ */
 /** @file
  * ComHostUtils.cpp
  */
@@ -36,14 +36,6 @@ typedef com::SafeArray<BSTR> ComBstrArray;
 
 typedef std::vector<RTNETADDRIPV4> AddressList;
 typedef std::map<RTNETADDRIPV4, int> AddressToOffsetMapping;
-
-
-inline RTNETADDRIPV4 networkid(const RTNETADDRIPV4& addr, const RTNETADDRIPV4& netmask)
-{
-    RTNETADDRIPV4 netid;
-    netid.u = addr.u & netmask.u;
-    return netid;
-}
 
 
 int localMappings(const ComNatPtr&, AddressToOffsetMapping&);
