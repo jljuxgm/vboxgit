@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 87835 2021-02-22 16:29:40Z vboxsync $ */
+/* $Id: DevHDA.cpp 87852 2021-02-23 17:45:39Z vboxsync $ */
 /** @file
  * DevHDA.cpp - VBox Intel HD Audio Controller.
  *
@@ -4992,7 +4992,10 @@ static DECLCALLBACK(int) hdaR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFGM
     /*
      * Create the mixer.
      */
-    rc = AudioMixerCreate("HDA Mixer", 0 /* uFlags */, &pThisCC->pMixer);
+    uint32_t fMixer = AUDMIXER_FLAGS_NONE;
+    if (pThisCC->Dbg.fEnabled)
+        fMixer |= AUDMIXER_FLAGS_DEBUG;
+    rc = AudioMixerCreate("HDA Mixer", fMixer, &pThisCC->pMixer);
     AssertRCReturn(rc, rc);
 
     /*

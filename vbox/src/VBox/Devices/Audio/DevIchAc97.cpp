@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 87767 2021-02-16 16:41:18Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 87852 2021-02-23 17:45:39Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -4302,8 +4302,13 @@ static DECLCALLBACK(int) ichac97R3Construct(PPDMDEVINS pDevIns, int iInstance, P
             AssertLogRelMsgReturn(RT_SUCCESS(rc),  ("LUN#%u: rc=%Rrc\n", iLun, rc), rc);
     }
 
+    uint32_t fMixer = AUDMIXER_FLAGS_NONE;
+    if (pThisCC->Dbg.fEnabled)
+        fMixer |= AUDMIXER_FLAGS_DEBUG;
+
     rc = AudioMixerCreate("AC'97 Mixer", 0 /* uFlags */, &pThisCC->pMixer);
     AssertRCReturn(rc, rc);
+
     rc = AudioMixerCreateSink(pThisCC->pMixer, "[Recording] Line In", AUDMIXSINKDIR_INPUT, &pThisCC->pSinkLineIn);
     AssertRCReturn(rc, rc);
     rc = AudioMixerCreateSink(pThisCC->pMixer, "[Recording] Microphone In", AUDMIXSINKDIR_INPUT, &pThisCC->pSinkMicIn);
