@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.cpp 86678 2020-10-22 19:06:17Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.cpp 86708 2020-10-26 14:25:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class implementation.
  */
@@ -849,6 +849,15 @@ void UIChooserAbstractModel::sltHandleCloudListMachinesTaskComplete(UITask *pTas
     /* Add registered cloud VM nodes: */
     if (!registeredMachines.isEmpty())
         sltCloudMachinesRegistered(strProviderShortName, strProfileName, registeredMachines);
+    /* If we changed nothing and have nothing currently: */
+    if (unregisteredIDs.isEmpty() && newIDs.isEmpty())
+    {
+        /* We should update at least fake cloud machine node: */
+        UIChooserNode *pFakeNode = searchFakeNode(pProfileNode);
+        AssertPtrReturnVoid(pFakeNode);
+        pFakeNode->toMachineNode()->cache()->toCloud()->setFakeCloudItemState(UIFakeCloudVirtualMachineItemState_Done);
+        pFakeNode->item()->updateItem();
+    }
 
     /* Remove cloud account key from the list of keys currently being updated: */
     const UICloudAccountKey accountKey = qMakePair(strProviderShortName, strProfileName);
