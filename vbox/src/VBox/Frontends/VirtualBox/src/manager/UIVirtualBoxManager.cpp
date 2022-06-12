@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 88650 2021-04-22 11:50:56Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 88752 2021-04-28 16:39:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -2168,6 +2168,12 @@ void UIVirtualBoxManager::prepare()
     prepareStatusBar();
     prepareWidgets();
     prepareConnections();
+
+    // WORKAROUND:
+    // These menus are dynamical since local and cloud VMs have different menu contents.
+    // Yet .. we have to prepare Machine/Group menus beforehand, they contains shortcuts.
+    updateMenuGroup(actionPool()->action(UIActionIndexMN_M_Group)->menu());
+    updateMenuMachine(actionPool()->action(UIActionIndexMN_M_Machine)->menu());
 
     /* Update actions initially: */
     updateActionsVisibility();
