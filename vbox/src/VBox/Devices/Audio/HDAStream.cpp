@@ -1,4 +1,4 @@
-/* $Id: HDAStream.cpp 88170 2021-03-18 01:38:31Z vboxsync $ */
+/* $Id: HDAStream.cpp 88171 2021-03-18 01:43:19Z vboxsync $ */
 /** @file
  * HDAStream.cpp - Stream functions for HD Audio.
  */
@@ -1047,19 +1047,6 @@ static uint32_t hdaR3StreamGetFree(PHDASTREAMR3 pStreamR3)
     if (pStreamR3->State.pCircBuf)
         return (uint32_t)RTCircBufFree(pStreamR3->State.pCircBuf);
     return 0;
-}
-
-/**
- * Converts frame count to wall clock ticks (WALCLK).
- *
- * @returns Wall clock ticks.
- * @param   pStream     The stream to do the conversion for.
- * @param   cFrames     Number of audio frames.
- */
-DECLINLINE(uint64_t) hdaR3StreamFramesToWalClk(PHDASTREAM pStreamShared, uint32_t cFrames)
-{
-    const uint32_t uHz = RT_MAX(pStreamShared->State.Cfg.Props.uHz, 1 /* prevent div/0 */);
-    return ASMMultU32ByU32DivByU32(cFrames, 24000000 /* 24 MHz wall clock (WALCLK). */ , uHz);
 }
 
 /**
