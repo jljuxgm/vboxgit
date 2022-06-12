@@ -1,4 +1,4 @@
-/* $Id: HMVMXAll.cpp 87563 2021-02-03 13:23:13Z vboxsync $ */
+/* $Id: HMVMXAll.cpp 87921 2021-03-02 18:30:29Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - All contexts.
  */
@@ -582,6 +582,7 @@ VMM_INT_DECL(bool) HMIsSubjectToVmxPreemptTimerErratum(void)
         || u == 0x000106A5 /* 321333.pdf - AAM126 - D0 - Xeon Processor 3500 Series Specification */
                            /* 321324.pdf - AAK139 - D0 - Xeon Processor 5500 Series Specification */
                            /* 320836.pdf - AAJ124 - D0 - Core i7-900 Desktop Processor Extreme Edition Series and Intel Core i7-900 Desktop Processor Series */
+        || u == 0x000306A8 /* ?????????? - ?????? - ?? - Xeon E3-1220 v2 */
         )
         return true;
     return false;
