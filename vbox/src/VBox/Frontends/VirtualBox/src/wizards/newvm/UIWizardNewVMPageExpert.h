@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.h 88001 2021-03-08 10:50:59Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.h 88014 2021-03-08 12:52:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class declaration.
  */
@@ -90,7 +90,7 @@ private slots:
     void sltNameChanged(const QString &strNewText);
     void sltPathChanged(const QString &strNewPath);
     void sltOsTypeChanged();
-    void sltVirtualDiskSourceChanged();
+    void sltMediaComboBoxIndexChanged();
     void sltGetWithFileOpenDialog();
     void sltISOPathChanged(const QString &strPath);
     void sltGAISOPathChanged(const QString &strPath);
@@ -99,7 +99,6 @@ private slots:
     void sltValueModified();
     void sltMediumFormatChanged();
     void sltMediumSizeChanged();
-    void sltMediaComboBoxIndexChanged();
     void sltSelectedDiskSourceChanged();
 
 private:

@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic4.cpp 88001 2021-03-08 10:50:59Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic4.cpp 88014 2021-03-08 12:52:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic4 class implementation.
  */
@@ -64,16 +64,13 @@ void UIWizardNewVMPage4::setSelectedDiskSource(SelectedDiskSource enmSelectedDis
 
 void UIWizardNewVMPage4::getWithFileOpenDialog()
 {
-    /* Get opened medium id: */
     QUuid uMediumId;
-
     int returnCode = uiCommon().openMediumSelectorDialog(thisImp(), UIMediumDeviceType_HardDisk,
                                                            uMediumId,
                                                            fieldImp("machineFolder").toString(),
                                                            fieldImp("machineBaseName").toString(),
                                                            fieldImp("type").value<CGuestOSType>().GetId(),
                                                            false /* don't show/enable the create action: */);
-
     if (returnCode == static_cast<int>(UIMediumSelector::ReturnCode_Accepted) && !uMediumId.isNull())
     {
         m_pDiskSelector->setCurrentItem(uMediumId);
@@ -276,7 +273,6 @@ void UIWizardNewVMPageBasic4::sltMediaComboBoxIndexChanged()
 
 void UIWizardNewVMPageBasic4::sltGetWithFileOpenDialog()
 {
-    /* Call to base-class: */
     getWithFileOpenDialog();
 }
 
