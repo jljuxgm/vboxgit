@@ -1,4 +1,4 @@
-/* $Id: vbox_main.c 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: vbox_main.c 85649 2020-08-08 13:35:48Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -605,7 +605,8 @@ int vbox_dumb_destroy(struct drm_file *file,
 }
 #endif
 
-#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 19, 0) && !defined(OPENSUSE_151) && !defined(RHEL_77) && !defined(RHEL_81)
+#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 19, 0) && !defined(OPENSUSE_151) && !defined(OPENSUSE_125) \
+  && !defined(RHEL_77) && !defined(RHEL_81)
 static void ttm_bo_put(struct ttm_buffer_object *bo)
 {
 	ttm_bo_unref(&bo);

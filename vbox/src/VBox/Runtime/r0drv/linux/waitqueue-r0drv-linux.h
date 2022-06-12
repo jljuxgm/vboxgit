@@ -1,4 +1,4 @@
-/* $Id: waitqueue-r0drv-linux.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: waitqueue-r0drv-linux.h 85649 2020-08-08 13:35:48Z vboxsync $ */
 /** @file
  * IPRT - Linux Ring-0 Driver Helpers for Abstracting Wait Queues,
  */
@@ -49,7 +49,7 @@ typedef struct RTR0SEMLNXWAIT
 {
     /** The wait queue entry. */
 #if LINUX_VERSION_CODE > KERNEL_VERSION(4, 13, 0) \
-  || defined(CONFIG_SUSE_VERSION) && CONFIG_SUSE_VERSION == 12 && CONFIG_SUSE_PATCHLEVEL == 4 \
+  || defined(CONFIG_SUSE_VERSION) && CONFIG_SUSE_VERSION == 12 && CONFIG_SUSE_PATCHLEVEL >= 4 \
   || defined(CONFIG_SUSE_VERSION) && CONFIG_SUSE_VERSION == 15
     wait_queue_entry_t WaitQE;
 #else

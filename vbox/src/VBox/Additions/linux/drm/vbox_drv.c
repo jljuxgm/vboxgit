@@ -1,4 +1,4 @@
-/*  $Id: vbox_drv.c 83109 2020-02-18 15:31:10Z vboxsync $ */
+/*  $Id: vbox_drv.c 85649 2020-08-08 13:35:48Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -326,7 +326,7 @@ static struct drm_driver driver = {
 	.master_drop = vbox_master_drop,
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 18, 0) || defined(RHEL_72)
 # if LINUX_VERSION_CODE < KERNEL_VERSION(4, 14, 0) && !defined(RHEL_75) \
-  && !defined(OPENSUSE_151)
+  && !defined(OPENSUSE_151) && !defined(OPENSUSE_125)
 	.set_busid = drm_pci_set_busid,
 # endif
 #endif

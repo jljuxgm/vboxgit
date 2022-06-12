@@ -1,4 +1,4 @@
-/* $Id: vbox_mode.c 83073 2020-02-14 11:35:05Z vboxsync $ */
+/* $Id: vbox_mode.c 85649 2020-08-08 13:35:48Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -547,7 +547,8 @@ static void vbox_set_edid(struct drm_connector *connector, int width,
 	for (i = 0; i < EDID_SIZE - 1; ++i)
 		sum += edid[i];
 	edid[EDID_SIZE - 1] = (0x100 - (sum & 0xFF)) & 0xFF;
-#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 19, 0) || defined(OPENSUSE_151) || defined(RHEL_77) || defined(RHEL_81)
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 19, 0) || defined(OPENSUSE_151) || defined(OPENSUSE_125) \
+  || defined(RHEL_77) || defined(RHEL_81)
 	drm_connector_update_edid_property(connector, (struct edid *)edid);
 #else
 	drm_mode_connector_update_edid_property(connector, (struct edid *)edid);
@@ -722,7 +723,8 @@ static int vbox_connector_init(struct drm_device *dev,
 	drm_connector_register(connector);
 #endif
 
-#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 19, 0) || defined(OPENSUSE_151) || defined(RHEL_77) || defined(RHEL_81)
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 19, 0) || defined(OPENSUSE_151) || defined(OPENSUSE_125) \
+  || defined(RHEL_77) || defined(RHEL_81)
 	drm_connector_attach_encoder(connector, encoder);
 #else
 	drm_mode_connector_attach_encoder(connector, encoder);

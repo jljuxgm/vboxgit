@@ -1,4 +1,4 @@
-/* $Id: vbox_drv.h 84255 2020-05-11 14:32:23Z vboxsync $ */
+/* $Id: vbox_drv.h 85649 2020-08-08 13:35:48Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -89,6 +89,9 @@
 #if defined(CONFIG_SUSE_VERSION)
 # if CONFIG_SUSE_VERSION == 15 && CONFIG_SUSE_PATCHLEVEL == 1
 #  define OPENSUSE_151
+# endif
+# if CONFIG_SUSE_VERSION == 12 && CONFIG_SUSE_PATCHLEVEL >= 5
+#  define OPENSUSE_125
 # endif
 #endif
 
