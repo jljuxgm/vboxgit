@@ -1,4 +1,4 @@
-/* $Id: tarvfs.cpp 84192 2020-05-07 20:56:01Z vboxsync $ */
+/* $Id: tarvfs.cpp 85126 2020-07-08 23:04:57Z vboxsync $ */
 /** @file
  * IPRT - TAR Virtual Filesystem, Reader.
  */
@@ -1110,7 +1110,7 @@ static DECLCALLBACK(int) rtZipTarFss_QueryInfo(void *pvThis, PRTFSOBJINFO pObjIn
 /**
  * @interface_method_impl{RTVFSFSSTREAMOPS,pfnNext}
  */
-DECLHIDDEN(DECLCALLBACK(int)) rtZipTarFss_Next(void *pvThis, char **ppszName, RTVFSOBJTYPE *penmType, PRTVFSOBJ phVfsObj)
+DECL_HIDDEN_CALLBACK(int) rtZipTarFss_Next(void *pvThis, char **ppszName, RTVFSOBJTYPE *penmType, PRTVFSOBJ phVfsObj)
 {
     PRTZIPTARFSSTREAM pThis = (PRTZIPTARFSSTREAM)pvThis;
 

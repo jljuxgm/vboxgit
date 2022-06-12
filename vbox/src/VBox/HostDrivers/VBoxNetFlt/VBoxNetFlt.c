@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt.c 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxNetFlt.c 85126 2020-07-08 23:04:57Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Common Code.
  */
@@ -770,7 +770,7 @@ static DECLCALLBACK(void) vboxNetFltPortRelease(PINTNETTRUNKIFPORT pIfPort)
 /**
  * @callback_method_impl{FNINTNETTRUNKIFPORTRELEASEBUSY}
  */
-DECLHIDDEN(DECLCALLBACK(void)) vboxNetFltPortReleaseBusy(PINTNETTRUNKIFPORT pIfPort)
+DECL_HIDDEN_CALLBACK(void) vboxNetFltPortReleaseBusy(PINTNETTRUNKIFPORT pIfPort)
 {
     PVBOXNETFLTINS pThis = IFPORT_2_VBOXNETFLTINS(pIfPort);
     vboxNetFltRelease(pThis, true /*fBusy*/);
