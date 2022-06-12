@@ -1,4 +1,4 @@
-/* $Id: AudioMixBuffer.cpp 88435 2021-04-09 13:04:05Z vboxsync $ */
+/* $Id: AudioMixBuffer.cpp 88889 2021-05-06 00:47:10Z vboxsync $ */
 /** @file
  * Audio mixing buffer for converting reading/writing audio data.
  */
@@ -2034,8 +2034,9 @@ AudioMixBufPeekResampling(PCAUDIOMIXBUF pMixBuf, uint32_t offSrcFrame, uint32_t 
     {
         /* Rate conversion into temporary buffer. */
         int64_t  ai64DstRate[1024];
-        uint32_t cSrcFrames = RT_MIN(pMixBuf->cFrames - offSrcFrame, cMaxSrcFrames);
-        uint32_t const cDstFrames = pState->Rate.pfnResample(ai64DstRate, RT_ELEMENTS(ai64DstRate) / pState->cDstChannels,
+        uint32_t cSrcFrames    = RT_MIN(pMixBuf->cFrames - offSrcFrame, cMaxSrcFrames);
+        uint32_t cMaxDstFrames = RT_MIN(RT_ELEMENTS(ai64DstRate) / pState->cDstChannels, cbDst / pState->cbDstFrame);
+        uint32_t const cDstFrames = pState->Rate.pfnResample(ai64DstRate, cMaxDstFrames,
                                                             &pMixBuf->pFrames[offSrcFrame].i64LSample, cSrcFrames, &cSrcFrames,
                                                             &pState->Rate);
         *pcSrcFramesPeeked += cSrcFrames;
