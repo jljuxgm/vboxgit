@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityOverviewWidget.cpp 88204 2021-03-19 13:42:23Z vboxsync $ */
+/* $Id: UIVMActivityOverviewWidget.cpp 88205 2021-03-19 14:05:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMActivityOverviewWidget class implementation.
  */
@@ -1568,7 +1568,7 @@ void UIVMActivityOverviewWidget::loadSettings()
     foreach(const QString& strColumn, hiddenColumnList)
         setColumnVisible((int)gpConverter->fromInternalString<VMActivityOverviewColumn>(strColumn), false);
     /* Load other options: */
-    sltNotRunningVMVisibility(gEDataManager->activityOverviewShowAllMachines());
+    sltNotRunningVMVisibility(gEDataManager->VMActivityOverviewShowAllMachines());
 }
 
 void UIVMActivityOverviewWidget::saveSettings()
@@ -1581,7 +1581,7 @@ void UIVMActivityOverviewWidget::saveSettings()
             hiddenColumnList << gpConverter->toInternalString((VMActivityOverviewColumn) i);
     }
     gEDataManager->setVMActivityOverviewHiddenColumnList(hiddenColumnList);
-    gEDataManager->setActivityOverviewShowAllMachines(m_fShowNotRunningVMs);
+    gEDataManager->setVMActivityOverviewShowAllMachines(m_fShowNotRunningVMs);
 }
 
 void UIVMActivityOverviewWidget::sltToggleColumnSelectionMenu(bool fChecked)

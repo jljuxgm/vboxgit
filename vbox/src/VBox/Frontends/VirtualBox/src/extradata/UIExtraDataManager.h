@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 88204 2021-03-19 13:42:23Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 88205 2021-03-19 14:05:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -799,8 +799,8 @@ public:
       * @{ */
         void setVMActivityOverviewHiddenColumnList(const QStringList &hiddenColumnList);
         QStringList VMActivityOverviewHiddenColumnList();
-        bool activityOverviewShowAllMachines();
-        void setActivityOverviewShowAllMachines(bool fShow);
+        bool VMActivityOverviewShowAllMachines();
+        void setVMActivityOverviewShowAllMachines(bool fShow);
     /** @} */
 
 private slots:

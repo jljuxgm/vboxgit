@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 88204 2021-03-19 13:42:23Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 88205 2021-03-19 14:05:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -444,8 +444,8 @@ namespace UIExtraDataDefs
 
     /** @name Manager UI: VM Activity Overview Related stuff
       * @{ */
-        SHARED_LIBRARY_STUFF extern const char *GUI_VMResourceManager_HiddenColumns;
-        SHARED_LIBRARY_STUFF extern const char *GUI_VMResourceManager_ShowAllMachines;
+        SHARED_LIBRARY_STUFF extern const char *GUI_VMActivityOverview_HiddenColumns;
+        SHARED_LIBRARY_STUFF extern const char *GUI_VMActivityOverview_ShowAllMachines;
     /** @} */
 
     /** @name Old key support stuff.
