@@ -1,4 +1,4 @@
-/* $Id: DnDTransferList.cpp 85416 2020-07-22 14:48:57Z vboxsync $ */
+/* $Id: DnDTransferList.cpp 85417 2020-07-22 15:15:23Z vboxsync $ */
 /** @file
  * DnD - transfer list implemenation.
  */
@@ -386,8 +386,8 @@ static int dndTransferListAppendPathNativeRecursive(PDNDTRANSFERLIST pList,
  * @param   cbPathAbs           Size (in bytes) of absolute path of directory to append.
  * @param   fFlags              Transfer list flags to use for appending.
  */
-static int dndTransferListAppenDirectory(PDNDTRANSFERLIST pList, char* pszPathAbs, size_t cbPathAbs,
-                                         DNDTRANSFERLISTFLAGS fFlags)
+static int dndTransferListAppendDirectory(PDNDTRANSFERLIST pList, char* pszPathAbs, size_t cbPathAbs,
+                                          DNDTRANSFERLISTFLAGS fFlags)
 {
     RTDIR hDir;
     int rc = RTDirOpen(&hDir, pszPathAbs);
@@ -491,7 +491,7 @@ static int dndTransferListAppendPathNative(PDNDTRANSFERLIST pList, const char *p
                 {
                     case RTFS_TYPE_DIRECTORY:
                         if (fFlags & DNDTRANSFERLIST_FLAGS_RECURSIVE)
-                            rc = dndTransferListAppenDirectory(pList, szPathAbs, sizeof(szPathAbs), fFlags);
+                            rc = dndTransferListAppendDirectory(pList, szPathAbs, sizeof(szPathAbs), fFlags);
                         break;
 
                     case RTFS_TYPE_FILE:
