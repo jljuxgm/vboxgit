@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 87544 2021-02-02 17:08:33Z vboxsync $ */
+/* $Id: UIMessageCenter.h 87545 2021-02-02 17:14:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -411,6 +411,7 @@ public:
     void warnAboutNoNameSpecified(const QString &strName, QWidget *pParent = 0);
     void warnAboutNameAlreadyBusy(const QString &strName, QWidget *pParent = 0);
     void warnAboutNoIPv4PrefixSpecified(const QString &strName, QWidget *pParent = 0);
+    void warnAboutNoIPv6PrefixSpecified(const QString &strName, QWidget *pParent = 0);
     void warnAboutInvalidCIDRSpecified(const QString &strCIDR, const QString &strName, QWidget *pParent = 0);
 
     /* API: Cloud Profile Manager warnings: */

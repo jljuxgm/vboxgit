@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 87544 2021-02-02 17:08:33Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 87545 2021-02-02 17:14:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -1989,6 +1989,12 @@ void UIMessageCenter::warnAboutNoIPv4PrefixSpecified(const QString &strName, QWi
 {
     alert(pParent, MessageType_Error,
           tr("No IPv4 prefix specified for the NAT network <b>%1</b>.").arg(strName));
+}
+
+void UIMessageCenter::warnAboutNoIPv6PrefixSpecified(const QString &strName, QWidget *pParent /* = 0 */)
+{
+    alert(pParent, MessageType_Error,
+          tr("No IPv6 prefix specified for the NAT network <b>%1</b>.").arg(strName));
 }
 
 void UIMessageCenter::warnAboutInvalidCIDRSpecified(const QString &strCIDR, const QString &strName, QWidget *pParent /* = 0 */)
