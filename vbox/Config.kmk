@@ -1,4 +1,4 @@
-# $Id: Config.kmk 88215 2021-03-19 18:42:55Z vboxsync $
+# $Id: Config.kmk 88295 2021-03-25 21:50:10Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2315,7 +2315,7 @@ ifneq ($(KBUILD_TARGET),win)
    ifeq ($(KBUILD_HOST),solaris)
     VBOX_LIBIDL_CONFIG_FALLBACK = $(lastword $(wildcard $(KBUILD_DEVTOOLS)/solaris.amd64/libIDL/*/bin/libIDL-config-2))
    endif
-   export VBOX_LIBIDL_CONFIG := $(firstword $(which libIDL-config-2 libIDL-config $(VBOX_LIBIDL_CONFIG_FALLBACK)) libIDL-config-2-not-found)
+   export VBOX_LIBIDL_CONFIG := $(firstword $(which libIDL-config-2 libIDL-config) $(VBOX_LIBIDL_CONFIG_FALLBACK) libIDL-config-2-not-found)
   endif
  endif
 endif
@@ -8201,7 +8201,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 88215 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 88295 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
