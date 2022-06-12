@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 84427 2020-05-20 18:56:56Z vboxsync $
+# $Id: tdAddBasic1.py 84428 2020-05-20 19:15:45Z vboxsync $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84427 $"
+__version__ = "$Revision: 84428 $"
 
 # Standard Python imports.
 import os;
@@ -205,6 +205,25 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
                                  fIgnoreErrors = True);
             reporter.testDone();
 
+            reporter.testStart('Enabling udev monitoring ...');
+            sUdevMonitorServiceContent = \
+                '[Unit]\n' \
+                'Description=udev Monitoring\n' \
+                'DefaultDependencies=no\n' \
+                'Wants=systemd-udevd.service\n' \
+                'After=systemd-udevd-control.socket systemd-udevd-kernel.socket\n' \
+                'Before=sysinit.target systemd-udev-trigger.service\n' \
+                '[Service]\n' \
+                'Type=simple\n' \
+                'ExecStart=/usr/bin/sh -c "/usr/sbin/udevadm monitor --udev --env > /tmp/udev_monitor.log\n' \
+                '[Install]\n' \
+                'WantedBy=sysinit.target';
+            sUdevMonitorServiceFile = '/etc/systemd/system/systemd-udev-monitor.service';
+            oTxsSession.syncUploadString(sUdevMonitorServiceContent, sUdevMonitorServiceFile, 0o644);
+            oTxsSession.syncExec("/bin/systemctl", ("/bin/systemctl", "enable", "systemd-udev-monitor.service"),
+                                 fIgnoreErrors = True);
+            reporter.testDone();
+
         reporter.testStart('Waiting for TXS + CD (%s)' % (self.sFileCdWait,));
         if oTestVm.isLinux():
             (fRc, oTxsSession) = self.txsRebootAndReconnectViaTcp(oTestVm.sVmName, fCdWait = True,
@@ -215,6 +234,10 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
                                                                       cMsCdWait = 5 * 60 * 1000,
                                                                       sFileCdWait = self.sFileCdWait);
         reporter.testDone();
+
+        if oTestVm.isLinux():
+            asLogFiles = [ '/tmp/udev_monitor.log' ];
+            self.txsDownloadFiles(oSession, oTxsSession, asLogFiles, fIgnoreErrors = True);
 
         if oSession is not None:
             self.addTask(oTxsSession);
