@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 86605 2020-10-16 13:40:05Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 86606 2020-10-16 13:55:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -1153,8 +1153,10 @@ void UIChooserModel::sltReloadMachine(const QUuid &uMachineId)
     emit sigSelectionChanged();
 }
 
-void UIChooserModel::sltCloudMachineRegistered(const QString &strProviderShortName, const QString &strProfileName,
-                                               const CCloudMachine &comMachine, bool fSelect)
+void UIChooserModel::sltCloudMachineRegistered(const QString &strProviderShortName,
+                                               const QString &strProfileName,
+                                               const CCloudMachine &comMachine,
+                                               bool fSelect)
 {
     /* Call to base-class: */
     UIChooserAbstractModel::sltCloudMachineRegistered(strProviderShortName, strProfileName, comMachine, fSelect);
@@ -1173,8 +1175,10 @@ void UIChooserModel::sltCloudMachineRegistered(const QString &strProviderShortNa
     }
 }
 
-void UIChooserModel::sltCloudMachineRegistrationChanged(const QString &strProviderShortName, const QString &strProfileName,
-                                                        const QUuid &uMachineId, const bool fRegistered)
+void UIChooserModel::sltCloudMachineRegistrationChanged(const QString &strProviderShortName,
+                                                        const QString &strProfileName,
+                                                        const QUuid &uMachineId,
+                                                        const bool fRegistered)
 {
     /* Existing VM unregistered => make sure no item with passed uMachineId is selected: */
     if (!fRegistered)
