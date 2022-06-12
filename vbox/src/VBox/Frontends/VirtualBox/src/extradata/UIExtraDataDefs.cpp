@@ -1,10 +1,10 @@
-/* $Id: UIExtraDataDefs.cpp 88411 2021-04-08 11:25:05Z vboxsync $ */
+/* $Id: UIExtraDataDefs.cpp 89295 2021-05-26 15:21:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2021 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -21,6 +21,7 @@
 
 /* General: */
 const char *UIExtraDataDefs::GUI_RestrictedDialogs = "GUI/RestrictedDialogs";
+const char *UIExtraDataDefs::GUI_ColorTheme = "GUI/ColorTheme";
 
 
 /* Messaging: */
