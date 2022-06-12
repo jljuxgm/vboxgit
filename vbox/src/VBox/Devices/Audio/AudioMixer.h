@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.h 88307 2021-03-26 21:18:42Z vboxsync $ */
+/* $Id: AudioMixer.h 88309 2021-03-29 08:23:10Z vboxsync $ */
 /** @file
  * VBox audio - Mixing routines.
  *
@@ -218,8 +218,8 @@ typedef struct AUDMIXSINK
     /** Number of streams assigned. */
     uint8_t                 cStreams;
     /** List of assigned streams.
-     *  Note: All streams have the same PCM properties, so the
-     *        mixer does not do any conversion. */
+     * @note All streams have the same PCM properties, so the mixer does not do
+     *       any conversion. */
     /** @todo Use something faster -- vector maybe? */
     RTLISTANCHOR            lstStreams;
     /** The volume of this sink. The volume always will
