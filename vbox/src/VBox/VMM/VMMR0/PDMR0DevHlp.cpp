@@ -1,4 +1,4 @@
-/* $Id: PDMR0DevHlp.cpp 89600 2021-06-10 13:17:07Z vboxsync $ */
+/* $Id: PDMR0DevHlp.cpp 89620 2021-06-11 08:51:10Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, R0 Device Helper parts.
  */
@@ -1632,7 +1632,7 @@ static DECLCALLBACK(void) pdmR0PciHlp_IoApicSendMsi(PPDMDEVINS pDevIns, PCIBDF u
     Assert(PCIBDF_IS_VALID(uBusDevFn));
     Log4(("pdmR0PciHlp_IoApicSendMsi: uBusDevFn=%#x Msi=(Addr:%#RX64 Data:%#RX32) uTagSrc=%#x\n", uBusDevFn, pMsi->Addr.u64,
           pMsi->Data.u32, uTagSrc));
-    PDMIoApicSendMsi(pDevIns, uBusDevFn, pMsi, uTagSrc);
+    PDMIoApicSendMsi(pDevIns->Internal.s.pGVM, uBusDevFn, pMsi, uTagSrc);
 }
 
 
@@ -1714,7 +1714,7 @@ static DECLCALLBACK(bool) pdmR0IommuHlp_LockIsOwner(PPDMDEVINS pDevIns)
 static DECLCALLBACK(void) pdmR0IommuHlp_SendMsi(PPDMDEVINS pDevIns, PCMSIMSG pMsi, uint32_t uTagSrc)
 {
     PDMDEV_ASSERT_DEVINS(pDevIns);
-    PDMIoApicSendMsi(pDevIns, NIL_PCIBDF, pMsi, uTagSrc);
+    PDMIoApicSendMsi(pDevIns->Internal.s.pGVM, NIL_PCIBDF, pMsi, uTagSrc);
 }
 
 
