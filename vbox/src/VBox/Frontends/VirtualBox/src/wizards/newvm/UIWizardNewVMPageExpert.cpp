@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.cpp 84886 2020-06-21 15:03:55Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.cpp 85055 2020-07-03 12:41:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class implementation.
  */
@@ -39,7 +39,7 @@
 
 
 UIWizardNewVMPageExpert::UIWizardNewVMPageExpert(const QString &strGroup)
-    : UIWizardNewVMPageNameType(strGroup)
+    : UIWizardNewVMPage1(strGroup)
 {
     /* Create widgets: */
     QVBoxLayout *pMainLayout = new QVBoxLayout(this);
