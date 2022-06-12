@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageBasic1.cpp 86687 2020-10-23 13:46:16Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageBasic1.cpp 87025 2020-12-01 15:33:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageBasic1 class implementation.
  */
@@ -583,6 +583,7 @@ UIWizardNewCloudVMPageBasic1::UIWizardNewCloudVMPageBasic1()
                 if (m_pSourceImageList)
                 {
                     m_pSourceImageLabel->setBuddy(m_pSourceImageList);
+                    m_pSourceImageList->setSortingEnabled(true);
                     const QFontMetrics fm(m_pSourceImageList->font());
                     const int iFontWidth = fm.width('x');
                     const int iTotalWidth = 50 * iFontWidth;
