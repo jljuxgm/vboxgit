@@ -1,4 +1,4 @@
-/* $Id: DnDTransferList.cpp 85428 2020-07-23 11:10:46Z vboxsync $ */
+/* $Id: DnDTransferList.cpp 85429 2020-07-23 11:31:53Z vboxsync $ */
 /** @file
  * DnD - transfer list implemenation.
  */
@@ -191,8 +191,8 @@ static int dndTransferListObjAdd(PDNDTRANSFERLIST pList, const char *pcszSrcAbs,
             {
                 const bool fIsFile = RTFS_IS_FILE(fMode);
 
-                rc = DnDTransferObjectInit(pObj, fIsFile ? DNDTRANSFEROBJTYPE_FILE : DNDTRANSFEROBJTYPE_DIRECTORY,
-                                           pList->pszPathRootAbs, &pcszSrcAbs[idxPathToAdd]);
+                rc = DnDTransferObjectInitEx(pObj, fIsFile ? DNDTRANSFEROBJTYPE_FILE : DNDTRANSFEROBJTYPE_DIRECTORY,
+                                             pList->pszPathRootAbs, &pcszSrcAbs[idxPathToAdd]);
                 if (RT_SUCCESS(rc))
                 {
                     if (fIsFile)
