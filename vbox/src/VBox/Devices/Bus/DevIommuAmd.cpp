@@ -1,4 +1,4 @@
-/* $Id: DevIommuAmd.cpp 88818 2021-05-03 10:19:31Z vboxsync $ */
+/* $Id: DevIommuAmd.cpp 88840 2021-05-03 16:10:17Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - AMD implementation.
  */
@@ -172,11 +172,15 @@
 # define IOMMU_DTE_CACHE_F_IGNORE_UNMAPPED_INTR_SHIFT    10
 
 /** Acquires the cache lock. */
-#define IOMMU_CACHE_LOCK(a_pDevIns, a_pThis) \
+#ifdef IN_RING3
+# define IOMMU_CACHE_LOCK(a_pDevIns, a_pThis)       PDMDevHlpCritSectEnter((a_pDevIns), &(a_pThis)->CritSectCache, VERR_IGNORED)
+#else
+# define IOMMU_CACHE_LOCK(a_pDevIns, a_pThis) \
     do { \
         int const rcLock = PDMDevHlpCritSectEnter((a_pDevIns), &(a_pThis)->CritSectCache, VINF_SUCCESS); \
         AssertRC(rcLock); \
     } while (0)
+#endif
 
 /** Releases the cache lock.  */
 # define IOMMU_CACHE_UNLOCK(a_pDevIns, a_pThis)     PDMDevHlpCritSectLeave((a_pDevIns), &(a_pThis)->CritSectCache)
