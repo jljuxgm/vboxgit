@@ -1,4 +1,4 @@
-/* $Id: UICloudProfileManager.cpp 87001 2020-11-27 09:48:39Z vboxsync $ */
+/* $Id: UICloudProfileManager.cpp 87352 2021-01-21 15:06:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudProfileManager class implementation.
  */
@@ -966,7 +966,7 @@ void UICloudProfileManager::retranslateUi()
     button(ButtonType_Reset)->setToolTip(tr("Reset Changes (%1)").arg(button(ButtonType_Reset)->shortcut().toString()));
     button(ButtonType_Apply)->setToolTip(tr("Apply Changes (%1)").arg(button(ButtonType_Apply)->shortcut().toString()));
     button(ButtonType_Close)->setToolTip(tr("Close Window (%1)").arg(button(ButtonType_Close)->shortcut().toString()));
-    button(ButtonType_Help)->setToolTip(tr("Close Window (%1)").arg(button(ButtonType_Help)->shortcut().toString()));
+    button(ButtonType_Help)->setToolTip(tr("Show Help (%1)").arg(button(ButtonType_Help)->shortcut().toString()));
 }
 
 void UICloudProfileManager::configure()
