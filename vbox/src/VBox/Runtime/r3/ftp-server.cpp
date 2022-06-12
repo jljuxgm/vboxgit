@@ -1,4 +1,4 @@
-/* $Id: ftp-server.cpp 86973 2020-11-25 09:18:33Z vboxsync $ */
+/* $Id: ftp-server.cpp 86981 2020-11-26 09:14:30Z vboxsync $ */
 /** @file
  * Generic FTP server (RFC 959) implementation.
  *
@@ -2403,10 +2403,6 @@ static int rtFtpServerProcessCommands(PRTFTPSERVERCLIENT pClient, char *pszCmd, 
  *
  * @returns VBox status code.
  * @param   pClient             Client to process commands for.
- *
- * @todo r=bird: There are two rtFtpServerProcessCommands functions. Please
- *       don't use C++ overloading in C code, it's unnecessary and confusing
- *       (even in C++ code, see init() methods in the API).
  */
 static int rtFtpServerClientMain(PRTFTPSERVERCLIENT pClient)
 {
