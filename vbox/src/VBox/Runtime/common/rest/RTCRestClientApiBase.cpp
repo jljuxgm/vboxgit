@@ -1,4 +1,4 @@
-/* $Id: RTCRestClientApiBase.cpp 87004 2020-11-27 16:18:47Z vboxsync $ */
+/* $Id: RTCRestClientApiBase.cpp 88124 2021-03-15 17:46:52Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestClientApiBase implementation.
  */
@@ -59,6 +59,18 @@ RTCRestClientApiBase::~RTCRestClientApiBase()
         AssertRC(rc);
         m_hHttp = NIL_RTHTTP;
     }
+}
+
+
+int RTCRestClientApiBase::setCAFile(const char *pcszCAFile) RT_NOEXCEPT
+{
+    return m_strCAFile.assignNoThrow(pcszCAFile);
+}
+
+
+int RTCRestClientApiBase::setCAFile(const RTCString &strCAFile) RT_NOEXCEPT
+{
+    return m_strCAFile.assignNoThrow(strCAFile);
 }
 
 
@@ -178,8 +190,14 @@ int RTCRestClientApiBase::reinitHttpInstance() RT_NOEXCEPT
         return RTHttpReset(m_hHttp, 0 /*fFlags*/);
 
     int rc = RTHttpCreate(&m_hHttp);
-    if (RT_FAILURE(rc))
+    if (RT_SUCCESS(rc) && m_strCAFile.isNotEmpty())
+        rc = RTHttpSetCAFile(m_hHttp, m_strCAFile.c_str());
+
+    if (RT_FAILURE(rc) && m_hHttp != NIL_RTHTTP)
+    {
+        RTHttpDestroy(m_hHttp);
         m_hHttp = NIL_RTHTTP;
+    }
     return rc;
 }
 
