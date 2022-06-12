@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.cpp 86757 2020-10-29 12:16:42Z vboxsync $ */
+/* $Id: UIHelpBrowserWidget.cpp 86758 2020-10-29 12:44:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class implementation.
  */
@@ -334,7 +334,7 @@ void UIHelpBrowserWidget::prepareSearchWidgets()
     // connect(m_pHelpSearchEngine, &QHelpSearchEngine::indexingFinished,
     //         this, &UIHelpBrowserWidget::sltHandleIndexingFinished);
 
-    //void	searchingFinished(int searchResultCount)
+    //void      searchingFinished(int searchResultCount)
 
 
     connect(m_pHelpSearchEngine, &QHelpSearchEngine::searchingStarted,
