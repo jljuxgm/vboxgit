@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.cpp 87612 2021-02-04 18:55:43Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.cpp 87613 2021-02-04 18:58:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class implementation.
  */
@@ -300,7 +300,7 @@ void UIWizardNewVMPageExpert::setOSTypeDependedValues()
 
     /* Prepare initial disk choice: */
     if (!m_userSetWidgets.contains(m_pDiskCreate) &&
-        !m_userSetWidgets.contains(m_pDiskCreate) &&
+        !m_userSetWidgets.contains(m_pDiskSkip) &&
         !m_userSetWidgets.contains(m_pDiskPresent))
     {
         if (type.GetRecommendedHDD() != 0)
