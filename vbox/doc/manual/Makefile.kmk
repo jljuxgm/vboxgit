@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 86674 2020-10-22 16:58:09Z vboxsync $
+# $Id: Makefile.kmk 86675 2020-10-22 17:01:37Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox User Manual, SDK reference and other manuals.
 #
@@ -843,7 +843,6 @@ html:: $(VBOX_PATH_MANUAL_OUTBASE)/en_US/html-single/UserManual.html
 html:: $(VBOX_PATH_MANUAL_OUTBASE)/en_US/html-chunks/index.html
 qhelp:: $(VBOX_PATH_MANUAL_OUTBASE)/en_US/qhelp/UserManual.qhc
 html-zip:: $(VBOX_PATH_MANUAL_OUTBASE)/en_US/UserManual.zip
-hhp:: $(VBOX_PATH_MANUAL_OUTBASE)/en_US/qhelp/htmlhelp.hhp
 
 #
 # ChangeLog.html
