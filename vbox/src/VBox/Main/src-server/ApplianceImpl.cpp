@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 85282 2020-07-12 14:53:50Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 85363 2020-07-16 12:21:04Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -323,14 +323,15 @@ ovf::CIMOSType_T convertVBoxOSType2CIMOSType(const char *pcszVBox, BOOL fLongMod
             if (fLongMode && !(g_aOsTypes[i].osType & VBOXOSTYPE_x64))
             {
                 VBOXOSTYPE enmDesiredOsType = (VBOXOSTYPE)((int)g_aOsTypes[i].osType | (int)VBOXOSTYPE_x64);
-                size_t     j = i;
-                while (++j < RT_ELEMENTS(g_aOsTypes))
+                for (size_t j = i+1; j < RT_ELEMENTS(g_aOsTypes); j++)
                     if (g_aOsTypes[j].osType == enmDesiredOsType)
                         return g_aOsTypes[j].cim;
-                j = i;
-                while (--j > 0)
-                    if (g_aOsTypes[j].osType == enmDesiredOsType)
-                        return g_aOsTypes[j].cim;
+                if (i > 0)
+                {
+                    for (size_t j = i-1; j > 0; j++)
+                        if (g_aOsTypes[j].osType == enmDesiredOsType)
+                            return g_aOsTypes[j].cim;
+                }
                 /* Not all OSes have 64-bit versions, so just return the 32-bit variant. */
             }
             return g_aOsTypes[i].cim;
