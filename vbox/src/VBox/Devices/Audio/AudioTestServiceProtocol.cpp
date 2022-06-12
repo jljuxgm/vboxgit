@@ -1,4 +1,4 @@
-/* $Id: AudioTestServiceProtocol.cpp 89174 2021-05-19 15:05:29Z vboxsync $ */
+/* $Id: AudioTestServiceProtocol.cpp 89177 2021-05-19 15:31:40Z vboxsync $ */
 /** @file
  * AudioTestService - Audio test execution server, Protocol helpers.
  */
@@ -62,6 +62,7 @@ DECLINLINE(void) atsProtocolPktHdrN2H(PATSPKTHDR pPktHdr)
 }
 
 
+#if 0 /* Unused */
 /**
  * Converts a ATS status header from host to network byte order.
  *
@@ -88,6 +89,7 @@ DECLINLINE(void) atsProtocolStsHdrN2H(PATSPKTSTS pPktHdr)
     pPktHdr->rcReq     = RT_N2H_U32(pPktHdr->rcReq);
     pPktHdr->cchStsMsg = RT_N2H_U32(pPktHdr->cchStsMsg);
 }
+#endif
 
 
 DECLHIDDEN(void) atsProtocolReqH2N(PATSPKTHDR pPktHdr)

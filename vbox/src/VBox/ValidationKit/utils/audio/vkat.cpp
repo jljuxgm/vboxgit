@@ -1,4 +1,4 @@
-/* $Id: vkat.cpp 89176 2021-05-19 15:24:21Z vboxsync $ */
+/* $Id: vkat.cpp 89177 2021-05-19 15:31:40Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) utility for testing and validating the audio stack.
  */
@@ -339,9 +339,7 @@ static struct
     {   &g_DrvHostDSound,             "dsound" },
     {   &g_DrvHostDSound,             "ds" },
 #endif
-#ifdef VBOX_WITH_AUDIO_VALIDATIONKIT
     {   &g_DrvHostValidationKitAudio, "valkit" }
-#endif
 };
 AssertCompile(sizeof(g_aBackends) > 0 /* port me */);
 
