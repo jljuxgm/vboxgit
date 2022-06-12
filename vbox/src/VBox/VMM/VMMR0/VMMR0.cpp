@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VMMR0.cpp 84458 2020-05-22 12:51:49Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -2224,6 +2224,30 @@ static int vmmR0EntryExWorker(PGVM pGVM, VMCPUID idCpu, VMMR0OPERATION enmOperat
             VMM_CHECK_SMAP_CHECK2(pGVM, RT_NOTHING);
             break;
         }
+
+#ifdef VBOX_WITH_DBGF_TRACING
+        case VMMR0_DO_DBGF_TRACER_CREATE:
+        {
+            if (!pReqHdr || u64Arg || idCpu != 0)
+                return VERR_INVALID_PARAMETER;
+            rc = DBGFR0TracerCreateReqHandler(pGVM, (PDBGFTRACERCREATEREQ)pReqHdr);
+            VMM_CHECK_SMAP_CHECK2(pGVM, RT_NOTHING);
+            break;
+        }
+
+        case VMMR0_DO_DBGF_TRACER_CALL_REQ_HANDLER:
+        {
+            if (!pReqHdr || u64Arg)
+                return VERR_INVALID_PARAMETER;
+#if 0 /** @todo */
+            rc = DBGFR0TracerGenCallReqHandler(pGVM, (PDBGFTRACERGENCALLREQ)pReqHdr, idCpu);
+#else
+            rc = VERR_NOT_IMPLEMENTED;
+#endif
+            VMM_CHECK_SMAP_CHECK2(pGVM, RT_NOTHING);
+            break;
+        }
+#endif
 
         /*
          * For profiling.

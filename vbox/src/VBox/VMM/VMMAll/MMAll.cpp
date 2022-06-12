@@ -1,4 +1,4 @@
-/* $Id: MMAll.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: MMAll.cpp 84458 2020-05-22 12:51:49Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Any Context.
  */
@@ -584,6 +584,7 @@ const char *mmGetTagName(MMTAG enmTag)
         TAG2STR(DBGF_SYMBOL);
         TAG2STR(DBGF_SYMBOL_DUP);
         TAG2STR(DBGF_TYPE);
+        TAG2STR(DBGF_TRACER);
 
         TAG2STR(EM);
 
