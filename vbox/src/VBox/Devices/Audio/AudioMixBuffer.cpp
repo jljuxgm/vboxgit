@@ -1,4 +1,4 @@
-/* $Id: AudioMixBuffer.cpp 89440 2021-06-01 20:09:52Z vboxsync $ */
+/* $Id: AudioMixBuffer.cpp 89448 2021-06-01 23:35:12Z vboxsync $ */
 /** @file
  * Audio mixing buffer for converting reading/writing audio data.
  */
@@ -1108,8 +1108,8 @@ int AudioMixBufInitPeekState(PCAUDIOMIXBUF pMixBuf, PAUDIOMIXBUFPEEKSTATE pState
     pState->cDstChannels   = cDstCh;
     pState->cbDstFrame     = PDMAudioPropsFrameSize(pProps);
     audioMixBufInitChannelMap(pState->aidxChannelMap, &pMixBuf->Props, pProps);
-    AssertReturn(cDstCh > 0 && cDstCh < PDMAUDIO_MAX_CHANNELS, VERR_OUT_OF_RANGE);
-    AssertReturn(cSrcCh > 0 && cSrcCh < PDMAUDIO_MAX_CHANNELS, VERR_OUT_OF_RANGE);
+    AssertReturn(cDstCh > 0 && cDstCh <= PDMAUDIO_MAX_CHANNELS, VERR_OUT_OF_RANGE);
+    AssertReturn(cSrcCh > 0 && cSrcCh <= PDMAUDIO_MAX_CHANNELS, VERR_OUT_OF_RANGE);
 
     if (PDMAudioPropsIsSigned(pProps))
     {
