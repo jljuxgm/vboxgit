@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 87928 2021-03-03 06:04:39Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 87933 2021-03-03 10:23:22Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -4263,7 +4263,8 @@ static void hmR0SvmPreRunGuestCommitted(PVMCPUCC pVCpu, PSVMTRANSIENT pSvmTransi
     else
     {
         /** @todo We could perhaps optimize this by monitoring if the guest modifies its
-         *        MSRPM and only perform this if it changed? */
+         *        MSRPM and only perform this if it changed also use EVEX.POR when it
+         *        does. */
         hmR0SvmMergeMsrpmNested(pHostCpu, pVCpu);
 
         /* Update the nested-guest VMCB with the newly merged MSRPM (clean bits updated below). */

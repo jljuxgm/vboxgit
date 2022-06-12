@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 87754 2021-02-13 17:44:31Z vboxsync $ */
+/* $Id: HMInternal.h 87933 2021-03-03 10:23:22Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -1484,6 +1484,8 @@ AssertCompileMemberAlignment(HMR0PERVCPU, vmx.RestoreHost,   8);
 
 
 /** @name HM_WSF_XXX - @bugref{9453}, @bugref{9087}
+ *  @note If you change these values don't forget to update the assembly
+ *       defines as well!
  * @{ */
 /** Touch IA32_PRED_CMD.IBPB on VM exit.   */
 #define HM_WSF_IBPB_EXIT            RT_BIT_32(0)

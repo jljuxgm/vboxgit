@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 87882 2021-02-26 06:08:37Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 87933 2021-03-03 10:23:22Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -10402,6 +10402,7 @@ static void hmR0VmxMergeMsrBitmapNested(PCVMCPUCC pVCpu, PVMXVMCSINFO pVmcsInfoN
         Assert(pu64MsrBitmapNstGst);
         Assert(pu64MsrBitmapGst);
 
+        /** @todo Detect and use EVEX.POR? */
         uint32_t const cFrags = cbMsrBitmap / sizeof(uint64_t);
         for (uint32_t i = 0; i < cFrags; i++)
             pu64MsrBitmap[i] = pu64MsrBitmapNstGst[i] | pu64MsrBitmapGst[i];
