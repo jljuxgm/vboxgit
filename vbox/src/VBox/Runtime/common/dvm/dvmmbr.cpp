@@ -1,4 +1,4 @@
-/* $Id: dvmmbr.cpp 85877 2020-08-24 17:03:23Z vboxsync $ */
+/* $Id: dvmmbr.cpp 85878 2020-08-24 17:27:48Z vboxsync $ */
 /** @file
  * IPRT Disk Volume Management API (DVM) - MBR format backend.
  */
@@ -242,7 +242,7 @@ static DECLCALLBACK(int) rtDvmFmtMbrProbe(PCRTDVMDISK pDisk, uint32_t *puScore)
                 && pbMbr[510] == 0x55
                 && pbMbr[511] == 0xaa)
                 *puScore = RTDVM_MATCH_SCORE_SUPPORTED; /* Not perfect because GPTs have a protective MBR. */
-            /* @todo this could easily confuser a DOS, OS/2 or NT boot sector with a MBR... */
+            /** @todo this could easily confuser a DOS, OS/2 or NT boot sector with a MBR... */
             RTMemTmpFree(pbMbr);
         }
         else
