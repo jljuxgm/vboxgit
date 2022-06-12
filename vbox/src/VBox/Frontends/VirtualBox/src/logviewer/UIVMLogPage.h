@@ -1,4 +1,4 @@
-/* $Id: UIVMLogPage.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIVMLogPage.h 88671 2021-04-23 11:09:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -53,7 +53,7 @@ signals:
 
 public:
 
-    UIVMLogPage(QWidget *pParent = 0, int tabIndex = -1);
+    UIVMLogPage(QWidget *pParent = 0);
     ~UIVMLogPage();
 
     /** Returns the width of the current log page. return 0 if there is no current log page: */
@@ -61,9 +61,6 @@ public:
 
     QPlainTextEdit *textEdit();
     QTextDocument  *document();
-
-    void setTabIndex(int index);
-    int tabIndex()  const;
 
     /* Only to be called when log file is re-read. */
     void setLogString(const QString &strLog);
@@ -136,8 +133,6 @@ private:
     QString         m_strLog;
     /** Stores full path and name of the log file. */
     QString         m_strLogFileName;
-    /** This is the index of the tab containing this widget in UIVMLogViewerWidget. */
-    int             m_tabIndex;
     /** Stores the bookmarks of the logpage. All other bookmark related containers are updated wrt. this one. */
     QVector<LogBookmark> m_bookmarkVector;
 
