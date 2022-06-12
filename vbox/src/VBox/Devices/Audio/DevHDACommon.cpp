@@ -1,4 +1,4 @@
-/* $Id: DevHDACommon.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: DevHDACommon.cpp 87266 2021-01-15 12:32:36Z vboxsync $ */
 /** @file
  * DevHDACommon.cpp - Shared HDA device functions.
  *
@@ -325,8 +325,8 @@ int hdaR3DMARead(PPDMDEVINS pDevIns, PHDASTATE pThis, PHDASTREAM pStreamShared, 
 # ifdef HDA_DEBUG_SILENCE
     uint64_t   csSilence = 0;
 
-    pStreamCC->Dbg.cSilenceThreshold = 100;
-    pStreamCC->Dbg.cbSilenceReadMin  = _1M;
+    pStreamR3->Dbg.cSilenceThreshold = 100;
+    pStreamR3->Dbg.cbSilenceReadMin  = _1M;
 # endif
 
     RTGCPHYS GCPhysChunk = pBDLE->Desc.u64BufAddr + pBDLE->State.u32BufOff;
