@@ -1,4 +1,4 @@
-/* $Id: UIChooserNodeMachine.cpp 84376 2020-05-19 17:57:56Z vboxsync $ */
+/* $Id: UIChooserNodeMachine.cpp 84412 2020-05-20 14:43:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserNodeMachine class implementation.
  */
@@ -137,7 +137,7 @@ QString UIChooserNodeMachine::description() const
 
 QString UIChooserNodeMachine::definition(bool) const
 {
-    const QString strNodePrefix = UIChooserAbstractModel::definitionOption(UIChooserAbstractModel::NodeDef_MachinePrefix);
+    const QString strNodePrefix = UIChooserAbstractModel::prefixToString(UIChooserNodeDataPrefixType_Machine);
     return QString("%1=%2").arg(strNodePrefix).arg(UIChooserAbstractModel::toOldStyleUuid(id()));
 }
 

@@ -1,4 +1,4 @@
-/* $Id: UIChooserNodeGlobal.cpp 84376 2020-05-19 17:57:56Z vboxsync $ */
+/* $Id: UIChooserNodeGlobal.cpp 84412 2020-05-20 14:43:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserNodeGlobal class implementation.
  */
@@ -77,9 +77,9 @@ QString UIChooserNodeGlobal::description() const
 
 QString UIChooserNodeGlobal::definition(bool fFull /* = false */) const
 {
-    const QString strNodePrefix = UIChooserAbstractModel::definitionOption(UIChooserAbstractModel::NodeDef_GlobalPrefix);
-    const QString strNodeOptionFavorite = UIChooserAbstractModel::definitionOption(UIChooserAbstractModel::NodeDef_GlobalOptionFavorite);
-    const QString strNodeValueDefault = UIChooserAbstractModel::definitionOption(UIChooserAbstractModel::NodeDef_GlobalValueDefault);
+    const QString strNodePrefix = UIChooserAbstractModel::prefixToString(UIChooserNodeDataPrefixType_Global);
+    const QString strNodeOptionFavorite = UIChooserAbstractModel::optionToString(UIChooserNodeDataOptionType_GlobalFavorite);
+    const QString strNodeValueDefault = UIChooserAbstractModel::valueToString(UIChooserNodeDataValueType_GlobalDefault);
     return   fFull
            ? QString("%1%2=%3").arg(strNodePrefix).arg(isFavorite() ? strNodeOptionFavorite : "").arg(strNodeValueDefault)
            : QString("%1=%2").arg(strNodePrefix).arg(strNodeValueDefault);
