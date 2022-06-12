@@ -1,4 +1,4 @@
-/* $Id: DevIommuAmd.cpp 87839 2021-02-23 07:30:40Z vboxsync $ */
+/* $Id: DevIommuAmd.cpp 87842 2021-02-23 09:03:44Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - AMD implementation.
  */
@@ -6524,9 +6524,8 @@ static DECLCALLBACK(int) iommuAmdR3LoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM,
                               rcDataError);
     }
 
-    /** @todo Kick the command thread, anything else to do on restore? */
-
-    return VERR_NOT_IMPLEMENTED;
+    iommuAmdCmdThreadWakeUpIfNeeded(pDevIns);
+    return VINF_SUCCESS;
 }
 
 
