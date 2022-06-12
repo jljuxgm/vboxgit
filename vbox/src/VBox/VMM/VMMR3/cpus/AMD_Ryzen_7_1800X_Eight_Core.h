@@ -1,4 +1,4 @@
-/* $Id: AMD_Ryzen_7_1800X_Eight_Core.h 85354 2020-07-15 16:55:28Z vboxsync $ */
+/* $Id: AMD_Ryzen_7_1800X_Eight_Core.h 85356 2020-07-15 17:12:40Z vboxsync $ */
 /** @file
  * CPU database entry "AMD Ryzen 7 1800X Eight-Core".
  * Generated at 2020-07-15T16:30:16Z by VBoxCpuReport v6.1.97r139174 on linux.amd64.
@@ -27,7 +27,7 @@
 /**
  * CPUID leaves for AMD Ryzen 7 1800X Eight-Core Processor.
  */
-static CPUMCPUIDLEAF const g_aCpuIdLeaves_AMD_Ryzen_7_1800X_Eight_Core[] = 
+static CPUMCPUIDLEAF const g_aCpuIdLeaves_AMD_Ryzen_7_1800X_Eight_Core[] =
 {
     { 0x00000000, 0x00000000, 0x00000000, 0x0000000d, 0x68747541, 0x444d4163, 0x69746e65, 0 },
     { 0x00000001, 0x00000000, 0x00000000, 0x00800f11, 0x02100800, 0x7ed8320b, 0x178bfbff, 0 | CPUMCPUIDLEAF_F_CONTAINS_APIC_ID | CPUMCPUIDLEAF_F_CONTAINS_APIC },
@@ -5198,7 +5198,7 @@ static CPUMMSRRANGE const g_aMsrRanges_AMD_Ryzen_7_1800X_Eight_Core[] =
 /**
  * Database entry for AMD Ryzen 7 1800X Eight-Core Processor.
  */
-static CPUMDBENTRY const g_Entry_AMD_Ryzen_7_1800X_Eight_Core = 
+static CPUMDBENTRY const g_Entry_AMD_Ryzen_7_1800X_Eight_Core =
 {
     /*.pszName          = */ "AMD Ryzen 7 1800X Eight-Core",
     /*.pszFullName      = */ "AMD Ryzen 7 1800X Eight-Core Processor",
