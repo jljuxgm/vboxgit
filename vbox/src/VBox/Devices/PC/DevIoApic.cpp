@@ -1,4 +1,4 @@
-/* $Id: DevIoApic.cpp 85487 2020-07-28 12:09:14Z vboxsync $ */
+/* $Id: DevIoApic.cpp 85865 2020-08-21 13:22:43Z vboxsync $ */
 /** @file
  * IO APIC - Input/Output Advanced Programmable Interrupt Controller.
  */
@@ -521,7 +521,8 @@ static void ioapicSignalIntrForRte(PPDMDEVINS pDevIns, PIOAPIC pThis, PIOAPICCC 
         MSIMSG MsiOut;
         MSIMSG MsiIn;
         ioapicGetMsiFromApicIntr(&ApicIntr, &MsiIn);
-        Assert(PCIBDF_IS_VALID(uBusDevFn));
+        if (!PCIBDF_IS_VALID(uBusDevFn))
+            uBusDevFn = VBOX_PCI_BDF_SB_IOAPIC;
         int rcRemap = pThisCC->pIoApicHlp->pfnIommuMsiRemap(pDevIns, uBusDevFn, &MsiIn, &MsiOut);
         if (RT_SUCCESS(rcRemap))
             ioapicGetApicIntrFromMsi(&MsiOut, &ApicIntr);
