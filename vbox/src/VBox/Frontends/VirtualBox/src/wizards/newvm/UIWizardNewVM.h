@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.h 85135 2020-07-09 06:59:35Z vboxsync $ */
+/* $Id: UIWizardNewVM.h 85150 2020-07-09 12:56:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class declaration.
  */
@@ -104,6 +104,7 @@ private slots:
 
     void sltHandleWizardCancel();
     void sltHandleDetectedOSTypeChange();
+    virtual void sltCustomButtonClicked(int iId) /* override */;
 
 private:
 
@@ -113,6 +114,7 @@ private:
 
     /* Helping stuff: */
     QString getNextControllerName(KStorageBus type);
+    void setFieldsFromDefaultUnttendedInstallData();
 
     /* Variables: */
     CMachine m_machine;

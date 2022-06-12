@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.cpp 85104 2020-07-08 08:48:27Z vboxsync $ */
+/* $Id: UINameAndSystemEditor.cpp 85150 2020-07-09 12:56:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class implementation.
  */
@@ -251,6 +251,12 @@ void UINameAndSystemEditor::setNameFieldValidator(const QString &strValidator)
     if (!m_pNameLineEdit)
         return;
     m_pNameLineEdit->setValidator(new QRegExpValidator(QRegExp(strValidator), this));
+}
+
+void UINameAndSystemEditor::markNameLineEdit(bool fError)
+{
+    if (m_pNameLineEdit)
+        m_pNameLineEdit->mark(fError);
 }
 
 void UINameAndSystemEditor::retranslateUi()

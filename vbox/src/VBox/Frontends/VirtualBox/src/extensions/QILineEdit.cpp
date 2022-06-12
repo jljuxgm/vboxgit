@@ -1,4 +1,4 @@
-/* $Id: QILineEdit.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: QILineEdit.cpp 85150 2020-07-09 12:56:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QILineEdit class implementation.
  */
@@ -19,8 +19,14 @@
 #include "QILineEdit.h"
 
 /* Qt includes: */
+#include <QPalette>
 #include <QStyleOptionFrame>
 
+QILineEdit::QILineEdit(QWidget *pParent /* = 0 */)
+    : QLineEdit(pParent)
+{
+    m_originalBaseColor = palette().color(QPalette::Base);
+}
 
 void QILineEdit::setMinimumWidthByText(const QString &strText)
 {
@@ -50,4 +56,14 @@ QSize QILineEdit::featTextWidth(const QString &strText) const
     const QSize sa = style()->sizeFromContents(QStyle::CT_LineEdit, &sof, sc, this);
 
     return sa;
+}
+
+void QILineEdit::mark(bool fError)
+{
+    QPalette newPalette = palette();
+    if (fError)
+        newPalette.setColor(QPalette::Base, QColor(255, 180, 180));
+    else
+        newPalette.setColor(QPalette::Base, m_originalBaseColor);
+    setPalette(newPalette);
 }

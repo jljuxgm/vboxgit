@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic1.cpp 85135 2020-07-09 06:59:35Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic1.cpp 85150 2020-07-09 12:56:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic1 class implementation.
  */
@@ -491,7 +491,9 @@ void UIWizardNewVMPage1::setTypeByISODetectedOSType(const QString &strDetectedOS
 void UIWizardNewVMPage1::markWidgets() const
 {
     if (m_pISOFilePathSelector)
-        m_pISOFilePathSelector->mark(isISOFileSelectorComplete());
+        m_pISOFilePathSelector->mark(!isISOFileSelectorComplete());
+    if (m_pNameAndSystemEditor)
+        m_pNameAndSystemEditor->markNameLineEdit(m_pNameAndSystemEditor->name().isEmpty());
 }
 
 bool UIWizardNewVMPage1::isISOFileSelectorComplete() const

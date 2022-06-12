@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.h 85104 2020-07-08 08:48:27Z vboxsync $ */
+/* $Id: UINameAndSystemEditor.h 85150 2020-07-09 12:56:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class declaration.
  */
@@ -111,6 +111,9 @@ public:
 
     /** Defines the name-field @a strValidator. */
     void setNameFieldValidator(const QString &strValidator);
+
+    /** Passes the @p fError to QILineEdit::mark(bool) effectively changing the background color. */
+    void markNameLineEdit(bool fError);
 
 protected:
 

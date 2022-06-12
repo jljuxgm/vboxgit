@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.cpp 85135 2020-07-09 06:59:35Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.cpp 85150 2020-07-09 12:56:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class implementation.
  */
@@ -333,9 +333,18 @@ void UIWizardNewVMPageExpert::cleanupPage()
     cleanupMachineFolder();
 }
 
-bool UIWizardNewVMPageExpert::isComplete() const
+void UIWizardNewVMPageExpert::markWidgets() const
 {
     UIWizardNewVMPage1::markWidgets();
+
+    if (m_pGAISOFilePathSelector)
+        m_pGAISOFilePathSelector->mark(isUnattendedEnabled() && !checkGAISOFile());
+}
+
+bool UIWizardNewVMPageExpert::isComplete() const
+{
+    markWidgets();
+
     /* Make sure mandatory fields are complete,
      * 'ram' field feats the bounds,
      * 'virtualDisk' field feats the rules: */
@@ -351,11 +360,11 @@ bool UIWizardNewVMPageExpert::isComplete() const
         /* Check the GA installation medium: */
         if (!checkGAISOFile())
             return false;
-    }
-    if (m_pUserNamePasswordEditor)
-    {
-        if (!m_pUserNamePasswordEditor->isComplete())
-            return false;
+        if (m_pUserNamePasswordEditor)
+        {
+            if (!m_pUserNamePasswordEditor->isComplete())
+                return false;
+        }
     }
     return true;
 }
@@ -420,6 +429,8 @@ void UIWizardNewVMPageExpert::disableEnableUnattendedRelatedWidgets(bool fEnable
         m_pGAInstallContainer->setEnabled(fEnabled);
     if (m_pUsernameHostnameContainer)
         m_pUsernameHostnameContainer->setEnabled(fEnabled);
+    if (m_pUserNamePasswordEditor)
+        m_pUserNamePasswordEditor->setForceUnmark(!fEnabled);
     if (m_pProductKeyLabel)
         m_pProductKeyLabel->setEnabled(isProductKeyWidgetEnabled());
     if (m_pProductKeyLineEdit)
