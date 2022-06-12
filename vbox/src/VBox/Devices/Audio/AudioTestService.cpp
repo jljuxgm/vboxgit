@@ -1,4 +1,4 @@
-/* $Id: AudioTestService.cpp 89175 2021-05-19 15:09:54Z vboxsync $ */
+/* $Id: AudioTestService.cpp 89179 2021-05-19 15:36:08Z vboxsync $ */
 /** @file
  * AudioTestService - Audio test execution server.
  */
@@ -370,7 +370,7 @@ static int atsReplyFailureV(PATSCLIENT pClient, PCATSPKTHDR pPktHdr, const char 
                                     sizeof(uPkt) - sizeof(ATSPKTSTS),
                                     pszDetailFmt, va);
     uPkt.Hdr.rcReq = rcReq;
-    uPkt.Hdr.cchStsMsg = cchDetail;
+    uPkt.Hdr.cchStsMsg = (uint32_t)cchDetail;
     return atsReplyInternal(pClient, &uPkt.Hdr, pszOpcode, cchDetail + 1);
 }
 
