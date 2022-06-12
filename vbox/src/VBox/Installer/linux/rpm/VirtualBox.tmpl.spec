@@ -1,4 +1,4 @@
-# $Id: VirtualBox.tmpl.spec 89486 2021-06-03 15:51:10Z vboxsync $
+# $Id: VirtualBox.tmpl.spec 89669 2021-06-14 08:57:18Z vboxsync $
 ## @file
 # Spec file for creating VirtualBox rpm packages
 #
@@ -174,7 +174,9 @@ ln -s VBox $RPM_BUILD_ROOT/usr/bin/VBoxVRDP
 ln -s VBox $RPM_BUILD_ROOT/usr/bin/VBoxHeadless
 ln -s VBox $RPM_BUILD_ROOT/usr/bin/vboxheadless
 ln -s VBox $RPM_BUILD_ROOT/usr/bin/VBoxDTrace
+ln -s VBox $RPM_BUILD_ROOT/usr/bin/VBoxAudioTest
 ln -s VBox $RPM_BUILD_ROOT/usr/bin/vboxdtrace
+ln -s VBox $RPM_BUILD_ROOT/usr/bin/vboxaudiotest
 ln -s VBox $RPM_BUILD_ROOT/usr/bin/VBoxBugReport
 ln -s VBox $RPM_BUILD_ROOT/usr/bin/vboxbugreport
 ln -s VBox $RPM_BUILD_ROOT/usr/bin/VBoxBalloonCtrl

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 89657 2021-06-13 22:58:22Z vboxsync $
+# $Id: Makefile.kmk 89669 2021-06-14 08:57:18Z vboxsync $
 ## @file
 # Makefile for the linux guest additions base directory.
 #
@@ -118,7 +118,7 @@ VBOX_LNX_ADD_STRIP_BIN += \
 	VBoxClient
 ifdef VBOX_WITH_ADDITIONS_SHIPPING_AUDIO_TEST
  VBOX_LNX_ADD_STRIP_BIN += \
- 	vkat
+ 	VBoxAudioTest
 endif
 
 VBOX_LNX_ADD_STRIP_SBIN += \

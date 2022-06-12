@@ -1,5 +1,5 @@
 #!/bin/bash
-# $Id: VirtualBox_Uninstall.tool 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: VirtualBox_Uninstall.tool 89669 2021-06-14 08:57:18Z vboxsync $
 ## @file
 # VirtualBox Uninstaller Script.
 #
@@ -83,6 +83,7 @@ test -f /usr/bin/VBoxBugReport                     && my_files+=("/usr/bin/VBoxB
 test -f /usr/bin/VBoxBalloonCtrl                   && my_files+=("/usr/bin/VBoxBalloonCtrl")
 test -f /usr/bin/VBoxAutostart                     && my_files+=("/usr/bin/VBoxAutostart")
 test -f /usr/bin/VBoxDTrace                        && my_files+=("/usr/bin/VBoxDTrace")
+test -f /usr/bin/VBoxAudioTest                     && my_files+=("/usr/bin/VBoxAudioTest")
 test -f /usr/bin/vbox-img                          && my_files+=("/usr/bin/vbox-img")
 test -f /usr/local/bin/VirtualBox                  && my_files+=("/usr/local/bin/VirtualBox")
 test -f /usr/local/bin/VirtualBoxVM                && my_files+=("/usr/local/bin/VirtualBoxVM")
@@ -94,6 +95,7 @@ test -f /usr/local/bin/VBoxBugReport               && my_files+=("/usr/local/bin
 test -f /usr/local/bin/VBoxBalloonCtrl             && my_files+=("/usr/local/bin/VBoxBalloonCtrl")
 test -f /usr/local/bin/VBoxAutostart               && my_files+=("/usr/local/bin/VBoxAutostart")
 test -f /usr/local/bin/VBoxDTrace                  && my_files+=("/usr/local/bin/VBoxDTrace")
+test -f /usr/local/bin/VBoxAudioTest               && my_files+=("/usr/local/bin/VBoxAudioTest")
 test -f /usr/local/bin/vbox-img                    && my_files+=("/usr/local/bin/vbox-img")
 test -d /Library/Receipts/VirtualBoxCLI.pkg/       && my_directories+=("/Library/Receipts/VirtualBoxCLI.pkg/")
 test -f /Library/LaunchDaemons/org.virtualbox.startup.plist && my_files+=("/Library/LaunchDaemons/org.virtualbox.startup.plist")
