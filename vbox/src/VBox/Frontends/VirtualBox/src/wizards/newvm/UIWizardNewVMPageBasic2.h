@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic2.h 85063 2020-07-06 10:19:00Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic2.h 85067 2020-07-06 12:49:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic2 class declaration.
  */
@@ -66,9 +66,9 @@ protected:
         ToolBoxItems_ProductKey
     };
 
-    void createUserNameHostNameWidgets();
-    void createGAInstallWidgets();
-    void createProductKeyWidgets();
+    QWidget *createUserNameHostNameWidgets();
+    QWidget *createGAInstallWidgets();
+    QWidget *createProductKeyWidgets();
 
     bool checkGAISOFile() const;
 

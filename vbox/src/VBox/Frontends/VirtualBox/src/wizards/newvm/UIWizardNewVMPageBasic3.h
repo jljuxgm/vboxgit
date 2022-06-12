@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic3.h 85064 2020-07-06 10:42:13Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic3.h 85067 2020-07-06 12:49:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic3 class declaration.
  */
@@ -61,27 +61,23 @@ protected:
     void getWithFileOpenDialog();
     bool getWithNewVirtualDiskWizard();
 
-    /** Stuff for 'virtualDisk' field. */
-    CMedium virtualDisk() const { return m_virtualDisk; }
-    void setVirtualDisk(const CMedium &virtualDisk) { m_virtualDisk = virtualDisk; }
 
-    /** Stuff for 'virtualDiskId' field. */
-    QUuid virtualDiskId() const { return m_uVirtualDiskId; }
-    void setVirtualDiskId(const QUuid &uVirtualDiskId) { m_uVirtualDiskId = uVirtualDiskId; }
+    /** @name Property getters/setters
+     * @{ */
+       CMedium virtualDisk() const { return m_virtualDisk; }
+       void setVirtualDisk(const CMedium &virtualDisk) { m_virtualDisk = virtualDisk; }
+       QUuid virtualDiskId() const { return m_uVirtualDiskId; }
+       void setVirtualDiskId(const QUuid &uVirtualDiskId) { m_uVirtualDiskId = uVirtualDiskId; }
+       QString virtualDiskName() const { return m_strVirtualDiskName; }
+       void setVirtualDiskName(const QString &strVirtualDiskName) { m_strVirtualDiskName = strVirtualDiskName; }
+       QString virtualDiskLocation() const { return m_strVirtualDiskLocation; }
+       void setVirtualDiskLocation(const QString &strVirtualDiskLocation) { m_strVirtualDiskLocation = strVirtualDiskLocation; }
+       int baseMemory() const;
+       int VCPUCount() const;
+    /** @} */
 
-    /** Stuff for 'virtualDiskName' field. */
-    QString virtualDiskName() const { return m_strVirtualDiskName; }
-    void setVirtualDiskName(const QString &strVirtualDiskName) { m_strVirtualDiskName = strVirtualDiskName; }
-
-    /** Stuff for 'virtualDiskLocation' field. */
-    QString virtualDiskLocation() const { return m_strVirtualDiskLocation; }
-    void setVirtualDiskLocation(const QString &strVirtualDiskLocation) { m_strVirtualDiskLocation = strVirtualDiskLocation; }
-
-    int baseMemory() const;
-    int VCPUCount() const;
-
-    void createDiskWidgets();
-    void createHardwareWidgets();
+    QWidget *createDiskWidgets();
+    QWidget *createHardwareWidgets();
 
     /** Helpers. */
     void ensureNewVirtualDiskDeleted();
@@ -89,11 +85,13 @@ protected:
     /** Input. */
     bool m_fRecommendedNoDisk;
 
-    /** Variables. */
-    CMedium m_virtualDisk;
-    QUuid   m_uVirtualDiskId;
-    QString m_strVirtualDiskName;
-    QString m_strVirtualDiskLocation;
+    /** @name Variables
+     * @{ */
+       CMedium m_virtualDisk;
+       QUuid   m_uVirtualDiskId;
+       QString m_strVirtualDiskName;
+       QString m_strVirtualDiskLocation;
+    /** @} */
 
     /** @name Widgets
      * @{ */
