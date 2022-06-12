@@ -1,4 +1,4 @@
-/* $Id: DBGF.cpp 86099 2020-09-13 07:24:11Z vboxsync $ */
+/* $Id: DBGF.cpp 86361 2020-09-30 18:59:31Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility.
  */
@@ -208,6 +208,18 @@ VMMR3_INT_DECL(int) DBGFR3Term(PVM pVM)
     dbgfR3InfoTerm(pUVM);
 
     return VINF_SUCCESS;
+}
+
+
+/**
+ * This is for tstCFGM and others to avoid trigger leak detection.
+ *
+ * @returns VBox status code.
+ * @param   pVM     The cross context VM structure.
+ */
+VMMR3DECL(void) DBGFR3TermUVM(PUVM pUVM)
+{
+    dbgfR3InfoTerm(pUVM);
 }
 
 

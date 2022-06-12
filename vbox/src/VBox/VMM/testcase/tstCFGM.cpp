@@ -1,4 +1,4 @@
-/* $Id: tstCFGM.cpp 85169 2020-07-10 10:33:31Z vboxsync $ */
+/* $Id: tstCFGM.cpp 86361 2020-09-30 18:59:31Z vboxsync $ */
 /** @file
  * Testcase for CFGM.
  */
@@ -22,6 +22,7 @@
 *********************************************************************************************************************************/
 #include <VBox/sup.h>
 #include <VBox/vmm/cfgm.h>
+#include <VBox/vmm/dbgf.h>
 #include <VBox/vmm/mm.h>
 #include <VBox/vmm/vm.h>
 #include <VBox/vmm/uvm.h>
@@ -123,6 +124,10 @@ static void doInVmmTests(RTTEST hTest)
 
     /* done */
     RTTESTI_CHECK_RC_RETV(CFGMR3Term(pVM), VINF_SUCCESS);
+    MMR3TermUVM(pUVM);
+    STAMR3TermUVM(pUVM);
+    DBGFR3TermUVM(pUVM);
+    RTMemPageFree(pUVM, sizeof(*pUVM));
 }
 
 
