@@ -1,4 +1,4 @@
-/* $Id: DnDDroppedFiles.cpp 85027 2020-07-01 14:30:46Z vboxsync $ */
+/* $Id: DnDDroppedFiles.cpp 85028 2020-07-01 14:37:53Z vboxsync $ */
 /** @file
  * DnD - Directory handling.
  */
@@ -178,7 +178,7 @@ int DnDDroppedFiles::OpenEx(const char *pszPath, DNDURIDROPPEDFILEFLAGS fFlags /
             break;
         }
 
-        rc = DnDPathSanitizeFilename(szTime, sizeof(szTime));
+        rc = DnDPathSanitize(szTime, sizeof(szTime));
         if (RT_FAILURE(rc))
             break;
 
