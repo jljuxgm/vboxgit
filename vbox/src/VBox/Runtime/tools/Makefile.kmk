@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 85673 2020-08-10 16:02:28Z vboxsync $
+# $Id: Makefile.kmk 87004 2020-11-27 16:18:47Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT tools.
 #
@@ -156,6 +156,11 @@ if !defined(VBOX_ONLY_BUILD)
   RTHttp_TEMPLATE = VBoxR3Tool
   RTHttp_SOURCES = RTHttp.cpp
  endif
+
+ # RTHttpServer implements a simple HTTP server.
+ PROGRAMS += RTHttpServer
+ RTHttpServer_TEMPLATE = VBoxR3Tool
+ RTHttpServer_SOURCES = RTHttpServer.cpp
 
  # RTLdrCheckImports - import checker.
  PROGRAMS += RTLdrCheckImports

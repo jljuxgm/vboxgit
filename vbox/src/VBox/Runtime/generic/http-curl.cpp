@@ -1,4 +1,4 @@
-/* $Id: http-curl.cpp 86983 2020-11-26 11:33:39Z vboxsync $ */
+/* $Id: http-curl.cpp 87004 2020-11-27 16:18:47Z vboxsync $ */
 /** @file
  * IPRT - HTTP client API, cURL based.
  *
@@ -3828,28 +3828,6 @@ RTR3DECL(int) RTHttpPerform(RTHTTP hHttp, const char *pszUrl, RTHTTPMETHOD enmMe
 
     ASMAtomicWriteBool(&pThis->fBusy, false);
     return rc;
-}
-
-
-RTR3DECL(const char *) RTHttpMethodName(RTHTTPMETHOD enmMethod)
-{
-    switch (enmMethod)
-    {
-        case RTHTTPMETHOD_INVALID:  return "invalid";
-        case RTHTTPMETHOD_GET:      return "GET";
-        case RTHTTPMETHOD_PUT:      return "PUT";
-        case RTHTTPMETHOD_POST:     return "POST";
-        case RTHTTPMETHOD_PATCH:    return "PATCH";
-        case RTHTTPMETHOD_DELETE:   return "DELETE";
-        case RTHTTPMETHOD_HEAD:     return "HEAD";
-        case RTHTTPMETHOD_OPTIONS:  return "OPTIONS";
-        case RTHTTPMETHOD_TRACE:    return "TRACE";
-
-        case RTHTTPMETHOD_END:
-        case RTHTTPMETHOD_32BIT_HACK:
-            break;
-    }
-    return "unknown";
 }
 
 

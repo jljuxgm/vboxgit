@@ -1,4 +1,4 @@
-/* $Id: RTCRestClientApiBase.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: RTCRestClientApiBase.cpp 87004 2020-11-27 16:18:47Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestClientApiBase implementation.
  */
@@ -195,7 +195,7 @@ int RTCRestClientApiBase::xmitReady(RTHTTP a_hHttp, RTCString const &a_rStrFullU
 int RTCRestClientApiBase::doCall(RTCRestClientRequestBase const &a_rRequest, RTHTTPMETHOD a_enmHttpMethod,
                                  RTCRestClientResponseBase *a_pResponse, const char *a_pszMethod, uint32_t a_fFlags) RT_NOEXCEPT
 {
-    LogFlow(("doCall: %s %s\n", a_pszMethod, RTHttpMethodName(a_enmHttpMethod)));
+    LogFlow(("doCall: %s %s\n", a_pszMethod, RTHttpMethodToStr(a_enmHttpMethod)));
 
 
     /*
