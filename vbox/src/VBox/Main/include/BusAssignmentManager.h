@@ -1,4 +1,4 @@
-/* $Id: BusAssignmentManager.h 85007 2020-06-30 17:19:25Z vboxsync $ */
+/* $Id: BusAssignmentManager.h 87242 2021-01-13 16:02:24Z vboxsync $ */
 /** @file
  * VirtualBox bus slots assignment manager
  */
@@ -46,7 +46,7 @@ public:
         PCIBusAddress hostAddress;
     };
 
-    static BusAssignmentManager *createInstance(ChipsetType_T chipsetType, bool fIommu);
+    static BusAssignmentManager *createInstance(ChipsetType_T chipsetType, IommuType_T iommuType);
     virtual void AddRef();
     virtual void Release();
 
