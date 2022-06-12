@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 84946 2020-06-25 10:25:18Z vboxsync $
+# $Id: base.py 86442 2020-10-04 12:08:27Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84946 $"
+__version__ = "$Revision: 86442 $"
 
 
 # Standard Python imports.
@@ -1659,7 +1659,9 @@ class TestDriverBase(object): # pylint: disable=too-many-instance-attributes
         Exception wrapped main() worker.
         """
 
-        # parse the arguments.
+        #
+        # Parse the arguments.
+        #
         if asArgs is None:
             asArgs = list(sys.argv);
         iArg = 1;
@@ -1689,9 +1691,11 @@ class TestDriverBase(object): # pylint: disable=too-many-instance-attributes
             reporter.error('valid actions: %s' % (self.asNormalActions + self.asSpecialActions + ['all']));
             return rtexitcode.RTEXITCODE_SYNTAX;
 
-        # execte the actions.
+        #
+        # Execte the actions.
+        #
         fRc = True;         # Tristate - True (success), False (failure), None (skipped).
-        asActions = self.asActions;
+        asActions = list(self.asActions); # Must copy it or vboxinstaller.py breaks.
         if 'extract' in asActions:
             reporter.log('*** extract action ***');
             asActions.remove('extract');
@@ -1758,7 +1762,9 @@ class TestDriverBase(object): # pylint: disable=too-many-instance-attributes
             reporter.error('unhandled actions: %s' % (asActions,));
             fRc = False;
 
-        # Done
+        #
+        # Done - report the final result.
+        #
         if fRc is None:
             if self.fBadTestbox:
                 reporter.log('****************************************************************');
