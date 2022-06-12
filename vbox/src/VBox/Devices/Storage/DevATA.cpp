@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: DevATA.cpp 84504 2020-05-25 14:51:42Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -5610,7 +5610,7 @@ static void ataR3DMATransfer(PPDMDEVINS pDevIns, PATACONTROLLER pCtl, PATACONTRO
         }
         else
         {
-            PDMDevHlpPhysRead(pDevIns, GCPhysDesc, &DMADesc, sizeof(BMDMADesc));
+            PDMDevHlpPhysReadMeta(pDevIns, GCPhysDesc, &DMADesc, sizeof(BMDMADesc));
             GCPhysBuffer = RT_LE2H_U32(DMADesc.GCPhysBuffer);
             cbBuffer = RT_LE2H_U32(DMADesc.cbBuffer);
             fLastDesc = RT_BOOL(cbBuffer & UINT32_C(0x80000000));
@@ -5631,9 +5631,9 @@ static void ataR3DMATransfer(PPDMDEVINS pDevIns, PATACONTROLLER pCtl, PATACONTRO
                       (int)GCPhysDesc, GCPhysBuffer, cbBuffer, RT_LE2H_U32(DMADesc.cbBuffer) & 0xfffe));
 
                 if (uTxDir == PDMMEDIATXDIR_FROM_DEVICE)
-                    PDMDevHlpPCIPhysWrite(pDevIns, GCPhysBuffer, &s->abIOBuffer[iIOBufferCur], cbXfer);
+                    PDMDevHlpPCIPhysWriteUser(pDevIns, GCPhysBuffer, &s->abIOBuffer[iIOBufferCur], cbXfer);
                 else
-                    PDMDevHlpPCIPhysRead(pDevIns, GCPhysBuffer, &s->abIOBuffer[iIOBufferCur], cbXfer);
+                    PDMDevHlpPCIPhysReadUser(pDevIns, GCPhysBuffer, &s->abIOBuffer[iIOBufferCur], cbXfer);
 
                 iIOBufferCur    += cbXfer;
                 cbTotalTransfer -= cbXfer;
