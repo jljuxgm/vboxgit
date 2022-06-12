@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 86923 2020-11-19 17:37:32Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 86929 2020-11-20 10:30:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -614,8 +614,8 @@ UIChooserItem *UIChooserModel::root() const
 
 void UIChooserModel::startEditingSelectedGroupItemName()
 {
-    /* Only for single selected group: */
-    if (!isSingleGroupSelected())
+    /* Only for single selected local group: */
+    if (!isSingleLocalGroupSelected())
         return;
 
     /* Start editing first selected item name: */
