@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsNetworkDetailsNAT.cpp 85796 2020-08-17 11:02:54Z vboxsync $ */
+/* $Id: UIGlobalSettingsNetworkDetailsNAT.cpp 85808 2020-08-18 08:55:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsNetworkDetailsNAT class implementation.
  */
@@ -18,6 +18,7 @@
 /* Qt includes: */
 #include <QCheckBox>
 #include <QRegExpValidator>
+#include <QGridLayout>
 #include <QLabel>
 #include <QLineEdit>
 #include <QPushButton>
