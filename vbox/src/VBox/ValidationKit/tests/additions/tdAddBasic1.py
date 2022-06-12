@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 84443 2020-05-22 07:50:54Z vboxsync $
+# $Id: tdAddBasic1.py 84444 2020-05-22 07:55:03Z vboxsync $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84443 $"
+__version__ = "$Revision: 84444 $"
 
 # Standard Python imports.
 import os;
@@ -205,8 +205,8 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
             reporter.testStart('Enabling udev logging ...');
             oSession, oTxsSession = self.startVmAndConnectToTxsViaTcp(oTestVm.sVmName, fCdWait = False);
             reporter.testDone();
-            if oTxsSession: 
-                oTxsSession.syncExec("sed", 
+            if oTxsSession:
+                oTxsSession.syncExec("sed",
                                      ("sed", "-i", "'s/.*udev_log.*/udev_log=\"debug\"/'", "/etc/udev/udev.conf"),
                                      fIgnoreErrors = True);
 
