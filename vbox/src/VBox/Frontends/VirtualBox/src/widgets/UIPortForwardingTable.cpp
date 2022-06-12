@@ -1,4 +1,4 @@
-/* $Id: UIPortForwardingTable.cpp 87295 2021-01-18 11:16:06Z vboxsync $ */
+/* $Id: UIPortForwardingTable.cpp 87296 2021-01-18 12:07:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPortForwardingTable class implementation.
  */
@@ -889,6 +889,8 @@ bool UIPortForwardingTable::eventFilter(QObject *pObject, QEvent *pEvent)
             case QEvent::Show:
             case QEvent::Resize:
             {
+                /* Make sure layout requests really processed first of all: */
+                QCoreApplication::sendPostedEvents(0, QEvent::LayoutRequest);
                 /* Adjust table: */
                 sltAdjustTable();
                 break;
