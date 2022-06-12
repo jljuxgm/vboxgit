@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.h 88038 2021-03-09 09:11:02Z vboxsync $ */
+/* $Id: UIWizardNewVM.h 88246 2021-03-22 15:25:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class declaration.
  */
@@ -129,6 +129,8 @@ private:
     /* Helping stuff: */
     QString getNextControllerName(KStorageBus type);
     void setFieldsFromDefaultUnttendedInstallData();
+    /* Returns ISO file path if a readable ISO file is selected. Returns an empty string otherwise. */
+    QString ISOFilePath() const;
 
     /** @name Variables
      * @{ */
