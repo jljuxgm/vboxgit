@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 85293 2020-07-13 08:55:08Z vboxsync $
+# $Id: Makefile.kmk 85365 2020-07-16 12:26:59Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -614,8 +614,6 @@ VBoxSVC_SOURCES = \
 	$(VBOX_XML_SCHEMADEFS_CPP) \
 	$(VBOX_AUTOGEN_EVENT_CPP) \
 	$(if $(VBOX_WITH_XPCOM),src-server/xpcom/server.cpp,)
-
-src-server/ApplianceImplExport.cpp_DEPS = $(VBOX_SVN_REV_HEADER)
 
 ifn1of ($(KBUILD_TARGET), win darwin)
 VBoxSVC_SOURCES += $(PATH_ROOT)/src/VBox/Devices/Network/slirp/resolv_conf_parser.c
