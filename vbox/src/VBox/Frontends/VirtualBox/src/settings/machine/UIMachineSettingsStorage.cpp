@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 86233 2020-09-23 12:10:51Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 87533 2021-02-02 12:02:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class implementation.
  */
@@ -3871,14 +3871,12 @@ void UIMachineSettingsStorage::sltSetInformation()
             /* Setting Controller Sub-Type: */
             else if (pSender == m_pComboType)
             {
+                const KStorageBus enmBus = m_pComboType->currentData(StorageModel::R_CtrBusType).value<KStorageBus>();
+                const KStorageControllerType enmType = m_pComboType->currentData(StorageModel::R_CtrType).value<KStorageControllerType>();
                 const bool fResult =
-                    m_pModelStorage->setData(index,
-                                             QVariant::fromValue(m_pComboType->currentData(StorageModel::R_CtrBusType).value<KStorageBus>()),
-                                             StorageModel::R_CtrBusType);
+                    m_pModelStorage->setData(index, QVariant::fromValue(enmBus), StorageModel::R_CtrBusType);
                 if (fResult)
-                    m_pModelStorage->setData(index,
-                                             QVariant::fromValue(m_pComboType->currentData(StorageModel::R_CtrType).value<KStorageControllerType>()),
-                                             StorageModel::R_CtrType);
+                    m_pModelStorage->setData(index, QVariant::fromValue(enmType), StorageModel::R_CtrType);
             }
             else if (pSender == m_pSpinboxPortCount)
                 m_pModelStorage->setData(index, m_pSpinboxPortCount->value(), StorageModel::R_CtrPortCount);
