@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 85301 2020-07-13 10:07:20Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 85302 2020-07-13 10:08:26Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -3718,8 +3718,8 @@ void VirtualBox::i_onGuestPropertyChange(const Guid &aMachineId, IN_BSTR aName,
                                          IN_BSTR aValue, IN_BSTR aFlags)
 {
     ComPtr<IEvent> ptrEvent;
-    HRESULT hrc = CreateGuestPropertyChangedEvent(ptrEvent.asOutParam(), m->pEventSource,
-                                                  aMachineId.toUtf16().raw(), aName, aValue, aFlags);
+    HRESULT hrc = ::CreateGuestPropertyChangedEvent(ptrEvent.asOutParam(), m->pEventSource,
+                                                    aMachineId.toUtf16().raw(), aName, aValue, aFlags);
     AssertComRCReturnVoid(hrc);
     i_postEvent(new AsyncEvent(this, ptrEvent));
 }
