@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.cpp 88411 2021-04-08 11:25:05Z vboxsync $ */
+/* $Id: UIHelpBrowserWidget.cpp 88419 2021-04-08 14:33:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class implementation.
  */
@@ -833,6 +833,8 @@ void UIHelpBrowserTabManager::addNewTab(const QUrl &initialUrl, bool fBackground
             this, &UIHelpBrowserTabManager::sltZoomPercentageChanged);
     connect(pTabWidget, &UIHelpBrowserTab::sigLinkHighlighted,
             this, &UIHelpBrowserTabManager::sigLinkHighlighted);
+
+    pTabWidget->setZoomPercentage(zoomPercentage());
 
     if (!fBackground)
         setCurrentIndex(index);
