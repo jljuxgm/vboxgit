@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.h 88025 2021-03-08 18:31:56Z vboxsync $ */
+/* $Id: DrvAudio.h 88026 2021-03-08 18:41:53Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  */
@@ -186,8 +186,8 @@ typedef struct DRVAUDIO
 
 /** @name Audio format helper methods.
  * @{ */
-const char *DrvAudioHlpAudDirToStr(PDMAUDIODIR enmDir);
-const char *DrvAudioHlpAudFmtToStr(PDMAUDIOFMT enmFmt);
+const char *PDMAudioDirGetName(PDMAUDIODIR enmDir);
+const char *PDMAudioFormatGetName(PDMAUDIOFMT enmFmt);
 bool        PDMAudioFormatIsSigned(PDMAUDIOFMT enmFmt);
 uint8_t     PDMAudioFormatGetBits(PDMAUDIOFMT enmFmt);
 /** @}  */
