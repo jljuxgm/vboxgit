@@ -1,4 +1,4 @@
-/* $Id: scmsubversion.cpp 85189 2020-07-10 13:26:18Z vboxsync $ */
+/* $Id: scmsubversion.cpp 85696 2020-08-11 16:40:39Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager, Subversion Access.
  */
@@ -1137,7 +1137,7 @@ bool ScmSvnIsInWorkingCopy(PSCMRWSTATE pState)
     }
     else
     {
-        const char *apszArgs[] = { g_szSvnPath, "propget", "svn:no-such-property", pState->pszFilename, NULL };
+        const char *apszArgs[] = { g_szSvnPath, "proplist", pState->pszFilename, NULL };
         char       *pszValue;
         int rc = scmSvnRunAndGetOutput(pState, apszArgs, true, &pszValue);
         if (RT_SUCCESS(rc))
