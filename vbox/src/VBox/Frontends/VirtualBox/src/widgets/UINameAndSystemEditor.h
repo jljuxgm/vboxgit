@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.h 83902 2020-04-21 16:20:39Z vboxsync $ */
+/* $Id: UINameAndSystemEditor.h 85052 2020-07-03 11:18:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class declaration.
  */
@@ -34,6 +34,7 @@
 
 /* Forward declarations: */
 class QComboBox;
+class QGridLayout;
 class QLabel;
 class QILineEdit;
 class QString;
@@ -73,6 +74,9 @@ public:
                           bool fChooseName = true,
                           bool fChoosePath = false,
                           bool fChooseType = true);
+
+    /** Defines minimum layout @a iIndent. */
+    void setMinimumLayoutIndent(int iIndent);
 
     /** Defines whether VM name stuff is @a fEnabled. */
     void setNameStuffEnabled(bool fEnabled);
@@ -158,6 +162,9 @@ private:
     bool  m_fSupportsHWVirtEx;
     /** Holds whether host supports long mode. */
     bool  m_fSupportsLongMode;
+
+    /** Holds the main layout instance. */
+    QGridLayout *m_pMainLayout;
 
     /** Holds the VM name label instance. */
     QLabel *m_pNameLabel;
