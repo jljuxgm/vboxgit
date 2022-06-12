@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioWasApi.cpp 88819 2021-05-03 10:26:28Z vboxsync $ */
+/* $Id: DrvHostAudioWasApi.cpp 88823 2021-05-03 10:49:09Z vboxsync $ */
 /** @file
  * Host audio driver - Windows Audio Session API.
  */
@@ -1223,6 +1223,7 @@ static DECLCALLBACK(int) drvHostWasWorkerThread(RTTHREAD hThreadSelf, void *pvUs
     return VINF_SUCCESS;
 }
 #endif
+
 
 /*********************************************************************************************************************************
 *   PDMIHOSTAUDIO                                                                                                                *
