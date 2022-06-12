@@ -1,4 +1,4 @@
-/* $Id: GuestDnDPrivate.h 85371 2020-07-17 10:02:58Z vboxsync $ */
+/* $Id: GuestDnDPrivate.h 85373 2020-07-17 12:45:56Z vboxsync $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget +
  * GuestDnDSource.
@@ -333,7 +333,10 @@ public:
 struct GuestDnDTransferSendData : public GuestDnDTransferData
 {
     GuestDnDTransferSendData()
-        : mfObjState(0) { }
+        : mfObjState(0)
+    {
+        RT_ZERO(mList);
+    }
 
     virtual ~GuestDnDTransferSendData()
     {
