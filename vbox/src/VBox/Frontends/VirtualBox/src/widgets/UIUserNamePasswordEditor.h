@@ -1,4 +1,4 @@
-/* $Id: UIUserNamePasswordEditor.h 85150 2020-07-09 12:56:45Z vboxsync $ */
+/* $Id: UIUserNamePasswordEditor.h 87348 2021-01-21 12:09:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class declaration.
  */
@@ -87,6 +87,10 @@ public:
     /** Sets m_fForceUnmark flag. see it for more info. */
     void setForceUnmark(bool fForceUnmark);
 
+    /** When fEnabled true place holder texts for the line edits are shown. */
+    void setPlaceholderTextEnabled(bool fEnabled);
+    void setLabelsVisible(bool fVisible);
+
 protected:
 
     void retranslateUi();
@@ -117,6 +121,8 @@ private:
     QColor m_orginalLineEditBaseColor;
     /** When true line edits are not marked even if they have to be. */
     bool m_fForceUnmark;
+    bool m_fShowPlaceholderText;
+    bool m_fLabelsVisible;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_widgets_UIUserNamePasswordEditor_h */

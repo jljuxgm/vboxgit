@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic2.cpp 87322 2021-01-20 12:45:43Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic2.cpp 87348 2021-01-21 12:09:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic2 class implementation.
  */
@@ -114,6 +114,7 @@ QWidget *UIWizardNewVMPage2::createUserNameHostNameWidgets()
 {
     QWidget *pContainer = new QWidget;
     QGridLayout *pGridLayout = new QGridLayout(pContainer);
+    pGridLayout->setContentsMargins(0, 0, 0, 0);
 
     m_pUserNamePasswordEditor = new UIUserNamePasswordEditor;
     pGridLayout->addWidget(m_pUserNamePasswordEditor, 0, 0, 1, 4);
@@ -158,7 +159,7 @@ QWidget *UIWizardNewVMPage2::createProductKeyWidgets()
 {
     QWidget *pContainer = new QWidget;
     QGridLayout *pGridLayout = new QGridLayout(pContainer);
-
+    pGridLayout->setContentsMargins(0, 0, 0, 0);
     m_pProductKeyLabel = new QLabel;
     m_pProductKeyLabel->setAlignment(Qt::AlignRight);
 

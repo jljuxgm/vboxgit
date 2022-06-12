@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic1.cpp 87322 2021-01-20 12:45:43Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic1.cpp 87348 2021-01-21 12:09:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic1 class implementation.
  */
@@ -447,9 +447,12 @@ QString UIWizardNewVMPage1::ISOFilePath() const
 
 bool UIWizardNewVMPage1::isUnattendedEnabled() const
 {
-    if (m_pISOFilePathSelector)
-        return m_pISOFilePathSelector->isValid();
-    return false;
+    if (!m_pISOFilePathSelector)
+        return false;
+    const QString &strPath = m_pISOFilePathSelector->path();
+    if (strPath.isNull() || strPath.isEmpty())
+        return false;
+    return true;
 }
 
 bool UIWizardNewVMPage1::startHeadless() const
