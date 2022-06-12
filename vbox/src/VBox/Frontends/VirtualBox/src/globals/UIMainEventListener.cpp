@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.cpp 86077 2020-09-09 16:03:14Z vboxsync $ */
+/* $Id: UIMainEventListener.cpp 86079 2020-09-09 16:04:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMainEventListener class implementation.
  */
@@ -153,7 +153,10 @@ void UIMainEventListeningThread::run()
             /* Process the event and tell the listener: */
             comListener.HandleEvent(comEvent);
             if (comEvent.GetWaitable())
+            {
                 comSource.EventProcessed(comListener, comEvent);
+                LogRel(("GUI: UIMainEventListener/ThreadRun: EventProcessed set for waitable event\n"));
+            }
         }
     }
 
@@ -295,8 +298,10 @@ STDMETHODIMP UIMainEventListener::HandleEvent(VBoxEventType_T, IEvent *pEvent)
         }
         case KVBoxEventType_OnCloudProviderUninstall:
         {
+            LogRel(("GUI: UIMainEventListener/HandleEvent: KVBoxEventType_OnCloudProviderUninstall event came\n"));
             CCloudProviderUninstallEvent comEventSpecific(pEvent);
             emit sigCloudProviderUninstall(comEventSpecific.GetId());
+            LogRel(("GUI: UIMainEventListener/HandleEvent: KVBoxEventType_OnCloudProviderUninstall event done\n"));
             break;
         }
 
