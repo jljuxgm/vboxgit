@@ -1,4 +1,4 @@
-/* $Id: VBoxMPIOCTL.cpp 83827 2020-04-19 02:02:30Z vboxsync $ */
+/* $Id: VBoxMPIOCTL.cpp 84410 2020-05-20 14:30:31Z vboxsync $ */
 /** @file
  * VBox XPDM Miniport IOCTL handlers
  */
@@ -34,7 +34,7 @@
     }
 
 #ifndef DOXYGEN_RUNNING
-# if RT_MSC_PREREQ(RT_MSC_VER_VC141)
+# if RT_MSC_PREREQ(RT_MSC_VER_VC140)
 /* VBoxMPIOCTL.cpp(80): warning C4457: declaration of 'pRequestedAddress' hides function parameter (caused by VBOXMPIOCTL_HIDE) */
 #  pragma warning(disable:4457 )
 # endif
