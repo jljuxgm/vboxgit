@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 86661 2020-10-21 11:39:04Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 87127 2020-12-25 13:10:15Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -3126,7 +3126,7 @@ static DECLCALLBACK(int) pdmR3DevHlp_DMARegister(PPDMDEVINS pDevIns, unsigned uC
              pDevIns->pReg->szName, pDevIns->iInstance, uChannel, pfnTransferHandler, pvUser));
     int rc = VINF_SUCCESS;
     if (pVM->pdm.s.pDmac)
-        pVM->pdm.s.pDmac->Reg.pfnRegister(pVM->pdm.s.pDmac->pDevIns, uChannel, pfnTransferHandler, pvUser);
+        pVM->pdm.s.pDmac->Reg.pfnRegister(pVM->pdm.s.pDmac->pDevIns, uChannel, pDevIns, pfnTransferHandler, pvUser);
     else
     {
         AssertMsgFailed(("Configuration error: No DMAC controller available. This could be related to init order too!\n"));
