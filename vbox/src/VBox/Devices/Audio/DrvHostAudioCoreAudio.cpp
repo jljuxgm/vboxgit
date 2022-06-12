@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioCoreAudio.cpp 89500 2021-06-04 10:30:47Z vboxsync $ */
+/* $Id: DrvHostAudioCoreAudio.cpp 89502 2021-06-04 10:35:52Z vboxsync $ */
 /** @file
  * Host audio driver - Mac OS X CoreAudio.
  *
@@ -1208,7 +1208,7 @@ static int drvHstAudCaDevicesEnumerateAll(PPDMAUDIOHOSTENUM pDevEnm)
          * The only relevant information here is channel counts and the UID(s),
          * everything else is just extras we can live without.
          */
-        PCOREAUDIODEVICEDATA pDevEntry = (PCOREAUDIODEVICEDATA)PDMAudioHostDevAlloc(sizeof(*pDevEntry));
+        PCOREAUDIODEVICEDATA pDevEntry = (PCOREAUDIODEVICEDATA)PDMAudioHostDevAlloc(sizeof(*pDevEntry), 0, 0);
         AssertReturnStmt(pDevEntry, RTMemTmpFree(paidDevices), VERR_NO_MEMORY);
 
         pDevEntry->idDevice = idDevice;
