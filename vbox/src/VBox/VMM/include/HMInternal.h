@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 87439 2021-01-26 17:51:07Z vboxsync $ */
+/* $Id: HMInternal.h 87443 2021-01-26 20:32:56Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -1358,10 +1358,6 @@ DECLASM(void)               hmR0VmxExportHostSegmentRegsAsmHlp(PVMXRESTOREHOST p
  * @param   pRestoreHost        Pointer to the host-restore structure.
  */
 DECLASM(int)                VMXRestoreHostState(uint32_t fRestoreHostFlags, PVMXRESTOREHOST pRestoreHost);
-
-# ifdef VBOX_WITH_KERNEL_USING_XMM
-DECLASM(int)                hmR0VMXStartVMWrapXMM(PVMCC pVM, PVMCPUCC pVCpu, RTHCUINT fResume, PFNHMVMXSTARTVM pfnStartVM);
-# endif
 
 /**
  * VMX StartVM functions.
