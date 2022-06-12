@@ -1,4 +1,4 @@
-/* $Id: ldrELFRelocatable.cpp.h 85540 2020-07-30 09:05:37Z vboxsync $ */
+/* $Id: ldrELFRelocatable.cpp.h 85556 2020-07-30 13:15:06Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Template for ELF Relocatable Images.
  */
@@ -2858,7 +2858,7 @@ static int RTLDRELF_NAME(Open)(PRTLDRREADER pReader, uint32_t fFlags, RTLDRARCH 
     pModElf->Dyn.iStrSh     = ~0U;
     //pModElf->Dyn.cbStr    = 0;
     //pModElf->Dyn.pStr     = NULL;
-    //pModElf->iFirstSect   = 0;
+    pModElf->iFirstSect     = 1;
     //pModElf->fShdrInOrder = false;
     //pModElf->cbImage      = 0;
     pModElf->LinkAddress    = ~(Elf_Addr)0;
