@@ -1,4 +1,4 @@
-/* $Id: DragAndDrop.h 85538 2020-07-30 06:55:59Z vboxsync $ */
+/* $Id: DragAndDrop.h 85557 2020-07-30 13:28:57Z vboxsync $ */
 /** @file
  * DnD - Shared functions between host and guest.
  */
@@ -208,6 +208,10 @@ int DnDTransferObjectOpen(PDNDTRANSFEROBJECT pObj, uint64_t fOpen, RTFMODE fMode
 int DnDTransferObjectQueryInfo(PDNDTRANSFEROBJECT pObj);
 int DnDTransferObjectRead(PDNDTRANSFEROBJECT pObj, void *pvBuf, size_t cbBuf, uint32_t *pcbRead);
 int DnDTransferObjectWrite(PDNDTRANSFEROBJECT pObj, const void *pvBuf, size_t cbBuf, uint32_t *pcbWritten);
+
+/** Defines the default chunk size of DnD data transfers.
+ *  Supported on all (older) Guest Additions which also support DnD. */
+#define DND_DEFAULT_CHUNK_SIZE                       _64K
 
 /** Separator for a formats list. */
 #define DND_FORMATS_SEPARATOR                        "\r\n"

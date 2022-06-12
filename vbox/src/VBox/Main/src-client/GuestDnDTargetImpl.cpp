@@ -1,4 +1,4 @@
-/* $Id: GuestDnDTargetImpl.cpp 85554 2020-07-30 13:07:17Z vboxsync $ */
+/* $Id: GuestDnDTargetImpl.cpp 85557 2020-07-30 13:28:57Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag'n drop target.
  */
@@ -122,7 +122,7 @@ HRESULT GuestDnDTarget::FinalConstruct(void)
      * been hardcoded until now. */
     /* Note: Never ever rely on information from the guest; the host dictates what and
      *       how to do something, so try to negogiate a sensible value here later. */
-    mData.mcbBlockSize = _64K; /** @todo Make this configurable. */
+    mData.mcbBlockSize = DND_DEFAULT_CHUNK_SIZE; /** @todo Make this configurable. */
 
     LogFlowThisFunc(("\n"));
     return BaseFinalConstruct();
