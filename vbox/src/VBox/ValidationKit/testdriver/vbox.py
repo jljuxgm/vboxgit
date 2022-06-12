@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 84597 2020-05-28 16:03:23Z vboxsync $
+# $Id: vbox.py 84767 2020-06-10 17:40:46Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84597 $"
+__version__ = "$Revision: 84767 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -3586,6 +3586,10 @@ class TestDriver(base.TestDriver):                                              
                           cMsTimeout = 30000, fIgnoreErrors = False):
         return self.txsDoTask(oSession, oTxsSession, oTxsSession.asyncDownloadString,
                               (sRemoteFile, sEncoding, fIgnoreEncodingErrors, self.adjustTimeoutMs(cMsTimeout), fIgnoreErrors));
+
+    def txsPackFile(self, oSession, oTxsSession, sRemoteFile, sRemoteSource, cMsTimeout = 30000, fIgnoreErrors = False):
+        return self.txsDoTask(oSession, oTxsSession, oTxsSession.asyncPackFile, \
+                              (sRemoteFile, sRemoteSource, self.adjustTimeoutMs(cMsTimeout), fIgnoreErrors));
 
     def txsUnpackFile(self, oSession, oTxsSession, sRemoteFile, sRemoteDir, cMsTimeout = 30000, fIgnoreErrors = False):
         return self.txsDoTask(oSession, oTxsSession, oTxsSession.asyncUnpackFile, \
