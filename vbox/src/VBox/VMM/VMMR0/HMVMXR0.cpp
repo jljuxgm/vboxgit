@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 87633 2021-02-05 21:37:09Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 87690 2021-02-10 16:00:28Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -9094,8 +9094,9 @@ static VBOXSTRICTRC hmR0VmxEvaluatePendingEvent(PVMCPUCC pVCpu, PCVMXTRANSIENT p
             if (CPUMIsGuestPhysIntrEnabled(pVCpu))
             {
 #ifdef VBOX_WITH_NESTED_HWVIRT_VMX
-                if (   fIsNestedGuest
-                    && CPUMIsGuestVmxPinCtlsSet(pCtx, VMX_PIN_CTLS_EXT_INT_EXIT))
+                if (    fIsNestedGuest
+                    &&  CPUMIsGuestVmxPinCtlsSet(pCtx, VMX_PIN_CTLS_EXT_INT_EXIT)
+                    && !CPUMIsGuestVmxExitCtlsSet(pCtx, VMX_EXIT_CTLS_ACK_EXT_INT))
                 {
                     VBOXSTRICTRC rcStrict = IEMExecVmxVmexitExtInt(pVCpu, 0 /* uVector */, true /* fIntPending */);
                     Assert(rcStrict != VINF_VMX_INTERCEPT_NOT_ACTIVE);
