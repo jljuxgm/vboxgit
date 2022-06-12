@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 87484 2021-01-29 17:37:18Z vboxsync $ */
+/* $Id: PGMInternal.h 87485 2021-01-29 17:38:47Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -3764,7 +3764,8 @@ typedef struct PGMCPU
     /** The values of the 4 PDPE CPU registers (PAE).
      * @todo Not really maintained by PGM atm, only by VT-x in EPT mode. Should
      *       load on cr3 load and use instead of guest memory version like real
-     *       HW. */
+     *       HW.  We probably should move these to the CPUMCTX and treat them
+     *       like the rest of the register wrt exporting to VT-x and import back. */
     X86PDPE                         aGstPaePdpeRegs[4];
     /** The physical addresses of the monitored guest page directories (PAE). */
     RTGCPHYS                        aGCPhysGstPaePDsMonitored[4];
