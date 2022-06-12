@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItemCloud.h 86771 2020-10-30 13:18:39Z vboxsync $ */
+/* $Id: UIVirtualMachineItemCloud.h 86772 2020-10-30 16:02:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItemCloud class declaration.
  */
@@ -34,7 +34,7 @@
 
 /* Forward declarations: */
 class QTimer;
-class UIProgress;
+class UIProgressObject;
 
 /** UIVirtualMachineItem sub-class used as cloud Virtual Machine item interface. */
 class UIVirtualMachineItemCloud : public UIVirtualMachineItem
@@ -160,13 +160,13 @@ private:
         QString                             m_strFakeCloudItemErrorMessage;
 
         /** Holds whether we should update info. */
-        bool                  m_fRefreshScheduled;
+        bool                        m_fRefreshScheduled;
         /** Holds the machine refresh timer instance. */
-        QTimer               *m_pTimer;
+        QTimer                     *m_pTimer;
         /** Holds the machine refresh progress object instance. */
-        CProgress             m_comProgress;
+        CProgress                   m_comProgress;
         /** Holds the machine refresh progress handler instance. */
-        QPointer<UIProgress>  m_pProgressHandler;
+        QPointer<UIProgressObject>  m_pProgressHandler;
     /** @} */
 };
 

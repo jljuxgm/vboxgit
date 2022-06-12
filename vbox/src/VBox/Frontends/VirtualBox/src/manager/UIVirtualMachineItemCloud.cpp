@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItemCloud.cpp 86771 2020-10-30 13:18:39Z vboxsync $ */
+/* $Id: UIVirtualMachineItemCloud.cpp 86772 2020-10-30 16:02:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItemCloud class implementation.
  */
@@ -26,7 +26,7 @@
 #include "UIErrorString.h"
 #include "UIIconPool.h"
 #include "UIMessageCenter.h"
-#include "UIProgressDialog.h"
+#include "UIProgressObject.h"
 #include "UIThreadPool.h"
 #include "UIVirtualMachineItemCloud.h"
 
@@ -313,10 +313,10 @@ void UIVirtualMachineItemCloud::sltRefreshCloudMachineInfo()
     else
     {
         /* Prepare 'Refresh' progress handler: */
-        m_pProgressHandler = new UIProgress(m_comProgress, this);
+        m_pProgressHandler = new UIProgressObject(m_comProgress, this);
         if (m_pProgressHandler)
         {
-            connect(m_pProgressHandler.data(), &UIProgress::sigProgressEventHandlingFinished,
+            connect(m_pProgressHandler.data(), &UIProgressObject::sigProgressEventHandlingFinished,
                     this, &UIVirtualMachineItemCloud::sltHandleRefreshCloudMachineInfoDone);
             emit sigRefreshStarted();
         }
