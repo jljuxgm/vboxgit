@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84738 $"
+__version__ = "$Revision: 84739 $"
 
 # Standard Python imports.
 import errno
@@ -2945,9 +2945,9 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
             #];
 
         #
-        for iExitCode in xrange(0, 127):
-            atExec.append([ tdTestExec(sCmd = sShell, asArgs = [ sShell, sShellOpt, 'exit %s' % iExitCode ]),
-                            tdTestResultExec(fRc = True, iExitCode = iExitCode) ]);
+        #for iExitCode in xrange(0, 127):
+        #    atExec.append([ tdTestExec(sCmd = sShell, asArgs = [ sShell, sShellOpt, 'exit %s' % iExitCode ]),
+        #                    tdTestResultExec(fRc = True, iExitCode = iExitCode) ]);
 
         if  sVBoxControl \
         and self.oTstDrv.fpApiVer >= 6.0: # Investigate with this doesn't work on (<) 5.2.
@@ -2984,7 +2984,7 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
                 # Append a random number of arguments with random length.
                 for _ in xrange(0, self.oTestFiles.oRandom.randrange(1, 64)):
                     asArgs.append(''.join(random.choice(string.ascii_lowercase)
-                                          for _ in range(self.oTestFiles.oRandom.randrange(1, 255))));
+                                          for _ in range(self.oTestFiles.oRandom.randrange(1, 196))));
 
                 asArgs.append(sEndMarker);
 
