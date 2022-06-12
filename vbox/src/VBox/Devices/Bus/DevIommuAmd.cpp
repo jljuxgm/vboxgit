@@ -1,4 +1,4 @@
-/* $Id: DevIommuAmd.cpp 86834 2020-11-09 15:24:16Z vboxsync $ */
+/* $Id: DevIommuAmd.cpp 86863 2020-11-11 16:44:15Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - AMD implementation.
  */
@@ -3462,9 +3462,7 @@ static int iommuAmdLookupIntrTable(PPDMDEVINS pDevIns, uint16_t uDevId, IOMMUOP 
                             return VERR_IOMMU_INTR_REMAP_DENIED;
                         }
 
-                        /* Paranoia. */
-                        Assert(uIntrCtrl == IOMMU_INTR_CTRL_RSVD);
-
+                        Assert(uIntrCtrl == IOMMU_INTR_CTRL_RSVD); /* Paranoia. */
                         LogFunc(("IntCtl mode invalid %#x -> Illegal DTE\n", uIntrCtrl));
                         EVT_ILLEGAL_DTE_T Event;
                         iommuAmdInitIllegalDteEvent(uDevId, pMsiIn->Addr.u64, true /* fRsvdNotZero */, enmOp, &Event);
@@ -3485,13 +3483,23 @@ static int iommuAmdLookupIntrTable(PPDMDEVINS pDevIns, uint16_t uDevId, IOMMUOP 
                     }
                 }
 
-                if (fPassThru)
+                /*
+                 * For those other than fixed and arbitrated interrupts, destination mode must be 0 (physical).
+                 * See AMD IOMMU spec. The note below Table 19: "IOMMU Controls and Actions for Upstream Interrupts".
+                 */
+                if (   u8DeliveryMode <= VBOX_MSI_DELIVERY_MODE_LOWEST_PRIO
+                    || !pMsiIn->Addr.n.u1DestMode)
                 {
-                    *pMsiOut = *pMsiIn;
-                    return VINF_SUCCESS;
+                    if (fPassThru)
+                    {
+                        *pMsiOut = *pMsiIn;
+                        return VINF_SUCCESS;
+                    }
+                    LogFunc(("Remapping/passthru disallowed for interrupt %#x -> Target abort\n", pMsiIn->Data.n.u8Vector));
                 }
+                else
+                    LogFunc(("Logical destination mode invalid for delivery mode %#x\n -> Target abort\n", u8DeliveryMode));
 
-                LogFunc(("Remapping/passthru disallowed for interrupt (%#x) -> Target abort\n", pMsiIn->Data.n.u8Vector));
                 iommuAmdSetPciTargetAbort(pDevIns);
                 return VERR_IOMMU_INTR_REMAP_DENIED;
             }
