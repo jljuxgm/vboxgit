@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.cpp 85111 2020-07-08 15:41:24Z vboxsync $ */
+/* $Id: UIActionPoolManager.cpp 85151 2020-07-09 14:41:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class implementation.
  */
@@ -3459,12 +3459,7 @@ void UIActionPoolManager::updateMenuGroupConsole()
     /* Clear contents: */
     pMenu->clear();
 
-    /* Populate 'Group' / 'Console' menu: */
-    pMenu->addAction(action(UIActionIndexST_M_Group_M_Console_S_CreateConnection));
-    pMenu->addAction(action(UIActionIndexST_M_Group_M_Console_S_DeleteConnection));
-
-    /* Mark menu as valid: */
-    m_invalidations.remove(UIActionIndexST_M_Group_M_Console);
+    /* This menu always remains invalid.. */
 }
 
 void UIActionPoolManager::updateMenuMachineConsole()
@@ -3475,12 +3470,7 @@ void UIActionPoolManager::updateMenuMachineConsole()
     /* Clear contents: */
     pMenu->clear();
 
-    /* Populate 'Machine' / 'Console' menu: */
-    pMenu->addAction(action(UIActionIndexST_M_Machine_M_Console_S_CreateConnection));
-    pMenu->addAction(action(UIActionIndexST_M_Machine_M_Console_S_DeleteConnection));
-
-    /* Mark menu as valid: */
-    m_invalidations.remove(UIActionIndexST_M_Machine_M_Console);
+    /* This menu always remains invalid.. */
 }
 
 void UIActionPoolManager::updateMenuGroupClose()
