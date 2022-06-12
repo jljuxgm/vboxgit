@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 84696 2020-06-05 14:40:35Z vboxsync $
+# $Id: Makefile.kmk 84746 2020-06-09 19:48:56Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -214,6 +214,9 @@ ifdef VBOX_WITH_VIDEOHWACCEL
  VirtualBoxVM_DEFS          += VBOX_WITH_VIDEOHWACCEL VBOX_GUI_USE_QGL
 else ifdef VBOX_GUI_USE_QGL
  VirtualBoxVM_DEFS          += VBOX_GUI_USE_QGL
+endif
+ifdef VBOX_GUI_WITH_QTGLFRAMEBUFFER
+ VirtualBoxVM_DEFS          += VBOX_GUI_WITH_QTGLFRAMEBUFFER
 endif
 ifdef VBOX_WITH_LIBCURL
  VirtualBoxVM_DEFS          += VBOX_GUI_WITH_NETWORK_MANAGER
