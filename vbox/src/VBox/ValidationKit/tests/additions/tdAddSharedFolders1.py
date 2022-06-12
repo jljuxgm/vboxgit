@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84282 $"
+__version__ = "$Revision: 84440 $"
 
 # Standard Python imports.
 import os
@@ -292,11 +292,11 @@ class SubTstDrvAddSharedFolders1(base.SubTestDriverBase):
                 if oTestVm.isWindows() \
                 or oTestVm.isOS2():
                     sFsPerfPathTemp = "C:\\Temp\\" + sFsPerfImage;
-                    sCopy           = "C:\\Windows\\System32\\cmd.exe";
+                    sCopy           = "cmd.exe";
                     sCopyArgs       = ( sCopy, "/C", "copy", "/Y",  sFsPerfPath, sFsPerfPathTemp );
                 else:
                     sFsPerfPathTemp = "/var/tmp/" + sFsPerfImage;
-                    sCopy           = "/bin/cp";
+                    sCopy           = "cp";
                     sCopyArgs       = ( sCopy, "-a", "-v", sFsPerfPath, sFsPerfPathTemp );
                 fRc = self.oTstDrv.txsRunTest(oTxsSession, 'Copying FsPerf', 60 * 1000,
                                               sCopy, sCopyArgs, fCheckSessionStatus = True);
