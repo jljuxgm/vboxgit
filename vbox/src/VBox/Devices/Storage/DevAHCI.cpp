@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 86480 2020-10-08 06:52:00Z vboxsync $ */
+/* $Id: DevAHCI.cpp 86847 2020-11-10 12:27:08Z vboxsync $ */
 /** @file
  * DevAHCI - AHCI controller device (disk and cdrom).
  *
@@ -3858,7 +3858,7 @@ static DECLCALLBACK(int) ahciR3IoReqQueryBuf(PPDMIMEDIAEXPORT pInterface, PDMMED
         if (   cbData >= _4K
             && !(GCPhysAddrDataBase & (_4K - 1)))
         {
-            rc = PDMDevHlpPhysGCPhys2CCPtr(pDevIns, GCPhysAddrDataBase, 0, ppvBuf, &pIoReq->PgLck);
+            rc = PDMDevHlpPCIPhysGCPhys2CCPtr(pDevIns, NULL /* pPciDev */, GCPhysAddrDataBase, 0, ppvBuf, &pIoReq->PgLck);
             if (RT_SUCCESS(rc))
             {
                 pIoReq->fMapped = true;
