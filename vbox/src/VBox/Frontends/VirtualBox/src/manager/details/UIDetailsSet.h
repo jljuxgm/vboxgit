@@ -1,4 +1,4 @@
-/* $Id: UIDetailsSet.h 83719 2020-04-16 16:30:01Z vboxsync $ */
+/* $Id: UIDetailsSet.h 84623 2020-05-31 17:15:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsSet class declaration.
  */
@@ -54,6 +54,8 @@ public:
 
     /** @name Item stuff.
       * @{ */
+        /** Cleanups set, wiping out machine-item and [cloud]machine information for good. */
+        void clearSet();
         /** Builds set based on passed @a pMachineItem.
           * @param  fFullSet  Brigns whether full set should be built.
           * @param  settings  Brings details related settings. */

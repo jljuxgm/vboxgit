@@ -1,4 +1,4 @@
-/* $Id: UIDetailsSet.cpp 84076 2020-04-29 12:11:23Z vboxsync $ */
+/* $Id: UIDetailsSet.cpp 84623 2020-05-31 17:15:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsSet class implementation.
  */
@@ -61,6 +61,14 @@ UIDetailsSet::~UIDetailsSet()
 
     /* Remove set from the parent group: */
     parentItem()->removeItem(this);
+}
+
+void UIDetailsSet::clearSet()
+{
+    /* Clear passed arguments: */
+    m_pMachineItem = 0;
+    m_comMachine = CMachine();
+    m_comCloudMachine = CCloudMachine();
 }
 
 void UIDetailsSet::buildSet(UIVirtualMachineItem *pMachineItem, bool fFullSet, const QMap<DetailsElementType, bool> &settings)
@@ -567,6 +575,10 @@ void UIDetailsSet::sltMachineStateChange(const QUuid &uId)
     if (!m_fIsLocal)
         return;
 
+    /* Make sure VM is set: */
+    if (m_comMachine.isNull())
+        return;
+
     /* Is this our VM changed? */
     if (m_comMachine.GetId() != uId)
         return;
@@ -581,6 +593,10 @@ void UIDetailsSet::sltMachineAttributesChange(const QUuid &uId)
     if (!m_fIsLocal)
         return;
 
+    /* Make sure VM is set: */
+    if (m_comMachine.isNull())
+        return;
+
     /* Is this our VM changed? */
     if (m_comMachine.GetId() != uId)
         return;
@@ -593,6 +609,10 @@ void UIDetailsSet::sltMediumEnumerated(const QUuid &uId)
 {
     /* For local VMs only: */
     if (!m_fIsLocal)
+        return;
+
+    /* Make sure VM is set: */
+    if (m_comMachine.isNull())
         return;
 
     /* Is this our medium changed? */

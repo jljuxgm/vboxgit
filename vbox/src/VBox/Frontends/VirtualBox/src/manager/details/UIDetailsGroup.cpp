@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGroup.cpp 83921 2020-04-22 12:09:34Z vboxsync $ */
+/* $Id: UIDetailsGroup.cpp 84623 2020-05-31 17:15:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsGroup class implementation.
  */
@@ -88,9 +88,11 @@ void UIDetailsGroup::buildGroup(const QList<UIVirtualMachineItem*> &machineItems
     m_machineItems = filteredItems;
 
     /* Cleanup superflous items: */
-    bool fCleanupPerformed = m_items.size() > m_machineItems.size();
+    const bool fCleanupPerformed = m_items.size() > m_machineItems.size();
     while (m_items.size() > m_machineItems.size())
         delete m_items.last();
+    foreach (UIDetailsItem *pItem, m_items)
+        pItem->toSet()->clearSet();
     if (fCleanupPerformed)
         updateGeometry();
 
