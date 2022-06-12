@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 86928 2020-11-20 09:22:25Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 86939 2020-11-20 16:44:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -3470,7 +3470,6 @@ void UIMessageCenter::sltCloseHelpBrowser()
 void UIMessageCenter::sltHandleDialogHelpButtonPress()
 {
 # if defined(VBOX_WITH_DOCS_QHELP) && (QT_VERSION >= QT_VERSION_CHECK(5, 9, 0))
-
     QAbstractButton *pSender = qobject_cast<QAbstractButton*>(sender());
     if (!pSender)
         return;
