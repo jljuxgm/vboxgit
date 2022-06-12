@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 85309 2020-07-13 12:56:56Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 85745 2020-08-13 08:37:09Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -9233,7 +9233,7 @@ int Console::i_changeDnDMode(DnDMode_T aDnDMode)
     }
 
     int rc = pVMMDev->hgcmHostCall("VBoxDragAndDropSvc",
-                                   DragAndDropSvc::HOST_DND_SET_MODE, 1 /* cParms */, &parm);
+                                   DragAndDropSvc::HOST_DND_FN_SET_MODE, 1 /* cParms */, &parm);
     if (RT_FAILURE(rc))
         LogRel(("Error changing drag and drop mode: %Rrc\n", rc));
 
