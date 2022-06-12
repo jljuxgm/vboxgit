@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-shared.cpp 84853 2020-06-16 17:18:34Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-shared.cpp 86009 2020-09-02 23:01:09Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -625,10 +625,10 @@ const char *vmsvga3dGetCapString(uint32_t idxCap)
         return "SVGA3D_DEVCAP_SURFACEFMT_NV12";
     case SVGA3D_DEVCAP_SURFACEFMT_AYUV:
         return "SVGA3D_DEVCAP_SURFACEFMT_AYUV";
-    case SVGA3D_DEVCAP_SURFACEFMT_BC4_UNORM:
-        return "SVGA3D_DEVCAP_SURFACEFMT_BC4_UNORM";
-    case SVGA3D_DEVCAP_SURFACEFMT_BC5_UNORM:
-        return "SVGA3D_DEVCAP_SURFACEFMT_BC5_UNORM";
+    case SVGA3D_DEVCAP_SURFACEFMT_ATI1:
+        return "SVGA3D_DEVCAP_SURFACEFMT_ATI1";
+    case SVGA3D_DEVCAP_SURFACEFMT_ATI2:
+        return "SVGA3D_DEVCAP_SURFACEFMT_ATI2";
     default:
         return "UNEXPECTED";
     }
@@ -887,8 +887,6 @@ const char *vmsvga3dGetRenderStateName(uint32_t state)
         return "SVGA3D_RS_BLENDEQUATIONALPHA";
     case SVGA3D_RS_TRANSPARENCYANTIALIAS:  /* SVGA3dTransparencyAntialiasType */
         return "SVGA3D_RS_TRANSPARENCYANTIALIAS";
-    case SVGA3D_RS_LINEAA:                 /* SVGA3dBool */
-        return "SVGA3D_RS_LINEAA";
     case SVGA3D_RS_LINEWIDTH:              /* float */
         return "SVGA3D_RS_LINEWIDTH";
     default:
