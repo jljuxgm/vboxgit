@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-internal.h 89163 2021-05-19 13:12:44Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-internal.h 89171 2021-05-19 14:10:51Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device - 3D part, internal header.
  */
@@ -391,11 +391,6 @@ typedef void (APIENTRYP PFNGLGETPROGRAMIVARBPROC) (GLenum target, GLenum pname, 
 # endif
 
 #endif /* VMSVGA3D_OPENGL */
-
-#ifdef VMSVGA3D_DIRECT3D
-/* Enable to use Wine to convert D3D to opengl */
-//#define VBOX_VMSVGA3D_WITH_WINE_OPENGL
-#endif
 
 
 /*********************************************************************************************************************************
@@ -801,11 +796,7 @@ typedef struct VMSVGA3DCONTEXT
     uint32_t                id;
 #ifdef RT_OS_WINDOWS
 # ifdef VMSVGA3D_DIRECT3D
-#  ifdef VBOX_VMSVGA3D_WITH_WINE_OPENGL
-    IDirect3DDevice9       *pDevice;
-#  else
     IDirect3DDevice9Ex     *pDevice;
-#  endif
 # else
     /* Device context of the context window. */
     HDC                     hdc;
@@ -1048,11 +1039,7 @@ typedef struct VMSVGA3DSTATE
 
 #ifdef RT_OS_WINDOWS
 # ifdef VMSVGA3D_DIRECT3D
-#  ifdef VBOX_VMSVGA3D_WITH_WINE_OPENGL
-    IDirect3D9             *pD3D9;
-#  else
     IDirect3D9Ex           *pD3D9;
-#  endif
     D3DCAPS9                caps;
     bool                    fSupportedSurfaceINTZ;
     bool                    fSupportedSurfaceNULL;
