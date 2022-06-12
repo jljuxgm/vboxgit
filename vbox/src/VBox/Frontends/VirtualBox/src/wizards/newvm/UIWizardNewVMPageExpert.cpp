@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.cpp 85637 2020-08-06 15:19:33Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.cpp 86086 2020-09-10 14:31:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class implementation.
  */
@@ -30,7 +30,6 @@
 /* GUI includes: */
 #include "QIRichTextLabel.h"
 #include "QIToolButton.h"
-#include "UIBaseMemorySlider.h"
 #include "UIBaseMemoryEditor.h"
 #include "UIFilePathSelector.h"
 #include "UIIconPool.h"
