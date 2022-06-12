@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 87550 2021-02-03 09:54:10Z vboxsync $ */
+/* $Id: HM.cpp 87554 2021-02-03 10:44:16Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -1675,20 +1675,13 @@ static int hmR3InitFinalizeR0Intel(PVM pVM)
     {
         CPUMR3SetGuestCpuIdFeature(pVM, CPUMCPUIDFEATURE_PAE);
         CPUMR3SetGuestCpuIdFeature(pVM, CPUMCPUIDFEATURE_LONG_MODE);
-        CPUMR3SetGuestCpuIdFeature(pVM, CPUMCPUIDFEATURE_SYSCALL);            /* 64 bits only on Intel CPUs */
+        CPUMR3SetGuestCpuIdFeature(pVM, CPUMCPUIDFEATURE_SYSCALL);            /* (Long mode only on Intel CPUs.) */
         CPUMR3SetGuestCpuIdFeature(pVM, CPUMCPUIDFEATURE_LAHF);
         CPUMR3SetGuestCpuIdFeature(pVM, CPUMCPUIDFEATURE_NX);
     }
-    /* Turn on NXE if PAE has been enabled *and* the host has turned on NXE
-       (we reuse the host EFER in the switcher). */
-    /** @todo this needs to be fixed properly!! */
+    /* Given that we're on a long mode host, we can simply enable NX for PAE capable guests. */
     else if (CPUMR3GetGuestCpuIdFeature(pVM, CPUMCPUIDFEATURE_PAE))
-    {
-        if (pVM->hm.s.vmx.u64HostMsrEfer & MSR_K6_EFER_NXE)
-            CPUMR3SetGuestCpuIdFeature(pVM, CPUMCPUIDFEATURE_NX);
-        else
-            LogRel(("HM: NX not enabled on the host, unavailable to PAE guest\n"));
-    }
+        CPUMR3SetGuestCpuIdFeature(pVM, CPUMCPUIDFEATURE_NX);
 
     /*
      * Log configuration details.
