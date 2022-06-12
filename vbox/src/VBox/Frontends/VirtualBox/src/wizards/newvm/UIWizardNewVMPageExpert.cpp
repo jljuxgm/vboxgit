@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.cpp 88149 2021-03-17 11:06:53Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.cpp 88154 2021-03-17 14:24:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class implementation.
  */
@@ -185,6 +185,9 @@ void UIWizardNewVMPageExpert::retranslateUi()
         m_pDiskVariantGroupBox->setTitle(UIWizardNewVM::tr("Storage on physical hard disk"));
     if (m_pLocationLabel)
         m_pLocationLabel->setText(UIWizardNewVM::tr("Disk Location:"));
+
+    if (m_pNameAndSystemLayout && m_pNameAndSystemEditor)
+        m_pNameAndSystemLayout->setColumnMinimumWidth(0, m_pNameAndSystemEditor->firstColumnWidth());
 }
 
 void UIWizardNewVMPageExpert::sltInstallGACheckBoxToggle(bool fEnabled)
