@@ -1,4 +1,4 @@
-/* $Id: UICloudProfileDetailsWidget.cpp 86986 2020-11-26 14:22:34Z vboxsync $ */
+/* $Id: UICloudProfileDetailsWidget.cpp 86991 2020-11-26 14:48:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudProfileDetailsWidget class implementation.
  */
@@ -26,6 +26,7 @@
 
 /* GUI includes: */
 #include "QIDialogButtonBox.h"
+#include "UICommon.h"
 #include "UICloudProfileDetailsWidget.h"
 
 /* Other VBox includes: */
