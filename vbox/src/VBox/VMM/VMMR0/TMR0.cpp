@@ -1,4 +1,4 @@
-/* $Id: TMR0.cpp 87793 2021-02-18 18:41:24Z vboxsync $ */
+/* $Id: TMR0.cpp 87795 2021-02-18 19:20:06Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, host ring-0 context.
  */
@@ -176,5 +176,4 @@ VMMR0_INT_DECL(int) TMR0TimerQueueGrow(PGVM pGVM, uint32_t idxQueue, uint32_t cM
 
     return rc;
 }
-
 
