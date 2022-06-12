@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 83794 2020-04-18 13:25:05Z vboxsync $ */
+/* $Id: HostImpl.cpp 85260 2020-07-11 23:59:17Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -1359,7 +1359,7 @@ HRESULT Host::getOSVersion(com::Utf8Str &aVersion)
     if (szOSServicePack[0] != '\0')
     {
         char *psz = strchr(szOSRelease, '\0');
-        RTStrPrintf(psz, &szOSRelease[sizeof(szOSRelease)] - psz, "sp%s", szOSServicePack);
+        RTStrPrintf(psz, (size_t)(&szOSRelease[sizeof(szOSRelease)] - psz), "sp%s", szOSServicePack);
     }
 
     aVersion = szOSRelease;
