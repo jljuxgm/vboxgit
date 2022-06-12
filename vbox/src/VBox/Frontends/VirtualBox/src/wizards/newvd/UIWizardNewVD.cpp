@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVD.cpp 87860 2021-02-24 13:06:12Z vboxsync $ */
+/* $Id: UIWizardNewVD.cpp 88597 2021-04-20 08:02:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVD class implementation.
  */
@@ -21,7 +21,7 @@
 /* GUI includes: */
 #include "UICommon.h"
 #include "UIWizardNewVD.h"
-#include "UIWizardNewVDPageBasic1.h"
+#include "UIWizardNewVDPageFileType.h"
 #include "UIWizardNewVDPageBasic2.h"
 #include "UIWizardNewVDPageBasic3.h"
 #include "UIWizardNewVDPageExpert.h"
@@ -125,7 +125,7 @@ void UIWizardNewVD::prepare()
     {
         case WizardMode_Basic:
         {
-            setPage(Page1, new UIWizardNewVDPageBasic1);
+            setPage(Page1, new UIWizardNewVDPageFileType);
             setPage(Page2, new UIWizardNewVDPageBasic2);
             setPage(Page3, new UIWizardNewVDPageBasic3(m_strDefaultName, m_strDefaultPath, m_uDefaultSize));
             break;

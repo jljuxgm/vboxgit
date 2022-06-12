@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageExpert.cpp 88038 2021-03-09 09:11:02Z vboxsync $ */
+/* $Id: UIWizardNewVDPageExpert.cpp 88597 2021-04-20 08:02:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageExpert class implementation.
  */
@@ -152,7 +152,7 @@ void UIWizardNewVDPageExpert::sltSelectLocationButtonClicked()
 
 void UIWizardNewVDPageExpert::retranslateUi()
 {
-    UIWizardNewVDPage1::retranslateWidgets();
+    UIWizardNewVDPageBaseFileType::retranslateWidgets();
     UIWizardNewVDPage2::retranslateWidgets();
     UIWizardNewVDPage3::retranslateWidgets();
     /* Translate widgets: */

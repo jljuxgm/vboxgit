@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageDisk.h 88577 2021-04-19 13:23:37Z vboxsync $ */
+/* $Id: UIWizardNewVMPageDisk.h 88597 2021-04-20 08:02:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageDisk class declaration.
  */
@@ -26,7 +26,7 @@
 
 /* GUI includes: */
 #include "UIWizardPage.h"
-#include "UIWizardNewVDPageBasic1.h"
+#include "UIWizardNewVDPageFileType.h"
 #include "UIWizardNewVDPageBasic2.h"
 #include "UIWizardNewVDPageBasic3.h"
 #include "UIWizardNewVM.h"
@@ -79,7 +79,7 @@ protected:
 
 class UIWizardNewVMPageDisk : public UIWizardPage,
                                 public UIWizardNewVMPageDiskBase,
-                                public UIWizardNewVDPage1,
+                                public UIWizardNewVDPageBaseFileType,
                                 public UIWizardNewVDPage2,
                                 public UIWizardNewVDPage3
 {

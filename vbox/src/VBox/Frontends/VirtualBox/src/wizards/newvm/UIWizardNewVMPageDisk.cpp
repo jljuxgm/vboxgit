@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageDisk.cpp 88577 2021-04-19 13:23:37Z vboxsync $ */
+/* $Id: UIWizardNewVMPageDisk.cpp 88597 2021-04-20 08:02:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageDisk class implementation.
  */
@@ -308,7 +308,7 @@ void UIWizardNewVMPageDisk::retranslateUi()
                                             "Alternatively you can create a virtual machine without a virtual hard disk.</p>"));
 
     UIWizardNewVMPageDiskBase::retranslateWidgets();
-    UIWizardNewVDPage1::retranslateWidgets();
+    UIWizardNewVDPageBaseFileType::retranslateWidgets();
     UIWizardNewVDPage2::retranslateWidgets();
     UIWizardNewVDPage3::retranslateWidgets();
 }
