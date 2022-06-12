@@ -1,4 +1,4 @@
-/* $Id: clipboard-common.cpp 85986 2020-09-01 17:55:05Z vboxsync $ */
+/* $Id: clipboard-common.cpp 86000 2020-09-02 14:43:13Z vboxsync $ */
 /** @file
  * Shared Clipboard: Some helper function for converting between the various eol.
  */
@@ -33,6 +33,16 @@
 #include <VBox/GuestHost/clipboard-helper.h>
 #include <VBox/HostServices/VBoxClipboardSvc.h>
 
+
+/*********************************************************************************************************************************
+*   Prototypes                                                                                                                   *
+*********************************************************************************************************************************/
+DECLINLINE(PSHCLEVENT) shclEventGet(PSHCLEVENTSOURCE pSource, SHCLEVENTID idEvent);
+
+
+/*********************************************************************************************************************************
+*   Implementation                                                                                                               *
+*********************************************************************************************************************************/
 
 /**
  * Allocates a new event payload.
@@ -180,25 +190,6 @@ void ShClEventSourceReset(PSHCLEVENTSOURCE pSource)
 }
 
 /**
- * Returns a specific event of a event source.
- *
- * @returns Pointer to event if found, or NULL if not found.
- * @param   pSource             Event source to get event from.
- * @param   uID                 Event ID to get.
- */
-DECLINLINE(PSHCLEVENT) shclEventGet(PSHCLEVENTSOURCE pSource, SHCLEVENTID idEvent)
-{
-    PSHCLEVENT pEvent;
-    RTListForEach(&pSource->lstEvents, pEvent, SHCLEVENT, Node)
-    {
-        if (pEvent->idEvent == idEvent)
-            return pEvent;
-    }
-
-    return NULL;
-}
-
-/**
  * Generates a new event ID for a specific event source and registers it.
  *
  * @returns New event ID generated, or NIL_SHCLEVENTID on error.
@@ -243,6 +234,37 @@ SHCLEVENTID ShClEventIdGenerateAndRegister(PSHCLEVENTSOURCE pSource)
 
     RTMemFree(pEvent);
     return NIL_SHCLEVENTID;
+}
+
+/**
+ * Returns a specific event of a event source. Inlined version.
+ *
+ * @returns Pointer to event if found, or NULL if not found.
+ * @param   pSource             Event source to get event from.
+ * @param   uID                 Event ID to get.
+ */
+DECLINLINE(PSHCLEVENT) shclEventGet(PSHCLEVENTSOURCE pSource, SHCLEVENTID idEvent)
+{
+    PSHCLEVENT pEvent;
+    RTListForEach(&pSource->lstEvents, pEvent, SHCLEVENT, Node)
+    {
+        if (pEvent->idEvent == idEvent)
+            return pEvent;
+    }
+
+    return NULL;
+}
+
+/**
+ * Returns a specific event of a event source.
+ *
+ * @returns Pointer to event if found, or NULL if not found.
+ * @param   pSource             Event source to get event from.
+ * @param   uID                 Event ID to get.
+ */
+PSHCLEVENT ShClEventGet(PSHCLEVENTSOURCE pSource, SHCLEVENTID idEvent)
+{
+    return shclEventGet(pSource, idEvent);
 }
 
 /**
