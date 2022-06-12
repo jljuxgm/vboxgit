@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic1.cpp 88150 2021-03-17 11:41:46Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic1.cpp 88250 2021-03-22 16:09:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic1 class implementation.
  */
@@ -370,7 +370,7 @@ void UIWizardNewVMPage1::retranslateWidgets()
 {
     if (m_pSkipUnattendedCheckBox)
     {
-        m_pSkipUnattendedCheckBox->setText(UIWizardNewVM::tr("Skip unattended installation"));
+        m_pSkipUnattendedCheckBox->setText(UIWizardNewVM::tr("&Skip Unattended Installation"));
         m_pSkipUnattendedCheckBox->setToolTip(UIWizardNewVM::tr("<p>When checked selected ISO file will be mounted to the CD "
                                                                 "drive of the virtual machine but the unattended installation "
                                                                 "will not start.</p>"));
@@ -541,7 +541,7 @@ void UIWizardNewVMPageBasic1::retranslateUi()
 {
     retranslateWidgets();
     /* Translate page: */
-    setTitle(UIWizardNewVM::tr("Virtual machine name and operating system"));
+    setTitle(UIWizardNewVM::tr("Virtual machine Name and Operating System"));
 
     if (m_pNameOSTypeLabel)
         m_pNameOSTypeLabel->setText(UIWizardNewVM::tr("Please choose a descriptive name and destination folder for the new "

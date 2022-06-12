@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic2.cpp 88241 2021-03-22 12:19:21Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic2.cpp 88250 2021-03-22 16:09:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic2 class implementation.
  */
@@ -201,19 +201,19 @@ void UIWizardNewVMPage2::retranslateWidgets()
         m_pGAISOFilePathSelector->setToolTip(UIWizardNewVM::tr("Please select an installation medium (ISO file)"));
     if (m_pGAInstallationISOContainer)
     {
-        m_pGAInstallationISOContainer->setTitle(UIWizardNewVM::tr("Gu&est additions"));
+        m_pGAInstallationISOContainer->setTitle(UIWizardNewVM::tr("Gu&est Additions"));
         m_pGAInstallationISOContainer->setToolTip(UIWizardNewVM::tr("<p>When checked the guest additions will be installed "
                                                            "after the OS install.</p>"));
     }
     if (m_pProductKeyLabel)
         m_pProductKeyLabel->setText(UIWizardNewVM::tr("&Product Key:"));
     if (m_pUserNameContainer)
-        m_pUserNameContainer->setTitle(UIWizardNewVM::tr("Username and password"));
+        m_pUserNameContainer->setTitle(UIWizardNewVM::tr("Username and Password"));
     if (m_pAdditionalOptionsContainer)
-        m_pAdditionalOptionsContainer->setTitle(UIWizardNewVM::tr("Additional options"));
+        m_pAdditionalOptionsContainer->setTitle(UIWizardNewVM::tr("Additional Options"));
     if (m_pStartHeadlessCheckBox)
     {
-        m_pStartHeadlessCheckBox->setText(UIWizardNewVM::tr("&Start VM Headless"));
+        m_pStartHeadlessCheckBox->setText(UIWizardNewVM::tr("&Install in Background"));
         m_pStartHeadlessCheckBox->setToolTip(UIWizardNewVM::tr("<p>When checked, the newly created virtual machine will be started "
                                                                "in headless mode (without a GUI) for the unattended guest OS install.</p>"));
     }
