@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.cpp 88262 2021-03-23 14:17:57Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.cpp 88263 2021-03-23 17:10:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class implementation.
  */
@@ -163,10 +163,10 @@ void UIWizardNewVMPageExpert::retranslateUi()
 
     if (m_pToolBox)
     {
-        m_pToolBox->setPageTitle(ExpertToolboxItems_NameAndOSType, QString(UIWizardNewVM::tr("Name and &Operating System")));
-        m_pToolBox->setPageTitle(ExpertToolboxItems_Unattended, UIWizardNewVM::tr("Unatt&ended Install"));
-        m_pToolBox->setPageTitle(ExpertToolboxItems_Disk, UIWizardNewVM::tr("Hard &Disk"));
-        m_pToolBox->setPageTitle(ExpertToolboxItems_Hardware, UIWizardNewVM::tr("&Hardware"));
+        m_pToolBox->setPageTitle(ExpertToolboxItems_NameAndOSType, QString(UIWizardNewVM::tr("Name and Operating System")));
+        m_pToolBox->setPageTitle(ExpertToolboxItems_Unattended, UIWizardNewVM::tr("Unattended Install"));
+        m_pToolBox->setPageTitle(ExpertToolboxItems_Disk, UIWizardNewVM::tr("Hard Disk"));
+        m_pToolBox->setPageTitle(ExpertToolboxItems_Hardware, UIWizardNewVM::tr("Hardware"));
     }
 
     if (m_pDiskFormatGroupBox)
