@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-win.cpp 85774 2020-08-14 15:10:57Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-win.cpp 85775 2020-08-14 15:17:17Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Win32 host.
  */
@@ -185,13 +185,8 @@ static int vboxClipboardSvcWinDataRead(PSHCLCONTEXT pCtx, UINT uFormat, void **p
         rc = ShClEventWait(&pCtx->pClient->EventSrc, idEvent, 30 * 1000, &pPayload);
         if (RT_SUCCESS(rc))
         {
-            /* Check if any payload data is given; could happen on invalid / not-expected formats. */
             *ppvData = pPayload ? pPayload->pvData : NULL;
             *pcbData = pPayload ? pPayload->cbData : 0;
-
-            /* Note: Do not use ShClPayloadFree() here, as *ppvData now owns the pointer.
-             *       Avoids allocating / copying data around. */
-            RTMemFree(pPayload);
         }
 
         ShClEventRelease(&pCtx->pClient->EventSrc, idEvent);
