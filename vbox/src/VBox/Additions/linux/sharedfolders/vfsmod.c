@@ -1,4 +1,4 @@
-/* $Id: vfsmod.c 85698 2020-08-11 17:05:29Z vboxsync $ */
+/* $Id: vfsmod.c 85699 2020-08-11 17:24:32Z vboxsync $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, module init/term, super block management.
  */
@@ -436,7 +436,7 @@ static int vbsf_init_backing_dev(struct super_block *sb, struct vbsf_super_info 
  */
 static void vbsf_done_backing_dev(struct super_block *sb, struct vbsf_super_info *pSuperInfo)
 {
-#if RTLNX_VER_RANGE(2,6,24,  4,13,0)
+#if RTLNX_VER_RANGE(2,6,24, 4,12,0)
     bdi_destroy(&pSuperInfo->bdi);    /* includes bdi_unregister() */
 
     /* Paranoia: Make sb->s_bdi not point at pSuperInfo->bdi, in case someone
