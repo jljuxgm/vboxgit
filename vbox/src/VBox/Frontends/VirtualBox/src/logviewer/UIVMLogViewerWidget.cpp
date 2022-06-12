@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.cpp 89607 2021-06-10 16:04:00Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.cpp 89608 2021-06-10 16:09:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class implementation.
  */
@@ -311,7 +311,7 @@ void UIVMLogViewerWidget::markLabelTabs()
         {
             pTabBar->setTabData(i, true);
             /* Add close button only for manager UI. */
-            if (uiCommon().uiType() == UICommon::UIType_SelectorUI)
+            if (uiCommon().uiType() == UICommon::UIType_SelectorUI && m_enmEmbedding == EmbedTo_Dialog)
             {
                 UIVMLogTab *pTab = logTab(i);
                 if (pTab)
@@ -319,6 +319,7 @@ void UIVMLogViewerWidget::markLabelTabs()
                     UILogTabCloseButton *pCloseButton = new UILogTabCloseButton(0, pTab->machineId());
                     pCloseButton->setIcon(UIIconPool::iconSet(":/close_16px.png"));
                     pTabBar->setTabButton(i, QTabBar::RightSide, pCloseButton);
+                    pCloseButton->setToolTip(tr("Close this machine's logs"));
                     connect(pCloseButton, &UILogTabCloseButton::clicked, this, &UIVMLogViewerWidget::sltTabCloseButtonClick);
                 }
             }
