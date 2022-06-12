@@ -1,4 +1,4 @@
-/* $Id: PDMBlkCache.cpp 86527 2020-10-11 18:41:41Z vboxsync $ */
+/* $Id: PDMBlkCache.cpp 87765 2021-02-16 00:18:57Z vboxsync $ */
 /** @file
  * PDM Block Cache.
  */
@@ -1156,11 +1156,8 @@ int pdmR3BlkCacheInit(PVM pVM)
     {
         /* Create the commit timer */
         if (pBlkCacheGlobal->u32CommitTimeoutMs > 0)
-            rc = TMR3TimerCreateInternal(pVM, TMCLOCK_REAL,
-                                         pdmBlkCacheCommitTimerCallback,
-                                         pBlkCacheGlobal,
-                                         "BlkCache-Commit",
-                                         &pBlkCacheGlobal->pTimerCommit);
+            rc = TMR3TimerCreate(pVM, TMCLOCK_REAL, pdmBlkCacheCommitTimerCallback, pBlkCacheGlobal,
+                                 TMTIMER_FLAGS_NO_RING0,  "BlkCache-Commit", &pBlkCacheGlobal->pTimerCommit);
 
         if (RT_SUCCESS(rc))
         {

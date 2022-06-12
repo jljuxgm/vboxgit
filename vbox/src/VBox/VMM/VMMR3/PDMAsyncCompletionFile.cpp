@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFile.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFile.cpp 87765 2021-02-16 00:18:57Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -865,11 +865,12 @@ static DECLCALLBACK(int) pdmacFileInitialize(PPDMASYNCCOMPLETIONEPCLASS pClassGl
         AssertRC(rc);
     }
 
-#ifdef PDM_ASYNC_COMPLETION_FILE_WITH_DELAY
-    rc = TMR3TimerCreateInternal(pEpClassFile->Core.pVM, TMCLOCK_REAL, pdmacR3TimerCallback, pEpClassFile, "AC Delay", &pEpClassFile->pTimer);
+# ifdef PDM_ASYNC_COMPLETION_FILE_WITH_DELAY
+    rc = TMR3TimerCreate(pEpClassFile->Core.pVM, TMCLOCK_REAL, pdmacR3TimerCallback, pEpClassFile,
+                         TMTIMER_FLAGS_NO_RING0, "AC Delay", &pEpClassFile->pTimer);
     AssertRC(rc);
     pEpClassFile->cMilliesNext = UINT64_MAX;
-#endif
+# endif
 #endif
 
     return rc;

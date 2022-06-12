@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VMM.cpp 87765 2021-02-16 00:18:57Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -659,7 +659,8 @@ VMMR3_INT_DECL(int) VMMR3InitCompleted(PVM pVM, VMINITCOMPLETED enmWhat)
             /*
              * Create the EMT yield timer.
              */
-            rc = TMR3TimerCreateInternal(pVM, TMCLOCK_REAL, vmmR3YieldEMT, NULL, "EMT Yielder", &pVM->vmm.s.pYieldTimer);
+            rc = TMR3TimerCreate(pVM, TMCLOCK_REAL, vmmR3YieldEMT, NULL, TMTIMER_FLAGS_NO_RING0,
+                                 "EMT Yielder", &pVM->vmm.s.pYieldTimer);
             AssertRCReturn(rc, rc);
 
             rc = TMTimerSetMillies(pVM->vmm.s.pYieldTimer, pVM->vmm.s.cYieldEveryMillies);
