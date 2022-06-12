@@ -1,4 +1,4 @@
-/* $Id: vkatDriverStack.cpp 89511 2021-06-04 13:20:03Z vboxsync $ */
+/* $Id: vkatDriverStack.cpp 89530 2021-06-06 23:59:38Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) - Driver stack code.
  */
@@ -1209,8 +1209,62 @@ static int audioTestMixStreamTransfer(PAUDIOTESTDRVMIXSTREAM pMix)
     uint8_t abBuf[16384];
     if (pMix->pStream->Cfg.enmDir == PDMAUDIODIR_IN)
     {
-        //uint32_t const cbBuf = PDMAudioPropsFloorBytesToFrame(&pMix->pStream->Cfg.Props, sizeof(abBuf));
+        /*
+         * Try fill up the mixer buffer as much as possible.
+         *
+         * Slight fun part is that we have to calculate conversion
+         * ratio and be rather pessimistic about it.
+         */
+        uint32_t const cbBuf = PDMAudioPropsFloorBytesToFrame(&pMix->pStream->Cfg.Props, sizeof(abBuf));
+        for (;;)
+        {
+            /*
+             * Figure out how much we can move in this iteration.
+             */
+            uint32_t cDstFrames = AudioMixBufFree(&pMix->MixBuf);
+            if (!cDstFrames)
+                break;
 
+            uint32_t cbReadable = audioTestDriverStackStreamGetReadable(pMix->pDrvStack, pMix->pStream);
+            if (!cbReadable)
+                break;
+
+            uint32_t cbToRead;
+            if (PDMAudioPropsHz(&pMix->pStream->Cfg.Props) == PDMAudioPropsHz(&pMix->MixBuf.Props))
+                cbToRead = PDMAudioPropsFramesToBytes(&pMix->pStream->Cfg.Props, cDstFrames);
+            else
+                cbToRead = PDMAudioPropsFramesToBytes(&pMix->pStream->Cfg.Props,
+                                                        (uint64_t)cDstFrames * PDMAudioPropsHz(&pMix->pStream->Cfg.Props)
+                                                      / PDMAudioPropsHz(&pMix->MixBuf.Props));
+            cbToRead = RT_MIN(cbToRead, RT_MIN(cbReadable, cbBuf));
+            if (!cbToRead)
+                break;
+
+            /*
+             * Get the data.
+             */
+            uint32_t cbCaptured = 0;
+            int rc = audioTestDriverStackStreamCapture(pMix->pDrvStack, pMix->pStream, abBuf, cbToRead, &cbCaptured);
+            if (RT_FAILURE(rc))
+                return rc;
+            Assert(cbCaptured == cbToRead);
+            AssertBreak(cbCaptured > 0);
+
+            /*
+             * Feed it to the mixer.
+             */
+            uint32_t cDstFramesWritten = 0;
+            if ((abBuf[0] >> 4) & 1) /* some cheap random */
+                AudioMixBufWrite(&pMix->MixBuf, &pMix->WriteState, abBuf, cbCaptured,
+                                 0 /*offDstFrame*/, cDstFrames, &cDstFramesWritten);
+            else
+            {
+                AudioMixBufSilence(&pMix->MixBuf, &pMix->WriteState, 0 /*offFrame*/, cDstFrames);
+                AudioMixBufBlend(&pMix->MixBuf, &pMix->WriteState, abBuf, cbCaptured,
+                                 0 /*offDstFrame*/, cDstFrames, &cDstFramesWritten);
+            }
+            AudioMixBufCommit(&pMix->MixBuf, cDstFramesWritten);
+        }
     }
     else
     {
