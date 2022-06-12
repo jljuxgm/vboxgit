@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84895 $"
+__version__ = "$Revision: 84897 $"
 
 # Standard Python imports.
 import errno
@@ -4777,7 +4777,7 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
             except:
                 return reporter.errorXcpt('os.mkdir(%s)' % (sSubDir, ));
 
-		reporter.log2('Defining tests ...');
+        reporter.log2('Defining tests ...');
 
         #
         # Bad parameter tests.
