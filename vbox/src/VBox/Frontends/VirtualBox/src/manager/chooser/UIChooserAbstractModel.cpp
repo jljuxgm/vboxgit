@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.cpp 86746 2020-10-28 17:44:51Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.cpp 86748 2020-10-28 19:14:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class implementation.
  */
@@ -661,11 +661,45 @@ bool UIChooserAbstractModel::isCloudProfileUpdateInProgress() const
     return false;
 }
 
-void UIChooserAbstractModel::sltHandleCloudMachineStateChange()
+void UIChooserAbstractModel::sltHandleCloudMachineRefreshStarted()
 {
+    /* Acquire sender: */
     UIVirtualMachineItem *pCache = qobject_cast<UIVirtualMachineItem*>(sender());
     AssertPtrReturnVoid(pCache);
-    emit sigCloudMachineStateChange(pCache->id());
+
+    /* Acquire sender's ID: */
+    const QUuid uId = pCache->id();
+
+    /* Search for a first machine node with passed ID: */
+    UIChooserNode *pMachineNode = searchMachineNode(invisibleRoot(), uId);
+
+    /* Insert cloud entity key into a list of keys currently being updated: */
+    const UICloudEntityKey cloudEntityKey = UICloudEntityKey(pMachineNode->parentNode()->parentNode()->name(),
+                                                             pMachineNode->parentNode()->name(),
+                                                             pMachineNode->toMachineNode()->id());
+    insertCloudEntityKey(cloudEntityKey);
+}
+
+void UIChooserAbstractModel::sltHandleCloudMachineRefreshFinished()
+{
+    /* Acquire sender: */
+    UIVirtualMachineItem *pCache = qobject_cast<UIVirtualMachineItem*>(sender());
+    AssertPtrReturnVoid(pCache);
+
+    /* Acquire sender's ID: */
+    const QUuid uId = pCache->id();
+
+    /* Search for a first machine node with passed ID: */
+    UIChooserNode *pMachineNode = searchMachineNode(invisibleRoot(), uId);
+
+    /* Remove cloud entity key from the list of keys currently being updated: */
+    const UICloudEntityKey cloudEntityKey = UICloudEntityKey(pMachineNode->parentNode()->parentNode()->name(),
+                                                             pMachineNode->parentNode()->name(),
+                                                             pMachineNode->toMachineNode()->id());
+    removeCloudEntityKey(cloudEntityKey);
+
+    /* Notify listeners: */
+    emit sigCloudMachineStateChange(uId);
 }
 
 void UIChooserAbstractModel::sltGroupSettingsSaveComplete()

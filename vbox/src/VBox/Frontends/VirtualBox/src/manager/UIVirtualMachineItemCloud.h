@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItemCloud.h 86215 2020-09-22 10:40:19Z vboxsync $ */
+/* $Id: UIVirtualMachineItemCloud.h 86748 2020-10-28 19:14:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItemCloud class declaration.
  */
@@ -43,8 +43,10 @@ class UIVirtualMachineItemCloud : public UIVirtualMachineItem
 
 signals:
 
-    /** Notifies listeners about state change. */
-    void sigStateChange();
+    /** Notifies listeners about refresh started. */
+    void sigRefreshStarted();
+    /** Notifies listeners about refresh finished. */
+    void sigRefreshFinished();
 
 public:
 
