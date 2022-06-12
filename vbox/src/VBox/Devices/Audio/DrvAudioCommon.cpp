@@ -1,4 +1,4 @@
-/* $Id: DrvAudioCommon.cpp 87986 2021-03-05 21:00:57Z vboxsync $ */
+/* $Id: DrvAudioCommon.cpp 87987 2021-03-05 21:08:38Z vboxsync $ */
 /** @file
  * Intermedia audio driver, common routines.
  *
@@ -1344,7 +1344,7 @@ uint64_t DrvAudioHlpFramesToMilli(uint32_t cFrames, const PPDMAUDIOPCMPROPS pPro
     if (!pProps->uHz) /* Prevent division by zero. */
         return 0;
 
-    /* @todo r=bird: How to do this w/o any floating point:
+    /** @todo r=bird: How to do this w/o any floating point:
     * @code
     *  ASMMultU32ByU32DivByU32(cFrames, RT_MS_1SEC, pProps->uHz);
     * // or
