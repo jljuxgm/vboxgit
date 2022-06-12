@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 85639 2020-08-07 09:34:12Z vboxsync $ */
+/* $Id: DevACPI.cpp 85677 2020-08-10 16:47:48Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -1844,7 +1844,7 @@ static DECLCALLBACK(VBOXSTRICTRC)  acpiR3BatDataRead(PPDMDEVINS pDevIns, void *p
 static DECLCALLBACK(VBOXSTRICTRC)  acpiR3SysInfoIndexWrite(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT offPort, uint32_t u32, unsigned cb)
 {
     RT_NOREF(pvUser, offPort);
-    LogRel(("acpiR3SysInfoIndexWrite: %#x (%#x)\n", u32, u32 >> 2));
+    Log(("acpiR3SysInfoIndexWrite: %#x (%#x)\n", u32, u32 >> 2));
     if (cb != 4)
         return PDMDevHlpDBGFStop(pDevIns, RT_SRC_POS, "cb=%d offPort=%u u32=%#x\n", cb, offPort, u32);
 
