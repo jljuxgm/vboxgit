@@ -1,4 +1,4 @@
-/* $Id: DnDTransferList.cpp 85535 2020-07-30 06:53:40Z vboxsync $ */
+/* $Id: DnDTransferList.cpp 85539 2020-07-30 07:19:57Z vboxsync $ */
 /** @file
  * DnD - transfer list implemenation.
  */
@@ -32,6 +32,7 @@
  * All data handling internally is done in the so-called "transport" format, that is, non-URI (regular) paths
  * with the "/" as path separator. From/to URI conversion is provided for convenience only.
  */
+
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
