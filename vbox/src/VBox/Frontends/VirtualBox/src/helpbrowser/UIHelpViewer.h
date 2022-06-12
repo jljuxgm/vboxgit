@@ -1,4 +1,4 @@
-/* $Id: UIHelpViewer.h 88526 2021-04-15 11:42:22Z vboxsync $ */
+/* $Id: UIHelpViewer.h 88550 2021-04-15 16:45:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class declaration.
  */
@@ -76,6 +76,11 @@ public:
     static const QPair<int, int> zoomPercentageMinMax;
     void toggleFindInPageWidget(bool fVisible);
 
+public slots:
+
+    void sltSelectPreviousMatch();
+    void sltSelectNextMatch();
+
 protected:
 
     virtual void contextMenuEvent(QContextMenuEvent *event) /* override */;
@@ -96,8 +101,6 @@ private slots:
     void sltCopyLink();
     void sltFindWidgetDrag(const QPoint &delta);
     void sltFindInPageSearchTextChange(const QString &strSearchText);
-    void sltSelectPreviousMatch();
-    void sltSelectNextMatch();
     void sltToggleFindInPageWidget(bool fVisible);
     void sltCloseFindInPageWidget();
 

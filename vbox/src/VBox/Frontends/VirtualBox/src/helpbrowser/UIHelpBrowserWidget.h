@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.h 88526 2021-04-15 11:42:22Z vboxsync $ */
+/* $Id: UIHelpBrowserWidget.h 88550 2021-04-15 16:45:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class declaration.
  */
@@ -100,6 +100,8 @@ private slots:
     void sltCopyAvailableChanged(bool fAvailable);
     void sltFindInPage(bool fChecked);
     void sltFindInPageWidgetVisibilityChanged(bool fVisible);
+    void sltFindNextInPage();
+    void sltFindPreviousInPage();
 
 private:
 
@@ -174,6 +176,8 @@ private:
     QAction             *m_pShowHideStatusBarAction;
     QAction             *m_pCopySelectedTextAction;
     QAction             *m_pFindInPageAction;
+    QAction             *m_pFindNextInPageAction;
+    QAction             *m_pFindPreviousInPageAction;
     UIZoomMenuAction    *m_pZoomMenuAction;
 
     /* This is set t true when handling QHelpContentModel::contentsCreated signal. */
