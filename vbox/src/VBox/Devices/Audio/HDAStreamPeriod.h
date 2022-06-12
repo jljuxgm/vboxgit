@@ -1,4 +1,4 @@
-/* $Id: HDAStreamPeriod.h 87809 2021-02-19 16:05:53Z vboxsync $ */
+/* $Id: HDAStreamPeriod.h 87810 2021-02-19 16:08:22Z vboxsync $ */
 /** @file
  * HDAStreamPeriod.h - Stream period functions for HD Audio.
  */
@@ -53,12 +53,6 @@ typedef struct HDASTREAMPERIODDEBUG
  */
 typedef struct HDASTREAMPERIOD
 {
-#ifdef HDA_STREAM_PERIOD_WITH_LOCKING
-    /** Critical section for serializing access.
-     * @todo r=bird: This is not needed.  The stream lock is held the two places
-     *       this critsect is entered. */
-    RTCRITSECT              CritSect;
-#endif
     /** Associated HDA stream descriptor (SD) number. */
     uint8_t                 u8SD;
     /** The period's status flags. */

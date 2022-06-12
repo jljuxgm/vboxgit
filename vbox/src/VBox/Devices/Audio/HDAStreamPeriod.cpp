@@ -1,4 +1,4 @@
-/* $Id: HDAStreamPeriod.cpp 87809 2021-02-19 16:05:53Z vboxsync $ */
+/* $Id: HDAStreamPeriod.cpp 87810 2021-02-19 16:08:22Z vboxsync $ */
 /** @file
  * HDAStreamPeriod.cpp - Stream period functions for HD Audio.
  *
@@ -51,10 +51,6 @@ int hdaR3StreamPeriodCreate(PHDASTREAMPERIOD pPeriod)
 {
     Assert(!(pPeriod->fStatus & HDASTREAMPERIOD_F_VALID));
 
-# ifdef HDA_STREAM_PERIOD_WITH_LOCKING
-    int rc = RTCritSectInit(&pPeriod->CritSect);
-    AssertRCReturnStmt(rc, pPeriod->fStatus = 0, rc);
-# endif
     pPeriod->fStatus = HDASTREAMPERIOD_F_VALID;
 
     return VINF_SUCCESS;
@@ -68,12 +64,7 @@ int hdaR3StreamPeriodCreate(PHDASTREAMPERIOD pPeriod)
 void hdaR3StreamPeriodDestroy(PHDASTREAMPERIOD pPeriod)
 {
     if (pPeriod->fStatus & HDASTREAMPERIOD_F_VALID)
-    {
-# ifdef HDA_STREAM_PERIOD_WITH_LOCKING
-        RTCritSectDelete(&pPeriod->CritSect);
-# endif
         pPeriod->fStatus = HDASTREAMPERIOD_F_NONE;
-    }
 }
 
 /**
