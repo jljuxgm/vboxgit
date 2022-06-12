@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgConsole.h 86327 2020-09-28 16:20:50Z vboxsync $ */
+/* $Id: VBoxDbgConsole.h 86329 2020-09-28 16:40:45Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Console.
  */
@@ -316,7 +316,7 @@ protected:
     static DECLCALLBACK(int) backWrite(PCDBGCIO pIo, const void *pvBuf, size_t cbBuf, size_t *pcbWritten);
 
     /**
-     * @copydoc DBGCIO::PfnSetReady
+     * @copydoc DBGCIO::pfnSetReady
      */
     static DECLCALLBACK(void) backSetReady(PCDBGCIO pIo, bool fReady);
 

@@ -1,4 +1,4 @@
-/* $Id: DBGCIo.cpp 86327 2020-09-28 16:20:50Z vboxsync $ */
+/* $Id: DBGCIo.cpp 86329 2020-09-28 16:40:45Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, I/O provider handling.
  */
@@ -408,6 +408,8 @@ static int dbgcIoSvcInitWorker(PUVM pUVM, PDBGCIOSVC pIoSvc, PCDBGCIOPROVREG pIo
  *
  * @returns VBox status code.
  * @param   pUVM                The user mode VM handle.
+ * @param   pIoSvc              The I/O service instance to initialize.
+ * @param   pCfg                The config for the instance.
  */
 static int dbgcIoSvcInit(PUVM pUVM, PDBGCIOSVC pIoSvc, PCFGMNODE pCfg)
 {
