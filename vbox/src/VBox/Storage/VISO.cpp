@@ -1,4 +1,4 @@
-/* $Id: VISO.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VISO.cpp 84372 2020-05-19 15:08:57Z vboxsync $ */
 /** @file
  * VISO - Virtual ISO disk image, Core Code.
  */
@@ -264,7 +264,12 @@ static int visoOpenWorker(PVISOIMAGE pThis)
     PVDIOSTORAGE pStorage = NULL;
     int rc = vdIfIoIntFileOpen(pThis->pIfIo, pThis->pszFilename, RTFILE_O_READ | RTFILE_O_OPEN | RTFILE_O_DENY_NONE, &pStorage);
     if (RT_FAILURE(rc))
+    {
+        LogRel(("VISO: Unable to open file '%s': %Rrc\n", pThis->pszFilename, rc));
         return rc;
+    }
+
+    LogRel(("VISO: Handling file '%s'\n", pThis->pszFilename));
 
     /*
      * Read the file into memory, prefixing it with a dummy command name.
@@ -376,14 +381,20 @@ static int visoOpenWorker(PVISOIMAGE pThis)
                                         vdIfError(pThis->pIfError, rc, RT_SRC_POS,
                                                   "VISO: Failed to open parent dir of: %s", pThis->pszFilename);
                                 }
+                                else
+                                    vdIfError(pThis->pIfError, rc, RT_SRC_POS, "VISO: RTGetOptArgvFromString failed: %Rrc", rc);
                             }
                             else
                                 vdIfError(pThis->pIfError, rc, RT_SRC_POS, "VISO: Invalid file encoding");
                         }
+                        else
+                            vdIfError(pThis->pIfError, rc, RT_SRC_POS, "VISO: Parsing UUID failed: %Rrc", rc);
                     }
                     else
                         rc = VERR_VD_GEN_INVALID_HEADER;
                 }
+                else
+                    vdIfError(pThis->pIfError, rc, RT_SRC_POS, "VISO: Reading file failed: %Rrc", rc);
 
                 RTMemTmpFree(pszContent);
             }
@@ -397,6 +408,9 @@ static int visoOpenWorker(PVISOIMAGE pThis)
             rc = VERR_VD_INVALID_SIZE;
         }
     }
+
+    if (RT_FAILURE(rc))
+        LogRel(("VISO: Handling of file '%s' failed with %Rrc\n", pThis->pszFilename, rc));
 
     vdIfIoIntFileClose(pThis->pIfIo, pStorage);
     return rc;
