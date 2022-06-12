@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 89676 2021-06-14 10:14:38Z vboxsync $
+# $Id: Makefile.kmk 89684 2021-06-14 14:39:39Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - Audio Utilities.
 #
@@ -162,10 +162,12 @@ vkatadd_LIBS.solaris   = m
 # We name it VBoxAudioTest though, to not clutter up host installations.
 #
 ifdef VBOX_WITH_HOST_SHIPPING_AUDIO_TEST
- ifn1of ($(KBUILD_TARGET), os2 freebsd netbsd openbsd) && !defined(VBOX_ONLY_ADDITIONS)
-  INSTALLS += vkathost
-   vkathost_TEMPLATE = VBOXR3EXE
-   vkathost_SOURCES  = $(vkat_1_TARGET)=>VBoxAudioTest$(HOSTSUFF_EXE)
+ ifn1of ($(KBUILD_TARGET), os2 freebsd netbsd openbsd)
+  ifndef VBOX_ONLY_ADDITIONS
+   INSTALLS += vkathost
+    vkathost_TEMPLATE = VBOXR3EXE
+    vkathost_SOURCES  = $(vkat_1_TARGET)=>VBoxAudioTest$(HOSTSUFF_EXE)
+  endif
  endif
 endif
 
