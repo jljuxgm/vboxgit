@@ -1,4 +1,4 @@
-/* $Id: SUPDrvInternal.h 85543 2020-07-30 09:06:35Z vboxsync $ */
+/* $Id: SUPDrvInternal.h 85552 2020-07-30 12:45:38Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
@@ -145,7 +145,7 @@
 # define SUPDRV_USE_MUTEX_FOR_GIP
 #endif
 
-#if 0 /*defined(RT_OS_LINUX)*/ /** @todo make everyone do this */
+#if defined(RT_OS_LINUX) /** @todo make everyone do this */
 /** Use the RTR0MemObj API rather than the RTMemExecAlloc for the images.
  * This is a good idea in general, but a necessity for @bugref{9801}. */
 # define SUPDRV_USE_MEMOBJ_FOR_LDR_IMAGE
