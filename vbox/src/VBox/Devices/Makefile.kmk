@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 89199 2021-05-20 09:59:01Z vboxsync $
+# $Id: Makefile.kmk 89406 2021-05-31 14:01:31Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -641,7 +641,6 @@ endif
 	Audio/DevHdaCodec.cpp \
 	Audio/DevHdaStream.cpp \
 	Audio/DevHdaStreamChannel.cpp \
-	Audio/DevHdaStreamMap.cpp \
 	Audio/AudioHlp.cpp \
 	Audio/AudioMixBuffer.cpp \
 	Audio/AudioMixer.cpp \

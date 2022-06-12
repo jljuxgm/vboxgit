@@ -1,4 +1,4 @@
-/* $Id: DevHdaStream.h 89381 2021-05-30 20:58:13Z vboxsync $ */
+/* $Id: DevHdaStream.h 89406 2021-05-31 14:01:31Z vboxsync $ */
 /** @file
  * Intel HD Audio Controller Emulation - Streams.
  */
@@ -22,7 +22,6 @@
 #endif
 
 #include "DevHdaCommon.h"
-#include "DevHdaStreamMap.h"
 
 
 /**
@@ -273,8 +272,6 @@ typedef struct HDASTREAMR3
     /** Internal state of this stream. */
     struct
     {
-        /** This stream's data mapping. */
-        HDASTREAMMAP            Mapping;
         /** Circular buffer (FIFO) for holding DMA'ed data. */
         R3PTRTYPE(PRTCIRCBUF)   pCircBuf;
         /** Current circular buffer read offset (for tracing & logging). */
@@ -310,7 +307,7 @@ typedef struct HDASTREAMR3
     } State;
     /** Debug bits. */
     HDASTREAMDEBUG              Dbg;
-    uint64_t                    au64Alignment[6];
+    uint64_t                    au64Alignment[2+4];
 } HDASTREAMR3;
 AssertCompileSizeAlignment(HDASTREAMR3, 64);
 /** Pointer to an HDA stream (SDI / SDO).  */

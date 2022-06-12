@@ -1,4 +1,4 @@
-/* $Id: DevHdaCommon.cpp 88300 2021-03-26 14:31:55Z vboxsync $ */
+/* $Id: DevHdaCommon.cpp 89406 2021-05-31 14:01:31Z vboxsync $ */
 /** @file
  * Intel HD Audio Controller Emulation - Common stuff.
  *
@@ -325,7 +325,10 @@ int hdaR3SDFMTToPCMProps(uint16_t u16SDFMT, PPDMAUDIOPCMPROPS pProps)
     }
 
     if (RT_SUCCESS(rc))
+    {
         PDMAudioPropsInit(pProps, cbSample, true /*fSigned*/, (u16SDFMT & 0xf) + 1 /*cChannels*/, u32Hz * u32HzMult / u32HzDiv);
+        /** @todo is there anything we need to / can do about channel assignments? */
+    }
 
 # undef EXTRACT_VALUE
     return rc;

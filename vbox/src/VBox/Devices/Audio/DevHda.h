@@ -1,4 +1,4 @@
-/* $Id: DevHda.h 88503 2021-04-14 11:43:28Z vboxsync $ */
+/* $Id: DevHda.h 89406 2021-05-31 14:01:31Z vboxsync $ */
 /** @file
  * Intel HD Audio Controller Emulation - Structures.
  */
@@ -29,7 +29,6 @@
 
 #include "DevHdaCodec.h"
 #include "DevHdaStream.h"
-#include "DevHdaStreamMap.h"
 
 #ifdef DEBUG_andy
 /** Enables strict mode, which checks for stuff which isn't supposed to happen.
