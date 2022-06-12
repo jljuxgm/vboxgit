@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-darwin.cpp 85983 2020-09-01 16:55:10Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-darwin.cpp 85984 2020-09-01 17:05:38Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Mac OS X host.
  */
@@ -278,6 +278,7 @@ int ShClBackendWriteData(PSHCLCLIENT pClient, PSHCLCLIENTCMDCTX pCmdCtx, SHCLFOR
     ShClSvcUnlock();
 
     LogFlowFuncLeaveRC(VINF_SUCCESS);
+    return VINF_SUCCESS;
 }
 
 #ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS
