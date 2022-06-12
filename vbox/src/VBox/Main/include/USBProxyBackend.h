@@ -1,4 +1,4 @@
-/* $Id: USBProxyBackend.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: USBProxyBackend.h 87376 2021-01-22 19:22:03Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Backend (base) class.
  */
@@ -153,15 +153,8 @@ public:
              const com::Utf8Str &strAddress, bool fLoadingSettings);
     void uninit();
 
-    virtual void *insertFilter(PCUSBFILTER aFilter);
-    virtual void removeFilter(void *aId);
-
     virtual int captureDevice(HostUSBDevice *aDevice);
-    virtual void captureDeviceCompleted(HostUSBDevice *aDevice, bool aSuccess);
     virtual int releaseDevice(HostUSBDevice *aDevice);
-    virtual void releaseDeviceCompleted(HostUSBDevice *aDevice, bool aSuccess);
-
-    virtual bool i_isDevReEnumerationRequired();
 
 protected:
     virtual int wait(RTMSINTERVAL aMillies);
@@ -169,6 +162,7 @@ protected:
     virtual PUSBDEVICE getDevices (void);
     virtual void serviceThreadInit (void);
     virtual void serviceThreadTerm (void);
+    virtual bool isFakeUpdateRequired();
 
 private:
     /** Reference to the runloop of the service thread.
@@ -179,8 +173,6 @@ private:
     /** A hack to work around the problem with the usb device enumeration
      * not including newly attached devices. */
     bool mWaitABitNextTime;
-    /** Whether we've successfully initialized the USBLib and should call USBLibTerm in the destructor. */
-    bool mUSBLibInitialized;
 };
 # endif /* RT_OS_DARWIN */
 
