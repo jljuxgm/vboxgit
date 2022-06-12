@@ -1,4 +1,4 @@
-/* $Id: UIGuestProcessControlWidget.cpp 88721 2021-04-27 08:05:03Z vboxsync $ */
+/* $Id: UIGuestProcessControlWidget.cpp 88722 2021-04-27 08:05:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestProcessControlWidget class implementation.
  */
@@ -574,7 +574,7 @@ void UIGuestProcessControlWidget::sltCleanupListener()
 
     /* Get CProgress event source: */
     CEventSource comEventSource = m_comGuest.GetEventSource();
-    //AssertWrapperOk(comEventSource);
+    AssertWrapperOk(comEventSource);
 
     /* Unregister event listener for CProgress event source: */
     comEventSource.UnregisterListener(m_comEventListener);
