@@ -4,7 +4,7 @@
 """
 Autostart testcase using.
 """
-from pykickstart.commands import repo
+#from pykickstart.commands import repo
 
 __copyright__ = \
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Id: tdAutostart1.py 85468 2020-07-27 12:48:09Z vboxsync $"
+__version__ = "$Id: tdAutostart1.py 85469 2020-07-27 13:09:38Z vboxsync $"
 
 
 # Standard Python imports.
