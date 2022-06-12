@@ -1,4 +1,4 @@
-/* $Id: QIRichTextLabel.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: QIRichTextLabel.h 86557 2020-10-13 13:58:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIRichTextLabel class declaration.
  */
@@ -22,13 +22,13 @@
 #endif
 
 /* Qt includes: */
-#include <QTextEdit>
+#include <QTextBrowser>
 
 /* GUI includes: */
 #include "UILibraryDefs.h"
 
 /** QLabel analog to reflect rich-text,
- ** based on private QTextEdit functionality. */
+ ** based on private QTextBrowser functionality. */
 class SHARED_LIBRARY_STUFF QIRichTextLabel : public QWidget
 {
     Q_OBJECT;
@@ -63,8 +63,8 @@ public slots:
 
 private:
 
-    /** Holds the text-editor instance. */
-    QTextEdit *m_pTextEdit;
+    /** Holds the text-browser instance. */
+    QTextBrowser *m_pTextBrowser;
 
     /** Holds the minimum text-width. */
     int m_iMinimumTextWidth;
