@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-internal.h 85999 2020-09-02 14:38:09Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-internal.h 86002 2020-09-02 14:52:02Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Internal header.
  */
@@ -256,7 +256,7 @@ void shClSvcClientTransfersReset(PSHCLCLIENT pClient);
  * @{
  */
 int ShClSvcGuestDataRequest(PSHCLCLIENT pClient, SHCLFORMATS fFormats, PSHCLEVENTID pidEvent);
-int ShClSvcGuestDataReceived(PSHCLCLIENT pClient, PSHCLCLIENTCMDCTX pCmdCtx, SHCLFORMAT uFormat, void *pvData, uint32_t cbData);
+int ShClSvcGuestDataSignal(PSHCLCLIENT pClient, PSHCLCLIENTCMDCTX pCmdCtx, SHCLFORMAT uFormat, void *pvData, uint32_t cbData);
 int ShClSvcHostReportFormats(PSHCLCLIENT pClient, SHCLFORMATS fFormats);
 uint32_t ShClSvcGetMode(void);
 bool ShClSvcGetHeadless(void);
