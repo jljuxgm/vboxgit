@@ -2,8 +2,9 @@
 # -*- coding: utf-8 -*-
 
 """
-AUtostart testcase using.
+Autostart testcase using.
 """
+from pykickstart.commands import repo
 
 __copyright__ = \
 """
@@ -26,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Id: tdAutostart1.py 85414 2020-07-22 13:40:25Z vboxsync $"
+__version__ = "$Id: tdAutostart1.py 85468 2020-07-27 12:48:09Z vboxsync $"
 
 
 # Standard Python imports.
@@ -379,7 +380,7 @@ class tdAutostartOs(object):
                             if eWaitResult in (eFdResult, vboxcon.ProcessWaitResult_WaitFlagNotSupported):
                                 reporter.log2('Reading %s ...' % (sFdNm,));
                                 try:
-                                    abBuf = oProcess.Read(1, 64 * 1024, cMsTimeout);
+                                    abBuf = oProcess.read(iFd, 64 * 1024, cMsTimeout);
                                 except KeyboardInterrupt: # Not sure how helpful this is, but whatever.
                                     reporter.error('Process (PID %d) execution interrupted' % (iPid,));
                                     try: oProcess.close();
@@ -391,10 +392,16 @@ class tdAutostartOs(object):
                                         reporter.log2('Process (PID %d) got %d bytes of %s data' % (iPid, len(abBuf), sFdNm,));
                                         acbFdOut[iFd] += len(abBuf);
                                         ## @todo Figure out how to uniform + append!
-                                        if aBuf:
-                                            aBuf += str(abBuf);
+                                        sBuf = '';
+                                        if sys.version_info >= (2, 7) and isinstance(abBuf, memoryview): ## @todo Why is this happening?
+                                            abBuf = abBuf.tobytes();
+                                            sBuf  = abBuf.decode("utf-8");
                                         else:
-                                            aBuf = str(abBuf);
+                                            sBuf = str(abBuf);
+                                        if aBuf:
+                                            aBuf += sBuf;
+                                        else:
+                                            aBuf = sBuf;
 
                         ## Process input (todo):
                         #if eWaitResult in (vboxcon.ProcessWaitResult_StdIn, vboxcon.ProcessWaitResult_WaitFlagNotSupported):
