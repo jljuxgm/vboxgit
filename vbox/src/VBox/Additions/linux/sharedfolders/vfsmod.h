@@ -1,4 +1,4 @@
-/* $Id: vfsmod.h 87056 2020-12-08 16:28:25Z vboxsync $ */
+/* $Id: vfsmod.h 88273 2021-03-24 12:18:49Z vboxsync $ */
 /** @file
  * vboxsf - Linux Shared Folders VFS, internal header.
  */
@@ -264,7 +264,10 @@ extern void vbsf_update_inode(struct inode *pInode, struct vbsf_inode_info *pIno
 extern int  vbsf_inode_revalidate_worker(struct dentry *dentry, bool fForced, bool fInodeLocked);
 extern int  vbsf_inode_revalidate_with_handle(struct dentry *dentry, SHFLHANDLE hHostFile, bool fForced, bool fInodeLocked);
 #if RTLNX_VER_MIN(2,5,18)
-# if RTLNX_VER_MIN(4,11,0)
+# if RTLNX_VER_MIN(5,12,0)
+extern int  vbsf_inode_getattr(struct user_namespace *ns, const struct path *path,
+    struct kstat *kstat, u32 request_mask, unsigned int query_flags);
+# elif RTLNX_VER_MIN(4,11,0)
 extern int  vbsf_inode_getattr(const struct path *path, struct kstat *kstat, u32 request_mask, unsigned int query_flags);
 # else
 extern int  vbsf_inode_getattr(struct vfsmount *mnt, struct dentry *dentry, struct kstat *kstat);
@@ -272,7 +275,11 @@ extern int  vbsf_inode_getattr(struct vfsmount *mnt, struct dentry *dentry, stru
 #else  /* < 2.5.44 */
 extern int  vbsf_inode_revalidate(struct dentry *dentry);
 #endif /* < 2.5.44 */
+#if RTLNX_VER_MIN(5,12,0)
+extern int  vbsf_inode_setattr(struct user_namespace *ns, struct dentry *dentry, struct iattr *iattr);
+#else
 extern int  vbsf_inode_setattr(struct dentry *dentry, struct iattr *iattr);
+#endif
 
 
 extern void              vbsf_handle_drop_chain(struct vbsf_inode_info *pInodeInfo);
