@@ -1,4 +1,4 @@
-/* $Id: UIDetailsWidgetNATNetwork.h 87312 2021-01-20 08:58:56Z vboxsync $ */
+/* $Id: UIDetailsWidgetNATNetwork.h 87432 2021-01-26 13:43:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsWidgetNATNetwork class declaration.
  */
@@ -159,9 +159,9 @@ private slots:
         /** Handles network advertised as default IPv6 route choice change. */
         void sltAdvertiseDefaultIPv6RouteChanged(bool fChecked);
 
-        /** */
+        /** Handles IPv4 forwarding rules table change. */
         void sltForwardingRulesIPv4Changed();
-        /** */
+        /** Handles IPv6 forwarding rules table change. */
         void sltForwardingRulesIPv6Changed();
 
         /** Handles button-box button click. */
