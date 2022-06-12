@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: status.py 86953 2020-11-23 10:31:51Z vboxsync $
+# $Id: status.py 86955 2020-11-23 10:37:08Z vboxsync $
 
 """
 CGI - Administrator Web-UI.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 86953 $"
+__version__ = "$Revision: 86955 $"
 
 
 # Standard python imports.
@@ -324,7 +324,7 @@ class StatusDispatcher(object): # pylint: disable=too-few-public-methods
         #        oDb.execute('''
         #SELECT  TestBoxesWithStrings.sName,
         #        TestSets.enmStatus,
-        #        CURRENT_TIME - TestSets.tsCreated,
+        #        CURRENT_TIMESTAMP - TestSets.tsCreated,
         #        TestBoxesWithStrings.sOS,
         #        SchedGroupNames.sSchedGroupNames
         #FROM    (SELECT TestBoxesInSchedGroups.idTestBox AS idTestBox,
@@ -347,7 +347,7 @@ class StatusDispatcher(object): # pylint: disable=too-few-public-methods
         oDb.execute('''
 (   SELECT  TestBoxesWithStrings.sName,
             TestSets.enmStatus,
-            CURRENT_TIME - TestSets.tsCreated,
+            CURRENT_TIMESTAMP - TestSets.tsCreated,
             TestBoxesWithStrings.sOS,
             SchedGroupNames.sSchedGroupNames
     FROM    (
@@ -370,7 +370,7 @@ class StatusDispatcher(object): # pylint: disable=too-few-public-methods
 ) UNION (
     SELECT  TestBoxesWithStrings.sName,
             TestSets.enmStatus,
-            CURRENT_TIME - TestSets.tsCreated,
+            CURRENT_TIMESTAMP - TestSets.tsCreated,
             TestBoxesWithStrings.sOS,
             SchedGroupNames.sSchedGroupNames
     FROM    (
