@@ -1,4 +1,4 @@
-/* $Id: RTTraceLogTool.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: RTTraceLogTool.cpp 84495 2020-05-25 11:19:20Z vboxsync $ */
 /** @file
  * IPRT - Utility for reading/receiving and dissecting trace logs.
  */
@@ -206,7 +206,7 @@ int main(int argc, char **argv)
                          , RTPathFilename(argv[0]));
                 return RTEXITCODE_SUCCESS;
             case 'V':
-                RTPrintf("$Revision: 82968 $\n");
+                RTPrintf("$Revision: 84495 $\n");
                 return RTEXITCODE_SUCCESS;
 
             case 'i':
@@ -291,10 +291,13 @@ int main(int argc, char **argv)
                                         case RTTRACELOGTYPE_INT64:
                                             RTMsgInfo("    %s: %lld\n", Val.pItemDesc->pszName, Val.u.i64);
                                             break;
+                                        case RTTRACELOGTYPE_RAWDATA:
+                                            RTMsgInfo("    %s:\n"
+                                                      "%.*Rhxd\n", Val.pItemDesc->pszName, Val.u.RawData.cb, Val.u.RawData.pb);
+                                            break;
                                         case RTTRACELOGTYPE_FLOAT32:
                                         case RTTRACELOGTYPE_FLOAT64:
-                                        case RTTRACELOGTYPE_RAWDATA:
-                                            RTMsgInfo("    %s: Float32, Float64 and raw data not supported yet\n", Val.pItemDesc->pszName);
+                                            RTMsgInfo("    %s: Float32 and Float64 data not supported yet\n", Val.pItemDesc->pszName);
                                             break;
                                         case RTTRACELOGTYPE_POINTER:
                                             RTMsgInfo("    %s: %#llx\n", Val.pItemDesc->pszName, Val.u.uPtr);
