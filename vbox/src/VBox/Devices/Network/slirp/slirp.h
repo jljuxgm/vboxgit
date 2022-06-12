@@ -1,4 +1,4 @@
-/* $Id: slirp.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: slirp.h 85195 2020-07-10 15:12:19Z vboxsync $ */
 /** @file
  * NAT - slirp (declarations/defines).
  */
@@ -409,7 +409,9 @@ int sscanf(const char *s, const char *format, ...);
 
 # define ip_next(ip) (void *)((uint8_t *)(ip) + ((ip)->ip_hl << 2))
 # define udp_next(udp) (void *)((uint8_t *)&((struct udphdr *)(udp))[1])
+# undef  bcopy
 # define bcopy(src, dst, len) memcpy((dst), (src), (len))
+# undef  bcmp
 # define bcmp(a1, a2, len) memcmp((a1), (a2), (len))
 # define NO_FW_PUNCH
 /* Two wrongs don't make a right, but this at least averts harm. */
