@@ -1,4 +1,4 @@
-/* $Id: UIChooser.cpp 84592 2020-05-28 14:19:50Z vboxsync $ */
+/* $Id: UIChooser.cpp 84595 2020-05-28 14:47:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooser class implementation.
  */
@@ -37,6 +37,12 @@ UIChooser::UIChooser(QWidget *pParent, UIActionPool *pActionPool)
 UIChooser::~UIChooser()
 {
     cleanup();
+}
+
+bool UIChooser::isGroupSavingInProgress() const
+{
+    AssertPtrReturn(model(), false);
+    return model()->isGroupSavingInProgress();
 }
 
 UIVirtualMachineItem *UIChooser::currentItem() const
@@ -99,12 +105,6 @@ QString UIChooser::fullGroupName() const
     return model()->fullGroupName();
 }
 
-bool UIChooser::isGroupSavingInProgress() const
-{
-    AssertPtrReturn(model(), false);
-    return model()->isGroupSavingInProgress();
-}
-
 void UIChooser::openGroupNameEditor()
 {
     AssertPtrReturnVoid(model());
@@ -159,11 +159,10 @@ void UIChooser::setMachineSearchWidgetVisibility(bool fVisible)
     view()->setSearchWidgetVisible(fVisible);
 }
 
-void UIChooser::sltHandleToolbarResize(const QSize &newSize)
+void UIChooser::setGlobalItemHeightHint(int iHeight)
 {
-    /* Pass height to a model: */
     AssertPtrReturnVoid(model());
-    model()->setGlobalItemHeightHint(newSize.height());
+    model()->setGlobalItemHeightHint(iHeight);
 }
 
 void UIChooser::sltToolMenuRequested(UIToolClass enmClass, const QPoint &position)

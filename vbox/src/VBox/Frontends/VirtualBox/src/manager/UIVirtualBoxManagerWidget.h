@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.h 84557 2020-05-27 11:56:13Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.h 84595 2020-05-28 14:47:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class declaration.
  */
@@ -56,6 +56,12 @@ class UIVirtualBoxManagerWidget : public QIWithRetranslateUI<QWidget>
     };
 
 signals:
+
+    /** @name Tool-bar stuff.
+      * @{ */
+        /* Notifies listeners about tool-bar height change. */
+        void sigToolBarHeightChange(int iHeight);
+    /** @} */
 
     /** @name Chooser pane stuff.
       * @{ */
@@ -192,10 +198,10 @@ public:
 
 public slots:
 
-    /** @name Chooser pane stuff.
+    /** @name Tool-bar stuff.
       * @{ */
-        /** Handles context-menu request for passed @a position. */
-        void sltHandleContextMenuRequest(const QPoint &position);
+        /** Handles tool-bar context-menu request for passed @a position. */
+        void sltHandleToolBarContextMenuRequest(const QPoint &position);
     /** @} */
 
 protected:
@@ -207,6 +213,12 @@ protected:
     /** @} */
 
 private slots:
+
+    /** @name Tool-bar stuff.
+      * @{ */
+        /** Handles signal about tool-bar resize to @a newSize. */
+        void sltHandleToolBarResize(const QSize &newSize);
+    /** @} */
 
     /** @name Chooser pane stuff.
       * @{ */

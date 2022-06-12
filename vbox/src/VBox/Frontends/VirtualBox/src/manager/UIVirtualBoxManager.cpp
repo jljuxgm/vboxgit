@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 84558 2020-05-27 12:01:54Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 84595 2020-05-28 14:47:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -1544,7 +1544,7 @@ void UIVirtualBoxManager::prepareConnections()
     connect(m_pWidget, &UIVirtualBoxManagerWidget::sigCurrentSnapshotItemChange,
             this, &UIVirtualBoxManager::sltCurrentSnapshotItemChange);
     connect(menuBar(), &QMenuBar::customContextMenuRequested,
-            m_pWidget, &UIVirtualBoxManagerWidget::sltHandleContextMenuRequest);
+            m_pWidget, &UIVirtualBoxManagerWidget::sltHandleToolBarContextMenuRequest);
 
     /* Global VBox event handlers: */
     connect(gVBoxEvents, &UIVirtualBoxEventHandler::sigMachineStateChange,
