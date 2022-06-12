@@ -1,4 +1,4 @@
-/* $Id: UIHelpViewer.cpp 88526 2021-04-15 11:42:22Z vboxsync $ */
+/* $Id: UIHelpViewer.cpp 88707 2021-04-26 16:17:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class implementation.
  */
@@ -788,11 +788,7 @@ void UIHelpViewer::findAllMatches(const QString &searchString)
 
 void UIHelpViewer::highlightFinds(int iSearchTermLength)
 {
-    QTextDocument* pDocument = document();
-    AssertReturnVoid(pDocument);
-
     QList<QTextEdit::ExtraSelection> extraSelections;
-
     for (int i = 0; i < m_matchedCursorPosition.size(); ++i)
     {
         QTextEdit::ExtraSelection selection;

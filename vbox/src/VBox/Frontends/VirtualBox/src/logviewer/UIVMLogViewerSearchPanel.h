@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerSearchPanel.h 86814 2020-11-05 19:22:07Z vboxsync $ */
+/* $Id: UIVMLogViewerSearchPanel.h 88707 2021-04-26 16:17:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -94,7 +94,7 @@ private:
       * @param  highlight      if false highlight function is not called
                                thus we avoid calling highlighting for the same string repeatedly. */
     void performSearch(SearchDirection eDirection, bool highlight);
-    void highlightAll(QTextDocument *pDocument, const QString &searchString);
+    void highlightAll(const QString &searchString);
     void findAll(QTextDocument *pDocument, const QString &searchString);
     void selectMatch(int iMatchIndex, const QString &searchString);
     void moveSelection(bool fForward);

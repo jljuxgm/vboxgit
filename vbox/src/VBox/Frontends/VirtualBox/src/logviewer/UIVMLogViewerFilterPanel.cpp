@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerFilterPanel.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIVMLogViewerFilterPanel.cpp 88707 2021-04-26 16:17:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -283,13 +283,13 @@ void UIVMLogViewerFilterPanel::filter()
         return;
     /* Check if we have to reapply the filter. If not
        restore line counts etc. and return */
-    if (!logPage->shouldFilterBeApplied(m_filterTermSet, (int)m_eFilterOperatorButton))
-    {
-        m_iFilteredLineCount = logPage->filteredLineCount();
-        m_iUnfilteredLineCount = logPage->unfilteredLineCount();
-        emit sigFilterApplied(!logPage->isFiltered() /* isOriginalLog */);
-        return;
-    }
+    // if (!logPage->shouldFilterBeApplied(m_filterTermSet, (int)m_eFilterOperatorButton))
+    // {
+    //     m_iFilteredLineCount = logPage->filteredLineCount();
+    //     m_iUnfilteredLineCount = logPage->unfilteredLineCount();
+    //     emit sigFilterApplied(!logPage->isFiltered() /* isOriginalLog */);
+    //     return;
+    // }
 
 
     const QString* originalLogString = logString();
