@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-dtrace.cpp 85766 2020-08-14 12:27:41Z vboxsync $ */
+/* $Id: SUPDrv-dtrace.cpp 85767 2020-08-14 12:43:19Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - DTrace Provider.
  */
@@ -1167,7 +1167,7 @@ const SUPDRVTRACERREG * VBOXCALL supdrvDTraceInit(void)
  * Module teardown code.
  */
 void VBOXCALL supdrvDTraceFini(void)
-{ 
+{
 #ifdef RT_OS_LINUX
     /* Release the references. */
     unsigned i;
