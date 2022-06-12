@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.h 88766 2021-04-29 07:40:19Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.h 88815 2021-05-03 08:56:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class declaration.
  */
@@ -37,6 +37,7 @@
 
 /* Forward declarations: */
 class QITabWidget;
+class UITabWidget;
 class QPlainTextEdit;
 class QVBoxLayout;
 class UIActionPool;
@@ -181,6 +182,7 @@ private:
     void createLogViewerPages(const QVector<QUuid> &machineList);
     /** Removes the log pages/tabs that shows logs of the machines from @p machineList. */
     void removeLogViewerPages(const QVector<QUuid> &machineList);
+    void setTabColorPerMachine();
 
     /** Resets document (of the curent tab) and scrollbar highligthing */
     void resetHighlighthing();
@@ -209,7 +211,7 @@ private:
     bool m_fIsPolished;
 
     /** Holds container for log-pages. */
-    QITabWidget        *m_pTabWidget;
+    UITabWidget        *m_pTabWidget;
 
     /** @name Panel instances and a QMap for mapping panel instances to related actions.
       * @{ */
