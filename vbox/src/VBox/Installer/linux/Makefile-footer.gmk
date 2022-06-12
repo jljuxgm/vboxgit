@@ -1,4 +1,4 @@
-# $Id: Makefile-footer.gmk 85008 2020-06-30 17:21:19Z vboxsync $
+# $Id: Makefile-footer.gmk 85152 2020-07-09 15:42:28Z vboxsync $
 ## @file
 # VirtualBox Guest Additions kernel module Makefile, common parts.
 #
@@ -100,7 +100,7 @@ JOBS := $(shell (getconf _NPROCESSORS_ONLN || grep -Ec '^processor|^CPU[0-9]' /p
 JOBS :=
  endif
 
-VBOX_SUBDIR_VAR=$(if VBOX_KERN_GROKS_SUBDIRS,SUBDIRS,M)
+VBOX_SUBDIR_VAR=$(if $(VBOX_KERN_GROKS_SUBDIRS),SUBDIRS,M)
 
 # OL/UEK: CONFIG_MODULE_SIG= disables module signing for external modules.
 # Ubuntu 18.04.3: CONFIG_MODULE_SIG_ALL= disables signing of all modules.
