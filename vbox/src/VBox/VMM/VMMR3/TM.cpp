@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 87773 2021-02-16 23:36:15Z vboxsync $ */
+/* $Id: TM.cpp 87774 2021-02-16 23:40:35Z vboxsync $ */
 /** @file
  * TM - Time Manager.
  */
@@ -2477,7 +2477,7 @@ static void tmR3TimerQueueRunVirtualSync(PVM pVM)
         ASMAtomicWriteBool(&pVM->tm.s.fVirtualSyncTicking, false);
 
         /* Unlink it, change the state and do the callout. */
-        tmTimerQueueUnlinkActive(pQueue, pTimer);
+        tmTimerQueueUnlinkActive(pVM, pQueue, pTimer);
         TM_SET_STATE(pTimer, TMTIMERSTATE_EXPIRED_DELIVER);
         STAM_PROFILE_START(&pTimer->StatTimer, PrfTimer);
         switch (pTimer->enmType)
