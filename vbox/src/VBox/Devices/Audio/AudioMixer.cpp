@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 89303 2021-05-26 21:08:40Z vboxsync $ */
+/* $Id: AudioMixer.cpp 89304 2021-05-26 21:29:29Z vboxsync $ */
 /** @file
  * Audio mixing routines for multiplexing audio sources in device emulations.
  *
@@ -481,23 +481,6 @@ int AudioMixerSetMasterVolume(PAUDIOMIXER pMixer, PPDMAUDIOVOLUME pVol)
 /*********************************************************************************************************************************
 *   Mixer Sink implementation.                                                                                                   *
 *********************************************************************************************************************************/
-
-#ifdef VBOX_STRICT
-/**
- * Checks if @a pNeedle is in the list of streams associated with @a pSink.
- * @returns true / false.
- */
-static bool audioMixerSinkIsStreamInList(PAUDMIXSINK pSink, PAUDMIXSTREAM pNeedle)
-{
-    PAUDMIXSTREAM pStream;
-    RTListForEach(&pSink->lstStreams, pStream, AUDMIXSTREAM, Node)
-    {
-        if (pStream == pNeedle)
-            return true;
-    }
-    return false;
-}
-#endif /* VBOX_STRICT */
 
 /**
  * Adds an audio stream to a specific audio sink.
