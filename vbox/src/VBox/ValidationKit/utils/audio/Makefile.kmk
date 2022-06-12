@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 89114 2021-05-17 16:45:20Z vboxsync $
+# $Id: Makefile.kmk 89120 2021-05-17 17:53:25Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - Audio Utilities.
 #
@@ -43,7 +43,7 @@ endif
 #
 VKAT_PATH_AUDIO = $(PATH_ROOT)/src/VBox/Devices/Audio
 
-ifn1of ($(KBUILD_TARGET), os2 solaris)
+ifn1of ($(KBUILD_TARGET), os2)
 PROGRAMS += AudioTest
 endif
 AudioTest_TEMPLATE = VBoxValidationKitR3
