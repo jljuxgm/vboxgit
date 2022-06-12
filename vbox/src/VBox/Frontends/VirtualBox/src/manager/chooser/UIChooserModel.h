@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.h 84517 2020-05-25 16:23:21Z vboxsync $ */
+/* $Id: UIChooserModel.h 84518 2020-05-25 17:24:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class declaration.
  */
@@ -304,9 +304,6 @@ private slots:
         void sltStartScrolling();
         /** Handles D&D object destruction. */
         void sltCurrentDragObjectDestroyed();
-
-        /** Handles machine search widget show/hide request. */
-        void sltShowHideSearchWidget();
     /** @} */
 
 private:
@@ -321,8 +318,6 @@ private:
         void prepareContextMenu();
         /** Prepares handlers. */
         void prepareHandlers();
-        /** Prepares connections. */
-        void prepareConnections();
         /** Loads last selected-items. */
         void loadLastSelectedItem();
 

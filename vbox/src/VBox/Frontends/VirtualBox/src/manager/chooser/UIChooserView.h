@@ -1,4 +1,4 @@
-/* $Id: UIChooserView.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIChooserView.h 84518 2020-05-25 17:24:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserView class declaration.
  */
@@ -38,6 +38,9 @@ signals:
 
     /** Notifies listeners about resize. */
     void sigResized();
+
+    /** Notifies listeners about search widget visibility changed to @a fVisible. */
+    void sigSearchWidgetVisibilityChanged(bool fVisible);
 
 public:
 

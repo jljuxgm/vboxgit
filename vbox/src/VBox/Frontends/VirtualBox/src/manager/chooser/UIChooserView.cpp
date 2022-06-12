@@ -1,4 +1,4 @@
-/* $Id: UIChooserView.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIChooserView.cpp 84518 2020-05-25 17:24:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserView class implementation.
  */
@@ -127,6 +127,9 @@ void UIChooserView::setSearchWidgetVisible(bool fVisible)
 
     /* Set widget visibility state: */
     m_pSearchWidget->setVisible(fVisible);
+
+    /* Notify listeners: */
+    emit sigSearchWidgetVisibilityChanged(fVisible);
 
     /* Update geometry if widget is visible: */
     if (m_pSearchWidget->isVisible())

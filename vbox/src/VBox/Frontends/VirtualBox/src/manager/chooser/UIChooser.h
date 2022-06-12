@@ -1,4 +1,4 @@
-/* $Id: UIChooser.h 84517 2020-05-25 16:23:21Z vboxsync $ */
+/* $Id: UIChooser.h 84518 2020-05-25 17:24:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooser class declaration.
  */
@@ -73,6 +73,8 @@ signals:
       * @{ */
         /** Notify listeners about start or show request. */
         void sigStartOrShowRequest();
+        /** Notifies listeners about machine search widget visibility changed to @a fVisible. */
+        void sigMachineSearchWidgetVisibilityChanged(bool fVisible);
     /** @} */
 
 public:
@@ -143,6 +145,8 @@ public:
         void refreshMachine();
         /** Sorts group. */
         void sortGroup();
+        /** Toggle machine search widget to be @a fVisible. */
+        void setMachineSearchWidgetVisibility(bool fVisible);
     /** @} */
 
 public slots:

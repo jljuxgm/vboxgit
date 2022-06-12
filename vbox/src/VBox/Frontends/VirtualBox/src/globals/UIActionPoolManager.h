@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.h 84435 2020-05-21 15:39:16Z vboxsync $ */
+/* $Id: UIActionPoolManager.h 84518 2020-05-25 17:24:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class declaration.
  */
@@ -116,7 +116,7 @@ enum UIActionIndexST
     UIActionIndexST_M_Machine_S_ShowInFileManager,
     UIActionIndexST_M_Machine_S_CreateShortcut,
     UIActionIndexST_M_Machine_S_SortParent,
-    UIActionIndexST_M_Machine_S_Search,
+    UIActionIndexST_M_Machine_T_Search,
 
     /* Global Tools actions: */
     UIActionIndexST_M_Tools_M_Global,
