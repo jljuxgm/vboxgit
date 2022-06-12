@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 84519 2020-05-25 17:29:52Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 84520 2020-05-25 17:44:38Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -2689,7 +2689,7 @@ static int gctlWaitForRunLevel(PGCTLCMDCTX pCtx, AdditionsRunLevelType_T enmRunL
     {
         HRESULT rc = S_OK;
         /** Whether we need to actually wait for the run level or if we already reached it. */
-        bool fWait;
+        bool fWait = false;
 
         /* Install an event handler first to catch any runlevel changes. */
         ComObjPtr<GuestAdditionsRunlevelListenerImpl> pGuestListener;
@@ -2982,6 +2982,8 @@ static DECLCALLBACK(RTEXITCODE) gctlHandleUpdateAdditions(PGCTLCMDCTX pCtx, int 
                     {
                         /** @todo Implement this. */
                         vrc = VERR_NOT_IMPLEMENTED;
+                        if (pCtx->cVerbose)
+                            RTPrintf("Rebooting is not implemented yet, sorry!\n");
 
                         if (RT_SUCCESS(vrc))
                         {
