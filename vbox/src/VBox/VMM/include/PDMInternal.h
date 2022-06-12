@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 88641 2021-04-22 06:20:26Z vboxsync $ */
+/* $Id: PDMInternal.h 89600 2021-06-10 13:17:07Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -818,6 +818,10 @@ typedef struct PDMIOAPIC
      /** @copydoc PDMIOAPICREG::pfnSendMsi */
     DECLRCCALLBACKMEMBER(VBOXSTRICTRC, pfnSetEoiRC,(PPDMDEVINS pDevIns, uint8_t u8Vector));
 } PDMIOAPIC;
+/** Pointer to a PDM IOAPIC instance. */
+typedef PDMIOAPIC *PPDMIOAPIC;
+/** Pointer to a const PDM IOAPIC instance. */
+typedef PDMIOAPIC const *PCPDMIOAPIC;
 
 /** Maximum number of PCI busses for a VM. */
 #define PDM_PCI_BUSSES_MAX 8
