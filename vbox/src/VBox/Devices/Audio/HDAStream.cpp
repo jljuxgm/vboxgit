@@ -1,4 +1,4 @@
-/* $Id: HDAStream.cpp 87319 2021-01-20 10:44:22Z vboxsync $ */
+/* $Id: HDAStream.cpp 87427 2021-01-26 10:10:13Z vboxsync $ */
 /** @file
  * HDAStream.cpp - Stream functions for HD Audio.
  */
@@ -1535,7 +1535,9 @@ void hdaR3StreamUpdate(PPDMDEVINS pDevIns, PHDASTATE pThis, PHDASTATER3 pThisCC,
 # endif
             const uint32_t cbSinkWritable     = AudioMixerSinkGetWritable(pSink);
             const uint32_t cbStreamReadable   = hdaR3StreamGetUsed(pStreamR3);
-            const uint32_t cbToReadFromStream = RT_MIN(cbStreamReadable, cbSinkWritable);
+                  uint32_t cbToReadFromStream = RT_MIN(cbStreamReadable, cbSinkWritable);
+                           /* Make sure that we always align the number of bytes when reading to the stream's PCM properties. */
+                           cbToReadFromStream = DrvAudioHlpBytesAlign(cbToReadFromStream, &pStreamShared->State.Cfg.Props);
 
             Log3Func(("[SD%RU8] cbSinkWritable=%RU32, cbStreamReadable=%RU32\n", pStreamShared->u8SD, cbSinkWritable, cbStreamReadable));
 
