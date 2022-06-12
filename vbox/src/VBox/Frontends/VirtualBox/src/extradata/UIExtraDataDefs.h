@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 86716 2020-10-26 17:54:33Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 86764 2020-10-30 10:08:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -438,6 +438,7 @@ namespace UIExtraDataDefs
     /** @name Help Browser
       * @{ */
         SHARED_LIBRARY_STUFF extern const char *GUI_HelpBrowserLastURL;
+        SHARED_LIBRARY_STUFF extern const char *GUI_HelpBrowserDialogGeometry;
     /** @} */
 
     /** @name Manager UI: VM Resource Monitor Related stuff
