@@ -1,4 +1,4 @@
-/* $Id: PDMR0DevHlp.cpp 89065 2021-05-17 05:40:02Z vboxsync $ */
+/* $Id: PDMR0DevHlp.cpp 89069 2021-05-17 05:49:07Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, R0 Device Helper parts.
  */
@@ -1528,7 +1528,7 @@ static DECLCALLBACK(void) pdmR0IoApicHlp_Unlock(PPDMDEVINS pDevIns)
 }
 
 
-/** @interface_method_impl{PDMIOAPICHLP,pfnUnlock} */
+/** @interface_method_impl{PDMIOAPICHLP,pfnLockIsOwner} */
 static DECLCALLBACK(bool) pdmR0IoApicHlp_LockIsOwner(PPDMDEVINS pDevIns)
 {
     PDMDEV_ASSERT_DEVINS(pDevIns);
