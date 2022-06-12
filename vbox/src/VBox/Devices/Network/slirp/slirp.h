@@ -1,4 +1,4 @@
-/* $Id: slirp.h 85195 2020-07-10 15:12:19Z vboxsync $ */
+/* $Id: slirp.h 87126 2020-12-25 02:51:44Z vboxsync $ */
 /** @file
  * NAT - slirp (declarations/defines).
  */
@@ -388,9 +388,6 @@ int errno_func(const char *file, int line);
 
 # define ETH_ALEN        6
 # define ETH_HLEN        14
-
-# define ARPOP_REQUEST   1               /* ARP request                  */
-# define ARPOP_REPLY     2               /* ARP reply                    */
 
 struct ethhdr
 {
