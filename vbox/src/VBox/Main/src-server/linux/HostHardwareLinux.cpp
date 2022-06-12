@@ -1,4 +1,4 @@
-/* $Id: HostHardwareLinux.cpp 86136 2020-09-16 15:56:14Z vboxsync $ */
+/* $Id: HostHardwareLinux.cpp 86137 2020-09-16 16:14:09Z vboxsync $ */
 /** @file
  * VirtualBox Main - Code for handling hardware detection under Linux, VBoxSVC.
  */
@@ -39,7 +39,11 @@
 #include <linux/major.h>
 
 #include <linux/version.h>
-#include <linux/nvme_ioctl.h>
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,4,0)
+# include <linux/nvme_ioctl.h>
+#else
+# include <linux/nvme.h>
+#endif
 #include <scsi/scsi.h>
 
 #include <iprt/linux/sysfs.h>
