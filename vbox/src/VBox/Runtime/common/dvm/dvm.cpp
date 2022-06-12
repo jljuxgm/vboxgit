@@ -1,4 +1,4 @@
-/* $Id: dvm.cpp 85894 2020-08-26 20:50:52Z vboxsync $ */
+/* $Id: dvm.cpp 86332 2020-09-28 17:56:32Z vboxsync $ */
 /** @file
  * IPRT Disk Volume Management API (DVM) - generic code.
  */
@@ -777,7 +777,7 @@ RTDECL(uint32_t) RTDvmVolumeGetIndex(RTDVMVOLUME hVol, RTDVMVOLIDX enmIndex)
    || defined(RT_OS_SOLARIS) \
    || defined(RT_OS_DARWIN) \
    || defined(RT_OS_OS2) /*whatever*/
-/** @todo verify darwin, solaris and freebsd matches the linux algo. Check the linux index matching actual linux. */
+/* Darwing and freebsd matches the linux algo. Solaris matches linux algo partially, at least, in the part we use. */
         enmIndex = RTDVMVOLIDX_LINUX;
 #else
 # error "PORTME"
