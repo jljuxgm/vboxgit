@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 84520 2020-05-25 17:44:38Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 84521 2020-05-25 17:49:46Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -2720,6 +2720,8 @@ static int gctlWaitForRunLevel(PGCTLCMDCTX pCtx, AdditionsRunLevelType_T enmRunL
         {
             if (pCtx->cVerbose)
                 RTPrintf("Waiting for run level %RU32 ...\n", enmRunLevel);
+
+            vrc = VINF_SUCCESS; /* Shut up MSVC. */
 
             RTMSINTERVAL tsStart = RTTimeMilliTS();
             while (RTTimeMilliTS() - tsStart < cMsTimeout)
