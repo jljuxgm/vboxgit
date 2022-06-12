@@ -1,4 +1,4 @@
-/* $Id: VBoxHeadless.cpp 88990 2021-05-11 22:56:28Z vboxsync $ */
+/* $Id: VBoxHeadless.cpp 89012 2021-05-12 13:32:15Z vboxsync $ */
 /** @file
  * VBoxHeadless - The VirtualBox Headless frontend for running VMs on servers.
  */
@@ -395,6 +395,7 @@ static void
 HandleSignal(int sig)
 {
     RT_NOREF(sig);
+    Log(("%s: received singal %d\n", __FUNCTION__, sig));
     g_fTerminateFE = true;
 }
 #endif /* VBOX_WITH_SAVESTATE_ON_SIGNAL */
@@ -1432,11 +1433,13 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
              */
             if (g_fTerminateFE)
             {
+                Log(("processEventQueue: %Rrc, g_fTerminateFE = true\n", irc));
                 break;
             }
 
             if (RT_FAILURE(irc))
             {
+                Log(("processEventQueue: %Rrc, g_fTerminateFE = false\n", irc));
                 RTMsgError("event loop: %Rrc", irc);
                 break;
             }
@@ -1465,7 +1468,17 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
      */
     MachineState_T machineState = MachineState_Aborted;
     if (!machine.isNull())
-        machine->COMGETTER(State)(&machineState);
+    {
+        rc = machine->COMGETTER(State)(&machineState);
+        if (SUCCEEDED(rc))
+            Log(("machine state = %RU32\n", machineState));
+        else
+            Log(("IMachine::getState: %Rhrc\n", rc));
+    }
+    else
+    {
+        Log(("machine == NULL\n"));
+    }
 
     /*
      * Turn off the VM if it's running
