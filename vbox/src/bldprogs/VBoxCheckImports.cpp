@@ -1,4 +1,4 @@
-/* $Id: VBoxCheckImports.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxCheckImports.cpp 84404 2020-05-20 14:26:16Z vboxsync $ */
 /** @file
  * IPRT - Checks that a windows image only imports from a given set of DLLs.
  */
@@ -161,6 +161,7 @@ static bool ReadAtRva(MYIMAGE *pThis, uint32_t uRva, void *pvBuf, size_t cbToRea
             cbToRead -= cbThis;
             if (!cbToRead)
                 return true;
+            uRva += cbThis;
             pvBuf = (uint8_t *)pvBuf + cbThis;
         }
 
@@ -326,7 +327,7 @@ int main(int argc, char **argv)
             else if (   !strcmp(psz, "--version")
                      || !strcmp(psz, "-V"))
             {
-                printf("$Revision: 82968 $\n");
+                printf("$Revision: 84404 $\n");
                 return RTEXITCODE_SUCCESS;
             }
             else
