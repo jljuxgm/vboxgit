@@ -1,4 +1,4 @@
-/* $Id: UIHelpViewer.h 87208 2021-01-11 09:04:21Z vboxsync $ */
+/* $Id: UIHelpViewer.h 87211 2021-01-11 12:44:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class declaration.
  */
@@ -57,6 +57,7 @@ public:
     bool isFindInPageWidgetVisible() const;
 
 public slots:
+
     void sltToggleFindInPageWidget(bool fVisible);
 
 protected:
@@ -87,7 +88,7 @@ private:
     UIFindInPageWidget *m_pFindInPageWidget;
     /* Initilized as false and set to true once the user drag moves the find widget. */
     bool m_fFindWidgetDragged;
-    const int m_iMarginForFindWidget;
+    int m_iMarginForFindWidget;
     /** Document positions of the cursors within the document for all matches. */
     QVector<int>   m_matchedCursorPosition;
     int m_iSelectedMatchIndex;
