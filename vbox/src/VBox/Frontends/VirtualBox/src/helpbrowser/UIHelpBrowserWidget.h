@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.h 86791 2020-11-03 11:21:51Z vboxsync $ */
+/* $Id: UIHelpBrowserWidget.h 86794 2020-11-03 12:22:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class declaration.
  */
@@ -106,16 +106,15 @@ private:
     void saveOptions();
     void cleanup();
     QUrl findIndexHtml() const;
-    void show404Error(const QUrl &url);
     /** @name Event handling stuff.
      * @{ */
     /** Handles translation event. */
-    virtual void retranslateUi() /* override */;
+       virtual void retranslateUi() /* override */;
 
-    /** Handles Qt show @a pEvent. */
-    virtual void showEvent(QShowEvent *pEvent) /* override */;
-    /** Handles Qt key-press @a pEvent. */
-    virtual void keyPressEvent(QKeyEvent *pEvent) /* override */;
+       /** Handles Qt show @a pEvent. */
+       virtual void showEvent(QShowEvent *pEvent) /* override */;
+       /** Handles Qt key-press @a pEvent. */
+       virtual void keyPressEvent(QKeyEvent *pEvent) /* override */;
     /** @} */
 
     /** Holds the widget's embedding type. */
