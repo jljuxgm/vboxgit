@@ -1,4 +1,4 @@
-/* $Id: AudioMixBuffer.cpp 88299 2021-03-26 14:05:04Z vboxsync $ */
+/* $Id: AudioMixBuffer.cpp 88307 2021-03-26 21:18:42Z vboxsync $ */
 /** @file
  * Audio mixing buffer for converting reading/writing audio data.
  */
@@ -1963,12 +1963,9 @@ int AudioMixBufWriteCircEx(PPDMAUDIOMIXBUF pMixBuf, PCPDMAUDIOPCMPROPS pSrcProps
         Assert(cToWrite);
 
         PDMAUDMIXBUFCONVOPTS convOpts;
-        RT_ZERO(convOpts);
-
         convOpts.From.Volume.fMuted = pMixBuf->Volume.fMuted;
         convOpts.From.Volume.uLeft  = pMixBuf->Volume.uLeft;
         convOpts.From.Volume.uRight = pMixBuf->Volume.uRight;
-
         convOpts.cFrames = cToWrite;
 
         cWritten = pfnConvFrom(pMixBuf->pFrames + pMixBuf->offWrite,
