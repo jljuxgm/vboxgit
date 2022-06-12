@@ -1,4 +1,4 @@
-/* $Id: UICloudProfileManager.h 86688 2020-10-23 14:01:54Z vboxsync $ */
+/* $Id: UICloudProfileManager.h 86689 2020-10-23 14:23:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudProfileManager class declaration.
  */
@@ -168,8 +168,6 @@ private:
           * using @a pParentItem as an item to start search from. */
         QTreeWidgetItem *searchItem(const QString &strDefinition,
                                     QTreeWidgetItem *pParentItem = 0) const;
-        /** Searches for a provider item with specified @a uId. */
-        UIItemCloudProvider *searchItem(const QUuid &uId) const;
 
         /** Creates a new tree-widget item
           * on the basis of passed @a providerData, @a fChooseItem if requested. */
