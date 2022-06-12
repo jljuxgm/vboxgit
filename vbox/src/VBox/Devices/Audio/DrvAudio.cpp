@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 89510 2021-06-04 13:20:02Z vboxsync $ */
+/* $Id: DrvAudio.cpp 89512 2021-06-04 15:27:51Z vboxsync $ */
 /** @file
  * Intermediate audio driver - Connects the audio device emulation with the host backend.
  */
@@ -1138,12 +1138,12 @@ static int drvAudioStreamAdjustConfig(PCDRVAUDIO pThis, PPDMAUDIOSTREAMCFG pCfg,
     {
         if (pCfg->Backend.cFramesPreBuffering == UINT32_MAX) /* Set default pre-buffering size if nothing explicitly is set. */
         {
-            /* Pre-buffer 66% of the buffer for output streams, but only 50% for input. Capping both at 200ms. */
-            if (pCfg->enmDir == PDMAUDIODIR_OUT)
-                pCfg->Backend.cFramesPreBuffering = pCfg->Backend.cFramesBufferSize * 2 / 3;
-            else
-                pCfg->Backend.cFramesPreBuffering = pCfg->Backend.cFramesBufferSize / 2;
+            /* Pre-buffer 50% for both output & input. Capping both at 200ms.
+               The 50% reasoning being that we need to have sufficient slack space
+               in both directions as the guest DMA timer might be delayed by host
+               scheduling as well as sped up afterwards because of TM catch-up. */
             uint32_t const cFramesMax = PDMAudioPropsMilliToFrames(&pCfg->Props, 200);
+            pCfg->Backend.cFramesPreBuffering = pCfg->Backend.cFramesBufferSize / 2;
             pCfg->Backend.cFramesPreBuffering = RT_MIN(pCfg->Backend.cFramesPreBuffering, cFramesMax);
             pszWhat = "default";
         }
