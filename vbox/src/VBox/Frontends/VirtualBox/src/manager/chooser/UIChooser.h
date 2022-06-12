@@ -1,4 +1,4 @@
-/* $Id: UIChooser.h 84437 2020-05-21 16:36:05Z vboxsync $ */
+/* $Id: UIChooser.h 84438 2020-05-21 18:04:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooser class declaration.
  */
@@ -116,7 +116,7 @@ public:
         bool isSingleLocalGroupSelected() const;
         /** Returns whether single cloud profile group is selected. */
         bool isSingleCloudProfileGroupSelected() const;
-        /** Returns whether all machine items of one group is selected. */
+        /** Returns whether all items of one group are selected. */
         bool isAllItemsOfOneGroupSelected() const;
     /** @} */
 
