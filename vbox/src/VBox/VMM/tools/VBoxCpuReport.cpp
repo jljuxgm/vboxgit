@@ -1,4 +1,4 @@
-/* $Id: VBoxCpuReport.cpp 85355 2020-07-15 16:57:59Z vboxsync $ */
+/* $Id: VBoxCpuReport.cpp 85358 2020-07-15 18:47:28Z vboxsync $ */
 /** @file
  * VBoxCpuReport - Produces the basis for a CPU DB entry.
  */
@@ -4533,7 +4533,7 @@ static int produceCpuIdArray(const char *pszNameC, const char *pszCpuDesc)
                    "/**\n"
                    " * CPUID leaves for %s.\n"
                    " */\n"
-                   "static CPUMCPUIDLEAF const g_aCpuIdLeaves_%s[] = \n{\n",
+                   "static CPUMCPUIDLEAF const g_aCpuIdLeaves_%s[] =\n{\n",
                    pszCpuDesc,
                    pszNameC);
     for (uint32_t i = 0; i < cLeaves; i++)
