@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.h 85111 2020-07-08 15:41:24Z vboxsync $ */
+/* $Id: UIActionPoolManager.h 85192 2020-07-10 15:05:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class declaration.
  */
@@ -108,6 +108,8 @@ enum UIActionIndexST
     UIActionIndexST_M_Machine_M_Console,
     UIActionIndexST_M_Machine_M_Console_S_CreateConnection,
     UIActionIndexST_M_Machine_M_Console_S_DeleteConnection,
+    UIActionIndexST_M_Machine_M_Console_S_CopyCommandSerial,
+    UIActionIndexST_M_Machine_M_Console_S_CopyCommandVNC,
     UIActionIndexST_M_Machine_M_Close,
     UIActionIndexST_M_Machine_M_Close_S_Detach,
     UIActionIndexST_M_Machine_M_Close_S_SaveState,

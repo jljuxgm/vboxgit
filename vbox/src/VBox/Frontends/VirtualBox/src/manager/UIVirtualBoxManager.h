@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 85191 2020-07-10 14:59:12Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.h 85192 2020-07-10 15:05:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -247,6 +247,10 @@ private slots:
         void sltPerformDeleteConsoleConnectionForMachine();
         /** Handles call to copy console connection key fingerprint. */
         void sltCopyConsoleConnectionFingerprint();
+        /** Handles call to copy serial console command. */
+        void sltPerformCopyCommandSerial();
+        /** Handles call to copy VNC console command. */
+        void sltPerformCopyCommandVNC();
 
         /** Handles call to discard machine state. */
         void sltPerformDiscardMachineState();
