@@ -1,4 +1,4 @@
-/* $Id: UIFileManager.h 86233 2020-09-23 12:10:51Z vboxsync $ */
+/* $Id: UIFileManager.h 89107 2021-05-17 15:33:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManager class declaration.
  */
@@ -22,6 +22,7 @@
 #endif
 
 /* Qt includes: */
+#include <QPointer>
 #include <QWidget>
 
 /* COM includes: */
@@ -179,7 +180,7 @@ private:
     CEventListener m_comSessionListener;
     CEventListener m_comGuestListener;
     const EmbedTo  m_enmEmbedding;
-    UIActionPool  *m_pActionPool;
+    QPointer<UIActionPool>  m_pActionPool;
     const bool     m_fShowToolbar;
     QMap<UIDialogPanel*, QAction*> m_panelActionMap;
     QList<UIDialogPanel*>          m_visiblePanelsList;

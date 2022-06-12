@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.cpp 89104 2021-05-17 15:25:53Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.cpp 89107 2021-05-17 15:33:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class implementation.
  */
@@ -1046,9 +1046,7 @@ void UIVMLogViewerWidget::resetHighlighthing()
 
 void UIVMLogViewerWidget::hidePanel(UIDialogPanel* panel)
 {
-    if (!panel)
-        return;
-    if (!m_pActionPool)
+    if (!panel || !m_pActionPool)
         return;
     if (panel->isVisible())
         panel->setVisible(false);

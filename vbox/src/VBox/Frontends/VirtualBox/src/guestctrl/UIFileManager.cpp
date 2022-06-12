@@ -1,4 +1,4 @@
-/* $Id: UIFileManager.cpp 86986 2020-11-26 14:22:34Z vboxsync $ */
+/* $Id: UIFileManager.cpp 89107 2021-05-17 15:33:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManager class implementation.
  */
@@ -734,6 +734,8 @@ void UIFileManager::loadOptions()
 
 void UIFileManager::hidePanel(UIDialogPanel* panel)
 {
+    if (!m_pActionPool)
+        return;
     if (panel && panel->isVisible())
         panel->setVisible(false);
     QMap<UIDialogPanel*, QAction*>::iterator iterator = m_panelActionMap.find(panel);
