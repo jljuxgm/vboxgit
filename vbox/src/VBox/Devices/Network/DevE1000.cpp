@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 88372 2021-04-06 18:17:00Z vboxsync $ */
+/* $Id: DevE1000.cpp 88424 2021-04-08 18:20:16Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -1730,6 +1730,12 @@ DECLINLINE(bool) e1kUpdateRxDContext(PPDMDEVINS pDevIns, PE1KSTATE pThis, PE1KRX
     pContext->rdh   = RDH;
     pContext->rdt   = RDT;
     uint32_t cRxRingSize = pContext->rdlen / sizeof(E1KRXDESC);
+    /*
+     * Note that the checks for RDT are a bit different. Some guests, OS/2 for
+     * example, intend to use all descriptors in RX ring, so they point RDT
+     * right beyond the last descriptor in the ring. While this is not
+     * acceptable for other registers, it works out fine for RDT.
+     */
 #ifdef DEBUG
     if (pContext->rdh >= cRxRingSize)
     {
