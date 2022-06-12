@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioAlsa.cpp 88991 2021-05-12 00:46:35Z vboxsync $ */
+/* $Id: DrvHostAudioAlsa.cpp 89055 2021-05-15 16:03:07Z vboxsync $ */
 /** @file
  * Host audio driver - Advanced Linux Sound Architecture (ALSA).
  */
@@ -58,11 +58,7 @@
 #include <alsa/version.h>
 #include "DrvHostAudioAlsaStubs.h"
 
-#ifdef VBOX_AUDIO_VKAT
-# include "VBoxDDVKAT.h"
-#else
-# include "VBoxDD.h"
-#endif
+#include "VBoxDD.h"
 
 
 /*********************************************************************************************************************************

@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioOss.cpp 88995 2021-05-12 00:55:06Z vboxsync $ */
+/* $Id: DrvHostAudioOss.cpp 89055 2021-05-15 16:03:07Z vboxsync $ */
 /** @file
  * Host audio driver - OSS (Open Sound System).
  */
@@ -35,11 +35,7 @@
 #include <VBox/vmm/pdmaudioifs.h>
 #include <VBox/vmm/pdmaudioinline.h>
 
-#ifdef VBOX_AUDIO_VKAT
-# include "VBoxDDVKAT.h"
-#else
-# include "VBoxDD.h"
-#endif
+#include "VBoxDD.h"
 
 
 /*********************************************************************************************************************************
