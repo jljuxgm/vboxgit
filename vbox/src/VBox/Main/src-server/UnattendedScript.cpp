@@ -1,4 +1,4 @@
-/* $Id: UnattendedScript.cpp 86274 2020-09-24 19:52:56Z vboxsync $ */
+/* $Id: UnattendedScript.cpp 86336 2020-09-29 11:44:01Z vboxsync $ */
 /** @file
  * Classes for reading/parsing/saving scripts for unattended installation.
  */
@@ -240,9 +240,9 @@ HRESULT UnattendedScriptTemplate::saveToString(Utf8Str &rStrDst)
 
                     //offTemplate is the beginning of content, offEndContent is the end of content
                     //@@PLACEHOLDER_BEGIN@@Content@@PLACEHOLDER_END@@
-                    //                 ^       ^
-                    //                 |       |
-                    //         offTemplate  offEndContent
+                    //                    ^       ^
+                    //                    |       |
+                    //             offTemplate  offEndContent
                     size_t offEndContent = mStrScriptFullContent.find(s_szPrefix, offTemplate);
                     size_t cchContent = offEndContent - offTemplate - 1;
                     hrc = getGuestOSConditional(pszPlaceholder, cchPlaceholder, cchContent, &cchInternalCorrect, &fNewOutputting);
