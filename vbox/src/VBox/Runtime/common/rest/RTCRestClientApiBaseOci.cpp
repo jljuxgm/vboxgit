@@ -1,4 +1,4 @@
-/* $Id: RTCRestClientApiBaseOci.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: RTCRestClientApiBaseOci.cpp 87302 2021-01-18 17:59:46Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestClientApiBase implementation, OCI specific bits.
  */
@@ -43,7 +43,7 @@
 
 
 /**
- * Ensures that we've got a 'Content-Length' header.
+ * Ensures that we've got an 'X-Date' or 'Date' header.
  *
  * @returns IPRT status code.
  * @param   hHttp       The HTTP client handle.
