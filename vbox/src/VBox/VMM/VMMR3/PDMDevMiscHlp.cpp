@@ -1,4 +1,4 @@
-/* $Id: PDMDevMiscHlp.cpp 87477 2021-01-29 11:43:09Z vboxsync $ */
+/* $Id: PDMDevMiscHlp.cpp 87691 2021-02-10 16:20:11Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Misc. Device Helpers.
  */
@@ -259,14 +259,40 @@ const PDMPCIHLPR3 g_pdmR3DevPciHlp =
 /** @} */
 
 
+/** @name Ring-3 IOMMU Helpers
+ * @{
+ */
+
+/** @interface_method_impl{PDMIOMMUHLPR3,pfnLock} */
+static DECLCALLBACK(int) pdmR3IommuHlp_Lock(PPDMDEVINS pDevIns, int rc)
+{
+    PDMDEV_ASSERT_DEVINS(pDevIns);
+    LogFlowFunc(("caller='%s'/%d: rc=%Rrc\n", pDevIns->pReg->szName, pDevIns->iInstance, rc));
+    return pdmLockEx(pDevIns->Internal.s.pVMR3, rc);
+}
+
+
+/** @interface_method_impl{PDMIOMMUHLPR3,pfnUnlock} */
+static DECLCALLBACK(void) pdmR3IommuHlp_Unlock(PPDMDEVINS pDevIns)
+{
+    PDMDEV_ASSERT_DEVINS(pDevIns);
+    LogFlowFunc(("caller='%s'/%d:\n", pDevIns->pReg->szName, pDevIns->iInstance));
+    pdmUnlock(pDevIns->Internal.s.pVMR3);
+}
+
+
 /**
  * IOMMU Device Helpers.
  */
 const PDMIOMMUHLPR3 g_pdmR3DevIommuHlp =
 {
     PDM_IOMMUHLPR3_VERSION,
+    pdmR3IommuHlp_Lock,
+    pdmR3IommuHlp_Unlock,
     PDM_IOMMUHLPR3_VERSION /* the end */
 };
+
+/** @} */
 
 
 /** @name Ring-3 HPET Helpers

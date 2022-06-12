@@ -1,4 +1,4 @@
-/* $Id: PDMR0DevHlp.cpp 87478 2021-01-29 13:42:32Z vboxsync $ */
+/* $Id: PDMR0DevHlp.cpp 87691 2021-02-10 16:20:11Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, R0 Device Helper parts.
  */
@@ -1664,12 +1664,30 @@ extern DECLEXPORT(const PDMPCIHLPR0) g_pdmR0PciHlp =
  * @{
  */
 
+/** @interface_method_impl{PDMIOMMUHLPR0,pfnLock} */
+static DECLCALLBACK(int) pdmR0IommuHlp_Lock(PPDMDEVINS pDevIns, int rc)
+{
+    PDMDEV_ASSERT_DEVINS(pDevIns);
+    return pdmLockEx(pDevIns->Internal.s.pGVM, rc);
+}
+
+
+/** @interface_method_impl{PDMIOMMUHLPR0,pfnUnlock} */
+static DECLCALLBACK(void) pdmR0IommuHlp_Unlock(PPDMDEVINS pDevIns)
+{
+    PDMDEV_ASSERT_DEVINS(pDevIns);
+    pdmUnlock(pDevIns->Internal.s.pGVM);
+}
+
+
 /**
  * The Ring-0 IOMMU Helper Callbacks.
  */
 extern DECLEXPORT(const PDMIOMMUHLPR0) g_pdmR0IommuHlp =
 {
     PDM_IOMMUHLPR0_VERSION,
+    pdmR0IommuHlp_Lock,
+    pdmR0IommuHlp_Unlock,
     PDM_IOMMUHLPR0_VERSION, /* the end */
 };
 
