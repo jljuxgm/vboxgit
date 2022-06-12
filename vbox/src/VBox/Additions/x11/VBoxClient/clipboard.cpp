@@ -1,4 +1,4 @@
-/** $Id: clipboard.cpp 85798 2020-08-17 12:55:46Z vboxsync $ */
+/** $Id: clipboard.cpp 85834 2020-08-19 14:05:37Z vboxsync $ */
 /** @file
  * Guest Additions - X11 Shared Clipboard.
  */
@@ -79,15 +79,14 @@ static SHCLCONTEXT g_Ctx;
 
 
 /**
- * Get clipboard data from the host.
+ * Callback implementation for getting clipboard data from the host.
  *
- * @returns VBox result code
+ * @returns VBox status code. VERR_NO_DATA if no data available.
  * @param   pCtx                Our context information.
  * @param   Format              The format of the data being requested.
  * @param   ppv                 On success and if pcb > 0, this will point to a buffer
  *                              to be freed with RTMemFree containing the data read.
- * @param   pcb                 On success, this contains the number of bytes of data
- *                              returned.
+ * @param   pcb                 On success, this contains the number of bytes of data returned.
  */
 DECLCALLBACK(int) ShClX11RequestDataForX11Callback(PSHCLCONTEXT pCtx, SHCLFORMAT Format, void **ppv, uint32_t *pcb)
 {
@@ -137,20 +136,24 @@ DECLCALLBACK(int) ShClX11RequestDataForX11Callback(PSHCLCONTEXT pCtx, SHCLFORMAT
                 rc = VERR_NO_MEMORY;
         }
 
+        if (!cbRead)
+            rc = VERR_NO_DATA;
+
         if (RT_SUCCESS(rc))
         {
             *pcb = cbRead; /* Actual bytes read. */
             *ppv = pvData;
         }
-
-        /*
-         * Catch other errors. This also catches the case in which the buffer was
-         * too small a second time, possibly because the clipboard contents
-         * changed half-way through the operation.  Since we can't say whether or
-         * not this is actually an error, we just return size 0.
-         */
-        if (RT_FAILURE(rc))
+        else
+        {
+            /*
+             * Catch other errors. This also catches the case in which the buffer was
+             * too small a second time, possibly because the clipboard contents
+             * changed half-way through the operation.  Since we can't say whether or
+             * not this is actually an error, we just return size 0.
+             */
             RTMemFree(pvData);
+        }
     }
 
     LogFlowFuncLeaveRC(rc);
