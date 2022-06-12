@@ -1,4 +1,4 @@
-/* $Id: display-svga-x11.cpp 84636 2020-06-02 12:34:44Z vboxsync $ */
+/* $Id: display-svga-x11.cpp 84637 2020-06-02 13:33:34Z vboxsync $ */
 /** @file
  * X11 guest client - VMSVGA emulation resize event pass-through to X.Org
  * guest driver.
@@ -154,8 +154,6 @@ struct X11CONTEXT
 };
 
 static X11CONTEXT x11Context;
-
-#define BUFFER_SIZE 1024
 
 struct RANDROUTPUT
 {
@@ -687,9 +685,9 @@ static bool init()
         VBClLogInfo("The parent session seems to be running on Wayland. Starting DRM client\n");
         char* argv[] = {NULL};
         char* env[] = {NULL};
-        char szDRMClientPath[BUFFER_SIZE];
-        RTPathExecDir(szDRMClientPath, BUFFER_SIZE);
-        RTPathAppend(szDRMClientPath, BUFFER_SIZE, "VBoxDRMClient");
+        char szDRMClientPath[RTPATH_MAX];
+        RTPathExecDir(szDRMClientPath, RTPATH_MAX);
+        RTPathAppend(szDRMClientPath, RTPATH_MAX, "VBoxDRMClient");
         int rc = execve(szDRMClientPath, argv, env);
         if (rc == -1)
             VBClLogFatalError("execve for % returns the following error %d %s\n", szDRMClientPath, errno, strerror(errno));
