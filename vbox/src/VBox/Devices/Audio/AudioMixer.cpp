@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 87159 2021-01-04 11:38:37Z vboxsync $ */
+/* $Id: AudioMixer.cpp 87173 2021-01-05 08:16:55Z vboxsync $ */
 /** @file
  * Audio mixing routines for multiplexing audio sources in device emulations.
  *
@@ -1533,7 +1533,7 @@ static int audioMixerSinkSetRecSourceInternal(PAUDMIXSINK pSink, PAUDMIXSTREAM p
 
     /*
      * Warning: Do *not* use pfnConn->pfnEnable() for enabling/disabling streams here, as this will unconditionally (re-)enable
-     *          streams, which would violate / run against the (global) VM settings. See #9882.
+     *          streams, which would violate / run against the (global) VM settings. See @bugref{9882}.
      */
 
     /* Get pointers of current recording source to make code easier to read below. */
