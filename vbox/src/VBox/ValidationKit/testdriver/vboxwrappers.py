@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 84926 2020-06-24 10:17:14Z vboxsync $
+# $Id: vboxwrappers.py 86502 2020-10-09 13:48:47Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84926 $"
+__version__ = "$Revision: 86502 $"
 
 
 # Standard Python imports.
@@ -879,7 +879,9 @@ class SessionWrapper(TdTaskBase):
                 # direct session closes / VM process terminates.  Fun!
                 try:    fIgnore = self.o.state == vboxcon.SessionState_Unlocked;
                 except: fIgnore = False;
-                if not fIgnore:
+                if fIgnore:
+                    self.o  = None; # Must prevent a retry during GC.
+                else:
                     reporter.errorXcpt('ISession::unlockMachine failed on %s' % (self.o));
                     fRc = False;
 
