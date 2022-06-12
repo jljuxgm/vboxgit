@@ -1,4 +1,4 @@
-/* $Id: VBoxUSB-solaris.c 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxUSB-solaris.c 88264 2021-03-23 20:53:57Z vboxsync $ */
 /** @file
  * VirtualBox USB Client Driver, Solaris Hosts.
  */
@@ -482,6 +482,8 @@ LOCAL int vboxUsbSolarisQuerySymbols(void)
 
         RTR0DbgKrnlInfoRelease(hKrnlDbgInfo);
     }
+
+    return rc;
 }
 
 
