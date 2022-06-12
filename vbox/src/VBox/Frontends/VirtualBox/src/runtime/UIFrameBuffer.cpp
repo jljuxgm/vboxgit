@@ -1,4 +1,4 @@
-/* $Id: UIFrameBuffer.cpp 84746 2020-06-09 19:48:56Z vboxsync $ */
+/* $Id: UIFrameBuffer.cpp 84768 2020-06-10 17:42:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFrameBuffer class implementation.
  */
@@ -183,9 +183,9 @@ public slots:
 protected:
 
     /* QOpenGLWidget methods, which must be reimplemented. */
-    void initializeGL() override;
-    void paintGL() override;
-    void resizeGL(int w, int h) override;
+    void initializeGL() /* override */;
+    void paintGL() /* override */;
+    void resizeGL(int w, int h) /* override */;
 
 private:
 
