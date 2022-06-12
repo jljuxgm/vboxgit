@@ -1,4 +1,4 @@
-/* $Id: vkat.cpp 89015 2021-05-12 14:40:56Z vboxsync $ */
+/* $Id: vkat.cpp 89016 2021-05-12 14:47:27Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) utility for testing and validating the audio stack.
  */
@@ -136,6 +136,7 @@ typedef AUDIOTESTDESC *PAUDIOTESTDESC;
 static int audioTestCombineParms(PAUDIOTESTPARMS pBaseParms, PAUDIOTESTPARMS pOverrideParms);
 static int audioTestPlayTone(PAUDIOTESTENV pTstEnv, PAUDIOTESTSTREAM pStream, PAUDIOTESTTONEPARMS pParms);
 static int audioTestStreamDestroy(PAUDIOTESTENV pTstEnv, PAUDIOTESTSTREAM pStream);
+
 
 /*********************************************************************************************************************************
 *   Global Variables                                                                                                             *
