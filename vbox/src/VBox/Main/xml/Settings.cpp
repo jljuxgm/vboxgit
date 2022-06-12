@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 87241 2021-01-13 15:56:05Z vboxsync $ */
+/* $Id: Settings.cpp 88345 2021-04-01 13:12:28Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -4621,6 +4621,8 @@ void MachineConfigFile::readHardware(const xml::ElementNode &elmHardware,
                     hw.iommuType = IommuType_Automatic;
                 else if (strIommuType == "AMD")
                     hw.iommuType = IommuType_AMD;
+                else if (strIommuType == "Intel")
+                    hw.iommuType = IommuType_Intel;
                 else
                     throw ConfigFileError(this,
                                           pelmHwChild,
@@ -6128,6 +6130,7 @@ void MachineConfigFile::buildHardwareXML(xml::ElementNode &elmParent,
             case IommuType_None:         pcszIommuType = "None";        break;
             case IommuType_Automatic:    pcszIommuType = "Automatic";   break;
             case IommuType_AMD:          pcszIommuType = "AMD";         break;
+            case IommuType_Intel:        pcszIommuType = "Intel";       break;
             default:     Assert(false);  pcszIommuType = "None";        break;
         }
 
