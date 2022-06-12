@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 89650 2021-06-13 21:44:21Z vboxsync $
+# $Id: Makefile.kmk 89651 2021-06-13 21:47:24Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - Audio Utilities.
 #
@@ -43,7 +43,9 @@ ifn1of ($(KBUILD_TARGET), os2 freebsd netbsd openbsd)
   PROGRAMS += vkat
  endif
  if defined(VBOX_ONLY_ADDITIONS) || !defined(VBOX_ONLY_BUILD)
-  PROGRAMS += vkatadd
+  ifndef VBOX_WITH_ADDITIONS_FROM_BUILD_SERVER
+   PROGRAMS += vkatadd
+  endif
  endif
 endif
 
