@@ -1,4 +1,4 @@
-/* $Id: display-drm.cpp 84547 2020-05-26 16:19:36Z vboxsync $ */
+/* $Id: display-drm.cpp 84579 2020-05-28 08:49:54Z vboxsync $ */
 /** @file
  * X11 guest client - VMSVGA emulation resize event pass-through to drm guest
  * driver.
@@ -183,16 +183,23 @@ int main()
     bool fAck = false;
     drmConnect(&drmContext);
     if (drmContext.hDevice == NIL_RTFILE)
-        return VINF_SUCCESS;
+        return VERR_OPEN_FAILED;
     rc = VbglR3CtlFilterMask(VMMDEV_EVENT_DISPLAY_CHANGE_REQUEST, 0);
     if (RT_FAILURE(rc))
+    {
         VBClLogFatalError("Failed to request display change events, rc=%Rrc\n", rc);
+        return VERR_INVALID_HANDLE;
+    }
     rc = VbglR3AcquireGuestCaps(VMMDEV_GUEST_SUPPORTS_GRAPHICS, 0, false);
     if (rc == VERR_RESOURCE_BUSY)  /* Someone else has already acquired it. */
-        return VINF_SUCCESS;
+    {
+        return VERR_RESOURCE_BUSY;
+    }
     if (RT_FAILURE(rc))
+    {
         VBClLogFatalError("Failed to register resizing support, rc=%Rrc\n", rc);
-
+        return VERR_INVALID_HANDLE;
+    }
     for (;;)
     {
         uint32_t events;
