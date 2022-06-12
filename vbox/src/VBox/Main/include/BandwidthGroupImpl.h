@@ -1,4 +1,4 @@
-/* $Id: BandwidthGroupImpl.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: BandwidthGroupImpl.h 85242 2020-07-11 23:05:19Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -56,7 +56,7 @@ public:
     ComObjPtr<BandwidthGroup> i_getPeer() { return m->pPeer; }
     const Utf8Str &i_getName() const { return m->bd->mData.strName; }
     BandwidthGroupType_T i_getType() const { return m->bd->mData.enmType; }
-    LONG64 i_getMaxBytesPerSec() const { return m->bd->mData.cMaxBytesPerSec; }
+    LONG64 i_getMaxBytesPerSec() const { return (LONG64)m->bd->mData.cMaxBytesPerSec; }
     ULONG i_getReferences() const { return m->bd->cReferences; }
 
 private:
