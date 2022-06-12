@@ -1,4 +1,4 @@
-/* $Id: PDMR3Task.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: PDMR3Task.cpp 85181 2020-07-10 13:20:04Z vboxsync $ */
 /** @file
  * PDM Task - Asynchronous user mode tasks.
  */
@@ -515,7 +515,7 @@ static void pdmR3TaskDestroyOne(PVM pVM, PPDMTASKSET pTaskSet, PPDMTASK pTask, s
     ASMAtomicWriteNullPtr(&pTask->pvOwner);
     pTask->enmType     = (PDMTASKTYPE)0;
     pTask->fFlags      = 0;
-    ASMAtomicWriteNullPtr(&pTask->pfnCallback);
+    ASMAtomicWriteNullPtr((void **)&pTask->pfnCallback);
     ASMAtomicWriteNullPtr(&pTask->pvUser);
     ASMAtomicWriteNullPtr(&pTask->pszName);
 
