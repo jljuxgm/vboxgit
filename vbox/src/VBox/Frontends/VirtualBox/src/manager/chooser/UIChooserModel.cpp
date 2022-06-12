@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 86744 2020-10-28 17:35:28Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 86756 2020-10-29 10:41:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -1130,19 +1130,6 @@ void UIChooserModel::sltLocalMachineRegistrationChanged(const QUuid &uMachineId,
 
 void UIChooserModel::sltHandleCloudProviderUninstall(const QUuid &uProviderId)
 {
-    /* Search for selected cloud machine items: */
-    foreach (UIVirtualMachineItem *pItem, selectedMachineItems())
-    {
-        /* Skip unrelated nodes: */
-        AssertPtrReturnVoid(pItem);
-        UIVirtualMachineItemCloud *pCloudItem = pItem->toCloud();
-        if (!pCloudItem)
-            continue;
-
-        /* Wait for cloud machine refresh task to complete: */
-        pCloudItem->waitForAsyncInfoUpdateFinished();
-    }
-
     /* Call to base-class: */
     UIChooserAbstractModel::sltHandleCloudProviderUninstall(uProviderId);
 

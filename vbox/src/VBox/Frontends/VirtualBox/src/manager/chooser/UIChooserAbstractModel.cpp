@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.cpp 86748 2020-10-28 19:14:47Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.cpp 86756 2020-10-29 10:41:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class implementation.
  */
@@ -763,6 +763,24 @@ void UIChooserAbstractModel::sltSnapshotChanged(const QUuid &uMachineId, const Q
 
 void UIChooserAbstractModel::sltHandleCloudProviderUninstall(const QUuid &uProviderId)
 {
+    /* We should stop cloud machine updates currently being performed: */
+    foreach (const UICloudEntityKey &key, m_cloudEntityKeysBeingUpdated)
+    {
+        /* Skip unrelated keys: */
+        if (key.m_uMachineId.isNull())
+            continue;
+
+        /* Search machine node: */
+        UIChooserNode *pNode = searchMachineNode(key.m_strProviderShortName, key.m_strProfileName, key.m_uMachineId);
+        AssertPtrReturnVoid(pNode);
+        /* Acquire cloud machine item: */
+        UIVirtualMachineItemCloud *pCloudMachineItem = pNode->toMachineNode()->cache()->toCloud();
+        AssertPtrReturnVoid(pCloudMachineItem);
+
+        /* Wait for cloud machine refresh task to complete: */
+        pCloudMachineItem->waitForAsyncInfoUpdateFinished();
+    }
+
     /* Search and delete corresponding cloud provider node if present: */
     delete searchProviderNode(uProviderId);
 }
