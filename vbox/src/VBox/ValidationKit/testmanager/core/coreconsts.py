@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: coreconsts.py 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: coreconsts.py 86063 2020-09-08 11:48:45Z vboxsync $
 
 """
 Test Manager - Test Manager Constants (without a more appropriate home).
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 82968 $"
+__version__ = "$Revision: 86063 $"
 
 ## OS agnostic.
 g_ksOsAgnostic      = 'os-agnostic';
@@ -51,7 +51,9 @@ g_kasCpuArchesAll   = g_kasCpuArches + [g_ksCpuArchAgnostic,];
 
 ## All known build types
 # See KBUILD_TYPE in kBuild/header.kmk for reference.
-g_kasBuildTypesAll  = [ 'release', 'strict', 'profile', 'debug' ];
+# @note 'blessed' is a special type used for release builds that has been notarized
+#        or attestation signed by the OS vendor.
+g_kasBuildTypesAll  = [ 'release', 'strict', 'profile', 'debug', 'blessed' ];
 
 ## OS and CPU architecture agnostic.
 g_ksOsDotArchAgnostic = 'os-agnostic.noarch';
