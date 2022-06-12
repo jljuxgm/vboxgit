@@ -1,4 +1,4 @@
-/* $Id: DevHdaStream.h 88357 2021-04-04 22:58:35Z vboxsync $ */
+/* $Id: DevHdaStream.h 88572 2021-04-16 19:30:00Z vboxsync $ */
 /** @file
  * Intel HD Audio Controller Emulation - Streams.
  */
@@ -353,7 +353,7 @@ int                 hdaR3StreamSetUp(PPDMDEVINS pDevIns, PHDASTATE pThis, PHDAST
                                      PHDASTREAMR3 pStreamR3, uint8_t uSD);
 void                hdaR3StreamReset(PHDASTATE pThis, PHDASTATER3 pThisCC,
                                      PHDASTREAM pStreamShared, PHDASTREAMR3 pStreamR3, uint8_t uSD);
-int                 hdaR3StreamEnable(PHDASTREAM pStreamShared, PHDASTREAMR3 pStreamR3, bool fEnable);
+int                 hdaR3StreamEnable(PHDASTATE pThis, PHDASTREAM pStreamShared, PHDASTREAMR3 pStreamR3, bool fEnable);
 void                hdaR3StreamMarkStarted(PPDMDEVINS pDevIns, PHDASTATE pThis, PHDASTREAM pStreamShared, uint64_t tsNow);
 void                hdaR3StreamMarkStopped(PHDASTREAM pStreamShared);
 
