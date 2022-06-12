@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 88767 2021-04-29 09:37:55Z vboxsync $ */
+/* $Id: DevSB16.cpp 88768 2021-04-29 09:42:12Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  */
@@ -2214,7 +2214,7 @@ static int sb16StreamDoDmaOutput(PSB16STATE pThis, PSB16STREAM pStream,
         RTCircBufAcquireWriteBlock(pStream->State.pCircBuf, cbChunk, &pv, &cb);
 
         uint32_t cbRead;
-        rc = PDMDevHlpDMAReadMemory(pThis->pDevInsR3, uDmaChan, pv, offDma, cb, &cbRead);
+        rc = PDMDevHlpDMAReadMemory(pThis->pDevInsR3, uDmaChan, pv, offDma, (uint32_t)cb, &cbRead);
         AssertMsgRCReturn(rc, ("Reading from DMA failed, rc=%Rrc\n", rc), rc);
         Assert(cbRead == cb);
 
