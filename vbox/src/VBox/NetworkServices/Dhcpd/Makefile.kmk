@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 83779 2020-04-17 22:19:15Z vboxsync $
+# $Id: Makefile.kmk 84533 2020-05-26 10:43:04Z vboxsync $
 ## @file
 # Sub-makefile for the DHCP server.
 #
@@ -49,7 +49,7 @@ endif
 # (current dir is for for lwipopts.h)
 VBoxNetDHCP_INCS += . $(addprefix ../../Devices/Network/lwip-new/,$(LWIP_INCS))
 
-ifdef VBOX_WITH_AUTOMATIC_DEFS_QUOTING
+ifdef KMK_WITH_QUOTING
 VBoxNetDHCP_DEFS      = KBUILD_TYPE="$(KBUILD_TYPE)"
 else
 VBoxNetDHCP_DEFS      = KBUILD_TYPE=\"$(KBUILD_TYPE)\"

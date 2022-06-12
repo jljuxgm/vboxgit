@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 84486 2020-05-25 09:08:27Z vboxsync $
+# $Id: Makefile.kmk 84533 2020-05-26 10:43:04Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -246,7 +246,7 @@ VBoxVMM_LDFLAGS.darwin = -install_name $(VBOX_DYLD_EXECUTABLE_PATH)/VBoxVMM.dyli
 VBoxVMM_LDFLAGS.solaris = -mimpure-text
 
 # SSM wish to know the build type, host os and arch.
-ifdef VBOX_WITH_AUTOMATIC_DEFS_QUOTING
+ifdef KMK_WITH_QUOTING
 VMMR3/SSM.cpp_DEFS +=\
 	KBUILD_TYPE="$(KBUILD_TYPE)" \
 	KBUILD_TARGET="$(KBUILD_TARGET)" \

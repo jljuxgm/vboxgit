@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 84411 2020-05-20 14:31:23Z vboxsync $
+# $Id: Makefile.kmk 84533 2020-05-26 10:43:04Z vboxsync $
 ## @file
 # Sub-makefile for VBoxDTrace.
 #
@@ -107,7 +107,7 @@ if defined(VBOX_WITH_EXTPACK_VBOXDTRACE) && defined(VBOX_WITH_EXTPACK)
  ifneq ($(KBUILD_TARGET),solaris) # Temporarily disabled on Solaris (not really needed)...
  DLLS += VBoxDTraceCmd
  VBoxDTraceCmd_TEMPLATE = VBoxR3ExtPackDTrace
- ifdef VBOX_WITH_AUTOMATIC_DEFS_QUOTING
+ ifdef KMK_WITH_QUOTING
  VBoxDTraceCmd_DEFS = RTMEM_WRAP_TO_EF_APIS VBOX_EXTPACK_VBOXDTRACE_MANGLED_NAME="$(VBOX_EXTPACK_VBOXDTRACE_MANGLED_NAME)"
  else
  VBoxDTraceCmd_DEFS = RTMEM_WRAP_TO_EF_APIS VBOX_EXTPACK_VBOXDTRACE_MANGLED_NAME=\"$(VBOX_EXTPACK_VBOXDTRACE_MANGLED_NAME)\"

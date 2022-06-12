@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 83822 2020-04-19 01:13:00Z vboxsync $
+# $Id: Makefile.kmk 84533 2020-05-26 10:43:04Z vboxsync $
 ## @file
 # Sub-Makefile for the Cross Platform Guest Addition Services.
 #
@@ -87,7 +87,7 @@ VBoxService_DEFS         += \
 	$(if $(VBOX_WITH_GUEST_PROPS),VBOX_WITH_GUEST_PROPS,) \
 	$(if $(VBOX_WITH_HGCM),VBOX_WITH_HGCM,)
 
-ifdef VBOX_WITH_AUTOMATIC_DEFS_QUOTING
+ifdef KMK_WITH_QUOTING
 VBoxService_DEFS         += VBOX_BUILD_TARGET="$(KBUILD_TARGET).$(KBUILD_TARGET_ARCH)"
 else
 VBoxService_DEFS         += VBOX_BUILD_TARGET=\"$(KBUILD_TARGET).$(KBUILD_TARGET_ARCH)\"

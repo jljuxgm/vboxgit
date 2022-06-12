@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 83777 2020-04-17 18:01:28Z vboxsync $
+# $Id: Makefile.kmk 84533 2020-05-26 10:43:04Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - The Basic Remote Execution Service.
 #
@@ -30,7 +30,7 @@ include $(KBUILD_PATH)/subheader.kmk
 
 PROGRAMS += TestExecService
 TestExecService_TEMPLATE = VBoxValidationKitR3
-ifdef VBOX_WITH_AUTOMATIC_DEFS_QUOTING
+ifdef KMK_WITH_QUOTING
 TestExecService_DEFS = \
 	KBUILD_TARGET="$(KBUILD_TARGET)" \
 	KBUILD_TARGET_ARCH="$(KBUILD_TARGET_ARCH)"
