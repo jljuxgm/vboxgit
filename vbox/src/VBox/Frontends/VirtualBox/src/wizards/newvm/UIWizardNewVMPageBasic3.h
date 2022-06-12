@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic3.h 87414 2021-01-25 11:16:38Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic3.h 87422 2021-01-25 16:45:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic3 class declaration.
  */
@@ -28,6 +28,7 @@
 /* Forward declarations: */
 class QCheckBox;
 class QGridLayout;
+class QGroupBox;
 class QLabel;
 class QLineEdit;
 class QToolBox;
@@ -66,20 +67,27 @@ protected:
         ToolBoxItems_ProductKey
     };
 
-    QWidget *createUserNameHostNameWidgets();
     QWidget *createGAInstallWidgets();
-    QWidget *createProductKeyWidgets();
 
     /** Returns false if ISO path selector is non empty but has invalid file path. */
     bool checkGAISOFile() const;
     void markWidgets() const;
     void retranslateWidgets();
     void disableEnableGAWidgets(bool fEnabled);
+    void disableEnableProductKeyWidgets(bool fEnabled);
 
     bool startHeadless() const;
 
+    QWidget *createUserNameWidgets();
+    QWidget *createAdditionalOptionsWidgets();
+    bool isGAInstallEnabled() const;
+
     /** @name Widgets
       * @{ */
+        QGroupBox *m_pUserNameContainer;
+        QGroupBox *m_pAdditionalOptionsContainer;
+        QGroupBox *m_pGAInstallationISOContainer;
+
         QCheckBox *m_pStartHeadlessCheckBox;
         UIUserNamePasswordEditor *m_pUserNamePasswordEditor;
         QLineEdit *m_pHostnameLineEdit;
@@ -134,7 +142,6 @@ private:
     bool isProductKeyWidgetEnabled() const;
 
     QIRichTextLabel *m_pLabel;
-    QToolBox *m_pToolBox;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_wizards_newvm_UIWizardNewVMPageBasic3_h */
