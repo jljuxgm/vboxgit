@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasicUnattended.cpp 84955 2020-06-25 14:40:53Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasicUnattended.cpp 84961 2020-06-25 18:49:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasicUnattended class implementation.
  */
@@ -173,19 +173,15 @@ UIWizardNewVMPageBasicUnattended::UIWizardNewVMPageBasicUnattended()
         pMainLayout->addStretch();
     }
 
-
     /* Register fields: */
     registerField("ISOFilePath", this, "ISOFilePath");
     registerField("isUnattendedEnabled", this, "isUnattendedEnabled");
-    registerField("startHeadless", this, "startHeadless");
     registerField("startHeadless", this, "startHeadless");
     registerField("detectedOSTypeId", this, "detectedOSTypeId");
     registerField("detectedOSVersion", this, "detectedOSVersion");
     registerField("detectedOSFlavor", this, "detectedOSFlavor");
     registerField("detectedOSLanguages", this, "detectedOSLanguages");
     registerField("detectedOSHints", this, "detectedOSHints");
-
-
 }
 
 bool UIWizardNewVMPageBasicUnattended::isComplete() const

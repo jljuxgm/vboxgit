@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.h 84955 2020-06-25 14:40:53Z vboxsync $ */
+/* $Id: UIWizardNewVM.h 84961 2020-06-25 18:49:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class declaration.
  */
@@ -60,6 +60,7 @@ public:
         PageUnattended,
         PageNameType,
         PageInstallSetup,
+        PageProductKey,
         PageHardware,
         PageDisk,
         PageMax
@@ -82,6 +83,7 @@ public:
     void setDefaultUnattendedInstallData(const UIUnattendedInstallData &unattendedInstallData);
     const UIUnattendedInstallData &unattendedInstallData() const;
     bool isUnattendedInstallEnabled() const;
+    bool isGuestOSTypeWindows() const;
 
 protected:
 

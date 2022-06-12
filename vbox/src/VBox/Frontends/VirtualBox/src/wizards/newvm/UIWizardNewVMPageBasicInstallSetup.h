@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasicInstallSetup.h 84955 2020-06-25 14:40:53Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasicInstallSetup.h 84961 2020-06-25 18:49:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasicInstallSetup class declaration.
  */
@@ -136,7 +136,6 @@ protected:
     QLabel  *m_pHostnameLabel;
 };
 
-/* 2nd page of the New Virtual Machine wizard (basic extension): */
 class UIWizardNewVMPageBasicInstallSetup : public UIWizardPage, public UIWizardNewVMPageInstallSetup
 {
     Q_OBJECT;
@@ -149,6 +148,7 @@ public:
     /* Constructor: */
     UIWizardNewVMPageBasicInstallSetup();
     void setDefaultUnattendedInstallData(const UIUnattendedInstallData &unattendedInstallData);
+    virtual int nextId() const /* override */;
 
 private slots:
 

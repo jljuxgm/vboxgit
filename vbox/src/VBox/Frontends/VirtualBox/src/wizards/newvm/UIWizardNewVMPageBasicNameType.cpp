@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasicNameType.cpp 84955 2020-06-25 14:40:53Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasicNameType.cpp 84961 2020-06-25 18:49:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasicNameType class implementation.
  */
@@ -318,6 +318,13 @@ void UIWizardNewVMPageNameType::setMachineBaseName(const QString &strMachineBase
     m_strMachineBaseName = strMachineBaseName;
 }
 
+QString UIWizardNewVMPageNameType::guestOSFamiyId() const
+{
+    if (!m_pNameAndSystemEditor)
+        return QString();
+    return m_pNameAndSystemEditor->familyId();
+}
+
 UIWizardNewVMPageBasicNameType::UIWizardNewVMPageBasicNameType(const QString &strGroup)
     : UIWizardNewVMPageNameType(strGroup)
 {
@@ -342,6 +349,7 @@ UIWizardNewVMPageBasicNameType::UIWizardNewVMPageBasicNameType(const QString &st
     registerField("machineFilePath", this, "machineFilePath");
     registerField("machineFolder", this, "machineFolder");
     registerField("machineBaseName", this, "machineBaseName");
+    registerField("guestOSFamiyId", this, "guestOSFamiyId");
 }
 
 int UIWizardNewVMPageBasicNameType::nextId() const
@@ -357,7 +365,6 @@ void UIWizardNewVMPageBasicNameType::setTypeByISODetectedOSType(const QString &s
     if (!strDetectedOSType.isEmpty())
         onNameChanged(strDetectedOSType);
 }
-
 
 void UIWizardNewVMPageBasicNameType::sltNameChanged(const QString &strNewName)
 {

@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasicNameType.h 84955 2020-06-25 14:40:53Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasicNameType.h 84961 2020-06-25 18:49:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasicNameType class declaration.
  */
@@ -55,6 +55,8 @@ protected:
     QString machineBaseName() const;
     void setMachineBaseName(const QString &strMachineBaseName);
 
+    QString guestOSFamiyId() const;
+
     /** calls CVirtualBox::ComposeMachineFilename(...) and sets related member variables */
     void composeMachineFilePath();
 
@@ -87,6 +89,8 @@ class UIWizardNewVMPageBasicNameType : public UIWizardPage, public UIWizardNewVM
     Q_PROPERTY(QString machineFilePath READ machineFilePath WRITE setMachineFilePath);
     Q_PROPERTY(QString machineFolder READ machineFolder WRITE setMachineFolder);
     Q_PROPERTY(QString machineBaseName READ machineBaseName WRITE setMachineBaseName);
+    Q_PROPERTY(QString guestOSFamiyId READ guestOSFamiyId);
+
 
 public:
 

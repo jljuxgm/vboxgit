@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasicInstallSetup.cpp 84955 2020-06-25 14:40:53Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasicInstallSetup.cpp 84961 2020-06-25 18:49:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasicInstallSetup class implementation.
  */
@@ -332,4 +332,12 @@ bool UIWizardNewVMPageBasicInstallSetup::isComplete() const
     if (m_pUserNamePasswordEditor)
         return m_pUserNamePasswordEditor->isComplete();
     return true;
+}
+
+int UIWizardNewVMPageBasicInstallSetup::nextId() const
+{
+    UIWizardNewVM *pWizard = qobject_cast<UIWizardNewVM*>(wizard());
+    if (!pWizard || !pWizard->isUnattendedInstallEnabled() || !pWizard->isGuestOSTypeWindows())
+        return UIWizardNewVM::PageHardware;
+    return UIWizardNewVM::PageProductKey;
 }
