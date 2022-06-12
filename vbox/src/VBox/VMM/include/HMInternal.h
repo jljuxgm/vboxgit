@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 87539 2021-02-02 15:10:58Z vboxsync $ */
+/* $Id: HMInternal.h 87543 2021-02-02 17:00:24Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -551,7 +551,7 @@ typedef struct HM
         RTHCPHYS                    HCPhysVmxEnableError;
 
         /** VMX MSR values. */
-        VMXMSRS                     Msrs;
+        VMXMSRS                     MsrsForRing3;
 
         /** Virtual address of the TSS page used for real mode emulation. */
         R3PTRTYPE(PVBOXTSS)         pRealModeTSS;
