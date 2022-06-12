@@ -1,4 +1,4 @@
-# $Id: Config.kmk 86139 2020-09-16 17:51:13Z vboxsync $
+# $Id: Config.kmk 86211 2020-09-22 09:49:47Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1603,6 +1603,7 @@ ifndef VBOX_GCC_TOOL
  else ifeq ($(KBUILD_TARGET),darwin)
   ifdef VBOX_WITH_EVEN_NEWER_XCODE
    VBOX_GCC_TOOL := CLANGXXMACHO
+   DARWINCMN_TOOLCHAIN_DIRS_IGNORE_DEVTOOLS = 1# Use the system toolchains, not anything from tools/darwin.*.
   else ifdef VBOX_WITH_NEW_XCODE
    VBOX_GCC_TOOL := VBoxXcode62
   else
@@ -8070,7 +8071,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 86139 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 86211 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
