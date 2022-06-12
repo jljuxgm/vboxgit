@@ -1,4 +1,4 @@
-/* $Id: AudioHlp.h 88235 2021-03-22 10:44:43Z vboxsync $ */
+/* $Id: AudioHlp.h 88292 2021-03-25 13:17:32Z vboxsync $ */
 /** @file
  * Audio helper routines.
  */
@@ -61,6 +61,11 @@ PDMAUDIOFMT AudioHlpStrToAudFmt(const char *pszFmt);
 
 /** @name Audio file methods.
  * @{ */
+int     AudioHlpFileCreateAndOpen(PPDMAUDIOFILE *ppFile, const char *pszDir, const char *pszName,
+                                  uint32_t iInstance, PCPDMAUDIOPCMPROPS pProps);
+int     AudioHlpFileCreateAndOpenEx(PPDMAUDIOFILE *ppFile, PDMAUDIOFILETYPE enmType, const char *pszDir, const char *pszName,
+                                    uint32_t iInstance, uint32_t fFilename, uint32_t fCreate,
+                                    PCPDMAUDIOPCMPROPS pProps, uint64_t fOpen);
 int     AudioHlpFileCreate(PDMAUDIOFILETYPE enmType, const char *pszFile, uint32_t fFlags, PPDMAUDIOFILE *ppFile);
 void    AudioHlpFileDestroy(PPDMAUDIOFILE pFile);
 int     AudioHlpFileOpen(PPDMAUDIOFILE pFile, uint32_t fOpen, PCPDMAUDIOPCMPROPS pProps);
