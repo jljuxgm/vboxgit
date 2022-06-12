@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 86070 2020-09-09 09:50:01Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 86372 2020-10-01 11:48:44Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -1891,7 +1891,7 @@ pdmR3DevHlp_PCIPhysWrite(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDev, RTGCPHYS GCPhys
             GCPhys = GCPhysOut;
         else
         {
-            Log(("pdmR3DevHlp_PCIPhysRead: IOMMU translation failed. uDevId=%#x GCPhys=%#RGp cb=%u rc=%Rrc\n", uDevId, GCPhys,
+            Log(("pdmR3DevHlp_PCIPhysWrite: IOMMU translation failed. uDevId=%#x GCPhys=%#RGp cb=%u rc=%Rrc\n", uDevId, GCPhys,
                  cbWrite, rc));
             return rc;
         }
