@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioDSound.cpp 88853 2021-05-04 08:47:13Z vboxsync $ */
+/* $Id: DrvHostAudioDSound.cpp 88887 2021-05-05 23:38:58Z vboxsync $ */
 /** @file
  * Host audio driver - DirectSound (Windows).
  */
@@ -2401,20 +2401,17 @@ static DECLCALLBACK(uint32_t) drvHostDSoundHA_StreamGetPending(PPDMIHOSTAUDIO pI
 #endif
 
 /**
- * @interface_method_impl{PDMIHOSTAUDIO,pfnStreamGetStatus}
+ * @interface_method_impl{PDMIHOSTAUDIO,pfnStreamGetState}
  */
-static DECLCALLBACK(uint32_t) drvHostDSoundHA_StreamGetStatus(PPDMIHOSTAUDIO pInterface, PPDMAUDIOBACKENDSTREAM pStream)
+static DECLCALLBACK(PDMHOSTAUDIOSTREAMSTATE) drvHostDSoundHA_StreamGetState(PPDMIHOSTAUDIO pInterface,
+                                                                            PPDMAUDIOBACKENDSTREAM pStream)
 {
     RT_NOREF(pInterface);
     PDSOUNDSTREAM pStreamDS = (PDSOUNDSTREAM)pStream;
-    AssertPtrReturn(pStreamDS, PDMAUDIOSTREAM_STS_NONE);
+    AssertPtrReturn(pStreamDS, PDMHOSTAUDIOSTREAMSTATE_INVALID);
 
-    uint32_t fStrmStatus = PDMAUDIOSTREAM_STS_INITIALIZED;
-    if (pStreamDS->fEnabled)
-        fStrmStatus |= PDMAUDIOSTREAM_STS_ENABLED;
-
-    LogFlowFunc(("returns %#x for '%s' {%s}\n", fStrmStatus, pStreamDS->Cfg.szName, drvHostDSoundStreamStatusString(pStreamDS)));
-    return fStrmStatus;
+    LogFlowFunc(("returns OKAY for '%s' {%s}\n", pStreamDS->Cfg.szName, drvHostDSoundStreamStatusString(pStreamDS)));
+    return PDMHOSTAUDIOSTREAMSTATE_OKAY;
 }
 
 
@@ -2770,7 +2767,7 @@ static DECLCALLBACK(int) drvHostDSoundConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pC
     pThis->IHostAudio.pfnStreamGetReadable          = drvHostDSoundHA_StreamGetReadable;
     pThis->IHostAudio.pfnStreamGetWritable          = drvHostDSoundHA_StreamGetWritable;
     pThis->IHostAudio.pfnStreamGetPending           = NULL;
-    pThis->IHostAudio.pfnStreamGetStatus            = drvHostDSoundHA_StreamGetStatus;
+    pThis->IHostAudio.pfnStreamGetState             = drvHostDSoundHA_StreamGetState;
     pThis->IHostAudio.pfnStreamPlay                 = drvHostDSoundHA_StreamPlay;
     pThis->IHostAudio.pfnStreamCapture              = drvHostDSoundHA_StreamCapture;
 

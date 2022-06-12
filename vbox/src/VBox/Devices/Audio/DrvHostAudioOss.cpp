@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioOss.cpp 88819 2021-05-03 10:26:28Z vboxsync $ */
+/* $Id: DrvHostAudioOss.cpp 88887 2021-05-05 23:38:58Z vboxsync $ */
 /** @file
  * Host audio driver - OSS (Open Sound System).
  */
@@ -698,12 +698,14 @@ static DECLCALLBACK(uint32_t) drvHostOssAudioHA_StreamGetWritable(PPDMIHOSTAUDIO
 
 
 /**
- * @interface_method_impl{PDMIHOSTAUDIO,pfnStreamGetStatus}
+ * @interface_method_impl{PDMIHOSTAUDIO,pfnStreamGetState}
  */
-static DECLCALLBACK(uint32_t) drvHostOssAudioHA_StreamGetStatus(PPDMIHOSTAUDIO pInterface, PPDMAUDIOBACKENDSTREAM pStream)
+static DECLCALLBACK(PDMHOSTAUDIOSTREAMSTATE) drvHostOssAudioHA_StreamGetState(PPDMIHOSTAUDIO pInterface,
+                                                                              PPDMAUDIOBACKENDSTREAM pStream)
 {
-    RT_NOREF(pInterface, pStream);
-    return PDMAUDIOSTREAM_STS_INITIALIZED | PDMAUDIOSTREAM_STS_ENABLED;
+    RT_NOREF(pInterface);
+    AssertPtrReturn(pStream, PDMHOSTAUDIOSTREAMSTATE_INVALID);
+    return PDMHOSTAUDIOSTREAMSTATE_OKAY;
 }
 
 
@@ -870,7 +872,7 @@ static DECLCALLBACK(int) drvHostOSSAudioConstruct(PPDMDRVINS pDrvIns, PCFGMNODE 
     pThis->IHostAudio.pfnStreamGetReadable          = drvHostOssAudioHA_StreamGetReadable;
     pThis->IHostAudio.pfnStreamGetWritable          = drvHostOssAudioHA_StreamGetWritable;
     pThis->IHostAudio.pfnStreamGetPending           = NULL;
-    pThis->IHostAudio.pfnStreamGetStatus            = drvHostOssAudioHA_StreamGetStatus;
+    pThis->IHostAudio.pfnStreamGetState             = drvHostOssAudioHA_StreamGetState;
     pThis->IHostAudio.pfnStreamPlay                 = drvHostOssAudioHA_StreamPlay;
     pThis->IHostAudio.pfnStreamCapture              = drvHostOssAudioHA_StreamCapture;
 

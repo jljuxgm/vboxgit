@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 88884 2021-05-05 18:27:18Z vboxsync $ */
+/* $Id: AudioMixer.cpp 88887 2021-05-05 23:38:58Z vboxsync $ */
 /** @file
  * Audio mixing routines for multiplexing audio sources in device emulations.
  *
@@ -743,6 +743,11 @@ int AudioMixerSinkCtl(PAUDMIXSINK pSink, AUDMIXSINKCMD enmSinkCmd)
         return rc;
     }
 
+/** @todo r=bird: There almost serious issue here.  One stupid/buggy audio
+ *        driver chain will mess up the whole thing.  Either we or DrvAudio
+ *        need to take note of this and somehow gloss over it...  DevHDA with a
+ *        linux guest completely freezes up the audio in the guest if we fail
+ *        here. (Buggy VRDE code.) */
     PAUDMIXSTREAM pStream;
     if (   pSink->enmDir == AUDMIXSINKDIR_INPUT
         && pSink->In.pStreamRecSource) /* Any recording source set? */
@@ -2111,7 +2116,7 @@ static int audioMixerStreamUpdateStatus(PAUDMIXSTREAM pMixStream)
             LogFunc(("[%s] needs re-init...\n", pMixStream->pszName));
             int rc = pConn->pfnStreamReInit(pConn, pStream);
             enmState = pConn->pfnStreamGetState(pConn, pStream);
-            LogFunc(("[%s] re-init returns %Rrc and %d.\n", pMixStream->pszName, rc, enmState));
+            LogFunc(("[%s] re-init returns %Rrc and %s.\n", pMixStream->pszName, rc, PDMAudioStreamStateGetName(enmState)));
 
             PAUDMIXSINK const pSink = pMixStream->pSink;
             AssertPtr(pSink);
