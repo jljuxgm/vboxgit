@@ -1,4 +1,4 @@
-; $Id: CPUMInternal.mac 87361 2021-01-21 21:13:55Z vboxsync $
+; $Id: CPUMInternal.mac 87522 2021-02-01 22:32:33Z vboxsync $
 ;; @file
 ; CPUM - Internal header file (asm).
 ;
@@ -220,7 +220,6 @@ struc CPUMCPU
     .Guest.pXStateR3      RTR3PTR_RES 1
     alignb 8
     .Guest.aoffXState         resw    64
-    .Guest.fWorldSwitcher     resd    1
     .Guest.fUsedFpuGuest      resb    1
     alignb 8
     .Guest.fExtrn             resq    1
