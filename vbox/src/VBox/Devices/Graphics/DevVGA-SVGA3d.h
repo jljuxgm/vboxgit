@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d.h 88831 2021-05-03 12:37:23Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d.h 88835 2021-05-03 13:25:16Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device - 3D part.
  */
@@ -39,15 +39,6 @@
 #define SVGA3D_MAX_SURFACE_MEM_SIZE             0x80000000
 /** Arbitrary upper limit. [0,15] is enough for 2^15=32768x32768. */
 #define SVGA3D_MAX_MIP_LEVELS                   16
-
-
-/**@def FLOAT_FMT_STR
- * Format string bits to go with FLOAT_FMT_ARGS. */
-#define FLOAT_FMT_STR                           "%s%u.%06u"
-/** @def FLOAT_FMT_ARGS
- * Format arguments for a float value, corresponding to FLOAT_FMT_STR.
- * @param   r       The floating point value to format.  */
-#define FLOAT_FMT_ARGS(r)                       (r) >= 0.0f ? "" : "-", (unsigned)RT_ABS(r), (unsigned)(RT_ABS((r) - (unsigned)(r)) * 1000000.0f)
 
 
 typedef enum VMSVGA3D_SURFACE_MAP
