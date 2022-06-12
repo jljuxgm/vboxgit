@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsGeneral.cpp 85817 2020-08-18 11:50:33Z vboxsync $ */
+/* $Id: UIMachineSettingsGeneral.cpp 85838 2020-08-19 16:43:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsGeneral class implementation.
  */
@@ -594,15 +594,17 @@ void UIMachineSettingsGeneral::prepareWidgets()
     {
         /* Prepare tab-widget: */
         m_pTabWidget = new QITabWidget(this);
+        if (m_pTabWidget)
+        {
+            /* Prepare each tab separately: */
+            prepareTabBasic();
+            prepareTabAdvanced();
+            prepareTabDescription();
+            prepareTabEncryption();
+            prepareConnections();
 
-        /* Prepare each tab separately: */
-        prepareTabBasic();
-        prepareTabAdvanced();
-        prepareTabDescription();
-        prepareTabEncryption();
-        prepareConnections();
-
-        pLayoutMain->addWidget(m_pTabWidget);
+            pLayoutMain->addWidget(m_pTabWidget);
+        }
     }
 }
 
