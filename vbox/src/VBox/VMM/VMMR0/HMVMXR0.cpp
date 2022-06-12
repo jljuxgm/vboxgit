@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 87939 2021-03-03 13:50:41Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 87966 2021-03-05 04:58:50Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -1078,14 +1078,12 @@ static void hmR0VmxRemoveProcCtlsVmcs(PVMCPUCC pVCpu, PVMXTRANSIENT pVmxTransien
     if (pVmcsInfo->u32ProcCtls & uProcCtls)
     {
 #ifdef VBOX_WITH_NESTED_HWVIRT_VMX
-        bool const fRemoveCtls = !pVmxTransient->fIsNestedGuest
-                               ? true
-                               : !CPUMIsGuestVmxProcCtlsSet(&pVCpu->cpum.GstCtx, uProcCtls);
+        if (   !pVmxTransient->fIsNestedGuest
+            || !CPUMIsGuestVmxProcCtlsSet(&pVCpu->cpum.GstCtx, uProcCtls))
 #else
         NOREF(pVCpu);
-        bool const fRemoveCtls = true;
+        if (!pVmxTransient->fIsNestedGuest)
 #endif
-        if (fRemoveCtls)
         {
             pVmcsInfo->u32ProcCtls &= ~uProcCtls;
             int rc = VMXWriteVmcs32(VMX_VMCS32_CTRL_PROC_EXEC, pVmcsInfo->u32ProcCtls);
