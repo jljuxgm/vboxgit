@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 86115 2020-09-14 06:52:26Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 86284 2020-09-25 07:17:58Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -3272,6 +3272,7 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
                 if (pBusMgr->findPCIAddress("iommu-amd", 0, Address))
                 {
                     uint32_t u32IommuAddress = (Address.miDevice << 16) | Address.miFn;
+                    InsertConfigInteger(pCfg, "IommuAmdEnabled", true);
                     InsertConfigInteger(pCfg, "IommuAmdPciAddress", u32IommuAddress);
                     if (pBusMgr->findPCIAddress("sb-ioapic", 0, Address))
                     {
