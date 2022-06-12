@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 86878 2020-11-12 18:40:58Z vboxsync $ */
+/* $Id: VBoxService.cpp 86887 2020-11-16 10:49:34Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -1159,9 +1159,9 @@ int main(int argc, char **argv)
         return rcExit;
 
 #ifdef VBOX_WITH_VBOXSERVICE_DRMRESIZE
-    if (VbglR3DRMClientIsNeeded())
+    if (VbglR3DrmClientIsNeeded())
     {
-        rc = VbglR3DRMClientStart();
+        rc = VbglR3DrmClientStart();
         if (RT_FAILURE(rc))
             VGSvcError("Starting DRM resizing client failed with %Rrc\n", rc);
     }

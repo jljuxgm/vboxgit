@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 86877 2020-11-12 18:32:51Z vboxsync $
+# $Id: Makefile.kmk 86887 2020-11-16 10:49:34Z vboxsync $
 ## @file
 # Sub-Makefile for the common guest addition code library.
 #
@@ -121,7 +121,7 @@ VBoxGuestR3Lib_SOURCES     = \
 	VBoxGuestR3LibCoreDump.cpp \
 	VBoxGuestR3LibCpuHotPlug.cpp \
 	VBoxGuestR3LibCredentials.cpp \
-	VBoxGuestR3LibDRMClient.cpp \
+	VBoxGuestR3LibDrmClient.cpp \
 	VBoxGuestR3LibEvent.cpp \
 	VBoxGuestR3LibGuestUser.cpp \
 	VBoxGuestR3LibGR.cpp \
