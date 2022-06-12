@@ -1,4 +1,4 @@
-/* $Id: tracelogreader.cpp 84491 2020-05-25 10:40:28Z vboxsync $ */
+/* $Id: tracelogreader.cpp 84500 2020-05-25 13:09:07Z vboxsync $ */
 /** @file
  * IPRT - Trace log reader.
  */
@@ -51,13 +51,6 @@
 /*********************************************************************************************************************************
 *   Structures and Typedefs                                                                                                      *
 *********************************************************************************************************************************/
-
-/** The trace log is malformed. */
-#define VERR_TRACELOG_READER_MALFORMED_LOG   (-25700)
-/** The trace log version is not supported. */
-#define VERR_TRACELOG_READER_LOG_UNSUPPORTED (-25701)
-/** The trace log reader iterator reached the end of the event list. */
-#define VERR_TRACELOG_READER_ITERATOR_END    (-25702)
 
 /** Pointer to a trace log reader instance. */
 typedef struct RTTRACELOGRDRINT *PRTTRACELOGRDRINT;
