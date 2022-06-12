@@ -1,4 +1,4 @@
-/* $Id: TestExecService.cpp 84763 2020-06-10 15:28:53Z vboxsync $ */
+/* $Id: TestExecService.cpp 84781 2020-06-11 07:11:53Z vboxsync $ */
 /** @file
  * TestExecServ - Basic Remote Execution Service.
  */
@@ -3062,7 +3062,7 @@ static RTEXITCODE txsMainLoop(void)
             rc = txsDoPutFile(pPktHdr, true /*fHasMode*/);
         else if (txsIsSameOpcode(pPktHdr, "GET FILE"))
             rc = txsDoGetFile(pPktHdr);
-        else if (txsIsSameOpcode(pPktHdr, "PKFILE"))
+        else if (txsIsSameOpcode(pPktHdr, "PKFILE  "))
             rc = txsDoPackFile(pPktHdr);
         else if (txsIsSameOpcode(pPktHdr, "UNPKFILE"))
             rc = txsDoUnpackFile(pPktHdr);
@@ -3667,7 +3667,7 @@ static RTEXITCODE txsParseArgv(int argc, char **argv, bool *pfExit)
                 break;
 
             case 'V':
-                RTPrintf("$Revision: 84763 $\n");
+                RTPrintf("$Revision: 84781 $\n");
                 *pfExit = true;
                 return RTEXITCODE_SUCCESS;
 
