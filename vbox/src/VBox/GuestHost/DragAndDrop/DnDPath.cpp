@@ -1,4 +1,4 @@
-/* $Id: DnDPath.cpp 85002 2020-06-30 09:34:16Z vboxsync $ */
+/* $Id: DnDPath.cpp 85003 2020-06-30 09:35:47Z vboxsync $ */
 /** @file
  * DnD - Path handling.
  */
@@ -59,7 +59,7 @@ int DnDPathSanitizeFilename(char *pszPath, size_t cbPath)
     char *pszFilename = RTPathFilename(pszPath);
     if (pszFilename)
     {
-        ssize_t cReplaced = RTStrPurgeComplementSet(, s_uszValidRangePairs, '_' /* chReplacement */);
+        ssize_t cReplaced = RTStrPurgeComplementSet(pszFilename, s_uszValidRangePairs, '_' /* chReplacement */);
         if (cReplaced < 0)
             rc = VERR_INVALID_UTF8_ENCODING;
     }
