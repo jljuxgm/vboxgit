@@ -1,4 +1,4 @@
-/* $Id: tstAudioMixBuffer.cpp 88003 2021-03-08 11:46:08Z vboxsync $ */
+/* $Id: tstAudioMixBuffer.cpp 88004 2021-03-08 11:55:51Z vboxsync $ */
 /** @file
  * Audio testcase - Mixing buffer.
  */
@@ -70,6 +70,25 @@ static void tstBasics(RTTEST hTest)
                       ("got %x, expected 4\n", PDMAUDIOPCMPROPS_F2B(&s_Cfg441StereoU16, 1)));
     RTTESTI_CHECK_MSG(PDMAUDIOPCMPROPS_F2B(&s_Cfg441StereoU32, 1) == 8,
                       ("got %x, expected 4\n", PDMAUDIOPCMPROPS_F2B(&s_Cfg441StereoU32, 1)));
+
+    for (uint32_t i = 0; i < 256; i += 8)
+    {
+        RTTESTI_CHECK(DrvAudioHlpIsBytesAligned(&s_Cfg441StereoU32, i) == true);
+        RTTESTI_CHECK(DrvAudioHlpIsBytesAligned(&s_Cfg441StereoU32, i+1) == false);
+        RTTESTI_CHECK(DrvAudioHlpIsBytesAligned(&s_Cfg441StereoU32, i+2) == false);
+        RTTESTI_CHECK(DrvAudioHlpIsBytesAligned(&s_Cfg441StereoU32, i+3) == false);
+        RTTESTI_CHECK(DrvAudioHlpIsBytesAligned(&s_Cfg441StereoU32, i+4) == false);
+        RTTESTI_CHECK(DrvAudioHlpIsBytesAligned(&s_Cfg441StereoU32, i+5) == false);
+        RTTESTI_CHECK(DrvAudioHlpIsBytesAligned(&s_Cfg441StereoU32, i+6) == false);
+        RTTESTI_CHECK(DrvAudioHlpIsBytesAligned(&s_Cfg441StereoU32, i+7) == false);
+    }
+    for (uint32_t i = 0; i < 4096; i += 4)
+    {
+        RTTESTI_CHECK(DrvAudioHlpIsBytesAligned(&s_Cfg441StereoS16, i) == true);
+        RTTESTI_CHECK(DrvAudioHlpIsBytesAligned(&s_Cfg441StereoS16, i+1) == false);
+        RTTESTI_CHECK(DrvAudioHlpIsBytesAligned(&s_Cfg441StereoS16, i+2) == false);
+        RTTESTI_CHECK(DrvAudioHlpIsBytesAligned(&s_Cfg441StereoS16, i+3) == false);
+    }
 
     uint32_t u32;
     RTTESTI_CHECK_MSG((u32 = DrvAudioHlpFramesToBytes(&s_Cfg441StereoS16, 44100)) == 44100 * 2 * 2,

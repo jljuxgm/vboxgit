@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 88002 2021-03-08 11:28:46Z vboxsync $ */
+/* $Id: DrvAudio.cpp 88004 2021-03-08 11:55:51Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -939,7 +939,7 @@ static DECLCALLBACK(int) drvAudioStreamWrite(PPDMIAUDIOCONNECTOR pInterface, PPD
               ("Stream '%s' is not an output stream and therefore cannot be written to (direction is '%s')\n",
                pStream->szName, DrvAudioHlpAudDirToStr(pStream->enmDir)));
 
-    AssertMsg(DrvAudioHlpBytesIsAligned(cbBuf, &pStream->Guest.Cfg.Props),
+    AssertMsg(DrvAudioHlpIsBytesAligned(cbBuf, &pStream->Guest.Cfg.Props),
               ("Stream '%s' got a non-frame-aligned write (%RU32 bytes)\n", pStream->szName, cbBuf));
 
     uint32_t cbWrittenTotal = 0;
