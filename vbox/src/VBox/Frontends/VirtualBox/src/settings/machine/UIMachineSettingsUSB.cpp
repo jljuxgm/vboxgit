@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsUSB.cpp 89700 2021-06-15 10:21:35Z vboxsync $ */
+/* $Id: UIMachineSettingsUSB.cpp 89705 2021-06-15 12:44:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsUSB class implementation.
  */
@@ -194,7 +194,6 @@ private slots:
         CHost host = uiCommon().host();
 
         bool fIsUSBEmpty = host.GetUSBDevices().size() == 0;
-        printf("%d %d %d warning\n", host.lastRC(), host.isReallyOk(), host.isWarning());
 
         if (fIsUSBEmpty)
         {

@@ -1,4 +1,4 @@
-/* $Id: VBoxX11Helper.cpp 89704 2021-06-15 12:34:59Z vboxsync $ */
+/* $Id: VBoxX11Helper.cpp 89705 2021-06-15 12:44:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBox X11 helper functions.
  */
@@ -171,10 +171,7 @@ QStringList X11ScrenSaverServices()
     {
         const QString strServiceName = replyr.value()[i];
         if (strServiceName.contains("screensaver", Qt::CaseInsensitive))
-        {
-            printf("%s\n", qPrintable(strServiceName));
             serviceNames << strServiceName;
-        }
     }
     return serviceNames;
 }
