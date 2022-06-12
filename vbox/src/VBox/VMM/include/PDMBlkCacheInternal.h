@@ -1,4 +1,4 @@
-/* $Id: PDMBlkCacheInternal.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: PDMBlkCacheInternal.h 87766 2021-02-16 14:27:43Z vboxsync $ */
 /** @file
  * PDM Block Cache.
  */
@@ -133,7 +133,7 @@ typedef struct PDMBLKCACHEGLOBAL
     /** Flag whether a commit is currently in progress. */
     volatile bool       fCommitInProgress;
     /** Commit interval timer */
-    PTMTIMERR3          pTimerCommit;
+    TMTIMERHANDLE       hTimerCommit;
     /** Number of endpoints using the cache. */
     uint32_t            cRefs;
     /** List of all users of this cache. */

@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 87760 2021-02-15 22:45:27Z vboxsync $ */
+/* $Id: VMMDev.cpp 87766 2021-02-16 14:27:43Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -512,11 +512,11 @@ static int vmmDevReqHandler_GuestHeartbeat(PPDMDEVINS pDevIns, PVMMDEV pThis)
  */
 static DECLCALLBACK(void) vmmDevHeartbeatFlatlinedTimer(PPDMDEVINS pDevIns, PTMTIMER pTimer, void *pvUser)
 {
-    RT_NOREF(pDevIns);
+    RT_NOREF(pDevIns, pTimer);
     PVMMDEV pThis = (PVMMDEV)pvUser;
     if (pThis->fHeartbeatActive)
     {
-        uint64_t cNsElapsed = TMTimerGetNano(pTimer) - pThis->nsLastHeartbeatTS;
+        uint64_t cNsElapsed = PDMDevHlpTimerGetNano(pDevIns, pThis->hFlatlinedTimer) - pThis->nsLastHeartbeatTS;
         if (   !pThis->fFlatlined
             && cNsElapsed >= pThis->cNsHeartbeatInterval)
         {

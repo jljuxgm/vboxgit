@@ -1,4 +1,4 @@
-/* $Id: GIMHvInternal.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: GIMHvInternal.h 87766 2021-02-16 14:27:43Z vboxsync $ */
 /** @file
  * GIM - Hyper-V, Internal header file.
  */
@@ -1262,10 +1262,8 @@ AssertCompileMemberAlignment(GIMHV, hSpinlockR0, sizeof(uintptr_t));
  */
 typedef struct GIMHVSTIMER
 {
-    /** Synthetic timer object - R0 ptr. */
-    PTMTIMERR0                  pTimerR0;
-    /** Synthetic timer object - R3 ptr. */
-    PTMTIMERR3                  pTimerR3;
+    /** Synthetic timer handle. */
+    TMTIMERHANDLE               hTimer;
     /** Virtual CPU ID this timer belongs to (for reverse mapping). */
     VMCPUID                     idCpu;
     /** The index of this timer in the auStimers array (for reverse mapping). */

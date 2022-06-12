@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileInternal.h 85121 2020-07-08 19:33:26Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileInternal.h 87766 2021-02-16 14:27:43Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -276,7 +276,7 @@ typedef struct PDMASYNCCOMPLETIONEPCLASSFILE
     bool                                fOutOfResourcesWarningPrinted;
 #ifdef PDM_ASYNC_COMPLETION_FILE_WITH_DELAY
     /** Timer for delayed request completion. */
-    PTMTIMERR3                          pTimer;
+    TMTIMERHANDLE                       hTimer;
     /** Milliseconds until the next delay expires. */
     volatile uint64_t                   cMilliesNext;
 #endif

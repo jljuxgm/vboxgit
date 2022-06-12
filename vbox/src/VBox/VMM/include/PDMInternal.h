@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 87494 2021-02-01 05:47:40Z vboxsync $ */
+/* $Id: PDMInternal.h 87766 2021-02-16 14:27:43Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -1043,7 +1043,7 @@ typedef struct PDMQUEUE
      * If 0, the queue will use the VM_FF_PDM_QUEUE forced action. */
     uint32_t                        cMilliesInterval;
     /** Interval timer. Only used if cMilliesInterval is non-zero. */
-    PTMTIMERR3                      pTimer;
+    TMTIMERHANDLE                   hTimer;
     /** Pointer to the VM - R3. */
     PVMR3                           pVMR3;
     /** LIFO of pending items - R3. */
