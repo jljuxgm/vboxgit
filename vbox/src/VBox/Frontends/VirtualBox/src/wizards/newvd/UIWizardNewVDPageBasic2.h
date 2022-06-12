@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageBasic2.h 87891 2021-02-26 16:54:52Z vboxsync $ */
+/* $Id: UIWizardNewVDPageBasic2.h 87929 2021-03-03 08:45:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageBasic2 class declaration.
  */
@@ -27,7 +27,6 @@
 /* Forward declarations: */
 class CMediumFormat;
 class QButtonGroup;
-class QRadioButton;
 class QCheckBox;
 class QIRichTextLabel;
 
@@ -48,9 +47,7 @@ protected:
     void setWidgetVisibility(CMediumFormat &mediumFormat);
     /** @name Widgets
      * @{ */
-        QButtonGroup *m_pVariantButtonGroup;
-        QRadioButton *m_pDynamicalButton;
-        QRadioButton *m_pFixedButton;
+        QCheckBox    *m_pFixedCheckBox;
         QCheckBox *m_pSplitBox;
     /** @} */
 
