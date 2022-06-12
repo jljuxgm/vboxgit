@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.cpp 86909 2020-11-18 13:26:44Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.cpp 86910 2020-11-18 13:32:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class implementation.
  */
@@ -870,6 +870,7 @@ void UIChooserAbstractModel::sltHandleReadCloudMachineListTaskComplete()
     AssertPtrReturnVoid(pSender);
     const UICloudEntityKey guiCloudProfileKey = pSender->cloudProfileKey();
     const QVector<CCloudMachine> machines = pSender->machines();
+    const QString strErrorMessage = pSender->errorMessage();
 
     /* Delete task: */
     delete pSender;
@@ -931,7 +932,10 @@ void UIChooserAbstractModel::sltHandleReadCloudMachineListTaskComplete()
                 /* We should update at least fake cloud machine node: */
                 UIChooserNode *pFakeNode = searchFakeNode(pProfileNode);
                 AssertPtrReturnVoid(pFakeNode);
-                pFakeNode->toMachineNode()->cache()->toCloud()->setFakeCloudItemState(UIFakeCloudVirtualMachineItemState_Done);
+                UIVirtualMachineItemCloud *pFakeMachineItem = pFakeNode->toMachineNode()->cache()->toCloud();
+                AssertPtrReturnVoid(pFakeMachineItem);
+                pFakeMachineItem->setFakeCloudItemState(UIFakeCloudVirtualMachineItemState_Done);
+                pFakeMachineItem->setFakeCloudItemErrorMessage(strErrorMessage);
                 if (pFakeNode->item())
                     pFakeNode->item()->updateItem();
             }
