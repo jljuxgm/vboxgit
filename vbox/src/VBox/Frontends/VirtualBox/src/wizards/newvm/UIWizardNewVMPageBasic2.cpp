@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic2.cpp 84878 2020-06-19 08:18:48Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic2.cpp 84879 2020-06-19 10:29:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic2 class implementation.
  */
@@ -28,12 +28,14 @@
 #include "UIBaseMemoryEditor.h"
 #include "UIBaseMemorySlider.h"
 #include "UICommon.h"
+#include "UIVirtualCPUEditor.h"
 #include "UIWizardNewVMPageBasic2.h"
 #include "UIWizardNewVM.h"
 
 
 UIWizardNewVMPage2::UIWizardNewVMPage2()
     : m_pBaseMemoryEditor(0)
+    , m_pVirtualCPUEditor(0)
 {
 }
 
@@ -54,7 +56,9 @@ UIWizardNewVMPageBasic2::UIWizardNewVMPageBasic2()
         QGridLayout *pMemoryLayout = new QGridLayout;
         {
             m_pBaseMemoryEditor = new UIBaseMemoryEditor(this, true);
-            pMemoryLayout->addWidget(m_pBaseMemoryEditor, 0, 1, 1, 4);
+            m_pVirtualCPUEditor = new UIVirtualCPUEditor(this, true);
+            pMemoryLayout->addWidget(m_pBaseMemoryEditor, 0, 0, 1, 4);
+            pMemoryLayout->addWidget(m_pVirtualCPUEditor, 1, 0, 1, 4);
         }
         if (m_pLabel)
             pMainLayout->addWidget(m_pLabel);

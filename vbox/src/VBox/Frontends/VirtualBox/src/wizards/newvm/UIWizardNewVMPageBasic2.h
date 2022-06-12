@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic2.h 84878 2020-06-19 08:18:48Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic2.h 84879 2020-06-19 10:29:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic2 class declaration.
  */
@@ -27,6 +27,7 @@
 /* Forward declarations: */
 class UIBaseMemorySlider;
 class UIBaseMemoryEditor;
+class UIVirtualCPUEditor;
 class QSpinBox;
 class QLabel;
 class QIRichTextLabel;
@@ -43,6 +44,7 @@ protected:
 
     /* Widgets: */
     UIBaseMemoryEditor *m_pBaseMemoryEditor;
+    UIVirtualCPUEditor *m_pVirtualCPUEditor;
 };
 
 /* 2nd page of the New Virtual Machine wizard (basic extension): */
