@@ -1,4 +1,4 @@
-/* $Id: serialport-win.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: serialport-win.cpp 86017 2020-09-03 08:40:47Z vboxsync $ */
 /** @file
  * IPRT - Serial Port API, Windows Implementation.
  */
@@ -933,16 +933,17 @@ RTDECL(int) RTSerialPortEvtPoll(RTSERIALPORT hSerialPort, uint32_t fEvtMask, uin
                 if (dwRet == ERROR_IO_PENDING)
                     rc = VINF_SUCCESS;
                 else
+                {
                     rc = RTErrConvertFromWin32(GetLastError());
+                    pThis->fEvtQueryPending = false;
+                }
             }
             else
                 pThis->fEvtQueryPending = false;
         }
 
-        Assert(RT_FAILURE(rc) || pThis->fEvtQueryPending);
-
         if (   RT_SUCCESS(rc)
-            || pThis->fEvtQueryPending)
+            && pThis->fEvtQueryPending)
             rc = rtSerialPortEvtWaitWorker(pThis, msTimeout);
 
         if (RT_SUCCESS(rc))
