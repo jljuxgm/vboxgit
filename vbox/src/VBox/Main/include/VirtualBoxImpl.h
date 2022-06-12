@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 86908 2020-11-18 10:56:12Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 87949 2021-03-04 12:49:43Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -191,6 +191,9 @@ public:
 
     int i_natNetworkRefInc(const Utf8Str &aNetworkName);
     int i_natNetworkRefDec(const Utf8Str &aNetworkName);
+
+    RWLockHandle *i_getNatNetLock() const;
+    bool i_isNatNetStarted(const Utf8Str &aNetworkName) const;
 
     void i_onCloudProviderListChanged(BOOL aRegistered);
     void i_onCloudProviderRegistered(const Utf8Str &aProviderId, BOOL aRegistered);

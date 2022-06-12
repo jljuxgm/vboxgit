@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 86908 2020-11-18 10:56:12Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 87949 2021-03-04 12:49:43Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -3461,6 +3461,27 @@ int VirtualBox::i_natNetworkRefDec(const Utf8Str &aNetworkName)
     }
 
     return sNatNetworkNameToRefCount[aNetworkName];
+}
+
+
+/*
+ * Export this to NATNetwork so that its setters can refuse to change
+ * essential network settings when an VBoxNatNet instance is running.
+ */
+RWLockHandle *VirtualBox::i_getNatNetLock() const
+{
+    return spMtxNatNetworkNameToRefCountLock;
+}
+
+
+/*
+ * Export this to NATNetwork so that its setters can refuse to change
+ * essential network settings when an VBoxNatNet instance is running.
+ * The caller is expected to hold a read lock on i_getNatNetLock().
+ */
+bool VirtualBox::i_isNatNetStarted(const Utf8Str &aNetworkName) const
+{
+    return sNatNetworkNameToRefCount[aNetworkName] > 0;
 }
 
 

@@ -1,4 +1,4 @@
-/* $Id: NATNetworkImpl.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: NATNetworkImpl.h 87949 2021-03-04 12:49:43Z vboxsync $ */
 /** @file
  * INATNetwork implementation header, lives in VBoxSVC.
  */
@@ -114,6 +114,8 @@ private:
     HRESULT stop();
 
     // Internal methods
+    HRESULT setErrorBusy();
+
     int i_recalculateIpv4AddressAssignments();
     int i_findFirstAvailableOffset(ADDRESSLOOKUPTYPE, uint32_t *);
     int i_recalculateIPv6Prefix();
