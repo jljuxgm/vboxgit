@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84669 $"
+__version__ = "$Revision: 84713 $"
 
 # Standard Python imports.
 import errno
@@ -2956,7 +2956,9 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
                             tdTestResultExec(fRc = True) ]);
 
         # Test very long arguments.
-        if self.oTstDrv.fpApiVer >= 6.1:
+        # Old(er) Windows OSes tend to crash in cmd.exe, so skip this.
+        if  self.oTstDrv.fpApiVer >= 6.1 \
+        and oTestVm.sKind not in ('WindowsNT4', 'Windows2000', 'WindowsXP', 'Windows2003'):
             for _ in xrange(0, 16):
                 sFileName = str(self.oTestFiles.generateFilenameEx(128 * 1024, 2048));
                 reporter.log2('sFileName=%s, type=%s' % (limitString(sFileName), type(sFileName)));
