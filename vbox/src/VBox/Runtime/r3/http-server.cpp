@@ -1,4 +1,4 @@
-/* $Id: http-server.cpp 87011 2020-11-27 17:33:42Z vboxsync $ */
+/* $Id: http-server.cpp 87013 2020-11-27 19:41:36Z vboxsync $ */
 /** @file
  * Simple HTTP server (RFC 7231) implementation.
  *
@@ -795,7 +795,7 @@ static int rtHttpServerProcessRequest(PRTHTTPSERVERCLIENT pClient, char *pszReq,
 {
     RTHTTPSTATUS enmSts = RTHTTPSTATUS_INTERNAL_NOT_SET;
 
-    PRTHTTPSERVERREQ pReq;
+    PRTHTTPSERVERREQ pReq = NULL; /* Shut up GCC. */
     int rc = rtHttpServerParseRequest(pClient, pszReq, cbReq, &pReq);
     if (RT_SUCCESS(rc))
     {
