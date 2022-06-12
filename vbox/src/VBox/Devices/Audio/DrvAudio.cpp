@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 88433 2021-04-09 12:55:19Z vboxsync $ */
+/* $Id: DrvAudio.cpp 88440 2021-04-09 16:34:11Z vboxsync $ */
 /** @file
  * Intermediate audio driver - Connects the audio device emulation with the host backend.
  */
@@ -3453,7 +3453,7 @@ static DECLCALLBACK(int) drvAudioStreamSetVolume(PPDMIAUDIOCONNECTOR pInterface,
     AssertPtrReturn(pVol, VERR_INVALID_POINTER);
     AssertReturn(pStreamEx->Core.uMagic == PDMAUDIOSTREAM_MAGIC, VERR_INVALID_MAGIC);
     AssertReturn(pStreamEx->uMagic      == DRVAUDIOSTREAM_MAGIC, VERR_INVALID_MAGIC);
-    AssertReturn(pStreamEx->fNoMixBufs, VWRN_INVALID_STATE);
+    AssertReturn(!pStreamEx->fNoMixBufs, VWRN_INVALID_STATE);
 
     LogFlowFunc(("[%s] volL=%RU32, volR=%RU32, fMute=%RTbool\n", pStreamEx->Core.szName, pVol->uLeft, pVol->uRight, pVol->fMuted));
 
