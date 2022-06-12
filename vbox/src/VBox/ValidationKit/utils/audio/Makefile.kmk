@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 89403 2021-05-31 13:47:54Z vboxsync $
+# $Id: Makefile.kmk 89544 2021-06-07 11:06:40Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - Audio Utilities.
 #
@@ -54,6 +54,8 @@ vkat_INCS     = \
 	$(PATH_ROOT)/src/VBox/Devices
 vkat_SOURCES  = \
 	vkat.cpp \
+	vkatCommon.cpp \
+	vkatCmdPlayRec.cpp \
 	vkatDriverStack.cpp \
 	$(VKAT_PATH_AUDIO)/AudioTest.cpp \
 	$(VKAT_PATH_AUDIO)/DrvAudio.cpp \
@@ -66,6 +68,7 @@ vkat_SOURCES  = \
 # Self-test stuff.
 vkat_DEFS     += VBOX_WITH_AUDIO_VALIDATIONKIT
 vkat_SOURCES  += \
+	vkatCmdSelfTest.cpp \
 	$(VKAT_PATH_AUDIO)/DrvHostAudioValidationKit.cpp \
 	$(VKAT_PATH_AUDIO)/AudioTestService.cpp \
 	$(VKAT_PATH_AUDIO)/AudioTestServiceClient.cpp \
