@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 86572 2020-10-14 11:29:29Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 86573 2020-10-14 12:06:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -39,6 +39,7 @@
 #include "UIChooserNodeGlobal.h"
 #include "UIChooserNodeMachine.h"
 #include "UIChooserView.h"
+#include "UICloudNetworkingStuff.h"
 #include "UIExtraDataManager.h"
 #include "UIMessageCenter.h"
 #include "UIModalWindowManager.h"
@@ -1106,6 +1107,26 @@ void UIChooserModel::sltLocalMachineRegistrationChanged(const QUuid &uMachineId,
                                                   UIChooserItemSearchFlag_Machine |
                                                   UIChooserItemSearchFlag_ExactId));
         }
+    }
+}
+
+void UIChooserModel::sltCloudMachineRegistered(const QString &strProviderShortName, const QString &strProfileName,
+                                               const CCloudMachine &comMachine, bool fSelect)
+{
+    /* Call to base-class: */
+    UIChooserAbstractModel::sltCloudMachineRegistered(strProviderShortName, strProfileName, comMachine, fSelect);
+
+    /* Rebuild tree for main root: */
+    buildTreeForMainRoot(false /* preserve selection */);
+
+    /* Select newly added item: */
+    if (fSelect)
+    {
+        QUuid uMachineId;
+        if (cloudMachineId(comMachine, uMachineId))
+            setSelectedItem(root()->searchForItem(uMachineId.toString(),
+                                                  UIChooserItemSearchFlag_Machine |
+                                                  UIChooserItemSearchFlag_ExactId));
     }
 }
 

@@ -1,4 +1,4 @@
-/* $Id: UIWizardAddCloudVM.cpp 86345 2020-09-30 12:37:06Z vboxsync $ */
+/* $Id: UIWizardAddCloudVM.cpp 86573 2020-10-14 12:06:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardAddCloudVM class implementation.
  */
@@ -110,8 +110,7 @@ bool UIWizardAddCloudVM::addCloudVMs()
                     {
                         uiCommon().notifyCloudMachineRegistered(field("source").toString(),
                                                                 field("profileName").toString(),
-                                                                comMachine.GetId(),
-                                                                true /* registered */);
+                                                                comMachine);
                         fResult = true;
                     }
                 }
