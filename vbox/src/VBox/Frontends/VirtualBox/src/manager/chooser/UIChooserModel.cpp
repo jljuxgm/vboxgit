@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 86652 2020-10-20 14:37:58Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 86654 2020-10-20 14:47:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -925,13 +925,19 @@ void UIChooserModel::refreshSelectedMachineItems()
             }
             case UIVirtualMachineItemType_CloudFake:
             {
-                /* Create list cloud machines task: */
+                /* Compose cloud account key: */
                 UIChooserItem *pParent = pItem->parentItem();
                 AssertPtrReturnVoid(pParent);
                 UIChooserItem *pParentOfParent = pParent->parentItem();
                 AssertPtrReturnVoid(pParentOfParent);
-                UITaskCloudListMachines *pTask = new UITaskCloudListMachines(pParentOfParent->name(),
-                                                                             pParent->name(),
+
+                /* Insert cloud account key into a list of keys currently being updated: */
+                const UICloudAccountKey cloudAccountKey = qMakePair(pParentOfParent->name(), pParent->name());
+                insertCloudAccountKey(cloudAccountKey);
+
+                /* Create list cloud machines task: */
+                UITaskCloudListMachines *pTask = new UITaskCloudListMachines(cloudAccountKey.first /* short provider name */,
+                                                                             cloudAccountKey.second /* profile name */,
                                                                              true /* with refresh? */);
                 AssertPtrReturnVoid(pTask);
                 uiCommon().threadPoolCloud()->enqueueTask(pTask);
