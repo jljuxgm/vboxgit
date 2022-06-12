@@ -1,4 +1,4 @@
-/* $Id: UIDetailsView.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIDetailsView.cpp 89161 2021-05-19 12:48:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsView class implementation.
  */
@@ -153,6 +153,12 @@ void UIDetailsView::prepare()
 {
     /* Install Details-view accessibility interface factory: */
     QAccessible::installFactory(UIAccessibilityInterfaceForUIDetailsView::pFactory);
+
+    /* Prepare palette: */
+    QPalette pal = QApplication::palette();
+    pal.setColor(QPalette::Active, QPalette::Base, pal.color(QPalette::Active, QPalette::Window));
+    pal.setColor(QPalette::Inactive, QPalette::Base, pal.color(QPalette::Inactive, QPalette::Window));
+    setPalette(pal);
 
     /* Setup frame: */
     setFrameShape(QFrame::NoFrame);

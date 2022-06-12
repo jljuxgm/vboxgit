@@ -1,4 +1,4 @@
-/* $Id: UIChooserView.cpp 88805 2021-04-30 13:29:59Z vboxsync $ */
+/* $Id: UIChooserView.cpp 89161 2021-05-19 12:48:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserView class implementation.
  */
@@ -248,6 +248,7 @@ void UIChooserView::prepareThis()
     /* Prepare palette: */
     QPalette pal = QApplication::palette();
     pal.setColor(QPalette::Active, QPalette::Base, pal.color(QPalette::Active, QPalette::Window));
+    pal.setColor(QPalette::Inactive, QPalette::Base, pal.color(QPalette::Inactive, QPalette::Window));
     setPalette(pal);
 
     /* Prepare frame: */
