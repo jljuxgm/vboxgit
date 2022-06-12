@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.h 88028 2021-03-08 19:31:22Z vboxsync $ */
+/* $Id: DrvAudio.h 88031 2021-03-09 00:13:46Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  */
@@ -208,9 +208,11 @@ int DrvAudioHlpFileNameGet(char *pszFile, size_t cchFile, const char *pszPath, c
 
 /** @name Audio device methods.
  * @{ */
+PPDMAUDIODEVICE PDMAudioDeviceAlloc(size_t cb);
+void            PDMAudioDeviceFree(PPDMAUDIODEVICE pDev);
+PPDMAUDIODEVICE PDMAudioDeviceDup(const PPDMAUDIODEVICE pDev, bool fCopyUserData);
+
 PPDMAUDIODEVICE DrvAudioHlpDeviceAlloc(size_t cbData);
-void DrvAudioHlpDeviceFree(PPDMAUDIODEVICE pDev);
-PPDMAUDIODEVICE DrvAudioHlpDeviceDup(const PPDMAUDIODEVICE pDev, bool fCopyUserData);
 /** @}  */
 
 /** @name Audio device enumeration methods.
