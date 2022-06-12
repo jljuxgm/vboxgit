@@ -1,4 +1,4 @@
-/* $Id: DBGFR3SampleReport.cpp 89622 2021-06-11 09:43:32Z vboxsync $ */
+/* $Id: DBGFR3SampleReport.cpp 89624 2021-06-11 09:56:21Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Sample report creation.
  */
@@ -233,7 +233,7 @@ static DECLCALLBACK(VBOXSTRICTRC) dbgfR3SampleReportSample(PVM pVM, PVMCPU pVCpu
 
 
 /**
- * @copydoc{FNRTTIMER}
+ * @copydoc FNRTTIMER
  */
 static DECLCALLBACK(void) dbgfR3SampleReportTakeSample(PRTTIMER pTimer, void *pvUser, uint64_t iTick)
 {
