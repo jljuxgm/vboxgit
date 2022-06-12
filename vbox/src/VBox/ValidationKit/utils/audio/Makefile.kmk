@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 89544 2021-06-07 11:06:40Z vboxsync $
+# $Id: Makefile.kmk 89634 2021-06-11 18:09:07Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - Audio Utilities.
 #
@@ -26,6 +26,14 @@
 
 SUB_DEPTH = ../../../../..
 include $(KBUILD_PATH)/subheader.kmk
+
+#
+# Make sure the ValKit config file is included when the additions build
+# is including just this makefile.
+#
+ifndef VBOX_VALIDATIONKIT_CONFIG_KMK_INCLUDED
+ include $(PATH_SUB_CURRENT)/ValidationKit/Config.kmk
+endif
 
 #
 # Utility to play sine wave to Default Audio Device.

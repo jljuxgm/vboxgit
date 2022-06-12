@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 89628 2021-06-11 13:09:30Z vboxsync $
+# $Id: Makefile.kmk 89634 2021-06-11 18:09:07Z vboxsync $
 ## @file
 # Top-level makefile for src/VBox.
 #
@@ -28,12 +28,7 @@ ifdef VBOX_ONLY_ADDITIONS
  endif
  include $(PATH_SUB_CURRENT)/Additions/Makefile.kmk
 
- ifdef VBOX_WITH_VALIDATIONKIT
-  # Make sure our Config.kmk is included.
-  ifndef VBOX_VALIDATIONKIT_CONFIG_KMK_INCLUDED
-   include $(PATH_SUB_CURRENT)/ValidationKit/Config.kmk
-  endif
-  # For including VKAT with the Guest Additions.
+ ifdef VBOX_WITH_VALIDATIONKIT # For including VKAT with the Guest Additions.
   include $(PATH_SUB_CURRENT)/ValidationKit/utils/audio/Makefile.kmk
  endif
 
