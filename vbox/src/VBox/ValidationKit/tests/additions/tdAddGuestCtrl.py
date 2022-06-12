@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84736 $"
+__version__ = "$Revision: 84738 $"
 
 # Standard Python imports.
 import errno
@@ -2983,7 +2983,7 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
 
                 # Append a random number of arguments with random length.
                 for _ in xrange(0, self.oTestFiles.oRandom.randrange(1, 64)):
-                    asArgs.append(''.join(random.choice(string.lowercase)
+                    asArgs.append(''.join(random.choice(string.ascii_lowercase)
                                           for _ in range(self.oTestFiles.oRandom.randrange(1, 255))));
 
                 asArgs.append(sEndMarker);
