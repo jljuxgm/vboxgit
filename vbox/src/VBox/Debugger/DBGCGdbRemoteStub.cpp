@@ -1,4 +1,4 @@
-/* $Id: DBGCGdbRemoteStub.cpp 84653 2020-06-03 09:22:18Z vboxsync $ */
+/* $Id: DBGCGdbRemoteStub.cpp 84654 2020-06-03 09:37:14Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, GDB Remote Stub.
  */
@@ -2164,7 +2164,7 @@ int dbgcGdbStubRun(PGDBSTUBCTX pThis)
 
 
 /**
- * @copdoc{DBGC,pfnOutput}
+ * @copydoc{DBGC,pfnOutput}
  */
 static DECLCALLBACK(int) dbgcOutputGdb(void *pvUser, const char *pachChars, size_t cbChars)
 {

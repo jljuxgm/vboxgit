@@ -1,4 +1,4 @@
-/* $Id: DBGConsole.cpp 84653 2020-06-03 09:22:18Z vboxsync $ */
+/* $Id: DBGConsole.cpp 84654 2020-06-03 09:37:14Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console.
  */
@@ -1089,7 +1089,7 @@ static int dbgcReadConfig(PDBGC pDbgc, PUVM pUVM)
 
 
 /**
- * @copdoc{DBGC,pfnOutput}
+ * @copydoc{DBGC,pfnOutput}
  */
 static DECLCALLBACK(int) dbgcOutputNative(void *pvUser, const char *pachChars, size_t cbChars)
 {
