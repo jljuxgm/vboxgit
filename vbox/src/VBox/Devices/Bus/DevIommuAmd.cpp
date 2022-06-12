@@ -1,4 +1,4 @@
-/* $Id: DevIommuAmd.cpp 87327 2021-01-20 17:01:53Z vboxsync $ */
+/* $Id: DevIommuAmd.cpp 87340 2021-01-21 04:39:44Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - AMD implementation.
  */
@@ -53,6 +53,7 @@
 /** The number of bits to shift for the domain ID of the IOTLBE key. */
 # define IOMMU_IOTLB_DOMAIN_ID_SHIFT                40
 #endif
+
 
 /*********************************************************************************************************************************
 *   Structures and Typedefs                                                                                                      *
