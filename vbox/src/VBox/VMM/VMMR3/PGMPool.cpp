@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 86475 2020-10-07 19:02:36Z vboxsync $ */
+/* $Id: PGMPool.cpp 86487 2020-10-08 08:17:31Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -874,7 +874,7 @@ static DECLCALLBACK(int) pgmR3PoolCmdCheck(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, 
                             cErrors++;
                         }
                         else if (   PGMSHWPTEPAE_IS_RW(pShwPT->a[j])
-                                 && !pGstPT->a[j].n.u1Write)
+                                 && !(pGstPT->a[j].u & X86_PTE_RW))
                         {
                             if (fFirstMsg)
                             {
