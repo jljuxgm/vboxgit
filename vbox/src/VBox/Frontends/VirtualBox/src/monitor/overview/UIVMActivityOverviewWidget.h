@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityOverviewWidget.h 88084 2021-03-11 11:06:53Z vboxsync $ */
+/* $Id: UIVMActivityOverviewWidget.h 88085 2021-03-11 11:37:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMActivityOverviewWidget class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef FEQT_INCLUDED_SRC_monitor_resource_UIVMActivityOverviewWidget_h
-#define FEQT_INCLUDED_SRC_monitor_resource_UIVMActivityOverviewWidget_h
+#ifndef FEQT_INCLUDED_SRC_monitor_overview_UIVMActivityOverviewWidget_h
+#define FEQT_INCLUDED_SRC_monitor_overview_UIVMActivityOverviewWidget_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -175,4 +175,4 @@ private:
     friend class UIVMActivityOverviewFactory;
 };
 
-#endif /* !FEQT_INCLUDED_SRC_monitor_resource_UIVMActivityOverviewWidget_h */
+#endif /* !FEQT_INCLUDED_SRC_monitor_overview_UIVMActivityOverviewWidget_h */
