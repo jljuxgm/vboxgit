@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 88529 2021-04-15 12:01:54Z vboxsync $ */
+/* $Id: DevE1000.cpp 88533 2021-04-15 12:10:42Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -5328,7 +5328,7 @@ DECLINLINE(bool) e1kUpdateTxContext(PE1KSTATE pThis, E1KTXDESC *pDesc)
              pDesc->context.tu.u8CSS,
              pDesc->context.tu.u8CSO,
              pDesc->context.tu.u16CSE));
-    return true; /* TODO: Consider returning false for invalid descriptors */
+    return true; /* Consider returning false for invalid descriptors */
 }
 
 static bool e1kLocateTxPacket(PE1KSTATE pThis)
