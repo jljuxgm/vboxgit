@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 85962 2020-08-31 18:47:22Z vboxsync $ */
+/* $Id: VBoxService.cpp 86823 2020-11-06 12:57:57Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -893,7 +893,7 @@ static RTEXITCODE vbglInitFailure(int rcVbgl)
     return RTMsgErrorExit(RTEXITCODE_FAILURE, "VbglR3Init failed with rc=%Rrc\n", rcVbgl);
 }
 
-#ifdef RT_OS_LINUX
+#ifdef VBOX_WITH_VBOXSERVICE_DRMRESIZE
 /**
  * Check for a guest property and start VBoxDRMClient if it exists.
  *
@@ -920,7 +920,7 @@ static void startDRMResize(void)
         }
     }
 }
-#endif
+#endif /* VBOX_WITH_VBOXSERVICE_DRMRESIZE */
 
 int main(int argc, char **argv)
 {
@@ -1186,9 +1186,9 @@ int main(int argc, char **argv)
     if (rcExit != RTEXITCODE_SUCCESS)
         return rcExit;
 
-#ifdef RT_OS_LINUX
+#ifdef VBOX_WITH_VBOXSERVICE_DRMRESIZE
     startDRMResize();
-#endif
+#endif /* VBOX_WITH_VBOXSERVICE_DRMRESIZE */
 
 #ifdef RT_OS_WINDOWS
     /*
