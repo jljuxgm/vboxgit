@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageExpert.cpp 85466 2020-07-27 09:42:02Z vboxsync $ */
+/* $Id: UIWizardNewVDPageExpert.cpp 87775 2021-02-17 11:42:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageExpert class implementation.
  */
@@ -212,7 +212,8 @@ void UIWizardNewVDPageExpert::sltMediumFormatChanged()
         QFileInfo fileInfo(m_pLocationEditor->text());
         if (fileInfo.suffix() != m_strDefaultExtension)
         {
-            QFileInfo newFileInfo(fileInfo.absolutePath(), QString("%1.%2").arg(fileInfo.completeBaseName()).arg(m_strDefaultExtension));
+            QFileInfo newFileInfo(fileInfo.absolutePath(),
+                                  QString("%1.%2").arg(stripFormatExtension(fileInfo.fileName())).arg(m_strDefaultExtension));
             m_pLocationEditor->setText(newFileInfo.absoluteFilePath());
         }
     }
@@ -294,4 +295,21 @@ bool UIWizardNewVDPageExpert::validatePage()
 
     /* Return result: */
     return fResult;
+}
+
+QString UIWizardNewVDPageExpert::stripFormatExtension(const QString &strFileName)
+{
+    QString result(strFileName);
+    foreach (const QString &strExtension, m_formatExtensions)
+    {
+        if (strFileName.endsWith(strExtension, Qt::CaseInsensitive))
+        {
+            /* Add the dot to extenstion: */
+            QString strExtensionWithDot(strExtension);
+            strExtensionWithDot.prepend('.');
+            int iIndex = strFileName.lastIndexOf(strExtensionWithDot, -1, Qt::CaseInsensitive);
+            result.remove(iIndex, strExtensionWithDot.length());
+        }
+    }
+    return result;
 }

@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageBasic1.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIWizardNewVDPageBasic1.h 87775 2021-02-17 11:42:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageBasic1 class declaration.
  */
@@ -54,6 +54,7 @@ protected:
     QButtonGroup *m_pFormatButtonGroup;
     QList<CMediumFormat> m_formats;
     QStringList m_formatNames;
+    QStringList m_formatExtensions;
 };
 
 

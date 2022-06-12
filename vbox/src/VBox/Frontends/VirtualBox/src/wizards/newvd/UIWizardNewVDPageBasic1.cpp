@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageBasic1.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIWizardNewVDPageBasic1.cpp 87775 2021-02-17 11:42:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageBasic1 class implementation.
  */
@@ -23,6 +23,7 @@
 /* GUI includes: */
 #include "UIConverter.h"
 #include "UIWizardNewVDPageBasic1.h"
+#include "UIWizardNewVDPageBasic3.h"
 #include "UIWizardNewVD.h"
 #include "UICommon.h"
 #include "QIRichTextLabel.h"
@@ -70,6 +71,7 @@ void UIWizardNewVDPage1::addFormatButton(QWidget *pParent, QVBoxLayout *pFormatL
         m_formats << medFormat;
         m_formatNames << medFormat.GetName();
         m_pFormatButtonGroup->addButton(pFormatButton, m_formatNames.size() - 1);
+        m_formatExtensions << UIWizardNewVDPage3::defaultExtension(medFormat);
     }
 }
 
@@ -203,4 +205,3 @@ int UIWizardNewVDPageBasic1::nextId() const
     /* Skip otherwise: */
     return UIWizardNewVD::Page3;
 }
-

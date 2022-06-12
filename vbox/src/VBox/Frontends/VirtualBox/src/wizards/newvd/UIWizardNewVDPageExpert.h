@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageExpert.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIWizardNewVDPageExpert.h 87775 2021-02-17 11:42:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageExpert class declaration.
  */
@@ -72,6 +72,9 @@ private:
     /* Validation stuff: */
     bool isComplete() const;
     bool validatePage();
+    /** Strips the format extension from the @p strFileName. foo.dd.vdi becomes foo.dd. any extension which is not
+      * a format extension is left alone. */
+    QString stripFormatExtension(const QString &strFileName);
 
     /* Widgets: */
     QGroupBox *m_pFormatCnt;
