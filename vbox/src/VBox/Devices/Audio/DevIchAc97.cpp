@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 88906 2021-05-06 14:24:47Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 88908 2021-05-06 16:35:40Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -1901,17 +1901,9 @@ static int ichac97R3MixerAddDrvStream(PPDMDEVINS pDevIns, PAUDMIXSINK pMixSink, 
                         LogFunc(("LUN#%RU8: Unable to retrieve backend configuratio for '%s', rc=%Rrc\n",
                                  pDrv->uLUN, pStreamCfg->szName, rc));
                 }
-                /** @todo r=bird: see below. */
                 if (RT_FAILURE(rc))
                     AudioMixerSinkRemoveStream(pMixSink, pMixStrm);
             }
-            /** @todo r=bird: I've added this destroy stuff here, because if it looks as if
-             * you just drop the stream if the AudioMixerSinkAddStream fails for some
-             * reason.  This is definitely true if AudioMixerSinkSetRecordingSource fails
-             * above, because it leads to duplicate statistics when starting XP with ICH97
-             * and VRDP enabled.  Looks like the VRDP line-in fails with
-             * VERR_AUDIO_STREAM_NOT_READY when configured for 8000HZ, then it asserts in
-             * STAM when 48000Hz is configured right afterwards. */
             if (RT_FAILURE(rc))
                 AudioMixerStreamDestroy(pMixStrm, pDevIns);
         }

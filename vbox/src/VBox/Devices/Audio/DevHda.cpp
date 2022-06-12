@@ -1,4 +1,4 @@
-/* $Id: DevHda.cpp 88905 2021-05-06 14:14:24Z vboxsync $ */
+/* $Id: DevHda.cpp 88908 2021-05-06 16:35:40Z vboxsync $ */
 /** @file
  * Intel HD Audio Controller Emulation.
  *
@@ -2363,8 +2363,11 @@ static int hdaR3MixerAddDrvStream(PPDMDEVINS pDevIns, PAUDMIXSINK pMixSink, PPDM
                     LogFunc(("LUN#%RU8: Unable to retrieve backend configuration for '%s', rc=%Rrc\n",
                              pDrv->uLUN, StreamCfg.szName, rc));
             }
+            if (RT_FAILURE(rc))
+                AudioMixerSinkRemoveStream(pMixSink, pMixStrm);
         }
-/** @todo r=bird: We are missing cleanup code here!   */
+        if (RT_FAILURE(rc))
+            AudioMixerStreamDestroy(pMixStrm, pDevIns);
     }
 
     if (RT_SUCCESS(rc))

@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 88906 2021-05-06 14:24:47Z vboxsync $ */
+/* $Id: DevSB16.cpp 88908 2021-05-06 16:35:40Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  */
@@ -2007,11 +2007,8 @@ static int sb16AddDrvStream(PPDMDEVINS pDevIns, PAUDMIXSINK pMixSink, PPDMAUDIOS
         {
             rc = AudioMixerSinkAddStream(pMixSink, pMixStrm);
             LogFlowFunc(("LUN#%RU8: Added stream \"%s\" to sink, rc=%Rrc\n", pDrv->uLUN, pStreamCfg->szName, rc));
-
             if (RT_SUCCESS(rc))
-            {
                 pDrvStream->pMixStrm = pMixStrm;
-            }
             else
                 AudioMixerStreamDestroy(pMixStrm, pDevIns);
         }
