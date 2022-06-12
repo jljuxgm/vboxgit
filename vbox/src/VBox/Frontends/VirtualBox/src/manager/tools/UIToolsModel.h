@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.h 88122 2021-03-15 15:44:48Z vboxsync $ */
+/* $Id: UIToolsModel.h 88508 2021-04-14 14:00:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class declaration.
  */
@@ -85,8 +85,6 @@ public:
       * @{ */
         /** Inits model. */
         void init();
-        /** Deinits model. */
-        void deinit();
 
         /** Returns the Tools reference. */
         UITools *tools() const;

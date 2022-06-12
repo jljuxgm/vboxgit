@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.cpp 88252 2021-03-22 17:09:13Z vboxsync $ */
+/* $Id: UIToolsModel.cpp 88508 2021-04-14 14:00:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class implementation.
  */
@@ -81,12 +81,6 @@ void UIToolsModel::init()
     updateNavigation();
     sltItemMinimumWidthHintChanged();
     sltItemMinimumHeightHintChanged();
-}
-
-void UIToolsModel::deinit()
-{
-    /* Save last selected item: */
-    saveLastSelectedItems();
 }
 
 UITools *UIToolsModel::tools() const
@@ -628,6 +622,8 @@ void UIToolsModel::cleanupScene()
 
 void UIToolsModel::cleanup()
 {
+    /* Save last selected item: */
+    saveLastSelectedItems();
     /* Cleanup connections: */
     cleanupConnections();
     /* Cleanup handlers: */
