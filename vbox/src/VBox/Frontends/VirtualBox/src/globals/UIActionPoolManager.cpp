@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.cpp 85445 2020-07-23 18:56:39Z vboxsync $ */
+/* $Id: UIActionPoolManager.cpp 85446 2020-07-23 19:07:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class implementation.
  */
@@ -1348,7 +1348,7 @@ protected:
     /** Handles translation event. */
     virtual void retranslateUi() /* override */
     {
-        setName(QApplication::translate("UIActionPool", "&Create Connection"));
+        setName(QApplication::translate("UIActionPool", "&Open Connection"));
         setStatusTip(QApplication::translate("UIActionPool", "Create console connection to be able to use ssh/vnc clients"));
     }
 };
@@ -1378,7 +1378,7 @@ protected:
     /** Handles translation event. */
     virtual void retranslateUi() /* override */
     {
-        setName(QApplication::translate("UIActionPool", "&Delete Connection"));
+        setName(QApplication::translate("UIActionPool", "&Close Connection"));
         setStatusTip(QApplication::translate("UIActionPool", "Delete console connection to disconnect ssh/vnc clients"));
     }
 };

@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 85445 2020-07-23 18:56:39Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 85446 2020-07-23 19:07:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -2770,7 +2770,9 @@ void UIVirtualBoxManager::updateMenuMachineConsole(QMenu *pMenu)
                     continue;
                 const QString strProfileOptions = gEDataManager->cloudConsoleManagerProfile(strApplicationId, strProfileId);
                 const QStringList profileValues = strProfileOptions.split(',');
-                QAction *pAction = pMenu->addAction(QApplication::translate("UIActionPool", "%1 (%2)")
+                QAction *pAction = pMenu->addAction(QApplication::translate("UIActionPool",
+                                                                            "Connect with %1 (%2)",
+                                                                            "with terminal application (profile)")
                                                         .arg(applicationValues.value(0), profileValues.value(0)),
                                                     this, &UIVirtualBoxManager::sltExecuteExternalApplication);
                 pAction->setProperty("path", applicationValues.value(1));
