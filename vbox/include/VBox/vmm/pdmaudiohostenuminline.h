@@ -1,4 +1,4 @@
-/* $Id: pdmaudiohostenuminline.h 88048 2021-03-09 14:07:00Z vboxsync $ */
+/* $Id: pdmaudiohostenuminline.h 88049 2021-03-09 14:07:43Z vboxsync $ */
 /** @file
  * PDM - Audio Helpers, Inlined Code. (DEV,++)
  *
@@ -334,18 +334,21 @@ DECLINLINE(void) PDMAudioHostEnumLog(PCPDMAUDIOHOSTENUM pDevEnm, const char *psz
     AssertPtrReturnVoid(pszDesc);
     AssertReturnVoid(pDevEnm->uMagic == PDMAUDIOHOSTENUM_MAGIC);
 
-    LogFunc(("%s: %RU32 devices\n", pszDesc, pDevEnm->cDevices));
-
-    PPDMAUDIOHOSTDEV pDev;
-    RTListForEach(&pDevEnm->LstDevices, pDev, PDMAUDIOHOSTDEV, Node)
+    if (LogIsEnabled())
     {
-        char szFlags[PDMAUDIOHOSTDEV_MAX_FLAGS_STRING_LEN];
-        LogFunc(("Device '%s':\n", pDev->szName));
-        LogFunc(("  Usage           = %s\n",             PDMAudioDirGetName(pDev->enmUsage)));
-        LogFunc(("  Flags           = %s\n",             PDMAudioDeviceFlagsToString(szFlags, pDev->fFlags)));
-        LogFunc(("  Input channels  = %RU8\n",           pDev->cMaxInputChannels));
-        LogFunc(("  Output channels = %RU8\n",           pDev->cMaxOutputChannels));
-        LogFunc(("  cbExtra         = %RU32 bytes\n",    pDev->cbSelf - sizeof(PDMAUDIOHOSTDEV)));
+        LogFunc(("%s: %RU32 devices\n", pszDesc, pDevEnm->cDevices));
+
+        PPDMAUDIOHOSTDEV pDev;
+        RTListForEach(&pDevEnm->LstDevices, pDev, PDMAUDIOHOSTDEV, Node)
+        {
+            char szFlags[PDMAUDIOHOSTDEV_MAX_FLAGS_STRING_LEN];
+            LogFunc(("Device '%s':\n", pDev->szName));
+            LogFunc(("  Usage           = %s\n",             PDMAudioDirGetName(pDev->enmUsage)));
+            LogFunc(("  Flags           = %s\n",             PDMAudioDeviceFlagsToString(szFlags, pDev->fFlags)));
+            LogFunc(("  Input channels  = %RU8\n",           pDev->cMaxInputChannels));
+            LogFunc(("  Output channels = %RU8\n",           pDev->cMaxOutputChannels));
+            LogFunc(("  cbExtra         = %RU32 bytes\n",    pDev->cbSelf - sizeof(PDMAUDIOHOSTDEV)));
+        }
     }
 }
 
