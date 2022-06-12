@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 87760 2021-02-15 22:45:27Z vboxsync $ */
+/* $Id: DevAHCI.cpp 87767 2021-02-16 16:41:18Z vboxsync $ */
 /** @file
  * DevAHCI - AHCI controller device (disk and cdrom).
  *
@@ -962,9 +962,9 @@ static int ahciHbaSetInterrupt(PPDMDEVINS pDevIns, PAHCI pThis, uint8_t iPort, i
 /**
  * @callback_method_impl{FNTMTIMERDEV, Assert irq when an CCC timeout occurs.}
  */
-static DECLCALLBACK(void) ahciCccTimer(PPDMDEVINS pDevIns, PTMTIMER pTimer, void *pvUser)
+static DECLCALLBACK(void) ahciCccTimer(PPDMDEVINS pDevIns, TMTIMERHANDLE hTimer, void *pvUser)
 {
-    RT_NOREF(pDevIns, pTimer);
+    RT_NOREF(pDevIns, hTimer);
     PAHCI pThis = (PAHCI)pvUser;
 
     int rc = ahciHbaSetInterrupt(pDevIns, pThis, pThis->uCccPortNr, VERR_IGNORED);

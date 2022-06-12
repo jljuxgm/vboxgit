@@ -1,4 +1,4 @@
-/* $Id: DevPit-i8254.cpp 87760 2021-02-15 22:45:27Z vboxsync $ */
+/* $Id: DevPit-i8254.cpp 87767 2021-02-16 16:41:18Z vboxsync $ */
 /** @file
  * DevPIT-i8254 - Intel 8254 Programmable Interval Timer (PIT) And Dummy Speaker Device.
  */
@@ -1113,18 +1113,18 @@ static DECLCALLBACK(int) pitR3LoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uint
 /**
  * @callback_method_impl{FNTMTIMERDEV, User argument points to the PIT channel state.}
  */
-static DECLCALLBACK(void) pitR3Timer(PPDMDEVINS pDevIns, PTMTIMER pTimer, void *pvUser)
+static DECLCALLBACK(void) pitR3Timer(PPDMDEVINS pDevIns, TMTIMERHANDLE hTimer, void *pvUser)
 {
     PPITSTATE   pThis = PDMDEVINS_2_DATA(pDevIns, PPITSTATE);
     PPITCHANNEL pChan = (PPITCHANNEL)pvUser;
-    RT_NOREF(pTimer);
     STAM_PROFILE_ADV_START(&pThis->StatPITHandler, a);
+    Assert(hTimer == pChan->hTimer);
 
     Log(("pitR3Timer\n"));
     Assert(PDMDevHlpCritSectIsOwner(pDevIns, &pThis->CritSect));
-    Assert(PDMDevHlpTimerIsLockOwner(pDevIns, pChan->hTimer));
+    Assert(PDMDevHlpTimerIsLockOwner(pDevIns, hTimer));
 
-    pitR3IrqTimerUpdate(pDevIns, pThis, pChan, pChan->next_transition_time, PDMDevHlpTimerGet(pDevIns, pChan->hTimer), true);
+    pitR3IrqTimerUpdate(pDevIns, pThis, pChan, pChan->next_transition_time, PDMDevHlpTimerGet(pDevIns, hTimer), true);
 
     STAM_PROFILE_ADV_STOP(&pThis->StatPITHandler, a);
 }

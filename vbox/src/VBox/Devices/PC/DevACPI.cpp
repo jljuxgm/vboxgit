@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 87760 2021-02-15 22:45:27Z vboxsync $ */
+/* $Id: DevACPI.cpp 87767 2021-02-16 16:41:18Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -1171,11 +1171,10 @@ static void acpiPmTimerUpdate(PPDMDEVINS pDevIns, PACPISTATE pThis, uint64_t u64
     uint64_t u64Elapsed = u64Now - pThis->u64PmTimerInitial;
     Assert(PDMDevHlpTimerIsLockOwner(pDevIns, pThis->hPmTimer));
 
-    pThis->uPmTimerVal = ASMMultU64ByU32DivByU32(u64Elapsed, PM_TMR_FREQ,
-                                                 PDMDevHlpTimerGetFreq(pDevIns, pThis->hPmTimer))
+    pThis->uPmTimerVal = ASMMultU64ByU32DivByU32(u64Elapsed, PM_TMR_FREQ, PDMDevHlpTimerGetFreq(pDevIns, pThis->hPmTimer))
                        & TMR_VAL_MASK;
 
-    if ( (pThis->uPmTimerVal & TMR_VAL_MSB) != msb)
+    if ((pThis->uPmTimerVal & TMR_VAL_MSB) != msb)
         acpiUpdatePm1a(pDevIns, pThis, pThis->pm1a_sts | TMR_STS, pThis->pm1a_en);
 }
 
@@ -1184,21 +1183,22 @@ static void acpiPmTimerUpdate(PPDMDEVINS pDevIns, PACPISTATE pThis, uint64_t u64
 /**
  * @callback_method_impl{FNTMTIMERDEV, PM Timer callback}
  */
-static DECLCALLBACK(void) acpiR3PmTimer(PPDMDEVINS pDevIns, PTMTIMER pTimer, void *pvUser)
+static DECLCALLBACK(void) acpiR3PmTimer(PPDMDEVINS pDevIns, TMTIMERHANDLE hTimer, void *pvUser)
 {
     PACPISTATE pThis = PDMDEVINS_2_DATA(pDevIns, PACPISTATE);
-    Assert(PDMDevHlpTimerIsLockOwner(pDevIns, pThis->hPmTimer));
-    RT_NOREF(pTimer, pvUser);
+    Assert(pThis->hPmTimer == hTimer);
+    Assert(PDMDevHlpTimerIsLockOwner(pDevIns, hTimer));
+    RT_NOREF(pvUser);
 
     DEVACPI_LOCK_R3(pDevIns, pThis);
     Log(("acpi: pm timer sts %#x (%d), en %#x (%d)\n",
          pThis->pm1a_sts, (pThis->pm1a_sts & TMR_STS) != 0,
          pThis->pm1a_en, (pThis->pm1a_en & TMR_EN) != 0));
-    uint64_t u64Now = PDMDevHlpTimerGet(pDevIns, pThis->hPmTimer);
-    acpiPmTimerUpdate(pDevIns, pThis, u64Now);
+    uint64_t tsNow = PDMDevHlpTimerGet(pDevIns, hTimer);
+    acpiPmTimerUpdate(pDevIns, pThis, tsNow);
     DEVACPI_UNLOCK(pDevIns, pThis);
 
-    acpiR3PmTimerReset(pDevIns, pThis, u64Now);
+    acpiR3PmTimerReset(pDevIns, pThis, tsNow);
 }
 
 /**

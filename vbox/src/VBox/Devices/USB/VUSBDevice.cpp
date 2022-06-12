@@ -1,4 +1,4 @@
-/* $Id: VUSBDevice.cpp 87762 2021-02-15 23:38:29Z vboxsync $ */
+/* $Id: VUSBDevice.cpp 87767 2021-02-16 16:41:18Z vboxsync $ */
 /** @file
  * Virtual USB - Device.
  */
@@ -1371,19 +1371,15 @@ static void vusbDevResetDone(PVUSBDEV pDev, int rc, PFNVUSBRESETDONE pfnDone, vo
 
 
 /**
- * Timer callback for doing reset completion.
- *
- * @param   pUsbIns     The USB device instance.
- * @param   pTimer      The timer instance.
- * @param   pvUser      The VUSB device data.
- * @thread EMT
+ * @callback_method_impl{FNTMTIMERUSB,
+ *          Timer callback for doing reset completion.}
  */
-static DECLCALLBACK(void) vusbDevResetDoneTimer(PPDMUSBINS pUsbIns, PTMTIMER pTimer, void *pvUser)
+static DECLCALLBACK(void) vusbDevResetDoneTimer(PPDMUSBINS pUsbIns, TMTIMERHANDLE hTimer, void *pvUser)
 {
-    RT_NOREF(pUsbIns, pTimer);
     PVUSBDEV        pDev  = (PVUSBDEV)pvUser;
     PVUSBRESETARGS  pArgs = (PVUSBRESETARGS)pDev->pvArgs;
     Assert(pDev->pUsbIns == pUsbIns);
+    RT_NOREF(pUsbIns, hTimer);
 
     AssertPtr(pArgs);
 

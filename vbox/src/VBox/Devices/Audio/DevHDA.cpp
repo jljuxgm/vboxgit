@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 87760 2021-02-15 22:45:27Z vboxsync $ */
+/* $Id: DevHDA.cpp 87767 2021-02-16 16:41:18Z vboxsync $ */
 /** @file
  * DevHDA.cpp - VBox Intel HD Audio Controller.
  *
@@ -2642,7 +2642,7 @@ static DECLCALLBACK(int) hdaR3MixerSetVolume(PPDMDEVINS pDevIns, PDMAUDIOMIXERCT
 /**
  * @callback_method_impl{FNTMTIMERDEV, Main routine for the stream's timer.}
  */
-static DECLCALLBACK(void) hdaR3Timer(PPDMDEVINS pDevIns, PTMTIMER pTimer, void *pvUser)
+static DECLCALLBACK(void) hdaR3Timer(PPDMDEVINS pDevIns, TMTIMERHANDLE hTimer, void *pvUser)
 {
     PHDASTATE       pThis         = PDMDEVINS_2_DATA(pDevIns, PHDASTATE);
     PHDASTATER3     pThisCC       = PDMDEVINS_2_DATA_CC(pDevIns, PHDASTATER3);
@@ -2650,8 +2650,7 @@ static DECLCALLBACK(void) hdaR3Timer(PPDMDEVINS pDevIns, PTMTIMER pTimer, void *
     AssertReturnVoid(idxStream < RT_ELEMENTS(pThis->aStreams));
     PHDASTREAM      pStreamShared = &pThis->aStreams[idxStream];
     PHDASTREAMR3    pStreamR3     = &pThisCC->aStreams[idxStream];
-    TMTIMERHANDLE   hTimer        = pStreamShared->hTimer;
-    RT_NOREF(pTimer);
+    Assert(hTimer == pStreamShared->hTimer);
 
     Assert(PDMDevHlpCritSectIsOwner(pDevIns, &pThis->CritSect));
     Assert(PDMDevHlpTimerIsLockOwner(pDevIns, hTimer));
