@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxDD.cpp 85816 2020-08-18 11:23:19Z vboxsync $ */
 /** @file
  * VBoxDD - Built-in drivers & devices (part 1).
  */
@@ -217,6 +217,11 @@ extern "C" DECLEXPORT(int) VBoxDevicesRegister(PPDMDEVREGCB pCallbacks, uint32_t
 #endif
 #ifdef VBOX_WITH_VIRTUALKD
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DeviceVirtualKD);
+    if (RT_FAILURE(rc))
+        return rc;
+#endif
+#ifdef VBOX_WITH_IOMMU_AMD
+    rc = pCallbacks->pfnRegister(pCallbacks, &g_DeviceIommuAmd);
     if (RT_FAILURE(rc))
         return rc;
 #endif

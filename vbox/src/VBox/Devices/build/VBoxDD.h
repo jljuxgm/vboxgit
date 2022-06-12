@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxDD.h 85816 2020-08-18 11:23:19Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1) header.
  */
@@ -192,6 +192,10 @@ extern const PDMDRVREG g_DrvSCSI;
 #endif
 
 extern const PDMDRVREG g_DrvIfTrace;
+
+#ifdef VBOX_WITH_IOMMU_AMD
+extern const PDMDEVREG g_DeviceIommuAmd;
+#endif
 
 /* VBoxAcpi.cpp */
 int acpiPrepareDsdt(PPDMDEVINS pDevIns, void **ppvPtr, size_t *pcbDsdt);
