@@ -1,4 +1,4 @@
-/* $Id: AudioMixBuffer.cpp 88433 2021-04-09 12:55:19Z vboxsync $ */
+/* $Id: AudioMixBuffer.cpp 88434 2021-04-09 13:03:29Z vboxsync $ */
 /** @file
  * Audio mixing buffer for converting reading/writing audio data.
  */
@@ -1809,7 +1809,7 @@ void AudioMixBufDrop(PAUDIOMIXBUF pMixBuf)
 
 #define AUDIOMIXBUF_RESAMPLE(a_cChannels, a_Suffix) \
     /** @returns Number of destination frames written. */ \
-    static uint32_t \
+    static DECLCALLBACK(uint32_t) \
     audioMixBufResample##a_cChannels##Ch##a_Suffix(int64_t *pi64Dst, uint32_t cDstFrames, \
                                                    int64_t const *pi64Src, uint32_t cSrcFrames, uint32_t *pcSrcFramesRead, \
                                                    PAUDIOSTREAMRATE pRate) \
