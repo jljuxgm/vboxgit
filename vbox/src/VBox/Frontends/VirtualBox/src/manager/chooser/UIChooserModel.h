@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.h 84105 2020-04-30 14:07:20Z vboxsync $ */
+/* $Id: UIChooserModel.h 84437 2020-05-21 16:36:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class declaration.
  */
@@ -87,6 +87,12 @@ signals:
       * @{ */
         /** Notifies about root item minimum width @a iHint changed. */
         void sigRootItemMinimumWidthHintChanged(int iHint);
+    /** @} */
+
+    /** @name Action stuff.
+      * @{ */
+        /** Notify listeners about start or show request. */
+        void sigStartOrShowRequest();
     /** @} */
 
 public:
@@ -209,8 +215,8 @@ public:
         /** Starts editing group name. */
         void startEditingGroupItemName();
 
-        /** Activates machine item. */
-        void activateMachineItem();
+        /** Starts or shows selected items. */
+        void startOrShowSelectedItems();
 
         /** Defines current @a pDragObject. */
         void setCurrentDragObject(QDrag *pDragObject);

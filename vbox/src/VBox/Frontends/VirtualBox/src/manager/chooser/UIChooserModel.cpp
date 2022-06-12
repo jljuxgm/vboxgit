@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 84435 2020-05-21 15:39:16Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 84437 2020-05-21 16:36:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -559,9 +559,9 @@ void UIChooserModel::startEditingGroupItemName()
     sltEditGroupName();
 }
 
-void UIChooserModel::activateMachineItem()
+void UIChooserModel::startOrShowSelectedItems()
 {
-    actionPool()->action(UIActionIndexST_M_Machine_M_StartOrShow)->activate(QAction::Trigger);
+    emit sigStartOrShowRequest();
 }
 
 void UIChooserModel::setCurrentDragObject(QDrag *pDragObject)

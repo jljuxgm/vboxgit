@@ -1,4 +1,4 @@
-/* $Id: UIChooserHandlerKeyboard.cpp 84420 2020-05-20 16:49:00Z vboxsync $ */
+/* $Id: UIChooserHandlerKeyboard.cpp 84437 2020-05-21 16:36:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserHandlerKeyboard class implementation.
  */
@@ -267,8 +267,8 @@ bool UIChooserHandlerKeyboard::handleKeyPress(QKeyEvent *pEvent) const
             if (   model()->currentItem()->type() == UIChooserNodeType_Group
                 || model()->currentItem()->type() == UIChooserNodeType_Machine)
             {
-                /* Activate item: */
-                model()->activateMachineItem();
+                /* Start or show selected items: */
+                model()->startOrShowSelectedItems();
                 /* And filter out that event: */
                 return true;
             }

@@ -1,4 +1,4 @@
-/* $Id: UIChooser.cpp 84105 2020-04-30 14:07:20Z vboxsync $ */
+/* $Id: UIChooser.cpp 84437 2020-05-21 16:36:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooser class implementation.
  */
@@ -192,6 +192,8 @@ void UIChooser::prepareConnections()
             this, &UIChooser::sltToolMenuRequested);
     connect(model(), &UIChooserModel::sigCloudMachineStateChange,
             this, &UIChooser::sigCloudMachineStateChange);
+    connect(model(), &UIChooserModel::sigStartOrShowRequest,
+            this, &UIChooser::sigStartOrShowRequest);
 
     /* Chooser-view connections: */
     connect(view(), &UIChooserView::sigResized,
@@ -232,6 +234,8 @@ void UIChooser::cleanupConnections()
                this, &UIChooser::sltToolMenuRequested);
     disconnect(model(), &UIChooserModel::sigCloudMachineStateChange,
                this, &UIChooser::sigCloudMachineStateChange);
+    disconnect(model(), &UIChooserModel::sigStartOrShowRequest,
+               this, &UIChooser::sigStartOrShowRequest);
 
     /* Chooser-view connections: */
     disconnect(view(), &UIChooserView::sigResized,

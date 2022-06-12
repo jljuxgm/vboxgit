@@ -1,4 +1,4 @@
-/* $Id: UIChooser.h 84105 2020-04-30 14:07:20Z vboxsync $ */
+/* $Id: UIChooser.h 84437 2020-05-21 16:36:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooser class declaration.
  */
@@ -67,6 +67,12 @@ signals:
       * @{ */
         /** Notifies listeners about group saving state change. */
         void sigGroupSavingStateChanged();
+    /** @} */
+
+    /** @name Action stuff.
+      * @{ */
+        /** Notify listeners about start or show request. */
+        void sigStartOrShowRequest();
     /** @} */
 
 public:
