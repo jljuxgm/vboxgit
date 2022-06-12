@@ -1,4 +1,4 @@
-/* $Id: HMAll.cpp 87487 2021-01-29 18:06:39Z vboxsync $ */
+/* $Id: HMAll.cpp 87488 2021-01-29 18:17:10Z vboxsync $ */
 /** @file
  * HM - All contexts.
  */
@@ -775,7 +775,7 @@ VMM_INT_DECL(bool) HMSetSingleInstruction(PVMCC pVM, PVMCPUCC pVCpu, bool fEnabl
  * @param   enmShadowMode   New shadow paging mode.
  * @param   enmGuestMode    New guest paging mode.
  */
-VMM_INT_DECL(void) HMHCChangedPagingMode(PVM pVM, PVMCPU pVCpu, PGMMODE enmShadowMode, PGMMODE enmGuestMode)
+VMM_INT_DECL(void) HMHCChangedPagingMode(PVM pVM, PVMCPUCC pVCpu, PGMMODE enmShadowMode, PGMMODE enmGuestMode)
 {
 #ifdef IN_RING3
     /* Ignore page mode changes during state loading. */

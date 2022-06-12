@@ -1,4 +1,4 @@
-/* $Id: HMVMXAll.cpp 87472 2021-01-28 19:59:55Z vboxsync $ */
+/* $Id: HMVMXAll.cpp 87488 2021-01-29 18:17:10Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - All contexts.
  */
@@ -1102,9 +1102,13 @@ VMM_INT_DECL(void) HMDumpHwvirtVmxState(PVMCPU pVCpu)
  * @thread  EMT.
  * @remarks This function may be called with preemption or interrupts disabled!
  */
-VMM_INT_DECL(PVMXVMCSINFOSHARED) hmGetVmxActiveVmcsInfoShared(PVMCPU pVCpu)
+VMM_INT_DECL(PVMXVMCSINFOSHARED) hmGetVmxActiveVmcsInfoShared(PVMCPUCC pVCpu)
 {
-    if (!pVCpu->hm.s.vmx.fSwitchedToNstGstVmcs)
+#ifdef IN_RING0
+    if (!pVCpu->hmr0.s.vmx.fSwitchedToNstGstVmcs)
+#else
+    if (!pVCpu->hm.s.vmx.fSwitchedToNstGstVmcsShadow)
+#endif
         return &pVCpu->hm.s.vmx.VmcsInfo;
     return &pVCpu->hm.s.vmx.VmcsInfoNstGst;
 }
