@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsLanguage.cpp 86152 2020-09-17 12:04:53Z vboxsync $ */
+/* $Id: UIGlobalSettingsLanguage.cpp 86976 2020-11-25 15:06:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsLanguage class implementation.
  */
@@ -89,11 +89,11 @@ void UIGlobalSettingsLanguage::getFromCache()
 void UIGlobalSettingsLanguage::putToCache()
 {
     /* Prepare new data: */
-    UIDataSettingsGlobalLanguage newInputData = m_pCache->base();
+    UIDataSettingsGlobalLanguage newData = m_pCache->base();
 
     /* Cache new data: */
-    newInputData.m_strLanguageId = m_pEditorLanguageSettings->value();
-    m_pCache->cacheCurrentData(newInputData);
+    newData.m_strLanguageId = m_pEditorLanguageSettings->value();
+    m_pCache->cacheCurrentData(newData);
 }
 
 void UIGlobalSettingsLanguage::saveFromCacheTo(QVariant &data)
