@@ -1,4 +1,4 @@
-/* $Id: RTHandleGetStandard-win.cpp 86414 2020-10-02 11:41:26Z vboxsync $ */
+/* $Id: RTHandleGetStandard-win.cpp 86415 2020-10-02 11:50:21Z vboxsync $ */
 /** @file
  * IPRT - RTHandleGetStandard, Windows.
  */
@@ -113,8 +113,7 @@ RTDECL(int) RTHandleGetStandard(RTHANDLESTD enmStdHandle, bool fLeaveOpen, PRTHA
             break;
 
         case RTHANDLETYPE_SOCKET:
-            /** @todo fLeaveOpen */
-            rc = rtSocketCreateForNative(&h.u.hSocket, (RTHCUINTPTR)hNative);
+            rc = rtSocketCreateForNative(&h.u.hSocket, (RTHCUINTPTR)hNative, fLeaveOpen);
             break;
 
         default: /* shut up gcc */

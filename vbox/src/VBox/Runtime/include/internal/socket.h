@@ -1,4 +1,4 @@
-/* $Id: socket.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: socket.h 86415 2020-10-02 11:50:21Z vboxsync $ */
 /** @file
  * IPRT - Internal Header for RTSocket.
  */
@@ -55,7 +55,7 @@ RT_C_DECLS_BEGIN
 
 #ifndef IPRT_INTERNAL_SOCKET_POLLING_ONLY
 DECLHIDDEN(int) rtSocketResolverError(void);
-DECLHIDDEN(int) rtSocketCreateForNative(RTSOCKETINT **ppSocket, RTSOCKETNATIVE hNative);
+DECLHIDDEN(int) rtSocketCreateForNative(RTSOCKETINT **ppSocket, RTSOCKETNATIVE hNative, bool fLeaveOpen);
 DECLHIDDEN(int) rtSocketCreate(PRTSOCKET phSocket, int iDomain, int iType, int iProtocol);
 DECLHIDDEN(int) rtSocketCreateTcpPair(RTSOCKET *phServer, RTSOCKET *phClient);
 DECLHIDDEN(int) rtSocketBind(RTSOCKET hSocket, PCRTNETADDR pAddr);
