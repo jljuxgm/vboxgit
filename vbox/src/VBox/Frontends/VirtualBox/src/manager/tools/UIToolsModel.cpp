@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.cpp 88082 2021-03-11 10:57:36Z vboxsync $ */
+/* $Id: UIToolsModel.cpp 88093 2021-03-11 14:47:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class implementation.
  */
@@ -451,16 +451,16 @@ void UIToolsModel::retranslateUi()
     {
         switch (pItem->itemType())
         {
-            case UIToolType_Welcome:     pItem->reconfigure(tr("Welcome")); break;
-            case UIToolType_Extensions:  pItem->reconfigure(tr("Extensions")); break;
-            case UIToolType_Media:       pItem->reconfigure(tr("Media")); break;
-            case UIToolType_Network:     pItem->reconfigure(tr("Network")); break;
-            case UIToolType_Cloud:       pItem->reconfigure(tr("Cloud")); break;
+            case UIToolType_Welcome:              pItem->reconfigure(tr("Welcome")); break;
+            case UIToolType_Extensions:           pItem->reconfigure(tr("Extensions")); break;
+            case UIToolType_Media:                pItem->reconfigure(tr("Media")); break;
+            case UIToolType_Network:              pItem->reconfigure(tr("Network")); break;
+            case UIToolType_Cloud:                pItem->reconfigure(tr("Cloud")); break;
             case UIToolType_VMActivityOverview:   pItem->reconfigure(tr("Activities")); break;
-            case UIToolType_Details:     pItem->reconfigure(tr("Details")); break;
-            case UIToolType_Snapshots:   pItem->reconfigure(tr("Snapshots")); break;
-            case UIToolType_Logs:        pItem->reconfigure(tr("Logs")); break;
-            case UIToolType_VMActivity: pItem->reconfigure(tr("Performance")); break;
+            case UIToolType_Details:              pItem->reconfigure(tr("Details")); break;
+            case UIToolType_Snapshots:            pItem->reconfigure(tr("Snapshots")); break;
+            case UIToolType_Logs:                 pItem->reconfigure(tr("Logs")); break;
+            case UIToolType_VMActivity:           pItem->reconfigure(tr("Activity")); break;
             default: break;
         }
     }

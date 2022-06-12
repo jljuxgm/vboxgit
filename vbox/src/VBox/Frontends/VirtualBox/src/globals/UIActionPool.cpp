@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.cpp 88074 2021-03-10 18:14:34Z vboxsync $ */
+/* $Id: UIActionPool.cpp 88093 2021-03-11 14:47:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPool class implementation.
  */
@@ -2256,7 +2256,7 @@ protected:
     virtual void retranslateUi() /* override */
     {
         setName(QApplication::translate("UIActionPool", "&Export..."));
-        setShortcutScope(QApplication::translate("UIActionPool", "Performance Monitor"));
+        setShortcutScope(QApplication::translate("UIActionPool", "VM Activity Monitor"));
         setStatusTip(QApplication::translate("UIActionPool", "Export the chart data into a text file"));
         setToolTip(  QApplication::translate("UIActionPool", "Export Data to File")
                    + (shortcut().isEmpty() ? QString() : QString(" (%1)").arg(shortcut().toString())));
