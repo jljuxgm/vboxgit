@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.cpp 89605 2021-06-10 14:39:35Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.cpp 89606 2021-06-10 15:37:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class implementation.
  */
@@ -66,15 +66,22 @@ class UILogTabCloseButton : public QIToolButton
 public:
 
     //UILogTabCloseButton(QWidget *pParent, const QUuid &uMachineId, const QString &strMachineName);
-    UILogTabCloseButton(QWidget *pParent = 0)
+    UILogTabCloseButton(QWidget *pParent, const QUuid &uMachineId)
         : QIToolButton(pParent)
+        , m_uMachineId(uMachineId)
     {
         setAutoRaise(true);
         setIcon(UIIconPool::iconSet(":/close_16px.png"));
     }
 
+    const QUuid &machineId() const
+    {
+        return m_uMachineId;
+    }
+
 protected:
 
+    QUuid m_uMachineId;
 };
 /*********************************************************************************************************************************
 *   UILabelTab definition.                                                                                        *
@@ -304,11 +311,14 @@ void UIVMLogViewerWidget::markLabelTabs()
         if (qobject_cast<UILabelTab*>(m_pTabWidget->widget(i)))
         {
             pTabBar->setTabData(i, true);
-            UILogTabCloseButton *pCloseButton = new UILogTabCloseButton;
-            pCloseButton->setIcon(UIIconPool::iconSet(":/close_16px.png"));
-
-            pTabBar->setTabButton(i, QTabBar::RightSide, pCloseButton);
-            connect(pCloseButton, &UILogTabCloseButton::clicked, this, &UIVMLogViewerWidget::sltTabCloseButtonClick);
+            UIVMLogTab *pTab = logTab(i);
+            if (pTab)
+            {
+                UILogTabCloseButton *pCloseButton = new UILogTabCloseButton(0, pTab->machineId());
+                pCloseButton->setIcon(UIIconPool::iconSet(":/close_16px.png"));
+                pTabBar->setTabButton(i, QTabBar::RightSide, pCloseButton);
+                connect(pCloseButton, &UILogTabCloseButton::clicked, this, &UIVMLogViewerWidget::sltTabCloseButtonClick);
+            }
         }
         else
         {
@@ -675,7 +685,14 @@ void UIVMLogViewerWidget::sltCloseMachineLogs()
 
 void UIVMLogViewerWidget::sltTabCloseButtonClick()
 {
-    printf("UIVMLogViewerWidget::sltTabCloseButtonClick\n");
+    UILogTabCloseButton *pButton = qobject_cast<UILogTabCloseButton*>(sender());
+    if (!pButton)
+        return;
+    if (pButton->machineId().isNull())
+        return;
+    QVector<QUuid> list;
+    list << pButton->machineId();
+    removeLogViewerPages(list);
 }
 
 void UIVMLogViewerWidget::prepare()
