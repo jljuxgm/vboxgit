@@ -1,4 +1,4 @@
-/* $Id: RecordingStream.cpp 85856 2020-08-21 09:06:50Z vboxsync $ */
+/* $Id: RecordingStream.cpp 85858 2020-08-21 09:14:31Z vboxsync $ */
 /** @file
  * Recording stream code.
  */
@@ -23,7 +23,7 @@
 
 #include <iprt/path.h>
 
-#if VBOX_RECORDING_DUMP
+#ifdef VBOX_RECORDING_DUMP
 # include <iprt/formats/bmp.h>
 #endif
 

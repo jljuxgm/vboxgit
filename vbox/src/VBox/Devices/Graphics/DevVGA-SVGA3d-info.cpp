@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-info.cpp 85856 2020-08-21 09:06:50Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-info.cpp 85858 2020-08-21 09:14:31Z vboxsync $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - Introspection and debugging.
  */
@@ -28,9 +28,8 @@
 #include <iprt/assert.h>
 #include <iprt/mem.h>
 #include <iprt/path.h>
-#ifdef RT_OS_WINDOWS
-# include <iprt/formats/bmp.h>
-#endif
+
+#include <iprt/formats/bmp.h>
 
 #include <VBox/vmm/pgm.h> /* required by DevVGA.h */
 #include <VBoxVideo.h> /* required by DevVGA.h */
