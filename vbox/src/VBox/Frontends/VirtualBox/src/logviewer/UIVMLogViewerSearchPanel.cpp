@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerSearchPanel.cpp 88707 2021-04-26 16:17:35Z vboxsync $ */
+/* $Id: UIVMLogViewerSearchPanel.cpp 88734 2021-04-27 12:56:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -414,12 +414,6 @@ void UIVMLogViewerSearchPanel::performSearch(SearchDirection , bool )
 
 void UIVMLogViewerSearchPanel::clearHighlighting()
 {
-    // if (!viewer())
-    //     return;
-    // QTextDocument* pDocument = textDocument();
-    // if (pDocument)
-    //     pDocument->undo();
-
     QPlainTextEdit *pTextEdit = textEdit();
     if (pTextEdit)
         pTextEdit->setExtraSelections(QList<QTextEdit::ExtraSelection>());
@@ -429,27 +423,6 @@ void UIVMLogViewerSearchPanel::clearHighlighting()
 void UIVMLogViewerSearchPanel::highlightAll(const QString &searchString)
 {
     clearHighlighting();
-    // if (!pDocument)
-    //     return;
-    // if (searchString.isEmpty())
-    //     return;
-
-    // QTextCursor highlightCursor(pDocument);
-    // QTextCharFormat colorFormat(highlightCursor.charFormat());
-    // QTextCursor cursor(pDocument);
-    // cursor.beginEditBlock();
-    // colorFormat.setBackground(Qt::yellow);
-    // for (int i = 0; i < m_matchedCursorPosition.size(); ++i)
-    // {
-    //     highlightCursor.setPosition(m_matchedCursorPosition[i]);
-    //     highlightCursor.setPosition(m_matchedCursorPosition[i] + searchString.length(), QTextCursor::KeepAnchor);
-
-    //     if (!highlightCursor.isNull())
-    //     {
-    //         highlightCursor.mergeCharFormat(colorFormat);
-    //     }
-    // }
-    // cursor.endEditBlock();
     QPlainTextEdit *pTextEdit = textEdit();
 
     if (!pTextEdit)

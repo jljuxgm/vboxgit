@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerFilterPanel.h 88728 2021-04-27 11:51:02Z vboxsync $ */
+/* $Id: UIVMLogViewerFilterPanel.h 88734 2021-04-27 12:56:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -72,6 +72,7 @@ protected:
     /** Handles Qt @a pEvent, used for keyboard processing. */
     bool eventFilter(QObject *pObject, QEvent *pEvent) /* override */;
     void showEvent(QShowEvent *pEvent) /* override */;
+    void hideEvent(QHideEvent *pEvent) /* override */;
 
 private slots:
 

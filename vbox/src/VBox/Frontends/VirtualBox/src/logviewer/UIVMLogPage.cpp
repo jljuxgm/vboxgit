@@ -1,4 +1,4 @@
-/* $Id: UIVMLogPage.cpp 88728 2021-04-27 11:51:02Z vboxsync $ */
+/* $Id: UIVMLogPage.cpp 88734 2021-04-27 12:56:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -326,4 +326,10 @@ void UIVMLogPage::setLogFileId(int iLogFileId)
 int UIVMLogPage::logFileId() const
 {
     return m_iLogFileId;
+}
+
+void UIVMLogPage::scrollToEnd()
+{
+    if (m_pTextEdit)
+        m_pTextEdit->scrollToEnd();
 }

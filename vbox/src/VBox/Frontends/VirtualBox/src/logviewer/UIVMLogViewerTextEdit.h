@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerTextEdit.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIVMLogViewerTextEdit.h 88734 2021-04-27 12:56:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -53,6 +53,7 @@ public:
     void clearScrollBarMarkingsVector();
 
     void scrollToLine(int lineNumber);
+    void scrollToEnd();
     void setBookmarkLineSet(const QSet<int>& lineSet);
     void setShownTextIsFiltered(bool warning);
 

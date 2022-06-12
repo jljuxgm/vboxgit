@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerTextEdit.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIVMLogViewerTextEdit.cpp 88734 2021-04-27 12:56:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -413,6 +413,12 @@ void UIVMLogViewerTextEdit::scrollToLine(int lineNumber)
     int halfPageLineCount = 0.5 * visibleLineCount() ;
     QTextCursor cursor(pDocument->findBlockByLineNumber(qMax(lineNumber - halfPageLineCount, 0)));
     setTextCursor(cursor);
+}
+
+void UIVMLogViewerTextEdit::scrollToEnd()
+{
+    moveCursor(QTextCursor::End);
+    ensureCursorVisible();
 }
 
 int UIVMLogViewerTextEdit::visibleLineCount()

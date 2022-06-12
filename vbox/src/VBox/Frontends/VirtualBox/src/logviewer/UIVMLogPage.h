@@ -1,4 +1,4 @@
-/* $Id: UIVMLogPage.h 88728 2021-04-27 11:51:02Z vboxsync $ */
+/* $Id: UIVMLogPage.h 88734 2021-04-27 12:56:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -100,6 +100,8 @@ public:
 
     void setLogFileId(int iLogFileId);
     int logFileId() const;
+
+    void scrollToEnd();
 
 private slots:
 
