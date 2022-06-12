@@ -1,4 +1,4 @@
-/* $Id: VUSBInternal.h 85121 2020-07-08 19:33:26Z vboxsync $ */
+/* $Id: VUSBInternal.h 87762 2021-02-15 23:38:29Z vboxsync $ */
 /** @file
  * Virtual USB - Internal header.
  *
@@ -270,7 +270,7 @@ typedef struct VUSBDEV
     } Urb;
 
     /** The reset timer handle. */
-    PTMTIMER            pResetTimer;
+    TMTIMERHANDLE       hResetTimer;
     /** Reset handler arguments. */
     void               *pvArgs;
     /** URB submit and reap thread. */
