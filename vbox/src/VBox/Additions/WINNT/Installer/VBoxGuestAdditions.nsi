@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditions.nsi 82968 2020-02-04 10:35:17Z vboxsync $
+; $Id: VBoxGuestAdditions.nsi 84433 2020-05-21 13:48:09Z vboxsync $
 ; @file
 ; VBoxGuestAdditions.nsi - Main file for Windows Guest Additions installation.
 ;
@@ -222,6 +222,7 @@ Var g_strAddVerRev                      ; Installed Guest Additions: SVN revisio
 Var g_strWinVersion                     ; Current Windows version we're running on
 Var g_bLogEnable                        ; Do logging when installing? "true" or "false"
 Var g_bCapDllCache                      ; Capability: Does the (Windows) guest have have a DLL cache which needs to be taken care of?
+Var g_bCapXPDM                          ; Capability: Is the guest able to handle/use our XPDM driver?
 Var g_bCapWDDM                          ; Capability: Is the guest able to handle/use our WDDM driver?
 
 ; Command line parameters - these can be set/modified
@@ -944,6 +945,7 @@ Function .onInit
   StrCpy $g_bOnlyExtract "false"
   StrCpy $g_bWithWDDM "false"
   StrCpy $g_bCapDllCache "false"
+  StrCpy $g_bCapXPDM "false"
   StrCpy $g_bCapWDDM "false"
   StrCpy $g_bPostInstallStatus "false"
 
