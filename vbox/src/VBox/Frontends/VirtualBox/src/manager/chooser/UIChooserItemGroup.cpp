@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGroup.cpp 89253 2021-05-24 17:10:53Z vboxsync $ */
+/* $Id: UIChooserItemGroup.cpp 89254 2021-05-24 17:12:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGroup class implementation.
  */
@@ -1429,9 +1429,13 @@ int UIChooserItemGroup::minimumHeightHintForGroup(bool fGroupOpened) const
         /* Main root-item always takes body into account: */
         if (node()->hasNodes())
         {
+            /* Prepare variables: */
+            const int iSpacingV = data(GroupItemData_ChildrenSpacing).toInt();
+
             /* We have to take maximum children height into account: */
             iProposedHeight += m_pContainerFavorite->minimumSizeHint().height();
             iProposedHeight += m_pContainer->minimumSizeHint().height();
+            iProposedHeight += iSpacingV;
         }
     }
     /* For other items: */
