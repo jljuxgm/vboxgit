@@ -1,4 +1,4 @@
-/* $Id: UITaskCloudRefreshMachineInfo.h 86199 2020-09-21 14:33:29Z vboxsync $ */
+/* $Id: UITaskCloudRefreshMachineInfo.h 86200 2020-09-21 14:34:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UITaskCloudRefreshMachineInfo class declaration.
  */
@@ -44,6 +44,9 @@ public:
     /** Constructs task taking @a comCloudMachine as data.
       * @param  comCloudMachine  Brings the cloud VM wrapper. */
     UITaskCloudRefreshMachineInfo(const CCloudMachine &comCloudMachine);
+
+    /** Cancels the task. */
+    void cancel();
 
     /** Returns error info. */
     QString errorInfo() const;
