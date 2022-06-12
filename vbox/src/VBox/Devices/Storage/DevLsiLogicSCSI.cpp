@@ -1,4 +1,4 @@
-/* $Id: DevLsiLogicSCSI.cpp 89193 2021-05-20 09:26:19Z vboxsync $ */
+/* $Id: DevLsiLogicSCSI.cpp 89196 2021-05-20 09:34:30Z vboxsync $ */
 /** @file
  * DevLsiLogicSCSI - LsiLogic LSI53c1030 SCSI controller.
  */
@@ -2214,7 +2214,6 @@ static void lsilogicR3DumpSCSIIORequest(PMptSCSIIORequest pSCSIIORequest)
  *
  * @returns nothing.
  * @param   pDevIns     The device instance.
- * @param   pThisCC     Pointer to the ring-3 LsiLogic device state.
  * @param   pThis       Pointer to the shared LsiLogic device state.
  * @param   pReq        The request to complete.
  * @param   rcReq       Status code of the request.
