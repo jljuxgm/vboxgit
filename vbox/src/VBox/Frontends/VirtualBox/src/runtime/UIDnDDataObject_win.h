@@ -1,4 +1,4 @@
-/* $Id: UIDnDDataObject_win.h 85681 2020-08-11 09:36:37Z vboxsync $ */
+/* $Id: UIDnDDataObject_win.h 85697 2020-08-11 16:41:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDnDDataObject class declaration.
  */
@@ -39,14 +39,14 @@ class UIDnDDataObject : public IDataObject
 {
 public:
 
-    enum DnDDataObjectStatus
+    enum Status
     {
-        DnDDataObjectStatus_Uninitialized = 0,
-        DnDDataObjectStatus_Initialized,
-        DnDDataObjectStatus_Dropping,
-        DnDDataObjectStatus_Dropped,
-        DnDDataObjectStatus_Aborted,
-        DnDDataObjectStatus_32Bit_Hack = 0x7fffffff
+        Status_Uninitialized = 0,
+        Status_Initialized,
+        Status_Dropping,
+        Status_Dropped,
+        Status_Aborted,
+        Status_32Bit_Hack = 0x7fffffff
     };
 
 public:
@@ -82,7 +82,7 @@ public:
 
 protected:
 
-    void SetStatus(DnDDataObjectStatus enmStatus);
+    void SetStatus(Status enmStatus);
 
     bool LookupFormatEtc(LPFORMATETC pFormatEtc, ULONG *puIndex);
     void RegisterFormat(LPFORMATETC pFormatEtc, CLIPFORMAT clipFormat, TYMED tyMed = TYMED_HGLOBAL,
@@ -91,7 +91,7 @@ protected:
     /** Pointe rto drag and drop handler. */
     UIDnDHandler           *m_pDnDHandler;
     /** Current drag and drop status. */
-    DnDDataObjectStatus     m_enmStatus;
+    Status                  m_enmStatus;
     /** Internal reference count of this object. */
     LONG                    m_cRefs;
     /** Number of native formats registered. This can be a different number than supplied with m_lstFormats. */
