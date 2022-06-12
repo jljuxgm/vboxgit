@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 86489 2020-10-08 09:11:54Z vboxsync $ */
+/* $Id: PGMPool.cpp 86497 2020-10-08 14:05:57Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -540,6 +540,7 @@ DECLCALLBACK(VBOXSTRICTRC) pgmR3PoolClearAllRendezvous(PVM pVM, PVMCPU pVCpu, vo
                         PX86PDPAE pShwPD = (PX86PDPAE)PGMPOOL_PAGE_2_PTR_V2(pPool->CTX_SUFF(pVM), pVCpu, pPage);
                         for (unsigned i = 0; i < RT_ELEMENTS(pShwPD->a); i++)
                         {
+                            //Assert((pShwPD->a[i].u & UINT64_C(0xfff0000000000f80)) == 0); - bogus, includes X86_PDE_PS.
                             if ((pShwPD->a[i].u & (X86_PDE_P | X86_PDE_PS)) == (X86_PDE_P | X86_PDE_PS))
                             {
 # ifndef PGM_WITHOUT_MAPPINGS
@@ -561,7 +562,6 @@ DECLCALLBACK(VBOXSTRICTRC) pgmR3PoolClearAllRendezvous(PVM pVM, PVMCPU pVCpu, vo
                         PEPTPD pShwPD = (PEPTPD)PGMPOOL_PAGE_2_PTR_V2(pPool->CTX_SUFF(pVM), pVCpu, pPage);
                         for (unsigned i = 0; i < RT_ELEMENTS(pShwPD->a); i++)
                         {
-                            Assert((pShwPD->a[i].u & UINT64_C(0xfff0000000000f80)) == 0);
                             if ((pShwPD->a[i].u & (EPT_E_READ | EPT_E_LEAF)) == (EPT_E_READ | EPT_E_LEAF))
                             {
 # ifndef PGM_WITHOUT_MAPPINGS
