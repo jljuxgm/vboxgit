@@ -1,4 +1,4 @@
-/* $Id: vkat.cpp 89643 2021-06-13 13:59:53Z vboxsync $ */
+/* $Id: vkat.cpp 89644 2021-06-13 14:03:21Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) utility for testing and validating the audio stack.
  */
@@ -40,7 +40,6 @@
 #include <iprt/rand.h>
 #include <iprt/stream.h>
 #include <iprt/string.h>
-#include <iprt/uuid.h>
 #include <iprt/test.h>
 
 #include <package-generated.h>
@@ -54,34 +53,7 @@
 #endif
 #include <signal.h>
 
-/**
- * Internal driver instance data
- * @note This must be put here as it's needed before pdmdrv.h is included.
- */
-typedef struct PDMDRVINSINT
-{
-    /** The stack the drive belongs to. */
-    struct AUDIOTESTDRVSTACK *pStack;
-} PDMDRVINSINT;
-#define PDMDRVINSINT_DECLARED
-
-#include <VBox/vmm/pdmaudioinline.h>
-#include <VBox/vmm/pdmaudiohostenuminline.h>
-
-#include "Audio/AudioHlp.h"
-#include "Audio/AudioTest.h"
-#include "Audio/AudioTestService.h"
-#include "Audio/AudioTestServiceClient.h"
-
-#include "VBoxDD.h"
-
 #include "vkatInternal.h"
-
-
-/*********************************************************************************************************************************
-*   Defined Constants And Macros                                                                                                 *
-*********************************************************************************************************************************/
-
 
 
 /*********************************************************************************************************************************
