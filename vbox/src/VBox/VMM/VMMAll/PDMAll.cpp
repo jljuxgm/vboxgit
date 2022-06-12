@@ -1,4 +1,4 @@
-/* $Id: PDMAll.cpp 84826 2020-06-15 08:20:40Z vboxsync $ */
+/* $Id: PDMAll.cpp 88562 2021-04-16 12:18:03Z vboxsync $ */
 /** @file
  * PDM Critical Sections
  */
@@ -303,6 +303,18 @@ int pdmLockEx(PVMCC pVM, int rc)
 void pdmUnlock(PVMCC pVM)
 {
     PDMCritSectLeave(&pVM->pdm.s.CritSect);
+}
+
+
+/**
+ * Checks if this thread is owning the PDM lock.
+ *
+ * @returns @c true if the lock is taken, @c false otherwise.
+ * @param   pVM     The cross context VM structure.
+ */
+bool pdmLockIsOwner(PCVMCC pVM)
+{
+    return PDMCritSectIsOwner(&pVM->pdm.s.CritSect);
 }
 
 
