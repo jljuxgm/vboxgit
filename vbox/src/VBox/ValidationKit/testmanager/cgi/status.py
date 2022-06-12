@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: status.py 86932 2020-11-20 14:46:49Z vboxsync $
+# $Id: status.py 86933 2020-11-20 14:55:05Z vboxsync $
 
 """
 CGI - Administrator Web-UI.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 86932 $"
+__version__ = "$Revision: 86933 $"
 
 
 # Standard python imports.
@@ -262,6 +262,8 @@ class StatusDispatcher(object): # pylint: disable=too-few-public-methods
         except:
             raise StatusDispatcherException('%s parameter %s value "%s" cannot be convert to an integer'
                                             % (self._sAction, sName, sValue));
+        if sName not in self._asCheckedParams:
+            self._asCheckedParams.append(sName);
 
         if   (iMin is not None and iValue < iMin) \
           or (iMax is not None and iValue > iMax):
@@ -427,7 +429,7 @@ WHERE   TestSets.tsCreated                   > (CURRENT_TIMESTAMP - '%s hours'::
         #
         # Update the list of checked parameters.
         #
-        self._asCheckedParams.extend([constants.tbreq.ALL_PARAM_TESTBOX_UUID, constants.tbreq.ALL_PARAM_ACTION]);
+        self._asCheckedParams.extend([constants.tbreq.ALL_PARAM_ACTION,]);
 
         return (sAction,);
 
