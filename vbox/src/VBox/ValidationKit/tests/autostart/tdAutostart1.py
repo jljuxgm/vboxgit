@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Id: tdAutostart1.py 85377 2020-07-17 17:28:24Z vboxsync $"
+__version__ = "$Id: tdAutostart1.py 85414 2020-07-22 13:40:25Z vboxsync $"
 
 
 # Standard Python imports.
@@ -1425,16 +1425,17 @@ class tdAutostart(vbox.TestDriver):                                      # pylin
             # ub1804piglit is created with 2 CPUs.
             oVM = self.createTestVM(self.ksOsLinux, 1, '6.0/ub1804piglit/ub1804piglit.vdi', sKind = 'Ubuntu_64', \
                                     fIoApic = True, eNic0AttachType = vboxcon.NetworkAttachmentType_NAT, \
-                                    eNic0Type = vboxcon.NetworkAdapterType_Am79C973, cMbRam = 4096, \
+                                    eNic0Type = vboxcon.NetworkAdapterType_Am79C973, cMbRam = 2048, \
                                     cCpus = 2, sDvdImage = self.sGuestAdditionsIso);
             if oVM is None:
                 return False;
         # Windows VMs
         if self.ksOsWindows in self.asTestVMs:
             # windows7piglit is created with PAE enabled and 2 CPUs.
+            # changed cMbRam to 2GB due to #9618
             oVM = self.createTestVM(self.ksOsWindows, 1, '6.0/windows7piglit/windows7piglit.vdi', sKind = 'Windows7_64', \
                                     fIoApic = True, eNic0AttachType = vboxcon.NetworkAttachmentType_NAT, \
-                                    sHddControllerType = "SATA Controller", cMbRam = 4096, fPae = True, cCpus = 2, \
+                                    sHddControllerType = "SATA Controller", cMbRam = 2048, fPae = True, cCpus = 2, \
                                     sDvdImage = self.sGuestAdditionsIso);
             if oVM is None:
                 return False;
@@ -1444,7 +1445,7 @@ class tdAutostart(vbox.TestDriver):                                      # pylin
             if oSession is not None:
                 fRc = fRc and oSession.setVRamSize(256);
                 fRc = fRc and oSession.setVideoControllerType(vboxcon.GraphicsControllerType_VBoxSVGA)
-                fRc = fRc and oSession.setAccelerate3DEnabled(True);
+                fRc = fRc and oSession.setAccelerate3DEnabled(False);
                 fRc = fRc and oSession.enableUsbOhci(True);
                 fRc = fRc and oSession.enableUsbHid(True);
                 fRc = fRc and oSession.saveSettings();
