@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 88980 2021-05-11 13:20:17Z vboxsync $
+# $Id: Makefile.kmk 89020 2021-05-12 19:33:33Z vboxsync $
 ## @file
 # Install misc stuff and create dist packages for Mac OS X.
 #
@@ -833,7 +833,7 @@ endif
 	$(call VBOX_SIGN_BUNDLE_FN,$(VBOX_PATH_VBOX_APP_TMP)/Contents/Resources/VirtualBoxVM.app,,\
 		--entitlements="$(VBOX_VIRTUALBOXVM_APP_ENTITLEMENTS)",)
 	$(call VBOX_SIGN_BUNDLE_FN,$(VBOX_PATH_VBOX_APP_TMP),,\
-		--entitlements="$(VBOX_VIRTUALBOXVM_APP_ENTITLEMENTS)",)
+		--entitlements="$(VBOX_VIRTUALBOX_APP_ENTITLEMENTS)",)
 	$(foreach bin, $(VBOX_DI_VBAPP_PROGS_HARDENED) \
 		, $(NLTAB)codesign -d -v -v -v --entitlements :- $(VBOX_PATH_VBOX_APP_TMP)/Contents/$(bin) )
 	$(foreach bin, $(VBOX_DI_VBAPP_PROGS) \
