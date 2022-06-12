@@ -1,4 +1,4 @@
-/* $Id: the-solaris-kernel.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: the-solaris-kernel.h 88215 2021-03-19 18:42:55Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the Solaris kernel.
  */
@@ -201,6 +201,24 @@ typedef RTR0FNSOLTHREADCTX *PRTR0FNSOLTHREADCTX;
 
 extern RTR0FNSOLTHREADCTX       g_rtSolThreadCtx;
 extern bool                     g_frtSolOldThreadCtx;
+
+/*
+ * Workaround for older Solaris versions which called map_addr()/choose_addr()/
+ * map_addr_proc() with an 'alignment' argument that was removed in Solaris
+ * 11.4.
+ */
+typedef struct RTR0FNSOLMAPADDR
+{
+    union
+    {
+        void *(*pfnSol_map_addr)          (caddr_t *, size_t, offset_t, uint_t);
+        void *(*pfnSol_map_addr_old)      (caddr_t *, size_t, offset_t, int, uint_t);
+    } u;
+} RTR0FNSOLMAPADDR;
+typedef RTR0FNSOLMAPADDR *PRTR0FNSOLMAPADDR;
+
+extern RTR0FNSOLMAPADDR         g_rtSolMapAddr;
+extern bool                     g_frtSolOldMapAddr;
 
 /* Solaris globals. */
 extern uintptr_t                kernelbase;

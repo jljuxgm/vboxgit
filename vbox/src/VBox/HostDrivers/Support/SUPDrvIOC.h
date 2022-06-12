@@ -1,4 +1,4 @@
-/* $Id: SUPDrvIOC.h 87700 2021-02-10 20:21:04Z vboxsync $ */
+/* $Id: SUPDrvIOC.h 88215 2021-03-19 18:42:55Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - IOCtl definitions.
  */
@@ -80,7 +80,7 @@
 # define SUP_CTL_CODE_SIZE(Function, Size)      _IOWRN('V', (Function) | SUP_IOCTL_FLAG, sizeof(SUPREQHDR))
 # define SUP_CTL_CODE_BIG(Function)             _IOWRN('V', (Function) | SUP_IOCTL_FLAG, sizeof(SUPREQHDR))
 # define SUP_CTL_CODE_FAST(Function)            _IO(   'V', (Function) | SUP_IOCTL_FLAG)
-# define SUP_CTL_CODE_NO_SIZE(uIOCtl)           (uIOCtl)
+# define SUP_CTL_CODE_NO_SIZE(uIOCtl)           ((uintptr_t)(uIOCtl))
 
 #elif defined(RT_OS_OS2)
   /* No automatic buffering, size not encoded. */
