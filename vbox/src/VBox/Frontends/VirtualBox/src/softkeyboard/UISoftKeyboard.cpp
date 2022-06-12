@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboard.cpp 88921 2021-05-07 08:36:43Z vboxsync $ */
+/* $Id: UISoftKeyboard.cpp 88922 2021-05-07 08:52:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class implementation.
  */
@@ -3901,6 +3901,7 @@ void UISoftKeyboard::closeEvent(QCloseEvent *event)
             return;
         }
     }
+    keyboard().ReleaseKeys();
     emit sigClose();
     event->ignore();
 }
