@@ -1,4 +1,4 @@
-/* $Id: AudioTestService.cpp 89541 2021-06-07 09:26:07Z vboxsync $ */
+/* $Id: AudioTestService.cpp 89567 2021-06-08 10:26:00Z vboxsync $ */
 /** @file
  * AudioTestService - Audio test execution server.
  */
@@ -890,6 +890,10 @@ int AudioTestSvcInit(PATSSERVER pThis,
 
     pThis->fStarted   = false;
     pThis->fTerminate = false;
+
+    pThis->hPipeR     = NIL_RTPIPE;
+    pThis->hPipeW     = NIL_RTPIPE;
+
     RTListInit(&pThis->LstClientsNew);
 
     /*
