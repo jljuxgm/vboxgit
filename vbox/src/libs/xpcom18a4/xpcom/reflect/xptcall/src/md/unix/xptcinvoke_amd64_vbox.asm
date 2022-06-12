@@ -1,4 +1,4 @@
-; $Id: xptcinvoke_amd64_vbox.asm 86264 2020-09-24 12:04:58Z vboxsync $
+; $Id: xptcinvoke_amd64_vbox.asm 86272 2020-09-24 17:31:28Z vboxsync $
 ;; @file
 ; XPCOM - Implementation XPTC_InvokeByIndex in assembly.
 ;
@@ -126,7 +126,7 @@ BEGINPROC_EXPORTED XPTC_InvokeByIndex
         je      .fast_bailout
 %endmacro
         fast_case .fast_5, .fast_4, 4, r9
-        fast_case .fast_4, .fast_2, 3, r8
+        fast_case .fast_4, .fast_3, 3, r8
         fast_case .fast_3, .fast_2, 2, rcx
         fast_case .fast_2, .fast_1, 1, rdx
         fast_case .fast_1, .fast_0, 0, rsi
