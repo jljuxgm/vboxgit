@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlpTracing.cpp 84715 2020-06-06 10:29:22Z vboxsync $ */
+/* $Id: PDMDevHlpTracing.cpp 84766 2020-06-10 17:40:13Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helper variants when tracing is enabled.
  */
@@ -195,6 +195,7 @@ DECLHIDDEN(DECLCALLBACK(int)) pdmR3DevHlpTracing_IoPortCreateEx(PPDMDEVINS pDevI
             pTrack->u.IoPort.pfnOutStr = pfnOutStr;
             pTrack->u.IoPort.pfnInStr  = pfnInStr;
             pDevIns->Internal.s.idxDbgfTraceTrackNext++;
+            DBGFR3TracerEvtIoPortCreate(pVM, pDevIns->Internal.s.hDbgfTraceEvtSrc, *phIoPorts, cPorts, fFlags, iPciRegion);
         }
     }
     else
@@ -275,6 +276,7 @@ DECLHIDDEN(DECLCALLBACK(int)) pdmR3DevHlpTracing_MmioCreateEx(PPDMDEVINS pDevIns
             pTrack->u.Mmio.pfnRead     = pfnRead;
             pTrack->u.Mmio.pfnFill     = pfnFill;
             pDevIns->Internal.s.idxDbgfTraceTrackNext++;
+            DBGFR3TracerEvtMmioCreate(pVM, pDevIns->Internal.s.hDbgfTraceEvtSrc, *phRegion, cbRegion, fFlags, iPciRegion);
         }
     }
     else
