@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Id: tdAutostart1.py 85867 2020-08-21 14:18:59Z vboxsync $"
+__version__ = "$Id: tdAutostart1.py 85868 2020-08-21 14:22:11Z vboxsync $"
 
 
 # Standard Python imports.
@@ -1020,6 +1020,7 @@ class tdAutostartOsWin(tdAutostartOs):
         """
         Installs the Windows guest additions using the test execution service.
         """
+        _ = oVM;
         reporter.testStart('Install Guest Additions');
         asLogFiles = [];
 
