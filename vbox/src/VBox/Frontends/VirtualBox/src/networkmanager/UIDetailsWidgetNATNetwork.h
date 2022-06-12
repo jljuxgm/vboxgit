@@ -1,4 +1,4 @@
-/* $Id: UIDetailsWidgetNATNetwork.h 87277 2021-01-15 14:00:58Z vboxsync $ */
+/* $Id: UIDetailsWidgetNATNetwork.h 87295 2021-01-18 11:16:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsWidgetNATNetwork class declaration.
  */
@@ -119,8 +119,10 @@ public:
 
     /** Returns the host network data. */
     const UIDataNATNetwork &data() const { return m_newData; }
-    /** Defines the host network @a data. */
-    void setData(const UIDataNATNetwork &data);
+    /** Defines the host network @a data.
+      * @param  fHoldPosition  Holds whether we should try to keep
+      *                        port forwarding rule position intact. */
+    void setData(const UIDataNATNetwork &data, bool fHoldPosition = false);
 
 protected:
 
@@ -235,6 +237,9 @@ private:
         UIPortForwardingTable *m_pForwardingTableIPv6;
         /** Holds the 'Forwarding' button-box instance. */
         QIDialogButtonBox     *m_pButtonBoxForwarding;
+        /** Holds whether we should try to keep
+          * port forwarding rule position intact. */
+        bool                   m_fHoldPosition;
     /** @} */
 };
 

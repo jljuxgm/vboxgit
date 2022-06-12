@@ -1,4 +1,4 @@
-/* $Id: UINetworkManager.h 87276 2021-01-15 13:57:42Z vboxsync $ */
+/* $Id: UINetworkManager.h 87295 2021-01-18 11:16:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkManager class declaration.
  */
@@ -141,6 +141,10 @@ private slots:
 
         /** Handles NAT network tree-widget @a pItem change. */
         void sltHandleItemChangeNATNetwork(QTreeWidgetItem *pItem);
+        /** Handles NAT network tree-widget current item change.
+          * @param  fHoldPosition  Holds whether we should try to keep
+          *                        port forwarding rule position intact. */
+        void sltHandleCurrentItemChangeNATNetworkHoldingPosition(bool fHoldPosition);
         /** Handles NAT network tree-widget current item change. */
         void sltHandleCurrentItemChangeNATNetwork();
         /** Handles NAT network context-menu request for tree-widget @a position. */

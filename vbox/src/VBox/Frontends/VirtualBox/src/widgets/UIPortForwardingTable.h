@@ -1,4 +1,4 @@
-/* $Id: UIPortForwardingTable.h 87247 2021-01-14 10:00:18Z vboxsync $ */
+/* $Id: UIPortForwardingTable.h 87295 2021-01-18 11:16:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPortForwardingTable class declaration.
  */
@@ -215,8 +215,11 @@ public:
 
     /** Returns the list of port forwarding rules. */
     UIPortForwardingDataList rules() const;
-    /** Defines the list of port forwarding @a newRules. */
-    void setRules(const UIPortForwardingDataList &newRules);
+    /** Defines the list of port forwarding @a newRules.
+      * @param  fHoldPosition  Holds whether we should try to keep
+      *                        port forwarding rule position intact. */
+    void setRules(const UIPortForwardingDataList &newRules,
+                  bool fHoldPosition = false);
 
     /** Validates the table. */
     bool validate() const;
