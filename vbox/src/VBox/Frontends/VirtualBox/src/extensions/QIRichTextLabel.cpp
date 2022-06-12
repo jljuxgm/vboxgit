@@ -1,4 +1,4 @@
-/* $Id: QIRichTextLabel.cpp 86557 2020-10-13 13:58:00Z vboxsync $ */
+/* $Id: QIRichTextLabel.cpp 86892 2020-11-16 15:06:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIRichTextLabel class implementation.
  */
@@ -73,6 +73,11 @@ QString QIRichTextLabel::text() const
 void QIRichTextLabel::registerImage(const QImage &image, const QString &strName)
 {
     m_pTextBrowser->document()->addResource(QTextDocument::ImageResource, QUrl(strName), QVariant(image));
+}
+
+void QIRichTextLabel::registerPixmap(const QPixmap &pixmap, const QString &strName)
+{
+    m_pTextBrowser->document()->addResource(QTextDocument::ImageResource, QUrl(strName), QVariant(pixmap));
 }
 
 QTextOption::WrapMode QIRichTextLabel::wordWrapMode() const

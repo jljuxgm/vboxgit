@@ -1,4 +1,4 @@
-/* $Id: QIRichTextLabel.h 86557 2020-10-13 13:58:00Z vboxsync $ */
+/* $Id: QIRichTextLabel.h 86892 2020-11-16 15:06:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIRichTextLabel class declaration.
  */
@@ -44,6 +44,8 @@ public:
 
     /** Registers @a image under a passed @a strName. */
     void registerImage(const QImage &image, const QString &strName);
+    /** Registers @a pixmap under a passed @a strName. */
+    void registerPixmap(const QPixmap &pixmap, const QString &strName);
 
     /** Returns word wrapping policy. */
     QTextOption::WrapMode wordWrapMode() const;
