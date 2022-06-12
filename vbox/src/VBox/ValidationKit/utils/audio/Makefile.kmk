@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 89656 2021-06-13 22:57:27Z vboxsync $
+# $Id: Makefile.kmk 89662 2021-06-13 23:17:09Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - Audio Utilities.
 #
@@ -151,6 +151,7 @@ vkatadd_NAME           = vkat
 vkatadd_TEMPLATE       = VBoxGuestR3Exe
 vkatadd_SDKS           = VBOX_ZLIB_STATIC
 vkatadd_LDFLAGS.darwin = -framework IOKit
+vkatadd_LIBS.solaris   = m
 
 
 #
