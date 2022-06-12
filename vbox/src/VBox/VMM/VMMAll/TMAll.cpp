@@ -1,4 +1,4 @@
-/* $Id: TMAll.cpp 87766 2021-02-16 14:27:43Z vboxsync $ */
+/* $Id: TMAll.cpp 87770 2021-02-16 17:46:45Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, all contexts.
  */
@@ -1579,7 +1579,7 @@ static int tmTimerVirtualSyncSetRelative(PVMCC pVM, PTMTIMER pTimer, uint64_t cT
  *
  * @returns VBox status code.
  * @param   pVM             The cross context VM structure.
- * @param   hTimer          Timer handle as returned by one of the create functions.
+ * @param   pTimer          The timer to arm.
  * @param   cTicksToNext    Clock ticks until the next time expiration.
  * @param   pu64Now         Where to return the current time stamp used.
  *                          Optional.
