@@ -1,4 +1,4 @@
-/* $Id: http-curl.cpp 85162 2020-07-10 09:53:05Z vboxsync $ */
+/* $Id: http-curl.cpp 85646 2020-08-07 19:13:51Z vboxsync $ */
 /** @file
  * IPRT - HTTP client API, cURL based.
  *
@@ -707,7 +707,7 @@ static int rtHttpUpdateAutomaticProxyDisable(PRTHTTPINTERNAL pThis)
         pThis->pszProxyPassword = NULL;
     }
 
-    AssertReturn(curl_easy_setopt(pThis->pCurl, CURLOPT_PROXY,         (const char *)NULL) == CURLE_OK, VERR_INTERNAL_ERROR_2);
+    AssertReturn(curl_easy_setopt(pThis->pCurl, CURLOPT_PROXY, "") == CURLE_OK, VERR_INTERNAL_ERROR_2);
     if (pThis->pszProxyHost)
     {
         RTStrFree(pThis->pszProxyHost);
