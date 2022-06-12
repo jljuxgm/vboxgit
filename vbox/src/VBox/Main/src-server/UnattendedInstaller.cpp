@@ -1,4 +1,4 @@
-/* $Id: UnattendedInstaller.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UnattendedInstaller.cpp 84795 2020-06-11 14:09:07Z vboxsync $ */
 /** @file
  * UnattendedInstaller class and it's descendants implementation
  */
@@ -660,7 +660,7 @@ HRESULT UnattendedInstaller::addFilesToAuxVisoVectors(RTCList<RTCString> &rVecAr
         try
         {
             /*
-             * If we've got additions ISO, add its content to a /vboxadditions dir.
+             * If we've got a Guest Additions ISO, add its content to a /vboxadditions dir.
              */
             if (mpParent->i_getInstallGuestAdditions())
             {
@@ -670,7 +670,7 @@ HRESULT UnattendedInstaller::addFilesToAuxVisoVectors(RTCList<RTCString> &rVecAr
             }
 
             /*
-             * If we've got additions ISO, add its content to a /vboxadditions dir.
+             * If we've got a Validation Kit ISO, add its content to a /vboxvalidationkit dir.
              */
             if (mpParent->i_getInstallTestExecService())
             {
