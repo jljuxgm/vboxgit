@@ -1,4 +1,4 @@
-/* $Id: http-common.h 87037 2020-12-03 16:14:04Z vboxsync $ */
+/* $Id: http-common.h 87042 2020-12-04 12:10:36Z vboxsync $ */
 /** @file
  * IPRT - Common (client / server) HTTP API.
  */
@@ -166,6 +166,23 @@ typedef struct RTHTTPHEADERENTRY
 } RTHTTPHEADERENTRY;
 /** Pointer to a HTTP header. */
 typedef RTHTTPHEADERENTRY *PRTHTTPHEADERENTRY;
+
+/**
+ * Structure for maintaining a HTTP body.
+ */
+typedef struct RTHTTPBODY
+{
+    /** Body to send, if any. Can be NULL. */
+    void            *pvBody;
+    /** Body allocation size (in bytes). */
+    size_t           cbBodyAlloc;
+    /** How much body data is being used (in bytes). */
+    size_t           cbBodyUsed;
+    /** Current body data read/write offset (in bytes). */
+    size_t           offBody;
+} RTHTTPBODY;
+/** Pointer to a HTTP body. */
+typedef RTHTTPBODY *PRTHTTPBODY;
 
 /**
  * Returns the name of the HTTP method.

@@ -1,4 +1,4 @@
-/* $Id: http-server.h 87041 2020-12-04 09:38:16Z vboxsync $ */
+/* $Id: http-server.h 87042 2020-12-04 12:10:36Z vboxsync $ */
 /** @file
  * Header file for HTTP server implementation.
  */
@@ -54,12 +54,14 @@ typedef RTHTTPSERVER                            *PRTHTTPSERVER;
  */
 typedef struct RTHTTPSERVERREQ
 {
+    /** Request URL. */
     char            *pszUrl;
+    /** Request method. */
     RTHTTPMETHOD     enmMethod;
+    /** Request header list. */
     RTHTTPHEADERLIST hHdrLst;
-    void            *pvBody;
-    size_t           cbBodyAlloc;
-    size_t           cbBodyUsed;
+    /** Request body data. */
+    RTHTTPBODY       Body;
 } RTHTTPSERVERREQ;
 /** Pointer to a HTTP client request. */
 typedef RTHTTPSERVERREQ *PRTHTTPSERVERREQ;
@@ -69,11 +71,12 @@ typedef RTHTTPSERVERREQ *PRTHTTPSERVERREQ;
  */
 typedef struct RTHTTPSERVERRESP
 {
+    /** HTTP status to send. */
     RTHTTPSTATUS     enmSts;
+    /** List of headers to send. */
     RTHTTPHEADERLIST hHdrLst;
-    void            *pvBody;
-    size_t           cbBodyAlloc;
-    size_t           cbBodyUsed;
+    /** Body data to send. */
+    RTHTTPBODY       Body;
 } RTHTTPSERVERRESP;
 /** Pointer to a HTTP server response. */
 typedef RTHTTPSERVERRESP *PRTHTTPSERVERRESP;
