@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-linux.c 85701 2020-08-11 17:46:17Z vboxsync $ */
+/* $Id: VBoxNetFlt-linux.c 85703 2020-08-11 18:54:01Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Linux Specific Code.
  */
@@ -150,15 +150,8 @@ typedef struct VBOXNETFLTNOTIFIER *PVBOXNETFLTNOTIFIER;
 # endif
 #endif
 
-#if RTLNX_VER_MIN(3,20,0)
+#if RTLNX_VER_MIN(3,20,0) || RTLNX_RHEL_RANGE(7,2,  8,0) || RTLNX_RHEL_RANGE(6,8,  7,0)
 # define VBOX_HAVE_SKB_VLAN
-#else
-# ifdef RHEL_RELEASE_CODE
-#  if (RHEL_RELEASE_CODE >= RHEL_RELEASE_VERSION(7, 2) && RHEL_RELEASE_CODE < RHEL_RELEASE_VERSION(8, 0)) || \
-      (RHEL_RELEASE_CODE >= RHEL_RELEASE_VERSION(6, 8) && RHEL_RELEASE_CODE < RHEL_RELEASE_VERSION(7, 0))
-#   define VBOX_HAVE_SKB_VLAN
-#  endif
-# endif
 #endif
 
 #ifdef VBOX_HAVE_SKB_VLAN
