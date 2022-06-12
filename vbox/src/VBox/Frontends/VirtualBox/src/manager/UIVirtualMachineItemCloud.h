@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItemCloud.h 86201 2020-09-21 14:36:27Z vboxsync $ */
+/* $Id: UIVirtualMachineItemCloud.h 86207 2020-09-21 19:49:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItemCloud class declaration.
  */
@@ -21,16 +21,19 @@
 # pragma once
 #endif
 
+/* Qt includes: */
+#include <QPointer>
+
 /* GUI includes: */
 #include "UIVirtualMachineItem.h"
 
 /* COM includes: */
 #include "COMEnums.h"
 #include "CCloudMachine.h"
+#include "CProgress.h"
 
 /* Forward declarations: */
-class UITask;
-class UITaskCloudRefreshMachineInfo;
+class UIProgress;
 
 /** UIVirtualMachineItem sub-class used as cloud Virtual Machine item interface. */
 class UIVirtualMachineItemCloud : public UIVirtualMachineItem
@@ -122,10 +125,10 @@ protected:
 
 private slots:
 
-        /** Create cloud VM info acquire task. */
-        void sltCreateGetCloudInstanceInfoTask();
-        /** Handles signal about cloud VM info refresh task is done. */
-        void sltHandleRefreshCloudMachineInfoDone(UITask *pTask);
+        /** Starts cloud VM info refresh progress. */
+        void sltRefreshCloudMachineInfo();
+        /** Handles signal about cloud VM info refresh progress is done. */
+        void sltHandleRefreshCloudMachineInfoDone();
 
 private:
 
@@ -145,10 +148,10 @@ private:
         /** Holds fake cloud item error message. */
         QString                             m_strFakeCloudItemErrorMessage;
 
-        /** Holds the info acquire task instance. */
-        UITaskCloudRefreshMachineInfo *m_pTask;
-        /** Holds the task waiting loop instance. */
-        QEventLoop                    *m_pEventLoop;
+        /** Holds the machine refresh progress object instance. */
+        CProgress             m_comProgress;
+        /** Holds the machine refresh progress handler instance. */
+        QPointer<UIProgress>  m_pProgressHandler;
     /** @} */
 };
 
