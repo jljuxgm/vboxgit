@@ -1,4 +1,4 @@
-/* $Id: HDAStream.cpp 87978 2021-03-05 16:23:22Z vboxsync $ */
+/* $Id: HDAStream.cpp 87980 2021-03-05 17:19:42Z vboxsync $ */
 /** @file
  * HDAStream.cpp - Stream functions for HD Audio.
  */
@@ -300,8 +300,8 @@ int hdaR3StreamSetUp(PPDMDEVINS pDevIns, PHDASTATE pThis, PHDASTREAM pStreamShar
          *
          * Note: This also involves dealing with surround setups the guest might has set up for us.
          */
-        LogRelMax(32, ("HDA: Warning: More than stereo (2) channels are not supported (%RU8 requested), "
-                       "falling back to stereo channels for stream #%RU8\n", Props.cChannels, uSD));
+        LogRelMax(32, ("HDA: Warning: More than stereo (2) channels are not supported (%RU8 requested), falling back to stereo channels for stream #%RU8\n",
+                       Props.cChannels, uSD));
         Props.cChannels = 2;
         Props.cShift    = PDMAUDIOPCMPROPS_MAKE_SHIFT_PARMS(Props.cbSample, Props.cChannels);
     }
@@ -557,8 +557,7 @@ int hdaR3StreamSetUp(PPDMDEVINS pDevIns, PHDASTATE pThis, PHDASTREAM pStreamShar
     }
 
     if (uTransferHz > 400) /* Anything above 400 Hz looks fishy -- tell the user. */
-        LogRelMax(32, ("HDA: Warning: Calculated transfer Hz rate for stream #%RU8 looks incorrect (%u), "
-                       "please re-run with audio debug mode and report a bug\n",
+        LogRelMax(32, ("HDA: Warning: Calculated transfer Hz rate for stream #%RU8 looks incorrect (%u), please re-run with audio debug mode and report a bug\n",
                        uSD, uTransferHz));
 
     /* Set I/O scheduling hint for the backends. */
