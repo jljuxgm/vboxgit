@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84928 $"
+__version__ = "$Revision: 84930 $"
 
 # Standard Python imports.
 import errno
@@ -2260,7 +2260,7 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
                                                     abBuf = abBuf.tobytes();
                                                     sBuf  = abBuf.decode("utf-8");
                                             if sys.version_info <= (2, 7):
-                                                if isinstance(abBuf, buffer):   # pylint: disable=undefined-variable (for 3.0+)
+                                                if isinstance(abBuf, buffer):   # (for 3.0+) pylint: disable=undefined-variable
                                                     sBuf = str(abBuf);
                                             for sLine in sBuf.splitlines():
                                                 reporter.log4('%s: %s' % (sFdNm, sLine));
