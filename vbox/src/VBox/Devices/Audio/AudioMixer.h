@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.h 88909 2021-05-06 16:37:24Z vboxsync $ */
+/* $Id: AudioMixer.h 88913 2021-05-06 18:56:26Z vboxsync $ */
 /** @file
  * VBox audio - Mixing routines.
  *
@@ -102,6 +102,12 @@ typedef struct AUDMIXSTREAM
     uint32_t                fFlags;
     /** Stream status of type AUDMIXSTREAM_STATUS_. */
     uint32_t                fStatus;
+    /** Number of writable/readable frames the last time we checked. */
+    uint32_t                cFramesLastAvail;
+    /** Set if the stream has been found unreliable wrt. consuming/producing
+     * samples, and that we shouldn't consider it when deciding how much to move
+     * from the mixer buffer and to the drivers. */
+    bool                    fUnreliable;
     /** Pointer to audio connector being used. */
     PPDMIAUDIOCONNECTOR     pConn;
     /** Pointer to PDM audio stream this mixer stream handles. */
