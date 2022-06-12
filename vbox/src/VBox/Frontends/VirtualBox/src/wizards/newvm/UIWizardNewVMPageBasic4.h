@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic4.h 87899 2021-03-01 16:43:03Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic4.h 87903 2021-03-01 17:48:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic4 class declaration.
  */
@@ -121,6 +121,7 @@ private:
     void cleanupPage();
 
     bool isComplete() const;
+    bool validatePage();
 
     QIRichTextLabel *m_pLabel;
 };
