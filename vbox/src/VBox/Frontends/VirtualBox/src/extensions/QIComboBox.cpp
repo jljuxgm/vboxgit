@@ -1,4 +1,4 @@
-/* $Id: QIComboBox.cpp 85135 2020-07-09 06:59:35Z vboxsync $ */
+/* $Id: QIComboBox.cpp 85137 2020-07-09 07:21:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIComboBox class implementation.
  */
@@ -304,8 +304,8 @@ void QIComboBox::setSizeAdjustPolicy(QComboBox::SizeAdjustPolicy enmPolicy)
 
 void QIComboBox::mark(bool fError)
 {
-    if (!m_pComboBox)
-        return;
+    /* Redirect to combo-box: */
+    AssertPtrReturnVoid(m_pComboBox);
     QPalette palette = m_pComboBox->palette();
     if (fError)
         palette.setColor(QPalette::Base, QColor(255, 180, 180));

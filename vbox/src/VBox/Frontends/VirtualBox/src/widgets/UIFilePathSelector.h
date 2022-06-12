@@ -1,4 +1,4 @@
-/* $Id: UIFilePathSelector.h 85136 2020-07-09 07:02:48Z vboxsync $ */
+/* $Id: UIFilePathSelector.h 85137 2020-07-09 07:21:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFilePathSelector class declaration.
  */
@@ -116,9 +116,6 @@ public:
 
     void setDefaultPath(const QString &strDefaultPath);
     const QString& defaultPath() const;
-
-    /** Paints the file selectors background to a reddish color when @p fError is true. */
-    void markFileSelector(bool fError);
 
 public slots:
 
