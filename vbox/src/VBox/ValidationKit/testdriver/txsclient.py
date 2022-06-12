@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: txsclient.py 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: txsclient.py 84659 2020-06-03 11:44:11Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 82968 $"
+__version__ = "$Revision: 84659 $"
 
 # Standard Python imports.
 import array;
@@ -279,7 +279,7 @@ class TransportBase(object):
         while len(abMsg) % 16:
             abMsg.append(0);
 
-        reporter.log2('sendMsgInt: op=%s len=%d to=%d' % (sOpcode, len(abMsg), cMsTimeout));
+        reporter.log2('sendMsgInt: op=%s len=%d timeout=%d' % (sOpcode, len(abMsg), cMsTimeout));
         return self.sendBytes(abMsg, cMsTimeout);
 
     def recvMsg(self, cMsTimeout, fNoDataOk = False):
@@ -642,7 +642,7 @@ class Session(TdTaskBase):
 
         rc = self.waitForTask(self.cMsTimeout + 5000);
         if rc is False:
-            reporter.maybeErr(self.fErr, 'asyncToSync: waitForTask failed...');
+            reporter.maybeErr(self.fErr, 'asyncToSync: waitForTask (timeout %d) failed...' % (self.cMsTimeout,));
             self.cancelTask();
             #reporter.log2('asyncToSync(%s): returns False (#2)' % (fnAsync, rc));
             return False;
@@ -1634,7 +1634,7 @@ class Session(TdTaskBase):
 
         Returns timeout in milliseconds.
         """
-        return 30000 + cbFile / 256; # 256 KiB/s (picked out of thin air)
+        return 30000 + cbFile / 32; # 32 KiB/s (picked out of thin air)
 
     @staticmethod
     def calcUploadTimeout(sLocalFile):
