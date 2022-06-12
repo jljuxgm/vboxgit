@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: reporting.py 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: reporting.py 86975 2020-11-25 14:45:30Z vboxsync $
 
 """
 Test Result Report Writer.
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 82968 $"
+__version__ = "$Revision: 86975 $"
 __all__     = ['HtmlReport', 'RstReport', 'TextReport'];
 
 
@@ -217,14 +217,14 @@ def produceHtmlReport(oTest):
     """
     Produce an HTML report on stdout (via print).
     """
-    print 'not implemented: %s' % (oTest);
+    print('not implemented: %s' % (oTest));
     return False;
 
 def produceReStructuredTextReport(oTest):
     """
     Produce a ReStructured text report on stdout (via print).
     """
-    print 'not implemented: %s' % (oTest);
+    print('not implemented: %s' % (oTest));
     return False;
 
 def produceTextReport(oTest):
@@ -275,28 +275,28 @@ def produceTextReport(oTest):
             for i in range(len(asLine)):
                 if i > 0: sLine += '  ';
                 sLine += asLine[i].center(acchColumns[i]);
-            print sLine;
+            print(sLine);
 
         # Units.
         sLine = '';
         for i in range(len(oTable.asUnits)):
             if i > 0: sLine += '  ';
             sLine += oTable.asUnits[i].center(acchColumns[i]);
-        print sLine;
+        print(sLine);
 
         # Separator line.
         sLine = '';
         for i in range(len(oTable.asHeader)):
             if i > 0: sLine += '  '
             sLine += '=' * acchColumns[i];
-        print sLine;
+        print(sLine);
 
         # The rows.
         for asColumns in oTable.aasRows:
             sText = asColumns[0].ljust(acchColumns[0]);
             for i in range(1, len(asColumns)):
                 sText += '  ' + asColumns[i].rjust(acchColumns[i]);
-            print sText;
+            print(sText);
 
     return None;
 
