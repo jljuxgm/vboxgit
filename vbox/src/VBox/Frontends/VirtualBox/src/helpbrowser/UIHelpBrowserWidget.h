@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.h 86812 2020-11-05 13:50:30Z vboxsync $ */
+/* $Id: UIHelpBrowserWidget.h 86835 2020-11-09 16:56:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class declaration.
  */
@@ -51,6 +51,7 @@ class QSplitter;
 class QITabWidget;
 class QIToolBar;
 class UIActionPool;
+class UIBookmarksListContainer;
 class UIDialogPanel;
 class UIHelpBrowserTabManager;
 
@@ -97,6 +98,7 @@ private slots:
     void sltShowLinksContextMenu(const QPoint &pos);
     void sltOpenLinkInNewTab();
     void sltOpenLink();
+    void sltAddNewBookmark(const QUrl &url, const QString &strTitle);
 
 private:
 
@@ -156,9 +158,9 @@ private:
     QHelpContentModel   *m_pContentModel;
     QHelpSearchEngine   *m_pSearchEngine;
     QHelpSearchQueryWidget *m_pSearchQueryWidget;
-    QHelpSearchResultWidget *m_pSearchResultWidget;
-    UIHelpBrowserTabManager *m_pTabManager;
-    QWidget             *m_pBookmarksWidget;
+    QHelpSearchResultWidget  *m_pSearchResultWidget;
+    UIHelpBrowserTabManager  *m_pTabManager;
+    UIBookmarksListContainer *m_pBookmarksWidget;
     QWidget             *m_pSearchContainerWidget;
     QAction             *m_pShowHideSideBarAction;
     QAction             *m_pShowHideToolBarAction;
