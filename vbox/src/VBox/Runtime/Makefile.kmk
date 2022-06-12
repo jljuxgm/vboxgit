@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 87829 2021-02-22 04:24:22Z vboxsync $
+# $Id: Makefile.kmk 88125 2021-03-15 18:31:10Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -3890,7 +3890,7 @@ $(IPRT_OUT_DIR)/errmsgwindata.h: \
 	$(call MSG_GENERATE,,$@,$(filter %.h,$^))
 	$(QUIET)$(REDIRECT) -wo $@ -- $(SED) -f $< $(filter %.h,$^)
 
-$(IPRT_OUT_DIR)/errmsgvboxdata.h.ts +| $(IPRT_OUT_DIR)/errmsgvboxcomdata.h: \
+$(IPRT_OUT_DIR)/errmsgvboxcomdata.h.ts +| $(IPRT_OUT_DIR)/errmsgvboxcomdata.h: \
 		$(VBOX_PATH_RUNTIME_SRC)/VBox/errmsgvboxcom.xsl \
 		$(VBOX_XIDL_FILE_SRC) \
 		| $$(dir $$@)
