@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: DrvAudio.h 87179 2021-01-05 15:58:39Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  */
@@ -81,6 +81,16 @@ typedef struct DRVAUDIOSTATS
  */
 typedef struct DRVAUDIOCFG
 {
+    /** PCM properties to use. */
+    PDMAUDIOPCMPROPS     Props;
+    /** Whether using signed sample data or not.
+     *  Needed in order to know whether there is a custom value set in CFGM or not.
+     *  By default set to UINT8_MAX if not set to a custom value. */
+    uint8_t              uSigned;
+    /** Whether swapping endianess of sample data or not.
+     *  Needed in order to know whether there is a custom value set in CFGM or not.
+     *  By default set to UINT8_MAX if not set to a custom value. */
+    uint8_t              uSwapEndian;
     /** Configures the period size (in ms).
      *  This value reflects the time in between each hardware interrupt on the
      *  backend (host) side. */
