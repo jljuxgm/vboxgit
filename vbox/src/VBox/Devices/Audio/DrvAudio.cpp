@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 88157 2021-03-17 14:30:31Z vboxsync $ */
+/* $Id: DrvAudio.cpp 88181 2021-03-18 09:40:27Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -3189,7 +3189,7 @@ static int drvAudioStreamCreateInternalBackend(PDRVAUDIO pThis,
     /*
      * Period size
      */
-    const char *pszWhat = "";
+    const char *pszWhat = "device-specific";
     if (pDrvCfg->uPeriodSizeMs)
     {
         pCfgReq->Backend.cFramesPeriod = PDMAudioPropsMilliToFrames(&pCfgReq->Props, pDrvCfg->uPeriodSizeMs);
@@ -3209,7 +3209,7 @@ static int drvAudioStreamCreateInternalBackend(PDRVAUDIO pThis,
     /*
      * Buffer size
      */
-    pszWhat = "";
+    pszWhat = "device-specific";
     if (pDrvCfg->uBufferSizeMs)
     {
         pCfgReq->Backend.cFramesBufferSize = PDMAudioPropsMilliToFrames(&pCfgReq->Props, pDrvCfg->uBufferSizeMs);
@@ -3229,7 +3229,7 @@ static int drvAudioStreamCreateInternalBackend(PDRVAUDIO pThis,
     /*
      * Pre-buffering size
      */
-    pszWhat = "";
+    pszWhat = "device-specific";
     if (pDrvCfg->uPreBufSizeMs != UINT32_MAX) /* Anything set via global / per-VM extra-data? */
     {
         pCfgReq->Backend.cFramesPreBuffering = PDMAudioPropsMilliToFrames(&pCfgReq->Props, pDrvCfg->uPreBufSizeMs);
