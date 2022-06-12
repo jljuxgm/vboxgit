@@ -1,7 +1,8 @@
-# $Id: Makefile.kmk 88603 2021-04-20 15:36:17Z vboxsync $
+# $Id: Makefile.kmk 88604 2021-04-20 15:40:54Z vboxsync $
 ## @file
 # Sub-Makefile for tstClipboardQt.
 #
+
 #
 # Copyright (C) 2011-2020 Oracle Corporation
 #
