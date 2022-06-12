@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: EM.cpp 87040 2020-12-04 06:28:01Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -1497,8 +1497,7 @@ static int emR3VmxNstGstIntrIntercept(PVMCPU pVCpu)
 {
 #ifdef VBOX_WITH_NESTED_HWVIRT_VMX
     /* Handle the "external interrupt" VM-exit intercept. */
-    if (    CPUMIsGuestVmxPinCtlsSet(&pVCpu->cpum.GstCtx, VMX_PIN_CTLS_EXT_INT_EXIT)
-        && !CPUMIsGuestVmxExitCtlsSet(&pVCpu->cpum.GstCtx, VMX_EXIT_CTLS_ACK_EXT_INT))
+    if (CPUMIsGuestVmxPinCtlsSet(&pVCpu->cpum.GstCtx, VMX_PIN_CTLS_EXT_INT_EXIT))
     {
         VBOXSTRICTRC rcStrict = IEMExecVmxVmexitExtInt(pVCpu, 0 /* uVector */, true /* fIntPending */);
         AssertMsg(   rcStrict != VINF_PGM_CHANGE_MODE
