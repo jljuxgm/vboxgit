@@ -1,4 +1,4 @@
-/* $Id: IOMInternal.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: IOMInternal.h 89088 2021-05-17 10:03:15Z vboxsync $ */
 /** @file
  * IOM - Internal header file.
  */
@@ -317,10 +317,6 @@ typedef IOMMMIOSTATSENTRY *PIOMMMIOSTATSENTRY;
  */
 typedef struct IOMCPU
 {
-    /** For saving stack space, the disassembler state is allocated here instead of
-     * on the stack. */
-    DISCPUSTATE                     DisState;
-
     /**
      * Pending I/O port write commit (VINF_IOM_R3_IOPORT_COMMIT_WRITE).
      *
