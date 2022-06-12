@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasicUnattended.cpp 85001 2020-06-30 06:40:35Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasicUnattended.cpp 85039 2020-07-02 06:13:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasicUnattended class implementation.
  */
@@ -214,10 +214,14 @@ void UIWizardNewVMPageBasicUnattended::retranslateUi()
     setTitle(UIWizardNewVM::tr("Unattended Guest OS Install"));
 
     /* Translate widgets: */
-    m_pLabel->setText(UIWizardNewVM::tr("You can enable the unattended (automated) guest OS install "
-                                        "and select an installation medium. The guest OS will be "
-                                        "installed after this wizard is closed. "));
-    m_pUnattendedCheckBox->setText(UIWizardNewVM::tr("Enable unattended guest OS Install"));
+    m_pLabel->setText(UIWizardNewVM::tr("<p>You can enable the unattended (automated) guest OS install. "
+                                        "Optionally you can select to start the unattended on the background by selecting "
+                                        "a headless virtual machine start.</p>"));
+    if (m_pUnattendedCheckBox)
+    {
+        m_pUnattendedCheckBox->setText(UIWizardNewVM::tr("Enable unattended guest OS Install"));
+        m_pUnattendedCheckBox->setToolTip(UIWizardNewVM::tr("When checkedan unattended guest OS will be initialized after this wizard is closed"));
+    }
     m_pISOSelectorLabel->setText(UIWizardNewVM::tr("Installation medium:"));
     if (m_pStartHeadlessCheckBox)
     {

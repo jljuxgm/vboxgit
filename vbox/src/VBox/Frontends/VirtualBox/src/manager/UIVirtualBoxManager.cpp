@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 85001 2020-06-30 06:40:35Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 85039 2020-07-02 06:13:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -81,7 +81,7 @@
         { \
         COMErrorInfo comErrorInfo =  comUnattendedInstaller.errorInfo(); \
         QString strErrorInfo = UIErrorString::formatErrorInfo(comErrorInfo); \
-        printf("unattended install error %s\n", qPrintable(strErrorInfo)); \
+        msgCenter().cannotRunUnattendedGuestInstall(comUnattendedInstaller); \
         return; \
         } \
     } while (0)

@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 84964 2020-06-25 20:17:00Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 85039 2020-07-02 06:13:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -82,6 +82,7 @@
 #include "CExtPackManager.h"
 #include "CExtPackFile.h"
 #include "CHostNetworkInterface.h"
+#include "CUnattended.h"
 #include "CVFSExplorer.h"
 #include "CVirtualSystemDescription.h"
 #include "CVirtualSystemDescriptionForm.h"
@@ -2259,6 +2260,15 @@ bool UIMessageCenter::cannotAddDiskEncryptionPassword(const CAppliance &comAppli
           UIErrorString::formatErrorInfo(comAppliance));
     return false;
 }
+
+void UIMessageCenter::cannotRunUnattendedGuestInstall(const CUnattended &comUnattendedInstall, QWidget *pParent /* = 0 */)
+{
+    COMErrorInfo comErrorInfo =  comUnattendedInstall.errorInfo();    \
+    error(pParent, MessageType_Error,
+          tr("An error has occured during unattended guest install setup."),
+          UIErrorString::formatErrorInfo(comErrorInfo));
+}
+
 
 void UIMessageCenter::showRuntimeError(const CConsole &console, bool fFatal, const QString &strErrorId, const QString &strErrorMsg) const
 {

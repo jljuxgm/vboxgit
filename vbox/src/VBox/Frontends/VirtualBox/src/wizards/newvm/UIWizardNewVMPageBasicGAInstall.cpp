@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasicGAInstall.cpp 85001 2020-06-30 06:40:35Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasicGAInstall.cpp 85039 2020-07-02 06:13:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasicGAInstall class implementation.
  */
@@ -138,14 +138,18 @@ void UIWizardNewVMPageBasicGAInstall::sltPathChanged(const QString &strPath)
 
 void UIWizardNewVMPageBasicGAInstall::retranslateUi()
 {
-    /* Translate page: */
-    setTitle(UIWizardNewVM::tr("Unattended Guest OS Install"));
 
-    /* Translate widgets: */
-    m_pLabel->setText(UIWizardNewVM::tr("<p>Guest Additions install</p>"));
-    m_pInstallGACheckBox->setText(UIWizardNewVM::tr("Install guest additions"));
-    m_pISOPathLabel->setText(UIWizardNewVM::tr("Installation medium:"));
-    m_pISOFilePathSelector->setToolTip(UIWizardNewVM::tr("Please select an installation medium (ISO file)"));
+    setTitle(UIWizardNewVM::tr("Guest Additions install"));
+    if (m_pLabel)
+        m_pLabel->setText(UIWizardNewVM::tr("<p>You can enable the guest additions install which will be performed during the unattended "
+                                            "guest OS install. </p>"));
+
+    if (m_pInstallGACheckBox)
+        m_pInstallGACheckBox->setText(UIWizardNewVM::tr("Install guest additions"));
+    if (m_pISOPathLabel)
+        m_pISOPathLabel->setText(UIWizardNewVM::tr("Installation medium:"));
+    if (m_pISOFilePathSelector)
+        m_pISOFilePathSelector->setToolTip(UIWizardNewVM::tr("Please select an installation medium (ISO file)"));
 }
 
 bool UIWizardNewVMPageGAInstall::checkISOFile() const
