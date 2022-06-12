@@ -1,4 +1,4 @@
-/* $Id: AudioMixBuffer.h 89371 2021-05-28 20:52:58Z vboxsync $ */
+/* $Id: AudioMixBuffer.h 89373 2021-05-29 03:35:17Z vboxsync $ */
 /** @file
  * Audio Mixing bufer convert audio samples to/from different rates / formats.
  */
@@ -150,12 +150,6 @@ typedef struct AUDIOMIXBUF
     uint32_t                    offRead;
     /** The current write position (in frames). */
     uint32_t                    offWrite;
-    /** Total frames already mixed down to the parent buffer (if any).
-     *
-     * Always starting at the parent's offRead position.
-     * @note Count always is specified in parent frames, as the sample count can
-     *       differ between parent and child.  */
-    uint32_t                    cMixed;
     /** How much audio frames are currently being used in this buffer.
      * @note This also is known as the distance in ring buffer terms. */
     uint32_t                    cUsed;
