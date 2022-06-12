@@ -1,4 +1,4 @@
-/* $Id: VMDK.cpp 85200 2020-07-10 15:16:34Z vboxsync $ */
+/* $Id: VMDK.cpp 85885 2020-08-25 20:02:51Z vboxsync $ */
 /** @file
  * VMDK disk image, core code.
  */
@@ -3472,13 +3472,13 @@ static int vmdkCreateRawImage(PVMDKIMAGE pImage, const PVDISKRAW pRaw,
         for (unsigned i = 0; i < pRaw->cPartDescs; i++)
         {
             PVDISKRAWPARTDESC pPart = &pRaw->pPartDescs[i];
-            if (uStart > pPart->uStart)
+            if (uStart > pPart->offStartInVDisk)
                 return vdIfError(pImage->pIfError, VERR_INVALID_PARAMETER, RT_SRC_POS,
                                  N_("VMDK: incorrect partition data area ordering set up by the caller in '%s'"), pImage->pszFilename);
 
-            if (uStart < pPart->uStart)
+            if (uStart < pPart->offStartInVDisk)
                 cExtents++;
-            uStart = pPart->uStart + pPart->cbData;
+            uStart = pPart->offStartInVDisk + pPart->cbData;
             cExtents++;
         }
         /* Another extent for filling up the rest of the image. */
@@ -3520,19 +3520,19 @@ static int vmdkCreateRawImage(PVMDKIMAGE pImage, const PVDISKRAW pRaw,
             PVDISKRAWPARTDESC pPart = &pRaw->pPartDescs[i];
             pExtent = &pImage->pExtents[cExtents++];
 
-            if (uStart < pPart->uStart)
+            if (uStart < pPart->offStartInVDisk)
             {
                 pExtent->pszBasename = NULL;
                 pExtent->pszFullname = NULL;
                 pExtent->enmType = VMDKETYPE_ZERO;
-                pExtent->cNominalSectors = VMDK_BYTE2SECTOR(pPart->uStart - uStart);
+                pExtent->cNominalSectors = VMDK_BYTE2SECTOR(pPart->offStartInVDisk - uStart);
                 pExtent->uSectorOffset = 0;
                 pExtent->enmAccess = VMDKACCESS_READWRITE;
                 pExtent->fMetaDirty = false;
                 /* go to next extent */
                 pExtent = &pImage->pExtents[cExtents++];
             }
-            uStart = pPart->uStart + pPart->cbData;
+            uStart = pPart->offStartInVDisk + pPart->cbData;
 
             if (pPart->pvPartitionData)
             {
@@ -3591,7 +3591,7 @@ static int vmdkCreateRawImage(PVMDKIMAGE pImage, const PVDISKRAW pRaw,
                         return VERR_NO_MEMORY;
                     pExtent->enmType = VMDKETYPE_FLAT;
                     pExtent->cNominalSectors = VMDK_BYTE2SECTOR(pPart->cbData);
-                    pExtent->uSectorOffset = VMDK_BYTE2SECTOR(pPart->uStartOffset);
+                    pExtent->uSectorOffset = VMDK_BYTE2SECTOR(pPart->offStartInDevice);
                     pExtent->enmAccess = (pPart->uFlags & VDISKRAW_READONLY) ? VMDKACCESS_READONLY : VMDKACCESS_READWRITE;
                     pExtent->fMetaDirty = false;
 
