@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 87728 2021-02-12 02:24:07Z vboxsync $
+# $Id: Makefile.kmk 87792 2021-02-18 18:38:24Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -503,6 +503,7 @@ VMMR0_SOURCES   = \
 	VMMR0/PGMR0.cpp \
 	VMMR0/PGMR0Pool.cpp \
 	VMMR0/PGMR0SharedPage.cpp \
+	VMMR0/TMR0.cpp \
 	VMMR0/VMMR0.cpp \
 	VMMRZ/CPUMRZ.cpp \
 	VMMRZ/CPUMRZA.asm \
