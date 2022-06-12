@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 87354 2021-01-21 16:08:36Z vboxsync $ */
+/* $Id: UIMessageCenter.h 87544 2021-02-02 17:08:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -410,7 +410,7 @@ public:
     void cannotRemoveNATNetwork(const CVirtualBox &comVBox, const QString &strNetworkName, QWidget *pParent = 0) const;
     void warnAboutNoNameSpecified(const QString &strName, QWidget *pParent = 0);
     void warnAboutNameAlreadyBusy(const QString &strName, QWidget *pParent = 0);
-    void warnAboutNoCIDRSpecified(const QString &strName, QWidget *pParent = 0);
+    void warnAboutNoIPv4PrefixSpecified(const QString &strName, QWidget *pParent = 0);
     void warnAboutInvalidCIDRSpecified(const QString &strCIDR, const QString &strName, QWidget *pParent = 0);
 
     /* API: Cloud Profile Manager warnings: */
