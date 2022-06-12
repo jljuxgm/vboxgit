@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic5.h 87871 2021-02-25 10:17:04Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic5.h 87872 2021-02-25 10:55:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic5 class declaration.
  */
@@ -26,12 +26,12 @@
 
 /* GUI includes: */
 #include "UIWizardPage.h"
+#include "UIWizardNewVDPageBasic1.h"
 #include "UIWizardNewVDPageBasic2.h"
 #include "UIWizardNewVDPageBasic3.h"
 
 /* COM includes: */
 #include "COMEnums.h"
-#include "CMedium.h"
 
 /* Forward declarations: */
 class QRadioButton;
@@ -41,6 +41,7 @@ class UIBaseMemoryEditor;
 class UIVirtualCPUEditor;
 
 class UIWizardNewVMPageBasic5 : public UIWizardPage,
+                                public UIWizardNewVDPage1,
                                 public UIWizardNewVDPage2,
                                 public UIWizardNewVDPage3
 
