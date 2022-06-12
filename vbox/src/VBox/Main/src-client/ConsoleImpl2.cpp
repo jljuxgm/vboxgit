@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 87367 2021-01-22 13:33:36Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 87374 2021-01-22 15:29:11Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -3006,6 +3006,26 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
                     InsertConfigInteger(pCfg,       "DebugEnabled",         fDebugEnabled);
                     if (strDebugPathOut.isNotEmpty())
                         InsertConfigString(pCfg,    "DebugPathOut",         strDebugPathOut);
+
+                    /*
+                     * HDA-specific parameters.
+                     */
+
+                    uint64_t uTmp;
+                    GetExtraDataBoth(virtualBox, pMachine, "VBoxInternal2/Audio/Device/PosAdjustEnabled", &strTmp);
+                    if (strTmp.isNotEmpty())
+                    {
+                        uTmp = strTmp.toUInt64(); /* Returns 0 if not set / invalid -> means disabled. */
+                        InsertConfigInteger(pCfg,          "PosAdjustEnabled",     uTmp);
+                    }
+
+                    GetExtraDataBoth(virtualBox, pMachine, "VBoxInternal2/Audio/Device/PosAdjustFrames", &strTmp);
+                    if (strTmp.isNotEmpty())
+                    {
+                        uTmp = strTmp.toUInt64(); /* Ditto. */
+                        InsertConfigInteger(pCfg,          "PosAdjustFrames",      uTmp);
+                    }
+
                     break;
                 }
                 default:
