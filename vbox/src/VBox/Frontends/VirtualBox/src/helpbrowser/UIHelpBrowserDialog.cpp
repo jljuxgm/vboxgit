@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserDialog.cpp 87656 2021-02-09 13:14:33Z vboxsync $ */
+/* $Id: UIHelpBrowserDialog.cpp 87662 2021-02-09 14:34:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserDialog class implementation.
  */
@@ -32,6 +32,7 @@
 # include "VBoxUtils-darwin.h"
 #endif
 
+#include <iprt/assert.h>
 
 /*********************************************************************************************************************************
 *   Class UIHelpBrowserDialog implementation.                                                                                    *
