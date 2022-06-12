@@ -1,4 +1,4 @@
-/* $Id: DevIoApic.cpp 89035 2021-05-13 14:24:30Z vboxsync $ */
+/* $Id: DevIoApic.cpp 89064 2021-05-17 05:35:47Z vboxsync $ */
 /** @file
  * IO APIC - Input/Output Advanced Programmable Interrupt Controller.
  */
@@ -1017,7 +1017,7 @@ static DECLCALLBACK(void) ioapicSendMsi(PPDMDEVINS pDevIns, PCIBDF uBusDevFn, PC
         else if (RT_SUCCESS(rcRemap))
         {
             STAM_COUNTER_INC(&pThis->StatIommuRemappedMsi);
-            ioapicGetApicIntrFromMsi(&MsiOut, &ApicIntr);
+            pMsi = &MsiOut;
         }
         else
         {
@@ -1025,12 +1025,11 @@ static DECLCALLBACK(void) ioapicSendMsi(PPDMDEVINS pDevIns, PCIBDF uBusDevFn, PC
             return;
         }
     }
-    else
-        ioapicGetApicIntrFromMsi(pMsi, &ApicIntr);
 #else
     NOREF(uBusDevFn);
-    ioapicGetApicIntrFromMsi(pMsi, &ApicIntr);
 #endif
+
+    ioapicGetApicIntrFromMsi(pMsi, &ApicIntr);
 
     /*
      * Deliver to the local APIC via the system/3-wire-APIC bus.
