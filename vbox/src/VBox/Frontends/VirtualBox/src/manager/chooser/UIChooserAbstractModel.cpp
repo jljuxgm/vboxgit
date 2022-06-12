@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.cpp 84436 2020-05-21 15:50:17Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.cpp 84545 2020-05-26 16:17:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class implementation.
  */
@@ -513,6 +513,18 @@ void UIChooserAbstractModel::deinit()
 void UIChooserAbstractModel::wipeOutEmptyGroups()
 {
     wipeOutEmptyGroupsStartingFrom(invisibleRoot());
+}
+
+QStringList UIChooserAbstractModel::possibleGroupNodeNamesForMachineNodeToMove(const QUuid &uId)
+{
+    /* Search for all the machine nodes with passed ID: */
+    QList<UIChooserNode*> machineNodes;
+    invisibleRoot()->searchForNodes(toOldStyleUuid(uId),
+                                    UIChooserItemSearchFlag_Machine | UIChooserItemSearchFlag_ExactId,
+                                    machineNodes);
+
+    /* Return group nodes starting from root one: */
+    return gatherPossibleGroupNodeNames(invisibleRoot(), machineNodes);
 }
 
 /* static */
@@ -1297,6 +1309,38 @@ void UIChooserAbstractModel::createCloudMachineNode(UIChooserNode *pParentNode, 
         AssertReturnVoid(pNode->cacheType() == UIVirtualMachineItemType_CloudReal);
         pNode->cache()->toCloud()->updateInfoAsync(false /* delayed? */);
     }
+}
+
+QStringList UIChooserAbstractModel::gatherPossibleGroupNodeNames(UIChooserNode *pCurrentNode, QList<UIChooserNode*> exceptions) const
+{
+    /* Prepare result: */
+    QStringList result;
+
+    /* Walk through all the children and make sure there are no exceptions: */
+    bool fAddCurrent = true;
+    foreach (UIChooserNode *pChild, pCurrentNode->nodes(UIChooserNodeType_Any))
+    {
+        AssertPtrReturn(pChild, result);
+        if (exceptions.contains(pChild))
+            fAddCurrent = false;
+        else
+        {
+            if (pChild->type() == UIChooserNodeType_Group)
+            {
+                UIChooserNodeGroup *pChildGroup = pChild->toGroupNode();
+                AssertPtrReturn(pChildGroup, result);
+                if (pChildGroup->groupType() == UIChooserNodeGroupType_Local)
+                    result << gatherPossibleGroupNodeNames(pChild, exceptions);
+            }
+        }
+    }
+
+    /* Add current item if not overridden: */
+    if (fAddCurrent)
+        result.prepend(pCurrentNode->fullName());
+
+    /* Return result: */
+    return result;
 }
 
 void UIChooserAbstractModel::saveGroupSettings()

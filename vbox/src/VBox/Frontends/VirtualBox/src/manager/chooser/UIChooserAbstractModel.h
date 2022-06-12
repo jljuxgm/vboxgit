@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.h 84436 2020-05-21 15:50:17Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.h 84545 2020-05-26 16:17:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class declaration.
  */
@@ -78,6 +78,9 @@ public:
 
         /** Wipes out empty groups. */
         void wipeOutEmptyGroups();
+
+        /** Returns possible group node names for VM node with passed @a uId to move to. */
+        QStringList possibleGroupNodeNamesForMachineNodeToMove(const QUuid &uId);
 
         /** Generates unique group name traversing recursively starting from @a pRoot. */
         static QString uniqueGroupName(UIChooserNode *pRoot);
@@ -219,6 +222,9 @@ private:
         void createLocalMachineNode(UIChooserNode *pParentNode, const CMachine &comMachine);
         /** Creates cloud machine node based on certain @a comMachine as a child of specified @a pParentNode. */
         void createCloudMachineNode(UIChooserNode *pParentNode, const CCloudMachine &comMachine);
+
+        /** Gathers a list of possible group node names for machine nodes listed in @a exceptions, starting from @a pCurrentNode. */
+        QStringList gatherPossibleGroupNodeNames(UIChooserNode *pCurrentNode, QList<UIChooserNode*> exceptions) const;
     /** @} */
 
     /** @name Group saving stuff.
