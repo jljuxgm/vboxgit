@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 85537 2020-07-30 06:55:32Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 85803 2020-08-18 06:45:32Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -1149,6 +1149,11 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
         BOOL fEnableUX = false;
         hrc = pMachine->GetHWVirtExProperty(HWVirtExPropertyType_UnrestrictedExecution, &fEnableUX); H();
         InsertConfigInteger(pHM, "EnableUX", fEnableUX);
+
+        /* Virtualized VMSAVE/VMLOAD (AMD-V) */
+        BOOL fVirtVmsaveVmload = true;
+        hrc = host->GetProcessorFeature(ProcessorFeature_VirtVmsaveVmload, &fVirtVmsaveVmload);     H();
+        InsertConfigInteger(pHM, "SvmVirtVmsaveVmload", fVirtVmsaveVmload);
 
         /* Indirect branch prediction boundraries. */
         BOOL fIBPBOnVMExit = false;
