@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 88897 2021-05-06 12:15:56Z vboxsync $ */
+/* $Id: DrvAudio.cpp 88898 2021-05-06 12:16:17Z vboxsync $ */
 /** @file
  * Intermediate audio driver - Connects the audio device emulation with the host backend.
  */
@@ -3295,10 +3295,6 @@ static DECLCALLBACK(uint32_t) drvAudioStreamGetWritable(PPDMIAUDIOCONNECTOR pInt
             }
 
             case DRVAUDIOPLAYSTATE_NOPLAY:
-/** @todo we'll return zero here. but what if the device was
- * reactivate/whatever.  We won't get to the play code that detects that
- * state change and we end up playing nothing...  Probably holding up both
- * this and other output streams / driver chains. */
                 break;
             case DRVAUDIOPLAYSTATE_INVALID:
             case DRVAUDIOPLAYSTATE_END:
