@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.cpp 88093 2021-03-11 14:47:43Z vboxsync $ */
+/* $Id: UIToolsModel.cpp 88095 2021-03-11 16:30:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class implementation.
  */
@@ -518,7 +518,7 @@ void UIToolsModel::prepareItems()
     m_items << new UIToolsItem(scene(), UIToolClass_Global, UIToolType_Cloud, QString(),
                                UIIconPool::iconSet(":/cloud_profile_manager_24px.png", ":/cloud_profile_manager_disabled_24px.png"));
 
-    /* Resources: */
+    /* Activities: */
     m_items << new UIToolsItem(scene(), UIToolClass_Global, UIToolType_VMActivityOverview, QString(),
                                UIIconPool::iconSet(":/resources_monitor_24px.png", ":/resources_monitor_disabled_24px.png"));
 
