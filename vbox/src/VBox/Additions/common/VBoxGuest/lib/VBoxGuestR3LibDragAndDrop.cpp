@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibDragAndDrop.cpp 85429 2020-07-23 11:31:53Z vboxsync $ */
+/* $Id: VBoxGuestR3LibDragAndDrop.cpp 85437 2020-07-23 14:01:06Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Drag & Drop.
  */
@@ -1086,6 +1086,10 @@ VBGLR3DECL(int) VbglR3DnDEventGetNext(PVBGLR3GUESTDNDCMDCTX pCtx, PVBGLR3DNDEVEN
             && (uSessionID != pCtx->uSessionID))
         {
             LogFlowFunc(("VM session ID changed to %RU64\n", uSessionID));
+
+            rc = VbglR3DnDDisconnect(pCtx);
+            if (RT_SUCCESS(rc))
+                rc = VbglR3DnDConnect(pCtx);
         }
     }
 
