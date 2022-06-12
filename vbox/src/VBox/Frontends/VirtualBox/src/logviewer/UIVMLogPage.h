@@ -1,4 +1,4 @@
-/* $Id: UIVMLogPage.h 88686 2021-04-23 18:55:55Z vboxsync $ */
+/* $Id: UIVMLogPage.h 88687 2021-04-23 19:02:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -23,7 +23,7 @@
 
 /* Qt includes: */
 #include <QWidget>
-/* #include <QMap> */
+#include <QUuid>
 #include <QPair>
 
 /* GUI includes: */
