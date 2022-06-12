@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.cpp 87060 2020-12-09 10:05:23Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.cpp 87062 2020-12-09 10:46:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class implementation.
  */
@@ -51,8 +51,7 @@ UIWizardNewVMPageExpert::UIWizardNewVMPageExpert(const QString &strGroup)
     {
         m_pToolBox = new QToolBox;
         m_pNameAndSystemContainer = new QWidget(this);
-        QGridLayout *pNameContainerLayout = new QGridLayout(m_pNameAndSystemContainer);
-        createNameOSTypeWidgets(pNameContainerLayout, false);
+        createNameOSTypeWidgets(m_pNameAndSystemContainer, false);
         m_pGAInstallContainer = createGAInstallWidgets();
         m_pUsernameHostnameContainer = createUserNameHostNameWidgets();
 
@@ -418,8 +417,6 @@ void UIWizardNewVMPageExpert::disableEnableUnattendedRelatedWidgets(bool fEnable
         m_pISOSelectorLabel->setEnabled(fEnabled);
     if (m_pISOFilePathSelector)
         m_pISOFilePathSelector->setEnabled(fEnabled);
-    if (m_pStartHeadlessLabel)
-        m_pStartHeadlessLabel->setEnabled(fEnabled);
     if (m_pStartHeadlessCheckBox)
         m_pStartHeadlessCheckBox->setEnabled(fEnabled);
 }
