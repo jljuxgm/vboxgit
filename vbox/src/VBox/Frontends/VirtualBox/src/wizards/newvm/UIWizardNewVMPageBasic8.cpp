@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic8.cpp 87864 2021-02-24 18:26:21Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic8.cpp 87878 2021-02-25 17:17:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic8 class implementation.
  */
@@ -17,6 +17,7 @@
 
 /* Qt includes: */
 #include <QCheckBox>
+#include <QFileInfo>
 #include <QGridLayout>
 #include <QMetaType>
 #include <QVBoxLayout>
@@ -24,9 +25,11 @@
 /* GUI includes: */
 #include "QIRichTextLabel.h"
 #include "UIBaseMemoryEditor.h"
+#include "UIMessageCenter.h"
 #include "UIVirtualCPUEditor.h"
 #include "UIWizardNewVM.h"
 #include "UIWizardNewVMPageBasic8.h"
+#include "UIWizardNewVDPageBasic3.h"
 
 /* COM includes: */
 #include "CGuestOSType.h"
@@ -151,14 +154,33 @@ bool UIWizardNewVMPageBasic8::isComplete() const
 
 bool UIWizardNewVMPageBasic8::validatePage()
 {
-    /* Lock finish button: */
+    bool fResult = true;
+
+    const QString strMediumPath(fieldImp("mediumPath").toString());
+    fResult = !QFileInfo(strMediumPath).exists();
+    if (!fResult)
+    {
+        msgCenter().cannotOverwriteHardDiskStorage(strMediumPath, this);
+        return fResult;
+    }
+
+    fResult = UIWizardNewVDPage3::checkFATSizeLimitation(fieldImp("mediumVariant").toULongLong(),
+                                                         fieldImp("mediumPath").toString(),
+                                                         fieldImp("mediumSize").toULongLong());
+    if (!fResult)
+    {
+        msgCenter().cannotCreateHardDiskStorageInFAT(strMediumPath, this);
+        return fResult;
+    }
+
+
     startProcessing();
 
-    /* Try to create VM: */
-    bool fResult = qobject_cast<UIWizardNewVM*>(wizard())->createVM();
+    fResult = qobject_cast<UIWizardNewVM*>(wizard())->createVirtualDisk();
+    fResult = qobject_cast<UIWizardNewVM*>(wizard())->createVM();
 
-    /* Unlock finish button: */
     endProcessing();
+
 
     return fResult;
 }
