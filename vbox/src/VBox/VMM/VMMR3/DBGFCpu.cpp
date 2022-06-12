@@ -1,4 +1,4 @@
-/* $Id: DBGFCpu.cpp 84706 2020-06-05 18:11:25Z vboxsync $ */
+/* $Id: DBGFCpu.cpp 84709 2020-06-05 18:26:07Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, CPU State Accessors.
  */
@@ -176,8 +176,7 @@ VMMR3DECL(const char *) DBGFR3CpuGetState(PUVM pUVM, VMCPUID idCpu)
     AssertReturn(idCpu < pUVM->pVM->cCpus, NULL);
 
     PVMCPU pVCpu = VMMGetCpuById(pUVM->pVM, idCpu);
-    VMCPUSTATE enmCpuState;
-    ASMAtomicReadSize(&pVCpu->enmState, &enmCpuState);
+    VMCPUSTATE enmCpuState = (VMCPUSTATE)ASMAtomicReadU32((volatile uint32_t *)&pVCpu->enmState);
 
     switch (enmCpuState)
     {
