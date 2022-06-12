@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA-cmd.cpp 89121 2021-05-17 19:30:44Z vboxsync $ */
+/* $Id: DevVGA-SVGA-cmd.cpp 89356 2021-05-28 13:20:59Z vboxsync $ */
 /** @file
  * VMware SVGA device - implementation of VMSVGA commands.
  */
@@ -6507,7 +6507,7 @@ void vmsvgaR3CmdDefineGMR2(PVGASTATE pThis, PVGASTATECC pThisCC, SVGAFifoCmdDefi
         /* Not sure if we should always free the descriptor, but for simplicity
            we do so if the new size is smaller than the current. */
         /** @todo always free the descriptor in SVGA_CMD_DEFINE_GMR2? */
-        if (pGMR->cbTotal / X86_PAGE_SIZE > pGMR->cMaxPages)
+        if (pGMR->cbTotal / X86_PAGE_SIZE > pCmd->numPages)
             vmsvgaR3GmrFree(pThisCC, pCmd->gmrId);
 
         pGMR->cMaxPages = pCmd->numPages;
