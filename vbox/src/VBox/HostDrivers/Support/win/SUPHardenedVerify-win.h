@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerify-win.h 86549 2020-10-12 23:59:53Z vboxsync $ */
+/* $Id: SUPHardenedVerify-win.h 86610 2020-10-16 14:34:15Z vboxsync $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Verification, Windows.
  */
@@ -112,6 +112,8 @@ typedef struct SUPHNTVIRDR
     uint16_t    cNokSignatures;
     /** Total number of signatures. */
     uint16_t    cTotalSignatures;
+    /** The current signature (for passing to supHardNtViCertVerifyCallback). */
+    uint16_t    iCurSignature;
     /** The last non-fatal signature failure. */
     int         rcLastSignatureFailure;
     /** Log name. */

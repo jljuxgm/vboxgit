@@ -1,4 +1,4 @@
-/* $Id: x509-core.cpp 85629 2020-08-06 00:56:34Z vboxsync $ */
+/* $Id: x509-core.cpp 86610 2020-10-16 14:34:15Z vboxsync $ */
 /** @file
  * IPRT - Crypto - X.509, Core APIs.
  */
@@ -1455,6 +1455,10 @@ static void rtCrx509TbsCertificate_AddExtKeyUsageFlags(PRTCRX509TBSCERTIFICATE p
         {
             if (RTAsn1ObjId_CompareWithString(pObjIds->papItems[i], RTCRX509_MS_EKU_TIMESTAMP_SIGNING_OID) == 0)
                 pThis->T3.fExtKeyUsage |= RTCRX509CERT_EKU_F_MS_TIMESTAMP_SIGNING;
+            else if (RTAsn1ObjId_CompareWithString(pObjIds->papItems[i], RTCRX509_MS_EKU_WHQL_CRYPTO_OID) == 0)
+                pThis->T3.fExtKeyUsage |= RTCRX509CERT_EKU_F_MS_WHQL_CRYPTO;
+            else if (RTAsn1ObjId_CompareWithString(pObjIds->papItems[i], RTCRX509_MS_EKU_ATTEST_WHQL_CRYPTO_OID) == 0)
+                pThis->T3.fExtKeyUsage |= RTCRX509CERT_EKU_F_MS_ATTEST_WHQL_CRYPTO;
             else if (RTAsn1ObjId_CompareWithString(pObjIds->papItems[i], RTCRX509_MS_EKU_NT5_CRYPTO_OID) == 0)
                 pThis->T3.fExtKeyUsage |= RTCRX509CERT_EKU_F_MS_NT5_CRYPTO;
             else if (RTAsn1ObjId_CompareWithString(pObjIds->papItems[i], RTCRX509_MS_EKU_OEM_WHQL_CRYPTO_OID) == 0)
