@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic4.cpp 87956 2021-03-04 17:56:15Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic4.cpp 87974 2021-03-05 15:37:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic4 class implementation.
  */
@@ -342,13 +342,13 @@ void UIWizardNewVMPageBasic4::initializePage()
     QString strDefaultName = fieldImp("machineBaseName").toString();
     m_strDefaultName = strDefaultName.isEmpty() ? QString("NewVirtualDisk1") : strDefaultName;
     m_strDefaultPath = fieldImp("machineFolder").toString();
+    /* Set the recommended disk size if user has already not done so: */
     if (m_pSizeEditor && !m_fUserSetSize)
     {
         m_pSizeEditor->blockSignals(true);
         setMediumSize(fieldImp("type").value<CGuestOSType>().GetRecommendedHDD());
         m_pSizeEditor->blockSignals(false);
     }
-
 }
 
 void UIWizardNewVMPageBasic4::cleanupPage()

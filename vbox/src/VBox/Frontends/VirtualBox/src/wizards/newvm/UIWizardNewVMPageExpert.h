@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.h 87973 2021-03-05 15:18:51Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.h 87974 2021-03-05 15:37:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class declaration.
  */
@@ -72,7 +72,7 @@ class UIWizardNewVMPageExpert : public UIWizardPage,
     Q_PROPERTY(CMediumFormat mediumFormat READ mediumFormat);
     // Q_PROPERTY(qulonglong mediumVariant READ mediumVariant WRITE setMediumVariant);
     Q_PROPERTY(QString mediumPath READ mediumPath);
-    // Q_PROPERTY(qulonglong mediumSize READ mediumSize WRITE setMediumSize);
+    Q_PROPERTY(qulonglong mediumSize READ mediumSize WRITE setMediumSize);
 
 public:
 
@@ -101,6 +101,7 @@ private slots:
     void sltInstallGACheckBoxToggle(bool fEnabled);
     void sltValueModified();
     void sltMediumFormatChanged();
+    void sltMediumSizeChanged();
 
 private:
 
