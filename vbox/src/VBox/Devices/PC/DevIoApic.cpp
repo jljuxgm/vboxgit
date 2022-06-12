@@ -1,4 +1,4 @@
-/* $Id: DevIoApic.cpp 89070 2021-05-17 05:49:28Z vboxsync $ */
+/* $Id: DevIoApic.cpp 89071 2021-05-17 05:50:35Z vboxsync $ */
 /** @file
  * IO APIC - Input/Output Advanced Programmable Interrupt Controller.
  */
@@ -567,9 +567,7 @@ DECLINLINE(void) ioapicGetMsiFromRte(uint64_t u64Rte, IOAPICTYPE enmType, PMSIMS
  */
 static void ioapicSignalIntrForRte(PPDMDEVINS pDevIns, PIOAPIC pThis, PIOAPICCC pThisCC, uint8_t idxRte)
 {
-#ifndef IOAPIC_WITH_PDM_CRITSECT
-    Assert(PDMCritSectIsOwner(&pThis->CritSect));
-#endif
+    Assert(IOAPIC_LOCK_IS_OWNER(pDevIns, pThis, pThisCC));
 
     /*
      * Ensure the interrupt isn't masked.
