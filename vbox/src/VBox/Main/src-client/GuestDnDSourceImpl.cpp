@@ -1,4 +1,4 @@
-/* $Id: GuestDnDSourceImpl.cpp 84998 2020-06-29 16:34:22Z vboxsync $ */
+/* $Id: GuestDnDSourceImpl.cpp 85002 2020-06-30 09:34:16Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag and drop source.
  */
@@ -814,15 +814,6 @@ int GuestDnDSource::i_onReceiveFileHdr(PRECVDATACTX pCtx, const char *pszPath, u
                 LogFlowFunc(("Warning: Rebasing current file failed with rc=%Rrc\n", rc));
                 break;
             }
-
-            rc = DnDPathSanitize(pszPathAbs, sizeof(pszPathAbs));
-            if (RT_FAILURE(rc))
-            {
-                LogFlowFunc(("Warning: Rebasing current file failed with rc=%Rrc\n", rc));
-                break;
-            }
-
-            LogRel2(("DnD: Absolute file path for guest file on the host is now '%s'\n", pszPathAbs));
 
             rc = pObj->Init(DnDURIObject::Type_File, pszPathAbs);
             if (RT_SUCCESS(rc))
