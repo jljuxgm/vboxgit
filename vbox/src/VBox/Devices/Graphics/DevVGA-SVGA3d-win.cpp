@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-win.cpp 85368 2020-07-17 09:55:56Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-win.cpp 85369 2020-07-17 10:00:23Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -2817,7 +2817,7 @@ int vmsvga3dContextDestroy(PVGASTATECC pThisCC, uint32_t cid)
 
 int vmsvga3dBackDefineScreen(PVGASTATE pThis, PVGASTATECC pThisCC, VMSVGASCREENOBJECT *pScreen)
 {
-    RT_NOREF(pThisCC, pScreen);
+    RT_NOREF(pThis, pThisCC, pScreen);
     return VERR_NOT_IMPLEMENTED;
 }
 
