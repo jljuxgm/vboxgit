@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.h 86024 2020-09-03 14:37:31Z vboxsync $ */
+/* $Id: DevVGA-SVGA.h 86025 2020-09-03 16:00:44Z vboxsync $ */
 /** @file
  * VMware SVGA device
  */
@@ -48,7 +48,7 @@
 #endif
 
 /* GCC complains that 'ISO C++ prohibits anonymous structs' when "-Wpedantic" is enabled. */
-#ifdef __GNUC__
+#if RT_GNUC_PREREQ(4, 6)
 # pragma GCC diagnostic push
 # pragma GCC diagnostic ignored "-Wpedantic"
 #endif
@@ -58,7 +58,7 @@
 #include <svga3d_shaderdefs.h>
 #include <svga_escape.h>
 #include <svga_overlay.h>
-#ifdef __GNUC__
+#if RT_GNUC_PREREQ(4, 6)
 # pragma GCC diagnostic pop
 #endif
 
