@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 88023 2021-03-08 18:01:15Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 88027 2021-03-08 18:55:08Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -2617,7 +2617,7 @@ static void ichac97R3MixerRecordSelect(PAC97STATE pThis, uint32_t val)
     rs = ichac97R3RecSourceToIdx(ars);
     ls = ichac97R3RecSourceToIdx(als);
 
-    LogRel(("AC97: Record select to left=%s, right=%s\n", DrvAudioHlpRecSrcToStr(ars), DrvAudioHlpRecSrcToStr(als)));
+    LogRel(("AC97: Record select to left=%s, right=%s\n", PDMAudioRecSrcGetName(ars), PDMAudioRecSrcGetName(als)));
 
     ichac97MixerSet(pThis, AC97_Record_Select, rs | (ls << 8));
 }

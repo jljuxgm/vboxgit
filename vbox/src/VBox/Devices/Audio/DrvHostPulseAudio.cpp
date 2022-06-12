@@ -1,4 +1,4 @@
-/* $Id: DrvHostPulseAudio.cpp 88023 2021-03-08 18:01:15Z vboxsync $ */
+/* $Id: DrvHostPulseAudio.cpp 88027 2021-03-08 18:55:08Z vboxsync $ */
 /** @file
  * VBox audio devices: Pulse Audio audio driver.
  */
@@ -810,7 +810,7 @@ static int paCreateStreamOut(PDRVHOSTPULSEAUDIO pThis, PPULSEAUDIOSTREAM pStream
     Assert(pCfgReq->enmDir == PDMAUDIODIR_OUT);
 
     char szName[256];
-    RTStrPrintf(szName, sizeof(szName), "VirtualBox %s [%s]", DrvAudioHlpPlaybackDstToStr(pCfgReq->u.enmDst), pThis->szStreamName);
+    RTStrPrintf(szName, sizeof(szName), "VirtualBox %s [%s]", PDMAudioPlaybackDstGetName(pCfgReq->u.enmDst), pThis->szStreamName);
 
     /* Note that the struct BufAttr is updated to the obtained values after this call! */
     int rc = paStreamOpen(pThis, pStreamPA, false /* fIn */, szName);
@@ -854,7 +854,7 @@ static int paCreateStreamIn(PDRVHOSTPULSEAUDIO pThis, PPULSEAUDIOSTREAM  pStream
     Assert(pCfgReq->enmDir == PDMAUDIODIR_IN);
 
     char szName[256];
-    RTStrPrintf(szName, sizeof(szName), "VirtualBox %s [%s]", DrvAudioHlpRecSrcToStr(pCfgReq->u.enmSrc), pThis->szStreamName);
+    RTStrPrintf(szName, sizeof(szName), "VirtualBox %s [%s]", PDMAudioRecSrcGetName(pCfgReq->u.enmSrc), pThis->szStreamName);
 
     /* Note: Other members of BufAttr are ignored for record streams. */
     int rc = paStreamOpen(pThis, pStreamPA, true /* fIn */, szName);

@@ -1,4 +1,4 @@
-/* $Id: HDACodec.cpp 87807 2021-02-19 12:17:59Z vboxsync $ */
+/* $Id: HDACodec.cpp 88027 2021-03-08 18:55:08Z vboxsync $ */
 /** @file
  * HDACodec - VBox HD Audio Codec.
  *
@@ -897,7 +897,7 @@ static int hdaR3CodecToAudVolume(PHDACODECR3 pThisCC, PCODECNODE pNode, AMPLIFIE
              pNode->node.uID, lVol, rVol, RT_BOOL(iMute) ? "Muted" : "Unmuted"));
 
     LogRel2(("HDA: Setting volume for mixer control '%s' to %RU8/%RU8 (%s)\n",
-             DrvAudioHlpAudMixerCtlToStr(enmMixerCtl), lVol, rVol, RT_BOOL(iMute) ? "Muted" : "Unmuted"));
+             PDMAudioMixerCtlGetName(enmMixerCtl), lVol, rVol, RT_BOOL(iMute) ? "Muted" : "Unmuted"));
 
     return pThisCC->pfnCbMixerSetVolume(pThisCC->pDevIns, enmMixerCtl, &Vol);
 }
