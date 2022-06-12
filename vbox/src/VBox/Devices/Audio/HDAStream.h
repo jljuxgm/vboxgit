@@ -1,4 +1,4 @@
-/* $Id: HDAStream.h 87567 2021-02-03 14:25:29Z vboxsync $ */
+/* $Id: HDAStream.h 87569 2021-02-03 14:40:05Z vboxsync $ */
 /** @file
  * HDAStream.h - Streams for HD Audio.
  */
@@ -281,8 +281,6 @@ bool                hdaR3StreamTransferIsScheduled(PHDASTREAM pStreamShared, uin
 uint64_t            hdaR3StreamTransferGetNext(PHDASTREAM pStreamShared);
 void                hdaR3StreamLock(PHDASTREAMR3 pStreamR3);
 void                hdaR3StreamUnlock(PHDASTREAMR3 pStreamR3);
-/* int                 hdaR3StreamRead(PHDASTREAM pStream, uint32_t cbToRead, uint32_t *pcbRead); - only used in HDAStream.cpp */
-/*int                 hdaR3StreamWrite(PHDASTREAM pStream, const void *pvBuf, uint32_t cbBuf, uint32_t *pcbWritten); - only used in HDAStream.cpp */
 void                hdaR3StreamUpdate(PPDMDEVINS pDevIns, PHDASTATE pThis, PHDASTATER3 pThisCC,
                                       PHDASTREAM pStreamShared, PHDASTREAMR3 pStreamR3, bool fInTimer);
 PHDASTREAM          hdaR3StreamR3ToShared(PHDASTREAMR3 pStreamCC);
