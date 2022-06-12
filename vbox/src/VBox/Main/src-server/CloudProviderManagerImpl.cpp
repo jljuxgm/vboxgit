@@ -1,4 +1,4 @@
-/* $Id: CloudProviderManagerImpl.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: CloudProviderManagerImpl.cpp 85247 2020-07-11 23:09:15Z vboxsync $ */
 /** @file
  * ICloudProviderManager  COM class implementations.
  */
@@ -73,6 +73,7 @@ void CloudProviderManager::uninit()
 }
 
 #ifdef VBOX_WITH_EXTPACK
+
 bool CloudProviderManager::i_canRemoveExtPack(IExtPack *aExtPack)
 {
     AssertReturn(aExtPack, false);
@@ -118,8 +119,8 @@ bool CloudProviderManager::i_canRemoveExtPack(IExtPack *aExtPack)
             }
             if (SUCCEEDED(hrc) && uRefCnt == 1)
             {
-                m_astrExtPackNames.erase(m_astrExtPackNames.begin() + i);
-                m_apCloudProviders.erase(m_apCloudProviders.begin() + i);
+                m_astrExtPackNames.erase(m_astrExtPackNames.begin() + (ssize_t)i);
+                m_apCloudProviders.erase(m_apCloudProviders.begin() + (ssize_t)i);
             }
             else
             {
@@ -180,6 +181,7 @@ void CloudProviderManager::i_addExtPack(IExtPack *aExtPack)
         }
     }
 }
+
 #endif  /* VBOX_WITH_EXTPACK */
 
 HRESULT CloudProviderManager::getProviders(std::vector<ComPtr<ICloudProvider> > &aProviders)
