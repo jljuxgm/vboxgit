@@ -1,4 +1,4 @@
-/* $Id: DevIommuIntel.cpp 88594 2021-04-20 04:14:19Z vboxsync $ */
+/* $Id: DevIommuIntel.cpp 88595 2021-04-20 04:16:00Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - Intel implementation.
  */
@@ -862,6 +862,7 @@ static bool dmarFaultCanRecord(PDMAR pThis)
     }
 
     uFstsReg |= VTD_BF_FSTS_REG_PPF_MASK;
+    dmarRegWrite32(pThis, VTD_MMIO_OFF_FSTS_REG, uFstsReg);
     return true;
 }
 
