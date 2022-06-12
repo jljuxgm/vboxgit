@@ -1,4 +1,4 @@
-/* $Id: Svga.h 85121 2020-07-08 19:33:26Z vboxsync $ */
+/* $Id: Svga.h 86307 2020-09-26 15:26:55Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver VMSVGA.
  */
@@ -32,11 +32,6 @@
 
 #include <svga_reg.h>
 #include <svga3d_reg.h>
-
-#ifndef SVGA_CAP_GBOBJECTS
-#define SVGA_CAP_GBOBJECTS 0x08000000
-#define SVGA_REG_DEV_CAP 52
-#endif
 
 #define SVGA_SYNC_GENERIC         1
 #define SVGA_SYNC_FIFOFULL        2
