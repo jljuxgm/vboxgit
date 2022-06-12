@@ -1,4 +1,4 @@
-/* $Id: tstAudioMixBuffer.cpp 88312 2021-03-29 13:03:54Z vboxsync $ */
+/* $Id: tstAudioMixBuffer.cpp 88314 2021-03-29 14:16:36Z vboxsync $ */
 /** @file
  * Audio testcase - Mixing buffer.
  */
@@ -32,6 +32,7 @@
 #include "../AudioMixBuffer.h"
 #include "../AudioHlp.h"
 
+#define _USE_MATH_DEFINES
 #include <math.h> /* sin, M_PI */
 
 
