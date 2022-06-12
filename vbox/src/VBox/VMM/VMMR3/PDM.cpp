@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: PDM.cpp 84459 2020-05-22 12:55:07Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -829,6 +829,12 @@ VMMR3_INT_DECL(int) PDMR3Term(PVM pVM)
             Req.pDevInsR3    = pDevIns;
             int rc2 = VMMR3CallR0(pVM, VMMR0_DO_PDM_DEVICE_GEN_CALL, 0, &Req.Hdr);
             AssertRC(rc2);
+        }
+
+        if (pDevIns->Internal.s.paDbgfTraceTrack)
+        {
+            RTMemFree(pDevIns->Internal.s.paDbgfTraceTrack);
+            pDevIns->Internal.s.paDbgfTraceTrack = NULL;
         }
 
         TMR3TimerDestroyDevice(pVM, pDevIns);
