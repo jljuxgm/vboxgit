@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsNetwork.cpp 86045 2020-09-07 14:58:04Z vboxsync $ */
+/* $Id: UIMachineSettingsNetwork.cpp 87460 2021-01-28 13:54:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsNetwork class implementation.
  */
@@ -852,6 +852,7 @@ void UIMachineSettingsNetwork::prepareWidgets()
                 {
                     if (m_pLabelMAC)
                         m_pLabelMAC->setBuddy(m_pEditorMAC);
+                    m_pEditorMAC->setAllowToCopyContentsWhenDisabled(true);
                     m_pEditorMAC->setValidator(new QRegExpValidator(QRegExp("[0-9A-Fa-f]{12}"), this));
                     m_pEditorMAC->setMinimumWidthByText(QString().fill('0', 12));
 
