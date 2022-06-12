@@ -1,4 +1,4 @@
-/* $Id: VMDK.cpp 87054 2020-12-08 14:12:40Z vboxsync $ */
+/* $Id: VMDK.cpp 87055 2020-12-08 14:20:23Z vboxsync $ */
 /** @file
  * VMDK disk image, core code.
  */
@@ -13,8 +13,8 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
- 
- 
+
+
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
