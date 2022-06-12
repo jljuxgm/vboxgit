@@ -1,4 +1,4 @@
-/* $Id: UIBaseMemoryEditor.cpp 86086 2020-09-10 14:31:20Z vboxsync $ */
+/* $Id: UIBaseMemoryEditor.cpp 87612 2021-02-04 18:55:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIBaseMemoryEditor class implementation.
  */
@@ -392,7 +392,10 @@ void UIBaseMemoryEditor::prepare()
 void UIBaseMemoryEditor::revalidate()
 {
     if (m_pSlider)
+    {
         emit sigValidChanged(m_pSlider->value() < (int)m_pSlider->maxRAMAlw());
+        emit sigValueChanged(m_pSlider->value());
+    }
 }
 
 

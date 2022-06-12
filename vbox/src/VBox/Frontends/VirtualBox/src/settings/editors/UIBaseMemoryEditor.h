@@ -1,4 +1,4 @@
-/* $Id: UIBaseMemoryEditor.h 86089 2020-09-11 09:54:24Z vboxsync $ */
+/* $Id: UIBaseMemoryEditor.h 87612 2021-02-04 18:55:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIBaseMemoryEditor class declaration.
  */
@@ -42,6 +42,7 @@ signals:
 
     /** Notifies listeners about value has became @a fValid. */
     void sigValidChanged(bool fValid);
+    void sigValueChanged(int iValue);
 
 public:
 
