@@ -1,4 +1,4 @@
-/* $Id: vbox_ttm.c 86174 2020-09-18 15:35:52Z vboxsync $ */
+/* $Id: vbox_ttm.c 86196 2020-09-21 13:17:37Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -303,7 +303,7 @@ int vbox_mm_init(struct vbox_private *vbox)
 #if RTLNX_VER_MIN(3,15,0) || RTLNX_RHEL_MAJ_PREREQ(7,1)
 				 dev->anon_inode->i_mapping,
 #endif
-#if RTLNX_VER_MIN(5,5,0)
+#if RTLNX_VER_MIN(5,5,0) || RTLNX_RHEL_MIN(8,3)
                                  dev->vma_offset_manager,
 #elif RTLNX_VER_MAX(5,2,0) && !RTLNX_RHEL_MAJ_PREREQ(8,2)
 				 DRM_FILE_PAGE_OFFSET,
