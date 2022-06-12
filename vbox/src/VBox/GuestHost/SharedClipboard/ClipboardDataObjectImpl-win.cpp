@@ -1,4 +1,4 @@
-/* $Id: ClipboardDataObjectImpl-win.cpp 87452 2021-01-27 17:11:25Z vboxsync $ */
+/* $Id: ClipboardDataObjectImpl-win.cpp 87611 2021-02-04 16:31:28Z vboxsync $ */
 /** @file
  * ClipboardDataObjectImpl-win.cpp - Shared Clipboard IDataObject implementation.
  */
@@ -352,7 +352,7 @@ DECLCALLBACK(int) SharedClipboardWinDataObject::readThread(RTTHREAD ThreadSelf, 
     LogRel2(("Shared Clipboard: Calculating transfer ...\n"));
 
     PSHCLROOTLIST pRootList;
-    rc = ShClTransferRootsGet(pTransfer, &pRootList);
+    int rc = ShClTransferRootsGet(pTransfer, &pRootList);
     if (RT_SUCCESS(rc))
     {
         LogFlowFunc(("cRoots=%RU32\n\n", pRootList->Hdr.cRoots));
@@ -966,4 +966,3 @@ void SharedClipboardWinDataObject::registerFormat(LPFORMATETC pFormatEtc, CLIPFO
 
     logFormat(pFormatEtc->cfFormat);
 }
-

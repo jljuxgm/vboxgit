@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibClipboard.cpp 87452 2021-01-27 17:11:25Z vboxsync $ */
+/* $Id: VBoxGuestR3LibClipboard.cpp 87611 2021-02-04 16:31:28Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Shared Clipboard.
  */
@@ -1802,6 +1802,8 @@ static int vbglR3ClipboardTransferStart(PVBGLR3SHCLCMDCTX pCmdCtx, PSHCLTRANSFER
     int rc = ShClTransferCreate(&pTransfer);
     if (RT_SUCCESS(rc))
     {
+        ShClTransferSetCallbacks(pTransfer, &pCmdCtx->Transfers.Callbacks);
+
         rc = ShClTransferInit(pTransfer, enmDir, enmSource);
         if (RT_SUCCESS(rc))
         {
