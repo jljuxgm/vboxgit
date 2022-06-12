@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-internal.h 86024 2020-09-03 14:37:31Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-internal.h 86576 2020-10-14 15:09:53Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device - 3D part, internal header.
  */
@@ -1424,7 +1424,7 @@ void FormatConvReadTexture(PVMSVGA3DSTATE pState,
                            uint32_t iMipmap);
 #endif
 
-int vmsvga3dShaderParse(uint32_t cbShaderData, uint32_t const *pShaderData);
+int vmsvga3dShaderParse(SVGA3dShaderType type, uint32_t cbShaderData, uint32_t const *pShaderData);
 void vmsvga3dShaderLogRel(char const *pszMsg, SVGA3dShaderType type, uint32_t cbShaderData, uint32_t const *pShaderData);
 
 #endif /* !VBOX_INCLUDED_SRC_Graphics_DevVGA_SVGA3d_internal_h */
