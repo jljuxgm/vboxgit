@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 84505 2020-05-25 14:53:12Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -7907,11 +7907,7 @@ IEM_STATIC VBOXSTRICTRC iemVmxVmwrite(PVMCPUCC pVCpu, uint8_t cbInstr, uint8_t i
         if (pVCpu->iem.s.enmCpuMode == IEMMODE_64BIT)
             rcStrict = iemMemFetchDataU64(pVCpu, &u64Val, iEffSeg, GCPtrVal);
         else
-        {
-            uint32_t u32Val;
-            rcStrict = iemMemFetchDataU32(pVCpu, &u32Val, iEffSeg, GCPtrVal);
-            u64Val = u32Val;
-        }
+            rcStrict = iemMemFetchDataU32_ZX_U64(pVCpu, &u64Val, iEffSeg, GCPtrVal);
         if (RT_UNLIKELY(rcStrict != VINF_SUCCESS))
         {
             Log(("vmwrite: Failed to read value from memory operand at %#RGv, rc=%Rrc\n", GCPtrVal, VBOXSTRICTRC_VAL(rcStrict)));
