@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserDialog.h 86964 2020-11-24 09:49:53Z vboxsync $ */
+/* $Id: UIHelpBrowserDialog.h 87015 2020-11-30 16:15:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserDialog class declaration.
  */
@@ -56,6 +56,9 @@ protected:
     virtual bool shouldBeMaximized() const /* override */;
 
 private slots:
+
+    void sltHandleLinkHighlighted(const QString& strLink);
+    void sltHandleStatusBarVisibilityChange(bool fVisible);
 
 private:
 

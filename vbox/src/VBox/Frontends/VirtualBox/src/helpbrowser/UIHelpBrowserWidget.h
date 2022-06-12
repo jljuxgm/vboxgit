@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.h 86965 2020-11-24 10:06:52Z vboxsync $ */
+/* $Id: UIHelpBrowserWidget.h 87015 2020-11-30 16:15:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class declaration.
  */
@@ -64,6 +64,8 @@ class SHARED_LIBRARY_STUFF UIHelpBrowserWidget  : public QIWithRetranslateUI<QWi
 signals:
 
     void sigCloseDialog();
+    void sigLinkHighlighted(const QString &strLink);
+    void sigStatusBarVisible(bool fToggled);
 
 public:
 
@@ -173,7 +175,8 @@ private:
     QAction             *m_pCloseDialogAction;
     QAction             *m_pShowHideSideBarAction;
     QAction             *m_pShowHideToolBarAction;
-    QAction             *m_pShowHideFontScaleWidget;
+    QAction             *m_pShowHideFontScaleWidgetAction;
+    QAction             *m_pShowHideStatusBarAction;
     QAction             *m_pFontSizeLargerAction;
     QAction             *m_pFontSizeSmallerAction;
     QAction             *m_pFontSizeResetAction;
