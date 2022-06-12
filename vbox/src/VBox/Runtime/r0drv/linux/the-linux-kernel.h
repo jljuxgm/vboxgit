@@ -1,4 +1,4 @@
-/* $Id: the-linux-kernel.h 84255 2020-05-11 14:32:23Z vboxsync $ */
+/* $Id: the-linux-kernel.h 85518 2020-07-29 11:01:45Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the Linux kernel.
  */
@@ -174,6 +174,11 @@
 /* for set_pages_x() */
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 12, 0)
 # include <asm/set_memory.h>
+#endif
+
+/* for __flush_tlb_all() */
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 28) && (defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86))
+# include <asm/tlbflush.h>
 #endif
 
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 7, 0)
