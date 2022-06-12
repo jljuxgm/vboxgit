@@ -1,4 +1,4 @@
-/* $Id: VBoxDrvInst.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
+/* $Id: VBoxDrvInst.cpp 88190 2021-03-18 12:02:12Z vboxsync $ */
 /** @file
  * VBoxDrvInst - Driver and service installation helper for Windows guests.
  */
@@ -366,6 +366,10 @@ int VBoxInstallDriver(const BOOL fInstall, const _TCHAR *pszDriverPath, BOOL fSi
                         _tprintf(_T("ERROR: The driver package type is not supported of INF %ws!\n"), szDriverInf);
                         break;
 
+                    case ERROR_NO_SUCH_DEVINST:
+                        _tprintf(_T("INFO: The driver package was installed but no matching devices found in the device tree (ERROR_NO_SUCH_DEVINST).\n"));
+                    break;
+
                     default:
                     {
                         /* Try error lookup with GetErrorMsg(). */
@@ -375,7 +379,14 @@ int VBoxInstallDriver(const BOOL fInstall, const _TCHAR *pszDriverPath, BOOL fSi
                         break;
                     }
                 }
-                hr = HRESULT_FROM_WIN32(dwRet);
+
+                if (dwRet == ERROR_NO_SUCH_DEVINST)
+                {
+                    /* GA installer should ignore this error code and continue */
+                    hr = S_OK;
+                }
+                else
+                    hr = HRESULT_FROM_WIN32(dwRet);
             }
             g_pfnDIFXAPISetLogCallback(NULL, NULL);
             if (phFile)
