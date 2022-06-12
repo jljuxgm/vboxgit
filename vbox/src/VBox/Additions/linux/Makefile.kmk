@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 89653 2021-06-13 21:59:57Z vboxsync $
+# $Id: Makefile.kmk 89654 2021-06-13 22:01:44Z vboxsync $
 ## @file
 # Makefile for the linux guest additions base directory.
 #
@@ -116,6 +116,10 @@ VBOX_LNX_ADD_STRIP_BIN += \
 	VBoxControl \
 	VBoxDRMClient \
 	VBoxClient
+ifdef VBOX_WITH_VALIDATIONKIT
+ VBOX_LNX_ADD_STRIP_BIN += \
+ 	vkat
+endif
 
 VBOX_LNX_ADD_STRIP_SBIN += \
 	VBoxService \
