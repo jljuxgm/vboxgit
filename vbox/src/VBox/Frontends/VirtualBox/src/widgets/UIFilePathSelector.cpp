@@ -1,4 +1,4 @@
-/* $Id: UIFilePathSelector.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIFilePathSelector.cpp 85135 2020-07-09 06:59:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFilePathSelector class implementation.
  */
@@ -26,6 +26,7 @@
 #ifdef VBOX_WS_WIN
 # include <QListView>
 #endif
+#include <QPalette>
 
 /* GUI includes: */
 #include "QIFileDialog.h"
@@ -182,6 +183,7 @@ const QString& UIFilePathSelector::defaultPath() const
 {
     return m_strDefaultPath;
 }
+
 
 void UIFilePathSelector::setPath(const QString &strPath, bool fRefreshText /* = true */)
 {

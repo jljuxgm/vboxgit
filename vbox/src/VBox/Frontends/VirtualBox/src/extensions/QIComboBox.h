@@ -1,4 +1,4 @@
-/* $Id: QIComboBox.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: QIComboBox.h 85135 2020-07-09 06:59:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIComboBox class declaration.
  */
@@ -118,6 +118,8 @@ public:
     QComboBox::SizeAdjustPolicy sizeAdjustPolicy() const;
     /** Defines size adjust @a enmPolicy. */
     void setSizeAdjustPolicy(QComboBox::SizeAdjustPolicy enmPolicy);
+    /** Paints the file selectors background to a reddish color when @p fError is true. */
+    void mark(bool fError);
 
 public slots:
 
@@ -153,6 +155,9 @@ private:
 
     /** Holds the original combo-box instance. */
     QComboBox *m_pComboBox;
+
+    /** The original background base color. Used when marking/unmarking the combo box. */
+    QColor m_originalBaseColor;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_extensions_QIComboBox_h */

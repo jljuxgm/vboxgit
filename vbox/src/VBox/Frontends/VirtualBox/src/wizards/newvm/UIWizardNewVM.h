@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.h 85064 2020-07-06 10:42:13Z vboxsync $ */
+/* $Id: UIWizardNewVM.h 85135 2020-07-09 06:59:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class declaration.
  */
@@ -71,7 +71,7 @@ public:
         PageExpert
     };
 
-    /* Constructor: */
+    /** Constructor: */
     UIWizardNewVM(QWidget *pParent, const QString &strGroup = QString());
 
     /** Prepare routine. */

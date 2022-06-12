@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic1.cpp 85110 2020-07-08 14:23:18Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic1.cpp 85135 2020-07-09 06:59:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic1 class implementation.
  */
@@ -482,6 +482,25 @@ const QString &UIWizardNewVMPage1::detectedOSTypeId() const
     return m_strDetectedOSTypeId;
 }
 
+void UIWizardNewVMPage1::setTypeByISODetectedOSType(const QString &strDetectedOSType)
+{
+    if (!strDetectedOSType.isEmpty())
+        onNameChanged(strDetectedOSType);
+}
+
+void UIWizardNewVMPage1::markWidgets() const
+{
+    if (m_pISOFilePathSelector)
+        m_pISOFilePathSelector->mark(isISOFileSelectorComplete());
+}
+
+bool UIWizardNewVMPage1::isISOFileSelectorComplete() const
+{
+    if (!m_pISOFilePathSelector)
+        return false;
+    return checkISOFile();
+}
+
 UIWizardNewVMPageBasic1::UIWizardNewVMPageBasic1(const QString &strGroup)
     : UIWizardNewVMPage1(strGroup)
 {
@@ -524,17 +543,12 @@ int UIWizardNewVMPageBasic1::nextId() const
     return UIWizardNewVM::Page2;
 }
 
-void UIWizardNewVMPage1::setTypeByISODetectedOSType(const QString &strDetectedOSType)
-{
-    if (!strDetectedOSType.isEmpty())
-        onNameChanged(strDetectedOSType);
-}
-
 bool UIWizardNewVMPageBasic1::isComplete() const
 {
+    markWidgets();
     if (m_pNameAndSystemEditor->name().isEmpty())
         return false;
-    return checkISOFile();
+    return isISOFileSelectorComplete();
 }
 
 void UIWizardNewVMPageBasic1::sltNameChanged(const QString &strNewName)

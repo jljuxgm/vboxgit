@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic1.h 85104 2020-07-08 08:48:27Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic1.h 85135 2020-07-09 06:59:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic1 class declaration.
  */
@@ -70,14 +70,16 @@ protected:
         const QString &detectedOSTypeId() const;
     /** @} */
 
-
     bool determineOSType(const QString &strISOPath);
     /** calls CVirtualBox::ComposeMachineFilename(...) and sets related member variables */
     void composeMachineFilePath();
-    bool checkISOFile() const;
     /** Creates the page widgets and adds them into the @p pGridLayout. */
     void createNameOSTypeWidgets(QGridLayout *pGridLayout, bool fCreateLabels = true);
     void setTypeByISODetectedOSType(const QString &strDetectedOSType);
+    /** Colors the widgets red if they cause isComplete to fail. */
+    void markWidgets() const;
+
+    bool isISOFileSelectorComplete() const;
 
     /** @name Widgets
      * @{ */
@@ -88,7 +90,7 @@ protected:
        /** Holds the ISO selector label instance. */
        QLabel *m_pISOSelectorLabel;
        /** Holds the ISO selector editor instance. */
-       UIFilePathSelector *m_pISOFilePathSelector;
+       mutable UIFilePathSelector *m_pISOFilePathSelector;
        /** Holds the headless start label instance. */
        QLabel *m_pStartHeadlessLabel;
        /** Holds the headless start checkbox instance. */
@@ -104,6 +106,7 @@ protected:
 
 private:
 
+    bool checkISOFile() const;
 
     /** Full path (including the file name) of the machine's configuration file. */
     QString m_strMachineFilePath;
