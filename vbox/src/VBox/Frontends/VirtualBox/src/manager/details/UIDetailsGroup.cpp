@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGroup.cpp 88805 2021-04-30 13:29:59Z vboxsync $ */
+/* $Id: UIDetailsGroup.cpp 89170 2021-05-19 14:09:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsGroup class implementation.
  */
@@ -194,12 +194,6 @@ void UIDetailsGroup::sltBuildStep(const QUuid &uStepId, int iStepNumber)
     }
 }
 
-void UIDetailsGroup::paint(QPainter *pPainter, const QStyleOptionGraphicsItem *pOptions, QWidget *)
-{
-    /* Paint background: */
-    paintBackground(pPainter, pOptions);
-}
-
 void UIDetailsGroup::addItem(UIDetailsItem *pItem)
 {
     switch (pItem->type())
@@ -272,20 +266,4 @@ void UIDetailsGroup::prepareConnections()
     /* Prepare group-item connections: */
     connect(this, &UIDetailsGroup::sigMinimumWidthHintChanged,
             model(), &UIDetailsModel::sigRootItemMinimumWidthHintChanged);
-}
-
-void UIDetailsGroup::paintBackground(QPainter *pPainter, const QStyleOptionGraphicsItem *pOptions) const
-{
-    /* Save painter: */
-    pPainter->save();
-
-    /* Prepare variables: */
-    const QRect optionRect = pOptions->rect;
-
-    /* Paint default background: */
-    const QColor backgroundColor = QApplication::palette().color(QPalette::Active, QPalette::Window);
-    pPainter->fillRect(optionRect, backgroundColor);
-
-    /* Restore painter: */
-    pPainter->restore();
 }

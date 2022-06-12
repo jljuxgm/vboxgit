@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGroup.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIDetailsGroup.h 89170 2021-05-19 14:09:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsGroup class declaration.
  */
@@ -95,12 +95,6 @@ protected slots:
 
 protected:
 
-    /** @name Event-handling stuff.
-      * @{ */
-        /** Performs painting using passed @a pPainter, @a pOptions and optionally specified @a pWidget. */
-        virtual void paint(QPainter *pPainter, const QStyleOptionGraphicsItem *pOptions, QWidget *pWidget = 0) /* override */;
-    /** @} */
-
     /** @name Item stuff.
       * @{ */
         /** Returns RTTI item type. */
@@ -135,12 +129,6 @@ private:
       * @{ */
         /** Prepares connections. */
         void prepareConnections();
-    /** @} */
-
-    /** @name Painting stuff.
-      * @{ */
-        /** Paints background using specified @a pPainter and certain @a pOptions. */
-        void paintBackground(QPainter *pPainter, const QStyleOptionGraphicsItem *pOptions) const;
     /** @} */
 
     /** @name Item stuff.

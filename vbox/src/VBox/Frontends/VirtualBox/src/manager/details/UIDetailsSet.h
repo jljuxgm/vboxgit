@@ -1,4 +1,4 @@
-/* $Id: UIDetailsSet.h 89106 2021-05-17 15:32:35Z vboxsync $ */
+/* $Id: UIDetailsSet.h 89170 2021-05-19 14:09:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsSet class declaration.
  */
@@ -212,6 +212,11 @@ private:
         QList<DetailsElementType>  m_types;
         /** Holds the generated set ID. */
         QUuid                      m_uSetId;
+
+        /** Holds the start background darkness. */
+        int  m_iBackgroundDarknessStart;
+        /** Holds the final background darkness. */
+        int  m_iBackgroundDarknessFinal;
     /** @} */
 
     /** @name Children stuff.

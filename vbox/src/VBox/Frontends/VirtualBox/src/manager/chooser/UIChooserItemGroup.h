@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGroup.h 86767 2020-10-30 11:34:06Z vboxsync $ */
+/* $Id: UIChooserItemGroup.h 89170 2021-05-19 14:09:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGroup class declaration.
  */
@@ -322,6 +322,11 @@ private:
         QString  m_strInfoGroups;
         /** Holds the cached machine children info. */
         QString  m_strInfoMachines;
+
+        /** Holds the start background darkness. */
+        int  m_iBackgroundDarknessStart;
+        /** Holds the final background darkness. */
+        int  m_iBackgroundDarknessFinal;
 
         /** Holds aditional height. */
         int  m_iAdditionalHeight;
