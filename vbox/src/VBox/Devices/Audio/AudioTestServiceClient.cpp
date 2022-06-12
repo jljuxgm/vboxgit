@@ -1,4 +1,4 @@
-/* $Id: AudioTestServiceClient.cpp 89205 2021-05-20 16:37:01Z vboxsync $ */
+/* $Id: AudioTestServiceClient.cpp 89206 2021-05-20 16:44:59Z vboxsync $ */
 /** @file
  * AudioTestServiceClient - Audio test execution server, Client helpers.
  *
@@ -187,7 +187,7 @@ DECLINLINE (void) audioTestSvcClientReqHdrInit(PATSPKTHDR pReqHdr, size_t cbReq,
 
     memcpy(pReqHdr->achOpcode, pszOp, sizeof(pReqHdr->achOpcode));
     pReqHdr->uCrc32 = 0; /** @todo Do CRC-32 calculation. */
-    pReqHdr->cb     = cbReq + cbPayload;
+    pReqHdr->cb     = (uint32_t)cbReq + (uint32_t)cbPayload;
 }
 
 static int audioTestSvcClientDoGreet(PATSCLIENT pClient)
