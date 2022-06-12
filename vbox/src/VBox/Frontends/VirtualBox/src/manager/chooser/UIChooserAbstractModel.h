@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.h 86783 2020-11-02 16:50:56Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.h 86787 2020-11-02 18:21:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class declaration.
  */
@@ -219,6 +219,15 @@ protected slots:
 
         /** Handles Cloud Profile Manager cumulative change. */
         virtual void sltHandleCloudProfileManagerCumulativeChange();
+    /** @} */
+
+protected:
+
+    /** @name Children stuff.
+      * @{ */
+        /** Creates and registers read cloud machine list task with @a guiCloudProfileKey.
+          * @param  fWithRefresh  Brings whether machines should be refreshed as well. */
+        void createReadCloudMachineListTask(const UICloudEntityKey &guiCloudProfileKey, bool fWithRefresh);
     /** @} */
 
 private slots:
