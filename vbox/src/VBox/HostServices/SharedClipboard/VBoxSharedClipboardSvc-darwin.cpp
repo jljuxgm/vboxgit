@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-darwin.cpp 85763 2020-08-14 11:03:34Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-darwin.cpp 85980 2020-09-01 15:06:44Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Mac OS X host.
  */
@@ -240,7 +240,7 @@ int ShClBackendFormatAnnounce(PSHCLCLIENT pClient, SHCLFORMATS fFormats)
     /*
      * Now, request the data from the guest.
      */
-    return ShClSvcDataReadRequest(pClient, fFormats, NULL /* pidEvent */);
+    return ShClSvcGuestDataRequest(pClient, fFormats, NULL /* pidEvent */);
 }
 
 int ShClBackendReadData(PSHCLCLIENT pClient, PSHCLCLIENTCMDCTX pCmdCtx, SHCLFORMAT fFormat,

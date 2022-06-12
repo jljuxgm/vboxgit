@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-win.cpp 85775 2020-08-14 15:17:17Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-win.cpp 85980 2020-09-01 15:06:44Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Win32 host.
  */
@@ -178,7 +178,7 @@ static int vboxClipboardSvcWinDataRead(PSHCLCONTEXT pCtx, UINT uFormat, void **p
     }
 
     SHCLEVENTID idEvent = 0;
-    int rc = ShClSvcDataReadRequest(pCtx->pClient, fFormat, &idEvent);
+    int rc = ShClSvcGuestDataRequest(pCtx->pClient, fFormat, &idEvent);
     if (RT_SUCCESS(rc))
     {
         PSHCLEVENTPAYLOAD pPayload;
@@ -833,7 +833,7 @@ int ShClBackendWriteData(PSHCLCLIENT pClient, PSHCLCLIENTCMDCTX pCmdCtx,
 {
     LogFlowFuncEnter();
 
-    int rc = ShClSvcDataReadSignal(pClient, pCmdCtx, uFormat, pvData, cbData);
+    int rc = ShClSvcGuestDataReceived(pClient, pCmdCtx, uFormat, pvData, cbData);
 
     LogFlowFuncLeaveRC(rc);
     return rc;

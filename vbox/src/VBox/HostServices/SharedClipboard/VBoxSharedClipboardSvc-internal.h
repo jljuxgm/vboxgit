@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-internal.h 84509 2020-05-25 15:09:24Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-internal.h 85980 2020-09-01 15:06:44Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Internal header.
  */
@@ -241,8 +241,8 @@ void shClSvcClientTransfersReset(PSHCLCLIENT pClient);
  * Locking is between the (host) service thread and the platform-dependent (window) thread.
  * @{
  */
-int ShClSvcDataReadRequest(PSHCLCLIENT pClient, SHCLFORMATS fFormats, PSHCLEVENTID pidEvent);
-int ShClSvcDataReadSignal(PSHCLCLIENT pClient, PSHCLCLIENTCMDCTX pCmdCtx, SHCLFORMAT uFormat, void *pvData, uint32_t cbData);
+int ShClSvcGuestDataRequest(PSHCLCLIENT pClient, SHCLFORMATS fFormats, PSHCLEVENTID pidEvent);
+int ShClSvcGuestDataReceived(PSHCLCLIENT pClient, PSHCLCLIENTCMDCTX pCmdCtx, SHCLFORMAT uFormat, void *pvData, uint32_t cbData);
 int ShClSvcHostReportFormats(PSHCLCLIENT pClient, SHCLFORMATS fFormats);
 uint32_t ShClSvcGetMode(void);
 bool ShClSvcGetHeadless(void);
