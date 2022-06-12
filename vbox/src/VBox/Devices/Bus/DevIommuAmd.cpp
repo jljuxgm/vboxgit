@@ -1,4 +1,4 @@
-/* $Id: DevIommuAmd.cpp 86255 2020-09-24 06:20:40Z vboxsync $ */
+/* $Id: DevIommuAmd.cpp 86256 2020-09-24 06:53:21Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - AMD implementation.
  */
@@ -2659,10 +2659,10 @@ static int iommuAmdReadDte(PPDMDEVINS pDevIns, uint16_t uDevId, IOMMUOP enmOp, P
 
     uint8_t const idxSegsEn = Ctrl.n.u3DevTabSegEn;
     Assert(idxSegsEn < RT_ELEMENTS(g_auDevTabSegShifts));
-    Assert(idxSegsEn < RT_ELEMENTS(g_auDevTabSegMasks));
 
     uint8_t const idxSeg = (uDevId & g_auDevTabSegMasks[idxSegsEn]) >> g_auDevTabSegShifts[idxSegsEn];
     Assert(idxSeg < RT_ELEMENTS(pThis->aDevTabBaseAddrs));
+    AssertCompile(RT_ELEMENTS(g_auDevTabSegShifts) == RT_ELEMENTS(g_auDevTabSegMasks));
 
     RTGCPHYS const GCPhysDevTab = pThis->aDevTabBaseAddrs[idxSeg].n.u40Base << X86_PAGE_4K_SHIFT;
     uint16_t const offDte       = (uDevId & ~g_auDevTabSegMasks[idxSegsEn]) * sizeof(DTE_T);
