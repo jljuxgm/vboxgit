@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84454 $"
+__version__ = "$Revision: 84483 $"
 
 # Standard Python imports.
 import errno
@@ -2948,6 +2948,7 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
             if oTestVm.isWindows() \
             or oTestVm.isOS2():
                 sEcho = sShell;
+                sEchoSuffix = '';
             else:
                 sEcho       = oTestVm.pathJoin(self.oTstDrv.getGuestSystemDir(oTestVm), 'echo');
                 # The suffix acts as an indicator / beacon to see if the actual (random) args were received fully.
