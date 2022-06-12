@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 85113 2020-07-08 16:33:03Z vboxsync $ */
+/* $Id: DevPCNet.cpp 85114 2020-07-08 16:38:45Z vboxsync $ */
 /** @file
  * DevPCNet - AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  *
@@ -818,6 +818,8 @@ DECLINLINE(bool) pcnetTmdTryLoad(PPDMDEVINS pDevIns, PPCNETSTATE pThis, TMD *tmd
     return !!tmd->tmd1.own;
 }
 
+#if defined(IN_RING3) || defined(LOG_ENABLED)
+
 /**
  * Loads an entire transmit message descriptor. Used for logging/debugging.
  *
@@ -855,6 +857,8 @@ DECLINLINE(void) pcnetTmdLoadAll(PPDMDEVINS pDevIns, PPCNETSTATE pThis, TMD *tmd
         ((uint32_t *)tmd)[3] = xda[3];  /* TMD3, user data. */
     }
 }
+
+#endif
 
 /**
  * Store transmit message descriptor and hand it over to the host (the VM guest).
