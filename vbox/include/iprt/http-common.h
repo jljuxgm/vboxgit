@@ -1,4 +1,4 @@
-/* $Id: http-common.h 87032 2020-12-02 16:33:29Z vboxsync $ */
+/* $Id: http-common.h 87037 2020-12-03 16:14:04Z vboxsync $ */
 /** @file
  * IPRT - Common (client / server) HTTP API.
  */
@@ -47,7 +47,7 @@ typedef enum RTHTTPMETHOD
     RTHTTPMETHOD_HEAD,
     RTHTTPMETHOD_OPTIONS,
     RTHTTPMETHOD_TRACE,
-#ifdef RTHTTP_WITH_WEBDAV
+#ifdef IPRT_HTTP_WITH_WEBDAV
     RTHTTPMETHOD_PROPFIND,
 #endif
     RTHTTPMETHOD_END,

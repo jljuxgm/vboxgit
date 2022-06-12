@@ -1,4 +1,4 @@
-/* $Id: RTHttpServer.cpp 87032 2020-12-02 16:33:29Z vboxsync $ */
+/* $Id: RTHttpServer.cpp 87037 2020-12-03 16:14:04Z vboxsync $ */
 /** @file
  * IPRT - Utility for running a (simple) HTTP server.
  *
@@ -310,7 +310,7 @@ static int dirRead(RTVFSDIR hVfsDir, char **ppszEntry, PRTFSOBJINFO pInfo)
     return rc;
 }
 
-#ifdef RTHTTP_WITH_WEBDAV
+#ifdef IPRT_HTTP_WITH_WEBDAV
 static int dirEntryWriteDAV(char *pszBuf, size_t cbBuf,
                             const char *pszEntry, const PRTFSOBJINFO pObjInfo, size_t *pcbWritten)
 {
@@ -353,7 +353,7 @@ static int dirEntryWriteDAV(char *pszBuf, size_t cbBuf,
 
     return rc;
 }
-#endif /* RTHTTP_WITH_WEBDAV */
+#endif /* IPRT_HTTP_WITH_WEBDAV */
 
 static int dirEntryWrite(RTHTTPMETHOD enmMethod, char *pszBuf, size_t cbBuf,
                          const char *pszEntry, const PRTFSOBJINFO pObjInfo, size_t *pcbWritten)
@@ -375,7 +375,7 @@ static int dirEntryWrite(RTHTTPMETHOD enmMethod, char *pszBuf, size_t cbBuf,
         if (cch <= 0)
             rc = VERR_BUFFER_OVERFLOW;
     }
-#ifdef RTHTTP_WITH_WEBDAV
+#ifdef IPRT_HTTP_WITH_WEBDAV
     else if (enmMethod == RTHTTPMETHOD_PROPFIND)
     {
         char szBuf[RTPATH_MAX + _4K]; /** @todo Just a rough guesstimate. */
@@ -384,7 +384,7 @@ static int dirEntryWrite(RTHTTPMETHOD enmMethod, char *pszBuf, size_t cbBuf,
             rc = RTStrCat(pszBuf, cbBuf, szBuf);
         AssertRC(rc);
     }
-#endif /* RTHTTP_WITH_WEBDAV */
+#endif /* IPRT_HTTP_WITH_WEBDAV */
     else
         rc = VERR_NOT_SUPPORTED;
 
@@ -569,7 +569,7 @@ DECLCALLBACK(int) onQueryInfo(PRTHTTPCALLBACKDATA pData,
                         pszBody    += cch;
                         cbBodyLeft -= cch;
                     }
-#ifdef RTHTTP_WITH_WEBDAV
+#ifdef IPRT_HTTP_WITH_WEBDAV
                     else if (pReq->enmMethod == RTHTTPMETHOD_PROPFIND)
                     {
                         ssize_t cch = RTStrPrintf2(pszBody, cbBodyLeft, "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n");
@@ -587,7 +587,7 @@ DECLCALLBACK(int) onQueryInfo(PRTHTTPCALLBACKDATA pData,
                         pszBody    += cch;
                         cbBodyLeft -= cch;
                     }
-#endif /* RTHTTP_WITH_WEBDAV */
+#endif /* IPRT_HTTP_WITH_WEBDAV */
                     /*
                      * Write body entries.
                      */
@@ -638,7 +638,7 @@ DECLCALLBACK(int) onQueryInfo(PRTHTTPCALLBACKDATA pData,
                             if (ppszMIMEHint)
                                 rc = RTStrAPrintf(ppszMIMEHint, "text/plain");
                         }
-#ifdef RTHTTP_WITH_WEBDAV
+#ifdef IPRT_HTTP_WITH_WEBDAV
                         else if (pReq->enmMethod == RTHTTPMETHOD_PROPFIND)
                         {
                             /**
@@ -649,7 +649,7 @@ DECLCALLBACK(int) onQueryInfo(PRTHTTPCALLBACKDATA pData,
                             Assert(cch);
                             RT_NOREF(cch);
                         }
-#endif /* RTHTTP_WITH_WEBDAV */
+#endif /* IPRT_HTTP_WITH_WEBDAV */
 
                         pResp->cbBodyUsed = strlen((char *)pResp->pvBody);
 
@@ -761,7 +761,7 @@ int main(int argc, char **argv)
                 return RTEXITCODE_SUCCESS;
 
             case 'V':
-                RTPrintf("$Revision: 87032 $\n");
+                RTPrintf("$Revision: 87037 $\n");
                 return RTEXITCODE_SUCCESS;
 
             default:

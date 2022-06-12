@@ -1,4 +1,4 @@
-/* $Id: http.cpp 87032 2020-12-02 16:33:29Z vboxsync $ */
+/* $Id: http.cpp 87037 2020-12-03 16:14:04Z vboxsync $ */
 /** @file
  * IPRT - HTTP common API.
  */
@@ -103,7 +103,7 @@ RTR3DECL(const char *) RTHttpMethodToStr(RTHTTPMETHOD enmMethod)
         case RTHTTPMETHOD_HEAD:     return "HEAD";
         case RTHTTPMETHOD_OPTIONS:  return "OPTIONS";
         case RTHTTPMETHOD_TRACE:    return "TRACE";
-#ifdef RTHTTP_WITH_WEBDAV
+#ifdef IPRT_HTTP_WITH_WEBDAV
         case RTHTTPMETHOD_PROPFIND: return "PROPFIND";
 #endif
         case RTHTTPMETHOD_END:
