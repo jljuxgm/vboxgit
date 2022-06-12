@@ -1,4 +1,4 @@
-/* $Id: VBoxHeadless.cpp 89219 2021-05-21 12:12:38Z vboxsync $ */
+/* $Id: VBoxHeadless.cpp 89221 2021-05-21 12:22:21Z vboxsync $ */
 /** @file
  * VBoxHeadless - The VirtualBox Headless frontend for running VMs on servers.
  */
@@ -1375,8 +1375,9 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
             LogError("Invalid machine name or UUID!\n", rc);
             break;
         }
+
         Bstr id;
-        m->COMGETTER(Id)(id.asOutParam());
+        rc = m->COMGETTER(Id)(id.asOutParam());
         AssertComRC(rc);
         if (FAILED(rc))
             break;
