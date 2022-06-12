@@ -1,4 +1,4 @@
-/* $Id: UICommon.h 84792 2020-06-11 13:12:17Z vboxsync $ */
+/* $Id: UICommon.h 84847 2020-06-16 11:51:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class declaration.
  */
@@ -711,11 +711,13 @@ protected slots:
     /** Cleanups all. */
     void cleanup();
 
+#ifndef VBOX_GUI_WITH_CUSTOMIZATIONS1
     /** @name Common stuff.
      * @{ */
         /** Handles @a manager request for emergency session shutdown. */
         void sltHandleCommitDataRequest(QSessionManager &manager);
     /** @} */
+#endif /* VBOX_GUI_WITH_CUSTOMIZATIONS1 */
 
     /** @name COM stuff.
      * @{ */

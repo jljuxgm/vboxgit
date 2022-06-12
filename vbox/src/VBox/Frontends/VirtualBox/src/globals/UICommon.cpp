@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 84792 2020-06-11 13:12:17Z vboxsync $ */
+/* $Id: UICommon.cpp 84847 2020-06-16 11:51:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -4046,9 +4046,11 @@ void UICommon::prepare()
 {
     /* Make sure QApplication cleanup us on exit: */
     connect(qApp, &QGuiApplication::aboutToQuit, this, &UICommon::cleanup);
+#ifndef VBOX_GUI_WITH_CUSTOMIZATIONS1
     /* Make sure we handle host OS session shutdown as well: */
     connect(qApp, &QGuiApplication::commitDataRequest,
             this, &UICommon::sltHandleCommitDataRequest);
+#endif /* VBOX_GUI_WITH_CUSTOMIZATIONS1 */
 
 #ifdef VBOX_WS_MAC
     /* Determine OS release early: */
@@ -4640,6 +4642,7 @@ void UICommon::cleanup()
     m_fValid = false;
 }
 
+#ifndef VBOX_GUI_WITH_CUSTOMIZATIONS1
 void UICommon::sltHandleCommitDataRequest(QSessionManager &manager)
 {
     LogRel(("GUI: UICommon::sltHandleCommitDataRequest: Emergency shutdown initiated\n"));
@@ -4659,6 +4662,7 @@ void UICommon::sltHandleCommitDataRequest(QSessionManager &manager)
     ShutdownBlockReasonCreateAPI((HWND)windowManager().mainWindowShown()->winId(), L"Shutdown in progress...");
 #endif
 }
+#endif /* VBOX_GUI_WITH_CUSTOMIZATIONS1 */
 
 void UICommon::sltHandleVBoxSVCAvailabilityChange(bool fAvailable)
 {
