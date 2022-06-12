@@ -1,4 +1,4 @@
-/* $Id: UILanguageSettingsEditor.h 86152 2020-09-17 12:04:53Z vboxsync $ */
+/* $Id: UILanguageSettingsEditor.h 86168 2020-09-18 10:45:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UILanguageSettingsEditor class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef FEQT_INCLUDED_SRC_settings_global_UILanguageSettingsEditor_h
-#define FEQT_INCLUDED_SRC_settings_global_UILanguageSettingsEditor_h
+#ifndef FEQT_INCLUDED_SRC_settings_editors_UILanguageSettingsEditor_h
+#define FEQT_INCLUDED_SRC_settings_editors_UILanguageSettingsEditor_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -94,4 +94,4 @@ private:
     /** @} */
 };
 
-#endif /* !FEQT_INCLUDED_SRC_settings_global_UILanguageSettingsEditor_h */
+#endif /* !FEQT_INCLUDED_SRC_settings_editors_UILanguageSettingsEditor_h */
