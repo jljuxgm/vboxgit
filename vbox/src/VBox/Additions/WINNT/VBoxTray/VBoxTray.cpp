@@ -1,4 +1,4 @@
-/* $Id: VBoxTray.cpp 84720 2020-06-08 07:51:42Z vboxsync $ */
+/* $Id: VBoxTray.cpp 84721 2020-06-08 08:09:45Z vboxsync $ */
 /** @file
  * VBoxTray - Guest Additions Tray Application
  */
@@ -52,6 +52,8 @@
 # define LOG_GROUP LOG_GROUP_DEFAULT
 #endif
 #include <VBox/log.h>
+
+#include <VBox/err.h>
 
 /* Default desktop state tracking */
 #include <Wtsapi32.h>
