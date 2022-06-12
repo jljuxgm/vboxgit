@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 86566 2020-10-14 09:36:15Z vboxsync $
+# $Id: Makefile.kmk 86761 2020-10-29 21:11:19Z vboxsync $
 ## @file
 # Top level makefile.
 #
@@ -2004,7 +2004,6 @@ ifndef VBOX_OSE
 else
 	$(MAKE) -C tools -f Makefile-ose.kmk fetch
 endif
-
 
 
 #
