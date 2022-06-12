@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: PGMPool.cpp 85179 2020-07-10 13:19:09Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -634,10 +634,10 @@ DECLCALLBACK(VBOXSTRICTRC) pgmR3PoolClearAllRendezvous(PVM pVM, PVMCPU pVCpu, vo
                     }
                 }
                 RT_FALL_THRU();
+                default:
 #ifdef PGM_WITH_LARGE_PAGES
                 default_case:
 #endif
-                default:
                     Assert(!pPage->cModifications || ++cModifiedPages);
                     Assert(pPage->iModifiedNext == NIL_PGMPOOL_IDX || pPage->cModifications);
                     Assert(pPage->iModifiedPrev == NIL_PGMPOOL_IDX || pPage->cModifications);
