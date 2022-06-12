@@ -1,4 +1,4 @@
-/* $Id: PDMAll.cpp 89200 2021-05-20 14:05:10Z vboxsync $ */
+/* $Id: PDMAll.cpp 89547 2021-06-07 12:13:37Z vboxsync $ */
 /** @file
  * PDM Critical Sections
  */
@@ -233,7 +233,6 @@ VMM_INT_DECL(int) PDMIoApicSendMsi(PVM pVM, PCIBDF uBusDevFn, PCMSIMSG pMsi, uin
      *        code handles queuing the MSI to be sent from ring-3 when I/O APIC isn't
      *        available in R0. When this TODO is done, remove the remark in the doxygen
      *        above. */
-    Assert(PCIBDF_IS_VALID(uBusDevFn));
     if (pVM->pdm.s.IoApic.CTX_SUFF(pDevIns))
     {
         Assert(pVM->pdm.s.IoApic.CTX_SUFF(pfnSendMsi));
