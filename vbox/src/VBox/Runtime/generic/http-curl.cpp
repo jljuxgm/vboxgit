@@ -1,4 +1,4 @@
-/* $Id: http-curl.cpp 85650 2020-08-08 14:06:23Z vboxsync $ */
+/* $Id: http-curl.cpp 86448 2020-10-04 12:37:09Z vboxsync $ */
 /** @file
  * IPRT - HTTP client API, cURL based.
  *
@@ -1057,7 +1057,10 @@ static DECLCALLBACK(int) rtHttpLibProxyResolveImports(void *pvUser)
         if (RT_SUCCESS(rc))
             rc = RTLdrGetSymbol(hMod, "px_proxy_factory_get_proxies", (void **)&g_pfnLibProxyFactoryGetProxies);
         if (RT_SUCCESS(rc))
+        {
+            RTMEM_WILL_LEAK(hMod);
             g_hLdrLibProxy = hMod;
+        }
         else
             RTLdrClose(hMod);
         AssertRC(rc);
