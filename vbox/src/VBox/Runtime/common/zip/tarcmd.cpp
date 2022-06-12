@@ -1,4 +1,4 @@
-/* $Id: tarcmd.cpp 86035 2020-09-06 20:31:16Z vboxsync $ */
+/* $Id: tarcmd.cpp 86036 2020-09-06 20:33:03Z vboxsync $ */
 /** @file
  * IPRT - A mini TAR Command.
  */
@@ -76,7 +76,7 @@ typedef enum RTZIPTARCMDFORMAT
     /** XAR.  */
     RTZIPTARCMDFORMAT_XAR,
     /** CPIO. */
-    RTZIPTARCMDFORMAT_CPIO,
+    RTZIPTARCMDFORMAT_CPIO
 } RTZIPTARCMDFORMAT;
 
 
