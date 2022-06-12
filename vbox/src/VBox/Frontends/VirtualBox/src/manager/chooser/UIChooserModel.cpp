@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 84582 2020-05-28 11:11:40Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 84587 2020-05-28 12:31:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -1570,6 +1570,10 @@ void UIChooserModel::buildTreeForMainRoot(bool fPreserveSelection /* = false */)
         setSelectedItem(strSelectedItemDefinition);
         makeSureAtLeastOneItemSelected();
     }
+
+    /* Repeat search if search widget is visible: */
+    if (view() && view()->isSearchWidgetVisible())
+        view()->redoSearch();
 }
 
 void UIChooserModel::updateTreeForMainRoot()

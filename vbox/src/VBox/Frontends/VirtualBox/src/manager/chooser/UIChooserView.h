@@ -1,4 +1,4 @@
-/* $Id: UIChooserView.h 84578 2020-05-27 17:49:22Z vboxsync $ */
+/* $Id: UIChooserView.h 84587 2020-05-28 12:31:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserView class declaration.
  */
@@ -69,6 +69,8 @@ public:
         /** Forwards @a strSearchText to the search widget which in
           * turn appends it to the current (if any) search term. */
         void appendToSearchString(const QString &strSearchText);
+        /** Repeats the last search again. */
+        void redoSearch();
     /** @} */
 
 public slots:

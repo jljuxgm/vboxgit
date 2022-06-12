@@ -1,4 +1,4 @@
-/* $Id: UIChooserSearchWidget.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIChooserSearchWidget.cpp 84587 2020-05-28 12:31:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserSearchWidget class implementation.
  */
@@ -63,6 +63,13 @@ void UIChooserSearchWidget::appendToSearchString(const QString &strSearchText)
     m_pLineEdit->setText(m_pLineEdit->text().append(strSearchText));
 }
 
+void UIChooserSearchWidget::redoSearch()
+{
+    if (!m_pLineEdit)
+        return;
+    sltHandleSearchTermChange(m_pLineEdit->text());
+}
+
 void UIChooserSearchWidget::prepareWidgets()
 {
     m_pMainLayout = new QHBoxLayout;
@@ -92,6 +99,7 @@ void UIChooserSearchWidget::prepareWidgets()
     {
         m_pMainLayout->addWidget(m_pLineEdit);
         m_pLineEdit->installEventFilter(this);
+        setFocusProxy(m_pLineEdit);
     }
 
     m_pScrollToPreviousMatchButton = new QIToolButton;
@@ -115,10 +123,7 @@ void UIChooserSearchWidget::prepareWidgets()
 void UIChooserSearchWidget::prepareConnections()
 {
     if (m_pLineEdit)
-    {
-        connect(m_pLineEdit, &QILineEdit::textChanged,
-                this, &UIChooserSearchWidget::sltHandleSearchTermChange);
-    }
+        connect(m_pLineEdit, &QILineEdit::textChanged, this, &UIChooserSearchWidget::sltHandleSearchTermChange);
     if (m_pCloseButton)
         connect(m_pCloseButton, &QIToolButton::clicked, this, &UIChooserSearchWidget::sltHandleCloseButtonClick);
     if (m_pScrollToPreviousMatchButton)

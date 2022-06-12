@@ -1,4 +1,4 @@
-/* $Id: UIChooserView.cpp 84578 2020-05-27 17:49:22Z vboxsync $ */
+/* $Id: UIChooserView.cpp 84587 2020-05-28 12:31:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserView class implementation.
  */
@@ -166,6 +166,15 @@ void UIChooserView::appendToSearchString(const QString &strSearchText)
 
     /* Update search string with passed text: */
     m_pSearchWidget->appendToSearchString(strSearchText);
+}
+
+void UIChooserView::redoSearch()
+{
+    /* Make sure search widget exists: */
+    AssertPtrReturnVoid(m_pSearchWidget);
+
+    /* Pass request to search widget: */
+    m_pSearchWidget->redoSearch();
 }
 
 void UIChooserView::sltMinimumWidthHintChanged(int iHint)

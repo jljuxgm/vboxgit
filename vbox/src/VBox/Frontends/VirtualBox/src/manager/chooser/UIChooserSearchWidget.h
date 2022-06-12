@@ -1,4 +1,4 @@
-/* $Id: UIChooserSearchWidget.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIChooserSearchWidget.h 84587 2020-05-28 12:31:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserSearchWidget class declaration.
  */
@@ -56,6 +56,8 @@ public:
     void setScroolToIndex(int iScrollToIndex);
     /** Appends the @a strSearchText to the current (if any) search text. */
     void appendToSearchString(const QString &strSearchText);
+    /** Repeats the last search again. */
+    void redoSearch();
 
 protected:
 
