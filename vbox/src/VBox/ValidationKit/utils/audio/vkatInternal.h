@@ -1,4 +1,4 @@
-/* $Id: vkatInternal.h 89466 2021-06-02 13:03:44Z vboxsync $ */
+/* $Id: vkatInternal.h 89490 2021-06-03 23:00:04Z vboxsync $ */
 /** @file
  * VKAT - Internal header file for common definitions + structs.
  */
@@ -67,8 +67,6 @@ typedef struct AUDIOTESTDRVSTACKSTREAM
 {
     /** The public stream data. */
     PDMAUDIOSTREAM          Core;
-    /** The acquired config. */
-    PDMAUDIOSTREAMCFG       Cfg;
     /** The backend data (variable size). */
     PDMAUDIOBACKENDSTREAM   Backend;
 } AUDIOTESTDRVSTACKSTREAM;
