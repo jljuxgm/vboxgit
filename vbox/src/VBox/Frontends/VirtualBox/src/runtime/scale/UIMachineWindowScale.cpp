@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowScale.cpp 84701 2020-06-05 15:37:27Z vboxsync $ */
+/* $Id: UIMachineWindowScale.cpp 86053 2020-09-07 17:58:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowScale class implementation.
  */
@@ -175,8 +175,9 @@ void UIMachineWindowScale::restoreCachedGeometry()
     adjustMachineViewSize();
 }
 
-void UIMachineWindowScale::normalizeGeometry(bool fAdjustPosition)
+void UIMachineWindowScale::normalizeGeometry(bool fAdjustPosition, bool fResizeToGuestDisplay)
 {
+    Q_UNUSED(fResizeToGuestDisplay);
     /* Skip if maximized: */
     if (isMaximized())
         return;
@@ -255,4 +256,3 @@ bool UIMachineWindowScale::isMaximizedChecked()
     return isMaximized();
 #endif /* !VBOX_WS_MAC */
 }
-
