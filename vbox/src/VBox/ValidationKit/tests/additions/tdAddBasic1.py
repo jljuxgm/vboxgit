@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 84672 2020-06-04 09:06:19Z vboxsync $
+# $Id: tdAddBasic1.py 84674 2020-06-04 11:37:49Z vboxsync $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84672 $"
+__version__ = "$Revision: 84674 $"
 
 # Standard Python imports.
 import os;
@@ -314,11 +314,11 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
                     sShell    = self.getGuestSystemShell(oTestVm);
                     sShellOpt = '/C' if oTestVm.isWindows() or oTestVm.isOS2() else '-c';
                     reporter.log('Loaded processes:');
-                    oTxsSession.syncExec(sShell, (sShell, sShellOpt, "tasklist.exe", "/V"), fIgnoreErrors = True);
+                    oTxsSession.syncExec(sShell, (sShell, sShellOpt, "tasklist.exe", "/FO", "CSV"), fIgnoreErrors = True);
                     reporter.log('Downloading Dr. Watson log ...');
                     self.txsDownloadFiles(oSession, oTxsSession,
-                                    [ "C:/Documents and Settings/All Users/Application Data/Microsoft/Dr Watson/drwtsn32.log" ],
-                                    fIgnoreErrors = True);
+                                [ ( "C:/Documents and Settings/All Users/Application Data/Microsoft/Dr Watson/drwtsn32.log" ), ],
+                                fIgnoreErrors = True);
 
         return (fRc, oTxsSession);
 
