@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityOverviewWidget.cpp 88145 2021-03-17 06:54:41Z vboxsync $ */
+/* $Id: UIVMActivityOverviewWidget.cpp 88146 2021-03-17 07:11:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMActivityOverviewWidget class implementation.
  */
@@ -920,6 +920,7 @@ bool UIActivityOverviewProxyModel::filterAcceptsRow(int iSourceRow, const QModel
         return false;
     return true;
 }
+
 
 /*********************************************************************************************************************************
 *   Class UIActivityOverviewModel implementation.                                                                                *
