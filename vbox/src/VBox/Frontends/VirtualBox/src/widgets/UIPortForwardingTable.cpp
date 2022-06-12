@@ -1,4 +1,4 @@
-/* $Id: UIPortForwardingTable.cpp 87248 2021-01-14 10:01:26Z vboxsync $ */
+/* $Id: UIPortForwardingTable.cpp 87274 2021-01-15 13:52:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPortForwardingTable class implementation.
  */
@@ -969,9 +969,6 @@ void UIPortForwardingTable::sltShowTableContexMenu(const QPoint &pos)
 
 void UIPortForwardingTable::sltAdjustTable()
 {
-    /* Make sure layout requests really processed first of all: */
-    QCoreApplication::sendPostedEvents(0, QEvent::LayoutRequest);
-
     /* If table is NOT empty: */
     if (m_pTableModel->rowCount())
     {
