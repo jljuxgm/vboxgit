@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 85309 2020-07-13 12:56:56Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 86012 2020-09-03 00:08:56Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -761,7 +761,7 @@ HRESULT VirtualBox::init()
         /* cloud provider manager */
         rc = unconst(m->pCloudProviderManager).createObject();
         if (SUCCEEDED(rc))
-            rc = m->pCloudProviderManager->init();
+            rc = m->pCloudProviderManager->init(this);
         ComAssertComRCThrowRC(rc);
         if (FAILED(rc)) throw rc;
     }
@@ -3815,6 +3815,23 @@ int VirtualBox::i_natNetworkRefDec(const Utf8Str &aNetworkName)
     }
 
     return sNatNetworkNameToRefCount[aNetworkName];
+}
+
+
+void VirtualBox::i_onCloudProviderRegistered(const Utf8Str &aId, BOOL aRegistered)
+{
+    HRESULT hrc;
+
+    ComPtr<IEvent> pEvent;
+    hrc = CreateCloudProviderRegisteredEvent(pEvent.asOutParam(), m->pEventSource,
+                                             aId, aRegistered);
+    if (FAILED(hrc))
+        return;
+
+    BOOL fDelivered = FALSE;
+    hrc = m->pEventSource->FireEvent(pEvent, 10000, &fDelivered); // XXX: timeout
+    if (FAILED(hrc))
+        return;
 }
 
 

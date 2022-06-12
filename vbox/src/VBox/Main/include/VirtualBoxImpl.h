@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 85309 2020-07-13 12:56:56Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 86012 2020-09-03 00:08:56Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -207,6 +207,8 @@ public:
 
     int i_natNetworkRefInc(const Utf8Str &aNetworkName);
     int i_natNetworkRefDec(const Utf8Str &aNetworkName);
+
+    void i_onCloudProviderRegistered(const Utf8Str &aId, BOOL aRegistered);
 
 #ifdef VBOX_WITH_CLOUD_NET
     HRESULT i_findCloudNetworkByName(const com::Utf8Str &aNetworkName,
