@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 85597 2020-08-03 12:17:47Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 85636 2020-08-06 13:11:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -228,6 +228,13 @@ void UIVirtualBoxManagerWidget::closeMachineTool(UIToolType enmType)
 bool UIVirtualBoxManagerWidget::isCurrentStateItemSelected() const
 {
     return m_pPaneToolsMachine->isCurrentStateItemSelected();
+}
+
+void UIVirtualBoxManagerWidget::updateToolBarMenuButtons(bool fSeparateMenuSection)
+{
+    QToolButton *pButton = qobject_cast<QToolButton*>(m_pToolBar->widgetForAction(actionPool()->action(UIActionIndexMN_M_Machine_M_StartOrShow)));
+    if (pButton)
+        pButton->setPopupMode(fSeparateMenuSection ? QToolButton::MenuButtonPopup : QToolButton::DelayedPopup);
 }
 
 void UIVirtualBoxManagerWidget::sltHandleToolBarContextMenuRequest(const QPoint &position)

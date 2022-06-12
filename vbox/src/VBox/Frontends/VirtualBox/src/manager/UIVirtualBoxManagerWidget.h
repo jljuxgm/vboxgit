@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.h 85508 2020-07-29 10:11:07Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.h 85636 2020-08-06 13:11:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class declaration.
  */
@@ -194,6 +194,12 @@ public:
       * @{ */
         /** Returns whether current-state item of Snapshot pane is selected. */
         bool isCurrentStateItemSelected() const;
+    /** @} */
+
+    /** @name Tool-bar stuff.
+      * @{ */
+        /** Updates tool-bar menu buttons. */
+        void updateToolBarMenuButtons(bool fSeparateMenuSection);
     /** @} */
 
 public slots:
