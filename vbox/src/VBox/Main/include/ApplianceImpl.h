@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 84340 2020-05-18 17:37:30Z vboxsync $ */
+/* $Id: ApplianceImpl.h 85283 2020-07-12 14:54:15Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -131,7 +131,7 @@ private:
      */
     bool i_isApplianceIdle();
     HRESULT i_searchUniqueVMName(Utf8Str& aName) const;
-    HRESULT i_searchUniqueImageFilePath(const Utf8Str &aMachineFolder,
+    HRESULT i_ensureUniqueImageFilePath(const Utf8Str &aMachineFolder,
                                         DeviceType_T aDeviceType,
                                         Utf8Str &aName) const;
     HRESULT i_setUpProgress(ComObjPtr<Progress> &pProgress,
