@@ -1,4 +1,4 @@
-/* $Id: rest-primary-object-types.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: rest-primary-object-types.cpp 85084 2020-07-07 16:53:19Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestObjectBase implementation.
  */
@@ -552,7 +552,7 @@ RTCRestInt32::RTCRestInt32(int32_t iValue) RT_NOEXCEPT
 
 
 /** Destructor. */
-RTCRestInt32::~RTCRestInt32()
+RTCRestInt32::~RTCRestInt32() RT_NOEXCEPT
 {
     /* nothing to do */
 }
