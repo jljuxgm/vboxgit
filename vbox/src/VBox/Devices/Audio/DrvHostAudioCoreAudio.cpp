@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioCoreAudio.cpp 89184 2021-05-19 20:58:09Z vboxsync $ */
+/* $Id: DrvHostAudioCoreAudio.cpp 89188 2021-05-19 21:33:18Z vboxsync $ */
 /** @file
  * Host audio driver - Mac OS X CoreAudio.
  *
@@ -1784,10 +1784,12 @@ static DECLCALLBACK(int) drvHostAudioCaHA_StreamEnable(PPDMIHOSTAUDIO pInterface
 
             RT_BZERO(pBuf->mAudioData, pBuf->mAudioDataBytesCapacity);
             pBuf->mAudioDataByteSize = 0;
+            ASMAtomicWriteBool(&pStreamCA->paBuffers[iBuf].fQueued, true);
 
             orc = AudioQueueEnqueueBuffer(pStreamCA->hAudioQueue, pBuf, 0 /*inNumPacketDescs*/, NULL /*inPacketDescs*/);
-            AssertLogRelMsgBreak(orc == noErr, ("CoreAudio: AudioQueueEnqueueBuffer(#%u) -> %#x (%d) - stream '%s'\n",
-                                                iBuf, orc, orc, pStreamCA->Cfg.szName));
+            AssertLogRelMsgBreakStmt(orc == noErr, ("CoreAudio: AudioQueueEnqueueBuffer(#%u) -> %#x (%d) - stream '%s'\n",
+                                                    iBuf, orc, orc, pStreamCA->Cfg.szName),
+                                     pStreamCA->paBuffers[iBuf].fQueued = false);
         }
 
         /* Start the stream. */
@@ -2148,6 +2150,7 @@ static DECLCALLBACK(PDMHOSTAUDIOSTREAMSTATE) drvHostAudioCaHA_StreamGetState(PPD
             LogFunc(("Done draining '%s'\n", pStreamCA->Cfg.szName));
             pStreamCA->fDraining = false;
             pStreamCA->fEnabled  = false;
+            pStreamCA->fStarted  = false;
             RTCritSectLeave(&pStreamCA->CritSect);
         }
 
