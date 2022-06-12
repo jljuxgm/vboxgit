@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 87861 2021-02-24 15:04:02Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 87990 2021-03-07 14:29:40Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -2087,7 +2087,7 @@ static uint64_t ichac97R3StreamTransferCalcNext(PPDMDEVINS pDevIns, PAC97STREAM 
     if (!cbBytes)
         return 0;
 
-    const uint64_t usBytes        = DrvAudioHlpBytesToMicro(cbBytes, &pStreamCC->State.Cfg.Props);
+    const uint64_t usBytes        = DrvAudioHlpBytesToMicro(&pStreamCC->State.Cfg.Props, cbBytes);
     const uint64_t cTransferTicks = PDMDevHlpTimerFromMicro(pDevIns, pStream->hTimer, usBytes);
 
     Log3Func(("[SD%RU8] Timer %uHz, cbBytes=%RU32 -> usBytes=%RU64, cTransferTicks=%RU64\n",
