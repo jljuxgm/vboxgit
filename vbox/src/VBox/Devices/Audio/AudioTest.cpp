@@ -1,4 +1,4 @@
-/* $Id: AudioTest.cpp 89010 2021-05-12 12:52:13Z vboxsync $ */
+/* $Id: AudioTest.cpp 89014 2021-05-12 14:33:19Z vboxsync $ */
 /** @file
  * Audio testing routines.
  * Common code which is being used by the ValidationKit and the debug / ValdikationKit audio driver(s).
@@ -222,7 +222,7 @@ int AudioTestToneParamsInitRandom(PAUDIOTESTTONEPARMS pToneParams, PPDMAUDIOPCMP
     /** @todo Make this a bit more sophisticated later, e.g. muting and prequel/sequel are not very balanced. */
 
     pToneParams->msPrequel      = RTRandU32Ex(0, RT_MS_5SEC);
-    pToneParams->msDuration     = RTRandU32Ex(0, RT_MS_30SEC); /** @todo Probably a bit too long, but let's see. */
+    pToneParams->msDuration     = RTRandU32Ex(0, RT_MS_10SEC); /** @todo Probably a bit too long, but let's see. */
     pToneParams->msSequel       = RTRandU32Ex(0, RT_MS_5SEC);
     pToneParams->uVolumePercent = RTRandU32Ex(0, 100);
 
