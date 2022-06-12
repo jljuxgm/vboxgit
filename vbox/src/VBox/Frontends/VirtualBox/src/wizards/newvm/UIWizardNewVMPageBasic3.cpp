@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic3.cpp 88038 2021-03-09 09:11:02Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic3.cpp 88065 2021-03-10 11:05:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic3 class implementation.
  */
@@ -76,6 +76,7 @@ QWidget *UIWizardNewVMPage3::createHardwareWidgets()
 {
     QWidget *pHardwareContainer = new QWidget;
     QGridLayout *pHardwareLayout = new QGridLayout(pHardwareContainer);
+    pHardwareLayout->setContentsMargins(0, 0, 0, 0);
 
     m_pBaseMemoryEditor = new UIBaseMemoryEditor(0, true);
     m_pVirtualCPUEditor = new UIVirtualCPUEditor(0, true);

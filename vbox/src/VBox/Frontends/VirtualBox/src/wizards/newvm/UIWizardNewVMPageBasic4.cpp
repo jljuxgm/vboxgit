@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic4.cpp 88038 2021-03-09 09:11:02Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic4.cpp 88065 2021-03-10 11:05:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic4 class implementation.
  */
@@ -108,6 +108,7 @@ QWidget *UIWizardNewVMPage4::createDiskWidgets()
 {
     QWidget *pDiskContainer = new QWidget;
     QGridLayout *pDiskLayout = new QGridLayout(pDiskContainer);
+    pDiskLayout->setContentsMargins(0, 0, 0, 0);
     m_pDiskSourceButtonGroup = new QButtonGroup;
     m_pDiskEmpty = new QRadioButton;
     m_pDiskNew = new QRadioButton;

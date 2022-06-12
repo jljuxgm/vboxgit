@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic1.h 87892 2021-02-26 18:26:25Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic1.h 88065 2021-03-10 11:05:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic1 class declaration.
  */
@@ -39,7 +39,6 @@ class UINameAndSystemEditor;
 /** 1st page of the New Virtual Machine wizard (base part): */
 class UIWizardNewVMPage1 : public UIWizardPageBase
 {
-
 protected:
 
     /** Constructor. */
@@ -75,8 +74,7 @@ protected:
     /** calls CVirtualBox::ComposeMachineFilename(...) and sets related member variables */
     void composeMachineFilePath();
 
-    QWidget *createNameOSTypeWidgets(bool fCreateLabels);
-    int createNameOSTypeWidgets(QGridLayout *pLayout, bool fCreateLabels = true);
+    QWidget *createNameOSTypeWidgets();
     /** Colors the widgets red if they cause isComplete to fail. */
     void markWidgets() const;
     void retranslateWidgets();
@@ -90,11 +88,9 @@ protected:
 
     /** @name Widgets
      * @{ */
-       UINameAndSystemEditor *m_pNameAndSystemEditor;
-       QIRichTextLabel *m_pNameOSTypeLabel;
-       mutable UIFilePathSelector *m_pISOFilePathSelector;
-       QIRichTextLabel *m_pUnattendedLabel;
-       QLabel *m_pISOPathSelectorLabel;
+        UINameAndSystemEditor *m_pNameAndSystemEditor;
+        UIFilePathSelector    *m_pISOFilePathSelector;
+        QLabel                *m_pISOPathSelectorLabel;
     /** @} */
 
     QString m_strDetectedOSTypeId;
@@ -165,6 +161,13 @@ private:
 
     /** Validation stuff. */
     virtual bool validatePage() /* override */;
+
+
+    /** @name Widgets
+     * @{ */
+        QIRichTextLabel *m_pNameOSTypeLabel;
+        QIRichTextLabel *m_pUnattendedLabel;
+    /** @} */
 };
 
 #endif /* !FEQT_INCLUDED_SRC_wizards_newvm_UIWizardNewVMPageBasic1_h */
