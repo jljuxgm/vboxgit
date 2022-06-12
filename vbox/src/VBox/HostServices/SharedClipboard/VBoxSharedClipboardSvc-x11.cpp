@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-x11.cpp 84142 2020-05-05 07:13:00Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-x11.cpp 85762 2020-08-14 10:55:03Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Linux host.
  */
@@ -196,6 +196,7 @@ int ShClBackendReadData(PSHCLCLIENT pClient,
         pReq->idEvent    = idEvent;
         if (idEvent != NIL_SHCLEVENTID)
         {
+            /* Note: ShClX11ReadDataFromX11() will consume pReq on success. */
             rc = ShClX11ReadDataFromX11(&pClient->State.pCtx->X11, uFormat, pReq);
             if (RT_SUCCESS(rc))
             {
@@ -214,10 +215,10 @@ int ShClBackendReadData(PSHCLCLIENT pClient,
             ShClEventUnregister(&pClient->EventSrc, idEvent);
         }
         else
-        {
-            RTMemFree(pReq);
             rc = VERR_SHCLPB_MAX_EVENTS_REACHED;
-        }
+
+        if (RT_FAILURE(rc))
+            RTMemFree(pReq);
     }
     else
         rc = VERR_NO_MEMORY;
