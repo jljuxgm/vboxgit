@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.h 84915 2020-06-23 10:39:22Z vboxsync $ */
+/* $Id: UIWizardNewVM.h 84955 2020-06-25 14:40:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class declaration.
  */
@@ -35,9 +35,16 @@ struct UIUnattendedInstallData
     bool m_fUnattendedEnabled;
     QUuid m_uMachineUid;
     QString m_strISOPath;
+    QString m_strGAIOSPath;
     bool m_fStartHeadless;
     QString m_strUserName;
     QString m_strPassword;
+    QString m_strHostname;
+    QString m_strDetectedOSTypeId;
+    QString m_strDetectedOSVersion;
+    QString m_strDetectedOSFlavor;
+    QString m_strDetectedOSLanguages;
+    QString m_strDetectedOSHints;
 };
 
 /** New Virtual Machine wizard: */
@@ -85,6 +92,8 @@ protected:
     /* Attaches default devices: */
     bool attachDefaultDevices(const CGuestOSType &comGuestType);
 
+    QString getStringFieldValue(const QString &strFieldName) const;
+
     /* Who will be able to create virtual-machine: */
     friend class UIWizardNewVMPageBasicDisk;
     friend class UIWizardNewVMPageExpert;
@@ -92,6 +101,7 @@ protected:
 private slots:
 
     void sltHandleWizardCancel();
+    void sltHandleDetectedOSTypeChange();
 
 private:
 

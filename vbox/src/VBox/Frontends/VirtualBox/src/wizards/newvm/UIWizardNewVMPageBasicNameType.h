@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasicNameType.h 84917 2020-06-23 12:06:12Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasicNameType.h 84955 2020-06-25 14:40:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasicNameType class declaration.
  */
@@ -93,6 +93,7 @@ public:
     /* Constructor: */
     UIWizardNewVMPageBasicNameType(const QString &strGroup);
     virtual int nextId() const /* override */;
+    void setTypeByISODetectedOSType(const QString &strDetectedOSType);
 
 protected:
 

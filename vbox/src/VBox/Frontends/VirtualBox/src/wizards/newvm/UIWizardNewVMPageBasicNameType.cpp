@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasicNameType.cpp 84918 2020-06-23 13:12:08Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasicNameType.cpp 84955 2020-06-25 14:40:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasicNameType class implementation.
  */
@@ -351,6 +351,13 @@ int UIWizardNewVMPageBasicNameType::nextId() const
         return UIWizardNewVM::PageHardware;
     return UIWizardNewVM::PageInstallSetup;
 }
+
+void UIWizardNewVMPageBasicNameType::setTypeByISODetectedOSType(const QString &strDetectedOSType)
+{
+    if (!strDetectedOSType.isEmpty())
+        onNameChanged(strDetectedOSType);
+}
+
 
 void UIWizardNewVMPageBasicNameType::sltNameChanged(const QString &strNewName)
 {
