@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.h 88436 2021-04-09 13:35:23Z vboxsync $ */
+/* $Id: UIHelpBrowserWidget.h 88470 2021-04-12 13:32:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class declaration.
  */
@@ -163,7 +163,7 @@ private:
     UIBookmarksListContainer *m_pBookmarksWidget;
     QWidget             *m_pSearchContainerWidget;
     QAction             *m_pPrintAction;
-    QAction             *m_pCloseDialogAction;
+    QAction             *m_pQuitAction;
     QAction             *m_pShowHideSideBarAction;
     QAction             *m_pShowHideToolBarAction;
     QAction             *m_pShowHideStatusBarAction;
