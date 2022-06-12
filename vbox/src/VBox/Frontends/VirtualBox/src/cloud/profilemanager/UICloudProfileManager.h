@@ -1,4 +1,4 @@
-/* $Id: UICloudProfileManager.h 86233 2020-09-23 12:10:51Z vboxsync $ */
+/* $Id: UICloudProfileManager.h 86242 2020-09-23 14:55:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudProfileManager class declaration.
  */
@@ -71,6 +71,10 @@ public:
     /** Returns the toolbar. */
     QIToolBar *toolbar() const { return m_pToolBar; }
 #endif
+
+    /** Check for changes committed.
+      * @returns Whether changes were resolved (accepted or discarded) or still a problem otherwise. */
+    bool makeSureChangesResolved();
 
 protected:
 
@@ -271,6 +275,12 @@ private:
       * @{ */
         /** Returns the widget. */
         virtual UICloudProfileManagerWidget *widget() /* override */;
+    /** @} */
+
+    /** @name Event-handling stuff.
+      * @{ */
+        /** Handles close @a pEvent. */
+        virtual void closeEvent(QCloseEvent *pEvent) /* override */;
     /** @} */
 
     /** @name Action related variables.

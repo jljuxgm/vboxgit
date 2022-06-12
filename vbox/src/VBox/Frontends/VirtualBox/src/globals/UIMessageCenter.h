@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 85389 2020-07-20 12:42:14Z vboxsync $ */
+/* $Id: UIMessageCenter.h 86242 2020-09-23 14:55:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -415,6 +415,7 @@ public:
     void cannotAssignFormValue(const CChoiceFormValue &comValue, QWidget *pParent = 0) const;
     void cannotAssignFormValue(const CRangedIntegerFormValue &comValue, QWidget *pParent = 0) const;
     void cannotAssignFormValue(const CProgress &comProgress, QWidget *pParent = 0) const;
+    int confirmCloudProfileManagerClosing(QWidget *pParent = 0) const;
 
     /* API: Cloud Console Manager warnings: */
     bool confirmCloudConsoleApplicationRemoval(const QString &strName, QWidget *pParent = 0) const;

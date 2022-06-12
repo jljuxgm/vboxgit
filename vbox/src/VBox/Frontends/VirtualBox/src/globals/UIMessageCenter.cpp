@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 85389 2020-07-20 12:42:14Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 86242 2020-09-23 14:55:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -2019,6 +2019,21 @@ void UIMessageCenter::cannotAssignFormValue(const CProgress &comProgress, QWidge
     error(pParent, MessageType_Error,
           tr("Failed to assign form value."),
           UIErrorString::formatErrorInfo(comProgress));
+}
+
+int UIMessageCenter::confirmCloudProfileManagerClosing(QWidget *pParent /* = 0 */) const
+{
+    return question(pParent, MessageType_Question,
+                    tr("<p>Do you want to close the Cloud Profile Manager?</p>"
+                       "<p>There seems to be an unsaved changes. "
+                       "You can choose to <b>Accept</b> or <b>Reject</b> them automatically "
+                       "or cancel to keep the dialog opened.</p>"),
+                    0 /* auto-confirm id */,
+                    AlertButton_Choice1,
+                    AlertButton_Choice2,
+                    AlertButton_Cancel | AlertButtonOption_Default | AlertButtonOption_Escape,
+                    tr("Accept", "cloud profile manager changes"),
+                    tr("Reject", "cloud profile manager changes"));
 }
 
 bool UIMessageCenter::confirmCloudConsoleApplicationRemoval(const QString &strName, QWidget *pParent /* = 0 */) const
