@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84563 $"
+__version__ = "$Revision: 84571 $"
 
 # Standard Python imports.
 import errno
@@ -65,8 +65,10 @@ def limitString(sString, cLimit = 32):
     Useful for toning down logging. By default strings will be shortened at 32 characters.
     """
     if not isinstance(sString, str):
-        return "";
+        sString = str(sString);
     cLen = len(sString);
+    if not cLen:
+        return cLen;
     return (sString[:cLimit] + '...[%d more]' % (cLen - cLimit)) if cLen > cLimit else sString;
 
 class GuestStream(bytearray):
