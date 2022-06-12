@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityOverviewWidget.cpp 88121 2021-03-15 14:40:02Z vboxsync $ */
+/* $Id: UIVMActivityOverviewWidget.cpp 88123 2021-03-15 17:13:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMActivityOverviewWidget class implementation.
  */
@@ -905,6 +905,7 @@ bool UIActivityOverviewProxyModel::lessThan(const QModelIndex &sourceLeftIndex, 
     }
     return QSortFilterProxyModel::lessThan(sourceLeftIndex, sourceRightIndex);
 }
+
 
 /*********************************************************************************************************************************
 *   Class UIActivityOverviewModel implementation.                                                                                *
