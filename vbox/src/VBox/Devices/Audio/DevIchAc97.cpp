@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 89341 2021-05-28 10:19:50Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 89371 2021-05-28 20:52:58Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -910,7 +910,7 @@ static void ichac97StreamWriteSR(PPDMDEVINS pDevIns, PAC97STATE pThis, PAC97STRE
 static bool ichac97R3StreamIsEnabled(PAC97STATER3 pThisCC, PAC97STREAM pStream)
 {
     PAUDMIXSINK pSink = ichac97R3IndexToSink(pThisCC, pStream->u8SD);
-    bool fIsEnabled = RT_BOOL(AudioMixerSinkGetStatus(pSink) & AUDMIXSINK_STS_RUNNING);
+    bool fIsEnabled = pSink && (AudioMixerSinkGetStatus(pSink) & AUDMIXSINK_STS_RUNNING);
 
     LogFunc(("[SD%RU8] fIsEnabled=%RTbool\n", pStream->u8SD, fIsEnabled));
     return fIsEnabled;

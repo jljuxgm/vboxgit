@@ -1,4 +1,4 @@
-/* $Id: tstAudioMixBuffer.cpp 89351 2021-05-28 12:13:29Z vboxsync $ */
+/* $Id: tstAudioMixBuffer.cpp 89371 2021-05-28 20:52:58Z vboxsync $ */
 /** @file
  * Audio testcase - Mixing buffer.
  */
@@ -317,7 +317,7 @@ static void tstSimple(RTTEST hTest)
     RTTESTI_CHECK(AudioMixBufUsed(&mb) == cFramesWrittenAbs);
     RTTESTI_CHECK(AudioMixBufReadPos(&mb) == 0);
 
-    AudioMixBufDestroy(&mb);
+    AudioMixBufTerm(&mb);
 }
 
 #if 0 /* obsolete */
@@ -673,7 +673,7 @@ static void tstNewPeek(RTTEST hTest, uint32_t uFromHz, uint32_t uToHz)
                       ("iSrcFrame=%#x -> %#x..%#x; iDstFrame=%#x (delta %d)\n",
                        iSrcFrame, cDstMinExpect, cDstMaxExpect, iDstFrame, (cDstMinExpect + cDstMaxExpect) / 2 - iDstFrame));
 
-    AudioMixBufDestroy(&MixBuf);
+    AudioMixBufTerm(&MixBuf);
 }
 
 

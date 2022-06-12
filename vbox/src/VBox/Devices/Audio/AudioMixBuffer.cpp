@@ -1,4 +1,4 @@
-/* $Id: AudioMixBuffer.cpp 89354 2021-05-28 12:57:55Z vboxsync $ */
+/* $Id: AudioMixBuffer.cpp 89371 2021-05-28 20:52:58Z vboxsync $ */
 /** @file
  * Audio mixing buffer for converting reading/writing audio data.
  */
@@ -921,12 +921,12 @@ int AudioMixBufInit(PAUDIOMIXBUF pMixBuf, const char *pszName, PCPDMAUDIOPCMPROP
 }
 
 /**
- * Destroys (uninitializes) a mixing buffer.
+ * Terminates (uninitializes) a mixing buffer.
  *
  * @param   pMixBuf     The mixing buffer.  Uninitialized mixer buffers will be
  *                      quietly ignored.  As will NULL.
  */
-void AudioMixBufDestroy(PAUDIOMIXBUF pMixBuf)
+void AudioMixBufTerm(PAUDIOMIXBUF pMixBuf)
 {
     if (!pMixBuf)
         return;

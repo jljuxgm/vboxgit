@@ -1,4 +1,4 @@
-/* $Id: AudioMixBuffer.h 89352 2021-05-28 12:18:56Z vboxsync $ */
+/* $Id: AudioMixBuffer.h 89371 2021-05-28 20:52:58Z vboxsync $ */
 /** @file
  * Audio Mixing bufer convert audio samples to/from different rates / formats.
  */
@@ -181,7 +181,7 @@ typedef struct AUDIOMIXBUF
 
 
 int         AudioMixBufInit(PAUDIOMIXBUF pMixBuf, const char *pszName, PCPDMAUDIOPCMPROPS pProps, uint32_t cFrames);
-void        AudioMixBufDestroy(PAUDIOMIXBUF pMixBuf);
+void        AudioMixBufTerm(PAUDIOMIXBUF pMixBuf);
 void        AudioMixBufDrop(PAUDIOMIXBUF pMixBuf);
 void        AudioMixBufSetVolume(PAUDIOMIXBUF pMixBuf, PCPDMAUDIOVOLUME pVol);
 
