@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic1.cpp 85078 2020-07-07 06:45:08Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic1.cpp 85081 2020-07-07 12:03:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic1 class implementation.
  */
@@ -488,7 +488,7 @@ void UIWizardNewVMPageBasic1::prepare()
 {
     QGridLayout *pMainLayout = new QGridLayout(this);;
     createWidgets(pMainLayout);
-    void createConnections();
+    createConnections();
     /* Register fields: */
     registerField("name*", m_pNameAndSystemEditor, "name", SIGNAL(sigNameChanged(const QString &)));
     registerField("type", m_pNameAndSystemEditor, "type", SIGNAL(sigOsTypeChanged()));

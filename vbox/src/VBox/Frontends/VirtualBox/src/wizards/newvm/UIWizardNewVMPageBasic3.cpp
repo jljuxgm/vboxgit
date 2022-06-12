@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic3.cpp 85071 2020-07-06 13:30:23Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic3.cpp 85081 2020-07-07 12:03:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic3 class implementation.
  */
@@ -51,6 +51,9 @@ UIWizardNewVMPage3::UIWizardNewVMPage3()
 
 void UIWizardNewVMPage3::updateVirtualDiskSource()
 {
+    if (!m_pDiskSelector || !m_pVMMButton)
+        return;
+
     /* Enable/disable controls: */
     m_pDiskSelector->setEnabled(m_pDiskPresent->isChecked());
     m_pVMMButton->setEnabled(m_pDiskPresent->isChecked());
@@ -259,7 +262,7 @@ void UIWizardNewVMPageBasic3::sltGetWithFileOpenDialog()
 void UIWizardNewVMPageBasic3::retranslateUi()
 {
     /* Translate page: */
-    setTitle(UIWizardNewVM::tr("Hard disk"));
+    setTitle(UIWizardNewVM::tr("Hard disk and Hardware"));
 
     /* Translate widgets: */
     QString strRecommendedHDD = field("type").value<CGuestOSType>().isNull() ? QString() :
