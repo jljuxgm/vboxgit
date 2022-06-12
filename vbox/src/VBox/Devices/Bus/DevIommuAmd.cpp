@@ -1,4 +1,4 @@
-/* $Id: DevIommuAmd.cpp 88622 2021-04-21 03:42:46Z vboxsync $ */
+/* $Id: DevIommuAmd.cpp 88642 2021-04-22 07:09:10Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - AMD implementation.
  */
@@ -206,6 +206,14 @@
         { /* likely */ } \
         else \
             return rcLock; \
+    } while (0)
+
+/** Checks if the current thread owns the PDM lock. */
+# define IOMMU_ASSERT_LOCK_IS_OWNER(a_pDevIns, a_pThisCC) \
+    do \
+    { \
+        Assert((a_pThisCC)->CTX_SUFF(pIommuHlp)->pfnLockIsOwner((a_pDevIns))); \
+        NOREF(a_pThisCC); \
     } while (0)
 
 /** Acquires the PDM lock (asserts on failure). */
