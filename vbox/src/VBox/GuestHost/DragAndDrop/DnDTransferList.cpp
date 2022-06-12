@@ -1,4 +1,4 @@
-/* $Id: DnDTransferList.cpp 85539 2020-07-30 07:19:57Z vboxsync $ */
+/* $Id: DnDTransferList.cpp 85659 2020-08-10 11:29:08Z vboxsync $ */
 /** @file
  * DnD - transfer list implemenation.
  */
@@ -631,6 +631,10 @@ static int dndTransferListAppendPathNative(PDNDTRANSFERLIST pList, const char *p
                     }
                 }
             }
+            /* On UNIX-y OSes RTPathQueryInfo() returns VERR_FILE_NOT_FOUND in some cases
+             * so tweak this to make it uniform to Windows. */
+            else if (rc == VERR_FILE_NOT_FOUND)
+                rc = VERR_PATH_NOT_FOUND;
         }
         else
             rc = VERR_INVALID_PARAMETER;
