@@ -1,4 +1,4 @@
-/* $Id: tstRTHttp-1.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: tstRTHttp-1.cpp 86380 2020-10-01 14:18:39Z vboxsync $ */
 /** @file
  * IPRT - Testcase for the RTHttp API.
  */
@@ -142,6 +142,10 @@ void testHeaderSigning()
         RTTestIFailureDetails("Got auth: %s\n", pszAuth);
         RTTestIFailureDetails("Expected: %s\n", pszExpect);
     }
+
+    RTTESTI_CHECK_RC(RTHttpDestroy(hHttp), VINF_SUCCESS);
+    RTCrKeyRelease(hPublicKey);
+    RTCrKeyRelease(hPrivateKey);
 }
 
 
