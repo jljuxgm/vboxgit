@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.h 88356 2021-04-04 22:45:13Z vboxsync $ */
+/* $Id: AudioMixer.h 88357 2021-04-04 22:58:35Z vboxsync $ */
 /** @file
  * VBox audio - Mixing routines.
  *
@@ -29,6 +29,7 @@
 
 #include <VBox/vmm/pdmaudioifs.h>
 #include "AudioMixBuffer.h"
+#include "AudioHlp.h"
 
 
 /** Pointer to an audio mixer sink. */
@@ -235,7 +236,7 @@ typedef struct AUDMIXSINK
     uint64_t                tsLastReadWrittenNs;
     struct
     {
-        PPDMAUDIOFILE       pFile;
+        PAUDIOHLPFILE       pFile;
     } Dbg;
 } AUDMIXSINK;
 

@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 88356 2021-04-04 22:45:13Z vboxsync $ */
+/* $Id: DrvAudio.cpp 88357 2021-04-04 22:58:35Z vboxsync $ */
 /** @file
  * Intermediate audio driver - Connects the audio device emulation with the host backend.
  */
@@ -140,9 +140,9 @@ typedef struct DRVAUDIOSTREAM
             struct
             {
                 /** File for writing stream reads. */
-                PPDMAUDIOFILE   pFileStreamRead;
+                PAUDIOHLPFILE   pFileStreamRead;
                 /** File for writing non-interleaved captures. */
-                PPDMAUDIOFILE   pFileCaptureNonInterleaved;
+                PAUDIOHLPFILE   pFileCaptureNonInterleaved;
             } Dbg;
             struct
             {
@@ -163,9 +163,9 @@ typedef struct DRVAUDIOSTREAM
             struct
             {
                 /** File for writing stream writes. */
-                PPDMAUDIOFILE   pFileStreamWrite;
+                PAUDIOHLPFILE   pFileStreamWrite;
                 /** File for writing stream playback. */
-                PPDMAUDIOFILE   pFilePlayNonInterleaved;
+                PAUDIOHLPFILE   pFilePlayNonInterleaved;
             } Dbg;
             struct
             {
