@@ -1,4 +1,4 @@
-/* $Id: PDMR0DevHlp.cpp 84714 2020-06-06 10:01:54Z vboxsync $ */
+/* $Id: PDMR0DevHlp.cpp 84755 2020-06-10 12:43:34Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, R0 Device Helper parts.
  */
@@ -1356,7 +1356,6 @@ extern DECLEXPORT(const PDMDEVHLPR0) g_pdmR0DevHlpTracing =
     pdmR0DevHlpTracing_PCIPhysWrite,
     pdmR0DevHlpTracing_PCISetIrq,
     pdmR0DevHlpTracing_ISASetIrq,
-    pdmR0DevHlpTracing_IoApicSendMsi,
     pdmR0DevHlp_PhysRead,
     pdmR0DevHlp_PhysWrite,
     pdmR0DevHlp_A20IsEnabled,

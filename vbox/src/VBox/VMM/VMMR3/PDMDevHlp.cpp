@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 84714 2020-06-06 10:01:54Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 84755 2020-06-10 12:43:34Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -4528,7 +4528,6 @@ const PDMDEVHLPR3 g_pdmR3DevHlpTracing =
     pdmR3DevHlpTracing_PCISetIrqNoWait,
     pdmR3DevHlpTracing_ISASetIrq,
     pdmR3DevHlpTracing_ISASetIrqNoWait,
-    pdmR3DevHlpTracing_IoApicSendMsi,
     pdmR3DevHlp_DriverAttach,
     pdmR3DevHlp_DriverDetach,
     pdmR3DevHlp_DriverReconfigure,
