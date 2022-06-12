@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 86731 2020-10-28 10:52:12Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 86742 2020-10-28 16:53:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -790,9 +790,10 @@ void UIChooserModel::moveSelectedMachineItemsToGroupItem(const QString &strName 
         /* Create new group node in the current root: */
         pTargetGroupNode = new UIChooserNodeGroup(invisibleRoot(),
                                                   invisibleRoot()->nodes().size() /* position */,
-                                                  true /* opened */,
+                                                  QUuid() /* id */,
                                                   uniqueGroupName(invisibleRoot()),
-                                                  UIChooserNodeGroupType_Local);
+                                                  UIChooserNodeGroupType_Local,
+                                                  true /* opened */);
         pTargetGroupItem = new UIChooserItemGroup(root(), pTargetGroupNode);
     }
     else

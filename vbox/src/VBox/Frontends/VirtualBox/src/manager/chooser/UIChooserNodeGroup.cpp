@@ -1,4 +1,4 @@
-/* $Id: UIChooserNodeGroup.cpp 84625 2020-06-01 16:44:39Z vboxsync $ */
+/* $Id: UIChooserNodeGroup.cpp 86742 2020-10-28 16:53:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserNodeGroup class implementation.
  */
@@ -27,13 +27,15 @@
 
 UIChooserNodeGroup::UIChooserNodeGroup(UIChooserNode *pParent,
                                        int iPosition,
-                                       bool fOpened,
+                                       const QUuid &uId,
                                        const QString &strName,
-                                       UIChooserNodeGroupType enmGroupType)
+                                       UIChooserNodeGroupType enmGroupType,
+                                       bool fOpened)
     : UIChooserNode(pParent, false /* favorite */)
-    , m_fOpened(fOpened)
+    , m_uId(uId)
     , m_strName(strName)
     , m_enmGroupType(enmGroupType)
+    , m_fOpened(fOpened)
 {
     /* Add to parent: */
     if (parentNode())
@@ -47,9 +49,10 @@ UIChooserNodeGroup::UIChooserNodeGroup(UIChooserNode *pParent,
                                        int iPosition,
                                        UIChooserNodeGroup *pCopyFrom)
     : UIChooserNode(pParent, false /* favorite */)
-    , m_fOpened(pCopyFrom->isOpened())
+    , m_uId(pCopyFrom->id())
     , m_strName(pCopyFrom->name())
     , m_enmGroupType(pCopyFrom->groupType())
+    , m_fOpened(pCopyFrom->isOpened())
 {
     /* Add to parent: */
     if (parentNode())
@@ -284,6 +287,11 @@ void UIChooserNodeGroup::sortNodes()
     foreach (UIChooserNode *pNode, m_nodesMachine)
         mapMachine[pNode->name()] = pNode;
     m_nodesMachine = mapMachine.values();
+}
+
+QUuid UIChooserNodeGroup::id() const
+{
+    return m_uId;
 }
 
 void UIChooserNodeGroup::retranslateUi()
