@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.h 88108 2021-03-12 14:16:01Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.h 88110 2021-03-12 17:24:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class declaration.
  */
@@ -54,6 +54,7 @@ class UIWizardNewVMPageExpert : public UIWizardPage,
     Q_PROPERTY(QString guestOSFamiyId READ guestOSFamiyId);
     Q_PROPERTY(QString ISOFilePath READ ISOFilePath);
     Q_PROPERTY(bool isUnattendedEnabled READ isUnattendedEnabled);
+    Q_PROPERTY(bool skipUnattendedInstall READ skipUnattendedInstall);
     Q_PROPERTY(bool startHeadless READ startHeadless);
     Q_PROPERTY(QString detectedOSTypeId READ detectedOSTypeId);
     Q_PROPERTY(QString userName READ userName WRITE setUserName);
