@@ -1,4 +1,4 @@
-/* $Id: HostHardwareLinux.cpp 86134 2020-09-16 15:39:09Z vboxsync $ */
+/* $Id: HostHardwareLinux.cpp 86135 2020-09-16 15:53:04Z vboxsync $ */
 /** @file
  * VirtualBox Main - Code for handling hardware detection under Linux, VBoxSVC.
  */
@@ -400,6 +400,7 @@ static void dvdCreateDeviceStrings(const char *pcszVendor, const char *pcszModel
             pszUdi[0] = '\0';
     }
 }
+
 
 /**
  * Check whether the device is the NVME device.
@@ -824,6 +825,7 @@ public:
         return mszNode;
     }
 };
+
 
 /**
  * Helper function to query the sysfs subsystem for information about DVD
