@@ -1,4 +1,4 @@
-/* $Id: tstDevicePdmDevHlp.cpp 83296 2020-03-16 11:43:32Z vboxsync $ */
+/* $Id: tstDevicePdmDevHlp.cpp 84431 2020-05-21 08:42:19Z vboxsync $ */
 /** @file
  * tstDevice - Test framework for PDM devices/drivers, PDM helper implementation.
  */
@@ -4655,9 +4655,9 @@ static DECLCALLBACK(int) pdmR3DevHlp_IommuRegister(PPDMDEVINS pDevIns, PPDMIOMMU
     AssertMsgReturn(pIommuReg->u32Version == PDM_IOMMUREGR3_VERSION,
                     ("%s/%d: u32Version=%#x expected %#x\n", pDevIns->pReg->szName, pDevIns->iInstance, pIommuReg->u32Version, PDM_IOMMUREGR3_VERSION),
                     VERR_INVALID_PARAMETER);
-
-    /** @todo IOMMU: Validate other parameters */
-
+    AssertPtrReturn(pIommuReg->pfnMemRead, VERR_INVALID_POINTER);
+    AssertPtrReturn(pIommuReg->pfnMemWrite, VERR_INVALID_POINTER);
+    AssertPtrReturn(pIommuReg->pfnMsiRemap, VERR_INVALID_POINTER);
     AssertMsgReturn(pIommuReg->u32TheEnd == PDM_IOMMUREGR3_VERSION,
                     ("%s/%d: u32TheEnd=%#x expected %#x\n", pDevIns->pReg->szName, pDevIns->iInstance, pIommuReg->u32TheEnd, PDM_IOMMUREGR3_VERSION),
                     VERR_INVALID_PARAMETER);
