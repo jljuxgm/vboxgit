@@ -1,4 +1,4 @@
-/* $Id: QILineEdit.h 87736 2021-02-12 15:03:35Z vboxsync $ */
+/* $Id: QILineEdit.h 88860 2021-05-04 15:59:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QILineEdit class declaration.
  */
@@ -72,9 +72,6 @@ private:
 
     /** Calculates suitable @a strText size. */
     QSize featTextWidth(const QString &strText) const;
-
-    /** The original background base color. Used when marking/unmarking the combo box. */
-    QColor  m_originalBaseColor;
 
     /** Holds whether this is allowed to copy contents when disabled. */
     bool     m_fAllowToCopyContentsWhenDisabled;

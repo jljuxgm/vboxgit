@@ -1,4 +1,4 @@
-/* $Id: QILineEdit.cpp 87736 2021-02-12 15:03:35Z vboxsync $ */
+/* $Id: QILineEdit.cpp 88860 2021-05-04 15:59:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QILineEdit class implementation.
  */
@@ -129,8 +129,6 @@ void QILineEdit::copy()
 void QILineEdit::prepare()
 {
     m_markIcon = UIIconPool::iconSet(":/status_error_16px.png");
-    /* Prepare original base color: */
-    m_originalBaseColor = palette().color(QPalette::Base);
 
     /* Prepare invisible copy action: */
     m_pCopyAction = new QAction(this);
