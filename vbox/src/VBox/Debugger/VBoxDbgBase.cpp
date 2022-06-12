@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgBase.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxDbgBase.cpp 85844 2020-08-20 13:14:20Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Base classes.
  */
@@ -228,7 +228,10 @@ bool
 VBoxDbgBaseWindow::event(QEvent *a_pEvt)
 {
     bool fRc = QWidget::event(a_pEvt);
-    vPolishSizeAndPos();
+    if (   a_pEvt->type() == QEvent::Paint
+        || a_pEvt->type() == QEvent::UpdateRequest
+        || a_pEvt->type() == QEvent::LayoutRequest) /** @todo Someone with Qt knowledge should figure out how to properly do this. */
+        vPolishSizeAndPos();
     return fRc;
 }
 
