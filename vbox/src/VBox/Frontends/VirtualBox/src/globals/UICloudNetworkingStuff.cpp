@@ -1,4 +1,4 @@
-/* $Id: UICloudNetworkingStuff.cpp 86695 2020-10-23 17:28:55Z vboxsync $ */
+/* $Id: UICloudNetworkingStuff.cpp 86738 2020-10-28 15:53:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudNetworkingStuff namespace implementation.
  */
@@ -63,6 +63,42 @@ CCloudProviderManager UICloudNetworkingStuff::cloudProviderManager(QString &strE
     }
     /* Null by default: */
     return CCloudProviderManager();
+}
+
+CCloudProvider UICloudNetworkingStuff::cloudProviderById(const QUuid &uProviderId,
+                                                         QWidget *pParent /* = 0 */)
+{
+    /* Acquire cloud provider manager: */
+    CCloudProviderManager comProviderManager = cloudProviderManager(pParent);
+    if (comProviderManager.isNotNull())
+    {
+        /* Acquire cloud provider: */
+        CCloudProvider comProvider = comProviderManager.GetProviderById(uProviderId);
+        if (!comProviderManager.isOk())
+            msgCenter().cannotAcquireCloudProviderManagerParameter(comProviderManager, pParent);
+        else
+            return comProvider;
+    }
+    /* Null by default: */
+    return CCloudProvider();
+}
+
+CCloudProvider UICloudNetworkingStuff::cloudProviderById(const QUuid &uProviderId,
+                                                         QString &strErrorMessage)
+{
+    /* Acquire cloud provider manager: */
+    CCloudProviderManager comProviderManager = cloudProviderManager(strErrorMessage);
+    if (comProviderManager.isNotNull())
+    {
+        /* Acquire cloud provider: */
+        CCloudProvider comProvider = comProviderManager.GetProviderById(uProviderId);
+        if (!comProviderManager.isOk())
+            strErrorMessage = UIErrorString::formatErrorInfo(comProviderManager);
+        else
+            return comProvider;
+    }
+    /* Null by default: */
+    return CCloudProvider();
 }
 
 CCloudProvider UICloudNetworkingStuff::cloudProviderByShortName(const QString &strProviderShortName,
