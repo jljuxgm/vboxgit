@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.cpp 87892 2021-02-26 18:26:25Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.cpp 87912 2021-03-02 12:46:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class implementation.
  */
@@ -52,7 +52,7 @@ UIWizardNewVMPageExpert::UIWizardNewVMPageExpert(const QString &strGroup)
         m_pToolBox = new UIToolBox;
         m_pToolBox->insertPage(ExpertToolboxItems_NameAndOSType, createNameOSTypeWidgets(/* fCreateLabels */ false), "");
         m_pToolBox->insertPage(ExpertToolboxItems_Unattended, createUnattendedWidgets(), "", false);
-        m_pToolBox->insertPage(ExpertToolboxItems_Disk, createDiskWidgets(), "");
+        //m_pToolBox->insertPage(ExpertToolboxItems_Disk, createDiskWidgets(), "");
         m_pToolBox->insertPage(ExpertToolboxItems_Hardware, createHardwareWidgets(), "");
 
         m_pToolBox->setCurrentPage(ExpertToolboxItems_NameAndOSType);

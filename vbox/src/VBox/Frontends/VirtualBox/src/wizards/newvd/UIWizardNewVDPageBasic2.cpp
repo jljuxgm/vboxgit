@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageBasic2.cpp 87890 2021-02-26 15:18:33Z vboxsync $ */
+/* $Id: UIWizardNewVDPageBasic2.cpp 87912 2021-03-02 12:46:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageBasic2 class implementation.
  */
@@ -82,6 +82,7 @@ QWidget *UIWizardNewVDPage2::createMediumVariantWidgets(bool fWithLabels)
         }
         pMainLayout->addLayout(pVariantLayout);
         pMainLayout->addStretch();
+        pMainLayout->setContentsMargins(0, 0, 0, 0);
     }
     return pContainerWidget;
 }
