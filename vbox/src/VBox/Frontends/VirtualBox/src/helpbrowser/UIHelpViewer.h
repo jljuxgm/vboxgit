@@ -1,4 +1,4 @@
-/* $Id: UIHelpViewer.h 88496 2021-04-13 16:56:17Z vboxsync $ */
+/* $Id: UIHelpViewer.h 88522 2021-04-15 11:24:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class declaration.
  */
@@ -43,7 +43,7 @@ class UIHelpViewer : public QIWithRetranslateUI<QTextBrowser>
 signals:
 
     void sigOpenLinkInNewTab(const QUrl &url, bool fBackground);
-    void sigCloseFindInPageWidget();
+    void sigFindInPageWidgetToogle(bool fVisible);
     void sigFontPointSizeChanged(int iFontPointSize);
     void sigGoBackward();
     void sigGoForward();
@@ -72,13 +72,9 @@ public:
     int zoomPercentage() const;
     void setZoomPercentage(int iZoomPercentage);
     void setHelpFileList(const QList<QUrl> &helpFileList);
-    bool isInOverlayMode() const;
-
+    bool hasSelectedText() const;
     static const QPair<int, int> zoomPercentageMinMax;
-
-public slots:
-
-    void sltToggleFindInPageWidget(bool fVisible);
+    void toggleFindInPageWidget(bool fVisible);
 
 protected:
 
@@ -102,6 +98,8 @@ private slots:
     void sltHandleFindInPageSearchTextChange(const QString &strSearchText);
     void sltSelectPreviousMatch();
     void sltSelectNextMatch();
+    void sltToggleFindInPageWidget(bool fVisible);
+    void sltCloseFindInPageWidget();
 
 private:
 
@@ -109,7 +107,6 @@ private:
     {
         qreal m_fInitialWidth;
         qreal m_fScaledWidth;
-        //int m_iPosition;
         QTextCursor m_textCursor;
         QPixmap m_pixmap;
         QString m_strName;
