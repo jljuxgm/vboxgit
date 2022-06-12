@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 87103 2020-12-18 10:47:03Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 87354 2021-01-21 16:08:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -790,6 +790,12 @@ void UIVirtualBoxManagerWidget::updateToolbar()
                     m_pToolBar->addSeparator();
                     m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Welcome_S_New));
                     m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Welcome_S_Add));
+                    break;
+                }
+                case UIToolType_Extensions:
+                {
+                    m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Extension_S_Install));
+                    m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Extension_S_Uninstall));
                     break;
                 }
                 case UIToolType_Media:

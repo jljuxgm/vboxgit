@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackendGlobal.cpp 87316 2021-01-20 09:50:36Z vboxsync $ */
+/* $Id: UIConverterBackendGlobal.cpp 87354 2021-01-21 16:08:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConverterBackendGlobal implementation.
  */
@@ -1512,6 +1512,7 @@ template<> QString toInternalString(const UIToolType &enmToolType)
     switch (enmToolType)
     {
         case UIToolType_Welcome:     strResult = "Welcome"; break;
+        case UIToolType_Extensions:  strResult = "Extensions"; break;
         case UIToolType_Media:       strResult = "Media"; break;
         case UIToolType_Network:     strResult = "Network"; break;
         case UIToolType_Cloud:       strResult = "Cloud"; break;
@@ -1536,6 +1537,7 @@ template<> UIToolType fromInternalString<UIToolType>(const QString &strToolType)
      * to search through the keys using 'case-insensitive' rule: */
     QStringList keys;      QList<UIToolType> values;
     keys << "Welcome";     values << UIToolType_Welcome;
+    keys << "Extensions";  values << UIToolType_Extensions;
     keys << "Media";       values << UIToolType_Media;
     keys << "Network";     values << UIToolType_Network;
     keys << "Cloud";       values << UIToolType_Cloud;
