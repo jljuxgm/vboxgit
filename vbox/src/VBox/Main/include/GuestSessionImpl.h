@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.h 83321 2020-03-19 09:24:58Z vboxsync $ */
+/* $Id: GuestSessionImpl.h 84554 2020-05-27 08:16:59Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -337,6 +337,7 @@ public:
     static HRESULT          i_setErrorExternal(VirtualBoxBase *pInterface, int guestRc);
     int                     i_setSessionStatus(GuestSessionStatus_T sessionStatus, int sessionRc);
     int                     i_signalWaiters(GuestSessionWaitResult_T enmWaitResult, int rc /*= VINF_SUCCESS */);
+    int                     i_shutdown(uint32_t fFlags, int *prcGuest);
     int                     i_determineProtocolVersion(void);
     int                     i_waitFor(uint32_t fWaitFlags, ULONG uTimeoutMS, GuestSessionWaitResult_T &waitResult, int *pGuestRc);
     int                     i_waitForStatusChange(GuestWaitEvent *pEvent, uint32_t fWaitFlags, uint32_t uTimeoutMS,

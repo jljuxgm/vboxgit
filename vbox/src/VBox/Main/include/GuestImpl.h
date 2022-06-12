@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: GuestImpl.h 84554 2020-05-27 08:16:59Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -172,6 +172,7 @@ private:
 
      HRESULT findSession(const com::Utf8Str &aSessionName,
                          std::vector<ComPtr<IGuestSession> > &aSessions);
+     HRESULT shutdown(const std::vector<GuestShutdownFlag_T> &aFlags);
      HRESULT updateGuestAdditions(const com::Utf8Str &aSource,
                                   const std::vector<com::Utf8Str> &aArguments,
                                   const std::vector<AdditionsUpdateFlag_T> &aFlags,
