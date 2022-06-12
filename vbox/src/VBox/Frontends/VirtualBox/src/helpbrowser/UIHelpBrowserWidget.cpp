@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.cpp 86583 2020-10-15 09:41:04Z vboxsync $ */
+/* $Id: UIHelpBrowserWidget.cpp 86584 2020-10-15 09:53:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class implementation.
  */
@@ -254,7 +254,7 @@ void UIHelpBrowserWidget::sltHandleHelpEngineSetupFinished()
     QList<QUrl> files = m_pHelpEngine->files(m_pHelpEngine->namespaceName(m_strHelpFilePath), QStringList());
     if (!files.empty())
         m_pTextBrowser->setSource(files[0]);
-    /*  @todo: show some kind of error maybe. */
+    /** @todo show some kind of error maybe. */
 #endif
 }
 
