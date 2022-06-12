@@ -1,4 +1,4 @@
-/* $Id: DevIommuAmd.cpp 87326 2021-01-20 16:56:18Z vboxsync $ */
+/* $Id: DevIommuAmd.cpp 87327 2021-01-20 17:01:53Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - AMD implementation.
  */
@@ -134,7 +134,7 @@ typedef struct IOWALKRESULT
     /** The I/O permissions allowed by the translation (IOMMU_IO_PERM_XXX). */
     uint8_t         fIoPerm;
     /** Padding. */
-    uint16_t        abPadding[2];
+    uint8_t         abPadding[2];
 } IOWALKRESULT;
 /** Pointer to an I/O walk result struct. */
 typedef IOWALKRESULT *PIOWALKRESULT;
