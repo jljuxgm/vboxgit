@@ -1,4 +1,4 @@
-/* $Id: UIDetailsWidgetNATNetwork.cpp 87312 2021-01-20 08:58:56Z vboxsync $ */
+/* $Id: UIDetailsWidgetNATNetwork.cpp 87365 2021-01-22 12:46:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsWidgetNATNetwork class implementation.
  */
@@ -100,17 +100,6 @@ bool UIDetailsWidgetNATNetwork::revalidate() const
     {
         msgCenter().warnAboutNoCIDRSpecified(m_newData.m_strName);
         return false;
-    }
-    else
-    {
-        /* Make sure network CIDR is valid: */
-        RTNETADDRIPV4 network, mask;
-        const int rc = RTCidrStrToIPv4(m_newData.m_strCIDR.toUtf8().constData(), &network, &mask);
-        if (RT_FAILURE(rc))
-        {
-            msgCenter().warnAboutInvalidCIDRSpecified(m_newData.m_strCIDR, m_newData.m_strName);
-            return false;
-        }
     }
 
     /* Validate 'Forwarding' tab content: */
