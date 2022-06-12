@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.h 84519 2020-05-25 17:29:52Z vboxsync $ */
 /** @file
  * VBoxManageGuestCtrl.h - Definitions for guest control.
  */
@@ -27,6 +27,7 @@
 #include <VBox/com/listeners.h>
 #include <VBox/com/VirtualBox.h>
 
+#include <iprt/semaphore.h>
 #include <iprt/time.h>
 
 #include <map>
@@ -48,6 +49,9 @@ typedef ListenerImpl<GuestSessionEventListener> GuestSessionEventListenerImpl;
 
 class GuestEventListener;
 typedef ListenerImpl<GuestEventListener> GuestEventListenerImpl;
+
+class GuestAdditionsRunlevelListener;
+typedef ListenerImpl<GuestAdditionsRunlevelListener> GuestAdditionsRunlevelListenerImpl;
 
 /** Simple statistics class for binding locally
  *  held data to a specific guest object. */
@@ -229,6 +233,30 @@ public:
 protected:
 
     GuestEventSessions mSessions;
+};
+
+/**
+ *  Handler for Guest Additions runlevel change events.
+ */
+class GuestAdditionsRunlevelListener : public GuestListenerBase
+{
+
+public:
+
+    GuestAdditionsRunlevelListener(AdditionsRunLevelType_T enmRunLevel);
+
+    virtual ~GuestAdditionsRunlevelListener(void);
+
+public:
+
+    void uninit(void);
+
+    STDMETHOD(HandleEvent)(VBoxEventType_T aType, IEvent *aEvent);
+
+protected:
+
+    /** The run level target we're waiting for. */
+    AdditionsRunLevelType_T mRunLevelTarget;
 };
 #endif /* !VBOX_ONLY_DOCS */
 

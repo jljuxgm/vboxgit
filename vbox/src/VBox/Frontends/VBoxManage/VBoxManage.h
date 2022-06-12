@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 84032 2020-04-28 09:56:41Z vboxsync $ */
+/* $Id: VBoxManage.h 84519 2020-05-25 17:29:52Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -143,6 +143,7 @@ typedef enum
 # define HELP_SCOPE_GSTCTRL_STAT            RT_BIT(12)
 # define HELP_SCOPE_GSTCTRL_UPDATEGA        RT_BIT(13)
 # define HELP_SCOPE_GSTCTRL_WATCH           RT_BIT(14)
+# define HELP_SCOPE_GSTCTRL_WAITRUNLEVEL    RT_BIT(15)
 #endif
 
 /** command handler argument */
