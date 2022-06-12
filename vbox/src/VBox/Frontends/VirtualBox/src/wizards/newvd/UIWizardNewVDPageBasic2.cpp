@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageBasic2.cpp 87941 2021-03-03 16:11:56Z vboxsync $ */
+/* $Id: UIWizardNewVDPageBasic2.cpp 87972 2021-03-05 14:55:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageBasic2 class implementation.
  */
@@ -171,6 +171,30 @@ void UIWizardNewVDPage2::setWidgetVisibility(CMediumFormat &mediumFormat)
         m_pSplitLabel->setHidden(!fIsCreateSplitPossible);
     if (m_pSplitBox)
         m_pSplitBox->setHidden(!fIsCreateSplitPossible);
+}
+
+void UIWizardNewVDPage2::updateMediumVariantWidgetsAfterFormatChange(const CMediumFormat &mediumFormat)
+{
+    /* Enable/disable widgets: */
+    ULONG uCapabilities = 0;
+    QVector<KMediumFormatCapabilities> capabilities;
+    capabilities = mediumFormat.GetCapabilities();
+    for (int i = 0; i < capabilities.size(); i++)
+        uCapabilities |= capabilities[i];
+
+    bool fIsCreateDynamicPossible = uCapabilities & KMediumFormatCapabilities_CreateDynamic;
+    bool fIsCreateFixedPossible = uCapabilities & KMediumFormatCapabilities_CreateFixed;
+    bool fIsCreateSplitPossible = uCapabilities & KMediumFormatCapabilities_CreateSplit2G;
+
+    if (m_pFixedCheckBox)
+    {
+        m_pFixedCheckBox->setEnabled(fIsCreateDynamicPossible || fIsCreateFixedPossible);
+        if (!fIsCreateDynamicPossible)
+            m_pFixedCheckBox->setChecked(true);
+        if (!fIsCreateFixedPossible)
+            m_pFixedCheckBox->setChecked(false);
+    }
+    m_pSplitBox->setEnabled(fIsCreateSplitPossible);
 }
 
 UIWizardNewVDPageBasic2::UIWizardNewVDPageBasic2()

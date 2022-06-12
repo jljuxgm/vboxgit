@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageBasic3.cpp 87941 2021-03-03 16:11:56Z vboxsync $ */
+/* $Id: UIWizardNewVDPageBasic3.cpp 87972 2021-03-05 14:55:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageBasic3 class implementation.
  */
@@ -228,6 +228,43 @@ void UIWizardNewVDPage3::setMediumSize(qulonglong uMediumSize)
 {
     if (m_pSizeEditor)
         m_pSizeEditor->setMediumSize(uMediumSize);
+}
+
+/* static */
+QString UIWizardNewVDPage3::stripFormatExtension(const QString &strFileName, const QStringList &formatExtensions)
+{
+    QString result(strFileName);
+    foreach (const QString &strExtension, formatExtensions)
+    {
+        if (strFileName.endsWith(strExtension, Qt::CaseInsensitive))
+        {
+            /* Add the dot to extenstion: */
+            QString strExtensionWithDot(strExtension);
+            strExtensionWithDot.prepend('.');
+            int iIndex = strFileName.lastIndexOf(strExtensionWithDot, -1, Qt::CaseInsensitive);
+            result.remove(iIndex, strExtensionWithDot.length());
+        }
+    }
+    return result;
+}
+
+void UIWizardNewVDPage3::updateLocationEditorAfterFormatChange(const CMediumFormat &mediumFormat, const QStringList &formatExtensions)
+{
+    /* Compose virtual-disk extension: */
+    m_strDefaultExtension = defaultExtension(mediumFormat);
+    /* Update m_pLocationEditor's text if necessary: */
+    if (!m_pLocationEditor->text().isEmpty() && !m_strDefaultExtension.isEmpty())
+    {
+        QFileInfo fileInfo(m_pLocationEditor->text());
+        if (fileInfo.suffix() != m_strDefaultExtension)
+        {
+            QFileInfo newFileInfo(fileInfo.absolutePath(),
+                                  QString("%1.%2").
+                                  arg(stripFormatExtension(fileInfo.fileName(), formatExtensions)).
+                                  arg(m_strDefaultExtension));
+            m_pLocationEditor->setText(newFileInfo.absoluteFilePath());
+        }
+    }
 }
 
 void UIWizardNewVDPage3::retranslateWidgets()

@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageBasic2.h 87929 2021-03-03 08:45:46Z vboxsync $ */
+/* $Id: UIWizardNewVDPageBasic2.h 87972 2021-03-05 14:55:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageBasic2 class declaration.
  */
@@ -45,9 +45,10 @@ protected:
     void retranslateWidgets();
     /** Check Medium format capability and decide if certain widgets can be shown. */
     void setWidgetVisibility(CMediumFormat &mediumFormat);
+    void updateMediumVariantWidgetsAfterFormatChange(const CMediumFormat &mediumFormat);
     /** @name Widgets
      * @{ */
-        QCheckBox    *m_pFixedCheckBox;
+        QCheckBox *m_pFixedCheckBox;
         QCheckBox *m_pSplitBox;
     /** @} */
 
