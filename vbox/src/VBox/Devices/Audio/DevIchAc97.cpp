@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 89707 2021-06-15 14:24:03Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 89710 2021-06-15 14:35:00Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -2834,7 +2834,7 @@ static int ichac97R3StreamTransfer(PPDMDEVINS pDevIns, PAC97STATE pThis, PAC97ST
         if (!fInput)
         {
             void  *pvDst = NULL;
-            size_t cbDst = NULL;
+            size_t cbDst = 0;
             RTCircBufAcquireWriteBlock(pCircBuf, cbChunk, &pvDst, &cbDst);
 
             if (cbDst)
@@ -2860,7 +2860,7 @@ static int ichac97R3StreamTransfer(PPDMDEVINS pDevIns, PAC97STATE pThis, PAC97ST
             if (!fWriteSilence)
             {
                 void  *pvSrc = NULL;
-                size_t cbSrc = NULL;
+                size_t cbSrc = 0;
                 RTCircBufAcquireReadBlock(pCircBuf, cbChunk, &pvSrc, &cbSrc);
 
                 if (cbSrc)
