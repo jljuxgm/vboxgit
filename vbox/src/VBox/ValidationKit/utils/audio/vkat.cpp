@@ -1,4 +1,4 @@
-/* $Id: vkat.cpp 89227 2021-05-21 15:07:51Z vboxsync $ */
+/* $Id: vkat.cpp 89231 2021-05-23 01:21:57Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) utility for testing and validating the audio stack.
  */
@@ -1348,7 +1348,10 @@ static int audioTestDevicesEnumerateAndCheck(PAUDIOTESTENV pTstEnv, const char *
         RTListForEach(&pTstEnv->DevEnum.LstDevices, pDev, PDMAUDIOHOSTDEV, ListEntry)
         {
             char szFlags[PDMAUDIOHOSTDEV_MAX_FLAGS_STRING_LEN];
-            RTTestPrintf(g_hTest, RTTESTLVL_ALWAYS, "Enum: Device '%s':\n", pDev->szName);
+            if (pDev->pszId)
+                RTTestPrintf(g_hTest, RTTESTLVL_ALWAYS, "Enum: Device '%s' (ID '%s'):\n", pDev->szName, pDev->pszId);
+            else
+                RTTestPrintf(g_hTest, RTTESTLVL_ALWAYS, "Enum: Device '%s':\n", pDev->szName);
             RTTestPrintf(g_hTest, RTTESTLVL_ALWAYS, "Enum:   Usage           = %s\n",   PDMAudioDirGetName(pDev->enmUsage));
             RTTestPrintf(g_hTest, RTTESTLVL_ALWAYS, "Enum:   Flags           = %s\n",   PDMAudioHostDevFlagsToString(szFlags, pDev->fFlags));
             RTTestPrintf(g_hTest, RTTESTLVL_ALWAYS, "Enum:   Input channels  = %RU8\n", pDev->cMaxInputChannels);
