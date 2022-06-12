@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 87876 2021-02-25 16:39:28Z vboxsync $ */
+/* $Id: DrvAudio.cpp 87877 2021-02-25 16:54:20Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -1438,7 +1438,7 @@ static int drvAudioStreamPlayRaw(PDRVAUDIO pThis,
     uint32_t cfPlayedTotal = 0;
 
     PPDMAUDIOFRAME paFrames = (PPDMAUDIOFRAME)pThis->pvScratchBuf;
-    const uint32_t  cFrames  =                 pThis->cbScratchBuf / sizeof(PDMAUDIOFRAME);
+    const uint32_t  cFrames =      (uint32_t)(pThis->cbScratchBuf / sizeof(PDMAUDIOFRAME));
 
     uint32_t cfLeft = cfToPlay;
     while (cfLeft)
