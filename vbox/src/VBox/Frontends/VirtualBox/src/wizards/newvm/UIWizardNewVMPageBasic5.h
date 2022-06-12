@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic5.h 87889 2021-02-26 14:37:20Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic5.h 87890 2021-02-26 15:18:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic5 class declaration.
  */
@@ -84,8 +84,6 @@ private:
     bool isComplete() const;
 
 
-    /** Widgets. */
-    QIRichTextLabel *m_pLabel;
     /** For guided new vm wizard VDI is the only format. Thus we have no UI item for it. */
     CMediumFormat m_mediumFormat;
 };
