@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibGuestCtrl.cpp 84732 2020-06-09 07:15:54Z vboxsync $ */
+/* $Id: VBoxGuestR3LibGuestCtrl.cpp 84812 2020-06-12 09:44:32Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, guest control.
  */
@@ -1035,7 +1035,8 @@ VBGLR3DECL(int) VbglR3GuestCtrlPathGetUserHome(PVBGLR3GUESTCTRLCMDCTX pCtx)
 VBGLR3DECL(int) VbglR3GuestCtrlGetShutdown(PVBGLR3GUESTCTRLCMDCTX pCtx, uint32_t *pfAction)
 {
     AssertPtrReturn(pCtx, VERR_INVALID_POINTER);
-    AssertReturn(pCtx->uNumParms == 1, VERR_INVALID_PARAMETER);
+    AssertReturn(pCtx->uNumParms == 2, VERR_INVALID_PARAMETER);
+    AssertPtrReturn(pfAction, VERR_INVALID_POINTER);
 
     int rc;
     do
