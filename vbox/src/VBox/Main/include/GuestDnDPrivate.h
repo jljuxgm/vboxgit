@@ -1,4 +1,4 @@
-/* $Id: GuestDnDPrivate.h 85560 2020-07-30 13:42:03Z vboxsync $ */
+/* $Id: GuestDnDPrivate.h 85583 2020-07-31 16:46:38Z vboxsync $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget +
  * GuestDnDSource.
@@ -121,7 +121,8 @@ struct GuestDnDMetaData
         Assert(cbAllocated >= cbData + cbDataAdd);
         memcpy((uint8_t *)pvData + cbData, pvDataAdd, cbDataAdd);
 
-        cbData += cbDataAdd;
+        cbData     += cbDataAdd;
+        cbAnnounced = cbData;
 
         return cbData;
     }
