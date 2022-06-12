@@ -1,4 +1,4 @@
-/* $Id: SUPLib.cpp 85160 2020-07-10 09:01:02Z vboxsync $ */
+/* $Id: SUPLib.cpp 85450 2020-07-24 07:51:14Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Common code.
  */
@@ -276,7 +276,7 @@ SUPR3DECL(int) SUPR3InitEx(bool fUnrestricted, PSUPDRVSESSION *ppSession)
         strcpy(CookieReq.u.In.szMagic, SUPCOOKIE_MAGIC);
         CookieReq.u.In.u32ReqVersion = SUPDRV_IOC_VERSION;
         const uint32_t uMinVersion = (SUPDRV_IOC_VERSION & 0xffff0000) == 0x002d0000
-                                   ? 0x002d0001
+                                   ? 0x002d0002
                                    : SUPDRV_IOC_VERSION & 0xffff0000;
         CookieReq.u.In.u32MinVersion = uMinVersion;
         rc = suplibOsIOCtl(&g_supLibData, SUP_IOCTL_COOKIE, &CookieReq, SUP_IOCTL_COOKIE_SIZE);

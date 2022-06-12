@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 85171 2020-07-10 12:09:50Z vboxsync $ */
+/* $Id: SUPDrv.cpp 85450 2020-07-24 07:51:14Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -4641,7 +4641,11 @@ SUPR0DECL(int) SUPR0GetHwvirtMsrs(PSUPHWVIRTMSRS pMsrs, uint32_t fCaps, bool fFo
             }
         }
         else if (fCaps & SUPVTCAPS_AMD_V)
-            Msrs.u.svm.u64MsrHwcr = ASMRdMsr(MSR_K8_HWCR);
+        {
+            Msrs.u.svm.u64MsrHwcr    = ASMRdMsr(MSR_K8_HWCR);
+            Msrs.u.svm.u64MsrSmmAddr = ASMRdMsr(MSR_K7_SMM_ADDR);
+            Msrs.u.svm.u64MsrSmmMask = ASMRdMsr(MSR_K7_SMM_MASK);
+        }
         else
         {
             RTThreadPreemptRestore(&PreemptState);
