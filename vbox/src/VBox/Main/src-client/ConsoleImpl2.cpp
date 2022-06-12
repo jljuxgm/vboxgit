@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 88333 2021-03-31 16:29:39Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 88343 2021-04-01 09:15:57Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -869,7 +869,7 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
         iommuType = IommuType_None;
 #endif
     }
-    if (iommuType != IommuType_Intel)
+    if (iommuType == IommuType_Intel)
     {
 #ifndef VBOX_WITH_IOMMU_INTEL
         LogRel(("WARNING! Intel IOMMU not supported, IOMMU disabled.\n"));
