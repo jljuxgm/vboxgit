@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 87519 2021-02-01 21:17:51Z vboxsync $ */
+/* $Id: HM.cpp 87521 2021-02-01 21:48:09Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -1799,7 +1799,7 @@ static int hmR3InitFinalizeR0Amd(PVM pVM)
     LogRel(("HM: Max resume loops                  = %u\n",     pVM->hm.s.cMaxResumeLoopsCfg));
     LogRel(("HM: AMD HWCR MSR                      = %#RX64\n", pVM->hm.s.svm.u64MsrHwcr));
     LogRel(("HM: AMD-V revision                    = %#x\n",    pVM->hm.s.svm.u32Rev));
-    LogRel(("HM: AMD-V max ASID                    = %RU32\n",  pVM->hm.s.uMaxAsid));
+    LogRel(("HM: AMD-V max ASID                    = %RU32\n",  pVM->hm.s.uMaxAsidForLog));
     LogRel(("HM: AMD-V features                    = %#x\n",    pVM->hm.s.svm.fFeaturesForRing3));
 
     /*

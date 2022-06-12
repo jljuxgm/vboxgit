@@ -1,4 +1,4 @@
-/* $Id: tstVMStructSize.cpp 87493 2021-01-30 01:57:34Z vboxsync $ */
+/* $Id: tstVMStructSize.cpp 87521 2021-02-01 21:48:09Z vboxsync $ */
 /** @file
  * tstVMStructSize - testcase for check structure sizes/alignment
  *                   and to verify that HC and GC uses the same
@@ -367,7 +367,7 @@ int main()
     CHECK_MEMBER_ALIGNMENT(MMHYPERHEAP, Lock, sizeof(uintptr_t));
 
     /* hm - 32-bit gcc won't align uint64_t naturally, so check. */
-    CHECK_MEMBER_ALIGNMENT(HM, uMaxAsid, 8);
+    CHECK_MEMBER_ALIGNMENT(HM, uMaxAsidForLog, 8);
     CHECK_MEMBER_ALIGNMENT(HM, vmx, 8);
     CHECK_MEMBER_ALIGNMENT(HM, vmx.Msrs, 8);
     CHECK_MEMBER_ALIGNMENT(HM, svm, 8);
