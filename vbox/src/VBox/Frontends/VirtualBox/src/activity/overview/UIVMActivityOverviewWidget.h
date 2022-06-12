@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityOverviewWidget.h 88204 2021-03-19 13:42:23Z vboxsync $ */
+/* $Id: UIVMActivityOverviewWidget.h 88708 2021-04-26 16:25:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMActivityOverviewWidget class declaration.
  */
@@ -57,7 +57,6 @@ public:
 
     UIVMActivityOverviewWidget(EmbedTo enmEmbedding, UIActionPool *pActionPool,
                                bool fShowToolbar = true, QWidget *pParent = 0);
-    ~UIVMActivityOverviewWidget();
     QMenu *columnVisiblityToggleMenu() const;
     QMenu *menu() const;
 
@@ -86,6 +85,7 @@ private slots:
     void sltHandleShowVMActivityMonitor();
     void sltHandleTableSelectionChanged(const QItemSelection &selected, const QItemSelection &deselected);
     void sltNotRunningVMVisibility(bool fShow);
+    void sltSaveSettings();
 
 private:
 
@@ -103,7 +103,6 @@ private:
         void prepareActions();
         void updateColumnsMenu();
         void loadSettings();
-        void saveSettings();
     /** @} */
 
     /** @name General variables.
