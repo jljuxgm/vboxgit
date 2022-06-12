@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsGeneral.cpp 86045 2020-09-07 14:58:04Z vboxsync $ */
+/* $Id: UIMachineSettingsGeneral.cpp 86161 2020-09-17 17:24:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsGeneral class implementation.
  */
@@ -1152,25 +1152,28 @@ bool UIMachineSettingsGeneral::saveEncryptionData()
                         fSuccess = comMedium.isOk();
                     }
 
-                    /* Create encryption update progress dialog: */
-                    QPointer<UIProgress> pDlg;
+                    /* Create encryption update progress object: */
+                    QPointer<UIProgress> pObject;
                     if (fSuccess)
                     {
-                        pDlg = new UIProgress(comProgress);
-                        connect(pDlg.data(), &UIProgress::sigProgressChange,
-                                this, &UIMachineSettingsGeneral::sigOperationProgressChange,
-                                Qt::QueuedConnection);
-                        connect(pDlg.data(), &UIProgress::sigProgressError,
-                            this, &UIMachineSettingsGeneral::sigOperationProgressError,
-                                Qt::BlockingQueuedConnection);
-                        pDlg->run(350);
-                        if (pDlg)
-                            delete pDlg;
-                        else
+                        pObject = new UIProgress(comProgress);
+                        if (pObject)
                         {
-                            // Premature application shutdown,
-                            // exit immediately:
-                            return true;
+                            connect(pObject.data(), &UIProgress::sigProgressChange,
+                                    this, &UIMachineSettingsGeneral::sigOperationProgressChange,
+                                    Qt::QueuedConnection);
+                            connect(pObject.data(), &UIProgress::sigProgressError,
+                                    this, &UIMachineSettingsGeneral::sigOperationProgressError,
+                                    Qt::BlockingQueuedConnection);
+                            pObject->run();
+                            if (pObject)
+                                delete pObject;
+                            else
+                            {
+                                // Premature application shutdown,
+                                // exit immediately:
+                                return true;
+                            }
                         }
                     }
 
