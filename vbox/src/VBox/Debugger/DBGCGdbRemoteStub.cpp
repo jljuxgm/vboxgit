@@ -1,4 +1,4 @@
-/* $Id: DBGCGdbRemoteStub.cpp 84690 2020-06-05 10:54:19Z vboxsync $ */
+/* $Id: DBGCGdbRemoteStub.cpp 84691 2020-06-05 10:59:54Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, GDB Remote Stub.
  */
@@ -1015,7 +1015,7 @@ static int dbgcGdbStubCtxTgtXmlDescCreate(PGDBSTUBCTX pThis)
  * Returns the GDB register descriptor describing the given DBGF register enum.
  *
  * @returns Pointer to the GDB register descriptor or NULL if not found.
- * @param   enmReg              The register to look for.
+ * @param   idxReg              The register to look for.
  */
 static const GDBREGDESC *dbgcGdbStubRegGet(uint32_t idxReg)
 {
