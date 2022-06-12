@@ -1,4 +1,4 @@
-/* $Id: ldr.h 85626 2020-08-06 00:42:43Z vboxsync $ */
+/* $Id: ldr.h 86524 2020-10-11 18:26:52Z vboxsync $ */
 /** @file
  * IPRT - Loader Internals.
  */
@@ -457,7 +457,6 @@ typedef struct RTLDROPS
      *                          pfnEnumDbgInfo.  Otherwise, pass UINT32_MAX.
      * @param   off             The offset into the image file.
      * @param   cb              The number of bytes to read.
-     * @param   pMod            Pointer to the loader module structure.
      */
     DECLCALLBACKMEMBER(int, pfnReadDbgInfo,(PRTLDRMODINTERNAL pMod, uint32_t iDbgInfo, RTFOFF off, size_t cb, void *pvBuf));
 
