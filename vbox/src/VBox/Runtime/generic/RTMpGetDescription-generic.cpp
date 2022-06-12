@@ -1,4 +1,4 @@
-/* $Id: RTMpGetDescription-generic.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: RTMpGetDescription-generic.cpp 87205 2021-01-08 16:55:19Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Generic RTMpGetDescription.
  */
@@ -92,6 +92,9 @@ RTDECL(int) RTMpGetDescription(RTCPUID idCpu, char *pszBuf, size_t cbBuf)
         ((uint32_t *)&szString[0])[1] = uEDX;
         ((uint32_t *)&szString[0])[2] = uECX;
     }
+
+#elif defined(RT_ARCH_ARM64)
+    RTCCINTREG uFreq;
 
 #else
 # error "PORTME or use RTMpGetDescription-generic-stub.cpp."
