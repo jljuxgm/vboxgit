@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioWasApi.cpp 89411 2021-05-31 19:27:54Z vboxsync $ */
+/* $Id: DrvHostAudioWasApi.cpp 89420 2021-06-01 08:15:35Z vboxsync $ */
 /** @file
  * Host audio driver - Windows Audio Session API.
  */
@@ -682,8 +682,10 @@ static void drvHostAudioWasWaveFmtExtFromProps(PCPDMAUDIOPCMPROPS pProps, PWAVEF
      * or if the channels have non-standard assignments.
      */
     if (   pFmt->Format.nChannels > 2
-        || (  pFmt->Format.nChannels == 1 ? pProps->aidChannels[0] != PDMAUDIOCHANNELID_MONO
-            : pProps->aidChannels[0] != PDMAUDIOCHANNELID_FRONT_LEFT || pProps->aidChannels[2] != PDMAUDIOCHANNELID_FRONT_RIGHT))
+        || (  pFmt->Format.nChannels == 1
+            ?    pProps->aidChannels[0] != PDMAUDIOCHANNELID_MONO
+            :    pProps->aidChannels[0] != PDMAUDIOCHANNELID_FRONT_LEFT
+              || pProps->aidChannels[1] != PDMAUDIOCHANNELID_FRONT_RIGHT))
     {
         pFmt->Format.wFormatTag = WAVE_FORMAT_EXTENSIBLE;
         pFmt->Format.cbSize     = sizeof(*pFmt) - sizeof(pFmt->Format);
