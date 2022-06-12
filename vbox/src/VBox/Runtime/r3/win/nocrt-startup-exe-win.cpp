@@ -1,4 +1,4 @@
-/* $Id: nocrt-startup-exe-win.cpp 83998 2020-04-27 11:25:33Z vboxsync $ */
+/* $Id: nocrt-startup-exe-win.cpp 85124 2020-07-08 21:13:30Z vboxsync $ */
 /** @file
  * IPRT - No-CRT - Windows EXE startup code.
  *
@@ -45,10 +45,10 @@
 *   Global Variables                                                                                                             *
 *********************************************************************************************************************************/
 RT_C_DECLS_BEGIN
-DECLHIDDEN(char)             g_szrtProcExePath[RTPATH_MAX] = "Unknown.exe";
-DECLHIDDEN(size_t)           g_cchrtProcExePath = 11;
-DECLHIDDEN(size_t)           g_cchrtProcExeDir = 0;
-DECLHIDDEN(size_t)           g_offrtProcName = 0;
+DECL_HIDDEN_DATA(char)      g_szrtProcExePath[RTPATH_MAX] = "Unknown.exe";
+DECL_HIDDEN_DATA(size_t)    g_cchrtProcExePath = 11;
+DECL_HIDDEN_DATA(size_t)    g_cchrtProcExeDir = 0;
+DECL_HIDDEN_DATA(size_t)    g_offrtProcName = 0;
 RT_C_DECLS_END
 
 

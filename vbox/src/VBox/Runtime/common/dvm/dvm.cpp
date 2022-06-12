@@ -1,4 +1,4 @@
-/* $Id: dvm.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: dvm.cpp 85124 2020-07-08 21:13:30Z vboxsync $ */
 /** @file
  * IPRT Disk Volume Management API (DVM) - generic code.
  */
@@ -93,9 +93,9 @@ typedef RTDVMVOLUMEINTERNAL *PRTDVMVOLUMEINTERNAL;
 /*********************************************************************************************************************************
 *   Global variables                                                                                                             *
 *********************************************************************************************************************************/
-extern RTDVMFMTOPS g_rtDvmFmtMbr;
-extern RTDVMFMTOPS g_rtDvmFmtGpt;
-extern RTDVMFMTOPS g_rtDvmFmtBsdLbl;
+extern DECL_HIDDEN_DATA(const RTDVMFMTOPS) g_rtDvmFmtMbr;
+extern DECL_HIDDEN_DATA(const RTDVMFMTOPS) g_rtDvmFmtGpt;
+extern DECL_HIDDEN_DATA(const RTDVMFMTOPS) g_rtDvmFmtBsdLbl;
 
 /**
  * Supported volume formats.

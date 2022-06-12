@@ -1,4 +1,4 @@
-/* $Id: process.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: process.h 85124 2020-07-08 21:13:30Z vboxsync $ */
 /** @file
  * IPRT - Internal RTProc header.
  */
@@ -35,13 +35,13 @@
 
 RT_C_DECLS_BEGIN
 
-extern DECLHIDDEN(RTPROCESS)        g_ProcessSelf;
-extern DECLHIDDEN(RTPROCPRIORITY)   g_enmProcessPriority;
-extern DECLHIDDEN(char)             g_szrtProcExePath[RTPATH_MAX];
-extern DECLHIDDEN(size_t)           g_cchrtProcExePath;
-extern DECLHIDDEN(size_t)           g_cchrtProcDir;
-extern DECLHIDDEN(size_t)           g_offrtProcName;
-extern DECLHIDDEN(bool volatile)    g_frtAtExitCalled;
+extern DECL_HIDDEN_DATA(RTPROCESS)      g_ProcessSelf;
+extern DECL_HIDDEN_DATA(RTPROCPRIORITY) g_enmProcessPriority;
+extern DECL_HIDDEN_DATA(char)           g_szrtProcExePath[RTPATH_MAX];
+extern DECL_HIDDEN_DATA(size_t)         g_cchrtProcExePath;
+extern DECL_HIDDEN_DATA(size_t)         g_cchrtProcDir;
+extern DECL_HIDDEN_DATA(size_t)         g_offrtProcName;
+extern DECL_HIDDEN_DATA(bool volatile)  g_frtAtExitCalled;
 
 /**
  * Validates and sets the process priority.

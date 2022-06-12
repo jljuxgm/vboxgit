@@ -1,4 +1,4 @@
-/* $Id: pkix-signature-builtin.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: pkix-signature-builtin.h 85124 2020-07-08 21:13:30Z vboxsync $ */
 /** @file
  * IPRT - Crypto - Public Key Signature Schemas, Built-in providers.
  */
@@ -32,7 +32,7 @@
 
 #include <iprt/crypto/pkix.h>
 
-extern DECLHIDDEN(RTCRPKIXSIGNATUREDESC const) g_rtCrPkixSigningHashWithRsaDesc;
+extern DECL_HIDDEN_DATA(RTCRPKIXSIGNATUREDESC const) g_rtCrPkixSigningHashWithRsaDesc;
 
 #endif /* !IPRT_INCLUDED_SRC_common_crypto_pkix_signature_builtin_h */
 

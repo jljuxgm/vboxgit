@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-darwin.cpp 84671 2020-06-03 19:54:35Z vboxsync $ */
+/* $Id: SUPDrv-darwin.cpp 85124 2020-07-08 21:13:30Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Darwin Specific Code.
  */
@@ -198,9 +198,9 @@ extern kern_return_t _start(struct kmod_info *pKModInfo, void *pvData);
 extern kern_return_t _stop(struct kmod_info *pKModInfo, void *pvData);
 
 KMOD_EXPLICIT_DECL(VBoxDrv, VBOX_VERSION_STRING, _start, _stop)
-DECLHIDDEN(kmod_start_func_t *) _realmain = VBoxDrvDarwinStart;
-DECLHIDDEN(kmod_stop_func_t *)  _antimain = VBoxDrvDarwinStop;
-DECLHIDDEN(int)                 _kext_apple_cc = __APPLE_CC__;
+DECL_HIDDEN_DATA(kmod_start_func_t *) _realmain = VBoxDrvDarwinStart;
+DECL_HIDDEN_DATA(kmod_stop_func_t *)  _antimain = VBoxDrvDarwinStop;
+DECL_HIDDEN_DATA(int)                 _kext_apple_cc = __APPLE_CC__;
 RT_C_DECLS_END
 
 

@@ -1,4 +1,4 @@
-/* $Id: IOBufMgmt.cpp 83814 2020-04-19 00:37:17Z vboxsync $ */
+/* $Id: IOBufMgmt.cpp 85124 2020-07-08 21:13:30Z vboxsync $ */
 /** @file
  * VBox storage devices: I/O buffer management API.
  */
@@ -419,8 +419,7 @@ DECLHIDDEN(int) IOBUFMgrDestroy(IOBUFMGR hIoBufMgr)
     return rc;
 }
 
-DECLHIDDEN(int) IOBUFMgrAllocBuf(IOBUFMGR hIoBufMgr, PIOBUFDESC pIoBufDesc, size_t cbIoBuf,
-                                 size_t *pcbIoBufAllocated)
+DECLHIDDEN(int) IOBUFMgrAllocBuf(IOBUFMGR hIoBufMgr, PIOBUFDESC pIoBufDesc, size_t cbIoBuf, size_t *pcbIoBufAllocated)
 {
     PIOBUFMGRINT pThis = hIoBufMgr;
 

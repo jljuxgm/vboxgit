@@ -1,4 +1,4 @@
-/* $Id: dvmbsdlabel.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: dvmbsdlabel.cpp 85124 2020-07-08 21:13:30Z vboxsync $ */
 /** @file
  * IPRT Disk Volume Management API (DVM) - BSD disklabel format backend.
  */
@@ -524,7 +524,7 @@ static DECLCALLBACK(int) rtDvmFmtBsdLblVolumeWrite(RTDVMVOLUMEFMT hVolFmt, uint6
     return rtDvmDiskWrite(pVol->pVolMgr->pDisk, pVol->offStart + off, pvBuf, cbWrite);
 }
 
-DECLHIDDEN(RTDVMFMTOPS) g_rtDvmFmtBsdLbl =
+DECL_HIDDEN_CONST(const RTDVMFMTOPS) g_rtDvmFmtBsdLbl =
 {
     /* pcszFmt */
     "BsdLabel",

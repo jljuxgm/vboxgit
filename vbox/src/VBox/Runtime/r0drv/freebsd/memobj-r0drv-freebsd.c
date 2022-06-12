@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-freebsd.c 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: memobj-r0drv-freebsd.c 85124 2020-07-08 21:13:30Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, FreeBSD.
  */
@@ -359,6 +359,8 @@ static int rtR0MemObjFreeBSDAllocHelper(PRTR0MEMOBJFREEBSD pMemFreeBSD, bool fEx
     rtR0MemObjDelete(&pMemFreeBSD->Core);
     return rc;
 }
+
+
 DECLHIDDEN(int) rtR0MemObjNativeAllocPage(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, bool fExecutable)
 {
     PRTR0MEMOBJFREEBSD pMemFreeBSD = (PRTR0MEMOBJFREEBSD)rtR0MemObjNew(sizeof(*pMemFreeBSD),

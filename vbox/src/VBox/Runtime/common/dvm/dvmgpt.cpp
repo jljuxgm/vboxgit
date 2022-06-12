@@ -1,4 +1,4 @@
-/* $Id: dvmgpt.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: dvmgpt.cpp 85124 2020-07-08 21:13:30Z vboxsync $ */
 /** @file
  * IPRT Disk Volume Management API (DVM) - GPT format backend.
  */
@@ -536,7 +536,7 @@ static DECLCALLBACK(int) rtDvmFmtGptVolumeWrite(RTDVMVOLUMEFMT hVolFmt, uint64_t
     return rtDvmDiskWrite(pVol->pVolMgr->pDisk, pVol->offStart + off, pvBuf, cbWrite);
 }
 
-RTDVMFMTOPS g_rtDvmFmtGpt =
+DECL_HIDDEN_CONST(const RTDVMFMTOPS) g_rtDvmFmtGpt =
 {
     /* pszFmt */
     "GPT",

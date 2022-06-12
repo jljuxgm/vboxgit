@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain-posix.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
+/* $Id: SUPR3HardenedMain-posix.cpp 85124 2020-07-08 21:13:30Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main(), posix bits.
  */
@@ -138,10 +138,10 @@ DECLASM(void) supR3HardenedPosixMonitor_Dlmopen(Lmid_t idLm, const char *pszFile
 *********************************************************************************************************************************/
 RT_C_DECLS_BEGIN
 /** Resume patch for dlopen(), jumped to form assembly stub. */
-DECLHIDDEN(PFNDLOPEN)  g_pfnDlopenReal  = NULL;
+DECL_HIDDEN_DATA(PFNDLOPEN)     g_pfnDlopenReal  = NULL;
 #ifdef SUP_HARDENED_WITH_DLMOPEN
 /** Resume patch for dlmopen(), jumped to form assembly stub. */
-DECLHIDDEN(PFNDLMOPEN) g_pfnDlmopenReal = NULL;
+DECL_HIDDEN_DATA(PFNDLMOPEN)    g_pfnDlmopenReal = NULL;
 #endif
 RT_C_DECLS_END
 

@@ -1,4 +1,4 @@
-/* $Id: dbgmod.cpp 83085 2020-02-15 21:19:54Z vboxsync $ */
+/* $Id: dbgmod.cpp 85124 2020-07-08 21:13:30Z vboxsync $ */
 /** @file
  * IPRT - Debug Module Interpreter.
  */
@@ -119,7 +119,7 @@ static PRTDBGMODREGIMG  g_pImgHead;
 static PRTDBGMODREGDBG  g_pDbgHead;
 /** String cache for the debug info interpreters.
  * RTSTRCACHE is thread safe. */
-DECLHIDDEN(RTSTRCACHE)  g_hDbgModStrCache = NIL_RTSTRCACHE;
+DECL_HIDDEN_DATA(RTSTRCACHE)  g_hDbgModStrCache = NIL_RTSTRCACHE;
 
 
 

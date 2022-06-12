@@ -1,4 +1,4 @@
-/* $Id: IOBufMgmt.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: IOBufMgmt.h 85124 2020-07-08 21:13:30Z vboxsync $ */
 /** @file
  * VBox storage devices: I/O buffer management API.
  */
@@ -95,8 +95,7 @@ DECLHIDDEN(int) IOBUFMgrDestroy(IOBUFMGR hIoBufMgr);
  *                             if there is not enough free memory to satisfy the complete request.
  *                             NULL if partial allocations are not supported.
  */
-DECLHIDDEN(int) IOBUFMgrAllocBuf(IOBUFMGR hIoBufMgr, PIOBUFDESC pIoBufDesc, size_t cbIoBuf,
-                                 size_t *pcbIoBufAllocated);
+DECLHIDDEN(int) IOBUFMgrAllocBuf(IOBUFMGR hIoBufMgr, PIOBUFDESC pIoBufDesc, size_t cbIoBuf, size_t *pcbIoBufAllocated);
 
 /**
  * Frees a given I/O buffer.

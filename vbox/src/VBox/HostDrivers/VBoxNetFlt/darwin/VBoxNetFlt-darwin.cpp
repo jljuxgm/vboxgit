@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-darwin.cpp 84759 2020-06-10 14:05:07Z vboxsync $ */
+/* $Id: VBoxNetFlt-darwin.cpp 85124 2020-07-08 21:13:30Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Darwin Specific Code.
  */
@@ -140,9 +140,9 @@ extern kern_return_t _start(struct kmod_info *pKModInfo, void *pvData);
 extern kern_return_t _stop(struct kmod_info *pKModInfo, void *pvData);
 
 KMOD_EXPLICIT_DECL(VBoxNetFlt, VBOX_VERSION_STRING, _start, _stop)
-DECLHIDDEN(kmod_start_func_t *) _realmain = VBoxNetFltDarwinStart;
-DECLHIDDEN(kmod_stop_func_t  *) _antimain = VBoxNetFltDarwinStop;
-DECLHIDDEN(int)                 _kext_apple_cc = __APPLE_CC__;
+DECL_HIDDEN_DATA(kmod_start_func_t *) _realmain = VBoxNetFltDarwinStart;
+DECL_HIDDEN_DATA(kmod_stop_func_t  *) _antimain = VBoxNetFltDarwinStop;
+DECL_HIDDEN_DATA(int)                 _kext_apple_cc = __APPLE_CC__;
 RT_C_DECLS_END
 
 

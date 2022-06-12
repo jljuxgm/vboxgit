@@ -1,4 +1,4 @@
-/* $Id: dvm.h 85121 2020-07-08 19:33:26Z vboxsync $ */
+/* $Id: dvm.h 85124 2020-07-08 21:13:30Z vboxsync $ */
 /** @file
  * IPRT - Disk Volume Management Internals.
  */
@@ -328,6 +328,10 @@ DECLINLINE(int) rtDvmDiskWrite(PCRTDVMDISK pDisk, uint64_t off, const void *pvBu
 
     return RTVfsFileWriteAt(pDisk->hVfsFile, off, pvBuf, cbWrite, NULL /*pcbWritten*/);
 }
+
+extern DECL_HIDDEN_DATA(const RTDVMFMTOPS) g_rtDvmFmtMbr;
+extern DECL_HIDDEN_DATA(const RTDVMFMTOPS) g_rtDvmFmtGpt;
+extern DECL_HIDDEN_DATA(const RTDVMFMTOPS) g_rtDvmFmtBsdLbl;
 
 RT_C_DECLS_END
 

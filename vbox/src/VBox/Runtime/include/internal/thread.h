@@ -1,4 +1,4 @@
-/* $Id: thread.h 83124 2020-02-20 17:23:23Z vboxsync $ */
+/* $Id: thread.h 85124 2020-07-08 21:13:30Z vboxsync $ */
 /** @file
  * IPRT - Internal RTThread header.
  */
@@ -137,7 +137,7 @@ typedef RTTHREADINT *PRTTHREADINT;
 /** @} */
 
 /** Counters for each thread type. */
-extern DECLHIDDEN(uint32_t volatile)   g_acRTThreadTypeStats[RTTHREADTYPE_END];
+extern DECL_HIDDEN_DATA(uint32_t volatile) g_acRTThreadTypeStats[RTTHREADTYPE_END];
 
 
 /**

@@ -1,4 +1,4 @@
-/* $Id: thread.cpp 83125 2020-02-20 17:36:08Z vboxsync $ */
+/* $Id: thread.cpp 85124 2020-07-08 21:13:30Z vboxsync $ */
 /** @file
  * IPRT - Threads, common routines.
  */
@@ -86,7 +86,7 @@ static PAVLPVNODECORE           g_ThreadTree;
 /** The number of threads in the tree (for ring-0 termination kludge). */
 static uint32_t volatile        g_cThreadInTree;
 /** Counters for each thread type. */
-DECLHIDDEN(uint32_t volatile)   g_acRTThreadTypeStats[RTTHREADTYPE_END];
+DECL_HIDDEN_DATA(uint32_t volatile) g_acRTThreadTypeStats[RTTHREADTYPE_END];
 
 
 /*********************************************************************************************************************************

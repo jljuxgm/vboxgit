@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-darwin.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxNetAdp-darwin.cpp 85124 2020-07-08 21:13:30Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Virtual Network Adapter Driver (Host), Darwin Specific Code.
  */
@@ -105,9 +105,9 @@ extern kern_return_t _start(struct kmod_info *pKModInfo, void *pvData);
 extern kern_return_t _stop(struct kmod_info *pKModInfo, void *pvData);
 
 KMOD_EXPLICIT_DECL(VBoxNetAdp, VBOX_VERSION_STRING, _start, _stop)
-DECLHIDDEN(kmod_start_func_t *) _realmain = VBoxNetAdpDarwinStart;
-DECLHIDDEN(kmod_stop_func_t  *) _antimain = VBoxNetAdpDarwinStop;
-DECLHIDDEN(int)                 _kext_apple_cc = __APPLE_CC__;
+DECL_HIDDEN_DATA(kmod_start_func_t *) _realmain = VBoxNetAdpDarwinStart;
+DECL_HIDDEN_DATA(kmod_stop_func_t  *) _antimain = VBoxNetAdpDarwinStop;
+DECL_HIDDEN_DATA(int)                 _kext_apple_cc = __APPLE_CC__;
 RT_C_DECLS_END
 
 /**
