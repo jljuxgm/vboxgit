@@ -1,4 +1,4 @@
-/* $Id: DevVirtioSCSI.cpp 85016 2020-07-01 05:28:16Z vboxsync $ */
+/* $Id: DevVirtioSCSI.cpp 85025 2020-07-01 13:38:37Z vboxsync $ */
 /** @file
  * VBox storage devices - Virtio SCSI Driver
  *
@@ -1294,10 +1294,10 @@ static int virtioScsiR3ReqSubmit(PPDMDEVINS pDevIns, PVIRTIOSCSI pThis, PVIRTIOS
 
     pReq->hIoReq      = hIoReq;
     pReq->pTarget     = pTarget;
-    pReq->uVirtqNbr    = uVirtqNbr;
+    pReq->uVirtqNbr   = uVirtqNbr;
     pReq->cbDataIn    = cbDataIn;
     pReq->cbDataOut   = cbDataOut;
-    pReq->pVirtqBuf  = pVirtqBuf;
+    pReq->pVirtqBuf   = pVirtqBuf;
     virtioCoreR3VirtqBufRetain(pVirtqBuf); /* (For pReq->pVirtqBuf. Released by virtioScsiR3FreeReq.) */
     pReq->uDataInOff  = offDataIn;
     pReq->uDataOutOff = offDataOut;
