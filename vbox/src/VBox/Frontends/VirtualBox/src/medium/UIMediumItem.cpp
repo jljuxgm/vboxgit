@@ -1,4 +1,4 @@
-/* $Id: UIMediumItem.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIMediumItem.cpp 86065 2020-09-08 11:50:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumItem class implementation.
  */
@@ -441,6 +441,9 @@ bool UIMediumItemHD::remove()
 
 bool UIMediumItemHD::releaseFrom(CMachine comMachine)
 {
+    /* Was medium released from at least one attachment? */
+    bool fAtLeastOneRelease = false;
+
     /* Enumerate attachments: */
     CMediumAttachmentVector attachments = comMachine.GetMediumAttachments();
     foreach (const CMediumAttachment &attachment, attachments)
@@ -466,13 +469,12 @@ bool UIMediumItemHD::releaseFrom(CMachine comMachine)
                                            treeWidget());
             return false;
         }
-
-        /* Return success: */
-        return true;
+        else
+            fAtLeastOneRelease = true;
     }
 
-    /* False by default: */
-    return false;
+    /* Return whether there was at least one release: */
+    return fAtLeastOneRelease;
 }
 
 bool UIMediumItemHD::maybeRemoveStorage()
@@ -560,6 +562,9 @@ bool UIMediumItemCD::remove()
 
 bool UIMediumItemCD::releaseFrom(CMachine comMachine)
 {
+    /* Was medium released from at least one attachment? */
+    bool fAtLeastOneRelease = false;
+
     /* Enumerate attachments: */
     CMediumAttachmentVector attachments = comMachine.GetMediumAttachments();
     foreach (const CMediumAttachment &attachment, attachments)
@@ -580,13 +585,12 @@ bool UIMediumItemCD::releaseFrom(CMachine comMachine)
             msgCenter().cannotRemountMedium(comMachine, medium(), false /* mount? */, false /* retry? */, treeWidget());
             return false;
         }
-
-        /* Return success: */
-        return true;
+        else
+            fAtLeastOneRelease = true;
     }
 
-    /* Return failure: */
-    return false;
+    /* Return whether there was at least one release: */
+    return fAtLeastOneRelease;
 }
 
 
@@ -627,6 +631,9 @@ bool UIMediumItemFD::remove()
 
 bool UIMediumItemFD::releaseFrom(CMachine comMachine)
 {
+    /* Was medium released from at least one attachment? */
+    bool fAtLeastOneRelease = false;
+
     /* Enumerate attachments: */
     CMediumAttachmentVector attachments = comMachine.GetMediumAttachments();
     foreach (const CMediumAttachment &attachment, attachments)
@@ -647,11 +654,10 @@ bool UIMediumItemFD::releaseFrom(CMachine comMachine)
             msgCenter().cannotRemountMedium(comMachine, medium(), false /* mount? */, false /* retry? */, treeWidget());
             return false;
         }
-
-        /* Return success: */
-        return true;
+        else
+            fAtLeastOneRelease = true;
     }
 
-    /* Return failure: */
-    return false;
+    /* Return whether there was at least one release: */
+    return fAtLeastOneRelease;
 }
