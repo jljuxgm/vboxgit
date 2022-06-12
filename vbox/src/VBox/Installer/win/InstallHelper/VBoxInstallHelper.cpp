@@ -1,4 +1,4 @@
-/* $Id: VBoxInstallHelper.cpp 86775 2020-10-30 18:24:36Z vboxsync $ */
+/* $Id: VBoxInstallHelper.cpp 86777 2020-10-30 18:37:15Z vboxsync $ */
 /** @file
  * VBoxInstallHelper - Various helper routines for Windows host installer.
  */
@@ -332,7 +332,7 @@ UINT __stdcall InstallPythonAPI(MSIHANDLE hModule)
 
     uint32_t fProcess = 0;
 #ifndef DEBUG
-    uint32_t fProcess |= RTPROC_FLAGS_HIDDEN;
+             fProcess |= RTPROC_FLAGS_HIDDEN;
 #endif
 
     char szPythonPath[RTPATH_MAX] = { 0 };
