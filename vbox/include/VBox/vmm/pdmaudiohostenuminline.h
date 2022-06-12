@@ -1,4 +1,4 @@
-/* $Id: pdmaudiohostenuminline.h 88052 2021-03-09 14:14:37Z vboxsync $ */
+/* $Id: pdmaudiohostenuminline.h 88054 2021-03-09 14:16:47Z vboxsync $ */
 /** @file
  * PDM - Audio Helpers for host audio device enumeration, Inlined Code. (DEV,++)
  *
@@ -48,7 +48,6 @@
 
 
 /** @defgroup grp_pdm_audio_host_enum_inline    The PDM Host Audio Enumeration Helper APIs
- *
  * @ingroup grp_pdm
  * @{
  */
