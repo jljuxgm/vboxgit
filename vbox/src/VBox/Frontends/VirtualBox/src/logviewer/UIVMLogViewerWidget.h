@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.h 88735 2021-04-27 13:22:01Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.h 88766 2021-04-29 07:40:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class declaration.
  */
@@ -72,6 +72,7 @@ public:
       * @param  comMachine    Brings the machine for which VM Log-Viewer is requested. */
     UIVMLogViewerWidget(EmbedTo enmEmbedding, UIActionPool *pActionPool,
                         bool fShowToolbar = true, const CMachine &comMachine = CMachine(), QWidget *pParent = 0);
+    ~UIVMLogViewerWidget();
     /** Returns the width of the current log page. return 0 if there is no current log page: */
     int defaultLogPageWidth() const;
 

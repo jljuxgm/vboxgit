@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.cpp 88737 2021-04-27 14:10:49Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.cpp 88766 2021-04-29 07:40:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class implementation.
  */
@@ -161,6 +161,14 @@ UIVMLogViewerWidget::UIVMLogViewerWidget(EmbedTo enmEmbedding,
     restorePanelVisibility();
     if (!comMachine.isNull())
         setMachines(QVector<QUuid>(1, comMachine.GetId()));
+}
+
+UIVMLogViewerWidget::~UIVMLogViewerWidget()
+{
+    /* In machine UI context we perform cleanup during destruction.
+       UIMachineLogic makes sure this happens early enough: */
+    if (m_enmEmbedding == EmbedTo_Dialog)
+        sltSaveOptions();
 }
 
 int UIVMLogViewerWidget::defaultLogPageWidth() const
@@ -727,8 +735,10 @@ void UIVMLogViewerWidget::loadOptions()
     QFont loadedFont = gEDataManager->logViewerFont();
     if (loadedFont != QFont())
         m_font = loadedFont;
-    connect(&uiCommon(), &UICommon::sigAskToCommitData,
-            this, &UIVMLogViewerWidget::sltSaveOptions);
+    /* In manager UI we cleanup by listening the sigAskToCommitData signal: */
+    if (m_enmEmbedding == EmbedTo_Stack)
+        connect(&uiCommon(), &UICommon::sigAskToCommitData,
+                this, &UIVMLogViewerWidget::sltSaveOptions);
 }
 
 void UIVMLogViewerWidget::restorePanelVisibility()
