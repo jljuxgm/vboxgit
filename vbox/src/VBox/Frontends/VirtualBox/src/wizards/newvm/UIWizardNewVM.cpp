@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 84869 2020-06-18 09:33:37Z vboxsync $ */
+/* $Id: UIWizardNewVM.cpp 84870 2020-06-18 10:59:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
@@ -458,6 +458,13 @@ QString UIWizardNewVM::getNextControllerName(KStorageBus type)
             break;
     }
     return strControllerName;
+}
+
+QUuid UIWizardNewVM::createdMachineId() const
+{
+    if (m_machine.isOk())
+        return m_machine.GetId();
+    return QUuid();
 }
 
 QString UIWizardNewVM::unattendedISOFilePath() const
