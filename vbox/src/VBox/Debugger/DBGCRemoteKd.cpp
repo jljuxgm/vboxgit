@@ -1,4 +1,4 @@
-/* $Id: DBGCRemoteKd.cpp 86184 2020-09-20 12:08:14Z vboxsync $ */
+/* $Id: DBGCRemoteKd.cpp 86187 2020-09-20 12:17:44Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Windows Kd Remote Stub.
  */
@@ -2254,8 +2254,8 @@ static int dbgcKdCtxDebugIoStrSend(PKDCTX pThis, VMCPUID idCpu, const char *pach
  * @returns VBox status code.
  * @param   pThis               The KD context data.
  * @param   idCpu               The CPU ID generating this packet.
- * @param   pachChars           The prompt to send (ASCII).
- * @param   cbChars             Number of characters to send for the prompt.
+ * @param   pachPrompt          The prompt to send (ASCII).
+ * @param   cbPrompt            Number of characters to send for the prompt.
  * @param   cbResponseMax       Maximum size for the response.
  */
 static int dbgcKdCtxDebugIoGetStrSend(PKDCTX pThis, VMCPUID idCpu, const char *pachPrompt, size_t cbPrompt,
