@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.cpp 84415 2020-05-20 15:28:43Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.cpp 84420 2020-05-20 16:49:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class implementation.
  */
@@ -298,7 +298,7 @@ QList<UIChooserNode*> UIChooserAbstractModel::searchResult() const
     return m_searchResults;
 }
 
-void UIChooserAbstractModel::saveGroupSettings()
+void UIChooserAbstractModel::saveGroups()
 {
     emit sigStartGroupSaving();
 }

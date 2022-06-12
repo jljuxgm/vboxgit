@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGroup.cpp 84416 2020-05-20 15:30:14Z vboxsync $ */
+/* $Id: UIChooserItemGroup.cpp 84420 2020-05-20 16:49:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGroup class implementation.
  */
@@ -839,7 +839,7 @@ void UIChooserItemGroup::processDrop(QGraphicsSceneDragDropEvent *pEvent, UIChoo
                 pModel->updateNavigationItemList();
                 pModel->updateLayout();
                 pModel->setSelectedItem(pNewGroupItem);
-                pModel->saveGroupSettings();
+                pModel->saveGroups();
                 break;
             }
             default:
@@ -893,7 +893,7 @@ void UIChooserItemGroup::processDrop(QGraphicsSceneDragDropEvent *pEvent, UIChoo
                 pModel->updateNavigationItemList();
                 pModel->updateLayout();
                 pModel->setSelectedItem(pNewMachineItem);
-                pModel->saveGroupSettings();
+                pModel->saveGroups();
                 break;
             }
             default:
@@ -956,7 +956,7 @@ void UIChooserItemGroup::sltNameEditingFinished()
 
     /* Set new name, save settings: */
     nodeToGroupType()->setName(strNewName);
-    model()->saveGroupSettings();
+    model()->saveGroups();
 }
 
 void UIChooserItemGroup::sltGroupToggleStart()

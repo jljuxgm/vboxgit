@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 84412 2020-05-20 14:43:30Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 84420 2020-05-20 16:49:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -913,7 +913,7 @@ void UIChooserModel::sltUngroupSelectedGroup()
         setSelectedItem(navigationItems().first());
         emit sigSelectionInvalidated();
     }
-    saveGroupSettings();
+    saveGroups();
 }
 
 void UIChooserModel::sltCreateNewMachine()
@@ -1032,7 +1032,7 @@ void UIChooserModel::sltGroupSelectedMachines()
     wipeOutEmptyGroups();
     updateTreeForMainRoot();
     setSelectedItem(pNewGroupItem);
-    saveGroupSettings();
+    saveGroups();
 }
 
 void UIChooserModel::sltSortParentGroup()
@@ -1661,7 +1661,7 @@ void UIChooserModel::removeItems(const QList<UIChooserItemMachine*> &machineItem
     }
     else
         clearSelectedItems();
-    saveGroupSettings();
+    saveGroups();
 }
 
 void UIChooserModel::unregisterLocalMachines(const QList<CMachine> &machines)

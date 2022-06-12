@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemMachine.cpp 84189 2020-05-07 15:13:27Z vboxsync $ */
+/* $Id: UIChooserItemMachine.cpp 84420 2020-05-20 16:49:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemMachine class implementation.
  */
@@ -494,7 +494,7 @@ void UIChooserItemMachine::processDrop(QGraphicsSceneDragDropEvent *pEvent, UICh
                 pModel->updateNavigationItemList();
                 pModel->updateLayout();
                 pModel->setSelectedItem(pNewGroupItem);
-                pModel->saveGroupSettings();
+                pModel->saveGroups();
                 break;
             }
             default:

@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.h 84415 2020-05-20 15:28:43Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.h 84420 2020-05-20 16:49:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class declaration.
  */
@@ -100,8 +100,8 @@ public:
 
     /** @name Group saving stuff.
       * @{ */
-        /** Commands to save group settings. */
-        void saveGroupSettings();
+        /** Commands to save groups. */
+        void saveGroups();
         /** Returns whether group saving is in progress. */
         bool isGroupSavingInProgress() const;
 

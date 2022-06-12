@@ -1,4 +1,4 @@
-/* $Id: UIChooserHandlerKeyboard.cpp 83672 2020-04-10 16:27:16Z vboxsync $ */
+/* $Id: UIChooserHandlerKeyboard.cpp 84420 2020-05-20 16:49:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserHandlerKeyboard class implementation.
  */
@@ -390,5 +390,5 @@ void UIChooserHandlerKeyboard::shift(UIItemShiftDirection enmDirection, UIItemSh
     model()->updateNavigationItemList();
     model()->updateLayout();
     model()->setSelectedItem(pShiftedItem);
-    model()->saveGroupSettings();
+    model()->saveGroups();
 }
