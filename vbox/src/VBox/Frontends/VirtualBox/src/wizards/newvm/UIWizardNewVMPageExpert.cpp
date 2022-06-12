@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.cpp 87914 2021-03-02 14:13:51Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.cpp 87916 2021-03-02 15:21:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class implementation.
  */
@@ -180,7 +180,7 @@ void UIWizardNewVMPageExpert::retranslateUi()
 {
     UIWizardNewVMPage1::retranslateWidgets();
     UIWizardNewVMPage2::retranslateWidgets();
-    UIWizardNewVMPage8::retranslateWidgets();
+    UIWizardNewVMPage3::retranslateWidgets();
     UIWizardNewVMPage4::retranslateWidgets();
 
     if (m_pInstallationISOContainer)
