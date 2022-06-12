@@ -1,4 +1,4 @@
-/** $Id: VBoxSFFind.cpp 79710 2019-07-12 05:10:42Z vboxsync $ */
+/** $Id: VBoxSFFind.cpp 84484 2020-05-25 08:45:14Z vboxsync $ */
 /** @file
  * VBoxSF - OS/2 Shared Folders, Find File IFS EPs.
  */
@@ -79,7 +79,7 @@ static bool vboxSfOs2IsUtf16Name8dot3(PRTUTF16 pwszName, size_t cwcName, char *p
                     break;
                 if (wc == '.')
                     return false;
-                if (off >= offMax)
+                if (off > offMax)
                     return false;
             }
             break;
@@ -91,7 +91,7 @@ static bool vboxSfOs2IsUtf16Name8dot3(PRTUTF16 pwszName, size_t cwcName, char *p
     }
 
     /*
-     * Conver to the native code page.
+     * Convert to the native code page.
      */
     APIRET rc = SafeKernStrFromUcs(NULL, pszTmp, pwszName, cbTmp, cwcName);
     if (rc != NO_ERROR)
@@ -119,7 +119,7 @@ static bool vboxSfOs2IsUtf16Name8dot3(PRTUTF16 pwszName, size_t cwcName, char *p
         char ch = *pszTmp++;
         if (ch == '\0')
             return true;
-        if (ch != '.')
+        if (ch == '.')
             return false;
         if (cch >= 3)
             return false;
