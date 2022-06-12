@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 87563 2021-02-03 13:23:13Z vboxsync $ */
+/* $Id: HMR0.cpp 87606 2021-02-04 13:35:36Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -1256,17 +1256,27 @@ VMMR0_INT_DECL(int) HMR0InitVM(PVMCC pVM)
         uint32_t uEdx = 0;
         ASMCpuIdExSlow(0x00000007, 0, 0, 0, NULL, NULL, NULL, &uEdx);
 
-        if ((pVM->hm.s.fIbpbOnVmExit || pVM->hm.s.fIbpbOnVmEntry) && (uEdx & X86_CPUID_STEXT_FEATURE_EDX_IBRS_IBPB))
+        if (uEdx & X86_CPUID_STEXT_FEATURE_EDX_IBRS_IBPB)
         {
             if (pVM->hm.s.fIbpbOnVmExit)
                 fWorldSwitcher |= HM_WSF_IBPB_EXIT;
             if (pVM->hm.s.fIbpbOnVmEntry)
                 fWorldSwitcher |= HM_WSF_IBPB_ENTRY;
         }
-        if (pVM->hm.s.fL1dFlushOnVmEntry && (uEdx & X86_CPUID_STEXT_FEATURE_EDX_FLUSH_CMD))
-            fWorldSwitcher |= HM_WSF_L1D_ENTRY;
-        if (pVM->hm.s.fMdsClearOnVmEntry && (uEdx & X86_CPUID_STEXT_FEATURE_EDX_MD_CLEAR))
-            fWorldSwitcher |= HM_WSF_MDS_ENTRY;
+        if (uEdx & X86_CPUID_STEXT_FEATURE_EDX_FLUSH_CMD)
+        {
+            if (pVM->hm.s.fL1dFlushOnVmEntry)
+                fWorldSwitcher |= HM_WSF_L1D_ENTRY;
+            else if (pVM->hm.s.fL1dFlushOnSched)
+                fWorldSwitcher |= HM_WSF_L1D_SCHED;
+        }
+        if (uEdx & X86_CPUID_STEXT_FEATURE_EDX_MD_CLEAR)
+        {
+            if (pVM->hm.s.fMdsClearOnVmEntry)
+                fWorldSwitcher |= HM_WSF_MDS_ENTRY;
+            else if (pVM->hm.s.fMdsClearOnSched)
+                fWorldSwitcher |= HM_WSF_MDS_SCHED;
+        }
     }
     for (VMCPUID idCpu = 0; idCpu < pVM->cCpus; idCpu++)
     {

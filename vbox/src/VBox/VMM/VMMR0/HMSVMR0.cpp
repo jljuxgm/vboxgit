@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 87563 2021-02-03 13:23:13Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 87606 2021-02-04 13:35:36Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -2348,8 +2348,8 @@ VMMR0DECL(void) SVMR0ThreadCtxCallback(RTTHREADCTXEVENT enmEvent, PVMCPUCC pVCpu
              */
             int rc = hmR0EnterCpu(pVCpu);
             AssertRC(rc); NOREF(rc);
-            Assert((pVCpu->hm.s.fCtxChanged & (HM_CHANGED_HOST_CONTEXT | HM_CHANGED_SVM_HOST_GUEST_SHARED_STATE))
-                                           == (HM_CHANGED_HOST_CONTEXT | HM_CHANGED_SVM_HOST_GUEST_SHARED_STATE));
+            Assert(   (pVCpu->hm.s.fCtxChanged & (HM_CHANGED_HOST_CONTEXT | HM_CHANGED_SVM_HOST_GUEST_SHARED_STATE))
+                   ==                            (HM_CHANGED_HOST_CONTEXT | HM_CHANGED_SVM_HOST_GUEST_SHARED_STATE));
 
             pVCpu->hmr0.s.fLeaveDone = false;
 

@@ -1,4 +1,4 @@
-; $Id: HMR0A.asm 87522 2021-02-01 22:32:33Z vboxsync $
+; $Id: HMR0A.asm 87606 2021-02-04 13:35:36Z vboxsync $
 ;; @file
 ; HM - Ring-0 VMX, SVM world-switch and helper routines.
 ;
@@ -472,6 +472,19 @@ ALIGNCODE(8)
         wrmsr
         jmp     .restore_flags
 ENDPROC VMXRestoreHostState
+
+
+;;
+; Clears the MDS buffers using VERW.
+ALIGNCODE(16)
+BEGINPROC hmR0MdsClear
+        SEH64_END_PROLOGUE
+        sub     xSP, xCB
+        mov     [xSP], ds
+        verw    [xSP]
+        add     xSP, xCB
+        ret
+ENDPROC   hmR0MdsClear
 
 
 ;;
@@ -1061,19 +1074,6 @@ hmR0VmxStartVmSseTemplate 0,,RT_NOTHING
 hmR0VmxStartVmSseTemplate 1,_SseManual,RT_NOTHING
 hmR0VmxStartVmSseTemplate 2,_SseXSave,RT_NOTHING
 %endif
-
-
-;;
-; Clears the MDS buffers using VERW.
-ALIGNCODE(16)
-BEGINPROC hmR0MdsClear
-        SEH64_END_PROLOGUE
-        sub     xSP, xCB
-        mov     [xSP], ds
-        verw    [xSP]
-        add     xSP, xCB
-        ret
-ENDPROC   hmR0MdsClear
 
 
 ;;
