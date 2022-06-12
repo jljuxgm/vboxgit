@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.h 87101 2020-12-17 14:30:07Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.h 87516 2021-02-01 19:32:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class declaration.
  */
@@ -151,6 +151,8 @@ public:
         /** Returns whether at least one cloud profile currently being updated. */
         bool isCloudProfileUpdateInProgress() const;
 
+        /** Switches to global item. */
+        void switchToGlobalItem();
         /** Opens group name editor. */
         void openGroupNameEditor();
         /** Disbands group. */

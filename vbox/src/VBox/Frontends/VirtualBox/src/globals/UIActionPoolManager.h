@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.h 87509 2021-02-01 15:36:59Z vboxsync $ */
+/* $Id: UIActionPoolManager.h 87516 2021-02-01 19:32:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class declaration.
  */
@@ -36,10 +36,6 @@ enum UIActionIndexMN
 {
     /* 'File' menu actions: */
     UIActionIndexMN_M_File = UIActionIndex_Max + 1,
-    UIActionIndexMN_M_File_S_ShowExtensionPackManager,
-    UIActionIndexMN_M_File_S_ShowVirtualMediumManager,
-    UIActionIndexMN_M_File_S_ShowHostNetworkManager,
-    UIActionIndexMN_M_File_S_ShowCloudProfileManager,
     UIActionIndexMN_M_File_S_ImportAppliance,
     UIActionIndexMN_M_File_S_ExportAppliance,
     UIActionIndexMN_M_File_M_Tools,
@@ -237,6 +233,8 @@ private:
 
     /** Updates 'File' menu. */
     void updateMenuFile();
+    /** Updates 'File' / 'Tools' menu. */
+    void updateMenuFileTools();
     /** Updates 'Welcome' menu. */
     void updateMenuWelcome();
     /** Updates 'Group' menu. */

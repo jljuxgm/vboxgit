@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 87102 2020-12-17 14:44:51Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 87516 2021-02-01 19:32:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -1411,9 +1411,7 @@ void UIChooserModel::prepareContextMenu()
 # ifdef VBOX_GUI_WITH_EXTRADATA_MANAGER_UI
         pMenuGlobal->addAction(actionPool()->action(UIActionIndexMN_M_File_S_ShowExtraDataManager));
 # endif
-        pMenuGlobal->addAction(actionPool()->action(UIActionIndexMN_M_File_S_ShowVirtualMediumManager));
-        pMenuGlobal->addAction(actionPool()->action(UIActionIndexMN_M_File_S_ShowHostNetworkManager));
-        pMenuGlobal->addAction(actionPool()->action(UIActionIndexMN_M_File_S_ShowCloudProfileManager));
+        pMenuGlobal->addAction(actionPool()->action(UIActionIndexMN_M_File_M_Tools));
 
 #else /* !VBOX_WS_MAC */
 
@@ -1424,10 +1422,10 @@ void UIChooserModel::prepareContextMenu()
         pMenuGlobal->addSeparator();
 # ifdef VBOX_GUI_WITH_EXTRADATA_MANAGER_UI
         pMenuGlobal->addAction(actionPool()->action(UIActionIndexMN_M_File_S_ShowExtraDataManager));
+        pMenuGlobal->addSeparator();
 # endif
-        pMenuGlobal->addAction(actionPool()->action(UIActionIndexMN_M_File_S_ShowVirtualMediumManager));
-        pMenuGlobal->addAction(actionPool()->action(UIActionIndexMN_M_File_S_ShowHostNetworkManager));
-        pMenuGlobal->addAction(actionPool()->action(UIActionIndexMN_M_File_S_ShowCloudProfileManager));
+        pMenuGlobal->addAction(actionPool()->action(UIActionIndexMN_M_File_M_Tools));
+        pMenuGlobal->addSeparator();
 # ifdef VBOX_GUI_WITH_NETWORK_MANAGER
         pMenuGlobal->addAction(actionPool()->action(UIActionIndex_M_Application_S_NetworkAccessManager));
         if (gEDataManager->applicationUpdateEnabled())

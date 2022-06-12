@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 87476 2021-01-29 10:38:18Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.h 87516 2021-02-01 19:32:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -270,6 +270,8 @@ private slots:
         /** Handles call to power machine off. */
         void sltPerformPowerOffMachine();
 
+        /** Handles call to show global tool corresponding to passed @a pAction. */
+        void sltPerformShowGlobalTool(QAction *pAction);
         /** Handles call to show machine tool corresponding to passed @a pAction. */
         void sltPerformShowMachineTool(QAction *pAction);
 
