@@ -1,4 +1,4 @@
-/* $Id: vbox_ttm.c 88274 2021-03-24 12:49:44Z vboxsync $ */
+/* $Id: vbox_ttm.c 88405 2021-04-07 17:33:33Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -578,7 +578,7 @@ err_free_vboxbo:
 
 static inline u64 vbox_bo_gpu_offset(struct vbox_bo *bo)
 {
-#if RTLNX_VER_MIN(5,9,0)
+#if RTLNX_VER_MIN(5,9,0) || RTLNX_RHEL_MIN(8,4)
 	return bo->bo.mem.start << PAGE_SHIFT;
 #else
 	return bo->bo.offset;

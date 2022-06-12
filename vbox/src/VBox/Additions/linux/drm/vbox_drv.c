@@ -1,4 +1,4 @@
-/*  $Id: vbox_drv.c 88274 2021-03-24 12:49:44Z vboxsync $ */
+/*  $Id: vbox_drv.c 88405 2021-04-07 17:33:33Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -262,7 +262,7 @@ static const struct file_operations vbox_fops = {
 	.read = drm_read,
 };
 
-#if RTLNX_VER_MIN(5,9,0)
+#if RTLNX_VER_MIN(5,9,0) || RTLNX_RHEL_MIN(8,4)
 static void
 #else
 static int
@@ -286,7 +286,7 @@ vbox_master_set(struct drm_device *dev,
 	schedule_delayed_work(&vbox->refresh_work, VBOX_REFRESH_PERIOD);
 	mutex_unlock(&vbox->hw_mutex);
 
-#if RTLNX_VER_MAX(5,9,0)
+#if RTLNX_VER_MAX(5,9,0) && !RTLNX_RHEL_MAJ_PREREQ(8,4)
 	return 0;
 #endif
 }
