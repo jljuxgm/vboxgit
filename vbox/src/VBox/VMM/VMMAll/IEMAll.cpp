@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 84505 2020-05-25 14:53:12Z vboxsync $ */
+/* $Id: IEMAll.cpp 85184 2020-07-10 13:22:05Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -968,8 +968,8 @@ IEM_STATIC VBOXSTRICTRC     iemMemStackPushBeginSpecial(PVMCPUCC pVCpu, size_t c
 IEM_STATIC VBOXSTRICTRC     iemMemStackPushU32(PVMCPUCC pVCpu, uint32_t u32Value);
 IEM_STATIC VBOXSTRICTRC     iemMemStackPushU16(PVMCPUCC pVCpu, uint16_t u16Value);
 IEM_STATIC VBOXSTRICTRC     iemMemMarkSelDescAccessed(PVMCPUCC pVCpu, uint16_t uSel);
-IEM_STATIC uint16_t         iemSRegFetchU16(PVMCPUCC pVCpu, uint8_t iSegReg);
-IEM_STATIC uint64_t         iemSRegBaseFetchU64(PVMCPUCC pVCpu, uint8_t iSegReg);
+DECLINLINE(uint16_t)        iemSRegFetchU16(PVMCPUCC pVCpu, uint8_t iSegReg);
+DECLINLINE(uint64_t)        iemSRegBaseFetchU64(PVMCPUCC pVCpu, uint8_t iSegReg);
 
 #ifdef VBOX_WITH_NESTED_HWVIRT_VMX
 IEM_STATIC VBOXSTRICTRC     iemVmxVmexit(PVMCPUCC pVCpu, uint32_t uExitReason, uint64_t u64ExitQual);
