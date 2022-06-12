@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 85528 2020-07-29 16:32:00Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 85529 2020-07-29 16:34:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -2815,6 +2815,7 @@ void UIVirtualBoxManager::updateMenuMachineConsole(QMenu *pMenu)
 #elif defined(VBOX_WS_WIN)
         pDefaultAction->setProperty("path", "powershell");
 #elif defined(VBOX_WS_X11)
+        Q_UNUSED(pDefaultAction);
 #endif
 
         /* Terminal application/profile action list: */
