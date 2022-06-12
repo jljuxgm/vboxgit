@@ -1,4 +1,4 @@
-/* $Id: HostHardwareFreeBSD.cpp 85929 2020-08-28 14:40:55Z vboxsync $ */
+/* $Id: HostHardwareFreeBSD.cpp 87002 2020-11-27 10:06:09Z vboxsync $ */
 /** @file
  * VirtualBox Main - Code for handling hardware detection under FreeBSD, VBoxSVC.
  */
@@ -61,8 +61,8 @@ typedef enum DriveType_T
 /*********************************************************************************************************************************
 *   Internal Functions                                                                                                           *
 *********************************************************************************************************************************/
-static int getDriveInfoFromEnv(const char *pcszVar, DriveInfoList *pList, bool isDVD, bool *pfSuccess) RT_NOTHROW_PROTP;
-static int getDriveInfoFromCAM(DriveInfoList *pList, DriveType_T enmDriveType, bool *pfSuccess) RT_NOTHROW_PROTP;
+static int getDriveInfoFromEnv(const char *pcszVar, DriveInfoList *pList, bool isDVD, bool *pfSuccess) RT_NOTHROW_DEF;
+static int getDriveInfoFromCAM(DriveInfoList *pList, DriveType_T enmDriveType, bool *pfSuccess) RT_NOTHROW_DEF;
 
 
 /** Find the length of a string, ignoring trailing non-ascii or control
