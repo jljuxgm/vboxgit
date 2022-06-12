@@ -1,4 +1,4 @@
-/* $Id: EventImpl.h 85286 2020-07-12 23:08:50Z vboxsync $ */
+/* $Id: EventImpl.h 85293 2020-07-13 08:55:08Z vboxsync $ */
 /** @file
  * VirtualBox COM IEvent implementation
  */
@@ -139,23 +139,6 @@ public:
 
     ~VBoxEventDesc()
     {}
-
-
-#if 0
-    /**
-     * This function to be used with some care, as arguments order must match
-     * attribute declaration order event class and its superclasses up to
-     * IEvent. If unsure, consult implementation in generated VBoxEvents.cpp.
-     */
-    HRESULT init(IEventSource* aSource, VBoxEventType_T aType, ...);
-
-    /**
-    * Function similar to the above, but assumes that init() for this type
-    * already called once, so no need to allocate memory, and only reinit
-    * fields. Assumes event is subtype of IReusableEvent, asserts otherwise.
-    */
-    HRESULT reinit(VBoxEventType_T aType, ...);
-#endif
 
     void init(IEvent *aEvent, IEventSource *aSource)
     {
