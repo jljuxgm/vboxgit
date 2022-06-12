@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UISession.cpp 84612 2020-05-29 14:52:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -1679,8 +1679,10 @@ void UISession::updateMousePointerShape()
     // WORKAROUND:
     // Qt5 QCursor recommends 32 x 32 cursor, therefore the original data is copied to
     // a larger QImage if necessary. Cursors like 10x16 did not work correctly (Solaris 10 guest).
-    const uint uCursorWidth = uWidth >= 32 ? uWidth : 32;
-    const uint uCursorHeight = uHeight >= 32 ? uHeight : 32;
+    // Align the cursor dimensions to 32 bit pixels, because for example a 56x56 monochrome cursor
+    // did not work correctly on Windows host.
+    const uint uCursorWidth = RT_ALIGN_32(uWidth, 32);
+    const uint uCursorHeight = RT_ALIGN_32(uHeight, 32);
 
     if (fHasAlpha)
     {
