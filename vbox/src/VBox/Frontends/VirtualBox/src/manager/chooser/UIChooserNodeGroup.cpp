@@ -1,4 +1,4 @@
-/* $Id: UIChooserNodeGroup.cpp 84610 2020-05-29 14:10:06Z vboxsync $ */
+/* $Id: UIChooserNodeGroup.cpp 84611 2020-05-29 14:15:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserNodeGroup class implementation.
  */
@@ -47,9 +47,9 @@ UIChooserNodeGroup::UIChooserNodeGroup(UIChooserNode *pParent,
                                        int iPosition,
                                        UIChooserNodeGroup *pCopyFrom)
     : UIChooserNode(pParent, false /* favorite */)
+    , m_fOpened(pCopyFrom->isOpened())
     , m_strName(pCopyFrom->name())
     , m_enmGroupType(pCopyFrom->groupType())
-    , m_fOpened(pCopyFrom->isOpened())
 {
     /* Add to parent: */
     if (parentNode())
