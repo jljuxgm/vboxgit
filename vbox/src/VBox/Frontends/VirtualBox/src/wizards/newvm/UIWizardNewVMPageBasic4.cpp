@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic4.cpp 87941 2021-03-03 16:11:56Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic4.cpp 87946 2021-03-04 11:11:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic4 class implementation.
  */
@@ -227,13 +227,13 @@ QWidget *UIWizardNewVMPageBasic4::createDiskVariantAndSizeWidgets()
 
     QHBoxLayout *pSizeLayout = new QHBoxLayout;
     pSizeLayout->setContentsMargins(0, 0, 0, 0);
+    /* Hard disk size relate widgets: */
     m_pSizeEditor = new UIMediumSizeEditor;
     m_pSizeEditorLabel = new QLabel;
-
     pSizeLayout->addWidget(m_pSizeEditorLabel);
     pSizeLayout->addWidget(m_pSizeEditor);
-
     pLayout->addLayout(pSizeLayout);
+    /* Hard disk variant (dynamic vs. fixed) widgets: */
     pLayout->addWidget(createMediumVariantWidgets(false /* bool fWithLabels */));
 
     return pWidget;

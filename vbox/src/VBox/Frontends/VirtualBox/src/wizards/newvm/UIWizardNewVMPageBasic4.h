@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic4.h 87938 2021-03-03 13:49:58Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic4.h 87946 2021-03-04 11:11:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic4 class declaration.
  */
@@ -59,7 +59,7 @@ protected:
     void setSelectedDiskSource(SelectedDiskSource enmSelectedDiskSource);
     bool getWithNewVirtualDiskWizard();
 
-    QWidget *createDiskWidgets();
+    virtual QWidget *createDiskWidgets();
     virtual QWidget *createDiskVariantAndSizeWidgets();
     void getWithFileOpenDialog();
     void retranslateWidgets();

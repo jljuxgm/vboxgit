@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageExpert.cpp 87940 2021-03-03 15:22:33Z vboxsync $ */
+/* $Id: UIWizardNewVDPageExpert.cpp 87946 2021-03-04 11:11:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageExpert class implementation.
  */
@@ -202,9 +202,9 @@ void UIWizardNewVDPageExpert::retranslateUi()
     UIWizardNewVDPage3::retranslateWidgets();
     /* Translate widgets: */
     if (m_pLocationGroupBox)
-        m_pLocationGroupBox->setTitle(UIWizardNewVD::tr("File &location"));
+        m_pLocationGroupBox->setTitle(UIWizardNewVD::tr("Hard disk file &location"));
     if (m_pSizeGroupBox)
-        m_pSizeGroupBox->setTitle(UIWizardNewVD::tr("File &size"));
+        m_pSizeGroupBox->setTitle(UIWizardNewVD::tr("Hard disk file &size"));
     if (m_pFormatGroupBox)
         m_pFormatGroupBox->setTitle(UIWizardNewVD::tr("Hard disk file &type"));
     if (m_pFormatButtonGroup)
