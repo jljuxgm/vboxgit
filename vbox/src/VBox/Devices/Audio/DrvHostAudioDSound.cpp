@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioDSound.cpp 88539 2021-04-15 12:56:06Z vboxsync $ */
+/* $Id: DrvHostAudioDSound.cpp 88541 2021-04-15 12:57:04Z vboxsync $ */
 /** @file
  * Host audio driver - DirectSound (Windows).
  */
@@ -1142,8 +1142,6 @@ static int drvHostDSoundEnumerateDevices(PPDMAUDIOHOSTENUM pDevEnm)
         if (FAILED(hr))
             LogRel(("DSound: Error enumerating host capture devices: %Rhrc\n", hr));
     }
-    else
-        LogRel(("DSound: Error starting to enumerate host capture devices: %Rrc\n", rc));
 
     /*
      * Query Information for all enumerated devices.
