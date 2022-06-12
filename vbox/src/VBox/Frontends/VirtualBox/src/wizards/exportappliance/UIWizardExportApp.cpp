@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportApp.cpp 86345 2020-09-30 12:37:06Z vboxsync $ */
+/* $Id: UIWizardExportApp.cpp 86924 2020-11-19 17:38:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportApp class implementation.
  */
@@ -237,7 +237,7 @@ void UIWizardExportApp::prepare()
             break;
         }
     }
-
+    enableHelpButton("ovf");
     /* Call to base-class: */
     UIWizard::prepare();
 
