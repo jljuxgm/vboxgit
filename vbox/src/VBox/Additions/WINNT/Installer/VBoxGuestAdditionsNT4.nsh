@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditionsNT4.nsh 82968 2020-02-04 10:35:17Z vboxsync $
+; $Id: VBoxGuestAdditionsNT4.nsh 89709 2021-06-15 14:30:12Z vboxsync $
 ;; @file
 ; VBoxGuestAdditionsNT4.nsh - Guest Additions installation for NT4.
 ;
@@ -116,6 +116,9 @@ Function NT4_CopyFiles
   AccessControl::SetOnFile "$INSTDIR\VBoxGuestDrvInst.exe" "(BU)" "GenericRead"
   FILE "$%PATH_OUT%\bin\additions\RegCleanup.exe"
   AccessControl::SetOnFile "$INSTDIR\RegCleanup.exe" "(BU)" "GenericRead"
+!ifdef VBOX_WITH_ADDITIONS_SHIPPING_AUDIO_TEST
+  FILE "$%PATH_OUT%\bin\additions\VBoxAudioTest.exe"
+!endif
 
   ; The files to install for NT 4, they go into the system directories
   SetOutPath "$SYSDIR"

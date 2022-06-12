@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditionsW2KXP.nsh 84972 2020-06-26 14:58:51Z vboxsync $
+; $Id: VBoxGuestAdditionsW2KXP.nsh 89709 2021-06-15 14:30:12Z vboxsync $
 ;; @file
 ; VBoxGuestAdditionsW2KXP.nsh - Guest Additions installation for Windows 2000/XP.
 ;
@@ -195,6 +195,10 @@ Function W2K_CopyFiles
   ; Guest driver files
   FILE "$%PATH_OUT%\bin\additions\VBoxTray.exe"
   FILE "$%PATH_OUT%\bin\additions\VBoxControl.exe" ; Not used by W2K and up, but required by the .INF file
+
+!ifdef VBOX_WITH_ADDITIONS_SHIPPING_AUDIO_TEST
+  FILE "$%PATH_OUT%\bin\additions\VBoxAudioTest.exe"
+!endif
 
   ; WHQL fake
 !ifdef WHQL_FAKE
@@ -610,4 +614,3 @@ FunctionEnd
 !macroend
 !insertmacro W2K_Uninstall ""
 !insertmacro W2K_Uninstall "un."
-

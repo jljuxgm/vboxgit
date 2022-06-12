@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditionsCommon.nsh 85006 2020-06-30 11:15:18Z vboxsync $
+; $Id: VBoxGuestAdditionsCommon.nsh 89709 2021-06-15 14:30:12Z vboxsync $
 ;; @file
 ; VBoxGuestAdditionsCommon.nsh - Common / shared utility functions.
 ;
@@ -136,6 +136,9 @@ Function ExtractFiles
   SetOutPath "$0\Tools"
   FILE "$%PATH_OUT%\bin\additions\VBoxDrvInst.exe"
   FILE "$%VBOX_PATH_DIFX%\DIFxAPI.dll"
+!ifdef VBOX_WITH_ADDITIONS_SHIPPING_AUDIO_TEST
+  FILE "$%PATH_OUT%\bin\additions\VBoxAudioTest.exe"
+!endif
 
 !if $%KBUILD_TARGET_ARCH% == "x86"
   SetOutPath "$0\Tools\NT4"
