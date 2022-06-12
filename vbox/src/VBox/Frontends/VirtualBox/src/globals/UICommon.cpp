@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 86581 2020-10-15 09:26:34Z vboxsync $ */
+/* $Id: UICommon.cpp 86607 2020-10-16 14:05:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -2577,9 +2577,9 @@ CSession UICommon::tryToOpenSessionFor(CMachine &comMachine)
 
 void UICommon::notifyCloudMachineRegistered(const QString &strProviderShortName,
                                             const QString &strProfileName,
-                                            const CCloudMachine &comCloudMachine)
+                                            const CCloudMachine &comMachine)
 {
-    emit sigCloudMachineRegistered(strProviderShortName, strProfileName, comCloudMachine, true /* select */);
+    emit sigCloudMachineRegistered(strProviderShortName, strProfileName, comMachine);
 }
 
 void UICommon::notifyCloudMachineRegistrationChanged(const QString &strProviderShortName,

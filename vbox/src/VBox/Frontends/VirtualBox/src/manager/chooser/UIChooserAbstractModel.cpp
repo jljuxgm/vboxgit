@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.cpp 86606 2020-10-16 13:55:09Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.cpp 86607 2020-10-16 14:05:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class implementation.
  */
@@ -692,8 +692,7 @@ void UIChooserAbstractModel::sltStartGroupSaving()
 
 void UIChooserAbstractModel::sltCloudMachineRegistered(const QString &strProviderShortName,
                                                        const QString &strProfileName,
-                                                       const CCloudMachine &comMachine,
-                                                       bool fSelect)
+                                                       const CCloudMachine &comMachine)
 {
     /* Search for profile node: */
     const QString strProfileNodeName = QString("/%1/%2").arg(strProviderShortName, strProfileName);
@@ -704,7 +703,7 @@ void UIChooserAbstractModel::sltCloudMachineRegistered(const QString &strProvide
         return;
 
     /* Add new machine-item: */
-    addCloudMachineIntoTheTree(strProfileNodeName, comMachine, fSelect);
+    addCloudMachineIntoTheTree(strProfileNodeName, comMachine, true /* make it visible? */);
 
     /* Search for possible fake node: */
     QList<UIChooserNode*> fakeNodes;
