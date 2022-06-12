@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 87040 2020-12-04 06:28:01Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 87141 2020-12-29 19:12:45Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -10586,10 +10586,6 @@ static VBOXSTRICTRC hmR0VmxPreRunGuest(PVMCPUCC pVCpu, PVMXTRANSIENT pVmxTransie
         Log2Func(("Rescheduling to IEM due to nested-hwvirt or forced IEM exec -> VINF_EM_RESCHEDULE_REM\n"));
         return VINF_EM_RESCHEDULE_REM;
     }
-#endif
-
-#ifdef VBOX_WITH_2X_4GB_ADDR_SPACE_IN_R0
-    PGMRZDynMapFlushAutoSet(pVCpu);
 #endif
 
     /*
