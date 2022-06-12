@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemMachine.h 83946 2020-04-23 11:31:30Z vboxsync $ */
+/* $Id: UIChooserItemMachine.h 84625 2020-06-01 16:44:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemMachine class declaration.
  */
@@ -124,8 +124,8 @@ protected:
         /** Removes child @a pItem. */
         virtual void removeItem(UIChooserItem *pItem) /* override */;
 
-        /** Searches for a first child item answering to specified @a strSearchTag and @a iItemSearchFlags. */
-        virtual UIChooserItem *searchForItem(const QString &strSearchTag, int iItemSearchFlags) /* override */;
+        /** Searches for a first child item answering to specified @a strSearchTag and @a iSearchFlags. */
+        virtual UIChooserItem *searchForItem(const QString &strSearchTag, int iSearchFlags) /* override */;
 
         /** Searches for a first machine child item. */
         virtual UIChooserItem *firstMachineItem() /* override */;

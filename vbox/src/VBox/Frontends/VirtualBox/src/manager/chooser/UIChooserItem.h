@@ -1,4 +1,4 @@
-/* $Id: UIChooserItem.h 84583 2020-05-28 11:43:07Z vboxsync $ */
+/* $Id: UIChooserItem.h 84625 2020-06-01 16:44:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItem class declaration.
  */
@@ -167,8 +167,8 @@ public:
         /** Removes child @a pItem. */
         virtual void removeItem(UIChooserItem *pItem) = 0;
 
-        /** Searches for a first child item answering to specified @a strSearchTag and @a iItemSearchFlags. */
-        virtual UIChooserItem *searchForItem(const QString &strSearchTag, int iItemSearchFlags) = 0;
+        /** Searches for a first child item answering to specified @a strSearchTag and @a iSearchFlags. */
+        virtual UIChooserItem *searchForItem(const QString &strSearchTag, int iSearchFlags) = 0;
 
         /** Searches for a first machine child item. */
         virtual UIChooserItem *firstMachineItem() = 0;

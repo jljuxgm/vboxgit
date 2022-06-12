@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemMachine.cpp 84610 2020-05-29 14:10:06Z vboxsync $ */
+/* $Id: UIChooserItemMachine.cpp 84625 2020-06-01 16:44:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemMachine class implementation.
  */
@@ -264,21 +264,21 @@ void UIChooserItemMachine::removeItem(UIChooserItem*)
     AssertMsgFailed(("Machine graphics item do NOT support children!"));
 }
 
-UIChooserItem* UIChooserItemMachine::searchForItem(const QString &strSearchTag, int iItemSearchFlags)
+UIChooserItem* UIChooserItemMachine::searchForItem(const QString &strSearchTag, int iSearchFlags)
 {
     /* Ignore if we are not searching for the machine-item: */
-    if (!(iItemSearchFlags & UIChooserItemSearchFlag_Machine))
+    if (!(iSearchFlags & UIChooserItemSearchFlag_Machine))
         return 0;
 
     /* Are we searching by the exact ID? */
-    if (iItemSearchFlags & UIChooserItemSearchFlag_ExactId)
+    if (iSearchFlags & UIChooserItemSearchFlag_ExactId)
     {
         /* Exact ID doesn't match? */
         if (id() != QUuid(strSearchTag))
             return 0;
     }
     /* Are we searching by the exact name? */
-    else if (iItemSearchFlags & UIChooserItemSearchFlag_ExactName)
+    else if (iSearchFlags & UIChooserItemSearchFlag_ExactName)
     {
         /* Exact name doesn't match? */
         if (name() != strSearchTag)

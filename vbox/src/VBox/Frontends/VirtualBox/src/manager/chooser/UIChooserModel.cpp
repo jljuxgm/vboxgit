@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 84624 2020-06-01 15:12:33Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 84625 2020-06-01 16:44:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -511,10 +511,10 @@ void UIChooserModel::updateNavigationItemList()
     m_navigationItems = createNavigationItemList(root());
 }
 
-void UIChooserModel::performSearch(const QString &strSearchTerm, int iItemSearchFlags)
+void UIChooserModel::performSearch(const QString &strSearchTerm, int iSearchFlags)
 {
     /* Call to base-class: */
-    UIChooserAbstractModel::performSearch(strSearchTerm, iItemSearchFlags);
+    UIChooserAbstractModel::performSearch(strSearchTerm, iSearchFlags);
 
     /* Select 1st found item: */
     selectSearchResult(true);

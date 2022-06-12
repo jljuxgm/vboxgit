@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.h 84592 2020-05-28 14:19:50Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.h 84625 2020-06-01 16:44:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class declaration.
  */
@@ -90,9 +90,9 @@ public:
 
     /** @name Search stuff.
       * @{ */
-        /** Performs a search starting from the m_pInvisibleRootNode. */
-        virtual void performSearch(const QString &strSearchTerm, int iItemSearchFlags);
-        /** Cleans the search result data members and disables item's visual effects.
+        /** Performs a search using @a strSearchTerm and @a iSearchFlags specified. */
+        virtual void performSearch(const QString &strSearchTerm, int iSearchFlags);
+        /** Resets the search result data members and disables item's visual effects.
           * Also returns a list of all nodes which may be utilized by the calling code. */
         virtual QList<UIChooserNode*> resetSearch();
         /** Returns search result. */

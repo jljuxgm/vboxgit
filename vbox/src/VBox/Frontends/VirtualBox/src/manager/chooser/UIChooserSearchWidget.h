@@ -1,4 +1,4 @@
-/* $Id: UIChooserSearchWidget.h 84587 2020-05-28 12:31:13Z vboxsync $ */
+/* $Id: UIChooserSearchWidget.h 84625 2020-06-01 16:44:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserSearchWidget class declaration.
  */
@@ -40,7 +40,7 @@ class UIChooserSearchWidget : public QIWithRetranslateUI<QWidget>
 
 signals:
 
-    void sigRedoSearch(const QString &strSearchTerm, int iItemSearchFlags);
+    void sigRedoSearch(const QString &strSearchTerm, int iSearchFlags);
     /** Is being signalled as next/prev tool buttons are pressed. @a fIsNext is true
       * for the next and false for the previous case. */
     void sigScrollToMatch(bool fIsNext);
