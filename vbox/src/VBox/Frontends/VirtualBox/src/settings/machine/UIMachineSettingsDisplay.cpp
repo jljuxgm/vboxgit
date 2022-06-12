@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.cpp 84790 2020-06-11 10:30:36Z vboxsync $ */
+/* $Id: UIMachineSettingsDisplay.cpp 84792 2020-06-11 13:12:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsDisplay class implementation.
  */
@@ -593,16 +593,6 @@ bool UIMachineSettingsDisplay::validate(QList<UIValidationMessage> &messages)
             }
 #endif /* VBOX_WITH_3D_ACCELERATION */
         }
-
-#ifdef VBOX_WITH_3D_ACCELERATION
-        /* 3D acceleration test: */
-        if (m_pCheckbox3D->isChecked() && !uiCommon().is3DAvailable())
-        {
-            message.second << tr("The virtual machine is set up to use hardware graphics acceleration. "
-                                 "However the host system does not currently provide this, "
-                                 "so you will not be able to start the machine.");
-        }
-#endif /* VBOX_WITH_3D_ACCELERATION */
 
         /* Graphics controller type test: */
         if (!m_comGuestOSType.isNull())

@@ -1,4 +1,4 @@
-/* $Id: UISnapshotDetailsWidget.cpp 84790 2020-06-11 10:30:36Z vboxsync $ */
+/* $Id: UISnapshotDetailsWidget.cpp 84792 2020-06-11 13:12:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotDetailsWidget class implementation.
  */
@@ -1718,7 +1718,7 @@ QString UISnapshotDetailsWidget::displayAccelerationReport(CGraphicsAdapter comG
     /* Prepare report: */
     QStringList aReport;
     /* 3D Acceleration? */
-    if (comGraphics.GetAccelerate3DEnabled() && uiCommon().is3DAvailable())
+    if (comGraphics.GetAccelerate3DEnabled())
         aReport << QApplication::translate("UIDetails", "3D", "details (display)");
     /* Compose and return report: */
     return aReport.isEmpty() ? QString() : aReport.join(", ");

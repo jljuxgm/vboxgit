@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIIndicatorsPool.cpp 84792 2020-06-11 13:12:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIIndicatorsPool class implementation.
  */
@@ -761,7 +761,7 @@ private:
         }
 
         /* 3D acceleration: */
-        const bool fAcceleration3D = comGraphics.GetAccelerate3DEnabled() && uiCommon().is3DAvailable();
+        const bool fAcceleration3D = comGraphics.GetAccelerate3DEnabled();
         if (fAcceleration3D)
         {
             const QString strAcceleration3D = fAcceleration3D ?

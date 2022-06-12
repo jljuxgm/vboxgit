@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewScale.cpp 84790 2020-06-11 10:30:36Z vboxsync $ */
+/* $Id: UIMachineViewScale.cpp 84792 2020-06-11 13:12:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineViewScale class implementation.
  */
@@ -61,7 +61,7 @@ void UIMachineViewScale::sltPerformGuestScale()
     if (scaledSize.isValid())
     {
         /* Propagate scale-factor to 3D service if necessary: */
-        if (machine().GetGraphicsAdapter().GetAccelerate3DEnabled() && uiCommon().is3DAvailable())
+        if (machine().GetGraphicsAdapter().GetAccelerate3DEnabled())
         {
             double xScaleFactor = (double)scaledSize.width()  / frameBuffer()->width();
             double yScaleFactor = (double)scaledSize.height() / frameBuffer()->height();
@@ -120,7 +120,7 @@ void UIMachineViewScale::applyMachineViewScaleFactor()
     if (scaledSize.isValid())
     {
         /* Propagate scale-factor to 3D service if necessary: */
-        if (machine().GetGraphicsAdapter().GetAccelerate3DEnabled() && uiCommon().is3DAvailable())
+        if (machine().GetGraphicsAdapter().GetAccelerate3DEnabled())
         {
             double xScaleFactor = (double)scaledSize.width()  / frameBuffer()->width();
             double yScaleFactor = (double)scaledSize.height() / frameBuffer()->height();
@@ -143,7 +143,7 @@ void UIMachineViewScale::applyMachineViewScaleFactor()
     /* Take unscaled HiDPI output mode into account: */
     frameBuffer()->setUseUnscaledHiDPIOutput(fUseUnscaledHiDPIOutput);
     /* Propagate unscaled-hidpi-output feature to 3D service if necessary: */
-    if (machine().GetGraphicsAdapter().GetAccelerate3DEnabled() && uiCommon().is3DAvailable())
+    if (machine().GetGraphicsAdapter().GetAccelerate3DEnabled())
         display().NotifyHiDPIOutputPolicyChange(fUseUnscaledHiDPIOutput);
 
     /* Perform frame-buffer rescaling: */
