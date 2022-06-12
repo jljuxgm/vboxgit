@@ -1,4 +1,4 @@
-# $Id: makefile.tstCAPIGlue 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: makefile.tstCAPIGlue 84939 2020-06-25 09:43:53Z vboxsync $
 ## @file makefile.tstCAPIGlue
 # Makefile for sample program illustrating use of C binding for COM/XPCOM.
 #
@@ -30,7 +30,7 @@
 
 PATH_SDK      = ../../..
 CAPI_INC      = -I$(PATH_SDK)/bindings/c/include
-ifeq ($(BUILD_PLATFORM),win)
+ifdef ProgramFiles
 PLATFORM_INC  = -I$(PATH_SDK)/bindings/mscom/include
 PLATFORM_LIB  = $(PATH_SDK)/bindings/mscom/lib
 else
