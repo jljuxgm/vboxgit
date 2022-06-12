@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 84748 2020-06-09 20:29:17Z vboxsync $ */
+/* $Id: UICommon.cpp 84791 2020-06-11 10:54:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -3741,7 +3741,7 @@ bool UICommon::is3DAvailableWorker() const
      * use a RTONCE construct to serialize the efforts. */
 
 #ifdef VBOX_WITH_3D_ACCELERATION
-    bool fSupported = VBoxOglIs3DAccelerationSupported();
+    bool fSupported = true;
 #else
     bool fSupported = false;
 #endif
