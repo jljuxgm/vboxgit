@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: Makefile.kmk 84944 2020-06-25 09:55:17Z vboxsync $
 ## @file
 # Sub-Makefile for the Solaris installer.
 #
@@ -698,7 +698,7 @@ $(PATH_STAGE_BIN)/$(PKG_FILENAME).tar.gz: \
 		-e "s/@VBOX_PRODUCT@/$(VBOX_PRODUCT)/g" \
 		-e "s/@VBOX_VENDOR@/$(VBOX_VENDOR)/g" \
 		-e "s/@VBOX_VERSION_STRING@/$(VBOX_VERSION_STRING)/g" \
-		-e "s/@BUILD_TARGET_ARCH@/$(KBUILD_TARGET_ARCH)/g" \
+		-e "s/@KBUILD_TARGET_ARCH@/$(KBUILD_TARGET_ARCH)/g" \
 		-e "s/@VBOX_SVN_REV@/$(VBOX_SVN_REV)/g" \
 		--output $(VBOX_PATH_SI_SCRATCH)/ReadMe.txt \
 		$(PATH_ROOT)/doc/ReadMe-Solaris.txt
