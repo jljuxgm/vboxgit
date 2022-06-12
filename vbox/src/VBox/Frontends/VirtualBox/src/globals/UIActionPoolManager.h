@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.h 85547 2020-07-30 09:14:00Z vboxsync $ */
+/* $Id: UIActionPoolManager.h 85571 2020-07-31 07:22:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class declaration.
  */
@@ -147,10 +147,6 @@ enum UIActionIndexST
     UIActionIndexST_M_Snapshot_S_Restore,
     UIActionIndexST_M_Snapshot_T_Properties,
     UIActionIndexST_M_Snapshot_S_Clone,
-
-    /* Performance Monitor actions: */
-    UIActionIndex_M_Performance,
-    UIActionIndex_M_Performance_S_Export,
 
     /* Virtual Media Manager actions: */
     UIActionIndexST_M_MediumWindow,

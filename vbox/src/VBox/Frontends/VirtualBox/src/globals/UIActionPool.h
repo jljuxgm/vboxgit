@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.h 85434 2020-07-23 13:33:01Z vboxsync $ */
+/* $Id: UIActionPool.h 85571 2020-07-31 07:22:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPool class declaration.
  */
@@ -134,6 +134,10 @@ enum UIActionIndex
     UIActionIndex_M_FileManager_S_Guest_InvertSelection,
     UIActionIndex_M_FileManager_S_Host_ShowProperties,
     UIActionIndex_M_FileManager_S_Guest_ShowProperties,
+
+    /* Performance Monitor actions: */
+    UIActionIndex_M_Performance,
+    UIActionIndex_M_Performance_S_Export,
 
     /* Maximum index: */
     UIActionIndex_Max

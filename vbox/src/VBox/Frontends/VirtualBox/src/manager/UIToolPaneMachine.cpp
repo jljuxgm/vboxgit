@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneMachine.cpp 85406 2020-07-22 08:29:51Z vboxsync $ */
+/* $Id: UIToolPaneMachine.cpp 85571 2020-07-31 07:22:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolPaneMachine class implementation.
  */
@@ -192,7 +192,8 @@ void UIToolPaneMachine::openTool(UIToolType enmType)
             }
             case UIToolType_Performance:
             {
-                m_pPanePerformanceMonitor = new UIPerformanceMonitor(EmbedTo_Stack, 0, m_comMachine, false /* Show toolbar */);
+                m_pPanePerformanceMonitor = new UIPerformanceMonitor(EmbedTo_Stack, 0,
+                                                                     m_comMachine, m_pActionPool, false /* Show toolbar */);
                 AssertPtrReturnVoid(m_pPanePerformanceMonitor);
 #ifndef VBOX_WS_MAC
                 const int iMargin = qApp->style()->pixelMetric(QStyle::PM_LayoutLeftMargin) / 4;
