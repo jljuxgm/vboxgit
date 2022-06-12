@@ -1,4 +1,4 @@
-/* $Id: PDMDevMiscHlp.cpp 88567 2021-04-16 14:58:29Z vboxsync $ */
+/* $Id: PDMDevMiscHlp.cpp 88580 2021-04-19 15:52:45Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Misc. Device Helpers.
  */
@@ -290,6 +290,15 @@ static DECLCALLBACK(bool) pdmR3IommuHlp_LockIsOwner(PPDMDEVINS pDevIns)
 }
 
 
+/** @interface_method_impl{PDMIOMMUHLPR3,pfnSendMsi} */
+static DECLCALLBACK(int) pdmR3IommuHlp_SendMsi(PPDMDEVINS pDevIns, PCMSIMSG pMsi, uint32_t uTagSrc)
+{
+    PDMDEV_ASSERT_DEVINS(pDevIns);
+    LogFlowFunc(("caller='%s'/%d:\n", pDevIns->pReg->szName, pDevIns->iInstance));
+    return PDMIoApicSendMsi(pDevIns->Internal.s.pVMR3, NIL_PCIBDF, pMsi, uTagSrc);
+}
+
+
 /**
  * IOMMU Device Helpers.
  */
@@ -299,6 +308,7 @@ const PDMIOMMUHLPR3 g_pdmR3DevIommuHlp =
     pdmR3IommuHlp_Lock,
     pdmR3IommuHlp_Unlock,
     pdmR3IommuHlp_LockIsOwner,
+    pdmR3IommuHlp_SendMsi,
     PDM_IOMMUHLPR3_VERSION /* the end */
 };
 
