@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.cpp 85232 2020-07-11 16:29:36Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.cpp 86057 2020-09-07 23:15:45Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -755,6 +755,7 @@ HRESULT ExtPack::initWithDir(VirtualBox *a_pVirtualBox, VBOXEXTPACKCTX a_enmCont
         /* pfnNextOperationProgress = */ ExtPack::i_hlpNextOperationProgress,
         /* pfnWaitOtherProgress = */ ExtPack::i_hlpWaitOtherProgress,
         /* pfnCompleteProgress  = */ ExtPack::i_hlpCompleteProgress,
+        /* pfnCreateEvent       = */ ExtPack::i_hlpCreateEvent,
         /* pfnReserved1         = */ ExtPack::i_hlpReservedN,
         /* pfnReserved2         = */ ExtPack::i_hlpReservedN,
         /* pfnReserved3         = */ ExtPack::i_hlpReservedN,
@@ -1919,6 +1920,34 @@ ExtPack::i_hlpCompleteProgress(PCVBOXEXTPACKHLP pHlp, VBOXEXTPACK_IF_CS(IProgres
     }
     return pProgressControl->NotifyComplete((LONG)uResultCode, errorInfo);
 }
+
+
+/*static*/ DECLCALLBACK(uint32_t)
+ExtPack::i_hlpCreateEvent(PCVBOXEXTPACKHLP pHlp,
+                          VBOXEXTPACK_IF_CS(IEventSource) *aSource,
+                          /* VBoxEventType_T */ uint32_t aType, bool aWaitable,
+                          VBOXEXTPACK_IF_CS(IEvent) **ppEventOut)
+{
+    HRESULT hrc;
+
+    AssertPtrReturn(pHlp, (uint32_t)E_INVALIDARG);
+    AssertReturn(pHlp->u32Version == VBOXEXTPACKHLP_VERSION, (uint32_t)E_INVALIDARG);
+    AssertPtrReturn(ppEventOut, (uint32_t)E_INVALIDARG);
+
+    ComObjPtr<VBoxEvent> pEvent;
+
+    hrc = pEvent.createObject();
+    if (FAILED(hrc))
+        return hrc;
+
+    /* default aSource to pVirtualBox? */
+    hrc = pEvent->init(aSource, static_cast<VBoxEventType_T>(aType), aWaitable);
+    if (FAILED(hrc))
+        return hrc;
+
+    return pEvent.queryInterfaceTo(ppEventOut);
+}
+
 
 /*static*/ DECLCALLBACK(int)
 ExtPack::i_hlpReservedN(PCVBOXEXTPACKHLP pHlp)
