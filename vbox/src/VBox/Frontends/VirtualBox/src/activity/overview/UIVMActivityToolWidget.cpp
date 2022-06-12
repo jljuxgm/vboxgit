@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityToolWidget.cpp 89093 2021-05-17 11:35:46Z vboxsync $ */
+/* $Id: UIVMActivityToolWidget.cpp 89094 2021-05-17 11:56:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMActivityToolWidget class implementation.
  */
@@ -149,7 +149,7 @@ void UIVMActivityToolWidget::prepareActions()
     QAction *pToResourcesAction =
         m_pActionPool->action(UIActionIndex_M_Activity_S_ToVMActivityOverview);
     if (pToResourcesAction)
-        connect(pToResourcesAction, &QAction::triggered, this, &UIVMActivityToolWidget::sigSwitchToResourcesPane);
+        connect(pToResourcesAction, &QAction::triggered, this, &UIVMActivityToolWidget::sigSwitchToActivityOverviewPane);
 
     m_pExportToFileAction =
         m_pActionPool->action(UIActionIndex_M_Activity_S_Export);

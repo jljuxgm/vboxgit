@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneGlobal.cpp 88173 2021-03-18 08:11:08Z vboxsync $ */
+/* $Id: UIToolPaneGlobal.cpp 89094 2021-05-17 11:56:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolPaneGlobal class implementation.
  */
@@ -215,8 +215,8 @@ void UIToolPaneGlobal::openTool(UIToolType enmType)
 
                     /* Configure pane: */
                     m_pPaneVMActivityOverview->setProperty("ToolType", QVariant::fromValue(UIToolType_VMActivityOverview));
-                    connect(m_pPaneVMActivityOverview, &UIVMActivityOverviewWidget::sigSwitchToMachinePerformancePane,
-                            this, &UIToolPaneGlobal::sigSwitchToMachinePerformancePane);
+                    connect(m_pPaneVMActivityOverview, &UIVMActivityOverviewWidget::sigSwitchToMachineActivityPane,
+                            this, &UIToolPaneGlobal::sigSwitchToMachineActivityPane);
 
                     /* Add into layout: */
                     m_pLayout->addWidget(m_pPaneVMActivityOverview);

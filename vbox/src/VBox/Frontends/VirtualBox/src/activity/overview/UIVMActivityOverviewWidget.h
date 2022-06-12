@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityOverviewWidget.h 89000 2021-05-12 08:37:23Z vboxsync $ */
+/* $Id: UIVMActivityOverviewWidget.h 89094 2021-05-17 11:56:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMActivityOverviewWidget class declaration.
  */
@@ -51,7 +51,7 @@ class UIVMActivityOverviewWidget : public QIWithRetranslateUI<QWidget>
 
 signals:
 
-    void sigSwitchToMachinePerformancePane(const QUuid &uMachineId);
+    void sigSwitchToMachineActivityPane(const QUuid &uMachineId);
 
 public:
 

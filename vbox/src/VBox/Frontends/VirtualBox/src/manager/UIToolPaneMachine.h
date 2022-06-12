@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneMachine.h 89036 2021-05-14 08:14:18Z vboxsync $ */
+/* $Id: UIToolPaneMachine.h 89094 2021-05-17 11:56:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolPaneMachine class declaration.
  */
@@ -61,8 +61,8 @@ signals:
     /** Notifies listeners about current Snapshot pane item change. */
     void sigCurrentSnapshotItemChange();
 
-    /** Notifies listeners about request to switch to Resources pane. */
-    void sigSwitchToResourcesPane();
+    /** Notifies listeners about request to switch to Activity Overview pane. */
+    void sigSwitchToActivityOverviewPane();
 
 public:
 
