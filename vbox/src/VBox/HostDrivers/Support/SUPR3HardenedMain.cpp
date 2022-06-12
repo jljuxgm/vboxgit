@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain.cpp 85127 2020-07-08 23:42:18Z vboxsync $ */
+/* $Id: SUPR3HardenedMain.cpp 87030 2020-12-02 10:46:49Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main().
  */
@@ -2634,7 +2634,9 @@ DECLHIDDEN(int) SUPR3HardenedMain(const char *pszProgName, uint32_t fFlags, int 
     supR3HardenedWinResolveVerifyTrustApiAndHookThreadCreation(g_pszSupLibHardenedProgName);
     g_enmSupR3HardenedMainState = SUPR3HARDENEDMAINSTATE_WIN_VERIFY_TRUST_READY;
 #else /* !RT_OS_WINDOWS */
-# ifndef RT_OS_FREEBSD /** @todo portme */
+# if defined(RT_OS_DARWIN)
+    supR3HardenedDarwinInit();
+# elif !defined(RT_OS_FREEBSD) /** @todo Portme. */
     /*
      * Posix: Hook the load library interface interface.
      */

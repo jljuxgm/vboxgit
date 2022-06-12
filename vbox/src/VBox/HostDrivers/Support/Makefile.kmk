@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 85617 2020-08-05 13:50:22Z vboxsync $
+# $Id: Makefile.kmk 87030 2020-12-02 10:46:49Z vboxsync $
 ## @file
 # Sub-Makefile for the support library and the drivers/modules/kexts it uses.
 #
@@ -413,8 +413,25 @@ if "$(KBUILD_TARGET)" == "win" && defined(VBOX_WITH_HARDENING) ## @todo some of 
  endif
 endif
 
-# Things specific to the posix crowd.
-if1of ($(KBUILD_TARGET), linux darwin solaris)
+# macOS specifics.
+ifeq ($(KBUILD_TARGET),darwin)
+ SUPR3HardenedStatic_DEFS += \
+ 	LOG_DISABLED
+
+ SUPR3HardenedStatic_INCS += $(VBOX_PATH_RUNTIME_SRC)/include
+
+ SUPR3HardenedStatic_SOURCES += \
+ 	darwin/SUPR3HardenedMain-darwin.cpp \
+       \
+ 	$(VBOX_PATH_RUNTIME_SRC)/common/misc/RTAssertMsg1Weak.cpp \
+ 	$(VBOX_PATH_RUNTIME_SRC)/common/misc/RTAssertMsg2.cpp \
+ 	$(VBOX_PATH_RUNTIME_SRC)/common/misc/RTAssertMsg2Weak.cpp \
+ 	$(VBOX_PATH_RUNTIME_SRC)/common/misc/RTAssertMsg2WeakV.cpp \
+ 	$(VBOX_PATH_RUNTIME_SRC)/generic/RTAssertShouldPanic-generic.cpp
+endif
+
+# Things specific to the rest of the posix crowd.
+if1of ($(KBUILD_TARGET), linux solaris)
  SUPR3HardenedStatic_DEFS += \
  	IN_DIS \
 	IN_DIS_STATIC \

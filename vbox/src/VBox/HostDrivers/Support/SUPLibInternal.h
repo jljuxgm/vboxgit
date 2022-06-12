@@ -1,4 +1,4 @@
-/* $Id: SUPLibInternal.h 85129 2020-07-09 00:05:45Z vboxsync $ */
+/* $Id: SUPLibInternal.h 87030 2020-12-02 10:46:49Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Internal header.
  */
@@ -494,7 +494,11 @@ DECLHIDDEN(char *)  supR3HardenedWinReadErrorInfoDevice(char *pszErrorInfo, size
 DECLHIDDEN(void)    supR3HardenedWinReportErrorToParent(const char *pszWhere, SUPINITOP enmWhat, int rc,
                                                         const char *pszFormat, va_list va);
 #else   /* !RT_OS_WINDOWS */
+# if !defined(RT_OS_DARWIN)
 DECLHIDDEN(void)    supR3HardenedPosixInit(void);
+# else  /* !RT_OS_DARWIN */
+DECLHIDDEN(void)    supR3HardenedDarwinInit(void);
+#endif  /* !RT_OS_DARWIN */
 #endif  /* !RT_OS_WINDOWS */
 
 SUPR3DECL(int)      supR3PageLock(void *pvStart, size_t cPages, PSUPPAGE paPages);
