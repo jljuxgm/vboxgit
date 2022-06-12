@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsUSB.cpp 85792 2020-08-17 08:22:41Z vboxsync $ */
+/* $Id: UIMachineSettingsUSB.cpp 85795 2020-08-17 10:56:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsUSB class implementation.
  */
@@ -895,9 +895,10 @@ void UIMachineSettingsUSB::prepareWidgets()
     QVBoxLayout *vboxLayout1 = new QVBoxLayout(pRadioButtonContainer);
     vboxLayout1->setObjectName(QStringLiteral("vboxLayout1"));
     vboxLayout1->setContentsMargins(0, 0, 0, 0);
-    QRadioButton *pRadioButtonUSB1 = new QRadioButton(pRadioButtonContainer);
-    pRadioButtonUSB1->setObjectName(QStringLiteral("pRadioButtonUSB1"));
-    vboxLayout1->addWidget(pRadioButtonUSB1);
+
+    m_pRadioButtonUSB1 = new QRadioButton(pRadioButtonContainer);
+    m_pRadioButtonUSB1->setObjectName(QStringLiteral("pRadioButtonUSB1"));
+    vboxLayout1->addWidget(m_pRadioButtonUSB1);
 
     m_pRadioButtonUSB2 = new QRadioButton(pRadioButtonContainer);
     m_pRadioButtonUSB2->setObjectName(QStringLiteral("m_pRadioButtonUSB2"));
