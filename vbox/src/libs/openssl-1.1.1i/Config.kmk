@@ -1,4 +1,4 @@
-# $Id: Config.kmk 87083 2020-12-10 15:22:24Z vboxsync $
+# $Id: Config.kmk 87142 2020-12-30 12:17:55Z vboxsync $
 ## @file
 # OpenSSL kBuild Configuration file.
 #
@@ -223,7 +223,7 @@ TEMPLATE_LIBCRYPTO_DEFS += \
 TEMPLATE_LIBCRYPTO_DEFS += \
 	NOCRYPT
 endif
-if1of ($(KBUILD_TARGET_ARCH), x86 amd64)
+if1of ($(KBUILD_TARGET_ARCH), x86 amd64 arm64)
 TEMPLATE_LIBCRYPTO_DEFS += \
         L_ENDIAN
 else
