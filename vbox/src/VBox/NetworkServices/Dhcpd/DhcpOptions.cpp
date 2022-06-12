@@ -1,4 +1,4 @@
-/* $Id: DhcpOptions.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: DhcpOptions.cpp 85230 2020-07-11 16:26:16Z vboxsync $ */
 /** @file
  * DHCP server - DHCP options
  */
@@ -201,7 +201,7 @@ template <typename a_Type>
         char szTmp[256];
         if (pszNext)
         {
-            size_t cchToCopy = pszNext - pcszValue;
+            size_t cchToCopy = (size_t)(pszNext - pcszValue);
             if (cchToCopy >= sizeof(szTmp))
                 return VERR_INVALID_PARAMETER;
             memcpy(szTmp, pcszValue, cchToCopy);
