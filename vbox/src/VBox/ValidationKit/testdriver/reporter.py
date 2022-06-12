@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: reporter.py 84543 2020-05-26 16:05:57Z vboxsync $
+# $Id: reporter.py 84921 2020-06-23 20:30:13Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84543 $"
+__version__ = "$Revision: 84921 $"
 
 
 # Standard Python imports.
@@ -212,7 +212,7 @@ class ReporterBase(object):
     def xmlFlush(self, fRetry = False, fForce = False):
         """Flushes XML output if buffered."""
         _ = fRetry; _ = fForce;
-        return None;
+        return True;
 
     #
     # XML output from child.
@@ -1791,6 +1791,7 @@ def testCleanup():
         g_oReporter.xmlFlush(fRetry = False, fForce = True);
     finally:
         g_oLock.release();
+        fRc = False;
     return fRc;
 
 
@@ -1870,6 +1871,7 @@ def checkTestManagerConnection():
         fRc = g_oReporter.xmlFlush(fRetry = False, fForce = True);
     finally:
         g_oLock.release();
+        fRc = False;
     return fRc;
 
 def flushall(fSkipXml = False):

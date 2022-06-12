@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuicontentbase.py 83403 2020-03-25 12:09:58Z vboxsync $
+# $Id: wuicontentbase.py 84921 2020-06-23 20:30:13Z vboxsync $
 
 """
 Test Manager Web-UI - Content Base Classes.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 83403 $"
+__version__ = "$Revision: 84921 $"
 
 
 # Standard python imports.
@@ -154,7 +154,7 @@ class WuiLinkBase(WuiHtmlBase): # pylint: disable=too-few-public-methods
 class WuiTmLink(WuiLinkBase): # pylint: disable=too-few-public-methods
     """ Local link to the test manager. """
 
-    kdDbgParams = None;
+    kdDbgParams = [];
 
     def __init__(self, sName, sUrlBase, dParams = None, sConfirm = None, sTitle = None,
                  sFragmentId = None, fBracketed = True):

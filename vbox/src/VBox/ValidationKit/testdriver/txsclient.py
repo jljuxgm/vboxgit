@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: txsclient.py 84788 2020-06-11 07:56:16Z vboxsync $
+# $Id: txsclient.py 84921 2020-06-23 20:30:13Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84788 $"
+__version__ = "$Revision: 84921 $"
 
 # Standard Python imports.
 import array;
@@ -1938,8 +1938,8 @@ class TransportTcp(TransportBase):
             reporter.log2('TransportTcp::accept: operation in progress (%s)...' % (e,));
             try:
                 select.select([oSocket, oWakeupR], [], [oSocket, oWakeupR], cMsTimeout / 1000.0);
-            except socket.error as e:
-                if e[0] != errno.EBADF  or  not self.fConnectCanceled:
+            except socket.error as oXctp:
+                if oXctp.errno != errno.EBADF  or  not self.fConnectCanceled:
                     raise;
                 reporter.log('socket.select() on accept was canceled');
                 return None;
@@ -1949,9 +1949,9 @@ class TransportTcp(TransportBase):
             # Try accept again.
             try:
                 (oClientSocket, tClientAddr) = oSocket.accept();
-            except socket.error as e:
+            except socket.error as oXcpt:
                 if not self.__isInProgressXcpt(e):
-                    if e[0] != errno.EBADF  or  not self.fConnectCanceled:
+                    if oXcpt.errno != errno.EBADF  or  not self.fConnectCanceled:
                         raise;
                     reporter.log('socket.accept() was canceled');
                     return None;
