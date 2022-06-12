@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 88602 2021-04-20 12:23:08Z vboxsync $
+# $Id: Makefile.kmk 88647 2021-04-22 08:51:50Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -1008,6 +1008,7 @@ UICommon_QT_MOCSRCS = \
 	src/globals/UIVirtualBoxClientEventHandler.cpp \
 	src/logviewer/UIVMLogViewerFilterPanel.cpp \
 	src/logviewer/UIVMLogViewerTextEdit.cpp \
+	src/logviewer/UIVMLogViewerWidget.cpp \
 	src/activity/vmactivity/UIVMActivityMonitor.cpp \
 	src/medium/UIMediumEnumerator.cpp \
 	src/medium/viso/UIVisoContentBrowser.cpp \
