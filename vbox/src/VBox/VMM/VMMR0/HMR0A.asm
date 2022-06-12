@@ -1,4 +1,4 @@
-; $Id: HMR0A.asm 87469 2021-01-28 17:01:06Z vboxsync $
+; $Id: HMR0A.asm 87487 2021-01-29 18:06:39Z vboxsync $
 ;; @file
 ; HM - Ring-0 VMX, SVM world-switch and helper routines.
 ;
@@ -785,7 +785,7 @@ BEGINPROC RT_CONCAT(hmR0VmxStartVm,%1)
         ;
         ; Verify template preconditions / parameters to ensure HMSVM.cpp didn't miss some state change.
         ;
-        cmp     byte [rsi + VMCPU.hm + HMCPU.fLoadSaveGuestXcr0], %2
+        cmp     byte [rsi + GVMCPU.hmr0 + HMR0PERVCPU.fLoadSaveGuestXcr0], %2
         mov     eax, VERR_VMX_STARTVM_PRECOND_0
         jne     NAME(RT_CONCAT(hmR0VmxStartVmHostRIP,%1).precond_failure_return)
 
@@ -1252,7 +1252,7 @@ BEGINPROC RT_CONCAT(hmR0SvmVmRun,%1)
         ;
         ; Verify template preconditions / parameters to ensure HMSVM.cpp didn't miss some state change.
         ;
-        cmp     byte [rsi + VMCPU.hm + HMCPU.fLoadSaveGuestXcr0], %2
+        cmp     byte [rsi + GVMCPU.hmr0 + HMR0PERVCPU.fLoadSaveGuestXcr0], %2
         mov     eax, VERR_SVM_VMRUN_PRECOND_0
         jne     .failure_return
 

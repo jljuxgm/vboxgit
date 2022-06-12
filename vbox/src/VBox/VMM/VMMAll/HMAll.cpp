@@ -1,4 +1,4 @@
-/* $Id: HMAll.cpp 87480 2021-01-29 14:55:56Z vboxsync $ */
+/* $Id: HMAll.cpp 87487 2021-01-29 18:06:39Z vboxsync $ */
 /** @file
  * HM - All contexts.
  */
@@ -483,6 +483,7 @@ VMM_INT_DECL(int) HMFlushTlb(PVMCPU pVCpu)
     STAM_COUNTER_INC(&pVCpu->hm.s.StatFlushTlbManual);
     return VINF_SUCCESS;
 }
+
 
 /**
  * Poke an EMT so it can perform the appropriate TLB shootdowns.
