@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 88799 2021-04-30 12:51:06Z vboxsync $ */
+/* $Id: DevSB16.cpp 88800 2021-04-30 12:57:27Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  */
@@ -459,10 +459,8 @@ static int sb16StreamAsyncIOCreate(PPDMDEVINS pDevIns, PSB16STATE pThis, PSB16ST
             rc = RTCritSectInit(&pAIO->CritSect);
             if (RT_SUCCESS(rc))
             {
-                /** @todo Make the device thread naming more specific once we have more streams here. */
-
-                char szDevTag[20];
-                RTStrPrintf(szDevTag, sizeof(szDevTag), "SB16-%u", pDevIns->iInstance);
+                char szDevTag[16]; /* see RTTHREAD_NAME_LEN. */
+                RTStrPrintf(szDevTag, sizeof(szDevTag), "SB16%RU32-%RU8", pDevIns->iInstance, pStream->uIdx);
 
                 PSB16STREAMTHREADCTX pCtx = (PSB16STREAMTHREADCTX)RTMemAllocZ(sizeof(SB16STREAMTHREADCTX));
                 if (pCtx)
