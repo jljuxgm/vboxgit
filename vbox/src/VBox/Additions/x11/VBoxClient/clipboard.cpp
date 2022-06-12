@@ -1,4 +1,4 @@
-/** $Id: clipboard.cpp 87452 2021-01-27 17:11:25Z vboxsync $ */
+/** $Id: clipboard.cpp 87453 2021-01-27 17:16:39Z vboxsync $ */
 /** @file
  * Guest Additions - X11 Shared Clipboard.
  */
@@ -331,7 +331,13 @@ int vboxClipboardMain(void)
  */
 static DECLCALLBACK(int) vbclShClInit(void)
 {
-    int rc = ShClTransferCtxInit(&g_Ctx.TransferCtx);
+    int rc;
+
+#ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS
+    rc = ShClTransferCtxInit(&g_Ctx.TransferCtx);
+#else
+    rc = VINF_SUCCESS;
+#endif
 
     LogFlowFuncLeaveRC(rc);
     return rc;
