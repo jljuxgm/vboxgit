@@ -1,4 +1,4 @@
-/* $Id: dvmmbr.cpp 85878 2020-08-24 17:27:48Z vboxsync $ */
+/* $Id: dvmmbr.cpp 85887 2020-08-25 21:05:37Z vboxsync $ */
 /** @file
  * IPRT Disk Volume Management API (DVM) - MBR format backend.
  */
@@ -824,6 +824,7 @@ static DECLCALLBACK(uint32_t) rtDvmFmtMbrVolumeGetIndex(RTDVMVOLUMEFMT hVolFmt, 
             return pVol->pEntry->idxLinux;
 
         case RTDVMVOLIDX_INVALID:
+        case RTDVMVOLIDX_HOST:
         case RTDVMVOLIDX_END:
         case RTDVMVOLIDX_32BIT_HACK:
             break;

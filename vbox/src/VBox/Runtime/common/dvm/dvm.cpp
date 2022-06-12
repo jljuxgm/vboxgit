@@ -1,4 +1,4 @@
-/* $Id: dvm.cpp 85877 2020-08-24 17:03:23Z vboxsync $ */
+/* $Id: dvm.cpp 85887 2020-08-25 21:05:37Z vboxsync $ */
 /** @file
  * IPRT Disk Volume Management API (DVM) - generic code.
  */
@@ -735,6 +735,18 @@ RTDECL(uint32_t) RTDvmVolumeGetIndex(RTDVMVOLUME hVol, RTDVMVOLIDX enmIndex)
     AssertPtrReturn(pThis, UINT32_MAX);
     AssertReturn(pThis->u32Magic == RTDVMVOLUME_MAGIC, UINT32_MAX);
     AssertReturn(enmIndex > RTDVMVOLIDX_INVALID && enmIndex < RTDVMVOLIDX_END, UINT32_MAX);
+
+    if (enmIndex == RTDVMVOLIDX_HOST)
+    {
+#ifdef RT_OS_WINDOWS
+        enmIndex = RTDVMVOLIDX_USER_VISIBLE;
+#elif defined(RT_OS_LINUX) || defined(RT_OS_FREEBSD) || defined(RT_OS_SOLARIS) || defined(RT_OS_DARWIN)
+/** @todo verify darwin, solaris and freebsd matches the linux algo. Check the linux index matching actual linux. */
+        enmIndex = RTDVMVOLIDX_LINUX;
+#else
+# error "PORTME"
+#endif
+    }
 
     return pThis->pVolMgr->pDvmFmtOps->pfnVolumeGetIndex(pThis->hVolFmt, enmIndex);
 }

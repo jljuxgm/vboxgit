@@ -1,4 +1,4 @@
-/* $Id: dvmbsdlabel.cpp 85877 2020-08-24 17:03:23Z vboxsync $ */
+/* $Id: dvmbsdlabel.cpp 85887 2020-08-25 21:05:37Z vboxsync $ */
 /** @file
  * IPRT Disk Volume Management API (DVM) - BSD disklabel format backend.
  */
@@ -527,6 +527,7 @@ static DECLCALLBACK(uint32_t) rtDvmFmtBsdLblVolumeGetIndex(RTDVMVOLUMEFMT hVolFm
             return pVol->idxEntry;
 
         case RTDVMVOLIDX_INVALID:
+        case RTDVMVOLIDX_HOST:
         case RTDVMVOLIDX_END:
         case RTDVMVOLIDX_32BIT_HACK:
             break;
