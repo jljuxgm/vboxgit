@@ -1,4 +1,4 @@
-/* $Id: UINetworkManager.h 87219 2021-01-12 07:51:48Z vboxsync $ */
+/* $Id: UINetworkManager.h 87220 2021-01-12 07:56:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkManager class declaration.
  */
@@ -50,8 +50,9 @@ class UINetworkManagerWidget : public QIWithRetranslateUI<QWidget>
 
 signals:
 
-    /** Notifies listeners about host network details-widget @a fVisible. */
-    void sigDetailsVisibilityChangedHostNetwork(bool fVisible);
+    /** Notifies listeners about details-widget @a fVisible. */
+    void sigDetailsVisibilityChanged(bool fVisible);
+
     /** Notifies listeners about host network details data @a fDiffers. */
     void sigDetailsDataChangedHostNetwork(bool fDiffers);
 
@@ -104,10 +105,9 @@ private slots:
         void sltCreateHostNetwork();
         /** Handles command to remove host network. */
         void sltRemoveHostNetwork();
-        /** Handles command to make host network details @a fVisible. */
-        void sltToggleDetailsVisibilityHostNetwork(bool fVisible);
-        /** Handles command to refresh host networks. */
-        void sltRefreshHostNetworks();
+
+        /** Handles command to make details @a fVisible. */
+        void sltToggleDetailsVisibility(bool fVisible);
     /** @} */
 
     /** @name Tree-widget stuff.
