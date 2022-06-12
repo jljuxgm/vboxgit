@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84656 $"
+__version__ = "$Revision: 84657 $"
 
 # Standard Python imports.
 import errno
@@ -2221,8 +2221,8 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
                                                 if isinstance(abBuf, memoryview): ## @todo Why is this happening?
                                                     abBuf = abBuf.tobytes();
                                                     sBuf  = abBuf.decode("utf-8");
-                                            if isinstance(abBuf, buffer):
-                                                sBuf = str(abBuf);
+                                                if isinstance(abBuf, buffer):
+                                                    sBuf = str(abBuf);
                                             for sLine in sBuf.splitlines():
                                                 reporter.log4('%s: %s' % (sFdNm, sLine));
                                         acbFdOut[iFd] += len(abBuf);
