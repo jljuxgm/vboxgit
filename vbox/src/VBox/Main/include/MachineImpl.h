@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 85309 2020-07-13 12:56:56Z vboxsync $ */
+/* $Id: MachineImpl.h 85769 2020-08-14 12:59:51Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -275,6 +275,7 @@ public:
         BOOL                mHWVirtExUXEnabled;
         BOOL                mHWVirtExForceEnabled;
         BOOL                mHWVirtExUseNativeApi;
+        BOOL                mHWVirtExVirtVmsaveVmload;
         BOOL                mPAEEnabled;
         settings::Hardware::LongModeType mLongMode;
         BOOL                mTripleFaultReset;

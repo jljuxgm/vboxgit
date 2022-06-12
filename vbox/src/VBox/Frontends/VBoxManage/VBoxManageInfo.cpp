@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 85178 2020-07-10 12:58:02Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 85769 2020-08-14 12:59:51Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -881,6 +881,7 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> pVirtualBox,
     SHOW_BOOLEAN_METHOD(machine, GetHWVirtExProperty(HWVirtExPropertyType_LargePages, &f),  "largepages",   "Large Pages:");
     SHOW_BOOLEAN_METHOD(machine, GetHWVirtExProperty(HWVirtExPropertyType_VPID, &f),        "vtxvpid",      "VT-x VPID:");
     SHOW_BOOLEAN_METHOD(machine, GetHWVirtExProperty(HWVirtExPropertyType_UnrestrictedExecution, &f), "vtxux", "VT-x Unrestricted Exec.:");
+    SHOW_BOOLEAN_METHOD(machine, GetHWVirtExProperty(HWVirtExPropertyType_VirtVmsaveVmload, &f),      "virtvmsavevmload", "AMD-V Virt. Vmsave/Vmload:");
 
     ParavirtProvider_T paravirtProvider;
     CHECK_ERROR2I_RET(machine, COMGETTER(ParavirtProvider)(&paravirtProvider), hrcCheck);
