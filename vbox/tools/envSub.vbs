@@ -1,4 +1,4 @@
-' $Id: envSub.vbs 85892 2020-08-26 17:21:07Z vboxsync $
+' $Id: envSub.vbs 86348 2020-09-30 13:41:25Z vboxsync $
 ''  @file
 ' VBScript worker for env.cmd
 '
@@ -133,7 +133,7 @@ function Main()
             if i >= Wscript.Arguments.Count then
                MsgSyntaxError "'" & strArg & "' takes a value"             ' quits
             end if
-            strValue = Wscript.Arguments.items(i)
+            strValue = Wscript.Arguments.item(i)
             i = i + 1
          end if
 
