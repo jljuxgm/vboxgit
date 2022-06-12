@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 86251 2020-09-23 18:17:25Z vboxsync $ */
+/* $Id: DevVGA-SVGA.cpp 86252 2020-09-23 19:06:31Z vboxsync $ */
 /** @file
  * VMware SVGA device.
  *
@@ -641,7 +641,7 @@ void vmsvgaR3ResetScreens(PVGASTATE pThis, PVGASTATECC pThisCC)
 
 #define SVGA_CASE_ID2STR(idx) case idx: return #idx
 
-#if defined(LOG_ENABLED) || defined(VBOX_STRICT)
+#if defined(LOG_ENABLED)
 /**
  * Index register string name lookup
  *
@@ -727,9 +727,9 @@ static const char *vmsvgaIndexToString(PVGASTATE pThis, uint32_t idxReg)
             return "UNKNOWN";
     }
 }
-#endif /* LOG_ENABLED || VBOX_STRICT */
+#endif /* LOG_ENABLED */
 
-#if defined(IN_RING3) && defined(LOG_ENABLED)
+#if defined(IN_RING3) && (defined(LOG_ENABLED) || defined(VBOX_STRICT))
 /**
  * FIFO command name lookup
  *
@@ -958,7 +958,7 @@ static const char *vmsvgaR3FifoCmdToString(uint32_t u32Cmd)
         default: return "UNKNOWN";
     }
 }
-#endif /* IN_RING3 && LOG_ENABLED */
+#endif /* IN_RING3 && (LOG_ENABLED || VBOX_STRICT) */
 
 #ifdef IN_RING3
 
