@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 87991 2021-03-07 15:11:52Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 88002 2021-03-08 11:28:46Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -2227,7 +2227,7 @@ static int ichac97R3StreamOpen(PAC97STATE pThis, PAC97STATER3 pThisCC, PAC97STRE
                     pStreamCC->State.pCircBuf = NULL;
                 }
 
-                rc = RTCircBufCreate(&pStreamCC->State.pCircBuf, DrvAudioHlpMilliToBytes(100 /* ms */, &Cfg.Props)); /** @todo Make this configurable. */
+                rc = RTCircBufCreate(&pStreamCC->State.pCircBuf, DrvAudioHlpMilliToBytes(&Cfg.Props, 100 /*ms*/)); /** @todo Make this configurable. */
                 if (RT_SUCCESS(rc))
                 {
                     ichac97R3MixerRemoveDrvStreams(pThisCC, pMixSink, Cfg.enmDir, Cfg.u);

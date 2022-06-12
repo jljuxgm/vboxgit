@@ -1,4 +1,4 @@
-/* $Id: DrvHostALSAAudio.cpp 87994 2021-03-07 15:22:36Z vboxsync $ */
+/* $Id: DrvHostALSAAudio.cpp 88002 2021-03-08 11:28:46Z vboxsync $ */
 /** @file
  * ALSA audio driver.
  */
@@ -1038,7 +1038,7 @@ static int alsaCreateStreamIn(PALSAAUDIOSTREAM pStreamALSA, PPDMAUDIOSTREAMCFG p
         req.fmt         = alsaAudioPropsToALSA(&pCfgReq->Props);
         req.freq        = pCfgReq->Props.uHz;
         req.nchannels   = pCfgReq->Props.cChannels;
-        req.period_size = DrvAudioHlpMilliToFrames(50 /* ms */, &pCfgReq->Props); /** @todo Make this configurable. */
+        req.period_size = DrvAudioHlpMilliToFrames(&pCfgReq->Props, 50 /*ms*/); /** @todo Make this configurable. */
         req.buffer_size = req.period_size * 2; /** @todo Make this configurable. */
         req.threshold   = req.period_size;
 
