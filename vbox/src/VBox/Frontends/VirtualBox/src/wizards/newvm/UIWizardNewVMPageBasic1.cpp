@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic1.cpp 88115 2021-03-15 09:34:32Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic1.cpp 88116 2021-03-15 10:33:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic1 class implementation.
  */
@@ -477,7 +477,6 @@ void UIWizardNewVMPageBasic1::prepare()
     registerField("startHeadless", this, "startHeadless");
     registerField("ISOFilePath", this, "ISOFilePath");
     registerField("isUnattendedEnabled", this, "isUnattendedEnabled");
-    //registerField("skipUnattendedInstall", this, "skipUnattendedInstall");
     registerField("detectedOSTypeId", this, "detectedOSTypeId");
 }
 
