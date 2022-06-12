@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.cpp 85261 2020-07-12 00:01:51Z vboxsync $ */
+/* $Id: SnapshotImpl.cpp 85304 2020-07-13 10:14:38Z vboxsync $ */
 /** @file
  * COM class implementation for Snapshot and SnapshotMachine in VBoxSVC.
  */
@@ -1401,7 +1401,7 @@ HRESULT SnapshotMachine::i_onSnapshotChange(Snapshot *aSnapshot)
     }
 
     /* inform callbacks */
-    mParent->i_onSnapshotChange(uuidMachine, uuidSnapshot);
+    mParent->i_onSnapshotChanged(uuidMachine, uuidSnapshot);
 
     return rc;
 }
