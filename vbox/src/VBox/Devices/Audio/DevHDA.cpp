@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 87800 2021-02-19 10:49:01Z vboxsync $ */
+/* $Id: DevHDA.cpp 87809 2021-02-19 16:05:53Z vboxsync $ */
 /** @file
  * DevHDA.cpp - VBox Intel HD Audio Controller.
  *
@@ -1558,7 +1558,6 @@ static VBOXSTRICTRC hdaRegWriteSDSTS(PPDMDEVINS pDevIns, PHDASTATE pThis, uint32
     Log3Func(("[SD%RU8] fRunning=%RTbool %R[sdsts]\n", uSD, fRunning, v));
 
     PHDASTREAMPERIOD pPeriod = &pStreamShared->State.Period;
-    hdaR3StreamPeriodLock(pPeriod);
     if (hdaR3StreamPeriodNeedsInterrupt(pPeriod))
         hdaR3StreamPeriodReleaseInterrupt(pPeriod);
     if (hdaR3StreamPeriodIsComplete(pPeriod))
@@ -1574,7 +1573,6 @@ static VBOXSTRICTRC hdaRegWriteSDSTS(PPDMDEVINS pDevIns, PHDASTATE pThis, uint32
         if (fRunning)
             hdaR3StreamPeriodBegin(pPeriod, hdaWalClkGetCurrent(pThis) /* Use current wall clock time */);
     }
-    hdaR3StreamPeriodUnlock(pPeriod); /* Unlock before processing interrupt. */
 
     HDA_PROCESS_INTERRUPT(pDevIns, pThis);
 

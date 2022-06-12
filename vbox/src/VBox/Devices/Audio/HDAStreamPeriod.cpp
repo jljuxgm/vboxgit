@@ -1,4 +1,4 @@
-/* $Id: HDAStreamPeriod.cpp 87758 2021-02-15 12:14:09Z vboxsync $ */
+/* $Id: HDAStreamPeriod.cpp 87809 2021-02-19 16:05:53Z vboxsync $ */
 /** @file
  * HDAStreamPeriod.cpp - Stream period functions for HD Audio.
  *
@@ -222,39 +222,6 @@ void hdaR3StreamPeriodResume(PHDASTREAMPERIOD pPeriod)
     pPeriod->fStatus |= HDASTREAMPERIOD_F_ACTIVE;
 
     Log3Func(("[SD%RU8]\n", pPeriod->u8SD));
-}
-
-/**
- * Locks a stream period for serializing access.
- *
- * @returns IPRT status code (safe to ignore, asserted).
- * @param   pPeriod             Stream period to lock.
- */
-int hdaR3StreamPeriodLock(PHDASTREAMPERIOD pPeriod)
-{
-# ifdef HDA_STREAM_PERIOD_WITH_LOCKING
-    int rc = RTCritSectEnter(&pPeriod->CritSect);
-    AssertRC(rc);
-    return rc;
-# else
-    RT_NOREF(pPeriod);
-    return VINF_SUCCESS;
-# endif
-}
-
-/**
- * Unlocks a formerly locked stream period.
- *
- * @param   pPeriod             Stream period to unlock.
- */
-void hdaR3StreamPeriodUnlock(PHDASTREAMPERIOD pPeriod)
-{
-# ifdef HDA_STREAM_PERIOD_WITH_LOCKING
-    int rc2 = RTCritSectLeave(&pPeriod->CritSect);
-    AssertRC(rc2);
-# else
-    RT_NOREF(pPeriod);
-# endif
 }
 
 /**

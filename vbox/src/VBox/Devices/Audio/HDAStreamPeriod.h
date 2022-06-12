@@ -1,4 +1,4 @@
-/* $Id: HDAStreamPeriod.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: HDAStreamPeriod.h 87809 2021-02-19 16:05:53Z vboxsync $ */
 /** @file
  * HDAStreamPeriod.h - Stream period functions for HD Audio.
  */
@@ -98,8 +98,6 @@ int      hdaR3StreamPeriodBegin(PHDASTREAMPERIOD pPeriod, uint64_t u64WalClk);
 void     hdaR3StreamPeriodEnd(PHDASTREAMPERIOD pPeriod);
 void     hdaR3StreamPeriodPause(PHDASTREAMPERIOD pPeriod);
 void     hdaR3StreamPeriodResume(PHDASTREAMPERIOD pPeriod);
-int      hdaR3StreamPeriodLock(PHDASTREAMPERIOD pPeriod);
-void     hdaR3StreamPeriodUnlock(PHDASTREAMPERIOD pPeriod);
 uint64_t hdaR3StreamPeriodFramesToWalClk(PHDASTREAMPERIOD pPeriod, uint32_t uFrames);
 uint64_t hdaR3StreamPeriodGetAbsEndWalClk(PHDASTREAMPERIOD pPeriod);
 uint64_t hdaR3StreamPeriodGetAbsElapsedWalClk(PHDASTREAMPERIOD pPeriod);

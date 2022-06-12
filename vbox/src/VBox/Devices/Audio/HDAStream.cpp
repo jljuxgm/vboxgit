@@ -1,4 +1,4 @@
-/* $Id: HDAStream.cpp 87758 2021-02-15 12:14:09Z vboxsync $ */
+/* $Id: HDAStream.cpp 87809 2021-02-19 16:05:53Z vboxsync $ */
 /** @file
  * HDAStream.cpp - Stream functions for HD Audio.
  */
@@ -1098,7 +1098,6 @@ static int hdaR3StreamTransfer(PPDMDEVINS pDevIns, PHDASTATE pThis, PHDASTATER3 
     hdaR3StreamLock(pStreamR3);
 
     PHDASTREAMPERIOD pPeriod = &pStreamShared->State.Period;
-    hdaR3StreamPeriodLock(pPeriod);
 
     bool fProceed = true;
 
@@ -1121,7 +1120,6 @@ static int hdaR3StreamTransfer(PPDMDEVINS pDevIns, PHDASTATE pThis, PHDASTATER3 
 
     if (!fProceed)
     {
-        hdaR3StreamPeriodUnlock(pPeriod);
         hdaR3StreamUnlock(pStreamR3);
         return VINF_SUCCESS;
     }
@@ -1582,7 +1580,6 @@ static int hdaR3StreamTransfer(PPDMDEVINS pDevIns, PHDASTATE pThis, PHDASTATER3 
 
     LogFlowFuncLeave();
 
-    hdaR3StreamPeriodUnlock(pPeriod);
     hdaR3StreamUnlock(pStreamR3);
 
     return VINF_SUCCESS;
