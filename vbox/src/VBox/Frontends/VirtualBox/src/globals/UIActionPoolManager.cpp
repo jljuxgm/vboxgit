@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.cpp 85633 2020-08-06 10:35:19Z vboxsync $ */
+/* $Id: UIActionPoolManager.cpp 85634 2020-08-06 10:37:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class implementation.
  */
@@ -950,7 +950,6 @@ protected:
         {
             case 0:
             {
-                showMenu();
                 setName(QApplication::translate("UIActionPool", "S&tart"));
                 setStatusTip(QApplication::translate("UIActionPool", "Start selected virtual machines"));
                 setToolTip(simplifyText(text()) + (shortcut().isEmpty() ? QString() : QString(" (%1)").arg(shortcut().toString())));
@@ -958,7 +957,6 @@ protected:
             }
             case 1:
             {
-                hideMenu();
                 setName(QApplication::translate("UIActionPool", "S&how"));
                 setStatusTip(QApplication::translate("UIActionPool", "Switch to the windows of selected virtual machines"));
                 setToolTip(simplifyText(text()) + (shortcut().isEmpty() ? QString() : QString(" (%1)").arg(shortcut().toString())));
@@ -966,6 +964,17 @@ protected:
             }
             default:
                 break;
+        }
+    }
+
+    /** Handles state change. */
+    virtual void handleStateChange() /* override */
+    {
+        switch (state())
+        {
+            case 0: showMenu(); break;
+            case 1: hideMenu(); break;
+            default: break;
         }
     }
 };

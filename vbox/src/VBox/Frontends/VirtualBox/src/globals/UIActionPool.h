@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.h 85632 2020-08-06 10:00:46Z vboxsync $ */
+/* $Id: UIActionPool.h 85634 2020-08-06 10:37:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPool class declaration.
  */
@@ -53,7 +53,6 @@ enum UIActionType
     UIActionType_Menu,
     UIActionType_Simple,
     UIActionType_Toggle,
-    UIActionType_Polymorphic,
     UIActionType_PolymorphicMenu
 };
 
@@ -265,6 +264,9 @@ protected:
     /** Constructs action passing @a pParent to the base-class.
       * @param  enmType  Brings the action type. */
     UIAction(UIActionPool *pParent, UIActionType enmType, bool fMachineMenuAction = false);
+
+    /** Handles state change. */
+    virtual void handleStateChange() {}
 
     /** Returns current action name in menu. */
     QString nameInMenu() const;

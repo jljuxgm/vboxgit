@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.cpp 85632 2020-08-06 10:00:46Z vboxsync $ */
+/* $Id: UIActionPool.cpp 85634 2020-08-06 10:37:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPool class implementation.
  */
@@ -129,6 +129,7 @@ void UIAction::setState(int iState)
     m_iState = iState;
     updateIcon();
     retranslateUi();
+    handleStateChange();
 }
 
 void UIAction::setIcon(int iState, const QIcon &icon)
