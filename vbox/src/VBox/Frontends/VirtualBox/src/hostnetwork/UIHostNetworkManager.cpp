@@ -1,4 +1,4 @@
-/* $Id: UIHostNetworkManager.cpp 86233 2020-09-23 12:10:51Z vboxsync $ */
+/* $Id: UIHostNetworkManager.cpp 86928 2020-11-20 09:22:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHostNetworkManager class implementation.
  */
@@ -1048,6 +1048,8 @@ void UIHostNetworkManager::configureButtonBox()
     // for signals above, we should handle that stuff here again:
     button(ButtonType_Apply)->setVisible(gEDataManager->hostNetworkManagerDetailsExpanded());
     button(ButtonType_Reset)->setVisible(gEDataManager->hostNetworkManagerDetailsExpanded());
+
+    configureButtonBoxHelpButton("networkingdetails");
 }
 
 void UIHostNetworkManager::finalize()

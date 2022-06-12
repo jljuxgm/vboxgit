@@ -1,4 +1,4 @@
-/* $Id: QIManagerDialog.h 86833 2020-11-09 12:26:26Z vboxsync $ */
+/* $Id: QIManagerDialog.h 86928 2020-11-20 09:22:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIManagerDialog class declaration.
  */
@@ -149,6 +149,9 @@ protected:
         /** Handles close @a pEvent. */
         virtual void closeEvent(QCloseEvent *pEvent) /* override */;
     /** @} */
+    /** Sets the property 'helptag' of the button box's help button to @param strHelpTag and
+      * sets up the appropirate connection. */
+    void configureButtonBoxHelpButton(const QString &strHelpTag);
 
 private:
 

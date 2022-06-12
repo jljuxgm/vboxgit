@@ -1,4 +1,4 @@
-/* $Id: UICloudProfileManager.cpp 86696 2020-10-23 17:31:51Z vboxsync $ */
+/* $Id: UICloudProfileManager.cpp 86928 2020-11-20 09:22:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudProfileManager class implementation.
  */
@@ -1007,6 +1007,8 @@ void UICloudProfileManager::configureButtonBox()
     // for signals above, we should handle that stuff here again:
     button(ButtonType_Apply)->setVisible(gEDataManager->cloudProfileManagerDetailsExpanded());
     button(ButtonType_Reset)->setVisible(gEDataManager->cloudProfileManagerDetailsExpanded());
+
+    configureButtonBoxHelpButton("ovf-cloud-profile-manager");
 }
 
 void UICloudProfileManager::finalize()

@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 86233 2020-09-23 12:10:51Z vboxsync $ */
+/* $Id: UIMediumManager.cpp 86928 2020-11-20 09:22:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class implementation.
  */
@@ -1721,6 +1721,7 @@ void UIMediumManager::configureButtonBox()
         /* Notify widget it has progress-bar: */
         widget()->setProgressBar(m_pProgressBar);
     }
+    configureButtonBoxHelpButton("vdis");
 }
 
 void UIMediumManager::finalize()
