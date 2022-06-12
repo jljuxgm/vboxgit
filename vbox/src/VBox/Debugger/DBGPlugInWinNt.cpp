@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInWinNt.cpp 86162 2020-09-18 07:12:13Z vboxsync $ */
+/* $Id: DBGPlugInWinNt.cpp 86163 2020-09-18 07:16:01Z vboxsync $ */
 /** @file
  * DBGPlugInWindows - Debugger and Guest OS Digger Plugin For Windows NT.
  */
@@ -371,7 +371,7 @@ static void dbgDiggerWinNtResolveKpcr(PDBGDIGGERWINNT pThis, PUVM pUVM)
 
                 rc = DBGFR3RegCpuQueryU32(pUVM, idCpu, DBGFREG_FS_BASE, &GCPtrKpcrBase);
                 if (   RT_SUCCESS(rc)
-                    && WINNT_VALID_ADDRESS(pThis, GCPtrKpcrBase))
+                    && WINNT32_VALID_ADDRESS(pThis, GCPtrKpcrBase))
                 {
                     /*
                      * Read the start of the KPCR (@todo Probably move this to a global header)
@@ -450,7 +450,7 @@ static void dbgDiggerWinNtResolveKpcr(PDBGDIGGERWINNT pThis, PUVM pUVM)
                 RTGCUINTPTR GCPtrTmp = 0;
                 rc = DBGFR3RegCpuQueryU64(pUVM, idCpu, DBGFREG_GS_BASE, &GCPtrTmp);
                 if (   RT_SUCCESS(rc)
-                    && !WINNT_VALID_ADDRESS(pThis, GCPtrTmp))
+                    && !WINNT64_VALID_ADDRESS(pThis, GCPtrTmp))
                 {
                     /*
                      * Could be a user address when we stopped the VM right in usermode,
@@ -460,7 +460,7 @@ static void dbgDiggerWinNtResolveKpcr(PDBGDIGGERWINNT pThis, PUVM pUVM)
                 }
 
                 if (   RT_SUCCESS(rc)
-                    && WINNT_VALID_ADDRESS(pThis, GCPtrTmp))
+                    && WINNT64_VALID_ADDRESS(pThis, GCPtrTmp))
                 {
                     LogFlow(("DigWinNt/KPCR[%u]: GS Base %RGv\n", idCpu, GCPtrTmp));
                     DBGFR3AddrFromFlat(pUVM, pKpcrAddr, GCPtrTmp);
