@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgConsole.cpp 87675 2021-02-10 11:45:30Z vboxsync $ */
+/* $Id: VBoxDbgConsole.cpp 87677 2021-02-10 11:57:49Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Console.
  */
@@ -389,7 +389,7 @@ VBoxDbgConsoleInput::VBoxDbgConsoleInput(QWidget *pParent/* = NULL*/, const char
 
     setEditable(true);
     setInsertPolicy(NoInsert);
-    setCompleter(nullptr);
+    setCompleter(0);
     setMaxCount(50);
     const QLineEdit *pEdit = lineEdit();
     if (pEdit)
