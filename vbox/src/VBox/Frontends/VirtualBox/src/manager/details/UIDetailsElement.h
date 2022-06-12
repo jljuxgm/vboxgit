@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElement.h 89101 2021-05-17 14:58:15Z vboxsync $ */
+/* $Id: UIDetailsElement.h 89250 2021-05-24 16:55:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement class declaration.
  */
@@ -350,14 +350,10 @@ private:
         /** Holds the text font. */
         QFont  m_textFont;
 
-        /** Holds the start default tone. */
-        int m_iDefaultToneStart;
-        /** Holds the final default tone. */
-        int m_iDefaultToneFinal;
-        /** Holds the start hover tone. */
-        int m_iHoverToneStart;
-        /** Holds the final hover tone. */
-        int m_iHoverToneFinal;
+        /** Holds the start default darkness. */
+        int m_iDefaultDarknessStart;
+        /** Holds the final default darkness. */
+        int m_iDefaultDarknessFinal;
 
         /** Holds whether element is hovered. */
         bool                m_fHovered;
