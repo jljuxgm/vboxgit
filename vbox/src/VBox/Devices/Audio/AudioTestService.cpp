@@ -1,4 +1,4 @@
-/* $Id: AudioTestService.cpp 89614 2021-06-11 06:34:13Z vboxsync $ */
+/* $Id: AudioTestService.cpp 89616 2021-06-11 06:43:13Z vboxsync $ */
 /** @file
  * AudioTestService - Audio test execution server.
  */
@@ -587,6 +587,8 @@ static int atsDoTestSetEnd(PATSSERVER pThis, PATSCLIENTINST pClient, PATSPKTHDR 
  * @returns VINF_SUCCESS on ACK, VERR_GENERAL_FAILURE on NACK,
  *          VERR_NET_NOT_CONNECTED on unknown response (sending a bable reply),
  *          or whatever atsRecvPkt returns.
+ * @param   pThis               The ATS instance.
+ * @param   pClient             The ATS client structure.
  * @param   pPktHdr             The original packet (for future use).
  */
 static int atsWaitForAck(PATSSERVER pThis, PATSCLIENTINST pClient, PATSPKTHDR pPktHdr)
