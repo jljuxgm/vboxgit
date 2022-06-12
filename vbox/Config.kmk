@@ -1,4 +1,4 @@
-# $Id: Config.kmk 88402 2021-04-07 14:48:44Z vboxsync $
+# $Id: Config.kmk 88421 2021-04-08 15:36:18Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -678,7 +678,7 @@ ifeq ($(KBUILD_TARGET),darwin)
  VBOX_WITH_COCOA_QT = 1
 endif
 # Enable the QHelp based help function in UI.
-if1of ($(KBUILD_TARGET), darwin linux win)
+if1of ($(KBUILD_TARGET), darwin linux solaris win)
  VBOX_WITH_QHELP_VIEWER = 1
 endif
 # VBox Ballooning Control frontend.
@@ -8209,7 +8209,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 88402 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 88421 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
