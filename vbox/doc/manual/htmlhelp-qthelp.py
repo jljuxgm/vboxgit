@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-# $Id: htmlhelp-qthelp.py 86680 2020-10-22 23:24:03Z vboxsync $
+# $Id: htmlhelp-qthelp.py 86707 2020-10-26 13:36:51Z vboxsync $
 ## @file
 # A python 2.x script to create a .qhp file outof a given htmlhelp
 # folder. Lots of things about the said folder is assumed. Please
@@ -220,7 +220,7 @@ def main(argv):
 
     out_xml_lines = ['<?xml version="1.0" encoding="UTF-8"?>', \
                      '<QtHelpProject version="1.0">' , \
-                     '<namespace>org.qt-project.simpletextviewer</namespace>', \
+                     '<namespace>org.virtualbox</namespace>', \
                      '<virtualFolder>doc</virtualFolder>', \
                      '<filterSection>']
     out_xml_lines += parse_toc(helphtmlfolder) + create_files_section(helphtmlfolder)
