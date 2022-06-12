@@ -1,4 +1,4 @@
-/* $Id: UIWizardAddCloudVM.cpp 83858 2020-04-20 14:13:40Z vboxsync $ */
+/* $Id: UIWizardAddCloudVM.cpp 84417 2020-05-20 16:07:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardAddCloudVM class implementation.
  */
@@ -90,7 +90,7 @@ bool UIWizardAddCloudVM::addCloudVMs()
         else
         {
             /* Show "Add cloud machine" progress: */
-            msgCenter().showModalProgressDialog(comProgress, tr("Add cloud machine ..."),
+            msgCenter().showModalProgressDialog(comProgress, QString(),
                                                 ":/progress_new_cloud_vm_90px.png", this, 0);
             /* Check for canceled progress: */
             if (comProgress.GetCanceled())

@@ -1,4 +1,4 @@
-/* $Id: UIWizardAddCloudVMPageBasic1.cpp 84362 2020-05-19 11:01:18Z vboxsync $ */
+/* $Id: UIWizardAddCloudVMPageBasic1.cpp 84417 2020-05-20 16:07:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardAddCloudVMPageBasic1 class implementation.
  */
@@ -307,7 +307,7 @@ void UIWizardAddCloudVMPage1::populateAccountInstances()
             }
 
             /* Show "Acquire cloud instances" progress: */
-            msgCenter().showModalProgressDialog(comProgress, UIWizardAddCloudVM::tr("Acquire cloud instances ..."),
+            msgCenter().showModalProgressDialog(comProgress, QString(),
                                                 ":/progress_reading_appliance_90px.png", 0, 0);
             if (!comProgress.isOk() || comProgress.GetResultCode() != 0)
             {
