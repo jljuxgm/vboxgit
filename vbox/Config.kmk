@@ -1,4 +1,4 @@
-# $Id: Config.kmk 88295 2021-03-25 21:50:10Z vboxsync $
+# $Id: Config.kmk 88302 2021-03-26 17:58:21Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1238,7 +1238,13 @@ endif
 # For the docs build box.
 #
 ifdef VBOX_ONLY_DOCS
- VBOX_WITH_DOCS_CHM = 1
+ # Phase out the .chm docs
+ VBOX_WITH_DOCS_CHM =
+ # Always produce HTML docs (for publishing on website as part of release)
+ VBOX_WITH_DOCS_HTML = 1
+ # Always produce QHelp docs (for help in the UI, replacing CHM)
+ VBOX_WITH_DOCS_QHELP = 1
+ VBOX_WITH_TOOLS_QT_LINUX = 1
 endif
 
 #
@@ -8201,7 +8207,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 88295 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 88302 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
