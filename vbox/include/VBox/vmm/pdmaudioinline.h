@@ -1,4 +1,4 @@
-/* $Id: pdmaudioinline.h 89423 2021-06-01 10:14:16Z vboxsync $ */
+/* $Id: pdmaudioinline.h 89446 2021-06-01 23:33:21Z vboxsync $ */
 /** @file
  * PDM - Audio Helpers, Inlined Code. (DEV,++)
  *
@@ -1040,6 +1040,7 @@ DECLINLINE(bool) PDMAudioPropsAreValid(PCPDMAUDIOPCMPROPS pProps)
     AssertPtrReturn(pProps, false);
 
     AssertReturn(pProps->cChannelsX != 0, false);
+    AssertReturn(pProps->cChannelsX <= PDMAUDIO_MAX_CHANNELS, false);
     AssertMsgReturn(   pProps->cbSampleX == 1 || pProps->cbSampleX == 2 || pProps->cbSampleX == 4  || (pProps->cbSampleX == 8 && pProps->fRaw),
                     ("%u\n", pProps->cbSampleX), false);
     AssertMsgReturn(pProps->cbFrame == pProps->cbSampleX * pProps->cChannelsX,
