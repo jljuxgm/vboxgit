@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageBasic3.h 87859 2021-02-24 13:01:12Z vboxsync $ */
+/* $Id: UIWizardNewVDPageBasic3.h 87874 2021-02-25 13:05:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageBasic3 class declaration.
  */
@@ -44,6 +44,7 @@ protected:
 
     /* Constructor: */
     UIWizardNewVDPage3(const QString &strDefaultName, const QString &strDefaultPath);
+    UIWizardNewVDPage3();
 
     /* Handlers: */
     void onSelectLocationButtonClicked();

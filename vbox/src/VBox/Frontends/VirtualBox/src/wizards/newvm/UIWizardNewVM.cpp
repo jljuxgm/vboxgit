@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 87872 2021-02-25 10:55:32Z vboxsync $ */
+/* $Id: UIWizardNewVM.cpp 87874 2021-02-25 13:05:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
@@ -82,13 +82,10 @@ void UIWizardNewVM::prepare()
     {
         case WizardMode_Basic:
         {
-            QString strDefaultDiskName;
-            QString strDefaultDiskPath;
-            qulonglong uDefaultSize = 0;
             setPage(Page1, new UIWizardNewVMPageBasic1(m_strGroup));
             setPage(Page2, new UIWizardNewVMPageBasic2);
             setPage(Page4, new UIWizardNewVMPageBasic4);
-            setPage(Page5, new UIWizardNewVMPageBasic5(strDefaultDiskName, strDefaultDiskPath, uDefaultSize));
+            setPage(Page5, new UIWizardNewVMPageBasic5);
             setPage(Page8, new UIWizardNewVMPageBasic8);
 
             setStartId(Page1);

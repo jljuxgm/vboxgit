@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageBasic3.cpp 87859 2021-02-24 13:01:12Z vboxsync $ */
+/* $Id: UIWizardNewVDPageBasic3.cpp 87874 2021-02-25 13:05:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageBasic3 class implementation.
  */
@@ -54,7 +54,15 @@ UIWizardNewVDPage3::UIWizardNewVDPage3(const QString &strDefaultName, const QStr
     , m_pLocationEditor(0)
     , m_pLocationOpenButton(0)
     , m_pEditorSize(0)
+{
+}
 
+UIWizardNewVDPage3::UIWizardNewVDPage3()
+    : m_uMediumSizeMin(_4M)
+    , m_uMediumSizeMax(uiCommon().virtualBox().GetSystemProperties().GetInfoVDSize())
+    , m_pLocationEditor(0)
+    , m_pLocationOpenButton(0)
+    , m_pEditorSize(0)
 {
 }
 
