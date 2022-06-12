@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 89570 2021-06-08 14:35:13Z vboxsync $ */
+/* $Id: DrvAudio.cpp 89583 2021-06-09 14:10:21Z vboxsync $ */
 /** @file
  * Intermediate audio driver - Connects the audio device emulation with the host backend.
  */
@@ -1617,11 +1617,12 @@ static int drvAudioStreamInitInternal(PDRVAUDIO pThis, PDRVAUDIOSTREAM pStreamEx
         Assert(pStreamEx->Out.offPreBuf == 0);
         if (pStreamEx->Core.Cfg.Backend.cFramesPreBuffering != 0)
         {
-            pStreamEx->Out.cbPreBufAlloc     = PDMAudioPropsFramesToBytes(&pStreamEx->Core.Cfg.Props,
-                                                                          pStreamEx->Core.Cfg.Backend.cFramesBufferSize - 2);
-            pStreamEx->Out.cbPreBufAlloc     = RT_MIN(RT_ALIGN_32(pStreamEx->cbPreBufThreshold + _8K, _4K),
-                                                      pStreamEx->Out.cbPreBufAlloc);
-            pStreamEx->Out.pbPreBuf          = (uint8_t *)RTMemAllocZ(pStreamEx->Out.cbPreBufAlloc);
+            uint32_t cbPreBufAlloc = PDMAudioPropsFramesToBytes(&pStreamEx->Core.Cfg.Props,
+                                                                pStreamEx->Core.Cfg.Backend.cFramesBufferSize);
+            cbPreBufAlloc = RT_MIN(RT_ALIGN_32(pStreamEx->cbPreBufThreshold + _8K, _4K), cbPreBufAlloc);
+            cbPreBufAlloc = PDMAudioPropsFloorBytesToFrame(&pStreamEx->Core.Cfg.Props, cbPreBufAlloc);
+            pStreamEx->Out.cbPreBufAlloc     = cbPreBufAlloc;
+            pStreamEx->Out.pbPreBuf          = (uint8_t *)RTMemAllocZ(cbPreBufAlloc);
             AssertReturn(pStreamEx->Out.pbPreBuf, VERR_NO_MEMORY);
         }
         pStreamEx->Out.enmPlayState          = DRVAUDIOPLAYSTATE_NOPLAY; /* Changed upon enable. */
