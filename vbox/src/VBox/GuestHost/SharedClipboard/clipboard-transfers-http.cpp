@@ -1,4 +1,4 @@
-/* $Id: clipboard-transfers-http.cpp 87066 2020-12-09 14:08:45Z vboxsync $ */
+/* $Id: clipboard-transfers-http.cpp 87067 2020-12-09 14:12:21Z vboxsync $ */
 /** @file
  * Shared Clipboard: HTTP server implementation for Shared Clipboard transfers on UNIX-y hosts.
  */
@@ -547,5 +547,18 @@ char *ShClTransferHttpServerGetUrlA(PSHCLHTTPSERVER pSrv, SHCLTRANSFERID idTrans
     shClTransferHttpServerUnlock(pSrv);
 
     return pszUrl;
+}
+
+/**
+ * Returns whether a given HTTP server instance is running or not.
+ *
+ * @returns \c true if running, or \c false if not.
+ * @param   pSrv                HTTP server instance to check running state for.
+ */
+bool ShClTransferHttpServerIsRunning(PSHCLHTTPSERVER pSrv)
+{
+    AssertPtrReturn(pSrv, false);
+
+    return (pSrv->hHTTPServer != NIL_RTHTTPSERVER); /* Seems enough for now. */
 }
 
