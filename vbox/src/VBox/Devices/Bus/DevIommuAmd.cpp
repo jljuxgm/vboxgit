@@ -1,4 +1,4 @@
-/* $Id: DevIommuAmd.cpp 88617 2021-04-21 02:56:01Z vboxsync $ */
+/* $Id: DevIommuAmd.cpp 88618 2021-04-21 03:00:39Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - AMD implementation.
  */
@@ -1010,6 +1010,7 @@ static void iommuAmdDteCacheRemove(PPDMDEVINS pDevIns, uint16_t idDevice)
 }
 
 
+# ifdef IN_RING3
 /**
  * Removes all entries in the device table entry cache.
  *
@@ -1023,6 +1024,7 @@ static void iommuAmdDteCacheRemoveAll(PPDMDEVINS pDevIns)
     RT_ZERO(pThis->aDteCache);
     IOMMU_UNLOCK_CACHE(pDevIns, pThis);
 }
+# endif  /* IN_RING3 */
 #endif  /* IOMMU_WITH_DTE_CACHE */
 
 
