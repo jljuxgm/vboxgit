@@ -1,4 +1,4 @@
-/* $Id: shellsort.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: shellsort.cpp 85896 2020-08-27 09:31:18Z vboxsync $ */
 /** @file
  * IPRT - RTSortShell and RTSortApvShell.
  */
@@ -38,7 +38,7 @@
 
 RTDECL(void) RTSortShell(void *pvArray, size_t cElements, size_t cbElement, PFNRTSORTCMP pfnCmp, void *pvUser)
 {
-    Assert(cbElement <= 32);
+    Assert(cbElement <= 128);
 
     /* Anything worth sorting? */
     if (cElements < 2)
