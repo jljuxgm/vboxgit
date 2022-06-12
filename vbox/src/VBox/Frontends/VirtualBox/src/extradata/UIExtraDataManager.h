@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 84990 2020-06-29 11:34:28Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 85035 2020-07-01 16:45:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -74,6 +74,9 @@ signals:
     void sigRuntimeUIShortcutChange();
     /** Notifies about Runtime UI host-key combination change. */
     void sigRuntimeUIHostKeyCombinationChange();
+
+    /** Notifies about Cloud Profile Manager restriction change. */
+    void sigCloudProfileManagerRestrictionChange();
 
     /** Notifies about VirtualBox Manager / Details pane categories change. */
     void sigDetailsCategoriesChange();
@@ -404,6 +407,11 @@ public:
 
     /** @name Cloud Profile Manager
       * @{ */
+        /** Returns Cloud Profile Manager restrictions. */
+        QStringList cloudProfileManagerRestrictions();
+        /** Defines Cloud Profile Manager @a restrictions. */
+        void setCloudProfileManagerRestrictions(const QStringList &restrictions);
+
         /** Returns whether Cloud Profile Manager details expanded. */
         bool cloudProfileManagerDetailsExpanded();
         /** Defines whether Cloud Profile Manager details @a fExpanded. */

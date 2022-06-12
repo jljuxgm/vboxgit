@@ -1,4 +1,4 @@
-/* $Id: UICloudProfileManager.h 85033 2020-07-01 16:27:40Z vboxsync $ */
+/* $Id: UICloudProfileManager.h 85035 2020-07-01 16:45:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudProfileManager class declaration.
  */
@@ -110,10 +110,16 @@ private slots:
 
     /** @name Tree-widget stuff.
       * @{ */
+        /** Handles request to load cloud stuff. */
+        void sltLoadCloudStuff() { loadCloudStuff(); }
+        /** Adjusts tree-widget according content. */
+        void sltPerformTableAdjustment();
         /** Handles tree-widget current item change. */
         void sltHandleCurrentItemChange();
         /** Handles context menu request for tree-widget @a position. */
         void sltHandleContextMenuRequest(const QPoint &position);
+        /** Handles tree-widget @a pItem change. */
+        void sltHandleItemChange(QTreeWidgetItem *pItem);
     /** @} */
 
 private:
@@ -160,6 +166,9 @@ private:
         void createItemForCloudProfile(QTreeWidgetItem *pParent, const UIDataCloudProfile &data, bool fChooseItem);
         /** Updates the passed tree-widget item on the basis of passed @a data, @a fChooseItem if requested. */
         void updateItemForCloudProfile(const UIDataCloudProfile &data, bool fChooseItem, UIItemCloudProfile *pItem);
+
+        /* Gathers a list of Cloud Profile Manager restrictions starting from @a pParentItem. */
+        QStringList gatherCloudProfileManagerRestrictions(QTreeWidgetItem *pParentItem);
     /** @} */
 
     /** @name General variables.

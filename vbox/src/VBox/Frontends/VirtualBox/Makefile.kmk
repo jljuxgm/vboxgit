@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 85013 2020-06-30 17:57:09Z vboxsync $
+# $Id: Makefile.kmk 85035 2020-07-01 16:45:17Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -927,6 +927,7 @@ UICommon_QT_MOCHDRS.darwin += \
 # Sources containing local definitions of classes that use the Q_OBJECT macro.
 #
 VirtualBox_QT_MOCSRCS = \
+	src/cloud/profilemanager/UICloudProfileManager.cpp \
 	src/hostnetwork/UIHostNetworkManager.cpp \
 	src/manager/UIWelcomePane.cpp \
 	src/manager/chooser/UIChooserAbstractModel.cpp \

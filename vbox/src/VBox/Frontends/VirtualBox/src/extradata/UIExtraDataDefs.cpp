@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 84790 2020-06-11 10:30:36Z vboxsync $ */
+/* $Id: UIExtraDataDefs.cpp 85035 2020-07-01 16:45:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -110,6 +110,7 @@ const char *UIExtraDataDefs::GUI_VirtualMediaManager_Search_Widget_Expanded = "G
 const char *UIExtraDataDefs::GUI_HostNetworkManager_Details_Expanded = "GUI/HostNetworkManager/Details/Expanded";
 
 /* Cloud Profile Manager: */
+const char *UIExtraDataDefs::GUI_CloudProfileManager_Restrictions = "GUI/CloudProfileManager/Restrictions";
 const char *UIExtraDataDefs::GUI_CloudProfileManager_Details_Expanded = "GUI/CloudProfileManager/Details/Expanded";
 
 #ifdef VBOX_GUI_WITH_EXTRADATA_MANAGER_UI
