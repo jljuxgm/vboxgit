@@ -1,4 +1,4 @@
-/* $Id: logbackdoor.cpp 87149 2020-12-30 23:02:07Z vboxsync $ */
+/* $Id: logbackdoor.cpp 87199 2021-01-08 14:59:39Z vboxsync $ */
 /** @file
  * VirtualBox Runtime - Guest Backdoor Logging.
  */
@@ -93,6 +93,7 @@ RTDECL(void) RTLogWriteUser(const char *pch, size_t cb)
         ASMOutU8(RTLOG_DEBUG_PORT, *pau8);
 # else
     /** @todo port me */
+    RT_NOREF(pch, cb);
     RT_BREAKPOINT();
 # endif
 #endif /* !IN_GUEST_R3 */
