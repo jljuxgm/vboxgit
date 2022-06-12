@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 84971 2020-06-26 14:57:03Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 84991 2020-06-29 12:46:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -831,7 +831,7 @@ void UIVirtualBoxManager::sltPerformMachineMoveToSpecificGroup()
     AssertPtrReturnVoid(sender());
     QAction *pAction = qobject_cast<QAction*>(sender());
     AssertPtrReturnVoid(pAction);
-    m_pWidget->moveMachineToGroup(pAction->text());
+    m_pWidget->moveMachineToGroup(pAction->property("actual_group_name").toString());
 }
 
 void UIVirtualBoxManager::sltPerformStartOrShowMachine()
@@ -1982,7 +1982,15 @@ void UIVirtualBoxManager::updateMenuGroupMoveToGroup(QMenu *pMenu)
     if (!groups.isEmpty())
         pMenu->addSeparator();
     foreach (const QString &strGroupName, groups)
-        pMenu->addAction(strGroupName, this, &UIVirtualBoxManager::sltPerformMachineMoveToSpecificGroup);
+    {
+        QString strVisibleGroupName = strGroupName;
+        if (strVisibleGroupName.startsWith('/'))
+            strVisibleGroupName.remove(0, 1);
+        if (strVisibleGroupName.isEmpty())
+            strVisibleGroupName = QApplication::translate("UIActionPool", "[Root]", "group");
+        QAction *pAction = pMenu->addAction(strVisibleGroupName, this, &UIVirtualBoxManager::sltPerformMachineMoveToSpecificGroup);
+        pAction->setProperty("actual_group_name", strGroupName);
+    }
 }
 
 void UIVirtualBoxManager::updateMenuGroupClose(QMenu *)
@@ -2004,7 +2012,15 @@ void UIVirtualBoxManager::updateMenuMachineMoveToGroup(QMenu *pMenu)
     if (!groups.isEmpty())
         pMenu->addSeparator();
     foreach (const QString &strGroupName, groups)
-        pMenu->addAction(strGroupName, this, &UIVirtualBoxManager::sltPerformMachineMoveToSpecificGroup);
+    {
+        QString strVisibleGroupName = strGroupName;
+        if (strVisibleGroupName.startsWith('/'))
+            strVisibleGroupName.remove(0, 1);
+        if (strVisibleGroupName.isEmpty())
+            strVisibleGroupName = QApplication::translate("UIActionPool", "[Root]", "group");
+        QAction *pAction = pMenu->addAction(strVisibleGroupName, this, &UIVirtualBoxManager::sltPerformMachineMoveToSpecificGroup);
+        pAction->setProperty("actual_group_name", strGroupName);
+    }
 }
 
 void UIVirtualBoxManager::updateMenuMachineClose(QMenu *)
