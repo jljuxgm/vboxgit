@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic4.cpp 87914 2021-03-02 14:13:51Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic4.cpp 87915 2021-03-02 15:13:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic4 class implementation.
  */
@@ -379,12 +379,50 @@ bool UIWizardNewVMPageBasic4::isComplete() const
 bool UIWizardNewVMPageBasic4::validatePage()
 {
     bool fResult = true;
+
+    /* Make sure user really intents to creae a vm with no hard drive: */
     if (selectedDiskSource() == SelectedDiskSource_Empty)
     {
         /* Ask user about disk-less machine unless that's the recommendation: */
         if (!m_fRecommendedNoDisk)
-            fResult = msgCenter().confirmHardDisklessMachine(thisImp());
+        {
+            if (!msgCenter().confirmHardDisklessMachine(thisImp()))
+                return false;
+        }
     }
+    else if (selectedDiskSource() == SelectedDiskSource_New)
+    {
+        /* Check if the path we will be using for hard drive creation exists: */
+        const QString strMediumPath(fieldImp("mediumPath").toString());
+        fResult = !QFileInfo(strMediumPath).exists();
+        if (!fResult)
+        {
+            msgCenter().cannotOverwriteHardDiskStorage(strMediumPath, this);
+            return fResult;
+        }
+        /* Check FAT size limitation of the host hard drive: */
+        fResult = UIWizardNewVDPage3::checkFATSizeLimitation(fieldImp("mediumVariant").toULongLong(),
+                                                             fieldImp("mediumPath").toString(),
+                                                             fieldImp("mediumSize").toULongLong());
+        if (!fResult)
+        {
+            msgCenter().cannotCreateHardDiskStorageInFAT(strMediumPath, this);
+            return fResult;
+        }
+    }
+
+    startProcessing();
+    if (selectedDiskSource() == SelectedDiskSource_New)
+    {
+        /* Try to create the hard drive:*/
+        fResult = qobject_cast<UIWizardNewVM*>(wizard())->createVirtualDisk();
+        /*Don't show any error message here since UIWizardNewVM::createVirtualDisk already does so: */
+        if (!fResult)
+            return fResult;
+    }
+    fResult = qobject_cast<UIWizardNewVM*>(wizard())->createVM();
+    endProcessing();
+
     return fResult;
 }
 
