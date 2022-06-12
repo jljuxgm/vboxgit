@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioWasApi.cpp 88864 2021-05-04 16:40:24Z vboxsync $ */
+/* $Id: DrvHostAudioWasApi.cpp 88868 2021-05-04 17:55:52Z vboxsync $ */
 /** @file
  * Host audio driver - Windows Audio Session API.
  */
@@ -730,6 +730,7 @@ static int drvHostAudioWasCacheWaveFmtExToProps(PPDMAUDIOPCMPROPS pProps, WAVEFO
 /**
  * Destroys a devie config cache entry.
  *
+ * @param   pThis       The WASAPI host audio driver instance data.
  * @param   pDevCfg     Device config entry.  Must not be in the list.
  */
 static void drvHostAudioWasCacheDestroyDevConfig(PDRVHOSTAUDIOWAS pThis, PDRVHOSTAUDIOWASCACHEDEVCFG pDevCfg)
@@ -771,6 +772,7 @@ static void drvHostAudioWasCacheDestroyDevConfig(PDRVHOSTAUDIOWAS pThis, PDRVHOS
 /**
  * Destroys a device cache entry.
  *
+ * @param   pThis       The WASAPI host audio driver instance data.
  * @param   pDevEntry   The device entry. Must not be in the cache!
  */
 static void drvHostAudioWasCacheDestroyDevEntry(PDRVHOSTAUDIOWAS pThis, PDRVHOSTAUDIOWASCACHEDEV pDevEntry)
