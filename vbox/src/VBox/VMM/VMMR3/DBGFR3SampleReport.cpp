@@ -1,4 +1,4 @@
-/* $Id: DBGFR3SampleReport.cpp 89698 2021-06-15 09:57:22Z vboxsync $ */
+/* $Id: DBGFR3SampleReport.cpp 89699 2021-06-15 10:13:10Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Sample report creation.
  */
@@ -590,8 +590,6 @@ VMMR3DECL(int) DBGFR3SampleReportCreate(PUVM pUVM, uint32_t cSampleIntervalUs, u
 
         *phSample = pThis;
         return VINF_SUCCESS;
-
-        MMR3HeapFree(pThis);
     }
     else
         rc = VERR_NO_MEMORY;
