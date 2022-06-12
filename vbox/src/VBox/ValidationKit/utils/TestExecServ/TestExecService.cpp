@@ -1,4 +1,4 @@
-/* $Id: TestExecService.cpp 84784 2020-06-11 07:28:56Z vboxsync $ */
+/* $Id: TestExecService.cpp 84785 2020-06-11 07:31:38Z vboxsync $ */
 /** @file
  * TestExecServ - Basic Remote Execution Service.
  */
@@ -1639,7 +1639,7 @@ static int txsDoReboot(PCTXSPKTHDR pPktHdr)
  * Verifies and acknowledges a "UUID" request.
  *
  * @returns IPRT status code.
- * @param   pPktHdr             The howdy packet.
+ * @param   pPktHdr             The UUID packet.
  */
 static int txsDoUuid(PCTXSPKTHDR pPktHdr)
 {
@@ -1663,7 +1663,7 @@ static int txsDoUuid(PCTXSPKTHDR pPktHdr)
  * Verifies and acknowledges a "BYE" request.
  *
  * @returns IPRT status code.
- * @param   pPktHdr             The howdy packet.
+ * @param   pPktHdr             The bye packet.
  */
 static int txsDoBye(PCTXSPKTHDR pPktHdr)
 {
@@ -1680,7 +1680,7 @@ static int txsDoBye(PCTXSPKTHDR pPktHdr)
  * Verifies and acknowledges a "VER" request.
  *
  * @returns IPRT status code.
- * @param   pPktHdr             The howdy packet.
+ * @param   pPktHdr             The version packet.
  */
 static int txsDoVer(PCTXSPKTHDR pPktHdr)
 {
@@ -3693,7 +3693,7 @@ static RTEXITCODE txsParseArgv(int argc, char **argv, bool *pfExit)
                 break;
 
             case 'V':
-                RTPrintf("$Revision: 84784 $\n");
+                RTPrintf("$Revision: 84785 $\n");
                 *pfExit = true;
                 return RTEXITCODE_SUCCESS;
 
