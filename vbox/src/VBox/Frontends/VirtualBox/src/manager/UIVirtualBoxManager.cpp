@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 88242 2021-03-22 12:20:10Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 88471 2021-04-12 13:50:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -2579,7 +2579,15 @@ void UIVirtualBoxManager::openAddMachineDialog(const QString &strFileName /* = Q
     /* No file specified: */
     if (strTmpFile.isEmpty())
     {
-        QString strBaseFolder = comVBox.GetSystemProperties().GetDefaultMachineFolder();
+        QString strBaseFolder;
+        if (currentItem() && currentItem()->toLocal())
+        {
+            QDir folder = QFileInfo(currentItem()->toLocal()->settingsFile()).absoluteDir();
+            folder.cdUp();
+            strBaseFolder = folder.absolutePath();
+        }
+        if (strBaseFolder.isEmpty())
+            strBaseFolder = comVBox.GetSystemProperties().GetDefaultMachineFolder();
         QString strTitle = tr("Select a virtual machine file");
         QStringList extensions;
         for (int i = 0; i < VBoxFileExts.size(); ++i)
