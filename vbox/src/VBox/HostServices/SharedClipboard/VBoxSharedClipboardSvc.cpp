@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc.cpp 87452 2021-01-27 17:11:25Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc.cpp 87566 2021-02-03 13:48:48Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Host service entry points.
  */
@@ -1694,9 +1694,7 @@ static int shClSvcClientReadData(PSHCLCLIENT pClient, uint32_t cParms, VBOXHGCMS
     {
         rc = ShClBackendReadData(pClient, &cmdCtx, uFormat, pvData, cbData, &cbActual);
         if (RT_SUCCESS(rc))
-        {
             LogRel2(("Shared Clipboard: Read host clipboard data (max %RU32 bytes), got %RU32 bytes\n", cbData, cbActual));
-        }
         else
             LogRel(("Shared Clipboard: Reading host clipboard data failed with %Rrc\n", rc));
     }
