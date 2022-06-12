@@ -1,4 +1,4 @@
-/* $Id: AudioTest.h 89014 2021-05-12 14:33:19Z vboxsync $ */
+/* $Id: AudioTest.h 89019 2021-05-12 16:45:37Z vboxsync $ */
 /** @file
  * Audio testing routines.
  * Common code which is being used by the ValidationKit audio test (VKAT)
@@ -135,7 +135,7 @@ typedef struct AUDIOTESTPARMS
     PDMAUDIOHOSTDEV         Dev;
     /** How much to delay (wait, in ms) the test being executed. */
     RTMSINTERVAL            msDelay;
-    /** The test direction.. */
+    /** The test direction. */
     PDMAUDIODIR             enmDir;
     /** The test type. */
     AUDIOTESTTYPE           enmType;
