@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.h 89104 2021-05-17 15:25:53Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.h 89105 2021-05-17 15:27:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class declaration.
  */
@@ -207,7 +207,7 @@ private:
 
     /** Holds the widget's embedding type. */
     const EmbedTo m_enmEmbedding;
-    /** Holds the action-pool reference. Wrapped around with QPointer  to avoid use-after-delete case during vm window close.*/
+    /** Holds the action-pool reference. Wrapped around with QPointer to avoid use-after-delete case during vm window close.*/
     QPointer<UIActionPool> m_pActionPool;
     /** Holds whether we should create/show toolbar. */
     const bool    m_fShowToolbar;
