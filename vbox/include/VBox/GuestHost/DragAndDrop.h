@@ -1,4 +1,4 @@
-/* $Id: DragAndDrop.h 85471 2020-07-27 18:03:06Z vboxsync $ */
+/* $Id: DragAndDrop.h 85538 2020-07-30 06:55:59Z vboxsync $ */
 /** @file
  * DnD - Shared functions between host and guest.
  */
@@ -303,7 +303,7 @@ typedef struct DNDTRANSFERLIST
 typedef DNDTRANSFERLIST *PDNDTRANSFERLIST;
 
 int DnDTransferListInit(PDNDTRANSFERLIST pList);
-int DnDTransferListInitEx(PDNDTRANSFERLIST pList, const char *pcszRootPathAbs);
+int DnDTransferListInitEx(PDNDTRANSFERLIST pList, const char *pcszRootPathAbs, DNDTRANSFERLISTFMT enmFmt);
 void DnDTransferListDestroy(PDNDTRANSFERLIST pList);
 void DnDTransferListReset(PDNDTRANSFERLIST pList);
 
