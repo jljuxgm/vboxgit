@@ -1,4 +1,4 @@
-/* $Id: UIHelpViewer.h 87642 2021-02-08 20:09:11Z vboxsync $ */
+/* $Id: UIHelpViewer.h 87656 2021-02-09 13:14:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class declaration.
  */
@@ -31,7 +31,8 @@
 class QHelpEngine;
 class UIFindInPageWidget;
 
-#if defined(RT_OS_LINUX) && (QT_VERSION >= QT_VERSION_CHECK(5, 9, 0))
+#ifdef VBOX_WITH_QHELP_VIEWER
+
 class UIHelpViewer : public QIWithRetranslateUI<QTextBrowser>
 {
     Q_OBJECT;
@@ -97,5 +98,5 @@ private:
     int m_iInitialFontPointSize;
 };
 
-#endif /* #if defined(RT_OS_LINUX) && (QT_VERSION >= QT_VERSION_CHECK(5, 9, 0)) */
+#endif /* #ifdef VBOX_WITH_QHELP_VIEWER */
 #endif /* !FEQT_INCLUDED_SRC_helpbrowser_UIHelpViewer_h */

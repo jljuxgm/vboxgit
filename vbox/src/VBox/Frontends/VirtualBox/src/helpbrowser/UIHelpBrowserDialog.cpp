@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserDialog.cpp 87642 2021-02-08 20:09:11Z vboxsync $ */
+/* $Id: UIHelpBrowserDialog.cpp 87656 2021-02-09 13:14:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserDialog class implementation.
  */
@@ -58,7 +58,7 @@ UIHelpBrowserDialog::~UIHelpBrowserDialog()
 
 void UIHelpBrowserDialog::showHelpForKeyword(const QString &strKeyword)
 {
-#if defined(RT_OS_LINUX) && (QT_VERSION >= QT_VERSION_CHECK(5, 9, 0))
+#ifdef VBOX_WITH_QHELP_VIEWER
     if (m_pWidget)
         m_pWidget->showHelpForKeyword(strKeyword);
 #else
@@ -68,7 +68,7 @@ void UIHelpBrowserDialog::showHelpForKeyword(const QString &strKeyword)
 
 void UIHelpBrowserDialog::retranslateUi()
 {
-#if defined(RT_OS_LINUX) && (QT_VERSION >= QT_VERSION_CHECK(5, 9, 0))
+#ifdef VBOX_WITH_QHELP_VIEWER
     setWindowTitle(UIHelpBrowserWidget::tr("Oracle VM VirtualBox User Manual"));
 #endif
 }
@@ -76,7 +76,7 @@ void UIHelpBrowserDialog::retranslateUi()
 
 void UIHelpBrowserDialog::prepareCentralWidget()
 {
-#if defined(RT_OS_LINUX) && (QT_VERSION >= QT_VERSION_CHECK(5, 9, 0))
+#ifdef VBOX_WITH_QHELP_VIEWER
     m_pWidget = new UIHelpBrowserWidget(EmbedTo_Dialog, m_strHelpFilePath);
     AssertPtrReturnVoid(m_pWidget);
 #ifdef VBOX_WS_MAC
