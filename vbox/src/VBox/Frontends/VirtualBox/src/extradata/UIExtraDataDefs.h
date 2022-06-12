@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 89324 2021-05-27 14:28:17Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 89688 2021-06-14 17:10:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -102,6 +102,8 @@ namespace UIExtraDataDefs
         SHARED_LIBRARY_STUFF extern const char *GUI_MaxGuestResolution;
         /** Holds whether hovered machine-window should be activated. */
         SHARED_LIBRARY_STUFF extern const char *GUI_ActivateHoveredMachineWindow;
+        /** Holds whether the host scrrn saver is disabled when a vm is running. */
+        SHARED_LIBRARY_STUFF extern const char *GUI_DisableHostScreenSaver;
     /** @} */
 
     /** @name Settings: Keyboard

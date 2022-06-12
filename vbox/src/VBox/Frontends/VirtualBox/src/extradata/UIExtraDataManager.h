@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 89295 2021-05-26 15:21:24Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 89688 2021-06-14 17:10:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -242,6 +242,10 @@ public:
         bool activateHoveredMachineWindow();
         /** Defines whether hovered machine-window should be @a fActivated. */
         void setActivateHoveredMachineWindow(bool fActivate);
+        /* Return whether host screen saver is disabled when a vm is running. */
+        bool disableHostScreenSaver();
+        /* Sets whether host screen saver is disabled when a vm is running. */
+        void setDisableHostScreenSaver(bool fActivate);
     /** @} */
 
     /** @name Settings: Keyboard

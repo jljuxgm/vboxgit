@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 89295 2021-05-26 15:21:24Z vboxsync $ */
+/* $Id: UIExtraDataDefs.cpp 89688 2021-06-14 17:10:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -55,6 +55,7 @@ const char *UIExtraDataDefs::GUI_LanguageID = "GUI/LanguageID";
 /* Settings: Display: */
 const char *UIExtraDataDefs::GUI_MaxGuestResolution = "GUI/MaxGuestResolution";
 const char *UIExtraDataDefs::GUI_ActivateHoveredMachineWindow = "GUI/ActivateHoveredMachineWindow";
+const char *UIExtraDataDefs::GUI_DisableHostScreenSaver = "GUI/DisableHostScreenSaver";
 
 /* Settings: Keyboard: */
 const char *UIExtraDataDefs::GUI_Input_SelectorShortcuts = "GUI/Input/SelectorShortcuts";

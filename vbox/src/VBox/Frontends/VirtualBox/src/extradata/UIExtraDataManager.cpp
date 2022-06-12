@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 89295 2021-05-26 15:21:24Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 89688 2021-06-14 17:10:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -1903,6 +1903,7 @@ QStringList UIExtraDataManagerWindow::knownExtraDataKeys()
            << GUI_RestrictedGlobalSettingsPages << GUI_RestrictedMachineSettingsPages
            << GUI_LanguageID
            << GUI_ActivateHoveredMachineWindow
+           << GUI_DisableHostScreenSaver
            << GUI_Input_SelectorShortcuts << GUI_Input_MachineShortcuts
            << GUI_RecentFolderHD << GUI_RecentFolderCD << GUI_RecentFolderFD
            << GUI_VISOCreator_RecentFolder
@@ -2500,6 +2501,18 @@ void UIExtraDataManager::setActivateHoveredMachineWindow(bool fActivate)
 {
     /* 'True' if feature allowed, null-string otherwise: */
     setExtraDataString(GUI_ActivateHoveredMachineWindow, toFeatureAllowed(fActivate));
+}
+
+bool UIExtraDataManager::disableHostScreenSaver()
+{
+    /* 'False' unless feature allowed: */
+    return isFeatureAllowed(GUI_DisableHostScreenSaver);
+}
+
+void UIExtraDataManager::setDisableHostScreenSaver(bool fActivate)
+{
+    /* 'True' if feature allowed, null-string otherwise: */
+    setExtraDataString(GUI_DisableHostScreenSaver, toFeatureAllowed(fActivate));
 }
 
 QString UIExtraDataManager::hostKeyCombination()
