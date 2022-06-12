@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 88037 2021-03-09 09:10:52Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 88727 2021-04-27 11:49:10Z vboxsync $ */
 /** @file
  * VBox storage devices - BusLogic SCSI host adapter BT-958.
  *
@@ -3855,7 +3855,7 @@ static DECLCALLBACK(void) buslogicR3Info(PPDMDEVINS pDevIns, PCDBGFINFOHLP pHlp,
     pHlp->pfnPrintf(pHlp, "%s#%d: %s ",
                     pDevIns->pReg->szName,
                     pDevIns->iInstance,
-                    pThis->uDevType >= RT_ELEMENTS(apszModels) ? "Uknown model" : apszModels[pThis->uDevType]);
+                    pThis->uDevType >= RT_ELEMENTS(apszModels) ? "Unknown model" : apszModels[pThis->uDevType]);
     if (pThis->uIsaIrq)
         pHlp->pfnPrintf(pHlp, "ISA I/O=%RTiop IRQ=%u ",
                         pThis->IOISABase,
