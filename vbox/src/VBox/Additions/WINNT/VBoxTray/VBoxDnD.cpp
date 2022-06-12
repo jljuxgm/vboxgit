@@ -1,4 +1,4 @@
-/* $Id: VBoxDnD.cpp 85694 2020-08-11 16:30:25Z vboxsync $ */
+/* $Id: VBoxDnD.cpp 85695 2020-08-11 16:39:54Z vboxsync $ */
 /** @file
  * VBoxDnD.cpp - Windows-specific bits of the drag and drop service.
  */
@@ -198,7 +198,7 @@ void VBoxDnDWnd::Destroy(void)
  * @param   pvUser                  Pointer to VBoxDnDWnd instance which
  *                                  is using the thread.
  */
-/*static*/ DECLCALLBACK(int) VBoxDnDWnd::Thread(RTTHREAD m_hThread, void *pvUser)
+/*static*/ DECLCALLBACK(int) VBoxDnDWnd::Thread(RTTHREAD hThread, void *pvUser)
 {
     AssertPtrReturn(pvUser, VERR_INVALID_POINTER);
 
@@ -304,7 +304,7 @@ void VBoxDnDWnd::Destroy(void)
     if (RT_SUCCESS(rc))
         m_pCtx->fStarted = true; /* Set started indicator on success. */
 
-    int rc2 = RTThreadUserSignal(m_hThread);
+    int rc2 = RTThreadUserSignal(hThread);
     bool fSignalled = RT_SUCCESS(rc2);
 
     if (RT_SUCCESS(rc))
@@ -343,7 +343,7 @@ void VBoxDnDWnd::Destroy(void)
 
     if (!fSignalled)
     {
-        rc2 = RTThreadUserSignal(m_hThread);
+        rc2 = RTThreadUserSignal(hThread);
         AssertRC(rc2);
     }
 
