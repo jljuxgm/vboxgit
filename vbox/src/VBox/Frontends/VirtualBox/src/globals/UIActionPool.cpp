@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.cpp 88834 2021-05-03 13:09:49Z vboxsync $ */
+/* $Id: UIActionPool.cpp 89093 2021-05-17 11:35:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPool class implementation.
  */
@@ -2310,7 +2310,7 @@ protected:
     }
 };
 
-/** Simple action extension, used as 'To VM Activity Oveview' action class. */
+/** Simple action extension, used as 'To VM Activity Overview' action class. */
 class UIActionMenuSelectorActivityToVMActivityOverview : public UIActionSimple
 {
     Q_OBJECT;
