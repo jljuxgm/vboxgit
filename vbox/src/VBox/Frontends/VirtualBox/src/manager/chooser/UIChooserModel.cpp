@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 86705 2020-10-26 13:12:07Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 86706 2020-10-26 13:22:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -1767,6 +1767,12 @@ QList<UIChooserItem*> UIChooserModel::createNavigationItemList(UIChooserItem *pI
 
 void UIChooserModel::buildTreeForMainRoot(bool fPreserveSelection /* = false */)
 {
+    /* This isn't safe if dragging is started and needs to be fixed properly,
+     * but for now we will just ignore build request: */
+    /// @todo Make sure D&D is safe on tree rebuild
+    if (m_pCurrentDragObject)
+        return;
+
     /* Remember scrolling location: */
     const int iScrollLocation = m_pRoot ? m_pRoot->toGroupItem()->scrollingValue() : 0;
 
