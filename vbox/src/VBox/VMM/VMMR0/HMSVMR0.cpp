@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 87606 2021-02-04 13:35:36Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 87751 2021-02-13 13:57:20Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -4381,7 +4381,7 @@ static void hmR0SvmPostRunGuest(PVMCPUCC pVCpu, PSVMTRANSIENT pSvmTransient, VBO
 
     STAM_PROFILE_ADV_STOP_START(&pVCpu->hm.s.StatInGC, &pVCpu->hm.s.StatPreExit, x);
     PVMCC pVM = pVCpu->CTX_SUFF(pVM);
-    TMNotifyEndOfExecution(pVM, pVCpu);                         /* Notify TM that the guest is no longer running. */
+    TMNotifyEndOfExecution(pVM, pVCpu, uHostTsc);               /* Notify TM that the guest is no longer running. */
     VMCPU_SET_STATE(pVCpu, VMCPUSTATE_STARTED_HM);
 
     Assert(!(ASMGetFlags() & X86_EFL_IF));
