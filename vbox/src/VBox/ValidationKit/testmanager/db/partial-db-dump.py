@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: partial-db-dump.py 86987 2020-11-26 14:25:20Z vboxsync $
+# $Id: partial-db-dump.py 86989 2020-11-26 14:27:25Z vboxsync $
 # pylint: disable=line-too-long
 
 """
@@ -28,7 +28,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 86987 $"
+__version__ = "$Revision: 86989 $"
 
 # Standard python imports
 import sys;
@@ -90,7 +90,6 @@ class PartialDbDump(object): # pylint: disable=too-few-public-methods
         'FailureCategories',
         'FailureReasons',
         'GlobalResources',
-        'TestBoxStrTab',
         'Testcases',
         'TestcaseArgs',
         'TestcaseDeps',
