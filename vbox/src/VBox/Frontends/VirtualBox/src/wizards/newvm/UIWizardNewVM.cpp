@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 87916 2021-03-02 15:21:30Z vboxsync $ */
+/* $Id: UIWizardNewVM.cpp 87932 2021-03-03 09:49:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
@@ -24,7 +24,6 @@
 #include "UIWizardNewVM.h"
 #include "UIWizardNewVMPageBasic1.h"
 #include "UIWizardNewVMPageBasic2.h"
-#include "UIWizardNewVMPageBasic5.h"
 #include "UIWizardNewVMPageBasic3.h"
 #include "UIWizardNewVMPageBasic4.h"
 #include "UIWizardNewVMPageExpert.h"
