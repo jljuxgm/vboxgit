@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.h 84870 2020-06-18 10:59:54Z vboxsync $ */
+/* $Id: UIWizardNewVM.h 84886 2020-06-21 15:03:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class declaration.
  */
@@ -72,7 +72,7 @@ protected:
     bool attachDefaultDevices(const CGuestOSType &comGuestType);
 
     /* Who will be able to create virtual-machine: */
-    friend class UIWizardNewVMPageBasic3;
+    friend class UIWizardNewVMPageBasicDisk;
     friend class UIWizardNewVMPageExpert;
 
 private slots:
