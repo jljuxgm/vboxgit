@@ -1,4 +1,4 @@
-/* $Id: PDMR0DevHlp.cpp 84809 2020-06-12 06:49:41Z vboxsync $ */
+/* $Id: PDMR0DevHlp.cpp 84823 2020-06-15 06:58:36Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, R0 Device Helper parts.
  */
@@ -48,6 +48,7 @@
 *********************************************************************************************************************************/
 RT_C_DECLS_BEGIN
 extern DECLEXPORT(const PDMDEVHLPR0)    g_pdmR0DevHlp;
+extern DECLEXPORT(const PDMDEVHLPR0)    g_pdmR0DevHlpTracing;
 extern DECLEXPORT(const PDMPICHLP)      g_pdmR0PicHlp;
 extern DECLEXPORT(const PDMIOAPICHLP)   g_pdmR0IoApicHlp;
 extern DECLEXPORT(const PDMPCIHLPR0)    g_pdmR0PciHlp;
