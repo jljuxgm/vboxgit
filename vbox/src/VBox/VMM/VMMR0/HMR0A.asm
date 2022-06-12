@@ -1,4 +1,4 @@
-; $Id: HMR0A.asm 87606 2021-02-04 13:35:36Z vboxsync $
+; $Id: HMR0A.asm 87741 2021-02-12 16:37:50Z vboxsync $
 ;; @file
 ; HM - Ring-0 VMX, SVM world-switch and helper routines.
 ;
@@ -1031,6 +1031,10 @@ GLOBALNAME RT_CONCAT(hmR0VmxStartVmHostRIP,%1)
  %undef frm_guest_rax
  %undef cbFrame
 ENDPROC RT_CONCAT(hmR0VmxStartVm,%1)
+ %ifdef ASM_FORMAT_ELF
+size NAME(RT_CONCAT(hmR0VmxStartVmHostRIP,%1))  NAME(RT_CONCAT(hmR0VmxStartVm,%1) %+ _EndProc) - NAME(RT_CONCAT(hmR0VmxStartVmHostRIP,%1))
+ %endif
+
 
 %endmacro ; hmR0VmxStartVmTemplate
 
