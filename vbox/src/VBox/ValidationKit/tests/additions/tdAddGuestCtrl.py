@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84931 $"
+__version__ = "$Revision: 84932 $"
 
 # Standard Python imports.
 import errno
@@ -1714,7 +1714,7 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
         # in turn will result in a (correct) error by the API. Simply skip this function then.
         if not oTest.sSrc:
             reporter.log2('Skipping guest file "%s"' % (limitString(oTest.sSrc)));
-            return True;
+            return fExpected;
 
         #
         # Do the copying.
@@ -1817,7 +1817,7 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
         # in turn will result in a (correct) error by the API. Simply skip this function then.
         if not oTest.sSrc:
             reporter.log2('Skipping guest dir "%s"' % (limitString(oTest.sSrc)));
-            return True;
+            return fExpected;
 
         #
         # Do the copying.
