@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: utils.py 84568 2020-05-27 15:06:29Z vboxsync $
+# $Id: utils.py 86588 2020-10-15 10:50:24Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84568 $"
+__version__ = "$Revision: 86588 $"
 
 
 # Standard Python imports.
@@ -830,6 +830,34 @@ def sudoProcessPopen(*aPositionalArgs, **dKeywordArgs):
     _sudoFixArguments(aPositionalArgs, dKeywordArgs);
     return processPopenSafe(*aPositionalArgs, **dKeywordArgs);
 
+
+def whichProgram(sName, sPath = None):
+    """
+    Works similar to the 'which' utility on unix.
+
+    Returns path to the given program if found.
+    Returns None if not found.
+    """
+    sHost = getHostOs();
+    sSep  = ';' if sHost in [ 'win', 'os2' ] else ':';
+
+    if sPath is None:
+        if sHost == 'win':
+            sPath = os.environ.get('Path', None);
+        else:
+            sPath = os.environ.get('PATH', None);
+        if sPath is None:
+            return None;
+
+    for sDir in sPath.split(sSep):
+        if sDir.strip() != '':
+            sTest = os.path.abspath(os.path.join(sDir, sName));
+        else:
+            sTest = os.path.abspath(sName);
+        if os.path.exists(sTest):
+            return sTest;
+
+    return None;
 
 #
 # Generic process stuff.
