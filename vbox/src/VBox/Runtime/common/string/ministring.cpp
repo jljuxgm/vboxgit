@@ -1,4 +1,4 @@
-/* $Id: ministring.cpp 83252 2020-03-10 17:29:40Z vboxsync $ */
+/* $Id: ministring.cpp 85160 2020-07-10 09:01:02Z vboxsync $ */
 /** @file
  * IPRT - Mini C++ string class.
  *
@@ -1143,21 +1143,21 @@ RTCString::join(const RTCList<RTCString, RTCString *> &a_rList,
                              "" /* a_rstrPrefix */, a_rstrSep);
 }
 
-const RTCString operator+(const RTCString &a_rStr1, const RTCString &a_rStr2)
+RTDECL(const RTCString) operator+(const RTCString &a_rStr1, const RTCString &a_rStr2)
 {
     RTCString strRet(a_rStr1);
     strRet += a_rStr2;
     return strRet;
 }
 
-const RTCString operator+(const RTCString &a_rStr1, const char *a_pszStr2)
+RTDECL(const RTCString) operator+(const RTCString &a_rStr1, const char *a_pszStr2)
 {
     RTCString strRet(a_rStr1);
     strRet += a_pszStr2;
     return strRet;
 }
 
-const RTCString operator+(const char *a_psz1, const RTCString &a_rStr2)
+RTDECL(const RTCString) operator+(const char *a_psz1, const RTCString &a_rStr2)
 {
     RTCString strRet(a_psz1);
     strRet += a_rStr2;

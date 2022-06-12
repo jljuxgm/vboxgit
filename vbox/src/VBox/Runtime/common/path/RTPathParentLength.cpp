@@ -1,4 +1,4 @@
-/* $Id: RTPathParentLength.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: RTPathParentLength.cpp 85160 2020-07-10 09:01:02Z vboxsync $ */
 /** @file
  * IPRT - RTPathParentLength
  */
@@ -86,7 +86,7 @@ RTDECL(size_t) RTPathParentLengthEx(const char *pszPath, uint32_t fFlags)
  * @note    Currently ignores UNC and may therefore return the server or
  *          double-slash prefix as parent.
  */
-size_t RTPathParentLength(const char *pszPath)
+RTDECL(size_t) RTPathParentLength(const char *pszPath)
 {
 #if RTPATH_STYLE == RTPATH_STR_F_STYLE_DOS
     return rtPathParentLengthStyleDos(pszPath, 0);

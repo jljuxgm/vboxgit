@@ -1,4 +1,4 @@
-/* $Id: dbgmodcontainer.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: dbgmodcontainer.cpp 85160 2020-07-10 09:01:02Z vboxsync $ */
 /** @file
  * IPRT - Debug Info Container.
  */
@@ -992,7 +992,7 @@ DECLHIDDEN(int) rtDbgModContainer_RemoveAll(PRTDBGMODINT pMod)
  * @param   cbSeg       The size of the initial segment. 0 if segments are to be
  *                      created manually later on.
  */
-int rtDbgModContainerCreate(PRTDBGMODINT pMod, RTUINTPTR cbSeg)
+DECLHIDDEN(int) rtDbgModContainerCreate(PRTDBGMODINT pMod, RTUINTPTR cbSeg)
 {
     PRTDBGMODCTN pThis = (PRTDBGMODCTN)RTMemAlloc(sizeof(*pThis));
     if (!pThis)
