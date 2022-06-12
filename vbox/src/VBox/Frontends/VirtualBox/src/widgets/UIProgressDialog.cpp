@@ -1,4 +1,4 @@
-/* $Id: UIProgressDialog.cpp 86161 2020-09-17 17:24:19Z vboxsync $ */
+/* $Id: UIProgressDialog.cpp 86198 2020-09-21 14:20:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIProgressDialog class implementation.
  */
@@ -551,7 +551,6 @@ UIProgress::UIProgress(CProgress &comProgress, QObject *pParent /* = 0 */)
     : QObject(pParent)
     , m_comProgress(comProgress)
     , m_pEventHandler(0)
-    , m_fEnded(false)
 {
     prepare();
 }

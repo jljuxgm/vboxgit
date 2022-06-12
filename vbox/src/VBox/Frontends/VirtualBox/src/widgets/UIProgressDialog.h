@@ -1,4 +1,4 @@
-/* $Id: UIProgressDialog.h 86161 2020-09-17 17:24:19Z vboxsync $ */
+/* $Id: UIProgressDialog.h 86198 2020-09-21 14:20:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIProgressDialog class declaration.
  */
@@ -227,9 +227,6 @@ private:
 
     /** Holds the progress event handler instance. */
     UIProgressEventHandler *m_pEventHandler;
-
-    /** Holds whether the progress has ended. */
-    bool  m_fEnded;
 
     /** Holds the personal event-loop instance. */
     QPointer<QEventLoop>  m_pEventLoop;
