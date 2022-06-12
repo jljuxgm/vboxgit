@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: partial-db-dump.py 86992 2020-11-26 14:58:19Z vboxsync $
+# $Id: partial-db-dump.py 86993 2020-11-26 15:00:58Z vboxsync $
 # pylint: disable=line-too-long
 
 """
@@ -28,7 +28,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 86992 $"
+__version__ = "$Revision: 86993 $"
 
 # Standard python imports
 import sys;
@@ -143,7 +143,7 @@ class PartialDbDump(object): # pylint: disable=too-few-public-methods
 
         enmCompression = zipfile.ZIP_DEFLATED;
         if self.oConfig.fLmza:
-            enmCompression = getattr(zipfile. 'ZIP_LZMA', zipfile.ZIP_DEFLATED);
+            enmCompression = getattr(zipfile, 'ZIP_LZMA', zipfile.ZIP_DEFLATED);
         oZipFile = zipfile.ZipFile(self.oConfig.sFilename, 'w', enmCompression);
 
         oDb.begin();
