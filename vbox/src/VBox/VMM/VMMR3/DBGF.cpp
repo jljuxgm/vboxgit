@@ -1,4 +1,4 @@
-/* $Id: DBGF.cpp 86098 2020-09-13 07:17:19Z vboxsync $ */
+/* $Id: DBGF.cpp 86099 2020-09-13 07:24:11Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility.
  */
@@ -925,6 +925,7 @@ static int dbgfR3CpuWait(PVMCPU pVCpu)
                             rc = VINF_EM_TERMINATE;
                             break;
                         default:
+                            rc = VERR_DBGF_IPE_1;
                             AssertMsgFailed(("%s\n", VMGetStateName(enmState)));
                     }
                 }
