@@ -1,4 +1,4 @@
-/* $Id: D3DFeatureLevel.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: D3DFeatureLevel.cpp 85057 2020-07-03 19:19:05Z vboxsync $ */
 /** @file
  * ????
  */
@@ -26,7 +26,8 @@
 
 int main(int argc, char *argv[])
 {
-    HRESULT rc;
+    (void)argc, argv;
+
     D3D_FEATURE_LEVEL iFeatureLevelMax = static_cast<D3D_FEATURE_LEVEL>(0);
 
     /* The list of feature levels we're selecting from. */
@@ -39,10 +40,10 @@ int main(int argc, char *argv[])
         D3D_FEATURE_LEVEL_9_1
     };
 
-    rc = D3D11CreateDevice(NULL, D3D_DRIVER_TYPE_HARDWARE, NULL, 0, aiFeatureLevels,
+    HRESULT rc = D3D11CreateDevice(NULL, D3D_DRIVER_TYPE_HARDWARE, NULL, 0, aiFeatureLevels,
         ARRAYSIZE(aiFeatureLevels), D3D11_SDK_VERSION, NULL, &iFeatureLevelMax, NULL);
 
-    printf("Maximum supported feature level: 0x%X, hr=0x%X.\n", iFeatureLevelMax, rc);
+    printf("Maximum supported feature level: 0x%X, hr=0x%X.\n", iFeatureLevelMax, (unsigned int)rc);
 
     return rc;
 }
