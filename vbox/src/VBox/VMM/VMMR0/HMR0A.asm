@@ -1,4 +1,4 @@
-; $Id: HMR0A.asm 87451 2021-01-27 10:47:54Z vboxsync $
+; $Id: HMR0A.asm 87456 2021-01-28 12:11:20Z vboxsync $
 ;; @file
 ; HM - Ring-0 VMX, SVM world-switch and helper routines.
 ;
@@ -19,6 +19,7 @@
 ;*  Header Files                                                                                                                 *
 ;*********************************************************************************************************************************
 ;%define RT_ASM_WITH_SEH64  - trouble with SEH, alignment and (probably) 2nd pass optimizations.
+%define RT_ASM_WITH_SEH64_ALT ; Use asmdefs.mac hackery for manually emitting unwind info.
 %include "VBox/asmdefs.mac"
 %include "VBox/err.mac"
 %include "VBox/vmm/hm_vmx.mac"
@@ -760,7 +761,8 @@ BEGINPROC RT_CONCAT(hmR0VmxStartVm,%1)
   %assign cbFrame             0f0h
  %endif
  %assign cbBaseFrame         cbFrame
-        sub     rsp, cbFrame - 8
+        sub     rsp, cbFrame - 8h
+        SEH64_ALLOCATE_STACK cbFrame
 
         ; Save all general purpose host registers.
         PUSH_CALLEE_PRESERVED_REGISTERS

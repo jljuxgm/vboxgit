@@ -1,4 +1,4 @@
-; $Id: VMMR0JmpA-amd64.asm 82968 2020-02-04 10:35:17Z vboxsync $
+; $Id: VMMR0JmpA-amd64.asm 87456 2021-01-28 12:11:20Z vboxsync $
 ;; @file
 ; VMM - R0 SetJmp / LongJmp routines for AMD64.
 ;
@@ -18,7 +18,7 @@
 ;*******************************************************************************
 ;* Header Files                                                                *
 ;*******************************************************************************
-%define RT_ASM_WITH_SEH64
+%define RT_ASM_WITH_SEH64_ALT
 %include "VBox/asmdefs.mac"
 %include "VMMInternal.mac"
 %include "VBox/err.mac"
@@ -55,9 +55,9 @@ BEGINCODE
 ; @param    pvUser1 msc:r8  gcc:rdx x86:[esp+0x0c]     The argument of that function.
 ; @param    pvUser2 msc:r9  gcc:rcx x86:[esp+0x10]     The argument of that function.
 ;
-BEGINPROC vmmR0CallRing3SetJmp
 GLOBALNAME vmmR0CallRing3SetJmp2
 GLOBALNAME vmmR0CallRing3SetJmpEx
+BEGINPROC vmmR0CallRing3SetJmp
     ;
     ; Save the registers.
     ;
