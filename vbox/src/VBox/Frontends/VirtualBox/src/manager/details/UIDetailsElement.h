@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElement.h 86226 2020-09-22 17:08:09Z vboxsync $ */
+/* $Id: UIDetailsElement.h 89100 2021-05-17 14:48:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement class declaration.
  */
@@ -322,8 +322,6 @@ private:
       * @{ */
         /** Paints background using specified @a pPainter and certain @a pOptions. */
         void paintBackground(QPainter *pPainter, const QStyleOptionGraphicsItem *pOptions) const;
-        /** Paints frame using passed @a pPainter and certain @a pOptions. */
-        void paintFrame(QPainter *pPainter, const QStyleOptionGraphicsItem *pOptions) const;
         /** Paints element info using specified @a pPainter and certain @a pOptions. */
         void paintElementInfo(QPainter *pPainter, const QStyleOptionGraphicsItem *pOptions) const;
 
