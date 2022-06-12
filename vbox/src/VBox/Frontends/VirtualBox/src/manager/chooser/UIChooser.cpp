@@ -1,4 +1,4 @@
-/* $Id: UIChooser.cpp 84463 2020-05-22 14:53:47Z vboxsync $ */
+/* $Id: UIChooser.cpp 84512 2020-05-25 15:44:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooser class implementation.
  */
@@ -124,7 +124,7 @@ void UIChooser::disbandGroup()
     model()->disbandSelectedGroupItem();
 }
 
-void UIChooser::performGroupSorting()
+void UIChooser::sortGroup()
 {
     AssertPtrReturnVoid(model());
     model()->sortSelectedGroupItem();
