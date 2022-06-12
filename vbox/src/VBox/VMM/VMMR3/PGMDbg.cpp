@@ -1,4 +1,4 @@
-/* $Id: PGMDbg.cpp 86473 2020-10-07 17:30:25Z vboxsync $ */
+/* $Id: PGMDbg.cpp 86523 2020-10-11 18:11:35Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - Debugger & Debugging APIs.
  */
@@ -20,7 +20,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_PGM
-/** @todo #define VBOX_WITHOUT_PAGING_BIT_FIELDS - not so important here, should only be reading for debugging purposes. */
+/** @todo define VBOX_WITHOUT_PAGING_BIT_FIELDS - not so important here, should only be reading for debugging purposes. */
 #include <VBox/vmm/pgm.h>
 #include <VBox/vmm/stam.h>
 #include "PGMInternal.h"
