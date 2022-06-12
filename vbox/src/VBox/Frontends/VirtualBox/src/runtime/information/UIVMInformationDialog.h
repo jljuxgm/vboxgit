@@ -1,4 +1,4 @@
-/* $Id: UIVMInformationDialog.h 88741 2021-04-27 19:48:59Z vboxsync $ */
+/* $Id: UIVMInformationDialog.h 88771 2021-04-29 09:47:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMInformationDialog class declaration.
  */
@@ -65,7 +65,8 @@ public:
 protected:
 
     /** Handles translation event. */
-    void retranslateUi();
+    void retranslateUi() /* override */;
+    void closeEvent(QCloseEvent *pEvent) /* override */;
 
 private slots:
 
@@ -101,6 +102,7 @@ private:
     /** Holds the machine-window reference. */
     UIMachineWindow              *m_pMachineWindow;
     /** @} */
+    bool m_fCloseEmitted;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_runtime_information_UIVMInformationDialog_h */
