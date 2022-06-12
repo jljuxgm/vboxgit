@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-darwin.cpp 85984 2020-09-01 17:05:38Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-darwin.cpp 85989 2020-09-02 07:32:23Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Mac OS X host.
  */
@@ -203,6 +203,7 @@ int ShClBackendFormatAnnounce(PSHCLCLIENT pClient, SHCLFORMATS fFormats)
     LogFlowFunc(("fFormats=%02X\n", fFormats));
 
     /** @todo r=bird: BUGBUG: The following is probably a mistake. */
+    /** @todo r=andy: BUGBUG: Has been there since forever; needs investigation first before removing. */
     if (fFormats == VBOX_SHCL_FMT_NONE)
     {
         /* This is just an automatism, not a genuine announcement */
