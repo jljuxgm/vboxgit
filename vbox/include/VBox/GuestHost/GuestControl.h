@@ -1,4 +1,4 @@
-/* $Id: GuestControl.h 84732 2020-06-09 07:15:54Z vboxsync $ */
+/* $Id: GuestControl.h 84816 2020-06-12 12:53:12Z vboxsync $ */
 /** @file
  * Guest Control - Common Guest and Host Code.
  *
@@ -132,6 +132,16 @@ enum eProcessStatus
 #define PATHRENAME_FLAG_NO_SYMLINKS         RT_BIT(1)
 /** Mask of valid flags. */
 #define PATHRENAME_FLAG_VALID_MASK          UINT32_C(0x00000003)
+/** @} */
+
+/** @name SHUTDOWN_FLAG_XXX - Guest shutdown flags.
+ * Must match Main's GuestShutdownFlag_ definitions.
+ * @{
+ */
+#define SHUTDOWN_FLAG_NONE                  UINT32_C(0)
+#define SHUTDOWN_FLAG_POWER_OFF             RT_BIT(0)
+#define SHUTDOWN_FLAG_REBOOT                RT_BIT(1)
+#define SHUTDOWN_FLAG_FORCE                 RT_BIT(2)
 /** @} */
 
 /** @name Defines for default (initial) guest process buffer lengths.

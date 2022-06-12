@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlSession.cpp 84814 2020-06-12 12:43:02Z vboxsync $ */
+/* $Id: VBoxServiceControlSession.cpp 84816 2020-06-12 12:53:12Z vboxsync $ */
 /** @file
  * VBoxServiceControlSession - Guest session handling. Also handles the spawned session processes.
  */
@@ -1020,13 +1020,13 @@ static int vgsvcGstCtrlSessionHandleShutdown(PVBOXSERVICECTRLSESSION pSession, P
         {
             int fSystemShutdown = RTSYSTEM_SHUTDOWN_PLANNED;
 
-            /* Translate GuestShutdownFlag_XXX into RTSYSTEM_SHUTDOWN_ flags. */
-            if (fAction & GuestShutdownFlag_Reboot)
+            /* Translate SHUTDOWN_FLAG_ into RTSYSTEM_SHUTDOWN_ flags. */
+            if (fAction & SHUTDOWN_FLAG_REBOOT)
                 fSystemShutdown |= RTSYSTEM_SHUTDOWN_REBOOT;
-            else
+            else /* SHUTDOWN_FLAG_POWER_OFF */
                 fSystemShutdown |= RTSYSTEM_SHUTDOWN_POWER_OFF;
 
-            if (fAction & GuestShutdownFlag_Force)
+            if (fAction & SHUTDOWN_FLAG_FORCE)
                 fSystemShutdown |= RTSYSTEM_SHUTDOWN_FORCE;
 
             rc = RTSystemShutdown(0 /*cMsDelay*/, fSystemShutdown, "VBoxService");
