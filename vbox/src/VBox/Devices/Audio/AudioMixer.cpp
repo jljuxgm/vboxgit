@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 88944 2021-05-08 13:29:43Z vboxsync $ */
+/* $Id: AudioMixer.cpp 88945 2021-05-08 20:12:07Z vboxsync $ */
 /** @file
  * Audio mixing routines for multiplexing audio sources in device emulations.
  *
@@ -90,6 +90,10 @@
 #include <iprt/semaphore.h>
 #include <iprt/string.h>
 #include <iprt/thread.h>
+
+#ifdef VBOX_WITH_DTRACE
+# include "dtrace/VBoxDD.h"
+#endif
 
 
 /*********************************************************************************************************************************
