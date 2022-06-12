@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA-cmd.cpp 88787 2021-04-29 15:51:13Z vboxsync $ */
+/* $Id: DevVGA-SVGA-cmd.cpp 88788 2021-04-29 15:59:09Z vboxsync $ */
 /** @file
  * VMware SVGA device - implementation of VMSVGA commands.
  */
@@ -878,6 +878,7 @@ static PVMSVGAMOB vmsvgaR3MobGet(PVMSVGAR3STATE pSvgaR3State, SVGAMobId RT_UNTRU
 
 /** Create a host ring-3 pointer to the MOB data.
  * Current approach is to allocate a host memory buffer and copy the guest MOB data if necessary.
+ * @param pSvgaR3State R3 device state.
  * @param pMob     The MOB.
  * @param cbValid  How many bytes of the guest backing memory contain valid data.
  * @return VBox status.
