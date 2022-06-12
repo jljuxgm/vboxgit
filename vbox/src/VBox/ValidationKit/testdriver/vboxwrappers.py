@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 83401 2020-03-25 10:59:09Z vboxsync $
+# $Id: vboxwrappers.py 84926 2020-06-24 10:17:14Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 83401 $"
+__version__ = "$Revision: 84926 $"
 
 
 # Standard Python imports.
@@ -3468,7 +3468,7 @@ class AdditionsStatusTask(TdTaskBase):
                 reporter.errorXcpt();
                 return True;
             if enmRunLevel not in self.aenmWaitForRunLevels:
-                reporter.log2('AdditionsStatusTask/poll: enmRunLevel=%s not in %s' % (enmRunLevel, self.aenmWaitForRunLevels,));
+                reporter.log6('AdditionsStatusTask/poll: enmRunLevel=%s not in %s' % (enmRunLevel, self.aenmWaitForRunLevels,));
                 return False;
             reporter.log2('AdditionsStatusTask/poll: enmRunLevel=%s matched %s!' % (enmRunLevel, self.aenmWaitForRunLevels,));
 
