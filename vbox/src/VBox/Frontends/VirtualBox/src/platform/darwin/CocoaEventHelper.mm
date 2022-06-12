@@ -1,4 +1,4 @@
-/* $Id: CocoaEventHelper.mm 85333 2020-07-14 10:59:56Z vboxsync $ */
+/* $Id: CocoaEventHelper.mm 85334 2020-07-14 11:07:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Declarations of utility functions for handling Darwin Cocoa specific event handling tasks.
  */
@@ -215,7 +215,11 @@ void darwinPrintEvent(const char *pszPrefix, ConstNativeNSEventRef pEvent)
     NSUInteger fEventMask = [pEvent modifierFlags];
     NSWindow *pEventWindow = [pEvent window];
     NSInteger iEventWindow = [pEvent windowNumber];
+#if MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_12
+    NSGraphicsContext *pEventGraphicsContext = nil; /* NSEvent::context is deprecated and said to always return nil. */
+#else
     NSGraphicsContext *pEventGraphicsContext = [pEvent context];
+#endif
 
     printf("%s%p: Type=%lu Modifiers=%08lx pWindow=%p #Wnd=%ld pGraphCtx=%p %s\n",
            pszPrefix, (void*)pEvent, (unsigned long)enmEventType, (unsigned long)fEventMask, (void*)pEventWindow,
@@ -339,7 +343,11 @@ void darwinPostStrippedMouseEvent(ConstNativeNSEventRef pEvent)
                                        modifierFlags:0
                                            timestamp:[pEvent timestamp] // [NSDate timeIntervalSinceReferenceDate] ?
                                         windowNumber:[pEvent windowNumber]
+#if MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_12
+                                             context:nil /* NSEvent::context is deprecated and said to always return nil. */
+#else
                                              context:[pEvent context]
+#endif
                                          eventNumber:[pEvent eventNumber]
                                           clickCount:[pEvent clickCount]
                                             pressure:[pEvent pressure]];
