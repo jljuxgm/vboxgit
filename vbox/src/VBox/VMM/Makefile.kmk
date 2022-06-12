@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 84459 2020-05-22 12:55:07Z vboxsync $
+# $Id: Makefile.kmk 84485 2020-05-25 09:06:35Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -466,6 +466,9 @@ VMMR0_DEFS     += VBOX_WITH_TRIPLE_FAULT_HACK
  endif
  ifdef VBOX_WITH_IOMMU_AMD
 VMMR0_DEFS     += VBOX_WITH_IOMMU_AMD
+ endif
+ ifdef VBOX_WITH_DBGF_TRACING
+VMMR0_DEFS     += VBOX_WITH_DBGF_TRACING
  endif
  ifdef VBOX_WITH_RAW_MODE
 VMMR0_DEFS     += VBOX_WITH_RAW_MODE

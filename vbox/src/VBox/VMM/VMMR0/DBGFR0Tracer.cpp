@@ -1,4 +1,4 @@
-/* $Id: DBGFR0Tracer.cpp 84458 2020-05-22 12:51:49Z vboxsync $ */
+/* $Id: DBGFR0Tracer.cpp 84485 2020-05-25 09:06:35Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, R0 tracing part.
  */
@@ -26,10 +26,10 @@
 #include <VBox/vmm/vmm.h>
 
 #include <VBox/log.h>
-#include <VBox/errcore.h>
 #include <VBox/sup.h>
 #include <iprt/asm.h>
 #include <iprt/assert.h>
+#include <iprt/errcore.h>
 #include <iprt/ctype.h>
 #include <iprt/mem.h>
 #include <iprt/memobj.h>
