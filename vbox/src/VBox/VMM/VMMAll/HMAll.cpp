@@ -1,4 +1,4 @@
-/* $Id: HMAll.cpp 87543 2021-02-02 17:00:24Z vboxsync $ */
+/* $Id: HMAll.cpp 87547 2021-02-02 17:33:49Z vboxsync $ */
 /** @file
  * HM - All contexts.
  */
@@ -647,7 +647,7 @@ VMM_INT_DECL(bool) HMAreNestedPagingAndFullGuestExecEnabled(PVMCC pVM)
 {
     return HMIsEnabled(pVM)
         && CTX_EXPR(pVM->hm.s.fNestedPagingCfg, pVM->hmr0.s.fNestedPaging, RT_NOTHING)
-        && (   pVM->hm.s.vmx.fUnrestrictedGuest
+        && (   CTX_EXPR(pVM->hm.s.vmx.fUnrestrictedGuestCfg, pVM->hmr0.s.vmx.fUnrestrictedGuest, RT_NOTHING)
             || pVM->hm.s.svm.fSupported);
 }
 
