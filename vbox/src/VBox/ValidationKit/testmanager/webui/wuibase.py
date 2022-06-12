@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuibase.py 83430 2020-03-25 20:09:52Z vboxsync $
+# $Id: wuibase.py 84498 2020-05-25 13:00:24Z vboxsync $
 
 """
 Test Manager Web-UI - Base Classes.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 83430 $"
+__version__ = "$Revision: 84498 $"
 
 
 # Standard python imports.
@@ -633,7 +633,7 @@ class WuiDispatcherBase(object):
         # Relative timestamp. Validate and convert it to a fixed timestamp.
         #
         chSign = sValue[0];
-        (sValue, sError) = ModelDataBase.validateTs(sValue[1:]);
+        (sValue, sError) = ModelDataBase.validateTs(sValue[1:], fRelative = True);
         if sError is not None:
             raise WuiException('%s parameter "%s" ("%s") is invalid: %s' % (self._sAction, sName, sValue, sError));
         if sValue[-6] in ['-', '+']:
