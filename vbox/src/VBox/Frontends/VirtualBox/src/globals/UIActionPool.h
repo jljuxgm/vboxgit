@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.h 85572 2020-07-31 11:01:41Z vboxsync $ */
+/* $Id: UIActionPool.h 85610 2020-08-05 10:14:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPool class declaration.
  */
@@ -322,6 +322,14 @@ protected:
     UIActionMenu(UIActionPool *pParent,
                  const QString &strIcon = QString(),
                  const QString &strIconDisabled = QString());
+    /** Constructs menu action passing @a pParent to the base-class.
+      * @param  strIconNormal          Brings the normal-icon name.
+      * @param  strIconSmall           Brings the small-icon name.
+      * @param  strIconNormalDisabled  Brings the normal-disabled-icon name.
+      * @param  strIconSmallDisabled   Brings the small-disabled-icon name. */
+    UIActionMenu(UIActionPool *pParent,
+                 const QString &strIconNormal, const QString &strIconSmall,
+                 const QString &strIconNormalDisabled, const QString &strIconSmallDisabled);
     /** Constructs menu action passing @a pParent to the base-class.
       * @param  icon  Brings the icon. */
     UIActionMenu(UIActionPool *pParent,
