@@ -1,4 +1,4 @@
-/* $Id: UIDetailsWidgetNATNetwork.h 87276 2021-01-15 13:57:42Z vboxsync $ */
+/* $Id: UIDetailsWidgetNATNetwork.h 87277 2021-01-15 14:00:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsWidgetNATNetwork class declaration.
  */
@@ -33,6 +33,7 @@
 class QAbstractButton;
 class QCheckBox;
 class QLabel;
+class QLineEdit;
 class QRadioButton;
 class QIDialogButtonBox;
 class QILineEdit;
