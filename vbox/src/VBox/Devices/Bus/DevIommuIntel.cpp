@@ -1,4 +1,4 @@
-/* $Id: DevIommuIntel.cpp 89454 2021-06-02 08:00:30Z vboxsync $ */
+/* $Id: DevIommuIntel.cpp 89455 2021-06-02 08:05:34Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - Intel implementation.
  */
@@ -2430,15 +2430,15 @@ static DECLCALLBACK(int) iommuIntelMemAccess(PPDMDEVINS pDevIns, uint16_t idDevi
         uint8_t const fTtm = RT_BF_GET(uRtaddrReg, VTD_BF_RTADDR_REG_TTM);
         DMARMEMREQREMAP MemReqRemap;
         RT_ZERO(MemReqRemap);
-        MemReqRemap.Req.uDmaAddr    = uIova;
-        MemReqRemap.Req.cbDma       = cbIova;
-        MemReqRemap.Req.fReqPerm    = fReqPerm;
-        MemReqRemap.Req.idDevice    = idDevice;
-        MemReqRemap.Req.Pasid       = NIL_PCIPASID;
-        MemReqRemap.Req.enmAddrType = PCIADDRTYPE_UNTRANSLATED;
-        MemReqRemap.Req.enmReqType  = enmReqType;
-        MemReqRemap.fTtm                = fTtm;
-        MemReqRemap.Iotlbe.GCPhysBase   = NIL_RTGCPHYS;
+        MemReqRemap.Req.uDmaAddr      = uIova;
+        MemReqRemap.Req.cbDma         = cbIova;
+        MemReqRemap.Req.fReqPerm      = fReqPerm;
+        MemReqRemap.Req.idDevice      = idDevice;
+        MemReqRemap.Req.Pasid         = NIL_PCIPASID;
+        MemReqRemap.Req.enmAddrType   = PCIADDRTYPE_UNTRANSLATED;
+        MemReqRemap.Req.enmReqType    = enmReqType;
+        MemReqRemap.fTtm              = fTtm;
+        MemReqRemap.Iotlbe.GCPhysBase = NIL_RTGCPHYS;
 
         int rc;
         switch (fTtm)
@@ -2474,7 +2474,8 @@ static DECLCALLBACK(int) iommuIntelMemAccess(PPDMDEVINS pDevIns, uint16_t idDevi
         }
 
         *pcbContiguous = MemReqRemap.cbContiguous;
-        *pGCPhysSpa    = MemReqRemap.Iotlbe.GCPhysBase | DMAR_GET_PAGE_OFF_MASK(MemReqRemap.Iotlbe.cShift);
+        *pGCPhysSpa    = MemReqRemap.Iotlbe.GCPhysBase
+                       | (uIova & DMAR_GET_PAGE_OFF_MASK(MemReqRemap.Iotlbe.cShift));
         return rc;
     }
 
