@@ -1,4 +1,4 @@
-/* $Id: DBGCCmdHlp.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: DBGCCmdHlp.cpp 84653 2020-06-03 09:22:18Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Command Helpers.
  */
@@ -218,7 +218,7 @@ static DECLCALLBACK(size_t) dbgcFormatOutput(void *pvArg, const char *pachChars,
     PDBGC pDbgc = (PDBGC)pvArg;
     if (cbChars)
     {
-        int rc = pDbgc->pBack->pfnWrite(pDbgc->pBack, pachChars, cbChars, NULL);
+        int rc = pDbgc->pfnOutput(pDbgc->pvOutputUser, pachChars, cbChars);
         if (RT_SUCCESS(rc))
             pDbgc->chLastOutput = pachChars[cbChars - 1];
         else

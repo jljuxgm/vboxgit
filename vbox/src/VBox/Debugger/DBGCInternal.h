@@ -1,4 +1,4 @@
-/* $Id: DBGCInternal.h 84627 2020-06-01 20:13:57Z vboxsync $ */
+/* $Id: DBGCInternal.h 84653 2020-06-03 09:22:18Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Internal Header File.
  */
@@ -115,6 +115,18 @@ typedef struct DBGC
     DBGFINFOHLP         DbgfOutputHlp;
     /** Pointer to backend callback structure. */
     PDBGCBACK           pBack;
+
+    /**
+     * Output a bunch of characters.
+     *
+     * @returns VBox status code.
+     * @param   pvUser      Opaque user data from DBGC::pvOutputUser.
+     * @param   pachChars   Pointer to an array of utf-8 characters.
+     * @param   cbChars     Number of bytes in the character array pointed to by pachChars.
+     */
+    DECLR3CALLBACKMEMBER(int, pfnOutput, (void *pvUser, const char *pachChars, size_t cbChars));
+    /** Opqaue user data passed to DBGC::pfnOutput. */
+    void                *pvOutputUser;
 
     /** Pointer to the current VM. */
     PVM                 pVM;
@@ -586,6 +598,7 @@ int     dbgcRun(PDBGC pDbgc);
 int     dbgcProcessInput(PDBGC pDbgc, bool fNoExecute);
 void    dbgcDestroy(PDBGC pDbgc);
 
+const char *dbgcGetEventCtx(DBGFEVENTCTX enmCtx);
 
 DECLHIDDEN(int) dbgcGdbStubCreate(PUVM pUVM, PDBGCBACK pBack, unsigned fFlags);
 

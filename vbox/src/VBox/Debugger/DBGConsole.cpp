@@ -1,4 +1,4 @@
-/* $Id: DBGConsole.cpp 84627 2020-06-01 20:13:57Z vboxsync $ */
+/* $Id: DBGConsole.cpp 84653 2020-06-03 09:22:18Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console.
  */
@@ -587,7 +587,7 @@ int dbgcProcessInput(PDBGC pDbgc, bool fNoExecute)
  * @returns Read only string.
  * @param   enmCtx          The context.
  */
-static const char *dbgcGetEventCtx(DBGFEVENTCTX enmCtx)
+const char *dbgcGetEventCtx(DBGFEVENTCTX enmCtx)
 {
     switch (enmCtx)
     {
@@ -1088,6 +1088,15 @@ static int dbgcReadConfig(PDBGC pDbgc, PUVM pUVM)
 }
 
 
+/**
+ * @copdoc{DBGC,pfnOutput}
+ */
+static DECLCALLBACK(int) dbgcOutputNative(void *pvUser, const char *pachChars, size_t cbChars)
+{
+    PDBGC pDbgc = (PDBGC)pvUser;
+    return pDbgc->pBack->pfnWrite(pDbgc->pBack, pachChars, cbChars, NULL /*pcbWritten*/);
+}
+
 
 /**
  * Creates a a new instance.
@@ -1114,6 +1123,8 @@ int dbgcCreate(PDBGC *ppDbgc, PDBGCBACK pBack, unsigned fFlags)
 
     dbgcInitCmdHlp(pDbgc);
     pDbgc->pBack            = pBack;
+    pDbgc->pfnOutput        = dbgcOutputNative;
+    pDbgc->pvOutputUser     = pDbgc;
     pDbgc->pVM              = NULL;
     pDbgc->pUVM             = NULL;
     pDbgc->idCpu            = 0;
