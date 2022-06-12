@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 88132 2021-03-16 10:37:38Z vboxsync $ */
+/* $Id: TM.cpp 89283 2021-05-26 06:48:28Z vboxsync $ */
 /** @file
  * TM - Time Manager.
  */
@@ -4275,8 +4275,8 @@ static const char *tmR3GetTSCModeNameEx(TMTSCMODE enmMode)
 {
     switch (enmMode)
     {
-        case TMTSCMODE_REAL_TSC_OFFSET:    return "RealTscOffset";
-        case TMTSCMODE_VIRT_TSC_EMULATED:  return "VirtTscEmulated";
+        case TMTSCMODE_REAL_TSC_OFFSET:    return "RealTSCOffset";
+        case TMTSCMODE_VIRT_TSC_EMULATED:  return "VirtTSCEmulated";
         case TMTSCMODE_DYNAMIC:            return "Dynamic";
         case TMTSCMODE_NATIVE_API:         return "NativeApi";
         default:                           return "???";
