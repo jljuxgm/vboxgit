@@ -1,4 +1,4 @@
-/* $Id: Virtio_1_0.cpp 84779 2020-06-11 06:55:03Z vboxsync $ */
+/* $Id: Virtio_1_0.cpp 84780 2020-06-11 07:04:50Z vboxsync $ */
 /** @file
  * Virtio_1_0 - Virtio Common (PCI, feature & config mgt, queue mgt & proxy, notification mgt)
  */
@@ -238,6 +238,9 @@ DECLINLINE(void) virtioWriteUsedRingIdx(PPDMDEVINS pDevIns, PVIRTIOCORE pVirtio,
                           &uIdx, sizeof(uIdx));
 }
 
+
+#ifdef IN_RING3
+
 DECLINLINE(uint16_t) virtioReadUsedRingIdx(PPDMDEVINS pDevIns, PVIRTIOCORE pVirtio, uint16_t idxQueue)
 {
     uint16_t uIdx = 0;
@@ -247,8 +250,6 @@ DECLINLINE(uint16_t) virtioReadUsedRingIdx(PPDMDEVINS pDevIns, PVIRTIOCORE pVirt
                       &uIdx, sizeof(uIdx));
     return uIdx;
 }
-
-#ifdef IN_RING3
 
 DECLINLINE(uint16_t) virtioReadUsedRingFlags(PPDMDEVINS pDevIns, PVIRTIOCORE pVirtio, uint16_t idxQueue)
 {
