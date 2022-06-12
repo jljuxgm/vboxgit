@@ -1,4 +1,4 @@
-/* $Id: GuestDnDTargetImpl.cpp 85423 2020-07-23 08:12:42Z vboxsync $ */
+/* $Id: GuestDnDTargetImpl.cpp 85451 2020-07-24 08:45:54Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag'n drop target.
  */
@@ -660,6 +660,9 @@ HRESULT GuestDnDTarget::sendData(ULONG aScreenId, const com::Utf8Str &aFormat, c
             throw hr = E_FAIL;
         }
 
+        /* Drop write lock before creating thread. */
+        alock.release();
+
         /* This function delete pTask in case of exceptions,
          * so there is no need in the call of delete operator. */
         hr = pTask->createThreadWithType(RTTHREADTYPE_MAIN_WORKER);
@@ -677,6 +680,9 @@ HRESULT GuestDnDTarget::sendData(ULONG aScreenId, const com::Utf8Str &aFormat, c
 
     if (SUCCEEDED(hr))
     {
+        /* Re-acquire write lock. */
+        alock.acquire();
+
         m_DataBase.cTransfersPending++;
 
         hr = pResp->queryProgressTo(aProgress.asOutParam());

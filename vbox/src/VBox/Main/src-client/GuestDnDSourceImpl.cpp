@@ -1,4 +1,4 @@
-/* $Id: GuestDnDSourceImpl.cpp 85436 2020-07-23 13:39:13Z vboxsync $ */
+/* $Id: GuestDnDSourceImpl.cpp 85451 2020-07-24 08:45:54Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag and drop source.
  */
@@ -374,6 +374,9 @@ HRESULT GuestDnDSource::drop(const com::Utf8Str &aFormat, DnDAction_T aAction, C
             throw hr = E_FAIL;
         }
 
+        /* Drop write lock before creating thread. */
+        alock.release();
+
         /* This function delete pTask in case of exceptions,
          * so there is no need in the call of delete operator. */
         hr = pTask->createThreadWithType(RTTHREADTYPE_MAIN_WORKER);
@@ -391,6 +394,9 @@ HRESULT GuestDnDSource::drop(const com::Utf8Str &aFormat, DnDAction_T aAction, C
 
     if (SUCCEEDED(hr))
     {
+        /* Re-acquire write lock. */
+        alock.acquire();
+
         m_DataBase.cTransfersPending++;
 
         hr = pResp->queryProgressTo(aProgress.asOutParam());
