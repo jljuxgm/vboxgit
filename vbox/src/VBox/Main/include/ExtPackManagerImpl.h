@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.h 86057 2020-09-07 23:15:45Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.h 86058 2020-09-07 23:33:30Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -177,6 +177,10 @@ protected:
                                                    VBOXEXTPACK_IF_CS(IEventSource) *aSource,
                                                    /* VBoxEventType_T */ uint32_t aType, bool aWaitable,
                                                    VBOXEXTPACK_IF_CS(IEvent) **ppEventOut);
+    static DECLCALLBACK(uint32_t) i_hlpCreateVetoEvent(PCVBOXEXTPACKHLP pHlp,
+                                                       VBOXEXTPACK_IF_CS(IEventSource) *aSource,
+                                                       /* VBoxEventType_T */ uint32_t aType,
+                                                       VBOXEXTPACK_IF_CS(IVetoEvent) **ppEventOut);
     static DECLCALLBACK(int)    i_hlpReservedN(PCVBOXEXTPACKHLP pHlp);
     /** @}  */
 
