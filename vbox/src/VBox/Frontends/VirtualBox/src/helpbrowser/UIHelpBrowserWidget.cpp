@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.cpp 86829 2020-11-06 14:44:50Z vboxsync $ */
+/* $Id: UIHelpBrowserWidget.cpp 86830 2020-11-06 14:49:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class implementation.
  */
@@ -615,6 +615,7 @@ void UIHelpBrowserTab::sltCloseFindInPageWidget()
         m_pFindInPageAction->setChecked(false);
 }
 
+
 /*********************************************************************************************************************************
 *   UIHelpBrowserViewer implementation.                                                                                          *
 *********************************************************************************************************************************/
@@ -858,6 +859,7 @@ void UIHelpBrowserViewer::sltSelectNextMatch()
     if (m_pFindInPageWidget)
         m_pFindInPageWidget->setMatchCountAndCurrentIndex(m_matchedCursorPosition.size(), m_iSelectedMatchIndex);
 }
+
 
 /*********************************************************************************************************************************
 *   UIHelpBrowserTabManager definition.                                                                                          *
