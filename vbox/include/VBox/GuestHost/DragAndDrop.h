@@ -1,4 +1,4 @@
-/* $Id: DragAndDrop.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: DragAndDrop.h 84983 2020-06-29 09:09:03Z vboxsync $ */
 /** @file
  * DnD - Shared functions between host and guest.
  */
@@ -70,7 +70,7 @@ public:
     int OpenTemp(DNDURIDROPPEDFILEFLAGS fFlags = DNDURIDROPPEDFILE_FLAGS_NONE);
     const char *GetDirAbs(void) const;
     int Reopen(void);
-    int Reset(bool fDeleteContent);
+    int Reset(bool fDelete);
     int Rollback(void);
 
 protected:
