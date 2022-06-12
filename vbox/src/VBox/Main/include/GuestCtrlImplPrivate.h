@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImplPrivate.h 84648 2020-06-03 08:11:04Z vboxsync $ */
+/* $Id: GuestCtrlImplPrivate.h 84745 2020-06-09 19:24:27Z vboxsync $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -1046,6 +1046,13 @@ public:
           cbData(0),
           pvData(NULL) { }
 
+    /**
+     * Initialization constructor. Will throw() VBox status code (rc).
+     *
+     * @param   uTypePayload    Payload type to set.
+     * @param   pvPayload       Pointer to payload data to set (deep copy).
+     * @param   cbPayload       Size (in bytes) of payload data to set.
+     */
     GuestWaitEventPayload(uint32_t uTypePayload,
                           const void *pvPayload, uint32_t cbPayload)
         : uType(0),

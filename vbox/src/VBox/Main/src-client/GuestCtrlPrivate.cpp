@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlPrivate.cpp 84648 2020-06-03 08:11:04Z vboxsync $ */
+/* $Id: GuestCtrlPrivate.cpp 84745 2020-06-09 19:24:27Z vboxsync $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -854,8 +854,15 @@ int GuestBase::dispatchGeneric(PVBOXGUESTCTRLHOSTCBCTX pCtxCb, PVBOXGUESTCTRLHOS
                     vrc = HGCMSvcGetPv(&pSvcCb->mpaParms[idx++], &dataCb.pvPayload, &dataCb.cbPayload);
                     AssertRCReturn(vrc, vrc);
 
-                    GuestWaitEventPayload evPayload(dataCb.uType, dataCb.pvPayload, dataCb.cbPayload); /* This bugger throws int. */
-                    vrc = signalWaitEventInternal(pCtxCb, dataCb.rc, &evPayload);
+                    try
+                    {
+                        GuestWaitEventPayload evPayload(dataCb.uType, dataCb.pvPayload, dataCb.cbPayload);
+                        vrc = signalWaitEventInternal(pCtxCb, dataCb.rc, &evPayload);
+                    }
+                    catch (int rcEx) /* Thrown by GuestWaitEventPayload constructor. */
+                    {
+                        vrc = rcEx;
+                    }
                 }
                 else
                     vrc = VERR_INVALID_PARAMETER;
