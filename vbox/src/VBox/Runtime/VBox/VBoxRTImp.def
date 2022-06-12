@@ -1,4 +1,4 @@
-; $Id: VBoxRTImp.def 87007 2020-11-27 16:46:50Z vboxsync $
+; $Id: VBoxRTImp.def 87425 2021-01-26 01:50:14Z vboxsync $
 ;; @file
 ; VirtualBox Runtime DLL - Stable Interface Definition file.
 ;
@@ -2168,6 +2168,8 @@ EXPORTS
     RTVfsLockReleaseReadSlow
     RTVfsLockReleaseWriteSlow
     RTVfsLockRetain
+    RTVfsMemFileCreate
+    RTVfsMemIoStrmCreate
     RTVfsMemorizeIoStreamAsFile
     RTVfsNewBaseObj
     RTVfsNewFile
