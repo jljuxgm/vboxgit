@@ -1,4 +1,4 @@
-/* $Id: vkatCommon.cpp 89641 2021-06-13 12:44:53Z vboxsync $ */
+/* $Id: vkatCommon.cpp 89643 2021-06-13 13:59:53Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) - Self test code.
  */
@@ -654,7 +654,7 @@ int audioTestEnvInit(PAUDIOTESTENV pTstEnv,
         if (pTstEnv->fSelftest)
             pDrvReg = &g_DrvHostValidationKitAudio;
         else /* Go with the platform's default backend if nothing else is set. */
-            pDrvReg = g_aBackends[0].pDrvReg;
+            pDrvReg = AudioTestGetDefaultBackend();
     }
 
     if (!uHostTcpPort)

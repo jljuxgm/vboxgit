@@ -1,4 +1,4 @@
-/* $Id: vkatCmdSelfTest.cpp 89642 2021-06-13 13:38:33Z vboxsync $ */
+/* $Id: vkatCmdSelfTest.cpp 89643 2021-06-13 13:59:53Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) - Self test code.
  */
@@ -254,7 +254,7 @@ DECLCALLBACK(RTEXITCODE) audioTestCmdSelftestHandler(PRTGETOPTSTATE pGetState)
     RT_ZERO(Ctx);
 
     /* Go with the platform's default bakcend if nothing else is specified. */
-    Ctx.Guest.pDrvReg = g_aBackends[0].pDrvReg;
+    Ctx.Guest.pDrvReg = AudioTestGetDefaultBackend();
 
     /* Argument processing loop: */
     int           rc;
@@ -285,7 +285,7 @@ DECLCALLBACK(RTEXITCODE) audioTestCmdSelftestHandler(PRTGETOPTSTATE pGetState)
                 break;
 
             case 'b':
-                Ctx.Guest.pDrvReg = audioTestFindBackendOpt(ValueUnion.psz);
+                Ctx.Guest.pDrvReg = AudioTestFindBackendOpt(ValueUnion.psz);
                 if (Ctx.Guest.pDrvReg == NULL)
                     return RTEXITCODE_SYNTAX;
                 break;
