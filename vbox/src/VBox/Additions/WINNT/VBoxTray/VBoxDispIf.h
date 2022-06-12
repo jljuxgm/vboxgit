@@ -1,4 +1,4 @@
-/* $Id: VBoxDispIf.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxDispIf.h 84728 2020-06-08 17:52:03Z vboxsync $ */
 /** @file
  * VBoxTray - Display Settings Interface abstraction for XPDM & WDDM
  */
@@ -88,7 +88,6 @@ DWORD VBoxDispIfCancelPendingResize(PCVBOXDISPIF const pIf);
 DWORD VBoxDispIfResizeStarted(PCVBOXDISPIF const pIf);
 
 BOOL VBoxDispIfResizeDisplayWin7(PCVBOXDISPIF const pIf, uint32_t cDispDef, const VMMDevDisplayDef *paDispDef);
-BOOL VBoxDispIfResizeDisplayVista(PCVBOXDISPIF const pIf, uint32_t cDispDef, const VMMDevDisplayDef *paDispDef);
 
 typedef struct VBOXDISPIF_SEAMLESS
 {
