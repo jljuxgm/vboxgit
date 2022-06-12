@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.cpp 85599 2020-08-03 13:25:05Z vboxsync $ */
+/* $Id: UIActionPoolRuntime.cpp 85661 2020-08-10 12:04:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolRuntime class implementation.
  */
@@ -4360,7 +4360,7 @@ void UIActionPoolRuntime::updateShortcuts()
     /* Call to base-class: */
     UIActionPool::updateShortcuts();
     /* Create temporary Manager UI pool to do the same: */
-    if (!m_fTemporary)
+    if (!isTemporary())
         UIActionPool::createTemporary(UIActionPoolType_Manager);
 }
 
