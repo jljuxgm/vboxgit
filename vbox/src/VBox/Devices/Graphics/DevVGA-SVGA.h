@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.h 86237 2020-09-23 13:00:37Z vboxsync $ */
+/* $Id: DevVGA-SVGA.h 86266 2020-09-24 14:35:34Z vboxsync $ */
 /** @file
  * VMware SVGA device
  */
@@ -24,10 +24,16 @@
 # error "VBOX_WITH_VMSVGA is not defined"
 #endif
 
+#define VMSVGA_USE_EMT_HALT_CODE
+
 #include <VBox/pci.h>
 #include <VBox/vmm/pdmifs.h>
 #include <VBox/vmm/pdmthread.h>
 #include <VBox/vmm/stam.h>
+#ifdef VMSVGA_USE_EMT_HALT_CODE
+# include <VBox/vmm/vmapi.h>
+# include <VBox/vmm/vmcpuset.h>
+#endif
 
 /*
  * PCI device IDs.
