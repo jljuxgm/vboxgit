@@ -1,4 +1,4 @@
-/* $Id: VBoxMMNotificationClient.h 88230 2021-03-22 09:55:26Z vboxsync $ */
+/* $Id: VBoxMMNotificationClient.h 88232 2021-03-22 09:59:28Z vboxsync $ */
 /** @file
  * VBoxMMNotificationClient.h - Implementation of the IMMNotificationClient interface
  *                              to detect audio endpoint changes.
@@ -35,6 +35,8 @@
 #endif
 
 #include <Mmdeviceapi.h>
+
+#include <VBox/vmm/pdmaudioifs.h>
 
 
 class VBoxMMNotificationClient : IMMNotificationClient

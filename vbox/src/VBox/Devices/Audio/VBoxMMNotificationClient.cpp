@@ -1,4 +1,4 @@
-/* $Id: VBoxMMNotificationClient.cpp 84408 2020-05-20 14:29:30Z vboxsync $ */
+/* $Id: VBoxMMNotificationClient.cpp 88232 2021-03-22 09:59:28Z vboxsync $ */
 /** @file
  * VBoxMMNotificationClient.cpp - Implementation of the IMMNotificationClient interface
  *                                to detect audio endpoint changes.
@@ -21,6 +21,7 @@
 #include <iprt/win/windows.h>
 #include <mmdeviceapi.h>
 #include <iprt/win/endpointvolume.h>
+#include <iprt/errcore.h>
 
 #ifdef LOG_GROUP  /** @todo r=bird: wtf? Put it before all other includes like you're supposed to. */
 # undef LOG_GROUP
