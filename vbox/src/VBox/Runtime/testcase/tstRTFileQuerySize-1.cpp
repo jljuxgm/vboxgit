@@ -1,4 +1,4 @@
-/* $Id: tstRTFileQuerySize-1.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: tstRTFileQuerySize-1.cpp 86349 2020-09-30 13:50:20Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTFileQuerySize.
  */
@@ -88,7 +88,7 @@ int main(int argc, char **argv)
 #ifdef RT_OS_WINDOWS
     test1("//./PhysicalDrive0", "//./PhysicalDrive0");
     test1("//./HarddiskVolume1", "//./HarddiskVolume1");
-    test1("//./null", "//./nul");
+    test1("//./nul", "//./nul");
 #else
     test1("/dev/null", "/dev/null");
 # ifdef RT_OS_LINUX
