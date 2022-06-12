@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageExpert.h 87775 2021-02-17 11:42:01Z vboxsync $ */
+/* $Id: UIWizardNewVDPageExpert.h 87845 2021-02-23 11:17:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageExpert class declaration.
  */
@@ -77,10 +77,10 @@ private:
     QString stripFormatExtension(const QString &strFileName);
 
     /* Widgets: */
-    QGroupBox *m_pFormatCnt;
-    QGroupBox *m_pVariantCnt;
+    QGroupBox *m_pFormatGroupBox;
+    QGroupBox *m_pVariantGroupBox;
     QGroupBox *m_pLocationCnt;
-    QGroupBox *m_pSizeCnt;
+    QGroupBox *m_pSizeGroupBox;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_wizards_newvd_UIWizardNewVDPageExpert_h */
