@@ -1,4 +1,4 @@
-/* $Id: AudioMixBuffer.cpp 88277 2021-03-24 13:46:08Z vboxsync $ */
+/* $Id: AudioMixBuffer.cpp 88282 2021-03-24 18:57:14Z vboxsync $ */
 /** @file
  * Audio mixing buffer for converting reading/writing audio data.
  */
@@ -649,7 +649,7 @@ audioMixBufConvFromSilence(PPDMAUDIOFRAME paDst, const void *pvSrc, uint32_t cbS
  * source format.
  *
  * @returns Pointer to matching conversion function, NULL if not supported.
- * @param   pProp       The audio format to find a "from" converter for.
+ * @param   pProps  The audio format to find a "from" converter for.
  */
 static PFNPDMAUDIOMIXBUFCONVFROM audioMixBufConvFromLookup(PCPDMAUDIOPCMPROPS pProps)
 {
@@ -712,7 +712,7 @@ static PFNPDMAUDIOMIXBUFCONVFROM audioMixBufConvFromLookup(PCPDMAUDIOPCMPROPS pP
  * destination format.
  *
  * @returns Pointer to matching conversion function, NULL if not supported.
- * @param   pProp       The audio format to find a "to" converter for.
+ * @param   pProps  The audio format to find a "to" converter for.
  */
 static PFNPDMAUDIOMIXBUFCONVTO audioMixBufConvToLookup(PCPDMAUDIOPCMPROPS pProps)
 {
