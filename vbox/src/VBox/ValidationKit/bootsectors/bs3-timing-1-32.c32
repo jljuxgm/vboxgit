@@ -1,4 +1,4 @@
-/* $Id: bs3-timing-1-32.c32 89150 2021-05-19 00:54:21Z vboxsync $ */
+/* $Id: bs3-timing-1-32.c32 89153 2021-05-19 01:16:56Z vboxsync $ */
 /** @file
  * BS3Kit - bs3-timinig-1, 32-bit C code.
  */
@@ -345,7 +345,7 @@ static void bs3Timing1_Tsc_Driver(unsigned cLoops, unsigned cSecs, unsigned uVer
 BS3_DECL(void) bs3Timing1_Tsc_pe32(void)
 {
     Bs3TestPrintf("bs3Timing1_Tsc_pe32\n");
-    bs3Timing1_Tsc_Driver(5, 10 /*sec*/, 1 /*uVerbosity*/, 18);
+    bs3Timing1_Tsc_Driver(60, 10 /*sec*/, 1 /*uVerbosity*/, 17);
 }
 #endif
 
