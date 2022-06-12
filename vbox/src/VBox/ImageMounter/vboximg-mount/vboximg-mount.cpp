@@ -1,4 +1,4 @@
-/* $Id: vboximg-mount.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: vboximg-mount.cpp 87350 2021-01-21 13:24:13Z vboxsync $ */
 /** @file
  * vboximg-mount - Disk Image Flattening FUSE Program.
  */
@@ -146,7 +146,7 @@ static struct fuse_opt vboximgOptDefs[] = {
     OPTION("--image %s",         pszImageUuidOrPath,   0),
     OPTION("-i %s",              pszImageUuidOrPath,   0),
     OPTION("--rw",               fRW,                  1),
-    OPTION("--root",             fAllowRoot,           0),
+    OPTION("--root",             fAllowRoot,           1),
     OPTION("--vm %s",            pszVm,                0),
     OPTION("-l",                 fList,                1),
     OPTION("--list",             fList,                1),
