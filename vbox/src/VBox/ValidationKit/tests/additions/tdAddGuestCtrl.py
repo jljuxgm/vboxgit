@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84606 $"
+__version__ = "$Revision: 84634 $"
 
 # Standard Python imports.
 import errno
@@ -2968,9 +2968,11 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
                     sCmd   = oTestVm.pathJoin(self.oTstDrv.getGuestSystemDir(oTestVm), 'echo');
                     asArgs = [ sCmd, sFileName, "--end-marker" ];
                 ## @todo Check limits; on Ubuntu with 256KB IPRT returns VERR_NOT_IMPLEMENTED.
+                # Use a higher timeout (15 min) than usual for these long checks.
                 atExec.append([ tdTestExec(sCmd, asArgs,
                                            afFlags = [ vboxcon.ProcessCreateFlag_WaitForStdOut,
-                                                       vboxcon.ProcessCreateFlag_WaitForStdErr ]),
+                                                       vboxcon.ProcessCreateFlag_WaitForStdErr ],
+                                           timeoutMS = 15 * 60 * 1000),
                                 tdTestResultExec(fRc = True) ]);
 
         # Build up the final test array for the first batch.
