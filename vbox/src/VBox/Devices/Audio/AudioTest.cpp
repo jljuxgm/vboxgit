@@ -1,4 +1,4 @@
-/* $Id: AudioTest.cpp 89230 2021-05-23 01:21:26Z vboxsync $ */
+/* $Id: AudioTest.cpp 89262 2021-05-25 10:35:51Z vboxsync $ */
 /** @file
  * Audio testing routines.
  * Common code which is being used by the ValidationKit and the debug / ValdikationKit audio driver(s).
@@ -310,6 +310,11 @@ int AudioTestPathCreate(char *pszPath, size_t cbPath, const char *pszTag)
     RTTIMESPEC time;
     if (!RTTimeSpecToString(RTTimeNow(&time), szTime, sizeof(szTime)))
         return VERR_BUFFER_UNDERFLOW;
+
+    /* Colons aren't allowed in windows filenames, so change to dashes. */
+    char *pszColon;
+    while ((pszColon = strchr(szTime, ':')) != NULL)
+        *pszColon = '-';
 
     rc = RTPathAppend(pszPath, cbPath, szTime);
     AssertRCReturn(rc, rc);
