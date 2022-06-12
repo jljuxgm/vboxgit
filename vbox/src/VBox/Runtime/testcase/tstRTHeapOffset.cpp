@@ -1,4 +1,4 @@
-/* $Id: tstRTHeapOffset.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: tstRTHeapOffset.cpp 86517 2020-10-11 12:45:11Z vboxsync $ */
 /** @file
  * IPRT Testcase - Offset Based Heap.
  */
@@ -303,6 +303,7 @@ int main(int argc, char **argv)
     size_t cbAfterRand = RTHeapOffsetGetFreeSize(Heap);
     RTTESTI_CHECK_MSG(cbAfterRand == cbAfter, ("cbAfterRand=%zu cbAfter=%zu\n", cbAfterRand, cbAfter));
 
+    RTTESTI_CHECK_RC(rc = RTRandAdvDestroy(hRand), VINF_SUCCESS);
     return RTTestSummaryAndDestroy(hTest);
 }
 
