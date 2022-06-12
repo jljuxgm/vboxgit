@@ -1,4 +1,4 @@
-/* $Id: UIVMInformationDialog.cpp 88771 2021-04-29 09:47:00Z vboxsync $ */
+/* $Id: UIVMInformationDialog.cpp 88874 2021-05-05 12:38:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMInformationDialog class implementation.
  */
@@ -68,7 +68,6 @@ UIVMInformationDialog::UIVMInformationDialog(UIMachineWindow *pMachineWindow)
 
 UIVMInformationDialog::~UIVMInformationDialog()
 {
-    saveSettings();
 }
 
 bool UIVMInformationDialog::shouldBeMaximized() const
@@ -117,7 +116,7 @@ void UIVMInformationDialog::sltHandlePageChanged(int iIndex)
     m_pTabWidget->widget(iIndex)->setFocus();
 }
 
-void UIVMInformationDialog::saveSettings()
+void UIVMInformationDialog::sltSaveSettings()
 {
     /* Save window geometry: */
     {
@@ -134,6 +133,8 @@ void UIVMInformationDialog::prepare()
     prepareThis();
     /* Load settings: */
     loadSettings();
+    connect(&uiCommon(), &UICommon::sigAskToCommitData,
+            this, &UIVMInformationDialog::sltSaveSettings);
 }
 
 void UIVMInformationDialog::prepareThis()

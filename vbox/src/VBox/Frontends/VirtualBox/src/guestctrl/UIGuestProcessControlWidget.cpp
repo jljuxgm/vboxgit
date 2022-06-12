@@ -1,4 +1,4 @@
-/* $Id: UIGuestProcessControlWidget.cpp 88741 2021-04-27 19:48:59Z vboxsync $ */
+/* $Id: UIGuestProcessControlWidget.cpp 88874 2021-05-05 12:38:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestProcessControlWidget class implementation.
  */
@@ -314,8 +314,6 @@ UIGuestProcessControlWidget::UIGuestProcessControlWidget(EmbedTo enmEmbedding, c
 
 UIGuestProcessControlWidget::~UIGuestProcessControlWidget()
 {
-    saveSettings();
-    cleanupListener();
 }
 
 void UIGuestProcessControlWidget::retranslateUi()
@@ -392,6 +390,10 @@ void UIGuestProcessControlWidget::prepareConnections()
         connect(m_pQtListener->getWrapped(), &UIMainEventListener::sigGuestSessionUnregistered,
                 this, &UIGuestProcessControlWidget::sltGuestSessionUnregistered);
     }
+    connect(&uiCommon(), &UICommon::sigAskToCommitData,
+            this, &UIGuestProcessControlWidget::sltSaveSettings);
+    connect(&uiCommon(), &UICommon::sigAskToDetachCOM,
+            this, &UIGuestProcessControlWidget::sltCleanupListener);
 }
 
 void UIGuestProcessControlWidget::sltGuestSessionsUpdated()
@@ -557,14 +559,14 @@ void UIGuestProcessControlWidget::sltGuestSessionUnregistered(CGuestSession gues
         delete selectedItem;
 }
 
-void UIGuestProcessControlWidget::saveSettings()
+void UIGuestProcessControlWidget::sltSaveSettings()
 {
     if (!m_pSplitter)
         return;
     gEDataManager->setGuestControlProcessControlSplitterHints(m_pSplitter->sizes());
 }
 
-void UIGuestProcessControlWidget::cleanupListener()
+void UIGuestProcessControlWidget::sltCleanupListener()
 {
     /* Unregister everything: */
     m_pQtListener->getWrapped()->unregisterSources();
