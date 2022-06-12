@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 86288 2020-09-25 09:37:09Z vboxsync $
+# $Id: Makefile.kmk 86289 2020-09-25 09:50:34Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox User Manual, SDK reference and other manuals.
 #
@@ -898,7 +898,8 @@ $(VBOX_PATH_MANUAL_OUTBASE)/en_US/html-single/manual.qhp: \
 		$(VBOX_PATH_MANUAL_OUTBASE)/en_US/html-single/UserManual.xhtml
 
 ################Copy qhcp file from the source directory###############################
-$(VBOX_PATH_MANUAL_OUTBASE)/en_US/html-single/manual.qhcp: | $$(dir $$@)
+$(VBOX_PATH_MANUAL_OUTBASE)/en_US/html-single/manual.qhcp: \
+	$$(dir $$@)
 	$(call MSG_L1,Copying manual.qhcp file)
 	$(QUIET)$(INSTALL_STAGING) -m0664 -- $(addprefix $(VBOX_PATH_MANUAL_SRC)/, $(VBOX_QHCP_FILES)) $@
 
