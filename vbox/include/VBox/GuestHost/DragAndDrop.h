@@ -1,4 +1,4 @@
-/* $Id: DragAndDrop.h 85429 2020-07-23 11:31:53Z vboxsync $ */
+/* $Id: DragAndDrop.h 85435 2020-07-23 13:38:14Z vboxsync $ */
 /** @file
  * DnD - Shared functions between host and guest.
  */
@@ -307,6 +307,8 @@ void DnDTransferListReset(PDNDTRANSFERLIST pList);
 int DnDTransferListAppendPath(PDNDTRANSFERLIST pList, DNDTRANSFERLISTFMT enmFmt, const char *pszPath, DNDTRANSFERLISTFLAGS fFlags);
 int DnDTransferListAppendPathsFromBuffer(PDNDTRANSFERLIST pList, DNDTRANSFERLISTFMT enmFmt, const char *pszPaths, size_t cbPaths, const char *pcszSeparator, DNDTRANSFERLISTFLAGS fFlags);
 int DnDTransferListAppendPathsFromArray(PDNDTRANSFERLIST pList, DNDTRANSFERLISTFMT enmFmt, const char * const *papcszPaths, size_t cPaths, DNDTRANSFERLISTFLAGS fFlags);
+int DnDTransferListAppendRootsFromBuffer(PDNDTRANSFERLIST pList, DNDTRANSFERLISTFMT enmFmt, const char *pszPaths, size_t cbPaths, const char *pcszSeparator, DNDTRANSFERLISTFLAGS fFlags);
+int DnDTransferListAppendRootsFromArray(PDNDTRANSFERLIST pList, DNDTRANSFERLISTFMT enmFmt, const char * const *papcszPaths, size_t cPaths, DNDTRANSFERLISTFLAGS fFlags);
 
 int DnDTransferListGetRootsEx(PDNDTRANSFERLIST pList, DNDTRANSFERLISTFMT enmFmt, const char *pcszPathBase, const char *pcszSeparator, char **ppszBuffer, size_t *pcbBuffer);
 int DnDTransferListGetRoots(PDNDTRANSFERLIST pList, DNDTRANSFERLISTFMT enmFmt, char **ppszBuffer, size_t *pcbBuffer);
