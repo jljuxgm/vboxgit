@@ -1,4 +1,4 @@
-/* $Id: UIProgressEventHandler.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIProgressEventHandler.cpp 86324 2020-09-28 15:25:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIProgressEventHandler class implementation.
  */
@@ -71,13 +71,18 @@ void UIProgressEventHandler::prepareListener()
     if (gEDataManager->eventHandlingType() == EventHandlingType_Passive)
     {
         /* Register event sources in their listeners as well: */
-        m_pQtListener->getWrapped()->registerSource(comEventSourceProgress, m_comEventListener);
+        m_pQtListener->getWrapped()->registerSource(comEventSourceProgress,
+                                                    m_comEventListener,
+                                                    QSet<KVBoxEventType>() << KVBoxEventType_OnProgressTaskCompleted);
     }
 }
 
 void UIProgressEventHandler::prepareConnections()
 {
     /* Create direct (sync) connections for signals of main listener: */
+    connect(m_pQtListener->getWrapped(), &UIMainEventListener::sigListeningFinished,
+            this, &UIProgressEventHandler::sigHandlingFinished,
+            Qt::DirectConnection);
     connect(m_pQtListener->getWrapped(), &UIMainEventListener::sigProgressPercentageChange,
             this, &UIProgressEventHandler::sigProgressPercentageChange,
             Qt::DirectConnection);

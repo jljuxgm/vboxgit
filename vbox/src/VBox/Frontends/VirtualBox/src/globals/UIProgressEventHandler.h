@@ -1,4 +1,4 @@
-/* $Id: UIProgressEventHandler.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIProgressEventHandler.h 86324 2020-09-28 15:25:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIProgressEventHandler class declaration.
  */
@@ -42,6 +42,8 @@ signals:
     void sigProgressPercentageChange(const QUuid &uProgressId, const int iPercent);
     /** Notifies about task complete for progress with @a uProgressId. */
     void sigProgressTaskComplete(const QUuid &uProgressId);
+    /** Notifies about handling has finished. */
+    void sigHandlingFinished();
 
 public:
 
