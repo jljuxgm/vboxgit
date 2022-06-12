@@ -1,4 +1,4 @@
-/* $Id: main.cpp 84368 2020-05-19 11:44:24Z vboxsync $ */
+/* $Id: main.cpp 84751 2020-06-10 10:51:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - The main() function.
  */
@@ -740,7 +740,10 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char ** /*envp*/)
         /* Enable HiDPI support: */
         QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
 #if (!defined(DEBUG_bird) || defined(RT_OS_DARWIN))
+# ifndef VBOX_GUI_WITH_CUSTOMIZATIONS1
+        /* This shouldn't be enabled for customer WM, since Qt has conflicts in that case. */
         QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+# endif
 #endif
 
         /* Create application: */
