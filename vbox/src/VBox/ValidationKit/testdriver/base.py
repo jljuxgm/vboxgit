@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 83294 2020-03-16 08:13:27Z vboxsync $
+# $Id: base.py 84946 2020-06-25 10:25:18Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 83294 $"
+__version__ = "$Revision: 84946 $"
 
 
 # Standard Python imports.
@@ -860,7 +860,7 @@ class TestDriverBase(object): # pylint: disable=too-many-instance-attributes
             self.sBinPath = os.path.join(g_ksValidationKitDir, utils.getHostOs(), utils.getHostArch());
         else:
             self.sBinPath = os.path.join(g_ksValidationKitDir, os.pardir, os.pardir, os.pardir, 'out', utils.getHostOsDotArch(),
-                                         os.environ.get('KBUILD_TYPE', os.environ.get('BUILD_TYPE', 'debug')),
+                                         os.environ.get('KBUILD_TYPE', 'debug'),
                                          'validationkit', utils.getHostOs(), utils.getHostArch());
         self.sOrgShell = os.environ.get('SHELL');
         self.sOurShell = os.path.join(self.sBinPath, 'vts_shell' + exeSuff()); # No shell yet.

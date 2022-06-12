@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: testboxscript_real.py 83183 2020-03-02 10:28:23Z vboxsync $
+# $Id: testboxscript_real.py 84946 2020-06-25 10:25:18Z vboxsync $
 
 """
 TestBox Script - main().
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 83183 $"
+__version__ = "$Revision: 84946 $"
 
 
 # Standard python imports.
@@ -379,7 +379,7 @@ class TestBoxScript(object):
                 self._sTestBoxHelper = os.path.join(g_ksValidationKitDir, utils.getHostOs(), utils.getHostArch(), \
                                                     'TestBoxHelper');
             else: # Only for in-tree testing, so don't bother be too accurate right now.
-                sType = os.environ.get('KBUILD_TYPE', os.environ.get('BUILD_TYPE', 'debug'));
+                sType = os.environ.get('KBUILD_TYPE', 'debug');
                 self._sTestBoxHelper = os.path.join(g_ksValidationKitDir, os.pardir, os.pardir, os.pardir, 'out', \
                                                     utils.getHostOsDotArch(), sType, 'testboxscript', \
                                                     utils.getHostOs(), utils.getHostArch(), \
