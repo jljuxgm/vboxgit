@@ -1,4 +1,4 @@
-/* $Id: UartCore.cpp 84907 2020-06-22 14:43:28Z vboxsync $ */
+/* $Id: UartCore.cpp 84908 2020-06-22 14:49:46Z vboxsync $ */
 /** @file
  * UartCore - UART  (16550A up to 16950) emulation.
  *
@@ -1598,9 +1598,13 @@ static DECLCALLBACK(int) uartR3DataAvailRdrNotify(PPDMISERIALPORT pInterface, si
     {
         size_t cbRead = 0;
         int rc = pThisCC->pDrvSerial->pfnReadRdr(pThisCC->pDrvSerial, &pThis->uRegRbr, 1, &cbRead);
-        AssertMsg(RT_SUCCESS(rc) && cbRead == 1, ("This shouldn't fail and always return one byte!\n")); RT_NOREF(rc);
-        UART_REG_SET(pThis->uRegLsr, UART_REG_LSR_DR);
-        uartIrqUpdate(pDevIns, pThis, pThisCC);
+        AssertRC(rc);
+
+        if (cbRead)
+        {
+            UART_REG_SET(pThis->uRegLsr, UART_REG_LSR_DR);
+            uartIrqUpdate(pDevIns, pThis, pThisCC);
+        }
     }
     PDMDevHlpCritSectLeave(pDevIns, &pThis->CritSect);
 
