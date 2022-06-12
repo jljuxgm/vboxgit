@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 87262 2021-01-15 11:13:36Z vboxsync $ */
+/* $Id: DevHDA.cpp 87264 2021-01-15 11:16:46Z vboxsync $ */
 /** @file
  * DevHDA.cpp - VBox Intel HD Audio Controller.
  *
@@ -1583,13 +1583,9 @@ static VBOXSTRICTRC hdaRegWriteSDFIFOW(PPDMDEVINS pDevIns, PHDASTATE pThis, uint
             break;
     }
 
-    if (u32FIFOW) /** @todo r=bird: Logic error. it will never be zero, so why this check? */
-    {
-        pThis->aStreams[idxStream].u16FIFOW = hdaSDFIFOWToBytes(u32FIFOW);
-        LogFunc(("[SD%zu] Updating FIFOW to %u bytes\n", idxStream, pThis->aStreams[idxStream].u16FIFOW));
-        return hdaRegWriteU16(pDevIns, pThis, iReg, u32FIFOW);
-    }
-    return VINF_SUCCESS;
+    pThis->aStreams[idxStream].u16FIFOW = hdaSDFIFOWToBytes(u32FIFOW);
+    LogFunc(("[SD%zu] Updating FIFOW to %u bytes\n", idxStream, pThis->aStreams[idxStream].u16FIFOW));
+    return hdaRegWriteU16(pDevIns, pThis, iReg, u32FIFOW);
 }
 
 /**
