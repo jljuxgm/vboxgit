@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioWasApi.cpp 88667 2021-04-23 00:00:17Z vboxsync $ */
+/* $Id: DrvHostAudioWasApi.cpp 88672 2021-04-23 11:53:54Z vboxsync $ */
 /** @file
  * Host audio driver - Windows Audio Session API.
  */
@@ -2350,7 +2350,7 @@ static DECLCALLBACK(int) drvHostAudioWasConstruct(PPDMDRVINS pDrvIns, PCFGMNODE 
      *        when creating the streams.  "StreamName" is confusing and a little
      *        misleading though, unless used only for Pulse.  Simply "VmName"
      *        would be a lot better and more generic.  */
-    PDMDRV_VALIDATE_CONFIG_RETURN(pDrvIns, "StreamName|VmUuid", "");
+    PDMDRV_VALIDATE_CONFIG_RETURN(pDrvIns, "VmName|VmUuid", "");
     /** @todo make it possible to override the default device selection. */
 
     /*

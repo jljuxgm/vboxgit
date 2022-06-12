@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioAlsa.cpp 88534 2021-04-15 12:16:56Z vboxsync $ */
+/* $Id: DrvHostAudioAlsa.cpp 88672 2021-04-23 11:53:54Z vboxsync $ */
 /** @file
  * Host audio driver - Advanced Linux Sound Architecture (ALSA).
  */
@@ -1417,7 +1417,7 @@ static DECLCALLBACK(int) drvHostAlsaAudioConstruct(PPDMDRVINS pDrvIns, PCFGMNODE
     /*
      * Read configuration.
      */
-    PDMDRV_VALIDATE_CONFIG_RETURN(pDrvIns, "StreamName|DefaultOutput|DefaultInput", "");
+    PDMDRV_VALIDATE_CONFIG_RETURN(pDrvIns, "DefaultOutput|DefaultInput", "");
 
     int rc = CFGMR3QueryStringDef(pCfg, "DefaultInput", pThis->szDefaultIn, sizeof(pThis->szDefaultIn), "default");
     AssertRCReturn(rc, rc);

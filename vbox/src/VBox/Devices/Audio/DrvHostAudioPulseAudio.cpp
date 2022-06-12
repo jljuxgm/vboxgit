@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioPulseAudio.cpp 88534 2021-04-15 12:16:56Z vboxsync $ */
+/* $Id: DrvHostAudioPulseAudio.cpp 88672 2021-04-23 11:53:54Z vboxsync $ */
 /** @file
  * Host audio driver - Pulse Audio.
  */
@@ -1042,7 +1042,7 @@ static DECLCALLBACK(int) drvHostAudioPaHA_StreamCreate(PPDMIHOSTAUDIO pInterface
 
     pStreamPA->pDrv                = pThis;
     pStreamPA->pDrainOp            = NULL;
-    pStreamPA->pbPeekBuf          = NULL;
+    pStreamPA->pbPeekBuf           = NULL;
     pStreamPA->SampleSpec.rate     = PDMAudioPropsHz(&pCfgReq->Props);
     pStreamPA->SampleSpec.channels = PDMAudioPropsChannels(&pCfgReq->Props);
     pStreamPA->SampleSpec.format   = drvHostAudioPaPropsToPulse(&pCfgReq->Props);
@@ -1925,8 +1925,8 @@ static DECLCALLBACK(int) drvHostAudioPaConstruct(PPDMDRVINS pDrvIns, PCFGMNODE p
     /*
      * Read configuration.
      */
-    int rc2 = CFGMR3QueryString(pCfg, "StreamName", pThis->szStreamName, sizeof(pThis->szStreamName));
-    AssertMsgRCReturn(rc2, ("Confguration error: No/bad \"StreamName\" value, rc=%Rrc\n", rc2), rc2);
+    int rc2 = CFGMR3QueryString(pCfg, "VmName", pThis->szStreamName, sizeof(pThis->szStreamName));
+    AssertMsgRCReturn(rc2, ("Confguration error: No/bad \"VmName\" value, rc=%Rrc\n", rc2), rc2);
 
     /*
      * Load the pulse audio library.
