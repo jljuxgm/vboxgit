@@ -1,4 +1,4 @@
-/* $Id: DrvHostCoreAudio.cpp 85199 2020-07-10 15:14:52Z vboxsync $ */
+/* $Id: DrvHostCoreAudio.cpp 85655 2020-08-10 08:02:03Z vboxsync $ */
 /** @file
  * VBox audio devices - Mac OS X CoreAudio audio driver.
  */
@@ -128,6 +128,8 @@ typedef struct COREAUDIOUNIT
     AudioStreamBasicDescription streamFmt;
 } COREAUDIOUNIT, *PCOREAUDIOUNIT;
 
+
+DECLHIDDEN(int) coreAudioInputPermissionCheck(void);
 
 /*******************************************************************************
  *
@@ -1577,6 +1579,13 @@ static int coreAudioStreamInitQueue(PCOREAUDIOSTREAM pCAStream, PPDMAUDIOSTREAMC
     const bool fIn = pCfgReq->enmDir == PDMAUDIODIR_IN;
 
     int rc = VINF_SUCCESS;
+
+    if (fIn)
+    {
+        rc = coreAudioInputPermissionCheck();
+        if (RT_FAILURE(rc))
+            return rc;
+    }
 
     /* Create the recording device's out format based on our required audio settings. */
     Assert(pCAStream->pCfg == NULL);
