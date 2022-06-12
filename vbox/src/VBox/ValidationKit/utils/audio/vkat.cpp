@@ -1,4 +1,4 @@
-/* $Id: vkat.cpp 89431 2021-06-01 12:57:36Z vboxsync $ */
+/* $Id: vkat.cpp 89432 2021-06-01 13:01:10Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) utility for testing and validating the audio stack.
  */
@@ -471,6 +471,7 @@ static int audioTestPlayTone(PAUDIOTESTENV pTstEnv, PAUDIOTESTSTREAM pStream, PA
 
     return rc;
 }
+
 
 /*********************************************************************************************************************************
 *   ATS Callback Implementations                                                                                                 *
