@@ -1,4 +1,4 @@
-/* $Id: Virtio_1_0.cpp 84776 2020-06-11 06:35:57Z vboxsync $ */
+/* $Id: Virtio_1_0.cpp 84777 2020-06-11 06:44:18Z vboxsync $ */
 /** @file
  * Virtio_1_0 - Virtio Common (PCI, feature & config mgt, queue mgt & proxy, notification mgt)
  */
@@ -35,7 +35,6 @@
 #include <VBox/AssertGuest.h>
 #include <VBox/vmm/pdmdev.h>
 #include "Virtio_1_0.h"
-
 
 /*********************************************************************************************************************************
 *   Defined Constants And Macros                                                                                                 *
