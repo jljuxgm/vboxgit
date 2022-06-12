@@ -1,4 +1,4 @@
-/* $Id: AudioTest.cpp 89289 2021-05-26 09:48:37Z vboxsync $ */
+/* $Id: AudioTest.cpp 89290 2021-05-26 09:56:01Z vboxsync $ */
 /** @file
  * Audio testing routines.
  * Common code which is being used by the ValidationKit and the debug / ValdikationKit audio driver(s).
@@ -90,7 +90,7 @@ static const double s_aAudioTestToneFreqsHz[] =
  * @returns Randomly picked frequency (in Hz).
  * @param   pTone               Pointer to test tone to initialize.
  * @param   pProps              PCM properties to use for the test tone.
- * @þaram   dbFreq              Frequency (in Hz) to initialize tone with.
+ * @param   dbFreq              Frequency (in Hz) to initialize tone with.
  */
 void AudioTestToneInit(PAUDIOTESTTONE pTone, PPDMAUDIOPCMPROPS pProps, double dbFreq)
 {
