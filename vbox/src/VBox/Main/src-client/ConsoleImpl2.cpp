@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 87759 2021-02-15 12:15:18Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 88091 2021-03-11 14:03:55Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -5470,7 +5470,7 @@ int Console::i_configNetwork(const char *pszDevice,
                                                            hostInterface.asOutParam());
                 if (!SUCCEEDED(hrc))
                 {
-                    AssertLogRelMsgFailed(("NetworkAttachmentType_Bridged: FindByName failed, rc=%Rhrc (0x%x)", hrc, hrc));
+                    AssertLogRelMsgFailed(("NetworkAttachmentType_Bridged: FindByName failed, rc=%Rhrc (0x%x)\n", hrc, hrc));
                     return VMSetError(VMR3GetVM(mpUVM), VERR_INTERNAL_ERROR, RT_SRC_POS,
                                       N_("Nonexistent host networking interface, name '%ls'"),
                                       BridgedIfName.raw());
