@@ -1,4 +1,4 @@
-/* $Id: DevIommuAmd.cpp 87526 2021-02-02 07:20:50Z vboxsync $ */
+/* $Id: DevIommuAmd.cpp 87527 2021-02-02 07:31:20Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - AMD implementation.
  */
@@ -736,10 +736,19 @@ static void iommuAmdIotlbRemoveRange(PIOMMU pThis, uint16_t uDomainId, uint64_t 
             if (pIotlbe)
             {
                 --pThis->cCachedIotlbes;
-                uint64_t const uRangeIovaLast = pIotlbe->Core.KeyLast;
+
+                /* Grab the last valid address in the range. */
+                uint64_t uRangeIovaLast;
+                uint16_t uRangeDomainId;
+                iommuAmdIotlbDeconstructKey(pIotlbe->Core.KeyLast, &uRangeDomainId, &uRangeIovaLast);
+                Assert(uRangeDomainId == uDomainId); NOREF(uRangeDomainId);   /* Paranoia. */
+
+                /* Remove the range. */
                 RTListNodeRemove(&pIotlbe->NdLru);
                 RTListPrepend(&pThis->LstLruIotlbe, &pIotlbe->NdLru);
                 RT_ZERO(*pIotlbe);
+
+                /* Check if we need to invalidate the next range. */
                 if (uIovaLast > uRangeIovaLast)
                     uIova = uRangeIovaLast + 1;
                 else
