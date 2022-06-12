@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 84342 2020-05-18 18:24:58Z vboxsync $ */
+/* $Id: ConsoleImpl.h 84618 2020-05-29 18:43:11Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -29,6 +29,9 @@
 #ifdef VBOX_WITH_RECORDING
 # include "Recording.h"
 #endif
+#ifdef VBOX_WITH_CLOUD_NET
+#include "CloudGateway.h"
+#endif /* VBOX_WITH_CLOUD_NET */
 
 class Guest;
 class Keyboard;
@@ -1090,6 +1093,10 @@ private:
 # endif
     } Recording;
 #endif /* VBOX_WITH_RECORDING */
+
+#ifdef VBOX_WITH_CLOUD_NET
+    GatewayInfo mGateways;
+#endif /* VBOX_WITH_CLOUD_NET */
 
     friend class VMTask;
     friend class ConsoleVRDPServer;

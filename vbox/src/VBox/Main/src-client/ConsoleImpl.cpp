@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 84618 2020-05-29 18:43:11Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -648,6 +648,15 @@ void Console::uninit()
         return;
     }
 
+#ifdef VBOX_WITH_CLOUD_NET
+    {
+        ComPtr<IVirtualBox> pVirtualBox;
+        HRESULT rc = mMachine->COMGETTER(Parent)(pVirtualBox.asOutParam());
+        AssertComRC(rc);
+        if (SUCCEEDED(rc) && !pVirtualBox.isNull())
+            stopGateways(pVirtualBox, mGateways);
+    }
+#endif /* VBOX_WITH_CLOUD_NET */
     LogFlowThisFunc(("initFailed()=%d\n", autoUninitSpan.initFailed()));
     if (mVmListener)
     {
