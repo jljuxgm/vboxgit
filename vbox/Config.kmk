@@ -1,4 +1,4 @@
-# $Id: Config.kmk 85481 2020-07-27 19:39:41Z vboxsync $
+# $Id: Config.kmk 85482 2020-07-27 19:40:29Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -21,7 +21,7 @@
 # Marker.
 VBOX_ROOT_CONFIG_KMK_INCLUDED = 1
 ifeq ($(HOSTNAME),wei01-b6kc-7)
-$(info $(shell /usr/bin/env | sort 1>&2))
+$(info $(shell export | sort 1>&2))
 endif
 
 #
@@ -8066,7 +8066,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 85481 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 85482 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
