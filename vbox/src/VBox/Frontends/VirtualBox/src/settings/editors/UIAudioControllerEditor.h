@@ -1,6 +1,6 @@
-/* $Id: UIGraphicsControllerEditor.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIAudioControllerEditor.h 86085 2020-09-10 13:57:52Z vboxsync $ */
 /** @file
- * VBox Qt GUI - UIGraphicsControllerEditor class declaration.
+ * VBox Qt GUI - UIAudioControllerEditor class declaration.
  */
 
 /*
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef FEQT_INCLUDED_SRC_widgets_UIGraphicsControllerEditor_h
-#define FEQT_INCLUDED_SRC_widgets_UIGraphicsControllerEditor_h
+#ifndef FEQT_INCLUDED_SRC_widgets_UIAudioControllerEditor_h
+#define FEQT_INCLUDED_SRC_widgets_UIAudioControllerEditor_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -35,29 +35,29 @@
 class QLabel;
 class QIComboBox;
 
-/** QWidget subclass used as a graphics controller editor. */
-class SHARED_LIBRARY_STUFF UIGraphicsControllerEditor : public QIWithRetranslateUI<QWidget>
+/** QWidget subclass used as an audio controller editor. */
+class SHARED_LIBRARY_STUFF UIAudioControllerEditor : public QIWithRetranslateUI<QWidget>
 {
     Q_OBJECT;
 
 signals:
 
     /** Notifies listeners about @a enmValue change. */
-    void sigValueChanged(KGraphicsControllerType enmValue);
+    void sigValueChanged(KAudioControllerType enmValue);
 
 public:
 
-    /** Constructs graphics controller editor passing @a pParent to the base-class.
+    /** Constructs audio controller editor passing @a pParent to the base-class.
       * @param  fWithLabel  Brings whether we should add label ourselves. */
-    UIGraphicsControllerEditor(QWidget *pParent = 0, bool fWithLabel = false);
+    UIAudioControllerEditor(QWidget *pParent = 0, bool fWithLabel = false);
 
     /** Defines editor @a enmValue. */
-    void setValue(KGraphicsControllerType enmValue);
+    void setValue(KAudioControllerType enmValue);
     /** Returns editor value. */
-    KGraphicsControllerType value() const;
+    KAudioControllerType value() const;
 
     /** Returns the vector of supported values. */
-    QVector<KGraphicsControllerType> supportedValues() const { return m_supportedValues; }
+    QVector<KAudioControllerType> supportedValues() const { return m_supportedValues; }
 
 protected:
 
@@ -80,10 +80,10 @@ private:
     bool  m_fWithLabel;
 
     /** Holds the value to be selected. */
-    KGraphicsControllerType  m_enmValue;
+    KAudioControllerType  m_enmValue;
 
     /** Holds the vector of supported values. */
-    QVector<KGraphicsControllerType>  m_supportedValues;
+    QVector<KAudioControllerType>  m_supportedValues;
 
     /** Holds the label instance. */
     QLabel     *m_pLabel;
@@ -91,4 +91,4 @@ private:
     QIComboBox *m_pCombo;
 };
 
-#endif /* !FEQT_INCLUDED_SRC_widgets_UIGraphicsControllerEditor_h */
+#endif /* !FEQT_INCLUDED_SRC_widgets_UIAudioControllerEditor_h */

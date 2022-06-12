@@ -1,4 +1,4 @@
-/* $Id: UIBaseMemorySlider.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIBaseMemorySlider.h 86085 2020-09-10 13:57:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIBaseMemorySlider class declaration.
  */

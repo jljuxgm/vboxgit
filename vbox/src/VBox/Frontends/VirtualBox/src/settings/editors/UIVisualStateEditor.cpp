@@ -1,6 +1,6 @@
-/* $Id: UIGraphicsControllerEditor.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIVisualStateEditor.cpp 86085 2020-09-10 13:57:52Z vboxsync $ */
 /** @file
- * VBox Qt GUI - UIGraphicsControllerEditor class implementation.
+ * VBox Qt GUI - UIVisualStateEditor class implementation.
  */
 
 /*
@@ -24,23 +24,26 @@
 #include "QIComboBox.h"
 #include "UICommon.h"
 #include "UIConverter.h"
-#include "UIGraphicsControllerEditor.h"
-
-/* COM includes: */
-#include "CSystemProperties.h"
+#include "UIExtraDataManager.h"
+#include "UIVisualStateEditor.h"
 
 
-UIGraphicsControllerEditor::UIGraphicsControllerEditor(QWidget *pParent /* = 0 */, bool fWithLabel /* = false */)
+UIVisualStateEditor::UIVisualStateEditor(QWidget *pParent /* = 0 */, bool fWithLabel /* = false */)
     : QIWithRetranslateUI<QWidget>(pParent)
     , m_fWithLabel(fWithLabel)
-    , m_enmValue(KGraphicsControllerType_Max)
+    , m_enmValue(UIVisualStateType_Invalid)
     , m_pLabel(0)
     , m_pCombo(0)
 {
     prepare();
 }
 
-void UIGraphicsControllerEditor::setValue(KGraphicsControllerType enmValue)
+void UIVisualStateEditor::setMachineId(const QUuid &uMachineId)
+{
+    m_uMachineId = uMachineId;
+}
+
+void UIVisualStateEditor::setValue(UIVisualStateType enmValue)
 {
     if (m_pCombo)
     {
@@ -59,32 +62,32 @@ void UIGraphicsControllerEditor::setValue(KGraphicsControllerType enmValue)
     }
 }
 
-KGraphicsControllerType UIGraphicsControllerEditor::value() const
+UIVisualStateType UIVisualStateEditor::value() const
 {
-    return m_pCombo ? m_pCombo->currentData().value<KGraphicsControllerType>() : m_enmValue;
+    return m_pCombo ? m_pCombo->currentData().value<UIVisualStateType>() : m_enmValue;
 }
 
-void UIGraphicsControllerEditor::retranslateUi()
+void UIVisualStateEditor::retranslateUi()
 {
     if (m_pLabel)
-        m_pLabel->setText(tr("&Graphics Controller:"));
+        m_pLabel->setText(tr("Visual &State:"));
     if (m_pCombo)
     {
         for (int i = 0; i < m_pCombo->count(); ++i)
         {
-            const KGraphicsControllerType enmType = m_pCombo->itemData(i).value<KGraphicsControllerType>();
+            const UIVisualStateType enmType = m_pCombo->itemData(i).value<UIVisualStateType>();
             m_pCombo->setItemText(i, gpConverter->toString(enmType));
         }
     }
 }
 
-void UIGraphicsControllerEditor::sltHandleCurrentIndexChanged()
+void UIVisualStateEditor::sltHandleCurrentIndexChanged()
 {
     if (m_pCombo)
-        emit sigValueChanged(m_pCombo->itemData(m_pCombo->currentIndex()).value<KGraphicsControllerType>());
+        emit sigValueChanged(m_pCombo->itemData(m_pCombo->currentIndex()).value<UIVisualStateType>());
 }
 
-void UIGraphicsControllerEditor::prepare()
+void UIVisualStateEditor::prepare()
 {
     /* Create main layout: */
     QGridLayout *pMainLayout = new QGridLayout(this);
@@ -113,7 +116,7 @@ void UIGraphicsControllerEditor::prepare()
                 if (m_pLabel)
                     m_pLabel->setBuddy(m_pCombo->focusProxy());
                 connect(m_pCombo, static_cast<void(QIComboBox::*)(int)>(&QIComboBox::currentIndexChanged),
-                        this, &UIGraphicsControllerEditor::sltHandleCurrentIndexChanged);
+                        this, &UIVisualStateEditor::sltHandleCurrentIndexChanged);
                 pComboLayout->addWidget(m_pCombo);
             }
 
@@ -132,24 +135,36 @@ void UIGraphicsControllerEditor::prepare()
     retranslateUi();
 }
 
-void UIGraphicsControllerEditor::populateCombo()
+void UIVisualStateEditor::populateCombo()
 {
     if (m_pCombo)
     {
         /* Clear combo first of all: */
+        m_supportedValues.clear();
         m_pCombo->clear();
 
-        /* Load currently supported graphics controller types: */
-        CSystemProperties comProperties = uiCommon().virtualBox().GetSystemProperties();
-        m_supportedValues = comProperties.GetSupportedGraphicsControllerTypes();
+        /* Get possible values: */
+        QList<UIVisualStateType> possibleValues;
+        possibleValues << UIVisualStateType_Normal
+                       << UIVisualStateType_Fullscreen
+                       << UIVisualStateType_Seamless
+                       << UIVisualStateType_Scale;
+
+        /* Load currently supported visual state types: */
+        const UIVisualStateType enmRestrictedTypes = m_uMachineId.isNull()
+                                                   ? UIVisualStateType_Invalid
+                                                   : gEDataManager->restrictedVisualStates(m_uMachineId);
+        foreach (const UIVisualStateType &enmPossibleValue, possibleValues)
+            if (!(enmPossibleValue & enmRestrictedTypes))
+                m_supportedValues << enmPossibleValue;
 
         /* Make sure requested value if sane is present as well: */
-        if (   m_enmValue != KGraphicsControllerType_Max
+        if (   possibleValues.contains(m_enmValue)
             && !m_supportedValues.contains(m_enmValue))
             m_supportedValues.prepend(m_enmValue);
 
         /* Update combo with all the supported values: */
-        foreach (const KGraphicsControllerType &enmType, m_supportedValues)
+        foreach (const UIVisualStateType &enmType, m_supportedValues)
             m_pCombo->addItem(QString(), QVariant::fromValue(enmType));
 
         /* Retranslate finally: */

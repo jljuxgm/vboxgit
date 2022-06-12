@@ -1,6 +1,6 @@
-/* $Id: UIAudioHostDriverEditor.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIGraphicsControllerEditor.cpp 86085 2020-09-10 13:57:52Z vboxsync $ */
 /** @file
- * VBox Qt GUI - UIAudioHostDriverEditor class implementation.
+ * VBox Qt GUI - UIGraphicsControllerEditor class implementation.
  */
 
 /*
@@ -24,23 +24,23 @@
 #include "QIComboBox.h"
 #include "UICommon.h"
 #include "UIConverter.h"
-#include "UIAudioHostDriverEditor.h"
+#include "UIGraphicsControllerEditor.h"
 
 /* COM includes: */
 #include "CSystemProperties.h"
 
 
-UIAudioHostDriverEditor::UIAudioHostDriverEditor(QWidget *pParent /* = 0 */, bool fWithLabel /* = false */)
+UIGraphicsControllerEditor::UIGraphicsControllerEditor(QWidget *pParent /* = 0 */, bool fWithLabel /* = false */)
     : QIWithRetranslateUI<QWidget>(pParent)
     , m_fWithLabel(fWithLabel)
-    , m_enmValue(KAudioDriverType_Max)
+    , m_enmValue(KGraphicsControllerType_Max)
     , m_pLabel(0)
     , m_pCombo(0)
 {
     prepare();
 }
 
-void UIAudioHostDriverEditor::setValue(KAudioDriverType enmValue)
+void UIGraphicsControllerEditor::setValue(KGraphicsControllerType enmValue)
 {
     if (m_pCombo)
     {
@@ -59,32 +59,32 @@ void UIAudioHostDriverEditor::setValue(KAudioDriverType enmValue)
     }
 }
 
-KAudioDriverType UIAudioHostDriverEditor::value() const
+KGraphicsControllerType UIGraphicsControllerEditor::value() const
 {
-    return m_pCombo ? m_pCombo->currentData().value<KAudioDriverType>() : m_enmValue;
+    return m_pCombo ? m_pCombo->currentData().value<KGraphicsControllerType>() : m_enmValue;
 }
 
-void UIAudioHostDriverEditor::retranslateUi()
+void UIGraphicsControllerEditor::retranslateUi()
 {
     if (m_pLabel)
-        m_pLabel->setText(tr("Host Audio &Driver:"));
+        m_pLabel->setText(tr("&Graphics Controller:"));
     if (m_pCombo)
     {
         for (int i = 0; i < m_pCombo->count(); ++i)
         {
-            const KAudioDriverType enmType = m_pCombo->itemData(i).value<KAudioDriverType>();
+            const KGraphicsControllerType enmType = m_pCombo->itemData(i).value<KGraphicsControllerType>();
             m_pCombo->setItemText(i, gpConverter->toString(enmType));
         }
     }
 }
 
-void UIAudioHostDriverEditor::sltHandleCurrentIndexChanged()
+void UIGraphicsControllerEditor::sltHandleCurrentIndexChanged()
 {
     if (m_pCombo)
-        emit sigValueChanged(m_pCombo->itemData(m_pCombo->currentIndex()).value<KAudioDriverType>());
+        emit sigValueChanged(m_pCombo->itemData(m_pCombo->currentIndex()).value<KGraphicsControllerType>());
 }
 
-void UIAudioHostDriverEditor::prepare()
+void UIGraphicsControllerEditor::prepare()
 {
     /* Create main layout: */
     QGridLayout *pMainLayout = new QGridLayout(this);
@@ -113,7 +113,7 @@ void UIAudioHostDriverEditor::prepare()
                 if (m_pLabel)
                     m_pLabel->setBuddy(m_pCombo->focusProxy());
                 connect(m_pCombo, static_cast<void(QIComboBox::*)(int)>(&QIComboBox::currentIndexChanged),
-                        this, &UIAudioHostDriverEditor::sltHandleCurrentIndexChanged);
+                        this, &UIGraphicsControllerEditor::sltHandleCurrentIndexChanged);
                 pComboLayout->addWidget(m_pCombo);
             }
 
@@ -132,24 +132,24 @@ void UIAudioHostDriverEditor::prepare()
     retranslateUi();
 }
 
-void UIAudioHostDriverEditor::populateCombo()
+void UIGraphicsControllerEditor::populateCombo()
 {
     if (m_pCombo)
     {
         /* Clear combo first of all: */
         m_pCombo->clear();
 
-        /* Load currently supported audio driver types: */
+        /* Load currently supported graphics controller types: */
         CSystemProperties comProperties = uiCommon().virtualBox().GetSystemProperties();
-        m_supportedValues = comProperties.GetSupportedAudioDriverTypes();
+        m_supportedValues = comProperties.GetSupportedGraphicsControllerTypes();
 
         /* Make sure requested value if sane is present as well: */
-        if (   m_enmValue != KAudioDriverType_Max
+        if (   m_enmValue != KGraphicsControllerType_Max
             && !m_supportedValues.contains(m_enmValue))
             m_supportedValues.prepend(m_enmValue);
 
         /* Update combo with all the supported values: */
-        foreach (const KAudioDriverType &enmType, m_supportedValues)
+        foreach (const KGraphicsControllerType &enmType, m_supportedValues)
             m_pCombo->addItem(QString(), QVariant::fromValue(enmType));
 
         /* Retranslate finally: */

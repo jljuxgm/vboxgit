@@ -1,6 +1,6 @@
-/* $Id: UIAudioControllerEditor.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIVisualStateEditor.h 86085 2020-09-10 13:57:52Z vboxsync $ */
 /** @file
- * VBox Qt GUI - UIAudioControllerEditor class declaration.
+ * VBox Qt GUI - UIVisualStateEditor class declaration.
  */
 
 /*
@@ -15,49 +15,51 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef FEQT_INCLUDED_SRC_widgets_UIAudioControllerEditor_h
-#define FEQT_INCLUDED_SRC_widgets_UIAudioControllerEditor_h
+#ifndef FEQT_INCLUDED_SRC_widgets_UIVisualStateEditor_h
+#define FEQT_INCLUDED_SRC_widgets_UIVisualStateEditor_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
 
 /* Qt includes: */
+#include <QUuid>
 #include <QWidget>
 
 /* GUI includes: */
 #include "QIWithRetranslateUI.h"
+#include "UIExtraDataDefs.h"
 #include "UILibraryDefs.h"
-
-/* COM includes: */
-#include "COMEnums.h"
 
 /* Forward declarations: */
 class QLabel;
 class QIComboBox;
 
-/** QWidget subclass used as an audio controller editor. */
-class SHARED_LIBRARY_STUFF UIAudioControllerEditor : public QIWithRetranslateUI<QWidget>
+/** QWidget subclass used as a visual state editor. */
+class SHARED_LIBRARY_STUFF UIVisualStateEditor : public QIWithRetranslateUI<QWidget>
 {
     Q_OBJECT;
 
 signals:
 
     /** Notifies listeners about @a enmValue change. */
-    void sigValueChanged(KAudioControllerType enmValue);
+    void sigValueChanged(UIVisualStateType enmValue);
 
 public:
 
-    /** Constructs audio controller editor passing @a pParent to the base-class.
+    /** Constructs visual state editor passing @a pParent to the base-class.
       * @param  fWithLabel  Brings whether we should add label ourselves. */
-    UIAudioControllerEditor(QWidget *pParent = 0, bool fWithLabel = false);
+    UIVisualStateEditor(QWidget *pParent = 0, bool fWithLabel = false);
+
+    /** Defines editor @a uMachineId. */
+    void setMachineId(const QUuid &uMachineId);
 
     /** Defines editor @a enmValue. */
-    void setValue(KAudioControllerType enmValue);
+    void setValue(UIVisualStateType enmValue);
     /** Returns editor value. */
-    KAudioControllerType value() const;
+    UIVisualStateType value() const;
 
     /** Returns the vector of supported values. */
-    QVector<KAudioControllerType> supportedValues() const { return m_supportedValues; }
+    QVector<UIVisualStateType> supportedValues() const { return m_supportedValues; }
 
 protected:
 
@@ -76,14 +78,17 @@ private:
     /** Populates combo. */
     void populateCombo();
 
+    /** Holds the machine id. */
+    QUuid  m_uMachineId;
+
     /** Holds whether descriptive label should be created. */
     bool  m_fWithLabel;
 
     /** Holds the value to be selected. */
-    KAudioControllerType  m_enmValue;
+    UIVisualStateType  m_enmValue;
 
     /** Holds the vector of supported values. */
-    QVector<KAudioControllerType>  m_supportedValues;
+    QVector<UIVisualStateType>  m_supportedValues;
 
     /** Holds the label instance. */
     QLabel     *m_pLabel;
@@ -91,4 +96,4 @@ private:
     QIComboBox *m_pCombo;
 };
 
-#endif /* !FEQT_INCLUDED_SRC_widgets_UIAudioControllerEditor_h */
+#endif /* !FEQT_INCLUDED_SRC_widgets_UIVisualStateEditor_h */

@@ -1,4 +1,4 @@
-/* $Id: UIScaleFactorEditor.h 85810 2020-08-18 09:09:21Z vboxsync $ */
+/* $Id: UIScaleFactorEditor.h 86085 2020-09-10 13:57:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIScaleFactorEditor class declaration.
  */

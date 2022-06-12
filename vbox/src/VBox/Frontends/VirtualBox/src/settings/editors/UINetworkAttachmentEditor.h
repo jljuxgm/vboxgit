@@ -1,4 +1,4 @@
-/* $Id: UINetworkAttachmentEditor.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UINetworkAttachmentEditor.h 86085 2020-09-10 13:57:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkAttachmentEditor class declaration.
  */

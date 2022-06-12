@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.h 85150 2020-07-09 12:56:45Z vboxsync $ */
+/* $Id: UINameAndSystemEditor.h 86085 2020-09-10 13:57:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class declaration.
  */

@@ -1,6 +1,6 @@
-/* $Id: UIVisualStateEditor.h 84904 2020-06-22 14:12:24Z vboxsync $ */
+/* $Id: UIGraphicsControllerEditor.h 86085 2020-09-10 13:57:52Z vboxsync $ */
 /** @file
- * VBox Qt GUI - UIVisualStateEditor class declaration.
+ * VBox Qt GUI - UIGraphicsControllerEditor class declaration.
  */
 
 /*
@@ -15,51 +15,49 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef FEQT_INCLUDED_SRC_widgets_UIVisualStateEditor_h
-#define FEQT_INCLUDED_SRC_widgets_UIVisualStateEditor_h
+#ifndef FEQT_INCLUDED_SRC_widgets_UIGraphicsControllerEditor_h
+#define FEQT_INCLUDED_SRC_widgets_UIGraphicsControllerEditor_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
 
 /* Qt includes: */
-#include <QUuid>
 #include <QWidget>
 
 /* GUI includes: */
 #include "QIWithRetranslateUI.h"
-#include "UIExtraDataDefs.h"
 #include "UILibraryDefs.h"
+
+/* COM includes: */
+#include "COMEnums.h"
 
 /* Forward declarations: */
 class QLabel;
 class QIComboBox;
 
-/** QWidget subclass used as a visual state editor. */
-class SHARED_LIBRARY_STUFF UIVisualStateEditor : public QIWithRetranslateUI<QWidget>
+/** QWidget subclass used as a graphics controller editor. */
+class SHARED_LIBRARY_STUFF UIGraphicsControllerEditor : public QIWithRetranslateUI<QWidget>
 {
     Q_OBJECT;
 
 signals:
 
     /** Notifies listeners about @a enmValue change. */
-    void sigValueChanged(UIVisualStateType enmValue);
+    void sigValueChanged(KGraphicsControllerType enmValue);
 
 public:
 
-    /** Constructs visual state editor passing @a pParent to the base-class.
+    /** Constructs graphics controller editor passing @a pParent to the base-class.
       * @param  fWithLabel  Brings whether we should add label ourselves. */
-    UIVisualStateEditor(QWidget *pParent = 0, bool fWithLabel = false);
-
-    /** Defines editor @a uMachineId. */
-    void setMachineId(const QUuid &uMachineId);
+    UIGraphicsControllerEditor(QWidget *pParent = 0, bool fWithLabel = false);
 
     /** Defines editor @a enmValue. */
-    void setValue(UIVisualStateType enmValue);
+    void setValue(KGraphicsControllerType enmValue);
     /** Returns editor value. */
-    UIVisualStateType value() const;
+    KGraphicsControllerType value() const;
 
     /** Returns the vector of supported values. */
-    QVector<UIVisualStateType> supportedValues() const { return m_supportedValues; }
+    QVector<KGraphicsControllerType> supportedValues() const { return m_supportedValues; }
 
 protected:
 
@@ -78,17 +76,14 @@ private:
     /** Populates combo. */
     void populateCombo();
 
-    /** Holds the machine id. */
-    QUuid  m_uMachineId;
-
     /** Holds whether descriptive label should be created. */
     bool  m_fWithLabel;
 
     /** Holds the value to be selected. */
-    UIVisualStateType  m_enmValue;
+    KGraphicsControllerType  m_enmValue;
 
     /** Holds the vector of supported values. */
-    QVector<UIVisualStateType>  m_supportedValues;
+    QVector<KGraphicsControllerType>  m_supportedValues;
 
     /** Holds the label instance. */
     QLabel     *m_pLabel;
@@ -96,4 +91,4 @@ private:
     QIComboBox *m_pCombo;
 };
 
-#endif /* !FEQT_INCLUDED_SRC_widgets_UIVisualStateEditor_h */
+#endif /* !FEQT_INCLUDED_SRC_widgets_UIGraphicsControllerEditor_h */
