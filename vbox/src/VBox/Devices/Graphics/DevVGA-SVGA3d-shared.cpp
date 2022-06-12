@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-shared.cpp 84849 2020-06-16 14:23:39Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-shared.cpp 84852 2020-06-16 16:18:46Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -213,7 +213,7 @@ static LONG WINAPI vmsvga3dWndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM l
                For the style adjustment to take place, we must apply the
                SWP_FRAMECHANGED thru SetWindowPos. */
             LONG flStyle = GetWindowLongW(hwnd, GWL_STYLE);
-            flStyle &= ~WS_CAPTION /* both titlebar and border. Some paranoia: */ | WS_THICKFRAME | WS_SYSMENU;
+            flStyle &= ~(WS_CAPTION /* both titlebar and border. Some paranoia: */ | WS_THICKFRAME | WS_SYSMENU);
             SetWindowLong(hwnd, GWL_STYLE, flStyle);
             SetWindowPos(hwnd, NULL, 0, 0, 0, 0,
                          SWP_FRAMECHANGED | SWP_NOZORDER | SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE | SWP_NOOWNERZORDER);
