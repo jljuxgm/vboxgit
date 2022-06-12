@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 88275 2021-03-24 13:13:23Z vboxsync $
+# $Id: Makefile.kmk 88444 2021-04-09 17:54:30Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -417,6 +417,7 @@ endif
 #
 
 UICommon_CXXFLAGS.linux += -Wno-class-memaccess
+UICommon_CXXFLAGS.win += -wd4868 # prevents std::stable_sort from using functor/function comparator
 
 ## @todo we're using a number of deprecated APIs, please fix and remove these!
 UICommon_CXXFLAGS.darwin    += -Wno-error=deprecated-declarations
