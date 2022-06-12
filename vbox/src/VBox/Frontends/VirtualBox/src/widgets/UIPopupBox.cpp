@@ -1,4 +1,4 @@
-/* $Id: UIPopupBox.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIPopupBox.cpp 84911 2020-06-22 18:24:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPopupBox/UIPopupBoxGroup classes implementation.
  */
@@ -18,7 +18,6 @@
 /* Qt includes: */
 #include <QApplication>
 #include <QLabel>
-#include <QPainter>
 #include <QPaintEvent>
 #include <QStyle>
 #include <QVBoxLayout>

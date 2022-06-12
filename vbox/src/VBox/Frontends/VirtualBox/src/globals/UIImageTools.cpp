@@ -1,4 +1,4 @@
-/* $Id: UIImageTools.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIImageTools.cpp 84911 2020-06-22 18:24:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Implementation of utility classes and functions for image manipulation.
  */
@@ -17,6 +17,8 @@
 
 /* Qt includes: */
 #include <QPainter>
+#include <QPainterPath>
+#include <QPainterPathStroker>
 
 /* GUI include */
 #include "UIImageTools.h"
