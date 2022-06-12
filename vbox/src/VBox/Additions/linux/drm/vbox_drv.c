@@ -1,4 +1,4 @@
-/*  $Id: vbox_drv.c 88207 2021-03-19 17:22:21Z vboxsync $ */
+/*  $Id: vbox_drv.c 88212 2021-03-19 18:05:18Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -362,7 +362,9 @@ static struct drm_driver driver = {
 
 #if RTLNX_VER_MAX(5,11,0)
 	.dev_priv_size = 0,
+# if RTLNX_VER_MIN(4,7,0)
 	.gem_free_object_unlocked = vbox_gem_free_object,
+# endif
 	.gem_prime_export = drm_gem_prime_export,
 	.gem_prime_pin = vbox_gem_prime_pin,
 	.gem_prime_unpin = vbox_gem_prime_unpin,
