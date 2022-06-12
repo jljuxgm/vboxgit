@@ -1,4 +1,4 @@
-/* $Id: DnDTransferList.cpp 86409 2020-10-02 10:21:42Z vboxsync $ */
+/* $Id: DnDTransferList.cpp 86410 2020-10-02 10:25:12Z vboxsync $ */
 /** @file
  * DnD - transfer list implemenation.
  */
@@ -1074,7 +1074,7 @@ int DnDTransferListGetRootsEx(PDNDTRANSFERLIST pList,
         }
         else /* Native */
         {
-#if defined(RT_OS_OS2) || defined(RT_OS_WINDOWS)
+#if RTPATH_STYLE == RTPATH_STR_F_STYLE_DOS
             /* Convert paths to native path style. */
             rc = DnDPathConvert(szPath, sizeof(szPath), DNDPATHCONVERT_FLAGS_TO_DOS);
 #endif
