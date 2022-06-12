@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 87656 2021-02-09 13:14:33Z vboxsync $ */
+/* $Id: UICommon.cpp 87756 2021-02-15 10:34:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -167,6 +167,10 @@
 #endif /* VBOX_WS_X11 */
 
 //#define VBOX_WITH_FULL_DETAILS_REPORT /* hidden for now */
+
+#ifdef VBOX_WITH_QT_RUNTIME_PATCHING
+DECLHIDDEN(void) uiCommonQtRuntimePatch(void);
+#endif
 
 /* Namespaces: */
 using namespace UIExtraDataDefs;
@@ -4084,6 +4088,11 @@ void UICommon::prepare()
     /* Determine OS release early: */
     m_enmMacOSVersion = determineOsRelease();
 #endif /* VBOX_WS_MAC */
+
+#ifdef VBOX_WITH_QT_RUNTIME_PATCHING
+    /* Patch some Qt modules to tailor the behavior towards our needs. */
+    uiCommonQtRuntimePatch();
+#endif
 
     /* Prepare converter: */
     UIConverter::prepare();

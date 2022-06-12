@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 87731 2021-02-12 11:00:29Z vboxsync $
+# $Id: Makefile.kmk 87756 2021-02-15 10:34:48Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -245,6 +245,13 @@ if  "$(KBUILD_TYPE)" != "release" || defined(VBOX_GUI_WITH_EXTRADATA_MANAGER_UI)
 endif
 ifndef VBOX_WITHOUT_LESS_VIRTUALBOX_INCLUDING
  UICommon_DEFS        += VBOX_WITH_LESS_VIRTUALBOX_INCLUDING
+endif
+ifdef VBOX_WITH_QT_RUNTIME_PATCHING
+ UICommon_DEFS += \
+  	VBOX_WITH_QT_RUNTIME_PATCHING \
+  	IN_DIS \
+  	IN_DIS_STATIC \
+  	DIS_CORE_ONLY
 endif
 
 
@@ -1488,6 +1495,14 @@ UICommon_SOURCES.darwin += \
 	src/platform/darwin/VBoxUtils-darwin-cocoa.mm \
 	src/platform/darwin/VBoxUtils-darwin.cpp
 
+ifdef VBOX_WITH_QT_RUNTIME_PATCHING
+ UICommon_SOURCES += \
+ 	src/qtpatching.cpp \
+ 	../../Disassembler/DisasmCore.cpp \
+ 	../../Disassembler/DisasmTables.cpp \
+ 	../../Disassembler/DisasmTablesX64.cpp \
+ 	../../Disassembler/DisasmReg.cpp
+endif
 
 #
 # VirtualBox Manager Application
