@@ -1,4 +1,4 @@
-/* $Id: RTLocaleQueryLocaleName-r3-generic.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: RTLocaleQueryLocaleName-r3-generic.cpp 86074 2020-09-09 14:34:49Z vboxsync $ */
 /** @file
  * IPRT - RTLocaleQueryLocaleName, ring-3 generic.
  */
@@ -35,14 +35,23 @@
 
 #include <iprt/errcore.h>
 #include <iprt/string.h>
+#ifdef RT_OS_SOLARIS
+#include <iprt/path.h>
+#endif /* RT_OS_SOLARIS */
 
 
 
 RTDECL(int) RTLocaleQueryLocaleName(char *pszName, size_t cbName)
 {
     const char *pszLocale = setlocale(LC_ALL, NULL);
-    if (!pszLocale)
+    if (pszLocale)
+    {
+#ifdef RT_OS_SOLARIS /* Solaris can return a locale starting with a slash ('/'), e.g. /en_GB.UTF-8/C/C/C/C/C */
+        if (RTPATH_IS_SLASH(*pszLocale))
+            pszLocale++;
+#endif /* RT_OS_SOLARIS */
         return RTStrCopy(pszName, cbName, pszLocale);
+    }
     return VERR_NOT_AVAILABLE;
 }
 
