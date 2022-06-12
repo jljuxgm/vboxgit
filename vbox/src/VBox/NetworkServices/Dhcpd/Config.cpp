@@ -1,4 +1,4 @@
-/* $Id: Config.cpp 87473 2021-01-29 00:10:32Z vboxsync $ */
+/* $Id: Config.cpp 87693 2021-02-10 16:58:22Z vboxsync $ */
 /** @file
  * DHCP server - server configuration
  */
@@ -412,7 +412,7 @@ Config *Config::create(int argc, char **argv) RT_NOEXCEPT
     }
 
     /*
-     * Read the log file.
+     * Read the config file.
      */
     RTMsgInfo("reading config from '%s'...\n", pszConfig);
     std::unique_ptr<Config> ptrConfig;
