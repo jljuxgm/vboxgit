@@ -1,4 +1,4 @@
-/* $Id: tstSSM.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: tstSSM.cpp 86388 2020-10-01 14:46:20Z vboxsync $ */
 /** @file
  * Saved State Manager Testcase.
  */
@@ -695,6 +695,7 @@ static int createFakeVM(PVM *ppVM)
  */
 static void destroyFakeVM(PVM pVM)
 {
+    SSMR3Term(pVM);
     STAMR3TermUVM(pVM->pUVM);
     MMR3TermUVM(pVM->pUVM);
 }
