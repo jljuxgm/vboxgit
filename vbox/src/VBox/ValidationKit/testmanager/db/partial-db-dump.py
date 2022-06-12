@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: partial-db-dump.py 83363 2020-03-22 18:26:38Z vboxsync $
+# $Id: partial-db-dump.py 86985 2020-11-26 13:57:42Z vboxsync $
 # pylint: disable=line-too-long
 
 """
@@ -28,7 +28,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 83363 $"
+__version__ = "$Revision: 86985 $"
 
 # Standard python imports
 import sys;
@@ -101,7 +101,6 @@ class PartialDbDump(object): # pylint: disable=too-few-public-methods
         'SchedGroupMembers',            # ?
         'TestBoxesInSchedGroups',       # ?
         'SchedQueues',
-        'Builds',                       # ??
         'VcsRevisions',                 # ?
         'TestResultStrTab',             # 36K rows, never mind complicated then.
     ];
@@ -117,6 +116,7 @@ class PartialDbDump(object): # pylint: disable=too-few-public-methods
         'TestResultMsgs',               # 2016-05-25: ca.   29 MB
         'TestResultValues',             # 2016-05-25: ca. 3728 MB
         'TestResultFailures',
+        'Builds',
         'SystemLog',
     ];
 
@@ -183,6 +183,12 @@ class PartialDbDump(object): # pylint: disable=too-few-public-methods
             idLastTestResult = oDb.fetchOne()[0];
         print('Last test result ID: %s' % (idLastTestResult,));
 
+        # Get the build ID range.
+        oDb.execute('SELECT MIN(idBuild), MIN(idBuildTestSuite) FROM TestSets WHERE idTestSet >= %s', (idFirstTestSet,));
+        idFirstBuild = 0;
+        if oDb.getRowCount() > 0:
+            idFirstBuild = min(oDb.fetchOne());
+        print('First build ID: %s' % (idFirstBuild,));
 
         # Tables with idTestSet member.
         for sTable in [ 'TestSets', 'TestResults', 'TestResultValues' ]:
@@ -213,6 +219,12 @@ class PartialDbDump(object): # pylint: disable=too-few-public-methods
             self._doCopyTo(sTable, oZipFile, oDb,
                            'COPY (SELECT * FROM ' + sTable + ' WHERE tsCreated >= %s) TO STDOUT WITH (FORMAT TEXT)',
                            (tsEffective,));
+
+        # The builds table.
+        for sTable in [ 'Builds', ]:
+            self._doCopyTo(sTable, oZipFile, oDb,
+                           'COPY (SELECT * FROM ' + sTable + ' WHERE idBuild >= %s) TO STDOUT WITH (FORMAT TEXT)',
+                           (idFirstBuild,));
 
         oZipFile.close();
         print('Done!');
