@@ -1,4 +1,4 @@
-/* $Id: clipboard-common.cpp 85864 2020-08-21 12:44:56Z vboxsync $ */
+/* $Id: clipboard-common.cpp 85985 2020-09-01 17:46:22Z vboxsync $ */
 /** @file
  * Shared Clipboard: Some helper function for converting between the various eol.
  */
@@ -258,6 +258,23 @@ SHCLEVENTID ShClEventGetLast(PSHCLEVENTSOURCE pSource)
     if (pEvent)
         return pEvent->idEvent;
 
+    return 0;
+}
+
+/**
+ * Returns the current reference count for a specific event.
+ *
+ * @returns Reference count.
+ * @param   pSource             Event source the specific event is part of.
+ * @param   idEvent             Event ID to return reference count for.
+ */
+uint32_t ShClEventGetRefs(PSHCLEVENTSOURCE pSource, SHCLEVENTID idEvent)
+{
+    PSHCLEVENT pEvent = shclEventGet(pSource, idEvent);
+    if (pEvent)
+        return pEvent->cRefs;
+
+    AssertMsgFailed(("No event with %RU32\n", idEvent));
     return 0;
 }
 

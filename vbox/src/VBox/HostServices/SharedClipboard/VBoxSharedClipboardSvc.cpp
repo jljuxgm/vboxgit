@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc.cpp 85983 2020-09-01 16:55:10Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc.cpp 85985 2020-09-01 17:46:22Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Host service entry points.
  */
@@ -1336,6 +1336,14 @@ int ShClSvcGuestDataReceived(PSHCLCLIENT pClient, PSHCLCLIENTCMDCTX pCmdCtx,
         RTCritSectLeave(&pClient->CritSect);
         if (RT_FAILURE(rc))
             ShClPayloadFree(pPayload);
+
+        /* No one holding a reference to the event event anymore? Unregister it. */
+        if (ShClEventGetRefs(&pClient->EventSrc, idEvent) == 0)
+        {
+            int rc2 = ShClEventUnregister(&pClient->EventSrc, idEvent);
+            if (RT_SUCCESS(rc))
+                rc = rc2;
+        }
     }
 
     LogFlowFuncLeaveRC(rc);
