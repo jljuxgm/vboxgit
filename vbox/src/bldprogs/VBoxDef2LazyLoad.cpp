@@ -1,4 +1,4 @@
-/* $Id: VBoxDef2LazyLoad.cpp 87282 2021-01-15 20:38:06Z vboxsync $ */
+/* $Id: VBoxDef2LazyLoad.cpp 87287 2021-01-15 20:54:40Z vboxsync $ */
 /** @file
  * VBoxDef2LazyLoad - Lazy Library Loader Generator.
  *
@@ -1337,7 +1337,7 @@ static RTEXITCODE generateOutputInnerArm64(FILE *pOutput)
                 "ExplicitlyLoad%.*s:\n"
                 "    .cfi_startproc\n"
                 "    ; Create frame.\n"
-                "    sub     sp, sp, #(16 + #96)\n"
+                "    sub     sp, sp, #(16 + 96)\n"
                 "    stp     x29, x30, [sp, #96]\n"
                 "    add     x29, sp, #96\n"
                 "    .cfi_def_cfa x29, 16\n"
@@ -1549,7 +1549,7 @@ int main(int argc, char **argv)
             else if (   !strcmp(psz, "--version")
                      || !strcmp(psz, "-V"))
             {
-                printf("$Revision: 87282 $\n");
+                printf("$Revision: 87287 $\n");
                 return RTEXITCODE_SUCCESS;
             }
             else
