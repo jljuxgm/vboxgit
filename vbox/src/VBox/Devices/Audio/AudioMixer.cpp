@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 87856 2021-02-24 08:35:35Z vboxsync $ */
+/* $Id: AudioMixer.cpp 87857 2021-02-24 09:09:18Z vboxsync $ */
 /** @file
  * Audio mixing routines for multiplexing audio sources in device emulations.
  *
@@ -224,7 +224,7 @@ int AudioMixerCreateSink(PAUDIOMIXER pMixer, const char *pszName, AUDMIXSINKDIR 
 int AudioMixerCreate(const char *pcszName, uint32_t fFlags, PAUDIOMIXER *ppMixer)
 {
     AssertPtrReturn(pcszName, VERR_INVALID_POINTER);
-    AssertReturn   (fFlags & AUDMIXER_FLAGS_VALID_MASK, VERR_INVALID_PARAMETER);
+    AssertReturn   (!(fFlags & ~AUDMIXER_FLAGS_VALID_MASK), VERR_INVALID_PARAMETER);
     AssertPtrReturn(ppMixer, VERR_INVALID_POINTER);
 
     int rc = VINF_SUCCESS;
