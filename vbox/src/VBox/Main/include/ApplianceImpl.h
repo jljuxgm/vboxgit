@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 85283 2020-07-12 14:54:15Z vboxsync $ */
+/* $Id: ApplianceImpl.h 86509 2020-10-09 17:37:05Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -130,7 +130,7 @@ private:
      * @{
      */
     bool i_isApplianceIdle();
-    HRESULT i_searchUniqueVMName(Utf8Str& aName) const;
+    HRESULT i_searchUniqueVMName(Utf8Str &aName) const;
     HRESULT i_ensureUniqueImageFilePath(const Utf8Str &aMachineFolder,
                                         DeviceType_T aDeviceType,
                                         Utf8Str &aName) const;
@@ -210,7 +210,7 @@ private:
 
     void i_importMachineGeneric(const ovf::VirtualSystem &vsysThis,
                                 ComObjPtr<VirtualSystemDescription> &vsdescThis,
-                                ComPtr<IMachine> &pNewMachine,
+                                ComPtr<IMachine> &pNewMachineRet,
                                 ImportStack &stack);
     void i_importVBoxMachine(ComObjPtr<VirtualSystemDescription> &vsdescThis,
                              ComPtr<IMachine> &pNewMachine,
