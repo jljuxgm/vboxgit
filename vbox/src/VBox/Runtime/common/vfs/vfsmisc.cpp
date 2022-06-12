@@ -1,4 +1,4 @@
-/* $Id: vfsmisc.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: vfsmisc.cpp 86414 2020-10-02 11:41:26Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Misc functions with heavy dependencies.
  */
@@ -60,7 +60,7 @@ RTDECL(int)         RTVfsIoStrmFromStdHandle(RTHANDLESTD enmStdHandle, uint64_t 
      * Open the handle and see what we get back.
      */
     RTHANDLE h;
-    int rc = RTHandleGetStandard(enmStdHandle, &h);
+    int rc = RTHandleGetStandard(enmStdHandle, fLeaveOpen, &h);
     if (RT_SUCCESS(rc))
     {
         switch (h.enmType)

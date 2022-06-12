@@ -1,4 +1,4 @@
-/* $Id: RTHandleGetStandard-posix.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: RTHandleGetStandard-posix.cpp 86414 2020-10-02 11:41:26Z vboxsync $ */
 /** @file
  * IPRT - RTHandleGetStandard, POSIX.
  */
@@ -52,7 +52,7 @@
 
 
 
-RTDECL(int) RTHandleGetStandard(RTHANDLESTD enmStdHandle, PRTHANDLE ph)
+RTDECL(int) RTHandleGetStandard(RTHANDLESTD enmStdHandle, bool fLeaveOpen, PRTHANDLE ph)
 {
     /*
      * Validate and convert input.
@@ -107,16 +107,19 @@ RTDECL(int) RTHandleGetStandard(RTHANDLESTD enmStdHandle, PRTHANDLE ph)
     switch (h.enmType)
     {
         case RTHANDLETYPE_FILE:
+            /** @todo fLeaveOpen   */
             rc = RTFileFromNative(&h.u.hFile, fd);
             break;
 
         case RTHANDLETYPE_PIPE:
             rc = RTPipeFromNative(&h.u.hPipe, fd,
                                     (enmStdHandle == RTHANDLESTD_INPUT ? RTPIPE_N_READ : RTPIPE_N_WRITE)
-                                  | (fInherit ? RTPIPE_N_INHERIT : 0));
+                                  | (fInherit ? RTPIPE_N_INHERIT : 0)
+                                  | (fLeaveOpen ? RTPIPE_N_LEAVE_OPEN : 0));
             break;
 
         case RTHANDLETYPE_SOCKET:
+            /** @todo fLeaveOpen   */
             rc = rtSocketCreateForNative(&h.u.hSocket, fd);
             break;
 

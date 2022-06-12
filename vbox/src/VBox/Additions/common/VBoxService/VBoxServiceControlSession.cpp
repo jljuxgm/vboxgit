@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlSession.cpp 84816 2020-06-12 12:53:12Z vboxsync $ */
+/* $Id: VBoxServiceControlSession.cpp 86414 2020-10-02 11:41:26Z vboxsync $ */
 /** @file
  * VBoxServiceControlSession - Guest session handling. Also handles the spawned session processes.
  */
@@ -1706,7 +1706,7 @@ static int vgsvcGstCtrlSessionReadKeyAndAccept(uint32_t idClient, uint32_t idSes
      * Read it.
      */
     RTHANDLE Handle;
-    int rc = RTHandleGetStandard(RTHANDLESTD_INPUT, &Handle);
+    int rc = RTHandleGetStandard(RTHANDLESTD_INPUT, true /*fLeaveOpen*/, &Handle);
     if (RT_SUCCESS(rc))
     {
         if (Handle.enmType == RTHANDLETYPE_PIPE)
