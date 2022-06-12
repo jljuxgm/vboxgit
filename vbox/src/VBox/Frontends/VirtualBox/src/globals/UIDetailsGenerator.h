@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGenerator.h 83719 2020-04-16 16:30:01Z vboxsync $ */
+/* $Id: UIDetailsGenerator.h 86225 2020-09-22 16:25:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsGenerator declaration.
  */
@@ -27,6 +27,7 @@
 
 /* Forward declarations: */
 class CCloudMachine;
+class CFormValue;
 class CMachine;
 
 /** Details generation namespace. */
@@ -37,6 +38,7 @@ namespace UIDetailsGenerator
 
     SHARED_LIBRARY_STUFF UITextTable generateMachineInformationGeneral(CCloudMachine &comCloudMachine,
                                                                        const UIExtraDataMetaDefs::DetailsElementOptionTypeGeneral &fOptions);
+    SHARED_LIBRARY_STUFF QString generateFormValueInformation(const CFormValue &comFormValue);
 
     SHARED_LIBRARY_STUFF UITextTable generateMachineInformationSystem(CMachine &comMachine,
                                                                       const UIExtraDataMetaDefs::DetailsElementOptionTypeSystem &fOptions);
