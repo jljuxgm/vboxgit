@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 76633 2019-01-04 13:10:47Z vboxsync $
+# $Id: Makefile.kmk 84940 2020-06-25 09:44:14Z vboxsync $
 ## @file
 # Sub-Makefile for XPCOM.
 #
@@ -476,7 +476,7 @@ else
  libIDL_config_libs   := $(shell $(VBOX_LIBIDL_CONFIG) --libs)
  xpidl_CFLAGS = \
 	$(libIDL_config_cflags)
- ifeq ($(BUILD_PLATFORM),linux)
+ ifeq ($(KBUILD_HOST),linux)
  xpidl_LDFLAGS = \
 	$(filter-out -l%,$(libIDL_config_libs))
  else
