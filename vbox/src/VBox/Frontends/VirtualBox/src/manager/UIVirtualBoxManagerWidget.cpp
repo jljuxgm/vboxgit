@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 85398 2020-07-21 10:54:57Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 85406 2020-07-22 08:29:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -829,6 +829,7 @@ void UIVirtualBoxManagerWidget::updateToolbar()
                 }
                 case UIToolType_Performance:
                 {
+                    m_pToolBar->addAction(actionPool()->action(UIActionIndex_M_PerformanceMonitor_S_Export));
                     break;
                 }
                 case UIToolType_Error:
