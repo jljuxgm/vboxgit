@@ -1,4 +1,4 @@
-/* $Id: GIMKvm.cpp 86121 2020-09-14 16:56:09Z vboxsync $ */
+/* $Id: GIMKvm.cpp 86123 2020-09-14 17:11:45Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, KVM implementation.
  */
@@ -602,9 +602,6 @@ VMMR3_INT_DECL(int) gimR3KvmEnableSystemTime(PVMCC pVM, PVMCPUCC pVCpu, uint64_t
     /*
      * Update the system-time struct.
      * The system-time structs are usually placed at a different guest address for each VCPU.
-     *
-     * The rendezvous ensures that we don't have other VCPUs that might potentially be
-     * reading the guest memory which we're about to update.
      */
     pKvmCpu->uTsc                  = TMCpuTickGetNoCheck(pVCpu);
     pKvmCpu->uVirtNanoTS           = ASMMultU64ByU32DivByU32(pKvmCpu->uTsc, RT_NS_1SEC, pKvm->cTscTicksPerSecond);
