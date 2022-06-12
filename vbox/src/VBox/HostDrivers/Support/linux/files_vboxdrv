@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: files_vboxdrv 83886 2020-04-21 11:14:20Z vboxsync $
+# $Id: files_vboxdrv 85519 2020-07-29 11:24:55Z vboxsync $
 ## @file
 # Shared file between Makefile.kmk and export_modules.sh.
 #
@@ -84,6 +84,8 @@ FILES_VBOXDRV_NOBIN=" \
     ${PATH_ROOT}/include/VBox/vmm/hm_vmx.h=>include/VBox/vmm/hm_vmx.h \
     ${PATH_ROOT}/include/VBox/vmm/hm_svm.h=>include/VBox/vmm/hm_svm.h \
     ${PATH_ROOT}/src/VBox/HostDrivers/Support/linux/SUPDrv-linux.c=>linux/SUPDrv-linux.c \
+    ${PATH_ROOT}/src/VBox/HostDrivers/Support/linux/combined-agnostic.c=>combined-agnostic.c \
+    ${PATH_ROOT}/src/VBox/HostDrivers/Support/linux/combined-os-specific.c=>combined-os-specific.c \
     ${PATH_ROOT}/src/VBox/HostDrivers/Support/SUPDrv.cpp=>SUPDrv.c \
     ${PATH_ROOT}/src/VBox/HostDrivers/Support/SUPDrvGip.cpp=>SUPDrvGip.c \
     ${PATH_ROOT}/src/VBox/HostDrivers/Support/SUPDrvSem.cpp=>SUPDrvSem.c \
