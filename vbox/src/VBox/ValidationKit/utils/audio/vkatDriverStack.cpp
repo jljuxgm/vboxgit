@@ -1,4 +1,4 @@
-/* $Id: vkatDriverStack.cpp 89535 2021-06-07 00:56:57Z vboxsync $ */
+/* $Id: vkatDriverStack.cpp 89575 2021-06-09 09:16:59Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) - Driver stack code.
  */
@@ -489,14 +489,16 @@ void audioTestDriverStackDelete(PAUDIOTESTDRVSTACK pDrvStack)
 
 
 /**
- * Initializes a driver stack.
+ * Initializes a driver stack, extended version.
  *
  * @returns VBox status code.
  * @param   pDrvStack       The driver stack to initialize.
  * @param   pDrvReg         The backend driver to use.
+ * @param   fEnabledIn      Whether input is enabled or not on creation time.
+ * @param   fEnabledOut     Whether output is enabled or not on creation time.
  * @param   fWithDrvAudio   Whether to include DrvAudio in the stack or not.
  */
-int audioTestDriverStackInit(PAUDIOTESTDRVSTACK pDrvStack, PCPDMDRVREG pDrvReg, bool fWithDrvAudio)
+int audioTestDriverStackInitEx(PAUDIOTESTDRVSTACK pDrvStack, PCPDMDRVREG pDrvReg, bool fEnabledIn, bool fEnabledOut, bool fWithDrvAudio)
 {
     int rc;
 
@@ -515,10 +517,16 @@ int audioTestDriverStackInit(PAUDIOTESTDRVSTACK pDrvStack, PCPDMDRVREG pDrvReg, 
             pDrvStack->pIAudioConnector = (PPDMIAUDIOCONNECTOR)pIBase->pfnQueryInterface(pIBase, PDMIAUDIOCONNECTOR_IID);
             if (pDrvStack->pIAudioConnector)
             {
-                /* Both input and output is disabled by default. Fix that: */
-                rc = pDrvStack->pIAudioConnector->pfnEnable(pDrvStack->pIAudioConnector, PDMAUDIODIR_OUT, true);
-                if (RT_SUCCESS(rc))
+                /* Both input and output is disabled by default. */
+                if (fEnabledIn)
                     rc = pDrvStack->pIAudioConnector->pfnEnable(pDrvStack->pIAudioConnector, PDMAUDIODIR_IN, true);
+
+                if (RT_SUCCESS(rc))
+                {
+                    if (fEnabledOut)
+                        rc = pDrvStack->pIAudioConnector->pfnEnable(pDrvStack->pIAudioConnector, PDMAUDIODIR_OUT, true);
+                }
+
                 if (RT_FAILURE(rc))
                 {
                     RTTestFailed(g_hTest, "Failed to enabled input and output: %Rrc", rc);
@@ -555,6 +563,22 @@ int audioTestDriverStackInit(PAUDIOTESTDRVSTACK pDrvStack, PCPDMDRVREG pDrvReg, 
     }
 
     return rc;
+}
+
+
+/**
+ * Initializes a driver stack.
+ *
+ * @returns VBox status code.
+ * @param   pDrvStack       The driver stack to initialize.
+ * @param   pDrvReg         The backend driver to use.
+ * @param   fEnabledIn      Whether input is enabled or not on creation time.
+ * @param   fEnabledOut     Whether output is enabled or not on creation time.
+ * @param   fWithDrvAudio   Whether to include DrvAudio in the stack or not.
+ */
+int audioTestDriverStackInit(PAUDIOTESTDRVSTACK pDrvStack, PCPDMDRVREG pDrvReg, bool fWithDrvAudio)
+{
+    return audioTestDriverStackInitEx(pDrvStack, pDrvReg, true /* fEnabledIn */, true /* fEnabledOut */, fWithDrvAudio);
 }
 
 
