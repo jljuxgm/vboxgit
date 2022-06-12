@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 86845 2020-11-10 11:11:14Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 86846 2020-11-10 11:13:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -242,6 +242,21 @@ bool UIAcquirePublicKeyDialog::loadFileContents(const QString &strPath, bool fIg
     {
         if (!fIgnoreErrors)
             msgCenter().publicKeyFilePathIsEmpty();
+        return false;
+    }
+
+    /* Make sure file exists and is of suitable size: */
+    QFileInfo fi(strPath);
+    if (!fi.exists())
+    {
+        if (!fIgnoreErrors)
+            msgCenter().publicKeyFileDoesntExist(strPath);
+        return false;
+    }
+    if (fi.size() > 10 * _1K)
+    {
+        if (!fIgnoreErrors)
+            msgCenter().publicKeyFileIsOfTooLargeSize(strPath);
         return false;
     }
 

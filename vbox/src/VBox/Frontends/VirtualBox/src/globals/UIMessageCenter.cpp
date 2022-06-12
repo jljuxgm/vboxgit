@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 86845 2020-11-10 11:11:14Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 86846 2020-11-10 11:13:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -1070,6 +1070,20 @@ void UIMessageCenter::publicKeyFilePathIsEmpty(QWidget *pParent /* = 0 */) const
 {
     alert(pParent, MessageType_Error,
           tr("Public key file path is empty."));
+}
+
+void UIMessageCenter::publicKeyFileDoesntExist(const QString &strPath, QWidget *pParent /* = 0 */) const
+{
+    alert(pParent, MessageType_Error,
+          tr("Failed to open the public key file <nobr><b>%1</b></nobr>. File doesn't exist.")
+             .arg(strPath));
+}
+
+void UIMessageCenter::publicKeyFileIsOfTooLargeSize(const QString &strPath, QWidget *pParent /* = 0 */) const
+{
+    alert(pParent, MessageType_Error,
+          tr("Failed to open the public key file <nobr><b>%1</b></nobr>. File is too large for the key.")
+             .arg(strPath));
 }
 
 void UIMessageCenter::publicKeyFileIsntReadable(const QString &strPath, QWidget *pParent /* = 0 */) const

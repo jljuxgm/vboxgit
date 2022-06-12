@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 86845 2020-11-10 11:11:14Z vboxsync $ */
+/* $Id: UIMessageCenter.h 86846 2020-11-10 11:13:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -309,6 +309,8 @@ public:
     void cannotDeleteConsoleConnection(const CCloudMachine &comMachine, QWidget *pParent = 0);
     void cannotDeleteConsoleConnection(const CProgress &comProgress, const QString &strMachineName, QWidget *pParent = 0);
     void publicKeyFilePathIsEmpty(QWidget *pParent = 0) const;
+    void publicKeyFileDoesntExist(const QString &strPath, QWidget *pParent = 0) const;
+    void publicKeyFileIsOfTooLargeSize(const QString &strPath, QWidget *pParent = 0) const;
     void publicKeyFileIsntReadable(const QString &strPath, QWidget *pParent = 0) const;
 
     /* API: Snapshot warnings: */
