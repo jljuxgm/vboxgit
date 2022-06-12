@@ -1,4 +1,4 @@
-/* $Id: tstRTCRest-1.cpp 84903 2020-06-22 13:58:32Z vboxsync $ */
+/* $Id: tstRTCRest-1.cpp 86376 2020-10-01 12:44:45Z vboxsync $ */
 /** @file
  * IPRT Testcase - REST C++ classes.
  */
@@ -2166,6 +2166,18 @@ public:
 
     TestResponse() : m_pArray(NULL), m_pMap(NULL), m_pInteger(NULL), m_pStrContentType(NULL)
     { }
+
+    ~TestResponse()
+    {
+        if (m_pStrContentType)
+            delete m_pStrContentType;
+        if (m_pInteger)
+            delete m_pInteger;
+        if (m_pMap)
+            delete m_pMap;
+        if (m_pArray)
+            delete m_pArray;
+    }
 
 protected:
     virtual int consumeHeader(uint32_t a_uMatchWord, const char *a_pchField, size_t a_cchField,
