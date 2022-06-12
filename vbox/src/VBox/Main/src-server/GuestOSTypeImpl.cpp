@@ -1,4 +1,4 @@
-/* $Id: GuestOSTypeImpl.cpp 85215 2020-07-11 13:30:59Z vboxsync $ */
+/* $Id: GuestOSTypeImpl.cpp 85216 2020-07-11 13:37:22Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -30,7 +30,7 @@ GuestOSType::GuestOSType()
     , mRAMSize(0)
     , mGraphicsControllerType(GraphicsControllerType_Null)
     , mVRAMSize(0)
-    , mHDDSize(0),
+    , mHDDSize(0)
     , mNetworkAdapterType(NetworkAdapterType_Am79C973)
     , mNumSerialEnabled(0)
     , mDVDStorageControllerType(StorageControllerType_PIIX3)
