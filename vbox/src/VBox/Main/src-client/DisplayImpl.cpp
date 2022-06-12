@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 85300 2020-07-13 10:04:45Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 85307 2020-07-13 12:38:15Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -788,7 +788,7 @@ int Display::i_handleDisplayResize(unsigned uScreenId, uint32_t bpp, void *pvVRA
     {
         if (fDisabled)
             ::FireGuestMonitorChangedEvent(mParent->i_getEventSource(),
-                                           GuestMonitorChangedEventType_Disabled,  uScreenId, 0, 0, 0, 0);
+                                           GuestMonitorChangedEventType_Disabled, uScreenId, 0, 0, 0, 0);
         else
             ::FireGuestMonitorChangedEvent(mParent->i_getEventSource(),
                                            GuestMonitorChangedEventType_Enabled, uScreenId, xOrigin, yOrigin, w, h);

@@ -1,4 +1,4 @@
-/* $Id: GuestFileImpl.cpp 85300 2020-07-13 10:04:45Z vboxsync $ */
+/* $Id: GuestFileImpl.cpp 85307 2020-07-13 12:38:15Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest file handling.
  */
@@ -526,7 +526,7 @@ int GuestFile::i_onFileNotify(PVBOXGUESTCTRLHOSTCBCTX pCbCtx, PVBOXGUESTCTRLHOST
                 alock.release();
 
                 com::SafeArray<BYTE> data((size_t)cbRead);
-                data.initFrom((BYTE*)dataCb.u.read.pvData, cbRead);
+                data.initFrom((BYTE *)dataCb.u.read.pvData, cbRead);
 
                 ::FireGuestFileReadEvent(mEventSource, mSession, this, mData.mOffCurrent, cbRead, ComSafeArrayAsInParam(data));
             }

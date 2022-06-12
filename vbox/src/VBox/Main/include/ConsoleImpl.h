@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 84618 2020-05-29 18:43:11Z vboxsync $ */
+/* $Id: ConsoleImpl.h 85307 2020-07-13 12:38:15Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -203,7 +203,7 @@ public:
     HRESULT i_onUSBDeviceDetach(IN_BSTR aId, IVirtualBoxErrorInfo *aError);
     HRESULT i_onBandwidthGroupChange(IBandwidthGroup *aBandwidthGroup);
     HRESULT i_onStorageDeviceChange(IMediumAttachment *aMediumAttachment, BOOL aRemove, BOOL aSilent);
-    HRESULT i_onExtraDataChange(IN_BSTR aMachineId, IN_BSTR aKey, IN_BSTR aVal);
+    HRESULT i_onExtraDataChange(const Bstr &aMachineId, const Bstr &aKey, const Bstr &aVal);
 
     HRESULT i_getGuestProperty(const Utf8Str &aName, Utf8Str *aValue, LONG64 *aTimestamp, Utf8Str *aFlags);
     HRESULT i_setGuestProperty(const Utf8Str &aName, const Utf8Str &aValue, const Utf8Str &aFlags);
