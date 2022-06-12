@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: postflight 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: postflight 87879 2021-02-25 18:08:03Z vboxsync $
 ## @file
 # Post flight installer script for the VirtualBox OS X kernel extensions.
 #
@@ -60,8 +60,14 @@ for item in $items; do
     fi
 done
 
+MACOS_VERS=$(sw_vers -productVersion)
+
 echo "Updating kernel cache (should trigger loading of new modules)."
-touch "/System/Library/Extensions/"
+# /System/Library/Extensions is readonly in Catalina and later,
+# so touch returns always false on these systems   
+if [[ ${MACOS_VERS} != 11.* ]] && [[ ${MACOS_VERS} != 10.15.* ]]; then
+    touch "/System/Library/Extensions/"
+fi
 kextcache -update-volume / || true
 
 load_service "org.virtualbox.additions.vboxservice" "/Library/LaunchDaemons" "root"
