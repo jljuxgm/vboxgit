@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.h 87015 2020-11-30 16:15:43Z vboxsync $ */
+/* $Id: UIHelpBrowserWidget.h 87157 2021-01-04 10:59:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class declaration.
  */
@@ -77,6 +77,7 @@ public:
     QIToolBar *toolbar() const { return m_pToolBar; }
 #endif
 
+    static const QPair<float, float> fontScaleMinMax;
 
 protected:
 
