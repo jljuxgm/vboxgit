@@ -1,4 +1,4 @@
-/* $Id: AudioTest.cpp 89431 2021-06-01 12:57:36Z vboxsync $ */
+/* $Id: AudioTest.cpp 89434 2021-06-01 13:14:16Z vboxsync $ */
 /** @file
  * Audio testing routines.
  * Common code which is being used by the ValidationKit and the debug / ValdikationKit audio driver(s).
@@ -1068,7 +1068,7 @@ int AudioTestSetObjWrite(PAUDIOTESTOBJ pObj, void *pvBuf, size_t cbBuf)
  * @returns VBox status code.
  * @param   pObj                Test object to add meta data for.
  * @param   pszFormat           Format string to add.
- * @param   va_list             Variable arguments list to use for the format string.
+ * @param   va                  Variable arguments list to use for the format string.
  */
 static int audioTestSetObjAddMetadataStrV(PAUDIOTESTOBJ pObj, const char *pszFormat, va_list va)
 {
