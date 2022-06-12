@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 88599 2021-04-20 09:13:59Z vboxsync $
+# $Id: Makefile.kmk 88602 2021-04-20 12:23:08Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -303,7 +303,8 @@ VBOX_GUI_INC_DIRS = \
 	./src/wizards/clonevd \
 	./src/wizards/exportappliance \
 	./src/wizards/importappliance \
-	./src/wizards/firstrun
+	./src/wizards/firstrun \
+	./src/wizards/editors
 
 VBOX_GUI_INC_DIRS += \
 	./src/manager \
