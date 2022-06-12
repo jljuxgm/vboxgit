@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 88778 2021-04-29 11:06:52Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 88779 2021-04-29 11:10:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -2804,8 +2804,8 @@ void UIMachineLogic::sltHandleCommitData()
 #ifdef VBOX_WITH_DEBUGGER_GUI
     /* Cleanup debugger before VBoxDbg module handle cleaned up: */
     cleanupDebugger();
-#endif
     sltCloseLogViewerWindow();
+#endif
     sltCloseFileManagerDialog();
     sltCloseVMInformationDialog();
     sltCloseGuestControlConsoleDialog();
