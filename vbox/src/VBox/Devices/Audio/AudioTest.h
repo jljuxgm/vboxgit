@@ -1,4 +1,4 @@
-/* $Id: AudioTest.h 89230 2021-05-23 01:21:26Z vboxsync $ */
+/* $Id: AudioTest.h 89265 2021-05-25 11:10:40Z vboxsync $ */
 /** @file
  * Audio testing routines.
  * Common code which is being used by the ValidationKit audio test (VKAT)
@@ -89,19 +89,6 @@ typedef struct AUDIOTESTTONEPARMS
 } AUDIOTESTTONEPARMS;
 /** Pointer to audio test tone parameters. */
 typedef AUDIOTESTTONEPARMS *PAUDIOTESTTONEPARMS;
-
-/**
- * Structure for keeping an audio test audio stream.
- */
-typedef struct AUDIOTESTSTREAM
-{
-    /** Created flag to avoid double destruction in backends. */
-    bool                  fCreated;
-    /** Backend-specific stream data. */
-    PDMAUDIOBACKENDSTREAM Backend;
-} AUDIOTESTSTREAM;
-/** Pointer to audio test stream. */
-typedef AUDIOTESTSTREAM *PAUDIOTESTSTREAM;
 
 /**
  * Enumeration for the test set mode.
