@@ -1,4 +1,4 @@
-/* $Id: DevOHCI.cpp 86484 2020-10-08 06:53:57Z vboxsync $ */
+/* $Id: DevOHCI.cpp 86858 2020-11-11 12:17:59Z vboxsync $ */
 /** @file
  * DevOHCI - Open Host Controller Interface for USB.
  */
@@ -3184,8 +3184,8 @@ static bool ohciR3ServiceTdMultiple(PPDMDEVINS pDevIns, POHCI pThis, VUSBXFERTYP
         struct OHCITDENTRY *pNext;
     }   Head;
 
-# ifdef VBOX_WITH_OHCI_PHYS_READ_CACHE
     POHCICC pThisCC = PDMDEVINS_2_DATA_CC(pDevIns, POHCICC);
+# ifdef VBOX_WITH_OHCI_PHYS_READ_CACHE
     ohciR3PhysReadCacheInvalidate(&pThisCC->CacheTD);
 # endif
 
