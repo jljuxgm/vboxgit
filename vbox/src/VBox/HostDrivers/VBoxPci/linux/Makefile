@@ -1,4 +1,4 @@
-# $Id: Makefile 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: Makefile 84947 2020-06-25 11:52:07Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Linux Host PCI Driver.
 #
@@ -39,7 +39,7 @@ VBOXMOD_OBJS = \
 	SUPR0IdcClient.o \
 	SUPR0IdcClientComponent.o \
 	linux/SUPR0IdcClient-linux.o
-ifeq ($(BUILD_TARGET_ARCH),x86)
+ifeq ($(VBOX_KBUILD_TARGET_ARCH),x86)
 VBOXMOD_OBJS += \
 	math/gcc/divdi3.o \
 	math/gcc/moddi3.o \
