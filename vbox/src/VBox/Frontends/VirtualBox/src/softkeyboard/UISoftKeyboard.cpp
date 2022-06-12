@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboard.cpp 88922 2021-05-07 08:52:20Z vboxsync $ */
+/* $Id: UISoftKeyboard.cpp 89042 2021-05-14 12:43:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class implementation.
  */
@@ -3853,6 +3853,7 @@ UISoftKeyboard::UISoftKeyboard(QWidget *pParent,
     , m_pLayoutSelector(0)
     , m_pSettingsWidget(0)
     , m_pStatusBarWidget(0)
+    , m_iGeometrySaveTimerId(-1)
 {
     setWindowTitle(QString("%1 - %2").arg(m_strMachineName).arg(tr("Soft Keyboard")));
     prepareObjects();
@@ -3906,19 +3907,6 @@ void UISoftKeyboard::closeEvent(QCloseEvent *event)
     event->ignore();
 }
 
-void UISoftKeyboard::resizeEvent(QResizeEvent *pEvent)
-{
-    QMainWindowWithRestorableGeometryAndRetranslateUi::resizeEvent(pEvent);
-    saveDialogGeometry();
-}
-
-void UISoftKeyboard
-::moveEvent(QMoveEvent *pEvent)
-{
-    QMainWindowWithRestorableGeometryAndRetranslateUi::moveEvent(pEvent);
-    saveDialogGeometry();
-}
-
 bool UISoftKeyboard::event(QEvent *pEvent)
 {
     if (pEvent->type() == QEvent::WindowDeactivate)
@@ -3935,6 +3923,24 @@ bool UISoftKeyboard::event(QEvent *pEvent)
                 sltHandleHelpRequest();
         }
     }
+    else if (pEvent->type() == QEvent::Resize ||
+             pEvent->type() == QEvent::Move)
+    {
+        if (m_iGeometrySaveTimerId != -1)
+            killTimer(m_iGeometrySaveTimerId);
+        m_iGeometrySaveTimerId = startTimer(300);
+    }
+    else if (pEvent->type() == QEvent::Timer)
+    {
+        QTimerEvent *pTimerEvent = static_cast<QTimerEvent*>(pEvent);
+        if (pTimerEvent->timerId() == m_iGeometrySaveTimerId)
+        {
+            killTimer(m_iGeometrySaveTimerId);
+            m_iGeometrySaveTimerId = -1;
+            saveDialogGeometry();
+        }
+    }
+
     return QMainWindowWithRestorableGeometryAndRetranslateUi::event(pEvent);
 }
 

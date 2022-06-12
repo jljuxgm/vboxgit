@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboard.h 88912 2021-05-06 18:06:41Z vboxsync $ */
+/* $Id: UISoftKeyboard.h 89042 2021-05-14 12:43:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class declaration.
  */
@@ -69,8 +69,6 @@ protected:
     virtual void retranslateUi() /* override */;
     virtual bool shouldBeMaximized() const /* override */;
     virtual void closeEvent(QCloseEvent *event) /* override */;
-    virtual void resizeEvent(QResizeEvent *pEvent) /* override */;
-    virtual void moveEvent(QMoveEvent *pEvent) /* override */;
     bool event(QEvent *pEvent) /* override */;
 
 private slots:
@@ -134,6 +132,7 @@ private:
 
     UISoftKeyboardSettingsWidget  *m_pSettingsWidget;
     UISoftKeyboardStatusBarWidget *m_pStatusBarWidget;
+    int m_iGeometrySaveTimerId;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_softkeyboard_UISoftKeyboard_h */
