@@ -16,7 +16,7 @@
 <refentry id="vboxmanage-cloud" lang="en">
 
   <refentryinfo>
-    <pubdate>$Date: 2020-06-05 20:30:31 +0800 (Fri, 05 Jun 2020) $</pubdate>
+    <pubdate>$Date: 2020-06-05 20:43:14 +0800 (Fri, 05 Jun 2020) $</pubdate>
     <title>VBoxManage cloud</title>
   </refentryinfo>
 
@@ -51,7 +51,7 @@
       <arg choice="req">--compartment-id=<replaceable>string</replaceable></arg>
       <arg>--state=<replaceable>string</replaceable></arg>
     </cmdsynopsis>
-     
+
     <!-- Cloud instance commands -->
       <cmdsynopsis id="synopsis-vboxmanage-cloudinstance-create" sepchar=" ">
        <command moreinfo="none">VBoxManage cloud</command>
