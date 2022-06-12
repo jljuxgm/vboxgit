@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.h 87022 2020-12-01 13:33:04Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.h 87101 2020-12-17 14:30:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class declaration.
  */
@@ -270,6 +270,8 @@ private slots:
 
         /** Handles signal requesting switch to Performance pane of machine with @a uMachineId. */
         void sltSwitchToMachinePerformancePane(const QUuid &uMachineId);
+        /** Handles signal requesting switch to Resources pane. */
+        void sltSwitchToResourcesPane();
     /** @} */
 
 private:

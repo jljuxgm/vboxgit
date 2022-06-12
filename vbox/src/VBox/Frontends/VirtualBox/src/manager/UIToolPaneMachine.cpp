@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneMachine.cpp 87022 2020-12-01 13:33:04Z vboxsync $ */
+/* $Id: UIToolPaneMachine.cpp 87101 2020-12-17 14:30:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolPaneMachine class implementation.
  */
@@ -207,6 +207,8 @@ void UIToolPaneMachine::openTool(UIToolType enmType)
                 m_pLayout->addWidget(m_pPanePerformanceMonitor);
                 m_pLayout->setCurrentWidget(m_pPanePerformanceMonitor);
 
+                connect(m_pPanePerformanceMonitor, &UIPerformanceMonitor::sigSwitchToResourcesPane,
+                        this, &UIToolPaneMachine::sigSwitchToResourcesPane);
                 break;
             }
             default:

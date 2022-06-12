@@ -1,4 +1,4 @@
-/* $Id: UIPerformanceMonitor.h 86233 2020-09-23 12:10:51Z vboxsync $ */
+/* $Id: UIPerformanceMonitor.h 87101 2020-12-17 14:30:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPerformanceMonitor class declaration.
  */
@@ -110,6 +110,10 @@ private:
 class  SHARED_LIBRARY_STUFF UIPerformanceMonitor : public QIWithRetranslateUI<QWidget>
 {
     Q_OBJECT;
+
+ signals:
+
+    void sigSwitchToResourcesPane();
 
 public:
 
