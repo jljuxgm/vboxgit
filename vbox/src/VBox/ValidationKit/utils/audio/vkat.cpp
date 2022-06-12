@@ -1,4 +1,4 @@
-/* $Id: vkat.cpp 89501 2021-06-04 10:30:49Z vboxsync $ */
+/* $Id: vkat.cpp 89507 2021-06-04 12:12:37Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) utility for testing and validating the audio stack.
  */
@@ -1950,6 +1950,17 @@ static RTEXITCODE audioTestPlayOne(const char *pszFile, PCPDMDRVREG pDrvReg, con
                                                         cMsPreBuffer, cMsSchedulingHint, &pStream, &CfgAcq);
             if (RT_SUCCESS(rc))
             {
+                /*
+                 * Automatically enable the mixer if the wave file and the
+                 * output parameters doesn't match.
+                 */
+                if (   !fWithMixer
+                    && !PDMAudioPropsAreEqual(&WaveFile.Props, &pStream->Cfg.Props))
+                {
+                    RTMsgInfo("Enabling the mixer buffer.\n");
+                    fWithMixer = true;
+                }
+
                 /*
                  * Create a mixer wrapper.  This is just a thin wrapper if fWithMixer
                  * is false, otherwise it's doing mixing, resampling and recoding.
