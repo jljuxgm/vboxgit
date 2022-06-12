@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vcsbugreference.py 84550 2020-05-26 18:50:43Z vboxsync $
+# $Id: vcsbugreference.py 84599 2020-05-29 01:12:32Z vboxsync $
 
 """
 Test Manager - VcsBugReferences
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84550 $"
+__version__ = "$Revision: 84599 $"
 
 
 # Standard python imports.
@@ -85,6 +85,24 @@ class VcsBugReferenceData(ModelDataBase):
         self.iRevision          = iRevision;
         self.sBugTracker        = sBugTracker;
         self.lBugNo             = lBugNo;
+        return self;
+
+
+class VcsBugReferenceDataEx(VcsBugReferenceData):
+    """
+    Extended version of VcsBugReferenceData that includes the commit details.
+    """
+    def __init__(self):
+        VcsBugReferenceData.__init__(self);
+        self.tsCreated          = None;
+        self.sAuthor            = None;
+        self.sMessage           = None;
+
+    def initFromDbRow(self, aoRow):
+        VcsBugReferenceData.initFromDbRow(self, aoRow);
+        self.tsCreated          = aoRow[4];
+        self.sAuthor            = aoRow[5];
+        self.sMessage           = aoRow[6];
         return self;
 
 
@@ -181,6 +199,31 @@ LIMIT 1
         if self._oDb.getRowCount() == 0:
             return 0;
         return self._oDb.fetchOne()[0];
+
+    def fetchForBug(self, sBugTracker, lBugNo):
+        """
+        Fetches VCS revisions for a bug.
+
+        Returns an array (list) of VcsBugReferenceDataEx items, empty list if none.
+        Raises exception on error.
+        """
+        self._oDb.execute('''
+SELECT  VcsBugReferences.*,
+        VcsRevisions.tsCreated,
+        VcsRevisions.sAuthor,
+        VcsRevisions.sMessage
+FROM    VcsBugReferences
+LEFT OUTER JOIN VcsRevisions ON (    VcsRevisions.sRepository = VcsBugReferences.sRepository
+                                 AND VcsRevisions.iRevision   = VcsBugReferences.iRevision )
+WHERE   sBugTracker = %s
+    AND lBugNo      = %s
+ORDER BY VcsRevisions.tsCreated, VcsBugReferences.sRepository, VcsBugReferences.iRevision
+''', (sBugTracker, lBugNo,));
+
+        aoRows = [];
+        for _ in range(self._oDb.getRowCount()):
+            aoRows.append(VcsBugReferenceDataEx().initFromDbRow(self._oDb.fetchOne()));
+        return aoRows;
 
 
 #

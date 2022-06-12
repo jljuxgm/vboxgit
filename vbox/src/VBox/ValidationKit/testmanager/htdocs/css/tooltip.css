@@ -1,4 +1,4 @@
-/* $Id: tooltip.css 83440 2020-03-26 14:20:22Z vboxsync $ */
+/* $Id: tooltip.css 84599 2020-05-29 01:12:32Z vboxsync $ */
 /** @file
  * Test Manager - Tooltip content (via iframe).
  */
@@ -27,11 +27,11 @@
 /*
  * Form the main divs in template-tooltip.html.
  */
-#tooltip {
+.tooltip-main {
     width:          100%;
 }
 
-#tooltip-inner {
+.tooltip-inner {
     clear:          both;
     border:         2px solid black;
     padding-left:   2px;

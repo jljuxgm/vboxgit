@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: config.py 84550 2020-05-26 18:50:43Z vboxsync $
+# $Id: config.py 84599 2020-05-29 01:12:32Z vboxsync $
 
 """
 Test Manager Configuration.
@@ -26,14 +26,14 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84550 $"
+__version__ = "$Revision: 84599 $"
 
 import os;
 
 ## Test Manager version string.
 g_ksVersion             = 'v0.1.0';
 ## Test Manager revision string.
-g_ksRevision            = ('$Revision: 84550 $')[11:-2];
+g_ksRevision            = ('$Revision: 84599 $')[11:-2];
 
 ## Enable VBox specific stuff.
 g_kfVBoxSpecific        = True;
@@ -210,8 +210,8 @@ g_kfDebugDbXcpt         = True;
 
 ## Where to write the glue debug.
 # None indicates apache error log, string indicates a file.
-#g_ksSrcGlueDebugLogDst  = '/tmp/testmanager-srv-glue.log';
-g_ksSrcGlueDebugLogDst  = None;
+#g_ksSrvGlueDebugLogDst  = '/tmp/testmanager-srv-glue.log';
+g_ksSrvGlueDebugLogDst  = None;
 ## Whether to enable CGI trace back in the server glue.
 g_kfSrvGlueCgiTb        = False;
 ## Enables glue debug output.
@@ -222,7 +222,7 @@ g_kfSrvGlueDebugTS      = True;
 g_kfSrvGlueCgiDumpEnv   = False;
 ## Whether to dumping CGI script arguments.
 g_kfSrvGlueCgiDumpArgs  = False;
-## Enables task scheduler debug output to g_ksSrcGlueDebugLogDst.
+## Enables task scheduler debug output to g_ksSrvGlueDebugLogDst.
 g_kfSrvGlueDebugScheduler = False;
 
 ## Enables the SQL trace back.

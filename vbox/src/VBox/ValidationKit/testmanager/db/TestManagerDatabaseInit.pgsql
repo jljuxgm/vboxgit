@@ -1,4 +1,4 @@
--- $Id: TestManagerDatabaseInit.pgsql 83398 2020-03-24 20:22:44Z vboxsync $
+-- $Id: TestManagerDatabaseInit.pgsql 84599 2020-05-29 01:12:32Z vboxsync $
 --- @file
 -- VBox Test Manager Database Creation script.
 --
@@ -1312,6 +1312,30 @@ CREATE TABLE VcsRevisions (
 
     UNIQUE (sRepository, iRevision)
 );
+
+
+--- @table VcsBugReferences
+-- This is for relating commits to a bug and vice versa.
+--
+-- This feature isn't so much for the test manager as a cheap way of extending
+-- bug trackers without VCS integration.  We just need to parse the commit
+-- messages when inserting them into the VcsRevisions table.
+--
+-- Same input, updating and history considerations as VcsRevisions.
+--
+CREATE TABLE VcsBugReferences (
+    --- The version control tree name.
+    sRepository         TEXT        NOT NULL,
+    --- The version control tree revision number.
+    iRevision           INTEGER     NOT NULL,
+    --- The bug tracker identifier - see g_kaBugTrackers in config.py.
+    sBugTracker         CHAR(4)     NOT NULL,
+    --- The bug number in the bug tracker.
+    lBugNo              BIGINT      NOT NULL,
+
+    UNIQUE (sRepository, iRevision, sBugTracker, lBugNo)
+);
+CREATE INDEX VcsBugReferencesLookupIdx ON VcsBugReferences (sBugTracker, lBugNo);
 
 
 
