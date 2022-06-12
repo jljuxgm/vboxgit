@@ -1,4 +1,4 @@
-# $Id: Makefile.module.kms 85939 2020-08-28 18:36:30Z vboxsync $
+# $Id: Makefile.module.kms 85942 2020-08-28 20:09:43Z vboxsync $
 ## @file
 # VirtualBox Guest Additions Module Makefile.
 #
@@ -21,12 +21,6 @@
 obj ?= $(CURDIR)
 include $(obj)/Makefile-header.gmk
 VBOXDRM_DIR = $(VBOX_MODULE_SRC_DIR)
-
-# Allow building directly from the subdirectory without assuming the toplevel
-# makefile has done the copying. Not the default use case, but can be handy.
-ifndef KBUILD_EXTRA_SYMBOLS
-KBUILD_EXTRA_SYMBOLS=$(abspath $(VBOXDRM_DIR)/../vboxguest/Module.symvers)
-endif
 
 # We want to build on Linux 3.11 and later and on all EL 7 kernels.
 VBOX_BUILD =
