@@ -1,4 +1,4 @@
-/* $Id: UIVMCloseDialog.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIVMCloseDialog.cpp 86943 2020-11-20 17:44:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMCloseDialog class implementation.
  */
@@ -511,7 +511,9 @@ void UIVMCloseDialog::prepareButtonBox()
                                        | QDialogButtonBox::Ok);
         connect(pButtonBox, &QIDialogButtonBox::accepted, this, &UIVMCloseDialog::accept);
         connect(pButtonBox, &QIDialogButtonBox::rejected, this, &UIVMCloseDialog::reject);
-        connect(pButtonBox, &QIDialogButtonBox::helpRequested, &msgCenter(), &UIMessageCenter::sltShowHelpHelpDialog);
+        connect(pButtonBox->button(QIDialogButtonBox::Help), &QPushButton::pressed,
+                &msgCenter(), &UIMessageCenter::sltHandleDialogHelpButtonPress);
+        pButtonBox->button(QIDialogButtonBox::Help)->setProperty("helptag", "intro-save-machine-state");
 
         /* Add into layout: */
         m_pMainLayout->addWidget(pButtonBox);
