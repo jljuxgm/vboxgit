@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioDSound.cpp 88230 2021-03-22 09:55:26Z vboxsync $ */
+/* $Id: DrvHostAudioDSound.cpp 88233 2021-03-22 10:06:14Z vboxsync $ */
 /** @file
  * Windows host backend driver using DirectSound.
  */
@@ -35,7 +35,7 @@
 #include "VBoxDD.h"
 #ifdef VBOX_WITH_AUDIO_MMNOTIFICATION_CLIENT
 # include <new> /* For bad_alloc. */
-# include "VBoxMMNotificationClient.h"
+# include "DrvHostAudioDSoundMMNotifClient.h"
 #endif
 
 
@@ -223,7 +223,7 @@ typedef struct DRVHOSTDSOUND
     /** The Direct Sound capturing interface. */
     LPDIRECTSOUNDCAPTURE8       pDSC;
 #ifdef VBOX_WITH_AUDIO_MMNOTIFICATION_CLIENT
-    VBoxMMNotificationClient   *m_pNotificationClient;
+    DrvHostAudioDSoundMMNotifClient   *m_pNotificationClient;
 #endif
 #ifdef VBOX_WITH_AUDIO_CALLBACKS
     /** Callback function to the upper driver.
@@ -2712,7 +2712,7 @@ static DECLCALLBACK(int) drvHostDSoundConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pC
     {
         try
         {
-            pThis->m_pNotificationClient = new VBoxMMNotificationClient();
+            pThis->m_pNotificationClient = new DrvHostAudioDSoundMMNotifClient();
 
             hr = pThis->m_pNotificationClient->Initialize();
             if (SUCCEEDED(hr))
