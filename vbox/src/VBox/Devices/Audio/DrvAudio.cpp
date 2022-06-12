@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 88059 2021-03-09 15:33:52Z vboxsync $ */
+/* $Id: DrvAudio.cpp 88060 2021-03-09 15:55:57Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -3094,7 +3094,7 @@ static DECLCALLBACK(int) drvAudioStreamDestroy(PPDMIAUDIOCONNECTOR pInterface, P
     LogRel2(("Audio: Destroying stream '%s'\n", pStream->szName));
 
     LogFlowFunc(("[%s] cRefs=%RU32\n", pStream->szName, pStream->cRefs));
-    if (pStream->cRefs < 1)
+    if (pStream->cRefs <= 1)
     {
         rc = drvAudioStreamUninitInternal(pThis, pStream);
         if (RT_SUCCESS(rc))
