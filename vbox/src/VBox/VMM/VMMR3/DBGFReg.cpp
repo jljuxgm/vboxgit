@@ -1,4 +1,4 @@
-/* $Id: DBGFReg.cpp 86147 2020-09-17 11:21:16Z vboxsync $ */
+/* $Id: DBGFReg.cpp 86149 2020-09-17 11:34:21Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Register Methods.
  */
@@ -2255,9 +2255,8 @@ VMMR3DECL(int) DBGFR3RegNmSet(PUVM pUVM, VMCPUID idDefCpu, const char *pszReg, P
  * @param   pUVM                The user mode VM handle.
  * @param   idDefCpu            The virtual CPU ID for the default CPU register
  *                              set.  Can be OR'ed with DBGFREG_HYPER_VMCPUID.
- * @param   pszReg              The register to query.
- * @param   pValue              The value to set
- * @param   enmType             How to interpret the value in @a pValue.
+ * @param   paRegs              The array of registers to set.
+ * @param   cRegs               Number of registers in the array.
  *
  * @todo This is a _very_ lazy implementation by a lazy developer, some semantics
   *      need to be figured out before the real implementation especially how and
