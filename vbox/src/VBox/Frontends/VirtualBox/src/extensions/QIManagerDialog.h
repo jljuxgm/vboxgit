@@ -1,4 +1,4 @@
-/* $Id: QIManagerDialog.h 86986 2020-11-26 14:22:34Z vboxsync $ */
+/* $Id: QIManagerDialog.h 88873 2021-05-05 09:13:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIManagerDialog class declaration.
  */
@@ -153,6 +153,8 @@ protected:
         /** Handles close @a pEvent. */
         virtual void closeEvent(QCloseEvent *pEvent) /* override */;
     /** @} */
+        /** Returns the value of m_fCloseEmitted. */
+        bool closeEmitted() const { return m_fCloseEmitted; }
 
 private slots:
 

@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerDialog.cpp 87001 2020-11-27 09:48:39Z vboxsync $ */
+/* $Id: UIFileManagerDialog.cpp 88873 2021-05-05 09:13:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerDialog class implementation.
  */
@@ -143,7 +143,7 @@ bool UIFileManagerDialog::shouldBeMaximized() const
 
 void UIFileManagerDialog::sltSetCloseButtonShortCut(QKeySequence shortcut)
 {
-    if (button(ButtonType_Close))
+    if (!closeEmitted() &&  button(ButtonType_Close))
         button(ButtonType_Close)->setShortcut(shortcut);
 }
 

@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerDialog.cpp 87001 2020-11-27 09:48:39Z vboxsync $ */
+/* $Id: UIVMLogViewerDialog.cpp 88873 2021-05-05 09:13:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerDialog class implementation.
  */
@@ -158,7 +158,7 @@ bool UIVMLogViewerDialog::shouldBeMaximized() const
 
 void UIVMLogViewerDialog::sltSetCloseButtonShortCut(QKeySequence shortcut)
 {
-    if (button(ButtonType_Close))
+    if (!closeEmitted() &&  button(ButtonType_Close))
         button(ButtonType_Close)->setShortcut(shortcut);
 }
 
