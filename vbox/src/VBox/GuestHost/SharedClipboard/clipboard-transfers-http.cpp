@@ -1,4 +1,4 @@
-/* $Id: clipboard-transfers-http.cpp 87452 2021-01-27 17:11:25Z vboxsync $ */
+/* $Id: clipboard-transfers-http.cpp 87454 2021-01-27 18:31:48Z vboxsync $ */
 /** @file
  * Shared Clipboard: HTTP server implementation for Shared Clipboard transfers on UNIX-y guests / hosts.
  */
@@ -29,7 +29,7 @@
 #include <iprt/asm.h>
 #include <iprt/assert.h>
 #include <iprt/ctype.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/file.h>
 #include <iprt/getopt.h>
 #include <iprt/initterm.h>

@@ -1,4 +1,4 @@
-/** $Id: clipboard.cpp 87453 2021-01-27 17:16:39Z vboxsync $ */
+/** $Id: clipboard.cpp 87454 2021-01-27 18:31:48Z vboxsync $ */
 /** @file
  * Guest Additions - X11 Shared Clipboard.
  */
@@ -155,7 +155,6 @@ DECLCALLBACK(void) ShClX11ReportFormatsCallback(PSHCLCONTEXT pCtx, SHCLFORMATS f
     LogFlowFuncLeaveRC(rc2);
 }
 
-/** @copydoc ShClX11RequestFromX11CompleteCallback */
 DECLCALLBACK(void) ShClX11RequestFromX11CompleteCallback(PSHCLCONTEXT pCtx,
                                                          int rcCompletion, CLIPREADCBREQ *pReq, void *pv, uint32_t cb)
 {
