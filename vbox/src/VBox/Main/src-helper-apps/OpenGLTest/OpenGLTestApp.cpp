@@ -1,4 +1,4 @@
-/* $Id: OpenGLTestApp.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: OpenGLTestApp.cpp 86857 2020-11-11 09:12:23Z vboxsync $ */
 /** @file
  * VBox host opengl support test application.
  */
@@ -33,26 +33,30 @@
 
 #include <string.h>
 
-#define VBOXGLTEST_WITH_LOGGING
+#define VBOXGLTEST_WITH_LOGGING /** @todo r=andy Is this intentional? */
 
 #ifdef VBOXGLTEST_WITH_LOGGING
-#include "package-generated.h"
+# include "package-generated.h"
 
-#include <iprt/log.h>
-#include <iprt/param.h>
-#include <iprt/time.h>
-#include <iprt/system.h>
-#include <iprt/process.h>
-#include <iprt/env.h>
+# include <iprt/log.h>
+# include <iprt/param.h>
+# include <iprt/time.h>
+# include <iprt/system.h>
+# include <iprt/process.h>
+# include <iprt/env.h>
 
-#include <VBox/log.h>
-#include <VBox/version.h>
+# include <VBox/log.h>
+# include <VBox/version.h>
+#endif /* VBOXGLTEST_WITH_LOGGING */
+
+#ifndef RT_OS_WINDOWS
+# include <GL/gl.h> /* For GLubyte and friends. */
 #endif
 
 #ifdef VBOX_WITH_VIDEOHWACCEL
-#include <QGLWidget>
-#include <QApplication>
-#include <VBox/VBoxGL2D.h>
+# include <QGLWidget>
+# include <QApplication>
+# include <VBox/VBoxGL2D.h>
 #endif
 
 /**
@@ -455,7 +459,7 @@ int main(int argc, char **argv)
                     break;
 
                 case 'V':
-                    RTPrintf("$Revision: 82968 $\n");
+                    RTPrintf("$Revision: 86857 $\n");
                     return 0;
 
                 case VERR_GETOPT_UNKNOWN_OPTION:
