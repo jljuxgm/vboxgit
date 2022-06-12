@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsInterface.cpp 85679 2020-08-11 06:47:35Z vboxsync $ */
+/* $Id: UIMachineSettingsInterface.cpp 85680 2020-08-11 09:33:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsInterface class implementation.
  */
@@ -143,6 +143,13 @@ UIMachineSettingsInterface::UIMachineSettingsInterface(const QUuid &uMachineId)
     : m_uMachineId(uMachineId)
     , m_pActionPool(0)
     , m_pCache(0)
+    , m_pStatusBarEditor(0)
+    , m_pMenuBarEditor(0)
+    , m_pCheckBoxShowMiniToolBar(0)
+    , m_pComboToolBarAlignment(0)
+    , m_pLabelVisualState(0)
+    , m_pVisualStateEditor(0)
+    , m_pLabelMiniToolBar(0)
 {
     /* Prepare: */
     prepare();
