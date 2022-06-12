@@ -1,4 +1,4 @@
-/* $Id: DragAndDrop.h 85409 2020-07-22 08:56:22Z vboxsync $ */
+/* $Id: DragAndDrop.h 85411 2020-07-22 10:31:03Z vboxsync $ */
 /** @file
  * DnD - Shared functions between host and guest.
  */
@@ -308,6 +308,7 @@ uint64_t DnDTransferListGetRootCount(PDNDTRANSFERLIST pList);
 const char *DnDTransferListGetRootPathAbs(PDNDTRANSFERLIST pList);
 
 PDNDTRANSFEROBJECT DnDTransferListObjGetFirst(PDNDTRANSFERLIST pList);
+void DnDTransferListObjRemove(PDNDTRANSFERLIST pList, PDNDTRANSFEROBJECT pObj);
 void DnDTransferListObjRemoveFirst(PDNDTRANSFERLIST pList);
 uint64_t DnDTransferListObjCount(PDNDTRANSFERLIST pList);
 uint64_t DnDTransferListObjTotalBytes(PDNDTRANSFERLIST pList);
