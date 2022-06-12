@@ -1,5 +1,5 @@
 # !kmk_ash
-# $Id: gen-slickedit-workspace.sh 87125 2020-12-24 15:04:30Z vboxsync $
+# $Id: gen-slickedit-workspace.sh 87331 2021-01-20 19:02:52Z vboxsync $
 ## @file
 # Script for generating a SlickEdit workspace.
 #
@@ -662,6 +662,10 @@ EOF
 #define PDMDEVINSINT_DECLARED           1
 #define VBOX_WITH_HGCM                  1
 #define VBOXCALL
+
+#define HM_NAMELESS_UNION_TAG(a_Tag)
+#define HM_UNION_NM(a_Nm)
+#define HM_STRUCT_NM(a_Nm)
 
 #define PGM_ALL_CB_DECL(type)           type
 #define PGM_ALL_CB2_DECL(type)          type
