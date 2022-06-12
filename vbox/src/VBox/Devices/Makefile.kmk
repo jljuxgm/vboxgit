@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 85655 2020-08-10 08:02:03Z vboxsync $
+# $Id: Makefile.kmk 85657 2020-08-10 08:11:55Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -625,7 +625,7 @@ endif
  ifeq ($(KBUILD_TARGET),darwin)
   VBoxDD_SOURCES += \
 	Audio/DrvHostCoreAudio.cpp \
-  Audio/DrvHostCoreAudio-auth.mm
+	Audio/DrvHostCoreAudio-auth.mm
  endif
 
  ifeq ($(KBUILD_TARGET),win)
