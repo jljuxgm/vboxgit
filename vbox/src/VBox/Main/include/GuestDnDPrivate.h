@@ -1,4 +1,4 @@
-/* $Id: GuestDnDPrivate.h 85537 2020-07-30 06:55:32Z vboxsync $ */
+/* $Id: GuestDnDPrivate.h 85549 2020-07-30 09:59:46Z vboxsync $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget +
  * GuestDnDSource.
@@ -158,6 +158,8 @@ struct GuestDnDMetaData
         if (cbSize == cbAllocated)
             return VINF_SUCCESS;
 
+        cbSize = RT_ALIGN_Z(cbSize, PAGE_SIZE);
+
         if (cbSize > _32M) /* Meta data can be up to 32MB. */
             return VERR_BUFFER_OVERFLOW;
 
@@ -165,13 +167,12 @@ struct GuestDnDMetaData
         if (!cbAllocated)
         {
             Assert(cbData == 0);
-            pvTmp = RTMemAllocZ(RT_ALIGN_Z(cbSize, 4096));
+            pvTmp = RTMemAllocZ(cbSize);
         }
         else
         {
             AssertPtr(pvData);
-            pvTmp = RTMemRealloc(pvData, RT_ALIGN_Z(cbSize, 4096));
-            RT_BZERO(pvTmp, cbSize);
+            pvTmp = RTMemRealloc(pvData, cbSize);
         }
 
         if (pvTmp)
