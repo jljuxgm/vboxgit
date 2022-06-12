@@ -1,4 +1,4 @@
-/* $Id: VBoxUSB.cpp 85124 2020-07-08 21:13:30Z vboxsync $ */
+/* $Id: VBoxUSB.cpp 85175 2020-07-10 12:52:33Z vboxsync $ */
 /** @file
  * VirtualBox USB driver for Darwin.
  *
@@ -1156,7 +1156,7 @@ org_virtualbox_VBoxUSBDevice::start(IOService *pProvider)
     m_pDevice = OSDynamicCast(IOUSBDevice, pProvider);
     if (!m_pDevice)
     {
-        printf("VBoxUSBDevice::start([%p], %p {%s}): failed!\n", this, pProvider, pProvider->getName());
+        printf("VBoxUSBDevice::start([%p], %p {%s}): failed!\n", (void *)this, (void *)pProvider, pProvider->getName());
         return false;
     }
 
@@ -1740,7 +1740,7 @@ org_virtualbox_VBoxUSBInterface::start(IOService *pProvider)
     }
     else
     {
-        printf("VBoxUSBInterface::start([%p], %p {%s}): failed!\n", this, pProvider, pProvider->getName());
+        printf("VBoxUSBInterface::start([%p], %p {%s}): failed!\n", (void *)this, (void *)pProvider, pProvider->getName());
         fRc = false;
     }
 
