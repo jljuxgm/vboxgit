@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 88209 2021-03-19 17:45:52Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 88211 2021-03-19 18:00:26Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -3519,6 +3519,7 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
     catch (ConfigError &x)
     {
         // InsertConfig threw something:
+        VMR3SetError(pUVM, x.m_vrc, RT_SRC_POS, "Caught ConfigError: %Rrc - %s", x.m_vrc, x.what());
         return x.m_vrc;
     }
     catch (HRESULT hrcXcpt)
