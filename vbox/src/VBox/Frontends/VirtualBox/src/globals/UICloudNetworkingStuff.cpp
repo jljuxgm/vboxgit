@@ -1,4 +1,4 @@
-/* $Id: UICloudNetworkingStuff.cpp 85190 2020-07-10 14:51:15Z vboxsync $ */
+/* $Id: UICloudNetworkingStuff.cpp 86076 2020-09-09 15:34:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudNetworkingStuff namespace implementation.
  */
@@ -249,6 +249,21 @@ QVector<CCloudProvider> UICloudNetworkingStuff::listCloudProviders(QString &strE
     }
     /* Return empty list by default: */
     return QVector<CCloudProvider>();
+}
+
+bool UICloudNetworkingStuff::cloudProviderId(const CCloudProvider &comCloudProvider,
+                                             QUuid &uResult,
+                                             QWidget *pParent /* = 0 */)
+{
+    const QUuid uId = comCloudProvider.GetId();
+    if (!comCloudProvider.isOk())
+        msgCenter().cannotAcquireCloudProviderParameter(comCloudProvider, pParent);
+    else
+    {
+        uResult = uId;
+        return true;
+    }
+    return false;
 }
 
 bool UICloudNetworkingStuff::cloudProviderShortName(const CCloudProvider &comCloudProvider,

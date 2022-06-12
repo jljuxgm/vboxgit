@@ -1,4 +1,4 @@
-/* $Id: UICloudNetworkingStuff.h 85190 2020-07-10 14:51:15Z vboxsync $ */
+/* $Id: UICloudNetworkingStuff.h 86076 2020-09-09 15:34:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudNetworkingStuff namespace declaration.
  */
@@ -88,6 +88,10 @@ namespace UICloudNetworkingStuff
     /** Acquires cloud providers, using @a strErrorMessage to store messages to. */
     SHARED_LIBRARY_STUFF QVector<CCloudProvider> listCloudProviders(QString &strErrorMessage);
 
+    /** Acquires @a comCloudProvider ID as a @a uResult, using @a pParent to show messages according to. */
+    SHARED_LIBRARY_STUFF bool cloudProviderId(const CCloudProvider &comCloudProvider,
+                                              QUuid &uResult,
+                                              QWidget *pParent = 0);
     /** Acquires @a comCloudProvider short name as a @a strResult, using @a pParent to show messages according to. */
     SHARED_LIBRARY_STUFF bool cloudProviderShortName(const CCloudProvider &comCloudProvider,
                                                      QString &strResult,
