@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.h 86634 2020-10-20 07:25:40Z vboxsync $ */
+/* $Id: UIHelpBrowserWidget.h 86697 2020-10-23 18:52:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class declaration.
  */
@@ -121,7 +121,7 @@ private:
     /** @} */
 
     QString       m_strHelpFilePath;
-#ifdef RT_OS_LINUX
+#if defined(RT_OS_LINUX) && defined(VBOX_WITH_DOCS_QHELP)
     QHelpEngine  *m_pHelpEngine;
 #endif
     UIHelpBrowserViewer *m_pContentViewer;
