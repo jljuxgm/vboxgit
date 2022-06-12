@@ -1,4 +1,4 @@
-/* $Id: HDAStream.h 88137 2021-03-16 12:22:05Z vboxsync $ */
+/* $Id: HDAStream.h 88158 2021-03-17 14:39:22Z vboxsync $ */
 /** @file
  * HDAStream.h - Streams for HD Audio.
  */
@@ -124,7 +124,13 @@ typedef struct HDASTREAMSTATE
      *  BDLE interrupt-on-completion (IOC) bits set. */
     uint8_t                 cTransferPendingInterrupts;
     /** Unused, padding. */
-    uint8_t                 abPadding1[3];
+    uint8_t                 abPadding1[2];
+    /** Input streams only: Set when we switch from feeding the guest silence and
+     *  commits to proving actual audio input bytes. */
+    bool                    fInputPreBuffered;
+    /** Input streams only: The number of bytes we need to prebuffer. */
+    uint32_t                cbInputPreBuffer;
+    uint32_t                u32Padding2;
     /** Timestamp (absolute, in timer ticks) of the last DMA data transfer. */
     uint64_t                tsTransferLast;
     /** Timestamp (absolute, in timer ticks) of the next DMA data transfer.
@@ -155,6 +161,8 @@ typedef struct HDASTREAMSTATE
     uint64_t                tsAioDelayEnd;
     /** The start time for the playback (on the timer clock). */
     uint64_t                tsStart;
+
+    uint64_t                au64Padding[3];
 
     /** @name DMA engine
      * @{ */
@@ -306,6 +314,8 @@ typedef struct HDASTREAMR3
         STAMCOUNTER             StatDmaFlowProblems;
         /** Counter for unresovled under/overflows problems. */
         STAMCOUNTER             StatDmaFlowErrors;
+        /** Number of bytes involved in unresolved flow errors. */
+        STAMCOUNTER             StatDmaFlowErrorBytes;
     } State;
     /** Debug bits. */
     HDASTREAMDEBUG              Dbg;
@@ -356,6 +366,7 @@ int                 hdaR3StreamAsyncIOCreate(PHDASTREAMR3 pStreamR3);
 void                hdaR3StreamAsyncIOLock(PHDASTREAMR3 pStreamR3);
 void                hdaR3StreamAsyncIOUnlock(PHDASTREAMR3 pStreamR3);
 void                hdaR3StreamAsyncIOEnable(PHDASTREAMR3 pStreamR3, bool fEnable);
+int                 hdaR3StreamAsyncIONotify(PHDASTREAMR3 pStreamR3);
 # endif /* VBOX_WITH_AUDIO_HDA_ASYNC_IO */
 /** @} */
 
