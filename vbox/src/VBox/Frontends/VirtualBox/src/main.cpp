@@ -1,4 +1,4 @@
-/* $Id: main.cpp 83033 2020-02-10 13:40:54Z vboxsync $ */
+/* $Id: main.cpp 84368 2020-05-19 11:44:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - The main() function.
  */
@@ -669,6 +669,8 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char ** /*envp*/)
         /* Make sure multi-threaded environment is safe: */
         if (!MakeSureMultiThreadingIsSafe())
             break;
+        /* Force using Qt platform module 'xcb', we have X11 specific code: */
+        RTEnvSet("QT_QPA_PLATFORM", "xcb");
 #endif /* VBOX_WS_X11 */
 
         /* Console help preprocessing: */
