@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.cpp 85513 2020-07-29 10:34:40Z vboxsync $ */
+/* $Id: UIToolsModel.cpp 86668 2020-10-21 16:15:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class implementation.
  */
@@ -481,10 +481,6 @@ void UIToolsModel::prepareScene()
 
 void UIToolsModel::prepareItems()
 {
-    /* Check if Ext Pack is ready, some of actions my depend on it: */
-    CExtPack extPack = uiCommon().virtualBox().GetExtensionPackManager().Find(GUI_ExtPackName);
-    const bool fExtPackAccessible = !extPack.isNull() && extPack.GetUsable();
-
     /* Enable both classes of tools initially: */
     m_statesToolsEnabled[UIToolClass_Global] = true;
     m_statesToolsEnabled[UIToolClass_Machine] = true;
@@ -502,9 +498,8 @@ void UIToolsModel::prepareItems()
                                UIIconPool::iconSet(":/host_iface_manager_24px.png", ":/host_iface_manager_disabled_24px.png"));
 
     /* Cloud: */
-    if (fExtPackAccessible)
-        m_items << new UIToolsItem(scene(), UIToolClass_Global, UIToolType_Cloud, QString(),
-                                   UIIconPool::iconSet(":/cloud_profile_manager_24px.png", ":/cloud_profile_manager_disabled_24px.png"));
+    m_items << new UIToolsItem(scene(), UIToolClass_Global, UIToolType_Cloud, QString(),
+                               UIIconPool::iconSet(":/cloud_profile_manager_24px.png", ":/cloud_profile_manager_disabled_24px.png"));
 
     /* Resources: */
     m_items << new UIToolsItem(scene(), UIToolClass_Global, UIToolType_Resources, QString(),
