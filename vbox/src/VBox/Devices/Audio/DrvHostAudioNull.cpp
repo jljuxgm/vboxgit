@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioNull.cpp 88724 2021-04-27 10:24:18Z vboxsync $ */
+/* $Id: DrvHostAudioNull.cpp 88760 2021-04-29 00:54:45Z vboxsync $ */
 /** @file
  * Host audio driver - NULL (bitbucket).
  *
@@ -228,19 +228,20 @@ static DECLCALLBACK(int) drvHostNullAudioHA_StreamCapture(PPDMIHOSTAUDIO pInterf
  */
 DECL_HIDDEN_CONST(PDMIHOSTAUDIO) const g_DrvHostAudioNull =
 {
-    /* .pfnGetConfig          =*/ drvHostNullAudioHA_GetConfig,
-    /* .pfnGetDevices         =*/ NULL,
-    /* .pfnGetStatus          =*/ drvHostNullAudioHA_GetStatus,
-    /* .pfnStreamConfigHint   =*/ NULL,
-    /* .pfnStreamCreate       =*/ drvHostNullAudioHA_StreamCreate,
-    /* .pfnStreamDestroy      =*/ drvHostNullAudioHA_StreamDestroy,
-    /* .pfnStreamControl      =*/ drvHostNullAudioHA_StreamControl,
-    /* .pfnStreamGetReadable  =*/ drvHostNullAudioHA_StreamGetReadable,
-    /* .pfnStreamGetWritable  =*/ drvHostNullAudioHA_StreamGetWritable,
-    /* .pfnStreamGetPending   =*/ drvHostNullAudioHA_StreamGetPending,
-    /* .pfnStreamGetStatus    =*/ drvHostNullAudioHA_StreamGetStatus,
-    /* .pfnStreamPlay         =*/ drvHostNullAudioHA_StreamPlay,
-    /* .pfnStreamCapture      =*/ drvHostNullAudioHA_StreamCapture,
+    /* .pfnGetConfig                 =*/ drvHostNullAudioHA_GetConfig,
+    /* .pfnGetDevices                =*/ NULL,
+    /* .pfnGetStatus                 =*/ drvHostNullAudioHA_GetStatus,
+    /* .pfnStreamConfigHint          =*/ NULL,
+    /* .pfnStreamCreate              =*/ drvHostNullAudioHA_StreamCreate,
+    /* .pfnStreamDestroy             =*/ drvHostNullAudioHA_StreamDestroy,
+    /* .pfnStreamNotifyDeviceChanged =*/ NULL,
+    /* .pfnStreamControl             =*/ drvHostNullAudioHA_StreamControl,
+    /* .pfnStreamGetReadable         =*/ drvHostNullAudioHA_StreamGetReadable,
+    /* .pfnStreamGetWritable         =*/ drvHostNullAudioHA_StreamGetWritable,
+    /* .pfnStreamGetPending          =*/ drvHostNullAudioHA_StreamGetPending,
+    /* .pfnStreamGetStatus           =*/ drvHostNullAudioHA_StreamGetStatus,
+    /* .pfnStreamPlay                =*/ drvHostNullAudioHA_StreamPlay,
+    /* .pfnStreamCapture             =*/ drvHostNullAudioHA_StreamCapture,
 };
 
 
