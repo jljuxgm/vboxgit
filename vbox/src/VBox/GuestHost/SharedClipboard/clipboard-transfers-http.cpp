@@ -1,4 +1,4 @@
-/* $Id: clipboard-transfers-http.cpp 87454 2021-01-27 18:31:48Z vboxsync $ */
+/* $Id: clipboard-transfers-http.cpp 87658 2021-02-09 13:26:19Z vboxsync $ */
 /** @file
  * Shared Clipboard: HTTP server implementation for Shared Clipboard transfers on UNIX-y guests / hosts.
  */
@@ -297,11 +297,12 @@ static DECLCALLBACK(int) shClTransferHttpRead(PRTHTTPCALLBACKDATA pData, void *p
     if (pSrvTx)
     {
         Assert(pSrvTx->hObj != SHCLOBJHANDLE_INVALID);
-//        rc = ShClTransferObjRead(pSrvTx->pTransfer, pSrvTx->hObj, );
-rc = 0;
+
+        uint32_t cbRead;
+        rc = ShClTransferObjRead(pSrvTx->pTransfer, pSrvTx->hObj, pvBuf, cbBuf, 0 /* fFlags */, &cbRead);
         if (RT_SUCCESS(rc))
         {
-
+            *pcbRead = (uint32_t)cbRead;
         }
 
         if (RT_FAILURE(rc))
