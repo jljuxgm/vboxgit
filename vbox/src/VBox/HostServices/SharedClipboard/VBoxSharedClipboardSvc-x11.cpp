@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-x11.cpp 87566 2021-02-03 13:48:48Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-x11.cpp 87686 2021-02-10 13:17:50Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Linux host.
  */
@@ -395,7 +395,7 @@ DECLCALLBACK(int) ShClX11RequestDataForX11Callback(PSHCLCONTEXT pCtx, SHCLFORMAT
 int ShClBackendTransferCreate(PSHCLCLIENT pClient, PSHCLTRANSFER pTransfer)
 {
 #ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS_HTTP
-    return ShClHttpTransferCreate(&pClient->State.pCtx->X11.HttpCtx, pTransfer);
+    return ShClHttpTransferRegister(&pClient->State.pCtx->X11.HttpCtx, pTransfer);
 #else
     RT_NOREF(pClient, pTransfer);
 #endif
@@ -405,7 +405,7 @@ int ShClBackendTransferCreate(PSHCLCLIENT pClient, PSHCLTRANSFER pTransfer)
 int ShClBackendTransferDestroy(PSHCLCLIENT pClient, PSHCLTRANSFER pTransfer)
 {
 #ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS_HTTP
-    return ShClHttpTransferDestroy(&pClient->State.pCtx->X11.HttpCtx, pTransfer);
+    return ShClHttpTransferUnregister(&pClient->State.pCtx->X11.HttpCtx, pTransfer);
 #else
     RT_NOREF(pClient, pTransfer);
 #endif
