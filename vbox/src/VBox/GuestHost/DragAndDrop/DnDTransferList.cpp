@@ -1,4 +1,4 @@
-/* $Id: DnDTransferList.cpp 85411 2020-07-22 10:31:03Z vboxsync $ */
+/* $Id: DnDTransferList.cpp 85416 2020-07-22 14:48:57Z vboxsync $ */
 /** @file
  * DnD - transfer list implemenation.
  */
@@ -207,9 +207,6 @@ static int dndTransferListObjAdd(PDNDTRANSFERLIST pList, const char *pcszSrcAbs,
                     if (RT_FAILURE(rc))
                         DnDTransferObjectDestroy(pObj);
                 }
-
-                if (RT_FAILURE(rc))
-                    RTMemFree(pObj);
             }
             else
                 rc = VERR_NO_MEMORY;
