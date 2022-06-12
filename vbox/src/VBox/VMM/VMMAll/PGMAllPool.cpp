@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 86462 2020-10-06 16:43:10Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 86470 2020-10-07 16:53:19Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -3363,7 +3363,7 @@ static bool pgmPoolTrackFlushGCPhysPTInt(PVM pVM, PCPGMPAGE pPhysPage, bool fFlu
             Assert(pVM->pgm.s.fNestedPaging);
 
             const uint64_t  u64 = PGM_PAGE_GET_HCPHYS(pPhysPage) | X86_PDE4M_P | X86_PDE4M_PS;
-            PX86PD          pPD = (PX86PD)PGMPOOL_PAGE_2_PTR(pVM, pPage);
+            PX86PDPAE       pPD = (PX86PDPAE)PGMPOOL_PAGE_2_PTR(pVM, pPage);
 
             if ((pPD->a[iPte].u & (X86_PDE2M_PAE_PG_MASK | X86_PDE4M_P | X86_PDE4M_PS)) == u64)
             {
