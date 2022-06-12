@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 87306 2021-01-19 16:00:46Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 87312 2021-01-20 08:58:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -1970,6 +1970,30 @@ void UIMessageCenter::cannotRemoveNATNetwork(const CVirtualBox &comVBox, const Q
           tr("Failed to remove the NAT network <b>%1</b>.")
              .arg(strNetworkName),
           UIErrorString::formatErrorInfo(comVBox));
+}
+
+void UIMessageCenter::warnAboutNoNameSpecified(const QString &strName, QWidget *pParent /* = 0 */)
+{
+    alert(pParent, MessageType_Error,
+          tr("No new name specified for the NAT network previously called <b>%1</b>.").arg(strName));
+}
+
+void UIMessageCenter::warnAboutNameAlreadyBusy(const QString &strName, QWidget *pParent /* = 0 */)
+{
+    alert(pParent, MessageType_Error,
+          tr("The name <b>%1</b> is being used for several NAT networks.").arg(strName));
+}
+
+void UIMessageCenter::warnAboutNoCIDRSpecified(const QString &strName, QWidget *pParent /* = 0 */)
+{
+    alert(pParent, MessageType_Error,
+          tr("No CIDR specified for the NAT network <b>%1</b>.").arg(strName));
+}
+
+void UIMessageCenter::warnAboutInvalidCIDRSpecified(const QString &strCIDR, const QString &strName, QWidget *pParent /* = 0 */)
+{
+    alert(pParent, MessageType_Error,
+          tr("Invalid CIDR specified (<i>%1</i>) for the NAT network <b>%2</b>.").arg(strCIDR, strName));
 }
 
 void UIMessageCenter::cannotAcquireCloudProviderManager(const CVirtualBox &comVBox, QWidget *pParent /* = 0 */) const
