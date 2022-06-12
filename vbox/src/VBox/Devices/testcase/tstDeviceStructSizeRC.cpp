@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 89197 2021-05-20 09:51:01Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 89198 2021-05-20 09:53:57Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -1600,22 +1600,6 @@ int main()
     GEN_CHECK_OFF(VNETSTATE, fMaybeOutOfSpace);
     GEN_CHECK_OFF(VNETSTATE, hEventMoreRxDescAvail);
 #endif /* VBOX_WITH_VIRTIO */
-
-#ifdef VBOX_WITH_SCSI
-    GEN_CHECK_SIZE(VBOXSCSI);
-    GEN_CHECK_OFF(VBOXSCSI, regIdentify);
-    GEN_CHECK_OFF(VBOXSCSI, uTargetDevice);
-    GEN_CHECK_OFF(VBOXSCSI, uTxDir);
-    GEN_CHECK_OFF(VBOXSCSI, cbCDB);
-    GEN_CHECK_OFF(VBOXSCSI, abCDB);
-    GEN_CHECK_OFF(VBOXSCSI, abCDB[11]);
-    GEN_CHECK_OFF(VBOXSCSI, iCDB);
-    GEN_CHECK_OFF(VBOXSCSI, pbBuf);
-    GEN_CHECK_OFF(VBOXSCSI, cbBuf);
-    GEN_CHECK_OFF(VBOXSCSI, iBuf);
-    GEN_CHECK_OFF(VBOXSCSI, fBusy);
-    GEN_CHECK_OFF(VBOXSCSI, enmState);
-#endif
 
     /* VMMDev*.cpp/h */
     GEN_CHECK_SIZE(VMMDEV);
