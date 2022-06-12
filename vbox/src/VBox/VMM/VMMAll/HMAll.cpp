@@ -1,4 +1,4 @@
-/* $Id: HMAll.cpp 87515 2021-02-01 19:13:42Z vboxsync $ */
+/* $Id: HMAll.cpp 87518 2021-02-01 21:01:16Z vboxsync $ */
 /** @file
  * HM - All contexts.
  */
@@ -661,9 +661,9 @@ VMM_INT_DECL(bool) HMAreNestedPagingAndFullGuestExecEnabled(PVMCC pVM)
  * @param   pVM         The cross context VM structure.
  * @sa      VMR3IsLongModeAllowed, NEMHCIsLongModeAllowed
  */
-VMM_INT_DECL(bool) HMIsLongModeAllowed(PVM pVM)
+VMM_INT_DECL(bool) HMIsLongModeAllowed(PVMCC pVM)
 {
-    return HMIsEnabled(pVM) && pVM->hm.s.fAllow64BitGuests;
+    return HMIsEnabled(pVM) && CTX_EXPR(pVM->hm.s.fAllow64BitGuestsCfg, pVM->hmr0.s.fAllow64BitGuests, RT_NOTHING);
 }
 
 

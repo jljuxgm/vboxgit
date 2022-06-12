@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 87515 2021-02-01 19:13:42Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 87518 2021-02-01 21:01:16Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -989,7 +989,7 @@ VMMR0DECL(int) SVMR0SetupVM(PVMCC pVM)
     AssertReturn(pVM, VERR_INVALID_PARAMETER);
 
     /*
-     * Validate some parameters.
+     * Validate and copy over some parameters.
      */
     AssertReturn(pVM->hm.s.svm.fSupported, VERR_INCOMPATIBLE_CONFIG);
     bool const fNestedPaging = pVM->hm.s.fNestedPagingCfg;
@@ -997,6 +997,7 @@ VMMR0DECL(int) SVMR0SetupVM(PVMCC pVM)
                  || (pVM->hm.s.svm.fFeaturesForRing3 & X86_CPUID_SVM_FEATURE_EDX_NESTED_PAGING),
                  VERR_INCOMPATIBLE_CONFIG);
     pVM->hmr0.s.fNestedPaging = fNestedPaging;
+    pVM->hmr0.s.fAllow64BitGuests = pVM->hm.s.fAllow64BitGuestsCfg;
 
     /*
      * Determin some configuration parameters.
