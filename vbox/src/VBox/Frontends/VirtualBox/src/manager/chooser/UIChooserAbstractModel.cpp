@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.cpp 84557 2020-05-27 11:56:13Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.cpp 84562 2020-05-27 13:37:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class implementation.
  */
@@ -437,6 +437,11 @@ void UIChooserAbstractModel::init()
             if (!cloudProviderShortName(comCloudProvider, strProviderShortName))
                 continue;
 
+            /* Acquire list of profiles: */
+            const QVector<CCloudProfile> profiles = listCloudProfiles(comCloudProvider);
+            if (profiles.isEmpty())
+                continue;
+
             /* Add provider group node: */
             UIChooserNodeGroup *pProviderNode =
                 new UIChooserNodeGroup(invisibleRoot() /* parent */,
@@ -451,7 +456,7 @@ void UIChooserAbstractModel::init()
                                                                strProviderShortName));
 
             /* Iterate through provider's profiles: */
-            foreach (CCloudProfile comCloudProfile, listCloudProfiles(comCloudProvider))
+            foreach (CCloudProfile comCloudProfile, profiles)
             {
                 /* Skip if we have nothing to populate: */
                 if (comCloudProfile.isNull())
