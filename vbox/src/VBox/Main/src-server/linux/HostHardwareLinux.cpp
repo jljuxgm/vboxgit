@@ -1,4 +1,4 @@
-/* $Id: HostHardwareLinux.cpp 86137 2020-09-16 16:14:09Z vboxsync $ */
+/* $Id: HostHardwareLinux.cpp 86138 2020-09-16 17:12:55Z vboxsync $ */
 /** @file
  * VirtualBox Main - Code for handling hardware detection under Linux, VBoxSVC.
  */
@@ -39,11 +39,6 @@
 #include <linux/major.h>
 
 #include <linux/version.h>
-#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,4,0)
-# include <linux/nvme_ioctl.h>
-#else
-# include <linux/nvme.h>
-#endif
 #include <scsi/scsi.h>
 
 #include <iprt/linux/sysfs.h>
@@ -67,6 +62,14 @@
 #include <stdlib.h>
 #include <sys/types.h>
 #include <sys/sysmacros.h>
+
+/*
+ * Define NVME constant here to allow building
+ * on several kernel versions even if the
+ * building host doesn't contain certain NVME
+ * includes
+ */
+#define NVME_IOCTL_ID _IO('N', 0x40)
 
 
 /*********************************************************************************************************************************
