@@ -1,4 +1,4 @@
-/* $Id: RTHttpServer.cpp 87016 2020-11-30 16:45:54Z vboxsync $ */
+/* $Id: RTHttpServer.cpp 87017 2020-11-30 16:51:08Z vboxsync $ */
 /** @file
  * IPRT - Utility for running a (simple) HTTP server.
  *
@@ -479,6 +479,7 @@ DECLCALLBACK(int) onQueryInfo(PRTHTTPCALLBACKDATA pData,
                                                "300: file://%s\r\n"
                                                "200: filename content-length last-modified file-type\r\n",
                                                pszUrl);
+                    RT_NOREF(cch);
                     Assert(cch);
 
                     pResp->cbBodyUsed = strlen((char *)pResp->pvBody);
@@ -618,7 +619,7 @@ int main(int argc, char **argv)
                 return RTEXITCODE_SUCCESS;
 
             case 'V':
-                RTPrintf("$Revision: 87016 $\n");
+                RTPrintf("$Revision: 87017 $\n");
                 return RTEXITCODE_SUCCESS;
 
             default:
