@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 88675 2021-04-23 12:59:30Z vboxsync $ */
+/* $Id: DevSB16.cpp 88676 2021-04-23 13:04:44Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  */
@@ -2877,14 +2877,11 @@ static DECLCALLBACK(int) sb16Construct(PPDMDEVINS pDevIns, int iInstance, PCFGMN
         if (!(pDrv->fFlags & PDMAUDIODRVFLAGS_PRIMARY))
             continue;
 
-        /** @todo No input streams available for SB16 yet. */
-        if (!pDrv->Out.pStream)
-            continue;
-
         PPDMIAUDIOCONNECTOR pCon = pDrv->pConnector;
         AssertPtr(pCon);
-        if (   pCon == NULL /* paranoia */
-            || !(pCon->pfnStreamGetStatus(pCon, pDrv->Out.pStream) & PDMAUDIOSTREAMSTS_FLAGS_INITIALIZED))
+
+        /** @todo No input streams available for SB16 yet. */
+        if (!AudioMixerStreamIsValid(pDrv->Out.pMixStrm))
         {
             LogRel(("SB16: Falling back to NULL backend (no sound audible)\n"));
 
@@ -2897,7 +2894,7 @@ static DECLCALLBACK(int) sb16Construct(PPDMDEVINS pDevIns, int iInstance, PCFGMN
                                           "Selecting the NULL audio backend with the consequence that no sound is audible"));
         }
     }
-#endif
+#endif /* VBOX_WITH_AUDIO_SB16_ONETIME_INIT */
 
     /*
      * Register statistics.
