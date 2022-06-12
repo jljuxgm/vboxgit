@@ -1,4 +1,4 @@
-# $Id: Config.kmk 86222 2020-09-22 14:13:36Z vboxsync $
+# $Id: Config.kmk 86318 2020-09-28 12:33:34Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -7515,6 +7515,10 @@ TEMPLATE_NewVBoxGuestR3Exe_LIBS     = \
 ifeq ($(KBUILD_TARGET),solaris)
 TEMPLATE_NewVBoxGuestR3Exe_LIBS += contract
 endif
+# Use PIE and RELRO for the GA executables to support ASLR in the guest
+TEMPLATE_NewVBoxGuestR3Exe_CXXFLAGS.linux	+= -fPIE
+TEMPLATE_NewVBoxGuestR3Exe_CFLAGS.linux		+= -fPIE
+TEMPLATE_NewVBoxGuestR3Exe_LDFLAGS.linux	+= -pie -fPIE -Wl,-z,relro,-z,now,-z,noexecstack
 
 #
 # Template for building normal R3 programs for the guest additions, strict.
@@ -8071,7 +8075,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 86222 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 86318 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
