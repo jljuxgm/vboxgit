@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsInput.h 86124 2020-09-14 17:16:23Z vboxsync $ */
+/* $Id: UIGlobalSettingsInput.h 86150 2020-09-17 12:03:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsInput class declaration.
  */
@@ -76,7 +76,7 @@ private:
     /** Cleanups all. */
     void cleanup();
 
-    /** Saves existing data from the cache. */
+    /** Saves existing data from cache. */
     bool saveData();
 
     /** Holds the page data cache instance. */
