@@ -1,4 +1,4 @@
-/* $Id: UICloudConsoleDetailsWidget.cpp 85389 2020-07-20 12:42:14Z vboxsync $ */
+/* $Id: UICloudConsoleDetailsWidget.cpp 85458 2020-07-24 15:56:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudConsoleDetailsWidget class implementation.
  */
@@ -236,6 +236,9 @@ void UICloudConsoleDetailsWidget::prepareWidgets()
         m_pStackedLayout = new QStackedLayout;
         if (m_pStackedLayout)
         {
+            /* Add into layout: */
+            pMainLayout->addLayout(m_pStackedLayout);
+
             /* Create application widget: */
             QWidget *pWidgetApplication = new QWidget;
             if (pWidgetApplication)
@@ -397,9 +400,6 @@ void UICloudConsoleDetailsWidget::prepareWidgets()
                 /* Add into layout: */
                 m_pStackedLayout->addWidget(pWidgetProfile);
             }
-
-            /* Add into layout: */
-            pMainLayout->addLayout(m_pStackedLayout);
         }
 
         /* If parent embedded into stack: */
