@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 86817 2020-11-06 07:04:51Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 86845 2020-11-10 11:11:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -1034,13 +1034,6 @@ void UIMessageCenter::cannotMoveMachine(const CProgress &progress, const QString
           UIErrorString::formatErrorInfo(progress));
 }
 
-void UIMessageCenter::cannotOpenPublicKeyFile(const QString &strPath, QWidget *pParent /* = 0 */) const
-{
-    alert(pParent, MessageType_Error,
-          tr("Failed to open the public key file <nobr><b>%1</b></nobr>. Check file permissions.")
-             .arg(strPath));
-}
-
 void UIMessageCenter::cannotCreateConsoleConnection(const CCloudMachine &comMachine, QWidget *pParent /* = 0 */)
 {
     error(pParent, MessageType_Error,
@@ -1071,6 +1064,19 @@ void UIMessageCenter::cannotDeleteConsoleConnection(const CProgress &comProgress
           tr("Failed to delete console connection for cloud machine <b>%1</b>.")
              .arg(strMachineName),
           UIErrorString::formatErrorInfo(comProgress));
+}
+
+void UIMessageCenter::publicKeyFilePathIsEmpty(QWidget *pParent /* = 0 */) const
+{
+    alert(pParent, MessageType_Error,
+          tr("Public key file path is empty."));
+}
+
+void UIMessageCenter::publicKeyFileIsntReadable(const QString &strPath, QWidget *pParent /* = 0 */) const
+{
+    alert(pParent, MessageType_Error,
+          tr("Failed to open the public key file <nobr><b>%1</b></nobr>. Check file permissions.")
+             .arg(strPath));
 }
 
 

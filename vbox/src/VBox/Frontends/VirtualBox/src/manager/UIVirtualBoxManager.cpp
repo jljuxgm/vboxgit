@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 86734 2020-10-28 11:43:13Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 86845 2020-11-10 11:11:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -135,8 +135,9 @@ private:
     /** Prepares all. */
     void prepare();
 
-    /** Loads file contents. */
-    void loadFileContents(const QString &strPath, bool fIgnoreErrors = false);
+    /** Loads file contents.
+      * @returns Whether file was really loaded. */
+    bool loadFileContents(const QString &strPath, bool fIgnoreErrors = false);
 
     /** Holds the text-editor instance. */
     QTextEdit         *m_pTextEditor;
@@ -234,15 +235,28 @@ void UIAcquirePublicKeyDialog::prepare()
     resize(iMinimumHeightHint * 2, iMinimumHeightHint);
 }
 
-void UIAcquirePublicKeyDialog::loadFileContents(const QString &strPath, bool fIgnoreErrors /* = false */)
+bool UIAcquirePublicKeyDialog::loadFileContents(const QString &strPath, bool fIgnoreErrors /* = false */)
 {
+    /* Make sure file path isn't empty: */
     if (strPath.isEmpty())
-        return;
+    {
+        if (!fIgnoreErrors)
+            msgCenter().publicKeyFilePathIsEmpty();
+        return false;
+    }
+
+    /* Make sure file can be opened: */
     QFile file(strPath);
-    if (file.open(QIODevice::ReadOnly))
-        m_pTextEditor->setPlainText(file.readAll());
-    else if (!fIgnoreErrors)
-        msgCenter().cannotOpenPublicKeyFile(strPath);
+    if (!file.open(QIODevice::ReadOnly))
+    {
+        if (!fIgnoreErrors)
+            msgCenter().publicKeyFileIsntReadable(strPath);
+        return false;
+    }
+
+    /* File opened and read, filling editor: */
+    m_pTextEditor->setPlainText(file.readAll());
+    return true;
 }
 
 
