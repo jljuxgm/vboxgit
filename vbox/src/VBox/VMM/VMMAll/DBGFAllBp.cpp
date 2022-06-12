@@ -1,4 +1,4 @@
-/* $Id: DBGFAllBp.cpp 86749 2020-10-28 21:04:02Z vboxsync $ */
+/* $Id: DBGFAllBp.cpp 86751 2020-10-28 21:12:52Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, All Context breakpoint management part.
  */
@@ -28,7 +28,9 @@
 #include <VBox/err.h>
 #include <iprt/assert.h>
 
-#include "DBGFInline.h"
+#ifdef VBOX_WITH_LOTS_OF_DBGF_BPS
+# include "DBGFInline.h"
+#endif
 
 
 #ifdef IN_RC
