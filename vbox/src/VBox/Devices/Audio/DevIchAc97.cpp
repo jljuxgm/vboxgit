@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 88677 2021-04-23 13:07:44Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 88692 2021-04-23 19:59:42Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -1445,8 +1445,8 @@ static int ichac97R3StreamAsyncIOCreate(PAC97STATE pThis, PAC97STATER3 pThisCC, 
                     pCtx->pThis     = pThis;
                     pCtx->pThisCC   = pThisCC;
 
-                    rc = RTThreadCreateF(&pAIO->Thread, ichac97R3StreamAsyncIOThread, pCtx,
-                                         0, RTTHREADTYPE_IO, RTTHREADFLAGS_WAITABLE, "ac97AIO%RU8", pStreamCC->u8SD);
+                    rc = RTThreadCreateF(&pAIO->Thread, ichac97R3StreamAsyncIOThread, pCtx, 0 /*cbStack*/, RTTHREADTYPE_IO,
+                                         RTTHREADFLAGS_WAITABLE | RTTHREADFLAGS_COM_MTA, "ac97AIO%RU8", pStreamCC->u8SD);
                     if (RT_SUCCESS(rc))
                         rc = RTThreadUserWait(pAIO->Thread, 30 * 1000 /* 30s timeout */);
                 }
