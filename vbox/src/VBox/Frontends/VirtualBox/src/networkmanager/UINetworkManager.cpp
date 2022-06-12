@@ -1,4 +1,4 @@
-/* $Id: UINetworkManager.cpp 87295 2021-01-18 11:16:06Z vboxsync $ */
+/* $Id: UINetworkManager.cpp 87297 2021-01-18 13:26:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkManager class implementation.
  */
@@ -1105,6 +1105,10 @@ void UINetworkManagerWidget::sltApplyDetailsChangesNATNetwork()
 
     /* Check NAT network details-widget: */
     AssertMsgReturnVoid(m_pDetailsWidgetNATNetwork, ("NAT network details-widget isn't created!\n"));
+
+    /* Revalidate NAT network details: */
+    if (!m_pDetailsWidgetNATNetwork->revalidate())
+        return;
 
     /* Get item data: */
     UIDataNATNetwork oldData = *pItem;

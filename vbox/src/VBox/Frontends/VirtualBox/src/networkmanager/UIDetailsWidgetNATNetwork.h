@@ -1,4 +1,4 @@
-/* $Id: UIDetailsWidgetNATNetwork.h 87295 2021-01-18 11:16:06Z vboxsync $ */
+/* $Id: UIDetailsWidgetNATNetwork.h 87297 2021-01-18 13:26:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsWidgetNATNetwork class declaration.
  */
@@ -124,6 +124,9 @@ public:
       *                        port forwarding rule position intact. */
     void setData(const UIDataNATNetwork &data, bool fHoldPosition = false);
 
+    /** Revalidates changes. */
+    bool revalidate();
+
 protected:
 
     /** Handles translation event. */
@@ -181,10 +184,6 @@ private:
 
     /** @name Change handling stuff.
       * @{ */
-        /** Revalidates changes for passed @a pWidget. */
-        void revalidate(QWidget *pWidget = 0);
-        /** Retranslates validation for passed @a pWidget. */
-        void retranslateValidation(QWidget *pWidget = 0);
         /** Updates button states. */
         void updateButtonStates();
     /** @} */
