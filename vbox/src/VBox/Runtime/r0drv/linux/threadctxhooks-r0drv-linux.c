@@ -1,4 +1,4 @@
-/* $Id: threadctxhooks-r0drv-linux.c 85698 2020-08-11 17:05:29Z vboxsync $ */
+/* $Id: threadctxhooks-r0drv-linux.c 87669 2021-02-09 19:34:41Z vboxsync $ */
 /** @file
  * IPRT - Thread Context Switching Hook, Ring-0 Driver, Linux.
  */
@@ -323,6 +323,7 @@ RTDECL(bool) RTThreadCtxHookIsEnabled(RTTHREADCTXHOOK hCtxHook)
 
     return pThis->fEnabled;
 }
+RT_EXPORT_SYMBOL(RTThreadCtxHookIsEnabled);
 
 #else    /* Not supported / Not needed */
 # include "../generic/threadctxhooks-r0drv-generic.cpp"
