@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElement.cpp 84910 2020-06-22 16:10:09Z vboxsync $ */
+/* $Id: UIDetailsElement.cpp 85817 2020-08-18 11:50:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement class implementation.
  */
@@ -276,7 +276,7 @@ void UIDetailsElement::mousePressEvent(QGraphicsSceneMouseEvent *pEvent)
         m_enmType < DetailsElementType_Description)
         strCategory = QString("#%1").arg(gpConverter->toInternalString(m_enmType));
     else if (m_enmType == DetailsElementType_Description)
-        strCategory = QString("#%1%%mTeDescription").arg(gpConverter->toInternalString(m_enmType));
+        strCategory = QString("#%1%%m_pEditorDescription").arg(gpConverter->toInternalString(m_enmType));
     emit sigLinkClicked(strCategory, QString(), machine().GetId());
 }
 
