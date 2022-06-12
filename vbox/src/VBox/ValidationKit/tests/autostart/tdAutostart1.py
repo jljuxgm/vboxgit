@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Id: tdAutostart1.py 84642 2020-06-02 14:07:45Z vboxsync $"
+__version__ = "$Id: tdAutostart1.py 84655 2020-06-03 09:54:20Z vboxsync $"
 
 
 # Standard Python imports.
@@ -555,8 +555,10 @@ class tdAutostartOsLinux(tdAutostartOs):
                                                           30 * 1000, '/sbin/ifconfig',
                                                           ['ifconfig',],
                                                           False, False);
-            if fRc:
-                break;
+                if fRc:
+                    break;
+
+                self.closeSession(oGuestSession, False);
 
             self.oTestDriver.sleep(10);
             cAttempt += 1;
@@ -920,8 +922,10 @@ class tdAutostartOsWin(tdAutostartOs):
                                                           30 * 1000, 'C:\\Windows\\System32\\ipconfig.exe',
                                                           ['C:\\Windows\\System32\\ipconfig.exe',],
                                                           False, False);
-            if fRc:
-                break;
+                if fRc:
+                    break;
+
+                self.closeSession(oGuestSession, False);
 
             self.oTestDriver.sleep(10);
             cAttempt += 1;
