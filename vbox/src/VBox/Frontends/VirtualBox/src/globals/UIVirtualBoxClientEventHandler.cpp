@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxClientEventHandler.cpp 86154 2020-09-17 13:19:41Z vboxsync $ */
+/* $Id: UIVirtualBoxClientEventHandler.cpp 86541 2020-10-12 12:30:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxClientEventHandler class implementation.
  */
@@ -119,16 +119,11 @@ void UIVirtualBoxClientEventHandlerProxy::prepareListener()
         << KVBoxEventType_OnVBoxSVCAvailabilityChanged;
 
     /* Register event listener for event source aggregator: */
-    m_comEventSource.RegisterListener(m_comEventListener, eventTypes,
-        gEDataManager->eventHandlingType() == EventHandlingType_Active ? TRUE : FALSE);
+    m_comEventSource.RegisterListener(m_comEventListener, eventTypes, FALSE /* active? */);
     AssertWrapperOk(m_comEventSource);
 
-    /* If event listener registered as passive one: */
-    if (gEDataManager->eventHandlingType() == EventHandlingType_Passive)
-    {
-        /* Register event sources in their listeners as well: */
-        m_pQtListener->getWrapped()->registerSource(m_comEventSource, m_comEventListener);
-    }
+    /* Register event sources in their listeners as well: */
+    m_pQtListener->getWrapped()->registerSource(m_comEventSource, m_comEventListener);
 }
 
 void UIVirtualBoxClientEventHandlerProxy::prepareConnections()
@@ -147,12 +142,8 @@ void UIVirtualBoxClientEventHandlerProxy::cleanupConnections()
 
 void UIVirtualBoxClientEventHandlerProxy::cleanupListener()
 {
-    /* If event listener registered as passive one: */
-    if (gEDataManager->eventHandlingType() == EventHandlingType_Passive)
-    {
-        /* Unregister everything: */
-        m_pQtListener->getWrapped()->unregisterSources();
-    }
+    /* Unregister everything: */
+    m_pQtListener->getWrapped()->unregisterSources();
 
     /* Unregister event listener for event source aggregator: */
     m_comEventSource.UnregisterListener(m_comEventListener);

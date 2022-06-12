@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 86094 2020-09-11 14:02:36Z vboxsync $ */
+/* $Id: UIExtraDataDefs.cpp 86541 2020-10-12 12:30:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -20,7 +20,6 @@
 
 
 /* General: */
-const char *UIExtraDataDefs::GUI_EventHandlingType = "GUI/EventHandlingType";
 const char *UIExtraDataDefs::GUI_RestrictedDialogs = "GUI/RestrictedDialogs";
 
 

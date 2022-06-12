@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackendGlobal.cpp 85772 2020-08-14 14:06:17Z vboxsync $ */
+/* $Id: UIConverterBackendGlobal.cpp 86541 2020-10-12 12:30:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConverterBackendGlobal implementation.
  */
@@ -62,7 +62,6 @@ template<> bool canConvert<UIToolType>() { return true; }
 template<> bool canConvert<UIVisualStateType>() { return true; }
 template<> bool canConvert<DetailsElementType>() { return true; }
 template<> bool canConvert<PreviewUpdateIntervalType>() { return true; }
-template<> bool canConvert<EventHandlingType>() { return true; }
 template<> bool canConvert<GUIFeatureType>() { return true; }
 template<> bool canConvert<GlobalSettingsPageType>() { return true; }
 template<> bool canConvert<MachineSettingsPageType>() { return true; }
@@ -1810,21 +1809,6 @@ template<> PreviewUpdateIntervalType fromInternalInteger<PreviewUpdateIntervalTy
         AssertMsgFailed(("No value for '%d'", iPreviewUpdateIntervalType));
     /* Return corresponding enum value for passed integer representation: */
     return hash.value(iPreviewUpdateIntervalType);
-}
-
-/* EventHandlingType <= QString: */
-template<> EventHandlingType fromInternalString<EventHandlingType>(const QString &strEventHandlingType)
-{
-    /* Here we have some fancy stuff allowing us
-     * to search through the keys using 'case-insensitive' rule: */
-    QStringList keys;  QList<EventHandlingType> values;
-    keys << "Active";  values << EventHandlingType_Active;
-    keys << "Passive"; values << EventHandlingType_Passive;
-    /* Passive type for unknown words: */
-    if (!keys.contains(strEventHandlingType, Qt::CaseInsensitive))
-        return EventHandlingType_Passive;
-    /* Corresponding type for known words: */
-    return values.at(keys.indexOf(QRegExp(strEventHandlingType, Qt::CaseInsensitive)));
 }
 
 /* QString <= GUIFeatureType: */

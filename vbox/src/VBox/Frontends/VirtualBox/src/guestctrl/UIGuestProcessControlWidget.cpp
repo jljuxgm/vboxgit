@@ -1,4 +1,4 @@
-/* $Id: UIGuestProcessControlWidget.cpp 86233 2020-09-23 12:10:51Z vboxsync $ */
+/* $Id: UIGuestProcessControlWidget.cpp 86541 2020-10-12 12:30:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestProcessControlWidget class implementation.
  */
@@ -465,16 +465,11 @@ void UIGuestProcessControlWidget::prepareListener()
 
 
     /* Register event listener for CProgress event source: */
-    comEventSource.RegisterListener(m_comEventListener, eventTypes,
-        gEDataManager->eventHandlingType() == EventHandlingType_Active ? TRUE : FALSE);
+    comEventSource.RegisterListener(m_comEventListener, eventTypes, FALSE /* active? */);
     AssertWrapperOk(comEventSource);
 
-    /* If event listener registered as passive one: */
-    if (gEDataManager->eventHandlingType() == EventHandlingType_Passive)
-    {
-        /* Register event sources in their listeners as well: */
-        m_pQtListener->getWrapped()->registerSource(comEventSource, m_comEventListener);
-    }
+    /* Register event sources in their listeners as well: */
+    m_pQtListener->getWrapped()->registerSource(comEventSource, m_comEventListener);
 }
 
 void UIGuestProcessControlWidget::prepareToolBar()
@@ -520,12 +515,8 @@ void UIGuestProcessControlWidget::initGuestSessionTree()
 
 void UIGuestProcessControlWidget::cleanupListener()
 {
-    /* If event listener registered as passive one: */
-    if (gEDataManager->eventHandlingType() == EventHandlingType_Passive)
-    {
-        /* Unregister everything: */
-        m_pQtListener->getWrapped()->unregisterSources();
-    }
+    /* Unregister everything: */
+    m_pQtListener->getWrapped()->unregisterSources();
 
     /* Make sure VBoxSVC is available: */
     if (!uiCommon().isVBoxSVCAvailable())

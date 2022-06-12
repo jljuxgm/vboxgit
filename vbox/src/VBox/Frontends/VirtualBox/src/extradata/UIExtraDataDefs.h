@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 86094 2020-09-11 14:02:36Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 86541 2020-10-12 12:30:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -43,9 +43,6 @@ namespace UIExtraDataDefs
 {
     /** @name General
       * @{ */
-        /** Holds event handling type. */
-        SHARED_LIBRARY_STUFF extern const char *GUI_EventHandlingType;
-
         /** Holds restricted dialogs. */
         SHARED_LIBRARY_STUFF extern const char *GUI_RestrictedDialogs;
     /** @} */
@@ -790,14 +787,6 @@ public:
         DetailsElementOptionTypeDescription_Default = 0xFFFF
     };
     Q_ENUM(DetailsElementOptionTypeDescription);
-};
-
-
-/** Common UI: Event handling types. */
-enum EventHandlingType
-{
-    EventHandlingType_Active,
-    EventHandlingType_Passive
 };
 
 

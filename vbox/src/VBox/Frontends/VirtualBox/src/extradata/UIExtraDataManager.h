@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 86094 2020-09-11 14:02:36Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 86541 2020-10-12 12:30:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -157,9 +157,6 @@ public:
 
     /** @name General
       * @{ */
-        /** Returns event handling type. */
-        EventHandlingType eventHandlingType();
-
         /** Returns a list of restricted dialogs. */
         UIExtraDataMetaDefs::DialogType restrictedDialogTypes(const QUuid &uID);
         /** Defines a list of restricted dialogs. */
