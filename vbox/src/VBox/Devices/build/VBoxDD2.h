@@ -1,4 +1,4 @@
-/* $Id: VBoxDD2.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxDD2.h 86639 2020-10-20 10:16:15Z vboxsync $ */
 /** @file
  * Built-in drivers & devices part 2 header.
  *
@@ -74,10 +74,6 @@ extern DECLIMPORT(const unsigned char)  g_abEfiFirmware64[];
 extern DECLIMPORT(const unsigned)       g_cbEfiFirmware64;
 # endif
 #endif /* !IN_VBOXDD2 */
-
-#ifndef VBOX_WITH_NEW_LPC_DEVICE
-extern const PDMDEVREG g_DeviceLPC;
-#endif
 
 RT_C_DECLS_END
 

@@ -1,4 +1,4 @@
-# $Id: Config.kmk 86638 2020-10-20 09:52:27Z vboxsync $
+# $Id: Config.kmk 86639 2020-10-20 10:16:15Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -618,8 +618,6 @@ VBOX_WITH_VIRTUALKD = 1
 VBOX_WITH_NVME_IMPL = 1
 # Storage related debug drivers
 VBOX_WITH_DRV_DISK_INTEGRITY = 1
-# Enables new LPC device implementation.
-VBOX_WITH_NEW_LPC_DEVICE = 1
 # Enables the AMD IOMMU
 #VBOX_WITH_IOMMU_AMD = 1
 # Enables the new DBGF tracing framework
@@ -8142,7 +8140,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 86638 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 86639 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
