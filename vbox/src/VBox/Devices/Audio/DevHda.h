@@ -1,4 +1,4 @@
-/* $Id: DevHda.h 88235 2021-03-22 10:44:43Z vboxsync $ */
+/* $Id: DevHda.h 88502 2021-04-14 09:42:15Z vboxsync $ */
 /** @file
  * Intel HD Audio Controller Emulation - Structures.
  */
@@ -130,6 +130,9 @@ typedef struct HDASTATE
     uint16_t                cbCircBufOutMs;
     /** The start time of the wall clock (WALCLK), measured on the virtual sync clock. */
     uint64_t                tsWalClkStart;
+    /** CORB DMA task handle.
+     * We use this when there is stuff we cannot handle in ring-0.  */
+    PDMTASKHANDLE           hCorbDmaTask;
     /** The CORB buffer. */
     uint32_t                au32CorbBuf[HDA_CORB_SIZE];
     /** Pointer to RIRB buffer. */
@@ -267,6 +270,9 @@ typedef struct HDASTATER3
 /** Pointer to a ring-3 HDA device state.  */
 typedef HDASTATER3 *PHDASTATER3;
 
+
+/** Pointer to the context specific HDA state (HDASTATER3 or HDASTATER0). */
+typedef CTX_SUFF(PHDASTATE) PHDASTATECC;
 
 #endif /* !VBOX_INCLUDED_SRC_Audio_DevHda_h */
 
