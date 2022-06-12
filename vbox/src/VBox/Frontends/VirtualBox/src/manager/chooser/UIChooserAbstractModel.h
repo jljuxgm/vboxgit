@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.h 86630 2020-10-19 18:20:28Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.h 86631 2020-10-19 18:41:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class declaration.
  */
@@ -124,6 +124,16 @@ public:
         static QString valueToString(UIChooserNodeDataValueType enmType);
     /** @} */
 
+    /** @name Cloud update stuff.
+      * @{ */
+        /** Inserts cloud account @a key into a set of keys currently being updated. */
+        void insertCloudAccountKey(const UICloudAccountKey &key);
+        /** Removes cloud account @a key from a set of keys currently being updated. */
+        void removeCloudAccountKey(const UICloudAccountKey &key);
+        /** Returns whether cloud account @a key is a part of key set currently being updated. */
+        bool containsCloudAccountKey(const UICloudAccountKey &key) const;
+    /** @} */
+
 public slots:
 
     /** @name Cloud machine stuff.
@@ -138,16 +148,6 @@ public slots:
         void sltGroupSettingsSaveComplete();
         /** Handles group definitions saving complete. */
         void sltGroupDefinitionsSaveComplete();
-    /** @} */
-
-    /** @name Cloud update stuff.
-      * @{ */
-        /** Inserts cloud account @a key into a set of keys currently being updated. */
-        void insertCloudAccountKey(const UICloudAccountKey &key);
-        /** Removes cloud account @a key from a set of keys currently being updated. */
-        void removeCloudAccountKey(const UICloudAccountKey &key);
-        /** Returns whether cloud account @a key is a part of key set currently being updated. */
-        bool containsCloudAccountKey(const UICloudAccountKey &key) const;
     /** @} */
 
 protected slots:
