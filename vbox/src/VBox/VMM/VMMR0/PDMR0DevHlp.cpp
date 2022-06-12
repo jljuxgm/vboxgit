@@ -1,4 +1,4 @@
-/* $Id: PDMR0DevHlp.cpp 88641 2021-04-22 06:20:26Z vboxsync $ */
+/* $Id: PDMR0DevHlp.cpp 89065 2021-05-17 05:40:02Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, R0 Device Helper parts.
  */
@@ -1528,6 +1528,14 @@ static DECLCALLBACK(void) pdmR0IoApicHlp_Unlock(PPDMDEVINS pDevIns)
 }
 
 
+/** @interface_method_impl{PDMIOAPICHLP,pfnUnlock} */
+static DECLCALLBACK(bool) pdmR0IoApicHlp_LockIsOwner(PPDMDEVINS pDevIns)
+{
+    PDMDEV_ASSERT_DEVINS(pDevIns);
+    return pdmLockIsOwner(pDevIns->Internal.s.pGVM);
+}
+
+
 /** @interface_method_impl{PDMIOAPICHLP,pfnIommuMsiRemap} */
 static DECLCALLBACK(int) pdmR0IoApicHlp_IommuMsiRemap(PPDMDEVINS pDevIns, uint16_t idDevice, PCMSIMSG pMsiIn, PMSIMSG pMsiOut)
 {
@@ -1560,6 +1568,7 @@ extern DECLEXPORT(const PDMIOAPICHLP) g_pdmR0IoApicHlp =
     pdmR0IoApicHlp_ApicBusDeliver,
     pdmR0IoApicHlp_Lock,
     pdmR0IoApicHlp_Unlock,
+    pdmR0IoApicHlp_LockIsOwner,
     pdmR0IoApicHlp_IommuMsiRemap,
     PDM_IOAPICHLP_VERSION
 };
