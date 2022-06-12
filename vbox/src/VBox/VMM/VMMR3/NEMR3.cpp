@@ -1,4 +1,4 @@
-/* $Id: NEMR3.cpp 86115 2020-09-14 06:52:26Z vboxsync $ */
+/* $Id: NEMR3.cpp 86117 2020-09-14 08:03:03Z vboxsync $ */
 /** @file
  * NEM - Native execution manager.
  */
@@ -108,7 +108,7 @@ VMMR3_INT_DECL(int) NEMR3InitConfig(PVM pVM)
     pVM->nem.s.fAllow64BitGuests = false;
 #endif
 
-    /** @cfgm{/HM/LovelyMesaDrvWorkaround,bool}
+    /** @cfgm{/NEM/LovelyMesaDrvWorkaround, bool, false}
      * Workaround for mesa vmsvga 3d driver making incorrect assumptions about
      * the hypervisor it is running under. */
     bool f;

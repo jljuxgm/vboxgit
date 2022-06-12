@@ -1,4 +1,4 @@
-/* $Id: NEMInternal.h 86115 2020-09-14 06:52:26Z vboxsync $ */
+/* $Id: NEMInternal.h 86117 2020-09-14 08:03:03Z vboxsync $ */
 /** @file
  * NEM - Internal header file.
  */
@@ -306,6 +306,8 @@ typedef struct NEMCPU
     STAMCOUNTER                 StatExitException;
     STAMCOUNTER                 StatExitExceptionBp;
     STAMCOUNTER                 StatExitExceptionDb;
+    STAMCOUNTER                 StatExitExceptionGp;
+    STAMCOUNTER                 StatExitExceptionGpMesa;
     STAMCOUNTER                 StatExitExceptionUd;
     STAMCOUNTER                 StatExitExceptionUdHandled;
     STAMCOUNTER                 StatExitUnrecoverable;
