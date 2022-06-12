@@ -1,4 +1,4 @@
-/* $Id: HDAStream.h 87952 2021-03-04 14:44:20Z vboxsync $ */
+/* $Id: HDAStream.h 87961 2021-03-04 20:29:46Z vboxsync $ */
 /** @file
  * HDAStream.h - Streams for HD Audio.
  */
@@ -249,6 +249,10 @@ typedef struct HDASTREAMR3
         HDASTREAMMAP            Mapping;
         /** Circular buffer (FIFO) for holding DMA'ed data. */
         R3PTRTYPE(PRTCIRCBUF)   pCircBuf;
+        /** Current circular buffer read offset (for tracing & logging). */
+        uint64_t                offRead;
+        /** Current circular buffer write offset (for tracing & logging). */
+        uint64_t                offWrite;
 #ifdef HDA_USE_DMA_ACCESS_HANDLER
         /** List of DMA handlers. */
         RTLISTANCHORR3          lstDMAHandlers;

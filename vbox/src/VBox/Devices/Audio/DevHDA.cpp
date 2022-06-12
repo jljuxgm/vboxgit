@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 87960 2021-03-04 20:28:57Z vboxsync $ */
+/* $Id: DevHDA.cpp 87961 2021-03-04 20:29:46Z vboxsync $ */
 /** @file
  * DevHDA.cpp - VBox Intel HD Audio Controller.
  *
@@ -3946,6 +3946,7 @@ static DECLCALLBACK(int) hdaR3LoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uint
                                       VERR_INTERNAL_ERROR_3);
                 rc = pHlp->pfnSSMGetMem(pSSM, pvBuf, cbBuf);
                 AssertRCReturn(rc, rc);
+                pStreamR3->State.offWrite = cbCircBufUsed;
 
                 RTCircBufReleaseWriteBlock(pStreamR3->State.pCircBuf, cbBuf);
 
