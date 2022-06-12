@@ -1,4 +1,4 @@
-/* $Id: sleepqueue-r0drv-netbsd.h 83614 2020-04-07 21:31:08Z vboxsync $ */
+/* $Id: sleepqueue-r0drv-netbsd.h 88949 2021-05-08 23:02:05Z vboxsync $ */
 /** @file
  * IPRT - NetBSD Ring-0 Driver Helpers for Abstracting Sleep Queues,
  */
@@ -169,6 +169,11 @@ DECLINLINE(void) rtR0SemBsdWaitPrepare(PRTR0SEMBSDSLEEP pWait)
  */
 DECLINLINE(void) rtR0SemBsdWaitDoIt(PRTR0SEMBSDSLEEP pWait)
 {
+#if __NetBSD_Prereq__(9,99,57)
+#define sleepq_enqueue(sq, wchan, wmesg, sobj) \
+            sleepq_enqueue((sq), (wchan), (wmesg), (sobj), true)
+#endif
+
     sleepq_enter(pWait->sq, curlwp, pWait->sq_lock);
     sleepq_enqueue(pWait->sq, pWait->wchan, "VBoxIS", &vbox_syncobj);
 
