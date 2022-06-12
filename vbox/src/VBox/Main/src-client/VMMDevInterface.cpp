@@ -1,4 +1,4 @@
-/* $Id: VMMDevInterface.cpp 84564 2020-05-27 14:10:26Z vboxsync $ */
+/* $Id: VMMDevInterface.cpp 85309 2020-07-13 12:56:56Z vboxsync $ */
 /** @file
  * VirtualBox Driver Interface to VMM device.
  */
@@ -186,8 +186,7 @@ DECLCALLBACK(void) vmmdevUpdateGuestUserState(PPDMIVMMDEVCONNECTOR pInterface,
     Guest* pGuest = pConsole->i_getGuest();
     AssertPtrReturnVoid(pGuest);
 
-    pGuest->i_onUserStateChange(Bstr(pszUser), Bstr(pszDomain), (VBoxGuestUserState)uState,
-                                pabDetails, cbDetails);
+    pGuest->i_onUserStateChanged(Utf8Str(pszUser), Utf8Str(pszDomain), (VBoxGuestUserState)uState, pabDetails, cbDetails);
 }
 
 

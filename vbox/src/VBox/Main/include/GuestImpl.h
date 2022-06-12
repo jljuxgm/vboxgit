@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.h 84554 2020-05-27 08:16:59Z vboxsync $ */
+/* $Id: GuestImpl.h 85309 2020-07-13 12:56:56Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -94,7 +94,8 @@ public:
     ComObjPtr<Console> i_getConsole(void) { return mParent; }
     void i_setAdditionsStatus(VBoxGuestFacilityType a_enmFacility, VBoxGuestFacilityStatus a_enmStatus,
                               uint32_t a_fFlags, PCRTTIMESPEC a_pTimeSpecTS);
-    void i_onUserStateChange(Bstr aUser, Bstr aDomain, VBoxGuestUserState enmState, const uint8_t *puDetails, uint32_t cbDetails);
+    void i_onUserStateChanged(const Utf8Str &aUser, const Utf8Str &aDomain, VBoxGuestUserState enmState,
+                              const uint8_t *puDetails, uint32_t cbDetails);
     void i_setSupportedFeatures(uint32_t aCaps);
     HRESULT i_setStatistic(ULONG aCpuId, GUESTSTATTYPE enmType, ULONG aVal);
     BOOL i_isPageFusionEnabled();

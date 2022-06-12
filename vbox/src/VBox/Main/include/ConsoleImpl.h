@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 85307 2020-07-13 12:38:15Z vboxsync $ */
+/* $Id: ConsoleImpl.h 85309 2020-07-13 12:56:56Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -290,8 +290,8 @@ public:
     static const char *i_storageControllerTypeToStr(StorageControllerType_T enmCtrlType);
     static HRESULT i_storageBusPortDeviceToLun(StorageBus_T enmBus, LONG port, LONG device, unsigned &uLun);
     // Called from event listener
-    HRESULT i_onNATRedirectRuleChange(ULONG ulInstance, BOOL aNatRuleRemove,
-                                      NATProtocol_T aProto, IN_BSTR aHostIp, LONG aHostPort, IN_BSTR aGuestIp, LONG aGuestPort);
+    HRESULT i_onNATRedirectRuleChanged(ULONG ulInstance, BOOL aNatRuleRemove,
+                                       NATProtocol_T aProto, IN_BSTR aHostIp, LONG aHostPort, IN_BSTR aGuestIp, LONG aGuestPort);
     HRESULT i_onNATDnsChanged();
 
     // Mouse interface

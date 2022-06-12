@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 85300 2020-07-13 10:04:45Z vboxsync $ */
+/* $Id: GuestImpl.cpp 85309 2020-07-13 12:56:56Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest features.
  */
@@ -1072,8 +1072,8 @@ bool Guest::i_facilityUpdate(VBoxGuestFacilityType a_enmFacility, VBoxGuestFacil
  * @param   pbDetails           Pointer to state details. Optional.
  * @param   cbDetails           Size (in bytes) of state details. Pass 0 if not used.
  */
-void Guest::i_onUserStateChange(Bstr aUser, Bstr aDomain, VBoxGuestUserState enmState,
-                                const uint8_t *pbDetails, uint32_t cbDetails)
+void Guest::i_onUserStateChanged(const Utf8Str &aUser, const Utf8Str &aDomain, VBoxGuestUserState enmState,
+                                 const uint8_t *pbDetails, uint32_t cbDetails)
 {
     RT_NOREF(pbDetails, cbDetails);
     LogFlowThisFunc(("\n"));
@@ -1081,9 +1081,9 @@ void Guest::i_onUserStateChange(Bstr aUser, Bstr aDomain, VBoxGuestUserState enm
     AutoCaller autoCaller(this);
     AssertComRCReturnVoid(autoCaller.rc());
 
-    Bstr strDetails; /** @todo Implement state details here. */
+    Utf8Str strDetails; /** @todo Implement state details here. */
 
-    ::FireGuestUserStateChangedEvent(mEventSource, aUser.raw(), aDomain.raw(), (GuestUserState_T)enmState, strDetails.raw());
+    ::FireGuestUserStateChangedEvent(mEventSource, aUser, aDomain, (GuestUserState_T)enmState, strDetails);
     LogFlowFuncLeave();
 }
 

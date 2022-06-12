@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 85306 2020-07-13 12:10:02Z vboxsync $ */
+/* $Id: MachineImpl.cpp 85309 2020-07-13 12:56:56Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -13852,9 +13852,9 @@ HRESULT SessionMachine::i_onNetworkAdapterChange(INetworkAdapter *networkAdapter
 /**
  *  @note Locks this object for reading.
  */
-HRESULT SessionMachine::i_onNATRedirectRuleChange(ULONG ulSlot, BOOL aNatRuleRemove, IN_BSTR aRuleName,
-                                                  NATProtocol_T aProto, IN_BSTR aHostIp, LONG aHostPort,
-                                                  IN_BSTR aGuestIp, LONG aGuestPort)
+HRESULT SessionMachine::i_onNATRedirectRuleChanged(ULONG ulSlot, BOOL aNatRuleRemove, const Utf8Str &aRuleName,
+                                                   NATProtocol_T aProto, const Utf8Str &aHostIp, LONG aHostPort,
+                                                   const Utf8Str &aGuestIp, LONG aGuestPort)
 {
     LogFlowThisFunc(("\n"));
 
