@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibClipboard.cpp 87640 2021-02-08 15:57:38Z vboxsync $ */
+/* $Id: VBoxGuestR3LibClipboard.cpp 87641 2021-02-08 15:59:56Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Shared Clipboard.
  */
@@ -2224,7 +2224,7 @@ VBGLR3DECL(int) VbglR3ClipboardEventGetNextEx(uint32_t idMsg, uint32_t cParms,
                     if (pvBuf)
                     {
                         uint32_t cbRead;
-                        rc = ShClTransferObjRead(pTransfer, hObj, pvBuf, cbToRead, fFlags, &cbRead);
+                        rc = ShClTransferObjRead(pTransfer, hObj, pvBuf, cbToRead, &cbRead, fFlags);
                         if (RT_SUCCESS(rc))
                             rc = VbglR3ClipboardObjWriteSend(pCmdCtx, hObj, pvBuf, cbRead, NULL /* pcbWritten */);
 
