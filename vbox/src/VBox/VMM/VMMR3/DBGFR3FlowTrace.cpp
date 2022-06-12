@@ -1,4 +1,4 @@
-/* $Id: DBGFR3FlowTrace.cpp 87135 2020-12-29 12:32:49Z vboxsync $ */
+/* $Id: DBGFR3FlowTrace.cpp 87577 2021-02-03 15:41:34Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Guest Execution Flow Tracing.
  */
@@ -16,7 +16,7 @@
  */
 
 
-/** @page pg_dbgf_cfg    DBGFR3FlowTrace - Flow Trace Interface
+/** @page pg_dbgf_flow DBGFR3FlowTrace - Flow Trace Interface
  *
  * @todo
  */
