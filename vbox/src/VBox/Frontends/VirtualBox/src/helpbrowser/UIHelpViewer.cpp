@@ -1,4 +1,4 @@
-/* $Id: UIHelpViewer.cpp 88397 2021-04-07 13:01:00Z vboxsync $ */
+/* $Id: UIHelpViewer.cpp 88398 2021-04-07 13:04:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class implementation.
  */
@@ -635,9 +635,8 @@ void UIHelpViewer::iterateDocumentImages()
         cursor.movePosition(QTextCursor::NextCharacter);
         if (cursor.charFormat().isImageFormat())
         {
-//            QTextImageFormat imageFormat = cursor.charFormat().toImageFormat();
-//            printf("%s %lf\n", qPrintable(imageFormat.name()), imageFormat.width());
-//            m_imageSizesMap[imageFormat.name()]
+           QTextImageFormat imageFormat = cursor.charFormat().toImageFormat();
+           m_imageSizesMap[imageFormat.name()] = imageFormat.width();
         }
     }
 }
