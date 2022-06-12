@@ -1,4 +1,4 @@
-/* $Id: FsPerf.cpp 84509 2020-05-25 15:09:24Z vboxsync $ */
+/* $Id: FsPerf.cpp 84912 2020-06-22 18:34:12Z vboxsync $ */
 /** @file
  * FsPerf - File System (Shared Folders) Performance Benchmark.
  */
@@ -3532,7 +3532,7 @@ int fsPerfIoPrepFile(RTFILE hFile1, uint64_t cbFile, uint8_t **ppbFree)
         size_t cbToRead = cbBuf;
         if (cbToRead > cbLeft)
             cbToRead = (size_t)cbLeft;
-        pbBuf[cbToRead] = 0xff;
+        pbBuf[cbToRead - 1] = 0xff;
 
         RTTESTI_CHECK_RC_RET(RTFileRead(hFile1, pbBuf, cbToRead, NULL), VINF_SUCCESS, rcCheck);
         RTTESTI_CHECK_RET(ASMMemIsZero(pbBuf, cbToRead), VERR_MISMATCH);
@@ -6694,7 +6694,7 @@ int main(int argc, char *argv[])
 
             case 'V':
             {
-                char szRev[] = "$Revision: 84509 $";
+                char szRev[] = "$Revision: 84912 $";
                 szRev[RT_ELEMENTS(szRev) - 2] = '\0';
                 RTPrintf(RTStrStrip(strchr(szRev, ':') + 1));
                 return RTEXITCODE_SUCCESS;
