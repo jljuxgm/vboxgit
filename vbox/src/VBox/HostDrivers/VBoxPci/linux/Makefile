@@ -1,4 +1,4 @@
-# $Id: Makefile 84947 2020-06-25 11:52:07Z vboxsync $
+# $Id: Makefile 85939 2020-08-28 18:36:30Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Linux Host PCI Driver.
 #
@@ -24,12 +24,17 @@
 # terms and conditions of either the GPL or the CDDL or both.
 #
 
-# Find the directory of this makefile.
-VBOXPCI_DIR := $(dir $(word $(words $(MAKEFILE_LIST)),$(MAKEFILE_LIST)))
 
 # Linux kbuild sets this to our source directory if we are called from there
 obj ?= $(CURDIR)
 include $(obj)/Makefile-header.gmk
+VBOXPCI_DIR := $(VBOX_MODULE_SRC_DIR)
+
+# Allow building directly from the subdirectory without assuming the toplevel
+# makefile has done the copying. Not the default use case, but can be handy.
+ifndef KBUILD_EXTRA_SYMBOLS
+KBUILD_EXTRA_SYMBOLS=$(abspath $(VBOXPCI_DIR)/../vboxdrv/Module.symvers)
+endif
 
 # override is required by the Debian guys
 VBOXMOD_NAME = vboxpci
