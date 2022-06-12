@@ -1,4 +1,4 @@
-/* $Id: VBoxNetBaseService.h 84364 2020-05-19 11:21:19Z vboxsync $ */
+/* $Id: VBoxNetBaseService.h 87450 2021-01-27 02:00:34Z vboxsync $ */
 /** @file
  * VBoxNetUDP - IntNet Client Library.
  */
@@ -114,7 +114,7 @@ protected:
     int32_t getVerbosityLevel() const;
     void setVerbosityLevel(int32_t);
 
-    void addCommandLineOption(const PRTGETOPTDEF);
+    void addCommandLineOption(PCRTGETOPTDEF);
 
     /**
      * Print debug message depending on the m_cVerbosity level.
