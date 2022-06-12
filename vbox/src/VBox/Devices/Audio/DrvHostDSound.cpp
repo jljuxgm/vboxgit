@@ -1,4 +1,4 @@
-/* $Id: DrvHostDSound.cpp 86575 2020-10-14 15:07:27Z vboxsync $ */
+/* $Id: DrvHostDSound.cpp 86594 2020-10-15 21:41:19Z vboxsync $ */
 /** @file
  * Windows host backend driver using DirectSound.
  */
@@ -1615,7 +1615,7 @@ static BOOL CALLBACK dsoundDevicesEnumCbPlayback(LPGUID pGUID, LPCWSTR pwszDescr
 
             rc = DrvAudioHlpDeviceEnumAdd(pDevEnm, pDev);
 
-            /* Note: Querying the actual device information will be done at some 
+            /* Note: Querying the actual device information will be done at some
              *       later point in time outside this enumeration callback to prevent
              *       DSound hangs. */
         }
@@ -1677,7 +1677,7 @@ static BOOL CALLBACK dsoundDevicesEnumCbCapture(LPGUID pGUID, LPCWSTR pwszDescri
 
             rc = DrvAudioHlpDeviceEnumAdd(pDevEnm, pDev);
 
-            /* Note: Querying the actual device information will be done at some 
+            /* Note: Querying the actual device information will be done at some
              *       later point in time outside this enumeration callback to prevent
              *       DSound hangs. */
         }
