@@ -1,4 +1,4 @@
-/* $Id: UIPerformanceMonitor.cpp 85593 2020-08-03 10:25:52Z vboxsync $ */
+/* $Id: UIPerformanceMonitor.cpp 85635 2020-08-06 10:40:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPerformanceMonitor class implementation.
  */
@@ -779,7 +779,7 @@ void UIPerformanceMonitor::setMachine(const CMachine &comMachine)
     if (comMachine.isNull())
         return;
 
-    if (!m_comSession.isNull() && m_comSession.GetState() == KSessionState_Locked)
+    if (!m_comSession.isNull())
         m_comSession.UnlockMachine();
 
     m_comMachine = comMachine;
