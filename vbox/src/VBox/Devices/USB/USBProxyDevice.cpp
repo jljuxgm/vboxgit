@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice.cpp 86515 2020-10-10 13:07:10Z vboxsync $ */
+/* $Id: USBProxyDevice.cpp 87627 2021-02-05 16:49:57Z vboxsync $ */
 /** @file
  * USBProxy - USB device proxy.
  */
@@ -98,7 +98,7 @@ static void *GetStdDescSync(PUSBPROXYDEV pProxyDev, uint8_t iDescType, uint8_t i
         rc = pProxyDev->pOps->pfnUrbQueue(pProxyDev, &Urb);
         if (RT_FAILURE(rc))
         {
-            Log(("GetStdDescSync: pfnUrbReap failed, rc=%d\n", rc));
+            Log(("GetStdDescSync: pfnUrbQueue failed, rc=%d\n", rc));
             goto err;
         }
 
@@ -109,6 +109,7 @@ static void *GetStdDescSync(PUSBPROXYDEV pProxyDev, uint8_t iDescType, uint8_t i
         pUrbReaped = pProxyDev->pOps->pfnUrbReap(pProxyDev, 5000 /* ms */);
         if (!pUrbReaped)
         {
+            Log(("GetStdDescSync: pfnUrbReap returned NULL, cancel and re-reap\n"));
             rc = pProxyDev->pOps->pfnUrbCancel(pProxyDev, &Urb);
             AssertRC(rc);
             /** @todo This breaks the comment above... */
