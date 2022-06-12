@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 87141 2020-12-29 19:12:45Z vboxsync $ */
+/* $Id: PGMAll.cpp 87515 2021-02-01 19:13:42Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -2927,7 +2927,7 @@ DECLINLINE(unsigned) pgmModeToType(PGMMODE pgmMode)
  * @param   enmHostMode     The host mode.
  * @param   enmShadowMode   The current shadow mode.
  */
-static PGMMODE pgmCalcShadowMode(PVM pVM, PGMMODE enmGuestMode, SUPPAGINGMODE enmHostMode, PGMMODE enmShadowMode)
+static PGMMODE pgmCalcShadowMode(PVMCC pVM, PGMMODE enmGuestMode, SUPPAGINGMODE enmHostMode, PGMMODE enmShadowMode)
 {
     switch (enmGuestMode)
     {

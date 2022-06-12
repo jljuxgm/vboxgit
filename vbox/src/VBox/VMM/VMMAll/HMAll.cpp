@@ -1,4 +1,4 @@
-/* $Id: HMAll.cpp 87501 2021-02-01 14:27:26Z vboxsync $ */
+/* $Id: HMAll.cpp 87515 2021-02-01 19:13:42Z vboxsync $ */
 /** @file
  * HM - All contexts.
  */
@@ -627,9 +627,9 @@ VMM_INT_DECL(int) HMInvalidatePhysPage(PVMCC pVM, RTGCPHYS GCPhys)
  *
  * @remarks Works before hmR3InitFinalizeR0.
  */
-VMM_INT_DECL(bool) HMIsNestedPagingActive(PVM pVM)
+VMM_INT_DECL(bool) HMIsNestedPagingActive(PVMCC pVM)
 {
-    return HMIsEnabled(pVM) && pVM->hm.s.fNestedPaging;
+    return HMIsEnabled(pVM) && CTX_EXPR(pVM->hm.s.fNestedPagingCfg, pVM->hmr0.s.fNestedPaging, RT_NOTHING);
 }
 
 
@@ -643,10 +643,10 @@ VMM_INT_DECL(bool) HMIsNestedPagingActive(PVM pVM)
  *
  * @remarks Works before hmR3InitFinalizeR0.
  */
-VMM_INT_DECL(bool) HMAreNestedPagingAndFullGuestExecEnabled(PVM pVM)
+VMM_INT_DECL(bool) HMAreNestedPagingAndFullGuestExecEnabled(PVMCC pVM)
 {
     return HMIsEnabled(pVM)
-        && pVM->hm.s.fNestedPaging
+        && CTX_EXPR(pVM->hm.s.fNestedPagingCfg, pVM->hmr0.s.fNestedPaging, RT_NOTHING)
         && (   pVM->hm.s.vmx.fUnrestrictedGuest
             || pVM->hm.s.svm.fSupported);
 }
