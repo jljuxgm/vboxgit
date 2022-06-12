@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneGlobal.cpp 85405 2020-07-22 06:46:05Z vboxsync $ */
+/* $Id: UIToolPaneGlobal.cpp 85493 2020-07-28 17:56:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolPaneGlobal class implementation.
  */
@@ -198,6 +198,8 @@ void UIToolPaneGlobal::openTool(UIToolType enmType)
                     /* Add into layout: */
                     m_pLayout->addWidget(m_pPaneResourceMonitor);
                     m_pLayout->setCurrentWidget(m_pPaneResourceMonitor);
+                    connect(m_pPaneResourceMonitor, &UIResourceMonitorWidget::sigSwitchMachinePerformancePane,
+                            this, &UIToolPaneGlobal::sigSwitchMachinePerformancePane);
                 }
 
                 break;
