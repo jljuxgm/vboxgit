@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.cpp 87629 2021-02-05 17:37:10Z vboxsync $ */
+/* $Id: UINameAndSystemEditor.cpp 87736 2021-02-12 15:03:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class implementation.
  */
@@ -256,7 +256,7 @@ void UINameAndSystemEditor::setNameFieldValidator(const QString &strValidator)
 void UINameAndSystemEditor::markNameLineEdit(bool fError)
 {
     if (m_pNameLineEdit)
-        m_pNameLineEdit->mark(fError);
+        m_pNameLineEdit->mark(fError, tr("Invalid name"));
 }
 
 void UINameAndSystemEditor::retranslateUi()

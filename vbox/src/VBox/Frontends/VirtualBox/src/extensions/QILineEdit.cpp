@@ -1,4 +1,4 @@
-/* $Id: QILineEdit.cpp 87724 2021-02-11 15:21:12Z vboxsync $ */
+/* $Id: QILineEdit.cpp 87736 2021-02-12 15:03:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QILineEdit class implementation.
  */
@@ -63,11 +63,12 @@ void QILineEdit::setFixedWidthByText(const QString &strText)
     setFixedWidth(featTextWidth(strText).width());
 }
 
-void QILineEdit::mark(bool fError)
+void QILineEdit::mark(bool fError, const QString &strErrorMessage /* = QString() */)
 {
-    if (fError == m_fMarkForError)
+    if (fError == m_fMarkForError && m_strErrorMessage == strErrorMessage)
         return;
     m_fMarkForError = fError;
+    m_strErrorMessage = strErrorMessage;
     update();
 }
 
@@ -107,6 +108,7 @@ void QILineEdit::paintEvent(QPaintEvent *pPaintEvent)
         if (!m_pIconLabel)
             m_pIconLabel = new QLabel(this);
         m_pIconLabel->setPixmap(m_markIcon.pixmap(windowHandle(), QSize(iIconSize, iIconSize)));
+        m_pIconLabel->setToolTip(m_strErrorMessage);
         m_pIconLabel->move(width() - iIconSize - iIconMargin, iIconMargin);
         m_pIconLabel->show();
     }
