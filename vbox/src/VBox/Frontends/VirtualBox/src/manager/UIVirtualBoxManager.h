@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 84545 2020-05-26 16:17:40Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.h 84558 2020-05-27 12:01:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -344,6 +344,8 @@ private:
 
     /** @name Action update stuff.
       * @{ */
+        /** Updates 'Group' : 'Move to Group' menu. */
+        void updateMenuGroupMoveToGroup(QMenu *pMenu);
         /** Updates 'Group' : 'Close' menu. */
         void updateMenuGroupClose(QMenu *pMenu);
         /** Updates 'Machine' : 'Move to Group' menu. */
