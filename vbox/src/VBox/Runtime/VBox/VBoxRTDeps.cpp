@@ -1,4 +1,4 @@
-/* $Id: VBoxRTDeps.cpp 85164 2020-07-10 09:54:25Z vboxsync $ */
+/* $Id: VBoxRTDeps.cpp 87235 2021-01-13 12:41:05Z vboxsync $ */
 /** @file
  * IPRT - VBoxRT.dll/so dependencies.
  */
@@ -28,9 +28,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#ifndef RT_NO_GIP
-# include <VBox/sup.h>
-#endif
+#include <VBox/sup.h>
 #include <iprt/asm.h>
 #include <iprt/assert.h>
 #include <iprt/localipc.h>
@@ -58,12 +56,13 @@
 *********************************************************************************************************************************/
 struct CLANG11NONSENSE { PFNRT pfn; } g_VBoxRTDeps[] =
 {
-#ifndef RT_NO_GIP
     { (PFNRT)SUPR3Init },
     { (PFNRT)SUPR3PageAllocEx },
     { (PFNRT)SUPR3LoadVMM },
     { (PFNRT)SUPSemEventCreate },
-    { (PFNRT)SUPTracerFireProbe },
+    { (PFNRT)SUPIsTscFreqCompatibleEx },
+#if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
+    { (PFNRT)SUPTracerFireProbe }, /** @todo port me @bugref{9898} ? */
     { (PFNRT)SUPGetTscDeltaSlow },
 #endif
     { (PFNRT)xmlLoadCatalogs },

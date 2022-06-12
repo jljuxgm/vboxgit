@@ -1,4 +1,4 @@
-/* $Id: tstInt.cpp 85506 2020-07-29 10:07:17Z vboxsync $ */
+/* $Id: tstInt.cpp 87235 2021-01-13 12:41:05Z vboxsync $ */
 /** @file
  * SUP Testcase - Test the interrupt gate feature of the support library.
  */
@@ -34,7 +34,11 @@
 #include <VBox/vmm/vm.h>
 #include <iprt/errcore.h>
 #include <VBox/param.h>
-#include <iprt/asm-amd64-x86.h>
+#if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
+# include <iprt/asm-amd64-x86.h>
+#else
+# define ASMReadTSC RTTimeSystemNanoTS
+#endif
 #include <iprt/initterm.h>
 #include <iprt/stream.h>
 #include <iprt/string.h>
