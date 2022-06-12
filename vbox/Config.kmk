@@ -1,4 +1,4 @@
-# $Id: Config.kmk 86637 2020-10-20 09:50:09Z vboxsync $
+# $Id: Config.kmk 86638 2020-10-20 09:52:27Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -729,8 +729,6 @@ VBOX_WITH_KCHMVIEWER = 1
 VBOX_WITH_VALIDATIONKIT = 1
 # Build the testcases.
 VBOX_WITH_TESTCASES = 1
-# Enable this to build vditool even if VBOX_WITH_TESTCASES is disabled
-VBOX_WITH_VDITOOL =
 # Enable this to build vbox-img even if VBOX_WITH_TESTCASES is disabled
 VBOX_WITH_VBOX_IMG =
 # Enables recording support.
@@ -8144,7 +8142,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 86637 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 86638 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
