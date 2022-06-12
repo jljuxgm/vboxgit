@@ -1,4 +1,4 @@
-/* $Id: GuestDnDTargetImpl.h 85402 2020-07-21 15:10:32Z vboxsync $ */
+/* $Id: GuestDnDTargetImpl.h 85423 2020-07-23 08:12:42Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag'n drop target.
  */
@@ -91,7 +91,7 @@ protected:
     int i_sendMetaDataHeader(GuestDnDSendCtx *pCtx);
 
     int i_sendTransferData(GuestDnDSendCtx *pCtx, RTMSINTERVAL msTimeout);
-    int i_sendTransferDataLoop(GuestDnDSendCtx *pCtx, GuestDnDMsg *pMsg);
+    int i_sendTransferListObject(GuestDnDSendCtx *pCtx,  PDNDTRANSFERLIST pList, GuestDnDMsg *pMsg);
 
     int i_sendDirectory(GuestDnDSendCtx *pCtx, PDNDTRANSFEROBJECT pObj, GuestDnDMsg *pMsg);
     int i_sendFile(GuestDnDSendCtx *pCtx, PDNDTRANSFEROBJECT pObj, GuestDnDMsg *pMsg);
