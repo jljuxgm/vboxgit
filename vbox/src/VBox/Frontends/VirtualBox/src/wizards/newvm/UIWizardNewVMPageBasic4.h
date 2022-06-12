@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic4.h 87864 2021-02-24 18:26:21Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic4.h 87865 2021-02-24 18:35:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic4 class declaration.
  */
@@ -133,7 +133,7 @@ private:
 
     /** Validation stuff. */
     bool isComplete() const;
-    virtual bool validatePage() /* override */;
+    //virtual bool validatePage() /* override */;
 
     /** Widgets. */
     QIRichTextLabel *m_pLabel;

@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.h 87864 2021-02-24 18:26:21Z vboxsync $ */
+/* $Id: UIWizardNewVM.h 87865 2021-02-24 18:35:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class declaration.
  */
@@ -61,8 +61,8 @@ public:
     {
         Page1,
         Page2,
+        Page4,
         Page8,
-        //Page4,
         PageMax
     };
 
