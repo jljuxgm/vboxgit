@@ -1,5 +1,5 @@
 #!/bin/bash
-# $Id: led-lights.sh 87390 2021-01-22 23:46:52Z vboxsync $
+# $Id: led-lights.sh 87392 2021-01-22 23:51:04Z vboxsync $
 ## @file
 # VirtualBox guest LED demonstration test
 #
@@ -216,8 +216,6 @@ for shf in $(mount -t vboxsf | awk '{ print $3 }'); do
         done
         sync
         rm -f $shf/tmp.led-lights.$$
-        #find $shf -type f -print0 | xargs -0 wc -l
-        #drop_cache
     done >/dev/null 2>&1 &
     twiddle sharedfs:$shf
 done
