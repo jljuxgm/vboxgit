@@ -1,4 +1,4 @@
-/* $Id: alsa_mangling.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: alsa_mangling.h 88220 2021-03-21 01:55:01Z vboxsync $ */
 /** @file
  * Mangle libasound symbols.
  *
@@ -44,6 +44,7 @@
 #define snd_pcm_resume                          ALSA_MANGLER(snd_pcm_resume)
 #define snd_pcm_start                           ALSA_MANGLER(snd_pcm_start)
 #define snd_pcm_state                           ALSA_MANGLER(snd_pcm_state)
+#define snd_pcm_state_name                      ALSA_MANGLER(snd_pcm_state_name)
 #define snd_pcm_writei                          ALSA_MANGLER(snd_pcm_writei)
 
 #define snd_pcm_hw_params                       ALSA_MANGLER(snd_pcm_hw_params)
