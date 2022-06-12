@@ -1,4 +1,4 @@
-/* $Id: DragAndDrop.h 85422 2020-07-23 08:11:39Z vboxsync $ */
+/* $Id: DragAndDrop.h 85427 2020-07-23 10:58:15Z vboxsync $ */
 /** @file
  * DnD - Shared functions between host and guest.
  */
@@ -75,7 +75,8 @@ typedef struct DNDDROPPEDFILES
 /** Pointer to a DnD dropped files directory. */
 typedef DNDDROPPEDFILES *PDNDDROPPEDFILES;
 
-int DnDDroppedFilesInit(PDNDDROPPEDFILES pDF, const char *pszPath, DNDURIDROPPEDFILEFLAGS fFlags);
+int DnDDroppedFilesInit(PDNDDROPPEDFILES pDF);
+int DnDDroppedFilesInitEx(PDNDDROPPEDFILES pDF, const char *pszPath, DNDURIDROPPEDFILEFLAGS fFlags);
 void DnDDroppedFilesDestroy(PDNDDROPPEDFILES pDF);
 int DnDDroppedFilesAddFile(PDNDDROPPEDFILES pDF, const char *pszFile);
 int DnDDroppedFilesAddDir(PDNDDROPPEDFILES pDF, const char *pszDir);
