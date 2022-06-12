@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedNoCrt-win.cpp 85094 2020-07-07 18:46:41Z vboxsync $ */
+/* $Id: SUPR3HardenedNoCrt-win.cpp 85127 2020-07-08 23:42:18Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main(), windows bits.
  */
@@ -238,7 +238,7 @@ static HANDLE supR3HardenedHeapInit(void) RT_NOTHROW_DEF
 /**
  * Compacts the heaps before enter wait for parent/child.
  */
-DECL_HIDDEN_NOTHROW(void) supR3HardenedWinCompactHeaps(void)
+DECLHIDDEN(void) supR3HardenedWinCompactHeaps(void)
 {
     if (g_hSupR3HardenedHeap)
         RtlCompactHeap(g_hSupR3HardenedHeap, 0 /*dwFlags*/);

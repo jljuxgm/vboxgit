@@ -1,4 +1,4 @@
-/* $Id: initterm-gc.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: initterm-gc.cpp 85127 2020-07-08 23:42:18Z vboxsync $ */
 /** @file
  * IPRT - Init Raw-mode Context.
  */
@@ -45,7 +45,7 @@
 /**
  * Program start nanosecond TS.
  */
-uint64_t    g_u64ProgramStartNanoTS;
+DECL_HIDDEN_DATA(uint64_t) g_u64ProgramStartNanoTS;
 
 
 /**
