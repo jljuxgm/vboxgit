@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 86283 2020-09-25 07:17:09Z vboxsync $ */
+/* $Id: DevACPI.cpp 86315 2020-09-28 11:29:45Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -3973,6 +3973,7 @@ static DECLCALLBACK(int) acpiR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFG
                                   "|Parallel1IoPortBase"
                                   "|Parallel0Irq"
                                   "|Parallel1Irq"
+                                  "|IommuAmdEnabled"
                                   "|IommuAmdPciAddress"
                                   "|SbIoApicPciAddress"
                                   , "");
