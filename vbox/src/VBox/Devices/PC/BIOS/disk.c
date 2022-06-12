@@ -1,4 +1,4 @@
-/* $Id: disk.c 83027 2020-02-08 21:21:29Z vboxsync $ */
+/* $Id: disk.c 89168 2021-05-19 13:35:28Z vboxsync $ */
 /** @file
  * PC BIOS - ???
  */
@@ -89,9 +89,6 @@ dsk_acc_t   dskacc[DSKTYP_CNT] = {
 #endif
 #ifdef VBOX_WITH_SCSI
     [DSK_TYPE_SCSI] = { scsi_read_sectors, scsi_write_sectors },
-#endif
-#ifdef VBOX_WITH_VIRTIO_SCSI
-    [DSK_TYPE_VIRTIO_SCSI] = { virtio_scsi_read_sectors, virtio_scsi_write_sectors },
 #endif
 };
 

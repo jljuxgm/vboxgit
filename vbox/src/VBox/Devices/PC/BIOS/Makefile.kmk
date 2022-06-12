@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 84958 2020-06-25 16:35:51Z vboxsync $
+# $Id: Makefile.kmk 89168 2021-05-19 13:35:28Z vboxsync $
 ## @file
 # Sub-Makefile for the New BIOS ROM.
 #
@@ -66,6 +66,8 @@ ifdef VBOX_WITH_OPEN_WATCOM
  	scsi.c \
  	ahci.c \
  	virtio.c \
+ 	buslogic.c \
+ 	lsilogic.c \
  	apm.c \
  	pcibios.c \
  	pciutil.c \

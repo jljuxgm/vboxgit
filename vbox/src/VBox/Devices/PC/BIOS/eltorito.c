@@ -1,4 +1,4 @@
-/* $Id: eltorito.c 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: eltorito.c 89168 2021-05-19 13:35:28Z vboxsync $ */
 /** @file
  * PC BIOS - ???
  */
@@ -119,9 +119,6 @@ cd_pkt_func     pktacc[DSKTYP_CNT] = {
 #endif
 #ifdef VBOX_WITH_SCSI
     [DSK_TYPE_SCSI]   = { scsi_cmd_packet },
-#endif
-#ifdef VBOX_WITH_VIRTIO_SCSI
-    [DSK_TYPE_VIRTIO_SCSI] = { virtio_scsi_cmd_packet },
 #endif
 };
 
