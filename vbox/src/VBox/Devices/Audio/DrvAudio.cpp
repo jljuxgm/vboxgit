@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 88993 2021-05-12 00:53:17Z vboxsync $ */
+/* $Id: DrvAudio.cpp 89022 2021-05-12 22:05:33Z vboxsync $ */
 /** @file
  * Intermediate audio driver - Connects the audio device emulation with the host backend.
  */
@@ -2203,6 +2203,15 @@ static int drvAudioStreamReInitInternal(PDRVAUDIO pThis, PDRVAUDIOSTREAM pStream
     {
         drvAudioStreamResetInternal(pStreamEx);
 
+/** @todo
+ *  We need to zero the backend storage here!!
+ *  We need to zero the backend storage here!!
+ *  We need to zero the backend storage here!!
+ *  We need to zero the backend storage here!!
+ *  We need to zero the backend storage here!!
+ *  We need to zero the backend storage here!!
+ *  We need to zero the backend storage here!!
+ *   */
         PDMAUDIOSTREAMCFG CfgHostAcq;
         rc = drvAudioStreamCreateInternalBackend(pThis, pStreamEx, &pStreamEx->Host.Cfg, &CfgHostAcq);
         if (RT_SUCCESS(rc))
