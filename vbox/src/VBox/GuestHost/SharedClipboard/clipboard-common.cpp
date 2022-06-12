@@ -1,4 +1,4 @@
-/* $Id: clipboard-common.cpp 86959 2020-11-23 11:25:53Z vboxsync $ */
+/* $Id: clipboard-common.cpp 86960 2020-11-23 12:02:35Z vboxsync $ */
 /** @file
  * Shared Clipboard: Some helper function for converting between the various eol.
  */
@@ -1043,10 +1043,6 @@ const char *ShClHostFunctionToStr(uint32_t uFn)
         RT_CASE_RET_STR(VBOX_SHCL_HOST_FN_SET_HEADLESS);
         RT_CASE_RET_STR(VBOX_SHCL_HOST_FN_CANCEL);
         RT_CASE_RET_STR(VBOX_SHCL_HOST_FN_ERROR);
-        RT_CASE_RET_STR(VBOX_SHCL_HOST_FN_AREA_REGISTER);
-        RT_CASE_RET_STR(VBOX_SHCL_HOST_FN_AREA_UNREGISTER);
-        RT_CASE_RET_STR(VBOX_SHCL_HOST_FN_AREA_ATTACH);
-        RT_CASE_RET_STR(VBOX_SHCL_HOST_FN_AREA_DETACH);
     }
     return "Unknown";
 }
