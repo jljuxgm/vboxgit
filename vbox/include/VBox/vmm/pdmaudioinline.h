@@ -1,4 +1,4 @@
-/* $Id: pdmaudioinline.h 88300 2021-03-26 14:31:55Z vboxsync $ */
+/* $Id: pdmaudioinline.h 88452 2021-04-10 00:19:06Z vboxsync $ */
 /** @file
  * PDM - Audio Helpers, Inlined Code. (DEV,++)
  *
@@ -379,13 +379,11 @@ DECLINLINE(const char *) PDMAudioStrmCmdGetName(PDMAUDIOSTREAMCMD enmCmd)
     switch (enmCmd)
     {
         case PDMAUDIOSTREAMCMD_INVALID: return "Invalid";
-        case PDMAUDIOSTREAMCMD_UNKNOWN: return "Unknown";
         case PDMAUDIOSTREAMCMD_ENABLE:  return "Enable";
         case PDMAUDIOSTREAMCMD_DISABLE: return "Disable";
         case PDMAUDIOSTREAMCMD_PAUSE:   return "Pause";
         case PDMAUDIOSTREAMCMD_RESUME:  return "Resume";
         case PDMAUDIOSTREAMCMD_DRAIN:   return "Drain";
-        case PDMAUDIOSTREAMCMD_DROP:    return "Drop";
         case PDMAUDIOSTREAMCMD_END:
         case PDMAUDIOSTREAMCMD_32BIT_HACK:
             break;

@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioDSound.cpp 88412 2021-04-08 12:00:08Z vboxsync $ */
+/* $Id: DrvHostAudioDSound.cpp 88452 2021-04-10 00:19:06Z vboxsync $ */
 /** @file
  * Host audio driver - DirectSound (Windows).
  */
@@ -1936,13 +1936,6 @@ static int dsoundControlStreamOut(PDRVHOSTDSOUND pThis, PDSOUNDSTREAM pStreamDS,
                     }
                 }
             }
-            break;
-        }
-
-        case PDMAUDIOSTREAMCMD_DROP:
-        {
-            pStreamDS->Out.cbLastTransferred   = 0;
-            pStreamDS->Out.tsLastTransferredMs = 0;
             break;
         }
 

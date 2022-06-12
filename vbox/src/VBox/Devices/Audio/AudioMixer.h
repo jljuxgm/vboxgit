@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.h 88433 2021-04-09 12:55:19Z vboxsync $ */
+/* $Id: AudioMixer.h 88452 2021-04-10 00:19:06Z vboxsync $ */
 /** @file
  * VBox audio - Mixing routines.
  *
@@ -155,8 +155,6 @@ typedef enum AUDMIXSINKCMD
     AUDMIXSINKCMD_PAUSE,
     /** Resumes the sink. */
     AUDMIXSINKCMD_RESUME,
-    /** Tells the sink's streams to drop all (buffered) data immediately. */
-    AUDMIXSINKCMD_DROP,
     /** Hack to blow the type up to 32-bit. */
     AUDMIXSINKCMD_32BIT_HACK = 0x7fffffff
 } AUDMIXSINKCMD;
