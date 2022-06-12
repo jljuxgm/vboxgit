@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 86443 2020-10-04 12:08:49Z vboxsync $
+# $Id: base.py 86503 2020-10-09 13:49:47Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 86443 $"
+__version__ = "$Revision: 86503 $"
 
 
 # Standard Python imports.
@@ -736,6 +736,16 @@ class Process(TdTaskBase):
         if self.isRunning():
             return -127;
         return self.uExitCode >> 8;
+
+    def isNormalExit(self):
+        """
+        Returns True if regular exit(), False if signal or still running.
+        """
+        if self.isRunning():
+            return False;
+        if sys.platform == 'win32':
+            return False;
+        return os.WIFEXITED(self.uExitCode);
 
     def interrupt(self):
         """

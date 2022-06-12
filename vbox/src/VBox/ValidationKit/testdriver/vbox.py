@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 86493 2020-10-08 10:29:57Z vboxsync $
+# $Id: vbox.py 86503 2020-10-09 13:49:47Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 86493 $"
+__version__ = "$Revision: 86503 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -1317,6 +1317,9 @@ class TestDriver(base.TestDriver):                                              
             else:
                 reporter.log('VBoxSVC is no longer running...');
             if not self.oVBoxSvcProcess.isRunning():
+                iExit = self.oVBoxSvcProcess.getExitCode();
+                if iExit != 0 or not self.oVBoxSvcProcess.isNormalExit():
+                    reporter.error("VBoxSVC exited with status %d (%#x)" % (iExit, self.oVBoxSvcProcess.uExitCode));
                 self.oVBoxSvcProcess = None;
         else:
             # by pid file.
