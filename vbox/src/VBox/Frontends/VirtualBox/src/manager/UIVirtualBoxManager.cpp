@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 88752 2021-04-28 16:39:35Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 88758 2021-04-28 22:36:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -702,6 +702,15 @@ void UIVirtualBoxManager::sltHandleOpenUrlCall(QList<QUrl> list /* = QList<QUrl>
 
 void UIVirtualBoxManager::sltHandleChooserPaneIndexChange()
 {
+    // WORKAROUND:
+    // These menus are dynamical since local and cloud VMs have different menu contents.
+    // Yet .. we have to prepare Machine/Group menus beforehand, they contains shortcuts.
+    if (currentItem())
+    {
+        updateMenuGroup(actionPool()->action(UIActionIndexMN_M_Group)->menu());
+        updateMenuMachine(actionPool()->action(UIActionIndexMN_M_Machine)->menu());
+    }
+
     updateActionsVisibility();
     updateActionsAppearance();
 }
@@ -2169,15 +2178,8 @@ void UIVirtualBoxManager::prepare()
     prepareWidgets();
     prepareConnections();
 
-    // WORKAROUND:
-    // These menus are dynamical since local and cloud VMs have different menu contents.
-    // Yet .. we have to prepare Machine/Group menus beforehand, they contains shortcuts.
-    updateMenuGroup(actionPool()->action(UIActionIndexMN_M_Group)->menu());
-    updateMenuMachine(actionPool()->action(UIActionIndexMN_M_Machine)->menu());
-
     /* Update actions initially: */
-    updateActionsVisibility();
-    updateActionsAppearance();
+    sltHandleChooserPaneIndexChange();
 
     /* Load settings: */
     loadSettings();
