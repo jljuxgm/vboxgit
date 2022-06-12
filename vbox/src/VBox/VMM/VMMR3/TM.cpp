@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 87926 2021-03-02 22:01:02Z vboxsync $ */
+/* $Id: TM.cpp 88075 2021-03-10 19:22:36Z vboxsync $ */
 /** @file
  * TM - Time Manager.
  */
@@ -2289,7 +2289,7 @@ static DECLCALLBACK(void) tmR3TimerCallback(PRTTIMER pTimer, void *pvUser, uint6
  *
  * @param   pVM             The cross context VM structure.
  * @param   pQueue          The queue to run.
- * @param   pTimer          The head timer.  Caller already check that this is
+ * @param   pNext           The head timer.  Caller already check that this is
  *                          not NULL.
  */
 static void tmR3TimerQueueRun(PVM pVM, PTMTIMERQUEUE pQueue, PTMTIMER pTimer)
@@ -2790,7 +2790,7 @@ VMMR3_INT_DECL(void) TMR3VirtualSyncFF(PVM pVM, PVMCPU pVCpu)
  * Service the special virtual sync timer queue.
  *
  * @param   pVM     The cross context VM structure.
- * @param   pVCpuDst    The destination VCpu.
+ * @param   pQueue  The queue.
  */
 static void tmR3TimerQueueDoVirtualSync(PVM pVM, PVMCPU pVCpuDst)
 {

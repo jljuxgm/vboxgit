@@ -1,4 +1,4 @@
-/* $Id: PDMDevMiscHlp.cpp 87926 2021-03-02 22:01:02Z vboxsync $ */
+/* $Id: PDMDevMiscHlp.cpp 88075 2021-03-10 19:22:36Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Misc. Device Helpers.
  */
@@ -141,18 +141,18 @@ static DECLCALLBACK(void) pdmR3IoApicHlp_Unlock(PPDMDEVINS pDevIns)
 
 
 /** @interface_method_impl{PDMIOAPICHLP,pfnIommuMsiRemap} */
-static DECLCALLBACK(int) pdmR3IoApicHlp_IommuMsiRemap(PPDMDEVINS pDevIns, uint16_t idDevice, PCMSIMSG pMsiIn, PMSIMSG pMsiOut)
+static DECLCALLBACK(int) pdmR3IoApicHlp_IommuMsiRemap(PPDMDEVINS pDevIns, uint16_t uDeviceId, PCMSIMSG pMsiIn, PMSIMSG pMsiOut)
 {
     PDMDEV_ASSERT_DEVINS(pDevIns);
     LogFlow(("pdmR3IoApicHlp_IommuRemapMsi: caller='%s'/%d: pMsiIn=(%#RX64, %#RU32)\n", pDevIns->pReg->szName,
              pDevIns->iInstance, pMsiIn->Addr.u64, pMsiIn->Data.u32));
 
 #ifdef VBOX_WITH_IOMMU_AMD
-    int rc = pdmIommuMsiRemap(pDevIns, idDevice, pMsiIn, pMsiOut);
+    int rc = pdmIommuMsiRemap(pDevIns, uDeviceId, pMsiIn, pMsiOut);
     if (RT_SUCCESS(rc) || rc != VERR_IOMMU_NOT_PRESENT)
         return rc;
 #else
-    RT_NOREF(pDevIns, idDevice);
+    RT_NOREF(pDevIns, uDeviceId);
 #endif
 
     *pMsiOut = *pMsiIn;
