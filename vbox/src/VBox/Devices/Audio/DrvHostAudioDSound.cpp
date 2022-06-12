@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioDSound.cpp 89213 2021-05-21 10:00:12Z vboxsync $ */
+/* $Id: DrvHostAudioDSound.cpp 89218 2021-05-21 11:57:55Z vboxsync $ */
 /** @file
  * Host audio driver - DirectSound (Windows).
  */
@@ -623,9 +623,9 @@ static LPCGUID dsoundCaptureSelectDevice(PDRVHOSTDSOUND pThis, PPDMAUDIOSTREAMCF
     if (!pGUID)
     {
         PDSOUNDDEV pDev = NULL;
-        switch (pCfg->u.enmSrc)
+        switch (pCfg->enmPath)
         {
-            case PDMAUDIORECSRC_LINE:
+            case PDMAUDIOPATH_IN_LINE:
                 /*
                  * At the moment we're only supporting line-in in the HDA emulation,
                  * and line-in + mic-in in the AC'97 emulation both are expected
@@ -633,7 +633,7 @@ static LPCGUID dsoundCaptureSelectDevice(PDRVHOSTDSOUND pThis, PPDMAUDIOSTREAMCF
                  *
                  * So the fall through here is intentional for now.
                  */
-            case PDMAUDIORECSRC_MIC:
+            case PDMAUDIOPATH_IN_MIC:
                 pDev = (PDSOUNDDEV)DrvAudioHlpDeviceEnumGetDefaultDevice(&pThis->DeviceEnum, PDMAUDIODIR_IN);
                 break;
 
@@ -646,7 +646,7 @@ static LPCGUID dsoundCaptureSelectDevice(PDRVHOSTDSOUND pThis, PPDMAUDIOSTREAMCF
             && pDev)
         {
             DSLOG(("DSound: Guest source '%s' is using host recording device '%s'\n",
-                   PDMAudioRecSrcGetName(pCfg->u.enmSrc), pDev->Core.szName));
+                   PDMAudioPathGetName(pCfg->enmPath), pDev->Core.szName));
             pGUID = &pDev->Guid;
         }
         if (RT_FAILURE(rc))
@@ -659,7 +659,7 @@ static LPCGUID dsoundCaptureSelectDevice(PDRVHOSTDSOUND pThis, PPDMAUDIOSTREAMCF
     /* This always has to be in the release log. */
     char *pszGUID = dsoundGUIDToUtf8StrA(pGUID);
     LogRel(("DSound: Guest source '%s' is using host recording device with GUID '%s'\n",
-            PDMAudioRecSrcGetName(pCfg->u.enmSrc), pszGUID ? pszGUID: "{?}"));
+            PDMAudioPathGetName(pCfg->enmPath), pszGUID ? pszGUID: "{?}"));
     RTStrFree(pszGUID);
 
     return pGUID;
@@ -1648,9 +1648,7 @@ static DECLCALLBACK(int) drvHostDSoundHA_StreamCreate(PPDMIHOSTAUDIO pInterface,
     Assert(PDMAudioStrmCfgEquals(pCfgReq, pCfgAcq));
 
     const char * const pszStreamType = pCfgReq->enmDir == PDMAUDIODIR_IN ? "capture" : "playback"; RT_NOREF(pszStreamType);
-    LogFlowFunc(("enmSrc/Dst=%s '%s'\n",
-                 pCfgReq->enmDir == PDMAUDIODIR_IN ? PDMAudioRecSrcGetName(pCfgReq->u.enmSrc)
-                 : PDMAudioPlaybackDstGetName(pCfgReq->u.enmDst), pCfgReq->szName));
+    LogFlowFunc(("enmPath=%s '%s'\n", PDMAudioPathGetName(pCfgReq->enmPath), pCfgReq->szName));
     RTListInit(&pStreamDS->ListEntry); /* paranoia */
 
     /* For whatever reason: */

@@ -1,4 +1,4 @@
-/* $Id: DrvAudioRec.cpp 89213 2021-05-21 10:00:12Z vboxsync $ */
+/* $Id: DrvAudioRec.cpp 89218 2021-05-21 11:57:55Z vboxsync $ */
 /** @file
  * Video recording audio backend for Main.
  *
@@ -408,7 +408,7 @@ static int avRecCreateStreamOut(PDRVAUDIORECORDING pThis, PAVRECSTREAM pStreamAV
     AssertPtrReturn(pCfgReq,   VERR_INVALID_POINTER);
     AssertPtrReturn(pCfgAcq,   VERR_INVALID_POINTER);
 
-    if (pCfgReq->u.enmDst != PDMAUDIOPLAYBACKDST_FRONT)
+    if (pCfgReq->enmPath != PDMAUDIOPATH_OUT_FRONT)
     {
         LogRel2(("Recording: Support for surround audio not implemented yet\n"));
         AssertFailed();

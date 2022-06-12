@@ -1,4 +1,4 @@
-/* $Id: DevHdaStream.cpp 88991 2021-05-12 00:46:35Z vboxsync $ */
+/* $Id: DevHdaStream.cpp 89218 2021-05-21 11:57:55Z vboxsync $ */
 /** @file
  * Intel HD Audio Controller Emulation - Streams.
  */
@@ -93,13 +93,13 @@ int hdaR3StreamConstruct(PHDASTREAM pStreamShared, PHDASTREAMR3 pStreamR3, PHDAS
 
     if (fIsInput)
     {
-        pStreamShared->State.Cfg.u.enmSrc = PDMAUDIORECSRC_UNKNOWN;
-        pStreamShared->State.Cfg.enmDir   = PDMAUDIODIR_IN;
+        pStreamShared->State.Cfg.enmPath = PDMAUDIOPATH_UNKNOWN;
+        pStreamShared->State.Cfg.enmDir  = PDMAUDIODIR_IN;
     }
     else
     {
-        pStreamShared->State.Cfg.u.enmDst = PDMAUDIOPLAYBACKDST_UNKNOWN;
-        pStreamShared->State.Cfg.enmDir   = PDMAUDIODIR_OUT;
+        pStreamShared->State.Cfg.enmPath = PDMAUDIOPATH_UNKNOWN;
+        pStreamShared->State.Cfg.enmDir  = PDMAUDIODIR_OUT;
     }
 
     pStreamR3->Dbg.Runtime.fEnabled = pThisCC->Dbg.fEnabled;
@@ -547,7 +547,7 @@ int hdaR3StreamSetUp(PPDMDEVINS pDevIns, PHDASTATE pThis, PHDASTREAM pStreamShar
 # ifdef VBOX_WITH_AUDIO_HDA_MIC_IN
 #  error "Implement me!"
 # else
-            pCfg->u.enmSrc  = PDMAUDIORECSRC_LINE;
+            pCfg->enmPath   = PDMAUDIOPATH_IN_LINE;
             pCfg->enmLayout = PDMAUDIOSTREAMLAYOUT_NON_INTERLEAVED;
             RTStrCopy(pCfg->szName, sizeof(pCfg->szName), "Line In");
 # endif
