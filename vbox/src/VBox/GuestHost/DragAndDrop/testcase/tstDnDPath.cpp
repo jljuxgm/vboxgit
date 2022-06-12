@@ -1,4 +1,4 @@
-/* $Id: tstDnDPath.cpp 85382 2020-07-18 11:33:58Z vboxsync $ */
+/* $Id: tstDnDPath.cpp 85660 2020-08-10 11:29:43Z vboxsync $ */
 /** @file
  * DnD path tests.
  */
@@ -40,10 +40,18 @@ static void tstPathRebase(RTTEST hTest)
         { "foo", "old", NULL, VERR_INVALID_POINTER, NULL },
         /* Actual rebasing. */
         { "old/foo", "old", "new", VINF_SUCCESS, "new/foo" },
+        /* Note: DnDPathRebase intentionally does not do any path conversions. */
+#ifdef RT_OS_WINDOWS
         { "old\\foo", "old", "new", VINF_SUCCESS, "new/foo" },
         { "\\totally\\different\\path\\foo", "/totally/different/path", "/totally/different/path", VINF_SUCCESS, "/totally/different/path/foo" },
         { "\\old\\path\\foo", "", "/new/root/", VINF_SUCCESS, "/new/root/old/path/foo" },
         { "\\\\old\\path\\\\foo", "", "/new/root/", VINF_SUCCESS, "/new/root/old/path\\\\foo" }
+#else
+        { "old/foo", "old", "new", VINF_SUCCESS, "new/foo" },
+        { "/totally/different/path/foo", "/totally/different/path", "/totally/different/path", VINF_SUCCESS, "/totally/different/path/foo" },
+        { "/old/path/foo", "", "/new/root/", VINF_SUCCESS, "/new/root/old/path/foo" },
+        { "//old/path//foo", "", "/new/root/", VINF_SUCCESS, "/new/root/old/path//foo" }
+#endif
     };
 
     char *pszPath = NULL;
