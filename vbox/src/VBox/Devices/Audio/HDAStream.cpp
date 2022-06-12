@@ -1,4 +1,4 @@
-/* $Id: HDAStream.cpp 88171 2021-03-18 01:43:19Z vboxsync $ */
+/* $Id: HDAStream.cpp 88172 2021-03-18 01:50:11Z vboxsync $ */
 /** @file
  * HDAStream.cpp - Stream functions for HD Audio.
  */
@@ -1137,7 +1137,6 @@ DECLINLINE(void) hdaR3StreamDmaBufAdvanceToNext(PHDASTREAM pStreamShared)
  *
  * @retval  true if DMA processing can take place
  * @retval  false if caller should return immediately.
- * @param   pDevIns         The device instance.
  * @param   pThis           The shared HDA device state.
  * @param   pStreamShared   HDA stream to update (shared).
  * @param   uSD             The stream ID (for asserting).
