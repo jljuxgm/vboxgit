@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic3.cpp 85067 2020-07-06 12:49:55Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic3.cpp 85071 2020-07-06 13:30:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic3 class implementation.
  */
@@ -157,6 +157,7 @@ QWidget *UIWizardNewVMPage3::createDiskWidgets()
 {
     QWidget *pDiskContainer = new QWidget;
     QGridLayout *pDiskLayout = new QGridLayout(pDiskContainer);
+    pDiskLayout->setContentsMargins(0, 0, 0, 0);
 
     m_pDiskSkip = new QRadioButton;
     m_pDiskCreate = new QRadioButton;
@@ -187,7 +188,7 @@ QWidget *UIWizardNewVMPage3::createHardwareWidgets()
 {
     QWidget *pHardwareContainer = new QWidget;
     QGridLayout *pHardwareLayout = new QGridLayout(pHardwareContainer);
-
+    pHardwareLayout->setContentsMargins(0, 0, 0, 0);
     m_pBaseMemoryEditor = new UIBaseMemoryEditor(0, true);
     m_pVirtualCPUEditor = new UIVirtualCPUEditor(0, true);
     pHardwareLayout->addWidget(m_pBaseMemoryEditor, 0, 0, 1, 4);

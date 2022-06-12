@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic2.cpp 85067 2020-07-06 12:49:55Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic2.cpp 85071 2020-07-06 13:30:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic2 class implementation.
  */
@@ -124,6 +124,7 @@ QWidget *UIWizardNewVMPage2::createUserNameHostNameWidgets()
         return 0;
     QWidget *pContainer = new QWidget;
     QGridLayout *pGridLayout = new QGridLayout(pContainer);
+    pGridLayout->setContentsMargins(0, 0, 0, 0);
 
     m_pUserNamePasswordEditor = new UIUserNamePasswordEditor;
     pGridLayout->addWidget(m_pUserNamePasswordEditor, 0, 0, 3, 4);
@@ -140,6 +141,7 @@ QWidget *UIWizardNewVMPage2::createGAInstallWidgets()
         return 0;
     QWidget *pContainer = new QWidget;
     QGridLayout *pContainerLayout = new QGridLayout(pContainer);
+    pContainerLayout->setContentsMargins(0, 0, 0, 0);
 
     m_pInstallGACheckBox = new QCheckBox;
     m_pISOPathLabel = new QLabel;
@@ -168,6 +170,7 @@ QWidget *UIWizardNewVMPage2::createProductKeyWidgets()
         return 0;
     QWidget *pContainer = new QWidget;
     QGridLayout *pGridLayout = new QGridLayout(pContainer);
+    pGridLayout->setContentsMargins(0, 0, 0, 0);
 
     m_pProductKeyLabel = new QLabel;
     m_pProductKeyLineEdit = new QLineEdit;
