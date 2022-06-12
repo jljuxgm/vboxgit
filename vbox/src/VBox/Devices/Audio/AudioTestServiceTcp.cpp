@@ -1,4 +1,4 @@
-/* $Id: AudioTestServiceTcp.cpp 89541 2021-06-07 09:26:07Z vboxsync $ */
+/* $Id: AudioTestServiceTcp.cpp 89614 2021-06-11 06:34:13Z vboxsync $ */
 /** @file
  * AudioTestServiceTcp - Audio test execution server, TCP/IP Transport Layer.
  */
@@ -185,6 +185,7 @@ static DECLCALLBACK(int) atsTcpSendPkt(PATSTRANSPORTINST pThis, PATSTRANSPORTCLI
      * Write it.
      */
     size_t cbToSend = RT_ALIGN_Z(pPktHdr->cb, ATSPKT_ALIGNMENT);
+    LogFlowFunc(("%RU32 -> %zu\n", pPktHdr->cb, cbToSend));
     int rc = RTTcpWrite(pClient->hTcpClient, pPktHdr, cbToSend);
     if (    RT_FAILURE(rc)
         &&  rc != VERR_INTERRUPTED)
