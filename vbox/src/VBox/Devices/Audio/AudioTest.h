@@ -1,4 +1,4 @@
-/* $Id: AudioTest.h 89383 2021-05-31 07:26:13Z vboxsync $ */
+/* $Id: AudioTest.h 89387 2021-05-31 09:55:04Z vboxsync $ */
 /** @file
  * Audio testing routines.
  * Common code which is being used by the ValidationKit audio test (VKAT)
@@ -341,7 +341,7 @@ int    AudioTestSetVerify(PAUDIOTESTSET pSetA, PAUDIOTESTSET pSetB, PAUDIOTESTER
 bool   AudioTestErrorDescFailed(PAUDIOTESTERRORDESC pErr);
 void   AudioTestErrorDescDestroy(PAUDIOTESTERRORDESC pErr);
 
-int    AudioTestWaveFileOpen(const char *pszFile, PAUDIOTESTWAVEFILE pWaveFile);
+int    AudioTestWaveFileOpen(const char *pszFile, PAUDIOTESTWAVEFILE pWaveFile, PRTERRINFO pErrInfo);
 int    AudioTestWaveFileRead(PAUDIOTESTWAVEFILE pWaveFile, void *pvBuf, size_t cbBuf, size_t *pcbRead);
 void   AudioTestWaveFileClose(PAUDIOTESTWAVEFILE pWaveFile);
 
