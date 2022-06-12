@@ -1,4 +1,4 @@
-/* $Id: DevIommuAmd.cpp 86763 2020-10-30 05:29:14Z vboxsync $ */
+/* $Id: DevIommuAmd.cpp 86834 2020-11-09 15:24:16Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - AMD implementation.
  */
@@ -2036,6 +2036,7 @@ static VBOXSTRICTRC iommuAmdReadRegister(PPDMDEVINS pDevIns, uint32_t off, uint6
     *puResult = uReg;
     return VINF_SUCCESS;
 #else
+    NOREF(pPciDev);
     PCIOMMUREGACC pReg = iommuAmdGetRegAccessForOffset(off);
     if (pReg)
     { /* likely */ }
