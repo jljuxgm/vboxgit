@@ -1,4 +1,4 @@
-/* $Id: PDMAllCritSect.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: PDMAllCritSect.cpp 87935 2021-03-03 12:19:46Z vboxsync $ */
 /** @file
  * PDM - Write-Only Critical Section, All Contexts.
  */
@@ -136,9 +136,9 @@ static int pdmR3R0CritSectEnterContended(PPDMCRITSECT pCritSect, RTNATIVETHREAD 
     if (ASMAtomicIncS32(&pCritSect->s.Core.cLockers) == 0)
         return pdmCritSectEnterFirst(pCritSect, hNativeSelf, pSrcPos);
 # ifdef IN_RING3
-    STAM_COUNTER_INC(&pCritSect->s.StatContentionR3);
+    STAM_REL_COUNTER_INC(&pCritSect->s.StatContentionR3);
 # else
-    STAM_COUNTER_INC(&pCritSect->s.StatContentionRZLock);
+    STAM_REL_COUNTER_INC(&pCritSect->s.StatContentionRZLock);
 # endif
 
     /*
