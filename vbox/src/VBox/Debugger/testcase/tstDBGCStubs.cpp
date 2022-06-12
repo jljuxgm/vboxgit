@@ -1,4 +1,4 @@
-/* $Id: tstDBGCStubs.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: tstDBGCStubs.cpp 86098 2020-09-13 07:17:19Z vboxsync $ */
 /** @file
  * DBGC Testcase - Command Parser, VMM Stub Functions.
  */
@@ -93,7 +93,7 @@ VMMR3DECL(int) DBGFR3DisasInstrEx(PUVM pUVM, VMCPUID idCpu, RTSEL Sel, RTGCPTR G
 {
     return VERR_INTERNAL_ERROR;
 }
-VMMR3DECL(int) DBGFR3EventWait(PUVM pUVM, RTMSINTERVAL cMillies, PCDBGFEVENT *ppEvent)
+VMMR3DECL(int) DBGFR3EventWait(PUVM pUVM, RTMSINTERVAL cMillies, PDBGFEVENT pEvent)
 {
     return VERR_INTERNAL_ERROR;
 }
@@ -106,7 +106,7 @@ VMMR3DECL(int) DBGFR3InterruptConfigEx(PUVM pUVM, PCDBGFINTERRUPTCONFIG paConfig
     return VERR_INTERNAL_ERROR;
 }
 
-VMMR3DECL(int) DBGFR3Halt(PUVM pUVM)
+VMMR3DECL(int) DBGFR3Halt(PUVM pUVM, VMCPUID idCpu)
 {
     return VERR_INTERNAL_ERROR;
 }
@@ -121,7 +121,7 @@ VMMR3DECL(int) DBGFR3InfoEx(PUVM pUVM, VMCPUID idCpu, const char *pszName, const
 VMMR3DECL(void) DBGFR3InfoGenricGetOptError(PCDBGFINFOHLP pHlp, int rc, union RTGETOPTUNION *pValueUnion, struct RTGETOPTSTATE *pState)
 {
 }
-VMMR3DECL(bool) DBGFR3IsHalted(PUVM pUVM)
+VMMR3DECL(bool) DBGFR3IsHalted(PUVM pUVM, VMCPUID idCpu)
 {
     return true;
 }
@@ -163,7 +163,7 @@ VMMR3DECL(int) DBGFR3AsLineByAddr(PUVM pUVM, RTDBGAS hDbgAs, PCDBGFADDRESS pAddr
 {
     return VERR_DBG_LINE_NOT_FOUND;
 }
-VMMR3DECL(int) DBGFR3Resume(PUVM pUVM)
+VMMR3DECL(int) DBGFR3Resume(PUVM pUVM, VMCPUID idCpu)
 {
     return VERR_INTERNAL_ERROR;
 }
