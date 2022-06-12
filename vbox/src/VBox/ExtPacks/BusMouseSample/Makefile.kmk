@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: Makefile.kmk 85507 2020-07-29 10:10:49Z vboxsync $
 ## @file
 # Sub-Makefile for the Bus Mouse Extension Pack Sample.
 #
@@ -83,7 +83,7 @@ DLLS += VBoxBusMouseR3
 VBoxBusMouseR3_TEMPLATE = VBoxR3ExtPackBusMouse
 VBoxBusMouseR3_SOURCES  = DevBusMouse.cpp
 
-SYSMODS += VBoxBusMouseR0
+$(if-expr defined(VBOX_WITH_VBOXR0_AS_DLL),DLLS,SYSMODS) += VBoxBusMouseR0
 VBoxBusMouseR0_TEMPLATE = VBoxR0ExtPackBusMouse
 VBoxBusMouseR0_SOURCES  = DevBusMouse.cpp
 

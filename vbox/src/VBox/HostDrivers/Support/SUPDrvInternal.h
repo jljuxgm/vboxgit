@@ -1,4 +1,4 @@
-/* $Id: SUPDrvInternal.h 85174 2020-07-10 12:37:39Z vboxsync $ */
+/* $Id: SUPDrvInternal.h 85507 2020-07-29 10:10:49Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
@@ -143,6 +143,13 @@
  * taking it.
  * @todo fix the mutex implementation on linux and make this the default. */
 # define SUPDRV_USE_MUTEX_FOR_GIP
+#endif
+
+
+#if 0 /*def RT_OS_LINUX*/
+/** Use the RTR0MemObj API rather than the RTMemExecAlloc for the images.
+ * This is a good idea in general, but a necessity for @bugref{9801}. */
+# define SUPDRV_USE_MEMOBJ_FOR_LDR_IMAGE
 #endif
 
 
@@ -326,15 +333,20 @@ typedef struct SUPDRVLDRIMAGE
     struct SUPDRVLDRIMAGE * volatile pNext;
     /** Pointer to the image. */
     void                           *pvImage;
+#ifdef SUPDRV_USE_MEMOBJ_FOR_LDR_IMAGE
+    /** The memory object for the module allocation. */
+    RTR0MEMOBJ                      hMemObjImage;
+#else
     /** Pointer to the allocated image buffer.
      * pvImage is 32-byte aligned or it may governed by the native loader (this
      * member is NULL then). */
     void                           *pvImageAlloc;
+#endif
     /** Magic value (SUPDRVLDRIMAGE_MAGIC). */
     uint32_t                        uMagic;
     /** Size of the image including the tables. This is mainly for verification
      * of the load request. */
-    uint32_t                        cbImageWithTabs;
+    uint32_t                        cbImageWithEverything;
     /** Size of the image. */
     uint32_t                        cbImageBits;
     /** The number of entries in the symbol table. */
@@ -345,6 +357,10 @@ typedef struct SUPDRVLDRIMAGE
     char                           *pachStrTab;
     /** Size of the string table. */
     uint32_t                        cbStrTab;
+    /** Number of segments. */
+    uint32_t                        cSegments;
+    /** Segments (for memory protection). */
+    PSUPLDRSEG                      paSegments;
     /** Pointer to the optional module initialization callback. */
     PFNR0MODULEINIT                 pfnModuleInit;
     /** Pointer to the optional module termination callback. */
