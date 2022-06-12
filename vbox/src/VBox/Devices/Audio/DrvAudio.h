@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.h 87990 2021-03-07 14:29:40Z vboxsync $ */
+/* $Id: DrvAudio.h 87991 2021-03-07 15:11:52Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  */
@@ -200,7 +200,7 @@ uint32_t DrvAudioHlpCalcBitrate(PCPDMAUDIOPCMPROPS pProps);
 uint32_t DrvAudioHlpBytesAlign(uint32_t cbSize, PCPDMAUDIOPCMPROPS pProps);
 bool     DrvAudioHlpBytesIsAligned(uint32_t cbSize, PCPDMAUDIOPCMPROPS pProps);
 uint32_t DrvAudioHlpBytesToFrames(uint32_t cbBytes, PCPDMAUDIOPCMPROPS pProps);
-uint64_t DrvAudioHlpBytesToMilli(uint32_t cbBytes, PCPDMAUDIOPCMPROPS pProps);
+uint64_t DrvAudioHlpBytesToMilli(PCPDMAUDIOPCMPROPS pProps, uint32_t cb);
 uint64_t DrvAudioHlpBytesToMicro(PCPDMAUDIOPCMPROPS pProps, uint32_t cb);
 uint64_t DrvAudioHlpBytesToNano(PCPDMAUDIOPCMPROPS pProps, uint32_t cb);
 uint32_t DrvAudioHlpFramesToBytes(uint32_t cFrames, PCPDMAUDIOPCMPROPS pProps);

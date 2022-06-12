@@ -1,4 +1,4 @@
-/* $Id: DrvAudioCommon.cpp 87990 2021-03-07 14:29:40Z vboxsync $ */
+/* $Id: DrvAudioCommon.cpp 87991 2021-03-07 15:11:52Z vboxsync $ */
 /** @file
  * Intermedia audio driver, common routines.
  *
@@ -1241,7 +1241,7 @@ uint32_t DrvAudioHlpBytesToFrames(uint32_t cbBytes, PCPDMAUDIOPCMPROPS pProps)
  *
  * @note    Rounds up the result.
  */
-uint64_t DrvAudioHlpBytesToMilli(uint32_t cb, PCPDMAUDIOPCMPROPS pProps)
+uint64_t DrvAudioHlpBytesToMilli(PCPDMAUDIOPCMPROPS pProps, uint32_t cb)
 {
     AssertPtrReturn(pProps, 0);
 

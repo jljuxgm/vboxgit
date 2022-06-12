@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 87990 2021-03-07 14:29:40Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 87991 2021-03-07 15:11:52Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -1642,9 +1642,9 @@ static void ichac97R3StreamUpdate(PPDMDEVINS pDevIns, PAC97STATE pThis, PAC97STA
             {
                 Log3Func(("[SD%RU8] PICB=%zu (%RU64ms), cbFree=%zu (%RU64ms), cbTransferChunk=%zu (%RU64ms)\n",
                           pStream->u8SD,
-                          (pStream->Regs.picb << 1), DrvAudioHlpBytesToMilli((pStream->Regs.picb << 1), &pStreamCC->State.Cfg.Props),
-                          cbStreamFree, DrvAudioHlpBytesToMilli(cbStreamFree, &pStreamCC->State.Cfg.Props),
-                          pStreamCC->State.cbTransferChunk, DrvAudioHlpBytesToMilli(pStreamCC->State.cbTransferChunk, &pStreamCC->State.Cfg.Props)));
+                          (pStream->Regs.picb << 1), DrvAudioHlpBytesToMilli(&pStreamCC->State.Cfg.Props, pStream->Regs.picb << 1),
+                          cbStreamFree, DrvAudioHlpBytesToMilli(&pStreamCC->State.Cfg.Props, cbStreamFree),
+                          pStreamCC->State.cbTransferChunk, DrvAudioHlpBytesToMilli(&pStreamCC->State.Cfg.Props, pStreamCC->State.cbTransferChunk)));
 
                 /* Do the DMA transfer. */
                 rc2 = ichac97R3StreamTransfer(pDevIns, pThis, pStream, pStreamCC,

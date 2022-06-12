@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 87861 2021-02-24 15:04:02Z vboxsync $ */
+/* $Id: AudioMixer.cpp 87991 2021-03-07 15:11:52Z vboxsync $ */
 /** @file
  * Audio mixing routines for multiplexing audio sources in device emulations.
  *
@@ -1035,7 +1035,7 @@ uint32_t AudioMixerSinkGetWritable(PAUDMIXSINK pSink)
     }
 
     Log3Func(("[%s] cbWritable=%RU32 (%RU64ms)\n",
-              pSink->pszName, cbWritable, DrvAudioHlpBytesToMilli(cbWritable, &pSink->PCMProps)));
+              pSink->pszName, cbWritable, DrvAudioHlpBytesToMilli(&pSink->PCMProps, cbWritable)));
 
     int rc2 = RTCritSectLeave(&pSink->CritSect);
     AssertRC(rc2);

@@ -1,4 +1,4 @@
-/* $Id: tstAudioMixBuffer.cpp 87990 2021-03-07 14:29:40Z vboxsync $ */
+/* $Id: tstAudioMixBuffer.cpp 87991 2021-03-07 15:11:52Z vboxsync $ */
 /** @file
  * Audio testcase - Mixing buffer.
  */
@@ -59,10 +59,16 @@ static void tstBasics(RTTEST hTest)
                       ("ns=%RU64\n", u64));
     RTTESTI_CHECK_MSG((u64 = DrvAudioHlpBytesToMicro(&s_Cfg441StereoS16, 44100 * 2 * 2)) == RT_US_1SEC,
                       ("us=%RU64\n", u64));
-    RTTESTI_CHECK_MSG((u64 = DrvAudioHlpBytesToMilli(44100 * 2 * 2, &s_Cfg441StereoS16)) == RT_MS_1SEC,
+    RTTESTI_CHECK_MSG((u64 = DrvAudioHlpBytesToMilli(&s_Cfg441StereoS16, 44100 * 2 * 2)) == RT_MS_1SEC,
                       ("ms=%RU64\n", u64));
 
 
+    RTTESTI_CHECK_MSG((u64 = DrvAudioHlpFramesToNano(44100, &s_Cfg441StereoS16)) == RT_NS_1SEC,
+                      ("ns=%RU64\n", u64));
+    //RTTESTI_CHECK_MSG((u64 = DrvAudioHlpFramesToMicro(44100, &s_Cfg441StereoS16)) == RT_US_1SEC,
+    //                  ("us=%RU64\n", u64));
+    RTTESTI_CHECK_MSG((u64 = DrvAudioHlpFramesToMilli(44100, &s_Cfg441StereoS16)) == RT_MS_1SEC,
+                      ("ms=%RU64\n", u64));
 
 }
 

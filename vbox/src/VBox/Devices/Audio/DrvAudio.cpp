@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 87877 2021-02-25 16:54:20Z vboxsync $ */
+/* $Id: DrvAudio.cpp 87991 2021-03-07 15:11:52Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -989,7 +989,7 @@ static DECLCALLBACK(int) drvAudioStreamWrite(PPDMIAUDIOCONNECTOR pInterface, PPD
         const uint32_t cbFree = AudioMixBufFreeBytes(&pStream->Host.MixBuf);
         if (cbFree < cbBuf)
             LogRel2(("Audio: Lost audio output (%RU64ms, %RU32 free but needs %RU32) due to full host stream buffer '%s'\n",
-                     DrvAudioHlpBytesToMilli(cbBuf - cbFree, &pStream->Host.Cfg.Props), cbFree, cbBuf, pStream->szName));
+                     DrvAudioHlpBytesToMilli(&pStream->Host.Cfg.Props, cbBuf - cbFree), cbFree, cbBuf, pStream->szName));
 
         uint32_t cbToWrite = RT_MIN(cbBuf, cbFree);
         if (!cbToWrite)
@@ -2988,7 +2988,7 @@ static DECLCALLBACK(uint32_t) drvAudioStreamGetReadable(PPDMIAUDIOCONNECTOR pInt
     }
 
     Log3Func(("[%s] cbReadable=%RU32 (%RU64ms)\n",
-              pStream->szName, cbReadable, DrvAudioHlpBytesToMilli(cbReadable, &pStream->Host.Cfg.Props)));
+              pStream->szName, cbReadable, DrvAudioHlpBytesToMilli(&pStream->Host.Cfg.Props, cbReadable)));
 
     rc2 = RTCritSectLeave(&pThis->CritSect);
     AssertRC(rc2);
@@ -3025,7 +3025,7 @@ static DECLCALLBACK(uint32_t) drvAudioStreamGetWritable(PPDMIAUDIOCONNECTOR pInt
     }
 
     Log3Func(("[%s] cbWritable=%RU32 (%RU64ms)\n",
-              pStream->szName, cbWritable, DrvAudioHlpBytesToMilli(cbWritable, &pStream->Host.Cfg.Props)));
+              pStream->szName, cbWritable, DrvAudioHlpBytesToMilli(&pStream->Host.Cfg.Props, cbWritable)));
 
     rc2 = RTCritSectLeave(&pThis->CritSect);
     AssertRC(rc2);
