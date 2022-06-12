@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-darwin.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: USBProxyDevice-darwin.cpp 85077 2020-07-06 21:00:32Z vboxsync $ */
 /** @file
  * USB device proxy - the Darwin backend.
  */
@@ -1123,7 +1123,7 @@ static DECLCALLBACK(int) usbProxyDarwinOpen(PUSBPROXYDEV pProxyDev, const char *
      * this subject further right now. Maybe check this later.
      */
     CFMutableDictionaryRef RefMatchingDict = IOServiceMatching(kIOUSBDeviceClassName);
-    AssertReturn(RefMatchingDict != IO_OBJECT_NULL, VERR_OPEN_FAILED);
+    AssertReturn(RefMatchingDict != NULL, VERR_OPEN_FAILED);
 
     uint64_t u64SessionId = 0;
     uint32_t u32LocationId = 0;
