@@ -1,4 +1,4 @@
-/* $Id: DrvAudioCommon.cpp 88009 2021-03-08 12:35:54Z vboxsync $ */
+/* $Id: DrvAudioCommon.cpp 88010 2021-03-08 12:39:21Z vboxsync $ */
 /** @file
  * Intermedia audio driver, common routines.
  *
@@ -751,6 +751,24 @@ void DrvAudioHlpStreamCfgInit(PPDMAUDIOSTREAMCFG pCfg)
 }
 
 /**
+ * Initializes a stream configuration from PCM properties.
+ *
+ * @return  IPRT status code.
+ * @param   pCfg        Stream configuration to initialize.
+ * @param   pProps      PCM properties to use.
+ */
+int DrvAudioHlpStreamCfgInitFromPcmProps(PPDMAUDIOSTREAMCFG pCfg, PCPDMAUDIOPCMPROPS pProps)
+{
+    AssertPtrReturn(pProps, VERR_INVALID_POINTER);
+    AssertPtrReturn(pCfg,   VERR_INVALID_POINTER);
+
+    DrvAudioHlpStreamCfgInit(pCfg);
+
+    memcpy(&pCfg->Props, pProps, sizeof(PDMAUDIOPCMPROPS));
+    return VINF_SUCCESS;
+}
+
+/**
  * Checks whether a given stream configuration is valid or not.
  *
  * Returns @c true if configuration is valid, @c false if not.
@@ -1417,25 +1435,6 @@ void DrvAudioHlpPCMPropsPrint(PCPDMAUDIOPCMPROPS pProps)
 
     Log(("uHz=%RU32, cChannels=%RU8, cBits=%RU8%s",
          pProps->uHz, pProps->cChannels, pProps->cbSample * 8, pProps->fSigned ? "S" : "U"));
-}
-
-/**
- * Converts PCM properties to a audio stream configuration.
- *
- * @return  IPRT status code.
- * @param   pProps              PCM properties to convert.
- * @param   pCfg                Stream configuration to store result into.
- * @todo r=bird: Rename to DrvAudioHlpStreamCfgInitFromPCMProps.
- */
-int DrvAudioHlpPCMPropsToStreamCfg(PCPDMAUDIOPCMPROPS pProps, PPDMAUDIOSTREAMCFG pCfg)
-{
-    AssertPtrReturn(pProps, VERR_INVALID_POINTER);
-    AssertPtrReturn(pCfg,   VERR_INVALID_POINTER);
-
-    DrvAudioHlpStreamCfgInit(pCfg);
-
-    memcpy(&pCfg->Props, pProps, sizeof(PDMAUDIOPCMPROPS));
-    return VINF_SUCCESS;
 }
 
 

@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.h 88009 2021-03-08 12:35:54Z vboxsync $ */
+/* $Id: DrvAudio.h 88010 2021-03-08 12:39:21Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  */
@@ -220,12 +220,12 @@ bool     DrvAudioHlpPCMPropsAreEqual(PCPDMAUDIOPCMPROPS pPCMProps1, PCPDMAUDIOPC
 bool     DrvAudioHlpPCMPropsAreEqual(PCPDMAUDIOPCMPROPS pPCMProps, PCPDMAUDIOSTREAMCFG pCfg);
 bool     DrvAudioHlpPCMPropsAreValid(PCPDMAUDIOPCMPROPS pProps);
 void     DrvAudioHlpPCMPropsPrint(PCPDMAUDIOPCMPROPS pProps);
-int      DrvAudioHlpPCMPropsToStreamCfg(PCPDMAUDIOPCMPROPS pPCMProps, PPDMAUDIOSTREAMCFG pCfg);
 /** @}  */
 
 /** @name Audio configuration helper methods.
  * @{ */
 void DrvAudioHlpStreamCfgInit(PPDMAUDIOSTREAMCFG pCfg);
+int  DrvAudioHlpStreamCfgInitFromPcmProps(PPDMAUDIOSTREAMCFG pCfg, PCPDMAUDIOPCMPROPS pPCMProps);
 bool DrvAudioHlpStreamCfgIsValid(PCPDMAUDIOSTREAMCFG pCfg);
 int DrvAudioHlpStreamCfgCopy(PPDMAUDIOSTREAMCFG pDstCfg, PCPDMAUDIOSTREAMCFG pSrcCfg);
 PPDMAUDIOSTREAMCFG DrvAudioHlpStreamCfgDup(PCPDMAUDIOSTREAMCFG pCfg);
