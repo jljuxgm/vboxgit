@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-win.cpp 84259 2020-05-11 16:14:27Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-win.cpp 84742 2020-06-09 17:49:09Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -2790,6 +2790,26 @@ int vmsvga3dContextDestroy(PVGASTATECC pThisCC, uint32_t cid)
         AssertFailed();
 
     return VINF_SUCCESS;
+}
+
+int vmsvga3dBackDefineScreen(PVGASTATECC pThisCC, VMSVGASCREENOBJECT *pScreen)
+{
+    RT_NOREF(pThisCC, pScreen);
+    return VERR_NOT_IMPLEMENTED;
+}
+
+int vmsvga3dBackDestroyScreen(PVGASTATECC pThisCC, VMSVGASCREENOBJECT *pScreen)
+{
+    RT_NOREF(pThisCC, pScreen);
+    return VERR_NOT_IMPLEMENTED;
+}
+
+int vmsvga3dBackSurfaceBlitToScreen(PVGASTATECC pThisCC, VMSVGASCREENOBJECT *pScreen,
+                                    SVGASignedRect destRect, SVGA3dSurfaceImageId srcImage,
+                                    SVGASignedRect srcRect, uint32_t cRects, SVGASignedRect *paRects)
+{
+    RT_NOREF(pThisCC, pScreen, destRect, srcImage, srcRect, cRects, paRects);
+    return VERR_NOT_IMPLEMENTED;
 }
 
 static int vmsvga3dContextTrackUsage(PVGASTATECC pThisCC, PVMSVGA3DCONTEXT pContext)

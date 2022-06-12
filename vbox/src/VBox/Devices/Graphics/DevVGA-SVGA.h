@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.h 83278 2020-03-13 11:43:47Z vboxsync $ */
+/* $Id: DevVGA-SVGA.h 84742 2020-06-09 17:49:09Z vboxsync $ */
 /** @file
  * VMware SVGA device
  */
@@ -126,6 +126,10 @@ typedef struct VMSVGAVIEWPORT
     uint32_t        uAlignment;
 } VMSVGAVIEWPORT;
 
+#ifdef VBOX_WITH_VMSVGA3D
+typedef struct VMSVGAHWSCREEN *PVMSVGAHWSCREEN;
+#endif
+
 /**
  * Screen object state.
  */
@@ -148,6 +152,10 @@ typedef struct VMSVGASCREENOBJECT
     uint32_t    cBpp;
     bool        fDefined;
     bool        fModified;
+#ifdef VBOX_WITH_VMSVGA3D
+    /** Pointer to the HW accelerated (3D) screen data. */
+    R3PTRTYPE(PVMSVGAHWSCREEN) pHwScreen;
+#endif
 } VMSVGASCREENOBJECT;
 
 /** Pointer to the private VMSVGA ring-3 state structure.

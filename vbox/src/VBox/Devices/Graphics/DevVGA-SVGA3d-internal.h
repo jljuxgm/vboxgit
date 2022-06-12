@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-internal.h 83620 2020-04-08 12:41:52Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-internal.h 84742 2020-06-09 17:49:09Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device - 3D part, internal header.
  */
@@ -1167,6 +1167,30 @@ static SSMFIELD const g_aVMSVGA3DSTATEFields[] =
 };
 #endif /* VMSVGA3D_INCL_STRUCTURE_DESCRIPTORS */
 
+/**
+ * VMSVGA3d screen data.
+ *
+ * Allocated on the heap and pointed to by VMSVGASCREENOBJECT::pHwScreen.
+ */
+typedef struct VMSVGAHWSCREEN
+{
+    uint32_t u32Reserved0;
+#if defined(RT_OS_LINUX)
+    VisualID visualid;
+    Pixmap pixmap;
+    GLXPixmap glxpixmap;
+    GLXContext glxctx;
+    bool fYInverted;
+    bool fMipmap;
+#endif
+} VMSVGAHWSCREEN;
+
+int vmsvga3dBackDefineScreen(PVGASTATECC pThisCC, VMSVGASCREENOBJECT *pScreen);
+int vmsvga3dBackDestroyScreen(PVGASTATECC pThisCC, VMSVGASCREENOBJECT *pScreen);
+
+int vmsvga3dBackSurfaceBlitToScreen(PVGASTATECC pThisCC, VMSVGASCREENOBJECT *pScreen,
+                                    SVGASignedRect destRect, SVGA3dSurfaceImageId srcImage,
+                                    SVGASignedRect srcRect, uint32_t cRects, SVGASignedRect *paRects);
 
 #ifdef VMSVGA3D_DIRECT3D
 D3DFORMAT vmsvga3dSurfaceFormat2D3D(SVGA3dSurfaceFormat format);

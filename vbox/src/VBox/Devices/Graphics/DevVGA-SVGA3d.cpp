@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d.cpp 83559 2020-04-04 23:50:05Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d.cpp 84742 2020-06-09 17:49:09Z vboxsync $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - Common core code.
  */
@@ -836,6 +836,17 @@ int vmsvga3dSurfaceBlitToScreen(PVGASTATE pThis, PVGASTATECC pThisCC, uint32_t i
     src.mipmap = 0;
     src.face = 0;
 
+    if (pScreen->pHwScreen)
+    {
+        /* Use the backend accelerated method, if available. */
+        int rc = vmsvga3dBackSurfaceBlitToScreen(pThisCC, pScreen,
+                                                 destRect, src, srcRect, cRects, pRect);
+        if (rc == VINF_SUCCESS)
+        {
+            return VINF_SUCCESS;
+        }
+    }
+
     /** @todo scaling */
     AssertReturn(destRect.right - destRect.left == srcRect.right - srcRect.left && destRect.bottom - destRect.top == srcRect.bottom - srcRect.top, VERR_INVALID_PARAMETER);
 
@@ -966,4 +977,19 @@ int vmsvga3dCommandPresent(PVGASTATE pThis, PVGASTATECC pThisCC, uint32_t sid, u
     }
 
     return VINF_SUCCESS;
+}
+
+int vmsvga3dDefineScreen(PVGASTATECC pThisCC, VMSVGASCREENOBJECT *pScreen)
+{
+    if (pScreen->pHwScreen)
+    {
+        vmsvga3dBackDestroyScreen(pThisCC, pScreen);
+    }
+
+    return vmsvga3dBackDefineScreen(pThisCC, pScreen);
+}
+
+int vmsvga3dDestroyScreen(PVGASTATECC pThisCC, VMSVGASCREENOBJECT *pScreen)
+{
+    return vmsvga3dBackDestroyScreen(pThisCC, pScreen);
 }
