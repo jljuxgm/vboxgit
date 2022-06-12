@@ -1,4 +1,4 @@
-/*  $Id: vbox_drv.c 86542 2020-10-12 13:35:53Z vboxsync $ */
+/*  $Id: vbox_drv.c 86547 2020-10-12 18:57:00Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -267,8 +267,8 @@ static void
 #else
 static int
 #endif
-            vbox_master_set(struct drm_device *dev,
-			   struct drm_file *file_priv, bool from_open)
+vbox_master_set(struct drm_device *dev,
+		struct drm_file *file_priv, bool from_open)
 {
 	struct vbox_private *vbox = dev->dev_private;
 
