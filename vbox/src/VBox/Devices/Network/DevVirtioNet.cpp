@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: DevVirtioNet.cpp 85083 2020-07-07 14:34:36Z vboxsync $ */
 /** @file
  * DevVirtioNet - Virtio Network Device
  */
@@ -1288,6 +1288,8 @@ static int vnetR3TransmitFrame(PVNETSTATE pThis, PVNETSTATECC pThisCC, PPDMSCATT
                 case PDMNETWORKGSOTYPE_IPV6_TCP:
                     pGso->cbHdrsTotal = pHdr->u16CSumStart +
                         ((PRTNETTCP)(((uint8_t*)pSgBuf->aSegs[0].pvSeg) + pHdr->u16CSumStart))->th_off * 4;
+                    AssertMsgReturn(pSgBuf->cbUsed > pGso->cbHdrsTotal,
+                        ("cbHdrsTotal exceeds size of frame"), VERR_BUFFER_OVERFLOW);
                     pGso->cbHdrsSeg   = pGso->cbHdrsTotal;
                     break;
                 case PDMNETWORKGSOTYPE_IPV4_UDP:

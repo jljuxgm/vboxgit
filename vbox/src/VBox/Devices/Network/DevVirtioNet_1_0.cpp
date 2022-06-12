@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet_1_0.cpp 85045 2020-07-03 07:07:42Z vboxsync $ $Revision: 85045 $ $Date: 2020-07-03 15:07:42 +0800 (Fri, 03 Jul 2020) $ $Author: vboxsync $ */
+/* $Id: DevVirtioNet_1_0.cpp 85083 2020-07-07 14:34:36Z vboxsync $ $Revision: 85083 $ $Date: 2020-07-07 22:34:36 +0800 (Tue, 07 Jul 2020) $ $Author: vboxsync $ */
 
 /** @file
  * VBox storage devices - Virtio NET Driver
@@ -2306,6 +2306,8 @@ static int virtioNetR3TransmitFrame(PVIRTIONET pThis, PVIRTIONETCC pThisCC, PPDM
                 case PDMNETWORKGSOTYPE_IPV6_TCP:
                     pGso->cbHdrsTotal = pPktHdr->uChksumStart +
                         ((PRTNETTCP)(((uint8_t*)pSgBuf->aSegs[0].pvSeg) + pPktHdr->uChksumStart))->th_off * 4;
+                    AssertMsgReturn(pSgBuf->cbUsed > pGso->cbHdrsTotal,
+                                    ("cbHdrsTotal exceeds size of frame"), VERR_BUFFER_OVERFLOW);
                     pGso->cbHdrsSeg   = pGso->cbHdrsTotal;
                     break;
                 case PDMNETWORKGSOTYPE_IPV4_UDP:
