@@ -1,4 +1,4 @@
-/* $Id: fileio-posix.cpp 85875 2020-08-24 16:22:01Z vboxsync $ */
+/* $Id: fileio-posix.cpp 86302 2020-09-26 11:19:38Z vboxsync $ */
 /** @file
  * IPRT - File I/O, POSIX, Part 1.
  */
@@ -706,8 +706,9 @@ RTR3DECL(int) RTFileQuerySize(RTFILE hFile, uint64_t *pcbSize)
         }
 
         /* Always fail block devices.  Character devices doesn't all need to be
-           /dev/rdisk* nodes, they should return ENOTTY but include EINVAL too. */
-        if (!S_ISBLK(st.st_mode) && (errno == ENOTTY || errno == EINVAL))
+           /dev/rdisk* nodes, they should return ENOTTY but /dev/null returns ENODEV
+           and we include EINVAL just in case. */
+        if (!S_ISBLK(st.st_mode) && (errno == ENOTTY || errno == ENODEV || errno == EINVAL))
             return VINF_SUCCESS;
 
 #elif defined(RT_OS_SOLARIS)
