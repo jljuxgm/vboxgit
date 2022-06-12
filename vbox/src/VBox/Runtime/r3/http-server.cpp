@@ -1,4 +1,4 @@
-/* $Id: http-server.cpp 87020 2020-12-01 11:26:13Z vboxsync $ */
+/* $Id: http-server.cpp 87021 2020-12-01 11:28:46Z vboxsync $ */
 /** @file
  * Simple HTTP server (RFC 7231) implementation.
  *
@@ -436,6 +436,7 @@ static void rtHttpServerLogProto(PRTHTTPSERVERCLIENT pClient, bool fWrite, const
 {
     RT_NOREF(pClient);
 
+#ifdef LOGGING_ENABLED
     if (!pszData) /* Nothing to log? Bail out. */
         return;
 
@@ -452,6 +453,9 @@ static void rtHttpServerLogProto(PRTHTTPSERVERCLIENT pClient, bool fWrite, const
 
         RTMemFree(ppapszStrings);
     }
+#else
+    RT_NOREF(fWrite, pszData);
+#endif
 }
 
 /**
