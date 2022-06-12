@@ -1,4 +1,4 @@
-/* $Id: DnDTransferObject.cpp 85371 2020-07-17 10:02:58Z vboxsync $ */
+/* $Id: DnDTransferObject.cpp 85372 2020-07-17 10:08:26Z vboxsync $ */
 /** @file
  * DnD - Transfer object implemenation for handling creation/reading/writing to files and directories on host or guest side.
  */
@@ -31,6 +31,7 @@
 #include <iprt/uri.h>
 
 #include <VBox/log.h>
+
 
 /*********************************************************************************************************************************
 *   Prototypes                                                                                                                   *
@@ -94,8 +95,8 @@ int DnDTransferObjectInit(PDNDTRANSFEROBJECT pObj, DNDTRANSFEROBJTYPE enmType, c
             rc = RTPathEnsureTrailingSeparator(szPath, sizeof(szPath)) == 0 ? VERR_BUFFER_OVERFLOW : VINF_SUCCESS;
 
         /* Save the index (in characters) where the destination part starts. */
-        pObj->idxDst = (uint16_t)RTStrNLen(szPath, RTSTR_MAX);
-        AssertReturn(pObj->idxDst != RTSTR_MAX, VERR_INVALID_PARAMETER);
+        pObj->idxDst = (uint16_t)RTStrNLen(szPath, RTPATH_MAX);
+        AssertReturn(pObj->idxDst <= RTPATH_MAX, VERR_INVALID_PARAMETER);
     }
     else
     {
