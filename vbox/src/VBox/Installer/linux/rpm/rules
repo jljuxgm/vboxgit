@@ -1,5 +1,5 @@
 #!/usr/bin/make -f
-# $Id: rules 87441 2021-01-26 18:55:05Z vboxsync $
+# $Id: rules 88293 2021-03-25 15:54:01Z vboxsync $
 ## @file
 # VirtualBox rules.
 #
@@ -145,6 +145,12 @@ ifeq ($(wildcard /usr/share/doc/packages/bash),)
 else
  # Novell (OpenSUSE, SLES)
  doc_dir := VBOX_PATH_PACKAGE_DOCS="\"/usr/share/doc/packages/$(verpkg)\""
+endif
+
+ifeq ($(NOQT),)
+ ifeq ($(rpmrel),el7)
+  export PATH := /opt/rh/devtoolset-4/root/usr/bin:$(PATH)
+ endif
 endif
 
 # EL5 ships Python 2.4 while our Python support requires Python 2.6 or later
