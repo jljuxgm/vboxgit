@@ -1,4 +1,4 @@
-/* $Id: DBGFOS.cpp 86102 2020-09-13 08:26:02Z vboxsync $ */
+/* $Id: DBGFOS.cpp 86112 2020-09-13 08:50:10Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Guest OS Diggers.
  */
@@ -550,7 +550,7 @@ static DECLCALLBACK(int) dbgfR3OSEmtIWinNt_QueryVersion(PDBGFOSIWINNT pThis, PUV
 
 
 /**
- * @interface_method_impl{DBGFOSIWINNT,pfnQueryVersion, Generic EMT wrapper.}
+ * @interface_method_impl{DBGFOSIWINNT,pfnQueryKernelPtrs, Generic EMT wrapper.}
  */
 static DECLCALLBACK(int) dbgfR3OSEmtIWinNt_QueryKernelPtrs(PDBGFOSIWINNT pThis, PUVM pUVM,
                                                            PRTGCUINTPTR pGCPtrKernBase, PRTGCUINTPTR pGCPtrPsLoadedModuleList)
