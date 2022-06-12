@@ -1,4 +1,4 @@
-/* $Id: DevFwCommon.cpp 83134 2020-02-21 13:43:11Z vboxsync $ */
+/* $Id: DevFwCommon.cpp 85948 2020-08-31 09:52:18Z vboxsync $ */
 /** @file
  * FwCommon - Shared firmware code (used by DevPcBios & DevEFI).
  */
@@ -879,8 +879,8 @@ int FwCommonPlantDMITable(PPDMDEVINS pDevIns, uint8_t *pTable, unsigned cbMax, P
              * look at new u32ExtendedSize which can represent at least 128TB. OS X 10.14+ looks
              * at the extended size.
              */
-            AssertLogRelMsgFailed(("DMI: RAM size %#RX64 too big for one type-17 descriptor, clipping to %#RX64\n",
-                                   cbRamSize, (uint64_t)INT16_MAX * _1M));
+            LogRel(("DMI: RAM size %#RX64 too big for one type-17 descriptor, clipping to %#RX64\n",
+                    cbRamSize, (uint64_t)INT16_MAX * _1M));
             u16RamSizeM = INT16_MAX;
             if (cbRamSize / _1M >= 0x8000000) {
                 AssertLogRelMsgFailed(("DMI: RAM size %#RX64 too big for one type-17 descriptor, clipping to %#RX64\n",
