@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.cpp 87073 2020-12-09 17:30:53Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.cpp 87240 2021-01-13 14:41:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class implementation.
  */
@@ -51,7 +51,7 @@ UIWizardNewVMPageExpert::UIWizardNewVMPageExpert(const QString &strGroup)
     {
         m_pToolBox = new QToolBox;
         m_pNameAndSystemContainer = new QWidget(this);
-        QVBoxLayout *pNameContainerLayout = new QVBoxLayout(m_pNameAndSystemContainer);
+        QGridLayout *pNameContainerLayout = new QGridLayout(m_pNameAndSystemContainer);
         createNameOSTypeWidgets(pNameContainerLayout, false);
         m_pGAInstallContainer = createGAInstallWidgets();
         m_pUsernameHostnameContainer = createUserNameHostNameWidgets();
