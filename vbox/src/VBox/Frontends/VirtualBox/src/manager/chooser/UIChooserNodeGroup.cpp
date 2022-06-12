@@ -1,4 +1,4 @@
-/* $Id: UIChooserNodeGroup.cpp 84378 2020-05-19 18:23:26Z vboxsync $ */
+/* $Id: UIChooserNodeGroup.cpp 84400 2020-05-20 13:44:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserNodeGroup class implementation.
  */
@@ -119,6 +119,8 @@ QString UIChooserNodeGroup::definition(bool fFull /* = false */) const
         case UIChooserNodeGroupType_Profile:
             strNodePrefix = UIChooserAbstractModel::definitionOption(UIChooserAbstractModel::NodeDef_GroupPrefixProfile);
             break;
+        default:
+            AssertFailedReturn(QString());
     }
     const QString strNodeOptionOpened = UIChooserAbstractModel::definitionOption(UIChooserAbstractModel::NodeDef_GroupOptionOpened);
     return   fFull

@@ -1,4 +1,4 @@
-/* $Id: UIChooserDefs.h 84371 2020-05-19 14:55:55Z vboxsync $ */
+/* $Id: UIChooserDefs.h 84400 2020-05-20 13:44:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserDefs class declaration.
  */
@@ -41,6 +41,7 @@ enum UIChooserNodeType
 /** UIChooserNodeGroup types. */
 enum UIChooserNodeGroupType
 {
+    UIChooserNodeGroupType_Invalid,
     UIChooserNodeGroupType_Local,
     UIChooserNodeGroupType_Provider,
     UIChooserNodeGroupType_Profile
