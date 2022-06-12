@@ -1,4 +1,4 @@
-/* $Id: TMAll.cpp 87822 2021-02-20 10:34:06Z vboxsync $ */
+/* $Id: TMAll.cpp 87926 2021-03-02 22:01:02Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, all contexts.
  */
@@ -1614,7 +1614,6 @@ static int tmTimerVirtualSyncSetRelative(PVMCC pVM, PTMTIMER pTimer, uint64_t cT
  * @param   pQueueCC        The context specific queue data (same as @a pQueue
  *                          for ring-3).
  * @param   pQueue          The shared queue data.
- * @param   idxQueue        The queue index.
  */
 static int tmTimerSetRelative(PVMCC pVM, PTMTIMER pTimer, uint64_t cTicksToNext, uint64_t *pu64Now,
                               PTMTIMERQUEUECC pQueueCC, PTMTIMERQUEUE pQueue)
