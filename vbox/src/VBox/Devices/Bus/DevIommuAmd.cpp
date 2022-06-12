@@ -1,4 +1,4 @@
-/* $Id: DevIommuAmd.cpp 84580 2020-05-28 10:53:10Z vboxsync $ */
+/* $Id: DevIommuAmd.cpp 84638 2020-06-02 13:40:19Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - AMD implementation.
  */
@@ -450,26 +450,6 @@ RT_BF_ASSERT_COMPILE_CHECKS(IOMMU_BF_MSI_MAP_CAPHDR_, UINT32_C(0), UINT32_MAX,
 #define IOMMU_INTR_CTRL_FWD_UNMAPPED                (1)
 #define IOMMU_INTR_CTRL_REMAP                       (2)
 #define IOMMU_INTR_CTRL_RSVD                        (3)
-/** @} */
-
-/**
- * @name IOMMU Control Register Bits.
- * In accordance with the AMD spec.
- * @{
- */
-/** IommuEn: Enable the IOMMU. */
-#define IOMMU_CTRL_IOMMU_EN                         RT_BIT_64(0)
-/** HtTunEn: HyperTransport tunnel translation enable. */
-#define IOMMU_CTRL_HT_TUNNEL_EN                     RT_BIT_64(1)
-/** EventLogEn: Event log enable. */
-#define IOMMU_CTRL_EVT_LOG_EN                       RT_BIT_64(2)
-/** EventIntEn: Event interrupt enable. */
-#define IOMMU_CTRL_EVT_INTR_EN                      RT_BIT_64(3)
-/** ComWaitIntEn: Completion wait interrupt enable. */
-#define IOMMU_CTRL_COMPLETION_WAIT_INTR_EN          RT_BIT_64(4)
-/** InvTimeout: Invalidation timeout. */
-#define IOMMU_CTRL_INV_TIMEOUT                      RT_BIT_64(5) | RT_BIT_64(6) | RT_BIT_64(7)
-/** @todo IOMMU: the rest or remove it. */
 /** @} */
 
 /** @name Miscellaneous IOMMU defines.
