@@ -1,4 +1,4 @@
-/* $Id: UIChooser.h 84545 2020-05-26 16:17:40Z vboxsync $ */
+/* $Id: UIChooser.h 84557 2020-05-27 11:56:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooser class declaration.
  */
@@ -141,8 +141,10 @@ public:
         void removeMachine();
         /** Moves machine to a group with certain @a strName. */
         void moveMachineToGroup(const QString &strName);
-        /** Returns possible groups for VM with passed @a uId to move to. */
+        /** Returns possible groups for machine with passed @a uId to move to. */
         QStringList possibleGroupsForMachineToMove(const QUuid &uId);
+        /** Returns possible groups for group with passed @a strFullName to move to. */
+        QStringList possibleGroupsForGroupToMove(const QString &strFullName);
         /** Refreshes machine. */
         void refreshMachine();
         /** Sorts group. */

@@ -1,4 +1,4 @@
-/* $Id: UIChooser.cpp 84545 2020-05-26 16:17:40Z vboxsync $ */
+/* $Id: UIChooser.cpp 84557 2020-05-27 11:56:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooser class implementation.
  */
@@ -140,6 +140,12 @@ QStringList UIChooser::possibleGroupsForMachineToMove(const QUuid &uId)
 {
     AssertPtrReturn(model(), QStringList());
     return model()->possibleGroupNodeNamesForMachineNodeToMove(uId);
+}
+
+QStringList UIChooser::possibleGroupsForGroupToMove(const QString &strFullName)
+{
+    AssertPtrReturn(model(), QStringList());
+    return model()->possibleGroupNodeNamesForGroupNodeToMove(strFullName);
 }
 
 void UIChooser::refreshMachine()

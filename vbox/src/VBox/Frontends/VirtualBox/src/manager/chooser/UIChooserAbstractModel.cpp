@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.cpp 84545 2020-05-26 16:17:40Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.cpp 84557 2020-05-27 11:56:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class implementation.
  */
@@ -525,6 +525,18 @@ QStringList UIChooserAbstractModel::possibleGroupNodeNamesForMachineNodeToMove(c
 
     /* Return group nodes starting from root one: */
     return gatherPossibleGroupNodeNames(invisibleRoot(), machineNodes);
+}
+
+QStringList UIChooserAbstractModel::possibleGroupNodeNamesForGroupNodeToMove(const QString &strFullName)
+{
+    /* Search for all the group nodes with passed full-name: */
+    QList<UIChooserNode*> groupNodes;
+    invisibleRoot()->searchForNodes(strFullName,
+                                    UIChooserItemSearchFlag_LocalGroup | UIChooserItemSearchFlag_ExactId,
+                                    groupNodes);
+
+    /* Return group nodes starting from root one: */
+    return gatherPossibleGroupNodeNames(invisibleRoot(), groupNodes);
 }
 
 /* static */
