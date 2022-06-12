@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-x11.cpp 85762 2020-08-14 10:55:03Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-x11.cpp 85763 2020-08-14 11:03:34Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Linux host.
  */
@@ -175,9 +175,10 @@ struct CLIPREADCBREQ
 int ShClBackendReadData(PSHCLCLIENT pClient,
                         PSHCLCLIENTCMDCTX pCmdCtx, SHCLFORMAT uFormat, void *pvData, uint32_t cbData, uint32_t *pcbActual)
 {
-    AssertPtrReturn(pClient, VERR_INVALID_POINTER);
-    AssertPtrReturn(pCmdCtx, VERR_INVALID_POINTER);
-    AssertPtrReturn(pvData,  VERR_INVALID_POINTER);
+    AssertPtrReturn(pClient,   VERR_INVALID_POINTER);
+    AssertPtrReturn(pCmdCtx,   VERR_INVALID_POINTER);
+    AssertPtrReturn(pvData,    VERR_INVALID_POINTER);
+    AssertPtrReturn(pcbActual, VERR_INVALID_POINTER);
 
     RT_NOREF(pCmdCtx);
 

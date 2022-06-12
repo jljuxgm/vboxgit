@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-darwin.cpp 84142 2020-05-05 07:13:00Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-darwin.cpp 85763 2020-08-14 11:03:34Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Mac OS X host.
  */
@@ -246,6 +246,11 @@ int ShClBackendFormatAnnounce(PSHCLCLIENT pClient, SHCLFORMATS fFormats)
 int ShClBackendReadData(PSHCLCLIENT pClient, PSHCLCLIENTCMDCTX pCmdCtx, SHCLFORMAT fFormat,
                         void *pvData, uint32_t cbData, uint32_t *pcbActual)
 {
+    AssertPtrReturn(pClient,   VERR_INVALID_POINTER);
+    AssertPtrReturn(pCmdCtx,   VERR_INVALID_POINTER);
+    AssertPtrReturn(pvData,    VERR_INVALID_POINTER);
+    AssertPtrReturn(pcbActual, VERR_INVALID_POINTER);
+
     RT_NOREF(pCmdCtx);
 
     ShClSvcLock();

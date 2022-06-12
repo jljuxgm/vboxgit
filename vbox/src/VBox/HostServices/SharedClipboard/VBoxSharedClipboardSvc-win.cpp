@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-win.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-win.cpp 85763 2020-08-14 11:03:34Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Win32 host.
  */
@@ -715,9 +715,13 @@ int ShClBackendFormatAnnounce(PSHCLCLIENT pClient, SHCLFORMATS fFormats)
 int ShClBackendReadData(PSHCLCLIENT pClient, PSHCLCLIENTCMDCTX pCmdCtx,
                         SHCLFORMAT uFormat, void *pvData, uint32_t cbData, uint32_t *pcbActual)
 {
-    AssertPtrReturn(pClient,             VERR_INVALID_POINTER);
+    AssertPtrReturn(pClient,   VERR_INVALID_POINTER);
+    AssertPtrReturn(pCmdCtx,   VERR_INVALID_POINTER);
+    AssertPtrReturn(pvData,    VERR_INVALID_POINTER);
+    AssertPtrReturn(pcbActual, VERR_INVALID_POINTER);
+
     RT_NOREF(pCmdCtx);
-    AssertPtrReturn(pvData,              VERR_INVALID_POINTER);
+
     AssertPtrReturn(pClient->State.pCtx, VERR_INVALID_POINTER);
 
     LogFlowFunc(("uFormat=%02X\n", uFormat));
