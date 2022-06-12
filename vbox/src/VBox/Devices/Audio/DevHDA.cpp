@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 83812 2020-04-19 00:21:56Z vboxsync $ */
+/* $Id: DevHDA.cpp 85899 2020-08-27 09:35:47Z vboxsync $ */
 /** @file
  * DevHDA.cpp - VBox Intel HD Audio Controller.
  *
@@ -1110,7 +1110,11 @@ static VBOXSTRICTRC hdaRegWriteCORBRP(PPDMDEVINS pDevIns, PHDASTATE pThis, uint3
         if (pThis->cbCorbBuf)
         {
             RT_ZERO(pThis->au32CorbBuf);
+#ifndef IN_RING3 /** @todo r=aeichner Why is this necessary at all? Can't see anything which would require this. */
             return VINF_IOM_R3_MMIO_WRITE;
+#else
+            return VINF_SUCCESS;
+#endif
         }
 
         LogRel2(("HDA: CORB reset\n"));
