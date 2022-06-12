@@ -1,5 +1,5 @@
 # !kmk_ash
-# $Id: gen-slickedit-workspace.sh 87909 2021-03-02 11:58:33Z vboxsync $
+# $Id: gen-slickedit-workspace.sh 88326 2021-03-31 00:11:50Z vboxsync $
 ## @file
 # Script for generating a SlickEdit workspace.
 #
@@ -108,11 +108,11 @@ my_get_name()
 # @param    $1      The library base path relative to root.
 my_get_newest_ver()
 {
-    cd "${MY_ABS_DIR}"
+    cd "${MY_ROOT_DIR}" > /dev/null
     latest=
     for ver in "$1"*;
     do
-        if test -z "${latest}" || "${MY_EXPR}" "${ver}" ">" "${latest}"; then
+        if test -z "${latest}" || "${MY_EXPR}" "${ver}" ">" "${latest}" > /dev/null; then
             latest="${ver}"
         fi
     done
