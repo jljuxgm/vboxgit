@@ -1,4 +1,4 @@
-/* $Id: DevHdaStream.h 89379 2021-05-30 14:33:49Z vboxsync $ */
+/* $Id: DevHdaStream.h 89381 2021-05-30 20:58:13Z vboxsync $ */
 /** @file
  * Intel HD Audio Controller Emulation - Streams.
  */
@@ -157,7 +157,6 @@ typedef struct HDASTREAMSTATE
     /** Current loop number within the current scheduling step.  */
     uint32_t                idxScheduleLoop;
 
-    uint64_t                u64Padding;
     /** Buffer descriptors and additional timer scheduling state.
      * (Same as HDABDLEDESC, with more sensible naming.)  */
     struct
@@ -245,7 +244,7 @@ typedef struct HDASTREAM
     TMTIMERHANDLE               hTimer;
 
     /** Pad the structure size to a 64 byte alignment. */
-    uint64_t                    au64Padding1[4];
+    uint64_t                    au64Padding1[2];
     /** Critical section for serialize access to the stream state between the async
      * I/O thread and (basically) the guest. */
     PDMCRITSECT                 CritSect;
@@ -311,7 +310,7 @@ typedef struct HDASTREAMR3
     } State;
     /** Debug bits. */
     HDASTREAMDEBUG              Dbg;
-    uint64_t                    au64Alignment[1];
+    uint64_t                    au64Alignment[6];
 } HDASTREAMR3;
 AssertCompileSizeAlignment(HDASTREAMR3, 64);
 /** Pointer to an HDA stream (SDI / SDO).  */

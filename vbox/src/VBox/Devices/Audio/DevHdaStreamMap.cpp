@@ -1,4 +1,4 @@
-/* $Id: DevHdaStreamMap.cpp 89379 2021-05-30 14:33:49Z vboxsync $ */
+/* $Id: DevHdaStreamMap.cpp 89381 2021-05-30 20:58:13Z vboxsync $ */
 /** @file
  * Intel HD Audio Controller Emulation - Stream mapping (e.g. 5.1 -> stereo).
  */
@@ -294,8 +294,8 @@ static int hdaR3StreamMapSetup(PHDASTREAMMAP pMap, PPDMAUDIOPCMPROPS pProps, uin
         if (pMap->paMappings)
         {
             PPDMAUDIOSTREAMMAP pMapLR = &pMap->paMappings[0];
-            pMapLR->aenmIDs[0]  = PDMAUDIOSTREAMCHANNELID_FRONT_LEFT;
-            pMapLR->aenmIDs[1]  = PDMAUDIOSTREAMCHANNELID_FRONT_RIGHT;
+            pMapLR->aenmIDs[0]  = PDMAUDIOCHANNELID_FRONT_LEFT;
+            pMapLR->aenmIDs[1]  = PDMAUDIOCHANNELID_FRONT_RIGHT;
             pMapLR->cbFrame     = PDMAudioPropsFrameSize(pProps);
             pMapLR->cbStep      = PDMAudioPropsSampleSize(pProps) * 2 /* Front left + Front right channels */;
             pMapLR->offFirst    = 0;
