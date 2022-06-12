@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 87235 2021-01-13 12:41:05Z vboxsync $
+# $Id: Makefile.kmk 87403 2021-01-23 16:11:18Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -238,7 +238,11 @@ RuntimeWin64ASM_SOURCES = \
 	common/asm/ASMSetGDTR.asm \
 	common/asm/ASMGetLDTR.asm \
 	common/asm/ASMGetSegAttr.asm \
-	common/asm/ASMGetTR.asm
+	common/asm/ASMGetFSBase.asm \
+	common/asm/ASMSetFSBase.asm \
+	common/asm/ASMGetGSBase.asm \
+	common/asm/ASMSetGSBase.asm \
+	common/asm/ASMGetTR.asm \
 
 #
 # Win32 assembly sources.
