@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.cpp 88652 2021-04-22 13:14:50Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.cpp 88681 2021-04-23 15:15:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class implementation.
  */
@@ -405,10 +405,6 @@ void UIChooserAbstractModel::deinit()
     /* Make sure all saving steps complete: */
     makeSureGroupSettingsSaveIsFinished();
     makeSureGroupDefinitionsSaveIsFinished();
-
-    /* Delete tree: */
-    delete m_pInvisibleRootNode;
-    m_pInvisibleRootNode = 0;
 }
 
 void UIChooserAbstractModel::wipeOutEmptyGroups()
@@ -779,6 +775,13 @@ void UIChooserAbstractModel::sltReloadMachine(const QUuid &uMachineId)
     }
 }
 
+void UIChooserAbstractModel::sltDetachCOM()
+{
+    /* Delete tree: */
+    delete m_pInvisibleRootNode;
+    m_pInvisibleRootNode = 0;
+}
+
 void UIChooserAbstractModel::sltCloudMachineUnregistered(const QString &strProviderShortName,
                                                          const QString &strProfileName,
                                                          const QUuid &uId)
@@ -993,6 +996,8 @@ void UIChooserAbstractModel::prepare()
 void UIChooserAbstractModel::prepareConnections()
 {
     /* UICommon connections: */
+    connect(&uiCommon(), &UICommon::sigAskToDetachCOM,
+            this, &UIChooserAbstractModel::sltDetachCOM);
     connect(&uiCommon(), &UICommon::sigCloudMachineUnregistered,
             this, &UIChooserAbstractModel::sltCloudMachineUnregistered);
     connect(&uiCommon(), &UICommon::sigCloudMachineRegistered,

@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 88560 2021-04-16 10:56:37Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 88681 2021-04-23 15:15:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -84,15 +84,6 @@ void UIChooserModel::init()
     buildTreeForMainRoot();
     /* Load settings: */
     loadSettings();
-}
-
-void UIChooserModel::deinit()
-{
-    /* Clean tree for main root: */
-    clearTreeForMainRoot();
-
-    /* Call to base-class: */
-    UIChooserAbstractModel::deinit();
 }
 
 UIActionPool *UIChooserModel::actionPool() const
@@ -1205,6 +1196,15 @@ void UIChooserModel::sltReloadMachine(const QUuid &uMachineId)
 
     /* Notify listeners about selection change: */
     emit sigSelectionChanged();
+}
+
+void UIChooserModel::sltDetachCOM()
+{
+    /* Clean tree for main root: */
+    clearTreeForMainRoot();
+
+    /* Call to base-class: */
+    UIChooserAbstractModel::sltDetachCOM();
 }
 
 void UIChooserModel::sltCloudMachineUnregistered(const QString &strProviderShortName,
