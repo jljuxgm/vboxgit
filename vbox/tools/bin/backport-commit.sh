@@ -1,5 +1,5 @@
 # !kmk_ash
-# $Id: backport-commit.sh 85586 2020-07-31 16:53:31Z vboxsync $
+# $Id: backport-commit.sh 85668 2020-08-10 15:25:45Z vboxsync $
 ## @file
 # Script for committing a backport from trunk.
 #
@@ -50,18 +50,7 @@ if test -z "${MY_REVISIONS}"; then
                 AddRevision "${MY_REV}"
                 ;;
             [0-9][0-9][0-9][0-9][0-9]-[0-9][0-9][0-9][0-9][0-9]|[0-9][0-9][0-9][0-9][0-9][0-9]-[0-9][0-9][0-9][0-9][0-9][0-9]|[0-9][0-9][0-9][0-9][0-9][0-9][0-9]-[0-9][0-9][0-9][0-9][0-9][0-9][0-9])
-                MY_REV_FIRST=${MY_REV%-*}
-                MY_REV_LAST=${MY_REV#*-}
-                if test -z "${MY_REV_FIRST}" -o -z "${MY_REV_LAST}" -o '(' '!' "${MY_REV_FIRST}" -lt "${MY_REV_LAST}" ')'; then
-                    echo "error: failed to get revisions from svn:mergeinfo - MY_REV_FIRST=${MY_REV_FIRST} MY_REV_LAST=${MY_REV_LAST} MY_REV=${MY_REV}"
-                    exit 1
-                fi
-                MY_REV=${MY_REV_FIRST}
-                while test ${MY_REV} -le ${MY_REV_LAST};
-                do
-                    AddRevision "${MY_REV}"
-                    MY_REV=$(${MY_EXPR} ${MY_REV} + 1)
-                done
+                AddRevisionRange "${MY_REV}"
                 ;;
 
             *)  echo "error: failed to get revisions from svn:mergeinfo - does not grok: ${MY_ARG}"
