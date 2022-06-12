@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 86437 $"
+__version__ = "$Revision: 87468 $"
 
 
 # Standard Python imports.
@@ -402,6 +402,17 @@ class VBoxInstallerTestDriver(TestDriverBase):
         if asASanLibs:
             os.environ['LD_PRELOAD'] = ':'.join(asASanLibs);
             os.environ['LSAN_OPTIONS'] = 'detect_leaks=0'; # We don't want python leaks. vbox.py disables this.
+
+            # Because of https://github.com/google/sanitizers/issues/856 we must try use setarch to disable
+            # address space randomization.
+
+            reporter.log('LD_PRELOAD...')
+            if utils.getHostArch() == 'amd64':
+                sSetArch = utils.whichProgram('setarch');
+                reporter.log('sSetArch=%s' % (sSetArch,));
+                if sSetArch:
+                    asArgs = [ sSetArch, 'x86_64', '-R', sys.executable ] + asArgs;
+                    reporter.log('asArgs=%s' % (asArgs,));
 
             rc = self._executeSync(asArgs, fMaySkip = fMaySkip);
 
