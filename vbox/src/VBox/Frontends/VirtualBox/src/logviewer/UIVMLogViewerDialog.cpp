@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerDialog.cpp 89049 2021-05-14 14:59:39Z vboxsync $ */
+/* $Id: UIVMLogViewerDialog.cpp 89585 2021-06-09 16:03:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerDialog class implementation.
  */
@@ -73,6 +73,22 @@ UIVMLogViewerDialog::~UIVMLogViewerDialog()
     UIVMLogViewerWidget *pWidget = qobject_cast<UIVMLogViewerWidget*>(widget());
     if (pWidget)
         pWidget->setDialogBeingClosed(true);
+}
+
+void UIVMLogViewerDialog::setSelectedVMListItems(const QList<UIVirtualMachineItem*> &items)
+{
+    Q_UNUSED(items);
+    UIVMLogViewerWidget *pLogViewerWidget = qobject_cast<UIVMLogViewerWidget*>(widget());
+    if (pLogViewerWidget)
+        pLogViewerWidget->setSelectedVMListItems(items);
+}
+
+void UIVMLogViewerDialog::addSelectedVMListItems(const QList<UIVirtualMachineItem*> &items)
+{
+    Q_UNUSED(items);
+    UIVMLogViewerWidget *pLogViewerWidget = qobject_cast<UIVMLogViewerWidget*>(widget());
+    if (pLogViewerWidget)
+        pLogViewerWidget->addSelectedVMListItems(items);
 }
 
 void UIVMLogViewerDialog::retranslateUi()

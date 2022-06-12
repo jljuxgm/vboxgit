@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.cpp 89315 2021-05-27 12:02:45Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.cpp 89585 2021-06-09 16:03:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class implementation.
  */
@@ -211,6 +211,19 @@ QMenu *UIVMLogViewerWidget::menu() const
 void UIVMLogViewerWidget::setSelectedVMListItems(const QList<UIVirtualMachineItem*> &items)
 {
     QVector<QUuid> selectedMachines;
+
+    foreach (const UIVirtualMachineItem *item, items)
+    {
+        if (!item)
+            continue;
+        selectedMachines << item->id();
+    }
+    setMachines(selectedMachines);
+}
+
+void UIVMLogViewerWidget::addSelectedVMListItems(const QList<UIVirtualMachineItem*> &items)
+{
+    QVector<QUuid> selectedMachines(m_machines);
 
     foreach (const UIVirtualMachineItem *item, items)
     {
@@ -959,7 +972,7 @@ void UIVMLogViewerWidget::createLogViewerPages(const QVector<QUuid> &machineList
         QUuid uMachineId = comMachine.GetId();
         QString strMachineName = comMachine.GetName();
 
-        if (m_enmEmbedding == EmbedTo_Stack)
+        if (uiCommon().uiType() == UICommon::UIType_SelectorUI)
             m_pTabWidget->addTab(new UILabelTab(this, uMachineId), strMachineName);
 
         bool fNoLogFileForMachine = true;

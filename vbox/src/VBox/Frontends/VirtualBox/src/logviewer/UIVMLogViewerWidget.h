@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.h 89105 2021-05-17 15:27:10Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.h 89585 2021-06-09 16:03:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class declaration.
  */
@@ -87,6 +87,7 @@ public:
 #endif
 
     void setSelectedVMListItems(const QList<UIVirtualMachineItem*> &items);
+    void addSelectedVMListItems(const QList<UIVirtualMachineItem*> &items);
     QFont currentFont() const;
 
     /** Sets m_fDialogBeingClosed. */

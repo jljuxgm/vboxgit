@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerDialog.h 89049 2021-05-14 14:59:39Z vboxsync $ */
+/* $Id: UIVMLogViewerDialog.h 89585 2021-06-09 16:03:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerDialog class declaration.
  */
@@ -39,6 +39,7 @@ class QDialogButtonBox;
 class QVBoxLayout;
 class UIActionPool;
 class UIVMLogViewerDialog;
+class UIVirtualMachineItem;
 class CMachine;
 
 
@@ -78,6 +79,8 @@ public:
       * @param  comMachine     Brings the machine reference. */
     UIVMLogViewerDialog(QWidget *pCenterWidget, UIActionPool *pActionPool, const CMachine &comMachine);
     ~UIVMLogViewerDialog();
+    void setSelectedVMListItems(const QList<UIVirtualMachineItem*> &items);
+    void addSelectedVMListItems(const QList<UIVirtualMachineItem*> &items);
 
 protected:
 
