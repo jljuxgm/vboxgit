@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 87755 2021-02-13 17:53:16Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 87928 2021-03-03 06:04:39Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -4262,6 +4262,8 @@ static void hmR0SvmPreRunGuestCommitted(PVMCPUCC pVCpu, PSVMTRANSIENT pSvmTransi
         pbMsrBitmap = (uint8_t *)pVCpu->hmr0.s.svm.pvMsrBitmap;
     else
     {
+        /** @todo We could perhaps optimize this by monitoring if the guest modifies its
+         *        MSRPM and only perform this if it changed? */
         hmR0SvmMergeMsrpmNested(pHostCpu, pVCpu);
 
         /* Update the nested-guest VMCB with the newly merged MSRPM (clean bits updated below). */
