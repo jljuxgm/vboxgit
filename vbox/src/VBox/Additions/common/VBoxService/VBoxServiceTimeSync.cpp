@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceTimeSync.cpp 83974 2020-04-24 16:05:50Z vboxsync $ */
+/* $Id: VBoxServiceTimeSync.cpp 86876 2020-11-12 16:38:00Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions TimeSync Service.
  */
@@ -209,43 +209,27 @@ static DECLCALLBACK(int) vgsvcTimeSyncPreInit(void)
             || rc == VERR_NOT_FOUND)
             rc = VGSvcReadPropUInt32(uGuestPropSvcClientID, "/VirtualBox/GuestAdd/VBoxService/--timesync-set-threshold",
                                      &g_TimeSyncSetThreshold, 0, 7*24*60*60*1000 /* a week */);
-        if (   RT_SUCCESS(rc)
-            || rc == VERR_NOT_FOUND)
-        {
-            rc = VGSvcCheckPropExist(uGuestPropSvcClientID, "/VirtualBox/GuestAdd/VBoxService/--timesync-set-start");
-            if (RT_SUCCESS(rc))
-                g_fTimeSyncSetOnStart = true;
-        }
-        if (   RT_SUCCESS(rc)
-            || rc == VERR_NOT_FOUND)
-        {
-            rc = VGSvcCheckPropExist(uGuestPropSvcClientID, "/VirtualBox/GuestAdd/VBoxService/--timesync-no-set-start");
-            if (RT_SUCCESS(rc))
-                g_fTimeSyncSetOnStart = false;
-        }
-        if (   RT_SUCCESS(rc)
-            || rc == VERR_NOT_FOUND)
-        {
-            rc = VGSvcCheckPropExist(uGuestPropSvcClientID, "/VirtualBox/GuestAdd/VBoxService/--timesync-set-on-restore");
-            if (RT_SUCCESS(rc))
-                g_fTimeSyncSetOnRestore = true;
-        }
-        if (   RT_SUCCESS(rc)
-            || rc == VERR_NOT_FOUND)
-        {
-            rc = VGSvcCheckPropExist(uGuestPropSvcClientID, "/VirtualBox/GuestAdd/VBoxService/--timesync-no-set-on-restore");
-            if (RT_SUCCESS(rc))
-                g_fTimeSyncSetOnRestore = false;
-        }
-        if (   RT_SUCCESS(rc)
-            || rc == VERR_NOT_FOUND)
-        {
-            uint32_t uValue;
-            rc = VGSvcReadPropUInt32(uGuestPropSvcClientID, "/VirtualBox/GuestAdd/VBoxService/--timesync-verbosity",
-                                     &uValue, 0 /*uMin*/, 255 /*uMax*/);
-            if (RT_SUCCESS(rc))
-                g_cTimeSyncVerbosity = uValue;
-        }
+
+        if (VbglR3GuestPropExist(uGuestPropSvcClientID,
+                                 "/VirtualBox/GuestAdd/VBoxService/--timesync-set-start"))
+            g_fTimeSyncSetOnStart = true;
+
+        if (VbglR3GuestPropExist(uGuestPropSvcClientID, "/VirtualBox/GuestAdd/VBoxService/--timesync-no-set-start"))
+            g_fTimeSyncSetOnStart = false;
+
+
+        if (VbglR3GuestPropExist(uGuestPropSvcClientID, "/VirtualBox/GuestAdd/VBoxService/--timesync-set-on-restore"))
+            g_fTimeSyncSetOnRestore = true;
+
+        if (VbglR3GuestPropExist(uGuestPropSvcClientID, "/VirtualBox/GuestAdd/VBoxService/--timesync-no-set-on-restore"))
+            g_fTimeSyncSetOnRestore = false;
+
+        uint32_t uValue;
+        rc = VGSvcReadPropUInt32(uGuestPropSvcClientID, "/VirtualBox/GuestAdd/VBoxService/--timesync-verbosity",
+                                 &uValue, 0 /*uMin*/, 255 /*uMax*/);
+        if (RT_SUCCESS(rc))
+            g_cTimeSyncVerbosity = uValue;
+
         VbglR3GuestPropDisconnect(uGuestPropSvcClientID);
     }
 

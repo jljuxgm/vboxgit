@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 86823 2020-11-06 12:57:57Z vboxsync $ */
+/* $Id: VBoxService.cpp 86876 2020-11-12 16:38:00Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -904,7 +904,7 @@ static void startDRMResize(void)
     int rc = VbglR3GuestPropConnect(&uGuestPropSvcClientID);
     if (RT_SUCCESS(rc))
     {
-        rc = VGSvcCheckPropExist(uGuestPropSvcClientID, "/VirtualBox/GuestAdd/DRMResize");
+        rc = VbglR3GuestPropExist(uGuestPropSvcClientID, "/VirtualBox/GuestAdd/DRMResize");
         if (RT_SUCCESS(rc))
         {
             RTMsgInfo("Starting DRM resize service");
