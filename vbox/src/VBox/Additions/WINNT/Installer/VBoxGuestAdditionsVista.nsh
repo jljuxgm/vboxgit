@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditionsVista.nsh 82968 2020-02-04 10:35:17Z vboxsync $
+; $Id: VBoxGuestAdditionsVista.nsh 84945 2020-06-25 10:22:05Z vboxsync $
 ;; @file
 ; VBoxGuestAdditionsVista.nsh - Guest Additions installation for Windows Vista/7.
 ;
@@ -80,7 +80,7 @@ FunctionEnd
 !macro Vista_UninstallInstDir un
 Function ${un}Vista_UninstallInstDir
 
-!if $%BUILD_TARGET_ARCH% == "x86"       ; 32-bit
+!if $%KBUILD_TARGET_ARCH% == "x86"       ; 32-bit
   Delete /REBOOTOK "$INSTDIR\netamd.inf"
   Delete /REBOOTOK "$INSTDIR\pcntpci5.cat"
   Delete /REBOOTOK "$INSTDIR\PCNTPCI5.sys"
@@ -119,7 +119,7 @@ Function ${un}VBoxMMR_Uninstall
 
   Delete /REBOOTOK "$g_strSystemDir\VBoxMMR.exe"
 
-  !if $%BUILD_TARGET_ARCH% == "amd64"
+  !if $%KBUILD_TARGET_ARCH% == "amd64"
     Delete /REBOOTOK "$g_strSysWow64\VBoxMMRHook.dll"
     Delete /REBOOTOK "$INSTDIR\VBoxMMR-x86.exe"
     Delete /REBOOTOK "$INSTDIR\VBoxMMRHook-x86.dll"

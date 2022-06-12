@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditionsUninstallOld.nsh 82968 2020-02-04 10:35:17Z vboxsync $
+; $Id: VBoxGuestAdditionsUninstallOld.nsh 84945 2020-06-25 10:22:05Z vboxsync $
 ;; @file
 ; VBoxGuestAdditionsUninstallOld.nsh - Guest Additions uninstallation handling for legacy packages.
 ;
@@ -180,7 +180,7 @@ common:
   ;Delete "$SYSDIR\drivers\VBoxMouseNT.sys"
 
   ; Delete vendor installation directory (only if completely empty)
-!if $%BUILD_TARGET_ARCH% == "x86"       ; 32-bit
+!if $%KBUILD_TARGET_ARCH% == "x86"       ; 32-bit
   RMDir /REBOOTOK "$PROGRAMFILES32\Sun"
 !else   ; 64-bit
   RMDir /REBOOTOK "$PROGRAMFILES64\Sun"
@@ -247,7 +247,7 @@ common:
   RMDir /REBOOTOK "$1"
 
   ; Delete vendor installation directory (only if completely empty)
-!if $%BUILD_TARGET_ARCH% == "x86"       ; 32-bit
+!if $%KBUILD_TARGET_ARCH% == "x86"       ; 32-bit
   RMDir /REBOOTOK "$PROGRAMFILES32\Sun"
 !else   ; 64-bit
   RMDir /REBOOTOK "$PROGRAMFILES64\Sun"
@@ -338,7 +338,7 @@ common:
   RMDir /REBOOTOK "$1"
 
   ; Delete vendor installation directory (only if completely empty)
-!if $%BUILD_TARGET_ARCH% == "x86"       ; 32-bit
+!if $%KBUILD_TARGET_ARCH% == "x86"       ; 32-bit
   RMDir /REBOOTOK "$PROGRAMFILES32\innotek"
 !else   ; 64-bit
   RMDir /REBOOTOK "$PROGRAMFILES64\innotek"

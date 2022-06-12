@@ -1,5 +1,5 @@
 @echo off
-rem $Id: Combined-3-RepackAdditions.cmd 83010 2020-02-06 17:25:49Z vboxsync $
+rem $Id: Combined-3-RepackAdditions.cmd 84945 2020-06-25 10:22:05Z vboxsync $
 rem rem @file
 rem Windows NT batch script for repacking signed amd64 and x86 drivers.
 rem
@@ -234,7 +234,7 @@ rem TBD: that has to be converted to invoke auto-generated .cmd
         -E "VBOX_NSIS_ICON_FILE=%_MY_OPT_SRC_DIR%\VirtualBoxGA-nsis.ico" ^
         -E "VBOX_WITH_GUEST_INSTALL_HELPER=1" -E "VBOX_WITH_GUEST_INSTALLER_UNICODE=1" -E "VBOX_WITH_LICENSE_INSTALL_RTF=1" ^
         -E "VBOX_WITH_WDDM=1" -E "VBOX_WITH_MESA3D=1" -E "VBOX_BRAND_WIN_ADD_INST_DLGBMP=%_MY_OPT_SRC_DIR%\welcome.bmp" ^
-        -E "VBOX_BRAND_LICENSE_RTF=%_MY_OPT_SRC_DIR%\License-gpl-2.0.rtf"  -E "BUILD_TYPE=release" -E "BUILD_TARGET_ARCH=amd64" ^
+        -E "VBOX_BRAND_LICENSE_RTF=%_MY_OPT_SRC_DIR%\License-gpl-2.0.rtf"  -E "KBUILD_TYPE=%_MY_OPT_BUILD_TYPE%" -E "KBUILD_TARGET_ARCH=amd64" ^
         --  %KBUILD_DEVTOOLS%/win.x86/nsis/v3.04-log/makensis.exe /NOCD /V2 ^
                 "/DVBOX_SIGN_ADDITIONS=1" ^
                 "/DEXTERNAL_UNINSTALLER=1" ^
@@ -265,7 +265,7 @@ rem TBD: that has to be converted to invoke auto-generated .cmd
         -E "VBOX_NSIS_ICON_FILE=%_MY_OPT_SRC_DIR%\VirtualBoxGA-nsis.ico" ^
         -E "VBOX_WITH_GUEST_INSTALL_HELPER=1" -E "VBOX_WITH_GUEST_INSTALLER_UNICODE=1" -E "VBOX_WITH_LICENSE_INSTALL_RTF=1" ^
         -E "VBOX_WITH_WDDM=1" -E "VBOX_WITH_MESA3D=1" -E "VBOX_BRAND_WIN_ADD_INST_DLGBMP=%_MY_OPT_SRC_DIR%\welcome.bmp" ^
-        -E "VBOX_BRAND_LICENSE_RTF=%_MY_OPT_SRC_DIR%\License-gpl-2.0.rtf"  -E "BUILD_TYPE=release" -E "BUILD_TARGET_ARCH=x86" ^
+        -E "VBOX_BRAND_LICENSE_RTF=%_MY_OPT_SRC_DIR%\License-gpl-2.0.rtf"  -E "KBUILD_TYPE=%_MY_OPT_BUILD_TYPE%" -E "KBUILD_TARGET_ARCH=x86" ^
         --  %KBUILD_DEVTOOLS%/win.x86/nsis/v3.04-log/makensis.exe /NOCD /V2 ^
                 "/DVBOX_SIGN_ADDITIONS=1" ^
                 "/DEXTERNAL_UNINSTALLER=1" ^
