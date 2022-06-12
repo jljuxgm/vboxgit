@@ -1,4 +1,4 @@
-/* $Id: SharedClipboard-transfers.h 87068 2020-12-09 14:53:08Z vboxsync $ */
+/* $Id: SharedClipboard-transfers.h 87072 2020-12-09 16:51:00Z vboxsync $ */
 /** @file
  * Shared Clipboard - Shared transfer functions between host and guest.
  */
@@ -909,7 +909,7 @@ int ShClTransferCtxTransferRegisterByIndex(PSHCLTRANSFERCTX pTransferCtx, PSHCLT
 int ShClTransferCtxTransferUnregister(PSHCLTRANSFERCTX pTransferCtx, SHCLTRANSFERID idTransfer);
 
 #ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS_HTTP
-int ShClTransferHttpServerCreate(PSHCLHTTPSERVER pSrv, PSHCLTRANSFERCTX pCtx);
+int ShClTransferHttpServerCreate(PSHCLHTTPSERVER pSrv, uint16_t *puPort);
 int ShClTransferHttpServerCreateEx(PSHCLHTTPSERVER pSrv, uint16_t uPort);
 int ShClTransferHttpServerDestroy(PSHCLHTTPSERVER pSrv);
 void ShClTransferHttpServerInit(PSHCLHTTPSERVER pSrv);
