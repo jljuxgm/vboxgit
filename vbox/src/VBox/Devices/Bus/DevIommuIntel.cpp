@@ -1,4 +1,4 @@
-/* $Id: DevIommuIntel.cpp 89572 2021-06-09 07:30:38Z vboxsync $ */
+/* $Id: DevIommuIntel.cpp 89573 2021-06-09 07:32:28Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - Intel implementation.
  */
@@ -3945,7 +3945,7 @@ static DECLCALLBACK(int) dmarR3LoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uin
     }
 
     /*
-     * Load and verify terminator marker.
+     * Verify terminator marker.
      */
     {
         uint32_t uEndMarker;
