@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: postinst 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: postinst 84968 2020-06-26 11:51:54Z vboxsync $
 ## @file
 # VirtualBox postinst
 #
@@ -68,8 +68,10 @@ if [ "$1" = "configure" ]; then
   if ! dpkg-statoverride --list /usr/lib/virtualbox/VBoxHeadless > /dev/null 2>&1; then
     chmod 4511 /usr/lib/virtualbox/VBoxHeadless
   fi
-  if ! dpkg-statoverride --list /usr/lib/virtualbox/VBoxSDL > /dev/null 2>&1; then
-    chmod 4511 /usr/lib/virtualbox/VBoxSDL
+  if [ -x /usr/lib/virtualbox/VBoxSDL ]; then
+    if ! dpkg-statoverride --list /usr/lib/virtualbox/VBoxSDL > /dev/null 2>&1; then
+      chmod 4511 /usr/lib/virtualbox/VBoxSDL
+    fi
   fi
   if ! dpkg-statoverride --list /usr/lib/virtualbox/VBoxNetDHCP > /dev/null 2>&1; then
     chmod 4511 /usr/lib/virtualbox/VBoxNetDHCP
