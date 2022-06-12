@@ -1,4 +1,4 @@
-/* $Id: DevIommuAmd.cpp 86254 2020-09-24 05:56:29Z vboxsync $ */
+/* $Id: DevIommuAmd.cpp 86255 2020-09-24 06:20:40Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - AMD implementation.
  */
@@ -3438,14 +3438,13 @@ static DECLCALLBACK(int) iommuAmdDeviceMsiRemap(PPDMDEVINS pDevIns, uint16_t uDe
     Assert(pMsiOut);
 
     PIOMMU pThis = PDMDEVINS_2_DATA(pDevIns, PIOMMU);
-    STAM_COUNTER_INC(&pThis->CTX_SUFF_Z(StatMsiRemap));
-
-    LogFlowFunc(("uDevId=%#x\n", uDevId));
 
     /* Interrupts are forwarded with remapping when the IOMMU is disabled. */
     IOMMU_CTRL_T const Ctrl = iommuAmdGetCtrl(pThis);
     if (Ctrl.n.u1IommuEn)
     {
+        STAM_COUNTER_INC(&pThis->CTX_SUFF_Z(StatMsiRemap));
+        LogFlowFunc(("uDevId=%#x\n", uDevId));
         /** @todo Cache? */
 
         return iommuAmdLookupIntrTable(pDevIns, uDevId, IOMMUOP_INTR_REQ, pMsiIn, pMsiOut);
