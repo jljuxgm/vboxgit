@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 86734 2020-10-28 11:43:13Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 86769 2020-10-30 12:27:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -1006,9 +1006,6 @@ void UIVirtualBoxManagerWidget::recacheCurrentItemInformation(bool fDontRaiseErr
         /* Propagate current machine to update the Snapshots-pane or/and Logviewer-pane: */
         if (pItem->itemType() == UIVirtualMachineItemType_Local)
             m_pPaneToolsMachine->setMachine(pItem->toLocal()->machine());
-        /* Update current cloud machine state: */
-        if (pItem->itemType() == UIVirtualMachineItemType_CloudReal)
-            pItem->toCloud()->updateInfoAsync(false /* delayed? */);
     }
     else
     {

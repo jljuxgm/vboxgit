@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemMachine.h 84625 2020-06-01 16:44:39Z vboxsync $ */
+/* $Id: UIChooserItemMachine.h 86769 2020-10-30 12:27:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemMachine class declaration.
  */
@@ -104,6 +104,9 @@ protected:
       * @{ */
         /** Returns RTTI item type. */
         virtual int type() const /* override */ { return Type; }
+
+        /** Defines item as @a fSelected. */
+        virtual void setSelected(bool fSelected) /* override */;
 
         /** Starts item editing. */
         virtual void startEditing() /* override */;
