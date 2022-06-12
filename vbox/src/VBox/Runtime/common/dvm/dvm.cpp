@@ -1,4 +1,4 @@
-/* $Id: dvm.cpp 86332 2020-09-28 17:56:32Z vboxsync $ */
+/* $Id: dvm.cpp 86780 2020-11-02 11:51:44Z vboxsync $ */
 /** @file
  * IPRT Disk Volume Management API (DVM) - generic code.
  */
@@ -140,6 +140,8 @@ static const char * const g_apszDvmVolTypes[] =
     "Windows storage spaces",
 
     "IBM GPFS",
+
+    "OS/2",
 };
 AssertCompile(RT_ELEMENTS(g_apszDvmVolTypes) == RTDVMVOLTYPE_END);
 
