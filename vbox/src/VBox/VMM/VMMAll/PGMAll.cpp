@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 86455 2020-10-05 20:27:12Z vboxsync $ */
+/* $Id: PGMAll.cpp 86464 2020-10-07 08:09:22Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -20,6 +20,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_PGM
+#define VBOX_WITHOUT_PAGING_BIT_FIELDS /* 64-bit bitfields are just asking for trouble. See @bugref{9841} and others. */
 #include <VBox/vmm/pgm.h>
 #include <VBox/vmm/cpum.h>
 #include <VBox/vmm/selm.h>
