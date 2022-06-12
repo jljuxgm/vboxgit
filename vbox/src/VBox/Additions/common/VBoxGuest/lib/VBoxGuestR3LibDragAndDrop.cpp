@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibDragAndDrop.cpp 85584 2020-07-31 16:48:59Z vboxsync $ */
+/* $Id: VBoxGuestR3LibDragAndDrop.cpp 85585 2020-07-31 16:52:28Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Drag & Drop.
  */
@@ -826,7 +826,7 @@ static int vbglR3DnDHGRecvDataMain(PVBGLR3GUESTDNDCMDCTX   pCtx,
     int rc = vbglR3DnDHGRecvDataLoop(pCtx, &dataHdr, &pvData, &cbData);
     if (RT_SUCCESS(rc))
     {
-        LogRel2(("DnD: Received %RU32 bytes meta data in format '%s'\n", cbData, (char *)dataHdr.pvMetaFmt));
+        LogRel2(("DnD: Received %RU64 bytes meta data in format '%s'\n", cbData, (char *)dataHdr.pvMetaFmt));
 
         /**
          * Check if this is an URI event. If so, let VbglR3 do all the actual
