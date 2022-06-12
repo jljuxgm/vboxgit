@@ -1,4 +1,4 @@
-/* $Id: slirp_config.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: slirp_config.h 88128 2021-03-15 19:08:28Z vboxsync $ */
 /** @file
  * NAT - compile-time configuration.
  */
@@ -210,3 +210,6 @@
 
 /* Define if you have <sys/type32.h> */
 #undef HAVE_SYS_TYPES32_H
+#ifdef RT_OS_SOLARIS
+# define HAVE_SYS_TYPES32_H
+#endif
