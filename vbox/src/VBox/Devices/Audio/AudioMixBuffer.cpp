@@ -1,4 +1,4 @@
-/* $Id: AudioMixBuffer.cpp 89337 2021-05-28 08:49:59Z vboxsync $ */
+/* $Id: AudioMixBuffer.cpp 89338 2021-05-28 08:57:49Z vboxsync $ */
 /** @file
  * Audio mixing buffer for converting reading/writing audio data.
  */
@@ -791,10 +791,6 @@ int AudioMixBufInit(PAUDIOMIXBUF pMixBuf, const char *pszName, PCPDMAUDIOPCMPROP
     pMixBuf->Volume.fMuted = false;
     pMixBuf->Volume.uLeft  = AUDIOMIXBUF_VOL_0DB;
     pMixBuf->Volume.uRight = AUDIOMIXBUF_VOL_0DB;
-
-    /* Prevent division by zero.
-     * Do a 1:1 conversion according to AUDIOMIXBUF_S2B_RATIO. */
-    pMixBuf->iFreqRatio = 1 << 20;
 
     pMixBuf->Props       = *pProps;
 
