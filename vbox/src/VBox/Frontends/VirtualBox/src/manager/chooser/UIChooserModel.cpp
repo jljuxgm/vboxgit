@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 86544 2020-10-12 14:51:37Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 86569 2020-10-14 11:09:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -1109,7 +1109,7 @@ void UIChooserModel::sltLocalMachineRegistered(const QUuid &uId, const bool fReg
     }
 }
 
-void UIChooserModel::sltCloudMachineRegistered(const QString &strProviderName, const QString &strProfileName,
+void UIChooserModel::sltCloudMachineRegistered(const QString &strProviderShortName, const QString &strProfileName,
                                                const QUuid &uId, const bool fRegistered)
 {
     /* Existing VM unregistered => make sure no item with passed uId is selected: */
@@ -1117,7 +1117,7 @@ void UIChooserModel::sltCloudMachineRegistered(const QString &strProviderName, c
         makeSureNoItemWithCertainIdSelected(uId);
 
     /* Call to base-class: */
-    UIChooserAbstractModel::sltCloudMachineRegistered(strProviderName, strProfileName, uId, fRegistered);
+    UIChooserAbstractModel::sltCloudMachineRegistered(strProviderShortName, strProfileName, uId, fRegistered);
 
     /* Existing VM unregistered? */
     if (!fRegistered)

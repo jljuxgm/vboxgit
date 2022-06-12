@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.h 86544 2020-10-12 14:51:37Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.h 86569 2020-10-14 11:09:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class declaration.
  */
@@ -148,7 +148,7 @@ protected slots:
           * @param  strProviderShortName  Brings provider short name.
           * @param  strProfileName        Brings profile name. */
         virtual void sltCloudMachineRegistered(const QString &strProviderShortName, const QString &strProfileName,
-                                               const QUuid &uMachineId, const bool fRegistered);
+                                               const QUuid &uId, const bool fRegistered);
         /** Handles session @a enmState change for machine with certain @a uMachineId. */
         virtual void sltSessionStateChanged(const QUuid &uMachineId, const KSessionState enmState);
         /** Handles snapshot change for machine/snapshot with certain @a uMachineId / @a uSnapshotId. */
