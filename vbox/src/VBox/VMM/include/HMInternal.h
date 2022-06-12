@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 87606 2021-02-04 13:35:36Z vboxsync $ */
+/* $Id: HMInternal.h 87633 2021-02-05 21:37:09Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -1320,6 +1320,11 @@ typedef struct HMCPU
     STAMCOUNTER             StatVmxCheckBadRpl;
     STAMCOUNTER             StatVmxCheckPmOk;
 
+    STAMCOUNTER             StatVmxPreemptionRecalcingDeadline;
+    STAMCOUNTER             StatVmxPreemptionRecalcingDeadlineExpired;
+    STAMCOUNTER             StatVmxPreemptionReusingDeadline;
+    STAMCOUNTER             StatVmxPreemptionReusingDeadlineExpired;
+
 #ifdef VBOX_WITH_STATISTICS
     R3PTRTYPE(PSTAMCOUNTER) paStatExitReason;
     R0PTRTYPE(PSTAMCOUNTER) paStatExitReasonR0;
@@ -1388,6 +1393,10 @@ typedef struct HMR0PERVCPU
     {
         /** Ring-0 pointer to the hardware-assisted VMX execution function. */
         PFNHMVMXSTARTVM             pfnStartVm;
+        /** Absolute TSC deadline. */
+        uint64_t                    uTscDeadline;
+        /** The deadline version number. */
+        uint64_t                    uTscDeadlineVersion;
 
         /** @name Guest information.
          * @{ */
