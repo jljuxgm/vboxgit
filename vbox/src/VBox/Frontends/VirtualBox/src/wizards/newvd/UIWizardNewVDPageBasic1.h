@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageBasic1.h 87850 2021-02-23 16:38:31Z vboxsync $ */
+/* $Id: UIWizardNewVDPageBasic1.h 87859 2021-02-24 13:01:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageBasic1 class declaration.
  */
@@ -51,6 +51,7 @@ protected:
     /* Stuff for 'mediumFormat' field: */
     CMediumFormat mediumFormat() const;
     void setMediumFormat(const CMediumFormat &mediumFormat);
+    void retranslateWidgets();
 
     /* Variables: */
     QButtonGroup *m_pFormatButtonGroup;

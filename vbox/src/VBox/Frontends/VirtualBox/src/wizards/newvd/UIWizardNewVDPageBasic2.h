@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageBasic2.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIWizardNewVDPageBasic2.h 87859 2021-02-24 13:01:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageBasic2 class declaration.
  */
@@ -42,6 +42,7 @@ protected:
     /* Stuff for 'variant' field: */
     qulonglong mediumVariant() const;
     void setMediumVariant(qulonglong uMediumVariant);
+    void retranslateWidgets();
 
     /* Widgets: */
     QButtonGroup *m_pVariantButtonGroup;

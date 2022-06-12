@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageExpert.cpp 87850 2021-02-23 16:38:31Z vboxsync $ */
+/* $Id: UIWizardNewVDPageExpert.cpp 87859 2021-02-24 13:01:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageExpert class implementation.
  */
@@ -196,11 +196,12 @@ void UIWizardNewVDPageExpert::sltSelectLocationButtonClicked()
 
 void UIWizardNewVDPageExpert::retranslateUi()
 {
+    UIWizardNewVDPage1::retranslateWidgets();
+    UIWizardNewVDPage2::retranslateWidgets();
+    UIWizardNewVDPage3::retranslateWidgets();
     /* Translate widgets: */
     if (m_pLocationGroupBox)
         m_pLocationGroupBox->setTitle(UIWizardNewVD::tr("File &location"));
-    if (m_pLocationOpenButton)
-        m_pLocationOpenButton->setToolTip(UIWizardNewVD::tr("Choose a location for new virtual hard disk file..."));
     if (m_pSizeGroupBox)
         m_pSizeGroupBox->setTitle(UIWizardNewVD::tr("File &size"));
     if (m_pFormatGroupBox)

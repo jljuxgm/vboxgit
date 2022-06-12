@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageBasic3.h 87775 2021-02-17 11:42:01Z vboxsync $ */
+/* $Id: UIWizardNewVDPageBasic3.h 87859 2021-02-24 13:01:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageBasic3 class declaration.
  */
@@ -64,6 +64,7 @@ protected:
     /* Stuff for 'mediumSize' field: */
     qulonglong mediumSize() const;
     void setMediumSize(qulonglong uMediumSize);
+    void retranslateWidgets();
 
     /* Variables: */
     QString m_strDefaultName;

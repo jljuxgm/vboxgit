@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVD.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIWizardNewVD.cpp 87859 2021-02-24 13:01:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVD class implementation.
  */
@@ -17,7 +17,7 @@
 
 /* Qt includes: */
 #include <QVariant>
-
+#include <QPushButton>
 /* GUI includes: */
 #include "UICommon.h"
 #include "UIWizardNewVD.h"
@@ -48,6 +48,9 @@ UIWizardNewVD::UIWizardNewVD(QWidget *pParent,
     /* Assign background image: */
     assignBackground(":/wizard_new_harddisk_bg.png");
 #endif /* VBOX_WS_MAC */
+    QPushButton *pButton = new QPushButton("boooo");
+    setSideWidget(pButton);
+
 }
 
 bool UIWizardNewVD::createVirtualDisk()
