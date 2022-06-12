@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 86442 2020-10-04 12:08:27Z vboxsync $
+# $Id: base.py 86443 2020-10-04 12:08:49Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 86442 $"
+__version__ = "$Revision: 86443 $"
 
 
 # Standard Python imports.
@@ -1709,7 +1709,7 @@ class TestDriverBase(object): # pylint: disable=too-many-instance-attributes
             reporter.log('*** abort action completed (fRc=%s) ***' % (fRc));
         else:
             if asActions == [ 'all' ]:
-                asActions = self.asNormalActions;
+                asActions = list(self.asNormalActions);
 
             if 'verify' in asActions:
                 reporter.log('*** verify action ***');
