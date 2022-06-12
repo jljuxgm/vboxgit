@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 88387 2021-04-07 10:09:21Z vboxsync $
+# $Id: Makefile.kmk 88388 2021-04-07 10:10:08Z vboxsync $
 ## @file
 # Sub-Makefile for the Solaris installer.
 #
@@ -364,6 +364,7 @@ ifdef VBOX_WITH_QTGUI
   	libQt5X11ExtrasVBox.so.5 \
   	libQt5WidgetsVBox.so.5 \
   	plugins/platforms/libqxcb.so \
+  	plugins/sqldrivers/libqsqlite.so \
   	plugins/xcbglintegrations/libqxcb-glx-integration.so \
   	$(if $(VBOX_GUI_USE_QGL),libQt5OpenGLVBox.so.5,)
  endif
