@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 86986 2020-11-26 14:22:34Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 86988 2020-11-26 14:25:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -3479,5 +3479,7 @@ void UIMessageCenter::sltHandleHelpRequest(const QString &strHelpKeyword)
     /* Show the help page for the @p strHelpKeyword: */
     if (m_pHelpBrowserDialog)
         m_pHelpBrowserDialog->showHelpForKeyword(strHelpKeyword);
+#else
+    Q_UNUSED(strHelpKeyword);
 # endif /* #if defined(VBOX_WITH_DOCS_QHELP) && (QT_VERSION >= QT_VERSION_CHECK(5, 9, 0))&& (QT_VERSION >= QT_VERSION_CHECK(5, 9, 0)) */
 }
