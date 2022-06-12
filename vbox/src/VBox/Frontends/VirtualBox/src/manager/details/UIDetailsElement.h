@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElement.h 83719 2020-04-16 16:30:01Z vboxsync $ */
+/* $Id: UIDetailsElement.h 86217 2020-09-22 12:02:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement class declaration.
  */
@@ -269,6 +269,37 @@ private:
         void updateAnimationParameters();
         /** Updates toggle button visibility.  */
         void updateButtonVisibility();
+
+        /** Popups name & system editor. */
+        void popupNameAndSystemEditor(bool fChooseName, bool fChoosePath, bool fChooseType, const QString &strValue);
+        /** Popups base-memory editor. */
+        void popupBaseMemoryEditor(const QString &strValue);
+        /** Popups boot-order editor. */
+        void popupBootOrderEditor(const QString &strValue);
+        /** Popups video-memory editor. */
+        void popupVideoMemoryEditor(const QString &strValue);
+        /** Popups graphics controller type editor. */
+        void popupGraphicsControllerTypeEditor(const QString &strValue);
+        /** Popups storage editor. */
+        void popupStorageEditor(const QString &strValue);
+        /** Popups audio host-driver type editor. */
+        void popupAudioHostDriverTypeEditor(const QString &strValue);
+        /** Popups audio controller type editor. */
+        void popupAudioControllerTypeEditor(const QString &strValue);
+        /** Popups network attachment type editor. */
+        void popupNetworkAttachmentTypeEditor(const QString &strValue);
+        /** Popups USB controller type editor. */
+        void popupUSBControllerTypeEditor(const QString &strValue);
+        /** Popups visual-state type editor. */
+        void popupVisualStateTypeEditor(const QString &strValue);
+        /** Popups menu-bar editor. */
+        void popupMenuBarEditor(const QString &strValue);
+        /** Popups status-bar editor. */
+        void popupStatusBarEditor(const QString &strValue);
+        /** Popups mini-toolbar editor. */
+        void popupMiniToolbarEditor(const QString &strValue);
+        /** Popups cloud editor. */
+        void popupCloudEditor(const QString &strValue);
     /** @} */
 
     /** @name Layout stuff.
