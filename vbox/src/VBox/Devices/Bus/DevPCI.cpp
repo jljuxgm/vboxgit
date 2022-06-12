@@ -1,4 +1,4 @@
-/* $Id: DevPCI.cpp 84826 2020-06-15 08:20:40Z vboxsync $ */
+/* $Id: DevPCI.cpp 85007 2020-06-30 17:19:25Z vboxsync $ */
 /** @file
  * DevPCI - PCI BUS Device.
  *
@@ -1431,7 +1431,7 @@ const PDMDEVREG g_DevicePCI =
     /* .uReserved0 = */             0,
     /* .szName = */                 "pci",
     /* .fFlags = */                 PDM_DEVREG_FLAGS_DEFAULT_BITS | PDM_DEVREG_FLAGS_RZ | PDM_DEVREG_FLAGS_NEW_STYLE,
-    /* .fClass = */                 PDM_DEVREG_CLASS_BUS_PCI | PDM_DEVREG_CLASS_BUS_ISA,
+    /* .fClass = */                 PDM_DEVREG_CLASS_BUS_PCI,
     /* .cMaxInstances = */          1,
     /* .uSharedVersion = */         42,
     /* .cbInstanceShared = */       sizeof(DEVPCIROOT),

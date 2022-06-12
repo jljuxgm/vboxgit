@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 84826 2020-06-15 08:20:40Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 85007 2020-06-30 17:19:25Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation device.
  *
@@ -3865,7 +3865,7 @@ const PDMDEVREG g_DevicePciIch9 =
     /* .uReserved0 = */             0,
     /* .szName = */                 "ich9pci",
     /* .fFlags = */                 PDM_DEVREG_FLAGS_DEFAULT_BITS | PDM_DEVREG_FLAGS_RZ | PDM_DEVREG_FLAGS_NEW_STYLE,
-    /* .fClass = */                 PDM_DEVREG_CLASS_BUS_PCI | PDM_DEVREG_CLASS_BUS_ISA,
+    /* .fClass = */                 PDM_DEVREG_CLASS_BUS_PCI,
     /* .cMaxInstances = */          1,
     /* .uSharedVersion = */         42,
     /* .cbInstanceShared = */       sizeof(DEVPCIROOT),
