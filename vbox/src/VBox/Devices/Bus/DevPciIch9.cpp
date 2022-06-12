@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 85198 2020-07-10 15:14:00Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 85490 2020-07-28 15:57:10Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation device.
  *
@@ -1894,7 +1894,7 @@ static void ich9pciBiosInitDeviceBARs(PPDMDEVINS pDevIns, PDEVPCIROOT pPciRoot, 
         uint8_t u8ResourceType = devpciR3GetByte(pPciDev, u32Address);
 
         bool fPrefetch =    (u8ResourceType & ((uint8_t)(PCI_ADDRESS_SPACE_MEM_PREFETCH | PCI_ADDRESS_SPACE_IO)))
-                      == PCI_ADDRESS_SPACE_MEM_PREFETCH;
+                         == PCI_ADDRESS_SPACE_MEM_PREFETCH;
         bool f64Bit =    (u8ResourceType & ((uint8_t)(PCI_ADDRESS_SPACE_BAR64 | PCI_ADDRESS_SPACE_IO)))
                       == PCI_ADDRESS_SPACE_BAR64;
         bool fIsPio = ((u8ResourceType & PCI_ADDRESS_SPACE_IO) == PCI_ADDRESS_SPACE_IO);
