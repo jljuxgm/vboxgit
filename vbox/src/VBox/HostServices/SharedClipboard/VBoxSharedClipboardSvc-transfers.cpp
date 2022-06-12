@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-transfers.cpp 86908 2020-11-18 10:56:12Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-transfers.cpp 86949 2020-11-20 18:47:46Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Internal code for transfer (list) handling.
  */
@@ -1863,7 +1863,7 @@ int shClSvcTransferStart(PSHCLCLIENT pClient,
                 creationCtx.enmSource = pClient->State.enmSource;
                 creationCtx.pvUser    = pClient;
 
-                uint32_t uTransferID = 0;
+                SHCLTRANSFERID uTransferID = 0;
 
                 rc = ShClTransferSetInterface(pTransfer, &creationCtx);
                 if (RT_SUCCESS(rc))

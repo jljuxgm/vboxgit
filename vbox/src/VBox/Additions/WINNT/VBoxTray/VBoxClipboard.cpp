@@ -1,4 +1,4 @@
-/* $Id: VBoxClipboard.cpp 86948 2020-11-20 18:35:24Z vboxsync $ */
+/* $Id: VBoxClipboard.cpp 86949 2020-11-20 18:47:46Z vboxsync $ */
 /** @file
  * VBoxClipboard - Shared clipboard, Windows Guest Implementation.
  */
@@ -146,7 +146,7 @@ static DECLCALLBACK(int) vboxClipboardOnTransferStartCallback(PSHCLTRANSFERCALLB
 
     const SHCLTRANSFERDIR enmDir = ShClTransferGetDir(pTransfer);
 
-    LogFlowFunc(("pCtx=%p, idTransfer=%RU16, enmDir=%RU32\n", pCtx, ShClTransferGetID(pTransfer), enmDir));
+    LogFlowFunc(("pCtx=%p, idTransfer=%RU32, enmDir=%RU32\n", pCtx, ShClTransferGetID(pTransfer), enmDir));
 
     int rc;
 
@@ -187,7 +187,7 @@ static DECLCALLBACK(int) vboxClipboardOnTransferStartCallback(PSHCLTRANSFERCALLB
     if (RT_FAILURE(rc))
         LogRel(("Shared Clipboard: Starting transfer failed, rc=%Rrc\n", rc));
 
-    LogFlowFunc(("LEAVE: idTransfer=%RU16, rc=%Rrc\n", ShClTransferGetID(pTransfer), rc));
+    LogFlowFunc(("LEAVE: idTransfer=%RU32, rc=%Rrc\n", ShClTransferGetID(pTransfer), rc));
     return rc;
 }
 
