@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 89851 2021-06-23 10:27:45Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 89867 2021-06-23 16:33:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -708,7 +708,7 @@ void UIVirtualBoxManager::sltCheckUSBAccesibility()
     CHost comHost = uiCommon().host();
     if (!comHost.isOk())
         return;
-    if (comHost.GetUSBDevices().size() == 0 && comHost.isWarning())
+    if (comHost.GetUSBDevices().isEmpty() && comHost.isWarning())
         msgCenter().cannotEnumerateHostUSBDevices(comHost, this);
 }
 
