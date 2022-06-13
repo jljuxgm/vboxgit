@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 94845 2022-05-05 11:32:46Z vboxsync $ */
+/* $Id: IEMInternal.h 94956 2022-05-09 13:53:39Z vboxsync $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -2258,7 +2258,7 @@ typedef VBOXSTRICTRC (* PFNIEMOPRM)(PVMCPUCC pVCpu, uint8_t bRm);
  * @returns PCCPUMFEATURES
  * @param   a_pVCpu         The cross context virtual CPU structure of the calling thread.
  */
-#define IEM_GET_HOST_CPU_FEATURES(a_pVCpu)  (&((a_pVCpu)->CTX_SUFF(pVM)->cpum.ro.HostFeatures))
+#define IEM_GET_HOST_CPU_FEATURES(a_pVCpu)  (&g_CpumHostFeatures.s)
 
 /**
  * Evaluates to true if we're presenting an Intel CPU to the guest.
