@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 94824 2022-05-04 15:15:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -848,6 +848,7 @@ void UIVirtualBoxManagerWidget::updateToolbar()
                     m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Medium_S_Move));
                     m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Medium_S_Remove));
                     m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Medium_S_Release));
+                    m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Medium_S_Clear));
                     m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Medium_T_Search));
                     m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Medium_T_Details));
                     m_pToolBar->addSeparator();

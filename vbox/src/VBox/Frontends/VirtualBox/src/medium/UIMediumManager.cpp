@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 94823 2022-05-04 15:05:05Z vboxsync $ */
+/* $Id: UIMediumManager.cpp 94824 2022-05-04 15:15:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class implementation.
  */
@@ -1140,6 +1140,8 @@ void UIMediumManagerWidget::updateActionIcons()
         m_pActionPool->action(UIActionIndexMN_M_Medium_S_Move)->setState((int)enmCurrentMediumType);
         m_pActionPool->action(UIActionIndexMN_M_Medium_S_Remove)->setState((int)enmCurrentMediumType);
         m_pActionPool->action(UIActionIndexMN_M_Medium_S_Release)->setState((int)enmCurrentMediumType);
+        m_pActionPool->action(UIActionIndexMN_M_Medium_S_Clear)->setState((int)enmCurrentMediumType);
+        m_pActionPool->action(UIActionIndexMN_M_Medium_T_Search)->setState((int)enmCurrentMediumType);
         m_pActionPool->action(UIActionIndexMN_M_Medium_T_Details)->setState((int)enmCurrentMediumType);
     }
 }
