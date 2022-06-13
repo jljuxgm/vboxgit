@@ -1,4 +1,4 @@
-/* $Id: Svga.h 86307 2020-09-26 15:26:55Z vboxsync $ */
+/* $Id: Svga.h 90180 2021-07-14 12:05:26Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver VMSVGA.
  */
@@ -63,6 +63,10 @@ typedef struct VBOXWDDM_EXT_VMSVGA
     RTIOPORT ioportBase;
     /** Pointer to FIFO MMIO region. */
     volatile uint32_t *pu32FIFO;
+
+    RTR0MEMOBJ hMemObj;
+    RTR0PTR  pvR0Hdr, pvR0Cmd;
+    RTHCPHYS paHdr, paCmd;
 
     /**
      * Hardware capabilities.
