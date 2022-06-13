@@ -1,4 +1,4 @@
-/* $Id: PDMDevice.cpp 92409 2021-11-12 22:17:42Z vboxsync $ */
+/* $Id: PDMDevice.cpp 92410 2021-11-12 22:21:47Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device parts.
  */
@@ -278,7 +278,10 @@ int pdmR3DevInit(PVM pVM)
         bool fR0Enabled = false;
         bool fRCEnabled = false;
         if (   (pReg->fFlags & (PDM_DEVREG_FLAGS_R0 | PDM_DEVREG_FLAGS_RC))
-            && !PGMR3IsNemModeEnabled(pVM) /* No ring-0 in simplified memory mode. */ )
+#ifdef VBOX_WITH_PGM_NEM_MODE
+            && !PGMR3IsNemModeEnabled(pVM) /* No ring-0 in simplified memory mode. */
+#endif
+           )
         {
             if (pReg->fFlags & PDM_DEVREG_FLAGS_R0)
             {
