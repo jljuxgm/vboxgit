@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageBasic2.cpp 89979 2021-06-30 13:24:20Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageBasic2.cpp 89997 2021-07-02 10:27:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageBasic2 class implementation.
  */
@@ -51,19 +51,16 @@ void UIWizardNewCloudVMPage2::refreshFormPropertiesTable(UIFormEditorWidgetPoint
 
 UIWizardNewCloudVMPageBasic2::UIWizardNewCloudVMPageBasic2()
 {
-    /* Create main layout: */
-    QVBoxLayout *pMainLayout = new QVBoxLayout(this);
-    if (pMainLayout)
+    /* Prepare main layout: */
+    QVBoxLayout *pLayoutMain = new QVBoxLayout(this);
+    if (pLayoutMain)
     {
-        /* Create label: */
+        /* Prepare label: */
         m_pLabel = new QIRichTextLabel(this);
         if (m_pLabel)
-        {
-            /* Add into layout: */
-            pMainLayout->addWidget(m_pLabel);
-        }
+            pLayoutMain->addWidget(m_pLabel);
 
-        /* Create form editor widget: */
+        /* Prepare form editor widget: */
         m_pFormEditor = new UIFormEditorWidget(this);
         if (m_pFormEditor)
         {
@@ -75,7 +72,7 @@ UIWizardNewCloudVMPageBasic2::UIWizardNewCloudVMPageBasic2()
                 m_pFormEditor->setMinimumHeight(8 * iDefaultSectionHeight);
 
             /* Add into layout: */
-            pMainLayout->addWidget(m_pFormEditor);
+            pLayoutMain->addWidget(m_pFormEditor);
         }
     }
 }
