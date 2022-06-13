@@ -1,4 +1,4 @@
-/* $Id: DevHda.h 89872 2021-06-24 09:06:52Z vboxsync $ */
+/* $Id: DevHda.h 89873 2021-06-24 09:11:18Z vboxsync $ */
 /** @file
  * Intel HD Audio Controller Emulation - Structures.
  */
@@ -124,26 +124,11 @@ typedef struct HDASTATE
     uint32_t                cbRirbBuf;
     /** Response Interrupt Count (RINTCNT). */
     uint16_t                u16RespIntCnt;
-    /** Position adjustment (in audio frames).
-     *
-     *  This is not an official feature of the HDA specs, but used by
-     *  certain OS drivers (e.g. snd_hda_intel) to work around certain
-     *  quirks by "real" HDA hardware implementations.
-     *
-     *  The position adjustment specifies how many audio frames
-     *  a stream is ahead from its actual reading/writing position when
-     *  starting a stream.
-     */
-    uint16_t                cPosAdjustFrames;
-    /** Whether the position adjustment is enabled or not. */
-    bool                    fPosAdjustEnabled;
-    /** Whether data transfer heuristics are enabled or not.
-     *  This tries to determine the approx. data rate a guest audio driver expects. */
-    bool                    fTransferHeuristicsEnabled;
     /** DMA position buffer enable bit. */
     bool                    fDMAPosition;
     /** Current IRQ level. */
     uint8_t                 u8IRQL;
+    uint8_t                 abPadding[4];
     /** The device timer Hz rate. Defaults to HDA_TIMER_HZ_DEFAULT. */
     uint16_t                uTimerHz;
     /** Number of milliseconds to delay kicking off the AIO when a stream starts.
