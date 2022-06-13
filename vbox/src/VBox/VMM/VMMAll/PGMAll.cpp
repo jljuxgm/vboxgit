@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 91989 2021-10-22 03:33:13Z vboxsync $ */
+/* $Id: PGMAll.cpp 92046 2021-10-25 16:05:10Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -2398,12 +2398,12 @@ int pgmGstLazyMapEptPml4(PVMCPUCC pVCpu, PEPTPML4 *ppEptPml4)
     PVMCC       pVM = pVCpu->CTX_SUFF(pVM);
     PGM_LOCK_VOID(pVM);
 
-    RTGCPHYS const GCPhysCR3 = pVCpu->pgm.s.GCPhysCR3 & X86_CR3_EPT_PAGE_MASK;
+    RTGCPHYS const GCPhysEpt = pVCpu->pgm.s.uEptPtr & EPT_EPTP_PG_MASK;
     PPGMPAGE       pPage;
-    int rc = pgmPhysGetPageEx(pVM, GCPhysCR3, &pPage);
+    int rc = pgmPhysGetPageEx(pVM, GCPhysEpt, &pPage);
     if (RT_SUCCESS(rc))
     {
-        rc = pgmPhysGCPhys2CCPtrInternalDepr(pVM, pPage, GCPhysCR3, (void **)ppEptPml4);
+        rc = pgmPhysGCPhys2CCPtrInternalDepr(pVM, pPage, GCPhysEpt, (void **)ppEptPml4);
         if (RT_SUCCESS(rc))
         {
 # ifdef IN_RING3
