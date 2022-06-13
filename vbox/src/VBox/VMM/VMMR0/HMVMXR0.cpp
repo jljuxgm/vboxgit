@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 93929 2022-02-24 15:32:47Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 93932 2022-02-24 16:05:24Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -6104,7 +6104,7 @@ static VBOXSTRICTRC hmR0VmxPreRunGuest(PVMCPUCC pVCpu, PVMXTRANSIENT pVmxTransie
         uint64_t const uApicBaseMsr = APICGetBaseMsrNoCheck(pVCpu);
 
         /* Map the APIC access page. */
-        int rc = hmR0VmxMapHCApicAccessPage(pVCpu, uApicBaseMsr & PAGE_BASE_GC_MASK);
+        int rc = hmR0VmxMapHCApicAccessPage(pVCpu, uApicBaseMsr & ~(RTGCPHYS)GUEST_PAGE_OFFSET_MASK);
         AssertRCReturn(rc, rc);
 
         /* Update the per-VCPU cache of the APIC base MSR corresponding to the mapped APIC access page. */
