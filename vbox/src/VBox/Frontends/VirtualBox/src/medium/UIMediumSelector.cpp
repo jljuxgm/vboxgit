@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.cpp 92412 2021-11-14 10:32:25Z vboxsync $ */
+/* $Id: UIMediumSelector.cpp 92414 2021-11-14 14:12:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class implementation.
  */
@@ -54,7 +54,7 @@
 
 UIMediumSelector::UIMediumSelector(const QUuid &uCurrentMediumId, UIMediumDeviceType enmMediumType, const QString &machineName,
                                    const QString &machineSettingsFilePath, const QString &strMachineGuestOSTypeId,
-                                   const QUuid &uMachineID, QWidget *pParent)
+                                   const QUuid &uMachineID, QWidget *pParent, UIActionPool *pActionPool)
     :QIWithRetranslateUI<QIMainDialog>(pParent)
     , m_pCentralWidget(0)
     , m_pMainLayout(0)
@@ -78,6 +78,7 @@ UIMediumSelector::UIMediumSelector(const QUuid &uCurrentMediumId, UIMediumDevice
     , m_strMachineName(machineName)
     , m_strMachineGuestOSTypeId(strMachineGuestOSTypeId)
     , m_uMachineID(uMachineID)
+    , m_pActionPool(pActionPool)
 {
     /* Start full medium-enumeration (if necessary): */
     if (!uiCommon().isFullMediumEnumerationRequested())
@@ -451,7 +452,7 @@ void UIMediumSelector::sltAddMedium()
 
 void UIMediumSelector::sltCreateMedium()
 {
-    QUuid uMediumId = uiCommon().openMediumCreatorDialog(0 /* action pool */, this, m_enmMediumType, m_strMachineFolder,
+    QUuid uMediumId = uiCommon().openMediumCreatorDialog(m_pActionPool, this, m_enmMediumType, m_strMachineFolder,
                                                          m_strMachineName, m_strMachineGuestOSTypeId);
     /* Make sure that the data structure is updated and newly created medium is selected and visible: */
     sltHandleMediumCreated(uMediumId);

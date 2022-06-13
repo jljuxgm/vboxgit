@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 92413 2021-11-14 11:38:38Z vboxsync $ */
+/* $Id: UICommon.cpp 92414 2021-11-14 14:12:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -1821,13 +1821,12 @@ int UICommon::openMediumSelectorDialog(QWidget *pParent, UIMediumDeviceType  enm
                                        const QString &strMachineGuestOSTypeId, bool fEnableCreate, const QUuid &uMachineID,
                                        UIActionPool *pActionPool)
 {
-    Q_UNUSED(pActionPool);
     QUuid uMachineOrGlobalId = uMachineID == QUuid() ? gEDataManager->GlobalID : uMachineID;
 
     QWidget *pDialogParent = windowManager().realParentWindow(pParent);
     QPointer<UIMediumSelector> pSelector = new UIMediumSelector(uCurrentMediumId, enmMediumType, strMachineName,
                                                                 strMachineFolder, strMachineGuestOSTypeId,
-                                                                uMachineOrGlobalId, pDialogParent);
+                                                                uMachineOrGlobalId, pDialogParent, pActionPool);
 
     if (!pSelector)
         return static_cast<int>(UIMediumSelector::ReturnCode_Rejected);
