@@ -1,4 +1,4 @@
-/* $Id: NEMR3.cpp 93207 2022-01-12 19:14:56Z vboxsync $ */
+/* $Id: NEMR3.cpp 93351 2022-01-19 23:35:13Z vboxsync $ */
 /** @file
  * NEM - Native execution manager.
  */
@@ -119,24 +119,6 @@ VMMR3_INT_DECL(int) NEMR3InitConfig(PVM pVM)
         PVMCPU pVCpu = pVM->apCpusR3[idCpu];
         pVCpu->nem.s.fTrapXcptGpForLovelyMesaDrv = f;
     }
-
-#ifdef RT_OS_WINDOWS
-# ifndef VBOX_WITH_PGM_NEM_MODE
-
-    /** @cfgm{/NEM/UseRing0Runloop, bool, true}
-     * Whether to use the ring-0 runloop (if enabled in the build) or the ring-3 one.
-     * The latter is generally slower.  This option serves as a way out in case
-     * something breaks in the ring-0 loop. */
-#  ifdef NEM_WIN_USE_RING0_RUNLOOP_BY_DEFAULT
-    bool fUseRing0Runloop = true;
-#  else
-    bool fUseRing0Runloop = false;
-#  endif
-    rc = CFGMR3QueryBoolDef(pCfgNem, "UseRing0Runloop", &fUseRing0Runloop, fUseRing0Runloop);
-    AssertLogRelRCReturn(rc, rc);
-    pVM->nem.s.fUseRing0Runloop = fUseRing0Runloop;
-# endif
-#endif
 
     return VINF_SUCCESS;
 }
