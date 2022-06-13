@@ -1,6 +1,6 @@
-/* $Id: UIWizardCloneVDPageVariant.h 91035 2021-08-31 15:57:07Z vboxsync $ */
+/* $Id: UIWizardCloneVDFormatPage.h 91062 2021-09-01 14:43:18Z vboxsync $ */
 /** @file
- * VBox Qt GUI - UIWizardCloneVDPageVariant class declaration.
+ * VBox Qt GUI - UIWizardCloneVDFormatPage class declaration.
  */
 
 /*
@@ -15,55 +15,57 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef FEQT_INCLUDED_SRC_wizards_clonevd_UIWizardCloneVDPageVariant_h
-#define FEQT_INCLUDED_SRC_wizards_clonevd_UIWizardCloneVDPageVariant_h
+#ifndef FEQT_INCLUDED_SRC_wizards_clonevd_UIWizardCloneVDFormatPage_h
+#define FEQT_INCLUDED_SRC_wizards_clonevd_UIWizardCloneVDFormatPage_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
 
+/* Qt includes: */
+#include <QSet>
+
 /* GUI includes: */
 #include "UINativeWizardPage.h"
 
+/* COM includes: */
+#include "COMEnums.h"
+
 /* Forward declarations: */
 class QIRichTextLabel;
-class CMediumFormat;
-class UIDiskVariantGroupBox;
+class UIDiskFormatsGroupBox;
 
-class UIWizardCloneVDPageVariant : public UINativeWizardPage
+/** 2nd page of the Clone Virtual Disk Image wizard (basic extension): */
+class UIWizardCloneVDFormatPage : public UINativeWizardPage
 {
     Q_OBJECT;
 
 public:
 
-    /** Constructs basic page. */
-    UIWizardCloneVDPageVariant();
+    /** Constructs basic page.
+      * @param  enmDeviceType  Brings the device type to limit format to. */
+    UIWizardCloneVDFormatPage(KDeviceType enmDeviceType);
 
 private slots:
 
-    void sltMediumVariantChanged(qulonglong uVariant);
+    void sltMediumFormatChanged();
 
 private:
 
     /** Handles translation event. */
     virtual void retranslateUi() /* override */;
-    void prepare();
+    void prepare(KDeviceType enmDeviceType);
 
     /** Prepares the page. */
     virtual void initializePage() /* override */;
 
     /** Returns whether the page is complete. */
     virtual bool isComplete() const /* override */;
-    void setWidgetVisibility(const CMediumFormat &mediumFormat);
 
     /** Holds the description label instance. */
-    QIRichTextLabel *m_pDescriptionLabel;
-    /** Holds the 'Dynamic' description label instance. */
-    QIRichTextLabel *m_pDynamicLabel;
-    /** Holds the 'Fixed' description label instance. */
-    QIRichTextLabel *m_pFixedLabel;
-    /** Holds the 'Split to 2GB files' description label instance. */
-    QIRichTextLabel *m_pSplitLabel;
-    UIDiskVariantGroupBox *m_pVariantGroupBox;
+    QIRichTextLabel *m_pLabel;
+    UIDiskFormatsGroupBox *m_pFormatGroupBox;
+
+    QSet<QString> m_userModifiedParameters;
 };
 
-#endif /* !FEQT_INCLUDED_SRC_wizards_clonevd_UIWizardCloneVDPageVariant_h */
+#endif /* !FEQT_INCLUDED_SRC_wizards_clonevd_UIWizardCloneVDFormatPage_h */

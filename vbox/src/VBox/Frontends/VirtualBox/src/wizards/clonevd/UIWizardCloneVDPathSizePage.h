@@ -1,6 +1,6 @@
-/* $Id: UIWizardCloneVDPageExpert.h 91035 2021-08-31 15:57:07Z vboxsync $ */
+/* $Id: UIWizardCloneVDPathSizePage.h 91062 2021-09-01 14:43:18Z vboxsync $ */
 /** @file
- * VBox Qt GUI - UIWizardCloneVDPageExpert class declaration.
+ * VBox Qt GUI - UIWizardCloneVDPathSizePage class declaration.
  */
 
 /*
@@ -15,11 +15,15 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef FEQT_INCLUDED_SRC_wizards_clonevd_UIWizardCloneVDPageExpert_h
-#define FEQT_INCLUDED_SRC_wizards_clonevd_UIWizardCloneVDPageExpert_h
+#ifndef FEQT_INCLUDED_SRC_wizards_clonevd_UIWizardCloneVDPathSizePage_h
+#define FEQT_INCLUDED_SRC_wizards_clonevd_UIWizardCloneVDPathSizePage_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
+
+/* Qt includes: */
+#include <QVariant>
+#include <QSet>
 
 /* GUI includes: */
 #include "UINativeWizardPage.h"
@@ -28,37 +32,30 @@
 #include "COMEnums.h"
 
 /* Forward declarations: */
-class UIDiskFormatsGroupBox;
-class UIDiskVariantGroupBox;
 class UIMediumSizeAndPathGroupBox;
 
-/** Expert page of the Clone Virtual Disk Image wizard: */
-class UIWizardCloneVDPageExpert : public UINativeWizardPage
+/** 4th page of the Clone Virtual Disk Image wizard (basic extension): */
+class UIWizardCloneVDPathSizePage : public UINativeWizardPage
 {
     Q_OBJECT;
 
 public:
 
-    /** Constructs the page.
-      * @param  comSourceVirtualDisk  Brings the initial source disk to make copy from.
-      * @param  enmDeviceType         Brings the device type to limit format to. */
-    UIWizardCloneVDPageExpert(KDeviceType enmDeviceType, qulonglong uSourceDiskLogicaSize);
+    /** Constructs basic page. */
+    UIWizardCloneVDPathSizePage(qulonglong uSourceDiskLogicaSize);
 
 private slots:
 
-    /** Handles medium format change. */
-    void sltMediumFormatChanged();
-
-    /** Handles target disk change. */
+    /** Handles command to open target disk. */
     void sltSelectLocationButtonClicked();
     void sltMediumPathChanged(const QString &strPath);
-    void sltMediumVariantChanged(qulonglong uVariant);
     void sltMediumSizeChanged(qulonglong uSize);
 
 private:
 
     /** Handles translation event. */
     virtual void retranslateUi() /* override */;
+    void prepare(qulonglong uSourceDiskLogicaSize);
 
     /** Prepares the page. */
     virtual void initializePage() /* override */;
@@ -69,16 +66,8 @@ private:
     /** Returns whether the page is valid. */
     virtual bool validatePage() /* override */;
 
-    void prepare(KDeviceType enmDeviceType, qulonglong uSourceDiskLogicaSize);
-
-    /** Sets the target disk name and location. */
-    void setTargetLocation();
-    void updateDiskWidgetsAfterMediumFormatChange();
-
-    UIDiskFormatsGroupBox *m_pFormatGroupBox;
-    UIDiskVariantGroupBox *m_pVariantGroupBox;
     UIMediumSizeAndPathGroupBox *m_pMediumSizePathGroupBox;
-    KDeviceType m_enmDeviceType;
+    QSet<QString> m_userModifiedParameters;
 };
 
-#endif /* !FEQT_INCLUDED_SRC_wizards_clonevd_UIWizardCloneVDPageExpert_h */
+#endif /* !FEQT_INCLUDED_SRC_wizards_clonevd_UIWizardCloneVDPathSizePage_h */
