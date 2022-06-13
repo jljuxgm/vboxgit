@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerFilterPanel.h 93990 2022-02-28 15:34:57Z vboxsync $ */
+/* $Id: UIVMLogViewerFilterPanel.h 94045 2022-03-01 15:01:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -28,6 +28,7 @@
 #include "UIVMLogViewerPanel.h"
 
 /* Forward declarations: */
+class QAbstractButton;
 class QButtonGroup;
 class QComboBox;
 class QFrame;
@@ -78,7 +79,7 @@ private slots:
     /** Clear all the filter terms and reset the filtering. */
     void sltClearFilterTerms();
     /** Executes the necessary code to handle filter's boolean operator change ('And', 'Or'). */
-    void sltOperatorButtonChanged(int buttonId);
+    void sltOperatorButtonChanged(QAbstractButton *pButton);
     void sltRemoveFilterTerm(const QString &termString);
 
 private:
