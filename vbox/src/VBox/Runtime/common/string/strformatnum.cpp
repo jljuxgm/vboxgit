@@ -1,4 +1,4 @@
-/* $Id: strformatnum.cpp 94257 2022-03-15 23:01:14Z vboxsync $ */
+/* $Id: strformatnum.cpp 94261 2022-03-16 01:34:29Z vboxsync $ */
 /** @file
  * IPRT - String Formatter, Single Numbers.
  */
@@ -354,7 +354,7 @@ RTDECL(ssize_t) RTStrFormatR80u2(char *pszBuf, size_t cbBuf, PCRTFLOAT80U2 pr80V
     RT_NOREF(cchWidth, cchPrecision);
 #ifdef RT_COMPILER_GROKS_64BIT_BITFIELDS
     return rtStrFormatR80Worker(pszBuf, cbBuf, pr80Value->sj64.fSign, pr80Value->sj64.fInteger,
-                                pr80Value->sj64.u63Fraction, pr80Value->sj64.uExponent, fFlags);
+                                pr80Value->sj64.uFraction, pr80Value->sj64.uExponent, fFlags);
 #else
     return rtStrFormatR80Worker(pszBuf, cbBuf, pr80Value->sj.fSign, pr80Value->sj.fInteger,
                                 RT_MAKE_U64(pr80Value->sj.u32FractionLow, pr80Value->sj.u31FractionHigh),
@@ -367,7 +367,7 @@ RTDECL(ssize_t) RTStrFormatR80(char *pszBuf, size_t cbBuf, PCRTFLOAT80U pr80Valu
                                signed int cchPrecision, uint32_t fFlags)
 {
     RT_NOREF(cchWidth, cchPrecision);
-    return rtStrFormatR80Worker(pszBuf, cbBuf, pr80Value->s.fSign, pr80Value->s.u64Mantissa >> 63,
-                                pr80Value->s.u64Mantissa & (RT_BIT_64(63) - 1), pr80Value->s.uExponent, fFlags);
+    return rtStrFormatR80Worker(pszBuf, cbBuf, pr80Value->s.fSign, pr80Value->s.uMantissa >> 63,
+                                pr80Value->s.uMantissa & (RT_BIT_64(63) - 1), pr80Value->s.uExponent, fFlags);
 }
 

@@ -1,4 +1,4 @@
-/* $Id: DBGFReg.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: DBGFReg.cpp 94261 2022-03-16 01:34:29Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Register Methods.
  */
@@ -571,7 +571,7 @@ DECLINLINE(void) dbgfR3RegValR80SetU64(PDBGFREGVAL pValue, uint64_t u64)
     /** @todo fixme  */
     pValue->r80.s.fSign       = 0;
     pValue->r80.s.uExponent   = 16383;
-    pValue->r80.s.u64Mantissa = u64;
+    pValue->r80.s.uMantissa   = u64;
 }
 
 
@@ -586,7 +586,7 @@ DECLINLINE(void) dbgfR3RegValR80SetU128(PDBGFREGVAL pValue, RTUINT128U u128)
     /** @todo fixme  */
     pValue->r80.s.fSign       = 0;
     pValue->r80.s.uExponent   = 16383;
-    pValue->r80.s.u64Mantissa = u128.s.Lo;
+    pValue->r80.s.uMantissa   = u128.s.Lo;
 }
 
 
@@ -599,7 +599,7 @@ DECLINLINE(void) dbgfR3RegValR80SetU128(PDBGFREGVAL pValue, RTUINT128U u128)
 DECLINLINE(uint64_t) dbgfR3RegValR80GetU64(PCDBGFREGVAL pValue)
 {
     /** @todo stupid, stupid MSC. */
-    return pValue->r80.s.u64Mantissa;
+    return pValue->r80.s.uMantissa;
 }
 
 
@@ -617,7 +617,7 @@ DECLINLINE(RTUINT128U) dbgfR3RegValR80GetU128(PCDBGFREGVAL pValue)
     uRet.s.Lo = (uint64_t)InVal.lrd;
     uRet.s.Hi = (uint64_t)InVal.lrd / _4G / _4G;
 #else
-    uRet.s.Lo = pValue->r80.s.u64Mantissa;
+    uRet.s.Lo = pValue->r80.s.uMantissa;
     uRet.s.Hi = 0;
 #endif
     return uRet;
