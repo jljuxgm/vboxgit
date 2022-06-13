@@ -1,4 +1,4 @@
-/* $Id: UIUserNamePasswordEditor.cpp 90152 2021-07-12 07:27:52Z vboxsync $ */
+/* $Id: UIUserNamePasswordEditor.cpp 90193 2021-07-14 17:40:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class implementation.
  */
@@ -358,7 +358,6 @@ void UIUserNamePasswordEditor::addLineEdit(int &iRow, QLabel *&pLabel, T *&pLine
 void UIUserNamePasswordEditor::prepare()
 {
     QGridLayout *pMainLayout = new QGridLayout;
-    pMainLayout->setContentsMargins(0, 0, 0, 0);
     pMainLayout->setColumnStretch(0, 0);
     pMainLayout->setColumnStretch(1, 1);
     if (!pMainLayout)

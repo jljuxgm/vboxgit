@@ -1,4 +1,4 @@
-/* $Id: UIHostnameDomainNameEditor.cpp 90159 2021-07-12 17:27:15Z vboxsync $ */
+/* $Id: UIHostnameDomainNameEditor.cpp 90193 2021-07-14 17:40:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHostnameDomainNameEditor class implementation.
  */
@@ -131,7 +131,6 @@ void UIHostnameDomainNameEditor::addLineEdit(int &iRow, QLabel *&pLabel, QILineE
 void UIHostnameDomainNameEditor::prepare()
 {
     QGridLayout *pMainLayout = new QGridLayout;
-    pMainLayout->setContentsMargins(0, 0, 0, 0);
     pMainLayout->setColumnStretch(0, 0);
     pMainLayout->setColumnStretch(1, 1);
     if (!pMainLayout)

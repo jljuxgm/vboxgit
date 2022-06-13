@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.h 90174 2021-07-14 07:27:04Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.h 90193 2021-07-14 17:40:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class declaration.
  */
@@ -38,6 +38,8 @@ class QLabel;
 class QLineEdit;
 class QVBoxLayout;
 class UIAdditionalUnattendedOptions;
+class UIDiskFormatsGroupBox;
+class UIDiskVariantGroupBox;
 class UIFilePathSelector;
 class UIGAInstallationGroupBox;
 class UIHostnameDomainNameEditor;
@@ -122,21 +124,16 @@ private:
     void setEnableNewDiskWidgets(bool fEnable);
     void setVirtualDiskFromDiskCombo();
 
-
-
     /** @name Variables
       * @{ */
         UIToolBox  *m_pToolBox;
-        QGroupBox *m_pDiskFormatGroupBox;
-        QGroupBox *m_pDiskVariantGroupBox;
+        UIDiskVariantGroupBox *m_pDiskVariantGroupBox;
         QLabel *m_pLocationLabel;
         QLineEdit *m_pLocationEditor;
         QIToolButton *m_pLocationOpenButton;
         QLabel *m_pMediumSizeEditorLabel;
         UIMediumSizeEditor *m_pMediumSizeEditor;
-        QButtonGroup *m_pFormatButtonGroup;
-        QCheckBox *m_pFixedCheckBox;
-        QCheckBox *m_pSplitBox;
+        UIDiskFormatsGroupBox *m_pFormatButtonGroup;
         UINameAndSystemEditor *m_pNameAndSystemEditor;
         QCheckBox *m_pSkipUnattendedCheckBox;
         QGridLayout *m_pNameAndSystemLayout;
