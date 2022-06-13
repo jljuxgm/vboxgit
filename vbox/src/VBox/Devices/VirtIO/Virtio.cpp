@@ -1,4 +1,4 @@
-/* $Id: Virtio.cpp 91954 2021-10-21 14:23:19Z vboxsync $ */
+/* $Id: Virtio.cpp 91956 2021-10-21 14:27:11Z vboxsync $ */
 /** @file
  * Virtio - Virtio Common Functions (VRing, VQueue, Virtio PCI)
  */
@@ -791,7 +791,7 @@ int vpciR3LoadExec(PPDMDEVINS pDevIns, PCPDMDEVHLPR3 pHlp, PVPCISTATE pThis, PSS
         }
     }
 
-    vpciR3DumpState(pDevIns, pThis, "vpciLoadExec");
+    vpciR3DumpState(pDevIns, pThis, "vpciLoadExec"); RT_NOREF(pDevIns);
 
     return VINF_SUCCESS;
 }
