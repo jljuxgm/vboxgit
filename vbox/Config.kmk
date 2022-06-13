@@ -1,4 +1,4 @@
-# $Id: Config.kmk 94073 2022-03-03 13:01:44Z vboxsync $
+# $Id: Config.kmk 94074 2022-03-03 13:19:56Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -7543,7 +7543,9 @@ if defined(VBOX_WITH_QTGUI) || defined(VBOX_WITH_NLS)
 
  ifeq ($(KBUILD_TARGET), darwin)
   VBOX_QT_MOD := QtCore QtGui QtWidgets QtPrintSupport
-  ifndef VBOX_WITH_QT6
+  ifdef VBOX_WITH_QT6
+   VBOX_QT_MOD += QtStateMachine QtCore5Compat
+  else
    VBOX_QT_MOD += QtMacExtras
   endif
   ifdef VBOX_GUI_USE_QGL
@@ -8896,7 +8898,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 94073 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 94074 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
