@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 85220 2020-07-11 15:42:34Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 89981 2021-06-30 14:45:38Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -208,21 +208,6 @@ typedef struct DESTFILEENTRY
 typedef std::map< Utf8Str, std::vector<DESTFILEENTRY> > DESTDIRMAP, *PDESTDIRMAP;
 typedef std::map< Utf8Str, std::vector<DESTFILEENTRY> >::iterator DESTDIRMAPITER, *PDESTDIRMAPITER;
 
-
-/**
- * RTGetOpt-IDs for the guest execution control command line.
- */
-enum GETOPTDEF_EXEC
-{
-    GETOPTDEF_EXEC_IGNOREORPHANEDPROCESSES = 1000,
-    GETOPTDEF_EXEC_NO_PROFILE,
-    GETOPTDEF_EXEC_OUTPUTFORMAT,
-    GETOPTDEF_EXEC_DOS2UNIX,
-    GETOPTDEF_EXEC_UNIX2DOS,
-    GETOPTDEF_EXEC_WAITFOREXIT,
-    GETOPTDEF_EXEC_WAITFORSTDOUT,
-    GETOPTDEF_EXEC_WAITFORSTDERR
-};
 
 enum kStreamTransform
 {
