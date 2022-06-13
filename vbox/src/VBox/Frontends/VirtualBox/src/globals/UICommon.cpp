@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 91713 2021-10-13 12:13:47Z vboxsync $ */
+/* $Id: UICommon.cpp 91760 2021-10-15 11:06:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -2669,8 +2669,11 @@ bool UICommon::isWddmCompatibleOsType(const QString &strGuestOSTypeId)
            || strGuestOSTypeId.startsWith("Windows8")
            || strGuestOSTypeId.startsWith("Windows81")
            || strGuestOSTypeId.startsWith("Windows10")
+           || strGuestOSTypeId.startsWith("Windows11")
            || strGuestOSTypeId.startsWith("Windows2008")
-           || strGuestOSTypeId.startsWith("Windows2012");
+           || strGuestOSTypeId.startsWith("Windows2012")
+           || strGuestOSTypeId.startsWith("Windows2016")
+           || strGuestOSTypeId.startsWith("Windows2019");
 }
 #endif /* VBOX_WITH_3D_ACCELERATION */
 
