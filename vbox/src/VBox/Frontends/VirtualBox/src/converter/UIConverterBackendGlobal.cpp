@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackendGlobal.cpp 92400 2021-11-12 15:07:42Z vboxsync $ */
+/* $Id: UIConverterBackendGlobal.cpp 92467 2021-11-17 09:03:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConverterBackendGlobal implementation.
  */
@@ -1618,6 +1618,7 @@ template<> QString toInternalString(const UIToolType &enmToolType)
         case UIToolType_Snapshots:          strResult = "Snapshots"; break;
         case UIToolType_Logs:               strResult = "Logs"; break;
         case UIToolType_VMActivity:         strResult = "Activity"; break;
+        case UIToolType_VISOCreator:        strResult = "VISOCreator"; break;
         default:
         {
             AssertMsgFailed(("No text for tool type=%d", enmToolType));
@@ -1643,7 +1644,8 @@ template<> UIToolType fromInternalString<UIToolType>(const QString &strToolType)
     keys << "Details";       values << UIToolType_Details;
     keys << "Snapshots";     values << UIToolType_Snapshots;
     keys << "Logs";          values << UIToolType_Logs;
-    keys << "Activity";   values << UIToolType_VMActivity;
+    keys << "Activity";      values << UIToolType_VMActivity;
+    keys << "VISOCreator";   values << UIToolType_VISOCreator;
     /* Invalid type for unknown words: */
     if (!keys.contains(strToolType, Qt::CaseInsensitive))
         return UIToolType_Invalid;

@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.h 92415 2021-11-14 16:48:02Z vboxsync $ */
+/* $Id: UIVisoCreator.h 92467 2021-11-17 09:03:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator class declaration.
  */
@@ -45,7 +45,7 @@ class UIVisoConfigurationPanel;
 /** A QIMainDialog extension. It hosts two UIVisoBrowserBase extensions, one for host and one
   * for VISO file system. It has the main menu, main toolbar, and a vertical toolbar and corresponding
   * actions. */
-class UIVisoCreatorWidget : public QIWithRetranslateUI<QWidget>
+class SHARED_LIBRARY_STUFF UIVisoCreatorWidget : public QIWithRetranslateUI<QWidget>
 {
     Q_OBJECT;
 
@@ -167,7 +167,7 @@ private:
 };
 
 
-class UIVisoCreatorDialog : public QIWithRetranslateUI<QIMainDialog>
+class SHARED_LIBRARY_STUFF UIVisoCreatorDialog : public QIWithRetranslateUI<QIMainDialog>
 {
     Q_OBJECT;
 

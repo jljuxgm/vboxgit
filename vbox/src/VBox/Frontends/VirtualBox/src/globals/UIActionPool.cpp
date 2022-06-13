@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.cpp 92423 2021-11-15 12:37:17Z vboxsync $ */
+/* $Id: UIActionPool.cpp 92467 2021-11-17 09:03:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPool class implementation.
  */
@@ -2307,7 +2307,7 @@ protected:
     /** Handles translation event. */
     virtual void retranslateUi() /* override */
     {
-        setName(QApplication::translate("UIActionPool", "Configuration"));
+        setName(QApplication::translate("UIActionPool", "Options"));
         setShortcutScope(QApplication::translate("UIActionPool", "VISO Creator"));
         setStatusTip(QApplication::translate("UIActionPool", "Open panel for VISO Creator options"));
         setToolTip(QApplication::translate("UIActionPool", "Open Options Panel")

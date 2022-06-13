@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityToolWidget.cpp 89096 2021-05-17 13:54:10Z vboxsync $ */
+/* $Id: UIVMActivityToolWidget.cpp 92467 2021-11-17 09:03:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMActivityToolWidget class implementation.
  */
@@ -112,10 +112,10 @@ void UIVMActivityToolWidget::setMachines(const QVector<QUuid> &machineIds)
     }
     m_machineIds = machineIds;
 
-    hide();
+    //hide();
     removeTabs(unselectedMachines);
     addTabs(newSelections);
-    show();
+    //show();
 }
 
 void UIVMActivityToolWidget::prepareActions()
@@ -163,22 +163,19 @@ void UIVMActivityToolWidget::loadSettings()
 void UIVMActivityToolWidget::removeTabs(const QVector<QUuid> &machineIdsToRemove)
 {
     QVector<UIVMActivityMonitor*> removeList;
-    QVector<UIVMActivityMonitor*> keepList;
-    for (int i = 0; i < count(); ++i)
+
+    for (int i = count() - 1; i >= 0; --i)
     {
         UIVMActivityMonitor *pMonitor = qobject_cast<UIVMActivityMonitor*>(widget(i));
         if (!pMonitor)
             continue;
         if (machineIdsToRemove.contains(pMonitor->machineId()))
+        {
             removeList << pMonitor;
-        else
-            keepList << pMonitor;
+            removeTab(i);
+        }
     }
-    clear();
     qDeleteAll(removeList.begin(), removeList.end());
-
-    foreach (UIVMActivityMonitor *pMonitor, keepList)
-        addTab(pMonitor, pMonitor->machineName());
 }
 
 void UIVMActivityToolWidget::addTabs(const QVector<QUuid> &machineIdsToAdd)

@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.cpp 88540 2021-04-15 12:56:11Z vboxsync $ */
+/* $Id: UIToolsModel.cpp 92467 2021-11-17 09:03:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class implementation.
  */
@@ -462,6 +462,7 @@ void UIToolsModel::retranslateUi()
             case UIToolType_Snapshots:            pItem->reconfigure(tr("Snapshots")); break;
             case UIToolType_Logs:                 pItem->reconfigure(tr("Logs")); break;
             case UIToolType_VMActivity:           pItem->reconfigure(tr("Activity")); break;
+            case UIToolType_VISOCreator:          pItem->reconfigure(tr("VISO")); break;
             default: break;
         }
     }
@@ -535,8 +536,12 @@ void UIToolsModel::prepareItems()
     m_items << new UIToolsItem(scene(), UIToolClass_Machine, UIToolType_Logs, QString(),
                                UIIconPool::iconSet(":/vm_show_logs_24px.png", ":/vm_show_logs_disabled_24px.png"));
 
-    /* Performance: */
+    /* Activity: */
     m_items << new UIToolsItem(scene(), UIToolClass_Machine, UIToolType_VMActivity, QString(),
+                               UIIconPool::iconSet(":/performance_monitor_24px.png", ":/performance_monitor_disabled_24px.png"));
+
+    /* VISO Creator: */
+    m_items << new UIToolsItem(scene(), UIToolClass_Machine, UIToolType_VISOCreator, QString(),
                                UIIconPool::iconSet(":/performance_monitor_24px.png", ":/performance_monitor_disabled_24px.png"));
 }
 

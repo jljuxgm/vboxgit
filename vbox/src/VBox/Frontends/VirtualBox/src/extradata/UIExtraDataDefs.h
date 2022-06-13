@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 92437 2021-11-15 17:32:54Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 92467 2021-11-17 09:03:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -933,6 +933,7 @@ enum UIToolType
     UIToolType_Snapshots,
     UIToolType_Logs,
     UIToolType_VMActivity,
+    UIToolType_VISOCreator
 };
 Q_DECLARE_METATYPE(UIToolType);
 
