@@ -1,4 +1,4 @@
-/* $Id: os2_util.c 93149 2022-01-08 15:59:30Z vboxsync $ */
+/* $Id: os2_util.c 93231 2022-01-14 02:05:23Z vboxsync $ */
 /** @file
  * Os2Util - Unattended Installation Helper Utility for OS/2.
  *
@@ -34,6 +34,9 @@
 *   Defined Constants And Macros                                                                                                 *
 *********************************************************************************************************************************/
 #define IS_BLANK(ch)  ((ch) == ' ' || (ch) == '\t' || (ch) == '\r' || (ch) == '\n')
+
+/** NIL HQUEUE value. */
+#define NIL_HQUEUE  (~(HQUEUE)0)
 
 
 /*********************************************************************************************************************************
@@ -281,7 +284,7 @@ static void DoWait(PID pidChild, USHORT idSession, HQUEUE hQueue, PRESULTCODES p
     /*
      * Can we use DosCwait?
      */
-    if (idSession == 0 && hQueue == NULL)
+    if (hQueue == NIL_HQUEUE)
     {
         for (;;)
         {
@@ -411,7 +414,7 @@ static void CopyFileToBackdoorAndQuit(PSZ psz, BOOL fLongOpt, PSZ pszBuf, USHORT
 /** Displays version string and quits.   */
 static DECL_NO_RETURN(void) ShowVersionAndQuit(void)
 {
-    CHAR szVer[] = "$Rev: 93149 $\r\n";
+    CHAR szVer[] = "$Rev: 93231 $\r\n";
     USHORT usIgnored;
     DosWrite(g_hStdOut, szVer, sizeof(szVer) - 1, &usIgnored);
     DosExit(EXIT_PROCESS, 0);
@@ -597,7 +600,7 @@ void Os2UtilMain(USHORT uSelEnv, USHORT offCmdLine)
     USHORT      uExeType;
     USHORT      idSession      = 0;
     PID         pidChild       = 0;
-    HQUEUE      hQueue         = ~(HQUEUE)0;
+    HQUEUE      hQueue         = NIL_HQUEUE;
     CHAR        szQueueName[64];
     unsigned    cAsZero        = 0;
     USHORT      auAsZero[16];
