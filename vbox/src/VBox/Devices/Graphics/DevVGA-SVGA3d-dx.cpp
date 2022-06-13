@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-dx.cpp 91375 2021-09-27 06:46:37Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-dx.cpp 91441 2021-09-28 17:37:53Z vboxsync $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - Common code for DX backend interface.
  */
@@ -1580,8 +1580,8 @@ int vmsvga3dDXDefineStreamOutput(PVGASTATECC pThisCC, uint32_t idDXContext, SVGA
     pEntry->numOutputStreamEntries = pCmd->numOutputStreamEntries;
     memcpy(pEntry->decl, pCmd->decl, sizeof(pEntry->decl));
     memcpy(pEntry->streamOutputStrideInBytes, pCmd->streamOutputStrideInBytes, sizeof(pEntry->streamOutputStrideInBytes));
-    pEntry->rasterizedStream = pCmd->rasterizedStream;
-    pEntry->numOutputStreamStrides;
+    pEntry->rasterizedStream = 0; // Apparently invalid in this command: pCmd->rasterizedStream;
+    pEntry->numOutputStreamStrides = 0;
     pEntry->mobid = SVGA_ID_INVALID;
     pEntry->offsetInBytes = 0;
     pEntry->usesMob = 0;
@@ -1622,7 +1622,7 @@ int vmsvga3dDXDestroyStreamOutput(PVGASTATECC pThisCC, uint32_t idDXContext, SVG
 }
 
 
-int vmsvga3dDXSetStreamOutput(PVGASTATECC pThisCC, uint32_t idDXContext)
+int vmsvga3dDXSetStreamOutput(PVGASTATECC pThisCC, uint32_t idDXContext, SVGA3dCmdDXSetStreamOutput const *pCmd)
 {
     int rc;
     PVMSVGAR3STATE const pSvgaR3State = pThisCC->svga.pSvgaR3State;
@@ -1634,7 +1634,17 @@ int vmsvga3dDXSetStreamOutput(PVGASTATECC pThisCC, uint32_t idDXContext)
     rc = vmsvga3dDXContextFromCid(p3dState, idDXContext, &pDXContext);
     AssertRCReturn(rc, rc);
 
-    rc = pSvgaR3State->pFuncsDX->pfnDXSetStreamOutput(pThisCC, pDXContext);
+    SVGA3dStreamOutputId const soid = pCmd->soid;
+
+    ASSERT_GUEST_RETURN(pDXContext->cot.paStreamOutput, VERR_INVALID_STATE);
+    ASSERT_GUEST_RETURN(   soid == SVGA_ID_INVALID
+                        || soid < pDXContext->cot.cStreamOutput, VERR_INVALID_PARAMETER);
+    RT_UNTRUSTED_VALIDATED_FENCE();
+
+    rc = pSvgaR3State->pFuncsDX->pfnDXSetStreamOutput(pThisCC, pDXContext, soid);
+    if (RT_SUCCESS(rc))
+        pDXContext->svgaDXContext.streamOut.soid = soid;
+
     return rc;
 }
 

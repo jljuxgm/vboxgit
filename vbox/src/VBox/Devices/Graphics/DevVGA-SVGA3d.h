@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d.h 91375 2021-09-27 06:46:37Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d.h 91441 2021-09-28 17:37:53Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device - 3D part.
  */
@@ -453,7 +453,7 @@ typedef struct
     DECLCALLBACKMEMBER(int, pfnDXBindShader,                (PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXContext, PVMSVGA3DSHADER pShader, void const *pvShaderBytecode));
     DECLCALLBACKMEMBER(int, pfnDXDefineStreamOutput,        (PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXContext, SVGA3dStreamOutputId soid, SVGACOTableDXStreamOutputEntry const *pEntry));
     DECLCALLBACKMEMBER(int, pfnDXDestroyStreamOutput,       (PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXContext, SVGA3dStreamOutputId soid));
-    DECLCALLBACKMEMBER(int, pfnDXSetStreamOutput,           (PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXContext));
+    DECLCALLBACKMEMBER(int, pfnDXSetStreamOutput,           (PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXContext, SVGA3dStreamOutputId soid));
     DECLCALLBACKMEMBER(int, pfnDXSetCOTable,                (PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXContext, SVGACOTableType type, uint32_t cValidEntries));
     DECLCALLBACKMEMBER(int, pfnDXBufferCopy,                (PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXContext));
     DECLCALLBACKMEMBER(int, pfnDXSurfaceCopyAndReadback,    (PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXContext));
@@ -582,7 +582,7 @@ int vmsvga3dDXDestroyShader(PVGASTATECC pThisCC, uint32_t idDXContext, SVGA3dCmd
 int vmsvga3dDXBindShader(PVGASTATECC pThisCC, SVGA3dCmdDXBindShader const *pCmd, PVMSVGAMOB pMob);
 int vmsvga3dDXDefineStreamOutput(PVGASTATECC pThisCC, uint32_t idDXContext, SVGA3dCmdDXDefineStreamOutput const *pCmd);
 int vmsvga3dDXDestroyStreamOutput(PVGASTATECC pThisCC, uint32_t idDXContext, SVGA3dCmdDXDestroyStreamOutput const *pCmd);
-int vmsvga3dDXSetStreamOutput(PVGASTATECC pThisCC, uint32_t idDXContext);
+int vmsvga3dDXSetStreamOutput(PVGASTATECC pThisCC, uint32_t idDXContext, SVGA3dCmdDXSetStreamOutput const *pCmd);
 int vmsvga3dDXSetCOTable(PVGASTATECC pThisCC, SVGA3dCmdDXSetCOTable const *pCmd, PVMSVGAMOB pMob);
 int vmsvga3dDXReadbackCOTable(PVGASTATECC pThisCC, SVGA3dCmdDXReadbackCOTable const *pCmd);
 int vmsvga3dDXBufferCopy(PVGASTATECC pThisCC, uint32_t idDXContext);
