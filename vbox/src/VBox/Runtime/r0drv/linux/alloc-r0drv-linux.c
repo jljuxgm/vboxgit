@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv-linux.c 90516 2021-08-04 12:39:32Z vboxsync $ */
+/* $Id: alloc-r0drv-linux.c 90519 2021-08-04 13:27:10Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, Linux.
  */
@@ -38,7 +38,7 @@
 
 
 #if (defined(RT_ARCH_AMD64) || defined(DOXYGEN_RUNNING)) && !defined(RTMEMALLOC_EXEC_HEAP)
-# if RTLNX_VER_MIN(2,6,23) && RTLNX_VER_MAX(5,8,0) && !RTLNX_RHEL_MAJ_PREREQ(8,5)
+# if RTLNX_VER_MIN(2,6,23) && RTLNX_VER_MAX(5,8,0)
 /**
  * Starting with 2.6.23 we can use __get_vm_area and map_vm_area to allocate
  * memory in the moduel range.  This is preferrable to the exec heap below.
