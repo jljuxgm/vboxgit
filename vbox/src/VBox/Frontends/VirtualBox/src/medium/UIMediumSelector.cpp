@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.cpp 91593 2021-10-06 15:12:58Z vboxsync $ */
+/* $Id: UIMediumSelector.cpp 92276 2021-11-08 17:33:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class implementation.
  */
@@ -153,8 +153,11 @@ void UIMediumSelector::retranslateUi()
 
 void UIMediumSelector::configure()
 {
-    /* Apply window icons: */
+#ifndef VBOX_WS_MAC
+    /* Apply window icon, not for macOS, since in Qt 5.6.x applying
+     * icon for non-top-level modal window (macOS Sheet) may cause crash: */
     setWindowIcon(UIIconPool::iconSetFull(":/media_manager_32px.png", ":/media_manager_16px.png"));
+#endif /* !VBOX_WS_MAC */
     setTitle();
     prepareWidgets();
     prepareActions();
