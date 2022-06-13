@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditionsW2KXP.nsh 93115 2022-01-01 11:31:46Z vboxsync $
+; $Id: VBoxGuestAdditionsW2KXP.nsh 93262 2022-01-17 10:12:47Z vboxsync $
 ;; @file
 ; VBoxGuestAdditionsW2KXP.nsh - Guest Additions installation for Windows 2000/XP.
 ;
@@ -308,8 +308,9 @@ Function W2K_InstallFiles
   !if $%BUILD_TARGET_ARCH% == "x86"
     ; On x86 we have to use a different shared folder driver linked against an older RDBSS for Windows 7 and older.
     ${If} $g_strWinVersion == "2000"
-    ${OrIf} $g_strWinVersion == "Vista"
     ${OrIf} $g_strWinVersion == "XP"
+    ${OrIf} $g_strWinVersion == "2003"
+    ${OrIf} $g_strWinVersion == "Vista"
     ${OrIf} $g_strWinVersion == "7"
       !insertmacro ReplaceDLL "$%PATH_OUT%\bin\additions\VBoxSFW2K.sys" "$g_strSystemDir\drivers\VBoxSF.sys" "$INSTDIR"
     ${Else}
