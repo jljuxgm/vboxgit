@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 92269 2021-11-08 14:37:50Z vboxsync $
+# $Id: vboxwrappers.py 92275 2021-11-08 17:18:24Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 92269 $"
+__version__ = "$Revision: 92275 $"
 
 
 # Standard Python imports.
@@ -2368,7 +2368,6 @@ class SessionWrapper(TdTaskBase):
 
         if self.fpApiVer >= 7.0:
             # Needed to reach the host (localhost) from the guest. See xTracker #9896.
-            # Note: Do this right *after* the VM has been started.
             for iSlot in range(0, self.oVBox.systemProperties.getMaxNetworkAdapters(self.o.machine.chipsetType)):
                 try:
                     self.setNicLocalhostReachable(True, iSlot);
