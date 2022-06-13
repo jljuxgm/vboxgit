@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVM.cpp 90731 2021-08-18 17:28:18Z vboxsync $ */
+/* $Id: UIWizardCloneVM.cpp 90739 2021-08-19 09:14:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVM class implementation.
  */
@@ -21,9 +21,9 @@
 #include "UINotificationCenter.h"
 #include "UIProgressObject.h"
 #include "UIWizardCloneVM.h"
-#include "UIWizardCloneVMPageBasic1.h"
-#include "UIWizardCloneVMPageBasic2.h"
-#include "UIWizardCloneVMPageBasic3.h"
+#include "UIWizardCloneVMNamePathPageBasic.h"
+#include "UIWizardCloneVMTypePageBasic.h"
+#include "UIWizardCloneVMModePageBasic.h"
 #include "UIWizardCloneVMPageExpert.h"
 
 /* COM includes: */
@@ -282,10 +282,10 @@ void UIWizardCloneVM::populatePages()
     {
         case WizardMode_Basic:
         {
-            addPage(new UIWizardCloneVMPageBasic1(m_strCloneName, strDefaultMachineFolder, m_strGroup));
-            addPage(new UIWizardCloneVMPageBasic2(m_snapshot.isNull()));
+            addPage(new UIWizardCloneVMNamePathPageBasic(m_strCloneName, strDefaultMachineFolder, m_strGroup));
+            addPage(new UIWizardCloneVMTypePageBasic(m_snapshot.isNull()));
             if (m_machine.GetSnapshotCount() > 0)
-                m_iCloneModePageIndex = addPage(new UIWizardCloneVMPageBasic3(m_snapshot.isNull() ? false : m_snapshot.GetChildrenCount() > 0));
+                m_iCloneModePageIndex = addPage(new UIWizardCloneVMModePageBasic(m_snapshot.isNull() ? false : m_snapshot.GetChildrenCount() > 0));
             break;
         }
         case WizardMode_Expert:
@@ -303,6 +303,4 @@ void UIWizardCloneVM::populatePages()
             break;
         }
     }
-    /* Call to base-class: */
-    //UINativeWizard::prepare();
 }

@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMPageExpert.cpp 90713 2021-08-18 10:00:51Z vboxsync $ */
+/* $Id: UIWizardCloneVMPageExpert.cpp 90739 2021-08-19 09:14:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMPageExpert class implementation.
  */
@@ -29,7 +29,7 @@
 #include "UIFilePathSelector.h"
 #include "UIWizardCloneVMPageExpert.h"
 #include "UIWizardCloneVM.h"
-#include "UIWizardCloneVMPageBasic1.h"
+#include "UIWizardCloneVMNamePathPageBasic.h"
 
 /* COM includes: */
 #include "CSystemProperties.h"
@@ -104,7 +104,7 @@ void UIWizardCloneVMPageExpert::initializePage()
         m_pNamePathGroupBox->setFocus();
         cloneVMWizardPropertySet(CloneName, m_pNamePathGroupBox->cloneName());
         cloneVMWizardPropertySet(CloneFilePath,
-                                 UIWizardCloneVMNamePage::composeCloneFilePath(m_pNamePathGroupBox->cloneName(), m_strGroup, m_pNamePathGroupBox->clonePath()));
+                                 UIWizardCloneVMNamePathPage::composeCloneFilePath(m_pNamePathGroupBox->cloneName(), m_strGroup, m_pNamePathGroupBox->clonePath()));
     }
     if (m_pAdditionalOptionsGroupBox)
     {
@@ -135,7 +135,7 @@ void UIWizardCloneVMPageExpert::sltCloneNameChanged(const QString &strCloneName)
     AssertReturnVoid(m_pNamePathGroupBox);
     cloneVMWizardPropertySet(CloneName, strCloneName);
     cloneVMWizardPropertySet(CloneFilePath,
-                             UIWizardCloneVMNamePage::composeCloneFilePath(strCloneName, m_strGroup, m_pNamePathGroupBox->clonePath()));
+                             UIWizardCloneVMNamePathPage::composeCloneFilePath(strCloneName, m_strGroup, m_pNamePathGroupBox->clonePath()));
     emit completeChanged();
 }
 
@@ -143,7 +143,7 @@ void UIWizardCloneVMPageExpert::sltClonePathChanged(const QString &strClonePath)
 {
     AssertReturnVoid(m_pNamePathGroupBox);
     cloneVMWizardPropertySet(CloneFilePath,
-                             UIWizardCloneVMNamePage::composeCloneFilePath(m_pNamePathGroupBox->cloneName(), m_strGroup, strClonePath));
+                             UIWizardCloneVMNamePathPage::composeCloneFilePath(m_pNamePathGroupBox->cloneName(), m_strGroup, strClonePath));
     emit completeChanged();
 }
 
