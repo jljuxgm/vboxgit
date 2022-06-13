@@ -1,4 +1,4 @@
-# $Id: Config.kmk 94482 2022-04-05 22:42:01Z vboxsync $
+# $Id: Config.kmk 94491 2022-04-06 11:25:19Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -809,7 +809,7 @@ VBOX_WITH_VALIDATIONKIT = 1
 # Include unit tests (testcases) on the Validation Kit .ISO
 # so that we can perform testing on older platforms which we don't support
 # on the host anymore.
-if1of ($(KBUILD_TARGET), darwin linux win)
+if1of ($(KBUILD_TARGET), darwin.amd64 linux solaris win)
  VBOX_WITH_VALIDATIONKIT_UNITTESTS_PACKING = 1
 endif
 # Set if we should ship the audio test from the Validation Kit with the host installer.
@@ -8954,7 +8954,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 94482 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 94491 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
