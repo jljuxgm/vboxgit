@@ -1,4 +1,4 @@
-/* $Id: UINotificationObject.cpp 90606 2021-08-10 16:07:13Z vboxsync $ */
+/* $Id: UINotificationObject.cpp 90625 2021-08-11 12:40:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINotificationObject class implementation.
  */
@@ -201,6 +201,7 @@ void UINotificationDownloader::sltHandleProgressFailed(const QString &strError)
 
 UINotificationNewVersionChecker::UINotificationNewVersionChecker()
     : m_pChecker(0)
+    , m_fDone(false)
 {
 }
 
@@ -208,6 +209,11 @@ UINotificationNewVersionChecker::~UINotificationNewVersionChecker()
 {
     delete m_pChecker;
     m_pChecker = 0;
+}
+
+bool UINotificationNewVersionChecker::isDone() const
+{
+    return m_fDone;
 }
 
 QString UINotificationNewVersionChecker::error() const
@@ -266,6 +272,7 @@ void UINotificationNewVersionChecker::sltHandleProgressFinished()
 {
     delete m_pChecker;
     m_pChecker = 0;
+    m_fDone = true;
     emit sigProgressFinished();
 }
 
