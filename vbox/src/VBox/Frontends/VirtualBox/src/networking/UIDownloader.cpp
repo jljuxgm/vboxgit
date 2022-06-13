@@ -1,4 +1,4 @@
-/* $Id: UIDownloader.cpp 90551 2021-08-06 14:07:10Z vboxsync $ */
+/* $Id: UIDownloader.cpp 90626 2021-08-11 12:48:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDownloader class implementation.
  */
@@ -83,16 +83,12 @@ void UIDownloader::processNetworkReplyFailed(const QString &strError)
 {
     /* Notify listeners: */
     emit sigProgressFailed(strError);
-    /* Delete downloader: */
-    deleteLater();
 }
 
 void UIDownloader::processNetworkReplyCanceled(UINetworkReply *)
 {
     /* Notify listeners: */
     emit sigProgressCanceled();
-    /* Delete downloader: */
-    deleteLater();
 }
 
 void UIDownloader::processNetworkReplyFinished(UINetworkReply *pNetworkReply)
@@ -135,8 +131,6 @@ void UIDownloader::handleAcknowledgingResult(UINetworkReply *pNetworkReply)
     {
         /* Notify listeners: */
         emit sigProgressFinished();
-        /* Delete downloader: */
-        deleteLater();
     }
 }
 
@@ -155,8 +149,6 @@ void UIDownloader::handleDownloadingResult(UINetworkReply *pNetworkReply)
     {
         /* Notify listeners: */
         emit sigProgressFinished();
-        /* Delete downloader: */
-        deleteLater();
     }
 }
 
@@ -167,6 +159,4 @@ void UIDownloader::handleVerifyingResult(UINetworkReply *pNetworkReply)
 
     /* Notify listeners: */
     emit sigProgressFinished();
-    /* Delete downloader: */
-    deleteLater();
 }

@@ -1,4 +1,4 @@
-/* $Id: UIUpdateManager.cpp 90620 2021-08-11 07:51:02Z vboxsync $ */
+/* $Id: UIUpdateManager.cpp 90626 2021-08-11 12:48:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUpdateManager class implementation.
  */
@@ -207,8 +207,12 @@ void UIUpdateStepVirtualBoxExtensionPack::exec()
     /* After downloading finished => propose to install the Extension Pack: */
     connect(pNotification, &UINotificationDownloaderExtensionPack::sigExtensionPackDownloaded,
             this, &UIUpdateStepVirtualBoxExtensionPack::sltHandleDownloadedExtensionPack);
-    /* Also, destroyed downloader is a signal to finish the step: */
-    connect(pNotification, &UINotificationDownloaderExtensionPack::sigDownloaderDestroyed,
+    /* Handle any signal as step-finished: */
+    connect(pNotification, &UINotificationDownloaderExtensionPack::sigProgressFailed,
+            this, &UIUpdateStepVirtualBoxExtensionPack::sigStepFinished);
+    connect(pNotification, &UINotificationDownloaderExtensionPack::sigProgressCanceled,
+            this, &UIUpdateStepVirtualBoxExtensionPack::sigStepFinished);
+    connect(pNotification, &UINotificationDownloaderExtensionPack::sigProgressFinished,
             this, &UIUpdateStepVirtualBoxExtensionPack::sigStepFinished);
     /* Append and start notification: */
     gpNotificationCenter->append(pNotification);
