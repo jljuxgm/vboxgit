@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 93604 2022-02-04 14:34:26Z vboxsync $
+# $Id: Makefile.kmk 93605 2022-02-04 14:38:36Z vboxsync $
 ## @file
 # Sub-Makefile for the Windows Guest Additions Installer.
 #
@@ -275,7 +275,6 @@ $(PATH_OUT)/repackadd/$(VBOX_DRIVERS_PACK_NAME): \
 	$(RM_EXT) -f $(PATH_OUT)/repackadd/*.rpt
 	$(EXEC_X86_WIN32) cmd /c $(PATH_OUT)/repackadd/PackDriversForSubmission.cmd -b $(PATH_STAGE_BIN) -a $(KBUILD_TARGET_ARCH) -x -n --no-main --ga -o $(PATH_OUT)/repackadd/$(VBOX_DRIVERS_PACK_NAME)
 endif #VBOX_GA_ATTESTATION_SIGNING
-	
 
 #
 # Repackaging scripts and files.
