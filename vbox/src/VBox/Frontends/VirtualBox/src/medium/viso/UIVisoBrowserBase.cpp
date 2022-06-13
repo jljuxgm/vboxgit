@@ -1,4 +1,4 @@
-/* $Id: UIVisoBrowserBase.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIVisoBrowserBase.cpp 90901 2021-08-26 08:12:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoBrowserBase class implementation.
  */
@@ -192,7 +192,6 @@ void UIVisoBrowserBase::prepareObjects()
     {
         m_pTreeView->hide();
         m_pTreeView->setSelectionMode(QAbstractItemView::SingleSelection);
-        //m_pTreeView->setAlternatingRowColors(true);
         m_pTreeView->header()->hide();
         m_pTreeView->header()->setSectionResizeMode(QHeaderView::ResizeToContents);
         m_pTreeView->setFrameStyle(QFrame::Panel | QFrame::Plain);

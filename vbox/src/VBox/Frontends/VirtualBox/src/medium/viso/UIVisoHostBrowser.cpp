@@ -1,4 +1,4 @@
-/* $Id: UIVisoHostBrowser.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIVisoHostBrowser.cpp 90901 2021-08-26 08:12:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoHostBrowser class implementation.
  */
@@ -153,7 +153,6 @@ void UIVisoHostBrowser::prepareObjects()
     {
         m_pTableView->setContextMenuPolicy(Qt::CustomContextMenu);
         m_pMainLayout->addWidget(m_pTableView, 1, 0, 8, 4);
-        m_pTableView->setSelectionMode(QAbstractItemView::ContiguousSelection);
         m_pTableView->setShowGrid(false);
         m_pTableView->setSelectionBehavior(QAbstractItemView::SelectRows);
         m_pTableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
