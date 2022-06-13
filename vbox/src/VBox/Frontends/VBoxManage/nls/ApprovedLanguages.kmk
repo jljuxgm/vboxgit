@@ -1,4 +1,4 @@
-# $Id: ApprovedLanguages.kmk 92406 2021-11-12 16:37:52Z vboxsync $
+# $Id: ApprovedLanguages.kmk 92407 2021-11-12 16:38:49Z vboxsync $
 ## @file
 # ApprovedLanguages.kmk - List of approved VBoxManage translations.
 #
@@ -16,4 +16,4 @@
 #
 
 # The list of approved VBoxManage languages.
-VBOX_APPROVED_MAIN_LANGUAGES :=
+VBOX_APPROVED_VBOXMANAGE_LANGUAGES :=
