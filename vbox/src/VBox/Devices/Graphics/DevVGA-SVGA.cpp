@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 89183 2021-05-19 20:41:10Z vboxsync $ */
+/* $Id: DevVGA-SVGA.cpp 90058 2021-07-06 11:34:44Z vboxsync $ */
 /** @file
  * VMware SVGA device.
  *
@@ -6519,7 +6519,8 @@ DECLCALLBACK(void) vmsvgaR3PowerOn(PPDMDEVINS pDevIns)
             /* Initialize FIFO 3D capabilities. */
             vmsvgaR3InitFifo3DCaps(pThis, pThisCC);
         }
-        else {
+        else
+        {
             LogRel(("VMSVGA3d: 3D support disabled! (vmsvga3dPowerOn -> %Rrc)\n", rc));
             pThis->svga.f3DEnabled = false;
         }
