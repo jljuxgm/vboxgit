@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 87746 2021-02-13 02:56:04Z vboxsync $ */
+/* $Id: SUPDrv.cpp 90419 2021-07-30 00:37:38Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -448,6 +448,7 @@ static SUPFUNC g_aFunctions[] =
     { "RTThreadPreemptIsPendingTrusty",         (void *)(uintptr_t)RTThreadPreemptIsPendingTrusty },
     { "RTThreadPreemptIsPossible",              (void *)(uintptr_t)RTThreadPreemptIsPossible },
     { "RTThreadPreemptRestore",                 (void *)(uintptr_t)RTThreadPreemptRestore },
+    { "RTThreadQueryTerminationStatus",         (void *)(uintptr_t)RTThreadQueryTerminationStatus },
     { "RTThreadSelf",                           (void *)(uintptr_t)RTThreadSelf },
     { "RTThreadSelfName",                       (void *)(uintptr_t)RTThreadSelfName },
     { "RTThreadSleep",                          (void *)(uintptr_t)RTThreadSleep },
