@@ -1,4 +1,4 @@
-/* $Id: PDMAllCritSectRw.cpp 90348 2021-07-26 21:01:38Z vboxsync $ */
+/* $Id: PDMAllCritSectRw.cpp 90385 2021-07-28 23:02:41Z vboxsync $ */
 /** @file
  * IPRT - Read/Write Critical Section, Generic.
  */
@@ -70,6 +70,7 @@
  * Gets the ring-3 native thread handle of the calling thread.
  *
  * @returns native thread handle (ring-3).
+ * @param   pVM         The cross context VM structure.
  * @param   pThis       The read/write critical section.  This is only used in
  *                      R0 and RC.
  */
