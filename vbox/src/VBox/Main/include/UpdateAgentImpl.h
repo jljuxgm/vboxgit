@@ -1,4 +1,4 @@
-/* $Id: UpdateAgentImpl.h 94685 2022-04-22 10:16:24Z vboxsync $ */
+/* $Id: UpdateAgentImpl.h 94700 2022-04-25 07:53:34Z vboxsync $ */
 /** @file
  * Update agent COM class implementation - Header
  */
@@ -164,6 +164,7 @@ protected:
     HRESULT getProxyURL(com::Utf8Str &aAddress);
     HRESULT setProxyURL(const com::Utf8Str &aAddress);
     HRESULT getLastCheckDate(com::Utf8Str &aData);
+    HRESULT getIsCheckNeeded(BOOL *aCheckNeeded);
     /** @} */
 };
 
