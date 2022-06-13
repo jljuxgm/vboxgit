@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlSession.cpp 92987 2021-12-16 15:50:22Z vboxsync $ */
+/* $Id: VBoxServiceControlSession.cpp 92988 2021-12-16 15:54:07Z vboxsync $ */
 /** @file
  * VBoxServiceControlSession - Guest session handling. Also handles the spawned session processes.
  */
@@ -1678,7 +1678,7 @@ static DECLCALLBACK(int) vgsvcGstCtrlSessionThread(RTTHREAD hThreadSelf, void *p
     ASMAtomicWriteBool(&pThread->fStopped, true);
 
     /* Report final status, regardless if we failed to wait above, so that the host knows what's going on. */
-    VGSvcVerbose(3, "Reporting final status %#x %RU32 of session ID=%RU32\n", uSessionStatus, idSession);
+    VGSvcVerbose(3, "Reporting final status %RU32 of session ID=%RU32\n", uSessionStatus, idSession);
     Assert(uSessionStatus != GUEST_SESSION_NOTIFYTYPE_UNDEFINED);
 
     VBGLR3GUESTCTRLCMDCTX ctx = { idClient, VBOX_GUESTCTRL_CONTEXTID_MAKE_SESSION(idSession),
