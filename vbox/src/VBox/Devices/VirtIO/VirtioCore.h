@@ -1,4 +1,4 @@
-/* $Id: VirtioCore.h 93007 2021-12-17 09:25:53Z vboxsync $ */
+/* $Id: VirtioCore.h 93008 2021-12-17 09:31:12Z vboxsync $ */
 
 /** @file
  * VirtioCore.h - Virtio Declarations
@@ -454,8 +454,8 @@ typedef struct VIRTIOCORER3
     R3PTRTYPE(uint8_t *)                pbDevSpecificCfg;          /**< Pointer to client's struct                */
     R3PTRTYPE(uint8_t *)                pbPrevDevSpecificCfg;      /**< Previous read dev-specific cfg of client  */
     bool                                fGenUpdatePending;         /**< If set, update cfg gen after driver reads */
-    char                                pcszMmioName[MAX_NAME];    /**< MMIO mapping name                         */
-    char                                pcszPortIoName[MAX_NAME];  /**< PORT mapping name                         */
+    char                                szMmioName[MAX_NAME];      /**< MMIO mapping name                         */
+    char                                szPortIoName[MAX_NAME];    /**< PORT mapping name                         */
 } VIRTIOCORER3;
 
 /**
