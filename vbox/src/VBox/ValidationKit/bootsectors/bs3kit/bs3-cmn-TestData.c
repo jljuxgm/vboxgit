@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-TestData.c 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: bs3-cmn-TestData.c 92258 2021-11-08 09:18:20Z vboxsync $ */
 /** @file
  * BS3Kit - Test Data.
  */
@@ -61,7 +61,7 @@ uint16_t    g_cusBs3SubTests = 0;
 uint16_t    g_cusBs3SubTestsFailed = 0;
 
 /** VMMDEV_TESTING_UNIT_XXX -> string */
-char const  g_aszBs3TestUnitNames[][16] =
+char const  g_aszBs3TestUnitNames[][12] =
 {
     "inv",
     "%",
@@ -95,6 +95,13 @@ char const  g_aszBs3TestUnitNames[][16] =
     "pp10k",
     "ppm",
     "ppb",
+    "ticks",
+    "ticks/call",
+    "ticks/occ",
+    "pages",
+    "pages/s",
+    "ticks/page",
+    "ns/page",
 };
 
 

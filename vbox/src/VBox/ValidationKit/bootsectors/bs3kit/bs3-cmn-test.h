@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-test.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: bs3-cmn-test.h 92258 2021-11-08 09:18:20Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3Test internal header.
  */
@@ -79,7 +79,7 @@ extern uint16_t             g_cusBs3SubTestsFailed;
 #ifndef DOXYGEN_RUNNING
 # define g_aszBs3TestUnitNames BS3_DATA_NM(g_aszBs3TestUnitNames)
 #endif
-extern char const           g_aszBs3TestUnitNames[][16];
+extern char const           g_aszBs3TestUnitNames[][12];
 
 /** The test name. */
 extern const char BS3_FAR  *g_pszBs3Test_c16;
