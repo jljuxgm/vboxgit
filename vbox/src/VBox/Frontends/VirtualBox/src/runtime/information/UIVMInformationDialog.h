@@ -1,4 +1,4 @@
-/* $Id: UIVMInformationDialog.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIVMInformationDialog.h 93731 2022-02-14 15:11:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMInformationDialog class declaration.
  */
@@ -73,9 +73,16 @@ private slots:
 
     /** Handles tab-widget page change. */
     void sltHandlePageChanged(int iIndex);
+    void sltMachineStateChange(const QUuid &uMachineId, const KMachineState state);
 
 private:
-
+    enum Tabs
+    {
+        Tabs_ConfigurationDetails = 0,
+        Tabs_RuntimeInformation,
+        Tabs_ActivityMonitor,
+        Tabs_GuestControl
+    };
     /** Prepares all. */
     void prepare();
     /** Prepares this. */
@@ -104,6 +111,7 @@ private:
     /** @} */
     bool m_fCloseEmitted;
     int m_iGeometrySaveTimerId;
+    QUuid m_uMachineId;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_runtime_information_UIVMInformationDialog_h */
