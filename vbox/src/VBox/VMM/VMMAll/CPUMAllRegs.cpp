@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 93922 2022-02-24 15:14:31Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 94959 2022-05-09 14:13:11Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -49,7 +49,6 @@
 # pragma optimize("y", off)
 #endif
 
-AssertCompile2MemberOffsets(VM, cpum.s.HostFeatures,  cpum.ro.HostFeatures);
 AssertCompile2MemberOffsets(VM, cpum.s.GuestFeatures, cpum.ro.GuestFeatures);
 
 
