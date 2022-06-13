@@ -1,4 +1,4 @@
-/* $Id: QIToolBar.h 95002 2022-05-13 10:59:28Z vboxsync $ */
+/* $Id: QIToolBar.h 95003 2022-05-13 11:59:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - QIToolBar class declaration.
  */
@@ -83,6 +83,9 @@ public:
 
 protected:
 
+    /** Handles @a pEvent. */
+    virtual bool event(QEvent *pEvent) RT_OVERRIDE;
+
     /** Handles resize @a pEvent. */
     virtual void resizeEvent(QResizeEvent *pEvent) RT_OVERRIDE;
 
@@ -96,12 +99,20 @@ private:
     /** Prepares all. */
     void prepare();
 
+#ifdef VBOX_WS_MAC
+    /** Recalculates overall contents width. */
+    void recalculateOverallContentsWidth();
+#endif /* VBOX_WS_MAC */
+
     /** Holds the parent main-window isntance. */
     QMainWindow *m_pMainWindow;
 
 #ifdef VBOX_WS_MAC
     /** Mac OS X: Holds whether unified tool-bar should be emulated. */
     bool  m_fEmulateUnifiedToolbar;
+
+    /** Holds overall contents width. */
+    int  m_iOverallContentsWidth;
 
     /** Mac OS X: Holds branding icon to be shown. */
     QIcon    m_icnBranding;
