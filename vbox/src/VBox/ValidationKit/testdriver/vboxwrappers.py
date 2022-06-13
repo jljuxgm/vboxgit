@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 92838 2021-12-08 22:49:27Z vboxsync $
+# $Id: vboxwrappers.py 92839 2021-12-08 22:54:36Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 92838 $"
+__version__ = "$Revision: 92839 $"
 
 
 # Standard Python imports.
@@ -1645,7 +1645,7 @@ class SessionWrapper(TdTaskBase):
         try:
             if hasattr(oNatEngine, "localhostReachable"):
                 oNatEngine.localhostReachable = fReachable;
-            else
+            else:
                 oNatEngine.LocalhostReachable = fReachable;
         except:
             return reporter.errorXcpt('LocalhostReachable (%s) failed for "%s"' % (iNic, self.sName,));
