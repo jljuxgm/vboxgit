@@ -1,4 +1,4 @@
-/* $Id: CPUMR0.cpp 94940 2022-05-09 09:16:15Z vboxsync $ */
+/* $Id: CPUMR0.cpp 94943 2022-05-09 09:39:04Z vboxsync $ */
 /** @file
  * CPUM - Host Context Ring 0.
  */
@@ -194,6 +194,18 @@ VMMR0_INT_DECL(int) CPUMR0ModuleInit(void)
 VMMR0_INT_DECL(int) CPUMR0ModuleTerm(void)
 {
     return VINF_SUCCESS;
+}
+
+
+/**
+ * Initializes the CPUM data in the VM structure.
+ *
+ * @param   pGVM        The global VM structure.
+ */
+VMMR0_INT_DECL(void) CPUMR0InitPerVMData(PGVM pGVM)
+{
+    /* Copy the ring-0 host feature set to the shared part so ring-3 can pick it up. */
+    pGVM->cpum.s.HostFeatures = g_CpumHostFeatures.s;
 }
 
 
