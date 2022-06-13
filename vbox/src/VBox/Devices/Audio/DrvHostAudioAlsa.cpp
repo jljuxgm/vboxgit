@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioAlsa.cpp 91861 2021-10-20 09:03:22Z vboxsync $ */
+/* $Id: DrvHostAudioAlsa.cpp 92016 2021-10-23 06:06:57Z vboxsync $ */
 /** @file
  * Host audio driver - Advanced Linux Sound Architecture (ALSA).
  */
@@ -840,7 +840,7 @@ static DECLCALLBACK(int) drvHstAudAlsaHA_StreamDestroy(PPDMIHOSTAUDIO pInterface
      *        what the caller does... */
     int rc = drvHstAudAlsaStreamClose(&pStreamALSA->hPCM);
 
-    LogRelFlowFunc(("returns %Rrc (state %s)\n", rc, snd_pcm_state_name(snd_pcm_state(pStreamALSA->hPCM))));
+    LogRelFlowFunc(("returns %Rrc\n", rc));
 
     return rc;
 }
