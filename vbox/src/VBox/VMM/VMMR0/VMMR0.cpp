@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 93716 2022-02-14 10:36:21Z vboxsync $ */
+/* $Id: VMMR0.cpp 94624 2022-04-19 09:20:51Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -3329,6 +3329,7 @@ static int vmmR0InitLoggerOne(PGVMCPU pGVCpu, bool fRelease, PVMMR0PERVCPULOGGER
                            "all", RT_ELEMENTS(s_apszGroups), s_apszGroups, UINT32_MAX,
                            VMMLOGGER_BUFFER_COUNT, pR0Log->aBufDescs, RTLOGDEST_DUMMY,
                            NULL /*pfnPhase*/, 0 /*cHistory*/, 0 /*cbHistoryFileMax*/, 0 /*cSecsHistoryTimeSlot*/,
+                           NULL /*pOutputIf*/, NULL /*pvOutputIfUser*/,
                            NULL /*pErrInfo*/, NULL /*pszFilenameFmt*/);
     if (RT_SUCCESS(rc))
     {

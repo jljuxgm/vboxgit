@@ -1,4 +1,4 @@
-/* $Id: RTLogCreateEx.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: RTLogCreateEx.cpp 94624 2022-04-19 09:20:51Z vboxsync $ */
 /** @file
  * Runtime VBox - RTLogCreateEx.
  */
@@ -39,6 +39,7 @@ RTDECL(int) RTLogCreateEx(PRTLOGGER *ppLogger, const char *pszEnvVarBase, uint64
                           unsigned cGroups, const char * const *papszGroups, uint32_t cMaxEntriesPerGroup,
                           uint32_t cBufDescs, PRTLOGBUFFERDESC paBufDescs, uint32_t fDestFlags,
                           PFNRTLOGPHASE pfnPhase, uint32_t cHistory, uint64_t cbHistoryFileMax, uint32_t cSecsHistoryTimeSlot,
+                          PCRTLOGOUTPUTIF pOutputIf, void *pvOutputIfUser,
                           PRTERRINFO pErrInfo, const char *pszFilenameFmt, ...)
 {
     va_list va;
@@ -48,6 +49,7 @@ RTDECL(int) RTLogCreateEx(PRTLOGGER *ppLogger, const char *pszEnvVarBase, uint64
     rc = RTLogCreateExV(ppLogger, pszEnvVarBase, fFlags, pszGroupSettings, cGroups, papszGroups, cMaxEntriesPerGroup,
                         cBufDescs, paBufDescs, fDestFlags,
                         pfnPhase, cHistory, cbHistoryFileMax, cSecsHistoryTimeSlot,
+                        pOutputIf, pvOutputIfUser,
                         pErrInfo, pszFilenameFmt, va);
     va_end(va);
     return rc;

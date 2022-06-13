@@ -1,4 +1,4 @@
-/* $Id: VBoxLogRelCreate.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: VBoxLogRelCreate.cpp 94624 2022-04-19 09:20:51Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - VBoxLogRelCreate.
  */
@@ -171,6 +171,7 @@ int VBoxLogRelCreate(const char *pcszEntity, const char *pcszLogFile,
     int vrc = RTLogCreateEx(&pReleaseLogger, pcszEnvVarBase, fFlags, pcszGroupSettings, RT_ELEMENTS(s_apszGroups), s_apszGroups,
                             cMaxEntriesPerGroup, 0 /*cBufDescs*/, NULL /*paBufDescs*/, fDestFlags,
                             vboxHeaderFooter, cHistory, uHistoryFileSize, uHistoryFileTime,
+                            NULL /*pOutputIf*/, NULL /*pvOutputIfUser*/,
                             pErrInfo, pcszLogFile ? "%s" : NULL, pcszLogFile);
     if (RT_SUCCESS(vrc))
     {

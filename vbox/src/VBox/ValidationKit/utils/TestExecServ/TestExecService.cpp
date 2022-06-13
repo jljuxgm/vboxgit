@@ -1,4 +1,4 @@
-/* $Id: TestExecService.cpp 94525 2022-04-08 08:14:57Z vboxsync $ */
+/* $Id: TestExecService.cpp 94624 2022-04-19 09:20:51Z vboxsync $ */
 /** @file
  * TestExecServ - Basic Remote Execution Service.
  */
@@ -3768,7 +3768,7 @@ static RTEXITCODE txsParseArgv(int argc, char **argv, bool *pfExit)
                 break;
 
             case 'V':
-                RTPrintf("$Revision: 94525 $\n");
+                RTPrintf("$Revision: 94624 $\n");
                 *pfExit = true;
                 return RTEXITCODE_SUCCESS;
 
@@ -3955,6 +3955,7 @@ int main(int argc, char **argv)
                            0 /*cBufDescs*/, NULL /* paBufDescs */, RTLOGDEST_STDOUT | RTLOGDEST_FILE,
                            logHeaderFooter /* pfnPhase */ ,
                            10 /* cHistory */, 100 * _1M /* cbHistoryFileMax */, RT_SEC_1DAY /* cSecsHistoryTimeSlot */,
+                           NULL /*pOutputIf*/, NULL /*pvOutputIfUser*/,
                            NULL /* pErrInfo */, "%s", szLogFile);
         if (RT_SUCCESS(rc))
         {
