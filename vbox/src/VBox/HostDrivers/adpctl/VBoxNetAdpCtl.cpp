@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdpCtl.cpp 91770 2021-10-15 19:38:17Z vboxsync $ */
+/* $Id: VBoxNetAdpCtl.cpp 91771 2021-10-15 19:42:51Z vboxsync $ */
 /** @file
  * Apps - VBoxAdpCtl, Configuration tool for vboxnetX adapters.
  */
@@ -33,7 +33,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/initterm.h>
 #include <iprt/message.h>
 #include <iprt/net.h>
