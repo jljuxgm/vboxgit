@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 94160 2022-03-10 19:29:09Z vboxsync $
+# $Id: Makefile.kmk 94553 2022-04-11 10:28:30Z vboxsync $
 ## @file
 # Top-level makefile for the VirtualBox Guest Additions.
 #
@@ -64,6 +64,7 @@ ifeq ($(KBUILD_TARGET),solaris)
  include $(PATH_SUB_CURRENT)/solaris/Makefile.kmk
 endif
 ifeq ($(KBUILD_TARGET),win)
+ include $(PATH_SUB_CURRENT)/3D/win/VBoxWddmUmHlp/Makefile.kmk
  ifdef VBOX_WITH_MESA3D
   include $(PATH_SUB_CURRENT)/3D/Makefile.kmk
  endif
