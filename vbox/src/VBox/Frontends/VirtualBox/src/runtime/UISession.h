@@ -1,4 +1,4 @@
-/* $Id: UISession.h 91363 2021-09-24 13:08:32Z vboxsync $ */
+/* $Id: UISession.h 91713 2021-10-13 12:13:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -177,7 +177,6 @@ public:
     bool wasPaused() const { return machineStatePrevious() == KMachineState_Paused ||
                                     machineStatePrevious() == KMachineState_TeleportingPausedVM; }
     bool isInitialized() const { return m_fInitialized; }
-    bool isFirstTimeStarted() const { return m_fIsFirstTimeStarted; }
     bool isGuestResizeIgnored() const { return m_fIsGuestResizeIgnored; }
     bool isAutoCaptureDisabled() const { return m_fIsAutoCaptureDisabled; }
 
@@ -561,7 +560,6 @@ private:
 
     /* Common flags: */
     bool m_fInitialized : 1;
-    bool m_fIsFirstTimeStarted : 1;
     bool m_fIsGuestResizeIgnored : 1;
     bool m_fIsAutoCaptureDisabled : 1;
     /** Holds whether VM is in 'manual-override' mode

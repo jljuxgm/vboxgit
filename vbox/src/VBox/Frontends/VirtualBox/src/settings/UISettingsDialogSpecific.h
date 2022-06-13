@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialogSpecific.h 83960 2020-04-24 09:22:19Z vboxsync $ */
+/* $Id: UISettingsDialogSpecific.h 91713 2021-10-13 12:13:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISettingsDialogSpecific class declaration.
  */
@@ -132,9 +132,6 @@ private slots:
     /** Handles machine data change for machine with certain @a uMachineId. */
     void sltMachineDataChanged(const QUuid &uMachineId);
 
-    /** Handles request to reset first run flag. */
-    void sltResetFirstRunFlag();
-
 private:
 
     /** Prepares all. */
@@ -168,8 +165,6 @@ private:
     /** Holds the console reference. */
     CConsole  m_console;
 
-    /** Holds whether we have request to reset first run flag. */
-    bool  m_fResetFirstRunFlag;
 };
 
 /** Safe pointer to cloud machine settings dialog. */

@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 91416 2021-09-28 06:15:49Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 91713 2021-10-13 12:13:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -261,8 +261,6 @@ namespace UIExtraDataDefs
         SHARED_LIBRARY_STUFF extern const char *GUI_PreventReconfiguration;
         /** Holds whether machine snapshot operations disabled. */
         SHARED_LIBRARY_STUFF extern const char *GUI_PreventSnapshotOperations;
-        /** Holds whether this machine is first time started. */
-        SHARED_LIBRARY_STUFF extern const char *GUI_FirstRun;
         /** Except Mac OS X: Holds redefined machine-window icon names. */
         SHARED_LIBRARY_STUFF extern const char *GUI_MachineWindowIcons;
 #ifndef VBOX_WS_MAC
@@ -876,7 +874,6 @@ enum WizardType
     WizardType_ImportAppliance,
     WizardType_NewCloudVM,
     WizardType_AddCloudVM,
-    WizardType_FirstRun,
     WizardType_NewVD,
     WizardType_CloneVD
 };

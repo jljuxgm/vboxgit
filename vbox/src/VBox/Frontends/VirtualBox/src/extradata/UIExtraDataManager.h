@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 91236 2021-09-14 17:05:22Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 91713 2021-10-13 12:13:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -486,11 +486,6 @@ public:
         bool machineReconfigurationEnabled(const QUuid &uID);
         /** Returns whether machine snapshot operations enabled. */
         bool machineSnapshotOperationsEnabled(const QUuid &uID);
-
-        /** Returns whether this machine is first time started. */
-        bool machineFirstTimeStarted(const QUuid &uID);
-        /** Returns whether this machine is fFirstTimeStarted. */
-        void setMachineFirstTimeStarted(bool fFirstTimeStarted, const QUuid &uID);
 
         /** Except Mac OS X: Returns redefined machine-window icon names. */
         QStringList machineWindowIconNames(const QUuid &uID);

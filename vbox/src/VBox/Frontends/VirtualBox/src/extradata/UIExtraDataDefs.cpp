@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 91227 2021-09-14 10:49:11Z vboxsync $ */
+/* $Id: UIExtraDataDefs.cpp 91713 2021-10-13 12:13:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -135,7 +135,6 @@ const char *UIExtraDataDefs::GUI_HideFromManager = "GUI/HideFromManager";
 const char *UIExtraDataDefs::GUI_HideDetails = "GUI/HideDetails";
 const char *UIExtraDataDefs::GUI_PreventReconfiguration = "GUI/PreventReconfiguration";
 const char *UIExtraDataDefs::GUI_PreventSnapshotOperations = "GUI/PreventSnapshotOperations";
-const char *UIExtraDataDefs::GUI_FirstRun = "GUI/FirstRun";
 const char *UIExtraDataDefs::GUI_MachineWindowIcons = "GUI/MachineWindowIcons";
 #ifndef VBOX_WS_MAC
 const char *UIExtraDataDefs::GUI_MachineWindowNamePostfix = "GUI/MachineWindowNamePostfix";

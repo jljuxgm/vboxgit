@@ -1,4 +1,4 @@
-/* $Id: UINativeWizard.cpp 91456 2021-09-29 13:03:16Z vboxsync $ */
+/* $Id: UINativeWizard.cpp 91713 2021-10-13 12:13:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINativeWizard class implementation.
  */
@@ -261,9 +261,6 @@ void UINativeWizard::sltCurrentIndexChanged(int iIndex /* = -1 */)
     /* Show Expert button for 1st page: */
     if (iIndex == 0)
         fIsExpertButtonAvailable = true;
-    /* But first-run wizard has no such button anyway: */
-    if (m_enmType == WizardType_FirstRun)
-        fIsExpertButtonAvailable = false;
     /* Hide/show Expert button finally: */
     QPushButton *pButtonExpert = wizardButton(WizardButtonType_Expert);
     AssertMsgReturnVoid(pButtonExpert, ("No Expert wizard button found!\n"));

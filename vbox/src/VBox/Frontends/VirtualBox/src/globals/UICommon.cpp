@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 91445 2021-09-28 18:16:17Z vboxsync $ */
+/* $Id: UICommon.cpp 91713 2021-10-13 12:13:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -2233,13 +2233,6 @@ void UICommon::updateMachineStorage(const CMachine &comConstMachine, const UIMed
                     msgCenter().cannotRemountMedium(comMachine, medium(uActualID),
                                                     fMount, false /* retry? */);
             }
-        }
-        /* If mounting was successful: */
-        if (fWasMounted)
-        {
-            /* Disable First RUN Wizard: */
-            if (gEDataManager->machineFirstTimeStarted(comMachine.GetId()))
-                gEDataManager->setMachineFirstTimeStarted(false, comMachine.GetId());
         }
     }
 
