@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 91365 2021-09-24 14:42:48Z vboxsync $ */
+/* $Id: UICommon.cpp 91414 2021-09-27 17:46:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -1849,14 +1849,14 @@ QUuid UICommon::showCreateFloppyDiskDialog(QWidget *pParent, const QString &strD
     return QUuid();
 }
 
-int UICommon::openMediumSelectorDialog(QWidget *pParent, UIMediumDeviceType  enmMediumType, QUuid &inOutUuid,
-                                       const QString &strMachineFolder, const QString &strMachineName,
-                                       const QString &strMachineGuestOSTypeId, bool fEnableCreate, const QUuid &uMachineID /* = QUuid() */)
+int UICommon::openMediumSelectorDialog(QWidget *pParent, UIMediumDeviceType  enmMediumType, const QUuid &uCurrentMediumId,
+                                       QUuid &uSelectedMediumUuid, const QString &strMachineFolder, const QString &strMachineName,
+                                       const QString &strMachineGuestOSTypeId, bool fEnableCreate, const QUuid &uMachineID)
 {
     QUuid uMachineOrGlobalId = uMachineID == QUuid() ? gEDataManager->GlobalID : uMachineID;
 
     QWidget *pDialogParent = windowManager().realParentWindow(pParent);
-    QPointer<UIMediumSelector> pSelector = new UIMediumSelector(inOutUuid, enmMediumType, strMachineName,
+    QPointer<UIMediumSelector> pSelector = new UIMediumSelector(uCurrentMediumId, enmMediumType, strMachineName,
                                                                 strMachineFolder, strMachineGuestOSTypeId,
                                                                 uMachineOrGlobalId, pDialogParent);
 
@@ -1882,8 +1882,8 @@ int UICommon::openMediumSelectorDialog(QWidget *pParent, UIMediumDeviceType  enm
             returnCode = UIMediumSelector::ReturnCode_Rejected;
         else
         {
-            inOutUuid = selectedMediumIds[0];
-            updateRecentlyUsedMediumListAndFolder(enmMediumType, medium(inOutUuid).location());
+            uSelectedMediumUuid = selectedMediumIds[0];
+            updateRecentlyUsedMediumListAndFolder(enmMediumType, medium(uSelectedMediumUuid).location());
         }
     }
     delete pSelector;
@@ -2122,7 +2122,8 @@ void UICommon::updateMachineStorage(const CMachine &comConstMachine, const UIMed
                 QUuid uMediumID;
                 if (target.type == UIMediumTarget::UIMediumTargetType_WithID)
                 {
-                    int iDialogReturn = openMediumSelectorDialog(windowManager().mainWindowShown(), target.mediumType, uMediumID,
+                    int iDialogReturn = openMediumSelectorDialog(windowManager().mainWindowShown(), target.mediumType,
+                                                                 uCurrentID, uMediumID,
                                                                  strMachineFolder, comConstMachine.GetName(),
                                                                  comConstMachine.GetOSTypeId(), true /*fEnableCreate */, comConstMachine.GetId());
                     if (iDialogReturn == UIMediumSelector::ReturnCode_LeftEmpty &&

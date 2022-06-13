@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMDiskPage.cpp 91294 2021-09-17 09:01:51Z vboxsync $ */
+/* $Id: UIWizardNewVMDiskPage.cpp 91414 2021-09-27 17:46:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMDiskPage class implementation.
  */
@@ -47,11 +47,13 @@ QUuid UIWizardNewVMDiskCommon::getWithFileOpenDialog(const QString &strOSTypeID,
 {
     QUuid uMediumId;
     int returnCode = uiCommon().openMediumSelectorDialog(pCaller, UIMediumDeviceType_HardDisk,
+                                                         QUuid() /* current medium id */,
                                                          uMediumId,
                                                          strMachineFolder,
                                                          strMachineBaseName,
                                                          strOSTypeID,
-                                                         false /* don't show/enable the create action: */);
+                                                         false /* don't show/enable the create action: */,
+                                                         QUuid() /* Machinie Id */);
     if (returnCode != static_cast<int>(UIMediumSelector::ReturnCode_Accepted))
         return QUuid();
     return uMediumId;

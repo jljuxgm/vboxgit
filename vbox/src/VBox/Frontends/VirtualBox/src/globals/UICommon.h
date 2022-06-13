@@ -1,4 +1,4 @@
-/* $Id: UICommon.h 91365 2021-09-24 14:42:48Z vboxsync $ */
+/* $Id: UICommon.h 91414 2021-09-27 17:46:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class declaration.
  */
@@ -405,8 +405,9 @@ public:
 
         /** Creates and shows a UIMediumSelector dialog.
           * @param  parent                   Passes the parent of the dialog,
-          * @param  enmMediumType            Passes the medium type.
-          * @param  inOutUuid                Passes the currently selected medium id if there is one.
+          * @param  enmMediumType            Passes the medium type,
+          * @param  uCurrentMediumId         Passes  the id of the currently selected medium,
+          * @param  uSelectedMediumUuid      Gets  the selected medium id from selection dialog,
           * @param  strMachineFolder         Passes the machine folder,
           * @param  strMachineName           Passes the name of the machine,
           * @param  strMachineGuestOSTypeId  Passes the type ID of machine's guest os,
@@ -414,9 +415,9 @@ public:
           * @param  uMachineID               Passes the machine UUID,
           * returns the return code of the UIMediumSelector::ReturnCode as int. In case of a medium selection
           *         UUID of the selected medium is stored in @param inOutUuid.*/
-        int openMediumSelectorDialog(QWidget *pParent, UIMediumDeviceType  enmMediumType, QUuid &inOutUuid,
+        int openMediumSelectorDialog(QWidget *pParent, UIMediumDeviceType  enmMediumType, const QUuid &uCurrentMediumId, QUuid &uSelectedMediumUuid,
                                      const QString &strMachineFolder, const QString &strMachineName,
-                                     const QString &strMachineGuestOSTypeId, bool fEnableCreate, const QUuid &uMachineID = QUuid());
+                                     const QString &strMachineGuestOSTypeId, bool fEnableCreate, const QUuid &uMachineID);
 
         /** Creates and shows a dialog (wizard) to create a medium of type @a enmMediumType.
           * @param  pParent                  Passes the parent of the dialog,
