@@ -1,10 +1,10 @@
-/* $Id: UIUpdateManager.h 90579 2021-08-09 14:49:12Z vboxsync $ */
+/* $Id: UIUpdateManager.h 90586 2021-08-10 09:37:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUpdateManager class declaration.
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2021 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -88,4 +88,3 @@ private:
 #define gUpdateManager UIUpdateManager::instance()
 
 #endif /* !FEQT_INCLUDED_SRC_networking_UIUpdateManager_h */
-
