@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 91803 2021-10-18 07:36:51Z vboxsync $ */
+/* $Id: SUPDrv.cpp 91805 2021-10-18 07:38:19Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -215,7 +215,7 @@ CountFunctionArguments(RetType(RTCALL *)(Types ...))
 # ifdef _MSC_VER
 #  define SUPEXP_STK_BACKF(a_cArgs, a_Name)     { #a_Name,       a_cArgs,                            (void *)(uintptr_t)a_Name }
 # else
-#  define SUPEXP_STK_BACK(a_cArgs, a_Name)      { #a_Name,       SUPEXP_CHECK_ARGS(a_cArgs, a_Name), (void *)(uintptr_t)a_Name }
+#  define SUPEXP_STK_BACKF(a_cArgs, a_Name)     { #a_Name,       SUPEXP_CHECK_ARGS(a_cArgs, a_Name), (void *)(uintptr_t)a_Name }
 # endif
 #endif
 /** @} */
