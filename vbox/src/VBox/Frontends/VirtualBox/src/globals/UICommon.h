@@ -1,4 +1,4 @@
-/* $Id: UICommon.h 89298 2021-05-26 15:32:54Z vboxsync $ */
+/* $Id: UICommon.h 90086 2021-07-08 08:51:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class declaration.
  */
@@ -509,6 +509,9 @@ public:
           * if yes, new session of required type will be opened and machine will be updated,
           * otherwise, no session will be created and machine will be left unchanged. */
         CSession tryToOpenSessionFor(CMachine &comMachine);
+
+        /** Restores current snapshot for machine with certain @a uMachineId. */
+        bool restoreCurrentSnapshot(const QUuid &uMachineId);
     /** @} */
 
     /** @name Cloud Virtual Machine stuff.

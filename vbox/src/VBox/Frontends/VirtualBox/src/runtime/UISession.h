@@ -1,4 +1,4 @@
-/* $Id: UISession.h 88685 2021-04-23 16:50:13Z vboxsync $ */
+/* $Id: UISession.h 90086 2021-07-08 08:51:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -79,7 +79,6 @@ public:
     bool saveState();
     bool shutdown();
     bool powerOff(bool fIncludingDiscard, bool &fServerCrashed);
-    bool restoreCurrentSnapshot();
 
     /** Returns the session instance. */
     CSession& session() { return m_session; }
