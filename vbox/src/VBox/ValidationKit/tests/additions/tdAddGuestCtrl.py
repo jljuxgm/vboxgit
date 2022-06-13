@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 93055 $"
+__version__ = "$Revision: 93056 $"
 
 # Standard Python imports.
 import errno
@@ -2732,7 +2732,7 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
     #    fRc = True;
     #    return (fRc, oTxsSession);
 
-    def testGuestCtrlSessionProcRefs(self, oSession, oTxsSession, oTestVm): # pylint: disable=too-many-locals
+    def testGuestCtrlSessionProcRefs(self, oSession, oTxsSession, oTestVm): # pylint: disable=too-many-locals,too-many-statements
         """
         Tests the guest session process reference handling.
         """
