@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.cpp 93944 2022-02-24 21:15:14Z vboxsync $ */
+/* $Id: DevPcBios.cpp 94080 2022-03-03 17:59:42Z vboxsync $ */
 /** @file
  * DevPcBios - PC BIOS Device.
  */
@@ -564,7 +564,7 @@ static int biosGuessDiskLCHS(PPDMIMEDIA pMedia, PPDMMEDIAGEOMETRY pLCHSGeometry)
         p = &aMBR[0x1be + i * 16];
         iEndHead = p[5];
         iEndSector = p[6] & 63;
-        if ((p[12] | p[13] | p[14] | p[15]) && iEndSector & iEndHead)
+        if ((p[12] | p[13] | p[14] | p[15]) && iEndSector && iEndHead)
         {
             /* Assumption: partition terminates on a cylinder boundary. */
             cLCHSHeads = iEndHead + 1;
