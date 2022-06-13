@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.cpp 91390 2021-09-27 11:45:15Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.cpp 91475 2021-09-29 20:15:10Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -771,6 +771,7 @@ HRESULT ExtPack::initWithDir(VirtualBox *a_pVirtualBox, VBOXEXTPACKCTX a_enmCont
         /* pfnReserved4         = */ ExtPack::i_hlpReservedN,
         /* pfnReserved5         = */ ExtPack::i_hlpReservedN,
         /* pfnReserved6         = */ ExtPack::i_hlpReservedN,
+        /* uReserved7           = */ 0,
         /* u32EndMarker         = */ VBOXEXTPACKHLP_VERSION
     };
 
