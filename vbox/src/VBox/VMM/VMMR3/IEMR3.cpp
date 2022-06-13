@@ -1,4 +1,4 @@
-/* $Id: IEMR3.cpp 94801 2022-05-03 22:14:14Z vboxsync $ */
+/* $Id: IEMR3.cpp 94838 2022-05-05 10:29:49Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager.
  */
@@ -231,7 +231,7 @@ static void iemR3InfoTlbPrintSlot(PCDBGFINFOHLP pHlp, IEMTLB const *pTlb, IEMTLB
                     (uint32_t)(pTlbe->fFlagsAndPhysRev & ~IEMTLBE_F_PHYS_REV),
                     pTlbe->fFlagsAndPhysRev & IEMTLBE_F_PT_NO_EXEC      ? "NX" : " X",
                     pTlbe->fFlagsAndPhysRev & IEMTLBE_F_PT_NO_WRITE     ? "RO" : "RW",
-                    pTlbe->fFlagsAndPhysRev & IEMTLBE_F_PG_NO_ACCESSED  ? "-"  : "A",
+                    pTlbe->fFlagsAndPhysRev & IEMTLBE_F_PT_NO_ACCESSED  ? "-"  : "A",
                     pTlbe->fFlagsAndPhysRev & IEMTLBE_F_PT_NO_DIRTY     ? "-"  : "D",
                     pTlbe->fFlagsAndPhysRev & IEMTLBE_F_PG_NO_WRITE     ? "-"  : "w",
                     pTlbe->fFlagsAndPhysRev & IEMTLBE_F_PG_NO_READ      ? "-"  : "r",

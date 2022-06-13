@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp 94800 2022-05-03 21:49:43Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp 94838 2022-05-05 10:29:49Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -63,7 +63,7 @@
 #  define IEM_DISP_GET_S8_SX_U32(a_pVCpu, a_u32Disp, a_offDisp)   do { a_u32Disp = 0; RT_NOREF(a_offDisp); } while (0)
 #  define IEM_DISP_GET_S32_SX_U64(a_pVCpu, a_u64Disp, a_offDisp)  do { a_u64Disp = 0; RT_NOREF(a_offDisp); } while (0)
 #  define IEM_DISP_GET_S8_SX_U64(a_pVCpu, a_u64Disp, a_offDisp)   do { a_u64Disp = 0; RT_NOREF(a_offDisp); } while (0)
-#  if 1
+#  if 0
 #   error "Implement me: Getting ModR/M, SIB, displacement needs to work even when instruction crosses a page boundary."
 #  endif
 # else  /* !IEM_WITH_CODE_TLB */
