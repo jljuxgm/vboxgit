@@ -1,4 +1,4 @@
-/* $Id: AudioHlp.cpp 90014 2021-07-04 21:11:04Z vboxsync $ */
+/* $Id: AudioHlp.cpp 90015 2021-07-04 21:14:03Z vboxsync $ */
 /** @file
  * Audio helper routines.
  *
@@ -21,11 +21,10 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#include <iprt/alloc.h>
-#include <iprt/asm-math.h>
 #include <iprt/assert.h>
 #include <iprt/dir.h>
 #include <iprt/file.h>
+#include <iprt/mem.h>
 #include <iprt/string.h>
 #include <iprt/uuid.h>
 #include <iprt/formats/riff.h>
@@ -37,13 +36,8 @@
 #include <VBox/vmm/pdmdev.h>
 #include <VBox/vmm/pdm.h>
 #include <VBox/vmm/pdmaudioinline.h>
-#include <VBox/vmm/mm.h>
-
-#include <ctype.h>
-#include <stdlib.h>
 
 #include "AudioHlp.h"
-#include "AudioMixBuffer.h"
 
 
 /*********************************************************************************************************************************
