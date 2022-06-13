@@ -1,4 +1,4 @@
-/* $Id: PDMUsb.cpp 91897 2021-10-20 13:42:39Z vboxsync $ */
+/* $Id: PDMUsb.cpp 91900 2021-10-20 14:16:27Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, USB part.
  */
@@ -1750,7 +1750,7 @@ static DECLCALLBACK(void *) pdmR3UsbHlp_MMHeapAllocZ(PPDMUSBINS pUsbIns, size_t 
 /** @interface_method_impl{PDMUSBHLP,pfnMMHeapFree} */
 static DECLCALLBACK(void) pdmR3UsbHlp_MMHeapFree(PPDMUSBINS pUsbIns, void *pv)
 {
-    PDMUSB_ASSERT_USBINS(pUsbIns);
+    PDMUSB_ASSERT_USBINS(pUsbIns); RT_NOREF(pUsbIns);
     LogFlow(("pdmR3UsbHlp_MMHeapFree: caller='%s'/%d: pv=%p\n", pUsbIns->pReg->szName, pUsbIns->iInstance, pv));
 
     MMR3HeapFree(pv);
