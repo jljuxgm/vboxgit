@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 93781 2022-02-16 00:10:06Z vboxsync $
+# $Id: virtual_test_sheriff.py 93874 2022-02-21 19:18:26Z vboxsync $
 # pylint: disable=line-too-long
 
 """
@@ -35,7 +35,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 93781 $"
+__version__ = "$Revision: 93874 $"
 
 
 # Standard python imports
@@ -154,7 +154,7 @@ class VirtualTestSheriffCaseFile(object):
     def isVBoxUnitTest(self):
         """ Test case classification: The unit test doing all our testcase/*.cpp stuff. """
         return self.isVBoxTest() \
-           and (self.oTestCase.sName.lower() == 'unit tests' or self.oTestCase.sName.lower() == 'misc: unit tests');
+           and (self.oTestCase.sName.lower() == 'unit tests' or self.oTestCase.sName.lower().startswith('misc: unit tests'));
 
     def isVBoxInstallTest(self):
         """ Test case classification: VirtualBox Guest installation test. """
@@ -340,7 +340,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
 
         if self.oConfig.sLogFile:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 93781 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 93874 $ \n');
 
 
     def eprint(self, sText):
@@ -747,7 +747,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.getFailureReason(tReason);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 93781 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 93874 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
