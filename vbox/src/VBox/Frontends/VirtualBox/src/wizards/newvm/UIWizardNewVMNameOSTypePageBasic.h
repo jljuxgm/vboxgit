@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMNameOSTypePageBasic.h 90095 2021-07-08 12:58:47Z vboxsync $ */
+/* $Id: UIWizardNewVMNameOSTypePageBasic.h 90223 2021-07-16 08:49:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMNameOSTypePageBasic class declaration.
  */
@@ -39,7 +39,7 @@ class UIWizardNewVM;
 
 namespace UIWizardNewVMNameOSTypePage
 {
-    void onNameChanged(UINameAndSystemEditor *pNameAndSystemEditor, QString strNewName);
+    void guessOSTypeFromName(UINameAndSystemEditor *pNameAndSystemEditor, QString strNewName);
     bool createMachineFolder(UINameAndSystemEditor *pNameAndSystemEditor,
                              UINativeWizardPage *pCaller,
                              UIWizardNewVM *pWizard);
@@ -103,6 +103,7 @@ private:
         QCheckBox             *m_pSkipUnattendedCheckBox;
         QIRichTextLabel       *m_pNameOSTypeLabel;
     /** @} */
+    QSet<QString> m_userModifiedParameters;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_wizards_newvm_UIWizardNewVMNameOSTypePageBasic_h */
