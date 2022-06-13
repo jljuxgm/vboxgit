@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 91921 2021-10-21 07:41:36Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 91922 2021-10-21 07:44:31Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -4404,7 +4404,7 @@ static DECLCALLBACK(int) pdmR3DevHlp_SharedModuleRegister(PPDMDEVINS pDevIns, VB
     PDMDEV_ASSERT_DEVINS(pDevIns);
 
     LogFlow(("pdmR3DevHlp_SharedModuleRegister: caller='%s'/%d: enmGuestOS=%u pszModuleName=%p:{%s} pszVersion=%p:{%s} GCBaseAddr=%RGv cbModule=%#x cRegions=%u paRegions=%p\n",
-             pDevIns->pReg->szName, pDevIns->iInstance, enmGuestOS, pszModuleName, pszVersion, GCBaseAddr, cbModule, cRegions, paRegions));
+             pDevIns->pReg->szName, pDevIns->iInstance, enmGuestOS, pszModuleName, pszModuleName, pszVersion, pszVersion, GCBaseAddr, cbModule, cRegions, paRegions));
 
     int rc = PGMR3SharedModuleRegister(pDevIns->Internal.s.pVMR3, enmGuestOS, pszModuleName, pszVersion,
                                        GCBaseAddr, cbModule, cRegions, paRegions);
@@ -4421,7 +4421,7 @@ static DECLCALLBACK(int) pdmR3DevHlp_SharedModuleUnregister(PPDMDEVINS pDevIns, 
     PDMDEV_ASSERT_DEVINS(pDevIns);
 
     LogFlow(("pdmR3DevHlp_SharedModuleUnregister: caller='%s'/%d: enmGuestOS=%u pszModuleName=%p:{%s} pszVersion=%p:{%s} GCBaseAddr=%RGv cbModule=%#x\n",
-             pDevIns->pReg->szName, pDevIns->iInstance, pszModuleName, pszVersion, GCBaseAddr, cbModule));
+             pDevIns->pReg->szName, pDevIns->iInstance, pszModuleName, pszModuleName, pszVersion, pszVersion, GCBaseAddr, cbModule));
 
     int rc = PGMR3SharedModuleUnregister(pDevIns->Internal.s.pVMR3, pszModuleName, pszVersion, GCBaseAddr, cbModule);
 
