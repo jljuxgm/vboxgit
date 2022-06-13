@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet_1_0.cpp 93001 2021-12-17 08:55:57Z vboxsync $ $Revision: 93001 $ $Date: 2021-12-17 16:55:57 +0800 (Fri, 17 Dec 2021) $ $Author: vboxsync $ */
+/* $Id: DevVirtioNet_1_0.cpp 93002 2021-12-17 09:08:53Z vboxsync $ $Revision: 93002 $ $Date: 2021-12-17 17:08:53 +0800 (Fri, 17 Dec 2021) $ $Author: vboxsync $ */
 
 /** @file
  * VBox storage devices - Virtio NET Driver
@@ -1229,7 +1229,7 @@ static DECLCALLBACK(int) virtioNetR3ModernDeviceLoadExec(PPDMDEVINS pDevIns, PSS
 
     RT_NOREF(pThisCC);
 
-    RTMAC uMacLoaded, uVersionMarkerMac = VIRTIONET_VERSION_MARKER_MAC_ADDR;
+    RTMAC uMacLoaded, uVersionMarkerMac = { VIRTIONET_VERSION_MARKER_MAC_ADDR };
     rc = pHlp->pfnSSMGetMem(pSSM, &uMacLoaded.au8, sizeof(uMacLoaded.au8));
     AssertRCReturn(rc, rc);
     if (memcmp(&uMacLoaded.au8, uVersionMarkerMac.au8, sizeof(uVersionMarkerMac.au8)))
@@ -1381,7 +1381,7 @@ static DECLCALLBACK(int) virtioNetR3ModernSaveExec(PPDMDEVINS pDevIns, PSSMHANDL
      * whether saved state is modern or legacy. This works because original
      * legacy code stored assigned NIC address as the first item of SSM state
      */
-    RTMAC uVersionMarkerMac = VIRTIONET_VERSION_MARKER_MAC_ADDR;
+    RTMAC uVersionMarkerMac = { VIRTIONET_VERSION_MARKER_MAC_ADDR };
     pHlp->pfnSSMPutMem(pSSM, &uVersionMarkerMac.au8, sizeof(uVersionMarkerMac.au8));
 
     pHlp->pfnSSMPutU64(     pSSM, pThis->fNegotiatedFeatures);
@@ -1551,10 +1551,10 @@ static int virtioNetR3CheckRxBufsAvail(PPDMDEVINS pDevIns, PVIRTIONET pThis, PVI
         Log8(("No Rx bufs available. (VirtIO core not ready)\n"));
 
     else if (!virtioCoreIsVirtqEnabled(&pThis->Virtio, pRxVirtq->uIdx))
-        Log8(("[No Rx bufs available. (%s not enabled)\n"));
+        Log8(("[No Rx bufs available. (%s not enabled)\n", pVirtq->szName));
 
     else if (IS_VIRTQ_EMPTY(pDevIns, &pThis->Virtio,  pRxVirtq->uIdx))
-        Log8(("No Rx bufs available. (%s empty)\n"));
+        Log8(("No Rx bufs available. (%s empty)\n"), pVirtq->szName);
 
     else
     {
