@@ -1,4 +1,4 @@
-/* $Id: MachineDebuggerImpl.cpp 93470 2022-01-27 23:51:28Z vboxsync $ */
+/* $Id: MachineDebuggerImpl.cpp 93485 2022-01-29 12:32:20Z vboxsync $ */
 /** @file
  * VBox IMachineDebugger COM class implementation (VBoxC).
  */
@@ -1439,6 +1439,10 @@ HRESULT MachineDebugger::takeGuestSample(const com::Utf8Str &aFilename, ULONG aU
  * Hack for getting the user mode VM handle (UVM) and VMM function table.
  *
  * @returns COM status code
+ * @param   aMagicVersion       The VMMR3VTABLE_MAGIC_VERSION value of the
+ *                              caller so we can check that the function table
+ *                              is compatible.  (Otherwise, the caller can't
+ *                              safely release the UVM reference.)
  * @param   aUVM                Where to store the vm handle. Since there is no
  *                              uintptr_t in COM, we're using the max integer. (No,
  *                              ULONG is not pointer sized!)

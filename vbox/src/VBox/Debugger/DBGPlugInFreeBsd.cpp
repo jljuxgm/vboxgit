@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInFreeBsd.cpp 93470 2022-01-27 23:51:28Z vboxsync $ */
+/* $Id: DBGPlugInFreeBsd.cpp 93485 2022-01-29 12:32:20Z vboxsync $ */
 /** @file
  * DBGPlugInFreeBsd - Debugger and Guest OS Digger Plugin For FreeBSD.
  */
@@ -217,6 +217,7 @@ static const uint8_t g_abNeedleInterp[] = "/red/herring";
  * @returns VBox status code.
  * @param   pThis           The instance data.
  * @param   pUVM            The user mode VM handle.
+ * @param   pVMM            The VMM function table.
  * @param   pszName         The image name.
  * @param   uKernelStart    The kernel start address.
  * @param   cbKernel        Size of the kernel image.
