@@ -1,4 +1,4 @@
-/* $Id: DrvTpmEmu.cpp 90904 2021-08-26 09:49:06Z vboxsync $ */
+/* $Id: DrvTpmEmu.cpp 90996 2021-08-30 12:57:49Z vboxsync $ */
 /** @file
  * TPM emulator using a TCP/socket interface to talk to swtpm (https://github.com/stefanberger/swtpm).
  */
@@ -601,6 +601,14 @@ static DECLCALLBACK(TPMVERSION) drvTpmEmuGetVersion(PPDMITPMCONNECTOR pInterface
 }
 
 
+/** @interface_method_impl{PDMITPMCONNECTOR,pfnGetLocalityMax} */
+static DECLCALLBACK(uint32_t) drvTpmEmuGetLocalityMax(PPDMITPMCONNECTOR pInterface)
+{
+    RT_NOREF(pInterface);
+    return 4;
+}
+
+
 /** @interface_method_impl{PDMITPMCONNECTOR,pfnGetEstablishedFlag} */
 static DECLCALLBACK(bool) drvTpmEmuGetEstablishedFlag(PPDMITPMCONNECTOR pInterface)
 {
@@ -794,6 +802,7 @@ static DECLCALLBACK(int) drvTpmEmuConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, 
     pThis->ITpmConnector.pfnShutdown                = drvTpmEmuShutdown;
     pThis->ITpmConnector.pfnReset                   = drvTpmEmuReset;
     pThis->ITpmConnector.pfnGetVersion              = drvTpmEmuGetVersion;
+    pThis->ITpmConnector.pfnGetLocalityMax          = drvTpmEmuGetLocalityMax;
     pThis->ITpmConnector.pfnGetEstablishedFlag      = drvTpmEmuGetEstablishedFlag;
     pThis->ITpmConnector.pfnResetEstablishedFlag    = drvTpmEmuResetEstablishedFlag;
     pThis->ITpmConnector.pfnCmdExec                 = drvTpmEmuCmdExec;

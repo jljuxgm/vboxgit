@@ -1,4 +1,4 @@
-/* $Id: DrvTpmHost.cpp 90946 2021-08-27 10:55:25Z vboxsync $ */
+/* $Id: DrvTpmHost.cpp 90996 2021-08-30 12:57:49Z vboxsync $ */
 /** @file
  * TPM host access driver.
  */
@@ -108,8 +108,16 @@ static DECLCALLBACK(TPMVERSION) drvTpmHostGetVersion(PPDMITPMCONNECTOR pInterfac
             return TPMVERSION_UNKNOWN;
     }
 
-    AssertFailed(); /* Shouldnb't get here. */
+    AssertFailed(); /* Shouldn't get here. */
     return TPMVERSION_UNKNOWN;
+}
+
+
+/** @interface_method_impl{PDMITPMCONNECTOR,pfnGetLocalityMax} */
+static DECLCALLBACK(uint32_t) drvTpmHostGetLocalityMax(PPDMITPMCONNECTOR pInterface)
+{
+    PDRVTPMHOST pThis = RT_FROM_MEMBER(pInterface, DRVTPMHOST, ITpmConnector);
+    return RTTpmGetLocalityMax(pThis->hTpm);
 }
 
 
@@ -199,6 +207,7 @@ static DECLCALLBACK(int) drvTpmHostConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg,
     pThis->ITpmConnector.pfnShutdown                = drvTpmHostShutdown;
     pThis->ITpmConnector.pfnReset                   = drvTpmHostReset;
     pThis->ITpmConnector.pfnGetVersion              = drvTpmHostGetVersion;
+    pThis->ITpmConnector.pfnGetLocalityMax          = drvTpmHostGetLocalityMax;
     pThis->ITpmConnector.pfnGetEstablishedFlag      = drvTpmHostGetEstablishedFlag;
     pThis->ITpmConnector.pfnResetEstablishedFlag    = drvTpmHostResetEstablishedFlag;
     pThis->ITpmConnector.pfnCmdExec                 = drvTpmHostCmdExec;
