@@ -1,4 +1,4 @@
-/* $Id: vkatCommon.cpp 92234 2021-11-05 08:44:14Z vboxsync $ */
+/* $Id: vkatCommon.cpp 92299 2021-11-09 18:10:38Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) - Self test code.
  */
@@ -585,7 +585,7 @@ int audioTestPlayTone(PAUDIOTESTIOOPTS pIoOpts, PAUDIOTESTENV pTstEnv, PAUDIOTES
             if (cbCanWrite)
             {
                 if (g_uVerbosity >= 3)
-                    RTTestPrintf(g_hTest, RTTESTLVL_ALWAYS, "Stream is writable with %RU32ms (%RU32 bytes)\n",
+                    RTTestPrintf(g_hTest, RTTESTLVL_ALWAYS, "Stream is writable with %RU64ms (%RU32 bytes)\n",
                                  PDMAudioPropsBytesToMilli(pMix->pProps, cbCanWrite), cbCanWrite);
 
                 uint32_t cbToPlay;
@@ -789,7 +789,7 @@ static int audioTestRecordTone(PAUDIOTESTIOOPTS pIoOpts, PAUDIOTESTENV pTstEnv, 
             if (cbCanRead)
             {
                 if (g_uVerbosity >= 3)
-                    RTTestPrintf(g_hTest, RTTESTLVL_ALWAYS, "Stream is readable with %RU32ms (%RU32 bytes)\n",
+                    RTTestPrintf(g_hTest, RTTESTLVL_ALWAYS, "Stream is readable with %RU64ms (%RU32 bytes)\n",
                                  PDMAudioPropsBytesToMilli(pMix->pProps, cbCanRead), cbCanRead);
 
                 uint32_t const cbToRead   = RT_MIN(cbCanRead, cbSamplesAligned);
