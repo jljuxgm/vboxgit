@@ -1,4 +1,4 @@
-/* $Id: UpdateAgentImpl.cpp 94730 2022-04-28 08:51:13Z vboxsync $ */
+/* $Id: UpdateAgentImpl.cpp 94736 2022-04-28 13:26:10Z vboxsync $ */
 /** @file
  * IUpdateAgent COM class implementations.
  */
@@ -650,7 +650,8 @@ HRESULT UpdateAgent::i_loadSettings(const settings::UpdateAgent &data)
     m->fEnabled          = data.fEnabled;
     m->enmChannel        = data.enmChannel;
     m->uCheckFreqSeconds = data.uCheckFreqSeconds;
-    m->strRepoUrl        = data.strRepoUrl;
+    if (data.strRepoUrl.isNotEmpty()) /* Prevent overwriting the agent's default URL when XML settings are empty. */
+        m->strRepoUrl    = data.strRepoUrl;
     m->enmProxyMode      = data.enmProxyMode;
     m->strProxyUrl       = data.strProxyUrl;
     m->strLastCheckDate  = data.strLastCheckDate;
@@ -866,6 +867,8 @@ HRESULT HostUpdateAgent::checkFor(ComPtr<IProgress> &aProgress)
 DECLCALLBACK(HRESULT) HostUpdateAgent::i_checkForUpdateTask(UpdateAgentTask *pTask)
 {
     RT_NOREF(pTask);
+
+    AssertReturn(m->strRepoUrl.isNotEmpty(), E_INVALIDARG);
 
     // Following the sequence of steps in UIUpdateStepVirtualBox::sltStartStep()
     // Build up our query URL starting with the configured repository.
