@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportApp.h 91368 2021-09-24 16:31:13Z vboxsync $ */
+/* $Id: UIWizardExportApp.h 91467 2021-09-29 17:57:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportApp class declaration.
  */
@@ -142,6 +142,11 @@ public:
         /** Defines virtual system description export @a comForm object. */
         void setVsdExportForm(const CVirtualSystemDescriptionForm &comForm);
 
+        /** Returns virtual system description launch form object. */
+        CVirtualSystemDescriptionForm vsdLaunchForm();
+        /** Defines virtual system description launch @a comForm object. */
+        void setVsdLaunchForm(const CVirtualSystemDescriptionForm &comForm);
+
         /** Returns cloud export mode. */
         CloudExportMode cloudExportMode() const;
         /** Defines cloud export @a enmMode. */
@@ -153,12 +158,21 @@ public:
         /** Goes forward. Required for fast travel to next page. */
         void goForward();
 
+        /** Disables basic/expert and next/back buttons. */
+        void disableButtons();
+
         /** Composes universal resource identifier.
           * @param  fWithFile  Brings whether uri should include file name as well. */
         QString uri(bool fWithFile = true) const;
 
         /** Exports Appliance. */
         bool exportAppliance();
+
+        /** Creates VSD Form. */
+        bool createVsdLaunchForm();
+
+        /** Creates New Cloud VM. */
+        bool createCloudVM();
     /** @} */
 
 protected:
@@ -227,6 +241,8 @@ private:
         CVirtualSystemDescription      m_comVsd;
         /** Returns virtual system description export form object. */
         CVirtualSystemDescriptionForm  m_comVsdExportForm;
+        /** Returns virtual system description launch form object. */
+        CVirtualSystemDescriptionForm  m_comVsdLaunchForm;
         /** Returns cloud export mode. */
         CloudExportMode                m_enmCloudExportMode;
     /** @} */

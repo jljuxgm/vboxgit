@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic3.h 91462 2021-09-29 15:17:47Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic3.h 91467 2021-09-29 17:57:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic3 class declaration.
  */
@@ -93,6 +93,9 @@ private:
     UIApplianceExportEditorWidget *m_pApplianceWidget;
     /** Holds the Form Editor widget instance. */
     UIFormEditorWidget            *m_pFormEditor;
+
+    /** Holds whether cloud exporting is at launching stage. */
+    bool  m_fLaunching;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_wizards_exportappliance_UIWizardExportAppPageBasic3_h */
