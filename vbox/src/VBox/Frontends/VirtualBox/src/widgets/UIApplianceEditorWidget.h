@@ -1,4 +1,4 @@
-/* $Id: UIApplianceEditorWidget.h 91565 2021-10-05 11:14:30Z vboxsync $ */
+/* $Id: UIApplianceEditorWidget.h 91579 2021-10-05 17:32:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceEditorWidget class declaration.
  */
@@ -33,6 +33,7 @@
 
 /* COM includes: */
 #include "COMEnums.h"
+#include "CAppliance.h"
 #include "CVirtualSystemDescription.h"
 
 /* Forward declarations: */
@@ -293,13 +294,11 @@ public:
     /** Constructs the Appliance Editor widget passing @a pParent to the base-class. */
     UIApplianceEditorWidget(QWidget *pParent = 0);
 
+    /** Defines @a comAppliance wrapper instance. */
+    virtual void setAppliance(const CAppliance &comAppliance);
+
     /** Defines the list of VSD @a hints. */
     void setVsdHints(const AbstractVSDParameterList &hints);
-
-    /** Returns whether the Appliance Editor has valid state. */
-    bool isValid() const { return m_pAppliance != 0; }
-    /** Returns the currently set appliance reference. */
-    CAppliance *appliance() const { return m_pAppliance; }
 
     /** Defines virtual system base folder @a strPath. */
     void setVirtualSystemBaseFolder(const QString &strPath);
@@ -323,11 +322,12 @@ protected:
     /** Handles translation event. */
     virtual void retranslateUi() /* override */;
 
+    /** Holds the currently set appliance reference. */
+    CAppliance  m_comAppliance;
+
     /** Holds the list of VSD hints. */
     AbstractVSDParameterList  m_listVsdHints;
 
-    /** Holds the currently set appliance reference. */
-    CAppliance         *m_pAppliance;
     /** Holds the Appliance model reference. */
     UIApplianceModel *m_pModel;
 

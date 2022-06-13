@@ -1,4 +1,4 @@
-/* $Id: UIApplianceExportEditorWidget.cpp 91541 2021-10-04 12:51:41Z vboxsync $ */
+/* $Id: UIApplianceExportEditorWidget.cpp 91579 2021-10-05 17:32:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceExportEditorWidget class implementation.
  */
@@ -62,8 +62,8 @@ UIApplianceExportEditorWidget::UIApplianceExportEditorWidget(QWidget *pParent /*
 
 void UIApplianceExportEditorWidget::setAppliance(const CAppliance &comAppliance)
 {
-    /* Cache newly passed appliance: */
-    m_comAppliance = comAppliance;
+    /* Call to base-class: */
+    UIApplianceEditorWidget::setAppliance(comAppliance);
 
     /* Cleanup previous stuff: */
     if (m_pModel)

@@ -1,4 +1,4 @@
-/* $Id: UIApplianceEditorWidget.cpp 91565 2021-10-05 11:14:30Z vboxsync $ */
+/* $Id: UIApplianceEditorWidget.cpp 91579 2021-10-05 17:32:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceEditorWidget class implementation.
  */
@@ -1764,7 +1764,6 @@ int UIApplianceEditorWidget::m_maxGuestCPUCount = -1;
 
 UIApplianceEditorWidget::UIApplianceEditorWidget(QWidget *pParent /* = 0 */)
     : QIWithRetranslateUI<QWidget>(pParent)
-    , m_pAppliance(0)
     , m_pModel(0)
 {
     /* Make sure all static content is properly initialized */
@@ -1847,6 +1846,11 @@ UIApplianceEditorWidget::UIApplianceEditorWidget(QWidget *pParent /* = 0 */)
 
     /* Translate finally: */
     retranslateUi();
+}
+
+void UIApplianceEditorWidget::setAppliance(const CAppliance &comAppliance)
+{
+    m_comAppliance = comAppliance;
 }
 
 void UIApplianceEditorWidget::setVsdHints(const AbstractVSDParameterList &hints)

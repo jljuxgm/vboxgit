@@ -1,4 +1,4 @@
-/* $Id: UIApplianceExportEditorWidget.h 91539 2021-10-04 10:57:58Z vboxsync $ */
+/* $Id: UIApplianceExportEditorWidget.h 91579 2021-10-05 17:32:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceExportEditorWidget class declaration.
  */
@@ -38,15 +38,10 @@ public:
     UIApplianceExportEditorWidget(QWidget *pParent = 0);
 
     /** Assigns @a comAppliance and populates widget contents. */
-    void setAppliance(const CAppliance &comAppliance);
+    virtual void setAppliance(const CAppliance &comAppliance) /* override final */;
 
     /** Prepares export by pushing edited data back to appliance. */
     void prepareExport();
-
-private:
-
-    /** Holds the appliance wrapper instance. */
-    CAppliance  m_comAppliance;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_widgets_UIApplianceExportEditorWidget_h */
