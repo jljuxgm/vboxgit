@@ -1,4 +1,4 @@
-/* $Id: VBoxManageList.cpp 86142 2020-09-16 21:03:49Z vboxsync $ */
+/* $Id: VBoxManageList.cpp 89915 2021-06-25 15:42:07Z vboxsync $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
@@ -2209,7 +2209,9 @@ RTEXITCODE handleList(HandlerArg *a)
     bool                fOptLong      = false;
     bool                fOptMultiple  = false;
     bool                fOptSorted    = false;
+    bool                fFirst        = true;
     enum ListType_T     enmOptCommand = kListNotSpecified;
+    RTEXITCODE          rcExit = RTEXITCODE_SUCCESS;
 
     static const RTGETOPTDEF s_aListOptions[] =
     {
@@ -2311,9 +2313,14 @@ RTEXITCODE handleList(HandlerArg *a)
                 enmOptCommand = (enum ListType_T)ch;
                 if (fOptMultiple)
                 {
+                    if (fFirst)
+                        fFirst = false;
+                    else
+                        RTPrintf("\n");
+                    RTPrintf("[%s]\n", ValueUnion.pDef->pszLong);
                     HRESULT hrc = produceList(enmOptCommand, fOptLong, fOptSorted, a->virtualBox);
                     if (FAILED(hrc))
-                        return RTEXITCODE_FAILURE;
+                        rcExit = RTEXITCODE_FAILURE;
                 }
                 break;
 
@@ -2334,10 +2341,10 @@ RTEXITCODE handleList(HandlerArg *a)
     {
         HRESULT hrc = produceList(enmOptCommand, fOptLong, fOptSorted, a->virtualBox);
         if (FAILED(hrc))
-            return RTEXITCODE_FAILURE;
+            rcExit = RTEXITCODE_FAILURE;
     }
 
-    return RTEXITCODE_SUCCESS;
+    return rcExit;
 }
 
 #endif /* !VBOX_ONLY_DOCS */
