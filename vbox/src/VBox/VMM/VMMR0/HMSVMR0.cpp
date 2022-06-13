@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 92583 2021-11-24 09:13:14Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 92585 2021-11-24 10:40:08Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -3962,7 +3962,7 @@ static VBOXSTRICTRC hmR0SvmCheckForceFlags(PVMCPUCC pVCpu)
 
     /* Could happen as a result of longjump. */
     if (VMCPU_FF_IS_SET(pVCpu, VMCPU_FF_HM_UPDATE_CR3))
-        PGMUpdateCR3(pVCpu, CPUMGetGuestCR3(pVCpu), false /* fPdpesMapped */);
+        PGMUpdateCR3(pVCpu, CPUMGetGuestCR3(pVCpu), false /* fCr3Mapped */);
 
     /* Update pending interrupts into the APIC's IRR. */
     if (VMCPU_FF_TEST_AND_CLEAR(pVCpu, VMCPU_FF_UPDATE_APIC))

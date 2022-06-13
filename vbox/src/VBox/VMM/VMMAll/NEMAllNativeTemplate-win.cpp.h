@@ -1,4 +1,4 @@
-/* $Id: NEMAllNativeTemplate-win.cpp.h 92583 2021-11-24 09:13:14Z vboxsync $ */
+/* $Id: NEMAllNativeTemplate-win.cpp.h 92585 2021-11-24 10:40:08Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, Windows code template ring-0/3.
  */
@@ -496,7 +496,7 @@ NEM_TMPL_STATIC int nemHCWinCopyStateFromHyperV(PVMCC pVM, PVMCPUCC pVCpu, uint6
             return rc;
         if (rc == VERR_NEM_FLUSH_TLB)
         {
-            rc = PGMFlushTLB(pVCpu, pVCpu->cpum.GstCtx.cr3, true /*fGlobal*/, false /*fPdpesMapped*/);
+            rc = PGMFlushTLB(pVCpu, pVCpu->cpum.GstCtx.cr3, true /*fGlobal*/, false /*fCr3Mapped*/);
             return rc;
         }
         AssertLogRelRCReturn(rc, rc);
