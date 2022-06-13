@@ -1,4 +1,4 @@
-/* $Id: Global.h 93480 2022-01-28 16:09:52Z vboxsync $ */
+/* $Id: Global.h 94714 2022-04-27 07:41:12Z vboxsync $ */
 /** @file
  * VirtualBox COM API - Global Declarations and Definitions.
  */
@@ -56,6 +56,13 @@
  * hence will not conflict with real extension packs.
  */
 #define VBOXVRDP_KLUDGE_EXTPACK_NAME    "Built-in-VBoxVRDP"
+
+/** The VBoxPuelCrypto kludge extension pack name.
+ *
+ * This is not a valid extension pack name (dashes are not allowed), and
+ * hence will not conflict with real extension packs.
+ */
+#define VBOXPUELCRYPTO_KLUDGE_EXTPACK_NAME    "Built-in-VBoxPuelCrypto"
 
 /**
  * Contains global static definitions that can be referenced by all COM classes

@@ -1,4 +1,4 @@
-/* $Id: ExtPackUtil.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: ExtPackUtil.h 94714 2022-04-27 07:41:12Z vboxsync $ */
 /** @file
  * VirtualBox Main - Extension Pack Utilities and definitions, VBoxC, VBoxSVC, ++.
  */
@@ -106,6 +106,8 @@ typedef struct VBOXEXTPACKDESC
     RTCString               strMainVMModule;
     /** The name of the VRDE module, empty if none. */
     RTCString               strVrdeModule;
+    /** The name of the cryptographic module, empty if none. */
+    RTCString               strCryptoModule;
     /** The number of plug-in descriptors. */
     uint32_t                cPlugIns;
     /** Pointer to an array of plug-in descriptors. */
