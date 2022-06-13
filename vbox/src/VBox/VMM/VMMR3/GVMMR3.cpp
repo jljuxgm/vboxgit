@@ -1,4 +1,4 @@
-/* $Id: GVMMR3.cpp 92232 2021-11-05 00:57:27Z vboxsync $ */
+/* $Id: GVMMR3.cpp 92233 2021-11-05 00:58:21Z vboxsync $ */
 /** @file
  * GVMM - Global VM Manager, ring-3 request wrappers.
  */
@@ -27,7 +27,7 @@
 
 
 /**
- * @see GMMR0RegisterWorkerThread
+ * @see GVMMR0RegisterWorkerThread
  */
 VMMR3_INT_DECL(int)  GVMMR3RegisterWorkerThread(PVM pVM, GVMMWORKERTHREAD enmWorker)
 {
@@ -41,7 +41,7 @@ VMMR3_INT_DECL(int)  GVMMR3RegisterWorkerThread(PVM pVM, GVMMWORKERTHREAD enmWor
 
 
 /**
- * @see GMMR0DeregisterWorkerThread
+ * @see GVMMR0DeregisterWorkerThread
  */
 VMMR3_INT_DECL(int)  GVMMR3DeregisterWorkerThread(PVM pVM, GVMMWORKERTHREAD enmWorker)
 {
