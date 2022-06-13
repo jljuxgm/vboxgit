@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 92731 2021-12-03 11:24:28Z vboxsync $ */
+/* $Id: UIMessageCenter.h 92811 2021-12-08 13:41:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -356,7 +356,7 @@ public:
     /** @name VirtualBox Manager / Network Manager warnings.
       * @{ */
         bool confirmCloudNetworkRemoval(const QString &strName, QWidget *pParent = 0) const;
-        bool confirmHostOnlyInterfaceRemoval(const QString &strName, QWidget *pParent = 0) const;
+        bool confirmHostNetworkInterfaceRemoval(const QString &strName, QWidget *pParent = 0) const;
         bool confirmNATNetworkRemoval(const QString &strName, QWidget *pParent = 0) const;
     /** @} */
 

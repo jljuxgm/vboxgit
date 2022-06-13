@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 92731 2021-12-03 11:24:28Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 92811 2021-12-08 13:41:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -1322,7 +1322,7 @@ bool UIMessageCenter::confirmCloudNetworkRemoval(const QString &strName, QWidget
                           false /* ok button by default? */);
 }
 
-bool UIMessageCenter::confirmHostOnlyInterfaceRemoval(const QString &strName, QWidget *pParent /* = 0 */) const
+bool UIMessageCenter::confirmHostNetworkInterfaceRemoval(const QString &strName, QWidget *pParent /* = 0 */) const
 {
     return questionBinary(pParent, MessageType_Question,
                           tr("<p>Deleting this host-only network will remove "
