@@ -1,4 +1,4 @@
-/* $Id: vkatCommon.cpp 92057 2021-10-26 07:02:32Z vboxsync $ */
+/* $Id: vkatCommon.cpp 92058 2021-10-26 07:05:55Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) - Self test code.
  */
@@ -665,7 +665,7 @@ int audioTestPlayTone(PAUDIOTESTIOOPTS pIoOpts, PAUDIOTESTENV pTstEnv, PAUDIOTES
 
                 if (   g_uVerbosity >= 3
                     && (   !nsLastMsgCantWrite
-                        || (nsNow - nsLastMsgCantWrite) > RT_NS_10SEC) /* Don't spam the output too much. */
+                        || (nsNow - nsLastMsgCantWrite) > RT_NS_10SEC)) /* Don't spam the output too much. */
                 {
                     RTTestPrintf(g_hTest, RTTESTLVL_ALWAYS, "Waiting %RU32ms for stream to be writable again (last write %RU64ns ago) ...\n",
                                  msSleep, nsNow - nsLastWrite);
