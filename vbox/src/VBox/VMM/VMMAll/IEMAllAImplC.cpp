@@ -1,4 +1,4 @@
-/* $Id: IEMAllAImplC.cpp 93879 2022-02-21 22:28:27Z vboxsync $ */
+/* $Id: IEMAllAImplC.cpp 93881 2022-02-22 09:09:52Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in Assembly, portable C variant.
  */
@@ -87,7 +87,7 @@
  * @param   a_uDst          The original destination value (for AF calc).
  * @param   a_cBitsWidth    The width of the result (8, 16, 32, 64).
  * @param   a_CfExpr        Bool expression for the carry flag (CF).
- * @param   a_uOfSrc        The a_uSrc value to use for overflow calculation.
+ * @param   a_uSrcOf        The a_uSrc value to use for overflow calculation.
  */
 #define IEM_EFL_UPDATE_STATUS_BITS_FOR_ARITHMETIC(a_pfEFlags, a_uResult, a_uDst, a_uSrc, a_cBitsWidth, a_CfExpr, a_uSrcOf) \
     do { \
