@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 90439 2021-07-30 16:41:49Z vboxsync $ */
+/* $Id: PGMAll.cpp 90784 2021-08-23 09:42:32Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -3643,7 +3643,7 @@ static DECLCALLBACK(size_t) pgmFormatTypeHandlerRamRange(PFNRTSTROUTPUT pfnOutpu
 {
     size_t              cch;
     PGMRAMRANGE const  *pRam = (PGMRAMRANGE const *)pvValue;
-    if (VALID_PTR(pRam))
+    if (RT_VALID_PTR(pRam))
     {
         char szTmp[80];
         cch = RTStrPrintf(szTmp, sizeof(szTmp), "%RGp-%RGp", pRam->GCPhys, pRam->GCPhysLast);

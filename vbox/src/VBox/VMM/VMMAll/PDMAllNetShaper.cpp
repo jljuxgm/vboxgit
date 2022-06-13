@@ -1,4 +1,4 @@
-/* $Id: PDMAllNetShaper.cpp 90437 2021-07-30 16:18:25Z vboxsync $ */
+/* $Id: PDMAllNetShaper.cpp 90784 2021-08-23 09:42:32Z vboxsync $ */
 /** @file
  * PDM Network Shaper - Limit network traffic according to bandwidth group settings.
  */
@@ -39,7 +39,7 @@
 VMM_INT_DECL(bool) PDMNetShaperAllocateBandwidth(PVMCC pVM, PPDMNSFILTER pFilter, size_t cbTransfer)
 {
     AssertPtrReturn(pFilter, true);
-    if (!VALID_PTR(pFilter->CTX_SUFF(pBwGroup)))
+    if (!RT_VALID_PTR(pFilter->CTX_SUFF(pBwGroup)))
         return true;
 
     PPDMNSBWGROUP pBwGroup = ASMAtomicReadPtrT(&pFilter->CTX_SUFF(pBwGroup), PPDMNSBWGROUP);

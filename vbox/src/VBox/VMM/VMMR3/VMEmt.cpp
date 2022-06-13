@@ -1,4 +1,4 @@
-/* $Id: VMEmt.cpp 88346 2021-04-01 13:16:25Z vboxsync $ */
+/* $Id: VMEmt.cpp 90784 2021-08-23 09:42:32Z vboxsync $ */
 /** @file
  * VM - Virtual Machine, The Emulation Thread.
  */
@@ -74,7 +74,7 @@ int vmR3EmulationThreadWithId(RTTHREAD hThreadSelf, PUVMCPU pUVCpu, VMCPUID idCp
     int     rc;
     RT_NOREF_PV(hThreadSelf);
 
-    AssertReleaseMsg(VALID_PTR(pUVM) && pUVM->u32Magic == UVM_MAGIC,
+    AssertReleaseMsg(RT_VALID_PTR(pUVM) && pUVM->u32Magic == UVM_MAGIC,
                      ("Invalid arguments to the emulation thread!\n"));
 
     rc = RTTlsSet(pUVM->vm.s.idxTLS, pUVCpu);

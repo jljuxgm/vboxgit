@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 82992 2020-02-05 12:16:50Z vboxsync $ */
+/* $Id: GMMR0.cpp 90784 2021-08-23 09:42:32Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -932,7 +932,7 @@ GMMR0DECL(void) GMMR0Term(void)
      * Take care / be paranoid...
      */
     PGMM pGMM = g_pGMM;
-    if (!VALID_PTR(pGMM))
+    if (!RT_VALID_PTR(pGMM))
         return;
     if (pGMM->u32Magic != GMM_MAGIC)
     {

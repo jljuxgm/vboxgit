@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 90380 2021-07-28 21:38:23Z vboxsync $ */
+/* $Id: VMMR0.cpp 90784 2021-08-23 09:42:32Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -2700,8 +2700,8 @@ VMMR0DECL(void) vmmR0LoggerFlush(PRTLOGGER pLogger)
      * (This is a bit paranoid code.)
      */
     PVMMR0LOGGER pR0Logger = (PVMMR0LOGGER)((uintptr_t)pLogger - RT_UOFFSETOF(VMMR0LOGGER, Logger));
-    if (    !VALID_PTR(pR0Logger)
-        ||  !VALID_PTR(pR0Logger + 1)
+    if (    !RT_VALID_PTR(pR0Logger)
+        ||  !RT_VALID_PTR(pR0Logger + 1)
         ||  pLogger->u32Magic != RTLOGGER_MAGIC)
     {
 # ifdef DEBUG
@@ -2713,7 +2713,7 @@ VMMR0DECL(void) vmmR0LoggerFlush(PRTLOGGER pLogger)
         return; /* quietly */
 
     PVMCC pVM = pR0Logger->pVM;
-    if (   !VALID_PTR(pVM)
+    if (   !RT_VALID_PTR(pVM)
         || pVM->pSelf != pVM)
     {
 # ifdef DEBUG

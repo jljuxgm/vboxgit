@@ -1,4 +1,4 @@
-/* $Id: VMReq.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
+/* $Id: VMReq.cpp 90784 2021-08-23 09:42:32Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -810,7 +810,7 @@ VMMR3DECL(int) VMR3ReqQueue(PVMREQ pReq, RTMSINTERVAL cMillies)
      * Verify the supplied package.
      */
     AssertMsgReturn(pReq->enmState == VMREQSTATE_ALLOCATED, ("%d\n", pReq->enmState), VERR_VM_REQUEST_STATE);
-    AssertMsgReturn(    VALID_PTR(pReq->pUVM)
+    AssertMsgReturn(    RT_VALID_PTR(pReq->pUVM)
                     &&  !pReq->pNext
                     &&  pReq->EventSem != NIL_RTSEMEVENT,
                     ("Invalid request package! Anyone cooking their own packages???\n"),
@@ -969,7 +969,7 @@ VMMR3DECL(int) VMR3ReqWait(PVMREQ pReq, RTMSINTERVAL cMillies)
                     ||  pReq->enmState == VMREQSTATE_COMPLETED,
                     ("Invalid state %d\n", pReq->enmState),
                     VERR_VM_REQUEST_STATE);
-    AssertMsgReturn(    VALID_PTR(pReq->pUVM)
+    AssertMsgReturn(    RT_VALID_PTR(pReq->pUVM)
                     &&  pReq->EventSem != NIL_RTSEMEVENT,
                     ("Invalid request package! Anyone cooking their own packages???\n"),
                     VERR_VM_REQUEST_INVALID_PACKAGE);

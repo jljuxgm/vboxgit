@@ -1,4 +1,4 @@
-/* $Id: DBGFAddr.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: DBGFAddr.cpp 90784 2021-08-23 09:42:32Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Mixed Address Methods.
  */
@@ -209,7 +209,7 @@ VMMR3_INT_DECL(PDBGFADDRESS) DBGFR3AddrFromHostR0(PDBGFADDRESS pAddress, RTR0UIN
 VMMR3DECL(bool) DBGFR3AddrIsValid(PUVM pUVM, PCDBGFADDRESS pAddress)
 {
     UVM_ASSERT_VALID_EXT_RETURN(pUVM, false);
-    if (!VALID_PTR(pAddress))
+    if (!RT_VALID_PTR(pAddress))
         return false;
     if (!DBGFADDRESS_IS_VALID(pAddress))
         return false;

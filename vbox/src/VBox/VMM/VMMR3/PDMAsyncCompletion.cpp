@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletion.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: PDMAsyncCompletion.cpp 90784 2021-08-23 09:42:32Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -1509,7 +1509,7 @@ VMMR3DECL(void) PDMR3AsyncCompletionEpClose(PPDMASYNCCOMPLETIONENDPOINT pEndpoin
     LogFlowFunc((": pEndpoint=%p\n", pEndpoint));
 
     /* Sanity checks. */
-    AssertReturnVoid(VALID_PTR(pEndpoint));
+    AssertReturnVoid(RT_VALID_PTR(pEndpoint));
 
     PPDMASYNCCOMPLETIONEPCLASS pEndpointClass = pEndpoint->pEpClass;
     pEndpointClass->pEndpointOps->pfnEpClose(pEndpoint);
