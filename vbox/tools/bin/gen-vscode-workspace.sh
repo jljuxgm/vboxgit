@@ -1,5 +1,5 @@
 # !kmk_ash
-# $Id: gen-vscode-workspace.sh 94237 2022-03-15 09:41:26Z vboxsync $
+# $Id: gen-vscode-workspace.sh 94572 2022-04-12 10:51:58Z vboxsync $
 ## @file
 # Script for generating a Visual Studio Code (vscode) workspace.
 #
@@ -812,6 +812,8 @@ lib=$(my_get_newest_ver src/libs/openssl)
 my_generate_project "openssl"       "${lib}"                                --begin-incs "include" "${lib}/crypto"                          --end-includes "${lib}"
 lib=$(my_get_newest_ver src/libs/curl)
 my_generate_project "curl"          "${lib}"                                --begin-incs "include" "${lib}/include"                         --end-includes "${lib}"
+lib=$(my_get_newest_ver src/libs/softfloat)
+my_generate_project "softfloat"     "${lib}"                                --begin-incs "include" "${lib}/source/include"                  --end-includes "${lib}"
 
 # webtools
 my_generate_project "webtools"      "webtools"                              --begin-incs "include" "webtools/tinderbox/server/Tinderbox3"   --end-includes "webtools"
