@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 90344 2021-07-26 18:26:53Z vboxsync $ */
+/* $Id: UINotificationObjects.cpp 90352 2021-07-27 11:08:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -352,4 +352,92 @@ CProgress UINotificationProgressApplianceImport::createProgress(COMResult &comRe
     comResult = m_comAppliance;
     /* Return progress-wrapper: */
     return comProgress;
+}
+
+
+/*********************************************************************************************************************************
+*   Class UINotificationProgressExtensionPackInstall implementation.                                                             *
+*********************************************************************************************************************************/
+
+UINotificationProgressExtensionPackInstall::UINotificationProgressExtensionPackInstall(const CExtPackFile &comExtPackFile,
+                                                                                       bool fReplace,
+                                                                                       const QString &strExtensionPackName,
+                                                                                       const QString &strDisplayInfo)
+    : m_comExtPackFile(comExtPackFile)
+    , m_fReplace(fReplace)
+    , m_strExtensionPackName(strExtensionPackName)
+    , m_strDisplayInfo(strDisplayInfo)
+{
+    connect(this, &UINotificationProgress::sigProgressFinished,
+            this, &UINotificationProgressExtensionPackInstall::sltHandleProgressFinished);
+}
+
+QString UINotificationProgressExtensionPackInstall::name() const
+{
+    return UINotificationProgress::tr("Installing package ...");
+}
+
+QString UINotificationProgressExtensionPackInstall::details() const
+{
+    return UINotificationProgress::tr("<b>Name:</b> %1").arg(m_strExtensionPackName);
+}
+
+CProgress UINotificationProgressExtensionPackInstall::createProgress(COMResult &comResult)
+{
+    /* Initialize progress-wrapper: */
+    CProgress comProgress = m_comExtPackFile.Install(m_fReplace, m_strDisplayInfo);
+    /* Store COM result: */
+    comResult = m_comExtPackFile;
+    /* Return progress-wrapper: */
+    return comProgress;
+}
+
+void UINotificationProgressExtensionPackInstall::sltHandleProgressFinished()
+{
+    if (error().isEmpty())
+        emit sigExtensionPackInstalled(m_strExtensionPackName);
+}
+
+
+/*********************************************************************************************************************************
+*   Class UINotificationProgressExtensionPackUninstall implementation.                                                           *
+*********************************************************************************************************************************/
+
+UINotificationProgressExtensionPackUninstall::UINotificationProgressExtensionPackUninstall(const CExtPackManager &comExtPackManager,
+                                                                                           const QString &strExtensionPackName,
+                                                                                           const QString &strDisplayInfo)
+    : m_comExtPackManager(comExtPackManager)
+    , m_strExtensionPackName(strExtensionPackName)
+    , m_strDisplayInfo(strDisplayInfo)
+{
+    connect(this, &UINotificationProgress::sigProgressFinished,
+            this, &UINotificationProgressExtensionPackUninstall::sltHandleProgressFinished);
+}
+
+QString UINotificationProgressExtensionPackUninstall::name() const
+{
+    return UINotificationProgress::tr("Uninstalling package ...");
+}
+
+QString UINotificationProgressExtensionPackUninstall::details() const
+{
+    return UINotificationProgress::tr("<b>Name:</b> %1").arg(m_strExtensionPackName);
+}
+
+CProgress UINotificationProgressExtensionPackUninstall::createProgress(COMResult &comResult)
+{
+    /* Initialize progress-wrapper: */
+    CProgress comProgress = m_comExtPackManager.Uninstall(m_strExtensionPackName,
+                                                          false /* forced removal? */,
+                                                          m_strDisplayInfo);
+    /* Store COM result: */
+    comResult = m_comExtPackManager;
+    /* Return progress-wrapper: */
+    return comProgress;
+}
+
+void UINotificationProgressExtensionPackUninstall::sltHandleProgressFinished()
+{
+    if (error().isEmpty())
+        emit sigExtensionPackUninstalled(m_strExtensionPackName);
 }
