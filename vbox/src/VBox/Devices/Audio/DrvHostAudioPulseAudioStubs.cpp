@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioPulseAudioStubs.cpp 89426 2021-06-01 10:24:18Z vboxsync $ */
+/* $Id: DrvHostAudioPulseAudioStubs.cpp 91658 2021-10-11 09:02:56Z vboxsync $ */
 /** @file
  * Stubs for libpulse.
  */
@@ -344,6 +344,8 @@ static DECLCALLBACK(int32_t) drvHostAudioPulseLibInitOnce(void *pvUser)
                 break;
             }
         }
+
+        RTLdrClose(hMod);
     }
     else
         LogRelFunc(("Failed to load library %s: %Rrc\n", VBOX_PULSE_LIB, rc));

@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioAlsaStubs.cpp 91571 2021-10-05 15:37:20Z vboxsync $ */
+/* $Id: DrvHostAudioAlsaStubs.cpp 91658 2021-10-11 09:02:56Z vboxsync $ */
 /** @file
  * Stubs for libasound.
  */
@@ -332,6 +332,8 @@ static DECLCALLBACK(int32_t) drvHostAudioAlsaLibInitOnce(void *pvUser)
                 return rc;
             }
         }
+
+        RTLdrClose(hMod);
     }
     else
         LogRelFunc(("Failed to load library %s (%Rrc)\n", VBOX_ALSA_LIB, rc));
