@@ -1,4 +1,4 @@
-/* $Id: VMMDevTesting.h 90461 2021-08-01 20:56:10Z vboxsync $ */
+/* $Id: VMMDevTesting.h 90467 2021-08-02 10:57:30Z vboxsync $ */
 /** @file
  * VMMDev - Testing Extensions.
  */
@@ -171,7 +171,9 @@
 /** Locked Control: Wait time shift count. */
 #define VMMDEV_TESTING_LOCKED_WAIT_SHIFT        14
 /** Locked Control: Must be zero. */
-#define VMMDEV_TESTING_LOCKED_MBZ_MASK          UINT32_C(0x70000000)
+#define VMMDEV_TESTING_LOCKED_MBZ_MASK          UINT32_C(0x30000000)
+/** Locked Control: Take lock with rcBusy set to VINF_SUCCESS.   */
+#define VMMDEV_TESTING_LOCKED_BUSY_SUCCESS      UINT32_C(0x40000000)
 /** Locked Control: Poke EMT(s) flag.   */
 #define VMMDEV_TESTING_LOCKED_POKE              UINT32_C(0x80000000)
 /** @} */

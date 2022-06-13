@@ -1,4 +1,4 @@
-/* $Id: VMMDevState.h 90461 2021-08-01 20:56:10Z vboxsync $ */
+/* $Id: VMMDevState.h 90467 2021-08-02 10:57:30Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device, internal header.
  */
@@ -317,7 +317,9 @@ typedef struct VMMDEV
             /** Number of microseconds to wait before retaking the lock again. */
             uint32_t    cUsBetween : 14;
             /** Reserved MBZ. */
-            uint32_t    uReserved : 3;
+            uint32_t    uReserved : 2;
+            /** Pass VINF_SUCCESS as rcBusy if set. */
+            uint32_t    fMustSucceed : 1;
             /** Whether to poke EMTs before releasing it. */
             uint32_t    fPokeBeforeRelease : 1;
         } s;
