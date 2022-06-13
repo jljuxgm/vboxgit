@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageVariant.cpp 90413 2021-07-29 15:54:11Z vboxsync $ */
+/* $Id: UIWizardNewVDPageVariant.cpp 90854 2021-08-24 17:34:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageVariant class implementation.
  */
@@ -103,7 +103,7 @@ void UIWizardNewVDPageVariant::setWidgetVisibility(const CMediumFormat &mediumFo
 {
     AssertReturnVoid(m_pVariantGroupBox);
 
-    m_pVariantGroupBox->updateMediumVariantWidgetsAfterFormatChange(mediumFormat, true /* hide disabled widgets*/);
+    m_pVariantGroupBox->updateMediumVariantWidgetsAfterFormatChange(mediumFormat);
 
     if (m_pDynamicLabel)
         m_pDynamicLabel->setHidden(!m_pVariantGroupBox->isCreateDynamicPossible());

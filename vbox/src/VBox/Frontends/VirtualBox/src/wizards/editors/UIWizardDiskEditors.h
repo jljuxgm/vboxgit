@@ -1,4 +1,4 @@
-/* $Id: UIWizardDiskEditors.h 90800 2021-08-23 16:48:32Z vboxsync $ */
+/* $Id: UIWizardDiskEditors.h 90854 2021-08-24 17:34:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardDiskEditors class declaration.
  */
@@ -111,10 +111,9 @@ signals:
 public:
 
     UIDiskVariantGroupBox(bool fExpertMode, QWidget *pParent = 0);
-    void updateMediumVariantWidgetsAfterFormatChange(const CMediumFormat &mediumFormat, bool fHideDisabled = false);
+    void updateMediumVariantWidgetsAfterFormatChange(const CMediumFormat &mediumFormat);
     qulonglong mediumVariant() const;
     void setMediumVariant(qulonglong uMediumVariant);
-    void setWidgetVisibility(const CMediumFormat &mediumFormat);
     bool isComplete() const;
 
     bool isCreateDynamicPossible() const;
