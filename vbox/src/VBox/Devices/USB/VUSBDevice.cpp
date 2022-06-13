@@ -1,4 +1,4 @@
-/* $Id: VUSBDevice.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: VUSBDevice.cpp 93914 2022-02-24 12:20:43Z vboxsync $ */
 /** @file
  * Virtual USB - Device.
  */
@@ -1432,7 +1432,7 @@ static void vusbDevResetDone(PVUSBDEV pDev, int rc, PFNVUSBRESETDONE pfnDone, vo
     if (!vusbDevIsRh(pDev))
         vusbDevSetAddress(pDev, VUSB_DEFAULT_ADDRESS);
     if (pfnDone)
-        pfnDone(&pDev->IDevice, rc, pvUser);
+        pfnDone(&pDev->IDevice, pDev->i16Port, rc, pvUser);
 }
 
 
@@ -1646,7 +1646,7 @@ static DECLCALLBACK(int) vusbIDevicePowerOff(PVUSBIDEVICE pInterface)
     {
         PVUSBROOTHUB pRh = (PVUSBROOTHUB)pDev;
         VUSBIRhCancelAllUrbs(&pRh->IRhConnector);
-        VUSBIRhReapAsyncUrbs(&pRh->IRhConnector, pInterface, 0);
+        VUSBIRhReapAsyncUrbs(&pRh->IRhConnector, pDev->i16Port, 0);
     }
 
     vusbDevSetState(pDev, VUSB_DEVICE_STATE_ATTACHED);
