@@ -1,4 +1,4 @@
-/* $Id: UnattendedImpl.cpp 93157 2022-01-09 13:30:49Z vboxsync $ */
+/* $Id: UnattendedImpl.cpp 93189 2022-01-11 21:50:56Z vboxsync $ */
 /** @file
  * Unattended class implementation
  */
@@ -37,6 +37,7 @@
 #include <iprt/inifile.h>
 #include <iprt/locale.h>
 #include <iprt/path.h>
+#include <iprt/vfs.h>
 
 using namespace std;
 
@@ -2581,15 +2582,17 @@ HRESULT Unattended::setProxy(const com::Utf8Str &aProxy)
     if (aProxy.isEmpty())
     {
         /* set default proxy */
+        /** @todo BUGBUG! implement this */
     }
     else if (aProxy.equalsIgnoreCase("none"))
     {
         /* clear proxy config */
-        mStrProxy = "";
+        mStrProxy.setNull();
     }
     else
     {
         /** @todo Parse and set proxy config into a schema map or something along those lines. */
+        /** @todo BUGBUG! implement this */
         // return E_NOTIMPL;
         mStrProxy = aProxy;
     }
@@ -3047,7 +3050,7 @@ VBOXOSTYPE Unattended::i_getGuestOsType() const
     return meGuestOsType;
 }
 
-Utf8Str const & Unattended::i_getDetectedOSVersion()
+Utf8Str const &Unattended::i_getDetectedOSVersion()
 {
     Assert(isReadLockedOnCurrentThread());
     return mStrDetectedOSVersion;
