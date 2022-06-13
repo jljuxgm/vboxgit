@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 91889 2021-10-20 12:05:47Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 91890 2021-10-20 12:11:19Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation device.
  *
@@ -1715,7 +1715,7 @@ static int ich9pciR3CommonLoadExec(PPDMDEVINS pDevIns, PDEVPCIBUS pBus, PSSMHAND
         }
 
         /* commit the loaded device config. */
-        rc = devpciR3CommonRestoreRegions(pSSM, pDev, u.DevTmp.Int.s.aIORegions,
+        rc = devpciR3CommonRestoreRegions(pHlp, pSSM, pDev, u.DevTmp.Int.s.aIORegions,
                                           uVersion >= VBOX_ICH9PCI_SAVED_STATE_VERSION_REGION_SIZES);
         if (RT_FAILURE(rc))
             break;
