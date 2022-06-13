@@ -1,4 +1,4 @@
-/* $Id: UIUpdateDefs.cpp 93982 2022-02-28 14:15:03Z vboxsync $ */
+/* $Id: UIUpdateDefs.cpp 94009 2022-03-01 01:16:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Update routine related implementations.
  */
@@ -17,6 +17,7 @@
 
 /* Qt includes: */
 #include <QCoreApplication>
+#include <QLocale>
 #include <QStringList>
 
 /* GUI includes: */
@@ -115,7 +116,8 @@ VBoxUpdateData::PeriodType VBoxUpdateData::periodIndex() const
 
 QString VBoxUpdateData::date() const
 {
-    return isNoNeedToCheck() ? QCoreApplication::translate("UIUpdateManager", "Never") : m_date.toString(Qt::LocaleDate);
+    return isNoNeedToCheck() ? QCoreApplication::translate("UIUpdateManager", "Never")
+                             : QLocale::system().toString(m_date, QLocale::ShortFormat);
 }
 
 QDate VBoxUpdateData::internalDate() const
