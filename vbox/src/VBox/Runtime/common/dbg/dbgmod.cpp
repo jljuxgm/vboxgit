@@ -1,4 +1,4 @@
-/* $Id: dbgmod.cpp 85124 2020-07-08 21:13:30Z vboxsync $ */
+/* $Id: dbgmod.cpp 89881 2021-06-24 10:58:04Z vboxsync $ */
 /** @file
  * IPRT - Debug Module Interpreter.
  */
@@ -284,6 +284,10 @@ static DECLCALLBACK(int) rtDbgModInitOnce(void *pvUser)
             rc = rtDbgModDebugInterpreterRegister(&g_rtDbgModVtDbgDwarf);
         if (RT_SUCCESS(rc))
             rc = rtDbgModDebugInterpreterRegister(&g_rtDbgModVtDbgCodeView);
+#ifdef IPRT_WITH_GHIDRA_DBG_MOD
+        if (RT_SUCCESS(rc))
+            rc = rtDbgModDebugInterpreterRegister(&g_rtDbgModVtDbgGhidra);
+#endif
 #ifdef RT_OS_WINDOWS
         if (RT_SUCCESS(rc))
             rc = rtDbgModDebugInterpreterRegister(&g_rtDbgModVtDbgDbgHelp);
