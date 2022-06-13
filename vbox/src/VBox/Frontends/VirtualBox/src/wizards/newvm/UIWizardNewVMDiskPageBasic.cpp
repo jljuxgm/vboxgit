@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMDiskPageBasic.cpp 90763 2021-08-20 15:34:22Z vboxsync $ */
+/* $Id: UIWizardNewVMDiskPageBasic.cpp 90902 2021-08-26 08:15:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMDiskPageBasic class implementation.
  */
@@ -331,11 +331,6 @@ void UIWizardNewVMDiskPageBasic::initializePage()
     }
 }
 
-void UIWizardNewVMDiskPageBasic::cleanupPage()
-{
-    //UIWizardPage::cleanupPage();
-}
-
 bool UIWizardNewVMDiskPageBasic::isComplete() const
 {
     UIWizardNewVM *pWizard = qobject_cast<UIWizardNewVM*>(wizard());
@@ -387,8 +382,6 @@ bool UIWizardNewVMDiskPageBasic::validatePage()
             return fResult;
         }
     }
-
-    // startProcessing();
     if (pWizard)
     {
             if (m_enmSelectedDiskSource == SelectedDiskSource_New)

@@ -1,4 +1,4 @@
-/* $Id: UIWizardDiskEditors.h 90854 2021-08-24 17:34:35Z vboxsync $ */
+/* $Id: UIWizardDiskEditors.h 90902 2021-08-26 08:15:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardDiskEditors class declaration.
  */
@@ -111,6 +111,7 @@ signals:
 public:
 
     UIDiskVariantGroupBox(bool fExpertMode, QWidget *pParent = 0);
+    /** Enable/disable medium variant radio button depending on the capabilities of the medium format. */
     void updateMediumVariantWidgetsAfterFormatChange(const CMediumFormat &mediumFormat);
     qulonglong mediumVariant() const;
     void setMediumVariant(qulonglong uMediumVariant);

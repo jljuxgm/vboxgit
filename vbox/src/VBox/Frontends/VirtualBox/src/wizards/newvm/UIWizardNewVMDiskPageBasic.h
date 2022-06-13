@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMDiskPageBasic.h 90763 2021-08-20 15:34:22Z vboxsync $ */
+/* $Id: UIWizardNewVMDiskPageBasic.h 90902 2021-08-26 08:15:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMDiskPageBasic class declaration.
  */
@@ -22,7 +22,6 @@
 #endif
 
 /* Qt includes: */
-#include <QVariant>
 #include <QSet>
 
 /* GUI includes: */
@@ -85,7 +84,6 @@ private:
     void prepare();
     void createConnections();
     QWidget *createNewDiskWidgets();
-    void cleanupPage();
     void setEnableNewDiskWidgets(bool fEnable);
     QWidget *createDiskWidgets();
     QWidget *createMediumVariantWidgets(bool fWithLabels);
@@ -115,14 +113,15 @@ private:
        QCheckBox *m_pFixedCheckBox;
     /** @} */
 
-    SelectedDiskSource m_enmSelectedDiskSource;
-    bool m_fRecommendedNoDisk;
-
-    QSet<QString> m_userModifiedParameters;
-    bool m_fVDIFormatFound;
-    qulonglong m_uMediumSizeMin;
-    qulonglong m_uMediumSizeMax;
-
+    /** @name Variables
+     * @{ */
+      SelectedDiskSource m_enmSelectedDiskSource;
+      bool m_fRecommendedNoDisk;
+      QSet<QString> m_userModifiedParameters;
+      bool m_fVDIFormatFound;
+      qulonglong m_uMediumSizeMin;
+      qulonglong m_uMediumSizeMax;
+    /** @} */
 };
 
 #endif /* !FEQT_INCLUDED_SRC_wizards_newvm_UIWizardNewVMDiskPageBasic_h */
