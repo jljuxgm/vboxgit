@@ -19,7 +19,7 @@
 ]>
 <refentry id="vboxmanage-list" lang="en">
   <refentryinfo>
-    <pubdate>$Date: 2021-09-28 14:15:49 +0800 (Tue, 28 Sep 2021) $</pubdate>
+    <pubdate>$Date: 2021-09-28 15:19:53 +0800 (Tue, 28 Sep 2021) $</pubdate>
     <title>VBoxManage list</title>
   </refentryinfo>
 
@@ -352,7 +352,7 @@
       </cmdsynopsis>
       <para>
         The <command>VBoxManage list hostonlynets</command> command
-        lists the host-only networks that have been configured. A 
+        lists the host-only networks that have been configured. A
         host-only network provides connectivity between the host and
         local VMs. See <xref linkend="networkingdetails"/>.
       </para>
