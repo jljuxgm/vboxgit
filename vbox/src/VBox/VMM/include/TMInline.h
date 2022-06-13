@@ -1,4 +1,4 @@
-/* $Id: TMInline.h 87814 2021-02-19 22:03:56Z vboxsync $ */
+/* $Id: TMInline.h 89789 2021-06-19 14:13:50Z vboxsync $ */
 /** @file
  * TM - Common Inlined functions.
  */
@@ -210,7 +210,7 @@ DECL_FORCE_INLINE(void) tmTimerQueueUnlinkActive(PVMCC pVM, PTMTIMERQUEUECC pQue
         Assert(VM_IS_EMT(pVM))
 #endif
 
-/** @def TMTIMER_HANDLE_TO_VARS_RETURN_EX
+/** @def TMTIMER_HANDLE_TO_VARS_RETURN
  * Converts a timer handle to a timer pointer, returning VERR_INVALID_HANDLE if
  * the handle is invalid.
  *
