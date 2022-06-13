@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.h 93990 2022-02-28 15:34:57Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.h 94043 2022-03-01 14:52:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class declaration.
  */
@@ -32,11 +32,11 @@
 
 /* COM includes: */
 #include "COMEnums.h"
+#include "CCloudMachine.h" /* required for Qt6 / c++17 */
 
 /* Forward declaration: */
 class UIChooser;
 class UIChooserNode;
-class CCloudMachine;
 class CMachine;
 
 /** QObject extension used as VM Chooser-pane abstract model.
