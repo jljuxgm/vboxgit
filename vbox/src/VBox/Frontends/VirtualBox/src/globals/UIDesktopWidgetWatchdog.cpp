@@ -1,4 +1,4 @@
-/* $Id: UIDesktopWidgetWatchdog.cpp 91109 2021-09-03 15:31:49Z vboxsync $ */
+/* $Id: UIDesktopWidgetWatchdog.cpp 91110 2021-09-03 15:46:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDesktopWidgetWatchdog class implementation.
  */
@@ -41,10 +41,13 @@
 #include <iprt/assert.h>
 #include <iprt/ldr.h>
 #include <VBox/log.h>
-
-/* Platform includes: */
 #ifdef VBOX_WS_WIN
 # include <iprt/win/windows.h>
+#endif
+
+/* External includes: */
+#ifdef VBOX_WS_X11
+# include <xcb/xcb.h>
 #endif
 
 
