@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 86650 2020-10-20 14:26:02Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 90424 2021-07-30 12:41:38Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -1756,9 +1756,8 @@ void VirtualSystemDescription::i_removeByType(VirtualSystemDescriptionType_T aTy
  * the given reference ID. Useful when needing the controller for a particular
  * virtual disk.
  */
-const VirtualSystemDescriptionEntry* VirtualSystemDescription::i_findControllerFromID(uint32_t id)
+const VirtualSystemDescriptionEntry* VirtualSystemDescription::i_findControllerFromID(const Utf8Str &id)
 {
-    Utf8Str strRef = Utf8StrFmt("%RI32", id);
     vector<VirtualSystemDescriptionEntry>::const_iterator it;
     for (it = m->maDescriptions.begin();
          it != m->maDescriptions.end();
@@ -1772,7 +1771,7 @@ const VirtualSystemDescriptionEntry* VirtualSystemDescription::i_findControllerF
             case VirtualSystemDescriptionType_HardDiskControllerSCSI:
             case VirtualSystemDescriptionType_HardDiskControllerVirtioSCSI:
             case VirtualSystemDescriptionType_HardDiskControllerSAS:
-                if (d.strRef == strRef)
+                if (d.strRef == id)
                     return &d;
                 break;
             default: break; /* Shut up MSC. */

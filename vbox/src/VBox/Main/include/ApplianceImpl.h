@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 86650 2020-10-20 14:26:02Z vboxsync $ */
+/* $Id: ApplianceImpl.h 90424 2021-07-30 12:41:38Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -305,7 +305,7 @@ public:
                     const Utf8Str &strExtraConfig = "");
 
     std::list<VirtualSystemDescriptionEntry*> i_findByType(VirtualSystemDescriptionType_T aType);
-    const VirtualSystemDescriptionEntry* i_findControllerFromID(uint32_t id);
+    const VirtualSystemDescriptionEntry* i_findControllerFromID(const Utf8Str &id);
 
     void i_importVBoxMachineXML(const xml::ElementNode &elmMachine);
     const settings::MachineConfigFile* i_getMachineConfig() const;
