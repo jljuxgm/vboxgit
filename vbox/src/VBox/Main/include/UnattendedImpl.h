@@ -1,4 +1,4 @@
-/* $Id: UnattendedImpl.h 93405 2022-01-24 09:56:23Z vboxsync $ */
+/* $Id: UnattendedImpl.h 93521 2022-02-01 07:52:33Z vboxsync $ */
 /** @file
  * Unattended class header
  */
@@ -30,6 +30,13 @@ class UnattendedInstaller;
 struct UnattendedInstallationDisk;
 struct ControllerSlot;
 
+struct WIMImage
+{
+    Utf8Str mName;
+    Utf8Str mVersionMajor;
+    Utf8Str mVersionMinor;
+    Utf8Str mVersionBuild;
+};
 
 /**
  * Class implementing the IUnattended interface.
@@ -127,6 +134,7 @@ private:
     Utf8Str         mStrDetectedOSFlavor;
     RTCList<RTCString, RTCString *> mDetectedOSLanguages; /**< (only relevant for windows at the moment) */
     Utf8Str         mStrDetectedOSHints;
+    RTCList<WIMImage> mDetectedImages;
     /** @} */
 
     // wrapped IUnattended functions:
@@ -270,4 +278,3 @@ private:
 };
 
 #endif /* !MAIN_INCLUDED_UnattendedImpl_h */
-
