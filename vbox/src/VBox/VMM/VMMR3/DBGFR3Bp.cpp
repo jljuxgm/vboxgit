@@ -1,4 +1,4 @@
-/* $Id: DBGFR3Bp.cpp 89924 2021-06-28 08:16:29Z vboxsync $ */
+/* $Id: DBGFR3Bp.cpp 89925 2021-06-28 08:19:47Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Breakpoint Management.
  */
@@ -1899,7 +1899,7 @@ static int dbgfR3BpDisarm(PUVM pUVM, DBGFBP hBp, PDBGFBPINT pBp)
  */
 static VBOXSTRICTRC dbgfR3BpHit(PVM pVM, PVMCPU pVCpu, DBGFBP hBp, PDBGFBPINT pBp, PCDBGFBPOWNERINT pBpOwner)
 {
-    VBOXSTRICTRC rcStrict;
+    VBOXSTRICTRC rcStrict = VINF_SUCCESS;
 
     switch (DBGF_BP_PUB_GET_TYPE(&pBp->Pub))
     {
