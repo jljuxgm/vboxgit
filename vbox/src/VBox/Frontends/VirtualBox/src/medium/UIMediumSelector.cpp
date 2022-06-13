@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.cpp 92427 2021-11-15 14:12:20Z vboxsync $ */
+/* $Id: UIMediumSelector.cpp 92428 2021-11-15 14:20:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class implementation.
  */
@@ -116,27 +116,6 @@ void UIMediumSelector::retranslateUi()
 {
     if (m_pMainMenu)
         m_pMainMenu->setTitle(tr("&Medium"));
-
-    if (m_pActionAdd)
-    {
-        m_pActionAdd->setText(tr("&Add..."));
-        m_pActionAdd->setToolTip(tr("Add Disk Image"));
-        m_pActionAdd->setStatusTip(tr("Add existing disk image file"));
-    }
-
-    if (m_pActionCreate)
-    {
-        m_pActionCreate->setText(tr("&Create..."));
-        m_pActionCreate->setToolTip(tr("Create Disk Image"));
-        m_pActionCreate->setStatusTip(tr("Create new disk image file"));
-    }
-
-    if (m_pActionRefresh)
-    {
-        m_pActionRefresh->setText(tr("&Refresh"));
-        m_pActionRefresh->setToolTip(tr("Refresh Disk Image Files (%1)").arg(m_pActionRefresh->shortcut().toString()));
-        m_pActionRefresh->setStatusTip(tr("Refresh the list of disk image files"));
-    }
 
     if (m_pCancelButton)
         m_pCancelButton->setText(tr("&Cancel"));
