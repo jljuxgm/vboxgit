@@ -1,4 +1,4 @@
-/* $Id: UIFileManager.cpp 92741 2021-12-03 16:45:05Z vboxsync $ */
+/* $Id: UIFileManager.cpp 92753 2021-12-06 08:51:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManager class implementation.
  */
@@ -128,7 +128,6 @@ UIFileManager::UIFileManager(EmbedTo enmEmbedding, UIActionPool *pActionPool,
     , m_pOptionsPanel(0)
     , m_pLogPanel(0)
     , m_pOperationsPanel(0)
-    , m_fDialogBeingClosed(false)
 {
     loadOptions();
     prepareObjects();
@@ -145,11 +144,6 @@ UIFileManager::UIFileManager(EmbedTo enmEmbedding, UIActionPool *pActionPool,
 UIFileManager::~UIFileManager()
 {
     UIFileManagerOptions::destroy();
-}
-
-void UIFileManager::setDialogBeingClosed(bool fFlag)
-{
-    m_fDialogBeingClosed = fFlag;
 }
 
 QMenu *UIFileManager::menu() const
@@ -609,8 +603,6 @@ void UIFileManager::appendLog(const QString &strLog, const QString &strMachineNa
 
 void UIFileManager::savePanelVisibility()
 {
-    if (m_fDialogBeingClosed)
-        return;
     /* Save a list of currently visible panels: */
     QStringList strNameList;
     foreach(UIDialogPanel* pPanel, m_visiblePanelsList)
