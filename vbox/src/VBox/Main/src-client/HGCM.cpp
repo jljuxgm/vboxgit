@@ -1,4 +1,4 @@
-/* $Id: HGCM.cpp 90228 2021-07-16 11:30:51Z vboxsync $ */
+/* $Id: HGCM.cpp 90229 2021-07-16 11:32:45Z vboxsync $ */
 /** @file
  * HGCM (Host-Guest Communication Manager)
  */
@@ -1675,7 +1675,7 @@ int HGCMService::DisconnectClient(uint32_t u32ClientId, bool fFromService, HGCMC
     /*
      * Destroy the client handle prior to the disconnecting to avoid creating
      * a race with other messages from the same client.  See @bugref{10038}
-     * for further details. 
+     * for further details.
      */
     bool fReleaseService = false;
     int  rc              = VERR_NOT_FOUND;
