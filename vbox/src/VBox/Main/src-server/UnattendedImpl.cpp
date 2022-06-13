@@ -1,4 +1,4 @@
-/* $Id: UnattendedImpl.cpp 91718 2021-10-14 11:43:12Z vboxsync $ */
+/* $Id: UnattendedImpl.cpp 92732 2021-12-03 14:09:11Z vboxsync $ */
 /** @file
  * Unattended class implementation
  */
@@ -1244,6 +1244,7 @@ HRESULT Unattended::prepare()
     mStrGuestOsTypeId = strGuestOsTypeId;
     mfGuestOs64Bit    = fIs64Bit;
     mfRtcUseUtc       = RT_BOOL(fRtcUseUtc);
+    menmFirmwareType  = enmFirmware;
 
     /*
      * Do some state checks.
