@@ -1,4 +1,4 @@
-/* $Id: SUPLibSem.cpp 92700 2021-12-02 12:39:54Z vboxsync $ */
+/* $Id: SUPLibSem.cpp 92704 2021-12-02 12:47:39Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Semaphores, ring-3 implementation.
  */
@@ -290,7 +290,7 @@ SUPDECL(int) SUPSemEventMultiWaitNoResume(PSUPDRVSESSION pSession, SUPSEMEVENTMU
 {
     int rc;
     if (!g_supLibData.fDriverless)
-        supSemOp2(pSession, SUP_SEM_TYPE_EVENT_MULTI, (uintptr_t)hEventMulti, SUPSEMOP2_WAIT_MS_REL, cMillies);
+        rc = supSemOp2(pSession, SUP_SEM_TYPE_EVENT_MULTI, (uintptr_t)hEventMulti, SUPSEMOP2_WAIT_MS_REL, cMillies);
     else
         rc = RTSemEventMultiWaitNoResume((RTSEMEVENTMULTI)hEventMulti, cMillies);
     return rc;
