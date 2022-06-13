@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdGuestOsUnattendedInst1.py 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: tdGuestOsUnattendedInst1.py 92050 2021-10-25 16:58:55Z vboxsync $
 
 """
 VirtualBox Validation Kit - Guest OS unattended installation tests.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 82968 $"
+__version__ = "$Revision: 92050 $"
 
 
 # Standard Python imports.
@@ -241,6 +241,14 @@ class UnattendedVm(vboxtestvms.BaseTestVm):
             # Also use it for windows xp to prevent it from ever going online.
             if self.sKind in ('WindowsXP','WindowsXP_64',):
                 eNic0AttachType = vboxcon.NetworkAttachmentType_HostOnly;
+
+        #
+        # Use host-only networks instead of host-only adapters for trunk builds on Mac OS.
+        #
+        if eNic0AttachType == vboxcon.NetworkAttachmentType_HostOnly \
+            and utils.getHostOs() == 'darwin' \
+            and oTestDrv.fpApiVer >= 7.0:
+            eNic0AttachType = vboxcon.NetworkAttachmentType_HostOnlyNetwork;
 
         return vboxtestvms.BaseTestVm._createVmDoIt(self, oTestDrv, eNic0AttachType, sDvdImage);
 

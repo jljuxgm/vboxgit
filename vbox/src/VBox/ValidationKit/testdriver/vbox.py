@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 90244 2021-07-19 17:18:35Z vboxsync $
+# $Id: vbox.py 92050 2021-10-25 16:58:55Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 90244 $"
+__version__ = "$Revision: 92050 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -2240,7 +2240,11 @@ class TestDriver(base.TestDriver):                                              
                 else:
                     reporter.log("    hostInterface:  %s" % (oNic.hostInterface,));
             else:
-                if self.fpApiVer >= 4.1:
+                if self.fpApiVer >= 7.0:
+                    if oNic.attachmentType == vboxcon.NetworkAttachmentType_HostOnlyNetwork:
+                        reporter.log("    attachmentType: HostOnlyNetwork (%s)" % (oNic.attachmentType,));
+                        reporter.log("    hostonly-net: %s" % (oNic.hostOnlyNetwork,));
+                elif self.fpApiVer >= 4.1:
                     if oNic.attachmentType == vboxcon.NetworkAttachmentType_Generic:
                         reporter.log("    attachmentType: Generic (%s)" % (oNic.attachmentType,));
                         reporter.log("    generic-driver: %s" % (oNic.GenericDriver,));
