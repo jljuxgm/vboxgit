@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 91747 2021-10-14 20:50:41Z vboxsync $ */
+/* $Id: MachineImpl.cpp 92040 2021-10-25 14:49:39Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -353,6 +353,9 @@ HRESULT Machine::init(VirtualBox *aParent,
 
             /* Let the OS type enable the X2APIC */
             mHWData->mX2APIC = aOsType->i_recommendedX2APIC();
+
+            rc = aOsType->COMGETTER(RecommendedFirmware)(&mHWData->mFirmwareType);
+            AssertComRC(rc);
         }
         else if (!strOsType.isEmpty())
         {
@@ -364,9 +367,6 @@ HRESULT Machine::init(VirtualBox *aParent,
             mHWData->mLongMode = HC_ARCH_BITS == 64 ? settings::Hardware::LongMode_Enabled : settings::Hardware::LongMode_Disabled;
             mHWData->mX2APIC = false;
         }
-
-        rc = aOsType->COMGETTER(RecommendedFirmware)(&mHWData->mFirmwareType);
-        AssertComRC(rc);
 
         /* Apply BIOS defaults. */
         mBIOSSettings->i_applyDefaults(aOsType);
