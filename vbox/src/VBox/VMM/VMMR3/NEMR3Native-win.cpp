@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-win.cpp 91676 2021-10-11 20:46:03Z vboxsync $ */
+/* $Id: NEMR3Native-win.cpp 91679 2021-10-11 22:11:36Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, native ring-3 Windows backend.
  *
@@ -2364,6 +2364,8 @@ void nemR3NativeNotifySetA20(PVMCPU pVCpu, bool fEnabled)
  * - Querying HvPartitionPropertyDebugChannelId via HvCallGetPartitionProperty
  *   (hypercall) hangs the host (17134).
  *
+ * - CommonUtilities::GuidToString needs a 'static' before the hex digit array,
+ *   looks pointless to re-init a stack copy it for each call (novice mistake).
  *
  *
  * Old concerns that have been addressed:
