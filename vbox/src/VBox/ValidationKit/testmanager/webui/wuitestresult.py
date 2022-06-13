@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuitestresult.py 83403 2020-03-25 12:09:58Z vboxsync $
+# $Id: wuitestresult.py 92306 2021-11-09 23:57:32Z vboxsync $
 
 """
 Test Manager WUI - Test Results.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 83403 $"
+__version__ = "$Revision: 92306 $"
 
 # Python imports.
 import datetime;
@@ -538,7 +538,7 @@ class WuiTestResult(WuiContentBase):
         cSecCfgTimeout = oTestCaseEx.cSecTimeout if oTestVarEx.cSecTimeout is None else oTestVarEx.cSecTimeout;
         cSecEffTimeout = cSecCfgTimeout * oTestBox.pctScaleTimeout / 100;
         aoResultRows.append([ 'Timeout:',
-                              '%s (%s sec)' % (utils.formatIntervalSeconds(cSecEffTimeout), cSecEffTimeout,) ]);
+                              '%s (%s sec)' % (utils.formatIntervalSeconds2(cSecEffTimeout), cSecEffTimeout,) ]);
         if cSecEffTimeout != cSecCfgTimeout:
             aoResultRows.append([ 'Cfg Timeout:',
                                   '%s (%s sec)' % (utils.formatIntervalSeconds(cSecCfgTimeout), cSecCfgTimeout,) ]);
