@@ -1,4 +1,4 @@
-/* $Id: tstUtf8.cpp 95043 2022-05-19 11:52:24Z vboxsync $ */
+/* $Id: tstUtf8.cpp 95044 2022-05-19 15:43:57Z vboxsync $ */
 /** @file
  * IPRT Testcase - UTF-8 and UTF-16 string conversions.
  */
@@ -1503,8 +1503,17 @@ static void testNoTranslation(RTTEST hTest)
     {
         RTTestIPrintf(RTTESTLVL_ALWAYS, "CurrentCP is UTF-8 or similar (LC_ALL=%s LANG=%s LC_CTYPE=%s)\n",
                       RTEnvGet("LC_ALL"), RTEnvGet("LANG"), RTEnvGet("LC_CTYPE"));
-        if (strcmp(pszOut, pszTest1))
-            RTTestFailed(hTest, "mismatch\nutf8: %.*Rhxs\n got: %.*Rhxs\n", strlen(pszTest1), pszTest1, strlen(pszOut), pszOut);
+#ifdef RT_OS_WINDOWS
+        if (uACP == 65001 /* UTF-8 */)
+        {
+            /* The following string comparison will fail if the active ACP isn't UTF-8 (65001), so skip this then.
+             * This applies to older Windows OSes like NT4. */
+#endif
+            if (strcmp(pszOut, pszTest1))
+                RTTestFailed(hTest, "mismatch\nutf8: %.*Rhxs\n got: %.*Rhxs\n", strlen(pszTest1), pszTest1, strlen(pszOut), pszOut);
+#ifdef RT_OS_WINDOWS
+        }
+#endif
         RTStrFree(pszOut);
     }
     else
