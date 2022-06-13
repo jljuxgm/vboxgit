@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxTranslator.cpp 91315 2021-09-20 12:34:30Z vboxsync $ */
+/* $Id: VirtualBoxTranslator.cpp 91317 2021-09-20 13:38:11Z vboxsync $ */
 /** @file
  * VirtualBox Translator class.
  */
@@ -24,8 +24,6 @@
 #include <iprt/string.h>
 #include <iprt/thread.h>
 #include <iprt/strcache.h>
-
-#include <VBox/com/AutoLock.h>
 
 #include "Global.h"
 #include "VirtualBoxBase.h"
@@ -66,7 +64,7 @@ static DECLCALLBACK(void) freeThreadCache(void *pvValue) RT_NOTHROW_DEF
 
 
 VirtualBoxTranslator::VirtualBoxTranslator()
-    : util::RWLockHandle(VBoxLockingClass::LOCKCLASS_TRANSLATOR)
+    : util::RWLockHandle(util::VBoxLockingClass::LOCKCLASS_TRANSLATOR)
     , m_cInstanceRefs(0)
     , m_pDefaultComponent(NULL)
     , m_strLanguage("C")
