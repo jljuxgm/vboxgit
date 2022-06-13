@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 94208 2022-03-13 19:48:18Z vboxsync $ */
+/* $Id: VBoxManage.cpp 94209 2022-03-13 20:16:15Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -234,7 +234,7 @@ static const VBMGCMD g_aCommands[] =
     { "guestproperty",      USAGE_S_NEWCMD,HELP_CMD_GUESTPROPERTY, handleGuestProperty,        0 },
 #endif
 #ifdef VBOX_WITH_GUEST_CONTROL
-    { "guestcontrol",       USAGE_GUESTCONTROL,     VBMG_CMD_TODO, handleGuestControl,         0 },
+    { "guestcontrol",       USAGE_S_NEWCMD, HELP_CMD_GUESTCONTROL, handleGuestControl,         0 },
 #endif
     { "metrics",            USAGE_METRICS,          VBMG_CMD_TODO, handleMetrics,              0 },
     { "import",             USAGE_S_NEWCMD,       HELP_CMD_IMPORT, handleImportAppliance,      0 },

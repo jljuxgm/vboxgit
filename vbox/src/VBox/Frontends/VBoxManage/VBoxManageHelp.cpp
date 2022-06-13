@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 94208 2022-03-13 19:48:18Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 94209 2022-03-13 20:16:15Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -637,11 +637,6 @@ void printUsage(USAGECATEGORY enmCommand, uint64_t fSubcommandScope, PRTSTREAM p
                      "                            [--setlocation <path>]\n"
                      "                            [--description <description string>]"
                      "\n", SEP);
-
-#ifdef VBOX_WITH_GUEST_CONTROL
-    if (enmCommand == USAGE_GUESTCONTROL || enmCommand == USAGE_S_ALL)
-        usageGuestControl(pStrm, SEP, fSubcommandScope);
-#endif /* VBOX_WITH_GUEST_CONTROL defined */
 
     if (enmCommand == USAGE_METRICS || enmCommand == USAGE_S_ALL)
         RTStrmPrintf(pStrm,
