@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 91897 2021-10-20 13:42:39Z vboxsync $ */
+/* $Id: DrvNAT.cpp 92093 2021-10-27 08:18:16Z vboxsync $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -1598,6 +1598,7 @@ static DECLCALLBACK(int) drvNATConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uin
                                   "|TcpSnd"
                                   "|ICMPCacheLimit"
                                   "|SoMaxConnection"
+                                  "|LocalhostReachable"
 //#ifdef VBOX_WITH_DNSMAPPING_IN_HOSTRESOLVER
                                   "|HostResolverMappings"
 //#endif
@@ -1625,6 +1626,8 @@ static DECLCALLBACK(int) drvNATConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uin
     GET_S32(rc, pDrvIns, pCfg, "AliasMode", i32MainAliasMode);
     int iIcmpCacheLimit = 100;
     GET_S32(rc, pDrvIns, pCfg, "ICMPCacheLimit", iIcmpCacheLimit);
+    bool fLocalhostReachable = false;
+    GET_BOOL(rc, pDrvIns, pCfg, "LocalhostReachable", fLocalhostReachable);
 
     i32AliasMode |= (i32MainAliasMode & 0x1 ? 0x1 : 0);
     i32AliasMode |= (i32MainAliasMode & 0x2 ? 0x40 : 0);
@@ -1665,7 +1668,7 @@ static DECLCALLBACK(int) drvNATConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uin
      */
     rc = slirp_init(&pThis->pNATState, RT_H2N_U32(Network.u), Netmask.u,
                     fPassDomain, !!fUseHostResolver, i32AliasMode,
-                    iIcmpCacheLimit, pThis);
+                    iIcmpCacheLimit, fLocalhostReachable, pThis);
     if (RT_SUCCESS(rc))
     {
         slirp_set_dhcp_TFTP_prefix(pThis->pNATState, pThis->pszTFTPPrefix);

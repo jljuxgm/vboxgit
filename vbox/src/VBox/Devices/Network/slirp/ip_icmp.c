@@ -1,4 +1,4 @@
-/* $Id: ip_icmp.c 85082 2020-07-07 14:04:23Z vboxsync $ */
+/* $Id: ip_icmp.c 92093 2021-10-27 08:18:16Z vboxsync $ */
 /** @file
  * NAT - IP/ICMP handling.
  */
@@ -480,6 +480,11 @@ icmp_input(PNATState pData, struct mbuf *m, int hlen)
                 || CTL_CHECK(dst, CTL_DNS)
                 || CTL_CHECK(dst, CTL_TFTP))
             {
+                /* Don't reply to ping requests for the hosts loopback interface if it is disabled. */
+                if (   CTL_CHECK(dst, CTL_ALIAS)
+                    && !pData->fLocalhostReachable)
+                    goto done;
+
                 uint8_t echo_reply = ICMP_ECHOREPLY;
                 m_copyback(pData, m, hlen + RT_OFFSETOF(struct icmp, icmp_type),
                            sizeof(echo_reply), (caddr_t)&echo_reply);

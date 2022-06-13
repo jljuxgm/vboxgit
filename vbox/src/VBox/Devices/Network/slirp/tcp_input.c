@@ -1,4 +1,4 @@
-/* $Id: tcp_input.c 86843 2020-11-10 04:26:48Z vboxsync $ */
+/* $Id: tcp_input.c 92093 2021-10-27 08:18:16Z vboxsync $ */
 /** @file
  * NAT - TCP input.
  */
@@ -501,6 +501,18 @@ findso:
         QSOCKET_UNLOCK(tcb);
     }
     LogFlowFunc(("(leave) findso: %R[natsock]\n", so));
+
+    /*
+     * Check whether the packet is targeting CTL_ALIAS and drop it if the connection wasn't
+     * initiated by localhost (so == NULL), see @bugref{9896}.
+     */
+    if (   (RT_N2H_U32(ti->ti_dst.s_addr) & ~pData->netmask) == CTL_ALIAS
+        && !pData->fLocalhostReachable
+        && !so)
+    {
+        LogFlowFunc(("Packet for CTL_ALIAS and fLocalhostReachable=false so=NULL -> drop\n"));
+        goto drop;
+    }
 
     /*
      * If the state is CLOSED (i.e., TCB does not exist) then

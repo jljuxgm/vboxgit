@@ -1,4 +1,4 @@
-/* $Id: udp.c 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: udp.c 92093 2021-10-27 08:18:16Z vboxsync $ */
 /** @file
  * NAT - UDP protocol.
  */
@@ -230,6 +230,14 @@ udp_input(PNATState pData, register struct mbuf *m, int iphlen)
         so = NULL;
         goto new_socket;
     }
+
+    /*
+     * Drop UDP packets destind for CTL_ALIAS (i.e. the hosts loopback interface)
+     * if it is disabled.
+     */
+    if (   CTL_CHECK(ip->ip_dst.s_addr, CTL_ALIAS)
+        && !pData->fLocalhostReachable)
+        goto done_free_mbuf;
 
     /*
      * Locate pcb for datagram.
