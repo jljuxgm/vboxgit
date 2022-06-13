@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceToolBox.cpp 92664 2021-12-01 03:04:59Z vboxsync $ */
+/* $Id: VBoxServiceToolBox.cpp 92665 2021-12-01 03:05:37Z vboxsync $ */
 /** @file
  * VBoxServiceToolbox - Internal (BusyBox-like) toolbox.
  */
@@ -1713,7 +1713,7 @@ bool VGSvcToolboxMain(int argc, char **argv, RTEXITCODE *prcExit)
          */
         if (argc < 2 || strcmp(argv[1], "--use-toolbox"))
         {
-            /* We must match vgsvcGstCtrlProcessResolveExecutable here and claim
+            /* We must match vgsvcGstCtrlProcessCreateProcess here and claim
                everything starting with "vbox_". */
             if (!RTStrStartsWith(pszTool, "vbox_"))
                 return false;
