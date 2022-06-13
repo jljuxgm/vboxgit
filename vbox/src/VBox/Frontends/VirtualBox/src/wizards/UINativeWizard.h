@@ -1,4 +1,4 @@
-/* $Id: UINativeWizard.h 91754 2021-10-15 09:43:13Z vboxsync $ */
+/* $Id: UINativeWizard.h 91755 2021-10-15 09:45:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINativeWizard class declaration.
  */
@@ -38,6 +38,7 @@ class QStackedWidget;
 class QVBoxLayout;
 class UINativeWizardPage;
 class UINotificationCenter;
+class UINotificationProgress;
 
 /** Native wizard buttons. */
 enum WizardButtonType
@@ -75,6 +76,11 @@ protected:
 class SHARED_LIBRARY_STUFF UINativeWizard : public QIWithRetranslateUI<QDialog>
 {
     Q_OBJECT;
+
+public:
+
+    /** Immediately handles notification @a pProgress object. */
+    void handleNotificationProgressNow(UINotificationProgress *pProgress);
 
 public slots:
 
