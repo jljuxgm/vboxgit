@@ -1,4 +1,4 @@
-/* $Id: AudioTest.cpp 91661 2021-10-11 10:45:17Z vboxsync $ */
+/* $Id: AudioTest.cpp 91662 2021-10-11 11:10:58Z vboxsync $ */
 /** @file
  * Audio testing routines.
  *
@@ -2454,9 +2454,10 @@ static int audioTestVerifyTestToneData(PAUDIOTESTVERIFYJOB pVerJob, PAUDIOTESTOB
                                                    false /* fFindSilence */, FileB.offStart, &ToneParmsB, cbSearchWindow),
                              cbSizeB - FileB.offStart);
 
+    int rc2;
 #ifdef DEBUG
-    int rc2 = audioTestErrorDescAddInfo(pVerJob->pErr, pVerJob->idxTest, "File A ('%s'): uOff=%RU64 (%#x), cbSize=%RU64 (%#x), cbFileSize=%RU64\n",
-                                        ObjA.szName, FileA.offStart, FileA.offStart, FileA.cbSize, FileA.cbSize, cbSizeA);
+    rc2 = audioTestErrorDescAddInfo(pVerJob->pErr, pVerJob->idxTest, "File A ('%s'): uOff=%RU64 (%#x), cbSize=%RU64 (%#x), cbFileSize=%RU64\n",
+                                    ObjA.szName, FileA.offStart, FileA.offStart, FileA.cbSize, FileA.cbSize, cbSizeA);
     AssertRC(rc2);
 
     rc = audioTestErrorDescAddInfo(pVerJob->pErr, pVerJob->idxTest, "File B ('%s'): uOff=%RU64 (%#x), cbSize=%RU64 (%#x), cbFileSize=%RU64\n",
