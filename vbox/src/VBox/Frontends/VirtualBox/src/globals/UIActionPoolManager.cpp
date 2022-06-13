@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.cpp 90490 2021-08-03 09:21:04Z vboxsync $ */
+/* $Id: UIActionPoolManager.cpp 90545 2021-08-06 12:30:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class implementation.
  */
@@ -453,7 +453,7 @@ protected:
     /** Handles translation event. */
     virtual void retranslateUi() /* override */
     {
-        setName(QApplication::translate("UIActionPool", "E&xit"));
+        setName(QApplication::translate("UIActionPool", "&Quit"));
         setStatusTip(QApplication::translate("UIActionPool", "Close application"));
     }
 };
