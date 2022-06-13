@@ -1,4 +1,4 @@
-/* $Id: DBGFR3FlowTrace.cpp 89924 2021-06-28 08:16:29Z vboxsync $ */
+/* $Id: DBGFR3FlowTrace.cpp 93090 2021-12-28 13:51:44Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Guest Execution Flow Tracing.
  */
@@ -871,7 +871,7 @@ static DECLCALLBACK(VBOXSTRICTRC) dbgfR3FlowTraceModEnableWorker(PVM pVM, PVMCPU
             fBpFlags |= DBGF_BP_F_HIT_EXEC_AFTER;
 
         rc = DBGFR3BpSetInt3Ex(pThis->pUVM, pThis->hBpOwner, pProbeLoc,
-                               0 /*idSrcCpu*/, &pProbeLoc->AddrProbe, DBGF_BP_F_DEFAULT,
+                               0 /*idSrcCpu*/, &pProbeLoc->AddrProbe, fBpFlags,
                                0 /*iHitTrigger*/, ~0ULL /*iHitDisable*/, &pProbeLoc->hBp);
         if (RT_FAILURE(rc))
             break;
