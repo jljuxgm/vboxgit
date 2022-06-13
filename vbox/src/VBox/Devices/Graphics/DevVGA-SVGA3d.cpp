@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d.cpp 91361 2021-09-24 12:48:04Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d.cpp 91362 2021-09-24 12:56:39Z vboxsync $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - Common core code.
  */
@@ -79,6 +79,7 @@ static void vmsvga3dSurfaceFreeMipLevels(PVMSVGA3DSURFACE pSurface)
  * @param   autogenFilter       .
  * @param   numMipLevels        .
  * @param   pMipLevel0Size      .
+ * @param   fAllocMipLevels     .
  */
 int vmsvga3dSurfaceDefine(PVGASTATECC pThisCC, uint32_t sid, SVGA3dSurface1Flags surfaceFlags, SVGA3dSurfaceFormat format,
                           uint32_t multisampleCount, SVGA3dTextureFilter autogenFilter,
