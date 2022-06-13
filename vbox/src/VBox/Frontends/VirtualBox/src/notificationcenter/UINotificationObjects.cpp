@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 90302 2021-07-23 13:08:11Z vboxsync $ */
+/* $Id: UINotificationObjects.cpp 90321 2021-07-23 18:03:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -140,4 +140,60 @@ void UINotificationProgressCloudMachineAdd::sltHandleProgressFinished()
 {
     if (m_comMachine.isNotNull() && !m_comMachine.GetId().isNull())
         emit sigCloudMachineAdded(m_strShortProviderName, m_strProfileName, m_comMachine);
+}
+
+
+/*********************************************************************************************************************************
+*   Class UINotificationProgressCloudMachineCreate implementation.                                                               *
+*********************************************************************************************************************************/
+
+UINotificationProgressCloudMachineCreate::UINotificationProgressCloudMachineCreate(const CCloudClient &comClient,
+                                                                                   const CCloudMachine &comMachine,
+                                                                                   const CVirtualSystemDescription &comVSD,
+                                                                                   const QString &strShortProviderName,
+                                                                                   const QString &strProfileName)
+    : m_comClient(comClient)
+    , m_comMachine(comMachine)
+    , m_comVSD(comVSD)
+    , m_strShortProviderName(strShortProviderName)
+    , m_strProfileName(strProfileName)
+{
+    /* Parse cloud VM name: */
+    QVector<KVirtualSystemDescriptionType> types;
+    QVector<QString> refs, origValues, configValues, extraConfigValues;
+    m_comVSD.GetDescriptionByType(KVirtualSystemDescriptionType_Name, types,
+                                  refs, origValues, configValues, extraConfigValues);
+    if (!origValues.isEmpty())
+        m_strName = origValues.first();
+
+    /* Listen for last progress signal: */
+    connect(this, &UINotificationProgress::sigProgressFinished,
+            this, &UINotificationProgressCloudMachineCreate::sltHandleProgressFinished);
+}
+
+QString UINotificationProgressCloudMachineCreate::name() const
+{
+    return UINotificationProgress::tr("Creating cloud VM ...");
+}
+
+QString UINotificationProgressCloudMachineCreate::details() const
+{
+    return UINotificationProgress::tr("<b>Provider:</b> %1<br><b>Profile:</b> %2<br><b>Name:</b> %3")
+                                      .arg(m_strShortProviderName, m_strProfileName, m_strName);
+}
+
+CProgress UINotificationProgressCloudMachineCreate::createProgress(COMResult &comResult)
+{
+    /* Initialize progress-wrapper: */
+    CProgress comProgress = m_comClient.CreateCloudMachine(m_comVSD, m_comMachine);
+    /* Store COM result: */
+    comResult = m_comClient;
+    /* Return progress-wrapper: */
+    return comProgress;
+}
+
+void UINotificationProgressCloudMachineCreate::sltHandleProgressFinished()
+{
+    if (m_comMachine.isNotNull() && !m_comMachine.GetId().isNull())
+        emit sigCloudMachineCreated(m_strShortProviderName, m_strProfileName, m_comMachine);
 }
