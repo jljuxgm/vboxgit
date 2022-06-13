@@ -1,4 +1,4 @@
-/* $Id: UINotificationModel.cpp 90485 2021-08-02 17:27:06Z vboxsync $ */
+/* $Id: UINotificationModel.cpp 90688 2021-08-15 14:36:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINotificationModel class implementation.
  */
@@ -15,8 +15,12 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+/* Qt includes: */
+#include <QSet>
+
 /* GUI includes: */
 #include "UICommon.h"
+#include "UIExtraDataManager.h"
 #include "UINotificationModel.h"
 #include "UINotificationObject.h"
 
@@ -74,11 +78,20 @@ UINotificationObject *UINotificationModel::objectById(const QUuid &uId)
     return m_objects.value(uId);
 }
 
-void UINotificationModel::sltHandleAboutToClose()
+void UINotificationModel::sltHandleAboutToClose(bool fDismiss)
 {
     /* Determine sender: */
     UINotificationObject *pSender = qobject_cast<UINotificationObject*>(sender());
     AssertPtrReturnVoid(pSender);
+
+    /* Dismiss message if requested: */
+    if (fDismiss && !pSender->internalName().isEmpty())
+    {
+        QSet<QString> suppressedMessages = gEDataManager->suppressedMessages().toSet();
+        suppressedMessages << pSender->internalName();
+        gEDataManager->setSuppressedMessages(suppressedMessages.toList());
+    }
+
     /* Revoke it from internal storage: */
     const QUuid uId = m_objects.key(pSender);
     AssertReturnVoid(!uId.isNull());

@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjectItem.h 90606 2021-08-10 16:07:13Z vboxsync $ */
+/* $Id: UINotificationObjectItem.h 90688 2021-08-15 14:36:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINotificationObjectItem class declaration.
  */
@@ -66,6 +66,8 @@ protected:
     QHBoxLayout     *m_pLayoutUpper;
     /** Holds the name label instance. */
     QLabel          *m_pLabelName;
+    /** Holds the forget button instance. */
+    QIToolButton    *m_pButtonForget;
     /** Holds the close button instance. */
     QIToolButton    *m_pButtonClose;
     /** Holds the details label instance. */
