@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxClientImpl.h 91390 2021-09-27 11:45:15Z vboxsync $ */
+/* $Id: VirtualBoxClientImpl.h 91592 2021-10-06 15:07:03Z vboxsync $ */
 /** @file
  * Header file for the VirtualBoxClient (IVirtualBoxClient) class, VBoxC.
  */
@@ -82,7 +82,13 @@ private:
 
     struct Data
     {
-        Data() : m_ThreadWatcher(NIL_RTTHREAD), m_SemEvWatcher(NIL_RTSEMEVENT)
+        Data()
+            : m_ThreadWatcher(NIL_RTTHREAD)
+            , m_SemEvWatcher(NIL_RTSEMEVENT)
+#ifdef VBOX_WITH_MAIN_NLS
+            , m_pVBoxTranslator(NULL)
+            , m_pTrComponent(NULL)
+#endif
         {}
 
         ~Data()
