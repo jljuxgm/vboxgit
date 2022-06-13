@@ -1,4 +1,4 @@
-/* $Id: DevHdaStream.cpp 89844 2021-06-23 08:23:40Z vboxsync $ */
+/* $Id: DevHdaStream.cpp 89845 2021-06-23 08:23:53Z vboxsync $ */
 /** @file
  * Intel HD Audio Controller Emulation - Streams.
  */
@@ -155,7 +155,6 @@ int hdaR3StreamConstruct(PHDASTREAM pStreamShared, PHDASTREAMR3 pStreamR3, PHDAS
 /**
  * Destroys an HDA stream.
  *
- * @param   pStreamShared       The HDA stream to destroy - shared bits.
  * @param   pStreamR3           The HDA stream to destroy - ring-3 bits.
  */
 void hdaR3StreamDestroy(PHDASTREAMR3 pStreamR3)
