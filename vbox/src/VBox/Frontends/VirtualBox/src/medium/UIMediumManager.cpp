@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 94988 2022-05-12 10:53:07Z vboxsync $ */
+/* $Id: UIMediumManager.cpp 95005 2022-05-13 13:04:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class implementation.
  */
@@ -546,7 +546,7 @@ void UIMediumManagerWidget::sltClear()
             nameList << pMediumItem->name();
         }
     }
-    if (!msgCenter().confirmDVDListClear(nameList, currentMediumType(), this))
+    if (!msgCenter().confirmInaccesibleMediaClear(nameList, currentMediumType(), this))
         return;
 
     foreach (UIMediumItem *pMediumItem, mediumsToRemove)
