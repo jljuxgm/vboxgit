@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d.cpp 94063 2022-03-02 15:41:38Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d.cpp 94223 2022-03-14 13:09:42Z vboxsync $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - Common core code.
  */
@@ -1427,6 +1427,7 @@ int vmsvga3dSurfaceMap(PVGASTATECC pThisCC, SVGA3dSurfaceImageId const *pImage, 
     //    RT_BZERO(.);
 
     pMap->enmMapType   = enmMapType;
+    pMap->format       = pSurface->format;
     pMap->box          = clipBox;
     pMap->cbPixel      = pSurface->cbBlock;
     pMap->cbRowPitch   = pMipLevel->cbSurfacePitch;

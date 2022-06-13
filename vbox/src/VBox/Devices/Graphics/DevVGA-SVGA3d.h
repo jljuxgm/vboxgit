@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d.h 94205 2022-03-12 20:12:21Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d.h 94223 2022-03-14 13:09:42Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device - 3D part.
  */
@@ -52,6 +52,7 @@ typedef enum VMSVGA3D_SURFACE_MAP
 typedef struct VMSVGA3D_MAPPED_SURFACE
 {
     VMSVGA3D_SURFACE_MAP enmMapType;
+    SVGA3dSurfaceFormat format;
     SVGA3dBox box;
     uint32_t cbPixel;
     uint32_t cbRowPitch;
