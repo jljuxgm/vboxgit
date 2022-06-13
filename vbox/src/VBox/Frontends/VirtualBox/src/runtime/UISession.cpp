@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 90086 2021-07-08 08:51:06Z vboxsync $ */
+/* $Id: UISession.cpp 90167 2021-07-13 12:49:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -70,6 +70,7 @@
 #include "CHostNetworkInterface.h"
 #include "CVRDEServer.h"
 #include "CUSBController.h"
+#include "CUSBDeviceFilter.h"
 #include "CUSBDeviceFilters.h"
 #include "CHostVideoInputDevice.h"
 #include "CSnapshot.h"
@@ -1813,7 +1814,15 @@ bool UISession::preprocessInitialization()
     /* Check for USB enumeration warning. Don't return false even if we have a warning: */
     CHost comHost = uiCommon().host();
     if (comHost.GetUSBDevices().isEmpty() && comHost.isWarning())
-        msgCenter().cannotEnumerateHostUSBDevices(comHost, activeMachineWindow());
+    {
+        /* Do not bitch if USB disabled: */
+        if (!machine().GetUSBControllers().isEmpty())
+        {
+            /* Do not bitch if there are no filters (check if enabled too?): */
+            if (!machine().GetUSBDeviceFilters().GetDeviceFilters().isEmpty())
+                msgCenter().cannotEnumerateHostUSBDevices(comHost, activeMachineWindow());
+        }
+    }
 
     /* True by default: */
     return true;
