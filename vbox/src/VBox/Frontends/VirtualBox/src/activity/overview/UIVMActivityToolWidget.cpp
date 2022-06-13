@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityToolWidget.cpp 92467 2021-11-17 09:03:15Z vboxsync $ */
+/* $Id: UIVMActivityToolWidget.cpp 92615 2021-11-28 16:25:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMActivityToolWidget class implementation.
  */
@@ -112,10 +112,8 @@ void UIVMActivityToolWidget::setMachines(const QVector<QUuid> &machineIds)
     }
     m_machineIds = machineIds;
 
-    //hide();
     removeTabs(unselectedMachines);
     addTabs(newSelections);
-    //show();
 }
 
 void UIVMActivityToolWidget::prepareActions()

@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneMachine.h 92487 2021-11-18 07:23:59Z vboxsync $ */
+/* $Id: UIToolPaneMachine.h 92615 2021-11-28 16:25:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolPaneMachine class declaration.
  */
@@ -42,7 +42,7 @@ class UIVMActivityToolWidget;
 class UISnapshotPane;
 class UIVirtualMachineItem;
 class UIVMLogViewerWidget;
-
+class UIFileManager;
 
 /** QWidget subclass representing container for tool panes. */
 class UIToolPaneMachine : public QWidget
@@ -133,6 +133,8 @@ private:
     UIVMLogViewerWidget *m_pPaneLogViewer;
     /** Holds the Performance Monitor pane instance. */
     UIVMActivityToolWidget *m_pPaneVMActivityMonitor;
+    /** Holds the File Manager pane instance. */
+    UIFileManager *m_pPaneFileManager;
 
     /** Holds whether this pane is active. */
     bool  m_fActive;
