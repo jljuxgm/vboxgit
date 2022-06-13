@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 92421 2021-11-15 08:48:16Z vboxsync $ */
+/* $Id: MachineImpl.cpp 92539 2021-11-22 02:09:47Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -383,6 +383,10 @@ HRESULT Machine::init(VirtualBox *aParent,
         /* Apply parallel port defaults */
         for (ULONG slot = 0; slot < RT_ELEMENTS(mParallelPorts); ++slot)
             mParallelPorts[slot]->i_applyDefaults();
+
+        /* Enable the VMMDev testing feature for bootsector VMs: */
+        if (aOsType && aOsType->i_id() == "VBoxBS_64")
+            mData->pMachineConfigFile->mapExtraDataItems["VBoxInternal/Devices/VMMDev/0/Config/TestingEnabled"] = "1";
 
         /* At this point the changing of the current state modification
          * flag is allowed. */
@@ -15472,6 +15476,15 @@ HRESULT Machine::applyDefaults(const com::Utf8Str &aFlags)
             if (FAILED(rc)) return rc;
         }
     }
+
+    /* Enable the VMMDev testing feature for bootsector VMs: */
+    if (osTypeId == "VBoxBS_64")
+    {
+        rc = setExtraData("VBoxInternal/Devices/VMMDev/0/Config/TestingEnabled", "1");
+        if (FAILED(rc))
+            return rc;
+    }
+
     return S_OK;
 }
 
