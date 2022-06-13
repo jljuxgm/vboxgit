@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-linux.c 91789 2021-10-17 18:16:11Z vboxsync $ */
+/* $Id: SUPDrv-linux.c 91793 2021-10-17 18:59:39Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Linux specifics.
  */
@@ -1706,7 +1706,7 @@ RTDECL(int) SUPR0PrintfV(const char *pszFormat, va_list va)
     IPRT_LINUX_RESTORE_EFL_AC();
     return 0;
 }
-SUPR0_EXPORT_SYMBOL(SUPR0Printf);
+SUPR0_EXPORT_SYMBOL(SUPR0PrintfV);
 
 
 SUPR0DECL(uint32_t) SUPR0GetKernelFeatures(void)
