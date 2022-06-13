@@ -1,4 +1,4 @@
-/* $Id: UnattendedImpl.cpp 93082 2021-12-26 01:27:48Z vboxsync $ */
+/* $Id: UnattendedImpl.cpp 93083 2021-12-26 01:44:52Z vboxsync $ */
 /** @file
  * Unattended class implementation
  */
@@ -1338,7 +1338,7 @@ HRESULT Unattended::i_innerDetectIsoOSOs2(RTVFS hVfsIso, DETECTBUFFER *pBuf, VBO
                 if (pszNewLine && RTStrStartsWith(pszNewLine + 1, "Built 20"))
                 {
                     size_t offRemove = 0;
-                    while (RT_C_IS_SPACE(pszNewLine[-1 - offRemove]))
+                    while (RT_C_IS_SPACE(pszNewLine[-1 - (ssize_t)offRemove]))
                         offRemove++;
                     if (offRemove > 0)
                     {
