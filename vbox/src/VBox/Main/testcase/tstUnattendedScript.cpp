@@ -1,4 +1,4 @@
-/* $Id: tstUnattendedScript.cpp 93405 2022-01-24 09:56:23Z vboxsync $ */
+/* $Id: tstUnattendedScript.cpp 93532 2022-02-01 13:27:29Z vboxsync $ */
 /** @file
  * tstUnattendedScript - testcases for UnattendedScript.
  */
@@ -438,6 +438,12 @@ HRESULT Unattended::getDetectedOSHints(com::Utf8Str &aDetectedOSHints)
     return E_NOTIMPL;
 }
 
+HRESULT Unattended::getDetectedImageNames(std::vector<com::Utf8Str> &aDetectedImageNames)
+{
+    RT_NOREF(aDetectedImageNames);
+    return E_NOTIMPL;
+}
+
 /*
  * Getters that the installer and script classes can use.
  */
@@ -683,4 +689,3 @@ int main()
 
     return RTTestSummaryAndDestroy(hTest);
 }
-
