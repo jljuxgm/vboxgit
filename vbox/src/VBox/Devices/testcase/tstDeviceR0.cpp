@@ -1,4 +1,4 @@
-/* $Id: tstDeviceR0.cpp 92079 2021-10-26 12:10:56Z vboxsync $ */
+/* $Id: tstDeviceR0.cpp 92124 2021-10-28 07:32:42Z vboxsync $ */
 /** @file
  * tstDevice - Test framework for PDM devices/drivers
  */
@@ -104,6 +104,7 @@ DECLHIDDEN(int) tstDevPdmDevR0R3Create(const char *pszName, bool fRCEnabled, PTS
         pDevInsR0->u32Version             = PDM_DEVINSR0_VERSION;
         pDevInsR0->iInstance              = 0;
         pDevInsR0->pHlpR0                 = &g_tstDevPdmDevHlpR0;
+        pDevInsR0->Internal.s.pDut        = pDut;
         pDevInsR0->pvInstanceDataR0       = (uint8_t *)pDevInsR0 + cbRing0 + cbRing3 + cbRC;
         pDevInsR0->pvInstanceDataForR0    = &pDevInsR0->achInstanceData[0];
         pDevInsR0->pCritSectRoR0          = (PPDMCRITSECT)((uint8_t *)pDevInsR0->pvInstanceDataR0 + cbShared);

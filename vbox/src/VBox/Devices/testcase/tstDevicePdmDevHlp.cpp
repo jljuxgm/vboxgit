@@ -1,4 +1,4 @@
-/* $Id: tstDevicePdmDevHlp.cpp 92000 2021-10-22 11:49:35Z vboxsync $ */
+/* $Id: tstDevicePdmDevHlp.cpp 92124 2021-10-28 07:32:42Z vboxsync $ */
 /** @file
  * tstDevice - Test framework for PDM devices/drivers, PDM helper implementation.
  */
@@ -524,6 +524,22 @@ static DECLCALLBACK(int) pdmR3DevHlp_SSMRegister(PPDMDEVINS pDevIns, uint32_t uV
         rc = VERR_NO_MEMORY;
 
     LogFlow(("pdmR3DevHlp_SSMRegister: caller='%s'/%d: returns %Rrc\n", pDevIns->pReg->szName, pDevIns->iInstance, rc));
+    return rc;
+}
+
+
+/** @interface_method_impl{PDMDEVHLPR3,pfnSSMRegisterLegacy} */
+static DECLCALLBACK(int) pdmR3DevHlp_SSMRegisterLegacy(PPDMDEVINS pDevIns, const char *pszOldName, PFNSSMDEVLOADPREP pfnLoadPrep,
+                                                       PFNSSMDEVLOADEXEC pfnLoadExec, PFNSSMDEVLOADDONE pfnLoadDone)
+{
+    PDMDEV_ASSERT_DEVINS(pDevIns);
+    LogFlow(("pdmR3DevHlp_SSMRegisterLegacy: caller='%s'/%d: pszOldName=%p:{%s} pfnLoadPrep=%p pfnLoadExec=%p pfnLoadDone=%p\n",
+             pDevIns->pReg->szName, pDevIns->iInstance, pszOldName, pszOldName, pfnLoadPrep, pfnLoadExec, pfnLoadDone));
+
+    int rc = VERR_NOT_IMPLEMENTED;
+    AssertFailed();
+
+    LogFlow(("pdmR3DevHlp_SSMRegisterLegacy: caller='%s'/%d: returns %Rrc\n", pDevIns->pReg->szName, pDevIns->iInstance, rc));
     return rc;
 }
 
@@ -5737,6 +5753,7 @@ const PDMDEVHLPR3 g_tstDevPdmDevHlpR3 =
     pdmR3DevHlp_ROMRegister,
     pdmR3DevHlp_ROMProtectShadow,
     pdmR3DevHlp_SSMRegister,
+    pdmR3DevHlp_SSMRegisterLegacy,
     pdmR3DevHlp_SSMPutStruct,
     pdmR3DevHlp_SSMPutStructEx,
     pdmR3DevHlp_SSMPutBool,

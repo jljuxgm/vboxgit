@@ -1,4 +1,4 @@
-/* $Id: tstDevice.cpp 92077 2021-10-26 11:35:37Z vboxsync $ */
+/* $Id: tstDevice.cpp 92124 2021-10-28 07:32:42Z vboxsync $ */
 /** @file
  * tstDevice - Test framework for PDM devices/drivers
  */
@@ -903,7 +903,6 @@ DECLHIDDEN(int) tstDevPdmDeviceR3Construct(PTSTDEVDUTINT pDut)
     PPDMDEVINS pDevInsR3 = pDut->pDevIns;
 
     pDevInsR3->pReg                     = pDut->pPdmDev->pReg;
-    pDevInsR3->pvInstanceDataR3         = &pDevInsR3->achInstanceData[0];
     pDevInsR3->pHlpR3                   = &g_tstDevPdmDevHlpR3;
     pDevInsR3->pCfg                     = &pDut->Cfg;
     pDevInsR3->Internal.s.pDut          = pDut;
