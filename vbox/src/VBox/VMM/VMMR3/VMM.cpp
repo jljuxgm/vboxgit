@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 90948 2021-08-27 11:42:06Z vboxsync $ */
+/* $Id: VMM.cpp 90952 2021-08-27 12:41:27Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -815,18 +815,6 @@ static DECLCALLBACK(int) vmmR3LogFlusher(RTTHREAD hThreadSelf, void *pvUser)
     pVM->vmm.s.LogFlusherItem.u32 = UINT32_MAX;
 
     /*
-     * Logger getter functions.
-     */
-    typedef DECLCALLBACKPTR(PRTLOGGER, PFNGETLOGGER, ());
-    static const PFNGETLOGGER s_apfnLogGetters[] =
-    {
-        RTLogGetDefaultInstance,
-        RTLogRelGetDefaultInstance,
-    };
-    Assert(RTLogGetDefaultInstance == s_apfnLogGetters[VMMLOGGER_IDX_REGULAR]);
-    Assert(RTLogRelGetDefaultInstance == s_apfnLogGetters[VMMLOGGER_IDX_RELEASE]);
-
-    /*
      * The work loop.
      */
     for (;;)
@@ -863,7 +851,8 @@ static DECLCALLBACK(int) vmmR3LogFlusher(RTTHREAD hThreadSelf, void *pvUser)
                             LogAlways(("*FLUSH* idCpu=%u idxLogger=%u idxBuffer=%u cbToFlush=%#x fFlushed=%RTbool cbDropped=%#x\n",
                                        Item.s.idCpu, Item.s.idxLogger, Item.s.idxBuffer, cbToFlush,
                                        pShared->AuxDesc.fFlushedIndicator, pShared->cbDropped));
-                            PRTLOGGER const pLogger = s_apfnLogGetters[Item.s.idxLogger]();
+                            PRTLOGGER const pLogger = Item.s.idxLogger == VMMLOGGER_IDX_REGULAR
+                                                    ? RTLogGetDefaultInstance() : RTLogRelGetDefaultInstance();
                             if (pLogger)
                                 RTLogBulkWrite(pLogger, pchBufR3, cbToFlush);
                             LogAlways(("*FLUSH DONE*\n"));
