@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 90397 2021-07-29 08:52:27Z vboxsync $ */
+/* $Id: VM.cpp 90460 2021-08-01 20:55:36Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -604,6 +604,7 @@ static DECLCALLBACK(int) vmR3CreateU(PUVM pUVM, uint32_t cCpus, PFNCFGMCONSTRUCT
             pVCpu->pUVCpu            = &pUVM->aCpus[i];
             pVCpu->idCpu             = i;
             pVCpu->hNativeThread     = pUVM->aCpus[i].vm.s.NativeThreadEMT;
+            pVCpu->hThread           = pUVM->aCpus[i].vm.s.ThreadEMT;
             Assert(pVCpu->hNativeThread != NIL_RTNATIVETHREAD);
             /* hNativeThreadR0 is initialized on EMT registration. */
             pUVM->aCpus[i].pVCpu     = pVCpu;
