@@ -1,4 +1,4 @@
-# $Id: Config.kmk 94404 2022-03-31 09:00:36Z vboxsync $
+# $Id: Config.kmk 94852 2022-05-05 14:20:57Z vboxsync $
 ## @file
 # OpenSSL kBuild Configuration file.
 #
@@ -45,7 +45,7 @@ VBOX_PATH_CRYPTO_RC4        := $(VBOX_PATH_CRYPTO)/rc4
 VBOX_PATH_CRYPTO_SHA        := $(VBOX_PATH_CRYPTO)/sha
 VBOX_PATH_CRYPTO_DES        := $(VBOX_PATH_CRYPTO)/des
 VBOX_PATH_CRYPTO_CAMELLIA   := $(VBOX_PATH_CRYPTO)/camellia
-VBOX_INST_CRYPTO_HEADERS    := obj/$(if-expr "$(CURSUBDIR)" == ".",,$(CURSUBDIR)/)crypto-3.0.1-headers/include/openssl/
+VBOX_INST_CRYPTO_HEADERS    := obj/$(if-expr "$(CURSUBDIR)" == ".",,$(CURSUBDIR)/)crypto-3.0.2-headers/include/openssl/
 VBOX_PATH_CRYPTO_HEADERS    := $(abspath $(PATH_OUT))/$(patsubst %/,%,$(VBOX_INST_CRYPTO_HEADERS))
 VBOX_PATH_CRYPTO_PROVIDERS  := $(VBOX_PATH_OPENSSL)/providers
 
