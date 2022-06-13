@@ -1,4 +1,4 @@
-/* $Id: PGMAllHandler.cpp 91943 2021-10-21 13:01:50Z vboxsync $ */
+/* $Id: PGMAllHandler.cpp 92157 2021-10-29 22:03:51Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -1350,7 +1350,6 @@ static PPGMPAGE pgmPhysResolveMmio2PageLocked(PVMCC pVM, PPDMDEVINS pDevIns, PGM
     /* Loop thru the sub-ranges till we find the one covering offMmio2. */
     for (;;)
     {
-        AssertReturn(pCur->fFlags & PGMREGMMIO2RANGE_F_MMIO2, NULL);
 #ifdef IN_RING3
         AssertReturn(pCur->pDevInsR3 == pDevIns, NULL);
 #else

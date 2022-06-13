@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 92046 2021-10-25 16:05:10Z vboxsync $ */
+/* $Id: PGMInternal.h 92157 2021-10-29 22:03:51Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -1430,17 +1430,14 @@ typedef PGMREGMMIO2RANGE *PPGMREGMMIO2RANGE;
 
 /** @name PGMREGMMIO2RANGE_F_XXX - Registered MMIO2 range flags.
  * @{ */
-/** Set if it's an MMIO2 range.
- * @note Historical.  For a while we did some of the MMIO this way too.  */
-#define PGMREGMMIO2RANGE_F_MMIO2            UINT16_C(0x0001)
 /** Set if this is the first chunk in the MMIO2 range. */
-#define PGMREGMMIO2RANGE_F_FIRST_CHUNK      UINT16_C(0x0002)
+#define PGMREGMMIO2RANGE_F_FIRST_CHUNK      UINT16_C(0x0001)
 /** Set if this is the last chunk in the MMIO2 range. */
-#define PGMREGMMIO2RANGE_F_LAST_CHUNK       UINT16_C(0x0004)
+#define PGMREGMMIO2RANGE_F_LAST_CHUNK       UINT16_C(0x0002)
 /** Set if the whole range is mapped. */
-#define PGMREGMMIO2RANGE_F_MAPPED           UINT16_C(0x0008)
+#define PGMREGMMIO2RANGE_F_MAPPED           UINT16_C(0x0004)
 /** Set if it's overlapping, clear if not. */
-#define PGMREGMMIO2RANGE_F_OVERLAPPING      UINT16_C(0x0010)
+#define PGMREGMMIO2RANGE_F_OVERLAPPING      UINT16_C(0x0008)
 /** @} */
 
 
