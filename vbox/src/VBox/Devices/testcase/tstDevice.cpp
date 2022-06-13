@@ -1,4 +1,4 @@
-/* $Id: tstDevice.cpp 91998 2021-10-22 08:58:44Z vboxsync $ */
+/* $Id: tstDevice.cpp 92000 2021-10-22 11:49:35Z vboxsync $ */
 /** @file
  * tstDevice - Test framework for PDM devices/drivers
  */
@@ -918,6 +918,7 @@ static int tstDevTestsRun(PCTSTDEVCFG pDevTstCfg)
         Dut.IBaseSts.pfnQueryInterface = tstDevTestsRun_QueryInterface;
 
         RTListInit(&Dut.LstIoPorts);
+        RTListInit(&Dut.LstMmio);
         RTListInit(&Dut.LstTimers);
         RTListInit(&Dut.LstMmHeap);
         RTListInit(&Dut.LstPdmThreads);
