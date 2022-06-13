@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.h 93642 2022-02-07 14:36:58Z vboxsync $ */
+/* $Id: UIWizardNewVM.h 94078 2022-03-03 16:24:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class declaration.
  */
@@ -52,7 +52,7 @@ public:
     UIWizardNewVM(QWidget *pParent, UIActionPool *pActionPool,
                   const QString &strMachineGroup, const QString &strHelpHashtag, CUnattended &comUnattended);
     bool isUnattendedEnabled() const;
-    bool isOSTypeDetectionOK() const;
+    bool isUnattendedInstallSupported() const;
     bool isGuestOSTypeWindows() const;
 
     bool createVM();

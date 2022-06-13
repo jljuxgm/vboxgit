@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMExpertPage.cpp 94055 2022-03-02 13:05:01Z vboxsync $ */
+/* $Id: UIWizardNewVMExpertPage.cpp 94078 2022-03-03 16:24:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMExpertPage class implementation.
  */
@@ -940,7 +940,7 @@ void UIWizardNewVMExpertPage::setSkipCheckBoxEnable()
         m_pSkipUnattendedCheckBox->setEnabled(false);
         return;
     }
-    if (!isOSTypeDetectionOK())
+    if (!isUnattendedInstallSupported())
     {
         m_pSkipUnattendedCheckBox->setEnabled(false);
         return;
@@ -973,11 +973,11 @@ bool UIWizardNewVMExpertPage::isUnattendedEnabled() const
     return pWizard->isUnattendedEnabled();
 }
 
-bool UIWizardNewVMExpertPage::isOSTypeDetectionOK() const
+bool UIWizardNewVMExpertPage::isUnattendedInstallSupported() const
 {
     UIWizardNewVM *pWizard = wizardWindow<UIWizardNewVM>();
     AssertReturn(pWizard, false);
-    return pWizard->isOSTypeDetectionOK();
+    return pWizard->isUnattendedInstallSupported();
 }
 
 void UIWizardNewVMExpertPage::setEnableDiskSelectionWidgets(bool fEnabled)

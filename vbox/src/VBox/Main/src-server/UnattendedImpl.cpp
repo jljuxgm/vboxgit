@@ -1,4 +1,4 @@
-/* $Id: UnattendedImpl.cpp 94075 2022-03-03 13:59:09Z vboxsync $ */
+/* $Id: UnattendedImpl.cpp 94078 2022-03-03 16:24:56Z vboxsync $ */
 /** @file
  * Unattended class implementation
  */
@@ -3562,7 +3562,12 @@ HRESULT Unattended::getDetectedImageIndices(std::vector<ULONG> &aDetectedImageIn
 
 HRESULT Unattended::getIsUnattendedInstallSupported(BOOL *aIsUnattendedInstallSupported)
 {
-    *aIsUnattendedInstallSupported = true;
+    /* Unattended is disabled by default if we could not detect OS type. */
+    if (mStrDetectedOSTypeId.isEmpty() || mStrDetectedOSVersion.isEmpty())
+    {
+        *aIsUnattendedInstallSupported = false;
+        return S_OK;
+    }
     return S_OK;
 }
 

@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMExpertPage.h 93606 2022-02-04 14:48:36Z vboxsync $ */
+/* $Id: UIWizardNewVMExpertPage.h 94078 2022-03-03 16:24:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMExpertPage class declaration.
  */
@@ -123,7 +123,7 @@ private:
     void setEnableNewDiskWidgets(bool fEnable);
     void setSkipCheckBoxEnable();
     bool isUnattendedEnabled() const;
-    bool isOSTypeDetectionOK() const;
+    bool isUnattendedInstallSupported() const;
     void setEnableDiskSelectionWidgets(bool fEnabled);
 
     /** @name Variables
