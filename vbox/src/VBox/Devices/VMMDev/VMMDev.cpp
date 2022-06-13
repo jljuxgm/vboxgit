@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 90447 2021-07-31 00:44:13Z vboxsync $ */
+/* $Id: VMMDev.cpp 90461 2021-08-01 20:56:10Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -4481,6 +4481,7 @@ static DECLCALLBACK(int) vmmdevConstruct(PPDMDEVINS pDevIns, int iInstance, PCFG
 #ifndef VBOX_WITHOUT_TESTING_FEATURES
     pThis->hIoPortTesting       = NIL_IOMIOPORTHANDLE;
     pThis->hMmioTesting         = NIL_IOMMMIOHANDLE;
+    pThis->hTestingLockEvt      = NIL_SUPSEMEVENT;
 #endif
 
     PPDMPCIDEV pPciDev = pDevIns->apPciDevs[0];
