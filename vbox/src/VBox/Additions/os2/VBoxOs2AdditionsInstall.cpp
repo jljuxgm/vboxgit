@@ -1,4 +1,4 @@
-/** $Id: VBoxOs2AdditionsInstall.cpp 93145 2022-01-08 03:07:46Z vboxsync $ */
+/** $Id: VBoxOs2AdditionsInstall.cpp 93155 2022-01-09 13:02:41Z vboxsync $ */
 /** @file
  * VBoxOs2AdditionsInstall - Barebone OS/2 Guest Additions Installer.
  */
@@ -770,7 +770,7 @@ static RTEXITCODE CheckForGradd(void)
 }
 
 
-/** Adds DEVICE=[path]\VBoxGuest.sys to the modified Config.sys. */
+/** Adds DEVICE=[path]\\VBoxGuest.sys to the modified Config.sys. */
 static bool ConfigSysAddVBoxGuest(void)
 {
     EditorPutStringN(&g_ConfigSys, RT_STR_TUPLE("DEVICE="));
@@ -780,7 +780,7 @@ static bool ConfigSysAddVBoxGuest(void)
 }
 
 
-/** Adds IFS=[path]\VBoxFS.IFS to the modified Config.sys. */
+/** Adds IFS=[path]\\VBoxSF.IFS to the modified Config.sys. */
 static bool ConfigSysAddVBoxSF(void)
 {
     EditorPutStringN(&g_ConfigSys, RT_STR_TUPLE("IFS="));
@@ -790,7 +790,7 @@ static bool ConfigSysAddVBoxSF(void)
 }
 
 
-/** Adds DEVICE=[path]\VBoxMouse.sys to the modified Config.sys. */
+/** Adds DEVICE=[path]\\VBoxMouse.sys to the modified Config.sys. */
 static bool ConfigSysAddVBoxMouse(void)
 {
     EditorPutStringN(&g_ConfigSys, RT_STR_TUPLE("DEVICE="));
@@ -1072,8 +1072,8 @@ static RTEXITCODE PrepareConfigSys(void)
                 }
                 /* Remove old VBoxSF.IFS lines */
                 else if (   !(g_fSkipMask & SKIP_SHARED_FOLDERS)
-                         && (   MatchOnlyFilename(pchLine, off, cchLine, RT_STR_TUPLE("VBOXFS.IFS"))
-                             || MatchOnlyFilename(pchLine, off, cchLine, RT_STR_TUPLE("VBOXSF.IFS")) ) )
+                         && (   MatchOnlyFilename(pchLine, off, cchLine, RT_STR_TUPLE("VBOXSF.IFS"))
+                             || MatchOnlyFilename(pchLine, off, cchLine, RT_STR_TUPLE("VBOXFS.IFS")) ) )
                 {
                     if (g_fVerbose)
                         WriteStrings(g_hStdOut, "info: Config.sys line ", MyNumToString(szLineNo, iLine),
@@ -1582,7 +1582,7 @@ static RTEXITCODE ShowVersion(void)
 {
     DoWriteNStr(g_hStdOut, RT_STR_TUPLE(VBOX_VERSION_STRING " r"));
 
-    const char *pszRev = "$Rev: 93145 $";
+    const char *pszRev = "$Rev: 93155 $";
     while (!RT_C_IS_DIGIT(*pszRev))
         pszRev++;
     size_t cchRev = 1;
