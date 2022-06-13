@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjectItem.cpp 90388 2021-07-29 07:57:29Z vboxsync $ */
+/* $Id: UINotificationObjectItem.cpp 90391 2021-07-29 08:25:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINotificationObjectItem class implementation.
  */
@@ -223,6 +223,9 @@ void UINotificationProgressItem::sltHandleProgressStarted()
         m_pButtonClose->setEnabled(progress()->isCancelable());
     if (m_pProgressBar)
         m_pProgressBar->setValue(0);
+    /* Update details with fetched stuff if any: */
+    if (m_pLabelDetails)
+        updateDetails();
 }
 
 void UINotificationProgressItem::sltHandleProgressChange(ulong uPercent)
