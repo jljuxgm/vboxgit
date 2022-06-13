@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyNvram.cpp 91491 2021-09-30 08:33:40Z vboxsync $ */
+/* $Id: VBoxManageModifyNvram.cpp 91617 2021-10-07 11:17:43Z vboxsync $ */
 /** @file
  * VBoxManage - The nvram control related commands.
  */
@@ -314,17 +314,35 @@ RTEXITCODE handleModifyNvram(HandlerArg *a)
     if (FAILED(rc)) goto leave;
 
     if (!strcmp(a->argv[1], "inituefivarstore"))
+    {
+        setCurrentSubcommand(HELP_SCOPE_MODIFYNVRAM_INITUEFIVARSTORE);
         rc = handleModifyNvramInitUefiVarStore(a, nvramStore) == RTEXITCODE_SUCCESS ? S_OK : E_FAIL;
+    }
     else if (!strcmp(a->argv[1], "enrollmssignatures"))
+    {
+        setCurrentSubcommand(HELP_SCOPE_MODIFYNVRAM_ENROLLMSSIGNATURES);
         rc = handleModifyNvramEnrollMsSignatures(a, nvramStore) == RTEXITCODE_SUCCESS ? S_OK : E_FAIL;
+    }
     else if (!strcmp(a->argv[1], "enrollpk"))
+    {
+        setCurrentSubcommand(HELP_SCOPE_MODIFYNVRAM_ENROLLPK);
         rc = handleModifyNvramEnrollPlatformKey(a, nvramStore) == RTEXITCODE_SUCCESS ? S_OK : E_FAIL;
+    }
     else if (!strcmp(a->argv[1], "enrollorclpk"))
+    {
+        setCurrentSubcommand(HELP_SCOPE_MODIFYNVRAM_ENROLLORCLPK);
         rc = handleModifyNvramEnrollOraclePlatformKey(a, nvramStore) == RTEXITCODE_SUCCESS ? S_OK : E_FAIL;
+    }
     else if (!strcmp(a->argv[1], "listvars"))
+    {
+        setCurrentSubcommand(HELP_SCOPE_MODIFYNVRAM_LISTVARS);
         rc = handleModifyNvramListUefiVars(a, nvramStore) == RTEXITCODE_SUCCESS ? S_OK : E_FAIL;
+    }
     else if (!strcmp(a->argv[1], "queryvar"))
+    {
+        setCurrentSubcommand(HELP_SCOPE_MODIFYNVRAM_QUERYVAR);
         rc = handleModifyNvramQueryUefiVar(a, nvramStore) == RTEXITCODE_SUCCESS ? S_OK : E_FAIL;
+    }
     else
         return errorUnknownSubcommand(a->argv[0]);
 
