@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tdAudioTest.py 90508 2021-08-04 08:22:06Z vboxsync $
+# $Id: tdAudioTest.py 90510 2021-08-04 09:18:16Z vboxsync $
 
 """
 AudioTest test driver which invokes the VKAT (Validation Kit Audio Test)
@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 90508 $"
+__version__ = "$Revision: 90510 $"
 
 # Standard Python imports.
 import os
@@ -187,6 +187,12 @@ class tdAudioTest(vbox.TestDriver):
         del oVirtualBox;
         return fRc;
 
+    def getGstVkatLogFilePath(self, oTestVm):
+        """
+        Returns the log file path of VKAT running on the guest (daemonized).
+        """
+        return oTestVm.pathJoin(self.getGuestTempDir(oTestVm), 'vkat-guest-daemonized.log');
+
     def locateGstVkat(self, oSession, oTxsSession):
         """
         Returns guest side path to VKAT.
@@ -250,8 +256,20 @@ class tdAudioTest(vbox.TestDriver):
             #
             aArgs.extend(['--daemonize']);
 
+            #
+            # Add own environment stuff.
+            #
+            aEnv = [];
+
+            # Write the log file to some deterministic place so TxS can retrieve it later.
+            sVkatLogFile = 'VKAT_RELEASE_LOG_DEST=file=' + self.getGstVkatLogFilePath(oTestVm);
+            aEnv.extend([ sVkatLogFile ]);
+
+            #
+            # Execute.
+            #
             fRc = self.txsRunTest(oTxsSession, 'Starting VKAT on guest', 15 * 60 * 1000,
-                                  sVkatExe, aArgs);
+                                  sVkatExe, aArgs, aEnv);
             if not fRc:
                 reporter.error('VKAT on guest returned exit code error %d' % (self.getLastRcFromTxs(oTxsSession)));
         else:
@@ -342,6 +360,15 @@ class tdAudioTest(vbox.TestDriver):
                 fRc = self.runTests(oTestVm, oSession, oTxsSession, 'Guest audio playback', '-i0');
             if "guest_tone_recording" in self.asTests:
                 fRc = fRc and self.runTests(oTestVm, oSession, oTxsSession, 'Guest audio recording', '-i1');
+
+        #
+        # Retrieve log files for diagnosis.
+        #
+        self.txsDownloadFiles(oSession, oTxsSession,
+                              [ ( self.getGstVkatLogFilePath(oTestVm),
+                                  'vkat-guest-daemonized-%s.log' % (oTestVm.sVmName,),),
+                              ],
+                              fIgnoreErrors = True);
 
         return fRc;
 
