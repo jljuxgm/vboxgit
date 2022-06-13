@@ -1,4 +1,4 @@
-/* $Id: DevTpm.cpp 91084 2021-09-02 09:18:03Z vboxsync $ */
+/* $Id: DevTpm.cpp 91086 2021-09-02 09:22:09Z vboxsync $ */
 /** @file
  * DevTpm - Trusted Platform Module emulation.
  *
@@ -925,7 +925,7 @@ static VBOXSTRICTRC tpmMmioFifoWrite(PPDMDEVINS pDevIns, PDEVTPM pThis, PDEVTPML
                     if (RT_SUCCESS(rc2))
                         pThis->fEstablishmentSet = false;
                     else
-                        pThis->enmState == DEVTPMSTATE_FATAL_ERROR;
+                        pThis->enmState = DEVTPMSTATE_FATAL_ERROR;
                 }
                 else
                     pThis->fEstablishmentSet = false;
@@ -944,7 +944,7 @@ static VBOXSTRICTRC tpmMmioFifoWrite(PPDMDEVINS pDevIns, PDEVTPM pThis, PDEVTPML
                     pThis->enmState = DEVTPMSTATE_CMD_CANCEL;
                     int rc2 = pThisCC->pDrvTpm->pfnCmdCancel(pThisCC->pDrvTpm);
                     if (RT_FAILURE(rc2))
-                        pThis->enmState == DEVTPMSTATE_FATAL_ERROR;
+                        pThis->enmState = DEVTPMSTATE_FATAL_ERROR;
                 }
 #endif
             }
@@ -1146,7 +1146,7 @@ static VBOXSTRICTRC tpmMmioCrbWrite(PPDMDEVINS pDevIns, PDEVTPM pThis, PDEVTPMLO
                     if (RT_SUCCESS(rc2))
                         pThis->fEstablishmentSet = false;
                     else
-                        pThis->enmState == DEVTPMSTATE_FATAL_ERROR;
+                        pThis->enmState = DEVTPMSTATE_FATAL_ERROR;
                 }
                 else
                     pThis->fEstablishmentSet = false;
@@ -1173,7 +1173,7 @@ static VBOXSTRICTRC tpmMmioCrbWrite(PPDMDEVINS pDevIns, PDEVTPM pThis, PDEVTPMLO
                     {
                         int rc2 = pThisCC->pDrvTpm->pfnCmdCancel(pThisCC->pDrvTpm);
                         if (RT_FAILURE(rc2))
-                            pThis->enmState == DEVTPMSTATE_FATAL_ERROR;
+                            pThis->enmState = DEVTPMSTATE_FATAL_ERROR;
                         else
                         {
                             pThis->enmState = DEVTPMSTATE_CMD_COMPLETION;
@@ -1246,7 +1246,7 @@ static VBOXSTRICTRC tpmMmioCrbWrite(PPDMDEVINS pDevIns, PDEVTPM pThis, PDEVTPMLO
                 {
                     int rc2 = pThisCC->pDrvTpm->pfnCmdCancel(pThisCC->pDrvTpm);
                     if (RT_FAILURE(rc2))
-                        pThis->enmState == DEVTPMSTATE_FATAL_ERROR;
+                        pThis->enmState = DEVTPMSTATE_FATAL_ERROR;
                     else
                     {
                         pThis->enmState = DEVTPMSTATE_CMD_COMPLETION;
