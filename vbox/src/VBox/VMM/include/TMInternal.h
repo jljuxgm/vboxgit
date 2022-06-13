@@ -1,4 +1,4 @@
-/* $Id: TMInternal.h 87816 2021-02-20 00:54:46Z vboxsync $ */
+/* $Id: TMInternal.h 90638 2021-08-11 21:35:56Z vboxsync $ */
 /** @file
  * TM - Internal header file.
  */
@@ -319,6 +319,7 @@ typedef struct TMTIMERQUEUE
      *       implement runtime array growing. */
     PDMCRITSECTRW           AllocLock;
 } TMTIMERQUEUE;
+AssertCompileMemberAlignment(TMTIMERQUEUE, AllocLock, 32);
 AssertCompileSizeAlignment(TMTIMERQUEUE, 64);
 /** Pointer to a timer queue. */
 typedef TMTIMERQUEUE *PTMTIMERQUEUE;

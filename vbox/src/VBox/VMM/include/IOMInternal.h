@@ -1,4 +1,4 @@
-/* $Id: IOMInternal.h 90347 2021-07-26 20:36:28Z vboxsync $ */
+/* $Id: IOMInternal.h 90638 2021-08-11 21:35:56Z vboxsync $ */
 /** @file
  * IOM - Internal header file.
  */
@@ -383,6 +383,13 @@ typedef IOMCPU *PIOMCPU;
  */
 typedef struct IOM
 {
+    /** Lock serializing EMT access to IOM. */
+#ifdef IOM_WITH_CRIT_SECT_RW
+    PDMCRITSECTRW                   CritSect;
+#else
+    PDMCRITSECT                     CritSect;
+#endif
+
     /** @name I/O ports
      * @note The updating of these variables is done exclusively from EMT(0).
      * @{ */
@@ -437,14 +444,6 @@ typedef struct IOM
     IOMMMIOSTATSENTRY               MmioDummyStats;
     /** @} */
 
-
-    /** Lock serializing EMT access to IOM. */
-#ifdef IOM_WITH_CRIT_SECT_RW
-    PDMCRITSECTRW                   CritSect;
-#else
-    PDMCRITSECT                     CritSect;
-#endif
-
     /** @name I/O Port statistics.
      * @{ */
     STAMCOUNTER                     StatIoPortIn;
@@ -469,6 +468,9 @@ typedef struct IOM
     STAMCOUNTER                     StatMmioDevLockContentionR0;
     /** @} */
 } IOM;
+#ifdef IOM_WITH_CRIT_SECT_RW
+AssertCompileMemberAlignment(IOM, CritSect, 32);
+#endif
 /** Pointer to IOM instance data. */
 typedef IOM *PIOM;
 

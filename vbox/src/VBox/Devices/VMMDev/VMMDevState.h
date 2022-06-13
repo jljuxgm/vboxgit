@@ -1,4 +1,4 @@
-/* $Id: VMMDevState.h 90503 2021-08-03 21:22:13Z vboxsync $ */
+/* $Id: VMMDevState.h 90638 2021-08-11 21:35:56Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device, internal header.
  */
@@ -392,6 +392,7 @@ AssertCompileMemberAlignment(VMMDEV, enmCpuHotPlugEvent, 4);
 AssertCompileMemberAlignment(VMMDEV, aFacilityStatuses, 8);
 #ifndef VBOX_WITHOUT_TESTING_FEATURES
 AssertCompileMemberAlignment(VMMDEV, TestingData.Value.u64Value, 8);
+AssertCompileMemberAlignment(VMMDEV, CritSectRw, 32);
 #endif
 
 
