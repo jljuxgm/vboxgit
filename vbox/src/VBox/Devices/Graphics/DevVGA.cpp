@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 94356 2022-03-24 13:23:07Z vboxsync $ */
+/* $Id: DevVGA.cpp 94360 2022-03-24 16:21:50Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -1824,7 +1824,7 @@ static int vgaR3DrawText(PPDMDEVINS pDevIns, PVGASTATE pThis, PVGASTATER3 pThisC
         pThis->cursor_start = pThis->cr[0xa];
         pThis->cursor_end = pThis->cr[0xb];
     }
-    cursor_ptr = pThisCC->pbVRam + (pThis->start_addr + cursor_offset) * 8;
+    cursor_ptr = pThisCC->pbVRam + (pThis->start_addr + cursor_offset) * s_incr;
     depth_index = vgaR3GetDepthIndex(pDrv->cBits);
     if (cw == 16)
         vga_draw_glyph8 = vga_draw_glyph16_table[depth_index];
