@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 93292 2022-01-18 07:41:02Z vboxsync $ */
+/* $Id: CPUM.cpp 93337 2022-01-19 05:46:03Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -1479,7 +1479,7 @@ static void cpumR3InitVmxGuestMsrs(PVM pVM, PCVMXMSRS pHostVmxMsrs, PCCPUMFEATUR
                                | RT_BF_MAKE(VMX_BF_MISC_MSEG_ID,                VMX_V_MSEG_REV_ID                     );
     }
 
-    /* CR0 Fixed-0. */
+    /* CR0 Fixed-0 (we report this fixed value regardless of whether UX is supported as it does on real hardware). */
     pGuestVmxMsrs->u64Cr0Fixed0 = VMX_V_CR0_FIXED0;
 
     /* CR0 Fixed-1. */
@@ -1489,7 +1489,7 @@ static void cpumR3InitVmxGuestMsrs(PVM pVM, PCVMXMSRS pHostVmxMsrs, PCCPUMFEATUR
          * This is different from CR4 fixed-1 bits which are reported as per the
          * CPU features and/or micro-architecture/generation. Why? Ask Intel.
          */
-        uint64_t const uHostMsr = fIsNstGstHwExecAllowed ? pHostVmxMsrs->u64Cr0Fixed1 : 0xffffffff;
+        uint64_t const uHostMsr = fIsNstGstHwExecAllowed ? pHostVmxMsrs->u64Cr0Fixed1 : VMX_V_CR0_FIXED1;
         pGuestVmxMsrs->u64Cr0Fixed1 = uHostMsr | pGuestVmxMsrs->u64Cr0Fixed0;   /* Make sure the CR0 MB1 bits are not clear. */
     }
 
