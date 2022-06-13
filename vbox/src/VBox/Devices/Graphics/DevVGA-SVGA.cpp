@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 90058 2021-07-06 11:34:44Z vboxsync $ */
+/* $Id: DevVGA-SVGA.cpp 90319 2021-07-23 17:12:19Z vboxsync $ */
 /** @file
  * VMware SVGA device.
  *
@@ -5614,6 +5614,14 @@ int vmsvgaR3LoadDone(PPDMDEVINS pDevIns)
     if (!pThis->svga.fVRAMTracking)
     {
         vgaR3UnregisterVRAMHandler(pDevIns, pThis);
+    }
+
+    /* VMSVGA is working via VBVA interface, therefore it needs to be
+     * enabled on saved state restore. See @bugref{10071#c7}. */
+    if (pThis->svga.fEnabled)
+    {
+        for (uint32_t idScreen = 0; idScreen < pThis->cMonitors; ++idScreen)
+            pThisCC->pDrv->pfnVBVAEnable(pThisCC->pDrv, idScreen, NULL /*pHostFlags*/);
     }
 
     /* Let the FIFO thread deal with changing the mode. */
