@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMEditors.cpp 90328 2021-07-26 12:18:43Z vboxsync $ */
+/* $Id: UIWizardNewVMEditors.cpp 91059 2021-09-01 13:48:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class implementation.
  */
@@ -30,7 +30,7 @@
 #include "UIVirtualCPUEditor.h"
 #include "UIWizardNewVM.h"
 #include "UIWizardNewVMEditors.h"
-#include "UIWizardNewVMUnattendedPageBasic.h"
+#include "UIWizardNewVMUnattendedPage.h"
 
 /* Other VBox includes: */
 #include "iprt/assert.h"
@@ -180,7 +180,7 @@ void UIGAInstallationGroupBox::setPath(const QString &strPath, bool fRefreshText
 
 void UIGAInstallationGroupBox::mark()
 {
-    bool fError = !UIWizardNewVMUnattendedPage::checkGAISOFile(path());
+    bool fError = !UIWizardNewVMUnattendedCommon::checkGAISOFile(path());
     if (m_pGAISOFilePathSelector)
         m_pGAISOFilePathSelector->mark(fError, tr("Invalid Guest Additions installation media"));
 }
@@ -189,7 +189,7 @@ bool UIGAInstallationGroupBox::isComplete() const
 {
     if (!isChecked())
         return true;
-    return UIWizardNewVMUnattendedPage::checkGAISOFile(path());
+    return UIWizardNewVMUnattendedCommon::checkGAISOFile(path());
 }
 
 void UIGAInstallationGroupBox::sltToggleWidgetsEnabled(bool fEnabled)

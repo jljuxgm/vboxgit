@@ -1,4 +1,4 @@
-/* $Id: UIWizardDiskEditors.cpp 90886 2021-08-25 14:29:44Z vboxsync $ */
+/* $Id: UIWizardDiskEditors.cpp 91059 2021-09-01 13:48:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class implementation.
  */
@@ -37,7 +37,7 @@
 #include "UIUserNamePasswordEditor.h"
 #include "UIWizardDiskEditors.h"
 #include "UIWizardNewVM.h"
-#include "UIWizardNewVMDiskPageBasic.h"
+#include "UIWizardNewVMDiskPage.h"
 
 /* Other VBox includes: */
 #include "iprt/assert.h"
