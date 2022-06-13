@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet_1_0.cpp 90774 2021-08-23 05:59:57Z vboxsync $ $Revision: 90774 $ $Date: 2021-08-23 13:59:57 +0800 (Mon, 23 Aug 2021) $ $Author: vboxsync $ */
+/* $Id: DevVirtioNet_1_0.cpp 90775 2021-08-23 06:07:10Z vboxsync $ $Revision: 90775 $ $Date: 2021-08-23 14:07:10 +0800 (Mon, 23 Aug 2021) $ $Author: vboxsync $ */
 
 /** @file
  * VBox storage devices - Virtio NET Driver
@@ -2779,7 +2779,7 @@ static DECLCALLBACK(void) virtioNetR3StatusChanged(PVIRTIOCORE pVirtio, PVIRTIOC
             PVIRTIONETWORKER pWorker = &pThis->aWorkers[uVirtqNbr];
 
             Assert(pWorker->uIdx == uVirtqNbr);
-	    RT_NOREF(pWorker);
+            RT_NOREF(pWorker);
 
             Assert(pVirtq->uIdx == pWorker->uIdx);
 
