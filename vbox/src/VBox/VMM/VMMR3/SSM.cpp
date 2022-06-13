@@ -1,4 +1,4 @@
-/* $Id: SSM.cpp 94763 2022-04-29 16:36:29Z vboxsync $ */
+/* $Id: SSM.cpp 94802 2022-05-04 08:00:59Z vboxsync $ */
 /** @file
  * SSM - Saved State Manager.
  */
@@ -9372,7 +9372,7 @@ VMMR3DECL(int) SSMR3Open(const char *pszFilename, PCSSMSTRMOPS pStreamOps, void 
     /*
      * Validate input.
      */
-    AssertPtrReturn(pszFilename, VERR_INVALID_POINTER);
+    AssertPtrReturn(pszFilename || pStreamOps, VERR_INVALID_POINTER);
     AssertMsgReturn(!fFlags, ("%#x\n", fFlags), VERR_INVALID_PARAMETER);
     AssertPtrReturn(ppSSM, VERR_INVALID_POINTER);
 
