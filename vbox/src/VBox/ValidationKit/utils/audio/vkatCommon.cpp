@@ -1,4 +1,4 @@
-/* $Id: vkatCommon.cpp 91194 2021-09-10 10:11:03Z vboxsync $ */
+/* $Id: vkatCommon.cpp 91198 2021-09-10 12:55:54Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) - Self test code.
  */
@@ -605,7 +605,7 @@ static DECLCALLBACK(int) audioTestGstAtsTonePlayCallback(void const *pvUser, PAU
 
     char szTimeCreated[RTTIME_STR_LEN];
     RTTimeToString(&pToneParms->Hdr.tsCreated, szTimeCreated, sizeof(szTimeCreated));
-    RTTestPrintf(g_hTest, RTTESTLVL_ALWAYS, "Created (caller UTC): %s\n", szTimeCreated);
+    RTTestPrintf(g_hTest, RTTESTLVL_ALWAYS, "Test created (caller UTC): %s\n", szTimeCreated);
 
     const PAUDIOTESTSTREAM pTstStream = &pTstEnv->aStreams[0]; /** @todo Make this dynamic. */
 
@@ -653,7 +653,7 @@ static DECLCALLBACK(int) audioTestGstAtsToneRecordCallback(void const *pvUser, P
 
     char szTimeCreated[RTTIME_STR_LEN];
     RTTimeToString(&pToneParms->Hdr.tsCreated, szTimeCreated, sizeof(szTimeCreated));
-    RTTestPrintf(g_hTest, RTTESTLVL_ALWAYS, "Created (caller UTC): %s\n", szTimeCreated);
+    RTTestPrintf(g_hTest, RTTESTLVL_ALWAYS, "Test created (caller UTC): %s\n", szTimeCreated);
 
     const PAUDIOTESTSTREAM pTstStream = &pTstEnv->aStreams[0]; /** @todo Make this dynamic. */
 
