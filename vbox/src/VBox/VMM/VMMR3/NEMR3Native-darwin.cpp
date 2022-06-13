@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-darwin.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: NEMR3Native-darwin.cpp 93134 2022-01-06 13:14:52Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, native ring-3 macOS backend using Hypervisor.framework.
  *
@@ -1255,13 +1255,6 @@ nemR3DarwinHandleMemoryAccessPageCheckerCallback(PVMCC pVM, PVMCPUCC pVCpu, RTGC
     LogRel(("nemR3DarwinHandleMemoryAccessPageCheckerCallback/unmap: GCPhysDst=%RGp %s rc=%Rrc\n",
             GCPhys, g_apszPageStates[u2State], rc));
     return VERR_NEM_UNMAP_PAGES_FAILED;
-}
-
-
-DECL_FORCE_INLINE(bool) vmxHCShouldSwapEferMsr(PCVMCPUCC pVCpu, PCVMXTRANSIENT pVmxTransient)
-{
-    RT_NOREF(pVCpu, pVmxTransient);
-    return true;
 }
 
 
