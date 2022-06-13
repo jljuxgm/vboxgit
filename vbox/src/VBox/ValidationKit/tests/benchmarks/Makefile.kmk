@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: Makefile.kmk 92269 2021-11-08 14:37:50Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - Benchmarks.
 #
@@ -32,7 +32,8 @@ INSTALLS += ValidationKitTestsBenchmarks
 ValidationKitTestsBenchmarks_TEMPLATE = VBoxValidationKitR3
 ValidationKitTestsBenchmarks_INST = $(INST_VALIDATIONKIT)tests/benchmarks/
 ValidationKitTestsBenchmarks_EXEC_SOURCES := \
-	$(PATH_SUB_CURRENT)/tdBenchmark1.py
+	$(PATH_SUB_CURRENT)/tdBenchmark1.py \
+	$(PATH_SUB_CURRENT)/tdBenchmark2.py
 
 VBOX_VALIDATIONKIT_PYTHON_SOURCES += $(ValidationKitTestsBenchmarks_EXEC_SOURCES)
 

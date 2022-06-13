@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 92244 2021-11-05 16:15:26Z vboxsync $
+# $Id: vboxwrappers.py 92269 2021-11-08 14:37:50Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 92244 $"
+__version__ = "$Revision: 92269 $"
 
 
 # Standard Python imports.
@@ -1717,6 +1717,22 @@ class SessionWrapper(TdTaskBase):
             fRc = False;
         else:
             reporter.log('set the RAM size of "%s" to %s' % (self.sName, cMB));
+        self.oTstDrv.processPendingEvents();
+        return fRc;
+
+    def setLargePages(self, fUseLargePages):
+        """
+        Configures whether the VM should use large pages or not.
+        Returns True on success and False on failure.  Error information is logged.
+        """
+        fRc = True;
+        try:
+            self.o.machine.setHWVirtExProperty(vboxcon.HWVirtExPropertyType_LargePages, fUseLargePages);
+        except:
+            reporter.errorXcpt('failed to set large pages of "%s" to %s' % (self.sName, fUseLargePages));
+            fRc = False;
+        else:
+            reporter.log('set the large pages of "%s" to %s' % (self.sName, fUseLargePages));
         self.oTstDrv.processPendingEvents();
         return fRc;
 
