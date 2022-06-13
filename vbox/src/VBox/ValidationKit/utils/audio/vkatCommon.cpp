@@ -1,4 +1,4 @@
-/* $Id: vkatCommon.cpp 91826 2021-10-18 13:45:07Z vboxsync $ */
+/* $Id: vkatCommon.cpp 91834 2021-10-19 08:04:08Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) - Self test code.
  */
@@ -384,8 +384,9 @@ static int audioTestStreamInit(PAUDIOTESTDRVSTACK pDrvStack, PAUDIOTESTSTREAM pS
  */
 static int audioTestStreamDestroy(PAUDIOTESTENV pTstEnv, PAUDIOTESTSTREAM pStream)
 {
-    int rc = VINF_SUCCESS;
-    if (pStream && pStream->pStream)
+    AssertPtrReturn(pStream, VERR_INVALID_POINTER);
+
+    if (pStream->pStream)
     {
         /** @todo Anything else to do here, e.g. test if there are left over samples or some such? */
 
@@ -396,7 +397,7 @@ static int audioTestStreamDestroy(PAUDIOTESTENV pTstEnv, PAUDIOTESTSTREAM pStrea
 
     AudioTestMixStreamTerm(&pStream->Mix);
 
-    return rc;
+    return VINF_SUCCESS;
 }
 
 
