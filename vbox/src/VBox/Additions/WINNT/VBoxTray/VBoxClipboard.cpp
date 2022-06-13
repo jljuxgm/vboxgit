@@ -1,4 +1,4 @@
-/* $Id: VBoxClipboard.cpp 92735 2021-12-03 16:03:24Z vboxsync $ */
+/* $Id: VBoxClipboard.cpp 92845 2021-12-09 11:39:01Z vboxsync $ */
 /** @file
  * VBoxClipboard - Shared clipboard, Windows Guest Implementation.
  */
@@ -435,6 +435,50 @@ static LRESULT vboxClipboardWinProcessMsg(PSHCLCONTEXT pCtx, HWND hwnd, UINT msg
                                          * for the terminating null character.
                                          */
                                         cb = (uint32_t)(cbActual + 2);
+                                    }
+                                }
+                                else if (fFormat == VBOX_SHCL_FMT_HTML)
+                                {
+                                    /* Wrap content into CF_HTML clipboard format if needed. */
+                                    if (!SharedClipboardWinIsCFHTML((const char *)pMem))
+                                    {
+                                        char *pszWrapped = NULL;
+                                        uint32_t cbWrapped = 0;
+                                        rc =  SharedClipboardWinConvertMIMEToCFHTML((const char *)pMem, cb, &pszWrapped, &cbWrapped);
+                                        if (RT_SUCCESS(rc))
+                                        {
+                                            if (GlobalUnlock(hMem) == 0)
+                                            {
+                                                hMem = GlobalReAlloc(hMem, cbWrapped, 0);
+                                                if (hMem)
+                                                {
+                                                    pMem = GlobalLock(hMem);
+                                                    if (pMem)
+                                                    {
+                                                        /* Copy wrapped content back to memory passed to system clipboard. */
+                                                        memcpy(pMem, pszWrapped, cbWrapped);
+                                                        cb = cbWrapped;
+                                                    }
+                                                    else
+                                                    {
+                                                        LogRel(("Shared Clipboard: Cannot lock memory, "
+                                                                "HTML clipboard data won't be converted into CF_HTML clipboard format\n"));
+                                                        GlobalFree(hMem);
+                                                        hMem = NULL;
+                                                    }
+                                                }
+                                                else
+                                                    LogRel(("Shared Clipboard: Cannot re-allocate memory, "
+                                                            "HTML clipboard data won't be converted into CF_HTML clipboard format\n"));
+                                            }
+                                            else
+                                                LogRel(("Shared Clipboard: Cannot unlock memory, "
+                                                        "HTML clipboard data won't be converted into CF_HTML clipboard format\n"));
+
+                                            RTMemFree(pszWrapped);
+                                        }
+                                        else
+                                            LogRel(("Shared Clipboard: Cannot convert HTML clipboard data into CF_HTML clipboard format, rc=%Rrc\n", rc));
                                     }
                                 }
                             }
