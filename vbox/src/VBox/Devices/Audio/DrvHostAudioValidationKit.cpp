@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioValidationKit.cpp 91202 2021-09-10 14:48:49Z vboxsync $ */
+/* $Id: DrvHostAudioValidationKit.cpp 91206 2021-09-10 15:27:12Z vboxsync $ */
 /** @file
  * Host audio driver - ValidationKit - For dumping and injecting audio data from/to the device emulation.
  */
@@ -844,6 +844,7 @@ static DECLCALLBACK(PDMHOSTAUDIOSTREAMSTATE) drvHostValKitAudioHA_StreamGetState
 {
     AssertPtrReturn(pStream, PDMHOSTAUDIOSTREAMSTATE_INVALID);
 
+#if 0
     PDRVHOSTVALKITAUDIO     pThis    = RT_FROM_MEMBER(pInterface, DRVHOSTVALKITAUDIO, IHostAudio);
     PDMHOSTAUDIOSTREAMSTATE enmState = PDMHOSTAUDIOSTREAMSTATE_NOT_WORKING;
 
@@ -863,6 +864,10 @@ static DECLCALLBACK(PDMHOSTAUDIOSTREAMSTATE) drvHostValKitAudioHA_StreamGetState
         enmState = PDMHOSTAUDIOSTREAMSTATE_OKAY;
 
     return enmState;
+#else
+    RT_NOREF(pInterface, pStream);
+    return PDMHOSTAUDIOSTREAMSTATE_OKAY;
+#endif
 }
 
 
