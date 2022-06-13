@@ -1,4 +1,4 @@
-/* $Id: VBoxManageBandwidthControl.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: VBoxManageBandwidthControl.cpp 93705 2022-02-11 19:08:38Z vboxsync $ */
 /** @file
  * VBoxManage - The bandwidth control related commands.
  */
@@ -355,7 +355,7 @@ RTEXITCODE handleBandwidthControl(HandlerArg *a)
         rc = handleBandwidthControlList(a, bwCtrl) == RTEXITCODE_SUCCESS ? S_OK : E_FAIL;
     else
     {
-        errorSyntax(USAGE_BANDWIDTHCONTROL, BWControl::tr("Invalid parameter '%s'"), Utf8Str(a->argv[1]).c_str());
+        errorSyntax(USAGE_BANDWIDTHCONTROL, BWControl::tr("Invalid parameter '%s'"), a->argv[1]);
         rc = E_FAIL;
     }
 
