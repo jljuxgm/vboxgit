@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVModes.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: VBoxMPVModes.cpp 95009 2022-05-13 16:45:53Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -109,6 +109,7 @@ static const RTRECTSIZE g_VBoxBuiltinResolutions[] =
     { 800,   600 },
     { 1024,  768 },
     { 1152,  864 },
+    { 1280,  720 },
     { 1280,  960 },
     { 1280, 1024 },
     { 1400, 1050 },
