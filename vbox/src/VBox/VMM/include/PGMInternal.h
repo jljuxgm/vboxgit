@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 91345 2021-09-23 08:14:38Z vboxsync $ */
+/* $Id: PGMInternal.h 91450 2021-09-28 20:22:31Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -119,7 +119,7 @@
  * Note that \#PFs are much more expensive in the VT-x/AMD-V case due to
  * world switch overhead, so let's sync more.
  */
-# ifdef IN_RING0
+#ifdef IN_RING0
 /* Chose 32 based on the compile test in @bugref{4219}; 64 shows worse stats.
  * 32 again shows better results than 16; slightly more overhead in the \#PF handler,
  * but ~5% fewer faults.

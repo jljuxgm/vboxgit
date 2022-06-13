@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 91247 2021-09-15 12:20:52Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 91450 2021-09-28 20:22:31Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -960,7 +960,8 @@ int pgmPhysAllocLargePage(PVMCC pVM, RTGCPHYS GCPhys)
             /* If we fail once, it most likely means the host's memory is too
                fragmented; don't bother trying again. */
             LogFlow(("pgmPhysAllocLargePage failed with %Rrc\n", rc));
-            PGMSetLargePageUsage(pVM, false);
+            if (rc != VERR_TRY_AGAIN)
+                PGMSetLargePageUsage(pVM, false);
             return rc;
         }
     }
