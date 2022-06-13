@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 92954 2021-12-16 08:19:19Z vboxsync $
+# $Id: vbox.py 92955 2021-12-16 08:53:55Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 92954 $"
+__version__ = "$Revision: 92955 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -2496,18 +2496,20 @@ class TestDriver(base.TestDriver):                                              
             if not fRc:   oSession.discardSettings(True);
             oSession.close();
         if not fRc:
-            try:    self.oVBox.unregisterMachine(oVM.id);
-            except: pass;
             if self.fpApiVer >= 4.0:
+                try:    oVM.unregister(vboxcon.CleanupMode_Full);
+                except: reporter.logXcpt();
                 try:
                     if self.fpApiVer >= 4.3:
                         oProgress = oVM.deleteConfig([]);
                     else:
-                        oProgress = oVM.delete(None);
+                        oProgress = oVM.delete([]);
                     self.waitOnProgress(oProgress);
                 except:
                     reporter.logXcpt();
             else:
+                try:    self.oVBox.unregisterMachine(oVM.id);
+                except: reporter.logXcpt();
                 try:    oVM.deleteSettings();
                 except: reporter.logXcpt();
             return None;
@@ -2596,19 +2598,20 @@ class TestDriver(base.TestDriver):                                              
                 return oVM;
 
             # Failed. Unregister the machine and delete it.
-            try:    self.oVBox.unregisterMachine(oVM.id);
-            except: pass;
-
             if self.fpApiVer >= 4.0:
+                try:    oVM.unregister(vboxcon.CleanupMode_Full);
+                except: reporter.logXcpt();
                 try:
                     if self.fpApiVer >= 4.3:
                         oProgress = oVM.deleteConfig([]);
                     else:
-                        oProgress = oVM.delete(None);
+                        oProgress = oVM.delete([]);
                     self.waitOnProgress(oProgress);
                 except:
                     reporter.logXcpt();
             else:
+                try:    self.oVBox.unregisterMachine(oVM.id);
+                except: reporter.logXcpt();
                 try:    oVM.deleteSettings();
                 except: reporter.logXcpt();
         return None;
