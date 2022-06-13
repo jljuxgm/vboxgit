@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 93708 2022-02-11 20:46:11Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 94171 2022-03-11 14:15:12Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -590,11 +590,6 @@ void printUsage(USAGECATEGORY enmCommand, uint64_t fSubcommandScope, PRTSTREAM p
     }
 
 #define SEP pcszSep1, pcszSep2
-
-    if (enmCommand == USAGE_DISCARDSTATE || enmCommand == USAGE_S_ALL)
-        RTStrmPrintf(pStrm,
-                           "%s discardstate %s    <uuid|vmname>\n"
-                     "\n", SEP);
 
     if (enmCommand == USAGE_ADOPTSTATE || enmCommand == USAGE_S_ALL)
         RTStrmPrintf(pStrm,
