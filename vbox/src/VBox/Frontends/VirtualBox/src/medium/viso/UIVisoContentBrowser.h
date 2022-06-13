@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.h 92505 2021-11-18 19:37:37Z vboxsync $ */
+/* $Id: UIVisoContentBrowser.h 92506 2021-11-18 19:41:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class declaration.
  */
@@ -72,7 +72,7 @@ public slots:
 
 protected:
 
-    void retranslateUi();
+    void retranslateUi() final override;
     virtual void tableViewItemDoubleClick(const QModelIndex &index)  final override;
     /** @name Functions to set view root indices explicitly. They block the related signals. @p is converted
         to the correct index before setting.
