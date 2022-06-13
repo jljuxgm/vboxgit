@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 92023 2021-10-25 10:34:48Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 92216 2021-11-04 18:51:54Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -7590,7 +7590,7 @@ static void hmR0VmxImportGuestRip(PVMCPUCC pVCpu)
         AssertRC(rc);
 
         pCtx->rip = u64Val;
-        EMR0HistoryUpdatePC(pVCpu, pCtx->rip, false);
+        EMHistoryUpdatePC(pVCpu, pCtx->rip, false);
         pCtx->fExtrn &= ~CPUMCTX_EXTRN_RIP;
     }
 }
@@ -7737,7 +7737,7 @@ static int hmR0VmxImportGuestState(PVMCPUCC pVCpu, PVMXVMCSINFO pVmcsInfo, uint6
                     hmR0VmxImportGuestRip(pVCpu);
                     if (fRealOnV86Active)
                         pCtx->cs.Attr.u = pVmcsInfoShared->RealMode.AttrCS.u;
-                    EMR0HistoryUpdatePC(pVCpu, pCtx->cs.u64Base + pCtx->rip, true /* fFlattened */);
+                    EMHistoryUpdatePC(pVCpu, pCtx->cs.u64Base + pCtx->rip, true /* fFlattened */);
                 }
                 if (fWhat & CPUMCTX_EXTRN_SS)
                 {
