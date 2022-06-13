@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 92186 2021-11-03 08:31:27Z vboxsync $ */
+/* $Id: PGMAll.cpp 92190 2021-11-03 10:56:03Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -61,7 +61,7 @@ static int pgmShwGetEPTPDPtr(PVMCPUCC pVCpu, RTGCPTR64 GCPtr, PEPTPDPT *ppPdpt, 
 # define PGM_SLAT_TYPE               PGM_SLAT_TYPE_EPT
 # define PGM_GST_TYPE                PGM_TYPE_EPT
 # include "PGMGstDefs.h"
-# include "PGMAllGstSlatEpt.h"
+# include "PGMAllGstSlatEpt.cpp.h"
 # undef PGM_GST_TYPE
 #endif
 
