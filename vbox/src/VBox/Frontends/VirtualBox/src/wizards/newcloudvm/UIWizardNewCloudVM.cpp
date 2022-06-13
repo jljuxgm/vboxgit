@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVM.cpp 91757 2021-10-15 09:58:36Z vboxsync $ */
+/* $Id: UIWizardNewCloudVM.cpp 91825 2021-10-18 12:26:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVM class implementation.
  */
@@ -26,7 +26,6 @@
 
 /* COM includes: */
 #include "CCloudMachine.h"
-#include "CProgress.h"
 
 
 UIWizardNewCloudVM::UIWizardNewCloudVM(QWidget *pParent,
