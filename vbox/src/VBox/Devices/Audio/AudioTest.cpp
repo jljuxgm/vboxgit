@@ -1,4 +1,4 @@
-/* $Id: AudioTest.cpp 91682 2021-10-12 07:50:18Z vboxsync $ */
+/* $Id: AudioTest.cpp 91684 2021-10-12 08:31:58Z vboxsync $ */
 /** @file
  * Audio testing routines.
  *
@@ -2387,6 +2387,12 @@ static int audioTestToneVerifyBeacon(PAUDIOTESTVERIFYJOB pVerJob,
         int rc2 = audioTestErrorDescAddError(pVerJob->pErr, pVerJob->idxTest, "File '%s': %s beacon %s (got %RU32 bytes, expected %RU32)",
                                              pCmp->pszName,
                                              fPre ? "Pre" : "Post", cbBeacon ? "found" : "not found", cbBeacon, cbBeaconExpected);
+        AssertRC(rc2);
+    }
+    else
+    {
+        int rc2 = audioTestErrorDescAddInfo(pVerJob->pErr, pVerJob->idxTest, "File '%s': %s beacon found and valid",
+                                            pCmp->pszName, fPre ? "Pre" : "Post");
         AssertRC(rc2);
     }
 
