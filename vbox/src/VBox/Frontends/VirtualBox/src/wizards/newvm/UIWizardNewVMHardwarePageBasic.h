@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMHardwarePageBasic.h 90066 2021-07-06 13:13:41Z vboxsync $ */
+/* $Id: UIWizardNewVMHardwarePageBasic.h 90073 2021-07-07 06:38:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMHardwarePageBasic class declaration.
  */
@@ -22,6 +22,7 @@
 #endif
 
 /* Qt includes: */
+#include <QSet>
 #include <QVariant>
 
 /* GUI includes: */
@@ -62,6 +63,7 @@ private slots:
 
     void sltMemorySizeChanged(int iValue);
     void sltCPUCountChanged(int iCount);
+    void sltEFIEnabledChanged(bool fEnabled);
 
 private:
 
@@ -81,6 +83,10 @@ private:
        QCheckBox          *m_pEFICheckBox;
        QIRichTextLabel    *m_pLabel;
     /** @} */
+    /** This set is used to decide if we have to set wizard's parameters
+      * some default values or not. When user modifies a value through a widget we
+      * no longer touch user set value during page initilization. see initializePage. */
+    QSet<QString> m_userModifiedParameters;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_wizards_newvm_UIWizardNewVMHardwarePageBasic_h */
