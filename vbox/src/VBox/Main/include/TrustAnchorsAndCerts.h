@@ -1,4 +1,4 @@
-/* $Id: TrustAnchorsAndCerts.h 91399 2021-09-27 13:48:47Z vboxsync $ */
+/* $Id: TrustAnchorsAndCerts.h 91490 2021-09-30 08:30:25Z vboxsync $ */
 /** @file
  * Main - Collection of trust anchors and certificates included in VBoxSVC.
  */
@@ -33,6 +33,9 @@ extern const unsigned g_cbUefiMicrosoftCa;
 
 extern const unsigned char g_abUefiMicrosoftProPca[];
 extern const unsigned g_cbUefiMicrosoftProPca;
+
+extern const unsigned char g_abUefiOracleDefPk[];
+extern const unsigned g_cbUefiOracleDefPk;
 
 RT_C_DECLS_END
 

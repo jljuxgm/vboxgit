@@ -1,4 +1,4 @@
-/* $Id: efi-signature.h 90283 2021-07-22 11:37:25Z vboxsync $ */
+/* $Id: efi-signature.h 91490 2021-09-30 08:30:25Z vboxsync $ */
 /** @file
  * IPRT, EFI signature database definitions.
  */
@@ -62,6 +62,10 @@ typedef const EFI_SIGNATURE_DATA *PCEFI_SIGNATURE_DATA;
 /** Microsoft's GUID for signatures. */
 #define EFI_SIGNATURE_OWNER_GUID_MICROSOFT \
     { 0x77fa9abd, 0x0359, 0x4d32, { 0xbd, 0x60, 0x28, 0xf4, 0xe7, 0x8f, 0x78, 0x4b }}
+
+/** VirtualBox's GUID for signatures. */
+#define EFI_SIGNATURE_OWNER_GUID_VBOX \
+    { 0x9400896a, 0x146c, 0x4f4c, { 0x96, 0x47, 0x2c, 0x73, 0x62, 0x0c, 0xa8, 0x94 }}
 
 
 /**
