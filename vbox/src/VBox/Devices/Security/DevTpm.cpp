@@ -1,4 +1,4 @@
-/* $Id: DevTpm.cpp 91325 2021-09-22 14:18:04Z vboxsync $ */
+/* $Id: DevTpm.cpp 92001 2021-10-22 12:35:48Z vboxsync $ */
 /** @file
  * DevTpm - Trusted Platform Module emulation.
  *
@@ -1720,6 +1720,7 @@ static DECLCALLBACK(int) tpmR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFGM
     {
         pThis->fLocChangeSup     = false;
         pThis->fEstablishmentSet = false;
+        pThis->cbCmdResp         = TPM_DATA_BUFFER_SIZE_MAX;
 
         pThisCC->pDrvBase = NULL;
         pThisCC->pDrvTpm  = NULL;
