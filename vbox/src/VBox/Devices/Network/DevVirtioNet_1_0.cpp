@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet_1_0.cpp 92996 2021-12-17 08:18:43Z vboxsync $ $Revision: 92996 $ $Date: 2021-12-17 16:18:43 +0800 (Fri, 17 Dec 2021) $ $Author: vboxsync $ */
+/* $Id: DevVirtioNet_1_0.cpp 92997 2021-12-17 08:29:01Z vboxsync $ $Revision: 92997 $ $Date: 2021-12-17 16:29:01 +0800 (Fri, 17 Dec 2021) $ $Author: vboxsync $ */
 
 /** @file
  * VBox storage devices - Virtio NET Driver
@@ -26,7 +26,6 @@
 /*******************************************************************************************************************************
 *   Header Files                                                                                                               *
 ***************************************************************************************************************************** **/
-//#define LOG_GROUP LOG_GROUP_DRV_NET
 #define LOG_GROUP LOG_GROUP_DEV_VIRTIO
 #define VIRTIONET_WITH_GSO
 
@@ -2451,7 +2450,8 @@ static void virtioNetR3Ctrl(PPDMDEVINS pDevIns, PVIRTIONET pThis, PVIRTIONETCC p
     }
 
     /* Currently CTRL pkt header just returns ack, but keeping segment logic generic/flexible
-     * in case that changes to make adapting more straightforward */
+     * in case that changes to make adapting more straightforward
+     */
     int cSegs = 1;
 
     /* Return CTRL packet Ack byte (result code) to guest driver */
