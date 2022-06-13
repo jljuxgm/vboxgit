@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 92248 2021-11-06 15:21:57Z vboxsync $ */
+/* $Id: VMMR0.cpp 92368 2021-11-11 13:31:21Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -1882,10 +1882,10 @@ DECL_NO_INLINE(static, int) vmmR0EntryExWorker(PGVM pGVM, VMCPUID idCpu, VMMR0OP
             rc = PGMR0PhysFlushHandyPages(pGVM, idCpu);
             break;
 
-        case VMMR0_DO_PGM_ALLOCATE_LARGE_HANDY_PAGE:
+        case VMMR0_DO_PGM_ALLOCATE_LARGE_PAGE:
             if (idCpu == NIL_VMCPUID)
                 return VERR_INVALID_CPU_ID;
-            rc = PGMR0PhysAllocateLargeHandyPage(pGVM, idCpu);
+            rc = PGMR0PhysAllocateLargePage(pGVM, idCpu, u64Arg);
             break;
 
         case VMMR0_DO_PGM_PHYS_SETUP_IOMMU:
