@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 91775 2021-10-17 10:53:28Z vboxsync $ */
+/* $Id: SUPDrv.cpp 91783 2021-10-17 12:26:04Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -156,7 +156,7 @@ static int                  supdrvIOCtl_ResumeSuspendedKbds(void);
 /** @def STKBACK
  * Indicates that the symbol needs to switch back to the kernel stack on darwin.
  * See @bugref{10124} for details. */
-#if 1
+#ifdef RT_OS_DARWIN
 # define STKBACK(a) "StkBack_" a
 #else
 # define STKBACK(a) a
