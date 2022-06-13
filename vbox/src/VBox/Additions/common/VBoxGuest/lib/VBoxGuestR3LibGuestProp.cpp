@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibGuestProp.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: VBoxGuestR3LibGuestProp.cpp 93453 2022-01-26 21:10:57Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, guest properties.
  */
@@ -963,7 +963,7 @@ VBGLR3DECL(int) VbglR3GuestPropWait(HGCMCLIENTID idClient,
      * adjust their buffer.
      */
     if (    rc == VERR_BUFFER_OVERFLOW
-        ||  pcbBufActual != NULL)
+        &&  pcbBufActual != NULL)
     {
         int rc2 = Msg.size.GetUInt32(pcbBufActual);
         AssertRCReturn(rc2, RT_FAILURE(rc) ? rc : rc2);
