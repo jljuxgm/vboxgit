@@ -1,4 +1,4 @@
-/* $Id: NvramStoreImpl.cpp 94745 2022-04-28 18:25:09Z vboxsync $ */
+/* $Id: NvramStoreImpl.cpp 94810 2022-05-04 08:18:10Z vboxsync $ */
 /** @file
  * VirtualBox COM NVRAM store class implementation
  */
@@ -675,7 +675,7 @@ void NvramStore::i_releaseEncryptionOrDecryptionResources(RTVFSIOSTREAM hVfsIos,
     AssertPtr(pKey);
 
     i_releaseCryptoIf(pCryptoIf);
-    m->mpKeyStore->releaseSecretKey(m->bd->strKeyId);
+    pKey->release();
     RTVfsIoStrmRelease(hVfsIos);
 }
 #endif
