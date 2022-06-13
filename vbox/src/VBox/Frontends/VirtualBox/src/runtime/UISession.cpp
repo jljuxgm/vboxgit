@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 91713 2021-10-13 12:13:47Z vboxsync $ */
+/* $Id: UISession.cpp 92082 2021-10-26 12:22:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -1773,9 +1773,11 @@ bool UISession::preprocessInitialization()
                 case KNetworkAttachmentType_Bridged:
                     strIfName = na.GetBridgedInterface();
                     break;
+#ifndef VBOX_WITH_VMNET
                 case KNetworkAttachmentType_HostOnly:
                     strIfName = na.GetHostOnlyInterface();
                     break;
+#endif /* !VBOX_WITH_VMNET */
                 default: break; /* Shut up, MSC! */
             }
 
