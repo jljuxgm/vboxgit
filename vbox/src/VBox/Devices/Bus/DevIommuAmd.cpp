@@ -1,4 +1,4 @@
-/* $Id: DevIommuAmd.cpp 90494 2021-08-03 11:37:00Z vboxsync $ */
+/* $Id: DevIommuAmd.cpp 90505 2021-08-04 05:17:28Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - AMD implementation.
  */
@@ -5022,9 +5022,8 @@ static int iommuAmdR3CmdProcess(PPDMDEVINS pDevIns, PCCMD_GENERIC_T pCmd, RTGCPH
                  * Validate invalidation size.
                  * See AMD IOMMU spec. 2.2.3 "I/O Page Tables for Host Translations".
                  */
-                if (   cShift == 12 /* 4K  */ || cShift == 13 /* 8K  */
-                    || cShift == 14 /* 16K */ || cShift == 20 /* 1M  */
-                    || cShift == 22 /* 4M  */ || cShift == 32 /* 4G  */)
+                if (   cShift >= 12 /* 4 KB */
+                    && cShift <= 51 /* 2 PB */)
                 {
                     /* Remove the range of I/O virtual addresses requesting to be invalidated. */
                     size_t const cbIova = RT_BIT_64(cShift);
