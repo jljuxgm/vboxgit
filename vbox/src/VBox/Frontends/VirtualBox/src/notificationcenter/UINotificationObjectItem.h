@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjectItem.h 93990 2022-02-28 15:34:57Z vboxsync $ */
+/* $Id: UINotificationObjectItem.h 94785 2022-05-02 14:17:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINotificationObjectItem class declaration.
  */
@@ -38,7 +38,6 @@ class UINotificationObject;
 class UINotificationProgress;
 #ifdef VBOX_GUI_WITH_NETWORK_MANAGER
 class UINotificationDownloader;
-class UINotificationNewVersionChecker;
 #endif
 
 /** QWidget-based notification-object item. */
@@ -143,36 +142,6 @@ private:
 
     /** Holds the notification-downloader this item created for. */
     UINotificationDownloader *downloader() const;
-
-    /** Updates details. */
-    void updateDetails();
-
-    /** Holds the progress-bar instance. */
-    QProgressBar *m_pProgressBar;
-};
-
-/** UINotificationObjectItem extension for notification-new-version-checker. */
-class UINotificationNewVersionCheckerItem : public UINotificationObjectItem
-{
-    Q_OBJECT;
-
-public:
-
-    /** Constructs notification-new-version-checker item, passing @a pParent to the base-class.
-      * @param  pChecker  Brings the notification-new-version-checker this item created for. */
-    UINotificationNewVersionCheckerItem(QWidget *pParent, UINotificationNewVersionChecker *pChecker = 0);
-
-private slots:
-
-    /** Handles signal about progress NOT finished. */
-    void sltHandleProgressNotFinished();
-    /** Handles signal about progress finished. */
-    void sltHandleProgressFinished();
-
-private:
-
-    /** Holds the notification-new-version-checker this item created for. */
-    UINotificationNewVersionChecker *checker() const;
 
     /** Updates details. */
     void updateDetails();

@@ -1,4 +1,4 @@
-/* $Id: UIUpdateManager.cpp 94760 2022-04-29 12:43:09Z vboxsync $ */
+/* $Id: UIUpdateManager.cpp 94785 2022-05-02 14:17:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUpdateManager class implementation.
  */
@@ -94,35 +94,12 @@ UIUpdateStepVirtualBox::UIUpdateStepVirtualBox(bool fForcedCall)
 
 void UIUpdateStepVirtualBox::exec()
 {
-#if 0
-    /* Return if already checking: */
-    if (UINotificationNewVersionCheckerVirtualBox::exists())
-    {
-        gpNotificationCenter->invoke();
-        emit sigStepFinished();
-        return;
-    }
-
     /* Check for new VirtualBox version: */
-    UINotificationNewVersionCheckerVirtualBox *pNotification =
-        UINotificationNewVersionCheckerVirtualBox::instance(m_fForcedCall);
-    /* Handle any signal as step-finished: */
-    connect(pNotification, &UINotificationNewVersionCheckerVirtualBox::sigProgressFailed,
-            this, &UIUpdateStepVirtualBox::sigStepFinished);
-    connect(pNotification, &UINotificationNewVersionCheckerVirtualBox::sigProgressCanceled,
-            this, &UIUpdateStepVirtualBox::sigStepFinished);
-    connect(pNotification, &UINotificationNewVersionCheckerVirtualBox::sigProgressFinished,
-            this, &UIUpdateStepVirtualBox::sigStepFinished);
-
-    /* Append and start notification: */
-    gpNotificationCenter->append(pNotification);
-#else
     UINotificationProgressNewVersionChecker *pNotification =
         new UINotificationProgressNewVersionChecker(m_fForcedCall);
     connect(pNotification, &UINotificationProgressNewVersionChecker::sigProgressFinished,
             this, &UIUpdateStepVirtualBox::sigStepFinished);
     gpNotificationCenter->append(pNotification);
-#endif
 }
 
 

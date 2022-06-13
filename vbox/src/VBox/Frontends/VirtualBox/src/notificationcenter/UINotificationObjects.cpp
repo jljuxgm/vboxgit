@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 94760 2022-04-29 12:43:09Z vboxsync $ */
+/* $Id: UINotificationObjects.cpp 94785 2022-05-02 14:17:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -4268,61 +4268,6 @@ UIDownloader *UINotificationDownloaderUserManual::createDownloader()
         connect(pDownloader, &UIDownloaderUserManual::sigDownloadFinished,
                 this, &UINotificationDownloaderUserManual::sigUserManualDownloaded);
         return pDownloader;
-    }
-    return 0;
-}
-
-
-/*********************************************************************************************************************************
-*   Class UINotificationNewVersionCheckerVirtualBox implementation.                                                              *
-*********************************************************************************************************************************/
-
-/* static */
-UINotificationNewVersionCheckerVirtualBox *UINotificationNewVersionCheckerVirtualBox::s_pInstance = 0;
-
-/* static */
-UINotificationNewVersionCheckerVirtualBox *UINotificationNewVersionCheckerVirtualBox::instance(bool fForcedCall)
-{
-    if (!s_pInstance)
-        new UINotificationNewVersionCheckerVirtualBox(fForcedCall);
-    return s_pInstance;
-}
-
-/* static */
-bool UINotificationNewVersionCheckerVirtualBox::exists()
-{
-    return !!s_pInstance;
-}
-
-UINotificationNewVersionCheckerVirtualBox::UINotificationNewVersionCheckerVirtualBox(bool fForcedCall)
-    : m_fForcedCall(fForcedCall)
-{
-    s_pInstance = this;
-}
-
-UINotificationNewVersionCheckerVirtualBox::~UINotificationNewVersionCheckerVirtualBox()
-{
-    s_pInstance = 0;
-}
-
-QString UINotificationNewVersionCheckerVirtualBox::name() const
-{
-    return UINotificationDownloader::tr("Check for New Version ...");
-}
-
-QString UINotificationNewVersionCheckerVirtualBox::details() const
-{
-    return UINotificationProgress::tr("<b>Link:</b> %1").arg(m_strUrl);
-}
-
-UINewVersionChecker *UINotificationNewVersionCheckerVirtualBox::createChecker()
-{
-    /* Create and configure the new VirtualBox version checker: */
-    UINewVersionChecker *pChecker = new UINewVersionChecker(m_fForcedCall);
-    if (pChecker)
-    {
-        m_strUrl = pChecker->url().toString();
-        return pChecker;
     }
     return 0;
 }

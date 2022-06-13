@@ -1,4 +1,4 @@
-/* $Id: UINotificationObject.h 94391 2022-03-29 10:48:26Z vboxsync $ */
+/* $Id: UINotificationObject.h 94785 2022-05-02 14:17:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINotificationObject class declaration.
  */
@@ -265,70 +265,6 @@ private:
 
     /** Holds the last cached progress percentage value. */
     ulong    m_uPercent;
-    /** Holds the error message is any. */
-    QString  m_strError;
-    /** Holds whether current progress is done. */
-    bool     m_fDone;
-};
-
-/** UINotificationObject extension for notification-new-version-checker. */
-class SHARED_LIBRARY_STUFF UINotificationNewVersionChecker : public UINotificationObject
-{
-    Q_OBJECT;
-
-signals:
-
-    /** Notifies listeners about progress failed. */
-    void sigProgressFailed();
-    /** Notifies listeners about progress canceled. */
-    void sigProgressCanceled();
-    /** Notifies listeners about progress finished. */
-    void sigProgressFinished();
-
-public:
-
-    /** Constructs notification-new-version-checker. */
-    UINotificationNewVersionChecker();
-    /** Destructs notification-new-version-checker. */
-    virtual ~UINotificationNewVersionChecker() /* override final */;
-
-    /** Creates and returns started checker-wrapper. */
-    virtual UINewVersionChecker *createChecker() = 0;
-
-    /** Returns error-message if any. */
-    QString error() const;
-
-    /** Returns whether object is critical. */
-    virtual bool isCritical() const RT_OVERRIDE;
-    /** Returns whether object is done. */
-    virtual bool isDone() const RT_OVERRIDE;
-    /** Returns object internal name. */
-    virtual QString internalName() const /* override final */;
-    /** Returns object help keyword. */
-    virtual QString helpKeyword() const /* override final */;
-    /** Handles notification-object being added. */
-    virtual void handle() /* override final */;
-
-public slots:
-
-    /** Stops the checker and notifies model about closing. */
-    virtual void close() /* override final */;
-
-private slots:
-
-    /** Handles signal about progress failed.
-      * @param  strError  Brings error message if any. */
-    void sltHandleProgressFailed(const QString &strError);
-    /** Handles signal about progress canceled. */
-    void sltHandleProgressCanceled();
-    /** Handles signal about progress finished. */
-    void sltHandleProgressFinished();
-
-private:
-
-    /** Holds the instance of checker being wrapped by this notification-new-version-checker. */
-    UINewVersionChecker *m_pChecker;
-
     /** Holds the error message is any. */
     QString  m_strError;
     /** Holds whether current progress is done. */
