@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 89976 2021-06-30 11:03:22Z vboxsync $ */
+/* $Id: HMInternal.h 90932 2021-08-27 05:42:03Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -1008,7 +1008,7 @@ AssertCompileMemberAlignment(VMXVMCSINFO, hMemObj,         8);
 #define VMX_RESTORE_HOST_GDT_NEED_WRITABLE                      RT_BIT(8)
 #define VMX_RESTORE_HOST_CAN_USE_WRFSBASE_AND_WRGSBASE          RT_BIT(9)
 /**
- * This _must_ be the top most bit, so that we can easily that that it and
+ * This _must_ be the top most bit, so that we can easily check that it and
  * something else is set w/o having to do two checks like this:
  * @code
  *     if (   (pVCpu->hm.s.vmx.fRestoreHostFlags & VMX_RESTORE_HOST_REQUIRED)
