@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVM.h 90589 2021-08-10 10:07:26Z vboxsync $ */
+/* $Id: UIWizardCloneVM.h 90617 2021-08-11 07:28:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVM class declaration.
  */
@@ -41,6 +41,7 @@ public:
     /* Constructor: */
     UIWizardCloneVM(QWidget *pParent, const CMachine &machine,
                     const QString &strGroup, CSnapshot snapshot = CSnapshot());
+    void setCloneModePageVisible(bool fIsFullClone);
 
 protected:
 
@@ -60,6 +61,7 @@ private:
     CMachine  m_machine;
     CSnapshot m_snapshot;
     QString   m_strGroup;
+    int m_iCloneModePageIndex;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_wizards_clonevm_UIWizardCloneVM_h */

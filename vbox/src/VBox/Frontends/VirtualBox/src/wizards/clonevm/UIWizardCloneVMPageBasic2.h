@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMPageBasic2.h 90607 2021-08-10 16:07:18Z vboxsync $ */
+/* $Id: UIWizardCloneVMPageBasic2.h 90617 2021-08-11 07:28:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMPageBasic2 class declaration.
  */
@@ -60,8 +60,7 @@ public:
 
 private slots:
 
-    /* Button click handler: */
-    void sltButtonClicked(QAbstractButton *pButton);
+    void sltCloneTypeChanged(bool fIsFullClone);
 
 private:
 

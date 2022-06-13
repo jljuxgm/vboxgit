@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMEditors.cpp 90607 2021-08-10 16:07:18Z vboxsync $ */
+/* $Id: UIWizardCloneVMEditors.cpp 90617 2021-08-11 07:28:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class implementation.
  */
@@ -353,6 +353,9 @@ void UICloneVMCloneTypeGroupBox::prepare()
         }
     }
 
+    connect(m_pButtonGroup, static_cast<void(QButtonGroup::*)(QAbstractButton *)>(&QButtonGroup::buttonClicked),
+            this, &UICloneVMCloneTypeGroupBox::sltButtonClicked);
+
     retranslateUi();
 }
 
@@ -363,6 +366,11 @@ void UICloneVMCloneTypeGroupBox::retranslateUi()
     if (m_pLinkedCloneRadio)
         m_pLinkedCloneRadio->setText(tr("&Linked clone"));
 
+}
+
+void UICloneVMCloneTypeGroupBox::sltButtonClicked(QAbstractButton *)
+{
+    emit sigFullCloneSelected(m_pFullCloneRadio && m_pFullCloneRadio->isChecked());
 }
 
 /*********************************************************************************************************************************

@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMEditors.h 90607 2021-08-10 16:07:18Z vboxsync $ */
+/* $Id: UIWizardCloneVMEditors.h 90617 2021-08-11 07:28:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardDiskEditors class declaration.
  */
@@ -31,6 +31,7 @@
 
 /* Forward declarations: */
 // class CMediumFormat;
+class QAbstractButton;
 class QButtonGroup;
 class QCheckBox;
 class QGridLayout;
@@ -139,9 +140,15 @@ class UICloneVMCloneTypeGroupBox : public QIWithRetranslateUI<QGroupBox>
 
 signals:
 
+    void sigFullCloneSelected(bool fSelected);
+
 public:
 
     UICloneVMCloneTypeGroupBox(QWidget *pParent = 0);
+
+private slots:
+
+    void sltButtonClicked(QAbstractButton *);
 
 private:
 
