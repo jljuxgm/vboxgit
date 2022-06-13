@@ -1,4 +1,4 @@
-/* $Id: AudioTest.cpp 90071 2021-07-06 16:29:39Z vboxsync $ */
+/* $Id: AudioTest.cpp 90179 2021-07-14 09:56:25Z vboxsync $ */
 /** @file
  * Audio testing routines.
  *
@@ -1563,6 +1563,9 @@ int AudioTestSetPack(PAUDIOTESTSET pSet, const char *pszOutDir, char *pszFileNam
 {
     AssertReturn(!pszFileName || cbFileName, VERR_INVALID_PARAMETER);
     AssertReturn(!audioTestManifestIsOpen(pSet), VERR_WRONG_ORDER);
+
+    AssertMsgReturn(pSet->cTests, ("No tests run yet"), VERR_WRONG_ORDER);
+    AssertMsgReturn(pSet->cTestsRunning == 0 , ("Some tests are still running"), VERR_WRONG_ORDER);
 
     /** @todo Check and deny if \a pszOutDir is part of the set's path. */
 
