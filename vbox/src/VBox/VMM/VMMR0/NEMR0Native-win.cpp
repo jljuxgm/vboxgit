@@ -1,4 +1,4 @@
-/* $Id: NEMR0Native-win.cpp 91694 2021-10-12 14:12:37Z vboxsync $ */
+/* $Id: NEMR0Native-win.cpp 92194 2021-11-03 15:06:02Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, native ring-0 Windows backend.
  */
@@ -918,6 +918,9 @@ VMMR0_INT_DECL(int) NEMR0InitVMPart2(PGVM pGVM)
             while (i-- > 0)
                 RTR0MemObjFree(ahMemObjs[i], false /*fFreeMappings*/);
         }
+        else
+            pGVM->nemr0.s.idHvPartition = pVCpu0->nem.s.uIoCtlBuf.idPartition;
+
         if (pGVM->nem.s.idHvPartition == HV_PARTITION_ID_INVALID)
             pGVM->nem.s.idHvPartition = pGVM->nemr0.s.idHvPartition;
 # endif
