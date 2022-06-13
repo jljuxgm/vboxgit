@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 93858 2022-02-20 07:47:37Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 94070 2022-03-03 11:54:06Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -6443,7 +6443,14 @@ int Console::i_configNetwork(const char *pszDevice,
                     return pVMM->pfnVMR3SetError(pUVM, VERR_INTERNAL_ERROR, RT_SRC_POS,
                                                  N_("Failed to generate a key pair due to libssh error!"));
                 }
-                hrc = startCloudGateway(virtualBox, network, mGateway);                      H();
+                hrc = startCloudGateway(virtualBox, network, mGateway);
+                if (FAILED(hrc))
+                {
+                    return pVMM->pfnVMR3SetError(pUVM, hrc, RT_SRC_POS,
+                                                 N_("Failed to start cloud gateway instance.\nMake sure you set up "
+                                                    "cloud networking properly with 'VBoxManage network setup'. "
+                                                    "Check VBoxSVC.log for details."));
+                }
                 InsertConfigBytes(pDevCfg, "MAC", &mGateway.mCloudMacAddress, sizeof(mGateway.mCloudMacAddress));
                 if (!bstr.isEmpty())
                 {

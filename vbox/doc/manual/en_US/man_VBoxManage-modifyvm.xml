@@ -19,7 +19,7 @@
 ]>
 <refentry id="vboxmanage-modifyvm" lang="en">
   <refentryinfo>
-    <pubdate>$Date: 2022-02-15 01:37:18 +0800 (Tue, 15 Feb 2022) $</pubdate>
+    <pubdate>$Date: 2022-03-03 19:54:06 +0800 (Thu, 03 Mar 2022) $</pubdate>
     <title>VBoxManage modifyvm</title>
   </refentryinfo>
 
@@ -282,6 +282,7 @@ time on documenting it. -->
           <arg choice="plain">hostonlynet</arg>
           <arg choice="plain">generic</arg>
           <arg choice="plain">natnetwork</arg>
+          <arg choice="plain">cloud</arg>
         </group></arg>
       <arg>--nic-type<replaceable>N</replaceable>=<group choice="plain">
           <arg choice="plain">Am79C970A</arg>
@@ -316,6 +317,7 @@ time on documenting it. -->
           <arg choice="plain">none</arg>
           <arg choice="plain"><replaceable>device-name</replaceable></arg>
         </group></arg>
+      <arg>--cloud-network<replaceable>N</replaceable>=<replaceable>network-name</replaceable></arg>
       <arg>--host-only-adapter<replaceable>N</replaceable>=<group choice="plain">
           <arg choice="plain">none</arg>
           <arg choice="plain"><replaceable>device-name</replaceable></arg>

@@ -1,4 +1,4 @@
-/* $Id: VBoxManageCloud.cpp 93875 2022-02-21 19:36:52Z vboxsync $ */
+/* $Id: VBoxManageCloud.cpp 94070 2022-03-03 11:54:06Z vboxsync $ */
 /** @file
  * VBoxManageCloud - The cloud related commands.
  */
@@ -2653,8 +2653,6 @@ static RTEXITCODE setupCloudNetworkEnv(HandlerArg *a, int iFirst, PCLOUDCOMMONOP
         { "--gateway-shape",        's', RTGETOPT_REQ_STRING },
         { "--tunnel-network-name",  't', RTGETOPT_REQ_STRING },
         { "--tunnel-network-range", 'r', RTGETOPT_REQ_STRING },
-        { "--guest-additions-iso",  'a', RTGETOPT_REQ_STRING },
-        { "--local-gateway-iso",    'l', RTGETOPT_REQ_STRING },
         { "--proxy",                'p', RTGETOPT_REQ_STRING },
         { "--compartment-id",       'c', RTGETOPT_REQ_STRING }
     };
@@ -2668,8 +2666,6 @@ static RTEXITCODE setupCloudNetworkEnv(HandlerArg *a, int iFirst, PCLOUDCOMMONOP
     Bstr strGatewayShape;
     Bstr strTunnelNetworkName;
     Bstr strTunnelNetworkRange;
-    Bstr strLocalGatewayIso;
-    Bstr strGuestAdditionsIso;
     Bstr strProxy;
     Bstr strCompartmentId;
 
@@ -2693,12 +2689,6 @@ static RTEXITCODE setupCloudNetworkEnv(HandlerArg *a, int iFirst, PCLOUDCOMMONOP
             case 'r':
                 strTunnelNetworkRange=ValueUnion.psz;
                 break;
-            case 'l':
-                strLocalGatewayIso=ValueUnion.psz;
-                break;
-            case 'a':
-                strGuestAdditionsIso=ValueUnion.psz;
-                break;
             case 'p':
                 strProxy=ValueUnion.psz;
                 break;
@@ -2717,14 +2707,7 @@ static RTEXITCODE setupCloudNetworkEnv(HandlerArg *a, int iFirst, PCLOUDCOMMONOP
     if (FAILED(hrc))
         return RTEXITCODE_FAILURE;
 
-    if (strLocalGatewayIso.isEmpty())
-        return errorArgument(Cloud::tr("Missing --local-gateway-iso parameter"));
-
     ComPtr<IVirtualBox> pVirtualBox = a->virtualBox;
-
-    hrc = createLocalGatewayImage(pVirtualBox, strLocalGatewayIso, strGuestAdditionsIso, strProxy);
-    if (FAILED(hrc))
-        return RTEXITCODE_FAILURE;
 
     RTPrintf(Cloud::tr("Setting up tunnel network in the cloud...\n"));
 
