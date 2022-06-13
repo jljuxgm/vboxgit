@@ -1,4 +1,4 @@
-/* $Id: UINotificationCenter.cpp 90288 2021-07-22 14:16:13Z vboxsync $ */
+/* $Id: UINotificationCenter.cpp 90289 2021-07-22 14:25:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINotificationCenter class implementation.
  */
@@ -168,8 +168,7 @@ void UINotificationCenter::sltHandleOpenButtonToggled(bool fToggled)
 void UINotificationCenter::sltModelChanged()
 {
     /* Cleanup layout first: */
-    QLayoutItem *pChild;
-    while (pChild = m_pLayoutItems->takeAt(0))
+    while (QLayoutItem *pChild = m_pLayoutItems->takeAt(0))
     {
         delete pChild->widget();
         delete pChild;
