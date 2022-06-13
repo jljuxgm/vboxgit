@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsControllerEditor.h 93990 2022-02-28 15:34:57Z vboxsync $ */
+/* $Id: UIGraphicsControllerEditor.h 94056 2022-03-02 14:10:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGraphicsControllerEditor class declaration.
  */
@@ -32,8 +32,8 @@
 #include "COMEnums.h"
 
 /* Forward declarations: */
+class QComboBox;
 class QLabel;
-class QIComboBox;
 
 /** QWidget subclass used as a graphics controller editor. */
 class SHARED_LIBRARY_STUFF UIGraphicsControllerEditor : public QIWithRetranslateUI<QWidget>
@@ -86,9 +86,9 @@ private:
     QVector<KGraphicsControllerType>  m_supportedValues;
 
     /** Holds the label instance. */
-    QLabel     *m_pLabel;
+    QLabel    *m_pLabel;
     /** Holds the combo instance. */
-    QIComboBox *m_pCombo;
+    QComboBox *m_pCombo;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_settings_editors_UIGraphicsControllerEditor_h */
