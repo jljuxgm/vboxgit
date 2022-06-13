@@ -1,4 +1,4 @@
-/* $Id: DBGFR3SampleReport.cpp 89701 2021-06-15 10:50:13Z vboxsync $ */
+/* $Id: DBGFR3SampleReport.cpp 89722 2021-06-15 19:45:20Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Sample report creation.
  */
@@ -441,7 +441,9 @@ static DECLCALLBACK(VBOXSTRICTRC) dbgfR3SampleReportSample(PVM pVM, PVMCPU pVCpu
         /* Destroy the timer if requested. */
         if (ASMAtomicReadU32((volatile uint32_t *)&pThis->enmState) == DBGFSAMPLEREPORTSTATE_STOPPING)
         {
+#ifndef RT_OS_WINDOWS
             rc = RTTimerStop(pThis->hTimer); AssertRC(rc); RT_NOREF(rc);
+#endif
             rc = RTTimerDestroy(pThis->hTimer); AssertRC(rc); RT_NOREF(rc);
             pThis->hTimer = NULL;
 
@@ -500,6 +502,7 @@ static DECLCALLBACK(VBOXSTRICTRC) dbgfR3SampleReportSample(PVM pVM, PVMCPU pVCpu
             if (pThis->pszReport)
                 RTMemFree(pThis->pszReport);
             pThis->pszReport = Hlp.pachBuf;
+            Hlp.pachBuf = NULL;
             dbgfR3SampleReportInfoHlpDelete(&Hlp);
 
             ASMAtomicXchgU32((volatile uint32_t *)&pThis->enmState, DBGFSAMPLEREPORTSTATE_READY);
@@ -680,11 +683,16 @@ VMMR3DECL(int) DBGFR3SampleReportStart(DBGFSAMPLEREPORT hSample, uint64_t cSampl
      */
     DBGFR3SampleReportRetain(pThis);
 
+#ifndef RT_OS_WINDOWS
     rc = RTTimerCreateEx(&pThis->hTimer, pThis->cSampleIntervalUs * 1000,
                          RTTIMER_FLAGS_CPU_ANY | RTTIMER_FLAGS_HIGH_RES,
                          dbgfR3SampleReportTakeSample, pThis);
     if (RT_SUCCESS(rc))
         rc = RTTimerStart(pThis->hTimer, 0 /*u64First*/);
+#else
+    rc = RTTimerCreate(&pThis->hTimer, pThis->cSampleIntervalUs / 1000,
+                       dbgfR3SampleReportTakeSample, pThis);
+#endif
 
     if (RT_FAILURE(rc))
     {
