@@ -1,4 +1,4 @@
-/* $Id: VBoxUSBMon-solaris.c 90804 2021-08-23 19:08:53Z vboxsync $ */
+/* $Id: VBoxUSBMon-solaris.c 90871 2021-08-25 11:28:21Z vboxsync $ */
 /** @file
  * VirtualBox USB Monitor Driver, Solaris Hosts.
  */
@@ -303,9 +303,8 @@ static int VBoxUSBMonSolarisAttach(dev_info_t *pDip, ddi_attach_cmd_t enmCmd)
             }
 
             g_pDip = pDip;
-            int instance = ddi_get_instance(pDip);
-            int rc = ddi_create_priv_minor_node(pDip, DEVICE_NAME, S_IFCHR, instance, DDI_PSEUDO, 0,
-                                                        "none", "none", 0660);
+            int rc = ddi_create_priv_minor_node(pDip, DEVICE_NAME, S_IFCHR, 0 /* instance */, DDI_PSEUDO, 0 /* flags */,
+                                                "none", "none", 0660);
             if (rc == DDI_SUCCESS)
             {
                 rc = usb_register_dev_driver(g_pDip, VBoxUSBMonSolarisElectDriver);
@@ -401,12 +400,19 @@ static int VBoxUSBMonSolarisGetInfo(dev_info_t *pDip, ddi_info_cmd_t enmCmd, voi
     switch (enmCmd)
     {
         case DDI_INFO_DEVT2DEVINFO:
+        {
             *ppvResult = (void *)g_pDip;
+            if (!*ppvResult)
+                rc = DDI_FAILURE;
             break;
+        }
 
         case DDI_INFO_DEVT2INSTANCE:
-            *ppvResult = (void *)(uintptr_t)ddi_get_instance(g_pDip);
+        {
+            /* There can only be a single-instance of this driver and thus its instance number is 0. */
+            *ppvResult = (void *)0;
             break;
+        }
 
         default:
             rc = DDI_FAILURE;
