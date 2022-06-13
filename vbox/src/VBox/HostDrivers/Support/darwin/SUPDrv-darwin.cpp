@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-darwin.cpp 89018 2021-05-12 16:28:56Z vboxsync $ */
+/* $Id: SUPDrv-darwin.cpp 90780 2021-08-23 09:25:17Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Darwin Specific Code.
  */
@@ -955,13 +955,13 @@ DECLEXPORT(int) VBOXCALL SUPDrvDarwinIDC(uint32_t uReq, PSUPDRVIDCREQHDR pReq)
     /*
      * Some quick validations.
      */
-    if (RT_UNLIKELY(!VALID_PTR(pReq)))
+    if (RT_UNLIKELY(!RT_VALID_PTR(pReq)))
         return VERR_INVALID_POINTER;
 
     pSession = pReq->pSession;
     if (pSession)
     {
-        if (RT_UNLIKELY(!VALID_PTR(pSession)))
+        if (RT_UNLIKELY(!RT_VALID_PTR(pSession)))
             return VERR_INVALID_PARAMETER;
         if (RT_UNLIKELY(pSession->pDevExt != &g_DevExt))
             return VERR_INVALID_PARAMETER;

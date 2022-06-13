@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-solaris.c 88169 2021-03-17 19:35:16Z vboxsync $ */
+/* $Id: SUPDrv-solaris.c 90780 2021-08-23 09:25:17Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Solaris specifics.
  */
@@ -861,13 +861,13 @@ int VBOXCALL SUPDrvSolarisIDC(uint32_t uReq, PSUPDRVIDCREQHDR pReq)
     /*
      * Some quick validations.
      */
-    if (RT_UNLIKELY(!VALID_PTR(pReq)))
+    if (RT_UNLIKELY(!RT_VALID_PTR(pReq)))
         return VERR_INVALID_POINTER;
 
     pSession = pReq->pSession;
     if (pSession)
     {
-        if (RT_UNLIKELY(!VALID_PTR(pSession)))
+        if (RT_UNLIKELY(!RT_VALID_PTR(pSession)))
             return VERR_INVALID_PARAMETER;
         if (RT_UNLIKELY(pSession->pDevExt != &g_DevExt))
             return VERR_INVALID_PARAMETER;

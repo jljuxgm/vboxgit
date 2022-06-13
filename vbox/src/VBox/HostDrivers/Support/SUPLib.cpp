@@ -1,4 +1,4 @@
-/* $Id: SUPLib.cpp 90489 2021-08-03 09:19:13Z vboxsync $ */
+/* $Id: SUPLib.cpp 90780 2021-08-23 09:25:17Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Common code.
  */
@@ -176,7 +176,7 @@ DECL_NOTHROW(DECLEXPORT(int)) supR3PreInit(PSUPPREINITDATA pPreInitData, uint32_
      * Note! Do not do any fancy stuff here because IPRT has NOT been
      *       initialized at this point.
      */
-    if (!VALID_PTR(pPreInitData))
+    if (!RT_VALID_PTR(pPreInitData))
         return VERR_INVALID_POINTER;
     if (g_fPreInited || g_cInits > 0)
         return VERR_WRONG_ORDER;

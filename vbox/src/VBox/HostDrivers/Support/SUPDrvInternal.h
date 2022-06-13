@@ -1,4 +1,4 @@
-/* $Id: SUPDrvInternal.h 87709 2021-02-11 00:11:20Z vboxsync $ */
+/* $Id: SUPDrvInternal.h 90780 2021-08-23 09:25:17Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
@@ -335,7 +335,7 @@
  * @param   pSession    The session.
  */
 #define SUP_IS_SESSION_VALID(pSession)  \
-    (   VALID_PTR(pSession) \
+    (   RT_VALID_PTR(pSession) \
      && pSession->u32Cookie == BIRD_INV)
 
 /**
@@ -345,7 +345,7 @@
  * @param   pDevExt     The device extension.
  */
 #define SUP_IS_DEVEXT_VALID(pDevExt) \
-    (   VALID_PTR(pDevExt)\
+    (   RT_VALID_PTR(pDevExt) \
      && pDevExt->u32Cookie == BIRD)
 
 

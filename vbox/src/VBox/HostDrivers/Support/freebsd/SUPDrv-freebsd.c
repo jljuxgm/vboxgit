@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-freebsd.c 87700 2021-02-10 20:21:04Z vboxsync $ */
+/* $Id: SUPDrv-freebsd.c 90780 2021-08-23 09:25:17Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - FreeBSD specifics.
  */
@@ -475,13 +475,13 @@ int VBOXCALL SUPDrvFreeBSDIDC(uint32_t uReq, PSUPDRVIDCREQHDR pReq)
     /*
      * Some quick validations.
      */
-    if (RT_UNLIKELY(!VALID_PTR(pReq)))
+    if (RT_UNLIKELY(!RT_VALID_PTR(pReq)))
         return VERR_INVALID_POINTER;
 
     pSession = pReq->pSession;
     if (pSession)
     {
-        if (RT_UNLIKELY(!VALID_PTR(pReq->pSession)))
+        if (RT_UNLIKELY(!RT_VALID_PTR(pReq->pSession)))
             return VERR_INVALID_PARAMETER;
         if (RT_UNLIKELY(pSession->pDevExt != &g_VBoxDrvFreeBSDDevExt))
             return VERR_INVALID_PARAMETER;
