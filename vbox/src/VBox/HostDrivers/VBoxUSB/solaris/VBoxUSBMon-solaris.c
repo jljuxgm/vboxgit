@@ -1,4 +1,4 @@
-/* $Id: VBoxUSBMon-solaris.c 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxUSBMon-solaris.c 90804 2021-08-23 19:08:53Z vboxsync $ */
 /** @file
  * VirtualBox USB Monitor Driver, Solaris Hosts.
  */
@@ -577,7 +577,7 @@ static int VBoxUSBMonSolarisIOCtl(dev_t Dev, int Cmd, intptr_t pArg, int Mode, c
         return EFAULT;
     }
     if (RT_UNLIKELY(   ReqWrap.cbData != 0
-                    && !VALID_PTR(pvBuf)))
+                    && !RT_VALID_PTR(pvBuf)))
     {
         RTMemTmpFree(pvBuf);
         LogRel((DEVICE_NAME ": VBoxUSBMonSolarisIOCtl: pvBuf Invalid pointer %p\n", pvBuf));
@@ -657,13 +657,13 @@ static int vboxUSBMonSolarisProcessIOCtl(int iFunction, void *pvState, void *pvD
 
 #define CHECKRET_MIN_SIZE(mnemonic, cbMin) \
     do { \
-        if (cbData < (cbMin)) \
+        if (RT_UNLIKELY(cbData < (cbMin))) \
         { \
             LogRel(("vboxUSBSolarisProcessIOCtl: " mnemonic ": cbData=%#zx (%zu) min is %#zx (%zu)\n", \
                  cbData, cbData, (size_t)(cbMin), (size_t)(cbMin))); \
             return VERR_BUFFER_OVERFLOW; \
         } \
-        if ((cbMin) != 0 && !VALID_PTR(pvData)) \
+        if (RT_UNLIKELY((cbMin) != 0 && !RT_VALID_PTR(pvData))) \
         { \
             LogRel(("vboxUSBSolarisProcessIOCtl: " mnemonic ": Invalid pointer %p\n", pvData)); \
             return VERR_INVALID_POINTER; \

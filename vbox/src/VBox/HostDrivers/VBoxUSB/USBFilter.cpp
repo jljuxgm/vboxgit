@@ -1,4 +1,4 @@
-/* $Id: USBFilter.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: USBFilter.cpp 90804 2021-08-23 19:08:53Z vboxsync $ */
 /** @file
  * VirtualBox USB filter abstraction.
  */
@@ -307,7 +307,7 @@ static int usbfilterValidateStringPattern(const char *psz)
  */
 USBLIB_DECL(int) USBFilterValidate(PCUSBFILTER pFilter)
 {
-    if (!VALID_PTR(pFilter))
+    if (!RT_VALID_PTR(pFilter))
         return VERR_INVALID_POINTER;
 
     if (pFilter->u32Magic != USBFILTER_MAGIC)

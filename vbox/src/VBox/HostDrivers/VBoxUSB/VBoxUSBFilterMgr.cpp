@@ -1,4 +1,4 @@
-/* $Id: VBoxUSBFilterMgr.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxUSBFilterMgr.cpp 90804 2021-08-23 19:08:53Z vboxsync $ */
 /** @file
  * VirtualBox Ring-0 USB Filter Manager.
  */
@@ -235,7 +235,7 @@ int VBoxUSBFilterAdd(PCUSBFILTER pFilter, VBOXUSBFILTER_CONTEXT Owner, uintptr_t
         return rc;
     if (!Owner || Owner == VBOXUSBFILTER_CONTEXT_NIL)
         return VERR_INVALID_PARAMETER;
-    if (!VALID_PTR(puId))
+    if (!RT_VALID_PTR(puId))
         return VERR_INVALID_POINTER;
 
     /*

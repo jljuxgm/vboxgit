@@ -1,4 +1,4 @@
-/* $Id: tstInt.cpp 87235 2021-01-13 12:41:05Z vboxsync $ */
+/* $Id: tstInt.cpp 90804 2021-08-23 19:08:53Z vboxsync $ */
 /** @file
  * SUP Testcase - Test the interrupt gate feature of the support library.
  */
@@ -98,7 +98,7 @@ int main(int argc, char **argv)
             if (RT_SUCCESS(rc))
             {
                 PVM pVM = CreateVMReq.pVMR3;
-                AssertRelease(VALID_PTR(pVM));
+                AssertRelease(RT_VALID_PTR(pVM));
                 AssertRelease(pVM->pVMR0ForCall == CreateVMReq.pVMR0);
                 AssertRelease(pVM->pSession == pSession);
                 AssertRelease(pVM->cCpus == 1);
