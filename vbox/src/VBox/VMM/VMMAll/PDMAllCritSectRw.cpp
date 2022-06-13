@@ -1,4 +1,4 @@
-/* $Id: PDMAllCritSectRw.cpp 91814 2021-10-18 09:46:39Z vboxsync $ */
+/* $Id: PDMAllCritSectRw.cpp 91815 2021-10-18 09:47:29Z vboxsync $ */
 /** @file
  * IPRT - Read/Write Critical Section, Generic.
  */
@@ -104,7 +104,7 @@ static int32_t g_fCmpWriteSupported = -1;
 static int pdmCritSectRwLeaveSharedWorker(PVMCC pVM, PPDMCRITSECTRW pThis, bool fNoVal);
 #else
 DECLASM(int) pdmCritSectRwLeaveSharedWorker(PVMCC pVM, PPDMCRITSECTRW pThis, bool fNoVal);
-decltype(pdmCritSectRwLeaveSharedWorker) StkBack_pdmCritSectRwLeaveSharedWorker;
+DECLASM(int) StkBack_pdmCritSectRwLeaveSharedWorker(PVMCC pVM, PPDMCRITSECTRW pThis, bool fNoVal);
 #endif
 
 
