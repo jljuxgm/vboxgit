@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: reporter.py 84921 2020-06-23 20:30:13Z vboxsync $
+# $Id: reporter.py 90595 2021-08-10 12:49:53Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84921 $"
+__version__ = "$Revision: 90595 $"
 
 
 # Standard Python imports.
@@ -1222,7 +1222,11 @@ class FileWrapper(object):
         if not utils.isString(sText):
             if isinstance(sText, array.array):
                 try:
-                    sText = sText.tostring();
+                    if sys.version_info < (3, 9, 0):
+                        # Removed since Python 3.9.
+                        sText.tostring(); # pylint: disable=no-member
+                    else:
+                        sText.tobytes();
                 except:
                     pass;
             if hasattr(sText, 'decode'):
@@ -1282,8 +1286,14 @@ class FileWrapperTestPipe(object):
         # Turn non-string stuff into strings.
         if not utils.isString(sText):
             if isinstance(sText, array.array):
-                try:    sText = sText.tostring();
-                except: pass;
+                try:
+                    if sys.version_info < (3, 9, 0):
+                        # Removed since Python 3.9.
+                        sText = sText.tostring(); # pylint: disable=no-member
+                    else:
+                        sText = sText.tobytes();
+                except:
+                    pass;
             if hasattr(sText, 'decode'):
                 try:    sText = sText.decode('utf-8', 'ignore');
                 except: pass;

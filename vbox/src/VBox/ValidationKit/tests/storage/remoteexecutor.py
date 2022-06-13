@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: remoteexecutor.py 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: remoteexecutor.py 90595 2021-08-10 12:49:53Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage benchmark, test execution helpers.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 82968 $"
+__version__ = "$Revision: 90595 $"
 
 
 # Standard Python imports.
@@ -63,7 +63,11 @@ class StdInOutBuffer(object):
         """
         if isinstance(sText, array.array):
             try:
-                return str(sText.tostring()); # tostring() returns bytes with python3.
+                if sys.version_info < (3, 9, 0):
+                    # Removed since Python 3.9.
+                    return str(sText.tostring()); # pylint: disable=no-member
+                else:
+                    return str(sText.tobytes());
             except:
                 pass;
         elif isinstance(sText, bytes):
@@ -300,4 +304,3 @@ class RemoteExecutor(object):
                 fRc = False;
 
         return fRc;
-

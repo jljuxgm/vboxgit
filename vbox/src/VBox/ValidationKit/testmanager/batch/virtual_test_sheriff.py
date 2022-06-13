@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 86891 2020-11-16 14:39:15Z vboxsync $
+# $Id: virtual_test_sheriff.py 90595 2021-08-10 12:49:53Z vboxsync $
 # pylint: disable=line-too-long
 
 """
@@ -35,7 +35,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 86891 $"
+__version__ = "$Revision: 90595 $"
 
 
 # Standard python imports
@@ -271,7 +271,11 @@ class VirtualTestSheriffCaseFile(object):
             else:
                 try:
                     oHash = hashlib.sha256();
-                    oHash.update(oImage.tostring());
+                    if sys.version_info < (3, 9, 0):
+                        # Removed since Python 3.9.
+                        oHash.update(oImage.tostring()); # pylint: disable=no-member
+                    else:
+                        oHash.update(oImage.tobytes());
                 except Exception as oXcpt:
                     self.oSheriff.vprint(u'Error hashing the uncompressed image bytes for "%s": %s' % (oFile.sFile, oXcpt,))
                 else:
@@ -337,7 +341,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
 
         if self.oConfig.sLogFile:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 86891 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 90595 $ \n');
 
 
     def eprint(self, sText):
@@ -728,7 +732,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.getFailureReason(tReason);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 86891 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 90595 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
@@ -1752,4 +1756,3 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
 
 if __name__ == '__main__':
     sys.exit(VirtualTestSheriff().main());
-

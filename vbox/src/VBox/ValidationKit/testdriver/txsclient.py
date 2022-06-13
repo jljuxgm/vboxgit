@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: txsclient.py 90594 2021-08-10 12:15:27Z vboxsync $
+# $Id: txsclient.py 90595 2021-08-10 12:49:53Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 90594 $"
+__version__ = "$Revision: 90595 $"
 
 # Standard Python imports.
 import array;
@@ -306,7 +306,13 @@ class TransportBase(object):
         # Unpack and validate the header.
         cbMsg   = getU32(abHdr, 0);
         uCrc32  = getU32(abHdr, 4);
-        sOpcode = abHdr[8:16].tostring().decode('ascii');
+
+        if sys.version_info < (3, 9, 0):
+            # Removed since Python 3.9.
+            sOpcode = abHdr[8:16].tostring(); # pylint: disable=no-member
+        else:
+            sOpcode = abHdr[8:16].tobytes();
+        sOpcode = sOpcode.decode('ascii');
 
         if cbMsg < 16:
             reporter.fatal('recvMsg: message length is out of range: %s (min 16 bytes)' % (cbMsg));
@@ -1269,7 +1275,12 @@ class Session(TdTaskBase):
 
                 # Finally, push the data to the file.
                 try:
-                    oLocalFile.write(abPayload[4:].tostring());
+                    if sys.version_info < (3, 9, 0):
+                        # Removed since Python 3.9.
+                        abData = abPayload[4:].tostring();
+                    else:
+                        abData = abPayload[4:].tobytes();
+                    oLocalFile.write(abData);
                 except:
                     reporter.errorXcpt('I/O error writing to "%s"' % (sRemoteFile));
                     rc = None;
