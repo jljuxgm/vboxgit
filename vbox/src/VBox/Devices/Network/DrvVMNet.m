@@ -1,4 +1,4 @@
-/* $Id: DrvVMNet.m 91873 2021-10-20 09:08:32Z vboxsync $ */
+/* $Id: DrvVMNet.m 92078 2021-10-26 12:06:54Z vboxsync $ */
 /** @file
  * DrvVMNet - Network filter driver that uses MAC OS VMNET API.
  */
@@ -388,7 +388,7 @@ static vmnet_return_t drvVMNetAttach(PDRVVMNET pThis)
         }
         dispatch_semaphore_signal(operation_done);
     });
-    dispatch_semaphore_wait(operation_done, DISPATCH_TIME_FOREVER);
+    dispatch_semaphore_wait(operation_done, dispatch_time(DISPATCH_TIME_NOW, RT_NS_10SEC));
 
     if (vmnet_status != VMNET_SUCCESS)
         return vmnet_status;
@@ -421,7 +421,7 @@ static vmnet_return_t drvVMNetAttach(PDRVVMNET pThis)
             packets.vm_flags = 0;
             rc = vmnet_read(pThis->Interface, &packets, &packet_count);
             if (rc != VMNET_SUCCESS)
-                Log(("Failed to read packets, rc=%d\n", rc));
+                Log(("Failed to read packets with error code %d\n", rc));
             else
             {
                 Log3(("Successfully read %d packets:\n", packet_count));
