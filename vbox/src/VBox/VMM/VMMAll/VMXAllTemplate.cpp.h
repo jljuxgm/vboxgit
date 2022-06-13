@@ -1,4 +1,4 @@
-/* $Id: VMXAllTemplate.cpp.h 93922 2022-02-24 15:14:31Z vboxsync $ */
+/* $Id: VMXAllTemplate.cpp.h 93926 2022-02-24 15:23:53Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Code template for our own hypervisor and the NEM darwin backend using Apple's Hypervisor.framework.
  */
@@ -5414,8 +5414,13 @@ DECLINLINE(VBOXSTRICTRC) vmxHCHandleExitNested(PVMCPUCC pVCpu, PVMXTRANSIENT pVm
     uint32_t const uExitReason = pVmxTransient->uExitReason;
     switch (uExitReason)
     {
+# ifdef VBOX_WITH_NESTED_HWVIRT_VMX_EPT
         case VMX_EXIT_EPT_MISCONFIG:            return vmxHCExitEptMisconfigNested(pVCpu, pVmxTransient);
         case VMX_EXIT_EPT_VIOLATION:            return vmxHCExitEptViolationNested(pVCpu, pVmxTransient);
+# else
+        case VMX_EXIT_EPT_MISCONFIG:            return vmxHCExitEptMisconfig(pVCpu, pVmxTransient);
+        case VMX_EXIT_EPT_VIOLATION:            return vmxHCExitEptViolation(pVCpu, pVmxTransient);
+# endif
         case VMX_EXIT_XCPT_OR_NMI:              return vmxHCExitXcptOrNmiNested(pVCpu, pVmxTransient);
         case VMX_EXIT_IO_INSTR:                 return vmxHCExitIoInstrNested(pVCpu, pVmxTransient);
         case VMX_EXIT_HLT:                      return vmxHCExitHltNested(pVCpu, pVmxTransient);
