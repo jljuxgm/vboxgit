@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 93265 2022-01-17 10:51:43Z vboxsync $
+# $Id: Makefile.kmk 93269 2022-01-17 11:28:12Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox Windows Guest Shared Folders FSD.
 #
@@ -75,11 +75,13 @@ VBoxSF_VBOX_IMPORT_CHECKER.win.amd64 = xp64/r0
 ifeq ($(KBUILD_TARGET_ARCH),x86)
  #
  # This driver version is used for Windows 2000, XP, W2K3, Vista and 7.
+ # Note! Including int64.lib here for _aulldvrm which isn't exported by w2k.
  #
  SYSMODS += VBoxSFW2K
  VBoxSFW2K_EXTENDS      := VBoxSF
  VBoxSFW2K_SDKS         = ReorderCompilerIncs $(VBOX_WINDDK_GST_W2K3)
  VBoxSFW2K_LIBS         = \
+ 	$(PATH_SDK_$(VBOX_WINDDK_GST_W2K3)_LIB)/int64.lib \
  	$(PATH_SDK_$(VBOX_WINDDK_GST_W2K3)_LIB.x86)/rxce.lib \
  	$(VBoxSFW2K_0_OUTDIR)/rdbsslib.lib \
  	$(PATH_SDK_$(VBOX_WINDDK_GST_W2K3)_LIB.x86)/copysup.lib \
