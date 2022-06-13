@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMEditors.cpp 93541 2022-02-02 10:07:07Z vboxsync $ */
+/* $Id: UIWizardNewVMEditors.cpp 93542 2022-02-02 10:17:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class implementation.
  */
@@ -410,7 +410,7 @@ void UINewVMHardwareContainer::retranslateUi()
 
 
 /*********************************************************************************************************************************
-*   UIWindowsISOImageSelector implementation.                                                                                   *
+*   UIWindowsISOImageSelector implementation.                                                                                    *
 *********************************************************************************************************************************/
 
 UIWindowsISOImageSelector::UIWindowsISOImageSelector(QWidget *pParent /* = 0 */)
