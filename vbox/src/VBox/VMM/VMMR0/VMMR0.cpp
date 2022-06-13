@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 88347 2021-04-01 13:17:16Z vboxsync $ */
+/* $Id: VMMR0.cpp 89912 2021-06-25 11:24:49Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -2377,6 +2377,16 @@ static int vmmR0EntryExWorker(PGVM pGVM, VMCPUID idCpu, VMMR0OPERATION enmOperat
             VMM_CHECK_SMAP_CHECK2(pGVM, RT_NOTHING);
             break;
         }
+
+        case VMMR0_DO_DBGF_BP_PORTIO_INIT:
+        {
+            if (!pReqHdr || u64Arg || idCpu != 0)
+                return VERR_INVALID_PARAMETER;
+            rc = DBGFR0BpPortIoInitReqHandler(pGVM, (PDBGFBPINITREQ)pReqHdr);
+            VMM_CHECK_SMAP_CHECK2(pGVM, RT_NOTHING);
+            break;
+        }
+
 
         /*
          * TM requests.
