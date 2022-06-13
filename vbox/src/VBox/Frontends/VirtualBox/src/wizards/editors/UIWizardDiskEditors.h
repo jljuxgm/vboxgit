@@ -1,4 +1,4 @@
-/* $Id: UIWizardDiskEditors.h 91252 2021-09-15 12:50:23Z vboxsync $ */
+/* $Id: UIWizardDiskEditors.h 91253 2021-09-15 13:05:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardDiskEditors class declaration.
  */
@@ -102,6 +102,7 @@ private:
                , m_strName(strName)
                , m_strExtension(strExtension)
                , m_fPreferred(fPreferred){}
+        Format(){}
     };
 
     void prepare();
