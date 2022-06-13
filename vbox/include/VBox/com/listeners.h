@@ -1,4 +1,4 @@
-/* $Id: listeners.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: listeners.h 90770 2021-08-21 01:35:39Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - Listener helpers.
  */
@@ -167,7 +167,8 @@ public:
     STDMETHOD(HandleEvent)(IEvent * aEvent)
     {
         VBoxEventType_T aType = VBoxEventType_Invalid;
-        aEvent->COMGETTER(Type)(&aType);
+        HRESULT hrc = aEvent->COMGETTER(Type)(&aType);
+        AssertMsg(SUCCEEDED(hrc), ("hrc=%Rhrc\n", hrc)); RT_NOREF(hrc);
         return mListener->HandleEvent(aType, aEvent);
     }
 };
