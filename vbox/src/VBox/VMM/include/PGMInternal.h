@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 92391 2021-11-12 09:47:48Z vboxsync $ */
+/* $Id: PGMInternal.h 92420 2021-11-15 08:47:32Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -3014,8 +3014,8 @@ typedef struct PGMSTATS
     STAMCOUNTER StatTrackOverflows;                 /**< The number of times the extent list grows to long. */
     STAMPROFILE StatTrackDeref;                     /**< Profiling of SyncPageWorkerTrackDeref (expensive). */
 
-    STAMPROFILEADV StatLargePageAlloc2;            /**< Time spent setting up newly allocated large pages. */
-    STAMPROFILEADV StatLargePageSetup;             /**< Time spent setting up newly allocated large pages. */
+    STAMPROFILE StatLargePageAlloc2;                /**< Time spent setting up newly allocated large pages. */
+    STAMPROFILE StatLargePageSetup;                 /**< Time spent setting up newly allocated large pages. */
     /** pgmPhysIsValidLargePage profiling - R3 */
     STAMPROFILE StatR3IsValidLargePage;
     /** pgmPhysIsValidLargePage profiling - RZ*/
@@ -3322,6 +3322,7 @@ typedef struct PGM
 /*    uint32_t                        aAlignment4[1]; */
 
     STAMPROFILE                     StatLargePageAlloc;     /**< Time spent by the host OS for large page allocation. */
+    STAMCOUNTER                     StatLargePageAllocFailed; /**< Count allocation failures. */
     STAMCOUNTER                     StatLargePageOverflow;  /**< The number of times allocating a large pages takes more than the allowed period. */
     STAMCOUNTER                     StatLargePageReused;    /**< The number of large pages we've reused.*/
     STAMCOUNTER                     StatLargePageRefused;   /**< The number of times we couldn't use a large page.*/
