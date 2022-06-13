@@ -1,6 +1,6 @@
 @@VBOX_SPLITTER_START[CONFIG.SYS]@@
 REM
-REM $Id: os2_response_files.rsp 93127 2022-01-05 01:10:34Z vboxsync $
+REM $Id: os2_response_files.rsp 93154 2022-01-09 10:33:42Z vboxsync $
 REM VirtualBox CID Installation CONFIG.SYS for boot CD/floppy.
 REM
 
@@ -65,7 +65,7 @@ Y
 #
 @@VBOX_SPLITTER_START[STARTUP.CMD]@@
 @REM
-@REM $Id: os2_response_files.rsp 93127 2022-01-05 01:10:34Z vboxsync $
+@REM $Id: os2_response_files.rsp 93154 2022-01-09 10:33:42Z vboxsync $
 @REM The startup file for C: for use after the successful install.
 @REM
 @@VBOX_COND_IS_INSTALLING_ADDITIONS@@
@@ -73,6 +73,7 @@ C:\VBoxAdd\VBoxService.exe
 @@VBOX_COND_END@@
 dhcpstrt -i lan0
 @@VBOX_COND_IS_INSTALLING_TEST_EXEC_SERVICE@@
+SET ENDLIBPATH=C:\VBoxValKit
 C:\VBoxValKit\TestExecService.exe --scratch=D:\TestArea --cdrom=E:\ --foreground
 pause
 @@VBOX_COND_END@@
