@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet_1_0.cpp 92997 2021-12-17 08:29:01Z vboxsync $ $Revision: 92997 $ $Date: 2021-12-17 16:29:01 +0800 (Fri, 17 Dec 2021) $ $Author: vboxsync $ */
+/* $Id: DevVirtioNet_1_0.cpp 92998 2021-12-17 08:32:37Z vboxsync $ $Revision: 92998 $ $Date: 2021-12-17 16:32:37 +0800 (Fri, 17 Dec 2021) $ $Author: vboxsync $ */
 
 /** @file
  * VBox storage devices - Virtio NET Driver
@@ -2289,7 +2289,7 @@ static uint8_t virtioNetR3CtrlMultiQueue(PVIRTIONET pThis, PVIRTIONETCC pThisCC,
             virtioCoreR3VirtqBufDrain(&pThis->Virtio, pVirtqBuf, &cVirtqPairs, sizeof(cVirtqPairs));
 
             AssertMsgReturn(cVirtqPairs > VIRTIONET_MAX_QPAIRS,
-                ("[%s] Guest CTRL MQ virtq pair count out of range)\n", pThis->szInst, cVirtqPairs), VIRTIONET_ERROR);
+                ("[%s] Guest CTRL MQ virtq pair count out of range [%d])\n", pThis->szInst, cVirtqPairs), VIRTIONET_ERROR);
 
             LogFunc(("[%s] Guest specifies %d VQ pairs in use\n", pThis->szInst, cVirtqPairs));
             pThis->cVirtqPairs = cVirtqPairs;
