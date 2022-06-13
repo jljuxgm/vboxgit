@@ -1,4 +1,4 @@
-/* $Id: UnattendedScript.cpp 93192 2022-01-11 23:27:30Z vboxsync $ */
+/* $Id: UnattendedScript.cpp 93816 2022-02-16 22:37:58Z vboxsync $ */
 /** @file
  * Classes for reading/parsing/saving scripts for unattended installation.
  */
@@ -316,7 +316,10 @@ HRESULT UnattendedScriptTemplate::saveToString(Utf8Str &rStrDst)
         if (offTemplate >= cchTemplate)
         {
             if (cConds == 0)
+            {
+                RTExprEvalRelease(hEvaluator);
                 return S_OK;
+            }
             if (cConds == 1)
                 hrc = mpSetError->setErrorBoth(E_FAIL, VERR_PARSE_ERROR, tr("Missing @@VBOX_COND_END@@"));
             else
