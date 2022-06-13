@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 94200 2022-03-12 19:24:38Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 94201 2022-03-12 19:29:49Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -636,15 +636,6 @@ void printUsage(USAGECATEGORY enmCommand, uint64_t fSubcommandScope, PRTSTREAM p
                      "                            [--move <path>]\n"
                      "                            [--setlocation <path>]\n"
                      "                            [--description <description string>]"
-                     "\n", SEP);
-
-    if (enmCommand == USAGE_ENCRYPTMEDIUM || enmCommand == USAGE_S_ALL)
-        RTStrmPrintf(pStrm,
-                           "%s encryptmedium %s   <uuid|filename>\n"
-                     "                            [--newpassword <file>|-]\n"
-                     "                            [--oldpassword <file>|-]\n"
-                     "                            [--cipher <cipher identifier>]\n"
-                     "                            [--newpasswordid <password identifier>]\n"
                      "\n", SEP);
 
     if (enmCommand == USAGE_MEDIUMENCCHKPWD || enmCommand == USAGE_S_ALL)
