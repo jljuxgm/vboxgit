@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsControllerEditor.h 94358 2022-03-24 15:24:02Z vboxsync $ */
+/* $Id: UIGraphicsControllerEditor.h 94395 2022-03-29 16:29:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGraphicsControllerEditor class declaration.
  */
@@ -48,7 +48,7 @@ signals:
 
 public:
 
-    /** Constructs graphics controller editor passing @a pParent to the base-class. */
+    /** Constructs editor passing @a pParent to the base-class. */
     UIGraphicsControllerEditor(QWidget *pParent = 0);
 
     /** Defines editor @a enmValue. */

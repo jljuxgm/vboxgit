@@ -1,4 +1,4 @@
-/* $Id: UINetworkAttachmentEditor.h 94058 2022-03-02 14:26:21Z vboxsync $ */
+/* $Id: UINetworkAttachmentEditor.h 94395 2022-03-29 16:29:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkAttachmentEditor class declaration.
  */
@@ -53,7 +53,7 @@ signals:
 
 public:
 
-    /** Constructs network attachment editor passing @a pParent to the base-class.
+    /** Constructs editor passing @a pParent to the base-class.
       * @param  fWithLabels  Brings whether we should add labels ourselves. */
     UINetworkAttachmentEditor(QWidget *pParent = 0, bool fWithLabels = false);
 

@@ -1,4 +1,4 @@
-/* $Id: UIVRDEAuthLibraryEditor.h 93990 2022-02-28 15:34:57Z vboxsync $ */
+/* $Id: UIVRDEAuthLibraryEditor.h 94395 2022-03-29 16:29:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVRDEAuthLibraryEditor class declaration.
  */
@@ -38,11 +38,6 @@ class SHARED_LIBRARY_STUFF UIVRDEAuthLibraryEditor : public QIWithRetranslateUI<
 {
     Q_OBJECT;
 
-signals:
-
-    /** Notifies listeners about @a enmValue change. */
-    void sigValueChanged(const QString &strValue);
-
 public:
 
     /** Constructs editor passing @a pParent to the base-class. */
@@ -62,11 +57,6 @@ protected:
 
     /** Handles translation event. */
     virtual void retranslateUi() RT_OVERRIDE;
-
-private slots:
-
-    /** Handles selector path change. */
-    void sltHandleSelectorPathChanged();
 
 private:
 

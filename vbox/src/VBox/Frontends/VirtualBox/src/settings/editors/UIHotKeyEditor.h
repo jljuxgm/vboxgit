@@ -1,4 +1,4 @@
-/* $Id: UIHotKeyEditor.h 93990 2022-02-28 15:34:57Z vboxsync $ */
+/* $Id: UIHotKeyEditor.h 94395 2022-03-29 16:29:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHotKeyEditor class declaration.
  */
@@ -110,7 +110,7 @@ signals:
 
 public:
 
-    /** Constructs hot-key editor passing @a pParent to the base-class. */
+    /** Constructs editor passing @a pParent to the base-class. */
     UIHotKeyEditor(QWidget *pParent);
 
 private slots:

@@ -1,4 +1,4 @@
-/* $Id: UILanguageSettingsEditor.h 93990 2022-02-28 15:34:57Z vboxsync $ */
+/* $Id: UILanguageSettingsEditor.h 94395 2022-03-29 16:29:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UILanguageSettingsEditor class declaration.
  */
@@ -37,7 +37,7 @@ class SHARED_LIBRARY_STUFF UILanguageSettingsEditor : public QIWithRetranslateUI
 
 public:
 
-    /** Constructs language settings editor passing @a pParent to the base-class. */
+    /** Constructs editor passing @a pParent to the base-class. */
     UILanguageSettingsEditor(QWidget *pParent = 0);
 
     /** Defines editor @a strValue. */
@@ -67,10 +67,6 @@ private:
 
     /** Prepares all. */
     void prepare();
-    /** Prepares widgets. */
-    void prepareWidgets();
-    /** Prepares connections. */
-    void prepareConnections();
     /** Cleanups all. */
     void cleanup();
 

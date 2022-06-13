@@ -1,4 +1,4 @@
-/* $Id: UIVRDEAuthLibraryEditor.cpp 93935 2022-02-24 16:40:30Z vboxsync $ */
+/* $Id: UIVRDEAuthLibraryEditor.cpp 94395 2022-03-29 16:29:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVRDEAuthLibraryEditor class implementation.
  */
@@ -36,15 +36,13 @@ UIVRDEAuthLibraryEditor::UIVRDEAuthLibraryEditor(QWidget *pParent /* = 0 */)
 
 void UIVRDEAuthLibraryEditor::setValue(const QString &strValue)
 {
-    if (m_pSelector)
+    /* Update cached value and
+     * editor if value has changed: */
+    if (m_strValue != strValue)
     {
-        /* Update cached value and editor
-         * if value has changed: */
-        if (m_strValue != strValue)
-        {
-            m_strValue = strValue;
+        m_strValue = strValue;
+        if (m_pSelector)
             m_pSelector->setPath(strValue);
-        }
     }
 }
 
@@ -55,7 +53,7 @@ QString UIVRDEAuthLibraryEditor::value() const
 
 int UIVRDEAuthLibraryEditor::minimumLabelHorizontalHint() const
 {
-    return m_pLabel->minimumSizeHint().width();
+    return m_pLabel ? m_pLabel->minimumSizeHint().width() : 0;
 }
 
 void UIVRDEAuthLibraryEditor::setMinimumLayoutIndent(int iIndent)
@@ -71,12 +69,6 @@ void UIVRDEAuthLibraryEditor::retranslateUi()
     if (m_pSelector)
         m_pSelector->setToolTip(tr("Holds the path to the library that provides "
                                    "authentication for Remote Display (VRDP) clients."));
-}
-
-void UIVRDEAuthLibraryEditor::sltHandleSelectorPathChanged()
-{
-    if (m_pSelector)
-        emit sigValueChanged(m_pSelector->path());
 }
 
 void UIVRDEAuthLibraryEditor::prepare()
@@ -104,8 +96,6 @@ void UIVRDEAuthLibraryEditor::prepare()
                 m_pLabel->setBuddy(m_pSelector);
             m_pSelector->setInitialPath(uiCommon().homeFolder());
             m_pSelector->setMode(UIFilePathSelector::Mode_File_Open);
-            connect(m_pSelector, &UIFilePathSelector::pathChanged,
-                    this, &UIVRDEAuthLibraryEditor::sltHandleSelectorPathChanged);
 
             m_pLayout->addWidget(m_pSelector, 0, 1);
         }

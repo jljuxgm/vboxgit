@@ -1,4 +1,4 @@
-/* $Id: UIVRDESettingsEditor.h 94379 2022-03-25 19:45:11Z vboxsync $ */
+/* $Id: UIVRDESettingsEditor.h 94395 2022-03-29 16:29:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVRDESettingsEditor class declaration.
  */
@@ -20,9 +20,6 @@
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
-
-/* Qt includes: */
-#include <QMap>
 
 /* GUI includes: */
 #include "QIWithRetranslateUI.h"
@@ -49,7 +46,7 @@ signals:
 
 public:
 
-    /** Constructs VRDE settings editor passing @a pParent to the base-class. */
+    /** Constructs editor passing @a pParent to the base-class. */
     UIVRDESettingsEditor(QWidget *pParent = 0);
 
     /** Defines whether feature is @a fEnabled. */
@@ -102,7 +99,7 @@ private:
     /** Repopulates auth type combo-box. */
     void repopulateComboAuthType();
 
-    /** @name Variables
+    /** @name Values
      * @{ */
         /** Holds whether feature is enabled. */
         bool       m_fFeatureEnabled;

@@ -1,4 +1,4 @@
-/* $Id: UIMonitorCountEditor.h 94362 2022-03-24 19:03:55Z vboxsync $ */
+/* $Id: UIMonitorCountEditor.h 94395 2022-03-29 16:29:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMonitorCountEditor class declaration.
  */
@@ -46,7 +46,7 @@ signals:
 
 public:
 
-    /** Constructs monitor count editor passing @a pParent to the base-class. */
+    /** Constructs editor passing @a pParent to the base-class. */
     UIMonitorCountEditor(QWidget *pParent = 0);
 
     /** Defines editor @a iValue. */
@@ -82,18 +82,21 @@ private:
     /** Holds the value to be selected. */
     int  m_iValue;
 
-    /** Holds the main layout instance. */
-    QGridLayout      *m_pLayout;
-    /** Holds the main label instance. */
-    QLabel           *m_pLabel;
-    /** Holds the slider instance. */
-    QIAdvancedSlider *m_pSlider;
-    /** Holds the spin-box instance. */
-    QSpinBox         *m_pSpinBox;
-    /** Holds minimum label instance. */
-    QLabel           *m_pLabelMin;
-    /** Holds maximum label instance. */
-    QLabel           *m_pLabelMax;
+    /** @name Widgets
+     * @{ */
+        /** Holds the main layout instance. */
+        QGridLayout      *m_pLayout;
+        /** Holds the main label instance. */
+        QLabel           *m_pLabel;
+        /** Holds the slider instance. */
+        QIAdvancedSlider *m_pSlider;
+        /** Holds the spin-box instance. */
+        QSpinBox         *m_pSpinBox;
+        /** Holds minimum label instance. */
+        QLabel           *m_pLabelMin;
+        /** Holds maximum label instance. */
+        QLabel           *m_pLabelMax;
+    /** @} */
 };
 
 #endif /* !FEQT_INCLUDED_SRC_settings_editors_UIMonitorCountEditor_h */

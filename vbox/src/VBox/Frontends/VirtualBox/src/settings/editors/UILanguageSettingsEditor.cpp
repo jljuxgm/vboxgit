@@ -1,4 +1,4 @@
-/* $Id: UILanguageSettingsEditor.cpp 93996 2022-02-28 22:04:49Z vboxsync $ */
+/* $Id: UILanguageSettingsEditor.cpp 94395 2022-03-29 16:29:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UILanguageSettingsEditor class implementation.
  */
@@ -211,13 +211,11 @@ UILanguageSettingsEditor::UILanguageSettingsEditor(QWidget *pParent /* = 0 */)
 
 void UILanguageSettingsEditor::setValue(const QString &strValue)
 {
-    /* Update value if changed: */
+    /* Update cached value and
+     * tree-widget if value has changed: */
     if (m_strValue != strValue)
     {
-        /* Update value itself: */
         m_strValue = strValue;
-
-        /* Update tree-widget if present: */
         if (m_pTreeWidget)
             reloadLanguageTree(m_strValue);
     }
@@ -321,16 +319,6 @@ void UILanguageSettingsEditor::sltHandleCurrentItemChange(QTreeWidgetItem *pCurr
 
 void UILanguageSettingsEditor::prepare()
 {
-    /* Prepare everything: */
-    prepareWidgets();
-    prepareConnections();
-
-    /* Apply language settings: */
-    retranslateUi();
-}
-
-void UILanguageSettingsEditor::prepareWidgets()
-{
     /* Prepare main layout: */
     QVBoxLayout *pLayoutMain = new QVBoxLayout(this);
     if (pLayoutMain)
@@ -368,12 +356,13 @@ void UILanguageSettingsEditor::prepareWidgets()
             pLayoutMain->addWidget(m_pLabelInfo);
         }
     }
-}
 
-void UILanguageSettingsEditor::prepareConnections()
-{
+    /* Prepare connections: */
     connect(m_pTreeWidget, &QITreeWidget::painted, this, &UILanguageSettingsEditor::sltHandleItemPainting);
     connect(m_pTreeWidget, &QITreeWidget::currentItemChanged, this, &UILanguageSettingsEditor::sltHandleCurrentItemChange);
+
+    /* Apply language settings: */
+    retranslateUi();
 }
 
 void UILanguageSettingsEditor::reloadLanguageTree(const QString &strLanguageId)

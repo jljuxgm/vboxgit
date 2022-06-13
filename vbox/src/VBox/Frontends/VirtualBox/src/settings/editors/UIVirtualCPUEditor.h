@@ -1,4 +1,4 @@
-/* $Id: UIVirtualCPUEditor.h 93990 2022-02-28 15:34:57Z vboxsync $ */
+/* $Id: UIVirtualCPUEditor.h 94395 2022-03-29 16:29:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualCPUEditor class declaration.
  */
@@ -45,7 +45,8 @@ class SHARED_LIBRARY_STUFF UIVirtualCPUEditor : public QIWithRetranslateUI<QWidg
 
 public:
 
-    /** @param  fWithLabel  Determines whether we should add label ourselves. */
+    /** Constructs editor passing @a pParent to the base-class.
+      * @param  fWithLabel  Determines whether we should add label ourselves. */
     UIVirtualCPUEditor(QWidget *pParent = 0, bool fWithLabel = false);
 
     /** Defines editor @a iValue. */

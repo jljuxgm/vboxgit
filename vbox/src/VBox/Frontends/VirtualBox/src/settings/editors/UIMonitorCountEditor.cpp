@@ -1,4 +1,4 @@
-/* $Id: UIMonitorCountEditor.cpp 94362 2022-03-24 19:03:55Z vboxsync $ */
+/* $Id: UIMonitorCountEditor.cpp 94395 2022-03-29 16:29:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMonitorCountEditor class implementation.
  */
@@ -63,7 +63,7 @@ int UIMonitorCountEditor::value() const
 
 int UIMonitorCountEditor::minimumLabelHorizontalHint() const
 {
-    return m_pLabel->minimumSizeHint().width();
+    return m_pLabel ? m_pLabel->minimumSizeHint().width() : 0;
 }
 
 void UIMonitorCountEditor::setMinimumLayoutIndent(int iIndent)

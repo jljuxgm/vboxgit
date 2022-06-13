@@ -1,4 +1,4 @@
-/* $Id: UIAutoCaptureKeyboardEditor.h 93990 2022-02-28 15:34:57Z vboxsync $ */
+/* $Id: UIAutoCaptureKeyboardEditor.h 94395 2022-03-29 16:29:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIAutoCaptureKeyboardEditor class declaration.
  */
@@ -35,7 +35,7 @@ class SHARED_LIBRARY_STUFF UIAutoCaptureKeyboardEditor : public QIWithRetranslat
 
 public:
 
-    /** Constructs auto capture keyboard editor passing @a pParent to the base-class. */
+    /** Constructs editor passing @a pParent to the base-class. */
     UIAutoCaptureKeyboardEditor(QWidget *pParent = 0);
 
     /** Defines editor @a fValue. */

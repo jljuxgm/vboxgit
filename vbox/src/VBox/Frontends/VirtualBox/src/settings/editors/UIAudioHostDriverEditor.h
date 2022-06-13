@@ -1,4 +1,4 @@
-/* $Id: UIAudioHostDriverEditor.h 94039 2022-03-01 13:10:19Z vboxsync $ */
+/* $Id: UIAudioHostDriverEditor.h 94395 2022-03-29 16:29:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIAudioHostDriverEditor class declaration.
  */
@@ -41,14 +41,9 @@ class SHARED_LIBRARY_STUFF UIAudioHostDriverEditor : public QIWithRetranslateUI<
 {
     Q_OBJECT;
 
-signals:
-
-    /** Notifies listeners about @a enmValue change. */
-    void sigValueChanged(KAudioDriverType enmValue);
-
 public:
 
-    /** Constructs audio host driver editor passing @a pParent to the base-class. */
+    /** Constructs editor passing @a pParent to the base-class. */
     UIAudioHostDriverEditor(QWidget *pParent = 0);
 
     /** Defines editor @a enmValue. */
@@ -68,11 +63,6 @@ protected:
 
     /** Handles translation event. */
     virtual void retranslateUi() RT_OVERRIDE;
-
-private slots:
-
-    /** Handles current index change. */
-    void sltHandleCurrentIndexChanged();
 
 private:
 

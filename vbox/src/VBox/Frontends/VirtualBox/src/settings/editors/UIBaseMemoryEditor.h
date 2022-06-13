@@ -1,4 +1,4 @@
-/* $Id: UIBaseMemoryEditor.h 93990 2022-02-28 15:34:57Z vboxsync $ */
+/* $Id: UIBaseMemoryEditor.h 94395 2022-03-29 16:29:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIBaseMemoryEditor class declaration.
  */
@@ -42,11 +42,12 @@ signals:
 
     /** Notifies listeners about value has became @a fValid. */
     void sigValidChanged(bool fValid);
+    /** Notifies listeners about @a iValue has changed. */
     void sigValueChanged(int iValue);
 
 public:
 
-    /** Constructs base-memory editor passing @a pParent to the base-class.
+    /** Constructs editor passing @a pParent to the base-class.
       * @param  fWithLabel  Brings whether we should add label ourselves. */
     UIBaseMemoryEditor(QWidget *pParent = 0, bool fWithLabel = false);
 
@@ -83,16 +84,22 @@ private:
     /** Holds whether descriptive label should be created. */
     bool  m_fWithLabel;
 
-    /** Holds the memory label instance. */
-    QLabel             *m_pLabelMemory;
-    /** Holds the memory slider instance. */
-    UIBaseMemorySlider *m_pSlider;
-    /** Holds minimum memory label instance. */
-    QLabel             *m_pLabelMemoryMin;
-    /** Holds maximum memory label instance. */
-    QLabel             *m_pLabelMemoryMax;
-    /** Holds the memory spin-box instance. */
-    QSpinBox           *m_pSpinBox;
+    /** Holds the value to be selected. */
+    int  m_iValue;
+
+    /** @name Widgets
+     * @{ */
+        /** Holds the memory label instance. */
+        QLabel             *m_pLabelMemory;
+        /** Holds the memory slider instance. */
+        UIBaseMemorySlider *m_pSlider;
+        /** Holds minimum memory label instance. */
+        QLabel             *m_pLabelMemoryMin;
+        /** Holds maximum memory label instance. */
+        QLabel             *m_pLabelMemoryMax;
+        /** Holds the memory spin-box instance. */
+        QSpinBox           *m_pSpinBox;
+    /** @} */
 };
 
 #endif /* !FEQT_INCLUDED_SRC_settings_editors_UIBaseMemoryEditor_h */
