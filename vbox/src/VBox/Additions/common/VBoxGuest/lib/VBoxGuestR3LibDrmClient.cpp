@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibDrmClient.cpp 93330 2022-01-18 17:36:02Z vboxsync $ */
+/* $Id: VBoxGuestR3LibDrmClient.cpp 93331 2022-01-18 17:53:26Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, DRM client handling.
  */
@@ -82,15 +82,13 @@ VBGLR3DECL(bool) VbglR3DrmClientIsRunning(void)
     return VbglR3DrmClientIsNeeded();
 }
 
+#if defined(RT_OS_LINUX)
 static int VbglR3DrmStart(const char *pszCmd, const char **apszArgs)
 {
-#if defined(RT_OS_LINUX)
     return RTProcCreate(pszCmd, apszArgs, RTENV_DEFAULT,
                         RTPROC_FLAGS_DETACHED | RTPROC_FLAGS_SEARCH_PATH, NULL);
-#else
-    return VERR_NOT_SUPPORTED;
-#endif
 }
+#endif
 
 /**
  * Starts (executes) the DRM resizing client process ("VBoxDRMClient").
