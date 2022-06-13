@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsUpdate.cpp 94323 2022-03-22 12:50:14Z vboxsync $ */
+/* $Id: UIGlobalSettingsUpdate.cpp 94666 2022-04-21 11:30:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsUpdate class implementation.
  */
@@ -68,6 +68,10 @@ UIGlobalSettingsUpdate::~UIGlobalSettingsUpdate()
 
 void UIGlobalSettingsUpdate::loadToCacheFrom(QVariant &data)
 {
+    /* Sanity check: */
+    if (!m_pCache)
+        return;
+
     /* Fetch data to properties: */
     UISettingsPageGlobal::fetchData(data);
 
@@ -85,18 +89,28 @@ void UIGlobalSettingsUpdate::loadToCacheFrom(QVariant &data)
 
 void UIGlobalSettingsUpdate::getFromCache()
 {
+    /* Sanity check: */
+    if (!m_pCache)
+        return;
+
     /* Load old data from cache: */
     const UIDataSettingsGlobalUpdate &oldData = m_pCache->base();
-    m_pEditorUpdateSettings->setValue(oldData.m_guiUpdateData);
+    if (m_pEditorUpdateSettings)
+        m_pEditorUpdateSettings->setValue(oldData.m_guiUpdateData);
 }
 
 void UIGlobalSettingsUpdate::putToCache()
 {
+    /* Sanity check: */
+    if (!m_pCache)
+        return;
+
     /* Prepare new data: */
     UIDataSettingsGlobalUpdate newData = m_pCache->base();
 
     /* Cache new data: */
-    newData.m_guiUpdateData = m_pEditorUpdateSettings->value();
+    if (m_pEditorUpdateSettings)
+        newData.m_guiUpdateData = m_pEditorUpdateSettings->value();
     m_pCache->cacheCurrentData(newData);
 }
 
@@ -154,6 +168,10 @@ void UIGlobalSettingsUpdate::cleanup()
 
 bool UIGlobalSettingsUpdate::saveData()
 {
+    /* Sanity check: */
+    if (!m_pCache)
+        return false;
+
     /* Prepare result: */
     bool fSuccess = true;
     /* Save update settings from cache: */
