@@ -1,4 +1,4 @@
-/* $Id: efi-common.h 90061 2021-07-06 12:48:53Z vboxsync $ */
+/* $Id: efi-common.h 90283 2021-07-22 11:37:25Z vboxsync $ */
 /** @file
  * IPRT, EFI common definitions.
  */
@@ -48,6 +48,10 @@ AssertCompileSize(EFI_GUID, 16);
 typedef EFI_GUID *PEFI_GUID;
 /** Pointer to a const EFI GUID. */
 typedef const EFI_GUID *PCEFI_GUID;
+
+
+/** A Null GUID. */
+#define EFI_NULL_GUID { 0, 0, 0, { 0, 0, 0, 0, 0, 0, 0, 0 }}
 
 
 /**

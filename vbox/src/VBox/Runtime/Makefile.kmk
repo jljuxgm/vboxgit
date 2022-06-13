@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 90061 2021-07-06 12:48:53Z vboxsync $
+# $Id: Makefile.kmk 90283 2021-07-22 11:37:25Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -462,6 +462,7 @@ RuntimeR3_SOURCES       = \
 	common/dvm/dvmvfs.cpp \
 	common/efi/efiguid.cpp \
 	common/efi/efitime.cpp \
+	common/efi/efisignaturedb.cpp \
 	common/efi/efivarstorevfs.cpp \
 	common/err/errinfo.cpp \
 	common/err/errinfolog.cpp \
