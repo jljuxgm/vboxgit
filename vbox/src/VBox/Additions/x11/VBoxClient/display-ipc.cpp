@@ -1,4 +1,4 @@
-/* $Id: display-ipc.cpp 93381 2022-01-20 19:14:27Z vboxsync $ */
+/* $Id: display-ipc.cpp 93383 2022-01-20 19:32:38Z vboxsync $ */
 /** @file
  * Common code for IPC communication between VBoxDRMClient and VBoxClient.
  */
@@ -65,7 +65,7 @@
 
 /**
  * Initialize IPC client private data.
- *.
+ *
  * @return  IPRT status code.
  * @param   pClient             IPC client private data to be initialized.
  * @param   hThread             A thread which server IPC client connection.
