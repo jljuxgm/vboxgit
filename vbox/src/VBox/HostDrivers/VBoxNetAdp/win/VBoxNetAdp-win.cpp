@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-win.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: VBoxNetAdp-win.cpp 93304 2022-01-18 11:29:03Z vboxsync $ */
 /** @file
  * VBoxNetAdp-win.cpp - NDIS6 Host-only Networking Driver, Windows-specific code.
  */
@@ -1190,8 +1190,8 @@ DECLHIDDEN(NDIS_STATUS) vboxNetAdpWinInitializeEx(IN NDIS_HANDLE NdisMiniportHan
 
     do
     {
-        NDIS_MINIPORT_ADAPTER_REGISTRATION_ATTRIBUTES RAttrs = {0};
-        NDIS_MINIPORT_ADAPTER_GENERAL_ATTRIBUTES GAttrs = {0};
+        NDIS_MINIPORT_ADAPTER_REGISTRATION_ATTRIBUTES RAttrs = {{0}};
+        NDIS_MINIPORT_ADAPTER_GENERAL_ATTRIBUTES GAttrs = {{0}};
 
         Status = vboxNetAdpWinAllocAdapter(NdisMiniportHandle, &pAdapter, MiniportInitParameters->IfIndex);
         if (Status != NDIS_STATUS_SUCCESS)

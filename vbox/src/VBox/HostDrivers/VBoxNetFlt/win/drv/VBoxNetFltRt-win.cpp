@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltRt-win.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: VBoxNetFltRt-win.cpp 93304 2022-01-18 11:29:03Z vboxsync $ */
 /** @file
  * VBoxNetFltRt-win.cpp - Bridged Networking Driver, Windows Specific Runtime Code.
  */
@@ -130,7 +130,7 @@ INIT_IDC_INFO g_VBoxInitIdcInfo;
  */
 static VBOXNETFLTGLOBALS g_VBoxNetFltGlobals;
 /* win-specific global data */
-VBOXNETFLTGLOBALS_WIN g_VBoxNetFltGlobalsWin = {0};
+VBOXNETFLTGLOBALS_WIN g_VBoxNetFltGlobalsWin = {{{0}}};
 
 
 /*********************************************************************************************************************************
