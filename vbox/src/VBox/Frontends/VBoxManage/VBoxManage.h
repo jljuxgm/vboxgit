@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 92372 2021-11-11 14:45:18Z vboxsync $ */
+/* $Id: VBoxManage.h 92533 2021-11-21 14:18:55Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -50,23 +50,26 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
+/**
+ * This defines a a_CtxName::tr function that gives the translator context as
+ * well as providing a shorter way to call VirtualBoxTranslator::translate.
+ */
 #ifdef VBOX_WITH_VBOXMANAGE_NLS
-# define DECLARE_TRANSLATION_CONTEXT(ctx) \
-struct ctx \
-{\
-   static const char *tr(const char *pszSource, const char *pszComment = NULL, const size_t aNum = ~(size_t)0) \
+# define DECLARE_TRANSLATION_CONTEXT(a_CtxName) \
+struct a_CtxName \
+{ \
+   static const char *tr(const char *pszSource, const char *pszComment = NULL, const size_t uNum = ~(size_t)0) \
    { \
-       return VirtualBoxTranslator::translate(NULL, #ctx, pszSource, pszComment, aNum); \
+       return VirtualBoxTranslator::translate(NULL, #a_CtxName, pszSource, pszComment, uNum); \
    } \
 }
 #else
-# define DECLARE_TRANSLATION_CONTEXT(ctx) \
-struct ctx \
-{\
-   static const char *tr(const char *pszSource, const char *pszComment = NULL, const size_t aNum = ~(size_t)0) \
+# define DECLARE_TRANSLATION_CONTEXT(a_CtxName) \
+struct a_CtxName \
+{ \
+   static const char *tr(const char *pszSource, const char *pszComment = NULL, const size_t uNum = ~(size_t)0) \
    { \
-       NOREF(pszComment); \
-       NOREF(aNum);       \
+       RT_NOREF(pszComment, uNum); \
        return pszSource;  \
    } \
 }
