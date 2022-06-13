@@ -1,4 +1,4 @@
-/* $Id: NEMInternal.h 93722 2022-02-14 12:52:49Z vboxsync $ */
+/* $Id: NEMInternal.h 93728 2022-02-14 14:32:18Z vboxsync $ */
 /** @file
  * NEM - Internal header file.
  */
@@ -278,6 +278,12 @@ typedef struct NEM
 
     /** The host LBR TOS (top-of-stack) MSR id. */
     uint32_t                    idLbrTosMsr;
+    /** The host LBR select MSR id. */
+    uint32_t                    idLbrSelectMsr;
+    /** The host last event record from IP MSR id. */
+    uint32_t                    idLerFromIpMsr;
+    /** The host last event record to IP MSR id. */
+    uint32_t                    idLerToIpMsr;
 
     /** The first valid host LBR branch-from-IP stack range. */
     uint32_t                    idLbrFromIpMsrFirst;
@@ -288,6 +294,11 @@ typedef struct NEM
     uint32_t                    idLbrToIpMsrFirst;
     /** The last valid host LBR branch-to-IP stack range. */
     uint32_t                    idLbrToIpMsrLast;
+
+    /** The first valid host LBR info stack range. */
+    uint32_t                    idLbrInfoMsrFirst;
+    /** The last valid host LBR info stack range. */
+    uint32_t                    idLbrInfoMsrLast;
 
     STAMCOUNTER                 StatMapPage;
     STAMCOUNTER                 StatUnmapPage;
