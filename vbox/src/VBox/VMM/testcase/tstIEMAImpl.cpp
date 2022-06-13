@@ -1,4 +1,4 @@
-/* $Id: tstIEMAImpl.cpp 94364 2022-03-24 20:34:00Z vboxsync $ */
+/* $Id: tstIEMAImpl.cpp 94366 2022-03-24 22:39:03Z vboxsync $ */
 /** @file
  * IEM Assembly Instruction Helper Testcase.
  */
@@ -735,14 +735,14 @@ static void GenerateHeader(PRTSTREAM pOut, const char *pszFileInfix,
                            const char *pszCpuDesc, const char *pszCpuType, const char *pszCpuSuffU)
 {
     /* We want to tag the generated source code with the revision that produced it. */
-    static char s_szRev[] = "$Revision: 94364 $";
+    static char s_szRev[] = "$Revision: 94366 $";
     const char *pszRev = RTStrStripL(strchr(s_szRev, ':') + 1);
     size_t      cchRev = 0;
     while (RT_C_IS_DIGIT(pszRev[cchRev]))
         cchRev++;
 
     RTStrmPrintf(pOut,
-                 "/* $Id: tstIEMAImpl.cpp 94364 2022-03-24 20:34:00Z vboxsync $ */\n"
+                 "/* $Id: tstIEMAImpl.cpp 94366 2022-03-24 22:39:03Z vboxsync $ */\n"
                  "/** @file\n"
                  " * IEM Assembly Instruction Helper Testcase Data%s%s - r%.*s on %s.\n"
                  " */\n"
@@ -967,7 +967,7 @@ static const char *FormatD80(PCRTPBCD80U pd80)
                     + s_bBadDigits[RTPBCD80U_LO_DIGIT(pd80->s.abPairs[iPair])];
     }
     if (cBadDigits || pd80->s.uPad != 0)
-        off =+ RTStrPrintf(&pszBuf[off], sizeof(g_aszBuf[0]) - off, "[%u,%#x]", cBadDigits, pd80->s.uPad);
+        off += RTStrPrintf(&pszBuf[off], sizeof(g_aszBuf[0]) - off, "[%u,%#x]", cBadDigits, pd80->s.uPad);
     pszBuf[off] = '\0';
     return pszBuf;
 }
