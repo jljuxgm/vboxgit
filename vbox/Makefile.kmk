@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 89791 2021-06-19 14:45:06Z vboxsync $
+# $Id: Makefile.kmk 89792 2021-06-19 14:48:15Z vboxsync $
 ## @file
 # Top level makefile.
 #
@@ -945,7 +945,7 @@ $(VBOX_CORE_DOXYFILE_OUTPUT)/docs.Core: $(VBOX_CORE_DOXYFILE_OUTPUT)/Doxyfile.Co
 		| $(VBOX_CORE_DOXYFILE_OUTPUT)/
 	$(QUIET)$(RM) -f $@
 	$(QUIET)$(RM) -Rf $(VBOX_CORE_DOXYFILE_OUTPUT)/html/
-       $(REDIRECT) -E "PATH=$(VBOX_JAVA_BIN_PATH)$(HOST_PATH_SEP)$(PATH)" -- doxygen $(VBOX_CORE_DOXYFILE_OUTPUT)/Doxyfile.Core
+	$(REDIRECT) -E "PATH=$(VBOX_JAVA_BIN_PATH)$(HOST_PATH_SEP)$(PATH)" -- doxygen $(VBOX_CORE_DOXYFILE_OUTPUT)/Doxyfile.Core
 	$(SED) -n \
                -e ':nextwarning' \
                -e '/^ *$(DOLLAR)/d' \
