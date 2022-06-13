@@ -1,4 +1,4 @@
-/* $Id: UIFileManager.h 92753 2021-12-06 08:51:01Z vboxsync $ */
+/* $Id: UIFileManager.h 92790 2021-12-07 18:18:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManager class declaration.
  */
@@ -38,7 +38,6 @@ class QHBoxLayout;
 class QSplitter;
 class QTextEdit;
 class QVBoxLayout;
-class CGuestSessionStateChangedEvent;
 class UIActionPool;
 class UIDialogPanel;
 class UIFileManagerLogPanel;
@@ -113,6 +112,7 @@ private slots:
     /** Performs whatever necessary when some signal about option change has been receieved. */
     void sltHandleOptionsUpdated();
     void sltHandleHidePanel(UIDialogPanel *pPanel);
+    void sltCommitDataSignalReceived();
 
 private:
 
@@ -150,7 +150,6 @@ private:
     void removeTabs(const QVector<QUuid> &machineIdsToRemove);
     void addTabs(const QVector<QUuid> &machineIdsToAdd);
 
-
     QVBoxLayout              *m_pMainLayout;
     QSplitter                *m_pVerticalSplitter;
     /** Splitter hosting host and guest file system tables. */
@@ -169,8 +168,8 @@ private:
     UIFileManagerOptionsPanel          *m_pOptionsPanel;
     UIFileManagerLogPanel              *m_pLogPanel;
     UIFileManagerOperationsPanel       *m_pOperationsPanel;
-    bool                                m_fDialogBeingClosed;
 
+    bool m_fCommitDataSignalReceived;
 
     QVector<QUuid> m_machineIds;
 
