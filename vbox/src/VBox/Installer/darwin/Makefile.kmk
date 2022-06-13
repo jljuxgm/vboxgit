@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 94886 2022-05-06 08:42:05Z vboxsync $
+# $Id: Makefile.kmk 95060 2022-05-23 11:12:41Z vboxsync $
 ## @file
 # Install misc stuff and create dist packages for Mac OS X.
 #
@@ -175,7 +175,7 @@ ifdef VBOX_SIGNING_MODE
  ifndef VBOX_WITHOUT_SIGNED_DMG
 	@# Sign the created dmg.
 	$(call VBOX_SIGN_DMG_FN,$@,org.virtualbox.dmg)
-  if $(intersects darwin all 1,$(VBOX_WITH_CORP_CODE_SIGNING))
+  if $(intersects darwin darwin_notarize all 1,$(VBOX_WITH_CORP_CODE_SIGNING))
 	@# Notarize the signed dmg (includes stapling).
 	$(call VBOX_NOTARIZE_FILE_FN,$@,org.virtualbox.VirtualBox.$(VBOX_VERSION_MAJOR).$(VBOX_VERSION_MINOR).$(VBOX_VERSION_BUILD).$(VBOX_SVN_REV))
   endif
