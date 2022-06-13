@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVD.h 91035 2021-08-31 15:57:07Z vboxsync $ */
+/* $Id: UIWizardCloneVD.h 91222 2021-09-14 08:02:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVD class declaration.
  */
@@ -77,16 +77,20 @@ private:
     virtual void retranslateUi() /* override */;
     void setMediumVariantPageVisibility();
 
-    CMediumFormat m_comMediumFormat;
-    qulonglong m_uMediumVariant;
-    /** Holds the source virtual disk wrapper. */
-    CMedium m_comSourceVirtualDisk;
+    /** @name Parameters needed during medium cloning
+      * @{ */
+        CMediumFormat m_comMediumFormat;
+        qulonglong m_uMediumVariant;
+        /** Holds the source virtual disk wrapper. */
+        CMedium m_comSourceVirtualDisk;
 
-    /** Holds the source virtual-disk device type. */
-    KDeviceType m_enmDeviceType;
-    int m_iMediumVariantPageIndex;
-    qulonglong m_uMediumSize;
-    QString m_strMediumPath;
+        /** Holds the source virtual-disk device type. */
+        KDeviceType m_enmDeviceType;
+        int m_iMediumVariantPageIndex;
+        qulonglong m_uMediumSize;
+        QString m_strMediumPath;
+        QString m_strSourceDiskPath;
+    /** @} */
 };
 
 #endif /* !FEQT_INCLUDED_SRC_wizards_clonevd_UIWizardCloneVD_h */

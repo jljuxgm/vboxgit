@@ -1,4 +1,4 @@
-/* $Id: UIWizardDiskEditors.h 90902 2021-08-26 08:15:30Z vboxsync $ */
+/* $Id: UIWizardDiskEditors.h 91222 2021-09-14 08:02:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardDiskEditors class declaration.
  */
@@ -84,6 +84,8 @@ public:
     void setMediumFormat(const CMediumFormat &mediumFormat);
     const CMediumFormat &VDIMediumFormat() const;
     const QStringList formatExtensions() const;
+    /** Attempts to find a file extention for the device type @p enmDeviceType withing the extensions
+      * returned by CMediumFormat::DescribeFileExtensions(..). */
     static QString defaultExtension(const CMediumFormat &mediumFormatRef, KDeviceType enmDeviceType);
 
 private:
