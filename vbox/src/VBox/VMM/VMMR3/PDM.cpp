@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 90981 2021-08-29 12:50:29Z vboxsync $ */
+/* $Id: PDM.cpp 91686 2021-10-12 09:58:25Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -799,6 +799,12 @@ VMMR3_INT_DECL(int) PDMR3Term(PVM pVM)
         //TMR3TimerDestroyUsb(pVM, pUsbIns);
         //SSMR3DeregisterUsb(pVM, pUsbIns, NULL, 0);
         pdmR3ThreadDestroyUsb(pVM, pUsbIns);
+
+        if (pUsbIns->pszName)
+        {
+            RTStrFree(pUsbIns->pszName); /* See the RTStrDup() call in PDMUsb.cpp:pdmR3UsbCreateDevice. */
+            pUsbIns->pszName = NULL;
+        }
     }
 
     /* then the 'normal' ones. */
