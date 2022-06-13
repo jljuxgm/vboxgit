@@ -1,4 +1,4 @@
-/* $Id: AudioHlp.cpp 90012 2021-07-04 21:08:37Z vboxsync $ */
+/* $Id: AudioHlp.cpp 90014 2021-07-04 21:11:04Z vboxsync $ */
 /** @file
  * Audio helper routines.
  *
@@ -620,7 +620,7 @@ int AudioHlpFileDelete(PAUDIOHLPFILE pFile)
 /**
  * Returns whether the given audio file is open and in use or not.
  *
- * @returnd True if open, false if not.
+ * @returns True if open, false if not.
  * @param   pFile               Audio file to check open status for.
  */
 bool AudioHlpFileIsOpen(PAUDIOHLPFILE pFile)
