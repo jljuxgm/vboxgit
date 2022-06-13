@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioValidationKit.cpp 92335 2021-11-10 17:20:27Z vboxsync $ */
+/* $Id: DrvHostAudioValidationKit.cpp 92348 2021-11-11 09:33:57Z vboxsync $ */
 /** @file
  * Host audio driver - ValidationKit - For dumping and injecting audio data from/to the device emulation.
  */
@@ -1059,6 +1059,9 @@ static DECLCALLBACK(int) drvHostValKitAudioHA_StreamPlay(PPDMIHOSTAUDIO pInterfa
         pThis->cbPlayedSilence = 0;
     }
 
+    LogRel4(("Playback audio data (%RU32 bytes):\n"
+             "%.*Rhxd\n", cbBuf, cbBuf, pvBuf));
+
     if (pTst->enmState == AUDIOTESTSTATE_INIT) /* Test not started yet? */
     {
         AUDIOTESTPARMS Parms;
@@ -1280,6 +1283,9 @@ static DECLCALLBACK(int) drvHostValKitAudioHA_StreamCapture(PPDMIHOSTAUDIO pInte
         int rc2 = RTCritSectLeave(&pThis->CritSect);
         AssertRC(rc2);
     }
+
+    LogRel4(("Capture audio data (%RU32 bytes):\n"
+             "%.*Rhxd\n", cbBuf, cbBuf, pvBuf));
 
     if (pTst == NULL) /* Empty list? */
     {
