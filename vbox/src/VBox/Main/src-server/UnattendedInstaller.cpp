@@ -1,4 +1,4 @@
-/* $Id: UnattendedInstaller.cpp 91718 2021-10-14 11:43:12Z vboxsync $ */
+/* $Id: UnattendedInstaller.cpp 93082 2021-12-26 01:27:48Z vboxsync $ */
 /** @file
  * UnattendedInstaller class and it's descendants implementation
  */
@@ -64,6 +64,10 @@ using namespace std;
             pUinstaller = new UnattendedWindowsXmlInstaller(pParent);
         else
             pUinstaller = new UnattendedWindowsSifInstaller(pParent);
+    }
+    else if (enmOsType >= VBOXOSTYPE_OS2 && enmOsType < VBOXOSTYPE_Linux)
+    {
+        /** @todo OS/2 */
     }
     else
     {

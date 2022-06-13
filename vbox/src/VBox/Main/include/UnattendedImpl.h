@@ -1,4 +1,4 @@
-/* $Id: UnattendedImpl.h 91502 2021-09-30 20:32:24Z vboxsync $ */
+/* $Id: UnattendedImpl.h 93082 2021-12-26 01:27:48Z vboxsync $ */
 /** @file
  * Unattended class header
  */
@@ -231,6 +231,7 @@ private:
     } DETECTBUFFER;
     HRESULT i_innerDetectIsoOSWindows(RTVFS hVfsIso, DETECTBUFFER *puBuf, VBOXOSTYPE *penmOsType);
     HRESULT i_innerDetectIsoOSLinux(RTVFS hVfsIso, DETECTBUFFER *puBuf, VBOXOSTYPE *penmOsType);
+    HRESULT i_innerDetectIsoOSOs2(RTVFS hVfsIso, DETECTBUFFER *puBuf, VBOXOSTYPE *penmOsType);
 
     /**
      * Worker for reconfigureVM().
