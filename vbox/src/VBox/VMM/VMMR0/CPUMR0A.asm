@@ -1,4 +1,4 @@
- ; $Id: CPUMR0A.asm 87361 2021-01-21 21:13:55Z vboxsync $
+ ; $Id: CPUMR0A.asm 91281 2021-09-16 13:32:18Z vboxsync $
 ;; @file
 ; CPUM - Ring-0 Assembly Routines (supporting HM and IEM).
 ;
@@ -263,7 +263,7 @@ SEH64_END_PROLOGUE
 
  %ifdef VBOX_WITH_KERNEL_USING_XMM
         ; Load the guest XMM register values we already saved in HMR0VMXStartVMWrapXMM.
-        mov     pXState, [pCpumCpu + CPUMCPU.Guest.pXStateR0]
+        lea     pXState, [pCpumCpu + CPUMCPU.Guest.XState]
         movdqa  xmm0,  [pXState + X86FXSTATE.xmm0]
         movdqa  xmm1,  [pXState + X86FXSTATE.xmm1]
         movdqa  xmm2,  [pXState + X86FXSTATE.xmm2]

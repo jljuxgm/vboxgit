@@ -1,4 +1,4 @@
-# $Id: tstAsmStructsAsm-lst.sed 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: tstAsmStructsAsm-lst.sed 91281 2021-09-16 13:32:18Z vboxsync $
 ## @file
 # For testing assembly struct when using yasm.
 #
@@ -39,6 +39,7 @@ s/[[:space:]][[:space:]]*/ /g
 /^[[:alpha:]_][[:alnum:]_]*_size EQU \$ - .*$/b struct_equ
 /<gap>/b member
 /^\.[[:alpha:]_][[:alnum:]_.:]* res.*$/b member_two
+/^\.[[:alpha:]_][[:alnum:]_.:]* EQU .*$/b member_two
 /^\.[[:alpha:]_][[:alnum:]_.:]*:$/b member_alias
 b error
 b member_two
@@ -78,6 +79,7 @@ b end
 #
 :member_two
 s/[:]*  *res[bwdtq] .*$//
+s/[:]*  *EQU .*$//
 s/$/ /
 /^\.[[:alnum:]_.]* *$/!t error
 G

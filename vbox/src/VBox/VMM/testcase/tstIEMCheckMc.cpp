@@ -1,4 +1,4 @@
-/* $Id: tstIEMCheckMc.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: tstIEMCheckMc.cpp 91281 2021-09-16 13:32:18Z vboxsync $ */
 /** @file
  * IEM Testcase - Check the "Microcode".
  */
@@ -703,7 +703,7 @@ IEMOPMEDIAF2 g_iemAImpl_pcmpeqd;
     do { (void)fSseHost; (void)fSseWrite; CHK_CALL_ARG(a0, 0); CHK_CALL_ARG(a1, 1); (void)fMcBegin; } while (0)
 #define IEM_MC_CALL_SSE_AIMPL_3(a_pfnAImpl, a0, a1, a2) \
     do { (void)fSseHost; (void)fSseWrite; CHK_CALL_ARG(a0, 0); CHK_CALL_ARG(a1, 1); CHK_CALL_ARG(a2, 2); (void)fMcBegin; } while (0)
-#define IEM_MC_IMPLICIT_AVX_AIMPL_ARGS() do { IEM_MC_ARG_CONST(PX86XSAVEAREA, pXState, pVCpu->cpum.GstCtx.CTX_SUFF(pXState), 0); (void)fMcBegin; } while (0)
+#define IEM_MC_IMPLICIT_AVX_AIMPL_ARGS() do { IEM_MC_ARG_CONST(PX86XSAVEAREA, pXState, &pVCpu->cpum.GstCtx.XState, 0); (void)fMcBegin; } while (0)
 #define IEM_MC_CALL_AVX_AIMPL_2(a_pfnAImpl, a1, a2) \
     do { (void)fAvxHost; (void)fAvxWrite; CHK_CALL_ARG(a1, 1); CHK_CALL_ARG(a2, 2); (void)fMcBegin; } while (0)
 #define IEM_MC_CALL_AVX_AIMPL_3(a_pfnAImpl, a1, a2, a3) \
