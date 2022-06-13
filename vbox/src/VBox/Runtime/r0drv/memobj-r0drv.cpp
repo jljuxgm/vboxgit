@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv.cpp 92247 2021-11-06 03:40:52Z vboxsync $ */
+/* $Id: memobj-r0drv.cpp 92250 2021-11-06 15:58:20Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Common Code.
  */
@@ -326,7 +326,7 @@ RT_EXPORT_SYMBOL(RTR0MemObjGetPagePhysAddr);
  *          one allocation it will return true for all other similarly made
  *          allocations.
  */
-RTR0DECL(bool) RTR0MemObjWasZeroInitialized(PRTR0MEMOBJ hMemObj)
+RTR0DECL(bool) RTR0MemObjWasZeroInitialized(RTR0MEMOBJ hMemObj)
 {
     PRTR0MEMOBJINTERNAL pMem;
 
