@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testresults.py 93115 2022-01-01 11:31:46Z vboxsync $
+# $Id: testresults.py 94128 2022-03-08 14:50:04Z vboxsync $
 # pylint: disable=too-many-lines
 
 ## @todo Rename this file to testresult.py!
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 93115 $"
+__version__ = "$Revision: 94128 $"
 
 
 # Standard python imports.
@@ -2154,7 +2154,7 @@ class TestResultLogic(ModelLogicBase): # pylint: disable=too-few-public-methods
                                                % (oRoot.idTestResult, oRoot.idTestResultParent));
         self._fetchResultTreeNodeExtras(oRoot, aoRow[-4], aoRow[-3], aoRow[-2], aoRow[-1]);
 
-        # The chilren (if any).
+        # The children (if any).
         dLookup = { oRoot.idTestResult: oRoot };
         oParent = oRoot;
         for iRow in range(1, len(aaoRows)):
@@ -2232,7 +2232,7 @@ class TestResultLogic(ModelLogicBase): # pylint: disable=too-few-public-methods
             for aoRow in self._oDb.fetchAll():
                 oCurNode.aoFiles.append(TestResultFileDataEx().initFromDbRow(aoRow));
 
-        if fHasReasons or True:
+        if fHasReasons:
             if self.oFailureReasonLogic is None:
                 self.oFailureReasonLogic = FailureReasonLogic(self._oDb);
             if self.oUserAccountLogic is None:
@@ -2538,8 +2538,7 @@ class TestResultLogic(ModelLogicBase): # pylint: disable=too-few-public-methods
                           'WHERE    idTestResultParent = %s\n'
                           , ( oTestResult.idTestResult, ));
         cMinErrors = self._oDb.fetchOne()[0] + oTestResult.cErrors;
-        if cErrors < cMinErrors:
-            cErrors = cMinErrors;
+        cErrors    = max(cErrors, cMinErrors);
         if cErrors > 0 and enmStatus == TestResultData.ksTestStatus_Success:
             enmStatus = TestResultData.ksTestStatus_Failure
 
