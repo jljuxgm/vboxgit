@@ -1,4 +1,4 @@
-/* $Id: TestExecService.cpp 93895 2022-02-23 12:48:02Z vboxsync $ */
+/* $Id: TestExecService.cpp 94525 2022-04-08 08:14:57Z vboxsync $ */
 /** @file
  * TestExecServ - Basic Remote Execution Service.
  */
@@ -1023,13 +1023,15 @@ static int txsDoCopyFile(PCTXSPKTHDR pPktHdr)
     if (pPktHdr->cb < cbMin)
         return txsReplyBadMinSize(pPktHdr, cbMin);
 
-    RTFMODE const fMode = *(RTFMODE const *)(pPktHdr + 1);
+    /* Packet cursor. */
+    const char *pch = (const char *)(pPktHdr + 1);
 
     int rc;
 
-    char       *pszSrc;
-    const char *pch;
-    if (txsIsStringValid(pPktHdr, "source", (const char *)(pPktHdr + 1) + sizeof(uint32_t) * 2, &pszSrc, &pch, &rc))
+    RTFMODE const fMode = *(RTFMODE const *)pch;
+
+    char *pszSrc;
+    if (txsIsStringValid(pPktHdr, "source", (const char *)pch + sizeof(RTFMODE), &pszSrc, &pch, &rc))
     {
         char *pszDst;
         if (txsIsStringValid(pPktHdr, "dest", pch, &pszDst, NULL /* Check for string termination */, &rc))
@@ -3766,7 +3768,7 @@ static RTEXITCODE txsParseArgv(int argc, char **argv, bool *pfExit)
                 break;
 
             case 'V':
-                RTPrintf("$Revision: 93895 $\n");
+                RTPrintf("$Revision: 94525 $\n");
                 *pfExit = true;
                 return RTEXITCODE_SUCCESS;
 
