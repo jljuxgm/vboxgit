@@ -1,4 +1,4 @@
-/* $Id: PDMAllCritSectRw.cpp 91813 2021-10-18 09:45:16Z vboxsync $ */
+/* $Id: PDMAllCritSectRw.cpp 91814 2021-10-18 09:46:39Z vboxsync $ */
 /** @file
  * IPRT - Read/Write Critical Section, Generic.
  */
@@ -100,7 +100,12 @@ static int32_t g_fCmpWriteSupported = -1;
 /*********************************************************************************************************************************
 *   Internal Functions                                                                                                           *
 *********************************************************************************************************************************/
+#if !defined(VMM_R0_SWITCH_STACK) || !defined(IN_RING0)
 static int pdmCritSectRwLeaveSharedWorker(PVMCC pVM, PPDMCRITSECTRW pThis, bool fNoVal);
+#else
+DECLASM(int) pdmCritSectRwLeaveSharedWorker(PVMCC pVM, PPDMCRITSECTRW pThis, bool fNoVal);
+decltype(pdmCritSectRwLeaveSharedWorker) StkBack_pdmCritSectRwLeaveSharedWorker;
+#endif
 
 
 #ifdef RTASM_HAVE_CMP_WRITE_U128
@@ -1050,9 +1055,6 @@ DECLASM(int) StkBack_pdmCritSectRwLeaveSharedWorker(PVMCC pVM, PPDMCRITSECTRW pT
 
     return VINF_SUCCESS;
 }
-#if defined(VMM_R0_SWITCH_STACK) && defined(IN_RING0)
-decltype(StkBack_pdmCritSectRwLeaveSharedWorker) pdmCritSectRwLeaveSharedWorker;
-#endif
 
 
 /**
