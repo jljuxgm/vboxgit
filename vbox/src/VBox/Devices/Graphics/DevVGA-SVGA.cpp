@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 90447 2021-07-31 00:44:13Z vboxsync $ */
+/* $Id: DevVGA-SVGA.cpp 90694 2021-08-16 12:33:15Z vboxsync $ */
 /** @file
  * VMware SVGA device.
  *
@@ -958,9 +958,9 @@ DECLCALLBACK(void) vmsvgaR3PortReportMonitorPositions(PPDMIDISPLAYPORT pInterfac
             && pSVGAState->aScreens[i].yOrigin == paPositions[i].y)
             continue;
 
-        if (pSVGAState->aScreens[i].xOrigin == -1)
+        if (paPositions[i].x == -1)
             continue;
-        if (pSVGAState->aScreens[i].yOrigin == -1)
+        if (paPositions[i].y == -1)
             continue;
 
         pSVGAState->aScreens[i].xOrigin = paPositions[i].x;
