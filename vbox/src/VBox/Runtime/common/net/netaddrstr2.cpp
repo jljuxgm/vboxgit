@@ -1,4 +1,4 @@
-/* $Id: netaddrstr2.cpp 87524 2021-02-02 02:17:11Z vboxsync $ */
+/* $Id: netaddrstr2.cpp 91918 2021-10-21 01:09:34Z vboxsync $ */
 /** @file
  * IPRT - Network Address String Handling.
  */
@@ -290,7 +290,7 @@ RTDECL(int) RTNetStrToIPv4Cidr(const char *pcszAddr, PRTNETADDRIPV4 pAddr, int *
             return VERR_INVALID_PARAMETER;
     }
 
-    if (u8Prefix == 0 || u8Prefix > 32)
+    if (u8Prefix > 32)
         return VERR_INVALID_PARAMETER;
 
     *pAddr = Addr;
@@ -714,10 +714,10 @@ RTDECL(int) RTNetStrToIPv6Cidr(const char *pcszAddr, PRTNETADDRIPV6 pAddr, int *
 
     ++pszNext;
     rc = RTStrToUInt8Ex(pszNext, &pszNext, 10, &u8Prefix);
-    if (RT_FAILURE(rc) || rc == VWRN_TRAILING_CHARS)
+    if (rc != VINF_SUCCESS && rc != VWRN_TRAILING_SPACES)
         return VERR_INVALID_PARAMETER;
 
-    if (u8Prefix == 0 || u8Prefix > 128)
+    if (u8Prefix > 128)
         return VERR_INVALID_PARAMETER;
 
     *pAddr = Addr;
