@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: vboxshell.py 94187 2022-03-11 18:40:19Z vboxsync $
+# $Id: vboxshell.py 94189 2022-03-11 19:02:57Z vboxsync $
 
 """
 VirtualBox Python Shell.
@@ -33,7 +33,7 @@ Foundation, in version 2 as it comes in the "COPYING" file of the
 VirtualBox OSE distribution. VirtualBox OSE is distributed in the
 hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
 """
-__version__ = "$Revision: 94187 $"
+__version__ = "$Revision: 94189 $"
 
 
 import gc
@@ -366,7 +366,7 @@ def monitorSource(ctx, eventSource, active, dur):
             if gpcev:
                 if gpcev.fWasDeleted is True:
                     print("property %s was deleted" % (gpcev.name))
-                else
+                else:
                     print("guest property change: name=%s value=%s flags='%s'" %
                           (gpcev.name, gpcev.value, gpcev.flags))
         elif  evtype == ctx['global'].constants.VBoxEventType_OnMousePointerShapeChanged:
