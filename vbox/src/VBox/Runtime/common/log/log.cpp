@@ -1,4 +1,4 @@
-/* $Id: log.cpp 94625 2022-04-19 09:26:37Z vboxsync $ */
+/* $Id: log.cpp 94628 2022-04-19 10:13:21Z vboxsync $ */
 /** @file
  * Runtime VBox - Logger.
  */
@@ -730,11 +730,11 @@ RTDECL(PRTLOGGER)   RTLogCheckGroupFlags(PRTLOGGER pLogger, uint32_t fFlagsAndGr
 RT_EXPORT_SYMBOL(RTLogCheckGroupFlags);
 
 
-#ifdef IN_RING3
 /*********************************************************************************************************************************
 *   Default file I/O interface                                                                                                   *
 *********************************************************************************************************************************/
 
+#ifdef IN_RING3
 static DECLCALLBACK(int) rtLogOutputIfDefOpen(PCRTLOGOUTPUTIF pIf, void *pvUser, const char *pszFilename, uint32_t fFlags)
 {
     RT_NOREF(pIf);
