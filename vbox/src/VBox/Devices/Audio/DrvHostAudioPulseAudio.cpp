@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioPulseAudio.cpp 91173 2021-09-09 06:05:34Z vboxsync $ */
+/* $Id: DrvHostAudioPulseAudio.cpp 91174 2021-09-09 08:18:53Z vboxsync $ */
 /** @file
  * Host audio driver - Pulse Audio.
  */
@@ -36,6 +36,7 @@
 #include "DrvHostAudioPulseAudioStubs.h"
 
 #include <pulse/pulseaudio.h>
+#include <pulse/rtclock.h>
 #ifndef PA_STREAM_NOFLAGS
 # define PA_STREAM_NOFLAGS  (pa_context_flags_t)0x0000U /* since 0.9.19 */
 #endif
