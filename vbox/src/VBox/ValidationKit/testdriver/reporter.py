@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: reporter.py 90615 2021-08-11 07:26:49Z vboxsync $
+# $Id: reporter.py 90616 2021-08-11 07:27:39Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 90615 $"
+__version__ = "$Revision: 90616 $"
 
 
 # Standard Python imports.
@@ -1238,7 +1238,6 @@ class FileWrapper(object):
         try:
             sTsPrf  = utils.getTimePrefix();
             sCaller = utils.getCallerName();
-            import pdb; pdb.set_trace();
             asLines = sText.splitlines();
             for sLine in asLines:
                 g_oReporter.log(0, '%s: %s' % (self.sPrefix, sLine), sCaller, sTsPrf);
