@@ -1,4 +1,4 @@
-/* $Id: SUPDrvInternal.h 90943 2021-08-27 10:25:11Z vboxsync $ */
+/* $Id: SUPDrvInternal.h 91551 2021-10-04 22:01:46Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
@@ -728,9 +728,11 @@ typedef struct SUPDRVSESSION
     /** List of generic usage records. (protected by SUPDRVDEVEXT::SpinLock) */
     PSUPDRVUSAGE volatile           pUsage;
 
-    /** The user id of the session. (Set by the OS part.) */
+    /** The user id of the session - set by the OS part or NIL_RTUID.
+     * This should be unique accross namespace/zones/whatever. */
     RTUID                           Uid;
-    /** The group id of the session. (Set by the OS part.) */
+    /** The group id of the session - set by the OS part or NIL_RTGID.
+     * This should be unique accross namespace/zones/whatever.  */
     RTGID                           Gid;
     /** Per session tracer specfic data. */
     uintptr_t                       uTracerData;
