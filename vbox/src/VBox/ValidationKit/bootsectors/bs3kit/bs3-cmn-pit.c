@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-pit.c 88839 2021-05-03 14:28:49Z vboxsync $ */
+/* $Id: bs3-cmn-pit.c 92524 2021-11-20 23:53:45Z vboxsync $ */
 /** @file
  * BS3Kit - PIT Setup and Disable code.
  */
@@ -60,7 +60,7 @@ BS3_CMN_DEF(void, Bs3PitSetupAndEnablePeriodTimer,(uint16_t cHzDesired))
      * Disable the PIT and make sure we've configured the IRQ handlers.
      */
     Bs3PitDisable();
-    Bs3PicSetup();
+    Bs3PicSetup(false /*fForcedReInit*/);
     Bs3TrapSetHandlerEx(0x70, bs3PitIrqHandler_c16, bs3PitIrqHandler_c32, bs3PitIrqHandler_c64);
 
     /*

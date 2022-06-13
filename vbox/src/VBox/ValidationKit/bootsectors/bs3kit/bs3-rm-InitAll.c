@@ -1,4 +1,4 @@
-/* $Id: bs3-rm-InitAll.c 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: bs3-rm-InitAll.c 92524 2021-11-20 23:53:45Z vboxsync $ */
 /** @file
  * BS3Kit - Initialize all components, real mode.
  */
@@ -68,7 +68,7 @@ BS3_DECL(void) Bs3InitAll_rm(void)
             ASMHalt();
     }
     ASMIntDisable();
-    Bs3PicSetup();
+    Bs3PicSetup(false /*fForcedReInit*/);
 
     /*
      * Initialize IDTs and such.

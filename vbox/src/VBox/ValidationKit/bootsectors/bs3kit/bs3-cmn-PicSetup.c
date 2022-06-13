@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-PicSetup.c 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: bs3-cmn-PicSetup.c 92524 2021-11-20 23:53:45Z vboxsync $ */
 /** @file
  * BS3Kit - PIC Setup.
  */
@@ -45,14 +45,14 @@
  * installed.
  */
 #undef Bs3PicSetup
-BS3_CMN_DEF(void, Bs3PicSetup,(void))
+BS3_CMN_DEF(void, Bs3PicSetup,(bool fForcedReInit))
 {
     /*
      * The first call configures the PIC to send interrupts to vectors 0x70 thru 0x7f,
      * masking all of them.  Things producing IRQs is responsible for configure their
      * handlers and then(!) use Bs3PicUpdateMask to unmask the IRQ.
      */
-    if (!g_fBs3PicConfigured)
+    if (!g_fBs3PicConfigured || fForcedReInit)
     {
         g_fBs3PicConfigured = true;
 
