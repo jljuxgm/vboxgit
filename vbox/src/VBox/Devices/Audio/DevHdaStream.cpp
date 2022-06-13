@@ -1,4 +1,4 @@
-/* $Id: DevHdaStream.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: DevHdaStream.cpp 94993 2022-05-12 13:57:54Z vboxsync $ */
 /** @file
  * Intel HD Audio Controller Emulation - Streams.
  */
@@ -1055,7 +1055,7 @@ int hdaR3StreamEnable(PHDASTATE pThis, PHDASTREAM pStreamShared, PHDASTREAMR3 pS
         && fEnable
         && pStreamR3->Dbg.Runtime.fEnabled)
     {
-        Assert(AudioHlpPcmPropsAreValid(&pStreamShared->State.Cfg.Props));
+        Assert(AudioHlpPcmPropsAreValidAndSupported(&pStreamShared->State.Cfg.Props));
 
         if (fEnable)
         {

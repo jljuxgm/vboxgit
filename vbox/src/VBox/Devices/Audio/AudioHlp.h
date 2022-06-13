@@ -1,4 +1,4 @@
-/* $Id: AudioHlp.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: AudioHlp.h 94993 2022-05-12 13:57:54Z vboxsync $ */
 /** @file
  * Audio helper routines.
  */
@@ -37,7 +37,7 @@ uint32_t AudioHlpCalcBitrate(uint8_t cBits, uint32_t uHz, uint8_t cChannels);
 
 /** @name Audio PCM properties helper methods.
  * @{ */
-bool     AudioHlpPcmPropsAreValid(PCPDMAUDIOPCMPROPS pProps);
+bool     AudioHlpPcmPropsAreValidAndSupported(PCPDMAUDIOPCMPROPS pProps);
 /** @}  */
 
 /** @name Audio configuration helper methods.

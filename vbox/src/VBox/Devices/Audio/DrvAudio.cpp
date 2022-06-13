@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: DrvAudio.cpp 94993 2022-05-12 13:57:54Z vboxsync $ */
 /** @file
  * Intermediate audio driver - Connects the audio device emulation with the host backend.
  */
@@ -1080,7 +1080,7 @@ static int drvAudioStreamAdjustConfig(PCDRVAUDIO pThis, PPDMAUDIOSTREAMCFG pCfg,
     }
 
     /* Validate PCM properties. */
-    if (!AudioHlpPcmPropsAreValid(&pCfg->Props))
+    if (!AudioHlpPcmPropsAreValidAndSupported(&pCfg->Props))
     {
         LogRel(("Audio: Invalid custom PCM properties set for stream '%s', cannot create stream\n", pszName));
         return VERR_INVALID_PARAMETER;
