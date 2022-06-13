@@ -1,4 +1,4 @@
-/* $Id: AudioTest.h 89890 2021-06-24 15:56:05Z vboxsync $ */
+/* $Id: AudioTest.h 89984 2021-07-01 08:36:56Z vboxsync $ */
 /** @file
  * Audio testing routines.
  * Common code which is being used by the ValidationKit audio test (VKAT)
@@ -217,6 +217,8 @@ typedef struct AUDIOTESTOBJ
 {
     /** List node. */
     RTLISTNODE           Node;
+    /** The UUID of the object.
+     *  Used to identify an object within a test set. */
     RTUUID               Uuid;
     /** Number of references to this test object. */
     uint32_t             cRefs;
