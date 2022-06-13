@@ -1,4 +1,4 @@
-/* $Id: CPUMR0.cpp 94931 2022-05-09 08:24:47Z vboxsync $ */
+/* $Id: CPUMR0.cpp 94933 2022-05-09 08:27:05Z vboxsync $ */
 /** @file
  * CPUM - Host Context Ring 0.
  */
@@ -31,8 +31,8 @@
 #include <VBox/vmm/hm.h>
 #include <iprt/assert.h>
 #include <iprt/asm-amd64-x86.h>
+#include <iprt/mem.h>
 #ifdef VBOX_WITH_VMMR0_DISABLE_LAPIC_NMI
-# include <iprt/mem.h>
 # include <iprt/memobj.h>
 # include <VBox/apic.h>
 #endif
