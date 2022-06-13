@@ -1,4 +1,4 @@
-/* $Id: UIDialogPanel.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIDialogPanel.cpp 92488 2021-11-18 07:30:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -91,7 +91,7 @@ void UIDialogPanel::prepareConnections()
 void UIDialogPanel::retranslateUi()
 {
     if (m_pCloseButton)
-        m_pCloseButton->setToolTip(QApplication::translate("UIVisoCreator", "Close the pane"));
+        m_pCloseButton->setToolTip(tr("Close the pane"));
 }
 
 void UIDialogPanel::showEvent(QShowEvent *pEvent)
