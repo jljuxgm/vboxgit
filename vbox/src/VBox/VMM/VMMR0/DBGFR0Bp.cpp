@@ -1,4 +1,4 @@
-/* $Id: DBGFR0Bp.cpp 89912 2021-06-25 11:24:49Z vboxsync $ */
+/* $Id: DBGFR0Bp.cpp 89924 2021-06-28 08:16:29Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, R0 breakpoint management part.
  */
@@ -495,7 +495,7 @@ VMMR0_INT_DECL(int) DBGFR0BpPortIoInitReqHandler(PGVM pGVM, PDBGFBPINITREQ pReq)
     int rc = GVMMR0ValidateGVMandEMT(pGVM, 0);
     AssertRCReturn(rc, rc);
 
-    AssertReturn(!pGVM->dbgfr0.s.fInit, VERR_WRONG_ORDER);
+    AssertReturn(pGVM->dbgfr0.s.fInit, VERR_WRONG_ORDER);
     AssertReturn(!pGVM->dbgfr0.s.paBpLocPortIoR0, VERR_WRONG_ORDER);
 
     return dbgfR0BpPortIoInitWorker(pGVM, &pReq->paBpLocL1R3);

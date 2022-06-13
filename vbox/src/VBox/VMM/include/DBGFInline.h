@@ -1,4 +1,4 @@
-/* $Id: DBGFInline.h 86728 2020-10-28 10:18:28Z vboxsync $ */
+/* $Id: DBGFInline.h 89924 2021-06-28 08:16:29Z vboxsync $ */
 /** @file
  * DBGF - Internal header file containing the inlined functions.
  */
@@ -107,5 +107,23 @@ DECLINLINE(void) dbgfBpL2TblEntryUpdateRight(PDBGFBPL2ENTRY pL2Entry, uint32_t i
 
     ASMAtomicWriteU64(&pL2Entry->u64LeftRightIdxDepthBpHnd2, u64LeftRightIdxDepthBpHnd2);
 }
+
+#ifdef IN_RING3
+/**
+ * Returns the internal breakpoint owner state for the given handle.
+ *
+ * @returns Pointer to the internal breakpoint owner state or NULL if the handle is invalid.
+ * @param   pUVM                The user mode VM handle.
+ * @param   hBpOwner            The breakpoint owner handle to resolve.
+ */
+DECLINLINE(PDBGFBPOWNERINT) dbgfR3BpOwnerGetByHnd(PUVM pUVM, DBGFBPOWNER hBpOwner)
+{
+    AssertReturn(hBpOwner < DBGF_BP_OWNER_COUNT_MAX, NULL);
+    AssertPtrReturn(pUVM->dbgf.s.pbmBpOwnersAllocR3, NULL);
+
+    AssertReturn(ASMBitTest(pUVM->dbgf.s.pbmBpOwnersAllocR3, hBpOwner), NULL);
+    return &pUVM->dbgf.s.paBpOwnersR3[hBpOwner];
+}
+#endif
 
 #endif /* !VMM_INCLUDED_SRC_include_DBGFInline_h */
