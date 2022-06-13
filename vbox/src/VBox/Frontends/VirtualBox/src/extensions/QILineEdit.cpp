@@ -1,4 +1,4 @@
-/* $Id: QILineEdit.cpp 88860 2021-05-04 15:59:15Z vboxsync $ */
+/* $Id: QILineEdit.cpp 90107 2021-07-09 07:41:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QILineEdit class implementation.
  */
@@ -103,7 +103,7 @@ void QILineEdit::paintEvent(QPaintEvent *pPaintEvent)
 
     if (m_fMarkForError)
     {
-        const int iIconMargin = 0.5 * QApplication::style()->pixelMetric(QStyle::PM_LayoutTopMargin);
+        const int iIconMargin = 1. * QApplication::style()->pixelMetric(QStyle::PM_LayoutTopMargin);
         int iIconSize = height() - 2 * iIconMargin;
         if (!m_pIconLabel)
             m_pIconLabel = new QLabel(this);

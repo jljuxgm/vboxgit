@@ -1,4 +1,4 @@
-/* $Id: UIUserNamePasswordEditor.cpp 90070 2021-07-06 16:08:24Z vboxsync $ */
+/* $Id: UIUserNamePasswordEditor.cpp 90107 2021-07-09 07:41:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class implementation.
  */
@@ -162,7 +162,7 @@ void UIPasswordLineEdit::paintEvent(QPaintEvent *pPaintEvent)
     QLineEdit::paintEvent(pPaintEvent);
     if (m_fMarkForError)
     {
-        const int iIconMargin = 0.5 * QApplication::style()->pixelMetric(QStyle::PM_LayoutTopMargin);
+        const int iIconMargin = 1. * QApplication::style()->pixelMetric(QStyle::PM_LayoutTopMargin);
         int iIconSize = height() - 2 * iIconMargin;
         if (!m_pErrorIconLabel)
             m_pErrorIconLabel = new QLabel(this);
