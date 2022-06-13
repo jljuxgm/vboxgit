@@ -1,4 +1,4 @@
-/* $Id: GlobalStatusConversion.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: GlobalStatusConversion.cpp 94717 2022-04-27 09:11:09Z vboxsync $ */
 /** @file
  * VirtualBox COM global definitions - status code conversion.
  *
@@ -114,7 +114,6 @@ Global::vboxStatusCodeToCOM(int aVBoxStatus)
         case VERR_GSTCTL_GUEST_ERROR:             return VBOX_E_GSTCTL_GUEST_ERROR;
 
         default:
-            AssertMsgFailed(("%Rrc\n", aVBoxStatus));
             if (RT_SUCCESS(aVBoxStatus))
                 return S_OK;
 
@@ -131,6 +130,7 @@ Global::vboxStatusCodeToCOM(int aVBoxStatus)
                 &&  aVBoxStatus >  -5000 /* wrong, but so what... */)
                 return VBOX_E_VM_ERROR;
 
+            AssertMsgFailed(("%Rrc\n", aVBoxStatus));
             return E_FAIL;
     }
 }
