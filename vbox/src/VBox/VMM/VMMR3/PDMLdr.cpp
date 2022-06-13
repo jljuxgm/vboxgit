@@ -1,4 +1,4 @@
-/* $Id: PDMLdr.cpp 93718 2022-02-14 11:09:36Z vboxsync $ */
+/* $Id: PDMLdr.cpp 93901 2022-02-23 15:35:26Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager, module loader.
  */
@@ -955,7 +955,6 @@ VMMR3DECL(int) PDMR3LdrGetSymbolRC(PVM pVM, const char *pszModule, const char *p
 {
 #if defined(PDMLDR_FAKE_MODE) || !defined(VBOX_WITH_RAW_MODE_KEEP)
     RT_NOREF(pVM, pszModule, pszSymbol);
-    Assert(VM_IS_RAW_MODE_ENABLED(pVM));
     *pRCPtrValue = NIL_RTRCPTR;
     return VINF_SUCCESS;
 
@@ -1024,7 +1023,6 @@ VMMR3DECL(int) PDMR3LdrGetSymbolRCLazy(PVM pVM, const char *pszModule, const cha
 {
 #if defined(PDMLDR_FAKE_MODE) || !defined(VBOX_WITH_RAW_MODE_KEEP)
     RT_NOREF(pVM, pszModule, pszSearchPath, pszSymbol);
-    Assert(VM_IS_RAW_MODE_ENABLED(pVM));
     *pRCPtrValue = NIL_RTRCPTR;
     return VINF_SUCCESS;
 
@@ -1636,7 +1634,7 @@ VMMR3_INT_DECL(int) PDMR3LdrGetInterfaceSymbols(PVM pVM, void *pvInterface, size
                                                 const char *pszSymPrefix, const char *pszSymList,
                                                 bool fRing0)
 {
-    bool const fNullRun = !fRing0 && !VM_IS_RAW_MODE_ENABLED(pVM);
+    bool const fNullRun = !fRing0;
 
     /*
      * Find the module.

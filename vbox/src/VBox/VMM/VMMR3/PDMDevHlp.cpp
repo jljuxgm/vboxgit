@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 93651 2022-02-08 10:53:29Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 93901 2022-02-23 15:35:26Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -4105,8 +4105,10 @@ static DECLCALLBACK(int) pdmR3DevHlp_ApicRegister(PPDMDEVINS pDevIns)
      * Set the ring-3 and raw-mode bits, leave the ring-0 to ring-0 setup.
      */
     pVM->pdm.s.Apic.pDevInsR3 = pDevIns;
+#ifdef VBOX_WITH_RAW_MODE_KEEP
     pVM->pdm.s.Apic.pDevInsRC = PDMDEVINS_2_RCPTR(pDevIns);
     Assert(pVM->pdm.s.Apic.pDevInsRC || !VM_IS_RAW_MODE_ENABLED(pVM));
+#endif
 
     LogFlow(("pdmR3DevHlp_ApicRegister: caller='%s'/%d: returns %Rrc\n", pDevIns->pReg->szName, pDevIns->iInstance, VINF_SUCCESS));
     return VINF_SUCCESS;

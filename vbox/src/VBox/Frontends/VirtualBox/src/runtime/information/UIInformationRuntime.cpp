@@ -1,4 +1,4 @@
-/* $Id: UIInformationRuntime.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIInformationRuntime.cpp 93901 2022-02-23 15:35:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationRuntime class implementation.
  */
@@ -347,8 +347,8 @@ void UIRuntimeInfoWidget::updateVirtualizationInfo()
         case KVMExecutionEngine_HwVirt:
             strExecutionEngine = "VT-x/AMD-V";  /* no translation */
             break;
-        case KVMExecutionEngine_RawMode:
-            strExecutionEngine = "raw-mode";    /* no translation */
+        case KVMExecutionEngine_Emulated:
+            strExecutionEngine = "IEM";         /* no translation */
             break;
         case KVMExecutionEngine_NativeApi:
             strExecutionEngine = "native API";  /* no translation */

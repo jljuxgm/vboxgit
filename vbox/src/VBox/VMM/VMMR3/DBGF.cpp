@@ -1,4 +1,4 @@
-/* $Id: DBGF.cpp 93787 2022-02-16 11:07:57Z vboxsync $ */
+/* $Id: DBGF.cpp 93901 2022-02-23 15:35:26Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility.
  */
@@ -285,8 +285,7 @@ bool dbgfR3WaitForAttach(PVM pVM, PVMCPU pVCpu, DBGFEVENTTYPE enmEvent)
     int cWait = 10;
 #else
     int cWait = RTEnvExist("VBOX_DBGF_NO_WAIT_FOR_ATTACH")
-             || (   !VM_IS_RAW_MODE_ENABLED(pVM)
-                 && (   enmEvent == DBGFEVENT_ASSERTION_HYPER
+             || (   (   enmEvent == DBGFEVENT_ASSERTION_HYPER
                      || enmEvent == DBGFEVENT_FATAL_ERROR)
                  && !RTEnvExist("VBOX_DBGF_WAIT_FOR_ATTACH"))
               ? 10

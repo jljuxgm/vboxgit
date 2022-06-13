@@ -1,4 +1,4 @@
-/* $Id: VBoxSDL.cpp 93460 2022-01-27 16:50:15Z vboxsync $ */
+/* $Id: VBoxSDL.cpp 93901 2022-02-23 15:35:26Z vboxsync $ */
 /** @file
  * VBox frontends: VBoxSDL (simple frontend based on SDL):
  * Main code
@@ -4296,9 +4296,9 @@ static void UpdateTitlebar(TitlebarMode mode, uint32_t u32User)
                 RTStrPrintf(szTitle + strlen(szTitle), sizeof(szTitle) - strlen(szTitle),
                             " [STEP=%d LOG=%d EXEC=%s",
                             singlestepEnabled == TRUE, logEnabled == TRUE,
-                            enmExecEngine == VMExecutionEngine_NotSet ? "NotSet"
-                            : enmExecEngine == VMExecutionEngine_RawMode ? "RAW"
-                            : enmExecEngine == VMExecutionEngine_HwVirt ? "HM"
+                            enmExecEngine == VMExecutionEngine_NotSet      ? "NotSet"
+                            : enmExecEngine == VMExecutionEngine_Emulated  ? "IEM"
+                            : enmExecEngine == VMExecutionEngine_HwVirt    ? "HM"
                             : enmExecEngine == VMExecutionEngine_NativeApi ? "NEM" : "UNK");
                 char *psz = strchr(szTitle, '\0');
                 if (virtualTimeRate != 100)

@@ -1,4 +1,4 @@
-/* $Id: PDMDevMiscHlp.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: PDMDevMiscHlp.cpp 93901 2022-02-23 15:35:26Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Misc. Device Helpers.
  */
@@ -418,12 +418,16 @@ static DECLCALLBACK(PCPDMPCIRAWHLPRC) pdmR3PciRawHlp_GetRCHelpers(PPDMDEVINS pDe
     VM_ASSERT_EMT(pVM);
 
     RTRCPTR pRCHelpers = NIL_RTRCPTR;
+#if 0
     if (VM_IS_RAW_MODE_ENABLED(pVM))
     {
         int rc = PDMR3LdrGetSymbolRC(pVM, NULL, "g_pdmRCPciRawHlp", &pRCHelpers);
         AssertReleaseRC(rc);
         AssertRelease(pRCHelpers);
     }
+#else
+    RT_NOREF(pDevIns);
+#endif
 
     LogFlow(("pdmR3PciRawHlp_GetGCHelpers: caller='%s'/%d: returns %RRv\n",
              pDevIns->pReg->szName, pDevIns->iInstance, pRCHelpers));

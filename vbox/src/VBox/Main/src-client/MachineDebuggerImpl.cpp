@@ -1,4 +1,4 @@
-/* $Id: MachineDebuggerImpl.cpp 93485 2022-01-29 12:32:20Z vboxsync $ */
+/* $Id: MachineDebuggerImpl.cpp 93901 2022-02-23 15:35:26Z vboxsync $ */
 /** @file
  * VBox IMachineDebugger COM class implementation (VBoxC).
  */
@@ -424,7 +424,7 @@ HRESULT MachineDebugger::getExecutionEngine(VMExecutionEngine_T *apenmEngine)
             switch (bEngine)
             {
                 case VM_EXEC_ENGINE_NOT_SET:    *apenmEngine = VMExecutionEngine_NotSet; break;
-                case VM_EXEC_ENGINE_RAW_MODE:   *apenmEngine = VMExecutionEngine_RawMode; break;
+                case VM_EXEC_ENGINE_IEM:        *apenmEngine = VMExecutionEngine_Emulated; break;
                 case VM_EXEC_ENGINE_HW_VIRT:    *apenmEngine = VMExecutionEngine_HwVirt; break;
                 case VM_EXEC_ENGINE_NATIVE_API: *apenmEngine = VMExecutionEngine_NativeApi; break;
                 default: AssertMsgFailed(("bEngine=%d\n", bEngine));
