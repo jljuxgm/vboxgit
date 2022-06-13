@@ -1,4 +1,4 @@
-/* $Id: DevHda.h 90134 2021-07-09 16:57:39Z vboxsync $ */
+/* $Id: DevHda.h 90136 2021-07-09 20:40:27Z vboxsync $ */
 /** @file
  * Intel HD Audio Controller Emulation - Structures.
  */
@@ -803,6 +803,15 @@ uint8_t hdaSDFIFOWToBytes(uint16_t u16RegFIFOW);
 DECLINLINE(uint32_t *) hdaStrictRegAccessor(PHDASTATE pThis, uint32_t idxMap, uint32_t idxReg);
 DECLINLINE(uint32_t *) hdaStrictStreamRegAccessor(PHDASTATE pThis, uint32_t idxMap0, uint32_t idxReg0, size_t idxStream);
 #endif /* VBOX_STRICT && VBOX_HDA_CAN_ACCESS_REG_MAP */
+
+
+/** @name DevHDA.cpp functions used by the codec.
+ * @{ */
+DECLHIDDEN(int)     hdaR3MixerAddStream(PPDMDEVINS pDevIns, PDMAUDIOMIXERCTL enmMixerCtl, PCPDMAUDIOSTREAMCFG pCfg);
+DECLHIDDEN(int)     hdaR3MixerRemoveStream(PPDMDEVINS pDevIns, PDMAUDIOMIXERCTL enmMixerCtl, bool fImmediate);
+DECLHIDDEN(int)     hdaR3MixerControl(PPDMDEVINS pDevIns, PDMAUDIOMIXERCTL enmMixerCtl, uint8_t uSD, uint8_t uChannel);
+DECLHIDDEN(int)     hdaR3MixerSetVolume(PPDMDEVINS pDevIns, PDMAUDIOMIXERCTL enmMixerCtl, PPDMAUDIOVOLUME pVol);
+/** @} */
 
 
 /** @name Saved state versions for the HDA device
