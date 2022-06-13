@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdBenchmark2.py 92269 2021-11-08 14:37:50Z vboxsync $
+# $Id: tdBenchmark2.py 92277 2021-11-08 18:04:40Z vboxsync $
 
 """
 VirtualBox Validation Kit - Test that runs various benchmarks.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 92269 $"
+__version__ = "$Revision: 92277 $"
 
 
 # Standard Python imports.
@@ -94,7 +94,7 @@ class tdBenchmark2(vbox.TestDriver):
         cMbHostTotal   = self.oVBox.host.memorySize;
         reporter.log('cMbMaxGuestRam=%s cMbHostAvail=%s cMbHostTotal=%s' % (cMbMaxGuestRam, cMbHostAvail, cMbHostTotal,));
 
-        cMbHostAvail -= cMbHostAvail // 10; # Rough 10% safety/overhead margin.
+        cMbHostAvail -= cMbHostAvail // 7; # Rough 14% safety/overhead margin.
         if cMbMaxGuestRam < cMbHostAvail:
             # Currently: 2048 GiB, 1536 GiB, 1024 GiB, 512 GiB, 256 GiB, 128 GiB
             acMbRam = [ cMbMaxGuestRam, cMbMaxGuestRam // 4 * 3, cMbMaxGuestRam // 2, cMbMaxGuestRam // 4,
