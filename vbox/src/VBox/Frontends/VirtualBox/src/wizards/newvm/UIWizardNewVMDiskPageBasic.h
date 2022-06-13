@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMDiskPageBasic.h 90074 2021-07-07 10:06:10Z vboxsync $ */
+/* $Id: UIWizardNewVMDiskPageBasic.h 90076 2021-07-07 14:18:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMDiskPageBasic class declaration.
  */
@@ -78,9 +78,6 @@ class UIWizardNewVMDiskPageBasic : public UINativeWizardPage
 public:
 
     UIWizardNewVMDiskPageBasic();
-    /** For the guide wizard mode medium path, name and extention is static and we have
-      * no UI element for this. thus override. */
-    virtual QString mediumPath() const /*override */;
     CMediumFormat mediumFormat() const;
 
 protected:
@@ -135,8 +132,7 @@ private:
     CMediumFormat m_mediumFormat;
     SelectedDiskSource m_enmSelectedDiskSource;
     bool m_fRecommendedNoDisk;
-    QString m_strDefaultName;
-    QString m_strDefaultPath;
+
     QString m_strDefaultExtension;
     QSet<QString> m_userModifiedParameters;
 };
