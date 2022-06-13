@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 93855 2022-02-19 15:49:11Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 93856 2022-02-19 16:03:27Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -10882,7 +10882,7 @@ Console::i_vmm2User_NotifyResetTurnedIntoPowerOff(PCVMM2USERMETHODS pThis, PUVM 
  *
  * @returns pointer to PDMLED object
  *
- * @param   pDevIns     The device insatnce data.
+ * @param   iLedSet      Index of LED set to fetch
  */
 PPDMLED *
 Console::i_getLedSet(uint32_t iLedSet)
