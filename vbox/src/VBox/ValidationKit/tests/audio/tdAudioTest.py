@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tdAudioTest.py 90753 2021-08-19 15:57:15Z vboxsync $
+# $Id: tdAudioTest.py 90754 2021-08-19 16:01:27Z vboxsync $
 
 """
 AudioTest test driver which invokes the VKAT (Validation Kit Audio Test)
@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 90753 $"
+__version__ = "$Revision: 90754 $"
 
 # Standard Python imports.
 import os
@@ -279,16 +279,18 @@ class tdAudioTest(vbox.TestDriver):
             # Using the BSD syntax here; MacOS also should understand this.
             procPs = subprocess.Popen(['ps', 'ax'], stdout=subprocess.PIPE);
             out, err = procPs.communicate();
-            reporter.log2('PS stderr:');
-            for sLine in err.decode("utf-8").splitlines():
-                reporter.log2(sLine);
-            reporter.log2('PS stdout:');
-            for sLine in out.decode("utf-8").splitlines():
-                reporter.log2(sLine);
-                if sProcName in sLine:
-                    pid = int(sLine.split(None, 1)[0]);
-                    reporter.log('Killing PID %d' % (pid,));
-                    os.kill(pid, signal.SIGKILL); # pylint: disable=no-member
+            if err:
+                reporter.log2('PS stderr:');
+                for sLine in err.decode("utf-8").splitlines():
+                    reporter.log2(sLine);
+            if out:
+                reporter.log2('PS stdout:');
+                for sLine in out.decode("utf-8").splitlines():
+                    reporter.log2(sLine);
+                    if sProcName in sLine:
+                        pid = int(sLine.split(None, 1)[0]);
+                        reporter.log('Killing PID %d' % (pid,));
+                        os.kill(pid, signal.SIGKILL); # pylint: disable=no-member
 
     def killHstVkat(self):
         """
