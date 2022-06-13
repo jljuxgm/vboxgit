@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMUnattendedPageBasic.cpp 90102 2021-07-08 15:42:09Z vboxsync $ */
+/* $Id: UIWizardNewVMUnattendedPageBasic.cpp 90106 2021-07-09 07:06:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMUnattendedPageBasic class implementation.
  */
@@ -271,6 +271,7 @@ QWidget *UIWizardNewVMUnattendedPageBasic::createUserNameWidgets()
     if (m_pUserNamePasswordEditor)
     {
         m_pUserNamePasswordEditor->setLabelsVisible(true);
+        m_pUserNamePasswordEditor->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Fixed);
         pUserNameContainerLayout->addWidget(m_pUserNamePasswordEditor);
     }
     return m_pUserNameContainer;
