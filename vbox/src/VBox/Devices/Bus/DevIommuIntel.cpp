@@ -1,4 +1,4 @@
-/* $Id: DevIommuIntel.cpp 89727 2021-06-16 05:43:38Z vboxsync $ */
+/* $Id: DevIommuIntel.cpp 89729 2021-06-16 05:57:51Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - Intel implementation.
  */
@@ -53,7 +53,7 @@
 
 /** Checks if the MMIO offset is valid. */
 #define DMAR_IS_MMIO_OFF_VALID(a_off)               (   (a_off) < DMAR_MMIO_GROUP_0_OFF_END \
-                                                     || (a_off) - DMAR_MMIO_GROUP_1_OFF_FIRST < DMAR_MMIO_GROUP_1_SIZE)
+                                                     || (a_off) - DMAR_MMIO_GROUP_1_OFF_FIRST < (unsigned)DMAR_MMIO_GROUP_1_SIZE)
 
 /** Acquires the DMAR lock but returns with the given busy error code on failure. */
 #define DMAR_LOCK_RET(a_pDevIns, a_pThisCC, a_rcBusy) \
