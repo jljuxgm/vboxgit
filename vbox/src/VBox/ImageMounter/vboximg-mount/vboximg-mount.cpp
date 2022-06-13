@@ -1,4 +1,4 @@
-/* $Id: vboximg-mount.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: vboximg-mount.cpp 94554 2022-04-11 10:39:02Z vboxsync $ */
 /** @file
  * vboximg-mount - Disk Image Flattening FUSE Program.
  */
@@ -1234,7 +1234,7 @@ static int vboxImgMntImageSetup(struct fuse_args *args)
         rc = VDOpen(pVDisk,
                     pszFormat,
                     CSTR(pCurMedium->pImagePath),
-                    pCurMedium->fWriteable,
+                    pCurMedium->fWriteable ? 0 : VD_OPEN_FLAGS_READONLY,
                     g_pVdIfs);
 
         if (RT_FAILURE(rc))
