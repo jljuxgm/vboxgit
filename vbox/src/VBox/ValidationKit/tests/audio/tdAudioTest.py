@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tdAudioTest.py 92019 2021-10-25 10:10:32Z vboxsync $
+# $Id: tdAudioTest.py 92021 2021-10-25 10:19:08Z vboxsync $
 
 """
 AudioTest test driver which invokes the VKAT (Validation Kit Audio Test)
@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 92019 $"
+__version__ = "$Revision: 92021 $"
 
 # Standard Python imports.
 from datetime import datetime
@@ -565,11 +565,11 @@ class tdAudioTest(vbox.TestDriver):
         reporter.log('Using VKAT on host at: \"%s\"' % (sVkatExe));
 
         # Build the base command line, exclude all tests by default.
-        asArgs = [ sVkatExe, 'test', '--mode', 'host', '--probe-backends', \
-                             '--tempdir', sPathAudioTemp, '--outdir', sPathAudioOut, '-a', \
-                             '--tag', sTag, \
-                             '--no-audio-ok', \ # Enables running on hosts which do not have any audio hardware.
-                             '--no-verify' ];   # We do the verification separately in the step below.
+        asArgs = [ sVkatExe, 'test', '--mode', 'host', '--probe-backends',
+                             '--tempdir', sPathAudioTemp, '--outdir', sPathAudioOut, '-a',
+                             '--tag', sTag,
+                             '--no-audio-ok', # Enables running on hosts which do not have any audio hardware.
+                             '--no-verify' ]; # We do the verification separately in the step below.
 
         for _ in range(1, reporter.getVerbosity()): # Verbosity always is initialized at 1.
             asArgs.extend([ '-v' ]);
