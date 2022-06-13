@@ -1,4 +1,4 @@
-/* $Id: UINotificationCenter.cpp 91225 2021-09-14 10:32:37Z vboxsync $ */
+/* $Id: UINotificationCenter.cpp 91231 2021-09-14 11:29:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINotificationCenter class implementation.
  */
@@ -294,6 +294,14 @@ void UINotificationCenter::sltHandleOpenButtonToggled(bool fToggled)
 
 void UINotificationCenter::sltHandleOpenTimerTimeout()
 {
+    /* Make sure it's invoked by corresponding timer only: */
+    QTimer *pTimer = qobject_cast<QTimer*>(sender());
+    AssertPtrReturnVoid(pTimer);
+    AssertReturnVoid(pTimer == m_pTimerOpen);
+
+    /* Stop corresponding timer: */
+    m_pTimerOpen->stop();
+
     /* Check whether we really closed: */
     if (m_pOpenButton->isChecked())
         return;
