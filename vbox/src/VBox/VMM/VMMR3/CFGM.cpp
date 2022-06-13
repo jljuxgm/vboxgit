@@ -1,4 +1,4 @@
-/* $Id: CFGM.cpp 94479 2022-04-05 20:32:26Z vboxsync $ */
+/* $Id: CFGM.cpp 94850 2022-05-05 13:46:36Z vboxsync $ */
 /** @file
  * CFGM - Configuration Manager.
  */
@@ -3362,7 +3362,7 @@ static void cfgmR3Dump(PCFGMNODE pRoot, unsigned iLevel, PCDBGFINFOHLP pHlp)
                         && !RTStrCmp(&pLeaf->szName[pLeaf->cchName - 4], "Size"))
                     || (   pLeaf->cchName >= 2
                         && !RTStrNCmp(pLeaf->szName, "cb", 2)) )
-                    pHlp->pfnPrintf(pHlp, ", %' Rhcb)", pLeaf->Value.Integer.u64);
+                    pHlp->pfnPrintf(pHlp, ", %' Rhcb)\n", pLeaf->Value.Integer.u64);
                 else
                     pHlp->pfnPrintf(pHlp, ")\n");
                 break;
