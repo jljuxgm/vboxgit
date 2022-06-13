@@ -1,4 +1,4 @@
-/* $Id: UIWizardAddCloudVMPageSource.h 92173 2021-11-02 09:43:08Z vboxsync $ */
+/* $Id: UIWizardAddCloudVMPageSource.h 92191 2021-11-03 14:11:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardAddCloudVMPageSource class declaration.
  */
@@ -61,7 +61,7 @@ namespace UIWizardAddCloudVMSource
       * @param  strProfileName        Brings the name of profile to be chosen by default. */
     void populateProfiles(QIComboBox *pCombo, UINotificationCenter *pCenter, const QString &strProviderShortName, const QString &strProfileName);
     /** Populates @a pList with profile instances available in @a comClient. */
-    void populateProfileInstances(QListWidget *pList, const CCloudClient &comClient);
+    void populateProfileInstances(QListWidget *pList, UINotificationCenter *pCenter, const CCloudClient &comClient);
 
     /** Updates @a pCombo tool-tips. */
     void updateComboToolTip(QIComboBox *pCombo);

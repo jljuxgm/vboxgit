@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 92173 2021-11-02 09:43:08Z vboxsync $ */
+/* $Id: UIMessageCenter.h 92191 2021-11-03 14:11:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -284,8 +284,6 @@ public:
 
         void cannotSetSystemProperties(const CSystemProperties &properties, QWidget *pParent = 0) const;
         void cannotSaveMachineSettings(const CMachine &machine, QWidget *pParent = 0) const;
-        void cannotApplyCloudMachineFormSettings(const CForm &comForm, const QString &strName, QWidget *pParent = 0) const;
-        void cannotApplyCloudMachineFormSettings(const CProgress &comProgress, const QString &strName, QWidget *pParent = 0) const;
 
         void cannotAddDiskEncryptionPassword(const CConsole &console);
     /** @} */
@@ -372,14 +370,6 @@ public:
       * @{ */
         bool confirmCloudConsoleApplicationRemoval(const QString &strName, QWidget *pParent = 0) const;
         bool confirmCloudConsoleProfileRemoval(const QString &strName, QWidget *pParent = 0) const;
-    /** @} */
-
-    /** @name VirtualBox Manager / Cloud networking warnings.
-      * @{ */
-        void cannotAcquireCloudClientParameter(const CCloudClient &comClient, QWidget *pParent = 0) const;
-        void cannotAcquireCloudClientParameter(const CProgress &comProgress, QWidget *pParent = 0) const;
-        void cannotAcquireCloudMachineParameter(const CCloudMachine &comMachine, QWidget *pParent = 0) const;
-        void cannotAcquireCloudMachineParameter(const CProgress &comProgress, QWidget *pParent = 0) const;
     /** @} */
 
     /** @name VirtualBox Manager / Downloading warnings.

@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageSource.h 92173 2021-11-02 09:43:08Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageSource.h 92191 2021-11-03 14:11:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageSource class declaration.
  */
@@ -71,6 +71,7 @@ namespace UIWizardNewCloudVMSource
       @param  comClient  Brings the cloud client source images should be acquired from. */
     void populateSourceImages(QListWidget *pList,
                               QTabBar *pTabBar,
+                              UINotificationCenter *pCenter,
                               const CCloudClient &comClient);
     /** Populates @a comVSD with form property.
       * @param  pWizard     Brings the wizard used as parent for warnings inside.

@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageExpert.cpp 92173 2021-11-02 09:43:08Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageExpert.cpp 92191 2021-11-03 14:11:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageExpert class implementation.
  */
@@ -342,7 +342,7 @@ void UIWizardNewCloudVMPageExpert::sltHandleProfileButtonClick()
 void UIWizardNewCloudVMPageExpert::sltHandleSourceTabBarChange()
 {
     /* Update source type: */
-    populateSourceImages(m_pSourceImageList, m_pSourceTabBar, wizard()->client());
+    populateSourceImages(m_pSourceImageList, m_pSourceTabBar, wizard()->notificationCenter(), wizard()->client());
     sltHandleSourceImageChange();
 
     /* Notify about changes: */

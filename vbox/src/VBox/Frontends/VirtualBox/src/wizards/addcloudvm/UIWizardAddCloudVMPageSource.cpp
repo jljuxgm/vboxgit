@@ -1,4 +1,4 @@
-/* $Id: UIWizardAddCloudVMPageSource.cpp 92173 2021-11-02 09:43:08Z vboxsync $ */
+/* $Id: UIWizardAddCloudVMPageSource.cpp 92191 2021-11-03 14:11:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardAddCloudVMPageSource class implementation.
  */
@@ -154,14 +154,11 @@ void UIWizardAddCloudVMSource::populateProfiles(QIComboBox *pCombo,
     pCombo->blockSignals(false);
 }
 
-void UIWizardAddCloudVMSource::populateProfileInstances(QListWidget *pList, const CCloudClient &comClient)
+void UIWizardAddCloudVMSource::populateProfileInstances(QListWidget *pList, UINotificationCenter *pCenter, const CCloudClient &comClient)
 {
     /* Sanity check: */
     AssertPtrReturnVoid(pList);
     AssertReturnVoid(comClient.isNotNull());
-    /* We need top-level parent as well: */
-    QWidget *pParent = pList->window();
-    AssertPtrReturnVoid(pParent);
 
     /* Block signals while updating: */
     pList->blockSignals(true);
@@ -172,7 +169,7 @@ void UIWizardAddCloudVMSource::populateProfileInstances(QListWidget *pList, cons
     /* Gather instance names and ids: */
     CStringArray comNames;
     CStringArray comIDs;
-    if (listCloudSourceInstances(comClient, comNames, comIDs, pParent))
+    if (listCloudSourceInstances(comClient, comNames, comIDs, pCenter))
     {
         /* Push acquired names to list rows: */
         const QVector<QString> names = comNames.GetValues();
@@ -474,7 +471,7 @@ void UIWizardAddCloudVMPageSource::sltHandleProfileComboChange()
     wizard()->setClient(cloudClientByName(wizard()->providerShortName(), wizard()->profileName(), wizard()->notificationCenter()));
 
     /* Update profile instances: */
-    populateProfileInstances(m_pSourceInstanceList, wizard()->client());
+    populateProfileInstances(m_pSourceInstanceList, wizard()->notificationCenter(), wizard()->client());
     sltHandleSourceInstanceChange();
 
     /* Notify about changes: */

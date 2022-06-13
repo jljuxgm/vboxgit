@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageFormat.cpp 92173 2021-11-02 09:43:08Z vboxsync $ */
+/* $Id: UIWizardExportAppPageFormat.cpp 92191 2021-11-03 14:11:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageFormat class implementation.
  */
@@ -538,7 +538,7 @@ void UIWizardExportAppFormat::refreshCloudStuff(CAppliance &comCloudAppliance,
 
     /* Read Cloud Client Export description form: */
     CVirtualSystemDescriptionForm comVsdExportForm;
-    bool fResult = exportDescriptionForm(comCloudClient, comCloudVsd, comVsdExportForm);
+    bool fResult = exportDescriptionForm(comCloudClient, comCloudVsd, comVsdExportForm, pWizard->notificationCenter());
     if (!fResult)
         return;
 
