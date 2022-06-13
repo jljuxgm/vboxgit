@@ -1,4 +1,4 @@
-/* $Id: AudioTest.h 91051 2021-09-01 09:08:56Z vboxsync $ */
+/* $Id: AudioTest.h 91135 2021-09-07 08:03:30Z vboxsync $ */
 /** @file
  * Audio testing routines.
  * Common code which is being used by the ValidationKit audio test (VKAT)
@@ -229,6 +229,26 @@ typedef struct AUDIOTESTSET
 typedef AUDIOTESTSET *PAUDIOTESTSET;
 
 /**
+ * Audio test verification options.
+ */
+typedef struct AUDIOTESTVERIFYOPTS
+{
+    /** Flag indicating whether to keep going after an error has occurred. */
+    bool                fKeepGoing;
+    /** Threshold of file differences (number of chunks) at when we consider audio files
+     *  as not matching. 0 means an exact match. */
+    uint32_t            cMaxDiff;
+    /** Threshold of file differences (difference in percent) at when we consider audio files
+     *  as not matching. 0 means an exact match. */
+    uint8_t             uMaxDiffPercent;
+    /** Threshold of file size (+/-, in percent) at when we consider audio files
+     *  as not matching. 0 means an exact match.*/
+    uint8_t             uMaxSizePercent;
+} AUDIOTESTVERIFYOPTS;
+/** Pointer to audio test verification options. */
+typedef AUDIOTESTVERIFYOPTS *PAUDIOTESTVERIFYOPTS;
+
+/**
  * Structure for holding a single audio test error entry.
  */
 typedef struct AUDIOTESTERRORENTRY
@@ -294,7 +314,10 @@ bool   AudioTestSetIsPacked(const char *pszPath);
 bool   AudioTestSetIsRunning(PAUDIOTESTSET pSet);
 int    AudioTestSetPack(PAUDIOTESTSET pSet, const char *pszOutDir, char *pszFileName, size_t cbFileName);
 int    AudioTestSetUnpack(const char *pszFile, const char *pszOutDir);
+
+void   AudioTestSetVerifyOptsInitStrict(PAUDIOTESTVERIFYOPTS pOpts);
 int    AudioTestSetVerify(PAUDIOTESTSET pSetA, PAUDIOTESTSET pSetB, PAUDIOTESTERRORDESC pErrDesc);
+int    AudioTestSetVerifyEx(PAUDIOTESTSET pSetA, PAUDIOTESTSET pSetB, PAUDIOTESTVERIFYOPTS pOpts, PAUDIOTESTERRORDESC pErrDesc);
 
 uint32_t AudioTestErrorDescCount(PCAUDIOTESTERRORDESC pErr);
 bool   AudioTestErrorDescFailed(PCAUDIOTESTERRORDESC pErr);
