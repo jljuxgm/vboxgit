@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 92142 2021-10-29 11:45:52Z vboxsync $
+# $Id: Makefile.kmk 92961 2021-12-16 09:44:29Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -878,8 +878,7 @@ endif
  ifeq ($(KBUILD_TARGET),win)
   VBoxDD_LIBS           += \
  	$(LIB_DDU) \
- 	$(PATH_STAGE_LIB)/VBoxDD2.lib \
- 	$(PATH_SDK_$(VBOX_WINDDK)_LIB)/dxguid.lib
+ 	$(PATH_STAGE_LIB)/VBoxDD2.lib
  else
   VBoxDD_LIBS           += \
  	$(VBoxDDU_1_STAGE_TARGET) \
