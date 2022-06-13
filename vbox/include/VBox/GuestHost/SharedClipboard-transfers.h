@@ -1,10 +1,10 @@
-/* $Id: SharedClipboard-transfers.h 87686 2021-02-10 13:17:50Z vboxsync $ */
+/* $Id: SharedClipboard-transfers.h 92737 2021-12-03 16:05:33Z vboxsync $ */
 /** @file
  * Shared Clipboard - Shared transfer functions between host and guest.
  */
 
 /*
- * Copyright (C) 2019-2020 Oracle Corporation
+ * Copyright (C) 2019-2021 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -144,7 +144,7 @@ typedef SHCLOBJHANDLE *PSHCLOBJHANDLE;
 #define SHCL_OBJ_CF_ACCESS_ATTR_READ        UINT32_C(0x00010000)
 
 /** Valid bits. */
-#define SHCL_OBJ_CF_VALID_MASK              UINT32_C(0x00018000)
+#define SHCL_OBJ_CF_VALID_MASK              UINT32_C(0x00019000)
 /** @} */
 
 /**
