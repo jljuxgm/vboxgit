@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-dx-shader.cpp 94232 2022-03-15 08:47:10Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-dx-shader.cpp 94264 2022-03-16 05:57:21Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device - VGPU10+ (DX) shader utilities.
  */
@@ -1520,7 +1520,11 @@ static int dxbcParseOpcode(DXBCTokenReader *r, VGPUOpcode *pOpcode)
                 pOpcode->cOpcodeToken = dxbcTokenReaderRead32(r);
             }
             else
-                AssertFailedReturn(VERR_NOT_IMPLEMENTED); /** @todo Anything else special for extended opcodes. */
+            {
+                VGPU10OpcodeToken1 opcode1;
+                opcode1.value = dxbcTokenReaderRead32(r);
+                ASSERT_GUEST(opcode1.opcodeType == VGPU10_EXTENDED_OPCODE_SAMPLE_CONTROLS);
+            }
         }
 
         ASSERT_GUEST_RETURN(pOpcode->cOpcodeToken >= 1 && pOpcode->cOpcodeToken < 256, VERR_INVALID_PARAMETER);
@@ -2379,7 +2383,7 @@ int DXShaderUpdateResourceTypes(DXShaderInfo const *pInfo, VGPU10_RESOURCE_DIMEN
         pOpcode->resourceDimension = resourceType;
         // paToken[1] unmodified
         // paToken[2] unmodified
-        paToken[3] = 0x5555; /* float */;
+        paToken[3] = 0x5555; /** @todo VGPU10ResourceReturnTypeToken float */
     }
 
     return VINF_SUCCESS;
