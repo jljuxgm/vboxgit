@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMPageBasic2.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIWizardCloneVMPageBasic2.h 90589 2021-08-10 10:07:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMPageBasic2 class declaration.
  */
@@ -76,12 +76,8 @@ private:
     /* Validation stuff: */
     bool validatePage();
 
-    /* Navigation stuff: */
-    int nextId() const;
-
     /* Widgets: */
     QIRichTextLabel *m_pLabel;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_wizards_clonevm_UIWizardCloneVMPageBasic2_h */
-

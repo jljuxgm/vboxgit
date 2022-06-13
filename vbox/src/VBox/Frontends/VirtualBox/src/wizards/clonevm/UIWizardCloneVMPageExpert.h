@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMPageExpert.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIWizardCloneVMPageExpert.h 90589 2021-08-10 10:07:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMPageExpert class declaration.
  */
@@ -28,21 +28,21 @@
 
 /* Forward declarations: */
 class QGroupBox;
+class QGridLayout;
 
 /* Expert page of the Clone Virtual Machine wizard: */
 class UIWizardCloneVMPageExpert : public UIWizardPage,
-                                  public UIWizardCloneVMPage1,
                                   public UIWizardCloneVMPage2,
                                   public UIWizardCloneVMPage3
 {
     Q_OBJECT;
-    Q_PROPERTY(QString cloneName READ cloneName WRITE setCloneName);
-    Q_PROPERTY(QString cloneFilePath READ cloneFilePath WRITE setCloneFilePath);
-    Q_PROPERTY(bool linkedClone READ linkedClone);
-    Q_PROPERTY(KCloneMode cloneMode READ cloneMode WRITE setCloneMode);
-    Q_PROPERTY(MACAddressClonePolicy macAddressClonePolicy READ macAddressClonePolicy WRITE setMACAddressClonePolicy);
-    Q_PROPERTY(bool keepDiskNames READ keepDiskNames WRITE setKeepDiskNames);
-    Q_PROPERTY(bool keepHWUUIDs READ keepHWUUIDs WRITE setKeepHWUUIDs);
+    // Q_PROPERTY(QString cloneName READ cloneName WRITE setCloneName);
+    // Q_PROPERTY(QString cloneFilePath READ cloneFilePath WRITE setCloneFilePath);
+    // Q_PROPERTY(bool linkedClone READ linkedClone);
+    // Q_PROPERTY(KCloneMode cloneMode READ cloneMode WRITE setCloneMode);
+    // Q_PROPERTY(MACAddressClonePolicy macAddressClonePolicy READ macAddressClonePolicy WRITE setMACAddressClonePolicy);
+    // Q_PROPERTY(bool keepDiskNames READ keepDiskNames WRITE setKeepDiskNames);
+    // Q_PROPERTY(bool keepHWUUIDs READ keepHWUUIDs WRITE setKeepHWUUIDs);
 
 public:
 

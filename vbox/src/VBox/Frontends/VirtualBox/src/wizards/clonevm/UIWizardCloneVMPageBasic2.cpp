@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMPageBasic2.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIWizardCloneVMPageBasic2.cpp 90589 2021-08-10 10:07:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMPageBasic2 class implementation.
  */
@@ -145,30 +145,29 @@ void UIWizardCloneVMPageBasic2::initializePage()
 bool UIWizardCloneVMPageBasic2::validatePage()
 {
     /* This page could be final: */
-    if (isFinalPage())
-    {
-        /* Initial result: */
-        bool fResult = true;
+    // if (isFinalPage())
+    // {
+    //     /* Initial result: */
+    //     bool fResult = true;
 
-        /* Lock finish button: */
-        startProcessing();
+    //     /* Lock finish button: */
+    //     startProcessing();
 
-        /* Trying to clone VM: */
-        if (fResult)
-            fResult = qobject_cast<UIWizardCloneVM*>(wizard())->cloneVM();
+    //     /* Trying to clone VM: */
+    //     if (fResult)
+    //         fResult = qobject_cast<UIWizardCloneVM*>(wizard())->cloneVM();
 
-        /* Unlock finish button: */
-        endProcessing();
+    //     /* Unlock finish button: */
+    //     endProcessing();
 
-        /* Return result: */
-        return fResult;
-    }
-    else
+    //     /* Return result: */
+    //     return fResult;
+    // }
+    // else
         return true;
 }
 
-int UIWizardCloneVMPageBasic2::nextId() const
-{
-    return m_pFullCloneRadio->isChecked() && wizard()->page(UIWizardCloneVM::Page3) ? UIWizardCloneVM::Page3 : -1;
-}
-
+// int UIWizardCloneVMPageBasic2::nextId() const
+// {
+//     return m_pFullCloneRadio->isChecked() && wizard()->page(UIWizardCloneVM::Page3) ? UIWizardCloneVM::Page3 : -1;
+// }

@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 90564 2021-08-07 11:12:13Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 90589 2021-08-10 10:07:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -1137,9 +1137,8 @@ void UIVirtualBoxManager::sltOpenCloneMachineWizard()
     QWidget *pWizardParent = windowManager().realParentWindow(this);
     const QStringList &machineGroupNames = pItemLocal->groups();
     const QString strGroup = !machineGroupNames.isEmpty() ? machineGroupNames.at(0) : QString();
-    UISafePointerWizard pWizard = new UIWizardCloneVM(pWizardParent, pItemLocal->machine(), strGroup);
+    QPointer<UINativeWizard> pWizard = new UIWizardCloneVM(pWizardParent, pItemLocal->machine(), strGroup);
     windowManager().registerNewParent(pWizard, pWizardParent);
-    pWizard->prepare();
     pWizard->exec();
     delete pWizard;
 }

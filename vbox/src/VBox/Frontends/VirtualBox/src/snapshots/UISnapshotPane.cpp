@@ -1,4 +1,4 @@
-/* $Id: UISnapshotPane.cpp 90564 2021-08-07 11:12:13Z vboxsync $ */
+/* $Id: UISnapshotPane.cpp 90589 2021-08-10 10:07:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class implementation.
  */
@@ -1665,8 +1665,7 @@ void UISnapshotPane::cloneSnapshot()
     AssertReturnVoid(!comMachine.isNull());
 
     /* Show Clone VM wizard: */
-    UISafePointerWizard pWizard = new UIWizardCloneVM(this, comMachine, QString(), comSnapshot);
-    pWizard->prepare();
+    QPointer<UINativeWizard> pWizard = new UIWizardCloneVM(this, comMachine, QString(), comSnapshot);
     pWizard->exec();
     if (pWizard)
         delete pWizard;
