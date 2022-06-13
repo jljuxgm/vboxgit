@@ -1,4 +1,4 @@
-/* $Id: vkat.cpp 91034 2021-08-31 15:51:14Z vboxsync $ */
+/* $Id: vkat.cpp 91082 2021-09-02 06:37:01Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) utility for testing and validating the audio stack.
  */
@@ -311,6 +311,9 @@ static DECLCALLBACK(int) audioTestPlayToneExec(PAUDIOTESTENV pTstEnv, void *pvCt
         rc = AudioTestSvcClientToneRecord(&pTstEnv->u.Host.AtsClValKit, pToneParms);
         if (RT_SUCCESS(rc))
         {
+            /* Give the Validaiton Kit audio driver on the host a bit of time to register / arming the new test. */
+            RTThreadSleep(5000); /* Fudge factor. */
+
             /*
              * 2. Tell VKAT on guest  to start playback.
              */
