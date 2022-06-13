@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 90086 2021-07-08 08:51:06Z vboxsync $ */
+/* $Id: UICommon.cpp 90301 2021-07-23 12:47:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -4146,6 +4146,12 @@ void UICommon::sltGUILanguageChange(QString strLanguage)
     AssertReturnVoid(!isMediumEnumerationInProgress());
     /* Load passed language: */
     loadLanguage(strLanguage);
+}
+
+void UICommon::sltHandleMediumCreated(const CMedium &comMedium)
+{
+    /* Make sure we cached created medium in GUI: */
+    createMedium(UIMedium(comMedium, UIMediumDeviceType_HardDisk, KMediumState_Created));
 }
 
 bool UICommon::eventFilter(QObject *pObject, QEvent *pEvent)

@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.h 90300 2021-07-23 11:26:26Z vboxsync $ */
+/* $Id: UINotificationObjects.h 90301 2021-07-23 12:47:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects declarations.
  */
@@ -60,6 +60,50 @@ private:
     QString  m_strFrom;
     /** Holds the final location. */
     QString  m_strTo;
+};
+
+/** UINotificationProgress extension for medium copy functionality. */
+class SHARED_LIBRARY_STUFF UINotificationProgressMediumCopy : public UINotificationProgress
+{
+    Q_OBJECT;
+
+signals:
+
+    /** Notifies listeners about @a comMedium was copied. */
+    void sigMediumCopied(const CMedium &comMedium);
+
+public:
+
+    /** Constructs medium move notification-progress.
+      * @param  comSource  Brings the medium being copied.
+      * @param  comTarget  Brings the medium being the target.
+      * @param  variants   Brings the target medium options. */
+    UINotificationProgressMediumCopy(const CMedium &comSource,
+                                     const CMedium &comTarget,
+                                     const QVector<KMediumVariant> &variants);
+
+protected:
+
+    /** Returns object name. */
+    virtual QString name() const /* override final */;
+    /** Returns object details. */
+    virtual QString details() const /* override final */;
+    /** Creates and returns started progress-wrapper. */
+    virtual CProgress createProgress(COMResult &comResult) /* override final */;
+
+private slots:
+
+    /** Handles signal about progress being finished. */
+    void sltHandleProgressFinished();
+
+private:
+
+    /** Holds the medium being copied. */
+    CMedium                  m_comSource;
+    /** Holds the medium being the target. */
+    CMedium                  m_comTarget;
+    /** Holds the target medium options. */
+    QVector<KMediumVariant>  m_variants;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_notificationcenter_UINotificationObjects_h */
