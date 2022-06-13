@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 89951 2021-06-29 13:22:29Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 89952 2021-06-29 13:36:53Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -10740,6 +10740,9 @@ Console::i_vmm2User_QueryGenericObject(PCVMM2USERMETHODS pThis, PUVM pUVM, PCRTU
         IMouse *pIMouse = pConsole->mMouse;
         return pIMouse;
     }
+
+    if (UuidCopy == VMMDEV_OID)
+        return pConsole->m_pVMMDev;
 
     if (UuidCopy == COM_IIDOF(ISnapshot))
         return ((MYVMM2USERMETHODS *)pThis)->pISnapshot;

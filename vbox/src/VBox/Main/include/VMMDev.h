@@ -1,4 +1,4 @@
-/* $Id: VMMDev.h 84342 2020-05-18 18:24:58Z vboxsync $ */
+/* $Id: VMMDev.h 89952 2021-06-29 13:36:53Z vboxsync $ */
 /** @file
  * VirtualBox Driver interface to VMM device
  */
@@ -95,6 +95,9 @@ private:
     bool volatile m_fHGCMActive;
 #endif /* VBOX_WITH_HGCM */
 };
+
+/** VMMDev object ID used by Console::i_vmm2User_QueryGenericObject and VMMDev::drvConstruct. */
+#define VMMDEV_OID                          "e2ff0c7b-c02b-46d0-aa90-b9caf0f60561"
 
 #endif /* !MAIN_INCLUDED_VMMDev_h */
 /* vi: set tabstop=4 shiftwidth=4 expandtab: */
