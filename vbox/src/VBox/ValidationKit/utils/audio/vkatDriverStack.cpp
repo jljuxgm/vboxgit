@@ -1,4 +1,4 @@
-/* $Id: vkatDriverStack.cpp 89575 2021-06-09 09:16:59Z vboxsync $ */
+/* $Id: vkatDriverStack.cpp 90766 2021-08-20 17:30:57Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) - Driver stack code.
  */
@@ -485,6 +485,8 @@ void audioTestDriverStackDelete(PAUDIOTESTDRVSTACK pDrvStack)
     audioTestDrvDestruct(pDrvStack->pDrvAudioIns);
     pDrvStack->pDrvAudioIns     = NULL;
     pDrvStack->pIAudioConnector = NULL;
+
+    PDMAudioHostEnumDelete(&pDrvStack->DevEnum);
 }
 
 
@@ -504,6 +506,8 @@ int audioTestDriverStackInitEx(PAUDIOTESTDRVSTACK pDrvStack, PCPDMDRVREG pDrvReg
 
     RT_ZERO(*pDrvStack);
     pDrvStack->pDrvReg = pDrvReg;
+
+    PDMAudioHostEnumInit(&pDrvStack->DevEnum);
 
     if (!fWithDrvAudio)
         rc = audioTestDrvConstruct(pDrvStack, pDrvReg, NULL /*pParentDrvIns*/, &pDrvStack->pDrvBackendIns);
