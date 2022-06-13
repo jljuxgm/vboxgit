@@ -1,4 +1,4 @@
-/* $Id: AudioTestServiceTcp.cpp 90912 2021-08-26 13:38:34Z vboxsync $ */
+/* $Id: AudioTestServiceTcp.cpp 90917 2021-08-26 15:26:00Z vboxsync $ */
 /** @file
  * AudioTestServiceTcp - Audio test execution server, TCP/IP Transport Layer.
  */
@@ -318,6 +318,12 @@ static DECLCALLBACK(int) atsTcpWaitForConnect(PATSTRANSPORTINST pThis, PPATSTRAN
             LogFunc(("RTTcpClientConnect -> %Rrc\n", rc));
             if (RT_SUCCESS(rc) || atsTcpIsFatalClientConnectStatus(rc))
                 break;
+
+            if (pThis->fStopConnecting)
+            {
+                rc = VINF_SUCCESS;
+                break;
+            }
 
             /* Delay a wee bit before retrying. */
             RTThreadSleep(1536);
