@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 91759 2021-10-15 11:00:14Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 92324 2021-11-10 14:37:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -2054,8 +2054,9 @@ void UIMachineLogic::sltTakeScreenshot()
             tmpImage.save(QDir::toNativeSeparators(QFile::encodeName(strFilename)),
                           strFormat.toUtf8().constData());
 #else /* !VBOX_WS_X11 */
-        tmpImage.save(QDir::toNativeSeparators(QFile::encodeName(strFilename)),
-                      strFormat.toUtf8().constData());
+        QFile file(strFilename);
+        if (file.open(QIODevice::WriteOnly))
+            tmpImage.save(&file, strFormat.toUtf8().constData());
 #endif /* !VBOX_WS_X11 */
     }
     QFile::remove(strTempFile);
