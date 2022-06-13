@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 91713 2021-10-13 12:13:47Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 92027 2021-10-25 12:00:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -2042,7 +2042,8 @@ void UIExtraDataManager::hotloadMachineExtraDataMap(const QUuid &uID)
     /* Search for corresponding machine: */
     CVirtualBox vbox = uiCommon().virtualBox();
     CMachine machine = vbox.FindMachine(uID.toString());
-    AssertReturnVoid(vbox.isOk() && !machine.isNull());
+    if (machine.isNull())
+        return;
 
     /* Make sure at least empty map is created: */
     m_data[uID] = ExtraDataMap();
