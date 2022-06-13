@@ -1,4 +1,4 @@
-/* $Id: http.h 87004 2020-11-27 16:18:47Z vboxsync $ */
+/* $Id: http.h 90839 2021-08-24 11:36:54Z vboxsync $ */
 /** @file
  * IPRT - Simple HTTP/HTTPS Client API.
  */
@@ -487,10 +487,10 @@ RTR3DECL(bool) RTHttpGetVerifyPeer(RTHTTP hHttp);
  *
  * @param   hHttp           The HTTP client handle.
  * @param   pvUser          The user parameter specified when registering the callback.
- * @param   cbDowloadTotal  The content-length value, if available.
+ * @param   cbDownloadTotal The content-length value, if available.
  *                          Warning! Not entirely clear what it will be if
  *                                   unavailable, probably 0.
- * @param   cbDowloaded     How much was downloaded thus far.
+ * @param   cbDownloaded    How much was downloaded thus far.
  */
 typedef DECLCALLBACKTYPE(void, FNRTHTTPDOWNLDPROGRCALLBACK,(RTHTTP hHttp, void *pvUser, uint64_t cbDownloadTotal,
                                                             uint64_t cbDownloaded));
