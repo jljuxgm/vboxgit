@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 93765 2022-02-15 21:51:13Z vboxsync $
+# $Id: virtual_test_sheriff.py 93766 2022-02-15 21:52:56Z vboxsync $
 # pylint: disable=line-too-long
 
 """
@@ -35,7 +35,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 93765 $"
+__version__ = "$Revision: 93766 $"
 
 
 # Standard python imports
@@ -341,7 +341,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
 
         if self.oConfig.sLogFile:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 93765 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 93766 $ \n');
 
 
     def eprint(self, sText):
@@ -742,7 +742,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.getFailureReason(tReason);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 93765 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 93766 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
@@ -872,11 +872,11 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
             ( True, ktReason_Host_InstallationFailed, 'svcadm: Couldn\'t bind to svc.configd.' ),
             ( True, ktReason_Host_InstallationFailed, 'pkgadd: ERROR: postinstall script did not complete successfully' ),
         ],
-        'win': {
+        'win': [
             # ( Whether to stop on hit, reason tuple, needle text. )
             ( True,  ktReason_Host_InstallationWantReboot, 'ERROR_SUCCESS_REBOOT_REQUIRED' ),
             ( False, ktReason_Host_InstallationFailed, 'Installation error.' ),
-        }
+        ],
     };
 
 
