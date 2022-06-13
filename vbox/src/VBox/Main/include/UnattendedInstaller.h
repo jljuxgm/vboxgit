@@ -1,4 +1,4 @@
-/* $Id: UnattendedInstaller.h 94324 2022-03-22 14:16:24Z vboxsync $ */
+/* $Id: UnattendedInstaller.h 94335 2022-03-23 12:39:13Z vboxsync $ */
 /** @file
  * UnattendedInstaller class header
  */
@@ -532,7 +532,7 @@ protected:
      * Performs basic edits on a isolinux.cfg file.
      *
      * @returns COM status code
-     * @param   pEditor         Editor with the isolinux.cfg file loaded and parsed.
+     * @param   pEditor               Editor with the isolinux.cfg file loaded and parsed.
      */
     virtual HRESULT editIsoLinuxCfg(GeneralTextScript *pEditor);
     /**
@@ -593,7 +593,16 @@ protected:
      * @returns COM status code
      * @param   pEditor         Editor with the isolinux.cfg file loaded and parsed.
      */
-    HRESULT editDebianTxtCfg(GeneralTextScript *pEditor);
+    HRESULT editDebianMenuCfg(GeneralTextScript *pEditor);
+    /**
+     * Performs basic edits on a isolinux.cfg file.
+     *
+     * @returns COM status code
+     * @param   pEditor               Editor with the isolinux.cfg file loaded and parsed.
+     * @param   pszMenuConfigFileName Name of the menu config file to include in isolinux.txt. On Debians (at least)
+                                      it includes the kernel command line with our preseed file and command line argument.
+     */
+    virtual HRESULT editIsoLinuxCfg(GeneralTextScript *pEditor, const char *pszMenuConfigFileName);
 };
 
 
