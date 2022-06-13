@@ -1,4 +1,4 @@
-/* $Id: UIMonitorCommon.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIMonitorCommon.h 93983 2022-02-28 14:37:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMonitorCommon class declaration.
  */
@@ -26,7 +26,11 @@ struct UIDebuggerMetricData
 {
     UIDebuggerMetricData()
         : m_counter(0){}
-    UIDebuggerMetricData(const QStringRef & strName, quint64 counter)
+#if QT_VERSION >= QT_VERSION_CHECK(5, 10, 0)
+    UIDebuggerMetricData(const QStringView &strName, quint64 counter)
+#else
+    UIDebuggerMetricData(const QStringRef &strName, quint64 counter)
+#endif
         : m_strName(strName.toString())
         , m_counter(counter){}
     QString m_strName;
