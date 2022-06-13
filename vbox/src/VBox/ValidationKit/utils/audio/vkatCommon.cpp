@@ -1,4 +1,4 @@
-/* $Id: vkatCommon.cpp 91148 2021-09-08 10:54:36Z vboxsync $ */
+/* $Id: vkatCommon.cpp 91172 2021-09-09 06:02:11Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) - Self test code.
  */
@@ -347,10 +347,6 @@ int audioTestPlayTone(PAUDIOTESTENV pTstEnv, PAUDIOTESTSTREAM pStream, PAUDIOTES
                 }
 
                 RTThreadSleep(RT_MIN(RT_MAX(1, pStream->Cfg.Device.cMsSchedulingHint), 256));
-
-                /* Try draining the stream in the hope that we can write to it soon again. */
-                rc = AudioTestMixStreamDrain(&pStream->Mix, true /*fSync*/);
-                AssertRCBreak(rc);
             }
             else
                 AssertFailedBreakStmt(rc = VERR_AUDIO_STREAM_NOT_READY);
