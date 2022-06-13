@@ -1,4 +1,4 @@
-/* $Id: IOMR3IoPort.cpp 92716 2021-12-02 21:17:42Z vboxsync $ */
+/* $Id: IOMR3IoPort.cpp 92719 2021-12-02 22:40:31Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor, I/O port related APIs.
  */
@@ -355,6 +355,7 @@ VMMR3_INT_DECL(int)  IOMR3IoPortCreate(PVM pVM, PPDMDEVINS pDevIns, RTIOPORT cPo
     *phIoPorts = UINT32_MAX;
     VM_ASSERT_EMT0_RETURN(pVM, VERR_VM_THREAD_NOT_EMT);
     VM_ASSERT_STATE_RETURN(pVM, VMSTATE_CREATING, VERR_VM_INVALID_VM_STATE);
+    AssertReturn(!pVM->iom.s.fIoPortsFrozen, VERR_WRONG_ORDER);
 
     AssertPtrReturn(pDevIns, VERR_INVALID_POINTER);
 
