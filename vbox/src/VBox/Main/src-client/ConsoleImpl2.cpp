@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 89952 2021-06-29 13:36:53Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 89953 2021-06-29 13:41:06Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -4167,8 +4167,6 @@ int Console::i_configGraphicsController(PCFGMNODE pDevices,
         InsertConfigNode(pInst,    "LUN#0", &pLunL0);
         InsertConfigString(pLunL0, "Driver",               "MainDisplay");
         InsertConfigNode(pLunL0,   "Config", &pCfg);
-        Display *pDisplay = mDisplay;
-        InsertConfigInteger(pCfg,  "Object", (uintptr_t)pDisplay);
     }
     catch (ConfigError &x)
     {
