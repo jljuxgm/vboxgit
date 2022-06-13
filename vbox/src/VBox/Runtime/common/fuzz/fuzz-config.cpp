@@ -1,4 +1,4 @@
-/* $Id: fuzz-config.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: fuzz-config.cpp 94472 2022-04-05 15:27:53Z vboxsync $ */
 /** @file
  * IPRT - Fuzzing framework API, config API.
  */
@@ -478,7 +478,7 @@ static int rtFuzzCfgAddFuzzCtxInputs(PRTFUZZCFGINT pThis, RTJSONVAL hJsonValCorp
                 if (strcmp(pszAdjName, RTFUZZ_CFG_INDEX_FILE_NAME))
                 {
                     /* Look for a JSON object with the matching filename and process it. */
-                    RTJSONVAL hJsonInp;
+                    RTJSONVAL hJsonInp = NIL_RTJSONVAL;
                     rc = rtFuzzCfgQueryInputCorpusEntryFromArray(hJsonValCorpusArr, pszAdjName, &hJsonInp);
                     if (RT_SUCCESS(rc))
                     {
@@ -640,4 +640,3 @@ RTDECL(int) RTFuzzCfgQueryCustomCfg(RTFUZZCFG hFuzzCfg, PRTVFSFILE phVfsFile)
 
     return VERR_NOT_FOUND;
 }
-
