@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.cpp 91960 2021-10-21 15:01:54Z vboxsync $ */
+/* $Id: DevPcBios.cpp 91961 2021-10-21 15:05:23Z vboxsync $ */
 /** @file
  * DevPcBios - PC BIOS Device.
  */
@@ -1499,7 +1499,7 @@ static DECLCALLBACK(int)  pcbiosConstruct(PPDMDEVINS pDevIns, int iInstance, PCF
     /*
      * Get the CPU arch so we can load the appropriate ROMs.
      */
-    CPUMMICROARCH const enmMicroarch = pVM ? PDMDevHlpCpuGetGuestMicroarch(pDevIns) : kCpumMicroarch_Intel_P6;
+    CPUMMICROARCH const enmMicroarch = PDMDevHlpCpuGetGuestMicroarch(pDevIns);
 
     if (pThis->pszPcBiosFile)
     {
