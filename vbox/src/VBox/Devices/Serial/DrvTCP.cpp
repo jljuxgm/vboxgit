@@ -1,4 +1,4 @@
-/* $Id: DrvTCP.cpp 86114 2020-09-13 17:52:04Z vboxsync $ */
+/* $Id: DrvTCP.cpp 91868 2021-10-20 09:05:37Z vboxsync $ */
 /** @file
  * TCP socket driver implementing the IStream interface.
  */
@@ -554,7 +554,8 @@ static DECLCALLBACK(int) drvTCPConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uin
 {
     RT_NOREF(fFlags);
     PDMDRV_CHECK_VERSIONS_RETURN(pDrvIns);
-    PDRVTCP pThis = PDMINS_2_DATA(pDrvIns, PDRVTCP);
+    PDRVTCP         pThis = PDMINS_2_DATA(pDrvIns, PDRVTCP);
+    PCPDMDRVHLPR3   pHlp  = pDrvIns->pHlpR3;
 
     /*
      * Init the static parts.
@@ -588,11 +589,11 @@ static DECLCALLBACK(int) drvTCPConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uin
      */
     PDMDRV_VALIDATE_CONFIG_RETURN(pDrvIns, "Location|IsServer", "");
 
-    int rc = CFGMR3QueryStringAlloc(pCfg, "Location", &pThis->pszLocation);
+    int rc = pHlp->pfnCFGMQueryStringAlloc(pCfg, "Location", &pThis->pszLocation);
     if (RT_FAILURE(rc))
         return PDMDrvHlpVMSetError(pDrvIns, rc, RT_SRC_POS,
                                    N_("Configuration error: querying \"Location\" resulted in %Rrc"), rc);
-    rc = CFGMR3QueryBool(pCfg, "IsServer", &pThis->fIsServer);
+    rc = pHlp->pfnCFGMQueryBool(pCfg, "IsServer", &pThis->fIsServer);
     if (RT_FAILURE(rc))
         return PDMDrvHlpVMSetError(pDrvIns, rc, RT_SRC_POS,
                                    N_("Configuration error: querying \"IsServer\" resulted in %Rrc"), rc);
