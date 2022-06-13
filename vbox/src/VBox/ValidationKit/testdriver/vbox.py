@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 92241 2021-11-05 15:24:36Z vboxsync $
+# $Id: vbox.py 92244 2021-11-05 16:15:26Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 92241 $"
+__version__ = "$Revision: 92244 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -3065,15 +3065,6 @@ class TestDriver(base.TestDriver):                                              
         self.addTask(oWrapped);
 
         reporter.log2('startVmEx: oSession=%s, oSessionWrapper=%s, oProgress=%s' % (oSession, oWrapped, oProgress));
-
-        if self.fpApiVer >= 7.0:
-            # Needed to reach the host (localhost) from the guest. See xTracker #9896.
-            # Note: Do this right *after* the VM has been started.
-            for iSlot in range(0, self.oVBox.systemProperties.getMaxNetworkAdapters(oVM.chipsetType)):
-                try:
-                    oWrapped.setNicLocalhostReachable(True, iSlot);
-                except:
-                    reporter.logXcpt();
 
         from testdriver.vboxwrappers import ProgressWrapper;
         return (oWrapped, ProgressWrapper(oProgress, self.oVBoxMgr, self,
