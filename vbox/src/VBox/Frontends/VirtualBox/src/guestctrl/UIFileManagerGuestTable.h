@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerGuestTable.h 92753 2021-12-06 08:51:01Z vboxsync $ */
+/* $Id: UIFileManagerGuestTable.h 92754 2021-12-06 09:29:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerGuestTable class declaration.
  */
@@ -141,6 +141,9 @@ private:
     CEventListener m_comSessionListener;
     CEventListener m_comGuestListener;
     UIFileManagerGuestSessionPanel     *m_pGuestSessionPanel;
+    /** Hosts only a single action. We seperate this action since others
+      * are contained in the main toolbar which is dynamically disabled/enabled. */
+    QIToolBar               *m_pSessionWidgetToggleToolBar;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_guestctrl_UIFileManagerGuestTable_h */

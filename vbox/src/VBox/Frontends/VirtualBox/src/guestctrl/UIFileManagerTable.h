@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.h 92733 2021-12-03 14:23:31Z vboxsync $ */
+/* $Id: UIFileManagerTable.h 92754 2021-12-06 09:29:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class declaration.
  */
@@ -235,6 +235,7 @@ protected:
     void             setSelectionDependentActionsEnabled(bool fIsEnabled);
     UICustomFileSystemItem*   rootItem();
     void             setPathSeparator(const QChar &separator);
+    QHBoxLayout*     toolBarLayout();
 
     QILabel                 *m_pLocationLabel;
     UIPropertiesDialog      *m_pPropertiesDialog;
@@ -302,6 +303,7 @@ private:
     QColor           m_searchLineMarkColor;
     QILabel         *m_pWarningLabel;
     QChar            m_pathSeparator;
+    QHBoxLayout     *m_pToolBarLayout;
     friend class     UICustomFileSystemModel;
 };
 
