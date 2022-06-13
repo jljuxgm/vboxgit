@@ -1,4 +1,4 @@
-/* $Id: process-creation-posix.cpp 95006 2022-05-13 14:03:41Z vboxsync $ */
+/* $Id: process-creation-posix.cpp 95007 2022-05-13 15:36:54Z vboxsync $ */
 /** @file
  * IPRT - Process Creation, POSIX.
  */
@@ -398,7 +398,11 @@ static int rtProcPosixAuthenticateUsingPam(const char *pszPamService, const char
                     rc2 = VERR_BUFFER_OVERFLOW;
             }
 
-            LogRel2(("rtProcPosixAuthenticateUsingPam(%s): pam_setitem/PAM_TTY: %s\n", pszPamService, szTTY));
+            LogRel2(("rtProcPosixAuthenticateUsingPam(%s): pam_setitem/PAM_TTY: %s, rc=%Rrc\n", pszPamService, szTTY, rc2));
+            if (!strlen(szTTY))
+                LogRel2(("rtProcPosixAuthenticateUsingPam(%s): Hint: Looks like running as a non-interactive user (no TTY/PTY).\n"
+                         "Authentication requiring a secure terminal might fail.\n",
+                         pszPamService));
 
             if (   RT_SUCCESS(rc2)
                 && strlen(szTTY)) /* Only try using PAM_TTY if we have something to set. */
