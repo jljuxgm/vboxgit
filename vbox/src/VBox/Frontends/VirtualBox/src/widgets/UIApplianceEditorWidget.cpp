@@ -1,4 +1,4 @@
-/* $Id: UIApplianceEditorWidget.cpp 91579 2021-10-05 17:32:35Z vboxsync $ */
+/* $Id: UIApplianceEditorWidget.cpp 91638 2021-10-08 12:22:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceEditorWidget class implementation.
  */
@@ -1846,6 +1846,16 @@ UIApplianceEditorWidget::UIApplianceEditorWidget(QWidget *pParent /* = 0 */)
 
     /* Translate finally: */
     retranslateUi();
+}
+
+void UIApplianceEditorWidget::clear()
+{
+    /* Wipe model: */
+    delete m_pModel;
+    m_pModel = 0;
+
+    /* And appliance: */
+    m_comAppliance = CAppliance();
 }
 
 void UIApplianceEditorWidget::setAppliance(const CAppliance &comAppliance)

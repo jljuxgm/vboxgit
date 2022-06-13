@@ -1,4 +1,4 @@
-/* $Id: UIApplianceEditorWidget.h 91579 2021-10-05 17:32:35Z vboxsync $ */
+/* $Id: UIApplianceEditorWidget.h 91638 2021-10-08 12:22:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceEditorWidget class declaration.
  */
@@ -293,6 +293,9 @@ public:
 
     /** Constructs the Appliance Editor widget passing @a pParent to the base-class. */
     UIApplianceEditorWidget(QWidget *pParent = 0);
+
+    /** Clears everything. */
+    void clear();
 
     /** Defines @a comAppliance wrapper instance. */
     virtual void setAppliance(const CAppliance &comAppliance);

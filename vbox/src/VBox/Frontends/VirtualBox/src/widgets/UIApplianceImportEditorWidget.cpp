@@ -1,4 +1,4 @@
-/* $Id: UIApplianceImportEditorWidget.cpp 91579 2021-10-05 17:32:35Z vboxsync $ */
+/* $Id: UIApplianceImportEditorWidget.cpp 91638 2021-10-08 12:22:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceImportEditorWidget class implementation.
  */
@@ -49,12 +49,11 @@ UIApplianceImportEditorWidget::UIApplianceImportEditorWidget(QWidget *pParent /*
 
 void UIApplianceImportEditorWidget::setAppliance(const CAppliance &comAppliance)
 {
+    /* Cleanup previous stuff: */
+    clear();
+
     /* Call to base-class: */
     UIApplianceEditorWidget::setAppliance(comAppliance);
-
-    /* Cleanup previous stuff: */
-    if (m_pModel)
-        delete m_pModel;
 
     /* Prepare model: */
     QVector<CVirtualSystemDescription> vsds = m_comAppliance.GetVirtualSystemDescriptions();
