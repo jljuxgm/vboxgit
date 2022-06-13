@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 90325 2021-07-24 13:21:36Z vboxsync $ */
+/* $Id: UINotificationObjects.cpp 90327 2021-07-26 09:54:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -50,6 +50,49 @@ CProgress UINotificationProgressMediumMove::createProgress(COMResult &comResult)
     comResult = m_comMedium;
     /* Return progress-wrapper: */
     return comProgress;
+}
+
+
+/*********************************************************************************************************************************
+*   Class UINotificationProgressMediumCreate implementation.                                                                     *
+*********************************************************************************************************************************/
+
+UINotificationProgressMediumCreate::UINotificationProgressMediumCreate(const CMedium &comTarget,
+                                                                       qulonglong uSize,
+                                                                       const QVector<KMediumVariant> &variants)
+    : m_comTarget(comTarget)
+    , m_uSize(uSize)
+    , m_variants(variants)
+{
+    connect(this, &UINotificationProgress::sigProgressFinished,
+            this, &UINotificationProgressMediumCreate::sltHandleProgressFinished);
+}
+
+QString UINotificationProgressMediumCreate::name() const
+{
+    return UINotificationProgress::tr("Creating medium ...");
+}
+
+QString UINotificationProgressMediumCreate::details() const
+{
+    return UINotificationProgress::tr("<b>Location:</b> %1<br><b>Size:</b> %2")
+                                     .arg(m_comTarget.GetLocation()).arg(m_uSize);
+}
+
+CProgress UINotificationProgressMediumCreate::createProgress(COMResult &comResult)
+{
+    /* Initialize progress-wrapper: */
+    CProgress comProgress = m_comTarget.CreateBaseStorage(m_uSize, m_variants);
+    /* Store COM result: */
+    comResult = m_comTarget;
+    /* Return progress-wrapper: */
+    return comProgress;
+}
+
+void UINotificationProgressMediumCreate::sltHandleProgressFinished()
+{
+    if (m_comTarget.isNotNull() && !m_comTarget.GetId().isNull())
+        emit sigMediumCreated(m_comTarget);
 }
 
 

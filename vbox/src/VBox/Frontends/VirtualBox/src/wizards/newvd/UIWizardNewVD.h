@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVD.h 88599 2021-04-20 09:13:59Z vboxsync $ */
+/* $Id: UIWizardNewVD.h 90327 2021-07-26 09:54:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVD class declaration.
  */
@@ -58,9 +58,6 @@ public:
     /* Pages related stuff: */
     void prepare();
 
-    /* Returns virtual-disk: */
-    CMedium virtualDisk() const { return m_virtualDisk; }
-
 protected:
 
     /* Creates virtual-disk: */
@@ -76,10 +73,9 @@ private:
     void retranslateUi();
 
     /* Variables: */
-    QString m_strDefaultName;
-    QString m_strDefaultPath;
-    qulonglong m_uDefaultSize;
-    CMedium m_virtualDisk;
+    QString     m_strDefaultName;
+    QString     m_strDefaultPath;
+    qulonglong  m_uDefaultSize;
 };
 
 typedef QPointer<UIWizardNewVD> UISafePointerWizardNewVD;
