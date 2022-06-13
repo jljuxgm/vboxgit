@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 91951 2021-10-21 13:55:49Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 91975 2021-10-21 17:07:40Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -3042,5 +3042,17 @@ VMM_INT_DECL(int) CPUMGetSvmMsrpmOffsetAndBit(uint32_t idMsr, uint16_t *pbOffMsr
 VMM_INT_DECL(bool) CPUMIsGuestVmxEptPagingEnabled(PCVMCPUCC pVCpu)
 {
     return CPUMIsGuestVmxEptPagingEnabledEx(&pVCpu->cpum.s.Guest);
+}
+
+
+/**
+ * Returns the EPT pointer of the nested-guest.
+ *
+ * @returns The EPT pointer.
+ * @param   pVCpu   The cross context virtual CPU structure.
+ */
+VMM_INT_DECL(uint64_t) CPUMGetGuestVmxEptPtr(PCVMCPUCC pVCpu)
+{
+    return CPUMGetGuestVmxEptPtrEx(&pVCpu->cpum.s.Guest);
 }
 
