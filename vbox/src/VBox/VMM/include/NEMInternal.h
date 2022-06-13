@@ -1,4 +1,4 @@
-/* $Id: NEMInternal.h 94791 2022-05-03 09:36:11Z vboxsync $ */
+/* $Id: NEMInternal.h 94884 2022-05-06 06:56:17Z vboxsync $ */
 /** @file
  * NEM - Internal header file.
  */
@@ -340,6 +340,8 @@ typedef struct NEMCPU
     bool                        fClearTrapFlag : 1;
     /** Whether we're using the hyper DR7 or guest DR7. */
     bool                        fUsingHyperDR7 : 1;
+    /** Whether \#DE needs to be intercepted for GIM. */
+    bool                        fGCMTrapXcptDE : 1;
 
 #if defined(RT_OS_LINUX)
     uint8_t                     abPadding[3];

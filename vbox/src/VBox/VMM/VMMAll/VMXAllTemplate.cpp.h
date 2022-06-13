@@ -1,4 +1,4 @@
-/* $Id: VMXAllTemplate.cpp.h 94883 2022-05-06 06:40:20Z vboxsync $ */
+/* $Id: VMXAllTemplate.cpp.h 94884 2022-05-06 06:56:17Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Code template for our own hypervisor and the NEM darwin backend using Apple's Hypervisor.framework.
  */
@@ -6849,7 +6849,7 @@ static VBOXSTRICTRC vmxHCExitXcptDE(PVMCPUCC pVCpu, PVMXTRANSIENT pVmxTransient)
     AssertRCReturn(rc, rc);
 
     VBOXSTRICTRC rcStrict = VERR_VMX_UNEXPECTED_INTERRUPTION_EXIT_TYPE;
-    if (pVCpu->hm.s.fGCMTrapXcptDE)
+    if (VCPU_2_VMXSTATE(pVCpu).fGCMTrapXcptDE)
     {
         uint8_t cbInstr = 0;
         VBOXSTRICTRC rc2 = GCMXcptDE(pVCpu, &pVCpu->cpum.GstCtx, NULL /* pDis */, &cbInstr);
