@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic3.h 91368 2021-09-24 16:31:13Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic3.h 91461 2021-09-29 15:15:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic3 class declaration.
  */
@@ -32,7 +32,7 @@
 #include "CAppliance.h"
 
 /* Forward declarations: */
-class QStackedLayout;
+class QStackedWidget;
 class QIRichTextLabel;
 class UIApplianceExportEditorWidget;
 class UIFormEditorWidget;
@@ -41,8 +41,8 @@ class UIWizardExportApp;
 /** Namespace for 3rd basic page of the Export Appliance wizard. */
 namespace UIWizardExportAppPage3
 {
-    /** Refresh stacked layout. */
-    void refreshStackedLayout(QStackedLayout *pStackedLayout,
+    /** Refresh stacked widget. */
+    void refreshStackedWidget(QStackedWidget *pStackedWidget,
                               bool fIsFormatCloudOne);
 
     /** Refreshes appliance settings widget. */
@@ -86,8 +86,8 @@ private:
     /** Holds the label instance. */
     QIRichTextLabel *m_pLabel;
 
-    /** Holds the settings container layout instance. */
-    QStackedLayout *m_pSettingsLayout;
+    /** Holds the settings widget 2 instance. */
+    QStackedWidget *m_pSettingsWidget2;
 
     /** Holds the appliance widget reference. */
     UIApplianceExportEditorWidget *m_pApplianceWidget;
