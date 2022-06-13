@@ -1,4 +1,4 @@
-/* $Id: UIWizardDiskEditors.cpp 90272 2021-07-21 10:19:55Z vboxsync $ */
+/* $Id: UIWizardDiskEditors.cpp 90273 2021-07-21 11:29:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class implementation.
  */
@@ -381,9 +381,7 @@ void UIMediumSizeAndPathGroupBox::setMediumPath(const QString &strMediumPath)
 {
     if (!m_pLocationEditor)
         return;
-    m_pLocationEditor->blockSignals(true);
     m_pLocationEditor->setText(strMediumPath);
-    m_pLocationEditor->blockSignals(false);
 }
 
 void UIMediumSizeAndPathGroupBox::updateMediumPath(const CMediumFormat &mediumFormat, const QStringList &formatExtensions)
