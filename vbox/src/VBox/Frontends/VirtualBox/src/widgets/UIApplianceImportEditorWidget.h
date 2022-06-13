@@ -1,4 +1,4 @@
-/* $Id: UIApplianceImportEditorWidget.h 91543 2021-10-04 14:36:44Z vboxsync $ */
+/* $Id: UIApplianceImportEditorWidget.h 91547 2021-10-04 15:49:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceImportEditorWidget class declaration.
  */
@@ -27,7 +27,6 @@
 /* Forward declarations: */
 class UIFilePathSelector;
 class QComboBox;
-class QGridLayout;
 
 /** MAC address policies. */
 enum MACAddressImportPolicy
@@ -85,8 +84,6 @@ private:
     /** Defines MAC address import @a enmPolicy. */
     void setMACAddressImportPolicy(MACAddressImportPolicy enmPolicy);
 
-    /** Holds the options layout instance. */
-    QGridLayout        *m_pLayoutOptions;
     /** Holds the exporting file-path label instance. */
     QLabel             *m_pLabelExportingFilePath;
     /** Holds the exporting file-path editor instance. */

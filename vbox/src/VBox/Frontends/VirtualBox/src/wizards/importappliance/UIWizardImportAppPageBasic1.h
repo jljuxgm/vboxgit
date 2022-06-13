@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageBasic1.h 91522 2021-10-01 15:08:36Z vboxsync $ */
+/* $Id: UIWizardImportAppPageBasic1.h 91547 2021-10-04 15:49:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageBasic1 class declaration.
  */
@@ -35,6 +35,7 @@
 #include "CVirtualSystemDescriptionForm.h"
 
 /* Forward declarations: */
+class QGridLayout;
 class QLabel;
 class QListWidget;
 class QTableWidget;
