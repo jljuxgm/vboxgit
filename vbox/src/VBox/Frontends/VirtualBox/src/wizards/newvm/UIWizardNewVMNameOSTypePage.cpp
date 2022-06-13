@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMNameOSTypePage.cpp 92037 2021-10-25 14:14:13Z vboxsync $ */
+/* $Id: UIWizardNewVMNameOSTypePage.cpp 92038 2021-10-25 14:22:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasicNameOSStype class implementation.
  */
@@ -175,13 +175,15 @@ static const osTypePattern gs_OSTypePattern[] =
 
 bool UIWizardNewVMNameOSTypeCommon::guessOSTypeFromName(UINameAndSystemEditor *pNameAndSystemEditor, QString strNewName)
 {
-    CHost host = uiCommon().host();
-    bool fSupportsHWVirtEx = host.GetProcessorFeature(KProcessorFeature_HWVirtEx);
-    bool fSupportsLongMode = host.GetProcessorFeature(KProcessorFeature_LongMode);
-
     /* Append default architecture bit-count (64/32) if not already in the name: */
     if (!strNewName.contains("32") && !strNewName.contains("64"))
+    {
+        /** @todo cache this result, no need to re-query it for each keystroke... */
+        CHost host = uiCommon().host();
+        bool fSupportsHWVirtEx = host.GetProcessorFeature(KProcessorFeature_HWVirtEx);
+        bool fSupportsLongMode = host.GetProcessorFeature(KProcessorFeature_LongMode);
         strNewName += ARCH_BITS == 64 && fSupportsHWVirtEx && fSupportsLongMode ? "64" : "32";
+    }
 
     /* Search for a matching OS type based on the string the user typed already. */
     for (size_t i = 0; i < RT_ELEMENTS(gs_OSTypePattern); ++i)
