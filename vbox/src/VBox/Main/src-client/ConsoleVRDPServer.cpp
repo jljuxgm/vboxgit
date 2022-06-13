@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 90828 2021-08-24 09:44:46Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.cpp 91738 2021-10-14 19:16:07Z vboxsync $ */
 /** @file
  * VBox Console VRDP helper class.
  */
@@ -3402,10 +3402,9 @@ void ConsoleVRDPServer::ClipboardCreate(uint32_t u32ClientId)
         {
             rc = HGCMHostRegisterServiceExtension(&mhClipboard, "VBoxSharedClipboard", ClipboardServiceExtension, this);
             AssertRC(rc);
-
-            mcClipboardRefs++;
         }
 
+        mcClipboardRefs++;
         unlockConsoleVRDPServer();
     }
 }
