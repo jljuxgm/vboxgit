@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tdAudioTest.py 91568 2021-10-05 12:29:44Z vboxsync $
+# $Id: tdAudioTest.py 91575 2021-10-05 16:02:43Z vboxsync $
 
 """
 AudioTest test driver which invokes the VKAT (Validation Kit Audio Test)
@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 91568 $"
+__version__ = "$Revision: 91575 $"
 
 # Standard Python imports.
 from datetime import datetime
@@ -722,7 +722,7 @@ class tdAudioTest(vbox.TestDriver):
                 if self.enmAudioControllerType is None:
                     oOsType = oSession.getOsType();
                     self.enmAudioControllerType = oOsType.recommendedAudioController;
-                else:
+
                 reporter.log('Setting user-defined audio controller type to %d' % (self.enmAudioControllerType));
                 oSession.setupAudio(self.enmAudioControllerType,
                                     fEnable = True, fEnableIn = True, fEnableOut = True);
