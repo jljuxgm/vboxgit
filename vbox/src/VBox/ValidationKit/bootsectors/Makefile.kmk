@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 92265 2021-11-08 11:26:09Z vboxsync $
+# $Id: Makefile.kmk 92580 2021-11-24 03:06:41Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - Bootsector Tests for Test Drivers or standalone testing.
 #
@@ -229,6 +229,16 @@ ifdef VBOX_WITH_BS3KIT
 #
 # Bs3kit
 #
+
+#
+# APIC
+#
+MISCBINS += bs3-apic-1
+bs3-apic-1_TEMPLATE = VBoxBS3KitImg
+bs3-apic-1_SOURCES  = \
+	bs3kit/bs3-first-rm.asm \
+	bs3-apic-1.c \
+
 
 # CPU basics #2 (first being bootsector2-cpu-basic-1).
 MISCBINS += bs3-cpu-basic-2
