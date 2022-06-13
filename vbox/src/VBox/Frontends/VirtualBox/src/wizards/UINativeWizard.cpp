@@ -1,4 +1,4 @@
-/* $Id: UINativeWizard.cpp 93661 2022-02-08 15:26:58Z vboxsync $ */
+/* $Id: UINativeWizard.cpp 94069 2022-03-03 10:10:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINativeWizard class implementation.
  */
@@ -189,12 +189,12 @@ void UINativeWizard::retranslateUi()
     {
         case WizardMode_Basic:
             pButtonExpert->setText(tr("&Expert Mode"));
-            pButtonExpert->setToolTip(tr("Switch to <nobr><b>Expert Mode</b></nobr>, "
+            pButtonExpert->setToolTip(tr("Switch to the Expert Mode, "
                                          "a one-page dialog for experienced users."));
             break;
         case WizardMode_Expert:
             pButtonExpert->setText(tr("&Guided Mode"));
-            pButtonExpert->setToolTip(tr("Switch to <nobr><b>Guided Mode</b></nobr>, "
+            pButtonExpert->setToolTip(tr("Switch to the Guided Mode, "
                                          "a step-by-step dialog with detailed explanations."));
             break;
         default:
