@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 94651 2022-04-20 12:27:23Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 94658 2022-04-21 08:33:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -2447,35 +2447,6 @@ void UIMachineLogic::sltInstallGuestAdditions()
 #endif /* VBOX_GUI_WITH_NETWORK_MANAGER */
 }
 
-#ifdef VBOX_WITH_DEBUGGER_GUI
-
-void UIMachineLogic::sltShowDebugStatistics()
-{
-    if (dbgCreated())
-    {
-        keyboardHandler()->setDebuggerActive();
-        const QByteArray &expandBytes = uiCommon().getDebuggerStatisticsExpand().toUtf8();
-        const QByteArray &filterBytes = uiCommon().getDebuggerStatisticsFilter().toUtf8();
-        m_pDbgGuiVT->pfnShowStatistics(m_pDbgGui, filterBytes.constData(), expandBytes.constData());
-    }
-}
-
-void UIMachineLogic::sltShowDebugCommandLine()
-{
-    if (dbgCreated())
-    {
-        keyboardHandler()->setDebuggerActive();
-        m_pDbgGuiVT->pfnShowCommandLine(m_pDbgGui);
-    }
-}
-
-void UIMachineLogic::sltLoggingToggled(bool fState)
-{
-    NOREF(fState);
-    if (!debugger().isNull() && debugger().isOk())
-        debugger().SetLogEnabled(fState);
-}
-
 void UIMachineLogic::sltShowLogDialog()
 {
     if (machine().isNull() || !activeMachineWindow())
@@ -2511,6 +2482,35 @@ void UIMachineLogic::sltCloseLogViewerWindow()
     m_pLogViewerDialog = 0;
     pDialog->close();
     UIVMLogViewerDialogFactory().cleanup(pDialog);
+}
+
+#ifdef VBOX_WITH_DEBUGGER_GUI
+
+void UIMachineLogic::sltShowDebugStatistics()
+{
+    if (dbgCreated())
+    {
+        keyboardHandler()->setDebuggerActive();
+        const QByteArray &expandBytes = uiCommon().getDebuggerStatisticsExpand().toUtf8();
+        const QByteArray &filterBytes = uiCommon().getDebuggerStatisticsFilter().toUtf8();
+        m_pDbgGuiVT->pfnShowStatistics(m_pDbgGui, filterBytes.constData(), expandBytes.constData());
+    }
+}
+
+void UIMachineLogic::sltShowDebugCommandLine()
+{
+    if (dbgCreated())
+    {
+        keyboardHandler()->setDebuggerActive();
+        m_pDbgGuiVT->pfnShowCommandLine(m_pDbgGui);
+    }
+}
+
+void UIMachineLogic::sltLoggingToggled(bool fState)
+{
+    NOREF(fState);
+    if (!debugger().isNull() && debugger().isOk())
+        debugger().SetLogEnabled(fState);
 }
 
 void UIMachineLogic::sltShowGuestControlConsoleDialog()
