@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 94127 2022-03-08 14:44:28Z vboxsync $
+# $Id: tdUnitTest1.py 94396 2022-03-30 09:17:35Z vboxsync $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 94127 $"
+__version__ = "$Revision: 94396 $"
 
 
 # Standard Python imports.
@@ -508,6 +508,7 @@ class tdUnitTest1(vbox.TestDriver):
                 raise base.InvalidOption('Option "%s" needs a value' % (asArgs[iArg - 1]));
             self.sUnitTestsPathSrc = asArgs[iArg];
             self.sMode = 'remote-exec';
+            reporter.log('Unittest source explicitly set to "%s"' % (self.sUnitTestsPathSrc));
         elif asArgs[iArg] == '--only-whitelist':
             self.fOnlyWhiteList = True;
         elif asArgs[iArg] == '--quick':
@@ -517,6 +518,7 @@ class tdUnitTest1(vbox.TestDriver):
             if iArg >= len(asArgs):
                 raise base.InvalidOption('Option "%s" needs a value' % (asArgs[iArg - 1]));
             self.sVBoxInstallRoot = asArgs[iArg];
+            reporter.log('VBox installation root explicitly set to "%s"' % (self.sVBoxInstallRoot));
         else:
             return vbox.TestDriver.parseOption(self, asArgs, iArg);
         return iArg + 1;
@@ -555,8 +557,9 @@ class tdUnitTest1(vbox.TestDriver):
         return True;
 
     def actionExecute(self):
-        if self.sUnitTestsPathSrc is None and not self._detectPaths():
-            return False;
+        if self.sUnitTestsPathSrc is None:
+            if not self._detectPaths():
+                return False;
         reporter.log2('Unit test source path is "%s"\n' % self.sUnitTestsPathSrc);
 
         if not self.sUnitTestsPathDst:
@@ -787,7 +790,7 @@ class tdUnitTest1(vbox.TestDriver):
         fRc = True;
         if self.sMode.startswith('remote'):
             if self.sMode == 'remote-exec':
-                self.oTxsSession.txsCopyFile(self.oSession, self.oTxsSession, sSrc, sDst, iMode);
+                self.txsCopyFile(self.oSession, self.oTxsSession, sSrc, sDst, iMode);
             else:
                 fRc = self.txsUploadFile(self.oSession, self.oTxsSession, sSrc, sDst);
                 if fRc:
