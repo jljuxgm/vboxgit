@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerSearchPanel.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIVMLogViewerSearchPanel.cpp 93892 2022-02-22 18:12:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -497,6 +497,8 @@ void UIVMLogViewerSearchPanel::selectMatch(int iMatchIndex, const QString &searc
 
 void UIVMLogViewerSearchPanel::moveSelection(bool fForward)
 {
+    if (matchCount() == 0)
+        return;
     if (fForward)
         m_iSelectedMatchIndex = m_iSelectedMatchIndex >= m_matchedCursorPosition.size() - 1 ? 0 : (m_iSelectedMatchIndex + 1);
     else
