@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImplPrivate.h 84857 2020-06-17 07:46:06Z vboxsync $ */
+/* $Id: GuestCtrlImplPrivate.h 91503 2021-10-01 08:57:59Z vboxsync $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -1276,10 +1276,6 @@ public:
     int registerWaitEventEx(uint32_t uSessionID, uint32_t uObjectID, const GuestEventTypes &lstEvents, GuestWaitEvent **ppEvent);
     int unregisterWaitEvent(GuestWaitEvent *pEvent);
     int waitForEvent(GuestWaitEvent *pEvent, uint32_t uTimeoutMS, VBoxEventType_T *pType, IEvent **ppEvent);
-
-#ifndef VBOX_GUESTCTRL_TEST_CASE
-    HRESULT setErrorExternal(VirtualBoxBase *pInterface, const Utf8Str &strAction, const GuestErrorInfo &guestErrorInfo);
-#endif
 
 public:
 

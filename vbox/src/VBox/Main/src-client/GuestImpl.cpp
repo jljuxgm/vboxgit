@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 85309 2020-07-13 12:56:56Z vboxsync $ */
+/* $Id: GuestImpl.cpp 91503 2021-10-01 08:57:59Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest features.
  */
@@ -632,17 +632,17 @@ HRESULT Guest::setStatisticsUpdateInterval(ULONG aStatisticsUpdateInterval)
         if (mStatTimer == NIL_RTTIMERLR)
         {
             vrc = RTTimerLRCreate(&mStatTimer, aStatisticsUpdateInterval * RT_MS_1SEC, &Guest::i_staticUpdateStats, this);
-            AssertRCStmt(vrc, hrc = setErrorVrc(vrc, "Failed to create guest statistics update timer (%Rrc)", vrc));
+            AssertRCStmt(vrc, hrc = setErrorVrc(vrc, tr("Failed to create guest statistics update timer (%Rrc)"), vrc));
         }
         else if (aStatisticsUpdateInterval != mStatUpdateInterval)
         {
             vrc = RTTimerLRChangeInterval(mStatTimer, aStatisticsUpdateInterval * RT_NS_1SEC_64);
-            AssertRCStmt(vrc, hrc = setErrorVrc(vrc, "Failed to change guest statistics update timer interval from %u to %u failed (%Rrc)",
+            AssertRCStmt(vrc, hrc = setErrorVrc(vrc, tr("Failed to change guest statistics update timer interval from %u to %u failed (%Rrc)"),
                                                 mStatUpdateInterval, aStatisticsUpdateInterval, vrc));
             if (mStatUpdateInterval == 0)
             {
                 vrc = RTTimerLRStart(mStatTimer, 0);
-                AssertRCStmt(vrc, hrc = setErrorVrc(vrc, "Failed to start the guest statistics update timer (%Rrc)", vrc));
+                AssertRCStmt(vrc, hrc = setErrorVrc(vrc, tr("Failed to start the guest statistics update timer (%Rrc)"), vrc));
             }
         }
     }
@@ -650,7 +650,7 @@ HRESULT Guest::setStatisticsUpdateInterval(ULONG aStatisticsUpdateInterval)
     else if (mStatUpdateInterval > 0 && mStatTimer != NIL_RTTIMERLR)
     {
         vrc = RTTimerLRStop(mStatTimer);
-        AssertRCStmt(vrc, hrc = setErrorVrc(vrc, "Failed to stop the guest statistics update timer (%Rrc)", vrc));
+        AssertRCStmt(vrc, hrc = setErrorVrc(vrc, tr("Failed to stop the guest statistics update timer (%Rrc)"), vrc));
     }
 
     /* Update the interval now that the timer is in sync. */

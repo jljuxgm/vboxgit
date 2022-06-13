@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImpl.cpp 85300 2020-07-13 10:04:45Z vboxsync $ */
+/* $Id: GuestCtrlImpl.cpp 91503 2021-10-01 08:57:59Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -519,7 +519,7 @@ HRESULT Guest::shutdown(const std::vector<GuestShutdownFlag_T> &aFlags)
      * the guest with administrative rights.
      */
     GuestSessionStartupInfo startupInfo;
-    startupInfo.mName = strAction + " guest";
+    startupInfo.mName = (fFlags & GuestShutdownFlag_Reboot) ? tr("Rebooting guest") : tr("Shutting down guest");
 
     GuestCredentials guestCreds;
 

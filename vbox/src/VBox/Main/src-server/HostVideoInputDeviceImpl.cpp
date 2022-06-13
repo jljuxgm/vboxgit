@@ -1,4 +1,4 @@
-/* $Id: HostVideoInputDeviceImpl.cpp 85252 2020-07-11 23:26:04Z vboxsync $ */
+/* $Id: HostVideoInputDeviceImpl.cpp 91503 2021-10-01 08:57:59Z vboxsync $ */
 /** @file
  * Host video capture device implementation.
  */
@@ -213,7 +213,8 @@ static HRESULT fillDeviceList(VirtualBox *pVirtualBox, HostVideoInputDeviceList 
         if (SUCCEEDED(hr))
         {
             if (RT_FAILURE(vrc))
-                hr = pVirtualBox->setErrorBoth(VBOX_E_IPRT_ERROR, vrc, "Failed to get webcam list: %Rrc", vrc);
+                hr = pVirtualBox->setErrorBoth(VBOX_E_IPRT_ERROR, vrc,
+                                               HostVideoInputDevice::tr("Failed to get webcam list: %Rrc"), vrc);
         }
     }
 

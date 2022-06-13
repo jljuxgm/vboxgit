@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplTeleporter.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: ConsoleImplTeleporter.cpp 91503 2021-10-01 08:57:59Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation, The Teleporter Part.
  */
@@ -707,7 +707,7 @@ HRESULT Console::i_teleporterSrc(TeleporterStateSrc *pState)
             if (FAILED(hrc))
                 return hrc;
         }
-        return setErrorBoth(E_FAIL, vrc, tr("VMR3Teleport -> %Rrc"), vrc);
+        return setErrorBoth(E_FAIL, vrc, "VMR3Teleport -> %Rrc", vrc);
     }
 
     hrc = i_teleporterSrcReadACK(pState, "load-complete");
@@ -1016,7 +1016,7 @@ HRESULT Console::teleport(const com::Utf8Str &aHostname, ULONG aTcpport, const c
     {
         ptrProgress->i_setCancelCallback(NULL, NULL);
         delete pState;
-        hrc = setErrorBoth(E_FAIL, vrc, tr("RTThreadCreate -> %Rrc"), vrc);
+        hrc = setErrorBoth(E_FAIL, vrc, "RTThreadCreate -> %Rrc", vrc);
     }
 
     return hrc;

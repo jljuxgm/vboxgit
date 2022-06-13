@@ -1,4 +1,4 @@
-/* $Id: MachineImplCloneVM.cpp 91326 2021-09-22 15:10:38Z vboxsync $ */
+/* $Id: MachineImplCloneVM.cpp 91503 2021-10-01 08:57:59Z vboxsync $ */
 /** @file
  * Implementation of MachineCloneVM
  */
@@ -872,7 +872,7 @@ HRESULT MachineCloneVM::start(IProgress **pProgress)
         /** @todo r=klaus this code cannot deal with someone crazy specifying
          * IMachine corresponding to a mutable machine as d->pSrcMachine */
         if (d->pSrcMachine->i_isSessionMachine())
-            throw p->setError(E_INVALIDARG, "The source machine is mutable");
+            throw p->setError(E_INVALIDARG, tr("The source machine is mutable"));
 
         /* Handle the special case that someone is requesting a _full_ clone
          * with all snapshots (and the current state), but uses a snapshot
@@ -1047,7 +1047,7 @@ HRESULT MachineCloneVM::start(IProgress **pProgress)
         int vrc = d->startWorker();
 
         if (RT_FAILURE(vrc))
-            p->setErrorBoth(VBOX_E_IPRT_ERROR, vrc, "Could not create machine clone thread (%Rrc)", vrc);
+            p->setErrorBoth(VBOX_E_IPRT_ERROR, vrc, tr("Could not create machine clone thread (%Rrc)"), vrc);
     }
     catch (HRESULT rc2)
     {

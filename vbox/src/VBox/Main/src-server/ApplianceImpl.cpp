@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 91416 2021-09-28 06:15:49Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 91503 2021-10-01 08:57:59Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -938,7 +938,7 @@ RTVFSIOSTREAM Appliance::i_manifestSetupDigestCalculationForGivenIoStream(RTVFSI
     if (RT_SUCCESS(vrc))
         return hVfsIosPt;
 
-    setErrorVrc(vrc, "RTManifestEntryAddPassthruIoStream failed with rc=%Rrc", vrc);
+    setErrorVrc(vrc, tr("RTManifestEntryAddPassthruIoStream failed with rc=%Rrc"), vrc);
     return NIL_RTVFSIOSTREAM;
 }
 

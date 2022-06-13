@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxClientImpl.cpp 91314 2021-09-20 12:29:18Z vboxsync $ */
+/* $Id: VirtualBoxClientImpl.cpp 91503 2021-10-01 08:57:59Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -161,7 +161,7 @@ HRESULT VirtualBoxClient::init()
     try
     {
         if (ASMAtomicIncU32(&g_cInstances) != 1)
-            AssertFailedStmt(throw setError(E_FAIL, tr("Attempted to create more than one VirtualBoxClient instance")));
+            AssertFailedStmt(throw setError(E_FAIL, "Attempted to create more than one VirtualBoxClient instance"));
 
         mData.m_ThreadWatcher = NIL_RTTHREAD;
         mData.m_SemEvWatcher = NIL_RTSEMEVENT;
@@ -181,9 +181,9 @@ HRESULT VirtualBoxClient::init()
             throw rc;
 
         rc = unconst(mData.m_pEventSource).createObject();
-        AssertComRCThrow(rc, setError(rc, tr("Could not create EventSource for VirtualBoxClient")));
+        AssertComRCThrow(rc, setError(rc, "Could not create EventSource for VirtualBoxClient"));
         rc = mData.m_pEventSource->init();
-        AssertComRCThrow(rc, setError(rc, tr("Could not initialize EventSource for VirtualBoxClient")));
+        AssertComRCThrow(rc, setError(rc, "Could not initialize EventSource for VirtualBoxClient"));
 
         /* HACK ALERT! This is for DllCanUnloadNow(). */
         s_cUnnecessaryAtlModuleLocks++;
@@ -194,7 +194,7 @@ HRESULT VirtualBoxClient::init()
         /* Create the translator singelton (must work) and try load translations (non-fatal). */
         mData.m_pVBoxTranslator = VirtualBoxTranslator::instance();
         if (mData.m_pVBoxTranslator == NULL)
-            throw setError(VBOX_E_IPRT_ERROR, tr("Failed to create translator instance"));
+            throw setError(VBOX_E_IPRT_ERROR, "Failed to create translator instance");
 
         char szNlsPath[RTPATH_MAX];
         vrc = RTPathAppPrivateNoArch(szNlsPath, sizeof(szNlsPath));

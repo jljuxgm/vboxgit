@@ -1,4 +1,4 @@
-/* $Id: VRDEServerImpl.cpp 85276 2020-07-12 13:47:12Z vboxsync $ */
+/* $Id: VRDEServerImpl.cpp 91503 2021-10-01 08:57:59Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -685,7 +685,7 @@ HRESULT VRDEServer::getAuthLibrary(com::Utf8Str &aLibrary)
         }
 
         if (FAILED(hrc))
-            return setError(hrc, "failed to query the library setting\n");
+            return setError(hrc, tr("failed to query the library setting\n"));
     }
 
     return S_OK;
