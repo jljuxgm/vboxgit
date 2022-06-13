@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsNetwork.cpp 94530 2022-04-08 12:20:59Z vboxsync $ */
+/* $Id: UIMachineSettingsNetwork.cpp 94534 2022-04-08 18:18:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsNetwork class implementation.
  */
@@ -550,6 +550,13 @@ void UIMachineSettingsNetwork::retranslateUi()
     reloadAlternatives();
     /* Reapply attachment info: */
     sltHandleAttachmentTypeChange();
+
+    /* These editors have own labels, but we want them to be properly layouted according to each other: */
+    int iMinimumLayoutHint = 0;
+    iMinimumLayoutHint = qMax(iMinimumLayoutHint, m_pEditorAttachmentType->minimumLabelHorizontalHint());
+    iMinimumLayoutHint = qMax(iMinimumLayoutHint, m_pEditorNetworkFeatures->minimumLabelHorizontalHint());
+    m_pEditorAttachmentType->setMinimumLayoutIndent(iMinimumLayoutHint);
+    m_pEditorNetworkFeatures->setMinimumLayoutIndent(iMinimumLayoutHint);
 }
 
 void UIMachineSettingsNetwork::sltHandleAdapterActivityChange()
