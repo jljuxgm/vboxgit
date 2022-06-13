@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioAlsa.cpp 91828 2021-10-18 15:47:22Z vboxsync $ */
+/* $Id: DrvHostAudioAlsa.cpp 91835 2021-10-19 08:04:23Z vboxsync $ */
 /** @file
  * Host audio driver - Advanced Linux Sound Architecture (ALSA).
  */
@@ -832,7 +832,11 @@ static DECLCALLBACK(int) drvHstAudAlsaHA_StreamDestroy(PPDMIHOSTAUDIO pInterface
 
     /** @todo r=bird: It's not like we can do much with a bad status... Check
      *        what the caller does... */
-    return drvHstAudAlsaStreamClose(&pStreamALSA->hPCM);
+    int rc = drvHstAudAlsaStreamClose(&pStreamALSA->hPCM);
+
+    LogRelFlowFunc(("returns %Rrc (state %s)\n", rc, snd_pcm_state_name(snd_pcm_state(pStreamALSA->hPCM))));
+
+    return rc;
 }
 
 
