@@ -1,4 +1,4 @@
-/* $Id: fatvfs.cpp 92914 2021-12-15 08:59:15Z vboxsync $ */
+/* $Id: fatvfs.cpp 92915 2021-12-15 09:12:19Z vboxsync $ */
 /** @file
  * IPRT - FAT Virtual Filesystem.
  */
@@ -914,7 +914,8 @@ static int rtFsFatClusterMap_FlushWorker(PRTFSFATVOL pThis, uint32_t const iFirs
     int      rc      = VINF_SUCCESS;
     uint64_t off     = UINT64_MAX;
     uint64_t offEdge = UINT64_MAX;
-    RTSGSEG  aSgSegs[8] = { 0 }; /* Initialization required for GCC >= 11. */
+    RTSGSEG  aSgSegs[8];
+    RT_ZERO(aSgSegs); /* Initialization required for GCC >= 11. */
     RTSGBUF  SgBuf;
     RTSgBufInit(&SgBuf, aSgSegs, RT_ELEMENTS(aSgSegs));
     SgBuf.cSegs = 0; /** @todo RTSgBuf API is stupid, make it smarter. */
