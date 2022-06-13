@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageVariant.cpp 90372 2021-07-28 15:30:17Z vboxsync $ */
+/* $Id: UIWizardNewVDPageVariant.cpp 90400 2021-07-29 09:40:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageVariant class implementation.
  */
@@ -189,11 +189,11 @@ void UIWizardNewVDPageVariant::retranslateUi()
 
 void UIWizardNewVDPageVariant::initializePage()
 {
-    retranslateUi();
     UIWizardNewVD *pWizard = qobject_cast<UIWizardNewVD*>(wizard());
     AssertReturnVoid(pWizard && m_pVariantGroupBox);
     setWidgetVisibility(pWizard->mediumFormat());
     newVDWizardPropertySet(MediumVariant, m_pVariantGroupBox->mediumVariant());
+    retranslateUi();
 }
 
 bool UIWizardNewVDPageVariant::isComplete() const

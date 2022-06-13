@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMDiskPageBasic.h 90295 2021-07-22 17:29:34Z vboxsync $ */
+/* $Id: UIWizardNewVMDiskPageBasic.h 90400 2021-07-29 09:40:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMDiskPageBasic class declaration.
  */
@@ -54,13 +54,10 @@ enum SelectedDiskSource
 
 namespace UIWizardNewVMDiskPage
 {
-    QString defaultExtension(const CMediumFormat &mediumFormatRef);
-    QString toFileName(const QString &strName, const QString &strExtension);
     QUuid getWithFileOpenDialog(const QString &strOSTypeID,
                                 const QString &strMachineFolder,
                                 const QString &strMachineBaseName,
                                 QWidget *pCaller);
-    QString absoluteFilePath(const QString &strFileName, const QString &strPath);
     bool checkFATSizeLimitation(const qulonglong uVariant, const QString &strMediumPath, const qulonglong uSize);
     QString selectNewMediumLocation(UIWizardNewVM *pWizard);
 }
