@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 94179 2022-03-11 16:43:01Z vboxsync $ */
+/* $Id: VBoxManage.h 94181 2022-03-11 16:55:03Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -131,7 +131,6 @@ typedef enum
     USAGE_I_DEBUGLOG,
     USAGE_I_SETHDPARENTUUID,
     USAGE_I_PASSWORDHASH,
-    USAGE_BANDWIDTHCONTROL,
     USAGE_I_GUESTSTATS,
     USAGE_I_REPAIRHD,
     USAGE_NATNETWORK,

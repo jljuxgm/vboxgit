@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 94179 2022-03-11 16:43:01Z vboxsync $ */
+/* $Id: VBoxManage.cpp 94181 2022-03-11 16:55:03Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -251,7 +251,7 @@ static const VBMGCMD g_aCommands[] =
     { "natnetwork",         USAGE_NATNETWORK,       VBMG_CMD_TODO, handleNATNetwork,           0 },
 #endif
     { "extpack",            USAGE_S_NEWCMD,      HELP_CMD_EXTPACK, handleExtPack,              0 },
-    { "bandwidthctl",       USAGE_BANDWIDTHCONTROL, VBMG_CMD_TODO, handleBandwidthControl,     0 },
+    { "bandwidthctl",       USAGE_S_NEWCMD, HELP_CMD_BANDWIDTHCTL, handleBandwidthControl,     0 },
     { "debugvm",            USAGE_S_NEWCMD,      HELP_CMD_DEBUGVM, handleDebugVM,              0 },
     { "convertfromraw",     USAGE_CONVERTFROMRAW,   VBMG_CMD_TODO, handleConvertFromRaw,       VBMG_CMD_F_NO_COM },
     { "convertdd",          USAGE_CONVERTFROMRAW,   VBMG_CMD_TODO, handleConvertFromRaw,       VBMG_CMD_F_NO_COM },
