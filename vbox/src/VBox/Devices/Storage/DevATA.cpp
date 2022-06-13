@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 88730 2021-04-27 11:59:39Z vboxsync $ */
+/* $Id: DevATA.cpp 90166 2021-07-13 12:22:21Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -5327,7 +5327,7 @@ ataIOPortRead1Data(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT offPort, uint32_t 
 
         if (s->iIOBufferPIODataStart < s->iIOBufferPIODataEnd)
         {
-            Assert(s->uTxDir == PDMMEDIATXDIR_FROM_DEVICE);
+            AssertMsg(s->uTxDir == PDMMEDIATXDIR_FROM_DEVICE, ("%#x\n", s->uTxDir));
             uint32_t const iIOBufferPIODataStart = RT_MIN(s->iIOBufferPIODataStart, sizeof(s->abIOBuffer));
             uint32_t const iIOBufferPIODataEnd   = RT_MIN(s->iIOBufferPIODataEnd,   sizeof(s->abIOBuffer));
             uint8_t const *pbSrc = &s->abIOBuffer[iIOBufferPIODataStart];
