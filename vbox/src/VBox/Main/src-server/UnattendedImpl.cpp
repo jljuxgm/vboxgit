@@ -1,4 +1,4 @@
-/* $Id: UnattendedImpl.cpp 93522 2022-02-01 07:55:38Z vboxsync $ */
+/* $Id: UnattendedImpl.cpp 93523 2022-02-01 08:00:53Z vboxsync $ */
 /** @file
  * Unattended class implementation
  */
@@ -541,7 +541,7 @@ HRESULT Unattended::i_innerDetectIsoOSWindows(RTVFS hVfsIso, DETECTBUFFER *pBuf,
                 char *pXmlBuf = (char*)RTMemAlloc(header.XmlData.cbOrginal);
                 if (pXmlBuf)
                 {
-                    vrc = RTVfsFileReadAt(hVfsFile, header.XmlData.off, pXmlBuf, (size_t)header.XmlData.cbOrginal, NULL);
+                    vrc = RTVfsFileReadAt(hVfsFile, (RTFOFF)header.XmlData.off, pXmlBuf, (size_t)header.XmlData.cbOrginal, NULL);
                     if (RT_SUCCESS(vrc))
                     {
                         xml::Document doc;
