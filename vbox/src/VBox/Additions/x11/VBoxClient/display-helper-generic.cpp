@@ -1,4 +1,4 @@
-/* $Id: display-helper-generic.cpp 93379 2022-01-20 18:48:37Z vboxsync $ */
+/* $Id: display-helper-generic.cpp 93380 2022-01-20 19:06:55Z vboxsync $ */
 /** @file
  * A generic helper for X11 Client which performs Desktop Environment
  * specific actions.
@@ -68,7 +68,7 @@ static FNDISPLAYOFFSETCHANGE *g_pfnDisplayOffsetChangeCb;
  *
  * @return  TRUE if first name should go first in a list, FALSE otherwise.
  * @param   pszName1    First monitor name.
- * @param   pszName1    Second monitor name.
+ * @param   pszName2    Second monitor name.
  */
 static bool vbcl_hlp_generic_order_names(char *pszName1, char *pszName2)
 {

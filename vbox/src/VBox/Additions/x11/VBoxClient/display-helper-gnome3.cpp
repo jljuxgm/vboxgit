@@ -1,4 +1,4 @@
-/* $Id: display-helper-gnome3.cpp 93379 2022-01-20 18:48:37Z vboxsync $ */
+/* $Id: display-helper-gnome3.cpp 93380 2022-01-20 19:06:55Z vboxsync $ */
 /** @file
  * A helper for X11/Wayland Client which performs Gnome Desktop
  * Environment specific actions.
@@ -140,7 +140,7 @@ static dbus_bool_t vbcl_hlp_gnome3_check_iter_signature(DBusMessageIter *iter, c
  * Verifies D-bus message signature.
  *
  * @return  True if message signature matches to given one.
- * @param   iter        D-bus message to check.
+ * @param   message     D-bus message to check.
  * @param   signature   Expected message signature.
  */
 static dbus_bool_t vbcl_hlp_gnome3_check_message_signature(DBusMessage *message, const char *signature)

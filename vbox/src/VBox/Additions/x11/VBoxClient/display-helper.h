@@ -1,4 +1,4 @@
-/* $Id: display-helper.h 93375 2022-01-20 18:11:54Z vboxsync $ */
+/* $Id: display-helper.h 93380 2022-01-20 19:06:55Z vboxsync $ */
 /** @file
  *
  * Definitions for Desktop Environment helpers.
@@ -111,15 +111,12 @@ RTDECL(int) vbcl_hlp_generic_term(void);
 /**
  * Subscribe to display offset change notifications emitted by Generic Desktop Environment helper.
  *
- * @returns IPRT status code.
  * @param   pfnCb   A pointer to callback function which will be triggered when event arrives.
  */
 RTDECL(void) vbcl_hlp_generic_subscribe_display_offset_changed(FNDISPLAYOFFSETCHANGE *pfnCb);
 
 /**
  * Unsubscribe from display offset change notifications emitted by Generic Desktop Environment helper.
- *
- * @returns IPRT status code.
  */
 RTDECL(void) vbcl_hlp_generic_unsubscribe_display_offset_changed(void);
 

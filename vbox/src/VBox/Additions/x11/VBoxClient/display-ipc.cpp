@@ -1,4 +1,4 @@
-/* $Id: display-ipc.cpp 93369 2022-01-20 17:42:41Z vboxsync $ */
+/* $Id: display-ipc.cpp 93380 2022-01-20 19:06:55Z vboxsync $ */
 /** @file
  * Common code for IPC communication between VBoxDRMClient and VBoxClient.
  */
@@ -68,7 +68,7 @@
  * @param   hThread             A thread which server IPC client connection.
  * @param   hClientSession      IPC session handle obtained from RTLocalIpcSessionXXX().
  * @param   cTxListCapacity     Maximum number of messages which can be queued for TX for this IPC session.
- * @param   pfnCb               IPC RX callback function pointer.
+ * @param   pfnRxCb             IPC RX callback function pointer.
  */
 RTDECL(int) vbDrmIpcClientInit(PVBOX_DRMIPC_CLIENT pClient, RTTHREAD hThread, RTLOCALIPCSESSION hClientSession,
                              uint32_t cTxListCapacity, PFNDRMIPCRXCB pfnRxCb)

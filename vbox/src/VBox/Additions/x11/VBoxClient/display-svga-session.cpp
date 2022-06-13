@@ -1,4 +1,4 @@
-/* $Id: display-svga-session.cpp 93378 2022-01-20 18:35:50Z vboxsync $ */
+/* $Id: display-svga-session.cpp 93380 2022-01-20 19:06:55Z vboxsync $ */
 /** @file
  * Desktop Environment specific guest screen assistant for
  * VMSVGA graphics adapter.
@@ -87,7 +87,7 @@ static RTLOCALIPCSESSION g_hSession = 0;
  *
  * @returns IPRT status code.
  * @param   cDisplays   Number of displays which have changed offset.
- * @param   pDisplays   Display data.
+ * @param   paDisplays  Display data.
  */
 static DECLCALLBACK(int) vbclSVGASessionDisplayOffsetChanged(uint32_t cOffsets, RTPOINT *paOffsets)
 {
