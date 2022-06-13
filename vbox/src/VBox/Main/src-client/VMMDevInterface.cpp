@@ -1,4 +1,4 @@
-/* $Id: VMMDevInterface.cpp 89952 2021-06-29 13:36:53Z vboxsync $ */
+/* $Id: VMMDevInterface.cpp 90691 2021-08-16 08:43:03Z vboxsync $ */
 /** @file
  * VirtualBox Driver Interface to VMM device.
  */
@@ -460,12 +460,15 @@ DECLCALLBACK(int) vmmdevSetVisibleRegion(PPDMIVMMDEVCONNECTOR pInterface, uint32
     return VINF_SUCCESS;
 }
 
-DECLCALLBACK(int) vmmdevUpdateMonitorPositions(PPDMIVMMDEVCONNECTOR pInterface, uint32_t cPositions, PRTPOINT pPositions)
+/**
+ * @interface_method_impl{PDMIVMMDEVCONNECTOR,pfnUpdateMonitorPositions}
+ */
+static DECLCALLBACK(int) vmmdevUpdateMonitorPositions(PPDMIVMMDEVCONNECTOR pInterface, uint32_t cPositions, PCRTPOINT paPositions)
 {
     PDRVMAINVMMDEV pDrv = RT_FROM_MEMBER(pInterface, DRVMAINVMMDEV, Connector);
     Console *pConsole = pDrv->pVMMDev->getParent();
 
-    pConsole->i_getDisplay()->i_handleUpdateMonitorPositions(cPositions, pPositions);
+    pConsole->i_getDisplay()->i_handleUpdateMonitorPositions(cPositions, paPositions);
 
     return VINF_SUCCESS;
 }

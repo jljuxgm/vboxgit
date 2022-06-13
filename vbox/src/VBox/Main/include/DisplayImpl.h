@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 85121 2020-07-08 19:33:26Z vboxsync $ */
+/* $Id: DisplayImpl.h 90691 2021-08-16 08:43:03Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -163,7 +163,7 @@ public:
 
     int  i_saveVisibleRegion(uint32_t cRect, PRTRECT pRect);
     int  i_handleSetVisibleRegion(uint32_t cRect, PRTRECT pRect);
-    int  i_handleUpdateMonitorPositions(uint32_t cPositions, PRTPOINT pPosition);
+    int  i_handleUpdateMonitorPositions(uint32_t cPositions, PCRTPOINT paPositions);
     int  i_handleQueryVisibleRegion(uint32_t *pcRects, PRTRECT paRects);
 
     void i_VRDPConnectionEvent(bool fConnect);
