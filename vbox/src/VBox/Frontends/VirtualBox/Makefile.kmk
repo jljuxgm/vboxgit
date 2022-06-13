@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 90193 2021-07-14 17:40:47Z vboxsync $
+# $Id: Makefile.kmk 90288 2021-07-22 14:16:13Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -267,6 +267,7 @@ VBOX_GUI_INC_DIRS = \
 	./src/medium \
 	./src/medium/viso \
 	./src/networkmanager \
+	./src/notificationcenter \
 	./src/objects \
 	./src/platform \
 	./src/platform/darwin \
@@ -840,6 +841,10 @@ UICommon_QT_MOCHDRS = \
 	src/medium/viso/UIVisoConfigurationPanel.h \
 	src/medium/viso/UIVisoCreatorOptionsPanel.h \
 	src/medium/viso/UIVisoHostBrowser.h \
+	src/notificationcenter/UINotificationCenter.h \
+	src/notificationcenter/UINotificationModel.h \
+	src/notificationcenter/UINotificationObject.h \
+	src/notificationcenter/UINotificationObjectItem.h \
 	src/settings/UISettingsDialog.h \
 	src/settings/UISettingsDialogSpecific.h \
 	src/settings/UISettingsPage.h \
@@ -1385,6 +1390,10 @@ UICommon_SOURCES = \
 	src/medium/viso/UIVisoConfigurationPanel.cpp \
 	src/medium/viso/UIVisoCreatorOptionsPanel.cpp \
 	src/medium/viso/UIVisoHostBrowser.cpp \
+	src/notificationcenter/UINotificationCenter.cpp \
+	src/notificationcenter/UINotificationModel.cpp \
+	src/notificationcenter/UINotificationObject.cpp \
+	src/notificationcenter/UINotificationObjectItem.cpp \
 	src/objects/UIRichTextString.cpp \
 	src/settings/UISettingsDefs.cpp \
 	src/settings/UISettingsDialog.cpp \
