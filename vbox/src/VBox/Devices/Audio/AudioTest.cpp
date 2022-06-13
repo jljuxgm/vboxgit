@@ -1,4 +1,4 @@
-/* $Id: AudioTest.cpp 91495 2021-09-30 08:39:18Z vboxsync $ */
+/* $Id: AudioTest.cpp 91496 2021-09-30 08:40:29Z vboxsync $ */
 /** @file
  * Audio testing routines.
  *
@@ -393,8 +393,8 @@ static uint64_t audioTestToneFileFind(RTFILE hFile, bool fFindSilence, uint64_t 
     int rc = RTFileSeek(hFile, uOff, RTFILE_SEEK_BEGIN, NULL);
     AssertRCReturn(rc, 0);
 
-    uint64_t offFound       = 0;
-    int64_t  abSample[_16K];
+    uint64_t offFound = 0;
+    int64_t  abSample[_64K];
 
     size_t   cbRead;
     for (;;)
