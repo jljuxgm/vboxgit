@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.h 94294 2022-03-17 13:44:25Z vboxsync $ */
+/* $Id: UIMediumManager.h 94823 2022-05-04 15:05:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class declaration.
  */
@@ -299,6 +299,8 @@ private:
 
         /** Defines current item for passed @a pTreeWidget as @a pItem. */
         void setCurrentItem(QITreeWidget *pTreeWidget, QTreeWidgetItem *pItem);
+
+    void enableClearAction();
     /** @} */
 
     /** @name Search stuff.
