@@ -1,4 +1,4 @@
-/* $Id: ahci.c 89364 2021-05-28 15:44:38Z vboxsync $ */
+/* $Id: ahci.c 92290 2021-11-09 12:49:35Z vboxsync $ */
 /** @file
  * AHCI host adapter driver to boot from SATA disks.
  */
@@ -750,7 +750,7 @@ void ahci_port_detect_device(ahci_t __far *ahci, uint8_t u8Port)
                 }
                 if (idxCmosChsBase && inb_cmos(idxCmosChsBase+7))
                 {
-                    lgeo.cylinders = inb_cmos(idxCmosChsBase + 0) + (inb_cmos(idxCmosChsBase + 1) << 8);
+                    lgeo.cylinders = get_cmos_word(idxCmosChsBase /*, idxCmosChsBase+1*/);
                     lgeo.heads     = inb_cmos(idxCmosChsBase + 2);
                     lgeo.spt       = inb_cmos(idxCmosChsBase + 7);
                 }

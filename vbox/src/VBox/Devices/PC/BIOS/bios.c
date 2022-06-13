@@ -1,4 +1,4 @@
-/* $Id: bios.c 84752 2020-06-10 10:58:33Z vboxsync $ */
+/* $Id: bios.c 92290 2021-11-09 12:49:35Z vboxsync $ */
 /** @file
  * PC BIOS - ???
  */
@@ -81,6 +81,15 @@ void outb_cmos(uint8_t cmos_reg, uint8_t val)
         cmos_port += 2;
     outb(cmos_port, cmos_reg);
     outb(cmos_port + 1, val);
+}
+
+/**
+ * Reads two adjacent cmos bytes and return their values as a 16-bit word.
+ */
+uint16_t get_cmos_word(uint8_t idxFirst)
+{
+    return ((uint16_t)inb_cmos(idxFirst + 1) << 8)
+         |            inb_cmos(idxFirst);
 }
 
 void BIOSCALL dummy_isr_function(pusha_regs_t regs, uint16_t es,

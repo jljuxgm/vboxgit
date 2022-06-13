@@ -1,4 +1,4 @@
-/* $Id: scsi.c 89364 2021-05-28 15:44:38Z vboxsync $ */
+/* $Id: scsi.c 92290 2021-11-09 12:49:35Z vboxsync $ */
 /** @file
  * SCSI host adapter driver to boot from SCSI disks
  */
@@ -386,7 +386,7 @@ static void scsi_enumerate_attached_devices(uint16_t hba_seg, uint8_t idx_hba)
                 if (cmos_base && inb_cmos(cmos_base + 7))
                 {
                     /* If provided, grab the logical geometry from CMOS. */
-                    cylinders         = inb_cmos(cmos_base + 0) + (inb_cmos(cmos_base + 1) << 8);
+                    cylinders         = get_cmos_word(cmos_base /*, cmos_base + 1*/);
                     heads             = inb_cmos(cmos_base + 2);
                     sectors_per_track = inb_cmos(cmos_base + 7);
                 }

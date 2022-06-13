@@ -1,4 +1,4 @@
-/* $Id: ata.c 89364 2021-05-28 15:44:38Z vboxsync $ */
+/* $Id: ata.c 92290 2021-11-09 12:49:35Z vboxsync $ */
 /** @file
  * PC BIOS - ATA disk support.
  */
@@ -587,7 +587,7 @@ void BIOSCALL ata_detect(void)
             }
             if (chsgeo_base)
             {
-                lgeo.cylinders = inb_cmos(chsgeo_base) + (inb_cmos(chsgeo_base + 1) << 8);
+                lgeo.cylinders = get_cmos_word(chsgeo_base /*, chsgeo_base + 1*/);
                 lgeo.heads     = inb_cmos(chsgeo_base + 2);
                 lgeo.spt       = inb_cmos(chsgeo_base + 7);
             }
