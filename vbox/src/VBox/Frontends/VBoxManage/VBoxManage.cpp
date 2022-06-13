@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 92403 2021-11-12 15:59:12Z vboxsync $ */
+/* $Id: VBoxManage.cpp 92404 2021-11-12 16:21:04Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -170,6 +170,7 @@ typedef ListenerImpl<VBoxEventListener> VBoxEventListenerImpl;
 
 VBOX_LISTENER_DECLARE(VBoxEventListenerImpl)
 #endif /* !VBOX_WITH_VBOXMANAGE_NLS */
+
 
 /*********************************************************************************************************************************
 *   Global Variables                                                                                                             *
