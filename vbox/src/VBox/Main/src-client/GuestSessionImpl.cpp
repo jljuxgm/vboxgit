@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 92878 2021-12-13 09:47:14Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 92879 2021-12-13 10:14:41Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -3394,10 +3394,8 @@ HRESULT GuestSession::directoryCreate(const com::Utf8Str &aPath, ULONG aMode,
         for (size_t i = 0; i < aFlags.size(); i++)
             fFlags |= aFlags[i];
 
-        /** @todo r=bird: This should be: if (fFlags & ~DirectoryCreateFlag_Parents) */
-        if (fFlags)
-            if (!(fFlags & DirectoryCreateFlag_Parents))
-                return setError(E_INVALIDARG, tr("Unknown flags (%#x)"), fFlags);
+        if (fFlags & ~DirectoryCreateFlag_Parents)
+            return setError(E_INVALIDARG, tr("Unknown flags (%#x)"), fFlags);
     }
 
     HRESULT hrc = i_isStartedExternal();
