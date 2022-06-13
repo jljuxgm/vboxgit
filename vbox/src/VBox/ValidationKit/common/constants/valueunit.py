@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: valueunit.py 92302 2021-11-09 21:26:03Z vboxsync $
+# $Id: valueunit.py 92305 2021-11-09 23:50:52Z vboxsync $
 
 """
 Test Value Unit Definititions.
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 92302 $"
+__version__ = "$Revision: 92305 $"
 
 
 
@@ -119,7 +119,7 @@ g_asNames = \
     'ticks/call',
     'ticks/occ',
     'pages',
-    'pages/sec',
+    'pages/s',
     'ticks/page',
     'ns/page',
 ];
