@@ -1,4 +1,4 @@
-/* $Id: UIFileManager.h 92641 2021-11-30 09:01:57Z vboxsync $ */
+/* $Id: UIFileManager.h 92645 2021-11-30 10:50:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManager class declaration.
  */
@@ -134,6 +134,9 @@ private:
     void prepareConnections();
     void prepareVerticalToolBar(QHBoxLayout *layout);
     void prepareToolBar();
+    /** Creates options and sessions panels and adds them to @p pLayout.  */
+    void prepareOptionsAndSessionPanels(QVBoxLayout *pLayout);
+    void prepareOperationsAndLogPanels(QSplitter *pSplitter);
 
     /** Creates a shared machine session, opens a guest session and registers event listeners. */
     bool openSession(const QString& strUserName, const QString& strPassword);
