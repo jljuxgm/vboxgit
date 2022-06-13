@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-x11.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: VBoxUtils-x11.h 93890 2022-02-22 17:49:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Declarations of utility classes and functions for handling X11 specific tasks.
  */
@@ -100,7 +100,7 @@ namespace NativeWindowSubsystem
     /** X11: Returns the list of Inhibit methods found by introspecting DBus services. */
     SHARED_LIBRARY_STUFF QVector<X11ScreenSaverInhibitMethod*> X11FindDBusScrenSaverInhibitMethods();
     /** X11: Disables/enables Screen Saver through QDBus. */
-    SHARED_LIBRARY_STUFF void X11InhibitUninhibitScrenSaver(bool fInhibit, QVector<X11ScreenSaverInhibitMethod*> &inOutIhibitMethods);
+    SHARED_LIBRARY_STUFF void X11InhibitUninhibitScrenSaver(bool fInhibit, QVector<X11ScreenSaverInhibitMethod*> &inOutInhibitMethods);
 
     /** Activates window with certain @a wId, @a fSwitchDesktop if requested. */
     bool X11ActivateWindow(WId wId, bool fSwitchDesktop);
