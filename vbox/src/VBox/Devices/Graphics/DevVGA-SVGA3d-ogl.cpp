@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-ogl.cpp 89163 2021-05-19 13:12:44Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-ogl.cpp 91774 2021-10-17 10:36:21Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -27,6 +27,7 @@
 //# define RTMEM_WRAP_TO_EF_APIS
 #endif
 #define LOG_GROUP LOG_GROUP_DEV_VMSVGA
+#define GL_SILENCE_DEPRECATION          /* shut up deprecated warnings on darwin (10.15 sdk) */
 #include <VBox/vmm/pdmdev.h>
 #include <VBox/version.h>
 #include <VBox/err.h>
