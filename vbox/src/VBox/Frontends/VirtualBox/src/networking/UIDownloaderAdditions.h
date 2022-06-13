@@ -1,4 +1,4 @@
-/* $Id: UIDownloaderAdditions.h 90541 2021-08-06 10:19:48Z vboxsync $ */
+/* $Id: UIDownloaderAdditions.h 90568 2021-08-07 12:10:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDownloaderAdditions class declaration.
  */
@@ -40,17 +40,10 @@ signals:
 
 public:
 
-    /** Creates downloader instance. */
-    static UIDownloaderAdditions *create();
-    /** Returns current downloader instance. */
-    static UIDownloaderAdditions *current() { return s_pInstance; }
-
-private:
-
     /** Constructs downloader. */
     UIDownloaderAdditions();
-    /** Destructs downloader. */
-    ~UIDownloaderAdditions();
+
+private:
 
     /** Returns description of the current network operation. */
     virtual QString description() const /* override */;
@@ -61,9 +54,6 @@ private:
     virtual void handleDownloadedObject(UINetworkReply *pReply) /* override */;
     /** Handles verified object for passed @a pReply. */
     virtual void handleVerifiedObject(UINetworkReply *pReply) /* override */;
-
-    /** Holds the static singleton instance. */
-    static UIDownloaderAdditions *s_pInstance;
 
     /** Holds the cached received data awaiting for verification. */
     QByteArray m_receivedData;
