@@ -1,4 +1,4 @@
-/* $Id: GIMAllKvm.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: GIMAllKvm.cpp 93725 2022-02-14 13:46:16Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, KVM, All Contexts.
  */
@@ -35,7 +35,6 @@
 #include <VBox/err.h>
 #include <VBox/sup.h>
 
-#include <iprt/asm-amd64-x86.h>
 #include <iprt/time.h>
 
 

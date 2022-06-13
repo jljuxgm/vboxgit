@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 93338 2022-01-19 05:46:52Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 93725 2022-02-14 13:46:16Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -5827,7 +5827,11 @@ IEM_CIMPL_DEF_4(iemCImpl_load_CrX, uint8_t, iCrReg, uint64_t, uNewCrX, IEMACCESS
                see Intel spec. 23.8 "Restrictions on VMX operation". */
             if (IEM_VMX_IS_ROOT_MODE(pVCpu))
             {
+#ifdef VBOX_WITH_NESTED_HWVIRT_VMX
                 uint64_t const uCr0Fixed0 = IEM_VMX_IS_NON_ROOT_MODE(pVCpu) ? iemVmxGetCr0Fixed0(pVCpu) : VMX_V_CR0_FIXED0;
+#else
+                uint64_t const uCr0Fixed0 = VMX_V_CR0_FIXED0;
+#endif
                 if ((uNewCrX & uCr0Fixed0) != uCr0Fixed0)
                 {
                     Log(("Trying to clear reserved CR0 bits in VMX operation: NewCr0=%#llx MB1=%#llx\n", uNewCrX, uCr0Fixed0));

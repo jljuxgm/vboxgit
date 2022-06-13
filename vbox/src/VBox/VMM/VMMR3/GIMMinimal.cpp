@@ -1,4 +1,4 @@
-/* $Id: GIMMinimal.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: GIMMinimal.cpp 93725 2022-02-14 13:46:16Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Minimal implementation.
  */
@@ -29,7 +29,6 @@
 
 #include <iprt/assert.h>
 #include <iprt/err.h>
-#include <iprt/asm-amd64-x86.h>
 #include <iprt/string.h>
 
 

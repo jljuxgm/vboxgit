@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 93573 2022-02-03 11:22:36Z vboxsync $ */
+/* $Id: PGMAll.cpp 93725 2022-02-14 13:46:16Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -37,7 +37,9 @@
 #include <VBox/vmm/vmcc.h>
 #include "PGMInline.h"
 #include <iprt/assert.h>
-#include <iprt/asm-amd64-x86.h>
+#if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
+# include <iprt/asm-amd64-x86.h>
+#endif
 #include <iprt/string.h>
 #include <VBox/log.h>
 #include <VBox/param.h>

@@ -1,4 +1,4 @@
-/* $Id: VMReq.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: VMReq.cpp 93725 2022-02-14 13:46:16Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -1228,7 +1228,7 @@ static int  vmR3ReqProcessOne(PVMREQ pReq)
                 DECLCALLBACKMEMBER(int, pfn15,(uintptr_t, uintptr_t, uintptr_t, uintptr_t, uintptr_t, uintptr_t, uintptr_t, uintptr_t, uintptr_t, uintptr_t, uintptr_t, uintptr_t, uintptr_t, uintptr_t, uintptr_t));
             } u;
             u.pfn = pReq->u.Internal.pfn;
-#ifdef RT_ARCH_AMD64
+#ifndef RT_ARCH_X86
             switch (pReq->u.Internal.cArgs)
             {
                 case 0:  rcRet = u.pfn00(); break;

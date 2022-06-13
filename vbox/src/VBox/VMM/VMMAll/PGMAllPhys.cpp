@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 93716 2022-02-14 10:36:21Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 93725 2022-02-14 13:46:16Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -34,7 +34,6 @@
 #include <VBox/err.h>
 #include <iprt/assert.h>
 #include <iprt/string.h>
-#include <iprt/asm-amd64-x86.h>
 #include <VBox/log.h>
 #ifdef IN_RING3
 # include <iprt/thread.h>

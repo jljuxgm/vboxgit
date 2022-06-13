@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 93721 2022-02-14 12:52:27Z vboxsync $ */
+/* $Id: HM.cpp 93725 2022-02-14 13:46:16Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -61,7 +61,9 @@
 #include <iprt/assert.h>
 #include <VBox/log.h>
 #include <iprt/asm.h>
-#include <iprt/asm-amd64-x86.h>
+#if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
+# include <iprt/asm-amd64-x86.h>
+#endif
 #include <iprt/env.h>
 #include <iprt/thread.h>
 

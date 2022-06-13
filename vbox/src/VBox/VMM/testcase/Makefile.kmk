@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 93718 2022-02-14 11:09:36Z vboxsync $
+# $Id: Makefile.kmk 93725 2022-02-14 13:46:16Z vboxsync $
 ## @file
 # Sub-Makefile for the VMM testcases.
 #
@@ -69,11 +69,15 @@ PROGRAMS += \
 	tstCompressionBenchmark \
 	tstIEMCheckMc \
 	tstPDMQueue \
-	tstSSM \
+	tstSSM
+
+  if1of ($(KBUILD_TARGET_ARCH),amd64 x86)
+PROGRAMS += \
 	tstVMMR0CallHost-1 \
 	tstX86-FpuSaveRestore
-  ifn1of ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH), solaris.x86 solaris.amd64 win.amd64 ) ## TODO: Fix the code.
+   ifn1of ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH), solaris.x86 solaris.amd64 win.amd64 ) ## TODO: Fix the code.
 PROGRAMS += tstX86-1
+   endif
   endif
   ifdef VBOX_WITH_RAW_MODE
    if defined(VBOX_WITH_HARDENING) && "$(KBUILD_TARGET)" == "win"

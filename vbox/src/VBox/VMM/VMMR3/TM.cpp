@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 93717 2022-02-14 10:55:27Z vboxsync $ */
+/* $Id: TM.cpp 93725 2022-02-14 13:46:16Z vboxsync $ */
 /** @file
  * TM - Time Manager.
  */
@@ -125,7 +125,6 @@
 # define DBGFTRACE_DISABLED /* annoying */
 #endif
 #include <VBox/vmm/tm.h>
-#include <iprt/asm-amd64-x86.h> /* for SUPGetCpuHzFromGip from sup.h  */
 #include <VBox/vmm/vmm.h>
 #include <VBox/vmm/mm.h>
 #include <VBox/vmm/hm.h>

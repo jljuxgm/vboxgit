@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 93716 2022-02-14 10:36:21Z vboxsync $ */
+/* $Id: PGM.cpp 93725 2022-02-14 13:46:16Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -614,7 +614,9 @@
 #include <VBox/err.h>
 
 #include <iprt/asm.h>
-#include <iprt/asm-amd64-x86.h>
+#if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
+# include <iprt/asm-amd64-x86.h>
+#endif
 #include <iprt/assert.h>
 #include <iprt/env.h>
 #include <iprt/file.h>

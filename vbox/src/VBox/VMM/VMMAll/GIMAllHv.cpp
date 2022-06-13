@@ -1,4 +1,4 @@
-/* $Id: GIMAllHv.cpp 93554 2022-02-02 22:57:02Z vboxsync $ */
+/* $Id: GIMAllHv.cpp 93725 2022-02-14 13:46:16Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Microsoft Hyper-V, All Contexts.
  */
@@ -36,7 +36,6 @@
 
 #include <VBox/err.h>
 
-#include <iprt/asm-amd64-x86.h>
 #ifdef IN_RING3
 # include <iprt/mem.h>
 #endif

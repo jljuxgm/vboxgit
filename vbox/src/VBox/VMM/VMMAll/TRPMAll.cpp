@@ -1,4 +1,4 @@
-/* $Id: TRPMAll.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: TRPMAll.cpp 93725 2022-02-14 13:46:16Z vboxsync $ */
 /** @file
  * TRPM - Trap Monitor - Any Context.
  */
@@ -34,7 +34,6 @@
 #include <VBox/log.h>
 #include <iprt/assert.h>
 #include <iprt/asm.h>
-#include <iprt/asm-amd64-x86.h>
 #include <iprt/param.h>
 #include <iprt/x86.h>
 

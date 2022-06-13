@@ -1,4 +1,4 @@
-/* $Id: HMVMXAll.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: HMVMXAll.cpp 93725 2022-02-14 13:46:16Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - All contexts.
  */
@@ -26,6 +26,10 @@
 #include <VBox/vmm/vmcc.h>
 #include <VBox/vmm/pdmapi.h>
 #include <iprt/errcore.h>
+
+#if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
+# include <iprt/asm-amd64-x86.h> /* ASMCpuId_EAX */
+#endif
 
 
 /*********************************************************************************************************************************
@@ -548,6 +552,7 @@ static bool hmVmxIsStackSelectorOk(PCCPUMSELREG pSel)
 }
 
 
+#if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
 /**
  * Checks if the CPU is subject to the "VMX-Preemption Timer Does Not Count Down at
  * the Rate Specified" erratum.
@@ -591,6 +596,7 @@ VMM_INT_DECL(bool) HMIsSubjectToVmxPreemptTimerErratum(void)
         return true;
     return false;
 }
+#endif
 
 
 /**

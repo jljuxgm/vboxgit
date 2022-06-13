@@ -1,4 +1,4 @@
-/* $Id: PDMAllCritSectRw.cpp 93554 2022-02-02 22:57:02Z vboxsync $ */
+/* $Id: PDMAllCritSectRw.cpp 93725 2022-02-14 13:46:16Z vboxsync $ */
 /** @file
  * IPRT - Read/Write Critical Section, Generic.
  */
@@ -30,7 +30,6 @@
 
 #include <VBox/log.h>
 #include <iprt/asm.h>
-#include <iprt/asm-amd64-x86.h>
 #include <iprt/assert.h>
 #ifdef IN_RING3
 # include <iprt/lockvalidator.h>

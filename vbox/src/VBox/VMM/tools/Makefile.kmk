@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 93115 2022-01-01 11:31:46Z vboxsync $
+# $Id: Makefile.kmk 93725 2022-02-14 13:46:16Z vboxsync $
 ## @file
 # Sub-Makefile for VMM tools.
 #
@@ -52,7 +52,9 @@ endif
 #
 # CPU report program (CPUM DB).
 #
+if1of ($(KBUILD_TARGET_ARCH), amd64 x86)
 PROGRAMS += VBoxCpuReport
+endif
 VBoxCpuReport_TEMPLATE := VBoxR3Static
 VBoxCpuReport_DEFS      = VBOX_IN_VMM IN_VMM_R3 IN_VBOX_CPU_REPORT $(VMM_COMMON_DEFS)
 VBoxCpuReport_INCS      = ../include

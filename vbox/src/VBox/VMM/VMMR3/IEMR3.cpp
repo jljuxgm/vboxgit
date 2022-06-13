@@ -1,4 +1,4 @@
-/* $Id: IEMR3.cpp 93650 2022-02-08 10:43:53Z vboxsync $ */
+/* $Id: IEMR3.cpp 93725 2022-02-14 13:46:16Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager.
  */
@@ -27,8 +27,8 @@
 #include <VBox/vmm/vm.h>
 #include <VBox/err.h>
 
-#include <iprt/asm-amd64-x86.h>
 #include <iprt/assert.h>
+
 
 static const char *iemGetTargetCpuName(uint32_t enmTargetCpu)
 {
