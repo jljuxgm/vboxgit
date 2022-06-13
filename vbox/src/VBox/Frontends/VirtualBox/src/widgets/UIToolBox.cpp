@@ -1,4 +1,4 @@
-/* $Id: UIToolBox.cpp 91242 2021-09-15 10:09:24Z vboxsync $ */
+/* $Id: UIToolBox.cpp 91455 2021-09-29 13:02:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolBox class implementation.
  */
@@ -411,8 +411,7 @@ QSize UIToolBox::minimumSizeHint() const
 
 void UIToolBox::setPageEnabled(int iIndex, bool fEnabled)
 {
-    Q_UNUSED(fEnabled);
-    Q_UNUSED(iIndex);
+    m_pages.value(iIndex)->setEnabled(fEnabled);
 }
 
 void UIToolBox::setPageTitle(int iIndex, const QString &strTitle)
