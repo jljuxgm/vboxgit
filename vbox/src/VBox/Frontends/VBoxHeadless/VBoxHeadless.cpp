@@ -1,4 +1,4 @@
-/* $Id: VBoxHeadless.cpp 92063 2021-10-26 07:41:11Z vboxsync $ */
+/* $Id: VBoxHeadless.cpp 92066 2021-10-26 08:26:25Z vboxsync $ */
 /** @file
  * VBoxHeadless - The VirtualBox Headless frontend for running VMs on servers.
  */
@@ -1365,7 +1365,8 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
         sigaction(SIGINT,  &sa, NULL);
         sigaction(SIGTERM, &sa, NULL);
         sigaction(SIGUSR1, &sa, NULL);
-        sigaction(SIGUSR2, &sa, NULL);
+        /* Don't touch SIGUSR2 as IPRT could be using it. */
+
 #else /* RT_OS_WINDOWS */
         /*
          * Register windows console signal handler to react to Ctrl-C,
