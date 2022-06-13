@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMNameOSTypePage.cpp 93545 2022-02-02 13:32:23Z vboxsync $ */
+/* $Id: UIWizardNewVMNameOSTypePage.cpp 93547 2022-02-02 17:28:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasicNameOSStype class implementation.
  */
@@ -258,7 +258,7 @@ bool UIWizardNewVMNameOSTypeCommon::createMachineFolder(UINameAndSystemEditor *p
     /* Cleanup previosly created folder if any: */
     if (!cleanupMachineFolder(pWizard))
     {
-        UINotificationMessage::cannotRemoveMachineFolder(strMachineFolder, pWizard->notificationCenter());
+        UINotificationMessage::cannotRemoveMachineFolder(strCreatedFolder, pWizard->notificationCenter());
         return false;
     }
 
@@ -300,7 +300,7 @@ bool UIWizardNewVMNameOSTypeCommon::cleanupMachineFolder(UIWizardNewVM *pWizard,
     if (strCreatedFolder != strMachineFolder || fWizardCancel)
     {
         /* Try to cleanup folder (and it's predecessors): */
-        bool fMachineFolderRemoved = QDir().rmpath(strCreatedFolder);
+        bool fMachineFolderRemoved = QDir(strCreatedFolder).removeRecursively();
         /* Reset machine folder value: */
         if (fMachineFolderRemoved)
             pWizard->setCreatedMachineFolder(QString());
