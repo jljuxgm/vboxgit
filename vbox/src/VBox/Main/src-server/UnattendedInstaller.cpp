@@ -1,4 +1,4 @@
-/* $Id: UnattendedInstaller.cpp 94346 2022-03-24 07:43:46Z vboxsync $ */
+/* $Id: UnattendedInstaller.cpp 94348 2022-03-24 08:13:46Z vboxsync $ */
 /** @file
  * UnattendedInstaller class and it's descendants implementation
  */
@@ -1170,12 +1170,23 @@ HRESULT UnattendedDebianInstaller::editDebianMenuCfg(GeneralTextScript *pEditor)
         if (!fLabelFound)
             return E_FAIL;
         /* Modify the content of default lines so that they point to label we have chosen above. */
+        Utf8Str strNewContent("default ");
+        strNewContent.append(pszNewLabel);
+
         std::vector<size_t> vecDefaultLineNumbers = pEditor->findTemplate("default", RTCString::CaseInsensitive);
-        for (size_t j = 0; j < vecDefaultLineNumbers.size(); ++j)
+        if (!vecDefaultLineNumbers.empty())
         {
-            Utf8Str strNewContent("default ");
-            strNewContent.append(pszNewLabel);
-            HRESULT hrc = pEditor->setContentOfLine(vecDefaultLineNumbers[j], strNewContent);
+            for (size_t j = 0; j < vecDefaultLineNumbers.size(); ++j)
+            {
+                HRESULT hrc = pEditor->setContentOfLine(vecDefaultLineNumbers[j], strNewContent);
+                if (FAILED(hrc))
+                    return hrc;
+            }
+        }
+        /* Add a defaul label line. */
+        else
+        {
+            HRESULT hrc = pEditor->appendLine(strNewContent);
             if (FAILED(hrc))
                 return hrc;
         }
