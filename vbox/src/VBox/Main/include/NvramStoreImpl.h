@@ -1,4 +1,4 @@
-/* $Id: NvramStoreImpl.h 91396 2021-09-27 13:40:35Z vboxsync $ */
+/* $Id: NvramStoreImpl.h 91434 2021-09-28 11:56:50Z vboxsync $ */
 /** @file
  * VirtualBox COM NVRAM store class implementation
  */
@@ -70,7 +70,7 @@ public:
     com::Utf8Str i_getNonVolatileStorageFile();
     void i_updateNonVolatileStorageFile(const com::Utf8Str &aNonVolatileStorageFile);
 
-    int i_loadStore(void);
+    int i_loadStore(const char *pszPath);
     int i_loadStoreFromTar(RTVFSFSSTREAM hVfsFssTar);
     int i_saveStore(void);
     int i_saveStoreAsTar(void);
