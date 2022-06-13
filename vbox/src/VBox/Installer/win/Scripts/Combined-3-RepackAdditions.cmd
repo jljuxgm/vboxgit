@@ -1,5 +1,5 @@
 @echo off
-rem $Id: Combined-3-RepackAdditions.cmd 93115 2022-01-01 11:31:46Z vboxsync $
+rem $Id: Combined-3-RepackAdditions.cmd 94159 2022-03-10 19:22:05Z vboxsync $
 rem rem @file
 rem Windows NT batch script for repacking signed amd64 and x86 drivers.
 rem
@@ -198,14 +198,14 @@ echo **************************************************************************
 echo * AMD64: Unpacking signed drivers...
 echo **************************************************************************
 cd /d "%_MY_REPACK_DIR_AMD64%" || goto end_failed
-call "%_MY_REPACK_DIR_AMD64%\UnpackBlessedDrivers.cmd" -b "%_MY_BINDIR_AMD64%" -i "%_MY_OPT_SIGNED_AMD64%" -n -v || goto end_failed
+call "%_MY_REPACK_DIR_AMD64%\UnpackBlessedDrivers.cmd" -b "%_MY_BINDIR_AMD64%" -i "%_MY_OPT_SIGNED_AMD64%" --guest-additions || goto end_failed
 echo .
 
 echo **************************************************************************
 echo * X86: Unpacking signed drivers...
 echo **************************************************************************
 cd /d "%_MY_REPACK_DIR_X86%" || goto end_failed
-call "%_MY_REPACK_DIR_X86%\UnpackBlessedDrivers.cmd" -b "%_MY_BINDIR_X86%" -i "%_MY_OPT_SIGNED_X86%" -n -v || goto end_failed
+call "%_MY_REPACK_DIR_X86%\UnpackBlessedDrivers.cmd" -b "%_MY_BINDIR_X86%" -i "%_MY_OPT_SIGNED_X86%" --guest-additions || goto end_failed
 echo .
 
 
