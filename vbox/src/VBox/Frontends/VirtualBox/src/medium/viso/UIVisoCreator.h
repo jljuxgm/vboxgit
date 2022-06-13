@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.h 92490 2021-11-18 09:58:58Z vboxsync $ */
+/* $Id: UIVisoCreator.h 92492 2021-11-18 14:00:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator class declaration.
  */
@@ -26,6 +26,7 @@
 
 /* GUI includes: */
 #include "QIMainDialog.h"
+#include "QIWithRestorableGeometry.h"
 #include "QIWithRetranslateUI.h"
 
 #include <iprt/stream.h>
@@ -173,7 +174,7 @@ private:
 };
 
 
-class SHARED_LIBRARY_STUFF UIVisoCreatorDialog : public QIWithRetranslateUI<QIMainDialog>
+class SHARED_LIBRARY_STUFF UIVisoCreatorDialog : public QIWithRetranslateUI<QIWithRestorableGeometry<QIMainDialog> >
 {
     Q_OBJECT;
 
@@ -187,6 +188,10 @@ public:
     QString currentPath() const;
     void    setCurrentPath(const QString &strPath);
 
+protected:
+
+    virtual bool event(QEvent *pEvent) final override;
+
 private slots:
 
     void sltSetCancelButtonShortCut(QKeySequence keySequence);
@@ -195,10 +200,13 @@ private:
     void prepareWidgets();
     void prepareConnections();
     virtual void retranslateUi() final override;
+    void loadSettings();
+    void saveDialogGeometry();
 
     QString m_strMachineName;
     UIVisoCreatorWidget *m_pVisoCreatorWidget;
     QIDialogButtonBox    *m_pButtonBox;
     QPointer<UIActionPool> m_pActionPool;
+    int                   m_iGeometrySaveTimerId;
 };
 #endif /* !FEQT_INCLUDED_SRC_medium_viso_UIVisoCreator_h */

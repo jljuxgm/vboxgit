@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.cpp 92489 2021-11-18 07:36:02Z vboxsync $ */
+/* $Id: UIVisoContentBrowser.cpp 92492 2021-11-18 14:00:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class implementation.
  */
@@ -22,20 +22,20 @@
 #include <QGridLayout>
 #include <QHeaderView>
 #include <QMimeData>
+#include <QTableView>
 #include <QTreeView>
 
 /* GUI includes: */
 #include "UICustomFileSystemModel.h"
 #include "UIPathOperations.h"
 #include "UIVisoContentBrowser.h"
-#include "QITableView.h"
 
 /*********************************************************************************************************************************
 *   UIVisoContentTableView definition.                                                                                      *
 *********************************************************************************************************************************/
 
 /** An QTableView extension mainly used to handle dropeed file objects from the host browser. */
-class UIVisoContentTableView : public QITableView
+class UIVisoContentTableView : public QTableView
 {
     Q_OBJECT;
 
@@ -76,7 +76,7 @@ protected:
 *   UIVisoContentTableView implementation.                                                                                       *
 *********************************************************************************************************************************/
 UIVisoContentTableView::UIVisoContentTableView(QWidget *pParent /* = 0 */)
-    :QITableView(pParent)
+    :QTableView(pParent)
 {
 }
 
