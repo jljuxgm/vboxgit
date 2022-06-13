@@ -1,4 +1,4 @@
-/* $Id: UefiVariableStoreImpl.h 91535 2021-10-04 09:15:19Z vboxsync $ */
+/* $Id: UefiVariableStoreImpl.h 91685 2021-10-12 09:26:59Z vboxsync $ */
 /** @file
  * VirtualBox COM UEFI variable store class implementation
  */
@@ -77,6 +77,7 @@ private:
     HRESULT i_releaseUefiVariableStore(void);
 
     HRESULT i_uefiVarStoreAddVar(PCEFI_GUID pGuid, const char *pszVar, uint32_t fAttr, PRTVFSFILE phVfsFile);
+    HRESULT i_uefiVarStoreOpenVar(const char *pszVar, PRTVFSFILE phVfsFile);
     HRESULT i_uefiVarStoreSetVar(PCEFI_GUID pGuid, const char *pszVar, uint32_t fAttr, const void *pvData, size_t cbData);
     HRESULT i_uefiVarStoreQueryVar(const char *pszVar, void *pvData, size_t cbData);
     HRESULT i_uefiSigDbAddSig(RTEFISIGDB hEfiSigDb, const void *pvData, size_t cbData, const com::Guid &aOwnerUuid, SignatureType_T enmSignatureType);
