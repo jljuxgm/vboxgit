@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 90016 2021-07-04 21:19:22Z vboxsync $ */
+/* $Id: DevSB16.cpp 91687 2021-10-12 10:26:53Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  */
@@ -2629,7 +2629,7 @@ static int sb16AttachInternal(PSB16STATE pThis, unsigned uLUN, PSB16DRIVER *ppDr
      * Allocate a new driver structure and try attach the driver.
      */
     PSB16DRIVER pDrv = (PSB16DRIVER)RTMemAllocZ(sizeof(SB16DRIVER));
-    AssertReturn(pDrv, VERR_NO_MEMORY);
+    AssertPtrReturn(pDrv, VERR_NO_MEMORY);
     RTStrPrintf(pDrv->szDesc, sizeof(pDrv->szDesc), "Audio driver port (SB16) for LUN #%u", uLUN);
 
     PPDMIBASE pDrvBase;
