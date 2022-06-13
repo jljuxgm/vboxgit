@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv.cpp 91480 2021-09-29 23:52:11Z vboxsync $ */
+/* $Id: memobj-r0drv.cpp 91481 2021-09-30 00:06:31Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Common Code.
  */
@@ -478,7 +478,7 @@ DECLHIDDEN(int) rtR0MemObjFallbackAllocLarge(PPRTR0MEMOBJINTERNAL ppMem, size_t 
 {
     RT_NOREF(pszTag, fFlags);
     if (cb == cbLargePage)
-        return rtR0MemObjNativeAllocPhys(ppMem, cb, NIL_RTHCPHYS, cbLargePage);
+        return rtR0MemObjNativeAllocPhys(ppMem, cb, NIL_RTHCPHYS, cbLargePage, pszTag);
     return VERR_NOT_SUPPORTED;
 }
 
@@ -576,10 +576,8 @@ RTR0DECL(int) RTR0MemObjAllocPhysTag(PRTR0MEMOBJ pMemObj, size_t cb, RTHCPHYS Ph
     AssertReturn(PhysHighest >= cb, VERR_INVALID_PARAMETER);
     RT_ASSERT_PREEMPTIBLE();
 
-    RT_NOREF_PV(pszTag);
-
     /* do the allocation. */
-    return rtR0MemObjNativeAllocPhys(pMemObj, cbAligned, PhysHighest, PAGE_SIZE /* page aligned */);
+    return rtR0MemObjNativeAllocPhys(pMemObj, cbAligned, PhysHighest, PAGE_SIZE /* page aligned */, pszTag);
 }
 RT_EXPORT_SYMBOL(RTR0MemObjAllocPhysTag);
 
@@ -608,10 +606,8 @@ RTR0DECL(int) RTR0MemObjAllocPhysExTag(PRTR0MEMOBJ pMemObj, size_t cb, RTHCPHYS 
 #endif
     RT_ASSERT_PREEMPTIBLE();
 
-    RT_NOREF_PV(pszTag);
-
     /* do the allocation. */
-    return rtR0MemObjNativeAllocPhys(pMemObj, cbAligned, PhysHighest, uAlignment);
+    return rtR0MemObjNativeAllocPhys(pMemObj, cbAligned, PhysHighest, uAlignment, pszTag);
 }
 RT_EXPORT_SYMBOL(RTR0MemObjAllocPhysExTag);
 
@@ -627,10 +623,8 @@ RTR0DECL(int) RTR0MemObjAllocPhysNCTag(PRTR0MEMOBJ pMemObj, size_t cb, RTHCPHYS 
     AssertReturn(PhysHighest >= cb, VERR_INVALID_PARAMETER);
     RT_ASSERT_PREEMPTIBLE();
 
-    RT_NOREF_PV(pszTag);
-
     /* do the allocation. */
-    return rtR0MemObjNativeAllocPhysNC(pMemObj, cbAligned, PhysHighest);
+    return rtR0MemObjNativeAllocPhysNC(pMemObj, cbAligned, PhysHighest, pszTag);
 }
 RT_EXPORT_SYMBOL(RTR0MemObjAllocPhysNCTag);
 
