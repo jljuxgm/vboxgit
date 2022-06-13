@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMModePageBasic.h 90990 2021-08-30 09:38:18Z vboxsync $ */
+/* $Id: UIWizardCloneVMModePageBasic.h 91041 2021-08-31 18:09:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMModePageBasic class declaration.
  */
@@ -34,14 +34,14 @@
 class QIRichTextLabel;
 class UICloneVMCloneModeGroupBox;
 
-/* 3rd page of the Clone Virtual Machine wizard (basic extension): */
+/** 3rd page of the Clone Virtual Machine wizard (basic extension). */
 class UIWizardCloneVMModePageBasic : public UINativeWizardPage
 {
     Q_OBJECT;
 
 public:
 
-    /* Constructor: */
+    /** Constructor. */
     UIWizardCloneVMModePageBasic(bool fShowChildsOption);
 
 private slots:
@@ -50,17 +50,17 @@ private slots:
 
 private:
 
-    /* Translation stuff: */
+    /** Translation stuff. */
     void retranslateUi();
 
-    /* Prepare stuff: */
+    /** Prepare stuff. */
     void initializePage();
     void prepare();
 
-    /* Validation stuff: */
+    /** Validation stuff. */
     bool validatePage();
 
-    /* Widgets: */
+    /** Widgets. */
     QIRichTextLabel *m_pLabel;
     UICloneVMCloneModeGroupBox *m_pCloneModeGroupBox;
 

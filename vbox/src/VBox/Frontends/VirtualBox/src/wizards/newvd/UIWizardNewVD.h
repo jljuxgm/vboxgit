@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVD.h 91035 2021-08-31 15:57:07Z vboxsync $ */
+/* $Id: UIWizardNewVD.h 91041 2021-08-31 18:09:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVD class declaration.
  */
@@ -29,7 +29,7 @@
 #include "CMedium.h"
 #include "CMediumFormat.h"
 
-/* New Virtual Hard Drive wizard: */
+/** New Virtual Hard Drive wizard. */
 class SHARED_LIBRARY_STUFF UIWizardNewVD : public UINativeWizard
 {
     Q_OBJECT;

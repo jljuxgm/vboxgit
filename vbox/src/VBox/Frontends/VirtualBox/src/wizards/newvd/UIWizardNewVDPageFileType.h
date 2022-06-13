@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageFileType.h 91035 2021-08-31 15:57:07Z vboxsync $ */
+/* $Id: UIWizardNewVDPageFileType.h 91041 2021-08-31 18:09:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageFileType class declaration.
  */
@@ -28,14 +28,14 @@
 class QIRichTextLabel;
 class UIDiskFormatsGroupBox;
 
-/* 1st page of the New Virtual Hard Drive wizard (basic extension): */
+/** 1st page of the New Virtual Hard Drive wizard (basic extension). */
 class SHARED_LIBRARY_STUFF UIWizardNewVDPageFileType : public UINativeWizardPage
 {
     Q_OBJECT;
 
 public:
 
-    /* Constructor: */
+    /** Constructor. */
     UIWizardNewVDPageFileType();
 
 private slots:
@@ -48,7 +48,7 @@ private:
     void prepare();
     void initializePage();
 
-    /* Validation stuff: */
+    /** Validation stuff. */
     bool isComplete() const;
 
     QIRichTextLabel *m_pLabel;

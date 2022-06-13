@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMNamePathPageBasic.h 91035 2021-08-31 15:57:07Z vboxsync $ */
+/* $Id: UIWizardCloneVMNamePathPageBasic.h 91041 2021-08-31 18:09:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMNamePathPageBasic class declaration.
  */
@@ -59,7 +59,7 @@ private:
     void retranslateUi();
     void initializePage();
     void prepare(const QString &strDefaultClonePath);
-    /* Validation stuff: */
+    /** Validation stuff */
     bool isComplete() const;
 
     QIRichTextLabel *m_pMainLabel;
