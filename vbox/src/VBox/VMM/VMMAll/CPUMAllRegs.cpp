@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 91580 2021-10-06 07:22:04Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 91710 2021-10-13 11:05:26Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -3030,5 +3030,18 @@ VMM_INT_DECL(int) CPUMGetSvmMsrpmOffsetAndBit(uint32_t idMsr, uint16_t *pbOffMsr
     *pbOffMsrpm = 0;
     *puMsrpmBit = 0;
     return VERR_OUT_OF_RANGE;
+}
+
+
+/**
+ * Checks whether the guest is in VMX non-root mode and using EPT paging.
+ *
+ * @returns @c true if in VMX non-root operation with EPT, @c false otherwise.
+ * @param   pVCpu   The cross context virtual CPU structure.
+ */
+VMM_INT_DECL(bool) CPUMIsGuestVmxEptPagingEnabled(PCVMCPUCC pVCpu)
+{
+    return    CPUMIsGuestInVmxNonRootMode(&pVCpu->cpum.s.Guest)
+           && CPUMIsGuestVmxProcCtls2Set(&pVCpu->cpum.s.Guest, VMX_PROC_CTLS2_EPT);
 }
 
