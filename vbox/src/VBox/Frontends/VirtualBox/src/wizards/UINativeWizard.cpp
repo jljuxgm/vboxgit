@@ -1,4 +1,4 @@
-/* $Id: UINativeWizard.cpp 90734 2021-08-18 18:05:46Z vboxsync $ */
+/* $Id: UINativeWizard.cpp 91026 2021-08-31 11:36:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINativeWizard class implementation.
  */
@@ -221,6 +221,10 @@ void UINativeWizard::retranslateUi()
     AssertMsgReturnVoid(pButtonCancel, ("No Cancel wizard button found!\n"));
     pButtonCancel->setText(tr("&Cancel"));
     pButtonCancel->setToolTip(tr("Cancel wizard execution."));
+}
+
+void UINativeWizard::wizardClean()
+{
 }
 
 void UINativeWizard::sltHandleProgressStarted()
@@ -558,6 +562,7 @@ void UINativeWizard::cleanup()
     m_iLastIndex = -1;
     /* Update invisible pages: */
     m_invisiblePages.clear();
+    wizardClean();
 }
 
 void UINativeWizard::init()
