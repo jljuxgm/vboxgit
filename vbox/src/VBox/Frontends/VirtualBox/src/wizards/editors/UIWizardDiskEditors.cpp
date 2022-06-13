@@ -1,4 +1,4 @@
-/* $Id: UIWizardDiskEditors.cpp 94064 2022-03-02 15:49:12Z vboxsync $ */
+/* $Id: UIWizardDiskEditors.cpp 94068 2022-03-03 09:10:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class implementation.
  */
@@ -202,12 +202,12 @@ void UIDiskVariantWidget::retranslateUi()
     if (m_pFixedCheckBox)
     {
         m_pFixedCheckBox->setText(tr("Pre-allocate &Full Size"));
-        m_pFixedCheckBox->setToolTip(tr("Allocates the virtual disk image during VM creation."));
+        m_pFixedCheckBox->setToolTip(tr("When checked, the virtual disk image is allocated with its full size during VM creation time"));
     }
     if (m_pSplitBox)
     {
         m_pSplitBox->setText(tr("&Split into 2GB parts"));
-        m_pSplitBox->setToolTip(tr("Splits hard disk file into 2GB parts in the host storage."));
+        m_pSplitBox->setToolTip(tr("When checked, the virtual hard disk file is split into 2GB parts."));
     }
 }
 
