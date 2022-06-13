@@ -1,4 +1,4 @@
-/* $Id: CUE.cpp 90277 2021-07-21 20:40:29Z vboxsync $ */
+/* $Id: CUE.cpp 90296 2021-07-22 19:25:57Z vboxsync $ */
 /** @file
  * CUE - CUE/BIN Disk image, Core Code.
  */
@@ -1543,7 +1543,7 @@ static DECLCALLBACK(int) cueRead(void *pBackendData, uint64_t uOffset, size_t cb
         cbToRead = RT_MIN(cbToRead, pRegion->cRegionBlocksOrBytes - offRead);
         Assert(!(cbToRead % pRegion->cbBlock));
 
-        /* Need to convert audio data samples to big endian. */
+        /* Need to convert audio data samples to little endian. */
         if (   pRegion->enmDataForm == VDREGIONDATAFORM_CDDA
             && !pThis->fLittleEndian)
         {
