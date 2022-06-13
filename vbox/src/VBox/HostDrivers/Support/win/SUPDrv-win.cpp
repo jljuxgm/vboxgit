@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-win.cpp 93273 2022-01-17 12:34:44Z vboxsync $ */
+/* $Id: SUPDrv-win.cpp 93274 2022-01-17 14:42:20Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Windows NT specifics.
  */
@@ -2702,7 +2702,22 @@ int  VBOXCALL   supdrvOSLdrLoad(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pImage, c
             if (!iDiff && uRvaNext < pImage->cbImageBits)
                 iDiff = supdrvNtCompare(pImage, pbImageBits, uRvaNext, pImage->cbImageBits - uRvaNext, pReq);
             if (!iDiff)
+            {
+                /*
+                 * If there is a cookie init export, call it.
+                 *
+                 * This typically just does:
+                 *      __security_cookie = (rdtsc ^ &__security_cookie) & 0xffffffffffff;
+                 *      __security_cookie_complement = ~__security_cookie;
+                 */
+                PFNRT pfnModuleInitSecurityCookie = NULL;
+                int rcSym = supdrvOSLdrQuerySymbol(pDevExt, pImage, RT_STR_TUPLE("ModuleInitSecurityCookie"),
+                                                   (void **)&pfnModuleInitSecurityCookie);
+                if (RT_SUCCESS(rcSym) && pfnModuleInitSecurityCookie)
+                    pfnModuleInitSecurityCookie();
+
                 return VINF_SUCCESS;
+            }
         }
         else
             supdrvNtCompare(pImage, pbImageBits, 0, pImage->cbImageBits, pReq);
