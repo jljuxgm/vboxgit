@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 94333 2022-03-23 11:21:34Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 94394 2022-03-29 15:50:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class implementation.
  */
@@ -3831,7 +3831,7 @@ void UIMachineSettingsStorage::sltGetInformation()
                 m_pCheckBoxNonRotational->setChecked(m_pModelStorage->data(index, StorageModel::R_AttIsNonRotational).toBool());
 
                 /* Fetch hot-pluggable state: */
-                m_pCheckBoxHotPluggable->setVisible((slt.bus == KStorageBus_SATA) || (slt.bus == KStorageBus_USB));
+                m_pCheckBoxHotPluggable->setVisible(slt.bus == KStorageBus_SATA);
                 m_pCheckBoxHotPluggable->setChecked(fIsHotPluggable);
 
                 /* Update optional widgets visibility: */
@@ -5763,7 +5763,7 @@ bool UIMachineSettingsStorage::createStorageAttachment(const UISettingsCacheMach
             }
         }
 
-        if (newControllerData.m_enmBus == KStorageBus_SATA || newControllerData.m_enmBus == KStorageBus_USB)
+        if (newControllerData.m_enmBus == KStorageBus_SATA)
         {
             /* Save whether this device is hot-pluggable: */
             if (fSuccess && isMachineOffline())
@@ -5851,7 +5851,7 @@ bool UIMachineSettingsStorage::updateStorageAttachment(const UISettingsCacheMach
             }
         }
 
-        if (newControllerData.m_enmBus == KStorageBus_SATA || newControllerData.m_enmBus == KStorageBus_USB)
+        if (newControllerData.m_enmBus == KStorageBus_SATA)
         {
             /* Save whether this device is hot-pluggable: */
             if (fSuccess && isMachineOffline())
