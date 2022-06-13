@@ -1,4 +1,4 @@
-/* $Id: UITabBar.cpp 93999 2022-02-28 22:45:46Z vboxsync $ */
+/* $Id: UITabBar.cpp 94000 2022-02-28 22:49:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UITabBar class implementation.
  */
@@ -801,7 +801,7 @@ bool UITabBar::removeTab(const QUuid &uuid)
         }
     }
     /* Flush wiped out items: */
-    m_aItems.removeAll(0);
+    m_aItems.removeAll((UITabBarItem *)0);
 
     /* If we had removed current item: */
     if (fMoveCurrent)

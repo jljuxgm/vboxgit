@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.cpp 93990 2022-02-28 15:34:57Z vboxsync $ */
+/* $Id: UIActionPool.cpp 94000 2022-02-28 22:49:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPool class implementation.
  */
@@ -308,7 +308,7 @@ void UIActionMenu::hideMenu()
 {
     /* Hide menu if necessary: */
     if (menu())
-        setMenu(0);
+        setMenu((QMenu *)0);
 }
 
 void UIActionMenu::prepare()
