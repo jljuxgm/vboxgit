@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.h 90705 2021-08-17 16:48:16Z vboxsync $ */
+/* $Id: UIMachineView.h 91696 2021-10-12 17:19:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class declaration.
  */
@@ -371,6 +371,11 @@ protected:
      * the default size hint to avoid short resizes back to fullscreen size.
      * Not explicitly initialised (i.e. invalid by default). */
     QSize m_sizeHintOverride;
+
+    /** Last size hint sent as a part of guest auto-resize feature.
+      * @note Useful to avoid spamming CDisplay with same hint before
+      *       frame-buffer finally resized to requested size. */
+    QSize  m_lastSizeHint;
 
     /** Holds current host-screen number. */
     int m_iHostScreenNumber;
