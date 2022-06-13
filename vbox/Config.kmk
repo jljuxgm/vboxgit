@@ -1,4 +1,4 @@
-# $Id: Config.kmk 94862 2022-05-05 17:14:34Z vboxsync $
+# $Id: Config.kmk 94873 2022-05-06 01:01:11Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -7653,8 +7653,8 @@ if defined(VBOX_WITH_QTGUI) || defined(VBOX_WITH_NLS)
  VBOX_PATH_QT            ?= /usr
  VBOX_PATH_QT_LIB        ?= $(VBOX_PATH_QT)/lib
 
- ifdef VBOX_WITH_ORACLE_QT
-  VBOX_QT_INFIX=VBox
+ if defined(VBOX_WITH_ORACLE_QT) && (!defined(VBOX_WITH_QT6) || "$(KBUILD_TARGET)" != "darwin") 
+  VBOX_QT_INFIX := VBox
  endif
 
  ifeq ($(KBUILD_TARGET), darwin)
@@ -9014,7 +9014,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 94862 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 94873 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
