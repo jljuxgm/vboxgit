@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: DevPCNet.cpp 93441 2022-01-25 15:43:20Z vboxsync $ */
 /** @file
  * DevPCNet - AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  *
@@ -2744,7 +2744,7 @@ static VBOXSTRICTRC pcnetCSRWriteU16(PPDMDEVINS pDevIns, PPCNETSTATE pThis, PPCN
                      * not apply the workaround to our emulated PCnet-PCI II (Am79C970A) and
                      * PCnet-FAST III (Am79C973).
                      *
-                     * The AMDPCnet32 drivers for NeXTSTEP/OpenStep (notably OS 4.2) cpompletely fail
+                     * The AMDPCnet32 drivers for NeXTSTEP/OpenStep (notably OS 4.2) completely fail
                      * unless we delay the initialization until after bus mastering is re-enabled.
                      */
                     if (PCNET_IS_PCI(pThis))
