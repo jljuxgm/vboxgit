@@ -1,4 +1,4 @@
-/* $Id: UnattendedImpl.cpp 93535 2022-02-01 16:56:55Z vboxsync $ */
+/* $Id: UnattendedImpl.cpp 93536 2022-02-01 17:02:58Z vboxsync $ */
 /** @file
  * Unattended class implementation
  */
@@ -3086,7 +3086,7 @@ HRESULT Unattended::setImageIndex(ULONG index)
                 return S_OK;
         }
     }
-    return VERR_INVALID_PARAMETER;
+    return E_INVALIDARG;
 }
 
 HRESULT Unattended::getMachine(ComPtr<IMachine> &aMachine)
