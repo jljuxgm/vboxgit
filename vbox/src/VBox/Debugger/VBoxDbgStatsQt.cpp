@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgStatsQt.cpp 90543 2021-08-06 11:59:40Z vboxsync $ */
+/* $Id: VBoxDbgStatsQt.cpp 92867 2021-12-10 19:16:31Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Statistics.
  */
@@ -2028,7 +2028,7 @@ VBoxDbgStatsModel::iterateStatsByPattern(QString const &a_rPatStr, VBoxDbgStatsM
 
     DBGGUISTATSSTACK Stack;
     Stack.a[0].pNode   = m_pRoot;
-    Stack.a[0].iChild  = -1;
+    Stack.a[0].iChild  = 0;
     Stack.a[0].cchName = 0;
     Stack.iTop         = 0;
 
@@ -2040,7 +2040,7 @@ VBoxDbgStatsModel::iterateStatsByPattern(QString const &a_rPatStr, VBoxDbgStatsM
         /* get top element */
         PDBGGUISTATSNODE const pNode   = Stack.a[Stack.iTop].pNode;
         uint16_t               cchName = Stack.a[Stack.iTop].cchName;
-        uint32_t const         iChild  = ++Stack.a[Stack.iTop].iChild;
+        uint32_t const         iChild  = Stack.a[Stack.iTop].iChild++;
         if (iChild < pNode->cChildren)
         {
             PDBGGUISTATSNODE pChild = pNode->papChildren[iChild];
