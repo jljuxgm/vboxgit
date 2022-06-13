@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowScale.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIMachineWindowScale.cpp 93342 2022-01-19 12:26:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowScale class implementation.
  */
@@ -61,7 +61,12 @@ void UIMachineWindowScale::prepareMainLayout()
 void UIMachineWindowScale::prepareNotificationCenter()
 {
     if (gpNotificationCenter && (m_uScreenId == 0))
+    {
         gpNotificationCenter->setParent(centralWidget());
+        disconnect(gpNotificationCenter, &UINotificationCenter::sigAnimationStep, 0, 0);
+        connect(gpNotificationCenter, &UINotificationCenter::sigAnimationStep,
+                this, &UIMachineWindowScale::sltHandleNotificationCenterAnimationStep);
+    }
 }
 
 #ifdef VBOX_WS_MAC

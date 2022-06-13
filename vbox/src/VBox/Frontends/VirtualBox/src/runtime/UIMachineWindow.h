@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIMachineWindow.h 93342 2022-01-19 12:26:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class declaration.
  */
@@ -123,6 +123,9 @@ protected slots:
 
     /* Session event-handlers: */
     virtual void sltMachineStateChanged();
+
+    /** Handles notification-center animation steps. */
+    void sltHandleNotificationCenterAnimationStep();
 
 protected:
 
