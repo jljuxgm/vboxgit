@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA-cmd.cpp 95055 2022-05-21 10:32:50Z vboxsync $ */
+/* $Id: DevVGA-SVGA-cmd.cpp 95062 2022-05-23 12:36:34Z vboxsync $ */
 /** @file
  * VMware SVGA device - implementation of VMSVGA commands.
  */
@@ -3410,7 +3410,7 @@ static int vmsvga3dCmdDXMobFence64(PVGASTATECC pThisCC, SVGA3dCmdDXMobFence64 co
 
     return VINF_SUCCESS;
 #else
-    RT_NOREF(pThisCC, idDXContext, pCmd, cbCmd);
+    RT_NOREF(pThisCC, pCmd, cbCmd);
     return VERR_NOT_SUPPORTED;
 #endif
 }
@@ -3664,7 +3664,7 @@ static int vmsvga3dCmdDefineGBSurface_v3(PVGASTATECC pThisCC, SVGA3dCmdDefineGBS
     }
     return rc;
 #else
-    RT_NOREF(pThisCC, idDXContext, pCmd, cbCmd);
+    RT_NOREF(pThisCC, pCmd);
     return VERR_NOT_SUPPORTED;
 #endif
 }
@@ -4074,7 +4074,7 @@ static int vmsvga3dCmdDefineGBSurface_v4(PVGASTATECC pThisCC, SVGA3dCmdDefineGBS
     }
     return rc;
 #else
-    RT_NOREF(pThisCC, idDXContext, pCmd, cbCmd);
+    RT_NOREF(pThisCC, pCmd);
     return VERR_NOT_SUPPORTED;
 #endif
 }
