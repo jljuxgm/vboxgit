@@ -1,4 +1,4 @@
-/* $Id: tstUnattendedScript.cpp 94532 2022-04-08 16:28:32Z vboxsync $ */
+/* $Id: tstUnattendedScript.cpp 94533 2022-04-08 17:09:45Z vboxsync $ */
 /** @file
  * tstUnattendedScript - testcases for UnattendedScript.
  */
@@ -456,15 +456,15 @@ HRESULT Unattended::getIsUnattendedInstallSupported(BOOL *aIsUnattendedInstallSu
     return E_NOTIMPL;
 }
 
-HRESULT Unattended::getIsNetworkAccessible(BOOL *aIsNetworkAccessible)
+HRESULT Unattended::getAvoidUpdatesOverNetwork(BOOL *aAvoidUpdatesOverNetwork)
 {
-    RT_NOREF(aIsNetworkAccessible);
+    RT_NOREF(aAvoidUpdatesOverNetwork);
     return E_NOTIMPL;
 }
 
-HRESULT Unattended::setIsNetworkAccessible(BOOL aIsNetworkAccessible)
+HRESULT Unattended::setAvoidUpdatesOverNetwork(BOOL aAvoidUpdatesOverNetwork)
 {
-    RT_NOREF(aIsNetworkAccessible);
+    RT_NOREF(aAvoidUpdatesOverNetwork);
     return E_NOTIMPL;
 }
 
@@ -617,9 +617,9 @@ Utf8Str const &Unattended::i_getDetectedOSVersion()
     return mStrDetectedOSVersion;
 }
 
-bool Unattended::i_getIsNetworkAccessible() const
+bool Unattended::i_getAvoidUpdatesOverNetwork() const
 {
-    return mfIsNetworkAccessible;
+    return mfAvoidUpdatesOverNetwork;
 }
 
 

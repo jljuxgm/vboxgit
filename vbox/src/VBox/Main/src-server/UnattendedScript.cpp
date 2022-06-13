@@ -1,4 +1,4 @@
-/* $Id: UnattendedScript.cpp 94532 2022-04-08 16:28:32Z vboxsync $ */
+/* $Id: UnattendedScript.cpp 94533 2022-04-08 17:09:45Z vboxsync $ */
 /** @file
  * Classes for reading/parsing/saving scripts for unattended installation.
  */
@@ -792,8 +792,8 @@ HRESULT UnattendedScriptTemplate::getConditional(const char *pachPlaceholder, si
         *pfOutputting = !mpUnattended->i_isRtcUsingUtc();
     else if (IS_PLACEHOLDER_MATCH("HAS_PROXY"))
         *pfOutputting = mpUnattended->i_getProxy().isNotEmpty();
-    else if (IS_PLACEHOLDER_MATCH("IS_NETWORK_ACCESSIBLE"))
-        *pfOutputting = !mpUnattended->i_getIsNetworkAccessible();
+    else if (IS_PLACEHOLDER_MATCH("AVOID_UPDATES_OVER_NETWORK"))
+        *pfOutputting = mpUnattended->i_getAvoidUpdatesOverNetwork();
     else
         return mpSetError->setErrorBoth(E_FAIL, VERR_NOT_FOUND, tr("Unknown conditional placeholder '%.*s'"),
                                         cchPlaceholder, pachPlaceholder);
