@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 91416 2021-09-28 06:15:49Z vboxsync $
+# $Id: Makefile.kmk 91432 2021-09-28 11:37:43Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxManage (the cli frontend).
 #
@@ -100,6 +100,7 @@ ifndef VBOX_ONLY_DOCS
  	VBoxManageMetrics.cpp \
  	VBoxManageMisc.cpp \
  	VBoxManageModifyVM.cpp \
+ 	VBoxManageModifyNvram.cpp \
  	VBoxManageSnapshot.cpp \
  	VBoxManageStorageController.cpp \
  	VBoxManageUpdateCheck.cpp \

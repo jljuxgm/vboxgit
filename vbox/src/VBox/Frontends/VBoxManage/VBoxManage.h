@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 91416 2021-09-28 06:15:49Z vboxsync $ */
+/* $Id: VBoxManage.h 91432 2021-09-28 11:37:43Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -362,6 +362,9 @@ RTEXITCODE handleCloudShowVMInfo(HandlerArg *a, int iFirst,
 
 /* VBoxManageUpdateCheck.cpp */
 RTEXITCODE handleUpdateCheck(HandlerArg *a);
+
+/* VBoxManageModifyNvram.cpp */
+RTEXITCODE handleModifyNvram(HandlerArg *a);
 
 #endif /* !VBOX_ONLY_DOCS */
 
