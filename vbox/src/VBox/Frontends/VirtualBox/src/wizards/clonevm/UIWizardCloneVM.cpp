@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVM.cpp 90589 2021-08-10 10:07:26Z vboxsync $ */
+/* $Id: UIWizardCloneVM.cpp 90607 2021-08-10 16:07:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVM class implementation.
  */
@@ -179,9 +179,9 @@ void UIWizardCloneVM::populatePages()
         case WizardMode_Expert:
         {
             addPage(new UIWizardCloneVMPageBasic1(m_machine.GetName(), strDefaultMachineFolder, m_strGroup));
-    //         setPage(Page2, new UIWizardCloneVMPageBasic2(m_snapshot.isNull()));
-    //         if (m_machine.GetSnapshotCount() > 0)
-    //             setPage(Page3, new UIWizardCloneVMPageBasic3(m_snapshot.isNull() ? false : m_snapshot.GetChildrenCount() > 0));
+            addPage(new UIWizardCloneVMPageBasic2(m_snapshot.isNull()));
+            if (m_machine.GetSnapshotCount() > 0)
+                addPage(new UIWizardCloneVMPageBasic3(m_snapshot.isNull() ? false : m_snapshot.GetChildrenCount() > 0));
             break;
         }
 

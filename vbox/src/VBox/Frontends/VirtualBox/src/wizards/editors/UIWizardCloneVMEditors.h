@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMEditors.h 90599 2021-08-10 13:18:31Z vboxsync $ */
+/* $Id: UIWizardCloneVMEditors.h 90607 2021-08-10 16:07:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardDiskEditors class declaration.
  */
@@ -31,11 +31,12 @@
 
 /* Forward declarations: */
 // class CMediumFormat;
-// class QButtonGroup;
+class QButtonGroup;
 class QCheckBox;
 class QGridLayout;
 class QComboBox;
 class QLabel;
+class QRadioButton;
 // class QVBoxLayout;
 // class QIRichTextLabel;
 class QILineEdit;
@@ -131,6 +132,50 @@ private:
     QCheckBox   *m_pKeepDiskNamesCheckBox;
     QCheckBox   *m_pKeepHWUUIDsCheckBox;
 };
+
+class UICloneVMCloneTypeGroupBox : public QIWithRetranslateUI<QGroupBox>
+{
+    Q_OBJECT;
+
+signals:
+
+public:
+
+    UICloneVMCloneTypeGroupBox(QWidget *pParent = 0);
+
+private:
+
+    void prepare();
+    virtual void retranslateUi() /* override final */;
+
+    QButtonGroup *m_pButtonGroup;
+    QRadioButton *m_pFullCloneRadio;
+    QRadioButton *m_pLinkedCloneRadio;
+};
+
+
+class UICloneVMCloneModeGroupBox : public QIWithRetranslateUI<QGroupBox>
+{
+    Q_OBJECT;
+
+signals:
+
+public:
+
+    UICloneVMCloneModeGroupBox(bool fShowChildsOption, QWidget *pParent = 0);
+
+private:
+
+    void prepare();
+    virtual void retranslateUi() /* override final */;
+
+    bool m_fShowChildsOption;
+    QRadioButton *m_pMachineRadio;
+    QRadioButton *m_pMachineAndChildsRadio;
+    QRadioButton *m_pAllRadio;
+
+};
+
 
 
 #endif /* !FEQT_INCLUDED_SRC_wizards_editors_UIWizardCloneVMEditors_h */
