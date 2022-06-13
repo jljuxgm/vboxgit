@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 91079 2021-09-01 19:26:19Z vboxsync $ */
+/* $Id: UICommon.cpp 91094 2021-09-02 13:35:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -611,7 +611,7 @@ void UICommon::prepare()
         }
 #endif
         if (enmOptType == OptType_VMRunner && m_enmType != UIType_RuntimeUI)
-            msgCenter().warnAboutUnrelatedOptionType(arg);
+            msgCenter().cannotHandleRuntimeOption(arg);
 
         i++;
     }

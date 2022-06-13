@@ -1,4 +1,4 @@
-/* $Id: UIMachineAttributeSetter.cpp 90758 2021-08-20 11:28:08Z vboxsync $ */
+/* $Id: UIMachineAttributeSetter.cpp 91094 2021-09-02 13:35:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineAttributeSetter namespace implementation.
  */
@@ -141,7 +141,7 @@ void UIMachineAttributeSetter::setMachineAttribute(const CMachine &comConstMachi
                 CGraphicsAdapter comGraphics = comMachine.GetGraphicsAdapter();
                 if (!comMachine.isOk())
                 {
-                    msgCenter().cannotAcquireMachineParameter(comMachine);
+                    UINotificationMessage::cannotAcquireMachineParameter(comMachine);
                     fErrorHappened = true;
                     break;
                 }
@@ -160,7 +160,7 @@ void UIMachineAttributeSetter::setMachineAttribute(const CMachine &comConstMachi
                 CGraphicsAdapter comGraphics = comMachine.GetGraphicsAdapter();
                 if (!comMachine.isOk())
                 {
-                    msgCenter().cannotAcquireMachineParameter(comMachine);
+                    UINotificationMessage::cannotAcquireMachineParameter(comMachine);
                     fErrorHappened = true;
                     break;
                 }
@@ -179,7 +179,7 @@ void UIMachineAttributeSetter::setMachineAttribute(const CMachine &comConstMachi
                 CAudioAdapter comAdapter = comMachine.GetAudioAdapter();
                 if (!comMachine.isOk())
                 {
-                    msgCenter().cannotAcquireMachineParameter(comMachine);
+                    UINotificationMessage::cannotAcquireMachineParameter(comMachine);
                     fErrorHappened = true;
                     break;
                 }
@@ -198,7 +198,7 @@ void UIMachineAttributeSetter::setMachineAttribute(const CMachine &comConstMachi
                 CAudioAdapter comAdapter = comMachine.GetAudioAdapter();
                 if (!comMachine.isOk())
                 {
-                    msgCenter().cannotAcquireMachineParameter(comMachine);
+                    UINotificationMessage::cannotAcquireMachineParameter(comMachine);
                     fErrorHappened = true;
                     break;
                 }
@@ -219,7 +219,7 @@ void UIMachineAttributeSetter::setMachineAttribute(const CMachine &comConstMachi
                 CNetworkAdapter comAdapter = comMachine.GetNetworkAdapter(nad.m_iSlot);
                 if (!comMachine.isOk())
                 {
-                    msgCenter().cannotAcquireMachineParameter(comMachine);
+                    UINotificationMessage::cannotAcquireMachineParameter(comMachine);
                     fErrorHappened = true;
                     break;
                 }

@@ -1,4 +1,4 @@
-/* $Id: UIMediumEnumerator.cpp 90939 2021-08-27 08:52:21Z vboxsync $ */
+/* $Id: UIMediumEnumerator.cpp 91094 2021-09-02 13:35:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumEnumerator class implementation.
  */
@@ -22,6 +22,7 @@
 #include "UICommon.h"
 #include "UIMediumEnumerator.h"
 #include "UIMessageCenter.h"
+#include "UINotificationCenter.h"
 #include "UITask.h"
 #include "UIThreadPool.h"
 #include "UIVirtualBoxEventHandler.h"
@@ -554,7 +555,7 @@ void UIMediumEnumerator::parseAttachment(CMediumAttachment comAttachment, QList<
                 if (!comMachine.isOk())
                 {
                     LogRel2(("GUI: UIMediumEnumerator:  Unable to acquire machine ID!\n"));
-                    msgCenter().cannotAcquireMachineParameter(comMachine);
+                    UINotificationMessage::cannotAcquireMachineParameter(comMachine);
                 }
                 else
                 {

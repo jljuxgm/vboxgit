@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.cpp 90751 2021-08-19 15:31:22Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.cpp 91094 2021-09-02 13:35:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class implementation.
  */
@@ -29,6 +29,7 @@
 #include "UICloudNetworkingStuff.h"
 #include "UIExtraDataManager.h"
 #include "UIMessageCenter.h"
+#include "UINotificationCenter.h"
 #include "UIProgressTaskReadCloudMachineList.h"
 #include "UIVirtualBoxEventHandler.h"
 #include "UIVirtualMachineItemCloud.h"
@@ -1033,7 +1034,7 @@ void UIChooserAbstractModel::reloadLocalTree()
     const QVector<CMachine> machines = comVBox.GetMachines();
     /* Show error message if necessary: */
     if (!comVBox.isOk())
-        msgCenter().cannotAcquireVirtualBoxParameter(comVBox);
+        UINotificationMessage::cannotAcquireVirtualBoxParameter(comVBox);
     else
     {
         /* Iterate through existing machines: */
@@ -1048,7 +1049,7 @@ void UIChooserAbstractModel::reloadLocalTree()
             /* Show error message if necessary: */
             if (!comMachine.isOk())
             {
-                msgCenter().cannotAcquireMachineParameter(comMachine);
+                UINotificationMessage::cannotAcquireMachineParameter(comMachine);
                 continue;
             }
 

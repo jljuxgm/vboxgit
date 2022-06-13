@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVM.cpp 91060 2021-09-01 13:58:48Z vboxsync $ */
+/* $Id: UIWizardCloneVM.cpp 91094 2021-09-02 13:35:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVM class implementation.
  */
@@ -148,11 +148,6 @@ bool UIWizardCloneVM::cloneVM()
     {
         /* Acquire machine name beforehand: */
         const QString strMachineName = m_machine.GetName();
-        if (!m_machine.isOk())
-        {
-            msgCenter().cannotAcquireMachineParameter(m_machine);
-            return false;
-        }
 
         /* Open session: */
         CSession comSession = uiCommon().openSession(m_machine.GetId());
