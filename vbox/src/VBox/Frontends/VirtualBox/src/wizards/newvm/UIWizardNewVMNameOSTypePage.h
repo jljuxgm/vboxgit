@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMNameOSTypePage.h 93607 2022-02-04 15:40:30Z vboxsync $ */
+/* $Id: UIWizardNewVMNameOSTypePage.h 93642 2022-02-07 14:36:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMNameOSTypePage class declaration.
  */
@@ -42,7 +42,6 @@ namespace UIWizardNewVMNameOSTypeCommon
      *  wizard cancel */
     bool cleanupMachineFolder(UIWizardNewVM *pWizard, bool fWizardCancel = false);
     void composeMachineFilePath(UINameAndSystemEditor *pNameAndSystemEditor, UIWizardNewVM *pWizard);
-    void detectOSAndImagesFromISO(const QString &strISOPath, UIWizardNewVM *pWizard);
     /** Return false if ISO path is not empty but points to an missing or unreadable file. */
     bool checkISOFile(UINameAndSystemEditor *pNameAndSystemEditor);
 }

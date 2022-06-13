@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.h 93638 2022-02-07 13:02:17Z vboxsync $ */
+/* $Id: UIWizardNewVM.h 93642 2022-02-07 14:36:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class declaration.
  */
@@ -82,8 +82,7 @@ public:
         const QString &createdMachineFolder() const;
         void setCreatedMachineFolder(const QString &strCreatedMachineFolder);
 
-        const QString &detectedOSTypeId() const;
-        void setDetectedOSTypeId(const QString &strDetectedOSTypeId);
+        QString detectedOSTypeId() const;
 
         const QString &guestOSFamilyId() const;
         void setGuestOSFamilyId(const QString &strGuestOSFamilyId);
@@ -197,8 +196,6 @@ private:
        /** Base name of the machine. Can include characters / or \. */
        QString m_strMachineBaseName;
 
-       /** Type Id od the OS detected from the ISO file by IUnattended. */
-       QString m_strDetectedOSTypeId;
        /* Name and index lists of the images detected from an ISO. Currently only for Windows ISOs. */
        QVector<QString> m_detectedWindowsImageNames;
        QVector<ulong> m_detectedWindowsImageIndices;
