@@ -1,4 +1,4 @@
-/* $Id: UIPortForwardingTable.cpp 93990 2022-02-28 15:34:57Z vboxsync $ */
+/* $Id: UIPortForwardingTable.cpp 93996 2022-02-28 22:04:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPortForwardingTable class implementation.
  */
@@ -23,6 +23,7 @@
 #include <QItemEditorFactory>
 #include <QLineEdit>
 #include <QMenu>
+#include <QRegExp>
 #include <QSpinBox>
 #include <QStyledItemDelegate>
 
@@ -67,7 +68,7 @@ public:
     {
         setFrame(false);
         setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
-        setValidator(new QRegExpValidator(QRegExp("[^,:]*"), this));
+        setValidator(new QRegularExpressionValidator(QRegularExpression("[^,:]*"), this));
     }
 
 private:

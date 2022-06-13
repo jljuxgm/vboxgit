@@ -1,4 +1,4 @@
-/* $Id: UIDetailsWidgetCloudNetwork.cpp 93328 2022-01-18 16:33:39Z vboxsync $ */
+/* $Id: UIDetailsWidgetCloudNetwork.cpp 93996 2022-02-28 22:04:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsWidgetCloudNetwork class implementation.
  */
@@ -22,7 +22,6 @@
 #include <QLabel>
 #include <QPushButton>
 #include <QRadioButton>
-#include <QRegExpValidator>
 #include <QStyleOption>
 #include <QVBoxLayout>
 

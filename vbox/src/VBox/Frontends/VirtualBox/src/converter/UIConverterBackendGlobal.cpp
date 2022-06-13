@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackendGlobal.cpp 93988 2022-02-28 15:04:55Z vboxsync $ */
+/* $Id: UIConverterBackendGlobal.cpp 93996 2022-02-28 22:04:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConverterBackendGlobal implementation.
  */
@@ -18,6 +18,7 @@
 /* Qt includes: */
 #include <QApplication>
 #include <QHash>
+#include <QRegExp>
 #include <QRegularExpression>
 
 /* GUI includes: */

@@ -1,4 +1,4 @@
-/* $Id: UISnapshotPane.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UISnapshotPane.cpp 93996 2022-02-28 22:04:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class implementation.
  */
@@ -24,6 +24,7 @@
 #include <QMenu>
 #include <QPointer>
 #include <QReadWriteLock>
+#include <QRegExp>
 #include <QScrollBar>
 #include <QTimer>
 #include <QVBoxLayout>

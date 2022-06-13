@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIToolsModel.cpp 93996 2022-02-28 22:04:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class implementation.
  */
@@ -22,7 +22,6 @@
 #include <QGraphicsView>
 #include <QPropertyAnimation>
 #include <QScrollBar>
-#include <QRegExp>
 #include <QTimer>
 
 /* GUI includes: */

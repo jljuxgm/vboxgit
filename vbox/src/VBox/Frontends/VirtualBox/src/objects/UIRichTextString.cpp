@@ -1,4 +1,4 @@
-/* $Id: UIRichTextString.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIRichTextString.cpp 93996 2022-02-28 22:04:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIRichTextString class implementation.
  */
@@ -18,6 +18,7 @@
 /* Qt includes: */
 #include <QApplication>
 #include <QPalette>
+#include <QRegExp>
 
 /* GUI includes: */
 #include "UIRichTextString.h"

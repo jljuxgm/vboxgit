@@ -1,4 +1,4 @@
-/* $Id: UINetworkReply.cpp 93982 2022-02-28 14:15:03Z vboxsync $ */
+/* $Id: UINetworkReply.cpp 93996 2022-02-28 22:04:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkReply stuff implementation.
  */
@@ -19,7 +19,6 @@
 #include <QDir>
 #include <QFile>
 #include <QThread>
-#include <QRegExp>
 #include <QVector>
 #include <QVariant>
 

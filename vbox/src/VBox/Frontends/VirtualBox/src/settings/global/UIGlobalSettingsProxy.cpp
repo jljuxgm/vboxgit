@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsProxy.cpp 93818 2022-02-17 09:23:11Z vboxsync $ */
+/* $Id: UIGlobalSettingsProxy.cpp 93996 2022-02-28 22:04:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsProxy class implementation.
  */
@@ -20,7 +20,7 @@
 #include <QGridLayout>
 #include <QLabel>
 #include <QRadioButton>
-#include <QRegExpValidator>
+#include <QRegularExpressionValidator>
 
 /* GUI includes: */
 #include "QILineEdit.h"
@@ -304,7 +304,7 @@ void UIGlobalSettingsProxy::prepareWidgets()
                 {
                     if (m_pLabelHost)
                         m_pLabelHost->setBuddy(m_pEditorHost);
-                    m_pEditorHost->setValidator(new QRegExpValidator(QRegExp("\\S+"), m_pEditorHost));
+                    m_pEditorHost->setValidator(new QRegularExpressionValidator(QRegularExpression("\\S+"), m_pEditorHost));
 
                     pLayoutSettings->addWidget(m_pEditorHost);
                 }

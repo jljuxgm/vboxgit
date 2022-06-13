@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.cpp 93990 2022-02-28 15:34:57Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.cpp 93996 2022-02-28 22:04:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class implementation.
  */
@@ -16,6 +16,8 @@
  */
 
 /* Qt includes: */
+#include <QRegExp>
+#include <QRegularExpression>
 #include <QThread>
 
 /* GUI includes: */
@@ -541,7 +543,7 @@ bool UIChooserAbstractModel::isGroupSavingInProgress() const
 /* static */
 QString UIChooserAbstractModel::toOldStyleUuid(const QUuid &uId)
 {
-    return uId.toString().remove(QRegExp("[{}]"));
+    return uId.toString().remove(QRegularExpression("[{}]"));
 }
 
 /* static */

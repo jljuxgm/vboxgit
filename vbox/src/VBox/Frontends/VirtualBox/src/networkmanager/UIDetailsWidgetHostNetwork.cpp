@@ -1,4 +1,4 @@
-/* $Id: UIDetailsWidgetHostNetwork.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIDetailsWidgetHostNetwork.cpp 93996 2022-02-28 22:04:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsWidgetHostNetwork class implementation.
  */
@@ -20,7 +20,6 @@
 #include <QLabel>
 #include <QPushButton>
 #include <QRadioButton>
-#include <QRegExpValidator>
 #include <QStyleOption>
 #include <QVBoxLayout>
 

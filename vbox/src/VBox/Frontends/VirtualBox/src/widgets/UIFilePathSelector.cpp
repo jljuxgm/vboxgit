@@ -1,4 +1,4 @@
-/* $Id: UIFilePathSelector.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIFilePathSelector.cpp 93996 2022-02-28 22:04:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFilePathSelector class implementation.
  */
@@ -26,6 +26,7 @@
 #ifdef VBOX_WS_WIN
 # include <QListView>
 #endif
+#include <QRegExp>
 
 /* GUI includes: */
 #include "QIFileDialog.h"
@@ -454,7 +455,7 @@ void UIFilePathSelector::selectPath()
         return;
 
     /* Wipe out excessive slashes: */
-    strSelPath.remove(QRegExp("[\\\\/]$"));
+    strSelPath.remove(QRegularExpression("[\\\\/]$"));
 
     /* Apply chosen path: */
     changePath(strSelPath);

@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGroup.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIChooserItemGroup.cpp 93996 2022-02-28 22:04:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGroup class implementation.
  */
@@ -23,6 +23,7 @@
 #include <QHBoxLayout>
 #include <QLineEdit>
 #include <QPainter>
+#include <QRegularExpression>
 #include <QStyleOptionGraphicsItem>
 #include <QWindow>
 
@@ -982,7 +983,7 @@ void UIChooserItemGroup::sltNameEditingFinished()
 
     /* We should replace forbidden symbols
      * with ... well, probably underscores: */
-    strNewName.replace(QRegExp("[\\\\/:*?\"<>]"), "_");
+    strNewName.replace(QRegularExpression("[\\\\/:*?\"<>]"), "_");
 
     /* Set new name, save settings: */
     nodeToGroupType()->setName(strNewName);

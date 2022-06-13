@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGenerator.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIDetailsGenerator.cpp 93996 2022-02-28 22:04:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsGenerator implementation.
  */
@@ -670,7 +670,8 @@ UITextTable UIDetailsGenerator::generateMachineInformationNetwork(CMachine &comM
 
         /* Gather adapter information: */
         const KNetworkAttachmentType enmAttachmentType = comAdapter.GetAttachmentType();
-        const QString strAttachmentTemplate = gpConverter->toString(comAdapter.GetAdapterType()).replace(QRegExp("\\s\\(.+\\)"), " (<a href=#%1,%2;%3;%4>%5</a>)");
+        const QString strAttachmentTemplate = gpConverter->toString(comAdapter.GetAdapterType()).replace(QRegularExpression("\\s\\(.+\\)"),
+                                                                                                         " (<a href=#%1,%2;%3;%4>%5</a>)");
         QString strAttachmentType;
         switch (enmAttachmentType)
         {

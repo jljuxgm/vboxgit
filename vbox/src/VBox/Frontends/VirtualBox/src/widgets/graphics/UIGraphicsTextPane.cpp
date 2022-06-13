@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsTextPane.cpp 93990 2022-02-28 15:34:57Z vboxsync $ */
+/* $Id: UIGraphicsTextPane.cpp 93996 2022-02-28 22:04:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGraphicsTextPane class implementation.
  */
@@ -22,6 +22,7 @@
 #include <QApplication>
 #include <QFontMetrics>
 #include <QGraphicsSceneHoverEvent>
+#include <QRegularExpression>
 
 /* GUI includes: */
 #include "UICursor.h"
@@ -152,7 +153,7 @@ void UIGraphicsTextPane::setText(const UITextTable &text)
         else
         {
             /* Parse the 1st one to sub-lines: */
-            QStringList subLines = strLeftLine.split(QRegExp("\\n"));
+            QStringList subLines = strLeftLine.split(QRegularExpression("\\n"));
             foreach (const QString &strSubLine, subLines)
                 m_text << UITextTableLine(strSubLine, QString(), parentWidget());
         }

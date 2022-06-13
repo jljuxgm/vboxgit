@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSerial.cpp 93829 2022-02-17 13:30:31Z vboxsync $ */
+/* $Id: UIMachineSettingsSerial.cpp 93996 2022-02-28 22:04:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSerial class implementation.
  */
@@ -22,6 +22,7 @@
 #include <QGridLayout>
 #include <QLabel>
 #include <QLineEdit>
+#include <QRegularExpressionValidator>
 
 /* GUI includes: */
 #include "QITabWidget.h"
@@ -483,7 +484,7 @@ void UIMachineSettingsSerial::prepareWidgets()
                 {
                     if (m_pLabelPath)
                         m_pLabelPath->setBuddy(m_pEditorPath);
-                    m_pEditorPath->setValidator(new QRegExpValidator(QRegExp(".+"), this));
+                    m_pEditorPath->setValidator(new QRegularExpressionValidator(QRegularExpression(".+"), this));
                     pLayoutPortSettings->addWidget(m_pEditorPath, 3, 1, 1, 6);
                 }
             }

@@ -1,4 +1,4 @@
-/* $Id: UIApplianceEditorWidget.cpp 93990 2022-02-28 15:34:57Z vboxsync $ */
+/* $Id: UIApplianceEditorWidget.cpp 93996 2022-02-28 22:04:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceEditorWidget class implementation.
  */
@@ -22,6 +22,7 @@
 #include <QHeaderView>
 #include <QLabel>
 #include <QLineEdit>
+#include <QRegExp>
 #include <QSpinBox>
 #include <QTextEdit>
 #include <QVBoxLayout>

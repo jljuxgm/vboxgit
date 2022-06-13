@@ -1,4 +1,4 @@
-/* $Id: UIBootOrderEditor.cpp 93990 2022-02-28 15:34:57Z vboxsync $ */
+/* $Id: UIBootOrderEditor.cpp 93996 2022-02-28 22:04:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIBootListWidget class implementation.
  */
@@ -18,6 +18,7 @@
 /* Qt includes: */
 #include <QGridLayout>
 #include <QLabel>
+#include <QRegularExpression>
 #include <QScrollBar>
 
 /* GUI includes: */
@@ -403,7 +404,7 @@ UIBootItemDataList UIBootDataTools::bootItemsFromSerializedString(const QString 
     {
         UIBootItemData data;
         data.m_fEnabled = strArgument.startsWith('+');
-        strArgument.remove(QRegExp("[+-]"));
+        strArgument.remove(QRegularExpression("[+-]"));
         data.m_enmType = static_cast<KDeviceType>(strArgument.toInt());
         list << data;
     }

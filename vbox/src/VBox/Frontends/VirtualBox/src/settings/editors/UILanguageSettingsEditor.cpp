@@ -1,4 +1,4 @@
-/* $Id: UILanguageSettingsEditor.cpp 93938 2022-02-24 17:04:32Z vboxsync $ */
+/* $Id: UILanguageSettingsEditor.cpp 93996 2022-02-28 22:04:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UILanguageSettingsEditor class implementation.
  */
@@ -19,6 +19,7 @@
 #include <QDir>
 #include <QHeaderView>
 #include <QPainter>
+#include <QRegExp>
 #include <QTranslator>
 #include <QVBoxLayout>
 

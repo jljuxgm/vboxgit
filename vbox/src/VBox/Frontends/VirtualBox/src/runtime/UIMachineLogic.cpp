@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 93890 2022-02-22 17:49:28Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 93996 2022-02-28 22:04:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -21,6 +21,7 @@
 #include <QFileInfo>
 #include <QImageWriter>
 #include <QPainter>
+#include <QRegExp>
 #include <QTimer>
 #ifdef VBOX_WS_MAC
 # include <QMenuBar>
@@ -1986,17 +1987,17 @@ void UIMachineLogic::sltTakeScreenshot()
     {
         const QString &s = formats.at(i) + " (*." + formats.at(i).toLower() + ")";
         /* Check there isn't an entry already (even if it just uses another capitalization) */
-        if (filters.indexOf(QRegExp(QRegExp::escape(s), Qt::CaseInsensitive)) == -1)
+        if (filters.indexOf(QRegularExpression(QRegularExpression::escape(s), QRegularExpression::CaseInsensitiveOption)) == -1)
             filters << s;
     }
     /* Try to select some common defaults: */
     QString strFilter;
-    int i = filters.indexOf(QRegExp(".*png.*", Qt::CaseInsensitive));
+    int i = filters.indexOf(QRegularExpression(".*png.*", QRegularExpression::CaseInsensitiveOption));
     if (i == -1)
     {
-        i = filters.indexOf(QRegExp(".*jpe+g.*", Qt::CaseInsensitive));
+        i = filters.indexOf(QRegularExpression(".*jpe+g.*", QRegularExpression::CaseInsensitiveOption));
         if (i == -1)
-            i = filters.indexOf(QRegExp(".*bmp.*", Qt::CaseInsensitive));
+            i = filters.indexOf(QRegularExpression(".*bmp.*", QRegularExpression::CaseInsensitiveOption));
     }
     if (i != -1)
     {
