@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: HostImpl.cpp 93209 2022-01-12 22:05:25Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -1159,15 +1159,17 @@ HRESULT Host::getProcessorDescription(ULONG aCpuId, com::Utf8Str &aDescription)
 {
     // no locking required
 
-    char szCPUModel[80];
-    szCPUModel[0] = 0;
-    int vrc = RTMpGetDescription(aCpuId, szCPUModel, sizeof(szCPUModel));
-    if (RT_FAILURE(vrc))
-        return E_FAIL; /** @todo error reporting? */
-
-    aDescription = Utf8Str(szCPUModel);
-
-    return S_OK;
+    int vrc = aDescription.reserveNoThrow(80);
+    if (RT_SUCCESS(vrc))
+    {
+        vrc = RTMpGetDescription(aCpuId, aDescription.mutableRaw(), aDescription.capacity());
+        if (RT_SUCCESS(vrc))
+        {
+            aDescription.jolt();
+            return S_OK;
+        }
+    }
+    return setErrorVrc(vrc);
 }
 
 /**
