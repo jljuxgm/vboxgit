@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 90883 2021-08-25 13:49:13Z vboxsync $ */
+/* $Id: UISession.cpp 90888 2021-08-25 16:33:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -323,6 +323,31 @@ bool UISession::detach()
 {
     /* Nothing here for now: */
     return true;
+}
+
+void UISession::saveState()
+{
+    /* Saving state? */
+    bool fSaveState = true;
+
+    /* If VM is not paused, we should pause it first: */
+    if (!isPaused())
+        fSaveState = pause();
+
+    /* Save state: */
+    if (fSaveState)
+    {
+        /* Enable 'manual-override',
+         * preventing automatic Runtime UI closing: */
+        setManualOverrideMode(true);
+
+        /* Now, do the magic: */
+        LogRel(("GUI: Saving VM state..\n"));
+        UINotificationProgressMachineSaveState *pNotification = new UINotificationProgressMachineSaveState(machine());
+        connect(pNotification, &UINotificationProgressMachineSaveState::sigMachineStateSaved,
+                this, &UISession::sltHandleMachineStateSaved);
+        gpNotificationCenter->append(pNotification);
+    }
 }
 
 bool UISession::shutdown()
@@ -801,6 +826,16 @@ void UISession::sltHandleHostScreenAvailableAreaChange()
 
     /* Notify current machine-logic: */
     emit sigHostScreenAvailableAreaChange();
+}
+
+void UISession::sltHandleMachineStateSaved(bool fSuccess)
+{
+    /* Disable 'manual-override' finally: */
+    setManualOverrideMode(false);
+
+    /* Close Runtime UI if state was saved: */
+    if (fSuccess)
+        closeRuntimeUI();
 }
 
 void UISession::sltAdditionsChange()

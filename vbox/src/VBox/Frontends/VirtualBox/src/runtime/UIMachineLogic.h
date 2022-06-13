@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 90883 2021-08-25 13:49:13Z vboxsync $ */
+/* $Id: UIMachineLogic.h 90888 2021-08-25 16:33:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -144,8 +144,6 @@ public:
 
     /** Detach and close Runtime UI. */
     void detach();
-    /** Save VM state, then close Runtime UI. */
-    void saveState();
     /** Call for guest shutdown to close Runtime UI. */
     void shutdown();
     /** Power off VM, then close Runtime UI. */
@@ -284,8 +282,6 @@ private slots:
     void sltPause(bool fOn);
     void sltDetach();
     void sltSaveState();
-    /** Handles machine state saved. */
-    void sltHandleMachineStateSaved(bool fSuccess);
     void sltShutdown();
     void sltPowerOff();
     void sltClose();
