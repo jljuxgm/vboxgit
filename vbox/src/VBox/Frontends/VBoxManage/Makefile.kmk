@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 92372 2021-11-11 14:45:18Z vboxsync $
+# $Id: Makefile.kmk 92384 2021-11-11 22:53:20Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxManage (the cli frontend).
 #
@@ -67,7 +67,7 @@ VBoxManageHelp_SOURCES    = \
 	VBoxManage.cpp \
 	VBoxManageHelp.cpp \
 	$(if $(VBOX_WITH_GUEST_PROPS),VBoxManageGuestProp.cpp) \
-	$(if $(VBOX_WITH_GUEST_CONTROL),VBoxManageGuestCtrl.cpp) \
+	$(if $(VBOX_WITH_GUEST_CONTROL),VBoxManageGuestCtrl.cpp)
 
 
 ifndef VBOX_ONLY_DOCS
@@ -117,14 +117,12 @@ ifndef VBOX_ONLY_DOCS
 
 ifdef VBOX_WITH_VBOXMANAGE_NLS
  VBoxManage_DEFS      += VBOX_WITH_VBOXMANAGE_NLS
-
  VBoxManage_INCS      += \
-	$(PATH_ROOT)/src/VBox/Main/include
-
+ 	$(PATH_ROOT)/src/VBox/Main/include
  VBoxManage_SOURCES   += \
-	$(PATH_ROOT)/src/VBox/Main/src-all/VirtualBoxTranslator.cpp \
-	$(PATH_ROOT)/src/VBox/Main/src-all/QMTranslatorImpl.cpp \
-	$(PATH_ROOT)/src/VBox/Main/src-all/GlobalStatusConversion.cpp
+ 	$(PATH_ROOT)/src/VBox/Main/src-all/VirtualBoxTranslator.cpp \
+ 	$(PATH_ROOT)/src/VBox/Main/src-all/QMTranslatorImpl.cpp \
+ 	$(PATH_ROOT)/src/VBox/Main/src-all/GlobalStatusConversion.cpp
 endif
 
 
