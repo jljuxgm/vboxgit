@@ -1,4 +1,4 @@
-/* $Id: strformatfloat.cpp 94511 2022-04-07 13:17:57Z vboxsync $ */
+/* $Id: strformatfloat.cpp 94557 2022-04-11 13:53:21Z vboxsync $ */
 /** @file
  * IPRT - String Formatter, Floating Point Numbers (simple approach).
  */
@@ -249,8 +249,7 @@ static ssize_t rtStrFormatR80Worker(char *pszBuf, size_t cbBuf, bool const fSign
                  ? rtStrFormatCopyOutStr(pszBuf, cbBuf, RT_STR_TUPLE("-0"))
                  : rtStrFormatCopyOutStr(pszBuf, cbBuf, RT_STR_TUPLE("+0"));
         fDenormal = true;
-        if (fInteger)
-            uExponent = 1;
+        uExponent = 1;
     }
     else if (uExponent == RTFLOAT80U_EXP_MAX)
     {
