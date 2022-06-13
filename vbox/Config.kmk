@@ -1,4 +1,4 @@
-# $Id: Config.kmk 95031 2022-05-17 12:05:21Z vboxsync $
+# $Id: Config.kmk 95063 2022-05-23 13:30:21Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -4374,7 +4374,7 @@ ifdef VBOX_SIGNING_MODE
   ## Notarize a file (usually DMG, can also be PKG). Used with corp code signing only.
   # @param 1  The file to notarize.
   # @param 2  Identifier, mandatory.
-  if $(intersects darwin all 1,$(VBOX_WITH_CORP_CODE_SIGNING))
+  if $(intersects darwin darwin_notarize all 1,$(VBOX_WITH_CORP_CODE_SIGNING))
    VBOX_NOTARIZE_FILE_FN = $(call MSG_TOOL,SIGNTOOL,,$(1),$(2))$(NLTAB)$(call VBOX_CCS_NOTARIZE_CMD,$(1),$(2))
   endif
 
@@ -8962,7 +8962,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 95031 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 95063 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
