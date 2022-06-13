@@ -1,4 +1,4 @@
-# $Id: Config.kmk 92513 2021-11-19 17:49:29Z vboxsync $
+# $Id: Config.kmk 92514 2021-11-19 18:38:54Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -8108,7 +8108,7 @@ TEMPLATE_VBOXGUESTR0_DEFS.linux  = RT_NO_EXPORT_SYMBOL
 ifeq ($(KBUILD_TARGET),solaris)
  TEMPLATE_VBOXGUESTR0_LDFLAGS    = -r -dy
 endif
-ifn1of (darwin os2 win, $(KBUILD_TARGET))
+ifn1of ($(KBUILD_TARGET), darwin os2 win)
  TEMPLATE_VBOXGUESTR0_CFLAGS     = $(patsubst %/VBox/SUPDrvMangling.h,%/VBox/VBoxGuestMangling.h,$(TEMPLATE_VBOXR0DRV_CFLAGS))
  TEMPLATE_VBOXGUESTR0_CXXFLAGS   = $(patsubst %/VBox/SUPDrvMangling.h,%/VBox/VBoxGuestMangling.h,$(TEMPLATE_VBOXR0DRV_CXXFLAGS))
  TEMPLATE_VBOXGUESTR0_ASDEFS     = $(patsubst RT_MANGLER_PREFIX=%,RT_MANGLER_PREFIX=VBoxGuest_,$(TEMPLATE_VBOXR0DRV_ASDEFS))
@@ -8369,7 +8369,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 92513 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 92514 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
