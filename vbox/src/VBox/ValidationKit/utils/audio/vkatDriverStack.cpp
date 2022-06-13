@@ -1,4 +1,4 @@
-/* $Id: vkatDriverStack.cpp 90766 2021-08-20 17:30:57Z vboxsync $ */
+/* $Id: vkatDriverStack.cpp 90776 2021-08-23 08:16:58Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) - Driver stack code.
  */
@@ -417,7 +417,6 @@ int audioTestDrvConstruct(PAUDIOTESTDRVSTACK pDrvStack, PCPDMDRVREG pDrvReg, PPD
         return VINF_SUCCESS;
     }
 
-    RTTestFailed(g_hTest, "Failed to construct audio driver '%s': %Rrc", pDrvReg->szName, rc);
     if (pDrvReg->pfnDestruct)
         pDrvReg->pfnDestruct(pDrvIns);
     RTMemFree(pDrvIns);
