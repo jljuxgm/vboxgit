@@ -1,4 +1,4 @@
-/* $Id: AudioTestService.cpp 92008 2021-10-22 13:56:55Z vboxsync $ */
+/* $Id: AudioTestService.cpp 92009 2021-10-22 15:39:16Z vboxsync $ */
 /** @file
  * AudioTestService - Audio test execution server.
  */
@@ -857,7 +857,7 @@ static void atsClientFree(PATSCLIENTINST pInst)
         return;
 
     /* Make sure that there is no transport client associated with it anymore. */
-    AssertReturnVoid(pInst->enmState = ATSCLIENTSTATE_DESTROYING);
+    AssertReturnVoid(pInst->enmState == ATSCLIENTSTATE_DESTROYING);
     AssertReturnVoid(pInst->pTransportClient == NULL);
 
     if (pInst->pszHostname)
