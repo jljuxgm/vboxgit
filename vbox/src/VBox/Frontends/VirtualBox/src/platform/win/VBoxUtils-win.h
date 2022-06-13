@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-win.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxUtils-win.h 89740 2021-06-16 13:18:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Declarations of utility classes and functions for handling Windows specific tasks.
  */
@@ -35,6 +35,7 @@ namespace NativeWindowSubsystem
 {
     /* Returns area covered by visible always-on-top (top-most) windows: */
     SHARED_LIBRARY_STUFF const QRegion areaCoveredByTopMostWindows();
+    SHARED_LIBRARY_STUFF const void setScreenSaverActive(BOOL fDisableScreenSaver);
 }
 
 #endif /* !FEQT_INCLUDED_SRC_platform_win_VBoxUtils_win_h */

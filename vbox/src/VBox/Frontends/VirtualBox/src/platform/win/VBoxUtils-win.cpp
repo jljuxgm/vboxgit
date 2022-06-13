@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-win.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
+/* $Id: VBoxUtils-win.cpp 89740 2021-06-16 13:18:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Declarations of utility classes and functions for handling Windows specific tasks.
  */
@@ -72,5 +72,21 @@ const QRegion NativeWindowSubsystem::areaCoveredByTopMostWindows()
         topMostRegion += topMostRects[iRectIndex];
     /* Return top-most region: */
     return topMostRegion;
+}
+
+const void NativeWindowSubsystem::setScreenSaverActive(BOOL fDisableScreenSaver)
+{
+    BOOL fIsActive;
+    SystemParametersInfo(SPI_GETSCREENSAVEACTIVE, 0, &fIsActive, 0);
+    if (fIsActive == !fDisableScreenSaver)
+        return;
+    //printf("before %d\n", fIsActive);
+
+    SystemParametersInfo(SPI_SETSCREENSAVEACTIVE, !fDisableScreenSaver, NULL, 0);
+
+    SystemParametersInfo(SPI_GETSCREENSAVEACTIVE, 0, &fIsActive, 0);
+    /*if (fIsActive == !fDisableScreenSaver)
+        printf("success %d %d\n", fIsActive, fDisableScreenSaver);
+*/
 }
 
