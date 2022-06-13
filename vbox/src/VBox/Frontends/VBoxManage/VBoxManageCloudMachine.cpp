@@ -1,4 +1,4 @@
-/* $Id: VBoxManageCloudMachine.cpp 91171 2021-09-09 01:17:57Z vboxsync $ */
+/* $Id: VBoxManageCloudMachine.cpp 91175 2021-09-09 08:26:38Z vboxsync $ */
 /** @file
  * VBoxManageCloudMachine - The cloud machine related commands.
  */
@@ -348,7 +348,7 @@ getMachineByName(ComPtr<ICloudMachine> &pMachineOut,
                 COMGETTER(Id)(bstrId2.asOutParam()),
                     hrc);
 
-            RTMsgError("ambiguous name: %ls and %ls", bstrId1, bstrId2);
+            RTMsgError("ambiguous name: %ls and %ls", bstrId1.raw(), bstrId2.raw());
             return VBOX_E_OBJECT_NOT_FOUND;
         }
     }
