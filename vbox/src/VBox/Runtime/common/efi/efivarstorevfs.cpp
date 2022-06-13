@@ -1,4 +1,4 @@
-/* $Id: efivarstorevfs.cpp 90067 2021-07-06 13:36:02Z vboxsync $ */
+/* $Id: efivarstorevfs.cpp 90068 2021-07-06 14:30:42Z vboxsync $ */
 /** @file
  * IPRT - Expose a EFI variable store as a Virtual Filesystem.
  */
@@ -1533,7 +1533,7 @@ static int rtEfiVarStoreLoad(PRTEFIVARSTORE pThis, PRTERRINFO pErrInfo)
 
         /* Align to 16bit boundary. */
         offData = RT_ALIGN_64(offData, 2);
-    } while (RT_SUCCESS(rc));
+    }
 
     if (rc == VERR_EOF) /* Reached end of variable store. */
         rc = VINF_SUCCESS;
