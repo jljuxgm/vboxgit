@@ -1,4 +1,4 @@
-/* $Id: UpdateAgentImpl.cpp 94647 2022-04-20 10:12:17Z vboxsync $ */
+/* $Id: UpdateAgentImpl.cpp 94648 2022-04-20 10:20:19Z vboxsync $ */
 /** @file
  * IUpdateAgent COM class implementations.
  */
@@ -132,6 +132,13 @@ void UpdateAgent::uninit()
     AutoUninitSpan autoUninitSpan(this);
     if (autoUninitSpan.uninitDone())
         return;
+}
+
+HRESULT UpdateAgent::check(ComPtr<IProgress> &aProgress)
+{
+    RT_NOREF(aProgress);
+
+    return VBOX_E_NOT_SUPPORTED;
 }
 
 HRESULT UpdateAgent::download(ComPtr<IProgress> &aProgress)
