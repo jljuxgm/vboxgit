@@ -1,4 +1,4 @@
-/* $Id: Svga.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: Svga.h 93349 2022-01-19 17:57:56Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver VMSVGA.
  */
@@ -30,8 +30,11 @@
 #include <VBoxGaTypes.h>
 #include <VBoxGaHWSVGA.h>
 
+ /* VMSVGA headers. */
+#pragma pack(1) /* VMSVGA structures are '__packed'. */
 #include <svga_reg.h>
 #include <svga3d_reg.h>
+#pragma pack()
 
 #define SVGA_SYNC_GENERIC         1
 #define SVGA_SYNC_FIFOFULL        2
