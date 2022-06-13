@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxBase.h 91718 2021-10-14 11:43:12Z vboxsync $ */
+/* $Id: VirtualBoxBase.h 92068 2021-10-26 08:35:27Z vboxsync $ */
 /** @file
  * VirtualBox COM base classes definition
  */
@@ -578,7 +578,7 @@ public:
 # define DECLARE_TRANSLATE_METHODS(cls) \
     static inline const char *tr(const char  *aSourceText, \
                                  const char  *aComment = NULL, \
-                                 const size_t aNum = (~(size_t)0)) \
+                                 const size_t aNum = ~(size_t)0) \
     { \
         return VirtualBoxTranslator::translate(NULL, #cls, aSourceText, aComment, aNum); \
     }
@@ -586,7 +586,7 @@ public:
 # define DECLARE_TRANSLATE_METHODS(cls) \
     static inline const char *tr(const char *aSourceText, \
                                  const char *aComment = NULL, \
-                                 const size_t aNum = (~(size_t)0)) \
+                                 const size_t aNum = ~(size_t)0) \
     { \
         RT_NOREF(aComment, aNum); \
         return aSourceText; \
