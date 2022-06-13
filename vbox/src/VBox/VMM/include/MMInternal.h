@@ -1,4 +1,4 @@
-/* $Id: MMInternal.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: MMInternal.h 91018 2021-08-31 01:30:41Z vboxsync $ */
 /** @file
  * MM - Internal header file.
  */
@@ -628,8 +628,6 @@ typedef struct MMUSERPERVM
 {
     /** Pointer to the MM R3 Heap. */
     R3PTRTYPE(PMMHEAP)          pHeap;
-    /** Pointer to the MM Uk Heap. */
-    R3PTRTYPE(PMMUKHEAP)        pUkHeap;
 } MMUSERPERVM;
 /** Pointer to the MM data kept in the UVM. */
 typedef MMUSERPERVM *PMMUSERPERVM;
@@ -637,15 +635,10 @@ typedef MMUSERPERVM *PMMUSERPERVM;
 
 RT_C_DECLS_BEGIN
 
-
 int  mmR3UpdateReservation(PVM pVM);
 
 int  mmR3HeapCreateU(PUVM pUVM, PMMHEAP *ppHeap);
 void mmR3HeapDestroy(PMMHEAP pHeap);
-
-void mmR3UkHeapDestroy(PMMUKHEAP pHeap);
-int  mmR3UkHeapCreateU(PUVM pUVM, PMMUKHEAP *ppHeap);
-
 
 int  mmR3HyperInit(PVM pVM);
 int  mmR3HyperTerm(PVM pVM);
