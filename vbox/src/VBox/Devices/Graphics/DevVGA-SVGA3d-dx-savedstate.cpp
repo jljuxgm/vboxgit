@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-dx-savedstate.cpp 94215 2022-03-14 06:22:15Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-dx-savedstate.cpp 94232 2022-03-15 08:47:10Z vboxsync $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - DX backend saved state.
  */
@@ -63,6 +63,7 @@ static int vmsvga3dDXLoadSurface(PCPDMDEVHLPR3 pHlp, PVGASTATECC pThisCC, PSSMHA
     rc = vmsvga3dSurfaceDefine(pThisCC, sid, entrySurface.surface1Flags, entrySurface.format,
                                entrySurface.multisampleCount, entrySurface.autogenFilter,
                                entrySurface.numMipLevels, &entrySurface.size,
+                               entrySurface.arraySize,
                                /* fAllocMipLevels = */ true);
     AssertRCReturn(rc, rc);
 
@@ -73,7 +74,7 @@ static int vmsvga3dDXLoadSurface(PCPDMDEVHLPR3 pHlp, PVGASTATECC pThisCC, PSSMHA
     pHlp->pfnSSMGetU32(pSSM, &pSurface->idAssociatedContext);
 
     /* Load miplevels data to the surface buffers. */
-    for (uint32_t j = 0; j < pSurface->cLevels * pSurface->cFaces; j++)
+    for (uint32_t j = 0; j < pSurface->cLevels * pSurface->surfaceDesc.numArrayElements; j++)
     {
         PVMSVGA3DMIPMAPLEVEL pMipmapLevel = &pSurface->paMipmapLevels[j];
 
@@ -267,7 +268,7 @@ static int vmsvga3dDXSaveSurface(PCPDMDEVHLPR3 pHlp, PVGASTATECC pThisCC, PSSMHA
     /* Save the surface fields which are not part of SVGAOTableSurfaceEntry. */
     pHlp->pfnSSMPutU32(pSSM, pSurface->idAssociatedContext);
 
-    for (uint32_t iArray = 0; iArray < pSurface->cFaces; ++iArray) /* Texture array index or face for cube textures */
+    for (uint32_t iArray = 0; iArray < pSurface->surfaceDesc.numArrayElements; ++iArray)
     {
         for (uint32_t iMipmap = 0; iMipmap < pSurface->cLevels; ++iMipmap)
         {

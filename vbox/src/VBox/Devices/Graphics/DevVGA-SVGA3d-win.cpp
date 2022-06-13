@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-win.cpp 94063 2022-03-02 15:41:38Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-win.cpp 94232 2022-03-15 08:47:10Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -2748,7 +2748,7 @@ static DECLCALLBACK(int) vmsvga3dBackContextDestroy(PVGASTATECC pThisCC, uint32_
                 AssertRC(rc);
 
                 rc = vmsvga3dSurfaceDefine(pThisCC, sid, surfaceFlags, format, multisampleCount, autogenFilter,
-                                           cMipLevels, &pMipLevelSize[0], /* fAllocMipLevels = */ true);
+                                           cMipLevels, &pMipLevelSize[0], /* arraySize = */ 0, /* fAllocMipLevels = */ true);
                 AssertRC(rc);
 
                 Assert(!pSurface->u.pSurface);
