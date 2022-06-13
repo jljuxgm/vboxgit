@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tdAudioTest.py 90987 2021-08-30 07:29:07Z vboxsync $
+# $Id: tdAudioTest.py 90989 2021-08-30 09:16:32Z vboxsync $
 
 """
 AudioTest test driver which invokes the VKAT (Validation Kit Audio Test)
@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 90987 $"
+__version__ = "$Revision: 90989 $"
 
 # Standard Python imports.
 import os
@@ -424,7 +424,7 @@ class tdAudioTest(vbox.TestDriver):
             asEnv = [];
 
             # Enable more verbose logging for all groups. Disable later again?
-            asEnv.extend([ 'VKAT_RELEASE_LOG=all.e.l.l2.l3.f' ]);
+            asEnv.extend([ 'VKAT_RELEASE_LOG=all.e.l.l2.l3.f+audio_test.e.l.l2.l3.f' ]);
 
             # Write the log file to some deterministic place so TxS can retrieve it later.
             sVkatLogFile = 'VKAT_RELEASE_LOG_DEST=file=' + self.getGstVkatLogFilePath(oTestVm);
@@ -469,7 +469,7 @@ class tdAudioTest(vbox.TestDriver):
 
         # Enable more verbose logging for all groups. Disable later again?
         asEnv = {};
-        asEnv[ 'VKAT_RELEASE_LOG' ] = 'all.e.l.l2.l3.f';
+        asEnv[ 'VKAT_RELEASE_LOG' ] = 'all.e.l.l2.l3.f+audio_test.e.l.l2.l3.f';
 
         # Build the base command line, exclude all tests by default.
         asArgs = [ sVkatExe, 'test', '-vv', '--mode', 'host', '--probe-backends', \
