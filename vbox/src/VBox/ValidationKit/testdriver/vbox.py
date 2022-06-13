@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 92236 2021-11-05 10:36:37Z vboxsync $
+# $Id: vbox.py 92237 2021-11-05 10:54:18Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 92236 $"
+__version__ = "$Revision: 92237 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -2936,7 +2936,7 @@ class TestDriver(base.TestDriver):                                              
 
         if self.fpApiVer >= 7.0:
             # Needed to reach the host (localhost) from the guest. See xTracker #9896.
-            for iSlot in range(0, 32):
+            for iSlot in range(0, self.oVBox.systemProperties.getMaxNetworkAdapters(oVM.chipsetType)):
                 try:
                     oNic = oVM.getNetworkAdapter(iSlot);
                     if not oNic.enabled:
@@ -2955,7 +2955,7 @@ class TestDriver(base.TestDriver):                                              
                                       (sAdpName, iSlot, sKey));
                         self.oVBox.setExtraData(sKey, '');
                 except:
-                    pass;
+                    reporter.logXcpt();
 
         # The UUID for the name.
         try:
