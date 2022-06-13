@@ -1,4 +1,4 @@
-/* $Id: IEMAllAImplC.cpp 93893 2022-02-22 21:27:58Z vboxsync $ */
+/* $Id: IEMAllAImplC.cpp 93942 2022-02-24 21:15:01Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in Assembly, portable C variant.
  */
@@ -3117,6 +3117,14 @@ IEM_DECL_IMPL_DEF(void, iemAImpl_fst_r80_to_r80,(PCX86FXSTATE pFpuState, uint16_
                                                  PRTFLOAT80U pr80Dst, PCRTFLOAT80U pr80Src))
 {
     RT_NOREF(pFpuState, pu16FSW, pr80Dst, pr80Src);
+    AssertReleaseFailed();
+}
+
+
+IEM_DECL_IMPL_DEF(void, iemAImpl_fst_r80_to_d80,(PCX86FXSTATE pFpuState, uint16_t *pu16FSW,
+                                                 PRTPBCD80U pd80Dst, PCRTFLOAT80U pr80Src))
+{
+    RT_NOREF(pFpuState, pu16FSW, pd80Dst, pr80Src);
     AssertReleaseFailed();
 }
 
