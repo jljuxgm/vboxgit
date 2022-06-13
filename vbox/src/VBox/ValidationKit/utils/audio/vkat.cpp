@@ -1,4 +1,4 @@
-/* $Id: vkat.cpp 90117 2021-07-09 11:45:26Z vboxsync $ */
+/* $Id: vkat.cpp 90506 2021-08-04 08:14:31Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) utility for testing and validating the audio stack.
  */
@@ -1179,6 +1179,8 @@ int main(int argc, char **argv)
     {
         if (!fDaemonized)
         {
+            audioTestShowLogo(g_pStdOut);
+
             rc = RTProcDaemonize(argv, "--daemonized");
             if (RT_FAILURE(rc))
                 return RTMsgErrorExit(RTEXITCODE_FAILURE, "RTProcDaemonize() failed with %Rrc\n", rc);
