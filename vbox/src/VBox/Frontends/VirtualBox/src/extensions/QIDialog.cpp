@@ -1,4 +1,4 @@
-/* $Id: QIDialog.cpp 87718 2021-02-11 08:50:48Z vboxsync $ */
+/* $Id: QIDialog.cpp 91109 2021-09-03 15:31:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIDialog class implementation.
  */
@@ -21,6 +21,7 @@
 /* GUI includes: */
 #include "QIDialog.h"
 #include "UICommon.h"
+#include "UIDesktopWidgetWatchdog.h"
 
 
 QIDialog::QIDialog(QWidget *pParent /* = 0 */, Qt::WindowFlags enmFlags /* = Qt::WindowFlags() */)
@@ -123,5 +124,5 @@ void QIDialog::polishEvent(QShowEvent *)
 #endif /* VBOX_WS_MAC */
 
     /* Explicit centering according to our parent: */
-    UICommon::centerWidget(this, parentWidget(), false);
+    UIDesktopWidgetWatchdog::centerWidget(this, parentWidget(), false);
 }

@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.cpp 91066 2021-09-01 15:56:33Z vboxsync $ */
+/* $Id: UIMachineWindowFullscreen.cpp 91109 2021-09-03 15:31:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowFullscreen class implementation.
  */
@@ -380,7 +380,7 @@ void UIMachineWindowFullscreen::placeOnScreen()
             geo = QRect(QPoint(0, 0), QSize(800, 600).boundedTo(workingArea.size()));
         /* Move window to the center of working-area: */
         geo.moveCenter(workingArea.center());
-        UICommon::setTopLevelGeometry(this, geo);
+        UIDesktopWidgetWatchdog::setTopLevelGeometry(this, geo);
     }
 
 #elif defined(VBOX_WS_WIN)

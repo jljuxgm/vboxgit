@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 90083 2021-07-08 07:38:43Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 91109 2021-09-03 15:31:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -732,7 +732,7 @@ void UIExtraDataManagerWindow::showAndRaise(QWidget*)
     /* Raise: */
     activateWindow();
 //    /* Center according passed widget: */
-//    UICommon::centerWidget(this, pCenterWidget, false);
+//    UIDesktopWidgetWatchdog::centerWidget(this, pCenterWidget, false);
 }
 
 void UIExtraDataManagerWindow::sltMachineRegistered(const QUuid &uID, bool fRegistered)
@@ -5050,7 +5050,7 @@ QRect UIExtraDataManager::dialogGeometry(const QString &strKey,
 #ifdef VBOX_WS_WIN
     /* Make sure resulting geometry is within current bounds: */
     if (!availableGeometry.contains(geometry))
-        geometry = UICommon::getNormalized(geometry, QRegion(availableGeometry));
+        geometry = UIDesktopWidgetWatchdog::getNormalized(geometry, QRegion(availableGeometry));
 #endif /* VBOX_WS_WIN */
 
     /* Return result: */

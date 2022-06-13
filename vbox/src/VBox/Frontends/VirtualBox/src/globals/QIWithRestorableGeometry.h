@@ -1,4 +1,4 @@
-/* $Id: QIWithRestorableGeometry.h 87718 2021-02-11 08:50:48Z vboxsync $ */
+/* $Id: QIWithRestorableGeometry.h 91109 2021-09-03 15:31:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - QIWithRestorableGeometry class declaration.
  */
@@ -112,7 +112,7 @@ protected:
         this->resize(m_geometry.size());
 #else
         /* Use the new approach otherwise: */
-        UICommon::setTopLevelGeometry(this, m_geometry);
+        UIDesktopWidgetWatchdog::setTopLevelGeometry(this, m_geometry);
 #endif
 
         /* Maximize (if necessary): */

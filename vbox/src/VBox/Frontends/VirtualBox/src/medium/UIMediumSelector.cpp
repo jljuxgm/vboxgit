@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.cpp 90425 2021-07-30 13:15:58Z vboxsync $ */
+/* $Id: UIMediumSelector.cpp 91109 2021-09-03 15:31:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class implementation.
  */
@@ -612,7 +612,7 @@ void UIMediumSelector::showEvent(QShowEvent *pEvent)
     resize(proposedSize);
 
     if (m_pParent)
-        UICommon::centerWidget(this, m_pParent, false);
+        UIDesktopWidgetWatchdog::centerWidget(this, m_pParent, false);
 }
 
 void UIMediumSelector::repopulateTreeWidget()

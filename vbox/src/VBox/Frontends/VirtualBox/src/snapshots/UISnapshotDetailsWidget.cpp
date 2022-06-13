@@ -1,4 +1,4 @@
-/* $Id: UISnapshotDetailsWidget.cpp 91003 2021-08-30 15:40:14Z vboxsync $ */
+/* $Id: UISnapshotDetailsWidget.cpp 91109 2021-09-03 15:31:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotDetailsWidget class implementation.
  */
@@ -501,7 +501,7 @@ void UIScreenshotViewer::prepare()
     adjustWindowSize();
 
     /* Center according requested widget: */
-    UICommon::centerWidget(this, parentWidget(), false);
+    UIDesktopWidgetWatchdog::centerWidget(this, parentWidget(), false);
 }
 
 void UIScreenshotViewer::adjustWindowSize()

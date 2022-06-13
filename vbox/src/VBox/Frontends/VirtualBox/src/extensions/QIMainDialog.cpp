@@ -1,4 +1,4 @@
-/* $Id: QIMainDialog.cpp 87718 2021-02-11 08:50:48Z vboxsync $ */
+/* $Id: QIMainDialog.cpp 91109 2021-09-03 15:31:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIMainDialog class implementation.
  */
@@ -29,6 +29,7 @@
 /* GUI includes: */
 #include "QIMainDialog.h"
 #include "UICommon.h"
+#include "UIDesktopWidgetWatchdog.h"
 #include "VBoxUtils.h"
 
 /* Other VBox includes: */
@@ -232,7 +233,7 @@ void QIMainDialog::polishEvent(QShowEvent *)
 {
     /* Explicit centering according to our parent: */
     if (m_fIsAutoCentering)
-        UICommon::centerWidget(this, parentWidget(), false);
+        UIDesktopWidgetWatchdog::centerWidget(this, parentWidget(), false);
 }
 
 void QIMainDialog::resizeEvent(QResizeEvent *pEvent)

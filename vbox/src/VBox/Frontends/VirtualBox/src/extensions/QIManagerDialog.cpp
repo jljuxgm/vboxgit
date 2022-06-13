@@ -1,4 +1,4 @@
-/* $Id: QIManagerDialog.cpp 88798 2021-04-30 12:42:13Z vboxsync $ */
+/* $Id: QIManagerDialog.cpp 91109 2021-09-03 15:31:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIManagerDialog class implementation.
  */
@@ -120,7 +120,7 @@ void QIManagerDialog::prepare()
     finalize();
 
     /* Center according requested widget: */
-    UICommon::centerWidget(this, m_pCenterWidget, false);
+    UIDesktopWidgetWatchdog::centerWidget(this, m_pCenterWidget, false);
 
     /* Load the dialog's settings from extradata */
     loadSettings();
