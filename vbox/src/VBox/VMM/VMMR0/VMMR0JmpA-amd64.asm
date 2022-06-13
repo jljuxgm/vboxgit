@@ -1,4 +1,4 @@
-; $Id: VMMR0JmpA-amd64.asm 91775 2021-10-17 10:53:28Z vboxsync $
+; $Id: VMMR0JmpA-amd64.asm 91806 2021-10-18 08:32:39Z vboxsync $
 ;; @file
 ; VMM - R0 SetJmp / LongJmp routines for AMD64.
 ;
@@ -166,14 +166,10 @@ SEH64_END_PROLOGUE
   %endif
 
     ; Switch stack!
-  %ifndef WITHOUT_SUPR0STACKINFO
-    lea     rsp, [r15 - 16*8 + SUPR0STACKINFO_size] ; Make sure the generic wrapper doesn't crash when moving 16 args.
-  %else
-   %ifdef ASM_CALL64_MSC
+  %ifdef ASM_CALL64_MSC
     lea     rsp, [r15 - 20h]
-   %else
+  %else
     mov     rsp, r15
-   %endif
   %endif
  %endif ; VMM_R0_SWITCH_STACK
 
