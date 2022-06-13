@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSystem.cpp 90967 2021-08-27 20:37:40Z vboxsync $ */
+/* $Id: UIMachineSettingsSystem.cpp 92134 2021-10-28 10:47:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSystem class implementation.
  */
@@ -555,16 +555,6 @@ bool UIMachineSettingsSystem::validate(QList<UIValidationMessage> &messages)
         /* Prepare message: */
         UIValidationMessage message;
         message.first = UITranslator::removeAccelMark(m_pTabWidget->tabText(2));
-
-        /* HW Virt Ex test: */
-        if (!isHWVirtExSupported() && isHWVirtExEnabled())
-        {
-            message.second << tr(
-                "The hardware virtualization is enabled in the Acceleration section of the System page although "
-                "it is not supported by the host system. It should be disabled in order to start the virtual system.");
-
-            fPass = false;
-        }
 
         /* Nested Paging: */
         if (isNestedPagingEnabled())
