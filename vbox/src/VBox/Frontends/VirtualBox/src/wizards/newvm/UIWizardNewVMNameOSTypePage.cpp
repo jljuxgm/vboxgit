@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMNameOSTypePage.cpp 91593 2021-10-06 15:12:58Z vboxsync $ */
+/* $Id: UIWizardNewVMNameOSTypePage.cpp 92037 2021-10-25 14:14:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasicNameOSStype class implementation.
  */
@@ -143,8 +143,8 @@ static const osTypePattern gs_OSTypePattern[] =
     { QRegExp("((Red)|(rhel)|(cen)).*32",          Qt::CaseInsensitive), "RedHat" },
     { QRegExp("Tur.*64",                           Qt::CaseInsensitive), "Turbolinux_64" },
     { QRegExp("Tur.*32",                           Qt::CaseInsensitive), "Turbolinux" },
-    { QRegExp("(Ub)|(Min).*64",                    Qt::CaseInsensitive), "Ubuntu_64" },
-    { QRegExp("(Ub)|(Min).*32",                    Qt::CaseInsensitive), "Ubuntu" },
+    { QRegExp("((Ub)|(Mint)).*64",                 Qt::CaseInsensitive), "Ubuntu_64" },
+    { QRegExp("((Ub)|(Mint)).*32",                 Qt::CaseInsensitive), "Ubuntu" },
     { QRegExp("Xa.*64",                            Qt::CaseInsensitive), "Xandros_64" },
     { QRegExp("Xa.*32",                            Qt::CaseInsensitive), "Xandros" },
     { QRegExp("((Or)|(oel)|(ol)).*64",             Qt::CaseInsensitive), "Oracle_64" },
@@ -179,7 +179,7 @@ bool UIWizardNewVMNameOSTypeCommon::guessOSTypeFromName(UINameAndSystemEditor *p
     bool fSupportsHWVirtEx = host.GetProcessorFeature(KProcessorFeature_HWVirtEx);
     bool fSupportsLongMode = host.GetProcessorFeature(KProcessorFeature_LongMode);
 
-    /* Do not forget about achitecture bits, if not yet specified: */
+    /* Append default architecture bit-count (64/32) if not already in the name: */
     if (!strNewName.contains("32") && !strNewName.contains("64"))
         strNewName += ARCH_BITS == 64 && fSupportsHWVirtEx && fSupportsLongMode ? "64" : "32";
 
