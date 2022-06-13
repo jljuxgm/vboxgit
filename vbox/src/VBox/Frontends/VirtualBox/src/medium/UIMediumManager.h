@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.h 88742 2021-04-28 10:50:44Z vboxsync $ */
+/* $Id: UIMediumManager.h 90423 2021-07-30 10:46:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class declaration.
  */
@@ -184,6 +184,14 @@ private slots:
         void sltToggleMediumSearchVisibility(bool fVisible);
         /** Handles command to refresh medium. */
         void sltRefreshAll();
+    /** @} */
+
+    /** @name Menu/action handler stuff.
+      * @{ */
+        /** Handles medium move progress finished signal. */
+        void sltHandleMoveProgressFinished();
+        /** Handles medium resize progress finished signal. */
+        void sltHandleResizeProgressFinished();
     /** @} */
 
     /** @name Tab-widget stuff.

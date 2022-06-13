@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 90422 2021-07-30 10:24:30Z vboxsync $ */
+/* $Id: UINotificationObjects.cpp 90423 2021-07-30 10:46:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -174,6 +174,50 @@ CProgress UINotificationProgressMediumMove::createProgress(COMResult &comResult)
 
     /* Initialize progress-wrapper: */
     CProgress comProgress = m_comMedium.MoveTo(m_strTo);
+    /* Store COM result: */
+    comResult = m_comMedium;
+    /* Return progress-wrapper: */
+    return comProgress;
+}
+
+
+/*********************************************************************************************************************************
+*   Class UINotificationProgressMediumResize implementation.                                                                     *
+*********************************************************************************************************************************/
+
+UINotificationProgressMediumResize::UINotificationProgressMediumResize(const CMedium &comMedium,
+                                                                       qulonglong uSize)
+    : m_comMedium(comMedium)
+    , m_uTo(uSize)
+{
+}
+
+QString UINotificationProgressMediumResize::name() const
+{
+    return UINotificationProgress::tr("Resizing medium ...");
+}
+
+QString UINotificationProgressMediumResize::details() const
+{
+    return UINotificationProgress::tr("<b>From:</b> %1<br><b>To:</b> %2")
+                                      .arg(uiCommon().formatSize(m_uFrom),
+                                           uiCommon().formatSize(m_uTo));
+}
+
+CProgress UINotificationProgressMediumResize::createProgress(COMResult &comResult)
+{
+    /* Acquire size: */
+    m_uFrom = m_comMedium.GetLogicalSize();
+    if (!m_comMedium.isOk())
+    {
+        /* Store COM result: */
+        comResult = m_comMedium;
+        /* Return progress-wrapper: */
+        return CProgress();
+    }
+
+    /* Initialize progress-wrapper: */
+    CProgress comProgress = m_comMedium.Resize(m_uTo);
     /* Store COM result: */
     comResult = m_comMedium;
     /* Return progress-wrapper: */

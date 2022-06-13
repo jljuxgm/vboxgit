@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.h 90422 2021-07-30 10:24:30Z vboxsync $ */
+/* $Id: UINotificationObjects.h 90423 2021-07-30 10:46:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects declarations.
  */
@@ -163,6 +163,38 @@ private:
     QString  m_strFrom;
     /** Holds the desired location. */
     QString  m_strTo;
+};
+
+/** UINotificationProgress extension for medium resize functionality. */
+class SHARED_LIBRARY_STUFF UINotificationProgressMediumResize : public UINotificationProgress
+{
+    Q_OBJECT;
+
+public:
+
+    /** Constructs medium resize notification-progress.
+      * @param  comMedium  Brings the medium being resized.
+      * @param  uSize      Brings the desired size. */
+    UINotificationProgressMediumResize(const CMedium &comMedium,
+                                       qulonglong uSize);
+
+protected:
+
+    /** Returns object name. */
+    virtual QString name() const /* override final */;
+    /** Returns object details. */
+    virtual QString details() const /* override final */;
+    /** Creates and returns started progress-wrapper. */
+    virtual CProgress createProgress(COMResult &comResult) /* override final */;
+
+private:
+
+    /** Holds the medium being resized. */
+    CMedium     m_comMedium;
+    /** Holds the initial size. */
+    qulonglong  m_uFrom;
+    /** Holds the desired size. */
+    qulonglong  m_uTo;
 };
 
 /** UINotificationProgress extension for deleting medium storage functionality. */
