@@ -1,4 +1,4 @@
-/* $Id: NEMAllNativeTemplate-win.cpp.h 92541 2021-11-22 06:35:38Z vboxsync $ */
+/* $Id: NEMAllNativeTemplate-win.cpp.h 92583 2021-11-24 09:13:14Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, Windows code template ring-0/3.
  */
@@ -1116,7 +1116,7 @@ NEM_TMPL_STATIC int nemHCWinCopyStateFromHyperV(PVMCC pVM, PVMCPUCC pVCpu, uint6
 
     if (fUpdateCr3)
     {
-        int rc = PGMUpdateCR3(pVCpu, pVCpu->cpum.GstCtx.cr3, false /*fPdpesMapped*/);
+        int rc = PGMUpdateCR3(pVCpu, pVCpu->cpum.GstCtx.cr3, false /*fCr3Mapped*/);
         if (rc == VINF_SUCCESS)
         { /* likely */ }
         else

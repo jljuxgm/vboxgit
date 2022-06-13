@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-win.cpp 92468 2021-11-17 09:03:33Z vboxsync $ */
+/* $Id: NEMR3Native-win.cpp 92583 2021-11-24 09:13:14Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, native ring-3 Windows backend.
  *
@@ -1895,7 +1895,7 @@ VBOXSTRICTRC nemR3NativeRunGC(PVM pVM, PVMCPU pVCpu)
                 if (rcStrict == VINF_NEM_FLUSH_TLB || rcPending == VINF_NEM_FLUSH_TLB)
                 {
                     LogFlow(("nemR3NativeRunGC: calling PGMFlushTLB...\n"));
-                    int rc = PGMFlushTLB(pVCpu, CPUMGetGuestCR3(pVCpu), true /*fGlobal*/, false /*fPdpesMapped*/);
+                    int rc = PGMFlushTLB(pVCpu, CPUMGetGuestCR3(pVCpu), true /*fGlobal*/, false /*fCr3Mapped*/);
                     AssertRCReturn(rc, rc);
                     if (rcStrict == VINF_NEM_FLUSH_TLB)
                     {

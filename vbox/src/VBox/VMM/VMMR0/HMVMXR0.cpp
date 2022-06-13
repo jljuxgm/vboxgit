@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 92495 2021-11-18 14:17:12Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 92583 2021-11-24 09:13:14Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -8057,7 +8057,7 @@ static int hmR0VmxImportGuestState(PVMCPUCC pVCpu, PVMXVMCSINFO pVmcsInfo, uint6
         && VMMRZCallRing3IsEnabled(pVCpu))
     {
         Assert(!(ASMAtomicUoReadU64(&pCtx->fExtrn) & CPUMCTX_EXTRN_CR3));
-        PGMUpdateCR3(pVCpu, CPUMGetGuestCR3(pVCpu), false /* fPdpesMapped */);
+        PGMUpdateCR3(pVCpu, CPUMGetGuestCR3(pVCpu), false /* fCr3Mapped */);
         Assert(!VMCPU_FF_IS_SET(pVCpu, VMCPU_FF_HM_UPDATE_CR3));
     }
 

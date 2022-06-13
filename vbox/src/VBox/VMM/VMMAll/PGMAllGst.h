@@ -1,4 +1,4 @@
-/* $Id: PGMAllGst.h 92459 2021-11-16 13:21:57Z vboxsync $ */
+/* $Id: PGMAllGst.h 92583 2021-11-24 09:13:14Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Guest Paging Template - All context code.
  */
@@ -51,7 +51,7 @@ PGM_GST_DECL(int, Enter)(PVMCPUCC pVCpu, RTGCPHYS GCPhysCR3)
     uintptr_t idxBth = pVCpu->pgm.s.idxBothModeData;
     AssertReturn(idxBth < RT_ELEMENTS(g_aPgmBothModeData), VERR_PGM_MODE_IPE);
     AssertReturn(g_aPgmBothModeData[idxBth].pfnMapCR3, VERR_PGM_MODE_IPE);
-    return g_aPgmBothModeData[idxBth].pfnMapCR3(pVCpu, GCPhysCR3, false /* fPdpesMapped */);
+    return g_aPgmBothModeData[idxBth].pfnMapCR3(pVCpu, GCPhysCR3, false /* fCr3Mapped */);
 }
 
 
