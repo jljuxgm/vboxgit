@@ -1,4 +1,4 @@
-/* $Id: UIDefaultMachineFolderEditor.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIDefaultMachineFolderEditor.h 93935 2022-02-24 16:40:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDefaultMachineFolderEditor class declaration.
  */
@@ -29,6 +29,7 @@
 #include "UILibraryDefs.h"
 
 /* Forward declarations: */
+class QGridLayout;
 class QLabel;
 class UIFilePathSelector;
 
@@ -44,14 +45,18 @@ signals:
 
 public:
 
-    /** Constructs editor passing @a pParent to the base-class.
-      * @param  fWithLabel  Brings whether we should add label ourselves. */
-    UIDefaultMachineFolderEditor(QWidget *pParent = 0, bool fWithLabel = false);
+    /** Constructs editor passing @a pParent to the base-class. */
+    UIDefaultMachineFolderEditor(QWidget *pParent = 0);
 
     /** Defines editor @a strValue. */
     void setValue(const QString &strValue);
     /** Returns editor value. */
     QString value() const;
+
+    /** Returns minimum layout hint. */
+    int minimumLabelHorizontalHint() const;
+    /** Defines minimum layout @a iIndent. */
+    void setMinimumLayoutIndent(int iIndent);
 
 protected:
 
@@ -68,12 +73,11 @@ private:
     /** Prepares all. */
     void prepare();
 
-    /** Holds whether descriptive label should be created. */
-    bool  m_fWithLabel;
-
     /** Holds the value to be set. */
     QString  m_strValue;
 
+    /** Holds the main layout instance. */
+    QGridLayout        *m_pLayout;
     /** Holds the label instance. */
     QLabel             *m_pLabel;
     /** Holds the selector instance. */

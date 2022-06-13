@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsGeneral.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIGlobalSettingsGeneral.h 93935 2022-02-24 16:40:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsGeneral class declaration.
  */
@@ -25,7 +25,6 @@
 #include "UISettingsPage.h"
 
 /* Forward declarations: */
-class QLabel;
 class UIDefaultMachineFolderEditor;
 class UIVRDEAuthLibraryEditor;
 struct UIDataSettingsGlobalGeneral;
@@ -79,12 +78,8 @@ private:
 
     /** @name Widgets
      * @{ */
-        /** Holds 'default machine folder' label instance. */
-        QLabel                       *m_pLabelDefaultMachineFolder;
         /** Holds 'default machine folder' editor instance. */
         UIDefaultMachineFolderEditor *m_pEditorDefaultMachineFolder;
-        /** Holds 'VRDE auth library' label instance. */
-        QLabel                       *m_pLabelVRDEAuthLibrary;
         /** Holds 'VRDE auth library' editor instance. */
         UIVRDEAuthLibraryEditor      *m_pEditorVRDEAuthLibrary;
     /** @} */
