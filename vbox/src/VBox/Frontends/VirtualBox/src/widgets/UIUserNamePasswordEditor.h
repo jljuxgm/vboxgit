@@ -1,4 +1,4 @@
-/* $Id: UIUserNamePasswordEditor.h 90039 2021-07-05 19:39:38Z vboxsync $ */
+/* $Id: UIUserNamePasswordEditor.h 90151 2021-07-12 07:21:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class declaration.
  */
@@ -87,7 +87,6 @@ private:
     QLabel *m_pUserNameLabel;
     QLabel *m_pPasswordLabel;
     QLabel *m_pPasswordRepeatLabel;
-    QColor m_orginalLineEditBaseColor;
 
     bool m_fShowPlaceholderText;
     bool m_fLabelsVisible;

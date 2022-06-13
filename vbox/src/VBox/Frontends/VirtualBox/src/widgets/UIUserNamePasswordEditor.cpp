@@ -1,4 +1,4 @@
-/* $Id: UIUserNamePasswordEditor.cpp 90124 2021-07-09 13:04:54Z vboxsync $ */
+/* $Id: UIUserNamePasswordEditor.cpp 90151 2021-07-12 07:21:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class implementation.
  */
@@ -379,10 +379,6 @@ void UIUserNamePasswordEditor::prepare()
             this, &UIUserNamePasswordEditor::sltPasswordChanged);
     connect(m_pUserNameLineEdit, &QILineEdit::textChanged,
             this, &UIUserNamePasswordEditor::sltUserNameChanged);
-
-    /* Cache the original back color of the line edit to restore it correctly: */
-    if (m_pUserNameLineEdit)
-        m_orginalLineEditBaseColor = m_pUserNameLineEdit->palette().color(QPalette::Base);
 
     retranslateUi();
 }

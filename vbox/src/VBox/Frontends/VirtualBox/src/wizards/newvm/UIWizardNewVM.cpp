@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 90109 2021-07-09 10:12:29Z vboxsync $ */
+/* $Id: UIWizardNewVM.cpp 90151 2021-07-12 07:21:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
@@ -741,14 +741,14 @@ void UIWizardNewVM::setGuestAdditionsISOPath(const QString &strGAISOPath)
     m_unattendedInstallData.m_strGuestAdditionsISOPath = strGAISOPath;
 }
 
-const QString &UIWizardNewVM::hostname() const
+const QString &UIWizardNewVM::hostnameDomain() const
 {
-    return m_unattendedInstallData.m_strHostname;
+    return m_unattendedInstallData.m_strHostnameDomain;
 }
 
-void UIWizardNewVM::setHostname(const QString &strHostname)
+void UIWizardNewVM::setHostnameDomain(const QString &strHostnameDomain)
 {
-    m_unattendedInstallData.m_strHostname = strHostname;
+    m_unattendedInstallData.m_strHostnameDomain = strHostnameDomain;
 }
 
 const QString &UIWizardNewVM::productKey() const

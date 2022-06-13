@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMUnattendedPageBasic.h 90101 2021-07-08 14:51:38Z vboxsync $ */
+/* $Id: UIWizardNewVMUnattendedPageBasic.h 90151 2021-07-12 07:21:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMUnattendedPageBasic class declaration.
  */
@@ -34,6 +34,7 @@ class QLineEdit;
 class QIRichTextLabel;
 class UIFilePathSelector;
 class UIUserNamePasswordEditor;
+class UIHostNameDomainEditor;
 struct UIUnattendedInstallData;
 
 
@@ -63,7 +64,7 @@ private slots:
     void sltGAISOPathChanged(const QString &strPath);
     void sltPasswordChanged(const QString &strPassword);
     void sltUserNameChanged(const QString &strUserName);
-    void sltHostnameChanged(const QString &strHostname);
+    void sltHostnameDomainChanged(const QString &strHostname);
     void sltProductKeyChanged(const QString &strProductKey);
     void sltStartHeadlessChanged(bool fStartHeadless);
 
@@ -92,8 +93,9 @@ private:
         QGroupBox *m_pGAInstallationISOContainer;
         QCheckBox *m_pStartHeadlessCheckBox;
         UIUserNamePasswordEditor *m_pUserNamePasswordEditor;
-        QLineEdit *m_pHostnameLineEdit;
-        QLabel    *m_pHostnameLabel;
+        UIHostNameDomainEditor *m_pHostnameDomainEditor;
+        // QLineEdit *m_pHostnameLineEdit;
+        // QLabel    *m_pHostnameLabel;
         QLabel    *m_pGAISOPathLabel;
         UIFilePathSelector *m_pGAISOFilePathSelector;
         /** Product key stuff. */
