@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDExpertPage.cpp 91294 2021-09-17 09:01:51Z vboxsync $ */
+/* $Id: UIWizardCloneVDExpertPage.cpp 92100 2021-10-27 12:51:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDExpertPage class implementation.
  */
@@ -21,7 +21,7 @@
 
 /* GUI includes: */
 #include "UICommon.h"
-#include "UIMessageCenter.h"
+#include "UINotificationCenter.h"
 #include "UIWizardCloneVD.h"
 #include "UIWizardCloneVDExpertPage.h"
 #include "UIWizardDiskEditors.h"
@@ -178,7 +178,7 @@ bool UIWizardCloneVDExpertPage::validatePage()
 
     if (QFileInfo(strMediumPath).exists())
     {
-        msgCenter().cannotOverwriteHardDiskStorage(strMediumPath, this);
+        UINotificationMessage::cannotOverwriteMediumStorage(strMediumPath, wizard()->notificationCenter());
         return false;
     }
     return pWizard->copyVirtualDisk();

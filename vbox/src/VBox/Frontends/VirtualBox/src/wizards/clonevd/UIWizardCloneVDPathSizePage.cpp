@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPathSizePage.cpp 91294 2021-09-17 09:01:51Z vboxsync $ */
+/* $Id: UIWizardCloneVDPathSizePage.cpp 92100 2021-10-27 12:51:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDPathSizePage class implementation.
  */
@@ -20,10 +20,10 @@
 #include <QVBoxLayout>
 
 /* GUI includes: */
+#include "UINotificationCenter.h"
 #include "UIWizardCloneVDPathSizePage.h"
 #include "UIWizardDiskEditors.h"
 #include "UIWizardCloneVD.h"
-#include "UIMessageCenter.h"
 
 UIWizardCloneVDPathSizePage::UIWizardCloneVDPathSizePage(qulonglong uSourceDiskLogicaSize)
     : m_pMediumSizePathGroupBox(0)
@@ -100,7 +100,7 @@ bool UIWizardCloneVDPathSizePage::validatePage()
     QString strMediumPath(pWizard->mediumPath());
     if (QFileInfo(strMediumPath).exists())
     {
-        msgCenter().cannotOverwriteHardDiskStorage(strMediumPath, this);
+        UINotificationMessage::cannotOverwriteMediumStorage(strMediumPath, wizard()->notificationCenter());
         return false;
     }
     return pWizard->copyVirtualDisk();

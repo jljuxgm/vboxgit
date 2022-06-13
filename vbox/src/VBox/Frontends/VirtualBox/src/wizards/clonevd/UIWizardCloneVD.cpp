@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVD.cpp 91062 2021-09-01 14:43:18Z vboxsync $ */
+/* $Id: UIWizardCloneVD.cpp 92100 2021-10-27 12:51:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVD class implementation.
  */
@@ -18,7 +18,6 @@
 /* GUI includes: */
 #include "UICommon.h"
 #include "UIMedium.h"
-#include "UIMessageCenter.h"
 #include "UINotificationCenter.h"
 #include "UIWizardCloneVD.h"
 #include "UIWizardCloneVDFormatPage.h"
@@ -67,7 +66,7 @@ bool UIWizardCloneVD::copyVirtualDisk()
     CMedium comVirtualDisk = comVBox.CreateMedium(m_comMediumFormat.GetName(), m_strMediumPath, KAccessMode_ReadWrite, m_enmDeviceType);
     if (!comVBox.isOk())
     {
-        msgCenter().cannotCreateMediumStorage(comVBox, m_strMediumPath, this);
+        UINotificationMessage::cannotCreateMediumStorage(comVBox, m_strMediumPath, notificationCenter());
         return false;
     }
 

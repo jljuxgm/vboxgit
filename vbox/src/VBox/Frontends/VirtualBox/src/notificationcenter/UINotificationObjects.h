@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.h 92098 2021-10-27 12:38:19Z vboxsync $ */
+/* $Id: UINotificationObjects.h 92100 2021-10-27 12:51:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects declarations.
  */
@@ -130,6 +130,11 @@ public:
         /** Notifies about inability to acquire cloud machine settings.
           * @param  strErrorDetails  Brings the error details. */
         static void cannotAcquireCloudMachineSettings(const QString &strErrorDetails);
+
+        /** Notifies about inability to overwrite medium storage.
+          * @param  strPath  Brings the medium path. */
+        static void cannotOverwriteMediumStorage(const QString &strPath,
+                                                 UINotificationCenter *pParent = 0);
 
         /** Notifies about inability to open license file.
           * @param  strPath  Brings the license file path. */
@@ -336,14 +341,20 @@ public:
         static void cannotFindMachineById(const CVirtualBox &comVBox,
                                           const QUuid &uMachineId,
                                           UINotificationCenter *pParent = 0);
-        /** Notifies about inability to open known medium.
-          * @param  comVBox    Brings common VBox object trying to open medium.
-          * @param  uMediumId  Brings the medium ID. */
-        static void cannotOpenKnownMedium(const CVirtualBox &comVBox, const QUuid &uMediumId);
         /** Notifies about inability to open machine.
           * @param  comVBox      Brings common VBox object trying to open machine.
           * @param  strLocation  Brings the machine location. */
         static void cannotOpenMachine(const CVirtualBox &comVBox, const QString &strLocation);
+        /** Notifies about inability to create medium storage.
+          * @param  comVBox  Brings common VBox object trying to create medium storage.
+          * @param  strPath  Brings the medium path. */
+        static void cannotCreateMediumStorage(const CVirtualBox &comVBox,
+                                              const QString &strPath,
+                                              UINotificationCenter *pParent = 0);
+        /** Notifies about inability to open known medium.
+          * @param  comVBox    Brings common VBox object trying to open medium.
+          * @param  uMediumId  Brings the medium ID. */
+        static void cannotOpenKnownMedium(const CVirtualBox &comVBox, const QUuid &uMediumId);
         /** Notifies about inability to get ext pack manager.
           * @param  comVBox      Brings common VBox object trying to open machine. */
         static void cannotGetExtensionPackManager(const CVirtualBox &comVBox);
