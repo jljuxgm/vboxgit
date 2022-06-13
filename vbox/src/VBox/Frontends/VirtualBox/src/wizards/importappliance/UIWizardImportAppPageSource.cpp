@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageSource.cpp 91966 2021-10-21 15:44:49Z vboxsync $ */
+/* $Id: UIWizardImportAppPageSource.cpp 92045 2021-10-25 15:52:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageSource class implementation.
  */
@@ -363,7 +363,7 @@ QString UIWizardImportAppSource::path(UIEmptyFilePathSelector *pFileSelector)
     AssertPtrReturn(pFileSelector, QString());
 
     /* Give the actual result: */
-    return pFileSelector->path().toLower();
+    return pFileSelector->path();
 }
 
 QString UIWizardImportAppSource::profileName(QIComboBox *pCombo)
