@@ -1,4 +1,4 @@
-/* $Id: UsbCardReader.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UsbCardReader.h 94321 2022-03-22 11:27:12Z vboxsync $ */
 
 /** @file
  * VirtualBox Driver interface to the virtual Usb Card Reader.
@@ -24,6 +24,8 @@
 
 #include <VBox/vmm/pdmcardreaderinfs.h>
 #include <VBox/vmm/pdmdrv.h>
+
+#define USBCARDREADER_OID "46225eac-10c9-4b57-92b6-e59efd48009f"
 
 class Console;
 typedef struct USBCARDREADER USBCARDREADER;

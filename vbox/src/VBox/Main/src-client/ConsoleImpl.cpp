@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 94246 2022-03-15 14:43:00Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 94321 2022-03-22 11:27:12Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -10944,6 +10944,9 @@ Console::i_vmm2User_QueryGenericObject(PCVMM2USERMETHODS pThis, PUVM pUVM, PCRTU
 
     if (UuidCopy == VMMDEV_OID)
         return pConsole->m_pVMMDev;
+
+    if (UuidCopy == USBCARDREADER_OID)
+        return pConsole->mUsbCardReader;
 
     if (UuidCopy == COM_IIDOF(ISnapshot))
         return ((MYVMM2USERMETHODS *)pThis)->pISnapshot;

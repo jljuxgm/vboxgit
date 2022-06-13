@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 94070 2022-03-03 11:54:06Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 94321 2022-03-22 11:27:12Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -2241,7 +2241,6 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, Au
 # else
                 InsertConfigString(pLunL0, "Driver", "UsbCardReader");
                 InsertConfigNode(pLunL0,   "Config", &pCfg);
-                InsertConfigInteger(pCfg,  "Object", (uintptr_t)mUsbCardReader);
 # endif
              }
 #endif
