@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 92982 $"
+__version__ = "$Revision: 93037 $"
 
 # Standard Python imports.
 import errno
@@ -3242,6 +3242,8 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
         #
         # Create a process.
         #
+        # That process will also be used later to see if the session cleanup worked upon reboot.
+        #
         sImage = self.oTstDrv.getGuestSystemShell(oTestVm);
         asArgs  = [ sImage, ];
         aEnv    = [];
@@ -3278,10 +3280,6 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
                         oThreadReboot.setDaemon(True);
                         oThreadReboot.start();
 
-                        # Not sure why this fudge is needed...
-                        reporter.log('5 second wait fudge before triggering reboot ...');
-                        self.oTstDrv.sleep(5);
-
                         # Do the reboot.
                         reporter.log('Rebooting guest and reconnecting TXS ...');
                         (oSession, oTxsSession) = self.oTstDrv.txsRebootAndReconnectViaTcp(oSession, oTxsSession,
@@ -3294,6 +3292,20 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
                         reporter.log('Waiting for thread to finish ...');
                         oThreadReboot.join();
 
+                        # Check that the guest session now still has the formerly guest process object created above,
+                        # but with the "down" status now (because of guest reboot).
+                        try:
+                            aoGuestProcs = self.oTstDrv.oVBoxMgr.getArray(oGuestSession, 'processes');
+                            if len(aoGuestProcs) == 1:
+                                enmProcSts = aoGuestProcs[0].status;
+                                if enmProcSts != vboxcon.ProcessStatus_Down:
+                                    fRc = reporter.error('Old guest process (before reboot) has status %d, expected %s' \
+                                                         % enmProcSts, vboxcon.ProcessStatus_Down);
+                            else:
+                                fRc = reporter.error('Old guest session (before reboot) has %d processes registered, expected 1' \
+                                                     % (len(aoGuestProcs)));
+                        except:
+                            fRc = reporter.errorXcpt();
             #
             # Try make sure we don't leave with a stale process on failure.
             #
