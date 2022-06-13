@@ -1,4 +1,4 @@
-/* $Id: QIMessageBox.cpp 89933 2021-06-28 16:08:43Z vboxsync $ */
+/* $Id: QIMessageBox.cpp 89945 2021-06-29 09:03:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIMessageBox class implementation.
  */
@@ -30,6 +30,7 @@
 #include "QIDialogButtonBox.h"
 #include "QIMessageBox.h"
 #include "QIRichTextLabel.h"
+#include "UICommon.h"
 #include "UIIconPool.h"
 
 /* Other VBox includes: */
@@ -44,7 +45,6 @@ QIMessageBox::QIMessageBox(const QString &strTitle, const QString &strMessage, c
     , m_pLabelIcon(0)
     , m_strMessage(strMessage)
     , m_pLabelText(0)
-    , m_strHelpKeyword(strHelpKeyword)
     , m_pFlagCheckBox(0)
     , m_pDetailsContainer(0)
     , m_iButton1(iButton1)
@@ -57,6 +57,8 @@ QIMessageBox::QIMessageBox(const QString &strTitle, const QString &strMessage, c
     , m_pButtonBox(0)
     , m_fDone(false)
 {
+    if (!strHelpKeyword.isEmpty())
+        uiCommon().setHelpKeyword(this, strHelpKeyword);
     /* Prepare: */
     prepare();
 }

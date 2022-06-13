@@ -1,4 +1,4 @@
-/* $Id: QIMessageBox.h 89933 2021-06-28 16:08:43Z vboxsync $ */
+/* $Id: QIMessageBox.h 89945 2021-06-29 09:03:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIMessageBox class declaration.
  */
@@ -171,9 +171,6 @@ private:
     QString m_strMessage;
     /** Holds the message-label instance. */
     QIRichTextLabel *m_pLabelText;
-
-    /** Holds the help keyword. */
-    QString m_strHelpKeyword;
 
     /** Holds the flag check-box instance. */
     QCheckBox *m_pFlagCheckBox;
