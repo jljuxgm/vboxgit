@@ -1,4 +1,4 @@
-/* $Id: vkat.cpp 91429 2021-09-28 11:17:38Z vboxsync $ */
+/* $Id: vkat.cpp 91454 2021-09-29 10:35:39Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) utility for testing and validating the audio stack.
  */
@@ -104,6 +104,9 @@ AUDIOTESTBACKENDDESC const g_aBackends[] =
     {   &g_DrvHostDSound,             "directsound" },
     {   &g_DrvHostDSound,             "dsound" },
     {   &g_DrvHostDSound,             "ds" },
+#endif
+#ifdef VBOX_WITH_AUDIO_DEBUG
+    {   &g_DrvHostDebugAudio,         "debug" },
 #endif
     {   &g_DrvHostValidationKitAudio, "valkit" }
 };
