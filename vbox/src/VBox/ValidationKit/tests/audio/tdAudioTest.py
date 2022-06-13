@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tdAudioTest.py 90207 2021-07-15 09:07:17Z vboxsync $
+# $Id: tdAudioTest.py 90221 2021-07-16 05:46:58Z vboxsync $
 
 """
 AudioTest test driver which invokes the VKAT (Validation Kit Audio Test)
@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 90207 $"
+__version__ = "$Revision: 90221 $"
 
 # Standard Python imports.
 import os
@@ -82,7 +82,8 @@ class tdAudioTest(vbox.TestDriver):
             'VBoxInternal2/Audio/Debug/Enabled:true',
         ];
 
-        self.sRunningVmName = None
+        # Name of the running VM to use for running the test driver. Optional, and None if not being used.
+        self.sRunningVmName   = None;
 
     def showUsage(self):
         """
@@ -124,7 +125,9 @@ class tdAudioTest(vbox.TestDriver):
         """
         Configures the test driver before running.
         """
-        return True
+        if not self.importVBoxApi(): # So we can use the constant below.
+            return False;
+        return self.oTestVmSet.actionConfig(self);
 
     def actionExecute(self):
         """
