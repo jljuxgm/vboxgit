@@ -1,4 +1,4 @@
-/* $Id: GIMDev.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: GIMDev.cpp 91968 2021-10-21 15:52:28Z vboxsync $ */
 /** @file
  * Guest Interface Manager Device.
  */
@@ -264,8 +264,7 @@ static DECLCALLBACK(int) gimdevR3Construct(PPDMDEVINS pDevIns, int iInstance, PC
     /*
      * Get debug setup requirements from GIM.
      */
-    PVMCC pVM = PDMDevHlpGetVM(pDevIns);
-    int rc = GIMR3GetDebugSetup(pVM, &pThis->DbgSetup);
+    int rc = PDMDevHlpGIMGetDebugSetup(pDevIns, &pThis->DbgSetup);
     if (   RT_SUCCESS(rc)
         && pThis->DbgSetup.cbDbgRecvBuf > 0)
     {
@@ -335,14 +334,14 @@ static DECLCALLBACK(int) gimdevR3Construct(PPDMDEVINS pDevIns, int iInstance, PC
     /*
      * Register this device with the GIM component.
      */
-    GIMR3GimDeviceRegister(pVM, pDevIns, pThis->DbgSetup.cbDbgRecvBuf ? &pThis->Dbg : NULL);
+    PDMDevHlpGIMDeviceRegister(pDevIns, pThis->DbgSetup.cbDbgRecvBuf ? &pThis->Dbg : NULL);
 
     /*
      * Get the MMIO2 regions from the GIM provider and make the registrations.
      */
 /** @todo r=bird: consider ditching this as GIM doesn't actually make use of it */
     uint32_t        cRegions  = 0;
-    PGIMMMIO2REGION paRegions = GIMGetMmio2Regions(pVM, &cRegions);
+    PGIMMMIO2REGION paRegions = PDMDevHlpGIMGetMmio2Regions(pDevIns, &cRegions);
     if (   cRegions
         && paRegions)
     {
