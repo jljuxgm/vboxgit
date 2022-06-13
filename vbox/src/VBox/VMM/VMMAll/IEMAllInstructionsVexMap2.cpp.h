@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsVexMap2.cpp.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: IEMAllInstructionsVexMap2.cpp.h 94617 2022-04-15 13:02:18Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  *
@@ -559,7 +559,7 @@ FNIEMOP_STUB_1(iemOp_VGrp17_blsi_By_Ey, uint8_t, bRm);
 /*  Opcode VEX.F3.0F38 0xf3 /7 - invalid). */
 
 /**
- * Group 17 jump table for the VEX.F3 variant..
+ * Group 17 jump table for the VEX.F3 variant.
  */
 IEM_STATIC const PFNIEMOPRM g_apfnVexGroup17_f3[] =
 {
