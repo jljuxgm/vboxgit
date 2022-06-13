@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 94143 2022-03-08 23:12:27Z vboxsync $ */
+/* $Id: HostImpl.cpp 94597 2022-04-13 21:42:45Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -41,7 +41,6 @@
 
 #include "HostNetworkInterfaceImpl.h"
 #include "HostVideoInputDeviceImpl.h"
-#include "MachineImpl.h"
 #include "AutoCaller.h"
 #include "LoggingNew.h"
 #include "Performance.h"
