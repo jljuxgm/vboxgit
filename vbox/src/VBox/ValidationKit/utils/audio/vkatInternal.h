@@ -1,4 +1,4 @@
-/* $Id: vkatInternal.h 91946 2021-10-21 13:30:54Z vboxsync $ */
+/* $Id: vkatInternal.h 92069 2021-10-26 09:31:12Z vboxsync $ */
 /** @file
  * VKAT - Internal header file for common definitions + structs.
  */
@@ -354,12 +354,6 @@ typedef VKATCMD const *PCVKATCMD;
 extern bool volatile    g_fTerminate;
 /** The release logger. */
 extern PRTLOGGER        g_pRelLogger;
-
-/** The test handle. */
-extern RTTEST           g_hTest;
-extern unsigned         g_uVerbosity;
-extern bool             g_fDrvAudioDebug;
-extern const char      *g_pszDrvAudioDebug;
 
 /** The test handle. */
 extern RTTEST           g_hTest;
