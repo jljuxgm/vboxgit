@@ -1,4 +1,4 @@
-/* $Id: process-creation-posix.cpp 92671 2021-12-01 12:35:07Z vboxsync $ */
+/* $Id: process-creation-posix.cpp 92672 2021-12-01 12:38:33Z vboxsync $ */
 /** @file
  * IPRT - Process Creation, POSIX.
  */
@@ -1412,7 +1412,7 @@ static int rtProcPosixConvertArgv(const char * const *papszArgs, RTENV hEnvToUse
                 RTStrFree(papszArgsConverted[i]);
             RTMemFree(papszArgsConverted);
             rtStrLocalCacheDelete(&pvConversionCache);
-            return rc == VWRN_NO_TRANSLATION ? VERR_NO_TRANSLATION : rc;
+            return rc == VWRN_NO_TRANSLATION || rc == VERR_NO_TRANSLATION ? VERR_PROC_NO_ARG_TRANSLATION : rc;
         }
     }
 
