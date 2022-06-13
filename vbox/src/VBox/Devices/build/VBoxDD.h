@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.h 88626 2021-04-21 09:58:08Z vboxsync $ */
+/* $Id: VBoxDD.h 90492 2021-08-03 10:16:28Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1) header.
  */
@@ -199,6 +199,9 @@ extern const PDMDEVREG g_DeviceIommuAmd;
 #endif
 #ifdef VBOX_WITH_IOMMU_INTEL
 extern const PDMDEVREG g_DeviceIommuIntel;
+#endif
+#ifdef VBOX_WITH_TPM
+extern const PDMDEVREG g_DeviceTpm;
 #endif
 
 /* VBoxAcpi.cpp */
