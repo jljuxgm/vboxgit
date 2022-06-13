@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 88633 2021-04-21 12:43:05Z vboxsync $ */
+/* $Id: UIMachine.cpp 91121 2021-09-06 12:32:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -80,7 +80,7 @@ bool UIMachine::startMachine(const QUuid &uID)
         AssertMsgReturn(!machine.isNull(), ("UICommon::managedVMUuid() should have filter that case before!\n"), false);
 
         /* Try to launch corresponding machine: */
-        if (!uiCommon().launchMachine(machine, UICommon::LaunchMode_Separate))
+        if (!UICommon::launchMachine(machine, UICommon::LaunchMode_Separate))
             return false;
     }
 

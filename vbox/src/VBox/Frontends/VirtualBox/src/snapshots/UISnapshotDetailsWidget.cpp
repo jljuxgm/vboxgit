@@ -1,4 +1,4 @@
-/* $Id: UISnapshotDetailsWidget.cpp 91109 2021-09-03 15:31:49Z vboxsync $ */
+/* $Id: UISnapshotDetailsWidget.cpp 91121 2021-09-06 12:32:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotDetailsWidget class implementation.
  */
@@ -1794,7 +1794,7 @@ QPair<QStringList, QList<QMap<QString, QString> > > UISnapshotDetailsWidget::sto
 
             /* Prepare current medium information: */
             const QString strMediumInfo = comAttachment.isOk()
-                                        ? wipeHtmlStuff(uiCommon().details(comAttachment.GetMedium(), false))
+                                        ? wipeHtmlStuff(uiCommon().storageDetails(comAttachment.GetMedium(), false))
                                         : QString();
 
             /* Cache current slot/medium information: */
