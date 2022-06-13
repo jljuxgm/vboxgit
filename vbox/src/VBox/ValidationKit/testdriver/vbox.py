@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 92953 2021-12-16 08:11:17Z vboxsync $
+# $Id: vbox.py 92954 2021-12-16 08:19:19Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 92953 $"
+__version__ = "$Revision: 92954 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -2483,7 +2483,7 @@ class TestDriver(base.TestDriver):                                              
                 fRc = oSession.setExtraData('VBoxInternal/DBGC/Enabled', '1');
             if fRc and sChipsetType == 'piix3':
                 fRc = oSession.setChipsetType(vboxcon.ChipsetType_PIIX3);
-            elif sChipsetType == 'ich9':
+            elif fRc and sChipsetType == 'ich9':
                 fRc = oSession.setChipsetType(vboxcon.ChipsetType_ICH9);
             if fRc and sCom1RawFile:
                 fRc = oSession.setupSerialToRawFile(0, sCom1RawFile);
