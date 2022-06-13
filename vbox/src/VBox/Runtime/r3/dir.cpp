@@ -1,4 +1,4 @@
-/* $Id: dir.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: dir.cpp 90781 2021-08-23 09:26:08Z vboxsync $ */
 /** @file
  * IPRT - Directory Manipulation, Part 1.
  */
@@ -684,8 +684,8 @@ RTDECL(int) RTDirOpen(RTDIR *phDir, const char *pszPath)
     /*
      * Validate input.
      */
-    AssertMsgReturn(VALID_PTR(phDir), ("%p\n", phDir), VERR_INVALID_POINTER);
-    AssertMsgReturn(VALID_PTR(pszPath), ("%p\n", pszPath), VERR_INVALID_POINTER);
+    AssertPtrReturn(phDir, VERR_INVALID_POINTER);
+    AssertPtrReturn(pszPath, VERR_INVALID_POINTER);
 
     /*
      * Take common cause with RTDirOpenFiltered().
@@ -702,8 +702,8 @@ DECLHIDDEN(int) rtDirOpenRelativeOrHandle(RTDIR *phDir, const char *pszPath, RTD
     /*
      * Validate input.
      */
-    AssertMsgReturn(VALID_PTR(phDir), ("%p\n", phDir), VERR_INVALID_POINTER);
-    AssertMsgReturn(VALID_PTR(pszPath), ("%p\n", pszPath), VERR_INVALID_POINTER);
+    AssertPtrReturn(phDir, VERR_INVALID_POINTER);
+    AssertPtrReturn(pszPath, VERR_INVALID_POINTER);
     AssertReturn(!(fFlags & ~RTDIR_F_VALID_MASK), VERR_INVALID_FLAGS);
     switch (enmFilter)
     {
