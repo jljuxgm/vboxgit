@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-darwin.cpp 92473 2021-11-17 10:16:04Z vboxsync $ */
+/* $Id: NEMR3Native-darwin.cpp 92475 2021-11-17 11:16:23Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, native ring-3 macOS backend using Hypervisor.framework.
  *
@@ -964,7 +964,7 @@ static int nemR3DarwinCopyStateFromHv(PVMCC pVM, PVMCPUCC pVCpu, uint64_t fWhat)
         uint64_t u64Cr8 = 0;
 
         READ_GREG(HV_X86_TPR, u64Cr8);
-        APICSetTpr(pVCpu, u64Cr8);
+        APICSetTpr(pVCpu, u64Cr8 << 4);
     }
     if (fWhat & CPUMCTX_EXTRN_XCRx)
         READ_GREG(HV_X86_XCR0, pVCpu->cpum.GstCtx.aXcr[0]);
