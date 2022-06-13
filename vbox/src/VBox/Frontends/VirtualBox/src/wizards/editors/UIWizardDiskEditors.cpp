@@ -1,4 +1,4 @@
-/* $Id: UIWizardDiskEditors.cpp 90575 2021-08-09 08:43:16Z vboxsync $ */
+/* $Id: UIWizardDiskEditors.cpp 90576 2021-08-09 08:57:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class implementation.
  */
@@ -332,7 +332,7 @@ void UIDiskVariantGroupBox::retranslateUi()
     if (m_pSplitBox)
     {
         m_pSplitBox->setText(tr("&Split into files of less than 2GB"));
-        m_pSplitBox->setText(tr("&When checked the virtual disk file will be splitted into 2GB parts in the host storage."));
+        m_pSplitBox->setToolTip(tr("&When checked the virtual disk file will be splitted into 2GB parts in the host storage."));
     }
 }
 

@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageSizeLocation.cpp 90430 2021-07-30 14:23:10Z vboxsync $ */
+/* $Id: UIWizardNewVDPageSizeLocation.cpp 90576 2021-08-09 08:57:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageSizeLocation class implementation.
  */
@@ -120,8 +120,13 @@ void UIWizardNewVDPageSizeLocation::sltMediumSizeChanged(qulonglong uSize)
 
 void UIWizardNewVDPageSizeLocation::sltMediumPathChanged(const QString &strPath)
 {
+    UIWizardNewVD *pWizard = qobject_cast<UIWizardNewVD*>(wizard());
+    AssertReturnVoid(pWizard);
     m_userModifiedParameters << "MediumPath";
-    newVDWizardPropertySet(MediumPath, strPath);
+    QString strMediumPath =
+        UIDiskEditorGroupBox::appendExtension(strPath,
+                                              UIDiskEditorGroupBox::defaultExtensionForMediumFormat(pWizard->mediumFormat()));
+    newVDWizardPropertySet(MediumPath, strMediumPath);
     emit completeChanged();
 }
 
