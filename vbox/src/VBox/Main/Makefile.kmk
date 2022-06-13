@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 93024 2021-12-19 10:44:55Z vboxsync $
+# $Id: Makefile.kmk 93094 2021-12-29 03:06:13Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -656,6 +656,7 @@ VBoxSVC_SOURCES = \
 	$(if $(VBOX_WITH_UNATTENDED), \
 	src-server/UnattendedImpl.cpp \
 	src-server/UnattendedInstaller.cpp \
+	src-server/UnattendedOs2Installer.cpp \
 	src-server/UnattendedScript.cpp \
 	src-all/TextScript.cpp \
 	,) \

@@ -1,4 +1,4 @@
-/* $Id: UnattendedInstaller.h 93085 2021-12-27 04:55:00Z vboxsync $ */
+/* $Id: UnattendedInstaller.h 93094 2021-12-29 03:06:13Z vboxsync $ */
 /** @file
  * UnattendedInstaller class header
  */
@@ -492,6 +492,8 @@ protected:
 
     HRESULT splitFileInner(const char *pszFileToSplit, RTCList<RTCString> &rVecSplitFiles,
                            const char *pszSrc, size_t cbLeft) RT_NOEXCEPT;
+
+    static int patchOs2Ldr(uint8_t *pbFile, size_t cbFile, const char *pszFilename, UnattendedOs2Installer *pThis);
 
     /** The OS2SE20.SRC path (\OS2IMAGES). */
     Utf8Str mStrOs2Images;
