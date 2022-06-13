@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVM.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIWizardCloneVM.h 93659 2022-02-08 14:53:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVM class declaration.
  */
@@ -42,6 +42,7 @@ public:
     bool isCloneModePageVisible() const;
     /** Clone VM stuff. */
     bool cloneVM();
+    bool machineHasSnapshot() const;
 
     /** @name Parameter setter/getters
       * @{ */

@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMExpertPage.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIWizardCloneVMExpertPage.cpp 93659 2022-02-08 14:53:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMExpertPage class implementation.
  */
@@ -79,7 +79,6 @@ void UIWizardCloneVMExpertPage::prepare(const QString &strOriginalName, const QS
         connect(m_pAdditionalOptionsGroupBox, &UICloneVMAdditionalOptionsEditor::sigKeepHardwareUUIDsToggled,
                 this, &UIWizardCloneVMExpertPage::sltKeepHardwareUUIDsToggled);
     }
-
     retranslateUi();
 }
 
@@ -117,6 +116,9 @@ void UIWizardCloneVMExpertPage::initializePage()
         pWizard->setLinkedClone(!m_pCloneTypeGroupBox->isFullClone());
     if (m_pCloneModeGroupBox)
         pWizard->setCloneMode(m_pCloneModeGroupBox->cloneMode());
+
+    if (m_pCloneModeGroupBox)
+        m_pCloneModeGroupBox->setEnabled(pWizard->machineHasSnapshot());
 
     retranslateUi();
 }

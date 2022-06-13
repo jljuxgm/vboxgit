@@ -1,4 +1,4 @@
-/* $Id: UINativeWizard.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UINativeWizard.h 93659 2022-02-08 14:53:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINativeWizard class declaration.
  */
@@ -172,6 +172,9 @@ private:
     /** Assigns wizard watermark. */
     void assignWatermark();
 #endif
+    /** Checks if the pages coming after the page with iPageIndex is visible or not. Returns true if
+      * page with iPageIndex is the last visible page of the wizard. Returns false otherwise. */
+    bool isLastVisiblePage(int iPageIndex) const;
 
     /** Holds the wizard type. */
     WizardType  m_enmType;

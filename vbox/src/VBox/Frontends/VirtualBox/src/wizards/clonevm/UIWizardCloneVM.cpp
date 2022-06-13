@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVM.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIWizardCloneVM.cpp 93659 2022-02-08 14:53:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVM class implementation.
  */
@@ -133,6 +133,12 @@ void UIWizardCloneVM::setCloneMode(KCloneMode enmCloneMode)
     m_enmCloneMode = enmCloneMode;
 }
 
+bool UIWizardCloneVM::machineHasSnapshot() const
+{
+    AssertReturn(!m_machine.isNull(), false);
+    return m_machine.GetSnapshotCount() > 0;
+}
+
 bool UIWizardCloneVM::cloneVM()
 {
     /* Prepare machine for cloning: */
@@ -234,7 +240,7 @@ void UIWizardCloneVM::populatePages()
         {
             addPage(new UIWizardCloneVMNamePathPage(m_strCloneName, strDefaultMachineFolder, m_strGroup));
             addPage(new UIWizardCloneVMTypePage(m_snapshot.isNull()));
-            if (m_machine.GetSnapshotCount() > 0)
+            if (machineHasSnapshot())
                 m_iCloneModePageIndex = addPage(new UIWizardCloneVMModePage(m_snapshot.isNull() ? false : m_snapshot.GetChildrenCount() > 0));
             break;
         }
