@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 90366 2021-07-28 12:51:05Z vboxsync $ */
+/* $Id: UINotificationObjects.cpp 90373 2021-07-28 15:33:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -316,6 +316,58 @@ void UINotificationProgressCloudMachineCreate::sltHandleProgressFinished()
 {
     if (m_comMachine.isNotNull() && !m_comMachine.GetId().isNull())
         emit sigCloudMachineCreated(m_strShortProviderName, m_strProfileName, m_comMachine);
+}
+
+
+/*********************************************************************************************************************************
+*   Class UINotificationProgressCloudMachineCreate implementation.                                                               *
+*********************************************************************************************************************************/
+
+UINotificationProgressCloudMachineRemove::UINotificationProgressCloudMachineRemove(const CCloudMachine &comMachine,
+                                                                                   bool fFullRemoval,
+                                                                                   const QString &strShortProviderName,
+                                                                                   const QString &strProfileName)
+    : m_comMachine(comMachine)
+    , m_fFullRemoval(fFullRemoval)
+    , m_strShortProviderName(strShortProviderName)
+    , m_strProfileName(strProfileName)
+{
+    /* Acquire cloud VM name: */
+    m_strName = m_comMachine.GetName();
+
+    /* Listen for last progress signal: */
+    connect(this, &UINotificationProgress::sigProgressFinished,
+            this, &UINotificationProgressCloudMachineRemove::sltHandleProgressFinished);
+}
+
+QString UINotificationProgressCloudMachineRemove::name() const
+{
+    return   m_fFullRemoval
+           ? UINotificationProgress::tr("Deleting cloud VM files ...")
+           : UINotificationProgress::tr("Removing cloud VM ...");
+}
+
+QString UINotificationProgressCloudMachineRemove::details() const
+{
+    return UINotificationProgress::tr("<b>Name:</b> %1").arg(m_strName);
+}
+
+CProgress UINotificationProgressCloudMachineRemove::createProgress(COMResult &comResult)
+{
+    /* Initialize progress-wrapper: */
+    CProgress comProgress = m_fFullRemoval
+                          ? m_comMachine.Remove()
+                          : m_comMachine.Unregister();
+    /* Store COM result: */
+    comResult = m_comMachine;
+    /* Return progress-wrapper: */
+    return comProgress;
+}
+
+void UINotificationProgressCloudMachineRemove::sltHandleProgressFinished()
+{
+    if (error().isEmpty())
+        emit sigCloudMachineRemoved(m_strShortProviderName, m_strProfileName, m_strName);
 }
 
 
