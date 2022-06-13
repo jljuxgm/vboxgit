@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVM.cpp 90669 2021-08-12 19:04:04Z vboxsync $ */
+/* $Id: UIWizardCloneVM.cpp 90674 2021-08-13 09:58:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVM class implementation.
  */
@@ -38,6 +38,7 @@ UIWizardCloneVM::UIWizardCloneVM(QWidget *pParent, const CMachine &machine,
     , m_strGroup(strGroup)
     , m_iCloneModePageIndex(-1)
     , m_strCloneName(!machine.isNull() ? machine.GetName() : QString())
+    , m_enmCloneMode(KCloneMode_MachineState)
 {
 #ifndef VBOX_WS_MAC
     /* Assign watermark: */
@@ -58,7 +59,7 @@ void UIWizardCloneVM::setCloneModePageVisible(bool fIsFullClone)
 bool UIWizardCloneVM::isCloneModePageVisible() const
 {
     if (m_iCloneModePageIndex == -1)
-        return true;
+        return false;
     return isPageVisible(m_iCloneModePageIndex);
 }
 
