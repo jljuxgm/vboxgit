@@ -1,4 +1,4 @@
-/* $Id: UINotificationCenter.cpp 90289 2021-07-22 14:25:20Z vboxsync $ */
+/* $Id: UINotificationCenter.cpp 90371 2021-07-28 14:38:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINotificationCenter class implementation.
  */
@@ -137,7 +137,7 @@ bool UINotificationCenter::event(QEvent *pEvent)
             break;
     }
 
-    /* */
+    /* Call to base-class: */
     return QWidget::event(pEvent);
 }
 
