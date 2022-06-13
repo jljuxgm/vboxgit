@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tdAudioTest.py 91183 2021-09-09 15:53:45Z vboxsync $
+# $Id: tdAudioTest.py 91201 2021-09-10 14:38:59Z vboxsync $
 
 """
 AudioTest test driver which invokes the VKAT (Validation Kit Audio Test)
@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 91183 $"
+__version__ = "$Revision: 91201 $"
 
 # Standard Python imports.
 from datetime import datetime
@@ -619,6 +619,11 @@ class tdAudioTest(vbox.TestDriver):
                                       'vkat-guest-%s.log' % (oTestVm.sVmName,),),
                                   ],
                                   fIgnoreErrors = True);
+
+
+        # Always attach the VM log to the test report, as we want to see what the Validation Kit audio driver does.
+        oSession.addLogsToReport();
+
         return fRc;
 
     def testOneVmConfig(self, oVM, oTestVm):
