@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 86501 2020-10-09 12:28:32Z vboxsync $ */
+/* $Id: MediumImpl.cpp 90192 2021-07-14 17:36:07Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -9740,8 +9740,8 @@ HRESULT Medium::i_taskMoveHandler(Medium::MoveTask &task)
                              targetId.raw(),
                              VD_OPEN_FLAGS_NORMAL,
                              NULL /* pVDIfsOperation */,
-                             NULL,
-                             NULL);
+                             pTarget->m->vdImageIfaces,
+                             task.mVDOperationIfaces);
                 if (RT_FAILURE(vrc))
                     throw setErrorBoth(VBOX_E_FILE_ERROR, vrc,
                                        tr("Could not move medium '%s'%s"),
