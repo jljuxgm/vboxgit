@@ -1,4 +1,4 @@
-/* $Id: UIMenuBarEditorWindow.cpp 93990 2022-02-28 15:34:57Z vboxsync $ */
+/* $Id: UIMenuBarEditorWindow.cpp 94518 2022-04-07 14:51:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMenuBarEditorWindow class implementation.
  */
@@ -657,6 +657,9 @@ void UIMenuBarEditorWidget::setRestrictionsOfMenuHelp(UIExtraDataMetaDefs::MenuH
 
 void UIMenuBarEditorWidget::retranslateUi()
 {
+    /* Translate widget itself: */
+    setToolTip(tr("Allows to modify VM menu-bar contents."));
+
     /* Translate close-button if necessary: */
     if (!m_fStartedFromVMSettings && m_pButtonClose)
         m_pButtonClose->setToolTip(tr("Close"));

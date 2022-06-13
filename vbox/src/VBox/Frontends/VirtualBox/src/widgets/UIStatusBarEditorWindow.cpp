@@ -1,4 +1,4 @@
-/* $Id: UIStatusBarEditorWindow.cpp 93990 2022-02-28 15:34:57Z vboxsync $ */
+/* $Id: UIStatusBarEditorWindow.cpp 94518 2022-04-07 14:51:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIStatusBarEditorWindow class implementation.
  */
@@ -484,6 +484,9 @@ void UIStatusBarEditorWidget::setStatusBarConfiguration(const QList<IndicatorTyp
 
 void UIStatusBarEditorWidget::retranslateUi()
 {
+    /* Translate widget itself: */
+    setToolTip(tr("Allows to modify VM status-bar contents."));
+
     /* Translate close-button if necessary: */
     if (!m_fStartedFromVMSettings && m_pButtonClose)
         m_pButtonClose->setToolTip(tr("Close"));
