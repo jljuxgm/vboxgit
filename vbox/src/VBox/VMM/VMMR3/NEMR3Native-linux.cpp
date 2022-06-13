@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-linux.cpp 93787 2022-02-16 11:07:57Z vboxsync $ */
+/* $Id: NEMR3Native-linux.cpp 93789 2022-02-16 11:40:52Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, native ring-3 Linux backend.
  */
@@ -1997,14 +1997,14 @@ void nemR3NativeNotifyFF(PVM pVM, PVMCPU pVCpu, uint32_t fFlags)
 }
 
 
-DECLHIDDEN(bool) nemR3NativeNotifyDebugEventChanged(PVM pVM, bool fUseDebugLoop);
+DECLHIDDEN(bool) nemR3NativeNotifyDebugEventChanged(PVM pVM, bool fUseDebugLoop)
 {
     RT_NOREF(pVM, fUseDebugLoop);
     return false;
 }
 
 
-DECLHIDDEN(bool) nemR3NativeNotifyDebugEventChangedPerCpu(PVM pVM, PVMCPU pVCpu, bool fUseDebugLoop);
+DECLHIDDEN(bool) nemR3NativeNotifyDebugEventChangedPerCpu(PVM pVM, PVMCPU pVCpu, bool fUseDebugLoop)
 {
     RT_NOREF(pVM, pVCpu, fUseDebugLoop);
     return false;
