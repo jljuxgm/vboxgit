@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 94206 2022-03-13 19:17:33Z vboxsync $ */
+/* $Id: VBoxManage.h 94207 2022-03-13 19:36:57Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -100,7 +100,6 @@ typedef enum
     USAGE_MODIFYMEDIUM,
     USAGE_CREATEHOSTIF,
     USAGE_REMOVEHOSTIF,
-    USAGE_USBFILTER,
     USAGE_I_LOADSYMS,
     USAGE_I_LOADMAP,
     USAGE_I_SETHDUUID,
@@ -137,10 +136,6 @@ typedef enum
 } USAGECATEGORY;
 /** @} */
 
-
-#define HELP_SCOPE_USBFILTER_ADD        RT_BIT_64(0)
-#define HELP_SCOPE_USBFILTER_MODIFY     RT_BIT_64(1)
-#define HELP_SCOPE_USBFILTER_REMOVE     RT_BIT_64(2)
 
 #ifdef VBOX_WITH_GUEST_CONTROL
 # define HELP_SCOPE_GSTCTRL_RUN             RT_BIT(0)
