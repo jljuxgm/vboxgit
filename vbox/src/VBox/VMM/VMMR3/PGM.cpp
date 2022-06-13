@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 91271 2021-09-16 07:42:37Z vboxsync $ */
+/* $Id: PGM.cpp 91580 2021-10-06 07:22:04Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -2342,7 +2342,7 @@ int pgmR3ExitShadowModeBeforePoolFlush(PVMCPU pVCpu)
     int       rc     = VINF_SUCCESS;
     uintptr_t idxBth = pVCpu->pgm.s.idxBothModeData;
     if (   idxBth < RT_ELEMENTS(g_aPgmBothModeData)
-        && g_aPgmBothModeData[idxBth].pfnMapCR3)
+        && g_aPgmBothModeData[idxBth].pfnUnmapCR3)
     {
         rc = g_aPgmBothModeData[idxBth].pfnUnmapCR3(pVCpu);
         AssertRC(rc);

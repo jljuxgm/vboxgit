@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 91450 2021-09-28 20:22:31Z vboxsync $ */
+/* $Id: PGMInternal.h 91580 2021-10-06 07:22:04Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -2797,7 +2797,7 @@ typedef struct PGMMODEDATABTH
     DECLCALLBACKMEMBER(int, pfnSyncCR3,(PVMCPUCC pVCpu, uint64_t cr0, uint64_t cr3, uint64_t cr4, bool fGlobal));
     DECLCALLBACKMEMBER(int, pfnPrefetchPage,(PVMCPUCC pVCpu, RTGCPTR GCPtrPage));
     DECLCALLBACKMEMBER(int, pfnVerifyAccessSyncPage,(PVMCPUCC pVCpu, RTGCPTR GCPtrPage, unsigned fFlags, unsigned uError));
-    DECLCALLBACKMEMBER(int, pfnMapCR3,(PVMCPUCC pVCpu, RTGCPHYS GCPhysCR3));
+    DECLCALLBACKMEMBER(int, pfnMapCR3,(PVMCPUCC pVCpu, RTGCPHYS GCPhysCR3, bool fPdpesMapped));
     DECLCALLBACKMEMBER(int, pfnUnmapCR3,(PVMCPUCC pVCpu));
     DECLCALLBACKMEMBER(int, pfnEnter,(PVMCPUCC pVCpu, RTGCPHYS GCPhysCR3));
 #ifndef IN_RING3

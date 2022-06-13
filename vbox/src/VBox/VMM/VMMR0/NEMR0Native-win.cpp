@@ -1,4 +1,4 @@
-/* $Id: NEMR0Native-win.cpp 91323 2021-09-22 10:04:56Z vboxsync $ */
+/* $Id: NEMR0Native-win.cpp 91580 2021-10-06 07:22:04Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, native ring-0 Windows backend.
  */
@@ -2189,8 +2189,11 @@ NEM_TMPL_STATIC int nemR0WinImportState(PGVM pGVM, PGVMCPU pGVCpu, PCPUMCTX pCtx
         if (fCanUpdateCr3)
         {
             LogFlow(("nemR0WinImportState: -> PGMUpdateCR3!\n"));
-            rc = PGMUpdateCR3(pGVCpu, pCtx->cr3);
-            AssertMsgReturn(rc == VINF_SUCCESS, ("rc=%Rrc\n", rc), RT_FAILURE_NP(rc) ? rc : VERR_NEM_IPE_2);
+            rc = PGMUpdateCR3(pGVCpu, pCtx->cr3, false /*fPdpesMapped*/);
+            if (rc == VINF_SUCCESS)
+            { /* likely */ }
+            else
+                AssertMsgFailedReturn(("rc=%Rrc\n", rc), RT_FAILURE_NP(rc) ? rc : VERR_NEM_IPE_2);
         }
         else
         {

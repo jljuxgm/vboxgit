@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 91271 2021-09-16 07:42:37Z vboxsync $ */
+/* $Id: EM.cpp 91580 2021-10-06 07:22:04Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -1451,7 +1451,7 @@ VBOXSTRICTRC emR3HighPriorityPostForcedActions(PVM pVM, PVMCPU pVCpu, VBOXSTRICT
     if (VMCPU_FF_IS_SET(pVCpu, VMCPU_FF_HM_UPDATE_CR3))
     {
         CPUM_IMPORT_EXTRN_RCSTRICT(pVCpu, CPUMCTX_EXTRN_CR0 | CPUMCTX_EXTRN_CR3 | CPUMCTX_EXTRN_CR4 | CPUMCTX_EXTRN_EFER, rc);
-        int rc2 = PGMUpdateCR3(pVCpu, CPUMGetGuestCR3(pVCpu));
+        int const rc2 = PGMUpdateCR3(pVCpu, CPUMGetGuestCR3(pVCpu), false /* fPdpesMapped */);
         if (RT_FAILURE(rc2))
             return rc2;
         Assert(!VMCPU_FF_IS_SET(pVCpu, VMCPU_FF_HM_UPDATE_CR3));

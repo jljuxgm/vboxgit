@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 91281 2021-09-16 13:32:18Z vboxsync $ */
+/* $Id: IEMAll.cpp 91580 2021-10-06 07:22:04Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -4354,7 +4354,8 @@ iemTaskSwitch(PVMCPUCC        pVCpu,
         AssertRCSuccessReturn(rc, rc);
 
         /* Inform PGM. */
-        rc = PGMFlushTLB(pVCpu, pVCpu->cpum.GstCtx.cr3, !(pVCpu->cpum.GstCtx.cr4 & X86_CR4_PGE));
+        /** @todo Should we raise \#GP(0) here when PAE PDPEs are invalid? */
+        rc = PGMFlushTLB(pVCpu, pVCpu->cpum.GstCtx.cr3, !(pVCpu->cpum.GstCtx.cr4 & X86_CR4_PGE), false /* fPdpesMapped */);
         AssertRCReturn(rc, rc);
         /* ignore informational status codes */
 
