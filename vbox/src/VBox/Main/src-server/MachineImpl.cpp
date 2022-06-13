@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 94460 2022-04-04 20:30:21Z vboxsync $ */
+/* $Id: MachineImpl.cpp 94470 2022-04-05 14:42:05Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -7651,7 +7651,7 @@ HRESULT Machine::i_launchVMProcess(IInternalSessionControl *aControl,
         pid = (RTPROCESS)uPid;
     }
     else
-#endif /* VBOX_WITH_VBOXSDS && RT_OS_WINDOWS */
+#endif /* VBOX_WITH_SDS && RT_OS_WINDOWS */
     {
         int vrc = MachineLaunchVMCommonWorker(idStr, strMachineName, strFrontend, aEnvironmentChanges, strSupHardeningLogArg,
                                               strAppOverride, 0 /*fFlags*/, NULL /*pvExtraData*/, pid);
