@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 90348 2021-07-26 21:01:38Z vboxsync $ */
+/* $Id: PDM.cpp 90550 2021-08-06 13:59:06Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -482,7 +482,7 @@ VMMR3_INT_DECL(int) PDMR3Init(PVM pVM)
     /*
      * Initialize critical sections first.
      */
-    int rc = pdmR3CritSectBothInitStats(pVM);
+    int rc = pdmR3CritSectBothInitStatsAndInfo(pVM);
     if (RT_SUCCESS(rc))
         rc = PDMR3CritSectInit(pVM, &pVM->pdm.s.CritSect, RT_SRC_POS, "PDM");
     if (RT_SUCCESS(rc))
