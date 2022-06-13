@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: MachineImpl.h 93190 2022-01-11 23:22:13Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -45,8 +45,8 @@
 #ifdef VBOX_WITH_RESOURCE_USAGE_API
 # include "Performance.h"
 # include "PerformanceImpl.h"
-# include "ThreadTask.h"
 #endif
+#include "ThreadTask.h"
 
 // generated header
 #include "SchemaDefs.h"
