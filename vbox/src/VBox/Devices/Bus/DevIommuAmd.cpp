@@ -1,4 +1,4 @@
-/* $Id: DevIommuAmd.cpp 90030 2021-07-05 14:39:16Z vboxsync $ */
+/* $Id: DevIommuAmd.cpp 90031 2021-07-05 14:49:56Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - AMD implementation.
  */
@@ -712,7 +712,7 @@ typedef FNIOPAGELOOKUP *PFNIOPAGELOOKUP;
 static uint8_t const g_acDevTabSegs[] = { 0, 2, 4, 8 };
 #endif
 
-#if defined(IN_RING3) || defined(LOG_ENABLED)
+#if (defined(IN_RING3) && defined(IOMMU_WITH_IOTLBE_CACHE)) || defined(LOG_ENABLED)
 /**
  * The IOMMU I/O permission names.
  */
