@@ -1,4 +1,4 @@
-; $Id: VBoxInstallHelper.def 93242 2022-01-14 22:58:11Z vboxsync $
+; $Id: VBoxInstallHelper.def 95037 2022-05-18 14:23:26Z vboxsync $
 ;; @file
 ; VBoxInstallHelper - Defines the exports the MSI engine uses.
 ;
@@ -20,6 +20,7 @@ EXPORTS
     IsSerialCheckNeeded
     CheckSerial
     IsPythonInstalled
+    IsWindows10
     ArePythonAPIDepsInstalled
     InstallPythonAPI
     InstallBranding
