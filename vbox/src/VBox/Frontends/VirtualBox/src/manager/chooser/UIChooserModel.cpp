@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 94004 2022-03-01 00:41:47Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 94029 2022-03-01 11:09:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -428,8 +428,17 @@ void UIChooserModel::makeSureNoItemWithCertainIdSelected(const QUuid &uId)
             matchedItems << pNode->item();
 
     /* If we have at least one of those items currently selected: */
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+    {
+        QList<UIChooserItem *> selectedItemsList = selectedItems();
+        QSet<UIChooserItem *> selectedItemsSet(selectedItemsList.begin(), selectedItemsList.end());
+        if (selectedItemsSet.intersects(matchedItems))
+            setSelectedItem(findClosestUnselectedItem());
+    }
+#else
     if (selectedItems().toSet().intersects(matchedItems))
         setSelectedItem(findClosestUnselectedItem());
+#endif
 
     /* If global item is currently chosen, selection should be invalidated: */
     if (firstSelectedItem() && firstSelectedItem()->type() == UIChooserNodeType_Global)
