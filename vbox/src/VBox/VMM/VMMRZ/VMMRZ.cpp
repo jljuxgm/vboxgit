@@ -1,4 +1,4 @@
-/* $Id: VMMRZ.cpp 92393 2021-11-12 10:43:26Z vboxsync $ */
+/* $Id: VMMRZ.cpp 92395 2021-11-12 10:50:47Z vboxsync $ */
 /** @file
  * VMM - Virtual Machine Monitor, Raw-mode and ring-0 context code.
  */
@@ -23,10 +23,10 @@
 #include <VBox/vmm/vmm.h>
 #include "VMMInternal.h"
 #include <VBox/vmm/vmcc.h>
-#include <VBox/errcore.h>
 
 #include <iprt/assert.h>
 #include <iprt/asm-amd64-x86.h>
+#include <iprt/errcore.h>
 #include <iprt/string.h>
 
 
