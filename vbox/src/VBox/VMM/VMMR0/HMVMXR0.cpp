@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 92392 2021-11-12 10:39:56Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 92394 2021-11-12 10:47:11Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -8540,20 +8540,6 @@ static int hmR0VmxLeaveSession(PVMCPUCC pVCpu)
     int rc = HMR0LeaveCpu(pVCpu);
     HM_RESTORE_PREEMPT();
     return rc;
-}
-
-
-/**
- * Does the necessary state syncing before doing a longjmp to ring-3.
- *
- * @returns VBox status code.
- * @param   pVCpu   The cross context virtual CPU structure.
- *
- * @remarks No-long-jmp zone!!!
- */
-DECLINLINE(int) hmR0VmxLongJmpToRing3(PVMCPUCC pVCpu)
-{
-    return hmR0VmxLeaveSession(pVCpu);
 }
 
 
