@@ -1,4 +1,4 @@
-/* $Id: bs3kit.h 92262 2021-11-08 11:12:17Z vboxsync $ */
+/* $Id: bs3kit.h 92523 2021-11-20 23:35:37Z vboxsync $ */
 /** @file
  * BS3Kit - structures, symbols, macros and stuff.
  */
@@ -347,7 +347,7 @@ RT_C_DECLS_BEGIN
 #define BS3_SEL_RMTEXT16_CS         0x00e0 /**< Conforming code selector for accessing the BS3RMTEXT16 segment. Runtime config. */
 #define BS3_SEL_X0TEXT16_CS         0x00e8 /**< Conforming code selector for accessing the BS3X0TEXT16 segment. Runtime config. */
 #define BS3_SEL_X1TEXT16_CS         0x00f0 /**< Conforming code selector for accessing the BS3X1TEXT16 segment. Runtime config. */
-#define BS3_SEL_VMMDEV_MMIO16       0x00f8 /**< Selector for accessing the VMMDev MMIO segment at 0100000h from 16-bit code. */
+#define BS3_SEL_VMMDEV_MMIO16       0x00f8 /**< Selector for accessing the VMMDev MMIO segment at 00df000h from 16-bit code. */
 
 /** Checks if @a uSel is in the BS3_SEL_RX_XXX range. */
 #define BS3_SEL_IS_IN_RING_RANGE(uSel) ( (unsigned)(uSel -  BS3_SEL_R0_FIRST) < (unsigned)(4 << BS3_SEL_RING_SHIFT) )

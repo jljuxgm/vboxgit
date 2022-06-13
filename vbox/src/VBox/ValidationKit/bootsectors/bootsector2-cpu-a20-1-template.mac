@@ -1,4 +1,4 @@
-; $Id: bootsector2-cpu-a20-1-template.mac 82968 2020-02-04 10:35:17Z vboxsync $
+; $Id: bootsector2-cpu-a20-1-template.mac 92523 2021-11-20 23:35:37Z vboxsync $
 ;; @file
 ; bootsector2 A20 - multi mode template.
 ;
@@ -163,7 +163,7 @@ BEGINPROC TMPL_NM(TestA20_ScanMemory)
         mov     ax,  00000h
         mov     esi, 00000h
         mov     ds, ax
-        mov     ecx, 01000h             ; at 101000 there is a VMMDevTesting MMIO page.
+        mov     ecx, 01000h             ; at 101000 there was a VMMDevTesting MMIO page.
 %elifdef TMPL_16BIT
         ;; @todo need a selector we can modify.
         jmp     .done
