@@ -1,4 +1,4 @@
-/* $Id: UIUserNamePasswordEditor.cpp 90107 2021-07-09 07:41:28Z vboxsync $ */
+/* $Id: UIUserNamePasswordEditor.cpp 90124 2021-07-09 13:04:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class implementation.
  */
@@ -375,6 +375,8 @@ void UIUserNamePasswordEditor::prepare()
             this, &UIUserNamePasswordEditor::sltHandlePasswordVisibility);
     connect(m_pPasswordLineEdit, &UIPasswordLineEdit::textChanged,
             this, &UIUserNamePasswordEditor::sltPasswordChanged);
+    connect(m_pPasswordRepeatLineEdit, &UIPasswordLineEdit::textChanged,
+            this, &UIUserNamePasswordEditor::sltPasswordChanged);
     connect(m_pUserNameLineEdit, &QILineEdit::textChanged,
             this, &UIUserNamePasswordEditor::sltUserNameChanged);
 
@@ -395,14 +397,14 @@ void UIUserNamePasswordEditor::sltHandlePasswordVisibility(bool fPasswordVisible
 
 void UIUserNamePasswordEditor::sltUserNameChanged()
 {
-    if (isUserNameComplete())
-        emit sigUserNameChanged(m_pUserNameLineEdit->text());
+    isUserNameComplete();
+    emit sigUserNameChanged(m_pUserNameLineEdit->text());
 }
 
 void UIUserNamePasswordEditor::sltPasswordChanged()
 {
-    if (isPasswordComplete())
-        emit sigPasswordChanged(m_pPasswordLineEdit->text());
+    isPasswordComplete();
+    emit sigPasswordChanged(m_pPasswordLineEdit->text());
 }
 
 
