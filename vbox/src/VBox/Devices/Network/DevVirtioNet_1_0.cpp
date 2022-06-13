@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet_1_0.cpp 92939 2021-12-15 15:51:28Z vboxsync $ $Revision: 92939 $ $Date: 2021-12-15 23:51:28 +0800 (Wed, 15 Dec 2021) $ $Author: vboxsync $ */
+/* $Id: DevVirtioNet_1_0.cpp 92950 2021-12-15 20:54:37Z vboxsync $ $Revision: 92950 $ $Date: 2021-12-16 04:54:37 +0800 (Thu, 16 Dec 2021) $ $Author: vboxsync $ */
 
 /** @file
  * VBox storage devices - Virtio NET Driver
@@ -895,7 +895,7 @@ static DECLCALLBACK(void) virtioNetR3Info(PPDMDEVINS pDevIns, PCDBGFINFOHLP pHlp
         pHlp->pfnPrintf(pHlp, "    cVirtqPairs .,............. %d\n",   pThis->cVirtqPairs);
         pHlp->pfnPrintf(pHlp, "    cVirtqs .,................. %d\n",   pThis->cVirtqs);
         pHlp->pfnPrintf(pHlp, "    cWorkers .................. %d\n",   pThis->cWorkers);
-        pHlp->pfnPrintf(pHlp, "    MMIO mapping name ......... %d\n",   pThisCC->Virtio.pcszMmioName);
+        pHlp->pfnPrintf(pHlp, "    MMIO mapping name ......... %d\n",   pThisCC->Virtio.szMmioName);
         pHlp->pfnPrintf(pHlp, "\n");
     }
 
