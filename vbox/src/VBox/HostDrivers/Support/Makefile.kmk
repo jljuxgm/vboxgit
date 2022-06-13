@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 93911 2022-02-24 11:16:08Z vboxsync $
+# $Id: Makefile.kmk 94439 2022-04-01 14:02:04Z vboxsync $
 ## @file
 # Sub-Makefile for the support library and the drivers/modules/kexts it uses.
 #
@@ -501,6 +501,7 @@ if1of ($(KBUILD_TARGET), linux solaris)
  	SUP_HARDENED_WITH_DLMOPEN
  SUPR3HardenedStatic_DEFS.solaris += \
  	SUP_HARDENED_WITH_DLMOPEN
+ SUPR3HardenedStatic_DEFS.asan    += SUP_HARDENED_WITHOUT_DLOPEN_PATCHING
 
  SUPR3HardenedStatic_INCS += $(VBOX_PATH_RUNTIME_SRC)/include
 
