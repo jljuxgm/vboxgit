@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: utils.py 92888 2021-12-13 15:45:16Z vboxsync $
+# $Id: utils.py 92889 2021-12-13 21:33:56Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -29,11 +29,12 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 92888 $"
+__version__ = "$Revision: 92889 $"
 
 
 # Standard Python imports.
 import datetime;
+import errno;
 import os;
 import platform;
 import re;
@@ -983,14 +984,16 @@ def processExists(uPid):
         else:
             hProcess.Close();
             fRc = True;
-    elif sHostOs == 'linux':
-        fRc = os.path.exists('/proc/%s' % (uPid,));
     else:
+        fRc = False;
         try:
             os.kill(uPid, 0);
             fRc = True;
-        except: ## @todo check error code.
-            fRc = False;
+        except OSError as oXcpt:
+            if oXcpt.errno == errno.EPERM:
+                fRc = True;
+        except:
+            pass;
     return fRc;
 
 def processCheckPidAndName(uPid, sName):
