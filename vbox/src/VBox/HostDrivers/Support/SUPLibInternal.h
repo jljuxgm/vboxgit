@@ -1,4 +1,4 @@
-/* $Id: SUPLibInternal.h 92613 2021-11-26 21:53:47Z vboxsync $ */
+/* $Id: SUPLibInternal.h 92697 2021-12-02 12:37:40Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Internal header.
  */
@@ -255,6 +255,8 @@ typedef struct SUPLIBDATA
     /** Indicates whether we have unrestricted (true) or restricted access to the
      * support device. */
     bool                fUnrestricted;
+    /** Set if we're in driverless mode. */
+    bool                fDriverless;
 #if   defined(RT_OS_DARWIN)
     /** The connection to the VBoxSupDrv service. */
     uintptr_t           uConnection;
