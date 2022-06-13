@@ -1,4 +1,4 @@
-/* $Id: rest-primary-object-types.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: rest-primary-object-types.cpp 93301 2022-01-18 11:24:43Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestObjectBase implementation.
  */
@@ -1023,7 +1023,7 @@ int RTCRestDouble::deserializeFromJson(RTCRestJsonCursor const &a_rCursor) RT_NO
         if (RT_SUCCESS(rc))
         {
             m_rdValue = iTmp;
-            if (m_rdValue == iTmp)
+            if ((int64_t)m_rdValue == iTmp)
                 return rc;
             return a_rCursor.m_pPrimary->addError(a_rCursor, VERR_OUT_OF_RANGE, "value %RI64 does not fit in a double", iTmp);
         }

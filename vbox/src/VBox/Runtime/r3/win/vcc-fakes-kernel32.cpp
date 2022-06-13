@@ -1,4 +1,4 @@
-/* $Id: vcc-fakes-kernel32.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: vcc-fakes-kernel32.cpp 93301 2022-01-18 11:24:43Z vboxsync $ */
 /** @file
  * IPRT - Tricks to make the Visual C++ 2010 CRT work on NT4, W2K and XP.
  */
@@ -471,7 +471,7 @@ DECL_KERNEL32(BOOL) Fake_SetFilePointerEx(HANDLE hFile, LARGE_INTEGER offDistanc
 
         case FILE_END:
         {
-            FILE_STANDARD_INFO StdInfo = {0};
+            FILE_STANDARD_INFO StdInfo = {{0}};
             rcNt = NtQueryInformationFile(hFile, &Ios, &StdInfo, sizeof(StdInfo), FileStandardInformation);
             if (NT_SUCCESS(rcNt))
             {
@@ -503,7 +503,7 @@ DECL_KERNEL32(BOOL) Fake_SetFilePointerEx(HANDLE hFile, LARGE_INTEGER offDistanc
 DECL_KERNEL32(BOOL) Fake_GetFileSizeEx(HANDLE hFile, PLARGE_INTEGER pcbFile)
 {
     IO_STATUS_BLOCK    Ios     = RTNT_IO_STATUS_BLOCK_INITIALIZER;
-    FILE_STANDARD_INFO StdInfo = {0};
+    FILE_STANDARD_INFO StdInfo = {{0}};
     NTSTATUS rcNt = NtQueryInformationFile(hFile, &Ios, &StdInfo, sizeof(StdInfo), FileStandardInformation);
     if (NT_SUCCESS(rcNt))
     {

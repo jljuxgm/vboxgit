@@ -1,4 +1,4 @@
-/* $Id: tstTSC.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: tstTSC.cpp 93301 2022-01-18 11:24:43Z vboxsync $ */
 /** @file
  * IPRT Testcase - SMP TSC testcase.
  */
@@ -387,7 +387,7 @@ static int tstTSCCalcFrequency(uint32_t cMsDuration)
      * Calc the frequency.
      */
     RTPrintf("tstTSC: %RU64 ticks in %RU64 ns\n", uTSC, uNanoTS);
-    uint64_t cHz = (uint64_t)(uTSC / ((long double)uNanoTS / (long double)1000000000));
+    uint64_t cHz = (uint64_t)((long double)uTSC / ((long double)uNanoTS / (long double)1000000000));
     RTPrintf("tstTSC: Frequency %RU64 Hz", cHz);
     if (cHz > _1G)
     {
@@ -437,7 +437,7 @@ int main(int argc, char **argv)
                 return 1;
 
             case 'V':
-                RTPrintf("$Revision: 93115 $\n");
+                RTPrintf("$Revision: 93301 $\n");
                 return 0;
 
             default:

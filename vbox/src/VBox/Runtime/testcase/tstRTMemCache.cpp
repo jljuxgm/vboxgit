@@ -1,4 +1,4 @@
-/* $Id: tstRTMemCache.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: tstRTMemCache.cpp 93301 2022-01-18 11:24:43Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTMemCache.
  */
@@ -308,7 +308,7 @@ static void tst3(uint32_t cThreads, uint32_t cbObject, int iMethod, uint32_t cSe
         cIterations += aThreads[i].cIterations;
 
     RTTestIPrintf(RTTESTLVL_ALWAYS, "%'8u iterations per second, %'llu ns on avg\n",
-                  (unsigned)((long double)cIterations * 1000000000.0 / cElapsedNS),
+                  (unsigned)((long double)cIterations * 1000000000.0 / (long double)cElapsedNS),
                   cElapsedNS / cIterations);
 
     /* clean up */

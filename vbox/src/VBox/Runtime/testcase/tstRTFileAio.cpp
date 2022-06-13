@@ -1,4 +1,4 @@
-/* $Id: tstRTFileAio.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: tstRTFileAio.cpp 93301 2022-01-18 11:24:43Z vboxsync $ */
 /** @file
  * IPRT Testcase - File Async I/O.
  */
@@ -156,7 +156,7 @@ void tstFileAioTestReadWriteBasic(RTFILE File, bool fWrite, void *pvTestBuf,
     }
 
     NanoTS = RTTimeNanoTS() - NanoTS;
-    uint64_t SpeedKBs = (uint64_t)(cbTestFile / (NanoTS / 1000000000.0) / 1024);
+    uint64_t SpeedKBs = (uint64_t)((double)cbTestFile / ((double)NanoTS / 1000000000.0) / 1024);
     RTTestValue(g_hTest, "Throughput", SpeedKBs, RTTESTUNIT_KILOBYTES_PER_SEC);
 
     /* cleanup */

@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-nt.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: mp-r0drv-nt.cpp 93301 2022-01-18 11:24:43Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, NT.
  */
@@ -1932,7 +1932,7 @@ int rtMpPokeCpuUsingDpc(RTCPUID idCpu)
     /*
      * APC fallback.
      */
-    static KDPC s_aPokeDpcs[RTCPUSET_MAX_CPUS] = {0};
+    static KDPC s_aPokeDpcs[RTCPUSET_MAX_CPUS] = {{0}};
     static bool s_fPokeDPCsInitialized = false;
 
     if (!s_fPokeDPCsInitialized)
