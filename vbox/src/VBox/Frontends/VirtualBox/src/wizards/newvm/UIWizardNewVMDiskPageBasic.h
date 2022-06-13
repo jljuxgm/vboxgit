@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMDiskPageBasic.h 90003 2021-07-02 15:03:13Z vboxsync $ */
+/* $Id: UIWizardNewVMDiskPageBasic.h 90074 2021-07-07 10:06:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMDiskPageBasic class declaration.
  */
@@ -23,6 +23,7 @@
 
 /* Qt includes: */
 #include <QVariant>
+#include <QSet>
 
 /* GUI includes: */
 #include "UINativeWizardPage.h"
@@ -42,31 +43,33 @@ class QIRichTextLabel;
 class QIToolButton;
 class UIMediaComboBox;
 
+enum SelectedDiskSource
+{
+    SelectedDiskSource_Empty = 0,
+    SelectedDiskSource_New,
+    SelectedDiskSource_Existing,
+    SelectedDiskSource_Max
+};
 
-// class UIWizardNewVMDiskPage : public UIWizardPageBase
-// {
-
-// public:
-
-
-// protected:
-
-//     UIWizardNewVMDiskPage();
+namespace UIWizardNewVMDiskPage
+{
+    QString defaultExtension(const CMediumFormat &mediumFormatRef);
+    QString toFileName(const QString &strName, const QString &strExtension);
+    QUuid getWithFileOpenDialog(const QString &strOSTypeID,
+                                const QString &strMachineFolder,
+                                const QString &strMachineBaseName,
+                                QWidget *pCaller);
+    QString absoluteFilePath(const QString &strFileName, const QString &strPath);
+}
 
 //     SelectedDiskSource selectedDiskSource() const;
 //     void setSelectedDiskSource(SelectedDiskSource enmSelectedDiskSource);
 //     bool getWithNewVirtualDiskWizard();
-
 //     virtual QWidget *createDiskWidgets();
 //     virtual QWidget *createNewDiskWidgets();
 //     void getWithFileOpenDialog();
 //     void retranslateWidgets();
-
 //     void setEnableDiskSelectionWidgets(bool fEnable);
-//     bool m_fRecommendedNoDisk;
-
-//     SelectedDiskSource m_enmSelectedDiskSource;
-// };
 
 class UIWizardNewVMDiskPageBasic : public UINativeWizardPage
 {
@@ -95,15 +98,19 @@ private:
     void prepare();
     void createConnections();
     QWidget *createNewDiskWidgets();
-    void retranslateUi();
-    void initializePage();
     void cleanupPage();
     void setEnableNewDiskWidgets(bool fEnable);
     void setVirtualDiskFromDiskCombo();
     QWidget *createDiskWidgets();
     QWidget *createMediumVariantWidgets(bool fWithLabels);
-    bool isComplete() const;
-    virtual bool validatePage() /* override */;
+
+    virtual void retranslateUi() /* override final */;
+    virtual void initializePage() /* override final */;
+    virtual bool isComplete() const /* override final */;
+    virtual bool validatePage() /* override final */;
+
+    void setEnableDiskSelectionWidgets(bool fEnabled);
+    void setWidgetVisibility(CMediumFormat &mediumFormat);
 
     /** @name Widgets
      * @{ */
@@ -124,10 +131,14 @@ private:
        QCheckBox *m_pSplitBox;
     /** @} */
 
-    /** This is set to true when user manually set the size. */
-    bool m_fUserSetSize;
     /** For guided new vm wizard VDI is the only format. Thus we have no UI item for it. */
     CMediumFormat m_mediumFormat;
+    SelectedDiskSource m_enmSelectedDiskSource;
+    bool m_fRecommendedNoDisk;
+    QString m_strDefaultName;
+    QString m_strDefaultPath;
+    QString m_strDefaultExtension;
+    QSet<QString> m_userModifiedParameters;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_wizards_newvm_UIWizardNewVMDiskPageBasic_h */

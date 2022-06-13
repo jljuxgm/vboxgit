@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.h 90073 2021-07-07 06:38:10Z vboxsync $ */
+/* $Id: UIWizardNewVM.h 90074 2021-07-07 10:06:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class declaration.
  */
@@ -60,18 +60,6 @@ struct UIUnattendedInstallData
     QString m_strGuestAdditionsISOPath;
 };
 
-
-
-
-enum SelectedDiskSource
-{
-    SelectedDiskSource_Empty = 0,
-    SelectedDiskSource_New,
-    SelectedDiskSource_Existing,
-    SelectedDiskSource_Max
-};
-
-Q_DECLARE_METATYPE(SelectedDiskSource);
 
 /** New Virtual Machine wizard: */
 class UIWizardNewVM : public UINativeWizard
