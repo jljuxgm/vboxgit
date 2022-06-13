@@ -1,4 +1,4 @@
-/* $Id: UnattendedInstaller.cpp 94752 2022-04-28 22:08:31Z vboxsync $ */
+/* $Id: UnattendedInstaller.cpp 94764 2022-05-01 17:26:05Z vboxsync $ */
 /** @file
  * UnattendedInstaller class and it's descendants implementation
  */
@@ -1051,7 +1051,7 @@ HRESULT UnattendedDebianInstaller::addFilesToAuxVisoVectors(RTCList<RTCString> &
         if (fMenuConfigIsGrub)
             strTxtCfg.append("grub.cfg");
         else
-            strTxtCfg.append("isolinux-.cfg");
+            strTxtCfg.append("isolinux-txt.cfg");
         rVecArgs.append().assign(pszMenuConfigFilename).append("=").append(strTxtCfg);
     }
     catch (std::bad_alloc &)
