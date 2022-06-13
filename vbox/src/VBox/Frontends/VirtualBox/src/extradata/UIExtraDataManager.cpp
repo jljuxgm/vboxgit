@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 91125 2021-09-06 14:32:23Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 91227 2021-09-14 10:49:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -1894,7 +1894,7 @@ QStringList UIExtraDataManagerWindow::knownExtraDataKeys()
     return QStringList()
            << QString()
            << GUI_RestrictedDialogs
-           << GUI_SuppressMessages << GUI_InvertMessageOption
+           << GUI_SuppressMessages << GUI_InvertMessageOption << GUI_KeepSuccessfullNotificationProgresses
 #ifdef VBOX_GUI_WITH_NETWORK_MANAGER
            << GUI_PreventApplicationUpdate << GUI_UpdateDate << GUI_UpdateCheckCount
 #endif /* VBOX_GUI_WITH_NETWORK_MANAGER */
@@ -2336,6 +2336,12 @@ void UIExtraDataManager::setSuppressedMessages(const QStringList &list)
 QStringList UIExtraDataManager::messagesWithInvertedOption()
 {
     return extraDataStringList(GUI_InvertMessageOption);
+}
+
+bool UIExtraDataManager::keepSuccessfullNotificationProgresses()
+{
+    /* 'False' unless feature allowed: */
+    return isFeatureAllowed(GUI_KeepSuccessfullNotificationProgresses);
 }
 
 #if !defined(VBOX_BLEEDING_EDGE) && !defined(DEBUG)

@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 90083 2021-07-08 07:38:43Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 91227 2021-09-14 10:49:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -182,6 +182,9 @@ public:
 
         /** Returns the list of messages for the Message/Popup center frameworks with inverted check-box state. */
         QStringList messagesWithInvertedOption();
+
+        /** Returns whether successfull notification-progresses should NOT close automatically. */
+        bool keepSuccessfullNotificationProgresses();
 
 #if !defined(VBOX_BLEEDING_EDGE) && !defined(DEBUG)
         /** Returns version for which user wants to prevent BETA build warning. */
