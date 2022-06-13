@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 92244 2021-11-05 16:15:26Z vboxsync $
+# $Id: vbox.py 92683 2021-12-02 02:17:16Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 92244 $"
+__version__ = "$Revision: 92683 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -2887,7 +2887,7 @@ class TestDriver(base.TestDriver):                                              
             if fRcTmp:
                 reporter.log('Successfully prepared environment');
                 sReportDbgSym = oResolver.annotateReport(sProcessReport);
-                if sReportDbgSym is not None:
+                if sReportDbgSym and len(sReportDbgSym) > 8:
                     reporter.addLogString(sReportDbgSym, sFilename, sKind, sDesc);
                     fRc = True;
                 else:
