@@ -1,4 +1,4 @@
-/* $Id: UINotificationModel.h 92295 2021-11-09 14:32:19Z vboxsync $ */
+/* $Id: UINotificationModel.h 92646 2021-11-30 10:54:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINotificationModel class declaration.
  */
@@ -40,8 +40,10 @@ class SHARED_LIBRARY_STUFF UINotificationModel : public QObject
 
 signals:
 
-    /** Notifies listeners about model has changed. */
-    void sigChanged();
+    /** Notifies listeners about item with specified @a uId was added. */
+    void sigItemAdded(const QUuid &uId);
+    /** Notifies listeners about item with specified @a uId was removed. */
+    void sigItemRemoved(const QUuid &uId);
 
 public:
 
