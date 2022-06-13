@@ -1,4 +1,4 @@
-/* $Id: UpdateAgentImpl.cpp 94728 2022-04-27 18:19:51Z vboxsync $ */
+/* $Id: UpdateAgentImpl.cpp 94729 2022-04-28 05:56:40Z vboxsync $ */
 /** @file
  * IUpdateAgent COM class implementations.
  */
@@ -750,7 +750,7 @@ HRESULT UpdateAgent::i_reportError(int vrc, const char *pcszMsgFmt, ...)
     if (RT_FAILURE(vrc2))
     {
         va_end(va);
-        return setErrorBoth(VERR_COM_IPRT_ERROR, vrc2, tr("Failed to format update agent error string (%Rrc)"), vrc2);
+        return setErrorBoth(VBOX_E_IPRT_ERROR, vrc2, tr("Failed to format update agent error string (%Rrc)"), vrc2);
     }
 
     va_end(va);
@@ -759,7 +759,7 @@ HRESULT UpdateAgent::i_reportError(int vrc, const char *pcszMsgFmt, ...)
 
     ::FireUpdateAgentErrorEvent(m_EventSource, strMsg.c_str(), vrc);
 
-    return setErrorBoth(VERR_COM_IPRT_ERROR, vrc, strMsg.c_str());
+    return setErrorBoth(VBOX_E_IPRT_ERROR, vrc, strMsg.c_str());
 }
 
 
