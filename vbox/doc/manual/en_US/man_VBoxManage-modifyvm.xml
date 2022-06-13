@@ -19,7 +19,7 @@
 ]>
 <refentry id="vboxmanage-modifyvm" lang="en">
   <refentryinfo>
-    <pubdate>$Date: 2022-02-12 04:10:19 +0800 (Sat, 12 Feb 2022) $</pubdate>
+    <pubdate>$Date: 2022-02-14 17:54:22 +0800 (Mon, 14 Feb 2022) $</pubdate>
     <title>VBoxManage modifyvm</title>
   </refentryinfo>
 
@@ -2374,7 +2374,7 @@ it unless this changes. -->
                 </para></listitem>
               <listitem><para>
                   <emphasis role="bold">Both IPv6 and IPv4:</emphasis>
-                  Use the <option>--vrde-address=&ldquo;&rdquo;</option>
+                  Use the <option>--vrde-address=""</option>
                   option. This is the default value.
                 </para></listitem>
             </itemizedlist></listitem>
