@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 94408 2022-03-31 09:53:43Z vboxsync $
+# $Id: tdUnitTest1.py 94411 2022-03-31 11:09:03Z vboxsync $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 94408 $"
+__version__ = "$Revision: 94411 $"
 
 
 # Standard Python imports.
@@ -584,8 +584,12 @@ class tdUnitTest1(vbox.TestDriver):
         reporter.log2('Unit test destination path is "%s"\n' % self.sUnitTestsPathDst);
 
         if self.sMode.startswith('remote'): # Run on a test VM (guest).
-            assert self.oTestVmSet is not None;
-            fRc = self.oTestVmSet.actionExecute(self, self.testOneVmConfig);
+            if self.fpApiVer < 7.0: ## @todo Needs Validation Kit .ISO tweaking (including the unit tests) first.
+                reporter.log('Remote unit tests for non-trunk builds skipped.');
+                fRc = True;
+            else:
+                assert self.oTestVmSet is not None;
+                fRc = self.oTestVmSet.actionExecute(self, self.testOneVmConfig);
         else: # Run locally (host).
             self._figureVersion();
             self._makeEnvironmentChanges();
