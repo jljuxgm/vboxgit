@@ -1,4 +1,4 @@
-/* $Id: UefiVariableStoreImpl.cpp 91408 2021-09-27 15:33:28Z vboxsync $ */
+/* $Id: UefiVariableStoreImpl.cpp 91409 2021-09-27 15:41:12Z vboxsync $ */
 /** @file
  * VirtualBox COM NVRAM store class implementation
  */
@@ -87,6 +87,7 @@ void UefiVariableStore::FinalRelease()
  *
  * @returns COM result indicator.
  * @param   aParent                     The NVRAM store owning the UEFI NVRAM content.
+ * @param   pMachine
  * @param   hVfsUefiVarStore            The UEFI variable store VFS handle.
  */
 HRESULT UefiVariableStore::init(NvramStore *aParent, Machine *pMachine, RTVFS hVfsUefiVarStore)
