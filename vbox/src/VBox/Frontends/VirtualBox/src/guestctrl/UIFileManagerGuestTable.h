@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerGuestTable.h 92860 2021-12-10 12:39:38Z vboxsync $ */
+/* $Id: UIFileManagerGuestTable.h 92884 2021-12-13 13:46:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerGuestTable class declaration.
  */
@@ -138,12 +138,6 @@ private:
     bool closeMachineSession();
     bool isGuestAdditionsAvailable();
     void setStateAndEnableWidgets();
-
-    /** @name Perform operations needed after creating/ending a guest control session
-      * @{ */
-        void postGuestSessionCreated();
-        void postGuestSessionClosed();
-    /** @} */
 
     void initFileTable();
     void cleanAll();
