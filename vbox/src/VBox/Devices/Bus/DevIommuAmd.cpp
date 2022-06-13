@@ -1,4 +1,4 @@
-/* $Id: DevIommuAmd.cpp 90029 2021-07-05 14:35:44Z vboxsync $ */
+/* $Id: DevIommuAmd.cpp 90030 2021-07-05 14:39:16Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - AMD implementation.
  */
@@ -784,7 +784,7 @@ static uint32_t iommuAmdGetEvtLogEntryCount(PIOMMU pThis)
 }
 
 
-#if defined(IN_RING3) || defined(LOG_ENABLED)
+#if (defined(IN_RING3) && defined(IOMMU_WITH_IOTLBE_CACHE)) || defined(LOG_ENABLED)
 /**
  * Gets the descriptive I/O permission name for a memory access.
  *
