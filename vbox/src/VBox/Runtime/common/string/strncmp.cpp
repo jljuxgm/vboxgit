@@ -1,4 +1,4 @@
-/* $Id: strncmp.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: strncmp.cpp 93130 2022-01-06 02:48:07Z vboxsync $ */
 /** @file
  * IPRT - CRT Strings, strncmp().
  */
@@ -28,7 +28,7 @@
 
 #ifdef _MSC_VER
 _CRTIMP int __cdecl strncmp
-#elif defined(__WATCOMC__)
+#elif defined(__WATCOMC__) && !defined(IPRT_NO_CRT)
 _WCRTLINK int std::strncmp
 #else
 int strncmp
