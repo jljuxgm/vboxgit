@@ -1,4 +1,4 @@
-/* $Id: DisplayUtils.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: DisplayUtils.h 93444 2022-01-26 18:01:15Z vboxsync $ */
 /** @file
  * Display helper declarations
  */
@@ -36,7 +36,8 @@ int readSavedGuestScreenInfo(const Utf8Str &strStateFilePath, uint32_t u32Screen
                              uint32_t *pu32OriginX, uint32_t *pu32OriginY,
                              uint32_t *pu32Width, uint32_t *pu32Height, uint16_t *pu16Flags);
 
-int readSavedDisplayScreenshot(const Utf8Str &strStateFilePath, uint32_t u32Type, uint8_t **ppu8Data, uint32_t *pcbData, uint32_t *pu32Width, uint32_t *pu32Height);
+int readSavedDisplayScreenshot(const Utf8Str &strStateFilePath, uint32_t u32Type, uint8_t **ppu8Data,
+                               uint32_t *pcbData, uint32_t *pu32Width, uint32_t *pu32Height);
 void freeSavedDisplayScreenshot(uint8_t *pu8Data);
 
 #endif /* !MAIN_INCLUDED_DisplayUtils_h */

@@ -1,6 +1,6 @@
-/* $Id: DisplayUtils.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: DisplayUtils.cpp 93444 2022-01-26 18:01:15Z vboxsync $ */
 /** @file
- * Implementation of IDisplay helpers.
+ * Implementation of IDisplay helpers, currently only used in VBoxSVC.
  */
 
 /*

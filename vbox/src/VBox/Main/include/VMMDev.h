@@ -1,4 +1,4 @@
-/* $Id: VMMDev.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: VMMDev.h 93444 2022-01-26 18:01:15Z vboxsync $ */
 /** @file
  * VirtualBox Driver interface to VMM device
  */
@@ -85,6 +85,8 @@ private:
     static DECLCALLBACK(void)   drvPowerOff(PPDMDRVINS pDrvIns);
     static DECLCALLBACK(void)   drvSuspend(PPDMDRVINS pDrvIns);
     static DECLCALLBACK(void)   drvResume(PPDMDRVINS pDrvIns);
+    static DECLCALLBACK(int)    hgcmSave(PPDMDRVINS pDrvIns, PSSMHANDLE pSSM);
+    static DECLCALLBACK(int)    hgcmLoad(PPDMDRVINS pDrvIns, PSSMHANDLE pSSM, uint32_t uVersion, uint32_t uPass);
 
     Console * const         mParent;
 

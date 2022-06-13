@@ -1,4 +1,4 @@
-/* $Id: UsbWebcamInterface.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UsbWebcamInterface.cpp 93444 2022-01-26 18:01:15Z vboxsync $ */
 /** @file
  * UsbWebcamInterface - Driver Interface for USB Webcam emulation.
  */
@@ -404,11 +404,10 @@ int EmWebcam::SendControl(EMWEBCAMDRV *pDrv, void *pvUser, uint64_t u64DeviceId,
     }
 
     void *pv = NULL;
-    int rc = CFGMR3QueryPtr(pCfg, "Object", &pv);
+    int rc = pDrvIns->pHlpR3->pfnCFGMQueryPtr(pCfg, "Object", &pv);
     if (!RT_VALID_PTR(pv))
          rc = VERR_INVALID_PARAMETER;
-    AssertMsgReturn(RT_SUCCESS(rc),
-                    ("Configuration error: No/bad \"Object\" %p value! rc=%Rrc\n", pv, rc), rc);
+    AssertMsgRCReturn(rc, ("Configuration error: No/bad \"Object\" %p value! rc=%Rrc\n", pv, rc), rc);
 
     /* Everything ok. Initialize. */
     pThis->pRemote = (EMWEBCAMREMOTE *)pv;

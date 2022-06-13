@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 93115 2022-01-01 11:31:46Z vboxsync $
+# $Id: Makefile.kmk 93444 2022-01-26 18:01:15Z vboxsync $
 ## @file
 # Sub-Makefile for the Host Channel Service.
 #
@@ -35,7 +35,6 @@ VBoxHostChannel_SOURCES.win = \
 	VBoxHostChannelSvc.rc
 
 VBoxHostChannel_LIBS = \
-	$(LIB_VMM) \
 	$(LIB_RUNTIME)
 
 include $(FILE_KBUILD_SUB_FOOTER)

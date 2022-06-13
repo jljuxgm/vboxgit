@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 93115 2022-01-01 11:31:46Z vboxsync $
+# $Id: Makefile.kmk 93444 2022-01-26 18:01:15Z vboxsync $
 ## @file
 # Sub-Makefile for the Shared Info Services Host Service.
 #
@@ -39,9 +39,7 @@ VBoxGuestPropSvc_SOURCES.win = \
 	VBoxGuestPropSvc.rc
 
 VBoxGuestPropSvc_LIBS = \
-	$(LIB_VMM) \
-	$(LIB_RUNTIME) \
-	$(LIB_REM)
+	$(LIB_RUNTIME)
 
 VBoxGuestPropSvc_LDFLAGS.darwin = \
 	-install_name $(VBOX_DYLD_EXECUTABLE_PATH)/VBoxGuestPropSvc.dylib

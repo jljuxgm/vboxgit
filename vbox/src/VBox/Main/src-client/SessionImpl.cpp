@@ -1,4 +1,4 @@
-/* $Id: SessionImpl.cpp 93410 2022-01-24 14:45:10Z vboxsync $ */
+/* $Id: SessionImpl.cpp 93444 2022-01-26 18:01:15Z vboxsync $ */
 /** @file
  * VBox Client Session COM Class implementation in VBoxC.
  */
@@ -344,7 +344,7 @@ HRESULT Session::assignMachine(const ComPtr<IMachine> &aMachine,
         rc = mConsole.createObject();
         AssertComRCReturn(rc, rc);
 
-        rc = mConsole->init(aMachine, mControl, aLockType);
+        rc = mConsole->initWithMachine(aMachine, mControl, aLockType);
         AssertComRCReturn(rc, rc);
     }
     else

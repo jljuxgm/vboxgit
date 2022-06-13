@@ -1,4 +1,4 @@
-/* $Id: DrvAudioRec.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: DrvAudioRec.h 93444 2022-01-26 18:01:15Z vboxsync $ */
 /** @file
  * VirtualBox driver interface video recording audio backend.
  */
@@ -57,7 +57,7 @@ public:
 
 private:
 
-    int configureDriver(PCFGMNODE pLunCfg);
+    virtual int configureDriver(PCFGMNODE pLunCfg, PCVMMR3VTABLE pVMM) RT_OVERRIDE;
 
     /** Pointer to the associated video recording audio driver. */
     struct DRVAUDIORECORDING         *mpDrv;

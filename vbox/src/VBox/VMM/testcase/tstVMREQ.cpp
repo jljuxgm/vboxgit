@@ -1,4 +1,4 @@
-/* $Id: tstVMREQ.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: tstVMREQ.cpp 93444 2022-01-26 18:01:15Z vboxsync $ */
 /** @file
  * VMM Testcase.
  */
@@ -209,9 +209,9 @@ static DECLCALLBACK(int) Thread(RTTHREAD hThreadSelf, void *pvUser)
 }
 
 static DECLCALLBACK(int)
-tstVMREQConfigConstructor(PUVM pUVM, PVM pVM, void *pvUser)
+tstVMREQConfigConstructor(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, void *pvUser)
 {
-    RT_NOREF2(pUVM, pvUser);
+    RT_NOREF(pUVM, pVMM, pvUser);
     return CFGMR3ConstructDefaultTree(pVM);
 }
 

@@ -1,4 +1,4 @@
-/* $Id: HGCMThread.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: HGCMThread.h 93444 2022-01-26 18:01:15Z vboxsync $ */
 /** @file
  * HGCMThread - Host-Guest Communication Manager worker threads header.
  */
@@ -142,11 +142,13 @@ void hgcmThreadUninit(void);
  *                          HGCMService, will deregister them.  NULL if no stats.
  * @param pUVM              The user mode VM handle to register statistics with.
  *                          NULL if no stats.
+ * @param pVMM              The VMM vtable for statistics registration. NULL if
+ *                          no stats.
  *
  * @return VBox status code.
  */
 int hgcmThreadCreate(HGCMThread **ppThread, const char *pszThreadName, PFNHGCMTHREAD pfnThread, void *pvUser,
-                     const char *pszStatsSubDir, PUVM pUVM);
+                     const char *pszStatsSubDir, PUVM pUVM, PCVMMR3VTABLE pVMM);
 
 /** Wait for termination of a HGCM worker thread.
  *

@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgBase.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: VBoxDbgBase.h 93444 2022-01-26 18:01:15Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Base classes.
  */
@@ -106,7 +106,7 @@ protected:
 
 private:
     /** @callback_method_impl{FNVMATSTATE}  */
-    static DECLCALLBACK(void) atStateChange(PUVM pUVM, VMSTATE enmState, VMSTATE enmOldState, void *pvUser);
+    static DECLCALLBACK(void) atStateChange(PUVM pUVM, PCVMMR3VTABLE pVMM, VMSTATE enmState, VMSTATE enmOldState, void *pvUser);
 
 private:
     /** Pointer to the debugger GUI object. */

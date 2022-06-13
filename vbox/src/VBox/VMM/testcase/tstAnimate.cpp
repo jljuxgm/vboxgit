@@ -1,4 +1,4 @@
-/* $Id: tstAnimate.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: tstAnimate.cpp 93444 2022-01-26 18:01:15Z vboxsync $ */
 /** @file
  * VBox Animation Testcase / Tool.
  */
@@ -318,15 +318,13 @@ static DECLCALLBACK(int) loadMem(PVM pVM, RTFILE File, uint64_t *poff)
 
 
 /**
- * Creates the default configuration.
- * This assumes an empty tree.
+ * @callback_method_impl{FNCFGMCONSTRUCTOR, Creates the default configuration.}
  *
- * @returns VBox status code.
- * @param   pVM     Pointer to the VM.
+ * This assumes an empty tree.
  */
-static DECLCALLBACK(int) cfgmR3CreateDefault(PUVM pUVM, PVM pVM, void *pvUser)
+static DECLCALLBACK(int) cfgmR3CreateDefault(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, void *pvUser)
 {
-    RT_NOREF1(pUVM);
+    RT_NOREF(pUVM, pVMM);
     uint64_t cbMem = *(uint64_t *)pvUser;
     int rc;
     int rcAll = VINF_SUCCESS;

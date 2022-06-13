@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 93115 2022-01-01 11:31:46Z vboxsync $
+# $Id: Makefile.kmk 93444 2022-01-26 18:01:15Z vboxsync $
 ## @file
 # Sub-Makefile for the Guest Control Host Service testcases.
 #
@@ -34,7 +34,7 @@ if defined(VBOX_WITH_TESTCASES) && !defined(VBOX_ONLY_ADDITIONS) && !defined(VBO
  tstGuestControlSvc_SOURCES  = \
 	../VBoxGuestControlSvc.cpp \
 	tstGuestControlSvc.cpp
- tstGuestControlSvc_LIBS     = $(LIB_RUNTIME) $(LIB_VMM)
+ tstGuestControlSvc_LIBS     = $(LIB_RUNTIME)
 
 $$(tstGuestControlSvc_0_OUTDIR)/tstGuestControlSvc.run: $$(tstGuestControlSvc_1_STAGE_TARGET)
 	export VBOX_LOG_DEST=nofile; $(tstGuestControlSvc_1_STAGE_TARGET) quiet
