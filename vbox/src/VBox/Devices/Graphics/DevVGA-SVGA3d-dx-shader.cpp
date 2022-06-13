@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-dx-shader.cpp 91484 2021-09-30 07:18:32Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-dx-shader.cpp 91525 2021-10-01 16:42:36Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device - VGPU10+ (DX) shader utilities.
  */
@@ -1079,6 +1079,7 @@ typedef struct DXBCTokenReader
 } DXBCTokenReader;
 
 
+#ifdef LOG_ENABLED
 DECLINLINE(uint32_t) dxbcTokenReaderByteOffset(DXBCTokenReader *r)
 {
     return (r->cToken - r->cRemainingToken) * 4;
@@ -1089,6 +1090,7 @@ DECLINLINE(uint32_t) dxbcTokenReaderRemaining(DXBCTokenReader *r)
 {
     return r->cRemainingToken;
 }
+#endif
 
 
 DECLINLINE(bool) dxbcTokenReaderCanRead(DXBCTokenReader *r, uint32_t cToken)
