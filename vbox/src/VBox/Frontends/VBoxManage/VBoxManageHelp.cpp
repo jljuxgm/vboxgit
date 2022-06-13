@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 94202 2022-03-12 19:35:12Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 94203 2022-03-12 19:40:19Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -637,18 +637,6 @@ void printUsage(USAGECATEGORY enmCommand, uint64_t fSubcommandScope, PRTSTREAM p
                      "                            [--setlocation <path>]\n"
                      "                            [--description <description string>]"
                      "\n", SEP);
-
-    if (enmCommand == USAGE_CONVERTFROMRAW || enmCommand == USAGE_S_ALL)
-        RTStrmPrintf(pStrm,
-                           "%s convertfromraw %s  <filename> <outputfile>\n"
-                     "                            [--format VDI|VMDK|VHD]\n"
-                     "                            [--variant Standard,Fixed,Split2G,Stream,ESX]\n"
-                     "                            [--uuid <uuid>]\n"
-                           "%s convertfromraw %s  stdin <outputfile> <bytes>\n"
-                     "                            [--format VDI|VMDK|VHD]\n"
-                     "                            [--variant Standard,Fixed,Split2G,Stream,ESX]\n"
-                     "                            [--uuid <uuid>]\n"
-                     "\n", SEP, SEP);
 
     if (enmCommand == USAGE_GETEXTRADATA || enmCommand == USAGE_S_ALL)
         RTStrmPrintf(pStrm,
