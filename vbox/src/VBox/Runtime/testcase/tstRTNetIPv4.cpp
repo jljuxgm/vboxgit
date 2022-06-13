@@ -1,4 +1,4 @@
-/* $Id: tstRTNetIPv4.cpp 87362 2021-01-21 22:05:41Z vboxsync $ */
+/* $Id: tstRTNetIPv4.cpp 91766 2021-10-15 18:14:38Z vboxsync $ */
 /** @file
  * IPRT Testcase - IPv4.
  */
@@ -317,6 +317,13 @@ int main()
     GOODCIDR("1.2.3.0/255.255.255.0",   0x01020300, 24);
     GOODCIDR("1.2.3.4/255.255.255.0",   0x01020304, 24);
     GOODCIDR("1.2.3.4/255.255.255.255", 0x01020304, 32);
+
+#if 0
+    /** @todo doesn't support 0/0 yet */
+    GOODCIDR("0.0.0.0/0",       0x00000000,  0);
+    GOODCIDR("0.0.0.0/0x0",     0x00000000,  0);
+    GOODCIDR("0.0.0.0/0.0.0.0", 0x00000000,  0);
+#endif
 
     GOODCIDR("\t " "1.2.3.4/24",       0x01020304, 24); /* leading spaces ok */
     GOODCIDR(      "1.2.3.4/24" " \t", 0x01020304, 24); /* trailing spaces ok */
