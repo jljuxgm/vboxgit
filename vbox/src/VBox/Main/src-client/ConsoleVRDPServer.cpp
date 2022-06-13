@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 91738 2021-10-14 19:16:07Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.cpp 91741 2021-10-14 19:32:17Z vboxsync $ */
 /** @file
  * VBox Console VRDP helper class.
  */
@@ -3293,10 +3293,10 @@ DECLCALLBACK(int) ConsoleVRDPServer::ClipboardCallback(void *pvCallback,
         {
             if (pServer->mpfnClipboardCallback)
             {
-                pServer->mpfnClipboardCallback(VBOX_CLIPBOARD_EXT_FN_FORMAT_ANNOUNCE,
-                                               u32Format,
-                                               (void *)pvData,
-                                               cbData);
+                rc = pServer->mpfnClipboardCallback(VBOX_CLIPBOARD_EXT_FN_FORMAT_ANNOUNCE,
+                                                    u32Format,
+                                                    (void *)pvData,
+                                                    cbData);
             }
         } break;
 
@@ -3304,10 +3304,10 @@ DECLCALLBACK(int) ConsoleVRDPServer::ClipboardCallback(void *pvCallback,
         {
             if (pServer->mpfnClipboardCallback)
             {
-                pServer->mpfnClipboardCallback(VBOX_CLIPBOARD_EXT_FN_DATA_READ,
-                                               u32Format,
-                                               (void *)pvData,
-                                               cbData);
+                rc = pServer->mpfnClipboardCallback(VBOX_CLIPBOARD_EXT_FN_DATA_READ,
+                                                    u32Format,
+                                                    (void *)pvData,
+                                                    cbData);
             }
         } break;
 
