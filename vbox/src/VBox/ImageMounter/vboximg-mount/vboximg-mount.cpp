@@ -1,4 +1,4 @@
-/* $Id: vboximg-mount.cpp 87350 2021-01-21 13:24:13Z vboxsync $ */
+/* $Id: vboximg-mount.cpp 91840 2021-10-19 10:50:26Z vboxsync $ */
 /** @file
  * vboximg-mount - Disk Image Flattening FUSE Program.
  */
@@ -1016,6 +1016,9 @@ main(int argc, char **argv)
         vboximgListVMs(pVirtualBox);
         return VINF_SUCCESS;
     }
+
+    if (!g_vboximgOpts.pszImageUuidOrPath)
+        return RTMsgErrorExitFailure("A image UUID or path needs to be provided using the --image/-i option\n");
 
     Bstr    pMediumUuid;
     ComPtr<IMedium> pVDiskMedium = NULL;
