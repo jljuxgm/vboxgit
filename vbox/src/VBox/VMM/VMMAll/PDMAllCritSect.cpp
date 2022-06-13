@@ -1,4 +1,4 @@
-/* $Id: PDMAllCritSect.cpp 90531 2021-08-05 20:54:46Z vboxsync $ */
+/* $Id: PDMAllCritSect.cpp 90558 2021-08-06 20:36:24Z vboxsync $ */
 /** @file
  * PDM - Write-Only Critical Section, All Contexts.
  */
@@ -896,10 +896,13 @@ VMMDECL(int) PDMCritSectLeave(PVMCC pVM, PPDMCRITSECT pCritSect)
     SUPSEMEVENT const hEventToSignal = pCritSect->s.hEventToSignal;
     pCritSect->s.hEventToSignal = NIL_SUPSEMEVENT;
     PVMCPUCC pVCpu           = VMMGetCpu(pVM);
-    bool     fQueueOnTrouble = true;
+    bool     fQueueOnTrouble = false; /* Set this to true to test queueing. */
     if (   pVCpu == NULL /* non-EMT access, if we implement it must be able to block */
         || VMMRZCallRing3IsEnabled(pVCpu)
         || RTSemEventIsSignalSafe()
+        || (   VMMR0ThreadCtxHookIsEnabled(pVCpu)       /* Doesn't matter if Signal() blocks if we have hooks, ... */
+            && RTThreadPreemptIsEnabled(NIL_RTTHREAD)   /* ... and preemption is still enabled, */
+            && ASMIntAreEnabled())                      /* ... and interrupts hasn't yet been disabled. Special pre-GC HM env. */
         || (fQueueOnTrouble = (   hEventToSignal == NIL_SUPSEMEVENT
                                && ASMAtomicUoReadS32(&pCritSect->s.Core.cLockers) == 0)) )
     {
