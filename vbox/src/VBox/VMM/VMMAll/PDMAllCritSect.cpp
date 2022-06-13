@@ -1,4 +1,4 @@
-/* $Id: PDMAllCritSect.cpp 90468 2021-08-02 10:58:26Z vboxsync $ */
+/* $Id: PDMAllCritSect.cpp 90472 2021-08-02 11:31:37Z vboxsync $ */
 /** @file
  * PDM - Write-Only Critical Section, All Contexts.
  */
@@ -453,7 +453,7 @@ DECL_FORCE_INLINE(int) pdmCritSectEnter(PVMCC pVM, PPDMCRITSECT pCritSect, int r
     return pdmR3R0CritSectEnterContended(pVM, NULL, pCritSect, hNativeSelf, pSrcPos, rcBusy);
 
 #elif defined(IN_RING0)
-# if 0 /* new code */
+# if 1 /* new code */
     /*
      * In ring-0 context we have to take the special VT-x/AMD-V HM context into
      * account when waiting on contended locks.
