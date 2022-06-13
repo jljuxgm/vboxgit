@@ -1,4 +1,4 @@
-/* $Id: VMMDevHGCM.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VMMDevHGCM.h 90264 2021-07-20 19:37:24Z vboxsync $ */
 /** @file
  * VBoxDev - HGCM - Host-Guest Communication Manager, internal header.
  */
@@ -44,7 +44,7 @@ int  vmmdevR3HgcmSaveState(PVMMDEVCC pThisCC, PSSMHANDLE pSSM);
 int  vmmdevR3HgcmLoadState(PPDMDEVINS pDevIns, PVMMDEV pThis, PVMMDEVCC pThisCC, PSSMHANDLE pSSM, uint32_t uVersion);
 int  vmmdevR3HgcmLoadStateDone(PPDMDEVINS pDevIns, PVMMDEV pThis, PVMMDEVCC pThisCC);
 
-void vmmdevR3HgcmDestroy(PPDMDEVINS pDevIns, PVMMDEVCC pThisCC);
+void vmmdevR3HgcmDestroy(PPDMDEVINS pDevIns, PVMMDEV pThis, PVMMDEVCC pThisCC);
 int  vmmdevR3HgcmInit(PVMMDEVCC pThisCC);
 RT_C_DECLS_END
 
