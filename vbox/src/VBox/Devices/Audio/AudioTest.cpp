@@ -1,4 +1,4 @@
-/* $Id: AudioTest.cpp 91530 2021-10-01 20:00:44Z vboxsync $ */
+/* $Id: AudioTest.cpp 91531 2021-10-01 20:48:53Z vboxsync $ */
 /** @file
  * Audio testing routines.
  *
@@ -2159,11 +2159,12 @@ static int audioTestObjFileNormalizeEx(PAUDIOTESTVERIFYJOB pVerJob,
     rc = RTFileOpen(&hFileDst, szFileDst, RTFILE_O_OPEN | RTFILE_O_WRITE | RTFILE_O_DENY_WRITE);
     AssertRCReturn(rc, rc);
 
-    double dbRatio;
+    double dbRatio = 0.0;
     rc = audioTestFileNormalizePCM(pObj->File.hFile, pProps, cbSize, dbNormalizePercent, hFileDst, &dbRatio);
     if (RT_SUCCESS(rc))
     {
-        int rc2 = audioTestErrorDescAddInfo(pVerJob->pErr, pVerJob->idxTest, "Normalized '%s' (ratio is ~%RU64%%)\n", pObj->szName, dbRatio);
+        int rc2 = audioTestErrorDescAddInfo(pVerJob->pErr, pVerJob->idxTest, "Normalized '%s' (ratio is %u.%02u%%)\n",
+                                            pObj->szName, (unsigned)dbRatio, (unsigned)(dbRatio * 100) % 100);
         AssertRC(rc2);
     }
 
