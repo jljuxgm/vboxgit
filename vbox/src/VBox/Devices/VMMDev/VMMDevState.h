@@ -1,4 +1,4 @@
-/* $Id: VMMDevState.h 90265 2021-07-20 20:12:41Z vboxsync $ */
+/* $Id: VMMDevState.h 90266 2021-07-20 20:38:59Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device, internal header.
  */
@@ -421,10 +421,10 @@ typedef struct VMMDEVR3
         uint64_t                    cbHeapBudgetConfig;
         /** The currently available heap budget.   */
         uint64_t                    cbHeapBudget;
-        /** Total sum of all heap usage.   */
-        STAMCOUNTER                 cbHeapTotal;
-        /** Total number of message. */
-        STAMCOUNTER                 cTotalMessages;
+        /** Message stats. */
+        STAMPROFILE                 StateMsgHeapUsage;
+        /** Budget overruns.   */
+        STAMCOUNTER                 StatBudgetOverruns;
     } aHgcmAcc[VMMDEV_HGCM_CATEGORY_MAX];
     STAMPROFILE                     StatHgcmCmdArrival;
     STAMPROFILE                     StatHgcmCmdCompletion;
