@@ -1,4 +1,4 @@
-; $Id: VMMR0.def 90829 2021-08-24 10:26:07Z vboxsync $
+; $Id: VMMR0.def 90997 2021-08-30 14:04:48Z vboxsync $
 ;; @file
 ; VMM Ring 0 DLL - Definition file.
 
@@ -63,8 +63,6 @@ EXPORTS
     TMTimerStop
     TMTimerUnlock
     VMMGetSvnRev
-    VMSetError
-    VMSetErrorV
 
     ; Internal Networking
     IntNetR0Open
