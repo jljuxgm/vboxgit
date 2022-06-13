@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase-win.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: DrvHostBase-win.cpp 93305 2022-01-18 11:29:31Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver, Windows specifics.
  */
@@ -305,7 +305,7 @@ DECLHIDDEN(int) drvHostBaseGetMediaSizeOs(PDRVHOSTBASE pThis, uint64_t *pcb)
     {
         /* use NT api, retry a few times if the media is being verified. */
         IO_STATUS_BLOCK             IoStatusBlock = {0};
-        FILE_FS_SIZE_INFORMATION    FsSize = {0};
+        FILE_FS_SIZE_INFORMATION    FsSize = {{0}};
         NTSTATUS rcNt = NtQueryVolumeInformationFile((HANDLE)RTFileToNative(pThis->Os.hFileDevice),  &IoStatusBlock,
                                                      &FsSize, sizeof(FsSize), FileFsSizeInformation);
         int cRetries = 5;
