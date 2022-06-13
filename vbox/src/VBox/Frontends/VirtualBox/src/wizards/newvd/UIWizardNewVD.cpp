@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVD.cpp 91341 2021-09-23 07:18:29Z vboxsync $ */
+/* $Id: UIWizardNewVD.cpp 92103 2021-10-27 13:08:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVD class implementation.
  */
@@ -17,7 +17,6 @@
 
 /* GUI includes: */
 #include "UICommon.h"
-#include "UIMessageCenter.h"
 #include "UINotificationCenter.h"
 #include "UIWizardNewVD.h"
 #include "UIWizardNewVDFileTypePage.h"
@@ -129,7 +128,7 @@ bool UIWizardNewVD::createVirtualDisk()
                                                   m_strMediumPath, KAccessMode_ReadWrite, KDeviceType_HardDisk);
     if (!comVBox.isOk())
     {
-        msgCenter().cannotCreateMediumStorage(comVBox, m_strMediumPath, this);
+        UINotificationMessage::cannotCreateMediumStorage(comVBox, m_strMediumPath, notificationCenter());
         return false;
     }
 

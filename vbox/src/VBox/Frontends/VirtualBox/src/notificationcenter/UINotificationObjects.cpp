@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 92100 2021-10-27 12:51:43Z vboxsync $ */
+/* $Id: UINotificationObjects.cpp 92103 2021-10-27 13:08:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -209,6 +209,17 @@ void UINotificationMessage::cannotAcquireCloudMachineSettings(const QString &str
         QApplication::translate("UIMessageCenter", "Cloud machine failure ..."),
         QApplication::translate("UIMessageCenter", "Failed to acquire cloud machine settings.") +
         strErrorDetails);
+}
+
+/* static */
+void UINotificationMessage::cannotCreateMediumStorageInFAT(const QString &strPath,
+                                                           UINotificationCenter *pParent /* = 0 */)
+{
+    createMessage(
+        QApplication::translate("UIMessageCenter", "Can't create medium ..."),
+        QApplication::translate("UIMessageCenter", "Failed to create medium storage at <nobr><b>%1</b></nobr>.")
+                                                   .arg(strPath),
+        QString(), QString(), pParent);
 }
 
 /* static */
