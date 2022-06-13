@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 89710 2021-06-15 14:35:00Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 89715 2021-06-15 17:56:53Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -2022,7 +2022,7 @@ static int ichac97R3StreamOpen(PPDMDEVINS pDevIns, PAC97STATE pThis, PAC97STATER
     { /* likely */ }
     else
     {
-        LogFlowFunc(("[SD%RU8] Hz is zero!! skipping/ignoring\n"));
+        LogFlowFunc(("[SD%RU8] Hz is zero!! skipping/ignoring\n", pStreamCC->u8SD));
         return VINF_SUCCESS;
     }
 
