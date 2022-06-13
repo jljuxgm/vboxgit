@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMHardwarePageBasic.h 90208 2021-07-15 09:51:10Z vboxsync $ */
+/* $Id: UIWizardNewVMHardwarePageBasic.h 90413 2021-07-29 15:54:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMHardwarePageBasic class declaration.
  */
@@ -23,31 +23,17 @@
 
 /* Qt includes: */
 #include <QSet>
-#include <QVariant>
 
 /* GUI includes: */
 #include "UINativeWizardPage.h"
 
-/* COM includes: */
-#include "COMEnums.h"
-#include "CMedium.h"
-
 /* Forward declarations: */
-class QRadioButton;
-class QCheckBox;
 class QIRichTextLabel;
-class UIBaseMemoryEditor;
 class UINewVMHardwareContainer;
-class UIVirtualCPUEditor;
-class UIWizardNewVM;
 
 namespace UIWizardNewVMHardwarePage
 {
 }
-//        int baseMemory() const;
-//        int VCPUCount() const;
-//        bool EFIEnabled() const;
-
 
 class UIWizardNewVMHardwarePageBasic : public UINativeWizardPage
 {

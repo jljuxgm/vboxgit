@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVD.cpp 90407 2021-07-29 13:17:06Z vboxsync $ */
+/* $Id: UIWizardNewVD.cpp 90413 2021-07-29 15:54:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVD class implementation.
  */
@@ -17,7 +17,6 @@
 
 /* GUI includes: */
 #include "UICommon.h"
-#include "UIMedium.h"
 #include "UIMessageCenter.h"
 #include "UINotificationCenter.h"
 #include "UIWizardNewVD.h"

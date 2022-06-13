@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMNameOSTypePageBasic.cpp 90280 2021-07-22 07:50:38Z vboxsync $ */
+/* $Id: UIWizardNewVMNameOSTypePageBasic.cpp 90413 2021-07-29 15:54:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasicNameOSStype class implementation.
  */
@@ -18,16 +18,11 @@
 /* Qt includes: */
 #include <QCheckBox>
 #include <QDir>
-#include <QGridLayout>
-#include <QHBoxLayout>
-#include <QLabel>
-#include <QRadioButton>
 #include <QVBoxLayout>
 
 /* GUI includes: */
 #include "QIRichTextLabel.h"
 #include "UICommon.h"
-#include "UIFilePathSelector.h"
 #include "UIMessageCenter.h"
 #include "UINameAndSystemEditor.h"
 #include "UIWizardNewVMNameOSTypePageBasic.h"
@@ -35,7 +30,6 @@
 
 /* COM includes: */
 #include "CHost.h"
-#include "CSystemProperties.h"
 #include "CUnattended.h"
 
 

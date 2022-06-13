@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageFileType.cpp 90372 2021-07-28 15:30:17Z vboxsync $ */
+/* $Id: UIWizardNewVDPageFileType.cpp 90413 2021-07-29 15:54:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageFileType class implementation.
  */
@@ -17,47 +17,20 @@
 
 /* Qt includes: */
 #include <QVBoxLayout>
-#include <QButtonGroup>
 #include <QRadioButton>
 
 /* GUI includes: */
 #include "UIConverter.h"
 #include "UIWizardDiskEditors.h"
 #include "UIWizardNewVDPageFileType.h"
-#include "UIWizardNewVDPageSizeLocation.h"
 #include "UIWizardNewVD.h"
-#include "UICommon.h"
 #include "QIRichTextLabel.h"
-
-/* COM includes: */
-#include "CSystemProperties.h"
-
-// void UIWizardNewVDPageBaseFileType::setMediumFormat(const CMediumFormat &mediumFormat)
-// {
-//     int iPosition = m_formats.indexOf(mediumFormat);
-//     if (iPosition >= 0)
-//     {
-//         m_pFormatButtonGroup->button(iPosition)->click();
-//         m_pFormatButtonGroup->button(iPosition)->setFocus();
-//     }
-// }
-
 
 UIWizardNewVDPageFileType::UIWizardNewVDPageFileType()
     : m_pLabel(0)
     , m_pFormatButtonGroup(0)
 {
     prepare();
-    /* Create widgets: */
-
-    // /* Setup connections: */
-    // connect(m_pFormatButtonGroup, static_cast<void(QButtonGroup::*)(QAbstractButton*)>(&QButtonGroup::buttonClicked),
-    //         this, &UIWizardNewVDPageFileType::completeChanged);
-
-    // /* Register classes: */
-    // qRegisterMetaType<CMediumFormat>();
-    // /* Register fields: */
-    // registerField("mediumFormat", this, "mediumFormat");
 }
 
 void UIWizardNewVDPageFileType::prepare()

@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMUnattendedPageBasic.h 90174 2021-07-14 07:27:04Z vboxsync $ */
+/* $Id: UIWizardNewVMUnattendedPageBasic.h 90413 2021-07-29 15:54:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMUnattendedPageBasic class declaration.
  */
@@ -22,23 +22,13 @@
 #endif
 
 /* Local includes: */
-#include "QIWithRetranslateUI.h"
 #include "UINativeWizardPage.h"
 
 /* Forward declarations: */
-class QCheckBox;
-class QGridLayout;
-class QGroupBox;
-class QLabel;
-class QLineEdit;
 class QIRichTextLabel;
 class UIAdditionalUnattendedOptions;
 class UIGAInstallationGroupBox;
-class UIFilePathSelector;
 class UIUserNamePasswordGroupBox;
-class UIHostnameDomainNameEditor;
-struct UIUnattendedInstallData;
-
 
 namespace UIWizardNewVMUnattendedPage
 {

@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMDiskPageBasic.cpp 90407 2021-07-29 13:17:06Z vboxsync $ */
+/* $Id: UIWizardNewVMDiskPageBasic.cpp 90413 2021-07-29 15:54:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMDiskPageBasic class implementation.
  */
@@ -18,11 +18,7 @@
 /* Qt includes: */
 #include <QButtonGroup>
 #include <QCheckBox>
-#include <QDir>
-#include <QGridLayout>
-#include <QGroupBox>
 #include <QLabel>
-#include <QMetaType>
 #include <QRadioButton>
 #include <QVBoxLayout>
 
@@ -31,21 +27,18 @@
 #include "QIToolButton.h"
 #include "UIIconPool.h"
 #include "UIMediaComboBox.h"
-#include "UIMedium.h"
 #include "UIMediumSelector.h"
 #include "UIMediumSizeEditor.h"
 #include "UIMessageCenter.h"
+#include "UICommon.h"
 #include "UIWizardNewVMDiskPageBasic.h"
 #include "UIWizardDiskEditors.h"
 #include "UIWizardNewVM.h"
 
 /* COM includes: */
+#include "COMEnums.h"
 #include "CGuestOSType.h"
 #include "CSystemProperties.h"
-
-/* Other VBox includes: */
-#include <iprt/path.h>
-
 
 QUuid UIWizardNewVMDiskPage::getWithFileOpenDialog(const QString &strOSTypeID,
                                                    const QString &strMachineFolder,

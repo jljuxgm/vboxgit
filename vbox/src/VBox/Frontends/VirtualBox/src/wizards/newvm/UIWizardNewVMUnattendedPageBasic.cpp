@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMUnattendedPageBasic.cpp 90236 2021-07-19 11:13:47Z vboxsync $ */
+/* $Id: UIWizardNewVMUnattendedPageBasic.cpp 90413 2021-07-29 15:54:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMUnattendedPageBasic class implementation.
  */
@@ -16,29 +16,14 @@
  */
 
 /* Qt includes: */
-#include <QCheckBox>
 #include <QFileInfo>
 #include <QGridLayout>
-#include <QGroupBox>
-#include <QLabel>
-#include <QLineEdit>
-#include <QSpacerItem>
-#include <QVBoxLayout>
 
 /* GUI includes: */
 #include "QIRichTextLabel.h"
-#include "UICommon.h"
-#include "UIFilePathSelector.h"
-#include "UIIconPool.h"
 #include "UIWizardNewVMEditors.h"
-#include "UIHostnameDomainNameEditor.h"
 #include "UIWizardNewVMUnattendedPageBasic.h"
 #include "UIWizardNewVM.h"
-
-/* COM includes: */
-#include "CHost.h"
-#include "CSystemProperties.h"
-#include "CUnattended.h"
 
 bool UIWizardNewVMUnattendedPage::checkGAISOFile(const QString &strPath)
 {
