@@ -1,4 +1,4 @@
-/* $Id: UINotificationCenter.cpp 91877 2021-10-20 11:26:48Z vboxsync $ */
+/* $Id: UINotificationCenter.cpp 92012 2021-10-22 18:02:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINotificationCenter class implementation.
  */
@@ -709,6 +709,16 @@ void UINotificationCenter::adjustMask()
     if (!m_iAnimatedValue)
         region += QRect(m_pOpenButton->mapToParent(QPoint(0, 0)), m_pOpenButton->size());
     setMask(region);
+}
+
+
+/*********************************************************************************************************************************
+*   Class UINotificationReceiver implementation.                                                                                 *
+*********************************************************************************************************************************/
+
+void UINotificationReceiver::setReceiverProperty(const QVariant &value)
+{
+    setProperty("received_value", value);
 }
 
 
