@@ -1,4 +1,4 @@
-/* $Id: biossums.c 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: biossums.c 95018 2022-05-16 12:41:13Z vboxsync $ */
 /** @file
  * Tool for modifying a BIOS image to write the BIOS checksum.
  */
@@ -210,6 +210,22 @@ int main(int argc, char **argv)
                 cbChecksum = (size_t)pbHeader[5];
                 u8Checksum = calculateChecksum(pbHeader, cbChecksum, 4);
                 pbHeader[4] = u8Checksum;
+                break;
+        }
+
+        /* If there is a VPD table, adjust its checksum. */
+        switch (searchHeader(abBios, cbIn, "\xAA\x55VPD", &pbHeader))
+        {
+            case 0:
+                break;  /* VPD is optional */
+            case 2:
+                return fatal("More than one VPD header found!\n");
+            case 1:
+                cbChecksum = (size_t)pbHeader[5];
+                if (cbChecksum < 0x30)
+                    return fatal("VPD size too small!\n");
+                u8Checksum = calculateChecksum(pbHeader, cbChecksum, cbChecksum - 1);
+                pbHeader[cbChecksum - 1] = u8Checksum;
                 break;
         }
     }
