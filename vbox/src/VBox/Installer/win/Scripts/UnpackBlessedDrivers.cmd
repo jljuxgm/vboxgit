@@ -1,5 +1,5 @@
 @echo off
-rem $Id: UnpackBlessedDrivers.cmd 93115 2022-01-01 11:31:46Z vboxsync $
+rem $Id: UnpackBlessedDrivers.cmd 93239 2022-01-14 19:15:41Z vboxsync $
 rem rem @file
 rem Windows NT batch script for unpacking drivers after being signed.
 rem
@@ -24,8 +24,8 @@ rem
 rem Globals and Check for environment variables we need.
 rem
 if ".%KBUILD_DEVTOOLS%" == "." (echo KBUILD_DEVTOOLS is not set & goto end_failed)
-set _MY_DRIVER_BASE_NAMES=VBoxDrv VBoxNetAdp6 VBoxNetLwf VBoxUSB VBoxUSBMon
-set _MY_DRIVER_BASE_NAMES=VBoxDrv VBoxNetAdp6 VBoxNetLwf VBoxUSB VBoxUSBMon
+set _MY_DRIVER_BASE_NAMES=VBoxSup VBoxNetAdp6 VBoxNetLwf VBoxUSB VBoxUSBMon
+set _MY_DRIVER_BASE_NAMES=VBoxSup VBoxNetAdp6 VBoxNetLwf VBoxUSB VBoxUSBMon
 set _MY_UNZIP=%KBUILD_DEVTOOLS%\win.x86\bin\unzip.exe
 if not exist "%_MY_UNZIP%" (echo "%_MY_UNZIP%" does not exist & goto end_failed)
 

@@ -1,5 +1,5 @@
 @echo off
-rem $Id: PackDriversForSubmission.cmd 93115 2022-01-01 11:31:46Z vboxsync $
+rem $Id: PackDriversForSubmission.cmd 93239 2022-01-14 19:15:41Z vboxsync $
 rem rem @file
 rem Windows NT batch script for preparing for signing submission.
 rem
@@ -230,10 +230,10 @@ echo .Set InfFileName=%_MY_OPT_OUTPUT%.inf>>                                    
 echo .Set RptFileName=%_MY_OPT_OUTPUT%.rpt>>                                            "%_MY_OPT_DDF_FILE%"
 
 if %_MY_OPT_WITH_MAIN% == 0 goto skip_main_package
-echo .Set DestinationDir=VBoxDrv>>                                                      "%_MY_OPT_DDF_FILE%"
-echo %_MY_OPT_BINDIR%\VBoxDrv.inf VBoxDrv.inf>>                                         "%_MY_OPT_DDF_FILE%"
-echo %_MY_OPT_BINDIR%\VBoxDrv.sys VBoxDrv.sys>>                                         "%_MY_OPT_DDF_FILE%"
-if "%_MY_OPT_WITH_PDB%" == "1" echo %_MY_OPT_PDBDIR%\VBoxDrv.pdb VBoxDrv.pdb>>          "%_MY_OPT_DDF_FILE%"
+echo .Set DestinationDir=VBoxSup>>                                                      "%_MY_OPT_DDF_FILE%"
+echo %_MY_OPT_BINDIR%\VBoxSup.inf VBoxSup.inf>>                                         "%_MY_OPT_DDF_FILE%"
+echo %_MY_OPT_BINDIR%\VBoxSup.sys VBoxSup.sys>>                                         "%_MY_OPT_DDF_FILE%"
+if "%_MY_OPT_WITH_PDB%" == "1" echo %_MY_OPT_PDBDIR%\VBoxSup.pdb VBoxSup.pdb>>          "%_MY_OPT_DDF_FILE%"
 
 echo .Set DestinationDir=VBoxNetAdp6>>                                                  "%_MY_OPT_DDF_FILE%"
 echo %_MY_OPT_BINDIR%\VBoxNetAdp6.inf VBoxNetAdp6.inf>>                                 "%_MY_OPT_DDF_FILE%"
