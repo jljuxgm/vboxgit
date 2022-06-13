@@ -1,4 +1,4 @@
-/* $Id: AudioTestService.cpp 90176 2021-07-14 09:38:43Z vboxsync $ */
+/* $Id: AudioTestService.cpp 90745 2021-08-19 13:32:46Z vboxsync $ */
 /** @file
  * AudioTestService - Audio test execution server.
  */
@@ -471,6 +471,8 @@ static int atsDoBye(PATSSERVER pThis, PATSSERVERINST pInst, PATSPKTHDR pPktHdr)
     if (pPktHdr->cb == sizeof(ATSPKTHDR))
     {
         rc = atsReplyAck(pThis, pInst, pPktHdr);
+        if (RT_SUCCESS(rc))
+            pThis->pTransport->pfnNotifyBye(pThis->pTransportInst, pInst->pTransportClient);
     }
     else
         rc = atsReplyBadSize(pThis, pInst, pPktHdr, sizeof(ATSPKTHDR));
