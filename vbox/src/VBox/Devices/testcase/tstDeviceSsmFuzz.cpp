@@ -1,4 +1,4 @@
-/* $Id: tstDeviceSsmFuzz.cpp 83427 2020-03-25 19:40:59Z vboxsync $ */
+/* $Id: tstDeviceSsmFuzz.cpp 91998 2021-10-22 08:58:44Z vboxsync $ */
 /** @file
  * tstDeviceSsmFuzz - SSM fuzzing testcase.
  */
@@ -97,8 +97,6 @@ static uint32_t tstDevSsmFuzzGetCfgU32(PCTSTDEVCFGITEM paCfg, uint32_t cCfgItems
  */
 static DECLCALLBACK(int) tstDevSsmFuzzEntry(TSTDEVDUT hDut, PCTSTDEVCFGITEM paCfg, uint32_t cCfgItems)
 {
-    RT_NOREF(hDut, paCfg);
-
     RTFUZZCTX hFuzzCtx;
     int rc = RTFuzzCtxCreate(&hFuzzCtx, RTFUZZCTXTYPE_BLOB);
     if (RT_SUCCESS(rc))

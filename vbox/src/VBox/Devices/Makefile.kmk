@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 91970 2021-10-21 15:54:06Z vboxsync $
+# $Id: Makefile.kmk 91998 2021-10-22 08:58:44Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -1507,7 +1507,8 @@ endif
  	testcase/tstDeviceCfg.cpp \
  	testcase/tstDevicePdmDevHlp.cpp \
  	testcase/tstDevicePdmThread.cpp \
- 	testcase/tstDeviceSsmFuzz.cpp
+ 	testcase/tstDeviceSsmFuzz.cpp \
+ 	testcase/tstDeviceIoFuzz.cpp
  endif
 
 endif # !VBOX_ONLY_EXTPACKS && "$(intersects $(KBUILD_TARGET_ARCH),$(VBOX_SUPPORTED_HOST_ARCHS))" != ""
