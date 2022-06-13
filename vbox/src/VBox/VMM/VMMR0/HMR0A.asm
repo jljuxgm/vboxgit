@@ -1,4 +1,4 @@
-; $Id: HMR0A.asm 87755 2021-02-13 17:53:16Z vboxsync $
+; $Id: HMR0A.asm 89780 2021-06-18 14:10:10Z vboxsync $
 ;; @file
 ; HM - Ring-0 VMX, SVM world-switch and helper routines.
 ;
@@ -309,13 +309,13 @@ ALIGNCODE(16)
         rdmsr
         shl     rdx, 32
         or      rdx, rax
-        mov     [r8 + VMXRESTOREHOST.uHostFSBase], rax
+        mov     [r8 + VMXRESTOREHOST.uHostFSBase], rdx
 
         mov     ecx, MSR_K8_GS_BASE
         rdmsr
         shl     rdx, 32
         or      rdx, rax
-        mov     [r8 + VMXRESTOREHOST.uHostGSBase], rax
+        mov     [r8 + VMXRESTOREHOST.uHostGSBase], rdx
 
 %ifdef ASM_CALL64_MSC
         mov     pRestoreHost, r8
