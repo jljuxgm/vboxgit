@@ -1,4 +1,4 @@
-/* $Id: RTCRestClientApiBaseOci.cpp 87303 2021-01-18 18:39:18Z vboxsync $ */
+/* $Id: RTCRestClientApiBaseOci.cpp 89725 2021-06-15 23:35:35Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestClientApiBase implementation, OCI specific bits.
  */
@@ -79,9 +79,13 @@ static int ociSignRequestEnsureXContentSha256(RTHTTP hHttp, void const *pvConten
         return VINF_SUCCESS;
 
 #ifdef RT_STRICT
-    const char *pszContentLength = RTHttpGetHeader(hHttp, RT_STR_TUPLE("Content-Length"));
-    Assert(pszContentLength);
-    AssertMsg(!pszContentLength || RTStrToUInt64(pszContentLength) == cbContent, ("'%s' vs %RU64\n", pszContentLength, cbContent));
+    if (cbContent != 0)
+    {
+        const char *pszContentLength = RTHttpGetHeader(hHttp, RT_STR_TUPLE("Content-Length"));
+        Assert(pszContentLength);
+        AssertMsg(!pszContentLength || RTStrToUInt64(pszContentLength) == cbContent,
+                  ("'%s' vs %RU64\n", pszContentLength, cbContent));
+    }
 #endif
 
     uint8_t abHash[RTSHA256_HASH_SIZE];
