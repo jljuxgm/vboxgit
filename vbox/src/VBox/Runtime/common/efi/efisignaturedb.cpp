@@ -1,4 +1,4 @@
-/* $Id: efisignaturedb.cpp 90315 2021-07-23 15:48:37Z vboxsync $ */
+/* $Id: efisignaturedb.cpp 91431 2021-09-28 11:36:29Z vboxsync $ */
 /** @file
  * IPRT - EFI signature database helpers.
  */
@@ -432,7 +432,8 @@ RTDECL(int) RTEfiSigDbAddFromExistingDb(RTEFISIGDB hEfiSigDb, RTVFSFILE hVfsFile
 
     uint64_t cbFile;
     int rc = RTVfsFileQuerySize(hVfsFileIn, &cbFile);
-    if (RT_SUCCESS(rc))
+    if (   RT_SUCCESS(rc)
+        && cbFile)
     {
         do
         {
