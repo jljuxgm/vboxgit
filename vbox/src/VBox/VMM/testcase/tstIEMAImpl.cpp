@@ -1,4 +1,4 @@
-/* $Id: tstIEMAImpl.cpp 94569 2022-04-12 09:38:56Z vboxsync $ */
+/* $Id: tstIEMAImpl.cpp 94571 2022-04-12 09:43:59Z vboxsync $ */
 /** @file
  * IEM Assembly Instruction Helper Testcase.
  */
@@ -680,14 +680,14 @@ const char *GenFormatI16(int16_t const *pi16)
 static void GenerateHeader(PRTSTREAM pOut, const char *pszCpuDesc, const char *pszCpuType)
 {
     /* We want to tag the generated source code with the revision that produced it. */
-    static char s_szRev[] = "$Revision: 94569 $";
+    static char s_szRev[] = "$Revision: 94571 $";
     const char *pszRev = RTStrStripL(strchr(s_szRev, ':') + 1);
     size_t      cchRev = 0;
     while (RT_C_IS_DIGIT(pszRev[cchRev]))
         cchRev++;
 
     RTStrmPrintf(pOut,
-                 "/* $Id: tstIEMAImpl.cpp 94569 2022-04-12 09:38:56Z vboxsync $ */\n"
+                 "/* $Id: tstIEMAImpl.cpp 94571 2022-04-12 09:43:59Z vboxsync $ */\n"
                  "/** @file\n"
                  " * IEM Assembly Instruction Helper Testcase Data%s%s - r%.*s on %s.\n"
                  " */\n"
@@ -763,7 +763,7 @@ static bool IsTestEnabled(const char *pszName)
     /* Process excludes first: */
     uint32_t i = g_cExcludeTestPatterns;
     while (i-- > 0)
-        if (RTStrSimplePatternMatch(g_apszExcludeTestPatterns[i], pszName))
+        if (RTStrSimplePatternMultiMatch(g_apszExcludeTestPatterns[i], RTSTR_MAX, pszName, RTSTR_MAX, NULL))
             return false;
 
     /* If no include patterns, everything is included: */
@@ -773,7 +773,7 @@ static bool IsTestEnabled(const char *pszName)
 
     /* Otherwise only tests in the include patters gets tested: */
     while (i-- > 0)
-        if (RTStrSimplePatternMatch(g_apszIncludeTestPatterns[i], pszName))
+        if (RTStrSimplePatternMultiMatch(g_apszIncludeTestPatterns[i], RTSTR_MAX, pszName, RTSTR_MAX, NULL))
             return true;
 
     return false;
