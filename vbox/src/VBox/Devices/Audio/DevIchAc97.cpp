@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 89742 2021-06-16 13:48:45Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 89743 2021-06-16 13:49:46Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -2045,7 +2045,7 @@ static int ichac97R3StreamSetUp(PPDMDEVINS pDevIns, PAC97STATE pThis, PAC97STATE
     ASSERT_GUEST_MSG_RETURN(AudioHlpStreamCfgIsValid(&Cfg),
                             ("Invalid stream #%u rate: %s\n", pStreamCC->u8SD,
                              PDMAudioStrmCfgToString(&Cfg, szTmp, sizeof(szTmp)) ),
-                            VERR_INVALID_PARAMETER);
+                            VERR_OUT_OF_RANGE);
 
     /*
      * Read the buffer descriptors and check what the max distance between
