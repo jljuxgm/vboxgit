@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioValidationKit.cpp 90912 2021-08-26 13:38:34Z vboxsync $ */
+/* $Id: DrvHostAudioValidationKit.cpp 90918 2021-08-26 15:29:25Z vboxsync $ */
 /** @file
  * Host audio driver - ValidationKit - For dumping and injecting audio data from/to the device emulation.
  */
@@ -1107,7 +1107,7 @@ static DECLCALLBACK(int) drvHostValKitAudioConstruct(PPDMDRVINS pDrvIns, PCFGMNO
 
     /* Dont' use rc here, as this will be reported back to PDM and will prevent VBox
      * from starting -- not critical but warn the user though. */
-    int rc2 = AudioTestSvcCreate(&pThis->Srv);
+    int rc2 = AudioTestSvcInit(&pThis->Srv, &Callbacks);
     if (RT_SUCCESS(rc2))
     {
         RTGETOPTUNION Val;
@@ -1125,9 +1125,7 @@ static DECLCALLBACK(int) drvHostValKitAudioConstruct(PPDMDRVINS pDrvIns, PCFGMNO
         rc2 = AudioTestSvcHandleOption(&pThis->Srv, ATSTCPOPT_BIND_PORT, &Val);
         AssertRC(rc2);
 
-        rc2 = AudioTestSvcInit(&pThis->Srv, &Callbacks);
-        if (RT_SUCCESS(rc2))
-            rc2 = AudioTestSvcStart(&pThis->Srv);
+        rc2 = AudioTestSvcStart(&pThis->Srv);
     }
 
     if (RT_SUCCESS(rc2))
@@ -1161,7 +1159,7 @@ static DECLCALLBACK(void) drvHostValKitAudioDestruct(PPDMDRVINS pDrvIns)
 
     LogRel(("ValKit: Shutting down Audio Test Service (ATS) ...\n"));
 
-    int rc = AudioTestSvcShutdown(&pThis->Srv);
+    int rc = AudioTestSvcStop(&pThis->Srv);
     if (RT_SUCCESS(rc))
         rc = AudioTestSvcDestroy(&pThis->Srv);
 

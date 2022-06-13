@@ -1,4 +1,4 @@
-/* $Id: tstAudioTestService.cpp 90912 2021-08-26 13:38:34Z vboxsync $ */
+/* $Id: tstAudioTestService.cpp 90918 2021-08-26 15:29:25Z vboxsync $ */
 /** @file
  * Audio testcase - Tests for the Audio Test Service (ATS).
  */
@@ -157,7 +157,10 @@ int main(int argc, char **argv)
     rc = AudioTestSvcClientClose(&Client);
     RTTEST_CHECK_RC_OK(hTest, rc);
 
-    rc = AudioTestSvcShutdown(&Srv);
+    rc = AudioTestSvcStop(&Srv);
+    RTTEST_CHECK_RC_OK(hTest, rc);
+
+    rc = AudioTestSvcDestroy(&Srv);
     RTTEST_CHECK_RC_OK(hTest, rc);
 
     /*

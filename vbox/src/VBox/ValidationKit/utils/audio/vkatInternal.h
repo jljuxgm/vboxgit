@@ -1,4 +1,4 @@
-/* $Id: vkatInternal.h 90912 2021-08-26 13:38:34Z vboxsync $ */
+/* $Id: vkatInternal.h 90918 2021-08-26 15:29:25Z vboxsync $ */
 /** @file
  * VKAT - Internal header file for common definitions + structs.
  */
@@ -252,8 +252,9 @@ typedef struct AUDIOTESTENV
     AUDIOTESTSET            Set;
     /** TCP options to use for ATS. */
     AUDIOTESTENVTCPOPTS     TcpOpts;
-    /** ATS server instance to use. */
-    ATSSERVER               Srv;
+    /** ATS server instance to use.
+     *  NULL if not in use. */
+    PATSSERVER              pSrv;
     /** ATS callback context to use. */
     ATSCALLBACKCTX          CallbackCtx;
     union

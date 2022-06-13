@@ -1,4 +1,4 @@
-/* $Id: AudioTestService.h 90912 2021-08-26 13:38:34Z vboxsync $ */
+/* $Id: AudioTestService.h 90918 2021-08-26 15:29:25Z vboxsync $ */
 /** @file
  * AudioTestService - Audio test execution server, Public Header.
  */
@@ -170,12 +170,11 @@ typedef struct ATSSERVER
 /** Pointer to an Audio Test Service (ATS) instance. */
 typedef ATSSERVER *PATSSERVER;
 
-int AudioTestSvcCreate(PATSSERVER pThis);
 int AudioTestSvcInit(PATSSERVER pThis, PCATSCALLBACKS pCallbacks);
 int AudioTestSvcDestroy(PATSSERVER pThis);
 int AudioTestSvcHandleOption(PATSSERVER pThis, int ch, PCRTGETOPTUNION pVal);
 int AudioTestSvcStart(PATSSERVER pThis);
-int AudioTestSvcShutdown(PATSSERVER pThis);
+int AudioTestSvcStop(PATSSERVER pThis);
 
 /**
  * Enumeration for the server connection mode.
