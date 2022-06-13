@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 93469 2022-01-27 21:25:39Z vboxsync $
+# $Id: Makefile.kmk 94306 2022-03-18 12:15:30Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox Guest Addition X11 Client.
 #
@@ -126,6 +126,7 @@ endif
 ifdef VBOX_WITH_VMSVGA
  VBoxClient_DEFS    += VBOX_WITH_VMSVGA
  VBoxClient_SOURCES += \
+	display.cpp \
 	display-svga-x11.cpp
  VBoxClient_SOURCES.linux += \
 	display-svga-session.cpp \
