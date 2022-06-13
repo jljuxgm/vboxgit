@@ -1,4 +1,4 @@
-/* $Id: ExtPackUtil.cpp 91400 2021-09-27 13:57:26Z vboxsync $ */
+/* $Id: ExtPackUtil.cpp 91403 2021-09-27 14:36:05Z vboxsync $ */
 /** @file
  * VirtualBox Main - Extension Pack Utilities and definitions, VBoxC, VBoxSVC, ++.
  */
@@ -39,7 +39,16 @@
 
 #include "../include/VBoxNls.h"
 
+/*********************************************************************************************************************************
+*   Defined Constants And Macros                                                                                                                 *
+*********************************************************************************************************************************/
+
+
 DECLARE_TRANSLATION_CONTEXT(ExtPackUtil)
+
+/*********************************************************************************************************************************
+*   Functions                                                                                                                 *
+*********************************************************************************************************************************/
 
 
 /**
@@ -65,6 +74,7 @@ vboxExtPackLoadPlugInDescs(const xml::ElementNode *pVBoxExtPackElm,
     return NULL;
 }
 
+
 /**
  * Clears the extension pack descriptor.
  *
@@ -84,6 +94,7 @@ static void vboxExtPackClearDesc(PVBOXEXTPACKDESC a_pExtPackDesc)
     a_pExtPackDesc->paPlugIns = NULL;
     a_pExtPackDesc->fShowLicense = false;
 }
+
 
 /**
  * Initializes an extension pack descriptor so that it's safe to call free on
