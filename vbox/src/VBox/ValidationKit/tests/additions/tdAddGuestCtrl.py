@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 93664 $"
+__version__ = "$Revision: 93669 $"
 
 # Standard Python imports.
 import errno
@@ -205,6 +205,7 @@ class tdTestGuestCtrlBase(object):
                                           % (waitResult,));
                         return (False, None);
                     reporter.log('Session "%s" successfully started' % (sName,));
+                    break;
                 except:
                     # Just log, don't assume an error here (will be done in the main loop then).
                     reporter.maybeErrXcpt(fIsError, 'Waiting for guest session "%s" (usr=%s;pw=%s;dom=%s) to start failed:'
