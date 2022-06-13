@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltBow-solaris.c 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxNetFltBow-solaris.c 90785 2021-08-23 09:43:25Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Solaris Specific Code.
  */
@@ -1433,7 +1433,7 @@ int vboxNetFltPortOsXmit(PVBOXNETFLTINS pThis, void *pvIfData, PINTNETSG pSG, ui
      * Validate parameters.
      */
     PVBOXNETFLTVNIC pVNIC = pvIfData;
-    AssertReturn(VALID_PTR(pVNIC), VERR_INVALID_POINTER);
+    AssertPtrReturn(pVNIC, VERR_INVALID_POINTER);
     AssertMsgReturn(pVNIC->u32Magic == VBOXNETFLTVNIC_MAGIC,
                     ("Invalid magic=%#x (expected %#x)\n", pVNIC->u32Magic, VBOXNETFLTVNIC_MAGIC),
                     VERR_INVALID_MAGIC);

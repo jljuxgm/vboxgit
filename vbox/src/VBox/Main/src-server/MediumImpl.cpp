@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 90192 2021-07-14 17:36:07Z vboxsync $ */
+/* $Id: MediumImpl.cpp 90785 2021-08-23 09:43:25Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -8087,7 +8087,7 @@ DECLCALLBACK(int) Medium::i_vdConfigQuerySize(void *pvUser,
                                               const char *pszName,
                                               size_t *pcbValue)
 {
-    AssertReturn(VALID_PTR(pcbValue), VERR_INVALID_POINTER);
+    AssertPtrReturn(pcbValue, VERR_INVALID_POINTER);
 
     Medium *that = static_cast<Medium*>(pvUser);
     AssertReturn(that != NULL, VERR_GENERAL_FAILURE);
@@ -8111,7 +8111,7 @@ DECLCALLBACK(int) Medium::i_vdConfigQuery(void *pvUser,
                                           char *pszValue,
                                           size_t cchValue)
 {
-    AssertReturn(VALID_PTR(pszValue), VERR_INVALID_POINTER);
+    AssertPtrReturn(pszValue, VERR_INVALID_POINTER);
 
     Medium *that = static_cast<Medium*>(pvUser);
     AssertReturn(that != NULL, VERR_GENERAL_FAILURE);
@@ -8145,7 +8145,7 @@ DECLCALLBACK(int) Medium::i_vdCryptoConfigQuerySize(void *pvUser, const char *ps
 {
     MediumCryptoFilterSettings *pSettings = (MediumCryptoFilterSettings *)pvUser;
     AssertPtrReturn(pSettings, VERR_GENERAL_FAILURE);
-    AssertReturn(VALID_PTR(pcbValue), VERR_INVALID_POINTER);
+    AssertPtrReturn(pcbValue, VERR_INVALID_POINTER);
 
     size_t cbValue = 0;
     if (!strcmp(pszName, "Algorithm"))
@@ -8173,7 +8173,7 @@ DECLCALLBACK(int) Medium::i_vdCryptoConfigQuery(void *pvUser, const char *pszNam
 {
     MediumCryptoFilterSettings *pSettings = (MediumCryptoFilterSettings *)pvUser;
     AssertPtrReturn(pSettings, VERR_GENERAL_FAILURE);
-    AssertReturn(VALID_PTR(pszValue), VERR_INVALID_POINTER);
+    AssertPtrReturn(pszValue, VERR_INVALID_POINTER);
 
     const char *psz = NULL;
     if (!strcmp(pszName, "Algorithm"))

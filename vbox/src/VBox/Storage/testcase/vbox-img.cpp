@@ -1,4 +1,4 @@
-/* $Id: vbox-img.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: vbox-img.cpp 90785 2021-08-23 09:43:25Z vboxsync $ */
 /** @file
  * Standalone image manipulation tool
  */
@@ -1629,7 +1629,7 @@ static DECLCALLBACK(bool) vdIfCfgCreateBaseAreKeysValid(void *pvUser, const char
 
 static DECLCALLBACK(int) vdIfCfgCreateBaseQuerySize(void *pvUser, const char *pszName, size_t *pcbValue)
 {
-    AssertReturn(VALID_PTR(pcbValue), VERR_INVALID_POINTER);
+    AssertPtrReturn(pcbValue, VERR_INVALID_POINTER);
 
     AssertPtrReturn(pvUser, VERR_GENERAL_FAILURE);
 
@@ -1643,7 +1643,7 @@ static DECLCALLBACK(int) vdIfCfgCreateBaseQuerySize(void *pvUser, const char *ps
 
 static DECLCALLBACK(int) vdIfCfgCreateBaseQuery(void *pvUser, const char *pszName, char *pszValue, size_t cchValue)
 {
-    AssertReturn(VALID_PTR(pszValue), VERR_INVALID_POINTER);
+    AssertPtrReturn(pszValue, VERR_INVALID_POINTER);
 
     AssertPtrReturn(pvUser, VERR_GENERAL_FAILURE);
 
