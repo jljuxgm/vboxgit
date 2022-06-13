@@ -1,4 +1,4 @@
-/* $Id: UIVisoConfigurationPanel.h 92270 2021-11-08 14:46:28Z vboxsync $ */
+/* $Id: UIVisoConfigurationPanel.h 92272 2021-11-08 14:50:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoConfigurationPanel class declaration.
  */
@@ -29,7 +29,6 @@ class QComboBox;
 class QILabel;
 class QILineEdit;
 class QIToolButton;
-class UIVisoCreator;
 
 class UIVisoConfigurationPanel : public UIDialogPanel
 {

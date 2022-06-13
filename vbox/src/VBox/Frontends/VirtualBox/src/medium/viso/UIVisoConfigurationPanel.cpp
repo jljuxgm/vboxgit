@@ -1,4 +1,4 @@
-/* $Id: UIVisoConfigurationPanel.cpp 92270 2021-11-08 14:46:28Z vboxsync $ */
+/* $Id: UIVisoConfigurationPanel.cpp 92272 2021-11-08 14:50:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoConfigurationPanel class implementation.
  */
@@ -25,7 +25,6 @@
 #include "QILineEdit.h"
 #include "QIToolButton.h"
 #include "UIVisoConfigurationPanel.h"
-#include "UIVisoCreator.h"
 
 UIVisoConfigurationPanel::UIVisoConfigurationPanel(QWidget *pParent /* =0 */)
     : UIDialogPanel(pParent)
