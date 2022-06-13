@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsOneByte.cpp.h 94440 2022-04-01 14:32:23Z vboxsync $ */
+/* $Id: IEMAllInstructionsOneByte.cpp.h 94538 2022-04-10 14:16:03Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -7920,7 +7920,14 @@ FNIEMOP_DEF(iemOp_fldz)
 }
 
 
-/** Opcode 0xd9 0xf0. */
+/** Opcode 0xd9 0xf0.
+ *
+ * The f2xm1 instruction works on values +1.0 thru -1.0, currently (the range on
+ * 287 & 8087 was +0.5 thru 0.0 according to docs).  In addition is does appear
+ * to produce proper results for +Inf and -Inf.
+ *
+ * This is probably usful in the implementation pow() and similar.
+ */
 FNIEMOP_DEF(iemOp_f2xm1)
 {
     IEMOP_MNEMONIC(f2xm1_st0, "f2xm1 st0");
