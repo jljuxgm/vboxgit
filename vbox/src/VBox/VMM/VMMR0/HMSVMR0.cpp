@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 88099 2021-03-12 05:12:56Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 89976 2021-06-30 11:03:22Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -7506,7 +7506,7 @@ HMSVM_EXIT_DECL hmR0SvmExitXcptAC(PVMCPUCC pVCpu, PSVMTRANSIENT pSvmTransient)
 {
     HMSVM_VALIDATE_EXIT_HANDLER_PARAMS(pVCpu, pSvmTransient);
     HMSVM_CHECK_EXIT_DUE_TO_EVENT_DELIVERY(pVCpu, pSvmTransient);
-    STAM_COUNTER_INC(&pVCpu->hm.s.StatExitGuestAC);
+    STAM_REL_COUNTER_INC(&pVCpu->hm.s.StatExitGuestAC);
 
     SVMEVENT Event;
     Event.u          = 0;
