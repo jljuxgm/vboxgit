@@ -1,4 +1,4 @@
-# $Id: Config.kmk 93784 2022-02-16 10:06:48Z vboxsync $
+# $Id: Config.kmk 93883 2022-02-22 09:53:05Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -798,6 +798,10 @@ VBOX_WITH_ONLY_PYTHON_LIMITED_API = 1
 VBOX_WITH_KCHMVIEWER =
 # Build the Validation Kit.
 VBOX_WITH_VALIDATIONKIT = 1
+# Include unit tests (testcases) on the Validation Kit .ISO
+# so that we can perform testing on older platforms which we don't support
+# on the host anymore.
+VBOX_WITH_VALIDATIONKIT_UNITTESTS_PACKING = 1
 # Set if we should ship the audio test from the Validation Kit with the host installer.
 VBOX_WITH_HOST_SHIPPING_AUDIO_TEST = 1
 # Set if we should ship the audio test from the Validation Kit with the guest additions.
@@ -8844,7 +8848,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 93784 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 93883 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
