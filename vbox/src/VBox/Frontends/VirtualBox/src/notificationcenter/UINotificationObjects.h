@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.h 92036 2021-10-25 13:50:22Z vboxsync $ */
+/* $Id: UINotificationObjects.h 92086 2021-10-26 15:16:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects declarations.
  */
@@ -393,7 +393,7 @@ public:
         static void cannotDiscardSavedState(const CMachine &comMachine);
         /** Notifies about inability to remove machine.
           * @param  comMachine  Brings machine being removed. */
-        static void cannotRemoveMachine(const CMachine &comMachine);
+        static void cannotRemoveMachine(const CMachine &comMachine, UINotificationCenter *pParent = 0);
 
         /** Notifies about inability to find snapshot by ID.
           * @param  comMachine  Brings the machine being searched for particular snapshot.
