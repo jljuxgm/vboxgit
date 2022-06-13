@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsNetwork.cpp 93996 2022-02-28 22:04:49Z vboxsync $ */
+/* $Id: UIMachineSettingsNetwork.cpp 94058 2022-03-02 14:26:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsNetwork class implementation.
  */
@@ -660,7 +660,6 @@ void UIMachineSettingsNetwork::retranslateUi()
     m_pCheckBoxAdapter->setText(tr("&Enable Network Adapter"));
     m_pLabelAttachmentType->setText(tr("&Attached to:"));
     iFirstColumnWidth = qMax(iFirstColumnWidth, m_pLabelAttachmentType->minimumSizeHint().width());
-    m_pEditorAttachmentType->setToolTip(tr("Selects how this virtual adapter is attached to the real network of the Host OS."));
     m_pLabelNetworkName->setText(tr("&Name:"));
     iFirstColumnWidth = qMax(iFirstColumnWidth, m_pLabelNetworkName->minimumSizeHint().width());
     m_pButtonAdvanced->setText(tr("A&dvanced"));
@@ -839,9 +838,9 @@ void UIMachineSettingsNetwork::prepareWidgets()
                 if (m_pEditorAttachmentType)
                 {
                     if (m_pLabelAttachmentType)
-                        m_pLabelAttachmentType->setBuddy(m_pEditorAttachmentType->focusProxy1());
+                        m_pLabelAttachmentType->setBuddy(m_pEditorAttachmentType);
                     if (m_pLabelNetworkName)
-                        m_pLabelNetworkName->setBuddy(m_pEditorAttachmentType->focusProxy2());
+                        m_pLabelNetworkName->setBuddy(m_pEditorAttachmentType);
 
                     m_pLayoutAdapterSettings->addWidget(m_pEditorAttachmentType, 0, 1, 2, 3);
                 }
