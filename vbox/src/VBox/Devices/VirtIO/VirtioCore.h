@@ -1,4 +1,4 @@
-/* $Id: VirtioCore.h 92939 2021-12-15 15:51:28Z vboxsync $ */
+/* $Id: VirtioCore.h 92944 2021-12-15 16:43:51Z vboxsync $ */
 
 /** @file
  * VirtioCore.h - Virtio Declarations
@@ -1016,7 +1016,7 @@ DECLINLINE(void) virtioCoreR3VirqBufFill(PVIRTIOCORE pVirtio, PVIRTQBUF pVirtqBu
     PVIRTIOSGBUF pSgPhysReturn = pVirtqBuf->pSgPhysReturn;
     while (cbRemain)
     {
-        uint32_t cbBounded = RT_MIN(pSgPhysReturn->cbSegLeft, cbRemain);
+        size_t cbBounded = RT_MIN(pSgPhysReturn->cbSegLeft, cbRemain);
         Assert(cbBounded > 0);
         virtioCoreGCPhysWrite(pVirtio, CTX_SUFF(pVirtio->pDevIns), (RTGCPHYS)pSgPhysReturn->GCPhysCur, pvBuf, cbBounded);
         virtioCoreGCPhysChainAdvance(pSgPhysReturn, cbBounded);
