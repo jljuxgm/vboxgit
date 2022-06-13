@@ -1,4 +1,4 @@
-/* $Id: UINativeWizardPage.h 90727 2021-08-18 16:09:34Z vboxsync $ */
+/* $Id: UINativeWizardPage.h 90749 2021-08-19 14:47:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINativeWizardPage class declaration.
  */
@@ -71,7 +71,7 @@ public:
 protected:
 
     /** Returns wizard this page belongs to. */
-    UINativeWizard *wizard() const;
+    virtual UINativeWizard *wizard() const;
 
     /** Holds the page title. */
     QString  m_strTitle;
