@@ -1,4 +1,4 @@
-/* $Id: UIVersion.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIVersion.cpp 91509 2021-10-01 10:51:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVersion class implementation.
  */
@@ -50,15 +50,6 @@ UIVersion::UIVersion(const QString &strFullVersionInfo)
     }
     if (fullVersionInfo.size() > 1)
         m_strPostfix = fullVersionInfo.at(1);
-}
-
-UIVersion &UIVersion::operator=(const UIVersion &another)
-{
-    m_x = another.x();
-    m_y = another.y();
-    m_z = another.z();
-    m_strPostfix = another.postfix();
-    return *this;
 }
 
 bool UIVersion::isValid() const

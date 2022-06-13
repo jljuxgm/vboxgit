@@ -1,4 +1,4 @@
-/* $Id: UIVersion.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIVersion.h 91509 2021-10-01 10:51:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVersion class declaration.
  */
@@ -33,9 +33,6 @@ public:
     UIVersion();
     /** Constructs object based on parsed @a strFullVersionInfo. */
     UIVersion(const QString &strFullVersionInfo);
-
-    /** Assigns this object with value of @a another. */
-    UIVersion &operator=(const UIVersion &another);
 
     /** Returns whether this object is valid. */
     bool isValid() const;
