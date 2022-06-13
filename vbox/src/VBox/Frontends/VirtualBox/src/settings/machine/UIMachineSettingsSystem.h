@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSystem.h 93990 2022-02-28 15:34:57Z vboxsync $ */
+/* $Id: UIMachineSettingsSystem.h 94333 2022-03-23 11:21:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSystem class declaration.
  */
@@ -47,7 +47,7 @@ public:
     /** Constructs System settings page. */
     UIMachineSettingsSystem();
     /** Destructs System settings page. */
-    ~UIMachineSettingsSystem();
+    virtual ~UIMachineSettingsSystem() RT_OVERRIDE;
 
     /** Returns whether the HW Virt Ex is supported. */
     bool isHWVirtExSupported() const;
@@ -149,13 +149,13 @@ private:
     /** Retranslates Paravirtualization providers combo-box. */
     void retranslateComboParavirtProvider();
 
-    /** Saves existing system data from the cache. */
-    bool saveSystemData();
-    /** Saves existing 'Motherboard' data from the cache. */
+    /** Saves existing data from cache. */
+    bool saveData();
+    /** Saves existing 'Motherboard' data from cache. */
     bool saveMotherboardData();
-    /** Saves existing 'Processor' data from the cache. */
+    /** Saves existing 'Processor' data from cache. */
     bool saveProcessorData();
-    /** Saves existing 'Acceleration' data from the cache. */
+    /** Saves existing 'Acceleration' data from cache. */
     bool saveAccelerationData();
 
     /** Holds the minimum guest CPU count. */

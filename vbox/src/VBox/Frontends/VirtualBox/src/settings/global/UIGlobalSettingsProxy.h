@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsProxy.h 94323 2022-03-22 12:50:14Z vboxsync $ */
+/* $Id: UIGlobalSettingsProxy.h 94333 2022-03-23 11:21:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsProxy class declaration.
  */
@@ -75,7 +75,7 @@ private:
     /** Cleanups all. */
     void cleanup();
 
-    /** Saves existing proxy data from cache. */
+    /** Saves existing data from cache. */
     bool saveData();
 
     /** Holds the page data cache instance. */

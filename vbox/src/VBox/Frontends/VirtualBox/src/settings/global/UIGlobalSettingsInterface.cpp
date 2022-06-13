@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsInterface.cpp 94323 2022-03-22 12:50:14Z vboxsync $ */
+/* $Id: UIGlobalSettingsInterface.cpp 94333 2022-03-23 11:21:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsInterface class implementation.
  */
@@ -85,7 +85,7 @@ void UIGlobalSettingsInterface::loadToCacheFrom(QVariant &data)
 
 void UIGlobalSettingsInterface::getFromCache()
 {
-    /* Load old data from the cache: */
+    /* Load old data from cache: */
     const UIDataSettingsGlobalInterface &oldData = m_pCache->base();
     m_pEditorColorTheme->setValue(oldData.m_enmColorTheme);
 

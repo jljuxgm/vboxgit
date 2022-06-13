@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSF.h 93990 2022-02-28 15:34:57Z vboxsync $ */
+/* $Id: UIMachineSettingsSF.h 94333 2022-03-23 11:21:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSF class declaration.
  */
@@ -52,7 +52,7 @@ public:
     /** Constructs Shared Folders settings page. */
     UIMachineSettingsSF();
     /** Destructs Shared Folders settings page. */
-    ~UIMachineSettingsSF();
+    virtual ~UIMachineSettingsSF() RT_OVERRIDE;
 
 protected:
 
@@ -143,8 +143,8 @@ private:
     /** Look for a folder with the the passed @a strFolderName. */
     bool getSharedFolder(const QString &strFolderName, const CSharedFolderVector &folders, CSharedFolder &comFolder);
 
-    /** Saves existing folder data from the cache. */
-    bool saveFoldersData();
+    /** Saves existing data from cache. */
+    bool saveData();
     /** Removes shared folder defined by a @a folderCache. */
     bool removeSharedFolder(const UISettingsCacheSharedFolder &folderCache);
     /** Creates shared folder defined by a @a folderCache. */

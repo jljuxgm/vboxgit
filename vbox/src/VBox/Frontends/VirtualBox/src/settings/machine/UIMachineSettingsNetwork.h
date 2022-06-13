@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsNetwork.h 93990 2022-02-28 15:34:57Z vboxsync $ */
+/* $Id: UIMachineSettingsNetwork.h 94333 2022-03-23 11:21:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsNetwork class declaration.
  */
@@ -43,7 +43,7 @@ public:
     /** Constructs Network settings page. */
     UIMachineSettingsNetworkPage();
     /** Destructs Network settings page. */
-    ~UIMachineSettingsNetworkPage();
+    virtual ~UIMachineSettingsNetworkPage() RT_OVERRIDE;
 
     /** Returns the bridged adapter list. */
     const QStringList &bridgedAdapterList() const { return m_bridgedAdapterList; }
@@ -133,9 +133,9 @@ private:
     /** Saves generic @a strProperties to passed @a adapter. */
     static bool saveGenericProperties(CNetworkAdapter &comAdapter, const QString &strProperties);
 
-    /** Saves existing network data from the cache. */
-    bool saveNetworkData();
-    /** Saves existing adapter data from the cache. */
+    /** Saves existing data from cache. */
+    bool saveData();
+    /** Saves existing adapter data from cache. */
     bool saveAdapterData(int iSlot);
 
     /** Holds the tab-widget instance. */
