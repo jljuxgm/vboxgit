@@ -1,4 +1,4 @@
-/* $Id: internal-r3-win.h 85124 2020-07-08 21:13:30Z vboxsync $ */
+/* $Id: internal-r3-win.h 89827 2021-06-22 09:01:04Z vboxsync $ */
 /** @file
  * IPRT - some Windows OS type constants.
  */
@@ -104,6 +104,8 @@ extern DECL_HIDDEN_DATA(HMODULE)                        g_hModKernel32;
 typedef UINT (WINAPI *PFNGETWINSYSDIR)(LPWSTR,UINT);
 extern DECL_HIDDEN_DATA(PFNGETWINSYSDIR)                g_pfnGetSystemWindowsDirectoryW;
 extern DECL_HIDDEN_DATA(decltype(SystemTimeToTzSpecificLocalTime) *) g_pfnSystemTimeToTzSpecificLocalTime;
+typedef HANDLE (WINAPI *PFNCREATEWAITABLETIMEREX)(LPSECURITY_ATTRIBUTES, LPCWSTR, DWORD, DWORD);
+extern DECL_HIDDEN_DATA(PFNCREATEWAITABLETIMEREX)       g_pfnCreateWaitableTimerExW;
 
 extern DECL_HIDDEN_DATA(HMODULE)                        g_hModNtDll;
 typedef NTSTATUS (NTAPI *PFNNTQUERYFULLATTRIBUTESFILE)(struct _OBJECT_ATTRIBUTES *, struct _FILE_NETWORK_OPEN_INFORMATION *);
