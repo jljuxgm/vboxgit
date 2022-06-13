@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 89350 2021-05-28 12:11:51Z vboxsync $
+# $Id: Makefile.kmk 89805 2021-06-21 06:27:05Z vboxsync $
 ## @file
 # Sub-Makefile for the audio testcases.
 #
@@ -49,6 +49,24 @@ if defined(VBOX_WITH_TESTCASES) && !defined(VBOX_ONLY_ADDITIONS) && !defined(VBO
   # Requires manual execution / verification.
   PROGRAMS += tstAudioClient3
  endif
+
+ PROGRAMS += tstAudioTestService
+ TESTING  += $(tstAudioTestService_0_OUTDIR)/tstAudioTestService.run
+
+ tstAudioTestService_TEMPLATE = VBOXR3TSTEXE
+ tstAudioTestService_DEFS = TESTCASE
+ tstAudioTestService_DEFS.debug  = VBOX_WITH_EF_WRAPS
+ tstAudioTestService_SOURCES = \
+	tstAudioTestService.cpp \
+	../AudioTestService.cpp \
+	../AudioTestServiceProtocol.cpp \
+	../AudioTestServiceTcp.cpp \
+	../AudioTestServiceClient.cpp
+ tstAudioTestService_LIBS = $(LIB_RUNTIME)
+
+ $$(tstAudioTestService_0_OUTDIR)/tstAudioTestService.run: $$(tstAudioTestService_1_STAGE_TARGET)
+	export VBOX_LOG_DEST=nofile; $(tstAudioTestService_1_STAGE_TARGET) quiet
+	$(QUIET)$(APPEND) -t "$@" "done"
 
 endif
 
