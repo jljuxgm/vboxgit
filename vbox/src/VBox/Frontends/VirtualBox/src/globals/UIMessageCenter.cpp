@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 92811 2021-12-08 13:41:20Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 92821 2021-12-08 14:54:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -1333,6 +1333,22 @@ bool UIMessageCenter::confirmHostNetworkInterfaceRemoval(const QString &strName,
                              "After it is removed, these adapters will no longer be usable until "
                              "you correct their settings by either choosing a different interface "
                              "name or a different adapter attachment type.</p>")
+                             .arg(strName),
+                          0 /* auto-confirm id */,
+                          tr("Remove") /* ok button text */,
+                          QString() /* cancel button text */,
+                          false /* ok button by default? */);
+}
+
+bool UIMessageCenter::confirmHostOnlyNetworkRemoval(const QString &strName, QWidget *pParent /* = 0 */) const
+{
+    return questionBinary(pParent, MessageType_Question,
+                          tr("<p>Do you want to remove the host-only network <nobr><b>%1</b>?</nobr></p>"
+                             "<p>If this network is in use by one or more virtual "
+                             "machine network adapters these adapters will no longer be "
+                             "usable until you correct their settings by either choosing "
+                             "a different network name or a different adapter attachment "
+                             "type.</p>")
                              .arg(strName),
                           0 /* auto-confirm id */,
                           tr("Remove") /* ok button text */,
