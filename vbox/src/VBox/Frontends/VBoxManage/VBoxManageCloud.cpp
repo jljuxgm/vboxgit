@@ -1,4 +1,4 @@
-/* $Id: VBoxManageCloud.cpp 91133 2021-09-06 22:38:23Z vboxsync $ */
+/* $Id: VBoxManageCloud.cpp 91134 2021-09-06 22:41:41Z vboxsync $ */
 /** @file
  * VBoxManageCloud - The cloud related commands.
  */
@@ -2777,7 +2777,7 @@ static RTEXITCODE handleCloudNetwork(HandlerArg *a, int iFirst, PCLOUDCOMMONOPT 
         { "create",         kCloudNetwork_Create,   RTGETOPT_REQ_NOTHING },
         { "delete",         kCloudNetwork_Delete,   RTGETOPT_REQ_NOTHING },
         { "info",           kCloudNetwork_Info,     RTGETOPT_REQ_NOTHING },
-        { "setup",          kCloudNetwork_Setup,    RTGETOPT_REQ_NOTHING }
+        { "setup",          kCloudNetwork_Setup,    RTGETOPT_REQ_NOTHING },
         { "update",         kCloudNetwork_Update,   RTGETOPT_REQ_NOTHING },
     };
 
