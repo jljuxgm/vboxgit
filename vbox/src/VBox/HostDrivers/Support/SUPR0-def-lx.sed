@@ -1,4 +1,4 @@
-# $Id: SUPR0-def-lx.sed 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: SUPR0-def-lx.sed 91782 2021-10-17 12:23:51Z vboxsync $
 ## @file
 # IPRT - SED script for generating SUPR0.def - OS/2 LX.
 #
@@ -35,7 +35,11 @@ $b footer
 /SED: END/,$d
 
 # Drop all lines not specifying an export.
-/^    { "/!d
+/^    { STK[BO][AK][CA][KY]/!d
+
+# Remove the darwin stack switch-back indicator.
+s/STKBACK(\([^)][^)]*\))/\1/
+s/STKOKAY(\([^)][^)]*\))/\1/
 
 # Handle trailing selection comment (/* solaris-only, os2-only */).
 /\*\/ *$/!b transform
