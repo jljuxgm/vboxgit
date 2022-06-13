@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-darwin.cpp 94425 2022-03-31 23:57:15Z vboxsync $ */
+/* $Id: NEMR3Native-darwin.cpp 94885 2022-05-06 07:07:35Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, native ring-3 macOS backend using Hypervisor.framework.
  *
@@ -33,6 +33,7 @@
 #include <VBox/vmm/hm.h>
 #include <VBox/vmm/hm_vmx.h>
 #include <VBox/vmm/dbgftrace.h>
+#include <VBox/vmm/gcm.h>
 #include "VMXInternal.h"
 #include "NEMInternal.h"
 #include <VBox/vmm/vmcc.h>
