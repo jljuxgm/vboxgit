@@ -1,4 +1,4 @@
-/* $Id: gvmm.h 92200 2021-11-03 21:46:36Z vboxsync $ */
+/* $Id: gvmm.h 92205 2021-11-04 07:55:50Z vboxsync $ */
 /** @file
  * GVMM - The Global VM Manager.
  */
@@ -196,7 +196,7 @@ GVMMR0DECL(bool)    GVMMR0DoingTermVM(PGVM pGVM);
 GVMMR0DECL(int)     GVMMR0DestroyVM(PGVM pGVM);
 GVMMR0DECL(int)     GVMMR0RegisterVCpu(PGVM pGVM, VMCPUID idCpu);
 GVMMR0DECL(int)     GVMMR0DeregisterVCpu(PGVM pGVM, VMCPUID idCpu);
-GVMMR0DECL(int)     GVMMR0RegisterWorkerThread(PGVM pGVM, GVMMWORKERTHREAD enmWorker, uintptr_t hThreadR3);
+GVMMR0DECL(int)     GVMMR0RegisterWorkerThread(PGVM pGVM, GVMMWORKERTHREAD enmWorker, RTNATIVETHREAD hThreadR3);
 GVMMR0DECL(int)     GVMMR0DeregisterWorkerThread(PGVM pGVM, GVMMWORKERTHREAD enmWorker);
 GVMMR0DECL(PGVM)    GVMMR0ByHandle(uint32_t hGVM);
 GVMMR0DECL(int)     GVMMR0ValidateGVM(PGVM pGVM);
