@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 91076 2021-09-01 18:52:17Z vboxsync $ */
+/* $Id: UISession.cpp 91104 2021-09-03 12:43:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -365,7 +365,7 @@ void UISession::shutdown()
     LogRel(("GUI: Sending ACPI shutdown signal..\n"));
     console().PowerButton();
     if (!console().isOk())
-        msgCenter().cannotACPIShutdownMachine(console());
+        UINotificationMessage::cannotACPIShutdownMachine(console());
 }
 
 void UISession::powerOff(bool fIncludingDiscard)
@@ -434,9 +434,9 @@ bool UISession::setPause(bool fOn)
     if (!ok)
     {
         if (fOn)
-            msgCenter().cannotPauseMachine(console());
+            UINotificationMessage::cannotPauseMachine(console());
         else
-            msgCenter().cannotResumeMachine(console());
+            UINotificationMessage::cannotResumeMachine(console());
     }
 
     return ok;
