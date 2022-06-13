@@ -1,4 +1,4 @@
-# $Id: Config.kmk 93115 2022-01-01 11:31:46Z vboxsync $
+# $Id: Config.kmk 93117 2022-01-02 13:51:19Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1821,7 +1821,7 @@ DEFS.haiku       = RT_OS_HAIKU
 DEFS.linux       = RT_OS_LINUX _FILE_OFFSET_BITS=64
 DEFS.netbsd      = RT_OS_NETBSD
 DEFS.openbsd     = RT_OS_OPENBSD
-DEFS.os2         = RT_OS_OS2 __OS2__
+DEFS.os2         = RT_OS_OS2
 DEFS.os-agnostic = RT_OS_AGNOSTIC
 DEFS.solaris     = RT_OS_SOLARIS _FILE_OFFSET_BITS=64
 DEFS.win         = RT_OS_WINDOWS __WIN__
@@ -8571,7 +8571,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 93115 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 93117 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
