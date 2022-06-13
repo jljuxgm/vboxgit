@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-dx.cpp 91441 2021-09-28 17:37:53Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-dx.cpp 91507 2021-10-01 10:27:12Z vboxsync $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - Common code for DX backend interface.
  */
@@ -349,6 +349,20 @@ int vmsvga3dDXDrawIndexed(PVGASTATECC pThisCC, uint32_t idDXContext, SVGA3dCmdDX
     AssertRCReturn(rc, rc);
 
     rc = pSvgaR3State->pFuncsDX->pfnDXDrawIndexed(pThisCC, pDXContext, pCmd->indexCount, pCmd->startIndexLocation, pCmd->baseVertexLocation);
+#ifdef DUMP_BITMAPS
+    SVGACOTableDXRTViewEntry *pRTViewEntry = &pDXContext->cot.paRTView[pDXContext->svgaDXContext.renderState.renderTargetViewIds[0]];
+    SVGA3dSurfaceImageId image;
+    image.sid = pRTViewEntry->sid;
+    image.face = 0;
+    image.mipmap = 0;
+    VMSVGA3D_MAPPED_SURFACE map;
+    int rc2 = vmsvga3dSurfaceMap(pThisCC, &image, NULL, VMSVGA3D_SURFACE_MAP_READ, &map);
+    if (RT_SUCCESS(rc2))
+    {
+        vmsvga3dMapWriteBmpFile(&map, "rt-");
+        vmsvga3dSurfaceUnmap(pThisCC, &image, &map, /* fWritten =  */ false);
+    }
+#endif
     return rc;
 }
 
@@ -367,6 +381,20 @@ int vmsvga3dDXDrawInstanced(PVGASTATECC pThisCC, uint32_t idDXContext, SVGA3dCmd
 
     rc = pSvgaR3State->pFuncsDX->pfnDXDrawInstanced(pThisCC, pDXContext,
              pCmd->vertexCountPerInstance, pCmd->instanceCount, pCmd->startVertexLocation, pCmd->startInstanceLocation);
+#ifdef DUMP_BITMAPS
+    SVGACOTableDXRTViewEntry *pRTViewEntry = &pDXContext->cot.paRTView[pDXContext->svgaDXContext.renderState.renderTargetViewIds[0]];
+    SVGA3dSurfaceImageId image;
+    image.sid = pRTViewEntry->sid;
+    image.face = 0;
+    image.mipmap = 0;
+    VMSVGA3D_MAPPED_SURFACE map;
+    int rc2 = vmsvga3dSurfaceMap(pThisCC, &image, NULL, VMSVGA3D_SURFACE_MAP_READ, &map);
+    if (RT_SUCCESS(rc2))
+    {
+        vmsvga3dMapWriteBmpFile(&map, "rt-");
+        vmsvga3dSurfaceUnmap(pThisCC, &image, &map, /* fWritten =  */ false);
+    }
+#endif
     return rc;
 }
 
@@ -385,6 +413,20 @@ int vmsvga3dDXDrawIndexedInstanced(PVGASTATECC pThisCC, uint32_t idDXContext, SV
 
     rc = pSvgaR3State->pFuncsDX->pfnDXDrawIndexedInstanced(pThisCC, pDXContext,
              pCmd->indexCountPerInstance, pCmd->instanceCount, pCmd->startIndexLocation, pCmd->baseVertexLocation, pCmd->startInstanceLocation);
+#ifdef DUMP_BITMAPS
+    SVGACOTableDXRTViewEntry *pRTViewEntry = &pDXContext->cot.paRTView[pDXContext->svgaDXContext.renderState.renderTargetViewIds[0]];
+    SVGA3dSurfaceImageId image;
+    image.sid = pRTViewEntry->sid;
+    image.face = 0;
+    image.mipmap = 0;
+    VMSVGA3D_MAPPED_SURFACE map;
+    int rc2 = vmsvga3dSurfaceMap(pThisCC, &image, NULL, VMSVGA3D_SURFACE_MAP_READ, &map);
+    if (RT_SUCCESS(rc2))
+    {
+        vmsvga3dMapWriteBmpFile(&map, "rt-");
+        vmsvga3dSurfaceUnmap(pThisCC, &image, &map, /* fWritten =  */ false);
+    }
+#endif
     return rc;
 }
 
@@ -402,6 +444,20 @@ int vmsvga3dDXDrawAuto(PVGASTATECC pThisCC, uint32_t idDXContext)
     AssertRCReturn(rc, rc);
 
     rc = pSvgaR3State->pFuncsDX->pfnDXDrawAuto(pThisCC, pDXContext);
+#ifdef DUMP_BITMAPS
+    SVGACOTableDXRTViewEntry *pRTViewEntry = &pDXContext->cot.paRTView[pDXContext->svgaDXContext.renderState.renderTargetViewIds[0]];
+    SVGA3dSurfaceImageId image;
+    image.sid = pRTViewEntry->sid;
+    image.face = 0;
+    image.mipmap = 0;
+    VMSVGA3D_MAPPED_SURFACE map;
+    int rc2 = vmsvga3dSurfaceMap(pThisCC, &image, NULL, VMSVGA3D_SURFACE_MAP_READ, &map);
+    if (RT_SUCCESS(rc2))
+    {
+        vmsvga3dMapWriteBmpFile(&map, "rt-");
+        vmsvga3dSurfaceUnmap(pThisCC, &image, &map, /* fWritten =  */ false);
+    }
+#endif
     return rc;
 }
 

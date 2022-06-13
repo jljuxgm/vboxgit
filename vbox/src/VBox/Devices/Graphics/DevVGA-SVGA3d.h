@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d.h 91441 2021-09-28 17:37:53Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d.h 91507 2021-10-01 10:27:12Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device - 3D part.
  */
@@ -61,9 +61,7 @@ typedef struct VMSVGA3D_MAPPED_SURFACE
 
 /* Write render targets to bitmaps. */
 //#define DUMP_BITMAPS
-#ifdef DUMP_BITMAPS
 void vmsvga3dMapWriteBmpFile(VMSVGA3D_MAPPED_SURFACE const *pMap, char const *pszPrefix);
-#endif
 
 /* DevVGA-SVGA.cpp: */
 void vmsvgaR33dSurfaceUpdateHeapBuffersOnFifoThread(PPDMDEVINS pDevIns, PVGASTATE pThis, PVGASTATECC pThisCC, uint32_t sid);
