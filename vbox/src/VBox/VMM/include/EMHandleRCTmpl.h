@@ -1,4 +1,4 @@
-/* $Id: EMHandleRCTmpl.h 92493 2021-11-18 14:01:56Z vboxsync $ */
+/* $Id: EMHandleRCTmpl.h 92519 2021-11-20 00:09:58Z vboxsync $ */
 /** @file
  * EM - emR3[Raw|Hm|Nem]HandleRC template.
  */
@@ -226,6 +226,21 @@ int emR3NemHandleRC(PVM pVM, PVMCPU pVCpu, int rc)
         case VERR_VMX_IN_VMX_ROOT_MODE:
         case VERR_SVM_IN_USE:
         case VERR_SVM_UNABLE_TO_START_VM:
+            break;
+#endif
+
+#ifdef EMHANDLERC_WITH_NEM
+        /* Fatal stuff, up a level. */
+        case VERR_NEM_IPE_0:
+        case VERR_NEM_IPE_1:
+        case VERR_NEM_IPE_2:
+        case VERR_NEM_IPE_3:
+        case VERR_NEM_IPE_4:
+        case VERR_NEM_IPE_5:
+        case VERR_NEM_IPE_6:
+        case VERR_NEM_IPE_7:
+        case VERR_NEM_IPE_8:
+        case VERR_NEM_IPE_9:
             break;
 #endif
 
