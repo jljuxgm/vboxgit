@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMExpertPage.cpp 92413 2021-11-14 11:38:38Z vboxsync $ */
+/* $Id: UIWizardNewVMExpertPage.cpp 92517 2021-11-19 23:55:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMExpertPage class implementation.
  */
@@ -419,6 +419,10 @@ void UIWizardNewVMExpertPage::initializePage()
     disableEnableUnattendedRelatedWidgets(isUnattendedEnabled());
     updateDiskWidgetsAfterMediumFormatChange();
     retranslateUi();
+
+    /* Focus on the name field (rather than the help button): */
+    if (m_pNameAndSystemEditor)
+        m_pNameAndSystemEditor->setFocus();
 }
 
 void UIWizardNewVMExpertPage::markWidgets() const
