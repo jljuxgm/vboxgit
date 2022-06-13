@@ -1,4 +1,4 @@
-/* $Id: UINativeWizard.h 89967 2021-06-30 08:58:25Z vboxsync $ */
+/* $Id: UINativeWizard.h 90032 2021-07-05 15:34:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINativeWizard class declaration.
  */
@@ -34,6 +34,7 @@
 class QLabel;
 class QPushButton;
 class QStackedWidget;
+class QVBoxLayout;
 class UINativeWizardPage;
 
 /** Native wizard buttons. */
@@ -163,9 +164,10 @@ private:
 
     /** Holds the pixmap label instance. */
     QLabel                               *m_pLabelPixmap;
-#ifdef VBOX_WS_MAC
+    /** Holds the right layout instance. */
+    QVBoxLayout                          *m_pLayoutRight;
+    /** Holds the title label instance. */
     QLabel                               *m_pLabelPageTitle;
-#endif
     /** Holds the widget-stack instance. */
     QStackedWidget                       *m_pWidgetStack;
     /** Holds button instance map. */
