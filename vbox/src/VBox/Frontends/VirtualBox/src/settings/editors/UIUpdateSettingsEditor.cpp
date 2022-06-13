@@ -1,4 +1,4 @@
-/* $Id: UIUpdateSettingsEditor.cpp 94740 2022-04-28 17:52:03Z vboxsync $ */
+/* $Id: UIUpdateSettingsEditor.cpp 94750 2022-04-28 19:11:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUpdateSettingsEditor class implementation.
  */
@@ -68,7 +68,7 @@ void UIUpdateSettingsEditor::setValue(const VBoxUpdateData &guiValue)
 
 VBoxUpdateData UIUpdateSettingsEditor::value() const
 {
-    return m_pCheckBox ? VBoxUpdateData(updatePeriod(), updateChannel()) : m_guiValue;
+    return VBoxUpdateData(isCheckEnabled(), updatePeriod(), updateChannel());
 }
 
 void UIUpdateSettingsEditor::retranslateUi()
@@ -140,7 +140,7 @@ void UIUpdateSettingsEditor::sltHandleUpdateToggle(bool fEnabled)
 void UIUpdateSettingsEditor::sltHandleUpdatePeriodChange()
 {
     if (m_pFieldUpdateDate)
-        m_pFieldUpdateDate->setText(VBoxUpdateData(updatePeriod(), updateChannel()).dateToString());
+        m_pFieldUpdateDate->setText(VBoxUpdateData(isCheckEnabled(), updatePeriod(), updateChannel()).dateToString());
 }
 
 void UIUpdateSettingsEditor::prepare()
@@ -264,11 +264,14 @@ void UIUpdateSettingsEditor::prepareConnections()
                 this, &UIUpdateSettingsEditor::sltHandleUpdatePeriodChange);
 }
 
+bool UIUpdateSettingsEditor::isCheckEnabled() const
+{
+    return m_pCheckBox ? m_pCheckBox->isChecked() : m_guiValue.isCheckEnabled();
+}
+
 UpdatePeriodType UIUpdateSettingsEditor::updatePeriod() const
 {
-    return   m_pCheckBox && m_pCheckBox->isChecked() && m_pComboUpdatePeriod
-           ? (UpdatePeriodType)m_pComboUpdatePeriod->currentIndex()
-           : UpdatePeriodType_Never;
+    return m_pComboUpdatePeriod ? (UpdatePeriodType)m_pComboUpdatePeriod->currentIndex() : m_guiValue.updatePeriod();
 }
 
 KUpdateChannel UIUpdateSettingsEditor::updateChannel() const

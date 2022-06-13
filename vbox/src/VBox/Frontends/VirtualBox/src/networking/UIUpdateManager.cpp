@@ -1,4 +1,4 @@
-/* $Id: UIUpdateManager.cpp 94740 2022-04-28 17:52:03Z vboxsync $ */
+/* $Id: UIUpdateManager.cpp 94750 2022-04-28 19:11:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUpdateManager class implementation.
  */
@@ -363,7 +363,7 @@ void UIUpdateManager::sltHandleUpdateFinishing()
     /* Load/decode curent update data: */
     VBoxUpdateData currentData(gEDataManager->applicationUpdateData());
     /* Encode/save new update data: */
-    VBoxUpdateData newData(currentData.updatePeriod(), currentData.updateChannel());
+    VBoxUpdateData newData(currentData.isCheckEnabled(), currentData.updatePeriod(), currentData.updateChannel());
     gEDataManager->setApplicationUpdateData(newData.data());
 
 #ifdef VBOX_WITH_UPDATE_REQUEST
