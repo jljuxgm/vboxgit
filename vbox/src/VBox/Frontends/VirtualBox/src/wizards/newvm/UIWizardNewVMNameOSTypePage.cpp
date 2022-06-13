@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMNameOSTypePage.cpp 93642 2022-02-07 14:36:58Z vboxsync $ */
+/* $Id: UIWizardNewVMNameOSTypePage.cpp 93643 2022-02-07 16:58:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasicNameOSStype class implementation.
  */
@@ -492,8 +492,11 @@ void UIWizardNewVMNameOSTypePage::sltGuestOSFamilyChanged(const QString &strGues
 
 void UIWizardNewVMNameOSTypePage::sltSelectedEditionChanged(ulong uEditionIndex)
 {
-    AssertReturnVoid(wizardWindow<UIWizardNewVM>());
-    wizardWindow<UIWizardNewVM>()->setSelectedWindowImageIndex(uEditionIndex);
+    UIWizardNewVM *pWizard = wizardWindow<UIWizardNewVM>();
+    AssertReturnVoid(pWizard);
+    pWizard->setSelectedWindowImageIndex(uEditionIndex);
+    /* Update the OS type since IUnattended updates the detected OS type after edition (image index) changes: */
+    UIWizardNewVMNameOSTypeCommon::guessOSTypeDetectedOSTypeString(m_pNameAndSystemEditor, pWizard->detectedOSTypeId());
 }
 
 void UIWizardNewVMNameOSTypePage::sltSkipUnattendedInstallChanged(bool fSkip)
