@@ -1,4 +1,4 @@
-/* $Id: UIDownloaderExtensionPack.cpp 90541 2021-08-06 10:19:48Z vboxsync $ */
+/* $Id: UIDownloaderExtensionPack.cpp 90560 2021-08-07 07:36:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDownloaderExtensionPack class implementation.
  */
@@ -33,23 +33,8 @@
 #include <iprt/sha.h>
 
 
-/* static */
-UIDownloaderExtensionPack *UIDownloaderExtensionPack::s_pInstance = 0;
-
-/* static */
-UIDownloaderExtensionPack *UIDownloaderExtensionPack::create()
-{
-    if (!s_pInstance)
-        s_pInstance = new UIDownloaderExtensionPack;
-    return s_pInstance;
-}
-
 UIDownloaderExtensionPack::UIDownloaderExtensionPack()
 {
-    /* Prepare instance: */
-    if (!s_pInstance)
-        s_pInstance = this;
-
     /* Get version number and adjust it for test and trunk builds. The server only has official releases. */
     const QString strVersion = UIVersion(uiCommon().vboxVersionStringNormalized()).effectiveReleasedVersion().toString();
 
@@ -65,13 +50,6 @@ UIDownloaderExtensionPack::UIDownloaderExtensionPack()
     setSource(strSource);
     setTarget(strTarget);
     setPathSHA256SumsFile(strPathSHA256SumsFile);
-}
-
-UIDownloaderExtensionPack::~UIDownloaderExtensionPack()
-{
-    /* Cleanup instance: */
-    if (s_pInstance == this)
-        s_pInstance = 0;
 }
 
 QString UIDownloaderExtensionPack::description() const
@@ -186,4 +164,3 @@ void UIDownloaderExtensionPack::handleVerifiedObject(UINetworkReply *pReply)
             break;
     }
 }
-
