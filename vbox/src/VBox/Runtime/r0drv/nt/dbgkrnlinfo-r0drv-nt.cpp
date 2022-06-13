@@ -1,4 +1,4 @@
-/* $Id: dbgkrnlinfo-r0drv-nt.cpp 85906 2020-08-27 13:46:55Z vboxsync $ */
+/* $Id: dbgkrnlinfo-r0drv-nt.cpp 91633 2021-10-08 08:42:00Z vboxsync $ */
 /** @file
  * IPRT - Kernel Debug Information, R0 Driver, NT.
  */
@@ -169,6 +169,30 @@ static int rtR0DbgKrnlInfoLookupSymbol(PCRTDBGNTKRNLMODINFO pModInfo, const char
 {
     if (pModInfo->fOkay)
     {
+        /*
+         * Pseudo symbols:
+         */
+        if (   pszSymbol[0] == '_'
+            && pszSymbol[1] == '_'
+            && pszSymbol[2] == 'I')
+        {
+            if (strcmp(pszSymbol, "__ImageBase") == 0)
+            {
+                *ppvSymbol = (void *)pModInfo->pbImageBase;
+                return VINF_SUCCESS;
+            }
+            if (strcmp(pszSymbol, "__ImageSize") == 0)
+            {
+                *ppvSymbol = (void *)(uintptr_t)pModInfo->cbImage;
+                return VINF_SUCCESS;
+            }
+            if (strcmp(pszSymbol, "__ImageNtHdrs") == 0)
+            {
+                *ppvSymbol = pModInfo->pNtHdrs;
+                return VINF_SUCCESS;
+            }
+        }
+
         /*
          * Binary search.
          */
