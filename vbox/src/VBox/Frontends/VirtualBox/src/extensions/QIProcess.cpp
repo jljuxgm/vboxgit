@@ -1,4 +1,4 @@
-/* $Id: QIProcess.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: QIProcess.cpp 94018 2022-03-01 09:47:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIProcess class implementation.
  */
@@ -53,8 +53,8 @@ QByteArray QIProcess::singleShot(const QString &strProcessName, int iTimeout /* 
     process.setProcessState(QProcess::NotRunning);
 #ifdef VBOX_WS_X11
     int iStatus;
-    if (process.pid() > 0)
-        waitpid(process.pid(), &iStatus, 0);
+    if (process.processId() > 0)
+        waitpid(process.processId(), &iStatus, 0);
 #endif /* VBOX_WS_X11 */
     return result;
 }
