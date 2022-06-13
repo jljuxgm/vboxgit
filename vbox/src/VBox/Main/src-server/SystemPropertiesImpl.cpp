@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 90828 2021-08-24 09:44:46Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.cpp 91369 2021-09-24 16:47:04Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -27,7 +27,7 @@
 #include "Global.h"
 #include "LoggingNew.h"
 #include "AutostartDb.h"
-#include "VirtualBoxTranslator.h"
+#include <VBox/VirtualBoxTranslator.h>
 
 // generated header
 #include "SchemaDefs.h"

@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxBase.cpp 91312 2021-09-20 11:06:57Z vboxsync $ */
+/* $Id: VirtualBoxBase.cpp 91369 2021-09-24 16:47:04Z vboxsync $ */
 /** @file
  * VirtualBox COM base classes implementation
  */
@@ -33,12 +33,13 @@
 #include "VirtualBoxBase.h"
 #include "AutoCaller.h"
 #include "VirtualBoxErrorInfoImpl.h"
-#include "VirtualBoxTranslator.h"
 #include "Global.h"
 #include "LoggingNew.h"
 
 #include "VBox/com/ErrorInfo.h"
 #include "VBox/com/MultiResult.h"
+#include <VBox/VirtualBoxTranslator.h>
+
 
 ////////////////////////////////////////////////////////////////////////////////
 //
