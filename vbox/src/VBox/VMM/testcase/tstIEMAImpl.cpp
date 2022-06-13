@@ -1,4 +1,4 @@
-/* $Id: tstIEMAImpl.cpp 94416 2022-03-31 14:33:33Z vboxsync $ */
+/* $Id: tstIEMAImpl.cpp 94418 2022-03-31 20:37:51Z vboxsync $ */
 /** @file
  * IEM Assembly Instruction Helper Testcase.
  */
@@ -663,14 +663,14 @@ const char *GenFormatI16(int16_t const *pi16)
 static void GenerateHeader(PRTSTREAM pOut, const char *pszCpuDesc, const char *pszCpuType)
 {
     /* We want to tag the generated source code with the revision that produced it. */
-    static char s_szRev[] = "$Revision: 94416 $";
+    static char s_szRev[] = "$Revision: 94418 $";
     const char *pszRev = RTStrStripL(strchr(s_szRev, ':') + 1);
     size_t      cchRev = 0;
     while (RT_C_IS_DIGIT(pszRev[cchRev]))
         cchRev++;
 
     RTStrmPrintf(pOut,
-                 "/* $Id: tstIEMAImpl.cpp 94416 2022-03-31 14:33:33Z vboxsync $ */\n"
+                 "/* $Id: tstIEMAImpl.cpp 94418 2022-03-31 20:37:51Z vboxsync $ */\n"
                  "/** @file\n"
                  " * IEM Assembly Instruction Helper Testcase Data%s%s - r%.*s on %s.\n"
                  " */\n"
@@ -3099,10 +3099,6 @@ static struct { RTFLOAT80U Val1; RTFLOAT32U Val2; } const s_aFpuBinaryR32Special
 {
     {   RTFLOAT80U_INIT_C(0, 0xffffeeeeddddcccc, RTFLOAT80U_EXP_BIAS),
         RTFLOAT32U_INIT_C(0, 0x7fffee, RTFLOAT32U_EXP_BIAS)             }, /* whatever */
-};
-static struct { RTFLOAT80U Val1; int64_t Val2; } const s_aFpuBinaryI64Specials[] =
-{
-    {   RTFLOAT80U_INIT_C(0, 0xffffeeeeddddcccc, RTFLOAT80U_EXP_BIAS), INT64_MAX    }, /* whatever */
 };
 static struct { RTFLOAT80U Val1; int32_t Val2; } const s_aFpuBinaryI32Specials[] =
 {
