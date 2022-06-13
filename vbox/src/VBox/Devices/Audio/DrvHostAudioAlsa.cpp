@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioAlsa.cpp 92057 2021-10-26 07:02:32Z vboxsync $ */
+/* $Id: DrvHostAudioAlsa.cpp 92074 2021-10-26 09:46:23Z vboxsync $ */
 /** @file
  * Host audio driver - Advanced Linux Sound Architecture (ALSA).
  */
@@ -695,6 +695,7 @@ static int alsaStreamSetHwParams(snd_pcm_t *hPCM, snd_pcm_format_t enmAlsaFmt,
              PDMAudioPropsHz(&pCfgAcq->Props), pCfgAcq->Backend.cFramesPeriod, pCfgAcq->Backend.cFramesBufferSize,
              PDMAudioPropsChannels(&pCfgAcq->Props), enmAlsaFmt));
 
+#if 0 /* Disabled in the hope to resolve testboxes not being able to drain + crashing when closing the PCM streams. */
     /*
      * Channel config (not fatal).
      */
@@ -709,6 +710,7 @@ static int alsaStreamSetHwParams(snd_pcm_t *hPCM, snd_pcm_format_t enmAlsaFmt,
                 LogRel2(("ALSA: snd_pcm_set_chmap failed: %s (%d)\n", snd_strerror(err), err));
         }
     }
+#endif
 
     return 0;
 }
