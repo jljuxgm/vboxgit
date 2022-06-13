@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 90487 2021-08-03 05:41:36Z vboxsync $ */
+/* $Id: CPUM.cpp 90914 2021-08-26 14:56:29Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -2692,7 +2692,7 @@ static DECLCALLBACK(int) cpumR3LoadExec(PVM pVM, PSSMHANDLE pSSM, uint32_t uVers
     /*
      * Validate version.
      */
-    if (    uVersion != CPUM_SAVED_STATE_VERSION_HWVIRT_VMX_IEM
+    if (    uVersion != CPUM_SAVED_STATE_VERSION_HWVIRT_VMX
         &&  uVersion != CPUM_SAVED_STATE_VERSION_HWVIRT_SVM
         &&  uVersion != CPUM_SAVED_STATE_VERSION_XSAVE
         &&  uVersion != CPUM_SAVED_STATE_VERSION_GOOD_CPUID_COUNT
@@ -2894,7 +2894,7 @@ static DECLCALLBACK(int) cpumR3LoadExec(PVM pVM, PSSMHANDLE pSSM, uint32_t uVers
                         SSMR3GetBool(pSSM,     &pGstCtx->hwvirt.fGif);
                     }
                 }
-                if (uVersion >= CPUM_SAVED_STATE_VERSION_HWVIRT_VMX_IEM)
+                if (uVersion >= CPUM_SAVED_STATE_VERSION_HWVIRT_VMX)
                 {
                     if (pVM->cpum.s.GuestFeatures.fVmx)
                     {
