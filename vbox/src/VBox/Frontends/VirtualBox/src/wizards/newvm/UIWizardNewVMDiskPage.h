@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMDiskPage.h 91593 2021-10-06 15:12:58Z vboxsync $ */
+/* $Id: UIWizardNewVMDiskPage.h 92413 2021-11-14 11:38:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMDiskPage class declaration.
  */
@@ -39,6 +39,7 @@ class QRadioButton;
 class QLabel;
 class QIRichTextLabel;
 class QIToolButton;
+class UIActionPool;
 class UIMediaComboBox;
 class UIMediumSizeEditor;
 
@@ -46,7 +47,7 @@ namespace UIWizardNewVMDiskCommon
 {
     QUuid getWithFileOpenDialog(const QString &strOSTypeID,
                                 const QString &strMachineFolder,
-                                QWidget *pCaller);
+                                QWidget *pCaller, UIActionPool *pActionPool);
 }
 
 
@@ -56,7 +57,7 @@ class UIWizardNewVMDiskPage : public UINativeWizardPage
 
 public:
 
-    UIWizardNewVMDiskPage();
+    UIWizardNewVMDiskPage(UIActionPool *pActionPool);
 
 protected:
 
@@ -109,6 +110,7 @@ private:
         qulonglong m_uMediumSizeMin;
         qulonglong m_uMediumSizeMax;
     /** @} */
+    UIActionPool *m_pActionPool;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_wizards_newvm_UIWizardNewVMDiskPage_h */

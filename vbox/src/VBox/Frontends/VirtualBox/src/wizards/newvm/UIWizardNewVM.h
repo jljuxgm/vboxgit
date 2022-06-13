@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.h 92110 2021-10-27 15:48:02Z vboxsync $ */
+/* $Id: UIWizardNewVM.h 92413 2021-11-14 11:38:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class declaration.
  */
@@ -30,6 +30,9 @@
 #include "CMedium.h"
 #include "CMediumFormat.h"
 #include "CGuestOSType.h"
+
+/* Forward declarations: */
+class UIActionPool;
 
 enum SelectedDiskSource
 {
@@ -70,7 +73,8 @@ class UIWizardNewVM : public UINativeWizard
 
 public:
 
-    UIWizardNewVM(QWidget *pParent, const QString &strMachineGroup = QString(), const QString &strHelpHashtag = QString());
+    UIWizardNewVM(QWidget *pParent, UIActionPool *pActionPool,
+                  const QString &strMachineGroup = QString(), const QString &strHelpHashtag = QString());
     bool isUnattendedEnabled() const;
     void setDefaultUnattendedInstallData(const UIUnattendedInstallData &unattendedInstallData);
     const UIUnattendedInstallData &unattendedInstallData() const;
@@ -240,6 +244,7 @@ private:
        SelectedDiskSource m_enmDiskSource;
        bool m_fEmptyDiskRecommended;
        QVector<KMediumVariant> m_mediumVariants;
+       UIActionPool *m_pActionPool;
     /** @} */
 };
 

@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMExpertPage.h 91277 2021-09-16 11:50:40Z vboxsync $ */
+/* $Id: UIWizardNewVMExpertPage.h 92413 2021-11-14 11:38:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMExpertPage class declaration.
  */
@@ -34,6 +34,7 @@ class QGridLayout;
 class QGroupBox;
 class QRadioButton;
 class QIToolButton;
+class UIActionPool;
 class UIAdditionalUnattendedOptions;
 class UIDiskFormatsComboBox;
 class UIDiskVariantWidget;
@@ -52,7 +53,7 @@ class UIWizardNewVMExpertPage : public UINativeWizardPage
 
 public:
 
-    UIWizardNewVMExpertPage();
+    UIWizardNewVMExpertPage(UIActionPool *pActionPool);
 
 private slots:
 
@@ -147,6 +148,7 @@ private:
         bool m_fRecommendedNoDisk;
         qulonglong m_uMediumSizeMin;
         qulonglong m_uMediumSizeMax;
+        UIActionPool *m_pActionPool;
     /** @} */
 };
 

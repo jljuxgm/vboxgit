@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.h 86233 2020-09-23 12:10:51Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.h 92413 2021-11-14 11:38:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class declaration.
  */
@@ -41,8 +41,9 @@ class QISplitter;
 class QIToolButton;
 class QITreeView;
 class StorageModel;
-class UIMediumIDHolder;
 class QIToolBar;
+class UIActionPool;
+class UIMediumIDHolder;
 struct UIDataSettingsMachineStorage;
 struct UIDataSettingsMachineStorageController;
 struct UIDataSettingsMachineStorageAttachment;
@@ -68,7 +69,7 @@ public:
     static const QString  s_strAttachmentMimeType;
 
     /** Constructs Storage settings page. */
-    UIMachineSettingsStorage();
+    UIMachineSettingsStorage(UIActionPool *pActionPool);
     /** Destructs Storage settings page. */
     virtual ~UIMachineSettingsStorage() /* override */;
 
@@ -406,6 +407,8 @@ private:
         QLabel           *m_pLabelEncryption;
         /** Holds the encryption field instance. */
         QILabel          *m_pFieldEncryption;
+        /** Holds the action pool instance. */
+        UIActionPool     *m_pActionPool;
    /** @} */
 };
 
