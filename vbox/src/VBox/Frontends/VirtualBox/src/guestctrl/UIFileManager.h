@@ -1,4 +1,4 @@
-/* $Id: UIFileManager.h 92640 2021-11-30 08:40:16Z vboxsync $ */
+/* $Id: UIFileManager.h 92641 2021-11-30 09:01:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManager class declaration.
  */
@@ -182,6 +182,8 @@ private:
     CMachine                  m_comMachine;
     QVBoxLayout              *m_pMainLayout;
     QSplitter                *m_pVerticalSplitter;
+    /** Splitter hosting host and guest file system tables. */
+    QSplitter                *m_pFileTableSplitter;
     QIToolBar                *m_pToolBar;
     QIToolBar                *m_pVerticalToolBar;
 
