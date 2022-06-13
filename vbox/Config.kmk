@@ -1,4 +1,4 @@
-# $Id: Config.kmk 91316 2021-09-20 13:12:30Z vboxsync $
+# $Id: Config.kmk 91360 2021-09-24 11:30:02Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -451,6 +451,8 @@ ifeq ($(KBUILD_TARGET_ARCH),amd64)
    $(error VBOX_WITH_NESTED_HWVIRT_ONLY_IN_IEM defined without enabling nested VMX or nested SVM support)
   endif
  endif
+ # Enables guest EPT support for VMX nested hardware virtualization.
+ VBOX_WITH_NESTED_HWVIRT_VMX_EPT = 1
 endif
 # Enable native NEM on windows.
 if1of ($(KBUILD_TARGET), win)
@@ -8320,7 +8322,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 91316 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 91360 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)

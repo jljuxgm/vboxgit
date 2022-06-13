@@ -1,4 +1,4 @@
-/* $Id: HMVMXAll.cpp 91297 2021-09-17 11:51:23Z vboxsync $ */
+/* $Id: HMVMXAll.cpp 91360 2021-09-24 11:30:02Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - All contexts.
  */
@@ -168,6 +168,10 @@ static const char * const g_apszVmxVDiagDesc[] =
     VMXV_DIAG_DESC(kVmxVDiag_Vmentry_EntryIntInfoErrCodeVec   , "EntryIntInfoErrCodeVec"    ),
     VMXV_DIAG_DESC(kVmxVDiag_Vmentry_EntryIntInfoTypeVecRsvd  , "EntryIntInfoTypeVecRsvd"   ),
     VMXV_DIAG_DESC(kVmxVDiag_Vmentry_EntryXcptErrCodeRsvd     , "EntryXcptErrCodeRsvd"      ),
+    VMXV_DIAG_DESC(kVmxVDiag_Vmentry_EptpAccessDirty          , "EptpAccessDirty"           ),
+    VMXV_DIAG_DESC(kVmxVDiag_Vmentry_EptpPageWalkLength       , "EptpPageWalkLength"        ),
+    VMXV_DIAG_DESC(kVmxVDiag_Vmentry_EptpMemType              , "EptpMemType"               ),
+    VMXV_DIAG_DESC(kVmxVDiag_Vmentry_EptpRsvd                 , "EptpRsvd"                  ),
     VMXV_DIAG_DESC(kVmxVDiag_Vmentry_ExitCtlsAllowed1         , "ExitCtlsAllowed1"          ),
     VMXV_DIAG_DESC(kVmxVDiag_Vmentry_ExitCtlsDisallowed0      , "ExitCtlsDisallowed0"       ),
     VMXV_DIAG_DESC(kVmxVDiag_Vmentry_GuestActStateHlt         , "GuestActStateHlt"          ),
