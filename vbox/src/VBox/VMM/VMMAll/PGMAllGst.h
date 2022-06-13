@@ -1,4 +1,4 @@
-/* $Id: PGMAllGst.h 92296 2021-11-09 15:56:26Z vboxsync $ */
+/* $Id: PGMAllGst.h 92297 2021-11-09 16:03:07Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Guest Paging Template - All context code.
  */
@@ -386,7 +386,7 @@ PGM_GST_DECL(int, GetPage)(PVMCPUCC pVCpu, RTGCPTR GCPtr, uint64_t *pfFlags, PRT
                      | (Walk.Core.fEffective & (  PGM_PTATTRS_RW_MASK
                                                 | PGM_PTATTRS_US_MASK))
 # if PGM_WITH_NX(PGM_GST_TYPE, PGM_GST_TYPE)
-                     | (RT_BF_GET(Walk.Core.fEffective, PGM_PTATTRS_X) << X86_PTE_PAE_BIT_NX)
+                     | ((RT_BF_GET(Walk.Core.fEffective, PGM_PTATTRS_X) ^ 1) << X86_PTE_PAE_BIT_NX)
 # endif
                      ;
         else
@@ -396,7 +396,7 @@ PGM_GST_DECL(int, GetPage)(PVMCPUCC pVCpu, RTGCPTR GCPtr, uint64_t *pfFlags, PRT
                                                 | PGM_PTATTRS_US_MASK
                                                 | PGM_PTATTRS_PAT_MASK))
 # if PGM_WITH_NX(PGM_GST_TYPE, PGM_GST_TYPE)
-                     | (RT_BF_GET(Walk.Core.fEffective, PGM_PTATTRS_X) << X86_PTE_PAE_BIT_NX)
+                     | ((RT_BF_GET(Walk.Core.fEffective, PGM_PTATTRS_X) ^ 1) << X86_PTE_PAE_BIT_NX)
 # endif
                      ;
         }
