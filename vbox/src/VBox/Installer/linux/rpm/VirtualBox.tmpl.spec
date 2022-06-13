@@ -1,4 +1,4 @@
-# $Id: VirtualBox.tmpl.spec 91847 2021-10-19 18:06:42Z vboxsync $
+# $Id: VirtualBox.tmpl.spec 92273 2021-11-08 16:14:35Z vboxsync $
 ## @file
 # Spec file for creating VirtualBox rpm packages
 #
@@ -101,6 +101,7 @@ install -m 755 -d $RPM_BUILD_ROOT/usr/share/mime/packages
   %{vbox_python} ./vboxapisetup.py install --prefix %{_prefix} --root $RPM_BUILD_ROOT)
 %endif
 rm -rf sdk/installer
+mv UnattendedTemplates $RPM_BUILD_ROOT/usr/share/virtualbox
 mv nls $RPM_BUILD_ROOT/usr/share/virtualbox
 cp -a src $RPM_BUILD_ROOT/usr/share/virtualbox
 mv VBox.sh $RPM_BUILD_ROOT/usr/bin/VBox

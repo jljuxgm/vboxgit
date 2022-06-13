@@ -1,5 +1,5 @@
 #!/usr/bin/make -f
-# $Id: rules 91857 2021-10-20 06:50:10Z vboxsync $
+# $Id: rules 92273 2021-11-08 16:14:35Z vboxsync $
 ## @file
 # VirtualBox rules.
 #
@@ -205,6 +205,7 @@ binary: build $(if $(NOMODS),,$(bldbase)/modules-stamp)
 	install -d -g 0 -o 0 $(prefix)/usr/lib
 	install -d -g 0 -o 0 $(prefix)/usr/bin
 	install -d -g 0 -o 0 $(prefix)/usr/share/$(package)
+	mv $(archdir)/UnattendedTemplates $(prefix)/usr/share/$(package)/
 	install -d -g 0 -o 0 $(prefix)/usr/share/doc/$(verpkg)
 	$(if $(NOQT),,mv $(archdir)/virtualbox.desktop \
 	   $(prefix)/usr/share/applications/virtualbox.desktop)
