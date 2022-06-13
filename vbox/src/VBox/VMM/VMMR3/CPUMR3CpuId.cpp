@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 89934 2021-06-29 00:05:41Z vboxsync $ */
+/* $Id: CPUMR3CpuId.cpp 90204 2021-07-15 05:02:11Z vboxsync $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -7170,6 +7170,10 @@ DECLCALLBACK(void) cpumR3CpuIdInfo(PVM pVM, PCDBGFINFOHLP pHlp, const char *pszA
                 uint32_t uEAX = pCurLeaf->uEax;
                 uint32_t uECX = pCurLeaf->uEcx;
 
+                /** @todo 0x80000008:EAX[23:16] is only defined for AMD. We'll get 0 on Intel. On
+                 *        AMD if we get 0, the guest physical address width should be taken from
+                 *        0x80000008:EAX[7:0] instead. Guest Physical address width is relevant
+                 *        for guests using nested paging. */
                 pHlp->pfnPrintf(pHlp,
                                 "Physical Address Width:          %d bits\n"
                                 "Virtual Address Width:           %d bits\n"
