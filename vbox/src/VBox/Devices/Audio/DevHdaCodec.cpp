@@ -1,4 +1,4 @@
-/* $Id: DevHdaCodec.cpp 90138 2021-07-09 21:02:07Z vboxsync $ */
+/* $Id: DevHdaCodec.cpp 90139 2021-07-09 21:34:24Z vboxsync $ */
 /** @file
  * Intel HD Audio Controller Emulation - Codec, Sigmatel/IDT STAC9220.
  *
@@ -111,11 +111,8 @@ typedef struct CODECVERB
      * This is always a valid pointer in ring-3, while elsewhere a NULL indicates
      * that we must return to ring-3 to process it.
      *
-     * @returns VINF_SUCCESS
-     * @todo    r=bird: I couldn't spot a single handler not returning VINF_SUCCESS,
-     *          nor could I see what purpose the return code would have other than
-     *          maybe something in VERR_INTERNAL_ERROR area...  Get rid of it and
-     *          make it return @a *puResp instead?
+     * @returns VBox status code (99.9% is VINF_SUCCESS, caller doesn't care much
+     *          what you return at present).
      *
      * @param   pThis   The shared codec intance data.
      * @param   uCmd    The command.
