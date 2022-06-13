@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 94126 2022-03-08 14:18:58Z vboxsync $
+# $Id: vboxwrappers.py 94312 2022-03-19 22:21:52Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 94126 $"
+__version__ = "$Revision: 94312 $"
 
 
 # Standard Python imports.
@@ -3215,9 +3215,9 @@ class TxsConnectTask(TdTaskBase):
             self.oParentTask = dArgs['oParentTask'];
             self.sMachineId  = dArgs['sMachineId'];
 
-        def onGuestPropertyChange(self, sMachineId, sName, sValue, sFlags):
+        def onGuestPropertyChange(self, sMachineId, sName, sValue, sFlags, fWasDeleted):
             """Look for IP address."""
-            reporter.log2('onGuestPropertyChange(,%s,%s,%s,%s)' % (sMachineId, sName, sValue, sFlags));
+            reporter.log2('onGuestPropertyChange(,%s,%s,%s,%s,%s)' % (sMachineId, sName, sValue, sFlags, fWasDeleted));
             if    sMachineId == self.sMachineId \
               and sName  == '/VirtualBox/GuestInfo/Net/0/V4/IP':
                 oParentTask = self.oParentTask;
