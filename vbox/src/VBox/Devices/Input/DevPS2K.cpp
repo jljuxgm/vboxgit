@@ -1,4 +1,4 @@
-/* $Id: DevPS2K.cpp 89982 2021-06-30 23:03:43Z vboxsync $ */
+/* $Id: DevPS2K.cpp 90198 2021-07-14 22:44:42Z vboxsync $ */
 /** @file
  * PS2K - PS/2 keyboard emulation.
  */
@@ -1472,8 +1472,8 @@ int PS2KR3Construct(PPDMDEVINS pDevIns, PPS2K pThis, PPS2KR3 pThisCC, PCFGMNODE 
     pThisCC->Keyboard.IBase.pfnQueryInterface = ps2kR3QueryInterface;
     pThisCC->Keyboard.IPort.pfnPutEventHid    = ps2kR3KeyboardPort_PutEventHid;
 
-    pThis->cmdQ.Hdr.pszDesc = "Kbd Cmd";
-    pThis->keyQ.Hdr.pszDesc = "Kbd Key";
+    pThis->cmdQ.Hdr.pszDescR3 = "Kbd Cmd";
+    pThis->keyQ.Hdr.pszDescR3 = "Kbd Key";
 
     /*
      * Create the input rate throttling timer.

@@ -1,4 +1,4 @@
-/* $Id: DevPS2.h 89935 2021-06-29 06:38:48Z vboxsync $ */
+/* $Id: DevPS2.h 90198 2021-07-14 22:44:42Z vboxsync $ */
 /** @file
  * PS/2 devices - Internal header file.
  */
@@ -33,11 +33,11 @@ typedef struct KBDSTATE *PKBDSTATE;
  * @{ */
 typedef struct PS2QHDR
 {
-    uint32_t volatile   rpos;
-    uint32_t volatile   wpos;
-    uint32_t volatile   cUsed;
-    uint32_t            uPadding;
-    const char          *pszDesc;
+    uint32_t volatile       rpos;
+    uint32_t volatile       wpos;
+    uint32_t volatile       cUsed;
+    uint32_t                uPadding;
+    R3PTRTYPE(const char *) pszDescR3;
 } PS2QHDR;
 /** Pointer to a queue header. */
 typedef PS2QHDR *PPS2QHDR;
