@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 90694 2021-08-16 12:33:15Z vboxsync $ */
+/* $Id: DevVGA-SVGA.cpp 90852 2021-08-24 16:53:54Z vboxsync $ */
 /** @file
  * VMware SVGA device.
  *
@@ -1845,6 +1845,7 @@ static VBOXSTRICTRC vmsvgaWritePort(PPDMDEVINS pDevIns, PVGASTATE pThis, PVGASTA
                     pThis->svga.uWidth  = pThisCC->pDrv->cx;
                     pThis->svga.uHeight = pThisCC->pDrv->cy;
                     pThis->svga.uBpp    = (pThisCC->pDrv->cBits + 7) & ~7;
+                    vmsvgaHCUpdatePitch(pThis, pThisCC);
                 }
 
                 if (    pThis->svga.uWidth  != VMSVGA_VAL_UNINITIALIZED
