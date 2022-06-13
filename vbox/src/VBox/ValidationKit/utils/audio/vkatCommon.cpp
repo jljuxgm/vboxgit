@@ -1,4 +1,4 @@
-/* $Id: vkatCommon.cpp 91603 2021-10-06 17:40:53Z vboxsync $ */
+/* $Id: vkatCommon.cpp 91619 2021-10-07 13:51:22Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) - Self test code.
  */
@@ -554,6 +554,12 @@ int audioTestPlayTone(PAUDIOTESTENV pTstEnv, PAUDIOTESTSTREAM pStream, PAUDIOTES
                     rc = AudioTestMixStreamPlay(&pStream->Mix, abBuf, cbToPlay, &cbPlayed);
                     if (RT_FAILURE(rc))
                         break;
+
+                    if (pTstEnv)
+                    {
+                        /* Also write the beacon data to the test object. */
+                        rc = AudioTestObjWrite(Obj, abBuf, cbToPlay);
+                    }
 
                     cbBeaconPlayed += cbPlayed;
                     cbPlayedTotal  += cbPlayed;
