@@ -1,4 +1,4 @@
-# $Id: Config.kmk 91440 2021-09-28 17:36:07Z vboxsync $
+# $Id: Config.kmk 91443 2021-09-28 18:09:55Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -847,11 +847,16 @@ VBOX_WITH_DHCPD = 1
 VBOX_WITH_CLOUD_NET = 1
 # Use Mac OS X VMNET API instead of network kernel extensions
 ifeq ($(KBUILD_TARGET),darwin)
-VBOX_WITH_VMNET = 1
- ifdef VBOX_WITH_VMNET
-  # Use newer Xcode and SDK 10.15
-  VBOX_WITH_EVEN_NEWER_XCODE=1
-  VBOX_DEF_MACOSX_VERSION_MIN=10.15# Catalina
+ # Ignore VMNET for special builds
+ if !defined(VBOX_ONLY_VALIDATIONKIT) && !defined(VBOX_ONLY_ADDITIONS) && !defined(VBOX_ONLY_DOCS) && !defined(VBOX_ONLY_EXTPACKS)
+  # VMNET can only be compiled with the newer Xcode
+  ifdef VBOX_WITH_EVEN_NEWER_XCODE
+   # Comment out VBOX_WITH_VMNET to use old-style network kernel extensions
+   VBOX_WITH_VMNET = 1
+   ifdef VBOX_WITH_VMNET
+    # Use SDK 10.15
+    VBOX_DEF_MACOSX_VERSION_MIN=10.15# Catalina
+  endif
  endif
 endif
 ## @}
@@ -8328,7 +8333,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 91440 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 91443 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
