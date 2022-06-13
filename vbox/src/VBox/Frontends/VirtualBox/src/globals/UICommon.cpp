@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 91363 2021-09-24 13:08:32Z vboxsync $ */
+/* $Id: UICommon.cpp 91365 2021-09-24 14:42:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -1849,14 +1849,14 @@ QUuid UICommon::showCreateFloppyDiskDialog(QWidget *pParent, const QString &strD
     return QUuid();
 }
 
-int UICommon::openMediumSelectorDialog(QWidget *pParent, UIMediumDeviceType  enmMediumType, QUuid &outUuid,
+int UICommon::openMediumSelectorDialog(QWidget *pParent, UIMediumDeviceType  enmMediumType, QUuid &inOutUuid,
                                        const QString &strMachineFolder, const QString &strMachineName,
                                        const QString &strMachineGuestOSTypeId, bool fEnableCreate, const QUuid &uMachineID /* = QUuid() */)
 {
     QUuid uMachineOrGlobalId = uMachineID == QUuid() ? gEDataManager->GlobalID : uMachineID;
 
     QWidget *pDialogParent = windowManager().realParentWindow(pParent);
-    QPointer<UIMediumSelector> pSelector = new UIMediumSelector(enmMediumType, strMachineName,
+    QPointer<UIMediumSelector> pSelector = new UIMediumSelector(inOutUuid, enmMediumType, strMachineName,
                                                                 strMachineFolder, strMachineGuestOSTypeId,
                                                                 uMachineOrGlobalId, pDialogParent);
 
@@ -1882,8 +1882,8 @@ int UICommon::openMediumSelectorDialog(QWidget *pParent, UIMediumDeviceType  enm
             returnCode = UIMediumSelector::ReturnCode_Rejected;
         else
         {
-            outUuid = selectedMediumIds[0];
-            updateRecentlyUsedMediumListAndFolder(enmMediumType, medium(outUuid).location());
+            inOutUuid = selectedMediumIds[0];
+            updateRecentlyUsedMediumListAndFolder(enmMediumType, medium(inOutUuid).location());
         }
     }
     delete pSelector;

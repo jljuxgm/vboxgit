@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 88447 2021-04-09 18:11:58Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 91365 2021-09-24 14:42:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class implementation.
  */
@@ -4002,7 +4002,10 @@ void UIMachineSettingsStorage::sltChooseExistingMedium()
     const QString strMachineFolder(QFileInfo(m_strMachineSettingsFilePath).absolutePath());
 
     QUuid uMediumId;
-    int iResult = uiCommon().openMediumSelectorDialog(this, m_pMediumIdHolder->type(), uMediumId,
+    if (m_pMediumIdHolder)
+        uMediumId = m_pMediumIdHolder->id();
+
+    int iResult = uiCommon().openMediumSelectorDialog(this, m_pMediumIdHolder->type(), uMediumId /* in/out parameter */,
                                                       strMachineFolder, m_strMachineName,
                                                       m_strMachineGuestOSTypeId,
                                                       true /* enable create action: */, m_uMachineId);

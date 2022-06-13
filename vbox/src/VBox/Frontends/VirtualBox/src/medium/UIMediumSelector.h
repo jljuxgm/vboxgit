@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.h 90326 2021-07-26 09:36:52Z vboxsync $ */
+/* $Id: UIMediumSelector.h 91365 2021-09-24 14:42:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class declaration.
  */
@@ -50,7 +50,7 @@ signals:
 
 public:
 
-    UIMediumSelector(UIMediumDeviceType enmMediumType, const QString &machineName,
+    UIMediumSelector(const QUuid &uCurrentMediumId, UIMediumDeviceType enmMediumType, const QString &machineName,
                      const QString &machineSettingsFilePath, const QString &strMachineGuestOSTypeId,
                      const QUuid &uMachineID, QWidget *pParent);
     /** Disables/enables the create action and controls its visibility. */
