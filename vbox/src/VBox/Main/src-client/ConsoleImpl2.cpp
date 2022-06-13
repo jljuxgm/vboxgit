@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 91503 2021-10-01 08:57:59Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 92133 2021-10-28 10:43:36Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -5513,6 +5513,10 @@ int Console::i_configNetwork(const char *pszDevice,
                 ULONG aliasMode;
                 hrc = natEngine->COMGETTER(AliasMode)(&aliasMode);                          H();
                 InsertConfigInteger(pCfg, "AliasMode", aliasMode);
+
+                BOOL fLocalhostReachable;
+                hrc = natEngine->COMGETTER(LocalhostReachable)(&fLocalhostReachable);       H();
+                InsertConfigInteger(pCfg, "LocalhostReachable", fLocalhostReachable);
 
                 /* port-forwarding */
                 SafeArray<BSTR> pfs;

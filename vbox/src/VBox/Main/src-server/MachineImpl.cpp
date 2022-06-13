@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 92040 2021-10-25 14:49:39Z vboxsync $ */
+/* $Id: MachineImpl.cpp 92133 2021-10-28 10:43:36Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -7310,6 +7310,19 @@ Utf8Str Machine::i_getSnapshotNVRAMFilename()
                                   time.u8Hour, time.u8Minute, time.u8Second, time.u32Nanosecond);
 
     return strNVRAMFilePath;
+}
+
+/**
+ * Returns the version of the settings file.
+ */
+SettingsVersion_T Machine::i_getSettingsVersion(void)
+{
+    AutoCaller autoCaller(this);
+    AssertComRCReturn(autoCaller.rc(), SettingsVersion_Null);
+
+    AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
+
+    return mData->pMachineConfigFile->getSettingsVersion();
 }
 
 /**

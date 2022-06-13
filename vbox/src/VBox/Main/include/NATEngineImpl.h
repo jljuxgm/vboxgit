@@ -1,4 +1,4 @@
-/* $Id: NATEngineImpl.h 90828 2021-08-24 09:44:46Z vboxsync $ */
+/* $Id: NATEngineImpl.h 92133 2021-10-28 10:43:36Z vboxsync $ */
 
 /** @file
  *
@@ -62,6 +62,8 @@ private:
     HRESULT getNetwork(com::Utf8Str &aNetwork);
     HRESULT setHostIP(const com::Utf8Str &aHostIP);
     HRESULT getHostIP(com::Utf8Str &aBindIP);
+    HRESULT setLocalhostReachable(BOOL fLocalhostReachable);
+    HRESULT getLocalhostReachable(BOOL *pfLocalhostReachable);
     /* TFTP properties */
     HRESULT setTFTPPrefix(const com::Utf8Str &aTFTPPrefix);
     HRESULT getTFTPPrefix(com::Utf8Str &aTFTPPrefix);

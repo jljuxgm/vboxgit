@@ -19,7 +19,7 @@
 ]>
 <refentry id="vboxmanage-modifyvm" lang="en">
   <refentryinfo>
-    <pubdate>$Date: 2021-09-28 14:15:49 +0800 (Tue, 28 Sep 2021) $</pubdate>
+    <pubdate>$Date: 2021-10-28 18:43:36 +0800 (Thu, 28 Oct 2021) $</pubdate>
     <title>VBoxManage modifyvm</title>
   </refentryinfo>
 
@@ -358,6 +358,10 @@ time on documenting it. -->
           <arg choice="plain">off</arg>
         </group></arg>
       <arg>--natdnshostresolver<replaceable>N</replaceable>=<group choice="plain">
+          <arg choice="plain">on</arg>
+          <arg choice="plain">off</arg>
+        </group></arg>
+      <arg>--natlocalhostreachable<replaceable>N</replaceable>=<group choice="plain">
           <arg choice="plain">on</arg>
           <arg choice="plain">off</arg>
         </group></arg>
@@ -1672,6 +1676,13 @@ it unless this changes. -->
               Specifies whether the NAT engine uses the host system's
               resolver mechanisms to handle DNS requests. See
               <xref linkend="nat-adv-dns" />.
+            </para></listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><option>--natlocalhostreachable<replaceable>N</replaceable>=on | off</option></term>
+          <listitem><para>
+              Specifies whether the NAT engine allows traffic from the guest directed to
+              10.0.2.2 to pass to the host's loopback interface, i.e. localhost or 127.0.0.1.
             </para></listitem>
         </varlistentry>
         <varlistentry>
