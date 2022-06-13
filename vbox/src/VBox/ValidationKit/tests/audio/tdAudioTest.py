@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tdAudioTest.py 91135 2021-09-07 08:03:30Z vboxsync $
+# $Id: tdAudioTest.py 91182 2021-09-09 15:45:47Z vboxsync $
 
 """
 AudioTest test driver which invokes the VKAT (Validation Kit Audio Test)
@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 91135 $"
+__version__ = "$Revision: 91182 $"
 
 # Standard Python imports.
 from datetime import datetime
@@ -463,7 +463,7 @@ class tdAudioTest(vbox.TestDriver):
                     sCmdArgs = '';
                     for sArg in asArgs:
                         sCmdArgs += sArg + " ";
-                    asArgs   = [ sCmd, 'vbox', '-c', sCmdArgs ];
+                    asArgs   = [ sCmd, oTestVm.getTestUser(), '-c', sCmdArgs ];
                 else:
                     reporter.log('Unable to find SU on guest, falling back to regular starting ...')
 
