@@ -1,4 +1,4 @@
-/* $Id: QIComboBox.h 91436 2021-09-28 13:31:44Z vboxsync $ */
+/* $Id: QIComboBox.h 91523 2021-10-01 15:13:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIComboBox class declaration.
  */
@@ -121,6 +121,7 @@ public:
     /** Marks the line edit of the combobox. Refer to QILineEdit::mark(..). */
     void mark(bool fError, const QString &strErrorMessage = QString());
 
+    /** Inserts separator at position with specified @a iIndex. */
     void insertSeparator(int iIndex);
 
 public slots:
