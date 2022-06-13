@@ -1,4 +1,4 @@
-/* $Id: UINativeWizard.cpp 93660 2022-02-08 15:15:54Z vboxsync $ */
+/* $Id: UINativeWizard.cpp 93661 2022-02-08 15:26:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINativeWizard class implementation.
  */
@@ -646,7 +646,6 @@ void UINativeWizard::resizeToGoldenRatio()
     /* Resize to minimum size-hint: */
     resize(minimumSizeHint());
 }
-
 
 bool UINativeWizard::isLastVisiblePage(int iPageIndex) const
 {

@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMExpertPage.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIWizardCloneVMExpertPage.h 93661 2022-02-08 15:26:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMExpertPage class declaration.
  */
@@ -49,6 +49,7 @@ private slots:
     void sltMACAddressClonePolicyChanged(MACAddressClonePolicy enmMACAddressClonePolicy);
     void sltKeepDiskNamesToggled(bool fKeepDiskNames);
     void sltKeepHardwareUUIDsToggled(bool fKeepHardwareUUIDs);
+    void sltCloneTypeChanged(bool fIsFullClone);
 
 private:
 
@@ -62,6 +63,7 @@ private:
     /** Validation stuff. */
     bool isComplete() const;
     bool validatePage();
+    void setCloneModeGroupBoxEnabled();
 
     UICloneVMNamePathEditor *m_pNamePathGroupBox;
     UICloneVMCloneTypeGroupBox *m_pCloneTypeGroupBox;
