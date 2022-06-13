@@ -1,4 +1,4 @@
-/* $Id: DBGFInfo.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: DBGFInfo.cpp 90549 2021-08-06 13:57:29Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Info.
  */
@@ -59,7 +59,7 @@ static const DBGFINFOHLP g_dbgfR3InfoLogHlp =
 {
     dbgfR3InfoLog_Printf,
     dbgfR3InfoLog_PrintfV,
-    DBGFR3InfoGenricGetOptError,
+    DBGFR3InfoGenericGetOptError,
 };
 
 /** Release logger output. */
@@ -67,7 +67,7 @@ static const DBGFINFOHLP g_dbgfR3InfoLogRelHlp =
 {
     dbgfR3InfoLogRel_Printf,
     dbgfR3InfoLogRel_PrintfV,
-    DBGFR3InfoGenricGetOptError
+    DBGFR3InfoGenericGetOptError
 };
 
 /** Standard error output. */
@@ -75,7 +75,7 @@ static const DBGFINFOHLP g_dbgfR3InfoStdErrHlp =
 {
     dbgfR3InfoStdErr_Printf,
     dbgfR3InfoStdErr_PrintfV,
-    DBGFR3InfoGenricGetOptError
+    DBGFR3InfoGenericGetOptError
 };
 
 
@@ -132,7 +132,7 @@ int dbgfR3InfoTerm(PUVM pUVM)
 /**
  * @interface_method_impl{DBGFINFOHLP,pfnGetOptError}
  */
-VMMR3DECL(void) DBGFR3InfoGenricGetOptError(PCDBGFINFOHLP pHlp, int rc, PRTGETOPTUNION pValueUnion, PRTGETOPTSTATE pState)
+VMMR3DECL(void) DBGFR3InfoGenericGetOptError(PCDBGFINFOHLP pHlp, int rc, PRTGETOPTUNION pValueUnion, PRTGETOPTSTATE pState)
 {
     RT_NOREF(pState);
     char szMsg[1024];

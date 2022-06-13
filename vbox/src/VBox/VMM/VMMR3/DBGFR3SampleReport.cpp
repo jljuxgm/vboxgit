@@ -1,4 +1,4 @@
-/* $Id: DBGFR3SampleReport.cpp 89829 2021-06-22 11:57:02Z vboxsync $ */
+/* $Id: DBGFR3SampleReport.cpp 90549 2021-08-06 13:57:29Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Sample report creation.
  */
@@ -229,7 +229,7 @@ static void dbgfR3SampleReportInfoHlpInit(PDBGFSAMPLEREPORTINFOHLP pHlp)
 
     pHlp->Core.pfnPrintf      = dbgfR3SampleReportInfoHlp_pfnPrintf;
     pHlp->Core.pfnPrintfV     = dbgfR3SampleReportInfoHlp_pfnPrintfV;
-    pHlp->Core.pfnGetOptError = DBGFR3InfoGenricGetOptError;
+    pHlp->Core.pfnGetOptError = DBGFR3InfoGenericGetOptError;
 
     pHlp->pachBuf = (char *)RTMemAllocZ(_4K);
     if (pHlp->pachBuf)

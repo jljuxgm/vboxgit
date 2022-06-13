@@ -1,4 +1,4 @@
-/* $Id: MachineDebuggerImpl.cpp 89696 2021-06-15 09:53:06Z vboxsync $ */
+/* $Id: MachineDebuggerImpl.cpp 90549 2021-08-06 13:57:29Z vboxsync $ */
 /** @file
  * VBox IMachineDebugger COM class implementation (VBoxC).
  */
@@ -924,7 +924,7 @@ static void MachineDebuggerInfoInit(PMACHINEDEBUGGERINOFHLP pHlp)
 {
     pHlp->Core.pfnPrintf        = MachineDebuggerInfoPrintf;
     pHlp->Core.pfnPrintfV       = MachineDebuggerInfoPrintfV;
-    pHlp->Core.pfnGetOptError   = DBGFR3InfoGenricGetOptError;
+    pHlp->Core.pfnGetOptError   = DBGFR3InfoGenericGetOptError;
     pHlp->pszBuf                = NULL;
     pHlp->cbBuf                 = 0;
     pHlp->offBuf                = 0;

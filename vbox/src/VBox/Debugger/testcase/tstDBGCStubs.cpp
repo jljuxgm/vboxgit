@@ -1,4 +1,4 @@
-/* $Id: tstDBGCStubs.cpp 87788 2021-02-18 15:12:31Z vboxsync $ */
+/* $Id: tstDBGCStubs.cpp 90549 2021-08-06 13:57:29Z vboxsync $ */
 /** @file
  * DBGC Testcase - Command Parser, VMM Stub Functions.
  */
@@ -119,7 +119,7 @@ VMMR3DECL(int) DBGFR3InfoEx(PUVM pUVM, VMCPUID idCpu, const char *pszName, const
 {
     return VERR_INTERNAL_ERROR;
 }
-VMMR3DECL(void) DBGFR3InfoGenricGetOptError(PCDBGFINFOHLP pHlp, int rc, union RTGETOPTUNION *pValueUnion, struct RTGETOPTSTATE *pState)
+VMMR3DECL(void) DBGFR3InfoGenericGetOptError(PCDBGFINFOHLP pHlp, int rc, union RTGETOPTUNION *pValueUnion, struct RTGETOPTSTATE *pState)
 {
 }
 VMMR3DECL(bool) DBGFR3IsHalted(PUVM pUVM, VMCPUID idCpu)
