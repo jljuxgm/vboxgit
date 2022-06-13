@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-darwin.cpp 93218 2022-01-13 10:31:55Z vboxsync $ */
+/* $Id: NEMR3Native-darwin.cpp 93397 2022-01-21 13:21:21Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, native ring-3 macOS backend using Hypervisor.framework.
  *
@@ -2693,6 +2693,8 @@ VBOXSTRICTRC nemR3NativeRunGC(PVM pVM, PVMCPU pVCpu)
         nemR3DarwinLogState(pVM, pVCpu);
 #endif
 
+    AssertReturn(NEMR3CanExecuteGuest(pVM, pVCpu), VERR_NEM_IPE_9);
+
     /*
      * Try switch to NEM runloop state.
      */
@@ -2738,6 +2740,18 @@ VBOXSTRICTRC nemR3NativeRunGC(PVM pVM, PVMCPU pVCpu)
         {
             if (rcStrict == VINF_EM_RAW_TO_R3)
                 rcStrict = VINF_SUCCESS;
+            break;
+        }
+
+        /*
+         * Do not execute in HV if the A20 isn't enabled.
+         */
+        if (PGMPhysIsA20Enabled(pVCpu))
+        { /* likely */ }
+        else
+        {
+            rcStrict = VINF_EM_RESCHEDULE_REM;
+            LogFlow(("NEM/%u: breaking: A20 disabled\n", pVCpu->idCpu));
             break;
         }
 
