@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxTranslator.h 90828 2021-08-24 09:44:46Z vboxsync $ */
+/* $Id: VirtualBoxTranslator.h 90881 2021-08-25 13:28:50Z vboxsync $ */
 /** @file
  * VirtualBox Translator.
  */
@@ -37,6 +37,8 @@ public:
     virtual ~VirtualBoxTranslator();
 
     static VirtualBoxTranslator *instance();
+    /* Returns instance if exists, returns NULL otherwise. */
+    static VirtualBoxTranslator *tryInstance();
     void release();
 
     /* Load language based on settings in the VirtualBox config */
@@ -89,8 +91,6 @@ private:
                             const char *aComment = NULL,
                             const int   aNum = -1);
 
-    /* Returns instance if exists, returns NULL otherwise. */
-    static VirtualBoxTranslator *i_instance();
 };
 
 #endif /* !MAIN_INCLUDED_VirtualBoxTranslator_h */

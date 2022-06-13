@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxClientImpl.cpp 90879 2021-08-25 12:20:08Z vboxsync $ */
+/* $Id: VirtualBoxClientImpl.cpp 90881 2021-08-25 13:28:50Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -83,7 +83,7 @@ public:
         {
             case VBoxEventType_OnLanguageChanged:
             {
-                VirtualBoxTranslator *pTranslator = VirtualBoxTranslator::instance();
+                VirtualBoxTranslator *pTranslator = VirtualBoxTranslator::tryInstance();
                 if (pTranslator)
                 {
                     ComPtr<ILanguageChangedEvent> pEvent = aEvent;
