@@ -1,4 +1,4 @@
-/* $Id: IEMAllAImplC.cpp 94538 2022-04-10 14:16:03Z vboxsync $ */
+/* $Id: IEMAllAImplC.cpp 94539 2022-04-10 14:19:14Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in Assembly, portable C variant.
  */
@@ -26,9 +26,11 @@
 #include <iprt/uint128.h>
 #include <iprt/uint256.h>
 
+#ifndef IN_RING0
 RT_C_DECLS_BEGIN
-#include <softfloat.h>
+# include <softfloat.h>
 RT_C_DECLS_END
+#endif
 
 
 /*********************************************************************************************************************************
