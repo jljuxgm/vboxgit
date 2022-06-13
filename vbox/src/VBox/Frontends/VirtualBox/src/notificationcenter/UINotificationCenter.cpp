@@ -1,4 +1,4 @@
-/* $Id: UINotificationCenter.cpp 90566 2021-08-07 11:41:15Z vboxsync $ */
+/* $Id: UINotificationCenter.cpp 90600 2021-08-10 15:13:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINotificationCenter class implementation.
  */
@@ -170,12 +170,14 @@ void UINotificationCenter::invoke()
 
 QUuid UINotificationCenter::append(UINotificationObject *pObject)
 {
-    /* Open if not yet: */
-    if (!m_pOpenButton->isChecked())
+    AssertPtrReturn(m_pModel, QUuid());
+    const QUuid uId = m_pModel->appendObject(pObject);
+
+    /* Open if object is critical and center isn't opened yet: */
+    if (!m_pOpenButton->isChecked() && pObject->isCritical())
         m_pOpenButton->animateClick();
 
-    AssertPtrReturn(m_pModel, QUuid());
-    return m_pModel->appendObject(pObject);
+    return uId;
 }
 
 void UINotificationCenter::revoke(const QUuid &uId)

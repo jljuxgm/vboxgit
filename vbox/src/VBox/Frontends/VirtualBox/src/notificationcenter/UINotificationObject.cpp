@@ -1,4 +1,4 @@
-/* $Id: UINotificationObject.cpp 90591 2021-08-10 10:19:38Z vboxsync $ */
+/* $Id: UINotificationObject.cpp 90600 2021-08-10 15:13:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINotificationObject class implementation.
  */
@@ -68,6 +68,11 @@ QString UINotificationProgress::error() const
     return m_pTask ? m_pTask->errorMessage() : QString();
 }
 
+bool UINotificationProgress::isCritical() const
+{
+    return true;
+}
+
 void UINotificationProgress::handle()
 {
     /* Prepare task: */
@@ -132,6 +137,11 @@ ulong UINotificationDownloader::percent() const
 QString UINotificationDownloader::error() const
 {
     return m_strError;
+}
+
+bool UINotificationDownloader::isCritical() const
+{
+    return true;
 }
 
 void UINotificationDownloader::handle()

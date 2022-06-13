@@ -1,4 +1,4 @@
-/* $Id: UINotificationObject.h 90590 2021-08-10 10:12:47Z vboxsync $ */
+/* $Id: UINotificationObject.h 90600 2021-08-10 15:13:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINotificationObject class declaration.
  */
@@ -52,6 +52,8 @@ public:
     /** Constructs notification-object. */
     UINotificationObject();
 
+    /** Returns whether object is critical. */
+    virtual bool isCritical() const = 0;
     /** Returns object name. */
     virtual QString name() const = 0;
     /** Returns object details. */
@@ -97,6 +99,8 @@ public:
     /** Returns error-message if any. */
     QString error() const;
 
+    /** Returns whether object is critical. */
+    virtual bool isCritical() const;
     /** Handles notification-object being added. */
     virtual void handle() /* override final */;
 
@@ -160,6 +164,8 @@ public:
     /** Returns error-message if any. */
     QString error() const;
 
+    /** Returns whether object is critical. */
+    virtual bool isCritical() const;
     /** Handles notification-object being added. */
     virtual void handle() /* override final */;
 
