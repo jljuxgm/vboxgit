@@ -1,4 +1,4 @@
-/* $Id: VirtioCore.cpp 92942 2021-12-15 16:35:30Z vboxsync $ */
+/* $Id: VirtioCore.cpp 92943 2021-12-15 16:36:24Z vboxsync $ */
 
 /** @file
  * VirtioCore - Virtio Core (PCI, feature & config mgt, queue mgt & proxy, notification mgt)
@@ -2071,8 +2071,8 @@ int virtioCoreR3LegacyDeviceLoadExec(PVIRTIOCORE pVirtio, PCPDMDEVHLPR3 pHlp,
 #ifdef LOG_ENABLED
     char szOut[80] = { 0 };
     virtioCoreFormatDeviceStatus(pVirtio->fDeviceStatus, szOut, sizeof(szOut));
-#endif
     Log(("Loaded legacy device status = (%s)\n", szOut));
+#endif
 
     rc = pHlp->pfnSSMGetU8(   pSSM, &pVirtio->uISR);
     AssertRCReturn(rc, rc);
