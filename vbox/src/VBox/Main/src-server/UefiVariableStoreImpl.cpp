@@ -1,4 +1,4 @@
-/* $Id: UefiVariableStoreImpl.cpp 91457 2021-09-29 14:08:32Z vboxsync $ */
+/* $Id: UefiVariableStoreImpl.cpp 91458 2021-09-29 14:17:49Z vboxsync $ */
 /** @file
  * VirtualBox COM NVRAM store class implementation
  */
@@ -534,7 +534,7 @@ int UefiVariableStore::i_uefiVarStoreQueryVarOwnerUuid(const char *pszVar, PRTUU
  * Converts the given vector of variables attributes to a bitmask used internally.
  *
  * @returns Mask of UEFI variable attributes.
- * @param   vectAttributes      Vector of variable atttributes.
+ * @param   vecAttributes       Vector of variable atttributes.
  */
 uint32_t UefiVariableStore::i_uefiVarAttrToMask(const std::vector<UefiVariableAttributes_T> &vecAttributes)
 {
