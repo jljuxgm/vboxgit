@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 94203 2022-03-12 19:40:19Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 94204 2022-03-12 19:57:40Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -636,19 +636,6 @@ void printUsage(USAGECATEGORY enmCommand, uint64_t fSubcommandScope, PRTSTREAM p
                      "                            [--move <path>]\n"
                      "                            [--setlocation <path>]\n"
                      "                            [--description <description string>]"
-                     "\n", SEP);
-
-    if (enmCommand == USAGE_GETEXTRADATA || enmCommand == USAGE_S_ALL)
-        RTStrmPrintf(pStrm,
-                           "%s getextradata %s    global|<uuid|vmname>\n"
-                     "                            <key>|[enumerate]\n"
-                     "\n", SEP);
-
-    if (enmCommand == USAGE_SETEXTRADATA || enmCommand == USAGE_S_ALL)
-        RTStrmPrintf(pStrm,
-                           "%s setextradata %s    global|<uuid|vmname>\n"
-                     "                            <key>\n"
-                     "                            [<value>] (no value deletes key)\n"
                      "\n", SEP);
 
     if (enmCommand == USAGE_SETPROPERTY || enmCommand == USAGE_S_ALL)
