@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 94211 2022-03-13 20:40:25Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 94212 2022-03-13 20:47:36Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -639,28 +639,6 @@ void printUsage(USAGECATEGORY enmCommand, uint64_t fSubcommandScope, PRTSTREAM p
                      "                            [--setlocation <path>]\n"
                      "                            [--description <description string>]"
                      "\n", SEP);
-
-#if defined(VBOX_WITH_NETFLT)
-    if (enmCommand == USAGE_HOSTONLYIFS || enmCommand == USAGE_S_ALL)
-    {
-        RTStrmPrintf(pStrm,
-                           "%s hostonlyif %s      ipconfig <name>\n"
-                     "                            [--dhcp |\n"
-                     "                            --ip <ipv4> [--netmask <ipv4> (def:255.255.255.0)]|\n"
-                     "                            --ipv6 <ipv6> [--netmasklengthv6 <N> (def:64)]]", SEP);
-# if !defined(RT_OS_SOLARIS) || defined(VBOX_ONLY_DOCS)
-        RTStrmPrintf(pStrm,
-                     " |\n"
-                     "                            create |\n"
-                     "                            remove <name>\n");
-# else
-        RTStrmPrintf(pStrm,
-                     "\n");
-# endif
-        RTStrmPrintf(pStrm,
-                     "\n");
-    }
-#endif
 
     if (enmCommand == USAGE_USBDEVSOURCE || enmCommand == USAGE_S_ALL)
     {

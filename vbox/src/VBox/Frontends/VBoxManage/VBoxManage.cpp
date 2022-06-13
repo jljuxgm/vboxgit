@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 94211 2022-03-13 20:40:25Z vboxsync $ */
+/* $Id: VBoxManage.cpp 94212 2022-03-13 20:47:36Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -241,7 +241,7 @@ static const VBMGCMD g_aCommands[] =
     { "export",             USAGE_S_NEWCMD,       HELP_CMD_EXPORT, handleExportAppliance,      0 },
     { "signova",            USAGE_S_NEWCMD,      HELP_CMD_SIGNOVA, handleSignAppliance,        VBMG_CMD_F_NO_COM },
 #ifdef VBOX_WITH_NETFLT
-    { "hostonlyif",         USAGE_HOSTONLYIFS,      VBMG_CMD_TODO, handleHostonlyIf,           0 },
+    { "hostonlyif",         USAGE_S_NEWCMD,   HELP_CMD_HOSTONLYIF, handleHostonlyIf,           0 },
 #endif
 #ifdef VBOX_WITH_VMNET
     { "hostonlynet",        USAGE_S_NEWCMD,  HELP_CMD_HOSTONLYNET, handleHostonlyNet,          0 },
