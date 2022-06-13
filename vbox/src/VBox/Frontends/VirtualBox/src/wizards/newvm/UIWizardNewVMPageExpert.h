@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.h 90169 2021-07-13 16:16:35Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.h 90174 2021-07-14 07:27:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class declaration.
  */
@@ -37,6 +37,7 @@ class QGroupBox;
 class QLabel;
 class QLineEdit;
 class QVBoxLayout;
+class UIAdditionalUnattendedOptions;
 class UIFilePathSelector;
 class UIGAInstallationGroupBox;
 class UIHostnameDomainNameEditor;
@@ -124,32 +125,24 @@ private:
 
 
     /** @name Variables
-     * @{ */
-       UIToolBox  *m_pToolBox;
-       QGroupBox *m_pDiskFormatGroupBox;
-       QGroupBox *m_pDiskVariantGroupBox;
-       QLabel *m_pLocationLabel;
-       QLineEdit *m_pLocationEditor;
-       QIToolButton *m_pLocationOpenButton;
-       QLabel *m_pMediumSizeEditorLabel;
-       UIMediumSizeEditor *m_pMediumSizeEditor;
-       QButtonGroup *m_pFormatButtonGroup;
-       QCheckBox *m_pFixedCheckBox;
-       QCheckBox *m_pSplitBox;
-       UINameAndSystemEditor *m_pNameAndSystemEditor;
-       QCheckBox *m_pSkipUnattendedCheckBox;
-       QGridLayout *m_pNameAndSystemLayout;
-       QGroupBox *m_pAdditionalOptionsContainer;
-       QLabel *m_pProductKeyLabel;
-       QLineEdit *m_pProductKeyLineEdit;
-       UIHostnameDomainNameEditor *m_pHostnameDomainNameEditor;
-
-
-    QCheckBox *m_pStartHeadlessCheckBox;
-    UIGAInstallationGroupBox *m_pGAInstallationISOContainer;
-    QGroupBox *m_pUserNameContainer;
-    UIUserNamePasswordGroupBox *m_pUserNamePasswordGroupBox;
-
+      * @{ */
+        UIToolBox  *m_pToolBox;
+        QGroupBox *m_pDiskFormatGroupBox;
+        QGroupBox *m_pDiskVariantGroupBox;
+        QLabel *m_pLocationLabel;
+        QLineEdit *m_pLocationEditor;
+        QIToolButton *m_pLocationOpenButton;
+        QLabel *m_pMediumSizeEditorLabel;
+        UIMediumSizeEditor *m_pMediumSizeEditor;
+        QButtonGroup *m_pFormatButtonGroup;
+        QCheckBox *m_pFixedCheckBox;
+        QCheckBox *m_pSplitBox;
+        UINameAndSystemEditor *m_pNameAndSystemEditor;
+        QCheckBox *m_pSkipUnattendedCheckBox;
+        QGridLayout *m_pNameAndSystemLayout;
+        UIAdditionalUnattendedOptions *m_pAdditionalOptionsContainer;
+        UIGAInstallationGroupBox *m_pGAInstallationISOContainer;
+        UIUserNamePasswordGroupBox *m_pUserNamePasswordGroupBox;
     /** @} */
 };
 
