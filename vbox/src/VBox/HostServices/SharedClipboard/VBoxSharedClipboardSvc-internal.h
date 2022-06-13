@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-internal.h 90238 2021-07-19 13:48:09Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-internal.h 91622 2021-10-07 20:45:01Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Internal header.
  */
@@ -204,14 +204,14 @@ typedef struct _SHCLCLIENT
     struct
     {
         /** The client's HGCM call handle. Needed for completing a deferred call. */
-        VBOXHGCMCALLHANDLE   hHandle;
+        VBOXHGCMCALLHANDLE      hHandle;
         /** Message type (function number) to use when completing the deferred call.
          *  A non-0 value means the client is in pending mode. */
-        uint32_t             uType;
+        uint32_t                uType;
         /** Parameter count to use when completing the deferred call. */
-        uint32_t             cParms;
+        uint32_t                cParms;
         /** Parameters to use when completing the deferred call. */
-        PVBOXHGCMSVCPARM     paParms;
+        PVBOXHGCMSVCPARM        paParms;
     } Pending;
 } SHCLCLIENT, *PSHCLCLIENT;
 
