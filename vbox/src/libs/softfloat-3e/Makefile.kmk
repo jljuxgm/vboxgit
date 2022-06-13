@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 94481 2022-04-05 22:41:22Z vboxsync $
+# $Id: Makefile.kmk 94483 2022-04-06 00:23:00Z vboxsync $
 ## @file
 # Sub-Makefile for SoftFloat-3e.
 #
@@ -37,6 +37,9 @@ else
  VBox-SoftFloat_INCS.amd64 := build/Linux-x86_64-GCC source/include
 endif
 VBox-SoftFloat_INCS        := source source/$(VBOX_SOFTFLOAT_SPECIALIZATION)
+
+# -wd4146: primitives.h(74): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+VBox-SoftFloat_CFLAGS.win  := -wd4146
 
 # Primitives:
 VBox-SoftFloat_SOURCES     := \
