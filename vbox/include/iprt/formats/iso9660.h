@@ -1,4 +1,4 @@
-/* $Id: iso9660.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: iso9660.h 94278 2022-03-17 01:33:26Z vboxsync $ */
 /** @file
  * IPRT, ISO 9660 File System
  */
@@ -1340,7 +1340,7 @@ typedef ISO9660RRIPNM const *PCISO9660RRIPNM;
 #define ISO9660RRIP_NM_F_PARENT         UINT8_C(0x04)
 /** Reserved / historically was uname network node name. */
 #define ISO9660RRIP_NM_F_UNAME          UINT8_C(0x20)
-/** Reserved mask (considers historically bits reserved). */
+/** Reserved mask (considers historical bits reserved). */
 #define ISO9660RRIP_NM_F_RESERVED_MASK  UINT8_C(0xf8)
 /** @} */
 
