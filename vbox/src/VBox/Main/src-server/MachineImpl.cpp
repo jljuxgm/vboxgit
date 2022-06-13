@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 94084 2022-03-03 22:22:30Z vboxsync $ */
+/* $Id: MachineImpl.cpp 94090 2022-03-04 15:48:31Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -5551,6 +5551,9 @@ HRESULT Machine::i_setGuestPropertyToService(const com::Utf8Str &aName, const co
         uint32_t fFlags = GUEST_PROP_F_NILFLAG;
         if (aFlags.length() && RT_FAILURE(GuestPropValidateFlags(aFlags.c_str(), &fFlags)))
             return setError(E_INVALIDARG, tr("Invalid guest property flag values: '%s'"), aFlags.c_str());
+
+        if (fFlags & (GUEST_PROP_F_TRANSIENT | GUEST_PROP_F_TRANSRESET))
+            return setError(E_INVALIDARG, tr("Properties with TRANSIENT or TRANSRESET flag cannot be set or modified if VM is not running"));
 
         HWData::GuestPropertyMap::iterator it = mHWData->mGuestProperties.find(aName);
         if (it == mHWData->mGuestProperties.end())
