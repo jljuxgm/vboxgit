@@ -1,4 +1,4 @@
-/* $Id: tstDevicePdmDevHlpR0.cpp 92124 2021-10-28 07:32:42Z vboxsync $ */
+/* $Id: tstDevicePdmDevHlpR0.cpp 93110 2021-12-31 15:58:47Z vboxsync $ */
 /** @file
  * tstDevice - Test framework for PDM devices/drivers, PDM fake R0 helper implementation.
  */
@@ -328,6 +328,15 @@ static DECLCALLBACK(VMCPUID) pdmR0DevHlp_GetCurrentCpuId(PPDMDEVINS pDevIns)
     LogFlow(("pdmR0DevHlp_GetCurrentCpuId: caller='%p'/%d for CPU %u\n", pDevIns, pDevIns->iInstance, 0 /*idCpu*/));
     AssertFailed();
     return 0; //idCpu;
+}
+
+
+/** @interface_method_impl{PDMDEVHLPR0,pfnGetMainExecutionEngine} */
+static DECLCALLBACK(uint8_t) pdmR0DevHlp_GetMainExecutionEngine(PPDMDEVINS pDevIns)
+{
+    PDMDEV_ASSERT_DEVINS(pDevIns);
+    LogFlow(("pdmR0DevHlp_GetMainExecutionEngine: caller='%s'/%d:\n", pDevIns->pReg->szName, pDevIns->iInstance));
+    return VM_EXEC_ENGINE_NOT_SET;
 }
 
 
@@ -1412,6 +1421,7 @@ const PDMDEVHLPR0 g_tstDevPdmDevHlpR0 =
     pdmR0DevHlp_GetVM,
     pdmR0DevHlp_GetVMCPU,
     pdmR0DevHlp_GetCurrentCpuId,
+    pdmR0DevHlp_GetMainExecutionEngine,
     pdmR0DevHlp_TimerFromMicro,
     pdmR0DevHlp_TimerFromMilli,
     pdmR0DevHlp_TimerFromNano,
