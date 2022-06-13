@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv-linux.c 90577 2021-08-09 09:57:00Z vboxsync $ */
+/* $Id: alloc-r0drv-linux.c 90794 2021-08-23 13:16:11Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, Linux.
  */
@@ -401,7 +401,7 @@ RTR0DECL(void *) RTMemContAlloc(PRTCCPHYS pPhys, size_t cb)
     /*
      * validate input.
      */
-    Assert(VALID_PTR(pPhys));
+    AssertPtr(pPhys);
     Assert(cb > 0);
 
     /*

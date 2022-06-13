@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv-nt.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: alloc-r0drv-nt.cpp 90794 2021-08-23 13:16:11Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, NT.
  */
@@ -100,7 +100,7 @@ RTR0DECL(void *) RTMemContAlloc(PRTCCPHYS pPhys, size_t cb)
     /*
      * validate input.
      */
-    Assert(VALID_PTR(pPhys));
+    AssertPtr(pPhys);
     Assert(cb > 0);
 
     /*

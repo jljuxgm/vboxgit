@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-freebsd.c 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: timer-r0drv-freebsd.c 90794 2021-08-23 13:16:11Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, FreeBSD.
  */
@@ -157,7 +157,7 @@ RTDECL(int) RTTimerCreateEx(PRTTIMER *ppTimer, uint64_t u64NanoInterval, uint32_
  */
 DECLINLINE(bool) rtTimerIsValid(PRTTIMER pTimer)
 {
-    AssertReturn(VALID_PTR(pTimer), false);
+    AssertPtrReturn(pTimer, false);
     AssertReturn(pTimer->u32Magic == RTTIMER_MAGIC, false);
     return true;
 }

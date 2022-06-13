@@ -1,4 +1,4 @@
-/* $Id: utf-16.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: utf-16.cpp 90794 2021-08-23 13:16:11Z vboxsync $ */
 /** @file
  * IPRT - UTF-16.
  */
@@ -739,8 +739,8 @@ RTDECL(int)  RTUtf16ToUtf8Tag(PCRTUTF16 pwszString, char **ppszString, const cha
     /*
      * Validate input.
      */
-    Assert(VALID_PTR(ppszString));
-    Assert(VALID_PTR(pwszString));
+    AssertPtr(ppszString);
+    AssertPtr(pwszString);
     *ppszString = NULL;
 
     /*
@@ -786,8 +786,8 @@ RTDECL(int)  RTUtf16BigToUtf8Tag(PCRTUTF16 pwszString, char **ppszString, const 
     /*
      * Validate input.
      */
-    Assert(VALID_PTR(ppszString));
-    Assert(VALID_PTR(pwszString));
+    AssertPtr(ppszString);
+    AssertPtr(pwszString);
     *ppszString = NULL;
 
     /*
@@ -825,8 +825,8 @@ RTDECL(int)  RTUtf16LittleToUtf8Tag(PCRTUTF16 pwszString, char **ppszString, con
     /*
      * Validate input.
      */
-    Assert(VALID_PTR(ppszString));
-    Assert(VALID_PTR(pwszString));
+    AssertPtr(ppszString);
+    AssertPtr(pwszString);
     *ppszString = NULL;
 
     /*

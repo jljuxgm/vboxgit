@@ -1,4 +1,4 @@
-/* $Id: utf-16-latin-1.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: utf-16-latin-1.cpp 90794 2021-08-23 13:16:11Z vboxsync $ */
 /** @file
  * IPRT - Latin-1 and UTF-16.
  */
@@ -184,8 +184,8 @@ RTDECL(int)  RTUtf16ToLatin1Tag(PCRTUTF16 pwszString, char **ppszString, const c
     /*
      * Validate input.
      */
-    Assert(VALID_PTR(ppszString));
-    Assert(VALID_PTR(pwszString));
+    AssertPtr(ppszString);
+    AssertPtr(pwszString);
     *ppszString = NULL;
 
     /*
@@ -363,8 +363,8 @@ RTDECL(int) RTLatin1ToUtf16Tag(const char *pszString, PRTUTF16 *ppwszString, con
     /*
      * Validate input.
      */
-    Assert(VALID_PTR(ppwszString));
-    Assert(VALID_PTR(pszString));
+    AssertPtr(ppwszString);
+    AssertPtr(pszString);
     *ppwszString = NULL;
 
     /*
@@ -405,9 +405,9 @@ RTDECL(int)  RTLatin1ToUtf16ExTag(const char *pszString, size_t cchString,
     /*
      * Validate input.
      */
-    Assert(VALID_PTR(pszString));
-    Assert(VALID_PTR(ppwsz));
-    Assert(!pcwc || VALID_PTR(pcwc));
+    AssertPtr(pszString);
+    AssertPtr(ppwsz);
+    AssertPtrNull(pcwc);
 
     /*
      * Validate the input and calculate the length of the UTF-16 string.

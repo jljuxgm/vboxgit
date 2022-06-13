@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 90785 2021-08-23 09:43:25Z vboxsync $ */
+/* $Id: VM.cpp 90794 2021-08-23 13:16:11Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -582,7 +582,7 @@ static DECLCALLBACK(int) vmR3CreateU(PUVM pUVM, uint32_t cCpus, PFNCFGMCONSTRUCT
     if (RT_SUCCESS(rc))
     {
         PVM pVM = pUVM->pVM = CreateVMReq.pVMR3;
-        AssertRelease(VALID_PTR(pVM));
+        AssertRelease(RT_VALID_PTR(pVM));
         AssertRelease(pVM->pVMR0ForCall == CreateVMReq.pVMR0);
         AssertRelease(pVM->pSession == pUVM->vm.s.pSession);
         AssertRelease(pVM->cCpus == cCpus);

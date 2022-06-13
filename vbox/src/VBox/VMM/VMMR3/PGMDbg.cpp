@@ -1,4 +1,4 @@
-/* $Id: PGMDbg.cpp 90439 2021-07-30 16:41:49Z vboxsync $ */
+/* $Id: PGMDbg.cpp 90794 2021-08-23 13:16:11Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - Debugger & Debugging APIs.
  */
@@ -641,11 +641,11 @@ VMMR3_INT_DECL(int) PGMR3DbgScanPhysical(PVM pVM, RTGCPHYS GCPhys, RTGCPHYS cbRa
     /*
      * Validate and adjust the input a bit.
      */
-    if (!VALID_PTR(pGCPhysHit))
+    if (!RT_VALID_PTR(pGCPhysHit))
         return VERR_INVALID_POINTER;
     *pGCPhysHit = NIL_RTGCPHYS;
 
-    if (    !VALID_PTR(pabNeedle)
+    if (    !RT_VALID_PTR(pabNeedle)
         ||  GCPhys == NIL_RTGCPHYS)
         return VERR_INVALID_POINTER;
     if (!cbNeedle)
@@ -806,11 +806,11 @@ VMMR3_INT_DECL(int) PGMR3DbgScanVirtual(PVM pVM, PVMCPU pVCpu, RTGCPTR GCPtr, RT
     /*
      * Validate and adjust the input a bit.
      */
-    if (!VALID_PTR(pGCPtrHit))
+    if (!RT_VALID_PTR(pGCPtrHit))
         return VERR_INVALID_POINTER;
     *pGCPtrHit = 0;
 
-    if (!VALID_PTR(pabNeedle))
+    if (!RT_VALID_PTR(pabNeedle))
         return VERR_INVALID_POINTER;
     if (!cbNeedle)
         return VERR_INVALID_PARAMETER;

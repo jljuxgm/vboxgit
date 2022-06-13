@@ -1,4 +1,4 @@
-/* $Id: PGMRZDynMap.cpp 86473 2020-10-07 17:30:25Z vboxsync $ */
+/* $Id: PGMRZDynMap.cpp 90794 2021-08-23 13:16:11Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, dynamic mapping cache.
  */
@@ -960,7 +960,7 @@ static int pgmR0DynMapAddSeg(PPGMRZDYNMAP pThis, uint32_t cPages)
     if (RT_SUCCESS(rc))
     {
         uint8_t            *pbPage = (uint8_t *)RTR0MemObjAddress(pSeg->hMemObj);
-        AssertMsg(VALID_PTR(pbPage) && !((uintptr_t)pbPage & PAGE_OFFSET_MASK), ("%p\n", pbPage));
+        AssertMsg(RT_VALID_PTR(pbPage) && !((uintptr_t)pbPage & PAGE_OFFSET_MASK), ("%p\n", pbPage));
         memset(pbPage, 0xfe, cPages << PAGE_SHIFT);
 
         /*
