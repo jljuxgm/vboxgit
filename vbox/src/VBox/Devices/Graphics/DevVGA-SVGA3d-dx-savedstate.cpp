@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-dx-savedstate.cpp 94205 2022-03-12 20:12:21Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-dx-savedstate.cpp 94215 2022-03-14 06:22:15Z vboxsync $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - DX backend saved state.
  */
@@ -276,7 +276,7 @@ static int vmsvga3dDXSaveSurface(PCPDMDEVHLPR3 pHlp, PVGASTATECC pThisCC, PSSMHA
 
             if (!VMSVGA3DSURFACE_HAS_HW_SURFACE(pSurface))
             {
-                if (pMipmapLevel->fDirty && pMipmapLevel->pSurfaceData)
+                if (pMipmapLevel->pSurfaceData)
                 {
                     /* Data follows */
                     rc = pHlp->pfnSSMPutBool(pSSM, true);
