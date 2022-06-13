@@ -1,4 +1,4 @@
-/* $Id: display-helper.h 93383 2022-01-20 19:32:38Z vboxsync $ */
+/* $Id: display-helper.h 93384 2022-01-20 19:48:25Z vboxsync $ */
 /** @file
  *
  * Definitions for Desktop Environment helpers.
@@ -81,9 +81,9 @@ typedef struct
     /**
      * Register notification callback for display offsets change event.
      *
-     * @param   pfnNotificationCallback     Notification callback.
+     * @param   pfnCb   Notification callback.
      */
-    DECLCALLBACKMEMBER(void, pfnSubscribeDisplayOffsetChangeNotification, (FNDISPLAYOFFSETCHANGE *pfnNotificationCallback));
+    DECLCALLBACKMEMBER(void, pfnSubscribeDisplayOffsetChangeNotification, (FNDISPLAYOFFSETCHANGE *pfnCb));
 
     /**
      * Unregister notification callback for display offsets change event.
