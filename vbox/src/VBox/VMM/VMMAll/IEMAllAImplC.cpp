@@ -1,4 +1,4 @@
-/* $Id: IEMAllAImplC.cpp 93847 2022-02-18 15:13:28Z vboxsync $ */
+/* $Id: IEMAllAImplC.cpp 93848 2022-02-18 15:35:59Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in Assembly, portable C variant.
  */
@@ -1522,7 +1522,6 @@ IEM_DECL_IMPL_DEF(void, iemAImpl_cmpxchg16b_locked,(PRTUINT128U pu128Dst, PRTUIN
 
 #endif /* defined(IEM_WITHOUT_ASSEMBLY) */
 
-
 # if !defined(RT_ARCH_ARM64) /** @todo may need this for unaligned accesses... */
 IEM_DECL_IMPL_DEF(void, iemAImpl_cmpxchg16b_fallback,(PRTUINT128U pu128Dst, PRTUINT128U pu128RaxRdx,
                                                       PRTUINT128U pu128RbxRcx, uint32_t *pEFlags))
@@ -1542,6 +1541,7 @@ IEM_DECL_IMPL_DEF(void, iemAImpl_cmpxchg16b_fallback,(PRTUINT128U pu128Dst, PRTU
 }
 #endif /* !RT_ARCH_ARM64 */
 
+#if defined(IEM_WITHOUT_ASSEMBLY)
 
 /* Unlocked versions mapped to the locked ones: */
 
@@ -1587,6 +1587,8 @@ IEM_DECL_IMPL_DEF(void, iemAImpl_cmpxchg16b,(PRTUINT128U pu128Dst, PRTUINT128U p
 {
     iemAImpl_cmpxchg16b_locked(pu128Dst, pu128RaxRdx, pu128RbxRcx, pEFlags);
 }
+
+#endif /* defined(IEM_WITHOUT_ASSEMBLY) */
 
 #if !defined(RT_ARCH_AMD64) || defined(IEM_WITHOUT_ASSEMBLY)
 
