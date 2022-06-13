@@ -1,4 +1,4 @@
-/* $Id: krnlmod-darwin.cpp 90789 2021-08-23 10:27:29Z vboxsync $ */
+/* $Id: krnlmod-darwin.cpp 90880 2021-08-25 13:14:57Z vboxsync $ */
 /** @file
  * IPRT - Kernel module, Darwin.
  */
@@ -228,8 +228,8 @@ RTDECL(uint32_t) RTKrnlModLoadedGetCount(void)
 RTDECL(int) RTKrnlModLoadedQueryInfoAll(PRTKRNLMODINFO pahKrnlModInfo, uint32_t cEntriesMax,
                                         uint32_t *pcEntries)
 {
-    AssertPtrReturn(pahKrnlModInfo, VERR_INVALID_POINTER);
-    AssertReturn(cEntriesMax == 0, VERR_INVALID_PARAMETER);
+    if (cEntriesMax > 0)
+        AssertPtrReturn(pahKrnlModInfo, VERR_INVALID_POINTER);
 
     int rc = VINF_SUCCESS;
     RTOnce(&g_GetIoKitApisOnce, rtKrnlModDarwinResolveIoKitApis, NULL);

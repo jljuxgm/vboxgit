@@ -1,4 +1,4 @@
-/* $Id: krnlmod-win.cpp 90789 2021-08-23 10:27:29Z vboxsync $ */
+/* $Id: krnlmod-win.cpp 90880 2021-08-25 13:14:57Z vboxsync $ */
 /** @file
  * IPRT - Kernel module, Windows.
  */
@@ -185,8 +185,8 @@ RTDECL(uint32_t) RTKrnlModLoadedGetCount(void)
 RTDECL(int) RTKrnlModLoadedQueryInfoAll(PRTKRNLMODINFO pahKrnlModInfo, uint32_t cEntriesMax,
                                         uint32_t *pcEntries)
 {
-    AssertPtrReturn(pahKrnlModInfo, VERR_INVALID_POINTER);
-    AssertReturn(cEntriesMax == 0, VERR_INVALID_PARAMETER);
+    if (cEntriesMax > 0)
+        AssertPtrReturn(pahKrnlModInfo, VERR_INVALID_POINTER);
 
     PRTL_PROCESS_MODULES pKrnlMods = NULL;
     int rc = rtKrnlModWinQueryKrnlMods(&pKrnlMods);
