@@ -1,4 +1,4 @@
-/* $Id: tpm-win.cpp 91028 2021-08-31 11:47:48Z vboxsync $ */
+/* $Id: tpm-win.cpp 91033 2021-08-31 14:12:37Z vboxsync $ */
 /** @file
  * IPRT - Trusted Platform Module (TPM) access, Windows variant.
  */
@@ -138,13 +138,13 @@ static DECLCALLBACK(int32_t) rtTpmWinInitOnce(void *pvUser)
         rc = RTLdrGetSymbol(hMod, "Tbsi_Context_Create", (void **)&g_pfnTbsiContextCreate);
         if (RT_FAILURE(rc)) return rc;
 
-        rc = RTLdrGetSymbol(hMod, "Tbsi_Context_Close", (void **)&g_pfnTbsiContextClose);
+        rc = RTLdrGetSymbol(hMod, "Tbsip_Context_Close", (void **)&g_pfnTbsiContextClose);
         if (RT_FAILURE(rc)) return rc;
 
         rc = RTLdrGetSymbol(hMod, "Tbsip_Cancel_Commands", (void **)&g_pfnTbsiCancelCommands);
         if (RT_FAILURE(rc)) return rc;
 
-        rc = RTLdrGetSymbol(hMod, "Tbsi_Submit_Command", (void **)&g_pfnTbsiSubmitCommands);
+        rc = RTLdrGetSymbol(hMod, "Tbsip_Submit_Command", (void **)&g_pfnTbsiSubmitCommands);
         if (RT_FAILURE(rc)) return rc;
 
         rc = RTLdrGetSymbol(hMod, "Tbsi_GetDeviceInfo", (void **)&g_pfnTbsiGetDeviceInfo);
