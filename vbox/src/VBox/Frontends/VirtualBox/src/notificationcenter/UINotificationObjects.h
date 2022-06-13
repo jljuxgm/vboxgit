@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.h 90893 2021-08-25 17:15:36Z vboxsync $ */
+/* $Id: UINotificationObjects.h 90920 2021-08-26 16:10:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects declarations.
  */
@@ -566,11 +566,11 @@ class SHARED_LIBRARY_STUFF UINotificationProgressMachinePowerOff : public UINoti
 public:
 
     /** Constructs machine power-off notification-progress.
-      * @param  comMachine  Brings the machine being powered off. */
-    UINotificationProgressMachinePowerOff(const CMachine &comMachine);
-    /** Constructs machine power-off notification-progress.
-      * @param  comConsole  Brings the console of machine being powered off. */
-    UINotificationProgressMachinePowerOff(const CConsole &comConsole);
+      * @param  comMachine         Brings the machine being powered off.
+      * @param  comConsole         Brings the console of machine being powered off.
+      * @param  fIncludingDiscard  Brings whether machine state should be discarded. */
+    UINotificationProgressMachinePowerOff(const CMachine &comMachine,
+                                          const CConsole &comConsole = CConsole());
 
 protected:
 
