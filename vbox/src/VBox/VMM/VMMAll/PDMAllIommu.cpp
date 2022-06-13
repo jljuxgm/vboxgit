@@ -1,4 +1,4 @@
-/* $Id: PDMAllIommu.cpp 88638 2021-04-22 05:40:05Z vboxsync $ */
+/* $Id: PDMAllIommu.cpp 90028 2021-07-05 14:25:35Z vboxsync $ */
 /** @file
  * PDM IOMMU - All Contexts.
  */
@@ -132,7 +132,7 @@ int pdmIommuMemAccessRead(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDev, RTGCPHYS GCPhy
             if (RT_SUCCESS(rc))
             {
                 /** @todo Handle strict return codes from PGMPhysRead. */
-                rc = pDevIns->CTX_SUFF(pHlp)->pfnPhysRead(pDevIns, GCPhysOut, pvBuf, cbRead, fFlags);
+                rc = pDevIns->CTX_SUFF(pHlp)->pfnPhysRead(pDevIns, GCPhysOut, pvBuf, cbContig, fFlags);
                 if (RT_SUCCESS(rc))
                 {
                     Assert(cbContig <= cbRead);
@@ -200,7 +200,7 @@ int pdmIommuMemAccessWrite(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDev, RTGCPHYS GCPh
             if (RT_SUCCESS(rc))
             {
                 /** @todo Handle strict return codes from PGMPhysWrite. */
-                rc = pDevIns->CTX_SUFF(pHlp)->pfnPhysWrite(pDevIns, GCPhysOut, pvBuf, cbWrite, fFlags);
+                rc = pDevIns->CTX_SUFF(pHlp)->pfnPhysWrite(pDevIns, GCPhysOut, pvBuf, cbContig, fFlags);
                 if (RT_SUCCESS(rc))
                 {
                     Assert(cbContig <= cbWrite);
