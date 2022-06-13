@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 89999 2021-07-02 11:34:16Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 90003 2021-07-02 15:03:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -956,6 +956,7 @@ void UIVirtualBoxManager::sltPerformExit()
 
 void UIVirtualBoxManager::sltOpenNewMachineWizard()
 {
+#if 0
     /* Lock the actions preventing cascade calls: */
     UIQObjectPropertySetter guardBlock(QList<QObject*>() << actionPool()->action(UIActionIndexMN_M_Welcome_S_New)
                                                          << actionPool()->action(UIActionIndexMN_M_Machine_S_New)
@@ -1012,6 +1013,7 @@ void UIVirtualBoxManager::sltOpenNewMachineWizard()
         pWizard->exec();
         delete pWizard;
     }
+#endif
 }
 
 void UIVirtualBoxManager::sltOpenAddMachineDialog()

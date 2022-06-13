@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.h 88577 2021-04-19 13:23:37Z vboxsync $ */
+/* $Id: UIWizardNewVM.h 90003 2021-07-02 15:03:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class declaration.
  */
@@ -22,7 +22,7 @@
 #endif
 
 /* GUI includes: */
-#include "UIWizard.h"
+#include "UINativeWizard.h"
 
 /* COM includes: */
 #include "COMEnums.h"
@@ -61,7 +61,7 @@ enum SelectedDiskSource
 Q_DECLARE_METATYPE(SelectedDiskSource);
 
 /** New Virtual Machine wizard: */
-class UIWizardNewVM : public UIWizard
+class UIWizardNewVM : public UINativeWizard
 {
     Q_OBJECT;
 
@@ -84,7 +84,7 @@ public:
     };
 
     /** Constructor: */
-    UIWizardNewVM(QWidget *pParent, const QString &strGroup = QString());
+    UIWizardNewVM(QWidget *pParent, const QString &strGroup = QString(), WizardMode enmMode = WizardMode_Auto);
 
     /** Prepare routine. */
     void prepare();
@@ -100,6 +100,9 @@ public:
     void setVirtualDisk(const QUuid &mediumId);
 
 protected:
+
+    /** Populates pages. */
+    virtual void populatePages() /* final */;
 
     bool createVM();
     bool createVirtualDisk();
