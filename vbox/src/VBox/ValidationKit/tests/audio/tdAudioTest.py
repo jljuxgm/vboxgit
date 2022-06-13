@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tdAudioTest.py 92085 2021-10-26 14:51:58Z vboxsync $
+# $Id: tdAudioTest.py 92139 2021-10-29 09:06:08Z vboxsync $
 
 """
 AudioTest test driver which invokes the VKAT (Validation Kit Audio Test)
@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 92085 $"
+__version__ = "$Revision: 92139 $"
 
 # Standard Python imports.
 from datetime import datetime
@@ -744,6 +744,15 @@ class tdAudioTest(vbox.TestDriver):
                     elif self.sAudioControllerType == 'SB16':
                         enmAudioControllerType = vboxcon.AudioControllerType_SB16;
                     assert enmAudioControllerType is not None;
+
+                # For now we're encforcing to test the HDA emulation only, regardless of
+                # what the recommended audio controller type from above was.
+                ## @todo Make other emulations work as well.
+                fEncforceHDA = True;
+
+                if fEncforceHDA:
+                    enmAudioControllerType = vboxcon.AudioControllerType_HDA;
+                    reporter.log('Enforcing audio controller type to HDA');
 
                 reporter.log('Setting user-defined audio controller type to %d' % (enmAudioControllerType));
                 oSession.setupAudio(enmAudioControllerType,
