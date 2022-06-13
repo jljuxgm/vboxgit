@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 94005 2022-03-01 00:58:47Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 94498 2022-04-06 16:03:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -981,6 +981,17 @@ enum PreviewUpdateIntervalType
     PreviewUpdateIntervalType_10000ms,
     PreviewUpdateIntervalType_Max
 };
+
+
+/** Selector UI: Disk encryption cipher types. */
+enum UIDiskEncryptionCipherType
+{
+    UIDiskEncryptionCipherType_Unchanged,
+    UIDiskEncryptionCipherType_XTS256,
+    UIDiskEncryptionCipherType_XTS128,
+    UIDiskEncryptionCipherType_Max
+};
+Q_DECLARE_METATYPE(UIDiskEncryptionCipherType);
 
 
 /** Runtime UI: Visual-state types. */
