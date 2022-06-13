@@ -1,4 +1,4 @@
-/* $Id: UIHostnameDomainNameEditor.cpp 91218 2021-09-13 11:57:24Z vboxsync $ */
+/* $Id: UIHostnameDomainNameEditor.cpp 91220 2021-09-13 15:25:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHostnameDomainNameEditor class implementation.
  */
@@ -115,11 +115,11 @@ void UIHostnameDomainNameEditor::retranslateUi()
     if (m_pHostnameLabel)
         m_pHostnameLabel->setText(tr("Hostna&me:"));
     if (m_pHostnameLineEdit)
-        m_pHostnameLineEdit->setToolTip(tr("Type the hostname."));
+        m_pHostnameLineEdit->setToolTip(tr("Holds the hostname."));
     if (m_pDomainNameLabel)
         m_pDomainNameLabel->setText(tr("&Domain Name:"));
     if (m_pDomainNameLineEdit)
-        m_pDomainNameLineEdit->setToolTip(tr("Enter the domain name."));
+        m_pDomainNameLineEdit->setToolTip(tr("Holds the domain name."));
 }
 
 void UIHostnameDomainNameEditor::addLineEdit(int &iRow, QLabel *&pLabel, QILineEdit *&pLineEdit, QGridLayout *pLayout)

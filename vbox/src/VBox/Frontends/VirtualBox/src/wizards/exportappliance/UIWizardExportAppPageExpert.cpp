@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageExpert.cpp 86687 2020-10-23 13:46:16Z vboxsync $ */
+/* $Id: UIWizardExportAppPageExpert.cpp 91220 2021-09-13 15:25:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageExpert class implementation.
  */
@@ -508,14 +508,14 @@ void UIWizardExportAppPageExpert::retranslateUi()
 
     /* Translate addtional stuff: */
     m_pAdditionalLabel->setText(UIWizardExportApp::tr("Additionally:"));
-    m_pManifestCheckbox->setToolTip(UIWizardExportApp::tr("Create a Manifest file for automatic data integrity checks on import."));
+    m_pManifestCheckbox->setToolTip(UIWizardExportApp::tr("Creates a manifest file for automatic data integrity checks on import."));
     m_pManifestCheckbox->setText(UIWizardExportApp::tr("&Write Manifest file"));
-    m_pIncludeISOsCheckbox->setToolTip(UIWizardExportApp::tr("Include ISO image files into exported VM archive."));
+    m_pIncludeISOsCheckbox->setToolTip(UIWizardExportApp::tr("Includes ISO image files into exported VM archive."));
     m_pIncludeISOsCheckbox->setText(UIWizardExportApp::tr("&Include ISO image files"));
 
     /* Translate profile stuff: */
     m_pProfileLabel->setText(UIWizardExportApp::tr("&Profile:"));
-    m_pProfileToolButton->setToolTip(UIWizardExportApp::tr("Open Cloud Profile Manager..."));
+    m_pProfileToolButton->setToolTip(UIWizardExportApp::tr("Opens Cloud Profile Manager..."));
 
     /* Translate option label: */
     m_pMachineLabel->setText(UIWizardExportApp::tr("Machine Creation:"));

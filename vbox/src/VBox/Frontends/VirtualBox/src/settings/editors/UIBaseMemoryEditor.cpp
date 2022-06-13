@@ -1,4 +1,4 @@
-/* $Id: UIBaseMemoryEditor.cpp 91218 2021-09-13 11:57:24Z vboxsync $ */
+/* $Id: UIBaseMemoryEditor.cpp 91220 2021-09-13 15:25:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIBaseMemoryEditor class implementation.
  */
@@ -281,7 +281,7 @@ void UIBaseMemoryEditor::retranslateUi()
     if (m_pLabelMemoryMax)
         m_pLabelMemoryMax->setText(tr("%1 MB").arg(m_pSlider->maxRAM()));
 
-    QString strToolTip(tr("Specify the amount of RAM the virtual machine will have"));
+    QString strToolTip(tr("Specifies the amount of RAM the virtual machine will have"));
 
     if (m_pSpinBox)
     {

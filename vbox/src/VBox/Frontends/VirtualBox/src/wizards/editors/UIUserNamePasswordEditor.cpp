@@ -1,4 +1,4 @@
-/* $Id: UIUserNamePasswordEditor.cpp 91218 2021-09-13 11:57:24Z vboxsync $ */
+/* $Id: UIUserNamePasswordEditor.cpp 91220 2021-09-13 15:25:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class implementation.
  */
@@ -334,11 +334,11 @@ void UIUserNamePasswordEditor::retranslateUi()
             m_pPasswordRepeatLineEdit->setPlaceholderText(QString());
     }
     if(m_pUserNameLineEdit)
-        m_pUserNameLineEdit->setToolTip(tr("Enter username."));
+        m_pUserNameLineEdit->setToolTip(tr("Holds username."));
     if (m_pPasswordLineEdit)
-        m_pPasswordLineEdit->setToolTip(tr("Enter password."));
+        m_pPasswordLineEdit->setToolTip(tr("Holds password."));
     if (m_pPasswordRepeatLineEdit)
-        m_pPasswordRepeatLineEdit->setToolTip(tr("Re-enter password."));
+        m_pPasswordRepeatLineEdit->setToolTip(tr("Holds the repeated password."));
     m_strPasswordError = tr("Invalid password pair");
 }
 
