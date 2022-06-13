@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMUnattendedPageBasic.h 90155 2021-07-12 08:18:16Z vboxsync $ */
+/* $Id: UIWizardNewVMUnattendedPageBasic.h 90157 2021-07-12 11:14:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMUnattendedPageBasic class declaration.
  */
@@ -64,7 +64,7 @@ private slots:
     void sltGAISOPathChanged(const QString &strPath);
     void sltPasswordChanged(const QString &strPassword);
     void sltUserNameChanged(const QString &strUserName);
-    void sltHostnameDomainChanged(const QString &strHostname);
+    void sltHostnameDomainNameChanged(const QString &strHostnameDomainName);
     void sltProductKeyChanged(const QString &strProductKey);
     void sltStartHeadlessChanged(bool fStartHeadless);
 
