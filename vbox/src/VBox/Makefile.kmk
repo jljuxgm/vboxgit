@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 93427 2022-01-24 21:51:58Z vboxsync $
+# $Id: Makefile.kmk 93430 2022-01-24 22:08:38Z vboxsync $
 ## @file
 # Top-level makefile for src/VBox.
 #
@@ -63,7 +63,6 @@ else ifdef VBOX_ONLY_SDK
 else ifdef VBOX_ONLY_VALIDATIONKIT
  include $(PATH_SUB_CURRENT)/Runtime/Makefile.kmk
  include $(PATH_SUB_CURRENT)/HostDrivers/Makefile.kmk
- include $(PATH_SUB_CURRENT)/Additions/Makefile.kmk
  include $(PATH_SUB_CURRENT)/Disassembler/Makefile.kmk
  include $(PATH_SUB_CURRENT)/ValidationKit/Makefile.kmk
 
