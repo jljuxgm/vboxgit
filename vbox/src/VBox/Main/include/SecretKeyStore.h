@@ -1,4 +1,4 @@
-/* $Id: SecretKeyStore.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: SecretKeyStore.h 94783 2022-05-02 13:33:33Z vboxsync $ */
 /** @file
  * Main - Secret key interface.
  */
@@ -118,6 +118,8 @@ class SecretKeyStore
 {
     public:
 
+        typedef std::map<com::Utf8Str, SecretKey *> SecretKeyMap;
+
         /**
          * Constructor for a secret key store.
          *
@@ -180,9 +182,20 @@ class SecretKeyStore
          */
         int deleteAllSecretKeys(bool fSuspend, bool fForce);
 
-    private:
+        /**
+         * Iterators for enumerating keys
+         */
+        SecretKeyMap::iterator begin()
+        {
+            return m_mapSecretKeys.begin();
+        }
 
-        typedef std::map<com::Utf8Str, SecretKey *> SecretKeyMap;
+        SecretKeyMap::iterator end()
+        {
+            return m_mapSecretKeys.end();
+        }
+
+    private:
 
         /** The map to map key identifers to secret keys. */
         SecretKeyMap m_mapSecretKeys;
