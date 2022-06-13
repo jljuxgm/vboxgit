@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.h 91361 2021-09-24 12:48:04Z vboxsync $ */
+/* $Id: DevVGA-SVGA.h 91364 2021-09-24 14:19:45Z vboxsync $ */
 /** @file
  * VMware SVGA device
  */
@@ -645,6 +645,12 @@ DECLINLINE(uint32_t) vmsvgaR3MobId(PVMSVGAMOB pMob)
         return pMob->Core.Key;
     return SVGA_ID_INVALID;
 }
+
+#ifdef DEBUG
+#define DEBUG_BREAKPOINT_TEST() do { ASMBreakpoint(); } while (0)
+#else
+#define DEBUG_BREAKPOINT_TEST() do { } while (0)
+#endif
 
 #ifdef VBOX_WITH_VMSVGA3D
 int vmsvgaR3UpdateGBSurface(PVGASTATECC pThisCC, SVGA3dSurfaceImageId const *pImageId, SVGA3dBox const *pBox);
