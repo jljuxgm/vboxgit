@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 91848 2021-10-19 23:18:13Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 91849 2021-10-19 23:24:00Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -1088,6 +1088,8 @@ void pgmPhysPageMakeWriteMonitoredWritable(PVMCC pVM, PPGMPAGE pPage, RTGCPHYS G
                                        pgmPhysPageCalcNemProtection(pPage, enmType), enmType, &u2State);
         PGM_PAGE_SET_NEM_STATE(pPage, u2State);
     }
+#else
+    RT_NOREF(GCPhys);
 #endif
 }
 
