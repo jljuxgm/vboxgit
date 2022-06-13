@@ -1,4 +1,4 @@
-/* $Id: UINotificationCenter.h 90552 2021-08-06 14:22:04Z vboxsync $ */
+/* $Id: UINotificationCenter.h 90563 2021-08-07 11:05:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINotificationCenter class declaration.
  */
@@ -54,11 +54,14 @@ signals:
 public:
 
     /** Creates notification-center for passed @a pParent. */
-    static void create(QWidget *pParent);
+    static void create(QWidget *pParent = 0);
     /** Destroys notification-center. */
     static void destroy();
     /** Returns notification-center singleton instance. */
     static UINotificationCenter *instance();
+
+    /** Defines notification-center @a pParent. */
+    void setParent(QWidget *pParent);
 
     /** Invokes notification-center. */
     void invoke();
