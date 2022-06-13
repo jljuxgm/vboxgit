@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMExpertPage.cpp 93455 2022-01-27 09:45:41Z vboxsync $ */
+/* $Id: UIWizardNewVMExpertPage.cpp 93456 2022-01-27 10:06:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMExpertPage class implementation.
  */
@@ -86,7 +86,8 @@ UIWizardNewVMExpertPage::UIWizardNewVMExpertPage(UIActionPool *pActionPool)
 void UIWizardNewVMExpertPage::sltNameChanged(const QString &strNewName)
 {
     AssertReturnVoid(wizardWindow<UIWizardNewVM>());
-    if (!m_userModifiedParameters.contains("GuestOSType") && m_pNameAndSystemEditor)
+    /* Allow type guessing from name only if an OS type from ISO could not be detected: */
+    if (!m_userModifiedParameters.contains("GuestOSTypeFromISO") && m_pNameAndSystemEditor)
     {
         m_pNameAndSystemEditor->blockSignals(true);
         if (UIWizardNewVMNameOSTypeCommon::guessOSTypeFromName(m_pNameAndSystemEditor, strNewName))
@@ -94,6 +95,7 @@ void UIWizardNewVMExpertPage::sltNameChanged(const QString &strNewName)
             wizardWindow<UIWizardNewVM>()->setGuestOSType(m_pNameAndSystemEditor->type());
             /* Since the type `possibly` changed: */
             setOSTypeDependedValues();
+            m_userModifiedParameters << "GuestOSTypeFromName";
         }
         m_pNameAndSystemEditor->blockSignals(false);
     }
@@ -147,8 +149,12 @@ void UIWizardNewVMExpertPage::sltISOPathChanged(const QString &strISOPath)
 
     UIWizardNewVMNameOSTypeCommon::detectOSType(strISOPath, pWizard);
 
-    if (!m_userModifiedParameters.contains("GuestOSType"))
-        UIWizardNewVMNameOSTypeCommon::guessOSTypeDetectedOSTypeString(m_pNameAndSystemEditor, pWizard->detectedOSTypeId());
+
+    if (UIWizardNewVMNameOSTypeCommon::guessOSTypeDetectedOSTypeString(m_pNameAndSystemEditor, pWizard->detectedOSTypeId()))
+        m_userModifiedParameters << "GuestOSTypeFromISO";
+    else /* Remove GuestOSTypeFromISO fromthe set if it is there: */
+        m_userModifiedParameters.remove("GuestOSTypeFromISO");
+
     pWizard->setISOFilePath(strISOPath);
 
     /* Update the global recent ISO path: */
