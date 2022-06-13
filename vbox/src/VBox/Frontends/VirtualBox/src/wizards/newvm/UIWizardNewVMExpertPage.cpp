@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMExpertPage.cpp 93456 2022-01-27 10:06:47Z vboxsync $ */
+/* $Id: UIWizardNewVMExpertPage.cpp 93540 2022-02-02 07:21:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMExpertPage class implementation.
  */
@@ -147,8 +147,7 @@ void UIWizardNewVMExpertPage::sltISOPathChanged(const QString &strISOPath)
     UIWizardNewVM *pWizard = wizardWindow<UIWizardNewVM>();
     AssertReturnVoid(pWizard);
 
-    UIWizardNewVMNameOSTypeCommon::detectOSType(strISOPath, pWizard);
-
+    UIWizardNewVMNameOSTypeCommon::detectOSAndImagesFromISO(strISOPath, pWizard);
 
     if (UIWizardNewVMNameOSTypeCommon::guessOSTypeDetectedOSTypeString(m_pNameAndSystemEditor, pWizard->detectedOSTypeId()))
         m_userModifiedParameters << "GuestOSTypeFromISO";

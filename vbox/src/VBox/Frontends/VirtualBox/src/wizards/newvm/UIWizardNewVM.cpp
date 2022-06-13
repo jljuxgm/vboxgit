@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 93409 2022-01-24 13:35:27Z vboxsync $ */
+/* $Id: UIWizardNewVM.cpp 93540 2022-02-02 07:21:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
@@ -829,6 +829,24 @@ bool UIWizardNewVM::emptyDiskRecommended() const
 void UIWizardNewVM::setEmptyDiskRecommended(bool fEmptyDiskRecommended)
 {
     m_fEmptyDiskRecommended = fEmptyDiskRecommended;
+}
+
+void UIWizardNewVM::setDetectedImageNamesAndIndices(const QVector<QString> &names, const QVector<ULONG> &ids)
+{
+    AssertMsg(names.size() == ids.size(),
+              ("Sizes of the arrays for names and indices of the detected images should be equal."));
+    m_detectedImageNames = names;
+    m_detectedImageIndices = ids;
+}
+
+const QVector<QString> &UIWizardNewVM::detectedImageNames() const
+{
+    return m_detectedImageNames;
+}
+
+const QVector<ULONG> &UIWizardNewVM::detectedImageIndices() const
+{
+    return m_detectedImageIndices;
 }
 
 QVector<KMediumVariant> UIWizardNewVM::mediumVariants() const

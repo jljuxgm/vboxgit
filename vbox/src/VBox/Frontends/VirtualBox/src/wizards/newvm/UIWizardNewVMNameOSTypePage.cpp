@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMNameOSTypePage.cpp 93456 2022-01-27 10:06:47Z vboxsync $ */
+/* $Id: UIWizardNewVMNameOSTypePage.cpp 93540 2022-02-02 07:21:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasicNameOSStype class implementation.
  */
@@ -310,7 +310,7 @@ bool UIWizardNewVMNameOSTypeCommon::cleanupMachineFolder(UIWizardNewVM *pWizard,
     return true;
 }
 
-void UIWizardNewVMNameOSTypeCommon::detectOSType(const QString &strISOPath, UIWizardNewVM *pWizard)
+void UIWizardNewVMNameOSTypeCommon::detectOSAndImagesFromISO(const QString &strISOPath, UIWizardNewVM *pWizard)
 {
     if (!pWizard)
         return;
@@ -326,6 +326,9 @@ void UIWizardNewVMNameOSTypeCommon::detectOSType(const QString &strISOPath, UIWi
     comUnatteded.SetIsoPath(strISOPath);
     comUnatteded.DetectIsoOS();
     pWizard->setDetectedOSTypeId(comUnatteded.GetDetectedOSTypeId());
+
+    pWizard->setDetectedImageNamesAndIndices(comUnatteded.GetDetectedImageNames(),
+                                             comUnatteded.GetDetectedImageIndices());
 }
 
 bool UIWizardNewVMNameOSTypeCommon::checkISOFile(UINameAndSystemEditor *pNameAndSystemEditor)
@@ -478,7 +481,7 @@ void UIWizardNewVMNameOSTypePage::sltISOPathChanged(const QString &strPath)
 {
     UIWizardNewVM *pWizard = qobject_cast<UIWizardNewVM*>(this->wizard());
     AssertReturnVoid(pWizard);
-    UIWizardNewVMNameOSTypeCommon::detectOSType(strPath, pWizard);
+    UIWizardNewVMNameOSTypeCommon::detectOSAndImagesFromISO(strPath, pWizard);
 
     if (UIWizardNewVMNameOSTypeCommon::guessOSTypeDetectedOSTypeString(m_pNameAndSystemEditor, pWizard->detectedOSTypeId()))
         m_userModifiedParameters << "GuestOSTypeFromISO";
