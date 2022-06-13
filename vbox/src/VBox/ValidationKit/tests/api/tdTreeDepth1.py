@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdTreeDepth1.py 94598 2022-04-13 21:50:00Z vboxsync $
+# $Id: tdTreeDepth1.py 94599 2022-04-13 21:53:39Z vboxsync $
 
 """
 VirtualBox Validation Kit - Medium and Snapshot Tree Depth Test #1
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 94598 $"
+__version__ = "$Revision: 94599 $"
 
 
 # Standard Python imports.
@@ -113,7 +113,7 @@ class SubTstDrvTreeDepth1(base.SubTestDriverBase):
             else:
                 oVM.unregister(vboxcon.CleanupMode_UnregisterOnly)
             oVM = None
-            
+
             # If there is no base image (expected) then there are no leftover
             # child images either. Can be changed later once the todos above
             # and below are resolved.
