@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 93318 2022-01-18 15:15:57Z vboxsync $
+# $Id: Makefile.kmk 93419 2022-01-24 18:13:22Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -184,7 +184,7 @@ ifdef VBOX_WITH_LIBCURL
  	tstRTCRest-1 \
  	tstRTS3
 endif
-if1of ($(KBUILD_TARGET_ARCH), amd64 x86)
+ifdef VBOX_WITH_R0_MODULES
  PROGRAMS += \
  	tstLdr-2 \
  	tstLdr-3 \

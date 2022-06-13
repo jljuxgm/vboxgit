@@ -1,4 +1,4 @@
-# $Id: Config.kmk 93359 2022-01-20 11:25:36Z vboxsync $
+# $Id: Config.kmk 93419 2022-01-24 18:13:22Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -440,6 +440,14 @@ endif
 
 ## @name VMM related settings.
 ## @{
+# Enable the VT-x & AMD-V execution manager (HM).
+if "$(KBUILD_TARGET)" == "amd64" && !defined(VBOX_WITHOUT_HWVIRT)
+ VBOX_WITH_HWVIRT := 1
+endif
+# Enable .r0 modules.
+if "$(KBUILD_TARGET_ARCH)" == "amd64"
+ VBOX_WITH_R0_MODULES := 1
+endif
 # Enable safe STR (store task register) emulation for raw-mode.
 VBOX_WITH_SAFE_STR = 1
 # Enable support for 64-bit guests.
@@ -680,7 +688,8 @@ VBOX_WITH_INSTALLER = 1
 VBOX_WITH_GUEST_INSTALLER_UNICODE = 1
 # The kernel driver/module and related runtime libraries.
 # On Linux we build this as a test case instead.
-ifneq ($(KBUILD_TARGET), linux)
+# On darwin.arm64 we don't use a support driver.
+if "$(KBUILD_TARGET)" != "linux" && ("$(KBUILD_TARGET)" != "darwin" || "$(KBUILD_TARGET_ARCH)" == "amd64")
  VBOX_WITH_VBOXDRV = 1
 endif
 # The main api.
@@ -8822,7 +8831,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 93359 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 93419 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)

@@ -1,4 +1,4 @@
-# $Id: Config.kmk 93205 2022-01-12 18:38:18Z vboxsync $
+# $Id: Config.kmk 93419 2022-01-24 18:13:22Z vboxsync $
 ## @file
 # kBuild Configuration file for the VMM.
 #
@@ -29,6 +29,9 @@ endif
 ## DEFS variable that is picked up by all three VMM targets (R0, R3, RC).
 # Can be prepended to by setting it in LocalConfig.kmk
 VMM_COMMON_DEFS := USING_VMM_COMMON_DEFS
+ifdef VBOX_WITH_HWVIRT
+ VMM_COMMON_DEFS += VBOX_WITH_HWVIRT
+endif
 ifdef VBOX_WITH_NESTED_HWVIRT_SVM
  VMM_COMMON_DEFS += VBOX_WITH_NESTED_HWVIRT_SVM
 endif
