@@ -1,4 +1,4 @@
-/* $Id: logging.cpp 88947 2021-05-08 22:57:37Z vboxsync $ */
+/* $Id: logging.cpp 90708 2021-08-17 20:01:56Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions - X11 Client.
  */
@@ -262,12 +262,7 @@ int VBClLogCreate(const char *pszLogFile)
 #if defined(RT_OS_WINDOWS) || defined(RT_OS_OS2)
     fFlags |= RTLOGFLAGS_USECRLF;
 #endif
-    int rc = RTLogCreateEx(&g_pLoggerRelease, fFlags, "all",
-#ifdef DEBUG
-                           "VBOXCLIENT_LOG",
-#else
-                           "VBOXCLIENT_RELEASE_LOG",
-#endif
+    int rc = RTLogCreateEx(&g_pLoggerRelease, fFlags, "all", "VBOXCLIENT_RELEASE_LOG",
                            RT_ELEMENTS(s_apszGroups), s_apszGroups, UINT32_MAX /*cMaxEntriesPerGroup*/,
                            RTLOGDEST_STDOUT | RTLOGDEST_USER,
                            vbClLogHeaderFooter, g_cHistory, g_uHistoryFileSize, g_uHistoryFileTime,
