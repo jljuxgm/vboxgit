@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.h 90037 2021-07-05 19:14:04Z vboxsync $ */
+/* $Id: UIWizardNewVM.h 90039 2021-07-05 19:39:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class declaration.
  */
@@ -119,6 +119,15 @@ public:
     const QString &password() const;
     void setPassword(const QString &strPassword);
 
+    const QString &guestAdditionsISOPath() const;
+    void setGuestAdditionsISOPath(const QString &strGAISOPath);
+
+    const QString &hostname() const;
+    void setHostname(const QString &strHostname);
+
+    const QString &productKey() const;
+    void setProductKey(const QString &productKey);
+
 protected:
 
     /** Populates pages. */
@@ -186,6 +195,9 @@ private:
 
     QString m_strUserName;
     QString m_strPassword;
+    QString m_strGuestAdditionsISOPath;
+    QString m_strHostname;
+    QString m_strProductKey;
 };
 
 typedef QPointer<UIWizardNewVM> UISafePointerWizardNewVM;
