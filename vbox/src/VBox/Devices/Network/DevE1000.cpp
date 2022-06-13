@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 89588 2021-06-10 08:39:50Z vboxsync $ */
+/* $Id: DevE1000.cpp 90332 2021-07-26 12:57:23Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -3563,7 +3563,7 @@ DECLINLINE(uint32_t) e1kGetTxLen(PE1KTXDC pTxdc)
 static DECLCALLBACK(void) e1kR3TxDelayTimer(PPDMDEVINS pDevIns, TMTIMERHANDLE hTimer, void *pvUser)
 {
     PE1KSTATE pThis = (PE1KSTATE)pvUser;
-    Assert(PDMCritSectIsOwner(&pThis->csTx));
+    Assert(PDMDevHlpCritSectIsOwner(pDevIns, &pThis->csTx));
     RT_NOREF(hTimer);
 
     E1K_INC_ISTAT_CNT(pThis->uStatTxDelayExp);

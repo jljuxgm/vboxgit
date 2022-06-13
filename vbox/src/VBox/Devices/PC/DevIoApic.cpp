@@ -1,4 +1,4 @@
-/* $Id: DevIoApic.cpp 90318 2021-07-23 16:26:25Z vboxsync $ */
+/* $Id: DevIoApic.cpp 90332 2021-07-26 12:57:23Z vboxsync $ */
 /** @file
  * IO APIC - Input/Output Advanced Programmable Interrupt Controller.
  */
@@ -1529,8 +1529,8 @@ static DECLCALLBACK(int) ioapicR3Destruct(PPDMDEVINS pDevIns)
     /*
      * Destroy the RTE critical section.
      */
-    if (PDMCritSectIsInitialized(&pThis->CritSect))
-        PDMR3CritSectDelete(&pThis->CritSect);
+    if (PDMDevHlpCritSectIsInitialized(pDevIns, &pThis->CritSect))
+        PDMDevHlpCritSectDelete(pDevIns, &pThis->CritSect);
 # else
     RT_NOREF_PV(pThis);
 # endif
