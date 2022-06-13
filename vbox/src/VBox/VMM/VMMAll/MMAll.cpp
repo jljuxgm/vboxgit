@@ -1,4 +1,4 @@
-/* $Id: MMAll.cpp 91939 2021-10-21 12:43:45Z vboxsync $ */
+/* $Id: MMAll.cpp 91949 2021-10-21 13:46:13Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Any Context.
  */
@@ -269,20 +269,6 @@ DECLINLINE(RTR0PTR) mmHyperLookupCalcR0(PVM pVM, PMMLOOKUPHYPER pLookup, uint32_
             AssertMsgFailed(("enmType=%d\n", pLookup->enmType));
             return NIL_RTR0PTR;
     }
-}
-
-
-/**
- * Calculate the raw-mode context address of an offset into the HMA memory chunk.
- *
- * @returns the raw-mode context base address.
- * @param   pVM         The cross context VM structure.
- * @param   pLookup     The HMA lookup record.
- * @param   off         The offset into the HMA memory chunk.
- */
-DECLINLINE(RTRCPTR) mmHyperLookupCalcRC(PVM pVM, PMMLOOKUPHYPER pLookup, uint32_t off)
-{
-    return (RTRCPTR)((RTRCUINTPTR)pVM->mm.s.pvHyperAreaGC + pLookup->off + off);
 }
 
 
