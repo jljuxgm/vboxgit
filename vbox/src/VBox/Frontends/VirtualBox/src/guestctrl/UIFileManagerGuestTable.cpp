@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerGuestTable.cpp 93683 2022-02-10 19:11:30Z vboxsync $ */
+/* $Id: UIFileManagerGuestTable.cpp 93696 2022-02-11 14:10:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerGuestTable class implementation.
  */
@@ -465,7 +465,7 @@ void UIFileManagerGuestTable::retranslateUi()
                 icon = UIIconPool::iconSet(":/status_error_16px.png");
                 break;
             case State_MachineNotRunning:
-                strWarningText = UIFileManager::tr("File manager cannot work since the selected guest is not currenly running.");
+                strWarningText = UIFileManager::tr("File manager cannot work since the selected guest is not currently running.");
                 icon = UIIconPool::iconSet(":/status_error_16px.png");
                 break;
             case State_NoGuestAdditions:
