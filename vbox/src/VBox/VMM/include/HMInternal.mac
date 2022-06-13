@@ -1,4 +1,4 @@
-;$Id: HMInternal.mac 87754 2021-02-13 17:44:31Z vboxsync $
+;$Id: HMInternal.mac 91343 2021-09-23 08:01:24Z vboxsync $
 ;; @file
 ; HM - Internal header file.
 ;
@@ -53,6 +53,7 @@ struc VMXVMCSINFO
     .u32PinCtls                     resd    1
     .u32ProcCtls                    resd    1
     .u32ProcCtls2                   resd    1
+    .u64ProcCtls3                   resq    1
     .u32EntryCtls                   resd    1
     .u32ExitCtls                    resd    1
     .u32XcptBitmap                  resd    1

@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 91323 2021-09-22 10:04:56Z vboxsync $ */
+/* $Id: HMInternal.h 91343 2021-09-23 08:01:24Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -908,6 +908,8 @@ typedef struct VMXVMCSINFO
     uint32_t                    u32ProcCtls;
     /** Secondary processor-based VM-execution controls. */
     uint32_t                    u32ProcCtls2;
+    /** Tertiary processor-based VM-execution controls. */
+    uint64_t                    u64ProcCtls3;
     /** VM-entry controls. */
     uint32_t                    u32EntryCtls;
     /** VM-exit controls. */
