@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 91323 2021-09-22 10:04:56Z vboxsync $ */
+/* $Id: CPUM.cpp 91354 2021-09-24 06:43:55Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -1647,7 +1647,7 @@ void cpumR3InitVmxGuestFeaturesAndMsrs(PVM pVM, PCVMXMSRS pHostVmxMsrs, PVMXMSRS
     EmuFeat.fVmxExtIntExit            = 1;
     EmuFeat.fVmxNmiExit               = 1;
     EmuFeat.fVmxVirtNmi               = 1;
-    EmuFeat.fVmxPreemptTimer          = 0;  /* pVM->cpum.s.fNestedVmxPreemptTimer -- Currently disabled on purpose, see @bugref{9180#c108}. */
+    EmuFeat.fVmxPreemptTimer          = pVM->cpum.s.fNestedVmxPreemptTimer;
     EmuFeat.fVmxPostedInt             = 0;
     EmuFeat.fVmxIntWindowExit         = 1;
     EmuFeat.fVmxTscOffsetting         = 1;
