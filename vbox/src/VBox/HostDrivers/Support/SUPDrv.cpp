@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: SUPDrv.cpp 93206 2022-01-12 19:12:13Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -3803,7 +3803,7 @@ SUPR0DECL(int) SUPR0PageAllocEx(PSUPDRVSESSION pSession, uint32_t cPages, uint32
      * Let IPRT do the work.
      */
     if (ppvR0)
-        rc = RTR0MemObjAllocPage(&Mem.MemObj, (size_t)cPages * PAGE_SIZE, true /* fExecutable */);
+        rc = RTR0MemObjAllocPage(&Mem.MemObj, (size_t)cPages * PAGE_SIZE, false /*fExecutable*/);
     else
         rc = RTR0MemObjAllocPhysNC(&Mem.MemObj, (size_t)cPages * PAGE_SIZE, NIL_RTHCPHYS);
     if (RT_SUCCESS(rc))
