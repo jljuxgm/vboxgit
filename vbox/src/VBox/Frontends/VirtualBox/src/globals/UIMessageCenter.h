@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 93901 2022-02-23 15:35:26Z vboxsync $ */
+/* $Id: UIMessageCenter.h 94757 2022-04-29 09:40:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -282,6 +282,7 @@ public:
         bool cannotRemountMedium(const CMachine &machine, const UIMedium &medium,
                                  bool fMount, bool fRetry, QWidget *pParent = 0) const;
 
+        void cannotSetHostSettings(const CHost &comHost, QWidget *pParent = 0) const;
         void cannotSetSystemProperties(const CSystemProperties &properties, QWidget *pParent = 0) const;
         void cannotSaveMachineSettings(const CMachine &machine, QWidget *pParent = 0) const;
 

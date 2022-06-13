@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 93901 2022-02-23 15:35:26Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 94757 2022-04-29 09:40:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -691,6 +691,13 @@ bool UIMessageCenter::cannotRemountMedium(const CMachine &machine, const UIMediu
           strMessage.arg(medium.isHostDrive() ? medium.name() : medium.location(), CMachine(machine).GetName()),
           UIErrorString::formatErrorInfo(machine));
     return false;
+}
+
+void UIMessageCenter::cannotSetHostSettings(const CHost &comHost, QWidget *pParent /* = 0 */) const
+{
+    error(pParent, MessageType_Critical,
+          tr("Failed to set global host settings."),
+          UIErrorString::formatErrorInfo(comHost));
 }
 
 void UIMessageCenter::cannotSetSystemProperties(const CSystemProperties &properties, QWidget *pParent /* = 0*/) const
