@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 90016 2021-07-04 21:19:22Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 90178 2021-07-14 09:55:20Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -2010,12 +2010,16 @@ static int ichac97R3StreamSetUp(PPDMDEVINS pDevIns, PAC97STATE pThis, PAC97STATE
     /*
      * Don't continue if the frequency is out of range (the rest of the
      * properties should be okay).
+     * Note! Don't assert on this as we may easily end up here with Hz=0.
      */
     char szTmp[PDMAUDIOSTRMCFGTOSTRING_MAX];
-    ASSERT_GUEST_MSG_RETURN(AudioHlpStreamCfgIsValid(&Cfg),
-                            ("Invalid stream #%u rate: %s\n", pStreamCC->u8SD,
-                             PDMAudioStrmCfgToString(&Cfg, szTmp, sizeof(szTmp)) ),
-                            VERR_OUT_OF_RANGE);
+    if (AudioHlpStreamCfgIsValid(&Cfg))
+    { }
+    else
+    {
+        LogFunc(("Invalid stream #%u rate: %s\n", pStreamCC->u8SD, PDMAudioStrmCfgToString(&Cfg, szTmp, sizeof(szTmp)) ));
+        return VERR_OUT_OF_RANGE;
+    }
 
     /*
      * Read the buffer descriptors and check what the max distance between
