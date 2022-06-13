@@ -1,4 +1,4 @@
-/* $Id: tstX86-1.cpp 93554 2022-02-02 22:57:02Z vboxsync $ */
+/* $Id: tstX86-1.cpp 93555 2022-02-02 23:07:34Z vboxsync $ */
 /** @file
  * X86 instruction set exploration/testcase #1.
  */
@@ -20,7 +20,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #include <iprt/test.h>
-#include <iprt/param.h>
+#include <VBox/param.h>
 #include <iprt/mem.h>
 #include <iprt/errcore.h>
 #include <iprt/assert.h>
