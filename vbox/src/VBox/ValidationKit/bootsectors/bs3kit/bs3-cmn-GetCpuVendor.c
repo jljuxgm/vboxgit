@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-GetCpuVendor.c 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: bs3-cmn-GetCpuVendor.c 93515 2022-01-31 22:17:19Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3GetCpuVendor
  */
@@ -36,15 +36,15 @@ BS3_CMN_DEF(BS3CPUVENDOR, Bs3GetCpuVendor,(void))
     {
         uint32_t uEbx, uEcx, uEdx;
         ASMCpuIdExSlow(0, 0, 0, 0, NULL, &uEbx, &uEcx, &uEdx);
-        if (ASMIsIntelCpuEx(uEbx, uEcx, uEdx))
+        if (RTX86IsIntelCpu(uEbx, uEcx, uEdx))
             return BS3CPUVENDOR_INTEL;
-        if (ASMIsAmdCpuEx(uEbx, uEcx, uEdx))
+        if (RTX86IsAmdCpu(uEbx, uEcx, uEdx))
             return BS3CPUVENDOR_AMD;
-        if (ASMIsViaCentaurCpuEx(uEbx, uEcx, uEdx))
+        if (RTX86IsViaCentaurCpu(uEbx, uEcx, uEdx))
             return BS3CPUVENDOR_VIA;
-        if (ASMIsShanghaiCpuEx(uEbx, uEcx, uEdx))
+        if (RTX86IsShanghaiCpu(uEbx, uEcx, uEdx))
             return BS3CPUVENDOR_SHANGHAI;
-        if (ASMIsHygonCpuEx(uEbx, uEcx, uEdx))
+        if (RTX86IsHygonCpu(uEbx, uEcx, uEdx))
             return BS3CPUVENDOR_HYGON;
         return BS3CPUVENDOR_UNKNOWN;
     }

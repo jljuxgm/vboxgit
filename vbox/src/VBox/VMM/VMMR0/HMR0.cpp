@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: HMR0.cpp 93515 2022-01-31 22:17:19Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -1252,7 +1252,7 @@ VMMR0_INT_DECL(int) HMR0InitVM(PVMCC pVM)
      */
     uint32_t fWorldSwitcher = 0;
     uint32_t cLastStdLeaf   = ASMCpuId_EAX(0);
-    if (cLastStdLeaf >= 0x00000007 && ASMIsValidStdRange(cLastStdLeaf))
+    if (cLastStdLeaf >= 0x00000007 && RTX86IsValidStdRange(cLastStdLeaf))
     {
         uint32_t uEdx = 0;
         ASMCpuIdExSlow(0x00000007, 0, 0, 0, NULL, NULL, NULL, &uEdx);

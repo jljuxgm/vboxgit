@@ -1,4 +1,4 @@
-/* $Id: SUPLib-win.cpp 93239 2022-01-14 19:15:41Z vboxsync $ */
+/* $Id: SUPLib-win.cpp 93515 2022-01-31 22:17:19Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Windows NT specific parts.
  */
@@ -839,7 +839,7 @@ DECLHIDDEN(bool) suplibOsIsNemSupportedWhenNoVtxOrAmdV(void)
      */
     if (!ASMHasCpuId())
         return false;
-    if (!ASMIsValidStdRange(ASMCpuId_EAX(0)))
+    if (!RTX86IsValidStdRange(ASMCpuId_EAX(0)))
         return false;
     if (!(ASMCpuId_ECX(1) & X86_CPUID_FEATURE_ECX_HVP))
         return false;

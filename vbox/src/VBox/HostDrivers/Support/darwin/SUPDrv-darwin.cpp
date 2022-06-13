@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-darwin.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: SUPDrv-darwin.cpp 93515 2022-01-31 22:17:19Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Darwin Specific Code.
  */
@@ -2007,7 +2007,7 @@ static bool vboxdrvDarwinCpuHasSMAP(void)
 {
     uint32_t uMaxId, uEAX, uEBX, uECX, uEDX;
     ASMCpuId(0, &uMaxId, &uEBX, &uECX, &uEDX);
-    if (   ASMIsValidStdRange(uMaxId)
+    if (   RTX86IsValidStdRange(uMaxId)
         && uMaxId >= 0x00000007)
     {
         ASMCpuId_Idx_ECX(0x00000007, 0, &uEAX, &uEBX, &uECX, &uEDX);
