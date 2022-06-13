@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdBenchmark2.py 92301 2021-11-09 19:09:39Z vboxsync $
+# $Id: tdBenchmark2.py 92307 2021-11-10 00:25:48Z vboxsync $
 
 """
 VirtualBox Validation Kit - Test that runs various benchmarks.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 92301 $"
+__version__ = "$Revision: 92307 $"
 
 
 # Standard Python imports.
@@ -100,9 +100,9 @@ class tdBenchmark2(vbox.TestDriver):
             acMbRam = [ cMbMaxGuestRam, cMbMaxGuestRam // 4 * 3, cMbMaxGuestRam // 2, cMbMaxGuestRam // 4,
                         cMbMaxGuestRam // 8, cMbMaxGuestRam // 16  ];
             if acMbRam[-1] > 64*1024:
-                acMbRam[-1].append(64*1024);
+                acMbRam.append(64*1024);
             if acMbRam[-1] > 32*1024:
-                acMbRam[-1].append(32*1024);
+                acMbRam.append(32*1024);
         elif cMbHostAvail > 8*1024:
             # First entry is available memory rounded down to the nearest 8 GiB
             cMbHostAvail = cMbHostAvail & ~(8 * 1024 - 1);
