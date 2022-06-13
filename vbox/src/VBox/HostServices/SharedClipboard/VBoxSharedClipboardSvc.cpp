@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc.cpp 90267 2021-07-20 20:51:42Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc.cpp 90805 2021-08-23 19:09:17Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Host service entry points.
  */
@@ -2702,7 +2702,7 @@ extern "C" DECLCALLBACK(DECLEXPORT(int)) VBoxHGCMSvcLoad(VBOXHGCMSVCFNTABLE *pTa
 
     LogFlowFunc(("pTable=%p\n", pTable));
 
-    if (!VALID_PTR(pTable))
+    if (!RT_VALID_PTR(pTable))
     {
         rc = VERR_INVALID_PARAMETER;
     }

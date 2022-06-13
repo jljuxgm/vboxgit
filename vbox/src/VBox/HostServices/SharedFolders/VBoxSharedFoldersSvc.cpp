@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedFoldersSvc.cpp 90238 2021-07-19 13:48:09Z vboxsync $ */
+/* $Id: VBoxSharedFoldersSvc.cpp 90805 2021-08-23 19:09:17Z vboxsync $ */
 /** @file
  * Shared Folders - Host service entry points.
  */
@@ -1827,7 +1827,7 @@ extern "C" DECLCALLBACK(DECLEXPORT(int)) VBoxHGCMSvcLoad (VBOXHGCMSVCFNTABLE *pt
 
     Log(("SharedFolders host service: VBoxHGCMSvcLoad: ptable = %p\n", ptable));
 
-    if (!VALID_PTR(ptable))
+    if (!RT_VALID_PTR(ptable))
     {
         LogRelFunc(("SharedFolders host service: Bad value of ptable (%p)\n", ptable));
         rc = VERR_INVALID_PARAMETER;
