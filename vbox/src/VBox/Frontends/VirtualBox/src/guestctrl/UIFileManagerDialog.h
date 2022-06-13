@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerDialog.h 92814 2021-12-08 13:57:05Z vboxsync $ */
+/* $Id: UIFileManagerDialog.h 92816 2021-12-08 14:00:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerDialog class declaration.
  */
@@ -23,6 +23,7 @@
 
 /* Qt includes: */
 #include <QString>
+#include <QUuid>
 
 /* GUI includes: */
 #include "QIManagerDialog.h"
