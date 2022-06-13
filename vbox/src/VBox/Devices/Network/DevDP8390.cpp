@@ -1,4 +1,4 @@
-/* $Id: DevDP8390.cpp 93566 2022-02-03 07:43:16Z vboxsync $ */
+/* $Id: DevDP8390.cpp 93567 2022-02-03 07:51:55Z vboxsync $ */
 /** @file
  * DevDP8390 - National Semiconductor DP8390-based Ethernet Adapter Emulation.
  */
@@ -4911,7 +4911,7 @@ static DECLCALLBACK(int) dpNicConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGM
      * Init what's required to make the destructor safe.
      */
     pThis->iInstance            = iInstance;
-    pThis->hEventOutOfRxSpace   = NIL_SUPSEMEVENT;
+    pThis->hEventOutOfRxSpace   = NIL_RTSEMEVENT;
     pThis->hIoPortsNic          = NIL_IOMIOPORTHANDLE;
     pThis->hIoPortsCore         = NIL_IOMIOPORTHANDLE;
 

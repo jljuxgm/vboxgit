@@ -1,4 +1,4 @@
-/* $Id: Dev3C501.cpp 93564 2022-02-03 07:31:00Z vboxsync $ */
+/* $Id: Dev3C501.cpp 93567 2022-02-03 07:51:55Z vboxsync $ */
 /** @file
  * Dev3C501 - 3Com EtherLink (3C501) Ethernet Adapter Emulation.
  */
@@ -2311,7 +2311,7 @@ static DECLCALLBACK(int) elnkConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMN
      * Init what's required to make the destructor safe.
      */
     pThis->iInstance            = iInstance;
-    pThis->hEventOutOfRxSpace   = NIL_SUPSEMEVENT;
+    pThis->hEventOutOfRxSpace   = NIL_RTSEMEVENT;
     pThis->hIoPortsIsa          = NIL_IOMIOPORTHANDLE;
 
     /*
