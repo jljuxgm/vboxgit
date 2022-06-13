@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 88086 2021-03-11 12:50:12Z vboxsync $ */
+/* $Id: VBoxManage.h 90234 2021-07-16 22:28:08Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -208,7 +208,12 @@ RTEXITCODE  errorGetOpt(int rcGetOpt, union RTGETOPTUNION const *pValueUnion);
 RTEXITCODE  errorFetchValue(int iValueNo, const char *pszOption, int rcGetOptFetchValue, union RTGETOPTUNION const *pValueUnion);
 RTEXITCODE  errorSyntax(const char *pszFormat, ...);
 
-HRESULT showProgress(ComPtr<IProgress> progress);
+
+#define SHOW_PROGRESS_NONE      0
+#define SHOW_PROGRESS_DESC      (1u << 0)
+#define SHOW_PROGRESS           (1u << 1)
+#define SHOW_PROGRESS_DETAILS   (1u << 2)
+HRESULT showProgress(ComPtr<IProgress> progress, unsigned int fFlags = SHOW_PROGRESS);
 #endif
 
 /* VBoxManage.cpp */
