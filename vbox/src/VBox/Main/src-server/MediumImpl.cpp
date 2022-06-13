@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 94598 2022-04-13 21:50:00Z vboxsync $ */
+/* $Id: MediumImpl.cpp 94600 2022-04-13 22:07:12Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -4282,7 +4282,7 @@ bool Medium::i_addRegistryAll(const Guid &id)
         llMediaTodo.pop_front();
 
         AutoCaller mediumCaller(pMedium);
-        if (FAILED(mediumCaller.rc())) return mediumCaller.rc();
+        if (FAILED(mediumCaller.rc())) continue;
 
         fAdd |= pMedium->i_addRegistryNoCallerCheck(id);
 
@@ -4350,7 +4350,7 @@ bool Medium::i_removeRegistryAll(const Guid &id)
         llMediaTodo.pop_front();
 
         AutoCaller mediumCaller(pMedium);
-        if (FAILED(mediumCaller.rc())) return mediumCaller.rc();
+        if (FAILED(mediumCaller.rc())) continue;
 
         fRemove |= pMedium->i_removeRegistry(id);
 
