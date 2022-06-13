@@ -1,4 +1,4 @@
-/* $Id: AudioTest.h 91194 2021-09-10 10:11:03Z vboxsync $ */
+/* $Id: AudioTest.h 91493 2021-09-30 08:36:12Z vboxsync $ */
 /** @file
  * Audio testing routines.
  * Common code which is being used by the ValidationKit audio test (VKAT)
@@ -28,7 +28,7 @@
 /** Maximum length in characters an audio test tag can have. */
 #define AUDIOTEST_TAG_MAX               64
 /** Maximum length in characters a single audio test error description can have. */
-#define AUDIOTEST_ERROR_DESC_MAX        128
+#define AUDIOTEST_ERROR_DESC_MAX        256
 /** Prefix for audio test (set) directories. */
 #define AUDIOTEST_PATH_PREFIX_STR       "vkat"
 
