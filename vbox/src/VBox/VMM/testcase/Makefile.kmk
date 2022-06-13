@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 94416 2022-03-31 14:33:33Z vboxsync $
+# $Id: Makefile.kmk 94423 2022-03-31 22:59:46Z vboxsync $
 ## @file
 # Sub-Makefile for the VMM testcases.
 #
@@ -257,7 +257,9 @@ tstIEMAImpl_CLEAN     = \
 	$(tstIEMAImpl_0_OUTDIR)/tstIEMAImplDataFpuBinary1-Amd.cpp \
 	$(tstIEMAImpl_0_OUTDIR)/tstIEMAImplDataFpuBinary1-Intel.cpp \
 	$(tstIEMAImpl_0_OUTDIR)/tstIEMAImplDataFpuBinary2.cpp \
-	$(tstIEMAImpl_0_OUTDIR)/tstIEMAImplDataFpuOther.cpp
+	$(tstIEMAImpl_0_OUTDIR)/tstIEMAImplDataFpuOther.cpp \
+	$(tstIEMAImpl_0_OUTDIR)/tstIEMAImplDataFpuOther-Amd.cpp \
+	$(tstIEMAImpl_0_OUTDIR)/tstIEMAImplDataFpuOther-Intel.cpp
 tstIEMAImpl_SOURCES   = \
 	tstIEMAImpl.cpp \
 	../VMMAll/IEMAllAImplC.cpp \
@@ -301,6 +303,8 @@ $(evalcall2 def_tstIEMAImplData_adjust,FpuBinary1-Amd)
 $(evalcall2 def_tstIEMAImplData_adjust,FpuBinary1-Intel)
 $(evalcall2 def_tstIEMAImplData_adjust,FpuBinary2)
 $(evalcall2 def_tstIEMAImplData_adjust,FpuOther)
+$(evalcall2 def_tstIEMAImplData_adjust,FpuOther-Amd)
+$(evalcall2 def_tstIEMAImplData_adjust,FpuOther-Intel)
 
 
 #
