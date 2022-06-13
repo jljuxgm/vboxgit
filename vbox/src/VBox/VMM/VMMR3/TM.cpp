@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: TM.cpp 93308 2022-01-18 11:31:19Z vboxsync $ */
 /** @file
  * TM - Time Manager.
  */
@@ -4058,7 +4058,7 @@ static DECLCALLBACK(void) tmR3InfoClocks(PVM pVM, PCDBGFINFOHLP pHlp, const char
 DECLINLINE(size_t) tmR3InfoCpuLoadAdjustWidth(size_t uPct, size_t cchWidth)
 {
     if (cchWidth != 100)
-        uPct = (uPct + 0.5) * (cchWidth / 100.0);
+        uPct = (size_t)(((double)uPct + 0.5) * ((double)cchWidth / 100.0));
     return uPct;
 }
 

@@ -1,4 +1,4 @@
-/* $Id: PGMSavedState.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: PGMSavedState.cpp 93308 2022-01-18 11:31:19Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, The Saved State Part.
  */
@@ -1906,7 +1906,7 @@ static DECLCALLBACK(int)  pgmR3LiveVote(PVM pVM, PSSMHANDLE pSSM, uint32_t uPass
 
     /* estimate the speed */
     uint64_t cNsElapsed = RTTimeNanoTS() - pVM->pgm.s.LiveSave.uSaveStartNS;
-    uint32_t cPagesPerSecond = (uint32_t)(   pVM->pgm.s.LiveSave.cSavedPages
+    uint32_t cPagesPerSecond = (uint32_t)(  (long double)pVM->pgm.s.LiveSave.cSavedPages
                                           / ((long double)cNsElapsed / 1000000000.0) );
     pVM->pgm.s.LiveSave.cPagesPerSecond = cPagesPerSecond;
 
