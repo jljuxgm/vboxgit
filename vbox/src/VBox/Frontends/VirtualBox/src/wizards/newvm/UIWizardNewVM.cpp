@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 90159 2021-07-12 17:27:15Z vboxsync $ */
+/* $Id: UIWizardNewVM.cpp 90262 2021-07-20 13:18:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
@@ -65,6 +65,8 @@ UIWizardNewVM::UIWizardNewVM(QWidget *pParent, const QString &strMachineGroup /*
     , m_iCPUCount(1)
     , m_iMemorySize(0)
     , m_iUnattendedInstallPageIndex(-1)
+    , m_uMediumVariant(0)
+    , m_uMediumSize(0)
 {
 #ifndef VBOX_WS_MAC
     /* Assign watermark: */
