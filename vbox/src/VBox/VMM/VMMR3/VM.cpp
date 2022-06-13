@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 93444 2022-01-26 18:01:15Z vboxsync $ */
+/* $Id: VM.cpp 93470 2022-01-27 23:51:28Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -67,7 +67,6 @@
 #include <VBox/vmm/gim.h>
 #include "VMInternal.h"
 #include <VBox/vmm/vmcc.h>
-#include <VBox/vmm/vmmr3vtable.h>
 
 #include <VBox/sup.h>
 #if defined(VBOX_WITH_DTRACE_R3) && !defined(VBOX_WITH_NATIVE_DTRACE)

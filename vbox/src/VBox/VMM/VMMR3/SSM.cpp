@@ -1,4 +1,4 @@
-/* $Id: SSM.cpp 93444 2022-01-26 18:01:15Z vboxsync $ */
+/* $Id: SSM.cpp 93470 2022-01-27 23:51:28Z vboxsync $ */
 /** @file
  * SSM - Saved State Manager.
  */
@@ -149,10 +149,10 @@
 #include <VBox/vmm/pdmapi.h>
 #include <VBox/vmm/pdmcritsect.h>
 #include <VBox/vmm/mm.h>
+#include <VBox/vmm/vmm.h>
 #include "SSMInternal.h"
 #include <VBox/vmm/vm.h>
 #include <VBox/vmm/uvm.h>
-#include <VBox/vmm/vmmr3vtable.h>
 #include <VBox/err.h>
 #include <VBox/log.h>
 #include <VBox/version.h>

@@ -1,4 +1,4 @@
-/* $Id: DBGCCommands.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: DBGCCommands.cpp 93470 2022-01-27 23:51:28Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Native Commands.
  */
@@ -1092,7 +1092,7 @@ static DECLCALLBACK(int) dbgcCmdDmesg(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, PUVM 
         char   *pszBuf = (char *)RTMemAlloc(cbBuf);
         if (pszBuf)
         {
-            rc = pDmesg->pfnQueryKernelLog(pDmesg, pUVM, 0 /*fFlags*/, cMessages, pszBuf, cbBuf, &cbActual);
+            rc = pDmesg->pfnQueryKernelLog(pDmesg, pUVM, VMMR3GetVTable(), 0 /*fFlags*/, cMessages, pszBuf, cbBuf, &cbActual);
 
             uint32_t cTries = 10;
             while (rc == VERR_BUFFER_OVERFLOW && cbBuf < 16*_1M && cTries-- > 0)
@@ -1105,7 +1105,7 @@ static DECLCALLBACK(int) dbgcCmdDmesg(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, PUVM 
                     rc = DBGCCmdHlpFail(pCmdHlp, pCmd, "Error allocating %#zu bytes.\n", cbBuf);
                     break;
                 }
-                rc = pDmesg->pfnQueryKernelLog(pDmesg, pUVM, 0 /*fFlags*/, cMessages, pszBuf, cbBuf, &cbActual);
+                rc = pDmesg->pfnQueryKernelLog(pDmesg, pUVM, VMMR3GetVTable(), 0 /*fFlags*/, cMessages, pszBuf, cbBuf, &cbActual);
             }
             if (RT_SUCCESS(rc))
                 rc = DBGCCmdHlpPrintf(pCmdHlp, "%s\n", pszBuf);

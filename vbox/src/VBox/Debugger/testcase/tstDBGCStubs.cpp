@@ -1,4 +1,4 @@
-/* $Id: tstDBGCStubs.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: tstDBGCStubs.cpp 93470 2022-01-27 23:51:28Z vboxsync $ */
 /** @file
  * DBGC Testcase - Command Parser, VMM Stub Functions.
  */
@@ -841,6 +841,10 @@ VMMR3DECL(PVMCPU) VMMR3GetCpuByIdU(PUVM pUVM, RTCPUID idCpu)
     return NULL;
 }
 
+VMMR3DECL(PCVMMR3VTABLE) VMMR3GetVTable(void)
+{
+    return NULL;
+}
 
 VMMR3DECL(PVM) VMR3GetVM(PUVM pUVM)
 {
