@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 92683 2021-12-02 02:17:16Z vboxsync $
+# $Id: vbox.py 92838 2021-12-08 22:49:27Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 92683 $"
+__version__ = "$Revision: 92838 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -2461,6 +2461,9 @@ class TestDriver(base.TestDriver):                                              
                 if sNic0MacAddr == 'grouped':
                     sNic0MacAddr = '%02X' % (iGroup);
                 fRc = oSession.setNicMacAddress(sNic0MacAddr, 0);
+            # Needed to reach the host (localhost) from the guest. See xTracker #9896.
+            if fRc and self.fpApiVer >= 7.0 and eNic0AttachType == vboxcon.NetworkAttachmentType_NAT:
+                fRc = oSession.setNicLocalhostReachable(True, 0);
             if fRc and fNatForwardingForTxs is True:
                 fRc = oSession.setupNatForwardingForTxs();
             if fRc and fFastBootLogo is not None:
@@ -2561,6 +2564,9 @@ class TestDriver(base.TestDriver):                                              
                     if sNic0MacAddr == 'grouped':
                         sNic0MacAddr = '%02X' % (iGroup,);
                     fRc = oSession.setNicMacAddress(sNic0MacAddr, 0);
+                # Needed to reach the host (localhost) from the guest. See xTracker #9896.
+                if fRc and self.fpApiVer >= 7.0 and eNic0AttachType == vboxcon.NetworkAttachmentType_NAT:
+                    fRc = oSession.setNicLocalhostReachable(True, 0);
 
                 if fRc and fVmmDevTestingPart is not None:
                     fRc = oSession.enableVmmDevTestingPart(fVmmDevTestingPart, fVmmDevTestingMmio);
