@@ -1,4 +1,4 @@
-/* $Id: tstUsbMouse.cpp 91058 2021-09-01 13:35:17Z vboxsync $ */
+/* $Id: tstUsbMouse.cpp 92783 2021-12-07 11:30:19Z vboxsync $ */
 /** @file
  * tstUsbMouse.cpp - testcase USB mouse and tablet devices.
  */
@@ -379,6 +379,9 @@ int main()
     g_tstUsbHlp.u32Version      = PDM_USBHLP_VERSION;
     g_tstUsbHlp.pfnVMSetErrorV  = tstVMSetErrorV;
     g_tstUsbHlp.pfnDriverAttach = tstDriverAttach;
+    g_tstUsbHlp.pfnCFGMValidateConfig = CFGMR3ValidateConfig;
+    g_tstUsbHlp.pfnCFGMQueryStringDef = CFGMR3QueryStringDef;
+    g_tstUsbHlp.pfnCFGMQueryU8Def     = CFGMR3QueryU8Def;
     g_tstUsbHlp.u32TheEnd       = PDM_USBHLP_VERSION;
     /* Set up our global mouse driver */
     g_drvTstMouse.IBase.pfnQueryInterface = tstMouseQueryInterface;
