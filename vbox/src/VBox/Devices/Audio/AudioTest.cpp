@@ -1,4 +1,4 @@
-/* $Id: AudioTest.cpp 91666 2021-10-11 16:57:13Z vboxsync $ */
+/* $Id: AudioTest.cpp 91682 2021-10-12 07:50:18Z vboxsync $ */
 /** @file
  * Audio testing routines.
  *
@@ -154,7 +154,7 @@ typedef struct AUDIOTESTOBJINT
     uint32_t             cRefs;
     /** Name of the test object.
      *  Must not contain a path and has to be able to serialize to disk. */
-    char                 szName[64];
+    char                 szName[256];
     /** The object type. */
     AUDIOTESTOBJTYPE     enmType;
     /** Meta data list. */
