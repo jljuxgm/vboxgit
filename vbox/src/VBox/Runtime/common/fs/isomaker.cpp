@@ -1,4 +1,4 @@
-/* $Id: isomaker.cpp 93118 2022-01-04 01:41:47Z vboxsync $ */
+/* $Id: isomaker.cpp 94291 2022-03-17 13:29:52Z vboxsync $ */
 /** @file
  * IPRT - ISO Image Maker.
  */
@@ -7453,6 +7453,7 @@ DECL_HIDDEN_CONST(const RTVFSFILEOPS) g_rtFsIsoMakerOutputFileOps =
             "ISO Maker Output File",
             rtFsIsoMakerOutFile_Close,
             rtFsIsoMakerOutFile_QueryInfo,
+            NULL,
             RTVFSOBJOPS_VERSION
         },
         RTVFSIOSTREAMOPS_VERSION,

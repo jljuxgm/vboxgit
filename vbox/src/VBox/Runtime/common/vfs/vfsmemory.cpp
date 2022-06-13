@@ -1,4 +1,4 @@
-/* $Id: vfsmemory.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: vfsmemory.cpp 94291 2022-03-17 13:29:52Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Memory Backed VFS.
  */
@@ -730,6 +730,7 @@ DECL_HIDDEN_CONST(const RTVFSFILEOPS) g_rtVfsMemFileOps =
             "MemFile",
             rtVfsMemFile_Close,
             rtVfsMemFile_QueryInfo,
+            NULL,
             RTVFSOBJOPS_VERSION
         },
         RTVFSIOSTREAMOPS_VERSION,

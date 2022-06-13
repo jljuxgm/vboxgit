@@ -1,4 +1,4 @@
-/* $Id: tarvfs.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: tarvfs.cpp 94291 2022-03-17 13:29:52Z vboxsync $ */
 /** @file
  * IPRT - TAR Virtual Filesystem, Reader.
  */
@@ -830,6 +830,7 @@ static const RTVFSOBJOPS g_rtZipTarFssBaseObjOps =
     "TarFsStream::Obj",
     rtZipTarFssBaseObj_Close,
     rtZipTarFssBaseObj_QueryInfo,
+    NULL,
     RTVFSOBJOPS_VERSION
 };
 
@@ -974,6 +975,7 @@ static const RTVFSIOSTREAMOPS g_rtZipTarFssIosOps =
         "TarFsStream::IoStream",
         rtZipTarFssIos_Close,
         rtZipTarFssIos_QueryInfo,
+        NULL,
         RTVFSOBJOPS_VERSION
     },
     RTVFSIOSTREAMOPS_VERSION,
@@ -1060,6 +1062,7 @@ static const RTVFSSYMLINKOPS g_rtZipTarFssSymOps =
         "TarFsStream::Symlink",
         rtZipTarFssSym_Close,
         rtZipTarFssSym_QueryInfo,
+        NULL,
         RTVFSOBJOPS_VERSION
     },
     RTVFSSYMLINKOPS_VERSION,
@@ -1352,6 +1355,7 @@ static const RTVFSFSSTREAMOPS rtZipTarFssOps =
         "TarFsStream",
         rtZipTarFss_Close,
         rtZipTarFss_QueryInfo,
+        NULL,
         RTVFSOBJOPS_VERSION
     },
     RTVFSFSSTREAMOPS_VERSION,

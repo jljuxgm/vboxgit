@@ -1,4 +1,4 @@
-/* $Id: gzipvfs.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: gzipvfs.cpp 94291 2022-03-17 13:29:52Z vboxsync $ */
 /** @file
  * IPRT - GZIP Compressor and Decompressor I/O Stream.
  */
@@ -668,6 +668,7 @@ static RTVFSIOSTREAMOPS g_rtZipGzipOps =
         "gzip",
         rtZipGzip_Close,
         rtZipGzip_QueryInfo,
+        NULL,
         RTVFSOBJOPS_VERSION
     },
     RTVFSIOSTREAMOPS_VERSION,

@@ -1,4 +1,4 @@
-/* $Id: pkzipvfs.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: pkzipvfs.cpp 94291 2022-03-17 13:29:52Z vboxsync $ */
 /** @file
  * IPRT - PKZIP Virtual Filesystem.
  */
@@ -819,6 +819,7 @@ static const RTVFSOBJOPS g_rtZipPkzipFssBaseObjOps =
     "PkzipFsStream::Obj",
     rtZipPkzipFssBaseObj_Close,
     rtZipPkzipFssBaseObj_QueryInfo,
+    NULL,
     RTVFSOBJOPS_VERSION
 };
 
@@ -1041,6 +1042,7 @@ static const RTVFSIOSTREAMOPS g_rtZipPkzipFssIosOps =
         "PkzipFsStream::IoStream",
         rtZipPkzipFssIos_Close,
         rtZipPkzipFssIos_QueryInfo,
+        NULL,
         RTVFSOBJOPS_VERSION
     },
     RTVFSIOSTREAMOPS_VERSION,
@@ -1233,6 +1235,7 @@ static const RTVFSFSSTREAMOPS rtZipPkzipFssOps =
         "PkzipFsStream",
         rtZipPkzipFss_Close,
         rtZipPkzipFss_QueryInfo,
+        NULL,
         RTVFSOBJOPS_VERSION
     },
     RTVFSFSSTREAMOPS_VERSION,

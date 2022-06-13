@@ -1,4 +1,4 @@
-/* $Id: vfsstdpipe.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: vfsstdpipe.cpp 94291 2022-03-17 13:29:52Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Standard Pipe I/O stream Implementation.
  */
@@ -255,6 +255,7 @@ DECL_HIDDEN_CONST(const RTVFSIOSTREAMOPS) g_rtVfsStdPipeOps =
         "StdFile",
         rtVfsStdPipe_Close,
         rtVfsStdPipe_QueryInfo,
+        NULL,
         RTVFSOBJOPS_VERSION
     },
     RTVFSIOSTREAMOPS_VERSION,

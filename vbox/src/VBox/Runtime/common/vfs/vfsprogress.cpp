@@ -1,4 +1,4 @@
-/* $Id: vfsprogress.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: vfsprogress.cpp 94291 2022-03-17 13:29:52Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, progress filter for files.
  */
@@ -307,6 +307,7 @@ DECL_HIDDEN_CONST(const RTVFSIOSTREAMOPS) g_rtVfsProgressIosOps =
         "I/O Stream Progress",
         rtVfsProgressFile_Close,
         rtVfsProgressFile_QueryInfo,
+        NULL,
         RTVFSOBJOPS_VERSION
     },
     RTVFSIOSTREAMOPS_VERSION,
@@ -438,6 +439,7 @@ DECL_HIDDEN_CONST(const RTVFSFILEOPS) g_rtVfsProgressFileOps =
             "File Progress",
             rtVfsProgressFile_Close,
             rtVfsProgressFile_QueryInfo,
+            NULL,
             RTVFSOBJOPS_VERSION
         },
         RTVFSIOSTREAMOPS_VERSION,

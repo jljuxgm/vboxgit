@@ -1,4 +1,4 @@
-/* $Id: vfsfss2dir.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: vfsfss2dir.cpp 94291 2022-03-17 13:29:52Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, FS write stream dumping in a normal directory.
  *
@@ -283,6 +283,7 @@ static const RTVFSFSSTREAMOPS g_rtVfsFssToDirOps =
         "TarFsStreamWriter",
         rtVfsFssToDir_Close,
         rtVfsFssToDir_QueryInfo,
+        NULL,
         RTVFSOBJOPS_VERSION
     },
     RTVFSFSSTREAMOPS_VERSION,

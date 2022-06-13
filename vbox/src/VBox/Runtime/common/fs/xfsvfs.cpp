@@ -1,4 +1,4 @@
-/* $Id: xfsvfs.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: xfsvfs.cpp 94291 2022-03-17 13:29:52Z vboxsync $ */
 /** @file
  * IPRT - XFS Virtual Filesystem.
  */
@@ -1667,6 +1667,7 @@ static const RTVFSFILEOPS g_rtFsXfsFileOps =
             "XFS File",
             rtFsXfsFile_Close,
             rtFsXfsFile_QueryInfo,
+            NULL,
             RTVFSOBJOPS_VERSION
         },
         RTVFSIOSTREAMOPS_VERSION,
@@ -2041,6 +2042,7 @@ static const RTVFSDIROPS g_rtFsXfsDirOps =
         "XFS Dir",
         rtFsXfsDir_Close,
         rtFsXfsDir_QueryInfo,
+        NULL,
         RTVFSOBJOPS_VERSION
     },
     RTVFSDIROPS_VERSION,
@@ -2222,6 +2224,7 @@ DECL_HIDDEN_CONST(const RTVFSOPS) g_rtFsXfsVolOps =
         /* .pszName = */        "XfsVol",
         /* .pfnClose = */       rtFsXfsVol_Close,
         /* .pfnQueryInfo = */   rtFsXfsVol_QueryInfo,
+        /* .pfnQueryInfoEx = */ NULL,
         /* .uEndMarker = */     RTVFSOBJOPS_VERSION
     },
     /* .uVersion = */           RTVFSOPS_VERSION,

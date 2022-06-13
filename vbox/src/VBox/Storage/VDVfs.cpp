@@ -1,4 +1,4 @@
-/* $Id: VDVfs.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: VDVfs.cpp 94291 2022-03-17 13:29:52Z vboxsync $ */
 /** @file
  * Virtual Disk Container implementation. - VFS glue.
  */
@@ -581,6 +581,7 @@ DECL_HIDDEN_CONST(const RTVFSFILEOPS) g_vdVfsStdFileOps =
             "VDFile",
             vdVfsFile_Close,
             vdVfsFile_QueryInfo,
+            NULL,
             RTVFSOBJOPS_VERSION
         },
         RTVFSIOSTREAMOPS_VERSION,

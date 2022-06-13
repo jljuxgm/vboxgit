@@ -1,4 +1,4 @@
-/* $Id: vfsreadahead.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: vfsreadahead.cpp 94291 2022-03-17 13:29:52Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Read-Ahead Thread.
  */
@@ -534,6 +534,7 @@ DECL_HIDDEN_CONST(const RTVFSIOSTREAMOPS) g_VfsReadAheadIosOps =
         "Read ahead I/O stream",
         rtVfsReadAhead_Close,
         rtVfsReadAhead_QueryInfo,
+        NULL,
         RTVFSOBJOPS_VERSION
     },
     RTVFSIOSTREAMOPS_VERSION,
@@ -561,6 +562,7 @@ DECL_HIDDEN_CONST(const RTVFSFILEOPS) g_VfsReadAheadFileOps =
             "Read ahead file",
             rtVfsReadAhead_Close,
             rtVfsReadAhead_QueryInfo,
+            NULL,
             RTVFSOBJOPS_VERSION
         },
         RTVFSIOSTREAMOPS_VERSION,

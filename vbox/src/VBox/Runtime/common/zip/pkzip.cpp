@@ -1,4 +1,4 @@
-/* $Id: pkzip.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: pkzip.cpp 94291 2022-03-17 13:29:52Z vboxsync $ */
 /** @file
  * IPRT - PKZIP archive I/O.
  */
@@ -164,6 +164,7 @@ static const RTVFSIOSTREAMOPS g_memFssIosOps =
         "MemFsStream::IoStream",
         memFssIos_Close,
         memFssIos_QueryInfo,
+        NULL,
         RTVFSOBJOPS_VERSION
     },
     RTVFSIOSTREAMOPS_VERSION,
