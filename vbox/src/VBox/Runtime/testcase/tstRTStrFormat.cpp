@@ -1,4 +1,4 @@
-/* $Id: tstRTStrFormat.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: tstRTStrFormat.cpp 94591 2022-04-13 15:03:14Z vboxsync $ */
 /** @file
  * IPRT Testcase - String formatting.
  */
@@ -119,7 +119,7 @@ static void testUtf16Printf(RTTEST hTest)
         PRTUTF16 pwszThisBuf = &pwszBuf[cwcBuf - cwcThisBuf];
         cwc = RTUtf16Printf(pwszThisBuf, cwcThisBuf, "Hello%c%s!", ' ', "world");
 
-        if (cwcThisBuf <= s_cwcSimpleExpect)
+        if (cwcThisBuf <= (size_t)s_cwcSimpleExpect)
         {
             if (cwcThisBuf > 1)
             {
