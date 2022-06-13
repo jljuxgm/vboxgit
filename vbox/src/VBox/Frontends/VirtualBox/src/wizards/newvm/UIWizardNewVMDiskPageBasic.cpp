@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMDiskPageBasic.cpp 90276 2021-07-21 14:53:03Z vboxsync $ */
+/* $Id: UIWizardNewVMDiskPageBasic.cpp 90280 2021-07-22 07:50:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMDiskPageBasic class implementation.
  */
@@ -234,7 +234,7 @@ void UIWizardNewVMDiskPageBasic::createConnections()
 void UIWizardNewVMDiskPageBasic::sltSelectedDiskSourceChanged()
 {
     AssertReturnVoid(m_pDiskSelector && m_pDiskSourceButtonGroup);
-
+    m_userModifiedParameters << "SelectedDiskSource";
     if (m_pDiskSourceButtonGroup->checkedButton() == m_pDiskEmpty)
         m_enmSelectedDiskSource = SelectedDiskSource_Empty;
     else if (m_pDiskSourceButtonGroup->checkedButton() == m_pDiskExisting)
@@ -254,6 +254,7 @@ void UIWizardNewVMDiskPageBasic::sltSelectedDiskSourceChanged()
 void UIWizardNewVMDiskPageBasic::sltMediaComboBoxIndexChanged()
 {
     AssertReturnVoid(m_pDiskSelector);
+    m_userModifiedParameters << "SelectedExistingMediumIndex";
     newVMWizardPropertySet(VirtualDisk, m_pDiskSelector->id());
     emit completeChanged();
 }
@@ -325,7 +326,7 @@ void UIWizardNewVMDiskPageBasic::initializePage()
 
     LONG64 iRecommendedSize = 0;
     CGuestOSType type = pWizard->guestOSType();
-    if (!type.isNull())
+    if (!type.isNull() && !m_userModifiedParameters.contains("SelectedDiskSource"))
     {
         iRecommendedSize = type.GetRecommendedHDD();
         if (iRecommendedSize != 0)
@@ -350,7 +351,7 @@ void UIWizardNewVMDiskPageBasic::initializePage()
         }
     }
 
-    if (m_pDiskSelector)
+    if (m_pDiskSelector && !m_userModifiedParameters.contains("SelectedExistingMediumIndex"))
         m_pDiskSelector->setCurrentIndex(0);
     setEnableDiskSelectionWidgets(m_enmSelectedDiskSource == SelectedDiskSource_Existing);
     setEnableNewDiskWidgets(m_enmSelectedDiskSource == SelectedDiskSource_New);

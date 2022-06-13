@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMDiskPageBasic.h 90276 2021-07-21 14:53:03Z vboxsync $ */
+/* $Id: UIWizardNewVMDiskPageBasic.h 90280 2021-07-22 07:50:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMDiskPageBasic class declaration.
  */
@@ -63,14 +63,6 @@ namespace UIWizardNewVMDiskPage
     bool checkFATSizeLimitation(const qulonglong uVariant, const QString &strMediumPath, const qulonglong uSize);
 }
 
-//     SelectedDiskSource selectedDiskSource() const;
-//     void setSelectedDiskSource(SelectedDiskSource enmSelectedDiskSource);
-//     bool getWithNewVirtualDiskWizard();
-//     virtual QWidget *createDiskWidgets();
-//     virtual QWidget *createNewDiskWidgets();
-//     void getWithFileOpenDialog();
-//     void retranslateWidgets();
-//     void setEnableDiskSelectionWidgets(bool fEnable);
 
 class UIWizardNewVMDiskPageBasic : public UINativeWizardPage
 {
