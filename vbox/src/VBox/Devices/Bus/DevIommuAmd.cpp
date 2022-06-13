@@ -1,4 +1,4 @@
-/* $Id: DevIommuAmd.cpp 90493 2021-08-03 11:35:28Z vboxsync $ */
+/* $Id: DevIommuAmd.cpp 90494 2021-08-03 11:37:00Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - AMD implementation.
  */
@@ -47,7 +47,7 @@
 
 /** Enable the IOTLBE cache only in ring-3 for now, see @bugref{9654#c95}. */
 #ifdef IN_RING3
-# define IOMMU_WITH_IOTLBE_CACHE      /* Disabled for now, see @bugref{9654#c107}. */
+# define IOMMU_WITH_IOTLBE_CACHE
 #endif
 /** Enable the interrupt cache. */
 #define IOMMU_WITH_IRTE_CACHE
