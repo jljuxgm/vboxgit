@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 93714 2022-02-14 10:04:40Z vboxsync $
+# $Id: virtual_test_sheriff.py 93763 2022-02-15 21:32:45Z vboxsync $
 # pylint: disable=line-too-long
 
 """
@@ -35,7 +35,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 93714 $"
+__version__ = "$Revision: 93763 $"
 
 
 # Standard python imports
@@ -341,7 +341,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
 
         if self.oConfig.sLogFile:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 93714 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 93763 $ \n');
 
 
     def eprint(self, sText):
@@ -609,15 +609,15 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
     ## @name Failure reasons we know.
     ## @{
 
-    ktReason_Add_Installer_Win_Failed                  = ( 'Additions',         'Installer (Windows) failed' );
-    ktReason_Add_ShFl_Automount                        = ( 'Additions',         'Shared Folders: Automounting' );
-    ktReason_Add_ShFl_FsPerf                           = ( 'Additions',         'Shared Folders: Runnings FsPerf' );
-    ktReason_Add_GstCtl_Preparations                   = ( 'Additions',         'Guest Control: Preparations' );
-    ktReason_Add_GstCtl_SessionBasics                  = ( 'Additions',         'Guest Control: Session basics' );
-    ktReason_Add_GstCtl_SessionProcRefs                = ( 'Additions',         'Guest Control: Session process references' );
-    ktReason_Add_GstCtl_CopyFromGuest_Timeout          = ( 'Additions',         'Guest Control: Copy from guest timeout' );
-    ktReason_Add_GstCtl_CopyToGuest_Timeout            = ( 'Additions',         'Guest Control: Copy to guest timeout' );
-    ktReason_Add_GstCtl_Session_Reboot                 = ( 'Additions',         'Guest Control: Session w/ reboot' );
+    ktReason_Add_Installer_Win_Failed                  = ( 'Additions',         'Win GA install' );
+    ktReason_Add_ShFl_Automount                        = ( 'Additions',         'Automounting' );
+    ktReason_Add_ShFl_FsPerf                           = ( 'Additions',         'FsPerf' );
+    ktReason_Add_GstCtl_Preparations                   = ( 'Additions',         'GstCtl preparations' );
+    ktReason_Add_GstCtl_SessionBasics                  = ( 'Additions',         'Session basics' );
+    ktReason_Add_GstCtl_SessionProcRefs                = ( 'Additions',         'Session process' );
+    ktReason_Add_GstCtl_Session_Reboot                 = ( 'Additions',         'Session reboot' );
+    ktReason_Add_GstCtl_CopyFromGuest_Timeout          = ( 'Additions',         'CopyFromGuest timeout' );
+    ktReason_Add_GstCtl_CopyToGuest_Timeout            = ( 'Additions',         'CopyToGuest timeout' );
     ktReason_Add_FlushViewOfFile                       = ( 'Additions',         'FlushViewOfFile' );
     ktReason_Add_Mmap_Coherency                        = ( 'Additions',         'mmap coherency' );
     ktReason_BSOD_Recovery                             = ( 'BSOD',              'Recovery' );
@@ -741,7 +741,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.getFailureReason(tReason);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 93714 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 93763 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
@@ -1192,15 +1192,10 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
         enmReason = None;
         if oFailedResult.sName == 'VBoxWindowsAdditions.exe' >= 0:
             enmReason = self.ktReason_Add_Installer_Win_Failed;
-        elif oFailedResult.sName == 'Automounting' >= 0:
-            if sResultLog.find('Shared Folders') >= 0:
-                enmReason = self.ktReason_Add_ShFl_Automount;
-        elif oFailedResult.sName == 'Running FsPerf' >= 0:
-            if sResultLog.find('Shared Folders') >= 0:
-                enmReason = self.ktReason_Add_ShFl_FsPerf;
-        elif oFailedResult.sName == 'Preparations' >= 0:
-            if sResultLog.find('Guest Control') >= 0:
-                enmReason = self.ktReason_Add_GstCtl_Preparations;
+        # guest control:
+        elif oFailedResult.sName == 'Preparations' >= 0 \
+         and oFailedResult.oParent and oFailedResult.oParent.sName == 'Guest Control':
+            enmReason = self.ktReason_Add_GstCtl_Preparations;
         elif oFailedResult.sName == 'Session Basics':
             enmReason = self.ktReason_Add_GstCtl_SessionBasics;
         elif oFailedResult.sName == 'Session Process References':
@@ -1213,11 +1208,18 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
                 enmReason = self.ktReason_Add_GstCtl_CopyToGuest_Timeout;
         elif oFailedResult.sName.find('Session w/ Guest Reboot') >= 0:
             enmReason = self.ktReason_Add_GstCtl_Session_Reboot;
+        # shared folders:
+        elif oFailedResult.sName == 'Automounting' >= 0 \
+         and oFailedResult.oParent and oFailedResult.oParent.sName == 'Shared Folders':
+            enmReason = self.ktReason_Add_ShFl_Automount;
         elif oFailedResult.sName == 'mmap':
             if sResultLog.find('FsPerf: Flush issue at offset ') >= 0:
                 enmReason = self.ktReason_Add_Mmap_Coherency;
             elif sResultLog.find('FlushViewOfFile') >= 0:
                 enmReason = self.ktReason_Add_FlushViewOfFile;
+        elif oFailedResult.sName == 'Running FsPerf' >= 0 \
+         and oFailedResult.oParent and oFailedResult.oParent.sName == 'Shared Folders':
+            enmReason = self.ktReason_Add_ShFl_FsPerf;  ## Maybe it would be better to be more specific...
 
         if enmReason is not None:
             return oCaseFile.noteReasonForId(enmReason, oFailedResult.idTestResult);
