@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA-cmd.cpp 94377 2022-03-25 18:26:29Z vboxsync $ */
+/* $Id: DevVGA-SVGA-cmd.cpp 94449 2022-04-02 14:09:02Z vboxsync $ */
 /** @file
  * VMware SVGA device - implementation of VMSVGA commands.
  */
@@ -899,6 +899,20 @@ PVMSVGAMOB vmsvgaR3MobGet(PVMSVGAR3STATE pSvgaR3State, SVGAMobId RT_UNTRUSTED_GU
         ASSERT_GUEST_FAILED();
 
     return pMob;
+}
+
+
+int vmsvgaR3MobWrite(PVMSVGAR3STATE pSvgaR3State, PVMSVGAMOB pMob,
+                     uint32_t off, void const *pvData, uint32_t cbData)
+{
+    return vmsvgaR3GboWrite(pSvgaR3State, &pMob->Gbo, off, pvData, cbData);
+}
+
+
+int vmsvgaR3MobRead(PVMSVGAR3STATE pSvgaR3State, PVMSVGAMOB pMob,
+                    uint32_t off, void *pvData, uint32_t cbData)
+{
+    return vmsvgaR3GboWrite(pSvgaR3State, &pMob->Gbo, off, pvData, cbData);
 }
 
 

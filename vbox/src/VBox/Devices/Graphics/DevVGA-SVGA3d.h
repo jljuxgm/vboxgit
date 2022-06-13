@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d.h 94377 2022-03-25 18:26:29Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d.h 94449 2022-04-02 14:09:02Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device - 3D part.
  */
@@ -446,10 +446,8 @@ typedef struct
     DECLCALLBACKMEMBER(int, pfnDXSetRasterizerState,        (PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXContext, SVGA3dRasterizerStateId rasterizerId));
     DECLCALLBACKMEMBER(int, pfnDXDefineQuery,               (PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXContext, SVGA3dQueryId queryId, SVGACOTableDXQueryEntry const *pEntry));
     DECLCALLBACKMEMBER(int, pfnDXDestroyQuery,              (PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXContext, SVGA3dQueryId queryId));
-    DECLCALLBACKMEMBER(int, pfnDXBindQuery,                 (PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXContext, SVGA3dQueryId queryId));
     DECLCALLBACKMEMBER(int, pfnDXBeginQuery,                (PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXContext, SVGA3dQueryId queryId));
-    DECLCALLBACKMEMBER(int, pfnDXEndQuery,                  (PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXContext, SVGA3dQueryId queryId));
-    DECLCALLBACKMEMBER(int, pfnDXReadbackQuery,             (PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXContext, SVGA3dQueryId queryId, void *pvData, uint32_t cbData, uint32_t *pcbOut));
+    DECLCALLBACKMEMBER(int, pfnDXEndQuery,                  (PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXContext, SVGA3dQueryId queryId, SVGADXQueryResultUnion *pQueryResult, uint32_t *pcbOut));
     DECLCALLBACKMEMBER(int, pfnDXSetPredication,            (PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXContext));
     DECLCALLBACKMEMBER(int, pfnDXSetSOTargets,              (PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXContext, uint32_t cSoTarget, SVGA3dSoTarget const *paSoTarget));
     DECLCALLBACKMEMBER(int, pfnDXSetViewports,              (PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXContext, uint32_t cViewport, SVGA3dViewport const *paViewport));
