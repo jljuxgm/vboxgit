@@ -1,4 +1,4 @@
-/* $Id: UIVisoHostBrowser.cpp 91235 2021-09-14 15:50:06Z vboxsync $ */
+/* $Id: UIVisoHostBrowser.cpp 91328 2021-09-22 15:15:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoHostBrowser class implementation.
  */
@@ -19,11 +19,11 @@
 #include <QGridLayout>
 #include <QHeaderView>
 #include <QMimeData>
-#include <QTableView>
 #include <QTextEdit>
 #include <QTreeView>
 
 /* GUI includes: */
+#include "QITableView.h"
 #include "UIVisoHostBrowser.h"
 
 /*********************************************************************************************************************************
@@ -35,6 +35,7 @@ class UIVisoHostBrowserModel : public QFileSystemModel
     Q_OBJECT;
 
 public:
+
     virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const /* override */;
     UIVisoHostBrowserModel(QObject *pParent);
 
@@ -148,7 +149,7 @@ void UIVisoHostBrowser::prepareObjects()
         m_pTreeView->hideColumn(3);
     }
 
-    m_pTableView = new QTableView;
+    m_pTableView = new QITableView;
     if (m_pTableView)
     {
         m_pTableView->setContextMenuPolicy(Qt::CustomContextMenu);

@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.h 87718 2021-02-11 08:50:48Z vboxsync $ */
+/* $Id: UIFileManagerTable.h 91328 2021-09-22 15:15:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class declaration.
  */
@@ -127,7 +127,7 @@ private:
 /** This class serves a base class for file table. Currently a guest version
  *  and a host version are derived from this base. Each of these children
  *  populates the UICustomFileSystemModel by scanning the file system
- *  differently. The file structre kept in this class as a tree. */
+ *  differently. The file structure kept in this class as a tree. */
 class UIFileManagerTable : public QIWithRetranslateUI<QWidget>
 {
     Q_OBJECT;

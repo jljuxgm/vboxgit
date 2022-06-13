@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.cpp 91300 2021-09-17 12:19:48Z vboxsync $ */
+/* $Id: UIVisoCreator.cpp 91328 2021-09-22 15:15:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator class implementation.
  */
@@ -144,7 +144,12 @@ void UIVisoCreator::retranslateUi()
     if (m_pRenameAction)
         m_pRenameAction->setToolTip(QApplication::translate("UIVisoCreator", "Rename the selected object"));
     if (m_pButtonBox && m_pButtonBox->button(QDialogButtonBox::Ok))
+    {
         m_pButtonBox->button(QDialogButtonBox::Ok)->setText(QApplication::translate("UIVisoCreator", "C&reate"));
+        m_pButtonBox->button(QDialogButtonBox::Ok)->setToolTip(QApplication::translate("UIVisoCreator", "Creates VISO file with the selected content"));
+    }
+    if (m_pButtonBox && m_pButtonBox->button(QDialogButtonBox::Help))
+        m_pButtonBox->button(QDialogButtonBox::Help)->setToolTip(QApplication::translate("UIVisoCreator", "Opens the help browser and navigates to the related section"));
 }
 
 void UIVisoCreator::sltHandleAddObjectsToViso(QStringList pathList)
