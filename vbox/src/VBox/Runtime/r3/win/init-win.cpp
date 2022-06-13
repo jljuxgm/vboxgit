@@ -1,4 +1,4 @@
-/* $Id: init-win.cpp 91605 2021-10-06 20:13:37Z vboxsync $ */
+/* $Id: init-win.cpp 92245 2021-11-05 23:40:02Z vboxsync $ */
 /** @file
  * IPRT - Init Ring-3, Windows Specific Code.
  */
@@ -42,6 +42,7 @@
 #include <iprt/ldr.h>
 #include <iprt/log.h>
 #include <iprt/param.h>
+#include <iprt/process.h>
 #include <iprt/string.h>
 #include <iprt/thread.h>
 #include "../init.h"
@@ -573,7 +574,8 @@ static LONG CALLBACK rtR3WinUnhandledXcptFilter(PEXCEPTION_POINTERS pPtrs)
         pLogger = RTLogGetDefaultInstance();
     if (pLogger)
     {
-        RTLogLogger(pLogger, NULL, "\n!!! rtR3WinUnhandledXcptFilter caught an exception on thread %p!!!\n", RTThreadNativeSelf());
+        RTLogLogger(pLogger, NULL, "\n!!! rtR3WinUnhandledXcptFilter caught an exception on thread %p in %u !!!\n",
+                    RTThreadNativeSelf(), RTProcSelf());
 
         /*
          * Dump the exception record.
@@ -798,6 +800,21 @@ static LONG CALLBACK rtR3WinUnhandledXcptFilter(PEXCEPTION_POINTERS pPtrs)
                         puStack++;
                     }
                 }
+            }
+
+            /*
+             * Dump the command line if we have one. We do this last in case it crashes.
+             */
+            PRTL_USER_PROCESS_PARAMETERS pProcParams = pPeb->ProcessParameters;
+            if (RT_VALID_PTR(pProcParams))
+            {
+                if (RT_VALID_PTR(pProcParams->CommandLine.Buffer)
+                    && pProcParams->CommandLine.Length > 0
+                    && pProcParams->CommandLine.Length <= pProcParams->CommandLine.MaximumLength
+                    && !(pProcParams->CommandLine.Length & 1)
+                    && !(pProcParams->CommandLine.MaximumLength & 1))
+                    RTLogLogger(pLogger, NULL, "PEB/CommandLine: %.*ls\n",
+                                pProcParams->CommandLine.Length / sizeof(RTUTF16), pProcParams->CommandLine.Buffer);
             }
         }
     }
