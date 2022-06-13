@@ -1,4 +1,4 @@
-; $Id: IEMAllAImpl.asm 93792 2022-02-16 13:30:16Z vboxsync $
+; $Id: IEMAllAImpl.asm 93906 2022-02-24 10:28:32Z vboxsync $
 ;; @file
 ; IEM - Instruction Implementation in Assembly.
 ;
@@ -2517,6 +2517,56 @@ BEGINPROC_FASTCALL iemAImpl_fst_r80_to_r80, 16
         add     xSP, 20h
         EPILOGUE_4_ARGS
 ENDPROC iemAImpl_fst_r80_to_r80
+
+
+;;
+; Loads an 80-bit floating point register value in BCD format from memory.
+;
+; @param    A0      FPU context (fxsave).
+; @param    A1      Pointer to a IEMFPURESULT for the output.
+; @param    A2      Pointer to the 80-bit BCD value to load.
+;
+BEGINPROC_FASTCALL iemAImpl_fld_r80_from_d80, 12
+        PROLOGUE_3_ARGS
+        sub     xSP, 20h
+
+        fninit
+        FPU_LD_FXSTATE_FCW_AND_SAFE_FSW A0
+        fbld    tword [A2]
+
+        fnstsw  word  [A1 + IEMFPURESULT.FSW]
+        fnclex
+        fstp    tword [A1 + IEMFPURESULT.r80Result]
+
+        fninit
+        add     xSP, 20h
+        EPILOGUE_3_ARGS
+ENDPROC iemAImpl_fld_r80_from_d80
+
+
+;;
+; Store a 80-bit floating point register to memory as BCD
+;
+; @param    A0      FPU context (fxsave).
+; @param    A1      Where to return the output FSW.
+; @param    A2      Where to store the 80-bit BCD value.
+; @param    A3      Pointer to the 80-bit register value.
+;
+BEGINPROC_FASTCALL iemAImpl_fst_r80_to_d80, 16
+        PROLOGUE_4_ARGS
+        sub     xSP, 20h
+
+        fninit
+        fld     tword [A3]
+        FPU_LD_FXSTATE_FCW_AND_SAFE_FSW A0
+        fbstp   tword [A2]
+
+        fnstsw  word  [A1]
+
+        fninit
+        add     xSP, 20h
+        EPILOGUE_4_ARGS
+ENDPROC iemAImpl_fst_r80_to_d80
 
 
 ;;

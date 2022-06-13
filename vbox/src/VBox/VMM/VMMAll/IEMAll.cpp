@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 93635 2022-02-07 10:43:45Z vboxsync $ */
+/* $Id: IEMAll.cpp 93906 2022-02-24 10:28:32Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -11909,6 +11909,11 @@ IEM_STATIC VBOXSTRICTRC iemMemMarkSelDescAccessed(PVMCPUCC pVCpu, uint16_t uSel)
     do { \
         (a_pr80Dst)->au64[0] = UINT64_C(0xc000000000000000); \
         (a_pr80Dst)->au16[4] = UINT16_C(0xffff); \
+    } while (0)
+#define IEM_MC_STORE_MEM_INDEF_D80_BY_REF(a_pd80Dst) \
+    do { \
+        (a_pd80Dst)->au64[0] = UINT64_C(0xc000000000000000); \
+        (a_pd80Dst)->au16[4] = UINT16_C(0xffff); \
     } while (0)
 
 #ifndef IEM_WITH_SETJMP

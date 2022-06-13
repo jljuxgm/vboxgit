@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 93862 2022-02-20 13:47:55Z vboxsync $ */
+/* $Id: IEMInternal.h 93906 2022-02-24 10:28:32Z vboxsync $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -1418,6 +1418,10 @@ FNIEMAIMPLFPUR80UNARYTWO    iemAImpl_fsincos_r80_r80;
 IEM_DECL_IMPL_DEF(void, iemAImpl_fld_r80_from_r80,(PCX86FXSTATE pFpuState, PIEMFPURESULT pFpuRes, PCRTFLOAT80U pr80Val));
 IEM_DECL_IMPL_DEF(void, iemAImpl_fst_r80_to_r80,(PCX86FXSTATE pFpuState, uint16_t *pu16FSW,
                                                  PRTFLOAT80U pr80Dst, PCRTFLOAT80U pr80Src));
+
+IEM_DECL_IMPL_DEF(void, iemAImpl_fld_r80_from_d80,(PCX86FXSTATE pFpuState, PIEMFPURESULT pFpuRes, PCRTPBCD80U pd80Val));
+IEM_DECL_IMPL_DEF(void, iemAImpl_fst_r80_to_d80,(PCX86FXSTATE pFpuState, uint16_t *pu16FSW,
+                                                 PRTPBCD80U pd80Dst, PCRTFLOAT80U pr80Src));
 
 /** @} */
 
