@@ -1,4 +1,4 @@
-# $Id: Config.kmk 94152 2022-03-10 07:48:53Z vboxsync $
+# $Id: Config.kmk 94154 2022-03-10 08:42:40Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -943,7 +943,7 @@ VBOX_WITH_EXTPACK_VBOXDTRACE = 1
 # Enable to compile with OpenSSL 1.0 (only relevant for Windows, see src/VBox/Runtime/Makefile.kmk)
 #VBOX_WITH_OPENSSL_PRE_1_1 = 1
 # Enable openssl 3.0.1 (temporary to not break everything at once @bugref{10128}).
-if1of ($(KBUILD_TARGET), solaris linux)
+if1of ($(KBUILD_TARGET), solaris linux darwin)
  VBOX_WITH_OPENSSL3 = 1
 endif
 # Enables all the doxgen bits.
@@ -8911,7 +8911,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 94152 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 94154 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
