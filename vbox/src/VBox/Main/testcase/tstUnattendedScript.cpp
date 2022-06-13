@@ -1,4 +1,4 @@
-/* $Id: tstUnattendedScript.cpp 93532 2022-02-01 13:27:29Z vboxsync $ */
+/* $Id: tstUnattendedScript.cpp 93534 2022-02-01 16:46:52Z vboxsync $ */
 /** @file
  * tstUnattendedScript - testcases for UnattendedScript.
  */
@@ -441,6 +441,12 @@ HRESULT Unattended::getDetectedOSHints(com::Utf8Str &aDetectedOSHints)
 HRESULT Unattended::getDetectedImageNames(std::vector<com::Utf8Str> &aDetectedImageNames)
 {
     RT_NOREF(aDetectedImageNames);
+    return E_NOTIMPL;
+}
+
+HRESULT Unattended::getDetectedImageIndices(std::vector<uint32_t> &aDetectedImageIndices)
+{
+    RT_NOREF(aDetectedImageIndices);
     return E_NOTIMPL;
 }
 
