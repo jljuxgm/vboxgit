@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 91363 2021-09-24 13:08:32Z vboxsync $ */
+/* $Id: UIMediumManager.cpp 92397 2021-11-12 11:53:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class implementation.
  */
@@ -458,7 +458,7 @@ void UIMediumManagerWidget::sltAddMedium()
 
 void UIMediumManagerWidget::sltCreateMedium()
 {
-    uiCommon().openMediumCreatorDialog(this, currentMediumType());
+    uiCommon().openMediumCreatorDialog(m_pActionPool, this, currentMediumType());
 }
 
 void UIMediumManagerWidget::sltCopyMedium()

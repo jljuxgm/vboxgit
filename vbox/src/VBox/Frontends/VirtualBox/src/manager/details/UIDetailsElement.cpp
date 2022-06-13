@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElement.cpp 91003 2021-08-30 15:40:14Z vboxsync $ */
+/* $Id: UIDetailsElement.cpp 92397 2021-11-12 11:53:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement class implementation.
  */
@@ -683,7 +683,7 @@ void UIDetailsElement::sltMountStorageMedium()
     const UIMediumTarget target = pAction->data().value<UIMediumTarget>();
 
     /* Update current machine mount-target: */
-    uiCommon().updateMachineStorage(machine(), target);
+    uiCommon().updateMachineStorage(machine(), target, gpManager->actionPool());
 }
 
 void UIDetailsElement::prepareElement()

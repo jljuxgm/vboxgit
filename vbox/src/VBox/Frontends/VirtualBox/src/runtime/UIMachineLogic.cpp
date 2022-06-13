@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 92324 2021-11-10 14:37:29Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 92397 2021-11-12 11:53:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -2280,7 +2280,7 @@ void UIMachineLogic::sltMountStorageMedium()
     const UIMediumTarget target = pAction->data().value<UIMediumTarget>();
 
     /* Update current machine mount-target: */
-    uiCommon().updateMachineStorage(machine(), target);
+    uiCommon().updateMachineStorage(machine(), target, actionPool());
 }
 
 void UIMachineLogic::sltAttachUSBDevice()

@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.h 92352 2021-11-11 10:18:36Z vboxsync $ */
+/* $Id: UIVisoCreator.h 92397 2021-11-12 11:53:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator class declaration.
  */
@@ -28,6 +28,7 @@
 #include "QIMainDialog.h"
 #include "QIWithRetranslateUI.h"
 
+#include <iprt/stream.h>
 
 /* Forward declarations: */
 class QMenu;
@@ -65,6 +66,16 @@ public:
     QIToolBar *toolbar() const { return m_pToolBar; }
 #endif
 
+    /**
+      * Helper for createVisoMediumWithVisoCreator.
+      * @returns IPRT status code.
+      * @param   pStrmDst            Where to write the quoted string.
+      * @param   pszPrefix           Stuff to put in front of it.
+      * @param   rStr                The string to quote and write out.
+      * @param   pszPrefix           Stuff to put after it.
+      */
+    static int visoWriteQuotedString(PRTSTREAM pStrmDst, const char *pszPrefix,
+                                     QString const &rStr, const char *pszPostFix);
 protected:
 
     virtual void retranslateUi() final override;
