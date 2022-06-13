@@ -1,4 +1,4 @@
-/* $Id: tstRTExprEval.cpp 93170 2022-01-11 00:50:22Z vboxsync $ */
+/* $Id: tstRTExprEval.cpp 93175 2022-01-11 01:13:12Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTExprEval
  */
@@ -30,7 +30,7 @@
 *********************************************************************************************************************************/
 #include <iprt/expreval.h>
 
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/string.h>
 #include <iprt/test.h>
 
