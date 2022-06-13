@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMEditors.cpp 93646 2022-02-08 08:15:30Z vboxsync $ */
+/* $Id: UIWizardNewVMEditors.cpp 93798 2022-02-16 17:04:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class implementation.
  */
@@ -142,6 +142,7 @@ void UIGAInstallationGroupBox::prepare()
     m_pGAISOFilePathSelector->setFileDialogFilters("ISO Images(*.iso *.ISO)");
     m_pGAISOFilePathSelector->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Fixed);
     m_pGAISOFilePathSelector->setInitialPath(uiCommon().defaultFolderPathForType(UIMediumDeviceType_DVD));
+    m_pGAISOFilePathSelector->setRecentMediaListType(UIMediumDeviceType_DVD);
     if (m_pGAISOPathLabel)
         m_pGAISOPathLabel->setBuddy(m_pGAISOFilePathSelector);
 
