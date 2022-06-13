@@ -1,4 +1,4 @@
-/* $Id: vcc-fakes-kernel32.cpp 84405 2020-05-20 14:27:07Z vboxsync $ */
+/* $Id: vcc-fakes-kernel32.cpp 92904 2021-12-14 22:11:51Z vboxsync $ */
 /** @file
  * IPRT - Tricks to make the Visual C++ 2010 CRT work on NT4, W2K and XP.
  */
@@ -58,6 +58,12 @@
  * @note We are not exporting them as that causes duplicate symbol troubles in
  *       the OpenGL bits. */
 #define DECL_KERNEL32(a_Type) extern "C" a_Type WINAPI
+
+#if defined(WDK_NTDDI_VERSION) && defined(NTDDI_WIN10)
+# if WDK_NTDDI_VERSION >= NTDDI_WIN10 /* In Windows 10 SDK the 'Sequence' field has been renamed to 'CpuId'. */
+#  define SLIST_HEADER_SEQUENCE_NOW_CALLED_CPUID
+# endif
+#endif
 
 
 
@@ -248,7 +254,11 @@ DECL_KERNEL32(PSLIST_ENTRY) Fake_InterlockedFlushSList(PSLIST_HEADER pHead)
             SLIST_HEADER OldHead = *pHead;
             SLIST_HEADER NewHead;
             NewHead.Alignment = 0;
+#ifdef SLIST_HEADER_SEQUENCE_NOW_CALLED_CPUID
+            NewHead.CpuId  = OldHead.CpuId + 1;
+#else
             NewHead.Sequence  = OldHead.Sequence + 1;
+#endif
             if (ASMAtomicCmpXchgU64(&pHead->Alignment, NewHead.Alignment, OldHead.Alignment))
             {
                 pRet = OldHead.Next.Next;
@@ -278,7 +288,11 @@ DECL_KERNEL32(PSLIST_ENTRY) Fake_InterlockedPopEntrySList(PSLIST_HEADER pHead)
                 continue;
             }
             NewHead.Depth     = OldHead.Depth - 1;
+#ifdef SLIST_HEADER_SEQUENCE_NOW_CALLED_CPUID
+            NewHead.CpuId  = OldHead.CpuId + 1;
+#else
             NewHead.Sequence  = OldHead.Sequence + 1;
+#endif
             if (ASMAtomicCmpXchgU64(&pHead->Alignment, NewHead.Alignment, OldHead.Alignment))
                 break;
         }
@@ -299,7 +313,11 @@ DECL_KERNEL32(PSLIST_ENTRY) Fake_InterlockedPushEntrySList(PSLIST_HEADER pHead, 
         SLIST_HEADER NewHead;
         NewHead.Next.Next = pEntry;
         NewHead.Depth     = OldHead.Depth + 1;
+#ifdef SLIST_HEADER_SEQUENCE_NOW_CALLED_CPUID
+        NewHead.CpuId  = OldHead.CpuId + 1;
+#else
         NewHead.Sequence  = OldHead.Sequence + 1;
+#endif
         if (ASMAtomicCmpXchgU64(&pHead->Alignment, NewHead.Alignment, OldHead.Alignment))
             break;
     }
