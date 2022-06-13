@@ -1,4 +1,4 @@
-/* $Id: TMInternal.h 92709 2021-12-02 13:56:44Z vboxsync $ */
+/* $Id: TMInternal.h 92712 2021-12-02 17:34:24Z vboxsync $ */
 /** @file
  * TM - Internal header file.
  */
@@ -853,6 +853,7 @@ void                    tmTimerQueueSchedule(PVMCC pVM, PTMTIMERQUEUECC pQueueCC
 #ifdef VBOX_STRICT
 void                    tmTimerQueuesSanityChecks(PVMCC pVM, const char *pszWhere);
 #endif
+void                    tmHCTimerQueueGrowInit(PTMTIMER paTimers, TMTIMER const *paOldTimers, uint32_t cNewTimers, uint32_t cOldTimers);
 
 uint64_t                tmR3CpuTickGetRawVirtualNoCheck(PVM pVM);
 int                     tmCpuTickPause(PVMCPUCC pVCpu);
