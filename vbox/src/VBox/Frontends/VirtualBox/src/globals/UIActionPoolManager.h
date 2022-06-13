@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.h 94089 2022-03-04 14:06:52Z vboxsync $ */
+/* $Id: UIActionPoolManager.h 94294 2022-03-17 13:44:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class declaration.
  */
@@ -164,6 +164,7 @@ enum UIActionIndexMN
     UIActionIndexMN_M_Medium_T_Details,
     UIActionIndexMN_M_Medium_T_Search,
     UIActionIndexMN_M_Medium_S_Refresh,
+    UIActionIndexMN_M_Medium_S_Clear,
 
     /* Network Manager actions: */
     UIActionIndexMN_M_NetworkWindow,

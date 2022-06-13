@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.h 93990 2022-02-28 15:34:57Z vboxsync $ */
+/* $Id: UIMediumManager.h 94294 2022-03-17 13:44:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class declaration.
  */
@@ -178,6 +178,8 @@ private slots:
         void sltRemoveMedium();
         /** Handles command to release medium. */
         void sltReleaseMedium();
+        /** Removes all inaccessible media. */
+        void sltClear();
         /** Handles command to make medium details @a fVisible. */
         void sltToggleMediumDetailsVisibility(bool fVisible);
         /** Handles command to make medium search pane @a fVisible. */
