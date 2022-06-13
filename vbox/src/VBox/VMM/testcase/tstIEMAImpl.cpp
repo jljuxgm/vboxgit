@@ -1,4 +1,4 @@
-/* $Id: tstIEMAImpl.cpp 93864 2022-02-21 11:16:56Z vboxsync $ */
+/* $Id: tstIEMAImpl.cpp 93865 2022-02-21 11:48:41Z vboxsync $ */
 /** @file
  * IEM Assembly Instruction Helper Testcase.
  */
@@ -96,7 +96,6 @@ typedef struct BINU16_T
 static uint32_t RandEFlags(void);
 static uint8_t  RandU8(void);
 static uint16_t RandU16(void);
-static const char *FmtEflagsDiff(uint32_t fEfl, uint32_t fExpected);
 
 
 /*********************************************************************************************************************************
@@ -396,7 +395,7 @@ int main(int argc, char **argv)
         char szCpuDesc[256] = {0};
         RTMpGetDescription(NIL_RTCPUID, szCpuDesc, sizeof(szCpuDesc));
 
-        RTPrintf("/* $Id: tstIEMAImpl.cpp 93864 2022-02-21 11:16:56Z vboxsync $ */\n"
+        RTPrintf("/* $Id: tstIEMAImpl.cpp 93865 2022-02-21 11:48:41Z vboxsync $ */\n"
                  "/** @file\n"
                  " * IEM Assembly Instruction Helper Testcase Data - %s.\n"
                  " */\n"
