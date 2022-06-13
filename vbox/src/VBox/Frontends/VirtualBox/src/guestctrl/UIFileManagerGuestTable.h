@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerGuestTable.h 93682 2022-02-10 19:08:22Z vboxsync $ */
+/* $Id: UIFileManagerGuestTable.h 93697 2022-02-11 15:48:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerGuestTable class declaration.
  */
@@ -43,7 +43,7 @@
 class CGuestSessionStateChangedEvent;
 class UIActionPool;
 class UICustomFileSystemItem;
-class UIGuestSessionCreateWidget;
+class UIGuestSessionWidget;
 
 /** This class scans the guest file system by using the VBox Guest Control API
  *  and populates the UIGuestControlFileModel*/
@@ -97,7 +97,7 @@ private slots:
     void sltGuestSessionUnregistered(CGuestSession guestSession);
     void sltGuestSessionRegistered(CGuestSession guestSession);
     void sltGuestSessionStateChanged(const CGuestSessionStateChangedEvent &cEvent);
-    void sltCreateGuestSession(QString strUserName, QString strPassword);
+    void sltOpenGuestSession(QString strUserName, QString strPassword);
     void sltHandleCloseSessionRequest();
     void sltMachineStateChange(const QUuid &uMachineId, const KMachineState state);
     void sltCommitDataSignalReceived();
@@ -156,7 +156,7 @@ private:
     CEventListener m_comSessionListener;
     CEventListener m_comGuestListener;
     CEventListener m_comConsoleListener;
-    UIGuestSessionCreateWidget *m_pGuestSessionWidget;
+    UIGuestSessionWidget *m_pGuestSessionWidget;
     /** True if this table is the current table in parents tab widget. */
     bool m_fIsCurrent;
     State m_enmState;
