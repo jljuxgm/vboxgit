@@ -1,4 +1,4 @@
-/* $Id: TMInternal.h 91939 2021-10-21 12:43:45Z vboxsync $ */
+/* $Id: TMInternal.h 92709 2021-12-02 13:56:44Z vboxsync $ */
 /** @file
  * TM - Internal header file.
  */
@@ -445,6 +445,8 @@ typedef struct TM
     /** The ID of the virtual CPU that normally runs the timers. */
     VMCPUID                     idTimerCpu;
 
+    /** The number of CPU clock ticks per seconds of the host CPU.   */
+    uint64_t                    cTSCTicksPerSecondHost;
     /** The number of CPU clock ticks per second (TMCLOCK_TSC).
      * Config variable: TSCTicksPerSecond (64-bit unsigned int)
      * The config variable implies @c enmTSCMode would be

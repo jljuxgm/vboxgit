@@ -1,4 +1,4 @@
-/* $Id: TMAll.cpp 90346 2021-07-26 19:55:53Z vboxsync $ */
+/* $Id: TMAll.cpp 92709 2021-12-02 13:56:44Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, all contexts.
  */
@@ -188,8 +188,9 @@ VMMDECL(void) TMNotifyEndOfExecution(PVMCC pVM, PVMCPUCC pVCpu, uint64_t uTsc)
      * Calculate the elapsed tick count and convert it to nanoseconds.
      */
 # ifdef IN_RING3
-    uint64_t       cTicks = uTsc - pVCpu->tm.s.uTscStartExecuting - SUPGetTscDelta();
-    uint64_t const uCpuHz = SUPGetCpuHzFromGip(g_pSUPGlobalInfoPage);
+    PSUPGLOBALINFOPAGE const pGip = g_pSUPGlobalInfoPage;
+    uint64_t       cTicks = uTsc - pVCpu->tm.s.uTscStartExecuting - SUPGetTscDelta(pGip);
+    uint64_t const uCpuHz = pGip ? SUPGetCpuHzFromGip(pGip) : pVM->tm.s.cTSCTicksPerSecondHost;
 # else
     uint64_t       cTicks = uTsc - pVCpu->tm.s.uTscStartExecuting - SUPGetTscDeltaByCpuSetIndex(pVCpu->iHostCpuSet);
     uint64_t const uCpuHz = SUPGetCpuHzFromGipBySetIndex(g_pSUPGlobalInfoPage, pVCpu->iHostCpuSet);
