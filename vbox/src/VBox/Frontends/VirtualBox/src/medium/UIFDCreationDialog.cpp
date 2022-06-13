@@ -1,4 +1,4 @@
-/* $Id: UIFDCreationDialog.cpp 90453 2021-08-01 09:04:40Z vboxsync $ */
+/* $Id: UIFDCreationDialog.cpp 90564 2021-08-07 11:12:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFDCreationDialog class implementation.
  */
@@ -95,7 +95,7 @@ void UIFDCreationDialog::accept()
             &uiCommon(), &UICommon::sltHandleMediumCreated);
     connect(pNotification, &UINotificationProgressMediumCreate::sigMediumCreated,
             this, &UIFDCreationDialog::sltHandleMediumCreated);
-    notificationCenter().append(pNotification);
+    gpNotificationCenter->append(pNotification);
 }
 
 void UIFDCreationDialog::retranslateUi()

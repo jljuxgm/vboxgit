@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVM.cpp 90325 2021-07-24 13:21:36Z vboxsync $ */
+/* $Id: UIWizardCloneVM.cpp 90564 2021-08-07 11:12:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVM class implementation.
  */
@@ -154,7 +154,7 @@ bool UIWizardCloneVM::cloneVM()
                                                                                              options);
     connect(pNotification, &UINotificationProgressMachineCopy::sigMachineCopied,
             &uiCommon(), &UICommon::sltHandleMachineCreated);
-    notificationCenter().append(pNotification);
+    gpNotificationCenter->append(pNotification);
 
     return true;
 }

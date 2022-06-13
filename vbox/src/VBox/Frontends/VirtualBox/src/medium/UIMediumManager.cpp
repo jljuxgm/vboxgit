@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 90423 2021-07-30 10:46:13Z vboxsync $ */
+/* $Id: UIMediumManager.cpp 90564 2021-08-07 11:12:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class implementation.
  */
@@ -297,7 +297,7 @@ void UIMediumManagerWidget::sltApplyMediumDetailsChanges()
                                                                                                newData.m_options.m_strLocation);
         connect(pNotification, &UINotificationProgressMediumMove::sigProgressFinished,
                 this, &UIMediumManagerWidget::sltHandleMoveProgressFinished);
-        notificationCenter().append(pNotification);
+        gpNotificationCenter->append(pNotification);
     }
 
     /* Try to assign new medium size: */
@@ -309,7 +309,7 @@ void UIMediumManagerWidget::sltApplyMediumDetailsChanges()
                                                                                                    newData.m_options.m_uLogicalSize);
         connect(pNotification, &UINotificationProgressMediumResize::sigProgressFinished,
                 this, &UIMediumManagerWidget::sltHandleResizeProgressFinished);
-        notificationCenter().append(pNotification);
+        gpNotificationCenter->append(pNotification);
     }
 
     /* Recache current item: */

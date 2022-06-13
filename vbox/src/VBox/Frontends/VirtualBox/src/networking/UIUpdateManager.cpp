@@ -1,4 +1,4 @@
-/* $Id: UIUpdateManager.cpp 90560 2021-08-07 07:36:02Z vboxsync $ */
+/* $Id: UIUpdateManager.cpp 90564 2021-08-07 11:12:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUpdateManager class implementation.
  */
@@ -497,7 +497,7 @@ void UIUpdateStepVirtualBoxExtensionPack::sltStartStep()
     connect(pNotification, &UINotificationDownloaderExtensionPack::sigDownloaderDestroyed,
             this, &UIUpdateStepVirtualBoxExtensionPack::sigStepComplete);
     /* Append and start notification: */
-    notificationCenter().append(pNotification);
+    gpNotificationCenter->append(pNotification);
 }
 
 void UIUpdateStepVirtualBoxExtensionPack::sltHandleDownloadedExtensionPack(const QString &strSource,

@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVD.cpp 90301 2021-07-23 12:47:15Z vboxsync $ */
+/* $Id: UIWizardCloneVD.cpp 90564 2021-08-07 11:12:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVD class implementation.
  */
@@ -81,7 +81,7 @@ bool UIWizardCloneVD::copyVirtualDisk()
                                                                                            variants);
     connect(pNotification, &UINotificationProgressMediumCopy::sigMediumCopied,
             &uiCommon(), &UICommon::sltHandleMediumCreated);
-    notificationCenter().append(pNotification);
+    gpNotificationCenter->append(pNotification);
 
     /* Positive: */
     return true;

@@ -1,4 +1,4 @@
-/* $Id: UINotificationCenter.h 90563 2021-08-07 11:05:15Z vboxsync $ */
+/* $Id: UINotificationCenter.h 90564 2021-08-07 11:12:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINotificationCenter class declaration.
  */
@@ -143,6 +143,6 @@ private:
 };
 
 /** Singleton notification-center 'official' name. */
-inline UINotificationCenter &notificationCenter() { return *UINotificationCenter::instance(); }
+#define gpNotificationCenter UINotificationCenter::instance()
 
 #endif /* !FEQT_INCLUDED_SRC_notificationcenter_UINotificationCenter_h */

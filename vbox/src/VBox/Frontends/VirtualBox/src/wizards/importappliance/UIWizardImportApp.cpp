@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportApp.cpp 90334 2021-07-26 13:07:24Z vboxsync $ */
+/* $Id: UIWizardImportApp.cpp 90564 2021-08-07 11:12:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportApp class implementation.
  */
@@ -212,7 +212,7 @@ bool UIWizardImportApp::importAppliance()
         /* Import appliance: */
         UINotificationProgressApplianceImport *pNotification = new UINotificationProgressApplianceImport(comAppliance,
                                                                                                          options);
-        notificationCenter().append(pNotification);
+        gpNotificationCenter->append(pNotification);
 
         /* Positive: */
         return true;

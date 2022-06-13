@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVM.cpp 90321 2021-07-23 18:03:23Z vboxsync $ */
+/* $Id: UIWizardNewCloudVM.cpp 90564 2021-08-07 11:12:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVM class implementation.
  */
@@ -127,7 +127,7 @@ bool UIWizardNewCloudVM::createCloudVM()
                                                                                                            profileName());
     connect(pNotification, &UINotificationProgressCloudMachineCreate::sigCloudMachineCreated,
             &uiCommon(), &UICommon::sltHandleCloudMachineAdded);
-    notificationCenter().append(pNotification);
+    gpNotificationCenter->append(pNotification);
 
     /* Positive: */
     fResult = true;

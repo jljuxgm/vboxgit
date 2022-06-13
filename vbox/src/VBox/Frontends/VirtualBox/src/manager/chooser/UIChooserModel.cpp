@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 90490 2021-08-03 09:21:04Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 90564 2021-08-07 11:12:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -1889,7 +1889,7 @@ void UIChooserModel::unregisterLocalMachines(const QList<CMachine> &machines)
             }
             /* Removing machine: */
             UINotificationProgressMachineMediaRemove *pNotification = new UINotificationProgressMachineMediaRemove(comMachine, media);
-            notificationCenter().append(pNotification);
+            gpNotificationCenter->append(pNotification);
         }
         else if (iResultCode == AlertButton_Choice2 || iResultCode == AlertButton_Ok)
         {
@@ -1953,7 +1953,7 @@ void UIChooserModel::unregisterCloudMachineItems(const QList<UIChooserItemMachin
                                                          strProfileName);
         connect(pNotification, &UINotificationProgressCloudMachineRemove::sigCloudMachineRemoved,
                 this, &UIChooserModel::sltHandleCloudMachineRemoved);
-        notificationCenter().append(pNotification);
+        gpNotificationCenter->append(pNotification);
     }
 }
 

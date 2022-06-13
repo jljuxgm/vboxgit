@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 90561 2021-08-07 09:04:01Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 90564 2021-08-07 11:12:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -3425,7 +3425,7 @@ void UIMessageCenter::sltShowHelpHelpDialog()
         connect(pNotification, &UINotificationDownloaderUserManual::sigUserManualDownloaded,
                 this, &UIMessageCenter::sltShowUserManual);
         /* Append and start notification: */
-        notificationCenter().append(pNotification);
+        gpNotificationCenter->append(pNotification);
     }
 #endif /* #ifdef VBOX_OSE */
 #endif

@@ -1,4 +1,4 @@
-/* $Id: UIMediumItem.cpp 90422 2021-07-30 10:24:30Z vboxsync $ */
+/* $Id: UIMediumItem.cpp 90564 2021-08-07 11:12:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumItem class implementation.
  */
@@ -83,7 +83,7 @@ bool UIMediumItem::move()
                                                                                            strFileName);
     connect(pNotification, &UINotificationProgressMediumMove::sigProgressFinished,
             this, &UIMediumItem::sltHandleMoveProgressFinished);
-    notificationCenter().append(pNotification);
+    gpNotificationCenter->append(pNotification);
 
     /* Positive: */
     return true;
@@ -494,7 +494,7 @@ bool UIMediumItemHD::maybeRemoveStorage()
         UINotificationProgressMediumDeletingStorage *pNotification = new UINotificationProgressMediumDeletingStorage(comMedium);
         connect(pNotification, &UINotificationProgressMediumDeletingStorage::sigMediumStorageDeleted,
                 this, &UIMediumItemHD::sltHandleMediumRemoveRequest);
-        notificationCenter().append(pNotification);
+        gpNotificationCenter->append(pNotification);
     }
     /* Otherwise go to last step immediatelly: */
     else

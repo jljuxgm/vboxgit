@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 90520 2021-08-04 21:37:54Z vboxsync $ */
+/* $Id: UICommon.cpp 90564 2021-08-07 11:12:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -3853,7 +3853,7 @@ void UICommon::doExtPackInstallation(QString const &strFilePath, QString const &
                                                            strDisplayInfo);
     connect(pNotification, &UINotificationProgressExtensionPackInstall::sigExtensionPackInstalled,
             this, &UICommon::sigExtensionPackInstalled);
-    notificationCenter().append(pNotification);
+    gpNotificationCenter->append(pNotification);
 
     /* Store the name: */
     if (pstrExtPackName)

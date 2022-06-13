@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportApp.cpp 90344 2021-07-26 18:26:53Z vboxsync $ */
+/* $Id: UIWizardExportApp.cpp 90564 2021-08-07 11:12:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportApp class implementation.
  */
@@ -414,7 +414,7 @@ bool UIWizardExportApp::exportVMs(CAppliance &comAppliance)
                                                                                                              field("format").toString(),
                                                                                                              options,
                                                                                                              uri());
-            notificationCenter().append(pNotification);
+            gpNotificationCenter->append(pNotification);
         }
 
         /* Success finally: */

@@ -1,4 +1,4 @@
-/* $Id: UIApplianceImportEditorWidget.cpp 90334 2021-07-26 13:07:24Z vboxsync $ */
+/* $Id: UIApplianceImportEditorWidget.cpp 90564 2021-08-07 11:12:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceImportEditorWidget class implementation.
  */
@@ -271,7 +271,7 @@ bool UIApplianceImportEditorWidget::import()
         /* Import appliance: */
         UINotificationProgressApplianceImport *pNotification = new UINotificationProgressApplianceImport(*m_pAppliance,
                                                                                                          options);
-        notificationCenter().append(pNotification);
+        gpNotificationCenter->append(pNotification);
 
         /* Positive: */
         return true;
