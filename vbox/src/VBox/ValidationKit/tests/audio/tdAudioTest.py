@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tdAudioTest.py 90656 2021-08-12 11:15:13Z vboxsync $
+# $Id: tdAudioTest.py 90666 2021-08-12 16:50:40Z vboxsync $
 
 """
 AudioTest test driver which invokes the VKAT (Validation Kit Audio Test)
@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 90656 $"
+__version__ = "$Revision: 90666 $"
 
 # Standard Python imports.
 import os
@@ -272,7 +272,7 @@ class tdAudioTest(vbox.TestDriver):
         reporter.log('Disabling firewall on guest (type: %s) ...' % (sOsType,));
 
         if asArgs:
-            fRc = self.txsRunTest(oTxsSession, 'Disabling guest firewall', \
+            fRc = self.txsRunTest(oTxsSession, 'Disabling guest firewall', 3 * 60 * 1000, \
                                   oTestVm.pathJoin(self.getGuestSystemDir(oTestVm), asArgs[0]), asArgs);
             if not fRc:
                 reporter.error('Disabling firewall on guest returned exit code error %d' % (self.getLastRcFromTxs(oTxsSession)));
@@ -316,16 +316,18 @@ class tdAudioTest(vbox.TestDriver):
                 for sLine in sErr.split('\n'):
                     reporter.log(sLine);
 
-                iExitCode  = oProcess.poll();
-                if iExitCode != 0:
-                    fRc = False;
+                iExitCode = oProcess.poll();
+                if iExitCode == 0:
+                    fRc = True;
+                else:
+                    reporter.error('Disabling firewall on host returned exit code error %d' % iExitCode);
             else:
                 fRc = False;
 
             if not fRc:
-                reporter.error('Disabling firewall on host returned exit code error %d' % iExitCode);
+                reporter.error('Disabling firewall on host failed');
         else:
-            reporter.log('Firewall not available on host, skipping ');
+            reporter.log('Firewall not available on host, skipping');
             fRc = True; # Not available, just skip.
 
         return fRc;
