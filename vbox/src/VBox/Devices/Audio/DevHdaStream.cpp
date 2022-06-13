@@ -1,4 +1,4 @@
-/* $Id: DevHdaStream.cpp 89847 2021-06-23 08:47:54Z vboxsync $ */
+/* $Id: DevHdaStream.cpp 89848 2021-06-23 08:59:21Z vboxsync $ */
 /** @file
  * Intel HD Audio Controller Emulation - Streams.
  */
@@ -2352,9 +2352,9 @@ bool hdaR3StreamRegisterDMAHandlers(PHDASTREAM pStream)
         pHandler->GCPhysFirst = pgFirst;
         pHandler->GCPhysLast  = pHandler->GCPhysFirst + (regionSize - 1);
 
-        LogFunc(("\tRegistering region '%s': 0x%x - 0x%x (region size: %zu)\n",
+        LogFunc(("  Registering region '%s': %#RGp - %#RGp (region size: %#zx)\n",
                  szDesc, pHandler->GCPhysFirst, pHandler->GCPhysLast, regionSize));
-        LogFunc(("\tBDLE @ 0x%x - 0x%x (%RU32)\n",
+        LogFunc(("  BDLE @ %#RGp - %#RGp (%#RX32)\n",
                  pHandler->BDLEAddr, pHandler->BDLEAddr + pHandler->BDLESize, pHandler->BDLESize));
 
         rc2 = PGMHandlerPhysicalRegister(PDMDevHlpGetVM(pStream->pHDAState->pDevInsR3),
