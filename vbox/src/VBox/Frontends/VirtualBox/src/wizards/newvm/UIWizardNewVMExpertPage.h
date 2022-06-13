@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMExpertPage.h 91059 2021-09-01 13:48:12Z vboxsync $ */
+/* $Id: UIWizardNewVMExpertPage.h 91106 2021-09-03 14:37:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMExpertPage class declaration.
  */
@@ -26,7 +26,6 @@
 
 /* GUI includes: */
 #include "UINativeWizardPage.h"
-#include "UIWizardNewVMDiskPage.h"
 
 /* Forward declarations: */
 class QButtonGroup;
@@ -143,7 +142,6 @@ private:
         UIMediaComboBox *m_pDiskSelector;
         QIToolButton *m_pDiskSelectionButton;
         QSet<QString> m_userModifiedParameters;
-        SelectedDiskSource m_enmSelectedDiskSource;
         bool m_fRecommendedNoDisk;
         qulonglong m_uMediumSizeMin;
         qulonglong m_uMediumSizeMax;
