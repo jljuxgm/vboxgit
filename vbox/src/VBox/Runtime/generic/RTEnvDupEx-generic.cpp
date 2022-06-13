@@ -1,4 +1,4 @@
-/* $Id: RTEnvDupEx-generic.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: RTEnvDupEx-generic.cpp 92669 2021-12-01 09:14:24Z vboxsync $ */
 /** @file
  * IPRT - Environment, RTEnvDupEx, generic.
  */
@@ -52,31 +52,27 @@ RTDECL(char *) RTEnvDupEx(RTENV Env, const char *pszVar)
         return NULL;
 
     /*
-     * It's a bug bugger.
+     * It's a big bugger.
      */
-    size_t  cbBuf  = _1K;
-    char   *pszBuf = (char *)RTMemAlloc(cbBuf);
-    for (;;)
+    size_t cbBuf = _1K;
+    do
     {
+        char *pszBuf = RTStrAlloc(cbBuf);
+        AssertBreak(pszBuf);
+
         rc = RTEnvGetEx(Env, pszVar, pszBuf, cbBuf, NULL);
         if (RT_SUCCESS(rc))
-            return pszBuf; /* ASSUMES RTMemAlloc can be freed by RTStrFree! */
+            return pszBuf;
 
+        RTStrFree(pszBuf);
+
+        /* If overflow double the buffer. */
         if (rc != VERR_BUFFER_OVERFLOW)
             break;
-
-        if (cbBuf >= 64 * _1M)
-            break;
         cbBuf *= 2;
+    } while (cbBuf < _64M);
 
-        char *pszNew = (char *)RTMemRealloc(pszBuf, cbBuf);
-        if (!pszNew)
-            break;
-        pszBuf = pszNew;
-    }
-
-    RTMemFree(pszBuf);
     return NULL;
 }
-RT_EXPORT_SYMBOL(RTEnvGetExecEnvP);
+RT_EXPORT_SYMBOL(RTEnvDupEx);
 
