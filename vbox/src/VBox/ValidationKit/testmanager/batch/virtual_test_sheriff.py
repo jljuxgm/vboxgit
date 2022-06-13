@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 93763 2022-02-15 21:32:45Z vboxsync $
+# $Id: virtual_test_sheriff.py 93764 2022-02-15 21:37:30Z vboxsync $
 # pylint: disable=line-too-long
 
 """
@@ -35,7 +35,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 93763 $"
+__version__ = "$Revision: 93764 $"
 
 
 # Standard python imports
@@ -341,7 +341,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
 
         if self.oConfig.sLogFile:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 93763 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 93764 $ \n');
 
 
     def eprint(self, sText):
@@ -741,7 +741,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.getFailureReason(tReason);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 93763 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 93764 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
@@ -1190,11 +1190,11 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
         Investigates a failed VM run.
         """
         enmReason = None;
+        sParentName = oFailedResult.oParent.sName if oFailedResult.oParent else '';
         if oFailedResult.sName == 'VBoxWindowsAdditions.exe' >= 0:
             enmReason = self.ktReason_Add_Installer_Win_Failed;
         # guest control:
-        elif oFailedResult.sName == 'Preparations' >= 0 \
-         and oFailedResult.oParent and oFailedResult.oParent.sName == 'Guest Control':
+        elif sParentName == 'Guest Control' and oFailedResult.sName == 'Preparations':
             enmReason = self.ktReason_Add_GstCtl_Preparations;
         elif oFailedResult.sName == 'Session Basics':
             enmReason = self.ktReason_Add_GstCtl_SessionBasics;
@@ -1209,16 +1209,14 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
         elif oFailedResult.sName.find('Session w/ Guest Reboot') >= 0:
             enmReason = self.ktReason_Add_GstCtl_Session_Reboot;
         # shared folders:
-        elif oFailedResult.sName == 'Automounting' >= 0 \
-         and oFailedResult.oParent and oFailedResult.oParent.sName == 'Shared Folders':
+        elif sParentName == 'Shared Folders' and oFailedResult.sName == 'Automounting':
             enmReason = self.ktReason_Add_ShFl_Automount;
         elif oFailedResult.sName == 'mmap':
             if sResultLog.find('FsPerf: Flush issue at offset ') >= 0:
                 enmReason = self.ktReason_Add_Mmap_Coherency;
             elif sResultLog.find('FlushViewOfFile') >= 0:
                 enmReason = self.ktReason_Add_FlushViewOfFile;
-        elif oFailedResult.sName == 'Running FsPerf' >= 0 \
-         and oFailedResult.oParent and oFailedResult.oParent.sName == 'Shared Folders':
+        elif sParentName == 'Shared Folders' and oFailedResult.sName == 'Running FsPerf':
             enmReason = self.ktReason_Add_ShFl_FsPerf;  ## Maybe it would be better to be more specific...
 
         if enmReason is not None:
