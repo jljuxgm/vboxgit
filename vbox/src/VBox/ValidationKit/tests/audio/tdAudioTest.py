@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tdAudioTest.py 90846 2021-08-24 12:40:29Z vboxsync $
+# $Id: tdAudioTest.py 90896 2021-08-25 18:11:39Z vboxsync $
 
 """
 AudioTest test driver which invokes the VKAT (Validation Kit Audio Test)
@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 90846 $"
+__version__ = "$Revision: 90896 $"
 
 # Standard Python imports.
 import os
@@ -406,6 +406,9 @@ class tdAudioTest(vbox.TestDriver):
 
             asArgs = [ sVkatExe, 'test', '-vv', '--mode', 'guest', '--probe-backends', \
                                  '--tempdir', sPathAudioTemp, '--outdir', sPathAudioOut ];
+
+            # Needed for NATed VMs.
+            asArgs.extend(['--tcp-connect-addr', '10.0.2.2' ]);
 
             #
             # Add own environment stuff.
