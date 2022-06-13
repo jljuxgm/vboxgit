@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 90893 2021-08-25 17:15:36Z vboxsync $ */
+/* $Id: UIMessageCenter.h 90933 2021-08-27 07:43:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -241,22 +241,23 @@ public:
                                  const QString &strImage = "", QWidget *pParent = 0,
                                  int cMinDuration = 2000);
 
-    /* API: Main (startup) warnings: */
-    void warnAboutUnknownOptionType(const QString &strOption);
-    void warnAboutUnrelatedOptionType(const QString &strOption);
+    /** @name General (startup) warnings.
+      * @{ */
+        void warnAboutUnrelatedOptionType(const QString &strOption) const;
 #ifdef RT_OS_LINUX
-    void warnAboutWrongUSBMounted() const;
-#endif /* RT_OS_LINUX */
-    void cannotStartSelector() const;
-    void cannotStartRuntime() const;
-    void showBetaBuildWarning() const;
-    void showExperimentalBuildWarning() const;
+        void warnAboutWrongUSBMounted() const;
+#endif
+        void cannotStartSelector() const;
+        void cannotStartRuntime() const;
+    /** @} */
 
-    /* API: COM startup warnings: */
-    void cannotInitUserHome(const QString &strUserHome) const;
-    void cannotInitCOM(HRESULT rc) const;
-    void cannotCreateVirtualBoxClient(const CVirtualBoxClient &client) const;
-    void cannotAcquireVirtualBox(const CVirtualBoxClient &client) const;
+    /** @name COM (startup) warnings.
+      * @{ */
+        void cannotInitUserHome(const QString &strUserHome) const;
+        void cannotInitCOM(HRESULT rc) const;
+        void cannotCreateVirtualBoxClient(const CVirtualBoxClient &client) const;
+        void cannotAcquireVirtualBox(const CVirtualBoxClient &client) const;
+    /** @} */
 
     /* API: Global warnings: */
     void cannotFindLanguage(const QString &strLangId, const QString &strNlsPath) const;

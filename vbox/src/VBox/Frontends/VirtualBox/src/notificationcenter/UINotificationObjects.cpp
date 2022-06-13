@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 90925 2021-08-26 16:25:27Z vboxsync $ */
+/* $Id: UINotificationObjects.cpp 90933 2021-08-27 07:43:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -97,6 +97,24 @@ void UINotificationMessage::remindAboutAutoCapture()
                                                    "additional message box paragraph")
                                                    .arg(UIHostCombo::toReadableString(gEDataManager->hostKeyCombination())),
         "remindAboutAutoCapture");
+}
+
+/* static */
+void UINotificationMessage::remindAboutBetaBuild()
+{
+    createMessage(
+        QApplication::translate("UIMessageCenter", "BETA build warning!"),
+        QApplication::translate("UIMessageCenter", "You are running a prerelease version of VirtualBox. "
+                                                   "This version is not suitable for production use."));
+}
+
+/* static */
+void UINotificationMessage::remindAboutExperimentalBuild()
+{
+    createMessage(
+        QApplication::translate("UIMessageCenter", "Experimental build warning!"),
+        QApplication::translate("UIMessageCenter", "You are running an EXPERIMENTAL build of VirtualBox. "
+                                                   "This version is not suitable for production use."));
 }
 
 /* static */

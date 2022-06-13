@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.h 90925 2021-08-26 16:25:27Z vboxsync $ */
+/* $Id: UINotificationObjects.h 90933 2021-08-27 07:43:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects declarations.
  */
@@ -69,6 +69,10 @@ public:
 
     /** Reminds about keyboard auto capturing. */
     static void remindAboutAutoCapture();
+    /** Reminds about BETA build. */
+    static void remindAboutBetaBuild();
+    /** Reminds about BETA build. */
+    static void remindAboutExperimentalBuild();
     /** Reminds about mouse integration.
       * @param  fSupportsAbsolute  Brings whether mouse supports absolute pointing. */
     static void remindAboutMouseIntegration(bool fSupportsAbsolute);
