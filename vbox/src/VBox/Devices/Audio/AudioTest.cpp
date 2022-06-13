@@ -1,4 +1,4 @@
-/* $Id: AudioTest.cpp 89840 2021-06-22 16:09:52Z vboxsync $ */
+/* $Id: AudioTest.cpp 89841 2021-06-22 16:10:53Z vboxsync $ */
 /** @file
  * Audio testing routines.
  *
@@ -1837,7 +1837,7 @@ int AudioTestSetVerify(PAUDIOTESTSET pSetA, PAUDIOTESTSET pSetB, PAUDIOTESTERROR
 
         AUDIOTESTTYPE enmTestTypeB;
         rc = audioTestGetValueUInt32(VerJob.pSetB, &hTest, "test_type", (uint32_t *)&enmTestTypeB);
-        CHECK_RC_MSG_MAYBE_RET(rc, pVerJob, "Test type B not found %RU32");
+        CHECK_RC_MSG_MAYBE_RET(rc, pVerJob, "Test type B not found");
 
         switch (enmTestTypeA)
         {
