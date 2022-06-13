@@ -1,4 +1,4 @@
-/* $Id: UIMediumSizeEditor.cpp 90967 2021-08-27 20:37:40Z vboxsync $ */
+/* $Id: UIMediumSizeEditor.cpp 91218 2021-09-13 11:57:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSizeEditor class implementation.
  */
@@ -65,9 +65,6 @@ void UIMediumSizeEditor::setMediumSize(qulonglong uSize)
     m_pEditor->setText(UITranslator::formatSize(m_uSize));
     m_enmSizeSuffix = UITranslator::parseSizeSuffix(m_pEditor->text());
     m_pEditor->blockSignals(false);
-
-    /* Update the tool-tips: */
-    updateSizeToolTips(m_uSize);
 }
 
 void UIMediumSizeEditor::retranslateUi()
@@ -79,9 +76,6 @@ void UIMediumSizeEditor::retranslateUi()
     /* Translate fields: */
     m_pSlider->setToolTip(tr("Holds the size of this medium."));
     m_pEditor->setToolTip(tr("Holds the size of this medium."));
-
-    /* Translate tool-tips: */
-    updateSizeToolTips(m_uSize);
 }
 
 void UIMediumSizeEditor::sltSizeSliderChanged(int iValue)
@@ -93,8 +87,6 @@ void UIMediumSizeEditor::sltSizeSliderChanged(int iValue)
     m_pEditor->setText(UITranslator::formatSize(m_uSize));
     m_enmSizeSuffix = UITranslator::parseSizeSuffix(m_pEditor->text());
     m_pEditor->blockSignals(false);
-    /* Update the tool-tips: */
-    updateSizeToolTips(m_uSize);
     /* Notify the listeners: */
     emit sigSizeChanged(m_uSize);
 }
@@ -117,8 +109,6 @@ void UIMediumSizeEditor::sltSizeEditorTextChanged()
     m_pSlider->blockSignals(true);
     m_pSlider->setValue(sizeMBToSlider(m_uSize, m_iSliderScale));
     m_pSlider->blockSignals(false);
-    /* Update the tool-tips: */
-    updateSizeToolTips(m_uSize);
     /* Notify the listeners: */
     emit sigSizeChanged(m_uSize);
 }

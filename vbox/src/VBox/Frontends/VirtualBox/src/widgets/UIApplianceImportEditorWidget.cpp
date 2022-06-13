@@ -1,4 +1,4 @@
-/* $Id: UIApplianceImportEditorWidget.cpp 90564 2021-08-07 11:12:13Z vboxsync $ */
+/* $Id: UIApplianceImportEditorWidget.cpp 91218 2021-09-13 11:57:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceImportEditorWidget class implementation.
  */
@@ -309,7 +309,7 @@ void UIApplianceImportEditorWidget::retranslateUi()
     if (m_pImportHDsAsVDI)
     {
         m_pImportHDsAsVDI->setText(tr("&Import hard drives as VDI"));
-        m_pImportHDsAsVDI->setToolTip(tr("When checked, all the hard drives that belong to this appliance will be imported in VDI format."));
+        m_pImportHDsAsVDI->setToolTip(tr("Import all the hard drives that belong to this appliance in VDI format."));
     }
 
     /* Translate MAC address policy combo-box: */
