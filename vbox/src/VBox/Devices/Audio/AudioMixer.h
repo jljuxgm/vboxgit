@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.h 89779 2021-06-18 14:02:38Z vboxsync $ */
+/* $Id: AudioMixer.h 89800 2021-06-21 00:02:14Z vboxsync $ */
 /** @file
  * VBox audio - Mixing routines.
  *
@@ -31,6 +31,15 @@
 #include "AudioMixBuffer.h"
 #include "AudioHlp.h"
 
+
+/** @defgroup grp_pdm_ifs_audio_mixing  Audio Mixing
+ * @ingroup grp_pdm_ifs_audio
+ *
+ * @note This is currently placed under PDM Audio Interface as that seemed like
+ *       the best place for it.
+ *
+ * @{
+ */
 
 /** Pointer to an audio mixer sink. */
 typedef struct AUDMIXSINK *PAUDMIXSINK;
@@ -322,6 +331,8 @@ void        AudioMixerSinkRemoveAllStreams(PAUDMIXSINK pSink);
 /** @name Audio mixer stream methods
  * @{ */
 void        AudioMixerStreamDestroy(PAUDMIXSTREAM pStream, PPDMDEVINS pDevIns, bool fImmediate);
+/** @} */
+
 /** @} */
 
 #endif /* !VBOX_INCLUDED_SRC_Audio_AudioMixer_h */
