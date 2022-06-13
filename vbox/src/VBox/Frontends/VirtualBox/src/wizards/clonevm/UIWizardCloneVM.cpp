@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVM.cpp 90617 2021-08-11 07:28:02Z vboxsync $ */
+/* $Id: UIWizardCloneVM.cpp 90619 2021-08-11 07:39:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVM class implementation.
  */
@@ -52,6 +52,13 @@ void UIWizardCloneVM::setCloneModePageVisible(bool fIsFullClone)
     if (m_iCloneModePageIndex == -1)
         return;
     setPageVisible(m_iCloneModePageIndex, fIsFullClone);
+}
+
+bool UIWizardCloneVM::isCloneModePageVisible() const
+{
+    if (m_iCloneModePageIndex == -1)
+        return true;
+    return isPageVisible(m_iCloneModePageIndex);
 }
 
 bool UIWizardCloneVM::cloneVM()

@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMPageBasic2.cpp 90617 2021-08-11 07:28:02Z vboxsync $ */
+/* $Id: UIWizardCloneVMPageBasic2.cpp 90619 2021-08-11 07:39:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMPageBasic2 class implementation.
  */
@@ -68,11 +68,9 @@ void UIWizardCloneVMPageBasic2::prepare()
     }
 
     pMainLayout->addStretch();
-
-
 }
 
-void UIWizardCloneVMPageBasic2::sltButtonClicked(QAbstractButton * /* pButton */)
+void UIWizardCloneVMPageBasic2::sltCloneTypeChanged(bool fIsFullClone)
 {
     UIWizardCloneVM *pWizard = qobject_cast<UIWizardCloneVM*>(wizard());
     AssertReturnVoid(pWizard);
