@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.cpp 90159 2021-07-12 17:27:15Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.cpp 90163 2021-07-13 07:24:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class implementation.
  */
@@ -78,7 +78,7 @@ UIWizardNewVMPageExpert::UIWizardNewVMPageExpert()
         m_pToolBox = new UIToolBox;
         m_pToolBox->insertPage(ExpertToolboxItems_NameAndOSType, createNameOSTypeWidgets(), "");
         m_pToolBox->insertPage(ExpertToolboxItems_Unattended, createUnattendedWidgets(), "");
-        // m_pToolBox->insertPage(ExpertToolboxItems_Hardware, createHardwareWidgets(), "");
+        //m_pToolBox->insertPage(ExpertToolboxItems_Hardware, createHardwareWidgets(), "");
         // m_pToolBox->insertPage(ExpertToolboxItems_Disk, createDiskWidgets(), "");
         m_pToolBox->setCurrentPage(ExpertToolboxItems_NameAndOSType);
         pMainLayout->addWidget(m_pToolBox);
@@ -203,6 +203,11 @@ void UIWizardNewVMPageExpert::retranslateUi()
         m_pGAInstallationISOContainer->setToolTip(UIWizardNewVM::tr("<p>When checked the guest additions will be installed "
                                                                     "after the OS install.</p>"));
     }
+
+    if (m_pUserNameContainer)
+        m_pUserNameContainer->setTitle(UIWizardNewVM::tr("Username and Password"));
+    if (m_pAdditionalOptionsContainer)
+        m_pAdditionalOptionsContainer->setTitle(UIWizardNewVM::tr("Additional Options"));
 
     if (m_pToolBox)
     {
