@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 91883 2021-10-20 11:47:48Z vboxsync $ */
+/* $Id: DrvNAT.cpp 91892 2021-10-20 12:42:02Z vboxsync $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -1601,7 +1601,7 @@ static DECLCALLBACK(int) drvNATConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uin
 //#ifdef VBOX_WITH_DNSMAPPING_IN_HOSTRESOLVER
                                   "|HostResolverMappings"
 //#endif
-                                  , "");
+                                  , "PortForwarding");
 
     /*
      * Get the configuration settings.
