@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.h 90040 2021-07-05 20:05:25Z vboxsync $ */
+/* $Id: UIWizardNewVM.h 90041 2021-07-05 20:07:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class declaration.
  */
@@ -143,8 +143,6 @@ protected:
 private slots:
 
     void sltHandleWizardCancel();
-    //void sltHandleDetectedOSTypeChange();
-    virtual void sltCustomButtonClicked(int iId) /* override */;
 
 private:
 
