@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 91656 2021-10-11 08:44:14Z vboxsync $ */
+/* $Id: UIMachineLogic.h 91736 2021-10-14 17:35:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -387,6 +387,7 @@ private:
     void activateScreenSaver();
     /* Shows the boot failure dialog through which user can mount a boot DVD and reset the vm. */
     void showBootFailureDialog();
+    bool mountBootMedium(const QUuid &uMediumId);
 
     /* Private variables: */
     UISession *m_pSession;

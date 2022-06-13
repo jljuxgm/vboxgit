@@ -1,4 +1,4 @@
-/* $Id: UIBootFailureDialog.h 91717 2021-10-13 15:23:17Z vboxsync $ */
+/* $Id: UIBootFailureDialog.h 91736 2021-10-14 17:35:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIBootFailureDialog class declaration.
  */
@@ -73,8 +73,9 @@ private slots:
 
 private:
 
-    bool insertBootMedium(const QUuid &uMediumId);
     QPixmap iconPixmap();
+    /* Checks if selected iso exists and readable. Returns false if not. Returns true if nothing is selected. */
+    bool checkISOImage() const;
 
     /** @name Event-handling stuff.
       * @{ */
