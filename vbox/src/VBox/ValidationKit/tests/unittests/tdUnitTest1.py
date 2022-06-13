@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 93842 2022-02-18 14:25:05Z vboxsync $
+# $Id: tdUnitTest1.py 93843 2022-02-18 14:31:42Z vboxsync $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 93842 $"
+__version__ = "$Revision: 93843 $"
 
 
 # Standard Python imports.
@@ -44,8 +44,9 @@ sys.path.append(g_ksValidationKitDir)
 
 # Validation Kit imports.
 from common     import utils;
-from testdriver import vbox
-from testdriver import reporter
+from testdriver import reporter;
+from testdriver import vbox;
+from testdriver import vboxcon;
 
 
 class tdUnitTest1(vbox.TestDriver):
