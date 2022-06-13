@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMDiskPageBasic.h 90280 2021-07-22 07:50:38Z vboxsync $ */
+/* $Id: UIWizardNewVMDiskPageBasic.h 90295 2021-07-22 17:29:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMDiskPageBasic class declaration.
  */
@@ -26,6 +26,7 @@
 #include <QSet>
 
 /* GUI includes: */
+#include "QIFileDialog.h"
 #include "UINativeWizardPage.h"
 #include "UIWizardNewVDPageFileType.h"
 #include "UIWizardNewVDPageVariant.h"
@@ -61,6 +62,7 @@ namespace UIWizardNewVMDiskPage
                                 QWidget *pCaller);
     QString absoluteFilePath(const QString &strFileName, const QString &strPath);
     bool checkFATSizeLimitation(const qulonglong uVariant, const QString &strMediumPath, const qulonglong uSize);
+    QString selectNewMediumLocation(UIWizardNewVM *pWizard);
 }
 
 

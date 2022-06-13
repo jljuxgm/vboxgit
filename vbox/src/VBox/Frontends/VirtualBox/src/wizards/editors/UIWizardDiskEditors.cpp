@@ -1,4 +1,4 @@
-/* $Id: UIWizardDiskEditors.cpp 90278 2021-07-21 22:42:20Z vboxsync $ */
+/* $Id: UIWizardDiskEditors.cpp 90295 2021-07-22 17:29:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class implementation.
  */
@@ -371,11 +371,16 @@ void UIMediumSizeAndPathGroupBox::prepare()
     connect(m_pLocationEditor, &QILineEdit::textChanged,
             this, &UIMediumSizeAndPathGroupBox::sigMediumPathChanged);
 
+    connect(m_pLocationOpenButton, &QIToolButton::clicked,
+            this, &UIMediumSizeAndPathGroupBox::sigMediumLocationButtonClicked);
+
     retranslateUi();
 }
 void UIMediumSizeAndPathGroupBox::retranslateUi()
 {
     setTitle(tr("Hard Disk File Location and Size"));
+    if (m_pLocationOpenButton)
+        m_pLocationOpenButton->setToolTip(tr("Choose a location for new virtual hard disk file..."));
 }
 
 QString UIMediumSizeAndPathGroupBox::mediumPath() const

@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.cpp 90282 2021-07-22 10:02:08Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.cpp 90295 2021-07-22 17:29:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class implementation.
  */
@@ -131,7 +131,19 @@ void UIWizardNewVMPageExpert::sltOsTypeChanged()
 
 void UIWizardNewVMPageExpert::sltGetWithFileOpenDialog()
 {
-    //getWithFileOpenDialog();
+    UIWizardNewVM *pWizard = qobject_cast<UIWizardNewVM*>(wizard());
+    AssertReturnVoid(pWizard);
+    const CGuestOSType &comOSType = pWizard->guestOSType();
+    AssertReturnVoid(!comOSType.isNull());
+    QUuid uMediumId = UIWizardNewVMDiskPage::getWithFileOpenDialog(comOSType.GetId(),
+                                                                   pWizard->machineFolder(),
+                                                                   pWizard->machineBaseName(),
+                                                                   this);
+    if (!uMediumId.isNull())
+    {
+        m_pDiskSelector->setCurrentItem(uMediumId);
+        m_pDiskSelector->setFocus();
+    }
 }
 
 void UIWizardNewVMPageExpert::sltISOPathChanged(const QString &strISOPath)
@@ -276,6 +288,8 @@ void UIWizardNewVMPageExpert::createConnections()
                 this, &UIWizardNewVMPageExpert::sltMediumSizeChanged);
         connect(m_pSizeAndLocationGroup, &UIMediumSizeAndPathGroupBox::sigMediumPathChanged,
                 this, &UIWizardNewVMPageExpert::sltMediumPathChanged);
+        connect(m_pSizeAndLocationGroup, &UIMediumSizeAndPathGroupBox::sigMediumLocationButtonClicked,
+                this, &UIWizardNewVMPageExpert::sltMediumLocationButtonClicked);
     }
 
     if (m_pDiskSelectionButton)
@@ -292,8 +306,6 @@ void UIWizardNewVMPageExpert::createConnections()
 
     connect(m_pDiskVariantGroupBox, &UIDiskVariantGroupBox::sigMediumVariantChanged,
             this, &UIWizardNewVMPageExpert::sltMediumVariantChanged);
-    // if (m_pLocationOpenButton)
-    //     connect(m_pLocationOpenButton, &QIToolButton::clicked, this, &UIWizardNewVMPageExpert::sltSelectLocationButtonClicked);
 }
 
 void UIWizardNewVMPageExpert::setOSTypeDependedValues()
@@ -686,6 +698,20 @@ void UIWizardNewVMPageExpert::sltMediumPathChanged(const QString &strPath)
     emit completeChanged();
 }
 
+void UIWizardNewVMPageExpert::sltMediumLocationButtonClicked()
+{
+    UIWizardNewVM *pWizard = qobject_cast<UIWizardNewVM*>(wizard());
+    AssertReturnVoid(pWizard);
+    QString strSelectedPath = UIWizardNewVMDiskPage::selectNewMediumLocation(pWizard);
+    if (strSelectedPath.isEmpty())
+        return;
+    QString strMediumPath =
+        UIWizardNewVMDiskPage::toFileName(strSelectedPath,
+                                          UIWizardNewVMDiskPage::defaultExtension(pWizard->mediumFormat()));
+    QFileInfo mediumPath(strMediumPath);
+    m_pSizeAndLocationGroup->setMediumPath(QDir::toNativeSeparators(mediumPath.absoluteFilePath()));
+}
+
 void UIWizardNewVMPageExpert::sltMediumVariantChanged(qulonglong uVariant)
 {
     m_userModifiedParameters << "MediumVariant";
@@ -719,11 +745,6 @@ void UIWizardNewVMPageExpert::sltSelectedDiskSourceChanged()
     setEnableNewDiskWidgets(m_enmSelectedDiskSource == SelectedDiskSource_New);
 
     emit completeChanged();
-}
-
-void UIWizardNewVMPageExpert::sltSelectLocationButtonClicked()
-{
-    //onSelectLocationButtonClicked();
 }
 
 void UIWizardNewVMPageExpert::sltMemorySizeChanged(int iValue)

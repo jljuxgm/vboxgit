@@ -1,4 +1,4 @@
-/* $Id: UIWizardDiskEditors.h 90275 2021-07-21 14:17:53Z vboxsync $ */
+/* $Id: UIWizardDiskEditors.h 90295 2021-07-22 17:29:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardDiskEditors class declaration.
  */
@@ -117,6 +117,7 @@ signals:
 
     void sigMediumSizeChanged(qulonglong uSize);
     void sigMediumPathChanged(const QString &strPath);
+    void sigMediumLocationButtonClicked();
 
 public:
 
