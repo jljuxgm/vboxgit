@@ -1,4 +1,4 @@
-/* $Id: UINetworkCustomer.h 90541 2021-08-06 10:19:48Z vboxsync $ */
+/* $Id: UINetworkCustomer.h 90546 2021-08-06 13:17:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkCustomer class declaration.
  */
@@ -37,11 +37,18 @@ class SHARED_LIBRARY_STUFF UINetworkCustomer : public QObject
 {
     Q_OBJECT;
 
+signals:
+
+    /** Notifies listeners about @a pNetworkCustomer being destroyed. */
+    void sigBeingDestroyed(UINetworkCustomer *pNetworkCustomer);
+
 public:
 
     /** Constructs network customer passing @a pParent to the base-class.
       * @param  fForceCall  Brings whether this customer has forced privelegies. */
     UINetworkCustomer(QObject *pParent = 0, bool fForceCall = true);
+    /** Destructs network customer. */
+    virtual ~UINetworkCustomer() /* override */;
 
     /** Returns whether this customer has forced privelegies. */
     bool isItForceCall() const { return m_fForceCall; }
