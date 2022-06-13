@@ -1,4 +1,4 @@
-/* $Id: timer-win.cpp 89762 2021-06-17 09:39:11Z vboxsync $ */
+/* $Id: timer-win.cpp 89764 2021-06-17 09:42:08Z vboxsync $ */
 /** @file
  * IPRT - Timer.
  */
@@ -205,7 +205,7 @@ static DECLCALLBACK(int) rttimerCallback(RTTHREAD hThreadSelf, void *pvArg)
         /*
          * Disable the timer.
          */
-        int rc = CancelWaitableTimer (pTimer->hTimer);
+        int rc = CancelWaitableTimer (pTimer->hTimer); RT_NOREF(rc);
         AssertMsg(rc, ("CancelWaitableTimer lasterr=%d\n", GetLastError()));
 
         /*
