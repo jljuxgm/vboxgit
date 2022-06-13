@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 90975 2021-08-28 23:35:23Z vboxsync $ */
+/* $Id: VMMR0.cpp 90976 2021-08-28 23:38:05Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -3136,11 +3136,9 @@ static int vmmR0LogWaitFlushed(PGVM pGVM, VMCPUID idCpu, size_t idxLogger)
     /*
      * Do the waiting.
      */
-    uint64_t const nsStart   = RTTimeNanoTS();
-    int            rc        = VINF_SUCCESS;
-
+    int rc = VINF_SUCCESS;
     RTSpinlockAcquire(pGVM->vmmr0.s.LogFlusher.hSpinlock);
-    uint32_t       cFlushing = pR0Log->cFlushing;
+    uint32_t cFlushing = pR0Log->cFlushing;
     while (cFlushing > 0)
     {
         pR0Log->fEmtWaiting = true;
