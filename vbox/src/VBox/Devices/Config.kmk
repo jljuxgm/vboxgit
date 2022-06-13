@@ -1,4 +1,4 @@
-# $Id: Config.kmk 88938 2021-05-07 18:22:22Z vboxsync $
+# $Id: Config.kmk 92287 2021-11-09 12:38:52Z vboxsync $
 ## @file
 # kBuild Configuration file for the Devices.
 #
@@ -47,6 +47,8 @@ TEMPLATE_VBoxBios_ASTOOL       = OPENWATCOM-16
 TEMPLATE_VBoxBios_BLD_TRG      = os-agnostic
 TEMPLATE_VBoxBios_BLD_TRG_ARCH = x86
 TEMPLATE_VBoxBios_BINSUFF      = .rom
+TEMPLATE_VBoxBios_CDEFS        = IN_RING0
+TEMPLATE_VBoxBios_CXXDEFS      = IN_RING0
 TEMPLATE_VBoxBios_INCS         = . $(VBOX_PATH_DEVICES_SRC)/BiosCommonCode
 TEMPLATE_VBoxBios_ASFLAGS      = -q -wx -d1 -0
 TEMPLATE_VBoxBios_CFLAGS       = -q -0 -wx -zl -zu -s -oafs -ms -hc -d1+
