@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-internal.h 93495 2022-01-31 13:08:33Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-internal.h 93919 2022-02-24 13:59:11Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Internal header.
  */
@@ -382,7 +382,7 @@ int ShClBackendConnect(PSHCLBACKEND pBackend, PSHCLCLIENT pClient, bool fHeadles
 int ShClBackendDisconnect(PSHCLBACKEND pBackend, PSHCLCLIENT pClient);
 
 /**
- * Called when the guest reported available clipboard formats to the host OS.
+ * Called when the guest reports available clipboard formats to the host OS.
  *
  * @returns VBox status code.
  * @param   pBackend            Shared Clipboard backend to announce formats to.
@@ -390,7 +390,7 @@ int ShClBackendDisconnect(PSHCLBACKEND pBackend, PSHCLCLIENT pClient);
  * @param   fFormats            The announced formats from the guest,
  *                              VBOX_SHCL_FMT_XXX.
  */
-int ShClBackendFormatAnnounce(PSHCLBACKEND pBackend, PSHCLCLIENT pClient, SHCLFORMATS fFormats);
+int ShClBackendReportFormats(PSHCLBACKEND pBackend, PSHCLCLIENT pClient, SHCLFORMATS fFormats);
 
 /**
  * Called when the guest wants to read host clipboard data.

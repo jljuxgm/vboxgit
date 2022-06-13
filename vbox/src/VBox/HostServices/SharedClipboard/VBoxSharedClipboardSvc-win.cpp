@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-win.cpp 93495 2022-01-31 13:08:33Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-win.cpp 93919 2022-02-24 13:59:11Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Win32 host.
  */
@@ -732,7 +732,7 @@ int ShClBackendDisconnect(PSHCLBACKEND pBackend, PSHCLCLIENT pClient)
     return rc;
 }
 
-int ShClBackendFormatAnnounce(PSHCLBACKEND pBackend, PSHCLCLIENT pClient, SHCLFORMATS fFormats)
+int ShClBackendReportFormats(PSHCLBACKEND pBackend, PSHCLCLIENT pClient, SHCLFORMATS fFormats)
 {
     RT_NOREF(pBackend);
 

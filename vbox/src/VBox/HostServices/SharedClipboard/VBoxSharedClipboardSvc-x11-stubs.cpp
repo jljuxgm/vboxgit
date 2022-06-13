@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-x11-stubs.cpp 93495 2022-01-31 13:08:33Z vboxsync $*/
+/* $Id: VBoxSharedClipboardSvc-x11-stubs.cpp 93919 2022-02-24 13:59:11Z vboxsync $*/
 /** @file
  * Shared Clipboard Service - Linux host, a stub version with no functionality for use on headless hosts.
  */
@@ -84,7 +84,7 @@ int ShClBackendDisconnect(PSHCLBACKEND pBackend, PSHCLCLIENT pClient)
  * The guest is taking possession of the shared clipboard.
  * Called by the HGCM clipboard subsystem.
  */
-int ShClBackendFormatAnnounce(PSHCLBACKEND pBackend, PSHCLCLIENT pClient, SHCLFORMATS fFormats)
+int ShClBackendReportFormats(PSHCLBACKEND pBackend, PSHCLCLIENT pClient, SHCLFORMATS fFormats)
 {
     RT_NOREF(pBackend, pClient, fFormats);
     return VINF_SUCCESS;

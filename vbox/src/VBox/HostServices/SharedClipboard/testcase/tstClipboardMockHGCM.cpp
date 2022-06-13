@@ -1,4 +1,4 @@
-/* $Id: tstClipboardMockHGCM.cpp 93504 2022-01-31 16:17:01Z vboxsync $ */
+/* $Id: tstClipboardMockHGCM.cpp 93919 2022-02-24 13:59:11Z vboxsync $ */
 /** @file
  * Shared Clipboard host service test case.
  */
@@ -1349,7 +1349,7 @@ static DECLCALLBACK(int) tstTestReadFromHostExec(PTESTPARMS pTstParms, void *pvC
 #if 1
     PSHCLBACKEND pBackend = ShClSvcGetBackend();
 
-    ShClBackendFormatAnnounce(pBackend, &pMockClient->Client, pTask->enmFmtHst);
+    ShClBackendReportFormats(pBackend, &pMockClient->Client, pTask->enmFmtHst);
     tstTaskWait(pTask, RT_MS_30SEC);
 #endif
 
