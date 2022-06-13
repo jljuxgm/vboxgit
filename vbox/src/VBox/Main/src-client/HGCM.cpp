@@ -1,4 +1,4 @@
-/* $Id: HGCM.cpp 90238 2021-07-19 13:48:09Z vboxsync $ */
+/* $Id: HGCM.cpp 90239 2021-07-19 13:54:50Z vboxsync $ */
 /** @file
  * HGCM (Host-Guest Communication Manager)
  */
@@ -1768,7 +1768,7 @@ int HGCMService::CreateAndConnectClient(uint32_t *pu32ClientIdOut, uint32_t u32C
                     m_cClients++;
                     m_acClients[idxClientCategory]++;
                     LogFunc(("idClient=%u m_cClients=%u m_acClients[%u]=%u %s\n", 
-                             handle, m_cClients, idxClientCategory, m_acClients[idxClientCategory]));
+                             handle, m_cClients, idxClientCategory, m_acClients[idxClientCategory], m_pszSvcName));
                 }
             }
         }
@@ -1851,8 +1851,8 @@ int HGCMService::DisconnectClient(uint32_t u32ClientId, bool fFromService, HGCMC
     }
 
     if (pClient)
-        LogFunc(("idClient=%u m_cClients=%u m_acClients[%u]=%u %s (cPendingCalls=%u) rc=%Rrc\n",
-                 u32ClientId, m_cClients, pClient->idxCategory, m_acClients[pClient->idxCategory], pClient->cPendingCalls, rc));
+        LogFunc(("idClient=%u m_cClients=%u m_acClients[%u]=%u %s (cPendingCalls=%u) rc=%Rrc\n", u32ClientId, m_cClients,
+                 pClient->idxCategory, m_acClients[pClient->idxCategory], m_pszSvcName, pClient->cPendingCalls, rc));
 
     /*
      * Call the service.
