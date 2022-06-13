@@ -1,4 +1,4 @@
-/* $Id: UIFilePathSelector.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIFilePathSelector.h 94028 2022-03-01 11:04:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFilePathSelector class declaration.
  */
@@ -200,8 +200,6 @@ private:
     QString  m_strNoneText;
     /** Holds the cached tool-tip for empty path. */
     QString  m_strNoneToolTip;
-    /** Holds the cached tool-tip for empty path in focused case. */
-    QString  m_strNoneToolTipFocused;
 
     /** Holds whether editor has Reset action. */
     bool     m_fResetEnabled;

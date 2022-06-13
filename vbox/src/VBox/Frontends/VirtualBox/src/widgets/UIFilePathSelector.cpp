@@ -1,4 +1,4 @@
-/* $Id: UIFilePathSelector.cpp 93998 2022-02-28 22:42:04Z vboxsync $ */
+/* $Id: UIFilePathSelector.cpp 94028 2022-03-01 11:04:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFilePathSelector class implementation.
  */
@@ -334,20 +334,6 @@ void UIFilePathSelector::retranslateUi()
                               "list to select a path.");
     }
 
-    /* But if selector is focused => tool-tip depends on the mode only: */
-    switch (m_enmMode)
-    {
-        case Mode_Folder:
-            m_strNoneToolTipFocused = tr("Holds the folder path.");
-            break;
-        case Mode_File_Open:
-        case Mode_File_Save:
-            m_strNoneToolTipFocused = tr("Holds the file path.");
-            break;
-        default:
-            AssertFailedBreak();
-    }
-
     /* Finally, retranslate current item: */
     refreshText();
 }
@@ -572,7 +558,7 @@ void UIFilePathSelector::refreshText()
 
         /* Set the tool-tip: */
         if (!m_fToolTipOverriden)
-            QIComboBox::setToolTip(m_strNoneToolTipFocused);
+            QIComboBox::setToolTip(fullPath());
         setItemData(PathId, toolTip(), Qt::ToolTipRole);
 
         if (m_fMouseAwaited)
