@@ -1,4 +1,4 @@
-/* $Id: efivarstorevfs.cpp 91497 2021-09-30 11:34:59Z vboxsync $ */
+/* $Id: efivarstorevfs.cpp 91500 2021-09-30 18:56:06Z vboxsync $ */
 /** @file
  * IPRT - Expose a EFI variable store as a Virtual Filesystem.
  */
@@ -2478,7 +2478,7 @@ RTDECL(int) RTEfiVarStoreCreate(RTVFSFILE hVfsFile, uint64_t offStore, uint64_t 
     aBlockMap[0].cBlocks     = RT_H2LE_U32(cBlocks);
 
     pu16 = (const uint16_t *)&aBlockMap[0];
-    while (pu16 < (const uint16_t *)&aBlockMap[0] + (sizeof(aBlockMap) / sizeof(uint16_t)))
+    while (pu16 < (const uint16_t *)&aBlockMap[0] + (sizeof(aBlockMap) / (sizeof(uint16_t))))
         u16Chksum += RT_LE2H_U16(*pu16++);
 
     FvHdr.u16Chksum          = RT_H2LE_U16(UINT16_MAX - u16Chksum + 1);
