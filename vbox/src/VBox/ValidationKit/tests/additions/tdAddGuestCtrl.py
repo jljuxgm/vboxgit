@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 93793 $"
+__version__ = "$Revision: 93795 $"
 
 # Standard Python imports.
 import errno
@@ -2884,9 +2884,19 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
                     # Note: Use a timeout in the call above for not letting the stale processes
                     #       hanging around forever.  This can happen if the installed Guest Additions
                     #       do not support terminating guest processes.
+                    try:
+                        reporter.log('Waiting for blocking process #%d getting started...' % (i));
+                        eWaitResult = oProcess.waitForArray([ vboxcon.ProcessWaitForFlag_Start, ], 30 * 1000);
+                        eProcessStatus = oProcess.status;
+                    except:
+                        fRc = reporter.errorXcpt('Waiting for blocking process #%d failed:' % (i,));
+                    else:
+                        if eProcessStatus != vboxcon.ProcessStatus_Started:
+                            fRc = reporter.error('Waiting for blocking processes #%d resulted in status %d, expected %d (wr=%d)'
+                                                 % (i, eProcessStatus, vboxcon.ProcessStatus_Started, eWaitResult));
                     aoProcs.append(oCurProc);
                 except:
-                    fRc = reporter.errorXcpt('Creating non-stale blocking process #%d failed:' % (i,));
+                    fRc = reporter.errorXcpt('Creating blocking process #%d failed:' % (i,));
                     break;
 
             if fRc:
