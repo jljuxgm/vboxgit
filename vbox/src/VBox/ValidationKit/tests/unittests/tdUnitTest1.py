@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 95021 2022-05-16 14:35:58Z vboxsync $
+# $Id: tdUnitTest1.py 95042 2022-05-19 11:10:22Z vboxsync $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 95021 $"
+__version__ = "$Revision: 95042 $"
 
 
 # Standard Python imports.
@@ -980,7 +980,8 @@ class tdUnitTest1(vbox.TestDriver):
             sDst = os.path.join(sDstDir, os.path.basename(sFullPath) + self.sExeSuff);
             fModeExe  = 0;
             fModeDeps = 0;
-            if not oTestVm.isWindows(): ## @todo NT4 does not like the chmod. Investigate this!
+            if  not oTestVm \
+            or (oTestVm and not oTestVm.isWindows()): ## @todo NT4 does not like the chmod. Investigate this!
                 fModeExe  = 0o755;
                 fModeDeps = 0o644;
             self._wrapCopyFile(sSrc, sDst, fModeExe);
