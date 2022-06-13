@@ -1,4 +1,4 @@
-; $Id: IEMAllAImpl.asm 94364 2022-03-24 20:34:00Z vboxsync $
+; $Id: IEMAllAImpl.asm 94410 2022-03-31 10:59:45Z vboxsync $
 ;; @file
 ; IEM - Instruction Implementation in Assembly.
 ;
@@ -2186,7 +2186,7 @@ BEGINPROC_FASTCALL iemAImpl_fistt_r80_to_i16, 16
         fninit
         fld     tword [A3]
         FPU_LD_FXSTATE_FCW_AND_SAFE_FSW A0
-        fisttp  dword [A2]
+        fisttp  word [A2]
 
         fnstsw  word  [A1]
 
