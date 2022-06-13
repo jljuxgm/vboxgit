@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 92404 2021-11-12 16:21:04Z vboxsync $ */
+/* $Id: VBoxManage.cpp 92538 2021-11-22 01:53:20Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -295,7 +295,7 @@ static void showProgressSignalHandler(int iSignal) RT_NOTHROW_DEF
  * unhandled things (which doesn't cause real problems, just makes things
  * react a little slower than in the ideal case).
  */
-HRESULT showProgress(ComPtr<IProgress> progress, unsigned int fFlags)
+HRESULT showProgress(ComPtr<IProgress> progress, uint32_t fFlags)
 {
     using namespace com;
     HRESULT hrc;
