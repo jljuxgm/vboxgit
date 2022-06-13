@@ -1,4 +1,4 @@
-/* $Id: UINotificationCenter.h 94731 2022-04-28 09:25:11Z vboxsync $ */
+/* $Id: UINotificationCenter.h 94734 2022-04-28 12:42:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINotificationCenter class declaration.
  */
@@ -110,8 +110,6 @@ private slots:
 
     /** Issues request to make open button @a fToggled. */
     void sltHandleOpenButtonToggled(bool fToggled);
-    /** @todo EXAMPLE -- REMOVE THIS */
-    void sltUpdateAgentAvailable(CUpdateAgent comAgent, QString, KUpdateChannel, KUpdateSeverity, QString, QString, QString);
     /** Toggles notification-progresses keep approach. */
     void sltHandleKeepButtonToggled(bool fToggled);
     /** Removes finished notifications. */
