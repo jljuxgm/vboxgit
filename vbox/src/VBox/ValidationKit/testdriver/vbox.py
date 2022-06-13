@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 92131 2021-10-28 10:28:09Z vboxsync $
+# $Id: vbox.py 92175 2021-11-02 11:15:38Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 92131 $"
+__version__ = "$Revision: 92175 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -2948,12 +2948,17 @@ class TestDriver(base.TestDriver):                                              
                     oNic = oVM.getNetworkAdapter(iSlot);
                     if not oNic.enabled:
                         continue;
+                    sAdpName = self.getNetworkAdapterNameFromType(oNic);
+                    sKey = 'VBoxInternal/Devices/%s/%d/LUN#0/Config/LocalhostReachable' % (sAdpName, iSlot);
                     if oNic.attachmentType == vboxcon.NetworkAttachmentType_NAT:
-                        sAdpName = self.getNetworkAdapterNameFromType(oNic);
-                        sKey = 'VBoxInternal/Devices/%s/%d/LUN#0/Config/LocalhostReachable' % (sAdpName, iSlot);
                         reporter.log2('Enabling "LocalhostReachable" (NAT) for network adapter "%s" in slot %d (key: %s)' % \
                                       (sAdpName, iSlot, sKey));
                         self.oVBox.setExtraData(sKey, '1');
+                    else:
+                        # Other attachments will fail if 'LocalhostReachable' extra data override is present
+                        reporter.log2('Disabling "LocalhostReachable" (NAT) for network adapter "%s" in slot %d (key: %s)' % \
+                                      (sAdpName, iSlot, sKey));
+                        self.oVBox.setExtraData(sKey, '');
                 except:
                     pass;
 
