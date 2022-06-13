@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMDiskPageBasic.cpp 90085 2021-07-08 07:55:51Z vboxsync $ */
+/* $Id: UIWizardNewVMDiskPageBasic.cpp 90090 2021-07-08 10:30:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMDiskPageBasic class implementation.
  */
@@ -431,19 +431,19 @@ bool UIWizardNewVMDiskPageBasic::validatePage()
     // startProcessing();
     if (pWizard)
     {
-        //     if (selectedDiskSource() == SelectedDiskSource_New)
-        //     {
-        //         /* Try to create the hard drive:*/
-        //         fResult = pWizard->createVirtualDisk();
-        //         /*Don't show any error message here since UIWizardNewVM::createVirtualDisk already does so: */
-        //         if (!fResult)
-        //             return fResult;
-        //     }
+            if (m_enmSelectedDiskSource == SelectedDiskSource_New)
+            {
+                /* Try to create the hard drive:*/
+                fResult = pWizard->createVirtualDisk();
+                /*Don't show any error message here since UIWizardNewVM::createVirtualDisk already does so: */
+                if (!fResult)
+                    return fResult;
+            }
 
-        //     fResult = pWizard->createVM();
-        //     /* Try to delete the hard disk: */
-        //     if (!fResult)
-        //         pWizard->deleteVirtualDisk();
+            fResult = pWizard->createVM();
+            /* Try to delete the hard disk: */
+            if (!fResult)
+                pWizard->deleteVirtualDisk();
     }
     // endProcessing();
 

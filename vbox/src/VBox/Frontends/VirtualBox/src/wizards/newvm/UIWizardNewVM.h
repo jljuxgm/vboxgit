@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.h 90085 2021-07-08 07:55:51Z vboxsync $ */
+/* $Id: UIWizardNewVM.h 90090 2021-07-08 10:30:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class declaration.
  */
@@ -76,6 +76,11 @@ public:
     void setDefaultUnattendedInstallData(const UIUnattendedInstallData &unattendedInstallData);
     const UIUnattendedInstallData &unattendedInstallData() const;
     bool isGuestOSTypeWindows() const;
+
+    bool createVM();
+    bool createVirtualDisk();
+    void deleteVirtualDisk();
+
 
     CMedium &virtualDisk();
     void setVirtualDisk(const CMedium &medium);
@@ -156,13 +161,8 @@ protected:
 
     /** Populates pages. */
     virtual void populatePages() /* final override */;
-
-    bool createVM();
-    bool createVirtualDisk();
-    void deleteVirtualDisk();
-
     void configureVM(const QString &strGuestTypeId, const CGuestOSType &comGuestType);
-    bool attachDefaultDevices(const CGuestOSType &comGuestType);
+    bool attachDefaultDevices();
 
 private slots:
 
