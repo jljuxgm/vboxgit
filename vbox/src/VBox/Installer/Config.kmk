@@ -1,4 +1,4 @@
-# $Id: Config.kmk 93115 2022-01-01 11:31:46Z vboxsync $
+# $Id: Config.kmk 93125 2022-01-04 04:30:08Z vboxsync $
 ## @file
 # kBuild Configuration file for the installers
 #
@@ -74,7 +74,9 @@ ifdef VBOX_WITH_UNATTENDED
  	redhat_postinstall.sh \
  	ol_postinstall.sh \
  	os2_cid_install.cmd \
- 	win_postinstall.cmd
+ 	win_postinstall.cmd \
+       \
+       os2_util.exe
  ifndef VBOX_OSE
   VBOX_UNATTENDED_TEMPLATES += \
  	lgw_ks.cfg \
