@@ -1,4 +1,4 @@
-/* $Id: tstUtf8.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: tstUtf8.cpp 95041 2022-05-19 07:12:01Z vboxsync $ */
 /** @file
  * IPRT Testcase - UTF-8 and UTF-16 string conversions.
  */
@@ -1467,7 +1467,7 @@ void testUtf16Latin1(RTTEST hTest)
 }
 
 
-static void testNoTransation(RTTEST hTest)
+static void testNoTranslation(RTTEST hTest)
 {
     /*
      * Try trigger a VERR_NO_TRANSLATION error in convert to
@@ -1609,7 +1609,7 @@ int main()
     testStrStr(hTest);
     testUtf8Latin1(hTest);
     testUtf16Latin1(hTest);
-    testNoTransation(hTest);
+    testNoTranslation(hTest);
     testGetPut(hTest);
 
     Benchmarks(hTest);
