@@ -1,4 +1,4 @@
-/* $Id: DevHda.h 89638 2021-06-11 22:03:42Z vboxsync $ */
+/* $Id: DevHda.h 89861 2021-06-23 14:23:42Z vboxsync $ */
 /** @file
  * Intel HD Audio Controller Emulation - Structures.
  */
@@ -145,6 +145,10 @@ typedef struct HDASTATE
     /** Shared R0/R3 HDA codec to use. */
     HDACODEC                Codec;
 
+#ifdef VBOX_HDA_WITH_ON_REG_ACCESS_DMA
+    STAMCOUNTER             StatAccessDmaOutput;
+    STAMCOUNTER             StatAccessDmaOutputToR3;
+#endif
 #ifdef VBOX_WITH_STATISTICS
     STAMPROFILE             StatIn;
     STAMPROFILE             StatOut;
