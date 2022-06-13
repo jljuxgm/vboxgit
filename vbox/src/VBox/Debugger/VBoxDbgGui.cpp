@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgGui.cpp 87682 2021-02-10 12:40:58Z vboxsync $ */
+/* $Id: VBoxDbgGui.cpp 90520 2021-08-04 21:37:54Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - The Manager.
  */
@@ -165,11 +165,14 @@ VBoxDbgGui::setMenu(QMenu *pMenu)
 
 
 int
-VBoxDbgGui::showStatistics()
+VBoxDbgGui::showStatistics(const char *pszFilter, const char *pszExpand)
 {
     if (!m_pDbgStats)
     {
-        m_pDbgStats = new VBoxDbgStats(this, "*", 2, m_pParent);
+        m_pDbgStats = new VBoxDbgStats(this,
+                                       pszFilter && *pszFilter ? pszFilter :  "*",
+                                       pszExpand && *pszExpand ? pszExpand : NULL,
+                                       2, m_pParent);
         connect(m_pDbgStats, SIGNAL(destroyed(QObject *)), this, SLOT(notifyChildDestroyed(QObject *)));
         repositionStatistics();
     }

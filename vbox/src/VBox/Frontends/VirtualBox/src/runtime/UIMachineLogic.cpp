@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 90083 2021-07-08 07:38:43Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 90520 2021-08-04 21:37:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -2549,7 +2549,9 @@ void UIMachineLogic::sltShowDebugStatistics()
     if (dbgCreated())
     {
         keyboardHandler()->setDebuggerActive();
-        m_pDbgGuiVT->pfnShowStatistics(m_pDbgGui);
+        const QByteArray &expandBytes = uiCommon().getDebuggerStatisticsExpand().toUtf8();
+        const QByteArray &filterBytes = uiCommon().getDebuggerStatisticsFilter().toUtf8();
+        m_pDbgGuiVT->pfnShowStatistics(m_pDbgGui, filterBytes.constData(), expandBytes.constData());
     }
 }
 
@@ -3351,6 +3353,7 @@ void UIMachineLogic::activateScreenSaver()
 }
 
 #ifdef VBOX_WITH_DEBUGGER_GUI
+
 bool UIMachineLogic::dbgCreated()
 {
     if (m_pDbgGui)
@@ -3409,4 +3412,5 @@ void UIMachineLogic::dbgAdjustRelativePos()
         m_pDbgGuiVT->pfnAdjustRelativePos(m_pDbgGui, rct.x(), rct.y(), rct.width(), rct.height());
     }
 }
-#endif
+
+#endif /* VBOX_WITH_DEBUGGER_GUI */

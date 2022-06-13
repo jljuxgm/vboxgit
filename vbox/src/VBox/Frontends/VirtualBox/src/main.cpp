@@ -1,4 +1,4 @@
-/* $Id: main.cpp 88142 2021-03-16 17:31:04Z vboxsync $ */
+/* $Id: main.cpp 90520 2021-08-04 21:37:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - The main() function.
  */
@@ -272,6 +272,8 @@ static void ShowHelp()
         "  --debug                    like --dbg and show debug windows at VM startup\n"
         "  --debug-command-line       like --dbg and show command line window at VM startup\n"
         "  --debug-statistics         like --dbg and show statistics window at VM startup\n"
+        "  --statistics-expand <pat>  expand the matching statistics (can be repeated)\n"
+        "  --statistics-filter <pat>  statistics filter\n"
         "  --no-debug                 disable the GUI debug menu and debug windows\n"
         "  --start-paused             start the VM in the paused state\n"
         "  --start-running            start the VM running (for overriding --debug*)\n"

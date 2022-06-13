@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgStatsQt.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxDbgStatsQt.h 90520 2021-08-04 21:37:54Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Statistics.
  */
@@ -81,7 +81,20 @@ public:
      */
     void resizeColumnsToContent();
 
+    /**
+     * Expands the trees matching the given expression.
+     *
+     * @param   rPatStr      Selection pattern.
+     */
+    void expandMatching(const QString &rPatStr);
+
 protected:
+    /**
+     * @callback_method_impl{VBoxDbgStatsModel::FNITERATOR,
+     * Worker for expandMatching}.
+     */
+    static bool expandMatchingCallback(PDBGGUISTATSNODE pNode, QModelIndex const &a_rIndex, const char *pszFullName, void *pvUser);
+
     /**
      * Expands or collapses a sub-tree.
      *
@@ -186,11 +199,15 @@ public:
      * Creates a VM statistics list view widget.
      *
      * @param   a_pDbgGui       Pointer to the debugger gui object.
-     * @param   pszPat          Initial selection pattern. NULL means everything. (See STAM for details.)
+     * @param   pszFilter       Initial selection pattern. NULL means everything.
+     *                          (See STAM for details.)
+     * @param   pszExpand       Initial expansion pattern. NULL means nothing is
+     *                          expanded.
      * @param   uRefreshRate    The refresh rate. 0 means not to refresh and is the default.
      * @param   pParent         Parent widget.
      */
-    VBoxDbgStats(VBoxDbgGui *a_pDbgGui, const char *pszPat = NULL, unsigned uRefreshRate= 0, QWidget *pParent = NULL);
+    VBoxDbgStats(VBoxDbgGui *a_pDbgGui, const char *pszFilter = NULL, const char *pszExpand = NULL,
+                 unsigned uRefreshRate = 0, QWidget *pParent = NULL);
 
     /** Destructor. */
     virtual ~VBoxDbgStats();
@@ -237,7 +254,7 @@ protected:
     VBoxDbgStatsView   *m_pView;
 
     /** Move to pattern field action. */
-    QAction *m_pFocusToPat;
+    QAction            *m_pFocusToPat;
 };
 
 

@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 90452 2021-08-01 09:03:24Z vboxsync $ */
+/* $Id: UICommon.cpp 90520 2021-08-04 21:37:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -4551,6 +4551,34 @@ void UICommon::prepare()
             setDebuggerVar(&m_fDbgEnabled, true);
             setDebuggerVar(&m_fDbgAutoShow, true);
             setDebuggerVar(&m_fDbgAutoShowStatistics, true);
+        }
+        else if (!::strcmp(arg, "--statistics-expand") || !::strcmp(arg, "--stats-expand"))
+        {
+            enmOptType = OptType_VMRunner;
+            if (++i < argc)
+            {
+                if (!m_strDbgStatisticsExpand.isEmpty())
+                    m_strDbgStatisticsExpand.append('|');
+                m_strDbgStatisticsExpand.append(arguments.at(i));
+            }
+        }
+        else if (!::strncmp(arg, RT_STR_TUPLE("--statistics-expand=")) || !::strncmp(arg, RT_STR_TUPLE("--stats-expand=")))
+        {
+            enmOptType = OptType_VMRunner;
+            if (!m_strDbgStatisticsExpand.isEmpty())
+                m_strDbgStatisticsExpand.append('|');
+            m_strDbgStatisticsExpand.append(arguments.at(i).section('=', 1));
+        }
+        else if (!::strcmp(arg, "--statistics-filter") || !::strcmp(arg, "--stats-filter"))
+        {
+            enmOptType = OptType_VMRunner;
+            if (++i < argc)
+                m_strDbgStatisticsFilter = arguments.at(i);
+        }
+        else if (!::strncmp(arg, RT_STR_TUPLE("--statistics-filter=")) || !::strncmp(arg, RT_STR_TUPLE("--stats-filter=")))
+        {
+            enmOptType = OptType_VMRunner;
+            m_strDbgStatisticsFilter = arguments.at(i).section('=', 1);
         }
         else if (!::strcmp(arg, "-no-debug") || !::strcmp(arg, "--no-debug"))
         {

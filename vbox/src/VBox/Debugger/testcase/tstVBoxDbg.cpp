@@ -1,4 +1,4 @@
-/* $Id: tstVBoxDbg.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: tstVBoxDbg.cpp 90520 2021-08-04 21:37:54Z vboxsync $ */
 /** @file
  * VBox Debugger GUI, dummy testcase.
  */
@@ -72,7 +72,7 @@ int main(int argc, char **argv)
             if (argc <= 1 || argc == 3)
             {
                 RTPrintf(TESTCASE ": calling pfnShowStatistics...\n");
-                pGuiVT->pfnShowStatistics(pGui);
+                pGuiVT->pfnShowStatistics(pGui, NULL, NULL);
                 if (RT_FAILURE(rc))
                 {
                     RTPrintf(TESTCASE ": error: pfnShowStatistics failed! rc=%Rrc\n", rc);
