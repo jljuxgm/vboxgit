@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-darwin.cpp 92583 2021-11-24 09:13:14Z vboxsync $ */
+/* $Id: NEMR3Native-darwin.cpp 92626 2021-11-29 12:32:58Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, native ring-3 macOS backend using Hypervisor.framework.
  *
@@ -1124,7 +1124,7 @@ static int nemR3DarwinCopyStateFromHv(PVMCC pVM, PVMCPUCC pVCpu, uint64_t fWhat)
 
     if (fUpdateCr3)
     {
-        int rc = PGMUpdateCR3(pVCpu, pVCpu->cpum.GstCtx.cr3, false /*fCr3Mapped*/);
+        int rc = PGMUpdateCR3(pVCpu, pVCpu->cpum.GstCtx.cr3);
         if (rc == VINF_SUCCESS)
         { /* likely */ }
         else

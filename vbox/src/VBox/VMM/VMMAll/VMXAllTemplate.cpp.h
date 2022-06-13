@@ -1,4 +1,4 @@
-/* $Id: VMXAllTemplate.cpp.h 92583 2021-11-24 09:13:14Z vboxsync $ */
+/* $Id: VMXAllTemplate.cpp.h 92626 2021-11-29 12:32:58Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Code template for our own hypervisor and the NEM darwin backend using Apple's Hypervisor.framework.
  */
@@ -5584,7 +5584,7 @@ static int vmxHCImportGuestState(PVMCPUCC pVCpu, PVMXVMCSINFO pVmcsInfo, uint64_
         )
     {
         Assert(!(ASMAtomicUoReadU64(&pCtx->fExtrn) & CPUMCTX_EXTRN_CR3));
-        PGMUpdateCR3(pVCpu, CPUMGetGuestCR3(pVCpu), false /* fCr3Mapped */);
+        PGMUpdateCR3(pVCpu, CPUMGetGuestCR3(pVCpu));
         Assert(!VMCPU_FF_IS_SET(pVCpu, VMCPU_FF_HM_UPDATE_CR3));
     }
 

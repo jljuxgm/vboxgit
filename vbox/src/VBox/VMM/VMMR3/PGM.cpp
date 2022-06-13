@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 92567 2021-11-23 15:44:11Z vboxsync $ */
+/* $Id: PGM.cpp 92626 2021-11-29 12:32:58Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -794,6 +794,7 @@ VMMR3DECL(int) PGMR3Init(PVM pVM)
         pPGM->idxBothModeData   = UINT8_MAX;
 
         pPGM->GCPhysCR3         = NIL_RTGCPHYS;
+        pPGM->GCPhysNstGstCR3   = NIL_RTGCPHYS;
 
         pPGM->pGst32BitPdR3     = NULL;
         pPGM->pGstPaePdptR3     = NULL;
@@ -1781,6 +1782,7 @@ VMMR3DECL(void) PGMR3ResetCpu(PVM pVM, PVMCPU pVCpu)
         AssertReleaseRC(rc);
     }
     pVCpu->pgm.s.GCPhysCR3 = NIL_RTGCPHYS;
+    pVCpu->pgm.s.GCPhysNstGstCR3 = NIL_RTGCPHYS;
 
     int rc = PGMHCChangeMode(pVM, pVCpu, PGMMODE_REAL);
     AssertReleaseRC(rc);
@@ -1833,6 +1835,7 @@ VMMR3_INT_DECL(void) PGMR3Reset(PVM pVM)
             AssertReleaseRC(rc);
         }
         pVCpu->pgm.s.GCPhysCR3 = NIL_RTGCPHYS;
+        pVCpu->pgm.s.GCPhysNstGstCR3 = NIL_RTGCPHYS;
     }
 
 #ifdef DEBUG

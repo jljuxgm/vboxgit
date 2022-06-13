@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-linux.cpp 92583 2021-11-24 09:13:14Z vboxsync $ */
+/* $Id: NEMR3Native-linux.cpp 92626 2021-11-29 12:32:58Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, native ring-3 Linux backend.
  */
@@ -1565,7 +1565,7 @@ static int nemHCLnxImportState(PVMCPUCC pVCpu, uint64_t fWhat, PCPUMCTX pCtx, st
 
         if (fUpdateCr3)
         {
-            int rc = PGMUpdateCR3(pVCpu, pVCpu->cpum.GstCtx.cr3, false /*fCr3Mapped*/);
+            int rc = PGMUpdateCR3(pVCpu, pVCpu->cpum.GstCtx.cr3);
             if (rc == VINF_SUCCESS)
             { /* likely */ }
             else
