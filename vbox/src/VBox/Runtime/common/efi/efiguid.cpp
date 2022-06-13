@@ -1,4 +1,4 @@
-/* $Id: efiguid.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: efiguid.cpp 93282 2022-01-17 19:29:25Z vboxsync $ */
 /** @file
  * IPRT - EFI GUID conversion helpers.
  */
@@ -32,6 +32,7 @@
 #include <iprt/efi.h>
 
 #include <iprt/cdefs.h>
+#include <iprt/asm.h>
 #include <iprt/string.h>
 
 
