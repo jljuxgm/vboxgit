@@ -1,4 +1,4 @@
-/* $Id: AudioTest.cpp 91177 2021-09-09 11:14:09Z vboxsync $ */
+/* $Id: AudioTest.cpp 91178 2021-09-09 11:56:14Z vboxsync $ */
 /** @file
  * Audio testing routines.
  *
@@ -2390,6 +2390,34 @@ void AudioTestSetVerifyOptsInitStrict(PAUDIOTESTVERIFYOPTS pOpts)
     pOpts->fKeepGoing      = true;
     pOpts->cMaxDiff        = 0; /* By default we're very strict and consider any diff as being erroneous. */
     pOpts->uMaxSizePercent = 0; /* Ditto for size difference. */
+}
+
+/**
+ * Initializes audio test verification options with default values (strict!).
+ *
+ * @param   pOpts               Verification options to initialize.
+ */
+void AudioTestSetVerifyOptsInit(PAUDIOTESTVERIFYOPTS pOpts)
+{
+    AudioTestSetVerifyOptsInitStrict(pOpts);
+}
+
+/**
+ * Returns whether two audio test verification options are equal.
+ *
+ * @returns \c true if equal, or \c false if not.
+ * @param   pOptsA              Options A to compare.
+ * @param   pOptsB              Options B to compare Options A with.
+ */
+bool AudioTestSetVerifyOptsAreEqual(PAUDIOTESTVERIFYOPTS pOptsA, PAUDIOTESTVERIFYOPTS pOptsB)
+{
+    if (pOptsA == pOptsB)
+        return true;
+
+    return (   pOptsA->cMaxDiff        == pOptsB->cMaxDiff
+            && pOptsA->fKeepGoing      == pOptsB->fKeepGoing
+            && pOptsA->uMaxDiffPercent == pOptsB->uMaxDiffPercent
+            && pOptsA->uMaxSizePercent == pOptsB->uMaxSizePercent);
 }
 
 /**

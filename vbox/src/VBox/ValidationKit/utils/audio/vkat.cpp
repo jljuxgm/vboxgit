@@ -1,4 +1,4 @@
-/* $Id: vkat.cpp 91136 2021-09-07 08:03:55Z vboxsync $ */
+/* $Id: vkat.cpp 91178 2021-09-09 11:56:14Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) utility for testing and validating the audio stack.
  */
@@ -1122,7 +1122,7 @@ static DECLCALLBACK(RTEXITCODE) audioVerifyMain(PRTGETOPTSTATE pGetState)
     unsigned    iTestSet    = 0;
 
     AUDIOTESTVERIFYOPTS Opts;
-    AudioTestSetVerifyOptsInitStrict(&Opts);
+    AudioTestSetVerifyOptsInit(&Opts);
 
     int           ch;
     RTGETOPTUNION ValueUnion;

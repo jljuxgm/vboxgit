@@ -1,4 +1,4 @@
-/* $Id: AudioTest.h 91135 2021-09-07 08:03:30Z vboxsync $ */
+/* $Id: AudioTest.h 91178 2021-09-09 11:56:14Z vboxsync $ */
 /** @file
  * Audio testing routines.
  * Common code which is being used by the ValidationKit audio test (VKAT)
@@ -316,6 +316,9 @@ int    AudioTestSetPack(PAUDIOTESTSET pSet, const char *pszOutDir, char *pszFile
 int    AudioTestSetUnpack(const char *pszFile, const char *pszOutDir);
 
 void   AudioTestSetVerifyOptsInitStrict(PAUDIOTESTVERIFYOPTS pOpts);
+void   AudioTestSetVerifyOptsInit(PAUDIOTESTVERIFYOPTS pOpts);
+bool   AudioTestSetVerifyOptsAreEqual(PAUDIOTESTVERIFYOPTS pOptsA, PAUDIOTESTVERIFYOPTS pOptsB);
+
 int    AudioTestSetVerify(PAUDIOTESTSET pSetA, PAUDIOTESTSET pSetB, PAUDIOTESTERRORDESC pErrDesc);
 int    AudioTestSetVerifyEx(PAUDIOTESTSET pSetA, PAUDIOTESTSET pSetB, PAUDIOTESTVERIFYOPTS pOpts, PAUDIOTESTERRORDESC pErrDesc);
 
