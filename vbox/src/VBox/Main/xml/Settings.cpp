@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 94726 2022-04-27 17:39:33Z vboxsync $ */
+/* $Id: Settings.cpp 94727 2022-04-27 17:45:11Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -6237,6 +6237,8 @@ void MachineConfigFile::readMachine(const xml::ElementNode &elmMachine)
  * Called from the constructor to decrypt the machine config and read
  * data from it.
  * @param elmMachine
+ * @param pCryptoIf             Pointer to the cryptographic interface.
+ * @param pszPassword           The password to decrypt the config with.
  */
 void MachineConfigFile::readMachineEncrypted(const xml::ElementNode &elmMachine,
                                              PCVBOXCRYPTOIF pCryptoIf = NULL,
