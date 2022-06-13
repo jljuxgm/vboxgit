@@ -1,4 +1,4 @@
-/* $Id: UIFileManager.h 92633 2021-11-29 17:38:04Z vboxsync $ */
+/* $Id: UIFileManager.h 92638 2021-11-30 07:20:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManager class declaration.
  */
@@ -93,7 +93,7 @@ signals:
 public:
 
     UIFileManager(EmbedTo enmEmbedding, UIActionPool *pActionPool,
-                              const CMachine &comMachine, QWidget *pParent, bool fShowToolbar = true);
+                  const CMachine &comMachine, QWidget *pParent, bool fShowToolbar);
     ~UIFileManager();
     QMenu *menu() const;
 

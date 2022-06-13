@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 92630 2021-11-29 16:25:42Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 92638 2021-11-30 07:20:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -1780,7 +1780,7 @@ void UIMachineLogic::sltShowFileManagerDialog()
     }
 
     QIManagerDialog *pFileManagerDialog;
-    UIFileManagerDialogFactory dialogFactory(actionPool(), machine(), machine().GetName());
+    UIFileManagerDialogFactory dialogFactory(actionPool(), machine());
     dialogFactory.prepare(pFileManagerDialog, activeMachineWindow());
     if (pFileManagerDialog)
     {

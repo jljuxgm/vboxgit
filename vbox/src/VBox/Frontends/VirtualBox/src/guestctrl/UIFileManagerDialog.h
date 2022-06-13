@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerDialog.h 92630 2021-11-29 16:25:42Z vboxsync $ */
+/* $Id: UIFileManagerDialog.h 92638 2021-11-30 07:20:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerDialog class declaration.
  */
@@ -45,7 +45,7 @@ class UIFileManagerDialogFactory : public QIManagerDialogFactory
 {
 public:
 
-    UIFileManagerDialogFactory(UIActionPool *pActionPool, const CMachine &comMachine, const QString &strMachineName);
+    UIFileManagerDialogFactory(UIActionPool *pActionPool, const CMachine &comMachine);
     UIFileManagerDialogFactory();
 
 protected:
@@ -56,7 +56,6 @@ protected:
 
     UIActionPool *m_pActionPool;
     CMachine      m_comMachine;
-    QString       m_strMachineName;
 };
 
 /** QIManagerDialog extension providing GUI with the dialog displaying file manager releated logs. */
@@ -70,7 +69,7 @@ public:
       * @param  pCenterWidget  Passes the widget reference to center according to.
       * @param  pActionPool    Passes the action-pool reference.
       * @param  comMachine     Passes the machine reference. */
-    UIFileManagerDialog(QWidget *pCenterWidget, UIActionPool *pActionPool, const CMachine &comMachine, const QString &strMachineName);
+    UIFileManagerDialog(QWidget *pCenterWidget, UIActionPool *pActionPool, const CMachine &comMachine);
     ~UIFileManagerDialog();
 
 protected:
@@ -111,7 +110,6 @@ private:
     void manageEscapeShortCut();
     UIActionPool *m_pActionPool;
     CMachine    m_comMachine;
-    QString     m_strMachineName;
 };
 
 
