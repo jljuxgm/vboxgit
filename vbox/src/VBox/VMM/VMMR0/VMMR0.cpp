@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 90976 2021-08-28 23:38:05Z vboxsync $ */
+/* $Id: VMMR0.cpp 90980 2021-08-29 12:43:43Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -1393,9 +1393,6 @@ static void vmmR0RecordRC(PVMCC pVM, PVMCPUCC pVCpu, int rc)
         case VINF_VMM_CALL_HOST:
             switch (pVCpu->vmm.s.enmCallRing3Operation)
             {
-                case VMMCALLRING3_PDM_CRIT_SECT_ENTER:
-                    STAM_COUNTER_INC(&pVM->vmm.s.StatRZCallPDMCritSectEnter);
-                    break;
                 case VMMCALLRING3_PDM_LOCK:
                     STAM_COUNTER_INC(&pVM->vmm.s.StatRZCallPDMLock);
                     break;
