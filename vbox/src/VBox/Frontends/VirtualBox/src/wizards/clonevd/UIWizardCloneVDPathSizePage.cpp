@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPathSizePage.cpp 91267 2021-09-16 06:01:20Z vboxsync $ */
+/* $Id: UIWizardCloneVDPathSizePage.cpp 91272 2021-09-16 07:48:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDPathSizePage class implementation.
  */
@@ -78,8 +78,8 @@ void UIWizardCloneVDPathSizePage::initializePage()
         QString strDiskName = QString("%1_%2").arg(QFileInfo(pWizard->sourceDiskName()).completeBaseName()).arg(tr("copy"));
 
         QString strMediumFilePath =
-            UIDiskEditorGroupBox::constructMediumFilePath(UIDiskVariantGroupBox::appendExtension(strDiskName,
-                                                                                                 strExtension), strSourceDiskPath);
+            UIDiskEditorGroupBox::constructMediumFilePath(UIDiskEditorGroupBox::appendExtension(strDiskName,
+                                                                                                strExtension), strSourceDiskPath);
         m_pMediumSizePathGroupBox->setMediumFilePath(strMediumFilePath);
         pWizard->setMediumPath(strMediumFilePath);
     }

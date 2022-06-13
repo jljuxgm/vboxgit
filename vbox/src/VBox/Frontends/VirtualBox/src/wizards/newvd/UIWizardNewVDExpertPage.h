@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDExpertPage.h 91061 2021-09-01 14:30:25Z vboxsync $ */
+/* $Id: UIWizardNewVDExpertPage.h 91272 2021-09-16 07:48:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDExpertPage class declaration.
  */
@@ -26,7 +26,7 @@
 
 /* Forward declarations: */
 class UIDiskFormatsGroupBox;
-class UIDiskVariantGroupBox;
+class UIDiskVariantWidget;
 class UIMediumSizeAndPathGroupBox;
 
 /** Expert page of the New Virtual Hard Drive wizard. */
@@ -60,11 +60,11 @@ private:
     bool validatePage();
     void updateDiskWidgetsAfterMediumFormatChange();
 
-   /** @name Widget
+   /** @name Widgets
      * @{ */
        UIMediumSizeAndPathGroupBox *m_pSizeAndPathGroup;
-       UIDiskFormatsGroupBox *m_pFormatGroup;
-       UIDiskVariantGroupBox *m_pVariantGroup;
+       UIDiskFormatsGroupBox *m_pFormatComboxBox;
+       UIDiskVariantWidget *m_pVariantWidget;
    /** @} */
 
    /** @name Variable
