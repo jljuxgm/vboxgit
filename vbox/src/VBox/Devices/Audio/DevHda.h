@@ -1,4 +1,4 @@
-/* $Id: DevHda.h 89900 2021-06-24 19:13:49Z vboxsync $ */
+/* $Id: DevHda.h 89906 2021-06-24 20:03:28Z vboxsync $ */
 /** @file
  * Intel HD Audio Controller Emulation - Structures.
  */
@@ -134,8 +134,8 @@ AssertCompile(HDA_MAX_SDI <= HDA_MAX_SDO);
 # define HDA_REG(a_pThis, a_ShortRegNm)     HDA_REG_BY_IDX(a_pThis, HDA_MEM_IND_NAME(a_ShortRegNm))
 #endif
 
-/** Indirect register access via g_aHdaRegMap[].mem_idx. */
-#define HDA_REG_IND(a_pThis, a_idxMap)      HDA_REG_BY_IDX(a_pThis, g_aHdaRegMap[(a_idxMap)].mem_idx)
+/** Indirect register access via g_aHdaRegMap[].idxReg. */
+#define HDA_REG_IND(a_pThis, a_idxMap)      HDA_REG_BY_IDX(a_pThis, g_aHdaRegMap[(a_idxMap)].idxReg)
 
 
 #define HDA_REG_GCAP                0           /* Range 0x00 - 0x01 */
