@@ -1,4 +1,4 @@
-/* $Id: expreval.cpp 93173 2022-01-11 01:07:52Z vboxsync $ */
+/* $Id: expreval.cpp 93174 2022-01-11 01:09:45Z vboxsync $ */
 /** @file
  * expreval - Expressions evaluator.
  */
@@ -34,7 +34,7 @@
 #include <iprt/asm.h>
 #include <iprt/assert.h>
 #include <iprt/ctype.h>
-#include <iprt/errcore.h>
+#include <iprt/err.h>
 #include <iprt/mem.h>
 #include <iprt/path.h>
 #include <iprt/string.h>
