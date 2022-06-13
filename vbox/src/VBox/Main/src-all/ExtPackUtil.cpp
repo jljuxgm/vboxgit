@@ -1,4 +1,4 @@
-/* $Id: ExtPackUtil.cpp 91405 2021-09-27 15:00:51Z vboxsync $ */
+/* $Id: ExtPackUtil.cpp 91406 2021-09-27 15:11:55Z vboxsync $ */
 /** @file
  * VirtualBox Main - Extension Pack Utilities and definitions, VBoxC, VBoxSVC, ++.
  */
@@ -43,6 +43,9 @@
 /*********************************************************************************************************************************
 *   Defined Constants And Macros                                                                                                 *
 *********************************************************************************************************************************/
+/**
+ * Translation context for this file.
+ */
 DECLARE_TRANSLATION_CONTEXT(ExtPackUtil)
 
 
