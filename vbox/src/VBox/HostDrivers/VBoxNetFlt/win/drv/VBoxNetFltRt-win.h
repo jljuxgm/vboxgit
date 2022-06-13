@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltRt-win.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxNetFltRt-win.h 92965 2021-12-16 09:53:02Z vboxsync $ */
 /** @file
  * VBoxNetFltRt-win.h - Bridged Networking Driver, Windows Specific Code.
  * NetFlt Runtime API
@@ -439,7 +439,7 @@ extern RTMAC g_vboxNetFltWinVerifyMACGuest;
 #define FINI_INTERLOCKED_SINGLE_LIST(_pList) \
     do { \
         Assert(vboxNetFltWinSListIsEmpty(&(_pList)->List)); \
-        NdisFreeSpinLock(&(_pList)->Lock) \
+        NdisFreeSpinLock(&(_pList)->Lock); \
     } while (0)
 
 
