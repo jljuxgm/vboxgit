@@ -1,4 +1,4 @@
-/* $Id: vkat.cpp 90044 2021-07-06 08:59:11Z vboxsync $ */
+/* $Id: vkat.cpp 90079 2021-07-07 17:18:31Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) utility for testing and validating the audio stack.
  */
@@ -662,7 +662,6 @@ static DECLCALLBACK(RTEXITCODE) audioTestMain(PRTGETOPTSTATE pGetState)
 
     int rc = AudioTestSvcCreate(&TstEnv.u.Guest.Srv);
 
-    const char *pszDevice     = NULL; /* Custom device to use. Can be NULL if not being used. */
     const char *pszTag        = NULL; /* Custom tag to use. Can be NULL if not being used. */
     PCPDMDRVREG pDrvReg       = AudioTestGetDefaultBackend();
     bool        fWithDrvAudio = false;
@@ -739,7 +738,9 @@ static DECLCALLBACK(RTEXITCODE) audioTestMain(PRTGETOPTSTATE pGetState)
                 return RTMsgErrorExitFailure("Not yet implemented!");
 
             case VKAT_TEST_OPT_DEV:
-                pszDevice = ValueUnion.psz;
+                rc = RTStrCopy(TstEnv.szDev, sizeof(TstEnv.szDev), ValueUnion.psz);
+                if (RT_FAILURE(rc))
+                    return RTMsgErrorExitFailure("Failed to copy out device: %Rrc", rc);
                 break;
 
             case VKAT_TEST_OPT_PAUSE:
