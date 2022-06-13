@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-dx-shader.cpp 91823 2021-10-18 10:12:46Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-dx-shader.cpp 91891 2021-10-20 12:30:27Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device - VGPU10+ (DX) shader utilities.
  */
@@ -2178,7 +2178,7 @@ static int dxbcCreateIOSGNBlob(DXShaderInfo const *pInfo, DXBCHeader *pHdr, uint
         aIdxSignature[src->registerIndex] = i;
     }
 
-    uint32_t cbBlob = RT_UOFFSETOF(DXBCBlobIOSGN, aElement[cSignature])
+    uint32_t cbBlob = RT_UOFFSETOF_DYN(DXBCBlobIOSGN, aElement[cSignature])
                     + cSignature * RT_SIZEOFMEMB(DXBCBlobIOSGN, aElement[0]);
     if (!dxbcByteWriterCanWrite(w, sizeof(DXBCBlobHeader) + cbBlob))
         return VERR_NO_MEMORY;
