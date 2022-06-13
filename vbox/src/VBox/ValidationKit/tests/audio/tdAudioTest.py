@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tdAudioTest.py 91124 2021-09-06 13:49:58Z vboxsync $
+# $Id: tdAudioTest.py 91127 2021-09-06 16:33:36Z vboxsync $
 
 """
 AudioTest test driver which invokes the VKAT (Validation Kit Audio Test)
@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 91124 $"
+__version__ = "$Revision: 91127 $"
 
 # Standard Python imports.
 from datetime import datetime
@@ -536,7 +536,7 @@ class tdAudioTest(vbox.TestDriver):
 
             fRc = self.executeHst("VKAT Host Verify", asArgs);
             if fRc:
-                reporter.error("Verification audio data successful");
+                reporter.log("Verification audio data successful");
             else:
                 #
                 # Add the test sets to the test manager for later (manual) diagnosis.
