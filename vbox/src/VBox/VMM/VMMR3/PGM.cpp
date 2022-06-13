@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 92046 2021-10-25 16:05:10Z vboxsync $ */
+/* $Id: PGM.cpp 92162 2021-10-31 23:34:31Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -949,12 +949,24 @@ VMMR3DECL(int) PGMR3Init(PVM pVM)
      * Register the physical access handler protecting ROMs.
      */
     if (RT_SUCCESS(rc))
-        rc = PGMR3HandlerPhysicalTypeRegister(pVM, PGMPHYSHANDLERKIND_WRITE,
+        /** @todo why isn't pgmPhysRomWriteHandler registered for ring-0?   */
+        rc = PGMR3HandlerPhysicalTypeRegister(pVM, PGMPHYSHANDLERKIND_WRITE, false /*fKeepPgmLock*/,
                                               pgmPhysRomWriteHandler,
                                               NULL, NULL, "pgmPhysRomWritePfHandler",
                                               NULL, NULL, "pgmPhysRomWritePfHandler",
                                               "ROM write protection",
                                               &pVM->pgm.s.hRomPhysHandlerType);
+
+    /*
+     * Register the physical access handler doing dirty MMIO2 tracing.
+     */
+    if (RT_SUCCESS(rc))
+        rc = PGMR3HandlerPhysicalTypeRegister(pVM, PGMPHYSHANDLERKIND_WRITE, true /*fKeepPgmLock*/,
+                                              pgmPhysMmio2WriteHandler,
+                                              NULL, "pgmPhysMmio2WriteHandler", "pgmPhysMmio2WritePfHandler",
+                                              NULL, "pgmPhysMmio2WriteHandler", "pgmPhysMmio2WritePfHandler",
+                                              "MMIO2 dirty page tracing",
+                                              &pVM->pgm.s.hMmio2DirtyPhysHandlerType);
 
     /*
      * Init the paging.

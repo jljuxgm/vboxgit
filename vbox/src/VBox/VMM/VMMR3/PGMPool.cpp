@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 91854 2021-10-20 00:50:11Z vboxsync $ */
+/* $Id: PGMPool.cpp 92162 2021-10-31 23:34:31Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -279,7 +279,7 @@ int pgmR3PoolInit(PVM pVM)
     pPool->fCacheEnabled = fCacheEnabled;
 
     pPool->hAccessHandlerType = NIL_PGMPHYSHANDLERTYPE;
-    rc = PGMR3HandlerPhysicalTypeRegister(pVM, PGMPHYSHANDLERKIND_WRITE,
+    rc = PGMR3HandlerPhysicalTypeRegister(pVM, PGMPHYSHANDLERKIND_WRITE, true /*fKeepPgmLock*/,
                                           pgmPoolAccessHandler,
                                           NULL, "pgmPoolAccessHandler", "pgmRZPoolAccessPfHandler",
                                           NULL, "pgmPoolAccessHandler", "pgmRZPoolAccessPfHandler",
