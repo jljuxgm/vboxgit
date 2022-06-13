@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-linux.c 87356 2021-01-21 19:33:35Z vboxsync $ */
+/* $Id: memobj-r0drv-linux.c 90249 2021-07-20 07:59:02Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Linux.
  */
@@ -1957,7 +1957,7 @@ DECLHIDDEN(RTHCPHYS) rtR0MemObjNativeGetPagePhysAddr(PRTR0MEMOBJINTERNAL pMem, s
         case RTR0MEMOBJTYPE_PAGE:
         default:
             AssertMsgFailed(("%d\n", pMemLnx->Core.enmType));
-            /* fall thru */
+            RT_FALL_THROUGH();
 
         case RTR0MEMOBJTYPE_RES_VIRT:
             return NIL_RTHCPHYS;

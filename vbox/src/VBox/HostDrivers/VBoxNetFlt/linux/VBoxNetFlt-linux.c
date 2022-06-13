@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-linux.c 87785 2021-02-17 19:25:12Z vboxsync $ */
+/* $Id: VBoxNetFlt-linux.c 90249 2021-07-20 07:59:02Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Linux Specific Code.
  */
@@ -733,7 +733,7 @@ static struct sk_buff *vboxNetFltLinuxSkBufFromSG(PVBOXNETFLTINS pThis, PINTNETS
     {
         default:
             AssertMsgFailed(("%u (%s)\n", pSG->GsoCtx.u8Type, PDMNetGsoTypeName((PDMNETWORKGSOTYPE)pSG->GsoCtx.u8Type) ));
-            /* fall thru */
+            RT_FALL_THRU();
         case PDMNETWORKGSOTYPE_INVALID:
             fGsoType = 0;
             break;
