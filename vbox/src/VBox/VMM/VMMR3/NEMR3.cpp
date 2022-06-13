@@ -1,4 +1,4 @@
-/* $Id: NEMR3.cpp 92225 2021-11-04 21:29:57Z vboxsync $ */
+/* $Id: NEMR3.cpp 92317 2021-11-10 12:59:27Z vboxsync $ */
 /** @file
  * NEM - Native execution manager.
  */
@@ -373,7 +373,7 @@ VMMR3_INT_DECL(void) NEMR3ResetCpu(PVMCPU pVCpu, bool fInitIpi)
 VMMR3_INT_DECL(bool) NEMR3NeedSpecialTscMode(PVM pVM)
 {
 #ifdef VBOX_WITH_NATIVE_NEM
-# ifdef RT_OS_WINDOWS
+# if defined(RT_OS_WINDOWS) || defined(RT_OS_DARWIN)
     if (VM_IS_NEM_ENABLED(pVM))
         return true;
 # endif
