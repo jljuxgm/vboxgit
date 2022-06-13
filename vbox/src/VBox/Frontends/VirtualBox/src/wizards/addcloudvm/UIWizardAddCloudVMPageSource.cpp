@@ -1,4 +1,4 @@
-/* $Id: UIWizardAddCloudVMPageSource.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIWizardAddCloudVMPageSource.cpp 93233 2022-01-14 14:20:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardAddCloudVMPageSource class implementation.
  */
@@ -333,7 +333,9 @@ UIWizardAddCloudVMPageSource::UIWizardAddCloudVMPageSource()
                 const int iFontHeight = fm.height();
                 const int iTotalHeight = 8 * iFontHeight;
                 m_pSourceInstanceList->setMinimumSize(QSize(iTotalWidth, iTotalHeight));
+                /* A bit of look&feel: */
                 m_pSourceInstanceList->setAlternatingRowColors(true);
+                /* Allow to select more than one item to add: */
                 m_pSourceInstanceList->setSelectionMode(QAbstractItemView::ExtendedSelection);
 
                 /* Add into layout: */
