@@ -1,4 +1,4 @@
-# $Id: Config.kmk 93761 2022-02-15 16:49:37Z vboxsync $
+# $Id: Config.kmk 93784 2022-02-16 10:06:48Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3846,14 +3846,16 @@ endef # VBOX_GENERATE_IMPORT_TARGET_DEF
 # as the VCC100 CRT typically ends up with its internal code page not being
 # CP_UTF8 but the default codepage for the locale.
 #
-# We don't use this for old x86-only stuff like NT4, 2K or WinXP,
-# as this breaks loading our binaries.
-# (unless we're also wanting support for exotic stuff like WinXP 64-bit).
-#
 # @param 1 the output filename.
 #
-ifn1of ($(VBOX_VCC_TOOL_STEM), VCC100 VCC110 VCC120) && "$(KBUILD_TARGET).$(KBUILD_TARGET_ARCH)" != "win.x86"
- VBOX_UTF8_MANIFEST_FN = \
+ifn1of ($(VBOX_VCC_TOOL_STEM), VCC100 VCC110 VCC120)
+ #
+ # We don't use this for old x86-only stuff like NT4, 2K or WinXP,
+ # as this breaks loading our binaries.
+ # (unless we're also wanting support for exotic stuff like WinXP 64-bit).
+ #
+ ifn1of ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH), win.x86)
+  VBOX_UTF8_MANIFEST_FN = \
 	$(QUIET)$(APPEND) -tn "$(1).manifest" \
 		'<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' \
 		'<assembly manifestVersion="1.0" xmlns="urn:schemas-microsoft-com:asm.v1">' \
@@ -3867,10 +3869,11 @@ ifn1of ($(VBOX_VCC_TOOL_STEM), VCC100 VCC110 VCC120) && "$(KBUILD_TARGET).$(KBUI
 	$(NLTAB)$(QUIET)$(REDIRECT) -- $(requote sh,$(PATH_SDK_$(VBOX_WINPSDK)_BIN)/mt.exe) \
 		-nologo -manifest '$(subst /,\,$(1).manifest)' '-outputresource:$(subst /,\,$(1));$(HASH)1' \
 	$(NLTAB)$(QUIET)$(RM) -f -- "$(1).manifest"
- ## VBOX_UTF8_MANIFEST_CMDS
- # Wrapper around VBOX_UTF8_MANIFEST_FN that makes sure it's an EXE link target,
- # as this UTF-8 manifest doesn't make sense for non-executables.
- VBOX_UTF8_MANIFEST_CMDS ?= $(if-expr "$(tool_do)" != "LINK_LIBRARY" && "$(EXT)" == "EXE",$(call VBOX_UTF8_MANIFEST_FN,$(out),),)
+  ## VBOX_UTF8_MANIFEST_CMDS
+  # Wrapper around VBOX_UTF8_MANIFEST_FN that makes sure it's an EXE link target,
+  # as this UTF-8 manifest doesn't make sense for non-executables.
+  VBOX_UTF8_MANIFEST_CMDS ?= $(if-expr "$(tool_do)" != "LINK_LIBRARY" && "$(EXT)" == "EXE",$(call VBOX_UTF8_MANIFEST_FN,$(out),),)
+ endif
 else
  VBOX_UTF8_MANIFEST_CMDS =
 endif
@@ -8841,7 +8844,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 93761 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 93784 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
