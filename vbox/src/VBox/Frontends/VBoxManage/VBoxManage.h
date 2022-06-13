@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 91432 2021-09-28 11:37:43Z vboxsync $ */
+/* $Id: VBoxManage.h 92372 2021-11-11 14:45:18Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -39,12 +39,39 @@
 # include "PasswordInput.h"
 #endif
 
+#ifdef VBOX_WITH_VBOXMANAGE_NLS
+# include "VirtualBoxTranslator.h"
+#endif
+
 
 ////////////////////////////////////////////////////////////////////////////////
 //
 // definitions
 //
 ////////////////////////////////////////////////////////////////////////////////
+
+#ifdef VBOX_WITH_VBOXMANAGE_NLS
+# define DECLARE_TRANSLATION_CONTEXT(ctx) \
+struct ctx \
+{\
+   static const char *tr(const char *pszSource, const char *pszComment = NULL, const size_t aNum = ~(size_t)0) \
+   { \
+       return VirtualBoxTranslator::translate(NULL, #ctx, pszSource, pszComment, aNum); \
+   } \
+}
+#else
+# define DECLARE_TRANSLATION_CONTEXT(ctx) \
+struct ctx \
+{\
+   static const char *tr(const char *pszSource, const char *pszComment = NULL, const size_t aNum = ~(size_t)0) \
+   { \
+       NOREF(pszComment); \
+       NOREF(aNum);       \
+       return pszSource;  \
+   } \
+}
+#endif
+
 
 /** @name Syntax diagram category, i.e. the command.
  * @{ */
