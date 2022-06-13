@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 87391 2021-01-22 23:47:33Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 89951 2021-06-29 13:22:29Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -10727,6 +10727,18 @@ Console::i_vmm2User_QueryGenericObject(PCVMM2USERMETHODS pThis, PUVM pUVM, PCRTU
     {
         IMachine *pIMachine = pConsole->mMachine;
         return pIMachine;
+    }
+
+    if (UuidCopy == COM_IIDOF(IKeyboard))
+    {
+        IKeyboard *pIKeyboard = pConsole->mKeyboard;
+        return pIKeyboard;
+    }
+
+    if (UuidCopy == COM_IIDOF(IMouse))
+    {
+        IMouse *pIMouse = pConsole->mMouse;
+        return pIMouse;
     }
 
     if (UuidCopy == COM_IIDOF(ISnapshot))

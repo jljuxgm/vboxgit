@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 89921 2021-06-25 18:47:30Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 89951 2021-06-29 13:22:29Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -1701,9 +1701,6 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
 
             InsertConfigNode(pLunL0,   "AttachedDriver", &pLunL1);
             InsertConfigString(pLunL1, "Driver",               "MainKeyboard");
-            InsertConfigNode(pLunL1,   "Config", &pCfg);
-            Keyboard *pKeyboard = mKeyboard;
-            InsertConfigInteger(pCfg,  "Object",     (uintptr_t)pKeyboard);
         }
 
         PointingHIDType_T aPointingHID;
@@ -1717,9 +1714,6 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
 
             InsertConfigNode(pLunL0,   "AttachedDriver", &pLunL1);
             InsertConfigString(pLunL1, "Driver",               "MainMouse");
-            InsertConfigNode(pLunL1,   "Config", &pCfg);
-            Mouse *pMouse = mMouse;
-            InsertConfigInteger(pCfg,  "Object",     (uintptr_t)pMouse);
         }
 
         /*
@@ -2234,9 +2228,6 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
 
                 InsertConfigNode(pLunL0,   "AttachedDriver", &pLunL1);
                 InsertConfigString(pLunL1, "Driver",        "MainMouse");
-                InsertConfigNode(pLunL1,   "Config", &pCfg);
-                Mouse *pMouse = mMouse;
-                InsertConfigInteger(pCfg,  "Object",     (uintptr_t)pMouse);
             }
             if (aPointingHID == PointingHIDType_USBMultiTouch)
             {
@@ -2251,9 +2242,6 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
 
                 InsertConfigNode(pLunL0,   "AttachedDriver", &pLunL1);
                 InsertConfigString(pLunL1, "Driver",        "MainMouse");
-                InsertConfigNode(pLunL1,   "Config", &pCfg);
-                Mouse *pMouse = mMouse;
-                InsertConfigInteger(pCfg,  "Object",     (uintptr_t)pMouse);
             }
 
             /* Virtual USB Keyboard */
@@ -2270,9 +2258,6 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
 
                 InsertConfigNode(pLunL0,   "AttachedDriver", &pLunL1);
                 InsertConfigString(pLunL1, "Driver",               "MainKeyboard");
-                InsertConfigNode(pLunL1,   "Config", &pCfg);
-                Keyboard *pKeyboard = mKeyboard;
-                InsertConfigInteger(pCfg,  "Object",     (uintptr_t)pKeyboard);
             }
         }
 
