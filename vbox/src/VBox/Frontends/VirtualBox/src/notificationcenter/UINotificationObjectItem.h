@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjectItem.h 90290 2021-07-22 14:40:08Z vboxsync $ */
+/* $Id: UINotificationObjectItem.h 90388 2021-07-29 07:57:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINotificationObjectItem class declaration.
  */
@@ -103,6 +103,9 @@ private:
 
     /** Holds the notification-progress this item created for. */
     UINotificationProgress *progress() const;
+
+    /** Updates details. */
+    void updateDetails();
 };
 
 /** Notification-object factory. */
