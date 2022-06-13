@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVM.h 90714 2021-08-18 12:23:05Z vboxsync $ */
+/* $Id: UIWizardCloneVM.h 90990 2021-08-30 09:38:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVM class declaration.
  */
@@ -29,16 +29,6 @@
 #include "COMEnums.h"
 #include "CMachine.h"
 #include "CSnapshot.h"
-
-#define cloneVMWizardPropertySet(functionName, value)                   \
-    do                                                                  \
-    {                                                                   \
-        UIWizardCloneVM *pWizard = qobject_cast<UIWizardCloneVM*>(wizard()); \
-        if (pWizard)                                                    \
-            pWizard->set##functionName(value);                          \
-    }                                                                   \
-    while(0)
-
 
 /* Clone VM wizard: */
 class UIWizardCloneVM : public UINativeWizard

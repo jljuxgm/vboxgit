@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMNamePathPageBasic.h 90739 2021-08-19 09:14:48Z vboxsync $ */
+/* $Id: UIWizardCloneVMNamePathPageBasic.h 90990 2021-08-30 09:38:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMNamePathPageBasic class declaration.
  */
@@ -32,6 +32,7 @@
 class UICloneVMAdditionalOptionsEditor;
 class UICloneVMNamePathEditor;
 class QIRichTextLabel;
+class UIWizardCloneVM;
 
 namespace UIWizardCloneVMNamePathPage
 {
@@ -65,7 +66,6 @@ private:
     bool isComplete() const;
 
     QIRichTextLabel *m_pMainLabel;
-    // QGridLayout     *m_pContainerLayout;
 
     UICloneVMNamePathEditor *m_pNamePathEditor;
     UICloneVMAdditionalOptionsEditor *m_pAdditionalOptionsEditor;

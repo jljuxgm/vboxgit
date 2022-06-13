@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageFormat.h 90827 2021-08-24 08:50:46Z vboxsync $ */
+/* $Id: UIWizardCloneVDPageFormat.h 90990 2021-08-30 09:38:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDPageFormat class declaration.
  */
@@ -52,8 +52,6 @@ private slots:
     void sltMediumFormatChanged();
 
 private:
-
-    UIWizardCloneVD *cloneWizard() const;
 
     /** Handles translation event. */
     virtual void retranslateUi() /* override */;

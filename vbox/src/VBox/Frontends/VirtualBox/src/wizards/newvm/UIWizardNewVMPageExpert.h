@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.h 90413 2021-07-29 15:54:11Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.h 90990 2021-08-30 09:38:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class declaration.
  */
@@ -28,9 +28,6 @@
 #include "UINativeWizardPage.h"
 #include "UIWizardNewVMDiskPageBasic.h"
 
-// #include "COMEnums.h"
-// #include "CMediumFormat.h"
-
 /* Forward declarations: */
 class QButtonGroup;
 class QCheckBox;
@@ -47,6 +44,7 @@ class UINameAndSystemEditor;
 class UINewVMHardwareContainer;
 class UIToolBox;
 class UIUserNamePasswordGroupBox;
+class UIWizardNewVM;
 
 /** Expert page of the New Virtual Machine wizard. */
 class UIWizardNewVMPageExpert : public UINativeWizardPage

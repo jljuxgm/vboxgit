@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMTypePageBasic.cpp 90739 2021-08-19 09:14:48Z vboxsync $ */
+/* $Id: UIWizardCloneVMTypePageBasic.cpp 90990 2021-08-30 09:38:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMTypePageBasic class implementation.
  */
@@ -58,11 +58,11 @@ void UIWizardCloneVMTypePageBasic::prepare()
 
 void UIWizardCloneVMTypePageBasic::sltCloneTypeChanged(bool fIsFullClone)
 {
-    UIWizardCloneVM *pWizard = qobject_cast<UIWizardCloneVM*>(wizard());
-    m_userModifiedParameters << "LinkedClone";
-    cloneVMWizardPropertySet(LinkedClone, !fIsFullClone);
-    /* Show/hide 3rd page according to linked clone toggle: */
+    UIWizardCloneVM *pWizard = wizardWindow<UIWizardCloneVM>();
     AssertReturnVoid(pWizard);
+    m_userModifiedParameters << "LinkedClone";
+    pWizard->setLinkedClone(!fIsFullClone);
+    /* Show/hide 3rd page according to linked clone toggle: */
     pWizard->setCloneModePageVisible(fIsFullClone);
 }
 
@@ -90,14 +90,15 @@ void UIWizardCloneVMTypePageBasic::retranslateUi()
 
 void UIWizardCloneVMTypePageBasic::initializePage()
 {
+    AssertReturnVoid(wizardWindow<UIWizardCloneVM>());
     retranslateUi();
     if (m_pCloneTypeGroupBox && !m_userModifiedParameters.contains("LinkedClone"))
-        cloneVMWizardPropertySet(LinkedClone, !m_pCloneTypeGroupBox->isFullClone());
+        wizardWindow<UIWizardCloneVM>()->setLinkedClone(!m_pCloneTypeGroupBox->isFullClone());
 }
 
 bool UIWizardCloneVMTypePageBasic::validatePage()
 {
-    UIWizardCloneVM *pWizard = qobject_cast<UIWizardCloneVM*>(wizard());
+    UIWizardCloneVM *pWizard = wizardWindow<UIWizardCloneVM>();
     AssertReturn(pWizard, false);
 
     /* This page could be final: */

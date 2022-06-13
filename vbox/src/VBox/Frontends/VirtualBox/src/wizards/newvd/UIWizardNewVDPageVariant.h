@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageVariant.h 90407 2021-07-29 13:17:06Z vboxsync $ */
+/* $Id: UIWizardNewVDPageVariant.h 90990 2021-08-30 09:38:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageVariant class declaration.
  */
@@ -28,6 +28,7 @@
 class CMediumFormat;
 class QIRichTextLabel;
 class UIDiskVariantGroupBox;
+class UIWizardNewVD;
 
 class SHARED_LIBRARY_STUFF UIWizardNewVDPageVariant : public UINativeWizardPage
 {

@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPagePathSize.h 90827 2021-08-24 08:50:46Z vboxsync $ */
+/* $Id: UIWizardCloneVDPagePathSize.h 90990 2021-08-30 09:38:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDPagePathSize class declaration.
  */
@@ -67,7 +67,6 @@ private:
 
     /** Returns whether the page is valid. */
     virtual bool validatePage() /* override */;
-    UIWizardCloneVD *cloneWizard() const;
 
     UIMediumSizeAndPathGroupBox *m_pMediumSizePathGroupBox;
     QSet<QString> m_userModifiedParameters;

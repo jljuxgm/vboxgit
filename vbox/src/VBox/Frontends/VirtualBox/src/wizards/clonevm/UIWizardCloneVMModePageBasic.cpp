@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMModePageBasic.cpp 90739 2021-08-19 09:14:48Z vboxsync $ */
+/* $Id: UIWizardCloneVMModePageBasic.cpp 90990 2021-08-30 09:38:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMModePageBasic class implementation.
  */
@@ -91,8 +91,10 @@ void UIWizardCloneVMModePageBasic::retranslateUi()
 
 void UIWizardCloneVMModePageBasic::initializePage()
 {
+
+    AssertReturnVoid(wizardWindow<UIWizardCloneVM>());
     if (m_pCloneModeGroupBox && !m_userModifiedParameters.contains("CloneMode"))
-        cloneVMWizardPropertySet(CloneMode, m_pCloneModeGroupBox->cloneMode());
+        wizardWindow<UIWizardCloneVM>()->setCloneMode(m_pCloneModeGroupBox->cloneMode());
 
     retranslateUi();
 }
@@ -101,7 +103,7 @@ bool UIWizardCloneVMModePageBasic::validatePage()
 {
     bool fResult = true;
 
-    UIWizardCloneVM *pWizard = qobject_cast<UIWizardCloneVM*>(wizard());
+    UIWizardCloneVM *pWizard = wizardWindow<UIWizardCloneVM>();
     AssertReturn(pWizard, false);
     /* Try to clone VM: */
     fResult = pWizard->cloneVM();
@@ -111,6 +113,7 @@ bool UIWizardCloneVMModePageBasic::validatePage()
 
 void UIWizardCloneVMModePageBasic::sltCloneModeChanged(KCloneMode enmCloneMode)
 {
+    AssertReturnVoid(wizardWindow<UIWizardCloneVM>());
     m_userModifiedParameters << "CloneMode";
-    cloneVMWizardPropertySet(CloneMode, enmCloneMode);
+    wizardWindow<UIWizardCloneVM>()->setCloneMode(enmCloneMode);
 }

@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMTypePageBasic.h 90739 2021-08-19 09:14:48Z vboxsync $ */
+/* $Id: UIWizardCloneVMTypePageBasic.h 90990 2021-08-30 09:38:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMTypePageBasic class declaration.
  */
@@ -30,6 +30,7 @@
 /* Forward declarations: */
 class QIRichTextLabel;
 class UICloneVMCloneTypeGroupBox;
+class UIWizardCloneVM;
 
 class UIWizardCloneVMTypePageBasic : public UINativeWizardPage
 {

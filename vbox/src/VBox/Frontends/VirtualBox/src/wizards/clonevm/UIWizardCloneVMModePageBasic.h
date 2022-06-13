@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMModePageBasic.h 90739 2021-08-19 09:14:48Z vboxsync $ */
+/* $Id: UIWizardCloneVMModePageBasic.h 90990 2021-08-30 09:38:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMModePageBasic class declaration.
  */
@@ -33,26 +33,6 @@
 /* Forward declaration: */
 class QIRichTextLabel;
 class UICloneVMCloneModeGroupBox;
-
-// /* 3rd page of the Clone Virtual Machine wizard (base part): */
-// class UIWizardCloneVMPage3 : public UIWizardPageBase
-// {
-// protected:
-
-//     /* Constructor: */
-//     UIWizardCloneVMPage3(bool fShowChildsOption);
-
-//     /* Stuff for 'cloneMode' field: */
-//     KCloneMode cloneMode() const;
-//     void setCloneMode(KCloneMode cloneMode);
-
-//     /* Variables: */
-
-//     /* Widgets: */
-//     QRadioButton *m_pMachineRadio;
-//     QRadioButton *m_pMachineAndChildsRadio;
-//     QRadioButton *m_pAllRadio;
-// };
 
 /* 3rd page of the Clone Virtual Machine wizard (basic extension): */
 class UIWizardCloneVMModePageBasic : public UINativeWizardPage

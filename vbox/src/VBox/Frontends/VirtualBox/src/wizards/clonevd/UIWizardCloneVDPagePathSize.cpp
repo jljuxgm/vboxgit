@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPagePathSize.cpp 90827 2021-08-24 08:50:46Z vboxsync $ */
+/* $Id: UIWizardCloneVDPagePathSize.cpp 90990 2021-08-30 09:38:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDPagePathSize class implementation.
  */
@@ -59,10 +59,10 @@ void UIWizardCloneVDPagePathSize::retranslateUi()
 
 void UIWizardCloneVDPagePathSize::initializePage()
 {
-    AssertReturnVoid(cloneWizard() && m_pMediumSizePathGroupBox);
+    AssertReturnVoid(wizardWindow<UIWizardCloneVD>() && m_pMediumSizePathGroupBox);
     /* Translate page: */
     retranslateUi();
-    UIWizardCloneVD *pWizard = cloneWizard();
+    UIWizardCloneVD *pWizard = wizardWindow<UIWizardCloneVD>();
     m_pMediumSizePathGroupBox->blockSignals(true);
 
     /* Initialize medium size widget and wizard's medium size parameter: */
@@ -96,7 +96,7 @@ bool UIWizardCloneVDPagePathSize::isComplete() const
 
 bool UIWizardCloneVDPagePathSize::validatePage()
 {
-    UIWizardCloneVD *pWizard = cloneWizard();
+    UIWizardCloneVD *pWizard = wizardWindow<UIWizardCloneVD>();
     AssertReturn(pWizard, false);
     /* Make sure such file doesn't exists already: */
     QString strMediumPath(pWizard->mediumPath());
@@ -108,14 +108,9 @@ bool UIWizardCloneVDPagePathSize::validatePage()
     return pWizard->copyVirtualDisk();
 }
 
-UIWizardCloneVD *UIWizardCloneVDPagePathSize::cloneWizard() const
-{
-    return qobject_cast<UIWizardCloneVD*>(wizard());
-}
-
 void UIWizardCloneVDPagePathSize::sltSelectLocationButtonClicked()
 {
-    UIWizardCloneVD *pWizard = cloneWizard();
+    UIWizardCloneVD *pWizard = wizardWindow<UIWizardCloneVD>();
     AssertReturnVoid(pWizard);
     CMediumFormat comMediumFormat(pWizard->mediumFormat());
     QString strSelectedPath =
@@ -132,7 +127,7 @@ void UIWizardCloneVDPagePathSize::sltSelectLocationButtonClicked()
 
 void UIWizardCloneVDPagePathSize::sltMediumPathChanged(const QString &strPath)
 {
-    UIWizardCloneVD *pWizard = cloneWizard();
+    UIWizardCloneVD *pWizard = wizardWindow<UIWizardCloneVD>();
     AssertReturnVoid(pWizard);
     m_userModifiedParameters << "MediumPath";
     QString strMediumPath =
@@ -144,7 +139,7 @@ void UIWizardCloneVDPagePathSize::sltMediumPathChanged(const QString &strPath)
 
 void UIWizardCloneVDPagePathSize::sltMediumSizeChanged(qulonglong uSize)
 {
-    UIWizardCloneVD *pWizard = cloneWizard();
+    UIWizardCloneVD *pWizard = wizardWindow<UIWizardCloneVD>();
     AssertReturnVoid(pWizard);
     m_userModifiedParameters << "MediumSize";
     pWizard->setMediumSize(uSize);

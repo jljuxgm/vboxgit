@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.h 90902 2021-08-26 08:15:30Z vboxsync $ */
+/* $Id: UIWizardNewVM.h 90990 2021-08-30 09:38:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class declaration.
  */
@@ -30,15 +30,6 @@
 #include "CMedium.h"
 #include "CMediumFormat.h"
 #include "CGuestOSType.h"
-
-#define newVMWizardPropertySet(functionName, value)                     \
-    do                                                                  \
-    {                                                                   \
-        UIWizardNewVM *pWizard = qobject_cast<UIWizardNewVM*>(wizard()); \
-        if (pWizard)                                                   \
-            pWizard->set##functionName(value);                          \
-    }                                                                   \
-    while(0)
 
 /** Container for unattended install related data. */
 struct UIUnattendedInstallData

@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVD.h 90401 2021-07-29 10:36:20Z vboxsync $ */
+/* $Id: UIWizardNewVD.h 90990 2021-08-30 09:38:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVD class declaration.
  */
@@ -28,15 +28,6 @@
 #include "COMEnums.h"
 #include "CMedium.h"
 #include "CMediumFormat.h"
-
-#define newVDWizardPropertySet(functionName, value)                      \
-    do                                                                   \
-    {                                                                    \
-        UIWizardNewVD *pWizard = qobject_cast<UIWizardNewVD*>(wizard()); \
-        if (pWizard)                                                     \
-            pWizard->set##functionName(value);                           \
-    }                                                                    \
-    while(0)
 
 /* New Virtual Hard Drive wizard: */
 class SHARED_LIBRARY_STUFF UIWizardNewVD : public UINativeWizard
