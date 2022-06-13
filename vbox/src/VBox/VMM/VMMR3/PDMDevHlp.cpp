@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 91925 2021-10-21 08:23:53Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 91926 2021-10-21 08:34:10Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -4425,7 +4425,7 @@ static DECLCALLBACK(int) pdmR3DevHlp_SharedModuleUnregister(PPDMDEVINS pDevIns, 
 {
     PDMDEV_ASSERT_DEVINS(pDevIns);
 
-    LogFlow(("pdmR3DevHlp_SharedModuleUnregister: caller='%s'/%d: enmGuestOS=%u pszModuleName=%p:{%s} pszVersion=%p:{%s} GCBaseAddr=%RGv cbModule=%#x\n",
+    LogFlow(("pdmR3DevHlp_SharedModuleUnregister: caller='%s'/%d: pszModuleName=%p:{%s} pszVersion=%p:{%s} GCBaseAddr=%RGv cbModule=%#x\n",
              pDevIns->pReg->szName, pDevIns->iInstance, pszModuleName, pszModuleName, pszVersion, pszVersion, GCBaseAddr, cbModule));
 
 #ifdef VBOX_WITH_PAGE_SHARING
