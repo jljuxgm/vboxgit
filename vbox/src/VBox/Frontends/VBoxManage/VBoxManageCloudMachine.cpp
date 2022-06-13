@@ -1,4 +1,4 @@
-/* $Id: VBoxManageCloudMachine.cpp 90268 2021-07-21 01:51:37Z vboxsync $ */
+/* $Id: VBoxManageCloudMachine.cpp 90269 2021-07-21 02:00:01Z vboxsync $ */
 /** @file
  * VBoxManageCloudMachine - The cloud machine related commands.
  */
@@ -672,7 +672,7 @@ printFormValue(const ComPtr<IFormValue> &pValue)
              * first.  Make this selectable with an option?
              */
             com::Bstr bstrValue;
-            hrc = pStrValue->GetClipboardString(bstrValue.asOutParam());
+            hrc = pStrValue->COMGETTER(ClipboardString)(bstrValue.asOutParam());
             if (FAILED(hrc))
             {
                 RTStrmPrintf(g_pStdOut,
