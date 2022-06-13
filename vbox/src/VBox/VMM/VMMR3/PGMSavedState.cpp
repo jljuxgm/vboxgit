@@ -1,4 +1,4 @@
-/* $Id: PGMSavedState.cpp 90439 2021-07-30 16:41:49Z vboxsync $ */
+/* $Id: PGMSavedState.cpp 91848 2021-10-19 23:18:13Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, The Saved State Part.
  */
@@ -2699,6 +2699,9 @@ static int pgmR3LoadMemory(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersion, uint32_t
                          * @bugref{6318}). */
                         if (   PGM_PAGE_GET_TYPE(pPage) == PGMPAGETYPE_ROM
                             || PGM_PAGE_GET_TYPE(pPage) == PGMPAGETYPE_ROM_SHADOW
+#ifdef VBOX_WITH_PGM_NEM_MODE
+                            || pVM->pgm.s.fNemMode
+#endif
                             || pVM->pgm.s.fRamPreAlloc)
                         {
                             PGMPAGEMAPLOCK PgMpLck;

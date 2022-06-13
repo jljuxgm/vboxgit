@@ -1,4 +1,4 @@
-/* $Id: NEMAll.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: NEMAll.cpp 91848 2021-10-19 23:18:13Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, R0 and R3 context code.
  */
@@ -62,18 +62,6 @@ VMM_INT_DECL(void) NEMHCNotifyHandlerPhysicalRegister(PVMCC pVM, PGMPHYSHANDLERK
 }
 
 
-VMM_INT_DECL(void) NEMHCNotifyHandlerPhysicalDeregister(PVMCC pVM, PGMPHYSHANDLERKIND enmKind, RTGCPHYS GCPhys, RTGCPHYS cb,
-                                                        int fRestoreAsRAM, bool fRestoreAsRAM2)
-{
-#ifdef VBOX_WITH_NATIVE_NEM
-    if (VM_IS_NEM_ENABLED(pVM))
-        nemHCNativeNotifyHandlerPhysicalDeregister(pVM, enmKind, GCPhys, cb, fRestoreAsRAM, fRestoreAsRAM2);
-#else
-    RT_NOREF(pVM, enmKind, GCPhys, cb, fRestoreAsRAM, fRestoreAsRAM2);
-#endif
-}
-
-
 VMM_INT_DECL(void) NEMHCNotifyHandlerPhysicalModify(PVMCC pVM, PGMPHYSHANDLERKIND enmKind, RTGCPHYS GCPhysOld,
                                                     RTGCPHYS GCPhysNew, RTGCPHYS cb, bool fRestoreAsRAM)
 {
@@ -95,30 +83,6 @@ VMM_INT_DECL(int)  NEMHCNotifyPhysPageAllocated(PVMCC pVM, RTGCPHYS GCPhys, RTHC
 #else
     RT_NOREF(pVM, GCPhys, HCPhys, fPageProt, enmType, pu2State);
     return VINF_SUCCESS;
-#endif
-}
-
-
-VMM_INT_DECL(void) NEMHCNotifyPhysPageProtChanged(PVMCC pVM, RTGCPHYS GCPhys, RTHCPHYS HCPhys, uint32_t fPageProt,
-                                                  PGMPAGETYPE enmType, uint8_t *pu2State)
-{
-    Assert(VM_IS_NEM_ENABLED(pVM));
-#ifdef VBOX_WITH_NATIVE_NEM
-    nemHCNativeNotifyPhysPageProtChanged(pVM, GCPhys, HCPhys, fPageProt, enmType, pu2State);
-#else
-    RT_NOREF(pVM, GCPhys, HCPhys, fPageProt, enmType, pu2State);
-#endif
-}
-
-
-VMM_INT_DECL(void) NEMHCNotifyPhysPageChanged(PVMCC pVM, RTGCPHYS GCPhys, RTHCPHYS HCPhysPrev, RTHCPHYS HCPhysNew,
-                                              uint32_t fPageProt, PGMPAGETYPE enmType, uint8_t *pu2State)
-{
-    Assert(VM_IS_NEM_ENABLED(pVM));
-#ifdef VBOX_WITH_NATIVE_NEM
-    nemHCNativeNotifyPhysPageChanged(pVM, GCPhys, HCPhysPrev, HCPhysNew, fPageProt, enmType, pu2State);
-#else
-    RT_NOREF(pVM, GCPhys, HCPhysPrev, HCPhysNew, fPageProt, enmType, pu2State);
 #endif
 }
 
