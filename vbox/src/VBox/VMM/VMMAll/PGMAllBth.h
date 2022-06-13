@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 92336 2021-11-10 17:42:26Z vboxsync $ */
+/* $Id: PGMAllBth.h 92381 2021-11-11 20:47:44Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -1340,7 +1340,8 @@ DECLINLINE(void) PGM_BTH_NAME(SyncPageWorkerTrackDeref)(PVMCPUCC pVCpu, PPGMPOOL
  * @param   pPage       Pointer to the guest page. this will be modified.
  * @param   iPTDst      The index into the shadow table.
  */
-DECLINLINE(void) PGM_BTH_NAME(SyncPageWorkerTrackAddref)(PVMCPUCC pVCpu, PPGMPOOLPAGE pShwPage, uint16_t u16, PPGMPAGE pPage, const unsigned iPTDst)
+DECLINLINE(void) PGM_BTH_NAME(SyncPageWorkerTrackAddref)(PVMCPUCC pVCpu, PPGMPOOLPAGE pShwPage, uint16_t u16,
+                                                         PPGMPAGE pPage, const unsigned iPTDst)
 {
     PVMCC pVM = pVCpu->CTX_SUFF(pVM);
 
