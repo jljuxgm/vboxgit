@@ -1,4 +1,4 @@
-/* $Id: DrvHostDVD.cpp 90791 2021-08-23 10:28:24Z vboxsync $ */
+/* $Id: DrvHostDVD.cpp 91869 2021-10-20 09:05:50Z vboxsync $ */
 /** @file
  * DrvHostDVD - Host DVD block driver.
  */
@@ -467,16 +467,18 @@ static DECLCALLBACK(void) drvHostDvdDestruct(PPDMDRVINS pDrvIns)
 static DECLCALLBACK(int) drvHostDvdConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uint32_t fFlags)
 {
     RT_NOREF(fFlags);
-    PDRVHOSTDVD pThis = PDMINS_2_DATA(pDrvIns, PDRVHOSTDVD);
+    PDRVHOSTDVD     pThis = PDMINS_2_DATA(pDrvIns, PDRVHOSTDVD);
+    PCPDMDRVHLPR3   pHlp  = pDrvIns->pHlpR3;
+
     LogFlow(("drvHostDvdConstruct: iInstance=%d\n", pDrvIns->iInstance));
 
-    int rc = CFGMR3QueryBoolDef(pCfg, "InquiryOverwrite", &pThis->fInquiryOverwrite, true);
+    int rc = pHlp->pfnCFGMQueryBoolDef(pCfg, "InquiryOverwrite", &pThis->fInquiryOverwrite, true);
     if (RT_FAILURE(rc))
         return PDMDRV_SET_ERROR(pDrvIns, rc,
                                 N_("HostDVD configuration error: failed to read \"InquiryOverwrite\" as boolean"));
 
     bool fPassthrough;
-    rc = CFGMR3QueryBool(pCfg, "Passthrough", &fPassthrough);
+    rc = pHlp->pfnCFGMQueryBool(pCfg, "Passthrough", &fPassthrough);
     if (RT_SUCCESS(rc) && fPassthrough)
     {
         pThis->Core.IMedia.pfnSendCmd            = drvHostDvdSendCmd;

@@ -1,4 +1,4 @@
-/* $Id: DrvSCSI.cpp 90791 2021-08-23 10:28:24Z vboxsync $ */
+/* $Id: DrvSCSI.cpp 91869 2021-10-20 09:05:50Z vboxsync $ */
 /** @file
  * VBox storage drivers: Generic SCSI command parser and execution driver
  */
@@ -1415,9 +1415,7 @@ static DECLCALLBACK(int) drvscsiConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, ui
     /*
      * Validate and read configuration.
      */
-    if (!CFGMR3AreValuesValid(pCfg, ""))
-        return PDMDRV_SET_ERROR(pDrvIns, VERR_PDM_DEVINS_UNKNOWN_CFG_VALUES,
-                                N_("SCSI configuration error: unknown option specified"));
+    PDMDRV_VALIDATE_CONFIG_RETURN(pDrvIns, "", "");
 
     /*
      * Try attach driver below and query it's media interface.
