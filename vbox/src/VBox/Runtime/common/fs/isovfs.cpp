@@ -1,4 +1,4 @@
-/* $Id: isovfs.cpp 94292 2022-03-17 13:32:24Z vboxsync $ */
+/* $Id: isovfs.cpp 94293 2022-03-17 13:42:23Z vboxsync $ */
 /** @file
  * IPRT - ISO 9660 and UDF Virtual Filesystem (read only).
  */
@@ -5076,8 +5076,6 @@ static DECLCALLBACK(int) rtFsIsoVol_QueryInfoEx(void *pvThis, RTVFSQIEX enmInfo,
             return VERR_NOT_SUPPORTED;
 
     }
-
-    return VINF_SUCCESS;
 }
 
 
