@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 94014 2022-03-01 09:13:50Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 94603 2022-04-14 07:14:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -3388,6 +3388,7 @@ void UIMachineLogic::dbgAdjustRelativePos()
         m_pDbgGuiVT->pfnAdjustRelativePos(m_pDbgGui, rct.x(), rct.y(), rct.width(), rct.height());
     }
 }
+#endif /* VBOX_WITH_DEBUGGER_GUI */
 
 void UIMachineLogic::reset(bool fShowConfirmation)
 {
@@ -3406,5 +3407,3 @@ void UIMachineLogic::reset(bool fShowConfirmation)
     for (ulong uScreenId = 1; uScreenId < uMonitorCount; ++uScreenId)
         machineWindows().at(uScreenId)->update();
 }
-
-#endif /* VBOX_WITH_DEBUGGER_GUI */
