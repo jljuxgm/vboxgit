@@ -1,4 +1,4 @@
-/* $Id: display-svga-session.cpp 93375 2022-01-20 18:11:54Z vboxsync $ */
+/* $Id: display-svga-session.cpp 93378 2022-01-20 18:35:50Z vboxsync $ */
 /** @file
  * Desktop Environment specific guest screen assistant for
  * VMSVGA graphics adapter.
@@ -89,7 +89,7 @@ static RTLOCALIPCSESSION g_hSession = 0;
  * @param   cDisplays   Number of displays which have changed offset.
  * @param   pDisplays   Display data.
  */
-static int vbclSVGASessionDisplayOffsetChanged(uint32_t cOffsets, RTPOINT *paOffsets)
+static DECLCALLBACK(int) vbclSVGASessionDisplayOffsetChanged(uint32_t cOffsets, RTPOINT *paOffsets)
 {
     int rc = RTCritSectEnter(&g_hClientCritSect);
 
@@ -290,7 +290,7 @@ static DECLCALLBACK(int) vbclSVGASessionInit(void)
  * @param   pvData  DRM IPC command payload.
  * @param   cbData  Size of DRM IPC command payload.
  */
-static int vbclSVGASessionRxCallBack(uint8_t idCmd, void *pvData, uint32_t cbData)
+static DECLCALLBACK(int) vbclSVGASessionRxCallBack(uint8_t idCmd, void *pvData, uint32_t cbData)
 {
     VBOXDRMIPCCLTCMD enmCmd =
         (idCmd > VBOXDRMIPCCLTCMD_INVALID && idCmd < VBOXDRMIPCCLTCMD_MAX) ?

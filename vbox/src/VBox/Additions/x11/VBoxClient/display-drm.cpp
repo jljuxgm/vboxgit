@@ -1,4 +1,4 @@
-/* $Id: display-drm.cpp 93371 2022-01-20 17:48:35Z vboxsync $ */
+/* $Id: display-drm.cpp 93378 2022-01-20 18:35:50Z vboxsync $ */
 /** @file
  * A user space daemon which communicates with VirtualBox host interface
  * and performs VMSVGA-specific guest screen resize and communicates with
@@ -772,7 +772,7 @@ static int vbDrmIpcClientsListRemove(PVBOX_DRMIPC_CLIENT_CONNECTION_LIST_NODE pC
 /**
  * @interface_method_impl{VBOX_DRMIPC_CLIENT,pfnRxCb}
  */
-static int vbDrmIpcClientRxCallBack(uint8_t idCmd, void *pvData, uint32_t cbData)
+static DECLCALLBACK(int) vbDrmIpcClientRxCallBack(uint8_t idCmd, void *pvData, uint32_t cbData)
 {
     int rc = VERR_INVALID_PARAMETER;
 
