@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.cpp 90093 2021-07-08 11:36:21Z vboxsync $ */
+/* $Id: UINameAndSystemEditor.cpp 90094 2021-07-08 12:53:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class implementation.
  */
@@ -453,7 +453,6 @@ void UINameAndSystemEditor::prepareWidgets()
             {
                 m_pNameLabel->setBuddy(m_pNameLineEdit);
                 m_pMainLayout->addWidget(m_pNameLineEdit, iRow, 1, 1, 2);
-                setFocusProxy(m_pNameLineEdit);
             }
 
             ++iRow;
@@ -575,6 +574,16 @@ void UINameAndSystemEditor::prepareWidgets()
             /* Initialize VM OS family combo
              * after all widgets were created: */
             prepareFamilyCombo();
+        }
+    }
+    /* Set top most widget of the 2nd column as focus proxy: */
+    for (int i = 0; i < m_pMainLayout->rowCount(); ++i)
+    {
+        QLayoutItem *pItem = m_pMainLayout->itemAtPosition(i, 1);
+        if (pItem && pItem->widget())
+        {
+            setFocusProxy(pItem->widget());
+            break;
         }
     }
 }
