@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet_1_0.cpp 93002 2021-12-17 09:08:53Z vboxsync $ $Revision: 93002 $ $Date: 2021-12-17 17:08:53 +0800 (Fri, 17 Dec 2021) $ $Author: vboxsync $ */
+/* $Id: DevVirtioNet_1_0.cpp 93003 2021-12-17 09:12:42Z vboxsync $ $Revision: 93003 $ $Date: 2021-12-17 17:12:42 +0800 (Fri, 17 Dec 2021) $ $Author: vboxsync $ */
 
 /** @file
  * VBox storage devices - Virtio NET Driver
@@ -1554,7 +1554,7 @@ static int virtioNetR3CheckRxBufsAvail(PPDMDEVINS pDevIns, PVIRTIONET pThis, PVI
         Log8(("[No Rx bufs available. (%s not enabled)\n", pVirtq->szName));
 
     else if (IS_VIRTQ_EMPTY(pDevIns, &pThis->Virtio,  pRxVirtq->uIdx))
-        Log8(("No Rx bufs available. (%s empty)\n"), pVirtq->szName);
+        Log8(("No Rx bufs available. (%s empty)\n", pVirtq->szName));
 
     else
     {
