@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-info.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-info.cpp 95008 2022-05-13 16:20:40Z vboxsync $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - Introspection and debugging.
  */
@@ -1780,8 +1780,8 @@ static void vmsvga3dInfoSurfaceWorkerOne(PCDBGFINFOHLP pHlp, PVMSVGA3DSURFACE pS
     pHlp->pfnPrintf(pHlp, "idAssociatedContext:     %#x\n", pSurface->idAssociatedContext);
     pHlp->pfnPrintf(pHlp, "Format:                  %s\n",
                     vmsvgaFormatEnumValueEx(szTmp, sizeof(szTmp), NULL, (int)pSurface->format, false, &g_SVGA3dSurfaceFormat2String));
-    pHlp->pfnPrintf(pHlp, "Flags:                   %#x", pSurface->surfaceFlags);
-    vmsvga3dInfoU32Flags(pHlp, pSurface->surfaceFlags, "SVGA3D_SURFACE_", g_aSvga3DSurfaceFlags, RT_ELEMENTS(g_aSvga3DSurfaceFlags));
+    pHlp->pfnPrintf(pHlp, "Flags:                   0x%RX64", pSurface->f.surfaceFlags);
+    vmsvga3dInfoU32Flags(pHlp, pSurface->f.s.surface1Flags, "SVGA3D_SURFACE_", g_aSvga3DSurfaceFlags, RT_ELEMENTS(g_aSvga3DSurfaceFlags));
     pHlp->pfnPrintf(pHlp, "\n");
     if (pSurface->cFaces != 0)
         pHlp->pfnPrintf(pHlp, "Faces:                   %u\n", pSurface->cFaces);
