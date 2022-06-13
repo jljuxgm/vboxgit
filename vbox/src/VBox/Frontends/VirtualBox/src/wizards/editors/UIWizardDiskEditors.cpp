@@ -1,4 +1,4 @@
-/* $Id: UIWizardDiskEditors.cpp 91257 2021-09-15 16:33:40Z vboxsync $ */
+/* $Id: UIWizardDiskEditors.cpp 91258 2021-09-15 16:46:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class implementation.
  */
@@ -459,6 +459,10 @@ QString UIMediumSizeAndPathGroupBox::stripFormatExtension(const QString &strFile
 UIDiskFormatBase::UIDiskFormatBase(KDeviceType enmDeviceType, bool fExpertMode)
     : m_enmDeviceType(enmDeviceType)
     , m_fExpertMode(fExpertMode)
+{
+}
+
+UIDiskFormatBase::~UIDiskFormatBase()
 {
 }
 

@@ -1,4 +1,4 @@
-/* $Id: UIWizardDiskEditors.h 91257 2021-09-15 16:33:40Z vboxsync $ */
+/* $Id: UIWizardDiskEditors.h 91258 2021-09-15 16:46:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardDiskEditors class declaration.
  */
@@ -156,7 +156,7 @@ class SHARED_LIBRARY_STUFF UIDiskFormatBase
 public:
 
     UIDiskFormatBase(KDeviceType enmDeviceType, bool fExpertMode);
-
+    virtual ~UIDiskFormatBase();
     virtual CMediumFormat mediumFormat() const = 0;
     virtual void setMediumFormat(const CMediumFormat &mediumFormat) = 0;
 
