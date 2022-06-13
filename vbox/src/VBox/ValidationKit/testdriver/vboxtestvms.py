@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 90248 2021-07-20 07:24:03Z vboxsync $
+# $Id: vboxtestvms.py 91721 2021-10-14 12:21:10Z vboxsync $
 
 """
 VirtualBox Test VMs
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 90248 $"
+__version__ = "$Revision: 91721 $"
 
 # Standard Python imports.
 import copy;
@@ -2020,6 +2020,10 @@ class TestVmManager(object):
         TestVm('tst-nsthwvirt-ubuntu-64',    kfGrpStdSmoke,       sHd = '5.3/nat/nsthwvirt-ubuntu64/t-nsthwvirt-ubuntu64.vdi',
                sKind = 'Ubuntu_64', acCpusSup = range(1, 2), asVirtModesSup = ['hwvirt-np',], fIoApic = True, fNstHwVirt = True,
                sNic0AttachType = 'nat'),
+
+        # Audio testing.
+        TestVm('tst-audio-debian10-64',        kfGrpStdSmoke,       sHd = '6.1/audio/debian10-amd64.vdi',
+               sKind = 'Debian_64', acCpusSup = range(1, 2), fIoApic = True),
 
         # DOS and Old Windows.
         AncientTestVm('tst-dos20',              sKind = 'DOS',
