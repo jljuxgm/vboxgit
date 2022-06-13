@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 94944 2022-05-09 09:45:33Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 95048 2022-05-20 07:28:15Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -8404,7 +8404,7 @@ HMSVM_EXIT_DECL hmR0SvmExitXcptDE(PVMCPUCC pVCpu, PSVMTRANSIENT pSvmTransient)
         VBOXSTRICTRC rcStrict = GCMXcptDE(pVCpu, &pVCpu->cpum.GstCtx, NULL /* pDis */, &cbInstr);
         if (rcStrict == VINF_SUCCESS)
             rc = VINF_SUCCESS;      /* Restart instruction with modified guest register context. */
-        else if (rcStrict == VINF_EM_RAW_GUEST_TRAP)
+        else if (rcStrict == VERR_NOT_FOUND)
             rc = VERR_NOT_FOUND;    /* Deliver the exception. */
         else
             Assert(RT_FAILURE(VBOXSTRICTRC_VAL(rcStrict)));
