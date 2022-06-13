@@ -1,4 +1,4 @@
-/* $Id: UIWizardDiskEditors.cpp 90854 2021-08-24 17:34:35Z vboxsync $ */
+/* $Id: UIWizardDiskEditors.cpp 90886 2021-08-25 14:29:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class implementation.
  */
@@ -183,7 +183,7 @@ void UIDiskFormatsGroupBox::prepare(KDeviceType enmDeviceType)
 {
     QVBoxLayout *pContainerLayout = new QVBoxLayout(this);
 
-    m_pFormatButtonGroup = new QButtonGroup;
+    m_pFormatButtonGroup = new QButtonGroup(this);
     AssertReturnVoid(m_pFormatButtonGroup);
     /* Enumerate medium formats in special order: */
     CSystemProperties properties = uiCommon().virtualBox().GetSystemProperties();
