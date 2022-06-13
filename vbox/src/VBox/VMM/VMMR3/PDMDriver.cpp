@@ -1,4 +1,4 @@
-/* $Id: PDMDriver.cpp 88811 2021-05-01 01:06:48Z vboxsync $ */
+/* $Id: PDMDriver.cpp 89949 2021-06-29 12:18:45Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Driver parts.
  */
@@ -1875,6 +1875,26 @@ static DECLCALLBACK(VMRESUMEREASON) pdmR3DrvHlp_VMGetResumeReason(PPDMDRVINS pDr
 }
 
 
+/** @interface_method_impl{PDMDRVHLPR3,pfnQueryGenericUserObject} */
+static DECLCALLBACK(void *) pdmR3DrvHlp_QueryGenericUserObject(PPDMDRVINS pDrvIns, PCRTUUID pUuid)
+{
+    PDMDRV_ASSERT_DRVINS(pDrvIns);
+    LogFlow(("pdmR3DrvHlp_QueryGenericUserObject: caller='%s'/%d: pUuid=%p:%RTuuid\n",
+             pDrvIns->pReg->szName, pDrvIns->iInstance, pUuid, pUuid));
+
+    void *pvRet;
+    PUVM  pUVM = pDrvIns->Internal.s.pVMR3->pUVM;
+    if (pUVM->pVmm2UserMethods->pfnQueryGenericObject)
+        pvRet = pUVM->pVmm2UserMethods->pfnQueryGenericObject(pUVM->pVmm2UserMethods, pUVM, pUuid);
+    else
+        pvRet = NULL;
+
+    LogRel(("pdmR3DrvHlp_QueryGenericUserObject: caller='%s'/%d: returns %#p for %RTuuid\n",
+            pDrvIns->pReg->szName, pDrvIns->iInstance, pvRet, pUuid));
+    return pvRet;
+}
+
+
 /**
  * The driver helper structure.
  */
@@ -1926,7 +1946,7 @@ const PDMDRVHLPR3 g_pdmR3DrvHlp =
     pdmR3DrvHlp_VMGetResumeReason,
     pdmR3DrvHlp_TimerSetMillies,
     pdmR3DrvHlp_STAMDeregisterByPrefix,
-    NULL,
+    pdmR3DrvHlp_QueryGenericUserObject,
     NULL,
     NULL,
     NULL,
