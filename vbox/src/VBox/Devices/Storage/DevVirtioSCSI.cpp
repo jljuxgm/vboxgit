@@ -1,4 +1,4 @@
-/* $Id: DevVirtioSCSI.cpp 93613 2022-02-06 04:23:27Z vboxsync $ */
+/* $Id: DevVirtioSCSI.cpp 93614 2022-02-06 04:33:08Z vboxsync $ */
 /** @file
  * VBox storage devices - Virtio SCSI Driver
  *
@@ -1559,7 +1559,8 @@ static DECLCALLBACK(int) virtioScsiR3WorkerThread(PPDMDEVINS pDevIns, PPDMTHREAD
     while (pThread->enmState == PDMTHREADSTATE_RUNNING)
     {
         if (    !pWorkerR3->cRedoDescs
- 	         && IS_VIRTQ_EMPTY(pDevIns, &pThis->Virtio, uVirtqNbr))        {
+             && IS_VIRTQ_EMPTY(pDevIns, &pThis->Virtio, uVirtqNbr))
+        {
             /* Atomic interlocks avoid missing alarm while going to sleep & notifier waking the awoken */
             ASMAtomicWriteBool(&pWorker->fSleeping, true);
             bool fNotificationSent = ASMAtomicXchgBool(&pWorker->fNotified, false);
@@ -1570,7 +1571,7 @@ static DECLCALLBACK(int) virtioScsiR3WorkerThread(PPDMDEVINS pDevIns, PPDMTHREAD
                 int rc = PDMDevHlpSUPSemEventWaitNoResume(pDevIns, pWorker->hEvtProcess, RT_INDEFINITE_WAIT);
                 AssertLogRelMsgReturn(RT_SUCCESS(rc) || rc == VERR_INTERRUPTED, ("%Rrc\n", rc), rc);
                 if (RT_UNLIKELY(pThread->enmState != PDMTHREADSTATE_RUNNING))
- 		        {
+                {
                     Log6Func(("%s worker thread not running, exiting\n", VIRTQNAME(uVirtqNbr)));
                     return VINF_SUCCESS;
                 }
