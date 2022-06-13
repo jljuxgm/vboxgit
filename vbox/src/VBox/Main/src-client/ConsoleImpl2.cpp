@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 94521 2022-04-07 15:18:48Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 94890 2022-05-06 11:57:24Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -5462,7 +5462,7 @@ int Console::i_configProxy(ComPtr<IVirtualBox> virtualBox, PCFGMNODE pCfg, const
     }
     else if (enmProxyMode == ProxyMode_System)
     {
-        hrc = RTHttpUseSystemProxySettings(hHttp);
+        rc = RTHttpUseSystemProxySettings(hHttp);
         if (RT_FAILURE(rc))
         {
             LogRel(("%s: RTHttpUseSystemProxySettings() failed: %Rrc", __FUNCTION__, rc));
