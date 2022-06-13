@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMNameOSTypePage.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIWizardNewVMNameOSTypePage.cpp 93311 2022-01-18 12:19:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasicNameOSStype class implementation.
  */
@@ -191,6 +191,25 @@ bool UIWizardNewVMNameOSTypeCommon::guessOSTypeFromName(UINameAndSystemEditor *p
     for (size_t i = 0; i < RT_ELEMENTS(gs_OSTypePattern); ++i)
     {
         if (strNewName.contains(gs_OSTypePattern[i].pattern))
+        {
+            if (pNameAndSystemEditor)
+                pNameAndSystemEditor->setType(uiCommon().vmGuestOSType(gs_OSTypePattern[i].pcstId));
+            return true;
+        }
+    }
+    return false;
+}
+
+bool UIWizardNewVMNameOSTypeCommon::guessOSTypeDetectedOSTypeString(UINameAndSystemEditor *pNameAndSystemEditor, QString strDetectedOSType)
+{
+    /* Append 32 as bit-count if the name has no 64 and 32 in the name since API returns a type name with no arch bit count for 32-bit OSs: */
+    if (!strDetectedOSType.contains("32") && !strDetectedOSType.contains("64"))
+        strDetectedOSType += "32";
+
+    /* Search for a matching OS type based on the string the user typed already. */
+    for (size_t i = 0; i < RT_ELEMENTS(gs_OSTypePattern); ++i)
+    {
+        if (strDetectedOSType.contains(gs_OSTypePattern[i].pattern))
         {
             if (pNameAndSystemEditor)
                 pNameAndSystemEditor->setType(uiCommon().vmGuestOSType(gs_OSTypePattern[i].pcstId));
@@ -452,7 +471,7 @@ void UIWizardNewVMNameOSTypePage::sltISOPathChanged(const QString &strPath)
     UIWizardNewVMNameOSTypeCommon::determineOSType(strPath, pWizard);
 
     if (!pWizard->detectedOSTypeId().isEmpty() && !m_userModifiedParameters.contains("GuestOSType"))
-        UIWizardNewVMNameOSTypeCommon::guessOSTypeFromName(m_pNameAndSystemEditor, pWizard->detectedOSTypeId());
+        UIWizardNewVMNameOSTypeCommon::guessOSTypeDetectedOSTypeString(m_pNameAndSystemEditor, pWizard->detectedOSTypeId());
     pWizard->setISOFilePath(strPath);
 
     /* Update the global recent ISO path: */
