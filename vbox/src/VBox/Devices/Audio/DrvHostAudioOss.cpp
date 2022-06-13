@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioOss.cpp 89551 2021-06-08 01:25:04Z vboxsync $ */
+/* $Id: DrvHostAudioOss.cpp 92760 2021-12-06 10:33:15Z vboxsync $ */
 /** @file
  * Host audio driver - OSS (Open Sound System).
  */
@@ -19,7 +19,6 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#define LOG_ENABLED 1
 #include <errno.h>
 #include <fcntl.h>
 #include <sys/ioctl.h>
