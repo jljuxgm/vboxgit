@@ -1,4 +1,4 @@
-/* $Id: errmsgwin-sorter.cpp 88609 2021-04-20 23:01:38Z vboxsync $ */
+/* $Id: errmsgwin-sorter.cpp 92905 2021-12-14 22:13:06Z vboxsync $ */
 /** @file
  * IPRT - Status code messages, Windows, sorter build program.
  */
@@ -41,7 +41,7 @@
 /*
  * Include the string table code.
  */
-#define BLDPROG_STRTAB_MAX_STRLEN           512
+#define BLDPROG_STRTAB_MAX_STRLEN           1024
 #define BLDPROG_STRTAB_WITH_COMPRESSION
 #define BLDPROG_STRTAB_PURE_ASCII
 #define BLDPROG_STRTAB_WITH_CAMEL_WORDS
