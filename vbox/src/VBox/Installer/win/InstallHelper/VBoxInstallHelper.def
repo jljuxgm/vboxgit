@@ -1,4 +1,4 @@
-; $Id: VBoxInstallHelper.def 93115 2022-01-01 11:31:46Z vboxsync $
+; $Id: VBoxInstallHelper.def 93242 2022-01-14 22:58:11Z vboxsync $
 ;; @file
 ; VBoxInstallHelper - Defines the exports the MSI engine uses.
 ;
@@ -30,6 +30,7 @@ EXPORTS
         InstallNetLwf
     UninstallNetLwf
     UninstallTAPInstances
+    UninstallVBoxDrv
     CreateHostOnlyInterface
     StopHostOnlyInterfaces
     UpdateHostOnlyInterfaces
