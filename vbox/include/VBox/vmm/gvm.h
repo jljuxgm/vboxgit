@@ -1,4 +1,4 @@
-/* $Id: gvm.h 90380 2021-07-28 21:38:23Z vboxsync $ */
+/* $Id: gvm.h 90597 2021-08-10 13:08:35Z vboxsync $ */
 /** @file
  * GVM - The Global VM Data.
  */
@@ -192,7 +192,7 @@ typedef struct GVM
 #ifdef VMM_INCLUDED_SRC_VMMR0_GVMMR0Internal_h
         struct GVMMPERVM    s;
 #endif
-        uint8_t             padding[256];
+        uint8_t             padding[4352];
     } gvmm;
 
     /** The GMM per vm data. */

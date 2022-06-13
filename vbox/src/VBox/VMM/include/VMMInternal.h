@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 90380 2021-07-28 21:38:23Z vboxsync $ */
+/* $Id: VMMInternal.h 90597 2021-08-10 13:08:35Z vboxsync $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -462,7 +462,9 @@ typedef struct VMMR0PERVCPU
     /** Set if we've entered HM context. */
     bool volatile                       fInHmContext;
 
-    bool                                afPadding[7];
+    bool                                afPadding[5];
+    /** The EMT hash table index. */
+    uint16_t                            idxEmtHash;
     /** Pointer to the VMMR0EntryFast preemption state structure.
      * This is used to temporarily restore preemption before blocking.  */
     R0PTRTYPE(PRTTHREADPREEMPTSTATE)    pPreemptState;

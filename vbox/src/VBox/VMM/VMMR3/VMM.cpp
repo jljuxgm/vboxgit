@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 90379 2021-07-28 20:00:43Z vboxsync $ */
+/* $Id: VMM.cpp 90597 2021-08-10 13:08:35Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -549,6 +549,8 @@ static void vmmR3InitRegisterStats(PVM pVM)
         STAMR3RegisterF(pVM, &pVCpu->vmm.s.cR0Halts,                 STAMTYPE_U32,     STAMVISIBILITY_ALWAYS, STAMUNIT_OCCURENCES,  "", "/PROF/CPU%u/VM/Halt/R0HaltHistoryCounter", i);
         STAMR3RegisterF(pVM, &pVCpu->vmm.s.cR0HaltsSucceeded,        STAMTYPE_U32,     STAMVISIBILITY_ALWAYS, STAMUNIT_OCCURENCES,  "", "/PROF/CPU%u/VM/Halt/R0HaltHistorySucceeded", i);
         STAMR3RegisterF(pVM, &pVCpu->vmm.s.cR0HaltsToRing3,          STAMTYPE_U32,     STAMVISIBILITY_ALWAYS, STAMUNIT_OCCURENCES,  "", "/PROF/CPU%u/VM/Halt/R0HaltHistoryToRing3", i);
+
+        STAMR3RegisterF(pVM, &pVCpu->cEmtHashCollisions,             STAMTYPE_U8,      STAMVISIBILITY_ALWAYS, STAMUNIT_OCCURENCES,  "", "/VMM/EmtHashCollisions/Emt%02u", i);
     }
 }
 
