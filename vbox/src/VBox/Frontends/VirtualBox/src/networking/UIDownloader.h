@@ -1,4 +1,4 @@
-/* $Id: UIDownloader.h 90548 2021-08-06 13:45:30Z vboxsync $ */
+/* $Id: UIDownloader.h 90551 2021-08-06 14:07:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDownloader class declaration.
  */
@@ -53,6 +53,10 @@ signals:
     void sigProgressChange(ulong uPercent);
     /** Notifies listeners about progress failed with @a strError. */
     void sigProgressFailed(const QString &strError);
+    /** Notifies listeners about progress canceled. */
+    void sigProgressCanceled();
+    /** Notifies listeners about progress finished. */
+    void sigProgressFinished();
 
 public:
 
