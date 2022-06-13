@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMNameOSTypePageBasic.cpp 90018 2021-07-05 07:35:04Z vboxsync $ */
+/* $Id: UIWizardNewVMNameOSTypePageBasic.cpp 90019 2021-07-05 08:01:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasicNameOSStype class implementation.
  */
@@ -400,7 +400,6 @@ bool UIWizardNewVMNameOSTypePageBasic::isComplete() const
     if (m_pNameAndSystemEditor->name().isEmpty())
         return false;
     return UIWizardNewVMNameOSTypePage::checkISOFile(m_pNameAndSystemEditor);
-    return true;
 }
 
 void UIWizardNewVMNameOSTypePageBasic::sltNameChanged(const QString &strNewName)
