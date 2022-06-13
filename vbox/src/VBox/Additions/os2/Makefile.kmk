@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 93136 2022-01-07 03:05:59Z vboxsync $
+# $Id: Makefile.kmk 93146 2022-01-08 03:11:09Z vboxsync $
 ## @file
 # Sub-Makefile for the OS/2 specific part of the guest additions.
 #
@@ -46,9 +46,7 @@ VBoxReplaceDll_SOURCES = VBoxReplaceDll.cpp
 #
 # A barebone installer.
 #
-if 1
 PROGRAMS += VBoxOs2AdditionsInstall
-endif
 VBoxOs2AdditionsInstall_TEMPLATE         = DUMMY
 VBoxOs2AdditionsInstall_TOOL             = OPENWATCOM
 VBoxOs2AdditionsInstall_ASTOOL           = OPENWATCOM
