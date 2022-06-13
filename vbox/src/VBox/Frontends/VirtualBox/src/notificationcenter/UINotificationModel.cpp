@@ -1,4 +1,4 @@
-/* $Id: UINotificationModel.cpp 91225 2021-09-14 10:32:37Z vboxsync $ */
+/* $Id: UINotificationModel.cpp 92295 2021-11-09 14:32:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINotificationModel class implementation.
  */
@@ -71,6 +71,27 @@ void UINotificationModel::revokeObject(const QUuid &uId)
 bool UINotificationModel::hasObject(const QUuid &uId) const
 {
     return m_objects.contains(uId);
+}
+
+void UINotificationModel::revokeFinishedObjects()
+{
+    /* Check whether there are done objects: */
+    bool fChanged = false;
+    foreach (const QUuid &uId, m_ids)
+    {
+        UINotificationObject *pObject = m_objects.value(uId);
+        AssertPtrReturnVoid(pObject);
+        if (pObject->isDone())
+        {
+            /* Remove ID and object: */
+            delete m_objects.take(uId);
+            m_ids.removeAll(uId);
+            fChanged = true;
+        }
+    }
+    /* Notify listeners: */
+    if (fChanged)
+        emit sigChanged();
 }
 
 QList<QUuid> UINotificationModel::ids() const

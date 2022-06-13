@@ -1,4 +1,4 @@
-/* $Id: UINotificationModel.h 91225 2021-09-14 10:32:37Z vboxsync $ */
+/* $Id: UINotificationModel.h 92295 2021-11-09 14:32:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINotificationModel class declaration.
  */
@@ -56,6 +56,8 @@ public:
     void revokeObject(const QUuid &uId);
     /** Returns whether there is a notification object referenced by @a uId. */
     bool hasObject(const QUuid &uId) const;
+    /** Revokes finished notification objects. */
+    void revokeFinishedObjects();
 
     /** Returns a list of registered notification object IDs. */
     QList<QUuid> ids() const;
