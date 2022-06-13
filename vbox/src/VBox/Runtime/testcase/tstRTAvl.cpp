@@ -1,4 +1,4 @@
-/* $Id: tstRTAvl.cpp 93711 2022-02-12 13:58:36Z vboxsync $ */
+/* $Id: tstRTAvl.cpp 93712 2022-02-12 14:05:20Z vboxsync $ */
 /** @file
  * IPRT Testcase - AVL trees.
  */
@@ -1215,7 +1215,7 @@ int hardAvlRangeTreeGCPhys(RTTEST hTest)
      */
     RTCHardAvlTreeSlabAllocator<MYTESTNODE>   Allocator;
     RTCHardAvlRangeTree<MYTESTNODE, RTGCPHYS> Tree(&Allocator);
-    AssertCompileSize(Tree, sizeof(uint32_t) * 2);
+    AssertCompileSize(Tree, sizeof(uint32_t) * 2 + sizeof(uint64_t) * 3);
     AssertCompileSize(Allocator, sizeof(void *) * 2 + sizeof(uint32_t) * 4);
 
     /* Initialize the allocator with a decent slab of memory. */
