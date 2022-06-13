@@ -1,4 +1,4 @@
-/* $Id: VBoxMPGaExt.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: VBoxMPGaExt.h 94881 2022-05-06 04:45:02Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver miscellaneous helpers and common includes.
  */
@@ -108,5 +108,23 @@ GAFENCEOBJECT *GaFenceLookup(VBOXWDDM_EXT_GA *pGaDevExt,
                              uint32_t u32FenceHandle);
 void GaFenceUnrefLocked(VBOXWDDM_EXT_GA *pGaDevExt,
                         GAFENCEOBJECT *pFO);
+
+/*
+ * Description of DMA buffer content.
+ * These structures are stored in DmaBufferPrivateData.
+ */
+typedef struct GARENDERDATA
+{
+    uint32_t      u32DataType;    /* GARENDERDATA_TYPE_* */
+    uint32_t      cbData;         /* How many bytes. */
+    GAFENCEOBJECT *pFenceObject;  /* User mode fence associated with this command buffer. */
+    void          *pvDmaBuffer;   /* Pointer to the DMA buffer. */
+    GAHWRENDERDATA *pHwRenderData; /* The hardware module private data. */
+} GARENDERDATA;
+
+#define GARENDERDATA_TYPE_RENDER   1
+#define GARENDERDATA_TYPE_PRESENT  2
+#define GARENDERDATA_TYPE_PAGING   3
+#define GARENDERDATA_TYPE_FENCE    4
 
 #endif /* !GA_INCLUDED_SRC_WINNT_Graphics_Video_mp_wddm_gallium_VBoxMPGaExt_h */

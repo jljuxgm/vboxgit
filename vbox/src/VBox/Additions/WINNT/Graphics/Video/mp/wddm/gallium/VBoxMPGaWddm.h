@@ -1,4 +1,4 @@
-/* $Id: VBoxMPGaWddm.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: VBoxMPGaWddm.h 94881 2022-05-06 04:45:02Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver interface for WDDM kernel mode driver.
  */
@@ -111,5 +111,16 @@ DECLINLINE(bool) GaContextHwTypeIs(PVBOXWDDM_CONTEXT pContext, VBOXVIDEO_HWTYPE 
 
 NTSTATUS GaVidPnSourceReport(PVBOXMP_DEVEXT pDevExt, VBOXWDDM_SOURCE *pSource);
 NTSTATUS GaVidPnSourceCheckPos(PVBOXMP_DEVEXT pDevExt, UINT iSource);
+
+#ifdef VBOX_WITH_VMSVGA3D_DX
+bool SvgaIsDXSupported(PVBOXMP_DEVEXT pDevExt);
+NTSTATUS APIENTRY DxgkDdiDXCreateAllocation(CONST HANDLE hAdapter, DXGKARG_CREATEALLOCATION *pCreateAllocation);
+NTSTATUS APIENTRY DxgkDdiDXDestroyAllocation(CONST HANDLE hAdapter, CONST DXGKARG_DESTROYALLOCATION *pDestroyAllocation);
+NTSTATUS APIENTRY DxgkDdiDXDescribeAllocation(CONST HANDLE hAdapter, DXGKARG_DESCRIBEALLOCATION *pDescribeAllocation);
+NTSTATUS APIENTRY DxgkDdiDXRender(PVBOXWDDM_CONTEXT pContext, DXGKARG_RENDER *pRender);
+NTSTATUS APIENTRY DxgkDdiDXPresent(const HANDLE hContext, DXGKARG_PRESENT *pPresent);
+NTSTATUS APIENTRY DxgkDdiDXBuildPagingBuffer(PVBOXMP_DEVEXT pDevExt, DXGKARG_BUILDPAGINGBUFFER *pBuildPagingBuffer);
+NTSTATUS APIENTRY DxgkDdiDXPatch(PVBOXMP_DEVEXT pDevExt, const DXGKARG_PATCH *pPatch);
+#endif /* VBOX_WITH_VMSVGA3D_DX */
 
 #endif /* !GA_INCLUDED_SRC_WINNT_Graphics_Video_mp_wddm_gallium_VBoxMPGaWddm_h */

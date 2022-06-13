@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 94584 2022-04-13 10:34:30Z vboxsync $
+# $Id: Makefile.kmk 94881 2022-05-06 04:45:02Z vboxsync $
 ## @file
 # Makefile for the Windows guest miniport driver.
 #
@@ -165,6 +165,9 @@ ifdef VBOX_WITH_WDDM
 
  ifdef VBOX_WITH_VMSVGA3D_DX
   VBoxWddm_DEFS           += VBOX_WITH_VMSVGA3D_DX
+  VBoxWddm_SOURCES        += \
+  	wddm/gallium/SvgaRender.cpp \
+  	wddm/gallium/VBoxMPDX.cpp
  endif
 
 endif # VBOX_WITH_WDDM
