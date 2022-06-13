@@ -1,4 +1,4 @@
-/* $Id: UIFilePathSelector.cpp 91669 2021-10-11 18:11:33Z vboxsync $ */
+/* $Id: UIFilePathSelector.cpp 91680 2021-10-12 06:47:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFilePathSelector class implementation.
  */
@@ -614,7 +614,7 @@ void UIFilePathSelector::refreshText()
 void UIFilePathSelector::sltRecentMediaListUpdated(UIMediumDeviceType enmMediumType)
 {
     /* Remove the recent media list from the end of the combo: */
-    while (count() >= m_iRecentListSeparatorPosition)
+    while (count() > m_iRecentListSeparatorPosition)
         removeItem(count() - 1);
 
 
