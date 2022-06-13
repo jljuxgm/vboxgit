@@ -1,4 +1,4 @@
-/* $Id: vkatCmdSelfTest.cpp 91632 2021-10-08 06:59:29Z vboxsync $ */
+/* $Id: vkatCmdSelfTest.cpp 91653 2021-10-10 08:32:28Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) - Self test.
  *
@@ -46,6 +46,7 @@
 #include <iprt/errcore.h>
 #include <iprt/getopt.h>
 #include <iprt/message.h>
+#include <iprt/rand.h>
 #include <iprt/test.h>
 
 #include "Audio/AudioHlp.h"
@@ -184,6 +185,10 @@ RTEXITCODE audioTestDoSelftest(PSELFTESTCTX pCtx)
 
     /* Flag the environment for self test mode. */
     pTstEnvHst->fSelftest = true;
+
+    /* One test iteration with a 5s maximum test tone is enough for a (quick) self test. */
+    pTstEnvHst->cIterations          = 1;
+    pTstEnvHst->ToneParms.msDuration = RTRandU32Ex(500, RT_MS_5SEC);
 
     /* Generate tag for host side. */
     rc = RTStrCopy(pTstEnvHst->szTag, sizeof(pTstEnvHst->szTag), pCtx->szTag);
