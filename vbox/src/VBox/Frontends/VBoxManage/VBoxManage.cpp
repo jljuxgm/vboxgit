@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 90234 2021-07-16 22:28:08Z vboxsync $ */
+/* $Id: VBoxManage.cpp 91170 2021-09-08 19:21:10Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -388,9 +388,12 @@ HRESULT showProgress(ComPtr<IProgress> progress, unsigned int fFlags)
             RTStrmPrintf(g_pStdErr, "CANCELED\n");
         else
         {
-            if (!fDetailed)
-                RTStrmPrintf(g_pStdErr, "\n");
-            RTStrmPrintf(g_pStdErr, "Progress state: %Rhrc\n", iRc);
+            if (!fQuiet)
+            {
+                if (!fDetailed)
+                    RTStrmPrintf(g_pStdErr, "\n");
+                RTStrmPrintf(g_pStdErr, "Progress state: %Rhrc\n", iRc);
+            }
         }
         hrc = iRc;
     }
