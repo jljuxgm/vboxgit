@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tdAudioTest.py 90655 2021-08-12 10:54:12Z vboxsync $
+# $Id: tdAudioTest.py 90656 2021-08-12 11:15:13Z vboxsync $
 
 """
 AudioTest test driver which invokes the VKAT (Validation Kit Audio Test)
@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 90655 $"
+__version__ = "$Revision: 90656 $"
 
 # Standard Python imports.
 import os
@@ -206,7 +206,7 @@ class tdAudioTest(vbox.TestDriver):
         reporter.error('Unable to find guest VKAT in any of these places:\n%s' % ('\n'.join(self.asGstVkatPaths),));
         return (False, "");
 
-    def killProcessByName(self, sProcName):
+    def killHstProcessByName(self, sProcName):
         """
         Kills processes by their name.
         """
@@ -228,8 +228,8 @@ class tdAudioTest(vbox.TestDriver):
         Kills VKAT (VBoxAudioTest) on the host side.
         """
         reporter.log('Killing stale/old VKAT processes ...');
-        self.killProcessByName("vkat");
-        self.killProcessByName("VBoxAudioTest");
+        self.killHstProcessByName("vkat");
+        self.killHstProcessByName("VBoxAudioTest");
 
     def getWinFirewallArgsDisable(self, sOsType):
         """
