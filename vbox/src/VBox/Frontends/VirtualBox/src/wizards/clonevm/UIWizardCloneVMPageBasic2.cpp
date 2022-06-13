@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMPageBasic2.cpp 90607 2021-08-10 16:07:18Z vboxsync $ */
+/* $Id: UIWizardCloneVMPageBasic2.cpp 90614 2021-08-11 06:26:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMPageBasic2 class implementation.
  */
@@ -70,7 +70,7 @@ void UIWizardCloneVMPageBasic2::prepare()
 
 }
 
-void UIWizardCloneVMPageBasic2::sltButtonClicked(QAbstractButton */*pButton*/)
+void UIWizardCloneVMPageBasic2::sltButtonClicked(QAbstractButton * /* pButton */)
 {
     //setFinalPage(pButton != m_pFullCloneRadio);
 }
