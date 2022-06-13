@@ -1,4 +1,4 @@
-/* $Id: PDMAll.cpp 90436 2021-07-30 16:03:48Z vboxsync $ */
+/* $Id: PDMAll.cpp 90981 2021-08-29 12:50:29Z vboxsync $ */
 /** @file
  * PDM Critical Sections
  */
@@ -300,27 +300,14 @@ VMM_INT_DECL(bool) PDMHasApic(PVM pVM)
 /**
  * Locks PDM.
  *
- * This might call back to Ring-3 in order to deal with lock contention in RC
- * and R0.
+ * This might block.
  *
  * @param   pVM     The cross context VM structure.
  */
 void pdmLock(PVMCC pVM)
 {
-#ifdef IN_RING3
-    int rc = PDMCritSectEnter(pVM, &pVM->pdm.s.CritSect, VERR_IGNORED);
-    AssertRC(rc);
-#else
-    int rc = PDMCritSectEnter(pVM, &pVM->pdm.s.CritSect, VERR_GENERAL_FAILURE);
-    if (RT_SUCCESS(rc))
-    { /* likely */ }
-    else
-    {
-        if (rc == VERR_GENERAL_FAILURE)
-            rc = VMMRZCallRing3NoCpu(pVM, VMMCALLRING3_PDM_LOCK, 0);
-        PDM_CRITSECT_RELEASE_ASSERT_RC(pVM, &pVM->pdm.s.CritSect, rc);
-    }
-#endif
+    int rc = PDMCritSectEnter(pVM, &pVM->pdm.s.CritSect, VINF_SUCCESS);
+    PDM_CRITSECT_RELEASE_ASSERT_RC(pVM, &pVM->pdm.s.CritSect, rc);
 }
 
 

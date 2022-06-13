@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 90550 2021-08-06 13:59:06Z vboxsync $ */
+/* $Id: PDM.cpp 90981 2021-08-29 12:50:29Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -2657,18 +2657,6 @@ VMMR3DECL(void) PDMR3DmaRun(PVM pVM)
                 VM_FF_SET(pVM, VM_FF_PDM_DMA);
         }
     }
-}
-
-
-/**
- * Service a VMMCALLRING3_PDM_LOCK call.
- *
- * @returns VBox status code.
- * @param   pVM     The cross context VM structure.
- */
-VMMR3_INT_DECL(int) PDMR3LockCall(PVM pVM)
-{
-    return PDMR3CritSectEnterEx(pVM, &pVM->pdm.s.CritSect, true /* fHostCall */);
 }
 
 
