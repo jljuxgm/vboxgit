@@ -1,4 +1,4 @@
-/* $Id: UITranslator.h 90941 2021-08-27 10:03:18Z vboxsync $ */
+/* $Id: UITranslator.h 90950 2021-08-27 11:49:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UITranslator class declaration.
  */
@@ -14,6 +14,12 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
+#ifndef FEQT_INCLUDED_SRC_globals_UITranslator_h
+#define FEQT_INCLUDED_SRC_globals_UITranslator_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QTranslator>
@@ -74,3 +80,6 @@ private:
     /** Holds the loaded data. */
     QByteArray  m_data;
 };
+
+#endif /* !FEQT_INCLUDED_SRC_globals_UITranslator_h */
+
