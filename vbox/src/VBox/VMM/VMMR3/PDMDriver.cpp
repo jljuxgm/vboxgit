@@ -1,4 +1,4 @@
-/* $Id: PDMDriver.cpp 91897 2021-10-20 13:42:39Z vboxsync $ */
+/* $Id: PDMDriver.cpp 91899 2021-10-20 14:11:42Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Driver parts.
  */
@@ -1379,7 +1379,7 @@ static DECLCALLBACK(int) pdmR3DrvHlp_SSMDeregister(PPDMDRVINS pDrvIns, const cha
 /** @interface_method_impl{PDMDRVHLPR3,pfnMMHeapFree} */
 static DECLCALLBACK(void) pdmR3DrvHlp_MMHeapFree(PPDMDRVINS pDrvIns, void *pv)
 {
-    PDMDRV_ASSERT_DRVINS(pDrvIns);
+    PDMDRV_ASSERT_DRVINS(pDrvIns); RT_NOREF(pDrvIns);
     LogFlow(("pdmR3DrvHlp_MMHeapFree: caller='%s'/%d: pv=%p\n",
              pDrvIns->pReg->szName, pDrvIns->iInstance, pv));
 
