@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 93115 2022-01-01 11:31:46Z vboxsync $
+# $Id: vbox.py 93895 2022-02-23 12:48:02Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 93115 $"
+__version__ = "$Revision: 93895 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -3665,6 +3665,10 @@ class TestDriver(base.TestDriver):                                              
     def txsIsSymlink(self, oSession, oTxsSession, sRemoteSymlink, cMsTimeout = 30000, fIgnoreErrors = False):
         return self.txsDoTask(oSession, oTxsSession, oTxsSession.asyncIsSymlink,
                               (sRemoteSymlink, self.adjustTimeoutMs(cMsTimeout), fIgnoreErrors));
+
+    def txsCopyFile(self, oSession, oTxsSession, sSrcFile, sDstFile, fMode = 0, cMsTimeout = 30000, fIgnoreErrors = False):
+        return self.txsDoTask(oSession, oTxsSession, oTxsSession.asyncCopyFile, \
+                              (sSrcFile, sDstFile, fMode, self.adjustTimeoutMs(cMsTimeout), fIgnoreErrors));
 
     def txsUploadFile(self, oSession, oTxsSession, sLocalFile, sRemoteFile, cMsTimeout = 30000, fIgnoreErrors = False):
         return self.txsDoTask(oSession, oTxsSession, oTxsSession.asyncUploadFile, \
