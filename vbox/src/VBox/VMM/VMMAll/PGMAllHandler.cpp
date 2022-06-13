@@ -1,4 +1,4 @@
-/* $Id: PGMAllHandler.cpp 93650 2022-02-08 10:43:53Z vboxsync $ */
+/* $Id: PGMAllHandler.cpp 93666 2022-02-09 14:31:33Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -160,7 +160,7 @@ int pgmHandlerPhysicalExCreate(PVMCC pVM, PGMPHYSHANDLERTYPE hType, uint64_t uUs
 #ifdef IN_RING3
                             : pType->pszDesc;
 #else
-                            : pVM->pgm.s.aPhysHandlerTypes[hType].pszDesc;
+                            : pVM->pgm.s.aPhysHandlerTypes[hType & PGMPHYSHANDLERTYPE_IDX_MASK].pszDesc;
 #endif
         *ppPhysHandler = pNew;
         return VINF_SUCCESS;
