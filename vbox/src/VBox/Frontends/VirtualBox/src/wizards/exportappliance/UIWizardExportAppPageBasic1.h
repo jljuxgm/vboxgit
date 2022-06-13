@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic1.h 91639 2021-10-08 12:24:04Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic1.h 91663 2021-10-11 11:11:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic1 class declaration.
  */
@@ -83,9 +83,6 @@ private slots:
     void sltHandleVMItemSelectionChanged();
 
 private:
-
-    /** Updates machines. */
-    void updateMachines();
 
     /** Holds the list of selected VM names. */
     const QStringList  m_selectedVMNames;

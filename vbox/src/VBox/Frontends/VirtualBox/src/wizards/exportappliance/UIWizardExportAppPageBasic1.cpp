@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic1.cpp 91368 2021-09-24 16:31:13Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic1.cpp 91663 2021-10-11 11:11:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic1 class implementation.
  */
@@ -243,13 +243,10 @@ bool UIWizardExportAppPageBasic1::validatePage()
 
 void UIWizardExportAppPageBasic1::sltHandleVMItemSelectionChanged()
 {
-    updateMachines();
-    emit completeChanged();
-}
-
-void UIWizardExportAppPageBasic1::updateMachines()
-{
     /* Update wizard fields: */
     wizard()->setMachineNames(machineNames(m_pVMSelector));
     wizard()->setMachineIDs(machineIDs(m_pVMSelector));
+
+    /* Notify about changes: */
+    emit completeChanged();
 }
