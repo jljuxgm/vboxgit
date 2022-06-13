@@ -1,4 +1,4 @@
-/* $Id: HostUpdateImpl.cpp 94438 2022-04-01 13:46:16Z vboxsync $ */
+/* $Id: HostUpdateImpl.cpp 94579 2022-04-12 20:36:59Z vboxsync $ */
 /** @file
  * IHostUpdate  COM class implementations.
  */
@@ -289,7 +289,7 @@ HRESULT HostUpdate::i_checkForVBoxUpdate()
     RTTIMESPEC TimeNow;
     char szTimeStr[RTTIME_STR_LEN];
     RTTimeToString(RTTimeExplode(&Time, RTTimeNow(&TimeNow)), szTimeStr, sizeof(szTimeStr));
-    LogRelFunc(("VBox updating UpdateDate with TimeString = %s\n", szTimeStr));
+    LogRelFunc(("VBox updating VBoxUpdateLastCheckDate with TimeString = %s\n", szTimeStr));
     rc = ptrSystemProperties->COMSETTER(VBoxUpdateLastCheckDate)(Bstr(szTimeStr).raw());
     AssertComRCReturn(rc, rc);
 
