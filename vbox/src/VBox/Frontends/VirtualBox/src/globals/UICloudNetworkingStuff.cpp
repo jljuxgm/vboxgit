@@ -1,4 +1,4 @@
-/* $Id: UICloudNetworkingStuff.cpp 92171 2021-11-02 09:17:48Z vboxsync $ */
+/* $Id: UICloudNetworkingStuff.cpp 92172 2021-11-02 09:23:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudNetworkingStuff namespace implementation.
  */
@@ -470,36 +470,6 @@ bool UICloudNetworkingStuff::cloudMachineId(const CCloudMachine &comCloudMachine
     return false;
 }
 
-bool UICloudNetworkingStuff::cloudMachineAccessible(const CCloudMachine &comCloudMachine,
-                                                    bool &fResult,
-                                                    QWidget *pParent /* = 0 */)
-{
-    const bool fAccessible = comCloudMachine.GetAccessible();
-    if (!comCloudMachine.isOk())
-        msgCenter().cannotAcquireCloudMachineParameter(comCloudMachine, pParent);
-    else
-    {
-        fResult = fAccessible;
-        return true;
-    }
-    return false;
-}
-
-bool UICloudNetworkingStuff::cloudMachineAccessError(const CCloudMachine &comCloudMachine,
-                                                     CVirtualBoxErrorInfo &comResult,
-                                                     QWidget *pParent /* = 0 */)
-{
-    const CVirtualBoxErrorInfo comAccessError = comCloudMachine.GetAccessError();
-    if (!comCloudMachine.isOk())
-        msgCenter().cannotAcquireCloudMachineParameter(comCloudMachine, pParent);
-    else
-    {
-        comResult = comAccessError;
-        return true;
-    }
-    return false;
-}
-
 bool UICloudNetworkingStuff::cloudMachineName(const CCloudMachine &comCloudMachine,
                                               QString &strResult,
                                               QWidget *pParent /* = 0 */)
@@ -510,36 +480,6 @@ bool UICloudNetworkingStuff::cloudMachineName(const CCloudMachine &comCloudMachi
     else
     {
         strResult = strName;
-        return true;
-    }
-    return false;
-}
-
-bool UICloudNetworkingStuff::cloudMachineOSTypeId(const CCloudMachine &comCloudMachine,
-                                                  QString &strResult,
-                                                  QWidget *pParent /* = 0 */)
-{
-    const QString strOSTypeId = comCloudMachine.GetOSTypeId();
-    if (!comCloudMachine.isOk())
-        msgCenter().cannotAcquireCloudMachineParameter(comCloudMachine, pParent);
-    else
-    {
-        strResult = strOSTypeId;
-        return true;
-    }
-    return false;
-}
-
-bool UICloudNetworkingStuff::cloudMachineState(const CCloudMachine &comCloudMachine,
-                                               KCloudMachineState &enmResult,
-                                               QWidget *pParent /* = 0 */)
-{
-    const KCloudMachineState enmState = comCloudMachine.GetState();
-    if (!comCloudMachine.isOk())
-        msgCenter().cannotAcquireCloudMachineParameter(comCloudMachine, pParent);
-    else
-    {
-        enmResult = enmState;
         return true;
     }
     return false;
