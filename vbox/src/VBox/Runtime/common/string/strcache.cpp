@@ -1,4 +1,4 @@
-/* $Id: strcache.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: strcache.cpp 90686 2021-08-13 23:55:23Z vboxsync $ */
 /** @file
  * IPRT - String Cache.
  */
@@ -865,7 +865,7 @@ RTDECL(const char *) RTStrCacheEnterN(RTSTRCACHE hStrCache, const char *pchStrin
         if (cbEntry >= RTSTRCACHE_HEAP_THRESHOLD)
             pEntry = rtStrCacheAllocHeapEntry(pThis, uHash, pchString, cchString32);
 #ifdef RTSTRCACHE_WITH_MERGED_ALLOCATOR
-        else if (cbEntry >= RTSTRCACHE_MERGED_THRESHOLD_BIT)
+        else if (cbEntry >= RT_BIT_32(RTSTRCACHE_MERGED_THRESHOLD_BIT))
             pEntry = rtStrCacheAllocMergedEntry(pThis, uHash, pchString, cchString32, cbEntry);
 #endif
         else
