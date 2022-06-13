@@ -1,4 +1,4 @@
-/* $Id: UIUpdateManager.cpp 94750 2022-04-28 19:11:26Z vboxsync $ */
+/* $Id: UIUpdateManager.cpp 94760 2022-04-29 12:43:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUpdateManager class implementation.
  */
@@ -339,7 +339,9 @@ void UIUpdateManager::sltCheckIfUpdateIsNecessary(bool fForcedCall /* = false */
     m_fIsRunning = true;
 
     /* Load/decode curent update data: */
-    VBoxUpdateData currentData(gEDataManager->applicationUpdateData());
+    VBoxUpdateData currentData;
+    CHost comHost = uiCommon().host();
+    currentData.load(comHost);
 
     /* If update is really necessary: */
     if (
@@ -361,10 +363,12 @@ void UIUpdateManager::sltCheckIfUpdateIsNecessary(bool fForcedCall /* = false */
 void UIUpdateManager::sltHandleUpdateFinishing()
 {
     /* Load/decode curent update data: */
-    VBoxUpdateData currentData(gEDataManager->applicationUpdateData());
+    VBoxUpdateData currentData;
+    CHost comHost = uiCommon().host();
+    currentData.load(comHost);
     /* Encode/save new update data: */
     VBoxUpdateData newData(currentData.isCheckEnabled(), currentData.updatePeriod(), currentData.updateChannel());
-    gEDataManager->setApplicationUpdateData(newData.data());
+    newData.save(comHost);
 
 #ifdef VBOX_WITH_UPDATE_REQUEST
     /* Ask updater to check for the next time: */
