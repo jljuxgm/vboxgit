@@ -1,4 +1,4 @@
-# $Id: Config.kmk 94900 2022-05-06 14:50:57Z vboxsync $
+# $Id: Config.kmk 94908 2022-05-07 19:25:46Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1898,6 +1898,7 @@ DEFS.strict      = RT_STRICT VBOX_STRICT
 DEFS.asan        = RT_STRICT VBOX_STRICT
 DEFS.x86         = RT_ARCH_X86 __X86__
 DEFS.amd64       = RT_ARCH_AMD64 __AMD64__
+DEFS.arm64       = RT_ARCH_ARM64
 DEFS.sparc32     = RT_ARCH_SPARC
 DEFS.sparc64     = RT_ARCH_SPARC64
 DEFS.darwin      = RT_OS_DARWIN __DARWIN__
@@ -9020,7 +9021,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 94900 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 94908 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
