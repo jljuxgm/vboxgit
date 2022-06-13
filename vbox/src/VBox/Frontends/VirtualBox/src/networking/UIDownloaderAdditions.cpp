@@ -1,10 +1,10 @@
-/* $Id: UIDownloaderAdditions.cpp 90491 2021-08-03 09:56:48Z vboxsync $ */
+/* $Id: UIDownloaderAdditions.cpp 90541 2021-08-06 10:19:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDownloaderAdditions class implementation.
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2021 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -73,7 +73,7 @@ UIDownloaderAdditions::~UIDownloaderAdditions()
         s_pInstance = 0;
 }
 
-const QString UIDownloaderAdditions::description() const
+QString UIDownloaderAdditions::description() const
 {
     return UIDownloader::description().arg(tr("VirtualBox Guest Additions"));
 }
