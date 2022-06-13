@@ -1,10 +1,10 @@
-/* $Id: UIWizardExportAppPageBasic1.cpp 91125 2021-09-06 14:32:23Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic1.cpp 91260 2021-09-15 18:55:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic1 class implementation.
  */
 
 /*
- * Copyright (C) 2009-2020 Oracle Corporation
+ * Copyright (C) 2009-2021 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -16,6 +16,7 @@
  */
 
 /* Qt includes: */
+#include <QListWidget>
 #include <QVBoxLayout>
 
 /* GUI includes: */
@@ -25,11 +26,44 @@
 #include "UIIconPool.h"
 #include "UIMessageCenter.h"
 #include "UIWizardExportApp.h"
-#include "UIWizardExportAppDefs.h"
 #include "UIWizardExportAppPageBasic1.h"
 
 /* COM includes: */
 #include "CMachine.h"
+
+
+/** QListWidgetItem subclass for Export Appliance wizard VM list. */
+class UIVMListWidgetItem : public QListWidgetItem
+{
+public:
+
+    /** Constructs VM list item passing @a pixIcon, @a strText and @a pParent to the base-class.
+      * @param  strUuid       Brings the machine ID.
+      * @param  fInSaveState  Brings whether machine is in Saved state. */
+    UIVMListWidgetItem(QPixmap &pixIcon, QString &strText, QUuid aUuid, bool fInSaveState, QListWidget *pParent)
+        : QListWidgetItem(pixIcon, strText, pParent)
+        , m_uUuid(aUuid)
+        , m_fInSaveState(fInSaveState)
+    {}
+
+    /** Returns whether this item is less than @a other. */
+    bool operator<(const QListWidgetItem &other) const
+    {
+        return text().toLower() < other.text().toLower();
+    }
+
+    /** Returns the machine ID. */
+    QUuid uuid() const { return m_uUuid; }
+    /** Returns whether machine is in Saved state. */
+    bool isInSaveState() const { return m_fInSaveState; }
+
+private:
+
+    /** Holds the machine ID. */
+    QUuid    m_uUuid;
+    /** Holds whether machine is in Saved state. */
+    bool     m_fInSaveState;
+};
 
 
 /*********************************************************************************************************************************
