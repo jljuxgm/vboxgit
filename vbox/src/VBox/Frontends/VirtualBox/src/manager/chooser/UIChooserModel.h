@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.h 90373 2021-07-28 15:33:16Z vboxsync $ */
+/* $Id: UIChooserModel.h 90375 2021-07-28 15:41:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class declaration.
  */
@@ -341,10 +341,10 @@ private slots:
     /** @name Cloud stuff.
       * @{ */
         /** Handles cloud machine removal.
-          * @param  strShortProviderName  Brigns the provider short name.
+          * @param  strProviderShortName  Brigns the provider short name.
           * @param  strProfileName        Brings the profile name.
           * @param  strName               Brings the machine name. */
-        void sltHandleCloudMachineRemoved(const QString &strShortProviderName,
+        void sltHandleCloudMachineRemoved(const QString &strProviderShortName,
                                           const QString &strProfileName,
                                           const QString &strName);
 

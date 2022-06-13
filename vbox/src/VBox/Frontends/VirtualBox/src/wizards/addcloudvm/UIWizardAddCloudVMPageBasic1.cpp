@@ -1,4 +1,4 @@
-/* $Id: UIWizardAddCloudVMPageBasic1.cpp 89999 2021-07-02 11:34:16Z vboxsync $ */
+/* $Id: UIWizardAddCloudVMPageBasic1.cpp 90375 2021-07-28 15:41:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardAddCloudVMPageBasic1 class implementation.
  */
@@ -480,9 +480,9 @@ void UIWizardAddCloudVMPageBasic1::sltHandleSourceInstanceChange()
     emit completeChanged();
 }
 
-void UIWizardAddCloudVMPageBasic1::setShortProviderName(const QString &strShortProviderName)
+void UIWizardAddCloudVMPageBasic1::setShortProviderName(const QString &strProviderShortName)
 {
-    qobject_cast<UIWizardAddCloudVM*>(wizard())->setShortProviderName(strShortProviderName);
+    qobject_cast<UIWizardAddCloudVM*>(wizard())->setShortProviderName(strProviderShortName);
 }
 
 QString UIWizardAddCloudVMPageBasic1::shortProviderName() const

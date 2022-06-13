@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageBasic1.cpp 89997 2021-07-02 10:27:25Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageBasic1.cpp 90375 2021-07-28 15:41:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageBasic1 class implementation.
  */
@@ -555,9 +555,9 @@ void UIWizardNewCloudVMPageBasic1::sltHandleSourceImageChange()
     emit completeChanged();
 }
 
-void UIWizardNewCloudVMPageBasic1::setShortProviderName(const QString &strShortProviderName)
+void UIWizardNewCloudVMPageBasic1::setShortProviderName(const QString &strProviderShortName)
 {
-    qobject_cast<UIWizardNewCloudVM*>(wizard())->setShortProviderName(strShortProviderName);
+    qobject_cast<UIWizardNewCloudVM*>(wizard())->setShortProviderName(strProviderShortName);
 }
 
 QString UIWizardNewCloudVMPageBasic1::shortProviderName() const

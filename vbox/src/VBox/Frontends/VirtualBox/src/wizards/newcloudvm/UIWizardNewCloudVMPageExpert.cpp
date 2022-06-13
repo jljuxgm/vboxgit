@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageExpert.cpp 90034 2021-07-05 15:50:50Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageExpert.cpp 90375 2021-07-28 15:41:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageExpert class implementation.
  */
@@ -348,9 +348,9 @@ void UIWizardNewCloudVMPageExpert::sltInitShortWizardForm()
     emit completeChanged();
 }
 
-void UIWizardNewCloudVMPageExpert::setShortProviderName(const QString &strShortProviderName)
+void UIWizardNewCloudVMPageExpert::setShortProviderName(const QString &strProviderShortName)
 {
-    qobject_cast<UIWizardNewCloudVM*>(wizard())->setShortProviderName(strShortProviderName);
+    qobject_cast<UIWizardNewCloudVM*>(wizard())->setShortProviderName(strProviderShortName);
 }
 
 QString UIWizardNewCloudVMPageExpert::shortProviderName() const

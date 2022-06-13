@@ -1,4 +1,4 @@
-/* $Id: UICommon.h 90352 2021-07-27 11:08:28Z vboxsync $ */
+/* $Id: UICommon.h 90375 2021-07-28 15:41:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class declaration.
  */
@@ -747,7 +747,7 @@ public slots:
     /** @name Cloud Machine related stuff.
      * @{ */
         /** Handles signal about cloud machine was added. */
-        void sltHandleCloudMachineAdded(const QString &strShortProviderName,
+        void sltHandleCloudMachineAdded(const QString &strProviderShortName,
                                         const QString &strProfileName,
                                         const CCloudMachine &comMachine);
     /** @} */

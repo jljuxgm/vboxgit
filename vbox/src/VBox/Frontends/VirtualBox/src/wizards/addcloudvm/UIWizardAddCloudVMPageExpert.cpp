@@ -1,4 +1,4 @@
-/* $Id: UIWizardAddCloudVMPageExpert.cpp 89999 2021-07-02 11:34:16Z vboxsync $ */
+/* $Id: UIWizardAddCloudVMPageExpert.cpp 90375 2021-07-28 15:41:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardAddCloudVMPageExpert class implementation.
  */
@@ -224,9 +224,9 @@ void UIWizardAddCloudVMPageExpert::sltHandleSourceInstanceChange()
     emit completeChanged();
 }
 
-void UIWizardAddCloudVMPageExpert::setShortProviderName(const QString &strShortProviderName)
+void UIWizardAddCloudVMPageExpert::setShortProviderName(const QString &strProviderShortName)
 {
-    qobject_cast<UIWizardAddCloudVM*>(wizard())->setShortProviderName(strShortProviderName);
+    qobject_cast<UIWizardAddCloudVM*>(wizard())->setShortProviderName(strProviderShortName);
 }
 
 QString UIWizardAddCloudVMPageExpert::shortProviderName() const

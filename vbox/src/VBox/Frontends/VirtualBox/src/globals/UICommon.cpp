@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 90370 2021-07-28 14:18:54Z vboxsync $ */
+/* $Id: UICommon.cpp 90375 2021-07-28 15:41:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -4156,12 +4156,12 @@ void UICommon::sltHandleMachineCreated(const CMachine &comMachine)
         msgCenter().cannotRegisterMachine(comVBox, comMachine.GetName());
 }
 
-void UICommon::sltHandleCloudMachineAdded(const QString &strShortProviderName,
+void UICommon::sltHandleCloudMachineAdded(const QString &strProviderShortName,
                                           const QString &strProfileName,
                                           const CCloudMachine &comMachine)
 {
     /* Make sure we cached added cloud VM in GUI: */
-    notifyCloudMachineRegistered(strShortProviderName,
+    notifyCloudMachineRegistered(strProviderShortName,
                                  strProfileName,
                                  comMachine);
 }

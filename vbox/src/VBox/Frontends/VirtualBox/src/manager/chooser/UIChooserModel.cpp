@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 90373 2021-07-28 15:33:16Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 90375 2021-07-28 15:41:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -1340,14 +1340,14 @@ void UIChooserModel::sltCurrentDragObjectDestroyed()
     root()->resetDragToken();
 }
 
-void UIChooserModel::sltHandleCloudMachineRemoved(const QString &strShortProviderName,
+void UIChooserModel::sltHandleCloudMachineRemoved(const QString &strProviderShortName,
                                                   const QString &strProfileName,
                                                   const QString &strName)
 {
     Q_UNUSED(strName);
 
     /* Update profile to make sure it has no stale instances: */
-    const UICloudEntityKey cloudEntityKeyForProfile = UICloudEntityKey(strShortProviderName, strProfileName);
+    const UICloudEntityKey cloudEntityKeyForProfile = UICloudEntityKey(strProviderShortName, strProfileName);
     createReadCloudMachineListTask(cloudEntityKeyForProfile, false /* with refresh? */);
 }
 
