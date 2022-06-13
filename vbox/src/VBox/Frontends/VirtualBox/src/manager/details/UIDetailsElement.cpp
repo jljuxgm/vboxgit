@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElement.cpp 94039 2022-03-01 13:10:19Z vboxsync $ */
+/* $Id: UIDetailsElement.cpp 94148 2022-03-09 12:33:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement class implementation.
  */
@@ -1241,7 +1241,7 @@ void UIDetailsElement::popupVisualStateTypeEditor(const QString &strValue)
     if (pPopup)
     {
         /* Prepare editor: */
-        UIVisualStateEditor *pEditor = new UIVisualStateEditor(pPopup, true /* with label */);
+        UIVisualStateEditor *pEditor = new UIVisualStateEditor(pPopup);
         if (pEditor)
         {
             pEditor->setMachineId(machine().GetId());

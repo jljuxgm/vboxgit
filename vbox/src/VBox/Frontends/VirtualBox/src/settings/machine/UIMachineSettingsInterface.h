@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsInterface.h 93990 2022-02-28 15:34:57Z vboxsync $ */
+/* $Id: UIMachineSettingsInterface.h 94148 2022-03-09 12:33:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsInterface class declaration.
  */
@@ -26,6 +26,7 @@
 
 /* Forward declarations: */
 class QCheckBox;
+class QGridLayout;
 class QLabel;
 class UIActionPool;
 class UIMenuBarEditorWidget;
@@ -103,11 +104,11 @@ private:
 
     /** @name Widgets
      * @{ */
+        /** Holds the main layout instance. */
+        QGridLayout             *m_pLayout;
         /** Holds the menu-bar editor instance. */
         UIMenuBarEditorWidget   *m_pEditorMenuBar;
-        /** Holds the visual state label instance. */
-        QLabel                  *m_pLabelVisualState;
-        /** Holds the visual state label instance. */
+        /** Holds the visual state editor instance. */
         UIVisualStateEditor     *m_pEditorVisualState;
         /** Holds the mini-toolbar label instance. */
         QLabel                  *m_pLabelMiniToolBar;
