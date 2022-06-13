@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 89965 2021-06-30 08:22:45Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 89968 2021-06-30 09:17:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -201,7 +201,8 @@ bool UIMessageCenter::errorWithQuestion(QWidget *pParent, MessageType enmType,
                                         const QString &strDetails,
                                         const char *pcszAutoConfirmId /* = 0*/,
                                         const QString &strOkButtonText /* = QString()*/,
-                                        const QString &strCancelButtonText /* = QString()*/) const
+                                        const QString &strCancelButtonText /* = QString()*/,
+                                        const QString &strHelpKeyword /* = QString()*/) const
 {
     return (message(pParent, enmType, strMessage, strDetails, pcszAutoConfirmId,
                     AlertButton_Ok | AlertButtonOption_Default,
@@ -209,15 +210,17 @@ bool UIMessageCenter::errorWithQuestion(QWidget *pParent, MessageType enmType,
                     0 /* third button */,
                     strOkButtonText,
                     strCancelButtonText,
-                    QString() /* third button */) &
+                    QString() /* third button text*/,
+                    strHelpKeyword) &
             AlertButtonMask) == AlertButton_Ok;
 }
 
 void UIMessageCenter::alert(QWidget *pParent, MessageType enmType,
                            const QString &strMessage,
-                           const char *pcszAutoConfirmId /* = 0*/) const
+                           const char *pcszAutoConfirmId /* = 0*/,
+                           const QString &strHelpKeyword /* = QString()*/) const
 {
-    error(pParent, enmType, strMessage, QString(), pcszAutoConfirmId);
+    error(pParent, enmType, strMessage, QString(), pcszAutoConfirmId, strHelpKeyword);
 }
 
 int UIMessageCenter::question(QWidget *pParent, MessageType enmType,
