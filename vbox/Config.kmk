@@ -1,4 +1,4 @@
-# $Id: Config.kmk 93419 2022-01-24 18:13:22Z vboxsync $
+# $Id: Config.kmk 93425 2022-01-24 21:09:51Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2492,23 +2492,6 @@ VBOX_LIBPATH32_X11 ?= /usr/X11R6/lib32 /usr/X11R6/lib
 VBOX_GOOD_COMSPEC = $(subst \,/,$(SystemRoot))/System32/cmd.exe
 VBOX_GOOD_COMSPEC_BS ?= $(subst /,\,$(VBOX_GOOD_COMSPEC))
 
-# Disable VMNET depending on platform / build / LocalConfig.kmk settings
-ifneq ($(KBUILD_TARGET),darwin)
- VBOX_WITH_VMNET=
-endif
-# Disable VMNET for special builds
-if defined(VBOX_ONLY_VALIDATIONKIT) || defined(VBOX_ONLY_ADDITIONS) || defined(VBOX_ONLY_DOCS) || defined(VBOX_ONLY_EXTPACKS)
- VBOX_WITH_VMNET=
-endif
-# VMNET can only be compiled with the newer Xcode
-ifndef VBOX_WITH_EVEN_NEWER_XCODE
- VBOX_WITH_VMNET=
-endif
-# Force SDK 10.15 for VMNET
-ifdef VBOX_WITH_VMNET
- VBOX_DEF_MACOSX_VERSION_MIN=10.15# Catalina
-endif
-
 #
 # Macros dealing with the darwin version we're targeting.
 # The DEF in VBOX_DEF_MACOSX_VERSION_MIN mean default.  The default min
@@ -2524,7 +2507,11 @@ ifeq ($(KBUILD_TARGET),darwin)
   else ifeq ($(KBUILD_TARGET_ARCH),arm64)
    VBOX_DEF_MACOSX_VERSION_MIN := 11.0# The Jack Kerouac novel.
   else
-   VBOX_DEF_MACOSX_VERSION_MIN := 10.13# High Sierra
+   if defined(VBOX_WITH_VMNET) && !defined(VBOX_ONLY_BUILD) # Force SDK 10.15 for VMNET
+    VBOX_DEF_MACOSX_VERSION_MIN := 10.15# Catalina
+   else
+    VBOX_DEF_MACOSX_VERSION_MIN := 10.13# High Sierra
+   endif
   endif
  endif
  VBOX_DEF_MACOSX_VERSION_MIN_NO_DOT := $(subst .,,$(VBOX_DEF_MACOSX_VERSION_MIN))
@@ -8831,7 +8818,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 93419 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 93425 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
