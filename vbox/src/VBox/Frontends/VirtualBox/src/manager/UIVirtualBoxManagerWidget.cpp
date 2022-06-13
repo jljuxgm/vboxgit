@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 94998 2022-05-12 15:35:46Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 95002 2022-05-13 10:59:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -308,9 +308,7 @@ void UIVirtualBoxManagerWidget::sltHandleToolBarContextMenuRequest(const QPoint 
     /* Handle the menu execution result: */
     if (pResult == pShowToolBarText)
     {
-        m_pToolBar->setToolButtonStyle(  pResult->isChecked()
-                                       ? Qt::ToolButtonTextUnderIcon
-                                       : Qt::ToolButtonIconOnly);
+        m_pToolBar->setUseTextLabels(pResult->isChecked());
         gEDataManager->setSelectorWindowToolBarTextVisible(pResult->isChecked());
     }
 }
@@ -631,7 +629,7 @@ void UIVirtualBoxManagerWidget::prepareWidgets()
                         m_pToolBar->setIconSize(QSize(iIconMetric, iIconMetric));
                         m_pToolBar->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Fixed);
                         m_pToolBar->setContextMenuPolicy(Qt::CustomContextMenu);
-                        m_pToolBar->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
+                        m_pToolBar->setUseTextLabels(true);
 #ifdef VBOX_WS_MAC
                         m_pToolBar->emulateMacToolbar();
 # ifdef VBOX_IS_QT6_OR_LATER
@@ -809,9 +807,7 @@ void UIVirtualBoxManagerWidget::loadSettings()
 
     /* Restore toolbar settings: */
     {
-        m_pToolBar->setToolButtonStyle(  gEDataManager->selectorWindowToolBarTextVisible()
-                                       ? Qt::ToolButtonTextUnderIcon
-                                       : Qt::ToolButtonIconOnly);
+        m_pToolBar->setUseTextLabels(gEDataManager->selectorWindowToolBarTextVisible());
     }
 
     /* Open tools last chosen in Tools-pane: */
