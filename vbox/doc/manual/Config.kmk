@@ -1,4 +1,4 @@
-# $Id: Config.kmk 93800 2022-02-16 19:11:31Z vboxsync $
+# $Id: Config.kmk 93801 2022-02-16 19:21:18Z vboxsync $
 ## @file
 # kBuild Configuration file for the manual.
 #
@@ -343,6 +343,7 @@ define def_vbox_xref_to_text
 $$(VBOX_PATH_MANUAL_OUTBASE)/$(1)/xref-to-text.xsl \
 + $$(VBOX_PATH_MANUAL_OUTBASE)/$(1)/xref-to-text.xsl.cat: \
 		$$(VBOX_PATH_MANUAL_SRC)/$(1)/docbook-refentry-link-replacement-xsl-gen.xsl \
+		$$(VBOX_PATH_MANUAL_SRC)/docbook-refentry-link-replacement-xsl-gen.xsl \
 		$$(addprefix $$(VBOX_PATH_MANUAL_SRC)/en_US/,$$(VBOX_MANUAL_XML_FILES)) \
 		$$(VBOX_MANUAL_XML_FILES_COMMON) \
 		$$(VBOX_XML_CATALOG) $$(VBOX_XML_CATALOG_DOCBOOK) $$(VBOX_XML_CATALOG_MANUAL) $$(VBOX_XML_ENTITIES) \
