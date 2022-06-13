@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElement.cpp 94148 2022-03-09 12:33:50Z vboxsync $ */
+/* $Id: UIDetailsElement.cpp 94341 2022-03-23 19:06:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement class implementation.
  */
@@ -995,7 +995,7 @@ void UIDetailsElement::popupVideoMemoryEditor(const QString &strValue)
     if (pPopup)
     {
         /* Prepare editor: */
-        UIVideoMemoryEditor *pEditor = new UIVideoMemoryEditor(pPopup, true /* with label */);
+        UIVideoMemoryEditor *pEditor = new UIVideoMemoryEditor(pPopup);
         if (pEditor)
         {
             pEditor->setValue(strValue.toInt());

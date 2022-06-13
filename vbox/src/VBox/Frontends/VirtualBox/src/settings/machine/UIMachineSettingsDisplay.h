@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.h 94333 2022-03-23 11:21:34Z vboxsync $ */
+/* $Id: UIMachineSettingsDisplay.h 94341 2022-03-23 19:06:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsDisplay class declaration.
  */
@@ -198,8 +198,8 @@ private:
 
         /** Holds the 'Screen' tab instance. */
         QWidget                    *m_pTabScreen;
-        /** Holds the video memory size label instance. */
-        QLabel                     *m_pLabelVideoMemorySize;
+        /** Holds the 'Screen' layout instance. */
+        QGridLayout                *m_pLayoutScreen;
         /** Holds the video memory size editor instance. */
         UIVideoMemoryEditor        *m_pEditorVideoMemorySize;
         /** Holds the monitor count label instance. */
