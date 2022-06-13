@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 89867 2021-06-23 16:33:18Z vboxsync $ */
+/* $Id: UISession.cpp 90083 2021-07-08 07:38:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -1364,8 +1364,6 @@ void UISession::loadSessionSettings()
                                      && (m_restrictedCloseActions & MachineCloseAction_SaveState)
                                      && (m_restrictedCloseActions & MachineCloseAction_Shutdown)
                                      && (m_restrictedCloseActions & MachineCloseAction_PowerOff);
-                                     // Close VM Dialog hides PowerOff_RestoringSnapshot implicitly if PowerOff is hidden..
-                                     // && (m_restrictedCloseActions & MachineCloseAction_PowerOff_RestoringSnapshot);
     }
 }
 
@@ -2019,7 +2017,7 @@ bool UISession::postprocessInitialization()
             /* Power off VM: */
             bool fServerCrashed = false;
             LogRel(("GUI: Aborting startup due to postprocess initialization issue detected...\n"));
-            powerOff(false, fServerCrashed);
+            powerOff(false /* do NOT restore current snapshot */, fServerCrashed);
             return false;
         }
 

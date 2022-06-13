@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.cpp 87251 2021-01-14 16:20:01Z vboxsync $ */
+/* $Id: UIActionPoolRuntime.cpp 90083 2021-07-08 07:38:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolRuntime class implementation.
  */
@@ -3456,8 +3456,6 @@ void UIActionPoolRuntime::updateConfiguration()
                                       && (restrictedCloseActions & MachineCloseAction_SaveState)
                                       && (restrictedCloseActions & MachineCloseAction_Shutdown)
                                       && (restrictedCloseActions & MachineCloseAction_PowerOff);
-                                      // Close VM Dialog hides PowerOff_RestoringSnapshot implicitly if PowerOff is hidden..
-                                      // && (m_restrictedCloseActions & MachineCloseAction_PowerOff_RestoringSnapshot);
     if (fAllCloseActionsRestricted)
     {
         m_restrictedActionsMenuApplication[UIActionRestrictionLevel_Base] = (UIExtraDataMetaDefs::MenuApplicationActionType)

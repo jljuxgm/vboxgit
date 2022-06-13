@@ -1,4 +1,4 @@
-/* $Id: UIVMCloseDialog.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIVMCloseDialog.h 90083 2021-07-08 07:38:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMCloseDialog class declaration.
  */
@@ -74,9 +74,6 @@ protected:
 
 private slots:
 
-    /** Updates widgets availability. */
-    void sltUpdateWidgetAvailability();
-
     /** Accepts the dialog. */
     void accept();
 
@@ -101,9 +98,6 @@ private:
     void setButtonEnabledPowerOff(bool fEnabled);
     /** Defines whether 'PowerOff' button is visible. */
     void setButtonVisiblePowerOff(bool fVisible);
-
-    /** Defines whether 'Discard' check-box is visible. */
-    void setCheckBoxVisibleDiscard(bool fVisible);
 
     /** Prepares all. */
     void prepare();
@@ -171,11 +165,6 @@ private:
     QLabel       *m_pLabelIconPowerOff;
     /** Holds the 'PowerOff' radio-button instance.  */
     QRadioButton *m_pRadioButtonPowerOff;
-
-    /** Holds the 'Discard' check-box instance.  */
-    QCheckBox *m_pCheckBoxDiscard;
-    /** Holds the 'Discard' check-box text. */
-    QString    m_strDiscardCheckBoxText;
 
     /** Holds the last close action. */
     MachineCloseAction  m_enmLastCloseAction;

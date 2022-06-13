@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 89740 2021-06-16 13:18:15Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 90083 2021-07-08 07:38:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -748,6 +748,9 @@ public:
 
         /** Returns machine close hook script name as simple string. */
         QString machineCloseHookScript(const QUuid &uID);
+
+        /** Returns whether machine should discard state on power off. */
+        bool discardStateOnPowerOff(const QUuid &uID);
     /** @} */
 
 #ifdef VBOX_WITH_DEBUGGER_GUI
