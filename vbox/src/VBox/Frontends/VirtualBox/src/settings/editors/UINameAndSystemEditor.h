@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.h 88150 2021-03-17 11:41:46Z vboxsync $ */
+/* $Id: UINameAndSystemEditor.h 90033 2021-07-05 15:38:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class declaration.
  */
@@ -69,7 +69,7 @@ signals:
     /** Notifies listeners about VM OS type change. */
     void sigOsTypeChanged();
     /** Notifies listeners about VM OS family change. */
-    void sigOSFamilyChanged();
+    void sigOSFamilyChanged(const QString &strFamilyId);
 
 public:
 

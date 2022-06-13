@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMNameOSTypePageBasic.h 90018 2021-07-05 07:35:04Z vboxsync $ */
+/* $Id: UIWizardNewVMNameOSTypePageBasic.h 90033 2021-07-05 15:38:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMNameOSTypePageBasic class declaration.
  */
@@ -101,6 +101,7 @@ private slots:
     void sltPathChanged(const QString &strNewPath);
     void sltOsTypeChanged();
     void sltISOPathChanged(const QString &strPath);
+    void sltGuestOSFamilChanged(const QString &strGuestOSFamilyId);
 
 private:
 
@@ -111,12 +112,11 @@ private:
     void prepare();
     void createConnections();
     void initializePage();
-    void cleanupPage();
+    //void cleanupPage();
     QWidget *createNameOSTypeWidgets();
     void markWidgets() const;
     void setSkipCheckBoxEnable();
     bool isUnattendedEnabled() const;
-
 
     UIWizardNewVM *m_pWizard;
 
