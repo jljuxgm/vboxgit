@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic3.h 91539 2021-10-04 10:57:58Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic3.h 91639 2021-10-08 12:24:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic3 class declaration.
  */
@@ -56,7 +56,7 @@ namespace UIWizardExportAppPage3
 }
 
 /** UINativeWizardPage extension for 3rd basic page of the Export Appliance wizard,
-  * based on UIWizardAddCloudVMPage3 namespace functions. */
+  * based on UIWizardExportAppPage3 namespace functions. */
 class UIWizardExportAppPageBasic3 : public UINativeWizardPage
 {
     Q_OBJECT;
@@ -72,13 +72,13 @@ protected:
     UIWizardExportApp *wizard() const;
 
     /** Handles translation event. */
-    virtual void retranslateUi() /* override */;
+    virtual void retranslateUi() /* override final */;
 
     /** Performs page initialization. */
-    virtual void initializePage() /* override */;
+    virtual void initializePage() /* override final */;
 
     /** Performs page validation. */
-    virtual bool validatePage() /* override */;
+    virtual bool validatePage() /* override final */;
 
 private:
 

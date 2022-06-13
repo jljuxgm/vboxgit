@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageExpert.h 91539 2021-10-04 10:57:58Z vboxsync $ */
+/* $Id: UIWizardExportAppPageExpert.h 91639 2021-10-08 12:24:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageExpert class declaration.
  */
@@ -67,16 +67,16 @@ protected:
     UIWizardExportApp *wizard() const;
 
     /** Handles translation event. */
-    virtual void retranslateUi() /* override */;
+    virtual void retranslateUi() /* override final */;
 
     /** Performs page initialization. */
-    virtual void initializePage() /* override */;
+    virtual void initializePage() /* override final */;
 
     /** Returns whether page is complete. */
-    virtual bool isComplete() const /* override */;
+    virtual bool isComplete() const /* override final */;
 
     /** Performs page validation. */
-    virtual bool validatePage() /* override */;
+    virtual bool validatePage() /* override final */;
 
 private slots:
 

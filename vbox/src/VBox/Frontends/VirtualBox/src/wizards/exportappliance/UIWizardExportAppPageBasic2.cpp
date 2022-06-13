@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic2.cpp 91539 2021-10-04 10:57:58Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic2.cpp 91639 2021-10-08 12:24:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic2 class implementation.
  */
@@ -148,7 +148,6 @@ void UIWizardExportAppPage2::populateMACAddressPolicies(QIComboBox *pCombo)
     foreach (const KExportOptions &enmOption, supportedOptions)
         if (knownOptions.contains(enmOption))
             supportedPolicies << knownOptions.value(enmOption);
-
     /* Remember current item data to be able to restore it: */
     MACAddressExportPolicy enmOldData = MACAddressExportPolicy_MAX;
     if (pCombo->currentIndex() != -1)
@@ -191,6 +190,10 @@ void UIWizardExportAppPage2::populateMACAddressPolicies(QIComboBox *pCombo)
 
 QString UIWizardExportAppPage2::format(QIComboBox *pCombo)
 {
+    /* Sanity check: */
+    AssertPtrReturn(pCombo, QString());
+
+    /* Give the actual result: */
     return pCombo->currentData(FormatData_ShortName).toString();
 }
 
@@ -425,7 +428,7 @@ void UIWizardExportAppPage2::refreshProfileCombo(QIComboBox *pCombo,
         /* Block signals while updating: */
         pCombo->blockSignals(true);
 
-        /* Clear combo initially: */
+        /* Clear combo: */
         pCombo->clear();
 
         /* Unblock signals after update: */
