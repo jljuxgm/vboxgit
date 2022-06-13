@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 93164 2022-01-10 11:06:40Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 93166 2022-01-10 16:43:04Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -3323,9 +3323,9 @@ HRESULT GuestSession::close()
     /* On failure don't return here, instead do all the cleanup
      * work first and then return an error. */
 
-    /* Remove ourselves from the session list. */
+    /* Destroy session + remove ourselves from the session list. */
     AssertPtr(mParent);
-    int vrc2 = mParent->i_sessionRemove(mData.mSession.mID);
+    int vrc2 = mParent->i_sessionDestroy(mData.mSession.mID);
     if (vrc2 == VERR_NOT_FOUND) /* Not finding the session anymore isn't critical. */
         vrc2 = VINF_SUCCESS;
 
