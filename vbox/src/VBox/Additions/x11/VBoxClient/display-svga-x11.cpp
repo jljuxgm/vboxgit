@@ -1,4 +1,4 @@
-/* $Id: display-svga-x11.cpp 91716 2021-10-13 13:42:01Z vboxsync $ */
+/* $Id: display-svga-x11.cpp 91962 2021-10-21 15:20:29Z vboxsync $ */
 /** @file
  * X11 guest client - VMSVGA emulation resize event pass-through to X.Org
  * guest driver.
@@ -1438,14 +1438,17 @@ static DECLCALLBACK(int) vbclSVGAWorker(bool volatile *pfShutdown)
             }
             /* Create a whole topology and send it to xrandr. */
             struct RANDROUTPUT aOutputs[VMW_MAX_HEADS];
+            int iRunningX = 0;
             for (int j = 0; j < x11Context.hOutputCount; ++j)
             {
-                aOutputs[j].x = aMonitors[j].xOrigin;
+                aOutputs[j].x = iRunningX;
                 aOutputs[j].y = aMonitors[j].yOrigin;
                 aOutputs[j].width = aMonitors[j].cx;
                 aOutputs[j].height = aMonitors[j].cy;
                 aOutputs[j].fEnabled = !(aMonitors[j].fDisplayFlags & VMMDEV_DISPLAY_DISABLED);
                 aOutputs[j].fPrimary = (aMonitors[j].fDisplayFlags & VMMDEV_DISPLAY_PRIMARY);
+                if (aOutputs[j].fEnabled)
+                    iRunningX += aOutputs[j].width;
             }
             /* In 32-bit guests GAs build on our release machines causes an xserver lock during vmware_ctrl extention
                if we do the call withing XGrab. We make the call the said extension only once (to connect the outputs)
