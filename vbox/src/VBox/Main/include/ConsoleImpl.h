@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 89580 2021-06-09 13:22:55Z vboxsync $ */
+/* $Id: ConsoleImpl.h 90187 2021-07-14 15:42:43Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -100,8 +100,8 @@ typedef struct VUSBIRHCONFIG *PVUSBIRHCONFIG;
  */
 #define CHECK_CONSOLE_DRV(drv) \
     do { \
-        if (!(drv)) \
-            return setError(E_ACCESSDENIED, tr("The console is not powered up")); \
+        if (!!(drv)) {} \
+        else return setError(E_ACCESSDENIED, tr("The console is not powered up (%Rfn)"), __FUNCTION__); \
     } while (0)
 
 // Console
