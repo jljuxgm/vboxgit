@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 86502 2020-10-09 13:48:47Z vboxsync $
+# $Id: vboxwrappers.py 90244 2021-07-19 17:18:35Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 86502 $"
+__version__ = "$Revision: 90244 $"
 
 
 # Standard Python imports.
@@ -1233,6 +1233,25 @@ class SessionWrapper(TdTaskBase):
             fRc = False;
         else:
             reporter.log('set chipsetType=%s for "%s"' % (eType, self.sName));
+        self.oTstDrv.processPendingEvents();
+        return fRc;
+
+    def setIommuType(self, eType):
+        """
+        Sets the IOMMU type.
+        Returns True on success and False on failure.  Error information is logged.
+        """
+        # Supported.
+        if self.fpApiVer < 6.2 or not hasattr(vboxcon, 'IommuType_Intel') or not hasattr(vboxcon, 'IommuType_AMD'):
+            return True;
+        fRc = True;
+        try:
+            self.o.machine.iommuType = eType;
+        except:
+            reporter.errorXcpt('failed to set iommuType=%s for "%s"' % (eType, self.sName));
+            fRc = False;
+        else:
+            reporter.log('set iommuType=%s for "%s"' % (eType, self.sName));
         self.oTstDrv.processPendingEvents();
         return fRc;
 

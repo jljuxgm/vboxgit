@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 84082 2020-04-29 13:16:55Z vboxsync $
+# $Id: vboxtestvms.py 90244 2021-07-19 17:18:35Z vboxsync $
 
 """
 VirtualBox Test VMs
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84082 $"
+__version__ = "$Revision: 90244 $"
 
 # Standard Python imports.
 import copy;
@@ -954,6 +954,7 @@ class TestVm(object):
                  fRandomPvPMode = False,                    # type: bool
                  sFirmwareType = 'bios',                    # type: str
                  sChipsetType = 'piix3',                    # type: str
+                 sIommuType = 'none',                       # type: str
                  sHddControllerType = 'IDE Controller',     # type: str
                  sDvdControllerType = 'IDE Controller'      # type: str
                  ):
@@ -980,6 +981,7 @@ class TestVm(object):
         self.fVmmDevTestingMmio      = fVmmDevTestingMmio;
         self.sFirmwareType           = sFirmwareType;
         self.sChipsetType            = sChipsetType;
+        self.sIommuType              = sIommuType;
         self.fCom1RawFile            = False;
 
         self.fSnapshotRestoreCurrent = False;        # Whether to restore execution on the current snapshot.
@@ -1178,6 +1180,7 @@ class TestVm(object):
                                      fVmmDevTestingMmio = self.fVmmDevTestingMmio,
                                      sFirmwareType      = self.sFirmwareType,
                                      sChipsetType       = self.sChipsetType,
+                                     sIommuType         = self.sIommuType,
                                      sCom1RawFile       = self.sCom1RawFile if self.fCom1RawFile else None
                                      );
 
@@ -1929,6 +1932,14 @@ class TestVmManager(object):
         #       sKind = 'Ubuntu_64', acCpusSup = range(1, 33), fIoApic = True),
         TestVm('tst-ol76-64',   kfGrpStdSmoke,        sHd = '4.2/ol76/t-ol76-64.vdi',
                sKind = 'Oracle_64', acCpusSup = range(1, 33), fIoApic = True),
+        TestVm('tst-ubuntu-20_04-64-amdvi',     kfGrpStdSmoke,    sHd = '6.1/ubuntu-20_04-64.vdi',
+               sKind = 'Ubuntu_64', acCpusSup = range(1, 33), fIoApic = True,
+               asParavirtModesSup = [g_ksParavirtProviderKVM,], sNic0AttachType = 'nat', sChipsetType = 'ich9',
+               sIommuType = 'amd'),
+        TestVm('tst-ubuntu-20_04-64-vtd',     kfGrpStdSmoke,      sHd = '6.1/ubuntu-20_04-64.vdi',
+               sKind = 'Ubuntu_64', acCpusSup = range(1, 33), fIoApic = True,
+               asParavirtModesSup = [g_ksParavirtProviderKVM,], sNic0AttachType = 'nat', sChipsetType = 'ich9',
+               sIommuType = 'intel'),
 
         # Solaris
         TestVm('tst-sol10',                 kfGrpSmoke,           sHd = '3.0/tcp/solaris10.vdi',
