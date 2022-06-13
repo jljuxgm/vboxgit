@@ -1,4 +1,4 @@
-/* $Id: DevPS2K.cpp 90198 2021-07-14 22:44:42Z vboxsync $ */
+/* $Id: DevPS2K.cpp 90303 2021-07-23 13:37:25Z vboxsync $ */
 /** @file
  * PS2K - PS/2 keyboard emulation.
  */
@@ -744,7 +744,7 @@ static int ps2kR3HidToInternalCode(uint32_t u32HidCode, key_def const **ppKeyDef
     else if (u8HidPage == USB_HID_DC_PAGE)
     {
         for (unsigned i = 0; i < RT_ELEMENTS(aPS2DCKeys); ++i)
-            if (aPS2CCKeys[i].usageId == u16HidUsage)
+            if (aPS2DCKeys[i].usageId == u16HidUsage)
             {
                 pKeyDef   = &aPS2DCKeys[i].kdef;
                 iKeyIndex = PS2K_PAGE_DC_START + i;
