@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMExpertPage.cpp 92105 2021-10-27 13:44:20Z vboxsync $ */
+/* $Id: UIWizardNewVMExpertPage.cpp 92111 2021-10-27 16:47:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMExpertPage class implementation.
  */
@@ -27,8 +27,8 @@
 #include "UIIconPool.h"
 #include "UIMediaComboBox.h"
 #include "UIMedium.h"
-#include "UIMessageCenter.h"
 #include "UINameAndSystemEditor.h"
+#include "UINotificationCenter.h"
 #include "UIToolBox.h"
 #include "UIWizardNewVM.h"
 #include "UIWizardDiskEditors.h"
@@ -611,7 +611,7 @@ bool UIWizardNewVMExpertPage::validatePage()
 {
     UIWizardNewVM *pWizard = wizardWindow<UIWizardNewVM>();
     AssertReturn(pWizard, false);
-    bool fResult = UIWizardNewVMNameOSTypeCommon::createMachineFolder(m_pNameAndSystemEditor, this, wizardWindow<UIWizardNewVM>());
+    bool fResult = UIWizardNewVMNameOSTypeCommon::createMachineFolder(m_pNameAndSystemEditor, wizardWindow<UIWizardNewVM>());
     if (!fResult)
         return false;
 
@@ -622,7 +622,7 @@ bool UIWizardNewVMExpertPage::validatePage()
         fResult = !QFileInfo(strMediumPath).exists();
         if (!fResult)
         {
-            msgCenter().cannotOverwriteHardDiskStorage(strMediumPath, this);
+            UINotificationMessage::cannotOverwriteMediumStorage(strMediumPath, wizard()->notificationCenter());
             return fResult;
         }
         qulonglong uSize = pWizard->mediumSize();
@@ -631,7 +631,7 @@ bool UIWizardNewVMExpertPage::validatePage()
         fResult =  UIWizardDiskEditors::checkFATSizeLimitation(uVariant, strMediumPath, uSize);
         if (!fResult)
         {
-            msgCenter().cannotCreateHardDiskStorageInFAT(strMediumPath, this);
+            UINotificationMessage::cannotCreateMediumStorageInFAT(strMediumPath, wizard()->notificationCenter());
             return fResult;
         }
         /* Try to create the hard drive:*/

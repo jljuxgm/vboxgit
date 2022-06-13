@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMSummaryPage.cpp 92032 2021-10-25 13:25:10Z vboxsync $ */
+/* $Id: UIWizardNewVMSummaryPage.cpp 92111 2021-10-27 16:47:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMSummaryPage class implementation.
  */
@@ -26,6 +26,7 @@
 #include "QITreeView.h"
 #include "UIIconPool.h"
 #include "UIMessageCenter.h"
+#include "UINotificationCenter.h"
 #include "UITranslator.h"
 #include "UIWizardNewVMSummaryPage.h"
 #include "UIWizardDiskEditors.h"
@@ -488,7 +489,7 @@ bool UIWizardNewVMSummaryPage::validatePage()
         fResult = !QFileInfo(strMediumPath).exists();
         if (!fResult)
         {
-            msgCenter().cannotOverwriteHardDiskStorage(strMediumPath, this);
+            UINotificationMessage::cannotOverwriteMediumStorage(strMediumPath, wizard()->notificationCenter());
             return fResult;
         }
         /* Check FAT size limitation of the host hard drive: */
@@ -497,7 +498,7 @@ bool UIWizardNewVMSummaryPage::validatePage()
                                                               pWizard->mediumSize());
         if (!fResult)
         {
-            msgCenter().cannotCreateHardDiskStorageInFAT(strMediumPath, this);
+            UINotificationMessage::cannotCreateMediumStorageInFAT(strMediumPath, wizard()->notificationCenter());
             return fResult;
         }
 

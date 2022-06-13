@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMDiskPage.cpp 91593 2021-10-06 15:12:58Z vboxsync $ */
+/* $Id: UIWizardNewVMDiskPage.cpp 92111 2021-10-27 16:47:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMDiskPage class implementation.
  */
@@ -29,7 +29,6 @@
 #include "UIMediaComboBox.h"
 #include "UIMediumSelector.h"
 #include "UIMediumSizeEditor.h"
-#include "UIMessageCenter.h"
 #include "UICommon.h"
 #include "UIWizardNewVMDiskPage.h"
 #include "UIWizardDiskEditors.h"

@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMNameOSTypePage.h 91059 2021-09-01 13:48:12Z vboxsync $ */
+/* $Id: UIWizardNewVMNameOSTypePage.h 92111 2021-10-27 16:47:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMNameOSTypePage class declaration.
  */
@@ -34,9 +34,7 @@ class UIWizardNewVM;
 namespace UIWizardNewVMNameOSTypeCommon
 {
     bool guessOSTypeFromName(UINameAndSystemEditor *pNameAndSystemEditor, QString strNewName);
-    bool createMachineFolder(UINameAndSystemEditor *pNameAndSystemEditor,
-                             UINativeWizardPage *pCaller,
-                             UIWizardNewVM *pWizard);
+    bool createMachineFolder(UINameAndSystemEditor *pNameAndSystemEditor, UIWizardNewVM *pWizard);
 
     /** Removes a previously created folder (if exists) before creating a new one.
      *  used during page cleanup and new folder creation. Called upon page Next/Back and
