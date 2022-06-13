@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdpCtl.cpp 93479 2022-01-28 15:04:07Z vboxsync $ */
+/* $Id: VBoxNetAdpCtl.cpp 94388 2022-03-29 07:06:06Z vboxsync $ */
 /** @file
  * Apps - VBoxAdpCtl, Configuration tool for vboxnetX adapters.
  */
@@ -456,7 +456,10 @@ int AddressCommand::execute(CmdList& list)
         printf("\n");
     }
     if (dry_run)
+    {
+        free((void *)argv);
         return EXIT_SUCCESS;
+    }
 
     int rc = EXIT_FAILURE; /* o/~ hope for the best, expect the worst */
     pid_t childPid = fork();
@@ -511,8 +514,6 @@ int AddressCommand::removeAddresses(const char *pcszAdapter, const char *pcszFam
     char aszAddresses[MAX_ADDRESSES][MAX_ADDRLEN];
     int rc = EXIT_SUCCESS;
     int fds[2];
-    char * const * argv = allocArgv(getShowCommand(pcszAdapter));
-    char * const envp[] = { (char*)"LC_ALL=C", NULL };
 
     memset(aszAddresses, 0, sizeof(aszAddresses));
 
@@ -531,8 +532,18 @@ int AddressCommand::removeAddresses(const char *pcszAdapter, const char *pcszFam
         close(STDOUT_FILENO);
         rc = dup2(fds[1], STDOUT_FILENO);
         if (rc >= 0)
+        {
+            char * const * argv = allocArgv(getShowCommand(pcszAdapter));
+            char * const envp[] = { (char*)"LC_ALL=C", NULL };
+
             if (execve(argv[0], argv, envp) == -1)
+            {
+                free((void *)argv);
                 return errno;
+            }
+
+            free((void *)argv);
+        }
         return rc;
     }
 
