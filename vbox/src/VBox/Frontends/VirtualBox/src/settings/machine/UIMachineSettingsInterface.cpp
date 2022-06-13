@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsInterface.cpp 93829 2022-02-17 13:30:31Z vboxsync $ */
+/* $Id: UIMachineSettingsInterface.cpp 94062 2022-03-02 15:41:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsInterface class implementation.
  */
@@ -299,9 +299,7 @@ void UIMachineSettingsInterface::saveFromCacheTo(QVariant &data)
 void UIMachineSettingsInterface::retranslateUi()
 {
     m_pEditorMenuBar->setToolTip(tr("Allows to modify VM menu-bar contents."));
-    m_pLabelVisualState->setText(tr("Visual State:"));
-    m_pEditorVisualState->setToolTip(tr("Selects the visual state. If machine is running it will be applied as soon as possible, "
-                                        "otherwise desired one will be defined."));
+    m_pLabelVisualState->setText(tr("&Visual State:"));
     m_pLabelMiniToolBar->setText(tr("Mini ToolBar:"));
     m_pCheckBoxShowMiniToolBar->setToolTip(tr("When checked, show the Mini ToolBar in full-screen and seamless modes."));
     m_pCheckBoxShowMiniToolBar->setText(tr("Show in &Full-screen/Seamless"));
@@ -373,7 +371,11 @@ void UIMachineSettingsInterface::prepareWidgets()
         /* Prepare visual-state editor: */
         m_pEditorVisualState = new UIVisualStateEditor(this);
         if (m_pEditorVisualState)
+        {
+            if (m_pLabelVisualState)
+                m_pLabelVisualState->setBuddy(m_pEditorVisualState);
             pLayoutMain->addWidget(m_pEditorVisualState, 1, 1);
+        }
 
         /* Prepare mini-toolbar label: */
         m_pLabelMiniToolBar = new QLabel(this);
