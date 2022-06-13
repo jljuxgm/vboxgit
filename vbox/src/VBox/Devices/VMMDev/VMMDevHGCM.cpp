@@ -1,4 +1,4 @@
-/* $Id: VMMDevHGCM.cpp 90266 2021-07-20 20:38:59Z vboxsync $ */
+/* $Id: VMMDevHGCM.cpp 90447 2021-07-31 00:44:13Z vboxsync $ */
 /** @file
  * VMMDev - HGCM - Host-Guest Communication Manager Device.
  */
@@ -472,7 +472,8 @@ static void vmmdevR3HgcmCmdFree(PPDMDEVINS pDevIns, PVMMDEV pThis, PVMMDEVCC pTh
         uintptr_t idx = pCmd->idxHeapAcc;
         AssertStmt(idx < RT_ELEMENTS(pThisCC->aHgcmAcc), idx %= RT_ELEMENTS(pThisCC->aHgcmAcc));
 
-        PDMDevHlpCritSectEnter(pDevIns, &pThis->CritSect, VERR_IGNORED);
+        int const rcLock = PDMDevHlpCritSectEnter(pDevIns, &pThis->CritSect, VERR_IGNORED);
+        PDM_CRITSECT_RELEASE_ASSERT_RC_DEV(pDevIns, &pThis->CritSect, rcLock);
 
         Log5Func(("aHgcmAcc[%zu] %#RX64 += %#x (%p)\n", idx, pThisCC->aHgcmAcc[idx].cbHeapBudget, pCmd->cbHeapCost, pCmd));
         pThisCC->aHgcmAcc[idx].cbHeapBudget += pCmd->cbHeapCost;

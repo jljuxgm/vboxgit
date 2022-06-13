@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 88484 2021-04-13 05:50:44Z vboxsync $ */
+/* $Id: DevACPI.cpp 90447 2021-07-31 00:44:13Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -64,7 +64,7 @@
 # define DEVACPI_LOCK_R3(a_pDevIns, a_pThis) \
     do { \
         int rcLock = PDMDevHlpCritSectEnter((a_pDevIns), &(a_pThis)->CritSect, VERR_IGNORED); \
-        AssertRC(rcLock); \
+        PDM_CRITSECT_RELEASE_ASSERT_RC_DEV((a_pDevIns), &(a_pThis)->CritSect, rcLock); \
     } while (0)
 #endif
 /** Unlocks the device state (all contexts). */

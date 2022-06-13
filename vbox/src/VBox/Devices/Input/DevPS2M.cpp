@@ -1,4 +1,4 @@
-/* $Id: DevPS2M.cpp 90198 2021-07-14 22:44:42Z vboxsync $ */
+/* $Id: DevPS2M.cpp 90447 2021-07-31 00:44:13Z vboxsync $ */
 /** @file
  * PS2M - PS/2 auxiliary device (mouse) emulation.
  */
@@ -872,8 +872,8 @@ static DECLCALLBACK(int) ps2mR3MousePort_PutEvent(PPDMIMOUSEPORT pInterface, int
     PPS2MR3     pThisCC = RT_FROM_MEMBER(pInterface, PS2MR3, Mouse.IPort);
     PPDMDEVINS  pDevIns = pThisCC->pDevIns;
     PPS2M       pThis   = &PDMDEVINS_2_DATA(pDevIns, PKBDSTATE)->Aux;
-    int rc = PDMDevHlpCritSectEnter(pDevIns, pDevIns->pCritSectRoR3, VERR_SEM_BUSY);
-    AssertReleaseRC(rc);
+    int const   rcLock  = PDMDevHlpCritSectEnter(pDevIns, pDevIns->pCritSectRoR3, VERR_SEM_BUSY);
+    PDM_CRITSECT_RELEASE_ASSERT_RC_DEV(pDevIns, pDevIns->pCritSectRoR3, rcLock);
 
     LogRelFlowFunc(("dX=%d dY=%d dZ=%d dW=%d buttons=%02X\n", dx, dy, dz, dw, fButtons));
     /* NB: The PS/2 Y axis direction is inverted relative to ours. */

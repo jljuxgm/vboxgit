@@ -1,4 +1,4 @@
-/* $Id: DevEFI.cpp 85950 2020-08-31 11:40:19Z vboxsync $ */
+/* $Id: DevEFI.cpp 90447 2021-07-31 00:44:13Z vboxsync $ */
 /** @file
  * DevEFI - EFI <-> VirtualBox Integration Framework.
  */
@@ -1137,7 +1137,8 @@ static DECLCALLBACK(void) efiInfoNvram(PPDMDEVINS pDevIns, PCDBGFINFOHLP pHlp, c
 {
     RT_NOREF(pszArgs);
     PDEVEFIR3 pThisCC = PDMDEVINS_2_DATA_CC(pDevIns, PDEVEFIR3);
-    PDMDevHlpCritSectEnter(pDevIns, pDevIns->pCritSectRoR3, VERR_IGNORED);
+    int const rcLock = PDMDevHlpCritSectEnter(pDevIns, pDevIns->pCritSectRoR3, VERR_IGNORED);
+    PDM_CRITSECT_RELEASE_ASSERT_RC_DEV(pDevIns, pDevIns->pCritSectRoR3, rcLock); \
 
     pHlp->pfnPrintf(pHlp, "NVRAM variables: %u\n", pThisCC->NVRAM.cVariables);
     PCEFIVAR pEfiVar;

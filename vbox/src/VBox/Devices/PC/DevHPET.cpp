@@ -1,4 +1,4 @@
-/* $Id: DevHPET.cpp 90304 2021-07-23 13:39:29Z vboxsync $ */
+/* $Id: DevHPET.cpp 90447 2021-07-31 00:44:13Z vboxsync $ */
 /** @file
  * HPET virtual device - High Precision Event Timer emulation.
  *
@@ -178,7 +178,7 @@
  */
 #define DEVHPET_LOCK_RETURN(a_pDevIns, a_pThis, a_rcBusy)  \
     do { \
-        int rcLock = PDMDevHlpCritSectEnter((a_pDevIns), &(a_pThis)->CritSect, (a_rcBusy)); \
+        int const rcLock = PDMDevHlpCritSectEnter((a_pDevIns), &(a_pThis)->CritSect, (a_rcBusy)); \
         if (RT_LIKELY(rcLock == VINF_SUCCESS)) \
         { /* likely */ } \
         else \
@@ -1580,13 +1580,16 @@ static DECLCALLBACK(int) hpetR3LoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uin
     /*
      * Set the timer frequency hints.
      */
-    PDMDevHlpCritSectEnter(pDevIns, &pThis->CritSect, VERR_IGNORED);
+    rc = PDMDevHlpCritSectEnter(pDevIns, &pThis->CritSect, VERR_IGNORED);
+    AssertRCReturn(rc, rc);
+
     for (uint32_t iTimer = 0; iTimer < cTimers; iTimer++)
     {
         PHPETTIMER pHpetTimer = &pThis->aTimers[iTimer];
         if (PDMDevHlpTimerIsActive(pDevIns, pHpetTimer->hTimer))
             hpetTimerSetFrequencyHint(pDevIns, pThis, pHpetTimer, pHpetTimer->u64Config, pHpetTimer->u64Period);
     }
+
     PDMDevHlpCritSectLeave(pDevIns, &pThis->CritSect);
     return VINF_SUCCESS;
 }

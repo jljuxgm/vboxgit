@@ -1,4 +1,4 @@
-/* $Id: DevPS2K.cpp 90303 2021-07-23 13:37:25Z vboxsync $ */
+/* $Id: DevPS2K.cpp 90447 2021-07-31 00:44:13Z vboxsync $ */
 /** @file
  * PS2K - PS/2 keyboard emulation.
  */
@@ -1045,8 +1045,8 @@ static DECLCALLBACK(void) ps2kR3ThrottleTimer(PPDMDEVINS pDevIns, TMTIMERHANDLE 
     RT_NOREF(hTimer);
 
     /* Grab the lock to avoid races with event delivery or EMTs. */
-    int rc = PDMDevHlpCritSectEnter(pDevIns, pDevIns->pCritSectRoR3, VERR_SEM_BUSY);
-    AssertReleaseRC(rc);
+    int const rcLock = PDMDevHlpCritSectEnter(pDevIns, pDevIns->pCritSectRoR3, VERR_SEM_BUSY);
+    PDM_CRITSECT_RELEASE_ASSERT_RC_DEV(pDevIns, pDevIns->pCritSectRoR3, rcLock);
 
     /* If data is available, poke the KBC. Once the data
      * is actually read, the timer may be re-triggered.
@@ -1221,12 +1221,11 @@ static DECLCALLBACK(int) ps2kR3KeyboardPort_PutEventHid(PPDMIKEYBOARDPORT pInter
     PPS2KR3     pThisCC = RT_FROM_MEMBER(pInterface, PS2KR3, Keyboard.IPort);
     PPDMDEVINS  pDevIns = pThisCC->pDevIns;
     PPS2K       pThis   = &PDMDEVINS_2_DATA(pDevIns, PKBDSTATE)->Kbd;
-    int         rc;
 
     LogRelFlowFunc(("key code %08X\n", idUsage));
 
-    rc = PDMDevHlpCritSectEnter(pDevIns, pDevIns->pCritSectRoR3, VERR_SEM_BUSY);
-    AssertReleaseRC(rc);
+    int const rcLock = PDMDevHlpCritSectEnter(pDevIns, pDevIns->pCritSectRoR3, VERR_SEM_BUSY);
+    PDM_CRITSECT_RELEASE_ASSERT_RC_DEV(pDevIns, pDevIns->pCritSectRoR3, rcLock);
 
     /* The 'BAT fail' scancode is reused as a signal to release keys. No actual
      * key is allowed to use this scancode.

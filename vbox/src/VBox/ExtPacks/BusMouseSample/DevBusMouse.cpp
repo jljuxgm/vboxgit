@@ -1,4 +1,4 @@
-/* $Id: DevBusMouse.cpp 87773 2021-02-16 23:36:15Z vboxsync $ */
+/* $Id: DevBusMouse.cpp 90447 2021-07-31 00:44:13Z vboxsync $ */
 /** @file
  * BusMouse - Microsoft Bus (parallel) mouse controller device.
  */
@@ -573,7 +573,7 @@ static DECLCALLBACK(int) bmsR3MousePort_PutEvent(PPDMIMOUSEPORT pInterface, int3
     PPDMDEVINS  pDevIns = pThisCC->pDevIns;
     PBMSSTATE   pThis   = PDMDEVINS_2_DATA(pDevIns, PBMSSTATE);
     int rc = PDMDevHlpCritSectEnter(pDevIns, pDevIns->CTX_SUFF(pCritSectRo), VERR_SEM_BUSY);
-    AssertReleaseRC(rc);
+    PDM_CRITSECT_RELEASE_ASSERT_RC_DEV(pDevIns, pDevIns->CTX_SUFF(pCritSectRo), rc);
 
     bmsR3MouseEvent(pThis, dx, dy, dz, dw, fButtons);
 

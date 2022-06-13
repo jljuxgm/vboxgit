@@ -1,4 +1,4 @@
-/* $Id: DevRTC.cpp 90445 2021-07-30 22:18:24Z vboxsync $ */
+/* $Id: DevRTC.cpp 90447 2021-07-31 00:44:13Z vboxsync $ */
 /** @file
  * Motorola MC146818 RTC/CMOS Device with PIIX4 extensions.
  */
@@ -1033,8 +1033,9 @@ static DECLCALLBACK(int) rtcCMOSRead(PPDMDEVINS pDevIns, unsigned iReg, uint8_t 
 static DECLCALLBACK(void) rtcHpetLegacyNotify_ModeChanged(PPDMIHPETLEGACYNOTIFY pInterface, bool fActivated)
 {
     PRTCSTATECC pThisCC = RT_FROM_MEMBER(pInterface, RTCSTATER3, IHpetLegacyNotify);
-    PPDMDEVINS pDevIns = pThisCC->pDevInsR3;
-    PDMDevHlpCritSectEnter(pDevIns, pDevIns->pCritSectRoR3, VERR_IGNORED);
+    PPDMDEVINS  pDevIns = pThisCC->pDevInsR3;
+    int const   rcLock  = PDMDevHlpCritSectEnter(pDevIns, pDevIns->pCritSectRoR3, VERR_IGNORED);
+    PDM_CRITSECT_RELEASE_ASSERT_RC_DEV(pDevIns, pDevIns->pCritSectRoR3, rcLock);
 
     pThisCC->pShared->fDisabledByHpet = fActivated;
 
