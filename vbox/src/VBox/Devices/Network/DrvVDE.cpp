@@ -1,4 +1,4 @@
-/* $Id: DrvVDE.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: DrvVDE.cpp 91872 2021-10-20 09:07:44Z vboxsync $ */
 /** @file
  * VDE network transport driver.
  */
@@ -539,7 +539,8 @@ static DECLCALLBACK(int) drvVDEConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uin
 {
     RT_NOREF(fFlags);
     PDMDRV_CHECK_VERSIONS_RETURN(pDrvIns);
-    PDRVVDE pThis = PDMINS_2_DATA(pDrvIns, PDRVVDE);
+    PDRVVDE         pThis = PDMINS_2_DATA(pDrvIns, PDRVVDE);
+    PCPDMDRVHLPR3   pHlp  = pDrvIns->pHlpR3;
 
     /*
      * Init the static parts.
@@ -575,8 +576,7 @@ static DECLCALLBACK(int) drvVDEConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uin
     /*
      * Validate the config.
      */
-    if (!CFGMR3AreValuesValid(pCfg, "network"))
-        return PDMDRV_SET_ERROR(pDrvIns, VERR_PDM_DRVINS_UNKNOWN_CFG_VALUES, "");
+    PDMDRV_VALIDATE_CONFIG_RETURN(pDrvIns, "network", "");
 
     /*
      * Check that no-one is attached to us.
@@ -598,7 +598,7 @@ static DECLCALLBACK(int) drvVDEConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uin
      */
     int rc;
     char szNetwork[RTPATH_MAX];
-    rc = CFGMR3QueryString(pCfg, "network", szNetwork, sizeof(szNetwork));
+    rc = pHlp->pfnCFGMQueryString(pCfg, "network", szNetwork, sizeof(szNetwork));
     if (RT_FAILURE(rc))
         *szNetwork=0;
 
