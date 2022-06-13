@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElement.cpp 93998 2022-02-28 22:42:04Z vboxsync $ */
+/* $Id: UIDetailsElement.cpp 94039 2022-03-01 13:10:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement class implementation.
  */
@@ -1080,7 +1080,7 @@ void UIDetailsElement::popupAudioHostDriverTypeEditor(const QString &strValue)
     if (pPopup)
     {
         /* Prepare editor: */
-        UIAudioHostDriverEditor *pEditor = new UIAudioHostDriverEditor(pPopup, true /* with label */);
+        UIAudioHostDriverEditor *pEditor = new UIAudioHostDriverEditor(pPopup);
         if (pEditor)
         {
             pEditor->setValue(static_cast<KAudioDriverType>(strValue.toInt()));
@@ -1112,7 +1112,7 @@ void UIDetailsElement::popupAudioControllerTypeEditor(const QString &strValue)
     if (pPopup)
     {
         /* Prepare editor: */
-        UIAudioControllerEditor *pEditor = new UIAudioControllerEditor(pPopup, true /* with label */);
+        UIAudioControllerEditor *pEditor = new UIAudioControllerEditor(pPopup);
         if (pEditor)
         {
             pEditor->setValue(static_cast<KAudioControllerType>(strValue.toInt()));

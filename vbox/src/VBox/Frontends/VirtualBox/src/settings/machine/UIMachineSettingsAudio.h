@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsAudio.h 93990 2022-02-28 15:34:57Z vboxsync $ */
+/* $Id: UIMachineSettingsAudio.h 94039 2022-03-01 13:10:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsAudio class declaration.
  */
@@ -26,6 +26,7 @@
 
 /* Forward declarations: */
 class QCheckBox;
+class QGridLayout;
 class QLabel;
 class UIAudioControllerEditor;
 class UIAudioHostDriverEditor;
@@ -92,12 +93,10 @@ private:
         QCheckBox               *m_pCheckBoxAudio;
         /** Holds the audio settings widget instance. */
         QWidget                 *m_pWidgetAudioSettings;
-        /** Holds the audio host driver label instance. */
-        QLabel                  *m_pLabelAudioHostDriver;
+        /** Holds the audio settings layout instance. */
+        QGridLayout             *m_pLayoutAudioSettings;
         /** Holds the audio host driver editor instance. */
         UIAudioHostDriverEditor *m_pEditorAudioHostDriver;
-        /** Holds the audio host controller label instance. */
-        QLabel                  *m_pLabelAudioController;
         /** Holds the audio host controller instance instance. */
         UIAudioControllerEditor *m_pEditorAudioController;
         /** Holds the audio extended label instance. */
