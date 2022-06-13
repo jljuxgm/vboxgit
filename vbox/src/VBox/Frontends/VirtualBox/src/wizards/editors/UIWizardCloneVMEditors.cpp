@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMEditors.cpp 90617 2021-08-11 07:28:02Z vboxsync $ */
+/* $Id: UIWizardCloneVMEditors.cpp 90620 2021-08-11 07:51:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class implementation.
  */
@@ -49,8 +49,8 @@
 
 
 /*********************************************************************************************************************************
- *   UICloneVMNamePathEditor implementation.                                                                                      *
- *********************************************************************************************************************************/
+*   UICloneVMNamePathEditor implementation.                                                                                      *
+*********************************************************************************************************************************/
 
 UICloneVMNamePathEditor::UICloneVMNamePathEditor(const QString &strOriginalName, const QString &strDefaultPath, QWidget *pParent /* = 0 */)
     :QIWithRetranslateUI<QGroupBox>(pParent)
@@ -130,8 +130,8 @@ void UICloneVMNamePathEditor::retranslateUi()
 
 
 /*********************************************************************************************************************************
- *   UICloneVMAdditionalOptionsEditor implementation.                                                                             *
- *********************************************************************************************************************************/
+*   UICloneVMAdditionalOptionsEditor implementation.                                                                             *
+*********************************************************************************************************************************/
 
 
 UICloneVMAdditionalOptionsEditor::UICloneVMAdditionalOptionsEditor(QWidget *pParent /* = 0 */)
@@ -305,9 +305,10 @@ void UICloneVMAdditionalOptionsEditor::populateMACAddressClonePolicies()
         setMACAddressClonePolicy(MACAddressClonePolicy_StripAllMACs);
 }
 
+
 /*********************************************************************************************************************************
- *   UICloneVMAdditionalOptionsEditor implementation.                                                                             *
- *********************************************************************************************************************************/
+*   UICloneVMAdditionalOptionsEditor implementation.                                                                             *
+*********************************************************************************************************************************/
 
 UICloneVMCloneTypeGroupBox::UICloneVMCloneTypeGroupBox(QWidget *pParent /* = 0 */)
     :QIWithRetranslateUI<QGroupBox>(pParent)
@@ -373,9 +374,10 @@ void UICloneVMCloneTypeGroupBox::sltButtonClicked(QAbstractButton *)
     emit sigFullCloneSelected(m_pFullCloneRadio && m_pFullCloneRadio->isChecked());
 }
 
+
 /*********************************************************************************************************************************
- *   UICloneVMAdditionalOptionsEditor implementation.                                                                             *
- *********************************************************************************************************************************/
+*   UICloneVMAdditionalOptionsEditor implementation.                                                                             *
+*********************************************************************************************************************************/
 
 UICloneVMCloneModeGroupBox::UICloneVMCloneModeGroupBox(bool fShowChildsOption, QWidget *pParent /* = 0 */)
     :QIWithRetranslateUI<QGroupBox>(pParent)

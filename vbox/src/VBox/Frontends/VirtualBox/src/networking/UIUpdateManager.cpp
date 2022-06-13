@@ -1,4 +1,4 @@
-/* $Id: UIUpdateManager.cpp 90606 2021-08-10 16:07:13Z vboxsync $ */
+/* $Id: UIUpdateManager.cpp 90620 2021-08-11 07:51:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUpdateManager class implementation.
  */
@@ -94,7 +94,7 @@ void UIUpdateStepVirtualBox::exec()
     /* Return if already checking: */
     if (UINotificationNewVersionCheckerVirtualBox::exists())
     {
-        // @todo show notification-center
+        /// @todo show notification-center
         emit sigStepFinished();
         return;
     }

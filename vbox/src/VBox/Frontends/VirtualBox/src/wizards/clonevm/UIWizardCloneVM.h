@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVM.h 90619 2021-08-11 07:39:55Z vboxsync $ */
+/* $Id: UIWizardCloneVM.h 90620 2021-08-11 07:51:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVM class declaration.
  */
@@ -43,11 +43,11 @@ public:
                     const QString &strGroup, CSnapshot snapshot = CSnapshot());
     void setCloneModePageVisible(bool fIsFullClone);
     bool isCloneModePageVisible() const;
+    /* CLone VM stuff: */
+    bool cloneVM();
 
 protected:
 
-    /* CLone VM stuff: */
-    bool cloneVM();
     virtual void populatePages() /* final override */;
 
 private:
