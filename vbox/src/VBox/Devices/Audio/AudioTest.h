@@ -1,4 +1,4 @@
-/* $Id: AudioTest.h 89747 2021-06-16 16:06:15Z vboxsync $ */
+/* $Id: AudioTest.h 89889 2021-06-24 13:11:47Z vboxsync $ */
 /** @file
  * Audio testing routines.
  * Common code which is being used by the ValidationKit audio test (VKAT)
@@ -357,6 +357,7 @@ int    AudioTestSetObjClose(PAUDIOTESTOBJ pObj);
 int    AudioTestSetTestBegin(PAUDIOTESTSET pSet, const char *pszDesc, PAUDIOTESTPARMS pParms, PAUDIOTESTENTRY *ppEntry);
 int    AudioTestSetTestFailed(PAUDIOTESTENTRY pEntry, int rc, const char *pszErr);
 int    AudioTestSetTestDone(PAUDIOTESTENTRY pEntry);
+bool   AudioTestSetTestIsRunning(PAUDIOTESTENTRY pEntry);
 
 int    AudioTestSetCreate(PAUDIOTESTSET pSet, const char *pszPath, const char *pszTag);
 int    AudioTestSetDestroy(PAUDIOTESTSET pSet);
