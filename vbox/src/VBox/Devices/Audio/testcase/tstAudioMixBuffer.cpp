@@ -1,4 +1,4 @@
-/* $Id: tstAudioMixBuffer.cpp 94993 2022-05-12 13:57:54Z vboxsync $ */
+/* $Id: tstAudioMixBuffer.cpp 94999 2022-05-13 07:39:47Z vboxsync $ */
 /** @file
  * Audio testcase - Mixing buffer.
  */
@@ -78,8 +78,8 @@ static void tstBasics(RTTEST hTest)
     RTTESTI_CHECK(PDMAudioPropsGetBitrate(&Cfg441StereoU32) == 44100*8*8);
 
     RTTESTI_CHECK(AudioHlpPcmPropsAreValidAndSupported(&Cfg441StereoS16));
-    RTTESTI_CHECK(AudioHlpPcmPropsAreValidAndSupported(&Cfg441StereoU16) == false); /* go figure */
-    RTTESTI_CHECK(AudioHlpPcmPropsAreValidAndSupported(&Cfg441StereoU32) == false); /* go figure */
+    RTTESTI_CHECK(AudioHlpPcmPropsAreValidAndSupported(&Cfg441StereoU16));
+    RTTESTI_CHECK(AudioHlpPcmPropsAreValidAndSupported(&Cfg441StereoU32));
 
 
     RTTESTI_CHECK_MSG(PDMAUDIOPCMPROPS_F2B(&Cfg441StereoS16, 1) == 4,
