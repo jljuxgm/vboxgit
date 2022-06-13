@@ -1,4 +1,4 @@
-/* $Id: UIAddDiskEncryptionPasswordDialog.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIAddDiskEncryptionPasswordDialog.cpp 91029 2021-08-31 11:48:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIAddDiskEncryptionPasswordDialog class implementation.
  */
@@ -34,7 +34,7 @@
 #include "UIAddDiskEncryptionPasswordDialog.h"
 #include "UIIconPool.h"
 #include "UIMedium.h"
-#include "UIMessageCenter.h"
+#include "UINotificationCenter.h"
 
 /* Other VBox includes: */
 #include <iprt/assert.h>
@@ -508,7 +508,7 @@ void UIAddDiskEncryptionPasswordDialog::accept()
         const QString strPassword = m_pTableEncryptionData->encryptionPasswords().value(strPasswordId);
         if (!isPasswordValid(uMediumId, strPassword))
         {
-            msgCenter().warnAboutInvalidEncryptionPassword(strPasswordId, this);
+            UINotificationMessage::warnAboutInvalidEncryptionPassword(strPasswordId);
             AssertPtrReturnVoid(m_pTableEncryptionData);
             m_pTableEncryptionData->setFocus();
             m_pTableEncryptionData->editFirstIndex();

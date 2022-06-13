@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 91007 2021-08-30 17:50:44Z vboxsync $ */
+/* $Id: UINotificationObjects.cpp 91029 2021-08-31 11:48:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -85,6 +85,15 @@ void UINotificationMessage::cannotSendACPIToMachine()
         QApplication::translate("UIMessageCenter", "You are trying to shut down the guest with the ACPI power button. "
                                                    "This is currently not possible because the guest does not support "
                                                    "software shutdown."));
+}
+
+/* static */
+void UINotificationMessage::warnAboutInvalidEncryptionPassword(const QString &strPasswordId)
+{
+    createMessage(
+        QApplication::translate("UIMessageCenter", "Invalid Password ..."),
+        QApplication::translate("UIMessageCenter", "Encryption password for <nobr>ID = '%1'</nobr> is invalid.")
+                                                   .arg(strPasswordId));
 }
 
 /* static */

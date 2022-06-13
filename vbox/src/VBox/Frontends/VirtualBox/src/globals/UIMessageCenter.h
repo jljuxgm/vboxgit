@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 91007 2021-08-30 17:50:44Z vboxsync $ */
+/* $Id: UIMessageCenter.h 91029 2021-08-31 11:48:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -270,7 +270,6 @@ public:
     void cannotOpenSession(const CProgress &progress, const QString &strMachineName) const;
     void cannotSetExtraData(const CVirtualBox &vbox, const QString &strKey, const QString &strValue);
     void cannotSetExtraData(const CMachine &machine, const QString &strKey, const QString &strValue);
-    void warnAboutInvalidEncryptionPassword(const QString &strPasswordId, QWidget *pParent = 0);
     void cannotAcquireVirtualBoxParameter(const CVirtualBox &comVBox, QWidget *pParent = 0) const;
     void cannotAcquireSessionParameter(const CSession &comSession, QWidget *pParent = 0) const;
     void cannotAcquireMachineParameter(const CMachine &comMachine, QWidget *pParent = 0) const;
