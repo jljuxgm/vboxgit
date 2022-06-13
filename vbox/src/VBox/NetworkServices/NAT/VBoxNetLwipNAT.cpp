@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwipNAT.cpp 88308 2021-03-27 22:54:08Z vboxsync $ */
+/* $Id: VBoxNetLwipNAT.cpp 90078 2021-07-07 16:31:06Z vboxsync $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -1874,8 +1874,14 @@ VBoxNetLwipNAT::receiveThread(RTTHREAD hThreadSelf, void *pvUser)
 VBoxNetLwipNAT::processFrame(void *pvUser, void *pvFrame, uint32_t cbFrame)
 {
     AssertReturnVoid(pvFrame != NULL);
-    AssertReturnVoid(cbFrame != 0);
-    AssertReturnVoid(cbFrame <= 1522); /* include .1Q and FCS */
+
+    /* shouldn't happen, but if it does, don't even bother */
+    if (RT_UNLIKELY(cbFrame < sizeof(RTNETETHERHDR)))
+        return;
+
+    /* we expect normal ethernet frame including .1Q and FCS */
+    if (cbFrame > 1522)
+        return;
 
     AssertReturnVoid(pvUser != NULL);
     VBoxNetLwipNAT *self = static_cast<VBoxNetLwipNAT *>(pvUser);
