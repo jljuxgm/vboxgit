@@ -1,4 +1,4 @@
-/* $Id: RTMpGetDescription-generic.cpp 94091 2022-03-04 21:28:14Z vboxsync $ */
+/* $Id: RTMpGetDescription-generic.cpp 94093 2022-03-04 22:50:45Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, RTMpGetDescription for darwin/arm.
  */
@@ -59,7 +59,7 @@ RTDECL(int) RTMpGetDescription(RTCPUID idCpu, char *pszBuf, size_t cbBuf)
 
 #if defined(RT_ARCH_ARM64)
     char szArmCpuPath[64];
-    RTStrPrintf(szArmCpuPath, sizeof(szArmCpuPath), "IODeviceTree:/cpus/cpu%u", idCpu);
+    RTStrPrintf(szArmCpuPath, sizeof(szArmCpuPath), "IODeviceTree:/cpus/cpu%x", idCpu); /** @todo Hex? M1 Max only has 10 cores... */
     io_registry_entry_t hIoRegEntry = IORegistryEntryFromPath(kIOMasterPortDefault, szArmCpuPath);
     if (hIoRegEntry != MACH_PORT_NULL)
     {
