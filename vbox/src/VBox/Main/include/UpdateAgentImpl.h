@@ -1,4 +1,4 @@
-/* $Id: UpdateAgentImpl.h 94643 2022-04-20 09:08:37Z vboxsync $ */
+/* $Id: UpdateAgentImpl.h 94645 2022-04-20 09:33:24Z vboxsync $ */
 /** @file
  * Update agent COM class implementation - Header
  */
@@ -67,9 +67,9 @@ public:
 protected:
     /** @name Wrapped IUpdateAgent attributes and methods
      * @{ */
-    virtual HRESULT check(ComPtr<IProgress> &aProgress) RT_OVERRIDE = 0;
-    virtual HRESULT download(ComPtr<IProgress> &aProgress) RT_OVERRIDE;
-    virtual HRESULT install(ComPtr<IProgress> &aProgress) RT_OVERRIDE;
+    virtual HRESULT check(ComPtr<IProgress> &aProgress);
+    virtual HRESULT download(ComPtr<IProgress> &aProgress);
+    virtual HRESULT install(ComPtr<IProgress> &aProgress);
     virtual HRESULT rollback(void) RT_OVERRIDE;
 
     virtual HRESULT getName(com::Utf8Str &aName);
@@ -156,7 +156,7 @@ public:
 private:
     /** @name Implemented (pure) virtual methods from UpdateAgent.
      * @{ */
-    HRESULT check(ComPtr<IProgress> &aProgress);
+    HRESULT check(ComPtr<IProgress> &aProgress) RT_OVERRIDE;
     /** @}  */
 
 #ifdef VBOX_WITH_UPDATE_AGENT
