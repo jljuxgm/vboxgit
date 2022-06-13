@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 89149 2021-05-19 00:52:59Z vboxsync $
+# $Id: Makefile.kmk 89931 2021-06-28 14:13:29Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - Bootsector Kit v3
 #
@@ -157,6 +157,7 @@ VBOX_BS3KIT_COMMON_SOURCES = \
        bs3-cmn-SelProtFar16DataToFlat.asm \
        bs3-cmn-SelFlatDataToProtFar16.asm \
        bs3-cmn-SelFlatDataToRealMode.asm \
+       bs3-cmn-SelLnkPtrToCurPtr.c \
        bs3-cmn-SelSetup16BitData.c \
        bs3-cmn-SelSetup16BitCode.c \
        bs3-cmn-SlabInit.c \
