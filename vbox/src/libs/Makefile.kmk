@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 94496 2022-04-06 14:33:47Z vboxsync $
+# $Id: Makefile.kmk 94497 2022-04-06 14:35:27Z vboxsync $
 ## @file
 # Top-level makefile for the external libraries.
 #
@@ -94,6 +94,13 @@ if  !defined(VBOX_ONLY_SDK) \
  else
   include $(PATH_SUB_CURRENT)/openssl-1.1.1l/Makefile.kmk
  endif
+endif
+
+
+# SoftFloat is used by the VMM for FPU emulation.
+if !defined(VBOX_ONLY_BUILD) \
+ && "$(intersects $(KBUILD_TARGET_ARCH),$(VBOX_SUPPORTED_HOST_ARCHS))" != ""
+  include $(PATH_SUB_CURRENT)/softfloat-3e/Makefile.kmk
 endif
 
 
