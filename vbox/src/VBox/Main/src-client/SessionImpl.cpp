@@ -1,4 +1,4 @@
-/* $Id: SessionImpl.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: SessionImpl.cpp 93410 2022-01-24 14:45:10Z vboxsync $ */
 /** @file
  * VBox Client Session COM Class implementation in VBoxC.
  */
@@ -20,8 +20,9 @@
 
 #include "SessionImpl.h"
 #include "ConsoleImpl.h"
-#include "Global.h"
 #include "ClientTokenHolder.h"
+#include "Global.h"
+#include "StringifyEnums.h"
 
 #include "AutoCaller.h"
 
@@ -524,7 +525,7 @@ HRESULT Session::uninitialize()
         /* close() needs write lock */
         AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
-        LogFlowThisFunc(("mState=%s, mType=%d\n", Global::stringifySessionState(mState), mType));
+        LogFlowThisFunc(("mState=%s, mType=%d\n", ::stringifySessionState(mState), mType));
 
         if (mState == SessionState_Unlocking)
         {
@@ -1162,7 +1163,7 @@ HRESULT Session::i_unlockMachine(bool aFinalRelease, bool aFromServer, AutoWrite
     LogFlowThisFunc(("aFinalRelease=%d, isFromServer=%d\n",
                       aFinalRelease, aFromServer));
 
-    LogFlowThisFunc(("mState=%s, mType=%d\n", Global::stringifySessionState(mState), mType));
+    LogFlowThisFunc(("mState=%s, mType=%d\n", ::stringifySessionState(mState), mType));
 
     Assert(aLockW.isWriteLockOnCurrentThread());
 
