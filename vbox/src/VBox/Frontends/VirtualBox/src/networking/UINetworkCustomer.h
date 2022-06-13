@@ -1,4 +1,4 @@
-/* $Id: UINetworkCustomer.h 90547 2021-08-06 13:43:06Z vboxsync $ */
+/* $Id: UINetworkCustomer.h 90579 2021-08-09 14:49:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkCustomer class declaration.
  */
@@ -45,14 +45,10 @@ signals:
 
 public:
 
-    /** Constructs network customer passing @a pParent to the base-class.
-      * @param  fForceCall  Brings whether this customer has forced privelegies. */
-    UINetworkCustomer(QObject *pParent = 0, bool fForceCall = true);
+    /** Constructs network customer passing @a pParent to the base-class. */
+    UINetworkCustomer();
     /** Destructs network customer. */
     virtual ~UINetworkCustomer() /* override */;
-
-    /** Returns whether this customer has forced privelegies. */
-    bool isItForceCall() const { return m_fForceCall; }
 
     /** Returns description of the current network operation. */
     virtual QString description() const { return QString(); }
@@ -82,9 +78,6 @@ protected:
     void cancelNetworkRequest();
 
 private:
-
-    /** Holds whether this customer has forced privelegies. */
-    bool  m_fForceCall;
 
     /** Holds the network-request ID. */
     QUuid  m_uId;
