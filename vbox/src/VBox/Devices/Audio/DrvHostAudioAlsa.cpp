@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioAlsa.cpp 92052 2021-10-25 17:58:14Z vboxsync $ */
+/* $Id: DrvHostAudioAlsa.cpp 92057 2021-10-26 07:02:32Z vboxsync $ */
 /** @file
  * Host audio driver - Advanced Linux Sound Architecture (ALSA).
  */
@@ -702,7 +702,12 @@ static int alsaStreamSetHwParams(snd_pcm_t *hPCM, snd_pcm_format_t enmAlsaFmt,
     {
         err = snd_pcm_set_chmap(hPCM, &u.Map);
         if (err < 0)
-            LogRel2(("ALSA: snd_pcm_set_chmap failed: %s (%d)\n", snd_strerror(err), err));
+        {
+            if (err == -ENXIO)
+                LogRel2(("ALSA: Audio device does not support channel maps, skipping\n"));
+            else
+                LogRel2(("ALSA: snd_pcm_set_chmap failed: %s (%d)\n", snd_strerror(err), err));
+        }
     }
 
     return 0;
