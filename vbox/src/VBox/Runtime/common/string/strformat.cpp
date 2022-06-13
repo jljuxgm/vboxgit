@@ -1,4 +1,4 @@
-/* $Id: strformat.cpp 90779 2021-08-23 09:05:11Z vboxsync $ */
+/* $Id: strformat.cpp 90821 2021-08-23 22:04:06Z vboxsync $ */
 /** @file
  * IPRT - String Formatter.
  */
@@ -48,8 +48,8 @@
 /**
  * Deals with bad pointers.
  */
-static size_t rtStrFormatBadPointer(size_t cch, PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, int cchWidth,
-                                    unsigned fFlags, void const *pvStr, char szTmp[64], const char *pszTag, int cchTag)
+DECLHIDDEN(size_t) rtStrFormatBadPointer(size_t cch, PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, int cchWidth,
+                                         unsigned fFlags, void const *pvStr, char szTmp[64], const char *pszTag, int cchTag)
 {
     static char const s_szNull[] = "<NULL>";
     int               cchStr     = !pvStr ? sizeof(s_szNull) - 1 : 1 + sizeof(void *) * 2 + cchTag + 1;
