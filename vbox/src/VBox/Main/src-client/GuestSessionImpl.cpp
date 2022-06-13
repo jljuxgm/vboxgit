@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 92916 2021-12-15 09:20:57Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 92987 2021-12-16 15:50:22Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -2040,10 +2040,20 @@ int GuestSession::i_onSessionStatusChange(PVBOXGUESTCTRLHOSTCBCTX pCbCtx, PVBOXG
             break;
 
         case GUEST_SESSION_NOTIFYTYPE_TEN:
-        case GUEST_SESSION_NOTIFYTYPE_TES:
-        case GUEST_SESSION_NOTIFYTYPE_TEA:
+            LogRel(("Guest Control: Session #%RU32 was terminated normally with exit code %#x\n",
+                    mData.mSession.mID, dataCb.uResult));
             sessionStatus = GuestSessionStatus_Terminated;
-            LogRel(("Guest Control: Session #%RU32 was successfully terminated\n", mData.mSession.mID));
+            break;
+
+        case GUEST_SESSION_NOTIFYTYPE_TEA:
+            LogRel(("Guest Control: Session #%RU32 was terminated abnormally\n", mData.mSession.mID));
+            sessionStatus = GuestSessionStatus_Terminated;
+            /* dataCb.uResult is undefined. */
+            break;
+
+        case GUEST_SESSION_NOTIFYTYPE_TES:
+            LogRel(("Guest Control: Session #%RU32 was terminated via signal %#x\n", mData.mSession.mID, dataCb.uResult));
+            sessionStatus = GuestSessionStatus_Terminated;
             break;
 
         case GUEST_SESSION_NOTIFYTYPE_TOK:
