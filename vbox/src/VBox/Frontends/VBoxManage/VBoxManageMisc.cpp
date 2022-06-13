@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 94660 2022-04-21 08:38:34Z vboxsync $ */
+/* $Id: VBoxManageMisc.cpp 94992 2022-05-12 13:47:24Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -821,20 +821,23 @@ RTEXITCODE handleStartVM(HandlerArg *a)
     if (VMs.empty())
         return errorSyntax(Misc::tr("at least one VM name or uuid required"));
 
-    if (!RTStrCmp(pszPassword, "-"))
+    if (pszPassword)
     {
-        /* Get password from console. */
-        RTEXITCODE rcExit = readPasswordFromConsole(&strPassword, "Enter the password:");
-        if (rcExit == RTEXITCODE_FAILURE)
-            return rcExit;
-    }
-    else
-    {
-        RTEXITCODE rcExit = readPasswordFile(pszPassword, &strPassword);
-        if (rcExit == RTEXITCODE_FAILURE)
+        if (!RTStrCmp(pszPassword, "-"))
         {
-            RTMsgError("Failed to read new password from file");
-            return rcExit;
+            /* Get password from console. */
+            RTEXITCODE rcExit = readPasswordFromConsole(&strPassword, "Enter the password:");
+            if (rcExit == RTEXITCODE_FAILURE)
+                return rcExit;
+        }
+        else
+        {
+            RTEXITCODE rcExit = readPasswordFile(pszPassword, &strPassword);
+            if (rcExit == RTEXITCODE_FAILURE)
+            {
+                RTMsgError("Failed to read new password from file");
+                return rcExit;
+            }
         }
     }
 
