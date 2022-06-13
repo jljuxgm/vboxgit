@@ -1,4 +1,4 @@
-/* $Id: UIWizardDiskEditors.h 90748 2021-08-19 14:36:02Z vboxsync $ */
+/* $Id: UIWizardDiskEditors.h 90755 2021-08-19 16:33:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardDiskEditors class declaration.
  */
@@ -49,6 +49,7 @@ class UIMediumSizeEditor;
 #include "COMEnums.h"
 #include "CMediumFormat.h"
 
+/** Base class for disk related group boxes. */
 class SHARED_LIBRARY_STUFF UIDiskEditorGroupBox : public QIWithRetranslateUI<QGroupBox>
 {
     Q_OBJECT;

@@ -1,4 +1,4 @@
-/* $Id: UIWizardDiskEditors.cpp 90748 2021-08-19 14:36:02Z vboxsync $ */
+/* $Id: UIWizardDiskEditors.cpp 90755 2021-08-19 16:33:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class implementation.
  */
@@ -409,6 +409,9 @@ void UIDiskVariantGroupBox::updateMediumVariantWidgetsAfterFormatChange(const CM
         m_pFixedCheckBox->setHidden(!m_pFixedCheckBox->isEnabled());
         m_pSplitBox->setHidden(!m_pSplitBox->isEnabled());
     }
+    /* Deselect split box if it is disabled: */
+    if (!m_pSplitBox->isEnabled())
+        m_pSplitBox->setChecked(false);
     emit sigMediumVariantChanged(mediumVariant());
 }
 

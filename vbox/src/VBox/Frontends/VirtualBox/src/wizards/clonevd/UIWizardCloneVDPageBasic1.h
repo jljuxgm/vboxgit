@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageBasic1.h 90748 2021-08-19 14:36:02Z vboxsync $ */
+/* $Id: UIWizardCloneVDPageBasic1.h 90755 2021-08-19 16:33:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDPageBasic1 class declaration.
  */
@@ -21,6 +21,9 @@
 # pragma once
 #endif
 
+/* Qt includes: */
+#include <QSet>
+
 /* GUI includes: */
 #include "UINativeWizardPage.h"
 
@@ -31,7 +34,7 @@
 /* Forward declarations: */
 class QIRichTextLabel;
 class UIDiskFormatsGroupBox;
-
+class UIWizardCloneVD;
 
 // /** 1st page of the Clone Virtual Disk Image wizard (base part): */
 // class UIWizardCloneVDPage1 : public UIWizardPageBase
@@ -78,7 +81,13 @@ public:
       * @param  enmDeviceType  Brings the device type to limit format to. */
     UIWizardCloneVDPageBasic1(KDeviceType enmDeviceType);
 
+private slots:
+
+    void sltMediumFormatChanged();
+
 private:
+
+    UIWizardCloneVD *cloneWizard() const;
 
     /** Handles translation event. */
     virtual void retranslateUi() /* override */;
@@ -93,6 +102,8 @@ private:
     /** Holds the description label instance. */
     QIRichTextLabel *m_pLabel;
     UIDiskFormatsGroupBox *m_pFormatGroupBox;
+
+    QSet<QString> m_userModifiedParameters;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_wizards_clonevd_UIWizardCloneVDPageBasic1_h */
