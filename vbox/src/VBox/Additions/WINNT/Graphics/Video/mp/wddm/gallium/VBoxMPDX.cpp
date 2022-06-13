@@ -1,4 +1,4 @@
-/* $Id: VBoxMPDX.cpp 94854 2022-05-05 15:10:52Z vboxsync $ */
+/* $Id: VBoxMPDX.cpp 94904 2022-05-07 09:23:48Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Graphics Driver - Direct3D (DX) driver function.
  */
@@ -880,7 +880,7 @@ NTSTATUS APIENTRY DxgkDdiDXPatch(PVBOXMP_DEVEXT pDevExt, const DXGKARG_PATCH *pP
            pPatch->pDmaBuffer, pPatch->DmaBufferSubmissionEndOffset - pPatch->DmaBufferSubmissionStartOffset,
            pPatch->PatchLocationListSubmissionLength));
 
-    DEBUG_BREAKPOINT_TEST();
+    //DEBUG_BREAKPOINT_TEST();
 
     for (UINT i = 0; i < pPatch->PatchLocationListSubmissionLength; ++i)
     {
