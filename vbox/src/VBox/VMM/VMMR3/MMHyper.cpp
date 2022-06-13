@@ -1,4 +1,4 @@
-/* $Id: MMHyper.cpp 90348 2021-07-26 21:01:38Z vboxsync $ */
+/* $Id: MMHyper.cpp 90991 2021-08-30 09:49:20Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Hypervisor Memory Area.
  */
@@ -410,26 +410,7 @@ static DECLCALLBACK(bool) mmR3HyperRelocateCallback(PVM pVM, RTGCPTR GCPtrOld, R
 
     return false;
 }
-#endif /* !PGM_WITHOUT_MAPPINGS */
 
-
-/**
- * Service a VMMCALLRING3_MMHYPER_LOCK call.
- *
- * @returns VBox status code.
- * @param   pVM     The cross context VM structure.
- */
-VMMR3DECL(int) MMR3LockCall(PVM pVM)
-{
-    PMMHYPERHEAP pHeap = pVM->mm.s.CTX_SUFF(pHyperHeap);
-
-    int rc = PDMR3CritSectEnterEx(pVM, &pHeap->Lock, true /* fHostCall */);
-    AssertRC(rc);
-    return rc;
-}
-
-
-#ifndef PGM_WITHOUT_MAPPINGS
 
 /**
  * Maps contiguous HC physical memory into the hypervisor region in the GC.

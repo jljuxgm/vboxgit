@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 90982 2021-08-29 12:54:28Z vboxsync $ */
+/* $Id: VMM.cpp 90991 2021-08-30 09:49:20Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -2545,15 +2545,6 @@ static int vmmR3ServiceCallRing3Request(PVM pVM, PVMCPU pVCpu)
         case VMMCALLRING3_PGM_LOCK:
         {
             pVCpu->vmm.s.rcCallRing3 = PGMR3LockCall(pVM);
-            break;
-        }
-
-        /*
-         * Acquire the MM hypervisor heap lock.
-         */
-        case VMMCALLRING3_MMHYPER_LOCK:
-        {
-            pVCpu->vmm.s.rcCallRing3 = MMR3LockCall(pVM);
             break;
         }
 
