@@ -1,4 +1,4 @@
-/* $Id: UIDownloaderExtensionPack.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIDownloaderExtensionPack.cpp 93982 2022-02-28 14:15:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDownloaderExtensionPack class implementation.
  */
@@ -82,7 +82,11 @@ void UIDownloaderExtensionPack::handleVerifiedObject(UINetworkReply *pReply)
             break;
 
         /* Parse buffer contents to dictionary: */
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
+        const QStringList dictionary(QString(receivedData).split("\n", Qt::SkipEmptyParts));
+#else
         const QStringList dictionary(QString(receivedData).split("\n", QString::SkipEmptyParts));
+#endif
         /* Make sure it's not empty: */
         if (dictionary.isEmpty())
             break;

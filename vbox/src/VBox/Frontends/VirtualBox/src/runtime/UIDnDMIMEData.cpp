@@ -1,4 +1,4 @@
-/* $Id: UIDnDMIMEData.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIDnDMIMEData.cpp 93982 2022-02-28 14:15:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDnDMIMEData class implementation.
  */
@@ -235,7 +235,11 @@ int UIDnDMIMEData::getDataAsVariant(const QVector<uint8_t> &vecData,
         case QVariant::List: /* Used on OS X for representing URI lists. */
         {
             QString strData = QString(reinterpret_cast<const char*>(vecData.constData()));
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
+            QStringList lstString = strData.split(DND_PATH_SEPARATOR_STR, Qt::SkipEmptyParts);
+#else
             QStringList lstString = strData.split(DND_PATH_SEPARATOR_STR, QString::SkipEmptyParts);
+#endif
 
             QVariantList lstVariant;
 
@@ -254,13 +258,17 @@ int UIDnDMIMEData::getDataAsVariant(const QVector<uint8_t> &vecData,
         case QVariant::StringList:
         {
             QString strData = QString(reinterpret_cast<const char*>(vecData.constData()));
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
+            QStringList lstString = strData.split(DND_PATH_SEPARATOR_STR, Qt::SkipEmptyParts);
+#else
             QStringList lstString = strData.split(DND_PATH_SEPARATOR_STR, QString::SkipEmptyParts);
+#endif
 
             LogFlowFunc(("\tStringList has %d entries\n", lstString.size()));
-# ifdef DEBUG
+#ifdef DEBUG
             Q_FOREACH(const QString& strCur, lstString)
                 LogFlowFunc(("\t\tString: %s\n", qPrintable(strCur)));
-# endif
+#endif
             vaData = QVariant::fromValue(lstString);
             Assert(vaData.type() == QVariant::StringList);
             break;

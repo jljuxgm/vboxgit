@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 93408 2022-01-24 11:51:32Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 93982 2022-02-28 14:15:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -2179,7 +2179,11 @@ QStringList UIExtraDataManager::extraDataStringList(const QString &strKey, const
 
     /* Few old extra-data string-lists were separated with 'semicolon' symbol.
      * All new separated by 'comma'. We have to take that into account. */
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
+    return strValue.split(QRegExp("[;,]"), Qt::SkipEmptyParts);
+#else
     return strValue.split(QRegExp("[;,]"), QString::SkipEmptyParts);
+#endif
 }
 
 void UIExtraDataManager::setExtraDataStringList(const QString &strKey, const QStringList &value, const QUuid &uID /* = GlobalID */)

@@ -1,4 +1,4 @@
-/* $Id: UINetworkReply.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UINetworkReply.cpp 93982 2022-02-28 14:15:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkReply stuff implementation.
  */
@@ -482,10 +482,18 @@ int UINetworkReplyPrivateThread::performMainRequest()
 
             /* Parse header contents: */
             const QString strHeaders = QString(m_reply);
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
+            const QStringList headers = strHeaders.split("\n", Qt::SkipEmptyParts);
+#else
             const QStringList headers = strHeaders.split("\n", QString::SkipEmptyParts);
+#endif
             foreach (const QString &strHeader, headers)
             {
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
+                const QStringList values = strHeader.split(": ", Qt::SkipEmptyParts);
+#else
                 const QStringList values = strHeader.split(": ", QString::SkipEmptyParts);
+#endif
                 if (values.size() > 1)
                     m_headers[values.at(0)] = values.at(1);
             }

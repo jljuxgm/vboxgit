@@ -1,4 +1,4 @@
-/* $Id: UIUpdateDefs.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIUpdateDefs.cpp 93982 2022-02-28 14:15:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Update routine related implementations.
  */
@@ -176,7 +176,11 @@ void VBoxUpdateData::decode()
     /* Parse other values: */
     else
     {
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
+        QStringList parser(m_strData.split(", ", Qt::SkipEmptyParts));
+#else
         QStringList parser(m_strData.split(", ", QString::SkipEmptyParts));
+#endif
 
         /* Parse 'period' value: */
         if (parser.size() > 0)

@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerGuestTable.cpp 93726 2022-02-14 14:24:29Z vboxsync $ */
+/* $Id: UIFileManagerGuestTable.cpp 93982 2022-02-28 14:15:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerGuestTable class implementation.
  */
@@ -603,7 +603,11 @@ void UIFileManagerGuestTable::goToHomeDirectory()
         emit sigLogOutput(UIErrorString::formatErrorInfo(m_comGuestSession), m_strTableName, FileManagerLogType_Error);
         return;
     }
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
+    QStringList pathList = userHome.split(UIPathOperations::delimiter, Qt::SkipEmptyParts);
+#else
     QStringList pathList = userHome.split(UIPathOperations::delimiter, QString::SkipEmptyParts);
+#endif
     goIntoDirectory(UIPathOperations::pathTrail(userHome));
 }
 

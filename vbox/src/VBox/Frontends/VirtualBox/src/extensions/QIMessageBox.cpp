@@ -1,4 +1,4 @@
-/* $Id: QIMessageBox.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: QIMessageBox.cpp 93982 2022-02-28 14:15:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIMessageBox class implementation.
  */
@@ -71,7 +71,11 @@ void QIMessageBox::setDetailsText(const QString &strText)
     AssertReturnVoid(!strText.isEmpty());
 
     /* Split details into paragraphs: */
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
+    QStringList paragraphs(strText.split("<!--EOP-->", Qt::SkipEmptyParts));
+#else
     QStringList paragraphs(strText.split("<!--EOP-->", QString::SkipEmptyParts));
+#endif
     /* Make sure details-text has at least one paragraph: */
     AssertReturnVoid(!paragraphs.isEmpty());
 
@@ -80,7 +84,11 @@ void QIMessageBox::setDetailsText(const QString &strText)
     foreach (const QString &strParagraph, paragraphs)
     {
         /* Split each paragraph into pairs: */
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
+        QStringList parts(strParagraph.split("<!--EOM-->", Qt::KeepEmptyParts));
+#else
         QStringList parts(strParagraph.split("<!--EOM-->", QString::KeepEmptyParts));
+#endif
         /* Make sure each paragraph consist of 2 parts: */
         AssertReturnVoid(parts.size() == 2);
         /* Append each pair into details-list: */
