@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 90948 2021-08-27 11:42:06Z vboxsync $ */
+/* $Id: VMMR0.cpp 90953 2021-08-27 12:45:24Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -3110,8 +3110,7 @@ static bool vmmR0LoggerFlushCommon(PRTLOGGER pLogger, PRTLOGBUFFERDESC pBufDesc,
                     /*
                      * Can we wait on the log flusher to do the work?
                      */
-                    if (   VMMRZCallRing3IsEnabled(pGVCpu)
-                        && !(pLogger->u32UserValue1 & VMMR0_LOGGER_FLAGS_FLUSHING_DISABLED))
+                    if (VMMRZCallRing3IsEnabled(pGVCpu))
                     {
                         /*
                          * Make sure we don't recurse forever here should something in the
