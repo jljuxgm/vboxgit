@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 91332 2021-09-22 15:24:30Z vboxsync $ */
+/* $Id: HostImpl.cpp 91333 2021-09-22 16:24:48Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -63,7 +63,6 @@
 #if defined(RT_OS_DARWIN) && ARCH_BITS == 32
 # include <sys/types.h>
 # include <sys/sysctl.h>
-# undef PVM
 #endif
 
 #ifdef RT_OS_LINUX

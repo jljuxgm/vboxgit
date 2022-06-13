@@ -1,4 +1,4 @@
-/* $Id: USBProxyBackend.h 90828 2021-08-24 09:44:46Z vboxsync $ */
+/* $Id: USBProxyBackend.h 91333 2021-09-22 16:24:48Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Backend (base) class.
  */
@@ -140,6 +140,7 @@ protected:
 #  define OSType Carbon_OSType
 #  include <Carbon/Carbon.h>
 #  undef OSType
+#  undef PVM
 
 /**
  * The Darwin hosted USB Proxy Backend.
