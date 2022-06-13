@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageSettings.cpp 91707 2021-10-13 10:43:17Z vboxsync $ */
+/* $Id: UIWizardExportAppPageSettings.cpp 92089 2021-10-26 17:02:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageSettings class implementation.
  */
@@ -25,7 +25,7 @@
 #include "UIApplianceExportEditorWidget.h"
 #include "UICommon.h"
 #include "UIFormEditorWidget.h"
-#include "UIMessageCenter.h"
+#include "UINotificationCenter.h"
 #include "UIWizardExportApp.h"
 #include "UIWizardExportAppPageSettings.h"
 
@@ -222,7 +222,7 @@ bool UIWizardExportAppPageSettings::validatePage()
             comForm.GetVirtualSystemDescription();
             fResult = comForm.isOk();
             if (!fResult)
-                msgCenter().cannotAcquireVirtualSystemDescriptionFormProperty(comForm);
+                UINotificationMessage::cannotAcquireVirtualSystemDescriptionFormParameter(comForm, wizard()->notificationCenter());
         }
 
         /* Final stage? */

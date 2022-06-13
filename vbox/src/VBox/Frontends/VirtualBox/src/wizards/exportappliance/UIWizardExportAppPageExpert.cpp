@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageExpert.cpp 91707 2021-10-13 10:43:17Z vboxsync $ */
+/* $Id: UIWizardExportAppPageExpert.cpp 92089 2021-10-26 17:02:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageExpert class implementation.
  */
@@ -39,6 +39,7 @@
 #include "UIFormEditorWidget.h"
 #include "UIIconPool.h"
 #include "UIMessageCenter.h"
+#include "UINotificationCenter.h"
 #include "UIToolBox.h"
 #include "UIVirtualBoxEventHandler.h"
 #include "UIVirtualBoxManager.h"
@@ -603,7 +604,7 @@ bool UIWizardExportAppPageExpert::validatePage()
             comForm.GetVirtualSystemDescription();
             fResult = comForm.isOk();
             if (!fResult)
-                msgCenter().cannotAcquireVirtualSystemDescriptionFormProperty(comForm);
+                UINotificationMessage::cannotAcquireVirtualSystemDescriptionFormParameter(comForm, wizard()->notificationCenter());
         }
 
         /* Final stage? */
@@ -789,7 +790,7 @@ void UIWizardExportAppPageExpert::updateLocalStuff()
 {
     /* Create appliance: */
     CAppliance comAppliance;
-    refreshLocalStuff(comAppliance, wizard()->machineIDs(), wizard()->uri());
+    refreshLocalStuff(comAppliance, wizard(), wizard()->machineIDs(), wizard()->uri());
     wizard()->setLocalAppliance(comAppliance);
 }
 
@@ -804,6 +805,7 @@ void UIWizardExportAppPageExpert::updateCloudStuff()
                       comClient,
                       comDescription,
                       comForm,
+                      wizard(),
                       m_comCloudProfile,
                       wizard()->machineIDs(),
                       wizard()->uri(),
