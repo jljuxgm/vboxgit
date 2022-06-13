@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 91017 2021-08-31 01:26:45Z vboxsync $ */
+/* $Id: PGMPhys.cpp 91245 2021-09-15 10:53:06Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -4895,25 +4895,6 @@ int pgmR3PhysChunkMap(PVM pVM, uint32_t idChunk, PPPGMCHUNKR3MAP ppChunk)
     }
 
     *ppChunk = pChunk;
-    return rc;
-}
-
-
-/**
- * For VMMCALLRING3_PGM_MAP_CHUNK, considered internal.
- *
- * @returns see pgmR3PhysChunkMap.
- * @param   pVM         The cross context VM structure.
- * @param   idChunk     The chunk to map.
- */
-VMMR3DECL(int) PGMR3PhysChunkMap(PVM pVM, uint32_t idChunk)
-{
-    PPGMCHUNKR3MAP pChunk;
-    int rc;
-
-    PGM_LOCK_VOID(pVM);
-    rc = pgmR3PhysChunkMap(pVM, idChunk, &pChunk);
-    PGM_UNLOCK(pVM);
     return rc;
 }
 

@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 91243 2021-09-15 10:19:31Z vboxsync $ */
+/* $Id: VMMR0.cpp 91245 2021-09-15 10:53:06Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -1287,9 +1287,6 @@ static void vmmR0RecordRC(PVMCC pVM, PVMCPUCC pVCpu, int rc)
         case VINF_VMM_CALL_HOST:
             switch (pVCpu->vmm.s.enmCallRing3Operation)
             {
-                case VMMCALLRING3_PGM_MAP_CHUNK:
-                    STAM_COUNTER_INC(&pVM->vmm.s.StatRZCallPGMMapChunk);
-                    break;
                 case VMMCALLRING3_PGM_ALLOCATE_HANDY_PAGES:
                     STAM_COUNTER_INC(&pVM->vmm.s.StatRZCallPGMAllocHandy);
                     break;
