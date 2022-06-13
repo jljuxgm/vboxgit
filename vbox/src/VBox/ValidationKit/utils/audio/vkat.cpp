@@ -1,4 +1,4 @@
-/* $Id: vkat.cpp 90830 2021-08-24 10:47:52Z vboxsync $ */
+/* $Id: vkat.cpp 90851 2021-08-24 15:50:26Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) utility for testing and validating the audio stack.
  */
@@ -574,6 +574,7 @@ int audioTestWorker(PAUDIOTESTENV pTstEnv)
                     break;
             }
 
+            RTTestPrintf(g_hTest, RTTESTLVL_DEBUG, "Ending test set on guest ...\n");
             int rc2 = AudioTestSvcClientTestSetEnd(&pTstEnv->u.Host.AtsClGuest, pTstEnv->szTag);
             if (RT_FAILURE(rc2))
             {
@@ -582,6 +583,7 @@ int audioTestWorker(PAUDIOTESTENV pTstEnv)
                     rc = rc2;
             }
 
+            RTTestPrintf(g_hTest, RTTESTLVL_DEBUG, "Ending test set on host (Validation Kit audio driver) ...\n");
             rc2 = AudioTestSvcClientTestSetEnd(&pTstEnv->u.Host.AtsClValKit, pTstEnv->szTag);
             if (RT_FAILURE(rc2))
             {
