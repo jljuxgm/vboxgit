@@ -1,4 +1,4 @@
-/* $Id: tstClipboardMockHGCM.cpp 94228 2022-03-14 19:19:18Z vboxsync $ */
+/* $Id: tstClipboardMockHGCM.cpp 94229 2022-03-14 19:20:38Z vboxsync $ */
 /** @file
  * Shared Clipboard host service test case.
  */
@@ -985,9 +985,6 @@ int main(int argc, char *argv[])
 
     TstHgcmMockSvcStop(pSvc);
     TstHgcmMockSvcDestroy(pSvc);
-
-    VBOXHGCMSVCFNTABLE fn;
-    VBoxHGCMSvcLoad(&fn);
 
     /*
      * Summary
