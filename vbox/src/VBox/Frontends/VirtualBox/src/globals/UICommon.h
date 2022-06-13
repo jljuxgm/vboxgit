@@ -1,4 +1,4 @@
-/* $Id: UICommon.h 90925 2021-08-26 16:25:27Z vboxsync $ */
+/* $Id: UICommon.h 90936 2021-08-27 08:27:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class declaration.
  */
@@ -35,13 +35,15 @@
 #endif
 
 /* COM includes: */
-#include "VBox/com/Guid.h"
 #include "CGuestOSType.h"
 #include "CHost.h"
 #include "CMedium.h"
 #include "CSession.h"
-#include "CVirtualBoxClient.h"
 #include "CVirtualBox.h"
+#include "CVirtualBoxClient.h"
+
+/* Other VBox includes: */
+#include "VBox/com/Guid.h"
 
 /* Other includes: */
 #ifdef VBOX_WS_X11
@@ -58,9 +60,9 @@ class CCloudMachine;
 class CHostVideoInputDevice;
 class CMachine;
 class CUSBDevice;
+class UIIconPoolGeneral;
 class UIMedium;
 class UIMediumEnumerator;
-class UIIconPoolGeneral;
 class UIThreadPool;
 
 /** QObject subclass containing common GUI functionality. */
