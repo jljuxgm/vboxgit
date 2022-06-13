@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageExpert.cpp 92089 2021-10-26 17:02:00Z vboxsync $ */
+/* $Id: UIWizardExportAppPageExpert.cpp 92165 2021-11-01 13:08:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageExpert class implementation.
  */
@@ -527,6 +527,8 @@ void UIWizardExportAppPageExpert::retranslateUi()
 
 void UIWizardExportAppPageExpert::initializePage()
 {
+    /* Make sure form-editor knows notification-center: */
+    m_pFormEditor->setNotificationCenter(wizard()->notificationCenter());
     /* Choose 1st tool to be chosen initially: */
     m_pToolBox->setCurrentPage(0);
     /* Populate VM items: */

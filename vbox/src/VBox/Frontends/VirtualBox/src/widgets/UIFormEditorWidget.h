@@ -1,4 +1,4 @@
-/* $Id: UIFormEditorWidget.h 92151 2021-10-29 14:47:33Z vboxsync $ */
+/* $Id: UIFormEditorWidget.h 92165 2021-11-01 13:08:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFormEditorWidget class declaration.
  */
@@ -50,6 +50,8 @@ public:
 
     /** Returns the notification-center reference. */
     UINotificationCenter *notificationCenter() const { return m_pNotificationCenter; }
+    /** Defines the @a pNotificationCenter reference. */
+    void setNotificationCenter(UINotificationCenter *pNotificationCenter) { m_pNotificationCenter = pNotificationCenter; }
 
     /** Returns horizontal header reference. */
     QHeaderView *horizontalHeader() const;
