@@ -1,4 +1,4 @@
-/* $Id: IOMInternal.h 90346 2021-07-26 19:55:53Z vboxsync $ */
+/* $Id: IOMInternal.h 90347 2021-07-26 20:36:28Z vboxsync $ */
 /** @file
  * IOM - Internal header file.
  */
@@ -570,18 +570,18 @@ PGM_ALL_CB2_PROTO(FNPGMPHYSHANDLER) iomMmioHandlerNew;
 
 /* IOM locking helpers. */
 #ifdef IOM_WITH_CRIT_SECT_RW
-# define IOM_LOCK_EXCL(a_pVM)                   PDMCritSectRwEnterExcl(&(a_pVM)->iom.s.CritSect, VERR_SEM_BUSY)
-# define IOM_UNLOCK_EXCL(a_pVM)                 do { PDMCritSectRwLeaveExcl(&(a_pVM)->iom.s.CritSect); } while (0)
+# define IOM_LOCK_EXCL(a_pVM)                   PDMCritSectRwEnterExcl((a_pVM), &(a_pVM)->iom.s.CritSect, VERR_SEM_BUSY)
+# define IOM_UNLOCK_EXCL(a_pVM)                 do { PDMCritSectRwLeaveExcl((a_pVM), &(a_pVM)->iom.s.CritSect); } while (0)
 # if 0 /* (in case needed for debugging) */
 # define IOM_LOCK_SHARED_EX(a_pVM, a_rcBusy)    PDMCritSectRwEnterExcl(&(a_pVM)->iom.s.CritSect, (a_rcBusy))
 # define IOM_UNLOCK_SHARED(a_pVM)               do { PDMCritSectRwLeaveExcl(&(a_pVM)->iom.s.CritSect); } while (0)
 # define IOM_IS_SHARED_LOCK_OWNER(a_pVM)        PDMCritSectRwIsWriteOwner(&(a_pVM)->iom.s.CritSect)
 # else
-# define IOM_LOCK_SHARED_EX(a_pVM, a_rcBusy)    PDMCritSectRwEnterShared(&(a_pVM)->iom.s.CritSect, (a_rcBusy))
-# define IOM_UNLOCK_SHARED(a_pVM)               do { PDMCritSectRwLeaveShared(&(a_pVM)->iom.s.CritSect); } while (0)
-# define IOM_IS_SHARED_LOCK_OWNER(a_pVM)        PDMCritSectRwIsReadOwner(&(a_pVM)->iom.s.CritSect, true)
+# define IOM_LOCK_SHARED_EX(a_pVM, a_rcBusy)    PDMCritSectRwEnterShared((a_pVM), &(a_pVM)->iom.s.CritSect, (a_rcBusy))
+# define IOM_UNLOCK_SHARED(a_pVM)               do { PDMCritSectRwLeaveShared((a_pVM), &(a_pVM)->iom.s.CritSect); } while (0)
+# define IOM_IS_SHARED_LOCK_OWNER(a_pVM)        PDMCritSectRwIsReadOwner((a_pVM), &(a_pVM)->iom.s.CritSect, true)
 # endif
-# define IOM_IS_EXCL_LOCK_OWNER(a_pVM)          PDMCritSectRwIsWriteOwner(&(a_pVM)->iom.s.CritSect)
+# define IOM_IS_EXCL_LOCK_OWNER(a_pVM)          PDMCritSectRwIsWriteOwner((a_pVM), &(a_pVM)->iom.s.CritSect)
 #else
 # define IOM_LOCK_EXCL(a_pVM)                   PDMCritSectEnter((a_pVM), &(a_pVM)->iom.s.CritSect, VERR_SEM_BUSY)
 # define IOM_UNLOCK_EXCL(a_pVM)                 do { PDMCritSectLeave((a_pVM), &(a_pVM)->iom.s.CritSect); } while (0)

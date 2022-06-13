@@ -1,4 +1,4 @@
-/* $Id: PDMAllCritSectBoth.cpp 90346 2021-07-26 19:55:53Z vboxsync $ */
+/* $Id: PDMAllCritSectBoth.cpp 90347 2021-07-26 20:36:28Z vboxsync $ */
 /** @file
  * PDM - Code Common to Both Critical Section Types, All Contexts.
  */
@@ -57,7 +57,7 @@ VMM_INT_DECL(void) PDMCritSectBothFF(PVMCC pVM, PVMCPUCC pVCpu)
                                                                    pVCpu->pdm.s.apQueuedCritSectRwShrdLeaves[i]);
 # endif
 
-        pdmCritSectRwLeaveSharedQueued(pCritSectRw);
+        pdmCritSectRwLeaveSharedQueued(pVM, pCritSectRw);
         LogFlow(("PDMR3CritSectFF: %p (R/W)\n", pCritSectRw));
     }
 
@@ -73,7 +73,7 @@ VMM_INT_DECL(void) PDMCritSectBothFF(PVMCC pVM, PVMCPUCC pVCpu)
                                                                    pVCpu->pdm.s.apQueuedCritSectRwExclLeaves[i]);
 # endif
 
-        pdmCritSectRwLeaveExclQueued(pCritSectRw);
+        pdmCritSectRwLeaveExclQueued(pVM, pCritSectRw);
         LogFlow(("PDMR3CritSectFF: %p (R/W)\n", pCritSectRw));
     }
 

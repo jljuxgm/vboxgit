@@ -1,4 +1,4 @@
-/* $Id: TMR0.cpp 87814 2021-02-19 22:03:56Z vboxsync $ */
+/* $Id: TMR0.cpp 90347 2021-07-26 20:36:28Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, host ring-0 context.
  */
@@ -96,7 +96,7 @@ VMMR0_INT_DECL(int) TMR0TimerQueueGrow(PGVM pGVM, uint32_t idxQueue, uint32_t cM
     AssertCompile(RT_ELEMENTS(pGVM->tmr0.s.aTimerQueues) == RT_ELEMENTS(pGVM->tm.s.aTimerQueues));
     PTMTIMERQUEUER0 pQueueR0     = &pGVM->tmr0.s.aTimerQueues[idxQueue];
     PTMTIMERQUEUE   pQueueShared = &pGVM->tm.s.aTimerQueues[idxQueue];
-    AssertMsgReturn(PDMCritSectRwIsWriteOwner(&pQueueShared->AllocLock),
+    AssertMsgReturn(PDMCritSectRwIsWriteOwner(pGVM, &pQueueShared->AllocLock),
                     ("queue=%s %.*Rhxs\n", pQueueShared->szName, sizeof(pQueueShared->AllocLock), &pQueueShared->AllocLock),
                     VERR_NOT_OWNER);
 

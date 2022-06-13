@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 90346 2021-07-26 19:55:53Z vboxsync $ */
+/* $Id: PDMInternal.h 90347 2021-07-26 20:36:28Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -1715,8 +1715,8 @@ int         pdmR3IommuMemAccessBulkWriteCCPtr(PPDMDEVINS pDevIns, PPDMPCIDEV pPc
 #endif
 
 #if defined(IN_RING3) || defined(IN_RING0)
-void        pdmCritSectRwLeaveSharedQueued(PPDMCRITSECTRW pThis);
-void        pdmCritSectRwLeaveExclQueued(PPDMCRITSECTRW pThis);
+void        pdmCritSectRwLeaveSharedQueued(PVMCC pVM, PPDMCRITSECTRW pThis);
+void        pdmCritSectRwLeaveExclQueued(PVMCC pVM, PPDMCRITSECTRW pThis);
 #endif
 
 #ifdef IN_RING0
