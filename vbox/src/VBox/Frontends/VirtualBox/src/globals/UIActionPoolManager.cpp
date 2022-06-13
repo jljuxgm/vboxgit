@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.cpp 94014 2022-03-01 09:13:50Z vboxsync $ */
+/* $Id: UIActionPoolManager.cpp 94089 2022-03-04 14:06:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class implementation.
  */
@@ -1581,6 +1581,36 @@ private:
     bool  m_fSerial;
     /** Holds whether this command is for unix. */
     bool  m_fUnix;
+};
+
+/** Simple action extension, used as 'Show Log' action class. */
+class UIActionSimpleManagerConsolePerformShowLog : public UIActionSimple
+{
+    Q_OBJECT;
+
+public:
+
+    /** Constructs action passing @a pParent to the base-class. */
+    UIActionSimpleManagerConsolePerformShowLog(UIActionPool *pParent)
+        : UIActionSimple(pParent,
+                         ":/vm_show_logs_16px.png",
+                         ":/vm_show_logs_disabled_16px.png")
+    {}
+
+protected:
+
+    /** Returns shortcut extra-data ID. */
+    virtual QString shortcutExtraDataID() const RT_OVERRIDE
+    {
+        return QString("ShowConsoleLog");
+    }
+
+    /** Handles translation event. */
+    virtual void retranslateUi() RT_OVERRIDE
+    {
+        setName(QApplication::translate("UIActionPool", "Show &Log"));
+        setStatusTip(QApplication::translate("UIActionPool", "Show cloud console log"));
+    }
 };
 
 
@@ -3612,6 +3642,7 @@ void UIActionPoolManager::preparePool()
     m_pool[UIActionIndexMN_M_Machine_M_Console_S_CopyCommandVNCUnix] = new UIActionSimpleManagerConsolePerformCopyCommand(this, false, true);
     m_pool[UIActionIndexMN_M_Machine_M_Console_S_CopyCommandVNCWindows] = new UIActionSimpleManagerConsolePerformCopyCommand(this, false, false);
     m_pool[UIActionIndexMN_M_Machine_M_Console_S_ConfigureApplications] = new UIActionSimpleManagerConsolePerformConfigureApplications(this);
+    m_pool[UIActionIndexMN_M_Machine_M_Console_S_ShowLog] = new UIActionSimpleManagerConsolePerformShowLog(this);
     m_pool[UIActionIndexMN_M_Machine_M_Close] = new UIActionMenuManagerClose(this);
     m_pool[UIActionIndexMN_M_Machine_M_Close_S_Detach] = new UIActionSimpleManagerClosePerformDetach(this);
     m_pool[UIActionIndexMN_M_Machine_M_Close_S_SaveState] = new UIActionSimpleManagerClosePerformSave(this);
@@ -3927,6 +3958,7 @@ void UIActionPoolManager::setShortcutsVisible(int iIndex, bool fVisible)
                     << action(UIActionIndexMN_M_Machine_M_Console_S_CopyCommandVNCUnix)
                     << action(UIActionIndexMN_M_Machine_M_Console_S_CopyCommandVNCWindows)
                     << action(UIActionIndexMN_M_Machine_M_Console_S_ConfigureApplications)
+                    << action(UIActionIndexMN_M_Machine_M_Console_S_ShowLog)
                     // << action(UIActionIndexMN_M_Machine_M_Close_S_Detach)
                     << action(UIActionIndexMN_M_Machine_M_Close_S_SaveState)
                     << action(UIActionIndexMN_M_Machine_M_Close_S_Terminate)

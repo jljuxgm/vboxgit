@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.h 93990 2022-02-28 15:34:57Z vboxsync $ */
+/* $Id: UIActionPoolManager.h 94089 2022-03-04 14:06:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class declaration.
  */
@@ -117,6 +117,7 @@ enum UIActionIndexMN
     UIActionIndexMN_M_Machine_M_Console_S_CopyCommandVNCUnix,
     UIActionIndexMN_M_Machine_M_Console_S_CopyCommandVNCWindows,
     UIActionIndexMN_M_Machine_M_Console_S_ConfigureApplications,
+    UIActionIndexMN_M_Machine_M_Console_S_ShowLog,
     UIActionIndexMN_M_Machine_M_Close,
     UIActionIndexMN_M_Machine_M_Close_S_Detach,
     UIActionIndexMN_M_Machine_M_Close_S_SaveState,

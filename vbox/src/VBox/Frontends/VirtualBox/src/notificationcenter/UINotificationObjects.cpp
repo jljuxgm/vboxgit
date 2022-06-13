@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 93328 2022-01-18 16:33:39Z vboxsync $ */
+/* $Id: UINotificationObjects.cpp 94089 2022-03-04 14:06:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -3255,6 +3255,65 @@ CProgress UINotificationProgressCloudConsoleConnectionDelete::createProgress(COM
     comResult = m_comMachine;
     /* Return progress-wrapper: */
     return comProgress;
+}
+
+
+/*********************************************************************************************************************************
+*   Class UINotificationProgressCloudConsoleLogAcquire implementation.                                                           *
+*********************************************************************************************************************************/
+
+UINotificationProgressCloudConsoleLogAcquire::UINotificationProgressCloudConsoleLogAcquire(const CCloudMachine &comMachine)
+    : m_comMachine(comMachine)
+{
+    connect(this, &UINotificationProgress::sigProgressFinished,
+            this, &UINotificationProgressCloudConsoleLogAcquire::sltHandleProgressFinished);
+}
+
+QString UINotificationProgressCloudConsoleLogAcquire::name() const
+{
+    return UINotificationProgress::tr("Acquire cloud console log ...");
+}
+
+QString UINotificationProgressCloudConsoleLogAcquire::details() const
+{
+    return UINotificationProgress::tr("<b>Cloud VM Name:</b> %1").arg(m_strName);
+}
+
+CProgress UINotificationProgressCloudConsoleLogAcquire::createProgress(COMResult &comResult)
+{
+    /* Acquire cloud VM name: */
+    m_strName = m_comMachine.GetName();
+    if (!m_comMachine.isOk())
+    {
+        comResult = m_comMachine;
+        return CProgress();
+    }
+
+    /* Initialize progress-wrapper: */
+    CProgress comProgress = m_comMachine.GetConsoleHistory(m_comStream);
+    /* Store COM result: */
+    comResult = m_comMachine;
+    /* Return progress-wrapper: */
+    return comProgress;
+}
+
+void UINotificationProgressCloudConsoleLogAcquire::sltHandleProgressFinished()
+{
+    /* Read the byte array: */
+    QVector<BYTE> byteArray;
+    while (true)
+    {
+        const QVector<BYTE> byteChunk = m_comStream.Read(64 * _1K, 0);
+        if (byteChunk.size() == 0)
+            break;
+        byteArray += byteChunk;
+    }
+    if (byteArray.size() == 0)
+        return;
+
+    /* Convert it to string and send away: */
+    const QString strLog = QString::fromUtf8(reinterpret_cast<const char *>(byteArray.data()), byteArray.size());
+    emit sigLogRead(m_strName, strLog);
 }
 
 

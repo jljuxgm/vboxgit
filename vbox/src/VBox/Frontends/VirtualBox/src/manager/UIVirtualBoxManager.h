@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 93990 2022-02-28 15:34:57Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.h 94089 2022-03-04 14:06:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -248,6 +248,10 @@ private slots:
         void sltPerformCopyCommandVNCUnix();
         /** Handles call to copy VNC console command for Windows. */
         void sltPerformCopyCommandVNCWindows();
+        /** Handles call to show console log. */
+        void sltPerformShowLog();
+        /** Handles call about console @a strLog for cloud VM with @a strName read. */
+        void sltHandleConsoleLogRead(const QString &strName, const QString &strLog);
         /** Handles call to execute external application. */
         void sltExecuteExternalApplication();
 
