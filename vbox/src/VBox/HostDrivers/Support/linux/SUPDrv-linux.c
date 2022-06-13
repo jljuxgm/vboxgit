@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-linux.c 91551 2021-10-04 22:01:46Z vboxsync $ */
+/* $Id: SUPDrv-linux.c 91552 2021-10-04 22:05:46Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Linux specifics.
  */
@@ -518,7 +518,7 @@ static int vboxdrvLinuxCreateCommon(struct inode *pInode, struct file *pFilp, bo
     if (   fUnrestricted
         && vboxdrvLinuxEuidInNs() != 0 /* root */ )
     {
-        Log(("VBoxDrvLinuxCreate: euid=%d, expected 0 (root)\n", vboxdrvLinuxEuid()));
+        Log(("VBoxDrvLinuxCreate: euid=%d, expected 0 (root)\n", vboxdrvLinuxEuidInNs()));
         return -EPERM;
     }
 #endif /* VBOX_WITH_HARDENING */
