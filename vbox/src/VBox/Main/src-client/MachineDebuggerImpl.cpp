@@ -1,4 +1,4 @@
-/* $Id: MachineDebuggerImpl.cpp 93444 2022-01-26 18:01:15Z vboxsync $ */
+/* $Id: MachineDebuggerImpl.cpp 93445 2022-01-26 18:24:49Z vboxsync $ */
 /** @file
  * VBox IMachineDebugger COM class implementation (VBoxC).
  */
@@ -900,7 +900,8 @@ static DECLCALLBACK(void) MachineDebuggerInfoPrintf(PCDBGFINFOHLP pHlp, const ch
 /**
  * Initializes the debug info string buffer formatter
  *
- * @param   pHlp                The help structure to init.
+ * @param   pHlp    The help structure to init.
+ * @param   pVMM    The VMM vtable.
  */
 static void MachineDebuggerInfoInit(PMACHINEDEBUGGERINOFHLP pHlp, PCVMMR3VTABLE pVMM)
 {
