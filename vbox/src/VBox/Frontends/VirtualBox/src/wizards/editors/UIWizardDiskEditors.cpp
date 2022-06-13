@@ -1,4 +1,4 @@
-/* $Id: UIWizardDiskEditors.cpp 91272 2021-09-16 07:48:28Z vboxsync $ */
+/* $Id: UIWizardDiskEditors.cpp 91277 2021-09-16 11:50:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class implementation.
  */
@@ -251,7 +251,6 @@ void UIDiskVariantWidget::updateMediumVariantWidgetsAfterFormatChange(const CMed
     m_fIsCreateDynamicPossible = uCapabilities & KMediumFormatCapabilities_CreateDynamic;
     m_fIsCreateFixedPossible = uCapabilities & KMediumFormatCapabilities_CreateFixed;
     m_fIsCreateSplitPossible = uCapabilities & KMediumFormatCapabilities_CreateSplit2G;
-
     m_pFixedCheckBox->setEnabled(true);
     if (!m_fIsCreateDynamicPossible)
     {

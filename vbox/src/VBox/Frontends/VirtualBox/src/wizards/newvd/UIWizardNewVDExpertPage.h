@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDExpertPage.h 91272 2021-09-16 07:48:28Z vboxsync $ */
+/* $Id: UIWizardNewVDExpertPage.h 91277 2021-09-16 11:50:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDExpertPage class declaration.
  */
@@ -25,7 +25,8 @@
 #include "UINativeWizardPage.h"
 
 /* Forward declarations: */
-class UIDiskFormatsGroupBox;
+class QGroupBox;
+class UIDiskFormatsComboBox;
 class UIDiskVariantWidget;
 class UIMediumSizeAndPathGroupBox;
 
@@ -63,8 +64,9 @@ private:
    /** @name Widgets
      * @{ */
        UIMediumSizeAndPathGroupBox *m_pSizeAndPathGroup;
-       UIDiskFormatsGroupBox *m_pFormatComboxBox;
+       UIDiskFormatsComboBox *m_pFormatComboxBox;
        UIDiskVariantWidget *m_pVariantWidget;
+       QGroupBox *m_pFormatVariantGroupBox;
    /** @} */
 
    /** @name Variable
