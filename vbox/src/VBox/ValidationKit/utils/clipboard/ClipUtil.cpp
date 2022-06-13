@@ -1,4 +1,4 @@
-/* $Id: ClipUtil.cpp 92025 2021-10-25 11:47:10Z vboxsync $ */
+/* $Id: ClipUtil.cpp 92026 2021-10-25 11:49:23Z vboxsync $ */
 /** @file
  * ClipUtil - Clipboard Utility
  */
@@ -37,7 +37,7 @@
 #endif
 
 #include <iprt/assert.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/file.h>
 #include <iprt/getopt.h>
 #include <iprt/initterm.h>
@@ -47,8 +47,6 @@
 #include <iprt/string.h>
 #include <iprt/stream.h>
 #include <iprt/utf16.h>
-#include <iprt/time.h>
-#include <iprt/thread.h>
 #include <iprt/zero.h>
 
 #ifdef RT_OS_WINDOWS
@@ -865,7 +863,7 @@ int main(int argc, char *argv[])
 
             case 'V':
             {
-                char szRev[] = "$Revision: 92025 $";
+                char szRev[] = "$Revision: 92026 $";
                 szRev[RT_ELEMENTS(szRev) - 2] = '\0';
                 RTPrintf(RTStrStrip(strchr(szRev, ':') + 1));
                 return RTEXITCODE_SUCCESS;
@@ -892,5 +890,4 @@ int main(int argc, char *argv[])
 
     return rcExit;
 }
-
 
