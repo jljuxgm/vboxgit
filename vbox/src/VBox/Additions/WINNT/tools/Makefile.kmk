@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: Makefile.kmk 92314 2021-11-10 10:56:15Z vboxsync $
 ## @file
 # Sub-Makefile for the Windows NT Additions Tools.
 #
@@ -57,6 +57,14 @@ ifdef VBOX_SIGNING_MODE
   endif
  endif
 endif
+
+#
+# Install the registry file for bypassing the Windows 11 installer checks.
+#
+INSTALLS += AdditionsInstW11Bypass
+AdditionsInstW11Bypass_INST = $(INST_ADDITIONS)
+AdditionsInstW11Bypass_MODE = a+r,u+w
+AdditionsInstW11Bypass_SOURCES = windows11-bypass.reg
 
 include $(FILE_KBUILD_SUB_FOOTER)
 
