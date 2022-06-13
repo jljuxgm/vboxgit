@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedFoldersSvc.cpp 90805 2021-08-23 19:09:17Z vboxsync $ */
+/* $Id: VBoxSharedFoldersSvc.cpp 91207 2021-09-10 15:47:11Z vboxsync $ */
 /** @file
  * Shared Folders - Host service entry points.
  */
@@ -766,8 +766,8 @@ static DECLCALLBACK(void) svcCall (void *, VBOXHGCMCALLHANDLE callHandle, uint32
             /* Update parameters.*/
             if (RT_SUCCESS(rc))
             {
+                paParms[2].u.uint64 = offFile;
                 paParms[3].u.uint32 = cbWrite;
-                paParms[4].u.uint64 = offFile;
             }
             else
                 paParms[3].u.uint32 = 0;
