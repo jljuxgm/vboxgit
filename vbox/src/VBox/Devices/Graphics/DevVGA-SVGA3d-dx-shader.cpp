@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-dx-shader.cpp 91525 2021-10-01 16:42:36Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-dx-shader.cpp 91526 2021-10-01 16:46:10Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device - VGPU10+ (DX) shader utilities.
  */
@@ -1269,7 +1269,6 @@ static int dxbcParseOperand(DXBCTokenReader *r, VGPUOperand *paOperand, uint32_t
         operand1.value = dxbcTokenReaderRead32(r);
     }
 
-    ASSERT_GUEST_RETURN(operand0.indexDimension <= VGPU10_OPERAND_INDEX_3D, VERR_INVALID_PARAMETER);
     ASSERT_GUEST_RETURN(operand0.operandType < VGPU10_NUM_OPERANDS, VERR_INVALID_PARAMETER);
 
     if (   operand0.operandType == VGPU10_OPERAND_TYPE_IMMEDIATE32
