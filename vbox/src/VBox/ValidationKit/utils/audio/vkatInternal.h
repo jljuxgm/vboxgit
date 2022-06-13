@@ -1,4 +1,4 @@
-/* $Id: vkatInternal.h 91632 2021-10-08 06:59:29Z vboxsync $ */
+/* $Id: vkatInternal.h 91946 2021-10-21 13:30:54Z vboxsync $ */
 /** @file
  * VKAT - Internal header file for common definitions + structs.
  */
@@ -395,6 +395,8 @@ void       audioTestShowLogo(PRTSTREAM pStream);
 
 /** @name Driver stack
  * @{ */
+int         AudioTestDriverStackPerformSelftest(void);
+
 void        audioTestDriverStackDelete(PAUDIOTESTDRVSTACK pDrvStack);
 int         audioTestDriverStackInitEx(PAUDIOTESTDRVSTACK pDrvStack, PCPDMDRVREG pDrvReg, bool fEnabledIn, bool fEnabledOut, bool fWithDrvAudio);
 int         audioTestDriverStackInit(PAUDIOTESTDRVSTACK pDrvStack, PCPDMDRVREG pDrvReg, bool fWithDrvAudio);

@@ -1,4 +1,4 @@
-/* $Id: vkatCmdSelfTest.cpp 91653 2021-10-10 08:32:28Z vboxsync $ */
+/* $Id: vkatCmdSelfTest.cpp 91946 2021-10-21 13:30:54Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) - Self test.
  *
@@ -111,6 +111,61 @@ typedef SELFTESTCTX *PSELFTESTCTX;
 
 /** The global self-text context. */
 static SELFTESTCTX g_Ctx;
+
+
+/*********************************************************************************************************************************
+*   Driver stack self-test implementation                                                                                                     *
+*********************************************************************************************************************************/
+
+/**
+ * Performs a (quick) audio driver stack self test.
+ *
+ * Local only, no guest/host communication involved.
+ *
+ * @returns VBox status code.
+ */
+int AudioTestDriverStackPerformSelftest(void)
+{
+    PCPDMDRVREG pDrvReg = AudioTestGetDefaultBackend();
+
+    RTTestPrintf(g_hTest, RTTESTLVL_ALWAYS, "Testing driver stack started\n");
+
+    AUDIOTESTDRVSTACK DrvStack;
+    int rc = audioTestDriverStackProbe(&DrvStack, pDrvReg,
+                                       true /* fEnabledIn */, true /* fEnabledOut */, false /* fWithDrvAudio */);
+    AssertRCReturn(rc, rc);
+
+    AUDIOTESTIOOPTS IoOpts;
+    audioTestIoOptsInitDefaults(&IoOpts);
+
+    PPDMAUDIOSTREAM   pStream;
+    PDMAUDIOSTREAMCFG CfgAcq;
+    rc = audioTestDriverStackStreamCreateOutput(&DrvStack, &IoOpts.Props,
+                                                IoOpts.cMsBufferSize, IoOpts.cMsPreBuffer, IoOpts.cMsSchedulingHint,
+                                                &pStream, &CfgAcq);
+    AssertRCReturn(rc, rc);
+
+    rc = audioTestDriverStackStreamEnable(&DrvStack, pStream);
+    AssertRCReturn(rc, rc);
+
+    AssertReturn(audioTestDriverStackStreamIsOkay(&DrvStack, pStream), VERR_AUDIO_STREAM_NOT_READY);
+
+    uint8_t abBuf[_4K];
+    memset(abBuf, 0x42, sizeof(abBuf));
+
+    uint32_t cbWritten;
+    rc = audioTestDriverStackStreamPlay(&DrvStack, pStream, abBuf, sizeof(abBuf), &cbWritten);
+    AssertRCReturn(rc, rc);
+    AssertReturn(cbWritten == sizeof(abBuf), VERR_AUDIO_STREAM_NOT_READY);
+
+    audioTestDriverStackStreamDrain(&DrvStack, pStream, true /* fSync */);
+    audioTestDriverStackStreamDestroy(&DrvStack, pStream);
+
+    audioTestDriverStackDelete(&DrvStack);
+
+    RTTestPrintf(g_hTest, RTTESTLVL_ALWAYS, "Testing driver stack ended with %Rrc\n", rc);
+    return rc;
+}
 
 
 /*********************************************************************************************************************************
@@ -345,6 +400,10 @@ DECLCALLBACK(RTEXITCODE) audioTestCmdSelftestHandler(PRTGETOPTSTATE pGetState)
                 return RTGetOptPrintError(rc, &ValueUnion);
         }
     }
+
+    rc = AudioTestDriverStackPerformSelftest();
+    if (RT_FAILURE(rc))
+        return RTMsgErrorExit(RTEXITCODE_FAILURE, "Testing driver stack failed: %Rrc\n", rc);
 
     /* Go with the Validation Kit audio backend if nothing else is specified. */
     if (g_Ctx.pDrvReg == NULL)

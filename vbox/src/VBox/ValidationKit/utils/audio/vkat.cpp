@@ -1,4 +1,4 @@
-/* $Id: vkat.cpp 91934 2021-10-21 10:49:03Z vboxsync $ */
+/* $Id: vkat.cpp 91946 2021-10-21 13:30:54Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) utility for testing and validating the audio stack.
  */
@@ -938,6 +938,11 @@ static DECLCALLBACK(RTEXITCODE) audioTestMain(PRTGETOPTSTATE pGetState)
                           cPcmSampleBit ? cPcmSampleBit / 2 : 2 /* 16-bit */, fPcmSigned /* fSigned */,
                           cPcmChannels  ? cPcmChannels      : 2 /* Stereo */, uPcmHz ? uPcmHz : 44100);
     }
+
+    /* Do this first before everything else below. */
+    rc = AudioTestDriverStackPerformSelftest();
+    if (RT_FAILURE(rc))
+        return RTMsgErrorExit(RTEXITCODE_FAILURE, "Testing driver stack failed: %Rrc\n", rc);
 
     AUDIOTESTDRVSTACK DrvStack;
     if (fProbeBackends)
