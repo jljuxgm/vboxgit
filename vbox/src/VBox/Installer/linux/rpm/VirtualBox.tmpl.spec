@@ -1,4 +1,4 @@
-# $Id: VirtualBox.tmpl.spec 89669 2021-06-14 08:57:18Z vboxsync $
+# $Id: VirtualBox.tmpl.spec 90038 2021-07-05 19:29:55Z vboxsync $
 ## @file
 # Spec file for creating VirtualBox rpm packages
 #
@@ -18,7 +18,7 @@
 %define %SPEC% 1
 %define %OSE% 1
 %define %PYTHON% 1
-%define %CHM% 1
+%define %QHELP% 1
 %define VBOXDOCDIR %{_defaultdocdir}/%NAME%
 %global __requires_exclude_from ^/usr/lib/virtualbox/VBoxPython.*$|^/usr/lib/python.*$|^.*\\.py$
 %{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")}
@@ -191,7 +191,7 @@ mv virtualbox.desktop $RPM_BUILD_ROOT/usr/share/applications/virtualbox.desktop
 mv VBox.png $RPM_BUILD_ROOT/usr/share/pixmaps/VBox.png
 %{!?is_ose: mv LICENSE $RPM_BUILD_ROOT%{VBOXDOCDIR}}
 mv UserManual*.pdf $RPM_BUILD_ROOT%{VBOXDOCDIR}
-%{?with_chm: mv VirtualBox*.chm $RPM_BUILD_ROOT%{VBOXDOCDIR}}
+%{?with_qhelp: mv VirtualBox*.qch VirtualBox*.qhc $RPM_BUILD_ROOT%{VBOXDOCDIR}}
 install -m 755 -d $RPM_BUILD_ROOT/usr/lib/debug/usr/lib/virtualbox
 %if %{?rpm_suse:1}%{!?rpm_suse:0}
 rm *.debug
