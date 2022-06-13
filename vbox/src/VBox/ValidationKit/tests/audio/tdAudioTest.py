@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tdAudioTest.py 94245 2022-03-15 14:09:32Z vboxsync $
+# $Id: tdAudioTest.py 94250 2022-03-15 16:17:59Z vboxsync $
 
 """
 AudioTest test driver which invokes the VKAT (Validation Kit Audio Test)
@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 94245 $"
+__version__ = "$Revision: 94250 $"
 
 # Standard Python imports.
 from datetime import datetime
@@ -314,7 +314,7 @@ class tdAudioTest(vbox.TestDriver):
                 return False;
 
             iPid = oProcess.pid;
-            self.pidFileAdd(sWhat, iPid);
+            self.pidFileAdd(iPid, sWhat);
 
             iRc  = 0;
 
