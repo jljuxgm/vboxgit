@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVM.cpp 92024 2021-10-25 10:49:08Z vboxsync $ */
+/* $Id: UIWizardNewCloudVM.cpp 92036 2021-10-25 13:50:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVM class implementation.
  */
@@ -16,7 +16,6 @@
  */
 
 /* GUI includes: */
-#include "UIMessageCenter.h"
 #include "UINotificationCenter.h"
 #include "UIWizardNewCloudVM.h"
 #include "UIWizardNewCloudVMPageSource.h"

@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.h 92034 2021-10-25 13:36:03Z vboxsync $ */
+/* $Id: UINotificationObjects.h 92036 2021-10-25 13:50:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects declarations.
  */
@@ -262,6 +262,10 @@ public:
         /** Notifies about inability to acquire INATNetwork parameter.
           * @param  comNetwork  Brings the object parameter get acquired from. */
         static void cannotAcquireDispayParameter(const CDisplay &comDisplay);
+        /** Notifies about inability to acquire IVirtualSystemDescriptionForm parameter.
+          * @param  comVsdForm  Brings the object parameter get acquired from. */
+        static void cannotAcquireVirtualSystemDescriptionFormParameter(const CVirtualSystemDescriptionForm &comVsdForm,
+                                                                       UINotificationCenter *pParent);
 
         /** Notifies about inability to change IMedium parameter.
           * @param  comMedium  Brings the object parameter being changed for. */
@@ -290,6 +294,10 @@ public:
         /** Notifies about inability to change ICloudProfile parameter.
           * @param  comProfile  Brings the object parameter being changed for. */
         static void cannotChangeCloudProfileParameter(const CCloudProfile &comProfile);
+        /** Notifies about inability to change IVirtualSystemDescription parameter.
+          * @param  comVsd  Brings the object parameter being changed for. */
+        static void cannotChangeVirtualSystemDescriptionParameter(const CVirtualSystemDescription &comVsd,
+                                                                  UINotificationCenter *pParent);
 
         /** Notifies about inability to enumerate host USB devices.
           * @param  comHost  Brings the host devices enumerated for. */

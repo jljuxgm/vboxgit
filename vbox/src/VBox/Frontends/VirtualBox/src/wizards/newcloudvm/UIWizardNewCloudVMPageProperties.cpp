@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageProperties.cpp 91412 2021-09-27 16:42:23Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageProperties.cpp 92036 2021-10-25 13:50:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageProperties class implementation.
  */
@@ -22,7 +22,7 @@
 /* GUI includes: */
 #include "QIRichTextLabel.h"
 #include "UIFormEditorWidget.h"
-#include "UIMessageCenter.h"
+#include "UINotificationCenter.h"
 #include "UIWizardNewCloudVM.h"
 #include "UIWizardNewCloudVMPageProperties.h"
 
@@ -140,7 +140,7 @@ bool UIWizardNewCloudVMPageProperties::validatePage()
         comForm.GetVirtualSystemDescription();
         fResult = comForm.isOk();
         if (!fResult)
-            msgCenter().cannotAcquireVirtualSystemDescriptionFormProperty(comForm);
+            UINotificationMessage::cannotAcquireVirtualSystemDescriptionFormParameter(comForm, wizard()->notificationCenter());
     }
 
     /* Try to create cloud VM: */

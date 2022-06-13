@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageExpert.cpp 91698 2021-10-12 17:59:15Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageExpert.cpp 92036 2021-10-25 13:50:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageExpert class implementation.
  */
@@ -28,7 +28,7 @@
 #include "UICloudNetworkingStuff.h"
 #include "UIFormEditorWidget.h"
 #include "UIIconPool.h"
-#include "UIMessageCenter.h"
+#include "UINotificationCenter.h"
 #include "UIVirtualBoxEventHandler.h"
 #include "UIVirtualBoxManager.h"
 #include "UIWizardNewCloudVM.h"
@@ -285,7 +285,7 @@ bool UIWizardNewCloudVMPageExpert::validatePage()
         comForm.GetVirtualSystemDescription();
         fResult = comForm.isOk();
         if (!fResult)
-            msgCenter().cannotAcquireVirtualSystemDescriptionFormProperty(comForm);
+            UINotificationMessage::cannotAcquireVirtualSystemDescriptionFormParameter(comForm, wizard()->notificationCenter());
     }
 
     /* Try to create cloud VM: */
@@ -358,7 +358,7 @@ void UIWizardNewCloudVMPageExpert::sltHandleSourceImageChange()
     /* Update source image & VSD form: */
     m_strSourceImageId = currentListWidgetData(m_pSourceImageList);
     wizard()->setVSD(createVirtualSystemDescription(wizard()));
-    populateFormProperties(wizard()->vsd(), m_pSourceTabBar, m_strSourceImageId);
+    populateFormProperties(wizard()->vsd(), wizard(), m_pSourceTabBar, m_strSourceImageId);
     wizard()->createVSDForm();
     updatePropertiesTable();
 
