@@ -1,4 +1,4 @@
-# $Id: Config.kmk 93449 2022-01-26 19:57:06Z vboxsync $
+# $Id: Config.kmk 93471 2022-01-27 23:55:17Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2122,17 +2122,9 @@ ifeq ($(KBUILD_TARGET),win)
  LIB_DDU         = $(PATH_STAGE_LIB)/VBoxDDU.lib
  VBOX_LIB_SUPR0  = $(PATH_STAGE_LIB)/SUPR0$(VBOX_SUFF_LIB)
 endif
-if1of ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH), win.amd64 linux.amd64)
- VBOX_LIB_VMM_LAZY      = $(PATH_STAGE_LIB)/VMMR3LazyImp$(VBOX_SUFF_LIB)
-else if1of ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH), darwin.arm64)
- VBOX_LIB_VMM_LAZY      = $(PATH_STAGE_LIB)/VMMR3Imp.dylib
-else
- VBOX_LIB_VMM_LAZY      = $(LIB_VMM)
-endif
 ifn1of ($(KBUILD_TARGET_ARCH), $(VBOX_SUPPORTED_HOST_ARCHS)) # Hack to build a couple of extpack things that thing they need the VMM lib.
  LIB_VMM           :=
  LIB_VMMRC         :=
- VBOX_LIB_VMM_LAZY :=
 endif
 VBOX_LIB_SUPHARDENED    = $(PATH_STAGE_LIB)/SUPR3HardenedStatic$(VBOX_SUFF_LIB)
 VBOX_LIB_RUNTIME_STATIC = $(PATH_STAGE_LIB)/RuntimeR3$(VBOX_SUFF_LIB)
@@ -8843,7 +8835,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 93449 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 93471 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
