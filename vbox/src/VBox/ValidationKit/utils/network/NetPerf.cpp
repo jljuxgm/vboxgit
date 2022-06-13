@@ -1,4 +1,4 @@
-/* $Id: NetPerf.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: NetPerf.cpp 93302 2022-01-18 11:25:24Z vboxsync $ */
 /** @file
  * NetPerf - Network Performance Benchmark.
  */
@@ -488,9 +488,9 @@ static void netperfPrintThroughputStats(NETPERFSTATS const *pSendStats, NETPERFS
         double rdSecElapsed = (double)pSendStats->cNsElapsed / 1000000000.0;
         RTTestIValue("Sends",               pSendStats->cTx,              RTTESTUNIT_PACKETS);
         RTTestIValue("Send Interval",       pSendStats->cNsElapsed,       RTTESTUNIT_NS);
-        RTTestIValue("Send Throughput",     (uint64_t)(cbPacket * pSendStats->cTx / rdSecElapsed), RTTESTUNIT_BYTES_PER_SEC);
-        RTTestIValue("Send Rate",           (uint64_t)(pSendStats->cTx / rdSecElapsed),  RTTESTUNIT_PACKETS_PER_SEC);
-        RTTestIValue("Send Latency",        (uint64_t)(rdSecElapsed / pSendStats->cTx * 1000000000.0), RTTESTUNIT_NS_PER_PACKET);
+        RTTestIValue("Send Throughput",     (uint64_t)((double)(cbPacket * pSendStats->cTx) / rdSecElapsed), RTTESTUNIT_BYTES_PER_SEC);
+        RTTestIValue("Send Rate",           (uint64_t)((double)pSendStats->cTx / rdSecElapsed),  RTTESTUNIT_PACKETS_PER_SEC);
+        RTTestIValue("Send Latency",        (uint64_t)(rdSecElapsed / (double)pSendStats->cTx * 1000000000.0), RTTESTUNIT_NS_PER_PACKET);
     }
 
     if (pRecvStats)
@@ -498,9 +498,9 @@ static void netperfPrintThroughputStats(NETPERFSTATS const *pSendStats, NETPERFS
         double rdSecElapsed = (double)pRecvStats->cNsElapsed / 1000000000.0;
         RTTestIValue("Receives",            pRecvStats->cRx,              RTTESTUNIT_PACKETS);
         RTTestIValue("Receive Interval",    pRecvStats->cNsElapsed,       RTTESTUNIT_NS);
-        RTTestIValue("Receive Throughput",  (uint64_t)(cbPacket * pRecvStats->cRx / rdSecElapsed), RTTESTUNIT_BYTES_PER_SEC);
-        RTTestIValue("Receive Rate",        (uint64_t)(pRecvStats->cRx / rdSecElapsed),  RTTESTUNIT_PACKETS_PER_SEC);
-        RTTestIValue("Receive Latency",     (uint64_t)(rdSecElapsed / pRecvStats->cRx * 1000000000.0), RTTESTUNIT_NS_PER_PACKET);
+        RTTestIValue("Receive Throughput",  (uint64_t)((double)(cbPacket * pRecvStats->cRx) / rdSecElapsed), RTTESTUNIT_BYTES_PER_SEC);
+        RTTestIValue("Receive Rate",        (uint64_t)((double)pRecvStats->cRx / rdSecElapsed),  RTTESTUNIT_PACKETS_PER_SEC);
+        RTTestIValue("Receive Latency",     (uint64_t)(rdSecElapsed / (double)pRecvStats->cRx * 1000000000.0), RTTESTUNIT_NS_PER_PACKET);
     }
 }
 
@@ -754,9 +754,9 @@ static void netperfPrintLatencyStats(NETPERFSTATS const *pStats, uint32_t cbPack
     RTTestIValue("Errors",              pStats->cErrors,         RTTESTUNIT_PACKETS);
     RTTestIValue("Interval",            pStats->cNsElapsed,      RTTESTUNIT_NS);
     RTTestIValue("Packet size",         cbPacket,                RTTESTUNIT_BYTES);
-    RTTestIValue("Average rate",        (uint64_t)(pStats->cEchos / rdSecElapsed),  RTTESTUNIT_PACKETS_PER_SEC);
-    RTTestIValue("Average throughput",  (uint64_t)(cbPacket * pStats->cEchos / rdSecElapsed), RTTESTUNIT_BYTES_PER_SEC);
-    RTTestIValue("Average latency",     (uint64_t)(rdSecElapsed / pStats->cEchos * 1000000000.0), RTTESTUNIT_NS_PER_ROUND_TRIP);
+    RTTestIValue("Average rate",        (uint64_t)((double)pStats->cEchos / rdSecElapsed),  RTTESTUNIT_PACKETS_PER_SEC);
+    RTTestIValue("Average throughput",  (uint64_t)((double)(cbPacket * pStats->cEchos) / rdSecElapsed), RTTESTUNIT_BYTES_PER_SEC);
+    RTTestIValue("Average latency",     (uint64_t)(rdSecElapsed / (double)pStats->cEchos * 1000000000.0), RTTESTUNIT_NS_PER_ROUND_TRIP);
     RTTestISubDone();
 }
 
@@ -1924,7 +1924,7 @@ int main(int argc, char *argv[])
                 return RTEXITCODE_SUCCESS;
 
             case 'V':
-                RTPrintf("$Revision: 93115 $\n");
+                RTPrintf("$Revision: 93302 $\n");
                 return RTEXITCODE_SUCCESS;
 
             case 'w':

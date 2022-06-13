@@ -1,4 +1,4 @@
-/* $Id: IoPerf.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: IoPerf.cpp 93302 2022-01-18 11:25:24Z vboxsync $ */
 /** @file
  * IoPerf - Storage I/O Performance Benchmark.
  */
@@ -815,7 +815,7 @@ static void ioPerfJobStats(PIOPERFJOB pJob)
         }
 
         /* Get average bandwidth for the job. */
-        RTTestIValueF((uint64_t)(pJob->cbTestSet / ((double)nsJobRuntime / RT_NS_1SEC)),
+        RTTestIValueF((uint64_t)((double)pJob->cbTestSet / ((double)nsJobRuntime / RT_NS_1SEC)),
                        RTTESTUNIT_BYTES_PER_SEC, "%s/Job/%RU32/AvgBandwidth", pszTest, pJob->idJob);
 
         RTTestIValueF((uint64_t)(pJob->cReqStats / ((double)nsJobRuntime / RT_NS_1SEC)),
@@ -1337,7 +1337,7 @@ int main(int argc, char *argv[])
 
             case 'V':
             {
-                char szRev[] = "$Revision: 93115 $";
+                char szRev[] = "$Revision: 93302 $";
                 szRev[RT_ELEMENTS(szRev) - 2] = '\0';
                 RTPrintf(RTStrStrip(strchr(szRev, ':') + 1));
                 return RTEXITCODE_SUCCESS;
