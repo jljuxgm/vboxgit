@@ -1,4 +1,4 @@
-/* $Id: tstIEMAImpl.cpp 94413 2022-03-31 12:20:53Z vboxsync $ */
+/* $Id: tstIEMAImpl.cpp 94415 2022-03-31 12:33:49Z vboxsync $ */
 /** @file
  * IEM Assembly Instruction Helper Testcase.
  */
@@ -619,14 +619,14 @@ const char *GenFormatI16(int16_t i16)
 static void GenerateHeader(PRTSTREAM pOut, const char *pszCpuDesc, const char *pszCpuType)
 {
     /* We want to tag the generated source code with the revision that produced it. */
-    static char s_szRev[] = "$Revision: 94413 $";
+    static char s_szRev[] = "$Revision: 94415 $";
     const char *pszRev = RTStrStripL(strchr(s_szRev, ':') + 1);
     size_t      cchRev = 0;
     while (RT_C_IS_DIGIT(pszRev[cchRev]))
         cchRev++;
 
     RTStrmPrintf(pOut,
-                 "/* $Id: tstIEMAImpl.cpp 94413 2022-03-31 12:20:53Z vboxsync $ */\n"
+                 "/* $Id: tstIEMAImpl.cpp 94415 2022-03-31 12:33:49Z vboxsync $ */\n"
                  "/** @file\n"
                  " * IEM Assembly Instruction Helper Testcase Data%s%s - r%.*s on %s.\n"
                  " */\n"
@@ -3567,9 +3567,9 @@ int main(int argc, char **argv)
             FpuLdD80Generate(pStrmData, cTests);
             FpuStIntGenerate(pStrmData, pStrmDataCpu, cTests);
             FpuStD80Generate(pStrmData, cTests);
-            cTests = RT_MAX(cTests, 384); /* need better coverage for the next ones. */
-            FpuLdMemGenerate(pStrmData, cTests);
-            FpuStMemGenerate(pStrmData, cTests);
+            uint32_t const cTests2 = RT_MAX(cTests, 384); /* need better coverage for the next ones. */
+            FpuLdMemGenerate(pStrmData, cTests2);
+            FpuStMemGenerate(pStrmData, cTests2);
 
             RTEXITCODE rcExit = GenerateFooterAndClose(pStrmDataCpu, pszDataCpuFile,
                                                        GenerateFooterAndClose(pStrmData, pszDataFile, RTEXITCODE_SUCCESS));
