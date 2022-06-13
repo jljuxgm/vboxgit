@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 91001 2021-08-30 14:26:27Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.h 92106 2021-10-27 14:01:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -40,6 +40,7 @@ struct UIUnattendedInstallData;
 class UIVirtualBoxManagerWidget;
 class UIVirtualMachineItem;
 class CCloudMachine;
+class CUnattended;
 
 /* Type definitions: */
 typedef QIWithRestorableGeometry<QMainWindow> QMainWindowWithRestorableGeometry;
@@ -352,6 +353,9 @@ private:
 
         /** Returns whether at least one cloud profile currently being updated. */
         bool isCloudProfileUpdateInProgress() const;
+
+        /* Checks if @p comUnattendedInstaller has any errors. If so shows an error message and return false, else returns true. */
+        bool checkUnattendedInstallError(CUnattended &comUnattendedInstaller) const;
     /** @} */
 
     /** @name Various VM helpers.
