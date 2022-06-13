@@ -1,4 +1,4 @@
-; $Id: CPUMInternal.mac 93115 2022-01-01 11:31:46Z vboxsync $
+; $Id: CPUMInternal.mac 94934 2022-05-09 08:41:13Z vboxsync $
 ;; @file
 ; CPUM - Internal header file (asm).
 ;
@@ -295,15 +295,6 @@ struc CPUMCPU
     .fUseFlags                  resd    1
     .fChanged                   resd    1
     .u32RetCode                 resd    1
-
-%ifdef VBOX_WITH_VMMR0_DISABLE_LAPIC_NMI
-    .fApicDisVectors            resd    1
-    .pvApicBase                 RTR0PTR_RES 1
-    .fX2Apic                    resb    1
-%else
-    .abPadding3                 resb    (4 + RTR0PTR_CB + 1)
-%endif
-
     .fCpuIdApicFeatureVisible   resb    1
 
     ;

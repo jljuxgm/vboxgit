@@ -1,4 +1,4 @@
-/* $Id: tstVMStruct.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: tstVMStruct.h 94934 2022-05-09 08:41:13Z vboxsync $ */
 /** @file
  * tstVMMStruct - Statements for generating VM and VMCPU offset and size tests.
  *
@@ -48,11 +48,6 @@
     GEN_CHECK_OFF(CPUMCPU, fUseFlags);
     GEN_CHECK_OFF(CPUMCPU, fChanged);
     GEN_CHECK_OFF(CPUMCPU, u32RetCode);
-#ifdef VBOX_WITH_VMMR0_DISABLE_LAPIC_NMI
-    GEN_CHECK_OFF(CPUMCPU, pvApicBase);
-    GEN_CHECK_OFF(CPUMCPU, fApicDisVectors);
-    GEN_CHECK_OFF(CPUMCPU, fX2Apic);
-#endif
     GEN_CHECK_OFF(CPUMCPU, fCpuIdApicFeatureVisible);
 
     GEN_CHECK_SIZE(CPUMHOSTCTX);
