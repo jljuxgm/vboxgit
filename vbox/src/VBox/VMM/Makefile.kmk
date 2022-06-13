@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 93207 2022-01-12 19:14:56Z vboxsync $
+# $Id: Makefile.kmk 93352 2022-01-20 00:41:56Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -807,5 +807,5 @@ IEMAllCImplSvmInstr.cpp.o          IEMAllCImplSvmInstr.cpp.obj \
 IEMAllCImplVmxInstr.cpp.o          IEMAllCImplVmxInstr.cpp.obj: IEMAll.o
 
 # Alias the NEM template to the objects where it is used:
-NEMAllNativeTemplate-win.cpp.o:    NEMR3Native-win.o NEMR0Native-win.o
+NEMAllNativeTemplate-win.cpp.o:    NEMR3Native-win.o
 
