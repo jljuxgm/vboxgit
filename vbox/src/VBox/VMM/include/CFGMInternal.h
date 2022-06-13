@@ -1,4 +1,4 @@
-/* $Id: CFGMInternal.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: CFGMInternal.h 93392 2022-01-21 11:07:13Z vboxsync $ */
 /** @file
  * CFGM - Internal header file.
  */
@@ -43,7 +43,7 @@ typedef union CFGMVALUE
         uint64_t        u64;
     } Integer;
 
-    /** String value. (UTF-8 of course) */
+    /** String or password value. (UTF-8 of course) */
     struct CFGMVALUE_STRING
     {
         /** Length of string. (In bytes, including the terminator.) */
