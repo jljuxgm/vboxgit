@@ -1,4 +1,4 @@
-/* $Id: UINotificationObject.cpp 91237 2021-09-14 17:08:48Z vboxsync $ */
+/* $Id: UINotificationObject.cpp 91239 2021-09-15 07:30:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINotificationObject class implementation.
  */
@@ -189,7 +189,7 @@ void UINotificationProgress::sltHandleProgressFinished()
     emit sigProgressFinished();
 
     /* If there was no error and no reason to keep progress alive, - finish him! */
-    if (   !error().isEmpty()
+    if (   error().isEmpty()
         && !gEDataManager->keepSuccessfullNotificationProgresses())
         close();
 }
