@@ -1,4 +1,4 @@
-# $Id: .scm-settings 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: .scm-settings 92991 2021-12-16 17:41:50Z vboxsync $
 ## @file
 # Source code massager settings for the includes.
 #
@@ -64,6 +64,7 @@
 
 # Some headers actually shouldn't have include guards:
 /VBox/dbus-calls.h:                     --no-fix-header-guards
+/VBox/xrandr-calls.h:                   --no-fix-header-guards
 /VBox/VDEPlugSymDefs.h:                 --no-fix-header-guards
 /iprt/asn1-generator-core.h:            --no-fix-header-guards
 /iprt/asn1-generator-pass.h:            --no-fix-header-guards
