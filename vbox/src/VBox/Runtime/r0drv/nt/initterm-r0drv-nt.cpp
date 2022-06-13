@@ -1,4 +1,4 @@
-/* $Id: initterm-r0drv-nt.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: initterm-r0drv-nt.cpp 90417 2021-07-29 21:29:10Z vboxsync $ */
 /** @file
  * IPRT - Initialization & Termination, R0 Driver, NT.
  */
@@ -111,6 +111,8 @@ decltype(MmAllocateContiguousMemorySpecifyCache) *g_pfnrtMmAllocateContiguousMem
 decltype(MmSecureVirtualMemory)        *g_pfnrtMmSecureVirtualMemory;
 /** MmUnsecureVirtualMemory - Introduced in NT 3.51.   */
 decltype(MmUnsecureVirtualMemory)      *g_pfnrtMmUnsecureVirtualMemory;
+/** PsIsThreadTerminating - Introduced in NT 3.50. */
+decltype(PsIsThreadTerminating)        *g_pfnrtPsIsThreadTerminating;
 /** RtlGetVersion, introduced in ??. */
 PFNRTRTLGETVERSION                      g_pfnrtRtlGetVersion;
 #ifdef RT_ARCH_X86

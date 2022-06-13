@@ -1,4 +1,4 @@
-/* $Id: internal-r0drv-nt.h 86175 2020-09-19 09:19:38Z vboxsync $ */
+/* $Id: internal-r0drv-nt.h 90417 2021-07-29 21:29:10Z vboxsync $ */
 /** @file
  * IPRT - Internal Header for the NT Ring-0 Driver Code.
  */
@@ -95,6 +95,7 @@ extern decltype(MmMapLockedPagesSpecifyCache) *g_pfnrtMmMapLockedPagesSpecifyCac
 extern decltype(MmAllocateContiguousMemorySpecifyCache) *g_pfnrtMmAllocateContiguousMemorySpecifyCache;
 extern decltype(MmSecureVirtualMemory)        *g_pfnrtMmSecureVirtualMemory;
 extern decltype(MmUnsecureVirtualMemory)      *g_pfnrtMmUnsecureVirtualMemory;
+extern decltype(PsIsThreadTerminating)        *g_pfnrtPsIsThreadTerminating;
 
 extern PFNRTRTLGETVERSION                      g_pfnrtRtlGetVersion;
 #ifdef RT_ARCH_X86
