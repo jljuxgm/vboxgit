@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet_1_0.cpp 92999 2021-12-17 08:36:40Z vboxsync $ $Revision: 92999 $ $Date: 2021-12-17 16:36:40 +0800 (Fri, 17 Dec 2021) $ $Author: vboxsync $ */
+/* $Id: DevVirtioNet_1_0.cpp 93000 2021-12-17 08:43:28Z vboxsync $ $Revision: 93000 $ $Date: 2021-12-17 16:43:28 +0800 (Fri, 17 Dec 2021) $ $Author: vboxsync $ */
 
 /** @file
  * VBox storage devices - Virtio NET Driver
@@ -1060,7 +1060,7 @@ static int virtioNetR3VirtqDestroy(PVIRTIOCORE pVirtio, PVIRTIONETVIRTQ pVirtq)
     PVIRTIONETWORKER   pWorker   = &pThis->aWorkers[pVirtq->uIdx];
     PVIRTIONETWORKERR3 pWorkerR3 = &pThisCC->aWorkers[pVirtq->uIdx];
 
-    int rc, rcThread;
+    int rc = VINF_SUCCESS, rcThread;
     Log10Func(("[%s] Destroying \"%s\"", pThis->szInst, pVirtq->szName));
     if (pVirtq->fHasWorker)
     {
@@ -1739,6 +1739,8 @@ DECLINLINE(bool) virtioNetR3IsMulticast(const void *pvBuf)
  */
 static bool virtioNetR3AddressFilter(PVIRTIONET pThis, const void *pvBuf, size_t cb)
 {
+
+RT_NOREF(cb);
 
 #ifdef LOG_ENABLED
     if (LogIs11Enabled())
