@@ -1,4 +1,4 @@
-/* $Id: rdpusb.c 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: rdpusb.c 94343 2022-03-23 19:57:40Z vboxsync $ */
 /** @file
  * Remote Desktop Protocol client - USB Channel Process Functions
  */
@@ -100,7 +100,7 @@ typedef struct _DevListEntry
  */
 static inline int op_usbproxy_back_open(PUSBPROXYDEV p, const char *pszAddress)
 {
-     return g_USBProxyDeviceHost.pfnOpen (p, pszAddress, NULL);
+     return g_USBProxyDeviceHost.pfnOpen (p, pszAddress);
 }
 
 static inline void op_usbproxy_back_close(PUSBPROXYDEV pDev)
