@@ -1,4 +1,4 @@
-/* $Id: AudioTestServiceClient.cpp 90830 2021-08-24 10:47:52Z vboxsync $ */
+/* $Id: AudioTestServiceClient.cpp 90887 2021-08-25 16:20:14Z vboxsync $ */
 /** @file
  * AudioTestServiceClient - Audio Test Service (ATS), Client helpers.
  *
@@ -512,6 +512,9 @@ int AudioTestSvcClientTestSetDownload(PATSCLIENT pClient, const char *pszTag, co
  */
 static int audioTestSvcClientCloseInternal(PATSCLIENT pClient)
 {
+    if (!pClient->pTransportClient) /* Not connected (yet)? Bail out early. */
+        return VINF_SUCCESS;
+
     int rc = audioTestSvcClientDoBye(pClient);
     if (RT_SUCCESS(rc))
     {

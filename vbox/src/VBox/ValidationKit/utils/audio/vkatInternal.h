@@ -1,4 +1,4 @@
-/* $Id: vkatInternal.h 90766 2021-08-20 17:30:57Z vboxsync $ */
+/* $Id: vkatInternal.h 90887 2021-08-25 16:20:14Z vboxsync $ */
 /** @file
  * VKAT - Internal header file for common definitions + structs.
  */
@@ -182,14 +182,15 @@ typedef AUDIOTESTSTREAM *PAUDIOTESTSTREAM;
 typedef struct AUDIOTESTENVTCPOPTS
 {
     /** Bind address (server mode). When empty, "0.0.0.0" (any host) will be used. */
-    char            szTcpBindAddr[128];
+    char            szBindAddr[128];
     /** Bind port (server mode). */
-    uint16_t        uTcpBindPort;
+    uint16_t        uBindPort;
     /** Connection address (client mode). */
-    char            szTcpConnectAddr[128];
+    char            szConnectAddr[128];
     /** Connection port (client mode). */
-    uint16_t        uTcpConnectPort;
+    uint16_t        uConnectPort;
 } AUDIOTESTENVTCPOPTS;
+/** Pointer to audio test TCP options. */
 typedef AUDIOTESTENVTCPOPTS *PAUDIOTESTENVTCPOPTS;
 
 /**
@@ -230,19 +231,14 @@ typedef struct AUDIOTESTENV
     AUDIOTESTSTREAM         aStreams[AUDIOTESTENV_MAX_STREAMS];
     /** The audio test set to use. */
     AUDIOTESTSET            Set;
+    /** TCP options to use for ATS. */
+    AUDIOTESTENVTCPOPTS     TcpOpts;
+    /** ATS server instance to use. */
+    ATSSERVER               Srv;
     union
     {
         struct
         {
-            AUDIOTESTENVTCPOPTS TcpOpts;
-            /** ATS instance to use. */
-            ATSSERVER           Srv;
-        } Guest;
-        struct
-        {
-            AUDIOTESTENVTCPOPTS TcpOpts;
-            /** ATS instance to use. */
-            ATSSERVER           Srv;
             /** Client connected to the ATS on the guest side. */
             ATSCLIENT       AtsClGuest;
             /** Path to the guest's test set downloaded to the host. */
@@ -253,7 +249,6 @@ typedef struct AUDIOTESTENV
             char            szPathTestSetValKit[RTPATH_MAX];
         } Host;
     } u;
-    AUDIOTESTENVTCPOPTS         ValKitTcpOpts;
 } AUDIOTESTENV;
 
 /**

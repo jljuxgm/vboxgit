@@ -1,4 +1,4 @@
-/* $Id: AudioTestServiceTcp.cpp 90868 2021-08-25 10:12:34Z vboxsync $ */
+/* $Id: AudioTestServiceTcp.cpp 90887 2021-08-25 16:20:14Z vboxsync $ */
 /** @file
  * AudioTestServiceTcp - Audio test execution server, TCP/IP Transport Layer.
  */
@@ -785,10 +785,12 @@ static DECLCALLBACK(int) atsTcpOption(PATSTRANSPORTINST pThis, int ch, PCRTGETOP
             rc = RTStrCopy(pThis->szBindAddr, sizeof(pThis->szBindAddr), pVal->psz);
             if (RT_FAILURE(rc))
                 return RTMsgErrorRc(VERR_INVALID_PARAMETER, "TCP bind address is too long (%Rrc)", rc);
+            if (!pThis->szBindAddr[0])
+                return RTMsgErrorRc(VERR_INVALID_PARAMETER, "No TCP bind address specified: %s", pThis->szBindAddr);
             return VINF_SUCCESS;
 
         case ATSTCPOPT_BIND_PORT:
-            pThis->uBindPort = pVal->u16 == 0 ? ATS_TCP_DEF_BIND_PORT_GUEST : pVal->u16;
+            pThis->uBindPort = pVal->u16;
             return VINF_SUCCESS;
 
         case ATSTCPOPT_CONNECT_ADDRESS:
@@ -796,11 +798,11 @@ static DECLCALLBACK(int) atsTcpOption(PATSTRANSPORTINST pThis, int ch, PCRTGETOP
             if (RT_FAILURE(rc))
                 return RTMsgErrorRc(VERR_INVALID_PARAMETER, "TCP connect address is too long (%Rrc)", rc);
             if (!pThis->szConnectAddr[0])
-                strcpy(pThis->szConnectAddr, ATS_TCP_DEF_CONNECT_GUEST_STR);
+                return RTMsgErrorRc(VERR_INVALID_PARAMETER, "No TCP connect address specified");
             return VINF_SUCCESS;
 
         case ATSTCPOPT_CONNECT_PORT:
-            pThis->uConnectPort = pVal->u16 == 0 ? ATS_TCP_DEF_BIND_PORT_GUEST : pVal->u16;
+            pThis->uConnectPort = pVal->u16;
             return VINF_SUCCESS;
 
         default:
