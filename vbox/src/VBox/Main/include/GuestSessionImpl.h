@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.h 90828 2021-08-24 09:44:46Z vboxsync $ */
+/* $Id: GuestSessionImpl.h 92627 2021-11-29 13:35:51Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -386,7 +386,9 @@ private:
         GuestEnvironmentChanges     mEnvironmentChanges;
         /** Pointer to the immutable base environment for the session.
          * @note This is not allocated until the guest reports it to the host. It is
-         *       also shared with child processes. */
+         *       also shared with child processes.
+         * @todo This is actually not yet implemented, see
+         *       GuestSession::i_onSessionStatusChange. */
         GuestEnvironment const     *mpBaseEnvironment;
         /** Directory objects bound to this session. */
         SessionDirectories          mDirectories;
