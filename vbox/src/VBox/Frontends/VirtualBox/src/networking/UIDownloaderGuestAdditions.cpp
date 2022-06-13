@@ -1,4 +1,4 @@
-/* $Id: UIDownloaderGuestAdditions.cpp 90569 2021-08-07 12:21:17Z vboxsync $ */
+/* $Id: UIDownloaderGuestAdditions.cpp 91179 2021-09-09 13:16:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDownloaderGuestAdditions class implementation.
  */
@@ -27,6 +27,7 @@
 #include "UIMessageCenter.h"
 #include "UIModalWindowManager.h"
 #include "UINetworkReply.h"
+#include "UINotificationCenter.h"
 #include "UIVersion.h"
 
 /* Other VBox includes: */
@@ -117,7 +118,7 @@ void UIDownloaderGuestAdditions::handleVerifiedObject(UINetworkReply *pReply)
     if (!fSuccess)
     {
         /* Warn the user about additions-image was downloaded and saved but checksum is invalid: */
-        msgCenter().cannotValidateGuestAdditionsSHA256Sum(source().toString(), QDir::toNativeSeparators(target()));
+        UINotificationMessage::cannotValidateGuestAdditionsSHA256Sum(source().toString(), QDir::toNativeSeparators(target()));
         return;
     }
 

@@ -1,4 +1,4 @@
-/* $Id: UIDownloaderExtensionPack.cpp 90560 2021-08-07 07:36:02Z vboxsync $ */
+/* $Id: UIDownloaderExtensionPack.cpp 91179 2021-09-09 13:16:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDownloaderExtensionPack class implementation.
  */
@@ -27,6 +27,7 @@
 #include "UIMessageCenter.h"
 #include "UIModalWindowManager.h"
 #include "UINetworkReply.h"
+#include "UINotificationCenter.h"
 #include "UIVersion.h"
 
 /* Other VBox includes: */
@@ -119,7 +120,7 @@ void UIDownloaderExtensionPack::handleVerifiedObject(UINetworkReply *pReply)
     if (!fSuccess)
     {
         /* Warn the user about additions-image was downloaded and saved but checksum is invalid: */
-        msgCenter().cannotValidateExtentionPackSHA256Sum(GUI_ExtPackName, source().toString(), QDir::toNativeSeparators(target()));
+        UINotificationMessage::cannotValidateExtentionPackSHA256Sum(GUI_ExtPackName, source().toString(), QDir::toNativeSeparators(target()));
         return;
     }
 

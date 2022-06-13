@@ -1,4 +1,4 @@
-/* $Id: UIUpdateManager.cpp 91009 2021-08-30 18:24:32Z vboxsync $ */
+/* $Id: UIUpdateManager.cpp 91179 2021-09-09 13:16:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUpdateManager class implementation.
  */
@@ -191,14 +191,14 @@ void UIUpdateStepVirtualBoxExtensionPack::exec()
     if (strExtPackEdition.contains("ENTERPRISE"))
     {
         /* Inform the user that he should update the extension pack: */
-        msgCenter().askUserToDownloadExtensionPack(GUI_ExtPackName, strExtPackVersion, strVBoxVersion);
+        UINotificationMessage::askUserToDownloadExtensionPack(GUI_ExtPackName, strExtPackVersion, strVBoxVersion);
         /* Never try to download for ENTERPRISE version: */
         emit sigStepFinished();
         return;
     }
 
     /* Ask the user about extension pack downloading: */
-    if (!msgCenter().warnAboutOutdatedExtensionPack(GUI_ExtPackName, strExtPackVersion))
+    if (!msgCenter().confirmLookingForExtensionPack(GUI_ExtPackName, strExtPackVersion))
     {
         emit sigStepFinished();
         return;

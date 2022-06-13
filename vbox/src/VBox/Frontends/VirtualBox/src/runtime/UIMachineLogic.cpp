@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 91169 2021-09-08 18:45:58Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 91179 2021-09-09 13:16:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -2424,7 +2424,7 @@ void UIMachineLogic::sltInstallGuestAdditions()
     if (UINotificationDownloaderGuestAdditions::exists())
         gpNotificationCenter->invoke();
     /* Else propose to download additions: */
-    else if (msgCenter().cannotFindGuestAdditions())
+    else if (msgCenter().confirmLookingForGuestAdditions())
     {
         /* Download guest additions: */
         UINotificationDownloaderGuestAdditions *pNotification = UINotificationDownloaderGuestAdditions::instance(GUI_GuestAdditionsName);
