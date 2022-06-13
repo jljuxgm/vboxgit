@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 92588 2021-11-24 19:48:54Z vboxsync $ */
+/* $Id: UICommon.cpp 92699 2021-12-02 12:38:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -517,6 +517,8 @@ void UICommon::prepare()
             enmOptType = OptType_VMRunner;
             m_fDisablePatm = m_fDisableCsam = m_fExecuteAllInIem = true;
         }
+        else if (!::strcmp(arg, "--driverless"))
+            enmOptType = OptType_VMRunner;
         else if (!::strcmp(arg, "--warp-pct"))
         {
             enmOptType = OptType_VMRunner;
