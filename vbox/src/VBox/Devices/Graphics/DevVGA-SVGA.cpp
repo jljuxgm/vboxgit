@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 94633 2022-04-19 13:50:46Z vboxsync $ */
+/* $Id: DevVGA-SVGA.cpp 94636 2022-04-19 15:36:05Z vboxsync $ */
 /** @file
  * VMware SVGA device.
  *
@@ -6316,13 +6316,13 @@ static void vmsvgaR3InitCaps(PVGASTATE pThis, PVGASTATECC pThisCC)
                               | SVGA_CAP_SCREEN_OBJECT_2
                               | SVGA_CAP_ALPHA_CURSOR;
 
+    pThis->svga.u32DeviceCaps |= SVGA_CAP_COMMAND_BUFFERS /* Enable register based command buffer submission. */
+//                              |  SVGA_CAP_CMD_BUFFERS_2   /* Support for SVGA_REG_CMD_PREPEND_LOW/HIGH */
+                              ;
+
     /* VGPU10 capabilities. */
     if (pThis->fVMSVGA10)
     {
-        pThis->svga.u32DeviceCaps |= SVGA_CAP_COMMAND_BUFFERS /* Enable register based command buffer submission. */
-//                                  |  SVGA_CAP_CMD_BUFFERS_2   /* Support for SVGA_REG_CMD_PREPEND_LOW/HIGH */
-                                  ;
-
 # ifdef VBOX_WITH_VMSVGA3D
         if (pSVGAState->pFuncsGBO)
            pThis->svga.u32DeviceCaps |= SVGA_CAP_GBOBJECTS;     /* Enable guest-backed objects and surfaces. */
