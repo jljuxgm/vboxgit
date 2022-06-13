@@ -1,4 +1,4 @@
-/* $Id: QISplitter.cpp 88792 2021-04-30 12:08:42Z vboxsync $ */
+/* $Id: QISplitter.cpp 91003 2021-08-30 15:40:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QISplitter class implementation.
  */
@@ -23,7 +23,9 @@
 
 /* GUI includes: */
 #include "QISplitter.h"
-#include "UICommon.h"
+#ifdef VBOX_WS_MAC
+# include "UICursor.h"
+#endif
 
 
 /** QSplitterHandle subclass representing flat line. */
@@ -324,7 +326,7 @@ bool QISplitter::eventFilter(QObject *pWatched, QEvent *pEvent)
                                 && pMouseEvent->buttons().testFlag(Qt::LeftButton))
                             {
                                 m_fHandleGrabbed = true;
-                                UICommon::setCursor(this, Qt::SplitHCursor);
+                                UICursor::setCursor(this, Qt::SplitHCursor);
                                 qApp->postEvent(pHandle, new QMouseEvent(newME));
                                 return true;
                             }
@@ -336,7 +338,7 @@ bool QISplitter::eventFilter(QObject *pWatched, QEvent *pEvent)
                                 || (   m_fHandleGrabbed
                                     && pMouseEvent->buttons().testFlag(Qt::LeftButton)))
                             {
-                                UICommon::setCursor(this, Qt::SplitHCursor);
+                                UICursor::setCursor(this, Qt::SplitHCursor);
                                 qApp->postEvent(pHandle, new QMouseEvent(newME));
                                 return true;
                             }
@@ -344,7 +346,7 @@ bool QISplitter::eventFilter(QObject *pWatched, QEvent *pEvent)
                             {
                                 /* If not, reset the state. */
                                 m_fHandleGrabbed = false;
-                                UICommon::setCursor(this, Qt::ArrowCursor);
+                                UICursor::setCursor(this, Qt::ArrowCursor);
                             }
                         }
                     }
@@ -355,7 +357,7 @@ bool QISplitter::eventFilter(QObject *pWatched, QEvent *pEvent)
             case QEvent::MouseButtonRelease:
             {
                 m_fHandleGrabbed = false;
-                UICommon::setCursor(this, Qt::ArrowCursor);
+                UICursor::setCursor(this, Qt::ArrowCursor);
                 break;
             }
             default:

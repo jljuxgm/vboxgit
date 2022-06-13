@@ -1,4 +1,4 @@
-/* $Id: UIUserNamePasswordEditor.cpp 90642 2021-08-12 06:47:02Z vboxsync $ */
+/* $Id: UIUserNamePasswordEditor.cpp 91003 2021-08-30 15:40:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class implementation.
  */
@@ -26,7 +26,7 @@
 #include "QILineEdit.h"
 #include "QIRichTextLabel.h"
 #include "QIToolButton.h"
-#include "UICommon.h"
+#include "UICursor.h"
 #include "UIIconPool.h"
 #include "UIUserNamePasswordEditor.h"
 #include "UIWizardNewVM.h"
@@ -147,7 +147,7 @@ void UIPasswordLineEdit::prepare()
     {
         m_pTextVisibilityButton->setIconSize(QSize(10, 10));
         m_pTextVisibilityButton->setFocusPolicy(Qt::ClickFocus);
-        m_pTextVisibilityButton->setCursor(Qt::ArrowCursor);
+        UICursor::setCursor(m_pTextVisibilityButton, Qt::ArrowCursor);
         m_pTextVisibilityButton->show();
         connect(m_pTextVisibilityButton, &QToolButton::clicked, this, &UIPasswordLineEdit::sltHandleTextVisibilityChange);
     }

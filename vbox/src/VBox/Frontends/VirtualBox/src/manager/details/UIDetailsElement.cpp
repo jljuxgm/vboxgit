@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElement.cpp 90758 2021-08-20 11:28:08Z vboxsync $ */
+/* $Id: UIDetailsElement.cpp 91003 2021-08-30 15:40:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement class implementation.
  */
@@ -34,8 +34,8 @@
 #include "UIBootOrderEditor.h"
 #include "UICloudMachineSettingsDialogPage.h"
 #include "UICloudNetworkingStuff.h"
-#include "UICommon.h"
 #include "UIConverter.h"
+#include "UICursor.h"
 #include "UIDetailsElement.h"
 #include "UIDetailsGenerator.h"
 #include "UIDetailsSet.h"
@@ -841,9 +841,9 @@ void UIDetailsElement::handleHoverEvent(QGraphicsSceneHoverEvent *pEvent)
 void UIDetailsElement::updateNameHoverLink()
 {
     if (m_fNameHovered)
-        UICommon::setCursor(this, Qt::PointingHandCursor);
+        UICursor::setCursor(this, Qt::PointingHandCursor);
     else
-        UICommon::unsetCursor(this);
+        UICursor::unsetCursor(this);
     update();
 }
 

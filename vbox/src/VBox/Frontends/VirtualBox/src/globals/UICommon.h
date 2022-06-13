@@ -1,4 +1,4 @@
-/* $Id: UICommon.h 90967 2021-08-27 20:37:40Z vboxsync $ */
+/* $Id: UICommon.h 91003 2021-08-30 15:40:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class declaration.
  */
@@ -341,12 +341,6 @@ public:
 
         /** Activates the specified window with given @a wId. Can @a fSwitchDesktop if requested. */
         static bool activateWindow(WId wId, bool fSwitchDesktop = true);
-
-        /** Does some checks on certain platforms before calling QWidget::setCursor(...). */
-        static void setCursor(QWidget *pWidget, const QCursor &cursor);
-        static void setCursor(QGraphicsWidget *pWidget, const QCursor &cursor);
-        static void unsetCursor(QWidget *pWidget);
-        static void unsetCursor(QGraphicsWidget *pWidget);
 
 #ifdef VBOX_WS_X11
         /** X11: Test whether the current window manager supports full screen mode. */
