@@ -1,4 +1,4 @@
-/* $Id: UINotificationCenter.cpp 90565 2021-08-07 11:35:44Z vboxsync $ */
+/* $Id: UINotificationCenter.cpp 90566 2021-08-07 11:41:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINotificationCenter class implementation.
  */
@@ -143,15 +143,24 @@ UINotificationCenter *UINotificationCenter::instance()
 
 void UINotificationCenter::setParent(QWidget *pParent)
 {
+    /* Additionally hide if parent unset: */
     if (!pParent)
-        hide();
+        setHidden(true);
+
+    /* Uninstall filter from previous parent: */
     if (parent())
         parent()->removeEventFilter(this);
+
+    /* Reparent: */
     QWidget::setParent(pParent);
+
+    /* Install filter to new parent: */
     if (parent())
         parent()->installEventFilter(this);
+
+    /* Show only if there is something to show: */
     if (parent())
-        show();
+        setHidden(m_pModel->ids().isEmpty());
 }
 
 void UINotificationCenter::invoke()
