@@ -1,4 +1,4 @@
-/* $Id: GuestProcessImpl.cpp 91516 2021-10-01 14:20:07Z vboxsync $ */
+/* $Id: GuestProcessImpl.cpp 91517 2021-10-01 14:20:28Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling.
  */
@@ -1939,7 +1939,7 @@ HRESULT GuestProcess::write(ULONG aHandle, ULONG aFlags, const std::vector<BYTE>
             {
                 GuestErrorInfo ge(GuestErrorInfo::Type_Process, rcGuest, mData.mProcess.mExecutable.c_str());
                 hr = setErrorBoth(VBOX_E_IPRT_ERROR, rcGuest, tr("Writing %RU32 bytes (flags %#x) to guest process failed: %s"),
-                                       cbData, aFlags, GuestBase::getErrorAsString(ge).c_str());
+                                  cbData, aFlags, GuestBase::getErrorAsString(ge).c_str());
                 break;
             }
             default:
