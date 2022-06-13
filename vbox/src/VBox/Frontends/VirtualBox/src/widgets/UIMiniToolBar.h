@@ -1,4 +1,4 @@
-/* $Id: UIMiniToolBar.h 88635 2021-04-21 14:05:26Z vboxsync $ */
+/* $Id: UIMiniToolBar.h 92848 2021-12-09 13:48:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMiniToolBar class declaration.
  */
@@ -119,8 +119,8 @@ private slots:
     /** Handles unhovering. */
     void sltHoverLeave();
 
-    /** Notifies listeners about we stole window activation. */
-    void sltNotifyAboutWindowActivationStolen() { emit sigNotifyAboutWindowActivationStolen(); }
+    /** Check whether we still have window activation token. */
+    void sltCheckWindowActivationSanity();
 
     /** Hides window. */
     void sltHide();
