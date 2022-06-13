@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIFileManagerTable.h 93185 2022-01-11 14:18:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class declaration.
  */
@@ -256,7 +256,6 @@ protected:
     QStringList              m_copyCutBuffer;
     /** This name is appended to the log messages which are shown in the log panel. */
     QString          m_strTableName;
-    QILabel         *m_pWarningLabel;
 
 private slots:
 
