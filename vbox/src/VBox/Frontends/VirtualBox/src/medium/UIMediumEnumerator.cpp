@@ -1,4 +1,4 @@
-/* $Id: UIMediumEnumerator.cpp 90256 2021-07-20 11:02:51Z vboxsync $ */
+/* $Id: UIMediumEnumerator.cpp 90939 2021-08-27 08:52:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumEnumerator class implementation.
  */
@@ -188,7 +188,7 @@ void UIMediumEnumerator::enumerateMedia(const CMediumVector &comMedia /* = CMedi
     }
 
     /* UICommon is cleaning up, abort immediately: */
-    if (UICommon::isCleaningUp())
+    if (uiCommon().isCleaningUp())
         return;
 
     if (comMedia.isEmpty())
@@ -495,7 +495,7 @@ void UIMediumEnumerator::addMediaToMap(const CMediumVector &inputMedia, UIMedium
     foreach (const CMedium &comMedium, inputMedia)
     {
         /* If UICommon is cleaning up, abort immediately: */
-        if (UICommon::isCleaningUp())
+        if (uiCommon().isCleaningUp())
             break;
 
         /* Insert UIMedium to the passed media map.

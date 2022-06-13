@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 90938 2021-08-27 08:45:54Z vboxsync $ */
+/* $Id: UICommon.cpp 90939 2021-08-27 08:52:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -232,7 +232,6 @@ static const PortConfig kLptKnownPorts[] =
 
 /* static */
 UICommon *UICommon::s_pInstance = 0;
-bool      UICommon::s_fCleaningUp = false;
 QString   UICommon::s_strLoadedLanguageId = vboxBuiltInLanguageName();
 QString   UICommon::s_strUserDefinedPortName = QString();
 
@@ -267,6 +266,7 @@ void UICommon::destroy()
 UICommon::UICommon(UIType enmType)
     : m_enmType(enmType)
     , m_fValid(false)
+    , m_fCleaningUp(false)
 #ifdef VBOX_WS_WIN
     , m_fDataCommitted(false)
 #endif
@@ -847,7 +847,7 @@ void UICommon::cleanup()
     /// @todo Shouldn't that be protected with a mutex or something?
     /* Remember that the cleanup is in progress preventing any unwanted
      * stuff which could be called from the other threads: */
-    s_fCleaningUp = true;
+    m_fCleaningUp = true;
 
 #ifdef VBOX_WS_WIN
     /* Ask listeners to commit data if haven't yet: */
@@ -3241,7 +3241,7 @@ void UICommon::enumerateMedia(const CMediumVector &comMedia /* = CMediumVector()
     /* Make sure UICommon is already valid: */
     AssertReturnVoid(m_fValid);
     /* Ignore the request during UICommon cleanup: */
-    if (s_fCleaningUp)
+    if (m_fCleaningUp)
         return;
     /* Ignore the request during startup snapshot restoring: */
     if (shouldRestoreCurrentSnapshot())
@@ -3265,7 +3265,7 @@ void UICommon::refreshMedia()
     /* Make sure UICommon is already valid: */
     AssertReturnVoid(m_fValid);
     /* Ignore the request during UICommon cleanup: */
-    if (s_fCleaningUp)
+    if (m_fCleaningUp)
         return;
     /* Ignore the request during startup snapshot restoring: */
     if (shouldRestoreCurrentSnapshot())
