@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMUnattendedPageBasic.h 90093 2021-07-08 11:36:21Z vboxsync $ */
+/* $Id: UIWizardNewVMUnattendedPageBasic.h 90101 2021-07-08 14:51:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMUnattendedPageBasic class declaration.
  */
@@ -100,7 +100,7 @@ private:
         QLineEdit *m_pProductKeyLineEdit;
         QLabel     *m_pProductKeyLabel;
     /** @} */
-
+    QSet<QString> m_userModifiedParameters;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_wizards_newvm_UIWizardNewVMUnattendedPageBasic_h */

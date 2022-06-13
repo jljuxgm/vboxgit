@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMUnattendedPageBasic.cpp 90066 2021-07-06 13:13:41Z vboxsync $ */
+/* $Id: UIWizardNewVMUnattendedPageBasic.cpp 90101 2021-07-08 14:51:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMUnattendedPageBasic class implementation.
  */
@@ -152,6 +152,18 @@ void UIWizardNewVMUnattendedPageBasic::initializePage()
     disableEnableProductKeyWidgets(isProductKeyWidgetEnabled());
     disableEnableGAWidgets(m_pGAInstallationISOContainer ? m_pGAInstallationISOContainer->isChecked() : false);
     retranslateUi();
+
+    /* Initialize user/password if they are not modified by the user: */
+    if (m_pUserNamePasswordEditor)
+    {
+        m_pUserNamePasswordEditor->blockSignals(true);
+        if (!m_userModifiedParameters.contains("UserName"))
+        {
+
+        }
+        m_pUserNamePasswordEditor->blockSignals(false);
+
+    }
 }
 
 bool UIWizardNewVMUnattendedPageBasic::isComplete() const
@@ -197,6 +209,7 @@ void UIWizardNewVMUnattendedPageBasic::sltPasswordChanged(const QString &strPass
 void UIWizardNewVMUnattendedPageBasic::sltUserNameChanged(const QString &strUserName)
 {
     newVMWizardPropertySet(UserName, strUserName);
+    m_userModifiedParameters << "UserName";
     emit completeChanged();
 }
 
