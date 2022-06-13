@@ -1,5 +1,5 @@
 #! /bin/sh
-# $Id: VBoxCreateUSBNode.sh 82968 2020-02-04 10:35:17Z vboxsync $ */
+# $Id: VBoxCreateUSBNode.sh 92881 2021-12-13 13:22:13Z vboxsync $ */
 ## @file
 # VirtualBox USB Proxy Service, Linux Specialization.
 # udev helper for creating and removing device nodes for VirtualBox USB devices
@@ -32,7 +32,7 @@ devdir="`printf "/dev/vboxusb/%.3d" $bus`"
 devpath="`printf "/dev/vboxusb/%.3d/%.3d" $bus $device`"
 case "$do_remove" in
   0)
-  if test -n "$class" -a "$class" -eq "$usb_class_hub"
+  if test -n "$class" -a "$class" = "$usb_class_hub"
   then
       exit 0
   fi
