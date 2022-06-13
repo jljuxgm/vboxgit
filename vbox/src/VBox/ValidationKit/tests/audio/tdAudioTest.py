@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tdAudioTest.py 90224 2021-07-16 09:11:23Z vboxsync $
+# $Id: tdAudioTest.py 90496 2021-08-03 16:19:42Z vboxsync $
 
 """
 AudioTest test driver which invokes the VKAT (Validation Kit Audio Test)
@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 90224 $"
+__version__ = "$Revision: 90496 $"
 
 # Standard Python imports.
 import os
@@ -363,26 +363,26 @@ class tdAudioTest(vbox.TestDriver):
             # Set extra data.
             for sExtraData in self.asOptExtraData:
                 sKey, sValue = sExtraData.split(':');
-                reporter.log('Set extradata: %s => %s' % (sKey, sValue))
+                reporter.log('Set extradata: %s => %s' % (sKey, sValue));
                 fRc = oSession.setExtraData(sKey, sValue) and fRc;
 
             # Save the settings.
-            fRc = fRc and oSession.saveSettings()
+            fRc = fRc and oSession.saveSettings();
             fRc = oSession.close() and fRc;
 
         reporter.testStart('Waiting for TXS');
         oSession, oTxsSession = self.startVmAndConnectToTxsViaTcp(oTestVm.sVmName,
-                                                                fCdWait = True,
-                                                                cMsTimeout = 3 * 60 * 1000,
-                                                                sFileCdWait = '${CDROM}/${OS/ARCH}/vkat${EXESUFF}');
+                                                                  fCdWait = True,
+                                                                  cMsTimeout = 3 * 60 * 1000,
+                                                                  sFileCdWait = '${OS/ARCH}/vkat${EXESUFF}');
         reporter.testDone();
-        if  oSession    is not None \
-        and oTxsSession is not None:
+
+        if  oSession is not None:
             self.addTask(oTxsSession);
 
-        fRc = self.doTest(oTestVm, oSession, oTxsSession);
+            fRc = self.doTest(oTestVm, oSession, oTxsSession);
 
-        if oSession is not None:
+            # Cleanup.
             self.removeTask(oTxsSession);
             self.terminateVmBySession(oSession);
 
