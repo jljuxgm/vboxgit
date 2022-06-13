@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 94574 2022-04-12 17:13:39Z vboxsync $
+# $Id: Makefile.kmk 94575 2022-04-12 18:30:22Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -935,7 +935,7 @@ ntGetTimerResolution_SDKS.win = ReorderCompilerIncs $(VBOX_WINPSDK) $(VBOX_WINDD
 #
 # Filter out testcases which don't yet work when statically linked as Guest Additions R3 programs.
 #
-# We currently do this for running those via the Validation Kit on old / ancient guests. 
+# We currently do this for running those via the Validation Kit on old / ancient guests.
 # Note that we not necessarily run all unit tests available (white list).
 #
 # See @bugref:10195.
