@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 93745 2022-02-14 21:02:57Z vboxsync $ */
+/* $Id: CPUM.cpp 93830 2022-02-17 16:56:18Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -4447,3 +4447,41 @@ VMMR3DECL(void) CPUMR3LogCpuIdAndMsrFeatures(PVM pVM)
     RTLogRelSetBuffering(fOldBuffered);
 }
 
+
+/**
+ * Marks the guest debug state as active.
+ *
+ * @returns nothing.
+ * @param   pVCpu       The cross context virtual CPU structure.
+ *
+ * @note This is used solely by NEM (hence the name) to set the correct flags here
+ *       without loading the host's DRx registers, which is not possible from ring-3 anyway.
+ *       The specific NEM backends have to make sure to load the correct values.
+ */
+VMMR3_INT_DECL(void) CPUMR3NemActivateGuestDebugState(PVMCPUCC pVCpu)
+{
+    ASMAtomicAndU32(&pVCpu->cpum.s.fUseFlags, ~CPUM_USED_DEBUG_REGS_HYPER);
+    ASMAtomicOrU32(&pVCpu->cpum.s.fUseFlags, CPUM_USED_DEBUG_REGS_GUEST);
+}
+
+
+/**
+ * Marks the hyper debug state as active.
+ *
+ * @returns nothing.
+ * @param   pVCpu       The cross context virtual CPU structure.
+ *
+ * @note This is used solely by NEM (hence the name) to set the correct flags here
+ *       without loading the host's DRx registers, which is not possible from ring-3 anyway.
+ *       The specific NEM backends have to make sure to load the correct values.
+ */
+VMMR3_INT_DECL(void) CPUMR3NemActivateHyperDebugState(PVMCPUCC pVCpu)
+{
+    /*
+     * Make sure the hypervisor values are up to date.
+     */
+    CPUMRecalcHyperDRx(pVCpu, UINT8_MAX /* no loading, please */);
+
+    ASMAtomicAndU32(&pVCpu->cpum.s.fUseFlags, ~CPUM_USED_DEBUG_REGS_GUEST);
+    ASMAtomicOrU32(&pVCpu->cpum.s.fUseFlags, CPUM_USED_DEBUG_REGS_HYPER);
+}
