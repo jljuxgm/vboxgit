@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.cpp 90717 2021-08-18 13:49:57Z vboxsync $ */
+/* $Id: UIHelpBrowserWidget.cpp 90719 2021-08-18 14:11:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class implementation.
  */
@@ -724,7 +724,8 @@ void UIHelpBrowserTab::prepareToolBarAndAddressBar()
     m_pForwardAction =
         new QAction(UIIconPool::iconSet(":/help_browser_forward_32px.png", ":/help_browser_forward_disabled_32px.png"), QString(), this);
     m_pBackwardAction =
-        new QAction(UIIconPool::iconSet(":/help_browser_backward_32px.png", ":/help_browser_backward_disabled_32px.png"), QString(), this);
+        new QAction(UIIconPool::iconSetFull(":/help_browser_backward_32px.png", ":/help_browser_backward_16px.png",
+                                            ":/help_browser_backward_disabled_32px.png", ":/help_browser_backward_disabled_16px.png"), QString(), this);
     m_pAddBookmarkAction =
         new QAction(UIIconPool::iconSetFull(":/help_browser_add_bookmark_32px.png", ":/help_browser_add_bookmark_16px.png",
                                         ":/help_browser_add_bookmark_disabled_32px.png", ":/help_browser_add_bookmark_disabled_16px.png"), QString(), this);
