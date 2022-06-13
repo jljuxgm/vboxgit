@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 94210 2022-03-13 20:25:00Z vboxsync $ */
+/* $Id: VBoxManage.cpp 94211 2022-03-13 20:40:25Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -248,7 +248,7 @@ static const VBMGCMD g_aCommands[] =
 #endif
     { "dhcpserver",         USAGE_S_NEWCMD,   HELP_CMD_DHCPSERVER, handleDHCPServer,           0 },
 #ifdef VBOX_WITH_NAT_SERVICE
-    { "natnetwork",         USAGE_NATNETWORK,       VBMG_CMD_TODO, handleNATNetwork,           0 },
+    { "natnetwork",         USAGE_S_NEWCMD,   HELP_CMD_NATNETWORK, handleNATNetwork,           0 },
 #endif
     { "extpack",            USAGE_S_NEWCMD,      HELP_CMD_EXTPACK, handleExtPack,              0 },
     { "bandwidthctl",       USAGE_S_NEWCMD, HELP_CMD_BANDWIDTHCTL, handleBandwidthControl,     0 },

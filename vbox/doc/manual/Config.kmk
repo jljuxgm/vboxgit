@@ -1,4 +1,4 @@
-# $Id: Config.kmk 94210 2022-03-13 20:25:00Z vboxsync $
+# $Id: Config.kmk 94211 2022-03-13 20:40:25Z vboxsync $
 ## @file
 # kBuild Configuration file for the manual.
 #
@@ -79,7 +79,8 @@ VBOX_MANUAL_XML_REFENTRY_FILES := \
 	man_VBoxManage-usbfilter.xml \
 	man_VBoxManage-guestproperty.xml \
 	man_VBoxManage-guestcontrol.xml \
-	man_VBoxManage-metrics.xml
+	man_VBoxManage-metrics.xml \
+	man_VBoxManage-natnetwork.xml
 
 ## List of user manual XML files.
 VBOX_MANUAL_XML_FILES = \

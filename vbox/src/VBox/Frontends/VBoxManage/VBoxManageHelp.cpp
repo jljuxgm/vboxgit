@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 94210 2022-03-13 20:25:00Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 94211 2022-03-13 20:40:25Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -639,38 +639,6 @@ void printUsage(USAGECATEGORY enmCommand, uint64_t fSubcommandScope, PRTSTREAM p
                      "                            [--setlocation <path>]\n"
                      "                            [--description <description string>]"
                      "\n", SEP);
-
-#if defined(VBOX_WITH_NAT_SERVICE)
-    if (enmCommand == USAGE_NATNETWORK || enmCommand == USAGE_S_ALL)
-    {
-        RTStrmPrintf(pStrm,
-                           "%s natnetwork %s      add --netname <name>\n"
-                     "                            --network <network>\n"
-                     "                            [--enable|--disable]\n"
-                     "                            [--dhcp on|off]\n"
-                     "                            [--port-forward-4 <rule>]\n"
-                     "                            [--loopback-4 <rule>]\n"
-                     "                            [--ipv6 on|off]\n"
-                     "                            [--port-forward-6 <rule>]\n"
-                     "                            [--loopback-6 <rule>]\n\n"
-                           "%s natnetwork %s      remove --netname <name>\n\n"
-                           "%s natnetwork %s      modify --netname <name>\n"
-                     "                            [--network <network>]\n"
-                     "                            [--enable|--disable]\n"
-                     "                            [--dhcp on|off]\n"
-                     "                            [--port-forward-4 <rule>]\n"
-                     "                            [--loopback-4 <rule>]\n"
-                     "                            [--ipv6 on|off]\n"
-                     "                            [--port-forward-6 <rule>]\n"
-                     "                            [--loopback-6 <rule>]\n\n"
-                           "%s natnetwork %s      start --netname <name>\n\n"
-                           "%s natnetwork %s      stop --netname <name>\n\n"
-                           "%s natnetwork %s      list [<pattern>]\n"
-                     "\n", SEP, SEP, SEP, SEP, SEP, SEP);
-
-
-    }
-#endif
 
 #if defined(VBOX_WITH_NETFLT)
     if (enmCommand == USAGE_HOSTONLYIFS || enmCommand == USAGE_S_ALL)
