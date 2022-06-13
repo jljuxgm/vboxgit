@@ -1,4 +1,4 @@
-/* $Id: Svga.h 94631 2022-04-19 13:23:11Z vboxsync $ */
+/* $Id: Svga.h 94635 2022-04-19 15:26:18Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver VMSVGA.
  */
@@ -123,7 +123,6 @@ typedef struct VMSVGACBCONTEXT
 {
     RTLISTANCHOR         QueuePending;             /* Buffers which will be submitted to the host. */
     RTLISTANCHOR         QueueSubmitted;           /* Buffers which are being processed by the host. */
-    RTLISTANCHOR         QueuePreempted;           /* Preempted buffers. */
     uint32_t             cSubmitted;               /* How many buffers were submitted to the host.
                                                     * Less than SVGA_CB_MAX_QUEUED_PER_CONTEXT */
 } VMSVGACBCONTEXT, *PVMSVGACBCONTEXT;
