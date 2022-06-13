@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 94073 2022-03-03 13:01:44Z vboxsync $
+# $Id: Makefile.kmk 94618 2022-04-15 13:02:20Z vboxsync $
 ## @file
 # Top level makefile.
 #
@@ -944,6 +944,10 @@ VBOX_CORE_DOXYFILE_INPUT := \
 VBOX_CORE_DOXYFILE_INPUT := \
 	$(VBOX_CORE_DOXYFILE_INPUT_FIRST) \
 	$(sort $(filter-out $(VBOX_CORE_DOXYFILE_INPUT_FIRST), $(VBOX_CORE_DOXYFILE_INPUT)))
+
+VBOX_CORE_DOXYFILE_INPUT += \
+	$(wildcard $(PATH_ROOT)/src/VBox/VMM/VMMAll/IEM*cpp.h)
+
 
 includedep $(VBOX_CORE_DOXYFILE_OUTPUT)/Doxyfile.Core.dep
 
