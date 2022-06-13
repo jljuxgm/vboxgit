@@ -1,4 +1,4 @@
-/* $Id: tstVMStruct.h 91345 2021-09-23 08:14:38Z vboxsync $ */
+/* $Id: tstVMStruct.h 91895 2021-10-20 13:30:17Z vboxsync $ */
 /** @file
  * tstVMMStruct - Statements for generating VM and VMCPU offset and size tests.
  *
@@ -608,7 +608,6 @@
     GEN_CHECK_OFF(PDMQUEUE, aFreeItems[1]);
     GEN_CHECK_OFF_DOT(PDMQUEUE, aFreeItems[0].pItemR3);
     GEN_CHECK_OFF_DOT(PDMQUEUE, aFreeItems[0].pItemR0);
-    GEN_CHECK_OFF_DOT(PDMQUEUE, aFreeItems[1].pItemRC);
     GEN_CHECK_SIZE(PDMDEVHLPTASK);
     GEN_CHECK_OFF(PDMDEVHLPTASK, Core);
     GEN_CHECK_OFF(PDMDEVHLPTASK, pDevInsR3);

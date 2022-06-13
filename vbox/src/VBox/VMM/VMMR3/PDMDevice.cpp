@@ -1,4 +1,4 @@
-/* $Id: PDMDevice.cpp 90346 2021-07-26 19:55:53Z vboxsync $ */
+/* $Id: PDMDevice.cpp 91895 2021-10-20 13:30:17Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device parts.
  */
@@ -134,8 +134,6 @@ int pdmR3DevInit(PVM pVM)
                                   &pVM->pdm.s.pDevHlpQueueR3);
     AssertRCReturn(rc, rc);
     pVM->pdm.s.pDevHlpQueueR0 = PDMQueueR0Ptr(pVM->pdm.s.pDevHlpQueueR3);
-    pVM->pdm.s.pDevHlpQueueRC = PDMQueueRCPtr(pVM->pdm.s.pDevHlpQueueR3);
-
 
     /*
      *

@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 91686 2021-10-12 09:58:25Z vboxsync $ */
+/* $Id: PDM.cpp 91895 2021-10-20 13:30:17Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -576,12 +576,6 @@ VMMR3_INT_DECL(int) PDMR3InitCompleted(PVM pVM, VMINITCOMPLETED enmWhat)
 VMMR3_INT_DECL(void) PDMR3Relocate(PVM pVM, RTGCINTPTR offDelta)
 {
     LogFlow(("PDMR3Relocate\n"));
-
-    /*
-     * Queues.
-     */
-    pdmR3QueueRelocate(pVM, offDelta);
-    pVM->pdm.s.pDevHlpQueueRC = PDMQueueRCPtr(pVM->pdm.s.pDevHlpQueueR3);
 
     /*
      * The registered PIC.
