@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditionsW2KXP.nsh 93262 2022-01-17 10:12:47Z vboxsync $
+; $Id: VBoxGuestAdditionsW2KXP.nsh 94160 2022-03-10 19:29:09Z vboxsync $
 ;; @file
 ; VBoxGuestAdditionsW2KXP.nsh - Guest Additions installation for Windows 2000/XP.
 ;
@@ -182,14 +182,22 @@ Function W2K_CopyFiles
   FILE "$%PATH_OUT%\bin\additions\VBoxMouse.sys"
   FILE "$%PATH_OUT%\bin\additions\VBoxMouse.inf"
 !ifdef VBOX_SIGN_ADDITIONS
-  FILE "$%PATH_OUT%\bin\additions\VBoxMouse.cat"
+  ${If} $g_strWinVersion == "10"
+    FILE "$%PATH_OUT%\bin\additions\VBoxMouse.cat"
+  ${Else}
+    FILE "/oname=VBoxMouse.cat" "$%PATH_OUT%\bin\additions\VBoxMouse-PreW10.cat"
+  ${EndIf}
 !endif
 
   ; Guest driver
   FILE "$%PATH_OUT%\bin\additions\VBoxGuest.sys"
   FILE "$%PATH_OUT%\bin\additions\VBoxGuest.inf"
 !ifdef VBOX_SIGN_ADDITIONS
-  FILE "$%PATH_OUT%\bin\additions\VBoxGuest.cat"
+  ${If} $g_strWinVersion == "10"
+    FILE "$%PATH_OUT%\bin\additions\VBoxGuest.cat"
+  ${Else}
+    FILE "/oname=VBoxGuest.cat" "$%PATH_OUT%\bin\additions\VBoxGuest-PreW10.cat"
+  ${EndIf}
 !endif
 
   ; Guest driver files
@@ -237,7 +245,11 @@ Function W2K_CopyFiles
     SetOutPath "$INSTDIR"
 
     !ifdef VBOX_SIGN_ADDITIONS
-      FILE "$%PATH_OUT%\bin\additions\VBoxWddm.cat"
+      ${If} $g_strWinVersion == "10"
+        FILE "$%PATH_OUT%\bin\additions\VBoxWddm.cat"
+      ${Else}
+        FILE "/oname=VBoxWddm.cat" "$%PATH_OUT%\bin\additions\VBoxWddm-PreW10.cat"
+      ${EndIf}
     !endif
     FILE "$%PATH_OUT%\bin\additions\VBoxWddm.sys"
     FILE "$%PATH_OUT%\bin\additions\VBoxWddm.inf"
