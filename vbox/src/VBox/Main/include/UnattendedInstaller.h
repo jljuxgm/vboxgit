@@ -1,4 +1,4 @@
-/* $Id: UnattendedInstaller.h 94749 2022-04-28 18:56:43Z vboxsync $ */
+/* $Id: UnattendedInstaller.h 94751 2022-04-28 19:12:56Z vboxsync $ */
 /** @file
  * UnattendedInstaller class header
  */
@@ -592,17 +592,15 @@ protected:
      *
      * @returns COM status code
      * @param   pEditor                  Editor with the menu config. file loaded and parsed.
-     * @param   pszMenuConfigFileName    Name of the menu file.
      */
-    HRESULT editDebianMenuCfg(GeneralTextScript *pEditor, const char *pszMenuConfigFileName);
+    HRESULT editDebianMenuCfg(GeneralTextScript *pEditor);
     /**
      * Performs basic edits on grub configuration file (grub.cfg).
      *
      * @returns COM status code
      * @param   pEditor                 Editor with the grub.cfg file loaded and parsed.
-     * @param   pszGrubConfigFileName   Name of the grub config file.
      */
-    HRESULT editDebianGrubCfg(GeneralTextScript *pEditor, const char *pszGrubConfigFileName);
+    HRESULT editDebianGrubCfg(GeneralTextScript *pEditor);
 
     /**
      * Performs basic edits on a isolinux.cfg file.
