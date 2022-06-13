@@ -1,4 +1,4 @@
-/* $Id: display-svga-x11.cpp 90629 2021-08-11 13:44:50Z vboxsync $ */
+/* $Id: display-svga-x11.cpp 91670 2021-10-11 19:35:02Z vboxsync $ */
 /** @file
  * X11 guest client - VMSVGA emulation resize event pass-through to X.Org
  * guest driver.
@@ -738,8 +738,15 @@ static DECLCALLBACK(int) vbclSVGAInit(void)
     if (isXwayland())
     {
         rc = VbglR3DrmClientStart();
-        if (RT_FAILURE(rc))
+        if (RT_SUCCESS(rc))
+        {
+            VBClLogInfo("VBoxDrmClient has been successfully started, exitting parent process\n");
+            exit(0);
+        }
+        else
+        {
             VBClLogError("Starting DRM resizing client failed with %Rrc\n", rc);
+        }
         return rc;
     }
 
