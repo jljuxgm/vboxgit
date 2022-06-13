@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioValidationKit.cpp 91052 2021-09-01 09:23:45Z vboxsync $ */
+/* $Id: DrvHostAudioValidationKit.cpp 91053 2021-09-01 10:37:25Z vboxsync $ */
 /** @file
  * Host audio driver - ValidationKit - For dumping and injecting audio data from/to the device emulation.
  */
@@ -236,9 +236,6 @@ static void drvHostValKitCleanup(PDRVHOSTVALKITAUDIO pThis)
 {
     LogRel(("ValKit: Cleaning up ...\n"));
 
-    if (pThis->cTestsRec)
-        LogRel(("ValKit: Warning: %RU32 guest recording tests still outstanding:\n", pThis->cTestsRec));
-
     if (   pThis->cTestsTotal
         && (   !pThis->cbPlayedTotal
             && !pThis->cbRecordedTotal)
@@ -252,6 +249,9 @@ static void drvHostValKitCleanup(PDRVHOSTVALKITAUDIO pThis)
                 "ValKit:     - Is the guest's audio mixer or input / output sinks muted?\n"
                 "ValKit:     - Audio stack misconfiguration / bug?\n\n"));
     }
+
+    if (pThis->cTestsRec)
+        LogRel(("ValKit: Warning: %RU32 guest recording tests still outstanding:\n", pThis->cTestsRec));
 
     PVALKITTESTDATA pTst, pTstNext;
     RTListForEachSafe(&pThis->lstTestsRec, pTst, pTstNext, VALKITTESTDATA, Node)
