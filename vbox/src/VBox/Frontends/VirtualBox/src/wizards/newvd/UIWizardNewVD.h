@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVD.h 91061 2021-09-01 14:30:25Z vboxsync $ */
+/* $Id: UIWizardNewVD.h 91341 2021-09-23 07:18:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVD class declaration.
  */
@@ -55,6 +55,8 @@ public:
 
        qulonglong mediumSize() const;
        void setMediumSize(qulonglong mediumSize);
+
+       QUuid mediumId() const;
     /** @} */
 
 protected:
@@ -74,6 +76,7 @@ private:
     QString     m_strDefaultPath;
     qulonglong  m_uDefaultSize;
     int m_iMediumVariantPageIndex;
+    QUuid m_uMediumId;
 };
 
 typedef QPointer<UIWizardNewVD> UISafePointerWizardNewVD;

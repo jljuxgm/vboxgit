@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVD.cpp 91061 2021-09-01 14:30:25Z vboxsync $ */
+/* $Id: UIWizardNewVD.cpp 91341 2021-09-23 07:18:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVD class implementation.
  */
@@ -87,6 +87,11 @@ void UIWizardNewVD::setMediumSize(qulonglong uMediumSize)
     m_uMediumSize = uMediumSize;
 }
 
+QUuid UIWizardNewVD::mediumId() const
+{
+    return m_uMediumId;
+}
+
 void UIWizardNewVD::populatePages()
 {
     switch (mode())
@@ -142,6 +147,9 @@ bool UIWizardNewVD::createVirtualDisk()
                                                                                                variants);
     connect(pNotification, &UINotificationProgressMediumCreate::sigMediumCreated,
             &uiCommon(), &UICommon::sltHandleMediumCreated);
+
+    m_uMediumId = comVirtualDisk.GetId();
+
     gpNotificationCenter->append(pNotification);
 
     /* Positive: */

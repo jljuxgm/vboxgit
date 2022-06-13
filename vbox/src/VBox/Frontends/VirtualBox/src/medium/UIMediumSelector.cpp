@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.cpp 91109 2021-09-03 15:31:49Z vboxsync $ */
+/* $Id: UIMediumSelector.cpp 91341 2021-09-23 07:18:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class implementation.
  */
@@ -448,8 +448,10 @@ void UIMediumSelector::sltAddMedium()
 
 void UIMediumSelector::sltCreateMedium()
 {
-    uiCommon().openMediumCreatorDialog(this, m_enmMediumType, m_strMachineFolder,
-                                       m_strMachineName, m_strMachineGuestOSTypeId);
+    QUuid uMediumId = uiCommon().openMediumCreatorDialog(this, m_enmMediumType, m_strMachineFolder,
+                                                         m_strMachineName, m_strMachineGuestOSTypeId);
+    /* Make sure that the data structure is updated and newly created medium is selected and visible: */
+    sltHandleMediumCreated(uMediumId);
 }
 
 void UIMediumSelector::sltHandleItemSelectionChanged()
@@ -467,6 +469,8 @@ void UIMediumSelector::sltHandleTreeWidgetDoubleClick(QTreeWidgetItem * item, in
 
 void UIMediumSelector::sltHandleMediumCreated(const QUuid &uMediumId)
 {
+    if (uMediumId.isNull())
+        return;
     /* Update the tree widget making sure we show the new item: */
     repopulateTreeWidget();
     /* Select the new item: */
