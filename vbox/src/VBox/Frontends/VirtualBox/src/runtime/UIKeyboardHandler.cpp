@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.cpp 94031 2022-03-01 11:16:54Z vboxsync $ */
+/* $Id: UIKeyboardHandler.cpp 94035 2022-03-01 11:40:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandler class implementation.
  */
@@ -1773,7 +1773,11 @@ bool UIKeyboardHandler::processHotKey(int iHotKey, wchar_t *pHotKey)
 
     Q_UNUSED(iHotKey);
     if (pHotKey && pHotKey[0] && !pHotKey[1])
+# if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+        fWasProcessed = actionPool()->processHotKey(QKeySequence(QChar(pHotKey[0]).toUpper().unicode()));
+# else
         fWasProcessed = actionPool()->processHotKey(QKeySequence(Qt::UNICODE_ACCEL + QChar(pHotKey[0]).toUpper().unicode()));
+# endif
 
 #elif defined(VBOX_WS_WIN)
 
@@ -1807,7 +1811,11 @@ bool UIKeyboardHandler::processHotKey(int iHotKey, wchar_t *pHotKey)
         if (symbol)
         {
             QChar qtSymbol = QString::fromLocal8Bit(&symbol, 1)[0];
+# if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+            fWasProcessed = actionPool()->processHotKey(QKeySequence(qtSymbol.toUpper().unicode()));
+# else
             fWasProcessed = actionPool()->processHotKey(QKeySequence((Qt::UNICODE_ACCEL + qtSymbol.toUpper().unicode())));
+# endif
         }
     }
 
