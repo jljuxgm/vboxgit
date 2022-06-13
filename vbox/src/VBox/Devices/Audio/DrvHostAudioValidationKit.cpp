@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioValidationKit.cpp 91072 2021-09-01 17:15:51Z vboxsync $ */
+/* $Id: DrvHostAudioValidationKit.cpp 91073 2021-09-01 17:28:36Z vboxsync $ */
 /** @file
  * Host audio driver - ValidationKit - For dumping and injecting audio data from/to the device emulation.
  */
@@ -872,7 +872,7 @@ static DECLCALLBACK(int) drvHostValKitAudioHA_StreamPlay(PPDMIHOSTAUDIO pInterfa
         pThis->cbPlayedSilence = 0;
     }
 
-    const bool fHandleSilence = true;
+    bool fHandleSilence = true;
 
     if (pTst->pEntry == NULL) /* Test not started yet? */
     {
