@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 93115 2022-01-01 11:31:46Z vboxsync $
+# $Id: Makefile.kmk 93122 2022-01-04 03:03:10Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -37,6 +37,9 @@ ifndef VBOX_ONLY_EXTPACKS
  include $(PATH_SUB_CURRENT)/UnattendedTemplates/Makefile.kmk
  ifndef VBOX_ONLY_SDK
   include $(PATH_SUB_CURRENT)/src-helper-apps/OpenGLTest/Makefile.kmk
+ endif
+ if defined(VBOX_WITH_OPEN_WATCOM) && defined(VBOX_WITH_UNATTENDED)
+  include $(PATH_SUB_CURRENT)/src-helper-apps/os2/Makefile.kmk
  endif
 endif
 
