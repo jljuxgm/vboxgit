@@ -1,4 +1,4 @@
-/* $Id: UINativeWizardPage.h 89960 2021-06-29 17:49:15Z vboxsync $ */
+/* $Id: UINativeWizardPage.h 90727 2021-08-18 16:09:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINativeWizardPage class declaration.
  */
@@ -37,6 +37,14 @@ signals:
 
     /** Notifies about page validity changes. */
     void completeChanged();
+
+    /** Notifies listeners about progress has started. */
+    void sigProgressStarted();
+    /** Notifies listeners about progress has changed.
+      * @param  uPercent  Brings the progress percentage. */
+    void sigProgressChange(ulong uPercent);
+    /** Notifies listeners about progress has finished. */
+    void sigProgressFinished();
 
 public:
 
