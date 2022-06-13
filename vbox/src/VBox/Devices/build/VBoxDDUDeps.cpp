@@ -1,4 +1,4 @@
-/* $Id: VBoxDDUDeps.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: VBoxDDUDeps.cpp 93217 2022-01-13 07:29:50Z vboxsync $ */
 /** @file
  * VBoxDDU - For dragging in library objects.
  */
@@ -46,7 +46,7 @@ struct CLANG11WEIRDNESS { PFNRT pfn; } g_apfnVBoxDDUDeps[] =
 # ifdef RT_OS_OS2
     { (PFNRT)UsbOpen },
 # endif
-# if defined(RT_OS_DARWIN) || defined(RT_OS_SOLARIS) || defined(RT_OS_WINDOWS) /* PORTME */
+# if defined(RT_OS_SOLARIS) || defined(RT_OS_WINDOWS) /* PORTME */
     { (PFNRT)USBLibInit },
 # endif
 #endif /* VBOX_WITH_USB */

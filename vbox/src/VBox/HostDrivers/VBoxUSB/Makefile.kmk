@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 93115 2022-01-01 11:31:46Z vboxsync $
+# $Id: Makefile.kmk 93217 2022-01-13 07:29:50Z vboxsync $
 ## @file
 # Sub-Makefile for the Windows USB drivers.
 #
@@ -28,7 +28,7 @@ SUB_DEPTH = ../../../..
 include $(KBUILD_PATH)/subheader.kmk
 
 # Include sub-makefiles.
-if1of ($(KBUILD_TARGET), darwin solaris win)
+if1of ($(KBUILD_TARGET), solaris win)
  include $(PATH_SUB_CURRENT)/$(KBUILD_TARGET)/Makefile.kmk
 endif
 
@@ -49,8 +49,6 @@ USBLib_SOURCES        = \
 	USBFilter.cpp
 
 # OS specific bits if applicable.
-USBLib_SOURCES.darwin = \
-	darwin/USBLib-darwin.cpp
 USBLib_SOURCES.os2 = \
 	os2/usbcalls.c
 USBLib_SOURCES.solaris = \
