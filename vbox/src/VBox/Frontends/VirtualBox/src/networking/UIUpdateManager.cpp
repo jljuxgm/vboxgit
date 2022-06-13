@@ -1,4 +1,4 @@
-/* $Id: UIUpdateManager.cpp 90602 2021-08-10 15:22:53Z vboxsync $ */
+/* $Id: UIUpdateManager.cpp 90604 2021-08-10 15:30:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUpdateManager class implementation.
  */
@@ -92,8 +92,14 @@ UIUpdateStepVirtualBox::UIUpdateStepVirtualBox(bool fForcedCall)
 {
     m_pNewVersionChecker = new UINewVersionChecker(fForcedCall);
     if (m_pNewVersionChecker)
-        connect(m_pNewVersionChecker, &UINewVersionChecker::sigNewVersionChecked,
+    {
+        connect(m_pNewVersionChecker, &UINewVersionChecker::sigProgressFailed,
                 this, &UIUpdateStepVirtualBox::sigStepFinished);
+        connect(m_pNewVersionChecker, &UINewVersionChecker::sigProgressCanceled,
+                this, &UIUpdateStepVirtualBox::sigStepFinished);
+        connect(m_pNewVersionChecker, &UINewVersionChecker::sigProgressFinished,
+                this, &UIUpdateStepVirtualBox::sigStepFinished);
+    }
 }
 
 UIUpdateStepVirtualBox::~UIUpdateStepVirtualBox()

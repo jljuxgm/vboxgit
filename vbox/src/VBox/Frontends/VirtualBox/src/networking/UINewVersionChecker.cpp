@@ -1,4 +1,4 @@
-/* $Id: UINewVersionChecker.cpp 90603 2021-08-10 15:26:45Z vboxsync $ */
+/* $Id: UINewVersionChecker.cpp 90604 2021-08-10 15:30:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINewVersionChecker class implementation.
  */
@@ -83,14 +83,14 @@ void UINewVersionChecker::processNetworkReplyProgress(qint64, qint64)
 {
 }
 
-void UINewVersionChecker::processNetworkReplyFailed(const QString &)
+void UINewVersionChecker::processNetworkReplyFailed(const QString &strError)
 {
-    emit sigNewVersionChecked();
+    emit sigProgressFailed(strError);
 }
 
 void UINewVersionChecker::processNetworkReplyCanceled(UINetworkReply *)
 {
-    emit sigNewVersionChecked();
+    emit sigProgressCanceled();
 }
 
 void UINewVersionChecker::processNetworkReplyFinished(UINetworkReply *pReply)
@@ -118,7 +118,7 @@ void UINewVersionChecker::processNetworkReplyFinished(UINetworkReply *pReply)
     gEDataManager->incrementApplicationUpdateCheckCounter();
 
     /* Notify about completion: */
-    emit sigNewVersionChecked();
+    emit sigProgressFinished();
 }
 
 /* static */

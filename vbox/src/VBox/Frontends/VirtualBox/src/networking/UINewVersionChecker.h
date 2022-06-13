@@ -1,4 +1,4 @@
-/* $Id: UINewVersionChecker.h 90603 2021-08-10 15:26:45Z vboxsync $ */
+/* $Id: UINewVersionChecker.h 90604 2021-08-10 15:30:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINewVersionChecker class declaration.
  */
@@ -32,8 +32,12 @@ class SHARED_LIBRARY_STUFF UINewVersionChecker : public UINetworkCustomer
 
 signals:
 
-    /** Notifies about new version check complete. */
-    void sigNewVersionChecked();
+    /** Notifies listeners about progress failed with @a strError. */
+    void sigProgressFailed(const QString &strError);
+    /** Notifies listeners about progress canceled. */
+    void sigProgressCanceled();
+    /** Notifies listeners about progress finished. */
+    void sigProgressFinished();
 
 public:
 
