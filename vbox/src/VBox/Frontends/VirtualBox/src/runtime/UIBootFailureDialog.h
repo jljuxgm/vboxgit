@@ -1,4 +1,4 @@
-/* $Id: UIBootFailureDialog.h 91715 2021-10-13 13:29:37Z vboxsync $ */
+/* $Id: UIBootFailureDialog.h 91717 2021-10-13 15:23:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIBootFailureDialog class declaration.
  */
@@ -29,6 +29,7 @@
 
 
 /* Forward declarations: */
+class QCheckBox;
 class QLabel;
 class QVBoxLayout;
 class QIDialogButtonBox;
@@ -57,12 +58,12 @@ public:
     };
 
     UIBootFailureDialog(QWidget *pParent, const CMachine &comMachine);
+    ~UIBootFailureDialog();
     QString bootMediumPath() const;
 
 protected:
 
-    void showEvent(QShowEvent *pEvent);
-
+    virtual void showEvent(QShowEvent *pEvent) /* override */;
 
 private slots:
 
@@ -73,6 +74,7 @@ private slots:
 private:
 
     bool insertBootMedium(const QUuid &uMediumId);
+    QPixmap iconPixmap();
 
     /** @name Event-handling stuff.
       * @{ */
@@ -99,6 +101,8 @@ private:
     QIRichTextLabel      *m_pLabel;
     UIFilePathSelector   *m_pBootImageSelector;
     QLabel               *m_pBootImageLabel;
+    QLabel               *m_pIconLabel;
+    QCheckBox            *m_pSuppressDialogCheckBox;
     CMachine              m_comMachine;
 };
 
