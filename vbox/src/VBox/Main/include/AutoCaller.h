@@ -1,4 +1,4 @@
-/* $Id: AutoCaller.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: AutoCaller.h 94907 2022-05-07 17:40:28Z vboxsync $ */
 /** @file
  *
  * VirtualBox object caller handling definitions
@@ -115,6 +115,12 @@ public:
      * |true| means the number of callers was successfully increased.
      */
     bool isOk() const { return SUCCEEDED(mRC); }
+
+    /**
+     * Returns |true| if |FAILED(rc())| is |true|, for convenience.
+     * |true| means the number of callers was _not_ successfully increased.
+     */
+    bool isNotOk() const { return FAILED(mRC); }
 
     /**
      * Temporarily decreases the number of callers of the managed object.
