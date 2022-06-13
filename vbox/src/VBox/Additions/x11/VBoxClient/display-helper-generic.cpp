@@ -1,4 +1,4 @@
-/* $Id: display-helper-generic.cpp 94076 2022-03-03 15:46:36Z vboxsync $ */
+/* $Id: display-helper-generic.cpp 94427 2022-03-31 23:58:08Z vboxsync $ */
 /** @file
  * Guest Additions - Generic Desktop Environment helper.
  *
@@ -361,9 +361,6 @@ static DECLCALLBACK(int) vbcl_hlp_generic_probe(void)
     return VINF_SUCCESS;
 }
 
-/**
- * @interface_method_impl{VBCLDISPLAYHELPER,pfnInit}
- */
 RTDECL(int) vbcl_hlp_generic_init(void)
 {
     ASMAtomicWriteBool(&g_fShutdown, false);
@@ -375,9 +372,6 @@ RTDECL(int) vbcl_hlp_generic_init(void)
     return VINF_SUCCESS;
 }
 
-/**
- * @interface_method_impl{VBCLDISPLAYHELPER,pfnTerm}
- */
 RTDECL(int) vbcl_hlp_generic_term(void)
 {
     int rc = VINF_SUCCESS;
@@ -394,17 +388,11 @@ RTDECL(int) vbcl_hlp_generic_term(void)
     return rc;
 }
 
-/**
- * @interface_method_impl{VBCLDISPLAYHELPER,pfnSubscribeDisplayOffsetChangeNotification}
- */
 RTDECL(void) vbcl_hlp_generic_subscribe_display_offset_changed(FNDISPLAYOFFSETCHANGE *pfnCb)
 {
     g_pfnDisplayOffsetChangeCb = pfnCb;
 }
 
-/**
- * @interface_method_impl{VBCLDISPLAYHELPER,pfnUnsubscribeDisplayOffsetChangeNotification}
- */
 RTDECL(void) vbcl_hlp_generic_unsubscribe_display_offset_changed(void)
 {
     g_pfnDisplayOffsetChangeCb = NULL;
