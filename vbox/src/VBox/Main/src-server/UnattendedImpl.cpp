@@ -1,4 +1,4 @@
-/* $Id: UnattendedImpl.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UnattendedImpl.cpp 93157 2022-01-09 13:30:49Z vboxsync $ */
 /** @file
  * Unattended class implementation
  */
@@ -298,7 +298,8 @@ HRESULT Unattended::detectIsoOS()
         hrc = i_innerDetectIsoOS(hVfsIso);
 
         RTVfsRelease(hVfsIso);
-        hrc = E_NOTIMPL;
+        if (hrc != S_FALSE) /** @todo Finish the linux and windows detection code. Only OS/2 returns S_OK right now. */
+            hrc = E_NOTIMPL;
     }
     else if (RTErrInfoIsSet(&ErrInfo.Core))
         hrc = setErrorBoth(E_NOTIMPL, vrc, tr("Failed to open '%s' as ISO FS (%Rrc) - %s"),
@@ -1501,8 +1502,14 @@ HRESULT Unattended::i_innerDetectIsoOSOs2(RTVFS hVfsIso, DETECTBUFFER *pBuf, VBO
 
     /** @todo language detection? */
 
-    /** @todo Return true if we can actually do an unattended installation
-     *        using this ISO.  So far, we cannot from any OS/2 image. */
+    /*
+     * Only tested ACP2, so only return S_OK for it.
+     */
+    if (   *penmOsType == VBOXOSTYPE_OS2Warp45
+        && RTStrVersionCompare(mStrDetectedOSVersion.c_str(), "4.52") >= 0
+        && mStrDetectedOSFlavor.contains("Server", RTCString::CaseInsensitive))
+        return S_OK;
+
     return S_FALSE;
 }
 
