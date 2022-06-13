@@ -1,4 +1,4 @@
-/* $Id: DrvAcpiCpu.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: DrvAcpiCpu.cpp 91864 2021-10-20 09:04:23Z vboxsync $ */
 /** @file
  * DrvAcpiCpu - ACPI CPU dummy driver for hotplugging.
  */
@@ -47,7 +47,7 @@ static DECLCALLBACK(void *) drvACPICpuQueryInterface(PPDMIBASE pInterface, const
  */
 static DECLCALLBACK(int) drvACPICpuConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uint32_t fFlags)
 {
-    RT_NOREF(fFlags);
+    RT_NOREF(pCfg, fFlags);
     PDMDRV_CHECK_VERSIONS_RETURN(pDrvIns);
 
     /*
@@ -59,8 +59,7 @@ static DECLCALLBACK(int) drvACPICpuConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg,
     /*
      * Validate the config.
      */
-    if (!CFGMR3AreValuesValid(pCfg, "\0"))
-        return VERR_PDM_DRVINS_UNKNOWN_CFG_VALUES;
+    PDMDRV_VALIDATE_CONFIG_RETURN(pDrvIns, "", "");
 
     /*
      * Check that no-one is attached to us.
