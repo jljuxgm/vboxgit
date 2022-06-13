@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMNameOSTypePage.cpp 91472 2021-09-29 20:01:17Z vboxsync $ */
+/* $Id: UIWizardNewVMNameOSTypePage.cpp 91473 2021-09-29 20:03:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasicNameOSStype class implementation.
  */
@@ -75,9 +75,9 @@ static const osTypePattern gs_OSTypePattern[] =
     { QRegExp( "(Wi.*10.*32)|(W10.*32)",          Qt::CaseInsensitive), "Windows10" },
     { QRegExp( "(Wi.*11)|(W11)",                  Qt::CaseInsensitive), "Windows11_64" },
     { QRegExp(  "Wi.*3.*1",                       Qt::CaseInsensitive), "Windows31" },
-    /* Set Windows 7 as default for "Windows". */
-    { QRegExp(  "Wi.*64",                         Qt::CaseInsensitive), "Windows7_64" },
-    { QRegExp(  "Wi.*32",                         Qt::CaseInsensitive), "Windows7" },
+    /* Set Windows 10 as default for "Windows". */
+    { QRegExp(  "Wi.*64",                         Qt::CaseInsensitive), "Windows10_64" },
+    { QRegExp(  "Wi.*32",                         Qt::CaseInsensitive), "Windows10" },
     /* ReactOS wants to be considered as Windows 2003 */
     { QRegExp(  "Reac.*",                         Qt::CaseInsensitive), "Windows2003" },
 
