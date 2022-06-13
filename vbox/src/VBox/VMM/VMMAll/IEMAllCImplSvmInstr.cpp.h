@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplSvmInstr.cpp.h 92541 2021-11-22 06:35:38Z vboxsync $ */
+/* $Id: IEMAllCImplSvmInstr.cpp.h 92546 2021-11-22 12:13:32Z vboxsync $ */
 /** @file
  * IEM - AMD-V (Secure Virtual Machine) instruction implementation.
  */
@@ -312,7 +312,7 @@ IEM_STATIC VBOXSTRICTRC iemSvmVmexit(PVMCPUCC pVCpu, uint64_t uExitCode, uint64_
             bool const fHostInPaeMode = CPUMIsPaePagingEnabled(pHostState->uCr0, pHostState->uCr4, pHostState->uEferMsr);
             if (fHostInPaeMode)
                 rcStrict = PGMGstMapPaePdpesAtCr3(pVCpu, pHostState->uCr3);
-            if (RT_LIKELY(rcStrict == VINF_SUCCESS))
+            if (RT_SUCCESS(rcStrict))
             {
                 /*
                  * Reload the host state.

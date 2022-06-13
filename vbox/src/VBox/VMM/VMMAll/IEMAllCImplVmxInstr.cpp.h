@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 92541 2021-11-22 06:35:38Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 92546 2021-11-22 12:13:32Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -5644,7 +5644,7 @@ IEM_STATIC int iemVmxVmentryCheckGuestPdptes(PVMCPUCC pVCpu, bool *pfPdpesMapped
 #endif
         {
             int const rc = PGMGstMapPaePdpesAtCr3(pVCpu, pVmcs->u64GuestCr3.u);
-            if (rc == VINF_SUCCESS)
+            if (RT_SUCCESS(rc))
                 *pfPdpesMapped = true;
             else
             {
