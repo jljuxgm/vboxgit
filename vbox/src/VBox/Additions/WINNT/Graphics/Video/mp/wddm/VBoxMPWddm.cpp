@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 93749 2022-02-15 12:35:21Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -4447,6 +4447,15 @@ DxgkDdiCreateContext(
                         break;
                     }
 #endif
+#ifdef VBOX_WITH_VMSVGA3D_DX
+                    /** @todo Implement buffers submittion and memory menagement for this new type of context **/
+                    case VBOXWDDM_CONTEXT_TYPE_VMSVGA_DX:
+                    {
+                        pContext->enmType = VBOXWDDM_CONTEXT_TYPE_VMSVGA_DX;
+                        WARN(("Context type VBOXWDDM_CONTEXT_TYPE_VMSVGA_DX is not supported yet"));
+                        break;
+                    }
+#endif
                     default:
                     {
                         WARN(("unsupported context type %d", pInfo->enmType));
@@ -4521,6 +4530,14 @@ DxgkDdiDestroyContext(
         case VBOXWDDM_CONTEXT_TYPE_GA_3D:
         {
             Status = GaContextDestroy(pDevExt->pGa, pContext);
+            break;
+        }
+#endif
+#ifdef VBOX_WITH_VMSVGA3D_DX
+        case VBOXWDDM_CONTEXT_TYPE_VMSVGA_DX:
+        {
+            pContext->enmType = VBOXWDDM_CONTEXT_TYPE_VMSVGA_DX;
+            WARN(("Context type VBOXWDDM_CONTEXT_TYPE_VMSVGA_DX is not supported yet"));
             break;
         }
 #endif
