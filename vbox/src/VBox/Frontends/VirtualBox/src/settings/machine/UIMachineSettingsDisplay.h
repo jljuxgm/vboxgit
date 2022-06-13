@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.h 94362 2022-03-24 19:03:55Z vboxsync $ */
+/* $Id: UIMachineSettingsDisplay.h 94378 2022-03-25 19:34:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsDisplay class declaration.
  */
@@ -31,13 +31,9 @@
 class QCheckBox;
 class QComboBox;
 class QLabel;
-class QLineEdit;
 class QSpinBox;
-class QStackedLayout;
 class QIAdvancedSlider;
 class QITabWidget;
-class UIActionPool;
-struct UIDataSettingsMachineDisplay;
 class UIFilePathSelector;
 class UIFilmContainer;
 class UIGraphicsControllerEditor;
@@ -47,6 +43,8 @@ class UIMachineDisplayScreenFeaturesEditor;
 class UIMonitorCountEditor;
 class UIScaleFactorEditor;
 class UIVideoMemoryEditor;
+class UIVRDESettingsEditor;
+struct UIDataSettingsMachineDisplay;
 typedef UISettingsCache<UIDataSettingsMachineDisplay> UISettingsCacheMachineDisplay;
 
 /** Machine settings: Display page. */
@@ -151,9 +149,6 @@ private:
     /** Cleanups all. */
     void cleanup();
 
-    /** Repopulates auth type combo-box. */
-    void repopulateComboAuthType();
-
     /** Returns whether the VRAM requirements are important. */
     bool shouldWeWarnAboutLowVRAM();
 
@@ -213,27 +208,9 @@ private:
 #endif
 
         /** Holds the 'Remote Display' tab instance. */
-        QWidget   *m_pTabRemoteDisplay;
-        /** Holds the remote display check-box instance. */
-        QCheckBox *m_pCheckboxRemoteDisplay;
-        /** Holds the remote display settings widget instance. */
-        QWidget   *m_pWidgetRemoteDisplaySettings;
-        /** Holds the remote display port label instance. */
-        QLabel    *m_pLabelRemoteDisplayPort;
-        /** Holds the remote display port editor instance. */
-        QLineEdit *m_pEditorRemoteDisplayPort;
-        /** Holds the remote display port auth method label instance. */
-        QLabel    *m_pLabelRemoteDisplayAuthMethod;
-        /** Holds the remote display port auth method combo instance. */
-        QComboBox *m_pComboRemoteDisplayAuthMethod;
-        /** Holds the remote display timeout label instance. */
-        QLabel    *m_pLabelRemoteDisplayTimeout;
-        /** Holds the remote display timeout editor instance. */
-        QLineEdit *m_pEditorRemoteDisplayTimeout;
-        /** Holds the remote display options label instance. */
-        QLabel    *m_pLabelRemoteDisplayOptions;
-        /** Holds the remote display multiple connection check-box instance. */
-        QCheckBox *m_pCheckboxMultipleConn;
+        QWidget              *m_pTabRemoteDisplay;
+        /** Holds the VRDE settings editor instance. */
+        UIVRDESettingsEditor *m_pEditorVRDESettings;
 
         /** Holds the 'Recording' tab instance. */
         QWidget            *m_pTabRecording;
