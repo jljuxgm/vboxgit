@@ -1,4 +1,4 @@
-/* $Id: nt.h 91837 2021-10-19 08:29:57Z vboxsync $ */
+/* $Id: nt.h 92791 2021-12-07 21:47:51Z vboxsync $ */
 /** @file
  * IPRT - Header for code using the Native NT API.
  */
@@ -3222,7 +3222,7 @@ RT_DECL_NTAPI(NTSTATUS) NtQueryTimerResolution(PULONG pcNtTicksMin, PULONG pcNtT
 RT_DECL_NTAPI(NTSTATUS) NtDelayExecution(BOOLEAN, PLARGE_INTEGER);
 RT_DECL_NTAPI(NTSTATUS) NtYieldExecution(void);
 #ifndef IPRT_NT_USE_WINTERNL
-RT_DECL_NTAPI(NTSTATUS) NtWaitForSingleObject(HANDLE, BOOLEAN PLARGE_INTEGER);
+RT_DECL_NTAPI(NTSTATUS) NtWaitForSingleObject(HANDLE, BOOLEAN, PLARGE_INTEGER);
 #endif
 typedef NTSYSAPI NTSTATUS (NTAPI *PFNNTWAITFORSINGLEOBJECT)(HANDLE, BOOLEAN, PLARGE_INTEGER);
 typedef enum _OBJECT_WAIT_TYPE { WaitAllObjects = 0, WaitAnyObject = 1, ObjectWaitTypeHack = 0x7fffffff } OBJECT_WAIT_TYPE;
