@@ -1,4 +1,4 @@
-# $Id: routines.sh 92654 2021-11-30 20:08:15Z vboxsync $
+# $Id: routines.sh 92656 2021-11-30 21:02:05Z vboxsync $
 # Oracle VM VirtualBox
 # VirtualBox installer shell routines
 #
@@ -402,11 +402,18 @@ install_python_bindings()
     fi
 
     if test -z "$pythondesc"; then
-        errorprint "missing argument to install_python_bindings"
+        echo 1>&2 "missing argument to install_python_bindings"
         return 1
     fi
 
     echo 1>&2 "Python found: $pythonbin, installing bindings..."
+
+    # check if python has working distutils
+    "$pythonbin" -c "from distutils.core import setup" > /dev/null 2>&1
+    if test "$?" -ne 0; then
+        echo 1>&2 "Skipped: $pythondesc install is unusable, missing package 'distutils'"
+        return 0
+    fi
 
     # Pass install path via environment
     export VBOX_INSTALL_PATH
