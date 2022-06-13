@@ -1,4 +1,4 @@
-/* $Id: tstFile.cpp 95000 2022-05-13 09:39:42Z vboxsync $ */
+/* $Id: tstFile.cpp 95001 2022-05-13 09:43:20Z vboxsync $ */
 /** @file
  * IPRT Testcase - File I/O.
  */
@@ -30,7 +30,7 @@
 *********************************************************************************************************************************/
 #include <iprt/test.h>
 #include <iprt/file.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/path.h>
 #include <iprt/rand.h>
 #include <iprt/string.h>
