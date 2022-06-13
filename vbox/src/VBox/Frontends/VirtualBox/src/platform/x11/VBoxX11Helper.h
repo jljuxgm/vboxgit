@@ -1,4 +1,4 @@
-/* $Id: VBoxX11Helper.h 89708 2021-06-15 14:25:25Z vboxsync $ */
+/* $Id: VBoxX11Helper.h 89815 2021-06-21 12:06:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBox X11 helper functions.
  */
@@ -21,6 +21,9 @@
 # pragma once
 #endif
 
+/* Qt includes: */
+#include <QString>
+
 /* GUI includes: */
 #include "UILibraryDefs.h"
 
@@ -37,6 +40,13 @@ enum X11WMType
     X11WMType_Xfwm4,
 };
 
+struct X11ScreenSaverInhibitMethod
+{
+    QString m_strServiceName;
+    QString m_strInterface;
+    QString m_strPath;
+    uint    m_iCookie;
+};
 
 /** X11: Determines and returns whether the compositing manager is running. */
 SHARED_LIBRARY_STUFF bool X11IsCompositingManagerRunning();
@@ -53,13 +63,10 @@ SHARED_LIBRARY_STUFF void X11ScreenSaverSettingsRestore();
 /** X11: Returns true if XLib extension with name @p extensionName is avaible, false otherwise. */
 SHARED_LIBRARY_STUFF bool X11CheckExtension(const char *extensionName);
 
-/* Returns the list of DBus screensaver services.*/
-SHARED_LIBRARY_STUFF QStringList X11ScrenSaverServices();
+/** Returns the list of Inhibit methods found by introrespecting DBus services. */
+SHARED_LIBRARY_STUFF QVector<X11ScreenSaverInhibitMethod*> X11FindDBusScrenSaverInhibitMethods();
 
-/* Disables Screen Saver through QDBus. */
-SHARED_LIBRARY_STUFF  void X11InhibitScrenSaver(const QStringList &serviceNameList, QMap<QString, uint> &outCookies);
-
-/* Enables Screen Saver through QDBus. */
-SHARED_LIBRARY_STUFF  void X11UninhibitScrenSaver(const QMap<QString, uint> &cookies);
+/** Disables/enables Screen Saver through QDBus. */
+SHARED_LIBRARY_STUFF void X11InhibitUninhibitScrenSaver(bool fInhibit, QVector<X11ScreenSaverInhibitMethod*> &inOutIhibitMethods);
 
 #endif /* !FEQT_INCLUDED_SRC_platform_x11_VBoxX11Helper_h */

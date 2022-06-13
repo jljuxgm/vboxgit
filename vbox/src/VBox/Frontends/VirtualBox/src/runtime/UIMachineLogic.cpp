@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 89744 2021-06-16 14:09:12Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 89815 2021-06-21 12:06:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -713,14 +713,9 @@ void UIMachineLogic::sltHidLedsSyncStateChanged(bool fEnabled)
 void UIMachineLogic::sltDisableHostScreenSaverStateChanged(bool fDisabled)
 {
 #if defined(VBOX_WS_X11)
-    QStringList services = X11ScrenSaverServices();
-    if (services.isEmpty())
-        return;
-
-    if (fDisabled)
-        X11InhibitScrenSaver(services, m_screenSaverInhibitionCookies);
-    else
-        X11UninhibitScrenSaver(m_screenSaverInhibitionCookies);
+    if (m_methods.isEmpty())
+        m_methods = X11FindDBusScrenSaverInhibitMethods();
+    X11InhibitUninhibitScrenSaver(fDisabled, m_methods);
 #elif defined(VBOX_WS_WIN)
     NativeWindowSubsystem::setScreenSaverActive(fDisabled);
 #else
@@ -886,6 +881,12 @@ UIMachineLogic::UIMachineLogic(QObject *pParent, UISession *pSession, UIVisualSt
     , m_pSoftKeyboardDialog(0)
     , m_pVMInformationDialog(0)
 {
+}
+
+UIMachineLogic::~UIMachineLogic()
+{
+    qDeleteAll(m_methods.begin(), m_methods.end());
+    m_methods.clear();
 }
 
 void UIMachineLogic::setMachineWindowsCreated(bool fIsWindowsCreated)
