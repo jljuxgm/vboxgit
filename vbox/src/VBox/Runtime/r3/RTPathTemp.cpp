@@ -1,4 +1,4 @@
-/* $Id: RTPathTemp.cpp 94286 2022-03-17 11:22:48Z vboxsync $ */
+/* $Id: RTPathTemp.cpp 94310 2022-03-18 23:33:45Z vboxsync $ */
 /** @file
  * IPRT - Path Manipulation, RTPathTemp.
  */
@@ -47,14 +47,7 @@ RTDECL(int) RTPathTemp(char *pszPath, size_t cchPath)
     {
         "IPRT_TMPDIR"
 #if defined(RT_OS_WINDOWS)
-        /*
-         * Make sure that %LOCALAPPDATA% is preferred over %TMP% / %TEMP%, as those can point
-         * to generic / old-school temp directories like "C:\WINDOWS\TEMP", which also is writable for unprivileged users
-         * under some circumstances.
-         *
-         * See @bugref{10201}
-         */
-        , "LOCALAPPDATA", "TMP", "TEMP", "USERPROFILE"
+        , "TMP", "TEMP", "USERPROFILE"
 #elif defined(RT_OS_OS2)
         , "TMP", "TEMP", "TMPDIR"
 #else
