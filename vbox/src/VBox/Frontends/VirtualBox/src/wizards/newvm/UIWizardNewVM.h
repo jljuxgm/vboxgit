@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.h 91025 2021-08-31 10:52:50Z vboxsync $ */
+/* $Id: UIWizardNewVM.h 91031 2021-08-31 12:33:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class declaration.
  */
@@ -154,6 +154,7 @@ protected:
 
     /** Populates pages. */
     virtual void populatePages() /* final override */;
+    virtual void wizardClean() /* final override */;
     void configureVM(const QString &strGuestTypeId, const CGuestOSType &comGuestType);
     bool attachDefaultDevices();
 
