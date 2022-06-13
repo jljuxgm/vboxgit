@@ -1,4 +1,4 @@
-/* $Id: vkatCommon.cpp 92396 2021-11-12 11:46:06Z vboxsync $ */
+/* $Id: vkatCommon.cpp 92447 2021-11-16 10:19:51Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) - Self test code.
  */
@@ -872,6 +872,7 @@ static int audioTestRecordTone(PAUDIOTESTIOOPTS pIoOpts, PAUDIOTESTENV pTstEnv, 
                                 AudioTestBeaconInit(&Beacon, (uint8_t)pParms->Hdr.idxTest, AUDIOTESTTONEBEACONTYPE_PLAY_POST,
                                                     &pStream->Cfg.Props);
                             }
+                            break;
                         }
 
                         case AUDIOTESTSTATE_DONE:
