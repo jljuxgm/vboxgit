@@ -1,4 +1,4 @@
-/* $Id: process-creation-posix.cpp 93487 2022-01-30 00:58:55Z vboxsync $ */
+/* $Id: process-creation-posix.cpp 93543 2022-02-02 12:40:40Z vboxsync $ */
 /** @file
  * IPRT - Process Creation, POSIX.
  */
@@ -1446,7 +1446,11 @@ static int rtProcPosixConvertArgv(const char * const *papszArgs, RTENV hEnvToUse
             RT_NOREF_PV(pszVar);
         }
         else
+#ifdef RT_OS_DARWIN /* @bugref{10153}: Darwin defaults to UTF-8. */
+            pszEncoding = "UTF-8";
+#else
             pszEncoding = "ASCII";
+#endif
     }
 
     /*
