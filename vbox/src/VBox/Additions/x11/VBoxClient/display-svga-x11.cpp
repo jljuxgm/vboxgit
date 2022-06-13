@@ -1,4 +1,4 @@
-/* $Id: display-svga-x11.cpp 90324 2021-07-23 19:40:54Z vboxsync $ */
+/* $Id: display-svga-x11.cpp 90581 2021-08-09 16:12:57Z vboxsync $ */
 /** @file
  * X11 guest client - VMSVGA emulation resize event pass-through to X.Org
  * guest driver.
@@ -1258,6 +1258,12 @@ static bool configureOutput(int iOutputIndex, struct RANDROUTPUT *paOutputs)
 /** Construct the xrandr command which sets the whole monitor topology each time. */
 static void setXrandrTopology(struct RANDROUTPUT *paOutputs)
 {
+    if (!x11Context.pDisplay)
+    {
+        VBClLogInfo("not connected to X11\n");
+        return;
+    }
+
     XGrabServer(x11Context.pDisplay);
     if (x11Context.fWmwareCtrlExtention)
         callVMWCTRL(paOutputs);
