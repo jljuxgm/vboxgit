@@ -1,4 +1,4 @@
-/* $Id: vkat.cpp 90703 2021-08-17 15:40:23Z vboxsync $ */
+/* $Id: vkat.cpp 90704 2021-08-17 15:41:36Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) utility for testing and validating the audio stack.
  */
@@ -568,7 +568,8 @@ int audioTestWorker(PAUDIOTESTENV pTstEnv)
             if (RT_SUCCESS(rc))
                 rc = rc2;
 
-            if (RT_SUCCESS(rc))
+            if (   !g_fTerminate
+                && RT_SUCCESS(rc))
             {
                 /*
                  * Download guest + Validation Kit audio driver test sets to our output directory.
