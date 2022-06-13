@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSF.cpp 94004 2022-03-01 00:41:47Z vboxsync $ */
+/* $Id: UIMachineSettingsSF.cpp 94005 2022-03-01 00:58:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSF class implementation.
  */
@@ -334,18 +334,18 @@ void UIMachineSettingsSF::loadToCacheFrom(QVariant &data)
     UIDataSettingsSharedFolders oldFoldersData;
 
     /* Get actual folders: */
-    QMap<UISharedFolderType, CSharedFolder> folders;
+    QMultiMap<UISharedFolderType, CSharedFolder> folders;
     /* Load machine (permanent) folders if allowed: */
     if (isSharedFolderTypeSupported(MachineType))
     {
         foreach (const CSharedFolder &folder, getSharedFolders(MachineType))
-            folders.insertMulti(MachineType, folder);
+            folders.insert(MachineType, folder);
     }
     /* Load console (temporary) folders if allowed: */
     if (isSharedFolderTypeSupported(ConsoleType))
     {
         foreach (const CSharedFolder &folder, getSharedFolders(ConsoleType))
-            folders.insertMulti(ConsoleType, folder);
+            folders.insert(ConsoleType, folder);
     }
 
     /* For each folder type: */

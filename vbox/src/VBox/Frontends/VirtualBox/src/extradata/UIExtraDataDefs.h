@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 93408 2022-01-24 11:51:32Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 94005 2022-03-01 00:58:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -469,10 +469,10 @@ namespace UIExtraDataDefs
     /** @name Old key support stuff.
       * @{ */
         /** Prepares obsolete keys map. */
-        SHARED_LIBRARY_STUFF QMap<QString, QString> prepareObsoleteKeysMap();
+        SHARED_LIBRARY_STUFF QMultiMap<QString, QString> prepareObsoleteKeysMap();
 
         /** Holds the obsolete keys map. */
-        SHARED_LIBRARY_STUFF extern QMap<QString, QString> g_mapOfObsoleteKeys;
+        SHARED_LIBRARY_STUFF extern QMultiMap<QString, QString> g_mapOfObsoleteKeys;
     /** @} */
 }
 
