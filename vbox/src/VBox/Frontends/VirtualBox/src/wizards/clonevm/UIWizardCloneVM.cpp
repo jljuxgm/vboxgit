@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVM.cpp 90696 2021-08-16 13:30:36Z vboxsync $ */
+/* $Id: UIWizardCloneVM.cpp 90714 2021-08-18 12:23:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVM class implementation.
  */
@@ -31,8 +31,9 @@
 
 
 UIWizardCloneVM::UIWizardCloneVM(QWidget *pParent, const CMachine &machine,
-                                 const QString &strGroup, CSnapshot snapshot /* = CSnapshot() */)
-    : UINativeWizard(pParent, WizardType_CloneVM)
+                                 const QString &strGroup, CSnapshot snapshot /* = CSnapshot() */,
+                                 const QString &strHelpHashtag /* = QString() */)
+    : UINativeWizard(pParent, WizardType_CloneVM, WizardMode_Auto, strHelpHashtag)
     , m_machine(machine)
     , m_snapshot(snapshot)
     , m_strGroup(strGroup)
