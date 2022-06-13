@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 93554 2022-02-02 22:57:02Z vboxsync $ */
+/* $Id: VMMR0.cpp 93609 2022-02-05 19:03:08Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -2068,6 +2068,14 @@ DECL_NO_INLINE(static, int) vmmR0EntryExWorker(PGVM pGVM, VMCPUID idCpu, VMMR0OP
             if (!pReqHdr || u64Arg || idCpu != 0)
                 return VERR_INVALID_PARAMETER;
             rc = PDMR0DeviceCompatSetCritSectReqHandler(pGVM, (PPDMDEVICECOMPATSETCRITSECTREQ)pReqHdr);
+            break;
+        }
+
+        case VMMR0_DO_PDM_QUEUE_CREATE:
+        {
+            if (!pReqHdr || u64Arg || idCpu != 0)
+                return VERR_INVALID_PARAMETER;
+            rc = PDMR0QueueCreateReqHandler(pGVM, (PPDMQUEUECREATEREQ)pReqHdr);
             break;
         }
 

@@ -1,4 +1,4 @@
-/* $Id: PDMR0DevHlpTracing.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: PDMR0DevHlpTracing.cpp 93609 2022-02-05 19:03:08Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helper variants when tracing is enabled.
  */
@@ -407,7 +407,7 @@ DECL_HIDDEN_CALLBACK(void) pdmR0DevHlpTracing_PCISetIrq(PPDMDEVINS pDevIns, PPDM
         pdmUnlock(pGVM);
 
         /* queue for ring-3 execution. */
-        PPDMDEVHLPTASK pTask = (PPDMDEVHLPTASK)PDMQueueAlloc(pGVM->pdm.s.pDevHlpQueueR0);
+        PPDMDEVHLPTASK pTask = (PPDMDEVHLPTASK)PDMQueueAlloc(pGVM, pGVM->pdm.s.hDevHlpQueue, pGVM);
         AssertReturnVoid(pTask);
 
         pTask->enmOp = PDMDEVHLPTASKOP_PCI_SET_IRQ;
@@ -415,9 +415,9 @@ DECL_HIDDEN_CALLBACK(void) pdmR0DevHlpTracing_PCISetIrq(PPDMDEVINS pDevIns, PPDM
         pTask->u.PciSetIrq.iIrq = iIrq;
         pTask->u.PciSetIrq.iLevel = iLevel;
         pTask->u.PciSetIrq.uTagSrc = uTagSrc;
-        pTask->u.PciSetIrq.pPciDevR3 = MMHyperR0ToR3(pGVM, pPciDev);
+        pTask->u.PciSetIrq.idxPciDev = pPciDev->Int.s.idxSubDev;
 
-        PDMQueueInsertEx(pGVM->pdm.s.pDevHlpQueueR0, &pTask->Core, 0);
+        PDMQueueInsert(pGVM, pGVM->pdm.s.hDevHlpQueue, pGVM, &pTask->Core);
     }
 
     LogFlow(("pdmR0DevHlpTracing_PCISetIrq: caller=%p/%d: returns void; uTagSrc=%#x\n", pDevIns, pDevIns->iInstance, uTagSrc));

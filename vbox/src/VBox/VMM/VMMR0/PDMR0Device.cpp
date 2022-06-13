@@ -1,4 +1,4 @@
-/* $Id: PDMR0Device.cpp 93554 2022-02-02 22:57:02Z vboxsync $ */
+/* $Id: PDMR0Device.cpp 93609 2022-02-05 19:03:08Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, R0 Device parts.
  */
@@ -192,6 +192,13 @@ VMMR0_INT_DECL(void) PDMR0CleanupVM(PGVM pGVM)
         PPDMDEVINSR0 pDevIns = pGVM->pdmr0.s.apDevInstances[i];
         if (pDevIns)
             pdmR0DeviceDestroy(pGVM, pDevIns, i);
+    }
+
+    i = pGVM->pdmr0.s.cQueues;
+    while (i-- > 0)
+    {
+        if (pGVM->pdmr0.s.aQueues[i].pQueue != NULL)
+            pdmR0QueueDestroy(pGVM, i);
     }
 }
 

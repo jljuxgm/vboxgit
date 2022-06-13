@@ -1,4 +1,4 @@
-/* $Id: PDMDevice.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: PDMDevice.cpp 93609 2022-02-05 19:03:08Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device parts.
  */
@@ -130,10 +130,9 @@ int pdmR3DevInit(PVM pVM)
     /*
      * Get the RC & R0 devhlps and create the devhlp R3 task queue.
      */
-    rc = PDMR3QueueCreateInternal(pVM, sizeof(PDMDEVHLPTASK), 8, 0, pdmR3DevHlpQueueConsumer, true, "DevHlp",
-                                  &pVM->pdm.s.pDevHlpQueueR3);
+    rc = PDMR3QueueCreateInternal(pVM, sizeof(PDMDEVHLPTASK), pVM->cCpus * 8, 0, pdmR3DevHlpQueueConsumer, true, "DevHlp",
+                                  &pVM->pdm.s.hDevHlpQueue);
     AssertRCReturn(rc, rc);
-    pVM->pdm.s.pDevHlpQueueR0 = PDMQueueR0Ptr(pVM->pdm.s.pDevHlpQueueR3);
 
     /*
      *
