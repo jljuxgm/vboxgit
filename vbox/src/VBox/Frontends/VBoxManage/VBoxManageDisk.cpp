@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 94201 2022-03-12 19:29:49Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 94202 2022-03-12 19:35:12Z vboxsync $ */
 /** @file
  * VBoxManage - The disk/medium related commands.
  */
@@ -2115,7 +2115,7 @@ RTEXITCODE handleCheckMediumPassword(HandlerArg *a)
     Utf8Str strPassword;
 
     if (a->argc != 2)
-        return errorSyntax(USAGE_MEDIUMENCCHKPWD, Disk::tr("Invalid number of arguments: %d"), a->argc);
+        return errorSyntax(Disk::tr("Invalid number of arguments: %d"), a->argc);
 
     pszFilenameOrUuid = a->argv[0];
 

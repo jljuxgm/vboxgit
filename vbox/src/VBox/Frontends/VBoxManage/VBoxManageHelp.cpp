@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 94201 2022-03-12 19:29:49Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 94202 2022-03-12 19:35:12Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -636,12 +636,6 @@ void printUsage(USAGECATEGORY enmCommand, uint64_t fSubcommandScope, PRTSTREAM p
                      "                            [--move <path>]\n"
                      "                            [--setlocation <path>]\n"
                      "                            [--description <description string>]"
-                     "\n", SEP);
-
-    if (enmCommand == USAGE_MEDIUMENCCHKPWD || enmCommand == USAGE_S_ALL)
-        RTStrmPrintf(pStrm,
-                           "%s checkmediumpwd %s  <uuid|filename>\n"
-                     "                            <pwd file>|-\n"
                      "\n", SEP);
 
     if (enmCommand == USAGE_CONVERTFROMRAW || enmCommand == USAGE_S_ALL)
