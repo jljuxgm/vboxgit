@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.h 90090 2021-07-08 10:30:48Z vboxsync $ */
+/* $Id: UIWizardNewVM.h 90108 2021-07-09 09:43:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class declaration.
  */
@@ -70,8 +70,6 @@ class UIWizardNewVM : public UINativeWizard
 public:
 
     UIWizardNewVM(QWidget *pParent, const QString &strMachineGroup = QString(), WizardMode enmMode = WizardMode_Auto);
-    /** Returns the Id of newly created VM. */
-    QUuid createdMachineId() const;
     bool isUnattendedEnabled() const;
     void setDefaultUnattendedInstallData(const UIUnattendedInstallData &unattendedInstallData);
     const UIUnattendedInstallData &unattendedInstallData() const;
@@ -174,6 +172,8 @@ private:
     QString getNextControllerName(KStorageBus type);
     void setFieldsFromDefaultUnttendedInstallData();
     void setUnattendedPageVisible(bool fVisible);
+    /** Returns the Id of newly created VM. */
+    QUuid createdMachineId() const;
 
     /** @name Variables
      * @{ */
