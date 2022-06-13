@@ -1,4 +1,4 @@
-/* $Id: HMVMXCommon.h 93728 2022-02-14 14:32:18Z vboxsync $ */
+/* $Id: HMVMXCommon.h 93947 2022-02-25 05:20:20Z vboxsync $ */
 /** @file
  * HM/VMX - Internal header file for sharing common bits between the
  *          VMX template code (which is also used with NEM on darwin) and HM.
@@ -222,6 +222,17 @@ typedef const HMEVENT *PCHMEVENT;
 AssertCompileSizeAlignment(HMEVENT, 8);
 
 
+/**
+ * VMX VMCS information, shared.
+ *
+ * This structure provides information maintained for and during the executing of a
+ * guest (or nested-guest) VMCS (VM control structure) using hardware-assisted VMX.
+ *
+ * Note! The members here are ordered and aligned based on estimated frequency of
+ * usage and grouped to fit within a cache line in hot code paths. Even subtle
+ * changes here have a noticeable effect in the bootsector benchmarks. Modify with
+ * care.
+ */
 typedef struct VMXVMCSINFOSHARED
 {
     /** @name Real-mode emulation state.
