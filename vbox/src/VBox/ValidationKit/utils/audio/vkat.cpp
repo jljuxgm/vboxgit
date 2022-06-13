@@ -1,4 +1,4 @@
-/* $Id: vkat.cpp 91210 2021-09-10 16:50:19Z vboxsync $ */
+/* $Id: vkat.cpp 91211 2021-09-10 16:57:36Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) utility for testing and validating the audio stack.
  */
@@ -271,7 +271,7 @@ static DECLCALLBACK(int) audioTestPlayToneSetup(PAUDIOTESTENV pTstEnv, PAUDIOTES
     pTstParmsAcq->enmType     = AUDIOTESTTYPE_TESTTONE_PLAY;
     pTstParmsAcq->Props       = pTstEnv->Props;
     pTstParmsAcq->enmDir      = PDMAUDIODIR_OUT;
-    pTstParmsAcq->cIterations = RTRandU32Ex(1, 10);
+    pTstParmsAcq->cIterations = pTstEnv->cIterations == 0 ? RTRandU32Ex(1, 10) : pTstEnv->cIterations;
     pTstParmsAcq->idxCurrent  = 0;
 
     PAUDIOTESTTONEPARMS pToneParms = &pTstParmsAcq->TestTone;
@@ -377,7 +377,7 @@ static DECLCALLBACK(int) audioTestRecordToneSetup(PAUDIOTESTENV pTstEnv, PAUDIOT
     pTstParmsAcq->enmType     = AUDIOTESTTYPE_TESTTONE_RECORD;
     pTstParmsAcq->Props       = pTstEnv->Props;
     pTstParmsAcq->enmDir      = PDMAUDIODIR_IN;
-    pTstParmsAcq->cIterations = RTRandU32Ex(1, 10);
+    pTstParmsAcq->cIterations = pTstEnv->cIterations == 0 ? RTRandU32Ex(1, 10) : pTstEnv->cIterations;
     pTstParmsAcq->idxCurrent  = 0;
 
     PAUDIOTESTTONEPARMS pToneParms = &pTstParmsAcq->TestTone;
@@ -830,7 +830,8 @@ static DECLCALLBACK(RTEXITCODE) audioTestMain(PRTGETOPTSTATE pGetState)
                 break;
 
             case VKAT_TEST_OPT_COUNT:
-                return RTMsgErrorExitFailure("Not yet implemented!");
+                TstEnv.cIterations = ValueUnion.u32;
+                break;
 
             case VKAT_TEST_OPT_DEV:
                 rc = RTStrCopy(TstEnv.szDev, sizeof(TstEnv.szDev), ValueUnion.psz);

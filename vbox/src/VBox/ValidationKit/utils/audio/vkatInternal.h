@@ -1,4 +1,4 @@
-/* $Id: vkatInternal.h 91088 2021-09-02 11:53:54Z vboxsync $ */
+/* $Id: vkatInternal.h 91211 2021-09-10 16:57:36Z vboxsync $ */
 /** @file
  * VKAT - Internal header file for common definitions + structs.
  */
@@ -232,6 +232,9 @@ typedef struct AUDIOTESTENV
     /** Audio volume to use (in percent).
      *  Might not be available on all systems. */
     uint8_t                 uVolumePercent;
+    /** Number of iterations for *all* tests specified.
+     *  When set to 0 (default), a random value (see specific test) will be chosen. */
+    uint32_t                cIterations;
     /** Output path for storing the test environment's final test files. */
     char                    szTag[AUDIOTEST_TAG_MAX];
     /** Output path for storing the test environment's final test files. */
