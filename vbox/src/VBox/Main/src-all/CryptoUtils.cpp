@@ -1,4 +1,4 @@
-/* $Id: CryptoUtils.cpp 94778 2022-05-02 10:51:48Z vboxsync $ */
+/* $Id: CryptoUtils.cpp 94779 2022-05-02 10:54:39Z vboxsync $ */
 /** @file
  * Main - Cryptographic utility functions used by both VBoxSVC and VBoxC.
  */
@@ -56,7 +56,7 @@ DECLCALLBACK(uint64_t) SsmStream::i_ssmCryptoTell(void *pvUser)
 {
     SsmStream *pThis = static_cast<SsmStream *>(pvUser);
 
-    return RTVfsFileTell(pThis->m_hVfsFile);
+    return (uint64_t)RTVfsFileTell(pThis->m_hVfsFile);
 }
 
 
