@@ -1,4 +1,4 @@
-/* $Id: UIBootTimeErrorDialog.h 91656 2021-10-11 08:44:14Z vboxsync $ */
+/* $Id: UIBootTimeErrorDialog.h 91657 2021-10-11 08:49:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIBootTimeErrorDialog class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef FEQT_INCLUDED_SRC_medium_UIBootTimeErrorDialog_h
-#define FEQT_INCLUDED_SRC_medium_UIBootTimeErrorDialog_h
+#ifndef FEQT_INCLUDED_SRC_runtime_UIBootTimeErrorDialog_h
+#define FEQT_INCLUDED_SRC_runtime_UIBootTimeErrorDialog_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -102,4 +102,4 @@ private:
     CMachine              m_comMachine;
 };
 
-#endif /* !FEQT_INCLUDED_SRC_medium_UIBootTimeErrorDialog_h */
+#endif /* !FEQT_INCLUDED_SRC_runtime_UIBootTimeErrorDialog_h */
