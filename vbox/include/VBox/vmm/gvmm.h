@@ -1,4 +1,4 @@
-/* $Id: gvmm.h 92703 2021-12-02 12:45:58Z vboxsync $ */
+/* $Id: gvmm.h 92721 2021-12-02 22:42:04Z vboxsync $ */
 /** @file
  * GVMM - The Global VM Manager.
  */
@@ -319,8 +319,9 @@ GVMMR0DECL(int)     GVMMR0ResetStatisticsReq(PGVM pGVM, PGVMMRESETSTATISTICSSREQ
 
 #ifdef IN_RING3
 VMMR3_INT_DECL(int)  GVMMR3CreateVM(PUVM pUVM, uint32_t cCpus, PSUPDRVSESSION pSession, PVM *ppVM, PRTR0PTR ppVMR0);
-VMMR3_INT_DECL(int)  GVMMR3DestroyVM(PUVM pUVM);
+VMMR3_INT_DECL(int)  GVMMR3DestroyVM(PUVM pUVM, PVM pVM);
 VMMR3_INT_DECL(int)  GVMMR3RegisterVCpu(PVM pVM, VMCPUID idCpu);
+VMMR3_INT_DECL(int)  GVMMR3DeregisterVCpu(PVM pVM, VMCPUID idCpu);
 VMMR3_INT_DECL(int)  GVMMR3RegisterWorkerThread(PVM pVM, GVMMWORKERTHREAD enmWorker);
 VMMR3_INT_DECL(int)  GVMMR3DeregisterWorkerThread(PVM pVM, GVMMWORKERTHREAD enmWorker);
 #endif

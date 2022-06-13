@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 92703 2021-12-02 12:45:58Z vboxsync $ */
+/* $Id: PGMPhys.cpp 92721 2021-12-02 22:42:04Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -2173,7 +2173,10 @@ int pgmR3PhysRamTerm(PVM pVM)
      * Flush the handy pages updates to make sure no shared pages are hiding
      * in there.  (Not unlikely if the VM shuts down, apparently.)
      */
-    rc = VMMR3CallR0(pVM, VMMR0_DO_PGM_FLUSH_HANDY_PAGES, 0, NULL);
+# ifdef VBOX_WITH_PGM_NEM_MODE
+    if (!pVM->pgm.s.fNemMode)
+# endif
+        rc = VMMR3CallR0(pVM, VMMR0_DO_PGM_FLUSH_HANDY_PAGES, 0, NULL);
 #endif
 
     /*
