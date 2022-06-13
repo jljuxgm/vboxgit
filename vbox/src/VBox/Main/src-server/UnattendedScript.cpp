@@ -1,4 +1,4 @@
-/* $Id: UnattendedScript.cpp 93191 2022-01-11 23:25:35Z vboxsync $ */
+/* $Id: UnattendedScript.cpp 93192 2022-01-11 23:27:30Z vboxsync $ */
 /** @file
  * Classes for reading/parsing/saving scripts for unattended installation.
  */
@@ -118,7 +118,7 @@ HRESULT UnattendedScriptTemplate::saveToString(Utf8Str &rStrDst)
             const char  *pszPlaceholder    = mStrScriptFullContent.c_str() + offPlaceholder;
             size_t       cchPlaceholder    = sizeof(g_szPrefix) - 1;
             char         ch;
-            while (   offPlaceholder + cchPlaceholder < cchMaxPlaceholder
+            while (   cchPlaceholder < cchMaxPlaceholder
                    && (ch = pszPlaceholder[cchPlaceholder]) != '\0'
                    && (RT_C_IS_PRINT(ch) || RT_C_IS_SPACE(ch))
                    && ch != '@')
