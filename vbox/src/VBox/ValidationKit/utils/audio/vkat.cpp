@@ -1,4 +1,4 @@
-/* $Id: vkat.cpp 89837 2021-06-22 14:18:34Z vboxsync $ */
+/* $Id: vkat.cpp 89850 2021-06-23 09:53:08Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) utility for testing and validating the audio stack.
  */
@@ -834,7 +834,7 @@ static int audioVerifyOpenTestSet(const char *pszPathSet, PAUDIOTESTSET pSet)
         {
             RTTestPrintf(g_hTest, RTTESTLVL_ALWAYS, "Using temporary directory '%s'\n", szPathTemp);
 
-            rc = RTPathJoin(szPathExtracted, sizeof(szPathExtracted), szPathTemp, "vkat-XXXX");
+            rc = RTPathJoin(szPathExtracted, sizeof(szPathExtracted), szPathTemp, "vkat-testset-XXXX");
             if (RT_SUCCESS(rc))
             {
                 rc = RTDirCreateTemp(szPathExtracted, 0755);
