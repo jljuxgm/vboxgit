@@ -1,4 +1,4 @@
-/* $Id: UISession.h 90922 2021-08-26 16:17:20Z vboxsync $ */
+/* $Id: UISession.h 90925 2021-08-26 16:25:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -406,6 +406,9 @@ private slots:
       * @param  fSuccess           Brings whether machine was powered off successfully.
       * @param  fIncludingDiscard  Brings whether machine state should be discarded. */
     void sltHandleMachinePoweredOff(bool fSuccess, bool fIncludingDiscard);
+    /** Handles signal about snapshot restored.
+      * @param  fSuccess  Brings whether machine was powered off successfully. */
+    void sltHandleSnapshotRestored(bool fSuccess);
 
 private:
 

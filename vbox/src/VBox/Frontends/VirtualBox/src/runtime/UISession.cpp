@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 90922 2021-08-26 16:17:20Z vboxsync $ */
+/* $Id: UISession.cpp 90925 2021-08-26 16:25:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -824,10 +824,24 @@ void UISession::sltHandleMachinePoweredOff(bool fSuccess, bool fIncludingDiscard
     /* Do we have other tasks? */
     if (fSuccess)
     {
-        if (fIncludingDiscard)
-            uiCommon().restoreCurrentSnapshot(uiCommon().managedVMUuid());
-        closeRuntimeUI();
+        if (!fIncludingDiscard)
+            closeRuntimeUI();
+        else
+        {
+            /* Now, do more magic! */
+            UINotificationProgressSnapshotRestore *pNotification =
+                new UINotificationProgressSnapshotRestore(uiCommon().managedVMUuid());
+            connect(pNotification, &UINotificationProgressSnapshotRestore::sigSnapshotRestored,
+                    this, &UISession::sltHandleSnapshotRestored);
+            gpNotificationCenter->append(pNotification);
+        }
     }
+}
+
+void UISession::sltHandleSnapshotRestored(bool)
+{
+    /* Close Runtime UI independent of snapshot restoring state: */
+    closeRuntimeUI();
 }
 
 void UISession::sltAdditionsChange()

@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 90906 2021-08-26 10:12:20Z vboxsync $ */
+/* $Id: UICommon.cpp 90925 2021-08-26 16:25:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -2591,71 +2591,6 @@ CSession UICommon::tryToOpenSessionFor(CMachine &comMachine)
 
     /* Return session: */
     return comSession;
-}
-
-void UICommon::restoreCurrentSnapshot(const QUuid &uMachineId)
-{
-    /* Open a session to modify VM: */
-    const bool fDirectSessionAvailable = (m_enmType == UIType_RuntimeUI) && isSeparateProcess();
-    CSession comSession = openSession(uMachineId, fDirectSessionAvailable ? KLockType_Write : KLockType_Shared);
-    if (!comSession.isNull())
-    {
-        /* Simulate try-catch block: */
-        do
-        {
-            /* Acquire session machine: */
-            CMachine comMachine = comSession.GetMachine();
-            if (!comSession.isOk())
-            {
-                msgCenter().cannotAcquireSessionParameter(comSession);
-                break;
-            }
-
-            /* Acquire machine name: */
-            const QString strMachineName = comMachine.GetName();
-            if (!comMachine.isOk())
-            {
-                msgCenter().cannotAcquireMachineParameter(comMachine);
-                break;
-            }
-
-            /* Acquire current snapshot: */
-            const CSnapshot comSnapshot = comMachine.GetCurrentSnapshot();
-            if (!comMachine.isOk())
-            {
-                msgCenter().cannotAcquireMachineParameter(comMachine);
-                break;
-            }
-
-            /* Acquire snapshot name: */
-            const QString strSnapshotName = comSnapshot.GetName();
-            if (!comSnapshot.isOk())
-            {
-                msgCenter().cannotAcquireSnapshotParameter(comSnapshot);
-                break;
-            }
-
-            /* Prepare the snapshot-discard progress: */
-            CProgress comProgress = comMachine.RestoreSnapshot(comSnapshot);
-            if (!comMachine.isOk())
-            {
-                msgCenter().cannotRestoreSnapshot(comMachine, strSnapshotName, strMachineName);
-                break;
-            }
-
-            /* Show the snapshot-discard progress: */
-            msgCenter().showModalProgressDialog(comProgress, comMachine.GetName(), ":/progress_snapshot_discard_90px.png");
-            if (comProgress.GetResultCode() != 0)
-            {
-                msgCenter().cannotRestoreSnapshot(comProgress, strSnapshotName, strMachineName);
-                break;
-            }
-        }
-        while (0);
-
-        /* Unlock machine finally: */
-        comSession.UnlockMachine();
-    }
 }
 
 void UICommon::notifyCloudMachineUnregistered(const QString &strProviderShortName,

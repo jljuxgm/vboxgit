@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.h 90923 2021-08-26 16:20:11Z vboxsync $ */
+/* $Id: UINotificationObjects.h 90925 2021-08-26 16:25:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects declarations.
  */
@@ -1026,6 +1026,12 @@ private:
 class SHARED_LIBRARY_STUFF UINotificationProgressSnapshotRestore : public UINotificationProgress
 {
     Q_OBJECT;
+
+signals:
+
+    /** Notifies listeners about snapshot restored.
+      * @param  fSuccess  Brings whether snapshot restored successfully. */
+    void sigSnapshotRestored(bool fSuccess);
 
 public:
 
