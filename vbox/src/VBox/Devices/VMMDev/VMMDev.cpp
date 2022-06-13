@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 91548 2021-10-04 15:53:16Z vboxsync $ */
+/* $Id: VMMDev.cpp 91887 2021-10-20 12:02:36Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -3956,12 +3956,13 @@ static DECLCALLBACK(int) vmmdevIPort_CpuHotPlug(PPDMIVMMDEVPORT pInterface, uint
 static DECLCALLBACK(int) vmmdevLiveExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uint32_t uPass)
 {
     RT_NOREF(uPass);
-    PVMMDEV pThis = PDMDEVINS_2_DATA(pDevIns, PVMMDEV);
+    PVMMDEV         pThis = PDMDEVINS_2_DATA(pDevIns, PVMMDEV);
+    PCPDMDEVHLPR3   pHlp  = pDevIns->pHlpR3;
 
-    SSMR3PutBool(pSSM, pThis->fGetHostTimeDisabled);
-    SSMR3PutBool(pSSM, pThis->fBackdoorLogDisabled);
-    SSMR3PutBool(pSSM, pThis->fKeepCredentials);
-    SSMR3PutBool(pSSM, pThis->fHeapEnabled);
+    pHlp->pfnSSMPutBool(pSSM, pThis->fGetHostTimeDisabled);
+    pHlp->pfnSSMPutBool(pSSM, pThis->fBackdoorLogDisabled);
+    pHlp->pfnSSMPutBool(pSSM, pThis->fKeepCredentials);
+    pHlp->pfnSSMPutBool(pSSM, pThis->fHeapEnabled);
 
     return VINF_SSM_DONT_CALL_AGAIN;
 }
