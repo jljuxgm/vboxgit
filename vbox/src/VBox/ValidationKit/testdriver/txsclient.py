@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: txsclient.py 93151 2022-01-09 01:49:42Z vboxsync $
+# $Id: txsclient.py 93153 2022-01-09 02:26:19Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 93151 $"
+__version__ = "$Revision: 93153 $"
 
 # Standard Python imports.
 import array;
@@ -929,7 +929,11 @@ class Session(TdTaskBase):
                     #   PROC TOK, PROC TOA, PROC DWN, PROC DOO,
                     #   PROC NOK + rc, PROC SIG + sig, PROC ABD, FAILED.
                     if sOpcode == 'PROC DOO':
-                        reporter.log('taskExecEx: PROC DOO[fus]: %s' % (abPayload,));
+                        reporter.log('taskExecEx: PROC DOO[FUS]: %s' % (abPayload,));
+                    elif sOpcode.startswith('PROC NOK'):
+                        reporter.log('taskExecEx: PROC NOK: rcExit=%s' % (abPayload,));
+                    elif len(abPayload) > 0 and sOpcode.startswith('PROC '):
+                        reporter.log('taskExecEx: %s payload=%s' % (sOpcode, abPayload,));
 
             else:
                 if rc is None:
