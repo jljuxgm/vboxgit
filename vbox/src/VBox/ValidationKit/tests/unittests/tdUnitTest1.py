@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 94510 2022-04-07 12:08:20Z vboxsync $
+# $Id: tdUnitTest1.py 94528 2022-04-08 10:26:44Z vboxsync $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 94510 $"
+__version__ = "$Revision: 94528 $"
 
 
 # Standard Python imports.
@@ -1003,7 +1003,7 @@ class tdUnitTest1(vbox.TestDriver):
         #
         # Set up arguments and environment.
         #
-        asArgs = [sFullPath,]
+        asArgs = [sFullPath + self.sExeSuff,]
         if sName in self.kdArguments:
             asArgs.extend(self.kdArguments[sName]);
 
