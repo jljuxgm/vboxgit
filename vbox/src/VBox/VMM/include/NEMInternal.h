@@ -1,4 +1,4 @@
-/* $Id: NEMInternal.h 92356 2021-11-11 10:57:57Z vboxsync $ */
+/* $Id: NEMInternal.h 92376 2021-11-11 15:09:59Z vboxsync $ */
 /** @file
  * NEM - Internal header file.
  */
@@ -276,9 +276,11 @@ typedef struct NEM
     /** Set if we've created the EMTs. */
     bool                        fCreatedEmts : 1;
     /** Set if hv_vm_create() was called successfully. */
-    bool                        fCreatedVm : 1;
-    /** Number of currently mapped pages. */
-    uint32_t volatile           cMappedPages;
+    bool                        fCreatedVm   : 1;
+    /** Set if hv_vm_space_create() was called successfully. */
+    bool                        fCreatedAsid : 1;
+    /** The ASID for this VM (only valid if fCreatedAsid is true). */
+    hv_vm_space_t               uVmAsid;
     STAMCOUNTER                 StatMapPage;
     STAMCOUNTER                 StatUnmapPage;
     STAMCOUNTER                 StatMapPageFailed;
