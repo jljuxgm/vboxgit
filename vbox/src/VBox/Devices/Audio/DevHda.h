@@ -1,4 +1,4 @@
-/* $Id: DevHda.h 90136 2021-07-09 20:40:27Z vboxsync $ */
+/* $Id: DevHda.h 90137 2021-07-09 20:48:35Z vboxsync $ */
 /** @file
  * Intel HD Audio Controller Emulation - Structures.
  */
@@ -807,10 +807,10 @@ DECLINLINE(uint32_t *) hdaStrictStreamRegAccessor(PHDASTATE pThis, uint32_t idxM
 
 /** @name DevHDA.cpp functions used by the codec.
  * @{ */
-DECLHIDDEN(int)     hdaR3MixerAddStream(PPDMDEVINS pDevIns, PDMAUDIOMIXERCTL enmMixerCtl, PCPDMAUDIOSTREAMCFG pCfg);
-DECLHIDDEN(int)     hdaR3MixerRemoveStream(PPDMDEVINS pDevIns, PDMAUDIOMIXERCTL enmMixerCtl, bool fImmediate);
-DECLHIDDEN(int)     hdaR3MixerControl(PPDMDEVINS pDevIns, PDMAUDIOMIXERCTL enmMixerCtl, uint8_t uSD, uint8_t uChannel);
-DECLHIDDEN(int)     hdaR3MixerSetVolume(PPDMDEVINS pDevIns, PDMAUDIOMIXERCTL enmMixerCtl, PPDMAUDIOVOLUME pVol);
+DECLHIDDEN(int)     hdaR3MixerAddStream(PHDACODECR3 pCodec, PDMAUDIOMIXERCTL enmMixerCtl, PCPDMAUDIOSTREAMCFG pCfg);
+DECLHIDDEN(int)     hdaR3MixerRemoveStream(PHDACODECR3 pCodec, PDMAUDIOMIXERCTL enmMixerCtl, bool fImmediate);
+DECLHIDDEN(int)     hdaR3MixerControl(PHDACODECR3 pCodec, PDMAUDIOMIXERCTL enmMixerCtl, uint8_t uSD, uint8_t uChannel);
+DECLHIDDEN(int)     hdaR3MixerSetVolume(PHDACODECR3 pCodec, PDMAUDIOMIXERCTL enmMixerCtl, PPDMAUDIOVOLUME pVol);
 /** @} */
 
 
