@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 92360 2021-11-11 11:15:38Z vboxsync $ */
+/* $Id: UICommon.cpp 92361 2021-11-11 11:23:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -1711,7 +1711,6 @@ DECLINLINE(int) visoWriteQuotedString(PRTSTREAM pStrmDst, const char *pszPrefix,
 
     return vrc;
 }
-
 
 QUuid UICommon::openMediumCreatorDialog(QWidget *pParent, UIMediumDeviceType enmMediumType,
                                        const QString &strDefaultFolder /* = QString() */,
