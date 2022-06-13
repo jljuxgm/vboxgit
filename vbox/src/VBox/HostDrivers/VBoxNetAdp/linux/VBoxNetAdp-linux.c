@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-linux.c 93417 2022-01-24 16:28:14Z vboxsync $ */
+/* $Id: VBoxNetAdp-linux.c 93418 2022-01-24 16:32:44Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Virtual Network Adapter Driver (Host), Linux Specific Code.
  */
@@ -72,6 +72,7 @@
 #else /* >= 5.17.0 */
 # define VBOX_DEV_ADDR_SET(dev, addr, len) dev_addr_mod(dev, 0, addr, len)
 #endif
+
 
 /*********************************************************************************************************************************
 *   Internal Functions                                                                                                           *
