@@ -1,4 +1,4 @@
-/* $Id: RTDbgSymSrv.cpp 89898 2021-06-24 18:29:50Z vboxsync $ */
+/* $Id: RTDbgSymSrv.cpp 89929 2021-06-28 12:07:49Z vboxsync $ */
 /** @file
  * IPRT - Debug Symbol Server.
  */
@@ -396,10 +396,10 @@ static DECLCALLBACK(int) dbgSymSrvQueryInfo(PRTHTTPCALLBACKDATA pData, PRTHTTPSE
         {
             const char *pszFile = pszPathAbs;
 
-            if (   g_pszPdbExe
-                && !RTPathExists(pszPathAbsXml))
+            if (g_pszPdbExe)
             {
-                rc = rtDbgSymSrvConvertToGhidraXml(pszPathAbs, pszPathAbsXml);
+                if (!RTPathExists(pszPathAbsXml))
+                    rc = rtDbgSymSrvConvertToGhidraXml(pszPathAbs, pszPathAbsXml);
                 if (RT_SUCCESS(rc))
                     pszFile = pszPathAbsXml;
             }
