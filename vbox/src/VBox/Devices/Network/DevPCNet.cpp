@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 93441 2022-01-25 15:43:20Z vboxsync $ */
+/* $Id: DevPCNet.cpp 93591 2022-02-03 19:14:39Z vboxsync $ */
 /** @file
  * DevPCNet - AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  *
@@ -2570,7 +2570,7 @@ static int pcnetXmitPending(PPDMDEVINS pDevIns, PPCNETSTATE pThis, PPCNETSTATECC
     int rc;
 
     /*
-     * Grab the xmit lock of the driver as well as the E1K device state.
+     * Grab the xmit lock of the driver as well as the PCnet device state.
      */
     PPDMINETWORKUP pDrv = pThisCC->pDrv;
     if (pDrv)
