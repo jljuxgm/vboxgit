@@ -1,4 +1,4 @@
-/* $Id: semevent-r0drv-nt.cpp 90459 2021-08-01 20:54:21Z vboxsync $ */
+/* $Id: semevent-r0drv-nt.cpp 90488 2021-08-03 09:17:59Z vboxsync $ */
 /** @file
  * IPRT -  Single Release Event Semaphores, Ring-0 Driver, NT.
  */
@@ -273,5 +273,11 @@ RTDECL(int)  RTSemEventWaitExDebug(RTSEMEVENT hEventSem, uint32_t fFlags, uint64
 RTDECL(uint32_t) RTSemEventGetResolution(void)
 {
     return RTTimerGetSystemGranularity();
+}
+
+
+RTR0DECL(bool) RTSemEventIsSignalSafe(void)
+{
+    return KeGetCurrentIrql() <= DISPATCH_LEVEL;
 }
 

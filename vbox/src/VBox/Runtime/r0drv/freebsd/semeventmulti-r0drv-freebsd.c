@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-r0drv-freebsd.c 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: semeventmulti-r0drv-freebsd.c 90488 2021-08-03 09:17:59Z vboxsync $ */
 /** @file
  * IPRT - Multiple Release Event Semaphores, Ring-0 Driver, FreeBSD.
  */
@@ -341,4 +341,12 @@ RTDECL(uint32_t) RTSemEventMultiGetResolution(void)
     return rtR0SemBsdWaitGetResolution();
 }
 RT_EXPORT_SYMBOL(RTSemEventMultiGetResolution);
+
+
+RTR0DECL(bool) RTSemEventMultiIsSignalSafe(void)
+{
+    /** @todo check the code...   */
+    return false;
+}
+RT_EXPORT_SYMBOL(RTSemEventMultiIsSignalSafe);
 

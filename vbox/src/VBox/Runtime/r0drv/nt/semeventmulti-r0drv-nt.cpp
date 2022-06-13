@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-r0drv-nt.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: semeventmulti-r0drv-nt.cpp 90488 2021-08-03 09:17:59Z vboxsync $ */
 /** @file
  * IPRT -  Multiple Release Event Semaphores, Ring-0 Driver, NT.
  */
@@ -296,5 +296,11 @@ RTDECL(int)  RTSemEventMultiWaitExDebug(RTSEMEVENTMULTI hEventMultiSem, uint32_t
 RTDECL(uint32_t) RTSemEventMultiGetResolution(void)
 {
     return RTTimerGetSystemGranularity();
+}
+
+
+RTR0DECL(bool) RTSemEventMultiIsSignalSafe(void)
+{
+    return KeGetCurrentIrql() <= DISPATCH_LEVEL;
 }
 

@@ -1,4 +1,4 @@
-/* $Id: semevent-r0drv-netbsd.c 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: semevent-r0drv-netbsd.c 90488 2021-08-03 09:17:59Z vboxsync $ */
 /** @file
  * IPRT - Single Release Event Semaphores, Ring-0 Driver, NetBSD.
  */
@@ -275,3 +275,10 @@ RTDECL(uint32_t) RTSemEventGetResolution(void)
 {
     return 1000000000 / hz;
 }
+
+RTR0DECL(bool) RTSemEventIsSignalSafe(void)
+{
+    /** @todo check the code...   */
+    return false;
+}
+

@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-r0drv-darwin.cpp 83098 2020-02-17 16:58:55Z vboxsync $ */
+/* $Id: semeventmulti-r0drv-darwin.cpp 90488 2021-08-03 09:17:59Z vboxsync $ */
 /** @file
  * IPRT - Multiple Release Event Semaphores, Ring-0 Driver, Darwin.
  */
@@ -446,5 +446,12 @@ RTDECL(uint32_t) RTSemEventMultiGetResolution(void)
     uint64_t cNs;
     absolutetime_to_nanoseconds(1, &cNs);
     return (uint32_t)cNs ? (uint32_t)cNs : 0;
+}
+
+
+RTR0DECL(bool) RTSemEventMultiIsSignalSafe(void)
+{
+    /** @todo check the code...   */
+    return false;
 }
 

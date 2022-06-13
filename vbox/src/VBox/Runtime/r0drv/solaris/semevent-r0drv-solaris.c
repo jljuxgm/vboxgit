@@ -1,4 +1,4 @@
-/* $Id: semevent-r0drv-solaris.c 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: semevent-r0drv-solaris.c 90488 2021-08-03 09:17:59Z vboxsync $ */
 /** @file
  * IPRT - Single Release Event Semaphores, Ring-0 Driver, Solaris.
  */
@@ -343,5 +343,12 @@ RTDECL(int)  RTSemEventWaitExDebug(RTSEMEVENT hEventSem, uint32_t fFlags, uint64
 RTDECL(uint32_t) RTSemEventGetResolution(void)
 {
     return rtR0SemSolWaitGetResolution();
+}
+
+
+RTR0DECL(bool) RTSemEventIsSignalSafe(void)
+{
+    /* I don't trust Solaris not to preempt us. */
+    return false;
 }
 

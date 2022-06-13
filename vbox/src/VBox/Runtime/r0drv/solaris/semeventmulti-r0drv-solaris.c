@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-r0drv-solaris.c 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: semeventmulti-r0drv-solaris.c 90488 2021-08-03 09:17:59Z vboxsync $ */
 /** @file
  * IPRT - Multiple Release Event Semaphores, Ring-0 Driver, Solaris.
  */
@@ -351,5 +351,12 @@ RTDECL(int)  RTSemEventMultiWaitExDebug(RTSEMEVENTMULTI hEventMultiSem, uint32_t
 RTDECL(uint32_t) RTSemEventMultiGetResolution(void)
 {
     return rtR0SemSolWaitGetResolution();
+}
+
+
+RTR0DECL(bool) RTSemEventMultiIsSignalSafe(void)
+{
+    /* Don't trust solaris not to preempt us. */
+    return false;
 }
 

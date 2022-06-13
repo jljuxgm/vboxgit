@@ -1,4 +1,4 @@
-/* $Id: semevent-r0drv-darwin.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: semevent-r0drv-darwin.cpp 90488 2021-08-03 09:17:59Z vboxsync $ */
 /** @file
  * IPRT - Single Release Event Semaphores, Ring-0 Driver, Darwin.
  */
@@ -424,4 +424,12 @@ RTDECL(uint32_t) RTSemEventGetResolution(void)
     absolutetime_to_nanoseconds(1, &cNs);
     return (uint32_t)cNs ? (uint32_t)cNs : 0;
 }
+
+
+RTR0DECL(bool) RTSemEventIsSignalSafe(void)
+{
+    /** @todo check the code...   */
+    return false;
+}
+RT_EXPORT_SYMBOL(RTSemEventIsSignalSafe);
 
