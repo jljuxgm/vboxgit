@@ -1,4 +1,4 @@
-/* $Id: UIMediumItem.h 93990 2022-02-28 15:34:57Z vboxsync $ */
+/* $Id: UIMediumItem.h 94797 2022-05-03 18:21:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumItem class declaration.
  */
@@ -49,11 +49,11 @@ public:
     /** Moves UIMedium wrapped by <i>this</i> item. */
     virtual bool move();
     /** Removes UIMedium wrapped by <i>this</i> item. */
-    virtual bool remove() = 0;
+    virtual bool remove(bool fShowMessageBox) = 0;
     /** Releases UIMedium wrapped by <i>this</i> item.
       * @param  fInduced  Brings whether this action is caused by other user's action,
       *                   not a direct order to release particularly selected medium. */
-    virtual bool release(bool fInduced = false);
+    virtual bool release(bool fShowMessageBox, bool fInduced);
 
     /** Refreshes item fully. */
     void refreshAll();
@@ -180,7 +180,7 @@ public:
 protected:
 
     /** Removes UIMedium wrapped by <i>this</i> item. */
-    virtual bool remove() RT_OVERRIDE;
+    virtual bool remove(bool fShowMessageBox) RT_OVERRIDE;
     /** Releases UIMedium wrapped by <i>this</i> item from virtual @a comMachine. */
     virtual bool releaseFrom(CMachine comMachine) RT_OVERRIDE;
 
@@ -207,7 +207,7 @@ public:
 protected:
 
     /** Removes UIMedium wrapped by <i>this</i> item. */
-    virtual bool remove() RT_OVERRIDE;
+    virtual bool remove(bool fShowMessageBox) RT_OVERRIDE;
     /** Releases UIMedium wrapped by <i>this</i> item from virtual @a comMachine. */
     virtual bool releaseFrom(CMachine comMachine) RT_OVERRIDE;
 };
@@ -229,7 +229,7 @@ public:
 protected:
 
     /** Removes UIMedium wrapped by <i>this</i> item. */
-    virtual bool remove() RT_OVERRIDE;
+    virtual bool remove(bool fShowMessageBox) RT_OVERRIDE;
     /** Releases UIMedium wrapped by <i>this</i> item from virtual @a comMachine. */
     virtual bool releaseFrom(CMachine comMachine) RT_OVERRIDE;
 };

@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 94757 2022-04-29 09:40:45Z vboxsync $ */
+/* $Id: UIMessageCenter.h 94797 2022-05-03 18:21:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -352,6 +352,7 @@ public:
         bool confirmMediumRelease(const UIMedium &medium, bool fInduced, QWidget *pParent = 0) const;
         bool confirmMediumRemoval(const UIMedium &medium, QWidget *pParent = 0) const;
         int confirmDeleteHardDiskStorage(const QString &strLocation, QWidget *pParent = 0) const;
+        bool confirmDVDListClear(const QStringList &DVDPathList, QWidget *pParent = 0);
     /** @} */
 
     /** @name VirtualBox Manager / Network Manager warnings.
