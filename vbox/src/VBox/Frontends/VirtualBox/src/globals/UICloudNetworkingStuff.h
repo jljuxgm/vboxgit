@@ -1,4 +1,4 @@
-/* $Id: UICloudNetworkingStuff.h 89998 2021-07-02 10:36:16Z vboxsync $ */
+/* $Id: UICloudNetworkingStuff.h 91150 2021-09-08 12:56:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudNetworkingStuff namespace declaration.
  */
@@ -68,6 +68,14 @@ namespace UICloudNetworkingStuff
     SHARED_LIBRARY_STUFF CCloudProfile cloudProfileByName(const QString &strProviderShortName,
                                                           const QString &strProfileName,
                                                           QString &strErrorMessage);
+    /** Acquires cloud client created for @a comProfile,
+      * using @a pParent to show messages according to. */
+    SHARED_LIBRARY_STUFF CCloudClient cloudClient(CCloudProfile comProfile,
+                                                  QWidget *pParent = 0);
+    /** Acquires cloud client created for @a comProfile,
+      * using @a strErrorMessage to store messages to. */
+    SHARED_LIBRARY_STUFF CCloudClient cloudClient(CCloudProfile comProfile,
+                                                  QString &strErrorMessage);
     /** Acquires cloud client specified by @a strProviderShortName and @a strProfileName,
       * using @a pParent to show messages according to. */
     SHARED_LIBRARY_STUFF CCloudClient cloudClientByName(const QString &strProviderShortName,

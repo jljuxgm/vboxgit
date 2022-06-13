@@ -1,4 +1,4 @@
-/* $Id: UICloudNetworkingStuff.cpp 91145 2021-09-07 19:10:39Z vboxsync $ */
+/* $Id: UICloudNetworkingStuff.cpp 91150 2021-09-08 12:56:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudNetworkingStuff namespace implementation.
  */
@@ -175,6 +175,32 @@ CCloudProfile UICloudNetworkingStuff::cloudProfileByName(const QString &strProvi
     return CCloudProfile();
 }
 
+CCloudClient UICloudNetworkingStuff::cloudClient(CCloudProfile comProfile,
+                                                 QWidget *pParent /* = 0 */)
+{
+    /* Create cloud client: */
+    CCloudClient comClient = comProfile.CreateCloudClient();
+    if (!comProfile.isOk())
+        msgCenter().cannotCreateCloudClient(comProfile, pParent);
+    else
+        return comClient;
+    /* Null by default: */
+    return CCloudClient();
+}
+
+CCloudClient UICloudNetworkingStuff::cloudClient(CCloudProfile comProfile,
+                                                 QString &strErrorMessage)
+{
+    /* Create cloud client: */
+    CCloudClient comClient = comProfile.CreateCloudClient();
+    if (!comProfile.isOk())
+        strErrorMessage = UIErrorString::formatErrorInfo(comProfile);
+    else
+        return comClient;
+    /* Null by default: */
+    return CCloudClient();
+}
+
 CCloudClient UICloudNetworkingStuff::cloudClientByName(const QString &strProviderShortName,
                                                        const QString &strProfileName,
                                                        QWidget *pParent /* = 0 */)
@@ -182,14 +208,7 @@ CCloudClient UICloudNetworkingStuff::cloudClientByName(const QString &strProvide
     /* Acquire cloud profile: */
     CCloudProfile comProfile = cloudProfileByName(strProviderShortName, strProfileName, pParent);
     if (comProfile.isNotNull())
-    {
-        /* Create cloud client: */
-        CCloudClient comClient = comProfile.CreateCloudClient();
-        if (!comProfile.isOk())
-            msgCenter().cannotAcquireCloudProfileParameter(comProfile, pParent);
-        else
-            return comClient;
-    }
+        return cloudClient(comProfile, pParent);
     /* Null by default: */
     return CCloudClient();
 }
@@ -201,14 +220,7 @@ CCloudClient UICloudNetworkingStuff::cloudClientByName(const QString &strProvide
     /* Acquire cloud profile: */
     CCloudProfile comProfile = cloudProfileByName(strProviderShortName, strProfileName, strErrorMessage);
     if (comProfile.isNotNull())
-    {
-        /* Create cloud client: */
-        CCloudClient comClient = comProfile.CreateCloudClient();
-        if (!comProfile.isOk())
-            strErrorMessage = UIErrorString::formatErrorInfo(comProfile);
-        else
-            return comClient;
-    }
+        return cloudClient(comProfile, strErrorMessage);
     /* Null by default: */
     return CCloudClient();
 }
