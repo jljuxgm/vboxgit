@@ -1,4 +1,4 @@
-/* $Id: AutoLock.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: AutoLock.cpp 92403 2021-11-12 15:59:12Z vboxsync $ */
 /** @file
  * Automatic locks, implementation.
  */
@@ -86,7 +86,8 @@ void InitAutoLockSystem()
         { LOCKCLASS_LISTOFOTHEROBJECTS, "9-LISTOFOTHEROBJECTS" },
         { LOCKCLASS_OTHEROBJECT,        "10-OTHEROBJECT" },
         { LOCKCLASS_PROGRESSLIST,       "11-PROGRESSLIST" },
-        { LOCKCLASS_OBJECTSTATE,        "12-OBJECTSTATE" }
+        { LOCKCLASS_OBJECTSTATE,        "12-OBJECTSTATE" },
+        { LOCKCLASS_TRANSLATOR,         "13-TRANSLATOR" }
     };
 
     RTLOCKVALCLASS hClass;

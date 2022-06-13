@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxClientImpl.cpp 92144 2021-10-29 12:58:11Z vboxsync $ */
+/* $Id: VirtualBoxClientImpl.cpp 92403 2021-11-12 15:59:12Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -130,7 +130,7 @@ public:
 
 typedef ListenerImpl<VBoxEventListener> VBoxEventListenerImpl;
 
-VBOX_LISTENER_DECLARE(VBoxTrEventListenerImpl)
+VBOX_LISTENER_DECLARE(VBoxEventListenerImpl)
 
 #endif /* VBOX_WITH_MAIN_NLS */
 
