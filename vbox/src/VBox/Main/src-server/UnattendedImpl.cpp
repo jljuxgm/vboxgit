@@ -1,4 +1,4 @@
-/* $Id: UnattendedImpl.cpp 93584 2022-02-03 14:49:19Z vboxsync $ */
+/* $Id: UnattendedImpl.cpp 93585 2022-02-03 14:51:59Z vboxsync $ */
 /** @file
  * Unattended class implementation
  */
@@ -353,7 +353,7 @@ HRESULT Unattended::detectIsoOS()
         hrc = i_innerDetectIsoOS(hVfsIso);
 
         RTVfsRelease(hVfsIso);
-        if (hrc != S_FALSE) /** @todo Finish the linux and windows detection code. Only OS/2 returns S_OK right now. */
+        if (hrc == S_FALSE) /** @todo Finish the linux and windows detection code. Only OS/2 returns S_OK right now. */
             hrc = E_NOTIMPL;
     }
     else if (RTErrInfoIsSet(&ErrInfo.Core))
