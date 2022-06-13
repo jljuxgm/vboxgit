@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 91503 2021-10-01 08:57:59Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 93070 2021-12-23 21:51:22Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -84,6 +84,9 @@ static struct
     { ovf::CIMOSType_CIMOS_OS2,                                  VBOXOSTYPE_OS2Warp3 },
     { ovf::CIMOSType_CIMOS_OS2,                                  VBOXOSTYPE_OS2Warp4 },
     { ovf::CIMOSType_CIMOS_OS2,                                  VBOXOSTYPE_OS2Warp45 },
+    { ovf::CIMOSType_CIMOS_OS2,                                  VBOXOSTYPE_OS21x },
+    { ovf::CIMOSType_CIMOS_OS2,                                  VBOXOSTYPE_ECS },
+    { ovf::CIMOSType_CIMOS_OS2,                                  VBOXOSTYPE_ArcaOS },
     { ovf::CIMOSType_CIMOS_MSDOS,                                VBOXOSTYPE_DOS },
     { ovf::CIMOSType_CIMOS_WIN3x,                                VBOXOSTYPE_Win31 },
     { ovf::CIMOSType_CIMOS_WIN95,                                VBOXOSTYPE_Win95 },

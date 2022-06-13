@@ -1,4 +1,4 @@
-/* $Id: UIIconPool.cpp 91544 2021-10-04 15:04:20Z vboxsync $ */
+/* $Id: UIIconPool.cpp 93070 2021-12-23 21:51:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIIconPool class implementation.
  */
@@ -357,6 +357,7 @@ UIIconPoolGeneral::UIIconPoolGeneral()
     m_guestOSTypeIconNames.insert("OS2Warp4",        ":/os_os2warp4.png");
     m_guestOSTypeIconNames.insert("OS2Warp45",       ":/os_os2warp45.png");
     m_guestOSTypeIconNames.insert("OS2eCS",          ":/os_os2ecs.png");
+    m_guestOSTypeIconNames.insert("OS2ArcaOS",       ":/os_os2_other.png"); /** @todo icon? */
     m_guestOSTypeIconNames.insert("OS21x",           ":/os_os2_other.png");
     m_guestOSTypeIconNames.insert("OS2",             ":/os_os2_other.png");
     m_guestOSTypeIconNames.insert("Linux22",         ":/os_linux22.png");
