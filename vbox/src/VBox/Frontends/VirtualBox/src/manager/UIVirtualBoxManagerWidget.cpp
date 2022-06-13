@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 90299 2021-07-23 10:58:13Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 92478 2021-11-17 13:47:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -959,6 +959,16 @@ void UIVirtualBoxManagerWidget::updateToolbar()
                 {
                     m_pToolBar->addAction(actionPool()->action(UIActionIndex_M_Activity_S_Export));
                     m_pToolBar->addAction(actionPool()->action(UIActionIndex_M_Activity_S_ToVMActivityOverview));
+                    m_pToolBar->addSeparator();
+                    m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_Settings));
+                    m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_Discard));
+                    m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Machine_M_StartOrShow));
+                    break;
+                }
+                case UIToolType_VISOCreator:
+                {
+                    m_pToolBar->addAction(actionPool()->action(UIActionIndex_M_VISOCreator_ToggleConfigPanel));
+                    m_pToolBar->addAction(actionPool()->action(UIActionIndex_M_VISOCreator_ToggleOptionsPanel));
                     m_pToolBar->addSeparator();
                     m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_Settings));
                     m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_Discard));

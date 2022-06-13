@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.h 92423 2021-11-15 12:37:17Z vboxsync $ */
+/* $Id: UIActionPool.h 92478 2021-11-17 13:47:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPool class declaration.
  */
@@ -612,6 +612,8 @@ protected:
     void updateMenuFileManager();
     /** Updates 'File Manager' @a pMenu. */
     void updateMenuFileManagerWrapper(UIMenu *pMenu);
+    /** Updates 'VISO Creator' pMenu. */
+    void updateMenuVISOCreator();
 
     /** Holds the map of actions. */
     QMap<int, UIAction*>          m_pool;
