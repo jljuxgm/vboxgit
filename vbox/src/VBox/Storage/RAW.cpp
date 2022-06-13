@@ -1,4 +1,4 @@
-/* $Id: RAW.cpp 86500 2020-10-08 17:07:38Z vboxsync $ */
+/* $Id: RAW.cpp 90802 2021-08-23 19:08:27Z vboxsync $ */
 /** @file
  * RawHDDCore - Raw Disk image, Core Code.
  */
@@ -525,7 +525,8 @@ static DECLCALLBACK(int) rawProbe(const char *pszFilename, PVDINTERFACE pVDIfsDi
     PVDINTERFACEIOINT pIfIo = VDIfIoIntGet(pVDIfsImage);
 
     AssertPtrReturn(pIfIo, VERR_INVALID_PARAMETER);
-    AssertReturn((VALID_PTR(pszFilename) && *pszFilename), VERR_INVALID_PARAMETER);
+    AssertPtrReturn(pszFilename, VERR_INVALID_POINTER);
+    AssertReturn(*pszFilename != '\0', VERR_INVALID_PARAMETER);
 
     /*
      * Open the file and read the footer.
@@ -675,7 +676,8 @@ static DECLCALLBACK(int) rawOpen(const char *pszFilename, unsigned uOpenFlags,
 
     /* Check open flags. All valid flags are supported. */
     AssertReturn(!(uOpenFlags & ~VD_OPEN_FLAGS_MASK), VERR_INVALID_PARAMETER);
-    AssertReturn((VALID_PTR(pszFilename) && *pszFilename), VERR_INVALID_PARAMETER);
+    AssertPtrReturn(pszFilename, VERR_INVALID_POINTER);
+    AssertReturn(*pszFilename != '\0', VERR_INVALID_PARAMETER);
 
     pImage = (PRAWIMAGE)RTMemAllocZ(RT_UOFFSETOF(RAWIMAGE, RegionList.aRegions[1]));
     if (RT_LIKELY(pImage))
@@ -727,10 +729,10 @@ static DECLCALLBACK(int) rawCreate(const char *pszFilename, uint64_t cbSize,
 
     /* Check arguments. */
     AssertReturn(!(uOpenFlags & ~VD_OPEN_FLAGS_MASK), VERR_INVALID_PARAMETER);
-    AssertReturn(   VALID_PTR(pszFilename)
-                 && *pszFilename
-                 && VALID_PTR(pPCHSGeometry)
-                 && VALID_PTR(pLCHSGeometry), VERR_INVALID_PARAMETER);
+    AssertPtrReturn(pszFilename, VERR_INVALID_POINTER);
+    AssertReturn(*pszFilename != '\0', VERR_INVALID_PARAMETER);
+    AssertPtrReturn(pPCHSGeometry, VERR_INVALID_POINTER);
+    AssertPtrReturn(pLCHSGeometry, VERR_INVALID_POINTER);
 
     PRAWIMAGE pImage = (PRAWIMAGE)RTMemAllocZ(RT_UOFFSETOF(RAWIMAGE, RegionList.aRegions[1]));
     if (RT_LIKELY(pImage))

@@ -1,4 +1,4 @@
-/* $Id: VCICache.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VCICache.cpp 90802 2021-08-23 19:08:27Z vboxsync $ */
 /** @file
  * VCICacheCore - VirtualBox Cache Image, Core Code.
  */
@@ -1529,7 +1529,7 @@ static DECLCALLBACK(int) vciOpen(const char *pszFilename, unsigned uOpenFlags,
     }
 
     /* Check remaining arguments. */
-    if (   !VALID_PTR(pszFilename)
+    if (   !RT_VALID_PTR(pszFilename)
         || !*pszFilename)
     {
         rc = VERR_INVALID_PARAMETER;
@@ -1590,7 +1590,7 @@ static DECLCALLBACK(int) vciCreate(const char *pszFilename, uint64_t cbSize,
     }
 
     /* Check remaining arguments. */
-    if (   !VALID_PTR(pszFilename)
+    if (   !RT_VALID_PTR(pszFilename)
         || !*pszFilename)
     {
         rc = VERR_INVALID_PARAMETER;

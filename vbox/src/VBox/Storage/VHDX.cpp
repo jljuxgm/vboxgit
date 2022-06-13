@@ -1,4 +1,4 @@
-/* $Id: VHDX.cpp 87917 2021-03-02 15:42:13Z vboxsync $ */
+/* $Id: VHDX.cpp 90802 2021-08-23 19:08:27Z vboxsync $ */
 /** @file
  * VHDX - VHDX Disk image, Core Code.
  */
@@ -1785,7 +1785,7 @@ static DECLCALLBACK(int) vhdxProbe(const char *pszFilename, PVDINTERFACE pVDIfsD
     PVDINTERFACEIOINT pIfIo = VDIfIoIntGet(pVDIfsImage);
     AssertPtrReturn(pIfIo, VERR_INVALID_PARAMETER);
 
-    if (   !VALID_PTR(pszFilename)
+    if (   !RT_VALID_PTR(pszFilename)
         || !*pszFilename)
         rc = VERR_INVALID_PARAMETER;
     else
@@ -1842,7 +1842,7 @@ static DECLCALLBACK(int) vhdxOpen(const char *pszFilename, unsigned uOpenFlags,
 
     /* Check open flags. All valid flags are supported. */
     if (   uOpenFlags & ~VD_OPEN_FLAGS_MASK
-        || !VALID_PTR(pszFilename)
+        || !RT_VALID_PTR(pszFilename)
         || !*pszFilename)
         rc = VERR_INVALID_PARAMETER;
     else
