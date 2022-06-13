@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-darwin.cpp 92357 2021-11-11 10:58:36Z vboxsync $ */
+/* $Id: NEMR3Native-darwin.cpp 92363 2021-11-11 11:25:18Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, native ring-3 macOS backend using Hypervisor.framework.
  *
@@ -1252,6 +1252,7 @@ DECL_FORCE_INLINE(bool) nemR3DarwinIsVmxLbr(PCVMCC pVM)
 /*
  * Instantiate the code we share with ring-0.
  */
+#define IN_NEM_DARWIN
 //#define HMVMX_ALWAYS_TRAP_ALL_XCPTS
 #define HMVMX_ALWAYS_SYNC_FULL_GUEST_STATE
 #define VCPU_2_VMXSTATE(a_pVCpu)            (a_pVCpu)->nem.s
