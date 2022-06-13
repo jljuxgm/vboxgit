@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tdAudioTest.py 91415 2021-09-27 19:26:46Z vboxsync $
+# $Id: tdAudioTest.py 91426 2021-09-28 08:28:54Z vboxsync $
 
 """
 AudioTest test driver which invokes the VKAT (Validation Kit Audio Test)
@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 91415 $"
+__version__ = "$Revision: 91426 $"
 
 # Standard Python imports.
 from datetime import datetime
@@ -38,6 +38,7 @@ import os
 import sys
 import signal
 import subprocess
+import time
 
 # Only the main script needs to modify the path.
 try:    __file__
@@ -278,6 +279,8 @@ class tdAudioTest(vbox.TestDriver):
         if oProcess:
             for line in iter(oProcess.stdout.readline, b''):
                 reporter.log('[' + sWhat + '] ' + line.decode('utf-8'));
+                self.processPendingEvents();
+                time.sleep(0.01); # Don't hog the CPU too much.
             oProcess.communicate();
             if oProcess.returncode == 0:
                 fRc = True;
