@@ -1,4 +1,4 @@
-/* $Id: UIWizardAddCloudVMPageExpert.h 91367 2021-09-24 15:42:38Z vboxsync $ */
+/* $Id: UIWizardAddCloudVMPageExpert.h 91697 2021-10-12 17:34:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardAddCloudVMPageExpert class declaration.
  */
@@ -70,13 +70,6 @@ private slots:
     void sltHandleSourceInstanceChange();
 
 private:
-
-    /** Updates provider. */
-    void updateProvider();
-    /** Updates profile. */
-    void updateProfile();
-    /** Updates source instance. */
-    void updateSourceInstance();
 
     /** Holds the provider container instance. */
     QGroupBox *m_pCntProvider;

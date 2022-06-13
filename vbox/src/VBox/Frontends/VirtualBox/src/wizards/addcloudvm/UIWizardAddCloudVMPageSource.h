@@ -1,4 +1,4 @@
-/* $Id: UIWizardAddCloudVMPageSource.h 91410 2021-09-27 16:31:08Z vboxsync $ */
+/* $Id: UIWizardAddCloudVMPageSource.h 91697 2021-10-12 17:34:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardAddCloudVMPageSource class declaration.
  */
@@ -111,13 +111,6 @@ private slots:
     void sltHandleSourceInstanceChange();
 
 private:
-
-    /** Updates provider. */
-    void updateProvider();
-    /** Updates profile. */
-    void updateProfile();
-    /** Updates source instance. */
-    void updateSourceInstance();
 
     /** Holds the main label instance. */
     QIRichTextLabel *m_pLabelMain;
