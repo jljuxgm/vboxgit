@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 94089 2022-03-04 14:06:52Z vboxsync $ */
+/* $Id: UINotificationObjects.cpp 94454 2022-04-04 12:50:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -4303,6 +4303,66 @@ UINewVersionChecker *UINotificationNewVersionCheckerVirtualBox::createChecker()
         return pChecker;
     }
     return 0;
+}
+
+
+/*********************************************************************************************************************************
+*   Class UINotificationProgressNewVersionChecker implementation.                                                                *
+*********************************************************************************************************************************/
+
+UINotificationProgressNewVersionChecker::UINotificationProgressNewVersionChecker()
+{
+    connect(this, &UINotificationProgress::sigProgressFinished,
+            this, &UINotificationProgressNewVersionChecker::sltHandleProgressFinished);
+    CHost comHost = uiCommon().virtualBox().GetHost();
+    if (!comHost.isNull())
+        m_comUpdateChecker = comHost.GetUpdate();
+}
+
+QString UINotificationProgressNewVersionChecker::name() const
+{
+    return UINotificationProgress::tr("Check for New Version ...");
+}
+
+QString UINotificationProgressNewVersionChecker::details() const
+{
+    return QString();
+}
+
+CProgress UINotificationProgressNewVersionChecker::createProgress(COMResult &comResult)
+{
+    if (!m_comUpdateChecker.isOk())
+        return CProgress();
+
+    CProgress comProgress = m_comUpdateChecker.UpdateCheck(KUpdateCheckType_VirtualBox);
+    comResult = m_comUpdateChecker;
+
+    return comProgress;
+}
+
+void UINotificationProgressNewVersionChecker::sltHandleProgressFinished()
+{
+    if (m_comUpdateChecker.isNull() && !m_comUpdateChecker.isOk())
+        return;
+
+    bool fUpdateAvailable = m_comUpdateChecker.GetUpdateResponse();
+    if (!m_comUpdateChecker.isOk())
+        return;
+
+    if (fUpdateAvailable)
+    {
+        QString strVersion = m_comUpdateChecker.GetUpdateVersion();
+        if (!m_comUpdateChecker.isOk())
+            return;
+
+        QString strURL = m_comUpdateChecker.GetUpdateURL();
+        if (!m_comUpdateChecker.isOk())
+            return;
+
+        UINotificationMessage::showUpdateSuccess(strVersion, strURL);
+    }
+    else
+        UINotificationMessage::showUpdateNotFound();
 }
 
 #endif /* VBOX_GUI_WITH_NETWORK_MANAGER */
