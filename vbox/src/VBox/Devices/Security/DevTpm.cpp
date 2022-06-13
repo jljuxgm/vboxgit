@@ -1,4 +1,4 @@
-/* $Id: DevTpm.cpp 91115 2021-09-05 15:15:23Z vboxsync $ */
+/* $Id: DevTpm.cpp 91116 2021-09-05 17:13:06Z vboxsync $ */
 /** @file
  * DevTpm - Trusted Platform Module emulation.
  *
@@ -570,6 +570,7 @@ typedef CTX_SUFF(PDEVTPM) PDEVTPMCC;
 
 
 #ifndef VBOX_DEVICE_STRUCT_TESTCASE
+
 
 /*********************************************************************************************************************************
 *   Global Variables                                                                                                             *
