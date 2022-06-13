@@ -1,4 +1,4 @@
-/* $Id: UIVisoHostBrowser.cpp 92492 2021-11-18 14:00:30Z vboxsync $ */
+/* $Id: UIVisoHostBrowser.cpp 92504 2021-11-18 19:30:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoHostBrowser class implementation.
  */
@@ -259,6 +259,16 @@ void UIVisoHostBrowser::setCurrentPath(const QString &strPath)
         return;
     QModelIndex index = m_pTreeModel->index(strPath);
     setTreeCurrentIndex(index);
+}
+
+bool UIVisoHostBrowser::tableViewHasSelection() const
+{
+    if (!m_pTableView)
+        return false;
+    QItemSelectionModel *pSelectionModel = m_pTableView->selectionModel();
+    if (!pSelectionModel)
+        return false;
+    return pSelectionModel->hasSelection();
 }
 
 void UIVisoHostBrowser::sltHandleAddAction()

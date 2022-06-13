@@ -1,4 +1,4 @@
-/* $Id: UIVisoHostBrowser.h 92492 2021-11-18 14:00:30Z vboxsync $ */
+/* $Id: UIVisoHostBrowser.h 92504 2021-11-18 19:30:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoHostBrowser class declaration.
  */
@@ -46,6 +46,7 @@ public:
     virtual void showHideHiddenObjects(bool bShow) /* override */;
     QString      currentPath() const;
     void         setCurrentPath(const QString &strPath);
+    virtual bool tableViewHasSelection() const final override;
 
 public slots:
 
@@ -71,7 +72,7 @@ private:
     /** We have two file system models (one for each item view) since we set different filters on each of these models. */
     UIVisoHostBrowserModel *m_pTreeModel;
     UIVisoHostBrowserModel *m_pTableModel;
-    QTableView            *m_pTableView;
+    QTableView             *m_pTableView;
 };
 
 

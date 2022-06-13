@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIVisoContentBrowser.h 92504 2021-11-18 19:30:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class declaration.
  */
@@ -58,6 +58,7 @@ public:
     QStringList entryList();
     virtual void showHideHiddenObjects(bool bShow) /* override */;
     void setVisoName(const QString &strName);
+    virtual bool tableViewHasSelection() const final override;
 
 public slots:
 
