@@ -1,4 +1,4 @@
-/* $Id: DevTpm.cpp 92001 2021-10-22 12:35:48Z vboxsync $ */
+/* $Id: DevTpm.cpp 92146 2021-10-29 13:02:53Z vboxsync $ */
 /** @file
  * DevTpm - Trusted Platform Module emulation.
  *
@@ -625,7 +625,7 @@ DECLINLINE(void) tpmIrqReq(PPDMDEVINS pDevIns, PDEVTPM pThis, int iLvl)
  * @param   pThis               Pointer to the shared TPM device.
  * @param   pLoc                The locality state.
  */
-PDMBOTHCBDECL(void) tpmLocIrqUpdate(PPDMDEVINS pDevIns, PDEVTPM pThis, PDEVTPMLOCALITY pLoc)
+static void tpmLocIrqUpdate(PPDMDEVINS pDevIns, PDEVTPM pThis, PDEVTPMLOCALITY pLoc)
 {
     if (   (pLoc->uRegIntEn & TPM_CRB_LOCALITY_REG_INT_GLOBAL_ENABLE) /* Aliases with TPM_FIFO_LOCALITY_REG_INT_ENABLE_GLOBAL */
         && (pLoc->uRegIntEn & pLoc->uRegIntSts))
