@@ -1,4 +1,4 @@
-/* $Id: UIHostnameDomainNameEditor.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIHostnameDomainNameEditor.h 94837 2022-05-05 09:37:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHostnameDomainNameEditor class declaration.
  */
@@ -41,7 +41,7 @@ class UIHostnameDomainNameEditor : public QIWithRetranslateUI<QWidget>
 
 signals:
 
-    void sigHostnameDomainNameChanged(const QString &strHostNameDomain);
+    void sigHostnameDomainNameChanged(const QString &strHostNameDomain, bool fIsComplete);
 
 public:
 

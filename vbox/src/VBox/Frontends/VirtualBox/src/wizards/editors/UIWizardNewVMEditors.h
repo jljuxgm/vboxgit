@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMEditors.h 93646 2022-02-08 08:15:30Z vboxsync $ */
+/* $Id: UIWizardNewVMEditors.h 94837 2022-05-05 09:37:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMEditors class declaration.
  */
@@ -113,7 +113,7 @@ class UIAdditionalUnattendedOptions : public QIWithRetranslateUI<QGroupBox>
 
 signals:
 
-    void sigHostnameDomainNameChanged(const QString &strHostnameDomainName);
+    void sigHostnameDomainNameChanged(const QString &strHostnameDomainName, bool fIsComplete);
     void sigProductKeyChanged(const QString &strHostnameDomainName);
     void sigStartHeadlessChanged(bool fChecked);
 

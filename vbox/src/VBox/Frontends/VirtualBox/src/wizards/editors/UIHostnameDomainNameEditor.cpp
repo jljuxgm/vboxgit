@@ -1,4 +1,4 @@
-/* $Id: UIHostnameDomainNameEditor.cpp 93823 2022-02-17 11:00:08Z vboxsync $ */
+/* $Id: UIHostnameDomainNameEditor.cpp 94837 2022-05-05 09:37:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHostnameDomainNameEditor class implementation.
  */
@@ -173,7 +173,7 @@ void UIHostnameDomainNameEditor::sltHostnameChanged()
 {
     m_pHostnameLineEdit->mark(!m_pHostnameLineEdit->hasAcceptableInput(),
                               tr("Hostname should be a string of length 2. Allowed characters are alphanumerics, '-', and '.'" ));
-    emit sigHostnameDomainNameChanged(hostnameDomainName());
+    emit sigHostnameDomainNameChanged(hostnameDomainName(), isComplete());
 }
 
 void UIHostnameDomainNameEditor::sltDomainChanged()
@@ -181,5 +181,5 @@ void UIHostnameDomainNameEditor::sltDomainChanged()
     m_pDomainNameLineEdit->mark(!m_pDomainNameLineEdit->hasAcceptableInput(),
                               tr("Domain name should be a string of length 2. Allowed characters are alphanumerics, '-', and '.'" ));
 
-    emit sigHostnameDomainNameChanged(hostnameDomainName());
+    emit sigHostnameDomainNameChanged(hostnameDomainName(), isComplete());
 }

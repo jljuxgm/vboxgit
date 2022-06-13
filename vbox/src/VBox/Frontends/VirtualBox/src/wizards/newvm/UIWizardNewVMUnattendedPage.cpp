@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMUnattendedPage.cpp 93606 2022-02-04 14:48:36Z vboxsync $ */
+/* $Id: UIWizardNewVMUnattendedPage.cpp 94837 2022-05-05 09:37:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMUnattendedPage class implementation.
  */
@@ -207,12 +207,16 @@ bool UIWizardNewVMUnattendedPage::isProductKeyWidgetEnabled() const
     return true;
 }
 
-void UIWizardNewVMUnattendedPage::sltHostnameDomainNameChanged(const QString &strHostnameDomainName)
+void UIWizardNewVMUnattendedPage::sltHostnameDomainNameChanged(const QString &strHostnameDomainName, bool fIsComplete)
 {
     AssertReturnVoid(wizardWindow<UIWizardNewVM>());
-    wizardWindow<UIWizardNewVM>()->setHostnameDomainName(strHostnameDomainName);
-    m_userModifiedParameters << "HostnameDomainName";
     emit completeChanged();
+
+    if (fIsComplete)
+    {
+        wizardWindow<UIWizardNewVM>()->setHostnameDomainName(strHostnameDomainName);
+        m_userModifiedParameters << "HostnameDomainName";
+    }
 }
 
 void UIWizardNewVMUnattendedPage::sltProductKeyChanged(const QString &strProductKey)

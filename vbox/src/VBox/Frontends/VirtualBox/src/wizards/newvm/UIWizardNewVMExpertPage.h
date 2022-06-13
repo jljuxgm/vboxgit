@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMExpertPage.h 94593 2022-04-13 17:33:39Z vboxsync $ */
+/* $Id: UIWizardNewVMExpertPage.h 94837 2022-05-05 09:37:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMExpertPage class declaration.
  */
@@ -79,7 +79,7 @@ private slots:
     void sltEFIEnabledChanged(bool fEnabled);
     void sltPasswordChanged(const QString &strPassword);
     void sltUserNameChanged(const QString &strUserName);
-    void sltHostnameDomainNameChanged(const QString &strHostnameDomainName);
+    void sltHostnameDomainNameChanged(const QString &strHostnameDomainName, bool fIsComplete);
     void sltProductKeyChanged(const QString &strProductKey);
     void sltStartHeadlessChanged(bool fStartHeadless);
     void sltSelectedEditionChanged(ulong uEditionIndex);

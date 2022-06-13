@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMExpertPage.cpp 94593 2022-04-13 17:33:39Z vboxsync $ */
+/* $Id: UIWizardNewVMExpertPage.cpp 94837 2022-05-05 09:37:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMExpertPage class implementation.
  */
@@ -831,12 +831,16 @@ void UIWizardNewVMExpertPage::sltUserNameChanged(const QString &strUserName)
     emit completeChanged();
 }
 
-void UIWizardNewVMExpertPage::sltHostnameDomainNameChanged(const QString &strHostnameDomainName)
+void UIWizardNewVMExpertPage::sltHostnameDomainNameChanged(const QString &strHostnameDomainName, bool fIsComplete)
 {
     AssertReturnVoid(wizardWindow<UIWizardNewVM>());
-    wizardWindow<UIWizardNewVM>()->setHostnameDomainName(strHostnameDomainName);
-    m_userModifiedParameters << "HostnameDomainName";
     emit completeChanged();
+
+    if (fIsComplete)
+    {
+        wizardWindow<UIWizardNewVM>()->setHostnameDomainName(strHostnameDomainName);
+        m_userModifiedParameters << "HostnameDomainName";
+    }
 }
 
 void UIWizardNewVMExpertPage::sltProductKeyChanged(const QString &strProductKey)
