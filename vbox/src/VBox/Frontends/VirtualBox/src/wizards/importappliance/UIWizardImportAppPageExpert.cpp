@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageExpert.cpp 86687 2020-10-23 13:46:16Z vboxsync $ */
+/* $Id: UIWizardImportAppPageExpert.cpp 91522 2021-10-01 15:08:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageExpert class implementation.
  */
@@ -327,7 +327,7 @@ bool UIWizardImportAppPageExpert::isComplete() const
                       && !m_comCloudProfile.isNull()
                       && !m_comCloudClient.isNull()
                       && !machineId().isNull()
-                      && !m_comAppliance.isNull()
+                      && !m_comCloudAppliance.isNull()
                       && !m_comVSDForm.isNull());
     }
 

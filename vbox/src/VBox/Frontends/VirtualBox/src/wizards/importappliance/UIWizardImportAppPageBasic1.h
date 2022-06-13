@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageBasic1.h 91521 2021-10-01 15:05:13Z vboxsync $ */
+/* $Id: UIWizardImportAppPageBasic1.h 91522 2021-10-01 15:08:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageBasic1 class declaration.
  */
@@ -115,8 +115,8 @@ protected:
     CCloudProfile                  m_comCloudProfile;
     /** Holds the Cloud Client object reference. */
     CCloudClient                   m_comCloudClient;
-    /** Holds the Appliance object reference. */
-    CAppliance                     m_comAppliance;
+    /** Holds the Cloud Appliance object reference. */
+    CAppliance                     m_comCloudAppliance;
     /** Holds the Virtual System Description Form object reference. */
     CVirtualSystemDescriptionForm  m_comVSDForm;
 
