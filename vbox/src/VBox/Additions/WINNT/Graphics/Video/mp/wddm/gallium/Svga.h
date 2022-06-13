@@ -1,4 +1,4 @@
-/* $Id: Svga.h 90180 2021-07-14 12:05:26Z vboxsync $ */
+/* $Id: Svga.h 90188 2021-07-14 15:51:42Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver VMSVGA.
  */
@@ -64,6 +64,7 @@ typedef struct VBOXWDDM_EXT_VMSVGA
     /** Pointer to FIFO MMIO region. */
     volatile uint32_t *pu32FIFO;
 
+    /** Used only with SVGA_CAP_COMMAND_BUFFERS capability. */
     RTR0MEMOBJ hMemObj;
     RTR0PTR  pvR0Hdr, pvR0Cmd;
     RTHCPHYS paHdr, paCmd;

@@ -1,4 +1,4 @@
-/* $Id: Svga.cpp 90180 2021-07-14 12:05:26Z vboxsync $ */
+/* $Id: Svga.cpp 90188 2021-07-14 15:51:42Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - VMSVGA.
  */
@@ -29,6 +29,8 @@
 static NTSTATUS SvgaCmdBufCtxInit(VBOXWDDM_EXT_VMSVGA *pSvga, bool enable)
 {
     int rc = STATUS_SUCCESS;
+
+    AssertReturn(enable == (pSvga->hMemObj == NIL_RTR0MEMOBJ), STATUS_INVALID_PARAMETER);
 
     if (enable)
     {
@@ -63,10 +65,11 @@ static NTSTATUS SvgaCmdBufCtxInit(VBOXWDDM_EXT_VMSVGA *pSvga, bool enable)
 
     if (!enable)
     {
-        RTR0MemObjFree(pSvga->hMemObj, true);
+        rc = RTR0MemObjFree(pSvga->hMemObj, true);
         pSvga->hMemObj = NIL_RTR0MEMOBJ;
     }
 
+    AssertRC(rc);
     return rc;
 }
 
