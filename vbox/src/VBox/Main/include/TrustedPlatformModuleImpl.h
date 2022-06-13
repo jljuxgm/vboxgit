@@ -1,4 +1,4 @@
-/* $Id: TrustedPlatformModuleImpl.h 91213 2021-09-10 17:58:08Z vboxsync $ */
+/* $Id: TrustedPlatformModuleImpl.h 91614 2021-10-07 10:12:16Z vboxsync $ */
 
 /** @file
  *
@@ -24,6 +24,8 @@
 #endif
 
 #include "TrustedPlatformModuleWrap.h"
+
+class GuestOSType;
 
 namespace settings
 {
@@ -53,6 +55,7 @@ public:
     void i_rollback();
     void i_commit();
     void i_copyFrom(TrustedPlatformModule *aThat);
+    void i_applyDefaults(GuestOSType *aOsType);
 
 private:
 

@@ -1,4 +1,4 @@
-/* $Id: NvramStoreImpl.cpp 91536 2021-10-04 09:46:04Z vboxsync $ */
+/* $Id: NvramStoreImpl.cpp 91614 2021-10-07 10:12:16Z vboxsync $ */
 /** @file
  * VirtualBox COM NVRAM store class implementation
  */
@@ -23,6 +23,7 @@
 # include "ConsoleImpl.h"
 #else
 # include "MachineImpl.h"
+# include "GuestOSTypeImpl.h"
 # include "AutoStateDep.h"
 #endif
 #include "UefiVariableStoreImpl.h"
@@ -847,6 +848,31 @@ void NvramStore::i_copyFrom(NvramStore *aThat)
     // Intentionally "forget" the NVRAM file since it must be unique and set
     // to the correct value before the copy of the settings makes sense.
     m->bd->strNvramPath.setNull();
+}
+
+HRESULT NvramStore::i_applyDefaults(GuestOSType *aOSType)
+{
+    HRESULT hrc = S_OK;
+
+    if (aOSType->i_recommendedEFISecureBoot())
+    {
+        /* Initialize the UEFI variable store and enroll default keys. */
+        hrc = initUefiVariableStore(0 /*aSize*/);
+        if (SUCCEEDED(hrc))
+        {
+            ComPtr<IUefiVariableStore> pVarStore;
+
+            hrc = getUefiVariableStore(pVarStore);
+            if (SUCCEEDED(hrc))
+            {
+                hrc = pVarStore->EnrollOraclePlatformKey();
+                if (SUCCEEDED(hrc))
+                    hrc = pVarStore->EnrollDefaultMsSignatures();
+            }
+        }
+    }
+
+    return hrc;
 }
 
 void NvramStore::i_updateNonVolatileStorageFile(const Utf8Str &aNonVolatileStorageFile)

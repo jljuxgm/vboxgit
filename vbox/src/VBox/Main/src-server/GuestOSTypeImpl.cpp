@@ -1,4 +1,4 @@
-/* $Id: GuestOSTypeImpl.cpp 91470 2021-09-29 19:55:51Z vboxsync $ */
+/* $Id: GuestOSTypeImpl.cpp 91614 2021-10-07 10:12:16Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -422,11 +422,31 @@ HRESULT GuestOSType::getRecommendedX2APIC(BOOL *aRecommendedX2APIC)
 
 HRESULT GuestOSType::getRecommendedCPUCount(ULONG *aRecommendedCPUCount)
 {
-    /* mRecommendedX2APIC is constant during life time, no need to lock */
+    /* mCPUCount is constant during life time, no need to lock */
     *aRecommendedCPUCount = mCPUCount;
 
     return S_OK;
 }
 
+HRESULT GuestOSType::getRecommendedTpmType(TpmType_T *aRecommendedTpmType)
+{
+    /* Value is constant during life time, no need to lock */
+    if (mOSHint & VBOXOSHINT_TPM2)
+        *aRecommendedTpmType = TpmType_v2_0;
+    else if (mOSHint & VBOXOSHINT_TPM)
+        *aRecommendedTpmType = TpmType_v1_2;
+    else
+        *aRecommendedTpmType = TpmType_None;
+
+    return S_OK;
+}
+
+HRESULT GuestOSType::getRecommendedSecureBoot(BOOL *aRecommendedSecureBoot)
+{
+    /* Value is constant during life time, no need to lock */
+    *aRecommendedSecureBoot = !!(mOSHint & VBOXOSHINT_EFI_SECUREBOOT);
+
+    return S_OK;
+}
 
 /* vi: set tabstop=4 shiftwidth=4 expandtab: */

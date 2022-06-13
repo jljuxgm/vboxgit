@@ -1,4 +1,4 @@
-/* $Id: NvramStoreImpl.h 91536 2021-10-04 09:46:04Z vboxsync $ */
+/* $Id: NvramStoreImpl.h 91614 2021-10-07 10:12:16Z vboxsync $ */
 /** @file
  * VirtualBox COM NVRAM store class implementation
  */
@@ -27,6 +27,8 @@
 #ifdef VBOX_COM_INPROC
 class Console;
 #else
+class GuestOSType;
+
 namespace settings
 {
     struct NvramSettings;
@@ -65,6 +67,7 @@ public:
     void i_rollback();
     void i_commit();
     void i_copyFrom(NvramStore *aThat);
+    HRESULT i_applyDefaults(GuestOSType *aOSType);
 #endif
 
     com::Utf8Str i_getNonVolatileStorageFile();
