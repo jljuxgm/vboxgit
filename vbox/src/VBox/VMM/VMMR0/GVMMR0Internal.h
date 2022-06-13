@@ -1,4 +1,4 @@
-/* $Id: GVMMR0Internal.h 90597 2021-08-10 13:08:35Z vboxsync $ */
+/* $Id: GVMMR0Internal.h 92200 2021-11-03 21:46:36Z vboxsync $ */
 /** @file
  * GVMM - The Global VM Manager, Internal header.
  */
@@ -105,6 +105,15 @@ typedef struct GVMMPERVM
     /** Whether the per-VM ring-0 termination is being or has been performed. */
     bool                fDoneVMMR0Term;
     bool                afPadding[6];
+
+    /** Worker thread registrations. */
+    struct
+    {
+        /** The native ring-0 thread handle. */
+        RTNATIVETHREAD  hNativeThread;
+        /** The native ring-3 thread handle. */
+        RTNATIVETHREAD  hNativeThreadR3;
+    } aWorkerThreads[GVMMWORKERTHREAD_END];
 
     /** EMT lookup hash table. */
     GVMMEMTHASHENTRY    aEmtHash[GVMM_EMT_HASH_SIZE];
