@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMPageBasic2.cpp 90661 2021-08-12 13:25:55Z vboxsync $ */
+/* $Id: UIWizardCloneVMPageBasic2.cpp 90669 2021-08-12 19:04:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMPageBasic2 class implementation.
  */
@@ -90,8 +90,9 @@ void UIWizardCloneVMPageBasic2::retranslateUi()
 
 void UIWizardCloneVMPageBasic2::initializePage()
 {
-    /* Translate page: */
     retranslateUi();
+    if (m_pCloneTypeGroupBox && !m_userModifiedParameters.contains("LinkedClone"))
+        cloneVMWizardPropertySet(LinkedClone, !m_pCloneTypeGroupBox->isFullClone());
 }
 
 bool UIWizardCloneVMPageBasic2::validatePage()

@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVM.h 90661 2021-08-12 13:25:55Z vboxsync $ */
+/* $Id: UIWizardCloneVM.h 90669 2021-08-12 19:04:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVM class declaration.
  */
@@ -100,7 +100,7 @@ private:
         bool m_fKeepDiskNames;
         bool m_fKeepHardwareUUIDs;
         bool m_fLinkedClone;
-       KCloneMode m_enmCloneMode;
+        KCloneMode m_enmCloneMode;
     /** @} */
 };
 

@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMEditors.cpp 90661 2021-08-12 13:25:55Z vboxsync $ */
+/* $Id: UIWizardCloneVMEditors.cpp 90669 2021-08-12 19:04:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class implementation.
  */
@@ -204,6 +204,20 @@ void UICloneVMAdditionalOptionsEditor::setMACAddressClonePolicy(MACAddressCloneP
     m_pMACComboBox->setCurrentIndex(iIndex);
 }
 
+bool UICloneVMAdditionalOptionsEditor::keepHardwareUUIDs() const
+{
+    if (m_pKeepHWUUIDsCheckBox)
+        return m_pKeepHWUUIDsCheckBox->isChecked();
+    return false;
+}
+
+bool UICloneVMAdditionalOptionsEditor::keepDiskNames() const
+{
+    if (m_pKeepDiskNamesCheckBox)
+        m_pKeepDiskNamesCheckBox->isChecked();
+    return false;
+}
+
 void UICloneVMAdditionalOptionsEditor::prepare()
 {
     m_pContainerLayout = new QGridLayout(this);
@@ -224,8 +238,9 @@ void UICloneVMAdditionalOptionsEditor::prepare()
         connect(m_pMACComboBox, static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
                 this, &UICloneVMAdditionalOptionsEditor::sltMACAddressClonePolicyChanged);
     }
+    m_pMACComboBox->blockSignals(true);
     populateMACAddressClonePolicies();
-
+    m_pMACComboBox->blockSignals(false);
 
     /* Load currently supported clone options: */
     CSystemProperties comProperties = uiCommon().virtualBox().GetSystemProperties();
@@ -376,6 +391,13 @@ UICloneVMCloneTypeGroupBox::UICloneVMCloneTypeGroupBox(QWidget *pParent /* = 0 *
     prepare();
 }
 
+bool UICloneVMCloneTypeGroupBox::isFullClone() const
+{
+    if (m_pFullCloneRadio)
+        return m_pFullCloneRadio->isChecked();
+    return true;
+}
+
 void UICloneVMCloneTypeGroupBox::prepare()
 {
     QVBoxLayout *pMainLayout = new QVBoxLayout(this);
@@ -495,10 +517,15 @@ void UICloneVMCloneModeGroupBox::retranslateUi()
 
 void UICloneVMCloneModeGroupBox::sltButtonClicked()
 {
+    emit sigCloneModeChanged(cloneMode());
+}
+
+KCloneMode UICloneVMCloneModeGroupBox::cloneMode() const
+{
     KCloneMode enmCloneMode = KCloneMode_MachineState;
     if (m_pMachineAndChildsRadio && m_pMachineAndChildsRadio->isChecked())
         enmCloneMode =  KCloneMode_MachineAndChildStates;
     else if (m_pAllRadio && m_pAllRadio->isChecked())
         enmCloneMode = KCloneMode_AllStates;
-    emit sigCloneModeChanged(enmCloneMode);
+    return enmCloneMode;
 }

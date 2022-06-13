@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMPageBasic2.h 90661 2021-08-12 13:25:55Z vboxsync $ */
+/* $Id: UIWizardCloneVMPageBasic2.h 90669 2021-08-12 19:04:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMPageBasic2 class declaration.
  */
@@ -53,7 +53,6 @@ private:
     QIRichTextLabel *m_pLabel;
     bool m_fAdditionalInfo;
     UICloneVMCloneTypeGroupBox *m_pCloneTypeGroupBox;
-
     QSet<QString> m_userModifiedParameters;
 };
 

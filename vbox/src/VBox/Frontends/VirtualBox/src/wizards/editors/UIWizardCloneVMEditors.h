@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMEditors.h 90661 2021-08-12 13:25:55Z vboxsync $ */
+/* $Id: UIWizardCloneVMEditors.h 90669 2021-08-12 19:04:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardDiskEditors class declaration.
  */
@@ -128,6 +128,9 @@ public:
     void setFirstColumnWidth(int iWidth);
     int firstColumnWidth() const;
 
+    bool keepHardwareUUIDs() const;
+    bool keepDiskNames() const;
+
 private slots:
 
     void sltMACAddressClonePolicyChanged();
@@ -158,6 +161,7 @@ signals:
 public:
 
     UICloneVMCloneTypeGroupBox(QWidget *pParent = 0);
+    bool isFullClone() const;
 
 private slots:
 
@@ -185,6 +189,7 @@ signals:
 public:
 
     UICloneVMCloneModeGroupBox(bool fShowChildsOption, QWidget *pParent = 0);
+    KCloneMode cloneMode() const;
 
 private slots:
 

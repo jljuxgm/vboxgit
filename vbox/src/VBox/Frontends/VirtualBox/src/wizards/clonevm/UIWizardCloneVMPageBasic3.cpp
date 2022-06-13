@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMPageBasic3.cpp 90661 2021-08-12 13:25:55Z vboxsync $ */
+/* $Id: UIWizardCloneVMPageBasic3.cpp 90669 2021-08-12 19:04:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMPageBasic3 class implementation.
  */
@@ -120,7 +120,10 @@ void UIWizardCloneVMPageBasic3::retranslateUi()
 
 void UIWizardCloneVMPageBasic3::initializePage()
 {
-    /* Translate page: */
+
+    if (m_pCloneModeGroupBox && !m_userModifiedParameters.contains("CloneMode"))
+        cloneVMWizardPropertySet(CloneMode, m_pCloneModeGroupBox->cloneMode());
+
     retranslateUi();
 }
 
