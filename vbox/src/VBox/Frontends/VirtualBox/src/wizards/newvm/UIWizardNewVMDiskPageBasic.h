@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMDiskPageBasic.h 90082 2021-07-08 05:51:59Z vboxsync $ */
+/* $Id: UIWizardNewVMDiskPageBasic.h 90091 2021-07-08 10:52:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMDiskPageBasic class declaration.
  */
@@ -88,6 +88,7 @@ private slots:
     void sltMediaComboBoxIndexChanged();
     void sltGetWithFileOpenDialog();
     void sltHandleSizeEditorChange();
+    void sltFixedCheckBoxToggled(bool fChecked);
 
 private:
 
