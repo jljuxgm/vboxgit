@@ -1,4 +1,4 @@
-# $Id: Config.kmk 89824 2021-06-21 14:23:27Z vboxsync $
+# $Id: Config.kmk 90338 2021-07-26 13:58:13Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -396,6 +396,8 @@ if1of ($(KBUILD_TARGET), win)
  VBOX_WITH_DOCS_CHM =
  VBOX_WITH_DOCS_CHM_PACKING =
 endif
+# Build QHelp documentation, needs qhelpgenerator
+VBOX_WITH_DOCS_QHELP = 1
 # Include QHelp documentation in the package
 VBOX_WITH_DOCS_QHELP_PACKING = 1
 # By default only include translations in documentation-only builds
@@ -1094,6 +1096,7 @@ ifdef VBOX_QUICK
  VBOX_WITH_VBOXSDL=
  VBOX_WITH_HEADLESS=
  VBOX_WITH_VRDP=
+ VBOX_WITH_VRDP_RDESKTOP=
  VBOX_WITH_DOCS=
  VBOX_WITH_WEBSERVICES=
  VBOX_WITH_32_ON_64_MAIN_API=
@@ -8246,7 +8249,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 89824 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 90338 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
