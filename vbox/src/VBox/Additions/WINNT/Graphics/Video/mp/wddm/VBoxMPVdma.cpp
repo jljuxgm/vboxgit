@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVdma.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxMPVdma.cpp 92771 2021-12-06 17:53:10Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -57,7 +57,7 @@ int vboxVdmaCreate(PVBOXMP_DEVEXT pDevExt, VBOXVDMAINFO *pInfo
 int vboxVdmaDisable (PVBOXMP_DEVEXT pDevExt, PVBOXVDMAINFO pInfo)
 {
     RT_NOREF(pDevExt);
-    Assert(pInfo->fEnabled);
+
     if (!pInfo->fEnabled)
         return VINF_ALREADY_INITIALIZED;
 
