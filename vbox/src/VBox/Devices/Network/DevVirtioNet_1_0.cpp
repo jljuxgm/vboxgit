@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet_1_0.cpp 92951 2021-12-15 21:03:29Z vboxsync $ $Revision: 92951 $ $Date: 2021-12-16 05:03:29 +0800 (Thu, 16 Dec 2021) $ $Author: vboxsync $ */
+/* $Id: DevVirtioNet_1_0.cpp 92994 2021-12-16 20:33:17Z vboxsync $ $Revision: 92994 $ $Date: 2021-12-17 04:33:17 +0800 (Fri, 17 Dec 2021) $ $Author: vboxsync $ */
 
 /** @file
  * VBox storage devices - Virtio NET Driver
@@ -3586,7 +3586,7 @@ static DECLCALLBACK(int) virtioNetRZConstruct(PPDMDEVINS pDevIns)
 /**
  * The device registration structure.
  */
-const PDMDEVREG g_DeviceVirtioNet =
+const PDMDEVREG g_DeviceVirtioNet_1_0  =
 {
     /* .uVersion = */               PDM_DEVREG_VERSION,
     /* .uReserved0 = */             0,
