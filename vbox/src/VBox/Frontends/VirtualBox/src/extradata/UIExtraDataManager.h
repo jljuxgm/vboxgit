@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 91227 2021-09-14 10:49:11Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 91236 2021-09-14 17:05:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -185,6 +185,8 @@ public:
 
         /** Returns whether successfull notification-progresses should NOT close automatically. */
         bool keepSuccessfullNotificationProgresses();
+        /** Defines whether successfull notification-progresses should NOT close (@a fKeep) automatically. */
+        void setKeepSuccessfullNotificationProgresses(bool fKeep);
 
 #if !defined(VBOX_BLEEDING_EDGE) && !defined(DEBUG)
         /** Returns version for which user wants to prevent BETA build warning. */

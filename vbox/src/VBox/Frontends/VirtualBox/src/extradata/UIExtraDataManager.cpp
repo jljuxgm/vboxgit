@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 91227 2021-09-14 10:49:11Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 91236 2021-09-14 17:05:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -2342,6 +2342,12 @@ bool UIExtraDataManager::keepSuccessfullNotificationProgresses()
 {
     /* 'False' unless feature allowed: */
     return isFeatureAllowed(GUI_KeepSuccessfullNotificationProgresses);
+}
+
+void UIExtraDataManager::setKeepSuccessfullNotificationProgresses(bool fKeep)
+{
+    /* 'True' if feature allowed, null-string otherwise: */
+    setExtraDataString(GUI_KeepSuccessfullNotificationProgresses, toFeatureAllowed(fKeep));
 }
 
 #if !defined(VBOX_BLEEDING_EDGE) && !defined(DEBUG)
