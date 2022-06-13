@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: DevVGA.h 93840 2022-02-18 14:10:50Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -320,7 +320,9 @@ typedef struct VGAState
     uint32_t line_compare;
     uint32_t start_addr;
     uint32_t plane_updated;
-    uint8_t last_cw, last_ch, padding2[2];
+    uint8_t last_cw, last_ch;
+    uint8_t last_uline;                                                 \
+    bool last_blink;                                                    \
     uint32_t last_width, last_height; /* in chars or pixels */
     uint32_t last_scr_width, last_scr_height; /* in pixels */
     uint32_t last_bpp;
