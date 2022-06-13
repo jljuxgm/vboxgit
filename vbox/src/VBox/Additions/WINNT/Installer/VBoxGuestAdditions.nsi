@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditions.nsi 84945 2020-06-25 10:22:05Z vboxsync $
+; $Id: VBoxGuestAdditions.nsi 92599 2021-11-25 16:13:16Z vboxsync $
 ; @file
 ; VBoxGuestAdditions.nsi - Main file for Windows Guest Additions installation.
 ;
@@ -41,7 +41,7 @@
 ; Product defines
 !define PRODUCT_NAME                "$%VBOX_PRODUCT% Guest Additions"
 !define PRODUCT_DESC                "$%VBOX_PRODUCT% Guest Additions"
-!define PRODUCT_VERSION             "$%VBOX_VERSION_MAJOR%.$%VBOX_VERSION_MINOR%.$%VBOX_VERSION_BUILD%.0"
+!define PRODUCT_VERSION             "$%VBOX_VERSION_MAJOR%.$%VBOX_VERSION_MINOR%.$%VBOX_VERSION_BUILD%.$%VBOX_SVN_REV%"
 !define PRODUCT_PUBLISHER           "$%VBOX_VENDOR%"
 !define PRODUCT_COPYRIGHT           "(C) $%VBOX_C_YEAR% $%VBOX_VENDOR%"
 !define PRODUCT_OUTPUT              "VBoxWindowsAdditions-$%KBUILD_TARGET_ARCH%.exe"
