@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.cpp 91388 2021-09-27 10:46:15Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.cpp 91390 2021-09-27 11:45:15Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -149,7 +149,7 @@ public:
     VirtualBox         *pVirtualBox;
 #endif
 #ifdef VBOX_WITH_MAIN_NLS
-    TRCOMPONENT         pTrComponent;
+    PTRCOMPONENT        pTrComponent;
 #endif
 
     RTMEMEF_NEW_AND_DELETE_OPERATORS();

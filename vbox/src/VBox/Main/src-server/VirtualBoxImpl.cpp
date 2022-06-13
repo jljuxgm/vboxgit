@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 91314 2021-09-20 12:29:18Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 91390 2021-09-27 11:45:15Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -410,7 +410,7 @@ struct VirtualBox::Data
     uint8_t                             SettingsCipherKey[RTSHA512_HASH_SIZE];
 #ifdef VBOX_WITH_MAIN_NLS
     VirtualBoxTranslator               *pVBoxTranslator;
-    TRCOMPONENT                         pTrComponent;
+    PTRCOMPONENT                        pTrComponent;
 #endif
 #if defined(RT_OS_WINDOWS) && defined(VBOXSVC_WITH_CLIENT_WATCHER)
     /** Critical section protecting WatchedProcesses. */
