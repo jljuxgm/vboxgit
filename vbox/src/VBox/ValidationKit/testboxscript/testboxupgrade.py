@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testboxupgrade.py 92573 2021-11-23 19:10:54Z vboxsync $
+# $Id: testboxupgrade.py 92574 2021-11-23 21:21:30Z vboxsync $
 
 """
 TestBox Script - Upgrade from local file ZIP.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 92573 $"
+__version__ = "$Revision: 92574 $"
 
 # Standard python imports.
 import os
@@ -34,6 +34,7 @@ import shutil
 import sys
 import subprocess
 import threading
+import time
 import uuid;
 import zipfile
 
@@ -133,7 +134,15 @@ def _doUpgradeTestRun(sUpgradeDir):
     oThread.start();
     oThread.join(30);
 
-    oChild.wait(5);
+    # Give child up to 5 seconds to terminate after producing output.
+    if sys.version_info[0] >= 3 and sys.version_info[1] >= 3:
+        oChild.wait(5);
+    else:
+        for i in range(50):
+            iStatus = oChild.poll();
+            if iStatus is None:
+                break;
+            time.sleep(0.1);
     iStatus = oChild.poll();
     if iStatus is None:
         testboxcommons.log('Checking the new testboxscript timed out.');
