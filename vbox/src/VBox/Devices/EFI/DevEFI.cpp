@@ -1,4 +1,4 @@
-/* $Id: DevEFI.cpp 91329 2021-09-22 15:16:12Z vboxsync $ */
+/* $Id: DevEFI.cpp 91689 2021-10-12 12:45:40Z vboxsync $ */
 /** @file
  * DevEFI - EFI <-> VirtualBox Integration Framework.
  */
@@ -490,17 +490,25 @@ static int efiPortImageEventWrite(PDEVEFIR3 pThisCC, uint32_t u32, unsigned cb)
                     /* ASSUMES the name ends with .pdb and the image file ends with .efi! */
                     case EFI_IMAGE_EVT_CMD_START_LOAD32:
                         LogRel(("EFI: VBoxDbg> loadimage32 '%.*s.efi' %#llx LB %#llx\n",
-                                pThisCC->ImageEvt.offName - 4, pThisCC->ImageEvt.szName, pThisCC->ImageEvt.uAddr0, pThisCC->ImageEvt.cb0));
+                                pThisCC->ImageEvt.offName - 4 - pThisCC->ImageEvt.offNameLastComponent,
+                                &pThisCC->ImageEvt.szName[pThisCC->ImageEvt.offNameLastComponent],
+                                pThisCC->ImageEvt.uAddr0, pThisCC->ImageEvt.cb0));
                         if (pThisCC->ImageEvt.offName > 4)
                             efiVBoxDbgScript("loadimage32 '%.*s.efi' %#llx\n",
-                                             pThisCC->ImageEvt.offName - 4, pThisCC->ImageEvt.szName, pThisCC->ImageEvt.uAddr0);
+                                             pThisCC->ImageEvt.offName - 4 - pThisCC->ImageEvt.offNameLastComponent,
+                                             &pThisCC->ImageEvt.szName[pThisCC->ImageEvt.offNameLastComponent],
+                                             pThisCC->ImageEvt.uAddr0);
                         break;
                     case EFI_IMAGE_EVT_CMD_START_LOAD64:
                         LogRel(("EFI: VBoxDbg> loadimage64 '%.*s.efi' %#llx LB %#llx\n",
-                                pThisCC->ImageEvt.offName - 4, pThisCC->ImageEvt.szName, pThisCC->ImageEvt.uAddr0, pThisCC->ImageEvt.cb0));
+                                pThisCC->ImageEvt.offName - 4 - pThisCC->ImageEvt.offNameLastComponent,
+                                &pThisCC->ImageEvt.szName[pThisCC->ImageEvt.offNameLastComponent],
+                                pThisCC->ImageEvt.uAddr0, pThisCC->ImageEvt.cb0));
                         if (pThisCC->ImageEvt.offName > 4)
                             efiVBoxDbgScript("loadimage64 '%.*s.efi' %#llx\n",
-                                             pThisCC->ImageEvt.offName - 4, pThisCC->ImageEvt.szName, pThisCC->ImageEvt.uAddr0);
+                                             pThisCC->ImageEvt.offName - 4 - pThisCC->ImageEvt.offNameLastComponent,
+                                             &pThisCC->ImageEvt.szName[pThisCC->ImageEvt.offNameLastComponent],
+                                             pThisCC->ImageEvt.uAddr0);
                         break;
                     case EFI_IMAGE_EVT_CMD_START_UNLOAD32:
                     case EFI_IMAGE_EVT_CMD_START_UNLOAD64:
