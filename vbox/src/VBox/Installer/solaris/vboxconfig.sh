@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: vboxconfig.sh 92635 2021-11-29 18:11:13Z vboxsync $
+# $Id: vboxconfig.sh 92636 2021-11-29 18:14:56Z vboxsync $
 ## @file
 # VirtualBox Configuration Script, Solaris host.
 #
@@ -923,7 +923,7 @@ install_python_bindings()
     mkdir -p "$CONFIG_DIR"
     rm -f "$CONFIG_DIR/python-$CONFIG_FILES"
     $SHELL -c "cd \"$VBOX_INSTALL_PATH\"/sdk/installer && \"$pythonbin\" ./vboxapisetup.py install \
-        --record \"$CONFIG_DIR/python-$CONFIG_FILES\""
+        --record \"$CONFIG_DIR/python-$CONFIG_FILES\"" > /dev/null 2>&1
     if test "$?" -eq 0; then
         cat "$CONFIG_DIR/python-$CONFIG_FILES" >> "$CONFIG_DIR/$CONFIG_FILES"
     else
