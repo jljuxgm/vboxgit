@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-x11.cpp 93890 2022-02-22 17:49:28Z vboxsync $ */
+/* $Id: VBoxUtils-x11.cpp 93917 2022-02-24 13:52:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Declarations of utility classes and functions for handling X11 specific tasks.
  */
@@ -292,7 +292,8 @@ QVector<X11ScreenSaverInhibitMethod*> NativeWindowSubsystem::X11FindDBusScrenSav
     if (!X11CheckDBusConnection(connection))
         return methods;
 
-    foreach(const QString &strServiceName, X11FindDBusScreenSaverServices(connection))
+    QStringList services = X11FindDBusScreenSaverServices(connection);
+    foreach(const QString &strServiceName, services)
         X11IntrospectServices(connection, strServiceName, "", methods);
 
     return methods;
