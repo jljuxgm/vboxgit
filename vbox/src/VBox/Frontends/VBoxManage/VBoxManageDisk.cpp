@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 92372 2021-11-11 14:45:18Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 92594 2021-11-25 09:05:48Z vboxsync $ */
 /** @file
  * VBoxManage - The disk/medium related commands.
  */
@@ -1308,8 +1308,8 @@ RTEXITCODE handleConvertFromRaw(HandlerArg *a)
         goto out;
     }
 
-    RTStrmPrintf(g_pStdErr, Disk::tr("Creating %s image with size %RU64 bytes (%RU64MB)...\n"),
-                 (uImageFlags & VD_IMAGE_FLAGS_FIXED) ? Disk::tr("fixed") : Disk::tr("dynamic"),
+    RTStrmPrintf(g_pStdErr, Disk::tr("Creating %s image with size %RU64 bytes (%RU64MB)...\n", "", cbFile),
+                 (uImageFlags & VD_IMAGE_FLAGS_FIXED) ? Disk::tr("fixed", "adjective") : Disk::tr("dynamic", "adjective"),
                  cbFile, (cbFile + _1M - 1) / _1M);
     char pszComment[256];
     RTStrPrintf(pszComment, sizeof(pszComment), Disk::tr("Converted image from %s"), srcfilename);

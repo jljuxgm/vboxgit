@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDebugVM.cpp 92372 2021-11-11 14:45:18Z vboxsync $ */
+/* $Id: VBoxManageDebugVM.cpp 92594 2021-11-25 09:05:48Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of the debugvm command.
  */
@@ -486,7 +486,7 @@ static RTEXITCODE handleDebugVM_SetRegisters(HandlerArg *pArgs, IMachineDebugger
     {
         CHECK_ERROR2I_RET(pDebugger, SetRegisters(idCpu, ComSafeArrayAsInParam(aBstrNames), ComSafeArrayAsInParam(aBstrValues)),
                           RTEXITCODE_FAILURE);
-        RTPrintf(DebugVM::tr("Successfully set %u registers\n"), aBstrNames.size());
+        RTPrintf(DebugVM::tr("Successfully set %u registers\n", "", aBstrNames.size()), aBstrNames.size());
     }
 
     return RTEXITCODE_SUCCESS;

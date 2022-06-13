@@ -1,4 +1,4 @@
-/* $Id: VBoxManageUpdateCheck.cpp 92372 2021-11-11 14:45:18Z vboxsync $ */
+/* $Id: VBoxManageUpdateCheck.cpp 92594 2021-11-25 09:05:48Z vboxsync $ */
 /** @file
  * VBoxManage - The 'updatecheck' command.
  */
@@ -300,7 +300,7 @@ static RTEXITCODE doVBoxUpdate(int argc, char **argv, ComPtr<IVirtualBox> aVirtu
         if (ptrProgress.isNull())
             RTStrmPrintf(g_pStdErr, UpdateCheck::tr("Failed to create ptrProgress object: %Rhrc\n"), rc);
         else
-            com::GlueHandleComError(pHostUpdate, UpdateCheck::tr("VBoxUpdate(updateCheckType, ptrProgress.asOutParam())"),
+            com::GlueHandleComError(pHostUpdate, "VBoxUpdate(updateCheckType, ptrProgress.asOutParam())",
                                     rc, __FILE__, __LINE__);
         return RTEXITCODE_FAILURE;
     }

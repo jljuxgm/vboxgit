@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 92372 2021-11-11 14:45:18Z vboxsync $ */
+/* $Id: VBoxManageControlVM.cpp 92594 2021-11-25 09:05:48Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of the controlvm command.
  */
@@ -233,7 +233,7 @@ static HRESULT keyboardPutScancodes(IKeyboard *pKeyboard, const std::list<LONG> 
                                          &codesStored);
     if (SUCCEEDED(rc) && codesStored < saScancodes.size())
     {
-        RTMsgError(CloudVM::tr("Only %d scancodes were stored"), codesStored);
+        RTMsgError(CloudVM::tr("Only %d scancodes were stored", "", codesStored), codesStored);
         rc = E_FAIL;
     }
 #endif
@@ -332,7 +332,7 @@ static HRESULT keyboardPutFile(IKeyboard *pKeyboard, const char *pszFilename)
                     RTMemFree(pchBuf);
                 }
                 else
-                    RTMsgError(CloudVM::tr("Out of memory allocating %d bytes"), cbBuffer);
+                    RTMsgError(CloudVM::tr("Out of memory allocating %d bytes", "", cbBuffer), cbBuffer);
             }
             else
                 RTMsgError(CloudVM::tr("File size %RI64 is greater than %RI64: '%s'"), cbFile, cbFileMax, pszFilename);
@@ -691,7 +691,7 @@ RTEXITCODE handleControlVM(HandlerArg *a)
             {
                 if (rc == VBOX_E_NOT_SUPPORTED)
                     RTPrintf(CloudVM::tr("Current installed Guest Additions don't support %s the guest."),
-                             fReboot ? "rebooting" : "shutting down");
+                             fReboot ? CloudVM::tr("rebooting") : CloudVM::tr("shutting down"));
             }
         }
 #endif

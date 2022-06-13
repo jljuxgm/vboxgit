@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 92538 2021-11-22 01:53:20Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 92594 2021-11-25 09:05:48Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -1454,7 +1454,7 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> pVirtualBox,
                 pszVMProcPriority = Info::tr("default");
             break;
     }
-    SHOW_UTF8_STRING("vmprocpriority", "VM process priority:", pszVMProcPriority);
+    SHOW_UTF8_STRING("vmprocpriority", Info::tr("VM process priority:"), pszVMProcPriority);
 
 /** @todo Convert the remainder of the function to SHOW_XXX macros and add error
  *        checking where missing. */
@@ -2845,7 +2845,7 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> pVirtualBox,
             RTPrintf("%-28s %s, %s %s\n",
                      Info::tr("VMMDev Testing"),
                      fEnabled > 0 ? Info::tr("enabled") : fEnabled == 0 ? Info::tr("disabled") : Info::tr("misconfigured"),
-                     Info::tr("MMIO:"),
+                     "MMIO:",
                      fMmio    > 0 ? Info::tr("enabled") : fMmio    == 0 ? Info::tr("disabled") : Info::tr("misconfigured"));
             for (uint32_t i = 0; i < 10; i++)
             {
