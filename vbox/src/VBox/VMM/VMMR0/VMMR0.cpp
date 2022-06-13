@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 93650 2022-02-08 10:43:53Z vboxsync $ */
+/* $Id: VMMR0.cpp 93716 2022-02-14 10:36:21Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -1901,6 +1901,12 @@ DECL_NO_INLINE(static, int) vmmR0EntryExWorker(PGVM pGVM, VMCPUID idCpu, VMMR0OP
             if (idCpu == NIL_VMCPUID)
                 return VERR_INVALID_CPU_ID;
             rc = PGMR0PoolGrow(pGVM, idCpu);
+            break;
+
+        case VMMR0_DO_PGM_PHYS_HANDLER_INIT:
+            if (idCpu != 0 || pReqHdr != NULL || u64Arg > UINT32_MAX)
+                return VERR_INVALID_PARAMETER;
+            rc = PGMR0PhysHandlerInitReqHandler(pGVM, (uint32_t)u64Arg);
             break;
 
         /*

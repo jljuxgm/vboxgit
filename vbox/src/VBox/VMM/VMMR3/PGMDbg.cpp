@@ -1,4 +1,4 @@
-/* $Id: PGMDbg.cpp 93554 2022-02-02 22:57:02Z vboxsync $ */
+/* $Id: PGMDbg.cpp 93716 2022-02-14 10:36:21Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - Debugger & Debugging APIs.
  */
@@ -24,7 +24,7 @@
 #include <VBox/vmm/pgm.h>
 #include <VBox/vmm/stam.h>
 #include "PGMInternal.h"
-#include <VBox/vmm/vm.h>
+#include <VBox/vmm/vmcc.h>
 #include <VBox/vmm/uvm.h>
 #include "PGMInline.h"
 #include <iprt/assert.h>

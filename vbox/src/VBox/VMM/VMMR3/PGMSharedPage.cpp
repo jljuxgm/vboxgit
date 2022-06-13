@@ -1,4 +1,4 @@
-/* $Id: PGMSharedPage.cpp 93554 2022-02-02 22:57:02Z vboxsync $ */
+/* $Id: PGMSharedPage.cpp 93716 2022-02-14 10:36:21Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Shared page handling
  */
@@ -25,7 +25,7 @@
 #include <VBox/vmm/stam.h>
 #include <VBox/vmm/uvm.h>
 #include "PGMInternal.h"
-#include <VBox/vmm/vm.h>
+#include <VBox/vmm/vmcc.h>
 #include <VBox/sup.h>
 #include <VBox/param.h>
 #include <VBox/err.h>
