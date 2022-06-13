@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 92570 2021-11-23 15:52:49Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 92571 2021-11-23 15:54:26Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -5694,7 +5694,6 @@ IEM_STATIC int iemVmxVmentryCheckGuestState(PVMCPUCC pVCpu, const char *pszInstr
                     if (RT_SUCCESS(rc))
                         rc = iemVmxVmentryCheckGuestPdptes(pVCpu, pszInstr);
 #endif
-                    return rc;
                 }
             }
         }
