@@ -1,4 +1,4 @@
-/* $Id: UIFileManager.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIFileManager.h 93180 2022-01-11 10:09:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManager class declaration.
  */
@@ -117,6 +117,7 @@ private slots:
     void sltCommitDataSignalReceived();
     void sltFileTableSelectionChanged(bool fHasSelection);
     void sltCurrentTabChanged(int iIndex);
+    void sltGuestFileTableStateChanged(bool fIsRunning);
 
 private:
 
