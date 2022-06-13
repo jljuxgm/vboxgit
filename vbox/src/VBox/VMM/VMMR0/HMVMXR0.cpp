@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 91037 2021-08-31 16:42:14Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 91098 2021-09-02 15:22:54Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -16397,11 +16397,11 @@ HMVMX_EXIT_DECL hmR0VmxExitEptViolation(PVMCPUCC pVCpu, PVMXTRANSIENT pVmxTransi
     AssertMsg(((pVmxTransient->uExitQual >> 7) & 3) != 2, ("%#RX64", uExitQual));
 
     RTGCUINT uErrorCode = 0;
-    if (uExitQual & VMX_EXIT_QUAL_EPT_INSTR_FETCH)
+    if (uExitQual & VMX_EXIT_QUAL_EPT_ACCESS_INSTR_FETCH)
         uErrorCode |= X86_TRAP_PF_ID;
-    if (uExitQual & VMX_EXIT_QUAL_EPT_DATA_WRITE)
+    if (uExitQual & VMX_EXIT_QUAL_EPT_ACCESS_WRITE)
         uErrorCode |= X86_TRAP_PF_RW;
-    if (uExitQual & VMX_EXIT_QUAL_EPT_ENTRY_PRESENT)
+    if (uExitQual & (VMX_EXIT_QUAL_EPT_ENTRY_READ | VMX_EXIT_QUAL_EPT_ENTRY_WRITE | VMX_EXIT_QUAL_EPT_ENTRY_EXECUTE))
         uErrorCode |= X86_TRAP_PF_P;
 
     PVMCC    pVM  = pVCpu->CTX_SUFF(pVM);
