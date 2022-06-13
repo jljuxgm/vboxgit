@@ -1,4 +1,4 @@
-/* $Id: Svga.cpp 90188 2021-07-14 15:51:42Z vboxsync $ */
+/* $Id: Svga.cpp 90255 2021-07-20 10:54:39Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - VMSVGA.
  */
@@ -25,6 +25,24 @@
 #include <iprt/errcore.h>
 #include <iprt/mem.h>
 #include <iprt/memobj.h>
+
+static NTSTATUS SvgaCmdBufSubmit(VBOXWDDM_EXT_VMSVGA *pSvga, uint32_t cbSubmit)
+{
+    int rc = STATUS_SUCCESS;
+    SVGACBHeader *pHdr = (SVGACBHeader *)pSvga->pvR0Hdr;
+
+    pHdr->status = SVGA_CB_STATUS_NONE;
+    pHdr->errorOffset = 0;
+    pHdr->id = 0;
+    pHdr->flags = SVGA_CB_FLAG_NONE;
+    pHdr->length = cbSubmit;
+    pHdr->ptr.pa = pSvga->paCmd;
+
+    SVGARegWrite(pSvga, SVGA_REG_COMMAND_HIGH, (uint32_t)(pSvga->paHdr >> 32));
+    SVGARegWrite(pSvga, SVGA_REG_COMMAND_LOW, (uint32_t)pSvga->paHdr | SVGA_CB_CONTEXT_0);
+
+    return rc;
+}
 
 static NTSTATUS SvgaCmdBufCtxInit(VBOXWDDM_EXT_VMSVGA *pSvga, bool enable)
 {
@@ -1114,13 +1132,31 @@ NTSTATUS SvgaBlitGMRFBToScreen(PVBOXWDDM_EXT_VMSVGA pSvga,
     SvgaGenBlitGMRFBToScreen(pSvga, idDstScreen, xSrc, ySrc, pDstRect,
                              NULL, 0, &cbSubmit);
 
-    void *pvCmd = SvgaFifoReserve(pSvga, cbSubmit);
+    void *pvCmd;
+
+    if (pSvga->u32Caps & SVGA_CAP_COMMAND_BUFFERS)
+    {
+        pvCmd = pSvga->pvR0Cmd;
+    }
+    else
+    {
+        pvCmd = SvgaFifoReserve(pSvga, cbSubmit);
+    }
+
     if (pvCmd)
     {
         Status = SvgaGenBlitGMRFBToScreen(pSvga, idDstScreen, xSrc, ySrc, pDstRect,
                                           pvCmd, cbSubmit, NULL);
         Assert(Status == STATUS_SUCCESS);
-        SvgaFifoCommit(pSvga, cbSubmit);
+
+        if (pSvga->u32Caps & SVGA_CAP_COMMAND_BUFFERS)
+        {
+            SvgaCmdBufSubmit(pSvga, cbSubmit);
+        }
+        else
+        {
+            SvgaFifoCommit(pSvga, cbSubmit);
+        }
     }
     else
     {
