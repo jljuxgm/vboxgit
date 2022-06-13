@@ -1,4 +1,4 @@
-/* $Id: QMTranslatorImpl.cpp 90916 2021-08-26 15:16:32Z vboxsync $ */
+/* $Id: QMTranslatorImpl.cpp 90926 2021-08-26 16:42:06Z vboxsync $ */
 /** @file
  * VirtualBox API translation handling class
  */
@@ -443,7 +443,7 @@ public:
                     && (!apszDisabm[i]  || !*apszDisabm[i]  || RTStrCmp(message.pszComment, apszDisabm[i]) == 0 ))
                 {
                     const std::vector<const char *> &vecTranslations = m_messageArray[iter->offset].vecTranslations;
-                    size_t idxPlural = plural(aNum);
+                    size_t idxPlural = (size_t)plural(aNum);
                     return vecTranslations[RT_MIN(idxPlural, vecTranslations.size() - 1)];
                 }
             }
