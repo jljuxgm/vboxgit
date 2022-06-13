@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-dx-shader.cpp 94928 2022-05-09 06:56:53Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-dx-shader.cpp 94929 2022-05-09 07:00:40Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device - VGPU10+ (DX) shader utilities.
  */
@@ -30,7 +30,12 @@
 
 #include "DevVGA-SVGA3d-dx-shader.h"
 
+#ifdef RT_OS_WINDOWS
 #include <d3d11TokenizedProgramFormat.hpp>
+#else
+#define D3D11_SB_EXTENDED_OPCODE_RESOURCE_DIM 2
+#define D3D11_SB_EXTENDED_OPCODE_RESOURCE_RETURN_TYPE 3
+#endif
 
 /*
  *
