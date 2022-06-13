@@ -1,4 +1,4 @@
-/* $Id: NEMInternal.h 92555 2021-11-22 18:51:43Z vboxsync $ */
+/* $Id: NEMInternal.h 92579 2021-11-24 03:04:08Z vboxsync $ */
 /** @file
  * NEM - Internal header file.
  */
@@ -347,6 +347,8 @@ typedef struct NEMCPU
     int32_t                     fdVCpu;
     /** Pointer to the KVM_RUN data exchange region. */
     R3PTRTYPE(struct kvm_run *) pRun;
+    /** The MSR_IA32_APICBASE value known to KVM. */
+    uint64_t                    uKvmApicBase;
 
     /** @name Statistics
      * @{ */
