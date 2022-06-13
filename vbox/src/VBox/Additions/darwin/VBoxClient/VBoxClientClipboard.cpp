@@ -1,4 +1,4 @@
-/** $Id: VBoxClientClipboard.cpp 94876 2022-05-06 02:31:18Z vboxsync $ */
+/** $Id: VBoxClientClipboard.cpp 94878 2022-05-06 02:32:22Z vboxsync $ */
 /** @file
  * VBoxClient - Shared Slipboard Dispatcher, Darwin.
  */
@@ -60,7 +60,7 @@ static RTCRITSECT       g_critsect;
 /*********************************************************************************************************************************
 *   Local Function Prototypes                                                                                                    *
 *********************************************************************************************************************************/
-static int vbclClipboardStop(void);
+static DECLCALLBACK(int) vbclClipboardStop(void);
 
 
 /**
@@ -204,7 +204,7 @@ static DECLCALLBACK(int) vbclGuestPasteboardPoll(RTTHREAD hThreadSelf, void *pvU
  *
  * @return  IPRT status code.
  */
-static int vbclClipboardStart(void)
+static DECLCALLBACK(int) vbclClipboardStart(void)
 {
     int rc;
 
@@ -278,7 +278,7 @@ static int vbclClipboardStart(void)
  *
  * @return  IPRT status code.
  */
-static int vbclClipboardStop(void)
+static DECLCALLBACK(int) vbclClipboardStop(void)
 {
     int rc;
 
