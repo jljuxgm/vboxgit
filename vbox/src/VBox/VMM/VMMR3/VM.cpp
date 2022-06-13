@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 93554 2022-02-02 22:57:02Z vboxsync $ */
+/* $Id: VM.cpp 93718 2022-02-14 11:09:36Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -884,9 +884,7 @@ static int vmR3InitRing3(PVM pVM, PUVM pUVM)
                                                                 rc = PDMR3Init(pVM);
                                                                 if (RT_SUCCESS(rc))
                                                                 {
-                                                                    rc = MMR3HyperInitFinalize(pVM);
-                                                                    if (RT_SUCCESS(rc))
-                                                                        rc = PGMR3InitFinalize(pVM);
+                                                                    rc = PGMR3InitFinalize(pVM);
                                                                     if (RT_SUCCESS(rc))
                                                                         rc = TMR3InitFinalize(pVM);
                                                                     if (RT_SUCCESS(rc))

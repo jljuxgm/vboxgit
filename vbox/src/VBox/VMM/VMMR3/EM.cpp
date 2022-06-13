@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 93204 2022-01-12 18:37:23Z vboxsync $ */
+/* $Id: EM.cpp 93718 2022-02-14 11:09:36Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -1057,12 +1057,6 @@ static int emR3RemExecute(PVM pVM, PVMCPU pVCpu, bool *pfFFDone)
         Log(("EMR%d: %04X:%08X ESP=%08X IF=%d CR0=%x eflags=%x\n", cpl, pVCpu->cpum.GstCtx.cs.Sel, pVCpu->cpum.GstCtx.eip, pVCpu->cpum.GstCtx.esp, pVCpu->cpum.GstCtx.eflags.Bits.u1IF, (uint32_t)pVCpu->cpum.GstCtx.cr0, pVCpu->cpum.GstCtx.eflags.u));
 #endif
     STAM_REL_PROFILE_ADV_START(&pVCpu->em.s.StatREMTotal, a);
-
-#if defined(VBOX_STRICT) && defined(DEBUG_bird)
-    AssertMsg(   VMCPU_FF_IS_ANY_SET(pVCpu, VMCPU_FF_PGM_SYNC_CR3 | VMCPU_FF_PGM_SYNC_CR3_NON_GLOBAL)
-              || !MMHyperIsInsideArea(pVM, CPUMGetGuestEIP(pVCpu)),  /** @todo @bugref{1419} - get flat address. */
-              ("cs:eip=%RX16:%RX32\n", CPUMGetGuestCS(pVCpu), CPUMGetGuestEIP(pVCpu)));
-#endif
 
     /*
      * Spin till we get a forced action which returns anything but VINF_SUCCESS
