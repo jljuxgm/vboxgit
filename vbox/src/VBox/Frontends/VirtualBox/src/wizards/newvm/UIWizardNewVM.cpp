@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 91164 2021-09-08 15:23:02Z vboxsync $ */
+/* $Id: UIWizardNewVM.cpp 91593 2021-10-06 15:12:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
@@ -652,6 +652,11 @@ const QString &UIWizardNewVM::machineFilePath() const
 void UIWizardNewVM::setMachineFilePath(const QString &strMachineFilePath)
 {
     m_strMachineFilePath = strMachineFilePath;
+}
+
+QString UIWizardNewVM::machineFileName() const
+{
+    return QFileInfo(machineFilePath()).completeBaseName();
 }
 
 const QString &UIWizardNewVM::machineFolder() const

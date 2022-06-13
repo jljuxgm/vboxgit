@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.cpp 91512 2021-10-01 13:24:10Z vboxsync $ */
+/* $Id: UIMediumSelector.cpp 91593 2021-10-06 15:12:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class implementation.
  */
@@ -439,7 +439,7 @@ void UIMediumSelector::sltButtonLeaveEmpty()
 
 void UIMediumSelector::sltAddMedium()
 {
-    QUuid uMediumID = uiCommon().openMediumWithFileOpenDialog(m_enmMediumType, this, m_strMachineFolder);
+    QUuid uMediumID = uiCommon().openMediumWithFileOpenDialog(m_enmMediumType, this, m_strMachineFolder, true /* fUseLastFolder */);
     if (uMediumID.isNull())
         return;
     repopulateTreeWidget();

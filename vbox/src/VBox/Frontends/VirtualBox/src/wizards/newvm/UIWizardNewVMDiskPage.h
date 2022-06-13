@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMDiskPage.h 91108 2021-09-03 15:28:52Z vboxsync $ */
+/* $Id: UIWizardNewVMDiskPage.h 91593 2021-10-06 15:12:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMDiskPage class declaration.
  */
@@ -46,7 +46,6 @@ namespace UIWizardNewVMDiskCommon
 {
     QUuid getWithFileOpenDialog(const QString &strOSTypeID,
                                 const QString &strMachineFolder,
-                                const QString &strMachineBaseName,
                                 QWidget *pCaller);
 }
 

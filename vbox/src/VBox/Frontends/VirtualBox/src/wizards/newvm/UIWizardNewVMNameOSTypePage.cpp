@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMNameOSTypePage.cpp 91473 2021-09-29 20:03:39Z vboxsync $ */
+/* $Id: UIWizardNewVMNameOSTypePage.cpp 91593 2021-10-06 15:12:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasicNameOSStype class implementation.
  */
@@ -214,7 +214,7 @@ void UIWizardNewVMNameOSTypeCommon::composeMachineFilePath(UINameAndSystemEditor
     /* Compose machine folder/basename: */
     const QFileInfo fileInfo(pWizard->machineFilePath());
     pWizard->setMachineFolder(fileInfo.absolutePath());
-    pWizard->setMachineBaseName(fileInfo.completeBaseName());
+    pWizard->setMachineBaseName(pNameAndSystemEditor->name());
 }
 
 bool UIWizardNewVMNameOSTypeCommon::createMachineFolder(UINameAndSystemEditor *pNameAndSystemEditor,
