@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 90634 2021-08-11 20:19:20Z vboxsync $ */
+/* $Id: PDMInternal.h 90637 2021-08-11 21:15:42Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -512,7 +512,8 @@ typedef struct PDMCRITSECTRWINT
     STAMPROFILEADV                      StatWriteLocked;
 } PDMCRITSECTRWINT;
 AssertCompileMemberAlignment(PDMCRITSECTRWINT, StatContentionRZEnterExcl, 8);
-AssertCompileMemberAlignment(PDMCRITSECTRWINT, Core.u64State, 8);
+AssertCompileMemberAlignment(PDMCRITSECTRWINT, Core.u, 16);
+AssertCompileMemberAlignment(PDMCRITSECTRWINT, Core.u.s.u64State, 8);
 /** Pointer to private critical section data. */
 typedef PDMCRITSECTRWINT *PPDMCRITSECTRWINT;
 
