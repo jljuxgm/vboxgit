@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityToolWidget.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIVMActivityToolWidget.cpp 93698 2022-02-11 16:16:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMActivityToolWidget class implementation.
  */
@@ -46,6 +46,7 @@ UIVMActivityToolWidget::UIVMActivityToolWidget(EmbedTo enmEmbedding, UIActionPoo
     , m_pToolBar(0)
     , m_pExportToFileAction(0)
 {
+    setTabPosition(QTabWidget::East);
     prepare();
     prepareActions();
     prepareToolBar();
