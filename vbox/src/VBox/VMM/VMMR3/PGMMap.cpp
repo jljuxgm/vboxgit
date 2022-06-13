@@ -1,4 +1,4 @@
-/* $Id: PGMMap.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: PGMMap.cpp 90439 2021-07-30 16:41:49Z vboxsync $ */
 /** @file
  * PGM - Page Manager, Guest Context Mappings.
  */
@@ -953,7 +953,7 @@ static void pgmR3MapClearPDEs(PVM pVM, PPGMMAPPING pMap, unsigned iOldPDE)
 {
     unsigned i     = pMap->cPTs;
     PVMCPU   pVCpu = VMMGetCpu(pVM);
-    pgmLock(pVM);                           /* to avoid assertions */
+    PGM_LOCK_VOID(pVM);                           /* to avoid assertions */
 
     pgmMapClearShadowPDEs(pVM, pVCpu->pgm.s.CTX_SUFF(pShwPageCR3), pMap, iOldPDE, false /*fDeactivateCR3*/);
 
@@ -978,7 +978,7 @@ static void pgmR3MapClearPDEs(PVM pVM, PPGMMAPPING pMap, unsigned iOldPDE)
         pVM->pgm.s.apInterPaePDs[iPD]->a[iPDE].u = 0;
     }
 
-    pgmUnlock(pVM);
+    PGM_UNLOCK(pVM);
 }
 
 
@@ -995,7 +995,7 @@ static void pgmR3MapSetPDEs(PVM pVM, PPGMMAPPING pMap, unsigned iNewPDE)
 # ifdef VBOX_STRICT
     PVMCPU pVCpu = VMMGetCpu(pVM);
 # endif
-    pgmLock(pVM);                           /* to avoid assertions */
+    PGM_LOCK_VOID(pVM);                           /* to avoid assertions */
 
     Assert(!pgmMapAreMappingsEnabled(pVM) || PGMGetGuestMode(pVCpu) <= PGMMODE_PAE_NX);
 
@@ -1033,7 +1033,7 @@ static void pgmR3MapSetPDEs(PVM pVM, PPGMMAPPING pMap, unsigned iNewPDE)
         pPGM->apInterPaePDs[iPD]->a[iPDE] = PdePae1;
     }
 
-    pgmUnlock(pVM);
+    PGM_UNLOCK(pVM);
 }
 
 
