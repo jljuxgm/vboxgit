@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.h 91414 2021-09-27 17:46:20Z vboxsync $ */
+/* $Id: UIMediumSelector.h 91512 2021-10-01 13:24:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class declaration.
  */
@@ -89,7 +89,7 @@ private slots:
     void sltHandleTreeExpandAllSignal();
     void sltHandleTreeCollapseAllSignal();
 
- private:
+private:
 
 
     /** @name Event-handling stuff.
@@ -152,7 +152,7 @@ private slots:
     QString               m_strMachineName;
     QString               m_strMachineGuestOSTypeId;
     QUuid                 m_uMachineID;
-    QUuid          m_uCurrentMediumId;
+    QUuid                 m_uCurrentMediumId;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_medium_UIMediumSelector_h */
