@@ -1,4 +1,4 @@
-/* $Id: ClipUtil.cpp 92158 2021-10-30 00:06:36Z vboxsync $ */
+/* $Id: ClipUtil.cpp 92159 2021-10-30 00:12:41Z vboxsync $ */
 /** @file
  * ClipUtil - Clipboard Utility
  */
@@ -257,7 +257,7 @@ static PCCLIPUTILFORMAT GetFormatDesc(const char *pszFormat)
 #elif defined(RT_OS_WINDOWS)
             if (g_aFormats[i].pwszFormat && g_aFormats[i].fFormat == 0)
             {
-                g_aFormats[i].fFormat = RegisterClipboardFormatW(pFmtDesc->pwszFormat);
+                g_aFormats[i].fFormat = RegisterClipboardFormatW(g_aFormats[i].pwszFormat);
                 if (g_aFormats[i].fFormat == 0)
                     RTMsgError("RegisterClipboardFormatW(%ls) failed: %u (%#x)",
                                g_aFormats[i].pwszFormat, GetLastError(), GetLastError());
@@ -1218,7 +1218,7 @@ int main(int argc, char *argv[])
 
             case 'V':
             {
-                char szRev[] = "$Revision: 92158 $";
+                char szRev[] = "$Revision: 92159 $";
                 szRev[RT_ELEMENTS(szRev) - 2] = '\0';
                 RTPrintf(RTStrStrip(strchr(szRev, ':') + 1));
                 return RTEXITCODE_SUCCESS;
