@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-internal.h 94377 2022-03-25 18:26:29Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-internal.h 94401 2022-03-30 17:40:28Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device - 3D part, internal header.
  */
@@ -883,6 +883,14 @@ typedef struct VMSVGA3DCONTEXT
 typedef VMSVGA3DCONTEXT *PVMSVGA3DCONTEXT;
 
 #ifdef VMSVGA3D_INCL_STRUCTURE_DESCRIPTORS
+/* Verify that constants did not change for the legacy context saved state data. */
+AssertCompile(SVGA3D_RS_MAX == 99);
+AssertCompile(SVGA3D_TRANSFORM_MAX == 15);
+AssertCompile(SVGA3D_FACE_MAX == 5);
+AssertCompile(SVGA3D_CLIPPLANE_5 == (1 << 5));
+AssertCompile(SVGA3D_MAX_LIGHTS == 32);
+AssertCompile(SVGA3D_RT_MAX == 10);
+
 /**
  * SSM descriptor table for the VMSVGA3DCONTEXT structure.
  */
