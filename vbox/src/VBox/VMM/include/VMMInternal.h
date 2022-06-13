@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 90958 2021-08-27 13:55:41Z vboxsync $ */
+/* $Id: VMMInternal.h 90970 2021-08-27 22:14:33Z vboxsync $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -67,7 +67,7 @@
 
 
 /** Number of buffers per logger. */
-#define VMMLOGGER_BUFFER_COUNT  1
+#define VMMLOGGER_BUFFER_COUNT  4
 
 /**
  * R0 logger data (ring-0 only data).
@@ -84,13 +84,13 @@ typedef struct VMMR0PERVCPULOGGER
     RTLOGBUFFERDESC         aBufDescs[VMMLOGGER_BUFFER_COUNT];
     /** Flag indicating whether we've registered the instance already. */
     bool                    fRegistered;
-    /** Set by the logger thread to indicate that buffer has been flushed.  */
-    bool volatile           fFlushDone;
+    /** Set if the EMT is waiting on hEventFlushWait. */
+    bool                    fEmtWaiting;
     /** Set while we're inside vmmR0LoggerFlushCommon to prevent recursion. */
     bool                    fFlushing;
     bool                    afPadding[1];
     /** Number of buffers currently queued for flushing. */
-    uint32_t                cFlushing;
+    uint32_t volatile       cFlushing;
     /** The event semaphore the EMT waits on while the buffer is being flushed. */
     RTSEMEVENT              hEventFlushWait;
 } VMMR0PERVCPULOGGER;
