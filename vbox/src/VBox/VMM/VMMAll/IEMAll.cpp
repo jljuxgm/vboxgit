@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 89974 2021-06-30 11:02:04Z vboxsync $ */
+/* $Id: IEMAll.cpp 91016 2021-08-31 01:23:53Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -1793,7 +1793,7 @@ IEM_STATIC void iemOpcodeFetchBytesJmp(PVMCPUCC pVCpu, size_t cbDst, void *pvDst
             AssertRCStmt(rc, longjmp(*CTX_SUFF(pVCpu->iem.s.pJmpBuf), rc));
         }
 
-# if defined(IN_RING3) || (defined(IN_RING0) && !defined(VBOX_WITH_2X_4GB_ADDR_SPACE))
+# if defined(IN_RING3) || defined(IN_RING0) /** @todo fixme */
         /*
          * Try do a direct read using the pbMappingR3 pointer.
          */

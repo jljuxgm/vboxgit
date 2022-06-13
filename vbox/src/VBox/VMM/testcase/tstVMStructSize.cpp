@@ -1,4 +1,4 @@
-/* $Id: tstVMStructSize.cpp 87819 2021-02-20 10:24:03Z vboxsync $ */
+/* $Id: tstVMStructSize.cpp 91016 2021-08-31 01:23:53Z vboxsync $ */
 /** @file
  * tstVMStructSize - testcase for check structure sizes/alignment
  *                   and to verify that HC and GC uses the same
@@ -331,9 +331,6 @@ int main()
     CHECK_PADDING2(PDMCRITSECTRW);
 
     /* pgm */
-#if defined(VBOX_WITH_2X_4GB_ADDR_SPACE)
-    CHECK_MEMBER_ALIGNMENT(PGMCPU, AutoSet, 8);
-#endif
     CHECK_MEMBER_ALIGNMENT(PGMCPU, GCPhysCR3, sizeof(RTGCPHYS));
     CHECK_MEMBER_ALIGNMENT(PGMCPU, aGCPhysGstPaePDs, sizeof(RTGCPHYS));
     CHECK_MEMBER_ALIGNMENT(PGMCPU, DisState, 8);

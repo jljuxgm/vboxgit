@@ -1,4 +1,4 @@
-/* $Id: PGMR0.cpp 91014 2021-08-31 01:03:39Z vboxsync $ */
+/* $Id: PGMR0.cpp 91016 2021-08-31 01:23:53Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Ring-0.
  */
@@ -89,12 +89,9 @@ VMMR0_INT_DECL(int) PGMR0InitPerVMData(PGVM pGVM)
  */
 VMMR0_INT_DECL(int) PGMR0InitVM(PGVM pGVM)
 {
-    int rc = VINF_SUCCESS;
-#ifdef VBOX_WITH_2X_4GB_ADDR_SPACE
-    rc = PGMR0DynMapInitVM(pGVM);
-#endif
     RT_NOREF(pGVM);
-    return rc;
+    /* Was used for DynMap init */
+    return VINF_SUCCESS;
 }
 
 

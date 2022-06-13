@@ -1,4 +1,4 @@
-/* $Id: MMHyper.cpp 90991 2021-08-30 09:49:20Z vboxsync $ */
+/* $Id: MMHyper.cpp 91016 2021-08-31 01:23:53Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Hypervisor Memory Area.
  */
@@ -1004,14 +1004,6 @@ VMMR3DECL(int) MMR3HyperAllocOnceNoRelEx(PVM pVM, size_t cb, unsigned uAlignment
             return rc;
         }
     }
-
-#ifdef VBOX_WITH_2X_4GB_ADDR_SPACE
-    /*
-     * Set MMHYPER_AONR_FLAGS_KERNEL_MAPPING if we're in going to execute in ring-0.
-     */
-    if (VM_IS_HM_OR_NEM_ENABLED(pVM))
-        fFlags |= MMHYPER_AONR_FLAGS_KERNEL_MAPPING;
-#endif
 
     /*
      * Validate alignment.

@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 89975 2021-06-30 11:02:26Z vboxsync $ */
+/* $Id: IEMInternal.h 91016 2021-08-31 01:23:53Z vboxsync $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -267,11 +267,7 @@ typedef struct IEMTLBENTRY
     /** The guest physical page address. */
     uint64_t                GCPhys;
     /** Pointer to the ring-3 mapping (possibly also valid in ring-0). */
-#ifdef VBOX_WITH_2X_4GB_ADDR_SPACE
     R3PTRTYPE(uint8_t *)    pbMappingR3;
-#else
-    R3R0PTRTYPE(uint8_t *)  pbMappingR3;
-#endif
 #if HC_ARCH_BITS == 32
     uint32_t                u32Padding1;
 #endif
