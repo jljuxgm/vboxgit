@@ -1,4 +1,4 @@
-/* $Id: tstIEMAImpl.cpp 94258 2022-03-15 23:02:45Z vboxsync $ */
+/* $Id: tstIEMAImpl.cpp 94259 2022-03-15 23:04:29Z vboxsync $ */
 /** @file
  * IEM Assembly Instruction Helper Testcase.
  */
@@ -344,14 +344,14 @@ static void GenerateHeader(PRTSTREAM pOut, const char *pszFileInfix,
                            const char *pszCpuDesc, const char *pszCpuType, const char *pszCpuSuffU)
 {
     /* We want to tag the generated source code with the revision that produced it. */
-    static char s_szRev[] = "$Revision: 94258 $";
+    static char s_szRev[] = "$Revision: 94259 $";
     const char *pszRev = RTStrStripL(strchr(s_szRev, ':') + 1);
     size_t      cchRev = 0;
     while (RT_C_IS_DIGIT(pszRev[cchRev]))
         cchRev++;
 
     RTStrmPrintf(pOut,
-                 "/* $Id: tstIEMAImpl.cpp 94258 2022-03-15 23:02:45Z vboxsync $ */\n"
+                 "/* $Id: tstIEMAImpl.cpp 94259 2022-03-15 23:04:29Z vboxsync $ */\n"
                  "/** @file\n"
                  " * IEM Assembly Instruction Helper Testcase Data%s%s - r%.*s on %s.\n"
                  " */\n"
@@ -491,7 +491,7 @@ static const char *FormatFcw(uint16_t fFcw)
 {
     char *pszBuf = g_szBuf[g_idxBuf++ % RT_ELEMENTS(g_szBuf)];
 
-    const char *pszPC = NULL; /* (msc is too stupid) */
+    const char *pszPC = NULL; /* (msc+gcc are too stupid) */
     switch (fFcw & X86_FCW_PC_MASK)
     {
         case X86_FCW_PC_24:     pszPC = "PC24"; break;
@@ -500,7 +500,7 @@ static const char *FormatFcw(uint16_t fFcw)
         case X86_FCW_PC_64:     pszPC = "PC64"; break;
     }
 
-    const char *pszRC = NULL; /* (msc is too stupid) */
+    const char *pszRC = NULL; /* (msc+gcc are too stupid) */
     switch (fFcw & X86_FCW_RC_MASK)
     {
         case X86_FCW_RC_NEAREST:    pszRC = "NEAR"; break;
