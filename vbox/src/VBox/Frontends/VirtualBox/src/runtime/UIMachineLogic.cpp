@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 91736 2021-10-14 17:35:29Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 91759 2021-10-15 11:00:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -3328,7 +3328,7 @@ bool UIMachineLogic::mountBootMedium(const QUuid &uMediumId)
 
         /* Show error message if necessary: */
         if (!fSuccess)
-            msgCenter().cannotSaveMachineSettings(comMachine, pParent);
+            UINotificationMessage::cannotSaveMachineSettings(machine());
     }
     return fSuccess;
 }
