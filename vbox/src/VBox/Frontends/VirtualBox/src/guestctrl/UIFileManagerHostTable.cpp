@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerHostTable.cpp 93990 2022-02-28 15:34:57Z vboxsync $ */
+/* $Id: UIFileManagerHostTable.cpp 94007 2022-03-01 01:06:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerHostTable class implementation.
  */
@@ -372,7 +372,11 @@ QString UIFileManagerHostTable::fsObjectPropertyString()
         /* Type: */
         propertyStringList << UIFileManager::tr("<b>Type:</b> %1<br/>").arg(fileTypeString(fileType(fileInfo)));
         /* Creation Date: */
+#if QT_VERSION >= QT_VERSION_CHECK(5, 10, 0)
+        propertyStringList << UIFileManager::tr("<b>Created:</b> %1<br/>").arg(fileInfo.birthTime().toString());
+#else
         propertyStringList << UIFileManager::tr("<b>Created:</b> %1<br/>").arg(fileInfo.created().toString());
+#endif
         /* Last Modification Date: */
         propertyStringList << UIFileManager::tr("<b>Modified:</b> %1<br/>").arg(fileInfo.lastModified().toString());
         /* Owner: */
