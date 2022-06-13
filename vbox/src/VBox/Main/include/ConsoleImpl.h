@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 94742 2022-04-28 17:59:53Z vboxsync $ */
+/* $Id: ConsoleImpl.h 94744 2022-04-28 18:12:39Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -322,8 +322,8 @@ public:
      */
     HRESULT i_setDiskEncryptionKeys(const Utf8Str &strCfg);
 
-    HRESULT i_retainCryptoIf(PCVBOXCRYPTOIF *ppCryptoIf);
-    HRESULT i_releaseCryptoIf(PCVBOXCRYPTOIF pCryptoIf);
+    int i_retainCryptoIf(PCVBOXCRYPTOIF *ppCryptoIf);
+    int i_releaseCryptoIf(PCVBOXCRYPTOIF pCryptoIf);
 
 #ifdef VBOX_WITH_GUEST_PROPS
     // VMMDev needs:
