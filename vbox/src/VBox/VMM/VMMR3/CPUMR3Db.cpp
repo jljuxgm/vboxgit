@@ -1,4 +1,4 @@
-/* $Id: CPUMR3Db.cpp 87255 2021-01-14 23:20:17Z vboxsync $ */
+/* $Id: CPUMR3Db.cpp 89934 2021-06-29 00:05:41Z vboxsync $ */
 /** @file
  * CPUM - CPU database part.
  */
@@ -825,7 +825,8 @@ static bool cpumR3DbIsBetterIntelFam06Match(CPUMMICROARCH enmConsider, CPUMMICRO
     /* Check intel family 06h claims. */
     AssertReturn(enmConsider >= kCpumMicroarch_Intel_P6_Core_Atom_First && enmConsider <= kCpumMicroarch_Intel_P6_Core_Atom_End,
                  false);
-    AssertReturn(enmTarget   >= kCpumMicroarch_Intel_P6_Core_Atom_First && enmTarget   <= kCpumMicroarch_Intel_P6_Core_Atom_End,
+    AssertReturn(   (enmTarget >= kCpumMicroarch_Intel_P6_Core_Atom_First && enmTarget <= kCpumMicroarch_Intel_P6_Core_Atom_End)
+                 || enmTarget == kCpumMicroarch_Intel_Unknown,
                  false);
 
     /* Put matches out of the way. */
