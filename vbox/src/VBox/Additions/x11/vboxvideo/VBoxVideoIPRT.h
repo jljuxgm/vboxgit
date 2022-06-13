@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoIPRT.h 90794 2021-08-23 13:16:11Z vboxsync $ */
+/* $Id: VBoxVideoIPRT.h 90823 2021-08-23 22:08:38Z vboxsync $ */
 /*
  * Copyright (C) 2017-2020 Oracle Corporation
  *
@@ -131,7 +131,6 @@ RT_C_DECLS_END
 #define RT_UOFFSETOF(type, member) offsetof(type, member)
 #define RT_ZERO(Obj)        RT_BZERO(&(Obj), sizeof(Obj))
 #define RT_VALID_PTR(ptr)  (   (uintptr_t)(ptr) + 0x1000U >= 0x2000U )
-#define VALID_PTR(ptr)     RT_VALID_PTR(ptr)
 #ifndef INT16_C
 # define INT16_C(Value) (Value)
 #endif
