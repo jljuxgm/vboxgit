@@ -1,4 +1,4 @@
-/* $Id: STAM.cpp 92387 2021-11-12 00:38:14Z vboxsync $ */
+/* $Id: STAM.cpp 92723 2021-12-02 23:08:59Z vboxsync $ */
 /** @file
  * STAM - The Statistics Manager.
  */
@@ -312,7 +312,8 @@ VMMR3DECL(int) STAMR3InitUVM(PUVM pUVM)
     /*
      * Register the ring-0 statistics (GVMM/GMM).
      */
-    stamR3Ring0StatsRegisterU(pUVM);
+    if (!SUPR3IsDriverless())
+        stamR3Ring0StatsRegisterU(pUVM);
 
 #ifdef VBOX_WITH_DEBUGGER
     /*
@@ -1856,7 +1857,7 @@ VMMR3DECL(int)  STAMR3Reset(PUVM pUVM, const char *pszPat)
     /* ring-0 */
     GVMMRESETSTATISTICSSREQ GVMMReq;
     GMMRESETSTATISTICSSREQ  GMMReq;
-    bool fGVMMMatched = !pszPat || !*pszPat;
+    bool fGVMMMatched = (!pszPat || !*pszPat) && !SUPR3IsDriverless();
     bool fGMMMatched  = fGVMMMatched;
     if (fGVMMMatched)
     {

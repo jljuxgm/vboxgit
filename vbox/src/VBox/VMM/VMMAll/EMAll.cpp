@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 92216 2021-11-04 18:51:54Z vboxsync $ */
+/* $Id: EMAll.cpp 92723 2021-12-02 23:08:59Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -325,8 +325,9 @@ VMM_INT_DECL(int) EMUnhaltAndWakeUp(PVMCC pVM, PVMCPUCC pVCpuDst)
     AssertRC(rc);
 
 #elif defined(IN_RING3)
-    int rc = SUPR3CallVMMR0(VMCC_GET_VMR0_FOR_CALL(pVM), pVCpuDst->idCpu, VMMR0_DO_GVMM_SCHED_WAKE_UP, NULL /* pvArg */);
-    AssertRC(rc);
+    VMR3NotifyCpuFFU(pVCpuDst->pUVCpu, 0 /*fFlags*/);
+    int rc = VINF_SUCCESS;
+    RT_NOREF(pVM);
 
 #else
     /* Nothing to do for raw-mode, shouldn't really be used by raw-mode guests anyway. */

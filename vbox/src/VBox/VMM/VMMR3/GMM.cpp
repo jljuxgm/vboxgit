@@ -1,4 +1,4 @@
-/* $Id: GMM.cpp 92721 2021-12-02 22:42:04Z vboxsync $ */
+/* $Id: GMM.cpp 92723 2021-12-02 23:08:59Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager, ring-3 request wrappers.
  */
@@ -288,7 +288,8 @@ GMMR3DECL(int)  GMMR3BalloonedPages(PVM pVM, GMMBALLOONACTION enmAction, uint32_
 
 
 /**
- * @see GMMR0QueryVMMMemoryStatsReq
+ * @note Caller does the driverless check.
+ * @see  GMMR0QueryVMMMemoryStatsReq
  */
 GMMR3DECL(int)  GMMR3QueryHypervisorMemoryStats(PVM pVM, uint64_t *pcTotalAllocPages, uint64_t *pcTotalFreePages, uint64_t *pcTotalBalloonPages, uint64_t *puTotalBalloonSize)
 {
