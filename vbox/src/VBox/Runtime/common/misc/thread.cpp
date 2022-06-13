@@ -1,4 +1,4 @@
-/* $Id: thread.cpp 90803 2021-08-23 19:08:38Z vboxsync $ */
+/* $Id: thread.cpp 92253 2021-11-07 02:02:46Z vboxsync $ */
 /** @file
  * IPRT - Threads, common routines.
  */
@@ -997,12 +997,15 @@ RT_EXPORT_SYMBOL(RTThreadSetName);
  */
 RTDECL(bool) RTThreadIsMain(RTTHREAD hThread)
 {
-    PRTTHREADINT pThread = rtThreadGet(hThread);
-    if (pThread)
+    if (hThread != NIL_RTTHREAD)
     {
-        bool fRc = !!(pThread->fIntFlags & RTTHREADINT_FLAGS_MAIN);
-        rtThreadRelease(pThread);
-        return fRc;
+        PRTTHREADINT pThread = rtThreadGet(hThread);
+        if (pThread)
+        {
+            bool fRc = !!(pThread->fIntFlags & RTTHREADINT_FLAGS_MAIN);
+            rtThreadRelease(pThread);
+            return fRc;
+        }
     }
     return false;
 }
