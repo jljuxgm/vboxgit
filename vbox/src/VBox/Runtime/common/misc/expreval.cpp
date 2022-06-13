@@ -1,4 +1,4 @@
-/* $Id: expreval.cpp 93815 2022-02-16 22:28:35Z vboxsync $ */
+/* $Id: expreval.cpp 94888 2022-05-06 10:53:59Z vboxsync $ */
 /** @file
  * expreval - Expressions evaluator.
  */
@@ -2572,6 +2572,8 @@ RTDECL(int) RTExprEvalCreate(PRTEXPREVAL phEval, uint64_t fFlags, const char *ps
             return VINF_SUCCESS;
 
         }
+
+        RTStrFree(pszNameCopy);
         return VERR_NO_MEMORY;
     }
     return VERR_NO_STR_MEMORY;

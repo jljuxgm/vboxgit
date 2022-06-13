@@ -1,4 +1,4 @@
-/* $Id: ntfsvfs.cpp 94291 2022-03-17 13:29:52Z vboxsync $ */
+/* $Id: ntfsvfs.cpp 94888 2022-05-06 10:53:59Z vboxsync $ */
 /** @file
  * IPRT - NTFS Virtual Filesystem, currently only for reading allocation bitmap.
  */
@@ -541,8 +541,10 @@ static PRTFSNTFSMFTREC rtFsNtfsVol_NewMftRec(PRTFSNTFSVOL pVol, uint64_t idMft)
             pRec->cRefs        = 1;
             if (RTAvlU64Insert(&pVol->MftRoot, &pRec->TreeNode))
                 return pRec;
-            RTMemFree(pRec);
+            RTMemFree(pRec->pbRec);
         }
+
+        RTMemFree(pRec);
     }
     return NULL;
 }

@@ -1,4 +1,4 @@
-/* $Id: fuzzmastercmd.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: fuzzmastercmd.cpp 94888 2022-05-06 10:53:59Z vboxsync $ */
 /** @file
  * IPRT - Fuzzing framework API, master command.
  */
@@ -1105,15 +1105,24 @@ static int rtFuzzCmdMasterCreateFuzzRunWithId(PRTFUZZCMDMASTER pThis, const char
                             RTTimeLocalExplode(&pFuzzRun->TimeCreated, &TimeSpec);
                             pFuzzRun->tsCreatedMs = RTTimeMilliTS();
                             pFuzzRun->fStarted = true;
+                            return VINF_SUCCESS;
                         }
                         else
                             rc = rtFuzzCmdMasterErrorRc(pErrInfo, rc, "Request error: Failed to start fuzzing with %Rrc", rc);
                     }
+
+                    int rc2 = RTFuzzObsDestroy(pFuzzRun->hFuzzObs);
+                    AssertRC(rc2); RT_NOREF(rc2);
                 }
             }
+
+            RTStrFree(pFuzzRun->pszId);
+            pFuzzRun->pszId = NULL;
         }
         else
             rc = VERR_NO_STR_MEMORY;
+
+        RTMemFree(pFuzzRun);
     }
     else
         rc = rtFuzzCmdMasterErrorRc(pErrInfo, VERR_NO_MEMORY, "Request error: Out of memory allocating the fuzzer state");

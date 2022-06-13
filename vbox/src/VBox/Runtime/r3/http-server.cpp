@@ -1,4 +1,4 @@
-/* $Id: http-server.cpp 93141 2022-01-07 16:09:28Z vboxsync $ */
+/* $Id: http-server.cpp 94888 2022-05-06 10:53:59Z vboxsync $ */
 /** @file
  * Simple HTTP server (RFC 7231) implementation.
  *
@@ -754,7 +754,7 @@ static DECLCALLBACK(int) rtHttpServerHandleGET(PRTHTTPSERVERCLIENT pClient, PRTH
                 RTStrFree(pszMIMEHint);
                 pszMIMEHint = NULL;
             }
-            AssertRCReturn(rc, rc);
+            AssertRCBreak(rc);
 
             if (pClient->State.msKeepAlive)
             {
