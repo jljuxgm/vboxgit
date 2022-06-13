@@ -1,4 +1,4 @@
-/* $Id: display.cpp 94306 2022-03-18 12:15:30Z vboxsync $ */
+/* $Id: display.cpp 94422 2022-03-31 21:59:39Z vboxsync $ */
 /** @file
  * X11 guest client - display management.
  */
@@ -268,8 +268,9 @@ static DECLCALLBACK(int) init(void)
 /**
  * @interface_method_impl{VBCLSERVICE,pfnWorker}
  */
-static DECLCALLBACK(int) run(bool volatile *)
+static DECLCALLBACK(int) run(bool volatile *pfShutdown)
 {
+    RT_NOREF(pfShutdown); /** @todo Probably very wrong not to check pfShutdown... Especially given no pfnStop implementation. */
     struct DISPLAYSTATE *pSelf = &g_DisplayState;
 
     if (!pSelf->mfInit)
