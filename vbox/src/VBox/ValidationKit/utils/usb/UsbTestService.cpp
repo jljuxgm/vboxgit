@@ -1,4 +1,4 @@
-/* $Id: UsbTestService.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UsbTestService.cpp 90957 2021-08-27 13:35:33Z vboxsync $ */
 /** @file
  * UsbTestService - Remote USB test configuration and execution server.
  */
@@ -1122,7 +1122,7 @@ static DECLCALLBACK(int) utsClientWorker(RTTHREAD hThread, void *pvUser)
                         if (cClientsCur == cClientsMax)
                         {
                             /* Realloc to accommodate for the new clients. */
-                            PUTSCLIENT *papClientsNew = (PUTSCLIENT *)RTMemRealloc(papClients, (cClientsMax + 10) * sizeof(PUTSCLIENT));
+                            PUTSCLIENT *papClientsNew = (PUTSCLIENT *)RTMemReallocZ(papClients, cClientsMax * sizeof(PUTSCLIENT), (cClientsMax + 10) * sizeof(PUTSCLIENT));
                             if (RT_LIKELY(papClientsNew))
                             {
                                 cClientsMax += 10;
@@ -1551,7 +1551,7 @@ static RTEXITCODE utsParseArgv(int argc, char **argv, bool *pfExit)
             }
 
             case 'V':
-                RTPrintf("$Revision: 82968 $\n");
+                RTPrintf("$Revision: 90957 $\n");
                 *pfExit = true;
                 return RTEXITCODE_SUCCESS;
 
