@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.cpp 90722 2021-08-18 15:37:22Z vboxsync $ */
+/* $Id: UIHelpBrowserWidget.cpp 90725 2021-08-18 15:58:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class implementation.
  */
@@ -734,7 +734,8 @@ void UIHelpBrowserTab::prepareToolBarAndAddressBar()
     m_pFindInPageAction =
         new QAction(UIIconPool::iconSet(":/help_browser_search.png"), QString(), this);
     m_pReloadPageAction =
-        new QAction(UIIconPool::iconSet(":/help_browser_reload_32px.png"), QString(), this);
+        new QAction(UIIconPool::iconSetFull(":/help_browser_reload_32px.png", ":/help_browser_reload_16px.png",
+                                            ":/help_browser_reload_disabled_32px.png", ":/help_browser_reload_disabled_16px.png"), QString(), this);
 
     AssertReturnVoid(m_pHomeAction && m_pForwardAction &&
                      m_pBackwardAction && m_pAddBookmarkAction &&
