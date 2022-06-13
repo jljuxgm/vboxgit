@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioValidationKit.cpp 92322 2021-11-10 14:28:46Z vboxsync $ */
+/* $Id: DrvHostAudioValidationKit.cpp 92327 2021-11-10 15:21:18Z vboxsync $ */
 /** @file
  * Host audio driver - ValidationKit - For dumping and injecting audio data from/to the device emulation.
  */
@@ -1115,12 +1115,12 @@ static DECLCALLBACK(int) drvHostValKitAudioHA_StreamPlay(PPDMIHOSTAUDIO pInterfa
                 {
                     bool const fStarted = AudioTestBeaconGetRemaining(pBeacon) == AudioTestBeaconGetSize(pBeacon);
 
-                    size_t uOff; /* Points at the data right *after the found beacon data. */
-                    rc2 = AudioTestBeaconAddConsecutive(pBeacon, auBuf, cbBuf - cbWritten, &uOff);
+                    size_t off = 0; /* Points at the data right *after the found beacon data on return. */
+                    rc2 = AudioTestBeaconAddConsecutive(pBeacon, auBuf, cbBuf - cbWritten, &off);
                     if (RT_SUCCESS(rc2))
                     {
-                        cbWritten += uOff;
-                        auBuf     += uOff;
+                        cbWritten += (uint32_t)off;
+                        auBuf     += off;
                     }
 
                     if (fStarted)
