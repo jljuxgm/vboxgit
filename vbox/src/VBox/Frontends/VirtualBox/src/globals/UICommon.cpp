@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 90941 2021-08-27 10:03:18Z vboxsync $ */
+/* $Id: UICommon.cpp 90965 2021-08-27 19:30:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -990,6 +990,26 @@ bool UICommon::isBeta() const
     return vboxVersionString().contains("BETA", Qt::CaseInsensitive);
 }
 
+bool UICommon::brandingIsActive(bool fForce /* = false */)
+{
+    if (fForce)
+        return true;
+
+    if (m_strBrandingConfigFilePath.isEmpty())
+    {
+        m_strBrandingConfigFilePath = QDir(QApplication::applicationDirPath()).absolutePath();
+        m_strBrandingConfigFilePath += "/custom/custom.ini";
+    }
+
+    return QFile::exists(m_strBrandingConfigFilePath);
+}
+
+QString UICommon::brandingGetKey(QString strKey) const
+{
+    QSettings settings(m_strBrandingConfigFilePath, QSettings::IniFormat);
+    return settings.value(QString("%1").arg(strKey)).toString();
+}
+
 #ifdef VBOX_WS_MAC
 /* static */
 MacOSXRelease UICommon::determineOsRelease()
@@ -1017,26 +1037,6 @@ MacOSXRelease UICommon::determineOsRelease()
     return MacOSXRelease_Old;
 }
 #endif /* VBOX_WS_MAC */
-
-bool UICommon::brandingIsActive(bool fForce /* = false */)
-{
-    if (fForce)
-        return true;
-
-    if (m_strBrandingConfigFilePath.isEmpty())
-    {
-        m_strBrandingConfigFilePath = QDir(QApplication::applicationDirPath()).absolutePath();
-        m_strBrandingConfigFilePath += "/custom/custom.ini";
-    }
-
-    return QFile::exists(m_strBrandingConfigFilePath);
-}
-
-QString UICommon::brandingGetKey(QString strKey)
-{
-    QSettings settings(m_strBrandingConfigFilePath, QSettings::IniFormat);
-    return settings.value(QString("%1").arg(strKey)).toString();
-}
 
 bool UICommon::processArgs()
 {
