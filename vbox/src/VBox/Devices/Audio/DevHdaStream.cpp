@@ -1,4 +1,4 @@
-/* $Id: DevHdaStream.cpp 89853 2021-06-23 13:19:38Z vboxsync $ */
+/* $Id: DevHdaStream.cpp 89859 2021-06-23 13:43:28Z vboxsync $ */
 /** @file
  * Intel HD Audio Controller Emulation - Streams.
  */
@@ -1239,7 +1239,7 @@ DECLINLINE(bool) hdaR3StreamDoDmaPrologue(PHDASTATE pThis, PHDASTREAM pStreamSha
         /** @todo r=bird: This is a bit fishy.  We should make effort the reschedule
          *        the transfer immediately after the guest clears the interrupt.
          *        The same fishy code is present in AC'97 with just a little
-         *        explanation as here, see {9890#c95}.
+         *        explanation as here, see @bugref{9890#c95}.
          *
          *        The reasoning is probably that the developer noticed some windows
          *        versions don't like having their BCIS interrupts bundled.  There were
