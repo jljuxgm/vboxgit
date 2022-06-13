@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet.cpp 88491 2021-04-13 11:10:32Z vboxsync $ */
+/* $Id: DevVirtioNet.cpp 90156 2021-07-12 08:36:16Z vboxsync $ */
 /** @file
  * DevVirtioNet - Virtio Network Device
  */
@@ -1351,13 +1351,9 @@ static void vnetR3TransmitPendingPackets(PPDMDEVINS pDevIns, PVNETSTATE pThis, P
                                          PVQUEUE pQueue, bool fOnWorkerThread)
 {
     /*
-     * Only one thread is allowed to transmit at a time, others should skip
-     * transmission as the packets will be picked up by the transmitting
-     * thread.
+     * Let's deal with the cases we are not going to transmit anything,
+     * to avoid setting 'uIsTransmitting' on and off.
      */
-    if (!ASMAtomicCmpXchgU32(&pThis->uIsTransmitting, 1, 0))
-        return;
-
     if ((pThis->VPCI.uStatus & VPCI_STATUS_DRV_OK) == 0)
     {
         Log(("%s Ignoring transmit requests from non-existent driver (status=0x%x).\n", INSTANCE(pThis), pThis->VPCI.uStatus));
@@ -1369,6 +1365,14 @@ static void vnetR3TransmitPendingPackets(PPDMDEVINS pDevIns, PVNETSTATE pThis, P
         Log(("%s Ignoring transmit requests while cable is disconnected.\n", INSTANCE(pThis)));
         return;
     }
+
+    /*
+     * Only one thread is allowed to transmit at a time, others should skip
+     * transmission as the packets will be picked up by the transmitting
+     * thread.
+     */
+    if (!ASMAtomicCmpXchgU32(&pThis->uIsTransmitting, 1, 0))
+        return;
 
     PPDMINETWORKUP pDrv = pThisCC->pDrv;
     if (pDrv)
