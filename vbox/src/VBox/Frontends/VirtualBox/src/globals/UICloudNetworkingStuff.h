@@ -1,4 +1,4 @@
-/* $Id: UICloudNetworkingStuff.h 89978 2021-06-30 12:10:27Z vboxsync $ */
+/* $Id: UICloudNetworkingStuff.h 89998 2021-07-02 10:36:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudNetworkingStuff namespace declaration.
  */
@@ -151,6 +151,16 @@ namespace UICloudNetworkingStuff
                                                          CStringArray &comNames,
                                                          CStringArray &comIDs,
                                                          QString &strErrorMessage);
+    /** Acquires cloud source instances of certain @a comCloudClient, using @a pParent to show messages according to. */
+    SHARED_LIBRARY_STUFF bool listCloudSourceInstances(const CCloudClient &comCloudClient,
+                                                       CStringArray &comNames,
+                                                       CStringArray &comIDs,
+                                                       QWidget *pParent = 0);
+    /** Acquires cloud source instances of certain @a comCloudClient, using @a strErrorMessage to store messages to. */
+    SHARED_LIBRARY_STUFF bool listCloudSourceInstances(const CCloudClient &comCloudClient,
+                                                       CStringArray &comNames,
+                                                       CStringArray &comIDs,
+                                                       QString &strErrorMessage);
 
     /** Acquires cloud machines of certain @a comCloudClient, using @a pParent to show messages according to. */
     SHARED_LIBRARY_STUFF QVector<CCloudMachine> listCloudMachines(CCloudClient comCloudClient,
