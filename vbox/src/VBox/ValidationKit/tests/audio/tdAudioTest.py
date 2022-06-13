@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tdAudioTest.py 91117 2021-09-06 06:47:34Z vboxsync $
+# $Id: tdAudioTest.py 91118 2021-09-06 07:02:22Z vboxsync $
 
 """
 AudioTest test driver which invokes the VKAT (Validation Kit Audio Test)
@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 91117 $"
+__version__ = "$Revision: 91118 $"
 
 # Standard Python imports.
 import os
@@ -489,9 +489,6 @@ class tdAudioTest(vbox.TestDriver):
 
         reporter.log('Using VKAT on host at: \"%s\"' % (sVkatExe));
 
-        # Enable more verbose logging for all groups. Disable later again?
-        asEnv  = [ 'VKAT_RELEASE_LOG=all.e.l.l2.l3.f+audio_test.e.l.l2.l3.f' ];
-
         # Build the base command line, exclude all tests by default.
         asArgs = [ sVkatExe, 'test', '--mode', 'host', '--probe-backends', \
                              '--tempdir', sPathAudioTemp, '--outdir', sPathAudioOut, '-a' ];
@@ -505,7 +502,7 @@ class tdAudioTest(vbox.TestDriver):
         #
         # Let VKAT on the host run synchronously.
         #
-        fRc = self.executeHst("VKAT Host", asArgs, asEnv);
+        fRc = self.executeHst("VKAT Host", asArgs);
 
         reporter.testDone();
 
