@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tdAudioTest.py 93115 2022-01-01 11:31:46Z vboxsync $
+# $Id: tdAudioTest.py 94122 2022-03-08 12:25:02Z vboxsync $
 
 """
 AudioTest test driver which invokes the VKAT (Validation Kit Audio Test)
@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 93115 $"
+__version__ = "$Revision: 94122 $"
 
 # Standard Python imports.
 from datetime import datetime
@@ -287,6 +287,16 @@ class tdAudioTest(vbox.TestDriver):
         """
         fRc = False;
 
+        ## @todo r=bird: From what I can tell this is running on the main thread.
+        ##               So, you're blocking event handling till the process
+        ##               finishes.  Not a great idea.
+        ##
+        ##               Also, use the base API base.testdriver.pidFileAdd API
+        ##               and you can kick out the fAsAdmin and killHstProcessByName
+        ##               fun.  (If you need to kill stuff, check what pidFileRead,
+        ##               or better add some name based killer around it to the
+        ##               base class.)
+
         asEnvTmp = os.environ.copy();
         if asEnv:
             for sEnv in asEnv:
@@ -352,6 +362,12 @@ class tdAudioTest(vbox.TestDriver):
         """
         Kills processes by their name.
         """
+
+        ##
+        ## @todo r=bird: This doesn't belong here and probably won't work right everywhere anyway.
+        ##               See alternative approach outlined in executeHstLoop.
+        ##
+
         reporter.log('Trying to kill processes named "%s"' % (sProcName,));
         if sys.platform == 'win32':
             sArgProcName = '\"%s.exe\"' % sProcName;
@@ -359,7 +375,7 @@ class tdAudioTest(vbox.TestDriver):
             self.executeHst('Killing process', asArgs);
         else: # Note: killall is not available on older Debians (requires psmisc).
             # Using the BSD syntax here; MacOS also should understand this.
-            procPs = subprocess.Popen(['ps', 'ax'], stdout=subprocess.PIPE);
+            procPs = subprocess.Popen(['ps', 'ax'], stdout=subprocess.PIPE); # pylint: disable=consider-using-with
             out, err = procPs.communicate();
             if err:
                 reporter.log('PS stderr:');
@@ -369,7 +385,7 @@ class tdAudioTest(vbox.TestDriver):
                 reporter.log4('PS stdout:');
                 for sLine in out.decode('utf-8').splitlines():
                     reporter.log4(sLine);
-                    if sProcName in sLine:
+                    if sProcName in sLine: ## @todo r=bird: This just isn't good enough for short stuff like 'vkat'!
                         pid = int(sLine.split(None, 1)[0]);
                         reporter.log('Killing PID %d' % (pid,));
                         os.kill(pid, signal.SIGKILL); # pylint: disable=no-member
