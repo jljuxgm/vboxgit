@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 93545 2022-02-02 13:32:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -984,6 +984,7 @@ void UIVirtualBoxManager::sltOpenNewMachineWizard()
         unattendedInstallData.m_strPassword = comUnattendedInstaller.GetPassword();
         unattendedInstallData.m_fInstallGuestAdditions = comUnattendedInstaller.GetInstallGuestAdditions();
         unattendedInstallData.m_strGuestAdditionsISOPath = comUnattendedInstaller.GetAdditionsIsoPath();
+        unattendedInstallData.m_uSelectedWindowsImageIndex = comUnattendedInstaller.GetImageIndex();
         pWizard->setDefaultUnattendedInstallData(unattendedInstallData);
 
         /* Execute wizard: */
@@ -2554,6 +2555,12 @@ void UIVirtualBoxManager::startUnattendedInstall(CUnattended &comUnattendedInsta
     comUnattendedInstaller.SetInstallGuestAdditions(unattendedData.m_fInstallGuestAdditions);
     AssertReturnVoid(checkUnattendedInstallError(comUnattendedInstaller));
     comUnattendedInstaller.SetAdditionsIsoPath(unattendedData.m_strGuestAdditionsISOPath);
+    AssertReturnVoid(checkUnattendedInstallError(comUnattendedInstaller));
+    if (unattendedData.m_uSelectedWindowsImageIndex != 0)
+    {
+        comUnattendedInstaller.SetImageIndex(unattendedData.m_uSelectedWindowsImageIndex);
+        AssertReturnVoid(checkUnattendedInstallError(comUnattendedInstaller));
+    }
 
     comUnattendedInstaller.Prepare();
     AssertReturnVoid(checkUnattendedInstallError(comUnattendedInstaller));

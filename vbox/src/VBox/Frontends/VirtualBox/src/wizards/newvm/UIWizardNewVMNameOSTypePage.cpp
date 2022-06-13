@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMNameOSTypePage.cpp 93541 2022-02-02 10:07:07Z vboxsync $ */
+/* $Id: UIWizardNewVMNameOSTypePage.cpp 93545 2022-02-02 13:32:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasicNameOSStype class implementation.
  */
@@ -331,7 +331,7 @@ void UIWizardNewVMNameOSTypeCommon::detectOSAndImagesFromISO(const QString &strI
     QVector<ulong> qIndices;
     for (int i = 0; i < indices.size(); ++i)
         qIndices << indices[i];
-    pWizard->setDetectedImageNamesAndIndices(comUnatteded.GetDetectedImageNames(), qIndices);
+    pWizard->setDetectedWindowsImageNamesAndIndices(comUnatteded.GetDetectedImageNames(), qIndices);
 }
 
 bool UIWizardNewVMNameOSTypeCommon::checkISOFile(UINameAndSystemEditor *pNameAndSystemEditor)

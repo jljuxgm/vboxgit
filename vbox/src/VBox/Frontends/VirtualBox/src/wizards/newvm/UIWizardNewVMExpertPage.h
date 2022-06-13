@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMExpertPage.h 93541 2022-02-02 10:07:07Z vboxsync $ */
+/* $Id: UIWizardNewVMExpertPage.h 93545 2022-02-02 13:32:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMExpertPage class declaration.
  */
@@ -82,6 +82,7 @@ private slots:
     void sltHostnameDomainNameChanged(const QString &strHostnameDomainName);
     void sltProductKeyChanged(const QString &strProductKey);
     void sltStartHeadlessChanged(bool fStartHeadless);
+    void sltSelectedWindowsImageChanged(ulong uImageIndex);
 
 private:
 
