@@ -1,4 +1,4 @@
-/* $Id: efivarstorevfs.cpp 90063 2021-07-06 12:50:55Z vboxsync $ */
+/* $Id: efivarstorevfs.cpp 90064 2021-07-06 12:51:48Z vboxsync $ */
 /** @file
  * IPRT - Expose a EFI variable store as a Virtual Filesystem.
  */
@@ -1051,7 +1051,7 @@ static DECLCALLBACK(int) rtEfiVarStoreDir_ReadDir(void *pvThis, PRTDIRENTRYEX pD
         {
             memcpy(&pDirEntry->szName[0], pszName, cbName);
             pDirEntry->szName[cbName] = '\0';
-            pDirEntry->cbName         = cbName;
+            pDirEntry->cbName         = (uint16_t)cbName;
             rc = rtEfiVarStore_QueryInfo(cbObject, fIsDir, &Time, &pDirEntry->Info, enmAddAttr);
             if (RT_SUCCESS(rc))
             {
