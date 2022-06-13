@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 92388 2021-11-12 00:38:15Z vboxsync $ */
+/* $Id: VMMDev.cpp 92528 2021-11-21 02:40:17Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -4589,7 +4589,17 @@ static DECLCALLBACK(int) vmmdevConstruct(PPDMDEVINS pDevIns, int iInstance, PCFG
                                   "HeartbeatTimeout|"
                                   "TestingEnabled|"
                                   "TestingMMIO|"
-                                  "TestintXmlOutputFile|"
+                                  "TestingXmlOutputFile|"
+                                  "TestingCfgDword0|"
+                                  "TestingCfgDword1|"
+                                  "TestingCfgDword2|"
+                                  "TestingCfgDword3|"
+                                  "TestingCfgDword4|"
+                                  "TestingCfgDword5|"
+                                  "TestingCfgDword6|"
+                                  "TestingCfgDword7|"
+                                  "TestingCfgDword8|"
+                                  "TestingCfgDword9|"
                                   "HGCMHeapBudgetDefault|"
                                   "HGCMHeapBudgetLegacy|"
                                   "HGCMHeapBudgetVBoxGuest|"
@@ -4670,9 +4680,20 @@ static DECLCALLBACK(int) vmmdevConstruct(PPDMDEVINS pDevIns, int iInstance, PCFG
     rc = pHlp->pfnCFGMQueryBoolDef(pCfg, "TestingMMIO", &pThis->fTestingMMIO, false);
     if (RT_FAILURE(rc))
         return PDMDEV_SET_ERROR(pDevIns, rc, N_("Configuration error: Failed querying \"TestingMMIO\" as a boolean"));
-    rc = pHlp->pfnCFGMQueryStringAllocDef(pCfg, "TestintXmlOutputFile", &pThisCC->pszTestingXmlOutput, NULL);
+    rc = pHlp->pfnCFGMQueryStringAllocDef(pCfg, "TestingXmlOutputFile", &pThisCC->pszTestingXmlOutput, NULL);
     if (RT_FAILURE(rc))
-        return PDMDEV_SET_ERROR(pDevIns, rc, N_("Configuration error: Failed querying \"TestintXmlOutputFile\" as a string"));
+        return PDMDEV_SET_ERROR(pDevIns, rc, N_("Configuration error: Failed querying \"TestingXmlOutputFile\" as a string"));
+
+    for (unsigned i = 0; i < RT_ELEMENTS(pThis->au32TestingCfgDwords); i++)
+    {
+        char szName[32];
+        RTStrPrintf(szName, sizeof(szName), "TestingCfgDword%u", i);
+        rc = pHlp->pfnCFGMQueryU32Def(pCfg, szName, &pThis->au32TestingCfgDwords[i], 0);
+        if (RT_FAILURE(rc))
+            return PDMDevHlpVMSetError(pDevIns, rc, RT_SRC_POS,
+                                       N_("Configuration error: Failed querying \"%s\" as a string"), szName);
+    }
+
 
     /** @todo image-to-load-filename? */
 #endif
