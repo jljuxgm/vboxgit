@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 91379 2021-09-27 09:06:36Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 91386 2021-09-27 10:33:30Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -3763,6 +3763,7 @@ IEM_STATIC VBOXSTRICTRC iemVmxVmexitEptViolation(PVMCPUCC pVCpu, uint32_t fAcces
      *
      *  Caller needs to be able to distinguish this... */
 
+#ifdef VBOX_STRICT
     uint64_t const fMiscCaps  = pVCpu->cpum.GstCtx.hwvirt.vmx.Msrs.u64Misc;
     uint32_t const fProcCtls2 = pVCpu->cpum.GstCtx.hwvirt.vmx.Vmcs.u32ProcCtls2;
     Assert(!(fCaps & MSR_IA32_VMX_EPT_VPID_CAP_ADVEXITINFO_EPT_VIOLATION));   /* Advanced VM-exit info. not supported */
@@ -3770,6 +3771,7 @@ IEM_STATIC VBOXSTRICTRC iemVmxVmexitEptViolation(PVMCPUCC pVCpu, uint32_t fAcces
     Assert(!(RT_BF_GET(fMiscCaps, VMX_BF_MISC_INTEL_PT)));                    /* Intel PT not supported. */
     Assert(!(RT_BF_GET(fMiscCaps, VMX_BF_MISC_INTEL_PT)));                    /* Intel PT not supported. */
     Assert(!(fProcCtls2 & VMX_PROC_CTLS2_MODE_BASED_EPT_PERM));               /* Mode-based execute control not supported. */
+#endif
 
     iemVmxVmcsSetExitGuestPhysAddr(pVCpu, GCPhysAddr);
     iemVmxVmcsSetExitGuestLinearAddr(pVCpu, GCPtrAddr);
