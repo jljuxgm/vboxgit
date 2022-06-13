@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 91757 2021-10-15 09:58:36Z vboxsync $ */
+/* $Id: UINotificationObjects.cpp 91878 2021-10-20 11:29:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -1925,6 +1925,90 @@ CProgress UINotificationProgressMachineMediaRemove::createProgress(COMResult &co
     CProgress comProgress = m_comMachine.DeleteConfig(m_media);
     /* Store COM result: */
     comResult = m_comMachine;
+    /* Return progress-wrapper: */
+    return comProgress;
+}
+
+
+/*********************************************************************************************************************************
+*   Class UINotificationProgressVFSExplorerUpdate implementation.                                                                *
+*********************************************************************************************************************************/
+
+UINotificationProgressVFSExplorerUpdate::UINotificationProgressVFSExplorerUpdate(const CVFSExplorer &comExplorer)
+    : m_comExplorer(comExplorer)
+{
+}
+
+QString UINotificationProgressVFSExplorerUpdate::name() const
+{
+    return UINotificationProgress::tr("Updating VFS explorer ...");
+}
+
+QString UINotificationProgressVFSExplorerUpdate::details() const
+{
+    return UINotificationProgress::tr("<b>Path:</b> %1").arg(m_strPath);
+}
+
+CProgress UINotificationProgressVFSExplorerUpdate::createProgress(COMResult &comResult)
+{
+    /* Acquire path: */
+    m_strPath = m_comExplorer.GetPath();
+    if (!m_comExplorer.isOk())
+    {
+        /* Store COM result: */
+        comResult = m_comExplorer;
+        /* Return progress-wrapper: */
+        return CProgress();
+    }
+
+    /* Initialize progress-wrapper: */
+    CProgress comProgress = m_comExplorer.Update();
+    /* Store COM result: */
+    comResult = m_comExplorer;
+    /* Return progress-wrapper: */
+    return comProgress;
+}
+
+
+/*********************************************************************************************************************************
+*   Class UINotificationProgressVFSExplorerFilesRemove implementation.                                                           *
+*********************************************************************************************************************************/
+
+UINotificationProgressVFSExplorerFilesRemove::UINotificationProgressVFSExplorerFilesRemove(const CVFSExplorer &comExplorer,
+                                                                                           const QVector<QString> &files)
+    : m_comExplorer(comExplorer)
+    , m_files(files)
+{
+}
+
+QString UINotificationProgressVFSExplorerFilesRemove::name() const
+{
+    return UINotificationProgress::tr("Removing VFS explorer files ...");
+}
+
+QString UINotificationProgressVFSExplorerFilesRemove::details() const
+{
+    return UINotificationProgress::tr("<b>Path:</b> %1<br><b>Files:</b> %2")
+                                      .arg(m_strPath)
+                                      .arg(QStringList(m_files.toList()).join(", "));
+}
+
+CProgress UINotificationProgressVFSExplorerFilesRemove::createProgress(COMResult &comResult)
+{
+    /* Acquire path: */
+    m_strPath = m_comExplorer.GetPath();
+    if (!m_comExplorer.isOk())
+    {
+        /* Store COM result: */
+        comResult = m_comExplorer;
+        /* Return progress-wrapper: */
+        return CProgress();
+    }
+
+    /* Initialize progress-wrapper: */
+    CProgress comProgress = m_comExplorer.Remove(m_files);
+    /* Store COM result: */
+    comResult = m_comExplorer;
     /* Return progress-wrapper: */
     return comProgress;
 }
