@@ -1,4 +1,4 @@
-/* $Id: vkatCmdSelfTest.cpp 89804 2021-06-21 06:24:13Z vboxsync $ */
+/* $Id: vkatCmdSelfTest.cpp 89834 2021-06-22 13:55:09Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) - Self test code.
  */
@@ -241,8 +241,15 @@ static DECLCALLBACK(const char *) audioTestCmdSelftestHelp(PCRTGETOPTDEF pOpt)
 {
     switch (pOpt->iShort)
     {
-        case 'b': return "The audio backend to use.";
-        case 'd': return "Go via DrvAudio instead of directly interfacing with the backend.";
+        case 'a':                              return "Exclude all tests from the list (useful to enable single tests later with --include)";
+        case 'b':                              return "The audio backend to use";
+        case 'd':                              return "Go via DrvAudio instead of directly interfacing with the backend";
+        case 'e':                              return "Exclude the given test id from the list";
+        case 'i':                              return "Include the given test id in the list";
+        case VKAT_SELFTEST_OPT_GUEST_ATS_ADDR: return "Address of guest ATS to connect to";
+        case VKAT_SELFTEST_OPT_GUEST_ATS_PORT: return "Port of guest ATS to connect to [6042]";
+        case VKAT_SELFTEST_OPT_HOST_ATS_ADDR:  return "Address of host ATS to connect to";
+        case VKAT_SELFTEST_OPT_HOST_ATS_PORT:  return "Port of host ATS to connect to [6052]";
         default:  return NULL;
     }
 }
