@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 91169 2021-09-08 18:45:58Z vboxsync $ */
+/* $Id: UIMachineView.cpp 91363 2021-09-24 13:08:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -926,7 +926,7 @@ void UIMachineView::prepareFrameBuffer()
 #ifdef VBOX_WS_X11
         /* Processing pseudo resize-event to synchronize frame-buffer with stored framebuffer size.
          * On X11 this will be additional done when the machine state was 'saved'. */
-        if (machine().GetState() == KMachineState_Saved)
+        if (machine().GetState() == KMachineState_Saved || machine().GetState() == KMachineState_AbortedSaved)
             size = guestScreenSizeHint();
 #endif /* VBOX_WS_X11 */
 

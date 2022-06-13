@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 91341 2021-09-23 07:18:29Z vboxsync $ */
+/* $Id: UICommon.cpp 91363 2021-09-24 13:08:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -1300,6 +1300,7 @@ bool UICommon::launchMachine(CMachine &comMachine, LaunchMode enmLaunchMode /* =
                   || enmState == KMachineState_Saved
                   || enmState == KMachineState_Teleported
                   || enmState == KMachineState_Aborted
+                  || enmState == KMachineState_AbortedSaved
                   , ("Machine must be PoweredOff/Saved/Teleported/Aborted (%d)", enmState));
     }
 

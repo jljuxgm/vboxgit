@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 91132 2021-09-06 19:05:03Z vboxsync $ */
+/* $Id: UIMediumManager.cpp 91363 2021-09-24 13:08:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class implementation.
  */
@@ -444,7 +444,7 @@ void UIMediumManagerWidget::sltHandleMachineStateChange(const QUuid &uId, const 
     if (!pCurrentItem->isMediumAttachedTo(uId))
         return;
     bool fMediumIsModifiable = true;
-    if (state != KMachineState_Aborted && state != KMachineState_PoweredOff)
+    if (state != KMachineState_Aborted && state != KMachineState_PoweredOff && state != KMachineState_AbortedSaved)
         fMediumIsModifiable = false;
     m_pDetailsWidget->enableDisableMediumModificationWidgets(fMediumIsModifiable);
 }

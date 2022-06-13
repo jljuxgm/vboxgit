@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic1.cpp 91260 2021-09-15 18:55:11Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic1.cpp 91363 2021-09-24 13:08:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic1 class implementation.
  */
@@ -94,7 +94,7 @@ void UIWizardExportAppPage1::populateVMSelectorItems(const QStringList &selected
             strName = machine.GetName();
             uUuid = machine.GetId();
             fEnabled = machine.GetSessionState() == KSessionState_Unlocked;
-            fInSaveState = machine.GetState() == KMachineState_Saved;
+            fInSaveState = machine.GetState() == KMachineState_Saved || machine.GetState() == KMachineState_AbortedSaved;
         }
         else
         {

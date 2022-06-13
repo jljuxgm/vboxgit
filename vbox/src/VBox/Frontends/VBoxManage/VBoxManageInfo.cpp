@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 91326 2021-09-22 15:10:38Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 91363 2021-09-24 13:08:32Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -156,6 +156,8 @@ const char *machineStateToName(MachineState_T machineState, bool fShort)
             return "teleported";
         case MachineState_Aborted:
             return "aborted";
+        case MachineState_AbortedSaved:
+            return "aborted-saved";
         case MachineState_Running:
             return "running";
         case MachineState_Paused:

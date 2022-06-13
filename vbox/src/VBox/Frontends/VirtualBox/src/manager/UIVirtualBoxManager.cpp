@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 91104 2021-09-03 12:43:53Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 91363 2021-09-24 13:08:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -2497,6 +2497,7 @@ void UIVirtualBoxManager::launchMachine(CMachine &comMachine,
                   || enmState == KMachineState_Saved
                   || enmState == KMachineState_Teleported
                   || enmState == KMachineState_Aborted
+                  || enmState == KMachineState_AbortedSaved
                   , ("Machine must be PoweredOff/Saved/Teleported/Aborted (%d)", enmState));
     }
 

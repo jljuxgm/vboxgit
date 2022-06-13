@@ -1,4 +1,4 @@
-/* $Id: VBoxAutostartUtils.cpp 83797 2020-04-18 13:52:37Z vboxsync $ */
+/* $Id: VBoxAutostartUtils.cpp 91363 2021-09-24 13:08:32Z vboxsync $ */
 /** @file
  * VBoxAutostart - VirtualBox Autostart service, start machines during system boot.
  *                 Utils used by the windows and posix frontends.
@@ -47,6 +47,8 @@ DECLHIDDEN(const char *) machineStateToName(MachineState_T machineState, bool fS
             return "teleported";
         case MachineState_Aborted:
             return "aborted";
+        case MachineState_AbortedSaved:
+            return "aborted-saved";
         case MachineState_Running:
             return "running";
         case MachineState_Paused:

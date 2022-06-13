@@ -1,4 +1,4 @@
-/* $Id: UIMachinePreview.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIMachinePreview.cpp 91363 2021-09-24 13:08:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachinePreview class implementation.
  */
@@ -245,6 +245,7 @@ void UIMachinePreview::sltRecreatePreview()
             {
                 /* If machine is in SAVED/RESTORING state: */
                 case KMachineState_Saved:
+                case KMachineState_AbortedSaved:
                 case KMachineState_Restoring:
                 {
                     /* Use the screenshot from saved-state if possible: */

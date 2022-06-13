@@ -1,4 +1,4 @@
-/* $Id: UISession.h 90925 2021-08-26 16:25:27Z vboxsync $ */
+/* $Id: UISession.h 91363 2021-09-24 13:08:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -161,11 +161,13 @@ public:
     /** Returns requested visual-state to be entered when possible. */
     UIVisualStateType requestedVisualState() const;
 
-    bool isSaved() const { return machineState() == KMachineState_Saved; }
+    bool isSaved() const { return machineState() == KMachineState_Saved ||
+                                  machineState() == KMachineState_AbortedSaved; }
     bool isTurnedOff() const { return machineState() == KMachineState_PoweredOff ||
                                       machineState() == KMachineState_Saved ||
                                       machineState() == KMachineState_Teleported ||
-                                      machineState() == KMachineState_Aborted; }
+                                      machineState() == KMachineState_Aborted ||
+                                      machineState() == KMachineState_AbortedSaved; }
     bool isPaused() const { return machineState() == KMachineState_Paused ||
                                    machineState() == KMachineState_TeleportingPausedVM; }
     bool isRunning() const { return machineState() == KMachineState_Running ||

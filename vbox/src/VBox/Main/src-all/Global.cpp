@@ -1,4 +1,4 @@
-/* $Id: Global.cpp 89868 2021-06-23 18:02:11Z vboxsync $ */
+/* $Id: Global.cpp 91363 2021-09-24 13:08:32Z vboxsync $ */
 /** @file
  * VirtualBox COM global definitions
  *
@@ -589,6 +589,7 @@ Global::stringifyMachineState(MachineState_T aState)
         case MachineState_Saved:                return "Saved";
         case MachineState_Teleported:           return "Teleported";
         case MachineState_Aborted:              return "Aborted";
+        case MachineState_AbortedSaved:         return "Aborted-Saved";
         case MachineState_Running:              return "Running";
         case MachineState_Paused:               return "Paused";
         case MachineState_Stuck:                return "GuruMeditation";

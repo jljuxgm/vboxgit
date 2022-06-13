@@ -1,4 +1,4 @@
-/* $Id: UISettingsDefs.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UISettingsDefs.cpp 91363 2021-09-24 13:08:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISettingsDefs implementation
  */
@@ -32,6 +32,7 @@ ConfigurationAccessLevel UISettingsDefs::configurationAccessLevel(KSessionState 
         case KMachineState_Aborted:    return enmSessionState == KSessionState_Unlocked ?
                                               ConfigurationAccessLevel_Full :
                                               ConfigurationAccessLevel_Partial_PoweredOff;
+        case KMachineState_AbortedSaved:
         case KMachineState_Saved:      return ConfigurationAccessLevel_Partial_Saved;
         case KMachineState_Running:
         case KMachineState_Paused:     return ConfigurationAccessLevel_Partial_Running;

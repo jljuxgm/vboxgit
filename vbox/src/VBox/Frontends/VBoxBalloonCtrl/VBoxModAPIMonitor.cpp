@@ -1,4 +1,4 @@
-/* $Id: VBoxModAPIMonitor.cpp 83798 2020-04-18 14:13:58Z vboxsync $ */
+/* $Id: VBoxModAPIMonitor.cpp 91363 2021-09-24 13:08:32Z vboxsync $ */
 /** @file
  * VBoxModAPIMonitor - API monitor module for detecting host isolation.
  */
@@ -136,10 +136,12 @@ static const char *apimonMachineStateToName(MachineState_T machineState, bool fS
             return fShort ? "poweroff"             : "powered off";
         case MachineState_Saved:
             return "saved";
-        case MachineState_Aborted:
-            return "aborted";
         case MachineState_Teleported:
             return "teleported";
+        case MachineState_Aborted:
+            return "aborted";
+        case MachineState_AbortedSaved:
+            return "aborted-saved";
         case MachineState_Running:
             return "running";
         case MachineState_Paused:

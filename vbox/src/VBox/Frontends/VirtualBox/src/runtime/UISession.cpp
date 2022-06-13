@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 91169 2021-09-08 18:45:58Z vboxsync $ */
+/* $Id: UISession.cpp 91363 2021-09-24 13:08:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -174,6 +174,7 @@ bool UISession::initialize()
     if (   isFirstTimeStarted()
         && !((   m_machineState == KMachineState_PoweredOff
               || m_machineState == KMachineState_Aborted
+              || m_machineState == KMachineState_AbortedSaved
               || m_machineState == KMachineState_Teleported)
              && machine().GetTeleporterEnabled()))
     {

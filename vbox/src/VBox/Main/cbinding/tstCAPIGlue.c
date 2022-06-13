@@ -1,4 +1,4 @@
-/* $Id: tstCAPIGlue.c 83828 2020-04-19 13:01:40Z vboxsync $ */
+/* $Id: tstCAPIGlue.c 91363 2021-09-24 13:08:32Z vboxsync $ */
 /** @file tstCAPIGlue.c
  * Demonstrator program to illustrate use of C bindings of Main API.
  *
@@ -73,6 +73,7 @@ static const char *GetStateName(MachineState_T machineState)
         case MachineState_Saved:               return "Saved";
         case MachineState_Teleported:          return "Teleported";
         case MachineState_Aborted:             return "Aborted";
+        case MachineState_AbortedSaved:        return "Aborted-Saved";
         case MachineState_Running:             return "Running";
         case MachineState_Paused:              return "Paused";
         case MachineState_Stuck:               return "Stuck";
@@ -180,6 +181,7 @@ static HRESULT EventListenerDemoProcessEvent(IEvent *event)
                 || state == MachineState_Saved
                 || state == MachineState_Teleported
                 || state == MachineState_Aborted
+                || state == MachineState_AbortedSaved
                )
                 g_fStop = 1;
             break;

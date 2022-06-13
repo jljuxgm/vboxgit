@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemMachine.cpp 89253 2021-05-24 17:10:53Z vboxsync $ */
+/* $Id: UIChooserItemMachine.cpp 91363 2021-09-24 13:08:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemMachine class implementation.
  */
@@ -99,7 +99,8 @@ bool UIChooserItemMachine::isLockedMachine() const
     return    enmState != KMachineState_PoweredOff
            && enmState != KMachineState_Saved
            && enmState != KMachineState_Teleported
-           && enmState != KMachineState_Aborted;
+           && enmState != KMachineState_Aborted
+           && enmState != KMachineState_AbortedSaved;
 }
 
 bool UIChooserItemMachine::isToolButtonArea(const QPoint &position, int iMarginMultiplier /* = 1 */) const

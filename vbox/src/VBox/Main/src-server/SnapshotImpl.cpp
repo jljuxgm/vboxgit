@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.cpp 91326 2021-09-22 15:10:38Z vboxsync $ */
+/* $Id: SnapshotImpl.cpp 91363 2021-09-24 13:08:32Z vboxsync $ */
 /** @file
  * COM class implementation for Snapshot and SnapshotMachine in VBoxSVC.
  */
@@ -1769,7 +1769,7 @@ void SessionMachine::i_takeSnapshotHandler(TakeSnapshotTask &task)
                 // creating a new online snapshot: we need a fresh saved state file
                 i_composeSavedStateFilename(task.m_strStateFilePath);
         }
-        else if (task.m_machineStateBackup == MachineState_Saved)
+        else if (task.m_machineStateBackup == MachineState_Saved || task.m_machineStateBackup == MachineState_AbortedSaved)
             // taking an offline snapshot from machine in "saved" state: use existing state file
             task.m_strStateFilePath = mSSData->strStateFilePath;
 
@@ -2304,7 +2304,7 @@ void SessionMachine::i_restoreSnapshotHandler(RestoreSnapshotTask &task)
 
         /* Delete the saved state file if the machine was Saved prior to this
          * operation */
-        if (task.m_machineStateBackup == MachineState_Saved)
+        if (task.m_machineStateBackup == MachineState_Saved || task.m_machineStateBackup == MachineState_AbortedSaved)
         {
             Assert(!mSSData->strStateFilePath.isEmpty());
 
@@ -2678,6 +2678,7 @@ HRESULT SessionMachine::i_deleteSnapshot(const com::Guid &aStartId,
         && mData->mMachineState != MachineState_Saved
         && mData->mMachineState != MachineState_Teleported
         && mData->mMachineState != MachineState_Aborted
+        && mData->mMachineState != MachineState_AbortedSaved
         && mData->mMachineState != MachineState_Running
         && mData->mMachineState != MachineState_Paused)
         return setError(VBOX_E_INVALID_VM_STATE,

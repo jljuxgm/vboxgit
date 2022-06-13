@@ -1,4 +1,4 @@
-/* $Id: MachineImplMoveVM.cpp 91326 2021-09-22 15:10:38Z vboxsync $ */
+/* $Id: MachineImplMoveVM.cpp 91363 2021-09-24 13:08:32Z vboxsync $ */
 /** @file
  * Implementation of MachineMoveVM
  */
@@ -244,7 +244,7 @@ HRESULT MachineMoveVM::init()
     if (FAILED(hrc))
         return hrc;
 
-    if (machineState == MachineState_Saved)
+    if (machineState == MachineState_Saved || machineState == MachineState_AbortedSaved)
     {
         m_pMachine->COMGETTER(StateFilePath)(bstr_stateFilePath.asOutParam());
         strStateFilePath = bstr_stateFilePath;

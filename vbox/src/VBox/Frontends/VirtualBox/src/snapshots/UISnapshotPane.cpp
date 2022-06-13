@@ -1,4 +1,4 @@
-/* $Id: UISnapshotPane.cpp 91128 2021-09-06 17:39:56Z vboxsync $ */
+/* $Id: UISnapshotPane.cpp 91363 2021-09-24 13:08:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class implementation.
  */
@@ -1469,6 +1469,7 @@ void UISnapshotPane::updateActionStates()
                                         || enmState == KMachineState_PoweredOff
                                         || enmState == KMachineState_Saved
                                         || enmState == KMachineState_Aborted
+                                        || enmState == KMachineState_AbortedSaved
                                         || enmState == KMachineState_Running
                                         || enmState == KMachineState_Paused;
 
