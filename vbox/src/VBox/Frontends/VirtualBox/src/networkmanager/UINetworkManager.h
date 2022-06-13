@@ -1,4 +1,4 @@
-/* $Id: UINetworkManager.h 92731 2021-12-03 11:24:28Z vboxsync $ */
+/* $Id: UINetworkManager.h 92810 2021-12-08 13:21:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkManager class declaration.
  */
@@ -222,6 +222,12 @@ private:
         void loadCloudNetworks();
         /** Loads cloud @a comNetwork data to passed @a data container. */
         void loadCloudNetwork(const CCloudNetwork &comNetwork, UIDataCloudNetwork &data);
+    /** @} */
+
+    /** @name Actions stuff.
+      * @{ */
+        /** Updates action availability. */
+        void updateActionAvailability();
     /** @} */
 
     /** @name Tree-widget stuff.
