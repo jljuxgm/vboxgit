@@ -1,4 +1,4 @@
-/* $Id: tpm-win.cpp 91027 2021-08-31 11:44:27Z vboxsync $ */
+/* $Id: tpm-win.cpp 91028 2021-08-31 11:47:48Z vboxsync $ */
 /** @file
  * IPRT - Trusted Platform Module (TPM) access, Windows variant.
  */
@@ -233,7 +233,7 @@ RTDECL(int) RTTpmClose(RTTPM hTpm)
     AssertPtrReturn(pThis, VERR_INVALID_HANDLE);
 
     TBS_RESULT rcTbs = g_pfnTbsiContextClose(pThis->hCtx);
-    Assert(rcTbs == TBS_SUCCESS);
+    Assert(rcTbs == TBS_SUCCESS); RT_NOREF(rcTbs);
 
     RTMemFree(pThis);
     return VINF_SUCCESS;
