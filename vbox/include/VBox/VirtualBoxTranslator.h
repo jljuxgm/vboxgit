@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxTranslator.h 91370 2021-09-24 17:18:07Z vboxsync $ */
+/* $Id: VirtualBoxTranslator.h 91371 2021-09-24 17:26:14Z vboxsync $ */
 /** @file
  * VirtualBox Translator.
  */
@@ -20,8 +20,6 @@
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
-
-//#include <list>
 
 #include <iprt/cpp/lock.h>
 
