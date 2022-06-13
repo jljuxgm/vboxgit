@@ -1,4 +1,4 @@
-/* $Id: PDMR0DevHlp.cpp 91980 2021-10-21 18:12:53Z vboxsync $ */
+/* $Id: PDMR0DevHlp.cpp 92527 2021-11-21 02:38:43Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, R0 Device Helper parts.
  */
@@ -367,13 +367,22 @@ static DECLCALLBACK(PVMCPUCC) pdmR0DevHlp_GetVMCPU(PPDMDEVINS pDevIns)
 }
 
 
-/** @interface_method_impl{PDMDEVHLPRC,pfnGetCurrentCpuId} */
+/** @interface_method_impl{PDMDEVHLPR0,pfnGetCurrentCpuId} */
 static DECLCALLBACK(VMCPUID) pdmR0DevHlp_GetCurrentCpuId(PPDMDEVINS pDevIns)
 {
     PDMDEV_ASSERT_DEVINS(pDevIns);
     VMCPUID idCpu = VMMGetCpuId(pDevIns->Internal.s.pGVM);
     LogFlow(("pdmR0DevHlp_GetCurrentCpuId: caller='%p'/%d for CPU %u\n", pDevIns, pDevIns->iInstance, idCpu));
     return idCpu;
+}
+
+
+/** @interface_method_impl{PDMDEVHLPR0,pfnGetMainExecutionEngine} */
+static DECLCALLBACK(uint8_t) pdmR0DevHlp_GetMainExecutionEngine(PPDMDEVINS pDevIns)
+{
+    PDMDEV_ASSERT_DEVINS(pDevIns);
+    LogFlow(("pdmR0DevHlp_GetMainExecutionEngine: caller='%s'/%d:\n", pDevIns->pReg->szName, pDevIns->iInstance));
+    return pDevIns->Internal.s.pGVM->bMainExecutionEngine;
 }
 
 
@@ -1399,6 +1408,7 @@ extern DECLEXPORT(const PDMDEVHLPR0) g_pdmR0DevHlp =
     pdmR0DevHlp_GetVM,
     pdmR0DevHlp_GetVMCPU,
     pdmR0DevHlp_GetCurrentCpuId,
+    pdmR0DevHlp_GetMainExecutionEngine,
     pdmR0DevHlp_TimerFromMicro,
     pdmR0DevHlp_TimerFromMilli,
     pdmR0DevHlp_TimerFromNano,
@@ -1510,6 +1520,7 @@ extern DECLEXPORT(const PDMDEVHLPR0) g_pdmR0DevHlpTracing =
     pdmR0DevHlp_GetVM,
     pdmR0DevHlp_GetVMCPU,
     pdmR0DevHlp_GetCurrentCpuId,
+    pdmR0DevHlp_GetMainExecutionEngine,
     pdmR0DevHlp_TimerFromMicro,
     pdmR0DevHlp_TimerFromMilli,
     pdmR0DevHlp_TimerFromNano,
