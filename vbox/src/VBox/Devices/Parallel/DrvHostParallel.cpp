@@ -1,4 +1,4 @@
-/* $Id: DrvHostParallel.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: DrvHostParallel.cpp 91865 2021-10-20 09:04:42Z vboxsync $ */
 /** @file
  * VirtualBox Host Parallel Port Driver.
  *
@@ -915,8 +915,9 @@ static DECLCALLBACK(int) drvHostParallelConstruct(PPDMDRVINS pDrvIns, PCFGMNODE 
 {
     RT_NOREF(fFlags);
     PDMDRV_CHECK_VERSIONS_RETURN(pDrvIns);
+    PDRVHOSTPARALLEL    pThis = PDMINS_2_DATA(pDrvIns, PDRVHOSTPARALLEL);
+    PCPDMDRVHLPR3       pHlp  = pDrvIns->pHlpR3;
     LogFlowFunc(("iInstance=%d\n", pDrvIns->iInstance));
-    PDRVHOSTPARALLEL pThis = PDMINS_2_DATA(pDrvIns, PDRVHOSTPARALLEL);
 
 
     /*
@@ -948,15 +949,13 @@ static DECLCALLBACK(int) drvHostParallelConstruct(PPDMDRVINS pDrvIns, PCFGMNODE 
     /*
      * Validate the config.
      */
-    if (!CFGMR3AreValuesValid(pCfg, "DevicePath\0"))
-        return PDMDRV_SET_ERROR(pDrvIns, VERR_PDM_DRVINS_UNKNOWN_CFG_VALUES,
-                                N_("Unknown host parallel configuration option, only supports DevicePath"));
+    PDMDRV_VALIDATE_CONFIG_RETURN(pDrvIns, "DevicePath", "");
 
     /*
      * Query configuration.
      */
     /* Device */
-    int rc = CFGMR3QueryStringAlloc(pCfg, "DevicePath", &pThis->pszDevicePath);
+    int rc = pHlp->pfnCFGMQueryStringAlloc(pCfg, "DevicePath", &pThis->pszDevicePath);
     if (RT_FAILURE(rc))
     {
         AssertMsgFailed(("Configuration error: query for \"DevicePath\" string returned %Rra.\n", rc));
