@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 91687 2021-10-12 10:26:53Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 91735 2021-10-14 16:38:41Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -3796,6 +3796,17 @@ static DECLCALLBACK(int) ichac97R3LoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, 
         if (   fEnable
             && RT_SUCCESS(rc))
         {
+            /*
+             * We need to make sure to update the stream's next transfer (if any) when
+             * restoring from a saved state.
+             *
+             * Otherwise pStream->cDmaPeriodTicks always will be 0 and thus streams won't
+             * resume when running while the saved state has been taken.
+             *
+             * Also see oem2ticketref:52.
+             */
+            ichac97R3StreamTransferUpdate(pDevIns, pStream, pStreamCC);
+
             /* Re-arm the timer for this stream. */
             /** @todo r=aeichner This causes a VM hang upon saved state resume when NetBSD is used as a guest
              * Stopping the timer if cDmaPeriodTicks is 0 is a workaround but needs further investigation,
