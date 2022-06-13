@@ -1,4 +1,4 @@
-/* $Id: vkatCommon.cpp 91834 2021-10-19 08:04:08Z vboxsync $ */
+/* $Id: vkatCommon.cpp 91858 2021-10-20 07:25:21Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) - Self test code.
  */
@@ -693,8 +693,8 @@ int audioTestPlayTone(PAUDIOTESTIOOPTS pIoOpts, PAUDIOTESTENV pTstEnv, PAUDIOTES
 
         if (RT_SUCCESS(rc))
         {
-            RTTestPrintf(g_hTest, RTTESTLVL_ALWAYS, "Draining stream ...\n");
-            rc = AudioTestMixStreamDrain(&pStream->Mix, true /*fSync*/);
+            RTTestPrintf(g_hTest, RTTESTLVL_ALWAYS, "Skipping draining stream!\n");
+            //rc = AudioTestMixStreamDrain(&pStream->Mix, true /*fSync*/);
         }
     }
     else
