@@ -1,10 +1,10 @@
-/* $Id: UIApplianceEditorWidget.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIApplianceEditorWidget.h 91537 2021-10-04 10:33:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceEditorWidget class declaration.
  */
 
 /*
- * Copyright (C) 2009-2020 Oracle Corporation
+ * Copyright (C) 2009-2021 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -222,9 +222,9 @@ class UIApplianceDelegate : public QItemDelegate
 
 public:
 
-    /** Constructs the Appliance Delegate passing @a pParent to the base-class.
+    /** Constructs the Appliance Delegate.
       * @param  pProxy  Brings the proxy model reference used to redirect requests to. */
-    UIApplianceDelegate(QAbstractProxyModel *pProxy, QObject *pParent = 0);
+    UIApplianceDelegate(QAbstractProxyModel *pProxy);
 
     /** Returns the widget used to edit the item specified by @a idx for editing.
       * @param  pParent      Brings the parent to be assigned for newly created editor.

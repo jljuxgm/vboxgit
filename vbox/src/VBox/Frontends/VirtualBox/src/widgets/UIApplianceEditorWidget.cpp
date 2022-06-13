@@ -1,10 +1,10 @@
-/* $Id: UIApplianceEditorWidget.cpp 91125 2021-09-06 14:32:23Z vboxsync $ */
+/* $Id: UIApplianceEditorWidget.cpp 91537 2021-10-04 10:33:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceEditorWidget class implementation.
  */
 
 /*
- * Copyright (C) 2009-2020 Oracle Corporation
+ * Copyright (C) 2009-2021 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -1558,8 +1558,8 @@ QVariant UIApplianceModel::getHint(KVirtualSystemDescriptionType enmType) const
 *   Class UIApplianceDelegate implementation.                                                                                    *
 *********************************************************************************************************************************/
 
-UIApplianceDelegate::UIApplianceDelegate(QAbstractProxyModel *pProxy, QObject *pParent /* = 0 */)
-    : QItemDelegate(pParent)
+UIApplianceDelegate::UIApplianceDelegate(QAbstractProxyModel *pProxy)
+    : QItemDelegate(pProxy)
     , m_pProxy(pProxy)
 {
 }
