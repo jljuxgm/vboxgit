@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 93312 2022-01-18 13:15:12Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 93362 2022-01-20 11:51:56Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -8942,6 +8942,7 @@ DECLCALLBACK(void) Console::i_vmstateChangeCallback(PUVM pUVM, VMSTATE enmState,
              * configure it, or establish a tunnel. We definitely do not want an orphaned
              * instance running in the cloud.
              */
+            if (!that->mGateway.mGatewayInstanceId.isEmpty())
             {
                 ComPtr<IVirtualBox> pVirtualBox;
                 HRESULT rc = that->mMachine->COMGETTER(Parent)(pVirtualBox.asOutParam());
