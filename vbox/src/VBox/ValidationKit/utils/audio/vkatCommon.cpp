@@ -1,4 +1,4 @@
-/* $Id: vkatCommon.cpp 91572 2021-10-05 15:43:16Z vboxsync $ */
+/* $Id: vkatCommon.cpp 91573 2021-10-05 15:43:53Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) - Self test code.
  */
@@ -75,7 +75,7 @@ static int audioTestStreamDestroy(PAUDIOTESTENV pTstEnv, PAUDIOTESTSTREAM pStrea
  * Sets the system's master volume, if available.
  *
  * @returns VBox status code. VERR_NOT_SUPPORTED if not supported.
- * @param   uPercentVol         Volume (in percent) to set.
+ * @param   uVolPercent         Volume (in percent) to set.
  */
 int audioTestSetMasterVolume(unsigned uVolPercent)
 {
