@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 94215 2022-03-14 06:22:15Z vboxsync $ */
+/* $Id: DevVGA-SVGA.cpp 94271 2022-03-16 14:39:27Z vboxsync $ */
 /** @file
  * VMware SVGA device.
  *
@@ -3962,8 +3962,10 @@ static void vmsvgaR3FifoHandleExtCmd(PPDMDEVINS pDevIns, PVGASTATE pThis, PVGAST
             {
                 if (vmsvga3dIsLegacyBackend(pThisCC))
                     vmsvga3dSaveExec(pDevIns, pThisCC, pSSM);
+#  ifdef VMSVGA3D_DX
                 else
                     vmsvga3dDXSaveExec(pDevIns, pThisCC, pSSM);
+#  endif
             }
 # endif
             break;
@@ -3987,8 +3989,10 @@ static void vmsvgaR3FifoHandleExtCmd(PPDMDEVINS pDevIns, PVGASTATE pThis, PVGAST
 
                 if (vmsvga3dIsLegacyBackend(pThisCC))
                     vmsvga3dLoadExec(pDevIns, pThis, pThisCC, pLoadState->pSSM, pLoadState->uVersion, pLoadState->uPass);
+#  ifdef VMSVGA3D_DX
                 else
                     vmsvga3dDXLoadExec(pDevIns, pThis, pThisCC, pLoadState->pSSM, pLoadState->uVersion, pLoadState->uPass);
+#  endif
             }
 # endif
             break;
