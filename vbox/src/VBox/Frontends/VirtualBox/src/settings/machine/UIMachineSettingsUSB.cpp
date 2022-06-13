@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsUSB.cpp 93996 2022-02-28 22:04:49Z vboxsync $ */
+/* $Id: UIMachineSettingsUSB.cpp 94001 2022-02-28 22:54:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsUSB class implementation.
  */
@@ -729,9 +729,9 @@ void UIMachineSettingsUSB::sltAddFilterConfirmed(QAction *pAction)
     filterData.m_fActive = true;
     filterData.m_strName = uiCommon().usbDetails(usb);
     filterData.m_fHostUSBDevice = false;
-    filterData.m_strVendorId = QString().sprintf("%04hX", usb.GetVendorId());
-    filterData.m_strProductId = QString().sprintf("%04hX", usb.GetProductId());
-    filterData.m_strRevision = QString().sprintf("%04hX", usb.GetRevision());
+    filterData.m_strVendorId  = QString::number(usb.GetVendorId(),  16).toUpper().rightJustified(4, '0');
+    filterData.m_strProductId = QString::number(usb.GetProductId(), 16).toUpper().rightJustified(4, '0');
+    filterData.m_strRevision  = QString::number(usb.GetRevision(),  16).toUpper().rightJustified(4, '0');
     /* The port property depends on the host computer rather than on the USB
      * device itself; for this reason only a few people will want to use it
      * in the filter since the same device plugged into a different socket
