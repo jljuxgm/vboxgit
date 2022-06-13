@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicSeamless.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIMachineLogicSeamless.cpp 90878 2021-08-25 12:05:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicSeamless class implementation.
  */
@@ -126,7 +126,7 @@ void UIMachineLogicSeamless::sltCheckForRequestedVisualStateType()
         return;
 
     /* Do not try to change visual-state type in 'manual override' mode: */
-    if (isManualOverrideMode())
+    if (uisession()->isManualOverrideMode())
         return;
 
     /* If 'seamless' visual-state type is no more supported: */

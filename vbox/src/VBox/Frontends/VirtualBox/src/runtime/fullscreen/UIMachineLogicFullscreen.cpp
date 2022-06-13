@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicFullscreen.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIMachineLogicFullscreen.cpp 90878 2021-08-25 12:05:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicFullscreen class implementation.
  */
@@ -337,7 +337,7 @@ void UIMachineLogicFullscreen::sltCheckForRequestedVisualStateType()
         return;
 
     /* Do not try to change visual-state type in 'manual override' mode: */
-    if (isManualOverrideMode())
+    if (uisession()->isManualOverrideMode())
         return;
 
     /* Check requested visual-state types: */

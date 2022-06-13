@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicNormal.cpp 88247 2021-03-22 15:32:40Z vboxsync $ */
+/* $Id: UIMachineLogicNormal.cpp 90878 2021-08-25 12:05:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicNormal class implementation.
  */
@@ -68,7 +68,7 @@ void UIMachineLogicNormal::sltCheckForRequestedVisualStateType()
         return;
 
     /* Do not try to change visual-state type in 'manual override' mode: */
-    if (isManualOverrideMode())
+    if (uisession()->isManualOverrideMode())
         return;
 
     /* Check requested visual-state types: */
