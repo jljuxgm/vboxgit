@@ -1,4 +1,4 @@
-/* $Id: elf.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: elf.h 93520 2022-01-31 22:58:03Z vboxsync $ */
 /** @file
  * ELF types, current architecture.
  */
@@ -30,7 +30,7 @@
 # pragma once
 #endif
 
-#if defined(RT_ARCH_AMD64)
+#if defined(RT_ARCH_AMD64) || defined(RT_ARCH_ARM64)
 # include "elf64.h"
 typedef Elf64_Addr          Elf_Addr;
 typedef Elf64_Half          Elf_Half;
