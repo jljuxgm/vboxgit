@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 94592 2022-04-13 17:20:33Z vboxsync $
+# $Id: Makefile.kmk 94594 2022-04-13 17:51:53Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -962,6 +962,7 @@ if defined(VBOX_ONLY_VALIDATIONKIT)
 	tstRTInlineAsmPIC \
 	tstRTInlineAsmPIC3 \
 	tstRTLdrVerifyPeImage \
+	tstRTLocalIpc \
 	tstRTMemSafer \
 	tstRTMp-1 \
 	tstRTNtPath-1 \
