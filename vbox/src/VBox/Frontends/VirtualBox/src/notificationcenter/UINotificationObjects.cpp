@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 90483 2021-08-02 15:46:18Z vboxsync $ */
+/* $Id: UINotificationObjects.cpp 90559 2021-08-07 06:41:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -21,6 +21,7 @@
 
 /* GUI includes: */
 #include "UICommon.h"
+#include "UIDownloaderExtensionPack.h"
 #include "UINotificationObjects.h"
 
 /* COM includes: */
@@ -1483,4 +1484,37 @@ void UINotificationProgressHostOnlyNetworkInterfaceRemove::sltHandleProgressFini
 {
     if (error().isEmpty())
         emit sigHostOnlyNetworkInterfaceRemoved(m_strInterfaceName);
+}
+
+
+/*********************************************************************************************************************************
+*   Class UINotificationDownloaderExtensionPack implementation.                                                                  *
+*********************************************************************************************************************************/
+
+UINotificationDownloaderExtensionPack::UINotificationDownloaderExtensionPack(const QString &strPackName)
+    : m_strPackName(strPackName)
+{
+}
+
+QString UINotificationDownloaderExtensionPack::name() const
+{
+    return UINotificationDownloader::tr("Downloading Extension Pack ...");
+}
+
+QString UINotificationDownloaderExtensionPack::details() const
+{
+    return UINotificationProgress::tr("<b>Name:</b> %1").arg(m_strPackName);
+}
+
+UIDownloader *UINotificationDownloaderExtensionPack::createDownloader()
+{
+    /* Create and configure the Extension Pack downloader: */
+    UIDownloaderExtensionPack *pDownloader = UIDownloaderExtensionPack::create();
+    if (pDownloader)
+    {
+        connect(pDownloader, &UIDownloaderExtensionPack::sigDownloadFinished,
+                this, &UINotificationDownloaderExtensionPack::sigExtensionPackDownloaded);
+        return pDownloader;
+    }
+    return 0;
 }
