@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibDrmClient.cpp 93222 2022-01-13 11:53:48Z vboxsync $ */
+/* $Id: VBoxGuestR3LibDrmClient.cpp 93237 2022-01-14 17:44:24Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, DRM client handling.
  */
@@ -98,7 +98,7 @@ VBGLR3DECL(int) VbglR3DrmClientStart(void)
  */
 VBGLR3DECL(int) VbglR3DrmLegacyClientStart(void)
 {
-    const char *apszArgs[2] = { "--vmsvga", NULL };
+    const char *apszArgs[3] = { VBOX_DRMCLIENT_LEGACY_EXECUTABLE, "--vmsvga", NULL };
     return VbglR3DrmStart(VBOX_DRMCLIENT_LEGACY_EXECUTABLE, apszArgs);
 }
 
