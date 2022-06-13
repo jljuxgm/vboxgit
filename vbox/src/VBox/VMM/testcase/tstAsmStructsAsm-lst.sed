@@ -1,4 +1,4 @@
-# $Id: tstAsmStructsAsm-lst.sed 91281 2021-09-16 13:32:18Z vboxsync $
+# $Id: tstAsmStructsAsm-lst.sed 91287 2021-09-16 21:30:45Z vboxsync $
 ## @file
 # For testing assembly struct when using yasm.
 #
@@ -30,6 +30,7 @@ s/^ *//g
 /^\.text$/d
 /^\.data$/d
 /^\.bss$/d
+/ *\.unnamed_padding\./d
 s/[[:space:]][[:space:]]*/ /g
 
 #

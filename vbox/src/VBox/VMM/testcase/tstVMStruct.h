@@ -1,4 +1,4 @@
-/* $Id: tstVMStruct.h 91286 2021-09-16 20:43:34Z vboxsync $ */
+/* $Id: tstVMStruct.h 91287 2021-09-16 21:30:45Z vboxsync $ */
 /** @file
  * tstVMMStruct - Statements for generating VM and VMCPU offset and size tests.
  *
@@ -127,10 +127,9 @@
 
     GEN_CHECK_SIZE(CPUMCTX);
     GEN_CHECK_OFF(CPUMCTX, hwvirt);
+    GEN_CHECK_OFF(CPUMCTX, hwvirt.svm.Vmcb);
     GEN_CHECK_OFF(CPUMCTX, hwvirt.svm.uMsrHSavePa);
     GEN_CHECK_OFF(CPUMCTX, hwvirt.svm.GCPhysVmcb);
-    GEN_CHECK_OFF(CPUMCTX, hwvirt.svm.pVmcbR0);
-    GEN_CHECK_OFF(CPUMCTX, hwvirt.svm.pVmcbR3);
     GEN_CHECK_OFF(CPUMCTX, hwvirt.svm.HostState);
     GEN_CHECK_OFF(CPUMCTX, hwvirt.svm.uPrevPauseTick);
     GEN_CHECK_OFF(CPUMCTX, hwvirt.svm.cPauseFilter);
@@ -140,7 +139,6 @@
     GEN_CHECK_OFF(CPUMCTX, hwvirt.svm.pvMsrBitmapR3);
     GEN_CHECK_OFF(CPUMCTX, hwvirt.svm.pvIoBitmapR0);
     GEN_CHECK_OFF(CPUMCTX, hwvirt.svm.pvIoBitmapR3);
-    GEN_CHECK_OFF(CPUMCTX, hwvirt.svm.HCPhysVmcb);
     GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.GCPhysVmxon);
     GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.GCPhysVmcs);
     GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.enmDiag);

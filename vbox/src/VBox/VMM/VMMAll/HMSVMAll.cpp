@@ -1,4 +1,4 @@
-/* $Id: HMSVMAll.cpp 87563 2021-02-03 13:23:13Z vboxsync $ */
+/* $Id: HMSVMAll.cpp 91287 2021-09-16 21:30:45Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - All contexts.
  */
@@ -138,7 +138,7 @@ VMM_INT_DECL(void) HMNotifySvmNstGstVmexit(PVMCPUCC pVCpu, PCPUMCTX pCtx)
          * restore these fields because currently none of them are written back to memory
          * by a physical CPU on #VMEXIT.
          */
-        PSVMVMCBCTRL pVmcbNstGstCtrl = &pCtx->hwvirt.svm.CTX_SUFF(pVmcb)->ctrl;
+        PSVMVMCBCTRL pVmcbNstGstCtrl = &pCtx->hwvirt.svm.Vmcb.ctrl;
         pVmcbNstGstCtrl->u16InterceptRdCRx                 = pVmcbNstGstCache->u16InterceptRdCRx;
         pVmcbNstGstCtrl->u16InterceptWrCRx                 = pVmcbNstGstCache->u16InterceptWrCRx;
         pVmcbNstGstCtrl->u16InterceptRdDRx                 = pVmcbNstGstCache->u16InterceptRdDRx;
