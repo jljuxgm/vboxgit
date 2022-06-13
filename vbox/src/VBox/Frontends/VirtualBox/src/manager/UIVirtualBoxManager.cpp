@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 90389 2021-07-29 07:59:31Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 90394 2021-07-29 08:38:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -1341,17 +1341,10 @@ void UIVirtualBoxManager::sltPerformDeleteConsoleConnectionForGroup()
                         QString strName;
                         if (cloudMachineName(comMachine, strName))
                         {
-                            /* Prepare "delete console connection" progress: */
-                            CProgress comProgress = comMachine.DeleteConsoleConnection();
-                            if (!comMachine.isOk())
-                                msgCenter().cannotDeleteConsoleConnection(comMachine);
-                            else
-                            {
-                                /* Show "delete console connection" progress: */
-                                msgCenter().showModalProgressDialog(comProgress, strName, ":/progress_delete_cloud_vm_90px.png", 0, 0);
-                                if (!comProgress.isOk() || comProgress.GetResultCode() != 0)
-                                    msgCenter().cannotDeleteConsoleConnection(comProgress, strName);
-                            }
+                            /* Delete cloud console connection: */
+                            UINotificationProgressCloudConsoleConnectionDelete *pNotification =
+                                new UINotificationProgressCloudConsoleConnectionDelete(comMachine);
+                            notificationCenter().append(pNotification);
                         }
                     }
                 }
@@ -1385,17 +1378,10 @@ void UIVirtualBoxManager::sltPerformDeleteConsoleConnectionForMachine()
                 QString strName;
                 if (cloudMachineName(comMachine, strName))
                 {
-                    /* Prepare "delete console connection" progress: */
-                    CProgress comProgress = comMachine.DeleteConsoleConnection();
-                    if (!comMachine.isOk())
-                        msgCenter().cannotDeleteConsoleConnection(comMachine);
-                    else
-                    {
-                        /* Show "delete console connection" progress: */
-                        msgCenter().showModalProgressDialog(comProgress, strName, ":/progress_delete_cloud_vm_90px.png", 0, 0);
-                        if (!comProgress.isOk() || comProgress.GetResultCode() != 0)
-                            msgCenter().cannotDeleteConsoleConnection(comProgress, strName);
-                    }
+                    /* Delete cloud console connection: */
+                    UINotificationProgressCloudConsoleConnectionDelete *pNotification =
+                        new UINotificationProgressCloudConsoleConnectionDelete(comMachine);
+                    notificationCenter().append(pNotification);
                 }
             }
         }
