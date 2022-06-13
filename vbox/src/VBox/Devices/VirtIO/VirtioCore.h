@@ -1,4 +1,4 @@
-/* $Id: VirtioCore.h 94969 2022-05-09 17:06:17Z vboxsync $ */
+/* $Id: VirtioCore.h 94970 2022-05-09 17:09:09Z vboxsync $ */
 
 /** @file
  * VirtioCore.h - Virtio Declarations
@@ -1175,7 +1175,7 @@ int  virtioCoreVirtqUsedRingSync(PPDMDEVINS pDevIns, PVIRTIOCORE pVirtio, uint16
  * @returns A descriptor chain object.
  *
  * @retval  NULL if out of memory.
- * 
+ *
  * NOTE: VIRTQBUF_T objects allocated on the stack will have garbage in the u32Magic field,
  * triggering an assertion if virtioCoreR3VirtqBufRelease is called on them.
  */
