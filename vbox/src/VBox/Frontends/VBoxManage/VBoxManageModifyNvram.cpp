@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyNvram.cpp 91432 2021-09-28 11:37:43Z vboxsync $ */
+/* $Id: VBoxManageModifyNvram.cpp 91433 2021-09-28 11:50:25Z vboxsync $ */
 /** @file
  * VBoxManage - The nvram control related commands.
  */
@@ -27,7 +27,7 @@
 #include <VBox/com/errorprint.h>
 #include <VBox/com/VirtualBox.h>
 
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/path.h>
 #include <iprt/param.h>
 #include <iprt/string.h>
