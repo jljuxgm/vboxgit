@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 94198 2022-03-12 18:56:13Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 94199 2022-03-12 19:18:11Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -636,14 +636,6 @@ void printUsage(USAGECATEGORY enmCommand, uint64_t fSubcommandScope, PRTSTREAM p
                      "                            [--move <path>]\n"
                      "                            [--setlocation <path>]\n"
                      "                            [--description <description string>]"
-                     "\n", SEP);
-
-    if (enmCommand == USAGE_CLONEMEDIUM || enmCommand == USAGE_S_ALL)
-        RTStrmPrintf(pStrm,
-                           "%s clonemedium %s     [disk|dvd|floppy] <uuid|inputfile> <uuid|outputfile>\n"
-                     "                            [--format VDI|VMDK|VHD|RAW|<other>]\n"
-                     "                            [--variant Standard,Fixed,Split2G,Stream,ESX]\n"
-                     "                            [--existing]\n"
                      "\n", SEP);
 
     if (enmCommand == USAGE_MEDIUMPROPERTY || enmCommand == USAGE_S_ALL)

@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 94198 2022-03-12 18:56:13Z vboxsync $ */
+/* $Id: VBoxManage.cpp 94199 2022-03-12 19:18:11Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -205,9 +205,9 @@ static const VBMGCMD g_aCommands[] =
     { "modifymedium",       USAGE_MODIFYMEDIUM,     VBMG_CMD_TODO, handleModifyMedium,         0 },
     { "modifyhd",           USAGE_MODIFYMEDIUM,     VBMG_CMD_TODO, handleModifyMedium,         0 }, /* backward compatibility */
     { "modifyvdi",          USAGE_MODIFYMEDIUM,     VBMG_CMD_TODO, handleModifyMedium,         0 }, /* backward compatibility */
-    { "clonemedium",        USAGE_CLONEMEDIUM,      VBMG_CMD_TODO, handleCloneMedium,          0 },
-    { "clonehd",            USAGE_CLONEMEDIUM,      VBMG_CMD_TODO, handleCloneMedium,          0 }, /* backward compatibility */
-    { "clonevdi",           USAGE_CLONEMEDIUM,      VBMG_CMD_TODO, handleCloneMedium,          0 }, /* backward compatibility */
+    { "clonemedium",        USAGE_S_NEWCMD,  HELP_CMD_CLONEMEDIUM, handleCloneMedium,          0 },
+    { "clonehd",            USAGE_S_NEWCMD,  HELP_CMD_CLONEMEDIUM, handleCloneMedium,          0 }, /* backward compatibility */
+    { "clonevdi",           USAGE_S_NEWCMD,  HELP_CMD_CLONEMEDIUM, handleCloneMedium,          0 }, /* backward compatibility */
     { "encryptmedium",      USAGE_ENCRYPTMEDIUM,    VBMG_CMD_TODO, handleEncryptMedium,        0 },
     { "checkmediumpwd",     USAGE_MEDIUMENCCHKPWD,  VBMG_CMD_TODO, handleCheckMediumPassword,  0 },
     { "createvm",           USAGE_S_NEWCMD,     HELP_CMD_CREATEVM, handleCreateVM,             0 },
