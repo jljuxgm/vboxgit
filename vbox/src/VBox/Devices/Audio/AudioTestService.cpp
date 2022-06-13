@@ -1,4 +1,4 @@
-/* $Id: AudioTestService.cpp 89962 2021-06-30 07:02:07Z vboxsync $ */
+/* $Id: AudioTestService.cpp 90048 2021-07-06 09:10:25Z vboxsync $ */
 /** @file
  * AudioTestService - Audio test execution server.
  */
@@ -19,7 +19,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#define LOG_GROUP LOG_GROUP_DRV_HOST_AUDIO /** @todo Add an own log group for this? */
+#define LOG_GROUP LOG_GROUP_AUDIO_TEST
 
 #include <iprt/alloca.h>
 #include <iprt/asm.h>
