@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMUnattendedPageBasic.cpp 90151 2021-07-12 07:21:04Z vboxsync $ */
+/* $Id: UIWizardNewVMUnattendedPageBasic.cpp 90153 2021-07-12 08:05:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMUnattendedPageBasic class implementation.
  */
@@ -31,7 +31,7 @@
 #include "UIFilePathSelector.h"
 #include "UIIconPool.h"
 #include "UIUserNamePasswordEditor.h"
-#include "UIHostNameDomainEditor.h"
+#include "UIHostnameDomainEditor.h"
 #include "UIWizardNewVMUnattendedPageBasic.h"
 #include "UIWizardNewVM.h"
 
@@ -101,7 +101,7 @@ void UIWizardNewVMUnattendedPageBasic::createConnections()
         connect(m_pGAInstallationISOContainer, &QGroupBox::toggled,
                 this, &UIWizardNewVMUnattendedPageBasic::sltInstallGACheckBoxToggle);
     if (m_pHostnameDomainEditor)
-        connect(m_pHostnameDomainEditor, &UIHostNameDomainEditor::sigHostnameDomainChanged,
+        connect(m_pHostnameDomainEditor, &UIHostnameDomainEditor::sigHostnameDomainChanged,
                 this, &UIWizardNewVMUnattendedPageBasic::sltHostnameDomainChanged);
     if (m_pProductKeyLineEdit)
         connect(m_pProductKeyLineEdit, &QLineEdit::textChanged,
@@ -311,7 +311,7 @@ QWidget *UIWizardNewVMUnattendedPageBasic::createAdditionalOptionsWidgets()
         pAdditionalOptionsContainerLayout->addWidget(m_pProductKeyLineEdit, 0, 1, 1, 2);
     }
 
-    m_pHostnameDomainEditor = new UIHostNameDomainEditor;
+    m_pHostnameDomainEditor = new UIHostnameDomainEditor;
     if (m_pHostnameDomainEditor)
     {
         // if (m_pHostnameLabel)
