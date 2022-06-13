@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 89886 2021-06-24 11:43:47Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 90006 2021-07-02 20:00:38Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -2186,7 +2186,7 @@ static int ichac97R3StreamSetUp(PPDMDEVINS pDevIns, PAC97STATE pThis, PAC97STATE
         {
             LogFunc(("[SD%RU8] ichac97R3MixerAddDrvStreams failed: %Rrc (uHz=%u)\n",
                      pStreamCC->u8SD, rc, PDMAudioPropsHz(&Cfg.Props)));
-            pStreamCC->State.nsRetrySetup = RTTimeNanoTS() + 5*RT_NS_1SEC; /* retry in 5 seconds, unless config changes. */
+            pStreamCC->State.nsRetrySetup = RTTimeNanoTS() + 5*RT_NS_1SEC_64; /* retry in 5 seconds, unless config changes. */
         }
     }
     else
