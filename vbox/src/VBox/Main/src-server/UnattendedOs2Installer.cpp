@@ -1,4 +1,4 @@
-/* $Id: UnattendedOs2Installer.cpp 93109 2021-12-31 02:29:54Z vboxsync $ */
+/* $Id: UnattendedOs2Installer.cpp 93114 2022-01-01 11:17:15Z vboxsync $ */
 /** @file
  * UnattendedOs2Installer implementation.
  */
@@ -388,7 +388,7 @@ VBoxDbg> dw ss:sp - 5*2 L8
  *
  * Update: The values loaded off the stack aren't the ones ending up the
  * registers, so that might explain why this goes south.
- *  
+ *
  * @sa ticketref:20625
  */
 /*static*/

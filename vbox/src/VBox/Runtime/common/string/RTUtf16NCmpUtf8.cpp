@@ -1,4 +1,4 @@
-/* $Id: RTUtf16NCmpUtf8.cpp 93103 2021-12-30 23:29:37Z vboxsync $ */
+/* $Id: RTUtf16NCmpUtf8.cpp 93114 2022-01-01 11:17:15Z vboxsync $ */
 /** @file
  * IPRT - RTUtf16NCmpUtf8.
  */
@@ -61,5 +61,4 @@ RTDECL(int) RTUtf16NCmpUtf8(PCRTUTF16 pwsz1, const char *psz2, size_t cwcMax1, s
     return 0;
 }
 RT_EXPORT_SYMBOL(RTUtf16NCmpUtf8);
-
 
