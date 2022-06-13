@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 93609 2022-02-05 19:03:08Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 93611 2022-02-05 19:11:22Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -2751,17 +2751,6 @@ static DECLCALLBACK(int) pdmR3DevHlp_QueueCreate(PPDMDEVINS pDevIns, size_t cbIt
     LogFlow(("pdmR3DevHlp_QueueCreate: caller='%s'/%d: returns %Rrc *phQueue=%p\n",
              pDevIns->pReg->szName, pDevIns->iInstance, rc, *phQueue));
     return rc;
-}
-
-
-/**
- * Converts a queue handle to a queue pointer.
- */
-DECLINLINE(PPDMQUEUE)  pdmR3DevHlp_QueueToPtr(PPDMDEVINS pDevIns, PDMQUEUEHANDLE hQueue)
-{
-    PDMDEV_ASSERT_DEVINS(pDevIns);
-    RT_NOREF(pDevIns);
-    return (PPDMQUEUE)hQueue;
 }
 
 
