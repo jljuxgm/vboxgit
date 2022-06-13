@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 93708 2022-02-11 20:46:11Z vboxsync $
+# $Id: Makefile.kmk 93811 2022-02-16 21:33:02Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxManage (the cli frontend).
 #
@@ -223,7 +223,7 @@ VBoxManage_CLEAN += \
 # Preprocess the xml files, applying remarks.
 $(foreach file,$(filter man_VBoxManage-%,$(VBOX_MANUAL_XML_REFENTRY_FILES)) \
 , $(evalcall2 def_vbox_refentry_preprocess_for_manpage,$(VBoxManage_0_OUTDIR),$(file), \
-	$(VBOX_PATH_MANUAL_SRC)/en_US/$(file),replace-xrefs))
+	$(VBOX_PATH_MANUAL_SRC)/en_US/$(file),replace-xrefs,en_US))
 
 
 ##
