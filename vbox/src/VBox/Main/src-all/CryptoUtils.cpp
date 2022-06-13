@@ -1,4 +1,4 @@
-/* $Id: CryptoUtils.cpp 94777 2022-05-02 10:46:02Z vboxsync $ */
+/* $Id: CryptoUtils.cpp 94778 2022-05-02 10:51:48Z vboxsync $ */
 /** @file
  * Main - Cryptographic utility functions used by both VBoxSVC and VBoxC.
  */
@@ -113,6 +113,7 @@ SsmStream::SsmStream(VirtualBox *pParent, SecretKeyStore *pKeyStore, const Utf8S
     m_pParent               = pParent;
     m_hVfsFile              = NIL_RTVFSFILE;
     m_pSsm                  = NULL;
+    m_pCryptoIf             = NULL;
 }
 
 
