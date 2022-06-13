@@ -1,4 +1,4 @@
-/* $Id: UINativeWizard.h 90032 2021-07-05 15:34:39Z vboxsync $ */
+/* $Id: UINativeWizard.h 90069 2021-07-06 15:09:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINativeWizard class declaration.
  */
@@ -104,6 +104,11 @@ protected:
     /** Defines pixmap @a strName. */
     void setPixmapName(const QString &strName);
 
+    /** Returns whether the page with certain @a iIndex is visible. */
+    bool isPageVisible(int iIndex) const;
+    /** Defines whether the page with certain @a iIndex is @a fVisible. */
+    void setPageVisible(int iIndex, bool fVisible);
+
     /** Appends wizard @a pPage.
       * @returns assigned page index. */
     int addPage(UINativeWizardPage *pPage);
@@ -161,6 +166,8 @@ private:
     QString     m_strPixmapName;
     /** Holds the last entered page index. */
     int         m_iLastIndex;
+    /** Holds the set of invisible pages. */
+    QSet<int>   m_invisiblePages;
 
     /** Holds the pixmap label instance. */
     QLabel                               *m_pLabelPixmap;
