@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tdAudioTest.py 90994 2021-08-30 10:41:20Z vboxsync $
+# $Id: tdAudioTest.py 91054 2021-09-01 10:38:17Z vboxsync $
 
 """
 AudioTest test driver which invokes the VKAT (Validation Kit Audio Test)
@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 90994 $"
+__version__ = "$Revision: 91054 $"
 
 # Standard Python imports.
 import os
@@ -558,13 +558,20 @@ class tdAudioTest(vbox.TestDriver):
                 reporter.log('Set extradata: %s => %s' % (sKey, sValue));
                 fRc = oSession.setExtraData(sKey, sValue) and fRc;
 
+            # Make sure that the VM's audio adapter is configured the way we need it to.
+            if self.fpApiVer >= 4.0:
+                oOsType = oSession.getOsType();
+                ## @ŧdoo Make this configurable via driver opts (to use as a variant)?
+                oSession.setupAudio(oOsType.recommendedAudioController,
+                                    fEnable = True, fEnableIn = True, fEnableOut = True);
+
             # Save the settings.
             fRc = fRc and oSession.saveSettings();
             fRc = oSession.close() and fRc;
 
         reporter.testStart('Waiting for TXS');
         oSession, oTxsSession = self.startVmAndConnectToTxsViaTcp(oTestVm.sVmName,
-                                                                  fCdWait = True,
+                                                                  fCdWait = False,
                                                                   cMsTimeout = 3 * 60 * 1000,
                                                                   sFileCdWait = '${OS/ARCH}/vkat${EXESUFF}');
         reporter.testDone();
