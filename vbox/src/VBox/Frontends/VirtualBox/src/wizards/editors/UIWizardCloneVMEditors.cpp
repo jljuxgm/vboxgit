@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMEditors.cpp 90620 2021-08-11 07:51:02Z vboxsync $ */
+/* $Id: UIWizardCloneVMEditors.cpp 90628 2021-08-11 13:21:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class implementation.
  */
@@ -65,6 +65,32 @@ UICloneVMNamePathEditor::UICloneVMNamePathEditor(const QString &strOriginalName,
     prepare();
 }
 
+QString UICloneVMNamePathEditor::cloneName() const
+{
+    if (m_pNameLineEdit)
+        return m_pNameLineEdit->text();
+    return QString();
+}
+
+void UICloneVMNamePathEditor::setCloneName(const QString &strName)
+{
+    if (m_pNameLineEdit)
+        m_pNameLineEdit->setText(strName);
+}
+
+QString UICloneVMNamePathEditor::clonePath() const
+{
+    if (m_pPathSelector)
+        return m_pPathSelector->path();
+    return QString();
+}
+
+void UICloneVMNamePathEditor::setClonePath(const QString &strPath)
+{
+    if (m_pPathSelector)
+        m_pPathSelector->setPath(strPath);
+}
+
 void UICloneVMNamePathEditor::setFirstColumnWidth(int iWidth)
 {
     if (m_pContainerLayout)
@@ -99,6 +125,8 @@ void UICloneVMNamePathEditor::prepare()
     {
         m_pContainerLayout->addWidget(m_pNameLineEdit, 0, 1, 1, 1);
         m_pNameLineEdit->setText(tr("%1 Clone").arg(m_strOriginalName));
+        connect(m_pNameLineEdit, &QILineEdit::textChanged,
+                this, &UICloneVMNamePathEditor::sigCloneNameChanged);
     }
 
     m_pPathLabel = new QLabel(this);
