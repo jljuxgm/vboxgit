@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdpCtl.cpp 91769 2021-10-15 19:24:43Z vboxsync $ */
+/* $Id: VBoxNetAdpCtl.cpp 91770 2021-10-15 19:38:17Z vboxsync $ */
 /** @file
  * Apps - VBoxAdpCtl, Configuration tool for vboxnetX adapters.
  */
@@ -785,7 +785,7 @@ int NetworkAddress::RTNetStrToIPv4CidrWithZeroPrefixAllowed(const char *pcszAddr
         return VERR_INVALID_PARAMETER;
 
     uint32_t prefix;
-    rc = RTStrToUInt32Ex(pszNext, &pszNext, 16, &prefix);
+    rc = RTStrToUInt32Ex(pszNext, &pszNext, 0, &prefix);
     if ((rc == VINF_SUCCESS || rc == VWRN_TRAILING_SPACES) && prefix == 0)
     {
         *pAddr = addr;
@@ -795,7 +795,7 @@ int NetworkAddress::RTNetStrToIPv4CidrWithZeroPrefixAllowed(const char *pcszAddr
     return RTNetStrToIPv4Cidr(pcszAddr, pAddr, piPrefix);
 }
 
-RTDECL(int) NetworkAddress::RTNetStrToIPv6CidrWithZeroPrefixAllowed(const char *pcszAddr, PRTNETADDRIPV6 pAddr, int *piPrefix)
+int NetworkAddress::RTNetStrToIPv6CidrWithZeroPrefixAllowed(const char *pcszAddr, PRTNETADDRIPV6 pAddr, int *piPrefix)
 {
     RTNETADDRIPV6 Addr;
     uint8_t u8Prefix;
