@@ -1,4 +1,4 @@
-/* $Id: UINotificationCenter.cpp 90484 2021-08-02 17:18:43Z vboxsync $ */
+/* $Id: UINotificationCenter.cpp 90552 2021-08-06 14:22:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINotificationCenter class implementation.
  */
@@ -125,7 +125,7 @@ UINotificationCenter *UINotificationCenter::s_pInstance = 0;
 void UINotificationCenter::create(QWidget *pParent)
 {
     AssertReturnVoid(!s_pInstance);
-    s_pInstance = new UINotificationCenter(pParent);
+    new UINotificationCenter(pParent);
 }
 
 /* static */
@@ -139,6 +139,11 @@ void UINotificationCenter::destroy()
 UINotificationCenter *UINotificationCenter::instance()
 {
     return s_pInstance;
+}
+
+void UINotificationCenter::invoke()
+{
+    emit sigOpen();
 }
 
 QUuid UINotificationCenter::append(UINotificationObject *pObject)
