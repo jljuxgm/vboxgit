@@ -1,4 +1,4 @@
-/* $Id: PDMCritSect.cpp 90677 2021-08-13 10:30:37Z vboxsync $ */
+/* $Id: PDMCritSect.cpp 91909 2021-10-20 19:05:44Z vboxsync $ */
 /** @file
  * PDM - Critical Sections, Ring-3.
  */
@@ -1083,32 +1083,6 @@ VMMR3DECL(PPDMCRITSECT)             PDMR3CritSectGetNop(PVM pVM)
 {
     VM_ASSERT_VALID_EXT_RETURN(pVM, NULL);
     return &pVM->pdm.s.NopCritSect;
-}
-
-
-/**
- * Gets the ring-0 address of the NOP critical section.
- *
- * @returns The ring-0 address of the NOP critical section.
- * @param   pVM                 The cross context VM structure.
- */
-VMMR3DECL(R0PTRTYPE(PPDMCRITSECT))  PDMR3CritSectGetNopR0(PVM pVM)
-{
-    VM_ASSERT_VALID_EXT_RETURN(pVM, NIL_RTR0PTR);
-    return MMHyperR3ToR0(pVM, &pVM->pdm.s.NopCritSect);
-}
-
-
-/**
- * Gets the raw-mode context address of the NOP critical section.
- *
- * @returns The raw-mode context address of the NOP critical section.
- * @param   pVM                 The cross context VM structure.
- */
-VMMR3DECL(RCPTRTYPE(PPDMCRITSECT))  PDMR3CritSectGetNopRC(PVM pVM)
-{
-    VM_ASSERT_VALID_EXT_RETURN(pVM, NIL_RTRCPTR);
-    return MMHyperR3ToRC(pVM, &pVM->pdm.s.NopCritSect);
 }
 
 
