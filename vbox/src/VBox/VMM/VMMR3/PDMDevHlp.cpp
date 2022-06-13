@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 91928 2021-10-21 09:09:51Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 91930 2021-10-21 10:12:30Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -350,6 +350,37 @@ static DECLCALLBACK(int) pdmR3DevHlp_Mmio2ChangeRegionNo(PPDMDEVINS pDevIns, PGM
     int rc = PGMR3PhysMmio2ChangeRegionNo(pVM, pDevIns, hRegion, iNewRegion);
 
     LogFlow(("pdmR3DevHlp_Mmio2ChangeRegionNo: caller='%s'/%d: returns %Rrc\n", pDevIns->pReg->szName, pDevIns->iInstance, rc));
+    return rc;
+}
+
+
+/** @interface_method_impl{PDMDEVHLPR3,pfnMmioMapMmio2Page} */
+static DECLCALLBACK(int) pdmR3DevHlp_MmioMapMmio2Page(PPDMDEVINS pDevIns, IOMMMIOHANDLE hRegion, RTGCPHYS offRegion,
+                                                      uint64_t hMmio2, RTGCPHYS offMmio2, uint64_t fPageFlags)
+{
+    PDMDEV_ASSERT_DEVINS(pDevIns);
+    LogFlow(("pdmR3DevHlp_MmioMapMmio2Page: caller='%s'/%d: hRegion=%RX64 offRegion=%RGp hMmio2=%RX64 offMmio2=%RGp fPageFlags=%RX64\n",
+             pDevIns->pReg->szName, pDevIns->iInstance, hRegion, offRegion, hMmio2, offMmio2, fPageFlags));
+
+    int rc = IOMMmioMapMmio2Page(pDevIns->Internal.s.pVMR3, pDevIns, hRegion, offRegion, hMmio2, offMmio2, fPageFlags);
+
+    Log(("pdmR3DevHlp_MmioMapMmio2Page: caller='%s'/%d: returns %Rrc\n",
+         pDevIns->pReg->szName, pDevIns->iInstance, rc));
+    return rc;
+}
+
+
+/** @interface_method_impl{PDMDEVHLPR3,pfnMmioResetRegion} */
+static DECLCALLBACK(int) pdmR3DevHlp_MmioResetRegion(PPDMDEVINS pDevIns, IOMMMIOHANDLE hRegion)
+{
+    PDMDEV_ASSERT_DEVINS(pDevIns);
+    LogFlow(("pdmR3DevHlp_MmioResetRegion: caller='%s'/%d: hRegion=%RX64\n",
+             pDevIns->pReg->szName, pDevIns->iInstance, hRegion));
+
+    int rc = IOMMmioResetRegion(pDevIns->Internal.s.pVMR3, pDevIns, hRegion);
+
+    Log(("pdmR3DevHlp_MmioResetRegion: caller='%s'/%d: returns %Rrc\n",
+         pDevIns->pReg->szName, pDevIns->iInstance, rc));
     return rc;
 }
 
@@ -4565,6 +4596,8 @@ const PDMDEVHLPR3 g_pdmR3DevHlpTrusted =
     pdmR3DevHlp_Mmio2Reduce,
     pdmR3DevHlp_Mmio2GetMappingAddress,
     pdmR3DevHlp_Mmio2ChangeRegionNo,
+    pdmR3DevHlp_MmioMapMmio2Page,
+    pdmR3DevHlp_MmioResetRegion,
     pdmR3DevHlp_ROMRegister,
     pdmR3DevHlp_ROMProtectShadow,
     pdmR3DevHlp_SSMRegister,
@@ -4944,6 +4977,8 @@ const PDMDEVHLPR3 g_pdmR3DevHlpTracing =
     pdmR3DevHlp_Mmio2Reduce,
     pdmR3DevHlp_Mmio2GetMappingAddress,
     pdmR3DevHlp_Mmio2ChangeRegionNo,
+    pdmR3DevHlp_MmioMapMmio2Page,
+    pdmR3DevHlp_MmioResetRegion,
     pdmR3DevHlp_ROMRegister,
     pdmR3DevHlp_ROMProtectShadow,
     pdmR3DevHlp_SSMRegister,
@@ -5594,6 +5629,8 @@ const PDMDEVHLPR3 g_pdmR3DevHlpUnTrusted =
     pdmR3DevHlp_Mmio2Reduce,
     pdmR3DevHlp_Mmio2GetMappingAddress,
     pdmR3DevHlp_Mmio2ChangeRegionNo,
+    pdmR3DevHlp_MmioMapMmio2Page,
+    pdmR3DevHlp_MmioResetRegion,
     pdmR3DevHlp_ROMRegister,
     pdmR3DevHlp_ROMProtectShadow,
     pdmR3DevHlp_SSMRegister,
