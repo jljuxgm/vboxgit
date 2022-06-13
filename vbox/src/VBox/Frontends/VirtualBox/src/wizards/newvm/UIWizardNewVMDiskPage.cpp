@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMDiskPage.cpp 94052 2022-03-02 08:16:19Z vboxsync $ */
+/* $Id: UIWizardNewVMDiskPage.cpp 94055 2022-03-02 13:05:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMDiskPage class implementation.
  */
@@ -223,7 +223,7 @@ void UIWizardNewVMDiskPage::retranslateUi()
     if (m_pFixedCheckBox)
     {
         m_pFixedCheckBox->setText(UIWizardNewVM::tr("Pre-allocate &Full Size"));
-        m_pFixedCheckBox->setToolTip(UIWizardNewVM::tr("Allocates the virtual disk image at VM creation time"));
+        m_pFixedCheckBox->setToolTip(UIWizardNewVM::tr("When checked, the virtual disk image is allocated with its full size during VM creation time"));
     }
 
     /* Translate rich text labels: */
