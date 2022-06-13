@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.cpp 92440 2021-11-15 19:27:42Z vboxsync $ */
+/* $Id: UIMediumSelector.cpp 92588 2021-11-24 19:48:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class implementation.
  */
@@ -113,6 +113,49 @@ QList<QUuid> UIMediumSelector::selectedMediumIds() const
             selectedIds.push_back(item->medium().id());
     }
     return selectedIds;
+}
+
+/* static */
+int UIMediumSelector::openMediumSelectorDialog(QWidget *pParent, UIMediumDeviceType  enmMediumType, const QUuid &uCurrentMediumId,
+                                               QUuid &uSelectedMediumUuid, const QString &strMachineFolder, const QString &strMachineName,
+                                               const QString &strMachineGuestOSTypeId, bool fEnableCreate, const QUuid &uMachineID,
+                                               UIActionPool *pActionPool)
+{
+    QUuid uMachineOrGlobalId = uMachineID == QUuid() ? gEDataManager->GlobalID : uMachineID;
+
+    QWidget *pDialogParent = windowManager().realParentWindow(pParent);
+    QPointer<UIMediumSelector> pSelector = new UIMediumSelector(uCurrentMediumId, enmMediumType, strMachineName,
+                                                                strMachineFolder, strMachineGuestOSTypeId,
+                                                                uMachineOrGlobalId, pDialogParent, pActionPool);
+
+    if (!pSelector)
+        return static_cast<int>(UIMediumSelector::ReturnCode_Rejected);
+    pSelector->setEnableCreateAction(fEnableCreate);
+    windowManager().registerNewParent(pSelector, pDialogParent);
+
+    int iResult = pSelector->exec(false);
+    UIMediumSelector::ReturnCode returnCode;
+
+    if (iResult >= static_cast<int>(UIMediumSelector::ReturnCode_Max) || iResult < 0)
+        returnCode = UIMediumSelector::ReturnCode_Rejected;
+    else
+        returnCode = static_cast<UIMediumSelector::ReturnCode>(iResult);
+
+    if (returnCode == UIMediumSelector::ReturnCode_Accepted)
+    {
+        QList<QUuid> selectedMediumIds = pSelector->selectedMediumIds();
+
+        /* Currently we only care about the 0th since we support single selection by intention: */
+        if (selectedMediumIds.isEmpty())
+            returnCode = UIMediumSelector::ReturnCode_Rejected;
+        else
+        {
+            uSelectedMediumUuid = selectedMediumIds[0];
+            uiCommon().updateRecentlyUsedMediumListAndFolder(enmMediumType, uiCommon().medium(uSelectedMediumUuid).location());
+        }
+    }
+    delete pSelector;
+    return static_cast<int>(returnCode);
 }
 
 void UIMediumSelector::retranslateUi()

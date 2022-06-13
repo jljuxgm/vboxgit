@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.h 92504 2021-11-18 19:30:14Z vboxsync $ */
+/* $Id: UIVisoCreator.h 92588 2021-11-24 19:48:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator class declaration.
  */
@@ -68,6 +68,15 @@ public:
     QString currentPath() const;
     void    setCurrentPath(const QString &strPath);
     QMenu *menu() const;
+
+    /** Creates a VISO by using the VISO creator dialog.
+      * @param  pParent           Passes the dialog parent.
+      * @param  strDefaultFolder  Passes the folder to save the VISO file.
+      * @param  strMachineName    Passes the name of the machine,
+      * returns the UUID of the created medium or a null QUuid. */
+    static QUuid createViso(UIActionPool *pActionPool, QWidget *pParent,
+                            const QString &strDefaultFolder = QString(),
+                            const QString &strMachineName  = QString());
 
 #ifdef VBOX_WS_MAC
     /** Returns the toolbar. */

@@ -1,4 +1,4 @@
-/* $Id: UIFDCreationDialog.h 91350 2021-09-23 14:09:33Z vboxsync $ */
+/* $Id: UIFDCreationDialog.h 92588 2021-11-24 19:48:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFDCreationDialog class declaration.
  */
@@ -52,6 +52,15 @@ public:
 
     /** Return the medium ID. */
     QUuid mediumID() const;
+
+    /** Creates and shows a dialog thru which user can create a new floppy disk a VISO using the file-open dialog.
+      * @param  parent            Passes the parent of the dialog,
+      * @param  strDefaultFolder  Passes the default folder,
+      * @param  strMachineName    Passes the name of the machine,
+      * returns the UUID of the newly created medium if successful, a null QUuid otherwise.*/
+    static QUuid createFloppyDisk(QWidget *pParent, const QString &strDefaultFolder = QString(),
+                           const QString &strMachineName = QString());
+
 
 public slots:
 
