@@ -1,4 +1,4 @@
-/* $Id: UIUpdateManager.cpp 94458 2022-04-04 17:18:17Z vboxsync $ */
+/* $Id: UIUpdateManager.cpp 94516 2022-04-07 14:22:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUpdateManager class implementation.
  */
@@ -50,10 +50,10 @@ public:
     virtual void exec() RT_OVERRIDE;
 
 private:
-#if 0
+
     /** Holds whether this customer has forced privelegies. */
     bool  m_fForcedCall;
-#endif
+
 };
 
 
@@ -87,9 +87,7 @@ private slots:
 *********************************************************************************************************************************/
 
 UIUpdateStepVirtualBox::UIUpdateStepVirtualBox(bool fForcedCall)
-#if 0
     : m_fForcedCall(fForcedCall)
-#endif
 {
     Q_UNUSED(fForcedCall);
 }
@@ -120,7 +118,7 @@ void UIUpdateStepVirtualBox::exec()
     gpNotificationCenter->append(pNotification);
 #else
     UINotificationProgressNewVersionChecker *pNotification =
-        new UINotificationProgressNewVersionChecker();
+        new UINotificationProgressNewVersionChecker(m_fForcedCall);
     connect(pNotification, &UINotificationProgressNewVersionChecker::sigProgressFinished,
             this, &UIUpdateStepVirtualBox::sigStepFinished);
     gpNotificationCenter->append(pNotification);

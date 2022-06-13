@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 94454 2022-04-04 12:50:13Z vboxsync $ */
+/* $Id: UINotificationObjects.cpp 94516 2022-04-07 14:22:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -4310,7 +4310,8 @@ UINewVersionChecker *UINotificationNewVersionCheckerVirtualBox::createChecker()
 *   Class UINotificationProgressNewVersionChecker implementation.                                                                *
 *********************************************************************************************************************************/
 
-UINotificationProgressNewVersionChecker::UINotificationProgressNewVersionChecker()
+UINotificationProgressNewVersionChecker::UINotificationProgressNewVersionChecker(bool fForcedCall)
+    : m_fForcedCall(fForcedCall)
 {
     connect(this, &UINotificationProgress::sigProgressFinished,
             this, &UINotificationProgressNewVersionChecker::sltHandleProgressFinished);
@@ -4362,7 +4363,10 @@ void UINotificationProgressNewVersionChecker::sltHandleProgressFinished()
         UINotificationMessage::showUpdateSuccess(strVersion, strURL);
     }
     else
-        UINotificationMessage::showUpdateNotFound();
+    {
+        if (m_fForcedCall)
+            UINotificationMessage::showUpdateNotFound();
+    }
 }
 
 #endif /* VBOX_GUI_WITH_NETWORK_MANAGER */

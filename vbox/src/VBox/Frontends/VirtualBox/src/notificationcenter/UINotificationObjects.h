@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.h 94454 2022-04-04 12:50:13Z vboxsync $ */
+/* $Id: UINotificationObjects.h 94516 2022-04-07 14:22:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects declarations.
  */
@@ -2691,7 +2691,7 @@ class SHARED_LIBRARY_STUFF UINotificationProgressNewVersionChecker : public UINo
 
 public:
 
-    UINotificationProgressNewVersionChecker();
+    UINotificationProgressNewVersionChecker(bool fForcedCall);
 
 protected:
 
@@ -2709,6 +2709,8 @@ private slots:
 private:
 
     CHostUpdate m_comUpdateChecker;
+    /** Holds whether this customer has forced privelegies. */
+    bool        m_fForcedCall;
 };
 
 
