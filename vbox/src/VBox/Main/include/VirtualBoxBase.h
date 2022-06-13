@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxBase.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: VirtualBoxBase.h 94703 2022-04-25 10:25:38Z vboxsync $ */
 /** @file
  * VirtualBox COM base classes definition
  */
@@ -764,6 +764,7 @@ public:
     HRESULT setError(HRESULT aResultCode);
     HRESULT setError(HRESULT aResultCode, const char *pcsz, ...);
     HRESULT setError(const ErrorInfo &ei);
+    HRESULT setErrorVrcV(int vrc, const char *pcszMsgFmt, va_list va_args);
     HRESULT setErrorVrc(int vrc);
     HRESULT setErrorVrc(int vrc, const char *pcszMsgFmt, ...);
     HRESULT setErrorBoth(HRESULT hrc, int vrc);
