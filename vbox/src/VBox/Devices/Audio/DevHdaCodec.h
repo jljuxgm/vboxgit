@@ -1,4 +1,4 @@
-/* $Id: DevHdaCodec.h 89810 2021-06-21 09:06:38Z vboxsync $ */
+/* $Id: DevHdaCodec.h 89869 2021-06-23 19:06:11Z vboxsync $ */
 /** @file
  * Intel HD Audio Controller Emulation - Codec, Sigmatel/IDT STAC9220.
  */
@@ -21,14 +21,13 @@
 # pragma once
 #endif
 
-#include <iprt/list.h>
+#ifndef VBOX_INCLUDED_SRC_Audio_DevHda_h
+# error "Only include DevHda.h!"
+#endif
 
+#include <iprt/list.h>
 #include "AudioMixer.h"
 
-/** Pointer to a shared HDA device state.  */
-typedef struct HDASTATE *PHDASTATE;
-/** Pointer to a ring-3 HDA device state.  */
-typedef struct HDASTATER3 *PHDASTATER3;
 
 /** The ICH HDA (Intel) common codec state. */
 typedef struct HDACODEC *PHDACODEC;
@@ -38,9 +37,6 @@ typedef struct HDACODECR0 *PHDACODECR0;
 typedef struct HDACODECR3 *PHDACODECR3;
 /** The ICH HDA (Intel) current context codec state. */
 typedef CTX_SUFF(PHDACODEC) PHDACODECCC;
-
-/** The HDA host driver backend. */
-typedef struct HDADRIVER *PHDADRIVER;
 
 /**
  * Enumeration specifying the codec type to use.

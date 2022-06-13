@@ -1,4 +1,4 @@
-/* $Id: DevHdaCommon.h 88235 2021-03-22 10:44:43Z vboxsync $ */
+/* $Id: DevHdaCommon.h 89869 2021-06-23 19:06:11Z vboxsync $ */
 /** @file
  * Intel HD Audio Controller Emulation - Common stuff.
  *
@@ -24,12 +24,12 @@
 # pragma once
 #endif
 
+#ifndef VBOX_INCLUDED_SRC_Audio_DevHda_h
+# error "Only include DevHda.h!"
+#endif
+
 #include "AudioMixer.h"
 #include <VBox/log.h> /* LOG_ENABLED */
-
-/** Pointer to an HDA stream (SDI / SDO).  */
-typedef struct HDASTREAMR3 *PHDASTREAMR3;
-
 
 
 /** Read callback. */
