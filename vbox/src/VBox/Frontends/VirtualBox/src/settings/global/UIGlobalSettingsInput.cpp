@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsInput.cpp 93936 2022-02-24 16:50:21Z vboxsync $ */
+/* $Id: UIGlobalSettingsInput.cpp 94288 2022-03-17 12:20:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsInput class implementation.
  */
@@ -195,18 +195,18 @@ void UIGlobalSettingsInput::prepare()
 void UIGlobalSettingsInput::prepareWidgets()
 {
     /* Prepare main layout: */
-    QVBoxLayout *pLayoutMain = new QVBoxLayout(this);
-    if (pLayoutMain)
+    QVBoxLayout *pLayout = new QVBoxLayout(this);
+    if (pLayout)
     {
         /* Prepare 'shortcut configuration' editor: */
         m_pEditorShortcutConfiguration = new UIShortcutConfigurationEditor(this);
         if (m_pEditorShortcutConfiguration)
-            pLayoutMain->addWidget(m_pEditorShortcutConfiguration);
+            pLayout->addWidget(m_pEditorShortcutConfiguration);
 
         /* Prepare 'auto capture keyboard' editor: */
         m_pEditorAutoCaptureKeyboard = new UIAutoCaptureKeyboardEditor(this);
         if (m_pEditorAutoCaptureKeyboard)
-            pLayoutMain->addWidget(m_pEditorAutoCaptureKeyboard);
+            pLayout->addWidget(m_pEditorAutoCaptureKeyboard);
     }
 }
 

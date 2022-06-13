@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsGeneral.cpp 93935 2022-02-24 16:40:30Z vboxsync $ */
+/* $Id: UIGlobalSettingsGeneral.cpp 94288 2022-03-17 12:20:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsGeneral class implementation.
  */
@@ -148,21 +148,21 @@ void UIGlobalSettingsGeneral::prepare()
 void UIGlobalSettingsGeneral::prepareWidgets()
 {
     /* Prepare main layout: */
-    QVBoxLayout *pLayoutMain = new QVBoxLayout(this);
-    if (pLayoutMain)
+    QVBoxLayout *pLayout = new QVBoxLayout(this);
+    if (pLayout)
     {
         /* Prepare 'default machine folder' editor: */
         m_pEditorDefaultMachineFolder = new UIDefaultMachineFolderEditor(this);
         if (m_pEditorDefaultMachineFolder)
-            pLayoutMain->addWidget(m_pEditorDefaultMachineFolder);
+            pLayout->addWidget(m_pEditorDefaultMachineFolder);
 
         /* Prepare 'VRDE auth library' editor: */
         m_pEditorVRDEAuthLibrary = new UIVRDEAuthLibraryEditor(this);
         if (m_pEditorVRDEAuthLibrary)
-            pLayoutMain->addWidget(m_pEditorVRDEAuthLibrary);
+            pLayout->addWidget(m_pEditorVRDEAuthLibrary);
 
         /* Add stretch to the end: */
-        pLayoutMain->addStretch();
+        pLayout->addStretch();
     }
 }
 

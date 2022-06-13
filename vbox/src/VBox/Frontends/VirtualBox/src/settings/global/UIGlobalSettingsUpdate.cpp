@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsUpdate.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIGlobalSettingsUpdate.cpp 94288 2022-03-17 12:20:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsUpdate class implementation.
  */
@@ -132,13 +132,16 @@ void UIGlobalSettingsUpdate::prepare()
 void UIGlobalSettingsUpdate::prepareWidgets()
 {
     /* Prepare main layout: */
-    QVBoxLayout *pLayoutMain = new QVBoxLayout(this);
-    if (pLayoutMain)
+    QVBoxLayout *pLayout = new QVBoxLayout(this);
+    if (pLayout)
     {
         /* Prepare update settings editor: */
         m_pEditorUpdateSettings = new UIUpdateSettingsEditor(this);
         if (m_pEditorUpdateSettings)
-            pLayoutMain->addWidget(m_pEditorUpdateSettings);
+            pLayout->addWidget(m_pEditorUpdateSettings);
+
+        /* Add stretch to the end: */
+        pLayout->addStretch();
     }
 }
 
