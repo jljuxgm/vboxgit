@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.cpp 91094 2021-09-02 13:35:13Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.cpp 92028 2021-10-25 12:02:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class implementation.
  */
@@ -702,7 +702,8 @@ void UIChooserAbstractModel::sltLocalMachineRegistrationChanged(const QUuid &uMa
         {
             /* Add new machine-item: */
             const CMachine comMachine = uiCommon().virtualBox().FindMachine(uMachineId.toString());
-            addLocalMachineIntoTheTree(comMachine, true /* make it visible */);
+            if (comMachine.isNotNull())
+                addLocalMachineIntoTheTree(comMachine, true /* make it visible */);
         }
     }
 }
