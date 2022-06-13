@@ -1,4 +1,4 @@
-/* $Id: DrvIntNet.cpp 91945 2021-10-21 13:17:30Z vboxsync $ */
+/* $Id: DrvIntNet.cpp 92724 2021-12-02 23:13:10Z vboxsync $ */
 /** @file
  * DrvIntNet - Internal network transport driver.
  */
@@ -1745,6 +1745,9 @@ static DECLCALLBACK(int) drvR3IntNetConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg
     /*
      * Create the interface.
      */
+    if (SUPR3IsDriverless()) /** @todo This is probably not good enough for doing fuzz testing, but later... */
+        return PDMDrvHlpVMSetError(pDrvIns, VERR_SUP_DRIVERLESS, RT_SRC_POS,
+                                   N_("Cannot attach to '%s' in driverless mode"), pThis->szNetwork);
     OpenReq.hIf = INTNET_HANDLE_INVALID;
     rc = PDMDrvHlpSUPCallVMMR0Ex(pDrvIns, VMMR0_DO_INTNET_OPEN, &OpenReq, sizeof(OpenReq));
     if (RT_FAILURE(rc))
