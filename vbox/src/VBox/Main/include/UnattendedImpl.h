@@ -1,4 +1,4 @@
-/* $Id: UnattendedImpl.h 93535 2022-02-01 16:56:55Z vboxsync $ */
+/* $Id: UnattendedImpl.h 93575 2022-02-03 12:16:48Z vboxsync $ */
 /** @file
  * Unattended class header
  */
@@ -37,9 +37,7 @@ struct ControllerSlot;
 struct WIMImage
 {
     Utf8Str  mName;
-    Utf8Str  mVersionMajor;
-    Utf8Str  mVersionMinor;
-    Utf8Str  mVersionBuild;
+    Utf8Str  mVersion;
     uint32_t mImageIndex;
     Utf8Str  getNameAndVersion() const;
 };
