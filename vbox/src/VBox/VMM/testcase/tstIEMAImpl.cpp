@@ -1,4 +1,4 @@
-/* $Id: tstIEMAImpl.cpp 94192 2022-03-12 01:40:52Z vboxsync $ */
+/* $Id: tstIEMAImpl.cpp 94193 2022-03-12 01:43:01Z vboxsync $ */
 /** @file
  * IEM Assembly Instruction Helper Testcase.
  */
@@ -342,14 +342,14 @@ static uint64_t  RandU64Src(uint32_t iTest)
 static void GenerateHeader(PRTSTREAM pOut, const char *pszCpuDesc, const char *pszCpuType, const char *pszCpuSuffU)
 {
     /* We want to tag the generated source code with the revision that produced it. */
-    static char s_szRev[] = "$Revision: 94192 $";
+    static char s_szRev[] = "$Revision: 94193 $";
     const char *pszRev = RTStrStripL(strchr(s_szRev, ':') + 1);
     size_t      cchRev = 0;
     while (RT_C_IS_DIGIT(pszRev[cchRev]))
         cchRev++;
 
     RTStrmPrintf(pOut,
-                 "/* $Id: tstIEMAImpl.cpp 94192 2022-03-12 01:40:52Z vboxsync $ */\n"
+                 "/* $Id: tstIEMAImpl.cpp 94193 2022-03-12 01:43:01Z vboxsync $ */\n"
                  "/** @file\n"
                  " * IEM Assembly Instruction Helper Testcase Data%s%s - r%.*s on %s.\n"
                  " */\n"
@@ -1504,10 +1504,10 @@ static void ShiftGenerate(PRTSTREAM pOut, const char *pszCpuSuffU, uint32_t cTes
 
 static void ShiftTest(void)
 {
-//    ShiftU8Test();
+    ShiftU8Test();
     ShiftU16Test();
-//    ShiftU32Test();
-//    ShiftU64Test();
+    ShiftU32Test();
+    ShiftU64Test();
 }
 
 
