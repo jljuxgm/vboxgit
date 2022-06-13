@@ -1,4 +1,4 @@
-/* $Id: UITranslator.cpp 90942 2021-08-27 10:19:32Z vboxsync $ */
+/* $Id: UITranslator.cpp 90951 2021-08-27 11:51:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UITranslator class implementation.
  */
@@ -25,6 +25,9 @@
 /* GUI includes: */
 #include "UIMessageCenter.h"
 #include "UITranslator.h"
+#ifdef VBOX_WS_MAC
+# include "VBoxUtils-darwin.h"
+#endif
 
 /* Other VBox includes: */
 #include <iprt/assert.h>
