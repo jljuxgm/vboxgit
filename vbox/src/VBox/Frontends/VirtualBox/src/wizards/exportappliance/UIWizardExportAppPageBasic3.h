@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic3.h 91467 2021-09-29 17:57:13Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic3.h 91539 2021-10-04 10:57:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic3 class declaration.
  */
@@ -47,8 +47,7 @@ namespace UIWizardExportAppPage3
 
     /** Refreshes appliance settings widget. */
     void refreshApplianceSettingsWidget(UIApplianceExportEditorWidget *pApplianceWidget,
-                                        const QList<QUuid> &machineIDs,
-                                        const QString &strUri,
+                                        const CAppliance &comAppliance,
                                         bool fIsFormatCloudOne);
     /** Refreshes form properties table. */
     void refreshFormPropertiesTable(UIFormEditorWidget *pFormEditor,

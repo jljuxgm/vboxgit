@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageExpert.h 91467 2021-09-29 17:57:13Z vboxsync $ */
+/* $Id: UIWizardExportAppPageExpert.h 91539 2021-10-04 10:57:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageExpert class declaration.
  */
@@ -113,6 +113,10 @@ private:
     void updateMachines();
     /** Updates format. */
     void updateFormat();
+
+    /** Update local stuff. */
+    void updateLocalStuff();
+
     /** Updates profile. */
     void updateProfile();
     /** Updates cloud stuff. */
