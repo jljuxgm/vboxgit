@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: MachineImpl.cpp 93388 2022-01-20 22:02:53Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -5558,7 +5558,7 @@ HRESULT Machine::i_setGuestPropertyToService(const com::Utf8Str &aName, const co
 
                 RTTIMESPEC time;
                 HWData::GuestProperty prop;
-                prop.strValue   = Bstr(aValue).raw();
+                prop.strValue   = aValue;
                 prop.mTimestamp = RTTimeSpecGetNano(RTTimeNow(&time));
                 prop.mFlags     = fFlags;
                 mHWData->mGuestProperties[aName] = prop;
