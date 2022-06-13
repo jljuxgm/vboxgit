@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 93830 2022-02-17 16:56:18Z vboxsync $ */
+/* $Id: CPUM.cpp 93905 2022-02-24 09:13:26Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -2045,12 +2045,14 @@ VMMR3DECL(int) CPUMR3Init(PVM pVM)
     /*
      * Check that the CPU supports the minimum features we require.
      */
+#if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
     if (!pVM->cpum.s.HostFeatures.fFxSaveRstor)
         return VMSetError(pVM, VERR_UNSUPPORTED_CPU, RT_SRC_POS, "Host CPU does not support the FXSAVE/FXRSTOR instruction.");
     if (!pVM->cpum.s.HostFeatures.fMmx)
         return VMSetError(pVM, VERR_UNSUPPORTED_CPU, RT_SRC_POS, "Host CPU does not support MMX.");
     if (!pVM->cpum.s.HostFeatures.fTsc)
         return VMSetError(pVM, VERR_UNSUPPORTED_CPU, RT_SRC_POS, "Host CPU does not support RDTSC.");
+#endif
 
     /*
      * Setup the CR4 AND and OR masks used in the raw-mode switcher.
@@ -2080,12 +2082,14 @@ VMMR3DECL(int) CPUMR3Init(PVM pVM)
     /*
      * Initialize the host XSAVE/XRSTOR mask.
      */
+#if defined(RT_ARCH_X86) || defined(RT_ARCH_AMD64)
     uint32_t cbMaxXState = pVM->cpum.s.HostFeatures.cbMaxExtendedState;
     cbMaxXState = RT_ALIGN(cbMaxXState, 128);
     AssertLogRelReturn(   pVM->cpum.s.HostFeatures.cbMaxExtendedState >= sizeof(X86FXSTATE)
                        && pVM->cpum.s.HostFeatures.cbMaxExtendedState <= sizeof(pVM->apCpusR3[0]->cpum.s.Host.XState)
                        && pVM->cpum.s.HostFeatures.cbMaxExtendedState <= sizeof(pVM->apCpusR3[0]->cpum.s.Guest.XState)
                        , VERR_CPUM_IPE_2);
+#endif
 
     for (VMCPUID i = 0; i < pVM->cCpus; i++)
     {

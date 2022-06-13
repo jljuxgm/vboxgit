@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 93745 2022-02-14 21:02:57Z vboxsync $ */
+/* $Id: CPUMR3CpuId.cpp 93905 2022-02-24 09:13:26Z vboxsync $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -4353,9 +4353,11 @@ static int cpumR3CpuIdReadConfig(PVM pVM, PCPUMCPUIDCONFIG pConfig, PCFGMNODE pC
 
     bool const fMayHaveXSave = pVM->cpum.s.HostFeatures.fXSaveRstor
                             && pVM->cpum.s.HostFeatures.fOpSysXSaveRstor
-                            && (  !VM_IS_NEM_ENABLED(pVM)
-                                ? fNestedPagingAndFullGuestExec
-                                : NEMHCGetFeatures(pVM) & NEM_FEAT_F_XSAVE_XRSTOR);
+                            && (  VM_IS_NEM_ENABLED(pVM)
+                                ? NEMHCGetFeatures(pVM) & NEM_FEAT_F_XSAVE_XRSTOR
+                                : VM_IS_EXEC_ENGINE_IEM(pVM)
+                                ? false /** @todo IEM and XSAVE @bugref{9898} */
+                                : fNestedPagingAndFullGuestExec);
     uint64_t const fXStateHostMask = pVM->cpum.s.fXStateHostMask;
 
     /** @cfgm{/CPUM/IsaExts/XSAVE, boolean, depends}
@@ -4556,7 +4558,9 @@ int cpumR3InitCpuIdAndMsrs(PVM pVM, PCCPUMMSRS pHostMsrs)
     CPUMCPUIDCONFIG Config;
     RT_ZERO(Config);
 
-    bool const fNestedPagingAndFullGuestExec = VM_IS_NEM_ENABLED(pVM) || HMAreNestedPagingAndFullGuestExecEnabled(pVM);
+    bool const fNestedPagingAndFullGuestExec = VM_IS_NEM_ENABLED(pVM)
+                                            || VM_IS_EXEC_ENGINE_IEM(pVM)
+                                            || HMAreNestedPagingAndFullGuestExecEnabled(pVM);
     int rc = cpumR3CpuIdReadConfig(pVM, &Config, pCpumCfg, fNestedPagingAndFullGuestExec);
     AssertRCReturn(rc, rc);
 

@@ -1,4 +1,4 @@
-/* $Id: tstVMStructSize.cpp 93718 2022-02-14 11:09:36Z vboxsync $ */
+/* $Id: tstVMStructSize.cpp 93905 2022-02-24 09:13:26Z vboxsync $ */
 /** @file
  * tstVMStructSize - testcase for check structure sizes/alignment
  *                   and to verify that HC and GC uses the same
@@ -438,9 +438,11 @@ int main()
     CHECK_EXPR(PGM_PAGE_HAS_ACTIVE_ALL_HANDLERS(&Page) == false);
 
 #undef AssertFatal
-#define AssertFatal(expr) do { } while (0)
+#define AssertFatal(expr)           do { } while (0)
+#undef AssertFatalMsg
+#define AssertFatalMsg(expr, msg)   do { } while (0)
 #undef Assert
-#define Assert(expr)      do { } while (0)
+#define Assert(expr)                do { } while (0)
 
     PGM_PAGE_CLEAR(&Page);
     CHECK_EXPR(PGM_PAGE_GET_HCPHYS_NA(&Page) == 0);
