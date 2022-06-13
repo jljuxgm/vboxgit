@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.h 90411 2021-07-29 14:16:15Z vboxsync $ */
+/* $Id: UINotificationObjects.h 90412 2021-07-29 14:55:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects declarations.
  */
@@ -165,6 +165,44 @@ private:
     QString  m_strFrom;
     /** Holds the final location. */
     QString  m_strTo;
+};
+
+/** UINotificationProgress extension for deleting medium storage functionality. */
+class SHARED_LIBRARY_STUFF UINotificationProgressMediumDeletingStorage : public UINotificationProgress
+{
+    Q_OBJECT;
+
+signals:
+
+    /** Notifies listeners about @a comMedium storage was deleted. */
+    void sigMediumStorageDeleted(const CMedium &comMedium);
+
+public:
+
+    /** Constructs deleting medium storage notification-progress.
+      * @param  comMedium  Brings the medium which storage being deleted. */
+    UINotificationProgressMediumDeletingStorage(const CMedium &comMedium);
+
+protected:
+
+    /** Returns object name. */
+    virtual QString name() const /* override final */;
+    /** Returns object details. */
+    virtual QString details() const /* override final */;
+    /** Creates and returns started progress-wrapper. */
+    virtual CProgress createProgress(COMResult &comResult) /* override final */;
+
+private slots:
+
+    /** Handles signal about progress being finished. */
+    void sltHandleProgressFinished();
+
+private:
+
+    /** Holds the medium which storage being deleted. */
+    CMedium  m_comMedium;
+    /** Holds the medium location. */
+    QString  m_strLocation;
 };
 
 /** UINotificationProgress extension for machine copy functionality. */

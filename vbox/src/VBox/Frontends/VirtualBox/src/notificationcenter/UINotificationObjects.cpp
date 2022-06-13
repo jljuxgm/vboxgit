@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 90411 2021-07-29 14:16:15Z vboxsync $ */
+/* $Id: UINotificationObjects.cpp 90412 2021-07-29 14:55:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -170,6 +170,54 @@ CProgress UINotificationProgressMediumMove::createProgress(COMResult &comResult)
     comResult = m_comMedium;
     /* Return progress-wrapper: */
     return comProgress;
+}
+
+
+/*********************************************************************************************************************************
+*   Class UINotificationProgressMediumDeletingStorage implementation.                                                            *
+*********************************************************************************************************************************/
+
+UINotificationProgressMediumDeletingStorage::UINotificationProgressMediumDeletingStorage(const CMedium &comMedium)
+    : m_comMedium(comMedium)
+{
+    connect(this, &UINotificationProgress::sigProgressFinished,
+            this, &UINotificationProgressMediumDeletingStorage::sltHandleProgressFinished);
+}
+
+QString UINotificationProgressMediumDeletingStorage::name() const
+{
+    return UINotificationProgress::tr("Deleting medium storage ...");
+}
+
+QString UINotificationProgressMediumDeletingStorage::details() const
+{
+    return UINotificationProgress::tr("<b>Location:</b> %1").arg(m_strLocation);
+}
+
+CProgress UINotificationProgressMediumDeletingStorage::createProgress(COMResult &comResult)
+{
+    /* Acquire location: */
+    m_strLocation = m_comMedium.GetLocation();
+    if (!m_comMedium.isOk())
+    {
+        /* Store COM result: */
+        comResult = m_comMedium;
+        /* Return progress-wrapper: */
+        return CProgress();
+    }
+
+    /* Initialize progress-wrapper: */
+    CProgress comProgress = m_comMedium.DeleteStorage();
+    /* Store COM result: */
+    comResult = m_comMedium;
+    /* Return progress-wrapper: */
+    return comProgress;
+}
+
+void UINotificationProgressMediumDeletingStorage::sltHandleProgressFinished()
+{
+    if (!error().isEmpty())
+        emit sigMediumStorageDeleted(m_comMedium);
 }
 
 
