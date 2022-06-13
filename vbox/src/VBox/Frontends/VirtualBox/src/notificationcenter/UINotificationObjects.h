@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.h 90687 2021-08-15 14:08:18Z vboxsync $ */
+/* $Id: UINotificationObjects.h 90689 2021-08-15 15:03:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects declarations.
  */
@@ -49,6 +49,27 @@ class SHARED_LIBRARY_STUFF UINotificationMessage : public UINotificationSimple
     Q_OBJECT;
 
 public:
+
+    /** Notifies about inability to send ACPI shutdown. */
+    static void cannotSendACPIToMachine();
+
+    /** Reminds about keyboard auto capturing. */
+    static void remindAboutAutoCapture();
+    /** Reminds about mouse integration.
+      * @param  fSupportsAbsolute  Brings whether mouse supports absolute pointing. */
+    static void remindAboutMouseIntegration(bool fSupportsAbsolute);
+    /** Reminds about paused VM input. */
+    static void remindAboutPausedVMInput();
+    /** Revokes message about paused VM input. */
+    static void forgetAboutPausedVMInput();
+    /** Reminds about wrong color depth.
+      * @param  uRealBPP    Brings real bit per pixel value.
+      * @param  uWantedBPP  Brings wanted bit per pixel value. */
+    static void remindAboutWrongColorDepth(ulong uRealBPP, ulong uWantedBPP);
+    /** Revokes message about wrong color depth. */
+    static void forgetAboutWrongColorDepth();
+    /** Reminds about GA not affected. */
+    static void remindAboutGuestAdditionsAreNotActive();
 
 protected:
 

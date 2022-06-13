@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.cpp 90475 2021-08-02 13:12:02Z vboxsync $ */
+/* $Id: UIKeyboardHandler.cpp 90689 2021-08-15 15:03:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandler class implementation.
  */
@@ -41,7 +41,6 @@
 #include "UICommon.h"
 #include "UIExtraDataManager.h"
 #include "UIMessageCenter.h"
-#include "UIPopupCenter.h"
 #include "UIActionPool.h"
 #include "UISession.h"
 #include "UIMachineLogic.h"
@@ -53,6 +52,7 @@
 #include "UIKeyboardHandlerSeamless.h"
 #include "UIKeyboardHandlerScale.h"
 #include "UIMouseHandler.h"
+#include "UINotificationCenter.h"
 #ifdef VBOX_WS_MAC
 # include "UICocoaApplication.h"
 # include "VBoxUtils-darwin.h"
@@ -945,7 +945,7 @@ void UIKeyboardHandler::sltMachineStateChanged()
     if (machineLogic()->activeMachineWindow() &&
         state != KMachineState_Paused &&
         state != KMachineState_TeleportingPausedVM)
-        popupCenter().forgetAboutPausedVMInput(machineLogic()->activeMachineWindow());
+        UINotificationMessage::forgetAboutPausedVMInput();
 }
 
 void UIKeyboardHandler::sltFinaliseCaptureKeyboard()
@@ -1245,7 +1245,7 @@ bool UIKeyboardHandler::eventFilter(QObject *pWatchedObject, QEvent *pEvent)
                 {
                     /* Show a possible warning on key release which seems to be more expected by the end user: */
                     if (uisession()->isPaused())
-                        popupCenter().remindAboutPausedVMInput(machineLogic()->activeMachineWindow());
+                        UINotificationMessage::remindAboutPausedVMInput();
                 }
 
                 break;

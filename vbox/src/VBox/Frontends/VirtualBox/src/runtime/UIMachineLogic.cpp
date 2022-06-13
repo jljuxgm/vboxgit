@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 90664 2021-08-12 13:53:09Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 90689 2021-08-15 15:03:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -432,7 +432,7 @@ void UIMachineLogic::shutdown()
 {
     /* Warn the user about ACPI is not available if so: */
     if (!console().GetGuestEnteredACPIMode())
-        return popupCenter().cannotSendACPIToMachine(activeMachineWindow());
+        return UINotificationMessage::cannotSendACPIToMachine();
 
     /* Shutdown: */
     uisession()->shutdown();
@@ -2353,7 +2353,7 @@ void UIMachineLogic::sltOpenSharedFoldersSettingsDialog()
 {
     /* Do not process if additions are not loaded! */
     if (!uisession()->isGuestAdditionsActive())
-        popupCenter().remindAboutGuestAdditionsAreNotActive(activeMachineWindow());
+        UINotificationMessage::remindAboutGuestAdditionsAreNotActive();
 
     /* Open VM settings : Shared folders page: */
     sltOpenVMSettingsDialog("#sharedFolders");
