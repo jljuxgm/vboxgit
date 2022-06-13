@@ -1,4 +1,4 @@
-/* $Id: APIC.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: APIC.cpp 93514 2022-01-31 22:15:41Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller.
  */
@@ -1306,7 +1306,7 @@ static int apicR3InitState(PVM pVM)
             Assert(pVCpu->idCpu == idCpu);
             Assert(pApicCpu->pvApicPageR3 == NIL_RTR3PTR);
             Assert(pApicCpu->pvApicPageR0 == NIL_RTR0PTR);
-            AssertCompile(sizeof(XAPICPAGE) == PAGE_SIZE);
+            AssertCompile(sizeof(XAPICPAGE) <= PAGE_SIZE);
             pApicCpu->cbApicPage = sizeof(XAPICPAGE);
             int rc = SUPR3PageAllocEx(1 /* cPages */, 0 /* fFlags */, &pApicCpu->pvApicPageR3, &pApicCpu->pvApicPageR0,
                                       &SupApicPage);
