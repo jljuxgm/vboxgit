@@ -1,4 +1,4 @@
-/* $Id: UIWizardDiskEditors.h 90252 2021-07-20 09:54:18Z vboxsync $ */
+/* $Id: UIWizardDiskEditors.h 90263 2021-07-20 14:30:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardDiskEditors class declaration.
  */
@@ -54,13 +54,14 @@ class UIDiskFormatsGroupBox : public QIWithRetranslateUI<QGroupBox>
 
 signals:
 
+    void sigMediumFormatChanged();
 
 public:
 
     UIDiskFormatsGroupBox(QWidget *pParent = 0);
     CMediumFormat mediumFormat() const;
     void setMediumFormat(const CMediumFormat &mediumFormat);
-    const CMediumFormat &VDIMeiumFormat() const;
+    const CMediumFormat &VDIMediumFormat() const;
     const QStringList formatExtensions() const;
 
 private:

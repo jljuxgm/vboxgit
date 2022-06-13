@@ -1,4 +1,4 @@
-/* $Id: UIWizardDiskEditors.cpp 90252 2021-07-20 09:54:18Z vboxsync $ */
+/* $Id: UIWizardDiskEditors.cpp 90263 2021-07-20 14:30:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class implementation.
  */
@@ -68,7 +68,7 @@ void UIDiskFormatsGroupBox::setMediumFormat(const CMediumFormat &mediumFormat)
     }
 }
 
-const CMediumFormat &UIDiskFormatsGroupBox::VDIMeiumFormat() const
+const CMediumFormat &UIDiskFormatsGroupBox::VDIMediumFormat() const
 {
     return m_comVDIMediumFormat;
 }
@@ -108,12 +108,16 @@ void UIDiskFormatsGroupBox::prepare()
     foreach (const QString &strId, others.keys())
         addFormatButton(pContainerLayout, others.value(strId));
 
-
+    /* Select VDI: */
     if (!m_pFormatButtonGroup->buttons().isEmpty())
     {
         m_pFormatButtonGroup->button(0)->click();
         m_pFormatButtonGroup->button(0)->setFocus();
     }
+
+    connect(m_pFormatButtonGroup, static_cast<void(QButtonGroup::*)(int)>(&QButtonGroup::buttonClicked),
+            this, &UIDiskFormatsGroupBox::sigMediumFormatChanged);
+
     retranslateUi();
 }
 
