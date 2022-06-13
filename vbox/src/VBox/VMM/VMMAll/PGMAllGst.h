@@ -1,4 +1,4 @@
-/* $Id: PGMAllGst.h 92313 2021-11-10 10:25:56Z vboxsync $ */
+/* $Id: PGMAllGst.h 92319 2021-11-10 13:44:08Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Guest Paging Template - All context code.
  */
@@ -252,6 +252,7 @@ DECLINLINE(int) PGM_GST_NAME(Walk)(PVMCPUCC pVCpu, RTGCPTR GCPtr, PGSTPTWALK pWa
             fEffective |= Pde.u & (X86_PDE4M_D | X86_PDE4M_G);
             fEffective |= (Pde.u & X86_PDE4M_PAT) >> X86_PDE4M_PAT_SHIFT;
             pWalk->Core.fEffective = fEffective;
+            Assert(GST_IS_NX_ACTIVE(pVCpu) || !(fEffective & PGM_PTATTRS_NX_MASK));
 
             pWalk->Core.fEffectiveRW = !!(fEffective & X86_PTE_RW);
             pWalk->Core.fEffectiveUS = !!(fEffective & X86_PTE_US);
@@ -311,6 +312,7 @@ DECLINLINE(int) PGM_GST_NAME(Walk)(PVMCPUCC pVCpu, RTGCPTR GCPtr, PGSTPTWALK pWa
 # endif
         fEffective |= Pte.u & (X86_PTE_D | X86_PTE_PAT | X86_PTE_G);
         pWalk->Core.fEffective = fEffective;
+        Assert(GST_IS_NX_ACTIVE(pVCpu) || !(fEffective & PGM_PTATTRS_NX_MASK));
 
         pWalk->Core.fEffectiveRW = !!(fEffective & X86_PTE_RW);
         pWalk->Core.fEffectiveUS = !!(fEffective & X86_PTE_US);
