@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 88545 2021-04-15 13:59:03Z vboxsync $ */
+/* $Id: DevVGA.cpp 90017 2021-07-05 01:02:52Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -3926,21 +3926,15 @@ static int vbeR3ParseBitmap(PVGASTATECC pThisCC)
                                ("Wrong bitmap data offset %u.\n", pFileHdr->offBits),
                                VERR_INVALID_PARAMETER);
 
-        uint32_t cbFileData = pFileHdr->cbFileSize - pFileHdr->offBits;
-        uint32_t cbImageData = pThisCC->cxLogo * pThisCC->cyLogo * pThisCC->cLogoPlanes;
-
-        /* TBD: Take 32bit rows padding into account */
+        uint32_t const cbFileData  = pFileHdr->cbFileSize - pFileHdr->offBits;
+        uint32_t       cbImageData = (uint32_t)pThisCC->cxLogo * pThisCC->cyLogo * pThisCC->cLogoPlanes;
         if (pThisCC->cLogoBits == 4)
-        {
             cbImageData /= 2;
-        } else if (pThisCC->cLogoBits == 24)
-        {
+        else if (pThisCC->cLogoBits == 24)
             cbImageData *= 3;
-        }
-
         AssertLogRelMsgReturn(cbImageData <= cbFileData,
-            ("Wrong BMP header data %d\n", cbImageData),
-            VERR_INVALID_PARAMETER);
+                              ("Wrong BMP header data %u\n", cbImageData),
+                              VERR_INVALID_PARAMETER);
 
         /*
          * Read bitmap palette
