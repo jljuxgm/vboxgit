@@ -1,4 +1,4 @@
-/* $Id: SUPDrvIOC.h 90829 2021-08-24 10:26:07Z vboxsync $ */
+/* $Id: SUPDrvIOC.h 90859 2021-08-24 21:36:42Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - IOCtl definitions.
  */
@@ -222,7 +222,7 @@ typedef SUPREQHDR *PSUPREQHDR;
  * @todo Pending work on next major version change:
  *          - Remove pvVMMR0 from SUPLDRLOAD.
  */
-#define SUPDRV_IOC_VERSION                              0x00300004
+#define SUPDRV_IOC_VERSION                              0x00300005
 
 /** SUP_IOCTL_COOKIE. */
 typedef struct SUPCOOKIE
