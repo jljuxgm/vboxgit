@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 94029 2022-03-01 11:09:14Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 94064 2022-03-02 15:49:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -428,7 +428,7 @@ void UIChooserModel::makeSureNoItemWithCertainIdSelected(const QUuid &uId)
             matchedItems << pNode->item();
 
     /* If we have at least one of those items currently selected: */
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+#ifdef VBOX_IS_QT6_OR_LATER
     {
         QList<UIChooserItem *> selectedItemsList = selectedItems();
         QSet<UIChooserItem *> selectedItemsSet(selectedItemsList.begin(), selectedItemsList.end());

@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 94034 2022-03-01 11:37:42Z vboxsync $ */
+/* $Id: UIMachineView.cpp 94064 2022-03-02 15:49:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -102,7 +102,7 @@ public:
     {}
 
     /** Redirects all the native events to parent. */
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+#ifdef VBOX_IS_QT6_OR_LATER
     bool nativeEventFilter(const QByteArray &eventType, void *pMessage, qintptr * /* pResult */)
 #else
     bool nativeEventFilter(const QByteArray &eventType, void *pMessage, long * /* pResult */)
@@ -805,7 +805,7 @@ void UIMachineView::sltMousePointerShapeChange()
          * compose the cursor on the basis of shape and mask both: */
         updateMousePointerPixmapScaling(pixmapShape, uXHot, uYHot);
         /// @todo updateMousePointerPixmapScaling(pixmapMask, uXHot, uYHot);
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0) /** @todo qt6: this is probably inefficient */
+#ifdef VBOX_IS_QT6_OR_LATER /** @todo qt6: this is probably inefficient */
         m_cursor = QCursor(QBitmap(pixmapShape), QBitmap(pixmapMask), uXHot, uYHot);
 #else
         m_cursor = QCursor(pixmapShape, pixmapMask, uXHot, uYHot);

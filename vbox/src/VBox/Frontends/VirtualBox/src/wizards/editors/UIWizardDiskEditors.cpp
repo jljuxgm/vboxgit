@@ -1,4 +1,4 @@
-/* $Id: UIWizardDiskEditors.cpp 94052 2022-03-02 08:16:19Z vboxsync $ */
+/* $Id: UIWizardDiskEditors.cpp 94064 2022-03-02 15:49:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class implementation.
  */
@@ -625,7 +625,7 @@ void UIDiskFormatsGroupBox::createFormatWidgets()
     }
 
     setMediumFormat(m_formatList[0].m_comFormat);
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+#ifdef VBOX_IS_QT6_OR_LATER
     connect(m_pFormatButtonGroup, static_cast<void(QButtonGroup::*)(QAbstractButton *)>(&QButtonGroup::buttonClicked),
             this, &UIDiskFormatsGroupBox::sigMediumFormatChanged);
 #else

@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 93998 2022-02-28 22:42:04Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 94064 2022-03-02 15:49:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -1287,7 +1287,7 @@ void UIExtraDataManagerWindow::sltLoad()
                 continue;
 
             /* Get the name of the current element: */
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+#ifdef VBOX_IS_QT6_OR_LATER
             const QStringView strElementName = stream.name();
 #else
             const QStringRef strElementName = stream.name();

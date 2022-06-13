@@ -1,4 +1,4 @@
-/* $Id: UIChooserNodeMachine.cpp 93996 2022-02-28 22:04:49Z vboxsync $ */
+/* $Id: UIChooserNodeMachine.cpp 94064 2022-03-02 15:49:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserNodeMachine class implementation.
  */
@@ -17,7 +17,7 @@
 
 /* Qt includes: */
 #include <qglobal.h>
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+#ifdef VBOX_IS_QT6_OR_LATER
 # include <QRegularExpression>
 #else
 # include <QRegExp>
@@ -230,7 +230,7 @@ void UIChooserNodeMachine::searchForNodes(const QString &strSearchTerm, int iSea
         /* Otherwise check if name contains search term, including wildcards: */
         else
         {
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0) /* fromWildcard is 6.0+ */
+#ifdef VBOX_IS_QT6_OR_LATER /* fromWildcard is 6.0+ */
             QRegularExpression searchRegEx = QRegularExpression::fromWildcard(strSearchTerm, Qt::CaseInsensitive);
 #else
             QRegExp searchRegEx(strSearchTerm, Qt::CaseInsensitive, QRegExp::WildcardUnix);

@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialog.cpp 94022 2022-03-01 10:34:36Z vboxsync $ */
+/* $Id: UISettingsDialog.cpp 94064 2022-03-02 15:49:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISettingsDialog class implementation.
  */
@@ -746,7 +746,7 @@ void UISettingsDialog::prepareWidgets()
                 fnt.setFamily(QStringLiteral("Sans Serif"));
                 fnt.setPointSize(11);
                 fnt.setBold(true);
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+#ifdef VBOX_IS_QT6_OR_LATER
                 fnt.setWeight(QFont::ExtraBold);
 #else
                 fnt.setWeight(75);

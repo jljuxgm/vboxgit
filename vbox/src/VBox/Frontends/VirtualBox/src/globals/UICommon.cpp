@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 94019 2022-03-01 09:50:18Z vboxsync $ */
+/* $Id: UICommon.cpp 94064 2022-03-02 15:49:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -221,7 +221,7 @@ UICommon::~UICommon()
 void UICommon::prepare()
 {
     /* Make sure QApplication cleanup us on exit: */
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+#ifndef VBOX_IS_QT6_OR_LATER
     qApp->setFallbackSessionManagementEnabled(false);
 #endif
     connect(qApp, &QGuiApplication::aboutToQuit,
