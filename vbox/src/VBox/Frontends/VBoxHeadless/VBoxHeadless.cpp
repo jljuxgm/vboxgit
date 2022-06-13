@@ -1,4 +1,4 @@
-/* $Id: VBoxHeadless.cpp 91515 2021-10-01 13:53:39Z vboxsync $ */
+/* $Id: VBoxHeadless.cpp 91690 2021-10-12 13:08:19Z vboxsync $ */
 /** @file
  * VBoxHeadless - The VirtualBox Headless frontend for running VMs on servers.
  */
@@ -791,7 +791,6 @@ windowsMessageMonitor(RTTHREAD ThreadSelf, void *pvUser)
 
     if (b < 0)
         LogRel(("VBoxHeadless: GetMessage failed\n"));
-    LogRel(("VBoxHeadless: stopping windows message loop\n"));
 
     destroyWindow();
     return VINF_SUCCESS;
