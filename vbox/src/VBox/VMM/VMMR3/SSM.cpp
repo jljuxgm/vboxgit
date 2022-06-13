@@ -1,4 +1,4 @@
-/* $Id: SSM.cpp 90782 2021-08-23 09:27:38Z vboxsync $ */
+/* $Id: SSM.cpp 90783 2021-08-23 09:30:50Z vboxsync $ */
 /** @file
  * SSM - Saved State Manager.
  */
@@ -1672,7 +1672,7 @@ VMMR3_INT_DECL(int) SSMR3DeregisterUsb(PVM pVM, PPDMUSBINS pUsbIns, const char *
     /*
      * Validate input.
      */
-    AssertMsgReturn(VALID_PTR(pUsbIns), ("pUsbIns is NULL!\n"), VERR_INVALID_PARAMETER);
+    AssertPtrReturn(pUsbIns, VERR_INVALID_POINTER);
 
     /*
      * Search the list.
@@ -9648,7 +9648,7 @@ VMMR3DECL(int) SSMR3Seek(PSSMHANDLE pSSM, const char *pszUnit, uint32_t iInstanc
     AssertMsgReturn(pSSM->enmAfter == SSMAFTER_OPENED, ("%d\n", pSSM->enmAfter),VERR_INVALID_PARAMETER);
     AssertMsgReturn(pSSM->enmOp == SSMSTATE_OPEN_READ, ("%d\n", pSSM->enmOp), VERR_INVALID_PARAMETER);
     AssertPtrReturn(pszUnit, VERR_INVALID_POINTER);
-    AssertMsgReturn(!piVersion || VALID_PTR(piVersion), ("%p\n", piVersion), VERR_INVALID_POINTER);
+    AssertPtrNullReturn(piVersion, VERR_INVALID_POINTER);
 
     /*
      * Reset the state.
