@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 91180 2021-09-09 13:50:47Z vboxsync $ */
+/* $Id: UINotificationObjects.cpp 91216 2021-09-10 19:18:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -209,6 +209,15 @@ void UINotificationMessage::cannotAcquireCloudMachineSettings(const QString &str
         QApplication::translate("UIMessageCenter", "Cloud machine failure ..."),
         QApplication::translate("UIMessageCenter", "Failed to acquire cloud machine settings.") +
         strErrorDetails);
+}
+
+/* static */
+void UINotificationMessage::cannotOpenLicenseFile(const QString &strPath)
+{
+    createMessage(
+        QApplication::translate("UIMessageCenter", "Can't open license file ..."),
+        QApplication::translate("UIMessageCenter", "Failed to open the license file <nobr><b>%1</b></nobr>. Check file "
+                                                   "permissions.").arg(strPath));
 }
 
 /* static */

@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 91132 2021-09-06 19:05:03Z vboxsync $ */
+/* $Id: UICommon.cpp 91216 2021-09-10 19:18:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -68,7 +68,6 @@
 #include "UIVirtualBoxEventHandler.h"
 #include "UIVisoCreator.h"
 #include "UIWizardNewVD.h"
-#include "VBoxLicenseViewer.h"
 #ifdef VBOX_WS_MAC
 # include "UIMachineWindowFullscreen.h"
 # include "UIMachineWindowSeamless.h"

@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.h 91180 2021-09-09 13:50:47Z vboxsync $ */
+/* $Id: UINotificationObjects.h 91216 2021-09-10 19:18:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects declarations.
  */
@@ -127,6 +127,10 @@ public:
         /** Notifies about inability to acquire cloud machine settings.
           * @param  strErrorDetails  Brings the error details. */
         static void cannotAcquireCloudMachineSettings(const QString &strErrorDetails);
+
+        /** Notifies about inability to open license file.
+          * @param  strPath  Brings the license file path. */
+        static void cannotOpenLicenseFile(const QString &strPath);
 
         /** Notifies about public key path is empty. */
         static void warnAboutPublicKeyFilePathIsEmpty();
