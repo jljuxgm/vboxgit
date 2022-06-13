@@ -1,4 +1,4 @@
-# $Id: VirtualBox.tmpl.spec 90368 2021-07-28 13:30:11Z vboxsync $
+# $Id: VirtualBox.tmpl.spec 90369 2021-07-28 13:34:39Z vboxsync $
 ## @file
 # Spec file for creating VirtualBox rpm packages
 #
@@ -217,8 +217,8 @@ if [ -f $RPM_BUILD_ROOT/usr/lib/virtualbox/libQt5CoreVBox.so.5 ]; then
     $RPM_BUILD_ROOT/usr/lib/virtualbox/plugins/xcbglintegrations/*.so || true
   echo "[Paths]" > $RPM_BUILD_ROOT/usr/lib/virtualbox/qt.conf
   echo "Plugins = /usr/lib/virtualbox/plugins" >> $RPM_BUILD_ROOT/usr/lib/virtualbox/qt.conf
-  rm $RPM_BUILD_ROOT/usr/lib/virtualbox/chrpath
 fi
+rm -f $RPM_BUILD_ROOT/usr/lib/virtualbox/chrpath
 ln -s ../VBoxVMM.so $RPM_BUILD_ROOT/usr/lib/virtualbox/components/VBoxVMM.so
 for i in VBoxHeadless VBoxNetDHCP VBoxNetNAT VBoxNetAdpCtl; do
   chmod 4511 $RPM_BUILD_ROOT/usr/lib/virtualbox/$i; done
