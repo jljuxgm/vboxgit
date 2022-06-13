@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: txsclient.py 94509 2022-04-07 12:07:16Z vboxsync $
+# $Id: txsclient.py 94517 2022-04-07 14:44:28Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 94509 $"
+__version__ = "$Revision: 94517 $"
 
 # Standard Python imports.
 import array;
@@ -1861,8 +1861,8 @@ class Session(TdTaskBase):
 
         The task returns True on success, False on failure (logged).
         """
-        return self.startTask(cMsTimeout, fIgnoreErrors, "expandString", self.taskExpandString,
-                              (sString));
+        return self.startTask(cMsTimeout, fIgnoreErrors, "expandString", 
+                              self.taskExpandString, (sString,));
 
     def syncExpandString(self, sString, cMsTimeout = 120000, fIgnoreErrors = False):
         """Synchronous version."""
