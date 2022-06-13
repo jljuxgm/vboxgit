@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMEditors.cpp 90169 2021-07-13 16:16:35Z vboxsync $ */
+/* $Id: UIWizardNewVMEditors.cpp 90170 2021-07-13 16:17:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class implementation.
  */
@@ -29,8 +29,9 @@
 /* Other VBox includes: */
 #include "iprt/assert.h"
 
+
 /*********************************************************************************************************************************
-*   UIUserNamePasswordGroupBox implementation.                                                                                           *
+*   UIUserNamePasswordGroupBox implementation.                                                                                   *
 *********************************************************************************************************************************/
 
 UIUserNamePasswordGroupBox::UIUserNamePasswordGroupBox(QWidget *pParent /* = 0 */)
@@ -94,8 +95,9 @@ void UIUserNamePasswordGroupBox::setLabelsVisible(bool fVisible)
         m_pUserNamePasswordEditor->setLabelsVisible(fVisible);
 }
 
+
 /*********************************************************************************************************************************
-*   UIUserNamePasswordGroupBox implementation.                                                                                           *
+*   UIUserNamePasswordGroupBox implementation.                                                                                   *
 *********************************************************************************************************************************/
 
 UIGAInstallationGroupBox::UIGAInstallationGroupBox(QWidget *pParent /* = 0 */)
