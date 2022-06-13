@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 93775 2022-02-15 23:24:25Z vboxsync $
+# $Id: virtual_test_sheriff.py 93776 2022-02-15 23:28:47Z vboxsync $
 # pylint: disable=line-too-long
 
 """
@@ -35,7 +35,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 93775 $"
+__version__ = "$Revision: 93776 $"
 
 
 # Standard python imports
@@ -340,7 +340,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
 
         if self.oConfig.sLogFile:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 93775 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 93776 $ \n');
 
 
     def eprint(self, sText):
@@ -744,7 +744,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.getFailureReason(tReason);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 93775 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 93776 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
@@ -1203,7 +1203,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
         """
         enmReason = None;
         sParentName = oFailedResult.oParent.sName if oFailedResult.oParent else '';
-        if oFailedResult.sName == 'VBoxWindowsAdditions.exe':
+        if oFailedResult.sName == 'VBoxWindowsAdditions.exe' or sResultLog.find('VBoxWindowsAdditions.exe" failed with') > 0:
             enmReason = self.ktReason_Add_Installer_Win_Failed;
         # guest control:
         elif sParentName == 'Guest Control' and oFailedResult.sName == 'Preparations':
