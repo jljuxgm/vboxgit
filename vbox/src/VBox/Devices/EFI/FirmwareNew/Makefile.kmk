@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 85790 2020-08-17 07:11:43Z vboxsync $
+# $Id: Makefile.kmk 89983 2021-07-01 08:17:41Z vboxsync $
 ## @file
 # Toplevel sub-makefile for the EFI firmwares.
 #
@@ -49,12 +49,14 @@ VBOX_EFI_BLDPROGS := $(filter-out $(VBOX_EFI_BLDPROGS),$(BLDPROGS)) VBoxEfiBldPy
 # Binary wrappers for python scripts.
 #
 VBOX_EFI_PYTHON_WRAPPERS = \
+	AmlToC \
 	BPDG \
 	build \
 	Ecc \
 	GenFds \
 	GenPatchPcdTable \
 	PatchPcdValue \
+	Split \
 	Trim \
 	TargetTool \
 	UPT
