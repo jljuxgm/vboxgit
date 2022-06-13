@@ -1,4 +1,4 @@
-/* $Id: UIDetailsWidgetNATNetwork.h 87622 2021-02-05 10:23:56Z vboxsync $ */
+/* $Id: UIDetailsWidgetNATNetwork.h 92730 2021-12-03 10:46:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsWidgetNATNetwork class declaration.
  */
@@ -234,6 +234,9 @@ private:
         QCheckBox         *m_pCheckboxAdvertiseDefaultIPv6Route;
         /** Holds the 'Options' button-box instance. */
         QIDialogButtonBox *m_pButtonBoxOptions;
+        /** Holds the list of names busy by other
+          * NAT networks. */
+        QStringList        m_busyNames;
     /** @} */
 
     /** @name Forwarding variables.
@@ -246,9 +249,6 @@ private:
         UIPortForwardingTable *m_pForwardingTableIPv6;
         /** Holds the 'Forwarding' button-box instance. */
         QIDialogButtonBox     *m_pButtonBoxForwarding;
-        /** Holds the list of names busy by other
-          * NAT networks. */
-        QStringList            m_busyNames;
         /** Holds whether we should try to keep
           * port forwarding rule position intact. */
         bool                   m_fHoldPosition;

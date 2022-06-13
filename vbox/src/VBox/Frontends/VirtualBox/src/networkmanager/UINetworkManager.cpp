@@ -1,4 +1,4 @@
-/* $Id: UINetworkManager.cpp 91142 2021-09-07 17:20:19Z vboxsync $ */
+/* $Id: UINetworkManager.cpp 92730 2021-12-03 10:46:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkManager class implementation.
  */
@@ -969,7 +969,7 @@ void UINetworkManagerWidget::sltHandleCurrentItemChangeNATNetworkHoldingPosition
     /* If there is an item => update details data: */
     if (pItem)
     {
-        QStringList busyNamesForItem = busyNames();
+        QStringList busyNamesForItem = busyNamesNAT();
         busyNamesForItem.removeAll(pItem->name());
         m_pDetailsWidgetNATNetwork->setData(*pItem, busyNamesForItem, fHoldPosition);
     }
@@ -1638,7 +1638,7 @@ void UINetworkManagerWidget::updateItemForNATNetwork(const UIDataNATNetwork &dat
     }
 }
 
-QStringList UINetworkManagerWidget::busyNames() const
+QStringList UINetworkManagerWidget::busyNamesNAT() const
 {
     QStringList names;
     for (int i = 0; i < m_pTreeWidgetNATNetwork->topLevelItemCount(); ++i)

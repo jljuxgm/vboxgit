@@ -1,4 +1,4 @@
-/* $Id: UINetworkManager.h 90483 2021-08-02 15:46:18Z vboxsync $ */
+/* $Id: UINetworkManager.h 92730 2021-12-03 10:46:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkManager class declaration.
  */
@@ -59,7 +59,6 @@ signals:
 
     /** Notifies listeners about host network details data @a fDiffers. */
     void sigDetailsDataChangedHostNetwork(bool fDiffers);
-
     /** Notifies listeners about NAT network details data @a fDiffers. */
     void sigDetailsDataChangedNATNetwork(bool fDiffers);
 
@@ -209,7 +208,7 @@ private:
         void updateItemForNATNetwork(const UIDataNATNetwork &data, bool fChooseItem, UIItemNATNetwork *pItem);
 
         /** Returns a list of busy NAT network names. */
-        QStringList busyNames() const;
+        QStringList busyNamesNAT() const;
     /** @} */
 
     /** @name General variables.

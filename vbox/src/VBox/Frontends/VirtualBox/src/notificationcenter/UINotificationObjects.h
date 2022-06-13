@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.h 92477 2021-11-17 12:55:46Z vboxsync $ */
+/* $Id: UINotificationObjects.h 92730 2021-12-03 10:46:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects declarations.
  */
@@ -440,7 +440,7 @@ public:
           * @param  comVBox  Brings common VBox object trying to create NAT network. */
         static void cannotCreateNATNetwork(const CVirtualBox &comVBox);
         /** Notifies about inability to remove NAT network.
-          * @param  comVBox         Brings common VBox object trying to remove DHCP server.
+          * @param  comVBox         Brings common VBox object trying to remove NAT network.
           * @param  strNetworkName  Brings the network name. */
         static void cannotRemoveNATNetwork(const CVirtualBox &comVBox, const QString &strNetworkName);
 
