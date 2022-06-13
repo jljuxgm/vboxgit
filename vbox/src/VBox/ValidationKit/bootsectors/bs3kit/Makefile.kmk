@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 92262 2021-11-08 11:12:17Z vboxsync $
+# $Id: Makefile.kmk 92529 2021-11-21 02:46:44Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - Bootsector Kit v3
 #
@@ -194,6 +194,8 @@ VBOX_BS3KIT_COMMON_SOURCES = \
 	bs3-cmn-TestSendCmdWithU32.asm \
 	bs3-cmn-TestIsVmmDevTestingPresent.asm \
 	bs3-cmn-TestCheckRegCtxEx.c \
+	bs3-cmn-TestQueryCfgU8.asm \
+	bs3-cmn-TestQueryCfgU32.asm \
 	bs3-cmn-TestHostPrintf.c \
 	bs3-cmn-TestPrintf.c \
 	bs3-cmn-TestValue.c \

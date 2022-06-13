@@ -1,4 +1,4 @@
-/* $Id: bs3kit.h 92524 2021-11-20 23:53:45Z vboxsync $ */
+/* $Id: bs3kit.h 92529 2021-11-21 02:46:44Z vboxsync $ */
 /** @file
  * BS3Kit - structures, symbols, macros and stuff.
  */
@@ -3254,6 +3254,31 @@ BS3_CMN_PROTO_STUB(uint16_t, Bs3TestSubErrorCount,(void));
  * with a 286, 186 or 8086/8088 CPU profile.
  */
 BS3_CMN_PROTO_STUB(uint64_t, Bs3TestNow,(void));
+
+
+/**
+ * Queries an unsigned 8-bit configuration value.
+ *
+ * @returns Value.
+ * @param   uCfg        A VMMDEV_TESTING_CFG_XXX value.
+ */
+BS3_CMN_PROTO_STUB(uint8_t, Bs3TestQueryCfgU8,(uint16_t uCfg));
+
+/**
+ * Queries an unsigned 8-bit configuration value.
+ *
+ * @returns Value.
+ * @param   uCfg        A VMMDEV_TESTING_CFG_XXX value.
+ */
+BS3_CMN_PROTO_STUB(bool, Bs3TestQueryCfgBool,(uint16_t uCfg));
+
+/**
+ * Queries an unsigned 32-bit configuration value.
+ *
+ * @returns Value.
+ * @param   uCfg        A VMMDEV_TESTING_CFG_XXX value.
+ */
+BS3_CMN_PROTO_STUB(uint32_t, Bs3TestQueryCfgU32,(uint16_t uCfg));
 
 /**
  * Equivalent to RTTestIPrintf with RTTESTLVL_ALWAYS.
