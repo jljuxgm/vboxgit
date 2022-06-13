@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tdAudioTest.py 90787 2021-08-23 10:03:38Z vboxsync $
+# $Id: tdAudioTest.py 90793 2021-08-23 10:32:53Z vboxsync $
 
 """
 AudioTest test driver which invokes the VKAT (Validation Kit Audio Test)
@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 90787 $"
+__version__ = "$Revision: 90793 $"
 
 # Standard Python imports.
 import os
@@ -280,13 +280,13 @@ class tdAudioTest(vbox.TestDriver):
             procPs = subprocess.Popen(['ps', 'ax'], stdout=subprocess.PIPE);
             out, err = procPs.communicate();
             if err:
-                reporter.log2('PS stderr:');
+                reporter.log('PS stderr:');
                 for sLine in err.decode('utf-8').splitlines():
-                    reporter.log2(sLine);
+                    reporter.log(sLine);
             if out:
-                reporter.log2('PS stdout:');
+                reporter.log3('PS stdout:');
                 for sLine in out.decode('utf-8').splitlines():
-                    reporter.log2(sLine);
+                    reporter.log3(sLine);
                     if sProcName in sLine:
                         pid = int(sLine.split(None, 1)[0]);
                         reporter.log('Killing PID %d' % (pid,));
