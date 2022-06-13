@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-dx.cpp 95013 2022-05-15 08:04:44Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-dx.cpp 95015 2022-05-15 13:47:07Z vboxsync $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - Common code for DX backend interface.
  */
@@ -351,7 +351,7 @@ int vmsvga3dDXSwitchContext(PVGASTATECC pThisCC, uint32_t cid)
     {
         u32TrackedState &= ~DX_STATE_CONSTANTBUFFERS;
 
-        for (int i = SVGA3D_SHADERTYPE_MIN; i < SVGA3D_SHADERTYPE_DX10_MAX; ++i) /** @todo SVGA3D_SHADERTYPE_MAX */
+        for (int i = SVGA3D_SHADERTYPE_MIN; i < SVGA3D_SHADERTYPE_MAX; ++i)
         {
             SVGA3dShaderType const shaderType = (SVGA3dShaderType)i;
             uint32_t const idxShaderState = shaderType - SVGA3D_SHADERTYPE_MIN;
