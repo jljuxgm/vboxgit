@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 92642 2021-11-30 09:19:01Z vboxsync $ */
+/* $Id: PGMAll.cpp 92751 2021-12-06 05:35:38Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -2033,22 +2033,6 @@ int pgmGstPtWalkNext(PVMCPUCC pVCpu, RTGCPTR GCPtr, PPGMPTWALK pWalk, PPGMPTWALK
     }
     /* Case we don't handle.  Do full walk. */
     return pgmGstPtWalk(pVCpu, GCPtr, pWalk, pGstWalk);
-}
-
-
-/**
- * Sets (replaces) the page flags for a range of pages in the guest's tables.
- *
- * @returns VBox status code.
- * @param   pVCpu       The cross context virtual CPU structure.
- * @param   GCPtr       The address of the first page.
- * @param   cb          The size of the range in bytes.
- * @param   fFlags      Page flags X86_PTE_*, excluding the page mask of course.
- */
-VMMDECL(int)  PGMGstSetPage(PVMCPUCC pVCpu, RTGCPTR GCPtr, size_t cb, uint64_t fFlags)
-{
-    VMCPU_ASSERT_EMT(pVCpu);
-    return PGMGstModifyPage(pVCpu, GCPtr, cb, fFlags, 0);
 }
 
 
