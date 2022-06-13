@@ -1,4 +1,4 @@
-/* $Id: tstVMMR0CallHost-1.cpp 90197 2021-07-14 22:17:51Z vboxsync $ */
+/* $Id: tstVMMR0CallHost-1.cpp 91773 2021-10-16 12:48:47Z vboxsync $ */
 /** @file
  * Testcase for the VMMR0JMPBUF operations.
  */
@@ -150,7 +150,7 @@ void tst(int iFrom, int iTo, int iInc)
         if (iItr >= cIterations / 2)
         {
             /* Note! gcc does funny rounding up of alloca(). */
-# ifndef VBOX_WITH_GCC_SANITIZER
+# if !defined(VBOX_WITH_GCC_SANITIZER) && !defined(__MSVC_RUNTIME_CHECKS)
             void  *pv2 = alloca((i % 63) | 1);
             size_t cb2 = (uintptr_t)pvPrev - (uintptr_t)pv2;
 # else
