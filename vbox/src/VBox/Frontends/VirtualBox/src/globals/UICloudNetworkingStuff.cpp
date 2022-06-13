@@ -1,4 +1,4 @@
-/* $Id: UICloudNetworkingStuff.cpp 89998 2021-07-02 10:36:16Z vboxsync $ */
+/* $Id: UICloudNetworkingStuff.cpp 91145 2021-09-07 19:10:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudNetworkingStuff namespace implementation.
  */
@@ -75,7 +75,7 @@ CCloudProvider UICloudNetworkingStuff::cloudProviderById(const QUuid &uProviderI
         /* Acquire cloud provider: */
         CCloudProvider comProvider = comProviderManager.GetProviderById(uProviderId);
         if (!comProviderManager.isOk())
-            msgCenter().cannotAcquireCloudProviderManagerParameter(comProviderManager, pParent);
+            msgCenter().cannotFindCloudProvider(comProviderManager, uProviderId, pParent);
         else
             return comProvider;
     }

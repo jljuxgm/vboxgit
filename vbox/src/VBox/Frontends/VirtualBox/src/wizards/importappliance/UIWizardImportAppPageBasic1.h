@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageBasic1.h 86346 2020-09-30 13:02:39Z vboxsync $ */
+/* $Id: UIWizardImportAppPageBasic1.h 91145 2021-09-07 19:10:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageBasic1 class declaration.
  */
@@ -168,6 +168,9 @@ public:
     UIWizardImportAppPageBasic1(bool fImportFromOCIByDefault);
 
 protected:
+
+    /** Allows access wizard from base part. */
+    UIWizard *wizardImp() const { return UIWizardPage::wizard(); }
 
     /** Handles translation event. */
     virtual void retranslateUi() /* override */;
