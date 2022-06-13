@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tdAudioTest.py 91413 2021-09-27 17:04:53Z vboxsync $
+# $Id: tdAudioTest.py 91415 2021-09-27 19:26:46Z vboxsync $
 
 """
 AudioTest test driver which invokes the VKAT (Validation Kit Audio Test)
@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 91413 $"
+__version__ = "$Revision: 91415 $"
 
 # Standard Python imports.
 from datetime import datetime
@@ -143,8 +143,8 @@ class tdAudioTest(vbox.TestDriver):
                     if s not in self.asTestsDef:
                         raise base.InvalidOption('The "--audio-tests" value "%s" is not valid; valid values are: %s'
                                                     % (s, ' '.join(self.asTestsDef)));
-        elif    asArgs[iArg] == 'audio-test-count' \
-             or asArgs[iArg] == 'audio-test-tone-duration':
+        elif    asArgs[iArg] == '--audio-test-count' \
+             or asArgs[iArg] == '--audio-test-tone-duration':
             # Strip the "--audio-test-" prefix and keep the options as defined in VKAT,
             # e.g. "--audio-test-count" -> "--count". That way we don't
             # need to do any special argument translation and whatnot.
