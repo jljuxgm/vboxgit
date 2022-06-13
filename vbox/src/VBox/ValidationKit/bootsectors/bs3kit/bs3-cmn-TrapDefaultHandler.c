@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-TrapDefaultHandler.c 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: bs3-cmn-TrapDefaultHandler.c 89930 2021-06-28 14:12:57Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3TrapDefaultHandler
  */
@@ -115,7 +115,7 @@ static void bs3TrapDefaultHandlerV8086Syscall(PBS3TRAPFRAME pTrapFrame)
         uint32_t uValue;
         switch (pTrapFrame->Ctx.rdx.u8)
         {
-            case 0: uValue = ASMGetDR0(); break;
+            case 0: uValue = ASMGetCR0(); break;
             case 2: uValue = ASMGetCR2(); break;
             case 3: uValue = ASMGetCR3(); break;
             case 4: uValue = ASMGetCR4(); break;

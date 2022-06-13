@@ -1,4 +1,4 @@
-; $Id: bs3-cmn-RegSetCr0.asm 82968 2020-02-04 10:35:17Z vboxsync $
+; $Id: bs3-cmn-RegSetCr0.asm 89930 2021-06-28 14:12:57Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3RegSetCr0
 ;
@@ -71,7 +71,7 @@ BS3_PROC_BEGIN_CMN Bs3RegSetCr0, BS3_PBC_HYBRID_SAFE
         push    xAX
 
         mov     sSI, [xBP + xCB + cbCurRetAddr]
-        mov     xAX, BS3_SYSCALL_SET_DRX
+        mov     xAX, BS3_SYSCALL_SET_CRX
         mov     dl, 0
         call    Bs3Syscall
         pop     xAX
