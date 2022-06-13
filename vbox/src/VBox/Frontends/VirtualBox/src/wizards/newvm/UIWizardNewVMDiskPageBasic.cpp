@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMDiskPageBasic.cpp 90082 2021-07-08 05:51:59Z vboxsync $ */
+/* $Id: UIWizardNewVMDiskPageBasic.cpp 90085 2021-07-08 07:55:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMDiskPageBasic class implementation.
  */
@@ -178,15 +178,12 @@ QWidget *UIWizardNewVMDiskPageBasic::createNewDiskWidgets()
                     m_pMediumSizeEditorLabel->setBuddy(m_pMediumSizeEditor);
                     pSizeLayout->addWidget(m_pMediumSizeEditor, 0, 1, 2, 1);
                 }
-
                 pLayout->addLayout(pSizeLayout);
             }
-
             /* Hard disk variant (dynamic vs. fixed) widgets: */
             pLayout->addWidget(createMediumVariantWidgets(false /* bool fWithLabels */));
         }
     }
-
     return pWidget;
 }
 
@@ -233,7 +230,6 @@ void UIWizardNewVMDiskPageBasic::sltSelectedDiskSourceChanged()
 
 void UIWizardNewVMDiskPageBasic::sltMediaComboBoxIndexChanged()
 {
-    /* Make sure to set m_virtualDisk: */
     setVirtualDiskFromDiskCombo();
     emit completeChanged();
 }

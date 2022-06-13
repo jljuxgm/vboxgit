@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.h 90075 2021-07-07 13:10:38Z vboxsync $ */
+/* $Id: UIWizardNewVM.h 90085 2021-07-08 07:55:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class declaration.
  */
@@ -140,8 +140,8 @@ public:
     int memorySize() const;
     void setMemorySize(int iMemory);
 
-    KMediumVariant mediumVariant() const;
-    void setMediumVariant(KMediumVariant enmMediumVariant);
+    qulonglong mediumVariant() const;
+    void setMediumVariant(qulonglong uMediumVariant);
 
     const CMediumFormat &mediumFormat();
     void setMediumFormat(const CMediumFormat &mediumFormat);
@@ -227,7 +227,7 @@ private:
     int m_iMemorySize;
     int m_iUnattendedInstallPageIndex;
 
-    KMediumVariant m_enmMediumVariant;
+    qulonglong m_uMediumVariant;
     CMediumFormat m_comMediumFormat;
     QString m_strMediumPath;
     qulonglong m_uMediumSize;
