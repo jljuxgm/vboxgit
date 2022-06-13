@@ -1,4 +1,4 @@
-/* $Id: UIFormEditorWidget.h 92147 2021-10-29 13:46:25Z vboxsync $ */
+/* $Id: UIFormEditorWidget.h 92151 2021-10-29 14:47:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFormEditorWidget class declaration.
  */
@@ -33,6 +33,7 @@
 class QHeaderView;
 class UIFormEditorModel;
 class UIFormEditorView;
+class UINotificationCenter;
 class CForm;
 class CVirtualSystemDescriptionForm;
 
@@ -43,8 +44,12 @@ class UIFormEditorWidget : public QWidget
 
 public:
 
-    /** Constructs Form Editor widget passing @a pParent to the base-class. */
-    UIFormEditorWidget(QWidget *pParent = 0);
+    /** Constructs Form Editor widget passing @a pParent to the base-class.
+      * @param  pNotificationCenter  Brings the notification-center this widget should report to. */
+    UIFormEditorWidget(QWidget *pParent = 0, UINotificationCenter *pNotificationCenter = 0);
+
+    /** Returns the notification-center reference. */
+    UINotificationCenter *notificationCenter() const { return m_pNotificationCenter; }
 
     /** Returns horizontal header reference. */
     QHeaderView *horizontalHeader() const;
@@ -75,6 +80,9 @@ private:
 
     /** Adjusts table column sizes. */
     void adjustTable();
+
+    /** Holds the notification-center reference. */
+    UINotificationCenter *m_pNotificationCenter;
 
     /** Holds the table-view instance. */
     UIFormEditorView  *m_pTableView;

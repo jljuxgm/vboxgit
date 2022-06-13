@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 92147 2021-10-29 13:46:25Z vboxsync $ */
+/* $Id: UIMessageCenter.h 92151 2021-10-29 14:47:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -387,15 +387,6 @@ public:
         void cannotAcquireCloudClientParameter(const CProgress &comProgress, QWidget *pParent = 0) const;
         void cannotAcquireCloudMachineParameter(const CCloudMachine &comMachine, QWidget *pParent = 0) const;
         void cannotAcquireCloudMachineParameter(const CProgress &comProgress, QWidget *pParent = 0) const;
-    /** @} */
-
-    /** @name VirtualBox Manager / Cloud machine settings warnings.
-      * @{ */
-        void cannotAssignFormValue(const CBooleanFormValue &comValue, QWidget *pParent = 0) const;
-        void cannotAssignFormValue(const CStringFormValue &comValue, QWidget *pParent = 0) const;
-        void cannotAssignFormValue(const CChoiceFormValue &comValue, QWidget *pParent = 0) const;
-        void cannotAssignFormValue(const CRangedIntegerFormValue &comValue, QWidget *pParent = 0) const;
-        void cannotAssignFormValue(const CProgress &comProgress, QWidget *pParent = 0) const;
     /** @} */
 
     /** @name VirtualBox Manager / Downloading warnings.
