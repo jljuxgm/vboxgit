@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 87129 2020-12-25 13:40:08Z vboxsync $
+# $Id: Makefile.kmk 94467 2022-04-05 12:38:44Z vboxsync $
 ## @file
 # Sub-Makefile for the libxml2 library.
 #
@@ -18,7 +18,7 @@
 SUB_DEPTH = ../../..
 include $(KBUILD_PATH)/subheader.kmk
 
-ifndef VBOX_ONLY_VALIDATIONKIT
+if !defined(VBOX_ONLY_VALIDATIONKIT) || defined(VBOX_WITH_VALIDATIONKIT_UNITTESTS_PACKING) # Needed for VBoxRT for Validation Kit unit tests.
  LIBRARIES += VBox-libxml2
 endif
 VBox-libxml2_TEMPLATE       = VBoxR3RuntimeDllNonPedantic
@@ -103,4 +103,3 @@ VBox-libxml2-static_EXTENDS = VBox-libxml2
 
 
 include $(FILE_KBUILD_SUB_FOOTER)
-
