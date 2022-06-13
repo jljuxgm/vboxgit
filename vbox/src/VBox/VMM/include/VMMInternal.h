@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 90835 2021-08-24 11:28:47Z vboxsync $ */
+/* $Id: VMMInternal.h 90836 2021-08-24 11:29:21Z vboxsync $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -582,7 +582,8 @@ DECLASM(int)    vmmR0CallRing3SetJmp(PVMMR0JMPBUF pJmpBuf, PFNVMMR0SETJMP pfn, P
  * Callback function for vmmR0CallRing3SetJmp2.
  *
  * @returns VBox status code.
- * @param   pvUser      The user argument.
+ * @param   pGVM        The ring-0 VM structure.
+ * @param   idCpu       The ID of the calling EMT.
  */
 typedef DECLCALLBACKTYPE(int, FNVMMR0SETJMP2,(PGVM pGVM, VMCPUID idCpu));
 /** Pointer to FNVMMR0SETJMP2(). */
