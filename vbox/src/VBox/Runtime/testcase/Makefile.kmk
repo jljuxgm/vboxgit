@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 94575 2022-04-12 18:30:22Z vboxsync $
+# $Id: Makefile.kmk 94576 2022-04-12 18:42:44Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -155,6 +155,7 @@ PROGRAMS += \
 	tstRTUri \
 	tstVector \
 	tstRTVfs \
+	tstRTZip \
 	tstRTJson \
 	tstRTShMem
 
@@ -946,12 +947,12 @@ if defined(VBOX_ONLY_VALIDATIONKIT) && defined(VBOX_WITH_VALIDATIONKIT_UNITTESTS
 	tstIprtMiniString \
 	tstLdr \
 	tstLdrLoad \
- 	tstRTBigNum \
-    tstRTCRest-1 \
+	tstRTBigNum \
+	tstRTCRest-1 \
 	tstRTCrPkix-1 \
 	tstRTCrX509-1 \
-    tstRTS3 \
-    tstRTHttp-1 \
+	tstRTS3 \
+	tstRTHttp-1 \
 	tstRTLdrVerifyPeImage \
 	tstRTMemSafer \
 	tstRTMp-1 \
