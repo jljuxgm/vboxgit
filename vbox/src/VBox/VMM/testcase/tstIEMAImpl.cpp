@@ -1,4 +1,4 @@
-/* $Id: tstIEMAImpl.cpp 94163 2022-03-11 00:56:22Z vboxsync $ */
+/* $Id: tstIEMAImpl.cpp 94165 2022-03-11 09:13:33Z vboxsync $ */
 /** @file
  * IEM Assembly Instruction Helper Testcase.
  */
@@ -342,14 +342,14 @@ static uint64_t  RandU64Src(uint32_t iTest)
 static void GenerateHeader(PRTSTREAM pOut, const char *pszCpuDesc, const char *pszCpuType, const char *pszCpuSuffU)
 {
     /* We want to tag the generated source code with the revision that produced it. */
-    static char s_szRev[] = "$Revision: 94163 $";
+    static char s_szRev[] = "$Revision: 94165 $";
     const char *pszRev = RTStrStripL(strchr(s_szRev, ':') + 1);
     size_t      cchRev = 0;
     while (RT_C_IS_DIGIT(pszRev[cchRev]))
         cchRev++;
 
     RTStrmPrintf(pOut,
-                 "/* $Id: tstIEMAImpl.cpp 94163 2022-03-11 00:56:22Z vboxsync $ */\n"
+                 "/* $Id: tstIEMAImpl.cpp 94165 2022-03-11 09:13:33Z vboxsync $ */\n"
                  "/** @file\n"
                  " * IEM Assembly Instruction Helper Testcase Data%s%s - r%.*s on %s.\n"
                  " */\n"
@@ -1852,7 +1852,7 @@ int main(int argc, char **argv)
         BinU16Generate(pStrmData, pStrmDataCpu, pszCpuSuffU, cTests);
         BinU32Generate(pStrmData, pStrmDataCpu, pszCpuSuffU, cTests);
         BinU64Generate(pStrmData, pStrmDataCpu, pszCpuSuffU, cTests);
-        ShiftDblGenerate(pStrmDataCpu, pszCpuSuffU, RT_MIN(cTests, 128));
+        ShiftDblGenerate(pStrmDataCpu, pszCpuSuffU, RT_MAX(cTests, 128));
         UnaryGenerate(pStrmData, cTests);
         ShiftGenerate(pStrmDataCpu, pszCpuSuffU, cTests);
         MulDivGenerate(pStrmDataCpu, pszCpuSuffU, cTests);
