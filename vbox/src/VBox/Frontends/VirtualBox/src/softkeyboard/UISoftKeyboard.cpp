@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboard.cpp 90245 2021-07-19 17:24:25Z vboxsync $ */
+/* $Id: UISoftKeyboard.cpp 90261 2021-07-20 13:16:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class implementation.
  */
@@ -2436,8 +2436,8 @@ void UISoftKeyboardWidget::retranslateUi()
     m_keyTooltips[316] = UISoftKeyboard::tr("Show Media folder");
 
     m_keyTooltips[304] = UISoftKeyboard::tr("Mute");
-    m_keyTooltips[305] = UISoftKeyboard::tr("Volume up");
-    m_keyTooltips[306] = UISoftKeyboard::tr("Volume down");
+    m_keyTooltips[305] = UISoftKeyboard::tr("Volume down");
+    m_keyTooltips[306] = UISoftKeyboard::tr("Volume up");
 }
 
 void UISoftKeyboardWidget::saveCurentLayoutToFile()
