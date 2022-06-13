@@ -1,4 +1,4 @@
-/* $Id: DevIommuAmd.cpp 90478 2021-08-02 14:15:42Z vboxsync $ */
+/* $Id: DevIommuAmd.cpp 90481 2021-08-02 14:20:11Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - AMD implementation.
  */
@@ -964,6 +964,7 @@ DECL_FORCE_INLINE(void) iommuAmdDteCacheUpdateFlagsForIndex(PIOMMU pThis, uint16
 }
 
 
+#ifdef IOMMU_WITH_IOTLBE_CACHE
 /**
  * Adds a new DTE cache entry or updates flags for an existing DTE cache entry.
  * If the cache is full, nothing happens.
@@ -995,6 +996,7 @@ static void iommuAmdDteCacheAddOrUpdateFlags(PPDMDEVINS pDevIns, PCDTE_T pDte, u
 
     IOMMU_CACHE_UNLOCK(pDevIns, pThis);
 }
+#endif
 
 
 /**
