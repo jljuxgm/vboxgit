@@ -1,4 +1,4 @@
-/* $Id: UINativeWizard.h 91877 2021-10-20 11:26:48Z vboxsync $ */
+/* $Id: UINativeWizard.h 92035 2021-10-25 13:38:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINativeWizard class declaration.
  */
@@ -79,6 +79,8 @@ class SHARED_LIBRARY_STUFF UINativeWizard : public QIWithRetranslateUI<QDialog>
 
 public:
 
+    /** Returns local notification-center reference. */
+    UINotificationCenter *notificationCenter() const;
     /** Immediately handles notification @a pProgress object. */
     bool handleNotificationProgressNow(UINotificationProgress *pProgress);
 
