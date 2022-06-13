@@ -1,4 +1,4 @@
-/* $Id: MachineImplMoveVM.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: MachineImplMoveVM.cpp 94598 2022-04-13 21:50:00Z vboxsync $ */
 /** @file
  * Implementation of MachineMoveVM
  */
@@ -25,6 +25,7 @@
 #include <VBox/com/ErrorInfo.h>
 
 #include "MachineImplMoveVM.h"
+#include "SnapshotImpl.h"
 #include "MediumFormatImpl.h"
 #include "VirtualBoxImpl.h"
 #include "LoggingNew.h"

@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 93891 2022-02-22 18:08:39Z vboxsync $ */
+/* $Id: MachineImpl.h 94598 2022-04-13 21:50:00Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -23,7 +23,6 @@
 
 #include "AuthLibrary.h"
 #include "VirtualBoxBase.h"
-#include "SnapshotImpl.h"
 #include "ProgressImpl.h"
 #include "VRDEServerImpl.h"
 #include "MediumAttachmentImpl.h"
@@ -644,8 +643,7 @@ protected:
     HRESULT i_loadMachineDataFromSettings(const settings::MachineConfigFile &config,
                                           const Guid *puuidRegistry);
     HRESULT i_loadSnapshot(const settings::Snapshot &data,
-                           const Guid &aCurSnapshotId,
-                           Snapshot *aParentSnapshot);
+                           const Guid &aCurSnapshotId);
     HRESULT i_loadHardware(const Guid *puuidRegistry,
                            const Guid *puuidSnapshot,
                            const settings::Hardware &data,

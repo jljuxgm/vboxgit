@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 94249 2022-03-15 16:16:42Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 94598 2022-04-13 21:50:00Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -270,9 +270,8 @@ public:
     HRESULT i_registerMedium(const ComObjPtr<Medium> &pMedium, ComObjPtr<Medium> *ppMedium,
                              AutoWriteLock &mediaTreeLock, bool fCalledFromMediumInit = false);
     HRESULT i_unregisterMedium(Medium *pMedium);
-    void i_pushMediumToListWithChildren(MediaList &llMedia, Medium *pMedium);
     HRESULT i_unregisterMachineMedia(const Guid &id);
-    HRESULT i_unregisterMachine(Machine *pMachine, const Guid &id);
+    HRESULT i_unregisterMachine(Machine *pMachine, CleanupMode_T aCleanupMode, const Guid &id);
     void i_rememberMachineNameChangeForMedia(const Utf8Str &strOldConfigDir,
                                              const Utf8Str &strNewConfigDir);
     void i_saveMediaRegistry(settings::MediaRegistry &mediaRegistry,
