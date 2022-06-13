@@ -1,4 +1,4 @@
-/* $Id: UIDesktopWidgetWatchdog.cpp 94015 2022-03-01 09:36:38Z vboxsync $ */
+/* $Id: UIDesktopWidgetWatchdog.cpp 94026 2022-03-01 10:58:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDesktopWidgetWatchdog class implementation.
  */
@@ -618,8 +618,9 @@ QRect UIDesktopWidgetWatchdog::getNormalized(const QRect &rectangle,
     const int iWindowVertical = rectangle.center().y();
     QList<QRect> rectanglesList;
     QList<int> shiftsList;
-    foreach (QRect currentItem, boundRegion.rects())
+    for (QRegion::const_iterator it = boundRegion.begin(); it != boundRegion.end(); ++it)
     {
+        QRect currentItem = *it;
         const int iCurrentDelta = qAbs(iWindowVertical - currentItem.center().y());
         const int iShift2Top = currentItem.top() - rectangle.top();
         const int iShift2Bot = currentItem.bottom() - rectangle.bottom();
@@ -1055,10 +1056,9 @@ void UIDesktopWidgetWatchdog::cleanup()
 QRegion UIDesktopWidgetWatchdog::flip(const QRegion &region)
 {
     QRegion result;
-    QVector<QRect> rectangles(region.rects());
-    foreach (QRect rectangle, rectangles)
-        result += QRect(rectangle.y(), rectangle.x(),
-                        rectangle.height(), rectangle.width());
+    for (QRegion::const_iterator it = region.begin(); it != region.end(); ++it)
+        result += QRect(it->y(),      it->x(),
+                        it->height(), it->width());
     return result;
 }
 
