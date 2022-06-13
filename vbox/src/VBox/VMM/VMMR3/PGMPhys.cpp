@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 92006 2021-10-22 13:20:39Z vboxsync $ */
+/* $Id: PGMPhys.cpp 92117 2021-10-28 00:23:50Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -4620,9 +4620,10 @@ int pgmR3PhysRomReset(PVM pVM)
             uint32_t       cRestored = 0;
             for (uint32_t iPage = 0; iPage < cPages && cbSrcLeft > 0; iPage++, pbSrcPage += PAGE_SIZE)
             {
-                const RTGCPHYS GCPhys = pRom->GCPhys + (iPage << PAGE_SHIFT);
-                void const *pvDstPage;
-                int rc = pgmPhysPageMapReadOnly(pVM, &pRom->aPages[iPage].Virgin, GCPhys, &pvDstPage);
+                const RTGCPHYS GCPhys    = pRom->GCPhys + (iPage << PAGE_SHIFT);
+                PPGMPAGE const pPage     = pgmPhysGetPage(pVM, GCPhys);
+                void const    *pvDstPage = NULL;
+                int rc = pgmPhysPageMapReadOnly(pVM, pPage, GCPhys, &pvDstPage);
                 if (RT_FAILURE(rc))
                     break;
 
@@ -4630,8 +4631,8 @@ int pgmR3PhysRomReset(PVM pVM)
                 {
                     if (pVM->pgm.s.fRestoreRomPagesOnReset)
                     {
-                        void *pvDstPageW;
-                        rc = pgmPhysPageMap(pVM, &pRom->aPages[iPage].Virgin, GCPhys, &pvDstPageW);
+                        void *pvDstPageW = NULL;
+                        rc = pgmPhysPageMap(pVM, pPage, GCPhys, &pvDstPageW);
                         AssertLogRelRCReturn(rc, rc);
                         memcpy(pvDstPageW, pbSrcPage, RT_MIN(cbSrcLeft, PAGE_SIZE));
                         cRestored++;
