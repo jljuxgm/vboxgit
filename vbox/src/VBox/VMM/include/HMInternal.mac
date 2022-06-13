@@ -1,4 +1,4 @@
-;$Id: HMInternal.mac 93115 2022-01-01 11:31:46Z vboxsync $
+;$Id: HMInternal.mac 93730 2022-02-14 14:41:49Z vboxsync $
 ;; @file
 ; HM - Internal header file.
 ;
@@ -34,7 +34,10 @@ struc VMXVMCSINFOSHARED
     alignb 8
     .au64LbrFromIpMsr               resq    32
     .au64LbrToIpMsr                 resq    32
+    .au64LbrInfoMsr                 resq    32
     .u64LbrTosMsr                   resq    1
+    .u64LerFromIpMsr                resq    1
+    .u64LerToIpMsr                  resq    1
 endstruc
 
 
