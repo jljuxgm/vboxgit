@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportApp.cpp 91646 2021-10-08 15:22:28Z vboxsync $ */
+/* $Id: UIWizardImportApp.cpp 91664 2021-10-11 15:43:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportApp class implementation.
  */
@@ -277,7 +277,7 @@ void UIWizardImportApp::populatePages()
         case WizardMode_Basic:
         {
             if (m_fImportFromOCIByDefault || m_strFileName.isEmpty())
-                addPage(new UIWizardImportAppPageBasic1(m_fImportFromOCIByDefault));
+                addPage(new UIWizardImportAppPageBasic1(m_fImportFromOCIByDefault, m_strFileName));
             addPage(new UIWizardImportAppPageBasic2(m_strFileName));
             break;
         }

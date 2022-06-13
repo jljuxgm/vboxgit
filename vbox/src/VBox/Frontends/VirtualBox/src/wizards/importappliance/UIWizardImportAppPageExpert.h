@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageExpert.h 91646 2021-10-08 15:22:28Z vboxsync $ */
+/* $Id: UIWizardImportAppPageExpert.h 91664 2021-10-11 15:43:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageExpert class declaration.
  */
@@ -99,6 +99,11 @@ private:
     bool     m_fImportFromOCIByDefault;
     /** Handles the appliance file name. */
     QString  m_strFileName;
+
+    /** Holds the cached source. */
+    QString  m_strSource;
+    /** Holds the cached profile name. */
+    QString  m_strProfileName;
 
     /** Holds the tool-box instance. */
     UIToolBox *m_pToolBox;
