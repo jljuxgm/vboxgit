@@ -1,4 +1,4 @@
-/* $Id: tstIEMAImpl.cpp 94259 2022-03-15 23:04:29Z vboxsync $ */
+/* $Id: tstIEMAImpl.cpp 94260 2022-03-15 23:45:51Z vboxsync $ */
 /** @file
  * IEM Assembly Instruction Helper Testcase.
  */
@@ -344,14 +344,14 @@ static void GenerateHeader(PRTSTREAM pOut, const char *pszFileInfix,
                            const char *pszCpuDesc, const char *pszCpuType, const char *pszCpuSuffU)
 {
     /* We want to tag the generated source code with the revision that produced it. */
-    static char s_szRev[] = "$Revision: 94259 $";
+    static char s_szRev[] = "$Revision: 94260 $";
     const char *pszRev = RTStrStripL(strchr(s_szRev, ':') + 1);
     size_t      cchRev = 0;
     while (RT_C_IS_DIGIT(pszRev[cchRev]))
         cchRev++;
 
     RTStrmPrintf(pOut,
-                 "/* $Id: tstIEMAImpl.cpp 94259 2022-03-15 23:04:29Z vboxsync $ */\n"
+                 "/* $Id: tstIEMAImpl.cpp 94260 2022-03-15 23:45:51Z vboxsync $ */\n"
                  "/** @file\n"
                  " * IEM Assembly Instruction Helper Testcase Data%s%s - r%.*s on %s.\n"
                  " */\n"
@@ -1954,12 +1954,12 @@ static void FpuLoadConstGenerate(PRTSTREAM pOut, uint32_t cTests)
     for (size_t iFn = 0; iFn < RT_ELEMENTS(g_aFpuLdConst); iFn++)
     {
         RTStrmPrintf(pOut, "static const FPU_LD_CONST_TEST_T g_aTests_%s[] =\n{\n", g_aFpuLdConst[iFn].pszName);
-        for (size_t iTest = 0; iTest < cTests; iTest += 4)
+        for (uint32_t iTest = 0; iTest < cTests; iTest += 4)
         {
             State.FCW = RandU16() & (X86_FCW_MASK_ALL | X86_FCW_PC_MASK);
             State.FSW = RandU16() & (X86_FSW_C_MASK | X86_FSW_XCPT_ES_MASK | X86_FSW_TOP_MASK | X86_FSW_B);
 
-            for (size_t iRounding = 0; iRounding < 4; iRounding++)
+            for (uint16_t iRounding = 0; iRounding < 4; iRounding++)
             {
                 IEMFPURESULT Res;
                 State.FCW = (State.FCW & ~X86_FCW_RC_MASK) | (iRounding << X86_FCW_RC_SHIFT);
