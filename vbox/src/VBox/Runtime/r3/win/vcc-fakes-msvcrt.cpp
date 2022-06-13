@@ -1,4 +1,4 @@
-/* $Id: vcc-fakes-msvcrt.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: vcc-fakes-msvcrt.cpp 94561 2022-04-11 16:00:50Z vboxsync $ */
 /** @file
  * IPRT - Tricks to make the Visual C++ 2010 CRT work on NT4, W2K and XP.
  */
@@ -77,6 +77,7 @@ extern "C" int __cdecl my_getmainargs(int *pcArgs, char ***ppapszArgs, char ***p
 
 extern "C" void __cdecl my_setusermatherr(PFNRT pfnIgnore)
 {
+    RT_NOREF(pfnIgnore);
     /* pure stub. */
 }
 
