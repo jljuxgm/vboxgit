@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 93931 2022-02-24 16:02:00Z vboxsync $ */
+/* $Id: PGMAll.cpp 94800 2022-05-03 21:49:43Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -2552,7 +2552,7 @@ VMMDECL(int) PGMFlushTLB(PVMCPUCC pVCpu, uint64_t cr3, bool fGlobal)
             pgmGstFlushPaePdpes(pVCpu);
     }
 
-    IEMTlbInvalidateAll(pVCpu, false /*fVmm*/);
+    IEMTlbInvalidateAll(pVCpu);
     STAM_PROFILE_STOP(&pVCpu->pgm.s.Stats.CTX_MID_Z(Stat,FlushTLB), a);
     return rc;
 }

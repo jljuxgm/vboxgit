@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplSvmInstr.cpp 94768 2022-05-01 22:02:17Z vboxsync $ */
+/* $Id: IEMAllCImplSvmInstr.cpp 94800 2022-05-03 21:49:43Z vboxsync $ */
 /** @file
  * IEM - AMD-V (Secure Virtual Machine) instruction implementation.
  */
@@ -124,7 +124,7 @@ DECLINLINE(VBOXSTRICTRC) iemSvmWorldSwitch(PVMCPUCC pVCpu)
     AssertRCReturn(rc, rc);
 
     /* Invalidate IEM TLBs now that we've forced a PGM mode change. */
-    IEMTlbInvalidateAll(pVCpu, false /*fVmm*/);
+    IEMTlbInvalidateAll(pVCpu);
 
     /* Inform CPUM (recompiler), can later be removed. */
     CPUMSetChangedFlags(pVCpu, CPUM_CHANGED_ALL);

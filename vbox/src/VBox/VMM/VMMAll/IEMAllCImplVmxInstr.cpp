@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp 94768 2022-05-01 22:02:17Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp 94800 2022-05-03 21:49:43Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -1239,7 +1239,7 @@ static int iemVmxTransition(PVMCPUCC pVCpu) RT_NOEXCEPT
     AssertRCReturn(rc, rc);
 
     /* Invalidate IEM TLBs now that we've forced a PGM mode change. */
-    IEMTlbInvalidateAll(pVCpu, false /*fVmm*/);
+    IEMTlbInvalidateAll(pVCpu);
 
     /* Inform CPUM (recompiler), can later be removed. */
     CPUMSetChangedFlags(pVCpu, CPUM_CHANGED_ALL);
