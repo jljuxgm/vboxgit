@@ -1,4 +1,4 @@
-/* $Id: memobj.h 92246 2021-11-06 03:10:49Z vboxsync $ */
+/* $Id: memobj.h 92418 2021-11-15 08:38:55Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects.
  */
@@ -55,6 +55,8 @@ typedef enum RTR0MEMOBJTYPE
     /** RTR0MemObjAllocPage.
      * This memory is page aligned and fixed. */
     RTR0MEMOBJTYPE_PAGE,
+    /** RTR0MemObjAllocLarge. */
+    RTR0MEMOBJTYPE_LARGE_PAGE,
     /** RTR0MemObjAllocLow.
      * This memory is page aligned, fixed and is backed by physical memory below 4GB. */
     RTR0MEMOBJTYPE_LOW,
