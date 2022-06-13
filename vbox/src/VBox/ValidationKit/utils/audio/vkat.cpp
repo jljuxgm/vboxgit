@@ -1,4 +1,4 @@
-/* $Id: vkat.cpp 92166 2021-11-01 13:33:55Z vboxsync $ */
+/* $Id: vkat.cpp 92169 2021-11-01 18:46:32Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) utility for testing and validating the audio stack.
  */
@@ -1407,6 +1407,8 @@ int main(int argc, char **argv)
                 fDaemonized = true;
                 break;
 
+            /* Has to be defined here and not in AUDIO_TEST_COMMON_OPTION_CASES, to get the logger
+             * configured before the specific command handlers down below come into play. */
             case 'v':
                 g_uVerbosity++;
                 break;

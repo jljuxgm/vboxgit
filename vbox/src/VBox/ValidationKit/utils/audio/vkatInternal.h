@@ -1,4 +1,4 @@
-/* $Id: vkatInternal.h 92166 2021-11-01 13:33:55Z vboxsync $ */
+/* $Id: vkatInternal.h 92169 2021-11-01 18:46:32Z vboxsync $ */
 /** @file
  * VKAT - Internal header file for common definitions + structs.
  */
@@ -504,7 +504,7 @@ enum
                 break; \
             \
             case 'v': \
-                g_uVerbosity++; \
+                /* No-op here, has been handled by main() already. */ \
                 break; \
             \
             case 'V': \
