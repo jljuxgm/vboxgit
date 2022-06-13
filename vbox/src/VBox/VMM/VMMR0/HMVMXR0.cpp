@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 93133 2022-01-06 13:09:49Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 93203 2022-01-12 18:36:50Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -8039,6 +8039,9 @@ static VBOXSTRICTRC hmR0VmxRunGuestCodeDebug(PVMCPUCC pVCpu, uint32_t *pcLoops)
     /** @todo there seems to be issues with the resume flag when the monitor trap
      *        flag is pending without being used. Seen early in bios init when
      *        accessing APIC page in protected mode. */
+
+/** @todo we need to do hmR0VmxRunDebugStateRevert here too, in case we broke
+ *        out of the above loop. */
 
     /* Restore HMCPU indicators. */
     pVCpu->hmr0.s.fUsingDebugLoop     = false;
