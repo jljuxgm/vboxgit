@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.h 92414 2021-11-14 14:12:13Z vboxsync $ */
+/* $Id: UIMediumSelector.h 92437 2021-11-15 17:32:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class declaration.
  */
@@ -24,6 +24,7 @@
 /* GUI includes: */
 #include "QIMainDialog.h"
 #include "QIWithRetranslateUI.h"
+#include "QIWithRestorableGeometry.h"
 #include "UIMedium.h"
 #include "UIMediumDefs.h"
 
@@ -40,9 +41,8 @@ class UIActionPool;
 class UIMediumItem;
 class UIMediumSearchWidget;
 
-
 /** QIDialog extension providing GUI with a dialog to select an existing medium. */
-class SHARED_LIBRARY_STUFF UIMediumSelector : public QIWithRetranslateUI<QIMainDialog>
+class SHARED_LIBRARY_STUFF UIMediumSelector : public QIWithRetranslateUI<QIWithRestorableGeometry<QIMainDialog> >
 {
 
     Q_OBJECT;

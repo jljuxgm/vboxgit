@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 92400 2021-11-12 15:07:42Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 92437 2021-11-15 17:32:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -828,6 +828,13 @@ public:
         QStringList VMActivityOverviewHiddenColumnList();
         bool VMActivityOverviewShowAllMachines();
         void setVMActivityOverviewShowAllMachines(bool fShow);
+    /** @} */
+
+    /** @name Medium Selector
+      * @{ */
+        QRect mediumSelectorDialogGeometry(QWidget *pWidget, QWidget *pParentWidget, const QRect &defaultGeometry);
+        void setMediumSelectorDialogGeometry(const QRect &geometry, bool fMaximized);
+        bool mediumSelectorDialogShouldBeMaximized();
     /** @} */
 
 private slots:

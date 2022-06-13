@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 92436 2021-11-15 17:19:37Z vboxsync $ */
+/* $Id: UIExtraDataDefs.cpp 92437 2021-11-15 17:32:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -250,6 +250,8 @@ const char *UIExtraDataDefs::GUI_HelpBrowser_ZoomPercentage = "GUI/HelpBrowserZo
 /* VM Activity Overview: */
 const char *UIExtraDataDefs::GUI_VMActivityOverview_HiddenColumns = "GUI/VMActivityOverviewHiddenColumns";
 const char *UIExtraDataDefs::GUI_VMActivityOverview_ShowAllMachines = "GUI/VMActivityOverviewShowAllMachines";
+
+const char *UIExtraDataDefs::GUI_MediumSelector_DialogGeometry = "GUI/MediumSelector/DialogGeometry";
 
 /* Obsolete keys: */
 QMap<QString, QString> UIExtraDataDefs::prepareObsoleteKeysMap()

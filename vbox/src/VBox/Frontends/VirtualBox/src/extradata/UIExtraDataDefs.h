@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 92436 2021-11-15 17:19:37Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 92437 2021-11-15 17:32:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -456,6 +456,11 @@ namespace UIExtraDataDefs
       * @{ */
         SHARED_LIBRARY_STUFF extern const char *GUI_VMActivityOverview_HiddenColumns;
         SHARED_LIBRARY_STUFF extern const char *GUI_VMActivityOverview_ShowAllMachines;
+    /** @} */
+
+    /** @name Medium Selector stuff
+      * @{ */
+        SHARED_LIBRARY_STUFF extern const char *GUI_MediumSelector_DialogGeometry;
     /** @} */
 
     /** @name Old key support stuff.

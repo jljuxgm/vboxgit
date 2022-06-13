@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 92436 2021-11-15 17:19:37Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 92437 2021-11-15 17:32:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -4719,6 +4719,24 @@ bool UIExtraDataManager::VMActivityOverviewShowAllMachines()
 void UIExtraDataManager::setVMActivityOverviewShowAllMachines(bool fShow)
 {
     setExtraDataString(GUI_VMActivityOverview_ShowAllMachines, toFeatureAllowed(fShow));
+}
+
+QRect UIExtraDataManager::mediumSelectorDialogGeometry(QWidget *pWidget, QWidget *pParentWidget, const QRect &defaultGeometry)
+{
+    return dialogGeometry(GUI_MediumSelector_DialogGeometry, pWidget, pParentWidget, defaultGeometry);
+}
+
+void UIExtraDataManager::setMediumSelectorDialogGeometry(const QRect &geometry, bool fMaximized)
+{
+    setDialogGeometry(GUI_MediumSelector_DialogGeometry, geometry, fMaximized);
+}
+
+bool UIExtraDataManager::mediumSelectorDialogShouldBeMaximized()
+{
+    const QStringList data = extraDataStringList(GUI_MediumSelector_DialogGeometry);
+
+    /* Make sure 5th item has required value: */
+    return data.size() == 5 && data[4] == GUI_Geometry_State_Max;
 }
 
 void UIExtraDataManager::sltExtraDataChange(const QUuid &uMachineID, const QString &strKey, const QString &strValue)
