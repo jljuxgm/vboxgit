@@ -1,4 +1,4 @@
-/* $Id: vkat.cpp 89747 2021-06-16 16:06:15Z vboxsync $ */
+/* $Id: vkat.cpp 89761 2021-06-17 09:11:54Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) utility for testing and validating the audio stack.
  */
@@ -160,7 +160,7 @@ static const RTGETOPTDEF g_aCmdTestOptions[] =
     { "--drvaudio",          'd',                          RTGETOPT_REQ_NOTHING },
     { "--exclude",           'e',                          RTGETOPT_REQ_UINT32  },
     { "--exclude-all",       'a',                          RTGETOPT_REQ_NOTHING },
-    { "--guest-ats-address", VKAT_TEST_OPT_GUEST_ATS_ADDR, RTGETOPT_REQ_STRING  },
+    { "--guest-ats-addr",    VKAT_TEST_OPT_GUEST_ATS_ADDR, RTGETOPT_REQ_STRING  },
     { "--guest-ats-port",    VKAT_TEST_OPT_GUEST_ATS_PORT, RTGETOPT_REQ_UINT32  },
     { "--host-ats-address",  VKAT_TEST_OPT_HOST_ATS_ADDR,  RTGETOPT_REQ_STRING  },
     { "--host-ats-port",     VKAT_TEST_OPT_HOST_ATS_PORT,  RTGETOPT_REQ_UINT32  },
