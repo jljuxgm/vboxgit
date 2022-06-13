@@ -1,4 +1,4 @@
-/* $Id: IEMR0.cpp 93650 2022-02-08 10:43:53Z vboxsync $ */
+/* $Id: IEMR0.cpp 93655 2022-02-08 13:56:01Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - Ring-0.
  */
@@ -33,6 +33,9 @@
 
 VMMR0_INT_DECL(int) IEMR0InitVM(PGVM pGVM)
 {
+    AssertCompile(sizeof(pGVM->iem.s) <= sizeof(pGVM->iem.padding));
+    AssertCompile(sizeof(pGVM->aCpus[0].iem.s) <= sizeof(pGVM->aCpus[0].iem.padding));
+
 #ifdef VBOX_WITH_NESTED_HWVIRT_VMX
     /*
      * Register the per-VM VMX APIC-access page handler type.

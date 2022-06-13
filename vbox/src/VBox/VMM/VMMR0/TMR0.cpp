@@ -1,4 +1,4 @@
-/* $Id: TMR0.cpp 93654 2022-02-08 12:26:36Z vboxsync $ */
+/* $Id: TMR0.cpp 93655 2022-02-08 13:56:01Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, host ring-0 context.
  */
@@ -45,17 +45,19 @@
  */
 VMMR0_INT_DECL(void)    TMR0InitPerVMData(PGVM pGVM)
 {
+    AssertCompile(sizeof(pGVM->tmr0.padding) >= sizeof(pGVM->tmr0.s));
+
     for (uint32_t idxQueue = 0; idxQueue < RT_ELEMENTS(pGVM->tmr0.s.aTimerQueues); idxQueue++)
     {
         pGVM->tmr0.s.aTimerQueues[idxQueue].hMemObj = NIL_RTR0MEMOBJ;
         pGVM->tmr0.s.aTimerQueues[idxQueue].hMapObj = NIL_RTR0MEMOBJ;
     }
 
-    pGVM->tm.s.VirtualGetRawDataR0.pu64Prev       = &pGVM->tm.s.u64VirtualRawPrev;
-    pGVM->tm.s.VirtualGetRawDataR0.pfnBad         = tmVirtualNanoTSBad;
-    pGVM->tm.s.VirtualGetRawDataR0.pfnBadCpuIndex = tmVirtualNanoTSBadCpuIndex;
-    pGVM->tm.s.VirtualGetRawDataR0.pfnRediscover  = tmVirtualNanoTSRediscover;
-    pGVM->tm.s.pfnVirtualGetRawR0                 = tmVirtualNanoTSRediscover;
+    pGVM->tmr0.s.VirtualGetRawData.pu64Prev       = &pGVM->tm.s.u64VirtualRawPrev;
+    pGVM->tmr0.s.VirtualGetRawData.pfnBad         = tmVirtualNanoTSBad;
+    pGVM->tmr0.s.VirtualGetRawData.pfnBadCpuIndex = tmVirtualNanoTSBadCpuIndex;
+    pGVM->tmr0.s.VirtualGetRawData.pfnRediscover  = tmVirtualNanoTSRediscover;
+    pGVM->tmr0.s.pfnVirtualGetRaw                 = tmVirtualNanoTSRediscover;
 }
 
 

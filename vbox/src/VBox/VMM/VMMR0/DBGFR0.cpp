@@ -1,4 +1,4 @@
-/* $Id: DBGFR0.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: DBGFR0.cpp 93655 2022-02-08 13:56:01Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, R0 part.
  */
@@ -50,6 +50,7 @@
  */
 VMMR0_INT_DECL(void) DBGFR0InitPerVMData(PGVM pGVM)
 {
+    AssertCompile(sizeof(pGVM->dbgfr0.s) <= sizeof(pGVM->dbgfr0.padding));
     pGVM->dbgfr0.s.pTracerR0 = NULL;
 
     dbgfR0BpInit(pGVM);

@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 93557 2022-02-02 23:15:11Z vboxsync $ */
+/* $Id: HMR0.cpp 93655 2022-02-08 13:56:01Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -1159,6 +1159,10 @@ static DECLCALLBACK(void) hmR0PowerCallback(RTPOWEREVENT enmEvent, void *pvUser)
  */
 VMMR0_INT_DECL(int) HMR0InitVM(PVMCC pVM)
 {
+    AssertCompile(sizeof(pVM->hm.s) <= sizeof(pVM->hm.padding));
+    AssertCompile(sizeof(pVM->hmr0.s) <= sizeof(pVM->hmr0.padding));
+    AssertCompile(sizeof(pVM->aCpus[0].hm.s) <= sizeof(pVM->aCpus[0].hm.padding));
+    AssertCompile(sizeof(pVM->aCpus[0].hmr0.s) <= sizeof(pVM->aCpus[0].hmr0.padding));
     AssertReturn(pVM, VERR_INVALID_PARAMETER);
 
     /* Make sure we don't touch HM after we've disabled HM in preparation of a suspend. */
