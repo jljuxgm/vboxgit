@@ -1,4 +1,4 @@
-/* $Id: VBoxStub.rc 93115 2022-01-01 11:31:46Z vboxsync $*/
+/* $Id: VBoxStub.rc 93241 2022-01-14 21:38:18Z vboxsync $*/
 /** @file
  * Resource file for the Windows install stub program.
  */
@@ -34,9 +34,9 @@ BEGIN
    BEGIN
       BLOCK "040904b0"
       BEGIN
-         VALUE "FileDescription",  "VirtualBox\0"
-         VALUE "InternalName",     "VirtualBox\0"
-         VALUE "OriginalFilename", "VirtualBox.exe\0"
+         VALUE "FileDescription",  "VirtualBox Installer\0"
+         VALUE "InternalName",     "VirtualBox-" RT_XSTR(VBOX_VERSION_MAJOR) "." RT_XSTR(VBOX_VERSION_MINOR) "." RT_XSTR(VBOX_VERSION_BUILD) "-r" RT_XSTR(VBOX_SVN_REV) "-Win\0"
+         VALUE "OriginalFilename", "VirtualBox-" RT_XSTR(VBOX_VERSION_MAJOR) "." RT_XSTR(VBOX_VERSION_MINOR) "." RT_XSTR(VBOX_VERSION_BUILD) "-r" RT_XSTR(VBOX_SVN_REV) "-Win.exe\0"
          VALUE "CompanyName",      VBOX_RC_COMPANY_NAME
          VALUE "FileVersion",      VBOX_RC_FILE_VERSION_STR
          VALUE "LegalCopyright",   VBOX_RC_LEGAL_COPYRIGHT
