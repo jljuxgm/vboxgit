@@ -1,4 +1,4 @@
-/* $Id: GMM.cpp 92326 2021-11-10 15:14:52Z vboxsync $ */
+/* $Id: GMM.cpp 92703 2021-12-02 12:45:58Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager, ring-3 request wrappers.
  */
@@ -39,15 +39,19 @@
 GMMR3DECL(int)  GMMR3InitialReservation(PVM pVM, uint64_t cBasePages, uint32_t cShadowPages, uint32_t cFixedPages,
                                         GMMOCPOLICY enmPolicy, GMMPRIORITY enmPriority)
 {
-    GMMINITIALRESERVATIONREQ Req;
-    Req.Hdr.u32Magic = SUPVMMR0REQHDR_MAGIC;
-    Req.Hdr.cbReq = sizeof(Req);
-    Req.cBasePages = cBasePages;
-    Req.cShadowPages = cShadowPages;
-    Req.cFixedPages = cFixedPages;
-    Req.enmPolicy = enmPolicy;
-    Req.enmPriority = enmPriority;
-    return VMMR3CallR0(pVM, VMMR0_DO_GMM_INITIAL_RESERVATION, 0, &Req.Hdr);
+    if (!SUPR3IsDriverless())
+    {
+        GMMINITIALRESERVATIONREQ Req;
+        Req.Hdr.u32Magic = SUPVMMR0REQHDR_MAGIC;
+        Req.Hdr.cbReq = sizeof(Req);
+        Req.cBasePages = cBasePages;
+        Req.cShadowPages = cShadowPages;
+        Req.cFixedPages = cFixedPages;
+        Req.enmPolicy = enmPolicy;
+        Req.enmPriority = enmPriority;
+        return VMMR3CallR0(pVM, VMMR0_DO_GMM_INITIAL_RESERVATION, 0, &Req.Hdr);
+    }
+    return VINF_SUCCESS;
 }
 
 
@@ -56,13 +60,17 @@ GMMR3DECL(int)  GMMR3InitialReservation(PVM pVM, uint64_t cBasePages, uint32_t c
  */
 GMMR3DECL(int)  GMMR3UpdateReservation(PVM pVM, uint64_t cBasePages, uint32_t cShadowPages, uint32_t cFixedPages)
 {
-    GMMUPDATERESERVATIONREQ Req;
-    Req.Hdr.u32Magic = SUPVMMR0REQHDR_MAGIC;
-    Req.Hdr.cbReq = sizeof(Req);
-    Req.cBasePages = cBasePages;
-    Req.cShadowPages = cShadowPages;
-    Req.cFixedPages = cFixedPages;
-    return VMMR3CallR0(pVM, VMMR0_DO_GMM_UPDATE_RESERVATION, 0, &Req.Hdr);
+    if (!SUPR3IsDriverless())
+    {
+        GMMUPDATERESERVATIONREQ Req;
+        Req.Hdr.u32Magic = SUPVMMR0REQHDR_MAGIC;
+        Req.Hdr.cbReq = sizeof(Req);
+        Req.cBasePages = cBasePages;
+        Req.cShadowPages = cShadowPages;
+        Req.cFixedPages = cFixedPages;
+        return VMMR3CallR0(pVM, VMMR0_DO_GMM_UPDATE_RESERVATION, 0, &Req.Hdr);
+    }
+    return VINF_SUCCESS;
 }
 
 

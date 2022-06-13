@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 92556 2021-11-23 01:12:29Z vboxsync $ */
+/* $Id: HM.cpp 92703 2021-12-02 12:45:58Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -596,6 +596,7 @@ VMMR3_INT_DECL(int) HMR3Init(PVM pVM)
                 case VERR_VMX_MSR_LOCKING_FAILED:   pszMsg = "Failed to enable and lock VT-x features";                   break;
                 case VERR_SVM_NO_SVM:               pszMsg = "AMD-V is not available";                                    break;
                 case VERR_SVM_DISABLED:             pszMsg = "AMD-V is disabled in the BIOS (or by the host OS)";         break;
+                case VERR_SUP_DRIVERLESS:           pszMsg = "Driverless mode";                                           break;
                 default:
                     return VMSetError(pVM, rc, RT_SRC_POS, "SUPR3QueryVTCaps failed with %Rrc", rc);
             }

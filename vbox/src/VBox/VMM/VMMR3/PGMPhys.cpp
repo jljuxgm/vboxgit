@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 92626 2021-11-29 12:32:58Z vboxsync $ */
+/* $Id: PGMPhys.cpp 92703 2021-12-02 12:45:58Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -5388,8 +5388,11 @@ VMMR3DECL(int) PGMR3QueryGlobalMemoryStats(PUVM pUVM, uint64_t *pcbAllocMem, uin
     uint64_t cFreePages    = 0;
     uint64_t cBalloonPages = 0;
     uint64_t cSharedPages  = 0;
-    int rc = GMMR3QueryHypervisorMemoryStats(pUVM->pVM, &cAllocPages, &cFreePages, &cBalloonPages, &cSharedPages);
-    AssertRCReturn(rc, rc);
+    if (!SUPR3IsDriverless())
+    {
+        int rc = GMMR3QueryHypervisorMemoryStats(pUVM->pVM, &cAllocPages, &cFreePages, &cBalloonPages, &cSharedPages);
+        AssertRCReturn(rc, rc);
+    }
 
     if (pcbAllocMem)
         *pcbAllocMem    = cAllocPages * _4K;
