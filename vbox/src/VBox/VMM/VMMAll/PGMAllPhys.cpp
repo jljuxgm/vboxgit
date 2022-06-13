@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 90162 2021-07-13 00:18:27Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 90346 2021-07-26 19:55:53Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -597,7 +597,7 @@ void pgmPhysInvalidatePageMapTLB(PVMCC pVM)
  * @param   pVM     The cross context VM structure.
  * @param   GCPhys  GCPhys entry to flush
  */
-void pgmPhysInvalidatePageMapTLBEntry(PVM pVM, RTGCPHYS GCPhys)
+void pgmPhysInvalidatePageMapTLBEntry(PVMCC pVM, RTGCPHYS GCPhys)
 {
     PGM_LOCK_ASSERT_OWNER(pVM);
 

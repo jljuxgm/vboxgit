@@ -1,4 +1,4 @@
-/* $Id: PGMAllShw.h 86489 2020-10-08 09:11:54Z vboxsync $ */
+/* $Id: PGMAllShw.h 90346 2021-07-26 19:55:53Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow Paging Template - All context code.
  */
@@ -316,7 +316,7 @@ PGM_SHW_DECL(int, GetPage)(PVMCPUCC pVCpu, RTGCUINTPTR GCPtr, uint64_t *pfFlags,
     return VERR_PGM_SHW_NONE_IPE;
 
 #else  /* PGM_SHW_TYPE != PGM_TYPE_NONE */
-    PVM pVM = pVCpu->CTX_SUFF(pVM);
+    PVMCC pVM = pVCpu->CTX_SUFF(pVM);
 
     PGM_LOCK_ASSERT_OWNER(pVM);
 

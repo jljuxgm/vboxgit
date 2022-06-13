@@ -1,4 +1,4 @@
-/* $Id: MMHyper.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: MMHyper.cpp 90346 2021-07-26 19:55:53Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Hypervisor Memory Area.
  */
@@ -423,7 +423,7 @@ VMMR3DECL(int) MMR3LockCall(PVM pVM)
 {
     PMMHYPERHEAP pHeap = pVM->mm.s.CTX_SUFF(pHyperHeap);
 
-    int rc = PDMR3CritSectEnterEx(&pHeap->Lock, true /* fHostCall */);
+    int rc = PDMR3CritSectEnterEx(pVM, &pHeap->Lock, true /* fHostCall */);
     AssertRC(rc);
     return rc;
 }

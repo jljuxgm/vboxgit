@@ -1,4 +1,4 @@
-/* $Id: DrvNetShaper.cpp 90330 2021-07-26 12:50:05Z vboxsync $ */
+/* $Id: DrvNetShaper.cpp 90346 2021-07-26 19:55:53Z vboxsync $ */
 /** @file
  * NetShaperFilter - Network shaper filter driver.
  */
@@ -129,7 +129,7 @@ PDMBOTHCBDECL(int) drvNetShaperUp_AllocBuf(PPDMINETWORKUP pInterface, size_t cbM
     STAM_REL_COUNTER_ADD(&pThis->StatXmitBytesRequested, cbMin);
     STAM_REL_COUNTER_INC(&pThis->StatXmitPktsRequested);
 #if defined(IN_RING3) || defined(IN_RING0)
-    if (!PDMNsAllocateBandwidth(&pThis->Filter, cbMin))
+    if (!PDMDrvHlpNetShaperAllocateBandwidth(pThis->CTX_SUFF(pDrvIns), &pThis->Filter, cbMin))
     {
         STAM_REL_COUNTER_ADD(&pThis->StatXmitBytesDenied, cbMin);
         STAM_REL_COUNTER_INC(&pThis->StatXmitPktsDenied);

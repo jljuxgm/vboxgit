@@ -1,4 +1,4 @@
-/* $Id: PDMUsb.cpp 89673 2021-06-14 09:38:15Z vboxsync $ */
+/* $Id: PDMUsb.cpp 90346 2021-07-26 19:55:53Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, USB part.
  */
@@ -1918,14 +1918,15 @@ static DECLCALLBACK(int) pdmR3UsbHlp_TimerLockClock(PPDMUSBINS pUsbIns, TMTIMERH
 static DECLCALLBACK(int) pdmR3UsbHlp_TimerLockClock2(PPDMUSBINS pUsbIns, TMTIMERHANDLE hTimer, PPDMCRITSECT pCritSect)
 {
     PDMUSB_ASSERT_USBINS(pUsbIns);
-    int rc = TMTimerLock(pUsbIns->Internal.s.pVM, hTimer, VERR_IGNORED);
+    PVM const pVM = pUsbIns->Internal.s.pVM;
+    int rc = TMTimerLock(pVM, hTimer, VERR_IGNORED);
     if (rc == VINF_SUCCESS)
     {
-        rc = PDMCritSectEnter(pCritSect, VERR_IGNORED);
+        rc = PDMCritSectEnter(pVM, pCritSect, VERR_IGNORED);
         if (rc == VINF_SUCCESS)
             return rc;
         AssertRC(rc);
-        TMTimerUnlock(pUsbIns->Internal.s.pVM, hTimer);
+        TMTimerUnlock(pVM, hTimer);
     }
     else
         AssertRC(rc);
@@ -2001,8 +2002,9 @@ static DECLCALLBACK(void) pdmR3UsbHlp_TimerUnlockClock(PPDMUSBINS pUsbIns, TMTIM
 static DECLCALLBACK(void) pdmR3UsbHlp_TimerUnlockClock2(PPDMUSBINS pUsbIns, TMTIMERHANDLE hTimer, PPDMCRITSECT pCritSect)
 {
     PDMUSB_ASSERT_USBINS(pUsbIns);
-    TMTimerUnlock(pUsbIns->Internal.s.pVM, hTimer);
-    int rc = PDMCritSectLeave(pCritSect);
+    PVM const pVM = pUsbIns->Internal.s.pVM;
+    TMTimerUnlock(pVM, hTimer);
+    int rc = PDMCritSectLeave(pVM, pCritSect);
     AssertRC(rc);
 }
 

@@ -1,4 +1,4 @@
-/* $Id: PGMAllHandler.cpp 86473 2020-10-07 17:30:25Z vboxsync $ */
+/* $Id: PGMAllHandler.cpp 90346 2021-07-26 19:55:53Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -1681,7 +1681,7 @@ typedef struct PGMAHAFIS
  * @returns Number of mismatches.
  * @param   pVM     The cross context VM structure.
  */
-VMMDECL(unsigned) PGMAssertHandlerAndFlagsInSync(PVM pVM)
+VMMDECL(unsigned) PGMAssertHandlerAndFlagsInSync(PVMCC pVM)
 {
     PPGM        pPGM = &pVM->pgm.s;
     PGMAHAFIS   State;
