@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 92566 2021-11-23 15:29:41Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 92569 2021-11-23 15:47:04Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -6679,6 +6679,15 @@ IEM_STATIC int iemVmxVmentryLoadGuestNonRegState(PVMCPUCC pVCpu, const char *psz
     /* SMI blocking is irrelevant. We don't support SMIs yet. */
 
     /*
+     * Set PGM's copy of the EPT pointer.
+     * The EPTP has already been validated while checking guest state.
+     *
+     * It is important to do this prior to mapping PAE PDPTEs (below).
+     */
+    if (pVmcs->u32ProcCtls2 & VMX_PROC_CTLS2_EPT)
+        PGMSetGuestEptPtr(pVCpu, pVmcs->u64EptPtr.u);
+
+    /*
      * Load the guest's PAE PDPTEs.
      */
     if (iemVmxVmcsIsGuestPaePagingEnabled(pVmcs))
@@ -6714,13 +6723,6 @@ IEM_STATIC int iemVmxVmentryLoadGuestNonRegState(PVMCPUCC pVCpu, const char *psz
             }
         }
     }
-
-    /*
-     * Set PGM's copy of the EPT pointer.
-     * The EPTP has already been validated while checking guest state.
-     */
-    if (pVmcs->u32ProcCtls2 & VMX_PROC_CTLS2_EPT)
-        PGMSetGuestEptPtr(pVCpu, pVmcs->u64EptPtr.u);
 
     /* VPID is irrelevant. We don't support VPID yet. */
 
