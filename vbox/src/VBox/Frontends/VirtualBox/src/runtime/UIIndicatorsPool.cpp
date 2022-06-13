@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 84792 2020-06-11 13:12:17Z vboxsync $ */
+/* $Id: UIIndicatorsPool.cpp 91122 2021-09-06 13:07:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIIndicatorsPool class implementation.
  */
@@ -631,7 +631,7 @@ private:
             /* Enumerate all the USB devices: */
             const CConsole console = m_pSession->console();
             foreach (const CUSBDevice &usbDevice, console.GetUSBDevices())
-                strFullData += s_strTableRow1.arg(uiCommon().details(usbDevice));
+                strFullData += s_strTableRow1.arg(uiCommon().usbDetails(usbDevice));
             /* Handle 'no-usb-devices' case: */
             if (strFullData.isNull())
                 strFullData = s_strTableRow1
