@@ -1,4 +1,4 @@
-/* $Id: AudioTest.h 91493 2021-09-30 08:36:12Z vboxsync $ */
+/* $Id: AudioTest.h 91505 2021-10-01 10:15:58Z vboxsync $ */
 /** @file
  * Audio testing routines.
  * Common code which is being used by the ValidationKit audio test (VKAT)
@@ -252,6 +252,8 @@ typedef struct AUDIOTESTVERIFYOPTS
 {
     /** Flag indicating whether to keep going after an error has occurred. */
     bool                fKeepGoing;
+    /** Whether to perform audio normalization or not. */
+    bool                fNormalize;
     /** Threshold of file differences (number of chunks) at when we consider audio files
      *  as not matching. 0 means an exact match. */
     uint32_t            cMaxDiff;
@@ -261,6 +263,8 @@ typedef struct AUDIOTESTVERIFYOPTS
     /** Threshold of file size (+/-, in percent) at when we consider audio files
      *  as not matching. 0 means an exact match.*/
     uint8_t             uMaxSizePercent;
+    /** Search window (in ms) to use for treating / classifying audio data. */
+    uint32_t            msSearchWindow;
 } AUDIOTESTVERIFYOPTS;
 /** Pointer to audio test verification options. */
 typedef AUDIOTESTVERIFYOPTS *PAUDIOTESTVERIFYOPTS;
