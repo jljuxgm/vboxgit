@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-x11.cpp 91066 2021-09-01 15:56:33Z vboxsync $ */
+/* $Id: VBoxUtils-x11.cpp 91078 2021-09-01 19:23:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Declarations of utility classes and functions for handling X11 specific tasks.
  */
@@ -391,7 +391,7 @@ bool XXSendClientMessage(Display *pDpy, Window windowHandle, const char *pszMsg,
 
 bool NativeWindowSubsystem::X11ActivateWindow(WId wId, bool fSwitchDesktop)
 {
-    bool fResult = false;
+    bool fResult = true;
     Display *pDisplay = QX11Info::display();
 
     if (fSwitchDesktop)
