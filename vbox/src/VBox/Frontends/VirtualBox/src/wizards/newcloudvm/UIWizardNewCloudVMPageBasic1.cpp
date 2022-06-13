@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageBasic1.cpp 89972 2021-06-30 10:28:16Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageBasic1.cpp 89978 2021-06-30 12:10:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageBasic1 class implementation.
  */
@@ -283,34 +283,10 @@ void UIWizardNewCloudVMPage1::populateFormProperties()
         /* Main API request sequence, can be interrupted after any step: */
         do
         {
-            /* Create appliance: */
-            CVirtualBox comVBox = uiCommon().virtualBox();
-            CAppliance comAppliance = comVBox.CreateAppliance();
-            if (!comVBox.isOk())
-            {
-                msgCenter().cannotCreateAppliance(comVBox);
-                break;
-            }
-
             /* Create virtual system description: */
-            comAppliance.CreateVirtualSystemDescriptions(1);
-            if (!comAppliance.isOk())
-            {
-                msgCenter().cannotCreateVirtualSystemDescription(comAppliance);
+            CVirtualSystemDescription comVSD = createVirtualSystemDescription(wizardImp());
+            if (comVSD.isNull())
                 break;
-            }
-
-            /* Acquire virtual system description: */
-            QVector<CVirtualSystemDescription> descriptions = comAppliance.GetVirtualSystemDescriptions();
-            if (!comAppliance.isOk())
-            {
-                msgCenter().cannotAcquireVirtualSystemDescription(comAppliance);
-                break;
-            }
-
-            /* Make sure there is at least one virtual system description created: */
-            AssertReturnVoid(!descriptions.isEmpty());
-            CVirtualSystemDescription comVSD = descriptions.at(0);
 
             /* Remember Virtual System Description: */
             setVSD(comVSD);
