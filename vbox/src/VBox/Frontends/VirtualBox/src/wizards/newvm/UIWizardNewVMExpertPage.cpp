@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMExpertPage.cpp 93606 2022-02-04 14:48:36Z vboxsync $ */
+/* $Id: UIWizardNewVMExpertPage.cpp 93607 2022-02-04 15:40:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMExpertPage class implementation.
  */
@@ -161,7 +161,7 @@ void UIWizardNewVMExpertPage::sltISOPathChanged(const QString &strISOPath)
     if (fileInfo.exists() && fileInfo.isReadable())
         uiCommon().updateRecentlyUsedMediumListAndFolder(UIMediumDeviceType_DVD, strISOPath);
 
-    /* Populate the windows ISO images selector: */
+    /* Populate the editions selector: */
     if (m_pNameAndSystemEditor)
         m_pNameAndSystemEditor->setEditionNameAndIndices(pWizard->detectedWindowsImageNames(),
                                                          pWizard->detectedWindowsImageIndices());

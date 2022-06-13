@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.cpp 93606 2022-02-04 14:48:36Z vboxsync $ */
+/* $Id: UINameAndSystemEditor.cpp 93607 2022-02-04 15:40:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class implementation.
  */
@@ -333,7 +333,7 @@ void UINameAndSystemEditor::retranslateUi()
     if (m_pImageLabel)
         m_pImageLabel->setText(tr("&ISO Image:"));
     if (m_pEditionLabel)
-        m_pEditionLabel->setText(tr("&OS Edition:"));
+        m_pEditionLabel->setText(tr("&Edition:"));
     if (m_pLabelFamily)
         m_pLabelFamily->setText(tr("&Type:"));
     if (m_pLabelType)
