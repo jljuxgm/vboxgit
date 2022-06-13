@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 90491 2021-08-03 09:56:48Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 90522 2021-08-05 08:52:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -42,7 +42,6 @@
 #include "VBoxAboutDlg.h"
 #ifdef VBOX_GUI_WITH_NETWORK_MANAGER
 # include "UINetworkRequestManager.h"
-# include "UINetworkRequestManagerWindow.h"
 #endif
 #ifdef VBOX_OSE
 # include "UIDownloaderUserManual.h"
