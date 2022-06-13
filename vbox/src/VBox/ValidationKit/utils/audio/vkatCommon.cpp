@@ -1,4 +1,4 @@
-/* $Id: vkatCommon.cpp 91573 2021-10-05 15:43:53Z vboxsync $ */
+/* $Id: vkatCommon.cpp 91574 2021-10-05 15:47:10Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) - Self test code.
  */
@@ -142,6 +142,7 @@ int audioTestSetMasterVolume(unsigned uVolPercent)
     /** @todo Port other platforms. */
     return VERR_NOT_SUPPORTED;
 }
+
 
 /*********************************************************************************************************************************
 *   Device enumeration + handling.                                                                                               *
