@@ -1,4 +1,4 @@
-/* $Id: PGMAllHandler.cpp 91941 2021-10-21 12:59:28Z vboxsync $ */
+/* $Id: PGMAllHandler.cpp 91943 2021-10-21 13:01:50Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -162,7 +162,7 @@ int pgmHandlerPhysicalExCreate(PVMCC pVM, PGMPHYSHANDLERTYPE hType, RTR3PTR pvUs
                     ("Not RC pointer! pvUserRC=%RRv\n", pvUserRC),
                     VERR_INVALID_PARAMETER);
 #else
-    RT_NOREF(pvUser);
+    RT_NOREF(pvUserRC);
 #endif
 #if 0 /* No longer valid. */
     AssertMsgReturn(    (RTR0UINTPTR)pvUserR0 < 0x10000
