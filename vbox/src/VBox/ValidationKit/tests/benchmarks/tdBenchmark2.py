@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdBenchmark2.py 92307 2021-11-10 00:25:48Z vboxsync $
+# $Id: tdBenchmark2.py 92308 2021-11-10 00:33:31Z vboxsync $
 
 """
 VirtualBox Validation Kit - Test that runs various benchmarks.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 92307 $"
+__version__ = "$Revision: 92308 $"
 
 
 # Standard Python imports.
@@ -115,6 +115,10 @@ class tdBenchmark2(vbox.TestDriver):
             while len(acMbRam) < 7 and cMb > 16 * 1024:
                 cMb //= 2;
                 acMbRam.append(cMb);
+        elif cMbHostAvail >= 16000 and cMbHostAvail > 7168:
+            # Desperate attempt at getting some darwin testruns too.  We've got two
+            # with 16 GiB and they usually end up with just short of 8GiB of free RAM.
+            acMbRam = [7168,];
         else:
             reporter.log("Less than 8GB of host RAM available for VMs, skipping test");
             return None;
