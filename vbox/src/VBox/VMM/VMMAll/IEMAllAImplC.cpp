@@ -1,4 +1,4 @@
-/* $Id: IEMAllAImplC.cpp 93756 2022-02-15 15:08:15Z vboxsync $ */
+/* $Id: IEMAllAImplC.cpp 93758 2022-02-15 15:13:34Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in Assembly, portable C variant.
  */
@@ -415,11 +415,12 @@ static uint8_t const g_afParity[256] =
 
 
 
-#if !defined(RT_ARCH_AMD64) || defined(IEM_WITHOUT_ASSEMBLY)
 /*
  * There are a few 64-bit on 32-bit things we'd rather do in C.  Actually, doing
  * it all in C is probably safer atm., optimize what's necessary later, maybe.
  */
+#if !defined(RT_ARCH_AMD64) || defined(IEM_WITHOUT_ASSEMBLY)
+
 
 /*********************************************************************************************************************************
 *   Binary Operations                                                                                                            *
