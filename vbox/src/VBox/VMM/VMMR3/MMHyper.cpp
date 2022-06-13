@@ -1,4 +1,4 @@
-/* $Id: MMHyper.cpp 90346 2021-07-26 19:55:53Z vboxsync $ */
+/* $Id: MMHyper.cpp 90348 2021-07-26 21:01:38Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Hypervisor Memory Area.
  */
@@ -214,7 +214,7 @@ int mmR3HyperInit(PVM pVM)
 int mmR3HyperTerm(PVM pVM)
 {
     if (pVM->mm.s.pHyperHeapR3)
-        PDMR3CritSectDelete(&pVM->mm.s.pHyperHeapR3->Lock);
+        PDMR3CritSectDelete(pVM, &pVM->mm.s.pHyperHeapR3->Lock);
 
     return VINF_SUCCESS;
 }

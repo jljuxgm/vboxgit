@@ -1,4 +1,4 @@
-/* $Id: PDMDriver.cpp 90346 2021-07-26 19:55:53Z vboxsync $ */
+/* $Id: PDMDriver.cpp 90348 2021-07-26 21:01:38Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Driver parts.
  */
@@ -1908,8 +1908,7 @@ static DECLCALLBACK(int)      pdmR3DrvHlp_CritSectScheduleExitEvent(PPDMDRVINS p
 static DECLCALLBACK(int)      pdmR3DrvHlp_CritSectDelete(PPDMDRVINS pDrvIns, PPDMCRITSECT pCritSect)
 {
     PDMDRV_ASSERT_DRVINS(pDrvIns);
-    RT_NOREF(pDrvIns);
-    return PDMR3CritSectDelete(pCritSect);
+    return PDMR3CritSectDelete(pDrvIns->Internal.s.pVMR3, pCritSect);
 }
 
 

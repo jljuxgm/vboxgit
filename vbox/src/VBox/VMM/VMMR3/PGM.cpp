@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 90346 2021-07-26 19:55:53Z vboxsync $ */
+/* $Id: PGM.cpp 90348 2021-07-26 21:01:38Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -1063,7 +1063,7 @@ VMMR3DECL(int) PGMR3Init(PVM pVM)
     }
 
     /* Almost no cleanup necessary, MM frees all memory. */
-    PDMR3CritSectDelete(&pVM->pgm.s.CritSectX);
+    PDMR3CritSectDelete(pVM, &pVM->pgm.s.CritSectX);
 
     return rc;
 }
@@ -2138,7 +2138,7 @@ VMMR3DECL(int) PGMR3Term(PVM pVM)
     pgmUnlock(pVM);
 
     PGMDeregisterStringFormatTypes();
-    return PDMR3CritSectDelete(&pVM->pgm.s.CritSectX);
+    return PDMR3CritSectDelete(pVM, &pVM->pgm.s.CritSectX);
 }
 
 
