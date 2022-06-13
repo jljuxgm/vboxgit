@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 91355 2021-09-24 07:42:22Z vboxsync $ */
+/* $Id: CPUM.cpp 91356 2021-09-24 09:07:15Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -1676,7 +1676,7 @@ void cpumR3InitVmxGuestFeaturesAndMsrs(PVM pVM, PCVMXMSRS pHostVmxMsrs, PVMXMSRS
     EmuFeat.fVmxDescTableExit         = 1;
     EmuFeat.fVmxRdtscp                = 1;
     EmuFeat.fVmxVirtX2ApicMode        = 0;
-    EmuFeat.fVmxVpid                  = 0;
+    EmuFeat.fVmxVpid                  = 0;  /** @todo Consider enabling this when EPT works. */
     EmuFeat.fVmxWbinvdExit            = 1;
     EmuFeat.fVmxUnrestrictedGuest     = pVM->cpum.s.fNestedVmxUnrestrictedGuest;
     EmuFeat.fVmxApicRegVirt           = 0;
