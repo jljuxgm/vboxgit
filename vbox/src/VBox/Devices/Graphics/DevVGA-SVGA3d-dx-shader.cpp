@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-dx-shader.cpp 95023 2022-05-16 15:17:36Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-dx-shader.cpp 95024 2022-05-16 15:20:07Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device - VGPU10+ (DX) shader utilities.
  */
@@ -2386,7 +2386,7 @@ static int dxbcCreateFromInfo(DXShaderInfo const *pInfo, void const *pvShader, u
         || pInfo->enmProgramType == VGPU10_DOMAIN_SHADER)
         ++cBlob;
 
-    uint32_t const cbHdr = RT_UOFFSETOF(DXBCHeader, aBlobOffset[cBlob]); /* Header with blob offsets. */
+    uint32_t const cbHdr = RT_UOFFSETOF_DYN(DXBCHeader, aBlobOffset[cBlob]); /* Header with blob offsets. */
     if (!dxbcByteWriterCanWrite(w, cbHdr))
         return VERR_NO_MEMORY;
 
