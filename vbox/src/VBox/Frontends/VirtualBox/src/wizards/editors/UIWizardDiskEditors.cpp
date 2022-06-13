@@ -1,4 +1,4 @@
-/* $Id: UIWizardDiskEditors.cpp 90275 2021-07-21 14:17:53Z vboxsync $ */
+/* $Id: UIWizardDiskEditors.cpp 90278 2021-07-21 22:42:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class implementation.
  */
@@ -318,6 +318,7 @@ void UIDiskVariantGroupBox::sltVariantChanged()
 {
     emit sigMediumVariantChanged(mediumVariant());
 }
+
 
 /*********************************************************************************************************************************
 *   UIMediumSizeAndPathGroupBox implementation.                                                                                  *
