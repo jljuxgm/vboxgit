@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 93744 2022-02-14 21:00:26Z vboxsync $ */
+/* $Id: VMM.cpp 94841 2022-05-05 10:38:39Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -2294,12 +2294,9 @@ VMMR3_INT_DECL(void) VMMR3InitR0StackUnwindState(PUVM pUVM, VMCPUID idCpu, struc
     /*
      * Locate the resume point on the stack.
      */
-    uintptr_t off = 0;
-
 #ifdef RT_ARCH_AMD64
-    /*
-     * This code must match the vmmR0CallRing3LongJmp stack frame setup in VMMR0JmpA-amd64.asm exactly.
-     */
+    /* This code must match the vmmR0CallRing3LongJmp stack frame setup in VMMR0JmpA-amd64.asm exactly. */
+    uintptr_t off = 0;
 # ifdef RT_OS_WINDOWS
     off += 0xa0; /* XMM6 thru XMM15 */
 # endif
@@ -2327,9 +2324,8 @@ VMMR3_INT_DECL(void) VMMR3InitR0StackUnwindState(PUVM pUVM, VMCPUID idCpu, struc
     pState->u.x86.auRegs[X86_GREG_xSP] = pVCpu->vmm.s.AssertJmpBuf.UnwindRetSp;
 
 #elif defined(RT_ARCH_X86)
-    /*
-     * This code must match the vmmR0CallRing3LongJmp stack frame setup in VMMR0JmpA-x86.asm exactly.
-     */
+    /* This code must match the vmmR0CallRing3LongJmp stack frame setup in VMMR0JmpA-x86.asm exactly. */
+    uintptr_t off = 0;
     pState->u.x86.uRFlags              = *(uint32_t const *)&pVCpu->vmm.s.abAssertStack[off];
     off += 4;
     pState->u.x86.auRegs[X86_GREG_xBX] = *(uint32_t const *)&pVCpu->vmm.s.abAssertStack[off];
