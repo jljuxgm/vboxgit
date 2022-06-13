@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-win.cpp 91549 2021-10-04 16:47:43Z vboxsync $ */
+/* $Id: VBoxGuest-win.cpp 91606 2021-10-06 20:17:52Z vboxsync $ */
 /** @file
  * VBoxGuest - Windows specifics.
  */
@@ -340,11 +340,12 @@ NTSTATUS DriverEntry(PDRIVER_OBJECT pDrvObj, PUNICODE_STRING pRegPath)
     NTSTATUS rcNt = STATUS_SUCCESS;
     switch (ulMajorVer)
     {
-        case 11: /* Windows 11 Preview builds starting with 22000. */
-            g_enmVGDrvNtVer = VGDRVNTVER_WIN11;
-            break;
-        case 10: /* Windows 10 Preview builds starting with 9926. */
+        case 10:
+            /* Windows 10 Preview builds starting with 9926. */
             g_enmVGDrvNtVer = VGDRVNTVER_WIN10;
+            /* Windows 11 Preview builds starting with 22000. */
+            if (ulBuildNo >= 22000)
+                g_enmVGDrvNtVer = VGDRVNTVER_WIN11;
             break;
         case 6: /* Windows Vista or Windows 7 (based on minor ver) */
             switch (ulMinorVer)
