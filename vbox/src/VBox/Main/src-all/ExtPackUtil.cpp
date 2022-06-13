@@ -1,4 +1,4 @@
-/* $Id: ExtPackUtil.cpp 91394 2021-09-27 12:54:43Z vboxsync $ */
+/* $Id: ExtPackUtil.cpp 91397 2021-09-27 13:43:21Z vboxsync $ */
 /** @file
  * VirtualBox Main - Extension Pack Utilities and definitions, VBoxC, VBoxSVC, ++.
  */
@@ -37,9 +37,9 @@
 
 #include <VBox/log.h>
 
-#include <VBox/VBoxNls.h>
+#include "../include/VBoxNls.h"
 
-DECLARE_TRANSLATION_CONTEXT(ExtPackUtil)
+DECLARE_TRANSLATION_CONTEXT(ExtPackUtil);
 
 
 /**
