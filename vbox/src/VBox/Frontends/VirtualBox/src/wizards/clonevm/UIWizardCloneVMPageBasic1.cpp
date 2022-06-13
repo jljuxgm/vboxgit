@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMPageBasic1.cpp 90669 2021-08-12 19:04:04Z vboxsync $ */
+/* $Id: UIWizardCloneVMPageBasic1.cpp 90696 2021-08-16 13:30:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMPageBasic1 class implementation.
  */
@@ -106,6 +106,7 @@ void UIWizardCloneVMPageBasic1::prepare(const QString &strDefaultClonePath)
     if (m_pNamePathEditor)
     {
         m_pNamePathEditor->setFlat(true);
+        m_pNamePathEditor->setLayoutContentsMargins(0, 0, 0, 0);
         pMainLayout->addWidget(m_pNamePathEditor);
         connect(m_pNamePathEditor, &UICloneVMNamePathEditor::sigCloneNameChanged,
                 this, &UIWizardCloneVMPageBasic1::sltCloneNameChanged);
