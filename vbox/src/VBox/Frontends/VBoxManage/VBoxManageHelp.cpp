@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 94172 2022-03-11 14:24:52Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 94177 2022-03-11 15:26:05Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -590,12 +590,6 @@ void printUsage(USAGECATEGORY enmCommand, uint64_t fSubcommandScope, PRTSTREAM p
     }
 
 #define SEP pcszSep1, pcszSep2
-
-    if (enmCommand == USAGE_CLOSEMEDIUM || enmCommand == USAGE_S_ALL)
-        RTStrmPrintf(pStrm,
-                           "%s closemedium %s     [disk|dvd|floppy] <uuid|filename>\n"
-                     "                            [--delete]\n"
-                     "\n", SEP);
 
     if (enmCommand == USAGE_STORAGEATTACH || enmCommand == USAGE_S_ALL)
         RTStrmPrintf(pStrm,
