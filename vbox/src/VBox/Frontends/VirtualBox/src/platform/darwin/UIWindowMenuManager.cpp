@@ -1,4 +1,4 @@
-/* $Id: UIWindowMenuManager.cpp 93990 2022-02-28 15:34:57Z vboxsync $ */
+/* $Id: UIWindowMenuManager.cpp 94066 2022-03-02 20:59:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWindowMenuManager class implementation.
  */
@@ -16,6 +16,7 @@
  */
 
 /* Qt includes: */
+#include <QActionGroup>
 #include <QApplication>
 #include <QMenu>
 
