@@ -1,4 +1,4 @@
-/* $Id: DBGFAddr.cpp 90784 2021-08-23 09:42:32Z vboxsync $ */
+/* $Id: DBGFAddr.cpp 92426 2021-11-15 13:25:47Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Mixed Address Methods.
  */
@@ -230,7 +230,10 @@ static DECLCALLBACK(int) dbgfR3AddrToPhysOnVCpu(PVMCPU pVCpu, PCDBGFADDRESS pAdd
 {
     VMCPU_ASSERT_EMT(pVCpu);
     /* This is just a wrapper because we cannot pass FlatPtr thru VMR3ReqCall directly. */
-    return PGMGstGetPage(pVCpu, pAddress->FlatPtr, NULL, pGCPhys);
+    PGMPTWALK Walk;
+    int const rc = PGMGstGetPage(pVCpu, pAddress->FlatPtr, &Walk);
+    *pGCPhys = Walk.GCPhys;
+    return rc;
 }
 
 

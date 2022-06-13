@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 92392 2021-11-12 10:39:56Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 92426 2021-11-15 13:25:47Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -7192,10 +7192,10 @@ HMSVM_EXIT_DECL hmR0SvmExitXcptPF(PVMCPUCC pVCpu, PSVMTRANSIENT pSvmTransient)
         GCPhysApicBase &= PAGE_BASE_GC_MASK;
 
         /* Check if the page at the fault-address is the APIC base. */
-        RTGCPHYS GCPhysPage;
-        int rc2 = PGMGstGetPage(pVCpu, (RTGCPTR)uFaultAddress, NULL /* pfFlags */, &GCPhysPage);
+        PGMPTWALK Walk;
+        int rc2 = PGMGstGetPage(pVCpu, (RTGCPTR)uFaultAddress, &Walk);
         if (   rc2 == VINF_SUCCESS
-            && GCPhysPage == GCPhysApicBase)
+            && Walk.GCPhys == GCPhysApicBase)
         {
             /* Only attempt to patch the instruction once. */
             PHMTPRPATCH pPatch = (PHMTPRPATCH)RTAvloU32Get(&pVM->hm.s.PatchTree, (AVLOU32KEY)pCtx->eip);
