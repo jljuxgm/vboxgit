@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: txsclient.py 94519 2022-04-07 14:53:30Z vboxsync $
+# $Id: txsclient.py 94522 2022-04-07 16:39:23Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 94519 $"
+__version__ = "$Revision: 94522 $"
 
 # Standard Python imports.
 import array;
@@ -1330,7 +1330,7 @@ class Session(TdTaskBase):
         return rc;
 
     def taskExpandString(self, sString):
-        rc = self.sendMsg('EXP STR ', (sString));
+        rc = self.sendMsg('EXP STR ', (sString,));
         if rc is True:
             rc = False;
             cbMsg, sOpcode, abPayload = self.recvReply();
