@@ -1,4 +1,4 @@
-/* $Id: MMAllHyper.cpp 90991 2021-08-30 09:49:20Z vboxsync $ */
+/* $Id: MMAllHyper.cpp 91266 2021-09-15 22:26:50Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Hypervisor Memory Area, All Contexts.
  */
@@ -337,6 +337,7 @@ VMMDECL(int) MMHyperAlloc(PVMCC pVM, size_t cb, unsigned uAlignment, MMTAG enmTa
 }
 
 
+#if 0
 /**
  * Duplicates a block of memory.
  *
@@ -358,6 +359,7 @@ VMMDECL(int) MMHyperDupMem(PVMCC pVM, const void *pvSrc, size_t cb, unsigned uAl
         memcpy(*ppv, pvSrc, cb);
     return rc;
 }
+#endif
 
 
 /**

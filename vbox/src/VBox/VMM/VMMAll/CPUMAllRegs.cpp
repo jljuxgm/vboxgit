@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 91037 2021-08-31 16:42:14Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 91266 2021-09-15 22:26:50Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -780,11 +780,11 @@ VMMDECL(uint64_t) CPUMGetGuestEFER(PCVMCPU pVCpu)
  */
 PCPUMCPUIDLEAF cpumCpuIdGetLeaf(PVM pVM, uint32_t uLeaf)
 {
-    unsigned            iEnd     = pVM->cpum.s.GuestInfo.cCpuIdLeaves;
+    unsigned            iEnd     = RT_MIN(pVM->cpum.s.GuestInfo.cCpuIdLeaves, RT_ELEMENTS(pVM->cpum.s.GuestInfo.aCpuIdLeaves));
     if (iEnd)
     {
         unsigned        iStart   = 0;
-        PCPUMCPUIDLEAF  paLeaves = pVM->cpum.s.GuestInfo.CTX_SUFF(paCpuIdLeaves);
+        PCPUMCPUIDLEAF  paLeaves = pVM->cpum.s.GuestInfo.aCpuIdLeaves;
         for (;;)
         {
             unsigned i = iStart + (iEnd - iStart) / 2U;
@@ -837,11 +837,11 @@ PCPUMCPUIDLEAF cpumCpuIdGetLeaf(PVM pVM, uint32_t uLeaf)
  */
 PCPUMCPUIDLEAF cpumCpuIdGetLeafEx(PVM pVM, uint32_t uLeaf, uint32_t uSubLeaf, bool *pfExactSubLeafHit)
 {
-    unsigned            iEnd     = pVM->cpum.s.GuestInfo.cCpuIdLeaves;
+    unsigned            iEnd     = RT_MIN(pVM->cpum.s.GuestInfo.cCpuIdLeaves, RT_ELEMENTS(pVM->cpum.s.GuestInfo.aCpuIdLeaves));
     if (iEnd)
     {
         unsigned        iStart   = 0;
-        PCPUMCPUIDLEAF  paLeaves = pVM->cpum.s.GuestInfo.CTX_SUFF(paCpuIdLeaves);
+        PCPUMCPUIDLEAF  paLeaves = pVM->cpum.s.GuestInfo.aCpuIdLeaves;
         for (;;)
         {
             unsigned i = iStart + (iEnd - iStart) / 2U;
