@@ -1,4 +1,4 @@
-/* $Id: UIWizardDiskEditors.h 90206 2021-07-15 07:22:34Z vboxsync $ */
+/* $Id: UIWizardDiskEditors.h 90217 2021-07-15 18:02:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardDiskEditors class declaration.
  */
@@ -58,7 +58,8 @@ signals:
 public:
 
     UIDiskFormatsGroupBox(QWidget *pParent = 0);
-
+    CMediumFormat mediumFormat() const;
+    void setMediumFormat(const CMediumFormat &mediumFormat);
 
 private:
 
@@ -105,6 +106,9 @@ signals:
 public:
 
     UIDiskSizeAndLocationGroupBox(QWidget *pParent = 0);
+
+    QString location() const;
+    void setLocation(const QString &strLocation);
 
 private:
 
