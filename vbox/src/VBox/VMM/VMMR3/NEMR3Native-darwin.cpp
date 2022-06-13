@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-darwin.cpp 94885 2022-05-06 07:07:35Z vboxsync $ */
+/* $Id: NEMR3Native-darwin.cpp 94961 2022-05-09 14:24:55Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, native ring-3 macOS backend using Hypervisor.framework.
  *
@@ -2209,8 +2209,8 @@ static int nemR3DarwinSetupLbrMsrRange(PVMCC pVM)
      * See Intel spec. 17.4.8 "LBR Stack".
      * See Intel "Model-Specific Registers" spec.
      */
-    uint32_t const uFamilyModel = (pVM->cpum.ro.HostFeatures.uFamily << 8)
-                                | pVM->cpum.ro.HostFeatures.uModel;
+    uint32_t const uFamilyModel = (g_CpumHostFeatures.uFamily << 8)
+                                | g_CpumHostFeatures.uModel;
     switch (uFamilyModel)
     {
         case 0x0f01: case 0x0f02:
