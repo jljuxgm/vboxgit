@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 91791 2021-10-17 18:56:35Z vboxsync $
+# $Id: Makefile.kmk 91792 2021-10-17 18:56:53Z vboxsync $
 ## @file
 # Sub-Makefile for the support library and the drivers/modules/kexts it uses.
 #
@@ -387,7 +387,9 @@ if "$(KBUILD_TARGET)" == "win" && defined(VBOX_WITH_HARDENING) ## @todo some of 
 	$(VBOX_PATH_RUNTIME_SRC)/common/string/strncmp.asm \
 	$(VBOX_PATH_RUNTIME_SRC)/common/string/strncpy.asm \
 	$(VBOX_PATH_RUNTIME_SRC)/common/string/strprintf.cpp \
+	$(VBOX_PATH_RUNTIME_SRC)/common/string/strprintf-ellipsis.cpp \
 	$(VBOX_PATH_RUNTIME_SRC)/common/string/strprintf2.cpp \
+	$(VBOX_PATH_RUNTIME_SRC)/common/string/strprintf2-ellipsis.cpp \
 	$(VBOX_PATH_RUNTIME_SRC)/common/string/strtonum.cpp \
 	$(VBOX_PATH_RUNTIME_SRC)/common/string/utf-16.cpp \
 	$(VBOX_PATH_RUNTIME_SRC)/common/string/utf-8.cpp \
