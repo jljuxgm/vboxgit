@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMSummaryPage.cpp 91294 2021-09-17 09:01:51Z vboxsync $ */
+/* $Id: UIWizardNewVMSummaryPage.cpp 92032 2021-10-25 13:25:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMSummaryPage class implementation.
  */
@@ -508,12 +508,7 @@ bool UIWizardNewVMSummaryPage::validatePage()
             return fResult;
     }
 
-    fResult = pWizard->createVM();
-    /* Try to delete the hard disk: */
-    if (!fResult)
-        pWizard->deleteVirtualDisk();
-
-    return fResult;
+    return pWizard->createVM();
 }
 
 

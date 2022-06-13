@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMExpertPage.cpp 91616 2021-10-07 10:50:28Z vboxsync $ */
+/* $Id: UIWizardNewVMExpertPage.cpp 92032 2021-10-25 13:25:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMExpertPage class implementation.
  */
@@ -639,12 +639,7 @@ bool UIWizardNewVMExpertPage::validatePage()
             return fResult;
     }
 
-    fResult = pWizard->createVM();
-    /* Try to delete the hard disk: */
-    if (!fResult)
-        pWizard->deleteVirtualDisk();
-
-    return fResult;
+    return pWizard->createVM();
 }
 
 bool UIWizardNewVMExpertPage::isProductKeyWidgetEnabled() const
