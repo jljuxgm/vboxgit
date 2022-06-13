@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 90423 2021-07-30 10:46:13Z vboxsync $ */
+/* $Id: UINotificationObjects.cpp 90451 2021-08-01 09:01:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -49,7 +49,7 @@ QString UINotificationProgressMediumCreate::name() const
 
 QString UINotificationProgressMediumCreate::details() const
 {
-    return UINotificationProgress::tr("<b>Location:</b> %1<br><b>Size:</b> %2").arg(m_strLocation).arg(m_uSize);
+    return UINotificationProgress::tr("<b>Location:</b> %1<br><b>Size:</b> %2").arg(m_strLocation, uiCommon().formatSize(m_uSize));
 }
 
 CProgress UINotificationProgressMediumCreate::createProgress(COMResult &comResult)
