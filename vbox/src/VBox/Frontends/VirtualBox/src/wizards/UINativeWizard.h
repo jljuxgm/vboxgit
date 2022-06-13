@@ -1,4 +1,4 @@
-/* $Id: UINativeWizard.h 92044 2021-10-25 15:45:00Z vboxsync $ */
+/* $Id: UINativeWizard.h 92110 2021-10-27 15:48:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINativeWizard class declaration.
  */
@@ -132,8 +132,9 @@ protected:
     /** Handles translation event. */
     virtual void retranslateUi() /* override */;
 
-    /** Wizard specific cleaning such as folder deletion in case of wizard mode change in new vm wizard etc. */
-    virtual void wizardClean();
+    /** Performs wizard-specific cleanup in case of wizard-mode change
+      * such as folder deletion in New VM wizard etc. */
+    virtual void cleanWizard() {}
 
 protected slots:
 
