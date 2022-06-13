@@ -1,4 +1,4 @@
-/* $Id: vkat.cpp 91667 2021-10-11 17:02:28Z vboxsync $ */
+/* $Id: vkat.cpp 91668 2021-10-11 17:09:51Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) utility for testing and validating the audio stack.
  */
@@ -1117,6 +1117,25 @@ static int audioVerifyOne(const char *pszPathSetA, const char *pszPathSetB, PAUD
     return rc;
 }
 
+/** Option help for the 'verify' command. */
+static DECLCALLBACK(const char *) audioTestCmdVerifyHelp(PCRTGETOPTDEF pOpt)
+{
+    switch (pOpt->iShort)
+    {
+        case VKAT_VERIFY_OPT_MAX_DIFF_COUNT:    return "Specifies the maximum number of differences\n"
+                                                       "    Default: 0 (strict)";
+        case VKAT_VERIFY_OPT_MAX_DIFF_PERCENT:  return "Specifies the maximum difference (percent)\n"
+                                                       "    Default: 0 (strict)";
+        case VKAT_VERIFY_OPT_MAX_SIZE_PERCENT:  return "Specifies the maximum size difference (percent)\n"
+                                                       "    Default: 1 (strict)";
+        case VKAT_VERIFY_OPT_NORMALIZE:         return "Enables / disables audio data normalization\n"
+                                                       "    Default: false";
+        default:
+            break;
+    }
+    return NULL;
+}
+
 /**
  * Main (entry) function for the verification functionality of VKAT.
  *
@@ -1207,7 +1226,7 @@ const VKATCMD g_CmdVerify =
     "Verifies a formerly created audio test set.",
     g_aCmdVerifyOptions,
     RT_ELEMENTS(g_aCmdVerifyOptions),
-    NULL,
+    audioTestCmdVerifyHelp,
     false /* fNeedsTransport */
 };
 
