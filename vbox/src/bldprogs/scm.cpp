@@ -1,4 +1,4 @@
-/* $Id: scm.cpp 93945 2022-02-24 21:16:02Z vboxsync $ */
+/* $Id: scm.cpp 94038 2022-03-01 12:18:53Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -2014,7 +2014,7 @@ static int scmSettingsStackPushDir(PSCMSETTINGS *ppSettingsStack, const char *ps
 /**
  * Pops a settings set off the stack.
  *
- * @returns The popped setttings.
+ * @returns The popped settings.
  * @param   ppSettingsStack     The pointer to the pointer to the top stack
  *                              element.  This will be used as input and output.
  */
@@ -3077,7 +3077,7 @@ int main(int argc, char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 93945 $";
+                static const char s_szRev[] = "$Revision: 94038 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return 0;
