@@ -1,4 +1,4 @@
-/* $Id: VBoxInternalManage.cpp 85889 2020-08-26 11:47:12Z vboxsync $ */
+/* $Id: VBoxInternalManage.cpp 89905 2021-06-24 19:59:39Z vboxsync $ */
 /** @file
  * VBoxManage - The 'internalcommands' command.
  *
@@ -1802,9 +1802,9 @@ static RTEXITCODE CmdCreateRawVMDK(int argc, char **argv, ComPtr<IVirtualBox> aV
         for (unsigned i = 0; i < RawDescriptor.cPartDescs; i++)
         {
             RTPrintf("%2u  %14RU64 %14RU64 %14RU64 %#18p %s\n", i,
-                     RawDescriptor.pPartDescs[i].uStart,
+                     RawDescriptor.pPartDescs[i].offStartInVDisk,
                      RawDescriptor.pPartDescs[i].cbData,
-                     RawDescriptor.pPartDescs[i].uStartOffset,
+                     RawDescriptor.pPartDescs[i].offStartInDevice,
                      RawDescriptor.pPartDescs[i].pvPartitionData,
                      RawDescriptor.pPartDescs[i].pszRawDevice);
         }
