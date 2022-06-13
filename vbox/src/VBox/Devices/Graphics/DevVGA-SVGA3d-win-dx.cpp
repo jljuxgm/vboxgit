@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-win-dx.cpp 94449 2022-04-02 14:09:02Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-win-dx.cpp 94741 2022-04-28 17:56:12Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -1796,8 +1796,14 @@ static void dxSamplerSet(DXDEVICE *pDevice, SVGA3dShaderType type, uint32_t star
             pDevice->pImmediateContext->GSSetSamplers(startSampler, cSampler, papSampler);
             break;
         case SVGA3D_SHADERTYPE_HS:
+            pDevice->pImmediateContext->HSSetSamplers(startSampler, cSampler, papSampler);
+            break;
         case SVGA3D_SHADERTYPE_DS:
+            pDevice->pImmediateContext->DSSetSamplers(startSampler, cSampler, papSampler);
+            break;
         case SVGA3D_SHADERTYPE_CS:
+            pDevice->pImmediateContext->CSSetSamplers(startSampler, cSampler, papSampler);
+            break;
         default:
             ASSERT_GUEST_FAILED_RETURN_VOID();
     }
