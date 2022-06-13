@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tdAudioTest.py 90510 2021-08-04 09:18:16Z vboxsync $
+# $Id: tdAudioTest.py 90517 2021-08-04 12:40:31Z vboxsync $
 
 """
 AudioTest test driver which invokes the VKAT (Validation Kit Audio Test)
@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 90510 $"
+__version__ = "$Revision: 90517 $"
 
 # Standard Python imports.
 import os
@@ -211,8 +211,8 @@ class tdAudioTest(vbox.TestDriver):
         reporter.log('Trying to kill processes named "%s"' % (sProcName,));
         if sys.platform == 'win32':
             os.system('taskkill /IM "%s.exe" /F' % (sProcName));
-        else:
-            os.system('killall -9 %s' % (sProcName));
+        else: # Note: killall is not available on older Debians (requires psmisc).
+            os.system('kill -9 $(pidof %s)' % (sProcName));
 
     def killHstVkat(self):
         """
