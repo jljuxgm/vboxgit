@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 92639 2021-11-30 07:28:18Z vboxsync $ */
+/* $Id: PGMAll.cpp 92642 2021-11-30 09:19:01Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -1732,7 +1732,6 @@ VMMDECL(int) PGMGstGetPage(PVMCPUCC pVCpu, RTGCPTR GCPtr, PPGMPTWALK pWalk)
 {
     VMCPU_ASSERT_EMT(pVCpu);
     Assert(pWalk);
-    RT_BZERO(pWalk, sizeof(*pWalk));
     uintptr_t idx = pVCpu->pgm.s.idxGuestModeData;
     AssertReturn(idx < RT_ELEMENTS(g_aPgmGuestModeData), VERR_PGM_MODE_IPE);
     AssertReturn(g_aPgmGuestModeData[idx].pfnGetPage, VERR_PGM_MODE_IPE);
