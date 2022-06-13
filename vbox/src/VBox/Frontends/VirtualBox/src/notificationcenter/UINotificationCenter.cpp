@@ -1,4 +1,4 @@
-/* $Id: UINotificationCenter.cpp 92012 2021-10-22 18:02:12Z vboxsync $ */
+/* $Id: UINotificationCenter.cpp 92284 2021-11-09 11:18:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINotificationCenter class implementation.
  */
@@ -202,7 +202,8 @@ QUuid UINotificationCenter::append(UINotificationObject *pObject)
     /* Is object critical? */
     const bool fCritical = pObject->isCritical();
     /* Is object progress? */
-    const bool fProgress = pObject->inherits("UINotificationProgress");
+    const bool fProgress =  pObject->inherits("UINotificationProgress")
+                         || pObject->inherits("UINotificationNewVersionChecker");
 
     /* Handle object. Be aware it can be deleted during handling! */
     const QUuid uId = m_pModel->appendObject(pObject);
