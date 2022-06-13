@@ -1,4 +1,4 @@
-/* $Id: VSCSILunMmc.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
+/* $Id: VSCSILunMmc.cpp 90001 2021-07-02 14:46:28Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: MMC LUN implementation (CD/DVD-ROM)
  */
@@ -43,14 +43,14 @@ typedef enum MMCEVENTSTATUSTYPE
 {
     /** Medium event status not changed. */
     MMCEVENTSTATUSTYPE_UNCHANGED = 0,
+    /** Medium eject requested (eject button pressed). */
+    MMCEVENTSTATUSTYPE_MEDIA_EJECT_REQUESTED,
     /** New medium inserted. */
     MMCEVENTSTATUSTYPE_MEDIA_NEW,
     /** Medium removed. */
     MMCEVENTSTATUSTYPE_MEDIA_REMOVED,
     /** Medium was removed + new medium was inserted. */
     MMCEVENTSTATUSTYPE_MEDIA_CHANGED,
-    /** Medium eject requested (eject button pressed). */
-    MMCEVENTSTATUSTYPE_MEDIA_EJECT_REQUESTED,
     /** 32bit hack. */
     MMCEVENTSTATUSTYPE_32BIT_HACK = 0x7fffffff
 } MMCEVENTSTATUSTYPE;
