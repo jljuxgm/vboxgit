@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 94320 2022-03-22 10:38:12Z vboxsync $
+# $Id: Makefile.kmk 94507 2022-04-07 07:51:05Z vboxsync $
 ## @file
 # OpenSSL Sub-Makefile.
 #
@@ -32,8 +32,7 @@ providers_common_SOURCES = \
 	provider_seeding.c \
 	provider_util.c \
 	securitycheck.c \
-	securitycheck_default.c \
-	securitycheck_fips.c
+	securitycheck_default.c
 $(evalcall VBOX_OPENSSL_X86,providers_common)
 
 include $(FILE_KBUILD_SUB_FOOTER)

@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 94012 2022-03-01 08:52:20Z vboxsync $ */
+/* $Id: PGMAllBth.h 94508 2022-04-07 11:08:43Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -112,7 +112,6 @@ PGM_BTH_DECL(int, Enter)(PVMCPUCC pVCpu, RTGCPHYS GCPhysCR3)
 
     PVMCC pVM = pVCpu->CTX_SUFF(pVM);
 
-    Assert(HMIsNestedPagingActive(pVM));
     Assert(!pVM->pgm.s.fNestedPaging);
 
     PGM_LOCK_VOID(pVM);
