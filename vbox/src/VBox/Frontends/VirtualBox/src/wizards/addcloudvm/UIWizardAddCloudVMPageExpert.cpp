@@ -1,4 +1,4 @@
-/* $Id: UIWizardAddCloudVMPageExpert.cpp 91334 2021-09-22 19:37:27Z vboxsync $ */
+/* $Id: UIWizardAddCloudVMPageExpert.cpp 91335 2021-09-22 19:45:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardAddCloudVMPageExpert class implementation.
  */
@@ -268,8 +268,7 @@ void UIWizardAddCloudVMPageExpert::updateProvider()
 {
     updateComboToolTip(m_pProviderComboBox);
     setProviderShortName(m_pProviderComboBox->currentData(ProviderData_ShortName).toString());
-    CCloudProvider comCloudProvider = cloudProviderByShortName(providerShortName(), wizard());
-    populateProfiles(m_pProfileComboBox, comCloudProvider);
+    populateProfiles(m_pProfileComboBox, providerShortName(), profileName());
     updateProfile();
 }
 

@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVM.h 91334 2021-09-22 19:37:27Z vboxsync $ */
+/* $Id: UIWizardNewCloudVM.h 91335 2021-09-22 19:45:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVM class declaration.
  */
@@ -50,9 +50,6 @@ public:
     /** Sets whether the final step is @a fPrevented. */
     void setFinalStepPrevented(bool fPrevented) { m_fFinalStepPrevented = fPrevented; }
 
-    /** Returns full group name. */
-    QString fullGroupName() const { return m_strFullGroupName; }
-
     /** Defines @a strProviderShortName. */
     void setProviderShortName(const QString &strProviderShortName) { m_strProviderShortName = strProviderShortName; }
     /** Returns provider short name. */
@@ -103,8 +100,6 @@ private slots:
 
 private:
 
-    /** Holds the full group name (/provider/profile) to add VM to. */
-    QString                        m_strFullGroupName;
     /** Holds the short provider name. */
     QString                        m_strProviderShortName;
     /** Holds the profile name. */

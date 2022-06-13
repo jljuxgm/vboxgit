@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVM.cpp 91334 2021-09-22 19:37:27Z vboxsync $ */
+/* $Id: UIWizardNewCloudVM.cpp 91335 2021-09-22 19:45:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVM class implementation.
  */
@@ -39,7 +39,6 @@ UIWizardNewCloudVM::UIWizardNewCloudVM(QWidget *pParent,
                                        const CVirtualSystemDescription &comVSD /* = CVirtualSystemDescription() */,
                                        WizardMode enmMode /* = WizardMode_Auto */)
     : UINativeWizard(pParent, WizardType_NewCloudVM, enmMode)
-    , m_strFullGroupName(strFullGroupName)
     , m_comClient(comClient)
     , m_comVSD(comVSD)
     , m_fFullWizard(m_comClient.isNull() || m_comVSD.isNull())
@@ -52,6 +51,15 @@ UIWizardNewCloudVM::UIWizardNewCloudVM(QWidget *pParent,
     /* Assign background image: */
     setPixmapName(":/wizard_new_cloud_vm_bg.png");
 #endif
+
+    /* Parse passed full group name: */
+    const QString strProviderShortName = strFullGroupName.section('/', 1, 1);
+    const QString strProfileName = strFullGroupName.section('/', 2, 2);
+    if (!strProviderShortName.isEmpty() && !strProfileName.isEmpty())
+    {
+        m_strProviderShortName = strProviderShortName;
+        m_strProfileName = strProfileName;
+    }
 }
 
 bool UIWizardNewCloudVM::createVSDForm()
