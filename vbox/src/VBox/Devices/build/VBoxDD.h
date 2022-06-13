@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.h 90492 2021-08-03 10:16:28Z vboxsync $ */
+/* $Id: VBoxDD.h 90530 2021-08-05 11:47:12Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1) header.
  */
@@ -104,6 +104,9 @@ extern const PDMDEVREG g_DeviceLPC;
 extern const PDMDEVREG g_DeviceVirtualKD;
 #endif
 extern const PDMDEVREG g_DeviceQemuFwCfg;
+#ifdef VBOX_WITH_TPM
+extern const PDMDEVREG g_DeviceTpm;
+#endif
 
 extern const PDMDRVREG g_DrvMouseQueue;
 extern const PDMDRVREG g_DrvKeyboardQueue;
@@ -193,15 +196,15 @@ extern const PDMDRVREG g_DrvSCSI;
 #endif
 
 extern const PDMDRVREG g_DrvIfTrace;
+#ifdef VBOX_WITH_TPM
+extern const PDMDRVREG g_DrvTpmEmu;
+#endif
 
 #ifdef VBOX_WITH_IOMMU_AMD
 extern const PDMDEVREG g_DeviceIommuAmd;
 #endif
 #ifdef VBOX_WITH_IOMMU_INTEL
 extern const PDMDEVREG g_DeviceIommuIntel;
-#endif
-#ifdef VBOX_WITH_TPM
-extern const PDMDEVREG g_DeviceTpm;
 #endif
 
 /* VBoxAcpi.cpp */

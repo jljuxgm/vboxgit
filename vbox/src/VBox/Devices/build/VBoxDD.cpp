@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.cpp 90492 2021-08-03 10:16:28Z vboxsync $ */
+/* $Id: VBoxDD.cpp 90530 2021-08-05 11:47:12Z vboxsync $ */
 /** @file
  * VBoxDD - Built-in drivers & devices (part 1).
  */
@@ -411,6 +411,11 @@ extern "C" DECLEXPORT(int) VBoxDriversRegister(PCPDMDRVREGCB pCallbacks, uint32_
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvIfTrace);
     if (RT_FAILURE(rc))
         return rc;
+#ifdef VBOX_WITH_TPM
+    rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvTpmEmu);
+    if (RT_FAILURE(rc))
+        return rc;
+#endif
 
     return VINF_SUCCESS;
 }
