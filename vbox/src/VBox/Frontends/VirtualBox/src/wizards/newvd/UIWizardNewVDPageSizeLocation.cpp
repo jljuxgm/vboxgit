@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageSizeLocation.cpp 90748 2021-08-19 14:36:02Z vboxsync $ */
+/* $Id: UIWizardNewVDPageSizeLocation.cpp 90761 2021-08-20 15:20:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageSizeLocation class implementation.
  */
@@ -29,7 +29,6 @@
 
 /* COM includes: */
 #include "CSystemProperties.h"
-
 
 QString UIWizardNewVDSizeLocation::selectNewMediumLocation(UIWizardNewVD *pWizard)
 {
@@ -84,7 +83,7 @@ void UIWizardNewVDPageSizeLocation::prepare()
 {
     QVBoxLayout *pMainLayout = new QVBoxLayout(this);
     AssertReturnVoid(pMainLayout);
-    m_pMediumSizePathGroup = new UIMediumSizeAndPathGroupBox(false /* fExpertMode */, 0);
+    m_pMediumSizePathGroup = new UIMediumSizeAndPathGroupBox(false /* fExpertMode */, 0 /* parent */, _4M /* minimum size */);
     connect(m_pMediumSizePathGroup, &UIMediumSizeAndPathGroupBox::sigMediumSizeChanged,
             this, &UIWizardNewVDPageSizeLocation::sltMediumSizeChanged);
     connect(m_pMediumSizePathGroup, &UIMediumSizeAndPathGroupBox::sigMediumPathChanged,

@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageExpert.cpp 90748 2021-08-19 14:36:02Z vboxsync $ */
+/* $Id: UIWizardNewVDPageExpert.cpp 90761 2021-08-20 15:20:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageExpert class implementation.
  */
@@ -63,7 +63,7 @@ UIWizardNewVDPageExpert::UIWizardNewVDPageExpert(const QString &strDefaultName, 
 void UIWizardNewVDPageExpert::prepare()
 {
     QGridLayout *pMainLayout = new QGridLayout(this);
-    m_pSizeAndPathGroup = new UIMediumSizeAndPathGroupBox(true /* fExpertMode */, 0);
+    m_pSizeAndPathGroup = new UIMediumSizeAndPathGroupBox(true /* fExpertMode */, 0 /* parent */, _4M /* minimum size */);
     m_pFormatGroup = new UIDiskFormatsGroupBox(true /* fExpertMode */, KDeviceType_HardDisk, 0);
     m_pVariantGroup = new UIDiskVariantGroupBox(true /* fExpertMode */, 0);
 

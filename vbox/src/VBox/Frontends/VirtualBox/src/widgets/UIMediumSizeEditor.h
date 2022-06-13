@@ -1,4 +1,4 @@
-/* $Id: UIMediumSizeEditor.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIMediumSizeEditor.h 90761 2021-08-20 15:20:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSizeEditor class declaration.
  */
@@ -50,7 +50,7 @@ signals:
 public:
 
     /** Constructs medium size editor passing @a pParent to the base-class. */
-    UIMediumSizeEditor(QWidget *pParent = 0);
+    UIMediumSizeEditor(QWidget *pParent = 0, qulonglong uMinimumSize = _4M);
 
     /** Returns the medium size. */
     qulonglong mediumSize() const { return m_uSize; }
