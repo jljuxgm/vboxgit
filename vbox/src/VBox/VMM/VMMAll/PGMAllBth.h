@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 92162 2021-10-31 23:34:31Z vboxsync $ */
+/* $Id: PGMAllBth.h 92313 2021-11-10 10:25:56Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -440,7 +440,7 @@ PGM_BTH_DECL(int, Trap0eHandler)(PVMCPUCC pVCpu, RTGCUINT uErr, PCPUMCTXCORE pRe
                  && (   (uErr & X86_TRAP_PF_US)
                      || CPUMIsGuestR0WriteProtEnabled(pVCpu)) )
             ||  ((uErr & X86_TRAP_PF_US) && !GstWalk.Core.fEffectiveUS)
-            ||  ((uErr & X86_TRAP_PF_ID) && GstWalk.Core.fEffectiveNX)
+            ||  ((uErr & X86_TRAP_PF_ID) && (GstWalk.Core.fEffective & PGM_PTATTRS_NX_MASK))
            )
             return VBOXSTRICTRC_TODO(PGM_BTH_NAME(Trap0eHandlerGuestFault)(pVCpu, &GstWalk, uErr));
     }
