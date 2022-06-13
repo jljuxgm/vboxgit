@@ -1,4 +1,4 @@
-/* $Id: NEMAllNativeTemplate-win.cpp.h 92626 2021-11-29 12:32:58Z vboxsync $ */
+/* $Id: NEMAllNativeTemplate-win.cpp.h 92918 2021-12-15 09:44:05Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, Windows code template ring-0/3.
  */
@@ -71,6 +71,15 @@
                               ( #a_SReg "=%#RX16 {%#RX64 LB %#RX32,%#RX16} expected %#RX16 {%#RX64 LB %#RX32,%#RX16}\n", \
                                (a_SReg).Selector, (a_SReg).Base, (a_SReg).Limit, (a_SReg).Attributes, \
                                TmpVal.Segment.Selector, TmpVal.Segment.Base, TmpVal.Segment.Limit, TmpVal.Segment.Attributes))
+
+
+#ifdef IN_RING3
+/** WHvRegisterPendingEvent0 was renamed to WHvRegisterPendingEvent between
+ *  SDK 17134 and 18362. */
+# if WDK_NTDDI_VERSION < NTDDI_WIN10_19H1
+#  define WHvRegisterPendingEvent    WHvRegisterPendingEvent0
+# endif
+#endif
 
 
 /*********************************************************************************************************************************
@@ -707,7 +716,7 @@ NEM_TMPL_STATIC int nemHCWinCopyStateFromHyperV(PVMCC pVM, PVMCPUCC pVCpu, uint6
 
     /* event injection */
     aenmNames[iReg++] = WHvRegisterPendingInterruption;
-    aenmNames[iReg++] = WHvRegisterPendingEvent0; /** @todo renamed to WHvRegisterPendingEvent */
+    aenmNames[iReg++] = WHvRegisterPendingEvent;
 
     size_t const cRegs = iReg;
     Assert(cRegs < RT_ELEMENTS(aenmNames));
@@ -1093,7 +1102,7 @@ NEM_TMPL_STATIC int nemHCWinCopyStateFromHyperV(PVMCC pVM, PVMCPUCC pVCpu, uint6
                   ("%#RX64\n", aValues[iReg].PendingInterruption.AsUINT64));
     }
 
-    /// @todo WHvRegisterPendingEvent0 (renamed to WHvRegisterPendingEvent).
+    /// @todo WHvRegisterPendingEvent
 
     /* Almost done, just update extrn flags and maybe change PGM mode. */
     pVCpu->cpum.GstCtx.fExtrn &= ~fWhat;
