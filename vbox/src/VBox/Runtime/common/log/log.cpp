@@ -1,4 +1,4 @@
-/* $Id: log.cpp 94624 2022-04-19 09:20:51Z vboxsync $ */
+/* $Id: log.cpp 94625 2022-04-19 09:26:37Z vboxsync $ */
 /** @file
  * Runtime VBox - Logger.
  */
@@ -1244,6 +1244,7 @@ RTDECL(int) RTLogCreateExV(PRTLOGGER *ppLogger, const char *pszEnvVarBase, uint6
 
 # else   /* !IN_RING3 */
         RT_NOREF_PV(pfnPhase); RT_NOREF_PV(cHistory); RT_NOREF_PV(cbHistoryFileMax); RT_NOREF_PV(cSecsHistoryTimeSlot);
+        RT_NOREF_PV(pOutputIf); RT_NOREF_PV(pvOutputIfUser);
 # endif  /* !IN_RING3 */
         if (pszGroupSettings)
             RTLogGroupSettings(&pLoggerInt->Core, pszGroupSettings);
