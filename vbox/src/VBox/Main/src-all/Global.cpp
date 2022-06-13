@@ -1,4 +1,4 @@
-/* $Id: Global.cpp 93070 2021-12-23 21:51:22Z vboxsync $ */
+/* $Id: Global.cpp 93074 2021-12-24 13:13:35Z vboxsync $ */
 /** @file
  * VirtualBox COM global definitions
  *
@@ -431,8 +431,8 @@ const Global::OSType Global::sOSTypes[] =
 
     { "OS2",     "IBM OS/2",          "OS2ArcaOS",          "ArcaOS",
       VBOXOSTYPE_ArcaOS,          VBOXOSHINT_HWVIRTEX | VBOXOSHINT_FLOPPY,
-      1, 1024,   4,  2 * _1G64, GraphicsControllerType_VBoxVGA, NetworkAdapterType_I82540EM, 1, StorageControllerType_IntelAhci, StorageBus_SATA,
-      StorageControllerType_IntelAhci, StorageBus_SATA, ChipsetType_PIIX3, IommuType_None, AudioControllerType_AC97, AudioCodecType_STAC9700 },
+      1, 1024,   4,  2 * _1G64, GraphicsControllerType_VBoxVGA, NetworkAdapterType_I82540EM, 1, StorageControllerType_PIIX4, StorageBus_IDE,
+      StorageControllerType_PIIX4, StorageBus_IDE, ChipsetType_PIIX3, IommuType_None, AudioControllerType_AC97, AudioCodecType_STAC9700 },
 
     { "OS2",     "IBM OS/2",          "OS2",                "Other OS/2",
       VBOXOSTYPE_OS2,             VBOXOSHINT_HWVIRTEX | VBOXOSHINT_FLOPPY | VBOXOSHINT_NOUSB,
