@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 92275 2021-11-08 17:18:24Z vboxsync $
+# $Id: vboxwrappers.py 92304 2021-11-09 23:47:35Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 92275 $"
+__version__ = "$Revision: 92304 $"
 
 
 # Standard Python imports.
@@ -84,7 +84,6 @@ def _nameMachineState(eState):
     if eState == vboxcon.MachineState_Saved: return 'Saved';
     if eState == vboxcon.MachineState_Teleported: return 'Teleported';
     if eState == vboxcon.MachineState_Aborted: return 'Aborted';
-    if eState == vboxcon.MachineState_AbortedSaved: return 'Aborted-Saved';
     if eState == vboxcon.MachineState_Running: return 'Running';
     if eState == vboxcon.MachineState_Paused: return 'Paused';
     if eState == vboxcon.MachineState_Stuck: return 'GuruMeditation';
@@ -103,6 +102,8 @@ def _nameMachineState(eState):
     if eState == vboxcon.MachineState_SettingUp: return 'SettingUp';
     if hasattr(vboxcon, 'MachineState_FaultTolerantSyncing'):
         if eState == vboxcon.MachineState_FaultTolerantSyncing: return 'FaultTolerantSyncing';
+    if hasattr(vboxcon, 'MachineState_AbortedSaved'): # since r147033 / 7.0
+        if eState == vboxcon.MachineState_AbortedSaved: return 'Aborted-Saved';
     return 'Unknown-%s' % (eState,);
 
 
