@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMNameOSTypePageBasic.h 90072 2021-07-06 16:47:36Z vboxsync $ */
+/* $Id: UIWizardNewVMNameOSTypePageBasic.h 90093 2021-07-08 11:36:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMNameOSTypePageBasic class declaration.
  */
@@ -71,6 +71,7 @@ protected:
     virtual bool isComplete() const; /* override final */
     /** Validation stuff. */
     virtual bool validatePage() /* override */;
+    virtual void showEvent(QShowEvent *pEvent) /* override final*/;
 
 private slots:
 

@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.cpp 90033 2021-07-05 15:38:36Z vboxsync $ */
+/* $Id: UINameAndSystemEditor.cpp 90093 2021-07-08 11:36:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class implementation.
  */
@@ -453,6 +453,7 @@ void UINameAndSystemEditor::prepareWidgets()
             {
                 m_pNameLabel->setBuddy(m_pNameLineEdit);
                 m_pMainLayout->addWidget(m_pNameLineEdit, iRow, 1, 1, 2);
+                setFocusProxy(m_pNameLineEdit);
             }
 
             ++iRow;
