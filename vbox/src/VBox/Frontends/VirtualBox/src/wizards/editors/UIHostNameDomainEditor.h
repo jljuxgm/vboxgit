@@ -1,4 +1,4 @@
-/* $Id: UIHostNameDomainEditor.h 90151 2021-07-12 07:21:04Z vboxsync $ */
+/* $Id: UIHostNameDomainEditor.h 90152 2021-07-12 07:27:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHostNameDomainEditor class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef FEQT_INCLUDED_SRC_widgets_UIHostNameDomainEditor_h
-#define FEQT_INCLUDED_SRC_widgets_UIHostNameDomainEditor_h
+#ifndef FEQT_INCLUDED_SRC_wizards_editors_UIHostNameDomainEditor_h
+#define FEQT_INCLUDED_SRC_wizards_editors_UIHostNameDomainEditor_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -79,4 +79,4 @@ private:
 
 };
 
-#endif /* !FEQT_INCLUDED_SRC_widgets_UIHostNameDomainEditor_h */
+#endif /* !FEQT_INCLUDED_SRC_wizards_editors_UIHostNameDomainEditor_h */

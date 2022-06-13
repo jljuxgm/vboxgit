@@ -1,4 +1,4 @@
-/* $Id: UIUserNamePasswordEditor.h 90151 2021-07-12 07:21:04Z vboxsync $ */
+/* $Id: UIUserNamePasswordEditor.h 90152 2021-07-12 07:27:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef FEQT_INCLUDED_SRC_widgets_UIUserNamePasswordEditor_h
-#define FEQT_INCLUDED_SRC_widgets_UIUserNamePasswordEditor_h
+#ifndef FEQT_INCLUDED_SRC_wizards_editors_UIUserNamePasswordEditor_h
+#define FEQT_INCLUDED_SRC_wizards_editors_UIUserNamePasswordEditor_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -94,4 +94,4 @@ private:
     QString m_strPasswordError;
 };
 
-#endif /* !FEQT_INCLUDED_SRC_widgets_UIUserNamePasswordEditor_h */
+#endif /* !FEQT_INCLUDED_SRC_wizards_editors_UIUserNamePasswordEditor_h */

@@ -1,4 +1,4 @@
-/* $Id: UIUserNamePasswordEditor.cpp 90151 2021-07-12 07:21:04Z vboxsync $ */
+/* $Id: UIUserNamePasswordEditor.cpp 90152 2021-07-12 07:27:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class implementation.
  */
