@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 91920 2021-10-21 06:45:26Z vboxsync $ */
+/* $Id: DevAHCI.cpp 92116 2021-10-28 00:23:05Z vboxsync $ */
 /** @file
  * DevAHCI - AHCI controller device (disk and cdrom).
  *
@@ -3275,7 +3275,9 @@ static DECLCALLBACK(void) ahciR3CopyBufferFromGuestWorker(PPDMDEVINS pDevIns, RT
         void *pvSeg = RTSgBufGetNextSegment(pSgBuf, &cbSeg);
 
         AssertPtr(pvSeg);
+        Log5Func(("%RGp LB %#zx\n", GCPhys, cbSeg));
         PDMDevHlpPCIPhysRead(pDevIns, GCPhys, pvSeg, cbSeg);
+        Log7Func(("%.*Rhxd\n", cbSeg, pvSeg));
         GCPhys += cbSeg;
         cbCopy -= cbSeg;
     }
@@ -3300,6 +3302,8 @@ static DECLCALLBACK(void) ahciR3CopyBufferToGuestWorker(PPDMDEVINS pDevIns, RTGC
         void *pvSeg = RTSgBufGetNextSegment(pSgBuf, &cbSeg);
 
         AssertPtr(pvSeg);
+        Log5Func(("%RGp LB %#zx\n", GCPhys, cbSeg));
+        Log6Func(("%.*Rhxd\n", cbSeg, pvSeg));
         PDMDevHlpPCIPhysWriteUser(pDevIns, GCPhys, pvSeg, cbSeg);
         GCPhys += cbSeg;
         cbCopy -= cbSeg;
