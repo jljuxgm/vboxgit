@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 90637 2021-08-11 21:15:42Z vboxsync $ */
+/* $Id: PDMInternal.h 90672 2021-08-12 21:27:26Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -502,6 +502,8 @@ typedef struct PDMCRITSECTRWINT
     STAMCOUNTER                         StatRZEnterShared;
     /** R3 write lock contention. */
     STAMCOUNTER                         StatContentionR3EnterExcl;
+    /** R3 write unlock contention. */
+    STAMCOUNTER                         StatContentionR3LeaveExcl;
     /** R3 read lock contention. */
     STAMCOUNTER                         StatContentionR3EnterShared;
     /** R3 writes. */

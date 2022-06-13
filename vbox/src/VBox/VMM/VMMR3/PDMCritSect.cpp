@@ -1,4 +1,4 @@
-/* $Id: PDMCritSect.cpp 90639 2021-08-11 21:41:42Z vboxsync $ */
+/* $Id: PDMCritSect.cpp 90672 2021-08-12 21:27:26Z vboxsync $ */
 /** @file
  * PDM - Critical Sections, Ring-3.
  */
@@ -309,6 +309,7 @@ static int pdmR3CritSectRwInitOne(PVM pVM, PPDMCRITSECTRWINT pCritSect, void *pv
                     STAMR3RegisterF(pVM, &pCritSect->StatContentionRZEnterShared, STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_OCCURENCES,          NULL, "/PDM/CritSectsRw/%s/ContentionRZEnterShared", pCritSect->pszName);
                     STAMR3RegisterF(pVM, &pCritSect->StatContentionRZLeaveShared, STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_OCCURENCES,          NULL, "/PDM/CritSectsRw/%s/ContentionRZLeaveShared", pCritSect->pszName);
                     STAMR3RegisterF(pVM, &pCritSect->StatContentionR3EnterExcl,   STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_OCCURENCES,          NULL, "/PDM/CritSectsRw/%s/ContentionR3EnterExcl", pCritSect->pszName);
+                    STAMR3RegisterF(pVM, &pCritSect->StatContentionR3LeaveExcl,   STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_OCCURENCES,          NULL, "/PDM/CritSectsRw/%s/ContentionR3LeaveExcl", pCritSect->pszName);
                     STAMR3RegisterF(pVM, &pCritSect->StatContentionR3EnterShared, STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_OCCURENCES,          NULL, "/PDM/CritSectsRw/%s/ContentionR3EnterShared", pCritSect->pszName);
                     STAMR3RegisterF(pVM, &pCritSect->StatRZEnterExcl,             STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_OCCURENCES,          NULL, "/PDM/CritSectsRw/%s/RZEnterExcl", pCritSect->pszName);
                     STAMR3RegisterF(pVM, &pCritSect->StatRZEnterShared,           STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_OCCURENCES,          NULL, "/PDM/CritSectsRw/%s/RZEnterShared", pCritSect->pszName);
