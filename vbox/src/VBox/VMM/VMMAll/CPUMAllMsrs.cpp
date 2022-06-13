@@ -1,4 +1,4 @@
-/* $Id: CPUMAllMsrs.cpp 91323 2021-09-22 10:04:56Z vboxsync $ */
+/* $Id: CPUMAllMsrs.cpp 91339 2021-09-23 04:57:25Z vboxsync $ */
 /** @file
  * CPUM - CPU MSR Registers.
  */
@@ -235,8 +235,9 @@ static DECLCALLBACK(VBOXSTRICTRC) cpumMsrWr_Ia32ApicBase(PVMCPUCC pVCpu, uint32_
     return APICSetBaseMsr(pVCpu, uValue);
 }
 
+
 /**
- * Get IA32_FEATURE_CONTROL value for IEM, NEM and cpumMsrRd_Ia32FeatureControl.
+ * Gets IA32_FEATURE_CONTROL value for IEM, NEM and cpumMsrRd_Ia32FeatureControl.
  *
  * @returns IA32_FEATURE_CONTROL value.
  * @param   pVCpu           The cross context per CPU structure.
