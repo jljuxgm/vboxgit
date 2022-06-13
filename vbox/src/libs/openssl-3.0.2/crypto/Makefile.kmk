@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 94467 2022-04-05 12:38:44Z vboxsync $
+# $Id: Makefile.kmk 94827 2022-05-04 21:04:41Z vboxsync $
 ## @file
 # Sub-Makefile for OpenSSL crypto.
 #
@@ -98,7 +98,9 @@ ifdef VBOX_WITH_CRYPTO_ASM
  VBox-libcrypto_DEFS.amd64 += OPENSSL_CPUID_OBJ=x86_64cpuid.o
  VBox-libcrypto_SOURCES.amd64 += $(VBOX_PATH_CRYPTO_GENASM)/x86_64cpuid.S
 else
- VBox-libcrypto_SOURCES += mem_clr.c
+ VBox-libcrypto_SOURCES += \
+ 	mem_clr.c \
+ 	cpuid.c
 endif
 
 ifdef VBOX_WITH_OPENSSL_FIPS
