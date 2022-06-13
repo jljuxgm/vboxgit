@@ -1,4 +1,4 @@
-/* $Id: UpdateAgentImpl.cpp 94643 2022-04-20 09:08:37Z vboxsync $ */
+/* $Id: UpdateAgentImpl.cpp 94647 2022-04-20 10:12:17Z vboxsync $ */
 /** @file
  * IUpdateAgent COM class implementations.
  */
@@ -150,7 +150,7 @@ HRESULT UpdateAgent::install(ComPtr<IProgress> &aProgress)
 
 HRESULT UpdateAgent::rollback(void)
 {
-    return S_OK; /* No-op by default. */
+    return VBOX_E_NOT_SUPPORTED;
 }
 
 HRESULT UpdateAgent::getName(com::Utf8Str &aName)
