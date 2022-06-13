@@ -1,6 +1,6 @@
-/* $Id: UIWizardCloneVDPageBasic2.h 90826 2021-08-24 07:52:10Z vboxsync $ */
+/* $Id: UIWizardCloneVDPageVariant.h 90827 2021-08-24 08:50:46Z vboxsync $ */
 /** @file
- * VBox Qt GUI - UIWizardCloneVDPageBasic2 class declaration.
+ * VBox Qt GUI - UIWizardCloneVDPageVariant class declaration.
  */
 
 /*
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef FEQT_INCLUDED_SRC_wizards_clonevd_UIWizardCloneVDPageBasic2_h
-#define FEQT_INCLUDED_SRC_wizards_clonevd_UIWizardCloneVDPageBasic2_h
+#ifndef FEQT_INCLUDED_SRC_wizards_clonevd_UIWizardCloneVDPageVariant_h
+#define FEQT_INCLUDED_SRC_wizards_clonevd_UIWizardCloneVDPageVariant_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -28,22 +28,19 @@
 #include "COMEnums.h"
 
 /* Forward declarations: */
-class QButtonGroup;
-class QRadioButton;
-class QCheckBox;
 class QIRichTextLabel;
 class UIWizardCloneVD;
 class CMediumFormat;
 class UIDiskVariantGroupBox;
 
-class UIWizardCloneVDPageBasic2 : public UINativeWizardPage
+class UIWizardCloneVDPageVariant : public UINativeWizardPage
 {
     Q_OBJECT;
 
 public:
 
     /** Constructs basic page. */
-    UIWizardCloneVDPageBasic2(KDeviceType enmDeviceType);
+    UIWizardCloneVDPageVariant(KDeviceType enmDeviceType);
 
 private slots:
 
@@ -75,4 +72,4 @@ private:
     UIDiskVariantGroupBox *m_pVariantGroupBox;
 };
 
-#endif /* !FEQT_INCLUDED_SRC_wizards_clonevd_UIWizardCloneVDPageBasic2_h */
+#endif /* !FEQT_INCLUDED_SRC_wizards_clonevd_UIWizardCloneVDPageVariant_h */

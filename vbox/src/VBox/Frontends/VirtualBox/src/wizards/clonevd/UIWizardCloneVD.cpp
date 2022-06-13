@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVD.cpp 90800 2021-08-23 16:48:32Z vboxsync $ */
+/* $Id: UIWizardCloneVD.cpp 90827 2021-08-24 08:50:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVD class implementation.
  */
@@ -21,14 +21,13 @@
 #include "UIMessageCenter.h"
 #include "UINotificationCenter.h"
 #include "UIWizardCloneVD.h"
-#include "UIWizardCloneVDPageBasic1.h"
-#include "UIWizardCloneVDPageBasic2.h"
-#include "UIWizardCloneVDPageBasic3.h"
+#include "UIWizardCloneVDPageFormat.h"
+#include "UIWizardCloneVDPageVariant.h"
+#include "UIWizardCloneVDPagePathSize.h"
 #include "UIWizardCloneVDPageExpert.h"
 
 /* COM includes: */
 #include "CMediumFormat.h"
-
 
 UIWizardCloneVD::UIWizardCloneVD(QWidget *pParent, const CMedium &comSourceVirtualDisk)
     : UINativeWizard(pParent, WizardType_CloneVD)
@@ -103,9 +102,9 @@ void UIWizardCloneVD::populatePages()
         case WizardMode_Basic:
 
             {
-            addPage(new UIWizardCloneVDPageBasic1(m_enmDeviceType));
-            m_iMediumVariantPageIndex = addPage(new UIWizardCloneVDPageBasic2(m_enmDeviceType));
-            addPage(new UIWizardCloneVDPageBasic3(sourceDiskLogicalSize()));
+            addPage(new UIWizardCloneVDPageFormat(m_enmDeviceType));
+            m_iMediumVariantPageIndex = addPage(new UIWizardCloneVDPageVariant(m_enmDeviceType));
+            addPage(new UIWizardCloneVDPagePathSize(sourceDiskLogicalSize()));
             break;
         }
         case WizardMode_Expert:

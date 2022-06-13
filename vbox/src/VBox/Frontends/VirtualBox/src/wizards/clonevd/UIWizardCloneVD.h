@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVD.h 90761 2021-08-20 15:20:36Z vboxsync $ */
+/* $Id: UIWizardCloneVD.h 90827 2021-08-24 08:50:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVD class declaration.
  */
@@ -28,7 +28,6 @@
 #include "COMEnums.h"
 #include "CMedium.h"
 #include "CMediumFormat.h"
-
 
 /** UIWizard subclass to clone virtual disk image files. */
 class UIWizardCloneVD : public UINativeWizard
