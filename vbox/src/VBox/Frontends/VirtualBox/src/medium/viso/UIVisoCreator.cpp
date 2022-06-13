@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.cpp 92289 2021-11-09 12:48:18Z vboxsync $ */
+/* $Id: UIVisoCreator.cpp 92291 2021-11-09 12:52:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator class implementation.
  */
@@ -38,8 +38,9 @@
 # include "VBoxUtils-darwin.h"
 #endif
 
+
 /*********************************************************************************************************************************
-*   UIVisoCreatorWidget implementation.                                                                                        *
+*   UIVisoCreatorWidget implementation.                                                                                          *
 *********************************************************************************************************************************/
 
 UIVisoCreatorWidget::UIVisoCreatorWidget(QWidget *pParent /* =0 */, const QString& strMachineName /* = QString() */)
@@ -546,8 +547,9 @@ void UIVisoCreatorWidget::prepareVerticalToolBar()
     m_pVerticalToolBar->addWidget(bottomSpacerWidget);
 }
 
+
 /*********************************************************************************************************************************
-*   UIVisoCreatorDialog implementation.                                                                                        *
+*   UIVisoCreatorDialog implementation.                                                                                          *
 *********************************************************************************************************************************/
 UIVisoCreatorDialog::UIVisoCreatorDialog(QWidget *pParent /* = 0 */, const QString& strMachineName /* = QString() */)
     : QIWithRetranslateUI<QIMainDialog>(pParent)
