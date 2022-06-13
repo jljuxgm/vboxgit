@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerGuestTable.cpp 92814 2021-12-08 13:57:05Z vboxsync $ */
+/* $Id: UIFileManagerGuestTable.cpp 92819 2021-12-08 14:11:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerGuestTable class implementation.
  */
@@ -857,7 +857,6 @@ void UIFileManagerGuestTable::sltGuestSessionPanelToggled(bool fChecked)
 
 void UIFileManagerGuestTable::sltHandleGuestSessionPanelHidden()
 {
-    return;
     if (m_pActionPool && m_pActionPool->action(UIActionIndex_M_FileManager_T_GuestSession))
         m_pActionPool->action(UIActionIndex_M_FileManager_T_GuestSession)->setChecked(false);
 }
