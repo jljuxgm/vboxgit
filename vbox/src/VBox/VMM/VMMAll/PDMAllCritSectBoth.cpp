@@ -1,4 +1,4 @@
-/* $Id: PDMAllCritSectBoth.cpp 90677 2021-08-13 10:30:37Z vboxsync $ */
+/* $Id: PDMAllCritSectBoth.cpp 92702 2021-12-02 12:43:15Z vboxsync $ */
 /** @file
  * PDM - Code Common to Both Critical Section Types, All Contexts.
  */
@@ -31,7 +31,7 @@
 #include <iprt/asm.h>
 
 
-#if defined(IN_RING3) || defined(IN_RING0)
+#if defined(IN_RING3) /*|| defined(IN_RING0) - not called from ring-0 */
 /**
  * Process the critical sections (both types) queued for ring-3 'leave'.
  *
