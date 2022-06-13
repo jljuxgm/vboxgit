@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVD.cpp 90356 2021-07-27 14:06:35Z vboxsync $ */
+/* $Id: UIWizardNewVD.cpp 90362 2021-07-27 18:00:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVD class implementation.
  */
@@ -62,6 +62,7 @@ void UIWizardNewVD::populatePages()
         {
             addPage(new UIWizardNewVDPageFileType);
             addPage(new UIWizardNewVDPageVariant);
+            addPage(new UIWizardNewVDPageSizeLocation(m_strDefaultName, m_strDefaultPath, m_uDefaultSize));
             break;
         }
 
