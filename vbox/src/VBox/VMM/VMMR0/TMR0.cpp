@@ -1,4 +1,4 @@
-/* $Id: TMR0.cpp 93554 2022-02-02 22:57:02Z vboxsync $ */
+/* $Id: TMR0.cpp 93654 2022-02-08 12:26:36Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, host ring-0 context.
  */
@@ -50,6 +50,12 @@ VMMR0_INT_DECL(void)    TMR0InitPerVMData(PGVM pGVM)
         pGVM->tmr0.s.aTimerQueues[idxQueue].hMemObj = NIL_RTR0MEMOBJ;
         pGVM->tmr0.s.aTimerQueues[idxQueue].hMapObj = NIL_RTR0MEMOBJ;
     }
+
+    pGVM->tm.s.VirtualGetRawDataR0.pu64Prev       = &pGVM->tm.s.u64VirtualRawPrev;
+    pGVM->tm.s.VirtualGetRawDataR0.pfnBad         = tmVirtualNanoTSBad;
+    pGVM->tm.s.VirtualGetRawDataR0.pfnBadCpuIndex = tmVirtualNanoTSBadCpuIndex;
+    pGVM->tm.s.VirtualGetRawDataR0.pfnRediscover  = tmVirtualNanoTSRediscover;
+    pGVM->tm.s.pfnVirtualGetRawR0                 = tmVirtualNanoTSRediscover;
 }
 
 
