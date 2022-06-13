@@ -1,4 +1,4 @@
-/** $Id: clipboard.cpp 93327 2022-01-18 16:06:06Z vboxsync $ */
+/** $Id: clipboard.cpp 93495 2022-01-31 13:08:33Z vboxsync $ */
 /** @file
  * Guest Additions - X11 Shared Clipboard.
  */
@@ -176,7 +176,7 @@ static int vboxClipboardConnect(void)
 {
     LogFlowFuncEnter();
 
-    int rc = ShClX11Init(&g_Ctx.X11, &g_Ctx, false /* fHeadless */);
+    int rc = ShClX11Init(&g_Ctx.X11, NULL /* pCallbacks */, &g_Ctx, false /* fHeadless */);
     if (RT_SUCCESS(rc))
     {
         rc = ShClX11ThreadStart(&g_Ctx.X11, false /* grab */);
