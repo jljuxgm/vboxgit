@@ -1,4 +1,4 @@
-/* $Id: UINotificationModel.cpp 90371 2021-07-28 14:38:06Z vboxsync $ */
+/* $Id: UINotificationModel.cpp 90485 2021-08-02 17:27:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINotificationModel class implementation.
  */
@@ -16,6 +16,7 @@
  */
 
 /* GUI includes: */
+#include "UICommon.h"
 #include "UINotificationModel.h"
 #include "UINotificationObject.h"
 
@@ -26,15 +27,12 @@
 UINotificationModel::UINotificationModel(QObject *pParent)
     : QObject(pParent)
 {
+    prepare();
 }
 
 UINotificationModel::~UINotificationModel()
 {
-    /* Wipe out all the objects: */
-    foreach (const QUuid &uId, m_ids)
-        delete m_objects.value(uId);
-    m_objects.clear();
-    m_ids.clear();
+    cleanup();
 }
 
 QUuid UINotificationModel::appendObject(UINotificationObject *pObject)
@@ -85,4 +83,24 @@ void UINotificationModel::sltHandleAboutToClose()
     const QUuid uId = m_objects.key(pSender);
     AssertReturnVoid(!uId.isNull());
     revokeObject(uId);
+}
+
+void UINotificationModel::sltDetachCOM()
+{
+    cleanup();
+}
+
+void UINotificationModel::prepare()
+{
+    connect(&uiCommon(), &UICommon::sigAskToDetachCOM,
+            this, &UINotificationModel::sltDetachCOM);
+}
+
+void UINotificationModel::cleanup()
+{
+    /* Wipe out all the objects: */
+    foreach (const QUuid &uId, m_ids)
+        delete m_objects.value(uId);
+    m_objects.clear();
+    m_ids.clear();
 }

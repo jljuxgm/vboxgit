@@ -1,4 +1,4 @@
-/* $Id: UINotificationModel.h 90288 2021-07-22 14:16:13Z vboxsync $ */
+/* $Id: UINotificationModel.h 90485 2021-08-02 17:27:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINotificationModel class declaration.
  */
@@ -65,7 +65,15 @@ private slots:
     /** Handles request about to close sender() notification object. */
     void sltHandleAboutToClose();
 
+    /** Handles broadcast request to detach COM stuff. */
+    void sltDetachCOM();
+
 private:
+
+    /** Prepares all. */
+    void prepare();
+    /** Cleanups all. */
+    void cleanup();
 
     /** Holds the list of registered notification object IDs. */
     QList<QUuid>                        m_ids;
