@@ -1,4 +1,4 @@
-/* $Id: QILineEdit.cpp 90107 2021-07-09 07:41:28Z vboxsync $ */
+/* $Id: QILineEdit.cpp 90633 2021-08-11 18:25:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QILineEdit class implementation.
  */
@@ -23,6 +23,7 @@
 #include <QMenu>
 #include <QPalette>
 #include <QStyleOptionFrame>
+#include <QTime>
 
 /* GUI includes: */
 #include "QILineEdit.h"
@@ -99,22 +100,27 @@ bool QILineEdit::event(QEvent *pEvent)
 
 void QILineEdit::paintEvent(QPaintEvent *pPaintEvent)
 {
+    printf("%d\n", QTime::currentTime().second());
     QLineEdit::paintEvent(pPaintEvent);
 
     if (m_fMarkForError)
     {
-        const int iIconMargin = 1. * QApplication::style()->pixelMetric(QStyle::PM_LayoutTopMargin);
-        int iIconSize = height() - 2 * iIconMargin;
         if (!m_pIconLabel)
             m_pIconLabel = new QLabel(this);
-        m_pIconLabel->setPixmap(m_markIcon.pixmap(windowHandle(), QSize(iIconSize, iIconSize)));
-        m_pIconLabel->setToolTip(m_strErrorMessage);
-        m_pIconLabel->move(width() - iIconSize - iIconMargin, iIconMargin);
-        m_pIconLabel->show();
+
+        if (m_pIconLabel && m_pIconLabel->isHidden())
+        {
+            const int iIconMargin = 1. * QApplication::style()->pixelMetric(QStyle::PM_LayoutTopMargin);
+            int iIconSize = height() - 2 * iIconMargin;
+            m_pIconLabel->setPixmap(m_markIcon.pixmap(windowHandle(), QSize(iIconSize, iIconSize)));
+            m_pIconLabel->setToolTip(m_strErrorMessage);
+            m_pIconLabel->move(width() - iIconSize - iIconMargin, iIconMargin);
+            m_pIconLabel->show();
+        }
     }
     else
     {
-        if (m_pIconLabel)
+        if (m_pIconLabel && m_pIconLabel->isVisible())
             m_pIconLabel->hide();
     }
 }
