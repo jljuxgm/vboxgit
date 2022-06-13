@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxTranslator.h 91369 2021-09-24 16:47:04Z vboxsync $ */
+/* $Id: VirtualBoxTranslator.h 91370 2021-09-24 17:18:07Z vboxsync $ */
 /** @file
  * VirtualBox Translator.
  */
@@ -21,7 +21,7 @@
 # pragma once
 #endif
 
-#include <list>
+//#include <list>
 
 #include <iprt/cpp/lock.h>
 
@@ -57,7 +57,7 @@ typedef void *TRCOMPONENT;
 
 #ifdef VBOX_WITH_MAIN_NLS
 
-struct IVirtualBox;
+COM_STRUCT_OR_CLASS(IVirtualBox);
 class QMTranslator;
 
 class VirtualBoxTranslator
