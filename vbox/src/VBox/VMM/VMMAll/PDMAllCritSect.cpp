@@ -1,4 +1,4 @@
-/* $Id: PDMAllCritSect.cpp 90472 2021-08-02 11:31:37Z vboxsync $ */
+/* $Id: PDMAllCritSect.cpp 90486 2021-08-02 20:40:40Z vboxsync $ */
 /** @file
  * PDM - Write-Only Critical Section, All Contexts.
  */
@@ -880,6 +880,7 @@ VMMDECL(int) PDMCritSectLeave(PVMCC pVM, PPDMCRITSECT pCritSect)
         uint32_t    i     = pVCpu->pdm.s.cQueuedCritSectLeaves++;
         LogFlow(("PDMCritSectLeave: [%d]=%p => R3\n", i, pCritSect));
         AssertFatal(i < RT_ELEMENTS(pVCpu->pdm.s.apQueuedCritSectLeaves));
+/** @todo This doesn't work any more for devices. */
         pVCpu->pdm.s.apQueuedCritSectLeaves[i] = MMHyperCCToR3(pVM, pCritSect);
         VMCPU_FF_SET(pVCpu, VMCPU_FF_PDM_CRITSECT);
         VMCPU_FF_SET(pVCpu, VMCPU_FF_TO_R3);

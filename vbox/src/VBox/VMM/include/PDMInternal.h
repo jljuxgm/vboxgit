@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 90468 2021-08-02 10:58:26Z vboxsync $ */
+/* $Id: PDMInternal.h 90486 2021-08-02 20:40:40Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -507,6 +507,8 @@ AssertCompileMemberAlignment(PDMCRITSECTRWINT, Core.u64State, 8);
 /** Pointer to private critical section data. */
 typedef PDMCRITSECTRWINT *PPDMCRITSECTRWINT;
 
+/** Special magic value we set the structure has become corrupted. */
+#define PDMCRITSECTRW_MAGIC_CORRUPT     UINT32_C(0x0bad0620)
 
 
 /**
