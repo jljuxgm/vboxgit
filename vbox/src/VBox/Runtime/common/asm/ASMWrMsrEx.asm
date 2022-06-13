@@ -1,4 +1,4 @@
-; $Id: ASMWrMsrEx.asm 82968 2020-02-04 10:35:17Z vboxsync $
+; $Id: ASMWrMsrEx.asm 92576 2021-11-24 01:21:59Z vboxsync $
 ;; @file
 ; IPRT - ASMWrMsrEx().
 ;
@@ -65,9 +65,9 @@ endproc_frame
         mov     ebp, esp
         push    edi
         mov     ecx, [ebp + 8]
-        mov     edi, [esp + 12]
-        mov     eax, [esp + 16]
-        mov     edx, [esp + 20]
+        mov     edi, [ebp + 12]
+        mov     eax, [ebp + 16]
+        mov     edx, [ebp + 20]
         wrmsr
         pop     edi
         leave

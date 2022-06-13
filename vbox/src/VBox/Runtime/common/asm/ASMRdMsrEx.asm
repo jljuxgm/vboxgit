@@ -1,4 +1,4 @@
-; $Id: ASMRdMsrEx.asm 82968 2020-02-04 10:35:17Z vboxsync $
+; $Id: ASMRdMsrEx.asm 92576 2021-11-24 01:21:59Z vboxsync $
 ;; @file
 ; IPRT - ASMRdMsrEx().
 ;
@@ -72,7 +72,7 @@ endproc_frame
         xor     eax, eax
         xor     edx, edx
         mov     ecx, [ebp + 8]
-        mov     edi, [esp + 12]
+        mov     edi, [ebp + 12]
         rdmsr
         pop     edi
         leave
