@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 90260 2021-07-20 12:56:12Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 90379 2021-07-28 20:00:43Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -2297,6 +2297,10 @@ VMMR0DECL(int) SVMR0Enter(PVMCPUCC pVCpu)
 /**
  * Thread-context callback for AMD-V.
  *
+ * This is used together with RTThreadCtxHookCreate() on platforms which
+ * supports it, and directly from VMMR0EmtPrepareForBlocking() and
+ * VMMR0EmtResumeAfterBlocking() on platforms which don't.
+ *
  * @param   enmEvent        The thread-context event.
  * @param   pVCpu           The cross context virtual CPU structure.
  * @param   fGlobalInit     Whether global VT-x/AMD-V init. is used.
@@ -2311,7 +2315,6 @@ VMMR0DECL(void) SVMR0ThreadCtxCallback(RTTHREADCTXEVENT enmEvent, PVMCPUCC pVCpu
         case RTTHREADCTXEVENT_OUT:
         {
             Assert(!RTThreadPreemptIsEnabled(NIL_RTTHREAD));
-            Assert(VMMR0ThreadCtxHookIsEnabled(pVCpu));
             VMCPU_ASSERT_EMT(pVCpu);
 
             /* No longjmps (log-flush, locks) in this fragile context. */
@@ -2336,7 +2339,6 @@ VMMR0DECL(void) SVMR0ThreadCtxCallback(RTTHREADCTXEVENT enmEvent, PVMCPUCC pVCpu
         case RTTHREADCTXEVENT_IN:
         {
             Assert(!RTThreadPreemptIsEnabled(NIL_RTTHREAD));
-            Assert(VMMR0ThreadCtxHookIsEnabled(pVCpu));
             VMCPU_ASSERT_EMT(pVCpu);
 
             /* No longjmps (log-flush, locks) in this fragile context. */

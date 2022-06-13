@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 87606 2021-02-04 13:35:36Z vboxsync $ */
+/* $Id: HMR0.cpp 90379 2021-07-28 20:00:43Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -1512,6 +1512,10 @@ VMMR0_INT_DECL(int) HMR0LeaveCpu(PVMCPUCC pVCpu)
 
 /**
  * Thread-context hook for HM.
+ *
+ * This is used together with RTThreadCtxHookCreate() on platforms which
+ * supports it, and directly from VMMR0EmtPrepareForBlocking() and
+ * VMMR0EmtResumeAfterBlocking() on platforms which don't.
  *
  * @param   enmEvent        The thread-context event.
  * @param   pvUser          Opaque pointer to the VMCPU.

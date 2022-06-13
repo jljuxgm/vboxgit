@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 90348 2021-07-26 21:01:38Z vboxsync $ */
+/* $Id: PDMInternal.h 90379 2021-07-28 20:00:43Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -437,6 +437,8 @@ typedef struct PDMCRITSECTINT
     R3PTRTYPE(const char *)         pszName;
     /** R0/RC lock contention. */
     STAMCOUNTER                     StatContentionRZLock;
+    /** R0/RC lock contention, returning rcBusy or VERR_SEM_BUSY (try). */
+    STAMCOUNTER                     StatContentionRZLockBusy;
     /** R0/RC unlock contention. */
     STAMCOUNTER                     StatContentionRZUnlock;
     /** R3 lock contention. */
