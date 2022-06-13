@@ -1,4 +1,4 @@
-/* $Id: UICloudNetworkingStuff.h 86738 2020-10-28 15:53:54Z vboxsync $ */
+/* $Id: UICloudNetworkingStuff.h 89972 2021-06-30 10:28:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudNetworkingStuff namespace declaration.
  */
@@ -125,6 +125,27 @@ namespace UICloudNetworkingStuff
                                                      QVector<QString> &keys,
                                                      QVector<QString> &values,
                                                      QWidget *pParent = 0);
+
+    /** Acquires cloud images of certain @a comCloudClient, using @a pParent to show messages according to. */
+    SHARED_LIBRARY_STUFF bool listCloudImages(const CCloudClient &comCloudClient,
+                                              CStringArray &comNames,
+                                              CStringArray &comIDs,
+                                              QWidget *pParent = 0);
+    /** Acquires cloud images of certain @a comCloudClient, using @a strErrorMessage to store messages to. */
+    SHARED_LIBRARY_STUFF bool listCloudImages(const CCloudClient &comCloudClient,
+                                              CStringArray &comNames,
+                                              CStringArray &comIDs,
+                                              QString &strErrorMessage);
+    /** Acquires cloud source boot volumes of certain @a comCloudClient, using @a pParent to show messages according to. */
+    SHARED_LIBRARY_STUFF bool listCloudSourceBootVolumes(const CCloudClient &comCloudClient,
+                                                         CStringArray &comNames,
+                                                         CStringArray &comIDs,
+                                                         QWidget *pParent = 0);
+    /** Acquires cloud source boot volumes of certain @a comCloudClient, using @a strErrorMessage to store messages to. */
+    SHARED_LIBRARY_STUFF bool listCloudSourceBootVolumes(const CCloudClient &comCloudClient,
+                                                         CStringArray &comNames,
+                                                         CStringArray &comIDs,
+                                                         QString &strErrorMessage);
 
     /** Acquires cloud machines of certain @a comCloudClient, using @a pParent to show messages according to. */
     SHARED_LIBRARY_STUFF QVector<CCloudMachine> listCloudMachines(CCloudClient comCloudClient,
