@@ -1,4 +1,4 @@
-/* $Id: UIWizardAddCloudVM.cpp 90564 2021-08-07 11:12:13Z vboxsync $ */
+/* $Id: UIWizardAddCloudVM.cpp 91240 2021-09-15 09:07:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardAddCloudVM class implementation.
  */
@@ -20,8 +20,8 @@
 #include "UIMessageCenter.h"
 #include "UINotificationCenter.h"
 #include "UIWizardAddCloudVM.h"
-#include "UIWizardAddCloudVMPageBasic1.h"
 #include "UIWizardAddCloudVMPageExpert.h"
+#include "UIWizardAddCloudVMPageSource.h"
 
 /* COM includes: */
 #include "CCloudMachine.h"
@@ -83,7 +83,7 @@ void UIWizardAddCloudVM::populatePages()
     {
         case WizardMode_Basic:
         {
-            addPage(new UIWizardAddCloudVMPageBasic1);
+            addPage(new UIWizardAddCloudVMPageSource);
             break;
         }
         case WizardMode_Expert:

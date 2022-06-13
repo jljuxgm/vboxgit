@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageExpert.h 90375 2021-07-28 15:41:48Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageExpert.h 91240 2021-09-15 09:07:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageExpert class declaration.
  */
@@ -22,8 +22,8 @@
 #endif
 
 /* GUI includes: */
-#include "UIWizardNewCloudVMPageBasic1.h"
-#include "UIWizardNewCloudVMPageBasic2.h"
+#include "UIWizardNewCloudVMPageSource.h"
+#include "UIWizardNewCloudVMPageProperties.h"
 
 /* Forward declarations: */
 class QGroupBox;
