@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMHardwarePageBasic.cpp 90990 2021-08-30 09:38:18Z vboxsync $ */
+/* $Id: UIWizardNewVMHardwarePageBasic.cpp 91025 2021-08-31 10:52:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMHardwarePageBasic class implementation.
  */
@@ -95,11 +95,6 @@ void UIWizardNewVMHardwarePageBasic::initializePage()
             }
         }
     }
-}
-
-void UIWizardNewVMHardwarePageBasic::cleanupPage()
-{
-    //UIWizardPage::cleanupPage();
 }
 
 bool UIWizardNewVMHardwarePageBasic::isComplete() const

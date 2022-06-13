@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMUnattendedPageBasic.cpp 90990 2021-08-30 09:38:18Z vboxsync $ */
+/* $Id: UIWizardNewVMUnattendedPageBasic.cpp 91025 2021-08-31 10:52:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMUnattendedPageBasic class implementation.
  */
@@ -169,10 +169,6 @@ bool UIWizardNewVMUnattendedPageBasic::isComplete() const
     if (m_pAdditionalOptionsContainer && !m_pAdditionalOptionsContainer->isComplete())
         return false;
     return true;
-}
-
-void UIWizardNewVMUnattendedPageBasic::cleanupPage()
-{
 }
 
 void UIWizardNewVMUnattendedPageBasic::showEvent(QShowEvent *pEvent)

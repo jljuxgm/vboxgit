@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.cpp 90990 2021-08-30 09:38:18Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.cpp 91025 2021-08-31 10:52:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class implementation.
  */
@@ -402,11 +402,6 @@ void UIWizardNewVMPageExpert::initializePage()
     updateDiskWidgetsAfterMediumFormatChange();
     // setSkipCheckBoxEnable();
     retranslateUi();
-}
-
-void UIWizardNewVMPageExpert::cleanupPage()
-{
-    //cleanupMachineFolder();
 }
 
 void UIWizardNewVMPageExpert::markWidgets() const
