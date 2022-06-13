@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 90967 2021-08-27 20:37:40Z vboxsync $ */
+/* $Id: UINotificationObjects.cpp 91007 2021-08-30 17:50:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -55,6 +55,16 @@
 
 /* static */
 QMap<QString, QUuid> UINotificationMessage::m_messages = QMap<QString, QUuid>();
+
+/* static */
+void UINotificationMessage::cannotOpenURL(const QString &strUrl)
+{
+    createMessage(
+        QApplication::translate("UIMessageCenter", "Can't open URL ..."),
+        QApplication::translate("UIMessageCenter", "Failed to open <tt>%1</tt>. "
+                                                   "Make sure your desktop environment can properly handle URLs of this type.")
+                                                   .arg(strUrl));
+}
 
 /* static */
 void UINotificationMessage::cannotMountImage(const QString &strMachineName, const QString &strMediumName)

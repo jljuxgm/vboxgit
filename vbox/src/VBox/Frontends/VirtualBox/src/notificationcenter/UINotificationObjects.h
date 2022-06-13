@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.h 90933 2021-08-27 07:43:58Z vboxsync $ */
+/* $Id: UINotificationObjects.h 91007 2021-08-30 17:50:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects declarations.
  */
@@ -60,6 +60,8 @@ class SHARED_LIBRARY_STUFF UINotificationMessage : public UINotificationSimple
 
 public:
 
+    /** Notifies about inability to open @a strUrl. */
+    static void cannotOpenURL(const QString &strUrl);
     /** Notifies about inability to mount image.
       * @param  strMachineName  Brings the machine name.
       * @param  strMediumName   Brings the medium name. */

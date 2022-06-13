@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 91003 2021-08-30 15:40:14Z vboxsync $ */
+/* $Id: UICommon.cpp 91007 2021-08-30 17:50:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -3723,9 +3723,8 @@ bool UICommon::openURL(const QString &strUrl) const
 
     /* Acquire client result: */
     bool fResult = client.result();
-
     if (!fResult)
-        msgCenter().cannotOpenURL(strUrl);
+        UINotificationMessage::cannotOpenURL(strUrl);
 
     return fResult;
 }
