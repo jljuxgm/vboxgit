@@ -1,4 +1,4 @@
-/* $Id: process-creation-posix.cpp 93543 2022-02-02 12:40:40Z vboxsync $ */
+/* $Id: process-creation-posix.cpp 94406 2022-03-31 09:25:30Z vboxsync $ */
 /** @file
  * IPRT - Process Creation, POSIX.
  */
@@ -85,6 +85,7 @@
 #endif
 
 #if !defined(IPRT_USE_PAM) \
+ && !defined(IPRT_WITHOUT_PAM) \
  && ( defined(RT_OS_DARWIN) || defined(RT_OS_FREEBSD) || defined(RT_OS_LINUX) || defined(RT_OS_NETBSD) || defined(RT_OS_OPENBSD) )
 # define IPRT_USE_PAM
 #endif
