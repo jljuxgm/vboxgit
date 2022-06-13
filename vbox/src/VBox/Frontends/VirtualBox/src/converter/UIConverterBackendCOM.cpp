@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackendCOM.cpp 93569 2022-02-03 09:20:06Z vboxsync $ */
+/* $Id: UIConverterBackendCOM.cpp 93981 2022-02-28 13:58:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConverterBackendCOM implementation.
  */
@@ -737,19 +737,11 @@ template<> QString toInternalString(const KNATProtocol &protocol)
 /* KNATProtocol <= QString: */
 template<> KNATProtocol fromInternalString<KNATProtocol>(const QString &strProtocol)
 {
-    /* Here we have some fancy stuff allowing us
-     * to search through the keys using 'case-insensitive' rule: */
-    QStringList keys; QList<KNATProtocol> values;
-    keys << "udp";    values << KNATProtocol_UDP;
-    keys << "tcp";    values << KNATProtocol_TCP;
-    /* Invalid type for unknown words: */
-    if (!keys.contains(strProtocol, Qt::CaseInsensitive))
-    {
-        AssertMsgFailed(("No value for '%s'", strProtocol.toUtf8().constData()));
+    if (strProtocol.compare("udp", Qt::CaseInsensitive) == 0)
         return KNATProtocol_UDP;
-    }
-    /* Corresponding type for known words: */
-    return values.at(keys.indexOf(QRegExp(strProtocol, Qt::CaseInsensitive)));
+    if (strProtocol.compare("tcp", Qt::CaseInsensitive) == 0)
+        return KNATProtocol_TCP;
+    AssertMsgFailedReturn(("No value for '%s'", strProtocol.toUtf8().constData()), KNATProtocol_UDP);
 }
 
 /* QString <= KGuestSessionStatus: */
