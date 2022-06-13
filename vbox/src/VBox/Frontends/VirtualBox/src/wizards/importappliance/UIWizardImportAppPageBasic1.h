@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageBasic1.h 91145 2021-09-07 19:10:39Z vboxsync $ */
+/* $Id: UIWizardImportAppPageBasic1.h 91521 2021-10-01 15:05:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageBasic1 class declaration.
  */
@@ -99,8 +99,8 @@ protected:
     QString machineId() const;
     /** Returns Cloud Profile object. */
     CCloudProfile profile() const;
-    /** Returns Appliance object. */
-    CAppliance appliance() const;
+    /** Returns Cloud Appliance object. */
+    CAppliance cloudAppliance() const;
     /** Returns Virtual System Description Form object. */
     CVirtualSystemDescriptionForm vsdForm() const;
 
@@ -158,7 +158,7 @@ class UIWizardImportAppPageBasic1 : public UIWizardPage, public UIWizardImportAp
     Q_PROPERTY(QString source READ source WRITE setSource);
     Q_PROPERTY(bool isSourceCloudOne READ isSourceCloudOne);
     Q_PROPERTY(CCloudProfile profile READ profile);
-    Q_PROPERTY(CAppliance appliance READ appliance);
+    Q_PROPERTY(CAppliance cloudAppliance READ cloudAppliance);
     Q_PROPERTY(CVirtualSystemDescriptionForm vsdForm READ vsdForm);
     Q_PROPERTY(QString machineId READ machineId);
 

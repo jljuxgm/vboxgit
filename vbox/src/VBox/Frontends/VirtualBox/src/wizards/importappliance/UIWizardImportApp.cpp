@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportApp.cpp 90564 2021-08-07 11:12:13Z vboxsync $ */
+/* $Id: UIWizardImportApp.cpp 91521 2021-10-01 15:05:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportApp class implementation.
  */
@@ -203,7 +203,7 @@ bool UIWizardImportApp::importAppliance()
     if (fIsSourceCloudOne)
     {
         /* Acquire prepared appliance: */
-        CAppliance comAppliance = field("appliance").value<CAppliance>();
+        CAppliance comAppliance = field("cloudAppliance").value<CAppliance>();
         AssertReturn(!comAppliance.isNull(), false);
 
         /* No options for cloud VMs for now: */

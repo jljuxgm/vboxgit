@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageBasic1.cpp 91159 2021-09-08 14:33:49Z vboxsync $ */
+/* $Id: UIWizardImportAppPageBasic1.cpp 91521 2021-10-01 15:05:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageBasic1 class implementation.
  */
@@ -349,7 +349,7 @@ CCloudProfile UIWizardImportAppPage1::profile() const
     return m_comCloudProfile;
 }
 
-CAppliance UIWizardImportAppPage1::appliance() const
+CAppliance UIWizardImportAppPage1::cloudAppliance() const
 {
     return m_comAppliance;
 }
@@ -581,7 +581,7 @@ UIWizardImportAppPageBasic1::UIWizardImportAppPageBasic1(bool fImportFromOCIByDe
     registerField("source", this, "source");
     registerField("isSourceCloudOne", this, "isSourceCloudOne");
     registerField("profile", this, "profile");
-    registerField("appliance", this, "appliance");
+    registerField("cloudAppliance", this, "cloudAppliance");
     registerField("vsdForm", this, "vsdForm");
     registerField("machineId", this, "machineId");
 }
