@@ -1,5 +1,5 @@
 @echo off
-rem $Id: win_postinstall.cmd 92793 2021-12-07 22:01:45Z vboxsync $
+rem $Id: win_postinstall.cmd 92795 2021-12-07 22:58:10Z vboxsync $
 rem rem @file
 rem Post installation script template for Windows.
 rem
@@ -125,16 +125,16 @@ netsh firewall add portopening TCP 5042 "TestExecService 5042" >> %MY_LOG_FILE% 
 echo *** ERRORLEVEL: %ERRORLEVEL% >> %MY_LOG_FILE%
 
 rem Update the registry to autorun the service and make sure we've got autologon.
-echo *** Running: reg.exe ADD /f HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v NTConfiguration /d %SystemDrive%\Apps\vboxtxs.cmd >> %MY_LOG_FILE%
-reg.exe ADD /f HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v NTConfiguration /d %SystemDrive%\Apps\vboxtxs.cmd >> %MY_LOG_FILE% 2>&1
+echo *** Running: reg.exe ADD HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v NTConfiguration /d %SystemDrive%\Apps\vboxtxs.cmd /f >> %MY_LOG_FILE%
+reg.exe ADD HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v NTConfiguration /d %SystemDrive%\Apps\vboxtxs.cmd /f >> %MY_LOG_FILE% 2>&1
 echo *** ERRORLEVEL: %ERRORLEVEL% >> %MY_LOG_FILE%
 
-echo *** Running: reg.exe ADD /f "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" /v PowerdownAfterShutdown /d 1 >> %MY_LOG_FILE%
-reg.exe ADD /f "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" /v PowerdownAfterShutdown /d 1 >> %MY_LOG_FILE% 2>&1
+echo *** Running: reg.exe ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" /v PowerdownAfterShutdown /d 1 /f >> %MY_LOG_FILE%
+reg.exe ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" /v PowerdownAfterShutdown /d 1 /f >> %MY_LOG_FILE% 2>&1
 echo *** ERRORLEVEL: %ERRORLEVEL% >> %MY_LOG_FILE%
 
-echo *** Running: reg.exe ADD /f "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" /v ForceAutoLogon /d 1 >> %MY_LOG_FILE%
-reg.exe ADD /f "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" /v ForceAutoLogon /d 1 >> %MY_LOG_FILE% 2>&1
+echo *** Running: reg.exe ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" /v ForceAutoLogon /d 1 /f >> %MY_LOG_FILE%
+reg.exe ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" /v ForceAutoLogon /d 1 /f >> %MY_LOG_FILE% 2>&1
 echo *** ERRORLEVEL: %ERRORLEVEL% >> %MY_LOG_FILE%
 rem  AutoAdminLogon too if administrator?
 
