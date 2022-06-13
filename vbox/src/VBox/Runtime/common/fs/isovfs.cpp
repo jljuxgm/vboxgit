@@ -1,4 +1,4 @@
-/* $Id: isovfs.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: isovfs.cpp 93510 2022-01-31 19:51:43Z vboxsync $ */
 /** @file
  * IPRT - ISO 9660 and UDF Virtual Filesystem (read only).
  */
@@ -2095,13 +2095,9 @@ static DECLCALLBACK(int) rtFsIsoFile_Seek(void *pvThis, RTFOFF offSeek, unsigned
     }
     if (offNew >= 0)
     {
-        if (offNew <= _4G)
-        {
-            pThis->offFile = offNew;
-            *poffActual    = offNew;
-            return VINF_SUCCESS;
-        }
-        return VERR_OUT_OF_RANGE;
+        pThis->offFile = offNew;
+        *poffActual    = offNew;
+        return VINF_SUCCESS;
     }
     return VERR_NEGATIVE_SEEK;
 }
