@@ -1,4 +1,4 @@
-/* $Id: tstVBoxAPI.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: tstVBoxAPI.cpp 94660 2022-04-21 08:38:34Z vboxsync $ */
 /** @file
  * tstVBoxAPI - Checks VirtualBox API.
  */
@@ -127,6 +127,9 @@ static BOOL tstApiIVirtualBox(IVirtualBox *pVBox)
                                      ComSafeArrayAsInParam(groups), /** Groups */
                                      NULL,                          /** OS Type */
                                      NULL,                          /** Create flags */
+                                     NULL,                          /** Cipher */
+                                     NULL,                          /** Password id */
+                                     NULL,                          /** Password */
                                      ptrMachine.asOutParam()));     /** Machine */
     if (SUCCEEDED(rc))
         RTTestPassed(g_hTest, "IVirtualBox::CreateMachine");

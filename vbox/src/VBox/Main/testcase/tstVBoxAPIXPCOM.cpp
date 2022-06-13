@@ -1,4 +1,4 @@
-/* $Id: tstVBoxAPIXPCOM.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: tstVBoxAPIXPCOM.cpp 94660 2022-04-21 08:38:34Z vboxsync $ */
 /** @file
  *
  * tstVBoxAPIXPCOM - sample program to illustrate the VirtualBox
@@ -190,6 +190,9 @@ void createVM(IVirtualBox *virtualBox)
                                    0, nsnull,   /* groups (safearray)*/
                                    nsnull,      /* ostype */
                                    nsnull,      /* create flags */
+                                   nsnull,      /* cipher */
+                                   nsnull,      /* password id */
+                                   nsnull,      /* password */
                                    getter_AddRefs(machine));
     if (NS_FAILED(rc))
     {

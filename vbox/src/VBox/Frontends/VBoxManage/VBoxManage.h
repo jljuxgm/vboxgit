@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 94643 2022-04-20 09:08:37Z vboxsync $ */
+/* $Id: VBoxManage.h 94660 2022-04-21 08:38:34Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -209,6 +209,9 @@ RTEXITCODE handleUnregisterVM(HandlerArg *a);
 RTEXITCODE handleCreateVM(HandlerArg *a);
 RTEXITCODE handleCloneVM(HandlerArg *a);
 RTEXITCODE handleStartVM(HandlerArg *a);
+#ifdef VBOX_WITH_FULL_VM_ENCRYPTION
+RTEXITCODE handleEncryptVM(HandlerArg *a);
+#endif
 RTEXITCODE handleDiscardState(HandlerArg *a);
 RTEXITCODE handleAdoptState(HandlerArg *a);
 RTEXITCODE handleGetExtraData(HandlerArg *a);

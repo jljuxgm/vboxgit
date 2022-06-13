@@ -1,4 +1,4 @@
-# $Id: Config.kmk 94290 2022-03-17 12:47:49Z vboxsync $
+# $Id: Config.kmk 94660 2022-04-21 08:38:34Z vboxsync $
 ## @file
 # kBuild Configuration file for the manual.
 #
@@ -45,6 +45,7 @@ VBOX_MANUAL_XML_REFENTRY_FILES := \
 	man_VBoxManage-snapshot.xml \
 	man_VBoxManage-clonevm.xml \
 	man_VBoxManage-movevm.xml \
+	$(if $(VBOX_WITH_FULL_VM_ENCRYPTION),man_VBoxManage-encryptvm.xml,) \
 	man_VBoxManage-startvm.xml \
 	man_VBoxManage-controlvm.xml \
 	man_VBoxManage-import.xml \

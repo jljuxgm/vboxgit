@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 94658 2022-04-21 08:33:56Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 94660 2022-04-21 08:38:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -3128,7 +3128,7 @@ void UIMachineLogic::askUserForTheDiskEncryptionPasswords()
             /* Apply the disk encryption passwords: */
             foreach (const QString &strKey, encryptionPasswords.keys())
             {
-                console().AddDiskEncryptionPassword(strKey, encryptionPasswords.value(strKey), false);
+                console().AddEncryptionPassword(strKey, encryptionPasswords.value(strKey), false);
                 if (!console().isOk())
                     msgCenter().cannotAddDiskEncryptionPassword(console());
             }

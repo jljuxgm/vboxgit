@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 94593 2022-04-13 17:33:39Z vboxsync $ */
+/* $Id: UIWizardNewVM.cpp 94660 2022-04-21 08:38:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
@@ -142,7 +142,8 @@ bool UIWizardNewVM::createVM()
             groups << m_strMachineGroup;
         m_machine = vbox.CreateMachine(m_strMachineFilePath,
                                        m_strMachineBaseName,
-                                       groups, strTypeId, QString());
+                                       groups, strTypeId, QString(),
+                                       QString(), QString(), QString());
         if (!vbox.isOk())
         {
             UINotificationMessage::cannotCreateMachine(vbox, notificationCenter());

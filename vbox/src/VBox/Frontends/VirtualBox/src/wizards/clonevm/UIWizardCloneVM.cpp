@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVM.cpp 93659 2022-02-08 14:53:08Z vboxsync $ */
+/* $Id: UIWizardCloneVM.cpp 94660 2022-04-21 08:38:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVM class implementation.
  */
@@ -180,7 +180,8 @@ bool UIWizardCloneVM::cloneVM()
     /* Get VBox object: */
     CVirtualBox comVBox = uiCommon().virtualBox();
     /* Create a new machine object: */
-    CMachine cloneMachine = comVBox.CreateMachine(m_strCloneFilePath, m_strCloneName, QVector<QString>(), QString(), QString());
+    CMachine cloneMachine = comVBox.CreateMachine(m_strCloneFilePath, m_strCloneName, QVector<QString>(), QString(), QString(),
+                                                  QString(), QString(), QString());
     if (!comVBox.isOk())
     {
         UINotificationMessage::cannotCreateMachine(comVBox, notificationCenter());

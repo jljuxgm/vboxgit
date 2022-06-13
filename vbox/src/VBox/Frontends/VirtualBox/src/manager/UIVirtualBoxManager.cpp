@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 94593 2022-04-13 17:33:39Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 94660 2022-04-21 08:38:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -2467,7 +2467,7 @@ void UIVirtualBoxManager::openAddMachineDialog(const QString &strFileName /* = Q
         return;
 
     /* Make sure this machine can be opened: */
-    CMachine comMachineNew = comVBox.OpenMachine(strTmpFile);
+    CMachine comMachineNew = comVBox.OpenMachine(strTmpFile, QString());
     if (!comVBox.isOk())
     {
         UINotificationMessage::cannotOpenMachine(comVBox, strTmpFile);

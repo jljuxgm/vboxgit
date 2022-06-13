@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 93481 2022-01-28 16:31:30Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 94660 2022-04-21 08:38:34Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -4403,6 +4403,9 @@ void Appliance::i_importMachineGeneric(const ovf::VirtualSystem &vsysThis,
                                     ComSafeArrayAsInParam(groups),
                                     Bstr(stack.strOsTypeVBox).raw(),
                                     NULL, /* aCreateFlags */
+                                    NULL, /* aCipher */
+                                    NULL, /* aPasswordId */
+                                    NULL, /* aPassword */
                                     pNewMachine.asOutParam());
     if (FAILED(rc)) throw rc;
     pNewMachineRet = pNewMachine;
