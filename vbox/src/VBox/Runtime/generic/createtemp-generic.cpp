@@ -1,4 +1,4 @@
-/* $Id: createtemp-generic.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: createtemp-generic.cpp 94311 2022-03-19 01:34:37Z vboxsync $ */
 /** @file
  * IPRT - temporary file and directory creation, generic implementation.
  */
@@ -157,44 +157,58 @@ RTDECL(int) RTDirCreateTempSecure(char *pszTemplate)
 RT_EXPORT_SYMBOL(RTDirCreateTempSecure);
 
 
-RTDECL(int) RTFileCreateTemp(char *pszTemplate, RTFMODE fMode)
+RTDECL(int) RTFileCreateUnique(PRTFILE phFile, char *pszTemplate, uint64_t fOpen)
 {
+    /*
+     * Validate input.
+     */
+    *phFile = NIL_RTFILE;
+    AssertReturn((fOpen & RTFILE_O_ACTION_MASK) == RTFILE_O_CREATE, VERR_INVALID_FLAGS);
     char       *pszX = NULL;
     unsigned    cXes = 0;
     int rc = rtCreateTempValidateTemplate(pszTemplate, &pszX, &cXes);
-    if (RT_FAILURE(rc))
+    if (RT_SUCCESS(rc))
     {
-        *pszTemplate = '\0';
-        return rc;
-    }
-
-    /*
-     * Try ten thousand times.
-     */
-    int i = 10000;
-    while (i-- > 0)
-    {
-        uint64_t fOpen = RTFILE_O_WRITE | RTFILE_O_DENY_ALL | RTFILE_O_CREATE | RTFILE_O_NOT_CONTENT_INDEXED
-                       | fMode << RTFILE_O_CREATE_MODE_SHIFT;
-        rtCreateTempFillTemplate(pszX, cXes);
-        RTFILE hFile = NIL_RTFILE;
-        rc = RTFileOpen(&hFile, pszTemplate, fOpen);
-        if (RT_SUCCESS(rc))
+        /*
+         * Try ten thousand times.
+         */
+        int i = 10000;
+        while (i-- > 0)
         {
-            RTFileClose(hFile);
-            return rc;
+            rtCreateTempFillTemplate(pszX, cXes);
+            RTFILE hFile = NIL_RTFILE;
+            rc = RTFileOpen(&hFile, pszTemplate, fOpen);
+            if (RT_SUCCESS(rc))
+            {
+                *phFile = hFile;
+                return rc;
+            }
+            /** @todo Anything else to consider? */
+            if (rc != VERR_ALREADY_EXISTS)
+            {
+                *pszTemplate = '\0';
+                return rc;
+            }
         }
-        /** @todo Anything else to consider? */
-        if (rc != VERR_ALREADY_EXISTS)
-        {
-            *pszTemplate = '\0';
-            return rc;
-        }
-    }
 
-    /* we've given up. */
+        /* we've given up. */
+        rc = VERR_ALREADY_EXISTS;
+    }
     *pszTemplate = '\0';
-    return VERR_ALREADY_EXISTS;
+    return rc;
+}
+RT_EXPORT_SYMBOL(RTFileCreateUnique);
+
+
+RTDECL(int) RTFileCreateTemp(char *pszTemplate, RTFMODE fMode)
+{
+    RTFILE hFile = NIL_RTFILE;
+    int rc = RTFileCreateUnique(&hFile, pszTemplate,
+                                RTFILE_O_WRITE | RTFILE_O_DENY_ALL | RTFILE_O_CREATE | RTFILE_O_NOT_CONTENT_INDEXED
+                                | fMode << RTFILE_O_CREATE_MODE_SHIFT);
+    if (RT_SUCCESS(rc))
+        RTFileClose(hFile);
+    return rc;
 }
 RT_EXPORT_SYMBOL(RTFileCreateTemp);
 
