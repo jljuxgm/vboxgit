@@ -1,4 +1,4 @@
-/* $Id: PDMAllCritSect.cpp 91808 2021-10-18 09:20:07Z vboxsync $ */
+/* $Id: PDMAllCritSect.cpp 91816 2021-10-18 09:47:59Z vboxsync $ */
 /** @file
  * PDM - Write-Only Critical Section, All Contexts.
  */
@@ -1072,9 +1072,9 @@ VMMDECL(int) PDMCritSectLeave(PVMCC pVM, PPDMCRITSECT pCritSect)
             VMMTrashVolatileXMMRegs();
 #  endif
             return VINF_SUCCESS;
-# else
+# else  /* VMM_R0_SWITCH_STACK */
             return pdmR0CritSectLeaveSignallingOnKrnlStk(pVM, pVCpu, pCritSect, cLockers, hEventToSignal);
-# endif
+# endif /* VMM_R0_SWITCH_STACK */
         }
 
         /*
