@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioValidationKit.cpp 89835 2021-06-22 13:57:01Z vboxsync $ */
+/* $Id: DrvHostAudioValidationKit.cpp 89838 2021-06-22 14:20:52Z vboxsync $ */
 /** @file
  * Host audio driver - ValidationKit - For dumping and injecting audio data from/to the device emulation.
  */
@@ -228,7 +228,7 @@ static void drvHostValKitCleanup(PDRVHOSTVALKITAUDIO pThis)
         size_t const cbOutstanding = pTst->t.TestTone.u.Rec.cbToWrite - pTst->t.TestTone.u.Rec.cbWritten;
         if (cbOutstanding)
             LogRel(("Audio: Validation Kit: \tRecording test #%RU32 has %RU64 bytes (%RU32ms) outstanding\n",
-                    pTst->idxTest, cbOutstanding, PDMAudioPropsBytesToMilli(&pTst->t.TestTone.Parms.Props, cbOutstanding)));
+                    pTst->idxTest, cbOutstanding, PDMAudioPropsBytesToMilli(&pTst->t.TestTone.Parms.Props, (uint32_t)cbOutstanding)));
         drvHostValKiUnregisterRecTest(pThis, pTst);
     }
 
@@ -240,7 +240,7 @@ static void drvHostValKitCleanup(PDRVHOSTVALKITAUDIO pThis)
         size_t const cbOutstanding = pTst->t.TestTone.u.Play.cbToRead - pTst->t.TestTone.u.Play.cbRead;
         if (cbOutstanding)
             LogRel(("Audio: Validation Kit: \tPlayback test #%RU32 has %RU64 bytes (%RU32ms) outstanding\n",
-                    pTst->idxTest, cbOutstanding, PDMAudioPropsBytesToMilli(&pTst->t.TestTone.Parms.Props, cbOutstanding)));
+                    pTst->idxTest, cbOutstanding, PDMAudioPropsBytesToMilli(&pTst->t.TestTone.Parms.Props, (uint32_t)cbOutstanding)));
         drvHostValKiUnregisterPlayTest(pThis, pTst);
     }
 
