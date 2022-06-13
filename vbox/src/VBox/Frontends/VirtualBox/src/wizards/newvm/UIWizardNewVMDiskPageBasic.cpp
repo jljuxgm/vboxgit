@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMDiskPageBasic.cpp 90210 2021-07-15 11:28:32Z vboxsync $ */
+/* $Id: UIWizardNewVMDiskPageBasic.cpp 90252 2021-07-20 09:54:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMDiskPageBasic class implementation.
  */
@@ -397,9 +397,6 @@ bool UIWizardNewVMDiskPageBasic::isComplete() const
 
     if (m_enmSelectedDiskSource == SelectedDiskSource_Existing)
         return !pWizard->virtualDisk().isNull();
-
-    if (m_pDiskNew && m_pDiskNew->isChecked() && uSize <= 0)
-        return false;
 
     return true;
 }
