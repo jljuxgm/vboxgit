@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-darwin.cpp 91483 2021-09-30 00:19:19Z vboxsync $ */
+/* $Id: memobj-r0drv-darwin.cpp 92246 2021-11-06 03:10:49Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Darwin.
  */
@@ -743,6 +743,10 @@ static int rtR0MemObjNativeAllocWorker(PPRTR0MEMOBJINTERNAL ppMem, size_t cb,
                 PRTR0MEMOBJDARWIN pMemDarwin = (PRTR0MEMOBJDARWIN)rtR0MemObjNew(sizeof(*pMemDarwin), enmType, pv, cb, pszTag);
                 if (pMemDarwin)
                 {
+                    if (fOptions & kIOMemoryKernelUserShared)
+                        pMemDarwin->Core.fFlags |= RTR0MEMOBJ_FLAGS_ZERO_AT_ALLOC;
+                    else
+                        pMemDarwin->Core.fFlags |= RTR0MEMOBJ_FLAGS_UNINITIALIZED_AT_ALLOC;
                     if (fContiguous)
                     {
 #ifdef __LP64__
