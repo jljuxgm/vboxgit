@@ -1,4 +1,4 @@
-/* $Id: logrel.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: logrel.cpp 90829 2021-08-24 10:26:07Z vboxsync $ */
 /** @file
  * Runtime VBox - Release Logger.
  */
@@ -55,70 +55,6 @@
 # include <iprt/alloca.h>
 # include <stdio.h>
 #endif
-
-
-/*********************************************************************************************************************************
-*   Global Variables                                                                                                             *
-*********************************************************************************************************************************/
-#ifdef IN_RC
-/** Default release logger instance. */
-extern "C" DECLIMPORT(RTLOGGERRC)   g_RelLogger;
-#else /* !IN_RC */
-/** Default release logger instance. */
-static PRTLOGGER                    g_pRelLogger;
-#endif /* !IN_RC */
-
-
-RTDECL(PRTLOGGER)   RTLogRelGetDefaultInstance(void)
-{
-#ifdef IN_RC
-    return &g_RelLogger;
-#else /* !IN_RC */
-    return g_pRelLogger;
-#endif /* !IN_RC */
-}
-RT_EXPORT_SYMBOL(RTLogRelGetDefaultInstance);
-
-
-RTDECL(PRTLOGGER)   RTLogRelGetDefaultInstanceEx(uint32_t fFlagsAndGroup)
-{
-#ifdef IN_RC
-    PRTLOGGER pLogger = &g_RelLogger;
-#else /* !IN_RC */
-    PRTLOGGER pLogger = g_pRelLogger;
-#endif /* !IN_RC */
-    if (pLogger)
-    {
-        if (pLogger->fFlags & RTLOGFLAGS_DISABLED)
-            pLogger = NULL;
-        else
-        {
-            uint16_t const fFlags = RT_LO_U16(fFlagsAndGroup);
-            uint16_t const iGroup = RT_HI_U16(fFlagsAndGroup);
-            if (   iGroup != UINT16_MAX
-                 && (   (pLogger->afGroups[iGroup < pLogger->cGroups ? iGroup : 0] & (fFlags | (uint32_t)RTLOGGRPFLAGS_ENABLED))
-                     != (fFlags | (uint32_t)RTLOGGRPFLAGS_ENABLED)))
-            pLogger = NULL;
-        }
-    }
-    return pLogger;
-}
-RT_EXPORT_SYMBOL(RTLogRelGetDefaultInstanceEx);
-
-
-#ifndef IN_RC
-/**
- * Sets the default logger instance.
- *
- * @returns iprt status code.
- * @param   pLogger     The new default release logger instance.
- */
-RTDECL(PRTLOGGER) RTLogRelSetDefaultInstance(PRTLOGGER pLogger)
-{
-    return ASMAtomicXchgPtrT(&g_pRelLogger, pLogger, PRTLOGGER);
-}
-RT_EXPORT_SYMBOL(RTLogRelSetDefaultInstance);
-#endif /* !IN_RC */
 
 
 /**

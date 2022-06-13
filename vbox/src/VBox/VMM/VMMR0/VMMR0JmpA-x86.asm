@@ -1,4 +1,4 @@
-; $Id: VMMR0JmpA-x86.asm 82968 2020-02-04 10:35:17Z vboxsync $
+; $Id: VMMR0JmpA-x86.asm 90829 2021-08-24 10:26:07Z vboxsync $
 ;; @file
 ; VMM - R0 SetJmp / LongJmp routines for X86.
 ;
@@ -30,9 +30,6 @@
 %define RESUME_MAGIC    07eadf00dh
 %define STACK_PADDING   0eeeeeeeeh
 
-
-; For vmmR0LoggerWrapper. (The other architecture(s) use(s) C99 variadic macros.)
-extern NAME(RTLogLogger)
 
 
 BEGINCODE
@@ -385,17 +382,4 @@ BEGINPROC vmmR0CallRing3LongJmp
     leave
     ret
 ENDPROC vmmR0CallRing3LongJmp
-
-
-;;
-; Internal R0 logger worker: Logger wrapper.
-;
-; @cproto VMMR0DECL(void) vmmR0LoggerWrapper(const char *pszFormat, ...)
-;
-EXPORTEDNAME vmmR0LoggerWrapper
-    push    0                           ; assumes we're the wrapper for a default instance.
-    call    NAME(RTLogLogger)
-    add     esp, byte 4
-    ret
-ENDPROC vmmR0LoggerWrapper
 

@@ -1,4 +1,4 @@
-; $Id: VMMR0JmpA-amd64.asm 90189 2021-07-14 16:39:09Z vboxsync $
+; $Id: VMMR0JmpA-amd64.asm 90829 2021-08-24 10:26:07Z vboxsync $
 ;; @file
 ; VMM - R0 SetJmp / LongJmp routines for AMD64.
 ;
@@ -503,18 +503,4 @@ SEH64_END_PROLOGUE
     leave
     ret
 ENDPROC vmmR0CallRing3LongJmp
-
-
-;;
-; Internal R0 logger worker: Logger wrapper.
-;
-; @cproto VMMR0DECL(void) vmmR0LoggerWrapper(const char *pszFormat, ...)
-;
-BEGINPROC_EXPORTED vmmR0LoggerWrapper
-SEH64_END_PROLOGUE
-    int3
-    int3
-    int3
-    ret
-ENDPROC vmmR0LoggerWrapper
 

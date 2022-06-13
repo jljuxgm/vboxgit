@@ -1,4 +1,4 @@
-# $Id: Makefile 89957 2021-06-29 14:34:08Z vboxsync $
+# $Id: Makefile 90829 2021-08-24 10:26:07Z vboxsync $
 ## @file
 # VirtualBox Guest Additions Module Makefile.
 #
@@ -72,6 +72,7 @@ VBOXMOD_OBJS += \
 	r0drv/linux/RTLogWriteDebugger-r0drv-linux.o \
 	r0drv/generic/semspinmutex-r0drv-generic.o \
 	common/alloc/alloc.o \
+	common/checksum/crc32.o \
 	common/err/RTErrConvertFromErrno.o \
 	common/err/RTErrConvertToErrno.o \
 	common/err/errinfo.o \
@@ -106,6 +107,7 @@ VBOXMOD_OBJS += \
 	common/string/strformatrt.o \
 	common/string/strformattype.o \
 	common/string/strprintf.o \
+	common/string/strprintf2.o \
 	common/string/strtonum.o \
 	common/string/utf-8.o \
 	common/table/avlpv.o \

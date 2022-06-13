@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 90780 2021-08-23 09:25:17Z vboxsync $ */
+/* $Id: SUPDrv.cpp 90829 2021-08-24 10:26:07Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -283,6 +283,10 @@ static SUPFUNC g_aFunctions[] =
     { "RTHandleTableDestroy",                   (void *)(uintptr_t)RTHandleTableDestroy },
     { "RTHandleTableFreeWithCtx",               (void *)(uintptr_t)RTHandleTableFreeWithCtx },
     { "RTHandleTableLookupWithCtx",             (void *)(uintptr_t)RTHandleTableLookupWithCtx },
+    { "RTLogBulkUpdate",                        (void *)(uintptr_t)RTLogBulkUpdate},
+    { "RTLogCheckGroupFlags",                   (void *)(uintptr_t)RTLogCheckGroupFlags },
+    { "RTLogCreateEx",                          (void *)(uintptr_t)RTLogCreateEx },
+    { "RTLogDestroy",                           (void *)(uintptr_t)RTLogDestroy },
     { "RTLogDefaultInstance",                   (void *)(uintptr_t)RTLogDefaultInstance },
     { "RTLogDefaultInstanceEx",                 (void *)(uintptr_t)RTLogDefaultInstanceEx },
     { "RTLogGetDefaultInstance",                (void *)(uintptr_t)RTLogGetDefaultInstance },
@@ -294,6 +298,7 @@ static SUPFUNC g_aFunctions[] =
     { "RTLogRelGetDefaultInstanceEx",           (void *)(uintptr_t)RTLogRelGetDefaultInstanceEx },
     { "SUPR0GetDefaultLogRelInstanceEx",        (void *)(uintptr_t)SUPR0GetDefaultLogRelInstanceEx },
     { "RTLogSetDefaultInstanceThread",          (void *)(uintptr_t)RTLogSetDefaultInstanceThread },
+    { "RTLogSetR0ThreadNameF",                  (void *)(uintptr_t)RTLogSetR0ThreadNameF },
     { "RTMemAllocExTag",                        (void *)(uintptr_t)RTMemAllocExTag },
     { "RTMemAllocTag",                          (void *)(uintptr_t)RTMemAllocTag },
     { "RTMemAllocVarTag",                       (void *)(uintptr_t)RTMemAllocVarTag },

@@ -1,4 +1,4 @@
-/* $Id: combined-agnostic2.c 85523 2020-07-29 11:54:52Z vboxsync $ */
+/* $Id: combined-agnostic2.c 90829 2021-08-24 10:26:07Z vboxsync $ */
 /** @file
  * SUPDrv - Combine a bunch of OS agnostic sources into one compile unit.
  */
@@ -52,6 +52,8 @@
 #include "common/string/strformattype.c"
 #undef LOG_GROUP
 #include "common/string/strprintf.c"
+#undef LOG_GROUP
+#include "common/string/strprintf2.c"
 #undef LOG_GROUP
 #include "common/string/strtonum.c"
 #undef LOG_GROUP

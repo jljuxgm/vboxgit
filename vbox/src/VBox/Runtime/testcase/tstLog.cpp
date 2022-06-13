@@ -1,4 +1,4 @@
-/* $Id: tstLog.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: tstLog.cpp 90829 2021-08-24 10:26:07Z vboxsync $ */
 /** @file
  * IPRT Testcase - Log Groups.
  */
@@ -68,7 +68,7 @@ int main()
     if (rcExit == RTEXITCODE_SUCCESS)
     {
 #if 0   /* Old tests: */
-        printf("tstLog: Requires manual inspection of the log output!\n");
+        RTTestIPrintf(RTTESTLVL_ALWAYS, "Requires manual inspection of the log output!\n");
         RTLogPrintf("%%Rrc %d: %Rrc\n", VERR_INVALID_PARAMETER, VERR_INVALID_PARAMETER);
         RTLogPrintf("%%Rrs %d: %Rrs\n", VERR_INVALID_PARAMETER, VERR_INVALID_PARAMETER);
         RTLogPrintf("%%Rrf %d: %Rrf\n", VERR_INVALID_PARAMETER, VERR_INVALID_PARAMETER);

@@ -1,4 +1,4 @@
-/* $Id: OpenGLTestApp.cpp 86859 2020-11-11 12:45:11Z vboxsync $ */
+/* $Id: OpenGLTestApp.cpp 90829 2021-08-24 10:26:07Z vboxsync $ */
 /** @file
  * VBox host opengl support test application.
  */
@@ -295,10 +295,11 @@ static int vboxInitLogging(const char *pszFilename, bool bGenNameSuffix)
         enmLogDest = RTLOGDEST_STDOUT;
     }
 
-    int vrc = RTLogCreateEx(&loggerRelease, fFlags, "all",
-                            "VBOX_RELEASE_LOG", RT_ELEMENTS(s_apszGroups), s_apszGroups, UINT32_MAX, enmLogDest,
-                            NULL /* pfnBeginEnd */, 0 /* cHistory */, 0 /* cbHistoryFileMax */, 0 /* uHistoryTimeMax */,
-                            NULL /* pErrInfo */, pszFilenameFmt, pszFilename, RTTimeMilliTS());
+
+    int vrc = RTLogCreateEx(&loggerRelease, "VBOX_RELEASE_LOG", fFlags, "all", RT_ELEMENTS(s_apszGroups), s_apszGroups, UINT32_MAX,
+                            NULL /*pfnFlush*/, 0 /*cBufDescs*/, NULL /*paBufDescs*/, enmLogDest,
+                            NULL /*pfnBeginEnd*/, 0 /*cHistory*/, 0 /*cbHistoryFileMax*/, 0 /*uHistoryTimeMax*/,
+                            NULL /*pErrInfo*/, pszFilenameFmt, pszFilename, RTTimeMilliTS());
     if (RT_SUCCESS(vrc))
     {
         /* some introductory information */
@@ -459,7 +460,7 @@ int main(int argc, char **argv)
                     break;
 
                 case 'V':
-                    RTPrintf("$Revision: 86859 $\n");
+                    RTPrintf("$Revision: 90829 $\n");
                     return 0;
 
                 case VERR_GETOPT_UNKNOWN_OPTION:

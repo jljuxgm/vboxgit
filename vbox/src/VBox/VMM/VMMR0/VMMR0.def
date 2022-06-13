@@ -1,4 +1,4 @@
-; $Id: VMMR0.def 90346 2021-07-26 19:55:53Z vboxsync $
+; $Id: VMMR0.def 90829 2021-08-24 10:26:07Z vboxsync $
 ;; @file
 ; VMM Ring 0 DLL - Definition file.
 
@@ -36,6 +36,7 @@ EXPORTS
     IOMMmioMapMmio2Page
     RTLogDefaultInstance
     RTLogDefaultInstanceEx
+    RTLogGetDefaultInstanceEx
     RTLogRelGetDefaultInstance
     RTLogRelGetDefaultInstanceEx
     RTLogLogger
@@ -62,8 +63,6 @@ EXPORTS
     TMTimerStop
     TMTimerUnlock
     VMMGetSvnRev
-    vmmR0LoggerFlush
-    vmmR0LoggerWrapper
     VMSetError
     VMSetErrorV
 

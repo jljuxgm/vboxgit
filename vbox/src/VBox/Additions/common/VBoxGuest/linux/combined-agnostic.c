@@ -1,4 +1,4 @@
-/* $Id: combined-agnostic.c 83918 2020-04-22 09:37:04Z vboxsync $ */
+/* $Id: combined-agnostic.c 90829 2021-08-24 10:26:07Z vboxsync $ */
 /** @file
  * VBoxGuest - Combine a bunch of OS agnostic sources into one compile unit.
  */
@@ -52,6 +52,8 @@
 #include "r0drv/generic/semspinmutex-r0drv-generic.c"
 #undef LOG_GROUP
 #include "common/alloc/alloc.c"
+#undef LOG_GROUP
+#include "common/checksum/crc32.c"
 #undef LOG_GROUP
 #include "common/err/errinfo.c"
 #undef LOG_GROUP
@@ -114,6 +116,8 @@
 #include "common/string/strformattype.c"
 #undef LOG_GROUP
 #include "common/string/strprintf.c"
+#undef LOG_GROUP
+#include "common/string/strprintf2.c"
 #undef LOG_GROUP
 #include "common/string/strtonum.c"
 #undef LOG_GROUP
