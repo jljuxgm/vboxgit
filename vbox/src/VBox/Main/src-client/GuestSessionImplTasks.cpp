@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.cpp 91718 2021-10-14 11:43:12Z vboxsync $ */
+/* $Id: GuestSessionImplTasks.cpp 91744 2021-10-14 20:20:36Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session tasks.
  */
@@ -2044,8 +2044,7 @@ int GuestSessionTaskUpdateAdditions::copyFileToGuest(GuestSession *pSession, RTV
     AssertReturn(hVfsIso != NIL_RTVFS, VERR_INVALID_POINTER);
 
     RTVFSFILE hVfsFile = NIL_RTVFSFILE;
-    int rc = RTVfsFileOpen(hVfsIso, strFileSrc.c_str(),
-                           RTFILE_O_OPEN | RTFILE_O_READ | RTFILE_O_DENY_WRITE, & hVfsFile);
+    int rc = RTVfsFileOpen(hVfsIso, strFileSrc.c_str(), RTFILE_O_OPEN | RTFILE_O_READ | RTFILE_O_DENY_WRITE, &hVfsFile);
     if (RT_SUCCESS(rc))
     {
         uint64_t cbSrcSize = 0;
