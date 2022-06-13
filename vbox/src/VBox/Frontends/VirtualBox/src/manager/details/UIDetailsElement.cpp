@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElement.cpp 94358 2022-03-24 15:24:02Z vboxsync $ */
+/* $Id: UIDetailsElement.cpp 94530 2022-04-08 12:20:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement class implementation.
  */
@@ -1144,7 +1144,7 @@ void UIDetailsElement::popupNetworkAttachmentTypeEditor(const QString &strValue)
     if (pPopup)
     {
         /* Prepare editor: */
-        UINetworkAttachmentEditor *pEditor = new UINetworkAttachmentEditor(pPopup, true /* with label */);
+        UINetworkAttachmentEditor *pEditor = new UINetworkAttachmentEditor(pPopup);
         if (pEditor)
         {
             pEditor->setValueNames(KNetworkAttachmentType_Bridged, UINetworkAttachmentEditor::bridgedAdapters());

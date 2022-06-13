@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsNetwork.cpp 94527 2022-04-08 10:22:37Z vboxsync $ */
+/* $Id: UIMachineSettingsNetwork.cpp 94530 2022-04-08 12:20:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsNetwork class implementation.
  */
@@ -642,7 +642,7 @@ void UIMachineSettingsNetwork::prepareWidgets()
                 pLayoutAdapterSettings->setContentsMargins(0, 0, 0, 0);
 
                 /* Prepare attachment type editor: */
-                m_pEditorAttachmentType = new UINetworkAttachmentEditor(m_pWidgetAdapterSettings, true);
+                m_pEditorAttachmentType = new UINetworkAttachmentEditor(m_pWidgetAdapterSettings);
                 if (m_pEditorAttachmentType)
                     pLayoutAdapterSettings->addWidget(m_pEditorAttachmentType);
 

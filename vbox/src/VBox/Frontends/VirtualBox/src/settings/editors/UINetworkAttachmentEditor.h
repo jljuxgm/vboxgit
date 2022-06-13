@@ -1,4 +1,4 @@
-/* $Id: UINetworkAttachmentEditor.h 94395 2022-03-29 16:29:26Z vboxsync $ */
+/* $Id: UINetworkAttachmentEditor.h 94530 2022-04-08 12:20:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkAttachmentEditor class declaration.
  */
@@ -53,9 +53,8 @@ signals:
 
 public:
 
-    /** Constructs editor passing @a pParent to the base-class.
-      * @param  fWithLabels  Brings whether we should add labels ourselves. */
-    UINetworkAttachmentEditor(QWidget *pParent = 0, bool fWithLabels = false);
+    /** Constructs editor passing @a pParent to the base-class. */
+    UINetworkAttachmentEditor(QWidget *pParent = 0);
 
     /** Defines value @a enmType. */
     void setValueType(KNetworkAttachmentType enmType);
@@ -119,10 +118,7 @@ private:
     static UIExtraDataMetaDefs::DetailsElementOptionTypeNetwork toUiNetworkAdapterEnum(KNetworkAttachmentType comEnum);
 
     /** Holds the empty item data id. */
-    static QString s_strEmptyItemId;
-
-    /** Holds whether descriptive labels should be created. */
-    bool  m_fWithLabels;
+    static QString  s_strEmptyItemId;
 
     /** Holds the attachment type restrictions. */
     UIExtraDataMetaDefs::DetailsElementOptionTypeNetwork  m_enmRestrictedNetworkAttachmentTypes;
