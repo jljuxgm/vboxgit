@@ -1,4 +1,4 @@
-/* $Id: IEMAllAImplC.cpp 94543 2022-04-10 14:39:45Z vboxsync $ */
+/* $Id: IEMAllAImplC.cpp 94545 2022-04-11 00:15:06Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in Assembly, portable C variant.
  */
@@ -26,11 +26,9 @@
 #include <iprt/uint128.h>
 #include <iprt/uint256.h>
 
-#ifndef IN_RING0
 RT_C_DECLS_BEGIN
-# include <softfloat.h>
+#include <softfloat.h>
 RT_C_DECLS_END
-#endif
 
 
 /*********************************************************************************************************************************
@@ -4659,6 +4657,7 @@ static uint16_t iemFpuFloat80RoundAndComposeFrom192(PRTFLOAT80U pr80Dst, bool fS
         bool fAdd;
         switch (fFcw & X86_FCW_RC_MASK)
         {
+            default: /* (for the simple-minded MSC which otherwise things fAdd would be used uninitialized) */
             case X86_FCW_RC_NEAREST:
                 if (puMantissa->QWords.qw1 & RT_BIT_64(63))
                 {
