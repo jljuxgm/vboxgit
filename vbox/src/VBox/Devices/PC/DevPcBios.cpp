@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.cpp 84752 2020-06-10 10:58:33Z vboxsync $ */
+/* $Id: DevPcBios.cpp 91566 2021-10-05 11:45:51Z vboxsync $ */
 /** @file
  * DevPcBios - PC BIOS Device.
  */
@@ -360,6 +360,9 @@ pcbiosIOPortShutdownWrite(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT offPort, ui
                 {
                     pThis->iControl = 0;
                     LogRel(("PcBios: Boot failure\n"));
+                    int rc = PDMDevHlpVMSetRuntimeError(pDevIns, 0 /*fFlags*/, "VMBootFail",
+                                                        N_("The VM failed to boot. This is possibly caused by not having an operating system installed or a misconfigured boot order. Maybe picking a guest OS install DVD will resolve the situation"));
+                    AssertRC(rc);
                 }
             }
             else
