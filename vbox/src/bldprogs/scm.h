@@ -1,4 +1,4 @@
-/* $Id: scm.h 85121 2020-07-08 19:33:26Z vboxsync $ */
+/* $Id: scm.h 92185 2021-11-02 21:52:35Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -249,6 +249,7 @@ FNSCMREWRITER rewrite_SvnNoEolStyle;
 FNSCMREWRITER rewrite_SvnBinary;
 FNSCMREWRITER rewrite_SvnKeywords;
 FNSCMREWRITER rewrite_SvnSyncProcess;
+FNSCMREWRITER rewrite_UnicodeChecks;
 FNSCMREWRITER rewrite_Copyright_CstyleComment;
 FNSCMREWRITER rewrite_Copyright_HashComment;
 FNSCMREWRITER rewrite_Copyright_PythonComment;
@@ -373,6 +374,8 @@ typedef struct SCMSETTINGSBASE
     bool            fSetSvnKeywords;
     /** Skip checking svn:sync-process. */
     bool            fSkipSvnSyncProcess;
+    /** Skip the unicode checks. */
+    bool            fSkipUnicodeChecks;
     /** Tab size. */
     uint8_t         cchTab;
     /** Optimal source code width. */

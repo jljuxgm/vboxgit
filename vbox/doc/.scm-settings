@@ -1,4 +1,4 @@
-# $Id: .scm-settings 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: .scm-settings 92185 2021-11-02 21:52:35Z vboxsync $
 ## @file
 # Source code massager settings for the docs.
 #
@@ -37,3 +37,5 @@
 
 --filter-out-files /Qt/qt4.darwin.patch
 
+# Not UTF-8:
+/Devices/ACPI/devids.txt: --skip-unicode-checks

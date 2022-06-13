@@ -1,4 +1,4 @@
-# $Id: .scm-settings 89464 2021-06-02 12:04:25Z vboxsync $
+# $Id: .scm-settings 92185 2021-11-02 21:52:35Z vboxsync $
 ## @file
 # Source code massager settings for the EFI Firmware.
 #
@@ -77,6 +77,11 @@
 /BaseTools/Conf/FrameworkDatabase.template:    --treat-as .xml
 /BaseTools/Source/C/VfrCompile/Pccts/*.r:      --treat-as .h
 /BaseTools/BuildEnv:                           --treat-as .sh
+
+# Files that aren't UTF-8.
+/BaseTools/Source/C/VfrCompile/Pccts/antlr/antlr.r:      --skip-unicode-checks
+/BaseTools/Source/C/VfrCompile/Pccts/antlr/AntlrPPC.mak: --skip-unicode-checks
+/BaseTools/Source/C/VfrCompile/Pccts/dlg/DlgPPC.mak:     --skip-unicode-checks
 
 # Some normal makefiles (external code, convenience, ...)
 /*.mak:        --treat-as Makefile
