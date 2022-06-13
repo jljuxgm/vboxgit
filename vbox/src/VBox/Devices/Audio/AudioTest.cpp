@@ -1,4 +1,4 @@
-/* $Id: AudioTest.cpp 91534 2021-10-04 06:38:03Z vboxsync $ */
+/* $Id: AudioTest.cpp 91641 2021-10-08 12:39:05Z vboxsync $ */
 /** @file
  * Audio testing routines.
  *
@@ -2149,7 +2149,7 @@ static int audioTestObjFileNormalizeEx(PAUDIOTESTVERIFYJOB pVerJob,
     int rc = RTPathTemp(szFileDst, sizeof(szFileDst));
     AssertRCReturn(rc, rc);
 
-    rc = RTPathAppend(szFileDst, sizeof(szFileDst), "VBoxAudioTest-normalized-XXXXX.pcm");
+    rc = RTPathAppend(szFileDst, sizeof(szFileDst), "VBoxAudioTest-normalized-XXX.pcm");
     AssertRCReturn(rc, rc);
 
     rc = RTFileCreateTemp(szFileDst, 0600);
