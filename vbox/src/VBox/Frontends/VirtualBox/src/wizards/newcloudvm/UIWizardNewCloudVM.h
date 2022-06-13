@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVM.h 91756 2021-10-15 09:48:17Z vboxsync $ */
+/* $Id: UIWizardNewCloudVM.h 91757 2021-10-15 09:58:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVM class declaration.
  */
@@ -53,7 +53,7 @@ public:
     CVirtualSystemDescriptionForm vsdForm() const { return m_comVSDForm; }
 
     /** Creates VSD Form. */
-    bool createVSDForm();
+    void createVSDForm();
 
     /** Creates New Cloud VM. */
     bool createCloudVM();
