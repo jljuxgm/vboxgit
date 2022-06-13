@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMDiskPageBasic.cpp 90092 2021-07-08 11:35:46Z vboxsync $ */
+/* $Id: UIWizardNewVMDiskPageBasic.cpp 90210 2021-07-15 11:28:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMDiskPageBasic class implementation.
  */
@@ -540,12 +540,6 @@ QWidget *UIWizardNewVMDiskPageBasic::createMediumVariantWidgets(bool fWithLabels
     QVBoxLayout *pMainLayout = new QVBoxLayout(pContainerWidget);
     if (pMainLayout)
     {
-        if (fWithLabels)
-        {
-            m_pDescriptionLabel = new QIRichTextLabel;
-            m_pDynamicLabel = new QIRichTextLabel;
-            m_pFixedLabel = new QIRichTextLabel;
-        }
         QVBoxLayout *pVariantLayout = new QVBoxLayout;
         if (pVariantLayout)
         {
@@ -554,6 +548,10 @@ QWidget *UIWizardNewVMDiskPageBasic::createMediumVariantWidgets(bool fWithLabels
         }
         if (fWithLabels)
         {
+            m_pDescriptionLabel = new QIRichTextLabel;
+            m_pDynamicLabel = new QIRichTextLabel;
+            m_pFixedLabel = new QIRichTextLabel;
+
             pMainLayout->addWidget(m_pDescriptionLabel);
             pMainLayout->addWidget(m_pDynamicLabel);
             pMainLayout->addWidget(m_pFixedLabel);
