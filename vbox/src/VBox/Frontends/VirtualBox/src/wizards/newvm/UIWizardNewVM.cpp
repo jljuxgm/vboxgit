@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 90275 2021-07-21 14:17:53Z vboxsync $ */
+/* $Id: UIWizardNewVM.cpp 90356 2021-07-27 14:06:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
@@ -52,7 +52,7 @@ UIUnattendedInstallData::UIUnattendedInstallData()
 
 UIWizardNewVM::UIWizardNewVM(QWidget *pParent, const QString &strMachineGroup /* = QString() */,
                              WizardMode enmMode /* = WizardMode_Auto */)
-    : UINativeWizard(pParent, WizardType_NewCloudVM, enmMode)
+    : UINativeWizard(pParent, WizardType_NewVM, enmMode)
     , m_strMachineGroup(strMachineGroup)
     , m_iIDECount(0)
     , m_iSATACount(0)
