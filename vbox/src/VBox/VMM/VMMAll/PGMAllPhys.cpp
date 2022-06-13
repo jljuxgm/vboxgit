@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 92162 2021-10-31 23:34:31Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 92326 2021-11-10 15:14:52Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -888,7 +888,7 @@ int pgmPhysAllocPage(PVMCC pVM, PPGMPAGE pPage, RTGCPHYS GCPhys)
 
     uint32_t iHandyPage = --pVM->pgm.s.cHandyPages;
     AssertMsg(iHandyPage < RT_ELEMENTS(pVM->pgm.s.aHandyPages), ("%d\n", iHandyPage));
-    Assert(pVM->pgm.s.aHandyPages[iHandyPage].HCPhysGCPhys != NIL_RTHCPHYS);
+    Assert(pVM->pgm.s.aHandyPages[iHandyPage].HCPhysGCPhys != NIL_GMMPAGEDESC_PHYS);
     Assert(!(pVM->pgm.s.aHandyPages[iHandyPage].HCPhysGCPhys & ~X86_PTE_PAE_PG_MASK));
     Assert(pVM->pgm.s.aHandyPages[iHandyPage].idPage != NIL_GMM_PAGEID);
     Assert(pVM->pgm.s.aHandyPages[iHandyPage].idSharedPage == NIL_GMM_PAGEID);
