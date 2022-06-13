@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityOverviewWidget.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIVMActivityOverviewWidget.cpp 93202 2022-01-12 16:15:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMActivityOverviewWidget class implementation.
  */
@@ -796,7 +796,8 @@ UIActivityOverviewItem::UIActivityOverviewItem(const QUuid &uid, const QString &
     , m_uVMExitRate(0)
     , m_uVMExitTotal(0)
 {
-    resetDebugger();
+    if (m_enmMachineState == KMachineState_Running)
+        resetDebugger();
 }
 
 UIActivityOverviewItem::UIActivityOverviewItem()
