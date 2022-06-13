@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 89585 2021-06-09 16:03:51Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 89851 2021-06-23 10:27:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -80,6 +80,7 @@
 #endif
 
 /* COM includes: */
+#include "CHostUSBDevice.h"
 #include "CSystemProperties.h"
 #include "CUnattended.h"
 #include "CVirtualBoxErrorInfo.h"
@@ -700,6 +701,15 @@ void UIVirtualBoxManager::sltHandleOpenUrlCall(QList<QUrl> list /* = QList<QUrl>
             }
         }
     }
+}
+
+void UIVirtualBoxManager::sltCheckUSBAccesibility()
+{
+    CHost comHost = uiCommon().host();
+    if (!comHost.isOk())
+        return;
+    if (comHost.GetUSBDevices().size() == 0 && comHost.isWarning())
+        msgCenter().cannotEnumerateHostUSBDevices(comHost, this);
 }
 
 void UIVirtualBoxManager::sltHandleChooserPaneIndexChange()
@@ -2164,6 +2174,7 @@ void UIVirtualBoxManager::prepare()
     /* If there are unhandled URLs we should handle them after manager is shown: */
     if (uiCommon().argumentUrlsPresent())
         QMetaObject::invokeMethod(this, "sltHandleOpenUrlCall", Qt::QueuedConnection);
+    QMetaObject::invokeMethod(this, "sltCheckUSBAccesibility", Qt::QueuedConnection);
 }
 
 void UIVirtualBoxManager::prepareIcon()
