@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 92390 2021-11-12 09:24:33Z vboxsync $ */
+/* $Id: PGMPhys.cpp 92391 2021-11-12 09:47:48Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -5814,11 +5814,11 @@ VMMR3DECL(void) PGMR3PhysChunkInvalidateTLB(PVM pVM)
 
 
 /**
- * Response to VM_FF_PGM_NEED_HANDY_PAGES and VMMCALLRING3_PGM_ALLOCATE_HANDY_PAGES.
+ * Response to VM_FF_PGM_NEED_HANDY_PAGES and helper for pgmPhysEnsureHandyPage.
  *
  * This function will also work the VM_FF_PGM_NO_MEMORY force action flag, to
- * signal and clear the out of memory condition. When contracted, this API is
- * used to try clear the condition when the user wants to resume.
+ * signal and clear the out of memory condition.  When called, this API is used
+ * to try clear the condition when the user wants to resume.
  *
  * @returns The following VBox status codes.
  * @retval  VINF_SUCCESS on success. FFs cleared.
