@@ -1,4 +1,4 @@
-/* $Id: VirtioCore.cpp 94275 2022-03-16 17:41:07Z vboxsync $ */
+/* $Id: VirtioCore.cpp 94287 2022-03-17 12:12:07Z vboxsync $ */
 
 /** @file
  * VirtioCore - Virtio Core (PCI, feature & config mgt, queue mgt & proxy, notification mgt)
@@ -292,6 +292,8 @@ DECLINLINE(void) virtioWriteUsedAvailEvent(PPDMDEVINS pDevIns, PVIRTIOCORE pVirt
                           &uAvailEventIdx, sizeof(uAvailEventIdx));
 }
 #endif
+/** @} */
+
 
 DECLINLINE(uint16_t) virtioCoreVirtqAvailCnt(PPDMDEVINS pDevIns, PVIRTIOCORE pVirtio, PVIRTQUEUE pVirtq)
 {
