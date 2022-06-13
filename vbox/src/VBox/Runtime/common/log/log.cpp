@@ -1,4 +1,4 @@
-/* $Id: log.cpp 90862 2021-08-25 00:37:59Z vboxsync $ */
+/* $Id: log.cpp 90863 2021-08-25 00:53:19Z vboxsync $ */
 /** @file
  * Runtime VBox - Logger.
  */
@@ -89,7 +89,7 @@ AssertCompile(sizeof(RTLOG_RINGBUF_EYE_CATCHER_END) == 16);
 
 /** The default buffer size. */
 #ifdef IN_RING0
-# define RTLOG_BUFFER_DEFAULT_SIZE      _64K
+# define RTLOG_BUFFER_DEFAULT_SIZE      _16K
 #else
 # define RTLOG_BUFFER_DEFAULT_SIZE      _128K
 #endif
