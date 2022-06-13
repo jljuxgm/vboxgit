@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-linux.cpp 92542 2021-11-22 10:25:24Z vboxsync $ */
+/* $Id: NEMR3Native-linux.cpp 92543 2021-11-22 10:27:34Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, native ring-3 Linux backend.
  */
@@ -1473,7 +1473,8 @@ static int nemHCLnxImportState(PVMCPUCC pVCpu, uint64_t fWhat, PCPUMCTX pCtx, st
          */
         if (fMaybeChangedMode)
         {
-            int rc = PGMChangeMode(pVCpu, pVCpu->cpum.GstCtx.cr0, pVCpu->cpum.GstCtx.cr4, pVCpu->cpum.GstCtx.msrEFER);
+            int rc = PGMChangeMode(pVCpu, pVCpu->cpum.GstCtx.cr0, pVCpu->cpum.GstCtx.cr4,
+                                   pVCpu->cpum.GstCtx.msrEFER, false /*fForce*/);
             AssertMsgReturn(rc == VINF_SUCCESS, ("rc=%Rrc\n", rc), RT_FAILURE_NP(rc) ? rc : VERR_NEM_IPE_1);
         }
 
