@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsDisplay.cpp 93818 2022-02-17 09:23:11Z vboxsync $ */
+/* $Id: UIGlobalSettingsDisplay.cpp 93819 2022-02-17 09:27:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsDisplay class implementation.
  */
@@ -160,11 +160,10 @@ void UIGlobalSettingsDisplay::retranslateUi()
     m_pLabelMaximumGuestScreenWidth->setText(tr("&Width:"));
     m_pLabelMaximumGuestScreenHeight->setText(tr("&Height:"));
     m_pLabelScaleFactor->setText(tr("Scale &Factor:"));
-    m_pEditorScaleFactor->setToolTip(tr("Controls the guest screen scale factor."));
-    m_pLabelMachineWindows->setText(tr("Machine Windows:"));
+    m_pLabelMachineWindows->setText(tr("Extended Features:"));
     m_pCheckBoxActivateOnMouseHover->setToolTip(tr("When checked, machine windows will be raised "
                                                    "when the mouse pointer moves over them."));
-    m_pCheckBoxActivateOnMouseHover->setText(tr("&Raise Window Under Mouse"));
+    m_pCheckBoxActivateOnMouseHover->setText(tr("&Raise Window Under Mouse Pointer"));
     if (m_pCheckBoxDisableHostScreenSaver)
     {
         m_pCheckBoxDisableHostScreenSaver->setToolTip(tr("When checked, screen saver of the host OS is disabled."));
