@@ -1,4 +1,4 @@
-# $Id: Config.kmk 94217 2022-03-14 08:56:53Z vboxsync $
+# $Id: Config.kmk 94218 2022-03-14 09:02:16Z vboxsync $
 ## @file
 # kBuild Configuration file for the manual.
 #
@@ -69,6 +69,7 @@ VBOX_MANUAL_XML_REFENTRY_FILES := \
 	man_VBoxManage-bandwidthctl.xml \
 	man_VBoxManage-showmediuminfo.xml \
 	man_VBoxManage-createmedium.xml \
+	man_VBoxManage-modifymedium.xml \
 	man_VBoxManage-clonemedium.xml \
 	man_VBoxManage-mediumproperty.xml \
 	man_VBoxManage-encryptmedium.xml \

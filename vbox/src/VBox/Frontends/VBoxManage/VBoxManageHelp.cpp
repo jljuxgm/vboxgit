@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 94217 2022-03-14 08:56:53Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 94218 2022-03-14 09:02:16Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -582,30 +582,6 @@ void printUsage(USAGECATEGORY enmCommand, uint64_t fSubcommandScope, PRTSTREAM p
                      "\n"
                      "Commands:\n"
                      "\n");
-
-    const char *pcszSep1 = " ";
-    const char *pcszSep2 = "         ";
-    if (enmCommand != USAGE_S_ALL)
-    {
-        pcszSep1 = "VBoxManage";
-        pcszSep2 = "";
-    }
-
-#define SEP pcszSep1, pcszSep2
-
-    if (enmCommand == USAGE_MODIFYMEDIUM || enmCommand == USAGE_S_ALL)
-        RTStrmPrintf(pStrm,
-                           "%s modifymedium %s    [disk|dvd|floppy] <uuid|filename>\n"
-                     "                            [--type normal|writethrough|immutable|shareable|\n"
-                     "                                    readonly|multiattach]\n"
-                     "                            [--autoreset on|off]\n"
-                     "                            [--property <name=[value]>]\n"
-                     "                            [--compact]\n"
-                     "                            [--resize <megabytes>|--resizebyte <bytes>]\n"
-                     "                            [--move <path>]\n"
-                     "                            [--setlocation <path>]\n"
-                     "                            [--description <description string>]"
-                     "\n", SEP);
 
 #ifndef VBOX_ONLY_DOCS /* Converted to man page, not needed. */
     if (enmCommand == USAGE_S_ALL)
