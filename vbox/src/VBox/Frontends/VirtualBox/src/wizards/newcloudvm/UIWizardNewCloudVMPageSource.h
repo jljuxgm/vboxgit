@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageSource.h 92036 2021-10-25 13:50:22Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageSource.h 92173 2021-11-02 09:43:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageSource class declaration.
  */
@@ -36,6 +36,7 @@ class QTabBar;
 class QIComboBox;
 class QIRichTextLabel;
 class QIToolButton;
+class UINotificationCenter;
 class UIWizardNewCloudVM;
 class CCloudClient;
 class CCloudProvider;
@@ -57,11 +58,12 @@ enum
 namespace UIWizardNewCloudVMSource
 {
     /** Populates @a pCombo with known providers. */
-    void populateProviders(QIComboBox *pCombo);
+    void populateProviders(QIComboBox *pCombo, UINotificationCenter *pCenter);
     /** Populates @a pCombo with known profiles.
       * @param  strProviderShortName  Brings the short name of provider profiles related to.
       * @param  strProfileName        Brings the name of profile to be chosen by default. */
     void populateProfiles(QIComboBox *pCombo,
+                          UINotificationCenter *pCenter,
                           const QString &strProviderShortName,
                           const QString &strProfileName);
     /** Populates @a pList with source images.

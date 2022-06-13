@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageFormat.h 92089 2021-10-26 17:02:00Z vboxsync $ */
+/* $Id: UIWizardExportAppPageFormat.h 92173 2021-11-02 09:43:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageFormat class declaration.
  */
@@ -44,6 +44,7 @@ class QIComboBox;
 class QIRichTextLabel;
 class QIToolButton;
 class UIEmptyFilePathSelector;
+class UINotificationCenter;
 
 /** Format combo data fields. */
 enum
@@ -63,7 +64,7 @@ enum
 namespace UIWizardExportAppFormat
 {
     /** Populates formats. */
-    void populateFormats(QIComboBox *pCombo, bool fExportToOCIByDefault);
+    void populateFormats(QIComboBox *pCombo, UINotificationCenter *pCenter, bool fExportToOCIByDefault);
     /** Populates MAC address policies. */
     void populateMACAddressPolicies(QIComboBox *pCombo);
 
@@ -104,10 +105,12 @@ namespace UIWizardExportAppFormat
 
     /** Refresh profile combo. */
     void refreshProfileCombo(QIComboBox *pCombo,
+                             UINotificationCenter *pCenter,
                              const QString &strFormat,
                              bool fIsFormatCloudOne);
     /** Refresh cloud profile. */
     void refreshCloudProfile(CCloudProfile &comCloudProfile,
+                             UINotificationCenter *pCenter,
                              const QString &strShortProviderName,
                              const QString &strProfileName,
                              bool fIsFormatCloudOne);

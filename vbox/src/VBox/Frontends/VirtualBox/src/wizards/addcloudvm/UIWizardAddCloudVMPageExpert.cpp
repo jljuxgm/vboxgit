@@ -1,4 +1,4 @@
-/* $Id: UIWizardAddCloudVMPageExpert.cpp 92033 2021-10-25 13:33:25Z vboxsync $ */
+/* $Id: UIWizardAddCloudVMPageExpert.cpp 92173 2021-11-02 09:43:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardAddCloudVMPageExpert class implementation.
  */
@@ -169,7 +169,7 @@ void UIWizardAddCloudVMPageExpert::retranslateUi()
 void UIWizardAddCloudVMPageExpert::initializePage()
 {
     /* Populate providers: */
-    populateProviders(m_pProviderComboBox);
+    populateProviders(m_pProviderComboBox, wizard()->notificationCenter());
     /* Translate providers: */
     retranslateUi();
     /* Fetch it, asynchronously: */
@@ -213,7 +213,7 @@ void UIWizardAddCloudVMPageExpert::sltHandleProviderComboChange()
     wizard()->setProviderShortName(m_pProviderComboBox->currentData(ProviderData_ShortName).toString());
 
     /* Update profiles: */
-    populateProfiles(m_pProfileComboBox, wizard()->providerShortName(), wizard()->profileName());
+    populateProfiles(m_pProfileComboBox, wizard()->notificationCenter(), wizard()->providerShortName(), wizard()->profileName());
     sltHandleProfileComboChange();
 
     /* Notify about changes: */
@@ -224,7 +224,7 @@ void UIWizardAddCloudVMPageExpert::sltHandleProfileComboChange()
 {
     /* Update wizard fields: */
     wizard()->setProfileName(m_pProfileComboBox->currentData(ProfileData_Name).toString());
-    wizard()->setClient(cloudClientByName(wizard()->providerShortName(), wizard()->profileName(), wizard()));
+    wizard()->setClient(cloudClientByName(wizard()->providerShortName(), wizard()->profileName(), wizard()->notificationCenter()));
 
     /* Update profile instances: */
     populateProfileInstances(m_pSourceInstanceList, wizard()->client());

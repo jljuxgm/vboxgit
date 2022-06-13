@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 92151 2021-10-29 14:47:33Z vboxsync $ */
+/* $Id: UIMessageCenter.h 92173 2021-11-02 09:43:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -376,13 +376,6 @@ public:
 
     /** @name VirtualBox Manager / Cloud networking warnings.
       * @{ */
-        void cannotAcquireCloudProviderManager(const CVirtualBox &comVBox, QWidget *pParent = 0) const;
-        void cannotFindCloudProvider(const CCloudProviderManager &comManager, const QUuid &uId, QWidget *pParent = 0) const;
-        void cannotFindCloudProfile(const CCloudProvider &comProvider, const QString &strName, QWidget *pParent = 0) const;
-        void cannotCreateCloudClient(const CCloudProfile &comProfile, QWidget *pParent = 0) const;
-        void cannotAcquireCloudProviderManagerParameter(const CCloudProviderManager &comManager, QWidget *pParent = 0) const;
-        void cannotAcquireCloudProviderParameter(const CCloudProvider &comProvider, QWidget *pParent = 0) const;
-        void cannotAcquireCloudProfileParameter(const CCloudProfile &comProfile, QWidget *pParent = 0) const;
         void cannotAcquireCloudClientParameter(const CCloudClient &comClient, QWidget *pParent = 0) const;
         void cannotAcquireCloudClientParameter(const CProgress &comProgress, QWidget *pParent = 0) const;
         void cannotAcquireCloudMachineParameter(const CCloudMachine &comMachine, QWidget *pParent = 0) const;
@@ -448,8 +441,6 @@ public:
       * @{ */
         /// @todo move to notification-center after wizards get theirs.. :)
         bool confirmHardDisklessMachine(QWidget *pParent = 0) const;
-        void cannotCreateAppliance(const CVirtualBox &comVBox, QWidget *pParent = 0) const;
-        void cannotCreateVirtualSystemDescription(const CAppliance &comAppliance, QWidget *pParent = 0) const;
         bool confirmExportMachinesInSaveState(const QStringList &machineNames, QWidget *pParent = 0) const;
         bool confirmOverridingFile(const QString &strPath, QWidget *pParent = 0) const;
         bool confirmOverridingFiles(const QVector<QString> &strPaths, QWidget *pParent = 0) const;

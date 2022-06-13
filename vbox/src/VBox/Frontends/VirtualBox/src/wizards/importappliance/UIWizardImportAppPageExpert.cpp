@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageExpert.cpp 92165 2021-11-01 13:08:24Z vboxsync $ */
+/* $Id: UIWizardImportAppPageExpert.cpp 92173 2021-11-02 09:43:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageExpert class implementation.
  */
@@ -414,6 +414,7 @@ void UIWizardImportAppPageExpert::initializePage()
     m_pToolBox->setCurrentPage(0);
     /* Populate sources: */
     populateSources(m_pSourceComboBox,
+                    wizard()->notificationCenter(),
                     m_fImportFromOCIByDefault,
                     m_strSource);
     /* Translate page: */
@@ -529,6 +530,7 @@ void UIWizardImportAppPageExpert::sltHandleSourceComboChange()
 
     /* Refresh cloud stuff: */
     refreshProfileCombo(m_pProfileComboBox,
+                        wizard()->notificationCenter(),
                         source(m_pSourceComboBox),
                         m_strProfileName,
                         wizard()->isSourceCloudOne());
@@ -564,6 +566,7 @@ void UIWizardImportAppPageExpert::sltHandleProfileComboChange()
 {
     /* Refresh profile instances: */
     refreshCloudProfileInstances(m_pProfileInstanceList,
+                                 wizard()->notificationCenter(),
                                  source(m_pSourceComboBox),
                                  profileName(m_pProfileComboBox),
                                  wizard()->isSourceCloudOne());
