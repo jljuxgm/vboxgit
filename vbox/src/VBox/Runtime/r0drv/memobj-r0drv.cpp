@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv.cpp 91446 2021-09-28 19:53:25Z vboxsync $ */
+/* $Id: memobj-r0drv.cpp 91478 2021-09-29 23:36:54Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Common Code.
  */
@@ -54,8 +54,9 @@
  * @param   enmType     The memory object type.
  * @param   pv          The memory object mapping.
  * @param   cb          The size of the memory object.
+ * @param   pszTag      The tag string.
  */
-DECLHIDDEN(PRTR0MEMOBJINTERNAL) rtR0MemObjNew(size_t cbSelf, RTR0MEMOBJTYPE enmType, void *pv, size_t cb)
+DECLHIDDEN(PRTR0MEMOBJINTERNAL) rtR0MemObjNew(size_t cbSelf, RTR0MEMOBJTYPE enmType, void *pv, size_t cb, const char *pszTag)
 {
     PRTR0MEMOBJINTERNAL pNew;
 
@@ -78,6 +79,11 @@ DECLHIDDEN(PRTR0MEMOBJINTERNAL) rtR0MemObjNew(size_t cbSelf, RTR0MEMOBJTYPE enmT
         pNew->fFlags    = 0;
         pNew->cb        = cb;
         pNew->pv        = pv;
+#ifdef DEBUG
+        pNew->pszTag    = pszTag;
+#else
+        RT_NOREF_PV(pszTag);
+#endif
     }
     return pNew;
 }
