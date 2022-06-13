@@ -1,4 +1,4 @@
-/* $Id: UIHelpViewer.cpp 89546 2021-06-07 12:06:58Z vboxsync $ */
+/* $Id: UIHelpViewer.cpp 90717 2021-08-18 13:49:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class implementation.
  */
@@ -178,7 +178,7 @@ void UIContextMenuNavigationAction::prepare()
     m_pReloadPageButton->setIcon(UIIconPool::iconSet(":/help_browser_reload_32px.png"));
     m_pForwardButton->setIcon(UIIconPool::iconSet(":/help_browser_forward_32px.png", ":/help_browser_forward_disabled_32px.png"));
     m_pBackwardButton->setIcon(UIIconPool::iconSet(":/help_browser_backward_32px.png", ":/help_browser_backward_disabled_32px.png"));
-    m_pAddBookmarkButton->setIcon(UIIconPool::iconSet(":/help_browser_add_bookmark.png"));
+    m_pAddBookmarkButton->setIcon(UIIconPool::iconSet(":/help_browser_add_bookmark_16px.png", ":/help_browser_add_bookmark_disabled_16px.png"));
 
     pMainLayout->addWidget(m_pBackwardButton);
     pMainLayout->addWidget(m_pForwardButton);
