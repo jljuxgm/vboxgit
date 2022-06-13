@@ -1,4 +1,4 @@
-/* $Id: PGMAllMap.cpp 90439 2021-07-30 16:41:49Z vboxsync $ */
+/* $Id: PGMAllMap.cpp 91247 2021-09-15 12:20:52Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -768,7 +768,7 @@ VMMDECL(bool) PGMMapHasConflicts(PVM pVM)
             while (iPT-- > 0)
                 if (pPD->a[iPDE + iPT].n.u1Present /** @todo PGMGstGetPDE. */)
                 {
-                    STAM_COUNTER_INC(&pVM->pgm.s.CTX_SUFF(pStats)->StatR3DetectedConflicts);
+                    STAM_COUNTER_INC(&pVM->pgm.s.Stats.StatR3DetectedConflicts);
 
 # ifdef IN_RING3
                     Log(("PGMHasMappingConflicts: Conflict was detected at %08RX32 for mapping %s (32 bits)\n"
@@ -799,7 +799,7 @@ VMMDECL(bool) PGMMapHasConflicts(PVM pVM)
 
                 if (Pde.n.u1Present)
                 {
-                    STAM_COUNTER_INC(&pVM->pgm.s.CTX_SUFF(pStats)->StatR3DetectedConflicts);
+                    STAM_COUNTER_INC(&pVM->pgm.s.Stats.StatR3DetectedConflicts);
 # ifdef IN_RING3
                     Log(("PGMHasMappingConflicts: Conflict was detected at %RGv for mapping %s (PAE)\n"
                          "                        PDE=%016RX64.\n",
@@ -860,7 +860,7 @@ int pgmMapResolveConflicts(PVM pVM)
             {
                 if (pPD->a[iPDE + iPT].n.u1Present /** @todo PGMGstGetPDE. */)
                 {
-                    STAM_COUNTER_INC(&pVM->pgm.s.CTX_SUFF(pStats)->StatR3DetectedConflicts);
+                    STAM_COUNTER_INC(&pVM->pgm.s.Stats.StatR3DetectedConflicts);
 
 # ifdef IN_RING3
                     Log(("PGMHasMappingConflicts: Conflict was detected at %08RX32 for mapping %s (32 bits)\n"
@@ -899,7 +899,7 @@ int pgmMapResolveConflicts(PVM pVM)
 
                 if (Pde.n.u1Present)
                 {
-                    STAM_COUNTER_INC(&pVM->pgm.s.CTX_SUFF(pStats)->StatR3DetectedConflicts);
+                    STAM_COUNTER_INC(&pVM->pgm.s.Stats.StatR3DetectedConflicts);
 # ifdef IN_RING3
                     Log(("PGMHasMappingConflicts: Conflict was detected at %RGv for mapping %s (PAE)\n"
                          "                        PDE=%016RX64.\n",
