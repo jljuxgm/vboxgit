@@ -1,4 +1,4 @@
-/* $Id: Global.h 93405 2022-01-24 09:56:23Z vboxsync $ */
+/* $Id: Global.h 93406 2022-01-24 10:00:35Z vboxsync $ */
 /** @file
  * VirtualBox COM API - Global Declarations and Definitions.
  */
@@ -165,7 +165,7 @@ public:
      * Stringify a storage bus type.
      *
      * @returns Pointer to a read only string.
-     * @param   aBusType    The storage bus type.
+     * @param   aBus        The storage bus type.
      */
     static const char *stringifyStorageBus(StorageBus_T aBus);
 
