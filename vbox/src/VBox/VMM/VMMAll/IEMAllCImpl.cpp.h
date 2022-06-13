@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 94617 2022-04-15 13:02:18Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 94619 2022-04-15 13:51:50Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -4027,8 +4027,6 @@ IEM_CIMPL_DEF_0(iemCImpl_loadall286)
 
 /**
  * Implements SYSCALL (AMD and Intel64).
- *
- * @param   enmEffOpSize    The effective operand size.
  */
 IEM_CIMPL_DEF_0(iemCImpl_syscall)
 {
