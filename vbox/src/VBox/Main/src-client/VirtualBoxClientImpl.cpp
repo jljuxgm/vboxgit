@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxClientImpl.cpp 91718 2021-10-14 11:43:12Z vboxsync $ */
+/* $Id: VirtualBoxClientImpl.cpp 92144 2021-10-29 12:58:11Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -38,6 +38,8 @@
 # include <msi.h>
 # include <WbemIdl.h>
 #endif
+
+#include <new>
 
 
 /** Waiting time between probing whether VBoxSVC is alive. */
@@ -83,19 +85,36 @@ public:
         {
             case VBoxEventType_OnLanguageChanged:
             {
+                /*
+                 * Proceed with uttmost care as we might be racing com::Shutdown()
+                 * and have the ground open up beneath us.
+                 */
+                LogFunc(("VBoxEventType_OnLanguageChanged\n"));
                 VirtualBoxTranslator *pTranslator = VirtualBoxTranslator::tryInstance();
                 if (pTranslator)
                 {
                     ComPtr<ILanguageChangedEvent> pEvent = aEvent;
-                    HRESULT rc = E_FAIL;
                     Assert(pEvent);
 
+                    /* This call may fail if we're racing COM shutdown. */
                     com::Bstr bstrLanguageId;
-                    rc = pEvent->COMGETTER(LanguageId)(bstrLanguageId.asOutParam());
-                    AssertComRC(rc);
+                    HRESULT hrc = pEvent->COMGETTER(LanguageId)(bstrLanguageId.asOutParam());
+                    if (SUCCEEDED(hrc))
+                    {
+                        try
+                        {
+                            com::Utf8Str strLanguageId(bstrLanguageId);
+                            LogFunc(("New language ID: %s\n", strLanguageId.c_str()));
+                            pTranslator->i_loadLanguage(strLanguageId.c_str());
+                        }
+                        catch (std::bad_alloc &)
+                        {
+                            LogFunc(("Caught bad_alloc"));
+                        }
+                    }
+                    else
+                        LogFunc(("Failed to get new language ID: %Rhrc\n", hrc));
 
-                    com::Utf8Str strLanguageId(bstrLanguageId);
-                    pTranslator->i_loadLanguage(strLanguageId.c_str());
                     pTranslator->release();
                 }
                 break;
@@ -559,7 +578,10 @@ void VirtualBoxClient::uninit()
     /* Enclose the state transition Ready->InUninit->NotReady */
     AutoUninitSpan autoUninitSpan(this);
     if (autoUninitSpan.uninitDone())
+    {
+        LogFlowThisFunc(("already done\n"));
         return;
+    }
 
 #ifdef VBOX_WITH_MAIN_NLS
     i_unregisterEventListener();
@@ -588,6 +610,8 @@ void VirtualBoxClient::uninit()
     mData.m_pVirtualBox.setNull();
 
     ASMAtomicDecU32(&g_cInstances);
+
+    LogFlowThisFunc(("returns\n"));
 }
 
 // IVirtualBoxClient properties
