@@ -1,4 +1,4 @@
-# $Id: Config.kmk 93738 2022-02-14 18:58:06Z vboxsync $
+# $Id: Config.kmk 93760 2022-02-15 16:48:02Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3846,9 +3846,13 @@ endef # VBOX_GENERATE_IMPORT_TARGET_DEF
 # as the VCC100 CRT typically ends up with its internal code page not being
 # CP_UTF8 but the default codepage for the locale.
 #
+# We don't use this for old x86-only stuff like NT4, 2K or WinXP,
+# as this breaks loading our binaries.
+# (unless we're also wanting support for exotic stuff like WinXP 64-bit).
+#
 # @param 1 the output filename.
 #
-ifn1of ($(VBOX_VCC_TOOL_STEM), VCC100 VCC110 VCC120)
+ifn1of ($(VBOX_VCC_TOOL_STEM), VCC100 VCC110 VCC120) && "$(KBUILD_TARGET).$(KBUILD_TARGET_ARCH)" != "win.x86"
  VBOX_UTF8_MANIFEST_FN = \
 	$(QUIET)$(APPEND) -tn "$(1).manifest" \
 		'<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' \
@@ -8253,7 +8257,6 @@ endif
 # than what we are targetting, and do not use the stack protector, which
 # needs glibc 2.4 or later.
 TEMPLATE_VBOXGUESTR3EXE_CXXFLAGS.linux    = \
-	-include $(PATH_ROOT)/include/iprt/linux/symvers.h \
 	$(VBOX_GCC_fno-stack-protector)
 TEMPLATE_VBOXGUESTR3EXE_CFLAGS.linux      = $(TEMPLATE_VBOXGUESTR3EXE_CXXFLAGS.linux)
 # The GNU_HASH ELF tag is not supported by older systems.
@@ -8837,7 +8840,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 93738 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 93760 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
