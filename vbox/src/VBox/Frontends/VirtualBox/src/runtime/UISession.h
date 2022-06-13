@@ -1,4 +1,4 @@
-/* $Id: UISession.h 90893 2021-08-25 17:15:36Z vboxsync $ */
+/* $Id: UISession.h 90922 2021-08-26 16:17:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -402,6 +402,10 @@ private slots:
     /** Handles signal about machine state saved.
       * @param  fSuccess  Brings whether state was saved successfully. */
     void sltHandleMachineStateSaved(bool fSuccess);
+    /** Handles signal about machine powered off.
+      * @param  fSuccess           Brings whether machine was powered off successfully.
+      * @param  fIncludingDiscard  Brings whether machine state should be discarded. */
+    void sltHandleMachinePoweredOff(bool fSuccess, bool fIncludingDiscard);
 
 private:
 
