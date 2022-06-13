@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 93948 2022-02-25 13:59:00Z vboxsync $ */
+/* $Id: MachineImpl.cpp 94084 2022-03-03 22:22:30Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -4515,6 +4515,9 @@ HRESULT Machine::mountMedium(const com::Utf8Str &aName,
     AutoMultiWriteLock3 multiLock(mParent->i_host()->lockHandle(),
                                   this->lockHandle(),
                                   &mParent->i_getMediaTreeLockHandle() COMMA_LOCKVAL_SRC_POS);
+
+    HRESULT hrc = i_checkStateDependency(MutableOrRunningStateDep);
+    if (FAILED(hrc)) return hrc;
 
     ComObjPtr<MediumAttachment> pAttach = i_findAttachment(*mMediumAttachments.data(),
                                                            aName,
