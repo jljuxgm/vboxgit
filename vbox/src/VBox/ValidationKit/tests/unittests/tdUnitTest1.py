@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 93843 2022-02-18 14:31:42Z vboxsync $
+# $Id: tdUnitTest1.py 93846 2022-02-18 14:59:53Z vboxsync $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 93843 $"
+__version__ = "$Revision: 93846 $"
 
 
 # Standard Python imports.
@@ -341,6 +341,9 @@ class tdUnitTest1(vbox.TestDriver):
         #
         # See the "--local" switch in self.parseOption().
         self.oTestVmSet = self.oTestVmManager.getSmokeVmSet('nat');
+
+        # Selected NIC attachment.
+        self.sNicAttachment = '';
 
         # Session handling stuff.
         # Only needed for remote tests executed by TxS.
@@ -780,7 +783,7 @@ class tdUnitTest1(vbox.TestDriver):
             os.environ[sName] = sValue;
         return True;
 
-    def _executeTestCase(self, sName, sFullPath, sTestCaseSubDir, oDevNull): # pylint: disable=too-many-locals
+    def _executeTestCase(self, sName, sFullPath, sTestCaseSubDir, oDevNull): # pylint: disable=too-many-locals,too-many-statements
         """
         Executes a test case.
         """
