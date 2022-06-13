@@ -1,4 +1,4 @@
-/* $Id: UINativeWizard.h 91026 2021-08-31 11:36:38Z vboxsync $ */
+/* $Id: UINativeWizard.h 91754 2021-10-15 09:43:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINativeWizard class declaration.
  */
@@ -37,6 +37,7 @@ class QPushButton;
 class QStackedWidget;
 class QVBoxLayout;
 class UINativeWizardPage;
+class UINotificationCenter;
 
 /** Native wizard buttons. */
 enum WizardButtonType
@@ -197,6 +198,9 @@ private:
     QProgressBar                         *m_pProgressBar;
     /** Holds button instance map. */
     QMap<WizardButtonType, QPushButton*>  m_buttons;
+
+    /** Holds the local notification-center instance. */
+    UINotificationCenter *m_pNotificationCenter;
 };
 
 /** Native wizard interface pointer. */
