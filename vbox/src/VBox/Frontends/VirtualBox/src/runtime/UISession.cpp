@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 90889 2021-08-25 16:40:01Z vboxsync $ */
+/* $Id: UISession.cpp 90890 2021-08-25 16:46:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -355,18 +355,17 @@ void UISession::saveState()
     }
 }
 
-bool UISession::shutdown()
+void UISession::shutdown()
 {
+    /* Warn the user about ACPI is not available if so: */
+    if (!console().GetGuestEnteredACPIMode())
+        return UINotificationMessage::cannotSendACPIToMachine();
+
     /* Send ACPI shutdown signal if possible: */
+    LogRel(("GUI: Sending ACPI shutdown signal..\n"));
     console().PowerButton();
     if (!console().isOk())
-    {
-        /* Failed in console: */
         msgCenter().cannotACPIShutdownMachine(console());
-        return false;
-    }
-    /* Passed: */
-    return true;
 }
 
 bool UISession::powerOff(bool fIncludingDiscard, bool &fServerCrashed)

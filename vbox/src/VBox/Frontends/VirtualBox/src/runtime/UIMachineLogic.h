@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 90889 2021-08-25 16:40:01Z vboxsync $ */
+/* $Id: UIMachineLogic.h 90890 2021-08-25 16:46:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -142,8 +142,6 @@ public:
     virtual void updateDock();
 #endif /* VBOX_WS_MAC */
 
-    /** Call for guest shutdown to close Runtime UI. */
-    void shutdown();
     /** Power off VM, then close Runtime UI. */
     void powerOff(bool fDiscardingState);
 

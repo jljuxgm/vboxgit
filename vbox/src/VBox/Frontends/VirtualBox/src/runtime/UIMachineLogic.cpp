@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 90889 2021-08-25 16:40:01Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 90890 2021-08-25 16:46:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -384,16 +384,6 @@ UIMachineView* UIMachineLogic::dockPreviewView() const
     return 0;
 }
 #endif /* VBOX_WS_MAC */
-
-void UIMachineLogic::shutdown()
-{
-    /* Warn the user about ACPI is not available if so: */
-    if (!console().GetGuestEnteredACPIMode())
-        return UINotificationMessage::cannotSendACPIToMachine();
-
-    /* Shutdown: */
-    uisession()->shutdown();
-}
 
 void UIMachineLogic::powerOff(bool fDiscardingState)
 {
@@ -1880,7 +1870,7 @@ void UIMachineLogic::sltShutdown()
     }
 
     LogRel(("GUI: User requested to shutdown VM.\n"));
-    shutdown();
+    uisession()->shutdown();
 }
 
 void UIMachineLogic::sltPowerOff()
