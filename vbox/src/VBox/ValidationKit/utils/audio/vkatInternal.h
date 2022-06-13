@@ -1,4 +1,4 @@
-/* $Id: vkatInternal.h 89962 2021-06-30 07:02:07Z vboxsync $ */
+/* $Id: vkatInternal.h 90117 2021-07-09 11:45:26Z vboxsync $ */
 /** @file
  * VKAT - Internal header file for common definitions + structs.
  */
@@ -477,7 +477,9 @@ RTEXITCODE   audioTestDoSelftest(PSELFTESTCTX pCtx);
  */
 enum
 {
-    AUDIO_TEST_OPT_CMN_DEBUG_AUDIO_ENABLE = 256,
+    AUDIO_TEST_OPT_CMN_DAEMONIZE = 256,
+    AUDIO_TEST_OPT_CMN_DAEMONIZED,
+    AUDIO_TEST_OPT_CMN_DEBUG_AUDIO_ENABLE,
     AUDIO_TEST_OPT_CMN_DEBUG_AUDIO_PATH
 };
 
@@ -508,7 +510,11 @@ enum
             \
             case AUDIO_TEST_OPT_CMN_DEBUG_AUDIO_PATH: \
                 g_pszDrvAudioDebug = (a_ValueUnion).psz; \
-                break
+                break; \
+            case AUDIO_TEST_OPT_CMN_DAEMONIZE: \
+                break; \
+            case AUDIO_TEST_OPT_CMN_DAEMONIZED: \
+                break;
 
 #endif /* !VBOX_INCLUDED_SRC_audio_vkatInternal_h */
 
