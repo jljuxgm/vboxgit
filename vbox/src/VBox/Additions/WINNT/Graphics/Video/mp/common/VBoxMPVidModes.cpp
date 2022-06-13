@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVidModes.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: VBoxMPVidModes.cpp 93299 2022-01-18 11:23:59Z vboxsync $ */
 /** @file
  * VBox Miniport video modes related functions
  */
@@ -25,7 +25,7 @@
 #endif
 
 /* Custom video modes which are being read from registry at driver startup. */
-static VIDEO_MODE_INFORMATION g_CustomVideoModes[VBOX_VIDEO_MAX_SCREENS] = { 0 };
+static VIDEO_MODE_INFORMATION g_CustomVideoModes[VBOX_VIDEO_MAX_SCREENS] = { {0} };
 
 static BOOLEAN
 VBoxMPValidateVideoModeParamsGuest(PVBOXMP_DEVEXT pExt, uint32_t iDisplay, uint32_t xres, uint32_t yres, uint32_t bpp)

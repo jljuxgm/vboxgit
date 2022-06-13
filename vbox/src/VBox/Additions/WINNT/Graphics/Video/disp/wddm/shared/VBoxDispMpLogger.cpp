@@ -1,4 +1,4 @@
-/* $Id: VBoxDispMpLogger.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: VBoxDispMpLogger.cpp 93299 2022-01-18 11:23:59Z vboxsync $ */
 /** @file
  * VBox WDDM Display backdoor logger implementation
  */
@@ -51,7 +51,7 @@ typedef struct VBOXDISPMPLOGGER
     VBOXDISPMPLOGGER_STATE enmState;
 } VBOXDISPMPLOGGER, *PVBOXDISPMPLOGGER;
 
-static VBOXDISPMPLOGGER g_VBoxDispMpLogger = {0};
+static VBOXDISPMPLOGGER g_VBoxDispMpLogger = { {0}, VBOXDISPMPLOGGER_STATE_UNINITIALIZED };
 
 static PVBOXDISPMPLOGGER vboxDispMpLoggerGet()
 {

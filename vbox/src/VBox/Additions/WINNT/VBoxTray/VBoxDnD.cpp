@@ -1,4 +1,4 @@
-/* $Id: VBoxDnD.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: VBoxDnD.cpp 93299 2022-01-18 11:23:59Z vboxsync $ */
 /** @file
  * VBoxDnD.cpp - Windows-specific bits of the drag and drop service.
  */
@@ -1552,7 +1552,7 @@ int VBoxDnDWnd::mouseMove(int x, int y, DWORD dwMouseInputFlags)
     int iScreenX = GetSystemMetrics(SM_CXSCREEN) - 1;
     int iScreenY = GetSystemMetrics(SM_CYSCREEN) - 1;
 
-    INPUT Input[1] = { 0 };
+    INPUT Input[1] = { {0} };
     Input[0].type       = INPUT_MOUSE;
     Input[0].mi.dwFlags = MOUSEEVENTF_MOVE | MOUSEEVENTF_ABSOLUTE
                         | dwMouseInputFlags;
@@ -1598,7 +1598,7 @@ int VBoxDnDWnd::mouseRelease(void)
 
     /* Release mouse button in the guest to start the "drop"
      * action at the current mouse cursor position. */
-    INPUT Input[1] = { 0 };
+    INPUT Input[1] = { {0} };
     Input[0].type       = INPUT_MOUSE;
     Input[0].mi.dwFlags = MOUSEEVENTF_LEFTUP;
     if (!g_pfnSendInput(1, Input, sizeof(INPUT)))

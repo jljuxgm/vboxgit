@@ -1,4 +1,4 @@
-/* $Id: VBoxDisplay.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: VBoxDisplay.cpp 93299 2022-01-18 11:23:59Z vboxsync $ */
 /** @file
  * VBoxSeamless - Display notifications.
  */
@@ -151,7 +151,7 @@ static DECLCALLBACK(int) VBoxDisplayInit(const PVBOXSERVICEENV pEnv, void **ppIn
 
     if (RT_SUCCESS(rc))
     {
-        VBOXDISPIFESCAPE_ISANYX IsAnyX = { 0 };
+        VBOXDISPIFESCAPE_ISANYX IsAnyX = { {0} };
         IsAnyX.EscapeHdr.escapeCode = VBOXESC_ISANYX;
         DWORD err = VBoxDispIfEscapeInOut(&pEnv->dispIf, &IsAnyX.EscapeHdr, sizeof(uint32_t));
         if (err == NO_ERROR)

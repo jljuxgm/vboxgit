@@ -1,4 +1,4 @@
-/* $Id: VBoxDispKmt.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: VBoxDispKmt.cpp 93299 2022-01-18 11:23:59Z vboxsync $ */
 /** @file
  * VBoxVideo Display D3D User Mode Dll.
  */
@@ -271,12 +271,12 @@ static HRESULT vboxDispKmtOpenAdapterViaLuid(const VBOXDISPKMT_CALLBACKS *pCallb
         {
             if (f || EnumAdapters.Adapters[i].NumOfSources)
             {
-                D3DKMT_OPENADAPTERFROMLUID OpenAdapterData = {0};
+                D3DKMT_OPENADAPTERFROMLUID OpenAdapterData = {{0}};
                 OpenAdapterData.AdapterLuid = EnumAdapters.Adapters[i].AdapterLuid;
                 Status = pCallbacks->pfnD3DKMTOpenAdapterFromLuid(&OpenAdapterData);
-    #ifdef DEBUG_misha
+#ifdef DEBUG_misha
                 Assert(!Status);
-    #endif
+#endif
                 if (NT_SUCCESS(Status))
                 {
                     pAdapter->hAdapter = OpenAdapterData.hAdapter;
