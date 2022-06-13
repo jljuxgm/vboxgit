@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.cpp 90761 2021-08-20 15:20:36Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.cpp 90763 2021-08-20 15:34:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class implementation.
  */
@@ -691,7 +691,9 @@ void UIWizardNewVMPageExpert::sltMediumLocationButtonClicked()
 {
     UIWizardNewVM *pWizard = qobject_cast<UIWizardNewVM*>(wizard());
     AssertReturnVoid(pWizard);
-    QString strSelectedPath = UIWizardNewVMDiskPage::selectNewMediumLocation(pWizard);
+    CMediumFormat comMediumFormat(pWizard->mediumFormat());
+    QString strSelectedPath =
+        UIDiskEditorGroupBox::openFileDialogForDiskFile(pWizard->mediumPath(), comMediumFormat, KDeviceType_HardDisk, pWizard);
     if (strSelectedPath.isEmpty())
         return;
     QString strMediumPath =

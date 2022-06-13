@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMDiskPageBasic.cpp 90748 2021-08-19 14:36:02Z vboxsync $ */
+/* $Id: UIWizardNewVMDiskPageBasic.cpp 90763 2021-08-20 15:34:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMDiskPageBasic class implementation.
  */
@@ -55,42 +55,6 @@ QUuid UIWizardNewVMDiskPage::getWithFileOpenDialog(const QString &strOSTypeID,
     if (returnCode != static_cast<int>(UIMediumSelector::ReturnCode_Accepted))
         return QUuid();
     return uMediumId;
-}
-
-QString UIWizardNewVMDiskPage::selectNewMediumLocation(UIWizardNewVM *pWizard)
-{
-    AssertReturn(pWizard, QString());
-    QString strChosenFilePath;
-    /* Get current folder and filename: */
-    QFileInfo fullFilePath(pWizard->mediumPath());
-    QDir folder = fullFilePath.path();
-    QString strFileName = fullFilePath.fileName();
-
-    /* Set the first parent folder that exists as the current: */
-    while (!folder.exists() && !folder.isRoot())
-    {
-        QFileInfo folderInfo(folder.absolutePath());
-        if (folder == QDir(folderInfo.absolutePath()))
-            break;
-        folder = folderInfo.absolutePath();
-    }
-    AssertReturn(folder.exists() && !folder.isRoot(), strChosenFilePath);
-
-    QVector<QString> fileExtensions;
-    QVector<KDeviceType> deviceTypes;
-    CMediumFormat mediumFormat = pWizard->mediumFormat();
-    mediumFormat.DescribeFileExtensions(fileExtensions, deviceTypes);
-    QStringList validExtensionList;
-    for (int i = 0; i < fileExtensions.size(); ++i)
-        if (deviceTypes[i] == KDeviceType_HardDisk)
-            validExtensionList << QString("*.%1").arg(fileExtensions[i]);
-    /* Compose full filter list: */
-    QString strBackendsList = QString("%1 (%2)").arg(mediumFormat.GetName()).arg(validExtensionList.join(" "));
-
-    strChosenFilePath = QIFileDialog::getSaveFileName(folder.absoluteFilePath(strFileName),
-                                                              strBackendsList, pWizard,
-                                                              UICommon::tr("Please choose a location for new virtual hard disk file"));
-    return strChosenFilePath;
 }
 
 UIWizardNewVMDiskPageBasic::UIWizardNewVMDiskPageBasic()

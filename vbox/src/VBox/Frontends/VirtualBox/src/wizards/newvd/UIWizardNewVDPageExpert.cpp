@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageExpert.cpp 90761 2021-08-20 15:20:36Z vboxsync $ */
+/* $Id: UIWizardNewVDPageExpert.cpp 90763 2021-08-20 15:34:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageExpert class implementation.
  */
@@ -120,7 +120,10 @@ void UIWizardNewVDPageExpert::sltSelectLocationButtonClicked()
 {
     UIWizardNewVD *pWizard = qobject_cast<UIWizardNewVD*>(wizard());
     AssertReturnVoid(pWizard);
-    QString strSelectedPath = UIWizardNewVDSizeLocation::selectNewMediumLocation(pWizard);
+    CMediumFormat comMediumFormat(pWizard->mediumFormat());
+    QString strSelectedPath =
+        UIDiskEditorGroupBox::openFileDialogForDiskFile(pWizard->mediumPath(), comMediumFormat,
+                                                        KDeviceType_HardDisk, pWizard);
     if (strSelectedPath.isEmpty())
         return;
     QString strMediumPath =
