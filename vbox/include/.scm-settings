@@ -1,4 +1,4 @@
-# $Id: .scm-settings 93446 2022-01-26 18:35:23Z vboxsync $
+# $Id: .scm-settings 93688 2022-02-11 01:59:20Z vboxsync $
 ## @file
 # Source code massager settings for the includes.
 #
@@ -79,4 +79,5 @@
 
 /iprt/*.h: --guard-relative-to-dir iprt --guard-prefix IPRT_INCLUDED_
 /VBox/*.h: --guard-relative-to-dir VBox --guard-prefix VBOX_INCLUDED_
+/iprt/sanitized/*: --guard-relative-to-dir iprt --guard-prefix IPRT_INCLUDED_ --treat-as h
 
