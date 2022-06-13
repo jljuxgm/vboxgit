@@ -1,4 +1,4 @@
-# $Id: Config.kmk 93425 2022-01-24 21:09:51Z vboxsync $
+# $Id: Config.kmk 93426 2022-01-24 21:35:41Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2774,6 +2774,13 @@ VBOX_PATH_MACOSX_SDK := $(firstword $(wildcard $(addsuffix /MacOSX$(VBOX_DEF_MAC
  #
  TOOL_BISON_YACC ?= $(TOOL_$(VBOX_GCC_TOOL)_ENV_SETUP) $(PATH_TOOL_$(VBOX_GCC_TOOL)_TOOLCHAIN_BIN_SLASH)bison
  TOOL_FLEX_LEX   ?= $(TOOL_$(VBOX_GCC_TOOL)_ENV_SETUP) $(PATH_TOOL_$(VBOX_GCC_TOOL)_TOOLCHAIN_BIN_SLASH)flex
+
+ #
+ # Disable VMNet if the SDK is too old.
+ #
+ if defined(VBOX_WITH_VMNET) && "$(VBOX_DEF_MACOSX_VERSION_MIN)" vlt "10.15"
+  VBOX_WITH_VMNET :=
+ endif
 
 endif # target=darwin
 
@@ -8818,7 +8825,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 93425 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 93426 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
