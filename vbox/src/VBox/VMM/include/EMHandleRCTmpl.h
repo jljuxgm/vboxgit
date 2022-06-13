@@ -1,4 +1,4 @@
-/* $Id: EMHandleRCTmpl.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: EMHandleRCTmpl.h 89993 2021-07-02 09:21:45Z vboxsync $ */
 /** @file
  * EM - emR3[Raw|Hm|Nem]HandleRC template.
  */
@@ -165,6 +165,10 @@ int emR3NemHandleRC(PVM pVM, PVMCPU pVCpu, int rc)
             /* The following condition should be removed when IEM_IMPLEMENTS_TASKSWITCH becomes true. */
             if (rc == VERR_IEM_ASPECT_NOT_IMPLEMENTED)
                 rc = emR3ExecuteInstruction(pVM, pVCpu, "EVENT: ");
+            break;
+
+        case VINF_EM_EMULATE_SPLIT_LOCK:
+            rc = VBOXSTRICTRC_TODO(emR3ExecuteSplitLockInstruction(pVM, pVCpu));
             break;
 
 

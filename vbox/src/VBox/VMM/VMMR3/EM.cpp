@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 87594 2021-02-03 20:23:46Z vboxsync $ */
+/* $Id: EM.cpp 89993 2021-07-02 09:21:45Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -784,6 +784,58 @@ VBOXSTRICTRC emR3ExecutePendingIoPortRead(PVM pVM, PVMCPU pVCpu)
         pVCpu->cpum.GstCtx.rflags.Bits.u1RF = 0;
     }
     return rcStrict;
+}
+
+
+/**
+ * @callback_method_impl{FNVMMEMTRENDEZVOUS,
+ * Worker for emR3ExecuteSplitLockInstruction}
+ */
+static DECLCALLBACK(VBOXSTRICTRC) emR3ExecuteSplitLockInstructionRendezvous(PVM pVM, PVMCPU pVCpu, void *pvUser)
+{
+    /* Only execute on the specified EMT. */
+    if (pVCpu == (PVMCPU)pvUser)
+    {
+        LogFunc(("\n"));
+        VBOXSTRICTRC rcStrict = IEMExecOneIgnoreLock(pVCpu);
+        LogFunc(("rcStrict=%Rrc\n", VBOXSTRICTRC_VAL(rcStrict)));
+        if (rcStrict == VINF_IEM_RAISED_XCPT)
+            rcStrict = VINF_SUCCESS;
+        return rcStrict;
+    }
+    RT_NOREF(pVM);
+    return VINF_SUCCESS;
+}
+
+
+/**
+ * Handle an instruction causing a split cacheline lock access in SMP VMs.
+ *
+ * Generally we only get here if the host has split-lock detection enabled and
+ * this caused an \#AC because of something the guest did.  If we interpret the
+ * instruction as-is, we'll likely just repeat the split-lock access and
+ * possibly be killed, get a SIGBUS, or trigger a warning followed by extra MSR
+ * changes on context switching (costs a tiny bit).  Assuming these \#ACs are
+ * rare to non-existing, we'll do a rendezvous of all EMTs and tell IEM to
+ * disregard the lock prefix when emulating the instruction.
+ *
+ * Yes, we could probably modify the MSR (or MSRs) controlling the detection
+ * feature when entering guest context, but the support for the feature isn't a
+ * 100% given and we'll need the debug-only supdrvOSMsrProberRead and
+ * supdrvOSMsrProberWrite functionality from SUPDrv.cpp to safely detect it.
+ * Thus the approach is to just deal with the spurious \#ACs first and maybe add
+ * propert detection to SUPDrv later if we find it necessary.
+ *
+ * @see     @bugref{10052}
+ *
+ * @returns Strict VBox status code.
+ * @param   pVM     The cross context VM structure.
+ * @param   pVCpu   The cross context virtual CPU structure.
+ */
+VBOXSTRICTRC emR3ExecuteSplitLockInstruction(PVM pVM, PVMCPU pVCpu)
+{
+    LogFunc(("\n"));
+    return VMMR3EmtRendezvous(pVM, VMMEMTRENDEZVOUS_FLAGS_TYPE_ALL_AT_ONCE, emR3ExecuteSplitLockInstructionRendezvous, pVCpu);
 }
 
 

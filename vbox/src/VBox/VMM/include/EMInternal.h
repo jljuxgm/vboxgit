@@ -1,4 +1,4 @@
-/* $Id: EMInternal.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: EMInternal.h 89993 2021-07-02 09:21:45Z vboxsync $ */
 /** @file
  * EM - Internal header file.
  */
@@ -361,6 +361,7 @@ bool            emR3IsExecutionAllowed(PVM pVM, PVMCPU pVCpu);
 
 VBOXSTRICTRC    emR3ExecutePendingIoPortWrite(PVM pVM, PVMCPU pVCpu);
 VBOXSTRICTRC    emR3ExecutePendingIoPortRead(PVM pVM, PVMCPU pVCpu);
+VBOXSTRICTRC    emR3ExecuteSplitLockInstruction(PVM pVM, PVMCPU pVCpu);
 
 RT_C_DECLS_END
 
