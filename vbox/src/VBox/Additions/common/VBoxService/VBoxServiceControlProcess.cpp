@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlProcess.cpp 92659 2021-12-01 02:08:08Z vboxsync $ */
+/* $Id: VBoxServiceControlProcess.cpp 92660 2021-12-01 02:09:14Z vboxsync $ */
 /** @file
  * VBoxServiceControlThread - Guest process handling.
  */
@@ -962,9 +962,11 @@ static int vgsvcGstCtrlProcessSetupPipe(const char *pszHowTo, int fd, PRTHANDLE 
 
 
 /**
- * Expands a file name / path to its real content. This only works on Windows
- * for now (e.g. translating "%TEMP%\foo.exe" to "C:\Windows\Temp" when starting
- * with system / administrative rights).
+ * Expands a file name / path to its real content.
+ *
+ * ~~This only works on Windows for now (e.g. translating "%TEMP%\foo.exe" to
+ * "C:\Windows\Temp" when starting with system / administrative rights).~~ See
+ * todo in code.
  *
  * @return  IPRT status code.
  * @param   pszPath                     Path to resolve.
