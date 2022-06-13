@@ -1,4 +1,4 @@
-# $Id: routines.sh 92652 2021-11-30 16:50:46Z vboxsync $
+# $Id: routines.sh 92654 2021-11-30 20:08:15Z vboxsync $
 # Oracle VM VirtualBox
 # VirtualBox installer shell routines
 #
@@ -406,14 +406,14 @@ install_python_bindings()
         return 1
     fi
 
-    echo 1>&2 "Python found: $PYTHON, installing bindings..."
+    echo 1>&2 "Python found: $pythonbin, installing bindings..."
 
     # Pass install path via environment
     export VBOX_INSTALL_PATH
-    $SHELL -c "cd $VBOX_INSTALL_PATH/sdk/installer && $PYTHON vboxapisetup.py install \
+    $SHELL -c "cd $VBOX_INSTALL_PATH/sdk/installer && $pythonbin vboxapisetup.py install \
         --record $CONFIG_DIR/python-$CONFIG_FILES"
     cat $CONFIG_DIR/python-$CONFIG_FILES >> $CONFIG_DIR/$CONFIG_FILES
-    rm $CONFIG_DIR/python-$CONFIG_FILES
+    rm -f $CONFIG_DIR/python-$CONFIG_FILES
 
     # Remove files created by Python API setup.
     rm -rf $VBOX_INSTALL_PATH/sdk/installer/build
