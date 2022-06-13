@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo.cpp 93300 2022-01-18 11:24:12Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host.
  */
@@ -995,7 +995,7 @@ static int vgsvcVMInfoWriteNetwork(void)
         return RTErrConvertFromWin32(wsaErr);
     }
 
-    INTERFACE_INFO  aInterfaces[20] = {0};
+    INTERFACE_INFO  aInterfaces[20] = {{0}};
     DWORD           cbReturned      = 0;
 # ifdef RT_ARCH_X86
     /* Workaround for uninitialized variable used in memcpy in GetTcpipInterfaceList

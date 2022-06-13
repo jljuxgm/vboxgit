@@ -1,4 +1,4 @@
-/* $Id: VBoxControl.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: VBoxControl.cpp 93300 2022-01-18 11:24:12Z vboxsync $ */
 /** @file
  * VBoxControl - Guest Additions Command Line Management Interface.
  */
@@ -945,7 +945,7 @@ struct
     DWORD xres;
     DWORD yres;
     DWORD bpp;
-} customModes[MAX_CUSTOM_MODES] = {0};
+} customModes[MAX_CUSTOM_MODES] = {{0}};
 
 void getCustomModes(HKEY hkeyVideo)
 {
