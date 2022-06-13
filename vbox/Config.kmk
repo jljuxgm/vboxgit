@@ -1,4 +1,4 @@
-# $Id: Config.kmk 91600 2021-10-06 16:47:27Z vboxsync $
+# $Id: Config.kmk 91609 2021-10-07 07:34:35Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -641,7 +641,7 @@ VBOX_WITH_DBGF_TRACING = 1
 # Enable TPM device emulation support.
 VBOX_WITH_TPM = 1
 # Enable libtpms, required for the in process TPM emulation.
-if1of ($(KBUILD_TARGET), linux darwin win)
+if1of ($(KBUILD_TARGET), linux darwin win solaris)
  VBOX_WITH_LIBTPMS = 1
 endif
 ## @}
@@ -8353,7 +8353,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 91600 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 91609 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
