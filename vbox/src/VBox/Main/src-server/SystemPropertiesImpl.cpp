@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.cpp 93513 2022-01-31 20:48:37Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1990,7 +1990,9 @@ ComObjPtr<MediumFormat> SystemProperties::i_mediumFormatFromExtension(const Utf8
  */
 int SystemProperties::i_loadVDPlugin(const char *pszPluginLibrary)
 {
-    return VDPluginLoadFromFilename(pszPluginLibrary);
+    int vrc = VDPluginLoadFromFilename(pszPluginLibrary);
+    LogFlowFunc(("pszPluginLibrary='%s' -> %Rrc\n", pszPluginLibrary, vrc));
+    return vrc;
 }
 
 /**
@@ -1998,7 +2000,9 @@ int SystemProperties::i_loadVDPlugin(const char *pszPluginLibrary)
  */
 int SystemProperties::i_unloadVDPlugin(const char *pszPluginLibrary)
 {
-    return VDPluginUnloadFromFilename(pszPluginLibrary);
+    int vrc = VDPluginUnloadFromFilename(pszPluginLibrary);
+    LogFlowFunc(("pszPluginLibrary='%s' -> %Rrc\n", pszPluginLibrary, vrc));
+    return vrc;
 }
 
 /**
