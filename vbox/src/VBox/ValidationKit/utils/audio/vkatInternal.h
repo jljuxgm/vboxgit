@@ -1,4 +1,4 @@
-/* $Id: vkatInternal.h 89686 2021-06-14 16:05:31Z vboxsync $ */
+/* $Id: vkatInternal.h 89837 2021-06-22 14:18:34Z vboxsync $ */
 /** @file
  * VKAT - Internal header file for common definitions + structs.
  */
@@ -346,6 +346,7 @@ extern unsigned         g_cTests;
  * @{ */
 RTEXITCODE audioTestUsage(PRTSTREAM pStrm);
 RTEXITCODE audioTestVersion(void);
+void       audioTestShowLogo(PRTSTREAM pStream);
 /** @}  */
 
 /** @name Driver stack
@@ -464,6 +465,7 @@ enum
                 return audioTestVersion(); \
             \
             case 'h': \
+                audioTestShowLogo(g_pStdOut); \
                 return audioTestUsage(g_pStdOut); \
             \
             case AUDIO_TEST_OPT_CMN_DEBUG_AUDIO_ENABLE: \

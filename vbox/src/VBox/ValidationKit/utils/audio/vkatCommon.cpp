@@ -1,4 +1,4 @@
-/* $Id: vkatCommon.cpp 89833 2021-06-22 13:53:36Z vboxsync $ */
+/* $Id: vkatCommon.cpp 89837 2021-06-22 14:18:34Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) - Self test code.
  */
@@ -824,7 +824,8 @@ int audioTestEnvPrologue(PAUDIOTESTENV pTstEnv, bool fPack, char *pszPackFile, s
             RTTestPrintf(g_hTest, RTTESTLVL_ALWAYS, "Test set packed up to '%s'\n", pszPackFile);
     }
 
-    /* ignore rc */ AudioTestSetWipe(&pTstEnv->Set);
+    if (!g_fDrvAudioDebug) /* Don't wipe stuff when debugging. Can be useful for introspecting data. */
+        /* ignore rc */ AudioTestSetWipe(&pTstEnv->Set);
 
     AudioTestSetDestroy(&pTstEnv->Set);
 
