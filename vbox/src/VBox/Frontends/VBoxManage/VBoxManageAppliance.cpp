@@ -1,4 +1,4 @@
-/* $Id: VBoxManageAppliance.cpp 93703 2022-02-11 19:03:31Z vboxsync $ */
+/* $Id: VBoxManageAppliance.cpp 93835 2022-02-18 01:46:14Z vboxsync $ */
 /** @file
  * VBoxManage - The appliance-related commands.
  */
@@ -1361,6 +1361,8 @@ RTEXITCODE handleImportAppliance(HandlerArg *arg)
                         case VirtualSystemDescriptionType_BootingFirmware:
                         case VirtualSystemDescriptionType_CloudInitScriptPath:
                         case VirtualSystemDescriptionType_CloudCompartmentId:
+                        case VirtualSystemDescriptionType_CloudShapeCpus:
+                        case VirtualSystemDescriptionType_CloudShapeMemory:
                             /** @todo  VirtualSystemDescriptionType_Miscellaneous? */
                             break;
 
