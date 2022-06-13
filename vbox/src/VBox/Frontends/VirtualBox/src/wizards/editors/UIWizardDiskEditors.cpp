@@ -1,4 +1,4 @@
-/* $Id: UIWizardDiskEditors.cpp 90273 2021-07-21 11:29:35Z vboxsync $ */
+/* $Id: UIWizardDiskEditors.cpp 90275 2021-07-21 14:17:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class implementation.
  */
@@ -200,6 +200,8 @@ void UIDiskVariantGroupBox::prepare()
     AssertReturnVoid(pVariantLayout);
     m_pFixedCheckBox = new QCheckBox;
     m_pSplitBox = new QCheckBox;
+    connect(m_pFixedCheckBox, &QCheckBox::toggled, this, &UIDiskVariantGroupBox::sltVariantChanged);
+    connect(m_pSplitBox, &QCheckBox::toggled, this, &UIDiskVariantGroupBox::sltVariantChanged);
     pVariantLayout->addWidget(m_pFixedCheckBox);
     pVariantLayout->addWidget(m_pSplitBox);
     pVariantLayout->addStretch();
@@ -303,6 +305,7 @@ void UIDiskVariantGroupBox::updateMediumVariantWidgetsAfterFormatChange(const CM
             m_pFixedCheckBox->setChecked(false);
     }
     m_pSplitBox->setEnabled(fIsCreateSplitPossible);
+    emit sigMediumVariantChanged(mediumVariant());
 }
 
 bool UIDiskVariantGroupBox::isComplete() const
@@ -311,6 +314,10 @@ bool UIDiskVariantGroupBox::isComplete() const
     return mediumVariant() != (qulonglong)KMediumVariant_Max;
 }
 
+void UIDiskVariantGroupBox::sltVariantChanged()
+{
+    emit sigMediumVariantChanged(mediumVariant());
+}
 
 /*********************************************************************************************************************************
 *   UIMediumSizeAndPathGroupBox implementation.                                                                                  *

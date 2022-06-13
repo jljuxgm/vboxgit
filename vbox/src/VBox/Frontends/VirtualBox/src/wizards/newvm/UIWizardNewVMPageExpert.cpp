@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.cpp 90273 2021-07-21 11:29:35Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.cpp 90275 2021-07-21 14:17:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class implementation.
  */
@@ -242,7 +242,6 @@ void UIWizardNewVMPageExpert::createConnections()
                 this, &UIWizardNewVMPageExpert::sltUserNameChanged);
     }
 
-
     if (m_pAdditionalOptionsContainer)
     {
         connect(m_pAdditionalOptionsContainer, &UIAdditionalUnattendedOptions::sigHostnameDomainNameChanged,
@@ -280,7 +279,8 @@ void UIWizardNewVMPageExpert::createConnections()
     connect(m_pFormatButtonGroup, &UIDiskFormatsGroupBox::sigMediumFormatChanged,
             this, &UIWizardNewVMPageExpert::sltMediumFormatChanged);
 
-
+    connect(m_pDiskVariantGroupBox, &UIDiskVariantGroupBox::sigMediumVariantChanged,
+            this, &UIWizardNewVMPageExpert::sltMediumVariantChanged);
     // if (m_pLocationOpenButton)
     //     connect(m_pLocationOpenButton, &QIToolButton::clicked, this, &UIWizardNewVMPageExpert::sltSelectLocationButtonClicked);
 }
@@ -672,6 +672,12 @@ void UIWizardNewVMPageExpert::sltMediumPathChanged(const QString &strPath)
     m_userModifiedParameters << "MediumPath";
     newVMWizardPropertySet(MediumPath, strPath);
     emit completeChanged();
+}
+
+void UIWizardNewVMPageExpert::sltMediumVariantChanged(qulonglong uVariant)
+{
+    m_userModifiedParameters << "MediumVariant";
+    newVMWizardPropertySet(MediumVariant, uVariant);
 }
 
 void UIWizardNewVMPageExpert::sltMediaComboBoxIndexChanged()
