@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 93922 2022-02-24 15:14:31Z vboxsync $ */
+/* $Id: PGMAll.cpp 93931 2022-02-24 16:02:00Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -1136,7 +1136,7 @@ DECLINLINE(int) pdmShwModifyPage(PVMCPUCC pVCpu, RTGCPTR GCPtr, uint64_t fFlags,
     AssertMsg(!(fFlags & X86_PTE_PAE_PG_MASK), ("fFlags=%#llx\n", fFlags));
     Assert(!(fOpFlags & ~(PGM_MK_PG_IS_MMIO2 | PGM_MK_PG_IS_WRITE_FAULT)));
 
-    GCPtr &= PAGE_BASE_GC_MASK; /** @todo this ain't necessary, right... */
+    GCPtr &= ~(RTGCPTR)GUEST_PAGE_OFFSET_MASK; /** @todo this ain't necessary, right... */
 
     PVMCC pVM = pVCpu->CTX_SUFF(pVM);
     PGM_LOCK_VOID(pVM);
@@ -2069,7 +2069,7 @@ VMMDECL(int)  PGMGstModifyPage(PVMCPUCC pVCpu, RTGCPTR GCPtr, size_t cb, uint64_
      */
     cb     += GCPtr & GUEST_PAGE_OFFSET_MASK;
     cb      = RT_ALIGN_Z(cb, GUEST_PAGE_SIZE);
-    GCPtr   = (GCPtr & PAGE_BASE_GC_MASK);
+    GCPtr  &= ~(RTGCPTR)GUEST_PAGE_OFFSET_MASK;
 
     /*
      * Call worker.

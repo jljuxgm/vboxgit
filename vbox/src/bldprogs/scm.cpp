@@ -1,4 +1,4 @@
-/* $Id: scm.cpp 93687 2022-02-11 01:58:34Z vboxsync $ */
+/* $Id: scm.cpp 93931 2022-02-24 16:02:00Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -2918,7 +2918,8 @@ static int scmHelp(PCRTGETOPTDEF paOpts, size_t cOpts)
                 break;
             case SCMOPT_ONLY_GUEST_HOST_PAGE:
                 RTPrintf("      No PAGE_SIZE, PAGE_SHIFT or PAGE_OFFSET_MASK allowed, must have\n"
-                         "      GUEST_ or HOST_ prefix.  Default: %RTbool\n", g_Defaults.fOnlyGuestHostPage);
+                         "      GUEST_ or HOST_ prefix.  Also forbids use of PAGE_BASE_MASK,\n"
+                         "      PAGE_BASE_HC_MASK and PAGE_BASE_GC_MASK  Default: %RTbool\n", g_Defaults.fOnlyGuestHostPage);
                 break;
             case SCMOPT_NO_ASM_MEM_PAGE_USE:
                 RTPrintf("      No ASMMemIsZeroPage or ASMMemZeroPage allowed, must instead use\n"
@@ -3075,7 +3076,7 @@ int main(int argc, char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 93687 $";
+                static const char s_szRev[] = "$Revision: 93931 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return 0;

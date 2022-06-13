@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 93574 2022-02-03 11:27:27Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 93931 2022-02-24 16:02:00Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -7925,7 +7925,7 @@ HMSVM_EXIT_DECL hmR0SvmExitNestedPF(PVMCPUCC pVCpu, PSVMTRANSIENT pSvmTransient)
         && pVM->hm.s.cPatches < RT_ELEMENTS(pVM->hm.s.aPatches))
     {
         RTGCPHYS GCPhysApicBase = APICGetBaseMsrNoCheck(pVCpu);
-        GCPhysApicBase &= PAGE_BASE_GC_MASK;
+        GCPhysApicBase &= ~(RTGCPHYS)GUEST_PAGE_OFFSET_MASK;
 
         if (GCPhysFaultAddr == GCPhysApicBase + XAPIC_OFF_TPR)
         {
@@ -8280,7 +8280,7 @@ HMSVM_EXIT_DECL hmR0SvmExitXcptPF(PVMCPUCC pVCpu, PSVMTRANSIENT pSvmTransient)
     {
         RTGCPHYS GCPhysApicBase;
         GCPhysApicBase  = APICGetBaseMsrNoCheck(pVCpu);
-        GCPhysApicBase &= PAGE_BASE_GC_MASK;
+        GCPhysApicBase &= ~(RTGCPHYS)GUEST_PAGE_OFFSET_MASK;
 
         /* Check if the page at the fault-address is the APIC base. */
         PGMPTWALK Walk;
