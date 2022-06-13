@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 94643 2022-04-20 09:08:37Z vboxsync $ */
+/* $Id: UINotificationObjects.cpp 94644 2022-04-20 09:15:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -4358,7 +4358,7 @@ void UINotificationProgressNewVersionChecker::sltHandleProgressFinished()
     if (m_comUpdateHost.isNull() && !m_comUpdateHost.isOk())
         return;
 
-    bool const fUpdateAvailable = m_comUpdateHost.GetState() == UpdateState_Available; /** @todo Handle other states. */
+    bool const fUpdateAvailable = m_comUpdateHost.GetState() == KUpdateState_Available; /** @todo Handle other states. */
     if (!m_comUpdateHost.isOk())
         return;
 

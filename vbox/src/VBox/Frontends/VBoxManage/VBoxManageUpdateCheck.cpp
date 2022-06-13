@@ -1,4 +1,4 @@
-/* $Id: VBoxManageUpdateCheck.cpp 94643 2022-04-20 09:08:37Z vboxsync $ */
+/* $Id: VBoxManageUpdateCheck.cpp 94644 2022-04-20 09:15:47Z vboxsync $ */
 /** @file
  * VBoxManage - The 'updatecheck' command.
  */
@@ -209,11 +209,17 @@ static RTEXITCODE doUpdateModify(int argc, char **argv, ComPtr<IUpdateAgent> pUp
      * Make the changes.
      */
     if (enmChannel != enmChannelNil)
+    {
         CHECK_ERROR2I_RET(pUpdateAgent, COMSETTER(Channel)(enmChannel), RTEXITCODE_FAILURE);
+    }
     if (fEnabled != -1)
+    {
         CHECK_ERROR2I_RET(pUpdateAgent, COMSETTER(Enabled)((BOOL)fEnabled), RTEXITCODE_FAILURE);
+    }
     if (cFrequencyDays)
+    {
         CHECK_ERROR2I_RET(pUpdateAgent, COMSETTER(CheckFrequency)(cFrequencyDays * RT_SEC_1DAY), RTEXITCODE_FAILURE);
+    }
 
     return RTEXITCODE_SUCCESS;
 }
