@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 91014 2021-08-31 01:03:39Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 91246 2021-09-15 11:29:42Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -946,7 +946,7 @@ int pgmPhysAllocLargePage(PVMCC pVM, RTGCPHYS GCPhys)
              * Do the allocation.
              */
 # ifdef IN_RING3
-            rc = PGMR3PhysAllocateLargeHandyPage(pVM, GCPhysBase);
+            rc = PGMR3PhysAllocateLargePage(pVM, GCPhysBase);
 # else
             rc = VMMRZCallRing3NoCpu(pVM, VMMCALLRING3_PGM_ALLOCATE_LARGE_HANDY_PAGE, GCPhysBase);
 # endif
