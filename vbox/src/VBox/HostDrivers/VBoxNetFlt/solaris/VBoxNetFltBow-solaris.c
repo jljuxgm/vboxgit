@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltBow-solaris.c 90804 2021-08-23 19:08:53Z vboxsync $ */
+/* $Id: VBoxNetFltBow-solaris.c 90873 2021-08-25 11:29:33Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Solaris Specific Code.
  */
@@ -433,14 +433,14 @@ LOCAL int VBoxNetFltSolarisGetInfo(dev_info_t *pDip, ddi_info_cmd_t enmCmd, void
         case DDI_INFO_DEVT2DEVINFO:
         {
             *ppvResult = g_pVBoxNetFltSolarisDip;
-            return DDI_SUCCESS;
+            return *ppvResult ? DDI_SUCCESS : DDI_FAILURE;
         }
 
         case DDI_INFO_DEVT2INSTANCE:
         {
-            int instance = getminor((dev_t)pvArg);
-            *ppvResult = (void *)(uintptr_t)instance;
-            return DDI_SUCCESS;
+            /* There can only be a single-instance of this driver and thus its instance number is 0. */
+            *ppvResult = (void *)0;
+            break;
         }
     }
 
