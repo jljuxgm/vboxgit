@@ -1,4 +1,4 @@
-/* $Id: UINotificationObject.cpp 90290 2021-07-22 14:40:08Z vboxsync $ */
+/* $Id: UINotificationObject.cpp 90387 2021-07-29 07:56:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINotificationObject class implementation.
  */
@@ -57,12 +57,12 @@ ulong UINotificationProgress::percent() const
 
 bool UINotificationProgress::isCancelable() const
 {
-    return m_pTask->isCancelable();
+    return m_pTask ? m_pTask->isCancelable() : false;
 }
 
 QString UINotificationProgress::error() const
 {
-    return m_pTask->errorMessage();
+    return m_pTask ? m_pTask->errorMessage() : QString();
 }
 
 void UINotificationProgress::handle()
@@ -86,7 +86,8 @@ void UINotificationProgress::handle()
 void UINotificationProgress::close()
 {
     /* Cancel task: */
-    m_pTask->cancel();
+    if (m_pTask)
+        m_pTask->cancel();
     /* Call to base-class: */
     UINotificationObject::close();
 }
