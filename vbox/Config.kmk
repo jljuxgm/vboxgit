@@ -1,4 +1,4 @@
-# $Id: Config.kmk 94491 2022-04-06 11:25:19Z vboxsync $
+# $Id: Config.kmk 94536 2022-04-10 14:14:01Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -4812,9 +4812,9 @@ SDK_VBOX_SOFTFLOAT             := SoftFloat 3 for dll linking.
  SDK_VBOX_SOFTFLOAT_DEFS.arm64 := LITTLEENDIAN
  SDK_VBOX_SOFTFLOAT_DEFS.x86   := LITTLEENDIAN
 if1of ($(KBUILD_TARGET),win)
- SDK_VBOX_SOFTFLOAT_DEFS       := THREAD_LOCAL=declspec(thread)
+ SDK_VBOX_SOFTFLOAT_DEFS       += THREAD_LOCAL=declspec(thread)
 else
- SDK_VBOX_SOFTFLOAT_DEFS       := THREAD_LOCAL=__thread
+ SDK_VBOX_SOFTFLOAT_DEFS       += THREAD_LOCAL=__thread
 endif
 SDK_VBOX_SOFTFLOAT_INCS         = \
 	$(PATH_ROOT)/src/libs/softfloat-3e/source/include
@@ -8954,7 +8954,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 94491 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 94536 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
