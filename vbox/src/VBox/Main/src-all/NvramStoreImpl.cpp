@@ -1,4 +1,4 @@
-/* $Id: NvramStoreImpl.cpp 91457 2021-09-29 14:08:32Z vboxsync $ */
+/* $Id: NvramStoreImpl.cpp 91497 2021-09-30 11:34:59Z vboxsync $ */
 /** @file
  * VirtualBox COM NVRAM store class implementation
  */
@@ -414,7 +414,7 @@ HRESULT NvramStore::initUefiVariableStore(ULONG aSize)
             if (RT_SUCCESS(vrc))
             {
                 /** @todo The size is hardcoded to match what the firmware image uses right now which is a gross hack... */
-                vrc = RTVfsFileSetSize(hVfsUefiVarStore, 546816, RTVFSFILE_SIZE_F_NORMAL);
+                vrc = RTVfsFileSetSize(hVfsUefiVarStore, 540672, RTVFSFILE_SIZE_F_NORMAL);
                 if (RT_SUCCESS(vrc))
                     m->bd->mapNvram["efi/nvram"] = hVfsUefiVarStore;
                 else
