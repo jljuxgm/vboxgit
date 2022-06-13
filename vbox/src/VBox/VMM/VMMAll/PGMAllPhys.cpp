@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 93554 2022-02-02 22:57:02Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 93593 2022-02-03 21:05:05Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -1391,10 +1391,10 @@ static int pgmPhysPageMapCommon(PVMCC pVM, PPGMPAGE pPage, RTGCPHYS GCPhys, PPPG
                             VERR_PGM_PHYS_PAGE_MAP_IPE_3);
             AssertMsgReturn(PGM_PAGE_GET_HCPHYS(pPage)== pVM->pgm.s.HCPhysZeroPg, ("pPage=%R[pgmpage]\n", pPage),
                             VERR_PGM_PHYS_PAGE_MAP_IPE_4);
-            *ppv = pVM->pgm.s.CTXALLSUFF(pvZeroPg);
+            *ppv = pVM->pgm.s.abZeroPg;
         }
         else
-            *ppv = pVM->pgm.s.CTXALLSUFF(pvZeroPg);
+            *ppv = pVM->pgm.s.abZeroPg;
         *ppMap = NULL;
         return VINF_SUCCESS;
     }
@@ -1621,7 +1621,7 @@ int pgmPhysPageLoadIntoTlbWithPage(PVMCC pVM, PPGMPAGE pPage, RTGCPHYS GCPhys)
 # ifndef IN_RING0
         pTlbe->pMap = NULL;
 # endif
-        pTlbe->pv = pVM->pgm.s.CTXALLSUFF(pvZeroPg);
+        pTlbe->pv = pVM->pgm.s.abZeroPg;
     }
 # ifdef PGM_WITH_PHYS_TLB
     if (    PGM_PAGE_GET_TYPE(pPage) < PGMPAGETYPE_ROM_SHADOW
