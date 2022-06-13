@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 91159 2021-09-08 14:33:49Z vboxsync $ */
+/* $Id: UIMessageCenter.h 91165 2021-09-08 15:34:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -373,17 +373,21 @@ public:
     /** @name VirtualBox Manager / Cloud networking stuff.
       * @{ */
         void cannotAcquireCloudProviderManager(const CVirtualBox &comVBox, QWidget *pParent = 0) const;
-
         void cannotFindCloudProvider(const CCloudProviderManager &comManager, const QUuid &uId, QWidget *pParent = 0) const;
         void cannotFindCloudProfile(const CCloudProvider &comProvider, const QString &strName, QWidget *pParent = 0) const;
-
+        void cannotCreateCloudClient(const CCloudProfile &comProfile, QWidget *pParent = 0) const;
         void cannotAcquireCloudProviderManagerParameter(const CCloudProviderManager &comManager, QWidget *pParent = 0) const;
         void cannotAcquireCloudProviderParameter(const CCloudProvider &comProvider, QWidget *pParent = 0) const;
         void cannotAcquireCloudProfileParameter(const CCloudProfile &comProfile, QWidget *pParent = 0) const;
         void cannotAcquireCloudClientParameter(const CCloudClient &comClient, QWidget *pParent = 0) const;
         void cannotAcquireCloudClientParameter(const CProgress &comProgress, QWidget *pParent = 0) const;
+        void cannotAcquireCloudMachineParameter(const CCloudMachine &comMachine, QWidget *pParent = 0) const;
+        void cannotAcquireCloudMachineParameter(const CProgress &comProgress, QWidget *pParent = 0) const;
+    /** @} */
 
-        void cannotCreateCloudClient(const CCloudProfile &comProfile, QWidget *pParent = 0) const;
+    /** @name VirtualBox Manager / Cloud machine settings.
+      * @{ */
+        void cannotAssignFormValue(const QString &strError, QWidget *pParent = 0) const;
     /** @} */
 
     /** @name Runtime UI warnings.
@@ -391,11 +395,6 @@ public:
         bool cannotRestoreSnapshot(const CMachine &machine, const QString &strSnapshotName, const QString &strMachineName) const;
         bool cannotRestoreSnapshot(const CProgress &progress, const QString &strSnapshotName, const QString &strMachineName) const;
     /** @} */
-
-    void cannotAcquireCloudMachineParameter(const CCloudMachine &comMachine, QWidget *pParent = 0) const;
-    void cannotAcquireCloudMachineParameter(const CProgress &comProgress, QWidget *pParent = 0) const;
-    void cannotAcquireCloudMachineParameter(const QString &strErrorDetails, QWidget *pParent = 0) const;
-    void cannotAssignFormValue(const QString &strError, QWidget *pParent = 0) const;
 
     /* API: Cloud Console Manager warnings: */
     bool confirmCloudConsoleApplicationRemoval(const QString &strName, QWidget *pParent = 0) const;

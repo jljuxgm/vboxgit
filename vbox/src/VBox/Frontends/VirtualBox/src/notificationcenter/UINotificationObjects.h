@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.h 91149 2021-09-08 12:01:42Z vboxsync $ */
+/* $Id: UINotificationObjects.h 91165 2021-09-08 15:34:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects declarations.
  */
@@ -88,6 +88,10 @@ public:
           * @param  strCollisionName  Brings the collision VM name.
           * @param  strGroupName      Brings the group name. */
         static void cannotResolveCollisionAutomatically(const QString &strCollisionName, const QString &strGroupName);
+
+        /** Notifies about inability to acquire cloud machine settings.
+          * @param  strErrorDetails  Brings the error details. */
+        static void cannotAcquireCloudMachineSettings(const QString &strErrorDetails);
 
         /** Notifies about public key path is empty. */
         static void warnAboutPublicKeyFilePathIsEmpty();
@@ -302,6 +306,12 @@ public:
         /** Notifies about inability to import cloud profiles.
           * @param  comProvider  Brings the provider profiles being imported for. */
         static void cannotImportCloudProfiles(const CCloudProvider &comProvider);
+        /** Notifies about inability to refresh cloud machine.
+          * @param  comMachine  Brings the machine being refreshed. */
+        static void cannotRefreshCloudMachine(const CCloudMachine &comMachine);
+        /** Notifies about inability to refresh cloud machine.
+          * @param  comProgress  Brings the progress of machine being refreshed. */
+        static void cannotRefreshCloudMachine(const CProgress &comProgress);
 
         /** Notifies about inability to open machine.
           * @param  comMedium  Brings the medium being closed. */

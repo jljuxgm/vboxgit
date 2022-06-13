@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 91149 2021-09-08 12:01:42Z vboxsync $ */
+/* $Id: UINotificationObjects.cpp 91165 2021-09-08 15:34:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -128,6 +128,15 @@ void UINotificationMessage::cannotResolveCollisionAutomatically(const QString &s
                                                    "<nobr><b>%2</b></nobr> which already have another item with the same "
                                                    "name.</p><p>Please resolve this name conflict and try again.</p>")
                                                    .arg(strCollisionName, strGroupName));
+}
+
+/* static */
+void UINotificationMessage::cannotAcquireCloudMachineSettings(const QString &strErrorDetails)
+{
+    createMessage(
+        QApplication::translate("UIMessageCenter", "Cloud machine failure ..."),
+        QApplication::translate("UIMessageCenter", "Failed to acquire cloud machine settings.") +
+        strErrorDetails);
 }
 
 /* static */
@@ -769,6 +778,24 @@ void UINotificationMessage::cannotImportCloudProfiles(const CCloudProvider &comP
         QApplication::translate("UIMessageCenter", "Can't import cloud profiles ..."),
         QApplication::translate("UIMessageCenter", "Failed to import cloud profiles.") +
         UIErrorString::formatErrorInfo(comProvider));
+}
+
+/* static */
+void UINotificationMessage::cannotRefreshCloudMachine(const CCloudMachine &comMachine)
+{
+    createMessage(
+        QApplication::translate("UIMessageCenter", "Can't refresh cloud machine ..."),
+        QApplication::translate("UIMessageCenter", "Failed to refresh cloud machine.") +
+        UIErrorString::formatErrorInfo(comMachine));
+}
+
+/* static */
+void UINotificationMessage::cannotRefreshCloudMachine(const CProgress &comProgress)
+{
+    createMessage(
+        QApplication::translate("UIMessageCenter", "Can't refresh cloud machine ..."),
+        QApplication::translate("UIMessageCenter", "Failed to refresh cloud machine.") +
+        UIErrorString::formatErrorInfo(comProgress));
 }
 
 /* static */

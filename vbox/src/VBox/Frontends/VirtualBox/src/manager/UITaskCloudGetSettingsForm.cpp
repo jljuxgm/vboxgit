@@ -1,4 +1,4 @@
-/* $Id: UITaskCloudGetSettingsForm.cpp 84098 2020-04-30 10:38:09Z vboxsync $ */
+/* $Id: UITaskCloudGetSettingsForm.cpp 91165 2021-09-08 15:34:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UITaskCloudGetSettingsForm class implementation.
  */
@@ -21,7 +21,7 @@
 /* GUI includes: */
 #include "UICommon.h"
 #include "UICloudNetworkingStuff.h"
-#include "UIMessageCenter.h"
+#include "UINotificationCenter.h"
 #include "UITaskCloudGetSettingsForm.h"
 #include "UIThreadPool.h"
 
@@ -87,7 +87,7 @@ void UIReceiverCloudGetSettingsForm::sltHandleTaskComplete(UITask *pTask)
         emit sigTaskComplete(pSettingsTask->result());
     else
     {
-        msgCenter().cannotAcquireCloudMachineParameter(pSettingsTask->errorInfo(), m_pParent);
+        UINotificationMessage::cannotAcquireCloudMachineSettings(pSettingsTask->errorInfo());
         emit sigTaskFailed(pSettingsTask->errorInfo());
     }
 }
