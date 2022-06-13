@@ -1,4 +1,4 @@
-/* $Id: UIProgressTask.cpp 90477 2021-08-02 13:19:47Z vboxsync $ */
+/* $Id: UIProgressTask.cpp 91845 2021-10-19 17:19:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIProgressTask class implementation.
  */
@@ -88,6 +88,8 @@ void UIProgressTask::start()
 
             /* Notify external listeners: */
             emit sigProgressStarted();
+            if (m_comProgress.GetCompleted())
+                sltHandleProgressEventHandlingFinished();
         }
     }
 }
