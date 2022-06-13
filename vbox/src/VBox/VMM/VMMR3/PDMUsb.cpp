@@ -1,4 +1,4 @@
-/* $Id: PDMUsb.cpp 91900 2021-10-20 14:16:27Z vboxsync $ */
+/* $Id: PDMUsb.cpp 92155 2021-10-29 17:27:53Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, USB part.
  */
@@ -2365,6 +2365,12 @@ const PDMUSBHLP g_pdmR3UsbHlp =
     pdmR3UsbHlp_VMSetRuntimeErrorV,
     pdmR3UsbHlp_VMState,
     pdmR3UsbHlp_ThreadCreate,
+    PDMR3ThreadDestroy,
+    PDMR3ThreadIAmSuspending,
+    PDMR3ThreadIAmRunning,
+    PDMR3ThreadSleep,
+    PDMR3ThreadSuspend,
+    PDMR3ThreadResume,
     pdmR3UsbHlp_SetAsyncNotification,
     pdmR3UsbHlp_AsyncNotificationCompleted,
     pdmR3UsbHlp_VMGetSuspendReason,
