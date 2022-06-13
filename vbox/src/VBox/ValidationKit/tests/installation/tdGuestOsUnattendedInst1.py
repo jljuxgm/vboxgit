@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdGuestOsUnattendedInst1.py 94384 2022-03-28 16:42:34Z vboxsync $
+# $Id: tdGuestOsUnattendedInst1.py 94392 2022-03-29 10:49:53Z vboxsync $
 
 """
 VirtualBox Validation Kit - Guest OS unattended installation tests.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 94384 $"
+__version__ = "$Revision: 94392 $"
 
 
 # Standard Python imports.
@@ -527,7 +527,7 @@ class tdGuestOsInstTest1(vbox.TestDriver):
         ]);
         # pylint: enable=line-too-long
         self.oTestVmSet = oSet;
-ka
+
         # For option parsing:
         self.aoSelectedVms = oSet.aoTestVms # type: list(UnattendedVm)
 
