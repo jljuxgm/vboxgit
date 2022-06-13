@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tdAudioTest.py 90222 2021-07-16 07:41:35Z vboxsync $
+# $Id: tdAudioTest.py 90224 2021-07-16 09:11:23Z vboxsync $
 
 """
 AudioTest test driver which invokes the VKAT (Validation Kit Audio Test)
@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 90222 $"
+__version__ = "$Revision: 90224 $"
 
 # Standard Python imports.
 import os
@@ -121,13 +121,28 @@ class tdAudioTest(vbox.TestDriver):
             return vbox.TestDriver.parseOption(self, asArgs, iArg);
         return iArg + 1;
 
+    def actionVerify(self):
+        """
+        Verifies the test driver before running.
+        """
+        if self.sVBoxValidationKitIso is None or not os.path.isfile(self.sVBoxValidationKitIso):
+            reporter.error('Cannot find the VBoxValidationKit.iso! (%s)'
+                           'Please unzip a Validation Kit build in the current directory or in some parent one.'
+                           % (self.sVBoxValidationKitIso,) );
+            return False;
+        return vbox.TestDriver.actionVerify(self);
+
     def actionConfig(self):
         """
         Configures the test driver before running.
         """
         if not self.importVBoxApi(): # So we can use the constant below.
             return False;
-        return self.oTestVmSet.actionConfig(self);
+
+        # Make sure that the Validation Kit .ISO is mounted
+        # to find the VKAT (Validation Kit Audio Test) binary on it.
+        assert self.sVBoxValidationKitIso is not None;
+        return self.oTestVmSet.actionConfig(self, sDvdImage = self.sVBoxValidationKitIso);
 
     def actionExecute(self):
         """
