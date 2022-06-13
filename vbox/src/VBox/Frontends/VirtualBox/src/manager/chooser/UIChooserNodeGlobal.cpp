@@ -1,4 +1,4 @@
-/* $Id: UIChooserNodeGlobal.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIChooserNodeGlobal.cpp 93867 2022-02-21 12:14:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserNodeGlobal class implementation.
  */
@@ -72,7 +72,7 @@ QString UIChooserNodeGlobal::fullName() const
 
 QString UIChooserNodeGlobal::description() const
 {
-    return name();
+    return m_strDescription;
 }
 
 QString UIChooserNodeGlobal::definition(bool fFull /* = false */) const
@@ -162,8 +162,9 @@ void UIChooserNodeGlobal::sortNodes()
 
 void UIChooserNodeGlobal::retranslateUi()
 {
-    /* Translate name: */
+    /* Translate name & description: */
     m_strName = tr("Tools");
+    m_strDescription = tr("Item");
 
     /* Update global-item: */
     if (item())
