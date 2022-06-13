@@ -1,4 +1,4 @@
-/* $Id: AudioTestServiceProtocol.h 91196 2021-09-10 10:52:34Z vboxsync $ */
+/* $Id: AudioTestServiceProtocol.h 91197 2021-09-10 10:57:13Z vboxsync $ */
 /** @file
  * AudioTestServiceProtocol - Audio test execution server, Protocol Header.
  */
@@ -166,7 +166,7 @@ typedef struct ATSPKTREQTONEPLAY
     uint8_t            aPadding[8];
 #else
 # ifdef RT_OS_WINDOWS
-    uint8_t            aPadding[20];
+    uint8_t            aPadding[4];
 # else
     uint8_t            aPadding[12];
 # endif
@@ -190,8 +190,8 @@ typedef struct ATSPKTREQTONEREC
 #if ARCH_BITS == 64
     uint8_t            aPadding[8];
 #else
-# ifdef RT_OS_WIN
-    uint8_t            aPadding[20];
+# ifdef RT_OS_WINDOWS
+    uint8_t            aPadding[4];
 # else
     uint8_t            aPadding[12];
 # endif
