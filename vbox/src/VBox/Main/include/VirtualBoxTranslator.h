@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxTranslator.h 91393 2021-09-27 12:39:49Z vboxsync $ */
+/* $Id: VirtualBoxTranslator.h 91394 2021-09-27 12:54:43Z vboxsync $ */
 /** @file
  * VirtualBox Translator.
  */
@@ -26,6 +26,7 @@
 #include <iprt/cpp/lock.h>
 #include <VBox/com/AutoLock.h>
 
+COM_STRUCT_OR_CLASS(IVirtualBox);
 class QMTranslator;
 
 class VirtualBoxTranslator
