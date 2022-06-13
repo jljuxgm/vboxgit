@@ -1,4 +1,4 @@
-; $Id: VMMR0JmpA-amd64.asm 87456 2021-01-28 12:11:20Z vboxsync $
+; $Id: VMMR0JmpA-amd64.asm 90173 2021-07-14 00:55:32Z vboxsync $
 ;; @file
 ; VMM - R0 SetJmp / LongJmp routines for AMD64.
 ;
@@ -32,10 +32,11 @@
 %define STACK_PADDING   0eeeeeeeeeeeeeeeeh
 
 ;; Workaround for linux 4.6 fast/slow syscall stack depth difference.
+;; Update: This got worse with linux 5.13. See bugref:10064.
 %ifdef VMM_R0_SWITCH_STACK
  %define STACK_FUZZ_SIZE 0
 %else
- %define STACK_FUZZ_SIZE 128
+ %define STACK_FUZZ_SIZE 256
 %endif
 
 
