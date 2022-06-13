@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMUnattendedPageBasic.h 90153 2021-07-12 08:05:36Z vboxsync $ */
+/* $Id: UIWizardNewVMUnattendedPageBasic.h 90154 2021-07-12 08:14:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMUnattendedPageBasic class declaration.
  */
@@ -94,8 +94,6 @@ private:
         QCheckBox *m_pStartHeadlessCheckBox;
         UIUserNamePasswordEditor *m_pUserNamePasswordEditor;
         UIHostnameDomainEditor *m_pHostnameDomainEditor;
-        // QLineEdit *m_pHostnameLineEdit;
-        // QLabel    *m_pHostnameLabel;
         QLabel    *m_pGAISOPathLabel;
         UIFilePathSelector *m_pGAISOFilePathSelector;
         /** Product key stuff. */
