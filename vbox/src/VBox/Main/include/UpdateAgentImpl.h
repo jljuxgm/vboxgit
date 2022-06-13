@@ -1,4 +1,4 @@
-/* $Id: UpdateAgentImpl.h 94645 2022-04-20 09:33:24Z vboxsync $ */
+/* $Id: UpdateAgentImpl.h 94646 2022-04-20 09:40:23Z vboxsync $ */
 /** @file
  * Update agent COM class implementation - Header
  */
@@ -156,7 +156,7 @@ public:
 private:
     /** @name Implemented (pure) virtual methods from UpdateAgent.
      * @{ */
-    HRESULT check(ComPtr<IProgress> &aProgress) RT_OVERRIDE;
+    HRESULT check(ComPtr<IProgress> &aProgress);
     /** @}  */
 
 #ifdef VBOX_WITH_UPDATE_AGENT
