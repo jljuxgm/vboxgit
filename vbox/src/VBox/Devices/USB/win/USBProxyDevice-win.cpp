@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-win.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: USBProxyDevice-win.cpp 94344 2022-03-23 20:12:58Z vboxsync $ */
 /** @file
  * USBPROXY - USB proxy, Win32 backend
  */
@@ -111,9 +111,8 @@ static int usbProxyWinHandleUnpluggedDevice(PUSBPROXYDEV pProxyDev, DWORD dwErr)
  *
  * @returns VBox status code.
  */
-static DECLCALLBACK(int) usbProxyWinOpen(PUSBPROXYDEV pProxyDev, const char *pszAddress, void *pvBackend)
+static DECLCALLBACK(int) usbProxyWinOpen(PUSBPROXYDEV pProxyDev, const char *pszAddress)
 {
-    RT_NOREF(pvBackend);
     PPRIV_USBW32 pPriv = USBPROXYDEV_2_DATA(pProxyDev, PPRIV_USBW32);
 
     int rc = VINF_SUCCESS;
