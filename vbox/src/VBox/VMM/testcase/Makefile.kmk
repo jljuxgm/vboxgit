@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 93862 2022-02-20 13:47:55Z vboxsync $
+# $Id: Makefile.kmk 93866 2022-02-21 12:02:48Z vboxsync $
 ## @file
 # Sub-Makefile for the VMM testcases.
 #
@@ -251,11 +251,12 @@ tstIEMAImpl_SOURCES   = \
 
 # This variant mainly for generating data.
 tstIEMAImplAsm_TEMPLATE  = VBOXR3TSTEXE
-tstIEMAImplAsm_DEFS      = $(VMM_COMMON_DEFS) IN_TSTVMSTRUCT
+tstIEMAImplAsm_DEFS      = $(VMM_COMMON_DEFS) IEM_WITH_ASSEMBLY IN_TSTVMSTRUCT
 tstIEMAImplAsm_INCS      = ../include
 tstIEMAImplAsm_SOURCES   = \
 	tstIEMAImpl.cpp \
-       ../VMMAll/IEMAllAImpl.asm
+       ../VMMAll/IEMAllAImpl.asm \
+       ../VMMAll/IEMAllAImplC.cpp
 
 #
 # Testcase for checking the repurposing of the IEM instruction code.
