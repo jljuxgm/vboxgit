@@ -1,4 +1,4 @@
-/* $Id: DrvTpmEmuTpms.cpp 91092 2021-09-02 13:10:16Z vboxsync $ */
+/* $Id: DrvTpmEmuTpms.cpp 91093 2021-09-02 13:10:45Z vboxsync $ */
 /** @file
  * TPM emulation driver based on libtpms.
  */
@@ -713,7 +713,7 @@ static DECLCALLBACK(int) drvTpmEmuTpmsConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pC
 
 
 /**
- * TPM host driver registration record.
+ * TPM libtpms emulator driver registration record.
  */
 const PDMDRVREG g_DrvTpmEmuTpms =
 {

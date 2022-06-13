@@ -1,4 +1,4 @@
-/* $Id: DrvTpmEmu.cpp 91092 2021-09-02 13:10:16Z vboxsync $ */
+/* $Id: DrvTpmEmu.cpp 91093 2021-09-02 13:10:45Z vboxsync $ */
 /** @file
  * TPM emulator using a TCP/socket interface to talk to swtpm (https://github.com/stefanberger/swtpm).
  */
@@ -959,7 +959,7 @@ static DECLCALLBACK(int) drvTpmEmuConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, 
 
 
 /**
- * TPM libtpms emulator driver registration record.
+ * TPM emulator driver registration record.
  */
 const PDMDRVREG g_DrvTpmEmu =
 {
