@@ -1,4 +1,4 @@
-/* $Id: strformatnum.cpp 94261 2022-03-16 01:34:29Z vboxsync $ */
+/* $Id: strformatnum.cpp 94283 2022-03-17 09:13:02Z vboxsync $ */
 /** @file
  * IPRT - String Formatter, Single Numbers.
  */
@@ -307,8 +307,8 @@ static ssize_t rtStrFormatR80Worker(char *pszBuf, size_t cbBuf, bool const fSign
                      ? rtStrFormatR80CopyOutStr(pszBuf, cbBuf, RT_STR_TUPLE("+Inf"))
                      : rtStrFormatR80CopyOutStr(pszBuf, cbBuf, RT_STR_TUPLE("-Inf"));
             if (!(fFlags & RTSTR_F_SPECIAL))
-                return rtStrFormatR80CopyOutStr(pszBuf, cbBuf, RT_STR_TUPLE("Nan"));
-            pszTmp = (char *)memcpy(pszTmp, "Nan[", 4) + 4;
+                return rtStrFormatR80CopyOutStr(pszBuf, cbBuf, RT_STR_TUPLE("SNan"));
+            pszTmp = (char *)memcpy(pszTmp, "SNan[", 5) + 5;
         }
         else
         {
