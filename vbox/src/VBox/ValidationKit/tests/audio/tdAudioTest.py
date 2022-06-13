@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tdAudioTest.py 90651 2021-08-12 10:27:14Z vboxsync $
+# $Id: tdAudioTest.py 90653 2021-08-12 10:46:14Z vboxsync $
 
 """
 AudioTest test driver which invokes the VKAT (Validation Kit Audio Test)
@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 90651 $"
+__version__ = "$Revision: 90653 $"
 
 # Standard Python imports.
 import os
@@ -240,7 +240,8 @@ class tdAudioTest(vbox.TestDriver):
         """
         if   sOsType == 'vista': # Vista and up.
             return (['netsh', 'advfirewall', 'set', 'allprofiles', 'state', 'off']);
-        elif sOsType == 'xp':    # Older stuff (XP / 2003).
+        elif sOsType == 'xp':   # pylint: disable=no-else-return
+            # Older stuff (XP / 2003).
             return(['netsh', 'firewall', 'set', 'opmode', 'mode=DISABLE']);
         # Not supported / available.
         return [];
