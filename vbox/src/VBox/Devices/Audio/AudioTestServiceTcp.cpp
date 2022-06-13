@@ -1,4 +1,4 @@
-/* $Id: AudioTestServiceTcp.cpp 91034 2021-08-31 15:51:14Z vboxsync $ */
+/* $Id: AudioTestServiceTcp.cpp 91080 2021-09-02 06:20:27Z vboxsync $ */
 /** @file
  * AudioTestServiceTcp - Audio test execution server, TCP/IP Transport Layer.
  */
@@ -465,7 +465,7 @@ static DECLCALLBACK(void) atsTcpNotifyReboot(PATSTRANSPORTINST pThis)
  */
 static DECLCALLBACK(void) atsTcpNotifyBye(PATSTRANSPORTINST pThis, PATSTRANSPORTCLIENT pClient)
 {
-    LogRelFunc(("%RTsock\n", pClient->hTcpClient));
+    LogRelFlowFunc(("pClient=%RTsock\n", pClient->hTcpClient));
     atsTcpDisconnectClient(pThis, pClient);
 }
 
@@ -474,7 +474,7 @@ static DECLCALLBACK(void) atsTcpNotifyBye(PATSTRANSPORTINST pThis, PATSTRANSPORT
  */
 static DECLCALLBACK(void) atsTcpNotifyHowdy(PATSTRANSPORTINST pThis, PATSTRANSPORTCLIENT pClient)
 {
-    LogRelFunc(("%RTsock\n", pClient->hTcpClient));
+    LogRelFlowFunc(("pClient=%RTsock\n", pClient->hTcpClient));
 
     /* nothing to do here */
     RT_NOREF(pThis);
