@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMNameOSTypePage.cpp 93996 2022-02-28 22:04:49Z vboxsync $ */
+/* $Id: UIWizardNewVMNameOSTypePage.cpp 94052 2022-03-02 08:16:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasicNameOSStype class implementation.
  */
@@ -416,7 +416,7 @@ void UIWizardNewVMNameOSTypePage::retranslateUi()
     if (m_pSkipUnattendedCheckBox)
     {
         m_pSkipUnattendedCheckBox->setText(UIWizardNewVM::tr("&Skip Unattended Installation"));
-        m_pSkipUnattendedCheckBox->setToolTip(UIWizardNewVM::tr("<p>Disables the unattended install and just mount the ISO.</p>"));
+        m_pSkipUnattendedCheckBox->setToolTip(UIWizardNewVM::tr("Disables the unattended install and just mount the ISO."));
     }
 
     if (m_pNameAndSystemLayout && m_pNameAndSystemEditor)
