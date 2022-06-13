@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 90088 2021-07-08 09:24:46Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 90299 2021-07-23 10:58:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -29,6 +29,7 @@
 #include "UIExtraDataManager.h"
 #include "UIChooser.h"
 #include "UIMessageCenter.h"
+#include "UINotificationCenter.h"
 #include "UIVirtualBoxManager.h"
 #include "UIVirtualBoxManagerWidget.h"
 #include "UITabBar.h"
@@ -718,6 +719,9 @@ void UIVirtualBoxManagerWidget::prepareWidgets()
         }
     }
 
+    /* Create notification-center: */
+    UINotificationCenter::create(this);
+
     /* Update toolbar finally: */
     updateToolbar();
 
@@ -1041,10 +1045,16 @@ void UIVirtualBoxManagerWidget::cleanupConnections()
                this, &UIVirtualBoxManagerWidget::sltHandleToolsPaneIndexChange);
 }
 
+void UIVirtualBoxManagerWidget::cleanupWidgets()
+{
+    UINotificationCenter::destroy();
+}
+
 void UIVirtualBoxManagerWidget::cleanup()
 {
     /* Cleanup everything: */
     cleanupConnections();
+    cleanupWidgets();
 }
 
 void UIVirtualBoxManagerWidget::recacheCurrentItemInformation(bool fDontRaiseErrorPane /* = false */)

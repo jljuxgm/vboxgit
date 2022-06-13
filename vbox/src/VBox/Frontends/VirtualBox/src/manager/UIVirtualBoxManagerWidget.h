@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.h 89248 2021-05-24 16:53:33Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.h 90299 2021-07-23 10:58:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class declaration.
  */
@@ -303,6 +303,8 @@ private:
 
         /** Cleanups connections. */
         void cleanupConnections();
+        /** Cleanups widgets. */
+        void cleanupWidgets();
         /** Cleanups all. */
         void cleanup();
     /** @} */
