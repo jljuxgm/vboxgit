@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 91111 2021-09-03 15:52:51Z vboxsync $ */
+/* $Id: UICommon.cpp 91114 2021-09-04 18:55:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -73,7 +73,6 @@
 #ifdef VBOX_WS_MAC
 # include "UIMachineWindowFullscreen.h"
 # include "UIMachineWindowSeamless.h"
-# include "VBoxUtils-darwin.h"
 #endif
 #ifdef VBOX_WS_WIN
 # include "VBoxUtils-win.h"
