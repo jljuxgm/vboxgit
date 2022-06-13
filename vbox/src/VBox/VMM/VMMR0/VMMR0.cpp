@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 92200 2021-11-03 21:46:36Z vboxsync $ */
+/* $Id: VMMR0.cpp 92248 2021-11-06 15:21:57Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -1957,12 +1957,6 @@ DECL_NO_INLINE(static, int) vmmR0EntryExWorker(PGVM pGVM, VMCPUID idCpu, VMMR0OP
             if (u64Arg)
                 return VERR_INVALID_PARAMETER;
             rc = GMMR0MapUnmapChunkReq(pGVM, (PGMMMAPUNMAPCHUNKREQ)pReqHdr);
-            break;
-
-        case VMMR0_DO_GMM_SEED_CHUNK:
-            if (pReqHdr)
-                return VERR_INVALID_PARAMETER;
-            rc = GMMR0SeedChunk(pGVM, idCpu, (RTR3PTR)u64Arg);
             break;
 
         case VMMR0_DO_GMM_REGISTER_SHARED_MODULE:
