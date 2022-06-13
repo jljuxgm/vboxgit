@@ -1,4 +1,4 @@
-/* $Id: UIUpdateSettingsEditor.cpp 94738 2022-04-28 17:13:37Z vboxsync $ */
+/* $Id: UIUpdateSettingsEditor.cpp 94740 2022-04-28 17:52:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUpdateSettingsEditor class implementation.
  */
@@ -51,7 +51,7 @@ void UIUpdateSettingsEditor::setValue(const VBoxUpdateData &guiValue)
 
         if (m_pCheckBox)
         {
-            m_pCheckBox->setChecked(!m_guiValue.isNoNeedToCheck());
+            m_pCheckBox->setChecked(m_guiValue.isCheckEnabled());
 
             if (m_pCheckBox->isChecked())
             {

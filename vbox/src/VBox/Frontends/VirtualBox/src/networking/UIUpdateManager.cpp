@@ -1,4 +1,4 @@
-/* $Id: UIUpdateManager.cpp 94733 2022-04-28 12:24:47Z vboxsync $ */
+/* $Id: UIUpdateManager.cpp 94740 2022-04-28 17:52:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUpdateManager class implementation.
  */
@@ -346,7 +346,7 @@ void UIUpdateManager::sltCheckIfUpdateIsNecessary(bool fForcedCall /* = false */
 #ifdef VBOX_NEW_VERSION_TEST
         true ||
 #endif
-        fForcedCall || currentData.isNeedToCheck())
+        fForcedCall || currentData.isCheckRequired())
     {
         /* Prepare update queue: */
         m_pQueue->enqueue(new UIUpdateStepVirtualBox(fForcedCall));
