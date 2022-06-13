@@ -1,4 +1,4 @@
-/* $Id: vkatInternal.h 90894 2021-08-25 18:00:11Z vboxsync $ */
+/* $Id: vkatInternal.h 90912 2021-08-26 13:38:34Z vboxsync $ */
 /** @file
  * VKAT - Internal header file for common definitions + structs.
  */
@@ -181,6 +181,8 @@ typedef AUDIOTESTSTREAM *PAUDIOTESTSTREAM;
  */
 typedef struct AUDIOTESTENVTCPOPTS
 {
+    /** Connection mode(s) to use. */
+    ATSCONNMODE     enmConnMode;
     /** Bind address (server mode). When empty, "0.0.0.0" (any host) will be used. */
     char            szBindAddr[128];
     /** Bind port (server mode). */

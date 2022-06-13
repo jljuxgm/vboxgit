@@ -1,4 +1,4 @@
-/* $Id: AudioTestService.h 90830 2021-08-24 10:47:52Z vboxsync $ */
+/* $Id: AudioTestService.h 90912 2021-08-26 13:38:34Z vboxsync $ */
 /** @file
  * AudioTestService - Audio test execution server, Public Header.
  */
@@ -177,11 +177,27 @@ int AudioTestSvcHandleOption(PATSSERVER pThis, int ch, PCRTGETOPTUNION pVal);
 int AudioTestSvcStart(PATSSERVER pThis);
 int AudioTestSvcShutdown(PATSSERVER pThis);
 
+/**
+ * Enumeration for the server connection mode.
+ * Only applies to certain transport implementation like TCP/IP.
+ */
+typedef enum ATSCONNMODE
+{
+    /** Both: Uses parallel client and server connection methods (via threads). */
+    ATSCONNMODE_BOTH = 0,
+    /** Client only: Connects to a server. */
+    ATSCONNMODE_CLIENT,
+    /** Server only: Listens for new incoming client connections. */
+    ATSCONNMODE_SERVER,
+    /** 32bit hack. */
+    ATSCONNMODE_32BIT_HACK = 0x7fffffff
+} ATSCONNMODE;
+
 /** TCP/IP options for the ATS server.
  *  @todo Make this more abstract later. */
 enum ATSTCPOPT
 {
-    ATSTCPOPT_MODE = 5000,
+    ATSTCPOPT_CONN_MODE = 5000,
     ATSTCPOPT_BIND_ADDRESS,
     ATSTCPOPT_BIND_PORT,
     ATSTCPOPT_CONNECT_ADDRESS,

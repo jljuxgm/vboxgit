@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioValidationKit.cpp 90765 2021-08-20 17:00:41Z vboxsync $ */
+/* $Id: DrvHostAudioValidationKit.cpp 90912 2021-08-26 13:38:34Z vboxsync $ */
 /** @file
  * Host audio driver - ValidationKit - For dumping and injecting audio data from/to the device emulation.
  */
@@ -1113,8 +1113,8 @@ static DECLCALLBACK(int) drvHostValKitAudioConstruct(PPDMDRVINS pDrvIns, PCFGMNO
         RTGETOPTUNION Val;
         RT_ZERO(Val);
 
-        Val.psz = "server"; /** @ŧodo No client connection mode needed here (yet). Make this configurable via CFGM. */
-        rc2 = AudioTestSvcHandleOption(&pThis->Srv, ATSTCPOPT_MODE, &Val);
+        Val.u32 = ATSCONNMODE_SERVER; /** @todo No client connection mode needed here (yet). Make this configurable via CFGM. */
+        rc2 = AudioTestSvcHandleOption(&pThis->Srv, ATSTCPOPT_CONN_MODE, &Val);
         AssertRC(rc2);
 
         Val.psz = pszTcpAddr;
