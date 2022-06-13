@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-internal.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-internal.h 94146 2022-03-09 12:07:30Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device - 3D part, internal header.
  */
@@ -706,11 +706,7 @@ typedef struct VMSVGA3DSHADER
         void                       *pVertexShader;
         void                       *pPixelShader;
 #endif
-        void                       *pvBackendShader;
     } u;
-#ifdef VMSVGA3D_DX
-    DXShaderInfo                   shaderInfo;
-#endif
 } VMSVGA3DSHADER;
 typedef VMSVGA3DSHADER *PVMSVGA3DSHADER;
 
@@ -725,7 +721,6 @@ static SSMFIELD const g_aVMSVGA3DSHADERFields[] =
     SSMFIELD_ENTRY(                 VMSVGA3DSHADER, type),
     SSMFIELD_ENTRY(                 VMSVGA3DSHADER, cbData),
     SSMFIELD_ENTRY_IGN_HCPTR(       VMSVGA3DSHADER, pShaderProgram),
-    SSMFIELD_ENTRY_IGN_HCPTR(       VMSVGA3DSHADER, u.pvBackendShader),
     SSMFIELD_ENTRY_TERM()
 };
 #endif
@@ -993,8 +988,6 @@ typedef struct VMSVGA3DDXCONTEXT
         uint32_t                           cShader;
         uint32_t                           cUAView;
     } cot;
-    /* Shader information. The array has cot.cShader elements. Some data is dublicated in cot.paShader. */
-    PVMSVGA3DSHADER paShader;
 } VMSVGA3DDXCONTEXT;
 /** Pointer to a VMSVGA3D DX context. */
 typedef VMSVGA3DDXCONTEXT *PVMSVGA3DDXCONTEXT;

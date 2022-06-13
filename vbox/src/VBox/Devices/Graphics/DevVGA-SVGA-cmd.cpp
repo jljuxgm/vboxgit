@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA-cmd.cpp 93944 2022-02-24 21:15:14Z vboxsync $ */
+/* $Id: DevVGA-SVGA-cmd.cpp 94146 2022-03-09 12:07:30Z vboxsync $ */
 /** @file
  * VMware SVGA device - implementation of VMSVGA commands.
  */
@@ -1505,8 +1505,7 @@ static int vmsvgaR3TransferSurfaceLevel(PVGASTATECC pThisCC,
                     rc = vmsvgaR3GboWrite(pSvgaR3State, &pMob->Gbo, offMob, pu8Map, dims.cbRow);
                 else
                     rc = vmsvgaR3GboRead(pSvgaR3State, &pMob->Gbo, offMob, pu8Map, dims.cbRow);
-                if (RT_FAILURE(rc))
-                    break;
+                AssertRCBreak(rc);
 
                 pu8Map += map.cbRowPitch;
                 offMob += dims.cbPitch;
