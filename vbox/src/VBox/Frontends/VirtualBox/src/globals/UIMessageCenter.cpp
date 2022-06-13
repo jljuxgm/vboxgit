@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 89933 2021-06-28 16:08:43Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 89944 2021-06-29 09:01:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -3714,7 +3714,7 @@ void UIMessageCenter::sltHandleHelpRequest()
 {
 #if defined(VBOX_WITH_QHELP_VIEWER)
     sltHandleHelpRequestWithKeyword(uiCommon().helpKeyword(sender()));
-#endif /* #if (QT_VERSION >= QT_VERSION_CHECK(5, 9, 0))&& (QT_VERSION >= QT_VERSION_CHECK(5, 9, 0)) */
+#endif
 }
 
 void UIMessageCenter::sltHandleHelpRequestWithKeyword(const QString &strHelpKeyword)
@@ -3727,5 +3727,5 @@ void UIMessageCenter::sltHandleHelpRequestWithKeyword(const QString &strHelpKeyw
         m_pHelpBrowserDialog->showHelpForKeyword(strHelpKeyword);
 #else
     Q_UNUSED(strHelpKeyword);
-# endif /* #if (QT_VERSION >= QT_VERSION_CHECK(5, 9, 0))&& (QT_VERSION >= QT_VERSION_CHECK(5, 9, 0)) */
+# endif
 }
