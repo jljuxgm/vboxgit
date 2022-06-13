@@ -1,4 +1,4 @@
-/* $Id: UIDownloaderExtensionPack.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIDownloaderExtensionPack.cpp 90491 2021-08-03 09:56:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDownloaderExtensionPack class implementation.
  */
@@ -176,7 +176,7 @@ void UIDownloaderExtensionPack::handleVerifiedObject(UINetworkReply *pReply)
 
         /* Ask the user for another location for the extension-pack file: */
         QString strTarget = QIFileDialog::getExistingDirectory(QFileInfo(target()).absolutePath(),
-                                                               windowManager().networkManagerOrMainWindowShown(),
+                                                               windowManager().mainWindowShown(),
                                                                tr("Select folder to save %1 to").arg(GUI_ExtPackName), true);
 
         /* Check if user had really set a new target: */

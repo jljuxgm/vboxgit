@@ -1,4 +1,4 @@
-/* $Id: UIDownloaderAdditions.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIDownloaderAdditions.cpp 90491 2021-08-03 09:56:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDownloaderAdditions class implementation.
  */
@@ -192,7 +192,7 @@ void UIDownloaderAdditions::handleVerifiedObject(UINetworkReply *pReply)
             msgCenter().cannotSaveGuestAdditions(source().toString(), QDir::toNativeSeparators(target()));
             /* Ask the user for another location for the additions-image file: */
             const QString strTarget = QIFileDialog::getExistingDirectory(QFileInfo(target()).absolutePath(),
-                                                                         windowManager().networkManagerOrMainWindowShown(),
+                                                                         windowManager().mainWindowShown(),
                                                                          tr("Select folder to save Guest Additions image to"), true);
 
             /* Check if user had really set a new target (and exit in opposite case): */

@@ -1,4 +1,4 @@
-/* $Id: UIModalWindowManager.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIModalWindowManager.h 90491 2021-08-03 09:56:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIModalWindowManager class declaration.
  */
@@ -61,10 +61,6 @@ public:
     void setMainWindowShown(QWidget *pWindow) { m_pMainWindowShown = pWindow; }
     /** Returns the main application window shown. */
     QWidget *mainWindowShown() const { return m_pMainWindowShown; }
-#ifdef VBOX_GUI_WITH_NETWORK_MANAGER
-    /** Returns network manager or main window shown. */
-    QWidget* networkManagerOrMainWindowShown() const;
-#endif
 
 private slots:
 

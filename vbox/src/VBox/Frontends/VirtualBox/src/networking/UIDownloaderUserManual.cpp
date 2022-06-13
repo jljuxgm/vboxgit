@@ -1,4 +1,4 @@
-/* $Id: UIDownloaderUserManual.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIDownloaderUserManual.cpp 90491 2021-08-03 09:56:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDownloaderUserManual class implementation.
  */
@@ -119,7 +119,7 @@ void UIDownloaderUserManual::handleDownloadedObject(UINetworkReply *pReply)
 
         /* Ask the user for another location for the user-manual file: */
         QString strTarget = QIFileDialog::getExistingDirectory(QFileInfo(target()).absolutePath(),
-                                                               windowManager().networkManagerOrMainWindowShown(),
+                                                               windowManager().mainWindowShown(),
                                                                tr("Select folder to save User Manual to"), true);
 
         /* Check if user had really set a new target: */

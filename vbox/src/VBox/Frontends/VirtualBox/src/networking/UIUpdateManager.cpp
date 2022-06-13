@@ -1,4 +1,4 @@
-/* $Id: UIUpdateManager.cpp 87251 2021-01-14 16:20:01Z vboxsync $ */
+/* $Id: UIUpdateManager.cpp 90491 2021-08-03 09:56:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUpdateManager class implementation.
  */
@@ -490,7 +490,7 @@ void UIUpdateStepVirtualBoxExtensionPack::sltHandleDownloadedExtensionPack(const
 {
     /* Warn the user about extension pack was downloaded and saved, propose to install it: */
     if (msgCenter().proposeInstallExtentionPack(GUI_ExtPackName, strSource, QDir::toNativeSeparators(strTarget)))
-        uiCommon().doExtPackInstallation(strTarget, strDigest, windowManager().networkManagerOrMainWindowShown(), NULL);
+        uiCommon().doExtPackInstallation(strTarget, strDigest, windowManager().mainWindowShown(), NULL);
     /* Propose to delete the downloaded extension pack: */
     if (msgCenter().proposeDeleteExtentionPack(QDir::toNativeSeparators(strTarget)))
     {

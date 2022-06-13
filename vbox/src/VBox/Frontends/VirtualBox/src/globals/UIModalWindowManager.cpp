@@ -1,4 +1,4 @@
-/* $Id: UIModalWindowManager.cpp 86996 2020-11-26 16:54:39Z vboxsync $ */
+/* $Id: UIModalWindowManager.cpp 90491 2021-08-03 09:56:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIModalWindowManager class implementation.
  */
@@ -71,14 +71,6 @@ UIModalWindowManager::~UIModalWindowManager()
     /* Unassign instance: */
     s_pInstance = 0;
 }
-
-#ifdef VBOX_GUI_WITH_NETWORK_MANAGER
-QWidget *UIModalWindowManager::networkManagerOrMainWindowShown() const
-{
-    /* Return main application window before network-manager initialization: */
-    return gNetworkManager && gNetworkManager->window()->isVisible() ? gNetworkManager->window() : mainWindowShown();
-}
-#endif /* VBOX_GUI_WITH_NETWORK_MANAGER */
 
 QWidget *UIModalWindowManager::realParentWindow(QWidget *pWidget)
 {
