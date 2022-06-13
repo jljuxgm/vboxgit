@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-darwin.cpp 93825 2022-02-17 12:27:36Z vboxsync $ */
+/* $Id: NEMR3Native-darwin.cpp 93826 2022-02-17 12:28:34Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, native ring-3 macOS backend using Hypervisor.framework.
  *
@@ -1365,7 +1365,7 @@ DECL_FORCE_INLINE(bool) nemR3DarwinIsVmxLbr(PCVMCC pVM)
 #define IN_NEM_DARWIN
 //#define HMVMX_ALWAYS_TRAP_ALL_XCPTS
 //#define HMVMX_ALWAYS_SYNC_FULL_GUEST_STATE
-#define HMVMX_ALWAYS_INTERCEPT_CR3_ACCESS /* Temporary to investigate an issue with 32bit guests whete seem to end up with an invalid page table root address. */
+//#define HMVMX_ALWAYS_INTERCEPT_CR3_ACCESS
 #define VCPU_2_VMXSTATE(a_pVCpu)            (a_pVCpu)->nem.s
 #define VCPU_2_VMXSTATS(a_pVCpu)            (*(a_pVCpu)->nem.s.pVmxStats)
 
