@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerGuestTable.cpp 92894 2021-12-14 11:29:31Z vboxsync $ */
+/* $Id: UIFileManagerGuestTable.cpp 92895 2021-12-14 11:35:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerGuestTable class implementation.
  */
@@ -1261,10 +1261,8 @@ void UIFileManagerGuestTable::sltGuestSessionStateChanged(const CGuestSessionSta
     if (cEvent.isOk())
     {
         CVirtualBoxErrorInfo cErrorInfo = cEvent.GetError();
-        if (cErrorInfo.isOk() && !cErrorInfo.GetText().contains("success", Qt::CaseInsensitive))
-            emit sigLogOutput(cErrorInfo.GetText(), m_strTableName, FileManagerLogType_Error);
         if (cErrorInfo.GetResultCode() == VERR_AUTHENTICATION_FAILURE)
-            printf("boooooooooooo %d\n", cErrorInfo.GetResultCode());
+            emit sigLogOutput(cErrorInfo.GetText(), m_strTableName, FileManagerLogType_Error);
     }
     if (m_comGuestSession.isOk())
     {
