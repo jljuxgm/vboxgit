@@ -1,4 +1,4 @@
-/* $Id: UpdateAgentImpl.cpp 94716 2022-04-27 08:27:17Z vboxsync $ */
+/* $Id: UpdateAgentImpl.cpp 94723 2022-04-27 14:18:37Z vboxsync $ */
 /** @file
  * IUpdateAgent COM class implementations.
  */
@@ -620,6 +620,15 @@ HRESULT UpdateAgent::getIsCheckNeeded(BOOL *aCheckNeeded)
     return S_OK;
 }
 
+HRESULT UpdateAgent::getSupportedChannels(std::vector<UpdateChannel_T> &aSupportedChannels)
+{
+    /* No need to take the read lock, as m_enmChannels is const. */
+
+    aSupportedChannels = mData.m_enmChannels;
+
+    return S_OK;
+}
+
 
 /*********************************************************************************************************************************
 *   Internal helper methods of update agent class                                                                                *
@@ -789,6 +798,15 @@ HRESULT HostUpdateAgent::init(VirtualBox *aVirtualBox)
      ** @todo Add more stuff later here. */
     mData.m_strName = "VirtualBox";
     mData.m_fHidden = false;
+
+    const UpdateChannel_T aChannels[] =
+ 	{
+ 	    UpdateChannel_Stable,
+ 	    UpdateChannel_All,
+ 	    UpdateChannel_WithBetas
+        /** @todo Add UpdateChannel_WithTesting once it's implemented on the backend. */
+ 	};
+    unconst(mData.m_enmChannels).assign(aChannels, aChannels + RT_ELEMENTS(aChannels));
 
     /* Set default repository. */
     m->strRepoUrl = "https://update.virtualbox.org";

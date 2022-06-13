@@ -1,4 +1,4 @@
-/* $Id: UpdateAgentImpl.h 94704 2022-04-25 10:28:46Z vboxsync $ */
+/* $Id: UpdateAgentImpl.h 94723 2022-04-27 14:18:37Z vboxsync $ */
 /** @file
  * Update agent COM class implementation - Header
  */
@@ -87,12 +87,13 @@ protected:
 
     struct Data
     {
-        UpdateAgentTaskResult m_lastResult;
-
-        Utf8Str               m_strName;
-        bool                  m_fHidden;
-        UpdateState_T         m_enmState;
-        uint32_t              m_uOrder;
+        UpdateAgentTaskResult              m_lastResult;
+        Utf8Str                            m_strName;
+        /** Vector of update channels this agent supports. */
+        const std::vector<UpdateChannel_T> m_enmChannels;
+        bool                               m_fHidden;
+        UpdateState_T                      m_enmState;
+        uint32_t                           m_uOrder;
 
         Data(void)
         {
@@ -170,6 +171,7 @@ protected:
     HRESULT setProxyURL(const com::Utf8Str &aAddress);
     HRESULT getLastCheckDate(com::Utf8Str &aData);
     HRESULT getIsCheckNeeded(BOOL *aCheckNeeded);
+    HRESULT getSupportedChannels(std::vector<UpdateChannel_T> &aSupportedChannels);
     /** @} */
 };
 
