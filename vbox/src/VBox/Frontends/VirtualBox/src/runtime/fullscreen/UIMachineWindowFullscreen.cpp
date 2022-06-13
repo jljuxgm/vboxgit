@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.cpp 93342 2022-01-19 12:26:59Z vboxsync $ */
+/* $Id: UIMachineWindowFullscreen.cpp 93366 2022-01-20 17:13:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowFullscreen class implementation.
  */
@@ -221,12 +221,7 @@ void UIMachineWindowFullscreen::sltShowMinimized()
 void UIMachineWindowFullscreen::prepareNotificationCenter()
 {
     if (gpNotificationCenter && (m_uScreenId == 0))
-    {
         gpNotificationCenter->setParent(centralWidget());
-        disconnect(gpNotificationCenter, &UINotificationCenter::sigAnimationStep, 0, 0);
-        connect(gpNotificationCenter, &UINotificationCenter::sigAnimationStep,
-                this, &UIMachineWindowFullscreen::sltHandleNotificationCenterAnimationStep);
-    }
 }
 
 void UIMachineWindowFullscreen::prepareVisualState()

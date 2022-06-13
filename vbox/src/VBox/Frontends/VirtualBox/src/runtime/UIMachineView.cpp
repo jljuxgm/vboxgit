@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 93342 2022-01-19 12:26:59Z vboxsync $ */
+/* $Id: UIMachineView.cpp 93366 2022-01-20 17:13:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -246,11 +246,6 @@ void UIMachineView::applyMachineViewScaleFactor()
 double UIMachineView::aspectRatio() const
 {
     return frameBuffer() ? (double)(frameBuffer()->width()) / frameBuffer()->height() : 0;
-}
-
-void UIMachineView::updateView()
-{
-    viewport()->update();
 }
 
 void UIMachineView::updateViewport()

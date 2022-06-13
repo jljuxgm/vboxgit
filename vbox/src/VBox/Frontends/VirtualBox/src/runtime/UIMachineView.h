@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.h 93342 2022-01-19 12:26:59Z vboxsync $ */
+/* $Id: UIMachineView.h 93366 2022-01-20 17:13:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class declaration.
  */
@@ -101,9 +101,6 @@ public:
     /* Framebuffer aspect ratio: */
     double aspectRatio() const;
 
-    /** Updates machine-view's viewport.
-      * @remarks Used to update in case of notification-center animation. */
-    void updateView();
     /** Updates console's display viewport.
       * @remarks Used to update 3D-service overlay viewport as well. */
     void updateViewport();

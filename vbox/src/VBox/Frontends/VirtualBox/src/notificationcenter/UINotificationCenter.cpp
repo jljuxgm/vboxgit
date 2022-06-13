@@ -1,4 +1,4 @@
-/* $Id: UINotificationCenter.cpp 93342 2022-01-19 12:26:59Z vboxsync $ */
+/* $Id: UINotificationCenter.cpp 93366 2022-01-20 17:13:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINotificationCenter class implementation.
  */
@@ -762,7 +762,6 @@ void UINotificationCenter::setAnimatedValue(int iValue)
 {
     m_iAnimatedValue = iValue;
     adjustGeometry();
-    emit sigAnimationStep();
 }
 
 int UINotificationCenter::animatedValue() const

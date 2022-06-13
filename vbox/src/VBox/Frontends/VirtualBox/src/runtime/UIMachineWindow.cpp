@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 93342 2022-01-19 12:26:59Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 93366 2022-01-20 17:13:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class implementation.
  */
@@ -177,26 +177,6 @@ void UIMachineWindow::sltMachineStateChanged()
 {
     /* Update window-title: */
     updateAppearanceOf(UIVisualElement_WindowTitle);
-}
-
-void UIMachineWindow::sltHandleNotificationCenterAnimationStep()
-{
-    /* For certain machine states: */
-    const KMachineState enmState = uisession()->machineState();
-    switch (enmState)
-    {
-        /* Like those related to paused VM: */
-        case KMachineState_Paused:
-        case KMachineState_TeleportingPausedVM:
-        {
-            /* Update view's viewport, cause we have pause screenshot
-             * distorted with animation artifacts. */
-            machineView()->updateView();
-            break;
-        }
-        default:
-            break;
-    }
 }
 
 UIMachineWindow::UIMachineWindow(UIMachineLogic *pMachineLogic, ulong uScreenId)
