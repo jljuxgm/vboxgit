@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportApp.cpp 89979 2021-06-30 13:24:20Z vboxsync $ */
+/* $Id: UIWizardExportApp.cpp 90344 2021-07-26 18:26:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportApp class implementation.
  */
@@ -24,6 +24,7 @@
 #include "UIAddDiskEncryptionPasswordDialog.h"
 #include "UIMessageCenter.h"
 #include "UIModalWindowManager.h"
+#include "UINotificationCenter.h"
 #include "UIWizardExportApp.h"
 #include "UIWizardExportAppDefs.h"
 #include "UIWizardExportAppPageBasic1.h"
@@ -348,33 +349,29 @@ bool UIWizardExportApp::exportVMs(CAppliance &comAppliance)
              * there was wizard and it was rejected: */
             if (iWizardResult == QDialog::Rejected)
                 break;
-        }
 
-        /* Prepare Export VM progress: */
-        CProgress comProgress = comAppliance.Write(field("format").toString(), options, uri());
-        if (!comAppliance.isOk())
-        {
-            msgCenter().cannotExportAppliance(comAppliance, this);
-            break;
-        }
+            /* Prepare Export VM progress: */
+            CProgress comProgress = comAppliance.Write(field("format").toString(), options, uri());
+            if (!comAppliance.isOk())
+            {
+                msgCenter().cannotExportAppliance(comAppliance, this);
+                break;
+            }
 
-        /* Show Export VM progress: */
-        msgCenter().showModalProgressDialog(comProgress, QApplication::translate("UIWizardExportApp", "Exporting Appliance ..."),
-                                            ":/progress_export_90px.png", this);
-        if (comProgress.GetCanceled())
-            break;
-        if (!comProgress.isOk() || comProgress.GetResultCode() != 0)
-        {
-            msgCenter().cannotExportAppliance(comProgress, comAppliance.GetPath(), this);
-            break;
-        }
+            /* Show Export VM progress: */
+            msgCenter().showModalProgressDialog(comProgress, QApplication::translate("UIWizardExportApp", "Exporting Appliance ..."),
+                                                ":/progress_export_90px.png", this);
+            if (comProgress.GetCanceled())
+                break;
+            if (!comProgress.isOk() || comProgress.GetResultCode() != 0)
+            {
+                msgCenter().cannotExportAppliance(comProgress, comAppliance.GetPath(), this);
+                break;
+            }
 
-        /* Is this VM being exported to cloud? */
-        if (field("isFormatCloudOne").toBool())
-        {
             /* We can have wizard and it's result
              * should be distinguishable: */
-            int iWizardResult = -1;
+            iWizardResult = -1;
 
             switch (field("cloudExportMode").value<CloudExportMode>())
             {
@@ -408,6 +405,16 @@ bool UIWizardExportApp::exportVMs(CAppliance &comAppliance)
              * there was wizard and it was rejected: */
             if (iWizardResult == QDialog::Rejected)
                 break;
+        }
+        /* Is this VM being exported locally? */
+        else
+        {
+            /* Export appliance: */
+            UINotificationProgressApplianceExport *pNotification = new UINotificationProgressApplianceExport(comAppliance,
+                                                                                                             field("format").toString(),
+                                                                                                             options,
+                                                                                                             uri());
+            notificationCenter().append(pNotification);
         }
 
         /* Success finally: */
