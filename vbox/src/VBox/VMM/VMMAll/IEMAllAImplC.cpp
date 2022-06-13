@@ -1,4 +1,4 @@
-/* $Id: IEMAllAImplC.cpp 94568 2022-04-12 09:38:06Z vboxsync $ */
+/* $Id: IEMAllAImplC.cpp 94570 2022-04-12 09:42:58Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in Assembly, portable C variant.
  */
@@ -449,7 +449,7 @@ uint8_t const g_afParity[256] =
 extern const RTFLOAT80U  g_ar80Zero[];
 extern const RTFLOAT80U  g_ar80One[];
 extern const RTFLOAT80U  g_r80Indefinite;
-extern const RTFLOAT80U  g_r80Infinity;
+extern const RTFLOAT80U  g_ar80Infinity[];
 extern const RTFLOAT128U g_r128Ln2;
 extern const RTUINT128U  g_u128Ln2Mantissa;
 extern const RTUINT128U  g_u128Ln2MantissaIntel;
