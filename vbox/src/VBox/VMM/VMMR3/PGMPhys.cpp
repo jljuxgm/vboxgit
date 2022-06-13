@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 92424 2021-11-15 13:09:17Z vboxsync $ */
+/* $Id: PGMPhys.cpp 92435 2021-11-15 17:14:06Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -1796,10 +1796,10 @@ VMMR3DECL(int) PGMR3PhysRegisterRam(PVM pVM, RTGCPHYS GCPhys, RTGCPHYS cb, const
          *
          * Note! The sizes used here will influence the saved state.
          */
-        uint32_t cbChunk = 16U*_1M;
+        uint32_t cbChunk = _16M;
         uint32_t cPagesPerChunk = 1047552; /* max ~1048059 */
         Assert(cPagesPerChunk / 512 * 512 == cPagesPerChunk); /* NEM large page requirement */
-        AssertCompile(sizeof(PGMRAMRANGE) + sizeof(PGMPAGE) * 1047552 < 16U*_1M - PAGE_SIZE * 2);
+        AssertCompile(sizeof(PGMRAMRANGE) + sizeof(PGMPAGE) * 1047552 < _16M - PAGE_SIZE * 2);
         AssertRelease(RT_UOFFSETOF_DYN(PGMRAMRANGE, aPages[cPagesPerChunk]) + PAGE_SIZE * 2 <= cbChunk);
 
         RTGCPHYS cPagesLeft  = cPages;
