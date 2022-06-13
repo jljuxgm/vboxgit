@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibDrmClient.cpp 93467 2022-01-27 20:49:52Z vboxsync $ */
+/* $Id: VBoxGuestR3LibDrmClient.cpp 94305 2022-03-18 12:05:59Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, DRM client handling.
  */
@@ -166,6 +166,21 @@ VBGLR3DECL(int) VbglR3DrmLegacyClientStart(void)
 {
 #if defined(RT_OS_LINUX)
     const char *apszArgs[3] = { VBOX_DRMCLIENT_LEGACY_EXECUTABLE, "--vmsvga", NULL };
+    return VbglR3DrmStart(VBOX_DRMCLIENT_LEGACY_EXECUTABLE, apszArgs);
+#else
+    return VERR_NOT_SUPPORTED;
+#endif
+}
+
+/**
+ * Starts (executes) the legacy X11 resizing agent process ("VBoxClient --display").
+ *
+ * @returns VBox status code.
+ */
+VBGLR3DECL(int) VbglR3DrmLegacyX11AgentStart(void)
+{
+#if defined(RT_OS_LINUX)
+    const char *apszArgs[3] = { VBOX_DRMCLIENT_LEGACY_EXECUTABLE, "--display", NULL };
     return VbglR3DrmStart(VBOX_DRMCLIENT_LEGACY_EXECUTABLE, apszArgs);
 #else
     return VERR_NOT_SUPPORTED;
