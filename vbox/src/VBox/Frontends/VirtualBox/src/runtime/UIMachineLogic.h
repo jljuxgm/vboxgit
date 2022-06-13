@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 90024 2021-07-05 12:16:59Z vboxsync $ */
+/* $Id: UIMachineLogic.h 90856 2021-08-24 18:08:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -293,6 +293,8 @@ private slots:
     void sltPause(bool fOn);
     void sltDetach();
     void sltSaveState();
+    /** Handles machine state saved. */
+    void sltHandleMachineStateSaved(bool fSuccess);
     void sltShutdown();
     void sltPowerOff();
     void sltClose();

@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 90855 2021-08-24 17:51:34Z vboxsync $ */
+/* $Id: UINotificationObjects.cpp 90856 2021-08-24 18:08:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -965,6 +965,9 @@ void UINotificationProgressMachineSaveState::sltHandleProgressFinished()
     /* Unlock session finally: */
     if (m_comSession.isNotNull())
         m_comSession.UnlockMachine();
+
+    /* Notifies listeners: */
+    emit sigMachineStateSaved(error().isEmpty());
 }
 
 

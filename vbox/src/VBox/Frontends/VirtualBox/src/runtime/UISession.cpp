@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 90695 2021-08-16 13:09:37Z vboxsync $ */
+/* $Id: UISession.cpp 90856 2021-08-24 18:08:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -324,31 +324,6 @@ bool UISession::powerUp()
 bool UISession::detach()
 {
     /* Nothing here for now: */
-    return true;
-}
-
-bool UISession::saveState()
-{
-    /* Prepare the saving progress: */
-    CProgress progress = machine().SaveState();
-    if (machine().isOk())
-    {
-        /* Show the saving progress: */
-        msgCenter().showModalProgressDialog(progress, machineName(), ":/progress_state_save_90px.png");
-        if (!progress.isOk() || progress.GetResultCode() != 0)
-        {
-            /* Failed in progress: */
-            msgCenter().cannotSaveMachineState(progress, machineName());
-            return false;
-        }
-    }
-    else
-    {
-        /* Failed in console: */
-        msgCenter().cannotSaveMachineState(machine());
-        return false;
-    }
-    /* Passed: */
     return true;
 }
 
