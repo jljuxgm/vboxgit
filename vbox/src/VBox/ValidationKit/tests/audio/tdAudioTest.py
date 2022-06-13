@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tdAudioTest.py 91054 2021-09-01 10:38:17Z vboxsync $
+# $Id: tdAudioTest.py 91056 2021-09-01 11:40:48Z vboxsync $
 
 """
 AudioTest test driver which invokes the VKAT (Validation Kit Audio Test)
@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 91054 $"
+__version__ = "$Revision: 91056 $"
 
 # Standard Python imports.
 import os
@@ -245,13 +245,9 @@ class tdAudioTest(vbox.TestDriver):
             iExitCode = oProcess.poll();
             if iExitCode:
                 if iExitCode == 0:
-                    reporter.error('Executing \"%s\" was successful' % (sWhat));
                     fRc = True;
                 else:
                     reporter.error('Executing \"%s\" on host returned exit code error %d' % (sWhat, iExitCode));
-
-        if not fRc:
-            reporter.error('Executing \"%s\" on host failed' % (sWhat,));
 
         return fRc;
 
