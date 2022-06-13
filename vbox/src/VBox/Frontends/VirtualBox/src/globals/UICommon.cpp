@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 90375 2021-07-28 15:41:48Z vboxsync $ */
+/* $Id: UICommon.cpp 90452 2021-08-01 09:03:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -4143,8 +4143,18 @@ void UICommon::sltGUILanguageChange(QString strLanguage)
 
 void UICommon::sltHandleMediumCreated(const CMedium &comMedium)
 {
-    /* Make sure we cached created medium in GUI: */
-    createMedium(UIMedium(comMedium, UIMediumDeviceType_HardDisk, KMediumState_Created));
+    /* Acquire device type: */
+    const KDeviceType enmDeviceType = comMedium.GetDeviceType();
+    if (!comMedium.isOk())
+        msgCenter().cannotAcquireMediumAttribute(comMedium);
+    else
+    {
+        /* Convert to medium type: */
+        const UIMediumDeviceType enmMediumType = mediumTypeToLocal(enmDeviceType);
+
+        /* Make sure we cached created medium in GUI: */
+        createMedium(UIMedium(comMedium, enmMediumType, KMediumState_Created));
+    }
 }
 
 void UICommon::sltHandleMachineCreated(const CMachine &comMachine)
