@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 91930 2021-10-21 10:12:30Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 91935 2021-10-21 11:08:45Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -128,6 +128,25 @@ static DECLCALLBACK(uint32_t) pdmR3DevHlp_IoPortGetMappingAddress(PPDMDEVINS pDe
 
     LogFlow(("pdmR3DevHlp_IoPortGetMappingAddress: caller='%s'/%d: returns %#RX32\n", pDevIns->pReg->szName, pDevIns->iInstance, uAddress));
     return uAddress;
+}
+
+
+/** @interface_method_impl{PDMDEVHLPR3,pfnIoPortWrite} */
+static DECLCALLBACK(VBOXSTRICTRC) pdmR3DevHlp_IoPortWrite(PPDMDEVINS pDevIns, RTIOPORT Port, uint32_t u32Value, size_t cbValue)
+{
+    PDMDEV_ASSERT_DEVINS(pDevIns);
+    LogFlow(("pdmR3DevHlp_IoPortWrite: caller='%s'/%d:\n", pDevIns->pReg->szName, pDevIns->iInstance));
+    PVM pVM = pDevIns->Internal.s.pVMR3;
+    VM_ASSERT_EMT_RETURN(pVM, VERR_VM_THREAD_NOT_EMT);
+
+    PVMCPU pVCpu = VMMGetCpu(pVM);
+    AssertPtrReturn(pVCpu, VERR_ACCESS_DENIED);
+
+    VBOXSTRICTRC rcStrict = IOMIOPortWrite(pVM, pVCpu, Port, u32Value, cbValue);
+
+    LogFlow(("pdmR3DevHlp_IoPortWrite: caller='%s'/%d: returns %Rrc\n",
+             pDevIns->pReg->szName, pDevIns->iInstance, VBOXSTRICTRC_VAL(rcStrict)));
+    return rcStrict;
 }
 
 
@@ -4584,6 +4603,7 @@ const PDMDEVHLPR3 g_pdmR3DevHlpTrusted =
     pdmR3DevHlp_IoPortMap,
     pdmR3DevHlp_IoPortUnmap,
     pdmR3DevHlp_IoPortGetMappingAddress,
+    pdmR3DevHlp_IoPortWrite,
     pdmR3DevHlp_MmioCreateEx,
     pdmR3DevHlp_MmioMap,
     pdmR3DevHlp_MmioUnmap,
@@ -4965,6 +4985,7 @@ const PDMDEVHLPR3 g_pdmR3DevHlpTracing =
     pdmR3DevHlpTracing_IoPortMap,
     pdmR3DevHlpTracing_IoPortUnmap,
     pdmR3DevHlp_IoPortGetMappingAddress,
+    pdmR3DevHlp_IoPortWrite,
     pdmR3DevHlpTracing_MmioCreateEx,
     pdmR3DevHlpTracing_MmioMap,
     pdmR3DevHlpTracing_MmioUnmap,
@@ -5617,6 +5638,7 @@ const PDMDEVHLPR3 g_pdmR3DevHlpUnTrusted =
     pdmR3DevHlp_IoPortMap,
     pdmR3DevHlp_IoPortUnmap,
     pdmR3DevHlp_IoPortGetMappingAddress,
+    pdmR3DevHlp_IoPortWrite,
     pdmR3DevHlp_MmioCreateEx,
     pdmR3DevHlp_MmioMap,
     pdmR3DevHlp_MmioUnmap,
