@@ -1,4 +1,4 @@
-/* $Id: UIFDCreationDialog.h 91349 2021-09-23 12:01:00Z vboxsync $ */
+/* $Id: UIFDCreationDialog.h 91350 2021-09-23 14:09:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFDCreationDialog class declaration.
  */
@@ -95,15 +95,15 @@ private:
     QString  m_strMachineName;
 
     /** Holds the path label instance. */
-    QLabel             *m_pLabelPath;
+    QLabel             *m_pPathLabel;
     /** Holds the file path selector instance. */
     UIFilePathSelector *m_pFilePathSelector;
     /** Holds the size label instance. */
     QLabel             *m_pSizeLabel;
     /** Holds the size combo instance. */
-    QComboBox          *m_pComboSize;
+    QComboBox          *m_pSizeCombo;
     /** Holds the format check-box instance. */
-    QCheckBox          *m_pCheckBoxFormat;
+    QCheckBox          *m_pFormatCheckBox;
     /** holds the button-box instance. */
     QDialogButtonBox   *m_pButtonBox;
 
