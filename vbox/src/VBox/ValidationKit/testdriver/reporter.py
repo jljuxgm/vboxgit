@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: reporter.py 92309 2021-11-10 08:27:26Z vboxsync $
+# $Id: reporter.py 92893 2021-12-14 09:22:24Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 92309 $"
+__version__ = "$Revision: 92893 $"
 
 
 # Standard Python imports.
@@ -1409,11 +1409,11 @@ class FileWrapperTestPipe(object):
 # The public APIs.
 #
 
-def log(sText):
+def log(sText, sCaller = None):
     """Writes the specfied text to the log."""
     g_oLock.acquire();
     try:
-        rc = g_oReporter.log(1, sText, utils.getCallerName(), utils.getTimePrefix());
+        rc = g_oReporter.log(1, sText, sCaller if sCaller else utils.getCallerName(), utils.getTimePrefix());
     except:
         rc = -1;
     finally:
@@ -1427,11 +1427,11 @@ def logXcpt(sText=None, cFrames=1):
     """
     return logXcptWorker(1, False, "", sText, cFrames);
 
-def log2(sText):
+def log2(sText, sCaller = None):
     """Log level 2: Writes the specfied text to the log."""
     g_oLock.acquire();
     try:
-        rc = g_oReporter.log(2, sText, utils.getCallerName(), utils.getTimePrefix());
+        rc = g_oReporter.log(2, sText, sCaller if sCaller else utils.getCallerName(), utils.getTimePrefix());
     except:
         rc = -1;
     finally:
@@ -1445,11 +1445,11 @@ def log2Xcpt(sText=None, cFrames=1):
     """
     return logXcptWorker(2, False, "", sText, cFrames);
 
-def log3(sText):
+def log3(sText, sCaller = None):
     """Log level 3: Writes the specfied text to the log."""
     g_oLock.acquire();
     try:
-        rc = g_oReporter.log(3, sText, utils.getCallerName(), utils.getTimePrefix());
+        rc = g_oReporter.log(3, sText, sCaller if sCaller else utils.getCallerName(), utils.getTimePrefix());
     except:
         rc = -1;
     finally:
@@ -1463,11 +1463,11 @@ def log3Xcpt(sText=None, cFrames=1):
     """
     return logXcptWorker(3, False, "", sText, cFrames);
 
-def log4(sText):
+def log4(sText, sCaller = None):
     """Log level 4: Writes the specfied text to the log."""
     g_oLock.acquire();
     try:
-        rc = g_oReporter.log(4, sText, utils.getCallerName(), utils.getTimePrefix());
+        rc = g_oReporter.log(4, sText, sCaller if sCaller else utils.getCallerName(), utils.getTimePrefix());
     except:
         rc = -1;
     finally:
@@ -1481,11 +1481,11 @@ def log4Xcpt(sText=None, cFrames=1):
     """
     return logXcptWorker(4, False, "", sText, cFrames);
 
-def log5(sText):
+def log5(sText, sCaller = None):
     """Log level 2: Writes the specfied text to the log."""
     g_oLock.acquire();
     try:
-        rc = g_oReporter.log(5, sText, utils.getCallerName(), utils.getTimePrefix());
+        rc = g_oReporter.log(5, sText, sCaller if sCaller else utils.getCallerName(), utils.getTimePrefix());
     except:
         rc = -1;
     finally:
@@ -1499,11 +1499,11 @@ def log5Xcpt(sText=None, cFrames=1):
     """
     return logXcptWorker(5, False, "", sText, cFrames);
 
-def log6(sText):
+def log6(sText, sCaller = None):
     """Log level 6: Writes the specfied text to the log."""
     g_oLock.acquire();
     try:
-        rc = g_oReporter.log(6, sText, utils.getCallerName(), utils.getTimePrefix());
+        rc = g_oReporter.log(6, sText, sCaller if sCaller else utils.getCallerName(), utils.getTimePrefix());
     except:
         rc = -1;
     finally:
@@ -1520,8 +1520,8 @@ def log6Xcpt(sText=None, cFrames=1):
 def maybeErr(fIsError, sText):
     """ Maybe error or maybe normal log entry. """
     if fIsError is True:
-        return error(sText);
-    return log(sText);
+        return error(sText, sCaller = utils.getCallerName());
+    return log(sText, sCaller = utils.getCallerName());
 
 def maybeErrXcpt(fIsError, sText=None, cFrames=1):
     """ Maybe error or maybe normal log exception entry. """
@@ -1532,8 +1532,8 @@ def maybeErrXcpt(fIsError, sText=None, cFrames=1):
 def maybeLog(fIsNotError, sText):
     """ Maybe error or maybe normal log entry. """
     if fIsNotError is not True:
-        return error(sText);
-    return log(sText);
+        return error(sText, sCaller = utils.getCallerName());
+    return log(sText, sCaller = utils.getCallerName());
 
 def maybeLogXcpt(fIsNotError, sText=None, cFrames=1):
     """ Maybe error or maybe normal log exception entry. """
@@ -1541,7 +1541,7 @@ def maybeLogXcpt(fIsNotError, sText=None, cFrames=1):
         return errorXcpt(sText, cFrames);
     return logXcpt(sText, cFrames);
 
-def error(sText):
+def error(sText, sCaller = None):
     """
     Writes the specfied error message to the log.
 
@@ -1553,7 +1553,7 @@ def error(sText):
     g_oLock.acquire();
     try:
         g_oReporter.testIncErrors();
-        g_oReporter.log(0, '** error: %s' % (sText), utils.getCallerName(), utils.getTimePrefix());
+        g_oReporter.log(0, '** error: %s' % (sText), sCaller if sCaller else utils.getCallerName(), utils.getTimePrefix());
     except:
         pass;
     finally:
