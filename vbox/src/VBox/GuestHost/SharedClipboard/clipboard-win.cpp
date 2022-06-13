@@ -1,4 +1,4 @@
-/* $Id: clipboard-win.cpp 90054 2021-07-06 10:55:23Z vboxsync $ */
+/* $Id: clipboard-win.cpp 92156 2021-10-29 19:12:37Z vboxsync $ */
 /** @file
  * Shared Clipboard: Windows-specific functions for clipboard handling.
  */
@@ -82,7 +82,7 @@ int SharedClipboardWinOpen(HWND hWnd)
     {
         const DWORD dwLastErr = GetLastError();
         rc = RTErrConvertFromWin32(dwLastErr);
-        LogFunc(("Failed to open clipboard, rc=%Rrc (0x%x)\n", rc, dwLastErr));
+        LogRel(("Failed to open clipboard, rc=%Rrc (0x%x)\n", rc, dwLastErr));
     }
 
     return rc;
