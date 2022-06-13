@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tdAudioTest.py 91056 2021-09-01 11:40:48Z vboxsync $
+# $Id: tdAudioTest.py 91063 2021-09-01 15:01:09Z vboxsync $
 
 """
 AudioTest test driver which invokes the VKAT (Validation Kit Audio Test)
@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 91056 $"
+__version__ = "$Revision: 91063 $"
 
 # Standard Python imports.
 import os
@@ -412,8 +412,11 @@ class tdAudioTest(vbox.TestDriver):
         if fRc:
             reporter.log('Using VKAT on guest at \"%s\"' % (sVkatExe));
 
-            asArgs = [ sVkatExe, 'test', '-vv', '--mode', 'guest', '--probe-backends', \
+            asArgs = [ sVkatExe, 'test', '--mode', 'guest', '--probe-backends', \
                                  '--tempdir', sPathAudioTemp, '--outdir', sPathAudioOut ];
+
+            for _ in range(1, reporter.getVerbosity()): # Verbosity always is initialized at 1.
+                asArgs.extend([ '-v' ]);
 
             # Needed for NATed VMs.
             asArgs.extend(['--tcp-connect-addr', '10.0.2.2' ]);
@@ -471,8 +474,11 @@ class tdAudioTest(vbox.TestDriver):
         asEnv  = [ 'VKAT_RELEASE_LOG=all.e.l.l2.l3.f+audio_test.e.l.l2.l3.f' ];
 
         # Build the base command line, exclude all tests by default.
-        asArgs = [ sVkatExe, 'test', '-vv', '--mode', 'host', '--probe-backends', \
+        asArgs = [ sVkatExe, 'test', '--mode', 'host', '--probe-backends', \
                              '--tempdir', sPathAudioTemp, '--outdir', sPathAudioOut, '-a' ];
+
+        for _ in range(1, reporter.getVerbosity()): # Verbosity always is initialized at 1.
+            asArgs.extend([ '-v' ]);
 
         # ... and extend it with wanted tests.
         asArgs.extend(asTests);
