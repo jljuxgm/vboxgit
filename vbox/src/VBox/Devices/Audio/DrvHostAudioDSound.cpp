@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioDSound.cpp 89579 2021-06-09 12:12:05Z vboxsync $ */
+/* $Id: DrvHostAudioDSound.cpp 91020 2021-08-31 08:01:09Z vboxsync $ */
 /** @file
  * Host audio driver - DirectSound (Windows).
  */
@@ -2248,7 +2248,7 @@ static int dsoundGetFreeOut(PDRVHOSTDSOUND pThis, PDSOUNDSTREAM pStreamDS, DWORD
             if (pStreamDS->Out.cbWritten == 0)
                 cbFree = pStreamDS->cbBufSize;
 
-            LogRel3(("DSound: offPlayCursor=%RU32, offWriteCursor=%RU32, offWritePos=%RU32 -> cbFree=%RI32\n",
+            LogRel4(("DSound: offPlayCursor=%RU32, offWriteCursor=%RU32, offWritePos=%RU32 -> cbFree=%RI32\n",
                      offPlayCursor, offWriteCursor, pStreamDS->Out.offWritePos, cbFree));
 
             *pdwFree = cbFree;
