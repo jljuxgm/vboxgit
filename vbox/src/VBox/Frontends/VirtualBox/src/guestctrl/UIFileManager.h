@@ -1,4 +1,4 @@
-/* $Id: UIFileManager.h 92923 2021-12-15 10:18:33Z vboxsync $ */
+/* $Id: UIFileManager.h 92947 2021-12-15 19:15:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManager class declaration.
  */
@@ -116,6 +116,7 @@ private slots:
     void sltHandleHidePanel(UIDialogPanel *pPanel);
     void sltCommitDataSignalReceived();
     void sltFileTableSelectionChanged(bool fHasSelection);
+    void sltCurrentTabChanged(int iIndex);
 
 private:
 
@@ -152,6 +153,8 @@ private:
     void setMachines(const QVector<QUuid> &machineIDs);
     void removeTabs(const QVector<QUuid> &machineIdsToRemove);
     void addTabs(const QVector<QUuid> &machineIdsToAdd);
+    void setVerticalToolBarActionsEnabled();
+    UIFileManagerGuestTable *currentGuestTable();
 
     QVBoxLayout              *m_pMainLayout;
     QSplitter                *m_pVerticalSplitter;

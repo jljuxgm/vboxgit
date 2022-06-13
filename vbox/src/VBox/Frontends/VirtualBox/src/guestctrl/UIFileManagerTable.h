@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.h 92899 2021-12-14 14:55:00Z vboxsync $ */
+/* $Id: UIFileManagerTable.h 92947 2021-12-15 19:15:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class declaration.
  */
@@ -154,6 +154,7 @@ public:
     static QString humanReadableSize(ULONG64 size);
     /** Peroforms whatever is necessary after a UIFileManagerOptions change. */
     void optionsUpdated();
+    bool hasSelection() const;
 
 public slots:
 

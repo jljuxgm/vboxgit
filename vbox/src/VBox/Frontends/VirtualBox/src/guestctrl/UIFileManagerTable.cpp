@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.cpp 92899 2021-12-14 14:55:00Z vboxsync $ */
+/* $Id: UIFileManagerTable.cpp 92947 2021-12-15 19:15:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class implementation.
  */
@@ -1518,6 +1518,13 @@ void UIFileManagerTable::optionsUpdated()
             m_pModel->setShowHumanReadableSizes(pOptions->fShowHumanReadableSizes);
     }
     relist();
+}
+
+bool UIFileManagerTable::hasSelection() const
+{
+    if (m_pView)
+        return m_pView->hasSelection();
+    return false;
 }
 
 void UIFileManagerTable::sltReceiveDirectoryStatistics(UIDirectoryStatistics statistics)
