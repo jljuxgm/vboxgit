@@ -1,4 +1,4 @@
-/* $Id: VUSBInternal.h 93955 2022-02-25 16:13:44Z vboxsync $ */
+/* $Id: VUSBInternal.h 93974 2022-02-28 12:03:21Z vboxsync $ */
 /** @file
  * Virtual USB - Internal header.
  *
@@ -224,8 +224,6 @@ typedef struct VUSBDEV
     VUSBIDEVICE         IDevice;
     /** Pointer to the PDM USB device instance. */
     PPDMUSBINS          pUsbIns;
-    /** Next device in the chain of devices with the default address. */
-    PVUSBDEV            pNextDefAddr;
     /** Pointer to the hub this device is attached to. */
     PVUSBHUB            pHub;
     /** The device state. */
