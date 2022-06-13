@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 92789 2021-12-07 13:41:23Z vboxsync $
+# $Id: tdUnitTest1.py 92836 2021-12-08 21:44:09Z vboxsync $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 92789 $"
+__version__ = "$Revision: 92836 $"
 
 
 # Standard Python imports.
@@ -120,7 +120,8 @@ class tdUnitTest1(vbox.TestDriver):
     kdTestCasesBlackList = {
         'testcase/tstClipboardX11Smoke': '',            # (Old naming, deprecated) Needs X, not available on all test boxes.
         'testcase/tstClipboardGH-X11Smoke': '',         # (New name) Ditto.
-        'testcase/tstClipboardQt': '',                  # Is interactive and needs Qt, needed for Qt clipboard bugfixing.
+        'tstClipboardQt': '',                           # Is interactive and needs Qt, needed for Qt clipboard bugfixing.
+        'testcase/tstClipboardQt': '',                  # In case it moves here.
         'testcase/tstFileLock': '',
         'testcase/tstDisasm-2': '',                     # without parameters it will disassembler 1GB starting from 0
         'testcase/tstFileAppendWin-1': '',
