@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIActionPoolManager.cpp 93473 2022-01-28 12:44:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class implementation.
  */
@@ -3835,6 +3835,10 @@ void UIActionPoolManager::updateMenus()
     /* 'Activity' menu: */
     addMenu(m_mainMenus, action(UIActionIndex_M_Activity));
     updateMenuVMActivityMonitor();
+
+    /* 'File Manager' menu*/
+    addMenu(m_mainMenus, action(UIActionIndex_M_FileManager));
+    updateMenuFileManager();
 
     /* 'Help' menu: */
     addMenu(m_mainMenus, action(UIActionIndex_Menu_Help));

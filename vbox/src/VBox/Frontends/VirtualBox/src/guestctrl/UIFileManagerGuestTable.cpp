@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerGuestTable.cpp 93442 2022-01-26 16:31:56Z vboxsync $ */
+/* $Id: UIFileManagerGuestTable.cpp 93473 2022-01-28 12:44:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerGuestTable class implementation.
  */
@@ -1397,23 +1397,29 @@ void UIFileManagerGuestTable::setSessionDependentWidgetsEnabled()
         case State_NoGuestAdditions:
             setSessionWidgetsEnabled(false);
             m_pWarningLabelContainer->setVisible(true);
-            m_pGuestSessionPanel->setEnabled(false);
             if (m_pGuestSessionPanel)
+            {
+                m_pGuestSessionPanel->setEnabled(false);
                 m_pGuestSessionPanel->switchSessionCreateMode();
+            }
             break;
         case State_SessionPossible:
             setSessionWidgetsEnabled(false);
             m_pWarningLabelContainer->setVisible(true);
-            m_pGuestSessionPanel->setEnabled(true);
             if (m_pGuestSessionPanel)
+            {
+                m_pGuestSessionPanel->setEnabled(true);
                 m_pGuestSessionPanel->switchSessionCreateMode();
+            }
             break;
         case State_SessionRunning:
             setSessionWidgetsEnabled(true);
             m_pWarningLabelContainer->setVisible(false);
-            m_pGuestSessionPanel->setEnabled(true);
             if (m_pGuestSessionPanel)
+            {
                 m_pGuestSessionPanel->switchSessionCloseMode();
+                m_pGuestSessionPanel->setEnabled(true);
+            }
             break;
         default:
             break;
