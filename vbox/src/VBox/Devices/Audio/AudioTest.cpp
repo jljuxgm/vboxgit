@@ -1,4 +1,4 @@
-/* $Id: AudioTest.cpp 92298 2021-11-09 18:10:13Z vboxsync $ */
+/* $Id: AudioTest.cpp 92337 2021-11-10 18:50:53Z vboxsync $ */
 /** @file
  * Audio testing routines.
  *
@@ -2770,7 +2770,13 @@ static int audioTestVerifyTestToneData(PAUDIOTESTVERIFYJOB pVerJob, PAUDIOTESTOB
         FileA.offStart = offBeaconAbs;
         FileA.cbSize   = cbFileSizeA - FileA.offStart;
         rc = audioTestToneVerifyBeacon(pVerJob, phTestA->enmTestType == AUDIOTESTTYPE_TESTTONE_PLAY /* fIn */,
-                                       false /* fPre */, &FileA, &ToneParmsA, NULL);
+                                       false /* fPre */, &FileA, &ToneParmsA, &offBeaconAbs);
+        if (RT_SUCCESS(rc))
+        {
+            /* Adjust the size of the area to compare so that it's within the pre + post beacons. */
+            Assert(offBeaconAbs >= FileA.offStart);
+            FileA.cbSize = offBeaconAbs - FileA.offStart;
+        }
     }
 
     rc = audioTestToneVerifyBeacon(pVerJob, phTestB->enmTestType == AUDIOTESTTYPE_TESTTONE_RECORD /* fIn */,
@@ -2780,7 +2786,13 @@ static int audioTestVerifyTestToneData(PAUDIOTESTVERIFYJOB pVerJob, PAUDIOTESTOB
         FileB.offStart = offBeaconAbs;
         FileB.cbSize   = cbFileSizeB - FileB.offStart;
         rc = audioTestToneVerifyBeacon(pVerJob, phTestB->enmTestType == AUDIOTESTTYPE_TESTTONE_RECORD /* fIn */,
-                                       false /* fPre */, &FileB, &ToneParmsB, NULL);
+                                       false /* fPre */, &FileB, &ToneParmsB, &offBeaconAbs);
+        if (RT_SUCCESS(rc))
+        {
+            /* Adjust the size of the area to compare so that it's within the pre + post beacons. */
+            Assert(offBeaconAbs >= FileB.offStart);
+            FileB.cbSize = offBeaconAbs - FileB.offStart;
+        }
     }
 
     if (RT_SUCCESS(rc))
