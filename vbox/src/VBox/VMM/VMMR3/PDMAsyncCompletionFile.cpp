@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFile.cpp 87766 2021-02-16 14:27:43Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFile.cpp 93087 2021-12-27 10:02:49Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -147,7 +147,7 @@ PPDMACTASKFILE pdmacFileTaskAlloc(PPDMASYNCCOMPLETIONENDPOINTFILE pEndpoint)
         if (RT_FAILURE(rc))
             pTask = NULL;
 
-        LogFlow(("Allocated task %p\n", pTask));
+        LogFlow(("Allocated task %p -> %Rrc\n", pTask, rc));
     }
     else
     {
@@ -157,9 +157,8 @@ PPDMACTASKFILE pdmacFileTaskAlloc(PPDMASYNCCOMPLETIONENDPOINTFILE pEndpoint)
         pTask = pEndpoint->pTasksFreeHead;
         pEndpoint->pTasksFreeHead = pTask->pNext;
         ASMAtomicDecU32(&pEndpoint->cTasksCached);
+        pTask->pNext = NULL;
     }
-
-    pTask->pNext = NULL;
 
     return pTask;
 }
