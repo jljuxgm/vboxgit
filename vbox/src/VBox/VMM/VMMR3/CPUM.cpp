@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 93744 2022-02-14 21:00:26Z vboxsync $ */
+/* $Id: CPUM.cpp 93745 2022-02-14 21:02:57Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -2030,6 +2030,7 @@ VMMR3DECL(int) CPUMR3Init(PVM pVM)
     int rc = cpumR3GetHostHwvirtMsrs(&HostMsrs);
     AssertLogRelRCReturn(rc, rc);
 
+#if defined(RT_ARCH_X86) || defined(RT_ARCH_AMD64)
     PCPUMCPUIDLEAF  paLeaves;
     uint32_t        cLeaves;
     rc = CPUMR3CpuIdCollectLeaves(&paLeaves, &cLeaves);
@@ -2039,6 +2040,7 @@ VMMR3DECL(int) CPUMR3Init(PVM pVM)
     RTMemFree(paLeaves);
     AssertLogRelRCReturn(rc, rc);
     pVM->cpum.s.GuestFeatures.enmCpuVendor = pVM->cpum.s.HostFeatures.enmCpuVendor;
+#endif
 
     /*
      * Check that the CPU supports the minimum features we require.
