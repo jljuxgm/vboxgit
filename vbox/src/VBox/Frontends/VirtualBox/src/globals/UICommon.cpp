@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 90564 2021-08-07 11:12:13Z vboxsync $ */
+/* $Id: UICommon.cpp 90760 2021-08-20 15:06:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -2506,36 +2506,6 @@ bool UICommon::launchMachine(CMachine &comMachine, LaunchMode enmLaunchMode /* =
     comSession.UnlockMachine();
 
     /* True finally: */
-    return true;
-}
-
-bool UICommon::launchMachine(CCloudMachine &comMachine)
-{
-    /* Acquire machine name: */
-    const QString strName = comMachine.GetName();
-    if (!comMachine.isOk())
-    {
-        msgCenter().cannotAcquireCloudMachineParameter(comMachine);
-        return false;
-    }
-
-    /* Prepare machine power up: */
-    CProgress comProgress = comMachine.PowerUp();
-    if (!comMachine.isOk())
-    {
-        msgCenter().cannotPowerUpCloudMachine(comMachine);
-        return false;
-    }
-
-    /* Show machine power up progress: */
-    msgCenter().showModalProgressDialog(comProgress, strName, ":/progress_start_90px.png", 0, 0);
-    if (!comProgress.isOk() || comProgress.GetResultCode() != 0)
-    {
-        msgCenter().cannotPowerUpCloudMachine(comProgress, strName);
-        return false;
-    }
-
-    /* Success by default: */
     return true;
 }
 

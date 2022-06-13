@@ -1,4 +1,4 @@
-/* $Id: UICommon.h 90538 2021-08-06 08:36:52Z vboxsync $ */
+/* $Id: UICommon.h 90760 2021-08-20 15:06:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class declaration.
  */
@@ -508,8 +508,6 @@ public:
         static bool switchToMachine(CMachine &comMachine);
         /** Launches certain @a comMachine in specified @a enmLaunchMode. */
         bool launchMachine(CMachine &comMachine, LaunchMode enmLaunchMode = LaunchMode_Default);
-        /** Launches certain @a comMachine. */
-        bool launchMachine(CCloudMachine &comMachine);
 
         /** Opens session of certain @a enmLockType for VM with certain @a uId. */
         CSession openSession(const QUuid &uId, KLockType enmLockType = KLockType_Write);

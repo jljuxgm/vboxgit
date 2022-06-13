@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 90695 2021-08-16 13:09:37Z vboxsync $ */
+/* $Id: UINotificationObjects.cpp 90760 2021-08-20 15:06:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -1117,6 +1117,46 @@ void UINotificationProgressCloudMachineRemove::sltHandleProgressFinished()
 {
     if (error().isEmpty())
         emit sigCloudMachineRemoved(m_strProviderShortName, m_strProfileName, m_strName);
+}
+
+
+/*********************************************************************************************************************************
+*   Class UINotificationProgressCloudMachinePowerUp implementation.                                                              *
+*********************************************************************************************************************************/
+
+UINotificationProgressCloudMachinePowerUp::UINotificationProgressCloudMachinePowerUp(const CCloudMachine &comMachine)
+    : m_comMachine(comMachine)
+{
+}
+
+QString UINotificationProgressCloudMachinePowerUp::name() const
+{
+    return   UINotificationProgress::tr("Powering cloud VM up ...");
+}
+
+QString UINotificationProgressCloudMachinePowerUp::details() const
+{
+    return UINotificationProgress::tr("<b>VM Name:</b> %1").arg(m_strName);
+}
+
+CProgress UINotificationProgressCloudMachinePowerUp::createProgress(COMResult &comResult)
+{
+    /* Acquire cloud VM name: */
+    m_strName = m_comMachine.GetName();
+    if (!m_comMachine.isOk())
+    {
+        /* Store COM result: */
+        comResult = m_comMachine;
+        /* Return progress-wrapper: */
+        return CProgress();
+    }
+
+    /* Initialize progress-wrapper: */
+    CProgress comProgress = m_comMachine.PowerUp();
+    /* Store COM result: */
+    comResult = m_comMachine;
+    /* Return progress-wrapper: */
+    return comProgress;
 }
 
 
