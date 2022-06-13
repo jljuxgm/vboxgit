@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 91503 2021-10-01 08:57:59Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 91743 2021-10-14 20:04:27Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -5479,7 +5479,7 @@ void VirtualBox::i_saveModifiedRegistries()
                 if (getObjectState().getState() != ObjectState::Ready)
                     continue;
                 AutoWriteLock mlock(pMachine COMMA_LOCKVAL_SRC_POS);
-                rc = pMachine->i_saveSettings(&fNeedsGlobalSettings,
+                rc = pMachine->i_saveSettings(&fNeedsGlobalSettings, mlock,
                                               Machine::SaveS_Force);           // caller said save, so stop arguing
             }
         }

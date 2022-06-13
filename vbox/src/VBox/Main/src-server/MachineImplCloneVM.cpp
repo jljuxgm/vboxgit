@@ -1,4 +1,4 @@
-/* $Id: MachineImplCloneVM.cpp 91503 2021-10-01 08:57:59Z vboxsync $ */
+/* $Id: MachineImplCloneVM.cpp 91743 2021-10-14 20:04:27Z vboxsync $ */
 /** @file
  * Implementation of MachineCloneVM
  */
@@ -1599,7 +1599,7 @@ HRESULT MachineCloneVM::run()
 
             /* save all VM data */
             bool fNeedsGlobalSaveSettings = false;
-            rc = d->pTrgMachine->i_saveSettings(&fNeedsGlobalSaveSettings, Machine::SaveS_Force);
+            rc = d->pTrgMachine->i_saveSettings(&fNeedsGlobalSaveSettings, trgLock, Machine::SaveS_Force);
             if (FAILED(rc)) throw rc;
             /* Release all locks */
             trgLock.release();

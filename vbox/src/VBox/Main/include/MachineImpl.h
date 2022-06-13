@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 91476 2021-09-29 20:36:36Z vboxsync $ */
+/* $Id: MachineImpl.h 91743 2021-10-14 20:04:27Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -631,7 +631,7 @@ protected:
 
     Machine *i_getMachine();
 
-    void i_ensureNoStateDependencies();
+    void i_ensureNoStateDependencies(AutoWriteLock &alock);
 
     virtual HRESULT i_setMachineState(MachineState_T aMachineState);
 
@@ -681,7 +681,7 @@ protected:
     };
 
     HRESULT i_prepareSaveSettings(bool *pfNeedsGlobalSaveSettings);
-    HRESULT i_saveSettings(bool *pfNeedsGlobalSaveSettings, int aFlags = 0);
+    HRESULT i_saveSettings(bool *pfNeedsGlobalSaveSettings, AutoWriteLock &alock, int aFlags = 0);
 
     void i_copyMachineDataToSettings(settings::MachineConfigFile &config);
     HRESULT i_saveAllSnapshots(settings::MachineConfigFile &config);
