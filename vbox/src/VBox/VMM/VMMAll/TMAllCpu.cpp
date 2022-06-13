@@ -1,4 +1,4 @@
-/* $Id: TMAllCpu.cpp 89087 2021-05-17 10:02:15Z vboxsync $ */
+/* $Id: TMAllCpu.cpp 90380 2021-07-28 21:38:23Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, CPU Time, All Contexts.
  */
@@ -367,7 +367,7 @@ VMM_INT_DECL(bool) TMCpuTickCanUseRealTSC(PVMCC pVM, PVMCPUCC pVCpu, uint64_t *p
  * @param   cNsToDeadline   The number of nano seconds to the next virtual
  *                          sync deadline.
  */
-DECLINLINE(uint64_t) tmCpuCalcTicksToDeadline(PVMCPU pVCpu, uint64_t cNsToDeadline)
+DECLINLINE(uint64_t) tmCpuCalcTicksToDeadline(PVMCPUCC pVCpu, uint64_t cNsToDeadline)
 {
     AssertCompile(TMCLOCK_FREQ_VIRTUAL <= _4G);
 # ifdef IN_RING3
