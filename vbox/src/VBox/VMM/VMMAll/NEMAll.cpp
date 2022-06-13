@@ -1,4 +1,4 @@
-/* $Id: NEMAll.cpp 91848 2021-10-19 23:18:13Z vboxsync $ */
+/* $Id: NEMAll.cpp 92449 2021-11-16 10:37:10Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, R0 and R3 context code.
  */
@@ -85,6 +85,15 @@ VMM_INT_DECL(int)  NEMHCNotifyPhysPageAllocated(PVMCC pVM, RTGCPHYS GCPhys, RTHC
     return VINF_SUCCESS;
 #endif
 }
+
+
+#ifndef VBOX_WITH_NATIVE_NEM
+VMM_INT_DECL(uint32_t) NEMHCGetFeatures(PVMCC pVM)
+{
+    RT_NOREF(pVM);
+    return 0;
+}
+#endif
 
 
 #ifndef VBOX_WITH_NATIVE_NEM

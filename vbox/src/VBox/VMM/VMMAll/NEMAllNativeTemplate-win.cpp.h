@@ -1,4 +1,4 @@
-/* $Id: NEMAllNativeTemplate-win.cpp.h 92170 2021-11-01 22:06:25Z vboxsync $ */
+/* $Id: NEMAllNativeTemplate-win.cpp.h 92449 2021-11-16 10:37:10Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, Windows code template ring-0/3.
  */
@@ -5117,3 +5117,18 @@ VMM_INT_DECL(void) NEMHCNotifyPhysPageChanged(PVMCC pVM, RTGCPHYS GCPhys, RTHCPH
 #endif
 }
 
+
+/**
+ * Returns features supported by the NEM backend.
+ *
+ * @returns Flags of features supported by the native NEM backend.
+ * @param   pVM             The cross context VM structure.
+ */
+VMM_INT_DECL(uint32_t) NEMHCGetFeatures(PVMCC pVM)
+{
+    RT_NOREF(pVM);
+    /** @todo Make use of the WHvGetVirtualProcessorXsaveState/WHvSetVirtualProcessorXsaveState
+     * interface added in 2019 to enable passthrough of xsave/xrstor (and depending) features to the guest. */
+    /** @todo Is NEM_FEAT_F_FULL_GST_EXEC always true? */
+    return NEM_FEAT_F_NESTED_PAGING | NEM_FEAT_F_FULL_GST_EXEC;
+}
