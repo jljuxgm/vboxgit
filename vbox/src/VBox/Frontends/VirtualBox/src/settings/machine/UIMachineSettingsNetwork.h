@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsNetwork.h 94333 2022-03-23 11:21:34Z vboxsync $ */
+/* $Id: UIMachineSettingsNetwork.h 94555 2022-04-11 13:34:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsNetwork class declaration.
  */
@@ -138,9 +138,6 @@ private:
     /** Saves existing adapter data from cache. */
     bool saveAdapterData(int iSlot);
 
-    /** Holds the tab-widget instance. */
-    QITabWidget *m_pTabWidget;
-
     /** Holds the bridged adapter list. */
     QStringList  m_bridgedAdapterList;
     /** Holds the internal network list. */
@@ -166,6 +163,9 @@ private:
 
     /** Holds the page data cache instance. */
     UISettingsCacheMachineNetwork *m_pCache;
+
+    /** Holds the tab-widget instance. */
+    QITabWidget *m_pTabWidget;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_settings_machine_UIMachineSettingsNetwork_h */
