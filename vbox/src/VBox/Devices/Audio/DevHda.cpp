@@ -1,4 +1,4 @@
-/* $Id: DevHda.cpp 89876 2021-06-24 10:02:02Z vboxsync $ */
+/* $Id: DevHda.cpp 89877 2021-06-24 10:02:20Z vboxsync $ */
 /** @file
  * Intel HD Audio Controller Emulation.
  *
@@ -61,12 +61,6 @@
 *   Defined Constants And Macros                                                                                                 *
 *********************************************************************************************************************************/
 //#define HDA_AS_PCI_EXPRESS
-
-/* Uses the DMA access handler to read the written DMA audio (output) data.
- * Only valid if HDA_USE_DMA_ACCESS_HANDLER is set.
- *
- * Also see the note / warning for HDA_USE_DMA_ACCESS_HANDLER. */
-//# define HDA_USE_DMA_ACCESS_HANDLER_WRITING
 
 /* Useful to debug the device' timing. */
 //#define HDA_DEBUG_TIMING
