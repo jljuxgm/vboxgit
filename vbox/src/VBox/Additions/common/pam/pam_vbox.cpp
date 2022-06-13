@@ -1,4 +1,4 @@
-/* $Id: pam_vbox.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: pam_vbox.cpp 94184 2022-03-11 18:24:17Z vboxsync $ */
 /** @file
  * pam_vbox - PAM module for auto logons.
  */
@@ -528,7 +528,7 @@ static int pam_vbox_wait_prop(pam_handle_t *hPAM, uint32_t uClientID,
             rc = VbglR3GuestPropWait(uClientID, pszKey, pvBuf, cbBuf,
                                      0 /* Last timestamp; just wait for next event */, uTimeoutMS,
                                      &pszName, &pszValue, &u64TimestampOut,
-                                     &pszFlags, &cbBuf);
+                                     &pszFlags, &cbBuf, NULL /* pfWasDeleted */);
         }
         else
             rc = VERR_NO_MEMORY;

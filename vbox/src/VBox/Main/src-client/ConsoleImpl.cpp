@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 93891 2022-02-22 18:08:39Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 94184 2022-03-11 18:24:17Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -1844,15 +1844,17 @@ DECLCALLBACK(int) Console::i_doGuestPropNotification(void *pvExtension,
     Bstr name(pCBData->pcszName);
     Bstr value(pCBData->pcszValue);
     Bstr flags(pCBData->pcszFlags);
+    BOOL fWasDeleted = !pCBData->pcszValue;
     ComObjPtr<Console> pConsole = reinterpret_cast<Console *>(pvExtension);
     HRESULT hrc = pConsole->mControl->PushGuestProperty(name.raw(),
                                                         value.raw(),
                                                         pCBData->u64Timestamp,
                                                         flags.raw(),
-                                                        !pCBData->pcszValue);
+                                                        fWasDeleted);
     if (SUCCEEDED(hrc))
     {
-        ::FireGuestPropertyChangedEvent(pConsole->mEventSource, pConsole->i_getId().raw(), name.raw(), value.raw(), flags.raw());
+        ::FireGuestPropertyChangedEvent(pConsole->mEventSource, pConsole->i_getId().raw(), name.raw(), value.raw(), flags.raw(),
+                                        fWasDeleted);
         rc = VINF_SUCCESS;
     }
     else

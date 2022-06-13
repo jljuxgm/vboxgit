@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestProp.cpp 93700 2022-02-11 18:57:49Z vboxsync $ */
+/* $Id: VBoxManageGuestProp.cpp 94184 2022-03-11 18:24:17Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestproperty command.
  */
@@ -369,10 +369,15 @@ static RTEXITCODE handleWaitGuestProperty(HandlerArg *a)
                                                      Utf8Str(aNextName).c_str(), RTSTR_MAX, NULL))
                     {
                         Bstr aNextValue, aNextFlags;
+                        BOOL aNextWasDeleted;
                         gpcev->COMGETTER(Value)(aNextValue.asOutParam());
                         gpcev->COMGETTER(Flags)(aNextFlags.asOutParam());
-                        RTPrintf(GuestProp::tr("Name: %ls, value: %ls, flags: %ls\n"),
-                                 aNextName.raw(), aNextValue.raw(), aNextFlags.raw());
+                        gpcev->COMGETTER(FWasDeleted)(&aNextWasDeleted);
+                        if (aNextWasDeleted)
+                            RTPrintf(GuestProp::tr("Property %ls was deleted\n"), aNextName.raw());
+                        else
+                            RTPrintf(GuestProp::tr("Name: %ls, value: %ls, flags: %ls\n"),
+                                     aNextName.raw(), aNextValue.raw(), aNextFlags.raw());
                         fSignalled = true;
                     }
                     break;

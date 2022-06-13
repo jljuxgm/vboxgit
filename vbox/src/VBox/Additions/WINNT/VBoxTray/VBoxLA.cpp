@@ -1,4 +1,4 @@
-/* $Id: VBoxLA.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: VBoxLA.cpp 94184 2022-03-11 18:24:17Z vboxsync $ */
 /** @file
  * VBoxLA - VBox Location Awareness notifications.
  */
@@ -830,7 +830,8 @@ static int laWaitProperties(uint32_t u32GuestPropHandle,
                                  NULL /* ppszValue */,
                                  pu64Timestamp,
                                  NULL /* ppszFlags */,
-                                 &cbBuf);
+                                 &cbBuf,
+                                 NULL /* pfWasDeleted */);
 
         if (rc != VERR_BUFFER_OVERFLOW)
             break;
