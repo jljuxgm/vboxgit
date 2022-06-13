@@ -1,4 +1,4 @@
-/* $Id: UIHostnameDomainNameEditor.cpp 93791 2022-02-16 12:49:09Z vboxsync $ */
+/* $Id: UIHostnameDomainNameEditor.cpp 93823 2022-02-17 11:00:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHostnameDomainNameEditor class implementation.
  */
@@ -62,10 +62,10 @@ void UIHostnameDomainNameEditor::mark()
 {
     if (m_pHostnameLineEdit)
         m_pHostnameLineEdit->mark(!m_pHostnameLineEdit->hasAcceptableInput(),
-                                  tr("Hostname should be at least 2 character lomg. Allowed characters are alphanumerics, \"-\" and \".\""));
+                                  tr("Hostname should be at least 2 character long. Allowed characters are alphanumerics, \"-\" and \".\""));
     if (m_pDomainNameLineEdit)
         m_pDomainNameLineEdit->mark(!m_pDomainNameLineEdit->hasAcceptableInput(),
-                                  tr("Domain name should be at least 2 character lomg. Allowed characters are alphanumerics, \"-\" and \".\""));
+                                  tr("Domain name should be at least 2 character long. Allowed characters are alphanumerics, \"-\" and \".\""));
 }
 
 void UIHostnameDomainNameEditor::setHostname(const QString &strHostname)
@@ -158,8 +158,8 @@ void UIHostnameDomainNameEditor::prepare()
 
     /* Host name and domain should be strings of minimum length of 2 and composed of alpha numerics, '-', and '.'
      * Exclude strings with . at the end: */
-    m_pHostnameLineEdit->setValidator(new QRegularExpressionValidator(QRegularExpression("^[a-zA-Z0-9-.]{2,}[^$.]"), this));
-    m_pDomainNameLineEdit->setValidator(new QRegularExpressionValidator(QRegularExpression("^[a-zA-Z0-9-.]{2,}[^$.]"), this));
+    m_pHostnameLineEdit->setValidator(new QRegularExpressionValidator(QRegularExpression("^[a-zA-Z0-9-.]{2,}[$a-zA-Z0-9-]"), this));
+    m_pDomainNameLineEdit->setValidator(new QRegularExpressionValidator(QRegularExpression("^[a-zA-Z0-9-.]{2,}[$a-zA-Z0-9-]"), this));
 
     connect(m_pHostnameLineEdit, &QILineEdit::textChanged,
             this, &UIHostnameDomainNameEditor::sltHostnameChanged);
