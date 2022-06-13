@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-linux.c 93418 2022-01-24 16:32:44Z vboxsync $ */
+/* $Id: VBoxNetAdp-linux.c 93421 2022-01-24 18:44:21Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Virtual Network Adapter Driver (Host), Linux Specific Code.
  */
@@ -67,10 +67,10 @@
 #define VBOXNETADP_FROM_IFACE(iface) ((PVBOXNETADP) ifnet_softc(iface))
 
 /** Set netdev MAC address. */
-#if RTLNX_VER_MAX(5,17,0)
-# define VBOX_DEV_ADDR_SET(dev, addr, len) memcpy(dev->dev_addr, addr, len)
-#else /* >= 5.17.0 */
+#if RTLNX_VER_MIN(5,17,0)
 # define VBOX_DEV_ADDR_SET(dev, addr, len) dev_addr_mod(dev, 0, addr, len)
+#else /* < 5.17.0 */
+# define VBOX_DEV_ADDR_SET(dev, addr, len) memcpy(dev->dev_addr, addr, len)
 #endif
 
 
