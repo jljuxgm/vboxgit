@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 91854 2021-10-20 00:50:11Z vboxsync $
+# $Id: Makefile.kmk 91952 2021-10-21 13:57:32Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -154,7 +154,6 @@ VBoxVMM_SOURCES  = \
 	VMMR3/PGMDbg.cpp \
 	VMMR3/PGMR3DbgA.asm \
 	VMMR3/PGMHandler.cpp \
-	VMMR3/PGMMap.cpp \
 	VMMR3/PGMPhys.cpp \
 	VMMR3/PGMPool.cpp \
 	VMMR3/PGMSavedState.cpp \
