@@ -1,4 +1,4 @@
-/* $Id: UITranslator.cpp 93996 2022-02-28 22:04:49Z vboxsync $ */
+/* $Id: UITranslator.cpp 94010 2022-03-01 01:17:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UITranslator class implementation.
  */
@@ -291,9 +291,9 @@ QString UITranslator::secondsToString(uint32_t cVal)
 }
 
 /* static */
-QChar UITranslator::decimalSep()
+QString UITranslator::decimalSep()
 {
-    return QLocale::system().decimalPoint();
+    return QString(QLocale::system().decimalPoint());
 }
 
 /* static */
