@@ -1,4 +1,4 @@
-/* $Id: DBGFR3SampleReport.cpp 89763 2021-06-17 09:40:24Z vboxsync $ */
+/* $Id: DBGFR3SampleReport.cpp 89786 2021-06-19 14:08:10Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Sample report creation.
  */
@@ -16,7 +16,7 @@
  */
 
 
-/** @page pg_dbgf_flow DBGFR3SampleReport - Sample Report Interface
+/** @page pg_dbgf_sample_report DBGFR3SampleReport - Sample Report Interface
  *
  * @todo
  */
