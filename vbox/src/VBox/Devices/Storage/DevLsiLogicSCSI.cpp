@@ -1,4 +1,4 @@
-/* $Id: DevLsiLogicSCSI.cpp 90791 2021-08-23 10:28:24Z vboxsync $ */
+/* $Id: DevLsiLogicSCSI.cpp 91920 2021-10-21 06:45:26Z vboxsync $ */
 /** @file
  * DevLsiLogicSCSI - LsiLogic LSI53c1030 SCSI controller.
  */
@@ -2511,9 +2511,9 @@ static DECLCALLBACK(void) lsilogicR3MediumEjected(PPDMIMEDIAEXPORT pInterface)
 
     if (pThisCC->pMediaNotify)
     {
-        int rc = VMR3ReqCallNoWait(PDMDevHlpGetVM(pDevIns), VMCPUID_ANY,
-                                   (PFNRT)pThisCC->pMediaNotify->pfnEjected, 2,
-                                   pThisCC->pMediaNotify, pTgtDev->iLUN);
+        int rc = PDMDevHlpVMReqCallNoWait(pDevIns, VMCPUID_ANY,
+                                          (PFNRT)pThisCC->pMediaNotify->pfnEjected, 2,
+                                          pThisCC->pMediaNotify, pTgtDev->iLUN);
         AssertRC(rc);
     }
 }

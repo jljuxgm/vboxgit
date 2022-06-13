@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 90791 2021-08-23 10:28:24Z vboxsync $ */
+/* $Id: DevAHCI.cpp 91920 2021-10-21 06:45:26Z vboxsync $ */
 /** @file
  * DevAHCI - AHCI controller device (disk and cdrom).
  *
@@ -3951,9 +3951,9 @@ static DECLCALLBACK(void) ahciR3MediumEjected(PPDMIMEDIAEXPORT pInterface)
 
     if (pThisCC->pMediaNotify)
     {
-        int rc = VMR3ReqCallNoWait(PDMDevHlpGetVM(pDevIns), VMCPUID_ANY,
-                                   (PFNRT)pThisCC->pMediaNotify->pfnEjected, 2,
-                                   pThisCC->pMediaNotify, pAhciPort->iLUN);
+        int rc = PDMDevHlpVMReqCallNoWait(pDevIns, VMCPUID_ANY,
+                                          (PFNRT)pThisCC->pMediaNotify->pfnEjected, 2,
+                                          pThisCC->pMediaNotify, pAhciPort->iLUN);
         AssertRC(rc);
     }
 }

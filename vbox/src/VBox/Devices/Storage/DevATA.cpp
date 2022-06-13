@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 90500 2021-08-03 21:07:05Z vboxsync $ */
+/* $Id: DevATA.cpp 91920 2021-10-21 06:45:26Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -3788,15 +3788,15 @@ static void atapiR3ParseCmdVirtualATAPI(PPDMDEVINS pDevIns, PATACONTROLLER pCtl,
                     PATASTATER3 pThisCC = PDMDEVINS_2_DATA_CC(pDevIns, PATASTATER3);
 
                     ataR3LockLeave(pDevIns, pCtl);
-                    rc = VMR3ReqPriorityCallWait(PDMDevHlpGetVM(pDevIns), VMCPUID_ANY,
-                                                 (PFNRT)pDevR3->pDrvMount->pfnUnmount, 3,
-                                                 pDevR3->pDrvMount, false /*=fForce*/, true /*=fEject*/);
+                    rc = PDMDevHlpVMReqPriorityCallWait(pDevIns, VMCPUID_ANY,
+                                                        (PFNRT)pDevR3->pDrvMount->pfnUnmount, 3,
+                                                        pDevR3->pDrvMount, false /*=fForce*/, true /*=fEject*/);
                     Assert(RT_SUCCESS(rc) || rc == VERR_PDM_MEDIA_LOCKED || rc == VERR_PDM_MEDIA_NOT_MOUNTED);
                     if (RT_SUCCESS(rc) && pThisCC->pMediaNotify)
                     {
-                        rc = VMR3ReqCallNoWait(PDMDevHlpGetVM(pDevIns), VMCPUID_ANY,
-                                               (PFNRT)pThisCC->pMediaNotify->pfnEjected, 2,
-                                               pThisCC->pMediaNotify, s->iLUN);
+                        rc = PDMDevHlpVMReqCallNoWait(pDevIns, VMCPUID_ANY,
+                                                      (PFNRT)pThisCC->pMediaNotify->pfnEjected, 2,
+                                                      pThisCC->pMediaNotify, s->iLUN);
                         AssertRC(rc);
                     }
 

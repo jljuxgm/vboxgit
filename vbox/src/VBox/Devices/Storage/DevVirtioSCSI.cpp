@@ -1,4 +1,4 @@
-/* $Id: DevVirtioSCSI.cpp 91703 2021-10-13 02:24:30Z vboxsync $ */
+/* $Id: DevVirtioSCSI.cpp 91920 2021-10-21 06:45:26Z vboxsync $ */
 /** @file
  * VBox storage devices - Virtio SCSI Driver
  *
@@ -2320,9 +2320,9 @@ static DECLCALLBACK(void) virtioScsiR3MediumEjected(PPDMIMEDIAEXPORT pInterface)
 
     if (pThisCC->pMediaNotify)
     {
-        int rc = VMR3ReqCallNoWait(PDMDevHlpGetVM(pDevIns), VMCPUID_ANY,
-                                   (PFNRT)pThisCC->pMediaNotify->pfnEjected, 2,
-                                   pThisCC->pMediaNotify, pTarget->uTarget);
+        int rc = PDMDevHlpVMReqCallNoWait(pDevIns, VMCPUID_ANY,
+                                          (PFNRT)pThisCC->pMediaNotify->pfnEjected, 2,
+                                          pThisCC->pMediaNotify, pTarget->uTarget);
         AssertRC(rc);
     }
 }
