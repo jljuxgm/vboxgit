@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 92238 2021-11-05 13:55:23Z vboxsync $
+# $Id: vbox.py 92241 2021-11-05 15:24:36Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 92238 $"
+__version__ = "$Revision: 92241 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -3071,22 +3071,7 @@ class TestDriver(base.TestDriver):                                              
             # Note: Do this right *after* the VM has been started.
             for iSlot in range(0, self.oVBox.systemProperties.getMaxNetworkAdapters(oVM.chipsetType)):
                 try:
-                    oNic = oVM.getNetworkAdapter(iSlot);
-                    if not oNic.enabled:
-                        continue;
-                    sAdpName = self.getNetworkAdapterNameFromType(oNic);
-                    if oNic.attachmentType == vboxcon.NetworkAttachmentType_NAT:
-                        reporter.log2('Enabling "LocalhostReachable" (NAT) for network adapter "%s" in slot %d' % \
-                                      (sAdpName, iSlot));
-                        oNatEngine = oNic.NATEngine;
-                        oNatEngine.LocalhostReachable = True;
-                    else:
-                        # Other attachments will fail if 'LocalhostReachable' extra data override is present
-                        ## @todo r=andy Is this still needed, as we now have the API (see above) in place?
-                        sKey = 'VBoxInternal/Devices/%s/%d/LUN#0/Config/LocalhostReachable' % (sAdpName, iSlot);
-                        reporter.log2('Disabling "LocalhostReachable" (NAT) for network adapter "%s" in slot %d (key: %s)' % \
-                                      (sAdpName, iSlot, sKey));
-                        self.oVBox.setExtraData(sKey, '');
+                    oWrapped.setNicLocalhostReachable(True, iSlot);
                 except:
                     reporter.logXcpt();
 
