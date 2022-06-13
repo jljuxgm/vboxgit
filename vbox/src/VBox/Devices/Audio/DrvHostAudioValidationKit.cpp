@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioValidationKit.cpp 91071 2021-09-01 17:12:41Z vboxsync $ */
+/* $Id: DrvHostAudioValidationKit.cpp 91072 2021-09-01 17:15:51Z vboxsync $ */
 /** @file
  * Host audio driver - ValidationKit - For dumping and injecting audio data from/to the device emulation.
  */
@@ -855,7 +855,7 @@ static DECLCALLBACK(int) drvHostValKitAudioHA_StreamPlay(PPDMIHOSTAUDIO pInterfa
 
     if (pThis->cbPlayedNoTest)
     {
-        LogRel(("ValKit: Warning: Guest was playing back audio (%s, %RU32 bytes, %RU64ms) when no playback test is active\n",
+        LogRel(("ValKit: Warning: Guest was playing back audio (%RU32 bytes, %RU64ms) when no playback test is active\n",
                 pThis->cbPlayedNoTest, PDMAudioPropsBytesToMilli(&pStream->pStream->Cfg.Props, pThis->cbPlayedNoTest)));
         pThis->cbPlayedNoTest = 0;
     }
