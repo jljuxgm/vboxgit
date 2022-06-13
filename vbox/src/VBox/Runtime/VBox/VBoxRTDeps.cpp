@@ -1,4 +1,4 @@
-/* $Id: VBoxRTDeps.cpp 87235 2021-01-13 12:41:05Z vboxsync $ */
+/* $Id: VBoxRTDeps.cpp 91588 2021-10-06 09:39:48Z vboxsync $ */
 /** @file
  * IPRT - VBoxRT.dll/so dependencies.
  */
@@ -48,6 +48,7 @@
 #include <openssl/rsa.h>
 #include <openssl/ssl.h>
 #include <openssl/rand.h>
+#include <openssl/aes.h>
 #include "internal/openssl-post.h"
 
 
@@ -113,6 +114,7 @@ struct CLANG11NONSENSE { PFNRT pfn; } g_VBoxRTDeps[] =
 #if OPENSSL_VERSION_NUMBER < 0x10100000 || defined(LIBRESSL_VERSION_NUMBER)
     { (PFNRT)TLSv1_server_method },
 #endif
+    { (PFNRT)AES_ofb128_encrypt }, /* libtpms */
     { NULL }
 };
 
