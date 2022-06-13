@@ -1,4 +1,4 @@
-/* $Id: PGMAllGst.h 92331 2021-11-10 16:55:00Z vboxsync $ */
+/* $Id: PGMAllGst.h 92334 2021-11-10 17:19:29Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Guest Paging Template - All context code.
  */
@@ -256,7 +256,6 @@ DECLINLINE(int) PGM_GST_NAME(Walk)(PVMCPUCC pVCpu, RTGCPTR GCPtr, PGSTPTWALK pWa
             Assert(GST_IS_NX_ACTIVE(pVCpu) || !(fEffective & PGM_PTATTRS_NX_MASK));
             Assert(fEffective & PGM_PTATTRS_R_MASK);
 
-            pWalk->Core.fEffectiveRW = !!(fEffective & X86_PTE_RW);
             pWalk->Core.fEffectiveUS = !!(fEffective & X86_PTE_US);
             pWalk->Core.fBigPage     = true;
             pWalk->Core.fSucceeded   = true;
@@ -319,7 +318,6 @@ DECLINLINE(int) PGM_GST_NAME(Walk)(PVMCPUCC pVCpu, RTGCPTR GCPtr, PGSTPTWALK pWa
         Assert(GST_IS_NX_ACTIVE(pVCpu) || !(fEffective & PGM_PTATTRS_NX_MASK));
         Assert(fEffective & PGM_PTATTRS_R_MASK);
 
-        pWalk->Core.fEffectiveRW = !!(fEffective & X86_PTE_RW);
         pWalk->Core.fEffectiveUS = !!(fEffective & X86_PTE_US);
         pWalk->Core.fSucceeded   = true;
 

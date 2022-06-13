@@ -1,4 +1,4 @@
-/* $Id: PGMAllGstSlatEpt.cpp.h 92333 2021-11-10 17:12:35Z vboxsync $ */
+/* $Id: PGMAllGstSlatEpt.cpp.h 92334 2021-11-10 17:19:29Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Guest EPT SLAT - All context code.
  */
@@ -152,7 +152,6 @@ DECLINLINE(int) PGM_GST_SLAT_NAME_EPT(Walk)(PVMCPUCC pVCpu, RTGCPHYS GCPhysNeste
                         | RT_BF_MAKE(PGM_PTATTRS_EPT_MEMTYPE, fMemType);
             pWalk->Core.fEffective = fEffective;
 
-            pWalk->Core.fEffectiveRW = !!fWrite;
             pWalk->Core.fEffectiveUS = true;
             pWalk->Core.fGigantPage  = true;
             pWalk->Core.fSucceeded   = true;
@@ -190,7 +189,6 @@ DECLINLINE(int) PGM_GST_SLAT_NAME_EPT(Walk)(PVMCPUCC pVCpu, RTGCPHYS GCPhysNeste
                         | RT_BF_MAKE(PGM_PTATTRS_EPT_MEMTYPE, fMemType);
             pWalk->Core.fEffective = fEffective;
 
-            pWalk->Core.fEffectiveRW = !!fWrite;
             pWalk->Core.fEffectiveUS = true;
             pWalk->Core.fBigPage     = true;
             pWalk->Core.fSucceeded   = true;
@@ -245,7 +243,6 @@ DECLINLINE(int) PGM_GST_SLAT_NAME_EPT(Walk)(PVMCPUCC pVCpu, RTGCPHYS GCPhysNeste
                     | RT_BF_MAKE(PGM_PTATTRS_EPT_MEMTYPE, fMemType);
         pWalk->Core.fEffective = fEffective;
 
-        pWalk->Core.fEffectiveRW = !!fWrite;
         pWalk->Core.fEffectiveUS = true;
         pWalk->Core.fSucceeded   = true;
         pWalk->Core.GCPhys       = GST_GET_PTE_GCPHYS(Pte)
