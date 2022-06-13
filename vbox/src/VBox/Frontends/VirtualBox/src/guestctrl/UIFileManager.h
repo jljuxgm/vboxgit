@@ -1,4 +1,4 @@
-/* $Id: UIFileManager.h 92710 2021-12-02 14:31:27Z vboxsync $ */
+/* $Id: UIFileManager.h 92733 2021-12-03 14:23:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManager class declaration.
  */
@@ -106,7 +106,7 @@ protected:
 
 private slots:
 
-    void sltReceieveLogOutput(QString strOutput, FileManagerLogType eLogType);
+    void sltReceieveLogOutput(QString strOutput, const QString &strMachineName, FileManagerLogType eLogType);
     void sltCopyGuestToHost();
     void sltCopyHostToGuest();
     void sltPanelActionToggled(bool fChecked);
@@ -145,7 +145,7 @@ private:
     void copyToHost();
     template<typename T>
     QStringList               getFsObjInfoStringList(const T &fsObjectInfo) const;
-    void                      appendLog(const QString &strLog, FileManagerLogType eLogType);
+    void                      appendLog(const QString &strLog, const QString &strMachineName, FileManagerLogType eLogType);
     void                      savePanelVisibility();
 
     void setMachines(const QVector<QUuid> &machineIDs);

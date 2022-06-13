@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerLogPanel.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIFileManagerLogPanel.h 92733 2021-12-03 14:23:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -37,7 +37,7 @@ class UIFileManagerLogPanel : public UIDialogPanel
 public:
 
     UIFileManagerLogPanel(QWidget *pParent = 0);
-    void appendLog(const QString &str, FileManagerLogType);
+    void appendLog(const QString &str, const QString &strMachineName, FileManagerLogType eLogType);
     virtual QString panelName() const /* override */;
 
 protected:

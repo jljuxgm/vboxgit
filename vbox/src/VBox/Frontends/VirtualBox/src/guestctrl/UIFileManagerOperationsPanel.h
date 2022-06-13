@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerOperationsPanel.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIFileManagerOperationsPanel.h 92733 2021-12-03 14:23:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -48,13 +48,13 @@ class UIFileManagerOperationsPanel : public UIDialogPanel
 signals:
 
     void sigFileOperationComplete(QUuid progressId);
-    void sigFileOperationFail(QString strErrorString, FileManagerLogType eLogType);
+    void sigFileOperationFail(QString strErrorString, QString strSourceTableName, FileManagerLogType eLogType);
 
 public:
 
     UIFileManagerOperationsPanel(QWidget *pParent = 0);
     virtual QString panelName() const /* override */;
-    void addNewProgress(const CProgress &comProgress);
+    void addNewProgress(const CProgress &comProgress, const QString &strSourceTableName);
 
 protected:
 
