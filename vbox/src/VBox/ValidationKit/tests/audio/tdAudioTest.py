@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tdAudioTest.py 91063 2021-09-01 15:01:09Z vboxsync $
+# $Id: tdAudioTest.py 91064 2021-09-01 15:07:38Z vboxsync $
 
 """
 AudioTest test driver which invokes the VKAT (Validation Kit Audio Test)
@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 91063 $"
+__version__ = "$Revision: 91064 $"
 
 # Standard Python imports.
 import os
@@ -573,7 +573,7 @@ class tdAudioTest(vbox.TestDriver):
 
         reporter.testStart('Waiting for TXS');
         oSession, oTxsSession = self.startVmAndConnectToTxsViaTcp(oTestVm.sVmName,
-                                                                  fCdWait = False,
+                                                                  fCdWait = True,
                                                                   cMsTimeout = 3 * 60 * 1000,
                                                                   sFileCdWait = '${OS/ARCH}/vkat${EXESUFF}');
         reporter.testDone();
