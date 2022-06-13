@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlInterface.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIGuestControlInterface.cpp 92632 2021-11-29 16:52:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlInterface class implementation.
  */
@@ -686,7 +686,8 @@ bool UIGuestControlInterface::createSession(const CommandData &commandData, CGue
     return true;
 }
 
-/* static */ bool UIGuestControlInterface::isGuestAdditionsAvailable(const CGuest &guest)
+/* static */
+bool UIGuestControlInterface::isGuestAdditionsAvailable(const CGuest &guest)
 {
     if (!guest.isOk())
         return false;

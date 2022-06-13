@@ -1,4 +1,4 @@
-/* $Id: UIFileManager.h 92631 2021-11-29 16:47:40Z vboxsync $ */
+/* $Id: UIFileManager.h 92632 2021-11-29 16:52:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManager class declaration.
  */
@@ -173,6 +173,7 @@ private:
     QStringList               getFsObjInfoStringList(const T &fsObjectInfo) const;
     void                      appendLog(const QString &strLog, FileManagerLogType eLogType);
     void                      savePanelVisibility();
+    bool                      isGuestAdditionsAvailable(const CGuest &guest);
     CGuest                    m_comGuest;
     CGuestSession             m_comGuestSession;
     CSession                  m_comSession;
