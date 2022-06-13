@@ -1,4 +1,4 @@
-; $Id: VBoxRTImp.def 93115 2022-01-01 11:31:46Z vboxsync $
+; $Id: VBoxRTImp.def 93147 2022-01-08 11:34:03Z vboxsync $
 ;; @file
 ; VirtualBox Runtime DLL - Stable Interface Definition file.
 ;
@@ -2070,6 +2070,8 @@ EXPORTS
     RTUtf16ICmp
     RTUtf16Len
     RTUtf16NLen
+    RTUtf16NCmp
+    RTUtf16NCmpUtf8
     RTUtf16LocaleICmp
     RTUtf16PutCpInternal
     RTUtf16ToLatin1ExTag
