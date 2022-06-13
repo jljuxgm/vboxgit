@@ -1,4 +1,4 @@
-/* $Id: HMVMXCommon.h 93947 2022-02-25 05:20:20Z vboxsync $ */
+/* $Id: HMVMXCommon.h 93968 2022-02-28 10:11:52Z vboxsync $ */
 /** @file
  * HM/VMX - Internal header file for sharing common bits between the
  *          VMX template code (which is also used with NEM on darwin) and HM.
@@ -414,8 +414,6 @@ AssertCompileMemberAlignment(VMXVMCSINFO, pvHostMsrLoad,   8);
 AssertCompileMemberAlignment(VMXVMCSINFO, HCPhysVmcs,      8);
 AssertCompileMemberAlignment(VMXVMCSINFO, hMemObj,         8);
 #endif
-
-/** @} */
 
 /** @} */
 
