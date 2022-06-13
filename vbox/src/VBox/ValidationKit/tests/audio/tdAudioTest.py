@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tdAudioTest.py 90786 2021-08-23 09:46:02Z vboxsync $
+# $Id: tdAudioTest.py 90787 2021-08-23 10:03:38Z vboxsync $
 
 """
 AudioTest test driver which invokes the VKAT (Validation Kit Audio Test)
@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 90786 $"
+__version__ = "$Revision: 90787 $"
 
 # Standard Python imports.
 import os
@@ -497,15 +497,17 @@ class tdAudioTest(vbox.TestDriver):
             if "guest_tone_recording" in self.asTests:
                 fRc = fRc and self.runTests(oTestVm, oSession, oTxsSession, 'Guest audio recording', asTests = [ '-i1' ]);
 
-        #
-        # Retrieve log files for diagnosis.
-        #
-        self.txsDownloadFiles(oSession, oTxsSession,
-                              [ ( self.getGstVkatLogFilePath(oTestVm),
-                                  'vkat-guest-%s.log' % (oTestVm.sVmName,),),
-                              ],
-                              fIgnoreErrors = True);
+            # Cancel guest VKAT execution task summoned by startVkatOnGuest().
+            oTxsSession.cancelTask();
 
+            #
+            # Retrieve log files for diagnosis.
+            #
+            self.txsDownloadFiles(oSession, oTxsSession,
+                                  [ ( self.getGstVkatLogFilePath(oTestVm),
+                                      'vkat-guest-%s.log' % (oTestVm.sVmName,),),
+                                  ],
+                                  fIgnoreErrors = True);
         return fRc;
 
     def testOneVmConfig(self, oVM, oTestVm):
