@@ -1,4 +1,4 @@
-# $Id: vboximportchecker.kmk 70525 2018-01-10 18:30:17Z vboxsync $
+# $Id: vboximportchecker.kmk 93275 2022-01-17 15:01:26Z vboxsync $
 ## @file
 # VBox import checker unit.
 #
@@ -26,7 +26,7 @@ PROPS_SYSMODS_SINGLE  += VBOX_IMPORT_CHECKER
 
 # Helper for expanding certain variables while assigning.
 define def_unit_vboximportchecker_internal_expand_twice
-$(target)_POST_CMDS += $$(NLTAB)$$(VBOX_RTLDRCHECKIMPORTS) -q -p "$$(KBUILD_DEVTOOLS)/$(bld_trg).$(bld_trg_arch)/exports/$$($(target)_2_VBOX_IMPORT_CHECKER)" $$(out)
+$(target)_POST_CMDS += $$(if-expr "$$(tool_do)" != "LINK_LIBRARY",$$(NLTAB)$$(VBOX_RTLDRCHECKIMPORTS) -q -p "$$(KBUILD_DEVTOOLS)/$(bld_trg).$(bld_trg_arch)/exports/$$($(target)_2_VBOX_IMPORT_CHECKER)" $$(out),)
 endef
 
 define def_unit_vboximportchecker_target_pre
