@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.cpp 94080 2022-03-03 17:59:42Z vboxsync $ */
+/* $Id: DevPcBios.cpp 94309 2022-03-18 21:23:01Z vboxsync $ */
 /** @file
  * DevPcBios - PC BIOS Device.
  */
@@ -643,7 +643,7 @@ static int setLogicalDiskGeometry(PPDMIBASE pBase, PPDMIMEDIA pHardDisk, PPDMMED
             || LCHSGeometry.cCylinders == 0
             || LCHSGeometry.cCylinders > 1024
             || LCHSGeometry.cHeads == 0
-            || LCHSGeometry.cHeads > 16
+            || LCHSGeometry.cHeads > 255
             || LCHSGeometry.cSectors == 0
             || LCHSGeometry.cSectors > 63)
         {
