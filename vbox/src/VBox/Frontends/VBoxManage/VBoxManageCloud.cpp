@@ -1,4 +1,4 @@
-/* $Id: VBoxManageCloud.cpp 93872 2022-02-21 16:55:04Z vboxsync $ */
+/* $Id: VBoxManageCloud.cpp 93875 2022-02-21 19:36:52Z vboxsync $ */
 /** @file
  * VBoxManageCloud - The cloud related commands.
  */
@@ -517,6 +517,13 @@ static RTEXITCODE createCloudInstance(HandlerArg *a, int iFirst, PCLOUDCOMMONOPT
 {
     HRESULT hrc = S_OK;
 
+    enum
+    {
+        kInstanceIota = 1000,
+        kInstance_ShapeCpu,
+        kInstance_ShapeMemory,
+    };
+
     static const RTGETOPTDEF s_aOptions[] =
     {
         { "--image-id",       'i', RTGETOPT_REQ_STRING },
@@ -524,6 +531,8 @@ static RTEXITCODE createCloudInstance(HandlerArg *a, int iFirst, PCLOUDCOMMONOPT
         { "--display-name",   'n', RTGETOPT_REQ_STRING },
         { "--launch-mode",    'm', RTGETOPT_REQ_STRING },
         { "--shape",          's', RTGETOPT_REQ_STRING },
+        { "--shape-cpus",     kInstance_ShapeCpu,       RTGETOPT_REQ_UINT32 },
+        { "--shape-memory",   kInstance_ShapeMemory,    RTGETOPT_REQ_UINT32 },
         { "--domain-name",    'd', RTGETOPT_REQ_STRING },
         { "--boot-disk-size", 'b', RTGETOPT_REQ_STRING },
         { "--publicip",       'p', RTGETOPT_REQ_STRING },
@@ -582,10 +591,22 @@ static RTEXITCODE createCloudInstance(HandlerArg *a, int iFirst, PCLOUDCOMMONOPT
                 pVSD->AddDescription(VirtualSystemDescriptionType_CloudOCILaunchMode,
                                      Bstr(ValueUnion.psz).raw(), NULL);
                 break;
+
             case 's':
                 pVSD->AddDescription(VirtualSystemDescriptionType_CloudInstanceShape,
                                      Bstr(ValueUnion.psz).raw(), NULL);
                 break;
+
+            case kInstance_ShapeCpu:
+                pVSD->AddDescription(VirtualSystemDescriptionType_CloudShapeCpus,
+                                     BstrFmt("%RI32", ValueUnion.u32).raw(), NULL);
+                break;
+
+            case kInstance_ShapeMemory:
+                pVSD->AddDescription(VirtualSystemDescriptionType_CloudShapeMemory,
+                                     BstrFmt("%RI32", ValueUnion.u32).raw(), NULL);
+                break;
+
             case 'd':
                 pVSD->AddDescription(VirtualSystemDescriptionType_CloudDomain,
                                      Bstr(ValueUnion.psz).raw(), NULL);
