@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 94660 2022-04-21 08:38:34Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 94720 2022-04-27 12:58:00Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -20,6 +20,8 @@
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
+
+#include <VBox/VBoxCryptoIf.h>
 
 #include "VirtualBoxBase.h"
 #include "objectslist.h"
@@ -291,6 +293,9 @@ public:
     int  i_decryptSetting(Utf8Str *aPlaintext, const Utf8Str &aCiphertext);
     void i_storeSettingsKey(const Utf8Str &aKey);
     bool i_isMediaUuidInUse(const Guid &aId, DeviceType_T deviceType);
+    HRESULT i_retainCryptoIf(PCVBOXCRYPTOIF *ppCryptoIf);
+    HRESULT i_releaseCryptoIf(PCVBOXCRYPTOIF pCryptoIf);
+    HRESULT i_unloadCryptoIfModule(void);
 
 
 
