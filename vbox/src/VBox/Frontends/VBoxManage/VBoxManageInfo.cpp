@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 93627 2022-02-06 23:35:13Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 93702 2022-02-11 19:01:29Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -3023,17 +3023,17 @@ RTEXITCODE handleShowVMInfo(HandlerArg *a)
                 if (!VMNameOrUuid)
                     VMNameOrUuid = ValueUnion.psz;
                 else
-                    return errorSyntax(USAGE_SHOWVMINFO, Info::tr("Invalid parameter '%s'"), ValueUnion.psz);
+                    return errorSyntax(Info::tr("Invalid parameter '%s'"), ValueUnion.psz);
                 break;
 
             default:
-                return errorGetOpt(USAGE_SHOWVMINFO, c, &ValueUnion);
+                return errorGetOpt(c, &ValueUnion);
         }
     }
 
     /* check for required options */
     if (!VMNameOrUuid)
-        return errorSyntax(USAGE_SHOWVMINFO, Info::tr("VM name or UUID required"));
+        return errorSyntax(Info::tr("VM name or UUID required"));
 
     /* try to find the given machine */
     ComPtr<IMachine> machine;
@@ -3044,7 +3044,7 @@ RTEXITCODE handleShowVMInfo(HandlerArg *a)
 
     /* Printing the log is exclusive. */
     if (fLog && (fMachinereadable || fDetails))
-        return errorSyntax(USAGE_SHOWVMINFO, Info::tr("Option --log is exclusive"));
+        return errorSyntax(Info::tr("Option --log is exclusive"));
 
     if (fLog)
     {
