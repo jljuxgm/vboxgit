@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv.cpp 92246 2021-11-06 03:10:49Z vboxsync $ */
+/* $Id: memobj-r0drv.cpp 92247 2021-11-06 03:40:52Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Common Code.
  */
@@ -343,7 +343,6 @@ RTR0DECL(bool) RTR0MemObjWasZeroInitialized(PRTR0MEMOBJ hMemObj)
     /* return the alloc init state. */
     return (pMem->fFlags & (RTR0MEMOBJ_FLAGS_ZERO_AT_ALLOC | RTR0MEMOBJ_FLAGS_UNINITIALIZED_AT_ALLOC))
         ==                  RTR0MEMOBJ_FLAGS_ZERO_AT_ALLOC;
-
 }
 RT_EXPORT_SYMBOL(RTR0MemObjWasZeroInitialized);
 
