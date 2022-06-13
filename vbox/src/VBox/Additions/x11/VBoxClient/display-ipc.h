@@ -1,5 +1,6 @@
-/* $Id: display-ipc.h 93376 2022-01-20 18:14:53Z vboxsync $ */
+/* $Id: display-ipc.h 93423 2022-01-24 20:53:37Z vboxsync $ */
 /** @file
+ * Guest Additions - DRM IPC communication core function definitions.
  *
  * Definitions for IPC communication in between VBoxDRMClient and VBoxClient.
  */

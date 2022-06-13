@@ -1,7 +1,6 @@
-/* $Id: display-helper.h 93384 2022-01-20 19:48:25Z vboxsync $ */
+/* $Id: display-helper.h 93423 2022-01-24 20:53:37Z vboxsync $ */
 /** @file
- *
- * Definitions for Desktop Environment helpers.
+ * Guest Additions - Definitions for Desktop Environment helpers.
  */
 
 /*

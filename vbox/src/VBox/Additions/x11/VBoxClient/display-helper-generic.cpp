@@ -1,7 +1,9 @@
-/* $Id: display-helper-generic.cpp 93400 2022-01-21 16:19:23Z vboxsync $ */
+/* $Id: display-helper-generic.cpp 93423 2022-01-24 20:53:37Z vboxsync $ */
 /** @file
+ * Guest Additions - Generic Desktop Environment helper.
+ *
  * A generic helper for X11 Client which performs Desktop Environment
- * specific actions.
+ * specific actions utilizing libXrandr.
  */
 
 /*

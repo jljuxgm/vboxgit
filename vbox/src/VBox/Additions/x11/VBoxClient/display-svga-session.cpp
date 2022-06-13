@@ -1,7 +1,6 @@
-/* $Id: display-svga-session.cpp 93383 2022-01-20 19:32:38Z vboxsync $ */
+/* $Id: display-svga-session.cpp 93423 2022-01-24 20:53:37Z vboxsync $ */
 /** @file
- * Desktop Environment specific guest screen assistant for
- * VMSVGA graphics adapter.
+ * Guest Additions - VMSVGA Desktop Environment user session assistant.
  *
  * This service connects to VBoxDRMClient IPC server, listens for
  * its commands and reports current display offsets to it. If IPC

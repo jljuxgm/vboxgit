@@ -1,5 +1,7 @@
-/* $Id: display-helper-gnome3.cpp 93380 2022-01-20 19:06:55Z vboxsync $ */
+/* $Id: display-helper-gnome3.cpp 93423 2022-01-24 20:53:37Z vboxsync $ */
 /** @file
+ * Guest Additions - Gnome3 Desktop Environment helper.
+ *
  * A helper for X11/Wayland Client which performs Gnome Desktop
  * Environment specific actions.
  */

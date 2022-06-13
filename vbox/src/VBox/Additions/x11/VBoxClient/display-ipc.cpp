@@ -1,6 +1,6 @@
-/* $Id: display-ipc.cpp 93386 2022-01-20 20:46:09Z vboxsync $ */
+/* $Id: display-ipc.cpp 93423 2022-01-24 20:53:37Z vboxsync $ */
 /** @file
- * Common code for IPC communication between VBoxDRMClient and VBoxClient.
+ * Guest Additions - DRM IPC communication core functions.
  */
 
 /*

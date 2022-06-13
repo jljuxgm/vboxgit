@@ -1,5 +1,7 @@
-/* $Id: display-drm.cpp 93422 2022-01-24 20:03:33Z vboxsync $ */
+/* $Id: display-drm.cpp 93423 2022-01-24 20:53:37Z vboxsync $ */
 /** @file
+ * Guest Additions - VMSVGA guest screen resize service.
+ *
  * A user space daemon which communicates with VirtualBox host interface
  * and performs VMSVGA-specific guest screen resize and communicates with
  * Desktop Environment helper daemon over IPC.
@@ -870,7 +872,6 @@ static DECLCALLBACK(int) vbDrmIpcClientWorker(RTTHREAD ThreadSelf, void *pvUser)
 static int vbDrmIpcClientStart(RTLOCALIPCSESSION hSession)
 {
     int         rc;
-    /** DRM client thread (IpcCLT-%u). */
     RTTHREAD    hThread = 0;
     RTPROCESS   hProcess = 0;
 
@@ -982,11 +983,9 @@ int main(int argc, char *argv[])
     RTFILE hPidFile;
 
     RTLOCALIPCSERVER hIpcServer;
-    /** DRM IPC server thread (DrmIpcSRV). */
     RTTHREAD vbDrmIpcThread;
     int rcDrmIpcThread = 0;
 
-    /** DRM resize thread: receive resize data from host and apply it to local DRM stack (DrmResizeThread). */
     RTTHREAD drmResizeThread;
     int rcDrmResizeThread = 0;
     int rc, rc2 = 0;
