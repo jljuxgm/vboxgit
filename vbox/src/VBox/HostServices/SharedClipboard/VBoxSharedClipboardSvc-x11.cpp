@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-x11.cpp 89947 2021-06-29 10:42:28Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-x11.cpp 89948 2021-06-29 11:20:08Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Linux host.
  */
@@ -37,6 +37,7 @@
 
 /* Number of currently extablished connections. */
 static volatile uint32_t g_cShClConnections;
+
 
 /*********************************************************************************************************************************
 *   Structures and Typedefs                                                                                                      *
