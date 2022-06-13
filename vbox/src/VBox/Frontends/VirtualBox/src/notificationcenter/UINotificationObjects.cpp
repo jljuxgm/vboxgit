@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 91076 2021-09-01 18:52:17Z vboxsync $ */
+/* $Id: UINotificationObjects.cpp 91077 2021-09-01 19:10:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -305,7 +305,7 @@ void UINotificationMessage::cannotEnumerateHostUSBDevices(const CHost &comHost)
         QApplication::translate("UIMessageCenter", "Can't enumerate USB devices ..."),
         QApplication::translate("UIMessageCenter", "Failed to enumerate host USB devices.") +
         UIErrorString::formatErrorInfo(comHost),
-        QString(),
+        "cannotEnumerateHostUSBDevices",
         strHelpKeyword);
 }
 
