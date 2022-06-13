@@ -1,4 +1,4 @@
-/* $Id: dbgmodghidra.cpp 89881 2021-06-24 10:58:04Z vboxsync $ */
+/* $Id: dbgmodghidra.cpp 89882 2021-06-24 11:07:11Z vboxsync $ */
 /** @file
  * IPRT - Debug Info Reader for Ghidra XML files created with createPdbXmlFiles.bat/pdb.exe.
  */
@@ -267,7 +267,7 @@ static int rtDbgModGhidraXmlParseSymbols(RTDBGMOD hCnt, const xml::ElementNode &
 
 
 /**
- * @copydoc FNSORTCMP
+ * @copydoc FNRTSORTCMP
  */
 static DECLCALLBACK(int) rtDbgModGhidraSegmentsSortCmp(void const *pvElement1, void const *pvElement2, void *pvUser)
 {
