@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 93901 2022-02-23 15:35:26Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 94369 2022-03-25 07:42:32Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -4980,8 +4980,6 @@ const PDMDEVHLPR3 g_pdmR3DevHlpTrusted =
     CFGMR3QueryUIntDef,
     CFGMR3QuerySInt,
     CFGMR3QuerySIntDef,
-    CFGMR3QueryPtr,
-    CFGMR3QueryPtrDef,
     CFGMR3QueryGCPtr,
     CFGMR3QueryGCPtrDef,
     CFGMR3QueryGCPtrU,
@@ -5379,8 +5377,6 @@ const PDMDEVHLPR3 g_pdmR3DevHlpTracing =
     CFGMR3QueryUIntDef,
     CFGMR3QuerySInt,
     CFGMR3QuerySIntDef,
-    CFGMR3QueryPtr,
-    CFGMR3QueryPtrDef,
     CFGMR3QueryGCPtr,
     CFGMR3QueryGCPtrDef,
     CFGMR3QueryGCPtrU,
@@ -6098,8 +6094,6 @@ const PDMDEVHLPR3 g_pdmR3DevHlpUnTrusted =
     CFGMR3QueryUIntDef,
     CFGMR3QuerySInt,
     CFGMR3QuerySIntDef,
-    CFGMR3QueryPtr,
-    CFGMR3QueryPtrDef,
     CFGMR3QueryGCPtr,
     CFGMR3QueryGCPtrDef,
     CFGMR3QueryGCPtrU,

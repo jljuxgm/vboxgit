@@ -1,4 +1,4 @@
-/* $Id: PDMUsb.cpp 94342 2022-03-23 19:53:21Z vboxsync $ */
+/* $Id: PDMUsb.cpp 94369 2022-03-25 07:42:32Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, USB part.
  */
@@ -2334,8 +2334,6 @@ const PDMUSBHLP g_pdmR3UsbHlp =
     CFGMR3QueryUIntDef,
     CFGMR3QuerySInt,
     CFGMR3QuerySIntDef,
-    CFGMR3QueryPtr,
-    CFGMR3QueryPtrDef,
     CFGMR3QueryGCPtr,
     CFGMR3QueryGCPtrDef,
     CFGMR3QueryGCPtrU,

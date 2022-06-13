@@ -1,4 +1,4 @@
-/* $Id: CFGM.cpp 93470 2022-01-27 23:51:28Z vboxsync $ */
+/* $Id: CFGM.cpp 94369 2022-03-25 07:42:32Z vboxsync $ */
 /** @file
  * CFGM - Configuration Manager.
  */
@@ -3023,57 +3023,6 @@ VMMR3DECL(int) CFGMR3QuerySIntDef(PCFGMNODE pNode, const char *pszName, signed i
 {
     AssertCompileSize(signed int, 4);
     return CFGMR3QueryS32Def(pNode, pszName, (int32_t *)pi, iDef);
-}
-
-
-/**
- * Query pointer integer value.
- *
- * @returns VBox status code.
- * @param   pNode           Which node to search for pszName in.
- * @param   pszName         Name of an integer value.
- * @param   ppv             Where to store the value.
- */
-VMMR3DECL(int) CFGMR3QueryPtr(PCFGMNODE pNode, const char *pszName, void **ppv)
-{
-    uint64_t u64;
-    int rc = CFGMR3QueryInteger(pNode, pszName, &u64);
-    if (RT_SUCCESS(rc))
-    {
-        uintptr_t u = (uintptr_t)u64;
-        if (u64 == u)
-            *ppv = (void *)u;
-        else
-            rc = VERR_CFGM_INTEGER_TOO_BIG;
-    }
-    return rc;
-}
-
-
-/**
- * Query pointer integer value with default.
- *
- * @returns VBox status code.
- * @param   pNode           Which node to search for pszName in.
- * @param   pszName         Name of an integer value.
- * @param   ppv             Where to store the value. Set to default on failure.
- * @param   pvDef           The default value.
- */
-VMMR3DECL(int) CFGMR3QueryPtrDef(PCFGMNODE pNode, const char *pszName, void **ppv, void *pvDef)
-{
-    uint64_t u64;
-    int rc = CFGMR3QueryIntegerDef(pNode, pszName, &u64, (uintptr_t)pvDef);
-    if (RT_SUCCESS(rc))
-    {
-        uintptr_t u = (uintptr_t)u64;
-        if (u64 == u)
-            *ppv = (void *)u;
-        else
-            rc = VERR_CFGM_INTEGER_TOO_BIG;
-    }
-    if (RT_FAILURE(rc))
-        *ppv = pvDef;
-    return rc;
 }
 
 
