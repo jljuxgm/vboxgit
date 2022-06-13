@@ -1,10 +1,10 @@
-/* $Id: UIGlobalSettingsLanguage.h 86152 2020-09-17 12:04:53Z vboxsync $ */
+/* $Id: UIGlobalSettingsLanguage.h 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsLanguage class declaration.
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: semeventmulti-nt.cpp 92818 2021-12-08 14:05:45Z vboxsync $ */
+/* $Id: semeventmulti-nt.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * IPRT -  Multiple Release Event Semaphores, Ring-0 Driver, NT.
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

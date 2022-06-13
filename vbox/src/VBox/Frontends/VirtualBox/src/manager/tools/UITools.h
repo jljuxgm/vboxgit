@@ -1,10 +1,10 @@
-/* $Id: UITools.h 88805 2021-04-30 13:29:59Z vboxsync $ */
+/* $Id: UITools.h 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UITools class declaration.
  */
 
 /*
- * Copyright (C) 2012-2021 Oracle Corporation
+ * Copyright (C) 2012-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

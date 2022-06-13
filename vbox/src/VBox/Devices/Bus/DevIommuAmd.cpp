@@ -1,10 +1,10 @@
-/* $Id: DevIommuAmd.cpp 90511 2021-08-04 10:04:15Z vboxsync $ */
+/* $Id: DevIommuAmd.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - AMD implementation.
  */
 
 /*
- * Copyright (C) 2020 Oracle Corporation
+ * Copyright (C) 2020-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

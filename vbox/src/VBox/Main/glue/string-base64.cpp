@@ -1,10 +1,10 @@
-/* $Id: string-base64.cpp 87434 2021-01-26 15:41:54Z vboxsync $ */
+/* $Id: string-base64.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - UTF-8 and UTF-16 string classes, BASE64 bits.
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

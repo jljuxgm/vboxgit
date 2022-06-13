@@ -1,11 +1,11 @@
-; $Id: VBoxWHQLFake.au3 82968 2020-02-04 10:35:17Z vboxsync $
+; $Id: VBoxWHQLFake.au3 93115 2022-01-01 11:31:46Z vboxsync $
 ;; @file
 ; VBoxFakeWHQL - Turns off / on the WHQL for installing unsigned drivers.
 ; Currently only tested with Win2K / XP!
 ;
 
 ;
-; Copyright (C) 2008-2020 Oracle Corporation
+; Copyright (C) 2008-2022 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

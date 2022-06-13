@@ -1,10 +1,10 @@
-/* $Id: DBGPlugInLinux.cpp 90181 2021-07-14 13:45:36Z vboxsync $ */
+/* $Id: DBGPlugInLinux.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * DBGPlugInLinux - Debugger and Guest OS Digger Plugin For Linux.
  */
 
 /*
- * Copyright (C) 2008-2020 Oracle Corporation
+ * Copyright (C) 2008-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

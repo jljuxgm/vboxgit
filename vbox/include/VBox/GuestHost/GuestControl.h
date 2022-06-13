@@ -1,4 +1,4 @@
-/* $Id: GuestControl.h 92708 2021-12-02 13:34:22Z vboxsync $ */
+/* $Id: GuestControl.h 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * Guest Control - Common Guest and Host Code.
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2016-2020 Oracle Corporation
+ * Copyright (C) 2016-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

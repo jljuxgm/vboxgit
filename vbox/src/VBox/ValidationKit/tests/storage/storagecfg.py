@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: storagecfg.py 83204 2020-03-05 10:34:47Z vboxsync $
+# $Id: storagecfg.py 93115 2022-01-01 11:31:46Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage test configuration API.
@@ -7,7 +7,7 @@ VirtualBox Validation Kit - Storage test configuration API.
 
 __copyright__ = \
 """
-Copyright (C) 2016-2020 Oracle Corporation
+Copyright (C) 2016-2022 Oracle Corporation
 
 This file is part of VirtualBox Open Source Edition (OSE), as
 available from http://www.virtualbox.org. This file is free software;
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 83204 $"
+__version__ = "$Revision: 93115 $"
 
 # Standard Python imports.
 import os;

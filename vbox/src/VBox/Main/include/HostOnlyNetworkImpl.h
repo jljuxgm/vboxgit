@@ -1,10 +1,10 @@
-/* $Id: HostOnlyNetworkImpl.h 91416 2021-09-28 06:15:49Z vboxsync $ */
+/* $Id: HostOnlyNetworkImpl.h 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * IHostOnlyNetwork implementation header, lives in VBoxSVC.
  */
 
 /*
- * Copyright (C) 2021 Oracle Corporation
+ * Copyright (C) 2021-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

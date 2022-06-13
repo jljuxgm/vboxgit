@@ -1,10 +1,10 @@
-/* $Id: init.cpp 92714 2021-12-02 17:47:38Z vboxsync $ */
+/* $Id: init.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * IPRT - Init Ring-3.
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

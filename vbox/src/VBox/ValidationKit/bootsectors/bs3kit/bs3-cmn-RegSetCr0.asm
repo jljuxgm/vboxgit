@@ -1,10 +1,10 @@
-; $Id: bs3-cmn-RegSetCr0.asm 89930 2021-06-28 14:12:57Z vboxsync $
+; $Id: bs3-cmn-RegSetCr0.asm 93115 2022-01-01 11:31:46Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3RegSetCr0
 ;
 
 ;
-; Copyright (C) 2007-2020 Oracle Corporation
+; Copyright (C) 2007-2022 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

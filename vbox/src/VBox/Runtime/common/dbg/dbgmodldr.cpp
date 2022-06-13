@@ -1,10 +1,10 @@
-/* $Id: dbgmodldr.cpp 83084 2020-02-15 15:16:11Z vboxsync $ */
+/* $Id: dbgmodldr.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * IPRT - Debug Module Image Interpretation by RTLdr.
  */
 
 /*
- * Copyright (C) 2011-2020 Oracle Corporation
+ * Copyright (C) 2011-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

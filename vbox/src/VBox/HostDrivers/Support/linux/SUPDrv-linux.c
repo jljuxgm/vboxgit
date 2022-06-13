@@ -1,10 +1,10 @@
-/* $Id: SUPDrv-linux.c 91793 2021-10-17 18:59:39Z vboxsync $ */
+/* $Id: SUPDrv-linux.c 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Linux specifics.
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: zero-alt.S 87182 2021-01-05 23:16:45Z vboxsync $ */
+/* $Id: zero-alt.S 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * IPRT - Zero Memory, mach-o version (for arm).
  */
 
 /*
- * Copyright (C) 2013-2020 Oracle Corporation
+ * Copyright (C) 2013-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

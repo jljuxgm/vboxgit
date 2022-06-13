@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: vcs_import.py 84550 2020-05-26 18:50:43Z vboxsync $
+# $Id: vcs_import.py 93115 2022-01-01 11:31:46Z vboxsync $
 
 """
 Cron job for importing revision history for a repository.
@@ -10,7 +10,7 @@ from __future__ import print_function;
 
 __copyright__ = \
 """
-Copyright (C) 2012-2020 Oracle Corporation
+Copyright (C) 2012-2022 Oracle Corporation
 
 This file is part of VirtualBox Open Source Edition (OSE), as
 available from http://www.virtualbox.org. This file is free software;
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84550 $"
+__version__ = "$Revision: 93115 $"
 
 # Standard python imports
 import sys;

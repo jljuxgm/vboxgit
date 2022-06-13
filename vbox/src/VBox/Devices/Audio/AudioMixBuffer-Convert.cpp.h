@@ -1,10 +1,10 @@
-/* $Id: AudioMixBuffer-Convert.cpp.h 89405 2021-05-31 13:58:57Z vboxsync $ */
+/* $Id: AudioMixBuffer-Convert.cpp.h 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * Audio mixing buffer - Format conversion template.
  */
 
 /*
- * Copyright (C) 2014-2021 Oracle Corporation
+ * Copyright (C) 2014-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

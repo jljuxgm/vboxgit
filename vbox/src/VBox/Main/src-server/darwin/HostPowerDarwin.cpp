@@ -1,10 +1,10 @@
-/* $Id: HostPowerDarwin.cpp 85259 2020-07-11 23:58:17Z vboxsync $ */
+/* $Id: HostPowerDarwin.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VirtualBox interface to host's power notification service, darwin specifics.
  */
 
 /*
- * Copyright (C) 2008-2020 Oracle Corporation
+ * Copyright (C) 2008-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

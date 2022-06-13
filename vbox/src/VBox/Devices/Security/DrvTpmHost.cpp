@@ -1,10 +1,10 @@
-/* $Id: DrvTpmHost.cpp 91867 2021-10-20 09:05:23Z vboxsync $ */
+/* $Id: DrvTpmHost.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * TPM host access driver.
  */
 
 /*
- * Copyright (C) 2021 Oracle Corporation
+ * Copyright (C) 2021-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: pkcs7-sanity.cpp 84239 2020-05-10 12:54:41Z vboxsync $ */
+/* $Id: pkcs7-sanity.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * IPRT - Crypto - PKCS \#7, Sanity Checkers.
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

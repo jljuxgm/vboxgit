@@ -1,10 +1,10 @@
-/* $Id: PDMR0DevHlpTracing.cpp 88641 2021-04-22 06:20:26Z vboxsync $ */
+/* $Id: PDMR0DevHlpTracing.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helper variants when tracing is enabled.
  */
 
 /*
- * Copyright (C) 2020 Oracle Corporation
+ * Copyright (C) 2020-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

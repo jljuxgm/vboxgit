@@ -1,4 +1,4 @@
-/* $Id: DevHdaCodec.cpp 91734 2021-10-14 16:37:27Z vboxsync $ */
+/* $Id: DevHdaCodec.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * Intel HD Audio Controller Emulation - Codec, Sigmatel/IDT STAC9220.
  *
@@ -7,7 +7,7 @@
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

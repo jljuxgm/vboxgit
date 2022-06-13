@@ -1,10 +1,10 @@
-/* $Id: ntfsvfs.cpp 83739 2020-04-17 08:51:27Z vboxsync $ */
+/* $Id: ntfsvfs.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * IPRT - NTFS Virtual Filesystem, currently only for reading allocation bitmap.
  */
 
 /*
- * Copyright (C) 2012-2020 Oracle Corporation
+ * Copyright (C) 2012-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

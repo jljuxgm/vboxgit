@@ -1,10 +1,10 @@
-/* $Id: DrvRamDisk.cpp 91869 2021-10-20 09:05:50Z vboxsync $ */
+/* $Id: DrvRamDisk.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VBox storage devices: RAM disk driver.
  */
 
 /*
- * Copyright (C) 2016-2020 Oracle Corporation
+ * Copyright (C) 2016-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

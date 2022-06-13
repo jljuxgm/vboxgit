@@ -1,11 +1,11 @@
-/* $Id: vboximgCrypto.cpp 90785 2021-08-23 09:43:25Z vboxsync $ $Revision: 90785 $ */
+/* $Id: vboximgCrypto.cpp 93115 2022-01-01 11:31:46Z vboxsync $ $Revision: 93115 $ */
 
 /** @file
  * vboximgCypto.cpp - Disk Image Flattening FUSE Program.
  */
 
 /*
- * Copyright (C) 2009-2020 Oracle Corporation
+ * Copyright (C) 2009-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

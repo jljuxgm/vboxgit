@@ -1,10 +1,10 @@
-/* $Id: VBoxCompilerPlugInsGcc.cpp 88324 2021-03-30 16:57:23Z vboxsync $ */
+/* $Id: VBoxCompilerPlugInsGcc.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * gccplugin - GCC plugin for checking IPRT format strings.
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: DevHda.h 90158 2021-07-12 13:49:57Z vboxsync $ */
+/* $Id: DevHda.h 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * Intel HD Audio Controller Emulation - Structures.
  */
 
 /*
- * Copyright (C) 2016-2020 Oracle Corporation
+ * Copyright (C) 2016-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

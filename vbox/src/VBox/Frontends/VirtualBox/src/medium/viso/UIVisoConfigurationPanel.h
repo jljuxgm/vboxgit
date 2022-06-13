@@ -1,10 +1,10 @@
-/* $Id: UIVisoConfigurationPanel.h 92272 2021-11-08 14:50:10Z vboxsync $ */
+/* $Id: UIVisoConfigurationPanel.h 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoConfigurationPanel class declaration.
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: LnxPerfHack.cpp 87648 2021-02-08 22:21:17Z vboxsync $ */
+/* $Id: LnxPerfHack.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * LnxPerfHack - Dirty hack to make perf find our .r0 modules.
  */
 
 /*
- * Copyright (C) 2021 Oracle Corporation
+ * Copyright (C) 2021-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

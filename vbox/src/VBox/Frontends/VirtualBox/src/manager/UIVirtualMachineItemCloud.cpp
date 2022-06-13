@@ -1,10 +1,10 @@
-/* $Id: UIVirtualMachineItemCloud.cpp 91165 2021-09-08 15:34:03Z vboxsync $ */
+/* $Id: UIVirtualMachineItemCloud.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItemCloud class implementation.
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

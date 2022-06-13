@@ -1,10 +1,10 @@
-/* $Id: tstRTFileQuerySize-1.cpp 86349 2020-09-30 13:50:20Z vboxsync $ */
+/* $Id: tstRTFileQuerySize-1.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTFileQuerySize.
  */
 
 /*
- * Copyright (C) 2011-2020 Oracle Corporation
+ * Copyright (C) 2011-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

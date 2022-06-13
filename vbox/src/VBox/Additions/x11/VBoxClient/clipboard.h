@@ -1,10 +1,10 @@
-/** $Id: clipboard.h 86970 2020-11-24 14:04:43Z vboxsync $ */
+/** $Id: clipboard.h 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * Guest Additions - X11 Shared Clipboard - Main header.
  */
 
 /*
- * Copyright (C) 2020 Oracle Corporation
+ * Copyright (C) 2020-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

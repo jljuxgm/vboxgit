@@ -1,10 +1,10 @@
-/* $Id: tstVMMR0CallHost-1.cpp 92408 2021-11-12 21:49:06Z vboxsync $ */
+/* $Id: tstVMMR0CallHost-1.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * Testcase for the VMMR0JMPBUF operations.
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

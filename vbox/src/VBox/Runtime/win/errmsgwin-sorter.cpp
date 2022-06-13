@@ -1,10 +1,10 @@
-/* $Id: errmsgwin-sorter.cpp 92905 2021-12-14 22:13:06Z vboxsync $ */
+/* $Id: errmsgwin-sorter.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * IPRT - Status code messages, Windows, sorter build program.
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

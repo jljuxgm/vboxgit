@@ -1,10 +1,10 @@
-/* $Id: DrvHostAudioAlsaStubs.cpp 91658 2021-10-11 09:02:56Z vboxsync $ */
+/* $Id: DrvHostAudioAlsaStubs.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * Stubs for libasound.
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

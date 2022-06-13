@@ -1,10 +1,10 @@
-/* $Id: UICloudNetworkingStuff.cpp 92624 2021-11-29 12:01:38Z vboxsync $ */
+/* $Id: UICloudNetworkingStuff.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudNetworkingStuff namespace implementation.
  */
 
 /*
- * Copyright (C) 2020 Oracle Corporation
+ * Copyright (C) 2020-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

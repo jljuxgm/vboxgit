@@ -1,11 +1,11 @@
-/* $Id: AutoCaller.h 85929 2020-08-28 14:40:55Z vboxsync $ */
+/* $Id: AutoCaller.h 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  *
  * VirtualBox object caller handling definitions
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

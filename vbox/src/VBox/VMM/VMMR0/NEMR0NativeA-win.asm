@@ -1,10 +1,10 @@
- ; $Id: NEMR0NativeA-win.asm 91676 2021-10-11 20:46:03Z vboxsync $
+ ; $Id: NEMR0NativeA-win.asm 93115 2022-01-01 11:31:46Z vboxsync $
 ;; @file
 ; NEM/win - Ring-0 Assembly Routines.
 ;
 
 ;
-; Copyright (C) 2021 Oracle Corporation
+; Copyright (C) 2021-2022 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

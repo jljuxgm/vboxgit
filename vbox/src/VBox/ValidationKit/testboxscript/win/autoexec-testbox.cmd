@@ -1,11 +1,11 @@
 @echo off
-REM $Id: autoexec-testbox.cmd 89860 2021-06-23 14:16:14Z vboxsync $
+REM $Id: autoexec-testbox.cmd 93115 2022-01-01 11:31:46Z vboxsync $
 REM REM @file
 REM VirtualBox Validation Kit - testbox script, automatic execution wrapper.
 REM
 
 REM
-REM Copyright (C) 2006-2020 Oracle Corporation
+REM Copyright (C) 2006-2022 Oracle Corporation
 REM
 REM This file is part of VirtualBox Open Source Edition (OSE), as
 REM available from http://www.virtualbox.org. This file is free software;
@@ -25,7 +25,7 @@ REM You may elect to license modified versions of this file under the
 REM terms and conditions of either the GPL or the CDDL or both.
 REM
 
-@echo "$Id: autoexec-testbox.cmd 89860 2021-06-23 14:16:14Z vboxsync $"
+@echo "$Id: autoexec-testbox.cmd 93115 2022-01-01 11:31:46Z vboxsync $"
 @echo on
 setlocal EnableExtensions
 set exe=python.exe

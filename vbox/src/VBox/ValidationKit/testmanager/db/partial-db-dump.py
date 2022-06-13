@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: partial-db-dump.py 86994 2020-11-26 15:12:03Z vboxsync $
+# $Id: partial-db-dump.py 93115 2022-01-01 11:31:46Z vboxsync $
 # pylint: disable=line-too-long
 
 """
@@ -9,7 +9,7 @@ Utility for dumping the last X days of data.
 
 __copyright__ = \
 """
-Copyright (C) 2012-2020 Oracle Corporation
+Copyright (C) 2012-2022 Oracle Corporation
 
 This file is part of VirtualBox Open Source Edition (OSE), as
 available from http://www.virtualbox.org. This file is free software;
@@ -28,7 +28,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 86994 $"
+__version__ = "$Revision: 93115 $"
 
 # Standard python imports
 import sys;

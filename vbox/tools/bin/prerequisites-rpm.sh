@@ -1,11 +1,11 @@
 #!/bin/sh -e
 # @file
-## $Id: prerequisites-rpm.sh 82968 2020-02-04 10:35:17Z vboxsync $
+## $Id: prerequisites-rpm.sh 93115 2022-01-01 11:31:46Z vboxsync $
 # Fetches prerequisites for RPM based GNU/Linux systems.
 #
 
 #
-# Copyright (C) 2018-2020 Oracle Corporation
+# Copyright (C) 2018-2022 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;

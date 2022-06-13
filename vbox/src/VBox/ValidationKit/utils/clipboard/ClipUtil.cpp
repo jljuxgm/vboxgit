@@ -1,10 +1,10 @@
-/* $Id: ClipUtil.cpp 92228 2021-11-04 23:48:50Z vboxsync $ */
+/* $Id: ClipUtil.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * ClipUtil - Clipboard Utility
  */
 
 /*
- * Copyright (C) 2021 Oracle Corporation
+ * Copyright (C) 2021-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -1751,7 +1751,7 @@ int main(int argc, char *argv[])
 
             case 'V':
             {
-                char szRev[] = "$Revision: 92228 $";
+                char szRev[] = "$Revision: 93115 $";
                 szRev[RT_ELEMENTS(szRev) - 2] = '\0';
                 RTPrintf(RTStrStrip(strchr(szRev, ':') + 1));
                 return RTEXITCODE_SUCCESS;

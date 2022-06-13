@@ -1,10 +1,10 @@
-/* $Id: VBoxEditCoffLib.cpp 83722 2020-04-16 22:11:11Z vboxsync $ */
+/* $Id: VBoxEditCoffLib.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VBoxEditCoffLib - Simple COFF editor for library files.
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

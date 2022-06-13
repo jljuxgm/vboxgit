@@ -1,10 +1,10 @@
-/* $Id: UIMediumSearchWidget.h 87722 2021-02-11 11:16:20Z vboxsync $ */
+/* $Id: UIMediumSearchWidget.h 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSearchWidget class declaration.
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

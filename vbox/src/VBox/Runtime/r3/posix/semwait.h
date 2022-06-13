@@ -1,10 +1,10 @@
-/* $Id: semwait.h 92781 2021-12-07 10:31:02Z vboxsync $ */
+/* $Id: semwait.h 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * IPRT - Common semaphore wait code.
  */
 
 /*
- * Copyright (C) 2021 Oracle Corporation
+ * Copyright (C) 2021-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

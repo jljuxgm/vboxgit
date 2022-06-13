@@ -1,10 +1,10 @@
-/* $Id: d3d11render.cpp 86815 2020-11-05 21:45:32Z vboxsync $ */
+/* $Id: d3d11render.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * Gallium D3D testcase. Simple D3D11 tests.
  */
 
 /*
- * Copyright (C) 2017-2020 Oracle Corporation
+ * Copyright (C) 2017-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

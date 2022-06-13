@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-# $Id: htmlhelp-qthelp.py 87727 2021-02-11 21:47:15Z vboxsync $
+# $Id: htmlhelp-qthelp.py 93115 2022-01-01 11:31:46Z vboxsync $
 ## @file
 # A python script to create a .qhp file out of a given htmlhelp
 # folder. Lots of things about the said folder is assumed. Please
@@ -20,7 +20,7 @@ else:
 
 __copyright__ = \
 """
-Copyright (C) 2006-2020 Oracle Corporation
+Copyright (C) 2006-2022 Oracle Corporation
 
 This file is part of VirtualBox Open Source Edition (OSE), as
 available from http://www.virtualbox.org. This file is free software;

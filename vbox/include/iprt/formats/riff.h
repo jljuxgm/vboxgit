@@ -1,10 +1,10 @@
-/* $Id: riff.h 89386 2021-05-31 09:52:54Z vboxsync $ */
+/* $Id: riff.h 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * IPRT - Resource Interchange File Format (RIFF), WAVE, ++.
  */
 
 /*
- * Copyright (C) 2021 Oracle Corporation
+ * Copyright (C) 2021-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

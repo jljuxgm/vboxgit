@@ -1,10 +1,10 @@
-/* $Id: DevPIC.cpp 91739 2021-10-14 19:21:57Z vboxsync $ */
+/* $Id: DevPIC.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * DevPIC - Intel 8259 Programmable Interrupt Controller (PIC) Device.
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: utf-16-printf.cpp 83943 2020-04-23 10:43:21Z vboxsync $ */
+/* $Id: utf-16-printf.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * IPRT - String Formatters, Outputting UTF-16.
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

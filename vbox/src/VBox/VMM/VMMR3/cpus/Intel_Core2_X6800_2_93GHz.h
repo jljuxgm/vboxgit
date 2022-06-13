@@ -1,11 +1,11 @@
-/* $Id: Intel_Core2_X6800_2_93GHz.h 87603 2021-02-04 09:53:08Z vboxsync $ */
+/* $Id: Intel_Core2_X6800_2_93GHz.h 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * CPU database entry "Intel Core2 X6800 2.93GHz".
  * Generated at 2017-11-04T22:32:41Z by VBoxCpuReport v5.2.1r118907 on linux.amd64.
  */
 
 /*
- * Copyright (C) 2013-2020 Oracle Corporation
+ * Copyright (C) 2013-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

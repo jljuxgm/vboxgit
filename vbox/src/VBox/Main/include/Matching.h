@@ -1,11 +1,11 @@
-/* $Id: Matching.h 85236 2020-07-11 16:35:49Z vboxsync $ */
+/* $Id: Matching.h 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * Declaration of template classes that provide simple API to
  * do matching between values and value filters constructed from strings.
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

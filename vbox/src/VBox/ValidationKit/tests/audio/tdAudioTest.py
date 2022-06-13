@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tdAudioTest.py 92380 2021-11-11 17:56:54Z vboxsync $
+# $Id: tdAudioTest.py 93115 2022-01-01 11:31:46Z vboxsync $
 
 """
 AudioTest test driver which invokes the VKAT (Validation Kit Audio Test)
@@ -11,7 +11,7 @@ to the host for later audio comparison / verification.
 
 __copyright__ = \
 """
-Copyright (C) 2021 Oracle Corporation
+Copyright (C) 2021-2022 Oracle Corporation
 
 This file is part of VirtualBox Open Source Edition (OSE), as
 available from http://www.virtualbox.org. This file is free software;
@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 92380 $"
+__version__ = "$Revision: 93115 $"
 
 # Standard Python imports.
 from datetime import datetime

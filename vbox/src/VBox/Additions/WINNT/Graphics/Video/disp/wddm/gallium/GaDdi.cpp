@@ -1,10 +1,10 @@
-/* $Id: GaDdi.cpp 83827 2020-04-19 02:02:30Z vboxsync $ */
+/* $Id: GaDdi.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * WDDM D3DDDI callbacks implemented for the Gallium based driver.
  */
 
 /*
- * Copyright (C) 2017-2020 Oracle Corporation
+ * Copyright (C) 2017-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: VBoxManageModifyNvram.cpp 92372 2021-11-11 14:45:18Z vboxsync $ */
+/* $Id: VBoxManageModifyNvram.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VBoxManage - The nvram control related commands.
  */
 
 /*
- * Copyright (C) 2021 Oracle Corporation
+ * Copyright (C) 2021-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

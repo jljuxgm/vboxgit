@@ -1,11 +1,11 @@
-/* $Id: RecordingSettingsImpl.cpp 91743 2021-10-14 20:04:27Z vboxsync $ */
+/* $Id: RecordingSettingsImpl.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation - Machine capture settings.
  */
 
 /*
- * Copyright (C) 2018-2020 Oracle Corporation
+ * Copyright (C) 2018-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

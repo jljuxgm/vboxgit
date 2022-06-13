@@ -1,10 +1,10 @@
-/* $Id: semeventmulti-linux.cpp 92784 2021-12-07 11:53:19Z vboxsync $ */
+/* $Id: semeventmulti-linux.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * IPRT - Multiple Release Event Semaphore, Linux (2.6.x+).
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

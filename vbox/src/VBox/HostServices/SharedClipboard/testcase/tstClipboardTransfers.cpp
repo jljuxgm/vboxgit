@@ -1,10 +1,10 @@
-/* $Id: tstClipboardTransfers.cpp 92736 2021-12-03 16:04:38Z vboxsync $ */
+/* $Id: tstClipboardTransfers.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * Shared Clipboard transfers test case.
  */
 
 /*
- * Copyright (C) 2019-2021 Oracle Corporation
+ * Copyright (C) 2019-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

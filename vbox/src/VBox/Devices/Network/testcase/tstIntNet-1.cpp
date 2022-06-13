@@ -1,10 +1,10 @@
-/* $Id: tstIntNet-1.cpp 85506 2020-07-29 10:07:17Z vboxsync $ */
+/* $Id: tstIntNet-1.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VBox - Testcase for internal networking, simple NetFlt trunk creation.
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -808,7 +808,7 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
                 return 1;
 
             case 'V':
-                RTPrintf("$Revision: 85506 $\n");
+                RTPrintf("$Revision: 93115 $\n");
                 return 0;
 
             default:

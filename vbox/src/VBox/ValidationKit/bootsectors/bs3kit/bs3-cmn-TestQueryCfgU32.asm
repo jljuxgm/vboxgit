@@ -1,10 +1,10 @@
-; $Id: bs3-cmn-TestQueryCfgU32.asm 92532 2021-11-21 14:12:09Z vboxsync $
+; $Id: bs3-cmn-TestQueryCfgU32.asm 93115 2022-01-01 11:31:46Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3TestQueryCfgU8.
 ;
 
 ;
-; Copyright (C) 2007-2020 Oracle Corporation
+; Copyright (C) 2007-2022 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

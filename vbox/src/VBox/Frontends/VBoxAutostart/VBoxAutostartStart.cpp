@@ -1,10 +1,10 @@
-/* $Id: VBoxAutostartStart.cpp 89571 2021-06-08 17:34:49Z vboxsync $ */
+/* $Id: VBoxAutostartStart.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VBoxAutostart - VirtualBox Autostart service, start machines during system boot.
  */
 
 /*
- * Copyright (C) 2012-2020 Oracle Corporation
+ * Copyright (C) 2012-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

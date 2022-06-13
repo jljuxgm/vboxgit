@@ -6,7 +6,7 @@ Autostart testcase using.
 
 __copyright__ = \
 """
-Copyright (C) 2013-2020 Oracle Corporation
+Copyright (C) 2013-2022 Oracle Corporation
 
 This file is part of VirtualBox Open Source Edition (OSE), as
 available from http://www.virtualbox.org. This file is free software;
@@ -25,7 +25,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Id: tdAutostart1.py 87231 2021-01-13 10:33:26Z vboxsync $"
+__version__ = "$Id: tdAutostart1.py 93115 2022-01-01 11:31:46Z vboxsync $"
 
 # Standard Python imports.
 import os;

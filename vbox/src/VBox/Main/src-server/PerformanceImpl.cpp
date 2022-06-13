@@ -1,10 +1,10 @@
-/* $Id: PerformanceImpl.cpp 91503 2021-10-01 08:57:59Z vboxsync $ */
+/* $Id: PerformanceImpl.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VBox Performance API COM Classes implementation
  */
 
 /*
- * Copyright (C) 2008-2020 Oracle Corporation
+ * Copyright (C) 2008-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

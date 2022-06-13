@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: coreconsts.py 86427 2020-10-02 16:11:12Z vboxsync $
+# $Id: coreconsts.py 93115 2022-01-01 11:31:46Z vboxsync $
 
 """
 Test Manager - Test Manager Constants (without a more appropriate home).
@@ -7,7 +7,7 @@ Test Manager - Test Manager Constants (without a more appropriate home).
 
 __copyright__ = \
 """
-Copyright (C) 2012-2020 Oracle Corporation
+Copyright (C) 2012-2022 Oracle Corporation
 
 This file is part of VirtualBox Open Source Edition (OSE), as
 available from http://www.virtualbox.org. This file is free software;
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 86427 $"
+__version__ = "$Revision: 93115 $"
 
 ## OS agnostic.
 g_ksOsAgnostic      = 'os-agnostic';

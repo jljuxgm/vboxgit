@@ -1,10 +1,10 @@
-/* $Id: NEMR3Native-linux.cpp 92701 2021-12-02 12:42:20Z vboxsync $ */
+/* $Id: NEMR3Native-linux.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, native ring-3 Linux backend.
  */
 
 /*
- * Copyright (C) 2021 Oracle Corporation
+ * Copyright (C) 2021-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

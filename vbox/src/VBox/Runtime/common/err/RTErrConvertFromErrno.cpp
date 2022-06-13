@@ -1,10 +1,10 @@
-/* $Id: RTErrConvertFromErrno.cpp 85581 2020-07-31 15:45:56Z vboxsync $ */
+/* $Id: RTErrConvertFromErrno.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * IPRT - Convert errno to iprt status codes.
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: HGSMIHost.h 91942 2021-10-21 12:59:54Z vboxsync $ */
+/* $Id: HGSMIHost.h 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VBox Host Guest Shared Memory Interface (HGSMI), host part.
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

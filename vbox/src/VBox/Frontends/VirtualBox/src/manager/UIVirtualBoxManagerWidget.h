@@ -1,10 +1,10 @@
-/* $Id: UIVirtualBoxManagerWidget.h 90299 2021-07-23 10:58:13Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.h 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class declaration.
  */
 
 /*
- * Copyright (C) 2006-2021 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

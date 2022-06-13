@@ -1,10 +1,10 @@
-/* $Id: HBDMgmt-win.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: HBDMgmt-win.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VBox storage devices: Host block device management API.
  */
 
 /*
- * Copyright (C) 2015-2020 Oracle Corporation
+ * Copyright (C) 2015-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

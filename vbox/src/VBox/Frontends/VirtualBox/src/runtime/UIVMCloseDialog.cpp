@@ -1,10 +1,10 @@
-/* $Id: UIVMCloseDialog.cpp 90083 2021-07-08 07:38:43Z vboxsync $ */
+/* $Id: UIVMCloseDialog.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMCloseDialog class implementation.
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

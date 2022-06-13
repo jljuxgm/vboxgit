@@ -1,10 +1,10 @@
-/* $Id: RTCRestClientApiBase.cpp 88124 2021-03-15 17:46:52Z vboxsync $ */
+/* $Id: RTCRestClientApiBase.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestClientApiBase implementation.
  */
 
 /*
- * Copyright (C) 2018-2020 Oracle Corporation
+ * Copyright (C) 2018-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

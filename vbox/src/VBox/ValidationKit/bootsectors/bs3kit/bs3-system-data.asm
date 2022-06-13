@@ -1,10 +1,10 @@
-; $Id: bs3-system-data.asm 92725 2021-12-02 23:47:32Z vboxsync $
+; $Id: bs3-system-data.asm 93115 2022-01-01 11:31:46Z vboxsync $
 ;; @file
 ; BS3Kit - GDT
 ;
 
 ;
-; Copyright (C) 2007-2020 Oracle Corporation
+; Copyright (C) 2007-2022 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

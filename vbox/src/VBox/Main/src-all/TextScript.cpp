@@ -1,10 +1,10 @@
-/* $Id: TextScript.cpp 91718 2021-10-14 11:43:12Z vboxsync $ */
+/* $Id: TextScript.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * Classes for reading/parsing/saving text scripts (unattended installation, ++).
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

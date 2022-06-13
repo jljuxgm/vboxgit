@@ -1,11 +1,11 @@
 @echo off
-rem $Id: backport-merge-and-commit.cmd 83611 2020-04-07 17:11:42Z vboxsync $
+rem $Id: backport-merge-and-commit.cmd 93115 2022-01-01 11:31:46Z vboxsync $
 rem rem @file
 rem Windows NT batch script for launching backport-merge-and-commit.sh
 rem
 
 rem
-rem Copyright (C) 2009-2020 Oracle Corporation
+rem Copyright (C) 2009-2022 Oracle Corporation
 rem
 rem This file is part of VirtualBox Open Source Edition (OSE), as
 rem available from http://www.virtualbox.org. This file is free software;

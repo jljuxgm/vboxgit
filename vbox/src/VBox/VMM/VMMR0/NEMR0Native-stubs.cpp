@@ -1,10 +1,10 @@
-/* $Id: NEMR0Native-stubs.cpp 92377 2021-11-11 15:16:13Z vboxsync $ */
+/* $Id: NEMR0Native-stubs.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, ring-0 stubs until there is a driverless mode.
  */
 
 /*
- * Copyright (C) 2021 Oracle Corporation
+ * Copyright (C) 2021-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: VBoxServiceControlProcess.cpp 92707 2021-12-02 13:14:23Z vboxsync $ */
+/* $Id: VBoxServiceControlProcess.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VBoxServiceControlThread - Guest process handling.
  */
 
 /*
- * Copyright (C) 2012-2020 Oracle Corporation
+ * Copyright (C) 2012-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

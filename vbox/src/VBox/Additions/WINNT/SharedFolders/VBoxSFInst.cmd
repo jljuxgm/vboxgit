@@ -1,11 +1,11 @@
 @echo off
-rem $Id: VBoxSFInst.cmd 82968 2020-02-04 10:35:17Z vboxsync $
+rem $Id: VBoxSFInst.cmd 93115 2022-01-01 11:31:46Z vboxsync $
 rem rem @file
 rem Windows NT batch script for manually installing the shared folders guest addition driver.
 rem
 
 rem
-rem Copyright (C) 2009-2020 Oracle Corporation
+rem Copyright (C) 2009-2022 Oracle Corporation
 rem
 rem This file is part of VirtualBox Open Source Edition (OSE), as
 rem available from http://www.virtualbox.org. This file is free software;

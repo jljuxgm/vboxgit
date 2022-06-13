@@ -1,10 +1,10 @@
-/* $Id: bldprog-strtab-template.cpp.h 84127 2020-05-02 11:56:09Z vboxsync $ */
+/* $Id: bldprog-strtab-template.cpp.h 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * IPRT - Build Program - String Table Generator.
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

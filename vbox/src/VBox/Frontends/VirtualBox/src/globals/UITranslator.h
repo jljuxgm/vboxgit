@@ -1,10 +1,10 @@
-/* $Id: UITranslator.h 90967 2021-08-27 20:37:40Z vboxsync $ */
+/* $Id: UITranslator.h 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UITranslator class declaration.
  */
 
 /*
- * Copyright (C) 2006-2021 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

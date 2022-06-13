@@ -1,10 +1,10 @@
-/* $Id: localipc-posix.cpp 93026 2021-12-19 10:50:51Z vboxsync $ */
+/* $Id: localipc-posix.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * IPRT - Local IPC Server & Client, Posix.
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

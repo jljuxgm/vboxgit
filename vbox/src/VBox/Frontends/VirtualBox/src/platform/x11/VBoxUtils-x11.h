@@ -1,10 +1,10 @@
-/* $Id: VBoxUtils-x11.h 91066 2021-09-01 15:56:33Z vboxsync $ */
+/* $Id: VBoxUtils-x11.h 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Declarations of utility classes and functions for handling X11 specific tasks.
  */
 
 /*
- * Copyright (C) 2006-2021 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

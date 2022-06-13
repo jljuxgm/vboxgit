@@ -1,10 +1,10 @@
-/* $Id: UIDetailsGenerator.h 86275 2020-09-24 20:04:03Z vboxsync $ */
+/* $Id: UIDetailsGenerator.h 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsGenerator declaration.
  */
 
 /*
- * Copyright (C) 2012-2020 Oracle Corporation
+ * Copyright (C) 2012-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

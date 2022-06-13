@@ -1,10 +1,10 @@
-/* $Id: pipe-os2.cpp 86412 2020-10-02 11:39:26Z vboxsync $ */
+/* $Id: pipe-os2.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * IPRT - Anonymous Pipes, OS/2 Implementation.
  */
 
 /*
- * Copyright (C) 2010-2020 Oracle Corporation
+ * Copyright (C) 2010-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

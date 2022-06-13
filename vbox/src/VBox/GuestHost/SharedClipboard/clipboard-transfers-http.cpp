@@ -1,10 +1,10 @@
-/* $Id: clipboard-transfers-http.cpp 87686 2021-02-10 13:17:50Z vboxsync $ */
+/* $Id: clipboard-transfers-http.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * Shared Clipboard: HTTP server implementation for Shared Clipboard transfers on UNIX-y guests / hosts.
  */
 
 /*
- * Copyright (C) 2020 Oracle Corporation
+ * Copyright (C) 2020-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,11 +1,11 @@
-/* $Id: vboximgMedia.h 82968 2020-02-04 10:35:17Z vboxsync $ $Revision: 82968 $ $Date: 2020-02-04 18:35:17 +0800 (Tue, 04 Feb 2020) $ $Author: vboxsync $ */
+/* $Id: vboximgMedia.h 93115 2022-01-01 11:31:46Z vboxsync $ $Revision: 93115 $ $Date: 2022-01-01 19:31:46 +0800 (Sat, 01 Jan 2022) $ $Author: vboxsync $ */
 
 /** @file
  * vboximgMedia.h
  */
 
 /*
- * Copyright (C) 2008-2020 Oracle Corporation
+ * Copyright (C) 2008-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

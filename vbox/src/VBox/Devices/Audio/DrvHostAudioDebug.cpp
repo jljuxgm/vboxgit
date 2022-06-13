@@ -1,10 +1,10 @@
-/* $Id: DrvHostAudioDebug.cpp 91425 2021-09-28 07:55:15Z vboxsync $ */
+/* $Id: DrvHostAudioDebug.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * Host audio driver - Debug - For dumping and injecting audio data from/to the device emulation.
  */
 
 /*
- * Copyright (C) 2016-2021 Oracle Corporation
+ * Copyright (C) 2016-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

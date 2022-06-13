@@ -1,11 +1,11 @@
 @echo off
-rem $Id: Single-1-Prepare.cmd 83563 2020-04-05 10:27:08Z vboxsync $
+rem $Id: Single-1-Prepare.cmd 93115 2022-01-01 11:31:46Z vboxsync $
 rem rem @file
 rem Windows NT batch script for preparing single build (either amd64 and x86) for signing submission.
 rem
 
 rem
-rem Copyright (C) 2018-2020 Oracle Corporation
+rem Copyright (C) 2018-2022 Oracle Corporation
 rem
 rem This file is part of VirtualBox Open Source Edition (OSE), as
 rem available from http://www.virtualbox.org. This file is free software;

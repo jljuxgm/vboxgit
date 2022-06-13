@@ -1,10 +1,10 @@
-; $Id: bs3-wc32-U8M.asm 89146 2021-05-18 18:21:26Z vboxsync $
+; $Id: bs3-wc32-U8M.asm 93115 2022-01-01 11:31:46Z vboxsync $
 ;; @file
 ; BS3Kit - 32-bit Watcom C/C++, 64-bit integer multiplication.
 ;
 
 ;
-; Copyright (C) 2007-2021 Oracle Corporation
+; Copyright (C) 2007-2022 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

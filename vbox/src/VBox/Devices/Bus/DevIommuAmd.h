@@ -1,10 +1,10 @@
-/* $Id: DevIommuAmd.h 85915 2020-08-28 07:50:33Z vboxsync $ */
+/* $Id: DevIommuAmd.h 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * DevIommuAmd - I/O Memory Management Unit (AMD), header shared with the IOMMU, ACPI, chipset/firmware code.
  */
 
 /*
- * Copyright (C) 2020 Oracle Corporation
+ * Copyright (C) 2020-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

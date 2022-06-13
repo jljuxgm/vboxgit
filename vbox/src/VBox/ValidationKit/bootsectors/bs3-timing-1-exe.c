@@ -1,10 +1,10 @@
-/* $Id: bs3-timing-1-exe.c 89151 2021-05-19 00:58:58Z vboxsync $ */
+/* $Id: bs3-timing-1-exe.c 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * BS3Kit - bs3-timing-1, regular executable version of the TSC test.
  */
 
 /*
- * Copyright (C) 2007-2021 Oracle Corporation
+ * Copyright (C) 2007-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

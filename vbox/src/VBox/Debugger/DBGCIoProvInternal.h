@@ -1,10 +1,10 @@
-/* $Id: DBGCIoProvInternal.h 86327 2020-09-28 16:20:50Z vboxsync $ */
+/* $Id: DBGCIoProvInternal.h 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Internal I/O provider header file.
  */
 
 /*
- * Copyright (C) 2020 Oracle Corporation
+ * Copyright (C) 2020-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-netbsd.c 92497 2021-11-18 14:42:37Z vboxsync $ */
+/* $Id: memobj-r0drv-netbsd.c 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, NetBSD.
  */
@@ -6,7 +6,7 @@
 /*
  * Contributed by knut st. osmundsen, Andriy Gapon, Arto Huusko.
  *
- * Copyright (C) 2007-2020 Oracle Corporation
+ * Copyright (C) 2007-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

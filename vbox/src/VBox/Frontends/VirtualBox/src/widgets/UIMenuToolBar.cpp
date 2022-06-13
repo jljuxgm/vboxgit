@@ -1,10 +1,10 @@
-/* $Id: UIMenuToolBar.cpp 88862 2021-05-04 16:05:25Z vboxsync $ */
+/* $Id: UIMenuToolBar.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMenuToolBar class implementation.
  */
 
 /*
- * Copyright (C) 2017-2020 Oracle Corporation
+ * Copyright (C) 2017-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

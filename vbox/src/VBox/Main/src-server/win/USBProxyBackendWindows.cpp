@@ -1,10 +1,10 @@
-/* $Id: USBProxyBackendWindows.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: USBProxyBackendWindows.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service, Windows Specialization.
  */
 
 /*
- * Copyright (C) 2005-2020 Oracle Corporation
+ * Copyright (C) 2005-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

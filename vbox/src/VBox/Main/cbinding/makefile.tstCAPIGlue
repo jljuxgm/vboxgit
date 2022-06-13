@@ -1,10 +1,10 @@
-# $Id: makefile.tstCAPIGlue 84939 2020-06-25 09:43:53Z vboxsync $
+# $Id: makefile.tstCAPIGlue 93115 2022-01-01 11:31:46Z vboxsync $
 ## @file makefile.tstCAPIGlue
 # Makefile for sample program illustrating use of C binding for COM/XPCOM.
 #
 
 #
-# Copyright (C) 2009-2020 Oracle Corporation
+# Copyright (C) 2009-2022 Oracle Corporation
 #
 # Permission is hereby granted, free of charge, to any person
 # obtaining a copy of this software and associated documentation

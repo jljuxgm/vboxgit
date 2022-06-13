@@ -1,10 +1,10 @@
-/* $Id: VBoxGuestR3LibDrmClient.cpp 86887 2020-11-16 10:49:34Z vboxsync $ */
+/* $Id: VBoxGuestR3LibDrmClient.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, DRM client handling.
  */
 
 /*
- * Copyright (C) 2020 Oracle Corporation
+ * Copyright (C) 2020-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

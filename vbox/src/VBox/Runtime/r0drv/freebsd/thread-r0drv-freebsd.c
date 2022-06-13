@@ -1,10 +1,10 @@
-/* $Id: thread-r0drv-freebsd.c 90416 2021-07-29 21:10:03Z vboxsync $ */
+/* $Id: thread-r0drv-freebsd.c 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * IPRT - Threads (Part 1), Ring-0 Driver, FreeBSD.
  */
 
 /*
- * Copyright (C) 2007-2020 Oracle Corporation
+ * Copyright (C) 2007-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

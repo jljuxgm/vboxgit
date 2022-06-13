@@ -1,10 +1,10 @@
-; $Id: bs3-cpu-state64-1-asm.asm 83006 2020-02-06 13:51:30Z vboxsync $
+; $Id: bs3-cpu-state64-1-asm.asm 93115 2022-01-01 11:31:46Z vboxsync $
 ;; @file
 ; BS3Kit - bs3-cpu-state64-1
 ;
 
 ;
-; Copyright (C) 2007-2020 Oracle Corporation
+; Copyright (C) 2007-2022 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

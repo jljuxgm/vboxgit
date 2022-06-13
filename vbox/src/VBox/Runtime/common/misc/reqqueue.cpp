@@ -1,10 +1,10 @@
-/* $Id: reqqueue.cpp 88813 2021-05-01 18:15:13Z vboxsync $ */
+/* $Id: reqqueue.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * IPRT - Request Queue.
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

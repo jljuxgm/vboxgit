@@ -1,4 +1,4 @@
-/* $Id: tstVBoxAPIXPCOM.cpp 86617 2020-10-16 22:47:55Z vboxsync $ */
+/* $Id: tstVBoxAPIXPCOM.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  *
  * tstVBoxAPIXPCOM - sample program to illustrate the VirtualBox
@@ -8,7 +8,7 @@
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

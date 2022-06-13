@@ -1,10 +1,10 @@
-/* $Id: UINetworkRequestManager.h 90547 2021-08-06 13:43:06Z vboxsync $ */
+/* $Id: UINetworkRequestManager.h 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkRequestManager stuff declaration.
  */
 
 /*
- * Copyright (C) 2011-2021 Oracle Corporation
+ * Copyright (C) 2011-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

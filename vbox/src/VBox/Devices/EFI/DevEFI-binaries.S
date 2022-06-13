@@ -1,10 +1,10 @@
-/* $Id: DevEFI-binaries.S 87286 2021-01-15 20:51:46Z vboxsync $ */
+/* $Id: DevEFI-binaries.S 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * DevEFI - firmware binaries.
  */
 
 /*
- * Copyright (C) 2011-2020 Oracle Corporation
+ * Copyright (C) 2011-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

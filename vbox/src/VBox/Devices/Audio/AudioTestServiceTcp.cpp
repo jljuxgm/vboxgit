@@ -1,10 +1,10 @@
-/* $Id: AudioTestServiceTcp.cpp 92463 2021-11-16 15:55:37Z vboxsync $ */
+/* $Id: AudioTestServiceTcp.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * AudioTestServiceTcp - Audio test execution server, TCP/IP Transport Layer.
  */
 
 /*
- * Copyright (C) 2021 Oracle Corporation
+ * Copyright (C) 2021-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

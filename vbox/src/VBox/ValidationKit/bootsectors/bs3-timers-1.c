@@ -1,10 +1,10 @@
-/* $Id: bs3-timers-1.c 88839 2021-05-03 14:28:49Z vboxsync $ */
+/* $Id: bs3-timers-1.c 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * BS3Kit - bs3-timers-1, 16-bit C code.
  */
 
 /*
- * Copyright (C) 2007-2021 Oracle Corporation
+ * Copyright (C) 2007-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

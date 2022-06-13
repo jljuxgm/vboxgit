@@ -1,10 +1,10 @@
-/* $Id: UIShortcutPool.cpp 88578 2021-04-19 13:46:30Z vboxsync $ */
+/* $Id: UIShortcutPool.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIShortcutPool class implementation.
  */
 
 /*
- * Copyright (C) 2011-2020 Oracle Corporation
+ * Copyright (C) 2011-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

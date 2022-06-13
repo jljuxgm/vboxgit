@@ -1,10 +1,10 @@
-# $Id: Makefile.kmk 89185 2021-05-19 21:05:22Z vboxsync $
+# $Id: Makefile.kmk 93115 2022-01-01 11:31:46Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox Guest Mesa 3D components
 #
 
 #
-# Copyright (C) 2016-2020 Oracle Corporation
+# Copyright (C) 2016-2022 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;

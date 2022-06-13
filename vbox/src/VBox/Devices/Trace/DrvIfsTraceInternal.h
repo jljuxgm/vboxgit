@@ -1,10 +1,10 @@
-/* $Id: DrvIfsTraceInternal.h 82789 2020-01-19 12:19:24Z vboxsync $ */
+/* $Id: DrvIfsTraceInternal.h 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VBox interface callback tracing driver - internal header.
  */
 
 /*
- * Copyright (C) 2020 Oracle Corporation
+ * Copyright (C) 2020-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

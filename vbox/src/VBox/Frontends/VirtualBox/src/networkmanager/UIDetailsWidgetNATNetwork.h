@@ -1,10 +1,10 @@
-/* $Id: UIDetailsWidgetNATNetwork.h 92730 2021-12-03 10:46:28Z vboxsync $ */
+/* $Id: UIDetailsWidgetNATNetwork.h 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsWidgetNATNetwork class declaration.
  */
 
 /*
- * Copyright (C) 2009-2021 Oracle Corporation
+ * Copyright (C) 2009-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

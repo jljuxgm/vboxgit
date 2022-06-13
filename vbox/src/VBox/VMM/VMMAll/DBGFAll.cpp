@@ -1,10 +1,10 @@
-/* $Id: DBGFAll.cpp 89911 2021-06-25 11:00:55Z vboxsync $ */
+/* $Id: DBGFAll.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, All Context Code.
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

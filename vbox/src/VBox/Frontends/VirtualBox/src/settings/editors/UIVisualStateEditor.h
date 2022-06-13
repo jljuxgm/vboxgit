@@ -1,10 +1,10 @@
-/* $Id: UIVisualStateEditor.h 86089 2020-09-11 09:54:24Z vboxsync $ */
+/* $Id: UIVisualStateEditor.h 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisualStateEditor class declaration.
  */
 
 /*
- * Copyright (C) 2019-2020 Oracle Corporation
+ * Copyright (C) 2019-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: DevVGA-SVGA3d-dx.cpp 91607 2021-10-07 07:31:24Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-dx.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - Common code for DX backend interface.
  */
 
 /*
- * Copyright (C) 2020-2021 Oracle Corporation
+ * Copyright (C) 2020-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

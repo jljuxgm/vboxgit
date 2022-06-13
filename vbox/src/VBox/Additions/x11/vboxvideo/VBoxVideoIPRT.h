@@ -1,6 +1,6 @@
-/* $Id: VBoxVideoIPRT.h 90823 2021-08-23 22:08:38Z vboxsync $ */
+/* $Id: VBoxVideoIPRT.h 93115 2022-01-01 11:31:46Z vboxsync $ */
 /*
- * Copyright (C) 2017-2020 Oracle Corporation
+ * Copyright (C) 2017-2022 Oracle Corporation
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation

@@ -1,10 +1,10 @@
-/* $Id: tstUtf8.cpp 86400 2020-10-01 19:55:24Z vboxsync $ */
+/* $Id: tstUtf8.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * IPRT Testcase - UTF-8 and UTF-16 string conversions.
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

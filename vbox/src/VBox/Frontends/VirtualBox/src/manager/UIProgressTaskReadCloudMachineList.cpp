@@ -1,10 +1,10 @@
-/* $Id: UIProgressTaskReadCloudMachineList.cpp 86910 2020-11-18 13:32:44Z vboxsync $ */
+/* $Id: UIProgressTaskReadCloudMachineList.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIProgressTaskReadCloudMachineList class implementation.
  */
 
 /*
- * Copyright (C) 2020 Oracle Corporation
+ * Copyright (C) 2020-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

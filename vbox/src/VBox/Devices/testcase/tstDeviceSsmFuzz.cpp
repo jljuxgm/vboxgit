@@ -1,10 +1,10 @@
-/* $Id: tstDeviceSsmFuzz.cpp 91998 2021-10-22 08:58:44Z vboxsync $ */
+/* $Id: tstDeviceSsmFuzz.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * tstDeviceSsmFuzz - SSM fuzzing testcase.
  */
 
 /*
- * Copyright (C) 2020 Oracle Corporation
+ * Copyright (C) 2020-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

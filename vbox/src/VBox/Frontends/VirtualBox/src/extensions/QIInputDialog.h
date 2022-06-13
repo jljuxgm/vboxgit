@@ -1,10 +1,10 @@
-/* $Id: QIInputDialog.h 87718 2021-02-11 08:50:48Z vboxsync $ */
+/* $Id: QIInputDialog.h 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIInputDialog class declaration.
  */
 
 /*
- * Copyright (C) 2008-2020 Oracle Corporation
+ * Copyright (C) 2008-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

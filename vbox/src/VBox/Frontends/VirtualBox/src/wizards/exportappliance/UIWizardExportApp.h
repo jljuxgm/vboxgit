@@ -1,10 +1,10 @@
-/* $Id: UIWizardExportApp.h 91894 2021-10-20 13:27:20Z vboxsync $ */
+/* $Id: UIWizardExportApp.h 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportApp class declaration.
  */
 
 /*
- * Copyright (C) 2009-2021 Oracle Corporation
+ * Copyright (C) 2009-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

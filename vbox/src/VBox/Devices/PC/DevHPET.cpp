@@ -1,4 +1,4 @@
-/* $Id: DevHPET.cpp 90447 2021-07-31 00:44:13Z vboxsync $ */
+/* $Id: DevHPET.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * HPET virtual device - High Precision Event Timer emulation.
  *
@@ -23,7 +23,7 @@
  */
 
 /*
- * Copyright (C) 2009-2020 Oracle Corporation
+ * Copyright (C) 2009-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

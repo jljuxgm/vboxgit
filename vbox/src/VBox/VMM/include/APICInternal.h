@@ -1,10 +1,10 @@
-/* $Id: APICInternal.h 88557 2021-04-16 03:36:25Z vboxsync $ */
+/* $Id: APICInternal.h 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller.
  */
 
 /*
- * Copyright (C) 2016-2020 Oracle Corporation
+ * Copyright (C) 2016-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

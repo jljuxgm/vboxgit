@@ -1,10 +1,10 @@
-/* $Id: DrvHostAudioPulseAudioStubs.h 88226 2021-03-22 09:13:05Z vboxsync $ */
+/* $Id: DrvHostAudioPulseAudioStubs.h 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * Stubs for libpulse.
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

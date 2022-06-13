@@ -1,10 +1,10 @@
-/* $Id: setmode.c 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: setmode.c 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * Linux Additions X11 graphics driver, mode setting
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  * This file is based on X11 VESA driver (hardly any traces left here):
  *
  * Copyright (c) 2000 by Conectiva S.A. (http://www.conectiva.com)

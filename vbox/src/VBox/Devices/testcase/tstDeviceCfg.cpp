@@ -1,10 +1,10 @@
-/* $Id: tstDeviceCfg.cpp 83261 2020-03-11 16:10:11Z vboxsync $ */
+/* $Id: tstDeviceCfg.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * tstDevice - Configuration loader.
  */
 
 /*
- * Copyright (C) 2020 Oracle Corporation
+ * Copyright (C) 2020-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

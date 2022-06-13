@@ -1,10 +1,10 @@
-/* $Id: PGMInternal.h 92626 2021-11-29 12:32:58Z vboxsync $ */
+/* $Id: PGMInternal.h 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

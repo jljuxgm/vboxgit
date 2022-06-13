@@ -1,10 +1,10 @@
-/* $Id: efivarstorevfs.cpp 91500 2021-09-30 18:56:06Z vboxsync $ */
+/* $Id: efivarstorevfs.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * IPRT - Expose a EFI variable store as a Virtual Filesystem.
  */
 
 /*
- * Copyright (C) 2021 Oracle Corporation
+ * Copyright (C) 2021-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

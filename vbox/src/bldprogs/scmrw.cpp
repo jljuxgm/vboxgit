@@ -1,10 +1,10 @@
-/* $Id: scmrw.cpp 92185 2021-11-02 21:52:35Z vboxsync $ */
+/* $Id: scmrw.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
 
 /*
- * Copyright (C) 2010-2020 Oracle Corporation
+ * Copyright (C) 2010-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

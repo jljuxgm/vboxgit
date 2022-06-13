@@ -1,10 +1,10 @@
-/* $Id: asn1-encode.cpp 84310 2020-05-14 17:40:35Z vboxsync $ */
+/* $Id: asn1-encode.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * IPRT - ASN.1, Encoding.
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

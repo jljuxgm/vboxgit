@@ -1,10 +1,10 @@
-/* $Id: UIStarter.cpp 90933 2021-08-27 07:43:58Z vboxsync $ */
+/* $Id: UIStarter.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIStarter class implementation.
  */
 
 /*
- * Copyright (C) 2018-2020 Oracle Corporation
+ * Copyright (C) 2018-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

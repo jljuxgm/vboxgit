@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: fix_stale_refs.py 86975 2020-11-25 14:45:30Z vboxsync $
+# $Id: fix_stale_refs.py 93115 2022-01-01 11:31:46Z vboxsync $
 
 """
 This module must be used interactively!
@@ -10,7 +10,7 @@ It tries to locate client references to products that no longer exist.
 
 __copyright__ = \
 """
-Copyright (C) 2012-2020 Oracle Corporation
+Copyright (C) 2012-2022 Oracle Corporation
 
 This file is part of VirtualBox Open Source Edition (OSE), as
 available from http://www.virtualbox.org. This file is free software;
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 86975 $"
+__version__ = "$Revision: 93115 $"
 
 
 from _winreg import HKEY_LOCAL_MACHINE, KEY_ALL_ACCESS

@@ -1,10 +1,10 @@
-/* $Id: VBoxSharedClipboardSvc-x11.cpp 92735 2021-12-03 16:03:24Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-x11.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Linux host.
  */
 
 /*
- * Copyright (C) 2006-2021 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

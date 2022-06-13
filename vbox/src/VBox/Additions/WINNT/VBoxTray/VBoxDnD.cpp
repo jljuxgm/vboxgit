@@ -1,10 +1,10 @@
-/* $Id: VBoxDnD.cpp 86869 2020-11-12 07:59:52Z vboxsync $ */
+/* $Id: VBoxDnD.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VBoxDnD.cpp - Windows-specific bits of the drag and drop service.
  */
 
 /*
- * Copyright (C) 2013-2020 Oracle Corporation
+ * Copyright (C) 2013-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,11 +1,11 @@
-/* $Id: HMVMXCommon.h 92363 2021-11-11 11:25:18Z vboxsync $ */
+/* $Id: HMVMXCommon.h 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * HM/VMX - Internal header file for sharing common bits between the
  *          VMX template code (which is also used with NEM on darwin) and HM.
  */
 
 /*
- * Copyright (C) 2006-2021 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

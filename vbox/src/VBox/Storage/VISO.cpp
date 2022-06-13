@@ -1,10 +1,10 @@
-/* $Id: VISO.cpp 84372 2020-05-19 15:08:57Z vboxsync $ */
+/* $Id: VISO.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VISO - Virtual ISO disk image, Core Code.
  */
 
 /*
- * Copyright (C) 2017-2020 Oracle Corporation
+ * Copyright (C) 2017-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

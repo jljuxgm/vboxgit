@@ -1,10 +1,10 @@
-/* $Id: CocoaEventHelper.mm 85335 2020-07-14 11:47:09Z vboxsync $ */
+/* $Id: CocoaEventHelper.mm 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Declarations of utility functions for handling Darwin Cocoa specific event handling tasks.
  */
 
 /*
- * Copyright (C) 2009-2020 Oracle Corporation
+ * Copyright (C) 2009-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

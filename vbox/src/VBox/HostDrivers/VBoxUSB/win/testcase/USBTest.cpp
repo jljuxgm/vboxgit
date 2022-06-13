@@ -1,10 +1,10 @@
-/* $Id: USBTest.cpp 83803 2020-04-18 18:20:34Z vboxsync $ */
+/* $Id: USBTest.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VBox host drivers - USB drivers - Filter & driver installation
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

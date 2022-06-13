@@ -1,10 +1,10 @@
-# $Id: SUPR0-asm.sed 91806 2021-10-18 08:32:39Z vboxsync $
+# $Id: SUPR0-asm.sed 93115 2022-01-01 11:31:46Z vboxsync $
 ## @file
 # IPRT - SED script for generating a list of assembly files for make inclusion.
 #
 
 #
-# Copyright (C) 2012-2021 Oracle Corporation
+# Copyright (C) 2012-2022 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;

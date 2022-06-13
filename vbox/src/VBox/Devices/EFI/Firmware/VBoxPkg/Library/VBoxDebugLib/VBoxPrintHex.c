@@ -1,10 +1,10 @@
-/* $Id: VBoxPrintHex.c 85758 2020-08-14 08:50:07Z vboxsync $ */
+/* $Id: VBoxPrintHex.c 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VBoxPrintHex.c - Implementation of the VBoxPrintHex() debug logging routine.
  */
 
 /*
- * Copyright (C) 2009-2020 Oracle Corporation
+ * Copyright (C) 2009-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

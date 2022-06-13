@@ -1,10 +1,10 @@
-/* $Id: ClipboardStreamImpl-win.cpp 86948 2020-11-20 18:35:24Z vboxsync $ */
+/* $Id: ClipboardStreamImpl-win.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * ClipboardStreamImpl-win.cpp - Shared Clipboard IStream object implementation (guest and host side).
  */
 
 /*
- * Copyright (C) 2019-2020 Oracle Corporation
+ * Copyright (C) 2019-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

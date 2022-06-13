@@ -1,10 +1,10 @@
-/* $Id: EMHM.cpp 91264 2021-09-15 19:35:24Z vboxsync $ */
+/* $Id: EMHM.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager - hardware virtualization
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

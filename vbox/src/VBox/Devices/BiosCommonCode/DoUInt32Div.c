@@ -1,10 +1,10 @@
-/* $Id: DoUInt32Div.c 92287 2021-11-09 12:38:52Z vboxsync $ */
+/* $Id: DoUInt32Div.c 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * AHCI host adapter driver to boot from SATA disks.
  */
 
 /*
- * Copyright (C) 2011-2020 Oracle Corporation
+ * Copyright (C) 2011-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: UIVirtualMachineItem.h 84189 2020-05-07 15:13:27Z vboxsync $ */
+/* $Id: UIVirtualMachineItem.h 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItem class declarations.
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

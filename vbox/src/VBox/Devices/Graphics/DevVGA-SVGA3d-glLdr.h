@@ -1,10 +1,10 @@
-/* $Id: DevVGA-SVGA3d-glLdr.h 85368 2020-07-17 09:55:56Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-glLdr.h 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * DevVGA - VMWare SVGA device - 3D part, dynamic loading of GL function.
  */
 
 /*
- * Copyright (C) 2018-2020 Oracle Corporation
+ * Copyright (C) 2018-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

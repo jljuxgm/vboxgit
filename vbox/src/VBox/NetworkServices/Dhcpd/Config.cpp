@@ -1,10 +1,10 @@
-/* $Id: Config.cpp 87694 2021-02-10 17:00:01Z vboxsync $ */
+/* $Id: Config.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * DHCP server - server configuration
  */
 
 /*
- * Copyright (C) 2017-2020 Oracle Corporation
+ * Copyright (C) 2017-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

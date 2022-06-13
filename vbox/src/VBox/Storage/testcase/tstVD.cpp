@@ -1,10 +1,10 @@
-/* $Id: tstVD.cpp 87239 2021-01-13 13:43:00Z vboxsync $ */
+/* $Id: tstVD.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * Simple VBox HDD container test utility.
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

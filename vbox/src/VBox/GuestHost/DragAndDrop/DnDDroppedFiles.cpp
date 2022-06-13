@@ -1,10 +1,10 @@
-/* $Id: DnDDroppedFiles.cpp 85681 2020-08-11 09:36:37Z vboxsync $ */
+/* $Id: DnDDroppedFiles.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * DnD - Directory handling.
  */
 
 /*
- * Copyright (C) 2014-2020 Oracle Corporation
+ * Copyright (C) 2014-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

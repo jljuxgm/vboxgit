@@ -1,10 +1,10 @@
-# $Id: Config.kmk 93095 2021-12-29 03:07:16Z vboxsync $
+# $Id: Config.kmk 93115 2022-01-01 11:31:46Z vboxsync $
 ## @file
 # kBuild Configuration file for the installers
 #
 
 #
-# Copyright (C) 2015-2020 Oracle Corporation
+# Copyright (C) 2015-2022 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;

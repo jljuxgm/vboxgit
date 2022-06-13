@@ -1,10 +1,10 @@
--- $Id: tmdb-r24-vcsbugreferences-1.pgsql 84599 2020-05-29 01:12:32Z vboxsync $
+-- $Id: tmdb-r24-vcsbugreferences-1.pgsql 93115 2022-01-01 11:31:46Z vboxsync $
 --- @file
 -- VBox Test Manager Database - Creates a new VcsBugReferences table.
 --
 
 --
--- Copyright (C) 2020 Oracle Corporation
+-- Copyright (C) 2020-2022 Oracle Corporation
 --
 -- This file is part of VirtualBox Open Source Edition (OSE), as
 -- available from http://www.virtualbox.org. This file is free software;

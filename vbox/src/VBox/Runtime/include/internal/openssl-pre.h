@@ -1,10 +1,10 @@
-/* $Id: openssl-pre.h 85651 2020-08-08 14:09:27Z vboxsync $ */
+/* $Id: openssl-pre.h 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * IPRT - Internal header to be included before a block of openssl includes.
  */
 
 /*
- * Copyright (C) 2020 Oracle Corporation
+ * Copyright (C) 2020-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

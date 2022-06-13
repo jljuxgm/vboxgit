@@ -1,10 +1,10 @@
-/* $Id: bs3-cmn-StrFormatV.c 83022 2020-02-07 13:49:18Z vboxsync $ */
+/* $Id: bs3-cmn-StrFormatV.c 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3StrFormatV
  */
 
 /*
- * Copyright (C) 2007-2020 Oracle Corporation
+ * Copyright (C) 2007-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

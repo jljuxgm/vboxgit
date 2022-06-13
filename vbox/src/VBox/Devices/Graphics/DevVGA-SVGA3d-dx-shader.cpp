@@ -1,10 +1,10 @@
-/* $Id: DevVGA-SVGA3d-dx-shader.cpp 91891 2021-10-20 12:30:27Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-dx-shader.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device - VGPU10+ (DX) shader utilities.
  */
 
 /*
- * Copyright (C) 2020-2021 Oracle Corporation
+ * Copyright (C) 2020-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

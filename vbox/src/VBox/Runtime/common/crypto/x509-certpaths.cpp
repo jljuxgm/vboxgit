@@ -1,10 +1,10 @@
-/* $Id: x509-certpaths.cpp 93111 2021-12-31 19:52:05Z vboxsync $ */
+/* $Id: x509-certpaths.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * IPRT - Crypto - X.509, Simple Certificate Path Builder & Validator.
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

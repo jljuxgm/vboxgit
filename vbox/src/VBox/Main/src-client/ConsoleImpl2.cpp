@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 93106 2021-12-30 23:35:34Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -9,7 +9,7 @@
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

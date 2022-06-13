@@ -1,10 +1,10 @@
-/* $Id: SUPR3HardenedMain-posix.cpp 87030 2020-12-02 10:46:49Z vboxsync $ */
+/* $Id: SUPR3HardenedMain-posix.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main(), posix bits.
  */
 
 /*
- * Copyright (C) 2017-2020 Oracle Corporation
+ * Copyright (C) 2017-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

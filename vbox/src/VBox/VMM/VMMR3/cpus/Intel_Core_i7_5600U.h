@@ -1,11 +1,11 @@
-/* $Id: Intel_Core_i7_5600U.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: Intel_Core_i7_5600U.h 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * CPU database entry "Intel Core i7-5600U".
  * Generated at 2015-11-04T14:14:27Z by VBoxCpuReport v5.0.51r103906 on win.amd64.
  */
 
 /*
- * Copyright (C) 2013-2020 Oracle Corporation
+ * Copyright (C) 2013-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

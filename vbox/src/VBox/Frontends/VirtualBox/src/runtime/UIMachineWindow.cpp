@@ -1,10 +1,10 @@
-/* $Id: UIMachineWindow.cpp 91066 2021-09-01 15:56:33Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class implementation.
  */
 
 /*
- * Copyright (C) 2010-2020 Oracle Corporation
+ * Copyright (C) 2010-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

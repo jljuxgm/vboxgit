@@ -1,10 +1,10 @@
-/* $Id: tstRTStrFormat.cpp 86357 2020-09-30 18:07:34Z vboxsync $ */
+/* $Id: tstRTStrFormat.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * IPRT Testcase - String formatting.
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-# $Id: soap-header-strip-inline.sed 83223 2020-03-06 14:41:03Z vboxsync $
+# $Id: soap-header-strip-inline.sed 93115 2022-01-01 11:31:46Z vboxsync $
 ## @file
 # WebService - SED script for stripping inlined bodies from soapH.h.
 #
 
 #
-# Copyright (C) 2020 Oracle Corporation
+# Copyright (C) 2020-2022 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;

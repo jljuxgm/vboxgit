@@ -1,4 +1,4 @@
-/* $Id: pdmaudiohostenuminline.h 89500 2021-06-04 10:30:47Z vboxsync $ */
+/* $Id: pdmaudiohostenuminline.h 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * PDM - Audio Helpers for host audio device enumeration, Inlined Code. (DEV,++)
  *
@@ -7,7 +7,7 @@
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

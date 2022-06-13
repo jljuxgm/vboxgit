@@ -1,10 +1,10 @@
-/* $Id: USBProxyBackendDarwin.cpp 87376 2021-01-22 19:22:03Z vboxsync $ */
+/* $Id: USBProxyBackendDarwin.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service (in VBoxSVC), Darwin Specialization.
  */
 
 /*
- * Copyright (C) 2005-2020 Oracle Corporation
+ * Copyright (C) 2005-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

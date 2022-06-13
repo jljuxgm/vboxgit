@@ -1,10 +1,10 @@
-/* $Id: DevVGA-SVGA3d-ogl.cpp 91774 2021-10-17 10:36:21Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-ogl.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
 
 /*
- * Copyright (C) 2013-2020 Oracle Corporation
+ * Copyright (C) 2013-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: UIVMActivityToolWidget.cpp 92615 2021-11-28 16:25:03Z vboxsync $ */
+/* $Id: UIVMActivityToolWidget.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMActivityToolWidget class implementation.
  */
 
 /*
- * Copyright (C) 2009-2020 Oracle Corporation
+ * Copyright (C) 2009-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

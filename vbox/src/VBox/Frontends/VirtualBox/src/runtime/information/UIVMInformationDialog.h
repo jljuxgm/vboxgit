@@ -1,10 +1,10 @@
-/* $Id: UIVMInformationDialog.h 89049 2021-05-14 14:59:39Z vboxsync $ */
+/* $Id: UIVMInformationDialog.h 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMInformationDialog class declaration.
  */
 
 /*
- * Copyright (C) 2016-2020 Oracle Corporation
+ * Copyright (C) 2016-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

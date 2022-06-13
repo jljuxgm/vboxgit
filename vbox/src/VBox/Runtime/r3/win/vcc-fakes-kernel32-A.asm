@@ -1,10 +1,10 @@
-; $Id: vcc-fakes-kernel32-A.asm 84405 2020-05-20 14:27:07Z vboxsync $
+; $Id: vcc-fakes-kernel32-A.asm 93115 2022-01-01 11:31:46Z vboxsync $
 ;; @file
 ; IPRT - Wrappers for kernel32 APIs missing in NT4 and earlier.
 ;
 
 ;
-; Copyright (C) 2006-2020 Oracle Corporation
+; Copyright (C) 2006-2022 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

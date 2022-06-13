@@ -1,4 +1,4 @@
-/* $Id: DrvAudioRec.cpp 89510 2021-06-04 13:20:02Z vboxsync $ */
+/* $Id: DrvAudioRec.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * Video recording audio backend for Main.
  *
@@ -16,7 +16,7 @@
  */
 
 /*
- * Copyright (C) 2016-2020 Oracle Corporation
+ * Copyright (C) 2016-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

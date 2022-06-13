@@ -1,11 +1,11 @@
-/* $Id: VBoxMPLegacy.cpp 86027 2020-09-03 17:45:50Z vboxsync $ */
+/* $Id: VBoxMPLegacy.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver. The legacy VBoxVGA adapter support with 2D software unaccelerated
  * framebuffer operations.
  */
 
 /*
- * Copyright (C) 2011-2020 Oracle Corporation
+ * Copyright (C) 2011-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

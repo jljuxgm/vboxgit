@@ -1,10 +1,10 @@
-/* $Id: UIMachineSettingsUSBFilterDetails.h 85957 2020-08-31 13:32:41Z vboxsync $ */
+/* $Id: UIMachineSettingsUSBFilterDetails.h 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsUSBFilterDetails class declaration.
  */
 
 /*
- * Copyright (C) 2008-2020 Oracle Corporation
+ * Copyright (C) 2008-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

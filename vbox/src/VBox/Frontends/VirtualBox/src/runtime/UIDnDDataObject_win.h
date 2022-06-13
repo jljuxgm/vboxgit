@@ -1,10 +1,10 @@
-/* $Id: UIDnDDataObject_win.h 85697 2020-08-11 16:41:41Z vboxsync $ */
+/* $Id: UIDnDDataObject_win.h 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDnDDataObject class declaration.
  */
 
 /*
- * Copyright (C) 2014-2020 Oracle Corporation
+ * Copyright (C) 2014-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

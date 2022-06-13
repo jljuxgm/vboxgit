@@ -1,10 +1,10 @@
-/* $Id: UIWizardNewVMHardwarePage.h 91152 2021-09-08 13:23:54Z vboxsync $ */
+/* $Id: UIWizardNewVMHardwarePage.h 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMHardwarePage class declaration.
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

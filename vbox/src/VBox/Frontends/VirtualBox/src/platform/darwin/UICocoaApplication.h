@@ -1,10 +1,10 @@
-/* $Id: UICocoaApplication.h 85772 2020-08-14 14:06:17Z vboxsync $ */
+/* $Id: UICocoaApplication.h 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICocoaApplication class declaration.
  */
 
 /*
- * Copyright (C) 2009-2020 Oracle Corporation
+ * Copyright (C) 2009-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

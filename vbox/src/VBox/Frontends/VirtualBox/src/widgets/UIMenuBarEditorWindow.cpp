@@ -1,10 +1,10 @@
-/* $Id: UIMenuBarEditorWindow.cpp 90490 2021-08-03 09:21:04Z vboxsync $ */
+/* $Id: UIMenuBarEditorWindow.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMenuBarEditorWindow class implementation.
  */
 
 /*
- * Copyright (C) 2014-2020 Oracle Corporation
+ * Copyright (C) 2014-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

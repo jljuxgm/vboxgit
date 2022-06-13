@@ -1,10 +1,10 @@
-/* $Id: tstAsmStructs.cpp 87500 2021-02-01 14:16:43Z vboxsync $ */
+/* $Id: tstAsmStructs.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * Testcase for checking offsets in the assembly structures shared with C/C++.
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

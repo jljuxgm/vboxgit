@@ -1,10 +1,10 @@
-/* $Id: RTStrSplit.cpp 85345 2020-07-15 08:03:03Z vboxsync $ */
+/* $Id: RTStrSplit.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * IPRT - RTStrSplit.
  */
 
 /*
- * Copyright (C) 2020 Oracle Corporation
+ * Copyright (C) 2020-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

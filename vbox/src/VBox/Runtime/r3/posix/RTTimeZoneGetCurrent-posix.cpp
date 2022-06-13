@@ -1,10 +1,10 @@
-/* $Id: RTTimeZoneGetCurrent-posix.cpp 86240 2020-09-23 14:27:45Z vboxsync $ */
+/* $Id: RTTimeZoneGetCurrent-posix.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * IPRT - RTTimeZoneGetCurrent, POSIX.
  */
 
 /*
- * Copyright (C) 2020 Oracle Corporation
+ * Copyright (C) 2020-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: UIMachineSettingsNetwork.cpp 91554 2021-10-05 07:38:13Z vboxsync $ */
+/* $Id: UIMachineSettingsNetwork.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsNetwork class implementation.
  */
 
 /*
- * Copyright (C) 2008-2020 Oracle Corporation
+ * Copyright (C) 2008-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

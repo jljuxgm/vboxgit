@@ -1,10 +1,10 @@
-/* $Id: UISearchLineEdit.h 86821 2020-11-06 12:19:28Z vboxsync $ */
+/* $Id: UISearchLineEdit.h 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISearchLineEdit class declaration.
  */
 
 /*
- * Copyright (C) 2009-2020 Oracle Corporation
+ * Copyright (C) 2009-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

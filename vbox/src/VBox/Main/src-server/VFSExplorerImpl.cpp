@@ -1,10 +1,10 @@
-/* $Id: VFSExplorerImpl.cpp 85218 2020-07-11 14:09:04Z vboxsync $ */
+/* $Id: VFSExplorerImpl.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * IVFSExplorer COM class implementations.
  */
 
 /*
- * Copyright (C) 2009-2020 Oracle Corporation
+ * Copyright (C) 2009-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

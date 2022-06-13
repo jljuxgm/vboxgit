@@ -1,10 +1,10 @@
-/* $Id: tls-win.cpp 83124 2020-02-20 17:23:23Z vboxsync $ */
+/* $Id: tls-win.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * IPRT - Thread Local Storage (TLS), Win32.
  */
 
 /*
- * Copyright (C) 2008-2020 Oracle Corporation
+ * Copyright (C) 2008-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

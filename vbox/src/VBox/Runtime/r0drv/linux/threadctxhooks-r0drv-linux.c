@@ -1,10 +1,10 @@
-/* $Id: threadctxhooks-r0drv-linux.c 87669 2021-02-09 19:34:41Z vboxsync $ */
+/* $Id: threadctxhooks-r0drv-linux.c 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * IPRT - Thread Context Switching Hook, Ring-0 Driver, Linux.
  */
 
 /*
- * Copyright (C) 2013-2020 Oracle Corporation
+ * Copyright (C) 2013-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: TestExecService.cpp 84924 2020-06-24 09:40:54Z vboxsync $ */
+/* $Id: TestExecService.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * TestExecServ - Basic Remote Execution Service.
  */
 
 /*
- * Copyright (C) 2010-2020 Oracle Corporation
+ * Copyright (C) 2010-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -3709,7 +3709,7 @@ static RTEXITCODE txsParseArgv(int argc, char **argv, bool *pfExit)
                 break;
 
             case 'V':
-                RTPrintf("$Revision: 84924 $\n");
+                RTPrintf("$Revision: 93115 $\n");
                 *pfExit = true;
                 return RTEXITCODE_SUCCESS;
 

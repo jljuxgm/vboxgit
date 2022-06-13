@@ -1,4 +1,4 @@
-/* $Id: clienttest.java 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: clienttest.java 93115 2022-01-01 11:31:46Z vboxsync $ */
 /*!file
  * Sample client for the VirtualBox web service, written in Java (object-oriented bindings).
  *
@@ -9,7 +9,7 @@
  */
 
 /*
- * Copyright (C) 2008-2020 Oracle Corporation
+ * Copyright (C) 2008-2022 Oracle Corporation
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation

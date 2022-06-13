@@ -1,10 +1,10 @@
-/* $Id: TokenImpl.h 90828 2021-08-24 09:44:46Z vboxsync $ */
+/* $Id: TokenImpl.h 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * Token COM class implementations - MachineToken and MediumLockToken
  */
 
 /*
- * Copyright (C) 2013-2020 Oracle Corporation
+ * Copyright (C) 2013-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

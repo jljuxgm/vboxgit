@@ -1,10 +1,10 @@
-# $Id: Makefile.kmk 92996 2021-12-17 08:18:43Z vboxsync $
+# $Id: Makefile.kmk 93115 2022-01-01 11:31:46Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
 
 #
-# Copyright (C) 2006-2020 Oracle Corporation
+# Copyright (C) 2006-2022 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;

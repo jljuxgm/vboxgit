@@ -1,10 +1,10 @@
-/* $Id: VBoxVideoIPRT.h 87261 2021-01-15 11:13:04Z vboxsync $ */
+/* $Id: VBoxVideoIPRT.h 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VirtualBox Video driver, common code - iprt and VirtualBox macros and definitions.
  */
 
 /*
- * Copyright (C) 2017-2020 Oracle Corporation
+ * Copyright (C) 2017-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

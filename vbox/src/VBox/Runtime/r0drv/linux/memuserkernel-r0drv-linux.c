@@ -1,10 +1,10 @@
-/* $Id: memuserkernel-r0drv-linux.c 85703 2020-08-11 18:54:01Z vboxsync $ */
+/* $Id: memuserkernel-r0drv-linux.c 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * IPRT - User & Kernel Memory, Ring-0 Driver, Linux.
  */
 
 /*
- * Copyright (C) 2009-2020 Oracle Corporation
+ * Copyright (C) 2009-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

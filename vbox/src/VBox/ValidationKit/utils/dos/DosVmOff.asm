@@ -1,4 +1,4 @@
-; $Id: DosVmOff.asm 82968 2020-02-04 10:35:17Z vboxsync $
+; $Id: DosVmOff.asm 93115 2022-01-01 11:31:46Z vboxsync $
 ;; @file
 ; 16-bit DOS COM program that powers off the VM.
 ;
@@ -6,7 +6,7 @@
 ;
 
 ;
-; Copyright (C) 2018-2020 Oracle Corporation
+; Copyright (C) 2018-2022 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

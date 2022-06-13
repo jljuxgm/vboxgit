@@ -1,10 +1,10 @@
-/* $Id: UIWizardAddCloudVM.cpp 92033 2021-10-25 13:33:25Z vboxsync $ */
+/* $Id: UIWizardAddCloudVM.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardAddCloudVM class implementation.
  */
 
 /*
- * Copyright (C) 2009-2021 Oracle Corporation
+ * Copyright (C) 2009-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

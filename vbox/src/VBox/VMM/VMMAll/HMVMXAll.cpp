@@ -1,10 +1,10 @@
-/* $Id: HMVMXAll.cpp 92843 2021-12-09 11:08:08Z vboxsync $ */
+/* $Id: HMVMXAll.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - All contexts.
  */
 
 /*
- * Copyright (C) 2018-2020 Oracle Corporation
+ * Copyright (C) 2018-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

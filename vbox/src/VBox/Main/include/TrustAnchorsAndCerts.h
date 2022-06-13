@@ -1,10 +1,10 @@
-/* $Id: TrustAnchorsAndCerts.h 91490 2021-09-30 08:30:25Z vboxsync $ */
+/* $Id: TrustAnchorsAndCerts.h 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * Main - Collection of trust anchors and certificates included in VBoxSVC.
  */
 
 /*
- * Copyright (C) 2021 Oracle Corporation
+ * Copyright (C) 2021-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

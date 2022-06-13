@@ -1,10 +1,10 @@
-/* $Id: tstTimer.cpp 89762 2021-06-17 09:39:11Z vboxsync $ */
+/* $Id: tstTimer.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * IPRT Testcase - Timers.
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

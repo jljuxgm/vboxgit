@@ -1,10 +1,10 @@
-/* $Id: tstSSM.cpp 86388 2020-10-01 14:46:20Z vboxsync $ */
+/* $Id: tstSSM.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * Saved State Manager Testcase.
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

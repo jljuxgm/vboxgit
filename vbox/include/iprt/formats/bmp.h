@@ -1,10 +1,10 @@
-/* $Id: bmp.h 85870 2020-08-21 16:56:23Z vboxsync $ */
+/* $Id: bmp.h 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * IPRT - Microsoft Bitmap Formats (BMP).
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

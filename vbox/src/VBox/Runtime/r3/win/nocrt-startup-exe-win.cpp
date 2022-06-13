@@ -1,4 +1,4 @@
-/* $Id: nocrt-startup-exe-win.cpp 85124 2020-07-08 21:13:30Z vboxsync $ */
+/* $Id: nocrt-startup-exe-win.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * IPRT - No-CRT - Windows EXE startup code.
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

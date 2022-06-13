@@ -1,10 +1,10 @@
-/* $Id: HostDrivePartitionImpl.cpp 85934 2020-08-28 16:49:16Z vboxsync $ */
+/* $Id: HostDrivePartitionImpl.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VirtualBox Main - IHostDrivePartition implementation, VBoxSVC.
  */
 
 /*
- * Copyright (C) 2013-2019 Oracle Corporation
+ * Copyright (C) 2013-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

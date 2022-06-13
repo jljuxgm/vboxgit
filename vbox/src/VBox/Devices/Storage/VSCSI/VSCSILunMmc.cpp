@@ -1,10 +1,10 @@
-/* $Id: VSCSILunMmc.cpp 90002 2021-07-02 14:49:14Z vboxsync $ */
+/* $Id: VSCSILunMmc.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: MMC LUN implementation (CD/DVD-ROM)
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

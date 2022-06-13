@@ -1,10 +1,10 @@
-/* $Id: NEMR0Native-win.cpp 92957 2021-12-16 09:25:36Z vboxsync $ */
+/* $Id: NEMR0Native-win.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, native ring-0 Windows backend.
  */
 
 /*
- * Copyright (C) 2018-2020 Oracle Corporation
+ * Copyright (C) 2018-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

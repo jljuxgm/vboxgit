@@ -1,10 +1,10 @@
-/* $Id: VBoxSCSI.h 89198 2021-05-20 09:53:57Z vboxsync $ */
+/* $Id: VBoxSCSI.h 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VBox storage devices - Simple SCSI interface for BIOS access.
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

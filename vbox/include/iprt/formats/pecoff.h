@@ -1,10 +1,10 @@
-/* $Id: pecoff.h 84509 2020-05-25 15:09:24Z vboxsync $ */
+/* $Id: pecoff.h 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * IPRT - Windows NT PE & COFF Structures and Constants.
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

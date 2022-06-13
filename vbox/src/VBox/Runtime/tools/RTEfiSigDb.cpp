@@ -1,10 +1,10 @@
-/* $Id: RTEfiSigDb.cpp 90341 2021-07-26 16:11:46Z vboxsync $ */
+/* $Id: RTEfiSigDb.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * IPRT - Utility for manipulating EFI signature databases.
  */
 
 /*
- * Copyright (C) 2021 Oracle Corporation
+ * Copyright (C) 2021-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

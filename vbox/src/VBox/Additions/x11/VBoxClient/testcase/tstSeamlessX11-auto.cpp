@@ -1,11 +1,11 @@
-/* $Id: tstSeamlessX11-auto.cpp 90059 2021-07-06 11:40:32Z vboxsync $ */
+/* $Id: tstSeamlessX11-auto.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * Automated test of the X11 seamless Additions code.
  * @todo Better separate test data from implementation details!
  */
 
 /*
- * Copyright (C) 2007-2020 Oracle Corporation
+ * Copyright (C) 2007-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

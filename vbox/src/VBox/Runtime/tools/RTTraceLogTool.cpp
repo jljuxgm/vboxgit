@@ -1,10 +1,10 @@
-/* $Id: RTTraceLogTool.cpp 84495 2020-05-25 11:19:20Z vboxsync $ */
+/* $Id: RTTraceLogTool.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * IPRT - Utility for reading/receiving and dissecting trace logs.
  */
 
 /*
- * Copyright (C) 2018-2020 Oracle Corporation
+ * Copyright (C) 2018-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -206,7 +206,7 @@ int main(int argc, char **argv)
                          , RTPathFilename(argv[0]));
                 return RTEXITCODE_SUCCESS;
             case 'V':
-                RTPrintf("$Revision: 84495 $\n");
+                RTPrintf("$Revision: 93115 $\n");
                 return RTEXITCODE_SUCCESS;
 
             case 'i':

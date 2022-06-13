@@ -1,10 +1,10 @@
-/* $Id: UIMonitorCommon.h 89000 2021-05-12 08:37:23Z vboxsync $ */
+/* $Id: UIMonitorCommon.h 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMonitorCommon class declaration.
  */
 
 /*
- * Copyright (C) 2016-2020 Oracle Corporation
+ * Copyright (C) 2016-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

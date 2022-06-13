@@ -1,10 +1,10 @@
-/** $Id: VBoxClientClipboardGuestToHost.cpp 85845 2020-08-20 14:28:33Z vboxsync $ */
+/** $Id: VBoxClientClipboardGuestToHost.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VBoxClient - Shared Clipboard Guest -> Host copying, Darwin.
  */
 
 /*
- * Copyright (C) 2007-2020 Oracle Corporation
+ * Copyright (C) 2007-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: VBoxBugReport.h 85086 2020-07-07 17:01:10Z vboxsync $ */
+/* $Id: VBoxBugReport.h 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VBoxBugReport - VirtualBox command-line diagnostics tool, internal header file.
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

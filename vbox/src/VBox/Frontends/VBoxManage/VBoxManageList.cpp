@@ -1,10 +1,10 @@
-/* $Id: VBoxManageList.cpp 92594 2021-11-25 09:05:48Z vboxsync $ */
+/* $Id: VBoxManageList.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

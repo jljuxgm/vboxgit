@@ -1,10 +1,10 @@
-/* $Id: VBoxAcpi.cpp 91897 2021-10-20 13:42:39Z vboxsync $ */
+/* $Id: VBoxAcpi.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VBoxAcpi - VirtualBox ACPI manipulation functionality.
  */
 
 /*
- * Copyright (C) 2009-2020 Oracle Corporation
+ * Copyright (C) 2009-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

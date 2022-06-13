@@ -1,10 +1,10 @@
-/* $Id: bs3-cmn-TestValue.c 90470 2021-08-02 11:21:43Z vboxsync $ */
+/* $Id: bs3-cmn-TestValue.c 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3TestValue
  */
 
 /*
- * Copyright (C) 2007-2021 Oracle Corporation
+ * Copyright (C) 2007-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

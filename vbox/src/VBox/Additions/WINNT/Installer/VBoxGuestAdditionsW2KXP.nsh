@@ -1,10 +1,10 @@
-; $Id: VBoxGuestAdditionsW2KXP.nsh 89709 2021-06-15 14:30:12Z vboxsync $
+; $Id: VBoxGuestAdditionsW2KXP.nsh 93115 2022-01-01 11:31:46Z vboxsync $
 ;; @file
 ; VBoxGuestAdditionsW2KXP.nsh - Guest Additions installation for Windows 2000/XP.
 ;
 
 ;
-; Copyright (C) 2006-2020 Oracle Corporation
+; Copyright (C) 2006-2022 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

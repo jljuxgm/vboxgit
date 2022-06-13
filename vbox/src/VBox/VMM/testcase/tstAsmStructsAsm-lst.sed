@@ -1,10 +1,10 @@
-# $Id: tstAsmStructsAsm-lst.sed 91287 2021-09-16 21:30:45Z vboxsync $
+# $Id: tstAsmStructsAsm-lst.sed 93115 2022-01-01 11:31:46Z vboxsync $
 ## @file
 # For testing assembly struct when using yasm.
 #
 
 #
-# Copyright (C) 2006-2020 Oracle Corporation
+# Copyright (C) 2006-2022 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;

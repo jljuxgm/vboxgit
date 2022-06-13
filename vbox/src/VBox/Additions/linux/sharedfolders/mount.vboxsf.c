@@ -1,4 +1,4 @@
-/* $Id: mount.vboxsf.c 87463 2021-01-28 15:38:55Z vboxsync $ */
+/* $Id: mount.vboxsf.c 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions for Linux - mount(8) helper.
  *
@@ -8,7 +8,7 @@
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

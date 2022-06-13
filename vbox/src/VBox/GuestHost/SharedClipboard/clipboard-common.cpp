@@ -1,4 +1,4 @@
-/* $Id: clipboard-common.cpp 92772 2021-12-06 19:09:30Z vboxsync $ */
+/* $Id: clipboard-common.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * Shared Clipboard: Some helper function for converting between the various eol.
  */
@@ -6,7 +6,7 @@
 /*
  * Includes contributions from François Revol
  *
- * Copyright (C) 2006-2021 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

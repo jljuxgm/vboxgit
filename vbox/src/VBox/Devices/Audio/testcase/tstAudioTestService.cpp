@@ -1,10 +1,10 @@
-/* $Id: tstAudioTestService.cpp 91999 2021-10-22 11:43:28Z vboxsync $ */
+/* $Id: tstAudioTestService.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * Audio testcase - Tests for the Audio Test Service (ATS).
  */
 
 /*
- * Copyright (C) 2021 Oracle Corporation
+ * Copyright (C) 2021-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

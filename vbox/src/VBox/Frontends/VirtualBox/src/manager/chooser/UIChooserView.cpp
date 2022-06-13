@@ -1,10 +1,10 @@
-/* $Id: UIChooserView.cpp 89161 2021-05-19 12:48:00Z vboxsync $ */
+/* $Id: UIChooserView.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserView class implementation.
  */
 
 /*
- * Copyright (C) 2012-2020 Oracle Corporation
+ * Copyright (C) 2012-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

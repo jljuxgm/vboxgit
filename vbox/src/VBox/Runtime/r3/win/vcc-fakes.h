@@ -1,10 +1,10 @@
-/* $Id: vcc-fakes.h 83865 2020-04-20 15:38:12Z vboxsync $ */
+/* $Id: vcc-fakes.h 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * IPRT - Common macros for the Visual C++ 2010+ CRT import fakes.
  */
 
 /*
- * Copyright (C) 2012-2020 Oracle Corporation
+ * Copyright (C) 2012-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

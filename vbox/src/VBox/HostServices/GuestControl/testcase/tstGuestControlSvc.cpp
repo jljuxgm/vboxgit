@@ -1,10 +1,10 @@
-/* $Id: tstGuestControlSvc.cpp 90794 2021-08-23 13:16:11Z vboxsync $ */
+/* $Id: tstGuestControlSvc.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * Testcase for the guest control service.
  */
 
 /*
- * Copyright (C) 2011-2020 Oracle Corporation
+ * Copyright (C) 2011-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,11 +1,11 @@
 # !kmk_ash
-# $Id: backport-commit.sh 85668 2020-08-10 15:25:45Z vboxsync $
+# $Id: backport-commit.sh 93115 2022-01-01 11:31:46Z vboxsync $
 ## @file
 # Script for committing a backport from trunk.
 #
 
 #
-# Copyright (C) 2020 Oracle Corporation
+# Copyright (C) 2020-2022 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-; $Id: alloca-x86-r0drv-nt.asm 86190 2020-09-21 08:54:23Z vboxsync $
+; $Id: alloca-x86-r0drv-nt.asm 93115 2022-01-01 11:31:46Z vboxsync $
 ;; @file
 ; IPRT - Visual C++ __alloca__probe_16.
 ;
 
 ;
-; Copyright (C) 2020 Oracle Corporation
+; Copyright (C) 2020-2022 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

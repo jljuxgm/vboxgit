@@ -1,10 +1,10 @@
-/* $Id: VBoxGuestR0LibCrOgl.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxGuestR0LibCrOgl.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VBoxGuestLib - Ring-3 Support Library for VirtualBox guest additions, Chromium OpenGL Service.
  */
 
 /*
- * Copyright (C) 2012-2020 Oracle Corporation
+ * Copyright (C) 2012-2022 Oracle Corporation
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation

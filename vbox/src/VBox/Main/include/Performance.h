@@ -1,10 +1,10 @@
-/* $Id: Performance.h 85263 2020-07-12 00:24:26Z vboxsync $ */
+/* $Id: Performance.h 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VirtualBox Main - Performance Classes declaration.
  */
 
 /*
- * Copyright (C) 2008-2020 Oracle Corporation
+ * Copyright (C) 2008-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

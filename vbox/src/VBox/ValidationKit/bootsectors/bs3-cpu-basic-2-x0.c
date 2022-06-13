@@ -1,10 +1,10 @@
-/* $Id: bs3-cpu-basic-2-x0.c 89942 2021-06-29 08:37:15Z vboxsync $ */
+/* $Id: bs3-cpu-basic-2-x0.c 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * BS3Kit - bs3-cpu-basic-2, C test driver code (16-bit).
  */
 
 /*
- * Copyright (C) 2007-2020 Oracle Corporation
+ * Copyright (C) 2007-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

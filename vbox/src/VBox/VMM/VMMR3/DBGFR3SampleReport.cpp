@@ -1,10 +1,10 @@
-/* $Id: DBGFR3SampleReport.cpp 90549 2021-08-06 13:57:29Z vboxsync $ */
+/* $Id: DBGFR3SampleReport.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Sample report creation.
  */
 
 /*
- * Copyright (C) 2021 Oracle Corporation
+ * Copyright (C) 2021-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

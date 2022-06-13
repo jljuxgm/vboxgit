@@ -1,10 +1,10 @@
-/* $Id: TRPM.cpp 92521 2021-11-20 02:21:32Z vboxsync $ */
+/* $Id: TRPM.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * TRPM - The Trap Monitor.
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

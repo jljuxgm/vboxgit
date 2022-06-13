@@ -1,10 +1,10 @@
-/* $Id: vbox_main.c 90498 2021-08-03 17:37:08Z vboxsync $ */
+/* $Id: vbox_main.c 93115 2022-01-01 11:31:46Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
 
 /*
- * Copyright (C) 2013-2020 Oracle Corporation
+ * Copyright (C) 2013-2022 Oracle Corporation
  * This file is based on ast_main.c
  * Copyright 2012 Red Hat Inc.
  *
