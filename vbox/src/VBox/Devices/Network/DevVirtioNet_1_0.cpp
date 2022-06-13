@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet_1_0.cpp 90775 2021-08-23 06:07:10Z vboxsync $ $Revision: 90775 $ $Date: 2021-08-23 14:07:10 +0800 (Mon, 23 Aug 2021) $ $Author: vboxsync $ */
+/* $Id: DevVirtioNet_1_0.cpp 90797 2021-08-23 15:25:07Z vboxsync $ $Revision: 90797 $ $Date: 2021-08-23 23:25:07 +0800 (Mon, 23 Aug 2021) $ $Author: vboxsync $ */
 
 /** @file
  * VBox storage devices - Virtio NET Driver
@@ -1122,7 +1122,7 @@ static DECLCALLBACK(int) virtioNetR3LoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM
                    (VIRTIONET_MAC_FILTER_LEN - pThis->cMulticastFilterMacs) * sizeof(RTMAC));
 
         pHlp->pfnSSMGetU32(     pSSM, &pThis->cUnicastFilterMacs);
-        AssertReturn(pThis->cWorkers <= VIRTIONET_MAC_FILTER_LEN, VERR_OUT_OF_RANGE);
+        AssertReturn(pThis->cUnicastFilterMacs <= VIRTIONET_MAC_FILTER_LEN, VERR_OUT_OF_RANGE);
         pHlp->pfnSSMGetMem(     pSSM, pThis->aMacUnicastFilter, pThis->cUnicastFilterMacs * sizeof(RTMAC));
 
         if (pThis->cUnicastFilterMacs < VIRTIONET_MAC_FILTER_LEN)
