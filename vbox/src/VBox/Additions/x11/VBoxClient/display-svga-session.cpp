@@ -1,4 +1,4 @@
-/* $Id: display-svga-session.cpp 93371 2022-01-20 17:48:35Z vboxsync $ */
+/* $Id: display-svga-session.cpp 93375 2022-01-20 18:11:54Z vboxsync $ */
 /** @file
  * Desktop Environment specific guest screen assistant for
  * VMSVGA graphics adapter.
@@ -53,7 +53,7 @@
 
 #include <iprt/localipc.h>
 #include <iprt/asm.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/path.h>
 #include <iprt/linux/sysfs.h>
 
