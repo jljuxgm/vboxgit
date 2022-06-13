@@ -1,4 +1,4 @@
-/* $Id: UIWizardAddCloudVMPageExpert.cpp 94166 2022-03-11 09:34:23Z vboxsync $ */
+/* $Id: UIWizardAddCloudVMPageExpert.cpp 94182 2022-03-11 17:25:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardAddCloudVMPageExpert class implementation.
  */
@@ -19,6 +19,7 @@
 #include <QHBoxLayout>
 #include <QHeaderView>
 #include <QListWidget>
+#include <QPushButton>
 #include <QTableWidget>
 #include <QVBoxLayout>
 
@@ -242,7 +243,9 @@ void UIWizardAddCloudVMPageExpert::sltHandleProfileComboChange()
     wizard()->setClient(cloudClientByName(wizard()->providerShortName(), wizard()->profileName(), wizard()->notificationCenter()));
 
     /* Update profile instances: */
+    wizard()->wizardButton(WizardButtonType_Expert)->setEnabled(false);
     populateProfileInstances(m_pSourceInstanceList, wizard()->notificationCenter(), wizard()->client());
+    wizard()->wizardButton(WizardButtonType_Expert)->setEnabled(true);
     sltHandleSourceInstanceChange();
 
     /* Notify about changes: */

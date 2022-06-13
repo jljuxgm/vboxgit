@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageExpert.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIWizardExportAppPageExpert.cpp 94182 2022-03-11 17:25:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageExpert class implementation.
  */
@@ -24,6 +24,7 @@
 #include <QLabel>
 #include <QLineEdit>
 #include <QListWidget>
+#include <QPushButton>
 #include <QRadioButton>
 #include <QStackedWidget>
 #include <QTableWidget>
@@ -804,6 +805,7 @@ void UIWizardExportAppPageExpert::updateCloudStuff()
     CCloudClient comClient;
     CVirtualSystemDescription comDescription;
     CVirtualSystemDescriptionForm comForm;
+    wizard()->wizardButton(WizardButtonType_Expert)->setEnabled(false);
     refreshCloudStuff(comAppliance,
                       comClient,
                       comDescription,
@@ -813,6 +815,7 @@ void UIWizardExportAppPageExpert::updateCloudStuff()
                       wizard()->machineIDs(),
                       wizard()->uri(),
                       wizard()->cloudExportMode());
+    wizard()->wizardButton(WizardButtonType_Expert)->setEnabled(true);
     wizard()->setCloudAppliance(comAppliance);
     wizard()->setCloudClient(comClient);
     wizard()->setVsd(comDescription);

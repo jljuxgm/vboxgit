@@ -1,4 +1,4 @@
-/* $Id: UINativeWizard.cpp 94069 2022-03-03 10:10:51Z vboxsync $ */
+/* $Id: UINativeWizard.cpp 94182 2022-03-11 17:25:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINativeWizard class implementation.
  */
@@ -108,7 +108,15 @@ UINotificationCenter *UINativeWizard::notificationCenter() const
 
 bool UINativeWizard::handleNotificationProgressNow(UINotificationProgress *pProgress)
 {
-    return m_pNotificationCenter->handleNow(pProgress);
+    wizardButton(WizardButtonType_Expert)->setEnabled(false);
+    const bool fResult = m_pNotificationCenter->handleNow(pProgress);
+    wizardButton(WizardButtonType_Expert)->setEnabled(true);
+    return fResult;
+}
+
+QPushButton *UINativeWizard::wizardButton(const WizardButtonType &enmType) const
+{
+    return m_buttons.value(enmType);
 }
 
 int UINativeWizard::exec()
@@ -118,11 +126,6 @@ int UINativeWizard::exec()
 
     /* Call to base-class: */
     return QIWithRetranslateUI<QDialog>::exec();
-}
-
-QPushButton *UINativeWizard::wizardButton(const WizardButtonType &enmType) const
-{
-    return m_buttons.value(enmType);
 }
 
 void UINativeWizard::setPixmapName(const QString &strName)
