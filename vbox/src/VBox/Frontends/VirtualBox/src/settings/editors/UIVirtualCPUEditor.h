@@ -1,4 +1,4 @@
-/* $Id: UIVirtualCPUEditor.h 86089 2020-09-11 09:54:24Z vboxsync $ */
+/* $Id: UIVirtualCPUEditor.h 90066 2021-07-06 13:13:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualCPUEditor class declaration.
  */
@@ -38,6 +38,10 @@ class QIAdvancedSlider;
 class SHARED_LIBRARY_STUFF UIVirtualCPUEditor : public QIWithRetranslateUI<QWidget>
 {
     Q_OBJECT;
+
+ signals:
+
+    void sigValueChanged(int iValue);
 
 public:
 

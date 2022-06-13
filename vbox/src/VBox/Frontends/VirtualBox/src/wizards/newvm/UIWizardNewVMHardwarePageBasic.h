@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMHardwarePageBasic.h 90060 2021-07-06 12:12:10Z vboxsync $ */
+/* $Id: UIWizardNewVMHardwarePageBasic.h 90066 2021-07-06 13:13:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMHardwarePageBasic class declaration.
  */
@@ -60,7 +60,7 @@ protected:
 
 private slots:
 
-    void sltMemoryAmountChanged(int iValue);
+    void sltMemorySizeChanged(int iValue);
     void sltCPUCountChanged(int iCount);
 
 private:
@@ -73,8 +73,6 @@ private:
     void cleanupPage();
     QWidget *createHardwareWidgets();
     bool isComplete() const;
-
-    UIWizardNewVM *m_pWizard;
 
     /** @name Widgets
      * @{ */

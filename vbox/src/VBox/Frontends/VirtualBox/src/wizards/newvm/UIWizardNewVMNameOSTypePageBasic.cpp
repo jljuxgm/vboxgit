@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMNameOSTypePageBasic.cpp 90060 2021-07-06 12:12:10Z vboxsync $ */
+/* $Id: UIWizardNewVMNameOSTypePageBasic.cpp 90066 2021-07-06 13:13:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasicNameOSStype class implementation.
  */
@@ -480,7 +480,7 @@ void UIWizardNewVMNameOSTypePageBasic::sltISOPathChanged(const QString &strPath)
 
 void UIWizardNewVMNameOSTypePageBasic::sltGuestOSFamilChanged(const QString &strGuestOSFamilyId)
 {
-    parentWizardSet(setGuestOSFamilyId, strGuestOSFamilyId);
+    newVMWizardPropertySet(GuestOSFamilyId, strGuestOSFamilyId);
 }
 
 QWidget *UIWizardNewVMNameOSTypePageBasic::createNameOSTypeWidgets()
