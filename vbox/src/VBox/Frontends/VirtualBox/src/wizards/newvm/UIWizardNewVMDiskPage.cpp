@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMDiskPage.cpp 91293 2021-09-17 06:48:40Z vboxsync $ */
+/* $Id: UIWizardNewVMDiskPage.cpp 91294 2021-09-17 09:01:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMDiskPage class implementation.
  */
@@ -302,7 +302,7 @@ void UIWizardNewVMDiskPage::initializePage()
     const QString &strMachineFolder = pWizard->machineFolder();
     QString strMediumPath =
         UIWizardDiskEditors::constructMediumFilePath(UIWizardDiskEditors::appendExtension(strDefaultName,
-                                                                                  strDefaultExtension), strMachineFolder);
+                                                                                          strDefaultExtension), strMachineFolder);
     pWizard->setMediumPath(strMediumPath);
 
     /* Set the recommended disk size if user has already not done so: */

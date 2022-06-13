@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPathSizePage.cpp 91293 2021-09-17 06:48:40Z vboxsync $ */
+/* $Id: UIWizardCloneVDPathSizePage.cpp 91294 2021-09-17 09:01:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDPathSizePage class implementation.
  */
@@ -79,7 +79,7 @@ void UIWizardCloneVDPathSizePage::initializePage()
 
         QString strMediumFilePath =
             UIWizardDiskEditors::constructMediumFilePath(UIWizardDiskEditors::appendExtension(strDiskName,
-                                                                                                strExtension), strSourceDiskPath);
+                                                                                              strExtension), strSourceDiskPath);
         m_pMediumSizePathGroupBox->setMediumFilePath(strMediumFilePath);
         pWizard->setMediumPath(strMediumFilePath);
     }
@@ -118,7 +118,7 @@ void UIWizardCloneVDPathSizePage::sltSelectLocationButtonClicked()
         return;
     QString strMediumPath =
         UIWizardDiskEditors::appendExtension(strSelectedPath,
-                                              UIWizardDiskEditors::defaultExtension(pWizard->mediumFormat(), pWizard->deviceType()));
+                                             UIWizardDiskEditors::defaultExtension(pWizard->mediumFormat(), pWizard->deviceType()));
     QFileInfo mediumPath(strMediumPath);
     m_pMediumSizePathGroupBox->setMediumFilePath(QDir::toNativeSeparators(mediumPath.absoluteFilePath()));
 }
@@ -130,7 +130,7 @@ void UIWizardCloneVDPathSizePage::sltMediumPathChanged(const QString &strPath)
     m_userModifiedParameters << "MediumPath";
     QString strMediumPath =
         UIWizardDiskEditors::appendExtension(strPath,
-                                              UIWizardDiskEditors::defaultExtension(pWizard->mediumFormat(), pWizard->deviceType()));
+                                             UIWizardDiskEditors::defaultExtension(pWizard->mediumFormat(), pWizard->deviceType()));
     pWizard->setMediumPath(strMediumPath);
     emit completeChanged();
 }
