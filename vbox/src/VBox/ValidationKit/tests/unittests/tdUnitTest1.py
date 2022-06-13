@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 94506 2022-04-07 07:32:16Z vboxsync $
+# $Id: tdUnitTest1.py 94510 2022-04-07 12:08:20Z vboxsync $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 94506 $"
+__version__ = "$Revision: 94510 $"
 
 
 # Standard Python imports.
@@ -794,6 +794,22 @@ class tdUnitTest1(vbox.TestDriver):
             reporter.log('Exit code [sudo]: %s (%s)' % (iRc, asArgs));
         return iRc == 0;
 
+
+    def _logExpandString(self, sString, cVerbosity = 2):
+        """
+        Expands a given string by asking TxS on the guest side and logs it.
+        Uses log level 2 by default.
+
+        No-op if no TxS involved.
+        """
+        if reporter.getVerbosity() < cVerbosity \
+        or self.oTxsSession is None:
+            return;
+        sStringExp = self.txsExpandString(self.oSession, self.oTxsSession, sString);
+        if not sStringExp:
+            return;
+        reporter.log2('_logExpandString: "%s" -> "%s"' % (sString, sStringExp));
+
     def _wrapPathExists(self, sPath):
         """
         Creates the directory specified sPath (including parents).
@@ -803,6 +819,7 @@ class tdUnitTest1(vbox.TestDriver):
             return True;
         fRc = False;
         if self.sMode.startswith('remote'):
+            self._logExpandString(sPath);
             fRc = self.txsIsDir(self.oSession, self.oTxsSession, sPath, fIgnoreErrors = True);
             if not fRc:
                 fRc = self.txsIsFile(self.oSession, self.oTxsSession, sPath, fIgnoreErrors = True);
@@ -838,6 +855,8 @@ class tdUnitTest1(vbox.TestDriver):
             return True;
         fRc = True;
         if self.sMode.startswith('remote'):
+            self._logExpandString(sSrc);
+            self._logExpandString(sDst);
             if self.sMode == 'remote-exec':
                 self.txsCopyFile(self.oSession, self.oTxsSession, sSrc, sDst, iMode);
             else:
@@ -946,7 +965,7 @@ class tdUnitTest1(vbox.TestDriver):
                 self._wrapMkDir(sDstDir);
                 asDirsToRemove.append(sDstDir);
 
-            sDst = os.path.join(sDstDir, os.path.basename(sFullPath));
+            sDst = os.path.join(sDstDir, os.path.basename(sFullPath) + self.sExeSuff);
             self._wrapCopyFile(sFullPath + self.sExeSuff, sDst, 0o755);
             asFilesToRemove.append(sDst);
 
