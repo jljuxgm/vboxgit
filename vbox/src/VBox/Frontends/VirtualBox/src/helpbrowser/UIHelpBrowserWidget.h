@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.h 93990 2022-02-28 15:34:57Z vboxsync $ */
+/* $Id: UIHelpBrowserWidget.h 94032 2022-03-01 11:29:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class declaration.
  */
@@ -109,7 +109,11 @@ private slots:
     void sltFindNextInPage();
     void sltFindPreviousInPage();
     void sltHistoryChanged(bool fBackwardAvailable, bool fForwardAvailable);
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+    void sltLinkHighlighted(const QUrl &url);
+#else
     void sltLinkHighlighted(const QString &strLink);
+#endif
     void sltMouseOverImage(const QString &strImageName);
 
 private:
