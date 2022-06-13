@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 94892 2022-05-06 11:59:18Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 94893 2022-05-06 12:02:08Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -2315,24 +2315,24 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, Au
             DeviceType_T *paLedDevType = NULL;
 
             StorageControllerType_T enmCtrlType;
-            rc = ctrls[i]->COMGETTER(ControllerType)(&enmCtrlType);                         H();
+            hrc = ctrls[i]->COMGETTER(ControllerType)(&enmCtrlType);                        H();
             AssertRelease((unsigned)enmCtrlType < RT_ELEMENTS(aCtrlNodes)
                           || enmCtrlType == StorageControllerType_USB);
 
             StorageBus_T enmBus;
-            rc = ctrls[i]->COMGETTER(Bus)(&enmBus);                                         H();
+            hrc = ctrls[i]->COMGETTER(Bus)(&enmBus);                                        H();
 
             Bstr controllerName;
-            rc = ctrls[i]->COMGETTER(Name)(controllerName.asOutParam());                    H();
+            hrc = ctrls[i]->COMGETTER(Name)(controllerName.asOutParam());                   H();
 
             ULONG ulInstance = 999;
-            rc = ctrls[i]->COMGETTER(Instance)(&ulInstance);                                H();
+            hrc = ctrls[i]->COMGETTER(Instance)(&ulInstance);                               H();
 
             BOOL fUseHostIOCache;
-            rc = ctrls[i]->COMGETTER(UseHostIOCache)(&fUseHostIOCache);                     H();
+            hrc = ctrls[i]->COMGETTER(UseHostIOCache)(&fUseHostIOCache);                    H();
 
             BOOL fBootable;
-            rc = ctrls[i]->COMGETTER(Bootable)(&fBootable);                                 H();
+            hrc = ctrls[i]->COMGETTER(Bootable)(&fBootable);                                H();
 
             PCFGMNODE pCtlInst = NULL;
             const char *pszCtrlDev = i_storageControllerTypeToStr(enmCtrlType);
