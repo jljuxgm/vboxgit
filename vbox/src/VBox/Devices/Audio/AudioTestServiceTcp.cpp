@@ -1,4 +1,4 @@
-/* $Id: AudioTestServiceTcp.cpp 90176 2021-07-14 09:38:43Z vboxsync $ */
+/* $Id: AudioTestServiceTcp.cpp 90554 2021-08-06 15:40:59Z vboxsync $ */
 /** @file
  * AudioTestServiceTcp - Audio test execution server, TCP/IP Transport Layer.
  */
@@ -698,8 +698,13 @@ static DECLCALLBACK(int) atsTcpCreate(PATSTRANSPORTINST *ppThis)
     PATSTRANSPORTINST pThis = (PATSTRANSPORTINST)RTMemAllocZ(sizeof(ATSTRANSPORTINST));
     AssertPtrReturn(pThis, VERR_NO_MEMORY);
 
-    *ppThis = pThis;
-    return VINF_SUCCESS;
+    int rc = RTCritSectInit(&pThis->CritSect);
+    if (RT_SUCCESS(rc))
+    {
+        *ppThis = pThis;
+    }
+
+    return rc;
 }
 
 /**
@@ -721,8 +726,9 @@ static DECLCALLBACK(int) atsTcpDestroy(PATSTRANSPORTINST pThis)
  */
 static DECLCALLBACK(int) atsTcpStart(PATSTRANSPORTINST pThis)
 {
-    int rc = RTCritSectInit(&pThis->CritSect);
-    if (RT_SUCCESS(rc) && pThis->enmMode != ATSTCPMODE_CLIENT)
+    int rc = VINF_SUCCESS;
+
+    if (pThis->enmMode != ATSTCPMODE_CLIENT)
     {
         rc = RTTcpServerCreateEx(pThis->szBindAddr[0] ? pThis->szBindAddr : NULL, pThis->uBindPort, &pThis->pTcpServer);
         if (RT_FAILURE(rc))
