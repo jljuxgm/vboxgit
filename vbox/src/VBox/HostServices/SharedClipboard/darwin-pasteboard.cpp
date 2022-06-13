@@ -1,10 +1,10 @@
-/* $Id: darwin-pasteboard.cpp 85845 2020-08-20 14:28:33Z vboxsync $ */
+/* $Id: darwin-pasteboard.cpp 92182 2021-11-02 21:47:25Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Mac OS X host implementation.
  */
 
 /*
- * Includes contributions from François Revol
+ * Includes contributions from FranÃ§ois Revol
  *
  * Copyright (C) 2008-2020 Oracle Corporation
  *
