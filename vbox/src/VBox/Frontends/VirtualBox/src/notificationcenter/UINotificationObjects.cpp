@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 90591 2021-08-10 10:19:38Z vboxsync $ */
+/* $Id: UINotificationObjects.cpp 90592 2021-08-10 10:26:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -21,10 +21,12 @@
 
 /* GUI includes: */
 #include "UICommon.h"
-#include "UIDownloaderExtensionPack.h"
-#include "UIDownloaderGuestAdditions.h"
-#include "UIDownloaderUserManual.h"
 #include "UINotificationObjects.h"
+#ifdef VBOX_GUI_WITH_NETWORK_MANAGER
+# include "UIDownloaderExtensionPack.h"
+# include "UIDownloaderGuestAdditions.h"
+# include "UIDownloaderUserManual.h"
+#endif
 
 /* COM includes: */
 #include "CConsole.h"
