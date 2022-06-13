@@ -1,4 +1,4 @@
-/* $Id: PDMDriver.cpp 91905 2021-10-20 17:43:26Z vboxsync $ */
+/* $Id: PDMDriver.cpp 91939 2021-10-21 12:43:45Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Driver parts.
  */
@@ -745,6 +745,7 @@ int pdmR3DrvInstantiate(PVM pVM, PCFGMNODE pNode, PPDMIBASE pBaseInterface, PPDM
                         rc = PDMR3LdrGetSymbolR0(pVM, NULL, "g_pdmR0DrvHlp", &pNew->pHlpR0);
                         AssertReleaseRCReturn(rc, rc);
                     }
+#ifdef VBOX_WITH_RAW_MODE_KEEP
                     if (   (pDrv->pReg->fFlags & PDM_DRVREG_FLAGS_RC)
                         && VM_IS_RAW_MODE_ENABLED(pVM))
                     {
@@ -752,6 +753,7 @@ int pdmR3DrvInstantiate(PVM pVM, PCFGMNODE pNode, PPDMIBASE pBaseInterface, PPDM
                         rc = PDMR3LdrGetSymbolRC(pVM, NULL, "g_pdmRCDrvHlp", &pNew->pHlpRC);
                         AssertReleaseRCReturn(rc, rc);
                     }
+#endif
 
                     pDrv->iNextInstance++;
                     pDrv->cInstances++;

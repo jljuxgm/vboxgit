@@ -1,4 +1,4 @@
-/* $Id: PDMLdr.cpp 91854 2021-10-20 00:50:11Z vboxsync $ */
+/* $Id: PDMLdr.cpp 91939 2021-10-21 12:43:45Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager, module loader.
  */
@@ -397,14 +397,6 @@ static DECLCALLBACK(int) pdmR3GetImportRC(RTLDRMOD hLdrMod, const char *pszModul
         {
             RTRCPTR RCPtr = 0;
             rc = VMMR3GetImportRC(pVM, pszSymbol, &RCPtr);
-            if (RT_SUCCESS(rc))
-                *pValue = RCPtr;
-        }
-        else if (   !strncmp(pszSymbol, "TM", 2)
-                 || !strcmp(pszSymbol, "g_pSUPGlobalInfoPage"))
-        {
-            RTRCPTR RCPtr = 0;
-            rc = TMR3GetImportRC(pVM, pszSymbol, &RCPtr);
             if (RT_SUCCESS(rc))
                 *pValue = RCPtr;
         }

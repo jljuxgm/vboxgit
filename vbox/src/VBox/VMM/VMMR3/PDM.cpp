@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 91895 2021-10-20 13:30:17Z vboxsync $ */
+/* $Id: PDM.cpp 91939 2021-10-21 12:43:45Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -678,7 +678,7 @@ VMMR3_INT_DECL(void) PDMR3Relocate(PVM pVM, RTGCINTPTR offDelta)
         }
 
     }
-#endif
+#endif /* VBOX_WITH_RAW_MODE_KEEP */
 }
 
 

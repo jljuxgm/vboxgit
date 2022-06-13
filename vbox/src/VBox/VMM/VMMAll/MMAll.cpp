@@ -1,4 +1,4 @@
-/* $Id: MMAll.cpp 91907 2021-10-20 19:00:05Z vboxsync $ */
+/* $Id: MMAll.cpp 91939 2021-10-21 12:43:45Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Any Context.
  */
@@ -364,26 +364,6 @@ VMMDECL(RTR0PTR) MMHyperR3ToR0(PVM pVM, RTR3PTR R3Ptr)
         return mmHyperLookupCalcR0(pVM, pLookup, off);
     AssertMsgFailed(("R3Ptr=%p is not inside the hypervisor memory area!\n", R3Ptr));
     return NIL_RTR0PTR;
-}
-
-
-/**
- * Converts a ring-3 host context address in the Hypervisor memory region to a guest context address.
- *
- * @returns guest context address.
- * @param   pVM         The cross context VM structure.
- * @param   R3Ptr       The ring-3 host context address.
- *                      You'll be damned if this is not in the HMA! :-)
- * @thread  The Emulation Thread.
- */
-VMMDECL(RTRCPTR) MMHyperR3ToRC(PVM pVM, RTR3PTR R3Ptr)
-{
-    uint32_t off;
-    PMMLOOKUPHYPER pLookup = mmHyperLookupR3(pVM, R3Ptr, &off);
-    if (pLookup)
-        return mmHyperLookupCalcRC(pVM, pLookup, off);
-    AssertMsgFailed(("R3Ptr=%p is not inside the hypervisor memory area!\n", R3Ptr));
-    return NIL_RTRCPTR;
 }
 
 
