@@ -1,4 +1,4 @@
-/* $Id: UIMediumItem.h 90270 2021-07-21 10:10:43Z vboxsync $ */
+/* $Id: UIMediumItem.h 90300 2021-07-23 11:26:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumItem class declaration.
  */
@@ -118,6 +118,11 @@ protected:
 
     /** Returns default text. */
     virtual QString defaultText() const /* override */;
+
+protected slots:
+
+    /** Handles medium move progress result. */
+    void sltHandleMoveProgressFinished();
 
 private:
 
