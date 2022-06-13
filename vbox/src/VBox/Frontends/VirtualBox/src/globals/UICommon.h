@@ -1,4 +1,4 @@
-/* $Id: UICommon.h 91414 2021-09-27 17:46:20Z vboxsync $ */
+/* $Id: UICommon.h 91445 2021-09-28 18:16:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class declaration.
  */
@@ -119,6 +119,8 @@ signals:
         void sigMediumEnumerated(const QUuid &uMediumID);
         /** Notifies listeners about medium-enumeration finished. */
         void sigMediumEnumerationFinished();
+        /** Notifies listeners about update of recently media list. */
+        void sigRecentMediaListUpdated(UIMediumDeviceType enmMediumType);
     /** @} */
 
 public:

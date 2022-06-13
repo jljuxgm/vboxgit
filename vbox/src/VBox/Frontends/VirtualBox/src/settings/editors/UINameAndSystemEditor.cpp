@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.cpp 91436 2021-09-28 13:31:44Z vboxsync $ */
+/* $Id: UINameAndSystemEditor.cpp 91445 2021-09-28 18:16:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class implementation.
  */
@@ -24,7 +24,6 @@
 /* GUI includes: */
 #include "QILineEdit.h"
 #include "UICommon.h"
-#include "UIExtraDataManager.h"
 #include "UIIconPool.h"
 #include "UIFilePathSelector.h"
 #include "UINameAndSystemEditor.h"
@@ -513,7 +512,7 @@ void UINameAndSystemEditor::prepareWidgets()
                 m_pImageSelector->setMode(UIFilePathSelector::Mode_File_Open);
                 m_pImageSelector->setFileDialogFilters("ISO Images(*.iso *.ISO)");
                 m_pImageSelector->setInitialPath(uiCommon().defaultFolderPathForType(UIMediumDeviceType_DVD));
-                m_pImageSelector->setRecentPathList(gEDataManager->recentListOfOpticalDisks());
+                m_pImageSelector->setRecentMediaListType(UIMediumDeviceType_DVD);
 
                 m_pMainLayout->addWidget(m_pImageSelector, iRow, 1, 1, 2);
             }

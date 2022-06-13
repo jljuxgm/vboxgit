@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 91414 2021-09-27 17:46:20Z vboxsync $ */
+/* $Id: UICommon.cpp 91445 2021-09-28 18:16:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -2341,6 +2341,7 @@ void UICommon::updateRecentlyUsedMediumListAndFolder(UIMediumDeviceType enmMediu
         case UIMediumDeviceType_Floppy:   gEDataManager->setRecentListOfFloppyDisks(recentMediumList); break;
         default: break;
     }
+    emit sigRecentMediaListUpdated(enmMediumType);
 }
 
 QString UICommon::defaultFolderPathForType(UIMediumDeviceType enmMediumType)
