@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-darwin.cpp 93748 2022-02-15 12:20:46Z vboxsync $ */
+/* $Id: NEMR3Native-darwin.cpp 93750 2022-02-15 12:42:19Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, native ring-3 macOS backend using Hypervisor.framework.
  *
@@ -3190,7 +3190,7 @@ static hv_return_t nemR3DarwinRunGuest(PVM pVM, PVMCPU pVCpu, PVMXTRANSIENT pVmx
     {
         uint64_t u64Tpr;
         hv_return_t hrc2 = hv_vcpu_read_register(pVCpu->nem.s.hVCpuId, HV_X86_TPR, &u64Tpr);
-        Assert(hrc2 == HV_SUCCESS);
+        Assert(hrc2 == HV_SUCCESS); RT_NOREF(hrc2);
 
         if (pVmxTransient->u8GuestTpr != (uint8_t)u64Tpr)
         {
