@@ -1,4 +1,4 @@
-/* $Id: GIMDev.cpp 91968 2021-10-21 15:52:28Z vboxsync $ */
+/* $Id: GIMDev.cpp 91980 2021-10-21 18:12:53Z vboxsync $ */
 /** @file
  * Guest Interface Manager Device.
  */
@@ -388,9 +388,8 @@ static DECLCALLBACK(int) gimdevRZConstruct(PPDMDEVINS pDevIns)
      * Map the MMIO2 regions into the context.
      */
 /** @todo r=bird: consider ditching this as GIM doesn't actually make use of it */
-    PVMCC           pVM       = PDMDevHlpGetVM(pDevIns);
     uint32_t        cRegions  = 0;
-    PGIMMMIO2REGION paRegions = GIMGetMmio2Regions(pVM, &cRegions);
+    PGIMMMIO2REGION paRegions = PDMDevHlpGIMGetMmio2Regions(pDevIns, &cRegions);
     if (   cRegions
         && paRegions)
     {
