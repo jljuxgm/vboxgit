@@ -1,4 +1,4 @@
-# $Id: Config.kmk 91976 2021-10-21 17:18:29Z vboxsync $
+# $Id: Config.kmk 92221 2021-11-04 19:29:24Z vboxsync $
 ## @file
 # kBuild Configuration file for the VMM.
 #
@@ -67,7 +67,7 @@ ifdef VBOXSTRICTRC_STRICT_ENABLED
  VMM_COMMON_DEFS += VBOXSTRICTRC_STRICT_ENABLED
 endif
 ifdef VBOX_WITH_NATIVE_NEM
- if1of ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH), win.amd64)
+ if1of ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH), win.amd64 darwin.amd64)
   VMM_COMMON_DEFS += VBOX_WITH_NATIVE_NEM VBOX_WITH_NEM_R0
   ifdef VBOX_WITH_PGM_NEM_MODE
    VMM_COMMON_DEFS += VBOX_WITH_PGM_NEM_MODE
