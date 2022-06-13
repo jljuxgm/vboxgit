@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 90795 2021-08-23 14:51:16Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 90796 2021-08-23 14:55:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -92,9 +92,6 @@
 /* Other VBox stuff: */
 #include <iprt/buildconfig.h>
 #include <VBox/version.h>
-#ifdef VBOX_WS_X11
-# include <iprt/env.h>
-#endif /* VBOX_WS_X11 */
 
 #define checkUnattendedInstallError(comUnattendedInstaller) \
     do { \

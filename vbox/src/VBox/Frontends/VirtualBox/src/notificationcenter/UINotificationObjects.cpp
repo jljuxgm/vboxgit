@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 90795 2021-08-23 14:51:16Z vboxsync $ */
+/* $Id: UINotificationObjects.cpp 90796 2021-08-23 14:55:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -38,6 +38,11 @@
 #include "CEmulatedUSB.h"
 #include "CNetworkAdapter.h"
 #include "CVRDEServer.h"
+
+/* Other VBox stuff: */
+#ifdef VBOX_WS_X11
+# include <iprt/env.h>
+#endif
 
 /* VirtualBox interface declarations: */
 #include <VBox/com/VirtualBox.h>
