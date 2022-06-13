@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 92978 2021-12-16 12:04:05Z vboxsync $
+# $Id: vbox.py 92980 2021-12-16 12:47:18Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 92978 $"
+__version__ = "$Revision: 92980 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -2620,8 +2620,11 @@ class TestDriver(base.TestDriver):                                              
         """
         Adds an already existing (that is, configured) test VM to the
         test VM list.
+
+        Returns the VM object on success, None if failed.
         """
         # find + add the VM to the list.
+        oVM = None;
         try:
             if self.fpApiVer >= 4.0:
                 oVM = self.oVBox.findMachine(sNameOrId);
@@ -2629,12 +2632,12 @@ class TestDriver(base.TestDriver):                                              
                 reporter.error('fpApiVer=%s - did you remember to initialize the API' % (self.fpApiVer,));
         except:
             reporter.errorXcpt('could not find vm "%s"' % (sNameOrId,));
-            return None;
 
-        self.aoVMs.append(oVM);
-        if not fQuiet:
-            reporter.log('Added "%s" with name "%s"' % (oVM.id, sNameOrId));
-            self.logVmInfo(oVM);
+        if oVM:
+            self.aoVMs.append(oVM);
+            if not fQuiet:
+                reporter.log('Added "%s" with name "%s"' % (oVM.id, sNameOrId));
+                self.logVmInfo(oVM);
         return oVM;
 
     def openSession(self, oVM):
