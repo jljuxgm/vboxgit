@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 91219 2021-09-13 12:06:36Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 91359 2021-09-24 10:59:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -1270,7 +1270,7 @@ bool UIMessageCenter::confirmMediumRemoval(const UIMedium &medium, QWidget *pPar
             {
                 if (medium.state() == KMediumState_Inaccessible)
                     strMessage += tr("<p>As this hard disk is inaccessible its image file"
-                                     " can not be deleted.</p>");
+                                     " cannot be deleted.</p>");
             }
             break;
         }

@@ -1,4 +1,4 @@
-/* $Id: UIMediumDetailsWidget.cpp 90967 2021-08-27 20:37:40Z vboxsync $ */
+/* $Id: UIMediumDetailsWidget.cpp 91359 2021-09-24 10:59:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumDetailsWidget class implementation.
  */
@@ -771,7 +771,7 @@ void UIMediumDetailsWidget::retranslateValidation(QWidget *pWidget /* = 0 */)
 //        m_pErrorPaneType->setToolTip(tr("Cannot change from type <b>%1</b> to <b>%2</b>.")
 //                                     .arg(m_oldData.m_options.m_enmType).arg(m_newData.m_options.m_enmType));
     if (!pWidget || pWidget == m_pErrorPaneLocation)
-        m_pErrorPaneLocation->setToolTip(tr("Location can not be empty."));
+        m_pErrorPaneLocation->setToolTip(tr("Location cannot be empty."));
 //    if (!pWidget || pWidget == m_pErrorPaneDescription)
 //        m_pErrorPaneDescription->setToolTip(tr("Cannot change medium description from <b>%1</b> to <b>%2</b>.")
 //                                               .arg(m_oldData.m_options.m_strDescription).arg(m_newData.m_options.m_strDescription));
