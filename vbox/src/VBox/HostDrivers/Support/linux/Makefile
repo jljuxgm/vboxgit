@@ -1,4 +1,4 @@
-# $Id: Makefile 85939 2020-08-28 18:36:30Z vboxsync $
+# $Id: Makefile 89961 2021-06-29 19:29:40Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Linux Host Driver.
 #
@@ -133,6 +133,7 @@ endif # VBOX_WITHOUT_COMBINED_SOURCES
 ifeq ($(VBOX_KBUILD_TARGET_ARCH),x86)
 VBOXMOD_OBJS += \
 	math/gcc/divdi3.o \
+	math/gcc/divmoddi4.o \
 	math/gcc/moddi3.o \
 	math/gcc/qdivrem.o \
 	math/gcc/udivdi3.o \
