@@ -1,4 +1,4 @@
-/* $Id: VBoxX11Helper.h 89820 2021-06-21 12:57:45Z vboxsync $ */
+/* $Id: VBoxX11Helper.h 89823 2021-06-21 13:36:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBox X11 helper functions.
  */
@@ -64,7 +64,7 @@ SHARED_LIBRARY_STUFF void X11ScreenSaverSettingsRestore();
 /** X11: Returns true if XLib extension with name @p extensionName is avaible, false otherwise. */
 SHARED_LIBRARY_STUFF bool X11CheckExtension(const char *extensionName);
 
-/** Returns the list of Inhibit methods found by introrespecting DBus services. */
+/** Returns the list of Inhibit methods found by introspecting DBus services. */
 SHARED_LIBRARY_STUFF QVector<X11ScreenSaverInhibitMethod*> X11FindDBusScrenSaverInhibitMethods();
 
 /** Disables/enables Screen Saver through QDBus. */
