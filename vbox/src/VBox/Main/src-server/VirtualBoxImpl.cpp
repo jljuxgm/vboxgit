@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 94184 2022-03-11 18:24:17Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 94249 2022-03-15 16:16:42Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -3608,7 +3608,7 @@ void VirtualBox::i_onSnapshotChanged(const Guid &aMachineId, const Guid &aSnapsh
  *  @note Doesn't lock any object.
  */
 void VirtualBox::i_onGuestPropertyChanged(const Guid &aMachineId, const Utf8Str &aName, const Utf8Str &aValue,
-                                          const Utf8Str &aFlags, const BOOL &fWasDeleted)
+                                          const Utf8Str &aFlags, const BOOL fWasDeleted)
 {
     ComPtr<IEvent> ptrEvent;
     HRESULT hrc = ::CreateGuestPropertyChangedEvent(ptrEvent.asOutParam(), m->pEventSource,
