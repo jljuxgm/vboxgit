@@ -1,4 +1,4 @@
-/* $Id: Virtio.cpp 91950 2021-10-21 13:49:59Z vboxsync $ */
+/* $Id: Virtio.cpp 91953 2021-10-21 14:16:29Z vboxsync $ */
 /** @file
  * Virtio - Virtio Common Functions (VRing, VQueue, Virtio PCI)
  */
@@ -701,7 +701,7 @@ void vpciR3DumpState(PPDMDEVINS pDevIns, PVPCISTATE pThis, const char *pcszCalle
     }
 }
 # else
-#  define vpciR3DumpState(d, x, s)  do {} while (0)
+#  define vpciR3DumpState(d, x, s)  do { RT_NOREF((d), (x)); } while (0)
 # endif
 
 /**
