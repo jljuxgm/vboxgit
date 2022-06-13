@@ -1,4 +1,4 @@
-/* $Id: UINativeWizard.cpp 89967 2021-06-30 08:58:25Z vboxsync $ */
+/* $Id: UINativeWizard.cpp 89987 2021-07-01 09:30:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINativeWizard class implementation.
  */
@@ -562,12 +562,7 @@ void UINativeWizard::resizeToGoldenRatio()
         pLayout->update();
         pLayout->activate();
     }
-#if defined(VBOX_WS_MAC) || defined(VBOX_WS_X11)
-    // WORKAROUND:
-    // Due to async nature on macOS and X11, dialog doesn't come up to
-    // time with layout update.  Waiting for layout update here:
     QCoreApplication::sendPostedEvents(0, QEvent::LayoutRequest);
-#endif /* VBOX_WS_MAC || VBOX_WS_X11 */
 
     /* Resize to minimum size-hint: */
     resize(minimumSizeHint());
