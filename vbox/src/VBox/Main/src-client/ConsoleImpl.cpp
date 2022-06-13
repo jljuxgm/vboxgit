@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 93859 2022-02-20 08:17:49Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 93891 2022-02-22 18:08:39Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -1848,7 +1848,8 @@ DECLCALLBACK(int) Console::i_doGuestPropNotification(void *pvExtension,
     HRESULT hrc = pConsole->mControl->PushGuestProperty(name.raw(),
                                                         value.raw(),
                                                         pCBData->u64Timestamp,
-                                                        flags.raw());
+                                                        flags.raw(),
+                                                        !pCBData->pcszValue);
     if (SUCCEEDED(hrc))
     {
         ::FireGuestPropertyChangedEvent(pConsole->mEventSource, pConsole->i_getId().raw(), name.raw(), value.raw(), flags.raw());
