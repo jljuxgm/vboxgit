@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 91281 2021-09-16 13:32:18Z vboxsync $ */
+/* $Id: HMR0.cpp 91323 2021-09-22 10:04:56Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -387,7 +387,7 @@ static int hmR0InitIntel(void)
         g_uHmVmxHostCr4     = ASMGetCR4();
         g_uHmVmxHostMsrEfer = ASMRdMsr(MSR_K6_EFER);
 
-        /* Get VMX MSRs for determining VMX features we can ultimately use. */
+        /* Get VMX MSRs (and feature control MSR) for determining VMX features we can ultimately use. */
         SUPR0GetHwvirtMsrs(&g_HmMsrs, SUPVTCAPS_VT_X, false /* fForce */);
 
         /*
@@ -1177,6 +1177,7 @@ VMMR0_INT_DECL(int) HMR0InitVM(PVMCC pVM)
         pVM->hm.s.ForR3.vmx.u64HostCr4              = g_uHmVmxHostCr4;
         pVM->hm.s.ForR3.vmx.u64HostMsrEfer          = g_uHmVmxHostMsrEfer;
         pVM->hm.s.ForR3.vmx.u64HostSmmMonitorCtl    = g_uHmVmxHostSmmMonitorCtl;
+        pVM->hm.s.ForR3.vmx.u64HostFeatCtrl         = g_HmMsrs.u.vmx.u64FeatCtrl;
         HMGetVmxMsrsFromHwvirtMsrs(&g_HmMsrs, &pVM->hm.s.ForR3.vmx.Msrs);
         /* If you need to tweak host MSRs for testing VMX R0 code, do it here. */
 

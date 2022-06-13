@@ -1,4 +1,4 @@
-/* $Id: HMAll.cpp 91271 2021-09-16 07:42:37Z vboxsync $ */
+/* $Id: HMAll.cpp 91323 2021-09-22 10:04:56Z vboxsync $ */
 /** @file
  * HM - All contexts.
  */
@@ -820,7 +820,6 @@ VMM_INT_DECL(void) HMGetVmxMsrsFromHwvirtMsrs(PCSUPHWVIRTMSRS pHwvirtMsrs, PVMXM
 {
     AssertReturnVoid(pHwvirtMsrs);
     AssertReturnVoid(pVmxMsrs);
-    pVmxMsrs->u64FeatCtrl      = pHwvirtMsrs->u.vmx.u64FeatCtrl;
     pVmxMsrs->u64Basic         = pHwvirtMsrs->u.vmx.u64Basic;
     pVmxMsrs->PinCtls.u        = pHwvirtMsrs->u.vmx.PinCtls.u;
     pVmxMsrs->ProcCtls.u       = pHwvirtMsrs->u.vmx.ProcCtls.u;
