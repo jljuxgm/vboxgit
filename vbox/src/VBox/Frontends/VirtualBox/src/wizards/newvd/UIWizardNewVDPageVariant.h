@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageVariant.h 90356 2021-07-27 14:06:35Z vboxsync $ */
+/* $Id: UIWizardNewVDPageVariant.h 90370 2021-07-28 14:18:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageVariant class declaration.
  */
@@ -63,6 +63,7 @@ private:
     void initializePage();
     bool isComplete() const;
     void prepare();
+    void setWidgetVisibility(const CMediumFormat &mediumFormat);
 
     QIRichTextLabel *m_pDescriptionLabel;
     QIRichTextLabel *m_pDynamicLabel;
@@ -70,6 +71,5 @@ private:
     QIRichTextLabel *m_pSplitLabel;
     UIDiskVariantGroupBox *m_pVariantGroupBox;
 };
-
 
 #endif /* !FEQT_INCLUDED_SRC_wizards_newvd_UIWizardNewVDPageVariant_h */

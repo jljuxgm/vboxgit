@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageVariant.cpp 90362 2021-07-27 18:00:18Z vboxsync $ */
+/* $Id: UIWizardNewVDPageVariant.cpp 90370 2021-07-28 14:18:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageVariant class implementation.
  */
@@ -91,42 +91,6 @@
 //         m_pSplitBox->setText(UIWizardNewVD::tr("&Split Into Files of Less Than 2GB"));
 
 
-// }
-
-// void UIWizardNewVDPageBaseVariant::setWidgetVisibility(CMediumFormat &mediumFormat)
-// {
-//     ULONG uCapabilities = 0;
-//     QVector<KMediumFormatCapabilities> capabilities;
-//     capabilities = mediumFormat.GetCapabilities();
-//     for (int i = 0; i < capabilities.size(); i++)
-//         uCapabilities |= capabilities[i];
-
-//     bool fIsCreateDynamicPossible = uCapabilities & KMediumFormatCapabilities_CreateDynamic;
-//     bool fIsCreateFixedPossible = uCapabilities & KMediumFormatCapabilities_CreateFixed;
-//     bool fIsCreateSplitPossible = uCapabilities & KMediumFormatCapabilities_CreateSplit2G;
-//     if (m_pFixedCheckBox)
-//     {
-//         if (!fIsCreateDynamicPossible)
-//         {
-//             m_pFixedCheckBox->setChecked(true);
-//             m_pFixedCheckBox->setEnabled(false);
-//         }
-//         if (!fIsCreateFixedPossible)
-//         {
-//             m_pFixedCheckBox->setChecked(false);
-//             m_pFixedCheckBox->setEnabled(false);
-//         }
-//     }
-//     if (m_pDynamicLabel)
-//         m_pDynamicLabel->setHidden(!fIsCreateDynamicPossible);
-//     if (m_pFixedLabel)
-//         m_pFixedLabel->setHidden(!fIsCreateFixedPossible);
-//     if (m_pFixedCheckBox)
-//         m_pFixedCheckBox->setHidden(!fIsCreateFixedPossible);
-//     if (m_pSplitLabel)
-//         m_pSplitLabel->setHidden(!fIsCreateSplitPossible);
-//     if (m_pSplitBox)
-//         m_pSplitBox->setHidden(!fIsCreateSplitPossible);
 // }
 
 // void UIWizardNewVDPageBaseVariant::updateMediumVariantWidgetsAfterFormatChange(const CMediumFormat &mediumFormat)
@@ -224,13 +188,29 @@ void UIWizardNewVDPageVariant::retranslateUi()
 
 void UIWizardNewVDPageVariant::initializePage()
 {
-    // retranslateUi();
-    // CMediumFormat mediumFormat = field("mediumFormat").value<CMediumFormat>();
-    // setWidgetVisibility(mediumFormat);
+    retranslateUi();
+    UIWizardNewVD *pWizard = qobject_cast<UIWizardNewVD*>(wizard());
+    AssertReturnVoid(pWizard);
+    setWidgetVisibility(pWizard->mediumFormat());
 }
 
 bool UIWizardNewVDPageVariant::isComplete() const
 {
     //return mediumVariant() != (qulonglong)KMediumVariant_Max;
     return true;
+}
+
+
+void UIWizardNewVDPageVariant::setWidgetVisibility(const CMediumFormat &mediumFormat)
+{
+    AssertReturnVoid(m_pVariantGroupBox);
+
+    m_pVariantGroupBox->updateMediumVariantWidgetsAfterFormatChange(mediumFormat, true /* hide disabled widgets*/);
+
+    if (m_pDynamicLabel)
+        m_pDynamicLabel->setHidden(!m_pVariantGroupBox->isCreateDynamicPossible());
+    if (m_pFixedLabel)
+        m_pFixedLabel->setHidden(!m_pVariantGroupBox->isCreateFixedPossible());
+    if (m_pSplitLabel)
+        m_pSplitLabel->setHidden(!m_pVariantGroupBox->isCreateSplitPossible());
 }

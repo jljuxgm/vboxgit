@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageFileType.h 90356 2021-07-27 14:06:35Z vboxsync $ */
+/* $Id: UIWizardNewVDPageFileType.h 90370 2021-07-28 14:18:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageFileType class declaration.
  */
@@ -37,9 +37,6 @@ class UIDiskFormatsGroupBox;
 
 namespace UIWizardNewVDFileType
 {
-//     void addFormatButton(QWidget *pParent, QVBoxLayout *pFormatsLayout, CMediumFormat medFormat, bool fPreferred = false);
-
-   // QWidget *createFormatButtonGroup(QButtonGroup *&pFormatButtonGroup, bool fExperMode);
 
 //     CMediumFormat mediumFormat() const;
 //     void setMediumFormat(const CMediumFormat &mediumFormat);
@@ -61,6 +58,10 @@ public:
 
     /* Constructor: */
     UIWizardNewVDPageFileType();
+
+private slots:
+
+    void sltMediumFormatChanged();
 
 private:
 

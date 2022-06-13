@@ -1,4 +1,4 @@
-/* $Id: UIWizardDiskEditors.h 90362 2021-07-27 18:00:18Z vboxsync $ */
+/* $Id: UIWizardDiskEditors.h 90370 2021-07-28 14:18:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardDiskEditors class declaration.
  */
@@ -104,11 +104,15 @@ signals:
 public:
 
     UIDiskVariantGroupBox(bool fExpertMode, QWidget *pParent = 0);
-    void updateMediumVariantWidgetsAfterFormatChange(const CMediumFormat &mediumFormat);
+    void updateMediumVariantWidgetsAfterFormatChange(const CMediumFormat &mediumFormat, bool fHideDisabled = false);
     qulonglong mediumVariant() const;
     void setMediumVariant(qulonglong uMediumVariant);
     void setWidgetVisibility(CMediumFormat &mediumFormat);
     bool isComplete() const;
+
+    bool isCreateDynamicPossible() const;
+    bool isCreateFixedPossible() const;
+    bool isCreateSplitPossible() const;
 
 private slots:
 
@@ -121,6 +125,9 @@ private:
 
     QCheckBox *m_pFixedCheckBox;
     QCheckBox *m_pSplitBox;
+    bool m_fIsCreateDynamicPossible;
+    bool m_fIsCreateFixedPossible;
+    bool m_fIsCreateSplitPossible;
 };
 
 

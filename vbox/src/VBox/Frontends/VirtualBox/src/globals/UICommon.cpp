@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 90352 2021-07-27 11:08:28Z vboxsync $ */
+/* $Id: UICommon.cpp 90370 2021-07-28 14:18:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -3157,7 +3157,6 @@ void UICommon::createVDWithWizard(QWidget *pParent,
         return;
     QWidget *pDialogParent = windowManager().realParentWindow(pParent);
     windowManager().registerNewParent(pWizard, pDialogParent);
-    pWizard->prepare();
     pWizard->exec();
     delete pWizard;
 }
