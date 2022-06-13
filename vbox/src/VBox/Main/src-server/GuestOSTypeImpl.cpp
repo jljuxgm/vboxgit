@@ -1,4 +1,4 @@
-/* $Id: GuestOSTypeImpl.cpp 91614 2021-10-07 10:12:16Z vboxsync $ */
+/* $Id: GuestOSTypeImpl.cpp 92154 2021-10-29 17:11:00Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -445,6 +445,14 @@ HRESULT GuestOSType::getRecommendedSecureBoot(BOOL *aRecommendedSecureBoot)
 {
     /* Value is constant during life time, no need to lock */
     *aRecommendedSecureBoot = !!(mOSHint & VBOXOSHINT_EFI_SECUREBOOT);
+
+    return S_OK;
+}
+
+HRESULT GuestOSType::getRecommendedWDDMGraphics(BOOL *aRecommendedWDDMGraphics)
+{
+    /* Value is constant during life time, no need to lock */
+    *aRecommendedWDDMGraphics = !!(mOSHint & VBOXOSHINT_WDDM_GRAPHICS);
 
     return S_OK;
 }

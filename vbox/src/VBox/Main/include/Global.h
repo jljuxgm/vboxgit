@@ -1,4 +1,4 @@
-/* $Id: Global.h 91614 2021-10-07 10:12:16Z vboxsync $ */
+/* $Id: Global.h 92154 2021-10-29 17:11:00Z vboxsync $ */
 /** @file
  * VirtualBox COM API - Global Declarations and Definitions.
  */
@@ -48,6 +48,7 @@
 #define VBOXOSHINT_EFI_SECUREBOOT       RT_BIT(16)
 #define VBOXOSHINT_TPM                  RT_BIT(17)
 #define VBOXOSHINT_TPM2                 RT_BIT(18)
+#define VBOXOSHINT_WDDM_GRAPHICS        RT_BIT(19)
 
 /** The VBoxVRDP kludge extension pack name.
  *

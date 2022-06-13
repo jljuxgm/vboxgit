@@ -1,4 +1,4 @@
-/* $Id: GuestOSTypeImpl.h 91614 2021-10-07 10:12:16Z vboxsync $ */
+/* $Id: GuestOSTypeImpl.h 92154 2021-10-29 17:11:00Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -91,6 +91,7 @@ private:
     HRESULT getRecommendedCPUCount(ULONG *aRecommendedCPUCount);
     HRESULT getRecommendedTpmType(TpmType_T *aRecommendedTpmType);
     HRESULT getRecommendedSecureBoot(BOOL *aRecommendedSecureBoot);
+    HRESULT getRecommendedWDDMGraphics(BOOL *aRecommendedWDDMGraphics);
 
 
     const Utf8Str mFamilyID;
