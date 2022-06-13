@@ -1,4 +1,4 @@
-/* $Id: socket.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: socket.cpp 94839 2022-05-05 10:33:17Z vboxsync $ */
 /** @file
  * IPRT - Network Sockets.
  */
@@ -1018,7 +1018,8 @@ RTDECL(int) RTSocketParseInetAddress(const char *pszAddress, unsigned uPort, PRT
     if (!pHostEnt)
     {
         rc = rtSocketResolverError();
-        AssertMsgFailed(("Could not resolve '%s', rc=%Rrc\n", pszAddress, rc));
+        AssertMsg(rc == VERR_NET_HOST_NOT_FOUND,
+                  ("Could not resolve '%s', rc=%Rrc\n", pszAddress, rc));
         return rc;
     }
 
