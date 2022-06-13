@@ -1,4 +1,4 @@
-/* $Id: UnattendedImpl.cpp 93365 2022-01-20 13:11:45Z vboxsync $ */
+/* $Id: UnattendedImpl.cpp 93377 2022-01-20 18:35:17Z vboxsync $ */
 /** @file
  * Unattended class implementation
  */
@@ -391,11 +391,8 @@ HRESULT Unattended::i_innerDetectIsoOS(RTVFS hVfsIso)
         hrc = i_innerDetectIsoOSLinux(hVfsIso, &uBuf, &enmOsType);
     if (hrc == S_FALSE && enmOsType == VBOXOSTYPE_Unknown)
         hrc = i_innerDetectIsoOSOs2(hVfsIso, &uBuf, &enmOsType);
-    if (enmOsType != VBOXOSTYPE_Unknown)
-    {
-        try {  mStrDetectedOSTypeId = Global::OSTypeId(enmOsType); }
-        catch (std::bad_alloc &) { hrc = E_OUTOFMEMORY; }
-    }
+    try {  mStrDetectedOSTypeId = Global::OSTypeId(enmOsType); }
+    catch (std::bad_alloc &) { hrc = E_OUTOFMEMORY; }
     return hrc;
 }
 
