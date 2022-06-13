@@ -1,4 +1,4 @@
-/* $Id: DevEFI.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: DevEFI.h 94465 2022-04-05 11:43:09Z vboxsync $ */
 /** @file
  * EFI for VirtualBox Common Definitions.
  *
@@ -72,6 +72,8 @@ typedef enum
     EFI_INFO_INDEX_MCFG_BASE,
     EFI_INFO_INDEX_MCFG_SIZE,
     EFI_INFO_INDEX_APIC_MODE,
+    EFI_INFO_INDEX_CPU_COUNT_CURRENT,
+    EFI_INFO_INDEX_CPU_COUNT_MAX,
     EFI_INFO_INDEX_END
 } EfiInfoIndex;
 
