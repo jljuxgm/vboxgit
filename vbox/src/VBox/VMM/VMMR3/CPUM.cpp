@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 91291 2021-09-16 22:04:16Z vboxsync $ */
+/* $Id: CPUM.cpp 91292 2021-09-17 00:06:15Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -1039,9 +1039,9 @@ static int cpumR3AllocSvmHwVirtState(PVM pVM)
         PVMCPU pVCpu = pVM->apCpusR3[i];
         pVCpu->cpum.s.Guest.hwvirt.enmHwvirt = CPUMHWVIRT_SVM;
 
-        AssertCompile(SVM_VMCB_PAGES * X86_PAGE_SIZE == sizeof(pVCpu->cpum.s.Guest.hwvirt.svm.Vmcb));
+        AssertCompile(SVM_VMCB_PAGES  * X86_PAGE_SIZE == sizeof(pVCpu->cpum.s.Guest.hwvirt.svm.Vmcb));
         AssertCompile(SVM_MSRPM_PAGES * X86_PAGE_SIZE == sizeof(pVCpu->cpum.s.Guest.hwvirt.svm.abMsrBitmap));
-        AssertCompile(SVM_IOPM_PAGES * X86_PAGE_SIZE == sizeof(pVCpu->cpum.s.Guest.hwvirt.svm.abIoBitmap));
+        AssertCompile(SVM_IOPM_PAGES  * X86_PAGE_SIZE == sizeof(pVCpu->cpum.s.Guest.hwvirt.svm.abIoBitmap));
     }
 
     /* On any failure, cleanup. */
