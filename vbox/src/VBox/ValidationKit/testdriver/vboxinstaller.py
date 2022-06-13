@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 87468 $"
+__version__ = "$Revision: 92330 $"
 
 
 # Standard Python imports.
@@ -598,14 +598,22 @@ class VBoxInstallerTestDriver(TestDriverBase):
         # Unmount.
         fRc = self._executeSync(['hdiutil', 'detach', sMountPath ]);
         if not fRc and not fIgnoreError:
-            reporter.error('Failed to unmount DMG at %s' % sMountPath);
+            # In case it's busy for some reason or another, just retry after a little delay.
+            for iTry in range(6):
+                time.sleep(5);
+                reporter.error('Retry #%s unmount DMT at %s' % (iTry + 1, sMountPath,));
+                fRc = self._executeSync(['hdiutil', 'detach', sMountPath ]);
+                if fRc:
+                    break;
+            if not fRc:
+                reporter.error('Failed to unmount DMG at %s' % (sMountPath,));
 
         # Remove dir.
         try:
             os.rmdir(sMountPath);
         except:
             if not fIgnoreError:
-                reporter.errorXcpt('Failed to remove directory %s' % sMountPath);
+                reporter.errorXcpt('Failed to remove directory %s' % (sMountPath,));
         return fRc;
 
     def _darwinMountDmg(self, sDmg):
