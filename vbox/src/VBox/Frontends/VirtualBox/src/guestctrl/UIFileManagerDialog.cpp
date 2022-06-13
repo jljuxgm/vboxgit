@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerDialog.cpp 92510 2021-11-19 14:28:20Z vboxsync $ */
+/* $Id: UIFileManagerDialog.cpp 92630 2021-11-29 16:25:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerDialog class implementation.
  */
@@ -35,18 +35,25 @@
 *   Class UIFileManagerDialogFactory implementation.                                                                 *
 *********************************************************************************************************************************/
 
-UIFileManagerDialogFactory::UIFileManagerDialogFactory(UIActionPool *pActionPool /* = 0 */,
-                                                         const CGuest &comGuest /* = CGuest() */,
-                                                         const QString &strMachineName /* = QString() */)
+UIFileManagerDialogFactory::UIFileManagerDialogFactory(UIActionPool *pActionPool,
+                                                       const CMachine &comMachine,
+                                                       const QString &strMachineName)
     : m_pActionPool(pActionPool)
-    , m_comGuest(comGuest)
+    , m_comMachine(comMachine)
     , m_strMachineName(strMachineName)
+{
+}
+
+
+UIFileManagerDialogFactory::UIFileManagerDialogFactory()
+    : m_pActionPool(0)
+    , m_comMachine(CMachine())
 {
 }
 
 void UIFileManagerDialogFactory::create(QIManagerDialog *&pDialog, QWidget *pCenterWidget)
 {
-    pDialog = new UIFileManagerDialog(pCenterWidget, m_pActionPool, m_comGuest, m_strMachineName);
+    pDialog = new UIFileManagerDialog(pCenterWidget, m_pActionPool, m_comMachine, m_strMachineName);
 }
 
 
@@ -56,11 +63,11 @@ void UIFileManagerDialogFactory::create(QIManagerDialog *&pDialog, QWidget *pCen
 
 UIFileManagerDialog::UIFileManagerDialog(QWidget *pCenterWidget,
                                            UIActionPool *pActionPool,
-                                           const CGuest &comGuest,
-                                           const QString &strMachineName /* = QString() */)
+                                           const CMachine &comMachine,
+                                           const QString &strMachineName)
     : QIWithRetranslateUI<QIManagerDialog>(pCenterWidget)
     , m_pActionPool(pActionPool)
-    , m_comGuest(comGuest)
+    , m_comMachine(comMachine)
     , m_strMachineName(strMachineName)
 {
 }
@@ -105,7 +112,7 @@ void UIFileManagerDialog::configureCentralWidget()
 {
     /* Create widget: */
     UIFileManager *pWidget = new UIFileManager(EmbedTo_Dialog, m_pActionPool,
-                                                                       m_comGuest, this);
+                                                                       m_comMachine, this);
 
     if (pWidget)
     {
