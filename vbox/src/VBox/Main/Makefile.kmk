@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 93444 2022-01-26 18:01:15Z vboxsync $
+# $Id: Makefile.kmk 93449 2022-01-26 19:57:06Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -565,8 +565,7 @@ VBoxSVC_LIBS.solaris = \
 	adm \
 	nsl \
 	devinfo \
-	socket \
-	$(LIB_VMM)
+	socket
 
 VBoxSVC_LIBS.win += \
 	$(PATH_SDK_$(VBOX_WINPSDK)_LIB)/dnsapi.lib
