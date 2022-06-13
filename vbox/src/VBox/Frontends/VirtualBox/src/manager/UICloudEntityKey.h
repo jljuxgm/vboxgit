@@ -1,4 +1,4 @@
-/* $Id: UICloudEntityKey.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UICloudEntityKey.h 94046 2022-03-01 15:02:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudEntityKey class declaration.
  */
@@ -57,7 +57,11 @@ struct UICloudEntityKey
     QUuid m_uMachineId;
 };
 
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+inline size_t qHash(const UICloudEntityKey &key, size_t uSeed)
+#else
 inline uint qHash(const UICloudEntityKey &key, uint uSeed)
+#endif
 {
     return qHash(key.toString(), uSeed);
 }
