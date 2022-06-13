@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 94660 2022-04-21 08:38:34Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 94762 2022-04-29 16:10:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -461,6 +461,7 @@ UIVirtualBoxManager::UIVirtualBoxManager()
     , m_iGeometrySaveTimerId(-1)
 {
     s_pInstance = this;
+    setAcceptDrops(true);
 }
 
 UIVirtualBoxManager::~UIVirtualBoxManager()
@@ -589,6 +590,20 @@ void UIVirtualBoxManager::closeEvent(QCloseEvent *pEvent)
 
     /* Quit application: */
     QApplication::quit();
+}
+
+void UIVirtualBoxManager::dragEnterEvent(QDragEnterEvent *pEvent)
+{
+    if (pEvent->mimeData()->hasUrls())
+        pEvent->acceptProposedAction();
+}
+
+void UIVirtualBoxManager::dropEvent(QDropEvent *pEvent)
+{
+    if (!pEvent->mimeData()->hasUrls())
+        return;
+    sltHandleOpenUrlCall(pEvent->mimeData()->urls());
+    pEvent->acceptProposedAction();
 }
 
 #ifdef VBOX_WS_X11

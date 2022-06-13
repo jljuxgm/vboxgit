@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 94593 2022-04-13 17:33:39Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.h 94762 2022-04-29 16:10:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -102,6 +102,10 @@ protected:
         virtual void polishEvent(QShowEvent *pEvent);
         /** Handles close @a pEvent. */
         virtual void closeEvent(QCloseEvent *pEvent) RT_OVERRIDE;
+        /** Handles drag enter @a pEvent. */
+        virtual void dragEnterEvent(QDragEnterEvent *event) RT_OVERRIDE;
+        /** Handles drop @a pEvent. */
+        virtual void dropEvent(QDropEvent *event) RT_OVERRIDE;
     /** @} */
 
 private slots:
