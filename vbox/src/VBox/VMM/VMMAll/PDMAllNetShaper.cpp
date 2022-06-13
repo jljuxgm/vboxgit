@@ -1,4 +1,4 @@
-/* $Id: PDMAllNetShaper.cpp 90384 2021-07-28 23:02:05Z vboxsync $ */
+/* $Id: PDMAllNetShaper.cpp 90437 2021-07-30 16:18:25Z vboxsync $ */
 /** @file
  * PDM Network Shaper - Limit network traffic according to bandwidth group settings.
  */
@@ -44,8 +44,15 @@ VMM_INT_DECL(bool) PDMNetShaperAllocateBandwidth(PVMCC pVM, PPDMNSFILTER pFilter
 
     PPDMNSBWGROUP pBwGroup = ASMAtomicReadPtrT(&pFilter->CTX_SUFF(pBwGroup), PPDMNSBWGROUP);
     int rc = PDMCritSectEnter(pVM, &pBwGroup->Lock, VERR_SEM_BUSY); AssertRC(rc);
-    if (RT_UNLIKELY(rc == VERR_SEM_BUSY))
-        return true;
+    if (RT_SUCCESS(rc))
+    { /* likely */ }
+    else
+    {
+        if (rc == VERR_SEM_BUSY)
+            return true;
+        PDM_CRITSECT_RELEASE_ASSERT_RC(pVM, &pBwGroup->Lock, rc);
+        return false;
+    }
 
     bool fAllowed = true;
     if (pBwGroup->cbPerSecMax)

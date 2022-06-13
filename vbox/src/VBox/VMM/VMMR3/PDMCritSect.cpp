@@ -1,4 +1,4 @@
-/* $Id: PDMCritSect.cpp 90420 2021-07-30 00:42:39Z vboxsync $ */
+/* $Id: PDMCritSect.cpp 90437 2021-07-30 16:18:25Z vboxsync $ */
 /** @file
  * PDM - Critical Sections, Ring-3.
  */
@@ -869,7 +869,7 @@ VMMR3DECL(bool) PDMR3CritSectYield(PVM pVM, PPDMCRITSECT pCritSect)
 #else
     int rc = PDMCritSectEnter(pVM, pCritSect, VERR_IGNORED);
 #endif
-    AssertLogRelRC(rc);
+    PDM_CRITSECT_RELEASE_ASSERT_RC(pVM, pCritSect, rc);
     return true;
 }
 
