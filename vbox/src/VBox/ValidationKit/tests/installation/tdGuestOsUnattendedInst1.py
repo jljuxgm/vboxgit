@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdGuestOsUnattendedInst1.py 94688 2022-04-22 10:45:35Z vboxsync $
+# $Id: tdGuestOsUnattendedInst1.py 94711 2022-04-26 07:26:00Z vboxsync $
 
 """
 VirtualBox Validation Kit - Guest OS unattended installation tests.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 94688 $"
+__version__ = "$Revision: 94711 $"
 
 
 # Standard Python imports.
@@ -529,6 +529,8 @@ class tdGuestOsInstTest1(vbox.TestDriver):
                          UnattendedVm.kfAvoidNetwork | UnattendedVm.kfNoGAs),
             UnattendedVm(oSet, 'tst-debian-9.4-64',     'Debian_64', '6.0/uaisos/debian-9.4.0-amd64-DVD-1.iso',      # >=6GiB?
                          UnattendedVm.kfAvoidNetwork | UnattendedVm.kfNoGAs),
+            UnattendedVm(oSet, 'tst-debian-10.0-64',     'Debian_64', '6.0/uaisos/debian-10.0.0-amd64-DVD-1.iso',      # >=6GiB?
+                         UnattendedVm.kfAvoidNetwork),
             #
             # OS/2.
             #
