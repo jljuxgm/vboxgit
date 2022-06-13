@@ -1,4 +1,4 @@
-/* $Id: expreval.h 93170 2022-01-11 00:50:22Z vboxsync $ */
+/* $Id: expreval.h 93176 2022-01-11 01:15:59Z vboxsync $ */
 /** @file
  * IPRT - Expression Evaluator.
  */
@@ -50,7 +50,9 @@ typedef RTEXPREVAL *PRTEXPREVAL;
  * @returns IPRT status code.
  * @retval  VERR_NOT_FOUND if the variable does not exist.
  */
-typedef DECLCALLBACKPTR(int, PFNRTEXPREVALQUERYVARIABLE,(const char *pchName, size_t cchName, void *pvUser, char **ppszValue));
+typedef DECLCALLBACKTYPE(int, FNRTEXPREVALQUERYVARIABLE,(const char *pchName, size_t cchName, void *pvUser, char **ppszValue));
+/** Pointer to a variable getter. */
+typedef FNRTEXPREVALQUERYVARIABLE *PFNRTEXPREVALQUERYVARIABLE;
 
 /** @name Expression evaluator flags.
  * @sa RTExprEvalCreate
