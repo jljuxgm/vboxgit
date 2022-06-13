@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 91581 2021-10-06 07:22:22Z vboxsync $ */
+/* $Id: PGMPhys.cpp 91732 2021-10-14 16:03:41Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -2565,6 +2565,7 @@ VMMR3DECL(int) PGMR3PhysMMIODeregister(PVM pVM, RTGCPHYS GCPhys, RTGCPHYS cb)
                               ("%RGp %R[pgmpage]\n", pRam->GCPhys + ((RTGCPHYS)iPage << PAGE_SHIFT), pPage));
                     if (PGM_PAGE_IS_MMIO_OR_ALIAS(pPage))
                         PGM_PAGE_SET_TYPE(pVM, pPage, PGMPAGETYPE_RAM);
+                    iPage++;
                 }
                 break;
             }
