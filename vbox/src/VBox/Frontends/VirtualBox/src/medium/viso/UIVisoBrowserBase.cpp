@@ -1,4 +1,4 @@
-/* $Id: UIVisoBrowserBase.cpp 90901 2021-08-26 08:12:54Z vboxsync $ */
+/* $Id: UIVisoBrowserBase.cpp 91235 2021-09-14 15:50:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoBrowserBase class implementation.
  */
@@ -196,6 +196,7 @@ void UIVisoBrowserBase::prepareObjects()
         m_pTreeView->header()->setSectionResizeMode(QHeaderView::ResizeToContents);
         m_pTreeView->setFrameStyle(QFrame::Panel | QFrame::Plain);
         m_pTreeView->installEventFilter(this);
+        m_pTreeView->setTabKeyNavigation(false);
     }
 }
 

@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.cpp 90901 2021-08-26 08:12:54Z vboxsync $ */
+/* $Id: UIVisoContentBrowser.cpp 91235 2021-09-14 15:50:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class implementation.
  */
@@ -390,6 +390,7 @@ void UIVisoContentBrowser::prepareObjects()
         m_pTableView->setSelectionBehavior(QAbstractItemView::SelectRows);
         m_pTableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
         m_pTableView->setAlternatingRowColors(true);
+        m_pTableView->setTabKeyNavigation(false);
         QHeaderView *pVerticalHeader = m_pTableView->verticalHeader();
         if (pVerticalHeader)
         {
