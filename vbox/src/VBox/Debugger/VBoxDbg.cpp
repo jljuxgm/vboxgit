@@ -1,4 +1,4 @@
-/* $Id: VBoxDbg.cpp 90520 2021-08-04 21:37:54Z vboxsync $ */
+/* $Id: VBoxDbg.cpp 92906 2021-12-14 22:14:27Z vboxsync $ */
 /** @file
  * VBox Debugger GUI.
  */
@@ -22,6 +22,7 @@
 #define LOG_GROUP LOG_GROUP_DBGG
 #define VBOX_COM_NO_ATL
 #ifdef RT_OS_WINDOWS
+# include <iprt/win/windows.h> /* Include via cleanup wrapper before VirtualBox.h includes it via rpc.h. */
 # include <VirtualBox.h>
 #else /* !RT_OS_WINDOWS */
 # include <VirtualBox_XPCOM.h>

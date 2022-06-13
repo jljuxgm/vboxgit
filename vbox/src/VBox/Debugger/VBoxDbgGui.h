@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgGui.h 90520 2021-08-04 21:37:54Z vboxsync $ */
+/* $Id: VBoxDbgGui.h 92906 2021-12-14 22:14:27Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - The Manager.
  */
@@ -25,6 +25,7 @@
 #ifdef VBOX_WITH_XPCOM
 # include <VirtualBox_XPCOM.h>
 #else
+# include <iprt/win/windows.h> /* Include via cleanup wrapper before VirtualBox.h includes it via rpc.h. */
 # include <VirtualBox.h>
 #endif
 
