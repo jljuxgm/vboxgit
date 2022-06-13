@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 93635 2022-02-07 10:43:45Z vboxsync $ */
+/* $Id: PDMInternal.h 93991 2022-02-28 16:29:55Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -1808,6 +1808,8 @@ void        pdmR3NetShaperTerm(PVM pVM);
 int         pdmR3BlkCacheInit(PVM pVM);
 void        pdmR3BlkCacheTerm(PVM pVM);
 int         pdmR3BlkCacheResume(PVM pVM);
+
+DECLHIDDEN(void) pdmR3QueueTerm(PVM pVM);
 #endif /* IN_RING3 */
 
 void        pdmLock(PVMCC pVM);

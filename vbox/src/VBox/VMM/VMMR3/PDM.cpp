@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 93901 2022-02-23 15:35:26Z vboxsync $ */
+/* $Id: PDM.cpp 93991 2022-02-28 16:29:55Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -885,6 +885,11 @@ VMMR3_INT_DECL(int) PDMR3Term(PVM pVM)
      * Stop task threads.
      */
     pdmR3TaskTerm(pVM);
+
+    /*
+     * Cleanup any leftover queues.
+     */
+    pdmR3QueueTerm(pVM);
 
     /*
      * Destroy the PDM lock.
