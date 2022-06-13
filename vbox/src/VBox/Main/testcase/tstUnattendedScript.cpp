@@ -1,4 +1,4 @@
-/* $Id: tstUnattendedScript.cpp 94075 2022-03-03 13:59:09Z vboxsync $ */
+/* $Id: tstUnattendedScript.cpp 94532 2022-04-08 16:28:32Z vboxsync $ */
 /** @file
  * tstUnattendedScript - testcases for UnattendedScript.
  */
@@ -456,6 +456,19 @@ HRESULT Unattended::getIsUnattendedInstallSupported(BOOL *aIsUnattendedInstallSu
     return E_NOTIMPL;
 }
 
+HRESULT Unattended::getIsNetworkAccessible(BOOL *aIsNetworkAccessible)
+{
+    RT_NOREF(aIsNetworkAccessible);
+    return E_NOTIMPL;
+}
+
+HRESULT Unattended::setIsNetworkAccessible(BOOL aIsNetworkAccessible)
+{
+    RT_NOREF(aIsNetworkAccessible);
+    return E_NOTIMPL;
+}
+
+
 /*
  * Getters that the installer and script classes can use.
  */
@@ -602,6 +615,11 @@ bool Unattended::i_isFirmwareEFI() const
 Utf8Str const &Unattended::i_getDetectedOSVersion()
 {
     return mStrDetectedOSVersion;
+}
+
+bool Unattended::i_getIsNetworkAccessible() const
+{
+    return mfIsNetworkAccessible;
 }
 
 
