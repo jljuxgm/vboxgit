@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 91075 2021-09-01 18:43:24Z vboxsync $ */
+/* $Id: UINotificationObjects.cpp 91076 2021-09-01 18:52:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -285,6 +285,28 @@ void UINotificationMessage::cannotDetachWebCam(const CEmulatedUSB &comDispatcher
         QApplication::translate("UIMessageCenter", "Failed to detach the webcam <b>%1</b> from the virtual machine <b>%2</b>.")
                                 .arg(strWebCamName, strMachineName) +
         UIErrorString::formatErrorInfo(comDispatcher));
+}
+
+/* static */
+void UINotificationMessage::cannotEnumerateHostUSBDevices(const CHost &comHost)
+{
+    /* Refer users to manual's trouble shooting section depending on the host platform: */
+    QString strHelpKeyword;
+#if defined(RT_OS_LINUX)
+    strHelpKeyword = "ts_usb-linux";
+#elif defined(RT_OS_WINDOWS)
+    strHelpKeyword = "ts_win-guests";
+#elif defined(RT_OS_SOLARIS)
+    strHelpKeyword = "ts_sol-guests";
+#elif defined(RT_OS_DARWIN)
+#endif
+
+    createMessage(
+        QApplication::translate("UIMessageCenter", "Can't enumerate USB devices ..."),
+        QApplication::translate("UIMessageCenter", "Failed to enumerate host USB devices.") +
+        UIErrorString::formatErrorInfo(comHost),
+        QString(),
+        strHelpKeyword);
 }
 
 /* static */

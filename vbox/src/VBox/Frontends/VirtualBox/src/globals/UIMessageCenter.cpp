@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 91029 2021-08-31 11:48:58Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 91076 2021-09-01 18:52:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -599,24 +599,6 @@ void UIMessageCenter::cannotAcquireSnapshotParameter(const CSnapshot &comSnapsho
 void UIMessageCenter::cannotFindHelpFile(const QString &strFileLocation) const
 {
     alert(0, MessageType_Error, QString("<p>%1:</p>%2").arg(tr("Failed to find the following help file")).arg(strFileLocation));
-}
-
-void UIMessageCenter::cannotEnumerateHostUSBDevices(const CHost &comHost, QWidget *pParent  /* = 0 */) const
-{
-    QString strHelpKeyword;
-    /* Refer users to manual's trouble shooting section depending on the host platform: */
-#if defined(RT_OS_LINUX)
-    strHelpKeyword = "ts_usb-linux";
-#elif defined(RT_OS_WINDOWS)
-    strHelpKeyword = "ts_win-guests";
-#elif defined(RT_OS_SOLARIS)
-    strHelpKeyword = "ts_sol-guests";
-#elif defined(RT_OS_DARWIN)
-#endif
-    error(pParent, MessageType_Warning,
-          tr("Failed to enumerate host USB devices."),
-          UIErrorString::formatErrorInfo(comHost), "USBEnumerationWarning",
-          strHelpKeyword);
 }
 
 void UIMessageCenter::cannotOpenMachine(const CVirtualBox &vbox, const QString &strMachinePath) const

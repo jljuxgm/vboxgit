@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 90925 2021-08-26 16:25:27Z vboxsync $ */
+/* $Id: UISession.cpp 91076 2021-09-01 18:52:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -1831,7 +1831,7 @@ bool UISession::preprocessInitialization()
         {
             /* Do not bitch if there are no filters (check if enabled too?): */
             if (!machine().GetUSBDeviceFilters().GetDeviceFilters().isEmpty())
-                msgCenter().cannotEnumerateHostUSBDevices(comHost, activeMachineWindow());
+                UINotificationMessage::cannotEnumerateHostUSBDevices(comHost);
         }
     }
 

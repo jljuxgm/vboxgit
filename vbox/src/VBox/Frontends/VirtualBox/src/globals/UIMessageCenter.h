@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 91029 2021-08-31 11:48:58Z vboxsync $ */
+/* $Id: UIMessageCenter.h 91076 2021-09-01 18:52:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -275,7 +275,6 @@ public:
     void cannotAcquireMachineParameter(const CMachine &comMachine, QWidget *pParent = 0) const;
     void cannotAcquireSnapshotParameter(const CSnapshot &comSnapshot, QWidget *pParent = 0) const;
     void cannotFindHelpFile(const QString &strFileLocation) const;
-    void cannotEnumerateHostUSBDevices(const CHost &comHost, QWidget *pParent = 0) const;
 
     /* API: Selector warnings: */
     void cannotOpenMachine(const CVirtualBox &vbox, const QString &strMachinePath) const;

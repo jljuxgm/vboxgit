@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.h 91075 2021-09-01 18:43:24Z vboxsync $ */
+/* $Id: UINotificationObjects.h 91076 2021-09-01 18:52:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects declarations.
  */
@@ -126,6 +126,9 @@ public:
       * @param  strMachineName  Brings the machine name. */
     static void cannotDetachWebCam(const CEmulatedUSB &comDispatcher,
                                    const QString &strWebCamName, const QString &strMachineName);
+    /** Notifies about inability to enumerate host USB devices.
+      * @param  comHost  Brings the host devices enumerated for. */
+    static void cannotEnumerateHostUSBDevices(const CHost &comHost);
     /** Notifies about inability to open medium.
       * @param  comVBox      Brings common VBox object trying to open medium.
       * @param  strLocation  Brings the medium location. */
