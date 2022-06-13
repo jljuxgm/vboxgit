@@ -1,4 +1,4 @@
-/* $Id: PDMDevMiscHlp.cpp 93901 2022-02-23 15:35:26Z vboxsync $ */
+/* $Id: PDMDevMiscHlp.cpp 93902 2022-02-23 15:42:16Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Misc. Device Helpers.
  */
@@ -426,7 +426,7 @@ static DECLCALLBACK(PCPDMPCIRAWHLPRC) pdmR3PciRawHlp_GetRCHelpers(PPDMDEVINS pDe
         AssertRelease(pRCHelpers);
     }
 #else
-    RT_NOREF(pDevIns);
+    RT_NOREF(pVM, pDevIns);
 #endif
 
     LogFlow(("pdmR3PciRawHlp_GetGCHelpers: caller='%s'/%d: returns %RRv\n",
