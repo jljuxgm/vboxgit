@@ -1,4 +1,4 @@
-/* $Id: UpdateAgentImpl.h 94756 2022-04-29 08:55:44Z vboxsync $ */
+/* $Id: UpdateAgentImpl.h 94807 2022-05-04 08:13:06Z vboxsync $ */
 /** @file
  * Update agent COM class implementation - Header
  */
@@ -74,7 +74,8 @@ protected:
     /** @name Static helper methods.
      * @{ */
     static Utf8Str i_getPlatformInfo(void);
-    const char *i_proxyModeToStr(ProxyMode_T enmMode);
+    const char    *i_proxyModeToStr(ProxyMode_T enmMode);
+    bool           i_urlSchemeIsSupported(const Utf8Str &strUrl) const;
     /** @} */
 
 protected:
