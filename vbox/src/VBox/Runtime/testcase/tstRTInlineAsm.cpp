@@ -1,4 +1,4 @@
-/* $Id: tstRTInlineAsm.cpp 93754 2022-02-15 14:29:56Z vboxsync $ */
+/* $Id: tstRTInlineAsm.cpp 93755 2022-02-15 14:32:55Z vboxsync $ */
 /** @file
  * IPRT Testcase - inline assembly.
  */
@@ -2841,7 +2841,7 @@ void tstASMBench(void)
             op; \
         } \
         u64Elapsed = RTTimeNanoTS() - u64Elapsed; \
-        RTTestValue(g_hTest, str, u64Elapsed / cRounds, RTTESTUNIT_NS_PER_CALL); \
+        RTTestValue(g_hTest, str, u64Elapsed * 1000 / cRounds, RTTESTUNIT_PS_PER_CALL); \
     } while (0)
 #endif
 #if (defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86) || defined(RT_ARCH_ARM64) || defined(RT_ARCH_ARM32)) && !defined(GCC44_32BIT_PIC)
