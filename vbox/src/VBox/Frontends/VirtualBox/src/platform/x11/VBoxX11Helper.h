@@ -1,4 +1,4 @@
-/* $Id: VBoxX11Helper.h 89818 2021-06-21 12:46:34Z vboxsync $ */
+/* $Id: VBoxX11Helper.h 89819 2021-06-21 12:49:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBox X11 helper functions.
  */
@@ -40,7 +40,7 @@ enum X11WMType
     X11WMType_Xfwm4,
 };
 
-SHARED_LIBRARY_STUFF struct X11ScreenSaverInhibitMethod
+struct SHARED_LIBRARY_STUFF X11ScreenSaverInhibitMethod
 {
     QString m_strServiceName;
     QString m_strInterface;
