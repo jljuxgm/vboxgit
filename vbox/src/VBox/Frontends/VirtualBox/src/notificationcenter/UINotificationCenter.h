@@ -1,4 +1,4 @@
-/* $Id: UINotificationCenter.h 93408 2022-01-24 11:51:32Z vboxsync $ */
+/* $Id: UINotificationCenter.h 93414 2022-01-24 15:27:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINotificationCenter class declaration.
  */
@@ -114,6 +114,9 @@ private slots:
     void sltHandleKeepButtonToggled(bool fToggled);
     /** Removes finished notifications. */
     void sltHandleRemoveFinishedButtonClicked();
+
+    /** Invokes open button context menu at specified @a position. */
+    void sltHandleOpenButtonContextMenuRequested(const QPoint &position);
 
     /** Handles open-timer timeout. */
     void sltHandleOpenTimerTimeout();
