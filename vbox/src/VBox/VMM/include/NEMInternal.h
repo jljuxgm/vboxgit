@@ -1,4 +1,4 @@
-/* $Id: NEMInternal.h 91848 2021-10-19 23:18:13Z vboxsync $ */
+/* $Id: NEMInternal.h 91958 2021-10-21 14:34:49Z vboxsync $ */
 /** @file
  * NEM - Internal header file.
  */
@@ -50,7 +50,9 @@ RT_C_DECLS_BEGIN
 /*
  * Windows: Code configuration.
  */
-# define NEM_WIN_USE_HYPERCALLS_FOR_PAGES
+# ifndef VBOX_WITH_PGM_NEM_MODE
+#  define NEM_WIN_USE_HYPERCALLS_FOR_PAGES
+#endif
 //# define NEM_WIN_USE_HYPERCALLS_FOR_REGISTERS   /**< Applies to ring-3 code only. Useful for testing VID API. */
 //# define NEM_WIN_USE_OUR_OWN_RUN_API            /**< Applies to ring-3 code only. Useful for testing VID API. */
 //# define NEM_WIN_WITH_RING0_RUNLOOP             /**< Enables the ring-0 runloop. */
@@ -207,7 +209,7 @@ typedef struct NEM
 #  ifdef NEM_WIN_USE_HYPERCALLS_FOR_PAGES
     STAMCOUNTER                 StatRemapPage;
     STAMCOUNTER                 StatRemapPageFailed;
-#  else
+#  elif !defined(VBOX_WITH_PGM_NEM_MODE)
     STAMCOUNTER                 StatUnmapAllPages;
 #  endif
     STAMCOUNTER                 StatMapPageFailed;
