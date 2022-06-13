@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 90760 2021-08-20 15:06:17Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.h 90795 2021-08-23 14:51:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -362,8 +362,10 @@ private:
         /** Opens add machine dialog specifying initial name with @a strFileName. */
         void openAddMachineDialog(const QString &strFileName = QString());
 
+        /** Launches certain @a comMachine in specified @a enmLaunchMode. */
+        static void launchMachine(CMachine &comMachine, UICommon::LaunchMode enmLaunchMode = UICommon::LaunchMode_Default);
         /** Launches certain @a comMachine. */
-        void launchMachine(CCloudMachine &comMachine);
+        static void launchMachine(CCloudMachine &comMachine);
 
         /** Creates an unattended installer and uses it to install guest os to newly created vm. */
         void startUnattendedInstall(CUnattended &comUnattendedInstaller, const UIUnattendedInstallData &unattendedData);
