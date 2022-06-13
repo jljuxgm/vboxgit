@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageExpert.h 91664 2021-10-11 15:43:02Z vboxsync $ */
+/* $Id: UIWizardImportAppPageExpert.h 91709 2021-10-13 11:04:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageExpert class declaration.
  */
@@ -40,7 +40,7 @@ class UIToolBox;
 class UIWizardImportApp;
 
 /** UINativeWizardPage extension for expert page of the Import Appliance wizard,
-  * based on UIWizardImportAppPage1 & UIWizardImportAppPage2 namespace functions. */
+  * based on UIWizardImportAppSource & UIWizardImportAppSettings namespace functions. */
 class UIWizardImportAppPageExpert : public UINativeWizardPage
 {
     Q_OBJECT;

@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportApp.cpp 91664 2021-10-11 15:43:02Z vboxsync $ */
+/* $Id: UIWizardImportApp.cpp 91709 2021-10-13 11:04:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportApp class implementation.
  */
@@ -31,9 +31,9 @@
 #include "UIMessageCenter.h"
 #include "UINotificationCenter.h"
 #include "UIWizardImportApp.h"
-#include "UIWizardImportAppPageBasic1.h"
-#include "UIWizardImportAppPageBasic2.h"
 #include "UIWizardImportAppPageExpert.h"
+#include "UIWizardImportAppPageSettings.h"
+#include "UIWizardImportAppPageSource.h"
 
 /* COM includes: */
 #include "CProgress.h"
@@ -277,8 +277,8 @@ void UIWizardImportApp::populatePages()
         case WizardMode_Basic:
         {
             if (m_fImportFromOCIByDefault || m_strFileName.isEmpty())
-                addPage(new UIWizardImportAppPageBasic1(m_fImportFromOCIByDefault, m_strFileName));
-            addPage(new UIWizardImportAppPageBasic2(m_strFileName));
+                addPage(new UIWizardImportAppPageSource(m_fImportFromOCIByDefault, m_strFileName));
+            addPage(new UIWizardImportAppPageSettings(m_strFileName));
             break;
         }
         case WizardMode_Expert:
