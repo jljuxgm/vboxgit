@@ -1,4 +1,4 @@
-# $Id: Config.kmk 92977 2021-12-16 11:58:00Z vboxsync $
+# $Id: Config.kmk 92993 2021-12-16 18:43:22Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3878,7 +3878,7 @@ ifdef VBOX_SIGNING_MODE
 	$(3) \
 	"$(1)",)
    else
-    VBOX_SIGN_FILE_FN     = $(VBOX_SIGNTOOL) sign \
+    VBOX_SIGN_FILE_FN     = $(VBOX_SIGNTOOL) sign /fd certHash \
 	$(VBOX_CROSS_CERTIFICATE_FILE_ARGS) \
 	$(VBOX_CERTIFICATE_STORE_ARGS) \
 	$(VBOX_CERTIFICATE_SUBJECT_NAME_ARGS) \
@@ -8489,7 +8489,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 92977 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 92993 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
