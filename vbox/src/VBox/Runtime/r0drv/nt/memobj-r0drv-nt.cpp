@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-nt.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: memobj-r0drv-nt.cpp 91389 2021-09-27 11:41:12Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, NT.
  */
@@ -545,6 +545,11 @@ DECLHIDDEN(int) rtR0MemObjNativeAllocPhys(PPRTR0MEMOBJINTERNAL ppMem, size_t cb,
             ExFreePool(pMdl);
         }
     }
+
+    /** @todo
+     * For large page allocations use MM_ALLOCATE_FAST_LARGE_PAGES ...
+     * MM_ALLOCATE_REQUIRE_CONTIGUOUS_CHUNKS
+     */
 
     return rtR0MemObjNativeAllocContEx(ppMem, cb, false, PhysHighest, uAlignment);
 }
