@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 92952 2021-12-16 07:59:39Z vboxsync $
+# $Id: vbox.py 92953 2021-12-16 08:11:17Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 92952 $"
+__version__ = "$Revision: 92953 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -2477,7 +2477,7 @@ class TestDriver(base.TestDriver):                                              
                 fRc = oSession.enableVmmDevTestingPart(fVmmDevTestingPart, fVmmDevTestingMmio);
             if fRc and sFirmwareType == 'bios':
                 fRc = oSession.setFirmwareType(vboxcon.FirmwareType_BIOS);
-            elif sFirmwareType == 'efi':
+            elif fRc and sFirmwareType == 'efi':
                 fRc = oSession.setFirmwareType(vboxcon.FirmwareType_EFI);
             if fRc and self.fEnableDebugger:
                 fRc = oSession.setExtraData('VBoxInternal/DBGC/Enabled', '1');
