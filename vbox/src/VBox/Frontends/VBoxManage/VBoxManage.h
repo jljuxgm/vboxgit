@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 90234 2021-07-16 22:28:08Z vboxsync $ */
+/* $Id: VBoxManage.h 91154 2021-09-08 13:49:52Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -345,6 +345,14 @@ RTEXITCODE handleBandwidthControl(HandlerArg *a);
 
 /* VBoxManageCloud.cpp */
 RTEXITCODE handleCloud(HandlerArg *a);
+
+/* VBoxManageCloudMachine.cpp */
+RTEXITCODE handleCloudMachine(HandlerArg *a, int iFirst,
+                              const char *pszProviderName,
+                              const char *pszProfileName);
+RTEXITCODE listCloudMachines(HandlerArg *a, int iFirst,
+                              const char *pszProviderName,
+                              const char *pszProfileName);
 
 /* VBoxManageUpdateCheck.cpp */
 RTEXITCODE handleUpdateCheck(HandlerArg *a);

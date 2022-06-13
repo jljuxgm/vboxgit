@@ -1,4 +1,4 @@
-/* $Id: VBoxManageCloud.cpp 91134 2021-09-06 22:41:41Z vboxsync $ */
+/* $Id: VBoxManageCloud.cpp 91154 2021-09-08 13:49:52Z vboxsync $ */
 /** @file
  * VBoxManageCloud - The cloud related commands.
  */
@@ -40,18 +40,6 @@
 #include <list>
 
 using namespace com;//at least for Bstr
-
-
-/*
- * "cloud machine" handling is in VBoxManageCloudMachine.cpp to make
- * this file less crowded.
- */
-RTEXITCODE handleCloudMachine(HandlerArg *a, int iFirst,
-                              const char *pszProviderName,
-                              const char *pszProfileName);
-RTEXITCODE listCloudMachines(HandlerArg *a, int iFirst,
-                              const char *pszProviderName,
-                              const char *pszProfileName);
 
 
 /**
@@ -470,6 +458,7 @@ static RTEXITCODE handleCloudLists(HandlerArg *a, int iFirst, PCLOUDCOMMONOPT pC
         { "objects",             kCloudList_Objects,   RTGETOPT_REQ_NOTHING },
         { "subnets",             kCloudList_Subnets,   RTGETOPT_REQ_NOTHING },
         { "vcns",                kCloudList_Vcns,      RTGETOPT_REQ_NOTHING },
+        { "vms",                 kCloudList_Machines,  RTGETOPT_REQ_NOTHING },
 
         { "help",                'h',                  RTGETOPT_REQ_NOTHING },
         { "-?",                  'h',                  RTGETOPT_REQ_NOTHING },
