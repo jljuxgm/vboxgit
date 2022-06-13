@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 89852 2021-06-23 13:14:23Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 89868 2021-06-23 18:02:11Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -1031,16 +1031,6 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
         {
             LogRel(("Limiting CPUID leaf count for NT4 guests\n"));
             InsertConfigInteger(pCPUM, "NT4LeafLimit", true);
-        }
-
-        /* Expose CMPXCHG16B. Currently a hack. */
-        if (   osTypeId == "Windows81_64"
-            || osTypeId == "Windows2012_64"
-            || osTypeId == "Windows10_64"
-            || osTypeId == "Windows2016_64")
-        {
-            LogRel(("Enabling CMPXCHG16B for Windows 8.1 / 2k12 or newer guests\n"));
-            InsertConfigInteger(pIsaExts, "CMPXCHG16B", true);
         }
 
         if (fOsXGuest)

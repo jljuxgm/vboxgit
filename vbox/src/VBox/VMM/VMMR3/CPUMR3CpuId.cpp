@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 87003 2020-11-27 14:28:41Z vboxsync $ */
+/* $Id: CPUMR3CpuId.cpp 89868 2021-06-23 18:02:11Z vboxsync $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -4237,12 +4237,11 @@ static int cpumR3CpuIdReadConfig(PVM pVM, PCPUMCPUIDCONFIG pConfig, PCFGMNODE pC
             return rc;
     }
 
-    /** @cfgm{/CPUM/IsaExts/CMPXCHG16B, boolean, depends}
-     * Expose CMPXCHG16B to the guest if supported by the host. For the time
-     * being the default is to only do this for VMs with nested paging and AMD-V or
-     * unrestricted guest mode.
+    /** @cfgm{/CPUM/IsaExts/CMPXCHG16B, boolean, true}
+     * Expose CMPXCHG16B to the guest if available. All host CPUs which support
+     * hardware virtualization have it.
      */
-    rc = cpumR3CpuIdReadIsaExtCfgLegacy(pVM, pIsaExts, pCpumCfg, "CMPXCHG16B", &pConfig->enmCmpXchg16b, fNestedPagingAndFullGuestExec);
+    rc = cpumR3CpuIdReadIsaExtCfgLegacy(pVM, pIsaExts, pCpumCfg, "CMPXCHG16B", &pConfig->enmCmpXchg16b, true);
     AssertLogRelRCReturn(rc, rc);
 
     /** @cfgm{/CPUM/IsaExts/MONITOR, boolean, true}

@@ -1,4 +1,4 @@
-/* $Id: Global.cpp 89604 2021-06-10 13:51:37Z vboxsync $ */
+/* $Id: Global.cpp 89868 2021-06-23 18:02:11Z vboxsync $ */
 /** @file
  * VirtualBox COM global definitions
  *
@@ -28,7 +28,10 @@ const Global::OSType Global::sOSTypes[] =
 {
     /* NOTE1: we assume that unknown is always the first two entries!
      * NOTE2: please use powers of 2 when specifying the size of harddisks since
-     *        '2GB' looks better than '1.95GB' (= 2000MB) */
+     *        '2GB' looks better than '1.95GB' (= 2000MB)
+     * NOTE3: if you add new guest OS types please check if the code in
+     *        Machine::getEffectiveParavirtProvider and Console::i_configConstructorInner
+     *        are still covering the relevant cases. */
     { "Other",   "Other",             "Other",              "Other/Unknown",
       VBOXOSTYPE_Unknown,         VBOXOSHINT_NONE,
         64,   4,  2 * _1G64, GraphicsControllerType_VBoxVGA, NetworkAdapterType_Am79C973, 0, StorageControllerType_PIIX4, StorageBus_IDE,

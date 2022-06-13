@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 89718 2021-06-15 18:47:42Z vboxsync $ */
+/* $Id: MachineImpl.cpp 89868 2021-06-23 18:02:11Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -1375,6 +1375,9 @@ HRESULT Machine::getEffectiveParavirtProvider(ParavirtProvider_T *aParavirtProvi
                              || mUserData->s.strOsType == "Windows7_64"
                              || mUserData->s.strOsType == "WindowsVista"
                              || mUserData->s.strOsType == "WindowsVista_64"
+                             || (   (   mUserData->s.strOsType.startsWith("Windows202")
+                                     || mUserData->s.strOsType.startsWith("Windows201"))
+                                 && mUserData->s.strOsType.endsWith("_64"))
                              || mUserData->s.strOsType == "Windows2012"
                              || mUserData->s.strOsType == "Windows2012_64"
                              || mUserData->s.strOsType == "Windows2008"
