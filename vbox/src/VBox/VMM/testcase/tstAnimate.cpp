@@ -1,4 +1,4 @@
-/* $Id: tstAnimate.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
+/* $Id: tstAnimate.cpp 92613 2021-11-26 21:53:47Z vboxsync $ */
 /** @file
  * VBox Animation Testcase / Tool.
  */
@@ -620,7 +620,7 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
     RT_NOREF1(envp);
     int rcRet = 1;
     int rc;
-    RTR3InitExe(argc, &argv, RTR3INIT_FLAGS_SUPLIB);
+    RTR3InitExe(argc, &argv, RTR3INIT_FLAGS_TRY_SUPLIB);
 
     /*
      * Parse input.

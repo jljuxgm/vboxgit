@@ -1,4 +1,4 @@
-/* $Id: VBoxNetDhcpd.cpp 87745 2021-02-13 02:36:05Z vboxsync $ */
+/* $Id: VBoxNetDhcpd.cpp 92613 2021-11-26 21:53:47Z vboxsync $ */
 /** @file
  * VBoxNetDhcpd - DHCP server for host-only and NAT networks.
  */
@@ -775,7 +775,6 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv)
 {
     VBoxNetDhcpd Dhcpd;
     int rc = Dhcpd.main(argc, argv);
-
     return RT_SUCCESS(rc) ? RTEXITCODE_SUCCESS : RTEXITCODE_FAILURE;
 }
 
@@ -785,10 +784,9 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv)
 int main(int argc, char **argv)
 {
     int rc = RTR3InitExe(argc, &argv, RTR3INIT_FLAGS_SUPLIB);
-    if (RT_FAILURE(rc))
-        return RTMsgInitFailure(rc);
-
-    return TrustedMain(argc, argv);
+    if (RT_SUCCESS(rc))
+        return TrustedMain(argc, argv);
+    return RTMsgInitFailure(rc);
 }
 
 

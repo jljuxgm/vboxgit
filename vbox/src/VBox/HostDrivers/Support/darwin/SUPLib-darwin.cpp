@@ -1,4 +1,4 @@
-/* $Id: SUPLib-darwin.cpp 92556 2021-11-23 01:12:29Z vboxsync $ */
+/* $Id: SUPLib-darwin.cpp 92613 2021-11-26 21:53:47Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Darwin specific parts.
  */
@@ -186,7 +186,7 @@ static int suplibDarwinOpenService(PSUPLIBDATA pThis)
 }
 
 
-DECLHIDDEN(int) suplibOsInit(PSUPLIBDATA pThis, bool fPreInited, bool fUnrestricted, SUPINITOP *penmWhat, PRTERRINFO pErrInfo)
+DECLHIDDEN(int) suplibOsInit(PSUPLIBDATA pThis, bool fPreInited, uint32_t fFlags, SUPINITOP *penmWhat, PRTERRINFO pErrInfo)
 {
     RT_NOREF(penmWhat, pErrInfo);
 
@@ -203,7 +203,7 @@ DECLHIDDEN(int) suplibOsInit(PSUPLIBDATA pThis, bool fPreInited, bool fUnrestric
     int rc = suplibDarwinOpenService(pThis);
     if (RT_SUCCESS(rc))
     {
-        rc = suplibDarwinOpenDevice(pThis, fUnrestricted);
+        rc = suplibDarwinOpenDevice(pThis, RT_BOOL(fFlags & SUPR3INIT_F_UNRESTRICTED));
         if (RT_FAILURE(rc))
         {
             kern_return_t kr = IOServiceClose((io_connect_t)pThis->uConnection);

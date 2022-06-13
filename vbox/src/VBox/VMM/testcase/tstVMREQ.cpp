@@ -1,4 +1,4 @@
-/* $Id: tstVMREQ.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: tstVMREQ.cpp 92613 2021-11-26 21:53:47Z vboxsync $ */
 /** @file
  * VMM Testcase.
  */
@@ -221,7 +221,7 @@ tstVMREQConfigConstructor(PUVM pUVM, PVM pVM, void *pvUser)
 extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
 {
     RT_NOREF1(envp);
-    RTR3InitExe(argc, &argv, RTR3INIT_FLAGS_SUPLIB);
+    RTR3InitExe(argc, &argv, RTR3INIT_FLAGS_TRY_SUPLIB);
     RTPrintf(TESTCASE ": TESTING...\n");
     RTStrmFlush(g_pStdOut);
 

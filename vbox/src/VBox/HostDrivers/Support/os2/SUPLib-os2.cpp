@@ -1,4 +1,4 @@
-/* $Id: SUPLib-os2.cpp 92556 2021-11-23 01:12:29Z vboxsync $ */
+/* $Id: SUPLib-os2.cpp 92613 2021-11-26 21:53:47Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - OS/2 specific parts.
  */
@@ -64,7 +64,7 @@
 
 
 
-DECLHIDDEN(int) suplibOsInit(PSUPLIBDATA pThis, bool fPreInited, bool fUnrestricted, SUPINITOP *penmWhat, PRTERRINFO pErrInfo)
+DECLHIDDEN(int) suplibOsInit(PSUPLIBDATA pThis, bool fPreInited, uint32_t fFlags, SUPINITOP *penmWhat, PRTERRINFO pErrInfo)
 {
     /*
      * Nothing to do if pre-inited.
@@ -100,6 +100,7 @@ DECLHIDDEN(int) suplibOsInit(PSUPLIBDATA pThis, bool fPreInited, bool fUnrestric
 
     pThis->hDevice = hDevice;
     pThis->fUnrestricted = true;
+    RT_NOREF(fFlags);
     return VINF_SUCCESS;
 }
 

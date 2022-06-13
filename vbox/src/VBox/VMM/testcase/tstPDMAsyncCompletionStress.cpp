@@ -1,4 +1,4 @@
-/* $Id: tstPDMAsyncCompletionStress.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: tstPDMAsyncCompletionStress.cpp 92613 2021-11-26 21:53:47Z vboxsync $ */
 /** @file
  * PDM Asynchronous Completion Stresstest.
  *
@@ -577,7 +577,7 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
     RT_NOREF1(envp);
     int rcRet = 0; /* error count */
 
-    RTR3InitExe(argc, &argv, RTR3INIT_FLAGS_SUPLIB);
+    RTR3InitExe(argc, &argv, RTR3INIT_FLAGS_TRY_SUPLIB);
 
     PVM pVM;
     PUVM pUVM;

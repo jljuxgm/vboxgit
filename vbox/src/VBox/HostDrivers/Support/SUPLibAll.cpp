@@ -1,4 +1,4 @@
-/* $Id: SUPLibAll.cpp 87702 2021-02-10 20:37:53Z vboxsync $ */
+/* $Id: SUPLibAll.cpp 92613 2021-11-26 21:53:47Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - All Contexts Code.
  */
@@ -323,6 +323,22 @@ SUPDECL(int64_t) SUPGetTscDeltaSlow(PSUPGLOBALINFOPAGE pGip)
     }
     AssertFailed();
     return 0;
+}
+
+
+/**
+ * SLow path in SUPGetGipCpuPtr, don't call directly.
+ *
+ * @returns Pointer to the CPU entry for the caller, NULL on failure.
+ * @param   pGip        The GIP.
+ */
+SUPDECL(PSUPGIPCPU) SUPGetGipCpuPtrForAsyncMode(PSUPGLOBALINFOPAGE pGip)
+{
+    uint16_t iGipCpu = supGetGipCpuIndex(pGip);
+    if (RT_LIKELY(iGipCpu < pGip->cCpus))
+        return &pGip->aCPUs[iGipCpu];
+    AssertFailed();
+    return NULL;
 }
 
 

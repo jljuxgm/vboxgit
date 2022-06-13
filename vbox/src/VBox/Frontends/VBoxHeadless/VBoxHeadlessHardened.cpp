@@ -1,4 +1,4 @@
-/* $Id: VBoxHeadlessHardened.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxHeadlessHardened.cpp 92613 2021-11-26 21:53:47Z vboxsync $ */
 /** @file
  * VBoxHeadless - Hardened main().
  */
@@ -20,6 +20,10 @@
 
 int main(int argc, char **argv, char **envp)
 {
+#ifdef VBOX_WITH_DRIVERLESS_NEM_FALLBACK
+    return SUPR3HardenedMain("VBoxHeadless", SUPSECMAIN_FLAGS_DRIVERLESS_NEM_FALLBACK, argc, argv, envp);
+#else
     return SUPR3HardenedMain("VBoxHeadless", 0, argc, argv, envp);
+#endif
 }
 

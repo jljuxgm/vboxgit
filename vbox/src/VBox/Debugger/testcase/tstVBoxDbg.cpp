@@ -1,4 +1,4 @@
-/* $Id: tstVBoxDbg.cpp 90520 2021-08-04 21:37:54Z vboxsync $ */
+/* $Id: tstVBoxDbg.cpp 92613 2021-11-26 21:53:47Z vboxsync $ */
 /** @file
  * VBox Debugger GUI, dummy testcase.
  */
@@ -38,7 +38,7 @@ int main(int argc, char **argv)
 {
     int     cErrors = 0;                  /* error count. */
 
-    RTR3InitExe(argc, &argv, RTR3INIT_FLAGS_SUPLIB);
+    RTR3InitExe(argc, &argv, RTR3INIT_FLAGS_TRY_SUPLIB);
     RTPrintf(TESTCASE ": TESTING...\n");
 
     /*

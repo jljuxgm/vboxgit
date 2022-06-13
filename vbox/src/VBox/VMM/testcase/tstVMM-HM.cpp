@@ -1,4 +1,4 @@
-/* $Id: tstVMM-HM.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: tstVMM-HM.cpp 92613 2021-11-26 21:53:47Z vboxsync $ */
 /** @file
  * VMM Testcase.
  */
@@ -66,7 +66,7 @@ static DECLCALLBACK(int) tstVmmHmConfigConstructor(PUVM pUVM, PVM pVM, void *pvU
 
 int main(int argc, char **argv)
 {
-    RTR3InitExe(argc, &argv, RTR3INIT_FLAGS_SUPLIB);
+    RTR3InitExe(argc, &argv, RTR3INIT_FLAGS_TRY_SUPLIB);
 
     /*
      * Doesn't work and I'm sick of rebooting the machine to try figure out

@@ -1,4 +1,4 @@
-/* $Id: VBoxVMMPreload.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxVMMPreload.cpp 92613 2021-11-26 21:53:47Z vboxsync $ */
 /** @file
  * VBoxVMMPreload - Preload VBox the ring-0 modules.
  */
@@ -216,9 +216,9 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
 int main(int argc, char **argv, char **envp)
 {
     int rc = RTR3InitExe(argc, &argv, RTR3INIT_FLAGS_SUPLIB);
-    if (RT_FAILURE(rc))
-        return RTMsgInitFailure(rc);
-    return TrustedMain(argc, argv, envp);
+    if (RT_SUCCESS(rc))
+        return TrustedMain(argc, argv, envp);
+    return RTMsgInitFailure(rc);
 }
 #endif /* !VBOX_WITH_HARDENING */
 

@@ -1,4 +1,4 @@
-/* $Id: SUPLib-solaris.cpp 92556 2021-11-23 01:12:29Z vboxsync $ */
+/* $Id: SUPLib-solaris.cpp 92613 2021-11-26 21:53:47Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Solaris specific parts.
  */
@@ -78,7 +78,7 @@
 
 
 
-DECLHIDDEN(int) suplibOsInit(PSUPLIBDATA pThis, bool fPreInited, bool fUnrestricted, SUPINITOP *penmWhat, PRTERRINFO pErrInfo)
+DECLHIDDEN(int) suplibOsInit(PSUPLIBDATA pThis, bool fPreInited, uint32_t fFlags, SUPINITOP *penmWhat, PRTERRINFO pErrInfo)
 {
     /*
      * Nothing to do if pre-inited.
@@ -112,9 +112,9 @@ DECLHIDDEN(int) suplibOsInit(PSUPLIBDATA pThis, bool fPreInited, bool fUnrestric
      */
     const char *pszDeviceNm;
     if (getzoneid() == GLOBAL_ZONEID)
-        pszDeviceNm = fUnrestricted ? DEVICE_NAME_SYS : DEVICE_NAME_USR;
+        pszDeviceNm = fFlags & SUPR3INIT_F_UNRESTRICTED ? DEVICE_NAME_SYS : DEVICE_NAME_USR;
     else
-        pszDeviceNm = fUnrestricted ? DEVICE_NAME_SYS_ZONE : DEVICE_NAME_USR_ZONE;
+        pszDeviceNm = fFlags & SUPR3INIT_F_UNRESTRICTED ? DEVICE_NAME_SYS_ZONE : DEVICE_NAME_USR_ZONE;
     int hDevice = open(pszDeviceNm, O_RDWR, 0);
     if (hDevice < 0)
     {
@@ -148,7 +148,7 @@ DECLHIDDEN(int) suplibOsInit(PSUPLIBDATA pThis, bool fPreInited, bool fUnrestric
     }
 
     pThis->hDevice       = hDevice;
-    pThis->fUnrestricted = fUnrestricted;
+    pThis->fUnrestricted = RT_BOOL(fFlags & SUPR3INIT_F_UNRESTRICTED);
     return VINF_SUCCESS;
 }
 

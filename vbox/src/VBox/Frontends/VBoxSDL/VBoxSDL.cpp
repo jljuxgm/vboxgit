@@ -1,4 +1,4 @@
-/* $Id: VBoxSDL.cpp 91363 2021-09-24 13:08:32Z vboxsync $ */
+/* $Id: VBoxSDL.cpp 92613 2021-11-26 21:53:47Z vboxsync $ */
 /** @file
  * VBox frontends: VBoxSDL (simple frontend based on SDL):
  * Main code
@@ -3219,7 +3219,7 @@ int main(int argc, char **argv)
     /*
      * Before we do *anything*, we initialize the runtime.
      */
-    int rc = RTR3InitExe(argc, &argv, RTR3INIT_FLAGS_SUPLIB);
+    int rc = RTR3InitExe(argc, &argv, RTR3INIT_FLAGS_TRY_SUPLIB);
     if (RT_FAILURE(rc))
         return RTMsgInitFailure(rc);
     return TrustedMain(argc, argv, NULL);

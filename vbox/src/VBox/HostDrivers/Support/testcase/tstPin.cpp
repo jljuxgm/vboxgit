@@ -1,4 +1,4 @@
-/* $Id: tstPin.cpp 92556 2021-11-23 01:12:29Z vboxsync $ */
+/* $Id: tstPin.cpp 92613 2021-11-26 21:53:47Z vboxsync $ */
 /** @file
  * SUP Testcase - Memory locking interface (ring 3).
  */
@@ -45,7 +45,7 @@ int main(int argc, char **argv)
     int         rcRet = 0;
     RTHCPHYS    HCPhys;
 
-    RTR3InitExe(argc, &argv, RTR3INIT_FLAGS_SUPLIB);
+    RTR3InitExe(argc, &argv, RTR3INIT_FLAGS_TRY_SUPLIB);
     rc = SUPR3Init(NULL);
     RTPrintf("SUPR3Init -> rc=%d\n", rc);
     rcRet += rc != 0;

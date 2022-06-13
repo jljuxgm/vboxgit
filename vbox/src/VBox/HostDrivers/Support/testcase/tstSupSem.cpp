@@ -1,4 +1,4 @@
-/* $Id: tstSupSem.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: tstSupSem.cpp 92613 2021-11-26 21:53:47Z vboxsync $ */
 /** @file
  * Support Library Testcase - Ring-3 Semaphore interface.
  */
@@ -79,7 +79,7 @@ int main(int argc, char **argv)
     /*
      * Init.
      */
-    int rc = RTR3InitExe(argc, &argv, RTR3INIT_FLAGS_SUPLIB);
+    int rc = RTR3InitExe(argc, &argv, RTR3INIT_FLAGS_TRY_SUPLIB);
     if (RT_FAILURE(rc))
         return RTMsgInitFailure(rc);
 

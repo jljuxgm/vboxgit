@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 91503 2021-10-01 08:57:59Z vboxsync $ */
+/* $Id: HostImpl.cpp 92613 2021-11-26 21:53:47Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -1180,7 +1180,7 @@ HRESULT Host::getProcessorDescription(ULONG aCpuId, com::Utf8Str &aDescription)
 void Host::i_updateProcessorFeatures()
 {
     /* Perhaps the driver is available now... */
-    int rc = SUPR3InitEx(false /*fUnrestricted*/, NULL);
+    int rc = SUPR3InitEx(SUPR3INIT_F_LIMITED, NULL);
     if (RT_SUCCESS(rc))
     {
         uint32_t fVTCaps;
