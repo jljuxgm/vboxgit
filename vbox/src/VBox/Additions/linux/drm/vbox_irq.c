@@ -1,4 +1,4 @@
-/* $Id: vbox_irq.c 85707 2020-08-11 19:43:16Z vboxsync $ */
+/* $Id: vbox_irq.c 90498 2021-08-03 17:37:08Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -206,7 +206,7 @@ int vbox_irq_init(struct vbox_private *vbox)
 	INIT_WORK(&vbox->hotplug_work, vbox_hotplug_worker);
 	vbox_update_mode_hints(vbox);
 #if RTLNX_VER_MIN(3,16,0) || RTLNX_RHEL_MAJ_PREREQ(7,1)
-	return drm_irq_install(vbox->dev, vbox->dev->pdev->irq);
+	return drm_irq_install(vbox->dev, VBOX_DRM_TO_PCI_DEV(vbox->dev)->irq);
 #else
 	return drm_irq_install(vbox->dev);
 #endif

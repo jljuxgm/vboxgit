@@ -1,4 +1,4 @@
-/* $Id: vbox_drv.h 89690 2021-06-14 18:33:10Z vboxsync $ */
+/* $Id: vbox_drv.h 90498 2021-08-03 17:37:08Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -226,6 +226,15 @@ static inline void drm_gem_object_put(struct drm_gem_object *obj)
 #define GUEST_HEAP_USABLE_SIZE (VBVA_ADAPTER_INFORMATION_SIZE - \
 				sizeof(HGSMIHOSTFLAGS))
 #define HOST_FLAGS_OFFSET GUEST_HEAP_USABLE_SIZE
+
+/** Field @pdev of struct drm_device was removed in 5.14. This macro
+ * transparently handles this change. Input argument is a pointer
+ * to struct drm_device. */
+#if RTLNX_VER_MIN(5,14,0)
+# define VBOX_DRM_TO_PCI_DEV(_dev) to_pci_dev(_dev->dev)
+#else
+# define VBOX_DRM_TO_PCI_DEV(_dev) _dev->pdev
+#endif
 
 /** How frequently we refresh if the guest is not providing dirty rectangles. */
 #define VBOX_REFRESH_PERIOD (HZ / 2)

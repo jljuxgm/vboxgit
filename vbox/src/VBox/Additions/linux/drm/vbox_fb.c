@@ -1,4 +1,4 @@
-/* $Id: vbox_fb.c 89690 2021-06-14 18:33:10Z vboxsync $ */
+/* $Id: vbox_fb.c 90498 2021-08-03 17:37:08Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -301,7 +301,9 @@ static int vboxfb_create(struct drm_fb_helper *helper,
 		return ret;
 	}
 
-#if RTLNX_VER_MIN(5,12,0)
+#if RTLNX_VER_MIN(5,14,0)
+	ret = ttm_bo_kmap(&bo->bo, 0, bo->bo.resource->num_pages, &bo->kmap);
+#elif RTLNX_VER_MIN(5,12,0)
 	ret = ttm_bo_kmap(&bo->bo, 0, bo->bo.mem.num_pages, &bo->kmap);
 #else
 	ret = ttm_bo_kmap(&bo->bo, 0, bo->bo.num_pages, &bo->kmap);
@@ -337,8 +339,8 @@ static int vboxfb_create(struct drm_fb_helper *helper,
 	 * This seems to be done for safety checking that the framebuffer
 	 * is not registered twice by different drivers.
 	 */
-	info->apertures->ranges[0].base = pci_resource_start(dev->pdev, 0);
-	info->apertures->ranges[0].size = pci_resource_len(dev->pdev, 0);
+	info->apertures->ranges[0].base = pci_resource_start(VBOX_DRM_TO_PCI_DEV(dev), 0);
+	info->apertures->ranges[0].size = pci_resource_len(VBOX_DRM_TO_PCI_DEV(dev), 0);
 
 #if RTLNX_VER_MIN(5,2,0) || RTLNX_RHEL_MAJ_PREREQ(8,2)
         /*
