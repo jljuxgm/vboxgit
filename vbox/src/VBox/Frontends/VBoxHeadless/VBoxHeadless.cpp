@@ -1,4 +1,4 @@
-/* $Id: VBoxHeadless.cpp 92066 2021-10-26 08:26:25Z vboxsync $ */
+/* $Id: VBoxHeadless.cpp 92067 2021-10-26 08:27:22Z vboxsync $ */
 /** @file
  * VBoxHeadless - The VirtualBox Headless frontend for running VMs on servers.
  */
@@ -1365,7 +1365,7 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
         sigaction(SIGINT,  &sa, NULL);
         sigaction(SIGTERM, &sa, NULL);
         sigaction(SIGUSR1, &sa, NULL);
-        /* Don't touch SIGUSR2 as IPRT could be using it. */
+        /* Don't touch SIGUSR2 as IPRT could be using it for RTThreadPoke(). */
 
 #else /* RT_OS_WINDOWS */
         /*
