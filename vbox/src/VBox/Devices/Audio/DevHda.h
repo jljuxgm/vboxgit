@@ -1,4 +1,4 @@
-/* $Id: DevHda.h 89874 2021-06-24 09:51:51Z vboxsync $ */
+/* $Id: DevHda.h 89878 2021-06-24 10:05:07Z vboxsync $ */
 /** @file
  * Intel HD Audio Controller Emulation - Structures.
  */
@@ -42,6 +42,20 @@
 /** Enables strict mode, which checks for stuff which isn't supposed to happen.
  *  Be prepared for assertions coming in! */
 //# define HDA_STRICT
+#endif
+
+/** @def HDA_AS_PCI_EXPRESS
+ * Enables PCI express hardware.  */
+#if defined(DOXYGEN_RUNNING) || 0
+# define HDA_AS_PCI_EXPRESS
+#endif
+
+/** @def HDA_DEBUG_SILENCE
+ * To debug silence coming from the guest in form of audio gaps.
+ * Very crude implementation for now.
+ * @todo probably borked atm */
+#if defined(DOXYGEN_RUNNING) || 0
+# define HDA_DEBUG_SILENCE
 #endif
 
 
