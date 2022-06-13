@@ -1,4 +1,4 @@
-; $Id: ASMAtomicUoXorU32.asm 87222 2021-01-12 10:27:17Z vboxsync $
+; $Id: ASMAtomicUoXorU32.asm 92799 2021-12-08 00:47:27Z vboxsync $
 ;; @file
 ; IPRT - ASMAtomicUoXorU32().
 ;
@@ -39,7 +39,7 @@ BEGINCODE
 ;
 ; @returns  void
 ;
-BEGINPROC_EXPORTED ASMAtomicUoXorU32
+RT_BEGINPROC ASMAtomicUoXorU32
 %ifdef RT_ARCH_AMD64
  %ifdef ASM_CALL64_MSC
         xor     [rcx], edx

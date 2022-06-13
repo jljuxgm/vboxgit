@@ -1,4 +1,4 @@
-; $Id: ASMGetXcr0.asm 82968 2020-02-04 10:35:17Z vboxsync $
+; $Id: ASMGetXcr0.asm 92799 2021-12-08 00:47:27Z vboxsync $
 ;; @file
 ; IPRT - ASMGetXcr0().
 ;
@@ -36,7 +36,7 @@ BEGINCODE
 ; Gets the content of the XCR0 CPU register.
 ; @returns XCR0 value in rax (amd64) / edx:eax (x86).
 ;
-BEGINPROC_EXPORTED ASMGetXcr0
+RT_BEGINPROC ASMGetXcr0
 SEH64_END_PROLOGUE
         xor     ecx, ecx                ; XCR0
         xgetbv

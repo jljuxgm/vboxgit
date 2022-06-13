@@ -1,4 +1,4 @@
-; $Id: ASMSetFlags.asm 82968 2020-02-04 10:35:17Z vboxsync $
+; $Id: ASMSetFlags.asm 92799 2021-12-08 00:47:27Z vboxsync $
 ;; @file
 ; IPRT - ASMSetFlags().
 ;
@@ -34,7 +34,7 @@ BEGINCODE
 
 ;;
 ; @param rcx  eflags
-BEGINPROC_EXPORTED ASMSetFlags
+RT_BEGINPROC ASMSetFlags
 %if    ARCH_BITS == 64
  %ifdef ASM_CALL64_GCC
         push    rdi

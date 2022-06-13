@@ -1,4 +1,4 @@
-; $Id: ASMAtomicReadU64.asm 82968 2020-02-04 10:35:17Z vboxsync $
+; $Id: ASMAtomicReadU64.asm 92799 2021-12-08 00:47:27Z vboxsync $
 ;; @file
 ; IPRT - ASMAtomicReadU64().
 ;
@@ -39,7 +39,7 @@ BEGINCODE
 ; @returns The current value. (x86:eax+edx)
 ;
 ;
-BEGINPROC_EXPORTED ASMAtomicReadU64
+RT_BEGINPROC ASMAtomicReadU64
 %ifdef RT_ARCH_AMD64
         mfence                          ; ASSUME its present.
  %ifdef ASM_CALL64_MSC

@@ -1,4 +1,4 @@
-; $Id: ASMSerializeInstruction-cpuid.asm 82968 2020-02-04 10:35:17Z vboxsync $
+; $Id: ASMSerializeInstruction-cpuid.asm 92799 2021-12-08 00:47:27Z vboxsync $
 ;; @file
 ; IPRT - ASMSerializeInstruction() using cpuid.
 ;
@@ -34,16 +34,16 @@ BEGINCODE
 
 
 ;;
-; Executes a seralizing instruction.
+; Executes a serializing instruction.
 ;
 ; The CPUID instruction isn't fast or slow, but it always triggers a VM EXIT in
 ; a virtualized environment, which is prohibitively expensive.
 ;
-BEGINPROC_EXPORTED ASMSerializeInstructionCpuId
+RT_BEGINPROC    ASMSerializeInstructionCpuId
         push    xBX
         xor     eax, eax
         cpuid
         pop     xBX
         ret
-ENDPROC            ASMSerializeInstructionCpuId
+ENDPROC         ASMSerializeInstructionCpuId
 

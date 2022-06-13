@@ -1,4 +1,4 @@
-; $Id: ASMGetGSBase.asm 87403 2021-01-23 16:11:18Z vboxsync $
+; $Id: ASMGetGSBase.asm 92799 2021-12-08 00:47:27Z vboxsync $
 ;; @file
 ; IPRT - ASMGetGSBase().
 ;
@@ -36,7 +36,7 @@ BEGINCODE
 ; Get the GS base register.
 ; @returns GS base
 ;
-BEGINPROC_EXPORTED ASMGetGSBase
+RT_BEGINPROC ASMGetGSBase
         SEH64_END_PROLOGUE
         rdgsbase rax
         ret

@@ -1,4 +1,4 @@
-; $Id: ASMWrMsr.asm 92577 2021-11-24 01:49:26Z vboxsync $
+; $Id: ASMWrMsr.asm 92799 2021-12-08 00:47:27Z vboxsync $
 ;; @file
 ; IPRT - ASMWrMsr().
 ;
@@ -37,7 +37,7 @@ BEGINCODE
 ; @param    uMsr    msc=rcx, gcc=rdi, x86=[ebp+8]   The MSR to read.
 ; @param    uValue  msc=rdx, gcc=rsi, x86=[ebp+12]  The 64-bit value to write.
 ;
-BEGINPROC_EXPORTED ASMWrMsr
+RT_BEGINPROC ASMWrMsr
 %ifdef ASM_CALL64_MSC
         mov     rdi, rdx
         mov     eax, edx

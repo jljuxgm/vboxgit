@@ -1,4 +1,4 @@
-; $Id: RTStrMemFind32.asm 82968 2020-02-04 10:35:17Z vboxsync $
+; $Id: RTStrMemFind32.asm 92799 2021-12-08 00:47:27Z vboxsync $
 ;; @file
 ; IPRT - RTStrMemFind32 - AMD64 & X86.
 ;
@@ -35,7 +35,7 @@ BEGINCODE
 ; @param    pvHaystack      gcc: rdi  msc: ecx  x86:[esp+4]   wcall: eax
 ; @param    uNeedle         gcc: esi  msc: edx  x86:[esp+8]   wcall: edx
 ; @param    cbHaystack      gcc: rdx  msc: r8   x86:[esp+0ch] wcall: ebx
-BEGINPROC_EXPORTED RTStrMemFind32
+RT_BEGINPROC RTStrMemFind32
         cld
 %ifdef RT_ARCH_AMD64
  %ifdef ASM_CALL64_MSC

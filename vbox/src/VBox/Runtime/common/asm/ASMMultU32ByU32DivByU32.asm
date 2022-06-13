@@ -1,4 +1,4 @@
-; $Id: ASMMultU32ByU32DivByU32.asm 82968 2020-02-04 10:35:17Z vboxsync $
+; $Id: ASMMultU32ByU32DivByU32.asm 92799 2021-12-08 00:47:27Z vboxsync $
 ;; @file
 ; IPRT - Assembly Functions, ASMMultU32ByU32DivByU32.
 ;
@@ -38,7 +38,7 @@
 ;
 ; @cproto  DECLASM(uint32_t) ASMMultU32ByU32DivByU32(uint32_t u32A, uint32_t u32B, uint32_t u32C);
 ;
-BEGINPROC_EXPORTED ASMMultU32ByU32DivByU32
+RT_BEGINPROC ASMMultU32ByU32DivByU32
 %ifdef RT_ARCH_AMD64
  %ifdef ASM_CALL64_MSC
         mov     eax, ecx

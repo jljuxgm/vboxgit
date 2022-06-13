@@ -1,4 +1,4 @@
-; $Id: ASMAtomicCmpXchgU64.asm 82968 2020-02-04 10:35:17Z vboxsync $
+; $Id: ASMAtomicCmpXchgU64.asm 92799 2021-12-08 00:47:27Z vboxsync $
 ;; @file
 ; IPRT - ASMAtomicCmpXchgU64().
 ;
@@ -41,7 +41,7 @@ BEGINCODE
 ; @returns  bool result: true if successfully exchanged, false if not.
 ;           x86:al
 ;
-BEGINPROC_EXPORTED ASMAtomicCmpXchgU64
+RT_BEGINPROC ASMAtomicCmpXchgU64
 %ifdef RT_ARCH_AMD64
  %ifdef ASM_CALL64_MSC
         mov     rax, r8

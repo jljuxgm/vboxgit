@@ -1,4 +1,4 @@
-; $Id: ASMSetFSBase.asm 87403 2021-01-23 16:11:18Z vboxsync $
+; $Id: ASMSetFSBase.asm 92799 2021-12-08 00:47:27Z vboxsync $
 ;; @file
 ; IPRT - ASMSetFSBase().
 ;
@@ -36,7 +36,7 @@ BEGINCODE
 ; Set the FS base register.
 ; @param    uNewBase    msc:rcx gcc:rdi     New FS base value.
 ;
-BEGINPROC_EXPORTED ASMSetFSBase
+RT_BEGINPROC ASMSetFSBase
         SEH64_END_PROLOGUE
 %ifdef ASM_CALL64_MSC
         wrfsbase rcx

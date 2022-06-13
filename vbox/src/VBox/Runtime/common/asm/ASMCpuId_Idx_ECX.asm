@@ -1,4 +1,4 @@
-; $Id: ASMCpuId_Idx_ECX.asm 82968 2020-02-04 10:35:17Z vboxsync $
+; $Id: ASMCpuId_Idx_ECX.asm 92799 2021-12-08 00:47:27Z vboxsync $
 ;; @file
 ; IPRT - ASMCpuId_Idx_ECX().
 ;
@@ -43,7 +43,7 @@ BEGINCODE
 ;
 ; @returns  void
 ;
-BEGINPROC_EXPORTED ASMCpuId_Idx_ECX
+RT_BEGINPROC ASMCpuId_Idx_ECX
 %ifdef RT_ARCH_AMD64
         mov     r10, rbx
 

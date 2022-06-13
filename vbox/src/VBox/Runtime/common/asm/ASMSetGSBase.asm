@@ -1,4 +1,4 @@
-; $Id: ASMSetGSBase.asm 87403 2021-01-23 16:11:18Z vboxsync $
+; $Id: ASMSetGSBase.asm 92799 2021-12-08 00:47:27Z vboxsync $
 ;; @file
 ; IPRT - ASMSetGSBase().
 ;
@@ -36,7 +36,7 @@ BEGINCODE
 ; Set the GS base register.
 ; @param    uNewBase    msc:rcx gcc:rdi     New GS base value.
 ;
-BEGINPROC_EXPORTED ASMSetGSBase
+RT_BEGINPROC ASMSetGSBase
         SEH64_END_PROLOGUE
 %ifdef ASM_CALL64_MSC
         wrgsbase rcx

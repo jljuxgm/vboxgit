@@ -1,4 +1,4 @@
-; $Id: ASMXRstor.asm 82968 2020-02-04 10:35:17Z vboxsync $
+; $Id: ASMXRstor.asm 92799 2021-12-08 00:47:27Z vboxsync $
 ;; @file
 ; IPRT - ASMXRstor().
 ;
@@ -39,7 +39,7 @@ BEGINCODE
 ; @param    fMask       The 64-bit state component mask.
 ;                       msc=rdx, gcc=rsi, x86=[esp+8]
 ;
-BEGINPROC_EXPORTED ASMXRstor
+RT_BEGINPROC ASMXRstor
 SEH64_END_PROLOGUE
 %ifdef ASM_CALL64_MSC
         mov     eax, edx

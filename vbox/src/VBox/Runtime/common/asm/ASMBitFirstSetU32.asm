@@ -1,4 +1,4 @@
-; $Id: ASMBitFirstSetU32.asm 82968 2020-02-04 10:35:17Z vboxsync $
+; $Id: ASMBitFirstSetU32.asm 92799 2021-12-08 00:47:27Z vboxsync $
 ;; @file
 ; IPRT - ASMBitFirstSetU32().
 ;
@@ -43,7 +43,7 @@ BEGINCODE
 ;
 ; @cproto DECLASM(unsigned) ASMBitFirstSetU32(uint32_t u32);
 ;
-BEGINPROC_EXPORTED ASMBitFirstSetU32
+RT_BEGINPROC ASMBitFirstSetU32
 %if ARCH_BITS == 16
         CPU     8086
         push    bp

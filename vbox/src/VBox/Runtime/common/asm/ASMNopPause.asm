@@ -1,4 +1,4 @@
-; $Id: ASMNopPause.asm 82968 2020-02-04 10:35:17Z vboxsync $
+; $Id: ASMNopPause.asm 92799 2021-12-08 00:47:27Z vboxsync $
 ;; @file
 ; IPRT - ASMNopPause().
 ;
@@ -34,7 +34,7 @@ BEGINCODE
 ;;
 ; The PAUSE variant of NOP for helping hyperthreaded CPUs detecting spin locks.
 ;
-BEGINPROC_EXPORTED ASMNopPause
+RT_BEGINPROC ASMNopPause
         pause
         ret
 ENDPROC ASMNopPause

@@ -1,4 +1,4 @@
-; $Id: ASMSetXcr0.asm 82968 2020-02-04 10:35:17Z vboxsync $
+; $Id: ASMSetXcr0.asm 92799 2021-12-08 00:47:27Z vboxsync $
 ;; @file
 ; IPRT - ASMSetXcr0().
 ;
@@ -37,7 +37,7 @@ BEGINCODE
 ; @param   uXcr0    The new XCR0 content.
 ;                   msc=rcx, gcc=rdi, x86=[esp+4]
 ;
-BEGINPROC_EXPORTED ASMSetXcr0
+RT_BEGINPROC ASMSetXcr0
 SEH64_END_PROLOGUE
 %ifdef ASM_CALL64_MSC
         mov     rdx, rcx

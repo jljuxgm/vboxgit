@@ -1,4 +1,4 @@
-; $Id: ASMMemFirstMismatchingU8.asm 82968 2020-02-04 10:35:17Z vboxsync $
+; $Id: ASMMemFirstMismatchingU8.asm 92799 2021-12-08 00:47:27Z vboxsync $
 ;; @file
 ; IPRT - ASMMemFirstMismatchingU8().
 ;
@@ -38,7 +38,7 @@ BEGINCODE
 ; Variant of ASMMemFirstMismatchingU8 with a fixed @a u8 value.
 ; We repeat the prolog and join the generic function.
 ;
-BEGINPROC_EXPORTED  ASMMemFirstNonZero
+RT_BEGINPROC ASMMemFirstNonZero
         ;
         ; Prologue.
         ;
@@ -104,7 +104,7 @@ ENDPROC    ASMMemFirstNonZero
 ;
 ; @cproto DECLINLINE(void *) ASMMemFirstMismatchingU8(void const *pv, size_t cb, uint8_t u8)
 ;
-BEGINPROC_EXPORTED ASMMemFirstMismatchingU8
+RT_BEGINPROC ASMMemFirstMismatchingU8
         ;
         ; Prologue.
         ;

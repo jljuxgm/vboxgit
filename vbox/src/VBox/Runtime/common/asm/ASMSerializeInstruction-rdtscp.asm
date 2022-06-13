@@ -1,4 +1,4 @@
-; $Id: ASMSerializeInstruction-rdtscp.asm 82968 2020-02-04 10:35:17Z vboxsync $
+; $Id: ASMSerializeInstruction-rdtscp.asm 92799 2021-12-08 00:47:27Z vboxsync $
 ;; @file
 ; IPRT - ASMSerializeInstruction() using rdtscp.
 ;
@@ -34,13 +34,13 @@ BEGINCODE
 
 
 ;;
-; Executes a seralizing instruction.
+; Executes a serializing instruction.
 ;
 ; The RDTSCP instruction is fast, though it may trigger a VM EXIT if the VMM
 ; is intercepting TSC reads for some timing reason or in general.
 ;
-BEGINPROC_EXPORTED ASMSerializeInstructionRdTscp
+RT_BEGINPROC    ASMSerializeInstructionRdTscp
         rdtscp
         ret
-ENDPROC            ASMSerializeInstructionRdTscp
+ENDPROC         ASMSerializeInstructionRdTscp
 

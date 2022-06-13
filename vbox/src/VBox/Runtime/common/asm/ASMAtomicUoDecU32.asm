@@ -1,4 +1,4 @@
-; $Id: ASMAtomicUoDecU32.asm 82968 2020-02-04 10:35:17Z vboxsync $
+; $Id: ASMAtomicUoDecU32.asm 92799 2021-12-08 00:47:27Z vboxsync $
 ;; @file
 ; IPRT - ASMAtomicUoDecU32().
 ;
@@ -38,7 +38,7 @@ BEGINCODE
 
 ; @returns  the new decremented value.
 ;
-BEGINPROC_EXPORTED ASMAtomicUoDecU32
+RT_BEGINPROC ASMAtomicUoDecU32
         mov     eax, -1
 %ifdef RT_ARCH_AMD64
  %ifdef ASM_CALL64_MSC

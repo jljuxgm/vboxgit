@@ -1,4 +1,4 @@
-; $Id: ASMBitNextClear.asm 82968 2020-02-04 10:35:17Z vboxsync $
+; $Id: ASMBitNextClear.asm 92799 2021-12-08 00:47:27Z vboxsync $
 ;; @file
 ; IPRT - ASMBitNextClear().
 ;
@@ -44,7 +44,7 @@ BEGINCODE
 ; @remarks Not quite sure how much sense it makes to do this in assembly, but
 ;          it started out with the ASMBit* API, so that's why we still have it.
 ;
-BEGINPROC_EXPORTED ASMBitNextClear
+RT_BEGINPROC ASMBitNextClear
 %if ARCH_BITS == 16
         push    bp
         mov     bp, sp

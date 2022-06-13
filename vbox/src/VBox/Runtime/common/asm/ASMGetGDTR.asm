@@ -1,4 +1,4 @@
-; $Id: ASMGetGDTR.asm 82968 2020-02-04 10:35:17Z vboxsync $
+; $Id: ASMGetGDTR.asm 92799 2021-12-08 00:47:27Z vboxsync $
 ;; @file
 ; IPRT - ASMGetGDTR().
 ;
@@ -36,7 +36,7 @@ BEGINCODE
 ; @param   pGdtr    Where to store the GDTR contents.
 ;                   msc=rcx, gcc=rdi, x86=[esp+4]
 ;
-BEGINPROC_EXPORTED ASMGetGDTR
+RT_BEGINPROC ASMGetGDTR
 %ifdef ASM_CALL64_MSC
         mov     rax, rcx
 %elifdef ASM_CALL64_GCC

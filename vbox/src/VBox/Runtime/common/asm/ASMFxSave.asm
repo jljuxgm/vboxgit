@@ -1,4 +1,4 @@
-; $Id: ASMFxSave.asm 82968 2020-02-04 10:35:17Z vboxsync $
+; $Id: ASMFxSave.asm 92799 2021-12-08 00:47:27Z vboxsync $
 ;; @file
 ; IPRT - ASMFxSave().
 ;
@@ -37,7 +37,7 @@ BEGINCODE
 ; @param    pFxState    Pointer to the XSAVE state area.
 ;                       msc=rcx, gcc=rdi, x86=[esp+4]
 ;
-BEGINPROC_EXPORTED ASMFxSave
+RT_BEGINPROC ASMFxSave
 SEH64_END_PROLOGUE
 %ifdef ASM_CALL64_MSC
         o64 fxsave [rcx]

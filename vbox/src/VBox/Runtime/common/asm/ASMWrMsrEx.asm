@@ -1,4 +1,4 @@
-; $Id: ASMWrMsrEx.asm 92576 2021-11-24 01:21:59Z vboxsync $
+; $Id: ASMWrMsrEx.asm 92799 2021-12-08 00:47:27Z vboxsync $
 ;; @file
 ; IPRT - ASMWrMsrEx().
 ;
@@ -38,7 +38,7 @@ BEGINCODE
 ; @param    uXDI    msc=rdx, gcc=rsi, x86=[ebp+12]  The EDI/RDI value.
 ; @param    uValue  msc=r8,  gcc=rdx, x86=[ebp+16]  The 64-bit value to write.
 ;
-BEGINPROC_EXPORTED ASMWrMsrEx
+RT_BEGINPROC ASMWrMsrEx
 %ifdef ASM_CALL64_MSC
 proc_frame ASMWrMsrEx_DupWarningHack
         push    rdi

@@ -1,4 +1,4 @@
-; $Id: ASMCpuIdExSlow.asm 82968 2020-02-04 10:35:17Z vboxsync $
+; $Id: ASMCpuIdExSlow.asm 92799 2021-12-08 00:47:27Z vboxsync $
 ;; @file
 ; IPRT - ASMCpuIdExSlow().
 ;
@@ -45,7 +45,7 @@ BEGINCODE
 ;
 ; @returns  EAX
 ;
-BEGINPROC_EXPORTED ASMCpuIdExSlow
+RT_BEGINPROC ASMCpuIdExSlow
         push    xBP
         mov     xBP, xSP
         push    xBX

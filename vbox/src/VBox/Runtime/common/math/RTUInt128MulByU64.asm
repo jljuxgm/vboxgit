@@ -1,4 +1,4 @@
-; $Id: RTUInt128MulByU64.asm 82968 2020-02-04 10:35:17Z vboxsync $
+; $Id: RTUInt128MulByU64.asm 92799 2021-12-08 00:47:27Z vboxsync $
 ;; @file
 ; IPRT - RTUInt128MulByU64 - AMD64 implementation.
 ;
@@ -40,7 +40,7 @@ BEGINCODE
 ; @param    puValue1       x86:[ebp + 12]  gcc:rsi  msc:rdx
 ; @param    uValue2        x86:[ebp + 16]  gcc:rdx  msc:r8
 ;
-BEGINPROC_EXPORTED RTUInt128MulByU64
+RT_BEGINPROC RTUInt128MulByU64
 ;        SEH64_SET_FRAME_xSP 0
 SEH64_END_PROLOGUE
 

@@ -1,4 +1,4 @@
-; $Id: ASMCpuId.asm 82968 2020-02-04 10:35:17Z vboxsync $
+; $Id: ASMCpuId.asm 92799 2021-12-08 00:47:27Z vboxsync $
 ;; @file
 ; IPRT - ASMCpuIdExSlow().
 ;
@@ -42,7 +42,7 @@ BEGINCODE
 ;
 ; DECLASM(void) ASMCpuId(uint32_t uOperator, void *pvEAX, void *pvEBX, void *pvECX, void *pvEDX);
 ;
-BEGINPROC_EXPORTED ASMCpuId
+RT_BEGINPROC ASMCpuId
         push    xBP
         mov     xBP, xSP
         push    xBX

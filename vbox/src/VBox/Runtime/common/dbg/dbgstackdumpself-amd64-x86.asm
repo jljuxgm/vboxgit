@@ -1,4 +1,4 @@
-; $Id: dbgstackdumpself-amd64-x86.asm 82968 2020-02-04 10:35:17Z vboxsync $
+; $Id: dbgstackdumpself-amd64-x86.asm 92799 2021-12-08 00:47:27Z vboxsync $
 ;; @file
 ; IPRT - RTDbgStackDumpSelf assembly wrapper calling rtDbgStackDumpSelfWorker.
 ;
@@ -43,7 +43,7 @@ BEGINCODE
 ;;
 ; Collects register state and calls C worker.
 ;
-BEGINPROC_EXPORTED RTDbgStackDumpSelf
+RT_BEGINPROC RTDbgStackDumpSelf
         push    xBP
         SEH64_PUSH_xBP
         mov     xBP, xSP

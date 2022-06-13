@@ -1,4 +1,4 @@
-; $Id: ASMGetIdtrLimit.asm 82968 2020-02-04 10:35:17Z vboxsync $
+; $Id: ASMGetIdtrLimit.asm 92799 2021-12-08 00:47:27Z vboxsync $
 ;; @file
 ; IPRT - ASMGetIdtrLimit().
 ;
@@ -36,7 +36,7 @@ BEGINCODE
 ; Gets the content of the IDTR CPU register.
 ; @returns  IDTR.LIMIT in ax
 ;
-BEGINPROC_EXPORTED ASMGetIdtrLimit
+RT_BEGINPROC ASMGetIdtrLimit
         sub     xSP, 18h
         SEH64_ALLOCATE_STACK 18h
 SEH64_END_PROLOGUE

@@ -1,4 +1,4 @@
-; $Id: ASMFxRstor.asm 82968 2020-02-04 10:35:17Z vboxsync $
+; $Id: ASMFxRstor.asm 92799 2021-12-08 00:47:27Z vboxsync $
 ;; @file
 ; IPRT - ASMFxRstor().
 ;
@@ -37,7 +37,7 @@ BEGINCODE
 ; @param    pFxState    Pointer to the FXRSTOR state area.
 ;                       msc=rcx, gcc=rdi, x86=[esp+4]
 ;
-BEGINPROC_EXPORTED ASMFxRstor
+RT_BEGINPROC ASMFxRstor
 SEH64_END_PROLOGUE
 %ifdef ASM_CALL64_MSC
         o64 fxrstor [rcx]

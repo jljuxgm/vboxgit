@@ -1,4 +1,4 @@
-; $Id: ASMBitLastSetU64.asm 82968 2020-02-04 10:35:17Z vboxsync $
+; $Id: ASMBitLastSetU64.asm 92799 2021-12-08 00:47:27Z vboxsync $
 ;; @file
 ; IPRT - ASMBitLastSetU64().
 ;
@@ -43,7 +43,7 @@ BEGINCODE
 ;
 ; @cproto DECLASM(unsigned) ASMBitLastSetU64(uint64_t u64);
 ;
-BEGINPROC_EXPORTED ASMBitLastSetU64
+RT_BEGINPROC ASMBitLastSetU64
 %if ARCH_BITS == 16
         CPU     8086
         push    bp

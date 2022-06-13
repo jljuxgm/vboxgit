@@ -1,4 +1,4 @@
-; $Id: ASMRdMsrEx.asm 92576 2021-11-24 01:21:59Z vboxsync $
+; $Id: ASMRdMsrEx.asm 92799 2021-12-08 00:47:27Z vboxsync $
 ;; @file
 ; IPRT - ASMRdMsrEx().
 ;
@@ -38,7 +38,7 @@ BEGINCODE
 ; @param    uEdi    msc=rdx, gcc=rsi, x86=[ebp+12]  The EDI/RDI value.
 ; @returns  MSR value in rax on amd64 and edx:eax on x86.
 ;
-BEGINPROC_EXPORTED ASMRdMsrEx
+RT_BEGINPROC ASMRdMsrEx
 %ifdef ASM_CALL64_MSC
 proc_frame ASMRdMsrEx_DupWarningHack
         push    rdi

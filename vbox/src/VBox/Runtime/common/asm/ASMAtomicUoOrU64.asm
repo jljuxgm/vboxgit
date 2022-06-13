@@ -1,4 +1,4 @@
-; $Id: ASMAtomicUoOrU64.asm 82968 2020-02-04 10:35:17Z vboxsync $
+; $Id: ASMAtomicUoOrU64.asm 92799 2021-12-08 00:47:27Z vboxsync $
 ;; @file
 ; IPRT - ASMAtomicUoOrU64().
 ;
@@ -39,7 +39,7 @@ BEGINCODE
 ;
 ; @returns  void
 ;
-BEGINPROC_EXPORTED ASMAtomicUoOrU64
+RT_BEGINPROC ASMAtomicUoOrU64
 %ifdef RT_ARCH_AMD64
  %ifdef ASM_CALL64_MSC
         or      [rcx], rdx

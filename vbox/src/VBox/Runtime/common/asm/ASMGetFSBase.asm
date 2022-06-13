@@ -1,4 +1,4 @@
-; $Id: ASMGetFSBase.asm 87403 2021-01-23 16:11:18Z vboxsync $
+; $Id: ASMGetFSBase.asm 92799 2021-12-08 00:47:27Z vboxsync $
 ;; @file
 ; IPRT - ASMGetFSBase().
 ;
@@ -36,7 +36,7 @@ BEGINCODE
 ; Get the FS base register.
 ; @returns FS base
 ;
-BEGINPROC_EXPORTED ASMGetFSBase
+RT_BEGINPROC ASMGetFSBase
         SEH64_END_PROLOGUE
         rdfsbase rax
         ret

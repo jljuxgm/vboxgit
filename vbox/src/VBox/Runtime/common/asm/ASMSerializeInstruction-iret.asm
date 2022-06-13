@@ -1,4 +1,4 @@
-; $Id: ASMSerializeInstruction-iret.asm 82968 2020-02-04 10:35:17Z vboxsync $
+; $Id: ASMSerializeInstruction-iret.asm 92799 2021-12-08 00:47:27Z vboxsync $
 ;; @file
 ; IPRT - ASMSerializeInstruction() using iret.
 ;
@@ -34,12 +34,12 @@ BEGINCODE
 
 
 ;;
-; Executes a seralizing instruction.
+; Executes a serializing instruction.
 ;
 ; The IRET instruction is rather expensive, but unlike the CPUID instruction it
 ; will not result in a VM EXIT when running in a virtual machine.
 ;
-BEGINPROC_EXPORTED ASMSerializeInstructionIRet
+RT_BEGINPROC ASMSerializeInstructionIRet
         pop     xAX
 %ifdef RT_ARCH_AMD64
         mov     rdx, xSP

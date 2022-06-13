@@ -1,4 +1,4 @@
-; $Id: ASMGetFlags.asm 82968 2020-02-04 10:35:17Z vboxsync $
+; $Id: ASMGetFlags.asm 92799 2021-12-08 00:47:27Z vboxsync $
 ;; @file
 ; IPRT - ASMGetFlags().
 ;
@@ -31,7 +31,7 @@
 
 BEGINCODE
 
-BEGINPROC_EXPORTED ASMGetFlags
+RT_BEGINPROC ASMGetFlags
 %if    ARCH_BITS == 32
         pushfd
 %else

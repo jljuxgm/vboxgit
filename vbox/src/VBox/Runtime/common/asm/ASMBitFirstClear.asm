@@ -1,4 +1,4 @@
-; $Id: ASMBitFirstClear.asm 82968 2020-02-04 10:35:17Z vboxsync $
+; $Id: ASMBitFirstClear.asm 92799 2021-12-08 00:47:27Z vboxsync $
 ;; @file
 ; IPRT - ASMBitFirstClear().
 ;
@@ -40,7 +40,7 @@ BEGINCODE
 ; @param   msc:rcx gcc:rdi pvBitmap    Pointer to the bitmap.
 ; @param   msc:edx gcc:rsi cBits       The number of bits in the bitmap. Multiple of 32.
 ;
-BEGINPROC_EXPORTED ASMBitFirstClear
+RT_BEGINPROC ASMBitFirstClear
         ;
         ; if (cBits)
         ; Put cBits in ecx first.
