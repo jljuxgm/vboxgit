@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testboxupgrade.py 92572 2021-11-23 18:51:39Z vboxsync $
+# $Id: testboxupgrade.py 92573 2021-11-23 19:10:54Z vboxsync $
 
 """
 TestBox Script - Upgrade from local file ZIP.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 92572 $"
+__version__ = "$Revision: 92573 $"
 
 # Standard python imports.
 import os
@@ -145,7 +145,7 @@ def _doUpgradeTestRun(sUpgradeDir):
                            % (iStatus, TBS_EXITCODE_SYNTAX));
         return False;
 
-    sOutput = b''.join(asBuf)).decode('utf-8');
+    sOutput = b''.join(asBuf).decode('utf-8');
     sOutput = sOutput.strip();
     try:
         iNewVersion = int(sOutput);
