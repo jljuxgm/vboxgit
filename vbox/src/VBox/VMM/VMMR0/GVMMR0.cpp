@@ -1,4 +1,4 @@
-/* $Id: GVMMR0.cpp 92229 2021-11-05 00:52:57Z vboxsync $ */
+/* $Id: GVMMR0.cpp 92858 2021-12-10 00:43:56Z vboxsync $ */
 /** @file
  * GVMM - Global VM Manager.
  */
@@ -91,7 +91,7 @@
 /*********************************************************************************************************************************
 *   Defined Constants And Macros                                                                                                 *
 *********************************************************************************************************************************/
-#if defined(RT_OS_LINUX) || defined(RT_OS_SOLARIS) || defined(DOXYGEN_RUNNING)
+#if defined(RT_OS_LINUX) || defined(RT_OS_SOLARIS) || defined(RT_OS_WINDOWS) || defined(DOXYGEN_RUNNING)
 /** Define this to enable the periodic preemption timer. */
 # define GVMM_SCHED_WITH_PPT
 #endif
