@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 92955 2021-12-16 08:53:55Z vboxsync $
+# $Id: vbox.py 92978 2021-12-16 12:04:05Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 92955 $"
+__version__ = "$Revision: 92978 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -3001,6 +3001,8 @@ class TestDriver(base.TestDriver):                                              
         except:
             reporter.errorXcpt();
             return (None, None);
+
+        oSession = None; # Must be initialized, otherwise the log statement at the end of the function can fail.
 
         # Open a remote session, wait for this operation to complete.
         # (The loop is a kludge to deal with us racing the closing of the
