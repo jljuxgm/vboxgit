@@ -1,4 +1,4 @@
-/* $Id: NEMR3.cpp 93351 2022-01-19 23:35:13Z vboxsync $ */
+/* $Id: NEMR3.cpp 93722 2022-02-14 12:52:49Z vboxsync $ */
 /** @file
  * NEM - Native execution manager.
  */
@@ -85,6 +85,10 @@ VMMR3_INT_DECL(int) NEMR3InitConfig(PVM pVM)
                                   "|LovelyMesaDrvWorkaround"
 #ifdef RT_OS_WINDOWS
                                   "|UseRing0Runloop"
+#elif defined(RT_OS_DARWIN)
+                                  "|VmxPleGap"
+                                  "|VmxPleWindow"
+                                  "|VmxLbr"
 #endif
                                   ,
                                   "" /* pszValidNodes */, "NEM" /* pszWho */, 0 /* uInstance */);
