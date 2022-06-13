@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 94199 2022-03-12 19:18:11Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 94200 2022-03-12 19:24:38Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -636,18 +636,6 @@ void printUsage(USAGECATEGORY enmCommand, uint64_t fSubcommandScope, PRTSTREAM p
                      "                            [--move <path>]\n"
                      "                            [--setlocation <path>]\n"
                      "                            [--description <description string>]"
-                     "\n", SEP);
-
-    if (enmCommand == USAGE_MEDIUMPROPERTY || enmCommand == USAGE_S_ALL)
-        RTStrmPrintf(pStrm,
-                           "%s mediumproperty %s  [disk|dvd|floppy] set <uuid|filename>\n"
-                     "                            <property> <value>\n"
-                     "\n"
-                     "                            [disk|dvd|floppy] get <uuid|filename>\n"
-                     "                            <property>\n"
-                     "\n"
-                     "                            [disk|dvd|floppy] delete <uuid|filename>\n"
-                     "                            <property>\n"
                      "\n", SEP);
 
     if (enmCommand == USAGE_ENCRYPTMEDIUM || enmCommand == USAGE_S_ALL)
