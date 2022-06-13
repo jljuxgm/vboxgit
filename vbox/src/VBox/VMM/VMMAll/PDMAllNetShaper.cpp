@@ -1,4 +1,4 @@
-/* $Id: PDMAllNetShaper.cpp 90346 2021-07-26 19:55:53Z vboxsync $ */
+/* $Id: PDMAllNetShaper.cpp 90384 2021-07-28 23:02:05Z vboxsync $ */
 /** @file
  * PDM Network Shaper - Limit network traffic according to bandwidth group settings.
  */
@@ -32,6 +32,7 @@
  * Obtain bandwidth in a bandwidth group.
  *
  * @returns True if bandwidth was allocated, false if not.
+ * @param   pVM             The cross context VM structure.
  * @param   pFilter         Pointer to the filter that allocates bandwidth.
  * @param   cbTransfer      Number of bytes to allocate.
  */
