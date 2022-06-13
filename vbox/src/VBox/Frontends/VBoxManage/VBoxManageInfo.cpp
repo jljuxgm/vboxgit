@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 91416 2021-09-28 06:15:49Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 92107 2021-10-27 14:33:56Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -1147,6 +1147,12 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> pVirtualBox,
                 break;
             case StorageControllerType_USB:
                 pszCtl = "USB";
+                break;
+            case StorageControllerType_NVMe:
+                pszCtl = "NVMe";
+                break;
+            case StorageControllerType_VirtioSCSI:
+                pszCtl = "VirtioSCSI";
                 break;
 
             default:
