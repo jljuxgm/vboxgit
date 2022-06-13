@@ -1,4 +1,4 @@
-/* $Id: DBGCEmulateCodeView.cpp 87788 2021-02-18 15:12:31Z vboxsync $ */
+/* $Id: DBGCEmulateCodeView.cpp 89896 2021-06-24 18:26:06Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, CodeView / WinDbg Emulation.
  */
@@ -6272,7 +6272,7 @@ static DECLCALLBACK(int) dbgcCmdListSymbols(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp,
                         if (   RT_SUCCESS(rc)
                             && (   fDumpAll
                                 || RTStrSimplePatternMatch(pszSymbol, &SymInfo.szName[0])))
-                            DBGCCmdHlpPrintf(pCmdHlp, "%RGv    %s!%s\n", uMapping + (RTGCUINTPTR)SymInfo.Value, pszModName, &SymInfo.szName[0]);
+                            DBGCCmdHlpPrintf(pCmdHlp, "%RGv    %s!%s\n", uMapping + RTDbgModSegmentRva(hMod, SymInfo.iSeg) + (RTGCUINTPTR)SymInfo.Value, pszModName, &SymInfo.szName[0]);
                     }
                 }
                 RTDbgModRelease(hMod);
