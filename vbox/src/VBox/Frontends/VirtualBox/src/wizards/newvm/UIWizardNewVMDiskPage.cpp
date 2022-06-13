@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMDiskPage.cpp 91108 2021-09-03 15:28:52Z vboxsync $ */
+/* $Id: UIWizardNewVMDiskPage.cpp 91164 2021-09-08 15:23:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMDiskPage class implementation.
  */
@@ -161,6 +161,7 @@ void UIWizardNewVMDiskPage::sltSelectedDiskSourceChanged()
     {
         pWizard->setDiskSource(SelectedDiskSource_Existing);
         pWizard->setVirtualDisk(m_pDiskSelector->id());
+        pWizard->setMediumPath(m_pDiskSelector->location());
     }
     else
         pWizard->setDiskSource(SelectedDiskSource_New);
@@ -173,9 +174,11 @@ void UIWizardNewVMDiskPage::sltSelectedDiskSourceChanged()
 
 void UIWizardNewVMDiskPage::sltMediaComboBoxIndexChanged()
 {
-    AssertReturnVoid(m_pDiskSelector && wizardWindow<UIWizardNewVM>());
+    UIWizardNewVM *pWizard = wizardWindow<UIWizardNewVM>();
+    AssertReturnVoid(pWizard && m_pDiskSelector);
     m_userModifiedParameters << "SelectedExistingMediumIndex";
-    wizardWindow<UIWizardNewVM>()->setVirtualDisk(m_pDiskSelector->id());
+    pWizard->setVirtualDisk(m_pDiskSelector->id());
+    pWizard->setMediumPath(m_pDiskSelector->location());
     emit completeChanged();
 }
 
