@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 92368 2021-11-11 13:31:21Z vboxsync $ */
+/* $Id: PGMInternal.h 92371 2021-11-11 14:39:45Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -3807,6 +3807,9 @@ int             pgmR3InitSavedState(PVM pVM, uint64_t cbRam);
 
 int             pgmPhysAllocPage(PVMCC pVM, PPGMPAGE pPage, RTGCPHYS GCPhys);
 int             pgmPhysAllocLargePage(PVMCC pVM, RTGCPHYS GCPhys);
+#ifdef IN_RING0
+int             pgmR0PhysAllocateLargePage(PGVM pGVM, VMCPUID idCpu, RTGCPHYS GCPhys);
+#endif
 int             pgmPhysRecheckLargePage(PVMCC pVM, RTGCPHYS GCPhys, PPGMPAGE pLargePage);
 int             pgmPhysPageLoadIntoTlb(PVMCC pVM, RTGCPHYS GCPhys);
 int             pgmPhysPageLoadIntoTlbWithPage(PVMCC pVM, PPGMPAGE pPage, RTGCPHYS GCPhys);
