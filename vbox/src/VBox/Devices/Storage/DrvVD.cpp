@@ -1,4 +1,4 @@
-/* $Id: DrvVD.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: DrvVD.cpp 90791 2021-08-23 10:28:24Z vboxsync $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
@@ -2720,7 +2720,7 @@ static int drvvdMediaExIoReqReadWrapper(PVBOXDISK pThis, PPDMMEDIAEXIOREQINT pIo
     {
         void *pvBuf = RTSgBufGetNextSegment(pIoReq->ReadWrite.pSgBuf, &cbReqIo);
 
-        Assert(cbReqIo > 0 && VALID_PTR(pvBuf));
+        Assert(cbReqIo > 0 && RT_VALID_PTR(pvBuf));
         rc = VDRead(pThis->pDisk, pIoReq->ReadWrite.offStart, pvBuf, cbReqIo);
         if (RT_SUCCESS(rc))
             rc = VINF_VD_ASYNC_IO_FINISHED;
@@ -2769,7 +2769,7 @@ static int drvvdMediaExIoReqWriteWrapper(PVBOXDISK pThis, PPDMMEDIAEXIOREQINT pI
     {
         void *pvBuf = RTSgBufGetNextSegment(pIoReq->ReadWrite.pSgBuf, &cbReqIo);
 
-        Assert(cbReqIo > 0 && VALID_PTR(pvBuf));
+        Assert(cbReqIo > 0 && RT_VALID_PTR(pvBuf));
         rc = VDWrite(pThis->pDisk, pIoReq->ReadWrite.offStart, pvBuf, cbReqIo);
         if (RT_SUCCESS(rc))
             rc = VINF_VD_ASYNC_IO_FINISHED;

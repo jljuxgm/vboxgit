@@ -1,4 +1,4 @@
-/* $Id: VirtioCore.h 86407 2020-10-02 06:26:15Z vboxsync $ */
+/* $Id: VirtioCore.h 90791 2021-08-23 10:28:24Z vboxsync $ */
 
 /** @file
  * VirtioCore.h - Virtio Declarations
@@ -651,7 +651,7 @@ int virtioCoreR3VirtqAvailBufNext(PVIRTIOCORE pVirtio, uint16_t uVirtqNbr);
 DECLINLINE(void) virtioCoreGCPhysChainInit(PVIRTIOSGBUF pGcSgBuf, PVIRTIOSGSEG paSegs, size_t cSegs)
 {
     AssertPtr(pGcSgBuf);
-    Assert((cSegs > 0 && VALID_PTR(paSegs)) || (!cSegs && !paSegs));
+    Assert((cSegs > 0 && RT_VALID_PTR(paSegs)) || (!cSegs && !paSegs));
     Assert(cSegs < (~(unsigned)0 >> 1));
 
     pGcSgBuf->paSegs = paSegs;

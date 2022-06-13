@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 90445 2021-07-30 22:18:24Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 90791 2021-08-23 10:28:24Z vboxsync $ */
 /** @file
  * VBox storage devices - BusLogic SCSI host adapter BT-958.
  *
@@ -4061,13 +4061,13 @@ static DECLCALLBACK(int)  buslogicR3Attach(PPDMDEVINS pDevIns, unsigned iLUN, ui
     {
         /* Query the media interface. */
         pDevice->pDrvMedia = PDMIBASE_QUERY_INTERFACE(pDevice->pDrvBase, PDMIMEDIA);
-        AssertMsgReturn(VALID_PTR(pDevice->pDrvMedia),
+        AssertMsgReturn(RT_VALID_PTR(pDevice->pDrvMedia),
                         ("BusLogic configuration error: LUN#%d misses the basic media interface!\n", pDevice->iLUN),
                         VERR_PDM_MISSING_INTERFACE);
 
         /* Get the extended media interface. */
         pDevice->pDrvMediaEx = PDMIBASE_QUERY_INTERFACE(pDevice->pDrvBase, PDMIMEDIAEX);
-        AssertMsgReturn(VALID_PTR(pDevice->pDrvMediaEx),
+        AssertMsgReturn(RT_VALID_PTR(pDevice->pDrvMediaEx),
                         ("BusLogic configuration error: LUN#%d misses the extended media interface!\n", pDevice->iLUN),
                         VERR_PDM_MISSING_INTERFACE);
 
@@ -4336,13 +4336,13 @@ static DECLCALLBACK(int) buslogicR3Construct(PPDMDEVINS pDevIns, int iInstance, 
         {
             /* Query the media interface. */
             pDevice->pDrvMedia = PDMIBASE_QUERY_INTERFACE(pDevice->pDrvBase, PDMIMEDIA);
-            AssertMsgReturn(VALID_PTR(pDevice->pDrvMedia),
+            AssertMsgReturn(RT_VALID_PTR(pDevice->pDrvMedia),
                             ("Buslogic configuration error: LUN#%d misses the basic media interface!\n", pDevice->iLUN),
                             VERR_PDM_MISSING_INTERFACE);
 
             /* Get the extended media interface. */
             pDevice->pDrvMediaEx = PDMIBASE_QUERY_INTERFACE(pDevice->pDrvBase, PDMIMEDIAEX);
-            AssertMsgReturn(VALID_PTR(pDevice->pDrvMediaEx),
+            AssertMsgReturn(RT_VALID_PTR(pDevice->pDrvMediaEx),
                             ("Buslogic configuration error: LUN#%d misses the extended media interface!\n", pDevice->iLUN),
                             VERR_PDM_MISSING_INTERFACE);
 

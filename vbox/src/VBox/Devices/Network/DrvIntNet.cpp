@@ -1,4 +1,4 @@
-/* $Id: DrvIntNet.cpp 90330 2021-07-26 12:50:05Z vboxsync $ */
+/* $Id: DrvIntNet.cpp 90791 2021-08-23 10:28:24Z vboxsync $ */
 /** @file
  * DrvIntNet - Internal network transport driver.
  */
@@ -1783,7 +1783,7 @@ static DECLCALLBACK(int) drvR3IntNetConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg
     if (RT_FAILURE(rc))
         return PDMDrvHlpVMSetError(pDrvIns, rc, RT_SRC_POS,
                                    N_("Failed to get ring-3 buffer for the newly created interface to '%s'"), pThis->szNetwork);
-    AssertRelease(VALID_PTR(GetBufferPtrsReq.pRing3Buf));
+    AssertRelease(RT_VALID_PTR(GetBufferPtrsReq.pRing3Buf));
     pThis->pBufR3 = GetBufferPtrsReq.pRing3Buf;
     pThis->pBufR0 = GetBufferPtrsReq.pRing0Buf;
 

@@ -1,4 +1,4 @@
-/* $Id: UsbMsd.cpp 87119 2020-12-24 10:13:26Z vboxsync $ */
+/* $Id: UsbMsd.cpp 90791 2021-08-23 10:28:24Z vboxsync $ */
 /** @file
  * UsbMSD - USB Mass Storage Device Emulation.
  */
@@ -1258,7 +1258,7 @@ static bool usbMsdAllAsyncIOIsFinished(PPDMUSBINS pUsbIns)
 {
     PUSBMSD pThis = PDMINS_2_DATA(pUsbIns, PUSBMSD);
 
-    if (   VALID_PTR(pThis->pReq)
+    if (   RT_VALID_PTR(pThis->pReq)
         && pThis->pReq->enmState == USBMSDREQSTATE_EXECUTING)
         return false;
 

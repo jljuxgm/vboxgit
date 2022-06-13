@@ -1,4 +1,4 @@
-/* $Id: DrvSCSI.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: DrvSCSI.cpp 90791 2021-08-23 10:28:24Z vboxsync $ */
 /** @file
  * VBox storage drivers: Generic SCSI command parser and execution driver
  */
@@ -1228,12 +1228,12 @@ static DECLCALLBACK(int) drvscsiAttach(PPDMDRVINS pDrvIns, uint32_t fFlags)
      * Query the media interface.
      */
     pThis->pDrvMedia = PDMIBASE_QUERY_INTERFACE(pThis->pDrvBase, PDMIMEDIA);
-    AssertMsgReturn(VALID_PTR(pThis->pDrvMedia), ("VSCSI configuration error: No media interface!\n"),
+    AssertMsgReturn(RT_VALID_PTR(pThis->pDrvMedia), ("VSCSI configuration error: No media interface!\n"),
                     VERR_PDM_MISSING_INTERFACE);
 
     /* Query the extended media interface. */
     pThis->pDrvMediaEx = PDMIBASE_QUERY_INTERFACE(pThis->pDrvBase, PDMIMEDIAEX);
-    AssertMsgReturn(VALID_PTR(pThis->pDrvMediaEx), ("VSCSI configuration error: No extended media interface!\n"),
+    AssertMsgReturn(RT_VALID_PTR(pThis->pDrvMediaEx), ("VSCSI configuration error: No extended media interface!\n"),
                     VERR_PDM_MISSING_INTERFACE);
 
     pThis->pDrvMount = PDMIBASE_QUERY_INTERFACE(pThis->pDrvBase, PDMIMOUNT);
@@ -1430,12 +1430,12 @@ static DECLCALLBACK(int) drvscsiConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, ui
      * Query the media interface.
      */
     pThis->pDrvMedia = PDMIBASE_QUERY_INTERFACE(pThis->pDrvBase, PDMIMEDIA);
-    AssertMsgReturn(VALID_PTR(pThis->pDrvMedia), ("VSCSI configuration error: No media interface!\n"),
+    AssertMsgReturn(RT_VALID_PTR(pThis->pDrvMedia), ("VSCSI configuration error: No media interface!\n"),
                     VERR_PDM_MISSING_INTERFACE);
 
     /* Query the extended media interface. */
     pThis->pDrvMediaEx = PDMIBASE_QUERY_INTERFACE(pThis->pDrvBase, PDMIMEDIAEX);
-    AssertMsgReturn(VALID_PTR(pThis->pDrvMediaEx), ("VSCSI configuration error: No extended media interface!\n"),
+    AssertMsgReturn(RT_VALID_PTR(pThis->pDrvMediaEx), ("VSCSI configuration error: No extended media interface!\n"),
                     VERR_PDM_MISSING_INTERFACE);
 
     pThis->pDrvMount = PDMIBASE_QUERY_INTERFACE(pThis->pDrvBase, PDMIMOUNT);

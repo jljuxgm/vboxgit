@@ -1,4 +1,4 @@
-/* $Id: DrvHostDVD.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: DrvHostDVD.cpp 90791 2021-08-23 10:28:24Z vboxsync $ */
 /** @file
  * DrvHostDVD - Host DVD block driver.
  */
@@ -407,7 +407,7 @@ static DECLCALLBACK(int) drvHostDvdIoReqSendScsiCmd(PPDMIMEDIAEX pInterface, PDM
      * it is CHECK CONDITION.
      */
     if (   *pu8ScsiSts == SCSI_STATUS_CHECK_CONDITION
-        && VALID_PTR(pabSense)
+        && RT_VALID_PTR(pabSense)
         && cbSense > 0)
     {
         size_t cbSenseCpy = RT_MIN(cbSense, sizeof(pThis->abATAPISense));

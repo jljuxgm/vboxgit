@@ -1,4 +1,4 @@
-/* $Id: HGSMIHost.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
+/* $Id: HGSMIHost.cpp 90791 2021-08-23 10:28:24Z vboxsync $ */
 /** @file
  * VBox Host Guest Shared Memory Interface (HGSMI), host part.
  *
@@ -1553,7 +1553,7 @@ int HGSMICreate(PHGSMIINSTANCE *ppIns,
         if (RT_SUCCESS (rc))
         {
             pIns->pVM            = pVM;
-            pIns->pszName        = VALID_PTR(pszName) ? pszName : "";
+            pIns->pszName        = RT_VALID_PTR(pszName) ? pszName : "";
 
             hgsmiHostHeapSetupUninitialized(&pIns->hostHeap);
 
