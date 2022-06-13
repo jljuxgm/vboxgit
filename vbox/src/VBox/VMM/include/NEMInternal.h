@@ -1,4 +1,4 @@
-/* $Id: NEMInternal.h 92465 2021-11-17 03:01:09Z vboxsync $ */
+/* $Id: NEMInternal.h 92495 2021-11-18 14:17:12Z vboxsync $ */
 /** @file
  * NEM - Internal header file.
  */
@@ -98,8 +98,8 @@ typedef struct NEMWINIOCTL
     ( ((RTGCPHYS)((a_GCPhys) - _1M) < (RTGCPHYS)_64K) || ((RTGCPHYS)(a_GCPhys) < (RTGCPHYS)_64K) )
 
 /** The CPUMCTX_EXTRN_XXX mask for IEM. */
-# define NEM_WIN_CPUMCTX_EXTRN_MASK_FOR_IEM      (  IEM_CPUMCTX_EXTRN_MUST_MASK | CPUMCTX_EXTRN_NEM_WIN_INHIBIT_INT \
-                                                  | CPUMCTX_EXTRN_NEM_WIN_INHIBIT_NMI )
+# define NEM_WIN_CPUMCTX_EXTRN_MASK_FOR_IEM      (  IEM_CPUMCTX_EXTRN_MUST_MASK | CPUMCTX_EXTRN_INHIBIT_INT \
+                                                  | CPUMCTX_EXTRN_INHIBIT_NMI )
 /** The CPUMCTX_EXTRN_XXX mask for IEM when raising exceptions. */
 # define NEM_WIN_CPUMCTX_EXTRN_MASK_FOR_IEM_XCPT (IEM_CPUMCTX_EXTRN_XCPT_MASK | NEM_WIN_CPUMCTX_EXTRN_MASK_FOR_IEM)
 
@@ -130,8 +130,8 @@ typedef unsigned hv_vm_space_t;
 /** @} */
 
 /** The CPUMCTX_EXTRN_XXX mask for IEM. */
-# define NEM_DARWIN_CPUMCTX_EXTRN_MASK_FOR_IEM      (  IEM_CPUMCTX_EXTRN_MUST_MASK | CPUMCTX_EXTRN_NEM_WIN_INHIBIT_INT \
-                                                     | CPUMCTX_EXTRN_NEM_WIN_INHIBIT_NMI )
+# define NEM_DARWIN_CPUMCTX_EXTRN_MASK_FOR_IEM      (  IEM_CPUMCTX_EXTRN_MUST_MASK | CPUMCTX_EXTRN_INHIBIT_INT \
+                                                     | CPUMCTX_EXTRN_INHIBIT_NMI )
 /** The CPUMCTX_EXTRN_XXX mask for IEM when raising exceptions. */
 # define NEM_DARWIN_CPUMCTX_EXTRN_MASK_FOR_IEM_XCPT (IEM_CPUMCTX_EXTRN_XCPT_MASK | NEM_DARWIN_CPUMCTX_EXTRN_MASK_FOR_IEM)
 

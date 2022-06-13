@@ -1,4 +1,4 @@
-/* $Id: VMXAllTemplate.cpp.h 92451 2021-11-16 10:40:19Z vboxsync $ */
+/* $Id: VMXAllTemplate.cpp.h 92495 2021-11-18 14:17:12Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Code template for our own hypervisor and the NEM darwin backend using Apple's Hypervisor.framework.
  */
@@ -94,7 +94,8 @@
                                       | CPUMCTX_EXTRN_CR4             \
                                       | CPUMCTX_EXTRN_DR7             \
                                       | CPUMCTX_EXTRN_HWVIRT          \
-                                      | CPUMCTX_EXTRN_HM_VMX_MASK)
+                                      | CPUMCTX_EXTRN_INHIBIT_INT     \
+                                      | CPUMCTX_EXTRN_INHIBIT_NMI)
 
 /**
  * Exception bitmap mask for real-mode guests (real-on-v86).
@@ -5222,7 +5223,7 @@ static int vmxHCImportGuestState(PVMCPUCC pVCpu, PVMXVMCSINFO pVmcsInfo, uint64_
             if (fWhat & CPUMCTX_EXTRN_RFLAGS)
                 vmxHCImportGuestRFlags(pVCpu, pVmcsInfo);
 
-            if (fWhat & CPUMCTX_EXTRN_HM_VMX_INT_STATE)
+            if (fWhat & (CPUMCTX_EXTRN_INHIBIT_INT | CPUMCTX_EXTRN_INHIBIT_NMI))
                 vmxHCImportGuestIntrState(pVCpu, pVmcsInfo);
 
             if (fWhat & CPUMCTX_EXTRN_RSP)
