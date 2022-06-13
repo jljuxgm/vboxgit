@@ -1,4 +1,4 @@
-/* $Id: UICommon.h 90936 2021-08-27 08:27:50Z vboxsync $ */
+/* $Id: UICommon.h 90937 2021-08-27 08:40:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class declaration.
  */
@@ -212,16 +212,10 @@ public:
         bool brandingIsActive(bool fForce = false);
         /** Returns value for certain branding @a strKey from custom.ini file. */
         QString brandingGetKey(QString strKey);
-        /** Returns a file name (unique up to extension) wrt. @a strFullFolderPath folder content. Starts
-          * searching strBaseFileName and adds suffixes until a unique file name is found. */
-        static QString findUniqueFileName(const QString &strFullFolderPath, const QString &strBaseFileName);
     /** @} */
 
     /** @name Process arguments stuff.
      * @{ */
-        /** Returns whether passed @a strExt ends with one of allowed extension in the @a extList. */
-        static bool hasAllowedExtension(const QString &strExt, const QStringList &extList);
-
         /** Process application args. */
         bool processArgs();
 
@@ -402,6 +396,13 @@ public:
 
         /** Returns documents path. */
         static QString documentsPath();
+
+        /** Returns whether passed @a strFileName ends with one of allowed extension in the @a extensions list. */
+        static bool hasAllowedExtension(const QString &strFileName, const QStringList &extensions);
+
+        /** Returns a file name (unique up to extension) wrt. @a strFullFolderPath folder content. Starts
+          * searching strBaseFileName and adds suffixes until a unique file name is found. */
+        static QString findUniqueFileName(const QString &strFullFolderPath, const QString &strBaseFileName);
     /** @} */
 
     /** @name Window/widget stuff.

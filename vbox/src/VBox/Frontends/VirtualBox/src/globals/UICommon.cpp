@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 90936 2021-08-27 08:27:50Z vboxsync $ */
+/* $Id: UICommon.cpp 90937 2021-08-27 08:40:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -434,37 +434,6 @@ QString UICommon::brandingGetKey(QString strKey)
 {
     QSettings settings(m_strBrandingConfigFilePath, QSettings::IniFormat);
     return settings.value(QString("%1").arg(strKey)).toString();
-}
-
-/*static */
-QString UICommon::findUniqueFileName(const QString &strFullFolderPath, const QString &strBaseFileName)
-{
-    QDir folder(strFullFolderPath);
-    if (!folder.exists())
-        return strBaseFileName;
-    QFileInfoList folderContent = folder.entryInfoList();
-    QSet<QString> fileNameSet;
-    foreach (const QFileInfo &fileInfo, folderContent)
-    {
-        /* Remove the extension : */
-        fileNameSet.insert(fileInfo.completeBaseName());
-    }
-    int iSuffix = 0;
-    QString strNewName(strBaseFileName);
-    while (fileNameSet.contains(strNewName))
-    {
-        strNewName = strBaseFileName + QString("_") + QString::number(++iSuffix);
-    }
-    return strNewName;
-}
-
-/* static */
-bool UICommon::hasAllowedExtension(const QString &strExt, const QStringList &extList)
-{
-    for (int i = 0; i < extList.size(); ++i)
-        if (strExt.endsWith(extList.at(i), Qt::CaseInsensitive))
-            return true;
-    return false;
 }
 
 bool UICommon::processArgs()
@@ -1471,6 +1440,37 @@ QString UICommon::documentsPath()
         else
             return QDir::homePath();
     }
+}
+
+/* static */
+bool UICommon::hasAllowedExtension(const QString &strFileName, const QStringList &extensions)
+{
+    foreach (const QString &strExtension, extensions)
+        if (strFileName.endsWith(strExtension, Qt::CaseInsensitive))
+            return true;
+    return false;
+}
+
+/* static */
+QString UICommon::findUniqueFileName(const QString &strFullFolderPath, const QString &strBaseFileName)
+{
+    QDir folder(strFullFolderPath);
+    if (!folder.exists())
+        return strBaseFileName;
+    QFileInfoList folderContent = folder.entryInfoList();
+    QSet<QString> fileNameSet;
+    foreach (const QFileInfo &fileInfo, folderContent)
+    {
+        /* Remove the extension : */
+        fileNameSet.insert(fileInfo.completeBaseName());
+    }
+    int iSuffix = 0;
+    QString strNewName(strBaseFileName);
+    while (fileNameSet.contains(strNewName))
+    {
+        strNewName = strBaseFileName + QString("_") + QString::number(++iSuffix);
+    }
+    return strNewName;
 }
 
 /* static */
