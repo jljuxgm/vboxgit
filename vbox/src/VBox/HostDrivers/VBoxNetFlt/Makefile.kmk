@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 93115 2022-01-01 11:31:46Z vboxsync $
+# $Id: Makefile.kmk 93322 2022-01-18 15:23:38Z vboxsync $
 ## @file
 # Sub-Makefile for the Network Filter Driver (VBoxNetFlt).
 #
@@ -324,7 +324,7 @@ $(PATH_TARGET)/VBoxNetLwfCat.dir/VBoxNetLwf.cat: \
  # VBoxNetFltNobj
  #
  DLLS.win += VBoxNetFltNobj
- VBoxNetFltNobj_TEMPLATE   = VBoxR3Static
+ VBoxNetFltNobj_TEMPLATE   = VBoxR3StaticDll
  if defined(VBOX_SIGNING_MODE)
   VBoxNetFltNobj_INSTTYPE  = none
   VBoxNetFltNobj_DEBUG_INSTTYPE = both

@@ -1,4 +1,4 @@
-# $Id: vboximportchecker.kmk 93275 2022-01-17 15:01:26Z vboxsync $
+# $Id: vboximportchecker.kmk 93322 2022-01-18 15:23:38Z vboxsync $
 ## @file
 # VBox import checker unit.
 #
@@ -30,12 +30,16 @@ $(target)_POST_CMDS += $$(if-expr "$$(tool_do)" != "LINK_LIBRARY",$$(NLTAB)$$(VB
 endef
 
 define def_unit_vboximportchecker_target_pre
+# Do not apply to ASAN builds as it requires newere DLLs.
+ifneq ($(KBUILD_TYPE),asan)
 
 # Set pass 2 variable (simpler) and act on it.
-$(target)_2_VBOX_IMPORT_CHECKER := $(evalcall def_fn_prop_get_first_defined,VBOX_IMPORT_CHECKER)
-ifdef $(target)_2_VBOX_IMPORT_CHECKER
- $(target)_LNK_ORDERDEPS += $(VBOX_RTLDRCHECKIMPORTS)
- $(eval $(def_unit_vboximportchecker_internal_expand_twice))
+ $(target)_2_VBOX_IMPORT_CHECKER := $(evalcall def_fn_prop_get_first_defined,VBOX_IMPORT_CHECKER)
+ ifdef $(target)_2_VBOX_IMPORT_CHECKER
+  $(target)_LNK_ORDERDEPS += $(VBOX_RTLDRCHECKIMPORTS)
+  $(eval $(def_unit_vboximportchecker_internal_expand_twice))
+ endif
+
 endif
 
 endef
