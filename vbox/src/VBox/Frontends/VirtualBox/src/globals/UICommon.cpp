@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 91125 2021-09-06 14:32:23Z vboxsync $ */
+/* $Id: UICommon.cpp 91132 2021-09-06 19:05:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -2855,7 +2855,7 @@ void UICommon::sltHandleMediumCreated(const CMedium &comMedium)
     /* Acquire device type: */
     const KDeviceType enmDeviceType = comMedium.GetDeviceType();
     if (!comMedium.isOk())
-        msgCenter().cannotAcquireMediumAttribute(comMedium);
+        UINotificationMessage::cannotAcquireMediumParameter(comMedium);
     else
     {
         /* Convert to medium type: */

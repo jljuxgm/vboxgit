@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 91125 2021-09-06 14:32:23Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 91132 2021-09-06 19:05:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -2410,7 +2410,7 @@ void UIMachineLogic::sltInstallGuestAdditions()
             /* Compare the name part ignoring the file case: */
             const QString strPath = comMedium.GetLocation();
             if (!comMedium.isOk())
-                msgCenter().cannotAcquireMediumAttribute(comMedium);
+                UINotificationMessage::cannotAcquireMediumParameter(comMedium);
             {
                 const QString strFileName = QFileInfo(strPath).fileName();
                 if (RTPathCompare(strName.toUtf8().constData(), strFileName.toUtf8().constData()) == 0)

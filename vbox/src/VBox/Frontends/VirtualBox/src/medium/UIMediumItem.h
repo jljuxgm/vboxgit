@@ -1,4 +1,4 @@
-/* $Id: UIMediumItem.h 90412 2021-07-29 14:55:13Z vboxsync $ */
+/* $Id: UIMediumItem.h 91132 2021-09-06 19:05:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumItem class declaration.
  */
@@ -109,7 +109,7 @@ public:
     bool isMediumModifiable() const;
     /** Returns true if the medium is attached to the vm with @p uId. */
     bool isMediumAttachedTo(QUuid uId);
-    bool changeMediumType(KMediumType enmOldType, KMediumType enmNewType);
+    bool changeMediumType(KMediumType enmNewType);
 
 protected:
 
