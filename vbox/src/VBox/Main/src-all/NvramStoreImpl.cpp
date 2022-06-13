@@ -1,4 +1,4 @@
-/* $Id: NvramStoreImpl.cpp 94813 2022-05-04 08:49:24Z vboxsync $ */
+/* $Id: NvramStoreImpl.cpp 94819 2022-05-04 12:04:03Z vboxsync $ */
 /** @file
  * VirtualBox COM NVRAM store class implementation
  */
@@ -328,6 +328,7 @@ void NvramStore::uninit()
     }
 
     m->bd->mapNvram.clear();
+    m->bd.free();
 
 #ifdef VBOX_WITH_FULL_VM_ENCRYPTION
     if (m->mpKeyStore != NULL)
