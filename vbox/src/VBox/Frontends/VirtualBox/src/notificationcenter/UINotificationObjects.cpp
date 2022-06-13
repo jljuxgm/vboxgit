@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 91959 2021-10-21 14:43:09Z vboxsync $ */
+/* $Id: UINotificationObjects.cpp 91966 2021-10-21 15:44:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -2812,6 +2812,38 @@ CProgress UINotificationProgressApplianceWrite::createProgress(COMResult &comRes
 {
     /* Initialize progress-wrapper: */
     CProgress comProgress = m_comAppliance.Write(m_strFormat, m_options, m_strPath);
+    /* Store COM result: */
+    comResult = m_comAppliance;
+    /* Return progress-wrapper: */
+    return comProgress;
+}
+
+
+/*********************************************************************************************************************************
+*   Class UINotificationProgressApplianceRead implementation.                                                                    *
+*********************************************************************************************************************************/
+
+UINotificationProgressApplianceRead::UINotificationProgressApplianceRead(const CAppliance &comAppliance,
+                                                                         const QString &strPath)
+    : m_comAppliance(comAppliance)
+    , m_strPath(strPath)
+{
+}
+
+QString UINotificationProgressApplianceRead::name() const
+{
+    return UINotificationProgress::tr("Reading appliance ...");
+}
+
+QString UINotificationProgressApplianceRead::details() const
+{
+    return UINotificationProgress::tr("<b>From:</b> %1").arg(m_strPath);
+}
+
+CProgress UINotificationProgressApplianceRead::createProgress(COMResult &comResult)
+{
+    /* Initialize progress-wrapper: */
+    CProgress comProgress = m_comAppliance.Read(m_strPath);
     /* Store COM result: */
     comResult = m_comAppliance;
     /* Return progress-wrapper: */

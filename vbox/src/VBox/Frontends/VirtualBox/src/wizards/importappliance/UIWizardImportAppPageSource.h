@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageSource.h 91709 2021-10-13 11:04:55Z vboxsync $ */
+/* $Id: UIWizardImportAppPageSource.h 91966 2021-10-21 15:44:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageSource class declaration.
  */
@@ -81,7 +81,7 @@ namespace UIWizardImportAppSource
     /** Refresh cloud stuff. */
     void refreshCloudStuff(CAppliance &comCloudAppliance,
                            CVirtualSystemDescriptionForm &comCloudVsdImportForm,
-                           QWidget *pParent,
+                           UIWizardImportApp *pWizard,
                            const QString &strMachineId,
                            const QString &strSource,
                            const QString &strProfileName,

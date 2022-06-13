@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.h 91959 2021-10-21 14:43:09Z vboxsync $ */
+/* $Id: UINotificationObjects.h 91966 2021-10-21 15:44:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects declarations.
  */
@@ -1583,6 +1583,36 @@ private:
     QString                  m_strFormat;
     /** Holds the export options to be taken into account. */
     QVector<KExportOptions>  m_options;
+    /** Holds the appliance path. */
+    QString                  m_strPath;
+};
+
+/** UINotificationProgress extension for appliance read functionality. */
+class SHARED_LIBRARY_STUFF UINotificationProgressApplianceRead : public UINotificationProgress
+{
+    Q_OBJECT;
+
+public:
+
+    /** Constructs appliance read notification-progress.
+      * @param  comAppliance  Brings the appliance being read.
+      * @param  strPath       Brings the appliance path. */
+    UINotificationProgressApplianceRead(const CAppliance &comAppliance,
+                                        const QString &strPath);
+
+protected:
+
+    /** Returns object name. */
+    virtual QString name() const /* override final */;
+    /** Returns object details. */
+    virtual QString details() const /* override final */;
+    /** Creates and returns started progress-wrapper. */
+    virtual CProgress createProgress(COMResult &comResult) /* override final */;
+
+private:
+
+    /** Holds the appliance being read. */
+    CAppliance               m_comAppliance;
     /** Holds the appliance path. */
     QString                  m_strPath;
 };
