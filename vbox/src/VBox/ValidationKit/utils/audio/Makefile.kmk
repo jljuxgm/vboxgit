@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 91571 2021-10-05 15:37:20Z vboxsync $
+# $Id: Makefile.kmk 91915 2021-10-20 19:45:19Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - Audio Utilities.
 #
@@ -178,6 +178,16 @@ ifdef VBOX_WITH_HOST_SHIPPING_AUDIO_TEST
    vkathost_MODE     = a+rx,u+w
   endif
  endif
+endif
+
+if defined(VBOX_WITH_TESTCASES) && !defined(VBOX_ONLY_ADDITIONS) && !defined(VBOX_ONLY_SDK)
+
+ TESTING += $(vkathost_0_OUTDIR)/tstVkatHostSelftest.run
+
+ $$(vkathost_0_OUTDIR)/tstVkatHostSelftest.run: $$(vkat_1_TARGET)
+	export VKAT_RELEASE_LOG=-all; $(vkat_1_TARGET) selftest
+	$(QUIET)$(APPEND) -t "$@" "done"
+
 endif
 
 include $(FILE_KBUILD_SUB_FOOTER)
