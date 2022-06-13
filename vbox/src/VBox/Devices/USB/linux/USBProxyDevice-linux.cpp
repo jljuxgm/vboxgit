@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-linux.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: USBProxyDevice-linux.cpp 94342 2022-03-23 19:53:21Z vboxsync $ */
 /** @file
  * USB device proxy - the Linux backend.
  */
@@ -586,9 +586,8 @@ RTDECL(int) USBProxyDeviceLinuxGetFD(PUSBPROXYDEV pProxyDev)
  *                          the form "sysfs:<sysfs path>//device:<device node>".
  *                          In the second case, the two paths are guaranteed
  *                          not to contain the substring "//".
- * @param   pvBackend       Backend specific pointer, unused for the linux backend.
  */
-static DECLCALLBACK(int) usbProxyLinuxOpen(PUSBPROXYDEV pProxyDev, const char *pszAddress, void *pvBackend)
+static DECLCALLBACK(int) usbProxyLinuxOpen(PUSBPROXYDEV pProxyDev, const char *pszAddress)
 {
     LogFlow(("usbProxyLinuxOpen: pProxyDev=%p pszAddress=%s\n", pProxyDev, pszAddress));
     const char *pszDevNode;
@@ -668,8 +667,6 @@ static DECLCALLBACK(int) usbProxyLinuxOpen(PUSBPROXYDEV pProxyDev, const char *p
         rc = VERR_VUSB_USBFS_PERMISSION;
 
     Log(("usbProxyLinuxOpen(%p, %s) failed, rc=%Rrc!\n", pProxyDev, pszAddress, rc));
-
-    NOREF(pvBackend);
     return rc;
 }
 

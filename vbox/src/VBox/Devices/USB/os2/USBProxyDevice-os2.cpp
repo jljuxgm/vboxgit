@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-os2.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: USBProxyDevice-os2.cpp 94342 2022-03-23 19:53:21Z vboxsync $ */
 /** @file
  * USB device proxy - the Linux backend.
  */
@@ -427,9 +427,8 @@ static DECLCALLBACK(int) usbProxyOs2AsyncThread(RTTHREAD Thread, void *pvProxyDe
  * @returns VBox status code.
  * @param   pProxyDev       The device instance.
  * @param   pszAddress      The path to the device.
- * @param   pvBackend       Backend specific pointer, unused for the linux backend.
  */
-static int usbProxyOs2Open(PUSBPROXYDEV pProxyDev, const char *pszAddress, void *pvBackend)
+static int usbProxyOs2Open(PUSBPROXYDEV pProxyDev, const char *pszAddress)
 {
     LogFlow(("usbProxyOs2Open: pProxyDev=%p pszAddress=%s\n", pProxyDev, pszAddress));
     int rc;

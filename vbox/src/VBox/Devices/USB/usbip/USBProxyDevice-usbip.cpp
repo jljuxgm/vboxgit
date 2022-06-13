@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-usbip.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: USBProxyDevice-usbip.cpp 94342 2022-03-23 19:53:21Z vboxsync $ */
 /** @file
  * USB device proxy - USB/IP backend.
  */
@@ -1453,10 +1453,9 @@ static int usbProxyUsbIpCtrlUrbExchangeSync(PUSBPROXYDEVUSBIP pProxyDevUsbIp, PV
 /**
  * @interface_method_impl{USBPROXYBACK,pfnOpen}
  */
-static DECLCALLBACK(int) usbProxyUsbIpOpen(PUSBPROXYDEV pProxyDev, const char *pszAddress, void *pvBackend)
+static DECLCALLBACK(int) usbProxyUsbIpOpen(PUSBPROXYDEV pProxyDev, const char *pszAddress)
 {
-    RT_NOREF(pvBackend);
-    LogFlowFunc(("pProxyDev=%p pszAddress=%s, pvBackend=%p\n", pProxyDev, pszAddress, pvBackend));
+    LogFlowFunc(("pProxyDev=%p pszAddress=%s\n", pProxyDev, pszAddress));
 
     PUSBPROXYDEVUSBIP pDevUsbIp = USBPROXYDEV_2_DATA(pProxyDev, PUSBPROXYDEVUSBIP);
     int rc = VINF_SUCCESS;

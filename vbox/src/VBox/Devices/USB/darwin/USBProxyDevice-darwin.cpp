@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-darwin.cpp 93944 2022-02-24 21:15:14Z vboxsync $ */
+/* $Id: USBProxyDevice-darwin.cpp 94342 2022-03-23 19:53:21Z vboxsync $ */
 /** @file
  * USB device proxy - the Darwin backend.
  */
@@ -1100,11 +1100,9 @@ static DECLCALLBACK(void) usbProxyDarwinPerformWakeup(void *pInfo)
  * @param   pszAddress      The session id and/or location id of the device to open.
  *                          The format of this string is something iokit.c in Main defines, currently
  *                          it's sequences of "[l|s]=<value>" separated by ";".
- * @param   pvBackend       Backend specific pointer, unused for the Darwin backend.
  */
-static DECLCALLBACK(int) usbProxyDarwinOpen(PUSBPROXYDEV pProxyDev, const char *pszAddress, void *pvBackend)
+static DECLCALLBACK(int) usbProxyDarwinOpen(PUSBPROXYDEV pProxyDev, const char *pszAddress)
 {
-    RT_NOREF(pvBackend);
     LogFlow(("usbProxyDarwinOpen: pProxyDev=%p pszAddress=%s\n", pProxyDev, pszAddress));
 
     /*

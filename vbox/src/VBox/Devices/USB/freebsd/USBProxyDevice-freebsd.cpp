@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-freebsd.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: USBProxyDevice-freebsd.cpp 94342 2022-03-23 19:53:21Z vboxsync $ */
 /** @file
  * USB device proxy - the FreeBSD backend.
  */
@@ -365,17 +365,13 @@ static int usbProxyFreeBSDEndpointClose(PUSBPROXYDEV pProxyDev, int Endpoint)
  *                          the form "sysfs:<sysfs path>//device:<device node>".
  *                          In the second case, the two paths are guaranteed
  *                          not to contain the substring "//".
- * @param   pvBackend       Backend specific pointer, unused for the linux backend.
  */
-static DECLCALLBACK(int) usbProxyFreeBSDOpen(PUSBPROXYDEV pProxyDev, const char *pszAddress,
-                                             void *pvBackend)
+static DECLCALLBACK(int) usbProxyFreeBSDOpen(PUSBPROXYDEV pProxyDev, const char *pszAddress)
 {
     PUSBPROXYDEVFBSD pDevFBSD = USBPROXYDEV_2_DATA(pProxyDev, PUSBPROXYDEVFBSD);
     int rc;
 
     LogFlow(("usbProxyFreeBSDOpen: pProxyDev=%p pszAddress=%s\n", pProxyDev, pszAddress));
-
-    NOREF(pvBackend);
 
     /*
      * Try open the device node.

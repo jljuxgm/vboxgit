@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 93858 2022-02-20 07:47:37Z vboxsync $ */
+/* $Id: ConsoleImpl.h 94342 2022-03-23 19:53:21Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -71,6 +71,9 @@ class NvramStore;
 #include <VBox/vmm/pdmdrv.h>
 #ifdef VBOX_WITH_GUEST_PROPS
 # include <VBox/HostServices/GuestPropertySvc.h>  /* For the property notification callback */
+#endif
+#ifdef VBOX_WITH_USB
+# include <VBox/vrdpusb.h>
 #endif
 
 #if    defined(VBOX_WITH_GUEST_PROPS) || defined(VBOX_WITH_SHARED_CLIPBOARD) \
@@ -818,9 +821,13 @@ private:
 
     static DECLCALLBACK(int) i_usbAttachCallback(Console *that, PUVM pUVM, PCVMMR3VTABLE pVMM, IUSBDevice *aHostDevice,
                                                  PCRTUUID aUuid, const char *aBackend, const char *aAddress,
-                                                 void *pvRemoteBackend, USBConnectionSpeed_T enmSpeed, ULONG aMaskedIfs,
+                                                 PCFGMNODE pRemoteCfg, USBConnectionSpeed_T enmSpeed, ULONG aMaskedIfs,
                                                  const char *pszCaptureFilename);
     static DECLCALLBACK(int) i_usbDetachCallback(Console *that, PUVM pUVM, PCVMMR3VTABLE pVMM, PCRTUUID aUuid);
+    static DECLCALLBACK(PREMOTEUSBCALLBACK) i_usbQueryRemoteUsbBackend(void *pvUser, PCRTUUID pUuid, uint32_t idClient);
+
+    /** Interface for the VRDP USB proxy backend to query for a device remote callback table. */
+    REMOTEUSBIF mRemoteUsbIf;
 #endif
 
     static DECLCALLBACK(int) i_attachStorageDevice(Console *pThis,

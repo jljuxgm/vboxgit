@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: USBProxyDevice.h 94342 2022-03-23 19:53:21Z vboxsync $ */
 /** @file
  * USBPROXY - USB proxy header
  */
@@ -50,9 +50,8 @@ typedef struct USBPROXYBACK
      * @returns VBox status code.
      * @param   pProxyDev   The USB Proxy Device instance.
      * @param   pszAddress  Host specific USB device address.
-     * @param   pvBackend   Pointer to backend specific data.
      */
-    DECLR3CALLBACKMEMBER(int, pfnOpen, (PUSBPROXYDEV pProxyDev, const char *pszAddress, void *pvBackend));
+    DECLR3CALLBACKMEMBER(int, pfnOpen, (PUSBPROXYDEV pProxyDev, const char *pszAddress));
 
     /**
      * Optional callback for initializing the device after the configuration
