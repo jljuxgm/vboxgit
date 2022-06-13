@@ -1,4 +1,4 @@
-/* $Id: UnattendedImpl.h 93580 2022-02-03 13:35:16Z vboxsync $ */
+/* $Id: UnattendedImpl.h 93581 2022-02-03 13:52:21Z vboxsync $ */
 /** @file
  * Unattended class header
  */
@@ -39,6 +39,8 @@ struct WIMImage
     Utf8Str  mName;
     Utf8Str  mVersion;
     Utf8Str  mArch;
+    RTCList<RTCString, RTCString *> mLanguages;
+    Utf8Str  mDefaultLanguage;
     uint32_t mImageIndex;
     VBOXOSTYPE mOSType;
     WIMImage() : mImageIndex(0), mOSType(VBOXOSTYPE_Unknown) { }
