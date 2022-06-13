@@ -1,4 +1,4 @@
-/* $Id: UIToolBox.h 88271 2021-03-24 12:05:50Z vboxsync $ */
+/* $Id: UIToolBox.h 90333 2021-07-26 13:00:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolBox class declaration.
  */
@@ -51,6 +51,7 @@ public:
     void setPageTitle(int iIndex, const QString &strTitle);
     void setPageTitleIcon(int iIndex, const QIcon &icon, const QString &strIconToolTip = QString());
     void setCurrentPage(int iIndex);
+    virtual QSize minimumSizeHint() const /* override */;
 
 protected:
 
