@@ -1,4 +1,4 @@
-/* $Id: tstIEMAImpl.cpp 93863 2022-02-20 13:54:27Z vboxsync $ */
+/* $Id: tstIEMAImpl.cpp 93864 2022-02-21 11:16:56Z vboxsync $ */
 /** @file
  * IEM Assembly Instruction Helper Testcase.
  */
@@ -96,6 +96,7 @@ typedef struct BINU16_T
 static uint32_t RandEFlags(void);
 static uint8_t  RandU8(void);
 static uint16_t RandU16(void);
+static const char *FmtEflagsDiff(uint32_t fEfl, uint32_t fExpected);
 
 
 /*********************************************************************************************************************************
@@ -104,6 +105,52 @@ static uint16_t RandU16(void);
 static RTTEST g_hTest;
 
 #include "tstIEMAImplData.h"
+
+/*
+ * Test helpers.
+ */
+static const char *EFlagsDiff(uint32_t fActual, uint32_t fExpected)
+{
+    if (fActual == fExpected)
+        return "";
+
+    uint32_t const fXor = fActual ^ fExpected;
+    static char    s_szBuf[256];
+    size_t cch = RTStrPrintf(s_szBuf, sizeof(s_szBuf), " - %#x", fXor);
+
+    static struct
+    {
+        const char *pszName;
+        uint32_t    fFlag;
+    } const s_aFlags[] =
+    {
+#define EFL_ENTRY(a_Flags) { #a_Flags, X86_EFL_ ## a_Flags }
+        EFL_ENTRY(CF),
+        EFL_ENTRY(PF),
+        EFL_ENTRY(AF),
+        EFL_ENTRY(ZF),
+        EFL_ENTRY(SF),
+        EFL_ENTRY(TF),
+        EFL_ENTRY(IF),
+        EFL_ENTRY(DF),
+        EFL_ENTRY(OF),
+        EFL_ENTRY(IOPL),
+        EFL_ENTRY(NT),
+        EFL_ENTRY(RF),
+        EFL_ENTRY(VM),
+        EFL_ENTRY(AC),
+        EFL_ENTRY(VIF),
+        EFL_ENTRY(VIP),
+        EFL_ENTRY(ID),
+    };
+    for (size_t i = 0; i < RT_ELEMENTS(s_aFlags); i++)
+        if (s_aFlags[i].fFlag & fXor)
+            cch += RTStrPrintf(&s_szBuf[cch], sizeof(s_szBuf) - cch,
+                               s_aFlags[i].fFlag & fActual ? "/%s" : "/!%s", s_aFlags[i].pszName);
+    RTStrPrintf(&s_szBuf[cch], sizeof(s_szBuf) - cch, "");
+    return s_szBuf;
+}
+
 
 /*
  * 8-bit binary operations.
@@ -187,9 +234,10 @@ static void BinU8Test(void)
             g_aBinU8[iFn].pfn(&uDst, paTests[iTest].uSrcIn, &fEfl);
             if (   uDst != paTests[iTest].uDstOut
                 || fEfl != paTests[iTest].fEflOut)
-                RTTestFailed(g_hTest, "#%u: efl=%#08x dst=%#04x src=%#04x -> efl=%#08x dst=%#04x, expected %#08x & %#04x - %s\n",
+                RTTestFailed(g_hTest, "#%u: efl=%#08x dst=%#04x src=%#04x -> efl=%#08x dst=%#04x, expected %#08x & %#04x%s - %s\n",
                              iTest, paTests[iTest].fEflIn, paTests[iTest].uDstIn, paTests[iTest].uSrcIn,
                              fEfl, uDst, paTests[iTest].fEflOut, paTests[iTest].uDstOut,
+                             EFlagsDiff(fEfl, paTests[iTest].fEflOut),
                              uDst == paTests[iTest].uDstOut ? "eflags" : fEfl == paTests[iTest].fEflOut ? "dst" : "both");
         }
     }
@@ -302,9 +350,10 @@ static void BinU16Test(void)
             g_aBinU16[iFn].pfn(&uDst, paTests[iTest].uSrcIn, &fEfl);
             if (   uDst != paTests[iTest].uDstOut
                 || fEfl != paTests[iTest].fEflOut)
-                RTTestFailed(g_hTest, "#%u: efl=%#08x dst=%#06x src=%#06x -> efl=%#08x dst=%#06x, expected %#08x & %#06x - %s\n",
+                RTTestFailed(g_hTest, "#%u: efl=%#08x dst=%#06x src=%#06x -> efl=%#08x dst=%#06x, expected %#08x & %#06x%s - %s\n",
                              iTest, paTests[iTest].fEflIn, paTests[iTest].uDstIn, paTests[iTest].uSrcIn,
                              fEfl, uDst, paTests[iTest].fEflOut, paTests[iTest].uDstOut,
+                             EFlagsDiff(fEfl, paTests[iTest].fEflOut),
                              uDst == paTests[iTest].uDstOut ? "eflags" : fEfl == paTests[iTest].fEflOut ? "dst" : "both");
         }
     }
@@ -347,7 +396,7 @@ int main(int argc, char **argv)
         char szCpuDesc[256] = {0};
         RTMpGetDescription(NIL_RTCPUID, szCpuDesc, sizeof(szCpuDesc));
 
-        RTPrintf("/* $Id: tstIEMAImpl.cpp 93863 2022-02-20 13:54:27Z vboxsync $ */\n"
+        RTPrintf("/* $Id: tstIEMAImpl.cpp 93864 2022-02-21 11:16:56Z vboxsync $ */\n"
                  "/** @file\n"
                  " * IEM Assembly Instruction Helper Testcase Data - %s.\n"
                  " */\n"
