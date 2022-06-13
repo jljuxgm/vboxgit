@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 89815 2021-06-21 12:06:22Z vboxsync $ */
+/* $Id: UIMachineLogic.h 89816 2021-06-21 12:22:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -52,7 +52,9 @@ class CMachineDebugger;
 class CSnapshot;
 class CUSBDevice;
 class CVirtualBoxErrorInfo;
-struct X11ScreenSaverInhibitMethod;
+#if defined(VBOX_WS_X11)
+ struct X11ScreenSaverInhibitMethod;
+#endif
 
 #ifdef VBOX_WITH_DEBUGGER_GUI
 typedef struct DBGGUIVT const *PCDBGGUIVT;
@@ -465,7 +467,9 @@ private:
 
     /* Holds the cookies returnd by QDBus inhibition calls. Map keys are service name. These are required during uninhibition.*/
     QMap<QString, uint> m_screenSaverInhibitionCookies;
+#if defined(VBOX_WS_X11)
     QVector<X11ScreenSaverInhibitMethod*> m_methods;
+#endif
     /* Friend classes: */
     friend class UIMachineWindow;
 };

@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 89815 2021-06-21 12:06:22Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 89816 2021-06-21 12:22:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -885,8 +885,10 @@ UIMachineLogic::UIMachineLogic(QObject *pParent, UISession *pSession, UIVisualSt
 
 UIMachineLogic::~UIMachineLogic()
 {
+#if defined(VBOX_WS_X11)
     qDeleteAll(m_methods.begin(), m_methods.end());
     m_methods.clear();
+#endif
 }
 
 void UIMachineLogic::setMachineWindowsCreated(bool fIsWindowsCreated)
