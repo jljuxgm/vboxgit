@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMExpertPage.cpp 92032 2021-10-25 13:25:10Z vboxsync $ */
+/* $Id: UIWizardNewVMExpertPage.cpp 92105 2021-10-27 13:44:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMExpertPage class implementation.
  */
@@ -611,7 +611,9 @@ bool UIWizardNewVMExpertPage::validatePage()
 {
     UIWizardNewVM *pWizard = wizardWindow<UIWizardNewVM>();
     AssertReturn(pWizard, false);
-    bool fResult = true;
+    bool fResult = UIWizardNewVMNameOSTypeCommon::createMachineFolder(m_pNameAndSystemEditor, this, wizardWindow<UIWizardNewVM>());
+    if (!fResult)
+        return false;
 
     if (pWizard->diskSource() == SelectedDiskSource_New)
     {

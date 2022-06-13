@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 92095 2021-10-27 11:46:30Z vboxsync $ */
+/* $Id: UIWizardNewVM.cpp 92105 2021-10-27 13:44:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
@@ -114,6 +114,9 @@ void UIWizardNewVM::populatePages()
 
 void UIWizardNewVM::wizardClean()
 {
+    /* Try to delete the hard disk in case we have created one: */
+    deleteVirtualDisk();
+    /* Cleanup the machine folder: */
     UIWizardNewVMNameOSTypeCommon::cleanupMachineFolder(this, true);
 }
 
@@ -134,8 +137,7 @@ bool UIWizardNewVM::createVM()
         if (!vbox.isOk())
         {
             msgCenter().cannotCreateMachine(vbox, this);
-            /* Try to delete the hard disk: */
-            deleteVirtualDisk();
+            wizardClean();
             return false;
         }
     }
@@ -165,9 +167,8 @@ bool UIWizardNewVM::createVM()
     vbox.RegisterMachine(m_machine);
     if (!vbox.isOk())
     {
-        /* Try to delete the hard disk: */
-        deleteVirtualDisk();
         msgCenter().cannotRegisterMachine(vbox, m_machine.GetName(), this);
+        wizardClean();
         return false;
     }
     return attachDefaultDevices();
@@ -465,7 +466,7 @@ bool UIWizardNewVM::attachDefaultDevices()
 
 void UIWizardNewVM::sltHandleWizardCancel()
 {
-    UIWizardNewVMNameOSTypeCommon::cleanupMachineFolder(this, true);
+    wizardClean();
 }
 
 void UIWizardNewVM::retranslateUi()
