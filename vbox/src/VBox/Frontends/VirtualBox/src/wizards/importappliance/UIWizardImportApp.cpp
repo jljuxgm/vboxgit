@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportApp.cpp 91709 2021-10-13 11:04:55Z vboxsync $ */
+/* $Id: UIWizardImportApp.cpp 91969 2021-10-21 15:53:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportApp class implementation.
  */
@@ -34,9 +34,6 @@
 #include "UIWizardImportAppPageExpert.h"
 #include "UIWizardImportAppPageSettings.h"
 #include "UIWizardImportAppPageSource.h"
-
-/* COM includes: */
-#include "CProgress.h"
 
 
 /* Import license viewer: */
@@ -182,21 +179,9 @@ bool UIWizardImportApp::setFile(const QString &strName)
     }
 
     /* Read the file to appliance: */
-    CProgress comProgress = comAppliance.Read(strName);
-    if (!comAppliance.isOk())
-    {
-        msgCenter().cannotImportAppliance(comAppliance, this);
+    UINotificationProgressApplianceRead *pNotification = new UINotificationProgressApplianceRead(comAppliance, strName);
+    if (!handleNotificationProgressNow(pNotification))
         return false;
-    }
-
-    /* Show Reading Appliance progress: */
-    msgCenter().showModalProgressDialog(comProgress, tr("Reading Appliance ..."),
-                                        ":/progress_reading_appliance_90px.png", this);
-    if (!comProgress.isOk() || comProgress.GetResultCode() != 0)
-    {
-        msgCenter().cannotImportAppliance(comProgress, comAppliance.GetPath(), this);
-        return false;
-    }
 
     /* Now we have to interpret that stuff: */
     comAppliance.Interpret();

@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.h 91966 2021-10-21 15:44:49Z vboxsync $ */
+/* $Id: UINotificationObjects.h 91969 2021-10-21 15:53:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects declarations.
  */
@@ -1612,9 +1612,9 @@ protected:
 private:
 
     /** Holds the appliance being read. */
-    CAppliance               m_comAppliance;
+    CAppliance  m_comAppliance;
     /** Holds the appliance path. */
-    QString                  m_strPath;
+    QString     m_strPath;
 };
 
 /** UINotificationProgress extension for import appliance functionality. */
