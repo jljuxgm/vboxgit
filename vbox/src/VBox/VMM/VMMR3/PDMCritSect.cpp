@@ -1,4 +1,4 @@
-/* $Id: PDMCritSect.cpp 90502 2021-08-03 21:20:34Z vboxsync $ */
+/* $Id: PDMCritSect.cpp 90534 2021-08-05 20:56:20Z vboxsync $ */
 /** @file
  * PDM - Critical Sections, Ring-3.
  */
@@ -19,7 +19,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#define LOG_GROUP LOG_GROUP_PDM//_CRITSECT
+#define LOG_GROUP LOG_GROUP_PDM_CRITSECT
 #include "PDMInternal.h"
 #include <VBox/vmm/pdmcritsect.h>
 #include <VBox/vmm/pdmcritsectrw.h>
@@ -162,6 +162,7 @@ static int pdmR3CritSectInitOne(PVM pVM, PPDMCRITSECTINT pCritSect, void *pvKey,
                 /*
                  * Initialize the structure (first bit is c&p from RTCritSectInitEx).
                  */
+                Log(("pdmR3CritSectInitOne: %p - %s\n", pCritSect, pszName));
                 pCritSect->Core.u32Magic             = RTCRITSECT_MAGIC;
                 pCritSect->Core.fFlags               = 0;
                 pCritSect->Core.cNestings            = 0;
