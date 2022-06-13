@@ -1,4 +1,4 @@
-/* $Id: UIFileManager.cpp 92689 2021-12-02 10:37:34Z vboxsync $ */
+/* $Id: UIFileManager.cpp 92692 2021-12-02 10:44:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManager class implementation.
  */
@@ -390,11 +390,11 @@ void UIFileManager::sltPanelActionToggled(bool fChecked)
         hidePanel(pPanel);
 }
 
-void UIFileManager::sltReceieveNewFileOperation(const CProgress &comProgress)
-{
-    if (m_pOperationsPanel)
-        m_pOperationsPanel->addNewProgress(comProgress);
-}
+// void UIFileManager::sltReceieveNewFileOperation(const CProgress &comProgress)
+// {
+//     if (m_pOperationsPanel)
+//         m_pOperationsPanel->addNewProgress(comProgress);
+// }
 
 void UIFileManager::sltFileOperationComplete(QUuid progressId)
 {
