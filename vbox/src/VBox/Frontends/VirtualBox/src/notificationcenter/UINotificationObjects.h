@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.h 92013 2021-10-22 18:03:41Z vboxsync $ */
+/* $Id: UINotificationObjects.h 92034 2021-10-25 13:36:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects declarations.
  */
@@ -48,6 +48,7 @@
 #include "CVirtualSystemDescriptionForm.h"
 
 /* Forward declarations: */
+class UINotificationCenter;
 class CAudioAdapter;
 class CEmulatedUSB;
 class CNetworkAdapter;
@@ -490,14 +491,18 @@ private:
       * @param  strName          Brings the message name.
       * @param  strDetails       Brings the message details.
       * @param  strInternalName  Brings the message internal name.
-      * @param  strHelpKeyword   Brings the message help keyword. */
+      * @param  strHelpKeyword   Brings the message help keyword.
+      * @param  pParent          Brings the local notification-center reference. */
     static void createMessage(const QString &strName,
                               const QString &strDetails,
                               const QString &strInternalName = QString(),
-                              const QString &strHelpKeyword = QString());
+                              const QString &strHelpKeyword = QString(),
+                              UINotificationCenter *pParent = 0);
     /** Destroys message.
-      * @param  strInternalName  Brings the message internal name. */
-    static void destroyMessage(const QString &strInternalName);
+      * @param  strInternalName  Brings the message internal name.
+      * @param  pParent          Brings the local notification-center reference. */
+    static void destroyMessage(const QString &strInternalName,
+                               UINotificationCenter *pParent = 0);
 
     /** Holds the IDs of messages registered. */
     static QMap<QString, QUuid>  m_messages;
