@@ -1,4 +1,4 @@
-/* $Id: vkatCommon.cpp 92448 2021-11-16 10:32:51Z vboxsync $ */
+/* $Id: vkatCommon.cpp 92452 2021-11-16 10:43:51Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) - Self test code.
  */
@@ -813,6 +813,8 @@ static int audioTestRecordTone(PAUDIOTESTIOOPTS pIoOpts, PAUDIOTESTENV pTstEnv, 
                             RT_FALL_THROUGH();
                         case AUDIOTESTSTATE_POST:
                         {
+                            bool fGoToNextStage = false;
+
                             if (    AudioTestBeaconGetSize(&Beacon)
                                 && !AudioTestBeaconIsComplete(&Beacon))
                             {
@@ -843,12 +845,18 @@ static int audioTestRecordTone(PAUDIOTESTIOOPTS pIoOpts, PAUDIOTESTENV pTstEnv, 
                                     if (g_uVerbosity >= 2)
                                         RTTestPrintf(g_hTest, RTTESTLVL_ALWAYS, "Detected %s beacon\n",
                                                      AudioTestBeaconTypeGetName(Beacon.enmType));
-
-                                    if (enmState == AUDIOTESTSTATE_PRE)
-                                        enmState = AUDIOTESTSTATE_RUN;
-                                    else if (enmState == AUDIOTESTSTATE_POST)
-                                        enmState = AUDIOTESTSTATE_DONE;
+                                    fGoToNextStage = true;
                                 }
+                            }
+                            else
+                                fGoToNextStage = true;
+
+                            if (fGoToNextStage)
+                            {
+                                if (enmState == AUDIOTESTSTATE_PRE)
+                                    enmState = AUDIOTESTSTATE_RUN;
+                                else if (enmState == AUDIOTESTSTATE_POST)
+                                    enmState = AUDIOTESTSTATE_DONE;
                             }
                             break;
                         }
