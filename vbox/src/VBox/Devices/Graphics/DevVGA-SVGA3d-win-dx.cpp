@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-win-dx.cpp 94146 2022-03-09 12:07:30Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-win-dx.cpp 94147 2022-03-09 12:16:50Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -5532,7 +5532,7 @@ static void dxSetupPipeline(PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXContext)
                                                                      pDXShader->pvDXBC,
                                                                      pDXShader->cbDXBC,
                                                                      &pDXElementLayout->pElementLayout);
-                    Assert(SUCCEEDED(hr));
+                    Assert(SUCCEEDED(hr)); RT_NOREF(hr);
                 }
                 else
                     LogRelMax(16, ("VMSVGA: DX shader bytecode is not available in DXSetInputLayout: shid = %u\n", shid));
