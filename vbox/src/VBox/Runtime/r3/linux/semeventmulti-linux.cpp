@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-linux.cpp 92782 2021-12-07 10:58:17Z vboxsync $ */
+/* $Id: semeventmulti-linux.cpp 92784 2021-12-07 11:53:19Z vboxsync $ */
 /** @file
  * IPRT - Multiple Release Event Semaphore, Linux (2.6.x+).
  */
@@ -395,7 +395,7 @@ static int rtSemEventMultiLinuxWaitTimed(struct RTSEMEVENTMULTIINTERNAL *pThis, 
     struct timespec TsTimeout;
     int             iWaitOp;
     uint32_t        uWaitVal3;
-    uint64_t        nsAbsTimeout;
+    uint64_t        nsAbsTimeout = uTimeout; /* (older gcc maybe used uninitialized) */
     uTimeout = rtSemLinuxCalcDeadline(fFlags, uTimeout, g_fCanUseWaitBitSet, &TsTimeout, &iWaitOp, &uWaitVal3, &nsAbsTimeout);
     if (uTimeout == 0)
         return rtSemEventMultiLinuxWaitPoll(pThis);
