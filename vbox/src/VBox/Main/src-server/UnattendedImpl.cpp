@@ -1,4 +1,4 @@
-/* $Id: UnattendedImpl.cpp 94079 2022-03-03 17:10:36Z vboxsync $ */
+/* $Id: UnattendedImpl.cpp 94136 2022-03-08 18:19:48Z vboxsync $ */
 /** @file
  * Unattended class implementation
  */
@@ -3571,6 +3571,16 @@ HRESULT Unattended::getIsUnattendedInstallSupported(BOOL *aIsUnattendedInstallSu
             return S_OK;
         }
     }
+    /* Earlier than OL 6.4 cannot be installer. OL 6.x fails with unsupported hardware error (CPU family). */
+    if (mEnmOsType == VBOXOSTYPE_Oracle || mEnmOsType == VBOXOSTYPE_Oracle_x64)
+    {
+        if (RTStrVersionCompare(mStrDetectedOSVersion.c_str(), "6.4") < 0)
+        {
+            *aIsUnattendedInstallSupported = false;
+            return S_OK;
+        }
+    }
+
     *aIsUnattendedInstallSupported = true;
     return S_OK;
 }
