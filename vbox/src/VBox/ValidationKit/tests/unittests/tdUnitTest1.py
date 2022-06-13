@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 93903 2022-02-24 08:07:29Z vboxsync $
+# $Id: tdUnitTest1.py 93904 2022-02-24 08:18:36Z vboxsync $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 93903 $"
+__version__ = "$Revision: 93904 $"
 
 
 # Standard Python imports.
@@ -595,9 +595,9 @@ class tdUnitTest1(vbox.TestDriver):
         reporter.log('           Target: %s' % (oTestVm.sVmName if oTestVm else 'local'));
         reporter.log('             Mode: %s' % (self.sMode));
         reporter.log('Unit tests source: %s %s' % (self.sUnitTestsPathSrc, \
-                    '(on remote)' if self.sMode is 'remote-exec' else ''));
+                    '(on remote)' if self.sMode == 'remote-exec' else ''));
         reporter.log('VBox install root: %s %s' % (self.sVBoxInstallRoot, \
-                     '(on remote)' if self.sMode is 'remote-exec' else ''));
+                     '(on remote)' if self.sMode == 'remote-exec' else ''));
         reporter.log('*********************************************************');
         reporter.log('***  PASSED: %d' % self.cPassed);
         reporter.log('***  FAILED: %d' % self.cFailed);
@@ -1071,7 +1071,7 @@ class tdUnitTest1(vbox.TestDriver):
             else: # 'remote-exec'
                 ## @todo Implement remote file enumeration / directory listing.
                 reporter.error('Sorry, no remote file enumeration implemented yet!\nUse --only-whitelist instead.');
-                return False;
+                return;
         else:
             # Transform our dict into a list, where the keys are the list elements.
             asFiles = list(self.kdTestCasesWhiteList.keys());
