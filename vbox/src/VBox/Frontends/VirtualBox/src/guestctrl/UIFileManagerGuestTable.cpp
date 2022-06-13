@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerGuestTable.cpp 93186 2022-01-11 15:11:36Z vboxsync $ */
+/* $Id: UIFileManagerGuestTable.cpp 93442 2022-01-26 16:31:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerGuestTable class implementation.
  */
@@ -1074,7 +1074,6 @@ void UIFileManagerGuestTable::prepareWarningLabels()
         {
             pContainerLayout->addWidget(m_pWarningLabel);
             m_pWarningLabel->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Maximum);
-            m_pWarningLabel->setVisible(false);
         }
     }
 }
@@ -1397,21 +1396,21 @@ void UIFileManagerGuestTable::setSessionDependentWidgetsEnabled()
         case State_MachineNotRunning:
         case State_NoGuestAdditions:
             setSessionWidgetsEnabled(false);
-            m_pWarningLabel->setVisible(true);
+            m_pWarningLabelContainer->setVisible(true);
             m_pGuestSessionPanel->setEnabled(false);
             if (m_pGuestSessionPanel)
                 m_pGuestSessionPanel->switchSessionCreateMode();
             break;
         case State_SessionPossible:
             setSessionWidgetsEnabled(false);
-            m_pWarningLabel->setVisible(true);
+            m_pWarningLabelContainer->setVisible(true);
             m_pGuestSessionPanel->setEnabled(true);
             if (m_pGuestSessionPanel)
                 m_pGuestSessionPanel->switchSessionCreateMode();
             break;
         case State_SessionRunning:
             setSessionWidgetsEnabled(true);
-            m_pWarningLabel->setVisible(false);
+            m_pWarningLabelContainer->setVisible(false);
             m_pGuestSessionPanel->setEnabled(true);
             if (m_pGuestSessionPanel)
                 m_pGuestSessionPanel->switchSessionCloseMode();
