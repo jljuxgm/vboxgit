@@ -1,4 +1,4 @@
-; $Id: VBoxRTImp.def 94815 2022-05-04 08:57:02Z vboxsync $
+; $Id: VBoxRTImp.def 94816 2022-05-04 09:02:12Z vboxsync $
 ;; @file
 ; VirtualBox Runtime DLL - Stable Interface Definition file.
 ;
@@ -785,15 +785,15 @@ EXPORTS
     RTCritSectSetSubClass
     RTCritSectTryEnter
     RTCritSectTryEnterDebug
-    RTCrCipherCtxDecryptEx
     RTCrCipherCtxDecryptFinish
     RTCrCipherCtxDecryptInit
     RTCrCipherCtxDecryptProcess
-    RTCrCipherCtxEncryptEx
     RTCrCipherCtxEncryptFinish
     RTCrCipherCtxEncryptInit
     RTCrCipherCtxEncryptProcess
     RTCrCipherCtxFree
+    RTCrCipherDecryptEx
+    RTCrCipherEncryptEx
     RTCrCipherDecrypt
     RTCrCipherEncrypt
     RTCrCipherGetBlockSize
