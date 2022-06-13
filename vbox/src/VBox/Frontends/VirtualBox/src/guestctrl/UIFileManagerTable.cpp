@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.cpp 92860 2021-12-10 12:39:38Z vboxsync $ */
+/* $Id: UIFileManagerTable.cpp 92899 2021-12-14 14:55:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class implementation.
  */
@@ -1443,6 +1443,8 @@ void UIFileManagerTable::setSelectionDependentActionsEnabled(bool fIsEnabled)
 {
     foreach (QAction *pAction, m_selectionDependentActions)
         pAction->setEnabled(fIsEnabled);
+    if (m_pView)
+        emit sigSelectionChanged(m_pView->hasSelection());
 }
 
 UICustomFileSystemItem* UIFileManagerTable::rootItem()

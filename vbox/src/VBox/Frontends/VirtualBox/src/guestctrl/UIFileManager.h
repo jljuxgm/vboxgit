@@ -1,4 +1,4 @@
-/* $Id: UIFileManager.h 92790 2021-12-07 18:18:45Z vboxsync $ */
+/* $Id: UIFileManager.h 92899 2021-12-14 14:55:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManager class declaration.
  */
@@ -113,6 +113,7 @@ private slots:
     void sltHandleOptionsUpdated();
     void sltHandleHidePanel(UIDialogPanel *pPanel);
     void sltCommitDataSignalReceived();
+    void sltFileTableSelectionChanged(bool fHasSelection);
 
 private:
 
