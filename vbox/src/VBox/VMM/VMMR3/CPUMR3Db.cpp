@@ -1,4 +1,4 @@
-/* $Id: CPUMR3Db.cpp 93515 2022-01-31 22:17:19Z vboxsync $ */
+/* $Id: CPUMR3Db.cpp 93519 2022-01-31 22:45:35Z vboxsync $ */
 /** @file
  * CPUM - CPU database part.
  */
@@ -751,6 +751,7 @@ int cpumR3MsrApplyFudge(PVM pVM)
     return rc;
 }
 
+#if defined(RT_ARCH_X86) || defined(RT_ARCH_AMD64)
 
 /**
  * Do we consider @a enmConsider a better match for @a enmTarget than
@@ -868,6 +869,7 @@ static bool cpumR3DbIsBetterIntelFam06Match(CPUMMICROARCH enmConsider, CPUMMICRO
     return cpumR3DbIsBetterMarchMatch(enmConsider, enmTarget, enmFound);
 }
 
+#endif /* RT_ARCH_X86 || RT_ARCH_AMD64 */
 
 int cpumR3DbGetCpuInfo(const char *pszName, PCPUMINFO pInfo)
 {
