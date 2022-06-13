@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 91170 2021-09-08 19:21:10Z vboxsync $ */
+/* $Id: VBoxManage.cpp 91187 2021-09-09 22:56:32Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -236,6 +236,12 @@ HRESULT showProgress(ComPtr<IProgress> progress, unsigned int fFlags)
         return hrc;
     }
 
+    /*
+     * Note: Outputting the progress info to stderr (g_pStdErr) is intentional
+     *       to not get intermixed with other (raw) stdout data which might get
+     *       written in the meanwhile.
+     */
+
     if (fFlags & SHOW_PROGRESS_DESC)
     {
         com::Bstr bstrDescription;
@@ -247,20 +253,14 @@ HRESULT showProgress(ComPtr<IProgress> progress, unsigned int fFlags)
         }
 
         const char *pcszDescSep;
-        if (fFlags & SHOW_PROGRESS_DETAILS)
+        if (fDetailed)          /* multiline output */
             pcszDescSep = "\n";
-        else
+        else                    /* continues on the same line */
             pcszDescSep = ": ";
 
         RTStrmPrintf(g_pStdErr, "%ls%s", bstrDescription.raw(), pcszDescSep);
         RTStrmFlush(g_pStdErr);
     }
-
-    /*
-     * Note: Outputting the progress info to stderr (g_pStdErr) is intentional
-     *       to not get intermixed with other (raw) stdout data which might get
-     *       written in the meanwhile.
-     */
 
     if (!fQuiet && !fDetailed)
     {
@@ -388,12 +388,10 @@ HRESULT showProgress(ComPtr<IProgress> progress, unsigned int fFlags)
             RTStrmPrintf(g_pStdErr, "CANCELED\n");
         else
         {
-            if (!fQuiet)
-            {
-                if (!fDetailed)
-                    RTStrmPrintf(g_pStdErr, "\n");
+            if (fDetailed)
                 RTStrmPrintf(g_pStdErr, "Progress state: %Rhrc\n", iRc);
-            }
+            else if (fFlags != SHOW_PROGRESS_NONE)
+                RTStrmPrintf(g_pStdErr, "%Rhrc\n", iRc);
         }
         hrc = iRc;
     }
