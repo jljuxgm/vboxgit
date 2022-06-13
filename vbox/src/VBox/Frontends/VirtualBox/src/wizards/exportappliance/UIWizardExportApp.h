@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportApp.h 91467 2021-09-29 17:57:13Z vboxsync $ */
+/* $Id: UIWizardExportApp.h 91893 2021-10-20 13:02:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportApp class declaration.
  */
@@ -169,7 +169,7 @@ public:
         bool exportAppliance();
 
         /** Creates VSD Form. */
-        bool createVsdLaunchForm();
+        void createVsdLaunchForm();
 
         /** Creates New Cloud VM. */
         bool createCloudVM();
