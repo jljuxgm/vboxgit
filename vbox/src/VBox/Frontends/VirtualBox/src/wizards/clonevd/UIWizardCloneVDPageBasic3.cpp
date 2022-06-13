@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageBasic3.cpp 90761 2021-08-20 15:20:36Z vboxsync $ */
+/* $Id: UIWizardCloneVDPageBasic3.cpp 90762 2021-08-20 15:25:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDPageBasic3 class implementation.
  */
@@ -271,7 +271,7 @@ void UIWizardCloneVDPageBasic3::sltSelectLocationButtonClicked()
     AssertReturnVoid(pWizard);
     CMediumFormat comMediumFormat(pWizard->mediumFormat());
     QString strSelectedPath =
-        UIDiskEditorGroupBox::openFileDialogForDiskFile(pWizard->mediumPath(), comMediumFormat, pWizard);
+        UIDiskEditorGroupBox::openFileDialogForDiskFile(pWizard->mediumPath(), comMediumFormat, pWizard->deviceType(), pWizard);
 
     if (strSelectedPath.isEmpty())
         return;

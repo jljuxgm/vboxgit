@@ -1,4 +1,4 @@
-/* $Id: UIWizardDiskEditors.h 90761 2021-08-20 15:20:36Z vboxsync $ */
+/* $Id: UIWizardDiskEditors.h 90762 2021-08-20 15:25:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardDiskEditors class declaration.
  */
@@ -61,7 +61,8 @@ public:
     static QString appendExtension(const QString &strName, const QString &strExtension);
     static QString constructMediumFilePath(const QString &strFileName, const QString &strPath);
     static bool checkFATSizeLimitation(const qulonglong uVariant, const QString &strMediumPath, const qulonglong uSize);
-    static QString openFileDialogForDiskFile(const QString &strInitialPath, CMediumFormat &comMediumFormat, QWidget *pParent);
+    static QString openFileDialogForDiskFile(const QString &strInitialPath, CMediumFormat &comMediumFormat,
+                                             KDeviceType enmDeviceType, QWidget *pParent);
 
 protected:
 
