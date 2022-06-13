@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.h 92352 2021-11-11 10:18:36Z vboxsync $ */
+/* $Id: UIActionPool.h 92415 2021-11-14 16:48:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPool class declaration.
  */
@@ -141,6 +141,11 @@ enum UIActionIndex
     UIActionIndex_M_VISOCreator,
     UIActionIndex_M_VISOCreator_ToggleConfigPanel,
     UIActionIndex_M_VISOCreator_ToggleOptionsPanel,
+    UIActionIndex_M_VISOCreator_Add,
+    UIActionIndex_M_VISOCreator_Remove,
+    UIActionIndex_M_VISOCreator_CreateNewDirectory,
+    UIActionIndex_M_VISOCreator_Rename,
+    UIActionIndex_M_VISOCreator_Reset,
 
     /* Maximum index: */
     UIActionIndex_Max

@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.h 92397 2021-11-12 11:53:07Z vboxsync $ */
+/* $Id: UIVisoCreator.h 92415 2021-11-14 16:48:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator class declaration.
  */
@@ -60,6 +60,7 @@ public:
     /** Returns the current path that the host browser is listing. */
     QString currentPath() const;
     void    setCurrentPath(const QString &strPath);
+    QMenu *menu() const;
 
 #ifdef VBOX_WS_MAC
     /** Returns the toolbar. */
@@ -76,6 +77,7 @@ public:
       */
     static int visoWriteQuotedString(PRTSTREAM pStrmDst, const char *pszPrefix,
                                      QString const &rStr, const char *pszPostFix);
+
 protected:
 
     virtual void retranslateUi() final override;
@@ -142,7 +144,7 @@ private:
       * @{ */
         QAction              *m_pAddAction;
         QAction              *m_pRemoveAction;
-        QAction              *m_pNewDirectoryAction;
+        QAction              *m_pCreateNewDirectoryAction;
         QAction              *m_pRenameAction;
         QAction              *m_pResetAction;
     /** @} */
