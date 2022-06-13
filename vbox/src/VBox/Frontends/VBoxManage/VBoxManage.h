@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: VBoxManage.h 93279 2022-01-17 18:58:27Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -391,7 +391,8 @@ RTEXITCODE handleDHCPServer(HandlerArg *a);
 
 /* VBoxManageNATNetwork.cpp */
 RTEXITCODE handleNATNetwork(HandlerArg *a);
-
+RTEXITCODE listNATNetworks(bool fLong, bool fSorted,
+                           const ComPtr<IVirtualBox> &pVirtualBox);
 
 /* VBoxManageBandwidthControl.cpp */
 RTEXITCODE handleBandwidthControl(HandlerArg *a);
