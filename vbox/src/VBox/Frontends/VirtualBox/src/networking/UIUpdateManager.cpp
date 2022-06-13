@@ -1,4 +1,4 @@
-/* $Id: UIUpdateManager.cpp 90491 2021-08-03 09:56:48Z vboxsync $ */
+/* $Id: UIUpdateManager.cpp 90539 2021-08-06 08:38:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUpdateManager class implementation.
  */
@@ -585,8 +585,7 @@ void UIUpdateManager::sltCheckIfUpdateIsNecessary(bool fForceCall /* = false */)
         /* And we have a force-call: */
         if (fForceCall)
         {
-            /* Just show Network Access Manager: */
-            gNetworkManager->show();
+            /// @todo show notification-center
         }
         return;
     }

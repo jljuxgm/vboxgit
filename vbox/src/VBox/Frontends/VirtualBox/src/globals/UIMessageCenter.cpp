@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 90522 2021-08-05 08:52:44Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 90539 2021-08-06 08:38:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -3414,8 +3414,7 @@ void UIMessageCenter::sltShowHelpHelpDialog()
     /* If downloader is running already: */
     else if (UIDownloaderUserManual::current())
     {
-        /* Just show network access manager: */
-        gNetworkManager->show();
+        /// @todo show notification-center
     }
     /* Else propose to download user manual: */
     else if (cannotFindUserManual(strUserManualFileName1))
