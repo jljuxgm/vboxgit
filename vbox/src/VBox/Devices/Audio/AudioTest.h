@@ -1,4 +1,4 @@
-/* $Id: AudioTest.h 91178 2021-09-09 11:56:14Z vboxsync $ */
+/* $Id: AudioTest.h 91194 2021-09-10 10:11:03Z vboxsync $ */
 /** @file
  * Audio testing routines.
  * Common code which is being used by the ValidationKit audio test (VKAT)
@@ -71,24 +71,41 @@ typedef struct AUDIOTESTTONE
 typedef AUDIOTESTTONE *PAUDIOTESTTONE;
 
 /**
+ * Structure for a common test parameters header.
+ */
+typedef struct AUDIOTESTPARMSHDR
+{
+    /** Index in some defined sequence this test has. Can be freely used / assigned
+     *  and depends on the actual implementation.
+     *  Set to UINT32_MAX if not being used. */
+    uint32_t idxSeq;
+    /** Time of the caller when this test was being created. */
+    RTTIME   tsCreated;
+} AUDIOTESTPARMSHDR;
+/** Pointer to an audio test tone. */
+typedef AUDIOTESTPARMSHDR *PAUDIOTESTPARMSHDR;
+
+/**
  * Structure for handling audio test tone parameters.
  */
 typedef struct AUDIOTESTTONEPARMS
 {
+    /** Common test header. */
+    AUDIOTESTPARMSHDR Hdr;
     /** The PCM properties. */
-    PDMAUDIOPCMPROPS Props;
+    PDMAUDIOPCMPROPS  Props;
     /** Tone frequency (in Hz) to use.
      *  Will be later converted to a double value. */
-    double           dbFreqHz;
+    double            dbFreqHz;
     /** Prequel (in ms) to play silence. Optional and can be set to 0. */
-    RTMSINTERVAL     msPrequel;
+    RTMSINTERVAL      msPrequel;
     /** Duration (in ms) to play the test tone. */
-    RTMSINTERVAL     msDuration;
+    RTMSINTERVAL      msDuration;
     /** Sequel (in ms) to play silence. Optional and can be set to 0. */
-    RTMSINTERVAL     msSequel;
+    RTMSINTERVAL      msSequel;
     /** Volume (in percent, 0-100) to use.
      *  If set to 0, the tone is muted (i.e. silent). */
-    uint8_t          uVolumePercent;
+    uint8_t           uVolumePercent;
 } AUDIOTESTTONEPARMS;
 /** Pointer to audio test tone parameters. */
 typedef AUDIOTESTTONEPARMS *PAUDIOTESTTONEPARMS;
