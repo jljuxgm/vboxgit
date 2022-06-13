@@ -1,4 +1,4 @@
-/* $Id: HostUpdateImpl.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: HostUpdateImpl.cpp 94438 2022-04-01 13:46:16Z vboxsync $ */
 /** @file
  * IHostUpdate  COM class implementations.
  */
@@ -450,7 +450,7 @@ HRESULT HostUpdate::i_checkForVBoxUpdateInner(RTHTTP hHttp, Utf8Str const &strUr
             rc = m_updateVersion.assignEx(pchWord0, cchWord0);
             if (SUCCEEDED(rc))
             {
-                rc = m_updateVersion.assignEx(pchWord1, cchWord1);
+                rc = m_updateURL.assignEx(pchWord1, cchWord1);
                 if (SUCCEEDED(rc))
                     m_updateNeeded = TRUE;
             }
