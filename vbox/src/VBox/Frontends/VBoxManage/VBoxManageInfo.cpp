@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 92594 2021-11-25 09:05:48Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 92996 2021-12-17 08:18:43Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -1812,10 +1812,6 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> pVirtualBox,
 #endif
 #ifdef VBOX_WITH_VIRTIO
                     case NetworkAdapterType_Virtio:     pszNICType = "virtio";      break;
-
-#endif
-#ifdef VBOX_WITH_VIRTIO_NET_1_0
-                    case NetworkAdapterType_Virtio_1_0: pszNICType = "virtio_1.0";  break;
 #endif
                     default:
                         AssertFailed();

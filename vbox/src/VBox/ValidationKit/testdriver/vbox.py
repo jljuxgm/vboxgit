@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 92980 2021-12-16 12:47:18Z vboxsync $
+# $Id: vbox.py 92996 2021-12-17 08:18:43Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 92980 $"
+__version__ = "$Revision: 92996 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -1917,8 +1917,6 @@ class TestDriver(base.TestDriver):                                              
             sAdpName = 'e1000';
         elif oNic.adapterType == vboxcon.NetworkAdapterType_Virtio:
             sAdpName = 'virtio-net';
-        elif oNic.adapterType == vboxcon.NetworkAdapterType_Virtio_1_0:
-            sAdpName = 'virtio-net-1-dot-0';
         return sAdpName;
 
     def getResourceSet(self):

@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 92223 2021-11-04 21:15:15Z vboxsync $ */
+/* $Id: Settings.cpp 92996 2021-12-17 08:18:43Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -4112,8 +4112,6 @@ void MachineConfigFile::readNetworkAdapters(const xml::ElementNode &elmNetwork,
                 nic.type = NetworkAdapterType_I82545EM;
             else if (strTemp == "virtio")
                 nic.type = NetworkAdapterType_Virtio;
-            else if (strTemp == "virtio_1.0")
-                nic.type = NetworkAdapterType_Virtio_1_0;
             else
                 throw ConfigFileError(this, pelmAdapter, N_("Invalid value '%s' in Adapter/@type attribute"), strTemp.c_str());
         }
@@ -6840,7 +6838,6 @@ void MachineConfigFile::buildHardwareXML(xml::ElementNode &elmParent,
                         case NetworkAdapterType_I82543GC:   pcszType = "82543GC"; break;
                         case NetworkAdapterType_I82545EM:   pcszType = "82545EM"; break;
                         case NetworkAdapterType_Virtio:     pcszType = "virtio"; break;
-                        case NetworkAdapterType_Virtio_1_0: pcszType = "virtio_1.0"; break;
                         default: /*case NetworkAdapterType_Am79C970A:*/  pcszType = "Am79C970A"; break;
                     }
                     pelmAdapter->setAttribute("type", pcszType);

@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 92594 2021-11-25 09:05:48Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 92996 2021-12-17 08:18:43Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -1553,12 +1553,6 @@ RTEXITCODE handleModifyVM(HandlerArg *a)
                     CHECK_ERROR(nic, COMSETTER(AdapterType)(NetworkAdapterType_Virtio));
                 }
 #endif /* VBOX_WITH_VIRTIO */
-#ifdef VBOX_WITH_VIRTIO_NET_1_0
-                else if (!RTStrICmp(ValueUnion.psz, "virtio_1.0"))
-                {
-                    CHECK_ERROR(nic, COMSETTER(AdapterType)(NetworkAdapterType_Virtio_1_0));
-                }
-#endif /* VBOX_WITH_VIRTIO_NET_1_0 */
                 else
                 {
                     errorArgument(ModifyVM::tr("Invalid NIC type '%s' specified for NIC %u"),

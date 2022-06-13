@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 91718 2021-10-14 11:43:12Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 92996 2021-12-17 08:18:43Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -1556,10 +1556,6 @@ inline static const char *networkAdapterTypeToName(NetworkAdapterType_T adapterT
 #ifdef VBOX_WITH_VIRTIO
         case NetworkAdapterType_Virtio:
             return "virtio-net";
-#endif
-#ifdef VBOX_WITH_VIRTIO_NET_1_0
-        case NetworkAdapterType_Virtio_1_0:
-            return "virtio-net-1-dot-0";
 #endif
         default:
             AssertFailed();
@@ -4251,7 +4247,6 @@ HRESULT Console::i_onNATDnsChanged()
             notifyNatDnsChange(ptrVM.rawUVM(), "pcnet", ulInstanceMax);
             notifyNatDnsChange(ptrVM.rawUVM(), "e1000", ulInstanceMax);
             notifyNatDnsChange(ptrVM.rawUVM(), "virtio-net", ulInstanceMax);
-            notifyNatDnsChange(ptrVM.rawUVM(), "virtio-net-1-dot-0", ulInstanceMax);
         }
     }
 
@@ -4930,8 +4925,7 @@ DECLCALLBACK(int) Console::i_changeNetworkAttachment(Console *pThis,
         pSystemProperties->GetMaxNetworkAdapters(chipsetType, &maxNetworkAdapters);
     AssertMsg(   (   !strcmp(pszDevice, "pcnet")
                   || !strcmp(pszDevice, "e1000")
-                  || !strcmp(pszDevice, "virtio-net")
-                  || !strcmp(pszDevice, "virtio-net-1-dot-0"))
+                  || !strcmp(pszDevice, "virtio-net"))
               && uLun == 0
               && uInstance < maxNetworkAdapters,
               ("pszDevice=%s uLun=%d uInstance=%d\n", pszDevice, uLun, uInstance));

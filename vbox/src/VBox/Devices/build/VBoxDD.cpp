@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.cpp 91416 2021-09-28 06:15:49Z vboxsync $ */
+/* $Id: VBoxDD.cpp 92996 2021-12-17 08:18:43Z vboxsync $ */
 /** @file
  * VBoxDD - Built-in drivers & devices (part 1).
  */
@@ -113,11 +113,6 @@ extern "C" DECLEXPORT(int) VBoxDevicesRegister(PPDMDEVREGCB pCallbacks, uint32_t
 #endif
 #ifdef VBOX_WITH_VIRTIO
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DeviceVirtioNet);
-    if (RT_FAILURE(rc))
-        return rc;
-#endif
-#ifdef VBOX_WITH_VIRTIO_NET_1_0
-    rc = pCallbacks->pfnRegister(pCallbacks, &g_DeviceVirtioNet_1_0);
     if (RT_FAILURE(rc))
         return rc;
 #endif
