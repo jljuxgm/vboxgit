@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 89778 2021-06-18 13:20:11Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 89779 2021-06-18 14:02:38Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -1838,7 +1838,7 @@ static int ichac97R3MixerAddDrvStreams(PPDMDEVINS pDevIns, PAC97STATER3 pThisCC,
     int rc;
     if (AudioHlpStreamCfgIsValid(pCfg))
     {
-        rc = AudioMixerSinkSetFormat(pMixSink, &pCfg->Props);
+        rc = AudioMixerSinkSetFormat(pMixSink, &pCfg->Props, pCfg->Device.cMsSchedulingHint);
         if (RT_SUCCESS(rc))
         {
             PAC97DRIVER pDrv;
