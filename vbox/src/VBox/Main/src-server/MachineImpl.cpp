@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 94814 2022-05-04 08:53:29Z vboxsync $ */
+/* $Id: MachineImpl.cpp 94817 2022-05-04 09:03:04Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -873,7 +873,7 @@ HRESULT Machine::initImpl(VirtualBox *aParent,
     /** @todo Only create when the machine is going to be encrypted. */
     /* Non-pageable memory is not accessible for non-VM process */
     mData->mpKeyStore = new SecretKeyStore(false /* fKeyBufNonPageable */);
-    AssertReturn(mData->mpKeyStore, VERR_NO_MEMORY);
+    AssertReturn(mData->mpKeyStore, E_OUTOFMEMORY);
 #endif
 
     LogFlowThisFuncLeave();
