@@ -1,4 +1,4 @@
-/* $Id: vkatInternal.h 92069 2021-10-26 09:31:12Z vboxsync $ */
+/* $Id: vkatInternal.h 92166 2021-11-01 13:33:55Z vboxsync $ */
 /** @file
  * VKAT - Internal header file for common definitions + structs.
  */
@@ -505,8 +505,6 @@ enum
             \
             case 'v': \
                 g_uVerbosity++; \
-                if (g_pRelLogger) \
-                    RTLogGroupSettings(g_pRelLogger, g_uVerbosity == 1 ? "all.e.l" : g_uVerbosity == 2 ? "all.e.l.f" : "all=~0"); \
                 break; \
             \
             case 'V': \

@@ -1,4 +1,4 @@
-/* $Id: vkat.cpp 92049 2021-10-25 16:35:01Z vboxsync $ */
+/* $Id: vkat.cpp 92166 2021-11-01 13:33:55Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) utility for testing and validating the audio stack.
  */
@@ -1483,7 +1483,7 @@ int main(int argc, char **argv)
                     RT_FALL_THROUGH();
                 default:
                     rc = RTLogGroupSettings(g_pRelLogger,
-                                            "drv_audio.e.l.l2.l3.f+audio_mixer.e.l.l2.l3.f+audio_test.e.l.l2.l3.f");
+                                            "drv_audio.e.l.l2.l3.l4.f+audio_mixer.e.l.l2.l3.l4.f+audio_test.e.l.l2.l3.l4.f");
                     break;
             }
             if (RT_FAILURE(rc))
