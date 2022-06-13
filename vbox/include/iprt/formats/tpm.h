@@ -1,4 +1,4 @@
-/* $Id: tpm.h 90587 2021-08-10 09:39:57Z vboxsync $ */
+/* $Id: tpm.h 90588 2021-08-10 09:44:41Z vboxsync $ */
 /** @file
  * IPRT, TPM common definitions (this is actually a protocol and not a format).
  */
@@ -30,6 +30,8 @@
 # pragma once
 #endif
 
+#include <iprt/asm.h>
+#include <iprt/cdefs.h>
 #include <iprt/types.h>
 #include <iprt/assertcompile.h>
 #include <iprt/string.h>
