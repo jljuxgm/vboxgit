@@ -1,4 +1,4 @@
-# $Id: ApprovedLanguages.kmk 93115 2022-01-01 11:31:46Z vboxsync $
+# $Id: ApprovedLanguages.kmk 93478 2022-01-28 14:37:31Z vboxsync $
 ## @file
 # ApprovedLanguages.kmk - List of approved VBoxManage translations.
 #
@@ -26,4 +26,5 @@ VBOX_APPROVED_VBOXMANAGE_LANGUAGES := \
 # For example: if en_US, en_UK and en_AU are approved the en_US should
 # be placed before others allowing en_US to be used when the user
 # specifies "en" as the desired language.
-VBOX_APPROVED_VBOXMANAGE_DOCBOOK_LANGUAGES :=
+VBOX_APPROVED_VBOXMANAGE_DOCBOOK_LANGUAGES := \
+	ru_RU
