@@ -1,4 +1,4 @@
-/** $Id: clipboard.cpp 87566 2021-02-03 13:48:48Z vboxsync $ */
+/** $Id: clipboard.cpp 91621 2021-10-07 20:40:03Z vboxsync $ */
 /** @file
  * Guest Additions - X11 Shared Clipboard.
  */
@@ -157,14 +157,10 @@ DECLCALLBACK(void) ShClX11RequestFromX11CompleteCallback(PSHCLCONTEXT pCtx, int 
                                                          CLIPREADCBREQ *pReq, void *pv, uint32_t cb)
 {
     LogFlowFunc(("rcCompletion=%Rrc, Format=0x%x, pv=%p, cb=%RU32\n", rcCompletion, pReq->Format, pv, cb));
+    RT_NOREF(rcCompletion);
 
-    if (RT_SUCCESS(rcCompletion)) /* Only write data if the request succeeded. */
-    {
-        AssertPtrReturnVoid(pv);
-        AssertReturnVoid(pv);
-
-        rcCompletion = VbglR3ClipboardWriteDataEx(&pCtx->CmdCtx, pReq->Format, pv, cb);
-    }
+    Assert((cb == 0 && pv == NULL) || (cb != 0 && pv != NULL));
+    rcCompletion = VbglR3ClipboardWriteDataEx(&pCtx->CmdCtx, pReq->Format, pv, cb);
 
     RTMemFree(pReq);
 
