@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMUnattendedPage.h 93546 2022-02-02 15:44:53Z vboxsync $ */
+/* $Id: UIWizardNewVMUnattendedPage.h 93606 2022-02-04 14:48:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMUnattendedPage class declaration.
  */
@@ -74,7 +74,6 @@ private:
         UIAdditionalUnattendedOptions *m_pAdditionalOptionsContainer;
         UIGAInstallationGroupBox *m_pGAInstallationISOContainer;
         UIUserNamePasswordGroupBox *m_pUserNamePasswordGroupBox;
-        UIWindowsISOImageSelector *m_pWindowsISOImageSelector;
     /** @} */
     QSet<QString> m_userModifiedParameters;
 };
