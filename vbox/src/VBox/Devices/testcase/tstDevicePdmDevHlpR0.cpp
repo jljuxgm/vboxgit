@@ -1,4 +1,4 @@
-/* $Id: tstDevicePdmDevHlpR0.cpp 92079 2021-10-26 12:10:56Z vboxsync $ */
+/* $Id: tstDevicePdmDevHlpR0.cpp 92081 2021-10-26 12:15:14Z vboxsync $ */
 /** @file
  * tstDevice - Test framework for PDM devices/drivers, PDM fake R0 helper implementation.
  */
@@ -67,6 +67,7 @@
 
 #undef RT_VALID_PTR
 #define RT_VALID_PTR(ptr) true
+
 
 /*********************************************************************************************************************************
 *   Structures and Typedefs                                                                                                      *
