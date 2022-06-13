@@ -1,4 +1,4 @@
-/* $Id: VUSBUrb.cpp 93993 2022-02-28 18:28:04Z vboxsync $ */
+/* $Id: VUSBUrb.cpp 93994 2022-02-28 18:38:30Z vboxsync $ */
 /** @file
  * Virtual USB - URBs.
  */
@@ -222,6 +222,7 @@ int vusbUrbErrorRhEx(PVUSBROOTHUB pRh, PVUSBURB pUrb)
 {
     PVUSBDEV pDev = pUrb->pVUsb->pDev;
     LogFlow(("%s: vusbUrbErrorRh: pDev=%p[%s] rh=%p\n", pUrb->pszDesc, pDev, pDev->pUsbIns ? pDev->pUsbIns->pszName : "", pRh));
+    RT_NOREF(pDev);
     return pRh->pIRhPort->pfnXferError(pRh->pIRhPort, pUrb);
 }
 
