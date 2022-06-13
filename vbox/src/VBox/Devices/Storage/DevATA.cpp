@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 90447 2021-07-31 00:44:13Z vboxsync $ */
+/* $Id: DevATA.cpp 90500 2021-08-03 21:07:05Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -582,7 +582,7 @@ typedef struct ATACONTROLLER
     STAMCOUNTER         StatAsyncTimeUS;
     STAMPROFILEADV      StatAsyncTime;
     STAMPROFILE         StatLockWait;
-    uint8_t             abAlignment4[3456];
+    uint8_t             abAlignment4[3328];
 } ATACONTROLLER;
 AssertCompileMemberAlignment(ATACONTROLLER, lock, 8);
 AssertCompileMemberAlignment(ATACONTROLLER, aIfs, 8);
