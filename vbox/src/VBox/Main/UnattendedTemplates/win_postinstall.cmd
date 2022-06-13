@@ -1,5 +1,5 @@
 @echo off
-rem $Id: win_postinstall.cmd 84875 2020-06-19 05:45:20Z vboxsync $
+rem $Id: win_postinstall.cmd 92769 2021-12-06 15:33:02Z vboxsync $
 rem rem @file
 rem Post installation script template for Windows.
 rem
@@ -120,12 +120,12 @@ echo *** Running: reg.exe ADD HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
 reg.exe ADD HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v NTConfiguration /d %SystemDrive%\Apps\vboxtxs.cmd >> %MY_LOG_FILE% 2>&1
 echo *** ERRORLEVEL: %ERRORLEVEL% >> %MY_LOG_FILE%
 
-echo *** Running: reg.exe ADD HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon /v PowerdownAfterShutdown /d 1 >> %MY_LOG_FILE%
-reg.exe ADD HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon /v PowerdownAfterShutdown /d 1 >> %MY_LOG_FILE% 2>&1
+echo *** Running: reg.exe ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" /v PowerdownAfterShutdown /d 1 >> %MY_LOG_FILE%
+reg.exe ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" /v PowerdownAfterShutdown /d 1 >> %MY_LOG_FILE% 2>&1
 echo *** ERRORLEVEL: %ERRORLEVEL% >> %MY_LOG_FILE%
 
-echo *** Running: reg.exe ADD HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon /v ForceAutoLogon /d 1 >> %MY_LOG_FILE%
-reg.exe ADD HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon /v ForceAutoLogon /d 1 >> %MY_LOG_FILE% 2>&1
+echo *** Running: reg.exe ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" /v ForceAutoLogon /d 1 >> %MY_LOG_FILE%
+reg.exe ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" /v ForceAutoLogon /d 1 >> %MY_LOG_FILE% 2>&1
 echo *** ERRORLEVEL: %ERRORLEVEL% >> %MY_LOG_FILE%
 rem  AutoAdminLogon too if administrator?
 
