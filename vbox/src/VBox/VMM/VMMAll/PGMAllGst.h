@@ -1,4 +1,4 @@
-/* $Id: PGMAllGst.h 92426 2021-11-15 13:25:47Z vboxsync $ */
+/* $Id: PGMAllGst.h 92459 2021-11-16 13:21:57Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Guest Paging Template - All context code.
  */
@@ -123,7 +123,8 @@ DECLINLINE(int) PGM_GST_NAME(Walk)(PVMCPUCC pVCpu, RTGCPTR GCPtr, PPGMPTWALK pWa
 /** @def PGM_GST_SLAT_WALK
  * Macro to perform guest second-level address translation (EPT or Nested).
  *
- * @param   pVCpu           The cross context virtual CPU structure of the calling EMT.
+ * @param   a_pVCpu         The cross context virtual CPU structure of the calling
+ *                          EMT.
  * @param   a_GCPtrNested   The nested-guest linear address that caused the
  *                          second-level translation.
  * @param   a_GCPhysNested  The nested-guest physical address to translate.
