@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 94157 2022-03-10 15:11:22Z vboxsync $
+# $Id: Makefile.kmk 94300 2022-03-17 20:51:20Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -640,6 +640,7 @@ RuntimeR3_SOURCES       = \
 	common/string/straprintf.cpp \
 	common/string/strformat.cpp \
 	common/string/RTStrFormat.cpp \
+	common/string/strformatfloat.cpp \
 	common/string/strformatnum.cpp \
 	common/string/strformatrt.cpp \
 	common/string/strformattype.cpp \
