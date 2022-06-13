@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 93545 2022-02-02 13:32:23Z vboxsync $ */
+/* $Id: UIWizardNewVM.cpp 93568 2022-02-03 08:01:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
@@ -120,6 +120,9 @@ void UIWizardNewVM::cleanWizard()
     deleteVirtualDisk();
     /* Cleanup the machine folder: */
     UIWizardNewVMNameOSTypeCommon::cleanupMachineFolder(this, true);
+
+    if (!m_machine.isNull())
+        m_machine.detach();
 }
 
 bool UIWizardNewVM::createVM()
