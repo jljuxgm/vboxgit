@@ -1,4 +1,4 @@
-/* $Id: UINotificationCenter.cpp 93366 2022-01-20 17:13:31Z vboxsync $ */
+/* $Id: UINotificationCenter.cpp 93368 2022-01-20 17:22:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINotificationCenter class implementation.
  */
@@ -760,7 +760,17 @@ void UINotificationCenter::paintFrame(QPainter *pPainter)
 
 void UINotificationCenter::setAnimatedValue(int iValue)
 {
+    /* Store recent value: */
     m_iAnimatedValue = iValue;
+
+    // WORKAROUND:
+    // Hide items if they are masked anyway.
+    // This actually shouldn't be necessary but
+    // *is* required to avoid painting artifacts.
+    foreach (QWidget *pItem, m_items.values())
+        pItem->setVisible(animatedValue());
+
+    /* Adjust geometry: */
     adjustGeometry();
 }
 
