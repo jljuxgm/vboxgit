@@ -1,5 +1,5 @@
 #!/usr/bin/make -f
-# $Id: rules 90414 2021-07-29 17:45:26Z vboxsync $
+# $Id: rules 91699 2021-10-12 18:43:45Z vboxsync $
 ## @file
 # VirtualBox rules.
 #
@@ -85,7 +85,7 @@ cmd := $(filter-out all Makefile,$(MAKECMDGOALS))
 all:
 	mkdir -p $(bldbase)
 	ln -sf $(addprefix $(debroot)/debian/,$(DEBPKGFILES)) $(bldbase)
-	+$(MAKE) -C $(outdir) -f debian/rules $(cmd)
+	+$(MAKE) -C $(outdir) vboxroot=$(vboxroot) -f debian/rules $(cmd)
 
 Makefile:
 
