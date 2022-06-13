@@ -16,7 +16,7 @@
 <refentry id="vboxmanage-hostonlynet" lang="en">
 
   <refentryinfo>
-    <pubdate>$Date: 2022-01-28 22:37:31 +0800 (Fri, 28 Jan 2022) $</pubdate>
+    <pubdate>$Date: 2022-03-14 17:39:06 +0800 (Mon, 14 Mar 2022) $</pubdate>
     <title>VBoxManage hostonlynet</title>
   </refentryinfo>
 
@@ -28,7 +28,7 @@
   <refnamediv>
     <refname>VBoxManage-hostonlynet</refname>
     <refpurpose>управление сетью хоста</refpurpose>
-    <refclass>Oracle VM VirtualBox</refclass>
+    <refclass>&product-name;</refclass>
   </refnamediv>
 
   <refsynopsisdiv>
