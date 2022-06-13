@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageFileType.cpp 90430 2021-07-30 14:23:10Z vboxsync $ */
+/* $Id: UIWizardNewVDPageFileType.cpp 90748 2021-08-19 14:36:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageFileType class implementation.
  */
@@ -38,7 +38,7 @@ void UIWizardNewVDPageFileType::prepare()
     QVBoxLayout *pMainLayout = new QVBoxLayout(this);
     m_pLabel = new QIRichTextLabel(this);
     pMainLayout->addWidget(m_pLabel);
-    m_pFormatButtonGroup = new UIDiskFormatsGroupBox(false, 0);
+    m_pFormatButtonGroup = new UIDiskFormatsGroupBox(false, KDeviceType_HardDisk, 0);
     pMainLayout->addWidget(m_pFormatButtonGroup, false);
 
     pMainLayout->addStretch();

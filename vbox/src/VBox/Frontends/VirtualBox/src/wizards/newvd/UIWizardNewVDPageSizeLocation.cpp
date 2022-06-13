@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageSizeLocation.cpp 90576 2021-08-09 08:57:36Z vboxsync $ */
+/* $Id: UIWizardNewVDPageSizeLocation.cpp 90748 2021-08-19 14:36:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageSizeLocation class implementation.
  */
@@ -106,7 +106,7 @@ void UIWizardNewVDPageSizeLocation::sltSelectLocationButtonClicked()
         return;
     QString strMediumPath =
         UIDiskEditorGroupBox::appendExtension(strSelectedPath,
-                                              UIDiskEditorGroupBox::defaultExtensionForMediumFormat(pWizard->mediumFormat()));
+                                              UIDiskFormatsGroupBox::defaultExtension(pWizard->mediumFormat(), KDeviceType_HardDisk));
     QFileInfo mediumPath(strMediumPath);
     m_pMediumSizePathGroup->setMediumPath(QDir::toNativeSeparators(mediumPath.absoluteFilePath()));
 }
@@ -125,7 +125,7 @@ void UIWizardNewVDPageSizeLocation::sltMediumPathChanged(const QString &strPath)
     m_userModifiedParameters << "MediumPath";
     QString strMediumPath =
         UIDiskEditorGroupBox::appendExtension(strPath,
-                                              UIDiskEditorGroupBox::defaultExtensionForMediumFormat(pWizard->mediumFormat()));
+                                              UIDiskFormatsGroupBox::defaultExtension(pWizard->mediumFormat(), KDeviceType_HardDisk));
     newVDWizardPropertySet(MediumPath, strMediumPath);
     emit completeChanged();
 }
@@ -144,7 +144,7 @@ void UIWizardNewVDPageSizeLocation::initializePage()
     {
         const CMediumFormat comMediumFormat = pWizard->mediumFormat();
         AssertReturnVoid(!comMediumFormat.isNull());
-        QString strExtension = UIDiskEditorGroupBox::defaultExtensionForMediumFormat(comMediumFormat);
+        QString strExtension = UIDiskFormatsGroupBox::defaultExtension(comMediumFormat, KDeviceType_HardDisk);
         QString strMediumFilePath =
             UIDiskEditorGroupBox::constructMediumFilePath(UIDiskVariantGroupBox::appendExtension(m_strDefaultName,
                                                                                                     strExtension), m_strDefaultPath);
