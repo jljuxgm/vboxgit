@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 91343 2021-09-23 08:01:24Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 91357 2021-09-24 09:28:57Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -5880,8 +5880,8 @@ static VBOXSTRICTRC hmR0VmxExportGuestCR3AndCR4(PVMCPUCC pVCpu, PCVMXTRANSIENT p
             Assert(!(pVmcsInfo->HCPhysEPTP & 0xfff));
 
             /* VMX_EPT_MEMTYPE_WB support is already checked in hmR0VmxSetupTaggedTlb(). */
-            pVmcsInfo->HCPhysEPTP |= VMX_EPT_MEMTYPE_WB
-                                  |  (VMX_EPT_PAGE_WALK_LENGTH_DEFAULT << VMX_EPT_PAGE_WALK_LENGTH_SHIFT);
+            pVmcsInfo->HCPhysEPTP |= RT_BF_MAKE(VMX_BF_EPTP_MEMTYPE,          VMX_EPTP_MEMTYPE_WB)
+                                  |  RT_BF_MAKE(VMX_BF_EPTP_PAGE_WALK_LENGTH, VMX_EPTP_PAGE_WALK_LENGTH_4);
 
             /* Validate. See Intel spec. 26.2.1 "Checks on VMX Controls" */
             AssertMsg(   ((pVmcsInfo->HCPhysEPTP >> 3) & 0x07) == 3      /* Bits 3:5 (EPT page walk length - 1) must be 3. */
