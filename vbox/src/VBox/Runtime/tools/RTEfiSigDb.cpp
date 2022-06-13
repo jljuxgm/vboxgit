@@ -1,4 +1,4 @@
-/* $Id: RTEfiSigDb.cpp 90316 2021-07-23 15:49:47Z vboxsync $ */
+/* $Id: RTEfiSigDb.cpp 90317 2021-07-23 16:02:55Z vboxsync $ */
 /** @file
  * IPRT - Utility for manipulating EFI signature databases.
  */
@@ -283,7 +283,7 @@ static RTEXITCODE rtEfiSgDbCmdAdd(const char *pszArg0, int cArgs, char **papszAr
                     rc = rtEfiSigDbOpen(pszSigDataPath, &hVfsFileSigData);
                     if (RT_FAILURE(rc))
                     {
-                        RTPrintf("Opening '%s' failed with %Rrc\n", pszSigDataPath);
+                        RTPrintf("Opening '%s' failed with %Rrc\n", pszSigDataPath, rc);
                         break;
                     }
 
