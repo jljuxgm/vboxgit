@@ -1,4 +1,4 @@
-/* $Id: tstIEMAImpl.cpp 94339 2022-03-23 14:01:48Z vboxsync $ */
+/* $Id: tstIEMAImpl.cpp 94340 2022-03-23 14:07:51Z vboxsync $ */
 /** @file
  * IEM Assembly Instruction Helper Testcase.
  */
@@ -628,14 +628,14 @@ static void GenerateHeader(PRTSTREAM pOut, const char *pszFileInfix,
                            const char *pszCpuDesc, const char *pszCpuType, const char *pszCpuSuffU)
 {
     /* We want to tag the generated source code with the revision that produced it. */
-    static char s_szRev[] = "$Revision: 94339 $";
+    static char s_szRev[] = "$Revision: 94340 $";
     const char *pszRev = RTStrStripL(strchr(s_szRev, ':') + 1);
     size_t      cchRev = 0;
     while (RT_C_IS_DIGIT(pszRev[cchRev]))
         cchRev++;
 
     RTStrmPrintf(pOut,
-                 "/* $Id: tstIEMAImpl.cpp 94339 2022-03-23 14:01:48Z vboxsync $ */\n"
+                 "/* $Id: tstIEMAImpl.cpp 94340 2022-03-23 14:07:51Z vboxsync $ */\n"
                  "/** @file\n"
                  " * IEM Assembly Instruction Helper Testcase Data%s%s - r%.*s on %s.\n"
                  " */\n"
@@ -2841,8 +2841,8 @@ int main(int argc, char **argv)
             FpuLdMemGenerate(pStrmData, cTests);
             FpuStMemGenerate(pStrmData, cTests);
 
-            RTEXITCODE rcExit = GenerateFooterAndClose(pStrmDataCpu, pszDataCpuFile, "Fpu", pszCpuSuff,
-                                                       GenerateFooterAndClose(pStrmData, pszDataFile, "Fpu", "",
+            RTEXITCODE rcExit = GenerateFooterAndClose(pStrmDataCpu, pszDataCpuFile, "FpuLdSt", pszCpuSuff,
+                                                       GenerateFooterAndClose(pStrmData, pszDataFile, "FpuLdSt", "",
                                                                               RTEXITCODE_SUCCESS));
             if (rcExit != RTEXITCODE_SUCCESS)
                 return rcExit;
@@ -2869,8 +2869,8 @@ int main(int argc, char **argv)
 
             /* later */
 
-            RTEXITCODE rcExit = GenerateFooterAndClose(pStrmDataCpu, pszDataCpuFile, "Fpu", pszCpuSuff,
-                                                       GenerateFooterAndClose(pStrmData, pszDataFile, "Fpu", "",
+            RTEXITCODE rcExit = GenerateFooterAndClose(pStrmDataCpu, pszDataCpuFile, "FpuOther", pszCpuSuff,
+                                                       GenerateFooterAndClose(pStrmData, pszDataFile, "FpuOther", "",
                                                                               RTEXITCODE_SUCCESS));
             if (rcExit != RTEXITCODE_SUCCESS)
                 return rcExit;
