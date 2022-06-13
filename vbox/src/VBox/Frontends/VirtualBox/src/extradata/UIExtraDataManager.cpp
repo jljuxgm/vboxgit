@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 92400 2021-11-12 15:07:42Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 92401 2021-11-12 15:16:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -2353,12 +2353,13 @@ void UIExtraDataManager::setKeepSuccessfullNotificationProgresses(bool fKeep)
 
 Qt::SortOrder UIExtraDataManager::notificationCenterOrder()
 {
-    return gpConverter->fromInternalString<Qt::SortOrder>(extraDataString(GUI_NotificationCenter_Order));
+    const QString strValue = extraDataString(GUI_NotificationCenter_Order);
+    return strValue.isEmpty() ? Qt::DescendingOrder : gpConverter->fromInternalString<Qt::SortOrder>(strValue);
 }
 
 void UIExtraDataManager::setNotificationCenterOrder(Qt::SortOrder enmOrder)
 {
-    const QString strValue = enmOrder == Qt::AscendingOrder ? QString() : gpConverter->toInternalString(enmOrder);
+    const QString strValue = enmOrder == Qt::DescendingOrder ? QString() : gpConverter->toInternalString(enmOrder);
     setExtraDataString(GUI_NotificationCenter_Order, strValue);
 }
 
