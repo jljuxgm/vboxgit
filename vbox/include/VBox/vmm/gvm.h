@@ -1,4 +1,4 @@
-/* $Id: gvm.h 87792 2021-02-18 18:38:24Z vboxsync $ */
+/* $Id: gvm.h 90189 2021-07-14 16:39:09Z vboxsync $ */
 /** @file
  * GVM - The Global VM Data.
  */
@@ -103,11 +103,19 @@ typedef struct GVMCPU
     } nemr0;
 #endif
 
+    union
+    {
+#if defined(VMM_INCLUDED_SRC_include_VMMInternal_h) && defined(IN_RING0)
+        struct VMMR0PERVCPU s;
+#endif
+        uint8_t             padding[64];
+    } vmmr0;
+
     /** Padding the structure size to page boundrary. */
 #ifdef VBOX_WITH_NEM_R0
-    uint8_t                 abPadding2[4096 - 64 - 64 - 1024 - 64];
+    uint8_t                 abPadding2[4096 - 64 - 64 - 1024 - 64 - 64];
 #else
-    uint8_t                 abPadding2[4096 - 64 - 64 - 1024];
+    uint8_t                 abPadding2[4096 - 64 - 64 - 1024 - 64];
 #endif
 } GVMCPU;
 #if RT_GNUC_PREREQ(4, 6) && defined(__cplusplus)

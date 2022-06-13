@@ -1,4 +1,4 @@
-/* $Id: VMMGuruMeditation.cpp 90161 2021-07-12 23:08:00Z vboxsync $ */
+/* $Id: VMMGuruMeditation.cpp 90189 2021-07-14 16:39:09Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor, Guru Meditation Code.
  */
@@ -405,6 +405,11 @@ VMMR3DECL(void) VMMR3FatalDump(PVM pVM, PVMCPU pVCpu, int rcErr)
                                 pVCpu->vmm.s.CallRing3JmpBufR0.cbUsedAvg,
                                 pVCpu->vmm.s.CallRing3JmpBufR0.cbUsedTotal,
                                 pVCpu->vmm.s.CallRing3JmpBufR0.cUsedTotal);
+                pHlp->pfnPrintf(pHlp,
+                                "pfn=%RHv pvUser1=%RHv pvUser2=%RHv\n",
+                                pVCpu->vmm.s.CallRing3JmpBufR0.pfn,
+                                pVCpu->vmm.s.CallRing3JmpBufR0.pvUser1,
+                                pVCpu->vmm.s.CallRing3JmpBufR0.pvUser2);
 
                 /* Dump the resume register frame on the stack. */
                 PRTHCUINTPTR pBP;
