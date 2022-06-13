@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowScale.cpp 93366 2022-01-20 17:13:31Z vboxsync $ */
+/* $Id: UIMachineWindowScale.cpp 94998 2022-05-12 15:35:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowScale class implementation.
  */
@@ -73,8 +73,8 @@ void UIMachineWindowScale::prepareVisualState()
     /* Beta label? */
     if (uiCommon().isBeta())
     {
-        QPixmap betaLabel = ::betaLabel(QSize(100, 16));
-        ::darwinLabelWindow(this, &betaLabel, true);
+        QPixmap betaLabel = ::betaLabel(QSize(74, 26));
+        ::darwinLabelWindow(this, &betaLabel, false);
     }
 
     /* For 'Yosemite' and above: */
