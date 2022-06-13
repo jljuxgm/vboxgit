@@ -1,4 +1,4 @@
-/* $Id: DBGConsole.cpp 87788 2021-02-18 15:12:31Z vboxsync $ */
+/* $Id: DBGConsole.cpp 90680 2021-08-13 11:14:23Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console.
  */
@@ -746,7 +746,7 @@ static int dbgcProcessEvent(PDBGC pDbgc, PCDBGFEVENT pEvent)
             }
 
             /* If multi-stepping, take the next step: */
-            if (pDbgc->cMultiStepsLeft > 0 && pEvent->idCpu != idCpuSaved)
+            if (pDbgc->cMultiStepsLeft > 0 && pEvent->idCpu == idCpuSaved)
             {
                 int rc2 = DBGFR3StepEx(pDbgc->pUVM, pDbgc->idCpu, DBGF_STEP_F_INTO, NULL, NULL, 0, pDbgc->uMultiStepStrideLength);
                 if (RT_SUCCESS(rc2))
