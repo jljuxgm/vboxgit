@@ -1,4 +1,4 @@
-/* $Id: tstVMStruct.h 91895 2021-10-20 13:30:17Z vboxsync $ */
+/* $Id: tstVMStruct.h 92392 2021-11-12 10:39:56Z vboxsync $ */
 /** @file
  * tstVMMStruct - Statements for generating VM and VMCPU offset and size tests.
  *
@@ -1185,8 +1185,6 @@
 #endif
     GEN_CHECK_OFF(VMMCPU, cCallRing3Disabled);
     GEN_CHECK_OFF(VMMCPU, enmCallRing3Operation);
-    GEN_CHECK_OFF(VMMCPU, rcCallRing3);
-    GEN_CHECK_OFF(VMMCPU, u64CallRing3Arg);
     GEN_CHECK_OFF(VMMCPU, CallRing3JmpBufR0);
     GEN_CHECK_OFF_DOT(VMMCPU, CallRing3JmpBufR0.SpCheck);
     GEN_CHECK_OFF_DOT(VMMCPU, CallRing3JmpBufR0.SpResume);
