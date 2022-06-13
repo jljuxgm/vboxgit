@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 94342 2022-03-23 19:53:21Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 94368 2022-03-25 07:26:37Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -10981,6 +10981,9 @@ Console::i_vmm2User_QueryGenericObject(PCVMM2USERMETHODS pThis, PUVM pUVM, PCRTU
 
     if (UuidCopy == REMOTEUSBIF_OID)
         return &pConsole->mRemoteUsbIf;
+
+    if (UuidCopy == EMULATEDUSBIF_OID)
+        return pConsole->mEmulatedUSB->i_getEmulatedUsbIf();
 
     return NULL;
 }
