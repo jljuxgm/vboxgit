@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 94212 2022-03-13 20:47:36Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 94213 2022-03-13 20:57:16Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -639,16 +639,6 @@ void printUsage(USAGECATEGORY enmCommand, uint64_t fSubcommandScope, PRTSTREAM p
                      "                            [--setlocation <path>]\n"
                      "                            [--description <description string>]"
                      "\n", SEP);
-
-    if (enmCommand == USAGE_USBDEVSOURCE || enmCommand == USAGE_S_ALL)
-    {
-        RTStrmPrintf(pStrm,
-                           "%s usbdevsource %s    add <source name>\n"
-                     "                            --backend <backend>\n"
-                     "                            --address <address>\n"
-                           "%s usbdevsource %s    remove <source name>\n"
-                     "\n", SEP, SEP);
-    }
 
 #ifndef VBOX_ONLY_DOCS /* Converted to man page, not needed. */
     if (enmCommand == USAGE_S_ALL)

@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 94212 2022-03-13 20:47:36Z vboxsync $ */
+/* $Id: VBoxManage.h 94213 2022-03-13 20:57:16Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -117,7 +117,6 @@ typedef enum
     USAGE_I_PASSWORDHASH,
     USAGE_I_GUESTSTATS,
     USAGE_I_REPAIRHD,
-    USAGE_USBDEVSOURCE,
     /* Insert new entries before this line, but only if it is not an option
      * to go for the new style command and help handling (see e.g. extpack,
      * unattend or mediumio. */
