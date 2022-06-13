@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 88365 2021-04-05 06:28:17Z vboxsync $ */
+/* $Id: MachineImpl.cpp 89718 2021-06-15 18:47:42Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -13242,7 +13242,8 @@ HRESULT SessionMachine::captureUSBDevice(const com::Guid &aId, const com::Utf8St
     /* if captureDeviceForVM() fails, it must have set extended error info */
     clearError();
     MultiResult rc = mParent->i_host()->i_checkUSBProxyService();
-    if (FAILED(rc)) return rc;
+    if (FAILED(rc) || SUCCEEDED_WARNING(rc))
+        return rc;
 
     USBProxyService *service = mParent->i_host()->i_usbProxyService();
     AssertReturn(service, E_FAIL);
