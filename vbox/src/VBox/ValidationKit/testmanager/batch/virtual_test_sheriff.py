@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 93769 2022-02-15 22:07:05Z vboxsync $
+# $Id: virtual_test_sheriff.py 93770 2022-02-15 22:15:16Z vboxsync $
 # pylint: disable=line-too-long
 
 """
@@ -35,7 +35,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 93769 $"
+__version__ = "$Revision: 93770 $"
 
 
 # Standard python imports
@@ -341,7 +341,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
 
         if self.oConfig.sLogFile:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 93769 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 93770 $ \n');
 
 
     def eprint(self, sText):
@@ -745,7 +745,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.getFailureReason(tReason);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 93769 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 93770 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
@@ -1573,6 +1573,13 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
             else:
                 self.vprint(u'TODO: Cannot place idTestResult=%u - %s' % (oFailedResult.idTestResult, oFailedResult.sName,));
                 self.dprint(u'%s + %s <<\n%s\n<<' % (oFailedResult.tsCreated, oFailedResult.tsElapsed, sResultLog,));
+
+        #
+        # Windows python/com screwup.
+        #
+        if sMainLog.find('ModuleNotFoundError: No module named \'win32com.gen_py') > 0:
+            oCaseFile.noteReason(self.ktReason_Host_win32com_gen_py);
+            return self.caseClosed(oCaseFile);
 
         #
         # Check VBoxSVC.log and VBoxHardening.log for VM crashes if inconclusive on single VM runs.
