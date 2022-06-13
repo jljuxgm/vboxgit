@@ -1,4 +1,4 @@
-/* $Id: vkatCommon.cpp 90831 2021-08-24 11:01:59Z vboxsync $ */
+/* $Id: vkatCommon.cpp 90845 2021-08-24 12:39:33Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) - Self test code.
  */
@@ -88,7 +88,7 @@ static int audioTestStreamDestroy(PAUDIOTESTENV pTstEnv, PAUDIOTESTSTREAM pStrea
  */
 int audioTestDevicesEnumerateAndCheck(PAUDIOTESTDRVSTACK pDrvStack, const char *pszDev, PPDMAUDIOHOSTDEV *ppDev)
 {
-    RTTestSubF(g_hTest, "Enumerating audio devices and checking for device '%s'", pszDev && *pszDev ? pszDev : "<Default>");
+    RTTestSubF(g_hTest, "Enumerating audio devices and checking for device '%s'", pszDev && *pszDev ? pszDev : "[Default]");
 
     if (!pDrvStack->pIHostAudio->pfnGetDevices)
     {
