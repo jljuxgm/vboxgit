@@ -1,4 +1,4 @@
-/* $Id: UINetworkRequest.cpp 90524 2021-08-05 09:45:47Z vboxsync $ */
+/* $Id: UINetworkRequest.cpp 90525 2021-08-05 10:14:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkRequest class implementation.
  */
@@ -24,7 +24,6 @@
 #include "UINetworkRequest.h"
 #include "UINetworkRequestManager.h"
 #include "UINetworkRequestManagerWindow.h"
-#include "UINetworkRequestManagerIndicator.h"
 #include "UINetworkRequestWidget.h"
 
 /* Other VBox includes: */

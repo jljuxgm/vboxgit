@@ -1,4 +1,4 @@
-/* $Id: UINetworkRequest.h 90524 2021-08-05 09:45:47Z vboxsync $ */
+/* $Id: UINetworkRequest.h 90525 2021-08-05 10:14:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkRequest class declaration.
  */
@@ -34,7 +34,6 @@
 /* Forward declarations: */
 class UINetworkRequestManager;
 class UINetworkRequestManagerWindow;
-class UINetworkRequestManagerIndicator;
 class UINetworkRequestWidget;
 class UINetworkCustomer;
 
