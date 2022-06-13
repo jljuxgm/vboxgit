@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 92334 2021-11-10 17:19:29Z vboxsync $ */
+/* $Id: PGMInternal.h 92336 2021-11-10 17:42:26Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -2540,9 +2540,7 @@ typedef struct PGMPTWALKCORE
     bool            fBigPage;
     /** Set if it involves a gigantic page (1 GB). */
     bool            fGigantPage;
-    /** The effective X86_PTE_US flag for the address. */
-    bool            fEffectiveUS;
-    bool            afPadding[6];
+    bool            afPadding[7];
     /** The effective attributes, PGM_PTATTRS_XXX. */
     PGMPTATTRS      fEffective;
 } PGMPTWALKCORE;
