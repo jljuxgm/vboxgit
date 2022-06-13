@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-win-dx.cpp 93357 2022-01-20 10:59:39Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-win-dx.cpp 93739 2022-02-14 19:14:39Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -5086,6 +5086,9 @@ static int dxReadBuffer(DXDEVICE *pDevice, ID3D11Buffer *pBuffer, UINT Offset, U
     if (!pvData)
         return VERR_NO_MEMORY;
 
+    *ppvData = pvData;
+    *pcbData = Bytes;
+
     int rc = dxStagingBufferRealloc(pDevice, Bytes);
     if (RT_SUCCESS(rc))
     {
@@ -5123,12 +5126,7 @@ static int dxReadBuffer(DXDEVICE *pDevice, ID3D11Buffer *pBuffer, UINT Offset, U
 
     }
 
-    if (RT_SUCCESS(rc))
-    {
-        *ppvData = pvData;
-        *pcbData = Bytes;
-    }
-    else
+    if (RT_FAILURE(rc))
     {
         RTMemFree(*ppvData);
         *ppvData = NULL;
