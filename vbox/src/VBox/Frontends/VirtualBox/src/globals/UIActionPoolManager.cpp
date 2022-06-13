@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.cpp 93473 2022-01-28 12:44:23Z vboxsync $ */
+/* $Id: UIActionPoolManager.cpp 93649 2022-02-08 10:04:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class implementation.
  */
@@ -4257,6 +4257,7 @@ void UIActionPoolManager::updateMenuMachineTools()
     pMenu->addAction(action(UIActionIndexMN_M_Machine_M_Tools_T_Snapshots));
     pMenu->addAction(action(UIActionIndexMN_M_Machine_M_Tools_T_Logs));
     pMenu->addAction(action(UIActionIndexMN_M_Machine_M_Tools_T_Activity));
+    pMenu->addAction(action(UIActionIndexMN_M_Machine_M_Tools_T_FileManager));
 
     /* Mark menu as valid: */
     m_invalidations.remove(UIActionIndexMN_M_Machine_M_Tools);

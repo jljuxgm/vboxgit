@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.cpp 93185 2022-01-11 14:18:59Z vboxsync $ */
+/* $Id: UIFileManagerTable.cpp 93649 2022-02-08 10:04:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class implementation.
  */
@@ -1452,10 +1452,7 @@ QHBoxLayout* UIFileManagerTable::toolBarLayout()
 bool UIFileManagerTable::event(QEvent *pEvent)
 {
     if (pEvent->type() == QEvent::EnabledChange)
-    {
-        m_pView->setVisible(isEnabled());
         retranslateUi();
-    }
     return QIWithRetranslateUI<QWidget>::event(pEvent);
 }
 
