@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 94891 2022-05-06 11:58:13Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 94892 2022-05-06 11:59:18Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -6326,9 +6326,9 @@ int Console::i_configNetwork(const char *pszDevice,
                                              bstrLowerIP.raw(), bstrUpperIP.raw());
 #endif /* VBOX_WITH_VMNET */
                 ComPtr<IHostNetworkInterface> hostInterface;
-                rc = host->FindHostNetworkInterfaceByName(HostOnlyName.raw(),
-                                                          hostInterface.asOutParam());
-                if (!SUCCEEDED(rc))
+                hrc = host->FindHostNetworkInterfaceByName(HostOnlyName.raw(),
+                                                           hostInterface.asOutParam());
+                if (!SUCCEEDED(hrc))
                 {
                     LogRel(("NetworkAttachmentType_HostOnly: FindByName failed, rc (0x%x)\n", rc));
                     return pVMM->pfnVMR3SetError(pUVM, VERR_INTERNAL_ERROR, RT_SRC_POS,
