@@ -1,4 +1,4 @@
-/* $Id: UIMediumItem.cpp 90412 2021-07-29 14:55:13Z vboxsync $ */
+/* $Id: UIMediumItem.cpp 90422 2021-07-30 10:24:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumItem class implementation.
  */
@@ -80,7 +80,6 @@ bool UIMediumItem::move()
 
     /* Assign new medium location: */
     UINotificationProgressMediumMove *pNotification = new UINotificationProgressMediumMove(comMedium,
-                                                                                           location(),
                                                                                            strFileName);
     connect(pNotification, &UINotificationProgressMediumMove::sigProgressFinished,
             this, &UIMediumItem::sltHandleMoveProgressFinished);

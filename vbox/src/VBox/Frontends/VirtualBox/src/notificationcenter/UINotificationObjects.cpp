@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 90412 2021-07-29 14:55:13Z vboxsync $ */
+/* $Id: UINotificationObjects.cpp 90422 2021-07-30 10:24:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -144,11 +144,9 @@ void UINotificationProgressMediumCopy::sltHandleProgressFinished()
 *********************************************************************************************************************************/
 
 UINotificationProgressMediumMove::UINotificationProgressMediumMove(const CMedium &comMedium,
-                                                                   const QString &strFrom,
-                                                                   const QString &strTo)
+                                                                   const QString &strLocation)
     : m_comMedium(comMedium)
-    , m_strFrom(strFrom)
-    , m_strTo(strTo)
+    , m_strTo(strLocation)
 {
 }
 
@@ -164,6 +162,16 @@ QString UINotificationProgressMediumMove::details() const
 
 CProgress UINotificationProgressMediumMove::createProgress(COMResult &comResult)
 {
+    /* Acquire location: */
+    m_strFrom = m_comMedium.GetLocation();
+    if (!m_comMedium.isOk())
+    {
+        /* Store COM result: */
+        comResult = m_comMedium;
+        /* Return progress-wrapper: */
+        return CProgress();
+    }
+
     /* Initialize progress-wrapper: */
     CProgress comProgress = m_comMedium.MoveTo(m_strTo);
     /* Store COM result: */
