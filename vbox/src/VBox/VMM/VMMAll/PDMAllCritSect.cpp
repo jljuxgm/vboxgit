@@ -1,4 +1,4 @@
-/* $Id: PDMAllCritSect.cpp 91816 2021-10-18 09:47:59Z vboxsync $ */
+/* $Id: PDMAllCritSect.cpp 91818 2021-10-18 09:53:55Z vboxsync $ */
 /** @file
  * PDM - Write-Only Critical Section, All Contexts.
  */
@@ -438,7 +438,8 @@ DECLASM(int) StkBack_pdmR0CritSectEnterContendedOnKrnlStk(PVMCC pVM, PVMCPUCC pV
         STAM_REL_COUNTER_INC(&pCritSect->s.StatContentionRZLockBusy);
     return rc;
 }
-decltype(StkBack_pdmR0CritSectEnterContendedOnKrnlStk) pdmR0CritSectEnterContendedOnKrnlStk;
+DECLASM(int) pdmR0CritSectEnterContendedOnKrnlStk(PVMCC pVM, PVMCPUCC pVCpu, PPDMCRITSECT pCritSect,
+                                                  RTNATIVETHREAD hNativeSelf, int rcBusy, PCRTLOCKVALSRCPOS pSrcPos);
 #endif
 
 
@@ -864,7 +865,8 @@ DECLASM(int) StkBack_pdmR0CritSectLeaveSignallingOnKrnlStk(PVMCC pVM, PVMCPUCC p
 # endif
     return VINF_SUCCESS;
 }
-decltype(StkBack_pdmR0CritSectLeaveSignallingOnKrnlStk) pdmR0CritSectLeaveSignallingOnKrnlStk;
+DECLASM(int) pdmR0CritSectLeaveSignallingOnKrnlStk(PVMCC pVM, PVMCPUCC pVCpu, PPDMCRITSECT pCritSect,
+                                                   int32_t const cLockers, SUPSEMEVENT const hEventToSignal);
 #endif
 
 /**
