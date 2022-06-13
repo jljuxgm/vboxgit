@@ -1,4 +1,4 @@
-/* $Id: DrvVMNet.m 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: DrvVMNet.m 93363 2022-01-20 12:00:05Z vboxsync $ */
 /** @file
  * DrvVMNet - Network filter driver that uses MAC OS VMNET API.
  */
@@ -399,7 +399,7 @@ static vmnet_return_t drvVMNetAttach(PDRVVMNET pThis)
         }
         dispatch_semaphore_signal(operation_done);
     });
-    if (dispatch_semaphore_wait(operation_done, dispatch_time(DISPATCH_TIME_NOW, RT_NS_10SEC)))
+    if (dispatch_semaphore_wait(operation_done, dispatch_time(DISPATCH_TIME_NOW, RT_NS_1MIN)))
     {
         LogRel(("VMNet: Failed to start VMNET interface due to time out!\n"));
         return VMNET_FAILURE;
