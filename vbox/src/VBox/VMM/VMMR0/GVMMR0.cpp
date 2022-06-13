@@ -1,4 +1,4 @@
-/* $Id: GVMMR0.cpp 92858 2021-12-10 00:43:56Z vboxsync $ */
+/* $Id: GVMMR0.cpp 92870 2021-12-10 23:48:55Z vboxsync $ */
 /** @file
  * GVMM - Global VM Manager.
  */
@@ -436,7 +436,13 @@ GVMMR0DECL(int) GVMMR0Init(void)
                                          gvmmR0SchedPeriodicPreemptionTimerCallback,
                                          &pGVMM->aHostCpus[iCpu]);
                     if (RT_SUCCESS(rc))
+                    {
                         rc = RTSpinlockCreate(&pGVMM->aHostCpus[iCpu].Ppt.hSpinlock, RTSPINLOCK_FLAGS_INTERRUPT_SAFE, "GVMM/CPU");
+                        if (RT_FAILURE(rc))
+                            LogRel(("GVMMR0Init: RTSpinlockCreate failed for #%u (%d)\n", iCpu, rc));
+                    }
+                    else
+                        LogRel(("GVMMR0Init: RTTimerCreateEx failed for #%u (%d)\n", iCpu, rc));
                     if (RT_FAILURE(rc))
                     {
                         while (iCpu < cHostCpus)
@@ -466,8 +472,12 @@ GVMMR0DECL(int) GVMMR0Init(void)
             /* bail out. */
             RTCritSectRwDelete(&pGVMM->UsedLock);
         }
+        else
+            LogRel(("GVMMR0Init: RTCritSectRwInitEx failed (%d)\n", rc));
         RTCritSectDelete(&pGVMM->CreateDestroyLock);
     }
+    else
+        LogRel(("GVMMR0Init: RTCritSectInitEx failed (%d)\n", rc));
 
     RTMemFree(pGVMM);
     return rc;
