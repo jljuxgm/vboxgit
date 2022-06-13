@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 90352 2021-07-27 11:08:28Z vboxsync $ */
+/* $Id: UINotificationObjects.cpp 90365 2021-07-28 11:18:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -181,6 +181,38 @@ void UINotificationProgressMachineCopy::sltHandleProgressFinished()
 {
     if (m_comTarget.isNotNull() && !m_comTarget.GetId().isNull())
         emit sigMachineCopied(m_comTarget);
+}
+
+
+/*********************************************************************************************************************************
+*   Class UINotificationProgressMachineMediaRemove implementation.                                                                    *
+*********************************************************************************************************************************/
+
+UINotificationProgressMachineMediaRemove::UINotificationProgressMachineMediaRemove(const CMachine &comMachine,
+                                                                                   const CMediumVector &media)
+    : m_comMachine(comMachine)
+    , m_media(media)
+{
+}
+
+QString UINotificationProgressMachineMediaRemove::name() const
+{
+    return UINotificationProgress::tr("Removing machine media ...");
+}
+
+QString UINotificationProgressMachineMediaRemove::details() const
+{
+    return UINotificationProgress::tr("<b>Machine Name:</b> %1").arg(m_comMachine.GetName());
+}
+
+CProgress UINotificationProgressMachineMediaRemove::createProgress(COMResult &comResult)
+{
+    /* Initialize progress-wrapper: */
+    CProgress comProgress = m_comMachine.DeleteConfig(m_media);
+    /* Store COM result: */
+    comResult = m_comMachine;
+    /* Return progress-wrapper: */
+    return comProgress;
 }
 
 

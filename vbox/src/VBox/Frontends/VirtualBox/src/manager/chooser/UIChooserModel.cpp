@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 90035 2021-07-05 18:10:05Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 90365 2021-07-28 11:18:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -43,6 +43,7 @@
 #include "UIExtraDataManager.h"
 #include "UIMessageCenter.h"
 #include "UIModalWindowManager.h"
+#include "UINotificationCenter.h"
 #include "UIVirtualBoxManagerWidget.h"
 #include "UIVirtualMachineItemCloud.h"
 #include "UIVirtualMachineItemLocal.h"
@@ -1870,38 +1871,27 @@ void UIChooserModel::unregisterLocalMachines(const QList<CMachine> &machines)
         if (iResultCode == AlertButton_Choice1)
         {
             /* Unregister machine first: */
-            CMediumVector comMedia = comMachine.Unregister(KCleanupMode_DetachAllReturnHardDisksOnly);
+            CMediumVector media = comMachine.Unregister(KCleanupMode_DetachAllReturnHardDisksOnly);
             if (!comMachine.isOk())
             {
                 msgCenter().cannotRemoveMachine(comMachine);
                 continue;
             }
-            /* Prepare cleanup progress: */
-            CProgress comProgress = comMachine.DeleteConfig(comMedia);
-            if (!comMachine.isOk())
-            {
-                msgCenter().cannotRemoveMachine(comMachine);
-                continue;
-            }
-            /* And show cleanup progress finally: */
-            msgCenter().showModalProgressDialog(comProgress, comMachine.GetName(), ":/progress_delete_90px.png");
-            if (!comProgress.isOk() || comProgress.GetResultCode() != 0)
-            {
-                msgCenter().cannotRemoveMachine(comMachine, comProgress);
-                continue;
-            }
+            /* Remove machine: */
+            UINotificationProgressMachineMediaRemove *pNotification = new UINotificationProgressMachineMediaRemove(comMachine, media);
+            notificationCenter().append(pNotification);
         }
         else if (iResultCode == AlertButton_Choice2 || iResultCode == AlertButton_Ok)
         {
             /* Unregister machine first: */
-            CMediumVector comMedia = comMachine.Unregister(KCleanupMode_DetachAllReturnHardDisksOnly);
+            CMediumVector media = comMachine.Unregister(KCleanupMode_DetachAllReturnHardDisksOnly);
             if (!comMachine.isOk())
             {
                 msgCenter().cannotRemoveMachine(comMachine);
                 continue;
             }
             /* Finally close all media, deliberately ignoring errors: */
-            foreach (CMedium comMedium, comMedia)
+            foreach (CMedium comMedium, media)
             {
                 if (!comMedium.isNull())
                     comMedium.Close();

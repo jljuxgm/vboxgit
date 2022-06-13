@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.h 90352 2021-07-27 11:08:28Z vboxsync $ */
+/* $Id: UINotificationObjects.h 90365 2021-07-28 11:18:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects declarations.
  */
@@ -203,6 +203,36 @@ private:
     KCloneMode              m_enmCloneMode;
     /** Holds the target machine options. */
     QVector<KCloneOptions>  m_options;
+};
+
+/** UINotificationProgress extension for machine media remove functionality. */
+class SHARED_LIBRARY_STUFF UINotificationProgressMachineMediaRemove : public UINotificationProgress
+{
+    Q_OBJECT;
+
+public:
+
+    /** Constructs machine media remove notification-progress.
+      * @param  comMachine  Brings the machine being removed.
+      * @param  media       Brings the machine media being removed. */
+    UINotificationProgressMachineMediaRemove(const CMachine &comMachine,
+                                             const CMediumVector &media);
+
+protected:
+
+    /** Returns object name. */
+    virtual QString name() const /* override final */;
+    /** Returns object details. */
+    virtual QString details() const /* override final */;
+    /** Creates and returns started progress-wrapper. */
+    virtual CProgress createProgress(COMResult &comResult) /* override final */;
+
+private:
+
+    /** Holds the machine being removed. */
+    CMachine       m_comMachine;
+    /** Holds the machine media being removed. */
+    CMediumVector  m_media;
 };
 
 /** UINotificationProgress extension for cloud machine add functionality. */
