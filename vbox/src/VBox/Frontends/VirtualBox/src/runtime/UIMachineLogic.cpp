@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 92638 2021-11-30 07:20:00Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 92744 2021-12-03 18:48:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -2482,7 +2482,7 @@ void UIMachineLogic::sltShowLogDialog()
         return;
 
     QIManagerDialog *pLogViewerDialog;
-    UIVMLogViewerDialogFactory dialogFactory(actionPool(), machine());
+    UIVMLogViewerDialogFactory dialogFactory(actionPool(), machine().GetId(), machine().GetName());
     dialogFactory.prepare(pLogViewerDialog, activeMachineWindow());
     if (pLogViewerDialog)
     {

@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.h 92743 2021-12-03 18:20:38Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.h 92744 2021-12-03 18:48:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class declaration.
  */
@@ -72,9 +72,9 @@ public:
       * @param  enmEmbedding  Brings the type of widget embedding.
       * @param  pActionPool   Brings the action-pool reference.
       * @param  fShowToolbar  Brings whether we should create/show toolbar.
-      * @param  comMachine    Brings the machine for which VM Log-Viewer is requested. */
+      * @param  uMachineId    Brings the machine id for which VM Log-Viewer is requested. */
     UIVMLogViewerWidget(EmbedTo enmEmbedding, UIActionPool *pActionPool,
-                        bool fShowToolbar = true, const CMachine &comMachine = CMachine(), QWidget *pParent = 0);
+                        bool fShowToolbar = true, const QUuid &uMachineId = QUuid(), QWidget *pParent = 0);
     ~UIVMLogViewerWidget();
     /** Returns the width of the current log page. return 0 if there is no current log page: */
     int defaultLogPageWidth() const;

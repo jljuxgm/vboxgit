@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 92638 2021-11-30 07:20:00Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 92744 2021-12-03 18:48:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -1883,7 +1883,7 @@ void UIVirtualBoxManager::sltOpenLogViewerWindow()
         return;
     if (!m_pLogViewerDialog)
     {
-        UIVMLogViewerDialogFactory dialogFactory(actionPool(), CMachine());
+        UIVMLogViewerDialogFactory dialogFactory(actionPool(), QUuid());
         dialogFactory.prepare(m_pLogViewerDialog, this);
         if (m_pLogViewerDialog)
             connect(m_pLogViewerDialog, &QIManagerDialog::sigClose,
