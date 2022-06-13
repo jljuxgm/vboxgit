@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerLogPanel.cpp 92733 2021-12-03 14:23:31Z vboxsync $ */
+/* $Id: UIFileManagerLogPanel.cpp 92898 2021-12-14 13:58:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -98,7 +98,7 @@ void UIFileManagerLogPanel::appendLog(const QString &strLog, const QString &strM
     {
         strColorTag = "<font color=\"Red\">";
     }
-    QString strColoredLog = QString("%1 %2: %3 %4 %5").arg(strColorTag).arg(QTime::currentTime().toString("hh:mm:ss")).arg(strMachineName).arg(strLog).arg("</font>");
+    QString strColoredLog = QString("%1 %2: %3 %4 %5").arg(strColorTag).arg(QTime::currentTime().toString("hh:mm:ss:z")).arg(strMachineName).arg(strLog).arg("</font>");
     m_pLogTextEdit->append(strColoredLog);
 }
 
