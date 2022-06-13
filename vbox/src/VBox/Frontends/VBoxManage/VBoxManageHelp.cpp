@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 94171 2022-03-11 14:15:12Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 94172 2022-03-11 14:24:52Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -590,11 +590,6 @@ void printUsage(USAGECATEGORY enmCommand, uint64_t fSubcommandScope, PRTSTREAM p
     }
 
 #define SEP pcszSep1, pcszSep2
-
-    if (enmCommand == USAGE_ADOPTSTATE || enmCommand == USAGE_S_ALL)
-        RTStrmPrintf(pStrm,
-                           "%s adoptstate %s      <uuid|vmname> <state_file>\n"
-                     "\n", SEP);
 
     if (enmCommand == USAGE_CLOSEMEDIUM || enmCommand == USAGE_S_ALL)
         RTStrmPrintf(pStrm,

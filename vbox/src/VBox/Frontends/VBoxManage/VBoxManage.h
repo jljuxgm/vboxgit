@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 94171 2022-03-11 14:15:12Z vboxsync $ */
+/* $Id: VBoxManage.h 94172 2022-03-11 14:24:52Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -114,7 +114,6 @@ typedef enum
     USAGE_CONVERTFROMRAW,
     USAGE_I_LISTPARTITIONS,
     USAGE_I_CREATERAWVMDK,
-    USAGE_ADOPTSTATE,
     USAGE_I_MODINSTALL,
     USAGE_I_MODUNINSTALL,
     USAGE_I_RENAMEVMDK,

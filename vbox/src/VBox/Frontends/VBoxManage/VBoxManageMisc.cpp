@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 94171 2022-03-11 14:15:12Z vboxsync $ */
+/* $Id: VBoxManageMisc.cpp 94172 2022-03-11 14:24:52Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -788,7 +788,7 @@ RTEXITCODE handleAdoptState(HandlerArg *a)
     HRESULT rc;
 
     if (a->argc != 2)
-        return errorSyntax(USAGE_ADOPTSTATE, Misc::tr("Incorrect number of parameters"));
+        return errorSyntax(Misc::tr("Incorrect number of parameters"));
 
     ComPtr<IMachine> machine;
     CHECK_ERROR(a->virtualBox, FindMachine(Bstr(a->argv[0]).raw(),
