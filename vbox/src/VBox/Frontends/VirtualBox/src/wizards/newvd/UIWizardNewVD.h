@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVD.h 90370 2021-07-28 14:18:54Z vboxsync $ */
+/* $Id: UIWizardNewVD.h 90372 2021-07-28 15:30:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVD class declaration.
  */
@@ -71,9 +71,9 @@ protected:
 
 private:
 
-    /* Translation stuff: */
     void retranslateUi();
-
+    /** Check medium capabilities and decide if medium variant page should be hidden. */
+    void setMediumVariantPageVisibility();
     qulonglong m_uMediumVariant;
     CMediumFormat m_comMediumFormat;
     QString m_strMediumPath;
@@ -83,6 +83,7 @@ private:
     QString     m_strDefaultName;
     QString     m_strDefaultPath;
     qulonglong  m_uDefaultSize;
+    int m_iMediumVariantPageIndex;
 };
 
 typedef QPointer<UIWizardNewVD> UISafePointerWizardNewVD;

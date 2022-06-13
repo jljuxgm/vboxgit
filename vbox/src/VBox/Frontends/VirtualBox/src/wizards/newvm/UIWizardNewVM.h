@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.h 90157 2021-07-12 11:14:38Z vboxsync $ */
+/* $Id: UIWizardNewVM.h 90372 2021-07-28 15:30:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class declaration.
  */
@@ -80,7 +80,6 @@ public:
     bool createVM();
     bool createVirtualDisk();
     void deleteVirtualDisk();
-
 
     CMedium &virtualDisk();
     void setVirtualDisk(const CMedium &medium);
