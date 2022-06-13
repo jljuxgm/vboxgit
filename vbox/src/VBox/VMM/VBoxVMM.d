@@ -1,4 +1,4 @@
-/* $Id: VBoxVMM.d 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxVMM.d 89980 2021-06-30 14:22:17Z vboxsync $ */
 /** @file
  * VBoxVMM - Static dtrace probes.
  */
@@ -357,6 +357,13 @@ provider vboxvmm
     probe exit__svm__stgi(struct VMCPU *a_pVCpu, struct CPUMCTX *a_pCtx);
     /** VM Exit: AMD-V CLGI instruction. */
     probe exit__svm__clgi(struct VMCPU *a_pVCpu, struct CPUMCTX *a_pCtx);
+    /** @} */
+
+
+    /** @name Misc VT-x and AMD-V execution events.
+     * @{ */
+    /** VT-x: Split-lock \#AC triggered by host having detection enabled. */
+    probe vmx__split__lock(struct VMCPU *a_pVCpu, struct CPUMCTX *a_pCtx);
     /** @} */
 
 
