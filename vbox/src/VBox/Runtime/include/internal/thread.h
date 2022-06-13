@@ -1,4 +1,4 @@
-/* $Id: thread.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: thread.h 94718 2022-04-27 09:27:08Z vboxsync $ */
 /** @file
  * IPRT - Internal RTThread header.
  */
@@ -46,8 +46,6 @@
 RT_C_DECLS_BEGIN
 
 
-/** Max thread name length. */
-#define RTTHREAD_NAME_LEN       16
 #ifdef IPRT_WITH_GENERIC_TLS
 /** The number of TLS entries for the generic implementation. */
 # define RTTHREAD_TLS_ENTRIES   64
