@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 93720 2022-02-14 12:10:12Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -464,6 +464,8 @@ static int gctlSignalHandlerUninstall(void)
 
 /**
  * Translates a process status to a human readable string.
+ *
+ * @sa GuestProcess::i_statusToString()
  */
 const char *gctlProcessStatusToText(ProcessStatus_T enmStatus)
 {
