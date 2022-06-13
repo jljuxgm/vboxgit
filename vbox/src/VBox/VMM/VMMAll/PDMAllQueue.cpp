@@ -1,4 +1,4 @@
-/* $Id: PDMAllQueue.cpp 91895 2021-10-20 13:30:17Z vboxsync $ */
+/* $Id: PDMAllQueue.cpp 92713 2021-12-02 17:34:56Z vboxsync $ */
 /** @file
  * PDM Queue - Transport data and tasks to EMT and R3.
  */
@@ -160,10 +160,12 @@ VMMDECL(void) PDMQueueInsertEx(PPDMQUEUE pQueue, PPDMQUEUEITEMCORE pItem, uint64
 VMMDECL(R0PTRTYPE(PPDMQUEUE)) PDMQueueR0Ptr(PPDMQUEUE pQueue)
 {
     AssertPtr(pQueue);
-    Assert(pQueue->pVMR3 && pQueue->pVMR0);
+    Assert(pQueue->pVMR3);
 #ifdef IN_RING0
+    AssertPtr(pQueue->pVMR0);
     return pQueue;
 #else
+    Assert(pQueue->pVMR0 || SUPR3IsDriverless());
     return MMHyperCCToR0(pQueue->CTX_SUFF(pVM), pQueue);
 #endif
 }

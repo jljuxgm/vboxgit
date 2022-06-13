@@ -1,4 +1,4 @@
-/* $Id: GVMMR3.cpp 92703 2021-12-02 12:45:58Z vboxsync $ */
+/* $Id: GVMMR3.cpp 92713 2021-12-02 17:34:56Z vboxsync $ */
 /** @file
  * GVMM - Global VM Manager, ring-3 request wrappers.
  */
@@ -89,7 +89,7 @@ VMMR3_INT_DECL(int) GVMMR3CreateVM(PUVM pUVM, uint32_t cCpus, PSUPDRVSESSION pSe
 
         /* CPUs: */
         PVMCPU pVCpu = (PVMCPU)((uintptr_t)pVM + sizeof(VM) + PAGE_SIZE);
-        for (VMCPUID idxCpu = 0; idxCpu < cCpus; idxCpu++, pVCpu++)
+        for (VMCPUID idxCpu = 0; idxCpu < cCpus; idxCpu++)
         {
             pVM->apCpusR3[idxCpu] = pVCpu;
 
