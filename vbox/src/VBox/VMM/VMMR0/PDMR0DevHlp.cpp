@@ -1,4 +1,4 @@
-/* $Id: PDMR0DevHlp.cpp 90502 2021-08-03 21:20:34Z vboxsync $ */
+/* $Id: PDMR0DevHlp.cpp 90759 2021-08-20 12:53:01Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, R0 Device Helper parts.
  */
@@ -840,8 +840,8 @@ static DECLCALLBACK(int) pdmR0DevHlp_SetDeviceCritSect(PPDMDEVINS pDevIns, PPDMC
      */
     PDMDEV_ASSERT_DEVINS(pDevIns);
     AssertPtrReturn(pCritSect, VERR_INVALID_POINTER);
-    LogFlow(("pdmR0DevHlp_SetDeviceCritSect: caller='%s'/%d: pCritSect=%p (%s)\n",
-             pDevIns->pReg->szName, pDevIns->iInstance, pCritSect, pCritSect->s.pszName));
+    LogFlow(("pdmR0DevHlp_SetDeviceCritSect: caller='%s'/%d: pCritSect=%p\n",
+             pDevIns->pReg->szName, pDevIns->iInstance, pCritSect));
     AssertReturn(PDMCritSectIsInitialized(pCritSect), VERR_INVALID_PARAMETER);
     PGVM pGVM = pDevIns->Internal.s.pGVM;
 
