@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportApp.cpp 91959 2021-10-21 14:43:09Z vboxsync $ */
+/* $Id: UIWizardExportApp.cpp 92024 2021-10-25 10:49:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportApp class implementation.
  */
@@ -25,7 +25,6 @@
 #include "UIMessageCenter.h"
 #include "UIModalWindowManager.h"
 #include "UINotificationCenter.h"
-#include "UIProgressObject.h"
 #include "UIWizardExportApp.h"
 #include "UIWizardExportAppPageExpert.h"
 #include "UIWizardExportAppPageFormat.h"

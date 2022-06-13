@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVM.cpp 92014 2021-10-22 18:16:38Z vboxsync $ */
+/* $Id: UIWizardCloneVM.cpp 92024 2021-10-25 10:49:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVM class implementation.
  */
@@ -19,7 +19,6 @@
 #include "UICommon.h"
 #include "UIMessageCenter.h"
 #include "UINotificationCenter.h"
-#include "UIProgressObject.h"
 #include "UIWizardCloneVM.h"
 #include "UIWizardCloneVMNamePathPage.h"
 #include "UIWizardCloneVMTypePage.h"
