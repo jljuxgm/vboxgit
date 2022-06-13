@@ -1,4 +1,4 @@
-/* $Id: DevParallel.cpp 90332 2021-07-26 12:57:23Z vboxsync $ */
+/* $Id: DevParallel.cpp 90445 2021-07-30 22:18:24Z vboxsync $ */
 /** @file
  * DevParallel - Parallel (Port) Device Emulation.
  *
@@ -303,8 +303,11 @@ static DECLCALLBACK(int) parallelR3NotifyInterrupt(PPDMIHOSTPARALLELPORT pInterf
     PPDMDEVINS      pDevIns = pThisCC->pDevIns;
     PPARALLELPORT   pThis   = PDMDEVINS_2_DATA(pDevIns, PPARALLELPORT);
 
-    PDMDevHlpCritSectEnter(pDevIns, pDevIns->pCritSectRoR3, VINF_SUCCESS);
+    int rc = PDMDevHlpCritSectEnter(pDevIns, pDevIns->pCritSectRoR3, VINF_SUCCESS);
+    AssertRCReturn(rc, rc);
+
     parallelR3IrqSet(pDevIns, pThis);
+
     PDMDevHlpCritSectLeave(pDevIns, pDevIns->pCritSectRoR3);
 
     return VINF_SUCCESS;

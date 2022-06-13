@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 89266 2021-05-25 11:10:45Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 90445 2021-07-30 22:18:24Z vboxsync $ */
 /** @file
  * VBox storage devices - BusLogic SCSI host adapter BT-958.
  *
@@ -1374,7 +1374,7 @@ static void buslogicR3SendIncomingMailbox(PPDMDEVINS pDevIns, PBUSLOGIC pThis, R
     MbxIn.u.in.uCompletionCode     = uMailboxCompletionCode;
 
     int rc = PDMDevHlpCritSectEnter(pDevIns, &pThis->CritSectIntr, VINF_SUCCESS);
-    AssertRC(rc);
+    PDM_CRITSECT_RELEASE_ASSERT_RC_DEV(pDevIns, &pThis->CritSectIntr, rc);
 
     RTGCPHYS GCPhysAddrMailboxIncoming = pThis->GCPhysAddrMailboxIncomingBase
                                        + (   pThis->uMailboxIncomingPositionCurrent

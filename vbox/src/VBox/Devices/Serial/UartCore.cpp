@@ -1,4 +1,4 @@
-/* $Id: UartCore.cpp 90332 2021-07-26 12:57:23Z vboxsync $ */
+/* $Id: UartCore.cpp 90445 2021-07-30 22:18:24Z vboxsync $ */
 /** @file
  * UartCore - UART  (16550A up to 16950) emulation.
  *
@@ -876,7 +876,7 @@ static VBOXSTRICTRC uartXmit(PPDMDEVINS pDevIns, PUARTCORE pThis, PUARTCORECC pT
         else
             PDMDevHlpTimerSetRelative(pDevIns, pThis->hTimerTxUnconnected, pThis->cSymbolXferTicks, NULL);
 
-        PDMDevHlpCritSectEnter(pDevIns, &pThis->CritSect, VINF_SUCCESS);
+        rc = PDMDevHlpCritSectEnter(pDevIns, &pThis->CritSect, VINF_SUCCESS);
     }
 #endif
 
