@@ -1,5 +1,5 @@
 #!/usr/bin/make -f
-# $Id: rules 90361 2021-07-27 16:38:21Z vboxsync $
+# $Id: rules 90368 2021-07-28 13:30:11Z vboxsync $
 ## @file
 # VirtualBox rules.
 #
@@ -149,6 +149,9 @@ endif
 
 ifeq ($(NOQT),)
  ifeq ($(rpmrel),el7)
+  # Protect against the fact that this Makefile is run several times, updating
+  # PATH every time. Still assumes that nothing else is added as a prefix.
+  PATH := $(PATH:/opt/rh/devtoolset-4/root/usr/bin:%=%)
   export PATH := /opt/rh/devtoolset-4/root/usr/bin:$(PATH)
  endif
 endif
