@@ -1,4 +1,4 @@
-/* $Id: VBoxDispIf.h 85121 2020-07-08 19:33:26Z vboxsync $ */
+/* $Id: VBoxDispIf.h 92963 2021-12-16 09:48:19Z vboxsync $ */
 /** @file
  * VBoxTray - Display Settings Interface abstraction for XPDM & WDDM
  */
@@ -25,7 +25,7 @@
 
 #ifdef VBOX_WITH_WDDM
 # define D3DKMDT_SPECIAL_MULTIPLATFORM_TOOL
-# include <d3dkmthk.h>
+# include <iprt/win/d3dkmthk.h>
 # include <VBoxDispKmt.h>
 #endif
 
