@@ -1,4 +1,4 @@
-/* $Id: UINetworkFeaturesEditor.h 94623 2022-04-18 12:00:35Z vboxsync $ */
+/* $Id: UINetworkFeaturesEditor.h 94653 2022-04-20 15:15:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkFeaturesEditor class declaration.
  */
@@ -46,7 +46,7 @@ class SHARED_LIBRARY_STUFF UINetworkFeaturesEditor : public QIWithRetranslateUI<
 signals:
 
     /** Notifies about the advanced button state change to @a fExpanded. */
-    void sigNotifyAdvancedButtonStateChange(bool fExpanded);
+    void sigAdvancedButtonStateChange(bool fExpanded);
     /** Notifies about MAC address changed. */
     void sigMACAddressChanged();
 
