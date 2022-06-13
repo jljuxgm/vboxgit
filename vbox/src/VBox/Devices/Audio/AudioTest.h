@@ -1,4 +1,4 @@
-/* $Id: AudioTest.h 91632 2021-10-08 06:59:29Z vboxsync $ */
+/* $Id: AudioTest.h 91655 2021-10-10 08:34:33Z vboxsync $ */
 /** @file
  * Audio testing routines.
  * Common code which is being used by the ValidationKit audio test (VKAT)
@@ -31,6 +31,12 @@
 #define AUDIOTEST_ERROR_DESC_MAX        256
 /** Prefix for audio test (set) directories. */
 #define AUDIOTEST_PATH_PREFIX_STR       "vkat"
+/** Audio beacon data (single byte) to use for the post beacon (intro). */
+#define AUDIOTEST_BEACON_BYTE_PRE       0x42
+/** Audio beacon data (single byte) to use for the post beacon (outro). */
+#define AUDIOTEST_BEACON_BYTE_POST      0x24
+/** Pre / post audio beacon size (in audio frames). */
+#define AUDIOTEST_BEACON_SIZE_FRAMES    1024
 
 /**
  * Enumeration for an audio test tone (wave) type.
