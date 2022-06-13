@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 91783 2021-10-17 12:26:04Z vboxsync $ */
+/* $Id: SUPDrv.cpp 91785 2021-10-17 13:35:07Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -237,8 +237,8 @@ static SUPFUNC g_aFunctions[] =
     { STKBACK("SUPR0PageFree"),                          (void *)(uintptr_t)SUPR0PageFree },
     { STKBACK("SUPR0PageMapKernel"),                     (void *)(uintptr_t)SUPR0PageMapKernel },
     { STKBACK("SUPR0PageProtect"),                       (void *)(uintptr_t)SUPR0PageProtect },
-#if defined(RT_OS_LINUX) || defined(RT_OS_SOLARIS)
-    { STKBACK("SUPR0HCPhysToVirt"),                      (void *)(uintptr_t)SUPR0HCPhysToVirt },         /* only-linux, only solaris */
+#if defined(RT_OS_LINUX) || defined(RT_OS_SOLARIS) || defined(RT_OS_FREEBSD)
+    { STKOKAY("SUPR0HCPhysToVirt"),                      (void *)(uintptr_t)SUPR0HCPhysToVirt },         /* only-linux, only-solaris, only-freebsd */
 #endif
     { STKBACK("SUPR0Printf"),                            (void *)(uintptr_t)SUPR0Printf },
     { STKBACK("SUPR0GetSessionGVM"),                     (void *)(uintptr_t)SUPR0GetSessionGVM },
