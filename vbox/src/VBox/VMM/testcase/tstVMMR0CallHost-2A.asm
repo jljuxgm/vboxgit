@@ -1,4 +1,4 @@
-; $Id: tstVMMR0CallHost-2A.asm 91775 2021-10-17 10:53:28Z vboxsync $
+; $Id: tstVMMR0CallHost-2A.asm 91777 2021-10-17 11:05:06Z vboxsync $
 ;; @file
 ; VMM - tstVMMR0CallHost-2A.asm - Switch-back wrapper.
 ;
@@ -15,8 +15,7 @@
 ; hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
 ;
 
-
-%include "VBox/SUPR0Stackwrapper.mac"
+%include "VBox/SUPR0StackWrapper.mac"
 
 SUPR0StackWrapperGeneric tstWrapped1
 SUPR0StackWrapperGeneric tstWrappedThin
