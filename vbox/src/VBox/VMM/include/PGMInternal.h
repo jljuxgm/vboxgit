@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 92381 2021-11-11 20:47:44Z vboxsync $ */
+/* $Id: PGMInternal.h 92385 2021-11-11 23:54:29Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -3014,7 +3014,8 @@ typedef struct PGMSTATS
     STAMCOUNTER StatTrackOverflows;                 /**< The number of times the extent list grows to long. */
     STAMPROFILE StatTrackDeref;                     /**< Profiling of SyncPageWorkerTrackDeref (expensive). */
 
-    STAMPROFILE StatLargePageSetup;                 /**< Time spent setting up newly allocated large pages. */
+    STAMPROFILEADV StatLargePageAlloc2;            /**< Time spent setting up newly allocated large pages. */
+    STAMPROFILEADV StatLargePageSetup;             /**< Time spent setting up newly allocated large pages. */
     /** pgmPhysIsValidLargePage profiling - R3 */
     STAMPROFILE StatR3IsValidLargePage;
     /** pgmPhysIsValidLargePage profiling - RZ*/
