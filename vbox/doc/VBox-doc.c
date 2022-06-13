@@ -1,4 +1,4 @@
-/* $Id: VBox-doc.c 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: VBox-doc.c 93422 2022-01-24 20:03:33Z vboxsync $ */
 /** @file
  * VirtualBox Top Level Documentation File.
  */
@@ -142,9 +142,13 @@
  *          - @ref pg_vgsvc_automount
  *          - @ref pg_vgsvc_clipboard
  *      - VBoxControl.
- *      - VBoxVideo.
+ *      - Linux, Solaris and FreeBSD specific guest services and drivers.
+ *          - @ref pg_vboxdrmcliet (Linux only).
+ *          - VBoxClient.
+ *          - VBoxVideo.
+ *      - Windows Guests.
+ *          - VBoxTray.
  *      - crOpenGL.
- *      - VBoxClient / VBoxTray.
  *      - pam.
  *      - ...
  *  - Network Services:
