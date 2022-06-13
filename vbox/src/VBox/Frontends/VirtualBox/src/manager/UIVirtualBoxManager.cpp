@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 90796 2021-08-23 14:55:52Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 90855 2021-08-24 17:51:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -1679,13 +1679,14 @@ void UIVirtualBoxManager::sltPerformSaveMachineState()
     {
         /* Sanity check: */
         AssertPtrReturnVoid(pItem);
+        AssertPtrReturnVoid(pItem->toLocal());
 
         /* Check if current item could be saved: */
         if (!isActionEnabled(UIActionIndexMN_M_Machine_M_Close_S_SaveState, QList<UIVirtualMachineItem*>() << pItem))
             continue;
 
         /* Saving VM state: */
-        UINotificationProgressMachineSaveState *pNotification = new UINotificationProgressMachineSaveState(pItem->id());
+        UINotificationProgressMachineSaveState *pNotification = new UINotificationProgressMachineSaveState(pItem->toLocal()->machine());
         gpNotificationCenter->append(pNotification);
     }
 }
