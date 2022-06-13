@@ -1,4 +1,4 @@
-# $Id: Makefile 90829 2021-08-24 10:26:07Z vboxsync $
+# $Id: Makefile 91789 2021-10-17 18:16:11Z vboxsync $
 ## @file
 # VirtualBox Guest Additions Module Makefile.
 #
@@ -65,7 +65,8 @@ SRCS += \
 	logrel.c \
 	logrelellipsis.c \
 	logcom.c \
-	logformat.c
+	logformat.c \
+	RTLogCreateEx.c
 
 .PATH:	${.CURDIR}/common/misc
 SRCS += \
@@ -96,11 +97,14 @@ SRCS += \
 	RTStrNLen.c \
 	stringalloc.c \
 	strformat.c \
+	RTStrFormat.c \
 	strformatnum.c \
 	strformatrt.c \
 	strformattype.c \
 	strprintf.c \
+	strprintf-ellipsis.c \
 	strprintf2.c \
+	strprintf2-ellipsis.c \
 	strtonum.c \
 	memchr.c \
 	utf-8.c

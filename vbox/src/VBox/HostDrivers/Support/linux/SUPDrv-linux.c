@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-linux.c 91552 2021-10-04 22:05:46Z vboxsync $ */
+/* $Id: SUPDrv-linux.c 91789 2021-10-17 18:16:11Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Linux specifics.
  */
@@ -1693,15 +1693,12 @@ SUPR0DECL(int) SUPR0HCPhysToVirt(RTHCPHYS HCPhys, void **ppv)
 SUPR0_EXPORT_SYMBOL(SUPR0HCPhysToVirt);
 
 
-RTDECL(int) SUPR0Printf(const char *pszFormat, ...)
+RTDECL(int) SUPR0PrintfV(const char *pszFormat, va_list va)
 {
-    va_list va;
     char    szMsg[512];
     IPRT_LINUX_SAVE_EFL_AC();
 
-    va_start(va, pszFormat);
     RTStrPrintfV(szMsg, sizeof(szMsg) - 1, pszFormat, va);
-    va_end(va);
     szMsg[sizeof(szMsg) - 1] = '\0';
 
     printk("%s", szMsg);

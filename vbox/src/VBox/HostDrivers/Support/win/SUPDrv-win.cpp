@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-win.cpp 91559 2021-10-05 08:28:55Z vboxsync $ */
+/* $Id: SUPDrv-win.cpp 91789 2021-10-17 18:16:11Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Windows NT specifics.
  */
@@ -2951,15 +2951,11 @@ static NTSTATUS     VBoxDrvNtErr2NtStatus(int rc)
 }
 
 
-SUPR0DECL(int) SUPR0Printf(const char *pszFormat, ...)
+SUPR0DECL(int) SUPR0PrintfV(const char *pszFormat, va_list va)
 {
-    va_list va;
-    char    szMsg[384];
-
-    va_start(va, pszFormat);
+    char szMsg[384];
     size_t cch = RTStrPrintfV(szMsg, sizeof(szMsg) - 1, pszFormat, va);
     szMsg[sizeof(szMsg) - 1] = '\0';
-    va_end(va);
 
     RTLogWriteDebugger(szMsg, cch);
     return 0;

@@ -1,4 +1,4 @@
-/* $Id: combined-agnostic.c 90829 2021-08-24 10:26:07Z vboxsync $ */
+/* $Id: combined-agnostic.c 91789 2021-10-17 18:16:11Z vboxsync $ */
 /** @file
  * VBoxGuest - Combine a bunch of OS agnostic sources into one compile unit.
  */
@@ -69,6 +69,8 @@
 #undef LOG_GROUP
 #include "common/log/logformat.c"
 #undef LOG_GROUP
+#include "common/log/RTLogCreateEx.c"
+#undef LOG_GROUP
 #include "common/misc/RTAssertMsg1Weak.c"
 #undef LOG_GROUP
 #include "common/misc/RTAssertMsg2.c"
@@ -111,13 +113,19 @@
 #undef LOG_GROUP
 #include "common/string/strformat.c"
 #undef LOG_GROUP
+#include "common/string/RTStrFormat.c"
+#undef LOG_GROUP
 #include "common/string/strformatnum.c"
 #undef LOG_GROUP
 #include "common/string/strformattype.c"
 #undef LOG_GROUP
 #include "common/string/strprintf.c"
 #undef LOG_GROUP
+#include "common/string/strprintf-ellipsis.c"
+#undef LOG_GROUP
 #include "common/string/strprintf2.c"
+#undef LOG_GROUP
+#include "common/string/strprintf2-ellipsis.c"
 #undef LOG_GROUP
 #include "common/string/strtonum.c"
 #undef LOG_GROUP

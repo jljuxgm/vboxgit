@@ -1,4 +1,4 @@
-/* $Id: strprintf.cpp 91787 2021-10-17 17:48:02Z vboxsync $ */
+/* $Id: strprintf.cpp 91789 2021-10-17 18:16:11Z vboxsync $ */
 /** @file
  * IPRT - String Formatters.
  */
@@ -109,18 +109,6 @@ RTDECL(size_t) RTStrPrintfV(char *pszBuffer, size_t cchBuffer, const char *pszFo
 RT_EXPORT_SYMBOL(RTStrPrintfV);
 
 
-RTDECL(size_t) RTStrPrintf(char *pszBuffer, size_t cchBuffer, const char *pszFormat, ...)
-{
-    size_t  cbRet;
-    va_list va;
-    va_start(va, pszFormat);
-    cbRet = RTStrPrintfV(pszBuffer, cchBuffer, pszFormat, va);
-    va_end(va);
-    return cbRet;
-}
-RT_EXPORT_SYMBOL(RTStrPrintf);
-
-
 RTDECL(size_t) RTStrPrintfExV(PFNSTRFORMAT pfnFormat, void *pvArg, char *pszBuffer, size_t cchBuffer, const char *pszFormat, va_list args)
 {
     STRBUFARG Arg;
@@ -130,17 +118,4 @@ RTDECL(size_t) RTStrPrintfExV(PFNSTRFORMAT pfnFormat, void *pvArg, char *pszBuff
     return RTStrFormatV(strbufoutput, &Arg, pfnFormat, pvArg, pszFormat, args);
 }
 RT_EXPORT_SYMBOL(RTStrPrintfExV);
-
-
-
-RTDECL(size_t) RTStrPrintfEx(PFNSTRFORMAT pfnFormat, void *pvArg, char *pszBuffer, size_t cchBuffer, const char *pszFormat, ...)
-{
-    va_list args;
-    size_t cbRet;
-    va_start(args, pszFormat);
-    cbRet = RTStrPrintfExV(pfnFormat, pvArg, pszBuffer, cchBuffer, pszFormat, args);
-    va_end(args);
-    return cbRet;
-}
-RT_EXPORT_SYMBOL(RTStrPrintfEx);
 

@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-darwin.cpp 90780 2021-08-23 09:25:17Z vboxsync $ */
+/* $Id: SUPDrv-darwin.cpp 91789 2021-10-17 18:16:11Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Darwin Specific Code.
  */
@@ -2022,15 +2022,12 @@ static bool vboxdrvDarwinCpuHasSMAP(void)
 }
 
 
-RTDECL(int) SUPR0Printf(const char *pszFormat, ...)
+RTDECL(int) SUPR0PrintfV(const char *pszFormat, va_list va)
 {
     IPRT_DARWIN_SAVE_EFL_AC();
-    va_list     va;
-    char        szMsg[512];
 
-    va_start(va, pszFormat);
+    char szMsg[512];
     RTStrPrintfV(szMsg, sizeof(szMsg) - 1, pszFormat, va);
-    va_end(va);
     szMsg[sizeof(szMsg) - 1] = '\0';
 
     printf("%s", szMsg);

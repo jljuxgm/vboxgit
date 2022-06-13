@@ -1,4 +1,4 @@
-/* $Id: combined-agnostic1.c 85523 2020-07-29 11:54:52Z vboxsync $ */
+/* $Id: combined-agnostic1.c 91789 2021-10-17 18:16:11Z vboxsync $ */
 /** @file
  * SUPDrv - Combine a bunch of OS agnostic sources into one compile unit.
  */
@@ -62,6 +62,8 @@
 #include "common/log/logcom.c"
 #undef LOG_GROUP
 #include "common/log/logformat.c"
+#undef LOG_GROUP
+#include "common/log/RTLogCreateEx.c"
 #undef LOG_GROUP
 #include "common/misc/RTAssertMsg1Weak.c"
 #undef LOG_GROUP
