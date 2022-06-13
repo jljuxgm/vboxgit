@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 94290 2022-03-17 12:47:49Z vboxsync $ */
+/* $Id: VBoxManage.cpp 94643 2022-04-20 09:08:37Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -252,7 +252,9 @@ static const VBMGCMD g_aCommands[] =
     { "usbdevsource",       HELP_CMD_USBDEVSOURCE,      handleUSBDevSource,         0 },
     { "cloudprofile",       HELP_CMD_CLOUDPROFILE,      handleCloudProfile,         0 },
     { "cloud",              HELP_CMD_CLOUD,             handleCloud,                0 },
+#ifdef VBOX_WITH_UPDATE_AGENT
     { "updatecheck",        HELP_CMD_UPDATECHECK,       handleUpdateCheck,          0 },
+#endif
     { "modifynvram",        HELP_CMD_MODIFYNVRAM,       handleModifyNvram,          0 },
 };
 

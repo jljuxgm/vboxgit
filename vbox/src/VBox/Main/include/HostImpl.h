@@ -1,4 +1,4 @@
-/* $Id: HostImpl.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: HostImpl.h 94643 2022-04-20 09:08:37Z vboxsync $ */
 /** @file
  * Implementation of IHost.
  */
@@ -118,7 +118,9 @@ private:
     HRESULT getUTCTime(LONG64 *aUTCTime);
     HRESULT getAcceleration3DAvailable(BOOL *aAcceleration3DAvailable);
     HRESULT getVideoInputDevices(std::vector<ComPtr<IHostVideoInputDevice> > &aVideoInputDevices);
-    HRESULT getUpdate(ComPtr<IHostUpdate> &aUpdate);
+    HRESULT getUpdateHost(ComPtr<IUpdateAgent> &aUpdate);
+    HRESULT getUpdateExtPack(ComPtr<IUpdateAgent> &aUpdate);
+    HRESULT getUpdateGuestAdditions(ComPtr<IUpdateAgent> &aUpdate);
     HRESULT getUpdateResponse(BOOL *aUpdateNeeded);
     HRESULT getUpdateVersion(com::Utf8Str &aUpdateVersion);
     HRESULT getUpdateURL(com::Utf8Str &aUpdateURL);
@@ -167,8 +169,6 @@ private:
                                const std::vector<com::Utf8Str> &aPropertyNames, const std::vector<com::Utf8Str> &aPropertyValues);
 
     HRESULT removeUSBDeviceSource(const com::Utf8Str &aId);
-    HRESULT UpdateCheck(UpdateCheckType_T aCheckType,
-                        ComPtr<IProgress> &aProgress);
 
     // Internal Methods.
 

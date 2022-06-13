@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 94598 2022-04-13 21:50:00Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 94643 2022-04-20 09:08:37Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -79,6 +79,9 @@
 #ifdef VBOX_WITH_RESOURCE_USAGE_API
 # include "PerformanceImpl.h"
 #endif /* VBOX_WITH_RESOURCE_USAGE_API */
+#ifdef VBOX_WITH_UPDATE_AGENT
+# include "UpdateAgentImpl.h"
+#endif
 #include "EventImpl.h"
 #ifdef VBOX_WITH_EXTPACK
 # include "ExtPackManagerImpl.h"
