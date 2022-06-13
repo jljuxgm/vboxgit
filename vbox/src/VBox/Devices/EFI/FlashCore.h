@@ -1,4 +1,4 @@
-/* $Id: FlashCore.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: FlashCore.h 91329 2021-09-22 15:16:12Z vboxsync $ */
 /** @file
  * A simple Flash device
  *
@@ -31,6 +31,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #include <VBox/vmm/pdmdev.h>
+#include <VBox/vmm/pdmifs.h>
 #include <VBox/log.h>
 #include <VBox/err.h>
 #include <iprt/assert.h>
@@ -114,8 +115,12 @@ DECLHIDDEN(int) flashR3Init(PFLASHCORE pThis, PPDMDEVINS pDevIns, uint16_t idFla
 DECLHIDDEN(void) flashR3Destruct(PFLASHCORE pThis, PPDMDEVINS pDevIns);
 DECLHIDDEN(int) flashR3LoadFromFile(PFLASHCORE pThis, PPDMDEVINS pDevIns, const char *pszFilename);
 DECLHIDDEN(int) flashR3LoadFromBuf(PFLASHCORE pThis, void const *pvBuf, size_t cbBuf);
+DECLHIDDEN(int) flashR3LoadFromVfs(PFLASHCORE pThis, PPDMDEVINS pDevIns, PPDMIVFSCONNECTOR pDrvVfs,
+                                   const char *pszNamespace, const char *pszPath);
 DECLHIDDEN(int) flashR3SaveToFile(PFLASHCORE pThis, PPDMDEVINS pDevIns, const char *pszFilename);
 DECLHIDDEN(int) flashR3SaveToBuf(PFLASHCORE pThis, void *pvBuf, size_t cbBuf);
+DECLHIDDEN(int) flashR3SaveToVfs(PFLASHCORE pThis, PPDMDEVINS pDevIns, PPDMIVFSCONNECTOR pDrvVfs,
+                                 const char *pszNamespace, const char *pszPath);
 DECLHIDDEN(void) flashR3Reset(PFLASHCORE pThis);
 DECLHIDDEN(int) flashR3SaveExec(PFLASHCORE pThis, PPDMDEVINS pDevIns, PSSMHANDLE pSSM);
 DECLHIDDEN(int) flashR3LoadExec(PFLASHCORE pThis, PPDMDEVINS pDevIns, PSSMHANDLE pSSM);
