@@ -1,4 +1,4 @@
-/* $Id: UIWizardAddCloudVMPageSource.cpp 91410 2021-09-27 16:31:08Z vboxsync $ */
+/* $Id: UIWizardAddCloudVMPageSource.cpp 91411 2021-09-27 16:35:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardAddCloudVMPageSource class implementation.
  */
@@ -451,7 +451,7 @@ bool UIWizardAddCloudVMPageSource::validatePage()
     bool fResult = true;
 
     /* Try to add cloud VMs: */
-    fResult = qobject_cast<UIWizardAddCloudVM*>(wizard())->addCloudVMs();
+    fResult = wizard()->addCloudVMs();
 
     /* Return result: */
     return fResult;

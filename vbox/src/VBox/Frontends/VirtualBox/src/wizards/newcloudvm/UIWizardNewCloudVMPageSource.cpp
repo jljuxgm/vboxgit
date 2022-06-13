@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageSource.cpp 91410 2021-09-27 16:31:08Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageSource.cpp 91411 2021-09-27 16:35:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageSource class implementation.
  */
@@ -516,7 +516,7 @@ bool UIWizardNewCloudVMPageSource::validatePage()
     /* Populate vsd and form properties: */
     wizard()->setVSD(createVirtualSystemDescription(wizard()));
     populateFormProperties(wizard()->vsd(), m_pSourceTabBar, m_strSourceImageId);
-    qobject_cast<UIWizardNewCloudVM*>(wizard())->createVSDForm();
+    wizard()->createVSDForm();
 
     /* And make sure they are not NULL: */
     fResult =    wizard()->vsd().isNotNull()

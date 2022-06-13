@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageProperties.cpp 91410 2021-09-27 16:31:08Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageProperties.cpp 91411 2021-09-27 16:35:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageProperties class implementation.
  */
@@ -142,7 +142,7 @@ bool UIWizardNewCloudVMPageProperties::validatePage()
     /* Try to create cloud VM: */
     if (fResult)
     {
-        fResult = qobject_cast<UIWizardNewCloudVM*>(wizard())->createCloudVM();
+        fResult = wizard()->createCloudVM();
 
         /* If the final step failed we could try
          * sugest user more valid form this time: */
@@ -161,7 +161,7 @@ void UIWizardNewCloudVMPageProperties::sltInitShortWizardForm()
 {
     /* Create Virtual System Description Form: */
     if (wizard()->vsdForm().isNull())
-        qobject_cast<UIWizardNewCloudVM*>(wizard())->createVSDForm();
+        wizard()->createVSDForm();
 
     /* Refresh form properties table: */
     refreshFormPropertiesTable(m_pFormEditor, wizard()->vsdForm());
