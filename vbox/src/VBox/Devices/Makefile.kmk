@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 91331 2021-09-22 15:18:46Z vboxsync $
+# $Id: Makefile.kmk 91361 2021-09-24 12:48:04Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -330,6 +330,7 @@ VBOX_WITH_VMSVGA3D_DYNAMIC_LOAD = 1
        Graphics/DevVGA-SVGA3d-dx.cpp \
        Graphics/DevVGA-SVGA3d-dx-shader.cpp
    if "$(KBUILD_TARGET)" == "win"
+    VBoxDD_DEFS         += VMSVGA3D_DX_BACKEND
     VBoxDD_SOURCES      += \
        Graphics/DevVGA-SVGA3d-win-dx.cpp
    endif

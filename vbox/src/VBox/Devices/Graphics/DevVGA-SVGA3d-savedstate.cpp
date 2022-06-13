@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-savedstate.cpp 89163 2021-05-19 13:12:44Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-savedstate.cpp 91361 2021-09-24 12:48:04Z vboxsync $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - Saved state and assocated stuff.
  */
@@ -496,7 +496,7 @@ int vmsvga3dLoadExec(PPDMDEVINS pDevIns, PVGASTATE pThis, PVGASTATECC pThisCC, P
                 }
 
                 rc = vmsvga3dSurfaceDefine(pThisCC, sid, surface.surfaceFlags, surface.format, surface.multiSampleCount,
-                                           surface.autogenFilter, surface.cLevels, &pMipmapLevelSize[0]);
+                                           surface.autogenFilter, surface.cLevels, &pMipmapLevelSize[0], /* fAllocMipLevels = */ true);
                 AssertRCReturn(rc, rc);
 
                 RTMemFree(pMipmapLevelSize);
