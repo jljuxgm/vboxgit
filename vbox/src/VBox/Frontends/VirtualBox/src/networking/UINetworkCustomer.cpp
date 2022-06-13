@@ -1,10 +1,10 @@
-/* $Id: UINetworkCustomer.cpp 86996 2020-11-26 16:54:39Z vboxsync $ */
+/* $Id: UINetworkCustomer.cpp 90524 2021-08-05 09:45:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkCustomer class implementation.
  */
 
 /*
- * Copyright (C) 2012-2020 Oracle Corporation
+ * Copyright (C) 2012-2021 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -15,10 +15,7 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/* Qt includes: */
-#include <QUrl>
-
-/* Local includes: */
+/* GUI includes: */
 #include "UINetworkCustomer.h"
 #include "UINetworkRequestManager.h"
 
@@ -29,10 +26,10 @@ UINetworkCustomer::UINetworkCustomer(QObject *pParent /* = 0 */, bool fForceCall
 {
 }
 
-void UINetworkCustomer::createNetworkRequest(UINetworkRequestType enmType, const QList<QUrl> urls,
+void UINetworkCustomer::createNetworkRequest(UINetworkRequestType enmType,
+                                             const QList<QUrl> urls,
                                              const QString &strTarget /* = QString() */,
                                              const UserDictionary requestHeaders /* = UserDictionary() */)
 {
     gNetworkManager->createNetworkRequest(enmType, urls, strTarget, requestHeaders, this);
 }
-
