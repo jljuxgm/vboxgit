@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 90424 2021-07-30 12:41:38Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 90441 2021-07-30 20:15:38Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -761,7 +761,7 @@ HRESULT Appliance::interpret()
                         throw setError(E_FAIL,
                                        tr("Cannot find storage controller with OVF instance ID \"%s\" "
                                           "to which medium \"%s\" should be attached"),
-                                       hd.strIdController,
+                                       hd.strIdController.c_str(),
                                        di.strHref.c_str());
 
                     /* controller to attach to, and the bus within that controller */
