@@ -1,4 +1,4 @@
-/* $Id: tstIEMAImpl.cpp 93865 2022-02-21 11:48:41Z vboxsync $ */
+/* $Id: tstIEMAImpl.cpp 93869 2022-02-21 13:07:04Z vboxsync $ */
 /** @file
  * IEM Assembly Instruction Helper Testcase.
  */
@@ -305,7 +305,7 @@ static const BINU16_T g_aBinU16[] =
     ENTRY(bsf_u16),
     ENTRY(bsr_u16),
     ENTRY(imul_two_u16),
-/// @todo     ENTRY(arpl),
+    ENTRY(arpl),
 };
 
 
@@ -395,7 +395,7 @@ int main(int argc, char **argv)
         char szCpuDesc[256] = {0};
         RTMpGetDescription(NIL_RTCPUID, szCpuDesc, sizeof(szCpuDesc));
 
-        RTPrintf("/* $Id: tstIEMAImpl.cpp 93865 2022-02-21 11:48:41Z vboxsync $ */\n"
+        RTPrintf("/* $Id: tstIEMAImpl.cpp 93869 2022-02-21 13:07:04Z vboxsync $ */\n"
                  "/** @file\n"
                  " * IEM Assembly Instruction Helper Testcase Data - %s.\n"
                  " */\n"
