@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 89801 2021-06-21 00:42:48Z vboxsync $ */
+/* $Id: AudioMixer.cpp 89810 2021-06-21 09:06:38Z vboxsync $ */
 /** @file
  * Audio mixing routines for multiplexing audio sources in device emulations.
  */
@@ -2225,7 +2225,7 @@ int     AudioMixerSinkUnlock(PAUDMIXSINK pSink)
  * @param   pDevIns     The device instance to register statistics with.
  * @param   ppStream    Pointer which receives the newly created audio stream.
  */
-int AudioMixerSinkCreateStream(PAUDMIXSINK pSink, PPDMIAUDIOCONNECTOR pConn, PPDMAUDIOSTREAMCFG pCfg,
+int AudioMixerSinkCreateStream(PAUDMIXSINK pSink, PPDMIAUDIOCONNECTOR pConn, PCPDMAUDIOSTREAMCFG pCfg,
                                PPDMDEVINS pDevIns, PAUDMIXSTREAM *ppStream)
 {
     AssertPtrReturn(pSink, VERR_INVALID_POINTER);

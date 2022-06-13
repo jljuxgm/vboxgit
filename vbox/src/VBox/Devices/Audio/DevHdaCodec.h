@@ -1,4 +1,4 @@
-/* $Id: DevHdaCodec.h 89213 2021-05-21 10:00:12Z vboxsync $ */
+/* $Id: DevHdaCodec.h 89810 2021-06-21 09:06:38Z vboxsync $ */
 /** @file
  * Intel HD Audio Controller Emulation - Codec, Sigmatel/IDT STAC9220.
  */
@@ -915,7 +915,7 @@ typedef struct HDACODECR3
      * @param   enmMixerCtl         Mixer control to assign new stream to.
      * @param   pCfg                Stream configuration for the new stream.
      */
-    DECLR3CALLBACKMEMBER(int,  pfnCbMixerAddStream, (PPDMDEVINS pDevIns, PDMAUDIOMIXERCTL enmMixerCtl, PPDMAUDIOSTREAMCFG pCfg));
+    DECLR3CALLBACKMEMBER(int,  pfnCbMixerAddStream, (PPDMDEVINS pDevIns, PDMAUDIOMIXERCTL enmMixerCtl, PCPDMAUDIOSTREAMCFG pCfg));
     /**
      * Removes a specified mixer control from the HDA's mixer.
      *
