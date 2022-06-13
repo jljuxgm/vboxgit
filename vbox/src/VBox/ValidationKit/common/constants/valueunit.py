@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: valueunit.py 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: valueunit.py 92302 2021-11-09 21:26:03Z vboxsync $
 
 """
 Test Value Unit Definititions.
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 82968 $"
+__version__ = "$Revision: 92302 $"
 
 
 
@@ -69,7 +69,14 @@ PP1K                    = 0x1c;
 PP10K                   = 0x1d;
 PPM                     = 0x1e;
 PPB                     = 0x1f;
-END                     = 0x20;
+TICKS                   = 0x20;
+TICKS_PER_CALL          = 0x21;
+TICKS_PER_OCCURENCE     = 0x22;
+PAGES                   = 0x23;
+PAGES_PER_SEC           = 0x24;
+TICKS_PER_PAGE          = 0x25;
+NS_PER_PAGE             = 0x26;
+END                     = 0x27;
 ## @}
 
 
@@ -108,8 +115,16 @@ g_asNames = \
     'pp10k',
     'ppm',
     'ppb',
+    'ticks',
+    'ticks/call',
+    'ticks/occ',
+    'pages',
+    'pages/sec',
+    'ticks/page',
+    'ns/page',
 ];
 assert g_asNames[PP1K] == 'pp1k';
+assert g_asNames[NS_PER_PAGE] == 'ns/page';
 
 
 ## Translation table for XML -> number.
