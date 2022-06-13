@@ -1,5 +1,5 @@
 @echo off
-REM $Id: autoexec-testbox.cmd 89857 2021-06-23 13:29:40Z vboxsync $
+REM $Id: autoexec-testbox.cmd 89858 2021-06-23 13:42:50Z vboxsync $
 REM REM @file
 REM VirtualBox Validation Kit - testbox script, automatic execution wrapper.
 REM
@@ -25,7 +25,7 @@ REM You may elect to license modified versions of this file under the
 REM terms and conditions of either the GPL or the CDDL or both.
 REM
 
-@echo "$Id: autoexec-testbox.cmd 89857 2021-06-23 13:29:40Z vboxsync $"
+@echo "$Id: autoexec-testbox.cmd 89858 2021-06-23 13:42:50Z vboxsync $"
 @echo on
 setlocal EnableExtensions
 set exe=python.exe
@@ -35,7 +35,7 @@ if exist %SystemRoot%\System32\aim_ll.exe (
     set RAMEXE=aim
 ) else if exist %SystemRoot%\System32\imdisk.exe (
     set RAMEXE=imdisk
-) else goto defaulttest    
+) else goto defaulttest
 
 REM Take presence of imdisk.exe or aim_ll.exe as order to test in ramdisk.
 set RAMDRIVE=D:
