@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioValidationKit.cpp 92234 2021-11-05 08:44:14Z vboxsync $ */
+/* $Id: DrvHostAudioValidationKit.cpp 92260 2021-11-08 10:15:59Z vboxsync $ */
 /** @file
  * Host audio driver - ValidationKit - For dumping and injecting audio data from/to the device emulation.
  */
@@ -400,6 +400,17 @@ static DECLCALLBACK(int) drvHostValKitTestSetEnd(void const *pvUser, const char 
     if (RT_SUCCESS(rc))
     {
         const PAUDIOTESTSET pSet = &pThis->Set;
+
+        const char *pszTagSet = AudioTestSetGetTag(pSet);
+        if (RTStrCmp(pszTagSet, pszTag) != 0)
+        {
+            LogRel(("ValKit: Error: Current test does not match test set to end ('%s' vs '%s')\n", pszTagSet, pszTag));
+
+            int rc2 = RTCritSectLeave(&pThis->CritSect);
+            AssertRC(rc2);
+
+            return VERR_NOT_FOUND; /* Return to the caller. */
+        }
 
         LogRel(("ValKit: Test set has %RU32 tests total, %RU32 (still) running, %RU32 failures total so far\n",
                 AudioTestSetGetTestsTotal(pSet), AudioTestSetGetTestsRunning(pSet), AudioTestSetGetTotalFailures(pSet)));
