@@ -1,4 +1,4 @@
-/* $Id: VMMAll.cpp 90598 2021-08-10 13:12:43Z vboxsync $ */
+/* $Id: VMMAll.cpp 92408 2021-11-12 21:49:06Z vboxsync $ */
 /** @file
  * VMM All Contexts.
  */
@@ -264,23 +264,6 @@ VMMDECL(PVMCPUCC) VMMGetCpuById(PVMCC pVM, RTCPUID idCpu)
 VMM_INT_DECL(uint32_t) VMMGetSvnRev(void)
 {
     return VBOX_SVN_REV;
-}
-
-
-/**
- * Checks whether we're in a ring-3 call or not.
- *
- * @returns true / false.
- * @param   pVCpu   The cross context virtual CPU structure of the calling EMT.
- * @thread  EMT
- */
-VMM_INT_DECL(bool) VMMIsInRing3Call(PVMCPU pVCpu)
-{
-#ifdef RT_ARCH_X86
-    return pVCpu->vmm.s.CallRing3JmpBufR0.fInRing3Call;
-#else
-    return pVCpu->vmm.s.CallRing3JmpBufR0.fInRing3Call;
-#endif
 }
 
 
