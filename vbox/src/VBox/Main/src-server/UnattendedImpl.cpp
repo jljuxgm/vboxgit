@@ -1,4 +1,4 @@
-/* $Id: UnattendedImpl.cpp 93589 2022-02-03 16:00:59Z vboxsync $ */
+/* $Id: UnattendedImpl.cpp 94075 2022-03-03 13:59:09Z vboxsync $ */
 /** @file
  * Unattended class implementation
  */
@@ -3560,6 +3560,12 @@ HRESULT Unattended::getDetectedImageIndices(std::vector<ULONG> &aDetectedImageIn
     return S_OK;
 }
 
+HRESULT Unattended::getIsUnattendedInstallSupported(BOOL *aIsUnattendedInstallSupported)
+{
+    *aIsUnattendedInstallSupported = true;
+    return S_OK;
+}
+
 /*
  * Getters that the installer and script classes can use.
  */
@@ -3821,4 +3827,3 @@ bool Unattended::i_updateDetectedAttributeForImage(WIMImage const &rImage)
 
     return fRet;
 }
-

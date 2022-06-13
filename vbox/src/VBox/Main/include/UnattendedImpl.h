@@ -1,4 +1,4 @@
-/* $Id: UnattendedImpl.h 93587 2022-02-03 15:40:21Z vboxsync $ */
+/* $Id: UnattendedImpl.h 94075 2022-03-03 13:59:09Z vboxsync $ */
 /** @file
  * Unattended class header
  */
@@ -228,6 +228,7 @@ private:
     HRESULT getDetectedOSHints(com::Utf8Str &aDetectedOSHints);
     HRESULT getDetectedImageNames(std::vector<com::Utf8Str> &aDetectedImageNames);
     HRESULT getDetectedImageIndices(std::vector<ULONG> &aDetectedImageIndices);
+    HRESULT getIsUnattendedInstallSupported(BOOL *aIsUnattendedInstallSupported);
     //internal functions
 
     /**
