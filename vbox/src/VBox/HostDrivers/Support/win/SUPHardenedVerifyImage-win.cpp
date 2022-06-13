@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerifyImage-win.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: SUPHardenedVerifyImage-win.cpp 93271 2022-01-17 11:47:34Z vboxsync $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Image Verification, Windows.
  */
@@ -2517,6 +2517,10 @@ static int supR3HardNtViCallWinVerifyTrust(HANDLE hFile, PCRTUTF16 pwszName, uin
     TrustData.pFile = &FileInfo;
 
     HRESULT hrc = pfnWinVerifyTrust(NULL /*hwnd*/, &PolicyActionGuid, &TrustData);
+# ifdef DEBUG_bird /* TEMP HACK */
+    if (hrc == CERT_E_EXPIRED)
+        hrc = S_OK;
+# endif
     if (hrc == S_OK)
         rc = VINF_SUCCESS;
     else
