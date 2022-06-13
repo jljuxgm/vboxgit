@@ -1,4 +1,4 @@
-/* $Id: tstVBoxDbg.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: tstVBoxDbg.cpp 93460 2022-01-27 16:50:15Z vboxsync $ */
 /** @file
  * VBox Debugger GUI, dummy testcase.
  */
@@ -22,6 +22,7 @@
 #include <qapplication.h>
 #include <VBox/dbggui.h>
 #include <VBox/vmm/vmapi.h>
+#include <VBox/vmm/vmmr3vtable.h>
 #include <iprt/errcore.h>
 #include <iprt/initterm.h>
 #include <VBox/log.h>
@@ -55,7 +56,7 @@ int main(int argc, char **argv)
         QApplication App(argc, argv);
         PDBGGUI pGui;
         PCDBGGUIVT pGuiVT;
-        rc = DBGGuiCreateForVM(pUVM, &pGui, &pGuiVT);
+        rc = DBGGuiCreateForVM(pUVM, VMMR3GetVTable(), &pGui, &pGuiVT);
         if (RT_SUCCESS(rc))
         {
             if (argc <= 1 || argc == 2)

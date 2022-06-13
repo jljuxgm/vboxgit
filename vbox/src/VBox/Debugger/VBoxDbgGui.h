@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgGui.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: VBoxDbgGui.h 93460 2022-01-27 16:50:15Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - The Manager.
  */
@@ -63,8 +63,9 @@ public:
      * @returns VBox status code.
      * @param   pUVM        The user mode VM handle. The caller's reference will be
      *                      consumed on success.
+     * @param   pVMM        The VMM function table.
      */
-    int init(PUVM pUVM);
+    int init(PUVM pUVM, PCVMMR3VTABLE pVMM);
 
     /**
      * Destroys the VBoxDbgGui object.
@@ -174,6 +175,8 @@ protected:
     PVM m_pVM;
     /** The user mode VM handle. */
     PUVM m_pUVM;
+    /** The VMM function table. */
+    PCVMMR3VTABLE m_pVMM;
 
     /** The parent widget. */
     QWidget *m_pParent;

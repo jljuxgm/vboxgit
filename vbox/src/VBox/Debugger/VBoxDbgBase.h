@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgBase.h 93444 2022-01-26 18:01:15Z vboxsync $ */
+/* $Id: VBoxDbgBase.h 93460 2022-01-27 16:50:15Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Base classes.
  */
@@ -24,6 +24,7 @@
 
 #include <VBox/vmm/stam.h>
 #include <VBox/vmm/vmapi.h>
+#include <VBox/vmm/vmmr3vtable.h>
 #include <VBox/dbg.h>
 #include <iprt/thread.h>
 #include <QString>
