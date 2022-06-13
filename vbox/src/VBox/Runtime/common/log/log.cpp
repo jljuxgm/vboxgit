@@ -1,4 +1,4 @@
-/* $Id: log.cpp 90864 2021-08-25 00:57:45Z vboxsync $ */
+/* $Id: log.cpp 90866 2021-08-25 08:06:46Z vboxsync $ */
 /** @file
  * Runtime VBox - Logger.
  */
@@ -1104,7 +1104,7 @@ RTDECL(int) RTLogCreateExV(PRTLOGGER *ppLogger, const char *pszEnvVarBase, uint6
         pLoggerInt->cMaxGroups                  = cGroups;
         pLoggerInt->papszGroups                 = papszGroups;
         if (fFlags & RTLOGFLAGS_RESTRICT_GROUPS)
-            pLoggerInt->pacEntriesPerGroup      = (uint32_t *)(pLoggerInt + 1);
+            pLoggerInt->pacEntriesPerGroup      = &pLoggerInt->afGroups[cGroups];
         else
             pLoggerInt->pacEntriesPerGroup      = NULL;
         pLoggerInt->cMaxEntriesPerGroup         = cMaxEntriesPerGroup ? cMaxEntriesPerGroup : UINT32_MAX;
