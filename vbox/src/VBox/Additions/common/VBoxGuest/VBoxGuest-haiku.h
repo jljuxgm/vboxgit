@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-haiku.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxGuest-haiku.h 92181 2021-11-02 21:46:04Z vboxsync $ */
 /** @file
  * VBoxGuest kernel module, Haiku Guest Additions, header.
  */
@@ -29,7 +29,7 @@
  *
  * VirtualBox Guest Additions for Haiku.
  * Copyright (c) 2011 Mike Smith <mike@scgtrp.net>
- *                    François Revol <revol@free.fr>
+ *                    FranÃ§ois Revol <revol@free.fr>
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
