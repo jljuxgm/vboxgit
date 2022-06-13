@@ -1,4 +1,4 @@
-/* $Id: TRPM.cpp 87779 2021-02-17 13:54:41Z vboxsync $ */
+/* $Id: TRPM.cpp 92454 2021-11-16 10:56:43Z vboxsync $ */
 /** @file
  * TRPM - The Trap Monitor.
  */
@@ -388,11 +388,17 @@ VMMR3DECL(int) TRPMR3InjectEvent(PVM pVM, PVMCPU pVCpu, TRPMEVENT enmEvent, bool
         }
         else
         {
+#ifdef RT_OS_DARWIN
+            /** @todo Can this be done prettier? NEM on darwin shares the R0 VMX code which relies on the same behavior as in the non NEM case. */
+            rc = TRPMAssertTrap(pVCpu, u8Interrupt, TRPM_HARDWARE_INT);
+            AssertRC(rc);
+#else
             VBOXSTRICTRC rcStrict = IEMInjectTrap(pVCpu, u8Interrupt, enmEvent, 0, 0, 0);
             /** @todo NSTVMX: NSTSVM: We don't support nested VMX or nested SVM with NEM yet.
              *        If so we should handle VINF_SVM_VMEXIT and VINF_VMX_VMEXIT codes here. */
             if (rcStrict != VINF_SUCCESS)
                 return VBOXSTRICTRC_TODO(rcStrict);
+#endif
         }
         STAM_REL_COUNTER_INC(&pVM->trpm.s.aStatForwardedIRQ[u8Interrupt]);
     }
