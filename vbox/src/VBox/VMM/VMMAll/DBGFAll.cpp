@@ -1,4 +1,4 @@
-/* $Id: DBGFAll.cpp 87594 2021-02-03 20:23:46Z vboxsync $ */
+/* $Id: DBGFAll.cpp 89911 2021-06-25 11:00:55Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, All Context Code.
  */
@@ -187,7 +187,7 @@ VMM_INT_DECL(VBOXSTRICTRC)  DBGFBpCheckIo(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, 
         {
             if (   pVM->dbgf.s.aHwBreakpoints[iBp].fType == X86_DR7_RW_IO
                 && pVM->dbgf.s.aHwBreakpoints[iBp].fEnabled
-                && pVM->dbgf.s.aHwBreakpoints[iBp].hBp   == NIL_DBGFBP) /** @todo r=bird: this cannot be right... */
+                && pVM->dbgf.s.aHwBreakpoints[iBp].hBp   != NIL_DBGFBP)
             {
                 uint8_t  cbReg      = pVM->dbgf.s.aHwBreakpoints[iBp].cb; Assert(RT_IS_POWER_OF_TWO(cbReg));
                 uint64_t uDrXFirst  = pVM->dbgf.s.aHwBreakpoints[iBp].GCPtr & ~(uint64_t)(cbReg - 1);
