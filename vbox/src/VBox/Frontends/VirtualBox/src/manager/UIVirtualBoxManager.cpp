@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 89979 2021-06-30 13:24:20Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 89985 2021-07-01 08:44:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -976,6 +976,7 @@ void UIVirtualBoxManager::sltOpenNewMachineWizard()
         QWidget *pWizardParent = windowManager().realParentWindow(this);
         UISafePointerWizardNewVM pWizard = new UIWizardNewVM(pWizardParent, m_pWidget->fullGroupName());
         windowManager().registerNewParent(pWizard, pWizardParent);
+        pWizard->prepare();
 
         CUnattended comUnattendedInstaller = uiCommon().virtualBox().CreateUnattendedInstaller();
         AssertMsg(!comUnattendedInstaller.isNull(), ("Could not create unattended installer!\n"));
