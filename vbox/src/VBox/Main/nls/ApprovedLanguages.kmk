@@ -1,4 +1,4 @@
-# $Id: ApprovedLanguages.kmk 91718 2021-10-14 11:43:12Z vboxsync $
+# $Id: ApprovedLanguages.kmk 91727 2021-10-14 14:14:47Z vboxsync $
 ## @file
 # ApprovedLanguages.kmk - List of approved Main API translations.
 #
@@ -17,4 +17,5 @@
 
 # The list of approved Main API languages.
 VBOX_APPROVED_MAIN_LANGUAGES := \
-	ru    \
+	ru
+
