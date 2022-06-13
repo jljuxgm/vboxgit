@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsNetwork.cpp 87460 2021-01-28 13:54:50Z vboxsync $ */
+/* $Id: UIMachineSettingsNetwork.cpp 90967 2021-08-27 20:37:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsNetwork class implementation.
  */
@@ -32,10 +32,11 @@
 #include "UICommon.h"
 #include "UIConverter.h"
 #include "UIErrorString.h"
+#include "UIExtraDataManager.h"
 #include "UIIconPool.h"
 #include "UIMachineSettingsNetwork.h"
-#include "UIExtraDataManager.h"
 #include "UINetworkAttachmentEditor.h"
+#include "UITranslator.h"
 
 /* COM includes: */
 #include "CNATEngine.h"
@@ -420,7 +421,7 @@ bool UIMachineSettingsNetwork::validate(QList<UIValidationMessage> &messages)
 
     /* Prepare message: */
     UIValidationMessage message;
-    message.first = uiCommon().removeAccelMark(tabTitle());
+    message.first = UITranslator::removeAccelMark(tabTitle());
 
     /* Validate alternatives: */
     switch (attachmentType())

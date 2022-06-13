@@ -1,4 +1,4 @@
-/* $Id: UICustomFileSystemModel.cpp 87719 2021-02-11 09:42:30Z vboxsync $ */
+/* $Id: UICustomFileSystemModel.cpp 90967 2021-08-27 20:37:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICustomFileSystemModel class implementation.
  */
@@ -21,10 +21,11 @@
 #include <QHeaderView>
 
 /* GUI includes: */
-#include "UIErrorString.h"
-#include "UICustomFileSystemModel.h"
-#include "UIPathOperations.h"
 #include "UICommon.h"
+#include "UICustomFileSystemModel.h"
+#include "UIErrorString.h"
+#include "UIPathOperations.h"
+#include "UITranslator.h"
 
 const char *UICustomFileSystemModel::strUpDirectoryString = "..";
 
@@ -439,7 +440,7 @@ QVariant UICustomFileSystemModel::data(const QModelIndex &index, int role) const
             if (m_fShowHumanReadableSizes)
             {
                 qulonglong size = item->data(index.column()).toULongLong();
-                return uiCommon().formatSize(size);
+                return UITranslator::formatSize(size);
             }
             else
                 return item->data(index.column());

@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsGeneral.cpp 88446 2021-04-09 18:04:37Z vboxsync $ */
+/* $Id: UIMachineSettingsGeneral.cpp 90967 2021-08-27 20:37:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsGeneral class implementation.
  */
@@ -35,6 +35,7 @@
 #include "UIModalWindowManager.h"
 #include "UINameAndSystemEditor.h"
 #include "UIProgressObject.h"
+#include "UITranslator.h"
 
 /* COM includes: */
 #include "CExtPack.h"
@@ -382,7 +383,7 @@ bool UIMachineSettingsGeneral::validate(QList<UIValidationMessage> &messages)
     UIValidationMessage message;
 
     /* 'Basic' tab validations: */
-    message.first = UICommon::removeAccelMark(m_pTabWidget->tabText(0));
+    message.first = UITranslator::removeAccelMark(m_pTabWidget->tabText(0));
     message.second.clear();
 
     /* VM name validation: */
@@ -406,7 +407,7 @@ bool UIMachineSettingsGeneral::validate(QList<UIValidationMessage> &messages)
         messages << message;
 
     /* 'Encryption' tab validations: */
-    message.first = UICommon::removeAccelMark(m_pTabWidget->tabText(3));
+    message.first = UITranslator::removeAccelMark(m_pTabWidget->tabText(3));
     message.second.clear();
 
     /* Encryption validation: */

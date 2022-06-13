@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.cpp 87608 2021-02-04 14:54:27Z vboxsync $ */
+/* $Id: UIMachineSettingsDisplay.cpp 90967 2021-08-27 20:37:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsDisplay class implementation.
  */
@@ -38,6 +38,7 @@
 #include "UIGraphicsControllerEditor.h"
 #include "UIMachineSettingsDisplay.h"
 #include "UIScaleFactorEditor.h"
+#include "UITranslator.h"
 #include "UIVideoMemoryEditor.h"
 
 /* COM includes: */
@@ -645,7 +646,7 @@ bool UIMachineSettingsDisplay::validate(QList<UIValidationMessage> &messages)
     {
         /* Prepare message: */
         UIValidationMessage message;
-        message.first = UICommon::removeAccelMark(m_pTabWidget->tabText(0));
+        message.first = UITranslator::removeAccelMark(m_pTabWidget->tabText(0));
 
         /* Video RAM amount test: */
         if (shouldWeWarnAboutLowVRAM() && !m_comGuestOSType.isNull())
@@ -657,7 +658,7 @@ bool UIMachineSettingsDisplay::validate(QList<UIValidationMessage> &messages)
             {
                 message.second << tr("The virtual machine is currently assigned less than <b>%1</b> of video memory "
                                      "which is the minimum amount required to switch to full-screen or seamless mode.")
-                                     .arg(uiCommon().formatSize(uNeedBytes, 0, FormatSize_RoundUp));
+                                     .arg(UITranslator::formatSize(uNeedBytes, 0, FormatSize_RoundUp));
             }
 #ifdef VBOX_WITH_3D_ACCELERATION
             /* 3D acceleration video RAM amount test: */
@@ -669,7 +670,7 @@ bool UIMachineSettingsDisplay::validate(QList<UIValidationMessage> &messages)
                     message.second << tr("The virtual machine is set up to use hardware graphics acceleration "
                                          "and the operating system hint is set to Windows Vista or later. "
                                          "For best performance you should set the machine's video memory to at least <b>%1</b>.")
-                                         .arg(uiCommon().formatSize(uNeedBytes, 0, FormatSize_RoundUp));
+                                         .arg(UITranslator::formatSize(uNeedBytes, 0, FormatSize_RoundUp));
                 }
             }
 #endif /* VBOX_WITH_3D_ACCELERATION */
@@ -705,7 +706,7 @@ bool UIMachineSettingsDisplay::validate(QList<UIValidationMessage> &messages)
     {
         /* Prepare message: */
         UIValidationMessage message;
-        message.first = UICommon::removeAccelMark(m_pTabWidget->tabText(1));
+        message.first = UITranslator::removeAccelMark(m_pTabWidget->tabText(1));
 
         /* VRDE Extension Pack presence test: */
         if (m_pCheckboxRemoteDisplay->isChecked())

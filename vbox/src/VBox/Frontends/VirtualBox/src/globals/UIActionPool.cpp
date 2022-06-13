@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.cpp 90490 2021-08-03 09:21:04Z vboxsync $ */
+/* $Id: UIActionPool.cpp 90967 2021-08-27 20:37:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPool class implementation.
  */
@@ -28,6 +28,7 @@
 #include "UIIconPool.h"
 #include "UIMessageCenter.h"
 #include "UIShortcutPool.h"
+#include "UITranslator.h"
 #ifdef VBOX_GUI_WITH_NETWORK_MANAGER
 # include "UIExtraDataManager.h"
 # include "UINetworkRequestManager.h"
@@ -190,7 +191,7 @@ QString UIAction::nameInMenu() const
         /* Unchanged name for Manager UI: */
         case UIActionPoolType_Manager: return name();
         /* Filtered name for Runtime UI: */
-        case UIActionPoolType_Runtime: return UICommon::removeAccelMark(name());
+        case UIActionPoolType_Runtime: return UITranslator::removeAccelMark(name());
     }
     /* Nothing by default: */
     return QString();
@@ -227,8 +228,8 @@ void UIAction::updateText()
                 case UIActionPoolType_Runtime:
                 {
                     if (m_fMachineMenuAction)
-                        setText(uiCommon().insertKeyToActionText(nameInMenu(),
-                                                                 gShortcutPool->shortcut(actionPool(), this).primaryToPortableText()));
+                        setText(UITranslator::insertKeyToActionText(nameInMenu(),
+                                                                    gShortcutPool->shortcut(actionPool(), this).primaryToPortableText()));
                     else
                         setText(nameInMenu());
                     break;

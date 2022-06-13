@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGenerator.cpp 86275 2020-09-24 20:04:03Z vboxsync $ */
+/* $Id: UIDetailsGenerator.cpp 90967 2021-08-27 20:37:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsGenerator implementation.
  */
@@ -21,10 +21,11 @@
 
 /* GUI includes: */
 #include "UIBootOrderEditor.h"
+#include "UICommon.h"
 #include "UIConverter.h"
 #include "UIDetailsGenerator.h"
 #include "UIErrorString.h"
-#include "UICommon.h"
+#include "UITranslator.h"
 
 /* COM includes: */
 #include "COMEnums.h"
@@ -815,7 +816,7 @@ UITextTable UIDetailsGenerator::generateMachineInformationSerial(CMachine &comMa
 
         /* Gather port information: */
         const KPortMode enmMode = comPort.GetHostMode();
-        const QString strModeTemplate = uiCommon().toCOMPortName(comPort.GetIRQ(), comPort.GetIOBase()) + ", ";
+        const QString strModeTemplate = UITranslator::toCOMPortName(comPort.GetIRQ(), comPort.GetIOBase()) + ", ";
         QString strModeType;
         switch (enmMode)
         {

@@ -1,4 +1,4 @@
-/* $Id: UISnapshotDetailsWidget.cpp 88862 2021-05-04 16:05:25Z vboxsync $ */
+/* $Id: UISnapshotDetailsWidget.cpp 90967 2021-08-27 20:37:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotDetailsWidget class implementation.
  */
@@ -33,12 +33,13 @@
 /* GUI includes: */
 #include "QIDialogButtonBox.h"
 #include "QIFlowLayout.h"
+#include "UICommon.h"
 #include "UIConverter.h"
 #include "UIDesktopWidgetWatchdog.h"
 #include "UIIconPool.h"
 #include "UISnapshotDetailsWidget.h"
 #include "UIMessageCenter.h"
-#include "UICommon.h"
+#include "UITranslator.h"
 #include "VBoxUtils.h"
 
 /* COM includes: */
@@ -1912,7 +1913,7 @@ QStringList UISnapshotDetailsWidget::serialReport(CMachine comMachine)
             const KPortMode enmMode = comPort.GetHostMode();
             /* Compose the data: */
             QStringList aInfo;
-            aInfo << uiCommon().toCOMPortName(comPort.GetIRQ(), comPort.GetIOBase());
+            aInfo << UITranslator::toCOMPortName(comPort.GetIRQ(), comPort.GetIOBase());
             if (   enmMode == KPortMode_HostPipe
                 || enmMode == KPortMode_HostDevice
                 || enmMode == KPortMode_TCP

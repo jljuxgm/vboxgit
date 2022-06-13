@@ -1,4 +1,4 @@
-/* $Id: UIMediumItem.cpp 90564 2021-08-07 11:12:13Z vboxsync $ */
+/* $Id: UIMediumItem.cpp 90967 2021-08-27 20:37:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumItem class implementation.
  */
@@ -28,6 +28,7 @@
 #include "UIMediumItem.h"
 #include "UIMessageCenter.h"
 #include "UINotificationCenter.h"
+#include "UITranslator.h"
 
 /* COM includes: */
 #include "CMachine.h"
@@ -142,8 +143,8 @@ void UIMediumItem::setMedium(const UIMedium &guiMedium)
 bool UIMediumItem::operator<(const QTreeWidgetItem &other) const
 {
     int iColumn = treeWidget()->sortColumn();
-    ULONG64 uThisValue = uiCommon().parseSize(      text(iColumn));
-    ULONG64 uThatValue = uiCommon().parseSize(other.text(iColumn));
+    ULONG64 uThisValue = UITranslator::parseSize(      text(iColumn));
+    ULONG64 uThatValue = UITranslator::parseSize(other.text(iColumn));
     return uThisValue && uThatValue ? uThisValue < uThatValue : QTreeWidgetItem::operator<(other);
 }
 
