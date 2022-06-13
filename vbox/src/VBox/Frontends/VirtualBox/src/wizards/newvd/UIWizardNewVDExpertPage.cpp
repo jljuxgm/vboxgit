@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDExpertPage.cpp 91256 2021-09-15 15:50:45Z vboxsync $ */
+/* $Id: UIWizardNewVDExpertPage.cpp 91267 2021-09-16 06:01:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDExpertPage class implementation.
  */
@@ -116,7 +116,7 @@ void UIWizardNewVDExpertPage::sltSelectLocationButtonClicked()
         UIDiskEditorGroupBox::appendExtension(strSelectedPath,
                                               UIDiskEditorGroupBox::defaultExtension(pWizard->mediumFormat(), KDeviceType_HardDisk));
     QFileInfo mediumPath(strMediumPath);
-    m_pSizeAndPathGroup->setMediumPath(QDir::toNativeSeparators(mediumPath.absoluteFilePath()));
+    m_pSizeAndPathGroup->setMediumFilePath(QDir::toNativeSeparators(mediumPath.absoluteFilePath()));
     emit completeChanged();
 }
 
@@ -139,9 +139,9 @@ void UIWizardNewVDExpertPage::initializePage()
         UIDiskEditorGroupBox::constructMediumFilePath(UIDiskVariantGroupBox::appendExtension(m_strDefaultName,
                                                                                              strExtension), m_strDefaultPath);
     m_pSizeAndPathGroup->blockSignals(true);
-    m_pSizeAndPathGroup->setMediumPath(strMediumFilePath);
+    m_pSizeAndPathGroup->setMediumFilePath(strMediumFilePath);
     m_pSizeAndPathGroup->blockSignals(false);
-    pWizard->setMediumPath(m_pSizeAndPathGroup->mediumPath());
+    pWizard->setMediumPath(m_pSizeAndPathGroup->mediumFilePath());
 
     m_pSizeAndPathGroup->blockSignals(true);
     m_pSizeAndPathGroup->setMediumSize(m_uDefaultSize > m_uMediumSizeMin && m_uDefaultSize < m_uMediumSizeMax ? m_uDefaultSize : m_uMediumSizeMin);
