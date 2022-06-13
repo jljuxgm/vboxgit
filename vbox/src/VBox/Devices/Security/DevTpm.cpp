@@ -1,4 +1,4 @@
-/* $Id: DevTpm.cpp 91137 2021-09-07 11:12:01Z vboxsync $ */
+/* $Id: DevTpm.cpp 91325 2021-09-22 14:18:04Z vboxsync $ */
 /** @file
  * DevTpm - Trusted Platform Module emulation.
  *
@@ -1686,7 +1686,7 @@ static DECLCALLBACK(int) tpmR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFGM
     if (RT_FAILURE(rc))
         return PDMDEV_SET_ERROR(pDevIns, rc, N_("Configuration error: Failed to get the \"RevisionId\" value"));
 
-    rc = pHlp->pfnCFGMQueryBoolDef(pCfg, "Crb", &pThis->fCrb, true);
+    rc = pHlp->pfnCFGMQueryBoolDef(pCfg, "Crb", &pThis->fCrb, false);
     if (RT_FAILURE(rc))
         return PDMDEV_SET_ERROR(pDevIns, rc, N_("Configuration error: Failed to get the \"Crb\" value"));
 
