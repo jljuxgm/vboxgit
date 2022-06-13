@@ -1,4 +1,4 @@
-/* $Id: HGCMObjects.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: HGCMObjects.h 91112 2021-09-03 22:58:51Z vboxsync $ */
 /** @file
  * HGCMObjects - Host-Guest Communication Manager objects header.
  */
@@ -30,7 +30,7 @@ class HGCMObject;
 
 typedef struct _ObjectAVLCore
 {
-    AVLULNODECORE AvlCore;
+    AVLU32NODECORE AvlCore;
     HGCMObject *pSelf;
 } ObjectAVLCore;
 
