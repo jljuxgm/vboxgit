@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 94735 2022-04-28 12:54:21Z vboxsync $ */
+/* $Id: MachineImpl.h 94747 2022-04-28 18:29:45Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -1301,6 +1301,10 @@ private:
                                ULONG aVmNetTx);
     HRESULT authenticateExternal(const std::vector<com::Utf8Str> &aAuthParams,
                                  com::Utf8Str &aResult);
+
+#ifdef VBOX_WITH_FULL_VM_ENCRYPTION
+    HRESULT i_setInaccessible(void);
+#endif
 };
 
 // SessionMachine class
