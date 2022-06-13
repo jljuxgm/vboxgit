@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 94141 2022-03-08 23:04:38Z vboxsync $ */
+/* $Id: HostImpl.cpp 94143 2022-03-08 23:12:27Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -170,6 +170,9 @@ typedef SOLARISFIXEDDISK *PSOLARISFIXEDDISK;
 #include <VBox/err.h>
 #include <VBox/settings.h>
 #include <VBox/sup.h>
+#ifdef VBOX_WITH_3D_ACCELERATION
+# include <VBox/VBoxOGL.h>
+#endif
 #include <iprt/x86.h>
 
 #include "VBox/com/MultiResult.h"

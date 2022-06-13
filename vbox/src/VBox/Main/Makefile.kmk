@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 94142 2022-03-08 23:05:30Z vboxsync $
+# $Id: Makefile.kmk 94143 2022-03-08 23:12:27Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -751,8 +751,9 @@ endif
 VBoxSVC_LDFLAGS.darwin    = -framework IOKit -framework SystemConfiguration
 
 ifdef VBOX_WITH_3D_ACCELERATION
- VBoxSVC_LIBS += $(PATH_STAGE_LIB)/VBoxOGLTest$(VBOX_SUFF_LIB)
- VBoxSVC_LDFLAGS.darwin += -framework OpenGL
+ VBoxSVC_DEFS            += VBOX_WITH_3D_ACCELERATION
+ VBoxSVC_LIBS            += $(PATH_STAGE_LIB)/VBoxOGLTest$(VBOX_SUFF_LIB)
+ VBoxSVC_LDFLAGS.darwin  += -framework OpenGL
 endif
 
 ifeq ($(KBUILD_TYPE),debug)
