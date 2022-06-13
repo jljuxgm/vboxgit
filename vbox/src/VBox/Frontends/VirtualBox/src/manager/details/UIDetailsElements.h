@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElements.h 89713 2021-06-15 15:30:02Z vboxsync $ */
+/* $Id: UIDetailsElements.h 89714 2021-06-15 15:35:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement[Name] classes declaration.
  */
@@ -20,6 +20,9 @@
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
+
+/* Qt includes: */
+#include <QMutex>
 
 /* GUI includes: */
 #include "UIDetailsElement.h"
