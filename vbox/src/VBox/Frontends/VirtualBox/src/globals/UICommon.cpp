@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 91066 2021-09-01 15:56:33Z vboxsync $ */
+/* $Id: UICommon.cpp 91070 2021-09-01 16:57:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -127,19 +127,20 @@
 #include <VBox/VBoxOGL.h>
 #include <VBox/vd.h>
 #include <VBox/com/Guid.h>
+#ifdef VBOX_WS_WIN
+# include <iprt/win/shlobj.h>
+#endif
 
 /* VirtualBox interface declarations: */
 #include <VBox/com/VirtualBox.h>
 
 /* External includes: */
-#ifdef VBOX_WS_WIN
-# include <iprt/win/shlobj.h>
-#endif
-
-/* External includes: */
 #include <math.h>
 #ifdef VBOX_WS_MAC
 # include <sys/utsname.h>
+#endif
+#ifdef VBOX_WS_X11
+# include <xcb/xcb.h>
 #endif
 
 /* Namespaces: */
