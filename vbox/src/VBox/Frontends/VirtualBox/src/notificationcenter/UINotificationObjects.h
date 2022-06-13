@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.h 90410 2021-07-29 13:54:28Z vboxsync $ */
+/* $Id: UINotificationObjects.h 90411 2021-07-29 14:16:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects declarations.
  */
@@ -582,6 +582,34 @@ protected:
 private:
 
     /** Holds the machine being shutdown. */
+    CCloudMachine  m_comMachine;
+    /** Holds the machine name. */
+    QString        m_strName;
+};
+
+/** UINotificationProgress extension for cloud machine terminate functionality. */
+class SHARED_LIBRARY_STUFF UINotificationProgressCloudMachineTerminate : public UINotificationProgress
+{
+    Q_OBJECT;
+
+public:
+
+    /** Constructs cloud machine terminate notification-progress.
+      * @param  comMachine  Brings the machine being terminate. */
+    UINotificationProgressCloudMachineTerminate(const CCloudMachine &comMachine);
+
+protected:
+
+    /** Returns object name. */
+    virtual QString name() const /* override final */;
+    /** Returns object details. */
+    virtual QString details() const /* override final */;
+    /** Creates and returns started progress-wrapper. */
+    virtual CProgress createProgress(COMResult &comResult) /* override final */;
+
+private:
+
+    /** Holds the machine being terminated. */
     CCloudMachine  m_comMachine;
     /** Holds the machine name. */
     QString        m_strName;
