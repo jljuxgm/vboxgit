@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 90409 2021-07-29 13:40:19Z vboxsync $ */
+/* $Id: UINotificationObjects.cpp 90410 2021-07-29 13:54:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -700,6 +700,46 @@ CProgress UINotificationProgressCloudMachinePowerDown::createProgress(COMResult 
 
     /* Initialize progress-wrapper: */
     CProgress comProgress = m_comMachine.PowerDown();
+    /* Store COM result: */
+    comResult = m_comMachine;
+    /* Return progress-wrapper: */
+    return comProgress;
+}
+
+
+/*********************************************************************************************************************************
+*   Class UINotificationProgressCloudMachineShutdown implementation.                                                             *
+*********************************************************************************************************************************/
+
+UINotificationProgressCloudMachineShutdown::UINotificationProgressCloudMachineShutdown(const CCloudMachine &comMachine)
+    : m_comMachine(comMachine)
+{
+}
+
+QString UINotificationProgressCloudMachineShutdown::name() const
+{
+    return   UINotificationProgress::tr("Shutting cloud VM down ...");
+}
+
+QString UINotificationProgressCloudMachineShutdown::details() const
+{
+    return UINotificationProgress::tr("<b>VM Name:</b> %1").arg(m_strName);
+}
+
+CProgress UINotificationProgressCloudMachineShutdown::createProgress(COMResult &comResult)
+{
+    /* Acquire cloud VM name: */
+    m_strName = m_comMachine.GetName();
+    if (!m_comMachine.isOk())
+    {
+        /* Store COM result: */
+        comResult = m_comMachine;
+        /* Return progress-wrapper: */
+        return CProgress();
+    }
+
+    /* Initialize progress-wrapper: */
+    CProgress comProgress = m_comMachine.Shutdown();
     /* Store COM result: */
     comResult = m_comMachine;
     /* Return progress-wrapper: */
