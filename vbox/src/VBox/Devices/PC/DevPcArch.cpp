@@ -1,4 +1,4 @@
-/* $Id: DevPcArch.cpp 92192 2021-11-03 14:44:45Z vboxsync $ */
+/* $Id: DevPcArch.cpp 92193 2021-11-03 14:46:30Z vboxsync $ */
 /** @file
  * DevPcArch - PC Architecture Device.
  */
@@ -188,33 +188,6 @@ pcarchIOPortPS2SysControlPortAWrite(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT o
         return VINF_SUCCESS;
     }
     return PDMDevHlpDBGFStop(pDevIns, RT_SRC_POS, "Port=%#x cb=%d u32=%#x\n", offPort, cb, u32);
-}
-
-
-/**
- * @callback_method_impl{FNIOMMMIONEWWRITE, Ignores writes to the reserved memory.}
- * @note    off is an absolute address.
- */
-static DECLCALLBACK(VBOXSTRICTRC)
-pcarchReservedMemoryWrite(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS off, void const *pv, unsigned cb)
-{
-    Log2(("pcarchReservedMemoryRead: %#RGp LB %#x %.*Rhxs\n", off, cb, RT_MIN(cb, 16), pv));
-    RT_NOREF(pDevIns, pvUser, off, pv, cb);
-    return VINF_SUCCESS;
-}
-
-
-/**
- * @callback_method_impl{FNIOMMMIONEWREAD, The reserved memory reads as 0xff.}
- * @note    off is an absolute address.
- */
-static DECLCALLBACK(VBOXSTRICTRC)
-pcarchReservedMemoryRead(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS off, void *pv, unsigned cb)
-{
-    Log2(("pcarchReservedMemoryRead: %#RGp LB %#x\n", off, cb));
-    RT_NOREF(pDevIns, pvUser, off);
-    memset(pv, 0xff, cb);
-    return VINF_SUCCESS;
 }
 
 
