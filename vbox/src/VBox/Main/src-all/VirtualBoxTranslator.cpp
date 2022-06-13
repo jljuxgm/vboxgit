@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxTranslator.cpp 91369 2021-09-24 16:47:04Z vboxsync $ */
+/* $Id: VirtualBoxTranslator.cpp 91373 2021-09-24 17:37:23Z vboxsync $ */
 /** @file
  * VirtualBox Translator class.
  */
@@ -28,7 +28,7 @@
 #include "Global.h"
 #include "VirtualBoxBase.h"
 #include "QMTranslator.h"
-#include <VBox/VirtualBoxTranslator.h>
+#include "VirtualBoxTranslator.h"
 
 #define TRANSLATOR_CACHE_SIZE 32
 

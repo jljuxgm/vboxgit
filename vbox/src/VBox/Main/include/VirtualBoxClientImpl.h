@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxClientImpl.h 91369 2021-09-24 16:47:04Z vboxsync $ */
+/* $Id: VirtualBoxClientImpl.h 91373 2021-09-24 17:37:23Z vboxsync $ */
 /** @file
  * Header file for the VirtualBoxClient (IVirtualBoxClient) class, VBoxC.
  */
@@ -23,7 +23,7 @@
 
 #include "VirtualBoxClientWrap.h"
 #include "EventImpl.h"
-#include <VBox/VirtualBoxTranslator.h>
+#include "VirtualBoxTranslator.h"
 
 #ifdef RT_OS_WINDOWS
 # include "win/resource.h"
