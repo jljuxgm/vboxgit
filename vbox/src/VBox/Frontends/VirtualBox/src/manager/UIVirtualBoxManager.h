@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 90795 2021-08-23 14:51:16Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.h 91001 2021-08-30 14:26:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -107,13 +107,10 @@ private slots:
 
     /** @name Common stuff.
       * @{ */
-#if QT_VERSION == 0
-        /** Stupid moc does not warn if it cannot find headers! */
-        void QT_VERSION_NOT_DEFINED
-#elif defined(VBOX_WS_X11)
+#ifdef VBOX_WS_X11
         /** Handles host-screen available-area change. */
         void sltHandleHostScreenAvailableAreaChange();
-#endif /* VBOX_WS_X11 */
+#endif
 
         /** Handles request to update actions. */
         void sltHandleUpdateActionAppearanceRequest() { updateActionsAppearance(); }

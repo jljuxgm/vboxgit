@@ -1,4 +1,4 @@
-/* $Id: UIDesktopWidgetWatchdog.h 84696 2020-06-05 14:40:35Z vboxsync $ */
+/* $Id: UIDesktopWidgetWatchdog.h 91001 2021-08-30 14:26:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDesktopWidgetWatchdog class declaration.
  */
@@ -125,10 +125,6 @@ public:
 
 private slots:
 
-#if QT_VERSION == 0
-    /** Stupid moc does not warn if it cannot find headers! */
-    void QT_VERSION_NOT_DEFINED
-#else /* QT_VERSION != 0 */
     /** Handles @a pHostScreen adding. */
     void sltHostScreenAdded(QScreen *pHostScreen);
     /** Handles @a pHostScreen removing. */
@@ -137,7 +133,6 @@ private slots:
     void sltHandleHostScreenResized(const QRect &geometry);
     /** Handles host-screen work-area resize to passed @a availableGeometry. */
     void sltHandleHostScreenWorkAreaResized(const QRect &availableGeometry);
-#endif /* QT_VERSION != 0 */
 
 #if defined(VBOX_WS_X11) && !defined(VBOX_GUI_WITH_CUSTOMIZATIONS1)
     /** Handles @a availableGeometry calculation result for the host-screen with @a iHostScreenIndex. */
