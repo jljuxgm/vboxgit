@@ -1,4 +1,4 @@
-/* $Id: tstClipboardGH-X11Smoke.cpp 93326 2022-01-18 16:05:48Z vboxsync $ */
+/* $Id: tstClipboardGH-X11Smoke.cpp 93496 2022-01-31 13:18:20Z vboxsync $ */
 /** @file
  * Shared Clipboard guest/host X11 code smoke tests.
  */
@@ -71,7 +71,7 @@ int main()
         return RTTestSummaryAndDestroy(hTest);
     }
     SHCLX11CTX X11Ctx;
-    rc = ShClX11Init(&X11Ctx, NULL, false);
+    rc = ShClX11Init(&X11Ctx, NULL /* pCallbacks */, NULL /* pParent */, false);
     AssertRCReturn(rc, 1);
     rc = ShClX11ThreadStart(&X11Ctx, false /* fGrab */);
     AssertRCReturn(rc, 1);

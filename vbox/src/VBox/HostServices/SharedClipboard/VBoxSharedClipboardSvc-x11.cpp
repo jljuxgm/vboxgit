@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-x11.cpp 93495 2022-01-31 13:08:33Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-x11.cpp 93496 2022-01-31 13:18:20Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Linux host.
  */
@@ -58,6 +58,7 @@ struct SHCLCONTEXT
      * requests. */
     bool                 fShuttingDown;
 };
+
 
 /*********************************************************************************************************************************
 *   Prototypes                                                                                                                   *

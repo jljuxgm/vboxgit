@@ -1,4 +1,4 @@
-/* $Id: tstClipboardGH-X11.cpp 93326 2022-01-18 16:05:48Z vboxsync $ */
+/* $Id: tstClipboardGH-X11.cpp 93496 2022-01-31 13:18:20Z vboxsync $ */
 /** @file
  * Shared Clipboard guest/host X11 code test cases.
  */
@@ -669,7 +669,7 @@ int main()
      * Run the tests.
      */
     SHCLX11CTX X11Ctx;
-    rc = ShClX11Init(&X11Ctx, NULL /* pParent */, false /* fHeadless */);
+    rc = ShClX11Init(&X11Ctx, NULL /* pCallbacks */, NULL /* pParent */, false /* fHeadless */);
     AssertRCReturn(rc, RTEXITCODE_FAILURE);
 
     char *pc;
@@ -892,7 +892,7 @@ int main()
     /*
      * Headless clipboard tests
      */
-    rc = ShClX11Init(&X11Ctx, NULL /* pParent */, true /* fHeadless */);
+    rc = ShClX11Init(&X11Ctx, NULL /* pCallbacks */, NULL /* pParent */, true /* fHeadless */);
     AssertRCReturn(rc, RTEXITCODE_FAILURE);
 
     /* Read from X11 */
