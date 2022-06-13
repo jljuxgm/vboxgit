@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 86513 2020-10-10 11:31:13Z vboxsync $
+# $Id: base.py 92890 2021-12-14 08:53:32Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 86513 $"
+__version__ = "$Revision: 92890 $"
 
 
 # Standard Python imports.
@@ -264,16 +264,7 @@ def processExists(uPid):
 
     Returns True if it positively exists, False otherwise.
     """
-    if sys.platform == 'win32':
-        fRc = winbase.processExists(uPid);
-    else:
-        try:
-            os.kill(uPid, 0);
-            fRc = True;
-        except:
-            reporter.logXcpt('uPid=%s' % (uPid,));
-            fRc = False;
-    return fRc;
+    return utils.processExists(uPid);
 
 def processCheckPidAndName(uPid, sName):
     """
