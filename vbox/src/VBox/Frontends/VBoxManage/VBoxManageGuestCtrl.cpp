@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 94209 2022-03-13 20:16:15Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 94234 2022-03-15 09:19:29Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -21,8 +21,6 @@
 *********************************************************************************************************************************/
 #include "VBoxManage.h"
 #include "VBoxManageGuestCtrl.h"
-
-#ifndef VBOX_ONLY_DOCS
 
 #include <VBox/com/array.h>
 #include <VBox/com/com.h>
@@ -216,11 +214,9 @@ enum kStreamTransform
     kStreamTransform_Dos2Unix,
     kStreamTransform_Unix2Dos
 };
-#endif /* VBOX_ONLY_DOCS */
+
 
 DECLARE_TRANSLATION_CONTEXT(GuestCtrl);
-
-#ifndef VBOX_ONLY_DOCS
 
 
 #ifdef RT_OS_WINDOWS
@@ -3725,4 +3721,3 @@ RTEXITCODE handleGuestControl(HandlerArg *pArg)
     }
     return rcExit;
 }
-#endif /* !VBOX_ONLY_DOCS */

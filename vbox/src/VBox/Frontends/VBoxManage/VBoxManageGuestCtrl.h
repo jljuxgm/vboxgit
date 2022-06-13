@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.h 94234 2022-03-15 09:19:29Z vboxsync $ */
 /** @file
  * VBoxManageGuestCtrl.h - Definitions for guest control.
  */
@@ -20,8 +20,6 @@
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
-
-#ifndef VBOX_ONLY_DOCS
 
 #include <VBox/com/com.h>
 #include <VBox/com/listeners.h>
@@ -258,7 +256,5 @@ protected:
     /** The run level target we're waiting for. */
     AdditionsRunLevelType_T mRunLevelTarget;
 };
-#endif /* !VBOX_ONLY_DOCS */
 
 #endif /* !VBOX_INCLUDED_SRC_VBoxManage_VBoxManageGuestCtrl_h */
-

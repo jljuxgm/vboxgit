@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMetrics.cpp 94210 2022-03-13 20:25:00Z vboxsync $ */
+/* $Id: VBoxManageMetrics.cpp 94234 2022-03-15 09:19:29Z vboxsync $ */
 /** @file
  * VBoxManage - The 'metrics' command.
  */
@@ -14,9 +14,6 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
-
-#ifndef VBOX_ONLY_DOCS
-
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
@@ -661,5 +658,3 @@ RTEXITCODE handleMetrics(HandlerArg *a)
 
     return rcExit;
 }
-
-#endif /* !VBOX_ONLY_DOCS */

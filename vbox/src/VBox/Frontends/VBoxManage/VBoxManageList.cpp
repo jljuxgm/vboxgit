@@ -1,4 +1,4 @@
-/* $Id: VBoxManageList.cpp 93699 2022-02-11 18:56:44Z vboxsync $ */
+/* $Id: VBoxManageList.cpp 94234 2022-03-15 09:19:29Z vboxsync $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
@@ -14,9 +14,6 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
-
-#ifndef VBOX_ONLY_DOCS
-
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
@@ -2369,5 +2366,4 @@ RTEXITCODE handleList(HandlerArg *a)
     return rcExit;
 }
 
-#endif /* !VBOX_ONLY_DOCS */
 /* vi: set tabstop=4 shiftwidth=4 expandtab: */

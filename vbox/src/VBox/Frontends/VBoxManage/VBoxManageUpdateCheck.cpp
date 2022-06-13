@@ -1,4 +1,4 @@
-/* $Id: VBoxManageUpdateCheck.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: VBoxManageUpdateCheck.cpp 94234 2022-03-15 09:19:29Z vboxsync $ */
 /** @file
  * VBoxManage - The 'updatecheck' command.
  */
@@ -14,9 +14,6 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
-
-#ifndef VBOX_ONLY_DOCS
-
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
@@ -366,5 +363,4 @@ RTEXITCODE handleUpdateCheck(HandlerArg *a)
     return errorUnknownSubcommand(a->argv[0]);
 }
 
-#endif /* !VBOX_ONLY_DOCS */
 /* vi: set tabstop=4 shiftwidth=4 expandtab: */

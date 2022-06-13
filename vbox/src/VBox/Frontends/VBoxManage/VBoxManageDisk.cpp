@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 94218 2022-03-14 09:02:16Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 94234 2022-03-15 09:19:29Z vboxsync $ */
 /** @file
  * VBoxManage - The disk/medium related commands.
  */
@@ -14,9 +14,6 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
-
-#ifndef VBOX_ONLY_DOCS
-
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
@@ -2729,5 +2726,3 @@ RTEXITCODE handleMediumIO(HandlerArg *a)
     }
     return errorNoSubcommand();
 }
-
-#endif /* !VBOX_ONLY_DOCS */

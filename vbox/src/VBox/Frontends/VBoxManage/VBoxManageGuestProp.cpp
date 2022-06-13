@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestProp.cpp 94208 2022-03-13 19:48:18Z vboxsync $ */
+/* $Id: VBoxManageGuestProp.cpp 94234 2022-03-15 09:19:29Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestproperty command.
  */
@@ -20,8 +20,6 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #include "VBoxManage.h"
-
-#ifndef VBOX_ONLY_DOCS
 
 #include <VBox/com/com.h>
 #include <VBox/com/string.h>
@@ -48,12 +46,8 @@
 
 using namespace com;
 
-#endif /* !VBOX_ONLY_DOCS */
-
 DECLARE_TRANSLATION_CONTEXT(GuestProp);
 
-
-#ifndef VBOX_ONLY_DOCS
 
 static RTEXITCODE handleGetGuestProperty(HandlerArg *a)
 {
@@ -427,5 +421,3 @@ RTEXITCODE handleGuestProperty(HandlerArg *a)
     /* default: */
     return errorSyntax(GuestProp::tr("Incorrect parameters"));
 }
-
-#endif /* !VBOX_ONLY_DOCS */

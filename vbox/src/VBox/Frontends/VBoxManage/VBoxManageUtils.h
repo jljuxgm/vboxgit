@@ -1,4 +1,4 @@
-/* $Id: VBoxManageUtils.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: VBoxManageUtils.h 94234 2022-03-15 09:19:29Z vboxsync $ */
 /** @file
  * VBoxManageUtils.h - Declarations for VBoxManage utility functions.
  */
@@ -21,11 +21,9 @@
 # pragma once
 #endif
 
-#ifndef VBOX_ONLY_DOCS
 #include <VBox/com/com.h>
 #include <VBox/com/ptr.h>
 #include <VBox/com/VirtualBox.h>
-#endif
 
 unsigned int getMaxNics(const ComPtr<IVirtualBox> &pVirtualBox,
                         const ComPtr<IMachine> &pMachine);

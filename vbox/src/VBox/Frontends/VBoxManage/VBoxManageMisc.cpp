@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 94206 2022-03-13 19:17:33Z vboxsync $ */
+/* $Id: VBoxManageMisc.cpp 94234 2022-03-15 09:19:29Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -19,16 +19,14 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#ifndef VBOX_ONLY_DOCS
-# include <VBox/com/com.h>
-# include <VBox/com/string.h>
-# include <VBox/com/Guid.h>
-# include <VBox/com/array.h>
-# include <VBox/com/ErrorInfo.h>
-# include <VBox/com/errorprint.h>
-# include <VBox/com/VirtualBox.h>
-# include <VBox/com/NativeEventQueue.h>
-#endif /* !VBOX_ONLY_DOCS */
+#include <VBox/com/com.h>
+#include <VBox/com/string.h>
+#include <VBox/com/Guid.h>
+#include <VBox/com/array.h>
+#include <VBox/com/ErrorInfo.h>
+#include <VBox/com/errorprint.h>
+#include <VBox/com/VirtualBox.h>
+#include <VBox/com/NativeEventQueue.h>
 
 #include <iprt/asm.h>
 #include <iprt/buildconfig.h>

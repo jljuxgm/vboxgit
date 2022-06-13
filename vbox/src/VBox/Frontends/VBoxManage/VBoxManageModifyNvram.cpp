@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyNvram.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: VBoxManageModifyNvram.cpp 94234 2022-03-15 09:19:29Z vboxsync $ */
 /** @file
  * VBoxManage - The nvram control related commands.
  */
@@ -14,9 +14,6 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
-
-#ifndef VBOX_ONLY_DOCS
-
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
@@ -495,5 +492,3 @@ leave:
 
     return SUCCEEDED(rc) ? RTEXITCODE_SUCCESS : RTEXITCODE_FAILURE;
 }
-
-#endif /* !VBOX_ONLY_DOCS */

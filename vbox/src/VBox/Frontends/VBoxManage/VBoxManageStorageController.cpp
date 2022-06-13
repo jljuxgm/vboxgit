@@ -1,4 +1,4 @@
-/* $Id: VBoxManageStorageController.cpp 94217 2022-03-14 08:56:53Z vboxsync $ */
+/* $Id: VBoxManageStorageController.cpp 94234 2022-03-15 09:19:29Z vboxsync $ */
 /** @file
  * VBoxManage - The storage controller related commands.
  */
@@ -14,9 +14,6 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
-
-#ifndef VBOX_ONLY_DOCS
-
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
@@ -1296,5 +1293,3 @@ RTEXITCODE handleStorageController(HandlerArg *a)
 
     return SUCCEEDED(rc) ? RTEXITCODE_SUCCESS : RTEXITCODE_FAILURE;
 }
-
-#endif /* !VBOX_ONLY_DOCS */

@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrlListener.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrlListener.cpp 94234 2022-03-15 09:19:29Z vboxsync $ */
 /** @file
  * VBoxManage - Guest control listener implementations.
  */
@@ -21,8 +21,6 @@
 *********************************************************************************************************************************/
 #include "VBoxManage.h"
 #include "VBoxManageGuestCtrl.h"
-
-#ifndef VBOX_ONLY_DOCS
 
 #include <VBox/com/com.h>
 #include <VBox/com/ErrorInfo.h>
@@ -568,5 +566,3 @@ STDMETHODIMP GuestAdditionsRunlevelListener::HandleEvent(VBoxEventType_T aType, 
 
     return S_OK;
 }
-
-#endif /* !VBOX_ONLY_DOCS */

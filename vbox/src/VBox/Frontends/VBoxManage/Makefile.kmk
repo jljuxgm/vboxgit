@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 93814 2022-02-16 21:53:42Z vboxsync $
+# $Id: Makefile.kmk 94234 2022-03-15 09:19:29Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxManage (the CLI frontend).
 #
@@ -54,20 +54,6 @@ VBOX_COMMON_VBOXMANAGE_DEFS = \
  	$(if $(VBOX_WITH_VMSVGA),VBOX_WITH_VMSVGA) \
 	$(if $(VBOX_WITH_MAIN_NLS),VBOX_WITH_MAIN_NLS) \
  	$(if $(VBOX_WITH_TPM),VBOX_WITH_TPM)
-
-
-ifdef VBOX_WITH_DOCS
- PROGRAMS += VBoxManageHelp
-endif
-VBoxManageHelp_TEMPLATE   = VBoxAdvBldProg
-VBoxManageHelp_DEFS      += \
-	VBOX_ONLY_DOCS \
-       $(VBOX_COMMON_VBOXMANAGE_DEFS)
-VBoxManageHelp_SOURCES    = \
-	VBoxManage.cpp \
-	VBoxManageHelp.cpp \
-	$(if $(VBOX_WITH_GUEST_PROPS),VBoxManageGuestProp.cpp) \
-	$(if $(VBOX_WITH_GUEST_CONTROL),VBoxManageGuestCtrl.cpp)
 
 
 ifndef VBOX_ONLY_DOCS

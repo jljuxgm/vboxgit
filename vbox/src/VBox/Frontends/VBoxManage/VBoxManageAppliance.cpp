@@ -1,4 +1,4 @@
-/* $Id: VBoxManageAppliance.cpp 93835 2022-02-18 01:46:14Z vboxsync $ */
+/* $Id: VBoxManageAppliance.cpp 94234 2022-03-15 09:19:29Z vboxsync $ */
 /** @file
  * VBoxManage - The appliance-related commands.
  */
@@ -15,13 +15,9 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef VBOX_ONLY_DOCS
-
-
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#ifndef VBOX_ONLY_DOCS
 #include <VBox/com/com.h>
 #include <VBox/com/string.h>
 #include <VBox/com/Guid.h>
@@ -36,7 +32,6 @@
 
 #include <list>
 #include <map>
-#endif /* !VBOX_ONLY_DOCS */
 
 #include <iprt/getopt.h>
 #include <iprt/ctype.h>
@@ -2876,5 +2871,3 @@ RTEXITCODE handleSignAppliance(HandlerArg *arg)
 
     return RT_SUCCESS(rc) ? RTEXITCODE_SUCCESS : RTEXITCODE_FAILURE;
 }
-
-#endif /* !VBOX_ONLY_DOCS */

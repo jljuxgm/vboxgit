@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 93702 2022-02-11 19:01:29Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 94234 2022-03-15 09:19:29Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -14,9 +14,6 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
-
-#ifndef VBOX_ONLY_DOCS
-
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
@@ -3107,5 +3104,4 @@ RTEXITCODE handleShowVMInfo(HandlerArg *a)
     return SUCCEEDED(rc) ? RTEXITCODE_SUCCESS : RTEXITCODE_FAILURE;
 }
 
-#endif /* !VBOX_ONLY_DOCS */
 /* vi: set tabstop=4 shiftwidth=4 expandtab: */
