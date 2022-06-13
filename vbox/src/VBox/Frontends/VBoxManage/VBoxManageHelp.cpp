@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 92372 2021-11-11 14:45:18Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 92374 2021-11-11 14:58:58Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -941,7 +941,6 @@ void printUsage(USAGECATEGORY enmCommand, uint64_t fSubcommandScope, PRTSTREAM p
                        "                            remove <name>\n"));
 # else
         RTStrmPrintf(pStrm,
-                     Help::tr(
                        "\n");
 # endif
         RTStrmPrintf(pStrm,
