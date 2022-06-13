@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.h 94357 2022-03-24 14:42:20Z vboxsync $ */
+/* $Id: UIMachineSettingsDisplay.h 94358 2022-03-24 15:24:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsDisplay class declaration.
  */
@@ -214,8 +214,6 @@ private:
         QLabel                     *m_pLabelMonitorCountMax;
         /** Holds the scale factor editor instance. */
         UIScaleFactorEditor        *m_pEditorScaleFactor;
-        /** Holds the graphics controller label instance. */
-        QLabel                     *m_pLabelGraphicsController;
         /** Holds the graphics controller editor instance. */
         UIGraphicsControllerEditor *m_pEditorGraphicsController;
         /** Holds the acceleration label instance. */

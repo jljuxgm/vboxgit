@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElement.cpp 94341 2022-03-23 19:06:51Z vboxsync $ */
+/* $Id: UIDetailsElement.cpp 94358 2022-03-24 15:24:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement class implementation.
  */
@@ -1029,7 +1029,7 @@ void UIDetailsElement::popupGraphicsControllerTypeEditor(const QString &strValue
     if (pPopup)
     {
         /* Prepare editor: */
-        UIGraphicsControllerEditor *pEditor = new UIGraphicsControllerEditor(pPopup, true /* with label */);
+        UIGraphicsControllerEditor *pEditor = new UIGraphicsControllerEditor(pPopup);
         if (pEditor)
         {
             pEditor->setValue(static_cast<KGraphicsControllerType>(strValue.toInt()));
