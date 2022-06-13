@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 94784 2022-05-02 13:35:10Z vboxsync $ */
+/* $Id: MachineImpl.cpp 94789 2022-05-03 07:00:13Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -675,9 +675,9 @@ HRESULT Machine::initFromSettings(VirtualBox *aParent,
                     /* fetch the current error info */
                     mData->mAccessError = com::ErrorInfo();
 
-                    throw setError(VBOX_E_PASSWORD_INCORRECT,
-                                   tr("Decryption of the machine {%RTuuid} failed. Incorrect or unknown password"),
-                                   mData->pMachineConfigFile->uuid.raw());
+                    setError(VBOX_E_PASSWORD_INCORRECT,
+                             tr("Decryption of the machine {%RTuuid} failed. Incorrect or unknown password"),
+                             mData->pMachineConfigFile->uuid.raw());
                 }
                 else
                 {
@@ -1000,13 +1000,13 @@ HRESULT Machine::i_registeredInit()
                 mData->mstrKeyStore = mData->pMachineConfigFile->strKeyStore;
 
                 if (mData->pMachineConfigFile->enmParseState == settings::MachineConfigFile::ParseState_PasswordError)
-                    throw setError(VBOX_E_PASSWORD_INCORRECT,
-                                   tr("Config decryption of the machine {%RTuuid} failed. Incorrect or unknown password"),
-                                   mData->pMachineConfigFile->uuid.raw());
+                    rc = setError(VBOX_E_PASSWORD_INCORRECT,
+                                  tr("Config decryption of the machine {%RTuuid} failed. Incorrect or unknown password"),
+                                  mData->pMachineConfigFile->uuid.raw());
+                else
 #endif
-
-                rc = i_loadMachineDataFromSettings(*mData->pMachineConfigFile,
-                                                   NULL /* const Guid *puuidRegistry */);
+                    rc = i_loadMachineDataFromSettings(*mData->pMachineConfigFile,
+                                                       NULL /* const Guid *puuidRegistry */);
                 if (FAILED(rc)) throw rc;
             }
             catch (HRESULT err)
