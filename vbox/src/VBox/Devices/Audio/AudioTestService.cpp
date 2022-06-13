@@ -1,4 +1,4 @@
-/* $Id: AudioTestService.cpp 91999 2021-10-22 11:43:28Z vboxsync $ */
+/* $Id: AudioTestService.cpp 92008 2021-10-22 13:56:55Z vboxsync $ */
 /** @file
  * AudioTestService - Audio test execution server.
  */
@@ -861,7 +861,11 @@ static void atsClientFree(PATSCLIENTINST pInst)
     AssertReturnVoid(pInst->pTransportClient == NULL);
 
     if (pInst->pszHostname)
+    {
         RTStrFree(pInst->pszHostname);
+        pInst->pszHostname = NULL;
+    }
+
     RTMemFree(pInst);
     pInst = NULL;
 }
