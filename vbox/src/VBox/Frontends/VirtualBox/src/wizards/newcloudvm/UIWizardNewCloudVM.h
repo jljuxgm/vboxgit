@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVM.h 89979 2021-06-30 13:24:20Z vboxsync $ */
+/* $Id: UIWizardNewCloudVM.h 89996 2021-07-02 10:24:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVM class declaration.
  */
@@ -37,7 +37,7 @@ class UIWizardNewCloudVM : public UINativeWizard
 
 public:
 
-    /** Constructs New Cloud VM wizard passing @a pParent to the base-class.
+    /** Constructs New Cloud VM wizard passing @a pParent & @a enmMode to the base-class.
       * @param  strFullGroupName  Brings full group name (/provider/profile) to create VM in.
       * @param  comClient         Brings the Cloud Client object to work with.
       * @param  comVSD            Brings the Virtual System Description object to use. */
@@ -91,10 +91,10 @@ public:
 protected:
 
     /** Populates pages. */
-    virtual void populatePages() /* final */;
+    virtual void populatePages() /* override final */;
 
     /** Handles translation event. */
-    virtual void retranslateUi() /* final */;
+    virtual void retranslateUi() /* override final */;
 
 private slots:
 
