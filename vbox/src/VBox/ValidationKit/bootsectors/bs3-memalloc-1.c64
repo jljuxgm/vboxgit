@@ -1,4 +1,4 @@
-/* $Id: bs3-memalloc-1.c64 92264 2021-11-08 11:16:36Z vboxsync $ */
+/* $Id: bs3-memalloc-1.c64 92266 2021-11-08 11:26:52Z vboxsync $ */
 /** @file
  * BS3Kit - bs3-timers-1, 64-bit C code.
  */
@@ -183,7 +183,7 @@ BS3_DECL(void) Main_lm64()
             Bs3TestFailedF("PSE was not enabled!\n");
         else if (RT_SUCCESS(rc = Bs3PagingMapRamAbove4GForLM(&uFailurePoint)))
         {
-            Bs3TestSub("Allocation apeed");
+            Bs3TestSub("Allocation speed");
             {
                 /*
                  * Time touching all the memory.
