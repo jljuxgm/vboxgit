@@ -1,4 +1,4 @@
-/* $Id: QIMessageBox.cpp 83535 2020-04-03 15:45:35Z vboxsync $ */
+/* $Id: QIMessageBox.cpp 89926 2021-06-28 09:22:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIMessageBox class implementation.
  */
@@ -312,6 +312,7 @@ QPushButton *QIMessageBox::createButton(int iButton)
         case AlertButton_Choice1: strText = tr("Yes");    role = QDialogButtonBox::YesRole; break;
         case AlertButton_Choice2: strText = tr("No");     role = QDialogButtonBox::NoRole; break;
         case AlertButton_Copy:    strText = tr("Copy");   role = QDialogButtonBox::ActionRole; break;
+        case AlertButton_Help:    strText = tr("Copy");   role = QDialogButtonBox::HelpRole; break;
         default:
             AssertMsgFailed(("Type %d is not supported!", iButton));
             return 0;
