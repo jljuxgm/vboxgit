@@ -1,4 +1,4 @@
-/* $Id: tstIEMAImpl.cpp 94409 2022-03-31 10:42:18Z vboxsync $ */
+/* $Id: tstIEMAImpl.cpp 94412 2022-03-31 11:26:27Z vboxsync $ */
 /** @file
  * IEM Assembly Instruction Helper Testcase.
  */
@@ -233,7 +233,7 @@ static void SafeR80FractionShift(PRTFLOAT80U pr80, uint8_t cShift)
 
 static RTFLOAT80U RandR80Ex(unsigned cTarget = 80, bool fIntTarget = false)
 {
-    Assert(cTarget == (!fIntTarget ? 80 : 16) || cTarget == 64 || cTarget == 32 || (cTarget == 59 && fIntTarget));
+    Assert(cTarget == (!fIntTarget ? 80U : 16U) || cTarget == 64U || cTarget == 32U || (cTarget == 59U && fIntTarget));
 
     RTFLOAT80U r80;
     r80.au64[0] = RandU64();
@@ -619,14 +619,14 @@ const char *GenFormatI16(int16_t i16)
 static void GenerateHeader(PRTSTREAM pOut, const char *pszCpuDesc, const char *pszCpuType)
 {
     /* We want to tag the generated source code with the revision that produced it. */
-    static char s_szRev[] = "$Revision: 94409 $";
+    static char s_szRev[] = "$Revision: 94412 $";
     const char *pszRev = RTStrStripL(strchr(s_szRev, ':') + 1);
     size_t      cchRev = 0;
     while (RT_C_IS_DIGIT(pszRev[cchRev]))
         cchRev++;
 
     RTStrmPrintf(pOut,
-                 "/* $Id: tstIEMAImpl.cpp 94409 2022-03-31 10:42:18Z vboxsync $ */\n"
+                 "/* $Id: tstIEMAImpl.cpp 94412 2022-03-31 11:26:27Z vboxsync $ */\n"
                  "/** @file\n"
                  " * IEM Assembly Instruction Helper Testcase Data%s%s - r%.*s on %s.\n"
                  " */\n"

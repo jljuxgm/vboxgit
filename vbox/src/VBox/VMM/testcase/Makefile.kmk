@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 94409 2022-03-31 10:42:18Z vboxsync $
+# $Id: Makefile.kmk 94412 2022-03-31 11:26:27Z vboxsync $
 ## @file
 # Sub-Makefile for the VMM testcases.
 #
@@ -280,6 +280,7 @@ $$(tstIEMAImpl_0_OUTDIR)/tstIEMAImplData$(1).cpp: \
 		"$$(CP_EXT)" \
 		"$$(MV_EXT)" \
 		"$$(SED_EXT)" \
+		"$$(APPEND_EXT)" \
 		"$$(tstIEMAImpl_0_OUTDIR)" \
 		"$$(tstIEMAImpl_DEFPATH)" \
 		"$(1)"
