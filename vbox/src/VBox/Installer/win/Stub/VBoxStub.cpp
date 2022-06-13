@@ -1,4 +1,4 @@
-/* $Id: VBoxStub.cpp 94284 2022-03-17 11:12:27Z vboxsync $ */
+/* $Id: VBoxStub.cpp 94285 2022-03-17 11:21:40Z vboxsync $ */
 /** @file
  * VBoxStub - VirtualBox's Windows installer stub.
  */
@@ -97,6 +97,7 @@ typedef struct STUBCLEANUPREC
 } STUBCLEANUPREC;
 /** Pointer to a cleanup record. */
 typedef STUBCLEANUPREC *PSTUBCLEANUPREC;
+
 
 /*********************************************************************************************************************************
 *   Prototypes                                                                                                                   *
