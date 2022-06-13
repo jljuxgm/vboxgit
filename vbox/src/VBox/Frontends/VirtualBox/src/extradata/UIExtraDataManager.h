@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 92492 2021-11-18 14:00:30Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 92496 2021-11-18 14:28:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -913,6 +913,9 @@ private:
       * @param  defaultGeometry  Brings the default geometry which should be used to
       *                          calculate resulting geometry if saved was not found. */
     QRect dialogGeometry(const QString &strKey, QWidget *pWidget, QWidget *pParentWidget = 0, const QRect &defaultGeometry = QRect());
+    /** Returns true if the dialog should be maximized.
+      * @param  strKey           Brings geometry extra-data key of particular dialog. */
+    bool dialogShouldBeMaximized(const QString &strKey);
 
     /** Returns string consisting of @a strBase appended with @a uScreenIndex for the *non-primary* screen-index.
       * If @a fSameRuleForPrimary is 'true' same rule will be used for *primary* screen-index. Used for storing per-screen extra-data. */
