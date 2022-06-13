@@ -1,4 +1,4 @@
-/* $Id: tstIEMAImpl.cpp 93862 2022-02-20 13:47:55Z vboxsync $ */
+/* $Id: tstIEMAImpl.cpp 93863 2022-02-20 13:54:27Z vboxsync $ */
 /** @file
  * IEM Assembly Instruction Helper Testcase.
  */
@@ -168,7 +168,7 @@ static void BinU8Generate(uint32_t cTests)
             RTPrintf("    { %#08x, %#08x, %#04x, %#04x, %#04x, %#x }, /* #%u */\n",
                      Test.fEflIn, Test.fEflOut, Test.uDstIn, Test.uDstOut, Test.uSrcIn, Test.uReserved, iTest);
         }
-        RTPrintf("};\n", g_aBinU8[iFn].pszName);
+        RTPrintf("};\n");
     }
 }
 
@@ -283,7 +283,7 @@ static void BinU16Generate(uint32_t cTests)
             RTPrintf("    { %#08x, %#08x, %#06x, %#06x, %#06x, %#x }, /* #%u */\n",
                      Test.fEflIn, Test.fEflOut, Test.uDstIn, Test.uDstOut, Test.uSrcIn, Test.uReserved, iTest);
         }
-        RTPrintf("};\n", g_aBinU16[iFn].pszName);
+        RTPrintf("};\n");
     }
 }
 
@@ -347,7 +347,7 @@ int main(int argc, char **argv)
         char szCpuDesc[256] = {0};
         RTMpGetDescription(NIL_RTCPUID, szCpuDesc, sizeof(szCpuDesc));
 
-        RTPrintf("/* $Id: tstIEMAImpl.cpp 93862 2022-02-20 13:47:55Z vboxsync $ */\n"
+        RTPrintf("/* $Id: tstIEMAImpl.cpp 93863 2022-02-20 13:54:27Z vboxsync $ */\n"
                  "/** @file\n"
                  " * IEM Assembly Instruction Helper Testcase Data - %s.\n"
                  " */\n"
