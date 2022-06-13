@@ -1,4 +1,4 @@
-/* $Id: QIComboBox.cpp 87898 2021-03-01 11:23:42Z vboxsync $ */
+/* $Id: QIComboBox.cpp 91192 2021-09-10 09:23:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIComboBox class implementation.
  */
@@ -46,7 +46,7 @@ public:
 
     /** Constructs an accessibility interface passing @a pWidget to the base-class. */
     QIAccessibilityInterfaceForQIComboBox(QWidget *pWidget)
-        : QAccessibleWidget(pWidget, QAccessible::ToolBar)
+        : QAccessibleWidget(pWidget, QAccessible::ComboBox)
     {}
 
     /** Returns the number of children. */
@@ -55,9 +55,6 @@ public:
     virtual QAccessibleInterface *child(int iIndex) const /* override */;
     /** Returns the index of the passed @a pChild. */
     virtual int indexOfChild(const QAccessibleInterface *pChild) const /* override */;
-
-    /** Returns a text for the passed @a enmTextRole. */
-    virtual QString text(QAccessible::Text enmTextRole) const /* override */;
 
 private:
 
@@ -101,11 +98,6 @@ int QIAccessibilityInterfaceForQIComboBox::indexOfChild(const QAccessibleInterfa
     return -1;
 }
 
-QString QIAccessibilityInterfaceForQIComboBox::text(QAccessible::Text /* enmTextRole */) const
-{
-    /* Return empty string: */
-    return QString();
-}
 
 
 /*********************************************************************************************************************************
