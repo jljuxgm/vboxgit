@@ -1,4 +1,4 @@
-/* $Id: UINetworkManager.cpp 92731 2021-12-03 11:24:28Z vboxsync $ */
+/* $Id: UINetworkManager.cpp 92762 2021-12-06 12:22:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkManager class implementation.
  */
@@ -782,6 +782,7 @@ void UINetworkManagerWidget::sltCreateCloudNetwork()
     oldData.m_strName = strNetworkName;
     oldData.m_strProvider = QString();
     oldData.m_strProfile = QString();
+    oldData.m_strId = QString();
 
     /* Get VirtualBox for further activities: */
     CVirtualBox comVBox = uiCommon().virtualBox();
@@ -807,6 +808,9 @@ void UINetworkManagerWidget::sltCreateCloudNetwork()
         /* Save cloud profile: */
         if (comNetwork.isOk())
             comNetwork.SetProfile(oldData.m_strProfile);
+        /* Save cloud network id: */
+        if (comNetwork.isOk())
+            comNetwork.SetNetworkId(oldData.m_strId);
 
         /* Show error message if necessary: */
         if (!comNetwork.isOk())
@@ -1471,6 +1475,9 @@ void UINetworkManagerWidget::sltApplyDetailsChangesCloudNetwork()
             /* Save cloud profile: */
             if (comNetwork.isOk() && newData.m_strProfile != oldData.m_strProfile)
                 comNetwork.SetProfile(newData.m_strProfile);
+            /* Save cloud network id: */
+            if (comNetwork.isOk() && newData.m_strId != oldData.m_strId)
+                comNetwork.SetNetworkId(newData.m_strId);
 
             /* Show error message if necessary: */
             if (!comNetwork.isOk())
@@ -2067,6 +2074,8 @@ void UINetworkManagerWidget::loadCloudNetwork(const CCloudNetwork &comNetwork, U
         data.m_strProvider = comNetwork.GetProvider();
     if (comNetwork.isOk())
         data.m_strProfile = comNetwork.GetProfile();
+    if (comNetwork.isOk())
+        data.m_strId = comNetwork.GetNetworkId();
 
     /* Show error message if necessary: */
     if (!comNetwork.isOk())
