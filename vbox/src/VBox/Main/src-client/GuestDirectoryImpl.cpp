@@ -1,4 +1,4 @@
-/* $Id: GuestDirectoryImpl.cpp 91503 2021-10-01 08:57:59Z vboxsync $ */
+/* $Id: GuestDirectoryImpl.cpp 91516 2021-10-01 14:20:07Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest directory handling.
  */
@@ -416,7 +416,7 @@ HRESULT GuestDirectory::close()
             {
                 GuestErrorInfo ge(GuestErrorInfo::Type_Directory, rcGuest, mData.mOpenInfo.mPath.c_str());
                 hr = setErrorBoth(VBOX_E_IPRT_ERROR, rcGuest, tr("Closing guest directory failed: %s"),
-                                       GuestBase::getErrorAsString(ge).c_str());
+                                  GuestBase::getErrorAsString(ge).c_str());
                 break;
             }
             case VERR_NOT_SUPPORTED:
@@ -459,7 +459,7 @@ HRESULT GuestDirectory::read(ComPtr<IFsObjInfo> &aObjInfo)
             {
                 GuestErrorInfo ge(GuestErrorInfo::Type_ToolLs, rcGuest, mData.mOpenInfo.mPath.c_str());
                 hr = setErrorBoth(VBOX_E_IPRT_ERROR, rcGuest, tr("Reading guest directory failed: %s"),
-                                       GuestBase::getErrorAsString(ge).c_str());
+                                  GuestBase::getErrorAsString(ge).c_str());
                 break;
             }
             case VERR_GSTCTL_PROCESS_EXIT_CODE:
