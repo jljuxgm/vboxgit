@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMEditors.cpp 93542 2022-02-02 10:17:21Z vboxsync $ */
+/* $Id: UIWizardNewVMEditors.cpp 93546 2022-02-02 15:44:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class implementation.
  */
@@ -447,7 +447,7 @@ bool UIWindowsISOImageSelector::isEmpty() const
 
 void UIWindowsISOImageSelector::retranslateUi()
 {
-    setTitle(UIWizardNewVM::tr("Available OS Versions from ISO"));
+    setTitle(UIWizardNewVM::tr("Available OS Editions from the ISO"));
     if (m_pLabel)
         m_pLabel->setText(UIWizardNewVM::tr("ISO Images"));
 
