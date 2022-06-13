@@ -1,4 +1,4 @@
-/* $Id: UIMediumSearchWidget.h 93990 2022-02-28 15:34:57Z vboxsync $ */
+/* $Id: UIMediumSearchWidget.h 94027 2022-03-01 11:03:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSearchWidget class declaration.
  */
@@ -25,8 +25,8 @@
 #include "QIWithRetranslateUI.h"
 
 /* Forward declarations: */
+class QComboBox;
 class QTreeWidgetItem;
-class QIComboBox;
 class QIToolButton;
 class QITreeWidget;
 class UISearchLineEdit;
@@ -81,7 +81,7 @@ private:
     /** Updates the feedback text of th line edit that shows # of matches. */
     void    updateSearchLineEdit(int iMatchCount, int iScrollToIndex);
 
-    QIComboBox       *m_pSearchComboxBox;
+    QComboBox        *m_pSearchComboxBox;
     UISearchLineEdit *m_pSearchTermLineEdit;
     QIToolButton     *m_pShowNextMatchButton;
     QIToolButton     *m_pShowPreviousMatchButton;
