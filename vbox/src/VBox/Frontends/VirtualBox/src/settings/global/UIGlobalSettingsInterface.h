@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsInterface.h 94145 2022-03-09 08:59:05Z vboxsync $ */
+/* $Id: UIGlobalSettingsInterface.h 94323 2022-03-22 12:50:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsInterface class declaration.
  */
@@ -25,7 +25,6 @@
 #include "UISettingsPage.h"
 
 /* Forward declarations: */
-class QLabel;
 class UIColorThemeEditor;
 struct UIDataSettingsGlobalInterface;
 typedef UISettingsCache<UIDataSettingsGlobalInterface> UISettingsCacheGlobalInterface;

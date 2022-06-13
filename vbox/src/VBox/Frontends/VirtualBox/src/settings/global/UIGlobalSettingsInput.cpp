@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsInput.cpp 94288 2022-03-17 12:20:06Z vboxsync $ */
+/* $Id: UIGlobalSettingsInput.cpp 94323 2022-03-22 12:50:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsInput class implementation.
  */
@@ -16,12 +16,10 @@
  */
 
 /* Qt includes: */
-#include <QCheckBox>
 #include <QVBoxLayout>
 
 /* GUI includes: */
 #include "UIAutoCaptureKeyboardEditor.h"
-#include "UICommon.h"
 #include "UIExtraDataManager.h"
 #include "UIGlobalSettingsInput.h"
 #include "UIHostComboEditor.h"

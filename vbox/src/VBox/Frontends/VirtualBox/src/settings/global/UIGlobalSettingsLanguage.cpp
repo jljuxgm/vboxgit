@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsLanguage.cpp 94288 2022-03-17 12:20:06Z vboxsync $ */
+/* $Id: UIGlobalSettingsLanguage.cpp 94323 2022-03-22 12:50:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsLanguage class implementation.
  */
@@ -135,7 +135,7 @@ void UIGlobalSettingsLanguage::prepareWidgets()
     QVBoxLayout *pLayout = new QVBoxLayout(this);
     if (pLayout)
     {
-        /* Prepare language settings editor: */
+        /* Prepare 'language settings' editor: */
         m_pEditorLanguageSettings = new UILanguageSettingsEditor(this);
         if (m_pEditorLanguageSettings)
             pLayout->addWidget(m_pEditorLanguageSettings);

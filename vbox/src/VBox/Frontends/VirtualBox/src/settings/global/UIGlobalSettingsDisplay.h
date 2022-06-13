@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsDisplay.h 94248 2022-03-15 15:21:28Z vboxsync $ */
+/* $Id: UIGlobalSettingsDisplay.h 94323 2022-03-22 12:50:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsDisplay class declaration.
  */
@@ -25,8 +25,6 @@
 #include "UISettingsPage.h"
 
 /* Forward declarations: */
-class QCheckBox;
-class QLabel;
 class UIGlobalDisplayFeaturesEditor;
 class UIMaximumGuestScreenSizeEditor;
 class UIScaleFactorEditor;

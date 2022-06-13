@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsInterface.cpp 94288 2022-03-17 12:20:06Z vboxsync $ */
+/* $Id: UIGlobalSettingsInterface.cpp 94323 2022-03-22 12:50:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsInterface class implementation.
  */
@@ -16,13 +16,13 @@
  */
 
 /* Qt includes: */
-#include <QLabel>
 #include <QVBoxLayout>
 
 /* GUI includes: */
 #include "UIColorThemeEditor.h"
 #include "UIExtraDataManager.h"
 #include "UIGlobalSettingsInterface.h"
+
 
 /** Global settings: User Interface page data structure. */
 struct UIDataSettingsGlobalInterface
@@ -138,7 +138,7 @@ void UIGlobalSettingsInterface::prepareWidgets()
     QVBoxLayout *pLayout = new QVBoxLayout(this);
     if (pLayout)
     {
-        /* Prepare color-theme editor: */
+        /* Prepare 'color-theme' editor: */
         m_pEditorColorTheme = new UIColorThemeEditor(this);
         if (m_pEditorColorTheme)
             pLayout->addWidget(m_pEditorColorTheme);

@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsProxy.h 94251 2022-03-15 17:55:39Z vboxsync $ */
+/* $Id: UIGlobalSettingsProxy.h 94323 2022-03-22 12:50:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsProxy class declaration.
  */
@@ -40,7 +40,7 @@ public:
     /** Constructs Proxy settings page. */
     UIGlobalSettingsProxy();
     /** Destructs Proxy settings page. */
-    ~UIGlobalSettingsProxy();
+    virtual ~UIGlobalSettingsProxy() RT_OVERRIDE;
 
 protected:
 
