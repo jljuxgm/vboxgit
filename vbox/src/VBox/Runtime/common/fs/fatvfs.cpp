@@ -1,4 +1,4 @@
-/* $Id: fatvfs.cpp 92915 2021-12-15 09:12:19Z vboxsync $ */
+/* $Id: fatvfs.cpp 93084 2021-12-27 04:54:07Z vboxsync $ */
 /** @file
  * IPRT - FAT Virtual Filesystem.
  */
@@ -6233,6 +6233,20 @@ RTDECL(int) RTFsFatVolFormat144(RTVFSFILE hVfsFile, bool fQuick)
 {
     return RTFsFatVolFormat(hVfsFile, 0 /*offVol*/, 1474560, fQuick ? RTFSFATVOL_FMT_F_QUICK : RTFSFATVOL_FMT_F_FULL,
                             512 /*cbSector*/, 1 /*cSectorsPerCluster*/, RTFSFATTYPE_FAT12, 2 /*cHeads*/,  18 /*cSectors*/,
+                            0xf0 /*bMedia*/, 224 /*cRootDirEntries*/, 0 /*cHiddenSectors*/, NULL /*pErrInfo*/);
+}
+
+
+/**
+ * Formats a 2.88MB floppy image.
+ *
+ * @returns IPRT status code.
+ * @param   hVfsFile            The image.
+ */
+RTDECL(int) RTFsFatVolFormat288(RTVFSFILE hVfsFile, bool fQuick)
+{
+    return RTFsFatVolFormat(hVfsFile, 0 /*offVol*/, 2949120, fQuick ? RTFSFATVOL_FMT_F_QUICK : RTFSFATVOL_FMT_F_FULL,
+                            512 /*cbSector*/, 2 /*cSectorsPerCluster*/, RTFSFATTYPE_FAT12, 2 /*cHeads*/,  36 /*cSectors*/,
                             0xf0 /*bMedia*/, 224 /*cRootDirEntries*/, 0 /*cHiddenSectors*/, NULL /*pErrInfo*/);
 }
 
