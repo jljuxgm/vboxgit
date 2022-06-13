@@ -1,4 +1,4 @@
-/* $Id: Global.cpp 93480 2022-01-28 16:09:52Z vboxsync $ */
+/* $Id: Global.cpp 93588 2022-02-03 15:58:49Z vboxsync $ */
 /** @file
  * VirtualBox COM global definitions
  *
@@ -181,6 +181,11 @@ const Global::OSType Global::sOSTypes[] =
     { "Windows", "Microsoft Windows", "Windows11_64",       "Windows 11 (64-bit)",
       VBOXOSTYPE_Win11_x64,       VBOXOSHINT_64BIT | VBOXOSHINT_HWVIRTEX | VBOXOSHINT_IOAPIC | VBOXOSHINT_EFI | VBOXOSHINT_USBTABLET | VBOXOSHINT_USB3 | VBOXOSHINT_EFI_SECUREBOOT | VBOXOSHINT_TPM2 | VBOXOSHINT_WDDM_GRAPHICS,
       2, 4096, 128, 80 * _1G64, GraphicsControllerType_VBoxSVGA, NetworkAdapterType_I82540EM, 0, StorageControllerType_IntelAhci, StorageBus_SATA,
+      StorageControllerType_IntelAhci, StorageBus_SATA, ChipsetType_PIIX3, IommuType_None, AudioControllerType_HDA, AudioCodecType_STAC9221  },
+
+    { "Windows", "Microsoft Windows", "Windows2022_64",     "Windows 2022 (64-bit)",
+      VBOXOSTYPE_Win2k22_x64,     VBOXOSHINT_64BIT | VBOXOSHINT_HWVIRTEX | VBOXOSHINT_IOAPIC | VBOXOSHINT_USBTABLET | VBOXOSHINT_USB3 | VBOXOSHINT_WDDM_GRAPHICS,
+      1, 2048, 128, 50 * _1G64, GraphicsControllerType_VBoxSVGA, NetworkAdapterType_I82540EM, 0, StorageControllerType_IntelAhci, StorageBus_SATA,
       StorageControllerType_IntelAhci, StorageBus_SATA, ChipsetType_PIIX3, IommuType_None, AudioControllerType_HDA, AudioCodecType_STAC9221  },
 
     { "Windows", "Microsoft Windows", "WindowsNT",          "Other Windows (32-bit)",
