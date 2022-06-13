@@ -1,4 +1,4 @@
-/* $Id: VMXAllTemplate.cpp.h 93927 2022-02-24 15:28:28Z vboxsync $ */
+/* $Id: VMXAllTemplate.cpp.h 93930 2022-02-24 15:48:34Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Code template for our own hypervisor and the NEM darwin backend using Apple's Hypervisor.framework.
  */
@@ -10230,7 +10230,6 @@ HMVMX_EXIT_DECL vmxHCExitEptViolationNested(PVMCPUCC pVCpu, PVMXTRANSIENT pVmxTr
     HMVMX_VALIDATE_EXIT_HANDLER_PARAMS(pVCpu, pVmxTransient);
     Assert(pVCpu->CTX_SUFF(pVM)->hmr0.s.fNestedPaging);
 
-    PVMXVMCSINFO pVmcsInfo = pVmxTransient->pVmcsInfo;
     PVMXVMCSINFO pVmcsInfo = pVmxTransient->pVmcsInfo;
     if (CPUMIsGuestVmxProcCtls2Set(&pVCpu->cpum.GstCtx, VMX_PROC_CTLS2_EPT))
     {
