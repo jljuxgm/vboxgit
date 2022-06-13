@@ -1,4 +1,4 @@
-/* $Id: NvramStoreImpl.h 91535 2021-10-04 09:15:19Z vboxsync $ */
+/* $Id: NvramStoreImpl.h 91536 2021-10-04 09:46:04Z vboxsync $ */
 /** @file
  * VirtualBox COM NVRAM store class implementation
  */
@@ -88,7 +88,7 @@ private:
     HRESULT initUefiVariableStore(ULONG aSize);
 
     int i_loadStoreFromTar(RTVFSFSSTREAM hVfsFssTar);
-    int i_saveStoreAsTar(void);
+    int i_saveStoreAsTar(const char *pszPath);
 
 #ifdef VBOX_COM_INPROC
     static DECLCALLBACK(int)    i_nvramStoreQuerySize(PPDMIVFSCONNECTOR pInterface, const char *pszNamespace, const char *pszPath,
