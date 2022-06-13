@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerHostTable.cpp 92900 2021-12-14 16:52:04Z vboxsync $ */
+/* $Id: UIFileManagerHostTable.cpp 92913 2021-12-15 08:25:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerHostTable class implementation.
  */
@@ -327,7 +327,8 @@ bool UIFileManagerHostTable::createDirectory(const QString &path, const QString 
     return true;
 }
 
-/* static */ KFsObjType UIFileManagerHostTable::fileType(const QFileInfo &fsInfo)
+/* static */
+KFsObjType UIFileManagerHostTable::fileType(const QFileInfo &fsInfo)
 {
     if (!fsInfo.exists())
         return KFsObjType_Unknown;
@@ -339,8 +340,13 @@ bool UIFileManagerHostTable::createDirectory(const QString &path, const QString 
         return KFsObjType_File;
     else if (fsInfo.isDir())
         return KFsObjType_Directory;
-
     return KFsObjType_Unknown;
+}
+
+/* static */
+KFsObjType  UIFileManagerHostTable::fileType(const QString &strPath)
+{
+    return fileType(QFileInfo(strPath));
 }
 
 QString UIFileManagerHostTable::fsObjectPropertyString()

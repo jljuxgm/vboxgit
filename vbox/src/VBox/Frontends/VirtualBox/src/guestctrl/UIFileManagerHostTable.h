@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerHostTable.h 92860 2021-12-10 12:39:38Z vboxsync $ */
+/* $Id: UIFileManagerHostTable.h 92913 2021-12-15 08:25:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerHostTable class declaration.
  */
@@ -38,6 +38,7 @@ public:
 
     UIFileManagerHostTable(UIActionPool *pActionPool, QWidget *pParent = 0);
     static KFsObjType  fileType(const QFileInfo &fsInfo);
+    static KFsObjType  fileType(const QString &strPath);
 
 protected:
 
