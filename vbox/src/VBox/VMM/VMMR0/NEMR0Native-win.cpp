@@ -1,4 +1,4 @@
-/* $Id: NEMR0Native-win.cpp 91676 2021-10-11 20:46:03Z vboxsync $ */
+/* $Id: NEMR0Native-win.cpp 91688 2021-10-12 12:21:10Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, native ring-0 Windows backend.
  */
@@ -807,7 +807,9 @@ VMMR0_INT_DECL(int) NEMR0InitVMPart2(PGVM pGVM)
     int rc = GVMMR0ValidateGVMandEMT(pGVM, 0);
     AssertRCReturn(rc, rc);
     SUPR0Printf("NEMR0InitVMPart2\n"); LogRel(("2: NEMR0InitVMPart2\n"));
+#ifdef NEM_WIN_WITH_RING0_RUNLOOP
     Assert(pGVM->nemr0.s.fMayUseRing0Runloop == false);
+#endif
 
     /*
      * Copy and validate the I/O control information from ring-3.
@@ -824,6 +826,7 @@ VMMR0_INT_DECL(int) NEMR0InitVMPart2(PGVM pGVM)
     AssertLogRelReturn(Copy.cbOutput == sizeof(HV_PARTITION_PROPERTY), VERR_NEM_INIT_FAILED);
     pGVM->nemr0.s.IoCtlGetPartitionProperty = Copy;
 
+#ifdef NEM_WIN_WITH_RING0_RUNLOOP
     pGVM->nemr0.s.fMayUseRing0Runloop = pGVM->nem.s.fUseRing0Runloop;
 
     Copy = pGVM->nem.s.IoCtlStartVirtualProcessor;
@@ -854,6 +857,7 @@ VMMR0_INT_DECL(int) NEMR0InitVMPart2(PGVM pGVM)
     AssertLogRelStmt(Copy.uFunction != pGVM->nemr0.s.IoCtlStopVirtualProcessor.uFunction, rc = VERR_NEM_INIT_FAILED);
     if (RT_SUCCESS(rc))
         pGVM->nemr0.s.IoCtlMessageSlotHandleAndGetNext = Copy;
+#endif
 
     if (   RT_SUCCESS(rc)
         || !pGVM->nem.s.fUseRing0Runloop)
