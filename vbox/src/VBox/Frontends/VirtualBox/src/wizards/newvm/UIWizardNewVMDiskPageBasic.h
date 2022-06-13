@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMDiskPageBasic.h 90092 2021-07-08 11:35:46Z vboxsync $ */
+/* $Id: UIWizardNewVMDiskPageBasic.h 90259 2021-07-20 12:30:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMDiskPageBasic class declaration.
  */
@@ -60,6 +60,7 @@ namespace UIWizardNewVMDiskPage
                                 const QString &strMachineBaseName,
                                 QWidget *pCaller);
     QString absoluteFilePath(const QString &strFileName, const QString &strPath);
+    bool checkFATSizeLimitation(const qulonglong uVariant, const QString &strMediumPath, const qulonglong uSize);
 }
 
 //     SelectedDiskSource selectedDiskSource() const;
