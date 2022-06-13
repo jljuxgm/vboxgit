@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlProcess.cpp 92667 2021-12-01 03:14:05Z vboxsync $ */
+/* $Id: VBoxServiceControlProcess.cpp 92668 2021-12-01 03:38:24Z vboxsync $ */
 /** @file
  * VBoxServiceControlThread - Guest process handling.
  */
@@ -1430,7 +1430,7 @@ static int vgsvcGstCtrlProcessCreateProcess(const char *pszExec, const char * co
             char *pszUserUPN = NULL;
             if (pszDomain && *pszDomain != '\0')
             {
-                pszUserUPN = pszAsUser = RTStrAPrintf2("%s@%s", pszAsUser, pszDomain);
+                pszAsUser = pszUserUPN = RTStrAPrintf2("%s@%s", pszAsUser, pszDomain);
                 if (pszAsUser)
                     VGSvcVerbose(3, "Using UPN: %s\n", pszAsUser);
                 else
