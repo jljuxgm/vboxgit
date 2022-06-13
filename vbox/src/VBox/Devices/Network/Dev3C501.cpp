@@ -1,4 +1,4 @@
-/* $Id: Dev3C501.cpp 93560 2022-02-03 06:37:40Z vboxsync $ */
+/* $Id: Dev3C501.cpp 93563 2022-02-03 07:24:54Z vboxsync $ */
 /** @file
  * Dev3C501 - 3Com EtherLink (3C501) Ethernet Adapter Emulation.
  */
@@ -1738,7 +1738,7 @@ static DECLCALLBACK(void) elnkInfo(PPDMDEVINS pDevIns, PCDBGFINFOHLP pHlp, const
     /* Dump the beginning of the receive buffer. */
     if (fRecvBuffer)
     {
-        pHlp->pfnPrintf(pHlp, "Receive buffer (start at 0):\n", pThis->uRCVBufPtr);
+        pHlp->pfnPrintf(pHlp, "Receive buffer (start at 0):\n");
         unsigned dump_end = RT_MIN(pThis->uRCVBufPtr, 64);
         for (unsigned ofs = 0; ofs < dump_end; ofs += 16)
             pHlp->pfnPrintf(pHlp, "  %04X: %Rhxs\n", ofs, &pThis->abPacketBuf[ofs]);
