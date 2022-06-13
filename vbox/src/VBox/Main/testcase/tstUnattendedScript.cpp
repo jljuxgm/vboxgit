@@ -1,4 +1,4 @@
-/* $Id: tstUnattendedScript.cpp 93190 2022-01-11 23:22:13Z vboxsync $ */
+/* $Id: tstUnattendedScript.cpp 93193 2022-01-11 23:29:20Z vboxsync $ */
 /** @file
  * tstUnattendedScript - testcases for UnattendedScript.
  */
@@ -36,7 +36,7 @@
 /*********************************************************************************************************************************
 *   Stub Unattended Implementation                                                                                               *
 *********************************************************************************************************************************/
-/* $Id: tstUnattendedScript.cpp 93190 2022-01-11 23:22:13Z vboxsync $ */
+/* $Id: tstUnattendedScript.cpp 93193 2022-01-11 23:29:20Z vboxsync $ */
 /** @file
  * Unattended class implementation
  */
@@ -664,6 +664,8 @@ static bool loadFileAsString(const char *pszFilename, Utf8Str &rstrContent)
 
 static void doTest1()
 {
+    RTTestISub("tstUnattendedScript-1.template");
+
     /* Create the parent class instance: */
     ComObjPtr<Unattended> ptrParent;
     HRESULT hrc = ptrParent.createObject();
