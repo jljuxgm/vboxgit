@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElement.cpp 89408 2021-05-31 17:12:12Z vboxsync $ */
+/* $Id: UIDetailsElement.cpp 90758 2021-08-20 11:28:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement class implementation.
  */
@@ -907,10 +907,10 @@ void UIDetailsElement::popupNameAndSystemEditor(bool fChooseName, bool fChoosePa
         {
             if (fChooseName)
                 setMachineAttribute(machine(), MachineAttribute_Name, QVariant::fromValue(pEditor->name()));
-            else if (fChoosePath)
-                setMachineAttribute(machine(), MachineAttribute_Location, QVariant::fromValue(pEditor->path()));
             else if (fChooseType)
                 setMachineAttribute(machine(), MachineAttribute_OSType, QVariant::fromValue(pEditor->typeId()));
+            else if (fChoosePath)
+                setMachineLocation(machine().GetId(), pEditor->path());
         }
 
         /* Delete popup: */
