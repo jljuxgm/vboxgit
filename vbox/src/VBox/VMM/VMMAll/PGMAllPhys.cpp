@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 87141 2020-12-29 19:12:45Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 90162 2021-07-13 00:18:27Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -2073,10 +2073,10 @@ VMMDECL(void) PGMPhysBulkReleasePageMappingLocks(PVMCC pVM, uint32_t cPages, PPG
             }
 
             /* Yield the lock: */
-            if ((i & 1023) == 1023)
+            if ((i & 1023) == 1023 && i + 1 < cPages)
             {
-                pgmLock(pVM);
                 pgmUnlock(pVM);
+                pgmLock(pVM);
             }
         }
     }
@@ -2108,10 +2108,10 @@ VMMDECL(void) PGMPhysBulkReleasePageMappingLocks(PVMCC pVM, uint32_t cPages, PPG
             }
 
             /* Yield the lock: */
-            if ((i & 1023) == 1023)
+            if ((i & 1023) == 1023 && i + 1 < cPages)
             {
-                pgmLock(pVM);
                 pgmUnlock(pVM);
+                pgmLock(pVM);
             }
         }
     }
