@@ -1,4 +1,4 @@
-# $Id: VirtualBox.tmpl.spec 91846 2021-10-19 18:01:00Z vboxsync $
+# $Id: VirtualBox.tmpl.spec 91847 2021-10-19 18:06:42Z vboxsync $
 ## @file
 # Spec file for creating VirtualBox rpm packages
 #
@@ -196,7 +196,6 @@ ln -s /usr/lib/virtualbox/vbox-img $RPM_BUILD_ROOT/usr/bin/vbox-img
 ln -s /usr/lib/virtualbox/vboximg-mount $RPM_BUILD_ROOT/usr/bin/vboximg-mount
 ln -s /usr/share/virtualbox/src/vboxhost $RPM_BUILD_ROOT/usr/src/vboxhost-%VER%
 mv virtualbox.desktop $RPM_BUILD_ROOT/usr/share/applications/virtualbox.desktop
-mv virtualboxvm.desktop $RPM_BUILD_ROOT/usr/share/applications/virtualboxvm.desktop
 mv VBox.png $RPM_BUILD_ROOT/usr/share/pixmaps/VBox.png
 %{!?is_ose: mv LICENSE $RPM_BUILD_ROOT%{VBOXDOCDIR}}
 mv UserManual*.pdf $RPM_BUILD_ROOT%{VBOXDOCDIR}
