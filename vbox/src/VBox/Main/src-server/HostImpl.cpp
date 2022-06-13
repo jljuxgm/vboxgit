@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 89718 2021-06-15 18:47:42Z vboxsync $ */
+/* $Id: HostImpl.cpp 90480 2021-08-02 14:16:32Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -1185,7 +1185,7 @@ void Host::i_updateProcessorFeatures()
     {
         uint32_t fVTCaps;
         rc = SUPR3QueryVTCaps(&fVTCaps);
-        AssertRC(rc);
+        AssertMsgRC(rc, ("SUPR3QueryVTCaps failed rc=%Rrc\n", rc));
 
         SUPR3Term(false);
 
