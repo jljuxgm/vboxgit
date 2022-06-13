@@ -1,4 +1,4 @@
-/* $Id: expreval.cpp 93178 2022-01-11 08:28:01Z vboxsync $ */
+/* $Id: expreval.cpp 93815 2022-02-16 22:28:35Z vboxsync $ */
 /** @file
  * expreval - Expressions evaluator.
  */
@@ -2600,6 +2600,11 @@ RTDECL(uint32_t) RTExprEvalRelease(RTEXPREVAL hEval)
     if (cRefs == 0)
     {
         pThis->u32Magic = ~RTEXPREVAL_MAGIC;
+        if (pThis->pszName)
+        {
+            RTStrFree(pThis->pszName);
+            pThis->pszName = NULL;
+        }
         RTMemFree(pThis);
         return 0;
     }
