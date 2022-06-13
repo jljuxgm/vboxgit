@@ -1,4 +1,4 @@
-/* $Id: AudioTestServiceClient.cpp 91994 2021-10-22 07:00:44Z vboxsync $ */
+/* $Id: AudioTestServiceClient.cpp 91995 2021-10-22 07:02:45Z vboxsync $ */
 /** @file
  * AudioTestServiceClient - Audio Test Service (ATS), Client helpers.
  *
@@ -320,6 +320,7 @@ void AudioTestSvcClientDestroy(PATSCLIENT pClient)
 
     if (pClient->pTransport)
     {
+        pClient->pTransport->pfnTerm(pClient->pTransportInst);
         pClient->pTransport->pfnDestroy(pClient->pTransportInst);
         pClient->pTransport = NULL;
     }
