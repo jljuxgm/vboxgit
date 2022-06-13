@@ -1,4 +1,4 @@
-/* $Id: HostDrivePartitionImpl.h 85933 2020-08-28 16:49:04Z vboxsync $ */
+/* $Id: HostDrivePartitionImpl.h 90828 2021-08-24 09:44:46Z vboxsync $ */
 /** @file
  * VirtualBox Main - IHostDrivePartition implementation, VBoxSVC.
  */
@@ -29,7 +29,7 @@ class ATL_NO_VTABLE HostDrivePartition
     : public HostDrivePartitionWrap
 {
 public:
-    DECLARE_EMPTY_CTOR_DTOR(HostDrivePartition)
+    DECLARE_COMMON_CLASS_METHODS(HostDrivePartition)
 
     HRESULT FinalConstruct();
     void FinalRelease();

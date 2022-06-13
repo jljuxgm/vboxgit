@@ -1,4 +1,4 @@
-/* $Id: MachineDebuggerImpl.h 89696 2021-06-15 09:53:06Z vboxsync $ */
+/* $Id: MachineDebuggerImpl.h 90828 2021-08-24 09:44:46Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -34,7 +34,7 @@ class ATL_NO_VTABLE MachineDebugger :
 
 public:
 
-    DECLARE_EMPTY_CTOR_DTOR (MachineDebugger)
+    DECLARE_COMMON_CLASS_METHODS (MachineDebugger)
 
     HRESULT FinalConstruct();
     void FinalRelease();

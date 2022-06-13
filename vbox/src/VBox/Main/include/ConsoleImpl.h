@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 90187 2021-07-14 15:42:43Z vboxsync $ */
+/* $Id: ConsoleImpl.h 90828 2021-08-24 09:44:46Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -127,7 +127,7 @@ class ATL_NO_VTABLE Console :
 
 public:
 
-    DECLARE_EMPTY_CTOR_DTOR(Console)
+    DECLARE_COMMON_CLASS_METHODS(Console)
 
     HRESULT FinalConstruct();
     void FinalRelease();

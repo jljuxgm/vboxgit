@@ -1,4 +1,4 @@
-/* $Id: DHCPConfigImpl.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: DHCPConfigImpl.h 90828 2021-08-24 09:44:46Z vboxsync $ */
 /** @file
  * VirtualBox Main - IDHCPConfig, IDHCPConfigGlobal, IDHCPConfigGroup, IDHCPConfigIndividual header.
  */
@@ -40,7 +40,7 @@ class DHCPGroupConfig;
  * wasn't even attempted.  Instead, we have a hack for passing a pointer that we
  * can call setError and such on.
  */
-class DHCPConfig
+class DHCPConfig : public VirtualBoxTranslatable
 {
 protected:
     /** Config scope (global, group, vm+nic, mac).  */
@@ -97,6 +97,8 @@ protected:
     /** @} */
 
 public:
+    DECLARE_TRANSLATE_METHODS(DHCPConfig)
+
     /** @name IDHCPConfig methods
      * @note public because the DHCPServer needs them for 6.0 interfaces.
      * @todo Make protected again when IDHCPServer is cleaned up.
@@ -126,6 +128,8 @@ public:
 class DHCPGlobalConfig : public DHCPGlobalConfigWrap, public DHCPConfig
 {
 public:
+    DECLARE_TRANSLATE_METHODS(DHCPGlobalConfig)
+
     /** @name Constructors and destructors.
      * @{ */
     DHCPGlobalConfig()
@@ -223,6 +227,8 @@ private:
     DHCPGroupConfig            *m_pParent;
 
 public:
+    DECLARE_TRANSLATE_METHODS(DHCPGroupCondition)
+
     /** @name Constructors and destructors.
      * @{ */
     DHCPGroupCondition()
@@ -287,6 +293,8 @@ private:
     typedef std::vector<ComObjPtr<DHCPGroupCondition> >::iterator ConditionsIterator;
 
 public:
+    DECLARE_TRANSLATE_METHODS(DHCPGroupConfig)
+
     /** @name Constructors and destructors.
      * @{ */
     DHCPGroupConfig()
@@ -399,6 +407,8 @@ private:
     com::Utf8Str        m_strFixedAddress;
 
 public:
+    DECLARE_TRANSLATE_METHODS(DHCPIndividualConfig)
+
     /** @name Constructors and destructors.
      * @{ */
     DHCPIndividualConfig()

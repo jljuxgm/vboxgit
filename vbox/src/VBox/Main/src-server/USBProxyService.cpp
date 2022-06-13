@@ -1,4 +1,4 @@
-/* $Id: USBProxyService.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: USBProxyService.cpp 90828 2021-08-24 09:44:46Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service (base) class.
  */
@@ -948,12 +948,12 @@ HRESULT USBProxyService::setError(HRESULT aResultCode, const char *aText, ...)
 {
     va_list va;
     va_start(va, aText);
-    HRESULT rc = VirtualBoxBase::setErrorInternal(aResultCode,
-                                                  COM_IIDOF(IHost),
-                                                  "USBProxyService",
-                                                  Utf8Str(aText, va),
-                                                  false /* aWarning*/,
-                                                  true /* aLogIt*/);
+    HRESULT rc = VirtualBoxBase::setErrorInternalV(aResultCode,
+                                                   COM_IIDOF(IHost),
+                                                   "USBProxyService",
+                                                   aText, va,
+                                                   false /* aWarning*/,
+                                                   true /* aLogIt*/);
     va_end(va);
     return rc;
 }

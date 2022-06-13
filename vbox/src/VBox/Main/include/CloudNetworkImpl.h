@@ -1,4 +1,4 @@
-/* $Id: CloudNetworkImpl.h 85360 2020-07-16 09:18:27Z vboxsync $ */
+/* $Id: CloudNetworkImpl.h 90828 2021-08-24 09:44:46Z vboxsync $ */
 /** @file
  * ICloudNetwork implementation header, lives in VBoxSVC.
  */
@@ -33,7 +33,7 @@ class ATL_NO_VTABLE CloudNetwork :
 {
 public:
 
-    DECLARE_EMPTY_CTOR_DTOR(CloudNetwork)
+    DECLARE_COMMON_CLASS_METHODS(CloudNetwork)
 
     HRESULT FinalConstruct();
     void FinalRelease();

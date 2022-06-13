@@ -1,4 +1,4 @@
-/* $Id: StorageControllerImpl.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: StorageControllerImpl.h 90828 2021-08-24 09:44:46Z vboxsync $ */
 
 /** @file
  *
@@ -29,7 +29,7 @@ class ATL_NO_VTABLE StorageController :
 {
 public:
 
-    DECLARE_EMPTY_CTOR_DTOR(StorageController)
+    DECLARE_COMMON_CLASS_METHODS(StorageController)
 
     HRESULT FinalConstruct();
     void FinalRelease();

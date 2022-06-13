@@ -1,4 +1,4 @@
-/* $Id: BandwidthGroupImpl.h 85242 2020-07-11 23:05:19Z vboxsync $ */
+/* $Id: BandwidthGroupImpl.h 90828 2021-08-24 09:44:46Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -32,7 +32,7 @@ class ATL_NO_VTABLE BandwidthGroup :
 {
 public:
 
-    DECLARE_EMPTY_CTOR_DTOR(BandwidthGroup)
+    DECLARE_COMMON_CLASS_METHODS(BandwidthGroup)
 
     HRESULT FinalConstruct();
     void FinalRelease();

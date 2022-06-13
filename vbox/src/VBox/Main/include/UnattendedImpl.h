@@ -1,4 +1,4 @@
-/* $Id: UnattendedImpl.h 86274 2020-09-24 19:52:56Z vboxsync $ */
+/* $Id: UnattendedImpl.h 90828 2021-08-24 09:44:46Z vboxsync $ */
 /** @file
  * Unattended class header
  */
@@ -40,7 +40,7 @@ class ATL_NO_VTABLE Unattended
     : public UnattendedWrap
 {
 public:
-    DECLARE_EMPTY_CTOR_DTOR(Unattended)
+    DECLARE_COMMON_CLASS_METHODS(Unattended)
 
     HRESULT FinalConstruct();
     void FinalRelease();

@@ -1,4 +1,4 @@
-/* $Id: HostUSBDeviceImpl.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: HostUSBDeviceImpl.h 90828 2021-08-24 09:44:46Z vboxsync $ */
 /** @file
  * VirtualBox IHostUSBDevice COM interface implementation.
  */
@@ -171,7 +171,7 @@ class ATL_NO_VTABLE HostUSBDevice :
     public HostUSBDeviceWrap
 {
 public:
-    DECLARE_EMPTY_CTOR_DTOR(HostUSBDevice)
+    DECLARE_COMMON_CLASS_METHODS(HostUSBDevice)
 
     HRESULT FinalConstruct();
     void FinalRelease();

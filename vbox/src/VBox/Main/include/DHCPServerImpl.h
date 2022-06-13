@@ -1,4 +1,4 @@
-/* $Id: DHCPServerImpl.h 85235 2020-07-11 16:34:10Z vboxsync $ */
+/* $Id: DHCPServerImpl.h 90828 2021-08-24 09:44:46Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -56,7 +56,7 @@ class ATL_NO_VTABLE DHCPServer
 public:
     /** @name Constructors and destructors
      * @{ */
-    DECLARE_EMPTY_CTOR_DTOR(DHCPServer)
+    DECLARE_COMMON_CLASS_METHODS(DHCPServer)
     HRESULT FinalConstruct();
     void    FinalRelease();
 

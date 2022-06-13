@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxSDSImpl.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VirtualBoxSDSImpl.h 90828 2021-08-24 09:44:46Z vboxsync $ */
 /** @file
  * VBox Global COM Class definition
  */
@@ -82,7 +82,7 @@ public:
         COM_INTERFACE_ENTRY(IVirtualBoxSDS)
     END_COM_MAP()
 
-    DECLARE_EMPTY_CTOR_DTOR(VirtualBoxSDS)
+    DECLARE_COMMON_CLASS_METHODS(VirtualBoxSDS)
 
     HRESULT FinalConstruct();
     void    FinalRelease();

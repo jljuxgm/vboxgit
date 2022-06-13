@@ -1,4 +1,4 @@
-/* $Id: MediumIOImpl.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: MediumIOImpl.h 90828 2021-08-24 09:44:46Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation - MediumIO.
  */
@@ -31,7 +31,7 @@ class ATL_NO_VTABLE MediumIO :
 public:
     /** @name Dummy/standard constructors and destructors.
      * @{ */
-    DECLARE_EMPTY_CTOR_DTOR(MediumIO)
+    DECLARE_COMMON_CLASS_METHODS(MediumIO)
     HRESULT FinalConstruct();
     void    FinalRelease();
     /** @} */

@@ -1,4 +1,4 @@
-/* $Id: USBProxyService.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: USBProxyService.h 90828 2021-08-24 09:44:46Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service (base) class.
  */
@@ -43,8 +43,11 @@ namespace settings
  */
 class USBProxyService
     : public VirtualBoxTranslatable
+    , public Lockable
 {
 public:
+    DECLARE_TRANSLATE_METHODS(USBProxyService)
+
     USBProxyService(Host *aHost);
     virtual HRESULT init(void);
     virtual ~USBProxyService();

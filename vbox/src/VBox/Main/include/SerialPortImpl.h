@@ -1,4 +1,4 @@
-/* $Id: SerialPortImpl.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: SerialPortImpl.h 90828 2021-08-24 09:44:46Z vboxsync $ */
 
 /** @file
  *
@@ -37,7 +37,7 @@ class ATL_NO_VTABLE SerialPort :
 {
 public:
 
-    DECLARE_EMPTY_CTOR_DTOR(SerialPort)
+    DECLARE_COMMON_CLASS_METHODS(SerialPort)
 
     HRESULT FinalConstruct();
     void FinalRelease();

@@ -1,4 +1,4 @@
-/* $Id: MediumFormatImpl.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: MediumFormatImpl.h 90828 2021-08-24 09:44:46Z vboxsync $ */
 /** @file
  * MediumFormat COM class implementation
  */
@@ -52,7 +52,7 @@ public:
     typedef std::vector<Property> PropertyArray;
     typedef std::vector<com::Utf8Str> StrArray;
 
-    DECLARE_EMPTY_CTOR_DTOR(MediumFormat)
+    DECLARE_COMMON_CLASS_METHODS(MediumFormat)
 
     HRESULT FinalConstruct();
     void FinalRelease();

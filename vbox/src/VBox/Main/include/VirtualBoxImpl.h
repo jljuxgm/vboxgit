@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 90440 2021-07-30 20:00:15Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 90828 2021-08-24 09:44:46Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -111,7 +111,7 @@ public:
     DECLARE_NOT_AGGREGATABLE(VirtualBox)
 
     // to postpone generation of the default ctor/dtor
-    DECLARE_EMPTY_CTOR_DTOR(VirtualBox)
+    DECLARE_COMMON_CLASS_METHODS(VirtualBox)
 
     HRESULT FinalConstruct();
     void FinalRelease();
@@ -200,6 +200,8 @@ public:
     void i_onCloudProviderUninstall(const Utf8Str &aProviderId);
 
     void i_onProgressCreated(const Guid &aId, BOOL aCreated);
+
+    void i_onLanguageChanged(const Utf8Str &aLanguageId);
 
 #ifdef VBOX_WITH_CLOUD_NET
     HRESULT i_findCloudNetworkByName(const com::Utf8Str &aNetworkName,
@@ -394,9 +396,13 @@ private:
     HRESULT findProgressById(const com::Guid &aId,
                              ComPtr<IProgress> &aProgressObject);
 
-    static HRESULT i_setErrorStaticBoth(HRESULT aResultCode, int vrc, const Utf8Str &aText)
+    static HRESULT i_setErrorStaticBoth(HRESULT aResultCode, int vrc, const char *aText, ...)
     {
-        return setErrorInternal(aResultCode, getStaticClassIID(), getStaticComponentName(), aText, false, true, vrc);
+        va_list va;
+        va_start (va, aText);
+        HRESULT hrc = setErrorInternalV(aResultCode, getStaticClassIID(), getStaticComponentName(), aText, va, false, true, vrc);
+        va_end(va);
+        return hrc;
     }
 
     HRESULT i_registerMachine(Machine *aMachine);

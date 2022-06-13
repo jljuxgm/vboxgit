@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 89597 2021-06-10 12:41:30Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 90828 2021-08-24 09:44:46Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -1117,6 +1117,9 @@ void printUsage(USAGECATEGORY enmCommand, uint64_t fSubcommandScope, PRTSTREAM p
                      "                            logginglevel <log setting>\n"
                      "                            proxymode system|noproxy|manual\n"
                      "                            proxyurl <url>\n"
+#ifdef VBOX_WITH_MAIN_NLS
+                     "                            language <language id>\n"
+#endif
                      "\n", SEP);
 
     if (enmCommand == USAGE_USBFILTER || enmCommand == USAGE_S_ALL)

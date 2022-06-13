@@ -1,4 +1,4 @@
-/* $Id: MouseImpl.cpp 89951 2021-06-29 13:22:29Z vboxsync $ */
+/* $Id: MouseImpl.cpp 90828 2021-08-24 09:44:46Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -36,7 +36,7 @@ class ATL_NO_VTABLE MousePointerShape:
 {
 public:
 
-    DECLARE_EMPTY_CTOR_DTOR(MousePointerShape)
+    DECLARE_COMMON_CLASS_METHODS(MousePointerShape)
 
     HRESULT FinalConstruct();
     void FinalRelease();

@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 90424 2021-07-30 12:41:38Z vboxsync $ */
+/* $Id: ApplianceImpl.h 90828 2021-08-24 09:44:46Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -67,7 +67,7 @@ class ATL_NO_VTABLE Appliance :
 {
 public:
 
-    DECLARE_EMPTY_CTOR_DTOR(Appliance)
+    DECLARE_COMMON_CLASS_METHODS(Appliance)
 
     HRESULT FinalConstruct();
     void FinalRelease();
@@ -78,10 +78,13 @@ public:
 
     /* public methods only for internal purposes */
 
-    static HRESULT i_setErrorStatic(HRESULT aResultCode,
-                                    const Utf8Str &aText)
+    static HRESULT i_setErrorStatic(HRESULT aResultCode, const char *aText, ...)
     {
-        return setErrorInternal(aResultCode, getStaticClassIID(), getStaticComponentName(), aText, false, true);
+        va_list va;
+        va_start(va, aText);
+        HRESULT hrc = setErrorInternalV(aResultCode, getStaticClassIID(), getStaticComponentName(), aText, va, false, true);
+        va_end(va);
+        return hrc;
     }
 
     /* private instance data */
@@ -288,7 +291,7 @@ class ATL_NO_VTABLE VirtualSystemDescription :
 
 public:
 
-    DECLARE_EMPTY_CTOR_DTOR(VirtualSystemDescription)
+    DECLARE_COMMON_CLASS_METHODS(VirtualSystemDescription)
 
     HRESULT FinalConstruct();
     void FinalRelease();

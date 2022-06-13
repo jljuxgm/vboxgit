@@ -1,4 +1,4 @@
-/* $Id: SessionImpl.h 84411 2020-05-20 14:31:23Z vboxsync $ */
+/* $Id: SessionImpl.h 90828 2021-08-24 09:44:46Z vboxsync $ */
 /** @file
  * VBox Client Session COM Class definition
  */
@@ -46,7 +46,7 @@ public:
 
     DECLARE_NOT_AGGREGATABLE(Session)
 
-    DECLARE_EMPTY_CTOR_DTOR(Session)
+    DECLARE_COMMON_CLASS_METHODS(Session)
 
     HRESULT FinalConstruct();
     void FinalRelease();

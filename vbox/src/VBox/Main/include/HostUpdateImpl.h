@@ -1,4 +1,4 @@
-/* $Id: HostUpdateImpl.h 86530 2020-10-11 18:53:11Z vboxsync $ */
+/* $Id: HostUpdateImpl.h 90828 2021-08-24 09:44:46Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -29,7 +29,7 @@ class ATL_NO_VTABLE HostUpdate
     : public HostUpdateWrap
 {
 public:
-    DECLARE_EMPTY_CTOR_DTOR(HostUpdate)
+    DECLARE_COMMON_CLASS_METHODS(HostUpdate)
 
     HRESULT FinalConstruct();
     void FinalRelease();

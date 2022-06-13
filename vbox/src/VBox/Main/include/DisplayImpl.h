@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 90691 2021-08-16 08:43:03Z vboxsync $ */
+/* $Id: DisplayImpl.h 90828 2021-08-24 09:44:46Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -137,7 +137,7 @@ class ATL_NO_VTABLE Display :
 {
 public:
 
-    DECLARE_EMPTY_CTOR_DTOR(Display)
+    DECLARE_COMMON_CLASS_METHODS(Display)
 
     HRESULT FinalConstruct();
     void FinalRelease();
@@ -456,7 +456,7 @@ class ATL_NO_VTABLE DisplaySourceBitmap:
 {
 public:
 
-    DECLARE_EMPTY_CTOR_DTOR(DisplaySourceBitmap)
+    DECLARE_COMMON_CLASS_METHODS(DisplaySourceBitmap)
 
     HRESULT FinalConstruct();
     void FinalRelease();
@@ -505,7 +505,7 @@ class ATL_NO_VTABLE GuestScreenInfo:
 {
 public:
 
-    DECLARE_EMPTY_CTOR_DTOR(GuestScreenInfo)
+    DECLARE_COMMON_CLASS_METHODS(GuestScreenInfo)
 
     HRESULT FinalConstruct();
     void FinalRelease();

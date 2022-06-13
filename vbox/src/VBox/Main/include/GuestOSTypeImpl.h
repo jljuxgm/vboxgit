@@ -1,4 +1,4 @@
-/* $Id: GuestOSTypeImpl.h 87241 2021-01-13 15:56:05Z vboxsync $ */
+/* $Id: GuestOSTypeImpl.h 90828 2021-08-24 09:44:46Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -30,7 +30,7 @@ class ATL_NO_VTABLE GuestOSType :
 {
 public:
 
-    DECLARE_EMPTY_CTOR_DTOR(GuestOSType)
+    DECLARE_COMMON_CLASS_METHODS(GuestOSType)
 
     HRESULT FinalConstruct();
     void FinalRelease();

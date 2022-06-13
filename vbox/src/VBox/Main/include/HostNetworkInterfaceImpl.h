@@ -1,4 +1,4 @@
-/* $Id: HostNetworkInterfaceImpl.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: HostNetworkInterfaceImpl.h 90828 2021-08-24 09:44:46Z vboxsync $ */
 
 /** @file
  *
@@ -36,7 +36,7 @@ class ATL_NO_VTABLE HostNetworkInterface :
 {
 public:
 
-    DECLARE_EMPTY_CTOR_DTOR(HostNetworkInterface)
+    DECLARE_COMMON_CLASS_METHODS(HostNetworkInterface)
 
     HRESULT FinalConstruct();
     void FinalRelease();

@@ -1,4 +1,4 @@
-/* $Id: RecordingSettingsImpl.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: RecordingSettingsImpl.h 90828 2021-08-24 09:44:46Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation - Machine recording screen settings.
  */
@@ -36,7 +36,7 @@ class ATL_NO_VTABLE RecordingSettings
 {
 public:
 
-    DECLARE_EMPTY_CTOR_DTOR(RecordingSettings)
+    DECLARE_COMMON_CLASS_METHODS(RecordingSettings)
 
     HRESULT FinalConstruct();
     void FinalRelease();

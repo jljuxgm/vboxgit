@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 87241 2021-01-13 15:56:05Z vboxsync $ */
+/* $Id: MachineImpl.h 90828 2021-08-24 09:44:46Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -337,7 +337,7 @@ public:
 
     typedef std::list<ComObjPtr<MediumAttachment> > MediumAttachmentList;
 
-    DECLARE_EMPTY_CTOR_DTOR(Machine)
+    DECLARE_COMMON_CLASS_METHODS(Machine)
 
     HRESULT FinalConstruct();
     void FinalRelease();
@@ -1278,7 +1278,7 @@ public:
         VBOX_TWEAK_INTERFACE_ENTRY(IMachine)
     END_COM_MAP()
 
-    DECLARE_EMPTY_CTOR_DTOR(SessionMachine)
+    DECLARE_COMMON_CLASS_METHODS(SessionMachine)
 
     HRESULT FinalConstruct();
     void FinalRelease();
@@ -1533,7 +1533,7 @@ public:
         VBOX_TWEAK_INTERFACE_ENTRY(IMachine)
     END_COM_MAP()
 
-    DECLARE_EMPTY_CTOR_DTOR(SnapshotMachine)
+    DECLARE_COMMON_CLASS_METHODS(SnapshotMachine)
 
     HRESULT FinalConstruct();
     void FinalRelease();

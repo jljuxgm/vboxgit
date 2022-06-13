@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.h 86058 2020-09-07 23:33:30Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.h 90828 2021-08-24 09:44:46Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -43,7 +43,7 @@ class ATL_NO_VTABLE ExtPackFile :
 public:
     /** @name COM and internal init/term/mapping cruft.
      * @{ */
-    DECLARE_EMPTY_CTOR_DTOR(ExtPackFile)
+    DECLARE_COMMON_CLASS_METHODS(ExtPackFile)
 
     HRESULT     FinalConstruct();
     void        FinalRelease();
@@ -101,7 +101,7 @@ class ATL_NO_VTABLE ExtPack :
 public:
     /** @name COM and internal init/term/mapping cruft.
      * @{ */
-    DECLARE_EMPTY_CTOR_DTOR(ExtPack)
+    DECLARE_COMMON_CLASS_METHODS(ExtPack)
 
     HRESULT     FinalConstruct();
     void        FinalRelease();
@@ -225,7 +225,7 @@ class ATL_NO_VTABLE ExtPackManager :
 public:
     /** @name COM and internal init/term/mapping cruft.
      * @{ */
-    DECLARE_EMPTY_CTOR_DTOR(ExtPackManager)
+    DECLARE_COMMON_CLASS_METHODS(ExtPackManager)
 
     HRESULT     FinalConstruct();
     void        FinalRelease();

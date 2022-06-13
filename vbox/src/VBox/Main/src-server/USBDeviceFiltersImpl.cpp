@@ -1,4 +1,4 @@
-/* $Id: USBDeviceFiltersImpl.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: USBDeviceFiltersImpl.cpp 90828 2021-08-24 09:44:46Z vboxsync $ */
 /** @file
  * Implementation of IUSBDeviceFilters.
  */
@@ -264,7 +264,7 @@ public:
         VBOX_TWEAK_INTERFACE_ENTRY(IUSBDeviceFilter)
     END_COM_MAP()
 
-    DECLARE_EMPTY_CTOR_DTOR(USBDeviceFilter)
+    DECLARE_COMMON_CLASS_METHODS(USBDeviceFilter)
 
     // IUSBDeviceFilter properties
     STDMETHOD(COMGETTER(Name))(BSTR *aName);

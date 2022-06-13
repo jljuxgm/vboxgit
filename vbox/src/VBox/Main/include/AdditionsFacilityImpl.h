@@ -1,4 +1,4 @@
-/* $Id: AdditionsFacilityImpl.h 84564 2020-05-27 14:10:26Z vboxsync $ */
+/* $Id: AdditionsFacilityImpl.h 90828 2021-08-24 09:44:46Z vboxsync $ */
 /** @file
  * VirtualBox Main - Additions facility class.
  */
@@ -34,7 +34,7 @@ class ATL_NO_VTABLE AdditionsFacility :
 {
 public:
 
-    DECLARE_EMPTY_CTOR_DTOR(AdditionsFacility)
+    DECLARE_COMMON_CLASS_METHODS(AdditionsFacility)
 
     /** @name Initializer & uninitializer methods
      * @{ */

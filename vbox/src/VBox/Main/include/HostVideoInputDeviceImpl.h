@@ -1,4 +1,4 @@
-/* $Id: HostVideoInputDeviceImpl.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: HostVideoInputDeviceImpl.h 90828 2021-08-24 09:44:46Z vboxsync $ */
 /** @file
  * A host video capture device description.
  */
@@ -34,7 +34,7 @@ class ATL_NO_VTABLE HostVideoInputDevice :
 {
 public:
 
-    DECLARE_EMPTY_CTOR_DTOR(HostVideoInputDevice)
+    DECLARE_COMMON_CLASS_METHODS(HostVideoInputDevice)
 
     HRESULT FinalConstruct();
     void FinalRelease();

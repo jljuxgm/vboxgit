@@ -1,5 +1,5 @@
 # !kmk_ash
-# $Id: gen-slickedit-workspace.sh 88326 2021-03-31 00:11:50Z vboxsync $
+# $Id: gen-slickedit-workspace.sh 90828 2021-08-24 09:44:46Z vboxsync $
 ## @file
 # Script for generating a SlickEdit workspace.
 #
@@ -626,6 +626,16 @@ my_generate_usercpp_h()
 #define DECLARE_PROTECT_FINAL_CONSTRUCT(a)
 #define DECLARE_EMPTY_CTOR_DTOR(a)      a(); ~a();
 #define DEFINE_EMPTY_CTOR_DTOR(a)       a::a() {}   a::~a() {}
+#define DECLARE_TRANSLATE_METHODS(cls) \
+    static inline const char *tr(const char *aSourceText, \
+                                 const char *aComment = NULL, \
+                                 const int   aNum = -1) \
+    { \
+        return VirtualBoxTranslatable::translate(#cls, aSourceText, aComment, aNum); \
+    }
+#define DECLARE_COMMON_CLASS_METHODS(cls) \
+    DECLARE_EMPTY_CTOR_DTOR(cls) \
+    DECLARE_TRANSLATE_METHODS(cls)
 #define NS_DECL_ISUPPORTS
 #define NS_IMETHOD                      virtual nsresult
 #define NS_IMETHOD_(type)               virtual type

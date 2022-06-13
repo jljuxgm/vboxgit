@@ -1,4 +1,4 @@
-/* $Id: USBDeviceFiltersImpl.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: USBDeviceFiltersImpl.h 90828 2021-08-24 09:44:46Z vboxsync $ */
 /** @file
  * VBox USBDeviceFilters COM Class declaration.
  */
@@ -36,7 +36,7 @@ class ATL_NO_VTABLE USBDeviceFilters :
 {
 public:
 
-    DECLARE_EMPTY_CTOR_DTOR(USBDeviceFilters)
+    DECLARE_COMMON_CLASS_METHODS(USBDeviceFilters)
 
     HRESULT FinalConstruct();
     void FinalRelease();

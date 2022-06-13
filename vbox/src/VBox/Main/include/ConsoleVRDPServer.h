@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.h 88253 2021-03-22 18:14:09Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.h 90828 2021-08-24 09:44:46Z vboxsync $ */
 /** @file
  * VBox Console VRDE Server Helper class and implementation of IVRDEServerInfo
  */
@@ -60,9 +60,11 @@ typedef struct _VRDPInputSynch
 } VRDPInputSynch;
 
 /* Member of Console. Helper class for VRDP server management. Not a COM class. */
-class ConsoleVRDPServer
+class ConsoleVRDPServer : public VirtualBoxTranslatable
 {
 public:
+    DECLARE_TRANSLATE_METHODS(ConsoleVRDPServer)
+
     ConsoleVRDPServer (Console *console);
     ~ConsoleVRDPServer ();
 
@@ -378,7 +380,7 @@ class ATL_NO_VTABLE VRDEServerInfo :
 public:
     DECLARE_NOT_AGGREGATABLE(VRDEServerInfo)
 
-    DECLARE_EMPTY_CTOR_DTOR(VRDEServerInfo)
+    DECLARE_COMMON_CLASS_METHODS(VRDEServerInfo)
 
     HRESULT FinalConstruct();
     void FinalRelease();

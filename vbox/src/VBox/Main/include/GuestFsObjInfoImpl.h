@@ -1,4 +1,4 @@
-/* $Id: GuestFsObjInfoImpl.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: GuestFsObjInfoImpl.h 90828 2021-08-24 09:44:46Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest file system object information implementation.
  */
@@ -30,7 +30,7 @@ class ATL_NO_VTABLE GuestFsObjInfo
 public:
     /** @name COM and internal init/term/mapping cruft.
      * @{ */
-    DECLARE_EMPTY_CTOR_DTOR(GuestFsObjInfo)
+    DECLARE_COMMON_CLASS_METHODS(GuestFsObjInfo)
 
     int     init(const GuestFsObjData &objData);
     void    uninit(void);

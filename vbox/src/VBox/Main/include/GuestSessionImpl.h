@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.h 84648 2020-06-03 08:11:04Z vboxsync $ */
+/* $Id: GuestSessionImpl.h 90828 2021-08-24 09:44:46Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -47,7 +47,7 @@ class ATL_NO_VTABLE GuestSession
 public:
     /** @name COM and internal init/term/mapping cruft.
      * @{ */
-    DECLARE_EMPTY_CTOR_DTOR(GuestSession)
+    DECLARE_COMMON_CLASS_METHODS(GuestSession)
 
     int     init(Guest *pGuest, const GuestSessionStartupInfo &ssInfo, const GuestCredentials &guestCreds);
     void    uninit(void);

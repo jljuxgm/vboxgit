@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 89868 2021-06-23 18:02:11Z vboxsync $ */
+/* $Id: MachineImpl.cpp 90828 2021-08-24 09:44:46Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -14837,12 +14837,12 @@ HRESULT Machine::i_setErrorStatic(HRESULT aResultCode, const char *pcszMsg, ...)
 {
     va_list args;
     va_start(args, pcszMsg);
-    HRESULT rc = setErrorInternal(aResultCode,
-                                  getStaticClassIID(),
-                                  getStaticComponentName(),
-                                  Utf8Str(pcszMsg, args),
-                                  false /* aWarning */,
-                                  true /* aLogIt */);
+    HRESULT rc = setErrorInternalV(aResultCode,
+                                   getStaticClassIID(),
+                                   getStaticComponentName(),
+                                   pcszMsg, args,
+                                   false /* aWarning */,
+                                   true /* aLogIt */);
     va_end(args);
     return rc;
 }

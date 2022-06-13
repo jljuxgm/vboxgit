@@ -1,4 +1,4 @@
-/* $Id: USBDeviceImpl.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: USBDeviceImpl.h 90828 2021-08-24 09:44:46Z vboxsync $ */
 /** @file
  * Header file for the OUSBDevice (IUSBDevice) class, VBoxC.
  */
@@ -32,7 +32,7 @@ class ATL_NO_VTABLE OUSBDevice :
 {
 public:
 
-    DECLARE_EMPTY_CTOR_DTOR(OUSBDevice)
+    DECLARE_COMMON_CLASS_METHODS(OUSBDevice)
 
     HRESULT FinalConstruct();
     void FinalRelease();

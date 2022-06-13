@@ -1,4 +1,4 @@
-/* $Id: CPUProfileImpl.h 85574 2020-07-31 12:45:16Z vboxsync $ */
+/* $Id: CPUProfileImpl.h 90828 2021-08-24 09:44:46Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for CPU profiles, VBoxSVC.
  */
@@ -34,7 +34,7 @@ class ATL_NO_VTABLE CPUProfile
 public:
     /** @name COM and internal init/term/mapping cruft
      * @{ */
-    DECLARE_EMPTY_CTOR_DTOR(CPUProfile)
+    DECLARE_COMMON_CLASS_METHODS(CPUProfile)
     HRESULT FinalConstruct();
     void    FinalRelease();
     HRESULT initFromDbEntry(struct CPUMDBENTRY const *a_pDbEntry) RT_NOEXCEPT;

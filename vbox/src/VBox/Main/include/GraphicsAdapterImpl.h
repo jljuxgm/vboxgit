@@ -1,4 +1,4 @@
-/* $Id: GraphicsAdapterImpl.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: GraphicsAdapterImpl.h 90828 2021-08-24 09:44:46Z vboxsync $ */
 /** @file
  * Implementation of IGraphicsAdapter in VBoxSVC - Header.
  */
@@ -35,7 +35,7 @@ class ATL_NO_VTABLE GraphicsAdapter :
 {
 public:
 
-    DECLARE_EMPTY_CTOR_DTOR(GraphicsAdapter)
+    DECLARE_COMMON_CLASS_METHODS(GraphicsAdapter)
 
     HRESULT FinalConstruct();
     void FinalRelease();

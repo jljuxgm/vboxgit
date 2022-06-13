@@ -1,4 +1,4 @@
-/* $Id: CertificateImpl.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: CertificateImpl.h 90828 2021-08-24 09:44:46Z vboxsync $ */
 /** @file
  * VirtualBox COM ICertificate implementation.
  */
@@ -50,7 +50,7 @@ class ATL_NO_VTABLE Certificate
 
 public:
 
-    DECLARE_EMPTY_CTOR_DTOR(Certificate)
+    DECLARE_COMMON_CLASS_METHODS(Certificate)
 
     HRESULT initCertificate(PCRTCRX509CERTIFICATE a_pCert, bool a_fTrusted, bool a_fExpired);
     void uninit();

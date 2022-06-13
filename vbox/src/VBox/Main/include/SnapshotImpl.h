@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: SnapshotImpl.h 90828 2021-08-24 09:44:46Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -34,7 +34,7 @@ class ATL_NO_VTABLE Snapshot :
     public SnapshotWrap
 {
 public:
-    DECLARE_EMPTY_CTOR_DTOR(Snapshot)
+    DECLARE_COMMON_CLASS_METHODS(Snapshot)
 
     HRESULT FinalConstruct();
     void FinalRelease();

@@ -1,4 +1,4 @@
-/* $Id: VRDEServerImpl.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VRDEServerImpl.h 90828 2021-08-24 09:44:46Z vboxsync $ */
 
 /** @file
  *
@@ -35,7 +35,7 @@ class ATL_NO_VTABLE VRDEServer :
 {
 public:
 
-    DECLARE_EMPTY_CTOR_DTOR(VRDEServer)
+    DECLARE_COMMON_CLASS_METHODS(VRDEServer)
 
     HRESULT FinalConstruct();
     void FinalRelease();

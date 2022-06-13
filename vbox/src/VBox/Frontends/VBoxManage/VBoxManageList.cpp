@@ -1,4 +1,4 @@
-/* $Id: VBoxManageList.cpp 89915 2021-06-25 15:42:07Z vboxsync $ */
+/* $Id: VBoxManageList.cpp 90828 2021-08-24 09:44:46Z vboxsync $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
@@ -858,7 +858,10 @@ static HRESULT listSystemProperties(const ComPtr<IVirtualBox> &pVirtualBox)
     RTPrintf("Update check target:             %s\n", psz);
     systemProperties->COMGETTER(VBoxUpdateLastCheckDate)(str.asOutParam());
     RTPrintf("Last check date:                 %ls\n", str.raw());
-
+#ifdef VBOX_WITH_MAIN_NLS
+    systemProperties->COMGETTER(LanguageId)(str.asOutParam());
+    RTPrintf("User language:                   %ls\n", str.raw());
+#endif
     return S_OK;
 }
 

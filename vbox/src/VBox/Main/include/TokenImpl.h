@@ -1,4 +1,4 @@
-/* $Id: TokenImpl.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: TokenImpl.h 90828 2021-08-24 09:44:46Z vboxsync $ */
 /** @file
  * Token COM class implementations - MachineToken and MediumLockToken
  */
@@ -33,7 +33,7 @@ class ATL_NO_VTABLE MachineToken :
 {
 public:
 
-    DECLARE_EMPTY_CTOR_DTOR(MachineToken)
+    DECLARE_COMMON_CLASS_METHODS(MachineToken)
 
     HRESULT FinalConstruct();
     void FinalRelease();
@@ -72,7 +72,7 @@ class ATL_NO_VTABLE MediumLockToken :
 {
 public:
 
-    DECLARE_EMPTY_CTOR_DTOR(MediumLockToken)
+    DECLARE_COMMON_CLASS_METHODS(MediumLockToken)
 
     HRESULT FinalConstruct();
     void FinalRelease();

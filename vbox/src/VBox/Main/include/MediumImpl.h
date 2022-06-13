@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 86501 2020-10-09 12:28:32Z vboxsync $ */
+/* $Id: MediumImpl.h 90828 2021-08-24 09:44:46Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -45,7 +45,7 @@ class ATL_NO_VTABLE Medium :
     public MediumWrap
 {
 public:
-    DECLARE_EMPTY_CTOR_DTOR(Medium)
+    DECLARE_COMMON_CLASS_METHODS(Medium)
 
     HRESULT FinalConstruct();
     void FinalRelease();

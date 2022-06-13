@@ -1,4 +1,4 @@
-/* $Id: ParallelPortImpl.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: ParallelPortImpl.h 90828 2021-08-24 09:44:46Z vboxsync $ */
 
 /** @file
  * VirtualBox COM class implementation.
@@ -34,7 +34,7 @@ class ATL_NO_VTABLE ParallelPort :
 {
 public:
 
-    DECLARE_EMPTY_CTOR_DTOR(ParallelPort)
+    DECLARE_COMMON_CLASS_METHODS(ParallelPort)
 
     HRESULT FinalConstruct();
     void FinalRelease();

@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.h 90828 2021-08-24 09:44:46Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -38,7 +38,7 @@ class ATL_NO_VTABLE NetworkAdapter :
 {
 public:
 
-    DECLARE_EMPTY_CTOR_DTOR(NetworkAdapter)
+    DECLARE_COMMON_CLASS_METHODS(NetworkAdapter)
 
     HRESULT FinalConstruct();
     void FinalRelease();

@@ -1,4 +1,4 @@
-/* $Id: UnattendedScript.h 86659 2020-10-20 18:28:06Z vboxsync $ */
+/* $Id: UnattendedScript.h 90828 2021-08-24 09:44:46Z vboxsync $ */
 /** @file
  * Classes for reading/parsing/saving scripts for unattended installation.
  */
@@ -42,6 +42,8 @@ protected:
     Unattended *mpUnattended;
 
 public:
+    DECLARE_TRANSLATE_METHODS(UnattendedScriptTemplate)
+
     UnattendedScriptTemplate(Unattended *pUnattended, const char *pszDefaultTemplateFilename, const char *pszDefaultFilename);
     virtual ~UnattendedScriptTemplate()             {}
 
@@ -104,6 +106,8 @@ protected:
 class UnattendedSUSEXMLScript : public UnattendedXMLScript
 {
 public:
+    DECLARE_TRANSLATE_METHODS(UnattendedSUSEXMLScript)
+
     UnattendedSUSEXMLScript(VirtualBoxBase *pSetError, const char *pszDefaultFilename = "autoinst.xml")
         : UnattendedXMLScript(pSetError, pszDefaultFilename) {}
     ~UnattendedSUSEXMLScript() {}

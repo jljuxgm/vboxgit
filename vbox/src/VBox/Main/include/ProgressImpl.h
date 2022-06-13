@@ -1,4 +1,4 @@
-/* $Id: ProgressImpl.h 86650 2020-10-20 14:26:02Z vboxsync $ */
+/* $Id: ProgressImpl.h 90828 2021-08-24 09:44:46Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -157,7 +157,7 @@ public:
     static DECLCALLBACK(int) i_vdProgressCallback(void *pvUser, unsigned uPercentage);
 
 protected:
-    DECLARE_EMPTY_CTOR_DTOR(Progress)
+    DECLARE_COMMON_CLASS_METHODS(Progress)
 
 #if !defined(VBOX_COM_INPROC)
     /** Weak parent. */

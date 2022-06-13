@@ -1,4 +1,4 @@
-/* $Id: HostDriveImpl.h 85935 2020-08-28 16:49:53Z vboxsync $ */
+/* $Id: HostDriveImpl.h 90828 2021-08-24 09:44:46Z vboxsync $ */
 /** @file
  * VirtualBox Main - IHostDrive implementation, VBoxSVC.
  */
@@ -27,7 +27,7 @@ class ATL_NO_VTABLE HostDrive
     : public HostDriveWrap
 {
 public:
-    DECLARE_EMPTY_CTOR_DTOR(HostDrive)
+    DECLARE_COMMON_CLASS_METHODS(HostDrive)
 
     HRESULT FinalConstruct();
     void FinalRelease();

@@ -1,4 +1,4 @@
-/* $Id: USBDeviceFilterImpl.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: USBDeviceFilterImpl.h 90828 2021-08-24 09:44:46Z vboxsync $ */
 /** @file
  * Declaration of USBDeviceFilter and HostUSBDeviceFilter.
  */
@@ -67,7 +67,7 @@ public:
         settings::USBDeviceFilter mData;
     };
 
-    DECLARE_EMPTY_CTOR_DTOR(USBDeviceFilter)
+    DECLARE_COMMON_CLASS_METHODS(USBDeviceFilter)
 
     HRESULT FinalConstruct();
     void FinalRelease();
@@ -160,7 +160,7 @@ public:
         BackupableUSBDeviceFilterData() {}
     };
 
-    DECLARE_EMPTY_CTOR_DTOR (HostUSBDeviceFilter)
+    DECLARE_COMMON_CLASS_METHODS (HostUSBDeviceFilter)
 
     HRESULT FinalConstruct();
     void FinalRelease();

@@ -1,4 +1,4 @@
-/* $Id: MachineImplMoveVM.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: MachineImplMoveVM.h 90828 2021-08-24 09:44:46Z vboxsync $ */
 /** @file
  * Definition of MachineMoveVM
  */
@@ -63,7 +63,7 @@ typedef struct
 
 struct fileList_t;
 
-class MachineMoveVM : public ThreadTask
+class MachineMoveVM : public ThreadTask, public VirtualBoxTranslatable
 {
     std::vector<ComObjPtr<Machine> >        machineList;
     RTCList<MEDIUMTASKCHAINMOVE>            m_llMedias;
@@ -82,6 +82,8 @@ class MachineMoveVM : public ThreadTask
     HRESULT             m_result;
 
 public:
+    DECLARE_TRANSLATE_METHODS(MachineMoveVM)
+
     MachineMoveVM(ComObjPtr<Machine> aMachine,
                   const com::Utf8Str &aTargetPath,
                   const com::Utf8Str &aType,
