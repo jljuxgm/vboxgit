@@ -1,4 +1,4 @@
-/* $Id: UIFileManager.h 92688 2021-12-02 10:20:41Z vboxsync $ */
+/* $Id: UIFileManager.h 92691 2021-12-02 10:40:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManager class declaration.
  */
@@ -33,6 +33,7 @@
 
 
 /* Forward declarations: */
+class CMachine;
 class QHBoxLayout;
 class QSplitter;
 class QTextEdit;
