@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 90991 2021-08-30 09:49:20Z vboxsync $ */
+/* $Id: VMM.cpp 90992 2021-08-30 09:52:14Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -2536,15 +2536,6 @@ static int vmmR3ServiceCallRing3Request(PVM pVM, PVMCPU pVCpu)
         case VMMCALLRING3_PGM_ALLOCATE_LARGE_HANDY_PAGE:
         {
             pVCpu->vmm.s.rcCallRing3 = PGMR3PhysAllocateLargeHandyPage(pVM, pVCpu->vmm.s.u64CallRing3Arg);
-            break;
-        }
-
-        /*
-         * Acquire the PGM lock.
-         */
-        case VMMCALLRING3_PGM_LOCK:
-        {
-            pVCpu->vmm.s.rcCallRing3 = PGMR3LockCall(pVM);
             break;
         }
 

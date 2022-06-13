@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 90439 2021-07-30 16:41:49Z vboxsync $ */
+/* $Id: PGM.cpp 90992 2021-08-30 09:52:14Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -2361,20 +2361,6 @@ static DECLCALLBACK(void) pgmR3InfoCr3(PVM pVM, PCDBGFINFOHLP pHlp, const char *
         }
     }
     PGM_UNLOCK(pVM);
-}
-
-
-/**
- * Service a VMMCALLRING3_PGM_LOCK call.
- *
- * @returns VBox status code.
- * @param   pVM     The cross context VM structure.
- */
-VMMR3DECL(int) PGMR3LockCall(PVM pVM)
-{
-    int rc = PDMR3CritSectEnterEx(pVM, &pVM->pgm.s.CritSectX, true /* fHostCall */);
-    AssertRC(rc);
-    return rc;
 }
 
 

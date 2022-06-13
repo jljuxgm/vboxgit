@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 90784 2021-08-23 09:42:32Z vboxsync $ */
+/* $Id: PGMAll.cpp 90992 2021-08-30 09:52:14Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -3526,21 +3526,12 @@ int pgmLock(PVMCC pVM, bool fVoid)
 #endif
 {
 #if defined(VBOX_STRICT)
-    int rc = PDMCritSectEnterDebug(pVM, &pVM->pgm.s.CritSectX, VERR_SEM_BUSY, (uintptr_t)ASMReturnAddress(), RT_SRC_POS_ARGS);
+    int rc = PDMCritSectEnterDebug(pVM, &pVM->pgm.s.CritSectX, VINF_SUCCESS, (uintptr_t)ASMReturnAddress(), RT_SRC_POS_ARGS);
 #else
-    int rc = PDMCritSectEnter(pVM, &pVM->pgm.s.CritSectX, VERR_SEM_BUSY);
+    int rc = PDMCritSectEnter(pVM, &pVM->pgm.s.CritSectX, VINF_SUCCESS);
 #endif
     if (RT_SUCCESS(rc))
         return rc;
-
-#ifdef IN_RING0
-    if (rc == VERR_SEM_BUSY)
-    {
-        rc = VMMRZCallRing3NoCpu(pVM, VMMCALLRING3_PGM_LOCK, 0);
-        if (RT_SUCCESS(rc))
-            return rc;
-    }
-#endif
     if (fVoid)
         PDM_CRITSECT_RELEASE_ASSERT_RC(pVM, &pVM->pgm.s.CritSectX, rc);
     else
