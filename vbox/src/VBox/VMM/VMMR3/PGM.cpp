@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 93596 2022-02-03 21:43:35Z vboxsync $ */
+/* $Id: PGM.cpp 93635 2022-02-07 10:43:45Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -953,7 +953,7 @@ VMMR3DECL(int) PGMR3Init(PVM pVM)
      */
     if (RT_SUCCESS(rc))
         /** @todo why isn't pgmPhysRomWriteHandler registered for ring-0?   */
-        rc = PGMR3HandlerPhysicalTypeRegister(pVM, PGMPHYSHANDLERKIND_WRITE, false /*fKeepPgmLock*/,
+        rc = PGMR3HandlerPhysicalTypeRegister(pVM, PGMPHYSHANDLERKIND_WRITE, 0 /*fFlags*/,
                                               pgmPhysRomWriteHandler,
                                               NULL, NULL, "pgmPhysRomWritePfHandler",
                                               NULL, NULL, "pgmPhysRomWritePfHandler",
@@ -964,7 +964,7 @@ VMMR3DECL(int) PGMR3Init(PVM pVM)
      * Register the physical access handler doing dirty MMIO2 tracing.
      */
     if (RT_SUCCESS(rc))
-        rc = PGMR3HandlerPhysicalTypeRegister(pVM, PGMPHYSHANDLERKIND_WRITE, true /*fKeepPgmLock*/,
+        rc = PGMR3HandlerPhysicalTypeRegister(pVM, PGMPHYSHANDLERKIND_WRITE, PGMPHYSHANDLER_F_KEEP_PGM_LOCK,
                                               pgmPhysMmio2WriteHandler,
                                               NULL, "pgmPhysMmio2WriteHandler", "pgmPhysMmio2WritePfHandler",
                                               NULL, "pgmPhysMmio2WriteHandler", "pgmPhysMmio2WritePfHandler",

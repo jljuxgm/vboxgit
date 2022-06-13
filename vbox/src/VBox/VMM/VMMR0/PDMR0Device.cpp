@@ -1,4 +1,4 @@
-/* $Id: PDMR0Device.cpp 93609 2022-02-05 19:03:08Z vboxsync $ */
+/* $Id: PDMR0Device.cpp 93635 2022-02-07 10:43:45Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, R0 Device parts.
  */
@@ -420,8 +420,9 @@ static int pdmR0DeviceCreateWorker(PGVM pGVM, PCPDMDEVREGR0 pDevReg, uint32_t iI
             uint32_t idxR0Device = pGVM->pdmr0.s.cDevInstances;
             if (idxR0Device < RT_ELEMENTS(pGVM->pdmr0.s.apDevInstances))
             {
-                pGVM->pdmr0.s.apDevInstances[idxR0Device] = pDevIns;
-                pGVM->pdmr0.s.cDevInstances = idxR0Device + 1;
+                pGVM->pdmr0.s.apDevInstances[idxR0Device]    = pDevIns;
+                pGVM->pdmr0.s.cDevInstances                  = idxR0Device + 1;
+                pGVM->pdm.s.apDevRing0Instances[idxR0Device] = pDevIns->pDevInsForR3;
                 pDevIns->Internal.s.idxR0Device   = idxR0Device;
                 pDevInsR3->Internal.s.idxR0Device = idxR0Device;
 

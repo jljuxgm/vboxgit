@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA-internal.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: DevVGA-SVGA-internal.h 93635 2022-02-07 10:43:45Z vboxsync $ */
 /** @file
  * VMWare SVGA device - internal header for DevVGA-SVGA* source files.
  */
@@ -247,7 +247,7 @@ DECLCALLBACK(int) vmsvgaR3DeregisterGmr(PPDMDEVINS pDevIns, uint32_t gmrId);
 #endif
 
 DECLCALLBACK(VBOXSTRICTRC) vmsvgaR3GboAccessHandler(PVM pVM, PVMCPU pVCpu, RTGCPHYS GCPhys, void *pvPhys, void *pvBuf, size_t cbBuf,
-                                                    PGMACCESSTYPE enmAccessType, PGMACCESSORIGIN enmOrigin, void *pvUser);
+                                                    PGMACCESSTYPE enmAccessType, PGMACCESSORIGIN enmOrigin, uint64_t uUser);
 
 void vmsvgaR3ResetScreens(PVGASTATE pThis, PVGASTATECC pThisCC);
 

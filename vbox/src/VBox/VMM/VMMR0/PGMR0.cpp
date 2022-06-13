@@ -1,4 +1,4 @@
-/* $Id: PGMR0.cpp 93599 2022-02-03 21:47:03Z vboxsync $ */
+/* $Id: PGMR0.cpp 93635 2022-02-07 10:43:45Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Ring-0.
  */
@@ -989,13 +989,14 @@ VMMR0DECL(VBOXSTRICTRC) PGMR0Trap0eHandlerNPMisconfig(PGVM pGVM, PGVMCPU pGVCpu,
         {
             if (pHandlerType->CTX_SUFF(pfnPfHandler))
             {
-                void *pvUser = pHandler->CTX_SUFF(pvUser);
+                uint64_t const uUser = !pHandlerType->fRing0DevInsIdx ? pHandler->uUser
+                                     : (uintptr_t)PDMDeviceRing0IdxToInstance(pGVM, pHandler->uUser);
                 STAM_PROFILE_START(&pHandler->Stat, h);
                 PGM_UNLOCK(pGVM);
 
-                Log6(("PGMR0Trap0eHandlerNPMisconfig: calling %p(,%#x,,%RGp,%p)\n", pHandlerType->CTX_SUFF(pfnPfHandler), uErr, GCPhysFault, pvUser));
+                Log6(("PGMR0Trap0eHandlerNPMisconfig: calling %p(,%#x,,%RGp,%p)\n", pHandlerType->CTX_SUFF(pfnPfHandler), uErr, GCPhysFault, uUser));
                 rc = pHandlerType->CTX_SUFF(pfnPfHandler)(pGVM, pGVCpu, uErr == UINT32_MAX ? RTGCPTR_MAX : uErr, pRegFrame,
-                                                          GCPhysFault, GCPhysFault, pvUser);
+                                                          GCPhysFault, GCPhysFault, uUser);
 
 #ifdef VBOX_WITH_STATISTICS
                 PGM_LOCK_VOID(pGVM);

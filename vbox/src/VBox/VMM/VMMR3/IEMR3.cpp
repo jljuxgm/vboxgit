@@ -1,4 +1,4 @@
-/* $Id: IEMR3.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: IEMR3.cpp 93635 2022-02-07 10:43:45Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager.
  */
@@ -171,7 +171,7 @@ VMMR3DECL(int)      IEMR3Init(PVM pVM)
     if (pVM->cpum.ro.GuestFeatures.fVmx)
     {
         PVMCPU pVCpu0 = pVM->apCpusR3[0];
-        int rc = PGMR3HandlerPhysicalTypeRegister(pVM, PGMPHYSHANDLERKIND_ALL, false /*fKeepPgmLock*/,
+        int rc = PGMR3HandlerPhysicalTypeRegister(pVM, PGMPHYSHANDLERKIND_ALL, 0 /*fFlags*/,
                                                   iemVmxApicAccessPageHandler,
                                                   NULL /* pszModR0 */,
                                                   "iemVmxApicAccessPageHandler", NULL /* pszPfHandlerR0 */,
