@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 94234 2022-03-15 09:19:29Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 94235 2022-03-15 09:21:26Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -508,54 +508,13 @@ void showLogo(PRTSTREAM pStrm)
 
 void printUsage(USAGECATEGORY enmCommand, uint64_t fSubcommandScope, PRTSTREAM pStrm)
 {
-    bool fDumpOpts = false;
-#ifdef RT_OS_LINUX
-    bool fLinux = true;
-#else
-    bool fLinux = false;
-#endif
-#ifdef RT_OS_WINDOWS
-    bool fWin = true;
-#else
-    bool fWin = false;
-#endif
-#ifdef RT_OS_SOLARIS
-    bool fSolaris = true;
-#else
-    bool fSolaris = false;
-#endif
-#ifdef RT_OS_FREEBSD
-    bool fFreeBSD = true;
-#else
-    bool fFreeBSD = false;
-#endif
-#ifdef RT_OS_DARWIN
-    bool fDarwin = true;
-#else
-    bool fDarwin = false;
-#endif
-#ifdef VBOX_WITH_VBOXSDL
-    bool fVBoxSDL = true;
-#else
-    bool fVBoxSDL = false;
-#endif
-
     RT_NOREF(fSubcommandScope);
 
     Assert(enmCommand != USAGE_INVALID);
     Assert(enmCommand != USAGE_S_NEWCMD);
 
     if (enmCommand == USAGE_S_DUMPOPTS)
-    {
-        fDumpOpts = true;
-        fLinux = true;
-        fWin = true;
-        fSolaris = true;
-        fFreeBSD = true;
-        fDarwin = true;
-        fVBoxSDL = true;
         enmCommand = USAGE_S_ALL;
-    }
 
     RTStrmPrintf(pStrm,
                  Help::tr("Usage:\n"
