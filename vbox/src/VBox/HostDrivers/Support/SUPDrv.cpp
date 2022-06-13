@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 94500 2022-04-06 17:04:44Z vboxsync $ */
+/* $Id: SUPDrv.cpp 94503 2022-04-06 17:24:39Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -73,6 +73,19 @@
 # define VBOXDRV_SESSION_CLOSE(pvSession) do { } while (0)
 # define VBOXDRV_IOCTL_ENTRY(pvSession, uIOCtl, pvReqHdr) do { } while (0)
 # define VBOXDRV_IOCTL_RETURN(pvSession, uIOCtl, pvReqHdr, rcRet, rcReq) do { } while (0)
+#endif
+
+#if defined(RT_OS_LINUX)
+/* In Linux 5.18-rc1, memcpy became a wrapper which does fortify checks
+ * before triggering __underlying_memcpy() call. We do not pass these checks here,
+ * so bypass them for now.  */
+# if RTLNX_VER_MIN(5,18,0)
+#  define SUPDRV_MEMCPY __underlying_memcpy
+# else
+# define SUPDRV_MEMCPY  memcpy
+# endif
+#else
+# define SUPDRV_MEMCPY  memcpy
 #endif
 
 #ifdef __cplusplus
@@ -1751,15 +1764,7 @@ static int supdrvIOCtlInnerUnrestricted(uintptr_t uIOCtl, PSUPDRVDEVEXT pDevExt,
 
             /* execute */
             pReq->u.Out.cFunctions = RT_ELEMENTS(g_aFunctions);
-
-            /* In 5.18.0, memcpy became a wrapper which does fortify checks
-             * before triggering __underlying_memcpy() call. We do not pass these checks here,
-             * so bypass them for now.  */
-#if RTLNX_VER_MIN(5,18,0)
-            __underlying_memcpy(&pReq->u.Out.aFunctions[0], g_aFunctions, sizeof(g_aFunctions));
-#else
-            memcpy(&pReq->u.Out.aFunctions[0], g_aFunctions, sizeof(g_aFunctions));
-#endif
+            SUPDRV_MEMCPY(&pReq->u.Out.aFunctions[0], g_aFunctions, sizeof(g_aFunctions));
             pReq->Hdr.rc = VINF_SUCCESS;
             return 0;
         }
