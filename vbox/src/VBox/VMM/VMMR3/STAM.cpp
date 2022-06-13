@@ -1,4 +1,4 @@
-/* $Id: STAM.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: STAM.cpp 93468 2022-01-27 21:17:12Z vboxsync $ */
 /** @file
  * STAM - The Statistics Manager.
  */
@@ -2592,17 +2592,18 @@ VMMR3DECL(int) STAMR3Enum(PUVM pUVM, const char *pszPat, PFNSTAMR3ENUM pfnEnum, 
 static int stamR3EnumOne(PSTAMDESC pDesc, void *pvArg)
 {
     PSTAMR3ENUMONEARGS pArgs = (PSTAMR3ENUMONEARGS)pvArg;
+    const char *pszUnit = STAMR3GetUnit(pDesc->enmUnit);
     int rc;
     if (pDesc->enmType == STAMTYPE_CALLBACK)
     {
         /* Give the enumerator something useful. */
         char szBuf[512];
         pDesc->u.Callback.pfnPrint(pArgs->pVM, pDesc->u.Callback.pvSample, szBuf, sizeof(szBuf));
-        rc = pArgs->pfnEnum(pDesc->pszName, pDesc->enmType, szBuf, pDesc->enmUnit,
+        rc = pArgs->pfnEnum(pDesc->pszName, pDesc->enmType, szBuf, pDesc->enmUnit, pszUnit,
                             pDesc->enmVisibility, pDesc->pszDesc, pArgs->pvUser);
     }
     else
-        rc = pArgs->pfnEnum(pDesc->pszName, pDesc->enmType, pDesc->u.pv, pDesc->enmUnit,
+        rc = pArgs->pfnEnum(pDesc->pszName, pDesc->enmType, pDesc->u.pv, pDesc->enmUnit, pszUnit,
                             pDesc->enmVisibility, pDesc->pszDesc, pArgs->pvUser);
     return rc;
 }

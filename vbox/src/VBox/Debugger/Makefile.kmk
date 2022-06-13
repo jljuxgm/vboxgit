@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 93115 2022-01-01 11:31:46Z vboxsync $
+# $Id: Makefile.kmk 93468 2022-01-27 21:17:12Z vboxsync $
 ## @file
 # Makefile for the VBox debugger.
 #
@@ -113,8 +113,6 @@ VBoxDbg_SOURCES = \
 	VBoxDbgBase.cpp \
 	VBoxDbgConsole.cpp \
 	VBoxDbgStatsQt.cpp
-VBoxDbg_LIBS = \
-	$(VBOX_LIB_VMM_LAZY)
 VBoxDbg_LDFLAGS.darwin = \
 	-install_name $(VBOX_DYLD_EXECUTABLE_PATH)/VBoxDbg.dylib
 $(call VBOX_SET_VER_INFO_DLL,VBoxDbg,VirtualBox Debugger GUI)

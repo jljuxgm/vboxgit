@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgGui.h 93460 2022-01-27 16:50:15Z vboxsync $ */
+/* $Id: VBoxDbgGui.h 93468 2022-01-27 21:17:12Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - The Manager.
  */
@@ -142,6 +142,15 @@ public:
     PUVM getUvmHandle() const
     {
         return m_pUVM;
+    }
+
+    /**
+     * Gets the VMM function table.
+     * @returns The VMM function table.
+     */
+    PCVMMR3VTABLE getVMMFunctionTable() const
+    {
+        return m_pVMM;
     }
 
     /**

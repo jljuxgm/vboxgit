@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 93444 2022-01-26 18:01:15Z vboxsync $ */
+/* $Id: GuestImpl.cpp 93468 2022-01-27 21:17:12Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest features.
  */
@@ -218,10 +218,10 @@ DECLCALLBACK(void) Guest::i_staticUpdateStats(RTTIMERLR hTimerLR, void *pvUser, 
 
 /* static */
 DECLCALLBACK(int)  Guest::i_staticEnumStatsCallback(const char *pszName, STAMTYPE enmType, void *pvSample,
-                                                    STAMUNIT enmUnit, STAMVISIBILITY enmVisiblity,
+                                                    STAMUNIT enmUnit, const char *pszUnit, STAMVISIBILITY enmVisiblity,
                                                     const char *pszDesc, void *pvUser)
 {
-    RT_NOREF(enmVisiblity, pszDesc);
+    RT_NOREF(enmVisiblity, pszDesc, pszUnit);
     AssertLogRelMsgReturn(enmType == STAMTYPE_COUNTER, ("Unexpected sample type %d ('%s')\n", enmType, pszName), VINF_SUCCESS);
     AssertLogRelMsgReturn(enmUnit == STAMUNIT_BYTES, ("Unexpected sample unit %d ('%s')\n", enmUnit, pszName), VINF_SUCCESS);
 

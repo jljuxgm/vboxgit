@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgBase.h 93460 2022-01-27 16:50:15Z vboxsync $ */
+/* $Id: VBoxDbgBase.h 93468 2022-01-27 21:17:12Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Base classes.
  */
@@ -114,6 +114,8 @@ private:
     VBoxDbgGui *m_pDbgGui;
     /** The user mode VM handle. */
     PUVM volatile m_pUVM;
+    /** The VMM function table. */
+    PCVMMR3VTABLE volatile m_pVMM;
     /** The handle of the GUI thread. */
     RTNATIVETHREAD m_hGUIThread;
 };

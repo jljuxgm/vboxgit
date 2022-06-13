@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.h 93166 2022-01-10 16:43:04Z vboxsync $ */
+/* $Id: GuestImpl.h 93468 2022-01-27 21:17:12Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -188,7 +188,7 @@ private:
      * @{ */
     void i_updateStats(uint64_t iTick);
     static DECLCALLBACK(int) i_staticEnumStatsCallback(const char *pszName, STAMTYPE enmType, void *pvSample,
-                                                       STAMUNIT enmUnit, STAMVISIBILITY enmVisiblity,
+                                                       STAMUNIT enmUnit, const char *pszUnit, STAMVISIBILITY enmVisiblity,
                                                        const char *pszDesc, void *pvUser);
 
     /** @}  */
