@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 94181 2022-03-11 16:55:03Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 94197 2022-03-12 18:48:39Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -622,11 +622,6 @@ void printUsage(USAGECATEGORY enmCommand, uint64_t fSubcommandScope, PRTSTREAM p
                      "                            [--passwordfile <file>]\n"
                      "                            [--initiator <initiator>]\n"
                      "                            [--intnet]\n"
-                     "\n", SEP);
-
-    if (enmCommand == USAGE_SHOWMEDIUMINFO || enmCommand == USAGE_S_ALL)
-        RTStrmPrintf(pStrm,
-                           "%s showmediuminfo %s  [disk|dvd|floppy] <uuid|filename>\n"
                      "\n", SEP);
 
     if (enmCommand == USAGE_CREATEMEDIUM || enmCommand == USAGE_S_ALL)

@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 94181 2022-03-11 16:55:03Z vboxsync $ */
+/* $Id: VBoxManage.h 94197 2022-03-12 18:48:39Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -97,7 +97,6 @@ struct a_CtxName \
 typedef enum
 {
     USAGE_INVALID = 0,
-    USAGE_SHOWMEDIUMINFO,
     USAGE_CREATEMEDIUM,
     USAGE_MODIFYMEDIUM,
     USAGE_CLONEMEDIUM,
