@@ -1,4 +1,4 @@
-/* $Id: main.cpp 93371 2022-01-20 17:48:35Z vboxsync $ */
+/* $Id: main.cpp 93385 2022-01-20 20:30:39Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions - X11 Client.
  */
@@ -276,8 +276,12 @@ static void vboxClientUsage(const char *pcszFileName)
 #endif
 #ifdef VBOX_WITH_VMSVGA
     RTPrintf("  --vmsvga             starts VMSVGA dynamic resizing for X11/Wayland guests\n");
+#ifdef RT_OS_LINUX
     RTPrintf("  --vmsvga-session     starts Desktop Environment specific screen assistant for X11/Wayland guests\n"
              "                       (VMSVGA graphics adapter only)\n");
+#else
+    RTPrintf("  --vmsvga-session     an alias for --vmsvga\n");
+#endif
 #endif
     RTPrintf("  -f, --foreground     run in the foreground (no daemonizing)\n");
     RTPrintf("  -d, --nodaemon       continues running as a system service\n");
@@ -488,11 +492,16 @@ int main(int argc, char *argv[])
                 g_Service.pDesc = &g_SvcDisplaySVGA;
                 break;
             }
+
             case VBOXCLIENT_OPT_VMSVGA_SESSION:
             {
                 if (g_Service.pDesc)
                     return vbclSyntaxOnlyOneService();
+# ifdef RT_OS_LINUX
                 g_Service.pDesc = &g_SvcDisplaySVGASession;
+# else
+                g_Service.pDesc = &g_SvcDisplaySVGA;
+# endif
                 break;
             }
 #endif

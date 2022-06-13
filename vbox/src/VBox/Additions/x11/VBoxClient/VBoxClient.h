@@ -1,4 +1,4 @@
-/* $Id: VBoxClient.h 93220 2022-01-13 11:45:40Z vboxsync $ */
+/* $Id: VBoxClient.h 93385 2022-01-20 20:30:39Z vboxsync $ */
 /** @file
  *
  * VirtualBox additions user session daemon.
@@ -107,7 +107,9 @@ RT_C_DECLS_BEGIN
 extern VBCLSERVICE g_SvcClipboard;
 extern VBCLSERVICE g_SvcDisplayDRM;
 extern VBCLSERVICE g_SvcDisplaySVGA;
+# ifdef RT_OS_LINUX
 extern VBCLSERVICE g_SvcDisplaySVGASession;
+# endif
 extern VBCLSERVICE g_SvcDragAndDrop;
 extern VBCLSERVICE g_SvcHostVersion;
 extern VBCLSERVICE g_SvcSeamless;
