@@ -1,4 +1,4 @@
-/* $Id: UIHostComboEditor.cpp 94013 2022-03-01 09:04:44Z vboxsync $ */
+/* $Id: UIHostComboEditor.cpp 94033 2022-03-01 11:34:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHostComboEditor class implementation.
  */
@@ -619,7 +619,11 @@ void UIHostComboEditorPrivate::sltClear()
     emit sigDataChanged();
 }
 
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+bool UIHostComboEditorPrivate::nativeEvent(const QByteArray &eventType, void *pMessage, qintptr *pResult)
+#else
 bool UIHostComboEditorPrivate::nativeEvent(const QByteArray &eventType, void *pMessage, long *pResult)
+#endif
 {
 # if defined(VBOX_WS_MAC)
 

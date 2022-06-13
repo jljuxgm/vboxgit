@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 93382 2022-01-20 19:18:37Z vboxsync $ */
+/* $Id: UIMachineView.cpp 94033 2022-03-01 11:34:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -102,7 +102,11 @@ public:
     {}
 
     /** Redirects all the native events to parent. */
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+    bool nativeEventFilter(const QByteArray &eventType, void *pMessage, qintptr * /* pResult */)
+#else
     bool nativeEventFilter(const QByteArray &eventType, void *pMessage, long * /* pResult */)
+#endif
     {
         return m_pParent->nativeEventPreprocessor(eventType, pMessage);
     }
