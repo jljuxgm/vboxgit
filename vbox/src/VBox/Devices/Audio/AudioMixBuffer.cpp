@@ -1,4 +1,4 @@
-/* $Id: AudioMixBuffer.cpp 89811 2021-06-21 09:14:26Z vboxsync $ */
+/* $Id: AudioMixBuffer.cpp 90008 2021-07-03 00:02:25Z vboxsync $ */
 /** @file
  * Audio mixing buffer for converting reading/writing audio data.
  */
@@ -2092,7 +2092,7 @@ void AudioMixBufSetVolume(PAUDIOMIXBUF pMixBuf, PCPDMAUDIOVOLUME pVol)
         pMixBuf->Volume.fMuted  = false;
 
         AssertCompileSize(pVol->auChannels[0], sizeof(uint8_t));
-        for (uintptr_t i = 2; i < pMixBuf->cChannels; i++)
+        for (uintptr_t i = 0; i < pMixBuf->cChannels; i++)
             pMixBuf->Volume.auChannels[i] = s_aVolumeConv[pVol->auChannels[i]] * (AUDIOMIXBUF_VOL_0DB >> 16);
 
         pMixBuf->Volume.fAllMax = true;
