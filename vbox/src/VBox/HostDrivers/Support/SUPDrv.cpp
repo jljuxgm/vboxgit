@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 93206 2022-01-12 19:12:13Z vboxsync $ */
+/* $Id: SUPDrv.cpp 93387 2022-01-20 20:58:01Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -2616,7 +2616,7 @@ static int supdrvIOCtlInnerRestricted(uintptr_t uIOCtl, PSUPDRVDEVEXT pDevExt, P
             pReq->u.Out.u32SessionCookie  = pSession->u32Cookie;
             pReq->u.Out.u32SessionVersion = SUPDRV_IOC_VERSION;
             pReq->u.Out.u32DriverVersion  = SUPDRV_IOC_VERSION;
-            pReq->u.Out.pSession          = pSession;
+            pReq->u.Out.pSession          = NULL;
             pReq->u.Out.cFunctions        = 0;
             pReq->Hdr.rc = VINF_SUCCESS;
             return 0;
