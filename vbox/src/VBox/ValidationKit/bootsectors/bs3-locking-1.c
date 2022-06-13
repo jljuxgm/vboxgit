@@ -1,4 +1,4 @@
-/* $Id: bs3-locking-1.c 90471 2021-08-02 11:24:07Z vboxsync $ */
+/* $Id: bs3-locking-1.c 90474 2021-08-02 12:25:13Z vboxsync $ */
 /** @file
  * BS3Kit - bs3-locking-1, 16-bit C code.
  */
@@ -122,5 +122,4 @@ BS3_DECL(void) Main_rm()
 
     Bs3TestTerm();
 }
-
 
