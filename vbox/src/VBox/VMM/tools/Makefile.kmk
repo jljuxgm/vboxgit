@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 93725 2022-02-14 13:46:16Z vboxsync $
+# $Id: Makefile.kmk 94931 2022-05-09 08:24:47Z vboxsync $
 ## @file
 # Sub-Makefile for VMM tools.
 #
@@ -61,7 +61,8 @@ VBoxCpuReport_INCS      = ../include
 VBoxCpuReport_SOURCES   = \
 	VBoxCpuReport.cpp \
 	VBoxCpuReportMsrSup.cpp \
-	../VMMR3/CPUMR3CpuId.cpp
+	../VMMR3/CPUMR3CpuId.cpp \
+	../VMMAll/CPUMAllCpuId.cpp
 VBoxCpuReport_SOURCES.linux = \
 	VBoxCpuReportMsrLinux.cpp
 VBoxCpuReport_DEFS.linux    = VBCR_HAVE_PLATFORM_MSR_PROBER
