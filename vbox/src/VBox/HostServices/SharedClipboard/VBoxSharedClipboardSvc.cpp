@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc.cpp 93316 2022-01-18 15:10:35Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Host service entry points.
  */
@@ -1360,7 +1360,7 @@ int ShClSvcGuestDataSignal(PSHCLCLIENT pClient, PSHCLCLIENTCMDCTX pCmdCtx, SHCLF
     AssertMsgReturn(idEvent != NIL_SHCLEVENTID, ("NIL event in context ID %#RX64\n", pCmdCtx->uContextID), VERR_WRONG_ORDER);
 
     PSHCLEVENT pEvent = ShClEventSourceGetFromId(&pClient->EventSrc, idEvent);
-    AssertMsg(pEvent != NULL, ("Event %#x not found\n", idEvent));
+    AssertMsgReturn(pEvent != NULL, ("Event %#x not found\n", idEvent), VERR_NOT_FOUND);
 
     /*
      * Make a copy of the data so we can attach it to the signal.
