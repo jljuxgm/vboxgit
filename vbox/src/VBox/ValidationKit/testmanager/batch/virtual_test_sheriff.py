@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 93770 2022-02-15 22:15:16Z vboxsync $
+# $Id: virtual_test_sheriff.py 93771 2022-02-15 22:58:34Z vboxsync $
 # pylint: disable=line-too-long
 
 """
@@ -35,7 +35,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 93770 $"
+__version__ = "$Revision: 93771 $"
 
 
 # Standard python imports
@@ -50,9 +50,9 @@ from email.mime.text        import MIMEText;
 from email.utils            import COMMASPACE;
 
 if sys.version_info[0] >= 3:
-    from io       import StringIO as StringIO;      # pylint: disable=import-error,no-name-in-module,useless-import-alias
+    from io       import BytesIO as BytesIO;        # pylint: disable=import-error,no-name-in-module,useless-import-alias
 else:
-    from StringIO import StringIO as StringIO;      # pylint: disable=import-error,no-name-in-module,useless-import-alias
+    from StringIO import StringIO as BytesIO;       # pylint: disable=import-error,no-name-in-module,useless-import-alias
 from optparse import OptionParser;                  # pylint: disable=deprecated-module
 from PIL import Image;                              # pylint: disable=import-error
 
@@ -265,7 +265,7 @@ class VirtualTestSheriffCaseFile(object):
             self.oSheriff.vprint(u'Error reading the "%s" image file: %s' % (oFile.sFile, oXcpt,))
         else:
             try:
-                oImage = Image.open(StringIO(abImageFile));
+                oImage = Image.open(BytesIO(abImageFile));
             except Exception as oXcpt:
                 self.oSheriff.vprint(u'Error opening the "%s" image bytes using PIL.Image.open: %s' % (oFile.sFile, oXcpt,))
             else:
@@ -341,7 +341,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
 
         if self.oConfig.sLogFile:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 93770 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 93771 $ \n');
 
 
     def eprint(self, sText):
@@ -745,7 +745,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.getFailureReason(tReason);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 93770 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 93771 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
