@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 93817 $"
+__version__ = "$Revision: 93889 $"
 
 # Standard Python imports.
 import errno
@@ -4750,6 +4750,10 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
                 return reporter.errorXcpt('os.mkdir(%s)' % (sScratchHst, ));
         if self.oTestFiles.writeToDisk(sScratchHst) is not True:
             return reporter.error('Filed to write test files to "%s" on the host!' % (sScratchHst,));
+
+        # If for whatever reason the directory tree does not exist on the host, let us know.
+        # Copying an non-existing tree *will* fail the tests which otherwise should succeed!
+        assert os.path.exists(sScratchTreeDirHst);
 
         # Generate a test file in 32MB to 64 MB range.
         sBigFileHst  = os.path.join(self.oTstDrv.sScratchPath, 'gctrl-random.data');
