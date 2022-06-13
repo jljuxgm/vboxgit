@@ -1,4 +1,4 @@
-/* $Id: UIHelpViewer.cpp 93998 2022-02-28 22:42:04Z vboxsync $ */
+/* $Id: UIHelpViewer.cpp 94008 2022-03-01 01:08:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class implementation.
  */
@@ -649,7 +649,7 @@ void UIHelpViewer::mousePressEvent(QMouseEvent *pEvent)
     if (!strAnchor.isEmpty())
     {
         if ((pEvent->modifiers() & Qt::ControlModifier) ||
-            pEvent->button() == Qt::MidButton)
+            pEvent->button() == Qt::MiddleButton)
         {
             QString strLink = source().resolved(strAnchor).toString();
             emit sigOpenLinkInNewTab(strLink, true);

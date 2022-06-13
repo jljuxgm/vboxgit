@@ -1,4 +1,4 @@
-/* $Id: UIMouseHandler.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIMouseHandler.cpp 94008 2022-03-01 01:08:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMouseHandler class implementation.
  */
@@ -915,7 +915,7 @@ bool UIMouseHandler::mouseEvent(int iEventType, ulong uScreenId,
         iMouseButtonsState |= KMouseButtonState_LeftButton;
     if (mouseButtons & Qt::RightButton)
         iMouseButtonsState |= KMouseButtonState_RightButton;
-    if (mouseButtons & Qt::MidButton)
+    if (mouseButtons & Qt::MiddleButton)
         iMouseButtonsState |= KMouseButtonState_MiddleButton;
     if (mouseButtons & Qt::XButton1)
         iMouseButtonsState |= KMouseButtonState_XButton1;
