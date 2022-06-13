@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 91247 2021-09-15 12:20:52Z vboxsync $ */
+/* $Id: PGMPhys.cpp 91581 2021-10-06 07:22:22Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -1821,18 +1821,16 @@ VMMR3DECL(int) PGMR3PhysRegisterRam(PVM pVM, RTGCPHYS GCPhys, RTGCPHYS cb, const
 
     /*
      * Find range location and check for conflicts.
-     * (We don't lock here because the locking by EMT is only required on update.)
      */
     PPGMRAMRANGE    pPrev = NULL;
     PPGMRAMRANGE    pRam = pVM->pgm.s.pRamRangesXR3;
     while (pRam && GCPhysLast >= pRam->GCPhys)
     {
-        if (    GCPhysLast >= pRam->GCPhys
-            &&  GCPhys     <= pRam->GCPhysLast)
-            AssertLogRelMsgFailedReturn(("%RGp-%RGp (%s) conflicts with existing %RGp-%RGp (%s)\n",
-                                         GCPhys, GCPhysLast, pszDesc,
-                                         pRam->GCPhys, pRam->GCPhysLast, pRam->pszDesc),
-                                        VERR_PGM_RAM_CONFLICT);
+        AssertLogRelMsgReturnStmt(   GCPhysLast < pRam->GCPhys
+                                  || GCPhys     > pRam->GCPhysLast,
+                                  ("%RGp-%RGp (%s) conflicts with existing %RGp-%RGp (%s)\n",
+                                   GCPhys, GCPhysLast, pszDesc, pRam->GCPhys, pRam->GCPhysLast, pRam->pszDesc),
+                                  PGM_UNLOCK(pVM), VERR_PGM_RAM_CONFLICT);
 
         /* next */
         pPrev = pRam;
