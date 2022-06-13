@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
+/* $Id: UIKeyboardHandler.cpp 90242 2021-07-19 14:31:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandler class implementation.
  */
@@ -1623,13 +1623,13 @@ bool UIKeyboardHandler::keyEvent(int iKey, uint8_t uScan, int fFlags, ulong uScr
         {
             if (fFlags & KeyPressed)
             {
-                static LONG PrintMake[] = { 0xE0, 0x2A, 0xE0, 0x37 };
+                static LONG PrintMake[] = { 0xE0, 0x37 };
                 pCodes = PrintMake;
                 uCodesCount = RT_ELEMENTS(PrintMake);
             }
             else
             {
-                static LONG PrintBreak[] = { 0xE0, 0xB7, 0xE0, 0xAA };
+                static LONG PrintBreak[] = { 0xE0, 0xB7 };
                 pCodes = PrintBreak;
                 uCodesCount = RT_ELEMENTS(PrintBreak);
             }
