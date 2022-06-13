@@ -1,4 +1,4 @@
-/* $Id: UIUpdateDefs.h 86996 2020-11-26 16:54:39Z vboxsync $ */
+/* $Id: UIUpdateDefs.h 91511 2021-10-01 12:36:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Update routine related declarations.
  */
@@ -82,8 +82,6 @@ public:
     VBoxUpdateData(const QString &strData = QString());
     /** Constructs update description on the basis of passed @a enmPeriodIndex and @a enmBranchIndex. */
     VBoxUpdateData(PeriodType enmPeriodIndex, BranchType enmBranchIndex);
-    /** Constructs update description on the basis of @a another one. */
-    VBoxUpdateData(const VBoxUpdateData &another);
 
     /** Returns whether there is no need to check. */
     bool isNoNeedToCheck() const;
