@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.cpp 91341 2021-09-23 07:18:29Z vboxsync $ */
+/* $Id: UIMediumSelector.cpp 91353 2021-09-24 06:21:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class implementation.
  */
@@ -112,7 +112,7 @@ QList<QUuid> UIMediumSelector::selectedMediumIds() const
 void UIMediumSelector::retranslateUi()
 {
     if (m_pMainMenu)
-        m_pMainMenu->setTitle(tr("Medium"));
+        m_pMainMenu->setTitle(tr("&Medium"));
 
     if (m_pActionAdd)
     {
@@ -136,11 +136,11 @@ void UIMediumSelector::retranslateUi()
     }
 
     if (m_pCancelButton)
-        m_pCancelButton->setText(tr("Cancel"));
+        m_pCancelButton->setText(tr("&Cancel"));
     if (m_pLeaveEmptyButton)
-        m_pLeaveEmptyButton->setText(tr("Leave Empty"));
+        m_pLeaveEmptyButton->setText(tr("Leave &Empty"));
     if (m_pChooseButton)
-        m_pChooseButton->setText(tr("Choose"));
+        m_pChooseButton->setText(tr("C&hoose"));
 
     if (m_pTreeWidget)
     {
@@ -371,7 +371,7 @@ void UIMediumSelector::prepareWidgets()
     if (!m_pMainLayout || !menuBar())
         return;
 
-    m_pMainMenu = menuBar()->addMenu(tr("Medium"));
+    m_pMainMenu = menuBar()->addMenu(tr("&Medium"));
 
     m_pToolBar = new QIToolBar;
     if (m_pToolBar)
