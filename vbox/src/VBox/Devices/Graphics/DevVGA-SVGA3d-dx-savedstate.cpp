@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-dx-savedstate.cpp 94377 2022-03-25 18:26:29Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-dx-savedstate.cpp 94831 2022-05-05 06:40:58Z vboxsync $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - DX backend saved state.
  */
@@ -211,7 +211,7 @@ int vmsvga3dDXLoadExec(PPDMDEVINS pDevIns, PVGASTATE pThis, PVGASTATECC pThisCC,
     /*
      * Surfaces
      */
-    p3dState->papSurfaces = (PVMSVGA3DSURFACE *)RTMemAlloc(p3dState->cSurfaces * sizeof(VMSVGA3DSURFACE));
+    p3dState->papSurfaces = (PVMSVGA3DSURFACE *)RTMemAlloc(p3dState->cSurfaces * sizeof(PVMSVGA3DSURFACE));
     AssertReturn(p3dState->papSurfaces, VERR_NO_MEMORY);
     for (uint32_t i = 0; i < p3dState->cSurfaces; ++i)
     {
