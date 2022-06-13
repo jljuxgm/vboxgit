@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 91204 2021-09-10 14:59:21Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 92364 2021-11-11 11:53:49Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -877,11 +877,14 @@ void printUsage(USAGECATEGORY enmCommand, uint64_t fSubcommandScope, PRTSTREAM p
         RTStrmPrintf(pStrm,
                            "%s hostonlyif %s      ipconfig <name>\n"
                      "                            [--dhcp |\n"
-                     "                            --ip<ipv4> [--netmask<ipv4> (def: 255.255.255.0)] |\n"
-                     "                            --ipv6<ipv6> [--netmasklengthv6<length> (def: 64)]]\n"
+                     "                            --ip <ipv4> [--netmask <ipv4> (def:255.255.255.0)]|\n"
+                     "                            --ipv6 <ipv6> [--netmasklengthv6 <N> (def:64)]]"
 # if !defined(RT_OS_SOLARIS) || defined(VBOX_ONLY_DOCS)
+                     " |\n"
                      "                            create |\n"
                      "                            remove <name>\n"
+# else
+                     "\n"
 # endif
                      "\n", SEP);
     }
