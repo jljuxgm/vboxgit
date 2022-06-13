@@ -1,4 +1,4 @@
-/* $Id: isomakercmd.cpp 94865 2022-05-05 19:17:28Z vboxsync $ */
+/* $Id: isomakercmd.cpp 94867 2022-05-05 20:37:04Z vboxsync $ */
 /** @file
  * IPRT - ISO Image Maker Command.
  */
@@ -908,7 +908,7 @@ static int rtFsIsoMakerCmdVerifyImageInRandomOrder(PRTFSISOMAKERCMDOPTS pOpts, R
                     Assert(iHit < (int32_t)cBlocks);
                     if (iHit < 0)
                     {
-                        iHit = ASMBitFirstClear(pvBitmap, iBlock);
+                        iHit = ASMBitFirstClear(pvBitmap, RT_ALIGN_32(iBlock, 64));
                         Assert(iHit < (int32_t)cBlocks);
                     }
                     if (iHit >= 0)
