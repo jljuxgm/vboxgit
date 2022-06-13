@@ -1,4 +1,4 @@
-/* $Id: scm.cpp 93556 2022-02-02 23:14:47Z vboxsync $ */
+/* $Id: scm.cpp 93687 2022-02-11 01:58:34Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -2820,6 +2820,7 @@ static int scmHelp(PCRTGETOPTDEF paOpts, size_t cOpts)
                          && (   strstr(paOpts[i+1].pszLong, "-no-") != NULL
                              || strstr(paOpts[i+1].pszLong, "-not-") != NULL
                              || strstr(paOpts[i+1].pszLong, "-dont-") != NULL
+                             || strcmp(paOpts[i+1].pszLong, "--unrestricted-ASMMemPage-use") == 0
                              || (paOpts[i].iShort == 'q' && paOpts[i+1].iShort == 'v')
                              || (paOpts[i].iShort == 'd' && paOpts[i+1].iShort == 'D')
                             );
@@ -3074,7 +3075,7 @@ int main(int argc, char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 93556 $";
+                static const char s_szRev[] = "$Revision: 93687 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return 0;
