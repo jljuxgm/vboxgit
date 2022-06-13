@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceInternal.h 92662 2021-12-01 02:42:28Z vboxsync $ */
+/* $Id: VBoxServiceInternal.h 92673 2021-12-01 12:40:31Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Services.
  */
@@ -51,7 +51,7 @@
 #endif
 /** RTProcCreateEx flags corresponding to VBOXSERVICE_ARG1_UTF8_ARGV. */
 #ifdef VBOXSERVICE_ARG1_UTF8_ARGV
-# define VBOXSERVICE_PROC_F_UTF8_ARGV       0 /** @todo TBD */
+# define VBOXSERVICE_PROC_F_UTF8_ARGV       RTPROC_FLAGS_UTF8_ARGV
 #else
 # define VBOXSERVICE_PROC_F_UTF8_ARGV       0
 #endif
