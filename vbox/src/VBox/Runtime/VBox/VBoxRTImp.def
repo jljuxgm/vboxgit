@@ -1,4 +1,4 @@
-; $Id: VBoxRTImp.def 88167 2021-03-17 18:45:32Z vboxsync $
+; $Id: VBoxRTImp.def 90692 2021-08-16 09:20:36Z vboxsync $
 ;; @file
 ; VirtualBox Runtime DLL - Stable Interface Definition file.
 ;
@@ -1276,9 +1276,6 @@ EXPORTS
     RTLogFormatV
     RTLogGetDefaultInstance
     RTLogGetDefaultInstanceEx
-    RTLogGetDestinations
-    RTLogGetFlags
-    RTLogGetGroupSettings
     RTLogGroupSettings
     RTLogLogger
     RTLogLoggerEx
@@ -1286,6 +1283,9 @@ EXPORTS
     RTLogLoggerV
     RTLogPrintf
     RTLogPrintfV
+    RTLogQueryDestinations
+    RTLogQueryFlags
+    RTLogQueryGroupSettings
     RTLogRelGetDefaultInstance
     RTLogRelGetDefaultInstanceEx
     RTLogRelLogger

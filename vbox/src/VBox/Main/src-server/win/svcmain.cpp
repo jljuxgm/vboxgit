@@ -1,4 +1,4 @@
-/* $Id: svcmain.cpp 89202 2021-05-20 14:32:08Z vboxsync $ */
+/* $Id: svcmain.cpp 90692 2021-08-16 09:20:36Z vboxsync $ */
 /** @file
  * SVCMAIN - COM out-of-proc server main entry
  */
@@ -157,7 +157,7 @@ void CExeModule::MonitorShutdown()
             if (pReleaseLogger)
             {
                 char szDest[1024];
-                int rc = RTLogGetDestinations(pReleaseLogger, szDest, sizeof(szDest));
+                int rc = RTLogQueryDestinations(pReleaseLogger, szDest, sizeof(szDest));
                 if (RT_SUCCESS(rc))
                 {
                     rc = RTStrCat(szDest, sizeof(szDest), " nohistory");

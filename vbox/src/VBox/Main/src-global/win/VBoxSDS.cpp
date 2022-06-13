@@ -1,4 +1,4 @@
-/* $Id: VBoxSDS.cpp 83818 2020-04-19 00:55:42Z vboxsync $ */
+/* $Id: VBoxSDS.cpp 90692 2021-08-16 09:20:36Z vboxsync $ */
 /** @file
  * VBoxSDS - COM global service main entry (System Directory Service)
  */
@@ -641,7 +641,7 @@ protected:
                 if (pReleaseLogger)
                 {
                     char szDest[1024];
-                    int rc = ::RTLogGetDestinations(pReleaseLogger, szDest, sizeof(szDest));
+                    int rc = ::RTLogQueryDestinations(pReleaseLogger, szDest, sizeof(szDest));
                     if (RT_SUCCESS(rc))
                     {
                         rc = ::RTStrCat(szDest, sizeof(szDest), " nohistory");
