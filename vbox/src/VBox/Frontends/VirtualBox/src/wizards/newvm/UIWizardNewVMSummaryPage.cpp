@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMSummaryPage.cpp 91167 2021-09-08 16:56:16Z vboxsync $ */
+/* $Id: UIWizardNewVMSummaryPage.cpp 91293 2021-09-17 06:48:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMSummaryPage class implementation.
  */
@@ -492,7 +492,7 @@ bool UIWizardNewVMSummaryPage::validatePage()
             return fResult;
         }
         /* Check FAT size limitation of the host hard drive: */
-        fResult = UIDiskEditorGroupBox::checkFATSizeLimitation(pWizard->mediumVariant(),
+        fResult = UIWizardDiskEditors::checkFATSizeLimitation(pWizard->mediumVariant(),
                                                                 strMediumPath,
                                                                 pWizard->mediumSize());
         if (!fResult)

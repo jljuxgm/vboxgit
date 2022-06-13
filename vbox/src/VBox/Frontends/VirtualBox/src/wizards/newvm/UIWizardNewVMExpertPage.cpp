@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMExpertPage.cpp 91277 2021-09-16 11:50:40Z vboxsync $ */
+/* $Id: UIWizardNewVMExpertPage.cpp 91293 2021-09-17 06:48:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMExpertPage class implementation.
  */
@@ -611,7 +611,7 @@ bool UIWizardNewVMExpertPage::validatePage()
         qulonglong uSize = pWizard->mediumSize();
         qulonglong uVariant = pWizard->mediumVariant();
         /* Check FAT size limitation of the host hard drive: */
-        fResult =  UIDiskEditorGroupBox::checkFATSizeLimitation(uVariant, strMediumPath, uSize);
+        fResult =  UIWizardDiskEditors::checkFATSizeLimitation(uVariant, strMediumPath, uSize);
         if (!fResult)
         {
             msgCenter().cannotCreateHardDiskStorageInFAT(strMediumPath, this);
@@ -694,12 +694,12 @@ void UIWizardNewVMExpertPage::sltMediumLocationButtonClicked()
     AssertReturnVoid(pWizard);
     CMediumFormat comMediumFormat(pWizard->mediumFormat());
     QString strSelectedPath =
-        UIDiskEditorGroupBox::openFileDialogForDiskFile(pWizard->mediumPath(), comMediumFormat, KDeviceType_HardDisk, pWizard);
+        UIWizardDiskEditors::openFileDialogForDiskFile(pWizard->mediumPath(), comMediumFormat, KDeviceType_HardDisk, pWizard);
     if (strSelectedPath.isEmpty())
         return;
     QString strMediumPath =
-        UIDiskEditorGroupBox::appendExtension(strSelectedPath,
-                                              UIDiskEditorGroupBox::defaultExtension(pWizard->mediumFormat(), KDeviceType_HardDisk));
+        UIWizardDiskEditors::appendExtension(strSelectedPath,
+                                              UIWizardDiskEditors::defaultExtension(pWizard->mediumFormat(), KDeviceType_HardDisk));
     QFileInfo mediumPath(strMediumPath);
     m_pSizeAndLocationGroup->setMediumFilePath(QDir::toNativeSeparators(mediumPath.absoluteFilePath()));
 }
@@ -817,11 +817,11 @@ void UIWizardNewVMExpertPage::updateVirtualMediumPathFromMachinePathName()
         else
             strMediumPath = uiCommon().virtualBox().GetSystemProperties().GetDefaultMachineFolder();
     }
-    QString strExtension = UIDiskEditorGroupBox::defaultExtension(pWizard->mediumFormat(), KDeviceType_HardDisk);
+    QString strExtension = UIWizardDiskEditors::defaultExtension(pWizard->mediumFormat(), KDeviceType_HardDisk);
     if (m_pSizeAndLocationGroup)
     {
         QString strMediumFilePath =
-            UIDiskEditorGroupBox::constructMediumFilePath(UIDiskEditorGroupBox::appendExtension(strDiskFileName,
+            UIWizardDiskEditors::constructMediumFilePath(UIWizardDiskEditors::appendExtension(strDiskFileName,
                                                                                       strExtension), strMediumPath);
         m_pSizeAndLocationGroup->blockSignals(true);
         m_pSizeAndLocationGroup->setMediumFilePath(strMediumFilePath);
