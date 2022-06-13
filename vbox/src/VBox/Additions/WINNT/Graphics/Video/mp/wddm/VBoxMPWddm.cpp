@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 94881 2022-05-06 04:45:02Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 94927 2022-05-09 06:48:47Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -1603,6 +1603,7 @@ typedef struct VBOXDXSEGMENTDESCRIPTOR
 
 static void vmsvgaDXGetSegmentDescription(PVBOXMP_DEVEXT pDevExt, int idxSegment, VBOXDXSEGMENTDESCRIPTOR *pDesc)
 {
+    /** @todo 2 segments for pDevExt->fLegacy flag. */
     /* 3 segments:
      * 1: The usual VRAM, CpuVisible;
      * 2: Aperture segment for guest backed objects;

@@ -1,4 +1,4 @@
-/* $Id: VBoxMPTypes.h 94889 2022-05-06 11:49:25Z vboxsync $ */
+/* $Id: VBoxMPTypes.h 94927 2022-05-09 06:48:47Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -208,6 +208,16 @@ typedef struct VBOXWDDM_ALLOCATION
         VBOXDXALLOCATIONDESC    desc;
         uint32_t                sid;                        /* For surfaces. */
         uint32_t                mobid;                      /* For surfaces and shaders. */
+        uint32_t                SegmentId;                  /* Segment of the allocation. */
+        union
+        {
+            PMDL                pMDL;                       /* Guest backing for aperture segment 2. */
+            struct
+            {
+                RTR0MEMOBJ      hMemObjGB;                  /* Guest backing pages for host segment 3. */
+                struct VMSVGAMOB *pMob;                     /* Mob for the pages. */
+            } gb;
+        };
     } dx;
 #endif /* VBOX_WITH_VMSVGA3D_DX */
 } VBOXWDDM_ALLOCATION, *PVBOXWDDM_ALLOCATION;

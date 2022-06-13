@@ -1,4 +1,4 @@
-/* $Id: Svga.h 94881 2022-05-06 04:45:02Z vboxsync $ */
+/* $Id: Svga.h 94927 2022-05-09 06:48:47Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver VMSVGA.
  */
@@ -146,7 +146,7 @@ typedef struct VMSVGAMOB
     uint32_t                    cDescriptionPages;          /* How many pages are required to hold PPN64 page table. */
     SVGAMobFormat               enmMobFormat;               /* Page table format. */
     PPN64                       base;                       /* Page which contains the page table. */
-    RTR0MEMOBJ                  hMemObj;                    /* Page table pages. */
+    RTR0MEMOBJ                  hMemObjPT;                  /* Page table pages. */
     HANDLE                      hAllocation;                /* Allocation which is bound to the mob. */
 } VMSVGAMOB, *PVMSVGAMOB;
 

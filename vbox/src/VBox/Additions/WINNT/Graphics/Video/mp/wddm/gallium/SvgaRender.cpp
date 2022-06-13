@@ -1,4 +1,4 @@
-/* $Id: SvgaRender.cpp 94835 2022-05-05 08:18:51Z vboxsync $ */
+/* $Id: SvgaRender.cpp 94927 2022-05-09 06:48:47Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Graphics Driver - VMSVGA command verification routines.
  */
@@ -1812,8 +1812,8 @@ static NTSTATUS procCmdDXSetMinLOD(PVBOXWDDM_EXT_VMSVGA pSvga, PVMSVGACONTEXT pS
 static NTSTATUS procCmdDXDefineDepthStencilView_v2(PVBOXWDDM_EXT_VMSVGA pSvga, PVMSVGACONTEXT pSvgaContext, SVGA3dCmdHeader *pHeader)
 {
     SVGA3dCmdDXDefineDepthStencilView_v2 *pCmd = (SVGA3dCmdDXDefineDepthStencilView_v2 *)&pHeader[1];
-    RT_NOREF(pSvga, pSvgaContext, pCmd);
-    return STATUS_SUCCESS;
+    DEBUG_VERIFYCMD_RETURN();
+    return SvgaCOTNotifyId(pSvga, pSvgaContext, SVGA_COTABLE_DSVIEW, pCmd->depthStencilViewId);
 }
 
 
