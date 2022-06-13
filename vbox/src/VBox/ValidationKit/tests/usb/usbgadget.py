@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: usbgadget.py 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: usbgadget.py 90594 2021-08-10 12:15:27Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 82968 $"
+__version__ = "$Revision: 90594 $"
 
 # Standard Python imports.
 import array
@@ -591,7 +591,11 @@ class Session(TdTaskBase):
             return False;
 
         oThread.join(61.0);
-        return oThread.isAlive();
+
+        if sys.version_info < (3, 9, 0):
+            # Removed since Python 3.9.
+            return oThread.isAlive(); # pylint: disable=no-member
+        return oThread.is_alive();
 
     def taskThread(self):
         """
@@ -1462,4 +1466,3 @@ class UsbGadget(object):
             fRc = self.oUtsSession.syncDisconnect();
 
         return fRc;
-
