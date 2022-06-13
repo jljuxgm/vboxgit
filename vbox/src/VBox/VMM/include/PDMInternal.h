@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 93991 2022-02-28 16:29:55Z vboxsync $ */
+/* $Id: PDMInternal.h 94419 2022-03-31 20:53:56Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -1260,7 +1260,7 @@ AssertCompileSizeAlignment(PDMNSBWGROUP, 64);
 /** Pointer to a bandwidth group. */
 typedef PDMNSBWGROUP *PPDMNSBWGROUP;
 
-/* @} */
+/** @} */
 
 
 /**

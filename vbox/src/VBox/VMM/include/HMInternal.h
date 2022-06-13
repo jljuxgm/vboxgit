@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 93963 2022-02-28 08:39:08Z vboxsync $ */
+/* $Id: HMInternal.h 94419 2022-03-31 20:53:56Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -632,6 +632,10 @@ AssertCompileSizeAlignment(SVMNESTEDVMCBCACHE, 8);
 
 /** @} */
 
+
+/** @addtogroup grp_hm_int_vmx  VMX Internal
+ * @{ */
+
 /** @name Host-state restoration flags.
  * @note If you change these values don't forget to update the assembly
  *       defines as well!
@@ -706,6 +710,7 @@ typedef DECLCALLBACKTYPE(int, FNHMVMXSTARTVM,(PVMXVMCSINFO pVmcsInfo, PVMCPUCC p
 /** Pointer to a VMX StartVM function. */
 typedef R0PTRTYPE(FNHMVMXSTARTVM *) PFNHMVMXSTARTVM;
 /** @} */
+
 
 /**
  * HM VMCPU Instance data.
