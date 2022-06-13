@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceToolBox.cpp 84005 2020-04-27 12:11:07Z vboxsync $ */
+/* $Id: VBoxServiceToolBox.cpp 92658 2021-12-01 02:01:57Z vboxsync $ */
 /** @file
  * VBoxServiceToolbox - Internal (BusyBox-like) toolbox.
  */
@@ -1712,7 +1712,14 @@ bool VGSvcToolboxMain(int argc, char **argv, RTEXITCODE *prcExit)
          * when the first VBoxService argument is --use-toolbox.
          */
         if (argc < 2 || strcmp(argv[1], "--use-toolbox"))
+        {
+            /** @todo must check for 'vbox_' and fail with a complaint that the tool does
+             *        not exist, because vgsvcGstCtrlProcessResolveExecutable will send
+             *        us anything with 'vbox_' as a prefix and no absolute path.  So,
+             *        handing non-existing vbox_xxx tools to the regular VBoxService main
+             *        routine is inconsistent and bound to cause trouble. */
             return false;
+        }
 
         /* No tool specified? Show toolbox help. */
         if (argc < 3)
