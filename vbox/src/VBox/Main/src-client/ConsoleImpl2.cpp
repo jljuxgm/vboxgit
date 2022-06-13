@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 94890 2022-05-06 11:57:24Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 94891 2022-05-06 11:58:13Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -149,7 +149,7 @@ static Utf8Str *GetExtraDataBoth(IVirtualBox *pVirtualBox, IMachine *pMachine, c
 /**
  * Translate IDE StorageControllerType_T to string representation.
  */
-const char* controllerString(StorageControllerType_T enmType)
+static const char* controllerString(StorageControllerType_T enmType)
 {
     switch (enmType)
     {
