@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 90436 2021-07-30 16:03:48Z vboxsync $ */
+/* $Id: PDMInternal.h 90468 2021-08-02 10:58:26Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -1476,6 +1476,9 @@ typedef struct PDM
     /** Number of times we've got the critical section ownership while trying to
      * abort a wait due to VERR_INTERRUPTED. */
     STAMCOUNTER                     StatCritSectEntersWhileAborting;
+    STAMCOUNTER                     StatCritSectVerrTimeout;
+    STAMCOUNTER                     StatCritSectVerrInterrupted;
+    STAMCOUNTER                     StatCritSectNonInterruptibleWaits;
 } PDM;
 AssertCompileMemberAlignment(PDM, CritSect, 8);
 AssertCompileMemberAlignment(PDM, aTaskSets, 64);
