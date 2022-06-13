@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestProp.cpp 92372 2021-11-11 14:45:18Z vboxsync $ */
+/* $Id: VBoxManageGuestProp.cpp 92432 2021-11-15 15:58:43Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestproperty command.
  */
@@ -55,21 +55,21 @@ DECLARE_TRANSLATION_CONTEXT(GuestProp);
 
 void usageGuestProperty(PRTSTREAM pStrm, const char *pcszSep1, const char *pcszSep2)
 {
-    RTStrmPrintf(pStrm, GuestProp::tr("%s guestproperty %s   get <uuid|vmname>\n"
-                                "                            <property> [--verbose]\n"
-                                "\n"), pcszSep1, pcszSep2);
-    RTStrmPrintf(pStrm, GuestProp::tr("%s guestproperty %s   set <uuid|vmname>\n"
-                                "                            <property> [<value> [--flags <flags>]]\n"
-                                "\n"), pcszSep1, pcszSep2);
-    RTStrmPrintf(pStrm, GuestProp::tr("%s guestproperty %s   delete|unset <uuid|vmname>\n"
-                                "                            <property>\n"
-                                "\n"), pcszSep1, pcszSep2);
-    RTStrmPrintf(pStrm, GuestProp::tr("%s guestproperty %s   enumerate <uuid|vmname>\n"
-                                "                            [--patterns <patterns>]\n"
-                                "\n"), pcszSep1, pcszSep2);
-    RTStrmPrintf(pStrm, GuestProp::tr("%s guestproperty %s   wait <uuid|vmname> <patterns>\n"
-                                "                            [--timeout <msec>] [--fail-on-timeout]\n"
-                                "\n"), pcszSep1, pcszSep2);
+    RTStrmPrintf(pStrm, "%s guestproperty %s   get <uuid|vmname>\n"
+                  "                            <property> [--verbose]\n"
+                  "\n", pcszSep1, pcszSep2);
+    RTStrmPrintf(pStrm, "%s guestproperty %s   set <uuid|vmname>\n"
+                  "                            <property> [<value> [--flags <flags>]]\n"
+                  "\n", pcszSep1, pcszSep2);
+    RTStrmPrintf(pStrm, "%s guestproperty %s   delete|unset <uuid|vmname>\n"
+                  "                            <property>\n"
+                  "\n", pcszSep1, pcszSep2);
+    RTStrmPrintf(pStrm, "%s guestproperty %s   enumerate <uuid|vmname>\n"
+                  "                            [--patterns <patterns>]\n"
+                  "\n", pcszSep1, pcszSep2);
+    RTStrmPrintf(pStrm, "%s guestproperty %s   wait <uuid|vmname> <patterns>\n"
+                  "                            [--timeout <msec>] [--fail-on-timeout]\n"
+                  "\n", pcszSep1, pcszSep2);
 }
 
 #ifndef VBOX_ONLY_DOCS
