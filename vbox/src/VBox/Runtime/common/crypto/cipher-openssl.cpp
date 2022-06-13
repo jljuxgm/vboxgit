@@ -1,4 +1,4 @@
-/* $Id: cipher-openssl.cpp 94627 2022-04-19 10:12:04Z vboxsync $ */
+/* $Id: cipher-openssl.cpp 94630 2022-04-19 10:49:10Z vboxsync $ */
 /** @file
  * IPRT - Crypto - Symmetric Cipher using OpenSSL.
  */
@@ -44,6 +44,22 @@
 # include "internal/openssl-post.h"
 
 # include "internal/magics.h"
+
+
+/*********************************************************************************************************************************
+*   Defined Constants And Macros                                                                                                 *
+*********************************************************************************************************************************/
+#if OPENSSL_VERSION_NUMBER >= 0x10002000
+# define MY_EVP_CTRL_AEAD_GET_TAG EVP_CTRL_AEAD_GET_TAG
+#else
+# define MY_EVP_CTRL_AEAD_GET_TAG EVP_CTRL_GCM_GET_TAG
+#endif
+
+#if OPENSSL_VERSION_NUMBER >= 0x10002000
+# define MY_EVP_CTRL_AEAD_SET_TAG EVP_CTRL_AEAD_SET_TAG
+#else
+# define MY_EVP_CTRL_AEAD_SET_TAG EVP_CTRL_GCM_SET_TAG
+#endif
 
 
 /*********************************************************************************************************************************
@@ -324,7 +340,7 @@ RTDECL(int) RTCrCipherCtxEncryptFinish(RTCRCIPHERCTX hCipherCtx,
     {
         if (pvTag && cbTag)
         {
-            if (EVP_CIPHER_CTX_ctrl(pCtx->pCipherCtx, EVP_CTRL_AEAD_GET_TAG, (int)cbTag, pvTag))
+            if (EVP_CIPHER_CTX_ctrl(pCtx->pCipherCtx, MY_EVP_CTRL_AEAD_GET_TAG, (int)cbTag, pvTag))
             {
                 *pcbTag = cbTag;
                 rc = VINF_SUCCESS;
@@ -386,7 +402,7 @@ RTDECL(int) RTCrCipherCtxDecryptInit(RTCRCIPHER hCipher, void const *pvKey, size
                             (unsigned char const *)pvInitVector))
         {
             rc = VINF_SUCCESS;
-            if (pvTag && cbTag && !EVP_CIPHER_CTX_ctrl(pCtx->pCipherCtx, EVP_CTRL_AEAD_SET_TAG, (int)cbTag, pvTag))
+            if (pvTag && cbTag && !EVP_CIPHER_CTX_ctrl(pCtx->pCipherCtx, MY_EVP_CTRL_AEAD_SET_TAG, (int)cbTag, pvTag))
                 rc = VERR_CR_CIPHER_OSSL_SET_TAG_FAILED;
 
             if (RT_SUCCESS(rc) && pvAuthData && cbAuthData)
