@@ -1,4 +1,4 @@
-/* $Id: QMTranslatorImpl.cpp 91718 2021-10-14 11:43:12Z vboxsync $ */
+/* $Id: QMTranslatorImpl.cpp 91731 2021-10-14 15:44:15Z vboxsync $ */
 /** @file
  * VirtualBox API translation handling class
  */
@@ -346,7 +346,7 @@ public:
 
     size_t plural(size_t aNum) const
     {
-        if (aNum == SIZE_MAX || m_pluralRules.empty())
+        if (aNum == (~(size_t)0) || m_pluralRules.empty())
             return 0;
 
         size_t   uPluralNumber = 0;
