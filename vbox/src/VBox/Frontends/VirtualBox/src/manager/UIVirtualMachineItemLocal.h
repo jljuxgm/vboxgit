@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItemLocal.h 84189 2020-05-07 15:13:27Z vboxsync $ */
+/* $Id: UIVirtualMachineItemLocal.h 91079 2021-09-01 19:26:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItemLocal class declaration.
  */
@@ -72,13 +72,6 @@ public:
         KSessionState sessionState() const { return m_enmSessionState; }
         /** Returns cached session state name. */
         QString sessionStateName() const { return m_strSessionStateName; }
-    /** @} */
-
-    /** @name Console attributes.
-      * @{ */
-        /** Tries to switch to the main window of the VM process.
-          * @return true if switched successfully. */
-        bool switchTo();
     /** @} */
 
     /** @name Update stuff.

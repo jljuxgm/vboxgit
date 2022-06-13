@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-win.h 89740 2021-06-16 13:18:15Z vboxsync $ */
+/* $Id: VBoxUtils-win.h 91079 2021-09-01 19:26:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Declarations of utility classes and functions for handling Windows specific tasks.
  */
@@ -36,6 +36,12 @@ namespace NativeWindowSubsystem
     /* Returns area covered by visible always-on-top (top-most) windows: */
     SHARED_LIBRARY_STUFF const QRegion areaCoveredByTopMostWindows();
     SHARED_LIBRARY_STUFF const void setScreenSaverActive(BOOL fDisableScreenSaver);
+
+    /** Wraps WinAPI ShutdownBlockReasonCreate function. */
+    SHARED_LIBRARY_STUFF BOOL ShutdownBlockReasonCreateAPI(HWND hWnd, LPCWSTR pwszReason);
+
+    /** Activates window with certain @a wId, @a fSwitchDesktop if requested. */
+    bool WinActivateWindow(WId wId, bool fSwitchDesktop);
 }
 
 #endif /* !FEQT_INCLUDED_SRC_platform_win_VBoxUtils_win_h */

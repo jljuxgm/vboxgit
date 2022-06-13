@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 91076 2021-09-01 18:52:17Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 91079 2021-09-01 19:26:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -2484,7 +2484,7 @@ void UIVirtualBoxManager::launchMachine(CMachine &comMachine,
     if (   comMachine.GetSessionState() == KSessionState_Locked // precondition for CanShowConsoleWindow()
         && comMachine.CanShowConsoleWindow())
     {
-        uiCommon().switchToMachine(comMachine);
+        UICommon::switchToMachine(comMachine);
         return;
     }
 

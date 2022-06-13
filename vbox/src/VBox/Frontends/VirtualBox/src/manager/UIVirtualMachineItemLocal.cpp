@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItemLocal.cpp 84189 2020-05-07 15:13:27Z vboxsync $ */
+/* $Id: UIVirtualMachineItemLocal.cpp 91079 2021-09-01 19:26:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItem class implementation.
  */
@@ -165,48 +165,6 @@ void UIVirtualMachineItemLocal::recachePixmap()
         /* We are using "Other" guest OS type icon: */
         m_pixmap = uiCommon().vmGuestOSTypePixmapDefault("Other", &m_logicalPixmapSize);
     }
-}
-
-bool UIVirtualMachineItemLocal::switchTo()
-{
-#ifdef VBOX_WS_MAC
-    ULONG64 id = m_comMachine.ShowConsoleWindow();
-#else
-    WId id = (WId) m_comMachine.ShowConsoleWindow();
-#endif
-    AssertWrapperOk(m_comMachine);
-    if (!m_comMachine.isOk())
-        return false;
-
-    /* winId = 0 it means the console window has already done everything
-     * necessary to implement the "show window" semantics. */
-    if (id == 0)
-        return true;
-
-#if defined (VBOX_WS_WIN) || defined (VBOX_WS_X11)
-
-    return uiCommon().activateWindow(id, true);
-
-#elif defined (VBOX_WS_MAC)
-
-    // WORKAROUND:
-    // This is just for the case were the other process cannot steal
-    // the focus from us. It will send us a PSN so we can try.
-    ProcessSerialNumber psn;
-    psn.highLongOfPSN = id >> 32;
-    psn.lowLongOfPSN = (UInt32)id;
-    OSErr rc = ::SetFrontProcess(&psn);
-    if (!rc)
-        Log(("GUI: %#RX64 couldn't do SetFrontProcess on itself, the selector (we) had to do it...\n", id));
-    else
-        Log(("GUI: Failed to bring %#RX64 to front. rc=%#x\n", id, rc));
-    return !rc;
-
-#else
-
-    return false;
-
-#endif
 }
 
 bool UIVirtualMachineItemLocal::isItemEditable() const
