@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv-nt.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: alloc-r0drv-nt.cpp 93200 2022-01-12 13:51:29Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, NT.
  */
@@ -45,18 +45,15 @@ DECLHIDDEN(int) rtR0MemAllocEx(size_t cb, uint32_t fFlags, PRTMEMHDR *ppHdr)
 {
     if (!(fFlags & RTMEMHDR_FLAG_ANY_CTX))
     {
-        PRTMEMHDR pHdr;
+        PRTMEMHDR       pHdr;
+        POOL_TYPE const enmPoolType = !(fFlags & RTMEMHDR_FLAG_EXEC) && g_uRtNtVersion >= RTNT_MAKE_VERSION(8,0)
+                                    ? NonPagedPoolNx : NonPagedPool;
         if (g_pfnrtExAllocatePoolWithTag)
-        {
-            if (!(fFlags & RTMEMHDR_FLAG_EXEC) && g_uRtNtVersion >= RTNT_MAKE_VERSION(8,0))
-                pHdr = (PRTMEMHDR)g_pfnrtExAllocatePoolWithTag(NonPagedPoolNx, cb + sizeof(*pHdr), IPRT_NT_POOL_TAG);
-            else
-                pHdr = (PRTMEMHDR)g_pfnrtExAllocatePoolWithTag(NonPagedPool, cb + sizeof(*pHdr), IPRT_NT_POOL_TAG);
-        }
+            pHdr = (PRTMEMHDR)g_pfnrtExAllocatePoolWithTag(enmPoolType, cb + sizeof(*pHdr), IPRT_NT_POOL_TAG);
         else
         {
             fFlags |= RTMEMHDR_FLAG_UNTAGGED;
-            pHdr = (PRTMEMHDR)ExAllocatePool(NonPagedPool, cb + sizeof(*pHdr));
+            pHdr = (PRTMEMHDR)ExAllocatePool(enmPoolType, cb + sizeof(*pHdr));
         }
         if (pHdr)
         {
