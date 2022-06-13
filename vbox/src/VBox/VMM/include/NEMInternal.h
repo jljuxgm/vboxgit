@@ -1,4 +1,4 @@
-/* $Id: NEMInternal.h 92120 2021-10-28 00:31:35Z vboxsync $ */
+/* $Id: NEMInternal.h 92170 2021-11-01 22:06:25Z vboxsync $ */
 /** @file
  * NEM - Internal header file.
  */
@@ -216,6 +216,15 @@ typedef struct NEM
 #  endif
     STAMCOUNTER                 StatMapPageFailed;
     STAMCOUNTER                 StatUnmapPageFailed;
+#  ifdef VBOX_WITH_PGM_NEM_MODE
+    STAMPROFILE                 StatProfMapGpaRange;
+    STAMPROFILE                 StatProfUnmapGpaRange;
+    STAMPROFILE                 StatProfQueryGpaRangeDirtyBitmap;
+#  endif
+#  ifndef NEM_WIN_USE_HYPERCALLS_FOR_PAGES
+    STAMPROFILE                 StatProfMapGpaRangePage;
+    STAMPROFILE                 StatProfUnmapGpaRangePage;
+#  endif
 
 #  ifdef NEM_WIN_USE_HYPERCALLS_FOR_PAGES
     /** Info about the VidGetHvPartitionId I/O control interface. */
