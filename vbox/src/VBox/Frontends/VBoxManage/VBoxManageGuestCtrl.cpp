@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 92594 2021-11-25 09:05:48Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 92822 2021-12-08 14:55:45Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -1889,10 +1889,14 @@ static RTEXITCODE gctlHandleCopy(PGCTLCMDCTX pCtx, int argc, char **argv, bool f
                         if (pCtx->cVerbose)
                             RTPrintf(GuestCtrl::tr("Directory '%s' -> '%s'\n"), szAbsSrc, pszDst);
 
-                        SafeArray<DirectoryCopyFlag_T> copyFlags;
-                        copyFlags.push_back(DirectoryCopyFlag_CopyIntoExisting);
+                        SafeArray<DirectoryCopyFlag_T> aCopyFlags;
+                        aCopyFlags.push_back(DirectoryCopyFlag_CopyIntoExisting);
+                        if (fRecursive)
+                            aCopyFlags.push_back(DirectoryCopyFlag_Recursive);
+                        if (fFollow)
+                            aCopyFlags.push_back(DirectoryCopyFlag_FollowLinks);
                         rc = pCtx->pGuestSession->DirectoryCopyToGuest(Bstr(szAbsSrc).raw(), Bstr(pszDst).raw(),
-                                                                       ComSafeArrayAsInParam(copyFlags), pProgress.asOutParam());
+                                                                       ComSafeArrayAsInParam(aCopyFlags), pProgress.asOutParam());
                     }
                     else
                         rcExit = RTMsgErrorExitFailure(GuestCtrl::tr("Not a file or directory: %s\n"), szAbsSrc);
@@ -1925,6 +1929,10 @@ static RTEXITCODE gctlHandleCopy(PGCTLCMDCTX pCtx, int argc, char **argv, bool f
 
                         SafeArray<DirectoryCopyFlag_T> aCopyFlags;
                         aCopyFlags.push_back(DirectoryCopyFlag_CopyIntoExisting);
+                        if (fRecursive)
+                            aCopyFlags.push_back(DirectoryCopyFlag_Recursive);
+                        if (fFollow)
+                            aCopyFlags.push_back(DirectoryCopyFlag_FollowLinks);
                         rc = pCtx->pGuestSession->DirectoryCopyFromGuest(Bstr(pszSource).raw(), Bstr(pszDst).raw(),
                                                                          ComSafeArrayAsInParam(aCopyFlags), pProgress.asOutParam());
                     }
@@ -1934,6 +1942,8 @@ static RTEXITCODE gctlHandleCopy(PGCTLCMDCTX pCtx, int argc, char **argv, bool f
                             RTPrintf(GuestCtrl::tr("File '%s' -> '%s'\n"), pszSource, pszDst);
 
                         SafeArray<FileCopyFlag_T> aCopyFlags;
+                        if (fFollow)
+                            aCopyFlags.push_back(FileCopyFlag_FollowLinks);
                         rc = pCtx->pGuestSession->FileCopyFromGuest(Bstr(pszSource).raw(), Bstr(pszDst).raw(),
                                                                     ComSafeArrayAsInParam(aCopyFlags), pProgress.asOutParam());
                     }
