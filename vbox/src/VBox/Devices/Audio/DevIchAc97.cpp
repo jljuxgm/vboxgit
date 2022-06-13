@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 90012 2021-07-04 21:08:37Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 90016 2021-07-04 21:19:22Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -1095,7 +1095,7 @@ static int ichac97R3StreamTransfer(PPDMDEVINS pDevIns, PAC97STATE pThis, PAC97ST
                 int rc2 = PDMDevHlpPCIPhysRead(pDevIns, pStream->Regs.bd.addr, pvDst, cbDst);
                 AssertRC(rc2);
 
-                if (RT_LIKELY(!pStreamCC->Dbg.Runtime.fEnabled))
+                if (RT_LIKELY(!pStreamCC->Dbg.Runtime.pFileDMA))
                 { /* likely */ }
                 else
                     AudioHlpFileWrite(pStreamCC->Dbg.Runtime.pFileDMA, pvDst, cbDst);
@@ -1119,7 +1119,7 @@ static int ichac97R3StreamTransfer(PPDMDEVINS pDevIns, PAC97STATE pThis, PAC97ST
                 int rc2 = PDMDevHlpPCIPhysWrite(pDevIns, pStream->Regs.bd.addr, pvSrc, cbSrc);
                 AssertRC(rc2);
 
-                if (RT_LIKELY(!pStreamCC->Dbg.Runtime.fEnabled))
+                if (RT_LIKELY(!pStreamCC->Dbg.Runtime.pFileDMA))
                 { /* likely */ }
                 else
                     AudioHlpFileWrite(pStreamCC->Dbg.Runtime.pFileDMA, pvSrc, cbSrc);

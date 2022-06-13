@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 90012 2021-07-04 21:08:37Z vboxsync $ */
+/* $Id: DevSB16.cpp 90016 2021-07-04 21:19:22Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  */
@@ -1941,7 +1941,7 @@ static int sb16StreamDoDmaOutput(PSB16STATE pThis, PSB16STREAM pStream, int uDma
             return rc;
         }
 
-        if (RT_LIKELY(!pStream->Dbg.Runtime.fEnabled))
+        if (RT_LIKELY(!pStream->Dbg.Runtime.pFileDMA))
         { /* likely */ }
         else
             AudioHlpFileWrite(pStream->Dbg.Runtime.pFileDMA, pv, cbRead);

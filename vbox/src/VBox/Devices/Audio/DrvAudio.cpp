@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 90012 2021-07-04 21:08:37Z vboxsync $ */
+/* $Id: DrvAudio.cpp 90016 2021-07-04 21:19:22Z vboxsync $ */
 /** @file
  * Intermediate audio driver - Connects the audio device emulation with the host backend.
  */
@@ -3491,7 +3491,7 @@ static DECLCALLBACK(int) drvAudioStreamPlay(PPDMIAUDIOCONNECTOR pInterface, PPDM
                     AssertMsgFailedBreak(("%d; cbBuf=%#x\n", pStreamEx->Out.enmPlayState, cbBuf));
             }
 
-            if (!pThis->CfgOut.Dbg.fEnabled || RT_FAILURE(rc))
+            if (!pStreamEx->Out.Dbg.pFilePlay || RT_FAILURE(rc))
             { /* likely */ }
             else
                 AudioHlpFileWrite(pStreamEx->Out.Dbg.pFilePlay, pvBuf, *pcbWritten);
@@ -3780,7 +3780,7 @@ static DECLCALLBACK(int) drvAudioStreamCapture(PPDMIAUDIOCONNECTOR pInterface, P
                     AssertMsgFailedBreak(("%d; cbBuf=%#x\n", pStreamEx->In.enmCaptureState, cbBuf));
             }
 
-            if (!pThis->CfgIn.Dbg.fEnabled || RT_FAILURE(rc))
+            if (!pStreamEx->In.Dbg.pFileCapture || RT_FAILURE(rc))
             { /* likely */ }
             else
                 AudioHlpFileWrite(pStreamEx->In.Dbg.pFileCapture, pvBuf, *pcbRead);
