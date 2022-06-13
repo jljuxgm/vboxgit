@@ -1,4 +1,4 @@
-/* $Id: UINewVersionChecker.cpp 93996 2022-02-28 22:04:49Z vboxsync $ */
+/* $Id: UINewVersionChecker.cpp 94725 2022-04-27 14:39:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINewVersionChecker class implementation.
  */
@@ -64,7 +64,7 @@ void UINewVersionChecker::start()
                                                     .arg(uiCommon().virtualBox().GetRevision()));
     }
     url.addQueryItem("count", QString::number(gEDataManager->applicationUpdateCheckCounter()));
-    url.addQueryItem("branch", VBoxUpdateData(gEDataManager->applicationUpdateData()).branchName());
+    url.addQueryItem("branch", VBoxUpdateData(gEDataManager->applicationUpdateData()).updateChannelName());
     const QString strUserAgent(QString("VirtualBox %1 <%2>").arg(uiCommon().virtualBox().GetVersion()).arg(platformInfo()));
 
     /* Send GET request: */
