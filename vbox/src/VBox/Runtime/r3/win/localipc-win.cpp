@@ -1,4 +1,4 @@
-/* $Id: localipc-win.cpp 86536 2020-10-12 09:16:36Z vboxsync $ */
+/* $Id: localipc-win.cpp 93019 2021-12-17 14:52:57Z vboxsync $ */
 /** @file
  * IPRT - Local IPC, Windows Implementation Using Named Pipes.
  */
@@ -563,6 +563,13 @@ RTDECL(int) RTLocalIpcServerDestroy(RTLOCALIPCSERVER hServer)
     }
 
     return rtLocalIpcServerReleaseAndUnlock(pThis);
+}
+
+
+RTDECL(int) RTLocalIpcServerGrantGroupAccess(RTLOCALIPCSERVER hServer, RTGID gid)
+{
+    RT_NOREF_PV(hServer); RT_NOREF(gid);
+    return VERR_NOT_SUPPORTED;
 }
 
 
