@@ -1,4 +1,4 @@
-; $Id: SUPR0StackWrapper.mac 91780 2021-10-17 11:13:41Z vboxsync $
+; $Id: SUPR0StackWrapper.mac 91784 2021-10-17 12:28:07Z vboxsync $
 ;; @file
 ; SUP - Support Library, ring-0 stack switching wrappers.
 ;
@@ -59,6 +59,7 @@ BEGINCODE
 extern NAME(StkBack_ %+ %1)
 
 BEGINPROC %1
+%ifdef RT_ARCH_AMD64 ; Only for amd64 for now.
         ;
         ; Check for the stack info.
         ;
@@ -122,6 +123,7 @@ BEGINPROC %1
         ret
 
 .regular:
+%endif ; RT_ARCH_AMD64
         jmp     NAME(StkBack_ %+ %1)
 ENDPROC   %1
 %endmacro
