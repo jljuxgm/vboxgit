@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 94644 2022-04-20 09:15:47Z vboxsync $ */
+/* $Id: UINotificationObjects.cpp 94671 2022-04-21 16:13:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -4343,7 +4343,7 @@ CProgress UINotificationProgressNewVersionChecker::createProgress(COMResult &com
     if (!m_comUpdateHost.isOk())
         return CProgress();
 
-    CProgress comProgress = m_comUpdateHost.Check();
+    CProgress comProgress = m_comUpdateHost.CheckFor();
     comResult = m_comUpdateHost;
 
     return comProgress;
