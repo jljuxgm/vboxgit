@@ -1,4 +1,4 @@
-/* $Id: isovfs.cpp 94280 2022-03-17 01:35:42Z vboxsync $ */
+/* $Id: isovfs.cpp 94282 2022-03-17 01:52:58Z vboxsync $ */
 /** @file
  * IPRT - ISO 9660 and UDF Virtual Filesystem (read only).
  */
@@ -2903,7 +2903,7 @@ static void rtFsIsoDirShrd_ParseRockRidgeData(PRTFSISOVOL pVol, PRTFSISOROCKINFO
                     }
                     Assert(offDst < sizeof(pParseInfo->szLinkTarget));
                     pParseInfo->szLinkTarget[offDst] = '\0';
-                    pParseInfo->cchLinkTarget        = offDst;
+                    pParseInfo->cchLinkTarget        = (uint16_t)offDst;
                 }
                 break;
 
