@@ -1,4 +1,4 @@
-/* $Id: NetIf-generic.cpp 91503 2021-10-01 08:57:59Z vboxsync $ */
+/* $Id: NetIf-generic.cpp 91769 2021-10-15 19:24:43Z vboxsync $ */
 /** @file
  * VirtualBox Main - Generic NetIf implementation.
  */
@@ -80,7 +80,7 @@ static int NetIfAdpCtl(const char * pcszIfName, const char *pszAddr, const char 
                 return VINF_SUCCESS;
             LogRel(("NetIfAdpCtl: failed to create process for %s: iStats=%d enmReason=%d\n",
                     szAdpCtl, Status.iStatus, Status.enmReason));
-            rc = VERR_GENERAL_FAILURE;
+            rc = -Status.iStatus;
         }
     }
     else
