@@ -1,4 +1,4 @@
-/* $Id: DisasmCore.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: DisasmCore.cpp 91673 2021-10-11 20:25:20Z vboxsync $ */
 /** @file
  * VBox Disassembler - Core Components.
  */
@@ -234,7 +234,7 @@ static PFNDISPARSE const g_apfnCalcSize[IDX_ParseMax] =
  */
 static DECLCALLBACK(int) disReadBytesDefault(PDISSTATE pDis, uint8_t offInstr, uint8_t cbMinRead, uint8_t cbMaxRead)
 {
-#ifdef IN_RING0
+#if 0 /*def IN_RING0 - why? */
     RT_NOREF_PV(cbMinRead);
     AssertMsgFailed(("disReadWord with no read callback in ring 0!!\n"));
     RT_BZERO(&pDis->abInstr[offInstr], cbMaxRead);
