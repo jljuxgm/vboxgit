@@ -1,5 +1,5 @@
 @echo off
-rem $Id: PackDriversForSubmission.cmd 83532 2020-04-03 14:25:39Z vboxsync $
+rem $Id: PackDriversForSubmission.cmd 92930 2021-12-15 13:34:53Z vboxsync $
 rem rem @file
 rem Windows NT batch script for preparing for signing submission.
 rem
@@ -291,6 +291,8 @@ echo %_MY_OPT_GADIR%\vboxnine.dll>>                                             
 echo %_MY_OPT_GADIR%\vboxsvga.dll>>                                                     "%_MY_OPT_DDF_FILE%"
 echo %_MY_OPT_GADIR%\vboxicd.dll>>                                                      "%_MY_OPT_DDF_FILE%"
 echo %_MY_OPT_GADIR%\vboxgl.dll>>                                                       "%_MY_OPT_DDF_FILE%"
+echo %_MY_OPT_GADIR%\VBoxMRXNP.dll>>                                                    "%_MY_OPT_DDF_FILE%"
+echo %_MY_OPT_GADIR%\VBoxSF.sys>>                                                       "%_MY_OPT_DDF_FILE%"
 if ".%_MY_OPT_ARCH%" == ".x86" goto skip_amd64_files
 echo %_MY_OPT_GADIR%\vboxdispd3d-x86.dll>>                                              "%_MY_OPT_DDF_FILE%"
 echo %_MY_OPT_GADIR%\vboxnine-x86.dll>>                                                 "%_MY_OPT_DDF_FILE%"
