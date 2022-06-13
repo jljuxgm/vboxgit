@@ -1,4 +1,4 @@
-/* $Id: DrvTpmEmu.cpp 90587 2021-08-10 09:39:57Z vboxsync $ */
+/* $Id: DrvTpmEmu.cpp 90904 2021-08-26 09:49:06Z vboxsync $ */
 /** @file
  * TPM emulator using a TCP/socket interface to talk to swtpm (https://github.com/stefanberger/swtpm).
  */
@@ -616,7 +616,7 @@ static DECLCALLBACK(bool) drvTpmEmuGetEstablishedFlag(PPDMITPMCONNECTOR pInterfa
 }
 
 
-/** @interface_method_impl{PDMITPMCONNECTOR,pfnGetEstablishedFlag} */
+/** @interface_method_impl{PDMITPMCONNECTOR,pfnResetEstablishedFlag} */
 static DECLCALLBACK(int) drvTpmEmuResetEstablishedFlag(PPDMITPMCONNECTOR pInterface, uint8_t bLoc)
 {
     PDRVTPMEMU pThis = RT_FROM_MEMBER(pInterface, DRVTPMEMU, ITpmConnector);

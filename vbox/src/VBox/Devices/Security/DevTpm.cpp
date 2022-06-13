@@ -1,4 +1,4 @@
-/* $Id: DevTpm.cpp 90903 2021-08-26 09:23:46Z vboxsync $ */
+/* $Id: DevTpm.cpp 90904 2021-08-26 09:49:06Z vboxsync $ */
 /** @file
  * DevTpm - Trusted Platform Module emulation.
  *
@@ -1128,11 +1128,12 @@ static DECLCALLBACK(VBOXSTRICTRC) tpmMmioRead(PPDMDEVINS pDevIns, void *pvUser, 
     PDEVTPM pThis  = PDMDEVINS_2_DATA(pDevIns, PDEVTPM);
     RT_NOREF(pvUser);
 
-    Assert(!(off & (cb - 1)));
+    RTGCPHYS offAligned = off & ~UINT64_C(0x3);
+    uint8_t cBitsShift  = (off & 0x3) * 8;
 
     VBOXSTRICTRC rc = VINF_SUCCESS;
-    uint32_t uReg = tpmGetRegisterFromOffset(off);
-    uint8_t bLoc = tpmGetLocalityFromOffset(off);
+    uint32_t uReg = tpmGetRegisterFromOffset(offAligned);
+    uint8_t bLoc = tpmGetLocalityFromOffset(offAligned);
     PDEVTPMLOCALITY pLoc = &pThis->aLoc[bLoc];
 
     uint64_t u64;
@@ -1147,9 +1148,9 @@ static DECLCALLBACK(VBOXSTRICTRC) tpmMmioRead(PPDMDEVINS pDevIns, void *pvUser, 
     {
         switch (cb)
         {
-            case 1: *(uint8_t *)pv = (uint8_t)u64; break;
-            case 2: *(uint16_t *)pv = (uint16_t)u64; break;
-            case 4: *(uint32_t *)pv = (uint32_t)u64; break;
+            case 1: *(uint8_t *)pv = (uint8_t)(u64 >> cBitsShift); break;
+            case 2: *(uint16_t *)pv = (uint16_t)(u64 >> cBitsShift); break;
+            case 4: *(uint32_t *)pv = (uint32_t)(u64 >> cBitsShift); break;
             case 8: *(uint64_t *)pv = u64; break;
             default: AssertFailedBreakStmt(rc = VERR_INTERNAL_ERROR);
         }
