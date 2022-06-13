@@ -1,4 +1,4 @@
-/* $Id: scmrw.cpp 93556 2022-02-02 23:14:47Z vboxsync $ */
+/* $Id: scmrw.cpp 93686 2022-02-11 01:52:24Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -3149,7 +3149,7 @@ bool rewrite_FixHeaderGuards(PSCMRWSTATE pState, PSCMSTREAM pIn, PSCMSTREAM pOut
         if (RT_FAILURE(rc))
             return ScmError(pState, rc, "seek error\n");
         fRet |= pSettings->fPragmaOnce;
-        ScmVerbose(pState, 2, "Missing #pragma once\n");
+        ScmVerbose(pState, pSettings->fPragmaOnce ? 2 : 3, "Missing #pragma once\n");
     }
 
     /*
