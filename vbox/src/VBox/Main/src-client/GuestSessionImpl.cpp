@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 92897 2021-12-14 13:53:27Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 92916 2021-12-15 09:20:57Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -1475,8 +1475,8 @@ HRESULT GuestSession::i_fileCopyFlagFromStr(const com::Utf8Str &strFlags, FileCo
  * Checks if a file object exists and optionally returns its object.
  *
  * @returns \c true if file object exists, or \c false if not.
- * @param   uDirID              ID of file object to check.
- * @param   pDir                Where to return the found file object on success.
+ * @param   uFileID             ID of file object to check.
+ * @param   pFile               Where to return the found file object on success.
  */
 inline bool GuestSession::i_fileExists(uint32_t uFileID, ComObjPtr<GuestFile> *pFile)
 {
@@ -2750,8 +2750,8 @@ int GuestSession::i_processCreateEx(GuestProcessStartupInfo &procInfo, ComObjPtr
  * Checks if a process object exists and optionally returns its object.
  *
  * @returns \c true if process object exists, or \c false if not.
- * @param   uDirID              ID of process object to check.
- * @param   pDir                Where to return the found process object on success.
+ * @param   uProcessID          ID of process object to check.
+ * @param   pProcess            Where to return the found process object on success.
  *
  * @note    No locking done!
  */
