@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestControlSvc.cpp 93048 2021-12-21 14:30:00Z vboxsync $ */
+/* $Id: VBoxGuestControlSvc.cpp 93051 2021-12-21 16:21:59Z vboxsync $ */
 /** @file
  * Guest Control Service: Controlling the guest.
  */
@@ -2128,7 +2128,7 @@ GstCtrlService::svcCall(void *pvService, VBOXHGCMCALLHANDLE hCall, uint32_t idCl
      * Convert opaque pointers to typed ones.
      */
     SELF *pThis = reinterpret_cast<SELF *>(pvService);
-    AssertReturnVoidStmt(pThis, pThis->mpHelpers->pfnCallComplete(hCall, VERR_INTERNAL_ERROR_5));
+    AssertPtrReturnVoid(pThis);
     ClientState *pClient = reinterpret_cast<ClientState *>(pvClient);
     AssertReturnVoidStmt(pClient, pThis->mpHelpers->pfnCallComplete(hCall, VERR_INVALID_CLIENT_ID));
     Assert(pClient->m_idClient == idClient);
