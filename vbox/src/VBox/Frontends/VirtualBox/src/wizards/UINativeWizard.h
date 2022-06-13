@@ -1,4 +1,4 @@
-/* $Id: UINativeWizard.h 90727 2021-08-18 16:09:34Z vboxsync $ */
+/* $Id: UINativeWizard.h 90730 2021-08-18 17:25:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINativeWizard class declaration.
  */
@@ -121,12 +121,7 @@ protected:
     /** Handles translation event. */
     virtual void retranslateUi() /* override */;
 
-private slots:
-
-    /** Handles current-page change to page with @a iIndex. */
-    void sltCurrentIndexChanged(int iIndex = -1);
-    /** Handles page validity changes. */
-    void sltCompleteChanged();
+protected slots:
 
     /** Handles signal about progress has started. */
     void sltHandleProgressStarted();
@@ -135,6 +130,13 @@ private slots:
     void sltHandleProgressChange(ulong uPercent);
     /** Handles signal about progress has finished. */
     void sltHandleProgressFinished();
+
+private slots:
+
+    /** Handles current-page change to page with @a iIndex. */
+    void sltCurrentIndexChanged(int iIndex = -1);
+    /** Handles page validity changes. */
+    void sltCompleteChanged();
 
     /** Toggles between basic and expert modes. */
     void sltExpert();
