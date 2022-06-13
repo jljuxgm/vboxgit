@@ -1,4 +1,4 @@
-/* $Id: UnattendedImpl.h 93581 2022-02-03 13:52:21Z vboxsync $ */
+/* $Id: UnattendedImpl.h 93584 2022-02-03 14:49:19Z vboxsync $ */
 /** @file
  * Unattended class header
  */
@@ -286,6 +286,14 @@ private:
      * Check whether guest is 64bit platform or not
      */
     bool i_isGuestOSArchX64(Utf8Str const &rStrGuestOsTypeId);
+
+    /**
+     * Updates the detected attributes when the image index or image list changes.
+     *
+     * @returns true if we've got all necessary stuff for a successful detection.
+     */
+    bool i_updateDetectedAttributeForImage(WIMImage const &rImage);
+
 };
 
 #endif /* !MAIN_INCLUDED_UnattendedImpl_h */
