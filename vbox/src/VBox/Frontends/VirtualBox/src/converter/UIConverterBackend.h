@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackend.h 92400 2021-11-12 15:07:42Z vboxsync $ */
+/* $Id: UIConverterBackend.h 92596 2021-11-25 09:36:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConverterBackend declaration.
  */
@@ -154,6 +154,7 @@ template<> SHARED_LIBRARY_STUFF bool canConvert<KStorageBus>();
 template<> SHARED_LIBRARY_STUFF bool canConvert<KStorageControllerType>();
 template<> SHARED_LIBRARY_STUFF bool canConvert<KChipsetType>();
 template<> SHARED_LIBRARY_STUFF bool canConvert<KNATProtocol>();
+template<> SHARED_LIBRARY_STUFF bool canConvert<KGuestSessionStatus>();
 
 
 /* Declare global conversion specializations: */
@@ -318,6 +319,8 @@ template<> SHARED_LIBRARY_STUFF QString toString(const KChipsetType &type);
 template<> SHARED_LIBRARY_STUFF QString toString(const KNATProtocol &protocol);
 template<> SHARED_LIBRARY_STUFF QString toInternalString(const KNATProtocol &protocol);
 template<> SHARED_LIBRARY_STUFF KNATProtocol fromInternalString<KNATProtocol>(const QString &strProtocol);
+template<> SHARED_LIBRARY_STUFF QString toString(const KGuestSessionStatus &status);
+template<> SHARED_LIBRARY_STUFF KGuestSessionStatus fromString<KGuestSessionStatus>(const QString &strStatus);
 
 
 #endif /* !FEQT_INCLUDED_SRC_converter_UIConverterBackend_h */
