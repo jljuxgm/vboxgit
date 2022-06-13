@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageBasic1.cpp 91564 2021-10-05 11:13:23Z vboxsync $ */
+/* $Id: UIWizardImportAppPageBasic1.cpp 91578 2021-10-05 17:24:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageBasic1 class implementation.
  */
@@ -676,22 +676,19 @@ bool UIWizardImportAppPageBasic1::validatePage()
     }
     else
     {
-        /* Get import appliance widget: */
-        ImportAppliancePointer pImportApplianceWidget = field("applianceWidget").value<ImportAppliancePointer>();
-        AssertMsg(!pImportApplianceWidget.isNull(), ("Appliance Widget is not set!\n"));
-
         /* If file name was changed: */
         if (m_pFileSelector->isModified())
         {
-            /* Check if set file contains valid appliance: */
-            if (!pImportApplianceWidget->setFile(m_pFileSelector->path()))
+            /* Check if specified file contains valid appliance: */
+            if (   !QFile::exists(m_pFileSelector->path())
+                || !qobject_cast<UIWizardImportApp*>(wizard())->setFile(m_pFileSelector->path()))
                 return false;
             /* Reset the modified bit afterwards: */
             m_pFileSelector->resetModified();
         }
 
         /* If we have a valid ovf proceed to the appliance settings page: */
-        return pImportApplianceWidget->isValid();
+        return qobject_cast<UIWizardImportApp*>(wizard())->isValid();
     }
 }
 

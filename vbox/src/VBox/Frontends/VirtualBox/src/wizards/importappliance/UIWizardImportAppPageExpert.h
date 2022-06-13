@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageExpert.h 91567 2021-10-05 11:46:01Z vboxsync $ */
+/* $Id: UIWizardImportAppPageExpert.h 91578 2021-10-05 17:24:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageExpert class declaration.
  */
@@ -94,6 +94,9 @@ private slots:
     void sltHandleMACImportPolicyChange();
 
 private:
+
+    /** Handles the appliance file name. */
+    QString  m_strFileName;
 
     /** Holds the source container instance. */
     QGroupBox *m_pCntSource;
