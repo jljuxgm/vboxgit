@@ -1,4 +1,4 @@
-/* $Id: VMMGuruMeditation.cpp 90190 2021-07-14 16:50:45Z vboxsync $ */
+/* $Id: VMMGuruMeditation.cpp 90495 2021-08-03 12:10:21Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor, Guru Meditation Code.
  */
@@ -274,6 +274,17 @@ static void vmmR3FatalDumpInfoHlpDelete(PVMMR3FATALDUMPINFOHLP pHlp)
 
     if (pHlp->fStdErr)
         vmmR3FatalDumpInfoHlpFlushStdErr(pHlp);
+}
+
+
+/**
+ * @callback_method_impl{FNVMMEMTRENDEZVOUS}
+ */
+static DECLCALLBACK(VBOXSTRICTRC) vmmR3FatalDumpRendezvousDoneCallback(PVM pVM, PVMCPU pVCpu, void *pvUser)
+{
+    VM_FF_CLEAR(pVM, VM_FF_CHECK_VM_STATE);
+    RT_NOREF(pVCpu, pvUser);
+    return VINF_SUCCESS;
 }
 
 
@@ -707,5 +718,11 @@ VMMR3DECL(void) VMMR3FatalDump(PVM pVM, PVMCPU pVCpu, int rcErr)
      * Delete the output instance (flushing and restoring of flags).
      */
     vmmR3FatalDumpInfoHlpDelete(&Hlp);
+
+    /*
+     * Rendezvous with the other EMTs and clear the VM_FF_CHECK_VM_STATE so we can
+     * stop burning CPU cycles.
+     */
+    VMMR3EmtRendezvous(pVM, VMMEMTRENDEZVOUS_FLAGS_TYPE_ONCE, vmmR3FatalDumpRendezvousDoneCallback, NULL);
 }
 
