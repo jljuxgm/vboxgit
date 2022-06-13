@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMDiskPage.h 91106 2021-09-03 14:37:45Z vboxsync $ */
+/* $Id: UIWizardNewVMDiskPage.h 91108 2021-09-03 15:28:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMDiskPage class declaration.
  */
@@ -104,12 +104,11 @@ private:
     /** @} */
 
     /** @name Variables
-     * @{ */
-      bool m_fRecommendedNoDisk;
-      QSet<QString> m_userModifiedParameters;
-      bool m_fVDIFormatFound;
-      qulonglong m_uMediumSizeMin;
-      qulonglong m_uMediumSizeMax;
+      * @{ */
+        QSet<QString> m_userModifiedParameters;
+        bool m_fVDIFormatFound;
+        qulonglong m_uMediumSizeMin;
+        qulonglong m_uMediumSizeMax;
     /** @} */
 };
 

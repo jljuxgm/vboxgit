@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.h 91106 2021-09-03 14:37:45Z vboxsync $ */
+/* $Id: UIWizardNewVM.h 91108 2021-09-03 15:28:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class declaration.
  */
@@ -159,6 +159,9 @@ public:
 
         SelectedDiskSource diskSource() const;
         void setDiskSource(SelectedDiskSource enmDiskSource);
+
+        bool emptyDiskRecommended() const;
+        void setEmptyDiskRecommended(bool fEmptyDiskRecommended);
     /** @} */
 
 protected:
@@ -230,6 +233,7 @@ private:
        QString m_strMediumPath;
        qulonglong m_uMediumSize;
        SelectedDiskSource m_enmDiskSource;
+       bool m_fEmptyDiskRecommended;
     /** @} */
 };
 
