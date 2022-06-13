@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 93480 2022-01-28 16:09:52Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 93481 2022-01-28 16:31:30Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -5747,7 +5747,7 @@ l_skipped:
 
                             if (uOrigControllerPortValue != uNewControllerPortValue)
                             {
-                                AD.lPort = uNewControllerPortValue;
+                                AD.lPort = (int32_t)uNewControllerPortValue;
                             }
                             if (uOrigControllerIndex != uTargetControllerIndex)
                             {
