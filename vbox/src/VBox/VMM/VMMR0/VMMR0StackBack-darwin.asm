@@ -1,4 +1,4 @@
-; $Id: VMMR0StackBack-darwin.asm 91808 2021-10-18 09:20:07Z vboxsync $
+; $Id: VMMR0StackBack-darwin.asm 91810 2021-10-18 09:29:56Z vboxsync $
 ;; @file
 ; VMM - Temporary hack for darwin stack switching.
 ;
@@ -23,6 +23,7 @@
 %include "VBox/SUPR0StackWrapper.mac"
 
 
+SUPR0StackWrapperGeneric vmmR0LoggerFlushInner, 5
 SUPR0StackWrapperGeneric pdmR0CritSectEnterContendedOnKrnlStk, 6
 SUPR0StackWrapperGeneric pdmR0CritSectLeaveSignallingOnKrnlStk, 5
 

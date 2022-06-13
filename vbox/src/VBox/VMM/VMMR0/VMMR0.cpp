@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 91809 2021-10-18 09:25:27Z vboxsync $ */
+/* $Id: VMMR0.cpp 91810 2021-10-18 09:29:56Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -2952,7 +2952,11 @@ static int vmmR0LogWaitFlushed(PGVM pGVM, VMCPUID idCpu, size_t idxLogger)
 /**
  * Inner worker for vmmR0LoggerFlushCommon.
  */
-static bool vmmR0LoggerFlushInner(PGVM pGVM, PGVMCPU pGVCpu, uint32_t idxLogger, size_t idxBuffer, uint32_t cbToFlush)
+#ifndef VMM_R0_SWITCH_STACK
+static bool   vmmR0LoggerFlushInner(PGVM pGVM, PGVMCPU pGVCpu, uint32_t idxLogger, size_t idxBuffer, uint32_t cbToFlush)
+#else
+DECLASM(bool) StkBack_vmmR0LoggerFlushInner(PGVM pGVM, PGVMCPU pGVCpu, uint32_t idxLogger, size_t idxBuffer, uint32_t cbToFlush)
+#endif
 {
     PVMMR0PERVCPULOGGER const pR0Log    = &pGVCpu->vmmr0.s.u.aLoggers[idxLogger];
     PVMMR3CPULOGGER const     pShared   = &pGVCpu->vmm.s.u.aLoggers[idxLogger];
@@ -3106,6 +3110,9 @@ static bool vmmR0LoggerFlushInner(PGVM pGVM, PGVMCPU pGVCpu, uint32_t idxLogger,
 
     return fFlushedBuffer;
 }
+#ifdef VMM_R0_SWITCH_STACK
+decltype(StkBack_vmmR0LoggerFlushInner) vmmR0LoggerFlushInner;
+#endif
 
 
 /**
