@@ -1,4 +1,4 @@
-/* $Id: PDMAllCritSectRw.cpp 90910 2021-08-26 12:58:20Z vboxsync $ */
+/* $Id: PDMAllCritSectRw.cpp 90940 2021-08-27 09:33:21Z vboxsync $ */
 /** @file
  * IPRT - Read/Write Critical Section, Generic.
  */
@@ -1251,7 +1251,6 @@ static int pdmR3R0CritSectRwEnterExclContended(PVMCC pVM, PVMCPUCC pVCpu, PPDMCR
                     }
                     else
                         return pdmCritSectRwEnterExclBailOut(pThis, rcBusy != VINF_SUCCESS ? rcBusy : rc);
-
                 }
 # else  /* IN_RING3 */
                 RT_NOREF(pVM, pVCpu, rcBusy);
