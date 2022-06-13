@@ -1,4 +1,4 @@
-/* $Id: tstSeamlessX11-auto.cpp 86416 2020-10-02 11:53:13Z vboxsync $ */
+/* $Id: tstSeamlessX11-auto.cpp 90057 2021-07-06 11:19:50Z vboxsync $ */
 /** @file
  * Automated test of the X11 seamless Additions code.
  * @todo Better separate test data from implementation details!
@@ -315,6 +315,15 @@ int XNextEvent(Display *display, XEvent *event_return)
     event_return->xany.window = g_SmlsEventWindow;
     event_return->xmap.window = g_SmlsEventWindow;
     return True;
+}
+
+/* Mock XNextEvent(): this also should not be needed. Just in case, always
+ * return that at least one event is pending to be processed. */
+extern "C" int XPending(Display *display);
+int XPending(Display *display)
+{
+    RT_NOREF1(display);
+    return 1;
 }
 
 static void smlsSetNextEvent(int type, Window window)
