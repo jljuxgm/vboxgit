@@ -1,4 +1,4 @@
-/* $Id: UIChooserHandlerKeyboard.h 91002 2021-08-30 15:07:42Z vboxsync $ */
+/* $Id: UIChooserHandlerKeyboard.h 92608 2021-11-26 14:22:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserHandlerKeyboard class declaration.
  */
@@ -74,11 +74,6 @@ private:
 
     /** Helper: Item shift delegate. */
     void shift(UIItemShiftDirection enmDirection, UIItemShiftType enmShiftType) const;
-
-    /** Checks the iKey against a set of special keys and returns true if it is one of them.
-      * Depending of this return value we either show the vm search widget or ignore the key event.
-      * @param  iKey  Qt::key type we get from QKeyEvent::key(). */
-    bool checkKey(int iKey) const;
 
     /** Variables. */
     UIChooserModel *m_pModel;
