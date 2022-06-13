@@ -1,4 +1,4 @@
-/* $Id: MMHyper.cpp 91854 2021-10-20 00:50:11Z vboxsync $ */
+/* $Id: MMHyper.cpp 91856 2021-10-20 01:02:23Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Hypervisor Memory Area.
  */
@@ -647,55 +647,6 @@ VMMR3DECL(int) MMR3HyperAllocOnceNoRelEx(PVM pVM, size_t cb, unsigned uAlignment
         rc = VERR_MM_HYPER_NO_MEMORY;
     LogRel(("MMR3HyperAllocOnceNoRel: cb=%#zx uAlignment=%#x returns %Rrc\n", cb, uAlignment, rc));
     return rc;
-}
-
-
-/**
- * Lookus up a ring-3 pointer to HMA.
- *
- * @returns The lookup record on success, NULL on failure.
- * @param   pVM                 The cross context VM structure.
- * @param   pvR3                The ring-3 address to look up.
- */
-DECLINLINE(PMMLOOKUPHYPER) mmR3HyperLookupR3(PVM pVM, void *pvR3)
-{
-    PMMLOOKUPHYPER  pLookup = (PMMLOOKUPHYPER)((uint8_t *)pVM->mm.s.pHyperHeapR3 + pVM->mm.s.offLookupHyper);
-    for (;;)
-    {
-        switch (pLookup->enmType)
-        {
-            case MMLOOKUPHYPERTYPE_LOCKED:
-            {
-                unsigned off = (uint8_t *)pvR3 - (uint8_t *)pLookup->u.Locked.pvR3;
-                if (off < pLookup->cb)
-                    return pLookup;
-                break;
-            }
-
-            case MMLOOKUPHYPERTYPE_HCPHYS:
-            {
-                unsigned off = (uint8_t *)pvR3 - (uint8_t *)pLookup->u.HCPhys.pvR3;
-                if (off < pLookup->cb)
-                    return pLookup;
-                break;
-            }
-
-            case MMLOOKUPHYPERTYPE_GCPHYS:
-            case MMLOOKUPHYPERTYPE_MMIO2:
-            case MMLOOKUPHYPERTYPE_DYNAMIC:
-                /** @todo ?    */
-                break;
-
-            default:
-                AssertMsgFailed(("enmType=%d\n", pLookup->enmType));
-                return NULL;
-        }
-
-        /* next */
-        if ((unsigned)pLookup->offNext == NIL_OFFSET)
-            return NULL;
-        pLookup = (PMMLOOKUPHYPER)((uint8_t *)pLookup + pLookup->offNext);
-    }
 }
 
 
