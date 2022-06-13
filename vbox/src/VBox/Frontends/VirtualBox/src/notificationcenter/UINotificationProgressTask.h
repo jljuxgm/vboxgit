@@ -1,4 +1,4 @@
-/* $Id: UINotificationProgressTask.h 90291 2021-07-22 14:45:29Z vboxsync $ */
+/* $Id: UINotificationProgressTask.h 90720 2021-08-18 14:11:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINotificationProgressTask class declaration.
  */
@@ -47,8 +47,8 @@ public:
 protected:
 
     /** Creates and returns started progress-wrapper required to init UIProgressObject.
-      * @note  You don't need to reload it, it uses createProgressEx()
-      *        which should be reloaded in your sub-class. */
+      * @note  You don't need to reload it, it uses pParent's createProgress()
+      *        which should be reloaded in your pParent sub-class. */
     virtual CProgress createProgress() /* override final */;
     /** Handles finished @a comProgress wrapper.
       * @note  You don't need to reload it. */
