@@ -1,4 +1,4 @@
-/* $Id: QMTranslatorImpl.cpp 90828 2021-08-24 09:44:46Z vboxsync $ */
+/* $Id: QMTranslatorImpl.cpp 90916 2021-08-26 15:16:32Z vboxsync $ */
 /** @file
  * VirtualBox API translation handling class
  */
@@ -609,7 +609,7 @@ QMTranslator::QMTranslator() : m_impl(new QMTranslator_Impl) {}
 QMTranslator::~QMTranslator() { delete m_impl; }
 
 const char *QMTranslator::translate(const char *pszContext, const char *pszSource,
-                                    const char *pszDisamb, const int aNum) const throw()
+                                    const char *pszDisamb, const int aNum) const RT_NOEXCEPT
 {
     return m_impl->translate(pszContext, pszSource, pszDisamb, aNum);
 }
