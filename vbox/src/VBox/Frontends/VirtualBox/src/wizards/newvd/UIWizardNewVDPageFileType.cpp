@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageFileType.cpp 90413 2021-07-29 15:54:11Z vboxsync $ */
+/* $Id: UIWizardNewVDPageFileType.cpp 90430 2021-07-30 14:23:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageFileType class implementation.
  */
@@ -51,6 +51,7 @@ void UIWizardNewVDPageFileType::sltMediumFormatChanged()
 {
     AssertReturnVoid(m_pFormatButtonGroup);
     newVDWizardPropertySet(MediumFormat, m_pFormatButtonGroup->mediumFormat());
+    emit completeChanged();
 }
 
 void UIWizardNewVDPageFileType::retranslateUi()
@@ -71,7 +72,8 @@ void UIWizardNewVDPageFileType::initializePage()
 
 bool UIWizardNewVDPageFileType::isComplete() const
 {
-    /* Make sure medium format is correct: */
-    //return !mediumFormat().isNull();
-    return true;
+    UIWizardNewVD *pWizard = qobject_cast<UIWizardNewVD*>(wizard());
+    if (pWizard && !pWizard->mediumFormat().isNull())
+        return true;
+    return false;
 }

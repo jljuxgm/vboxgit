@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageSizeLocation.cpp 90427 2021-07-30 13:38:15Z vboxsync $ */
+/* $Id: UIWizardNewVDPageSizeLocation.cpp 90430 2021-07-30 14:23:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageSizeLocation class implementation.
  */
@@ -99,21 +99,30 @@ void UIWizardNewVDPageSizeLocation::prepare()
 
 void UIWizardNewVDPageSizeLocation::sltSelectLocationButtonClicked()
 {
-
+    UIWizardNewVD *pWizard = qobject_cast<UIWizardNewVD*>(wizard());
+    AssertReturnVoid(pWizard);
+    QString strSelectedPath = UIWizardNewVDSizeLocation::selectNewMediumLocation(pWizard);
+    if (strSelectedPath.isEmpty())
+        return;
+    QString strMediumPath =
+        UIDiskEditorGroupBox::appendExtension(strSelectedPath,
+                                              UIDiskEditorGroupBox::defaultExtensionForMediumFormat(pWizard->mediumFormat()));
+    QFileInfo mediumPath(strMediumPath);
+    m_pMediumSizePathGroup->setMediumPath(QDir::toNativeSeparators(mediumPath.absoluteFilePath()));
 }
 
-void UIWizardNewVDPageSizeLocation::sltMediumSizeChanged(qulonglong /*uSize*/)
+void UIWizardNewVDPageSizeLocation::sltMediumSizeChanged(qulonglong uSize)
 {
-    AssertReturnVoid(m_pMediumSizePathGroup);
     m_userModifiedParameters << "MediumSize";
-    newVDWizardPropertySet(MediumSize, m_pMediumSizePathGroup->mediumSize());
+    newVDWizardPropertySet(MediumSize, uSize);
+    emit completeChanged();
 }
 
-void UIWizardNewVDPageSizeLocation::sltMediumPathChanged(const QString &/*strPath*/)
+void UIWizardNewVDPageSizeLocation::sltMediumPathChanged(const QString &strPath)
 {
-    AssertReturnVoid(m_pMediumSizePathGroup);
     m_userModifiedParameters << "MediumPath";
-    newVDWizardPropertySet(MediumPath, m_pMediumSizePathGroup->mediumPath());
+    newVDWizardPropertySet(MediumPath, strPath);
+    emit completeChanged();
 }
 
 void UIWizardNewVDPageSizeLocation::retranslateUi()

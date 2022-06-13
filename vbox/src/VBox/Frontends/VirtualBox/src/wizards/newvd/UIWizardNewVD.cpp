@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVD.cpp 90413 2021-07-29 15:54:11Z vboxsync $ */
+/* $Id: UIWizardNewVD.cpp 90430 2021-07-30 14:23:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVD class implementation.
  */
@@ -93,18 +93,17 @@ void UIWizardNewVD::populatePages()
     switch (mode())
     {
         case WizardMode_Basic:
-        case WizardMode_Expert:
         {
             addPage(new UIWizardNewVDPageFileType);
             m_iMediumVariantPageIndex = addPage(new UIWizardNewVDPageVariant);
             addPage(new UIWizardNewVDPageSizeLocation(m_strDefaultName, m_strDefaultPath, m_uDefaultSize));
             break;
         }
-
-        // {
-        //     //addPage(new UIWizardNewVDPageExpert);
-        //     break;
-        // }
+       case WizardMode_Expert:
+        {
+            addPage(new UIWizardNewVDPageExpert(m_strDefaultName, m_strDefaultPath, m_uDefaultSize));
+            break;
+        }
         default:
         {
             AssertMsgFailed(("Invalid mode: %d", mode()));

@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageExpert.h 90427 2021-07-30 13:38:15Z vboxsync $ */
+/* $Id: UIWizardNewVDPageExpert.h 90430 2021-07-30 14:23:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageExpert class declaration.
  */
@@ -46,6 +46,9 @@ private slots:
 
     void sltMediumFormatChanged();
     void sltSelectLocationButtonClicked();
+    void sltMediumVariantChanged(qulonglong uVariant);
+    void sltMediumPathChanged(const QString &strPath);
+    void sltMediumSizeChanged(qulonglong uSize);
 
 private:
 
