@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-x11.h 93890 2022-02-22 17:49:28Z vboxsync $ */
+/* $Id: VBoxUtils-x11.h 94013 2022-03-01 09:04:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Declarations of utility classes and functions for handling X11 specific tasks.
  */
@@ -75,6 +75,10 @@ typedef struct
     uint32_t win_gravity;
 } xcb_size_hints_t;
 
+/* X11 structs to avoid dragging in unnecessary X headers: */
+struct xcb_connection_t;
+struct _XDisplay;
+
 /* Namespace for native window sub-system functions: */
 namespace NativeWindowSubsystem
 {
@@ -123,6 +127,15 @@ namespace NativeWindowSubsystem
       *      so that e.g. alt+tab will get send to the VM instead of moving the
       *      focus away from the VM. */
     SHARED_LIBRARY_STUFF void X11SetXwaylandMayGrabKeyboardFlag(QWidget *pWidget);
+
+    /** X11: Get the X11 display pointer. */
+    SHARED_LIBRARY_STUFF struct _XDisplay *X11GetDisplay(void);
+
+    /** X11: Get the X11 connection.   */
+    SHARED_LIBRARY_STUFF struct xcb_connection_t *X11GetConnection(void);
+
+    /** X11: Get the X11 root (desktop) window. */
+    SHARED_LIBRARY_STUFF uint32_t X11GetAppRootWindow(void);
 }
 
 #endif /* !FEQT_INCLUDED_SRC_platform_x11_VBoxUtils_x11_h */

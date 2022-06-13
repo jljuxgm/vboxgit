@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 93901 2022-02-23 15:35:26Z vboxsync $ */
+/* $Id: UISession.cpp 94013 2022-03-01 09:04:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -26,9 +26,6 @@
 #ifdef VBOX_WS_WIN
 # include <iprt/win/windows.h> /* Workaround for compile errors if included directly by QtWin. */
 # include <QtWin>
-#endif
-#ifdef VBOX_WS_X11
-# include <QX11Info>
 #endif
 
 /* GUI includes: */
