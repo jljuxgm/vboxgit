@@ -1,4 +1,4 @@
-/* $Id: QIAdvancedSlider.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: QIAdvancedSlider.cpp 93992 2022-02-28 17:56:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIAdvancedSlider class implementation.
  */
@@ -281,6 +281,11 @@ void QIAdvancedSlider::setErrorHint(int iMin, int iMax)
     m_pSlider->m_maxErr = iMax;
 
     update();
+}
+
+void QIAdvancedSlider::setToolTip(const QString &strToolTip)
+{
+    m_pSlider->setToolTip(strToolTip);
 }
 
 void QIAdvancedSlider::setOrientation(Qt::Orientation enmOrientation)
