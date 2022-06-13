@@ -1,4 +1,4 @@
-/* $Id: efivarstorevfs.cpp 90115 2021-07-09 11:15:57Z vboxsync $ */
+/* $Id: efivarstorevfs.cpp 90116 2021-07-09 11:24:41Z vboxsync $ */
 /** @file
  * IPRT - Expose a EFI variable store as a Virtual Filesystem.
  */
@@ -219,7 +219,7 @@ typedef enum RTEFIVARSTOREFILETYPE
     /** The monotonic counter (deprecated). */
     RTEFIVARSTOREFILETYPE_MONOTONIC,
     /** 32bit hack. */
-    RTEFIVARSTOREFILETYPE_32BIT_HACK = 0x7fffffff,
+    RTEFIVARSTOREFILETYPE_32BIT_HACK = 0x7fffffff
 } RTEFIVARSTOREFILETYPE;
 
 
