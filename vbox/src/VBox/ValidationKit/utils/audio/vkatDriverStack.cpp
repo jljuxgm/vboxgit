@@ -1,4 +1,4 @@
-/* $Id: vkatDriverStack.cpp 91089 2021-09-02 11:58:14Z vboxsync $ */
+/* $Id: vkatDriverStack.cpp 91451 2021-09-29 08:59:35Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) - Driver stack code.
  */
@@ -1556,3 +1556,21 @@ int AudioTestMixStreamCapture(PAUDIOTESTDRVMIXSTREAM pMix, void *pvBuf, uint32_t
 
     return VINF_SUCCESS;
 }
+
+/**
+ * Sets the volume of a mixing stream.
+ *
+ * @param   pMix                Mixing stream to set volume for.
+ * @param   uVolumePercent      Volume to set (in percent, 0-100).
+ */
+void AudioTestMixStreamSetVolume(PAUDIOTESTDRVMIXSTREAM pMix, uint8_t uVolumePercent)
+{
+    AssertReturnVoid(pMix->fDoMixing);
+
+    PDMAUDIOVOLUME Vol;
+    RT_ZERO(Vol);
+    for (size_t i = 0; i < RT_ELEMENTS(Vol.auChannels); i++)
+        Vol.auChannels[i] = (PDMAUDIO_VOLUME_MAX / 100) * uVolumePercent;
+    AudioMixBufSetVolume(&pMix->MixBuf, &Vol);
+}
+
