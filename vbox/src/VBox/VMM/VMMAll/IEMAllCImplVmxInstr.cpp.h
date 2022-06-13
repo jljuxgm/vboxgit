@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 93214 2022-01-13 06:39:47Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 93224 2022-01-13 12:13:39Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -5405,12 +5405,12 @@ DECLINLINE(int) iemVmxVmentryCheckGuestRipRFlags(PVMCPUCC pVCpu, const char *psz
     else
         IEM_VMX_VMENTRY_FAILED_RET(pVCpu, pszInstr, pszFailure, kVmxVDiag_Vmentry_GuestRFlagsRsvd);
 
-    if (   fGstInLongMode
-        || !(pVmcs->u64GuestCr0.u & X86_CR0_PE))
+    if (!(uGuestRFlags & X86_EFL_VM))
+    { /* likely */ }
+    else
     {
-        if (!(uGuestRFlags & X86_EFL_VM))
-        { /* likely */ }
-        else
+        if (   fGstInLongMode
+            || !(pVmcs->u64GuestCr0.u & X86_CR0_PE))
             IEM_VMX_VMENTRY_FAILED_RET(pVCpu, pszInstr, pszFailure, kVmxVDiag_Vmentry_GuestRFlagsVm);
     }
 
