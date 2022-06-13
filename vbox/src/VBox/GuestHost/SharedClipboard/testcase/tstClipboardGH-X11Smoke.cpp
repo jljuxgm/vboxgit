@@ -1,4 +1,4 @@
-/* $Id: tstClipboardGH-X11Smoke.cpp 93321 2022-01-18 15:20:39Z vboxsync $ */
+/* $Id: tstClipboardGH-X11Smoke.cpp 93326 2022-01-18 16:05:48Z vboxsync $ */
 /** @file
  * Shared Clipboard guest/host X11 code smoke tests.
  */
@@ -30,20 +30,17 @@
 #include <VBox/GuestHost/clipboard-helper.h>
 
 
-/** @copydoc ShClX11RequestDataCallback */
 DECLCALLBACK(int) ShClX11RequestDataCallback(PSHCLCONTEXT pCtx, SHCLFORMAT uFmt, void **ppv, uint32_t *pcb)
 {
     RT_NOREF(pCtx, uFmt, ppv, pcb);
     return VERR_NO_DATA;
 }
 
-/** @copydoc ShClX11ReportFormatsCallback */
 DECLCALLBACK(void) ShClX11ReportFormatsCallback(PSHCLCONTEXT pCtx, SHCLFORMATS fFormats)
 {
     RT_NOREF(pCtx, fFormats);
 }
 
-/** @copydoc ShClX11ReportDataCallback */
 DECLCALLBACK(void) ShClX11ReportDataCallback(PSHCLCONTEXT pCtx, int rcCompletion,
                                              CLIPREADCBREQ *pReq, void *pv, uint32_t cb)
 {

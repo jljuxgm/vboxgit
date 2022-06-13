@@ -1,4 +1,4 @@
-/* $Id: tstClipboardGH-X11.cpp 93321 2022-01-18 15:20:39Z vboxsync $ */
+/* $Id: tstClipboardGH-X11.cpp 93326 2022-01-18 16:05:48Z vboxsync $ */
 /** @file
  * Shared Clipboard guest/host X11 code test cases.
  */
@@ -118,7 +118,6 @@ static int tstClipSetVBoxUtf16(PSHCLX11CTX pCtx, int retval,
     return VINF_SUCCESS;
 }
 
-/** @copydoc ShClX11RequestDataCallback */
 DECLCALLBACK(int) ShClX11RequestDataCallback(PSHCLCONTEXT pCtx, SHCLFORMAT uFmt, void **ppv, uint32_t *pcb)
 {
     RT_NOREF(pCtx, uFmt);
