@@ -1,4 +1,4 @@
-/* $Id: UICommon.h 90937 2021-08-27 08:40:18Z vboxsync $ */
+/* $Id: UICommon.h 90938 2021-08-27 08:45:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class declaration.
  */
@@ -764,10 +764,8 @@ protected:
 
 protected slots:
 
-    /** Prepares all. */
-    void prepare();
-    /** Cleanups all. */
-    void cleanup();
+    /** Calls for cleanup() functionality. */
+    void sltCleanup() { cleanup(); }
 
 #ifndef VBOX_GUI_WITH_CUSTOMIZATIONS1
     /** @name Common stuff.
@@ -787,10 +785,13 @@ private:
 
     /** Construcs global VirtualBox object of passed @a enmType. */
     UICommon(UIType enmType);
-
     /** Destrucs global VirtualBox object. */
-    virtual ~UICommon() /* override */;
+    virtual ~UICommon() /* override final */;
 
+    /** Prepares all. */
+    void prepare();
+    /** Cleanups all. */
+    void cleanup();
 
     /** @name COM: Virtual Media create functions.
      * @{ */
