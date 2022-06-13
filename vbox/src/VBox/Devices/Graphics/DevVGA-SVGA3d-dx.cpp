@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-dx.cpp 91507 2021-10-01 10:27:12Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-dx.cpp 91607 2021-10-07 07:31:24Z vboxsync $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - Common code for DX backend interface.
  */
@@ -1481,7 +1481,9 @@ int vmsvga3dDXDestroyShader(PVGASTATECC pThisCC, uint32_t idDXContext, SVGA3dCmd
     pEntry->offsetInBytes = 0;
     pEntry->mobid         = SVGA_ID_INVALID;
 
+    /** @todo Destroy shaders on context and backend deletion. */
     PVMSVGA3DSHADER pShader = &pDXContext->paShader[shaderId];
+    DXShaderFree(&pShader->shaderInfo);
     pShader->id                = SVGA_ID_INVALID;
     pShader->cid               = SVGA_ID_INVALID;
     pShader->type              = SVGA3D_SHADERTYPE_INVALID;

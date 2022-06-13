@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-dx-shader.h 91441 2021-09-28 17:37:53Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-dx-shader.h 91607 2021-10-07 07:31:24Z vboxsync $ */
 /** @file
  * DevVGA - VMWare SVGA device - VGPU10+ (DX) shader utilities.
  */
@@ -37,6 +37,8 @@
 typedef struct DXShaderInfo
 {
     VGPU10_PROGRAM_TYPE enmProgramType;
+    void *pvBytecode;
+    uint32_t cbBytecode;
     uint32_t cInputSignature;
     uint32_t cOutputSignature;
     uint32_t cPatchConstantSignature;
@@ -46,7 +48,8 @@ typedef struct DXShaderInfo
 } DXShaderInfo;
 
 int DXShaderParse(void const *pvCode, uint32_t cbCode, DXShaderInfo *pInfo);
-int DXShaderCreateDXBC(DXShaderInfo const *pInfo, void const *pvShader, uint32_t cbShader, void **ppvDXBC, uint32_t *pcbDXBC);
+void DXShaderFree(DXShaderInfo *pInfo);
+int DXShaderCreateDXBC(DXShaderInfo const *pInfo, void **ppvDXBC, uint32_t *pcbDXBC);
 char const *DXShaderGetOutputSemanticName(DXShaderInfo const *pInfo, uint32_t idxRegister);
 
 #endif /* !VBOX_INCLUDED_SRC_Graphics_DevVGA_SVGA3d_dx_shader_h */
