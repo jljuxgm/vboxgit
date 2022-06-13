@@ -1,4 +1,4 @@
-/* $Id: NEMInternal.h 93905 2022-02-24 09:13:26Z vboxsync $ */
+/* $Id: NEMInternal.h 94425 2022-03-31 23:57:15Z vboxsync $ */
 /** @file
  * NEM - Internal header file.
  */
@@ -597,6 +597,17 @@ void    nemR3NativeResetCpu(PVMCPU pVCpu, bool fInitIpi);
 VBOXSTRICTRC    nemR3NativeRunGC(PVM pVM, PVMCPU pVCpu);
 bool            nemR3NativeCanExecuteGuest(PVM pVM, PVMCPU pVCpu);
 bool            nemR3NativeSetSingleInstruction(PVM pVM, PVMCPU pVCpu, bool fEnable);
+
+/**
+ * Forced flag notification call from VMEmt.h.
+ *
+ * This is only called when pVCpu is in the VMCPUSTATE_STARTED_EXEC_NEM state.
+ *
+ * @param   pVM             The cross context VM structure.
+ * @param   pVCpu           The cross context virtual CPU structure of the CPU
+ *                          to be notified.
+ * @param   fFlags          Notification flags, VMNOTIFYFF_FLAGS_XXX.
+ */
 void            nemR3NativeNotifyFF(PVM pVM, PVMCPU pVCpu, uint32_t fFlags);
 
 /**
