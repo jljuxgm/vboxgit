@@ -19,7 +19,7 @@
 ]>
 <refentry id="vboxmanage-storagectl" lang="en">
   <refentryinfo>
-    <pubdate>August 2019</pubdate>
+    <pubdate>$Date: 2022-03-12 00:43:01 +0800 (Sat, 12 Mar 2022) $</pubdate>
     <title>VBoxManage storagectl</title>
   </refentryinfo>
 
@@ -31,7 +31,7 @@
   <refnamediv>
     <refname>VBoxManage-storagectl</refname>
     <refpurpose>manage a storage controller</refpurpose>
-    <refclass>Oracle VM VirtualBox</refclass>
+    <refclass>&product-name;</refclass>
   </refnamediv>
 
   <refsynopsisdiv>

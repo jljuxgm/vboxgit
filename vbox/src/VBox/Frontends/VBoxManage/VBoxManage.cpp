@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 94177 2022-03-11 15:26:05Z vboxsync $ */
+/* $Id: VBoxManage.cpp 94179 2022-03-11 16:43:01Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -220,7 +220,7 @@ static const VBMGCMD g_aCommands[] =
     { "snapshot",           USAGE_S_NEWCMD,     HELP_CMD_SNAPSHOT, handleSnapshot,             0 },
     { "closemedium",        USAGE_S_NEWCMD,  HELP_CMD_CLOSEMEDIUM, handleCloseMedium,          0 },
     { "storageattach",      USAGE_STORAGEATTACH,    VBMG_CMD_TODO, handleStorageAttach,        0 },
-    { "storagectl",         USAGE_STORAGECONTROLLER,VBMG_CMD_TODO, handleStorageController,    0 },
+    { "storagectl",         USAGE_S_NEWCMD,   HELP_CMD_STORAGECTL, handleStorageController,    0 },
     { "showmediuminfo",     USAGE_SHOWMEDIUMINFO,   VBMG_CMD_TODO, handleShowMediumInfo,       0 },
     { "showhdinfo",         USAGE_SHOWMEDIUMINFO,   VBMG_CMD_TODO, handleShowMediumInfo,       0 }, /* backward compatibility */
     { "showvdiinfo",        USAGE_SHOWMEDIUMINFO,   VBMG_CMD_TODO, handleShowMediumInfo,       0 }, /* backward compatibility */

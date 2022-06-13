@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 94177 2022-03-11 15:26:05Z vboxsync $ */
+/* $Id: VBoxManage.h 94179 2022-03-11 16:43:01Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -125,7 +125,6 @@ typedef enum
     USAGE_HOSTONLYIFS,
     USAGE_I_DUMPHDINFO,
     USAGE_STORAGEATTACH,
-    USAGE_STORAGECONTROLLER,
 #ifdef VBOX_WITH_GUEST_CONTROL
     USAGE_GUESTCONTROL,
 #endif  /* VBOX_WITH_GUEST_CONTROL defined */
