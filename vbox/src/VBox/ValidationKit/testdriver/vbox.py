@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 94596 2022-04-13 21:41:11Z vboxsync $
+# $Id: vbox.py 94669 2022-04-21 14:38:18Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 94596 $"
+__version__ = "$Revision: 94669 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -2360,7 +2360,9 @@ class TestDriver(base.TestDriver):                                              
 
         # create + register the VM
         try:
-            if self.fpApiVer >= 4.2: # Introduces grouping (third parameter, empty for now).
+            if self.fpApiVer >= 7.0: # Introduces VM encryption (three new parameters, empty for now).
+                oVM = self.oVBox.createMachine("", sName, [], self.tryFindGuestOsId(sKind), "", "", "", "");
+            elif self.fpApiVer >= 4.2: # Introduces grouping (third parameter, empty for now).
                 oVM = self.oVBox.createMachine("", sName, [], self.tryFindGuestOsId(sKind), "");
             elif self.fpApiVer >= 4.0:
                 oVM = self.oVBox.createMachine("", sName, self.tryFindGuestOsId(sKind), "", False);
