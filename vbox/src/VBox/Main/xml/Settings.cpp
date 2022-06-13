@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 94739 2022-04-28 17:22:39Z vboxsync $ */
+/* $Id: Settings.cpp 94788 2022-05-03 06:59:52Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -6138,8 +6138,8 @@ void MachineConfigFile::readMachine(const xml::ElementNode &elmMachine)
         elmMachine.getAttributeValue("stateKeyStore", strStateKeyStore);
         elmMachine.getAttributeValuePath("stateFile", strStateFile);
 
-        elmMachine.getAttributeValue("strLogKeyId", strLogKeyId);
-        elmMachine.getAttributeValue("strLogKeyStore", strLogKeyStore);
+        elmMachine.getAttributeValue("logKeyId", strLogKeyId);
+        elmMachine.getAttributeValue("logKeyStore", strLogKeyStore);
 
         if (elmMachine.getAttributeValue("currentSnapshot", str))
             parseUUID(uuidCurrentSnapshot, str, &elmMachine);
@@ -8041,9 +8041,9 @@ void MachineConfigFile::buildMachineXML(xml::ElementNode &elmMachine,
         if (strStateKeyStore.length())
             elmMachine.setAttribute("stateKeyStore", strStateKeyStore);
         if (strLogKeyId.length())
-            elmMachine.setAttribute("strLogKeyId", strLogKeyId);
+            elmMachine.setAttribute("logKeyId", strLogKeyId);
         if (strLogKeyStore.length())
-            elmMachine.setAttribute("strLogKeyStore", strLogKeyStore);
+            elmMachine.setAttribute("logKeyStore", strLogKeyStore);
     }
     if (    strStateFile.length()
          && !(fl & BuildMachineXML_SuppressSavedState)
