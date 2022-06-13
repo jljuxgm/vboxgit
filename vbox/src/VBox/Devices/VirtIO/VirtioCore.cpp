@@ -1,4 +1,4 @@
-/* $Id: VirtioCore.cpp 92945 2021-12-15 17:10:24Z vboxsync $ */
+/* $Id: VirtioCore.cpp 92949 2021-12-15 20:52:05Z vboxsync $ */
 
 /** @file
  * VirtioCore - Virtio Core (PCI, feature & config mgt, queue mgt & proxy, notification mgt)
@@ -1301,7 +1301,8 @@ DECLINLINE(void) virtioR3DoFeaturesCompleteOnceOnly(PVIRTIOCORE pVirtio, PVIRTIO
             else
                 AssertMsgFailed(("Guest didn't accept VIRTIO_F_VERSION_1, but fLegacyOffered flag not set.\n"));
         }
-        pVirtioCC->pfnFeatureNegotiationComplete(pVirtio, pVirtio->uDriverFeatures, pVirtio->fLegacyDriver);
+        if (pVirtioCC->pfnFeatureNegotiationComplete)
+            pVirtioCC->pfnFeatureNegotiationComplete(pVirtio, pVirtio->uDriverFeatures, pVirtio->fLegacyDriver);
         pVirtio->fDriverFeaturesWritten |= DRIVER_FEATURES_COMPLETE_HANDLED;
 }
 #endif
@@ -2346,7 +2347,6 @@ int virtioCoreR3Init(PPDMDEVINS pDevIns, PVIRTIOCORE pVirtio, PVIRTIOCORECC pVir
      */
     AssertReturn(pVirtioCC->pfnStatusChanged, VERR_INVALID_POINTER);
     AssertReturn(pVirtioCC->pfnVirtqNotified, VERR_INVALID_POINTER);
-    AssertReturn(pVirtioCC->pfnFeatureNegotiationComplete,  VERR_INVALID_POINTER);
     AssertReturn(VIRTQ_SIZE > 0 && VIRTQ_SIZE <= 32768,  VERR_OUT_OF_RANGE); /* VirtIO specification-defined limit */
 
 #if 0 /* Until pdmR3DvHlp_PCISetIrq() impl is fixed and Assert that limits vec to 0 is removed
