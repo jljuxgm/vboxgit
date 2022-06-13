@@ -1,4 +1,4 @@
-/* $Id: tpm-linux.cpp 90915 2021-08-26 15:08:03Z vboxsync $ */
+/* $Id: tpm-linux.cpp 90995 2021-08-30 12:56:43Z vboxsync $ */
 /** @file
  * IPRT - Trusted Platform Module (TPM) access, Linux variant.
  */
@@ -152,6 +152,13 @@ RTDECL(RTTPMVERSION) RTTpmGetVersion(RTTPM hTpm)
 
     AssertPtrReturn(pThis, RTTPMVERSION_INVALID);
     return pThis->enmTpmVers;
+}
+
+
+RTDECL(uint32_t) RTTpmGetLocalityMax(RTTPM hTpm)
+{
+    RT_NOREF(hTpm);
+    return 0; /* On Linux only TPM locality 0 is supported. */
 }
 
 
