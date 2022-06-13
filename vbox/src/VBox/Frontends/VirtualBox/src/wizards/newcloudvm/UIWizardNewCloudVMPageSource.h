@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageSource.h 91640 2021-10-08 12:27:18Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageSource.h 91698 2021-10-12 17:59:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageSource class declaration.
  */
@@ -119,15 +119,6 @@ private slots:
     void sltHandleSourceImageChange();
 
 private:
-
-    /** Updates provider. */
-    void updateProvider();
-    /** Updates profile. */
-    void updateProfile();
-    /** Updates source. */
-    void updateSource();
-    /** Updates source image. */
-    void updateSourceImage();
 
     /** Holds the image ID. */
     QString  m_strSourceImageId;
