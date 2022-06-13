@@ -1,4 +1,4 @@
-/* $Id: apm.c 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: apm.c 94786 2022-05-02 15:30:07Z vboxsync $ */
 /** @file
  * APM BIOS support. Implements APM version 1.2.
  */
@@ -204,6 +204,12 @@ void BIOSCALL apm_function(sys_regs_t r)
     case APM_DISCONN:
         /// @todo actually perform a disconnect...
     case APM_BUSY:      /* Nothing to do as APM Idle doesn't slow CPU clock. */
+        break;
+    case APM_STATUS:
+        /* We do not attempt to report battery status. */
+        BX = 0x01FF;    /* AC line power, battery unknown. */
+        CX = 0x80FF;    /* No battery. */
+        DX = 0xFFFF;    /* No idea about remaining battery life. */
         break;
     case APM_GET_EVT:
         /// @todo error should be different if interface not connected + engaged
