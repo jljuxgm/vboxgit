@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 92133 2021-10-28 10:43:36Z vboxsync $ */
+/* $Id: MachineImpl.cpp 92421 2021-11-15 08:48:16Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -172,12 +172,7 @@ Machine::HWData::HWData()
     mPageFusionEnabled = false;
     mHWVirtExEnabled = true;
     mHWVirtExNestedPagingEnabled = true;
-#if HC_ARCH_BITS == 64 && !defined(RT_OS_LINUX)
-    mHWVirtExLargePagesEnabled = true;
-#else
-    /* Not supported on 32 bits hosts. */
-    mHWVirtExLargePagesEnabled = false;
-#endif
+    mHWVirtExLargePagesEnabled = HC_ARCH_BITS == 64;  /* Not supported on 32 bits hosts. */
     mHWVirtExVPIDEnabled = true;
     mHWVirtExUXEnabled = true;
     mHWVirtExForceEnabled = false;
@@ -2269,9 +2264,6 @@ HRESULT Machine::getHWVirtExProperty(HWVirtExPropertyType_T aProperty, BOOL *aVa
 
         case HWVirtExPropertyType_LargePages:
             *aValue = mHWData->mHWVirtExLargePagesEnabled;
-#if defined(DEBUG_bird) && defined(RT_OS_LINUX) /* This feature is deadly here */
-            *aValue = FALSE;
-#endif
             break;
 
         case HWVirtExPropertyType_Force:
