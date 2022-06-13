@@ -1,4 +1,4 @@
-; $Id: VMMInternal.mac 91750 2021-10-15 07:51:12Z vboxsync $
+; $Id: VMMInternal.mac 91751 2021-10-15 08:48:31Z vboxsync $
 ;; @file
 ; VMM - Internal header file.
 ;
@@ -23,7 +23,9 @@
 ;
 %ifndef VMM_R0_SWITCH_STACK
  %ifndef VMM_R0_NO_SWITCH_STACK
-  ; No-one uses stack switching any more.
+  %ifdef RT_OS_DARWIN
+   %define VMM_R0_SWITCH_STACK
+  %endif
  %endif
 %endif
 
