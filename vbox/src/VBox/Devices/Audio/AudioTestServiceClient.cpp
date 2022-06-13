@@ -1,4 +1,4 @@
-/* $Id: AudioTestServiceClient.cpp 90962 2021-08-27 16:40:53Z vboxsync $ */
+/* $Id: AudioTestServiceClient.cpp 90984 2021-08-29 14:54:31Z vboxsync $ */
 /** @file
  * AudioTestServiceClient - Audio Test Service (ATS), Client helpers.
  *
@@ -135,6 +135,9 @@ static int audioTestSvcClientRecvReply(PATSCLIENT pClient, PATSSRVREPLY pReply, 
         pPktHdr = NULL;
     }
 
+    if (RT_FAILURE(rc))
+        LogRelFunc(("Receiving reply from server failed with %Rrc\n", rc));
+
     LogFlowFuncLeaveRC(rc);
     return rc;
 }
@@ -177,9 +180,9 @@ static int audioTestSvcClientRecvAck(PATSCLIENT pClient)
 static int audioTestSvcClientSendMsg(PATSCLIENT pClient, void *pvHdr, size_t cbHdr)
 {
     RT_NOREF(cbHdr);
-    AssertPtrReturn(pClient->pTransport,       VERR_WRONG_ORDER);
-    AssertPtrReturn(pClient->pTransportInst,   VERR_WRONG_ORDER);
-    AssertPtrReturn(pClient->pTransportClient, VERR_NET_NOT_CONNECTED);
+    AssertPtrReturn(pClient->pTransport,       VERR_INVALID_POINTER);
+    AssertPtrReturn(pClient->pTransportInst,   VERR_INVALID_POINTER);
+    AssertPtrReturn(pClient->pTransportClient, VERR_INVALID_POINTER);
     return pClient->pTransport->pfnSendPkt(pClient->pTransportInst, pClient->pTransportClient, (PCATSPKTHDR)pvHdr);
 }
 
@@ -320,6 +323,9 @@ int AudioTestSvcClientHandleOption(PATSCLIENT pClient, int ch, PCRTGETOPTUNION p
  */
 int AudioTestSvcClientConnectEx(PATSCLIENT pClient, RTMSINTERVAL msTimeout)
 {
+    if (pClient->pTransportClient)
+        return VERR_NET_ALREADY_CONNECTED;
+
     int rc = pClient->pTransport->pfnStart(pClient->pTransportInst);
     if (RT_SUCCESS(rc))
     {
@@ -330,6 +336,9 @@ int AudioTestSvcClientConnectEx(PATSCLIENT pClient, RTMSINTERVAL msTimeout)
             rc = audioTestSvcClientDoGreet(pClient);
         }
     }
+
+    if (RT_FAILURE(rc))
+        LogRelFunc(("Connecting to server (%RU32ms timeout) failed with %Rrc\n", msTimeout, rc));
 
     return rc;
 }
