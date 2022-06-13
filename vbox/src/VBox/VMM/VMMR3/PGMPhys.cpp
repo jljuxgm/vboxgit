@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 92465 2021-11-17 03:01:09Z vboxsync $ */
+/* $Id: PGMPhys.cpp 92518 2021-11-20 00:07:56Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -2852,7 +2852,7 @@ static int pgmR3PhysMmio2Create(PVM pVM, PPDMDEVINS pDevIns, uint32_t iSubDev, u
          */
         if (   (fFlags & PGMPHYS_MMIO2_FLAGS_TRACK_DIRTY_PAGES)
 #ifdef VBOX_WITH_PGM_NEM_MODE
-            && !NEMR3IsMmio2DirtyPageTrackingSupported(pVM)
+            && (!VM_IS_NEM_ENABLED(pVM) || !NEMR3IsMmio2DirtyPageTrackingSupported(pVM))
 #endif
             )
 
