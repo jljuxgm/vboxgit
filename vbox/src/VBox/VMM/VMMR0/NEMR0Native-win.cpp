@@ -1,4 +1,4 @@
-/* $Id: NEMR0Native-win.cpp 92626 2021-11-29 12:32:58Z vboxsync $ */
+/* $Id: NEMR0Native-win.cpp 92957 2021-12-16 09:25:36Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, native ring-0 Windows backend.
  */
@@ -21,6 +21,7 @@
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_NEM
 #define VMCPU_INCL_CPUM_GST_CTX
+#define IsEqualLocaleName(a, b) (0) /* W10 WDK hack, the header wants _wcsicmp  */
 #include <iprt/nt/nt.h>
 #include <iprt/nt/hyperv.h>
 #include <iprt/nt/vid.h>
