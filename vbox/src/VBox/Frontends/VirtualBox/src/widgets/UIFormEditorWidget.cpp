@@ -1,4 +1,4 @@
-/* $Id: UIFormEditorWidget.cpp 90728 2021-08-18 16:24:45Z vboxsync $ */
+/* $Id: UIFormEditorWidget.cpp 91637 2021-10-08 12:21:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFormEditorWidget class implementation.
  */
@@ -454,6 +454,8 @@ public:
     /** Destructs Port Forwarding model. */
     virtual ~UIFormEditorModel() /* override */;
 
+    /** Clears form. */
+    void clearForm();
     /** Defines form @a values. */
     void setFormValues(const CFormValueVector &values);
 
@@ -982,13 +984,18 @@ UIFormEditorModel::~UIFormEditorModel()
     m_dataList.clear();
 }
 
-void UIFormEditorModel::setFormValues(const CFormValueVector &values)
+void UIFormEditorModel::clearForm()
 {
-    /* Delete old lines: */
     beginRemoveRows(QModelIndex(), 0, m_dataList.size());
     qDeleteAll(m_dataList);
     m_dataList.clear();
     endRemoveRows();
+}
+
+void UIFormEditorModel::setFormValues(const CFormValueVector &values)
+{
+    /* Delete old lines: */
+    clearForm();
 
     /* Add new lines: */
     beginInsertRows(QModelIndex(), 0, values.size() - 1);
@@ -1445,6 +1452,12 @@ QHeaderView *UIFormEditorWidget::verticalHeader() const
 {
     AssertPtrReturn(m_pTableView, 0);
     return m_pTableView->verticalHeader();
+}
+
+void UIFormEditorWidget::clearForm()
+{
+    m_pTableModel->clearForm();
+    adjustTable();
 }
 
 void UIFormEditorWidget::setValues(const QVector<CFormValue> &values)
