@@ -1,4 +1,4 @@
-/* $Id: vfsmemory.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: vfsmemory.cpp 91091 2021-09-02 13:06:51Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Memory Backed VFS.
  */
@@ -171,6 +171,15 @@ static PRTVFSMEMEXTENT rtVfsMemFile_LocateExtentSlow(PRTVFSMEMFILE pThis, uint64
     PRTVFSMEMEXTENT pExtent = pThis->pCurExt;
     if (!pExtent || off < pExtent->off)
     {
+        /* Check whether the offset is before the first extent first. */
+        pExtent = RTListGetFirst(&pThis->ExtentHead, RTVFSMEMEXTENT, Entry);
+        if (   pExtent
+            && off < pExtent->off)
+        {
+            *pfHit = false;
+            return pExtent;
+        }
+
         /* Consider the last entry first (for writes). */
         pExtent = RTListGetLast(&pThis->ExtentHead, RTVFSMEMEXTENT, Entry);
         if (!pExtent)
@@ -483,6 +492,7 @@ static DECLCALLBACK(int) rtVfsMemFile_Write(void *pvThis, RTFOFF off, PCRTSGBUF 
                 cbLeftToWrite -= cbZeros;
                 if (!cbLeftToWrite)
                     break;
+                pbSrc += cbZeros;
 
                 Assert(!pExtent || offUnsigned <= pExtent->off);
                 if (pExtent && pExtent->off == offUnsigned)
