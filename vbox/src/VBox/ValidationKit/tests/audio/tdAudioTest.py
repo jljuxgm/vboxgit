@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tdAudioTest.py 91613 2021-10-07 09:08:17Z vboxsync $
+# $Id: tdAudioTest.py 91723 2021-10-14 12:28:23Z vboxsync $
 
 """
 AudioTest test driver which invokes the VKAT (Validation Kit Audio Test)
@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 91613 $"
+__version__ = "$Revision: 91723 $"
 
 # Standard Python imports.
 from datetime import datetime
@@ -226,11 +226,14 @@ class tdAudioTest(vbox.TestDriver):
 
         fRc = True;
 
+        oVM         = None;
+        oVirtualBox = None;
+
         oVirtualBox = self.oVBoxMgr.getVirtualBox();
         try:
             oVM = oVirtualBox.findMachine(self.sRunningVmName);
             if oVM.state != self.oVBoxMgr.constants.MachineState_Running:
-                reporter.error("Machine '%s' is not in Running state" % (self.sRunningVmName));
+                reporter.error("Machine '%s' is not in Running state (state is %d)" % (self.sRunningVmName, oVM.state));
                 fRc = False;
         except:
             reporter.errorXcpt("Machine '%s' not found" % (self.sRunningVmName));
@@ -248,8 +251,10 @@ class tdAudioTest(vbox.TestDriver):
                 reporter.error("Unable to open session for machine '%s'" % (self.sRunningVmName));
                 fRc = False;
 
-        del oVM;
-        del oVirtualBox;
+        if oVM:
+            del oVM;
+        if oVirtualBox:
+            del oVirtualBox;
         return fRc;
 
     def getGstVkatLogFilePath(self, oTestVm):
