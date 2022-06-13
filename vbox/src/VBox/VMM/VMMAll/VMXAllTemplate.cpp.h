@@ -1,4 +1,4 @@
-/* $Id: VMXAllTemplate.cpp.h 92219 2021-11-04 19:17:05Z vboxsync $ */
+/* $Id: VMXAllTemplate.cpp.h 92278 2021-11-08 18:46:05Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Code template for our own hypervisor and the NEM darwin backend using Apple's Hypervisor.framework.
  */
@@ -1378,7 +1378,7 @@ static void vmxHCUpdateErrorRecord(PVMCPUCC pVCpu, int rc)
         AssertPtrReturnVoid(pVCpu);
         VMX_VMCS_READ_32(pVCpu, VMX_VMCS32_RO_VM_INSTR_ERROR, &VCPU_2_VMXSTATE(pVCpu).vmx.LastError.u32InstrError);
     }
-#if IN_RING0
+#ifdef IN_RING0
     pVCpu->CTX_SUFF(pVM)->hm.s.ForR3.rcInit = rc;
 #endif
 }
