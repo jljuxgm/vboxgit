@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageExpert.cpp 93234 2022-01-14 14:27:29Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageExpert.cpp 94167 2022-03-11 09:42:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageExpert class implementation.
  */
@@ -213,8 +213,8 @@ void UIWizardNewCloudVMPageExpert::retranslateUi()
     /* Translate source tab-bar: */
     if (m_pSourceTabBar)
     {
-        m_pSourceTabBar->setTabText(0, UIWizardNewCloudVM::tr("&Boot Volumes"));
-        m_pSourceTabBar->setTabText(1, UIWizardNewCloudVM::tr("&Images"));
+        m_pSourceTabBar->setTabText(0, UIWizardNewCloudVM::tr("&Images"));
+        m_pSourceTabBar->setTabText(1, UIWizardNewCloudVM::tr("&Boot Volumes"));
     }
 
     /* Translate profile stuff: */
