@@ -1,4 +1,4 @@
-/* $Id: PDMAllCritSectBoth.cpp 90532 2021-08-05 20:54:47Z vboxsync $ */
+/* $Id: PDMAllCritSectBoth.cpp 90677 2021-08-13 10:30:37Z vboxsync $ */
 /** @file
  * PDM - Code Common to Both Critical Section Types, All Contexts.
  */
@@ -58,7 +58,7 @@ VMM_INT_DECL(void) PDMCritSectBothFF(PVMCC pVM, PVMCPUCC pVCpu)
 # endif
 
         pdmCritSectRwLeaveSharedQueued(pVM, pCritSectRw);
-        LogFlow(("PDMR3CritSectFF: %p (R/W)\n", pCritSectRw));
+        LogIt(RTLOGGRPFLAGS_FLOW, LOG_GROUP_PDM_CRITSECTRW, ("PDMR3CritSectFF: %p (shared)\n", pCritSectRw));
     }
 
     /* Last, exclusive leaves. */
@@ -74,7 +74,7 @@ VMM_INT_DECL(void) PDMCritSectBothFF(PVMCC pVM, PVMCPUCC pVCpu)
 # endif
 
         pdmCritSectRwLeaveExclQueued(pVM, pCritSectRw);
-        LogFlow(("PDMR3CritSectFF: %p (R/W)\n", pCritSectRw));
+        LogIt(RTLOGGRPFLAGS_FLOW, LOG_GROUP_PDM_CRITSECTRW, ("PDMR3CritSectFF: %p (exclusive)\n", pCritSectRw));
     }
 
     /* Normal leaves. */
