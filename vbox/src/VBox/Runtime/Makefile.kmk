@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 94406 2022-03-31 09:25:30Z vboxsync $
+# $Id: Makefile.kmk 94463 2022-04-05 10:49:53Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -55,7 +55,9 @@ else ifdef VBOX_ONLY_VALIDATIONKIT
  LIBRARIES.win += RuntimeR0Stub #RuntimeR3NoCrt
  LIBRARIES.win.x86 += RuntimeR3VccTricks
  include $(PATH_SUB_CURRENT)/tools/Makefile.kmk
-
+ ifdef VBOX_WITH_VALIDATIONKIT_UNITTESTS_PACKING
+  include $(PATH_SUB_CURRENT)/testcase/Makefile.kmk
+ endif
 else ifdef VBOX_ONLY_DOCS
  #
  # Build docs only - need just regular R3 runtime.
