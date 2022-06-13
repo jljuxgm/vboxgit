@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tdAudioTest.py 92369 2021-11-11 13:32:53Z vboxsync $
+# $Id: tdAudioTest.py 92380 2021-11-11 17:56:54Z vboxsync $
 
 """
 AudioTest test driver which invokes the VKAT (Validation Kit Audio Test)
@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 92369 $"
+__version__ = "$Revision: 92380 $"
 
 # Standard Python imports.
 from datetime import datetime
@@ -204,10 +204,6 @@ class tdAudioTest(vbox.TestDriver):
         if not self.importVBoxApi(): # So we can use the constant below.
             return False;
 
-        # Disable maximum logging line restrictions per group.
-        # This comes in handy when running this test driver in a (very) verbose mode, e.g. for debugging.
-        os.environ['VBOX_RELEASE_LOG_MAX_PER_GROUP'] = '0';
-
         # Make sure that the Validation Kit .ISO is mounted
         # to find the VKAT (Validation Kit Audio Test) binary on it.
         assert self.sVBoxValidationKitIso is not None;
@@ -217,6 +213,13 @@ class tdAudioTest(vbox.TestDriver):
         """
         Executes the test driver.
         """
+
+        # Disable maximum logging line restrictions per group.
+        # This comes in handy when running this test driver in a (very) verbose mode, e.g. for debugging.
+        os.environ['VBOX_LOG_MAX_PER_GROUP'] = '0';
+        os.environ['VBOX_RELEASE_LOG_MAX_PER_GROUP'] = '0';
+        os.environ['VKAT_RELEASE_LOG_MAX_PER_GROUP'] = '0';
+
         if self.sRunningVmName is None:
             return self.oTestVmSet.actionExecute(self, self.testOneVmConfig);
         return self.actionExecuteOnRunnigVM();
