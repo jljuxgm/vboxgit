@@ -1,4 +1,4 @@
-/* $Id: UIMiniToolBar.cpp 88862 2021-05-04 16:05:25Z vboxsync $ */
+/* $Id: UIMiniToolBar.cpp 91066 2021-09-01 15:56:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMiniToolBar class implementation.
  */
@@ -796,12 +796,12 @@ void UIMiniToolBar::sltAdjust()
         case GeometryType_Full:
         {
             /* Determine whether we should use the native full-screen mode: */
-            const bool fUseNativeFullScreen = UICommon::supportsFullScreenMonitorsProtocolX11() &&
-                                              !gEDataManager->legacyFullscreenModeRequested();
+            const bool fUseNativeFullScreen =    NativeWindowSubsystem::X11SupportsFullScreenMonitorsProtocol()
+                                              && !gEDataManager->legacyFullscreenModeRequested();
             if (fUseNativeFullScreen)
             {
                 /* Tell recent window managers which host-screen this window should be mapped to: */
-                UICommon::setFullScreenMonitorX11(this, iHostScreen);
+                NativeWindowSubsystem::X11SetFullScreenMonitor(this, iHostScreen);
             }
 
             /* Set appropriate window size: */
@@ -929,8 +929,8 @@ void UIMiniToolBar::prepare()
 
 #ifdef VBOX_WS_X11
     /* Hide mini-toolbar from taskbar and pager: */
-    uiCommon().setSkipTaskBarFlag(this);
-    uiCommon().setSkipPagerFlag(this);
+    NativeWindowSubsystem::X11SetSkipTaskBarFlag(this);
+    NativeWindowSubsystem::X11SetSkipPagerFlag(this);
 #endif
 }
 
