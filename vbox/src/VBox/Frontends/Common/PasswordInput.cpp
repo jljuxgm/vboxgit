@@ -1,4 +1,4 @@
-/* $Id: PasswordInput.cpp 93647 2022-02-08 09:05:38Z vboxsync $ */
+/* $Id: PasswordInput.cpp 93648 2022-02-08 09:09:44Z vboxsync $ */
 /** @file
  * Frontend shared bits - Password file and console input helpers.
  */
@@ -22,7 +22,7 @@
 #include "PasswordInput.h"
 
 #include <iprt/ctype.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/message.h>
 #include <iprt/stream.h>
 
