@@ -1,4 +1,4 @@
-/* $Id: UnattendedScript.h 93190 2022-01-11 23:22:13Z vboxsync $ */
+/* $Id: UnattendedScript.h 93195 2022-01-11 23:33:34Z vboxsync $ */
 /** @file
  * Classes for reading/parsing/saving scripts for unattended installation.
  */
@@ -102,7 +102,7 @@ protected:
     HRESULT resolveConditionalExpr(RTEXPREVAL hEvaluator, const char *pachPlaceholder, size_t cchPlaceholder,
                                    bool *pfOutputting) RT_NOEXCEPT;
 
-    /** @impl_callback_method{FNRTEXPREVALQUERYVARIABLE}  */
+    /** @callback_method_impl{FNRTEXPREVALQUERYVARIABLE}  */
     static DECLCALLBACK(int) queryVariableForExpr(const char *pchName, size_t cchName, void *pvUser,
                                                   char **ppszValue) RT_NOEXCEPT;
 
