@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.h 92731 2021-12-03 11:24:28Z vboxsync $ */
+/* $Id: UINotificationObjects.h 92815 2021-12-08 13:57:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects declarations.
  */
@@ -431,7 +431,7 @@ public:
           * @param  strNetworkName  Brings network name. */
         static void cannotFindCloudNetwork(const CVirtualBox &comVBox, const QString &strNetworkName);
         /** Notifies about inability to find host network interface.
-          * @param  comHost  Brings the host being search through.
+          * @param  comHost           Brings the host being search through.
           * @param  strInterfaceName  Brings interface name. */
         static void cannotFindHostNetworkInterface(const CHost &comHost, const QString &strInterfaceName);
         /** Notifies about inability to find NAT network.
