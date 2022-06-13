@@ -1,4 +1,4 @@
-/* $Id: TextScript.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: TextScript.h 94347 2022-03-24 08:13:03Z vboxsync $ */
 /** @file
  * Classes for reading/parsing/saving text scripts (unattended installation, ++).
  */
@@ -230,9 +230,12 @@ public:
      */
     HRESULT prependToLine(size_t idxLine, const Utf8Str &rStrToPrepend);
 
+    /**
+     * Append a new line at the end of the list of line.
+     */
+    HRESULT appendLine(const Utf8Str &rStrLineToAppend);
     //////////////////New functions//////////////////////////////
 };
 
 
 #endif /* !MAIN_INCLUDED_TextScript_h */
-
