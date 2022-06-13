@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.cpp 86233 2020-09-23 12:10:51Z vboxsync $ */
+/* $Id: UIVisoCreator.cpp 91242 2021-09-15 10:09:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator class implementation.
  */
@@ -142,6 +142,8 @@ void UIVisoCreator::retranslateUi()
     }
     if (m_pRenameAction)
         m_pRenameAction->setToolTip(QApplication::translate("UIVisoCreator", "Rename the selected object"));
+    if (m_pButtonBox && m_pButtonBox->button(QDialogButtonBox::Ok))
+        m_pButtonBox->button(QDialogButtonBox::Ok)->setText(QApplication::translate("UIVisoCreator", "C&reate"));
 }
 
 void UIVisoCreator::sltHandleAddObjectsToViso(QStringList pathList)
@@ -325,7 +327,6 @@ void UIVisoCreator::prepareWidgets()
         m_pButtonBox->button(QDialogButtonBox::Cancel)->setShortcut(Qt::Key_Escape);
         m_pMainLayout->addWidget(m_pButtonBox, 4, 3, 1, 5, Qt::AlignRight);
     }
-
 }
 
 void UIVisoCreator::prepareConnections()

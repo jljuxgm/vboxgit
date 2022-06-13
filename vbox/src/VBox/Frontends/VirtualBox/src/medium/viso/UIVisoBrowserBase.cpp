@@ -1,4 +1,4 @@
-/* $Id: UIVisoBrowserBase.cpp 91235 2021-09-14 15:50:06Z vboxsync $ */
+/* $Id: UIVisoBrowserBase.cpp 91242 2021-09-15 10:09:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoBrowserBase class implementation.
  */
@@ -43,7 +43,6 @@ public:
     UILocationSelector(QWidget *pParent = 0);
     int  lineEditWidth() const;
     void updateLineEditText(const QString &strText);
-
 
 protected:
 
@@ -94,7 +93,9 @@ void UILocationSelector::paintEvent(QPaintEvent *pEvent)
 void UILocationSelector::retranslateUi()
 {
     if (m_pExpandButton)
-        m_pExpandButton->setToolTip(QApplication::translate("UIVisoCreator", "Click to show/hide the tree view"));
+        m_pExpandButton->setToolTip(QApplication::translate("UIVisoCreator", "Click to show/hide the tree view."));
+    if (m_pLineEdit)
+        m_pLineEdit->setToolTip(QApplication::translate("UIVisoCreator", "Shows the current location."));
 }
 
 bool UILocationSelector::eventFilter(QObject *pObj, QEvent *pEvent)
