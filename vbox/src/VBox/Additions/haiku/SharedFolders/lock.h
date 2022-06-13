@@ -1,4 +1,4 @@
-/* $Id: lock.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: lock.h 92179 2021-11-02 21:44:49Z vboxsync $ */
 /** @file
  * Lock.h - Haiku, private locking internals.
  */
@@ -21,7 +21,7 @@
  * VirtualBox Guest Additions for Haiku.
  *
  * Copyright 2008-2010, Ingo Weinhold, ingo_weinhold@gmx.de.
- * Copyright 2002-2009, Axel Dörfler, axeld@pinc-software.de.
+ * Copyright 2002-2009, Axel DÃ¶rfler, axeld@pinc-software.de.
  * Copyright 2001-2002, Travis Geiselbrecht. All rights reserved.
  * Distributed under the terms of the MIT License.
  */

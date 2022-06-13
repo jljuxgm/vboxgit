@@ -1,4 +1,4 @@
-/* $Id: kernel_cpp.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: kernel_cpp.h 92179 2021-11-02 21:44:49Z vboxsync $ */
 /** @file
  * Kernel C++, Haiku private.
  */
@@ -20,7 +20,7 @@
  *
  * VirtualBox Guest Additions for Haiku. C++ in the kernel.
  *
- * Copyright 2002-2009, Axel Dörfler, axeld@pinc-software.de.
+ * Copyright 2002-2009, Axel DÃ¶rfler, axeld@pinc-software.de.
  * Distributed under the terms of the MIT License.
  */
 

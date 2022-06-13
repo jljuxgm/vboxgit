@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceDescriptor.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxServiceDescriptor.h 92179 2021-11-02 21:44:49Z vboxsync $ */
 /** @file
  * VBoxGuestServiceDescriptor, Haiku Guest Additions, header.
  */
@@ -20,7 +20,7 @@
  *
  * VirtualBox Guest Additions for Haiku.
  * Copyright (c) 2011 Mike Smith <mike@scgtrp.net>
- *                    François Revol <revol@free.fr>
+ *                    FranÃ§ois Revol <revol@free.fr>
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
