@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 89248 2021-05-24 16:53:33Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 90088 2021-07-08 09:24:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -324,8 +324,24 @@ void UIVirtualBoxManagerWidget::retranslateUi()
 #endif
 }
 
-void UIVirtualBoxManagerWidget::sltHandleStateChange(const QUuid &)
+void UIVirtualBoxManagerWidget::sltHandleStateChange(const QUuid &uId)
 {
+    // WORKAROUND:
+    // In certain intermediate states VM info can be NULL which
+    // causing annoying assertions, such updates can be ignored?
+    CVirtualBox comVBox = uiCommon().virtualBox();
+    CMachine comMachine = comVBox.FindMachine(uId.toString());
+    if (comVBox.isOk() && comMachine.isNotNull())
+    {
+        switch (comMachine.GetState())
+        {
+            case KMachineState_DeletingSnapshot:
+                return;
+            default:
+                break;
+        }
+    }
+
     /* Recache current item info if machine or group item selected: */
     if (isMachineItemSelected() || isGroupItemSelected())
         recacheCurrentItemInformation();
