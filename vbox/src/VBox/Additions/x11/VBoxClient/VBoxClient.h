@@ -1,4 +1,4 @@
-/* $Id: VBoxClient.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: VBoxClient.h 93220 2022-01-13 11:45:40Z vboxsync $ */
 /** @file
  *
  * VirtualBox additions user session daemon.
@@ -32,6 +32,7 @@ void VBClLogFatalError(const char *pszFormat, ...);
 void VBClLogVerbose(unsigned iLevel, const char *pszFormat, ...);
 
 int VBClLogCreate(const char *pszLogFile);
+void VBClLogSetLogPrefix(const char *pszPrefix);
 void VBClLogDestroy(void);
 
 /** Call clean-up for the current service and exit. */
@@ -106,6 +107,7 @@ RT_C_DECLS_BEGIN
 extern VBCLSERVICE g_SvcClipboard;
 extern VBCLSERVICE g_SvcDisplayDRM;
 extern VBCLSERVICE g_SvcDisplaySVGA;
+extern VBCLSERVICE g_SvcDisplaySVGASession;
 extern VBCLSERVICE g_SvcDragAndDrop;
 extern VBCLSERVICE g_SvcHostVersion;
 extern VBCLSERVICE g_SvcSeamless;
