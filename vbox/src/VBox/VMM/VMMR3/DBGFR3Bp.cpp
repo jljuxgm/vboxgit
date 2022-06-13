@@ -1,4 +1,4 @@
-/* $Id: DBGFR3Bp.cpp 89912 2021-06-25 11:24:49Z vboxsync $ */
+/* $Id: DBGFR3Bp.cpp 89913 2021-06-25 11:26:55Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Breakpoint Management.
  */
@@ -1561,7 +1561,7 @@ static DBGFBP dbgfR3BpPortIoGetByRange(PUVM pUVM, RTIOPORT uPort, RTIOPORT cPort
 {
     DBGFBP hBp = NIL_DBGFBP;
 
-    for (RTIOPORT idxPort = uPort; idxPort < uPort + cPorts; idxPort)
+    for (RTIOPORT idxPort = uPort; idxPort < uPort + cPorts; idxPort++)
     {
         const uint32_t u32Entry = ASMAtomicReadU32(&pUVM->dbgf.s.CTX_SUFF(paBpLocPortIo)[idxPort]);
         if (u32Entry != DBGF_BP_INT3_L1_ENTRY_TYPE_NULL)
