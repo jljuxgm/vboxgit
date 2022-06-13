@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 93849 2022-02-18 16:55:24Z vboxsync $
+# $Id: tdUnitTest1.py 93876 2022-02-21 20:46:57Z vboxsync $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 93849 $"
+__version__ = "$Revision: 93876 $"
 
 
 # Standard Python imports.
@@ -284,6 +284,7 @@ class tdUnitTest1(vbox.TestDriver):
         "testcase/tstRTR0ThreadDriver",
         'testcase/tstRTR0DbgKrnlInfoDriver',
         "tstInt",
+        "tstPDMQueue",  # Comment in testcase says its driverless, but it needs driver access.
         "tstVMM",
         "tstVMMFork",
         "tstVMREQ",
