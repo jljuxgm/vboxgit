@@ -1,4 +1,4 @@
-/* $Id: tstIEMAImpl.cpp 94693 2022-04-22 21:39:16Z vboxsync $ */
+/* $Id: tstIEMAImpl.cpp 94695 2022-04-22 23:13:12Z vboxsync $ */
 /** @file
  * IEM Assembly Instruction Helper Testcase.
  */
@@ -96,6 +96,8 @@ static uint32_t     g_cIncludeTestPatterns;
 static uint32_t     g_cExcludeTestPatterns;
 static const char  *g_apszIncludeTestPatterns[64];
 static const char  *g_apszExcludeTestPatterns[64];
+
+static unsigned     g_cVerbosity = 0;
 
 
 /*********************************************************************************************************************************
@@ -817,14 +819,14 @@ const char *GenFormatI16(int16_t const *pi16)
 static void GenerateHeader(PRTSTREAM pOut, const char *pszCpuDesc, const char *pszCpuType)
 {
     /* We want to tag the generated source code with the revision that produced it. */
-    static char s_szRev[] = "$Revision: 94693 $";
+    static char s_szRev[] = "$Revision: 94695 $";
     const char *pszRev = RTStrStripL(strchr(s_szRev, ':') + 1);
     size_t      cchRev = 0;
     while (RT_C_IS_DIGIT(pszRev[cchRev]))
         cchRev++;
 
     RTStrmPrintf(pOut,
-                 "/* $Id: tstIEMAImpl.cpp 94693 2022-04-22 21:39:16Z vboxsync $ */\n"
+                 "/* $Id: tstIEMAImpl.cpp 94695 2022-04-22 23:13:12Z vboxsync $ */\n"
                  "/** @file\n"
                  " * IEM Assembly Instruction Helper Testcase Data%s%s - r%.*s on %s.\n"
                  " */\n"
@@ -922,7 +924,7 @@ static bool SubTestAndCheckIfEnabled(const char *pszName)
     RTTestSub(g_hTest, pszName);
     if (IsTestEnabled(pszName))
         return true;
-    RTTestSkipped(g_hTest, "excluded");
+    RTTestSkipped(g_hTest, g_cVerbosity > 0 ? "excluded" : NULL);
     return false;
 }
 
@@ -4407,6 +4409,8 @@ int main(int argc, char **argv)
         { "--common",               'm', RTGETOPT_REQ_NOTHING },
         { "--cpu",                  'c', RTGETOPT_REQ_NOTHING },
         { "--number-of-tests",      'n', RTGETOPT_REQ_UINT32  },
+        { "--verbose",              'v', RTGETOPT_REQ_NOTHING },
+        { "--quiet",                'q', RTGETOPT_REQ_NOTHING },
     };
 
     RTGETOPTSTATE State;
@@ -4483,6 +4487,13 @@ int main(int argc, char **argv)
                 cTests      = ValueUnion.u32;
                 break;
 
+            case 'q':
+                g_cVerbosity = 0;
+                break;
+            case 'v':
+                g_cVerbosity++;
+                break;
+
             case 'h':
                 RTPrintf("usage: %s <-g|-t> [options]\n"
                          "\n"
@@ -4519,6 +4530,11 @@ int main(int argc, char **argv)
                          "    Enable generating CPU specific test data.\n"
                          "  -n, --number-of-test <count>\n"
                          "    Number of tests to generate. Default: %u\n"
+                         "\n"
+                         "Other:\n"
+                         "  -v, --verbose\n"
+                         "  -q, --quiet\n"
+                         "    Noise level.  Default: --quiet\n"
                          , argv[0], cDefaultTests);
                 return RTEXITCODE_SUCCESS;
             default:
