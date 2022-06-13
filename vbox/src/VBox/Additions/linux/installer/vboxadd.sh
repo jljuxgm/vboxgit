@@ -1,7 +1,7 @@
 #! /bin/sh
-# $Id: vboxadd.sh 93115 2022-01-01 11:31:46Z vboxsync $
+# $Id: vboxadd.sh 93374 2022-01-20 17:55:15Z vboxsync $
 ## @file
-# Linux Additions kernel module init script ($Revision: 93115 $)
+# Linux Additions kernel module init script ($Revision: 93374 $)
 #
 
 #
@@ -39,7 +39,7 @@
 # Testing:
 # * Should fail if the configuration file is missing or missing INSTALL_DIR or
 #   INSTALL_VER entries.
-# * vboxadd user and vboxsf groups should be created if they do not exist - test
+# * vboxadd, vboxsf and vboxdrmipc user groups should be created if they do not exist - test
 #   by removing them before installing.
 # * Shared folders can be mounted and auto-mounts accessible to vboxsf group,
 #   including on recent Fedoras with SELinux.
@@ -429,6 +429,9 @@ Please install them and execute
     create_udev_rule
     test -n "${INSTALL_NO_MODULE_BUILDS}" || create_module_rebuild_script
     shared_folder_setup
+    # Create user group which will have permissive access to DRP IPC server socket.
+    groupadd -r -f vboxdrmipc >/dev/null 2>&1
+
     if  running_vboxguest || running_vboxadd; then
         info "Running kernel modules will not be replaced until the system is restarted"
     fi
