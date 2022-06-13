@@ -1,4 +1,4 @@
-/* $Id: UIFDCreationDialog.h 90453 2021-08-01 09:04:40Z vboxsync $ */
+/* $Id: UIFDCreationDialog.h 91349 2021-09-23 12:01:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFDCreationDialog class declaration.
  */
@@ -67,6 +67,7 @@ private slots:
 
     /** Handles signal about @a comMedium was created. */
     void sltHandleMediumCreated(const CMedium &comMedium);
+    void sltPathChanged(const QString &strPath);
 
 private:
 
@@ -85,6 +86,8 @@ private:
 
     /** Returns default file-path. */
     QString getDefaultFilePath() const;
+    /** Returns false if the file is already exists. */
+    bool checkFilePath(const QString &strPath) const;
 
     /** Holds the default folder. */
     QString  m_strDefaultFolder;
