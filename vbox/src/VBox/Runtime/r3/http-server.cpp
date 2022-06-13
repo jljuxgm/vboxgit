@@ -1,4 +1,4 @@
-/* $Id: http-server.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: http-server.cpp 93141 2022-01-07 16:09:28Z vboxsync $ */
 /** @file
  * Simple HTTP server (RFC 7231) implementation.
  *
@@ -399,17 +399,21 @@ static PRTHTTPSERVERREQ rtHttpServerReqAlloc(void)
  * Frees a formerly allocated client request.
  *
  * @param   pReq                Pointer to client request to free.
+ *                              The pointer will be invalid on return.
  */
 static void rtHttpServerReqFree(PRTHTTPSERVERREQ pReq)
 {
     if (!pReq)
         return;
 
+    RTStrFree(pReq->pszUrl);
+
     RTHttpHeaderListDestroy(pReq->hHdrLst);
 
     rtHttpServerBodyDestroy(&pReq->Body);
 
     RTMemFree(pReq);
+    pReq = NULL;
 }
 
 /**
