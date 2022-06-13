@@ -1,4 +1,4 @@
-/* $Id: UIExtensionPackManager.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIExtensionPackManager.cpp 93868 2022-02-21 12:56:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtensionPackManager class implementation.
  */
@@ -203,6 +203,7 @@ void UIExtensionPackManagerWidget::retranslateUi()
                                    << tr("Active")
                                    << tr("Name")
                                    << tr("Version"));
+    m_pTreeWidget->setWhatsThis(tr("Registered extension packs"));
 }
 
 void UIExtensionPackManagerWidget::sltInstallExtensionPack()

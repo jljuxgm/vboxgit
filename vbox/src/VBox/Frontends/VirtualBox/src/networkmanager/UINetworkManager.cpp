@@ -1,4 +1,4 @@
-/* $Id: UINetworkManager.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UINetworkManager.cpp 93868 2022-02-21 12:56:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkManager class implementation.
  */
@@ -448,6 +448,7 @@ void UINetworkManagerWidget::retranslateUi()
                                    << UINetworkManager::tr("DHCP Server");
 #endif /* !VBOX_WS_MAC */
         m_pTreeWidgetHostNetwork->setHeaderLabels(fields);
+        m_pTreeWidgetHostNetwork->setWhatsThis(tr("Registered host networks"));
     }
 
     /* Translate NAT network tree-widget: */
@@ -459,6 +460,7 @@ void UINetworkManagerWidget::retranslateUi()
                                    << UINetworkManager::tr("IPv6 Prefix")
                                    << UINetworkManager::tr("DHCP Server");
         m_pTreeWidgetNATNetwork->setHeaderLabels(fields);
+        m_pTreeWidgetNATNetwork->setWhatsThis(tr("Registered NAT networks"));
     }
 
     /* Translate cloud network tree-widget: */
@@ -469,6 +471,7 @@ void UINetworkManagerWidget::retranslateUi()
                                    << UINetworkManager::tr("Provider")
                                    << UINetworkManager::tr("Profile");
         m_pTreeWidgetCloudNetwork->setHeaderLabels(fields);
+        m_pTreeWidgetCloudNetwork->setWhatsThis(tr("Registered cloud networks"));
     }
 }
 

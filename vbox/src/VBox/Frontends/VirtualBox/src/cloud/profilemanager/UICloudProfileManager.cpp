@@ -1,4 +1,4 @@
-/* $Id: UICloudProfileManager.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UICloudProfileManager.cpp 93868 2022-02-21 12:56:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudProfileManager class implementation.
  */
@@ -204,6 +204,7 @@ void UICloudProfileManagerWidget::retranslateUi()
     m_pTreeWidget->setHeaderLabels(   QStringList()
                                    << tr("Source")
                                    << tr("List VMs"));
+    m_pTreeWidget->setWhatsThis(tr("Registered cloud providers and profiles"));
 }
 
 bool UICloudProfileManagerWidget::makeSureChangesResolved()
