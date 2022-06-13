@@ -1,4 +1,4 @@
-/* $Id: cipher-openssl.cpp 94665 2022-04-21 11:05:01Z vboxsync $ */
+/* $Id: cipher-openssl.cpp 94668 2022-04-21 13:55:27Z vboxsync $ */
 /** @file
  * IPRT - Crypto - Symmetric Cipher using OpenSSL.
  */
@@ -49,13 +49,13 @@
 /*********************************************************************************************************************************
 *   Defined Constants And Macros                                                                                                 *
 *********************************************************************************************************************************/
-#if OPENSSL_VERSION_NUMBER > 0x10002000
+#if defined(EVP_CTRL_AEAD_GET_TAG)
 # define MY_EVP_CTRL_AEAD_GET_TAG EVP_CTRL_AEAD_GET_TAG
 #else
 # define MY_EVP_CTRL_AEAD_GET_TAG EVP_CTRL_GCM_GET_TAG
 #endif
 
-#if OPENSSL_VERSION_NUMBER > 0x10002000
+#if defined(EVP_CTRL_AEAD_SET_TAG)
 # define MY_EVP_CTRL_AEAD_SET_TAG EVP_CTRL_AEAD_SET_TAG
 #else
 # define MY_EVP_CTRL_AEAD_SET_TAG EVP_CTRL_GCM_SET_TAG
