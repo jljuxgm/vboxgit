@@ -1,4 +1,4 @@
-/* $Id: vkatInternal.h 90117 2021-07-09 11:45:26Z vboxsync $ */
+/* $Id: vkatInternal.h 90723 2021-08-18 15:41:36Z vboxsync $ */
 /** @file
  * VKAT - Internal header file for common definitions + structs.
  */
@@ -461,6 +461,10 @@ void        audioTestParmsDestroy(PAUDIOTESTPARMS pTstParms);
 /** @}  */
 
 int         audioTestWorker(PAUDIOTESTENV pTstEnv);
+
+/** @todo Test tone handling */
+int         audioTestPlayTone(PAUDIOTESTENV pTstEnv, PAUDIOTESTSTREAM pStream, PAUDIOTESTTONEPARMS pParms);
+/** @}  */
 
 /** @name Command handlers
  * @{ */
