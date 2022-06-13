@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 94204 2022-03-12 19:57:40Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 94206 2022-03-13 19:17:33Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -638,27 +638,6 @@ void printUsage(USAGECATEGORY enmCommand, uint64_t fSubcommandScope, PRTSTREAM p
                      "                            [--description <description string>]"
                      "\n", SEP);
 
-    if (enmCommand == USAGE_SETPROPERTY || enmCommand == USAGE_S_ALL)
-    {
-        RTStrmPrintf(pStrm,
-                           "%s setproperty %s     machinefolder default|<folder> |\n"
-                     "                            hwvirtexclusive on|off |\n"
-                     "                            vrdeauthlibrary default|<library> |\n"
-                     "                            websrvauthlibrary default|null|<library> |\n"
-                     "                            vrdeextpack null|<library> |\n"
-                     "                            autostartdbpath null|<folder> |\n"
-                     "                            loghistorycount <value>\n"
-                     "                            defaultfrontend default|<name>\n"
-                     "                            logginglevel <log setting>\n"
-                     "                            proxymode system|noproxy|manual\n"
-                     "                            proxyurl <url>\n", SEP);
-#ifdef VBOX_WITH_MAIN_NLS
-        RTStrmPrintf(pStrm,
-                     "                            language <language id>\n");
-#endif
-        RTStrmPrintf(pStrm,
-                     "\n");
-    }
     if (enmCommand == USAGE_USBFILTER || enmCommand == USAGE_S_ALL)
     {
         if (fSubcommandScope & HELP_SCOPE_USBFILTER_ADD)
