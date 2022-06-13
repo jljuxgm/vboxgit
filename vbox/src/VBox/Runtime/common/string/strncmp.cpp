@@ -1,4 +1,4 @@
-/* $Id: strncmp.cpp 93130 2022-01-06 02:48:07Z vboxsync $ */
+/* $Id: strncmp.cpp 93135 2022-01-06 22:02:15Z vboxsync $ */
 /** @file
  * IPRT - CRT Strings, strncmp().
  */
@@ -38,15 +38,14 @@ int strncmp
     __THROW
 #endif
 {
-    const char* fini = pszStr1+cb;
-    while (pszStr1 < fini)
+    while (cb-- > 0)
     {
-        int res=*pszStr1-*pszStr2;
-        if (res)
-            return res;
-        if (!*pszStr1)
-            return 0;
-        ++pszStr1; ++pszStr2;
+        char const ch1   = *pszStr1++;
+        int  const iDiff = ch1 - *pszStr2++;
+        if (iDiff)
+            return iDiff;
+        if (!ch1)
+            break;
     }
     return 0;
 }
