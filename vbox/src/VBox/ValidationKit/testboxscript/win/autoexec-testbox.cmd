@@ -1,5 +1,5 @@
 @echo off
-REM $Id: autoexec-testbox.cmd 82968 2020-02-04 10:35:17Z vboxsync $
+REM $Id: autoexec-testbox.cmd 89854 2021-06-23 13:20:58Z vboxsync $
 REM REM @file
 REM VirtualBox Validation Kit - testbox script, automatic execution wrapper.
 REM
@@ -25,18 +25,26 @@ REM You may elect to license modified versions of this file under the
 REM terms and conditions of either the GPL or the CDDL or both.
 REM
 
-@echo "$Id: autoexec-testbox.cmd 82968 2020-02-04 10:35:17Z vboxsync $"
+@echo "$Id: autoexec-testbox.cmd 89854 2021-06-23 13:20:58Z vboxsync $"
 @echo on
 setlocal EnableExtensions
 set exe=python.exe
 for /f %%x in ('tasklist /NH /FI "IMAGENAME eq %exe%"') do if %%x == %exe% goto end
 
-if not exist %SystemRoot%\System32\imdisk.exe goto defaulttest
+if exist %SystemRoot%\System32\aim_ll.exe (
+	set RAMEXE=aim
+) else if exist %SystemRoot%\System32\imdisk.exe (
+    set RAMEXE=imdisk
+) else goto defaulttest	
 
-REM Take presence of imdisk.exe as order to test in ramdisk.
+REM Take presence of imdisk.exe or aim_ll.exe as order to test in ramdisk.
 set RAMDRIVE=D:
 if exist %RAMDRIVE%\TEMP goto skip
-imdisk -a -s 16GB -m %RAMDRIVE% -p "/fs:ntfs /q /y" -o "awe"
+if %RAMEXE% == aim (
+	aim_ll -a -t vm -s 16G -m %RAMDRIVE% -p "/fs:ntfs /q /y"
+) else if %RAMEXE% == aim (
+	imdisk -a -s 16GB -m %RAMDRIVE% -p "/fs:ntfs /q /y" -o "awe"
+) else goto defaulttest
 :skip
 
 set VBOX_INSTALL_PATH=%RAMDRIVE%\VBoxInstall
