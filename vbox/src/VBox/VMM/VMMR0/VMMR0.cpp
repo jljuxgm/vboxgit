@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 92411 2021-11-13 14:48:51Z vboxsync $ */
+/* $Id: VMMR0.cpp 92493 2021-11-18 14:01:56Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -1296,9 +1296,6 @@ static void vmmR0RecordRC(PVMCC pVM, PVMCPUCC pVCpu, int rc)
             break;
         case VINF_PATM_DUPLICATE_FUNCTION:
             STAM_COUNTER_INC(&pVM->vmm.s.StatRZRetPATMDuplicateFn);
-            break;
-        case VINF_PGM_CHANGE_MODE:
-            STAM_COUNTER_INC(&pVM->vmm.s.StatRZRetPGMChangeMode);
             break;
         case VINF_PGM_POOL_FLUSH_PENDING:
             STAM_COUNTER_INC(&pVM->vmm.s.StatRZRetPGMFlushPending);

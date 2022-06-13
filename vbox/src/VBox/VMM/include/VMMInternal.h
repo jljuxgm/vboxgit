@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 92408 2021-11-12 21:49:06Z vboxsync $ */
+/* $Id: VMMInternal.h 92493 2021-11-18 14:01:56Z vboxsync $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -395,7 +395,6 @@ typedef struct VMM
     STAMCOUNTER                 StatRZRetTimerPending;
     STAMCOUNTER                 StatRZRetInterruptPending;
     STAMCOUNTER                 StatRZRetPATMDuplicateFn;
-    STAMCOUNTER                 StatRZRetPGMChangeMode;
     STAMCOUNTER                 StatRZRetPendingRequest;
     STAMCOUNTER                 StatRZRetPGMFlushPending;
     STAMCOUNTER                 StatRZRetPatchTPR;

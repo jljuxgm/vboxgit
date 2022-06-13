@@ -1,4 +1,4 @@
-/* $Id: EMHandleRCTmpl.h 89993 2021-07-02 09:21:45Z vboxsync $ */
+/* $Id: EMHandleRCTmpl.h 92493 2021-11-18 14:01:56Z vboxsync $ */
 /** @file
  * EM - emR3[Raw|Hm|Nem]HandleRC template.
  */
@@ -90,17 +90,6 @@ int emR3NemHandleRC(PVM pVM, PVMCPU pVCpu, int rc)
          */
         case VINF_PGM_POOL_FLUSH_PENDING:
             rc = VINF_SUCCESS;
-            break;
-
-        /*
-         * Paging mode change.
-         */
-        case VINF_PGM_CHANGE_MODE:
-            CPUM_ASSERT_NOT_EXTRN(pVCpu, CPUMCTX_EXTRN_CR0 | CPUMCTX_EXTRN_CR3 | CPUMCTX_EXTRN_CR4 | CPUMCTX_EXTRN_EFER);
-            rc = PGMChangeMode(pVCpu, pVCpu->cpum.GstCtx.cr0, pVCpu->cpum.GstCtx.cr4, pVCpu->cpum.GstCtx.msrEFER);
-            if (rc == VINF_SUCCESS)
-                rc = VINF_EM_RESCHEDULE;
-            AssertMsg(RT_FAILURE(rc) || (rc >= VINF_EM_FIRST && rc <= VINF_EM_LAST), ("%Rrc\n", rc));
             break;
 #endif /* !EMHANDLERC_WITH_NEM */
 

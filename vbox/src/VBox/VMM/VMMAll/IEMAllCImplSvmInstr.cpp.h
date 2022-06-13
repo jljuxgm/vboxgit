@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplSvmInstr.cpp.h 91580 2021-10-06 07:22:04Z vboxsync $ */
+/* $Id: IEMAllCImplSvmInstr.cpp.h 92493 2021-11-18 14:01:56Z vboxsync $ */
 /** @file
  * IEM - AMD-V (Secure Virtual Machine) instruction implementation.
  */
@@ -92,9 +92,6 @@ DECLINLINE(VBOXSTRICTRC) iemSvmWorldSwitch(PVMCPUCC pVCpu, bool fPdpesMapped)
      * see comment in iemMemPageTranslateAndCheckAccess().
      */
     int rc = PGMChangeMode(pVCpu, pVCpu->cpum.GstCtx.cr0 | X86_CR0_PE, pVCpu->cpum.GstCtx.cr4, pVCpu->cpum.GstCtx.msrEFER);
-# ifdef IN_RING3
-    Assert(rc != VINF_PGM_CHANGE_MODE);
-# endif
     AssertRCReturn(rc, rc);
 
     /* Inform CPUM (recompiler), can later be removed. */

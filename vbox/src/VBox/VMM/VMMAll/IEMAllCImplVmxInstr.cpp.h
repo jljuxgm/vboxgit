@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 91987 2021-10-22 03:22:15Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 92493 2021-11-18 14:01:56Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -1226,9 +1226,6 @@ IEM_STATIC int iemVmxTransition(PVMCPUCC pVCpu, bool fPdpesMapped)
      * see comment in iemMemPageTranslateAndCheckAccess().
      */
     int rc = PGMChangeMode(pVCpu, pVCpu->cpum.GstCtx.cr0 | X86_CR0_PE, pVCpu->cpum.GstCtx.cr4, pVCpu->cpum.GstCtx.msrEFER);
-# ifdef IN_RING3
-    Assert(rc != VINF_PGM_CHANGE_MODE);
-# endif
     AssertRCReturn(rc, rc);
 
     /* Inform CPUM (recompiler), can later be removed. */
