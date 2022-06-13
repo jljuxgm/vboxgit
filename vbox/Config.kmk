@@ -1,4 +1,4 @@
-# $Id: Config.kmk 93426 2022-01-24 21:35:41Z vboxsync $
+# $Id: Config.kmk 93429 2022-01-24 21:52:59Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -8087,6 +8087,8 @@ ifeq ($(KBUILD_HOST),win)
  TEMPLATE_VBoxAdvBldProg_CXXFLAGS = $(TEMPLATE_VBoxBldProg_CXXFLAGS) $(VBOX_VCC_WERR)
  TEMPLATE_VBoxAdvBldProg_PCHFLAGS = $(TEMPLATE_VBoxAdvBldProg_CXXFLAGS)
 endif
+TEMPLATE_VBoxAdvBldProg_LDFLAGS.darwin.arm64 = \
+	$(TEMPLATE_VBoxBldProg_LDFLAGS.darwin.arm64) -framework IOKit
 TEMPLATE_VBoxAdvBldProg_LIBS    = \
 	$(PATH_STAGE_LIB)/RuntimeBldProg$(VBOX_HOSTSUFF_LIB) \
 	$(TEMPLATE_VBoxBldProg_LIBS)
@@ -8825,7 +8827,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 93426 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 93429 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
