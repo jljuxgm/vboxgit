@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 92571 2021-11-23 15:54:26Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 92581 2021-11-24 05:42:48Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -6380,8 +6380,8 @@ IEM_STATIC void iemVmxVmentryLoadGuestControlRegsMsrs(PVMCPUCC pVCpu)
     IEM_CTX_ASSERT(pVCpu, CPUMCTX_EXTRN_CR0);
     uint64_t const uGstCr0 = (pVmcs->u64GuestCr0.u   & ~VMX_ENTRY_GUEST_CR0_IGNORE_MASK)
                            | (pVCpu->cpum.GstCtx.cr0 &  VMX_ENTRY_GUEST_CR0_IGNORE_MASK);
-    CPUMSetGuestCR0(pVCpu, uGstCr0);
-    CPUMSetGuestCR4(pVCpu, pVmcs->u64GuestCr4.u);
+    pVCpu->cpum.GstCtx.cr0 = uGstCr0;
+    pVCpu->cpum.GstCtx.cr4 = pVmcs->u64GuestCr4.u;
     pVCpu->cpum.GstCtx.cr3 = pVmcs->u64GuestCr3.u;
 
     if (pVmcs->u32EntryCtls & VMX_ENTRY_CTLS_LOAD_DEBUG)
