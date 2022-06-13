@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 93056 $"
+__version__ = "$Revision: 93061 $"
 
 # Standard Python imports.
 import errno
@@ -3298,7 +3298,7 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
                                 enmProcSts = aoGuestProcs[0].status;
                                 if enmProcSts != vboxcon.ProcessStatus_Down:
                                     fRc = reporter.error('Old guest process (before reboot) has status %d, expected %s' \
-                                                         % enmProcSts, vboxcon.ProcessStatus_Down);
+                                                         % (enmProcSts, vboxcon.ProcessStatus_Down));
                             else:
                                 fRc = reporter.error('Old guest session (before reboot) has %d processes registered, expected 1' \
                                                      % (len(aoGuestProcs)));
