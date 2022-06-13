@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageBasic1.h 91547 2021-10-04 15:49:52Z vboxsync $ */
+/* $Id: UIWizardImportAppPageBasic1.h 91563 2021-10-05 11:04:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageBasic1 class declaration.
  */
@@ -156,7 +156,6 @@ protected:
 class UIWizardImportAppPageBasic1 : public UIWizardPage, public UIWizardImportAppPage1
 {
     Q_OBJECT;
-    Q_PROPERTY(QString source READ source WRITE setSource);
     Q_PROPERTY(bool isSourceCloudOne READ isSourceCloudOne);
     Q_PROPERTY(CCloudProfile profile READ profile);
     Q_PROPERTY(CAppliance cloudAppliance READ cloudAppliance);

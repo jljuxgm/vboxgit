@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageExpert.h 91521 2021-10-01 15:05:13Z vboxsync $ */
+/* $Id: UIWizardImportAppPageExpert.h 91563 2021-10-05 11:04:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageExpert class declaration.
  */
@@ -34,7 +34,6 @@ class UIWizardImportAppPageExpert : public UIWizardPage,
                                     public UIWizardImportAppPage2
 {
     Q_OBJECT;
-    Q_PROPERTY(QString source READ source WRITE setSource);
     Q_PROPERTY(bool isSourceCloudOne READ isSourceCloudOne);
     Q_PROPERTY(CCloudProfile profile READ profile);
     Q_PROPERTY(CAppliance cloudAppliance READ cloudAppliance);
@@ -50,6 +49,8 @@ public:
 
 protected:
 
+    /** Allows access wizard from base part. */
+    UIWizard *wizardImp() const { return UIWizardPage::wizard(); }
     /** Allows to access 'field()' from base part. */
     virtual QVariant fieldImp(const QString &strFieldName) const /* override */ { return UIWizardPage::field(strFieldName); }
 
