@@ -1,4 +1,4 @@
-/* $Id: AudioTestService.h 90768 2021-08-20 18:15:49Z vboxsync $ */
+/* $Id: AudioTestService.h 90830 2021-08-24 10:47:52Z vboxsync $ */
 /** @file
  * AudioTestService - Audio test execution server, Public Header.
  */
@@ -51,6 +51,20 @@ extern const size_t         g_cTransports;
  */
 typedef struct ATSCALLBACKS
 {
+    /**
+     * Tells the implementation that a new client connected. Optional.
+     *
+     * @param   pvUser          User-supplied pointer to context data. Optional.
+     */
+    DECLR3CALLBACKMEMBER(int, pfnHowdy, (void const *pvUser));
+
+    /**
+     * Tells the implementation that a client disconnected. Optional.
+     *
+     * @param   pvUser          User-supplied pointer to context data. Optional.
+     */
+    DECLR3CALLBACKMEMBER(int, pfnBye, (void const *pvUser));
+
     /**
      * Begins a test set. Optional.
      *

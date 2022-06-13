@@ -1,4 +1,4 @@
-/* $Id: vkat.cpp 90788 2021-08-23 10:26:51Z vboxsync $ */
+/* $Id: vkat.cpp 90830 2021-08-24 10:47:52Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) utility for testing and validating the audio stack.
  */
@@ -256,7 +256,7 @@ static DECLCALLBACK(int) audioTestPlayToneSetup(PAUDIOTESTENV pTstEnv, PAUDIOTES
     pTstParmsAcq->Props       = pTstEnv->Props;
     pTstParmsAcq->enmDir      = PDMAUDIODIR_OUT;
 #ifdef DEBUG
-    pTstParmsAcq->cIterations = 4;
+    pTstParmsAcq->cIterations = 1;
 #else
     pTstParmsAcq->cIterations = RTRandU32Ex(1, 10);
 #endif
@@ -360,7 +360,7 @@ static DECLCALLBACK(int) audioTestRecordToneSetup(PAUDIOTESTENV pTstEnv, PAUDIOT
     pTstParmsAcq->Props       = pTstEnv->Props;
     pTstParmsAcq->enmDir      = PDMAUDIODIR_IN;
 #ifdef DEBUG
-    pTstParmsAcq->cIterations = 4;
+    pTstParmsAcq->cIterations = 1;
 #else
     pTstParmsAcq->cIterations = RTRandU32Ex(1, 10);
 #endif

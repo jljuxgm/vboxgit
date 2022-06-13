@@ -1,4 +1,4 @@
-/* $Id: AudioTestService.cpp 90745 2021-08-19 13:32:46Z vboxsync $ */
+/* $Id: AudioTestService.cpp 90830 2021-08-24 10:47:52Z vboxsync $ */
 /** @file
  * AudioTestService - Audio test execution server.
  */
@@ -470,7 +470,20 @@ static int atsDoBye(PATSSERVER pThis, PATSSERVERINST pInst, PATSPKTHDR pPktHdr)
     int rc;
     if (pPktHdr->cb == sizeof(ATSPKTHDR))
     {
-        rc = atsReplyAck(pThis, pInst, pPktHdr);
+        if (pThis->Callbacks.pfnBye)
+        {
+            rc = pThis->Callbacks.pfnBye(pThis->Callbacks.pvUser);
+        }
+        else
+            rc = VINF_SUCCESS;
+
+        if (RT_SUCCESS(rc))
+        {
+            rc = atsReplyAck(pThis, pInst, pPktHdr);
+        }
+        else
+            rc = atsReplyRC(pThis, pInst, pPktHdr, rc, "Shutting down server failed");
+
         if (RT_SUCCESS(rc))
             pThis->pTransport->pfnNotifyBye(pThis->pTransportInst, pInst->pTransportClient);
     }
@@ -511,7 +524,12 @@ static int atsDoHowdy(PATSSERVER pThis, PATSSERVERINST pInst, PATSPKTHDR pPktHdr
     if (RT_SUCCESS(rc))
     {
         pThis->pTransport->pfnNotifyHowdy(pThis->pTransportInst, pInst->pTransportClient);
-        pInst->enmState = ATSCLIENTSTATE_READY;
+
+        if (pThis->Callbacks.pfnHowdy)
+            rc = pThis->Callbacks.pfnHowdy(pThis->Callbacks.pvUser);
+
+        if (RT_SUCCESS(rc))
+            pInst->enmState = ATSCLIENTSTATE_READY;
     }
 
     return rc;
@@ -920,6 +938,7 @@ static DECLCALLBACK(int) atsClientWorker(RTTHREAD hThread, void *pvUser)
                         AssertRC(rc);
 
                         pThis->pTransport->pfnNotifyBye(pThis->pTransportInst, pInst->pTransportClient);
+                        pInst->pTransportClient = NULL;
                         papInsts[uId - 1] = NULL;
                         cClientsCur--;
                         atsClientDestroy(pInst);
