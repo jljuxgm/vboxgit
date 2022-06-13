@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMNameOSTypePageBasic.h 90033 2021-07-05 15:38:36Z vboxsync $ */
+/* $Id: UIWizardNewVMNameOSTypePageBasic.h 90037 2021-07-05 19:14:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMNameOSTypePageBasic class declaration.
  */
@@ -52,28 +52,10 @@ namespace UIWizardNewVMNameOSTypePage
     void determineOSType(const QString &strISOPath, UIWizardNewVM *pWizard);
     /** Return false if ISO path is not empty but points to an missing or unreadable file. */
     bool checkISOFile(UINameAndSystemEditor *pNameAndSystemEditor);
-//     /** @name Property getters/setters
-//       * @{ */
 
 //         QString guestOSFamiyId() const;
-
 //         const QString &detectedOSTypeId() const;
-
 //         bool skipUnattendedInstall() const;
-//     /** @} */
-
-
-//     /** Colors the widgets red if they cause isComplete to fail. */
-//     void retranslateWidgets();
-//     QString ISOFilePath() const;
-
-
-//
-
-// private:
-
-
-// };
 }
 
 /** 1st page of the New Virtual Machine wizard (basic extension). */

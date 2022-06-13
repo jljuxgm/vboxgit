@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMUnattendedPageBasic.h 90033 2021-07-05 15:38:36Z vboxsync $ */
+/* $Id: UIWizardNewVMUnattendedPageBasic.h 90037 2021-07-05 19:14:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMUnattendedPageBasic class declaration.
  */
@@ -86,6 +86,8 @@ private slots:
 
     void sltInstallGACheckBoxToggle(bool fChecked);
     void sltGAISOPathChanged(const QString &strPath);
+    // void sltPasswordChanged(const QString &strPassword);
+    // void sltUserNameChanged(const QString &strUserName);
 
 private:
 
