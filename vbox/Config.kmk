@@ -1,4 +1,4 @@
-# $Id: Config.kmk 93275 2022-01-17 15:01:26Z vboxsync $
+# $Id: Config.kmk 93277 2022-01-17 15:27:12Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -5057,7 +5057,7 @@ TEMPLATE_VBoxR0_LDFLAGS            += -Merge:VTGPrLc.Data=VTGPrLc.Begin -Merge:V
 TEMPLATE_VBoxR0_LDFLAGS.win.amd64   = $(VBOX_VCC_LD_HIGH_ENTRYOPY_VA)
  ifneq ($(VBOX_VCC_CC_GUARD_CF),)
 TEMPLATE_VBoxR0_LDFLAGS.win.amd64  += -Include:__security_init_cookie  -Export:ModuleInitSecurityCookie=__security_init_cookie
-TEMPLATE_VBoxR0_LDFLAGS.win.x86    += -Include:___security_init_cookie -Export:ModuleInitSecurityCookie=___security_init_cookie
+TEMPLATE_VBoxR0_LDFLAGS.win.x86    += -Include:___security_init_cookie -Export:ModuleInitSecurityCookie=__security_init_cookie
  endif
 TEMPLATE_VBoxR0_LIBS                = \
 	$(PATH_STAGE_LIB)/RuntimeR0Stub$(VBOX_SUFF_LIB)
@@ -8689,7 +8689,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 93275 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 93277 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)

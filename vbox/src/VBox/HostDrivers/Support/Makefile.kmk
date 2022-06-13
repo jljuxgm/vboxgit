@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 93275 2022-01-17 15:01:26Z vboxsync $
+# $Id: Makefile.kmk 93277 2022-01-17 15:27:12Z vboxsync $
 ## @file
 # Sub-Makefile for the support library and the drivers/modules/kexts it uses.
 #
@@ -539,7 +539,7 @@ VBoxSupLib_LIBS.win.x86 = \
  	$(PATH_TOOL_$(TEMPLATE_VBOXR3STATIC_TOOL.win.x86)_LIB)/libcmt.lib   # for __chkstk
 VBoxSupLib_LIBS.win.amd64 = \
  	$(PATH_TOOL_$(TEMPLATE_VBOXR3STATIC_TOOL.win.amd64)_LIB)/libcmt.lib # for __chkstk
-VBoxSupLib_VBOX_IMPORT_CHECKER.win.x86   = w2k
+VBoxSupLib_VBOX_IMPORT_CHECKER.win.x86   = xp
 VBoxSupLib_VBOX_IMPORT_CHECKER.win.amd64 = xp64
 
 
