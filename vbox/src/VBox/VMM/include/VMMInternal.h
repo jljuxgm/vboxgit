@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 90970 2021-08-27 22:14:33Z vboxsync $ */
+/* $Id: VMMInternal.h 90972 2021-08-27 23:00:48Z vboxsync $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -122,6 +122,8 @@ typedef struct VMMR3CPULOGGER
     uint32_t                cbDropped;
     STAMCOUNTER             StatFlushes;
     STAMCOUNTER             StatCannotBlock;
+    STAMCOUNTER             StatRaces;
+    STAMCOUNTER             StatRacesReal;
     STAMPROFILE             StatWait;
 } VMMR3CPULOGGER;
 /** Pointer to r0 logger data shared with ring-3. */

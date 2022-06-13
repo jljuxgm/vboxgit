@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 90971 2021-08-27 22:16:50Z vboxsync $ */
+/* $Id: VMMR0.cpp 90972 2021-08-27 23:00:48Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -3222,8 +3222,13 @@ static bool vmmR0LoggerFlushInner(PGVM pGVM, PGVMCPU pGVCpu, uint32_t idxLogger,
             /*
              * We always switch buffer if we have more than one.
              */
+#if VMMLOGGER_BUFFER_COUNT == 1
+            fFlushedBuffer = true;
+#else
             AssertCompile(VMMLOGGER_BUFFER_COUNT >= 1);
-            fFlushedBuffer = VMMLOGGER_BUFFER_COUNT == 1;
+            pShared->idxBuf = (idxBuffer + 1) % VMMLOGGER_BUFFER_COUNT;
+            fFlushedBuffer = false;
+#endif
         }
         else
         {
