@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tdAudioTest.py 92021 2021-10-25 10:19:08Z vboxsync $
+# $Id: tdAudioTest.py 92085 2021-10-26 14:51:58Z vboxsync $
 
 """
 AudioTest test driver which invokes the VKAT (Validation Kit Audio Test)
@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 92021 $"
+__version__ = "$Revision: 92085 $"
 
 # Standard Python imports.
 from datetime import datetime
@@ -670,6 +670,15 @@ class tdAudioTest(vbox.TestDriver):
                                   ],
                                   fIgnoreErrors = True);
 
+        # A bit of diagnosis on error.
+        ## @todo Remove this later when stuff runs stable.
+        if not fRc:
+            reporter.log('Kernel messages:');
+            sCmdDmesg = oTestVm.pathJoin(self.getGuestSystemDir(oTestVm), 'dmesg');
+            oTxsSession.syncExec(sCmdDmesg, (sCmdDmesg), fIgnoreErrors = True);
+            reporter.log('Loaded kernel modules:');
+            sCmdLsMod = oTestVm.pathJoin(self.getGuestSystemAdminDir(oTestVm), 'lsmod');
+            oTxsSession.syncExec(sCmdLsMod, (sCmdLsMod), fIgnoreErrors = True);
 
         # Always attach the VM log to the test report, as we want to see what the Validation Kit audio driver does.
         oSession.addLogsToReport();
