@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testboxcommand.py 93115 2022-01-01 11:31:46Z vboxsync $
+# $Id: testboxcommand.py 94125 2022-03-08 14:15:09Z vboxsync $
 
 """
 TestBox Script - Command Processor.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 93115 $"
+__version__ = "$Revision: 94125 $"
 
 # Standard python imports.
 import os;
@@ -128,12 +128,9 @@ class TestBoxCommand(object):
         self._oTestBoxScript.mountShares(); # Raises exception on failure.
 
         # Kick off the task and ACK the command.
-        self._oCurTaskLock.acquire();
-        try:
+        with self._oCurTaskLock:
             self._oCurTask = TestBoxExecTask(self._oTestBoxScript, idResult = idResult, sScriptZips = sScriptZips,
                                              sScriptCmdLine = sScriptCmdLine, cSecTimeout = cSecTimeout);
-        finally:
-            self._oCurTaskLock.release();
         oConnection.sendAckAndClose(constants.tbresp.CMD_EXEC);
         return True;
 
@@ -326,9 +323,8 @@ class TestBoxCommand(object):
         except:
             return (-1, '', False);
 
-        self._oCurTaskLock.acquire();
-        self._oCurTask = oTask;
-        self._oCurTaskLock.release();
+        with self._oCurTaskLock:
+            self._oCurTask = oTask;
 
         return (oTask.idTestBox, oTask.sTestBoxName, True);
 
@@ -350,8 +346,7 @@ class TestBoxCommand(object):
 
     def _getCurTask(self):
         """ Gets the current task in a paranoidly safe manny. """
-        self._oCurTaskLock.acquire();
-        oCurTask = self._oCurTask;
-        self._oCurTaskLock.release();
+        with self._oCurTaskLock:
+            oCurTask = self._oCurTask;
         return oCurTask;
 

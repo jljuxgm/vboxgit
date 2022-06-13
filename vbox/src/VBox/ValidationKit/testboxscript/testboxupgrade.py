@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testboxupgrade.py 93115 2022-01-01 11:31:46Z vboxsync $
+# $Id: testboxupgrade.py 94125 2022-03-08 14:15:09Z vboxsync $
 
 """
 TestBox Script - Upgrade from local file ZIP.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 93115 $"
+__version__ = "$Revision: 94125 $"
 
 # Standard python imports.
 import os
@@ -39,9 +39,9 @@ import uuid;
 import zipfile
 
 # Validation Kit imports.
+from common        import utils;
 import testboxcommons
 from testboxscript import TBS_EXITCODE_SYNTAX;
-from common import utils;
 
 # Figure where we are.
 try:    __file__
@@ -126,7 +126,8 @@ def _doUpgradeTestRun(sUpgradeDir):
     testboxcommons.log('Testing the new testbox script (%s)...' % (asArgs[0],));
     if sys.executable:
         asArgs.insert(0, sys.executable);
-    oChild = subprocess.Popen(asArgs, shell = False, stdout=subprocess.PIPE, stderr=subprocess.STDOUT);
+    oChild = subprocess.Popen(asArgs, shell = False,                                        # pylint: disable=consider-using-with
+                              stdout=subprocess.PIPE, stderr=subprocess.STDOUT);
 
     asBuf = []
     oThread = threading.Thread(target=_doUpgradeThreadProc, args=(oChild.stdout, asBuf));
@@ -299,7 +300,7 @@ def upgradeFromZip(sZipFile):
     #       they'll be restricted to the one zip and the one upgrade dir.
     #       We'll remove them next time we upgrade.
     #
-    oZip = zipfile.ZipFile(sZipFile, 'r');
+    oZip = zipfile.ZipFile(sZipFile, 'r');                  # No 'with' support in 2.6 class: pylint: disable=consider-using-with
     asMembers = _doUpgradeCheckZip(oZip);
     if asMembers is None:
         return False;
