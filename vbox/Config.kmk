@@ -1,4 +1,4 @@
-# $Id: Config.kmk 93254 2022-01-16 23:15:57Z vboxsync $
+# $Id: Config.kmk 93255 2022-01-16 23:17:03Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -343,8 +343,8 @@ VBOX_WITH_NEW_XCODE := 1
 endif
 # Select new VC++ on Windows.
 VBOX_WITH_NEW_VCC = 1
-# disable control flow guards for now, issues with hardening.
-VBOX_WITHOUT_CONTROL_FLOW_GUARD = 1
+# Use this to disable control flow.
+#VBOX_WITHOUT_CONTROL_FLOW_GUARD = 1
 # Select Windows 11 SDK.
 VBOX_WITH_NEW_WINDOWS_SDK = 1
 # Select Windows 11 DDK.
@@ -8673,7 +8673,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 93254 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 93255 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
