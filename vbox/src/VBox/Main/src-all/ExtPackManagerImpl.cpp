@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.cpp 91718 2021-10-14 11:43:12Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.cpp 91722 2021-10-14 12:25:38Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -2014,10 +2014,10 @@ ExtPack::i_hlpCreateVetoEvent(PCVBOXEXTPACKHLP pHlp,
 
 /*static*/ DECLCALLBACK(const char *)
 ExtPack::i_hlpTranslate(PCVBOXEXTPACKHLP pHlp,
-                        const char *pszComponent,
-                        const char *pszSourceText,
-                        const char *pszComment /* = NULL */,
-                        const int   iNum /* = -1 */)
+                        const char  *pszComponent,
+                        const char  *pszSourceText,
+                        const char  *pszComment /* = NULL */,
+                        const size_t aNum /* = -1 */)
 {
     /*
      * Validate the input and get our bearings.
@@ -2029,11 +2029,11 @@ ExtPack::i_hlpTranslate(PCVBOXEXTPACKHLP pHlp,
 
 #ifdef VBOX_WITH_MAIN_NLS
     return VirtualBoxTranslator::translate(m->pTrComponent, pszComponent,
-                                           pszSourceText,  pszComment, iNum);
+                                           pszSourceText,  pszComment, aNum);
 #else
     NOREF(pszComponent);
     NOREF(pszComment);
-    NOREF(iNum);
+    NOREF(aNum);
     return pszSourceText;
 #endif
 }
