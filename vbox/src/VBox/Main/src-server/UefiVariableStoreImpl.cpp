@@ -1,4 +1,4 @@
-/* $Id: UefiVariableStoreImpl.cpp 91401 2021-09-27 14:01:54Z vboxsync $ */
+/* $Id: UefiVariableStoreImpl.cpp 91408 2021-09-27 15:33:28Z vboxsync $ */
 /** @file
  * VirtualBox COM NVRAM store class implementation
  */
@@ -262,7 +262,6 @@ HRESULT UefiVariableStore::enrollDefaultMsSignatures(void)
  * Sets the given attributes for the given EFI variable store variable.
  *
  * @returns IPRT status code.
- * @param   hVfsVarStore        Handle of the EFI variable store VFS.
  * @param   pszVar              The variable to set the attributes for.
  * @param   fAttr               The attributes to set, see EFI_VAR_HEADER_ATTR_XXX.
  */
@@ -291,7 +290,6 @@ int UefiVariableStore::i_uefiVarStoreSetVarAttr(const char *pszVar, uint32_t fAt
  * Adds the given variable to the variable store.
  *
  * @returns IPRT status code.
- * @param   hVfsVarStore        Handle of the EFI variable store VFS.
  * @param   pGuid               The EFI GUID of the variable.
  * @param   pszVar              The variable name.
  * @param   fAttr               Attributes for the variable.
