@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 92191 2021-11-03 14:11:43Z vboxsync $ */
+/* $Id: UINotificationObjects.cpp 92477 2021-11-17 12:55:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -659,15 +659,6 @@ void UINotificationMessage::cannotAcquireSnapshotParameter(const CSnapshot &comS
 }
 
 /* static */
-void UINotificationMessage::cannotAcquireAttachmentParameter(const CMediumAttachment &comAttachment)
-{
-    createMessage(
-        QApplication::translate("UIMessageCenter", "Medium attachment failure ..."),
-        QApplication::translate("UIMessageCenter", "Failed to acquire attachment parameter.") +
-        UIErrorString::formatErrorInfo(comAttachment));
-}
-
-/* static */
 void UINotificationMessage::cannotAcquireDHCPServerParameter(const CDHCPServer &comServer)
 {
     createMessage(
@@ -986,16 +977,6 @@ void UINotificationMessage::cannotCreateMediumStorage(const CVirtualBox &comVBox
                                                    .arg(strPath) +
         UIErrorString::formatErrorInfo(comVBox),
         QString(), QString(), pParent);
-}
-
-/* static */
-void UINotificationMessage::cannotOpenKnownMedium(const CVirtualBox &comVBox, const QUuid &uMediumId)
-{
-    createMessage(
-        QApplication::translate("UIMessageCenter", "Can't open medium ..."),
-        QApplication::translate("UIMessageCenter", "Failed to open the medium with following ID: <nobr><b>%1</b></nobr>.")
-                                                   .arg(uMediumId.toString()) +
-        UIErrorString::formatErrorInfo(comVBox));
 }
 
 /* static */
