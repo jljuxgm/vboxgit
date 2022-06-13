@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 91580 2021-10-06 07:22:04Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 91587 2021-10-06 09:37:08Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -15972,8 +15972,7 @@ HMVMX_EXIT_DECL hmR0VmxExitIoInstr(PVMCPUCC pVCpu, PVMXTRANSIENT pVmxTransient)
                       || rcStrict == VINF_EM_RAW_EMULATE_INSTR
                       || rcStrict == VINF_EM_DBG_BREAKPOINT
                       || rcStrict == VINF_EM_RAW_GUEST_TRAP
-                      || rcStrict == VINF_EM_RAW_TO_R3
-                      || rcStrict == VINF_TRPM_XCPT_DISPATCHED, ("%Rrc\n", VBOXSTRICTRC_VAL(rcStrict)));
+                      || rcStrict == VINF_EM_RAW_TO_R3, ("%Rrc\n", VBOXSTRICTRC_VAL(rcStrict)));
 # endif
         }
 #endif
