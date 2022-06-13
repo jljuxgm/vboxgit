@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 94812 2022-05-04 08:45:21Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 94846 2022-05-05 12:33:31Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -8044,6 +8044,7 @@ HRESULT Console::i_consoleInitReleaseLog(const ComPtr<IMachine> aMachine)
 
             pLogOutputIf    = &m_LogOutputIf;
             pvLogOutputUser = this;
+            m_fEncryptedLog = true;
         }
     }
 
