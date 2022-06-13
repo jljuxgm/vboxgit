@@ -1,4 +1,4 @@
-/* $Id: DrvTpmEmu.cpp 91137 2021-09-07 11:12:01Z vboxsync $ */
+/* $Id: DrvTpmEmu.cpp 91867 2021-10-20 09:05:23Z vboxsync $ */
 /** @file
  * TPM emulator using a TCP/socket interface to talk to swtpm (https://github.com/stefanberger/swtpm).
  */
@@ -819,7 +819,8 @@ static DECLCALLBACK(int) drvTpmEmuConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, 
 {
     RT_NOREF(fFlags);
     PDMDRV_CHECK_VERSIONS_RETURN(pDrvIns);
-    PDRVTPMEMU pThis = PDMINS_2_DATA(pDrvIns, PDRVTPMEMU);
+    PDRVTPMEMU      pThis = PDMINS_2_DATA(pDrvIns, PDRVTPMEMU);
+    PCPDMDRVHLPR3   pHlp  = pDrvIns->pHlpR3;
 
     /*
      * Init the static parts.
@@ -847,7 +848,7 @@ static DECLCALLBACK(int) drvTpmEmuConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, 
     PDMDRV_VALIDATE_CONFIG_RETURN(pDrvIns, "Location|BufferSize", "");
 
     char szLocation[_1K];
-    int rc = CFGMR3QueryString(pCfg, "Location", &szLocation[0], sizeof(szLocation));
+    int rc = pHlp->pfnCFGMQueryString(pCfg, "Location", &szLocation[0], sizeof(szLocation));
     if (RT_FAILURE(rc))
         return PDMDrvHlpVMSetError(pDrvIns, rc, RT_SRC_POS,
                                    N_("Configuration error: querying \"Location\" resulted in %Rrc"), rc);
@@ -930,7 +931,7 @@ static DECLCALLBACK(int) drvTpmEmuConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, 
                                    pDrvIns->iInstance, szLocation);
 
     /* Configure the buffer size. */
-    rc = CFGMR3QueryU32Def(pCfg, "BufferSize", &pThis->cbBuffer, cbBufferMax);
+    rc = pHlp->pfnCFGMQueryU32Def(pCfg, "BufferSize", &pThis->cbBuffer, cbBufferMax);
     if (RT_FAILURE(rc))
         return PDMDrvHlpVMSetError(pDrvIns, rc, RT_SRC_POS,
                                    N_("Configuration error: querying \"BufferSize\" resulted in %Rrc"), rc);
