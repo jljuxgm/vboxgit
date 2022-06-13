@@ -1,4 +1,4 @@
-/* $Id: PDMAllCritSect.cpp 90420 2021-07-30 00:42:39Z vboxsync $ */
+/* $Id: PDMAllCritSect.cpp 90428 2021-07-30 13:57:21Z vboxsync $ */
 /** @file
  * PDM - Write-Only Critical Section, All Contexts.
  */
@@ -515,6 +515,10 @@ DECL_FORCE_INLINE(int) pdmCritSectEnter(PVMCC pVM, PPDMCRITSECT pCritSect, int r
  *                              and the section is busy.  Pass VINF_SUCCESS to
  *                              acquired the critical section thru a ring-3
  *                              call if necessary.
+ *
+ * @note    Even callers setting @a rcBusy to VINF_SUCCESS must either handle
+ *          possible failures in ring-0 or apply an AssertReleaseRC() to the
+ *          return value of this function.
  */
 VMMDECL(int) PDMCritSectEnter(PVMCC pVM, PPDMCRITSECT pCritSect, int rcBusy)
 {
