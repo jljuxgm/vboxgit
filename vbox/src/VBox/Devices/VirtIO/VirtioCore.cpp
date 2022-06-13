@@ -1,4 +1,4 @@
-/* $Id: VirtioCore.cpp 93007 2021-12-17 09:25:53Z vboxsync $ */
+/* $Id: VirtioCore.cpp 93009 2021-12-17 09:38:06Z vboxsync $ */
 
 /** @file
  * VirtioCore - Virtio Core (PCI, feature & config mgt, queue mgt & proxy, notification mgt)
@@ -1052,7 +1052,7 @@ int virtioCoreR3VirtqUsedBufPut(PPDMDEVINS pDevIns, PVIRTIOCORE pVirtio, uint16_
         Log6Func(("    Enqueue desc chain head idx %u to %s used ring @ %u\n", pVirtqBuf->uHeadIdx,
                 VIRTQNAME(pVirtio, uVirtq), pVirtq->uUsedIdxShadow));
 
-        virtioWriteUsedElem(pDevIns, pVirtio, pVirtq, pVirtq->uUsedIdxShadow++, pVirtqBuf->uHeadIdx, cbEnqueue);
+        virtioWriteUsedElem(pDevIns, pVirtio, pVirtq, pVirtq->uUsedIdxShadow++, pVirtqBuf->uHeadIdx, (uint32_t)cbEnqueue);
 
 #ifdef LOG_ENABLED
         if (LogIs6Enabled())
@@ -2575,7 +2575,7 @@ int virtioCoreR3Init(PPDMDEVINS pDevIns, PVIRTIOCORE pVirtio, PVIRTIOCORECC pVir
                            "Total number of allocated descriptor chains",   "DescChainsAllocated");
     PDMDevHlpSTAMRegisterF(pDevIns, &pVirtio->StatDescChainsFreed,      STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT,
                            "Total number of freed descriptor chains",       "DescChainsFreed");
-    PDMDevHlpSTAMRegisterF(pDevIns, &pVirtio->StatDescChainsSegsIquin,     STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT,
+    PDMDevHlpSTAMRegisterF(pDevIns, &pVirtio->StatDescChainsSegsIn,     STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT,
                            "Total number of inbound segments",              "DescChainsSegsIn");
     PDMDevHlpSTAMRegisterF(pDevIns, &pVirtio->StatDescChainsSegsOut,    STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT,
                            "Total number of outbound segments",             "DescChainsSegsOut");
