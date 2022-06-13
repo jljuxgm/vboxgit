@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 90888 2021-08-25 16:33:13Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 90889 2021-08-25 16:40:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -384,22 +384,6 @@ UIMachineView* UIMachineLogic::dockPreviewView() const
     return 0;
 }
 #endif /* VBOX_WS_MAC */
-
-void UIMachineLogic::detach()
-{
-    /* Enable 'manual-override',
-     * preventing automatic Runtime UI closing: */
-    uisession()->setManualOverrideMode(true);
-
-    /* Was the step successful? */
-    bool fSuccess = true;
-    LogRel(("GUI: Passing request to detach UI from machine-logic to UI session.\n"));
-    fSuccess = uisession()->detach();
-
-    /* Manually close Runtime UI: */
-    if (fSuccess)
-        uisession()->closeRuntimeUI();
-}
 
 void UIMachineLogic::shutdown()
 {
@@ -1870,7 +1854,7 @@ void UIMachineLogic::sltDetach()
     }
 
     LogRel(("GUI: User requested to detach GUI.\n"));
-    detach();
+    uisession()->detachUi();
 }
 
 void UIMachineLogic::sltSaveState()

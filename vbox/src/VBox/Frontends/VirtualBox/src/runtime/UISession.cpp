@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 90888 2021-08-25 16:33:13Z vboxsync $ */
+/* $Id: UISession.cpp 90889 2021-08-25 16:40:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -319,10 +319,15 @@ bool UISession::powerUp()
     return true;
 }
 
-bool UISession::detach()
+void UISession::detachUi()
 {
-    /* Nothing here for now: */
-    return true;
+    /* Enable 'manual-override',
+     * preventing automatic Runtime UI closing: */
+    setManualOverrideMode(true);
+
+    /* Manually close Runtime UI: */
+    LogRel(("GUI: Detaching UI..\n"));
+    closeRuntimeUI();
 }
 
 void UISession::saveState()
