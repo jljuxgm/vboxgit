@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMDiskPageBasic.cpp 90413 2021-07-29 15:54:11Z vboxsync $ */
+/* $Id: UIWizardNewVMDiskPageBasic.cpp 90427 2021-07-30 13:38:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMDiskPageBasic class implementation.
  */
@@ -90,23 +90,8 @@ QString UIWizardNewVMDiskPage::selectNewMediumLocation(UIWizardNewVM *pWizard)
     strChosenFilePath = QIFileDialog::getSaveFileName(folder.absoluteFilePath(strFileName),
                                                               strBackendsList, pWizard,
                                                               UICommon::tr("Please choose a location for new virtual hard disk file"));
-
-    // if (!strChosenFilePath.isEmpty())
-    // {
-    //     /* If valid file extension is missed, append it: */
-    //     if (QFileInfo(strChosenFilePath).suffix().isEmpty())
-    //          strChosenFilePath += QString(".%1").arg(m_strDefaultExtension);
-    // }
     return strChosenFilePath;
-    //     if (m_pLocationEditor)
-    //     {
-    //         m_pLocationEditor->setText(QDir::toNativeSeparators(strChosenFilePath));
-    //         m_pLocationEditor->selectAll();
-    //         m_pLocationEditor->setFocus();
-    //     }
-    // }
 }
-
 
 UIWizardNewVMDiskPageBasic::UIWizardNewVMDiskPageBasic()
     : m_pDiskSourceButtonGroup(0)
