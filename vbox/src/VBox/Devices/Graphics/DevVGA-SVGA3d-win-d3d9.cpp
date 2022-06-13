@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-win-d3d9.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-win-d3d9.cpp 93307 2022-01-18 11:31:09Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device Direct3D 9 backend.
  */
@@ -925,9 +925,9 @@ HRESULT D3D9Conversion::setConversionState(IDirect3DTexture9 *pSourceTexture,
      * https://docs.microsoft.com/en-us/windows/win32/direct3d9/directly-mapping-texels-to-pixels
      */
     float const xLeft   = -0.5f;
-    float const xRight  = (cWidth - 1) - 0.5f;
+    float const xRight  = (float)(cWidth - 1) - 0.5f;
     float const yTop    = -0.5f;
-    float const yBottom = (cHeight - 1) - 0.5f;
+    float const yBottom = (float)(cHeight - 1) - 0.5f;
 
     Vertex const aVertices[] =
     {
