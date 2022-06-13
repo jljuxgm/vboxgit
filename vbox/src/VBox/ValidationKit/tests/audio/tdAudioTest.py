@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tdAudioTest.py 90646 2021-08-12 10:11:37Z vboxsync $
+# $Id: tdAudioTest.py 90651 2021-08-12 10:27:14Z vboxsync $
 
 """
 AudioTest test driver which invokes the VKAT (Validation Kit Audio Test)
@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 90646 $"
+__version__ = "$Revision: 90651 $"
 
 # Standard Python imports.
 import os
@@ -270,7 +270,7 @@ class tdAudioTest(vbox.TestDriver):
 
         reporter.log('Disabling firewall on guest (type: %s) ...' % (sOsType,));
 
-        if len(asArgs) > 0:
+        if asArgs:
             fRc = self.txsRunTest(oTxsSession, 'Disabling guest firewall', \
                                   oTestVm.pathJoin(self.getGuestSystemDir(oTestVm), asArgs[0]), asArgs);
             if not fRc:
@@ -301,7 +301,7 @@ class tdAudioTest(vbox.TestDriver):
             #        Windows hosts than Vista.
             asArgs = self.getWinFirewallArgsDisable('vista');
 
-        if len(asArgs) > 0:
+        if asArgs:
             oProcess = utils.sudoProcessPopen(asArgs, stdout=subprocess.PIPE, stdin=subprocess.PIPE,
                                               stderr=subprocess.PIPE, shell = False, close_fds = False);
             if oProcess:
