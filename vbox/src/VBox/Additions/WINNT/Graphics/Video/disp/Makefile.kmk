@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 94485 2022-04-06 07:00:56Z vboxsync $
+# $Id: Makefile.kmk 94489 2022-04-06 07:49:03Z vboxsync $
 ## @file
 # Makefile for the Windows guest display driver.
 #
@@ -190,7 +190,7 @@ VBoxDX_INCS     = \
 	$(PATH_ROOT)/src/VBox/Additions/WINNT/Graphics/Video/disp/wddm/shared \
 	$(PATH_ROOT)/src/VBox/Additions/WINNT/Graphics/Video/common/wddm \
 	$(PATH_ROOT)/src/VBox/Additions/3D/win/include \
-	$(PATH_ROOT)/src/VBox/Additions/3D/mesa/mesa-17.3.9/src/gallium/drivers/svga/include \
+	$(PATH_ROOT)/src/VBox/Devices/Graphics/vmsvga_include \
 	$(VBOX_GRAPHICS_INCS)
 VBoxDX_SOURCES  = \
 	wddm/dx/VBoxDXDDI.cpp \
