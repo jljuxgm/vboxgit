@@ -1,4 +1,4 @@
-/* $Id: NEMInternal.h 94425 2022-03-31 23:57:15Z vboxsync $ */
+/* $Id: NEMInternal.h 94791 2022-05-03 09:36:11Z vboxsync $ */
 /** @file
  * NEM - Internal header file.
  */
@@ -43,9 +43,6 @@ RT_C_DECLS_BEGIN
  * @{
  */
 
-#if defined(VBOX_WITH_PGM_NEM_MODE) && !defined(VBOX_WITH_NATIVE_NEM) && !defined(RT_ARCH_ARM64)
-# error "VBOX_WITH_PGM_NEM_MODE requires VBOX_WITH_NATIVE_NEM to be defined"
-#endif
 #if defined(VBOX_WITH_NATIVE_NEM) && !defined(VBOX_WITH_PGM_NEM_MODE)
 # error "VBOX_WITH_NATIVE_NEM requires VBOX_WITH_PGM_NEM_MODE to be defined"
 #endif
