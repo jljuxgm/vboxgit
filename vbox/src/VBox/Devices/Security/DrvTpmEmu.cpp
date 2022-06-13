@@ -1,4 +1,4 @@
-/* $Id: DrvTpmEmu.cpp 91048 2021-09-01 07:57:53Z vboxsync $ */
+/* $Id: DrvTpmEmu.cpp 91067 2021-09-01 16:07:03Z vboxsync $ */
 /** @file
  * TPM emulator using a TCP/socket interface to talk to swtpm (https://github.com/stefanberger/swtpm).
  */
@@ -656,7 +656,7 @@ static DECLCALLBACK(int) drvTpmEmuShutdown(PPDMITPMCONNECTOR pInterface)
 static DECLCALLBACK(int) drvTpmEmuReset(PPDMITPMCONNECTOR pInterface)
 {
     RT_NOREF(pInterface);
-    return VERR_NOT_IMPLEMENTED;
+    return VINF_SUCCESS;
 }
 
 
