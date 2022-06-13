@@ -1,4 +1,4 @@
-/* $Id: AudioTest.cpp 92261 2021-11-08 10:31:38Z vboxsync $ */
+/* $Id: AudioTest.cpp 92298 2021-11-09 18:10:13Z vboxsync $ */
 /** @file
  * Audio testing routines.
  *
@@ -2514,7 +2514,7 @@ int AudioTestBeaconAddConsecutive(PAUDIOTESTTONEBEACON pBeacon, const uint8_t *p
         }
     }
 
-    if (offBeacon != UINT32_MAX)
+    if (offBeacon != UINT64_MAX)
     {
         if (pOff)
             *pOff = offBeacon;
