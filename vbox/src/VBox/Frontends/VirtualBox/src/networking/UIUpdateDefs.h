@@ -1,4 +1,4 @@
-/* $Id: UIUpdateDefs.h 94733 2022-04-28 12:24:47Z vboxsync $ */
+/* $Id: UIUpdateDefs.h 94738 2022-04-28 17:13:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Update routine related declarations.
  */
@@ -95,9 +95,9 @@ public:
     /** Returns update period. */
     UpdatePeriodType updatePeriod() const;
     /** Returns update date. */
-    QString date() const;
-    /** Returns internal update date. */
-    QDate internalDate() const;
+    QDate date() const;
+    /** Returns update date as string. */
+    QString dateToString() const;
     /** Returns update channel. */
     KUpdateChannel updateChannel() const;
     /** Returns update channel name. */
@@ -123,24 +123,19 @@ public:
 
 private:
 
-    /** Decodes data. */
-    void decode();
-    /** Encodes data. */
-    void encode();
-
     /** Holds the populated list of update period options. */
-    static VBoxUpdateDayList  s_days;
+    static VBoxUpdateDayList s_days;
 
     /** Holds the update data. */
-    QString           m_strData;
+    QString  m_strData;
     /** Holds the update period. */
-    UpdatePeriodType  m_enmUpdatePeriod;
+    UpdatePeriodType      m_enmUpdatePeriod;
     /** Holds the update date. */
-    QDate             m_date;
+    QDate           m_date;
     /** Holds the update channel. */
-    KUpdateChannel    m_enmUpdateChannel;
+    KUpdateChannel  m_enmUpdateChannel;
     /** Holds the update version. */
-    UIVersion         m_version;
+    UIVersion       m_version;
 };
 
 

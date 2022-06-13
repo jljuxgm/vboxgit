@@ -1,4 +1,4 @@
-/* $Id: UIUpdateSettingsEditor.cpp 94733 2022-04-28 12:24:47Z vboxsync $ */
+/* $Id: UIUpdateSettingsEditor.cpp 94738 2022-04-28 17:13:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUpdateSettingsEditor class implementation.
  */
@@ -140,7 +140,7 @@ void UIUpdateSettingsEditor::sltHandleUpdateToggle(bool fEnabled)
 void UIUpdateSettingsEditor::sltHandleUpdatePeriodChange()
 {
     if (m_pFieldUpdateDate)
-        m_pFieldUpdateDate->setText(VBoxUpdateData(updatePeriod(), updateChannel()).date());
+        m_pFieldUpdateDate->setText(VBoxUpdateData(updatePeriod(), updateChannel()).dateToString());
 }
 
 void UIUpdateSettingsEditor::prepare()
