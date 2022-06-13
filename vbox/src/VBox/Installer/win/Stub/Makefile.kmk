@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 93322 2022-01-18 15:23:38Z vboxsync $
+# $Id: Makefile.kmk 94352 2022-03-24 12:58:54Z vboxsync $
 ## @file
 # Sub-Makefile for the stub installer.
 #
@@ -73,7 +73,7 @@ ifdef VBOX_SIGNING_MODE
 	$(VBOX_RTSIGNTOOL) extract-exe-signer-cert --signature-index 0 --exe "$(PATH_STAGE_SYS)/VBoxSup.sys" --output "$@.cer0" --der
 	$(VBOX_BIN2C) -ascii --append VBoxStubTrustedCert0 "$@.cer0" $@
 	$(APPEND) "$@.array" "    { g_abVBoxStubTrustedCert0, sizeof(g_abVBoxStubTrustedCert0) }, "
- if defined(VBOX_CERTIFICATE_SHA2_SUBJECT_NAME) || $(intersects win all 1,$(VBOX_WITH_CORP_CODE_SIGNING))
+ if defined(VBOX_CERTIFICATE_SUBJECT_NAME) && defined(VBOX_CERTIFICATE_SHA2_SUBJECT_NAME)
 	$(VBOX_RTSIGNTOOL) extract-exe-signer-cert --signature-index 1 --exe "$(PATH_STAGE_SYS)/VBoxSup.sys" --output "$@.cer1" --der
 	$(VBOX_BIN2C) -ascii --append VBoxStubTrustedCert1 "$@.cer1" $@
 	$(APPEND) "$@.array" "    { g_abVBoxStubTrustedCert1, sizeof(g_abVBoxStubTrustedCert1) }, "
