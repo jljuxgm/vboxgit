@@ -19,7 +19,7 @@
 ]>
 <refentry id="vboxmanage-import" lang="en">
   <refentryinfo>
-    <pubdate>$Date: 2022-01-29 00:09:52 +0800 (Sat, 29 Jan 2022) $</pubdate>
+    <pubdate>$Date: 2022-02-12 04:10:19 +0800 (Sat, 12 Feb 2022) $</pubdate>
     <title>VBoxManage import</title>
   </refentryinfo>
 
@@ -31,7 +31,7 @@
   <refnamediv>
     <refname>VBoxManage-import</refname>
     <refpurpose>import a virtual appliance in OVF format or from a cloud service and create virtual machines</refpurpose>
-    <refclass>Oracle VM VirtualBox</refclass>
+    <refclass>&product-name;</refclass>
   </refnamediv>
 
   <refsynopsisdiv>

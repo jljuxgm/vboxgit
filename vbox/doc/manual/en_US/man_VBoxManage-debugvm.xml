@@ -16,7 +16,7 @@
 <refentry id="vboxmanage-debugvm" lang="en">
 
   <refentryinfo>
-    <pubdate>$Date: 2022-01-28 22:34:46 +0800 (Fri, 28 Jan 2022) $</pubdate>
+    <pubdate>$Date: 2022-02-12 04:10:19 +0800 (Sat, 12 Feb 2022) $</pubdate>
     <title>VBoxManage debugvm</title>
   </refentryinfo>
 
@@ -28,7 +28,7 @@
   <refnamediv>
     <refname>VBoxManage-debugvm</refname>
     <refpurpose>introspection and guest debugging</refpurpose>
-    <refclass>Oracle VM VirtualBox</refclass>
+    <refclass>&product-name;</refclass>
   </refnamediv>
 
   <refsynopsisdiv>

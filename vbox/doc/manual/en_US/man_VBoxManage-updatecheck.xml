@@ -16,7 +16,7 @@
 <refentry id="vboxmanage-updatecheck" lang="en">
 
   <refentryinfo>
-    <pubdate>$Date: 2020-08-15 05:29:46 +0800 (Sat, 15 Aug 2020) $</pubdate>
+    <pubdate>$Date: 2022-02-12 04:10:19 +0800 (Sat, 12 Feb 2022) $</pubdate>
     <title>VBoxManage updatecheck</title>
   </refentryinfo>
 
@@ -28,7 +28,7 @@
   <refnamediv>
     <refname>VBoxManage-updatecheck</refname>
     <refpurpose>Check for a newer version of VirtualBox</refpurpose>
-    <refclass>Oracle VM VirtualBox</refclass>
+    <refclass>&product-name;</refclass>
   </refnamediv>
 
   <refsynopsisdiv>

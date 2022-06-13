@@ -19,7 +19,7 @@
 ]>
 <refentry id="vboxmanage-createvm" lang="en">
   <refentryinfo>
-    <pubdate>$Date: 2021-06-26 04:54:24 +0800 (Sat, 26 Jun 2021) $</pubdate>
+    <pubdate>$Date: 2022-02-12 04:10:19 +0800 (Sat, 12 Feb 2022) $</pubdate>
     <title>VBoxManage createvm</title>
   </refentryinfo>
 
@@ -31,7 +31,7 @@
   <refnamediv>
     <refname>VBoxManage-createvm</refname>
     <refpurpose>create a new virtual machine</refpurpose>
-    <refclass>Oracle VM VirtualBox</refclass>
+    <refclass>&product-name;</refclass>
   </refnamediv>
 
   <refsynopsisdiv>

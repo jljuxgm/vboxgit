@@ -20,19 +20,19 @@
 <refentry id="vboxmanage-cloud" lang="en">
   <refentryinfo>
     <title>VBoxManage cloud</title>
-    <pubdate>$Date: 2021-09-02 23:38:10 +0800 (Thu, 02 Sep 2021) $</pubdate>
+    <pubdate>$Date: 2022-02-12 04:10:19 +0800 (Sat, 12 Feb 2022) $</pubdate>
   </refentryinfo>
 
   <refmeta>
     <refentrytitle>VBoxManage-cloud</refentrytitle>
     <manvolnum>1</manvolnum>
-    <refmiscinfo class="manual">Oracle VM VirtualBox</refmiscinfo>
+    <refmiscinfo class="manual">&product-name;</refmiscinfo>
   </refmeta>
 
   <refnamediv>
     <refname>VBoxManage-cloud</refname>
     <refpurpose>Manage the cloud entities</refpurpose>
-    <refclass>Oracle VM VirtualBox</refclass>
+    <refclass>&product-name;</refclass>
   </refnamediv>
 
   <refsynopsisdiv>
