@@ -1,4 +1,4 @@
-/* $Id: display-svga-x11.cpp 89749 2021-06-16 17:00:54Z vboxsync $ */
+/* $Id: display-svga-x11.cpp 90036 2021-07-05 18:15:14Z vboxsync $ */
 /** @file
  * X11 guest client - VMSVGA emulation resize event pass-through to X.Org
  * guest driver.
@@ -765,10 +765,10 @@ static DECLCALLBACK(void) vbclSVGAStop(void)
 {
     int rc;
 
-    rc = stopX11MonitorThread(); /** @todo r=andy We ignore rc!? */
+    rc = stopX11MonitorThread();
     if (RT_FAILURE(rc))
     {
-        VBClLogFatalError("cannot stop X11 monitor thread (%Rrc)\n", rc);
+        VBClLogError("cannot stop X11 monitor thread (%Rrc)\n", rc);
         return;
     }
 
