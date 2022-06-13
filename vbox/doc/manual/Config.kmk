@@ -1,4 +1,4 @@
-# $Id: Config.kmk 93807 2022-02-16 19:49:42Z vboxsync $
+# $Id: Config.kmk 93808 2022-02-16 19:53:23Z vboxsync $
 ## @file
 # kBuild Configuration file for the manual.
 #
@@ -59,9 +59,7 @@ VBOX_MANUAL_XML_REFENTRY_FILES := \
 	man_VBoxManage-cloudprofile.xml \
 	man_VBoxManage-signova.xml \
 	man_VBoxManage-modifynvram.xml \
-	$(if $(VBOX_WITH_VMNET), \
 	man_VBoxManage-hostonlynet.xml \
-	,) \
 	man_VBoxManage-updatecheck.xml
 
 ## List of user manual XML files.
