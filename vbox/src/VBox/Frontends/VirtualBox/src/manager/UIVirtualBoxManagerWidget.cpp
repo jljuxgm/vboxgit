@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 92487 2021-11-18 07:23:59Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 92640 2021-11-30 08:40:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -959,6 +959,18 @@ void UIVirtualBoxManagerWidget::updateToolbar()
                 {
                     m_pToolBar->addAction(actionPool()->action(UIActionIndex_M_Activity_S_Export));
                     m_pToolBar->addAction(actionPool()->action(UIActionIndex_M_Activity_S_ToVMActivityOverview));
+                    m_pToolBar->addSeparator();
+                    m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_Settings));
+                    m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_Discard));
+                    m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Machine_M_StartOrShow));
+                    break;
+                }
+                case UIToolType_FileManager:
+                {
+                    m_pToolBar->addAction(m_pActionPool->action(UIActionIndex_M_FileManager_T_GuestSession));
+                    m_pToolBar->addAction(m_pActionPool->action(UIActionIndex_M_FileManager_T_Options));
+                    m_pToolBar->addAction(m_pActionPool->action(UIActionIndex_M_FileManager_T_Operations));
+                    m_pToolBar->addAction(m_pActionPool->action(UIActionIndex_M_FileManager_T_Log));
                     m_pToolBar->addSeparator();
                     m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_Settings));
                     m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_Discard));

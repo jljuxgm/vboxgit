@@ -1,4 +1,4 @@
-/* $Id: UIFileManager.h 92638 2021-11-30 07:20:00Z vboxsync $ */
+/* $Id: UIFileManager.h 92640 2021-11-30 08:40:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManager class declaration.
  */
@@ -103,6 +103,8 @@ public:
     /** Returns the toolbar. */
     QIToolBar *toolbar() const { return m_pToolBar; }
 #endif
+
+    void setMachine(const QUuid &machineId);
 
 protected:
 
