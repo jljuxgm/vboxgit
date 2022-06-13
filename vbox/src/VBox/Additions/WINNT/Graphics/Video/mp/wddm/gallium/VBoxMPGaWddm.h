@@ -1,4 +1,4 @@
-/* $Id: VBoxMPGaWddm.h 94881 2022-05-06 04:45:02Z vboxsync $ */
+/* $Id: VBoxMPGaWddm.h 94975 2022-05-10 07:36:42Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver interface for WDDM kernel mode driver.
  */
@@ -81,8 +81,8 @@ NTSTATUS APIENTRY GaDxgkDdiBuildPagingBuffer(const HANDLE hAdapter,
                                              DXGKARG_BUILDPAGINGBUFFER *pBuildPagingBuffer);
 NTSTATUS APIENTRY GaDxgkDdiPresentDisplayOnly(const HANDLE hAdapter,
                                               const DXGKARG_PRESENT_DISPLAYONLY *pPresentDisplayOnly);
-NTSTATUS APIENTRY GaDxgkDdiPresent(const HANDLE hContext,
-                                   DXGKARG_PRESENT *pPresent);
+NTSTATUS APIENTRY SvgaDxgkDdiPresent(const HANDLE hContext,
+                                     DXGKARG_PRESENT *pPresent);
 NTSTATUS APIENTRY GaDxgkDdiRender(const HANDLE hContext,
                                   DXGKARG_RENDER *pRender);
 NTSTATUS APIENTRY GaDxgkDdiPatch(const HANDLE hAdapter,

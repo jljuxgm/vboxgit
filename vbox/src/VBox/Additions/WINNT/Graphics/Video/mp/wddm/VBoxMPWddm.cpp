@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 94927 2022-05-09 06:48:47Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 94975 2022-05-10 07:36:42Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -5069,7 +5069,7 @@ static NTSTATUS vboxWddmInitFullGraphicsDriver(IN PDRIVER_OBJECT pDriverObject, 
         DriverInitializationData.DxgkDdiBuildPagingBuffer = GaDxgkDdiBuildPagingBuffer;
         DriverInitializationData.DxgkDdiQueryCurrentFence = GaDxgkDdiQueryCurrentFence;
         DriverInitializationData.DxgkDdiRender            = GaDxgkDdiRender;
-        DriverInitializationData.DxgkDdiPresent           = GaDxgkDdiPresent;
+        DriverInitializationData.DxgkDdiPresent           = SvgaDxgkDdiPresent;
     }
     else
 #endif
