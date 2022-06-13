@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 93554 2022-02-02 22:57:02Z vboxsync $ */
+/* $Id: CPUM.cpp 93744 2022-02-14 21:00:26Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -1876,6 +1876,7 @@ void cpumR3InitVmxGuestFeaturesAndMsrs(PVM pVM, PCVMXMSRS pHostVmxMsrs, PVMXMSRS
     pGuestFeat->fVmxVmwriteAll            = (pBaseFeat->fVmxVmwriteAll            & EmuFeat.fVmxVmwriteAll           );
     pGuestFeat->fVmxEntryInjectSoftInt    = (pBaseFeat->fVmxEntryInjectSoftInt    & EmuFeat.fVmxEntryInjectSoftInt   );
 
+#if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
     /* Don't expose VMX preemption timer if host is subject to VMX-preemption timer erratum. */
     if (   pGuestFeat->fVmxPreemptTimer
         && HMIsSubjectToVmxPreemptTimerErratum())
@@ -1884,6 +1885,7 @@ void cpumR3InitVmxGuestFeaturesAndMsrs(PVM pVM, PCVMXMSRS pHostVmxMsrs, PVMXMSRS
         pGuestFeat->fVmxPreemptTimer     = 0;
         pGuestFeat->fVmxSavePreemptTimer = 0;
     }
+#endif
 
     /* Sanity checking. */
     if (!pGuestFeat->fVmxSecondaryExecCtls)
