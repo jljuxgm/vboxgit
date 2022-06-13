@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 89816 2021-06-21 12:22:16Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 90024 2021-07-05 12:16:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -217,9 +217,6 @@ void UIMachineLogic::prepare()
 
 void UIMachineLogic::cleanup()
 {
-    /* Save settings: */
-    saveSettings();
-
 #ifdef VBOX_WITH_DEBUGGER_GUI
     /* Cleanup debugger: */
     cleanupDebugger();
@@ -1514,12 +1511,6 @@ void UIMachineLogic::loadSettings()
             this, &UIMachineLogic::sltDisableHostScreenSaverStateChanged);
     sltDisableHostScreenSaverStateChanged(gEDataManager->disableHostScreenSaver());
 #endif
-}
-
-void UIMachineLogic::saveSettings()
-{
-    /* HID LEDs sync deinitialization: */
-    sltSwitchKeyboardLedsToPreviousLeds();
 }
 
 #ifdef VBOX_WITH_DEBUGGER_GUI
@@ -2848,6 +2839,7 @@ void UIMachineLogic::sltHandleCommitData()
     sltCloseFileManagerDialog();
     sltCloseVMInformationDialog();
     sltCloseSoftKeyboard();
+    sltSwitchKeyboardLedsToPreviousLeds();
 }
 
 void UIMachineLogic::typeHostKeyComboPressRelease(bool fToggleSequence)

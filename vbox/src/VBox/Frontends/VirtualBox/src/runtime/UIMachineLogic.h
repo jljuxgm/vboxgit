@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 89816 2021-06-21 12:22:16Z vboxsync $ */
+/* $Id: UIMachineLogic.h 90024 2021-07-05 12:16:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -245,7 +245,6 @@ protected:
     virtual void loadSettings();
 
     /* Cleanup helpers: */
-    virtual void saveSettings();
 #ifdef VBOX_WITH_DEBUGGER_GUI
     virtual void cleanupDebugger();
 #endif /* VBOX_WITH_DEBUGGER_GUI */
