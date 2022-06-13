@@ -1,4 +1,4 @@
-/* $Id: display-helper.h 93423 2022-01-24 20:53:37Z vboxsync $ */
+/* $Id: display-helper.h 93551 2022-02-02 18:58:31Z vboxsync $ */
 /** @file
  * Guest Additions - Definitions for Desktop Environment helpers.
  */
@@ -25,8 +25,6 @@
 
 /** Environment variable which contains information about currently running Desktop Environment. */
 #define VBCL_HLP_ENV_XDG_CURRENT_DESKTOP    "XDG_CURRENT_DESKTOP"
-/** Environment variable which is exported when in Wayland Desktop Environment. */
-#define VBCL_HLP_ENV_WAYLAND_DISPLAY        "WAYLAND_DISPLAY"
 
 /**
  * Display offsets change notification callback.

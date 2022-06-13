@@ -1,4 +1,4 @@
-/* $Id: main.cpp 93385 2022-01-20 20:30:39Z vboxsync $ */
+/* $Id: main.cpp 93551 2022-02-02 18:58:31Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions - X11 Client.
  */
@@ -33,6 +33,7 @@
 #include <iprt/message.h>
 #include <iprt/path.h>
 #include <iprt/stream.h>
+#include <iprt/env.h>
 #include <VBox/VBoxGuestLib.h>
 #include <VBox/err.h>
 #include <VBox/version.h>
@@ -105,6 +106,11 @@ unsigned             g_cRespawn = 0;
 unsigned             g_cVerbosity = 0;
 /** Absolute path to log file, if any. */
 static char          g_szLogFile[RTPATH_MAX + 128] = "";
+
+bool VBClHasWayland(void)
+{
+    return RTEnvGet(VBCL_ENV_WAYLAND_DISPLAY) != NULL;
+}
 
 /**
  * Shut down if we get a signal or something.

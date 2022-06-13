@@ -1,4 +1,4 @@
-/* $Id: display-helper-gnome3.cpp 93423 2022-01-24 20:53:37Z vboxsync $ */
+/* $Id: display-helper-gnome3.cpp 93551 2022-02-02 18:58:31Z vboxsync $ */
 /** @file
  * Guest Additions - Gnome3 Desktop Environment helper.
  *
@@ -925,23 +925,13 @@ static DECLCALLBACK(int) vbcl_hlp_gnome3_probe(void)
 }
 
 /**
- * Detect if user is running on Wayland by checking corresponding environment variable.
- *
- * @returns True if Wayland has been detected, False otherwise.
- */
-static bool vbcl_hlp_gnome3_has_wayland(void)
-{
-    return RTEnvGet(VBCL_HLP_ENV_WAYLAND_DISPLAY) != NULL;
-}
-
-/**
  * @interface_method_impl{VBCLDISPLAYHELPER,pfnInit}
  */
 static DECLCALLBACK(int) vbcl_hlp_gnome3_init(void)
 {
     int rc;
 
-    if (!vbcl_hlp_gnome3_has_wayland())
+    if (!VBClHasWayland())
     {
         rc = vbcl_hlp_generic_init();
         VBClLogInfo("attempt to start generic helper routines, rc=%Rrc\n", rc);
@@ -957,7 +947,7 @@ static DECLCALLBACK(int) vbcl_hlp_gnome3_term(void)
 {
     int rc;
 
-    if (!vbcl_hlp_gnome3_has_wayland())
+    if (!VBClHasWayland())
     {
         rc = vbcl_hlp_generic_term();
         VBClLogInfo("attempt to stop generic helper routines, rc=%Rrc\n", rc);
