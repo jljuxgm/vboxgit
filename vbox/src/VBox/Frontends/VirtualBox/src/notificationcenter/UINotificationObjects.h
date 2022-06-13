@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.h 90856 2021-08-24 18:08:54Z vboxsync $ */
+/* $Id: UINotificationObjects.h 90869 2021-08-25 10:21:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects declarations.
  */
@@ -33,6 +33,7 @@
 #include "CAppliance.h"
 #include "CCloudClient.h"
 #include "CCloudMachine.h"
+#include "CConsole.h"
 #include "CExtPackFile.h"
 #include "CExtPackManager.h"
 #include "CGuest.h"
@@ -46,7 +47,6 @@
 
 /* Forward declarations: */
 class CAudioAdapter;
-class CConsole;
 class CEmulatedUSB;
 class CNetworkAdapter;
 class CVirtualBox;
@@ -566,8 +566,11 @@ class SHARED_LIBRARY_STUFF UINotificationProgressMachinePowerDown : public UINot
 public:
 
     /** Constructs machine power-down notification-progress.
-      * @param  uId  Brings the machine id. */
-    UINotificationProgressMachinePowerDown(const QUuid &uId);
+      * @param  comMachine  Brings the machine being powered off. */
+    UINotificationProgressMachinePowerDown(const CMachine &comMachine);
+    /** Constructs machine power-down notification-progress.
+      * @param  comConsole  Brings the console of machine being powered off. */
+    UINotificationProgressMachinePowerDown(const CConsole &comConsole);
 
 protected:
 
@@ -585,8 +588,10 @@ private slots:
 
 private:
 
-    /** Holds the machine id. */
-    QUuid     m_uId;
+    /** Holds the machine being powered off. */
+    CMachine  m_comMachine;
+    /** Holds the console of machine being powered off. */
+    CConsole  m_comConsole;
     /** Holds the session being opened. */
     CSession  m_comSession;
     /** Holds the machine name. */

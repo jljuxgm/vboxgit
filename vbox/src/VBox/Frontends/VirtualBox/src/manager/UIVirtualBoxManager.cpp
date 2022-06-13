@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 90855 2021-08-24 17:51:34Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 90869 2021-08-25 10:21:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -1820,7 +1820,7 @@ void UIVirtualBoxManager::sltPerformPowerOffMachine()
         {
             /* Powering VM down: */
             UINotificationProgressMachinePowerDown *pNotification =
-                new UINotificationProgressMachinePowerDown(pItem->id());
+                new UINotificationProgressMachinePowerDown(pItem->toLocal()->machine());
             gpNotificationCenter->append(pNotification);
         }
         /* For real cloud machine: */
