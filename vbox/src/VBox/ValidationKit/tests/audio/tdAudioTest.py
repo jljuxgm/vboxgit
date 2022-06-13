@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tdAudioTest.py 90130 2021-07-09 14:37:48Z vboxsync $
+# $Id: tdAudioTest.py 90194 2021-07-14 18:25:17Z vboxsync $
 
 """
 AudioTest test driver which invokes the VKAT (Validation Kit Audio Test)
@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 90130 $"
+__version__ = "$Revision: 90194 $"
 
 # Standard Python imports.
 import os
@@ -48,7 +48,6 @@ sys.path.append(g_ksValidationKitDir);
 from testdriver import reporter
 from testdriver import base
 from testdriver import vbox
-from testdriver import vboxcon
 from testdriver import vboxtestvms
 
 # pylint: disable=unnecessary-semicolon
@@ -324,13 +323,13 @@ class tdAudioTest(vbox.TestDriver):
             oSession, oTxsSession = self.startVmAndConnectToTxsViaTcp(oTestVm.sVmName,
                                                                     fCdWait = True,
                                                                     cMsTimeout = 3 * 60 * 1000,
-                                                                    sFileCdWait = self.sFileCdWait);
+                                                                    sFileCdWait = '${CDROM}/${OS/ARCH}/vkat${EXESUFF}');
             reporter.testDone();
             if  oSession    is not None \
             and oTxsSession is not None:
                 self.addTask(oTxsSession);
 
-            fRc = self.doTest(oTestVm, oSessionWrapper.o, oTxsSession);
+            fRc = self.doTest(oTestVm, oSession, oTxsSession);
 
             if oSession is not None:
                 self.removeTask(oTxsSession);
