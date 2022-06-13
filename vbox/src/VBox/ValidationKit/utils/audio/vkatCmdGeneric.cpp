@@ -1,4 +1,4 @@
-/* $Id: vkatCmdGeneric.cpp 89643 2021-06-13 13:59:53Z vboxsync $ */
+/* $Id: vkatCmdGeneric.cpp 89962 2021-06-30 07:02:07Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) utility for testing and validating the audio stack.
  */
@@ -156,6 +156,7 @@ const VKATCMD g_CmdEnum =
     g_aCmdEnumOptions,
     RT_ELEMENTS(g_aCmdEnumOptions),
     audioTestCmdEnumHelp,
+    false /* fNeedsTransport */
 };
 
 
@@ -485,6 +486,7 @@ const VKATCMD g_CmdPlay =
     g_aCmdPlayOptions,
     RT_ELEMENTS(g_aCmdPlayOptions),
     audioTestCmdPlayHelp,
+    false /* fNeedsTransport */
 };
 
 
@@ -865,5 +867,6 @@ const VKATCMD g_CmdRec =
     g_aCmdRecOptions,
     RT_ELEMENTS(g_aCmdRecOptions),
     audioTestCmdRecHelp,
+    false /* fNeedsTransport */
 };
 

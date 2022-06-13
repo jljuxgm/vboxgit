@@ -1,4 +1,4 @@
-/* $Id: tstAudioTestService.cpp 89805 2021-06-21 06:27:05Z vboxsync $ */
+/* $Id: tstAudioTestService.cpp 89962 2021-06-30 07:02:07Z vboxsync $ */
 /** @file
  * Audio testcase - Tests for the Audio Test Service (ATS).
  */
@@ -75,16 +75,32 @@ int main(int argc, char **argv)
     ATSCLIENT Client;
 
     ATSSERVER Srv;
-    rc = AudioTestSvcInit(&Srv, "127.0.0.1", ATS_TCP_HOST_DEFAULT_PORT, &Callbacks);
+    rc = AudioTestSvcCreate(&Srv);
     RTTEST_CHECK_RC_OK(hTest, rc);
     if (RT_SUCCESS(rc))
     {
-        rc = AudioTestSvcStart(&Srv);
+        rc = AudioTestSvcInit(&Srv, &Callbacks);
         RTTEST_CHECK_RC_OK(hTest, rc);
         if (RT_SUCCESS(rc))
         {
-            rc = AudioTestSvcClientConnect(&Client, "127.0.0.1", ATS_TCP_HOST_DEFAULT_PORT);
+            rc = AudioTestSvcStart(&Srv);
             RTTEST_CHECK_RC_OK(hTest, rc);
+            if (RT_SUCCESS(rc))
+            {
+                RTGETOPTUNION Val;
+                RT_ZERO(Val);
+
+                Val.psz = ATS_TCP_DEF_CONNECT_HOST_ADDR_STR;
+                rc = AudioTestSvcClientHandleOption(&Client, ATSTCPOPT_CONNECT_ADDRESS, &Val);
+                AssertRC(rc);
+
+                Val.u16 = ATS_TCP_DEF_CONNECT_PORT_HOST_PORT_FWD;
+                rc = AudioTestSvcClientHandleOption(&Client, ATSTCPOPT_CONNECT_PORT, &Val);
+                AssertRC(rc);
+
+                rc = AudioTestSvcClientConnect(&Client);
+                RTTEST_CHECK_RC_OK(hTest, rc);
+            }
         }
     }
 
