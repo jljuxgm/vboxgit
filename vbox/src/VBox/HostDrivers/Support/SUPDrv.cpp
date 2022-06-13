@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 91447 2021-09-28 20:05:04Z vboxsync $ */
+/* $Id: SUPDrv.cpp 91674 2021-10-11 20:26:10Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -384,6 +384,7 @@ static SUPFUNC g_aFunctions[] =
     { "RTR0MemObjGetPagePhysAddr",              (void *)(uintptr_t)RTR0MemObjGetPagePhysAddr },
     { "RTR0MemObjIsMapping",                    (void *)(uintptr_t)RTR0MemObjIsMapping },
     { "RTR0MemObjLockUserTag",                  (void *)(uintptr_t)RTR0MemObjLockUserTag },
+    { "RTR0MemObjLockKernelTag",                (void *)(uintptr_t)RTR0MemObjLockKernelTag },
     { "RTR0MemObjMapKernelExTag",               (void *)(uintptr_t)RTR0MemObjMapKernelExTag },
     { "RTR0MemObjMapKernelTag",                 (void *)(uintptr_t)RTR0MemObjMapKernelTag },
     { "RTR0MemObjMapUserTag",                   (void *)(uintptr_t)RTR0MemObjMapUserTag },
