@@ -1,4 +1,4 @@
-/* $Id: UINotificationObject.cpp 90626 2021-08-11 12:48:59Z vboxsync $ */
+/* $Id: UINotificationObject.cpp 90679 2021-08-13 10:45:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINotificationObject class implementation.
  */
@@ -16,6 +16,7 @@
  */
 
 /* GUI includes: */
+#include "UIExtraDataManager.h"
 #include "UINotificationObject.h"
 #include "UINotificationProgressTask.h"
 #ifdef VBOX_GUI_WITH_NETWORK_MANAGER
@@ -35,6 +36,54 @@ UINotificationObject::UINotificationObject()
 void UINotificationObject::close()
 {
     emit sigAboutToClose();
+}
+
+
+/*********************************************************************************************************************************
+*   Class UINotificationSimple implementation.                                                                                   *
+*********************************************************************************************************************************/
+
+UINotificationSimple::UINotificationSimple(const QString &strName,
+                                           const QString &strDetails,
+                                           const QString &strInternalName,
+                                           bool fCritical /* = true */)
+    : m_strName(strName)
+    , m_strDetails(strDetails)
+    , m_strInternalName(strInternalName)
+    , m_fCritical(fCritical)
+{
+}
+
+bool UINotificationSimple::isCritical() const
+{
+    return m_fCritical;
+}
+
+QString UINotificationSimple::name() const
+{
+    return m_strName;
+}
+
+QString UINotificationSimple::details() const
+{
+    return m_strDetails;
+}
+
+void UINotificationSimple::handle()
+{
+}
+
+/* static */
+bool UINotificationSimple::isSuppressed(const QString &strInternalName)
+{
+    /* Sanity check: */
+    if (strInternalName.isEmpty())
+        return false;
+
+    /* Acquire and check suppressed message names: */
+    const QStringList suppressedMessages = gEDataManager->suppressedMessages();
+    return    suppressedMessages.contains(strInternalName)
+           || suppressedMessages.contains("all");
 }
 
 
