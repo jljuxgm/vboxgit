@@ -1,4 +1,4 @@
-/* $Id: UIVisoBrowserBase.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIVisoBrowserBase.h 92471 2021-11-17 09:47:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoBrowserBase class declaration.
  */
@@ -23,7 +23,7 @@
 
 /* Qt includes: */
 #include <QModelIndex>
-#include <QWidget>
+#include <QGroupBox>
 
 /* GUI includes: */
 #include "QIWithRetranslateUI.h"
@@ -35,7 +35,7 @@ class QTreeView;
 class UILocationSelector;
 
 /** An abstract QWidget extension hosting a tree and table view. */
-class UIVisoBrowserBase : public QIWithRetranslateUI<QWidget>
+class UIVisoBrowserBase : public QIWithRetranslateUI<QGroupBox>
 {
     Q_OBJECT;
 

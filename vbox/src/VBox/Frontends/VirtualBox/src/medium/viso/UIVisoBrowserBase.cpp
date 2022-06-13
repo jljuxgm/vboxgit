@@ -1,4 +1,4 @@
-/* $Id: UIVisoBrowserBase.cpp 91242 2021-09-15 10:09:24Z vboxsync $ */
+/* $Id: UIVisoBrowserBase.cpp 92471 2021-11-17 09:47:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoBrowserBase class implementation.
  */
@@ -149,7 +149,7 @@ void UILocationSelector::prepareWidgets()
 *********************************************************************************************************************************/
 
 UIVisoBrowserBase::UIVisoBrowserBase(QWidget *pParent /* = 0 */)
-    : QIWithRetranslateUI<QWidget>(pParent)
+    : QIWithRetranslateUI<QGroupBox>(pParent)
     , m_pTreeView(0)
     , m_pMainLayout(0)
     , m_pLocationSelector(0)
@@ -224,7 +224,7 @@ void UIVisoBrowserBase::updateLocationSelectorText(const QString &strText)
 
 void UIVisoBrowserBase::resizeEvent(QResizeEvent *pEvent)
 {
-    QIWithRetranslateUI<QWidget>::resizeEvent(pEvent);
+    QIWithRetranslateUI<QGroupBox>::resizeEvent(pEvent);
     if (m_pTreeView)
         updateTreeViewGeometry(m_pTreeView->isVisible());
 }
@@ -234,7 +234,7 @@ bool UIVisoBrowserBase::eventFilter(QObject *pObj, QEvent *pEvent)
 {
     /* Handle only events sent to m_pTreeView only: */
     if (pObj != m_pTreeView)
-        return QIWithRetranslateUI<QWidget>::eventFilter(pObj, pEvent);
+        return QIWithRetranslateUI<QGroupBox>::eventFilter(pObj, pEvent);
 
     if (pEvent->type() == QEvent::KeyPress)
     {
@@ -252,7 +252,7 @@ bool UIVisoBrowserBase::eventFilter(QObject *pObj, QEvent *pEvent)
     }
 
     /* Call to base-class: */
-    return QIWithRetranslateUI<QWidget>::eventFilter(pObj, pEvent);
+    return QIWithRetranslateUI<QGroupBox>::eventFilter(pObj, pEvent);
 }
 
 void UIVisoBrowserBase::keyPressEvent(QKeyEvent *pEvent)
@@ -263,7 +263,7 @@ void UIVisoBrowserBase::keyPressEvent(QKeyEvent *pEvent)
             updateTreeViewGeometry(false);
 
     }
-    QIWithRetranslateUI<QWidget>::keyPressEvent(pEvent);
+    QIWithRetranslateUI<QGroupBox>::keyPressEvent(pEvent);
 }
 
 void UIVisoBrowserBase::sltFileTableViewContextMenu(const QPoint &point)

@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.h 92467 2021-11-17 09:03:15Z vboxsync $ */
+/* $Id: UIVisoCreator.h 92471 2021-11-17 09:47:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator class declaration.
  */
@@ -151,7 +151,7 @@ private:
 
     QGridLayout          *m_pMainLayout;
     UIVisoHostBrowser    *m_pHostBrowser;
-    UIVisoContentBrowser *m_pVisoBrowser;
+    UIVisoContentBrowser *m_pVISOContentBrowser;
 
     QIToolBar            *m_pToolBar;
     QIToolBar            *m_pVerticalToolBar;
