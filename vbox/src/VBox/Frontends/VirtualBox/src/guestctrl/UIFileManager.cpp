@@ -1,4 +1,4 @@
-/* $Id: UIFileManager.cpp 92688 2021-12-02 10:20:41Z vboxsync $ */
+/* $Id: UIFileManager.cpp 92689 2021-12-02 10:37:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManager class implementation.
  */
@@ -401,7 +401,7 @@ void UIFileManager::sltFileOperationComplete(QUuid progressId)
     Q_UNUSED(progressId);
     if (m_pHostFileTable)
         m_pHostFileTable->refresh();
-    // @todo we need to refresh only the table from which the completed file operation has originated
+    /// @todo we need to refresh only the table from which the completed file operation has originated
     for (int i = 0; i < m_pGuestTablesContainer->count(); ++i)
     {
         UIFileManagerGuestTable *pTable = qobject_cast<UIFileManagerGuestTable*>(m_pGuestTablesContainer->widget(i));
