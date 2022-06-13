@@ -1,4 +1,4 @@
-/* $Id: efisignaturedb.cpp 90285 2021-07-22 11:59:15Z vboxsync $ */
+/* $Id: efisignaturedb.cpp 90287 2021-07-22 13:16:15Z vboxsync $ */
 /** @file
  * IPRT - EFI signature database helpers.
  */
@@ -501,7 +501,7 @@ RTDECL(int) RTEfiSigDbAddSignatureFromBuf(RTEFISIGDB hEfiSigDb, RTEFISIGTYPE enm
     if (   !pDesc->cbSig
         || pDesc->cbSig - sizeof(EFI_SIGNATURE_DATA) == cbBuf)
     {
-        PRTEFISIGNATURE pSig = rtEfiSigDbAllocSignature(pUuidOwner, cbBuf);
+        PRTEFISIGNATURE pSig = rtEfiSigDbAllocSignature(pUuidOwner, (uint32_t)cbBuf);
         if (pSig)
         {
             memcpy(&pSig->abSignature[0], pvBuf, cbBuf);
