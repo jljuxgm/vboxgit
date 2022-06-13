@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv.cpp 91479 2021-09-29 23:43:57Z vboxsync $ */
+/* $Id: memobj-r0drv.cpp 91480 2021-09-29 23:52:11Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Common Code.
  */
@@ -650,10 +650,8 @@ RTR0DECL(int) RTR0MemObjEnterPhysTag(PRTR0MEMOBJ pMemObj, RTHCPHYS Phys, size_t 
                  VERR_INVALID_PARAMETER);
     RT_ASSERT_PREEMPTIBLE();
 
-    RT_NOREF_PV(pszTag);
-
     /* do the allocation. */
-    return rtR0MemObjNativeEnterPhys(pMemObj, PhysAligned, cbAligned, uCachePolicy);
+    return rtR0MemObjNativeEnterPhys(pMemObj, PhysAligned, cbAligned, uCachePolicy, pszTag);
 }
 RT_EXPORT_SYMBOL(RTR0MemObjEnterPhysTag);
 
@@ -673,10 +671,8 @@ RTR0DECL(int) RTR0MemObjReserveKernelTag(PRTR0MEMOBJ pMemObj, void *pvFixed, siz
         AssertReturn(!((uintptr_t)pvFixed & (uAlignment - 1)), VERR_INVALID_PARAMETER);
     RT_ASSERT_PREEMPTIBLE();
 
-    RT_NOREF_PV(pszTag);
-
     /* do the reservation. */
-    return rtR0MemObjNativeReserveKernel(pMemObj, pvFixed, cbAligned, uAlignment);
+    return rtR0MemObjNativeReserveKernel(pMemObj, pvFixed, cbAligned, uAlignment, pszTag);
 }
 RT_EXPORT_SYMBOL(RTR0MemObjReserveKernelTag);
 
@@ -699,10 +695,8 @@ RTR0DECL(int) RTR0MemObjReserveUserTag(PRTR0MEMOBJ pMemObj, RTR3PTR R3PtrFixed, 
         R0Process = RTR0ProcHandleSelf();
     RT_ASSERT_PREEMPTIBLE();
 
-    RT_NOREF_PV(pszTag);
-
     /* do the reservation. */
-    return rtR0MemObjNativeReserveUser(pMemObj, R3PtrFixed, cbAligned, uAlignment, R0Process);
+    return rtR0MemObjNativeReserveUser(pMemObj, R3PtrFixed, cbAligned, uAlignment, R0Process, pszTag);
 }
 RT_EXPORT_SYMBOL(RTR0MemObjReserveUserTag);
 
