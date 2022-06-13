@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA-cmd.cpp 93635 2022-02-07 10:43:45Z vboxsync $ */
+/* $Id: DevVGA-SVGA-cmd.cpp 93636 2022-02-07 10:50:26Z vboxsync $ */
 /** @file
  * VMware SVGA device - implementation of VMSVGA commands.
  */
@@ -357,8 +357,8 @@ const char *vmsvgaR3FifoCmdToString(uint32_t u32Cmd)
  * @param   cbBuf           How much it's reading/writing.
  * @param   enmAccessType   The access type.
  * @param   enmOrigin       Who is making the access.
- * @param   pvUser          User argument - VMM sets this to the address of the
- *                          device instance.
+ * @param   uUser           The VMM automatically sets this to the address of
+ *                          the device instance.
  */
 DECLCALLBACK(VBOXSTRICTRC)
 vmsvgaR3GboAccessHandler(PVM pVM, PVMCPU pVCpu, RTGCPHYS GCPhys, void *pvPhys, void *pvBuf, size_t cbBuf,
