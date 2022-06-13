@@ -1,4 +1,4 @@
-/* $Id: vkatCmdGeneric.cpp 90723 2021-08-18 15:41:36Z vboxsync $ */
+/* $Id: vkatCmdGeneric.cpp 90736 2021-08-19 06:23:47Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) utility for testing and validating the audio stack.
  */
@@ -588,7 +588,8 @@ static DECLCALLBACK(RTEXITCODE) audioTestCmdPlayHandler(PRTGETOPTSTATE pGetState
 
         /* Use some sane defaults if no PCM props are set by the user. */
         PDMAudioPropsInit(&ToneParms.Props,
-                          cbSample ? cbSample : 4, true /* fSigned */, cChannels ? cChannels : 2, uHz ? uHz : 44100);
+                          cbSample  ? cbSample  : 2 /* 16-bit */, true /* fSigned */,
+                          cChannels ? cChannels : 2 /* Stereo */, uHz ? uHz : 44100);
 
         ToneParms.dbFreqHz       = AudioTestToneGetRandomFreq();
         ToneParms.msPrequel      = 0; /** @todo Implement analyzing this first! */
