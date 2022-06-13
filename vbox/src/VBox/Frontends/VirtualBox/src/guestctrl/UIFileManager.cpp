@@ -1,4 +1,4 @@
-/* $Id: UIFileManager.cpp 92632 2021-11-29 16:52:26Z vboxsync $ */
+/* $Id: UIFileManager.cpp 92633 2021-11-29 17:38:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManager class implementation.
  */
@@ -112,7 +112,7 @@ UIFileOperationsList::UIFileOperationsList(QWidget *pParent)
 *********************************************************************************************************************************/
 
 UIFileManager::UIFileManager(EmbedTo enmEmbedding, UIActionPool *pActionPool,
-                                                     const CMachine &comMachine, QWidget *pParent, bool fShowToolbar /* = true */)
+                             const CMachine &comMachine, QWidget *pParent, bool fShowToolbar /* = true */)
     : QIWithRetranslateUI<QWidget>(pParent)
     , m_comMachine(comMachine)
     , m_pMainLayout(0)

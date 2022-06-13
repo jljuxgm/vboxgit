@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneMachine.cpp 92615 2021-11-28 16:25:03Z vboxsync $ */
+/* $Id: UIToolPaneMachine.cpp 92633 2021-11-29 17:38:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolPaneMachine class implementation.
  */
@@ -216,23 +216,23 @@ void UIToolPaneMachine::openTool(UIToolType enmType)
             }
             case UIToolType_FileManager:
             {
-                m_pPaneFileManager = 0;
-
-                // UIFileManager::UIFileManager(EmbedTo enmEmbedding, UIActionPool *pActionPool,
-                //                                      const CGuest &comGuest, QWidget *pParent, bool fShowToolbar /* = true */)
-
-                AssertPtrReturnVoid(m_pPaneFileManager);
+                if (!m_items.isEmpty())
+                {
+                    m_pPaneFileManager = new UIFileManager(EmbedTo_Stack, m_pActionPool,
+                                                           uiCommon().virtualBox().FindMachine(m_items[0]->id().toString()),
+                                                           0, false /* fShowToolbar */);
+                    AssertPtrReturnVoid(m_pPaneFileManager);
 #ifndef VBOX_WS_MAC
-                const int iMargin = qApp->style()->pixelMetric(QStyle::PM_LayoutLeftMargin) / 4;
-                m_pPaneFileManager->setContentsMargins(iMargin, 0, iMargin, 0);
+                    const int iMargin = qApp->style()->pixelMetric(QStyle::PM_LayoutLeftMargin) / 4;
+                    m_pPaneFileManager->setContentsMargins(iMargin, 0, iMargin, 0);
 #endif
-
-                /* Configure pane: */
-                m_pPaneFileManager->setProperty("ToolType", QVariant::fromValue(UIToolType_FileManager));
-                //m_pPaneFileManager->setSelectedVMListItems(m_items);
-                /* Add into layout: */
-                m_pLayout->addWidget(m_pPaneFileManager);
-                m_pLayout->setCurrentWidget(m_pPaneFileManager);
+                    /* Configure pane: */
+                    m_pPaneFileManager->setProperty("ToolType", QVariant::fromValue(UIToolType_FileManager));
+                    //m_pPaneFileManager->setSelectedVMListItems(m_items);
+                    /* Add into layout: */
+                    m_pLayout->addWidget(m_pPaneFileManager);
+                    m_pLayout->setCurrentWidget(m_pPaneFileManager);
+                }
                 break;
             }
             default:
