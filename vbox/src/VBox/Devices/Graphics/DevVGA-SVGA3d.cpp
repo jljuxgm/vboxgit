@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d.cpp 94063 2022-03-02 15:41:38Z vboxsync $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - Common core code.
  */
@@ -1146,6 +1146,11 @@ int vmsvga3dSurfaceInvalidate(PVGASTATECC pThisCC, uint32_t sid, uint32_t face, 
         PVMSVGA3DMIPMAPLEVEL pMipmapLevel;
         rc = vmsvga3dMipmapLevel(pSurface, face, mipmap, &pMipmapLevel);
         AssertRCReturn(rc, rc);
+
+        /* Invalidate views, etc. */
+        PVMSVGAR3STATE const pSvgaR3State = pThisCC->svga.pSvgaR3State;
+        if (pSvgaR3State->pFuncs3D)
+            pSvgaR3State->pFuncs3D->pfnSurfaceInvalidateImage(pThisCC, pSurface, face, mipmap);
 
         pMipmapLevel->fDirty = true;
     }
