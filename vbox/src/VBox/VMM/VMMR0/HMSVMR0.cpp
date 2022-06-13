@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 91289 2021-09-16 21:49:50Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 91291 2021-09-16 22:04:16Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -4961,10 +4961,9 @@ static VBOXSTRICTRC hmR0SvmHandleExitNested(PVMCPUCC pVCpu, PSVMTRANSIENT pSvmTr
         {
             if (CPUMIsGuestSvmCtrlInterceptSet(pVCpu, pCtx, SVM_CTRL_INTERCEPT_IOIO_PROT))
             {
-                void *pvIoBitmap = pVCpu->cpum.GstCtx.hwvirt.svm.CTX_SUFF(pvIoBitmap);
                 SVMIOIOEXITINFO IoExitInfo;
                 IoExitInfo.u = pVmcbNstGst->ctrl.u64ExitInfo1;
-                bool const fIntercept = hmR0SvmIsIoInterceptSet(pvIoBitmap, &IoExitInfo);
+                bool const fIntercept = hmR0SvmIsIoInterceptSet(pVCpu->cpum.GstCtx.hwvirt.svm.abIoBitmap, &IoExitInfo);
                 if (fIntercept)
                     NST_GST_VMEXIT_CALL_RET(pVCpu, uExitCode, uExitInfo1, uExitInfo2);
             }
