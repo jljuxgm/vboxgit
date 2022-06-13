@@ -1,4 +1,4 @@
-/* $Id: VBoxNls.h 91402 2021-09-27 14:10:37Z vboxsync $ */
+/* $Id: VBoxNls.h 91407 2021-09-27 15:20:15Z vboxsync $ */
 /** @file
  * VBox NLS.
  */
@@ -37,7 +37,7 @@ struct ctx \
    { \
        return VirtualBoxTranslator::translate(NULL, #ctx, pszSource, pszComment, iNum); \
    } \
-};
+}
 #else
 # define DECLARE_TRANSLATION_CONTEXT(ctx) \
 struct ctx \
@@ -48,7 +48,7 @@ struct ctx \
        NOREF(iNum);       \
        return pszSource;  \
    } \
-};
+}
 #endif
 
 #endif /* !MAIN_INCLUDED_VBoxNls_h */
