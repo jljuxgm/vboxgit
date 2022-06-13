@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 92541 2021-11-22 06:35:38Z vboxsync $ */
+/* $Id: PGMAllBth.h 92561 2021-11-23 12:29:27Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -4151,9 +4151,6 @@ PGM_BTH_DECL(int, MapCR3)(PVMCPUCC pVCpu, RTGCPHYS GCPhysCR3, bool fPdpesMapped)
     NOREF(fPdpesMapped);
 #endif
     {
-        /** @todo Nested VMX: convert GCPhysCR3 from nested-guest physical to guest-physical
-         *        by calling SLAT phys walk. */
-
         /*
          * Map the page CR3 points at.
          */
@@ -4310,7 +4307,7 @@ PGM_BTH_DECL(int, UnmapCR3)(PVMCPUCC pVCpu)
     /*
      * Update second-level address translation info.
      */
-#ifdef VBOX_WITH_NESTED_HWVIRT_VMX
+#ifdef VBOX_WITH_NESTED_HWVIRT_VMX_EPT
     pVCpu->pgm.s.pGstEptPml4R3 = 0;
     pVCpu->pgm.s.pGstEptPml4R0 = 0;
 #endif
