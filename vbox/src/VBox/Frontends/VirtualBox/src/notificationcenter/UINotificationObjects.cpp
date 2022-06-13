@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 90568 2021-08-07 12:10:50Z vboxsync $ */
+/* $Id: UINotificationObjects.cpp 90569 2021-08-07 12:21:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -21,8 +21,8 @@
 
 /* GUI includes: */
 #include "UICommon.h"
-#include "UIDownloaderAdditions.h"
 #include "UIDownloaderExtensionPack.h"
+#include "UIDownloaderGuestAdditions.h"
 #include "UIDownloaderUserManual.h"
 #include "UINotificationObjects.h"
 
@@ -1590,10 +1590,10 @@ QString UINotificationDownloaderGuestAdditions::details() const
 UIDownloader *UINotificationDownloaderGuestAdditions::createDownloader()
 {
     /* Create and configure the User Manual downloader: */
-    UIDownloaderAdditions *pDownloader = new UIDownloaderAdditions;
+    UIDownloaderGuestAdditions *pDownloader = new UIDownloaderGuestAdditions;
     if (pDownloader)
     {
-        connect(pDownloader, &UIDownloaderAdditions::sigDownloadFinished,
+        connect(pDownloader, &UIDownloaderGuestAdditions::sigDownloadFinished,
                 this, &UINotificationDownloaderGuestAdditions::sigGuestAdditionsDownloaded);
         return pDownloader;
     }
