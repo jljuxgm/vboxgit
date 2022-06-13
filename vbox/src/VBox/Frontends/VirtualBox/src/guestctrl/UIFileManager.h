@@ -1,4 +1,4 @@
-/* $Id: UIFileManager.h 92694 2021-12-02 11:01:40Z vboxsync $ */
+/* $Id: UIFileManager.h 92710 2021-12-02 14:31:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManager class declaration.
  */
@@ -43,7 +43,6 @@ class UIActionPool;
 class UIDialogPanel;
 class UIFileManagerLogPanel;
 class UIFileManagerOperationsPanel;
-class UIFileManagerGuestSessionPanel;
 class UIFileManagerOptionsPanel;
 class UIFileManagerGuestTable;
 class UIFileManagerHostTable;
@@ -171,7 +170,6 @@ private:
     QList<UIDialogPanel*>          m_visiblePanelsList;
     UIFileManagerOptionsPanel          *m_pOptionsPanel;
     UIFileManagerLogPanel              *m_pLogPanel;
-    UIFileManagerGuestSessionPanel     *m_pGuestSessionPanel;
     UIFileManagerOperationsPanel       *m_pOperationsPanel;
     bool                                m_fDialogBeingClosed;
 

@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.cpp 92688 2021-12-02 10:20:41Z vboxsync $ */
+/* $Id: UIFileManagerTable.cpp 92710 2021-12-02 14:31:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class implementation.
  */
@@ -19,6 +19,7 @@
 #include <QAction>
 #include <QComboBox>
 #include <QCheckBox>
+#include <QHBoxLayout>
 #include <QHeaderView>
 #include <QItemDelegate>
 #include <QGridLayout>
@@ -697,11 +698,11 @@ UIFileManagerTable::UIFileManagerTable(UIActionPool *pActionPool, QWidget *pPare
     , m_pPropertiesDialog(0)
     , m_pActionPool(pActionPool)
     , m_pToolBar(0)
+    , m_pMainLayout(0)
     , m_pModel(0)
     , m_pView(0)
     , m_pProxyModel(0)
     , m_pNavigationWidget(0)
-    , m_pMainLayout(0)
     , m_pWarningLabel(0)
     , m_pathSeparator('/')
 {

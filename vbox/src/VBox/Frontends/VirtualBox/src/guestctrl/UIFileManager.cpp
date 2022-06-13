@@ -1,4 +1,4 @@
-/* $Id: UIFileManager.cpp 92692 2021-12-02 10:44:51Z vboxsync $ */
+/* $Id: UIFileManager.cpp 92710 2021-12-02 14:31:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManager class implementation.
  */
@@ -31,7 +31,6 @@
 #include "UIExtraDataManager.h"
 #include "UIIconPool.h"
 #include "UIFileManager.h"
-#include "UIFileManagerGuestSessionPanel.h"
 #include "UIFileManagerOptionsPanel.h"
 #include "UIFileManagerLogPanel.h"
 #include "UIFileManagerOperationsPanel.h"
@@ -128,7 +127,6 @@ UIFileManager::UIFileManager(EmbedTo enmEmbedding, UIActionPool *pActionPool,
     , m_fShowToolbar(fShowToolbar)
     , m_pOptionsPanel(0)
     , m_pLogPanel(0)
-    , m_pGuestSessionPanel(0)
     , m_pOperationsPanel(0)
     , m_fDialogBeingClosed(false)
 {
@@ -455,13 +453,6 @@ void UIFileManager::prepareOptionsAndSessionPanels(QVBoxLayout *pLayout)
 {
     if (!pLayout)
         return;
-    m_pGuestSessionPanel = new UIFileManagerGuestSessionPanel;
-    if (m_pGuestSessionPanel)
-    {
-        m_pGuestSessionPanel->hide();
-        m_panelActionMap.insert(m_pGuestSessionPanel, m_pActionPool->action(UIActionIndex_M_FileManager_T_GuestSession));
-        pLayout->addWidget(m_pGuestSessionPanel);
-    }
 
     m_pOptionsPanel = new UIFileManagerOptionsPanel(0 /*parent */, UIFileManagerOptions::instance());
     if (m_pOptionsPanel)
@@ -544,9 +535,6 @@ void UIFileManager::restorePanelVisibility()
             }
         }
     }
-    /* Make sure Session panel is visible: */
-    if (m_pGuestSessionPanel && !m_pGuestSessionPanel->isVisible())
-        showPanel(m_pGuestSessionPanel);
 }
 
 void UIFileManager::loadOptions()

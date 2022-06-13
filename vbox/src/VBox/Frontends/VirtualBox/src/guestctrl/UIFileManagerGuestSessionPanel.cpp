@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerGuestSessionPanel.cpp 92649 2021-11-30 12:13:11Z vboxsync $ */
+/* $Id: UIFileManagerGuestSessionPanel.cpp 92710 2021-12-02 14:31:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -102,6 +102,8 @@ void UIGuestSessionCreateWidget::prepareWidgets()
     m_pMainLayout = new QHBoxLayout(this);
     if (!m_pMainLayout)
         return;
+    m_pMainLayout->setSpacing(0);
+    m_pMainLayout->setContentsMargins(0, 0, 0, 0);
 
     m_pUserNameEdit = new QILineEdit;
     if (m_pUserNameEdit)
@@ -283,6 +285,8 @@ void UIFileManagerGuestSessionPanel::prepareWidgets()
     m_pSessionCreateWidget = new UIGuestSessionCreateWidget;
     if (m_pSessionCreateWidget)
         mainLayout()->addWidget(m_pSessionCreateWidget);
+    mainLayout()->setSpacing(0);
+    mainLayout()->setContentsMargins(0, 0, 0, 0);
 }
 
 void UIFileManagerGuestSessionPanel::prepareConnections()
