@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.h 90159 2021-07-12 17:27:15Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.h 90165 2021-07-13 08:13:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class declaration.
  */
@@ -42,7 +42,7 @@ class UIHostnameDomainNameEditor;
 class UIMediumSizeEditor;
 class UINameAndSystemEditor;
 class UIToolBox;
-class UIUserNamePasswordEditor;
+class UIUserNamePasswordGroupBox;
 class QIToolButton;
 
 /** Expert page of the New Virtual Machine wizard. */
@@ -113,7 +113,6 @@ private:
     void addFormatButton(QWidget *pParent, QVBoxLayout *pFormatLayout,
                                                   CMediumFormat medFormat, bool fPreferred /* = false */);
     QWidget *createNameOSTypeWidgets();
-    QWidget *createUserNameWidgets();
     QWidget *createAdditionalOptionsWidgets();
     QWidget *createGAInstallWidgets();
 
@@ -151,7 +150,7 @@ private:
     QLabel *m_pGAISOPathLabel;
     UIFilePathSelector *m_pGAISOFilePathSelector;
     QGroupBox *m_pUserNameContainer;
-    UIUserNamePasswordEditor *m_pUserNamePasswordEditor;
+    UIUserNamePasswordGroupBox *m_pUserNamePasswordGroupBox;
 
     /** @} */
 };

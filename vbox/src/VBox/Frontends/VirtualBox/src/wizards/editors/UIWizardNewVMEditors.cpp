@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMEditors.cpp 90164 2021-07-13 07:26:44Z vboxsync $ */
+/* $Id: UIWizardNewVMEditors.cpp 90165 2021-07-13 08:13:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class implementation.
  */
@@ -77,4 +77,10 @@ bool UIUserNamePasswordGroupBox::isComplete()
     if (m_pUserNamePasswordEditor)
         return m_pUserNamePasswordEditor->isComplete();
     return false;
+}
+
+void UIUserNamePasswordGroupBox::setLabelsVisible(bool fVisible)
+{
+    if (m_pUserNamePasswordEditor)
+        m_pUserNamePasswordEditor->setLabelsVisible(fVisible);
 }
