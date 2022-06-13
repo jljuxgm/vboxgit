@@ -1,4 +1,4 @@
-/* $Id: UIApplianceEditorWidget.h 91537 2021-10-04 10:33:57Z vboxsync $ */
+/* $Id: UIApplianceEditorWidget.h 91565 2021-10-05 11:14:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceEditorWidget class declaration.
  */
@@ -301,6 +301,9 @@ public:
     /** Returns the currently set appliance reference. */
     CAppliance *appliance() const { return m_pAppliance; }
 
+    /** Defines virtual system base folder @a strPath. */
+    void setVirtualSystemBaseFolder(const QString &strPath);
+
     /** Returns the minimum guest RAM. */
     static int minGuestRAM() { return m_minGuestRAM; }
     /** Returns the maximum guest RAM. */
@@ -319,8 +322,6 @@ protected:
 
     /** Handles translation event. */
     virtual void retranslateUi() /* override */;
-
-    void setVirtualSystemBaseFolder(const QString& path);
 
     /** Holds the list of VSD hints. */
     AbstractVSDParameterList  m_listVsdHints;

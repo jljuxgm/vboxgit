@@ -1,4 +1,4 @@
-/* $Id: UIApplianceEditorWidget.cpp 91537 2021-10-04 10:33:57Z vboxsync $ */
+/* $Id: UIApplianceEditorWidget.cpp 91565 2021-10-05 11:14:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceEditorWidget class implementation.
  */
@@ -1859,6 +1859,13 @@ void UIApplianceEditorWidget::setVsdHints(const AbstractVSDParameterList &hints)
         m_pModel->setVsdHints(m_listVsdHints);
 }
 
+void UIApplianceEditorWidget::setVirtualSystemBaseFolder(const QString &strPath)
+{
+    /* Make sure model exists, it's being created in sub-classes: */
+    if (m_pModel)
+        m_pModel->setVirtualSystemBaseFolder(strPath);
+}
+
 void UIApplianceEditorWidget::restoreDefaults()
 {
     /* Make sure model exists, it's being created in sub-classes: */
@@ -1888,13 +1895,6 @@ void UIApplianceEditorWidget::initSystemSettings()
         m_minGuestCPUCount   = sp.GetMinGuestCPUCount();
         m_maxGuestCPUCount   = sp.GetMaxGuestCPUCount();
     }
-}
-
-void UIApplianceEditorWidget::setVirtualSystemBaseFolder(const QString& path)
-{
-    if (!m_pModel)
-        return;
-    m_pModel->setVirtualSystemBaseFolder(path);
 }
 
 
