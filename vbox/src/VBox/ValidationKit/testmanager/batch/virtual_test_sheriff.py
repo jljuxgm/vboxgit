@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 93778 2022-02-15 23:38:42Z vboxsync $
+# $Id: virtual_test_sheriff.py 93779 2022-02-15 23:46:19Z vboxsync $
 # pylint: disable=line-too-long
 
 """
@@ -35,7 +35,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 93778 $"
+__version__ = "$Revision: 93779 $"
 
 
 # Standard python imports
@@ -340,7 +340,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
 
         if self.oConfig.sLogFile:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 93778 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 93779 $ \n');
 
 
     def eprint(self, sText):
@@ -617,6 +617,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
     ktReason_Add_GstCtl_Session_Reboot                 = ( 'Additions',         'Session reboot' );
     ktReason_Add_GstCtl_CopyFromGuest_Timeout          = ( 'Additions',         'CopyFromGuest timeout' );
     ktReason_Add_GstCtl_CopyToGuest_Timeout            = ( 'Additions',         'CopyToGuest timeout' );
+    ktReason_Add_GstCtl_CopyToGuest_DstEmpty           = ( 'Additions',         'CopyToGuest dst empty' );
     ktReason_Add_FlushViewOfFile                       = ( 'Additions',         'FlushViewOfFile' );
     ktReason_Add_Mmap_Coherency                        = ( 'Additions',         'mmap coherency' );
     ktReason_BSOD_Recovery                             = ( 'BSOD',              'Recovery' );
@@ -744,7 +745,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.getFailureReason(tReason);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 93778 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 93779 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
@@ -1216,7 +1217,9 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
             if sResultLog.find('*** abort action ***') >= 0:
                 enmReason = self.ktReason_Add_GstCtl_CopyFromGuest_Timeout;
         elif oFailedResult.sName == 'Copy to guest':
-            if sResultLog.find('*** abort action ***') >= 0:
+            if sResultLog.find('Guest destination must not be empty') >= 0:
+                enmReason = self.ktReason_Add_GstCtl_CopyToGuest_DstEmpty;
+            elif sResultLog.find('*** abort action ***') >= 0:
                 enmReason = self.ktReason_Add_GstCtl_CopyToGuest_Timeout;
         elif oFailedResult.sName.find('Session w/ Guest Reboot') >= 0:
             enmReason = self.ktReason_Add_GstCtl_Session_Reboot;
