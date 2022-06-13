@@ -1,4 +1,4 @@
-# $Id: SUPR0-def-pe.sed 91800 2021-10-18 00:49:23Z vboxsync $
+# $Id: SUPR0-def-pe.sed 91801 2021-10-18 02:33:13Z vboxsync $
 ## @file
 # IPRT - SED script for generating SUPR0.def - Windows PE.
 #
@@ -47,7 +47,7 @@ $b footer
 #    SUPReadTscWithDelta
 s/SUPEXP_CUSTOM( *[0-9][0-9]* *, *\([^),][^),]*\), [^)]*), */\1 /
 s/SUPEXP_STK_OKAY( *[0-9][0-9]* *, *\([^)][^)]*\)), */\1 /
-s/SUPEXP_STK_BACK( *[0-9][0-9]* *, *\([^)][^)]*\)), */\1 /
+s/SUPEXP_STK_BACKF*( *[0-9][0-9]* *, *\([^)][^)]*\)), */\1 /
 
 # Handle trailing selection comment (/* solaris-only, windows-only */).
 /\*\/ *$/!b transform
