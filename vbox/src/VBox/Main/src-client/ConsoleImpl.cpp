@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 93312 2022-01-18 13:15:12Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -656,15 +656,6 @@ void Console::uninit()
         return;
     }
 
-#ifdef VBOX_WITH_CLOUD_NET
-    {
-        ComPtr<IVirtualBox> pVirtualBox;
-        HRESULT rc = mMachine->COMGETTER(Parent)(pVirtualBox.asOutParam());
-        AssertComRC(rc);
-        if (SUCCEEDED(rc) && !pVirtualBox.isNull())
-            stopGateways(pVirtualBox, mGateways);
-    }
-#endif /* VBOX_WITH_CLOUD_NET */
     LogFlowThisFunc(("initFailed()=%d\n", autoUninitSpan.initFailed()));
     if (mVmListener)
     {
@@ -8945,6 +8936,20 @@ DECLCALLBACK(void) Console::i_vmstateChangeCallback(PUVM pUVM, VMSTATE enmState,
             if (that->mVMStateChangeCallbackDisabled)
                 break;
 
+#ifdef VBOX_WITH_CLOUD_NET
+            /*
+             * We stop cloud gateway here because we may have failed to connect to it,
+             * configure it, or establish a tunnel. We definitely do not want an orphaned
+             * instance running in the cloud.
+             */
+            {
+                ComPtr<IVirtualBox> pVirtualBox;
+                HRESULT rc = that->mMachine->COMGETTER(Parent)(pVirtualBox.asOutParam());
+                AssertComRC(rc);
+                if (SUCCEEDED(rc) && !pVirtualBox.isNull())
+                    stopCloudGateway(pVirtualBox, that->mGateway);
+            }
+#endif /* VBOX_WITH_CLOUD_NET */
             /* Terminate host interface networking. If pUVM is NULL, we've been
              * manually called from powerUpThread() either before calling
              * VMR3Create() or after VMR3Create() failed, so no need to touch

@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: VBoxDD.h 93312 2022-01-18 13:15:12Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1) header.
  */
@@ -203,6 +203,9 @@ extern const PDMDRVREG g_DrvTpmHost;
 # endif
 # ifdef VBOX_WITH_LIBTPMS
 extern const PDMDRVREG g_DrvTpmEmuTpms;
+# endif
+# ifdef VBOX_WITH_CLOUD_NET
+extern const PDMDRVREG g_DrvCloudTunnel;
 # endif
 #endif
 

@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: ConsoleImpl.h 93312 2022-01-18 13:15:12Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -1085,7 +1085,7 @@ private:
 #endif /* VBOX_WITH_RECORDING */
 
 #ifdef VBOX_WITH_CLOUD_NET
-    GatewayInfo mGateways;
+    GatewayInfo mGateway;
 #endif /* VBOX_WITH_CLOUD_NET */
 
     friend class VMTask;

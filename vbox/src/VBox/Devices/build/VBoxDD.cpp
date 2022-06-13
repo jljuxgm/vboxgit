@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: VBoxDD.cpp 93312 2022-01-18 13:15:12Z vboxsync $ */
 /** @file
  * VBoxDD - Built-in drivers & devices (part 1).
  */
@@ -424,6 +424,12 @@ extern "C" DECLEXPORT(int) VBoxDriversRegister(PCPDMDRVREGCB pCallbacks, uint32_
 
 # ifdef VBOX_WITH_LIBTPMS
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvTpmEmuTpms);
+    if (RT_FAILURE(rc))
+        return rc;
+# endif
+
+# ifdef VBOX_WITH_CLOUD_NET
+    rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvCloudTunnel);
     if (RT_FAILURE(rc))
         return rc;
 # endif
