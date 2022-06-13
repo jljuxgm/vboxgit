@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 91968 2021-10-21 15:52:28Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 91973 2021-10-21 16:19:10Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -1148,7 +1148,7 @@ static DECLCALLBACK(void) pdmR3DevHlp_CpuGetGuestAddrWidths(PPDMDEVINS pDevIns, 
 }
 
 
-/** @interface_method_impl{PDMDEVHLPR3,pfnCpuGuestScalableBusFrequency} */
+/** @interface_method_impl{PDMDEVHLPR3,pfnCpuGetGuestScalableBusFrequency} */
 static DECLCALLBACK(uint64_t) pdmR3DevHlp_CpuGetGuestScalableBusFrequency(PPDMDEVINS pDevIns)
 {
     PDMDEV_ASSERT_DEVINS(pDevIns);
