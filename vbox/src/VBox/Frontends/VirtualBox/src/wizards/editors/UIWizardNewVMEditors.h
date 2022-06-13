@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMEditors.h 90208 2021-07-15 09:51:10Z vboxsync $ */
+/* $Id: UIWizardNewVMEditors.h 90230 2021-07-16 11:56:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMEditors class declaration.
  */
@@ -103,7 +103,6 @@ private:
 
     QLabel *m_pGAISOPathLabel;
     UIFilePathSelector *m_pGAISOFilePathSelector;
-
 };
 
 class UIAdditionalUnattendedOptions : public QIWithRetranslateUI<QGroupBox>
