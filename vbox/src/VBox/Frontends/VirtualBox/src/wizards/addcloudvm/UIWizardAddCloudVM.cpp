@@ -1,4 +1,4 @@
-/* $Id: UIWizardAddCloudVM.cpp 91240 2021-09-15 09:07:48Z vboxsync $ */
+/* $Id: UIWizardAddCloudVM.cpp 91241 2021-09-15 09:57:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardAddCloudVM class implementation.
  */
@@ -29,9 +29,8 @@
 
 
 UIWizardAddCloudVM::UIWizardAddCloudVM(QWidget *pParent,
-                                       const QString &strFullGroupName /* = QString() */,
-                                       WizardMode enmMode /* = WizardMode_Auto */)
-    : UINativeWizard(pParent, WizardType_AddCloudVM, enmMode)
+                                       const QString &strFullGroupName /* = QString() */)
+    : UINativeWizard(pParent, WizardType_AddCloudVM, WizardMode_Auto)
     , m_strFullGroupName(strFullGroupName)
 {
 #ifndef VBOX_WS_MAC

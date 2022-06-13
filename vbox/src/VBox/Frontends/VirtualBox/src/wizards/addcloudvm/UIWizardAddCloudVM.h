@@ -1,4 +1,4 @@
-/* $Id: UIWizardAddCloudVM.h 90375 2021-07-28 15:41:48Z vboxsync $ */
+/* $Id: UIWizardAddCloudVM.h 91241 2021-09-15 09:57:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardAddCloudVM class declaration.
  */
@@ -35,11 +35,9 @@ class UIWizardAddCloudVM : public UINativeWizard
 
 public:
 
-    /** Constructs Add Cloud VM wizard passing @a pParent & @a enmMode to the base-class.
+    /** Constructs Add Cloud VM wizard passing @a pParent to the base-class.
       * @param  strFullGroupName  Brings full group name (/provider/profile) to add VM to. */
-    UIWizardAddCloudVM(QWidget *pParent,
-                       const QString &strFullGroupName = QString(),
-                       WizardMode enmMode = WizardMode_Auto);
+    UIWizardAddCloudVM(QWidget *pParent, const QString &strFullGroupName = QString());
 
     /** Returns full group name. */
     QString fullGroupName() const { return m_strFullGroupName; }
