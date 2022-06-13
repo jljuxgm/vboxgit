@@ -1,4 +1,4 @@
-# $Id: Config.kmk 93115 2022-01-01 11:31:46Z vboxsync $
+# $Id: Config.kmk 94584 2022-04-13 10:34:30Z vboxsync $
 ## @file
 # kBuild Configuration file for the Mesa3D.
 #
@@ -36,6 +36,10 @@ TEMPLATE_VBoxMesa3DGuestR3Dll_EXTENDS  = NewerVccVBoxGuestR3Dll
 TEMPLATE_VBoxMesa3DGuestR3Dll_INST     = $(INST_ADDITIONS)
 TEMPLATE_VBoxMesa3DGuestR3Dll_DEFS     = $(TEMPLATE_NewerVccVBoxGuestR3Dll_DEFS) \
 	VBOX_WITH_MESA3D
+ifdef VBOX_WITH_VMSVGA
+TEMPLATE_VBoxMesa3DGuestR3Dll_DEFS    += \
+	VBOX_WITH_VMSVGA
+endif
 TEMPLATE_VBoxMesa3DGuestR3Dll_SDKS.win = $(TEMPLATE_NewerVccVBoxGuestR3Dll_SDKS) \
 	$(VBOX_WINDDK_GST_W8)
 # VirtualBox specific modifications of the Mesa3D code.
