@@ -1,4 +1,4 @@
-/* $Id: serialport-os2.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: serialport-os2.cpp 90803 2021-08-23 19:08:38Z vboxsync $ */
 /** @file
  * IPRT - Serial Port API, OS/2 Implementation.
  */
@@ -270,7 +270,8 @@ DECLINLINE(int) rtSerialPortSwitchBlockingMode(PRTSERIALPORTINTERNAL pThis, bool
 RTDECL(int)  RTSerialPortOpen(PRTSERIALPORT phSerialPort, const char *pszPortAddress, uint32_t fFlags)
 {
     AssertPtrReturn(phSerialPort, VERR_INVALID_POINTER);
-    AssertReturn(VALID_PTR(pszPortAddress) && *pszPortAddress != '\0', VERR_INVALID_PARAMETER);
+    AssertPtrReturn(pszPortAddress, VERR_INVALID_POINTER);
+    AssertReturn(*pszPortAddress != '\0', VERR_INVALID_PARAMETER);
     AssertReturn(!(fFlags & ~RTSERIALPORT_OPEN_F_VALID_MASK), VERR_INVALID_PARAMETER);
     AssertReturn((fFlags & RTSERIALPORT_OPEN_F_READ) || (fFlags & RTSERIALPORT_OPEN_F_WRITE),
                  VERR_INVALID_PARAMETER);

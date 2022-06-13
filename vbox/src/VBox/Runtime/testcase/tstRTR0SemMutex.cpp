@@ -1,4 +1,4 @@
-/* $Id: tstRTR0SemMutex.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: tstRTR0SemMutex.cpp 90803 2021-08-23 19:08:38Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Mutex Semaphores.
  */
@@ -58,7 +58,7 @@ DECLEXPORT(int) TSTRTR0SemMutexSrvReqHandler(PSUPDRVSESSION pSession, uint32_t u
                                              uint64_t u64Arg, PSUPR0SERVICEREQHDR pReqHdr)
 {
     NOREF(pSession);
-    if (!VALID_PTR(pReqHdr))
+    if (!RT_VALID_PTR(pReqHdr))
         return VERR_INVALID_PARAMETER;
     char   *pszErr = (char *)(pReqHdr + 1);
     size_t  cchErr = pReqHdr->cbReq - sizeof(*pReqHdr);

@@ -1,4 +1,4 @@
-/* $Id: fileaio.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: fileaio.h 90803 2021-08-23 19:08:38Z vboxsync $ */
 /** @file
  * IPRT - Internal RTFileAio header.
  */
@@ -57,7 +57,7 @@ typedef enum RTFILEAIOREQSTATE
 
 /** Return true if the specified request is not valid, false otherwise. */
 #define RTFILEAIOREQ_IS_NOT_VALID(pReq) \
-    (RT_UNLIKELY(!VALID_PTR(pReq) || (pReq->u32Magic != RTFILEAIOREQ_MAGIC)))
+    (RT_UNLIKELY(!RT_VALID_PTR(pReq) || (pReq->u32Magic != RTFILEAIOREQ_MAGIC)))
 
 /** Validates a context handle and returns VERR_INVALID_HANDLE if not valid. */
 #define RTFILEAIOREQ_VALID_RETURN_RC(pReq, rc) \

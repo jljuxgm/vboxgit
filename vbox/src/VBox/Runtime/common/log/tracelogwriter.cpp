@@ -1,4 +1,4 @@
-/* $Id: tracelogwriter.cpp 86387 2020-10-01 14:44:33Z vboxsync $ */
+/* $Id: tracelogwriter.cpp 90803 2021-08-23 19:08:38Z vboxsync $ */
 /** @file
  * IPRT - Trace log writer.
  */
@@ -898,7 +898,7 @@ RTDECL(int) RTTraceLogWrEvtAdd(RTTRACELOGWR hTraceLogWr, PCRTTRACELOGEVTDESC pEv
         rc = rtTraceLogWrEvtDescAdd(pThis, pEvtDesc, &pEvtDescInt);
 
     if (   RT_SUCCESS(rc)
-        && VALID_PTR(pEvtDescInt))
+        && RT_VALID_PTR(pEvtDescInt))
     {
         TRACELOGEVT Evt;
         size_t cbEvtData = rtTraceLogWrEvtInit(&Evt, pEvtDescInt, fFlags, uGrpId, uParentGrpId, pacbRawData);
@@ -932,7 +932,7 @@ RTDECL(int) RTTraceLogWrEvtAddLV(RTTRACELOGWR hTraceLogWr, PCRTTRACELOGEVTDESC p
         rc = rtTraceLogWrEvtDescAdd(pThis, pEvtDesc, &pEvtDescInt);
 
     if (   RT_SUCCESS(rc)
-        && VALID_PTR(pEvtDescInt))
+        && RT_VALID_PTR(pEvtDescInt))
     {
         TRACELOGEVT Evt;
         size_t cbEvtData = rtTraceLogWrEvtInit(&Evt, pEvtDescInt, fFlags, uGrpId, uParentGrpId, NULL);

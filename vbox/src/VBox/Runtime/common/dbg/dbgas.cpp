@@ -1,4 +1,4 @@
-/* $Id: dbgas.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: dbgas.cpp 90803 2021-08-23 19:08:38Z vboxsync $ */
 /** @file
  * IPRT - Debug Address Space.
  */
@@ -331,7 +331,7 @@ static void rtDbgAsDestroy(PRTDBGASINT pDbgAs)
     {
         PRTDBGASMOD pMod = pDbgAs->papModules[i];
         AssertPtr(pMod);
-        if (VALID_PTR(pMod))
+        if (RT_VALID_PTR(pMod))
         {
             Assert(pMod->iOrdinal == i);
             RTDbgModRelease((RTDBGMOD)pMod->Core.Key);

@@ -1,4 +1,4 @@
-/* $Id: fileio.cpp 87581 2021-02-03 15:49:33Z vboxsync $ */
+/* $Id: fileio.cpp 90803 2021-08-23 19:08:38Z vboxsync $ */
 /** @file
  * IPRT - File I/O.
  */
@@ -255,7 +255,7 @@ RTDECL(int) RTFileCompareEx(const char *pszFile1, const char *pszFile2, uint32_t
     AssertReturn(*pszFile1, VERR_INVALID_PARAMETER);
     AssertPtrReturn(pszFile2, VERR_INVALID_POINTER);
     AssertReturn(*pszFile2, VERR_INVALID_PARAMETER);
-    AssertMsgReturn(!pfnProgress || VALID_PTR(pfnProgress), ("pfnProgress=%p\n", pfnProgress), VERR_INVALID_PARAMETER);
+    AssertPtrNullReturn(pfnProgress, VERR_INVALID_POINTER);
     AssertMsgReturn(!(fFlags & ~RTFILECOMP_FLAGS_MASK), ("%#x\n", fFlags), VERR_INVALID_PARAMETER);
 
     /*
@@ -301,7 +301,7 @@ RTDECL(int) RTFileCompareByHandlesEx(RTFILE hFile1, RTFILE hFile2, uint32_t fFla
      */
     AssertReturn(RTFileIsValid(hFile1), VERR_INVALID_HANDLE);
     AssertReturn(RTFileIsValid(hFile1), VERR_INVALID_HANDLE);
-    AssertMsgReturn(!pfnProgress || VALID_PTR(pfnProgress), ("pfnProgress=%p\n", pfnProgress), VERR_INVALID_PARAMETER);
+    AssertPtrNullReturn(pfnProgress, VERR_INVALID_POINTER);
     AssertMsgReturn(!(fFlags & ~RTFILECOMP_FLAGS_MASK), ("%#x\n", fFlags), VERR_INVALID_PARAMETER);
 
     /*

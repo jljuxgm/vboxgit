@@ -1,4 +1,4 @@
-/* $Id: RTFileSetAllocationSize-posix.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: RTFileSetAllocationSize-posix.cpp 90803 2021-08-23 19:08:38Z vboxsync $ */
 /** @file
  * IPRT - RTFileSetAllocationSize, linux implementation.
  */
@@ -58,7 +58,7 @@ RTDECL(int) RTFileSetAllocationSize(RTFILE hFile, uint64_t cbSize, uint32_t fFla
 
     int rc = VINF_SUCCESS;
     PFNPOSIXFALLOCATE pfnPosixFAllocate = (PFNPOSIXFALLOCATE)(uintptr_t)dlsym(RTLD_DEFAULT, "posix_fallocate");
-    if (VALID_PTR(pfnPosixFAllocate))
+    if (RT_VALID_PTR(pfnPosixFAllocate))
     {
         int rcPosix = pfnPosixFAllocate(RTFileToNative(hFile), 0, cbSize);
         if (rcPosix != 0)

@@ -1,4 +1,4 @@
-/* $Id: timer-generic.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: timer-generic.cpp 90803 2021-08-23 19:08:38Z vboxsync $ */
 /** @file
  * IPRT - Timers, Generic.
  */
@@ -142,7 +142,7 @@ RT_EXPORT_SYMBOL(RTTimerCreateEx);
  */
 DECLINLINE(bool) rtTimerIsValid(PRTTIMER pTimer)
 {
-    AssertReturn(VALID_PTR(pTimer), false);
+    AssertPtrReturn(pTimer, false);
     AssertReturn(pTimer->u32Magic == RTTIMER_MAGIC, false);
     AssertReturn(!pTimer->fDestroyed, false);
     return true;

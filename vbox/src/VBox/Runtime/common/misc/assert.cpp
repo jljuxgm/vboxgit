@@ -1,4 +1,4 @@
-/* $Id: assert.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: assert.cpp 90803 2021-08-23 19:08:38Z vboxsync $ */
 /** @file
  * IPRT - Assertions, common code.
  */
@@ -223,10 +223,10 @@ RTDECL(void) RTAssertMsg1(const char *pszExpr, unsigned uLine, const char *pszFi
                 "\n!!Assertion Failed!!\n"
                 "Expression: %s\n"
                 "Location  : %s(%d) %s\n",
-                VALID_PTR(pszExpr) ? pszExpr : "<none>",
-                VALID_PTR(pszFile) ? pszFile : "<none>",
+                RT_VALID_PTR(pszExpr) ? pszExpr : "<none>",
+                RT_VALID_PTR(pszFile) ? pszFile : "<none>",
                 uLine,
-                VALID_PTR(pszFunction) ? pszFunction : "");
+                RT_VALID_PTR(pszFunction) ? pszFunction : "");
 # ifdef IPRT_WITH_ASSERT_STACK
         fprintf(stderr, "Stack     :\n%s\n", szStack);
 # endif

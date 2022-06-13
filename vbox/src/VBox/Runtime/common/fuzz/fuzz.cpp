@@ -1,4 +1,4 @@
-/* $Id: fuzz.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
+/* $Id: fuzz.cpp 90803 2021-08-23 19:08:38Z vboxsync $ */
 /** @file
  * IPRT - Fuzzing framework API, core.
  */
@@ -2136,7 +2136,7 @@ RTDECL(int) RTFuzzCtxInputGenerate(RTFUZZCTX hFuzzCtx, PRTFUZZINPUT phFuzzInput)
 
         rc = pMutator->pfnPrep(pThis, offStart, pMutationParent, &pMutation);
         if (   RT_SUCCESS(rc)
-            && VALID_PTR(pMutation))
+            && RT_VALID_PTR(pMutation))
         {
             pMutation->pMutator = pMutator;
 

@@ -1,4 +1,4 @@
-/* $Id: fileaio-freebsd.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: fileaio-freebsd.cpp 90803 2021-08-23 19:08:38Z vboxsync $ */
 /** @file
  * IPRT - File async I/O, native implementation for the FreeBSD host platform.
  */
@@ -271,7 +271,7 @@ RTDECL(int) RTFileAioReqCancel(RTFILEAIOREQ hReq)
          * Decrement request count because the request will never arrive at the
          * completion port.
          */
-        AssertMsg(VALID_PTR(pReqInt->pCtxInt),
+        AssertMsg(RT_VALID_PTR(pReqInt->pCtxInt),
                   ("Invalid state. Request was canceled but wasn't submitted\n"));
 
         ASMAtomicDecS32(&pReqInt->pCtxInt->cRequests);

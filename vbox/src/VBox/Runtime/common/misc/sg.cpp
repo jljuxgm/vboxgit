@@ -1,4 +1,4 @@
-/* $Id: sg.cpp 89264 2021-05-25 11:09:36Z vboxsync $ */
+/* $Id: sg.cpp 90803 2021-08-23 19:08:38Z vboxsync $ */
 /** @file
  * IPRT - S/G buffer handling.
  */
@@ -83,7 +83,7 @@ static void *rtSgBufGet(PRTSGBUF pSgBuf, size_t *pcbData)
 RTDECL(void) RTSgBufInit(PRTSGBUF pSgBuf, PCRTSGSEG paSegs, size_t cSegs)
 {
     AssertPtr(pSgBuf);
-    Assert(   (cSegs > 0 && VALID_PTR(paSegs))
+    Assert(   (cSegs > 0 && RT_VALID_PTR(paSegs))
            || (!cSegs && !paSegs));
     Assert(cSegs < (~(unsigned)0 >> 1));
 

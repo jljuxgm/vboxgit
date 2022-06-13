@@ -1,4 +1,4 @@
-/* $Id: tstRTR0Common.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: tstRTR0Common.h 90803 2021-08-23 19:08:38Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Common header.
  */
@@ -55,7 +55,7 @@ static uint32_t volatile g_cErrors;
 #define RTR0TESTR0_SRV_REQ_PROLOG_RET(pReqHdr) \
     do \
     { \
-        if (!VALID_PTR(pReqHdr)) \
+        if (!RT_VALID_PTR(pReqHdr)) \
             return VERR_INVALID_PARAMETER; \
         \
         PRTTSTR0REQ pReq    = (PRTTSTR0REQ)(pReqHdr); \

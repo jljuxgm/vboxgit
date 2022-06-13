@@ -1,4 +1,4 @@
-/* $Id: timer-posix.cpp 89679 2021-06-14 13:10:38Z vboxsync $ */
+/* $Id: timer-posix.cpp 90803 2021-08-23 19:08:38Z vboxsync $ */
 /** @file
  * IPRT - Timer, POSIX.
  */
@@ -378,7 +378,7 @@ static DECLCALLBACK(int) rttimerThread(RTTHREAD hThreadSelf, void *pvArg)
             {
                 PRTTIMER pTimer = (PRTTIMER)SigInfo.si_value.sival_ptr;
                 AssertPtr(pTimer);
-                if (RT_UNLIKELY(    !VALID_PTR(pTimer)
+                if (RT_UNLIKELY(    !RT_VALID_PTR(pTimer)
                                 ||  ASMAtomicUoReadU8(&pTimer->fSuspended)
                                 ||  ASMAtomicUoReadU8(&pTimer->fDestroyed)
                                 ||  pTimer->u32Magic != RTTIMER_MAGIC))

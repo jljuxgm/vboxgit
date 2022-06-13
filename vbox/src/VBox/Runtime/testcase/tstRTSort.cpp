@@ -1,4 +1,4 @@
-/* $Id: tstRTSort.cpp 86382 2020-10-01 14:21:30Z vboxsync $ */
+/* $Id: tstRTSort.cpp 90803 2021-08-23 19:08:38Z vboxsync $ */
 /** @file
  * IPRT Testcase - Sorting.
  */
@@ -53,7 +53,7 @@ static DECLCALLBACK(int) testApvCompare(void const *pvElement1, void const *pvEl
     TSTRTSORTAPV   *pData        = (TSTRTSORTAPV *)pvUser;
     uint32_t const *pu32Element1 = (uint32_t const *)pvElement1;
     uint32_t const *pu32Element2 = (uint32_t const *)pvElement2;
-    RTTESTI_CHECK(VALID_PTR(pData) && pData->cElements <= RT_ELEMENTS(pData->aValues));
+    RTTESTI_CHECK(RT_VALID_PTR(pData) && pData->cElements <= RT_ELEMENTS(pData->aValues));
     RTTESTI_CHECK((uintptr_t)(pu32Element1 - &pData->aValues[0]) < pData->cElements);
     RTTESTI_CHECK((uintptr_t)(pu32Element2 - &pData->aValues[0]) < pData->cElements);
 

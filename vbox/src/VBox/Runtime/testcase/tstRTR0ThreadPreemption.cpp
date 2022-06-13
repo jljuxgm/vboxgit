@@ -1,4 +1,4 @@
-/* $Id: tstRTR0ThreadPreemption.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: tstRTR0ThreadPreemption.cpp 90803 2021-08-23 19:08:38Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Thread Preemption.
  */
@@ -167,7 +167,7 @@ DECLEXPORT(int) TSTRTR0ThreadPreemptionSrvReqHandler(PSUPDRVSESSION pSession, ui
     NOREF(pSession);
     if (u64Arg)
         return VERR_INVALID_PARAMETER;
-    if (!VALID_PTR(pReqHdr))
+    if (!RT_VALID_PTR(pReqHdr))
         return VERR_INVALID_PARAMETER;
     char   *pszErr = (char *)(pReqHdr + 1);
     size_t  cchErr = pReqHdr->cbReq - sizeof(*pReqHdr);
