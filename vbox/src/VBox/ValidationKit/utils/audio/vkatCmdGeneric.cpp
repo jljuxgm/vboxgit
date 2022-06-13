@@ -1,4 +1,4 @@
-/* $Id: vkatCmdGeneric.cpp 92003 2021-10-22 12:57:13Z vboxsync $ */
+/* $Id: vkatCmdGeneric.cpp 92463 2021-11-16 15:55:37Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) utility for testing and validating the audio stack.
  */
@@ -65,8 +65,8 @@ static DECLCALLBACK(const char *) audioTestCmdEnumHelp(PCRTGETOPTDEF pOpt)
 {
     switch (pOpt->iShort)
     {
-        case 'b':                               return "The audio backend to use.";
-        case VKAT_ENUM_OPT_PROBE_BACKENDS:      return "Probes all (available) backends until a working one is found\n";
+        case 'b':                               return "The audio backend to use";
+        case VKAT_ENUM_OPT_PROBE_BACKENDS:      return "Probes all (available) backends until a working one is found";
         default:  return NULL;
     }
 }

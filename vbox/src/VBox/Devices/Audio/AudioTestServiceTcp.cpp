@@ -1,4 +1,4 @@
-/* $Id: AudioTestServiceTcp.cpp 92073 2021-10-26 09:43:19Z vboxsync $ */
+/* $Id: AudioTestServiceTcp.cpp 92463 2021-11-16 15:55:37Z vboxsync $ */
 /** @file
  * AudioTestServiceTcp - Audio test execution server, TCP/IP Transport Layer.
  */
@@ -899,20 +899,20 @@ DECLCALLBACK(void) atsTcpUsage(PRTSTREAM pStream)
 {
     RTStrmPrintf(pStream,
                  "  --tcp-conn-mode <0=both|1=client|2=server>\n"
-                 "       Selects the connection mode.\n"
-                 "       Default: 0 (both)\n"
+                 "    Selects the connection mode\n"
+                 "    Default: 0 (both)\n"
                  "  --tcp-bind-addr[ess] <address>\n"
-                 "       The address(es) to listen to TCP connection on.  Empty string\n"
-                 "       means any address, this is the default.\n"
+                 "    The address(es) to listen to TCP connection on. Empty string\n"
+                 "    means any address, this is the default\n"
                  "  --tcp-bind-port <port>\n"
-                 "       The port to listen to TCP connections on.\n"
-                 "       Default: %u\n"
+                 "    The port to listen to TCP connections on\n"
+                 "    Default: %u\n"
                  "  --tcp-connect-addr[ess] <address>\n"
-                 "       The address of the server to try connect to in client mode.\n"
-                 "       Default: " ATS_TCP_DEF_CONNECT_GUEST_STR "\n"
+                 "    The address of the server to try connect to in client mode\n"
+                 "    Default: " ATS_TCP_DEF_CONNECT_GUEST_STR "\n"
                  "  --tcp-connect-port <port>\n"
-                 "       The port on the server to connect to in client mode.\n"
-                 "       Default: %u\n"
+                 "    The port on the server to connect to in client mode\n"
+                 "    Default: %u\n"
                  , ATS_TCP_DEF_BIND_PORT_GUEST, ATS_TCP_DEF_CONNECT_PORT_GUEST);
 }
 

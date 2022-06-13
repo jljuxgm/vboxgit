@@ -1,4 +1,4 @@
-/* $Id: vkat.cpp 92396 2021-11-12 11:46:06Z vboxsync $ */
+/* $Id: vkat.cpp 92463 2021-11-16 15:55:37Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) utility for testing and validating the audio stack.
  */
@@ -728,7 +728,7 @@ static DECLCALLBACK(const char *) audioTestCmdTestHelp(PCRTGETOPTDEF pOpt)
                                                        "    Default: 2";
         case VKAT_TEST_OPT_PCM_SIGNED:          return "PCM samples to use (signed = true, unsigned = false)\n"
                                                        "    Default: true";
-        case VKAT_TEST_OPT_PROBE_BACKENDS:      return "Probes all (available) backends until a working one is found\n";
+        case VKAT_TEST_OPT_PROBE_BACKENDS:      return "Probes all (available) backends until a working one is found";
         case VKAT_TEST_OPT_TAG:                 return "Test set tag to use";
         case VKAT_TEST_OPT_TEMPDIR:             return "Temporary directory to use";
         case VKAT_TEST_OPT_VOL:                 return "Audio volume (percent) to use";
@@ -1297,17 +1297,17 @@ RTEXITCODE audioTestUsage(PRTSTREAM pStrm)
                  "\n"
                  "Global Options:\n"
                  "  --debug-audio\n"
-                 "    Enables (DrvAudio) debugging.\n"
+                 "    Enables (DrvAudio) debugging\n"
                  "  --debug-audio-path=<path>\n"
-                 "    Tells DrvAudio where to put its debug output (wav-files).\n"
+                 "    Tells DrvAudio where to put its debug output (wav-files)\n"
                  "  -q, --quiet\n"
-                 "    Sets verbosity to zero.\n"
+                 "    Sets verbosity to zero\n"
                  "  -v, --verbose\n"
-                 "    Increase verbosity.\n"
+                 "    Increase verbosity\n"
                  "  -V, --version\n"
-                 "    Displays version.\n"
+                 "    Displays version\n"
                  "  -h, -?, --help\n"
-                 "    Displays help.\n"
+                 "    Displays help\n"
                  );
 
     for (uintptr_t iCmd = 0; iCmd < RT_ELEMENTS(g_apCommands); iCmd++)

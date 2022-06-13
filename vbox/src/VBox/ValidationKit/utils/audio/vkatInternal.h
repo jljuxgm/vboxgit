@@ -1,4 +1,4 @@
-/* $Id: vkatInternal.h 92396 2021-11-12 11:46:06Z vboxsync $ */
+/* $Id: vkatInternal.h 92463 2021-11-16 15:55:37Z vboxsync $ */
 /** @file
  * VKAT - Internal header file for common definitions + structs.
  */
@@ -514,7 +514,6 @@ enum
                 return audioTestVersion(); \
             \
             case 'h': \
-                audioTestShowLogo(g_pStdOut); \
                 return audioTestUsage(g_pStdOut); \
             \
             case AUDIO_TEST_OPT_CMN_DEBUG_AUDIO_ENABLE: \
