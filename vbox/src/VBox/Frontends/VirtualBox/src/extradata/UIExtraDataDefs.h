@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 92400 2021-11-12 15:07:42Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 92436 2021-11-15 17:19:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -446,10 +446,10 @@ namespace UIExtraDataDefs
 
     /** @name Help Browser
       * @{ */
-        SHARED_LIBRARY_STUFF extern const char *GUI_HelpBrowserLastURLList;
-        SHARED_LIBRARY_STUFF extern const char *GUI_HelpBrowserDialogGeometry;
-        SHARED_LIBRARY_STUFF extern const char *GUI_HelpBrowserBookmarks;
-        SHARED_LIBRARY_STUFF extern const char *GUI_HelpBrowserZoomPercentage;
+        SHARED_LIBRARY_STUFF extern const char *GUI_HelpBrowser_LastURLList;
+        SHARED_LIBRARY_STUFF extern const char *GUI_HelpBrowser_DialogGeometry;
+        SHARED_LIBRARY_STUFF extern const char *GUI_HelpBrowser_Bookmarks;
+        SHARED_LIBRARY_STUFF extern const char *GUI_HelpBrowser_ZoomPercentage;
     /** @} */
 
     /** @name Manager UI: VM Activity Overview Related stuff
