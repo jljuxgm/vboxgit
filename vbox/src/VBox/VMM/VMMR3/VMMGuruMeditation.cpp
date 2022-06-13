@@ -1,4 +1,4 @@
-/* $Id: VMMGuruMeditation.cpp 90160 2021-07-12 22:32:26Z vboxsync $ */
+/* $Id: VMMGuruMeditation.cpp 90161 2021-07-12 23:08:00Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor, Guru Meditation Code.
  */
@@ -320,6 +320,8 @@ VMMR3DECL(void) VMMR3FatalDump(PVM pVM, PVMCPU pVCpu, int rcErr)
         case VERR_VMM_RING0_ASSERTION:
         case VINF_EM_DBG_HYPER_ASSERTION:
         case VERR_VMM_RING3_CALL_DISABLED:
+        case VERR_VMM_WRONG_HM_VMCPU_STATE:
+        case VERR_VMM_CONTEXT_HOOK_STILL_ENABLED:
         {
             const char *pszMsg1 = VMMR3GetRZAssertMsg1(pVM);
             while (pszMsg1 && *pszMsg1 == '\n')
