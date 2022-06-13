@@ -1,4 +1,4 @@
-/* $Id: pdmaudioinline.h 89768 2021-06-17 23:03:19Z vboxsync $ */
+/* $Id: pdmaudioinline.h 89821 2021-06-21 13:04:40Z vboxsync $ */
 /** @file
  * PDM - Audio Helpers, Inlined Code. (DEV,++)
  *
@@ -1416,7 +1416,7 @@ DECLINLINE(const char *) PDMAudioStrmCfgToString(PCPDMAUDIOSTREAMCFG pCfg, char 
                 PDMAudioPropsFramesToMilliMax(&pCfg->Props, pCfg->Backend.cFramesPeriod, 9999999),
                 PDMAudioPropsFramesToMilliMax(&pCfg->Props, pCfg->Backend.cFramesPreBuffering, 9999999),
                 pCfg->Device.cMsSchedulingHint,
-                pCfg->enmPath == PDMAUDIOPATH_UNKNOWN ? ", " : "",
+                pCfg->enmPath == PDMAUDIOPATH_UNKNOWN ? "" : ", ",
                 pCfg->enmPath == PDMAUDIOPATH_UNKNOWN ? "" : PDMAudioPathGetName(pCfg->enmPath) );
     return pszDst;
 }
