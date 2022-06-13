@@ -1,4 +1,4 @@
-/* $Id: DrvVD.cpp 91955 2021-10-21 14:26:20Z vboxsync $ */
+/* $Id: DrvVD.cpp 92227 2021-11-04 21:40:52Z vboxsync $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
@@ -4478,6 +4478,7 @@ static DECLCALLBACK(void) drvvdReset(PPDMDRVINS pDrvIns)
         pThis->cbDataValid      = 0;
         pThis->offDisk          = 0;
     }
+    pThis->fLocked = false;
 }
 
 /**
