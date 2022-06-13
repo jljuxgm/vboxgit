@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMPageExpert.cpp 90702 2021-08-17 15:40:19Z vboxsync $ */
+/* $Id: UIWizardCloneVMPageExpert.cpp 90713 2021-08-18 10:00:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMPageExpert class implementation.
  */
@@ -136,6 +136,7 @@ void UIWizardCloneVMPageExpert::sltCloneNameChanged(const QString &strCloneName)
     cloneVMWizardPropertySet(CloneName, strCloneName);
     cloneVMWizardPropertySet(CloneFilePath,
                              UIWizardCloneVMNamePage::composeCloneFilePath(strCloneName, m_strGroup, m_pNamePathGroupBox->clonePath()));
+    emit completeChanged();
 }
 
 void UIWizardCloneVMPageExpert::sltClonePathChanged(const QString &strClonePath)
@@ -143,6 +144,7 @@ void UIWizardCloneVMPageExpert::sltClonePathChanged(const QString &strClonePath)
     AssertReturnVoid(m_pNamePathGroupBox);
     cloneVMWizardPropertySet(CloneFilePath,
                              UIWizardCloneVMNamePage::composeCloneFilePath(m_pNamePathGroupBox->cloneName(), m_strGroup, strClonePath));
+    emit completeChanged();
 }
 
 void UIWizardCloneVMPageExpert::sltMACAddressClonePolicyChanged(MACAddressClonePolicy enmMACAddressClonePolicy)

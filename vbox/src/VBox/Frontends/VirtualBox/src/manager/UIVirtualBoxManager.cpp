@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 90589 2021-08-10 10:07:26Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 90713 2021-08-18 10:00:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -975,7 +975,7 @@ void UIVirtualBoxManager::sltOpenNewMachineWizard()
     {
         /* Use the "safe way" to open stack of Mac OS X Sheets: */
         QWidget *pWizardParent = windowManager().realParentWindow(this);
-        UISafePointerWizardNewVM pWizard = new UIWizardNewVM(pWizardParent, m_pWidget->fullGroupName());
+        UISafePointerWizardNewVM pWizard = new UIWizardNewVM(pWizardParent, m_pWidget->fullGroupName(), WizardMode_Auto, "gui-createvm");
         windowManager().registerNewParent(pWizard, pWizardParent);
 
         CUnattended comUnattendedInstaller = uiCommon().virtualBox().CreateUnattendedInstaller();
