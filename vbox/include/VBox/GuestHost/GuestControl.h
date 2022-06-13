@@ -1,4 +1,4 @@
-/* $Id: GuestControl.h 92707 2021-12-02 13:14:23Z vboxsync $ */
+/* $Id: GuestControl.h 92708 2021-12-02 13:34:22Z vboxsync $ */
 /** @file
  * Guest Control - Common Guest and Host Code.
  *
@@ -61,7 +61,7 @@ enum eProcessStatus
     /** Something went wrong (error code in flags). */
     PROC_STS_ERROR = 8
 };
- 
+
 /**
  * Input flags, set by the host. This is needed for
  * handling flags on the guest side.
