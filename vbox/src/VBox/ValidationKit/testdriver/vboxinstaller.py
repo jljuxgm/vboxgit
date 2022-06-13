@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 93115 $"
+__version__ = "$Revision: 93183 $"
 
 
 # Standard Python imports.
@@ -694,6 +694,16 @@ class VBoxInstallerTestDriver(TestDriverBase):
 
     def _installVBoxOnDarwin(self):
         """ Installs VBox on Mac OS X."""
+
+        # TEMPORARY HACK - START
+        # Don't install the kernel drivers on the testboxes with BigSur and later
+        # Needs a more generic approach but that one needs more effort.
+        sHostName = socket.getfqdn();
+        if    sHostName.startswith('testboxmac10') \
+           or sHostName.startswith('testboxmac11'):
+            self._fKernelDrivers = False;
+        # TEMPORARY HACK - END
+
         sDmg = self._findFile('^VirtualBox-.*\\.dmg$');
         if sDmg is None:
             return False;
