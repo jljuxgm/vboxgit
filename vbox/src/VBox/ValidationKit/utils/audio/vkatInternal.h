@@ -1,4 +1,4 @@
-/* $Id: vkatInternal.h 91451 2021-09-29 08:59:35Z vboxsync $ */
+/* $Id: vkatInternal.h 91489 2021-09-30 08:17:56Z vboxsync $ */
 /** @file
  * VKAT - Internal header file for common definitions + structs.
  */
@@ -434,7 +434,7 @@ uint32_t    AudioTestMixStreamGetWritable(PAUDIOTESTDRVMIXSTREAM pMix);
 int         AudioTestMixStreamPlay(PAUDIOTESTDRVMIXSTREAM pMix, void const *pvBuf, uint32_t cbBuf, uint32_t *pcbPlayed);
 uint32_t    AudioTestMixStreamGetReadable(PAUDIOTESTDRVMIXSTREAM pMix);
 int         AudioTestMixStreamCapture(PAUDIOTESTDRVMIXSTREAM pMix, void *pvBuf, uint32_t cbBuf, uint32_t *pcbCaptured);
-void        AudioTestMixStreamSetVolume(PAUDIOTESTDRVMIXSTREAM pMix, uint8_t uVol);
+void        AudioTestMixStreamSetVolume(PAUDIOTESTDRVMIXSTREAM pMix, uint8_t uVolumePercent);
 /** @}  */
 
 /** @name Device handling
