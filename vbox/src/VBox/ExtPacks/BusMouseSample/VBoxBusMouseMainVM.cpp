@@ -1,4 +1,4 @@
-/* $Id: VBoxBusMouseMainVM.cpp 91312 2021-09-20 11:06:57Z vboxsync $ */
+/* $Id: VBoxBusMouseMainVM.cpp 92222 2021-11-04 19:42:32Z vboxsync $ */
 /** @file
  * Bus Mouse main VM module.
  */
@@ -140,7 +140,7 @@ static const VBOXEXTPACKVMREG g_vboxBusMouseExtPackVMReg =
     /* .pfnReserved4 =      */  NULL,
     /* .pfnReserved5 =      */  NULL,
     /* .pfnReserved6 =      */  NULL,
-    /* .u32Reserved7 =      */  0,
+    /* .uReserved7 =        */  0,
     VBOXEXTPACKVMREG_VERSION
 };
 

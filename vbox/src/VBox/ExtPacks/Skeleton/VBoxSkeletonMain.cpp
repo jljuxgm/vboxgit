@@ -1,4 +1,4 @@
-/* $Id: VBoxSkeletonMain.cpp 91312 2021-09-20 11:06:57Z vboxsync $ */
+/* $Id: VBoxSkeletonMain.cpp 92222 2021-11-04 19:42:32Z vboxsync $ */
 /** @file
  * Skeleton main module.
  */
@@ -96,7 +96,7 @@ static const VBOXEXTPACKREG g_vboxSkeletonExtPackReg =
     /* .pfnReserved4 =      */  NULL,
     /* .pfnReserved5 =      */  NULL,
     /* .pfnReserved6 =      */  NULL,
-    /* .u32Reserved7 =      */  0,
+    /* .uReserved7 =        */  0,
     VBOXEXTPACKREG_VERSION
 };
 

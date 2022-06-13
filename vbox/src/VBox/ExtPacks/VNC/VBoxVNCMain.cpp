@@ -1,4 +1,4 @@
-/* $Id: VBoxVNCMain.cpp 91312 2021-09-20 11:06:57Z vboxsync $ */
+/* $Id: VBoxVNCMain.cpp 92222 2021-11-04 19:42:32Z vboxsync $ */
 /** @file
  * VNC main module.
  */
@@ -83,7 +83,7 @@ static const VBOXEXTPACKREG g_vboxVNCExtPackReg =
     /* .pfnReserved4 =      */  NULL,
     /* .pfnReserved5 =      */  NULL,
     /* .pfnReserved6 =      */  NULL,
-    /* .u32Reserved7 =      */  0,
+    /* .uReserved7 =        */  0,
     VBOXEXTPACKREG_VERSION
 };
 
