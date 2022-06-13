@@ -1,4 +1,4 @@
-/* $Id: UINotificationCenter.h 92429 2021-11-15 14:25:27Z vboxsync $ */
+/* $Id: UINotificationCenter.h 92431 2021-11-15 15:46:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINotificationCenter class declaration.
  */
@@ -100,6 +100,8 @@ protected:
 
 private slots:
 
+    /** Issues order changes. */
+    void sltIssueOrderChange();
     /** Handles order changes. */
     void sltHandleOrderChange();
 
@@ -163,6 +165,8 @@ private:
     QHBoxLayout  *m_pLayoutButtons;
     /** Holds the open button instance. */
     QIToolButton *m_pButtonOpen;
+    /** Holds the toggle-sorting button instance. */
+    QIToolButton *m_pButtonToggleSorting;
     /** Holds the keep-finished button instance. */
     QIToolButton *m_pButtonKeepFinished;
     /** Holds the remove-finished button instance. */
