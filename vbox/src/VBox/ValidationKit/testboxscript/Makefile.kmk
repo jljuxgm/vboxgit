@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: Makefile.kmk 92956 2021-12-16 09:08:18Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - TestBox Script.
 #
@@ -72,7 +72,7 @@ PROGRAMS += TestBoxHelper
 TestBoxHelper_TEMPLATE = VBoxValidationKitR3
 TestBoxHelper_INST     = $(INST_TESTBOXSCRIPT)$(KBUILD_TARGET)/$(KBUILD_TARGET_ARCH)/
 TestBoxHelper_SOURCES  = TestBoxHelper.cpp
-TestBoxHelper_LIBS.win = $(PATH_SDK_$(VBOX_WINDDK)_LIB)/wbemuuid.lib
+TestBoxHelper_LIBS.win = $(PATH_SDK_$(VBOX_WINPSDK)_LIB)/wbemuuid.lib
 TestBoxHelper_LDFLAGS.darwin = -framework CoreFoundation
 TestBoxHelper_VBOX_IMPORT_CHECKER.win.x86 = $(NO_SUCH_VARIABLE)
 
