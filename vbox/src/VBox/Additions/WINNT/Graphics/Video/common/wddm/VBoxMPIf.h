@@ -1,4 +1,4 @@
-/* $Id: VBoxMPIf.h 93670 2022-02-09 21:14:34Z vboxsync $ */
+/* $Id: VBoxMPIf.h 93833 2022-02-17 18:58:54Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver.
  *
@@ -902,6 +902,7 @@ DECLINLINE(UINT) vboxWddmCalcOffXYrd(UINT x, UINT y, UINT pitch, D3DDDIFORMAT en
 }
 
 #if defined(VBOX_WITH_VMSVGA3D_DX)
+#include <dxgiformat.h>
 DECLINLINE(UINT) vboxWddmCalcBitsPerPixelDXGI(DXGI_FORMAT enmFormat)
 {
     switch (enmFormat)
