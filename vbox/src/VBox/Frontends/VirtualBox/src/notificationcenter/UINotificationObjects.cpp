@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 90560 2021-08-07 07:36:02Z vboxsync $ */
+/* $Id: UINotificationObjects.cpp 90561 2021-08-07 09:04:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -22,6 +22,7 @@
 /* GUI includes: */
 #include "UICommon.h"
 #include "UIDownloaderExtensionPack.h"
+#include "UIDownloaderUserManual.h"
 #include "UINotificationObjects.h"
 
 /* COM includes: */
@@ -1537,6 +1538,62 @@ UIDownloader *UINotificationDownloaderExtensionPack::createDownloader()
     {
         connect(pDownloader, &UIDownloaderExtensionPack::sigDownloadFinished,
                 this, &UINotificationDownloaderExtensionPack::sigExtensionPackDownloaded);
+        return pDownloader;
+    }
+    return 0;
+}
+
+
+/*********************************************************************************************************************************
+*   Class UINotificationDownloaderUserManual implementation.                                                                     *
+*********************************************************************************************************************************/
+
+/* static */
+UINotificationDownloaderUserManual *UINotificationDownloaderUserManual::s_pInstance = 0;
+
+/* static */
+UINotificationDownloaderUserManual *UINotificationDownloaderUserManual::instance(const QString &strFileName)
+{
+    if (!s_pInstance)
+        new UINotificationDownloaderUserManual(strFileName);
+    return s_pInstance;
+}
+
+/* static */
+bool UINotificationDownloaderUserManual::exists()
+{
+    return !!s_pInstance;
+}
+
+UINotificationDownloaderUserManual::UINotificationDownloaderUserManual(const QString &strFileName)
+    : m_strFileName(strFileName)
+{
+    s_pInstance = this;
+}
+
+UINotificationDownloaderUserManual::~UINotificationDownloaderUserManual()
+{
+    s_pInstance = 0;
+}
+
+QString UINotificationDownloaderUserManual::name() const
+{
+    return UINotificationDownloader::tr("Downloading User Manual ...");
+}
+
+QString UINotificationDownloaderUserManual::details() const
+{
+    return UINotificationProgress::tr("<b>Name:</b> %1").arg(m_strFileName);
+}
+
+UIDownloader *UINotificationDownloaderUserManual::createDownloader()
+{
+    /* Create and configure the User Manual downloader: */
+    UIDownloaderUserManual *pDownloader = new UIDownloaderUserManual;
+    if (pDownloader)
+    {
+        connect(pDownloader, &UIDownloaderUserManual::sigDownloadFinished,
+                this, &UINotificationDownloaderUserManual::sigUserManualDownloaded);
         return pDownloader;
     }
     return 0;

@@ -1,4 +1,4 @@
-/* $Id: UIDownloaderUserManual.h 90541 2021-08-06 10:19:48Z vboxsync $ */
+/* $Id: UIDownloaderUserManual.h 90561 2021-08-07 09:04:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDownloaderUserManual class declaration.
  */
@@ -37,17 +37,10 @@ signals:
 
 public:
 
-    /** Creates downloader instance. */
-    static UIDownloaderUserManual *create();
-    /** Returns current downloader instance. */
-    static UIDownloaderUserManual *current() { return s_pInstance; }
-
-private:
-
     /** Constructs downloader. */
     UIDownloaderUserManual();
-    /** Destructs downloader. */
-    ~UIDownloaderUserManual();
+
+private:
 
     /** Returns description of the current network operation. */
     virtual QString description() const /* override */;
@@ -56,10 +49,6 @@ private:
     virtual bool askForDownloadingConfirmation(UINetworkReply *pReply) /* override */;
     /** Handles downloaded object for passed @a pReply. */
     virtual void handleDownloadedObject(UINetworkReply *pReply) /* override */;
-
-    /** Holds the static singleton instance. */
-    static UIDownloaderUserManual *s_pInstance;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_networking_UIDownloaderUserManual_h */
-
