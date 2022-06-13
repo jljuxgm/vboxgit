@@ -1,4 +1,4 @@
-/* $Id: vkatDriverStack.cpp 92064 2021-10-26 07:42:51Z vboxsync $ */
+/* $Id: vkatDriverStack.cpp 92080 2021-10-26 12:13:13Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) - Driver stack code.
  */
@@ -677,7 +677,8 @@ static int audioTestDriverStackStreamCreate(PAUDIOTESTDRVSTACK pDrvStack, PCPDMA
             RTMsgInfo("Created backend stream: %s\n", PDMAudioStrmCfgToString(pCfgReq, szTmp, sizeof(szTmp)));
             return rc;
         }
-        RTTestFailed(g_hTest, "pfnStreamCreate failed: %Rrc", rc);
+        /* else: Don't set RTTestFailed(...) here, as test boxes (servers) don't have any audio hardware.
+         *       Caller has check the rc then. */
     }
     else
     {
@@ -746,8 +747,8 @@ static int audioTestDriverStackStreamCreate(PAUDIOTESTDRVSTACK pDrvStack, PCPDMA
                         }
                         pDrvStack->pIHostAudio->pfnStreamDestroy(pDrvStack->pIHostAudio, &pStreamAt->Backend, true /*fImmediate*/);
                     }
-                    else
-                        RTTestFailed(g_hTest, "pfnStreamCreate failed: %Rrc\n", rc);
+                    /* else: Don't set RTTestFailed(...) here, as test boxes (servers) don't have any audio hardware.
+                     *       Caller has check the rc then. */
                 }
                 else
                 {
