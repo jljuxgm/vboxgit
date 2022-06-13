@@ -1,4 +1,4 @@
-; $Id: SUPR0StackWrapper.mac 91779 2021-10-17 11:10:07Z vboxsync $
+; $Id: SUPR0StackWrapper.mac 91780 2021-10-17 11:13:41Z vboxsync $
 ;; @file
 ; SUP - Support Library, ring-0 stack switching wrappers.
 ;
@@ -128,5 +128,4 @@ ENDPROC   %1
 
 
 %endif
-
 
