@@ -1,4 +1,4 @@
-/* $Id: Virtio.cpp 91953 2021-10-21 14:16:29Z vboxsync $ */
+/* $Id: Virtio.cpp 91954 2021-10-21 14:23:19Z vboxsync $ */
 /** @file
  * Virtio - Virtio Common Functions (VRing, VQueue, Virtio PCI)
  */
@@ -701,7 +701,7 @@ void vpciR3DumpState(PPDMDEVINS pDevIns, PVPCISTATE pThis, const char *pcszCalle
     }
 }
 # else
-#  define vpciR3DumpState(d, x, s)  do { RT_NOREF((d), (x)); } while (0)
+#  define vpciR3DumpState(d, x, s)  do { } while (0)
 # endif
 
 /**
@@ -715,7 +715,7 @@ void vpciR3DumpState(PPDMDEVINS pDevIns, PVPCISTATE pThis, const char *pcszCalle
  */
 int vpciR3SaveExec(PPDMDEVINS pDevIns, PCPDMDEVHLPR3 pHlp, PVPCISTATE pThis, PSSMHANDLE pSSM)
 {
-    vpciR3DumpState(pDevIns, pThis, "vpciR3SaveExec");
+    vpciR3DumpState(pDevIns, pThis, "vpciR3SaveExec"); RT_NOREF(pDevIns);
 
     pHlp->pfnSSMPutU32(pSSM, pThis->uGuestFeatures);
     pHlp->pfnSSMPutU16(pSSM, pThis->uQueueSelector);
