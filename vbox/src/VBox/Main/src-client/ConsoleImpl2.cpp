@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 93560 2022-02-03 06:37:40Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 93561 2022-02-03 07:02:29Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -2675,10 +2675,10 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, Au
                 case NetworkAdapterType_NE2000:
                 case NetworkAdapterType_WD8003:
                 case NetworkAdapterType_WD8013:
-                case NetworkAdapterType_3C503:
+                case NetworkAdapterType_ELNK2:
                     pDev = pDevDP8390;
                     break;
-                case NetworkAdapterType_3C501:
+                case NetworkAdapterType_ELNK1:
                     pDev = pDev3C501;
                     break;
                 default:
@@ -2780,10 +2780,10 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, Au
                 case NetworkAdapterType_WD8013:
                     InsertConfigString(pCfg, "DeviceType", "WD8013");
                     break;
-                case NetworkAdapterType_3C503:
+                case NetworkAdapterType_ELNK2:
                     InsertConfigString(pCfg, "DeviceType", "3C503");
                     break;
-                case NetworkAdapterType_3C501:
+                case NetworkAdapterType_ELNK1:
                     break;
                 case NetworkAdapterType_Null:      AssertFailedBreak(); /* (compiler warnings) */
 #ifdef VBOX_WITH_XPCOM_CPP_ENUM_HACK

@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.cpp 93560 2022-02-03 06:37:40Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.cpp 93561 2022-02-03 07:02:29Z vboxsync $ */
 /** @file
  * Implementation of INetworkAdapter in VBoxSVC.
  */
@@ -249,8 +249,8 @@ HRESULT NetworkAdapter::setAdapterType(NetworkAdapterType_T aAdapterType)
         case NetworkAdapterType_NE2000:
         case NetworkAdapterType_WD8003:
         case NetworkAdapterType_WD8013:
-        case NetworkAdapterType_3C503:
-        case NetworkAdapterType_3C501:
+        case NetworkAdapterType_ELNK2:
+        case NetworkAdapterType_ELNK1:
             break;
         default:
             return setError(E_FAIL,

@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 93560 2022-02-03 06:37:40Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 93561 2022-02-03 07:02:29Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -1817,8 +1817,8 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> pVirtualBox,
                     case NetworkAdapterType_NE2000:     pszNICType = "NE2000";      break;
                     case NetworkAdapterType_WD8003:     pszNICType = "WD8003";      break;
                     case NetworkAdapterType_WD8013:     pszNICType = "WD8013";      break;
-                    case NetworkAdapterType_3C503:      pszNICType = "3C503";       break;
-                    case NetworkAdapterType_3C501:      pszNICType = "3C501";       break;
+                    case NetworkAdapterType_ELNK2:      pszNICType = "3C503";       break;
+                    case NetworkAdapterType_ELNK1:      pszNICType = "3C501";       break;
                     default:
                         AssertFailed();
                         if (details == VMINFO_MACHINEREADABLE)

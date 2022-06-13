@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 93560 2022-02-03 06:37:40Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 93561 2022-02-03 07:02:29Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -1571,11 +1571,11 @@ RTEXITCODE handleModifyVM(HandlerArg *a)
                 }
                 else if (!RTStrICmp(ValueUnion.psz, "3C503"))
                 {
-                    CHECK_ERROR(nic, COMSETTER(AdapterType)(NetworkAdapterType_3C503));
+                    CHECK_ERROR(nic, COMSETTER(AdapterType)(NetworkAdapterType_ELNK2));
                 }
                 else if (!RTStrICmp(ValueUnion.psz, "3C501"))
                 {
-                    CHECK_ERROR(nic, COMSETTER(AdapterType)(NetworkAdapterType_3C501));
+                    CHECK_ERROR(nic, COMSETTER(AdapterType)(NetworkAdapterType_ELNK1));
                 }
                 else
                 {

@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 93560 2022-02-03 06:37:40Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 93561 2022-02-03 07:02:29Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -1570,9 +1570,9 @@ inline static const char *networkAdapterTypeToName(NetworkAdapterType_T adapterT
         case NetworkAdapterType_NE2000:
         case NetworkAdapterType_WD8003:
         case NetworkAdapterType_WD8013:
-        case NetworkAdapterType_3C503:
+        case NetworkAdapterType_ELNK2:
             return "dp8390";
-        case NetworkAdapterType_3C501:
+        case NetworkAdapterType_ELNK1:
             return "3c501";
         default:
             AssertFailed();

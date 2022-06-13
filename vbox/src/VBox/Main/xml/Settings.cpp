@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 93560 2022-02-03 06:37:40Z vboxsync $ */
+/* $Id: Settings.cpp 93561 2022-02-03 07:02:29Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -4121,9 +4121,9 @@ void MachineConfigFile::readNetworkAdapters(const xml::ElementNode &elmNetwork,
             else if (strTemp == "WD8013")
                 nic.type = NetworkAdapterType_WD8013;
             else if (strTemp == "3C503")
-                nic.type = NetworkAdapterType_3C503;
+                nic.type = NetworkAdapterType_ELNK2;
             else if (strTemp == "3C501")
-                nic.type = NetworkAdapterType_3C501;
+                nic.type = NetworkAdapterType_ELNK1;
             else
                 throw ConfigFileError(this, pelmAdapter, N_("Invalid value '%s' in Adapter/@type attribute"), strTemp.c_str());
         }
@@ -6854,8 +6854,8 @@ void MachineConfigFile::buildHardwareXML(xml::ElementNode &elmParent,
                         case NetworkAdapterType_NE2000:     pcszType = "NE2000"; break;
                         case NetworkAdapterType_WD8003:     pcszType = "WD8003"; break;
                         case NetworkAdapterType_WD8013:     pcszType = "WD8013"; break;
-                        case NetworkAdapterType_3C503:      pcszType = "3C503"; break;
-                        case NetworkAdapterType_3C501:      pcszType = "3C501"; break;
+                        case NetworkAdapterType_ELNK2:      pcszType = "3C503"; break;
+                        case NetworkAdapterType_ELNK1:      pcszType = "3C501"; break;
                         default: /*case NetworkAdapterType_Am79C970A:*/  pcszType = "Am79C970A"; break;
                     }
                     pelmAdapter->setAttribute("type", pcszType);
