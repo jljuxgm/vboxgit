@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 94089 2022-03-04 14:06:52Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.h 94593 2022-04-13 17:33:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -367,7 +367,8 @@ private:
       * @{ */
         /** Opens add machine dialog specifying initial name with @a strFileName. */
         void openAddMachineDialog(const QString &strFileName = QString());
-
+        /** Opens new machine dialog specifying initial name with @a strFileName. */
+        void openNewMachineWizard(const QString &strISOFilePath = QString());
         /** Launches certain @a comMachine in specified @a enmLaunchMode. */
         static void launchMachine(CMachine &comMachine, UICommon::LaunchMode enmLaunchMode = UICommon::LaunchMode_Default);
         /** Launches certain @a comMachine. */

@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.cpp 94445 2022-04-01 17:19:37Z vboxsync $ */
+/* $Id: UINameAndSystemEditor.cpp 94593 2022-04-13 17:33:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class implementation.
  */
@@ -135,6 +135,12 @@ QString UINameAndSystemEditor::path() const
     return m_pSelectorPath->path();
 }
 
+void UINameAndSystemEditor::setISOImagePath(const QString &strPath)
+{
+    if (m_pSelectorImage)
+        m_pSelectorImage->setPath(strPath);
+    emit sigImageChanged(strPath);
+}
 QString UINameAndSystemEditor::ISOImagePath() const
 {
     if (!m_pSelectorImage)
@@ -542,14 +548,13 @@ void UINameAndSystemEditor::prepareWidgets()
             {
                 m_pLabelEdition->setAlignment(Qt::AlignRight);
                 m_pLabelEdition->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Fixed);
-
                 m_pLayout->addWidget(m_pLabelEdition, iRow, 0);
             }
             /* Prepare edition combo: */
             m_pComboEdition = new QComboBox(this);
             if (m_pComboEdition)
             {
-                m_pLabelEdition->setBuddy(m_pComboEdition->focusProxy());
+                m_pLabelEdition->setBuddy(m_pComboEdition);
                 m_pLayout->addWidget(m_pComboEdition, iRow, 1, 1, 2);
             }
             ++iRow;

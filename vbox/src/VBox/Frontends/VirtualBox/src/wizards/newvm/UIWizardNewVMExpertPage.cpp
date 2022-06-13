@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMExpertPage.cpp 94078 2022-03-03 16:24:56Z vboxsync $ */
+/* $Id: UIWizardNewVMExpertPage.cpp 94593 2022-04-13 17:33:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMExpertPage class implementation.
  */
@@ -81,6 +81,13 @@ UIWizardNewVMExpertPage::UIWizardNewVMExpertPage(UIActionPool *pActionPool)
 
     /* Register classes: */
     qRegisterMetaType<CMedium>();
+}
+
+void UIWizardNewVMExpertPage::setISOFilePath(const QString &strISOFilePath)
+{
+    QFileInfo isoFileInfo(strISOFilePath);
+    if (isoFileInfo.exists() && m_pNameAndSystemEditor)
+        m_pNameAndSystemEditor->setISOImagePath(strISOFilePath);
 }
 
 void UIWizardNewVMExpertPage::sltNameChanged(const QString &strNewName)

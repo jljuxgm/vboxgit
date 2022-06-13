@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMNameOSTypePage.cpp 94478 2022-04-05 19:57:15Z vboxsync $ */
+/* $Id: UIWizardNewVMNameOSTypePage.cpp 94593 2022-04-13 17:33:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasicNameOSStype class implementation.
  */
@@ -406,6 +406,13 @@ UIWizardNewVMNameOSTypePage::UIWizardNewVMNameOSTypePage()
     prepare();
 }
 
+void UIWizardNewVMNameOSTypePage::setISOFilePath(const QString &strISOFilePath)
+{
+    QFileInfo isoFileInfo(strISOFilePath);
+    if (isoFileInfo.exists() && m_pNameAndSystemEditor)
+        m_pNameAndSystemEditor->setISOImagePath(strISOFilePath);
+}
+
 void UIWizardNewVMNameOSTypePage::prepare()
 {
     QVBoxLayout *pPageLayout = new QVBoxLayout(this);
@@ -510,7 +517,7 @@ void UIWizardNewVMNameOSTypePage::initializePage()
         if (m_pNameAndSystemEditor)
         {
             m_pNameAndSystemEditor->setFocus();
-            m_pNameAndSystemEditor->setEditionSelectorEnabled(false);
+            setEditionSelectorEnabled();
         }
         setSkipCheckBoxEnable();
     }
