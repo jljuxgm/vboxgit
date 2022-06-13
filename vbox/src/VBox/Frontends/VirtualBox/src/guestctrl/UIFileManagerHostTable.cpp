@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerHostTable.cpp 92860 2021-12-10 12:39:38Z vboxsync $ */
+/* $Id: UIFileManagerHostTable.cpp 92900 2021-12-14 16:52:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerHostTable class implementation.
  */
@@ -372,7 +372,7 @@ QString UIFileManagerHostTable::fsObjectPropertyString()
         /* Owner: */
         propertyStringList << UIFileManager::tr("<b>Owner:</b> %1").arg(fileInfo.owner());
 
-        return propertyStringList.join(QString());;
+        return propertyStringList.join(QString());
     }
 
     int fileCount = 0;
