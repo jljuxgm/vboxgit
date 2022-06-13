@@ -1,4 +1,4 @@
-; $Id: bs3-cmn-TestQueryCfgU32.asm 92531 2021-11-21 14:10:09Z vboxsync $
+; $Id: bs3-cmn-TestQueryCfgU32.asm 92532 2021-11-21 14:12:09Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3TestQueryCfgU8.
 ;
@@ -33,7 +33,7 @@ TMPL_BEGIN_TEXT
 ;;
 ; @cproto   BS3_DECL(uint32_t) Bs3TestQueryCfgU32(uint16_t uCfg);
 ;
-BS3_PROC_BEGIN_CMN Bs3TestQueryCfgU8, BS3_PBC_HYBRID
+BS3_PROC_BEGIN_CMN Bs3TestQueryCfgU32, BS3_PBC_HYBRID
         BS3_CALL_CONV_PROLOG 1
         push    xBP
         mov     xBP, xSP
