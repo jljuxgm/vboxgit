@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 90645 2021-08-12 09:49:54Z vboxsync $ */
+/* $Id: UINotificationObjects.cpp 90663 2021-08-12 13:41:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -1413,6 +1413,48 @@ void UINotificationProgressExtensionPackUninstall::sltHandleProgressFinished()
 {
     if (error().isEmpty())
         emit sigExtensionPackUninstalled(m_strExtensionPackName);
+}
+
+
+/*********************************************************************************************************************************
+*   Class UINotificationProgressGuestAdditionsInstall implementation.                                                            *
+*********************************************************************************************************************************/
+
+UINotificationProgressGuestAdditionsInstall::UINotificationProgressGuestAdditionsInstall(const CGuest &comGuest,
+                                                                                         const QString &strSource)
+    : m_comGuest(comGuest)
+    , m_strSource(strSource)
+{
+    connect(this, &UINotificationProgress::sigProgressFinished,
+            this, &UINotificationProgressGuestAdditionsInstall::sltHandleProgressFinished);
+}
+
+QString UINotificationProgressGuestAdditionsInstall::name() const
+{
+    return UINotificationProgress::tr("Installing image ...");
+}
+
+QString UINotificationProgressGuestAdditionsInstall::details() const
+{
+    return UINotificationProgress::tr("<b>Name:</b> %1").arg(m_strSource);
+}
+
+CProgress UINotificationProgressGuestAdditionsInstall::createProgress(COMResult &comResult)
+{
+    /* Initialize progress-wrapper: */
+    QVector<QString> args;
+    QVector<KAdditionsUpdateFlag> flags;
+    CProgress comProgress = m_comGuest.UpdateGuestAdditions(m_strSource, args, flags);
+    /* Store COM result: */
+    comResult = m_comGuest;
+    /* Return progress-wrapper: */
+    return comProgress;
+}
+
+void UINotificationProgressGuestAdditionsInstall::sltHandleProgressFinished()
+{
+    if (!error().isEmpty())
+        emit sigGuestAdditionsInstallationFailed(m_strSource);
 }
 
 
