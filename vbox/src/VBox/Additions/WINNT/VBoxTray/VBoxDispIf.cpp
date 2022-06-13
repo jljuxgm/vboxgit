@@ -1,4 +1,4 @@
-/* $Id: VBoxDispIf.cpp 93299 2022-01-18 11:23:59Z vboxsync $ */
+/* $Id: VBoxDispIf.cpp 95049 2022-05-20 08:05:44Z vboxsync $ */
 /** @file
  * VBoxTray - Display Settings Interface abstraction for XPDM & WDDM
  */
@@ -670,6 +670,7 @@ static VOID vboxDispIfOpEnd(VBOXDISPIF_OP *pOp)
  * that knows nothing about us */
 DWORD VBoxDispIfInit(PVBOXDISPIF pDispIf)
 {
+    /* Note: NT4 is handled implicitly by VBoxDispIfSwitchMode(). */
     VBoxDispIfSwitchMode(pDispIf, VBOXDISPIF_MODE_XPDM, NULL);
 
     return NO_ERROR;
@@ -2599,6 +2600,11 @@ DWORD VBoxDispIfSwitchMode(PVBOXDISPIF pIf, VBOXDISPIF_MODE enmMode, VBOXDISPIF_
 
     if (enmMode == pIf->enmMode)
         return NO_ERROR;
+
+    /* Make sure that we never try to run anything else but VBOXDISPIF_MODE_XPDM_NT4 on NT4 guests.
+     * Anything else will get us into serious trouble. */
+    if (RTSystemGetNtVersion() < RTSYSTEM_MAKE_NT_VERSION(5, 0, 0))
+        enmMode = VBOXDISPIF_MODE_XPDM_NT4;
 
 #ifdef VBOX_WITH_WDDM
     if (pIf->enmMode >= VBOXDISPIF_MODE_WDDM)
