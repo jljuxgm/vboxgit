@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 93150 2022-01-09 00:08:39Z vboxsync $
+# $Id: vboxtestvms.py 94126 2022-03-08 14:18:58Z vboxsync $
 
 """
 VirtualBox Test VMs
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 93150 $"
+__version__ = "$Revision: 94126 $"
 
 # Standard Python imports.
 import copy;
@@ -38,11 +38,11 @@ import string;
 import uuid;
 
 # Validation Kit imports.
+from common     import pathutils;
+from common     import utils;
 from testdriver import base;
 from testdriver import reporter;
 from testdriver import vboxcon;
-from common import pathutils;
-from common import utils;
 
 
 # All virtualization modes.

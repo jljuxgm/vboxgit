@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 93115 2022-01-01 11:31:46Z vboxsync $
+# $Id: vboxwrappers.py 94126 2022-03-08 14:18:58Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 93115 $"
+__version__ = "$Revision: 94126 $"
 
 
 # Standard Python imports.
@@ -236,8 +236,7 @@ class ProgressWrapper(TdTaskBase):
             if cMsElapsed > cMsTimeout:
                 break;
             cMsToWait = cMsTimeout - cMsElapsed;
-            if cMsToWait > 500:
-                cMsToWait = 500;
+            cMsToWait = min(cMsToWait, 500);
             try:
                 self.o.waitForCompletion(cMsToWait);
             except KeyboardInterrupt: raise;
@@ -698,8 +697,7 @@ class SessionWrapper(TdTaskBase):
             if cMsElapsed > cMsTimeout:
                 break;
             cMsSleep = cMsTimeout - cMsElapsed;
-            if cMsSleep > 10000:
-                cMsSleep = 10000;
+            cMsSleep = min(cMsSleep, 10000);
             try:    self.oVBoxMgr.waitForEvents(cMsSleep);
             except KeyboardInterrupt: raise;
             except: pass;
@@ -2855,9 +2853,8 @@ class SessionWrapper(TdTaskBase):
             reporter.logXcpt("Unable to take screenshot")
             return False
 
-        oFile = open(sFilename, 'wb')
-        oFile.write(aPngData)
-        oFile.close()
+        with open(sFilename, 'wb') as oFile:
+            oFile.write(aPngData)
 
         return True
 

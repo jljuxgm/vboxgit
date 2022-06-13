@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: btresolver.py 93115 2022-01-01 11:31:46Z vboxsync $
+# $Id: btresolver.py 94126 2022-03-08 14:18:58Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 93115 $"
+__version__ = "$Revision: 94126 $"
 
 
 # Standard Python imports.
@@ -598,7 +598,8 @@ class BacktraceResolver(object):
                         asArgs.append(sDbgSymPath);
                         asArgs.append(sLoadAddr);
 
-                oRTLdrFltProc = subprocess.Popen(asArgs, stdin=subprocess.PIPE, stdout=subprocess.PIPE, bufsize=0);
+                oRTLdrFltProc = subprocess.Popen(asArgs, stdin=subprocess.PIPE,         # pylint: disable=consider-using-with
+                                                 stdout=subprocess.PIPE, bufsize=0);
                 if oRTLdrFltProc is not None:
                     sReportAn, _ = oRTLdrFltProc.communicate(sReport);
                 else:

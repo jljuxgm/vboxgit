@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 93895 2022-02-23 12:48:02Z vboxsync $
+# $Id: vbox.py 94126 2022-03-08 14:18:58Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 93895 $"
+__version__ = "$Revision: 94126 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -3794,8 +3794,7 @@ class TestDriver(base.TestDriver):                                              
 
                 # resubmit the task.
                 cMsTimeout2 = msStart + cMsTimeout - base.timestampMilli();
-                if cMsTimeout2 < 500:
-                    cMsTimeout2 = 500;
+                cMsTimeout2 = max(cMsTimeout2, 500);
                 fRc = oTxsSession.asyncIsFile('${CDROM}/%s' % (sFile,), cMsTimeout2);
                 if fRc is not True:
                     reporter.error('txsCdWait: asyncIsFile failed');

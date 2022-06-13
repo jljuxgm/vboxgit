@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tst-txsclient.py 93115 2022-01-01 11:31:46Z vboxsync $
+# $Id: tst-txsclient.py 94126 2022-03-08 14:18:58Z vboxsync $
 
 """
 Simple testcase for txsclient.py.
@@ -28,7 +28,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 93115 $"
+__version__ = "$Revision: 94126 $"
 
 # Standard python imports.
 import os
@@ -37,9 +37,9 @@ import sys
 # Validation Kit imports.
 sys.path.insert(0, '.');
 sys.path.insert(0, '..');
-import testdriver.txsclient as txsclient
-import testdriver.reporter as reporter
-from common import utils;
+from common     import utils;
+from testdriver import txsclient;
+from testdriver import reporter;
 
 # Python 3 hacks:
 if sys.version_info[0] >= 3:
