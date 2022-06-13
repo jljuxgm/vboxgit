@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 91304 2021-09-17 20:43:17Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 91306 2021-09-17 21:11:01Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -1971,8 +1971,8 @@ static int hmR0VmxAllocVmcsInfo(PVMCPUCC pVCpu, PVMXVMCSINFO pVmcsInfo, bool fIs
         }
         else
         {
-            pVmcsInfo->pbVirtApic = (uint8_t *)CPUMGetGuestVmxVirtApicPage(&pVCpu->cpum.GstCtx, &pVmcsInfo->HCPhysVirtApic);
-            Assert(pVmcsInfo->pbVirtApic);
+            pVmcsInfo->pbVirtApic     = &pVCpu->cpum.GstCtx.hwvirt.vmx.abVirtApicPage[0];
+            pVmcsInfo->HCPhysVirtApic = GVMMR0ConvertGVMPtr2HCPhys(pVM, pVmcsInfo->pbVirtApic);
             Assert(pVmcsInfo->HCPhysVirtApic && pVmcsInfo->HCPhysVirtApic != NIL_RTHCPHYS);
         }
     }
