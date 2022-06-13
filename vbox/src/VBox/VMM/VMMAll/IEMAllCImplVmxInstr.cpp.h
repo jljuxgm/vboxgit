@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 92686 2021-12-02 08:41:22Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 92706 2021-12-02 12:59:49Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -2412,6 +2412,10 @@ IEM_STATIC uint32_t iemVmxGetExitInstrInfo(PVMCPUCC pVCpu, uint32_t uExitReason,
  * @param   pVCpu           The cross context virtual CPU structure.
  * @param   uExitReason     The VM-exit reason.
  * @param   u64ExitQual     The Exit qualification.
+ *
+ * @remarks We need not necessarily have completed VM-entry before a VM-exit is
+ *          called. Failures during VM-entry can cause VM-exits as well, so we
+ *          -cannot- assert we're in VMX non-root mode here.
  */
 IEM_STATIC VBOXSTRICTRC iemVmxVmexit(PVMCPUCC pVCpu, uint32_t uExitReason, uint64_t u64ExitQual)
 {
