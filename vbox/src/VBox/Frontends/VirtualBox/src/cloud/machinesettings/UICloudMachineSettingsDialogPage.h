@@ -1,4 +1,4 @@
-/* $Id: UICloudMachineSettingsDialogPage.h 84018 2020-04-27 16:28:23Z vboxsync $ */
+/* $Id: UICloudMachineSettingsDialogPage.h 92152 2021-10-29 14:53:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudMachineSettingsDialogPage class declaration.
  */
@@ -31,6 +31,9 @@
 /* COM includes: */
 #include "COMEnums.h"
 #include "CForm.h"
+
+/* Forward declarations: */
+class UICloudMachineSettingsDialog;
 
 /** Cloud machine settings dialog page. */
 class UICloudMachineSettingsDialogPage : public QWidget
@@ -70,6 +73,9 @@ private:
 
     /** Updates editor. */
     void updateEditor();
+
+    /** Holds the parent cloud machine settings dialog reference. */
+    UICloudMachineSettingsDialog *m_pParent;
 
     /** Holds whether this page is full-scale and should reflect at least 12 fields. */
     bool  m_fFullScale;
