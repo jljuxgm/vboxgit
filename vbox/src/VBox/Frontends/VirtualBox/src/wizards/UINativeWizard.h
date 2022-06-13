@@ -1,4 +1,4 @@
-/* $Id: UINativeWizard.h 92149 2021-10-29 13:54:47Z vboxsync $ */
+/* $Id: UINativeWizard.h 92150 2021-10-29 13:57:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINativeWizard class declaration.
  */
@@ -135,7 +135,7 @@ protected:
       * such as folder deletion in New VM wizard etc. */
     virtual void cleanWizard() {}
 
-protected slots:
+private slots:
 
     /** Handles current-page change to page with @a iIndex. */
     void sltCurrentIndexChanged(int iIndex = -1);
