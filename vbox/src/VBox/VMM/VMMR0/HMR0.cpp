@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 93655 2022-02-08 13:56:01Z vboxsync $ */
+/* $Id: HMR0.cpp 93963 2022-02-28 08:39:08Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -1632,6 +1632,31 @@ VMMR0_INT_DECL(int) HMR0ImportStateOnDemand(PVMCPUCC pVCpu, uint64_t fWhat)
         return VMXR0ImportStateOnDemand(pVCpu, fWhat);
     return SVMR0ImportStateOnDemand(pVCpu, fWhat);
 }
+
+
+/**
+ * Gets HM VM-exit auxiliary information.
+ *
+ * @returns VBox status code.
+ * @param   pVCpu           The cross context CPU structure.
+ * @param   pHmExitAux      Where to store the auxiliary info.
+ * @param   fWhat           What to get, see HMVMX_READ_XXX. This is ignored/unused
+ *                          on AMD-V.
+ *
+ * @remarks Currently this works only when executing a nested-guest using
+ *          hardware-assisted execution as it's where the auxiliary information is
+ *          required outside of HM. In the future we can make this available while
+ *          executing a regular (non-nested) guest if necessary.
+ */
+VMMR0_INT_DECL(int) HMR0GetExitAuxInfo(PVMCPUCC pVCpu, PHMEXITAUX pHmExitAux, uint32_t fWhat)
+{
+    Assert(pHmExitAux);
+    Assert(!(fWhat & ~HMVMX_READ_VALID_MASK));
+    if (pVCpu->CTX_SUFF(pVM)->hm.s.vmx.fSupported)
+        return VMXR0GetExitAuxInfo(pVCpu, &pHmExitAux->Vmx, fWhat);
+    return SVMR0GetExitAuxInfo(pVCpu, &pHmExitAux->Svm);
+}
+
 
 #ifdef VBOX_STRICT
 
