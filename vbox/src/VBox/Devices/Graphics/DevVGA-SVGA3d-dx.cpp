@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-dx.cpp 94146 2022-03-09 12:07:30Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-dx.cpp 94205 2022-03-12 20:12:21Z vboxsync $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - Common code for DX backend interface.
  */
@@ -120,6 +120,7 @@ int vmsvga3dDXSwitchContext(PVGASTATECC pThisCC, uint32_t cid)
         | DX_STATE_CONSTANTBUFFERS
         ;
 
+    LogFunc(("cid = %d, state = 0x%08X\n", cid, u32TrackedState));
 
     if (u32TrackedState & DX_STATE_VS)
     {
@@ -437,6 +438,10 @@ int vmsvga3dDXDestroyContext(PVGASTATECC pThisCC, uint32_t cid)
     AssertRCReturn(rc, rc);
 
     rc = pSvgaR3State->pFuncsDX->pfnDXDestroyContext(pThisCC, pDXContext);
+
+    RT_ZERO(*pDXContext);
+    pDXContext->cid = SVGA3D_INVALID_ID;
+
     return rc;
 }
 
