@@ -1,4 +1,4 @@
-/* $Id: vkatDriverStack.cpp 90868 2021-08-25 10:12:34Z vboxsync $ */
+/* $Id: vkatDriverStack.cpp 91088 2021-09-02 11:53:54Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) - Driver stack code.
  */
@@ -587,6 +587,41 @@ int audioTestDriverStackInit(PAUDIOTESTDRVSTACK pDrvStack, PCPDMDRVREG pDrvReg, 
     return audioTestDriverStackInitEx(pDrvStack, pDrvReg, true /* fEnabledIn */, true /* fEnabledOut */, fWithDrvAudio);
 }
 
+/**
+ * Initializes a driver stack by probing all backends in the order of appearance
+ * in the backends description table.
+ *
+ * @returns VBox status code.
+ * @param   pDrvStack       The driver stack to initialize.
+ * @param   pDrvReg         The backend driver to use.
+ * @param   fEnabledIn      Whether input is enabled or not on creation time.
+ * @param   fEnabledOut     Whether output is enabled or not on creation time.
+ * @param   fWithDrvAudio   Whether to include DrvAudio in the stack or not.
+ */
+int audioTestDriverStackProbe(PAUDIOTESTDRVSTACK pDrvStack, PCPDMDRVREG pDrvReg, bool fEnabledIn, bool fEnabledOut, bool fWithDrvAudio)
+{
+    int rc;
+
+    for (size_t i = 0; i < g_cBackends; i++)
+    {
+        pDrvReg = g_aBackends[i].pDrvReg;
+        RTTestPrintf(g_hTest, RTTESTLVL_ALWAYS, "Probing for backend '%s' ...\n", g_aBackends[i].pszName);
+
+        rc = audioTestDriverStackInitEx(pDrvStack, pDrvReg, fEnabledIn, fEnabledOut, fWithDrvAudio); /** @todo Make in/out configurable, too. */
+        if (RT_SUCCESS(rc))
+        {
+            RTTestPrintf(g_hTest, RTTESTLVL_ALWAYS, "Probing backend '%s' successful\n", g_aBackends[i].pszName);
+            return rc;
+        }
+
+        RTTestPrintf(g_hTest, RTTESTLVL_ALWAYS, "Probing backend '%s' failed with %Rrc, trying next one\n",
+                     g_aBackends[i].pszName, rc);
+        continue;
+    }
+
+    RTTestPrintf(g_hTest, RTTESTLVL_ALWAYS, "Probing all backends failed\n");
+    return rc;
+}
 
 /**
  * Wrapper around PDMIHOSTAUDIO::pfnSetDevice.
