@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 92826 2021-12-08 16:06:42Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 92828 2021-12-08 16:25:56Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -118,7 +118,7 @@ static uint32_t printBriefCommandOrSubcommandHelp(enum HELP_CMD_VBOXMANAGE enmCo
     HELP_LANG_ENTRY *pHelpLangEntry[1] = {(HELP_LANG_ENTRY *)g_pHelpLangEntry};
 #endif
     /* Try to find translated, then untranslated */
-    for (int k = 0; k < RT_ELEMENTS(pHelpLangEntry) && cFound == 0; k++)
+    for (uint32_t k = 0; k < RT_ELEMENTS(pHelpLangEntry) && cFound == 0; k++)
     {
         /* skip if english is used */
         if (k > 0 && pHelpLangEntry[k] == pHelpLangEntry[0])
@@ -180,7 +180,7 @@ static void printFullCommandOrSubcommandHelp(enum HELP_CMD_VBOXMANAGE enmCommand
     HELP_LANG_ENTRY *pHelpLangEntry[1] = {(HELP_LANG_ENTRY *)g_pHelpLangEntry};
 #endif
     /* Try to find translated, then untranslated */
-    for (int k = 0; k < RT_ELEMENTS(pHelpLangEntry) && cFound == 0; k++)
+    for (uint32_t k = 0; k < RT_ELEMENTS(pHelpLangEntry) && cFound == 0; k++)
     {
         /* skip if english is used */
         if (k > 0 && pHelpLangEntry[k] == pHelpLangEntry[0])
