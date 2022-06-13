@@ -1,4 +1,4 @@
-/* $Id: VBoxManageCloudMachine.cpp 90220 2021-07-16 01:37:04Z vboxsync $ */
+/* $Id: VBoxManageCloudMachine.cpp 90235 2021-07-16 22:29:51Z vboxsync $ */
 /** @file
  * VBoxManageCloudMachine - The cloud machine related commands.
  */
@@ -397,7 +397,7 @@ listCloudMachinesImpl(HandlerArg *a, int iFirst,
         ReadCloudMachineList(pListProgress.asOutParam()),
             RTEXITCODE_FAILURE);
 
-    hrc = showProgress(pListProgress); // XXX: don't show
+    hrc = showProgress(pListProgress, SHOW_PROGRESS_NONE);
     if (FAILED(hrc))
         return RTEXITCODE_FAILURE;
 
