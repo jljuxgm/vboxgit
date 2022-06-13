@@ -1,4 +1,4 @@
-/* $Id: UINotificationObject.cpp 91239 2021-09-15 07:30:44Z vboxsync $ */
+/* $Id: UINotificationObject.cpp 91843 2021-10-19 17:15:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINotificationObject class implementation.
  */
@@ -110,6 +110,7 @@ bool UINotificationSimple::isSuppressed(const QString &strInternalName)
 
 UINotificationProgress::UINotificationProgress()
     : m_pTask(0)
+    , m_fFinished(false)
     , m_uPercent(0)
 {
 }
@@ -118,6 +119,11 @@ UINotificationProgress::~UINotificationProgress()
 {
     delete m_pTask;
     m_pTask = 0;
+}
+
+bool UINotificationProgress::isFinished() const
+{
+    return m_fFinished;
 }
 
 ulong UINotificationProgress::percent() const
@@ -185,6 +191,7 @@ void UINotificationProgress::sltHandleProgressChange(ulong uPercent)
 
 void UINotificationProgress::sltHandleProgressFinished()
 {
+    m_fFinished = true;
     m_uPercent = 100;
     emit sigProgressFinished();
 

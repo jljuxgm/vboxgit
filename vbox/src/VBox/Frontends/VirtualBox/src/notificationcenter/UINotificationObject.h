@@ -1,4 +1,4 @@
-/* $Id: UINotificationObject.h 91075 2021-09-01 18:43:24Z vboxsync $ */
+/* $Id: UINotificationObject.h 91843 2021-10-19 17:15:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINotificationObject class declaration.
  */
@@ -148,6 +148,8 @@ public:
     /** Creates and returns started progress-wrapper. */
     virtual CProgress createProgress(COMResult &comResult) = 0;
 
+    /** Returns whether progress is finished. */
+    bool isFinished() const;
     /** Returns current progress percentage value. */
     ulong percent() const;
     /** Returns whether progress is cancelable. */
@@ -182,6 +184,8 @@ private:
     /** Holds the instance of progress-task being wrapped by this notification-progress. */
     UINotificationProgressTask *m_pTask;
 
+    /** Holds whether progress is finished. */
+    bool   m_fFinished;
     /** Holds the last cached progress percentage value. */
     ulong  m_uPercent;
 };
