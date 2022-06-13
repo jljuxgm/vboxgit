@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-win-dx.cpp 94147 2022-03-09 12:16:50Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-win-dx.cpp 94149 2022-03-09 14:26:39Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -3316,6 +3316,10 @@ if (!(   (pBackendSurface->pStagingTexture && pBackendSurface->pDynamicTexture)
         rc = dxStagingBufferRealloc(pDevice, pMipLevel->cbSurface);
         if (RT_SUCCESS(rc))
         {
+            /* The staging buffer does not allow D3D11_MAP_WRITE_DISCARD, so replace it.  */
+            if (d3d11MapType == D3D11_MAP_WRITE_DISCARD)
+                d3d11MapType = D3D11_MAP_WRITE;
+
             if (enmMapType == VMSVGA3D_SURFACE_MAP_READ)
             {
                 /* Copy from the buffer to the staging buffer. */
