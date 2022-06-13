@@ -1,4 +1,4 @@
-/* $Id: socket.cpp 90104 2021-07-08 23:53:48Z vboxsync $ */
+/* $Id: socket.cpp 90105 2021-07-09 00:36:14Z vboxsync $ */
 /** @file
  * IPRT - Network Sockets.
  */
@@ -401,7 +401,7 @@ static int rtSocketAddrFromNetAddr(PCRTNETADDR pAddr, RTSOCKADDRUNION *pDst, siz
 #ifdef IPRT_WITH_TCPIP_V6
     else if (pAddr->enmType == RTNETADDRTYPE_IPV6)
     {
-        if (cbDst >= sizeof(struct sockaddr_in6))
+        if (cbDst < sizeof(struct sockaddr_in6))
             return VERR_BUFFER_OVERFLOW;
 
         pDst->Addr.sa_family              = AF_INET6;
