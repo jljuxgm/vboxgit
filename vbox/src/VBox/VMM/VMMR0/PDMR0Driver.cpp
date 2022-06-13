@@ -1,4 +1,4 @@
-/* $Id: PDMR0Driver.cpp 90346 2021-07-26 19:55:53Z vboxsync $ */
+/* $Id: PDMR0Driver.cpp 90382 2021-07-28 22:13:15Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, R0 Driver parts.
  */
@@ -188,7 +188,7 @@ static DECLCALLBACK(uint32_t) pdmR0DrvHlp_CritSectGetRecursion(PPDMDRVINS pDrvIn
 }
 
 
-/** @interface_method_impl{PDMDRVHLPR0,pfn} */
+/** @interface_method_impl{PDMDRVHLPR0,pfnCritSectScheduleExitEvent} */
 static DECLCALLBACK(int)      pdmR0DrvHlp_CritSectScheduleExitEvent(PPDMDRVINS pDrvIns, PPDMCRITSECT pCritSect,
                                                                     SUPSEMEVENT hEventToSignal)
 {
