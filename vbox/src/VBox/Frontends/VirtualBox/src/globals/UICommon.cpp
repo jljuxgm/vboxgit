@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 90925 2021-08-26 16:25:27Z vboxsync $ */
+/* $Id: UICommon.cpp 90935 2021-08-27 07:58:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -4133,8 +4133,8 @@ void UICommon::prepare()
     m_enmMacOSVersion = determineOsRelease();
 #endif /* VBOX_WS_MAC */
 
-    /* Prepare converter: */
-    UIConverter::prepare();
+    /* Create converter: */
+    UIConverter::create();
 
     /* Create desktop-widget watchdog: */
     UIDesktopWidgetWatchdog::create();
@@ -4704,8 +4704,8 @@ void UICommon::cleanup()
      * above which could use it already destroyed: */
     UIExtraDataManager::destroy();
 
-    /* Cleanup converter: */
-    UIConverter::cleanup();
+    /* Destroy converter: */
+    UIConverter::destroy();
 
     /* Cleanup thread-pools: */
     delete m_pThreadPool;
