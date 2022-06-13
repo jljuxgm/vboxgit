@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: utils.py 86919 2020-11-19 11:09:11Z vboxsync $
+# $Id: utils.py 92882 2021-12-13 13:34:57Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 86919 $"
+__version__ = "$Revision: 92882 $"
 
 
 # Standard Python imports.
@@ -1140,6 +1140,9 @@ class ProcessInfo(object):
         if sOs == 'linux':
             sProc = '/proc/%s/' % (self.iPid,);
             if self.sImage   is None: self.sImage = noxcptReadLink(sProc + 'exe', None);
+            if self.sImage   is None:
+                self.sImage = noxcptReadFile(sProc + 'comm', None);
+                if self.sImage: self.sImage = self.sImage.strip();
             if self.sCwd     is None: self.sCwd   = noxcptReadLink(sProc + 'cwd', None);
             if self.asArgs   is None: self.asArgs = noxcptReadFile(sProc + 'cmdline', '').split('\x00');
         #elif sOs == 'solaris': - doesn't work for root processes, suid proces, and other stuff.
