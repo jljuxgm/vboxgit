@@ -1,4 +1,4 @@
-/* $Id: UIFormEditorWidget.h 91637 2021-10-08 12:21:57Z vboxsync $ */
+/* $Id: UIFormEditorWidget.h 92147 2021-10-29 13:46:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFormEditorWidget class declaration.
  */
@@ -40,16 +40,6 @@ class CVirtualSystemDescriptionForm;
 class UIFormEditorWidget : public QWidget
 {
     Q_OBJECT;
-
-signals:
-
-    /** Notifies listeners about progress has started. */
-    void sigProgressStarted();
-    /** Notifies listeners about progress has changed.
-      * @param  uPercent  Brings the progress percentage. */
-    void sigProgressChange(ulong uPercent);
-    /** Notifies listeners about progress has finished. */
-    void sigProgressFinished();
 
 public:
 

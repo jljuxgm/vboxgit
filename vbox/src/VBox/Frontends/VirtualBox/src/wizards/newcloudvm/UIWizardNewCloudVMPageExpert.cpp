@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageExpert.cpp 92036 2021-10-25 13:50:22Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageExpert.cpp 92147 2021-10-29 13:46:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageExpert class implementation.
  */
@@ -201,12 +201,6 @@ UIWizardNewCloudVMPageExpert::UIWizardNewCloudVMPageExpert()
             this, &UIWizardNewCloudVMPageExpert::sltHandleSourceTabBarChange);
     connect(m_pSourceImageList, &QListWidget::currentRowChanged,
             this, &UIWizardNewCloudVMPageExpert::sltHandleSourceImageChange);
-    connect(m_pFormEditor, &UIFormEditorWidget::sigProgressStarted,
-            this, &UIWizardNewCloudVMPageExpert::sigProgressStarted);
-    connect(m_pFormEditor, &UIFormEditorWidget::sigProgressChange,
-            this, &UIWizardNewCloudVMPageExpert::sigProgressChange);
-    connect(m_pFormEditor, &UIFormEditorWidget::sigProgressFinished,
-            this, &UIWizardNewCloudVMPageExpert::sigProgressFinished);
 }
 
 UIWizardNewCloudVM *UIWizardNewCloudVMPageExpert::wizard() const

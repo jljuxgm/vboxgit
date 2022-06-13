@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageProperties.cpp 92036 2021-10-25 13:50:22Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageProperties.cpp 92147 2021-10-29 13:46:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageProperties class implementation.
  */
@@ -78,14 +78,6 @@ UIWizardNewCloudVMPageProperties::UIWizardNewCloudVMPageProperties()
             pLayoutMain->addWidget(m_pFormEditor);
         }
     }
-
-    /* Setup connections: */
-    connect(m_pFormEditor, &UIFormEditorWidget::sigProgressStarted,
-            this, &UIWizardNewCloudVMPageProperties::sigProgressStarted);
-    connect(m_pFormEditor, &UIFormEditorWidget::sigProgressChange,
-            this, &UIWizardNewCloudVMPageProperties::sigProgressChange);
-    connect(m_pFormEditor, &UIFormEditorWidget::sigProgressFinished,
-            this, &UIWizardNewCloudVMPageProperties::sigProgressFinished);
 }
 
 UIWizardNewCloudVM *UIWizardNewCloudVMPageProperties::wizard() const
