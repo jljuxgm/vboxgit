@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 89887 2021-06-24 12:30:53Z vboxsync $
+# $Id: Makefile.kmk 90465 2021-08-02 10:40:50Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -581,6 +581,12 @@ endif
   VBoxDD_DEFS           += VBOX_WITH_VIRTIO_SCSI
   VBoxDD_SOURCES        += \
   	Storage/DevVirtioSCSI.cpp
+ endif
+
+ if defined(VBOX_WITH_TPM)
+  VBoxDD_DEFS           += VBOX_WITH_TPM
+  VBoxDD_SOURCES        += \
+  	TPM/DevTpm.cpp
  endif
 
  ifdef VBOX_WITH_PDM_ASYNC_COMPLETION
