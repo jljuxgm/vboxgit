@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.h 90275 2021-07-21 14:17:53Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.h 90276 2021-07-21 14:53:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class declaration.
  */
@@ -138,7 +138,6 @@ private:
     void updateDiskWidgetsAfterMediumFormatChange();
     void updateHostnameDomainNameFromMachineName();
     void setEnableNewDiskWidgets(bool fEnable);
-    void setVirtualDiskFromDiskCombo();
     void setSkipCheckBoxEnable();
     bool isUnattendedEnabled() const;
     void setEnableDiskSelectionWidgets(bool fEnabled);
