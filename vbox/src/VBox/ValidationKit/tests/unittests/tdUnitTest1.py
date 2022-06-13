@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 94407 2022-03-31 09:50:03Z vboxsync $
+# $Id: tdUnitTest1.py 94408 2022-03-31 09:53:43Z vboxsync $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 94407 $"
+__version__ = "$Revision: 94408 $"
 
 
 # Standard Python imports.
@@ -517,7 +517,9 @@ class tdUnitTest1(vbox.TestDriver):
             iArg += 1;
             if iArg >= len(asArgs):
                 raise base.InvalidOption('Option "%s" needs a value' % (asArgs[iArg - 1]));
-            if asArgs[iArg] in [ 'local', 'remote-copy', 'remote-exec' ]:
+            if    asArgs[iArg] == 'local' \
+               or asArgs[iArg] == 'remote-copy' \
+               or asArgs[iArg] == 'remote-exec':
                 self.sMode = asArgs[iArg];
             else:
                 raise base.InvalidOption('Argument "%s" invalid' % (asArgs[iArg]));
