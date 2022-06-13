@@ -1,4 +1,4 @@
-/* $Id: clipboard-common.cpp 91625 2021-10-07 21:17:12Z vboxsync $ */
+/* $Id: clipboard-common.cpp 91628 2021-10-07 21:27:34Z vboxsync $ */
 /** @file
  * Shared Clipboard: Some helper function for converting between the various eol.
  */
@@ -327,7 +327,7 @@ static PSHCLEVENTPAYLOAD shclEventPayloadDetachInternal(PSHCLEVENT pEvent)
  * @param   pSource             Event source to unregister event for.
  * @param   uID                 Event ID to unregister. 
  *  
- * @todo    r=bird: The caller must enter crit sect protecting the event source 
+ * @todo    r=bird: The caller must enter crit sect protecting the event source
  *          here, must it?  See explanation in ShClEventWait.
  */
 int ShClEventUnregister(PSHCLEVENTSOURCE pSource, SHCLEVENTID uID)
