@@ -1,4 +1,4 @@
-/* $Id: UIMenuBar.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIMenuBar.cpp 94021 2022-03-01 10:32:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMenuBar class implementation.
  */
@@ -45,7 +45,7 @@ void UIMenuBar::paintEvent(QPaintEvent *pEvent)
     {
         QPixmap betaLabel;
         const QString key("vbox:betaLabel");
-        if (!QPixmapCache::find(key, betaLabel))
+        if (!QPixmapCache::find(key, &betaLabel))
         {
             betaLabel = ::betaLabel();
             QPixmapCache::insert(key, betaLabel);
