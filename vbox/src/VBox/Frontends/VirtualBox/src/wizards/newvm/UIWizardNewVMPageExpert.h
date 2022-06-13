@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.h 90232 2021-07-16 14:27:18Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.h 90233 2021-07-16 15:57:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class declaration.
  */
@@ -24,7 +24,9 @@
 /* Qt includes: */
 #include <QSet>
 
+/* GUI includes: */
 #include "UINativeWizardPage.h"
+#include "UIWizardNewVMDiskPageBasic.h"
 
 #include "COMEnums.h"
 #include "CMediumFormat.h"
@@ -78,7 +80,7 @@ private slots:
     void sltGAISOPathChanged(const QString &strPath);
     void sltOSFamilyTypeChanged(const QString &strGuestOSFamilyType);
     void sltInstallGACheckBoxToggle(bool fEnabled);
-    void sltSkipUnattendedCheckBoxChecked();
+    void sltSkipUnattendedCheckBoxChecked(bool fSkip);
     void sltMediumFormatChanged();
     void sltMediumSizeChanged();
     void sltSelectedDiskSourceChanged();
@@ -136,6 +138,8 @@ private:
     void setEnableNewDiskWidgets(bool fEnable);
     void setVirtualDiskFromDiskCombo();
     void setSkipCheckBoxEnable();
+    bool isUnattendedEnabled() const;
+    void setEnableDiskSelectionWidgets(bool fEnabled);
 
     /** @name Variables
       * @{ */
@@ -157,6 +161,8 @@ private:
         UIMediaComboBox *m_pDiskSelector;
         QIToolButton *m_pDiskSelectionButton;
         QSet<QString> m_userModifiedParameters;
+        SelectedDiskSource m_enmSelectedDiskSource;
+    bool m_fRecommendedNoDisk;
     /** @} */
 };
 
