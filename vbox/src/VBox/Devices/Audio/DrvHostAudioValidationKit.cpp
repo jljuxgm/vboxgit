@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioValidationKit.cpp 91051 2021-09-01 09:08:56Z vboxsync $ */
+/* $Id: DrvHostAudioValidationKit.cpp 91052 2021-09-01 09:23:45Z vboxsync $ */
 /** @file
  * Host audio driver - ValidationKit - For dumping and injecting audio data from/to the device emulation.
  */
@@ -244,7 +244,13 @@ static void drvHostValKitCleanup(PDRVHOSTVALKITAUDIO pThis)
             && !pThis->cbRecordedTotal)
        )
     {
-        LogRel(("ValKit: Warning: Did not get any audio data to play or record altough tests were configured -- audio stack misconfiguration / bug?\n"));
+        LogRel(("ValKit: Warning: Did not get any audio data to play or record altough tests were configured\n\n"));
+        LogRel(("ValKit: Hints:\n"
+                "ValKit:     - Audio device emulation configured and enabled for the VM?\n"
+                "ValKit:     - Audio input and/or output enabled for the VM?\n"
+                "ValKit:     - Is the guest able to play / record sound at all?\n"
+                "ValKit:     - Is the guest's audio mixer or input / output sinks muted?\n"
+                "ValKit:     - Audio stack misconfiguration / bug?\n\n"));
     }
 
     PVALKITTESTDATA pTst, pTstNext;
