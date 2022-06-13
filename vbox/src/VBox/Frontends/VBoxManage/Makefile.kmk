@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 92831 2021-12-08 17:02:05Z vboxsync $
+# $Id: Makefile.kmk 92832 2021-12-08 17:05:27Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxManage (the cli frontend).
 #
@@ -359,7 +359,8 @@ $(VBoxManage_0_OUTDIR)/VBoxManageBuiltInHelp.h.ts \
 		'	 size_t           cbLang;' \
 		'    PCRTMSGREFENTRY *papHelpEntries;' \
 		'    const uint32_t   cHelpEntries;' \
-		'} HELP_LANG_ENTRY, *PHELP_LANG_ENTRY;' \
+		'} HELP_LANG_ENTRY;' \
+		'typedef HELP_LANG_ENTRY *PHELP_LANG_ENTRY;' \
 		'' \
 		'extern HELP_LANG_ENTRY g_apHelpLangEntries[];' \
 		'extern const uint32_t  g_cHelpLangEntries;' \
