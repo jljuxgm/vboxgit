@@ -1,4 +1,4 @@
-/* $Id: display-drm.cpp 92622 2021-11-29 11:14:45Z vboxsync $ */
+/* $Id: display-drm.cpp 92623 2021-11-29 11:31:51Z vboxsync $ */
 /** @file
  * X11 guest client - VMSVGA emulation resize event pass-through to drm guest
  * driver.
@@ -392,7 +392,7 @@ static int drmSendHints(RTFILE hDevice, struct DRMVMWRECT *paRects, uint32_t cRe
  * monitors layout representation.
  *
  * @return IPRT status code.
- * @param cDisplays     Number of displays (elements in @pDisplays).
+ * @param cDisplays     Number of displays (elements in pDisplays).
  * @param pDisplays     Displays parameters as it was sent to vmwgfx driver.
  */
 static int drmSendMonitorPositions(uint32_t cDisplays, struct DRMVMWRECT *pDisplays)
