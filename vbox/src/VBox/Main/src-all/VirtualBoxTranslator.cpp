@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxTranslator.cpp 92039 2021-10-25 14:27:59Z vboxsync $ */
+/* $Id: VirtualBoxTranslator.cpp 92042 2021-10-25 15:06:37Z vboxsync $ */
 /** @file
  * VirtualBox Translator class.
  */
@@ -67,7 +67,7 @@ static DECLCALLBACK(void) freeThreadCache(void *pvValue) RT_NOTHROW_DEF
 /**
  * @callback_method_impl{FNRTONCECLEANUP, Destroys TLS index during the process termination.}
  */
-DECLCALLBACK(void) uninitTls(void *pvUser, bool fLazyCleanUpOk)
+static DECLCALLBACK(void) uninitTls(void *pvUser, bool fLazyCleanUpOk)
 {
     RT_NOREF(pvUser);
     if (fLazyCleanUpOk && g_idxTls != NIL_RTTLS)
