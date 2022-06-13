@@ -1,4 +1,4 @@
-/* $Id: UnattendedImpl.h 93521 2022-02-01 07:52:33Z vboxsync $ */
+/* $Id: UnattendedImpl.h 93525 2022-02-01 10:28:57Z vboxsync $ */
 /** @file
  * Unattended class header
  */
@@ -30,12 +30,17 @@ class UnattendedInstaller;
 struct UnattendedInstallationDisk;
 struct ControllerSlot;
 
+/**
+ * A data type to store image data which is read from intall.wim file.
+ * Currently relevant only for Windows OSs.
+ */
 struct WIMImage
 {
     Utf8Str mName;
     Utf8Str mVersionMajor;
     Utf8Str mVersionMinor;
     Utf8Str mVersionBuild;
+    Utf8Str getNameAndVersion() const;
 };
 
 /**
