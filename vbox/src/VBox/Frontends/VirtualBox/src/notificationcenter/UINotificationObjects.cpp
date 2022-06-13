@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 91029 2021-08-31 11:48:58Z vboxsync $ */
+/* $Id: UINotificationObjects.cpp 91075 2021-09-01 18:43:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -381,10 +381,12 @@ void UINotificationMessage::cannotToggleVRDEServer(const CVRDEServer &comServer,
 
 UINotificationMessage::UINotificationMessage(const QString &strName,
                                              const QString &strDetails,
-                                             const QString &strInternalName)
+                                             const QString &strInternalName,
+                                             const QString &strHelpKeyword)
     : UINotificationSimple(strName,
                            strDetails,
-                           strInternalName)
+                           strInternalName,
+                           strHelpKeyword)
 {
 }
 
@@ -397,7 +399,8 @@ UINotificationMessage::~UINotificationMessage()
 /* static */
 void UINotificationMessage::createMessage(const QString &strName,
                                           const QString &strDetails,
-                                          const QString &strInternalName /* = QString() */)
+                                          const QString &strInternalName /* = QString() */,
+                                          const QString &strHelpKeyword /* = QString() */)
 {
     /* Check if message suppressed: */
     if (isSuppressed(strInternalName))
@@ -409,7 +412,8 @@ void UINotificationMessage::createMessage(const QString &strName,
     /* Create message finally: */
     m_messages[strInternalName] = gpNotificationCenter->append(new UINotificationMessage(strName,
                                                                                          strDetails,
-                                                                                         strInternalName));
+                                                                                         strInternalName,
+                                                                                         strHelpKeyword));
 }
 
 /* static */

@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.h 91029 2021-08-31 11:48:58Z vboxsync $ */
+/* $Id: UINotificationObjects.h 91075 2021-09-01 18:43:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects declarations.
  */
@@ -167,10 +167,12 @@ protected:
     /** Constructs message notification-object.
       * @param  strName          Brings the message name.
       * @param  strDetails       Brings the message details.
-      * @param  strInternalName  Brings the message internal name. */
+      * @param  strInternalName  Brings the message internal name.
+      * @param  strHelpKeyword   Brings the message help keyword. */
     UINotificationMessage(const QString &strName,
                           const QString &strDetails,
-                          const QString &strInternalName);
+                          const QString &strInternalName,
+                          const QString &strHelpKeyword);
     /** Destructs message notification-object. */
     virtual ~UINotificationMessage() /* override final */;
 
@@ -179,10 +181,12 @@ private:
     /** Creates message.
       * @param  strName          Brings the message name.
       * @param  strDetails       Brings the message details.
-      * @param  strInternalName  Brings the message internal name. */
+      * @param  strInternalName  Brings the message internal name.
+      * @param  strHelpKeyword   Brings the message help keyword. */
     static void createMessage(const QString &strName,
                               const QString &strDetails,
-                              const QString &strInternalName = QString());
+                              const QString &strInternalName = QString(),
+                              const QString &strHelpKeyword = QString());
     /** Destroys message.
       * @param  strInternalName  Brings the message internal name. */
     static void destroyMessage(const QString &strInternalName);
