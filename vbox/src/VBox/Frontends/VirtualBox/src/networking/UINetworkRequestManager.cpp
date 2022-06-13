@@ -1,4 +1,4 @@
-/* $Id: UINetworkRequestManager.cpp 90546 2021-08-06 13:17:21Z vboxsync $ */
+/* $Id: UINetworkRequestManager.cpp 90547 2021-08-06 13:43:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkRequestManager stuff implementation.
  */
@@ -88,6 +88,14 @@ QUuid UINetworkRequestManager::createNetworkRequest(UINetworkRequestType enmType
 
     /* Null ID by default: */
     return QUuid();
+}
+
+void UINetworkRequestManager::cancelNetworkRequest(const QUuid &uId)
+{
+    /* Cleanup request: */
+    UINetworkRequest *pNetworkRequest = m_requests.value(uId);
+    if (pNetworkRequest)
+        pNetworkRequest->sltCancel();
 }
 
 UINetworkRequestManager::UINetworkRequestManager()

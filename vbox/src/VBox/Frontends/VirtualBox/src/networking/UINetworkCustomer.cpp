@@ -1,4 +1,4 @@
-/* $Id: UINetworkCustomer.cpp 90546 2021-08-06 13:17:21Z vboxsync $ */
+/* $Id: UINetworkCustomer.cpp 90547 2021-08-06 13:43:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkCustomer class implementation.
  */
@@ -36,5 +36,10 @@ void UINetworkCustomer::createNetworkRequest(UINetworkRequestType enmType,
                                              const QString &strTarget /* = QString() */,
                                              const UserDictionary requestHeaders /* = UserDictionary() */)
 {
-    gNetworkManager->createNetworkRequest(enmType, urls, strTarget, requestHeaders, this);
+    m_uId = gNetworkManager->createNetworkRequest(enmType, urls, strTarget, requestHeaders, this);
+}
+
+void UINetworkCustomer::cancelNetworkRequest()
+{
+    gNetworkManager->cancelNetworkRequest(m_uId);
 }
