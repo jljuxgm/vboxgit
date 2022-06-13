@@ -1,4 +1,4 @@
-/* $Id: SUPDrvIOC.h 91775 2021-10-17 10:53:28Z vboxsync $ */
+/* $Id: SUPDrvIOC.h 91800 2021-10-18 00:49:23Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - IOCtl definitions.
  */
@@ -275,7 +275,9 @@ typedef struct SUPCOOKIE
 typedef struct SUPFUNC
 {
     /** Name - mangled. */
-    char            szName[48];
+    char            szName[47];
+    /** For internal checking. Ignore. */
+    uint8_t         cArgs;
     /** Address. */
     RTR0PTR         pfn;
 } SUPFUNC, *PSUPFUNC;

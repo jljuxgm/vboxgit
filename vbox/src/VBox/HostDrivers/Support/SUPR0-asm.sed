@@ -1,4 +1,4 @@
-# $Id: SUPR0-asm.sed 91775 2021-10-17 10:53:28Z vboxsync $
+# $Id: SUPR0-asm.sed 91800 2021-10-18 00:49:23Z vboxsync $
 ## @file
 # IPRT - SED script for generating a list of assembly files for make inclusion.
 #
@@ -34,9 +34,9 @@ $b footer
 # Drop all lines from the SED: END marker and till the end of the file.
 /SED: END/,$d
 
-# We are only interested in the STKBACK lines.
-/^    { STKBACK(/!d
-s/^    { STKBACK("\([^"][^"]*\)"),.*$/\/\/ ##### BEGINFILE \"StkBack_\1.asm\"\n%include "VBox\/SUPR0StackWrapper.mac"\nSUPR0StackWrapperGeneric \1\n\/\/ ##### ENDFILE/
+# We are only interested in the SUPEXP_STK_BACK lines.
+/^ *SUPEXP_STK_BACK(/!d
+s/^ *SUPEXP_STK_BACK( *\([0-9][0-9]*\) *, *\([^)][^)]*\)),.*$/\/\/ ##### BEGINFILE \"StkBack_\2.asm\"\n%include "VBox\/SUPR0StackWrapper.mac"\nSUPR0StackWrapperGeneric \2\n\/\/ ##### ENDFILE/
 b end
 
 :header
