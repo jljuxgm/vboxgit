@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 89931 2021-06-28 14:13:29Z vboxsync $
+# $Id: Makefile.kmk 90470 2021-08-02 11:21:43Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - Bootsector Kit v3
 #
@@ -196,6 +196,7 @@ VBOX_BS3KIT_COMMON_SOURCES = \
 	bs3-cmn-TestCheckRegCtxEx.c \
 	bs3-cmn-TestHostPrintf.c \
 	bs3-cmn-TestPrintf.c \
+	bs3-cmn-TestValue.c \
 	bs3-cmn-TrapReInit.c \
 	bs3-cmn-TrapRmV86Init.c \
 	bs3-cmn-TrapRmV86SetGate.c \

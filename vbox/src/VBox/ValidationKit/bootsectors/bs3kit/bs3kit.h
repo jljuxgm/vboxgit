@@ -1,4 +1,4 @@
-/* $Id: bs3kit.h 89931 2021-06-28 14:13:29Z vboxsync $ */
+/* $Id: bs3kit.h 90470 2021-08-02 11:21:43Z vboxsync $ */
 /** @file
  * BS3Kit - structures, symbols, macros and stuff.
  */
@@ -3208,6 +3208,11 @@ BS3_CMN_PROTO_STUB(void, Bs3TestSubV,(const char BS3_FAR *pszFormat, va_list BS3
  * Equivalent to RTTestISubDone.
  */
 BS3_CMN_PROTO_STUB(void, Bs3TestSubDone,(void));
+
+/**
+ * Equivalent to RTTestIValue.
+ */
+BS3_CMN_PROTO_STUB(void, Bs3TestValue,(const char BS3_FAR *pszName, uint64_t u64Value, uint8_t bUnit));
 
 /**
  * Equivalent to RTTestSubErrorCount.
