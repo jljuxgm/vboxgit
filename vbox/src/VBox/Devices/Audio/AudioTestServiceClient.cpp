@@ -1,4 +1,4 @@
-/* $Id: AudioTestServiceClient.cpp 91996 2021-10-22 07:13:14Z vboxsync $ */
+/* $Id: AudioTestServiceClient.cpp 91999 2021-10-22 11:43:28Z vboxsync $ */
 /** @file
  * AudioTestServiceClient - Audio Test Service (ATS), Client helpers.
  *
@@ -320,9 +320,8 @@ void AudioTestSvcClientDestroy(PATSCLIENT pClient)
 
     if (pClient->pTransport)
     {
-        pClient->pTransport->pfnStop(pClient->pTransportInst);
         pClient->pTransport->pfnDestroy(pClient->pTransportInst);
-        pClient->pTransport = NULL;
+        pClient->pTransportInst = NULL; /* Invalidate pointer. */
     }
 }
 
@@ -578,6 +577,11 @@ static int audioTestSvcClientDisconnectInternal(PATSCLIENT pClient)
     {
         if (pClient->pTransport->pfnNotifyBye)
             pClient->pTransport->pfnNotifyBye(pClient->pTransportInst, pClient->pTransportClient);
+
+        pClient->pTransport->pfnDisconnect(pClient->pTransportInst, pClient->pTransportClient);
+        pClient->pTransportClient = NULL;
+
+        pClient->pTransport->pfnStop(pClient->pTransportInst);
     }
 
     return rc;

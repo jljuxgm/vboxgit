@@ -1,4 +1,4 @@
-/* $Id: AudioTestServiceInternal.h 91996 2021-10-22 07:13:14Z vboxsync $ */
+/* $Id: AudioTestServiceInternal.h 91999 2021-10-22 11:43:28Z vboxsync $ */
 /** @file
  * AudioTestService - Audio test execution server, Internal Header.
  */
@@ -130,8 +130,18 @@ typedef struct ATSTRANSPORT
      * @param   pfFromServer        Returns \c true if the returned client is from a remote server (called a reverse connection),
      *                              or \c false if not (regular client). Optional and can be NULL.
      * @param   ppClientNew         Where to return the allocated client on success.
+     *                              Must be destroyed with pfnDisconnect() when done.
      */
     DECLR3CALLBACKMEMBER(int, pfnWaitForConnect, (PATSTRANSPORTINST pThis, RTMSINTERVAL msTimeout, bool *pfFromServer, PPATSTRANSPORTCLIENT ppClientNew));
+
+    /**
+     * Disconnects a client and frees up its resources.
+     *
+     * @param   pThis               The transport instance.
+     * @param   pClient             Client to disconnect.
+     *                              The pointer will be invalid after calling.
+     */
+    DECLR3CALLBACKMEMBER(void, pfnDisconnect, (PATSTRANSPORTINST pThis, PATSTRANSPORTCLIENT pClient));
 
     /**
      * Polls for incoming packets.
