@@ -1,4 +1,4 @@
-/* $Id: UIMaximumGuestScreenSizeEditor.h 94057 2022-03-02 14:14:37Z vboxsync $ */
+/* $Id: UIMaximumGuestScreenSizeEditor.h 94289 2022-03-17 12:20:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMaximumGuestScreenSizeEditor class declaration.
  */
@@ -72,13 +72,6 @@ public:
 
     /** Constructs maximum guest screen size editor passing @a pParent to the base-class. */
     UIMaximumGuestScreenSizeEditor(QWidget *pParent = 0);
-
-    /** Returns focus proxy 1. */
-    QWidget *focusProxy1() const;
-    /** Returns focus proxy 2. */
-    QWidget *focusProxy2() const;
-    /** Returns focus proxy 3. */
-    QWidget *focusProxy3() const;
 
     /** Defines editor @a guiValue. */
     void setValue(const UIMaximumGuestScreenSizeValue &guiValue);

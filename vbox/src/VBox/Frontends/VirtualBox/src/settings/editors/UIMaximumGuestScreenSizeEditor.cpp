@@ -1,4 +1,4 @@
-/* $Id: UIMaximumGuestScreenSizeEditor.cpp 94057 2022-03-02 14:14:37Z vboxsync $ */
+/* $Id: UIMaximumGuestScreenSizeEditor.cpp 94289 2022-03-17 12:20:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMaximumGuestScreenSizeEditor class implementation.
  */
@@ -63,21 +63,6 @@ UIMaximumGuestScreenSizeEditor::UIMaximumGuestScreenSizeEditor(QWidget *pParent 
     , m_pSpinboxMaxHeight(0)
 {
     prepare();
-}
-
-QWidget *UIMaximumGuestScreenSizeEditor::focusProxy1() const
-{
-    return m_pComboPolicy->focusProxy();
-}
-
-QWidget *UIMaximumGuestScreenSizeEditor::focusProxy2() const
-{
-    return m_pSpinboxMaxWidth;
-}
-
-QWidget *UIMaximumGuestScreenSizeEditor::focusProxy3() const
-{
-    return m_pSpinboxMaxHeight;
 }
 
 void UIMaximumGuestScreenSizeEditor::setValue(const UIMaximumGuestScreenSizeValue &guiValue)
