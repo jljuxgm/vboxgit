@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.h 94043 2022-03-01 14:52:46Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.h 94086 2022-03-04 13:47:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class declaration.
  */
@@ -187,6 +187,8 @@ protected slots:
         /** Handles reload machine with certain @a uMachineId request. */
         virtual void sltReloadMachine(const QUuid &uMachineId);
 
+        /** Handles command to commit data. */
+        virtual void sltCommitData();
         /** Handles command to detach COM. */
         virtual void sltDetachCOM();
     /** @} */
