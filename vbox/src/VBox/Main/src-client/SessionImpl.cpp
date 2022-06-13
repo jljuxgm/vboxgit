@@ -1,4 +1,4 @@
-/* $Id: SessionImpl.cpp 92271 2021-11-08 14:47:09Z vboxsync $ */
+/* $Id: SessionImpl.cpp 92274 2021-11-08 16:29:09Z vboxsync $ */
 /** @file
  * VBox Client Session COM Class implementation in VBoxC.
  */
@@ -260,10 +260,9 @@ HRESULT Session::getPID(ULONG *aPid)
 HRESULT Session::getRemoteConsole(ComPtr<IConsole> &aConsole)
 {
     LogFlowThisFuncEnter();
-
+#ifndef VBOX_COM_INPROC_API_CLIENT
     AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
 
-#ifndef VBOX_COM_INPROC_API_CLIENT
     if (mType == SessionType_WriteLock && !!mConsole)
     {
         /* return a failure if the session already transitioned to Closing
