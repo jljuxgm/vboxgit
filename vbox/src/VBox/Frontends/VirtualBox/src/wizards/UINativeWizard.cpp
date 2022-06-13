@@ -1,4 +1,4 @@
-/* $Id: UINativeWizard.cpp 90730 2021-08-18 17:25:56Z vboxsync $ */
+/* $Id: UINativeWizard.cpp 90734 2021-08-18 18:05:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINativeWizard class implementation.
  */
@@ -736,7 +736,11 @@ void UINativeWizard::assignWatermark()
     /* Convert processed image to pixmap: */
     QPixmap pixmapNew = QPixmap::fromImage(imageNew);
     /* For HiDPI support parent-widget's device pixel ratio is to be taken into account: */
-    const double dRatio = parentWidget()->windowHandle()->devicePixelRatio();
+    double dRatio = 1.0;
+    if (   parentWidget()
+        && parentWidget()->window()
+        && parentWidget()->window()->windowHandle())
+        dRatio = parentWidget()->window()->windowHandle()->devicePixelRatio();
     pixmapNew.setDevicePixelRatio(dRatio);
     /* Assign watermark finally: */
     m_pLabelPixmap->setPixmap(pixmapNew);
