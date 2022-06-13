@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageExpert.cpp 89997 2021-07-02 10:27:25Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageExpert.cpp 90034 2021-07-05 15:50:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageExpert class implementation.
  */
@@ -133,11 +133,15 @@ UIWizardNewCloudVMPageExpert::UIWizardNewCloudVMPageExpert(bool fFullWizard)
                 if (m_pSourceImageList)
                 {
                     m_pSourceImageList->setSortingEnabled(true);
-                    /* Make source image list fit 50 symbols
+                    /* Make source image list fit 40/50 symbols
                      * horizontally and 8 lines vertically: */
                     const QFontMetrics fm(m_pSourceImageList->font());
                     const int iFontWidth = fm.width('x');
+#ifdef VBOX_WS_MAC
+                    const int iTotalWidth = 40 * iFontWidth;
+#else
                     const int iTotalWidth = 50 * iFontWidth;
+#endif
                     const int iFontHeight = fm.height();
                     const int iTotalHeight = 8 * iFontHeight;
                     m_pSourceImageList->setMinimumSize(QSize(iTotalWidth, iTotalHeight));
@@ -164,11 +168,15 @@ UIWizardNewCloudVMPageExpert::UIWizardNewCloudVMPageExpert(bool fFullWizard)
                 m_pFormEditor = new UIFormEditorWidget(m_pSettingsCnt);
                 if (m_pFormEditor)
                 {
-                    /* Make form editor fit fit 50 symbols
+                    /* Make form editor fit fit 40/50 symbols
                      * horizontally and 8 sections vertically: */
                     const QFontMetrics fm(m_pSourceImageList->font());
                     const int iFontWidth = fm.width('x');
+#ifdef VBOX_WS_MAC
+                    const int iTotalWidth = 40 * iFontWidth;
+#else
                     const int iTotalWidth = 50 * iFontWidth;
+#endif
                     const int iSectionHeight = m_pFormEditor->verticalHeader()
                                              ? m_pFormEditor->verticalHeader()->defaultSectionSize()
                                              : fm.height();
