@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 93922 2022-02-24 15:14:31Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 93928 2022-02-24 15:29:52Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -5581,7 +5581,7 @@ static VBOXSTRICTRC hmR0VmxExportGuestStateOptimal(PVMCPUCC pVCpu, PVMXTRANSIENT
  *
  * @returns VBox status code.
  * @param   pVCpu           The cross context virtual CPU structure.
- * @param   u64MsrApicBase  The guest-physical address of the APIC access page.
+ * @param   GCPhysApicBase  The guest-physical address of the APIC access page.
  */
 static int hmR0VmxMapHCApicAccessPage(PVMCPUCC pVCpu, RTGCPHYS GCPhysApicBase)
 {
