@@ -1,4 +1,4 @@
-/* $Id: UnattendedImpl.cpp 93534 2022-02-01 16:46:52Z vboxsync $ */
+/* $Id: UnattendedImpl.cpp 93535 2022-02-01 16:56:55Z vboxsync $ */
 /** @file
  * Unattended class implementation
  */
@@ -3240,7 +3240,7 @@ HRESULT Unattended::getDetectedImageNames(std::vector<com::Utf8Str> &aDetectedIm
     return S_OK;
 }
 
-HRESULT Unattended::getDetectedImageIndices(std::vector<uint32_t> &aDetectedImageIndices)
+HRESULT Unattended::getDetectedImageIndices(std::vector<ULONG> &aDetectedImageIndices)
 {
     AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
     aDetectedImageIndices.clear();

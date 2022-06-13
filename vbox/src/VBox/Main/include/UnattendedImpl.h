@@ -1,4 +1,4 @@
-/* $Id: UnattendedImpl.h 93534 2022-02-01 16:46:52Z vboxsync $ */
+/* $Id: UnattendedImpl.h 93535 2022-02-01 16:56:55Z vboxsync $ */
 /** @file
  * Unattended class header
  */
@@ -223,7 +223,7 @@ private:
     HRESULT getDetectedOSFlavor(com::Utf8Str &aDetectedOSFlavor);
     HRESULT getDetectedOSHints(com::Utf8Str &aDetectedOSHints);
     HRESULT getDetectedImageNames(std::vector<com::Utf8Str> &aDetectedImageNames);
-    HRESULT getDetectedImageIndices(std::vector<uint32_t> &aDetectedImageIndices);
+    HRESULT getDetectedImageIndices(std::vector<ULONG> &aDetectedImageIndices);
     //internal functions
 
     /**
