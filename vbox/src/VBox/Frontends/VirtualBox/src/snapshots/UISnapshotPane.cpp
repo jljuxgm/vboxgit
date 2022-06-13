@@ -1,4 +1,4 @@
-/* $Id: UISnapshotPane.cpp 91125 2021-09-06 14:32:23Z vboxsync $ */
+/* $Id: UISnapshotPane.cpp 91128 2021-09-06 17:39:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class implementation.
  */
@@ -630,7 +630,7 @@ void UISnapshotPane::sltHandleSnapshotTake(const QUuid &uMachineId, const QUuid 
 
         /* Show error message if necessary: */
         if (!fSuccess)
-            msgCenter().cannotFindSnapshotById(m_comMachine, uSnapshotId, this);
+            UINotificationMessage::cannotFindSnapshotById(m_comMachine, uSnapshotId);
         else
         {
             /* Where will be the newly created item located? */
@@ -646,7 +646,7 @@ void UISnapshotPane::sltHandleSnapshotTake(const QUuid &uMachineId, const QUuid 
 
                 /* Show error message if necessary: */
                 if (!fSuccess)
-                    msgCenter().cannotAcquireSnapshotAttributes(comSnapshot, this);
+                    UINotificationMessage::cannotAcquireSnapshotParameter(comSnapshot);
                 else
                 {
                     /* Search for an existing parent-item with such id: */
@@ -984,7 +984,7 @@ void UISnapshotPane::sltApplySnapshotDetailsChanges()
                     comSnapshot.SetName(newData.m_strName);
                     if (!comSnapshot.isOk())
                     {
-                        msgCenter().cannotChangeSnapshot(comSnapshot, oldData.m_strName, comMachine.GetName());
+                        UINotificationMessage::cannotChangeSnapshot(comSnapshot, oldData.m_strName, comMachine.GetName());
                         break;
                     }
                 }
@@ -995,7 +995,7 @@ void UISnapshotPane::sltApplySnapshotDetailsChanges()
                     comSnapshot.SetDescription(newData.m_strDescription);
                     if (!comSnapshot.isOk())
                     {
-                        msgCenter().cannotChangeSnapshot(comSnapshot, oldData.m_strName, comMachine.GetName());
+                        UINotificationMessage::cannotChangeSnapshot(comSnapshot, oldData.m_strName, comMachine.GetName());
                         break;
                     }
                 }

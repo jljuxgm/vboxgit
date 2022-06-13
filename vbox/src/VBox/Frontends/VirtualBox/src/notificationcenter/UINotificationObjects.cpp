@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 91104 2021-09-03 12:43:53Z vboxsync $ */
+/* $Id: UINotificationObjects.cpp 91128 2021-09-06 17:39:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -414,6 +414,28 @@ void UINotificationMessage::cannotRemoveMachine(const CMachine &comMachine)
         QApplication::translate("UIMessageCenter", "Failed to remove the virtual machine <b>%1</b>.")
                                                    .arg(CMachine(comMachine).GetName()) +
         UIErrorString::formatErrorInfo(comMachine));
+}
+
+/* static */
+void UINotificationMessage::cannotFindSnapshotById(const CMachine &comMachine, const QUuid &uId)
+{
+    createMessage(
+        QApplication::translate("UIMessageCenter", "Can't find snapshot ..."),
+        QApplication::translate("UIMessageCenter", "Can't find snapshot with ID=<b>%1</b>.")
+                                                   .arg(uId.toString()) +
+        UIErrorString::formatErrorInfo(comMachine));
+}
+
+/* static */
+void UINotificationMessage::cannotChangeSnapshot(const CSnapshot &comSnapshot,
+                                                 const QString &strSnapshotName,
+                                                 const QString &strMachineName)
+{
+    createMessage(
+        QApplication::translate("UIMessageCenter", "Can't change snapshot ..."),
+        QApplication::translate("UIMessageCenter", "Failed to change the snapshot <b>%1</b> of the virtual machine <b>%2</b>.")
+                                                   .arg(strSnapshotName, strMachineName) +
+        UIErrorString::formatErrorInfo(comSnapshot));
 }
 
 /* static */
