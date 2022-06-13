@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 89665 2021-06-14 00:05:37Z vboxsync $
+# $Id: Makefile.kmk 89785 2021-06-19 14:00:12Z vboxsync $
 ## @file
 # Top level makefile.
 #
@@ -932,6 +932,8 @@ $(VBOX_CORE_DOXYFILE_OUTPUT)/Doxyfile.Core: Doxyfile.Core \
 	$(QUIET)$(APPEND) $@.tmp
 	$(QUIET)$(APPEND) $@.tmp "PREDEFINED += $(DEFS) $(DEFS.$(KBUILD_TARGET)) $(DEFS.$(KBUILD_TARGET_ARCH)) $(ARCH_BITS_DEFS)"
 	$(QUIET)$(APPEND) $@.tmp "PREDEFINED += ARCH_BITS=HC_ARCH_BITS R3_ARCH_BITS=HC_ARCH_BITS R0_ARCH_BITS=HC_ARCH_BITS "
+	$(QUIET)$(APPEND) $@.tmp
+	$(QUIET)$(APPEND) $@.tmp "PLANTUML_JAR_PATH = $(firstword $(rsort $(wildcard $(KBUILD_DEVTOOLS)/common/plantuml/v*/plantuml*.jar)))"
 	$(QUIET)$(APPEND) $@.tmp
 	$(QUIET)$(MV) -f $@.tmp $@
 	@$(APPEND) $@.dep "DOXYGEN_CORE_OUTPUT_PREV = $(VBOX_CORE_DOXYFILE_OUTPUT)"
