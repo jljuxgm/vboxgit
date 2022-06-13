@@ -1,4 +1,4 @@
-/* $Id: VBoxManageCloudMachine.cpp 91156 2021-09-08 13:59:58Z vboxsync $ */
+/* $Id: VBoxManageCloudMachine.cpp 91157 2021-09-08 14:24:32Z vboxsync $ */
 /** @file
  * VBoxManageCloudMachine - The cloud machine related commands.
  */
@@ -69,20 +69,36 @@ static HRESULT printFormValue(const ComPtr<IFormValue> &pValue);
  * do this here at our earliest opportunity (without actually doing it
  * in handleCloud).
  */
-RTEXITCODE
-handleCloudMachine(HandlerArg *a, int iFirst,
-                   const char *pcszProviderName,
-                   const char *pcszProfileName)
+static int
+getCloudProfile(ComPtr<ICloudProfile> &aProfile,
+                HandlerArg *a,
+                const char *pcszProviderName,
+                const char *pcszProfileName)
 {
     int rc;
 
     ComPtr<ICloudProvider> pProvider;
     rc = selectCloudProvider(pProvider, a->virtualBox, pcszProviderName);
     if (RT_FAILURE(rc))
-        return RTEXITCODE_FAILURE;
+        return rc;
 
     ComPtr<ICloudProfile> pProfile;
     rc = selectCloudProfile(pProfile, pProvider, pcszProfileName);
+    if (RT_FAILURE(rc))
+        return rc;
+
+    aProfile = pProfile;
+    return VINF_SUCCESS;
+}
+
+
+RTEXITCODE
+handleCloudMachine(HandlerArg *a, int iFirst,
+                   const char *pcszProviderName,
+                   const char *pcszProfileName)
+{
+    ComPtr<ICloudProfile> pProfile;
+    int rc = getCloudProfile(pProfile, a, pcszProviderName, pcszProfileName);
     if (RT_FAILURE(rc))
         return RTEXITCODE_FAILURE;
 
@@ -523,6 +539,26 @@ listCloudMachinesImpl(HandlerArg *a, int iFirst,
     }
 
     return RTEXITCODE_SUCCESS;
+}
+
+
+/*
+ * cloud showvminfo "id"
+ *
+ * Alias for "cloud machine info" that tries to match the local vm
+ * counterpart.
+ */
+RTEXITCODE
+handleCloudShowVMInfo(HandlerArg *a, int iFirst,
+                      const char *pcszProviderName,
+                      const char *pcszProfileName)
+{
+    ComPtr<ICloudProfile> pProfile;
+    int rc = getCloudProfile(pProfile, a, pcszProviderName, pcszProfileName);
+    if (RT_FAILURE(rc))
+        return RTEXITCODE_FAILURE;
+
+    return handleCloudMachineInfo(a, iFirst, pProfile);
 }
 
 
