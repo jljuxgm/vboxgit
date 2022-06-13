@@ -1,4 +1,4 @@
-/* $Id: tstVMStructSize.cpp 91291 2021-09-16 22:04:16Z vboxsync $ */
+/* $Id: tstVMStructSize.cpp 91297 2021-09-17 11:51:23Z vboxsync $ */
 /** @file
  * tstVMStructSize - testcase for check structure sizes/alignment
  *                   and to verify that HC and GC uses the same
@@ -251,6 +251,7 @@ int main()
     CHECK_MEMBER_ALIGNMENT(VMCPU, cpum.s.Guest.hwvirt.svm.Vmcb, 4096);
     CHECK_MEMBER_ALIGNMENT(VMCPU, cpum.s.Guest.hwvirt.svm.abMsrBitmap, 4096);
     CHECK_MEMBER_ALIGNMENT(VMCPU, cpum.s.Guest.hwvirt.svm.abIoBitmap, 4096);
+    CHECK_MEMBER_ALIGNMENT(VMCPU, cpum.s.Guest.hwvirt.vmx.Vmcs, 4096);
 
     PVM pVM = NULL; NOREF(pVM);
 
