@@ -1,4 +1,4 @@
-/* $Id: efitime.cpp 90061 2021-07-06 12:48:53Z vboxsync $ */
+/* $Id: efitime.cpp 90065 2021-07-06 13:10:40Z vboxsync $ */
 /** @file
  * IPRT - EFI time conversion helpers.
  */
@@ -82,7 +82,7 @@ RTDECL(PRTTIMESPEC) RTEfiTimeToTimeSpec(PRTTIMESPEC pTimeSpec, PCEFI_TIME pEfiTi
 }
 
 
-RTDECL(PEFI_TIME) RTEfiTimeToTimeSpec(PEFI_TIME pEfiTime, PCRTTIMESPEC pTimeSpec)
+RTDECL(PEFI_TIME) RTEfiTimeFromTimeSpec(PEFI_TIME pEfiTime, PCRTTIMESPEC pTimeSpec)
 {
     RTTIME Time; RT_ZERO(Time);
     if (!RTTimeExplode(&Time, pTimeSpec))

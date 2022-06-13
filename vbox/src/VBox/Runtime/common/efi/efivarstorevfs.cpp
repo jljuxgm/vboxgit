@@ -1,4 +1,4 @@
-/* $Id: efivarstorevfs.cpp 90064 2021-07-06 12:51:48Z vboxsync $ */
+/* $Id: efivarstorevfs.cpp 90065 2021-07-06 13:10:40Z vboxsync $ */
 /** @file
  * IPRT - Expose a EFI variable store as a Virtual Filesystem.
  */
@@ -847,6 +847,8 @@ static DECLCALLBACK(int) rtEfiVarStoreDir_Open(void *pvThis, const char *pszEntr
                 return rtEfiVarStore_NewDirByType(pVarStore, RTEFIVARSTOREDIRTYPE_BY_NAME, NULL /*pGuid*/, phVfsObj);
             else if (!strcmp(pszEntry, "by-uuid"))
                 return rtEfiVarStore_NewDirByType(pVarStore, RTEFIVARSTOREDIRTYPE_BY_GUID, NULL /*pGuid*/, phVfsObj);
+            else
+                rc = VERR_FILE_NOT_FOUND;
             break;
         }
         case RTEFIVARSTOREDIRTYPE_GUID: /** @todo This looks through all variables, not only the ones with the GUID. */
