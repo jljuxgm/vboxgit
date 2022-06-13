@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet_1_0.cpp 93004 2021-12-17 09:14:35Z vboxsync $ $Revision: 93004 $ $Date: 2021-12-17 17:14:35 +0800 (Fri, 17 Dec 2021) $ $Author: vboxsync $ */
+/* $Id: DevVirtioNet_1_0.cpp 93012 2021-12-17 10:07:36Z vboxsync $ $Revision: 93012 $ $Date: 2021-12-17 18:07:36 +0800 (Fri, 17 Dec 2021) $ $Author: vboxsync $ */
 
 /** @file
  * VBox storage devices - Virtio NET Driver
@@ -99,6 +99,7 @@
 #define VIRTIONET_F_CTRL_MAC_ADDR        RT_BIT_64(23)         /**< Set MAC address through control channel         */
 /** @} */
 
+#if LOG_ENABLED
 static const VIRTIO_FEATURES_LIST s_aDevSpecificFeatures[] =
 {
     { VIRTIONET_F_STATUS,              "   STATUS               Configuration status field is available.\n" },
@@ -122,6 +123,7 @@ static const VIRTIO_FEATURES_LIST s_aDevSpecificFeatures[] =
     { VIRTIONET_F_CSUM,                "   CSUM                 Host handles packets with partial checksum.\n" },
     { VIRTIONET_F_MRG_RXBUF,           "   MRG_RXBUF            Guest can merge receive buffers.\n" },
 };
+#endif
 
 #ifdef VIRTIONET_WITH_GSO
 # define VIRTIONET_HOST_FEATURES_GSO    \
