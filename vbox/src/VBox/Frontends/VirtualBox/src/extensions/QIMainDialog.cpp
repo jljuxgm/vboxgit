@@ -1,4 +1,4 @@
-/* $Id: QIMainDialog.cpp 91109 2021-09-03 15:31:49Z vboxsync $ */
+/* $Id: QIMainDialog.cpp 92490 2021-11-18 09:58:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIMainDialog class implementation.
  */
@@ -43,6 +43,7 @@ QIMainDialog::QIMainDialog(QWidget *pParent /* = 0 */,
     , m_fIsAutoCentering(fIsAutoCentering)
     , m_fPolished(false)
     , m_iResult(QDialog::Rejected)
+    , m_fRejectByEscape(true)
 {
     /* Install event-filter: */
     qApp->installEventFilter(this);
@@ -268,7 +269,7 @@ void QIMainDialog::keyPressEvent(QKeyEvent *pEvent)
         /* Special handling for Escape key: */
         case Qt::Key_Escape:
         {
-            if (pEvent->modifiers() == Qt::NoModifier)
+            if (pEvent->modifiers() == Qt::NoModifier && m_fRejectByEscape)
             {
                 reject();
                 return;
@@ -328,4 +329,9 @@ void QIMainDialog::done(int iResult)
     setResult(iResult);
     /* Hide: */
     hide();
+}
+
+void QIMainDialog::setRejectByEscape(bool fRejectByEscape)
+{
+    m_fRejectByEscape = fRejectByEscape;
 }

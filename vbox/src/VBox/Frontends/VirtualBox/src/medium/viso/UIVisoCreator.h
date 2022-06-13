@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.h 92478 2021-11-17 13:47:45Z vboxsync $ */
+/* $Id: UIVisoCreator.h 92490 2021-11-18 09:58:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator class declaration.
  */
@@ -48,6 +48,10 @@ class UIVisoConfigurationPanel;
 class SHARED_LIBRARY_STUFF UIVisoCreatorWidget : public QIWithRetranslateUI<QWidget>
 {
     Q_OBJECT;
+
+signals:
+
+    void sigSetCancelButtonShortCut(QKeySequence keySequence);
 
 public:
 
@@ -182,6 +186,10 @@ public:
     QStringList customOptions() const;
     QString currentPath() const;
     void    setCurrentPath(const QString &strPath);
+
+private slots:
+
+    void sltSetCancelButtonShortCut(QKeySequence keySequence);
 
 private:
     void prepareWidgets();

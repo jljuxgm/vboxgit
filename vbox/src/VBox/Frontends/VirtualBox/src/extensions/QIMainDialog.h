@@ -1,4 +1,4 @@
-/* $Id: QIMainDialog.h 87718 2021-02-11 08:50:48Z vboxsync $ */
+/* $Id: QIMainDialog.h 92490 2021-11-18 09:58:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIMainDialog class declaration.
  */
@@ -90,6 +90,9 @@ protected:
     /** Searches for dialog's default button. */
     QPushButton *searchDefaultButton() const;
 
+    /** Sets reject-by-escape-key flag. */
+    void setRejectByEscape(bool fRejectByEscape);
+
 protected slots:
 
     /** Sets the modal dialog's result code to @a iResult. */
@@ -120,6 +123,8 @@ private:
     QPointer<QPushButton>  m_pDefaultButton;
     /** Holds dialog's size-grip. */
     QPointer<QSizeGrip>    m_pSizeGrip;
+    /** Holds reject by escape flag. When true pressing escape rejects the dialog. Default is true.*/
+    bool m_fRejectByEscape;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_extensions_QIMainDialog_h */
