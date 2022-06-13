@@ -1,4 +1,4 @@
-/* $Id: RTFileCopyEx-generic.cpp 90789 2021-08-23 10:27:29Z vboxsync $ */
+/* $Id: RTFileCopyEx-generic.cpp 90877 2021-08-25 11:53:42Z vboxsync $ */
 /** @file
  * IPRT - RTFileCopyEx, generic implementation.
  */
@@ -44,7 +44,7 @@ RTDECL(int) RTFileCopyEx(const char *pszSrc, const char *pszDst, uint32_t fFlags
     AssertMsgReturn(*pszSrc, ("pszSrc=%p\n", pszSrc), VERR_INVALID_PARAMETER);
     AssertPtrReturn(pszDst, VERR_INVALID_POINTER);
     AssertMsgReturn(*pszDst, ("pszDst=%p\n", pszDst), VERR_INVALID_PARAMETER);
-    AssertPtrReturn(pfnProgress, VERR_INVALID_POINTER);
+    AssertPtrNullReturn(pfnProgress, VERR_INVALID_POINTER);
     AssertMsgReturn(!(fFlags & ~RTFILECOPY_FLAGS_MASK), ("%#x\n", fFlags), VERR_INVALID_PARAMETER);
 
     /*
