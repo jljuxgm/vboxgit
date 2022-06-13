@@ -1,4 +1,4 @@
-/* $Id: AudioTestServiceTcp.cpp 91012 2021-08-30 19:44:20Z vboxsync $ */
+/* $Id: AudioTestServiceTcp.cpp 91013 2021-08-30 19:47:06Z vboxsync $ */
 /** @file
  * AudioTestServiceTcp - Audio test execution server, TCP/IP Transport Layer.
  */
@@ -130,7 +130,7 @@ static void atsTcpDisconnectClient(PATSTRANSPORTINST pThis, PATSTRANSPORTCLIENT 
 
     if (pClient->hTcpClient != NIL_RTSOCKET)
     {
-    	LogRelFlowFunc(("Disconnecting client %RTsock\n", pClient->hTcpClient));
+        LogRelFlowFunc(("Disconnecting client %RTsock\n", pClient->hTcpClient));
 
         int rc;
         if (pClient->fFromServer)
