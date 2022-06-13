@@ -1,4 +1,4 @@
-/* $Id: AudioTest.h 91505 2021-10-01 10:15:58Z vboxsync $ */
+/* $Id: AudioTest.h 91632 2021-10-08 06:59:29Z vboxsync $ */
 /** @file
  * Audio testing routines.
  * Common code which is being used by the ValidationKit audio test (VKAT)
@@ -149,8 +149,6 @@ typedef struct AUDIOTESTPARMS
     uint32_t                idxCurrent;
     /** How many iterations the test should be executed. */
     uint32_t                cIterations;
-    /** PCM audio stream properties to use. */
-    PDMAUDIOPCMPROPS        Props;
     /** Audio device to use. */
     PDMAUDIOHOSTDEV         Dev;
     /** How much to delay (wait, in ms) the test being executed. */
