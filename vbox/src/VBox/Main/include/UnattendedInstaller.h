@@ -1,4 +1,4 @@
-/* $Id: UnattendedInstaller.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UnattendedInstaller.h 93405 2022-01-24 09:56:23Z vboxsync $ */
 /** @file
  * UnattendedInstaller class header
  */
@@ -101,8 +101,8 @@ public:
      * Instantiates the appropriate child class.
      *
      * @returns Pointer to the new instance, NULL if no appropriate installer.
-     * @param   enmOsType               The guest OS type value.
-     * @param   strGuestOsType          The guest OS type string
+     * @param   enmDetectedOSType       The detected guest OS type value.
+     * @param   strDetectedOSType       The detected guest OS type string
      * @param   strDetectedOSVersion    The detected guest OS version.
      * @param   strDetectedOSFlavor     The detected guest OS flavor.
      * @param   strDetectedOSHints      Hints about the detected guest OS.
@@ -110,7 +110,7 @@ public:
      *                                  and querying attributes.
      * @throws  std::bad_alloc
      */
-    static UnattendedInstaller *createInstance(VBOXOSTYPE enmOsType, const Utf8Str &strGuestOsType,
+    static UnattendedInstaller *createInstance(VBOXOSTYPE enmDetectedOSType, const Utf8Str &strDetectedOSType,
                                                const Utf8Str &strDetectedOSVersion, const Utf8Str &strDetectedOSFlavor,
                                                const Utf8Str &strDetectedOSHints, Unattended *pParent);
 

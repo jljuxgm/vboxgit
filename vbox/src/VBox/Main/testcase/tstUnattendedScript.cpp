@@ -1,4 +1,4 @@
-/* $Id: tstUnattendedScript.cpp 93194 2022-01-11 23:32:41Z vboxsync $ */
+/* $Id: tstUnattendedScript.cpp 93405 2022-01-24 09:56:23Z vboxsync $ */
 /** @file
  * tstUnattendedScript - testcases for UnattendedScript.
  */
@@ -579,11 +579,6 @@ bool Unattended::i_isGuestOs64Bit() const
 bool Unattended::i_isFirmwareEFI() const
 {
     return menmFirmwareType != FirmwareType_BIOS;
-}
-
-VBOXOSTYPE Unattended::i_getGuestOsType() const
-{
-    return meGuestOsType;
 }
 
 Utf8Str const &Unattended::i_getDetectedOSVersion()

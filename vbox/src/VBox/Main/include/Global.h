@@ -1,4 +1,4 @@
-/* $Id: Global.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: Global.h 93405 2022-01-24 09:56:23Z vboxsync $ */
 /** @file
  * VirtualBox COM API - Global Declarations and Definitions.
  */
@@ -160,6 +160,14 @@ public:
      * @param   aState      Valid session state.
      */
     static const char *stringifySessionState(SessionState_T aState);
+
+    /**
+     * Stringify a storage bus type.
+     *
+     * @returns Pointer to a read only string.
+     * @param   aBusType    The storage bus type.
+     */
+    static const char *stringifyStorageBus(StorageBus_T aBus);
 
     /**
      * Stringify a device type.
