@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 93776 2022-02-15 23:28:47Z vboxsync $
+# $Id: virtual_test_sheriff.py 93777 2022-02-15 23:35:44Z vboxsync $
 # pylint: disable=line-too-long
 
 """
@@ -35,7 +35,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 93776 $"
+__version__ = "$Revision: 93777 $"
 
 
 # Standard python imports
@@ -340,7 +340,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
 
         if self.oConfig.sLogFile:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 93776 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 93777 $ \n');
 
 
     def eprint(self, sText):
@@ -744,7 +744,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.getFailureReason(tReason);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 93776 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 93777 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
@@ -1238,12 +1238,14 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
         self.dprint(u'%s + %s <<\n%s\n<<' % (oFailedResult.tsCreated, oFailedResult.tsElapsed, sResultLog,));
         return False;
 
-    def isResultFromGATest(self, oFailedResult):
+    def isResultFromGATest(self, oCaseFile, oFailedResult):
         """
         Checks if this result and corresponding log snippet looks like a GA test run.
         """
         while oFailedResult is not None:
-            if oFailedResult.sName in [ 'Guest Control', 'Shared Folders', 'FsPerf', 'VBoxWindowsAdditions.exe', 'Additions' ]:
+            if oFailedResult.sName in [ 'Guest Control', 'Shared Folders', 'FsPerf', 'VBoxWindowsAdditions.exe' ]:
+                return True;
+            if oCaseFile.oTestCase.sName == 'Additions' and oFailedResult.sName in [ 'Install', ]:
                 return True;
             oFailedResult = oFailedResult.oParent;
         return False;
@@ -1553,7 +1555,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
             elif self.isResultFromVMRun(oFailedResult, sResultLog):
                 self.investigateVMResult(oCaseFile, oFailedResult, sResultLog);
 
-            elif self.isResultFromGATest(oFailedResult):
+            elif self.isResultFromGATest(oCaseFile, oFailedResult):
                 self.investigateGATest(oCaseFile, oFailedResult, sResultLog);
 
             elif sResultLog.find('most likely not unique') > 0:
