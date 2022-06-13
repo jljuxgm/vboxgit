@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testboxupgrade.py 92574 2021-11-23 21:21:30Z vboxsync $
+# $Id: testboxupgrade.py 92575 2021-11-23 21:34:36Z vboxsync $
 
 """
 TestBox Script - Upgrade from local file ZIP.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 92574 $"
+__version__ = "$Revision: 92575 $"
 
 # Standard python imports.
 import os
@@ -136,9 +136,9 @@ def _doUpgradeTestRun(sUpgradeDir):
 
     # Give child up to 5 seconds to terminate after producing output.
     if sys.version_info[0] >= 3 and sys.version_info[1] >= 3:
-        oChild.wait(5);
+        oChild.wait(5); # pylint: disable=too-many-function-args
     else:
-        for i in range(50):
+        for _ in range(50):
             iStatus = oChild.poll();
             if iStatus is None:
                 break;
