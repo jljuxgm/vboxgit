@@ -1,5 +1,5 @@
 @echo off
-rem $Id: Single-3-Repack.cmd 93115 2022-01-01 11:31:46Z vboxsync $
+rem $Id: Single-3-Repack.cmd 94973 2022-05-09 21:09:03Z vboxsync $
 rem rem @file
 rem Windows NT batch script for repacking signed amd64 or x86 drivers.
 rem
@@ -177,7 +177,7 @@ echo **************************************************************************
 echo * Unpacking signed drivers...
 echo **************************************************************************
 cd /d "%_MY_REPACK_DIR%" || goto end_failed
-call "%_MY_REPACK_DIR%\UnpackBlessedDrivers.cmd" -b "%_MY_BINDIR%" -i "%_MY_OPT_SIGNED%" || goto end_failed
+call "%_MY_REPACK_DIR%\UnpackBlessedDrivers.cmd" -n -b "%_MY_BINDIR%" -i "%_MY_OPT_SIGNED%" || goto end_failed
 echo .
 
 
