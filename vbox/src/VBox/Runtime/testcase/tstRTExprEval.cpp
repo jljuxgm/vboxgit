@@ -1,4 +1,4 @@
-/* $Id: tstRTExprEval.cpp 93175 2022-01-11 01:13:12Z vboxsync $ */
+/* $Id: tstRTExprEval.cpp 93178 2022-01-11 08:28:01Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTExprEval
  */
@@ -132,9 +132,9 @@ static void tstBasic(void)
     RTTESTI_CHECK_RC(RTExprEvalToInteger(hExprEval, RT_STR_TUPLE("false true - "), &iResult, NULL), VERR_PARSE_ERROR);
     CHECK_iResult(INT64_MAX);
     g_fQueryVariableExpected = true;
-    RTTESTI_CHECK_RC(RTExprEvalToInteger(hExprEval, RT_STR_TUPLE("$(MYVAR1) + 0"), &iResult, NULL), VINF_SUCCESS);
+    RTTESTI_CHECK_RC(RTExprEvalToInteger(hExprEval, RT_STR_TUPLE("${MYVAR1} + 0"), &iResult, NULL), VINF_SUCCESS);
     CHECK_iResult(42);
-    RTTESTI_CHECK_RC(RTExprEvalToInteger(hExprEval, RT_STR_TUPLE("$($(MYNESTED1)) + 2"), &iResult, NULL), VINF_SUCCESS);
+    RTTESTI_CHECK_RC(RTExprEvalToInteger(hExprEval, RT_STR_TUPLE("${${MYNESTED1}} + 2"), &iResult, NULL), VINF_SUCCESS);
     CHECK_iResult(44);
     g_fQueryVariableExpected = false;
 
@@ -171,5 +171,4 @@ int main()
      */
     return RTTestSummaryAndDestroy(g_hTest);
 }
-
 
