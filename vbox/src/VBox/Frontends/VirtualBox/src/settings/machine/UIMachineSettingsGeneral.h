@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsGeneral.h 94333 2022-03-23 11:21:34Z vboxsync $ */
+/* $Id: UIMachineSettingsGeneral.h 94445 2022-04-01 17:19:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsGeneral class declaration.
  */
@@ -29,8 +29,8 @@
 class QCheckBox;
 class QComboBox;
 class QLineEdit;
-class QTextEdit;
 class QITabWidget;
+class UIMachineDescriptionEditor;
 class UINameAndSystemEditor;
 
 class UIFilePathSelector;
@@ -175,9 +175,9 @@ private:
         QComboBox          *m_pComboDragAndDrop;
 
         /** Holds the 'Description' tab instance. */
-        QWidget   *m_pTabDescription;
+        QWidget                    *m_pTabDescription;
         /** Holds the description editor instance. */
-        QTextEdit *m_pEditorDescription;
+        UIMachineDescriptionEditor *m_pEditorDescription;
 
         /** Holds the 'Encryption' tab instance. */
         QWidget   *m_pTabEncryption;

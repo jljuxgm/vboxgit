@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.h 94395 2022-03-29 16:29:26Z vboxsync $ */
+/* $Id: UINameAndSystemEditor.h 94445 2022-04-01 17:19:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class declaration.
  */
@@ -122,9 +122,6 @@ public:
     void setType(const CGuestOSType &enmType);
     /** Returns the VM OS type. */
     CGuestOSType type() const;
-
-    /** Defines the name-field @a strValidator. */
-    void setNameFieldValidator(const QString &strValidator);
 
     /** Passes the @p fError to QILineEdit::mark(bool) effectively marking it for error. */
     void markNameEditor(bool fError);
