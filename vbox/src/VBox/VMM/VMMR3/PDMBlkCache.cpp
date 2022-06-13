@@ -1,4 +1,4 @@
-/* $Id: PDMBlkCache.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: PDMBlkCache.cpp 94319 2022-03-21 23:40:13Z vboxsync $ */
 /** @file
  * PDM Block Cache.
  */
@@ -460,6 +460,12 @@ static size_t pdmBlkCacheEvictPagesFrom(PPDMBLKCACHEGLOBAL pCache, size_t cbData
                     RTSemRWReleaseWrite(pBlkCache->SemRWEntries);
                     RTMemFree(pCurr);
                 }
+            }
+            else
+            {
+                LogFlow(("Someone raced us, entry %#p (%u bytes) cannot be evicted any more (fFlags=%#x cRefs=%#x)\n",
+                         pCurr, pCurr->cbData, pCurr->fFlags, pCurr->cRefs));
+                RTSemRWReleaseWrite(pBlkCache->SemRWEntries);
             }
 
         }
