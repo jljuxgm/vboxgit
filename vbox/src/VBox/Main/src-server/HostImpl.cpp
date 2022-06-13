@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 94643 2022-04-20 09:08:37Z vboxsync $ */
+/* $Id: HostImpl.cpp 94685 2022-04-22 10:16:24Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -2084,6 +2084,13 @@ HRESULT Host::i_loadSettings(const settings::Host &data)
 #else
     RT_NOREF(data);
 #endif /* VBOX_WITH_USB */
+
+#ifdef VBOX_WITH_UPDATE_AGENT
+    rc = m->pUpdateHost->i_loadSettings(data.updateHost);
+    ComAssertComRCRet(rc, rc);
+    /** @todo Add handling for ExtPack and Guest Additions updates here later. See @bugref{7983}. */
+#endif
+
     return rc;
 }
 
