@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMNameOSTypePage.h 93409 2022-01-24 13:35:27Z vboxsync $ */
+/* $Id: UIWizardNewVMNameOSTypePage.h 93455 2022-01-27 09:45:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMNameOSTypePage class declaration.
  */
@@ -42,7 +42,7 @@ namespace UIWizardNewVMNameOSTypeCommon
      *  wizard cancel */
     bool cleanupMachineFolder(UIWizardNewVM *pWizard, bool fWizardCancel = false);
     void composeMachineFilePath(UINameAndSystemEditor *pNameAndSystemEditor, UIWizardNewVM *pWizard);
-    void determineOSType(const QString &strISOPath, UIWizardNewVM *pWizard);
+    void detectOSType(const QString &strISOPath, UIWizardNewVM *pWizard);
     /** Return false if ISO path is not empty but points to an missing or unreadable file. */
     bool checkISOFile(UINameAndSystemEditor *pNameAndSystemEditor);
 }
