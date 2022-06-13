@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 91416 2021-09-28 06:15:49Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 91420 2021-09-28 07:16:37Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -321,7 +321,7 @@ private:
     HRESULT getNATNetworks(std::vector<ComPtr<INATNetwork> > &aNATNetworks);
     HRESULT getEventSource(ComPtr<IEventSource> &aEventSource);
     HRESULT getExtensionPackManager(ComPtr<IExtPackManager> &aExtensionPackManager);
-    HRESULT getHostOnlyNetworks(std::vector<ComPtr<IHostOnlyNetwork>> &aHostOnlyNetworks);
+    HRESULT getHostOnlyNetworks(std::vector<ComPtr<IHostOnlyNetwork> > &aHostOnlyNetworks);
     HRESULT getInternalNetworks(std::vector<com::Utf8Str> &aInternalNetworks);
     HRESULT getGenericNetworkDrivers(std::vector<com::Utf8Str> &aGenericNetworkDrivers);
     HRESULT getCloudNetworks(std::vector<ComPtr<ICloudNetwork> > &aCloudNetworks);
