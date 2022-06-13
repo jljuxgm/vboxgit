@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 94548 2022-04-11 00:51:14Z vboxsync $
+# $Id: Makefile.kmk 94638 2022-04-19 21:22:30Z vboxsync $
 ## @file
 # Sub-Makefile for SoftFloat-3e.
 #
@@ -266,6 +266,7 @@ VBox-SoftFloat_SOURCES += \
 	source/extF80_mul.c \
 	source/extF80_div.c \
 	source/extF80_rem.c \
+	source/extF80_partialRem.c \
 	source/extF80_sqrt.c \
 	source/extF80_eq.c \
 	source/extF80_le.c \
