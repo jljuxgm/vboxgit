@@ -1,4 +1,4 @@
-/* $Id: GVMMR0.cpp 93554 2022-02-02 22:57:02Z vboxsync $ */
+/* $Id: GVMMR0.cpp 93596 2022-02-03 21:43:35Z vboxsync $ */
 /** @file
  * GVMM - Global VM Manager.
  */
@@ -904,7 +904,7 @@ GVMMR0DECL(int) GVMMR0CreateVM(PSUPDRVSESSION pSession, uint32_t cCpus, PGVM *pp
                         gvmmR0InitPerVMData(pGVM, iHandle, cCpus, pSession);
                         pGVM->gvmm.s.VMMemObj  = hVMMemObj;
                         rc = GMMR0InitPerVMData(pGVM);
-                        int rc2 = PGMR0InitPerVMData(pGVM);
+                        int rc2 = PGMR0InitPerVMData(pGVM, hVMMemObj);
                         int rc3 = VMMR0InitPerVMData(pGVM);
                         DBGFR0InitPerVMData(pGVM);
                         PDMR0InitPerVMData(pGVM);
