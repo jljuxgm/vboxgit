@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDExpertPage.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIWizardNewVDExpertPage.h 93673 2022-02-10 07:04:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDExpertPage class declaration.
  */
@@ -64,7 +64,7 @@ private:
    /** @name Widgets
      * @{ */
        UIMediumSizeAndPathGroupBox *m_pSizeAndPathGroup;
-       UIDiskFormatsComboBox *m_pFormatComboxBox;
+       UIDiskFormatsComboBox *m_pFormatComboBox;
        UIDiskVariantWidget *m_pVariantWidget;
        QGroupBox *m_pFormatVariantGroupBox;
    /** @} */

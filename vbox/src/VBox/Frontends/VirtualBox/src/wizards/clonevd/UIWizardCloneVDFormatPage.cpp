@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDFormatPage.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIWizardCloneVDFormatPage.cpp 93673 2022-02-10 07:04:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDFormatPage class implementation.
  */
@@ -55,11 +55,11 @@ void UIWizardCloneVDFormatPage::prepare(KDeviceType enmDeviceType)
 void UIWizardCloneVDFormatPage::retranslateUi()
 {
     /* Translate page: */
-    setTitle(UIWizardCloneVD::tr("Disk image file type"));
+    setTitle(UIWizardCloneVD::tr("Virtual Hard disk file type"));
 
     /* Translate widgets: */
     m_pLabel->setText(UIWizardCloneVD::tr("Please choose the type of file that you would like to use "
-                                          "for the new virtual disk image. If you do not need to use it "
+                                          "for the destination virtual disk image. If you do not need to use it "
                                           "with other virtualization software you can leave this setting unchanged."));
 }
 

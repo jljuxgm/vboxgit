@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDExpertPage.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIWizardCloneVDExpertPage.h 93673 2022-02-10 07:04:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDExpertPage class declaration.
  */
@@ -28,9 +28,11 @@
 #include "COMEnums.h"
 
 /* Forward declarations: */
-class UIDiskFormatsGroupBox;
+class QGroupBox;
+class UIDiskFormatsComboBox;
 class UIDiskVariantWidget;
 class UIMediumSizeAndPathGroupBox;
+
 
 /** Expert page of the Clone Virtual Disk Image wizard: */
 class UIWizardCloneVDExpertPage : public UINativeWizardPage
@@ -75,9 +77,10 @@ private:
     void setTargetLocation();
     void updateDiskWidgetsAfterMediumFormatChange();
 
-    UIDiskFormatsGroupBox *m_pFormatGroupBox;
+    UIDiskFormatsComboBox *m_pFormatComboBox;
     UIDiskVariantWidget *m_pVariantWidget;
     UIMediumSizeAndPathGroupBox *m_pMediumSizePathGroupBox;
+    QGroupBox *m_pFormatVariantGroupBox;
     KDeviceType m_enmDeviceType;
 };
 
