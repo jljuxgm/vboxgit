@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 93719 $"
+__version__ = "$Revision: 93793 $"
 
 # Standard Python imports.
 import errno
@@ -187,9 +187,11 @@ class tdTestGuestCtrlBase(object):
 
                     # Log session status changes.
                     if waitResult is vboxcon.GuestSessionWaitResult_Status:
-                        reporter.error('Session "%s" indicated status change (status is now %d)' \
+                        reporter.log('Session "%s" indicated status change (status is now %d)' \
                                      % (sName, self.oGuestSession.status));
                         if self.oGuestSession.status is vboxcon.GuestSessionStatus_Started:
+                            # We indicate an error here, as we intentionally waited for the session start
+                            # in the wait call above and got back a status change instead.
                             reporter.error('Session "%s" successfully started (thru status change)' % (sName,));
                             break;
                         continue; # Continue waiting for the session to start.
