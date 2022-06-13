@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 90893 2021-08-25 17:15:36Z vboxsync $ */
+/* $Id: UICommon.cpp 90906 2021-08-26 10:12:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -3040,8 +3040,9 @@ QUuid UICommon::showCreateFloppyDiskDialog(QWidget *pParent, const QString &strD
 
     if (pDialog->exec())
     {
+        QUuid uMediumID = pDialog->mediumID();
         delete pDialog;
-        return pDialog->mediumID();
+        return uMediumID;
     }
     delete pDialog;
     return QUuid();
