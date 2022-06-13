@@ -1,4 +1,4 @@
-/* $Id: MachineDebuggerImpl.cpp 90692 2021-08-16 09:20:36Z vboxsync $ */
+/* $Id: MachineDebuggerImpl.cpp 90693 2021-08-16 09:27:25Z vboxsync $ */
 /** @file
  * VBox IMachineDebugger COM class implementation (VBoxC).
  */
@@ -388,7 +388,7 @@ HRESULT MachineDebugger::getLogEnabled(BOOL *aLogEnabled)
     AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
 
     const PRTLOGGER pLogInstance = RTLogDefaultInstance();
-    *aLogEnabled = pLogInstance && !(pLogInstance->fFlags & RTLOGFLAGS_DISABLED);
+    *aLogEnabled = pLogInstance && !(RTLogGetFlags(pLogInstance) & RTLOGFLAGS_DISABLED);
 #else
     *aLogEnabled = false;
 #endif
