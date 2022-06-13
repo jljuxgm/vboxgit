@@ -1,4 +1,4 @@
-/* $Id: main.cpp 90053 2021-07-06 10:46:54Z vboxsync $ */
+/* $Id: main.cpp 90211 2021-07-15 11:53:07Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions - X11 Client.
  */
@@ -119,15 +119,13 @@ void VBClShutdown(bool fExit /*=true*/)
     if (RT_FAILURE(rc))
         VBClLogFatalError("Failure while acquiring the global critical section, rc=%Rrc\n", rc);
 
-    /* Try to gracefuly terminate a service. Service needs
-     * to be stopped first and then terminated. */
-    if (g_Service.pDesc)
+    /* Ask service to stop. */
+    if (g_Service.pDesc &&
+        g_Service.pDesc->pfnStop)
     {
-        if (g_Service.pDesc->pfnStop)
-            g_Service.pDesc->pfnStop();
+        ASMAtomicWriteBool(&g_Service.fShutdown, true);
+        g_Service.pDesc->pfnStop();
 
-        if (g_Service.pDesc->pfnTerm)
-            g_Service.pDesc->pfnTerm();
     }
 
     if (g_szPidFile[0] && g_hPidFile)
