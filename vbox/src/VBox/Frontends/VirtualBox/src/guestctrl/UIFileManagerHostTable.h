@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerHostTable.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIFileManagerHostTable.h 94020 2022-03-01 09:52:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerHostTable class declaration.
  */
@@ -20,6 +20,9 @@
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
+
+/* Qt includes: */
+#include <QFileDevice>
 
 /* GUI includes: */
 #include "UIFileManagerTable.h"
