@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 90908 2021-08-26 10:27:04Z vboxsync $
+# $Id: Makefile.kmk 90946 2021-08-27 10:55:25Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -588,6 +588,9 @@ endif
   VBoxDD_SOURCES        += \
   	Security/DevTpm.cpp \
     Security/DrvTpmEmu.cpp
+
+  VBoxDD_SOURCES.linux += \
+  	Security/DrvTpmHost.cpp
  endif
 
  ifdef VBOX_WITH_PDM_ASYNC_COMPLETION

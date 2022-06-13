@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.h 90908 2021-08-26 10:27:04Z vboxsync $ */
+/* $Id: VBoxDD.h 90946 2021-08-27 10:55:25Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1) header.
  */
@@ -198,6 +198,9 @@ extern const PDMDRVREG g_DrvSCSI;
 extern const PDMDRVREG g_DrvIfTrace;
 #ifdef VBOX_WITH_TPM
 extern const PDMDRVREG g_DrvTpmEmu;
+# ifdef RT_OS_LINUX
+extern const PDMDRVREG g_DrvTpmHost;
+# endif
 #endif
 
 #ifdef VBOX_WITH_IOMMU_AMD
