@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerGuestTable.h 92766 2021-12-06 14:31:36Z vboxsync $ */
+/* $Id: UIFileManagerGuestTable.h 92787 2021-12-07 13:04:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerGuestTable class declaration.
  */
@@ -99,6 +99,8 @@ private slots:
     void sltCreateGuestSession(QString strUserName, QString strPassword);
     void sltHandleCloseSessionRequest();
     void sltMachineStateChange(const QUuid &uMachineId, const KMachineState state);
+    void sltCommitDataSignalReceived();
+    void sltAdditionsChange();
 
 private:
 
@@ -131,6 +133,7 @@ private:
     void prepareGuestSessionPanel();
     /** Creates a shared machine session, opens a guest session and registers event listeners. */
     bool openSession(const QString& strUserName, const QString& strPassword);
+    void closeSession();
     bool isGuestAdditionsAvailable(CGuest &guest);
     bool isGuestAdditionsAvailable();
 

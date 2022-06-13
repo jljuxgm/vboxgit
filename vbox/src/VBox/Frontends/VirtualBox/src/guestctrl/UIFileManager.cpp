@@ -1,4 +1,4 @@
-/* $Id: UIFileManager.cpp 92753 2021-12-06 08:51:01Z vboxsync $ */
+/* $Id: UIFileManager.cpp 92787 2021-12-07 13:04:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManager class implementation.
  */
@@ -174,14 +174,6 @@ void UIFileManager::prepareObjects()
 
     if (m_fShowToolbar)
         prepareToolBar();
-
-    QHBoxLayout *pFileTableContainerLayout = new QHBoxLayout;
-    pFileTableContainerLayout->setContentsMargins(0, 0, 0, 0);
-#ifdef VBOX_WS_MAC
-    pFileTableContainerLayout->setSpacing(10);
-#else
-    pFileTableContainerLayout->setSpacing(qApp->style()->pixelMetric(QStyle::PM_LayoutVerticalSpacing) / 2);
-#endif
 
     QWidget *pTopWidget = new QWidget;
     QVBoxLayout *pTopLayout = new QVBoxLayout;
