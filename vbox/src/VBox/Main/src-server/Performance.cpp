@@ -1,4 +1,4 @@
-/* $Id: Performance.cpp 94088 2022-03-04 14:04:59Z vboxsync $ */
+/* $Id: Performance.cpp 94722 2022-04-27 13:42:50Z vboxsync $ */
 /** @file
  * VBox Performance Classes implementation.
  */
@@ -677,6 +677,7 @@ void HostCpuLoadRaw::collect()
 #ifndef VBOX_COLLECTOR_TEST_CASE
 static bool getLinkSpeed(const char *szShortName, uint32_t *pSpeed)
 {
+# ifdef VBOX_WITH_HOSTNETIF_API
     NETIFSTATUS enmState = NETIF_S_UNKNOWN;
     int vrc = NetIfGetState(szShortName, &enmState);
     if (RT_FAILURE(vrc))
@@ -690,6 +691,10 @@ static bool getLinkSpeed(const char *szShortName, uint32_t *pSpeed)
             return false;
     }
     return true;
+# else  /* !VBOX_WITH_HOSTNETIF_API */
+    RT_NOREF(szShortName, pSpeed);
+    return false;
+# endif /* VBOX_WITH_HOSTNETIF_API */
 }
 
 void HostNetworkSpeed::init(ULONG period, ULONG length)
