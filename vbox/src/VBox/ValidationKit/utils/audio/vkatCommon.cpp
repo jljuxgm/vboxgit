@@ -1,4 +1,4 @@
-/* $Id: vkatCommon.cpp 90964 2021-08-27 17:00:41Z vboxsync $ */
+/* $Id: vkatCommon.cpp 90978 2021-08-29 07:34:32Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) - Self test code.
  */
@@ -1011,7 +1011,7 @@ int audioTestEnvInit(PAUDIOTESTENV pTstEnv, PAUDIOTESTDRVSTACK pDrvStack)
                                                "host -> valkit", &ValKitTcpOpts);
                 if (RT_FAILURE(rc))
                     RTTestPrintf(g_hTest, RTTESTLVL_ALWAYS, "Unable to connect to the Validation Kit audio driver!\n"
-                                                            "There could be mulitple reasons:\n\n"
+                                                            "There could be multiple reasons:\n\n"
                                                             "    - Wrong host being used\n"
                                                             "    - VirtualBox host version is too old\n"
                                                             "    - Audio debug mode is not enabled\n"
