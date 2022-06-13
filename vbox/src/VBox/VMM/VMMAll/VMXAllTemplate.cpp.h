@@ -1,4 +1,4 @@
-/* $Id: VMXAllTemplate.cpp.h 92626 2021-11-29 12:32:58Z vboxsync $ */
+/* $Id: VMXAllTemplate.cpp.h 92745 2021-12-03 20:38:46Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Code template for our own hypervisor and the NEM darwin backend using Apple's Hypervisor.framework.
  */
@@ -10651,20 +10651,21 @@ static VBOXSTRICTRC vmxHCExitXcptBP(PVMCPUCC pVCpu, PVMXTRANSIENT pVmxTransient)
     int rc = vmxHCImportGuestState(pVCpu, pVmxTransient->pVmcsInfo, HMVMX_CPUMCTX_EXTRN_ALL);
     AssertRCReturn(rc, rc);
 
+    VBOXSTRICTRC rcStrict;
     if (!pVmxTransient->fIsNestedGuest)
-        rc = DBGFTrap03Handler(pVCpu->CTX_SUFF(pVM), pVCpu, CPUMCTX2CORE(&pVCpu->cpum.GstCtx));
+        rcStrict = DBGFTrap03Handler(pVCpu->CTX_SUFF(pVM), pVCpu, CPUMCTX2CORE(&pVCpu->cpum.GstCtx));
     else
-        rc = VINF_EM_RAW_GUEST_TRAP;
+        rcStrict = VINF_EM_RAW_GUEST_TRAP;
 
-    if (rc == VINF_EM_RAW_GUEST_TRAP)
+    if (rcStrict == VINF_EM_RAW_GUEST_TRAP)
     {
         vmxHCSetPendingEvent(pVCpu, VMX_ENTRY_INT_INFO_FROM_EXIT_INT_INFO(pVmxTransient->uExitIntInfo),
                                pVmxTransient->cbExitInstr, pVmxTransient->uExitIntErrorCode, 0 /* GCPtrFaultAddress */);
-        rc = VINF_SUCCESS;
+        rcStrict = VINF_SUCCESS;
     }
 
-    Assert(rc == VINF_SUCCESS || rc == VINF_EM_DBG_BREAKPOINT);
-    return rc;
+    Assert(rcStrict == VINF_SUCCESS || rcStrict == VINF_EM_DBG_BREAKPOINT);
+    return rcStrict;
 }
 
 

@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 92626 2021-11-29 12:32:58Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 92745 2021-12-03 20:38:46Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -7510,7 +7510,7 @@ HMSVM_EXIT_DECL hmR0SvmExitXcptBP(PVMCPUCC pVCpu, PSVMTRANSIENT pSvmTransient)
     STAM_COUNTER_INC(&pVCpu->hm.s.StatExitGuestBP);
 
     PCPUMCTX pCtx = &pVCpu->cpum.GstCtx;
-    int rc = DBGFTrap03Handler(pVCpu->CTX_SUFF(pVM), pVCpu, CPUMCTX2CORE(pCtx));
+    VBOXSTRICTRC rc = DBGFTrap03Handler(pVCpu->CTX_SUFF(pVM), pVCpu, CPUMCTX2CORE(pCtx));
     if (rc == VINF_EM_RAW_GUEST_TRAP)
     {
         SVMEVENT Event;
