@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-win.cpp 92735 2021-12-03 16:03:24Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-win.cpp 92739 2021-12-03 16:16:14Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Win32 host.
  */
@@ -193,19 +193,19 @@ static int vboxClipboardSvcWinDataRead(PSHCLCONTEXT pCtx, UINT uFormat, void **p
         return VERR_NOT_SUPPORTED;
     }
 
-    SHCLEVENTID idEvent = 0;
-    int rc = ShClSvcGuestDataRequest(pCtx->pClient, fFormat, &idEvent);
+    PSHCLEVENT pEvent;
+    int rc = ShClSvcGuestDataRequest(pCtx->pClient, fFormat, &pEvent);
     if (RT_SUCCESS(rc))
     {
         PSHCLEVENTPAYLOAD pPayload;
-        rc = ShClEventWait(&pCtx->pClient->EventSrc, idEvent, 30 * 1000, &pPayload);
+        rc = ShClEventWait(pEvent, 30 * 1000, &pPayload);
         if (RT_SUCCESS(rc))
         {
             *ppvData = pPayload ? pPayload->pvData : NULL;
             *pcbData = pPayload ? pPayload->cbData : 0;
         }
 
-        ShClEventRelease(&pCtx->pClient->EventSrc, idEvent);
+        ShClEventRelease(pEvent);
     }
 
     if (RT_FAILURE(rc))
