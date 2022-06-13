@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 93963 2022-02-28 08:39:08Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 94011 2022-03-01 05:28:19Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -6634,9 +6634,6 @@ static void hmR0VmxPostRunGuest(PVMCPUCC pVCpu, PVMXTRANSIENT pVmxTransient, int
     /*
      * Check if VMLAUNCH/VMRESUME succeeded.
      * If this failed, we cause a guru meditation and cease further execution.
-     *
-     * However, if we are executing a nested-guest we might fail if we use the
-     * fast path rather than fully emulating VMLAUNCH/VMRESUME instruction in IEM.
      */
     if (RT_LIKELY(rcVMRun == VINF_SUCCESS))
     {
