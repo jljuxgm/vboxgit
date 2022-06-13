@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 93115 2022-01-01 11:31:46Z vboxsync $
+# $Id: Makefile.kmk 93170 2022-01-11 00:50:22Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -73,6 +73,7 @@ PROGRAMS += \
 	tstFork \
 	tstRTFsQueries \
 	tstRTFilesystem \
+	tstRTExprEval\
 	tstRTGetOpt \
 	tstRTGetOptArgv \
 	tstHandleTable \
@@ -387,6 +388,9 @@ tstRTFsQueries_SOURCES = tstRTFsQueries.cpp
 
 tstRTFilesystem_TEMPLATE = VBOXR3TSTEXE
 tstRTFilesystem_SOURCES = tstRTFilesystem.cpp
+
+tstRTExprEval_TEMPLATE = VBOXR3TSTEXE
+tstRTExprEval_SOURCES = tstRTExprEval.cpp
 
 tstRTGetOpt_TEMPLATE = VBOXR3TSTEXE
 tstRTGetOpt_SOURCES = tstRTGetOpt.cpp

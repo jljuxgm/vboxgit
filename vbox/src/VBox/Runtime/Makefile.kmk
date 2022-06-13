@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 93115 2022-01-01 11:31:46Z vboxsync $
+# $Id: Makefile.kmk 93170 2022-01-11 00:50:22Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -517,6 +517,7 @@ RuntimeR3_SOURCES       = \
 	common/misc/assert.cpp \
 	common/misc/buildconfig.cpp \
 	common/misc/cidr.cpp \
+	common/misc/expreval.cpp \
 	common/misc/getopt.cpp \
 	common/misc/getoptargv.cpp \
 	common/misc/handle.cpp \
