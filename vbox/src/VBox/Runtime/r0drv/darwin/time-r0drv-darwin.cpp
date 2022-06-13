@@ -1,4 +1,4 @@
-/* $Id: time-r0drv-darwin.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: time-r0drv-darwin.cpp 92621 2021-11-29 10:05:23Z vboxsync $ */
 /** @file
  * IPRT - Time, Ring-0 Driver, Darwin.
  */
@@ -93,6 +93,6 @@ RTDECL(PRTTIMESPEC) RTTimeNow(PRTTIMESPEC pTime)
     clock_nsec_t    uNanosecs;
 #endif
     clock_get_calendar_nanotime(&uSecs, &uNanosecs);
-    return RTTimeSpecSetNano(pTime, (uint64_t)uSecs * RT_NS_1SEC + uNanosecs);
+    return RTTimeSpecSetNano(pTime, (int64_t)uSecs * RT_NS_1SEC + uNanosecs);
 }
 
