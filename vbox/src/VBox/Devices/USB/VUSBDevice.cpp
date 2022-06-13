@@ -1,4 +1,4 @@
-/* $Id: VUSBDevice.cpp 89674 2021-06-14 09:43:21Z vboxsync $ */
+/* $Id: VUSBDevice.cpp 90025 2021-07-05 13:53:18Z vboxsync $ */
 /** @file
  * Virtual USB - Device.
  */
@@ -830,7 +830,7 @@ static bool vusbDevStdReqGetDescriptor(PVUSBDEV pDev, int EndPt, PVUSBSETUP pSet
                 unsigned int iIndex = (pSetup->wValue & 0xff);
                 if (iIndex >= pDev->pDescCache->pDevice->bNumConfigurations)
                 {
-                    LogFlow(("vusbDevStdReqGetDescriptor: %s: iIndex=%p >= bNumConfigurations=%d !!!\n",
+                    LogFlow(("vusbDevStdReqGetDescriptor: %s: iIndex=%u >= bNumConfigurations=%d !!!\n",
                              pDev->pUsbIns->pszName, iIndex, pDev->pDescCache->pDevice->bNumConfigurations));
                     return false;
                 }
