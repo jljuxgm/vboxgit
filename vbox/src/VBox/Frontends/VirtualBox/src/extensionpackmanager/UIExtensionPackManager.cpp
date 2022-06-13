@@ -1,4 +1,4 @@
-/* $Id: UIExtensionPackManager.cpp 90699 2021-08-16 15:12:45Z vboxsync $ */
+/* $Id: UIExtensionPackManager.cpp 91009 2021-08-30 18:24:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtensionPackManager class implementation.
  */
@@ -28,6 +28,7 @@
 #include "QITreeWidget.h"
 #include "UIActionPoolManager.h"
 #include "UICommon.h"
+#include "UIExtension.h"
 #include "UIExtensionPackManager.h"
 #include "UIExtraDataManager.h"
 #include "UIIconPool.h"
@@ -228,7 +229,7 @@ void UIExtensionPackManagerWidget::sltInstallExtensionPack()
 
     /* Install the chosen package: */
     if (!strFilePath.isEmpty())
-        uiCommon().doExtPackInstallation(strFilePath, QString(), this, NULL);
+        UIExtension::install(strFilePath, QString(), this, NULL);
 }
 
 void UIExtensionPackManagerWidget::sltUninstallExtensionPack()

@@ -1,4 +1,4 @@
-/* $Id: UICommon.h 91003 2021-08-30 15:40:14Z vboxsync $ */
+/* $Id: UICommon.h 91009 2021-08-30 18:24:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class declaration.
  */
@@ -550,19 +550,6 @@ public:
         static QString toolTip(const CUSBDeviceFilter &comFilter);
         /** Generates tool-tip for passed USB @a comWebcam. */
         static QString toolTip(const CHostVideoInputDevice &comWebcam);
-    /** @} */
-
-    /** @name COM: Extension Pack stuff.
-     * @{ */
-        /** Initiates the extension pack installation process.
-          * @param  strFilePath      Brings the extension pack file path.
-          * @param  strDigest        Brings the extension pack file digest.
-          * @param  pParent          Brings the parent dialog reference.
-          * @param  pstrExtPackName  Brings the extension pack name. */
-        void doExtPackInstallation(QString const &strFilePath,
-                                   QString const &strDigest,
-                                   QWidget *pParent,
-                                   QString *pstrExtPackName) const;
     /** @} */
 
     /** @name Display stuff.
