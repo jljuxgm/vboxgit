@@ -1,4 +1,4 @@
-/* $Id: UISettingsSelector.cpp 93990 2022-02-28 15:34:57Z vboxsync $ */
+/* $Id: UISettingsSelector.cpp 94014 2022-03-01 09:13:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISettingsSelector class implementation.
  */
@@ -18,6 +18,7 @@
 /* Qt includes: */
 #include <QAccessibleWidget>
 #include <QAction>
+#include <QActionGroup>
 #include <QHeaderView>
 #include <QLayout>
 #include <QTabWidget>

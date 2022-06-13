@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.cpp 94000 2022-02-28 22:49:53Z vboxsync $ */
+/* $Id: UIActionPool.cpp 94014 2022-03-01 09:13:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPool class implementation.
  */
@@ -16,6 +16,7 @@
  */
 
 /* Qt includes: */
+#include <QActionGroup>
 #include <QHelpEvent>
 #include <QToolTip>
 

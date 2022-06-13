@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 93990 2022-02-28 15:34:57Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 94014 2022-03-01 09:13:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -16,6 +16,7 @@
  */
 
 /* Qt includes: */
+#include <QActionGroup>
 #include <QClipboard>
 #include <QFile>
 #include <QGuiApplication>
@@ -29,7 +30,7 @@
 #ifndef VBOX_WS_WIN
 # include <QRegExp>
 #endif
-# include <QVBoxLayout>
+#include <QVBoxLayout>
 
 /* GUI includes: */
 #include "QIDialogButtonBox.h"

@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 94013 2022-03-01 09:04:44Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 94014 2022-03-01 09:13:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -16,6 +16,7 @@
  */
 
 /* Qt includes: */
+#include <QActionGroup>
 #include <QDateTime>
 #include <QDir>
 #include <QFileInfo>
