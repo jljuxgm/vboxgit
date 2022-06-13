@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: txsclient.py 94526 2022-04-08 08:17:12Z vboxsync $
+# $Id: txsclient.py 95020 2022-05-16 14:24:40Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 94526 $"
+__version__ = "$Revision: 95020 $"
 
 # Standard Python imports.
 import array;
@@ -1752,6 +1752,10 @@ class Session(TdTaskBase):
         """
         return self.startTask(cMsTimeout, fIgnoreErrors, "cpfile",
                               self.taskCopyFile, (sSrcFile, sDstFile, fMode, fFallbackOkay));
+
+    def syncCopyFile(self, sSrcFile, sDstFile, fMode = 0, cMsTimeout = 30000, fIgnoreErrors = False):
+        """Synchronous version."""
+        return self.asyncToSync(self.asyncCopyFile, sSrcFile, sDstFile, fMode, cMsTimeout, fIgnoreErrors);
 
     def asyncUploadFile(self, sLocalFile, sRemoteFile,
                         fMode = 0, fFallbackOkay = True, cMsTimeout = 30000, fIgnoreErrors = False):
