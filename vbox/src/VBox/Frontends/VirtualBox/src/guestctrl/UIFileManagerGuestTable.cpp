@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerGuestTable.cpp 93682 2022-02-10 19:08:22Z vboxsync $ */
+/* $Id: UIFileManagerGuestTable.cpp 93683 2022-02-10 19:11:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerGuestTable class implementation.
  */
@@ -302,6 +302,7 @@ void UIGuestSessionCreateWidget::setLoginWidgetsEnabled(bool fEnabled)
     if (m_pButton)
         m_pButton->setEnabled(fEnabled);
 }
+
 
 /*********************************************************************************************************************************
 *   UIGuestDirectoryDiskUsageComputer definition.                                                                                *
