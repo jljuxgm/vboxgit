@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageExpert.cpp 91368 2021-09-24 16:31:13Z vboxsync $ */
+/* $Id: UIWizardExportAppPageExpert.cpp 91460 2021-09-29 15:03:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageExpert class implementation.
  */
@@ -71,7 +71,7 @@ UIWizardExportAppPageExpert::UIWizardExportAppPageExpert(const QStringList &sele
     , m_pFormatLayout(0)
     , m_pFormatComboBoxLabel(0)
     , m_pFormatComboBox(0)
-    , m_pSettingsWidget(0)
+    , m_pSettingsWidget1(0)
     , m_pSettingsLayout1(0)
     , m_pFileSelectorLabel(0)
     , m_pFileSelector(0)
@@ -221,11 +221,11 @@ UIWizardExportAppPageExpert::UIWizardExportAppPageExpert(const QStringList &sele
                 }
 
                 /* Create settings widget: */
-                m_pSettingsWidget = new QStackedWidget;
-                if (m_pSettingsWidget)
+                m_pSettingsWidget1 = new QStackedWidget;
+                if (m_pSettingsWidget1)
                 {
                     /* Create settings pane 1: */
-                    QWidget *pSettingsPane1 = new QWidget(m_pSettingsWidget);
+                    QWidget *pSettingsPane1 = new QWidget(m_pSettingsWidget1);
                     if (pSettingsPane1)
                     {
                         /* Create settings layout 1: */
@@ -314,11 +314,11 @@ UIWizardExportAppPageExpert::UIWizardExportAppPageExpert(const QStringList &sele
                         }
 
                         /* Add into layout: */
-                        m_pSettingsWidget->addWidget(pSettingsPane1);
+                        m_pSettingsWidget1->addWidget(pSettingsPane1);
                     }
 
                     /* Create settings pane 2: */
-                    QWidget *pSettingsPane2 = new QWidget(m_pSettingsWidget);
+                    QWidget *pSettingsPane2 = new QWidget(m_pSettingsWidget1);
                     if (pSettingsPane2)
                     {
                         /* Create settings layout 2: */
@@ -403,11 +403,11 @@ UIWizardExportAppPageExpert::UIWizardExportAppPageExpert(const QStringList &sele
                         }
 
                         /* Add into layout: */
-                        m_pSettingsWidget->addWidget(pSettingsPane2);
+                        m_pSettingsWidget1->addWidget(pSettingsPane2);
                     }
 
                     /* Add into layout: */
-                    pSettingsCntLayout->addWidget(m_pSettingsWidget);
+                    pSettingsCntLayout->addWidget(m_pSettingsWidget1);
                 }
             }
 
@@ -736,7 +736,7 @@ void UIWizardExportAppPageExpert::updateFormat()
     wizard()->setFormatCloudOne(isFormatCloudOne(m_pFormatComboBox));
 
     /* Refresh settings widget state: */
-    refreshStackedWidget(m_pSettingsWidget, wizard()->isFormatCloudOne());
+    refreshStackedWidget(m_pSettingsWidget1, wizard()->isFormatCloudOne());
     refreshStackedLayout(m_pSettingsLayout, wizard()->isFormatCloudOne());
 
     /* Update export settings: */

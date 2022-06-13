@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic2.h 91368 2021-09-24 16:31:13Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic2.h 91460 2021-09-29 15:03:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic2 class declaration.
  */
@@ -219,8 +219,8 @@ private:
     /** Holds the format combo-box instance. */
     QIComboBox  *m_pFormatComboBox;
 
-    /** Holds the settings widget instance. */
-    QStackedWidget *m_pSettingsWidget;
+    /** Holds the settings widget 1 instance. */
+    QStackedWidget *m_pSettingsWidget1;
 
     /** Holds the settings layout 1. */
     QGridLayout             *m_pSettingsLayout1;
