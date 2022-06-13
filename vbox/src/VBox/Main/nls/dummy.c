@@ -1,4 +1,4 @@
-/* $Id: dummy.c 90828 2021-08-24 09:44:46Z vboxsync $ */
+/* $Id: dummy.c 91309 2021-09-20 11:01:56Z vboxsync $ */
 /** @file
  * Dummy C file for the VirtualBoxAPI NLS target.
  */
@@ -15,7 +15,7 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-int main()
+int main(void)
 {
     return 1;
 }
