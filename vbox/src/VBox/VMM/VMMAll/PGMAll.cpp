@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 91271 2021-09-16 07:42:37Z vboxsync $ */
+/* $Id: PGMAll.cpp 91345 2021-09-23 08:14:38Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -3415,7 +3415,7 @@ VMMDECL(int) PGMSetLargePageUsage(PVMCC pVM, bool fUseLargePages)
 {
     VM_ASSERT_VALID_EXT_RETURN(pVM, VERR_INVALID_VM_HANDLE);
 
-    pVM->fUseLargePages = fUseLargePages;
+    pVM->pgm.s.fUseLargePages = fUseLargePages;
     return VINF_SUCCESS;
 }
 

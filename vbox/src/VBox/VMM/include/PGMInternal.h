@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 91271 2021-09-16 07:42:37Z vboxsync $ */
+/* $Id: PGMInternal.h 91345 2021-09-23 08:14:38Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -2952,8 +2952,10 @@ typedef struct PGM
     bool                            fRestoreRomPagesOnReset;
     /** Whether to automatically clear all RAM pages on reset. */
     bool                            fZeroRamPagesOnReset;
+    /** Large page enabled flag. */
+    bool                            fUseLargePages;
     /** Alignment padding. */
-    bool                            afAlignment3[7];
+    bool                            afAlignment3[6];
 
     /** Indicates that PGMR3FinalizeMappings has been called and that further
      * PGMR3MapIntermediate calls will be rejected. */
