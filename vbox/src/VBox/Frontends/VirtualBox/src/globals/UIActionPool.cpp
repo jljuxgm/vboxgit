@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.cpp 92711 2021-12-02 16:27:04Z vboxsync $ */
+/* $Id: UIActionPool.cpp 92847 2021-12-09 12:39:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPool class implementation.
  */
@@ -1736,8 +1736,8 @@ protected:
     {
         setName(QApplication::translate("UIActionPool", "Session"));
         setShortcutScope(QApplication::translate("UIActionPool", "File Manager"));
-        setStatusTip(QApplication::translate("UIActionPool", "Open guest session panel of the file manager"));
-        setToolTip(  QApplication::translate("UIActionPool", "Open Guest Session Panel")
+        setStatusTip(QApplication::translate("UIActionPool", "Toggle guest session panel of the file manager"));
+        setToolTip(  QApplication::translate("UIActionPool", "Toggle Guest Session Panel")
                    + (shortcut().isEmpty() ? QString() : QString(" (%1)").arg(shortcut().toString())));
     }
 };
