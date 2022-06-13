@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.cpp 90790 2021-08-23 10:28:01Z vboxsync $ */
+/* $Id: SnapshotImpl.cpp 91213 2021-09-10 17:58:08Z vboxsync $ */
 /** @file
  * COM class implementation for Snapshot and SnapshotMachine in VBoxSVC.
  */
@@ -1148,6 +1148,10 @@ HRESULT SnapshotMachine::init(SessionMachine *aSessionMachine,
     rc = mBIOSSettings->initCopy(this, pMachine->mBIOSSettings);
     if (FAILED(rc)) return rc;
 
+    unconst(mTrustedPlatformModule).createObject();
+    rc = mTrustedPlatformModule->initCopy(this, pMachine->mTrustedPlatformModule);
+    if (FAILED(rc)) return rc;
+
     unconst(mRecordingSettings).createObject();
     rc = mRecordingSettings->initCopy(this, pMachine->mRecordingSettings);
     if (FAILED(rc)) return rc;
@@ -1277,6 +1281,9 @@ HRESULT SnapshotMachine::initFromSettings(Machine *aMachine,
 
     unconst(mBIOSSettings).createObject();
     mBIOSSettings->init(this);
+
+    unconst(mTrustedPlatformModule).createObject();
+    mTrustedPlatformModule->init(this);
 
     unconst(mRecordingSettings).createObject();
     mRecordingSettings->init(this);

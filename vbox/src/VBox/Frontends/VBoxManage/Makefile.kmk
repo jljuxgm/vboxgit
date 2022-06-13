@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 91204 2021-09-10 14:59:21Z vboxsync $
+# $Id: Makefile.kmk 91213 2021-09-10 17:58:08Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxManage (the cli frontend).
 #
@@ -51,7 +51,8 @@ VBOX_COMMON_VBOXMANAGE_DEFS = \
  	$(if $(VBOX_WITH_IOMMU_AMD),VBOX_WITH_IOMMU_AMD) \
  	$(if $(VBOX_WITH_IOMMU_INTEL),VBOX_WITH_IOMMU_INTEL) \
  	$(if $(VBOX_WITH_VMSVGA),VBOX_WITH_VMSVGA) \
-	$(if $(VBOX_WITH_MAIN_NLS),VBOX_WITH_MAIN_NLS)
+	$(if $(VBOX_WITH_MAIN_NLS),VBOX_WITH_MAIN_NLS) \
+ 	$(if $(VBOX_WITH_TPM),VBOX_WITH_TPM)
 
 
 ifdef VBOX_WITH_DOCS
