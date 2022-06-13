@@ -1,10 +1,10 @@
-/* $Id: UIMediumItem.h 88746 2021-04-28 13:08:53Z vboxsync $ */
+/* $Id: UIMediumItem.h 90270 2021-07-21 10:10:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumItem class declaration.
  */
 
 /*
- * Copyright (C) 2009-2020 Oracle Corporation
+ * Copyright (C) 2009-2021 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -22,9 +22,9 @@
 #endif
 
 /* GUI includes: */
+#include "QITreeWidget.h"
 #include "UIMedium.h"
 #include "UIMediumDetailsWidget.h"
-#include "QITreeWidget.h"
 
 /** QITreeWidgetItem extension representing Media Manager item. */
 class SHARED_LIBRARY_STUFF UIMediumItem : public QITreeWidgetItem, public UIDataMedium
