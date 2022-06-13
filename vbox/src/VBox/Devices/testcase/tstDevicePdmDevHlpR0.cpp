@@ -1,4 +1,4 @@
-/* $Id: tstDevicePdmDevHlpR0.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: tstDevicePdmDevHlpR0.cpp 93491 2022-01-31 09:38:35Z vboxsync $ */
 /** @file
  * tstDevice - Test framework for PDM devices/drivers, PDM fake R0 helper implementation.
  */
@@ -26,6 +26,7 @@
 #define IN_SUP_R0
 #define LINUX_VERSION_CODE 0
 #define KERNEL_VERSION(a,b,c) 1
+#include <iprt/linux/version.h>
 #include <VBox/types.h>
 #include <VBox/version.h>
 #include <VBox/vmm/pdmpci.h>

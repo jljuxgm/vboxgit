@@ -1,4 +1,4 @@
-/* $Id: tstDevice.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: tstDevice.cpp 93491 2022-01-31 09:38:35Z vboxsync $ */
 /** @file
  * tstDevice - Test framework for PDM devices/drivers
  */
@@ -995,6 +995,7 @@ int main(int argc, char *argv[])
 
         /* Register builtin tests. */
         tstDevRegisterTestcase(NULL, &g_TestcaseSsmFuzz);
+        tstDevRegisterTestcase(NULL, &g_TestcaseSsmLoadDbg);
         tstDevRegisterTestcase(NULL, &g_TestcaseIoFuzz);
 
         PCTSTDEVCFG pDevTstCfg = NULL;

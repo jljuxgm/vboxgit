@@ -1,4 +1,4 @@
-/* $Id: tstDeviceIoFuzz.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: tstDeviceIoFuzz.cpp 93491 2022-01-31 09:38:35Z vboxsync $ */
 /** @file
  * tstDeviceSsmFuzz - I/O fuzzing testcase.
  */
@@ -141,7 +141,7 @@ static DECLCALLBACK(int) tstDevIoFuzzEntry(TSTDEVDUT hDut, PCTSTDEVCFGITEM paCfg
                     fRing0 = RT_BOOL(RTRandAdvU32Ex(hRnd, 0, 1));
 
                 uint64_t u64Value = fRead ? 0 : RTRandAdvU64(hRnd);
-                uint32_t cbValue = g_aAccWidths[RTRandAdvU32Ex(hRnd, 0, 2)];
+                uint32_t cbValue = g_aAccWidths[RTRandAdvU32Ex(hRnd, 0, 3)];
 
                 if (fRead)
                 {
