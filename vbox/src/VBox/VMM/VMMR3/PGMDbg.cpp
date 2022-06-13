@@ -1,4 +1,4 @@
-/* $Id: PGMDbg.cpp 91854 2021-10-20 00:50:11Z vboxsync $ */
+/* $Id: PGMDbg.cpp 91904 2021-10-20 16:54:47Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - Debugger & Debugging APIs.
  */
@@ -1649,7 +1649,7 @@ static int pgmR3DumpHierarchyShwDoIt(PPGMR3DUMPHIERARCHYSTATE pState, uint64_t c
 {
     int             rc;
     unsigned const  cch     = pState->cchAddress;
-    uint64_t const  cr3Mask = pState->fEpt ? X86_CR3_AMD64_PAGE_MASK
+    uint64_t const  cr3Mask = pState->fEpt ? X86_CR3_AMD64_PAGE_MASK    /** @todo this should be X86_CR3_EPT_PAGE_MASK */
                             : pState->fLme ? X86_CR3_AMD64_PAGE_MASK
                             : pState->fPae ? X86_CR3_PAE_PAGE_MASK
                             :                X86_CR3_PAGE_MASK;
@@ -2328,7 +2328,7 @@ static int pgmR3DumpHierarchyGstDoIt(PPGMR3DUMPHIERARCHYSTATE pState, uint64_t c
 {
     int             rc;
     unsigned const  cch     = pState->cchAddress;
-    uint64_t const  cr3Mask = pState->fEpt ? X86_CR3_AMD64_PAGE_MASK
+    uint64_t const  cr3Mask = pState->fEpt ? X86_CR3_AMD64_PAGE_MASK    /** @todo this should be X86_CR3_EPT_PAGE_MASK */
                             : pState->fLme ? X86_CR3_AMD64_PAGE_MASK
                             : pState->fPae ? X86_CR3_PAE_PAGE_MASK
                             :                X86_CR3_PAGE_MASK;
