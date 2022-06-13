@@ -1,4 +1,4 @@
-/* $Id: VBoxClipboard.cpp 87611 2021-02-04 16:31:28Z vboxsync $ */
+/* $Id: VBoxClipboard.cpp 90054 2021-07-06 10:55:23Z vboxsync $ */
 /** @file
  * VBoxClipboard - Shared clipboard, Windows Guest Implementation.
  */
@@ -518,16 +518,7 @@ static LRESULT vboxClipboardWinProcessMsg(PSHCLCONTEXT pCtx, HWND hwnd, UINT msg
                 else
                 {
 #endif
-                    int rc = SharedClipboardWinOpen(hwnd);
-                    if (RT_SUCCESS(rc))
-                    {
-                        SharedClipboardWinClear();
-
-                        rc = SharedClipboardWinAnnounceFormats(pWinCtx, fFormats);
-                    }
-
-                    SharedClipboardWinClose();
-
+                    SharedClipboardWinClearAndAnnounceFormats(pWinCtx, fFormats, hwnd);
 #ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS
                 }
 #endif

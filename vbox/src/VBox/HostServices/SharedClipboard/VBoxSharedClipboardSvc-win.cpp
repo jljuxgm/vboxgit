@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-win.cpp 90050 2021-07-06 10:27:20Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-win.cpp 90054 2021-07-06 10:55:23Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Win32 host.
  */
@@ -382,16 +382,7 @@ static LRESULT CALLBACK vboxClipboardSvcWinWndProcMain(PSHCLCONTEXT pCtx,
             else
             {
 #endif
-                int rc = SharedClipboardWinOpen(hWnd);
-                if (RT_SUCCESS(rc))
-                {
-                    SharedClipboardWinClear();
-
-                    rc = SharedClipboardWinAnnounceFormats(pWinCtx, fFormats);
-
-                    SharedClipboardWinClose();
-                }
-
+                int rc = SharedClipboardWinClearAndAnnounceFormats(pWinCtx, fFormats, hWnd);
                 if (RT_FAILURE(rc))
                     LogRel(("Shared Clipboard: Reporting clipboard formats %#x to Windows host failed with %Rrc\n", fFormats, rc));
 
