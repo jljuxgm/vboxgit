@@ -1,4 +1,4 @@
-/* $Id: Virtio.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: Virtio.cpp 93944 2022-02-24 21:15:14Z vboxsync $ */
 /** @file
  * Virtio - Virtio Common Functions (VRing, VQueue, Virtio PCI)
  */
@@ -46,10 +46,10 @@ static void vqueueReset(PVQUEUE pQueue)
 
 static void vqueueInit(PVQUEUE pQueue, uint32_t uPageNumber)
 {
-    pQueue->VRing.addrDescriptors = (uint64_t)uPageNumber << PAGE_SHIFT;
+    pQueue->VRing.addrDescriptors = (uint64_t)uPageNumber << GUEST_PAGE_SHIFT;
     pQueue->VRing.addrAvail       = pQueue->VRing.addrDescriptors + sizeof(VRINGDESC) * pQueue->VRing.uSize;
     pQueue->VRing.addrUsed        = RT_ALIGN(pQueue->VRing.addrAvail + RT_UOFFSETOF_DYN(VRINGAVAIL, auRing[pQueue->VRing.uSize]),
-                                             PAGE_SIZE); /* The used ring must start from the next page. */
+                                             GUEST_PAGE_SIZE); /* The used ring must start from the next page. */
     pQueue->uNextAvailIndex       = 0;
     pQueue->uNextUsedIndex        = 0;
 }

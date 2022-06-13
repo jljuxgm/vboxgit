@@ -1,4 +1,4 @@
-/* $Id: DevSmc.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: DevSmc.cpp 93944 2022-02-24 21:15:14Z vboxsync $ */
 /** @file
  * DevSmc - Apple System Management Controller.
  *
@@ -35,7 +35,7 @@
 # include <iprt/asm-amd64-x86.h>
 # include <iprt/once.h>
 #endif
-#if defined(RT_OS_DARWIN) && defined(IN_RING3) && !defined(VBOX_DEVICE_STRUCT_TESTCASE) /* drags in bad PAGE_SIZE */
+#if defined(RT_OS_DARWIN) && defined(IN_RING3) && !defined(VBOX_DEVICE_STRUCT_TESTCASE) /* drags in bad page size define */
 # include "IOKit/IOKitLib.h"
 #endif
 

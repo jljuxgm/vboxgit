@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: DevAHCI.cpp 93944 2022-02-24 21:15:14Z vboxsync $ */
 /** @file
  * DevAHCI - AHCI controller device (disk and cdrom).
  *
@@ -5920,7 +5920,7 @@ static DECLCALLBACK(int) ahciR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFG
 
     /*
      * The non-fake PCI I/O regions:
-     * Note! The 4352 byte MMIO region will be rounded up to PAGE_SIZE.
+     * Note! The 4352 byte MMIO region will be rounded up to GUEST_PAGE_SIZE.
      */
     rc = PDMDevHlpPCIIORegionCreateIo(pDevIns, 4 /*iPciRegion*/, 0x10 /*cPorts*/,
                                       ahciIdxDataWrite, ahciIdxDataRead, NULL /*pvUser*/,

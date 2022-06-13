@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 93840 2022-02-18 14:10:50Z vboxsync $ */
+/* $Id: DevVGA.h 93944 2022-02-24 21:15:14Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -350,7 +350,7 @@ typedef struct VGAState
     /** Current refresh timer interval. */
     uint32_t                    cMilliesRefreshInterval;
     /** Bitmap tracking dirty pages. */
-    uint64_t                    bmDirtyBitmap[VGA_VRAM_MAX / PAGE_SIZE / 64];
+    uint64_t                    bmDirtyBitmap[VGA_VRAM_MAX / GUEST_PAGE_SIZE / 64];
 
     /** Flag indicating that there are dirty bits. This is used to optimize the handler resetting. */
     bool                        fHasDirtyBits;

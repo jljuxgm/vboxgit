@@ -1,4 +1,4 @@
-# $Id: .scm-settings 93115 2022-01-01 11:31:46Z vboxsync $
+# $Id: .scm-settings 93944 2022-02-24 21:15:14Z vboxsync $
 ## @file
 # Source code massager settings for the PDM Devices and Drivers.
 #
@@ -17,4 +17,12 @@
 
 /*.h: --guard-relative-to-dir .
 /Graphics/vmsvga_glext/*.h|/Graphics/vmsvga/*.h: --guard-relative-to-dir ''
+/*.h: --only-guest-host-page
 
+# Same as for the VMM, careful with page stuff.
+/*.h:   --only-guest-host-page --no-ASMMemPage-use
+/*.cpp: --only-guest-host-page --no-ASMMemPage-use
+/*.m:   --only-guest-host-page --no-ASMMemPage-use
+
+# This defines it's own PAGE_XXX macros.
+/PC/ipxe/src/include/ipxe/virtio-ring.h: --no-page-restrictions
