@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 93771 2022-02-15 22:58:34Z vboxsync $
+# $Id: virtual_test_sheriff.py 93772 2022-02-15 23:03:25Z vboxsync $
 # pylint: disable=line-too-long
 
 """
@@ -35,7 +35,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 93771 $"
+__version__ = "$Revision: 93772 $"
 
 
 # Standard python imports
@@ -271,11 +271,10 @@ class VirtualTestSheriffCaseFile(object):
             else:
                 try:
                     oHash = hashlib.sha256();
-                    if sys.version_info < (3, 9, 0):
-                        # Removed since Python 3.9.
-                        oHash.update(oImage.tostring()); # pylint: disable=no-member
-                    else:
+                    if hasattr(oImage, 'tobytes'):
                         oHash.update(oImage.tobytes());
+                    else:
+                        oHash.update(oImage.tostring()); # pylint: disable=no-member
                 except Exception as oXcpt:
                     self.oSheriff.vprint(u'Error hashing the uncompressed image bytes for "%s": %s' % (oFile.sFile, oXcpt,))
                 else:
@@ -341,7 +340,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
 
         if self.oConfig.sLogFile:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 93771 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 93772 $ \n');
 
 
     def eprint(self, sText):
@@ -745,7 +744,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.getFailureReason(tReason);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 93771 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 93772 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
