@@ -1,4 +1,4 @@
-/* $Id: TMAll.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: TMAll.cpp 93620 2022-02-06 09:43:00Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, all contexts.
  */
@@ -130,8 +130,8 @@ DECLINLINE(PPDMCRITSECT) tmRZTimerGetCritSect(PVMCC pVM, PTMTIMER pTimer)
 {
     if (pTimer->enmType == TMTIMERTYPE_DEV)
     {
-        RTCCUINTREG fSavedFlags = ASMAddFlags(X86_EFL_AC); /** @todo fix ring-3 pointer use */
-        PPDMDEVINSR0        pDevInsR0 = ((struct PDMDEVINSR3 *)pTimer->u.Dev.pDevIns)->pDevInsR0RemoveMe; /* !ring-3 read! */
+        RTCCUINTREG  fSavedFlags = ASMAddFlags(X86_EFL_AC); /** @todo fix ring-3 pointer use */
+        PPDMDEVINSR0 pDevInsR0   = ((struct PDMDEVINSR3 *)pTimer->u.Dev.pDevIns)->pDevInsR0RemoveMe; /* !ring-3 read! */
         ASMSetFlags(fSavedFlags);
         struct PDMDEVINSR3 *pDevInsR3 = pDevInsR0->pDevInsForR3R0;
         if (pTimer->pCritSect == pDevInsR3->pCritSectRoR3)
