@@ -1,4 +1,4 @@
-/* $Id: NEMInternal.h 93787 2022-02-16 11:07:57Z vboxsync $ */
+/* $Id: NEMInternal.h 93831 2022-02-17 16:58:36Z vboxsync $ */
 /** @file
  * NEM - Internal header file.
  */
@@ -334,6 +334,15 @@ typedef struct NEMCPU
     bool                        fUseDebugLoop : 1;
     /** Whether we're executing a single instruction. */
     bool                        fSingleInstruction : 1;
+    /** Set if we using the debug loop and wish to intercept RDTSC. */
+    bool                        fDebugWantRdTscExit : 1;
+    /** Whether we are currently executing in the debug loop.
+     *  Mainly for assertions. */
+    bool                        fUsingDebugLoop : 1;
+    /** Set if we need to clear the trap flag because of single stepping. */
+    bool                        fClearTrapFlag : 1;
+    /** Whether we're using the hyper DR7 or guest DR7. */
+    bool                        fUsingHyperDR7 : 1;
 
 #if defined(RT_OS_LINUX)
     uint8_t                     abPadding[3];

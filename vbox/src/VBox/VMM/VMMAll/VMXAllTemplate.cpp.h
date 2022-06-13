@@ -1,4 +1,4 @@
-/* $Id: VMXAllTemplate.cpp.h 93748 2022-02-15 12:20:46Z vboxsync $ */
+/* $Id: VMXAllTemplate.cpp.h 93831 2022-02-17 16:58:36Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Code template for our own hypervisor and the NEM darwin backend using Apple's Hypervisor.framework.
  */
@@ -8592,7 +8592,9 @@ HMVMX_EXIT_DECL vmxHCExitMovDRx(PVMCPUCC pVCpu, PVMXTRANSIENT pVmxTransient)
             HM_RESTORE_PREEMPT();
             VMMRZCallRing3Enable(pVCpu);
 #else
-            /** @todo */
+            CPUMR3NemActivateGuestDebugState(pVCpu);
+            Assert(CPUMIsGuestDebugStateActive(pVCpu));
+            Assert(!CPUMIsHyperDebugStateActive(pVCpu));
 #endif
 
 #ifdef VBOX_WITH_STATISTICS
@@ -10699,10 +10701,16 @@ static void vmxHCPreRunGuestDebugStateUpdate(PVMCPUCC pVCpu, PVMXTRANSIENT pVmxT
         pDbgState->fCpe1Extra   |= VMX_PROC_CTLS_USE_SECONDARY_CTLS;
     pDbgState->fCpe1Extra       &= g_HmMsrs.u.vmx.ProcCtls.n.allowed1;
     pDbgState->fCpe1Unwanted    &= ~g_HmMsrs.u.vmx.ProcCtls.n.allowed0;
-#ifndef IN_NEM_DARWIN /** @todo */
+#ifndef IN_NEM_DARWIN
     if (pVCpu->hmr0.s.fDebugWantRdTscExit != RT_BOOL(pDbgState->fCpe1Extra & VMX_PROC_CTLS_RDTSC_EXIT))
     {
         pVCpu->hmr0.s.fDebugWantRdTscExit ^= true;
+        pVmxTransient->fUpdatedTscOffsettingAndPreemptTimer = false;
+    }
+#else
+    if (pVCpu->nem.s.fDebugWantRdTscExit != RT_BOOL(pDbgState->fCpe1Extra & VMX_PROC_CTLS_RDTSC_EXIT))
+    {
+        pVCpu->nem.s.fDebugWantRdTscExit ^= true;
         pVmxTransient->fUpdatedTscOffsettingAndPreemptTimer = false;
     }
 #endif
