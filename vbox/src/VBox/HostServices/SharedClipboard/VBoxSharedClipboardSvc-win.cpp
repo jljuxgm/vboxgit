@@ -1,10 +1,10 @@
-/* $Id: VBoxSharedClipboardSvc-win.cpp 91749 2021-10-14 21:02:32Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-win.cpp 92735 2021-12-03 16:03:24Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Win32 host.
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2021 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -206,7 +206,6 @@ static int vboxClipboardSvcWinDataRead(PSHCLCONTEXT pCtx, UINT uFormat, void **p
         }
 
         ShClEventRelease(&pCtx->pClient->EventSrc, idEvent);
-        ShClEventUnregister(&pCtx->pClient->EventSrc, idEvent);
     }
 
     if (RT_FAILURE(rc))
