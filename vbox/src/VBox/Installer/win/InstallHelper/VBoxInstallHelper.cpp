@@ -1,4 +1,4 @@
-/* $Id: VBoxInstallHelper.cpp 93242 2022-01-14 22:58:11Z vboxsync $ */
+/* $Id: VBoxInstallHelper.cpp 93243 2022-01-14 23:01:46Z vboxsync $ */
 /** @file
  * VBoxInstallHelper - Various helper routines for Windows host installer.
  */
@@ -1946,5 +1946,4 @@ UINT __stdcall UninstallVBoxDrv(MSIHANDLE hModule)
 
     return ERROR_SUCCESS;
 }
-
 
