@@ -1,4 +1,4 @@
-/* $Id: VBoxX11Helper.h 89819 2021-06-21 12:49:27Z vboxsync $ */
+/* $Id: VBoxX11Helper.h 89820 2021-06-21 12:57:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBox X11 helper functions.
  */
@@ -23,6 +23,7 @@
 
 /* Qt includes: */
 #include <QString>
+#include <QVector>
 
 /* GUI includes: */
 #include "UILibraryDefs.h"
