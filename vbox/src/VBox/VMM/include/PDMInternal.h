@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 90570 2021-08-07 13:01:04Z vboxsync $ */
+/* $Id: PDMInternal.h 90634 2021-08-11 20:19:20Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -1490,6 +1490,10 @@ typedef struct PDM
     STAMCOUNTER                     StatCritSectVerrTimeout;
     STAMCOUNTER                     StatCritSectVerrInterrupted;
     STAMCOUNTER                     StatCritSectNonInterruptibleWaits;
+
+    STAMCOUNTER                     StatCritSectRwExclVerrTimeout;
+    STAMCOUNTER                     StatCritSectRwExclVerrInterrupted;
+    STAMCOUNTER                     StatCritSectRwExclNonInterruptibleWaits;
 } PDM;
 AssertCompileMemberAlignment(PDM, CritSect, 8);
 AssertCompileMemberAlignment(PDM, aTaskSets, 64);
