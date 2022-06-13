@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-linux.c 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: VBoxNetFlt-linux.c 94389 2022-03-29 07:29:57Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Linux Specific Code.
  */
@@ -1724,7 +1724,7 @@ static void vboxNetFltLinuxReportNicGsoCapabilities(PVBOXNETFLTINS pThis)
                 fGsoCapabilites |= RT_BIT_32(PDMNETWORKGSOTYPE_IPV4_TCP);
             if (fFeatures & NETIF_F_TSO6)
                 fGsoCapabilites |= RT_BIT_32(PDMNETWORKGSOTYPE_IPV6_TCP);
-            Log3(("vboxNetFltLinuxReportNicGsoCapabilities: reporting wire %s%s%s%s\n",
+            Log3(("vboxNetFltLinuxReportNicGsoCapabilities: reporting wire %s%s\n",
                   (fGsoCapabilites & RT_BIT_32(PDMNETWORKGSOTYPE_IPV4_TCP)) ? "tso " : "",
                   (fGsoCapabilites & RT_BIT_32(PDMNETWORKGSOTYPE_IPV6_TCP)) ? "tso6 " : ""));
             pThis->pSwitchPort->pfnReportGsoCapabilities(pThis->pSwitchPort, fGsoCapabilites, INTNETTRUNKDIR_WIRE);
