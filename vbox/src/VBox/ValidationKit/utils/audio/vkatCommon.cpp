@@ -1,4 +1,4 @@
-/* $Id: vkatCommon.cpp 90766 2021-08-20 17:30:57Z vboxsync $ */
+/* $Id: vkatCommon.cpp 90767 2021-08-20 17:33:14Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) - Self test code.
  */
@@ -789,9 +789,9 @@ int audioTestEnvConfigureAndStartTcpServer(PATSSERVER pSrv, PCATSCALLBACKS pCall
 /**
  * Initializes an audio test environment.
  *
+ * @returns VBox status code.
  * @param   pTstEnv             Audio test environment to initialize.
- * @param   pDrvReg             Audio driver to use.
- * @param   fWithDrvAudio       Whether to include DrvAudio in the stack or not.
+ * @param   pDrvStack           Driver stack to use.
  */
 int audioTestEnvInit(PAUDIOTESTENV pTstEnv, PAUDIOTESTDRVSTACK pDrvStack)
 {
