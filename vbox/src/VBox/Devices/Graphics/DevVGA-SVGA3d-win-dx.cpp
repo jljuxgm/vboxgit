@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-win-dx.cpp 94272 2022-03-16 14:58:00Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-win-dx.cpp 94273 2022-03-16 15:09:00Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -2774,7 +2774,7 @@ static DECLCALLBACK(int) vmsvga3dBackPowerOn(PPDMDEVINS pDevIns, PVGASTATE pThis
     int rc = dxDeviceCreate(pBackend, &pBackend->dxDevice);
     if (RT_SUCCESS(rc))
     {
-        IDXGIAdapter *pAdapter = NULL; 
+        IDXGIAdapter *pAdapter = NULL;
         HRESULT hr = pBackend->dxDevice.pDxgiFactory->EnumAdapters(0, &pAdapter);
         if (SUCCEEDED(hr))
         {
