@@ -1,4 +1,4 @@
-/* $Id: ClipUtil.cpp 92160 2021-10-30 01:40:42Z vboxsync $ */
+/* $Id: ClipUtil.cpp 92161 2021-10-30 01:42:38Z vboxsync $ */
 /** @file
  * ClipUtil - Clipboard Utility
  */
@@ -601,7 +601,7 @@ static RTEXITCODE ListClipboardContent(void)
             char szName[256] = {0};
             ULONG cchRet = WinQueryAtomName(hAtomTbl, fFormat, szName, sizeof(szName));
             if (cchRet != 0)
-                RTPrintf("#%u: %#06x - %s\n", idx, fFormat, szName);
+                RTPrintf("#%02u: %#06x - %s\n", idx, fFormat, szName);
             else
             {
                 const char *pszName = NULL;
@@ -641,7 +641,7 @@ static RTEXITCODE ListClipboardContent(void)
             WCHAR wszName[256];
             int   cchName = GetClipboardFormatNameW(fFormat, wszName, RT_ELEMENTS(wszName));
             if (cchName > 0)
-                RTPrintf("#%u: %#06x - %ls\n", idx, fFormat, wszName);
+                RTPrintf("#%02u: %#06x - %ls\n", idx, fFormat, wszName);
             else
             {
                 const char *pszName = NULL;
@@ -1524,7 +1524,7 @@ int main(int argc, char *argv[])
 
             case 'V':
             {
-                char szRev[] = "$Revision: 92160 $";
+                char szRev[] = "$Revision: 92161 $";
                 szRev[RT_ELEMENTS(szRev) - 2] = '\0';
                 RTPrintf(RTStrStrip(strchr(szRev, ':') + 1));
                 return RTEXITCODE_SUCCESS;
