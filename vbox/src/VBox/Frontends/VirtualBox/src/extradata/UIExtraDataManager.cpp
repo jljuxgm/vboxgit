@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 91109 2021-09-03 15:31:49Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 91125 2021-09-06 14:32:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -407,7 +407,7 @@ void UIChooserPaneDelegate::fetchPixmapInfo(const QModelIndex &index, QPixmap &p
 {
     /* If proper machine ID passed => return corresponding pixmap/size: */
     if (index.data(Field_ID).toUuid() != UIExtraDataManager::GlobalID)
-        pixmap = uiCommon().vmGuestOSTypePixmapDefault(index.data(Field_OsTypeID).toString(), &pixmapSize);
+        pixmap = generalIconPool().guestOSTypePixmapDefault(index.data(Field_OsTypeID).toString(), &pixmapSize);
     else
     {
         /* For global ID we return static pixmap/size: */

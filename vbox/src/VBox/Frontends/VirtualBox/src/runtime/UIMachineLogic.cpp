@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 91122 2021-09-06 13:07:59Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 91125 2021-09-06 14:32:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -1258,9 +1258,9 @@ void UIMachineLogic::prepareDock()
     pDockMenu->setAsDockMenu();
 
     /* Now the dock icon preview: */
-    QPixmap pixmap = uiCommon().vmUserPixmap(machine(), QSize(42, 42));
+    QPixmap pixmap = generalIconPool().userMachinePixmap(machine(), QSize(42, 42));
     if (pixmap.isNull())
-        pixmap = uiCommon().vmGuestOSTypePixmap(guest().GetOSTypeId(), QSize(42, 42));
+        pixmap = generalIconPool().guestOSTypePixmap(guest().GetOSTypeId(), QSize(42, 42));
     m_pDockIconPreview = new UIDockIconPreview(uisession(), pixmap);
 
     /* Should the dock-icon be updated at runtime? */

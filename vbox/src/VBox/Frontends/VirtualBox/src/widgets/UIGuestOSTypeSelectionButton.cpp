@@ -1,4 +1,4 @@
-/* $Id: UIGuestOSTypeSelectionButton.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIGuestOSTypeSelectionButton.cpp 91125 2021-09-06 14:32:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestOSTypeSelectionButton class implementation.
  */
@@ -23,6 +23,7 @@
 /* GUI includes */
 #include "UICommon.h"
 #include "UIGuestOSTypeSelectionButton.h"
+#include "UIIconPool.h"
 
 
 UIGuestOSTypeSelectionButton::UIGuestOSTypeSelectionButton(QWidget *pParent)
@@ -64,7 +65,7 @@ void UIGuestOSTypeSelectionButton::setOSTypeId(const QString &strOSTypeId)
 
 #ifndef VBOX_WS_MAC
     /* Looks ugly on the Mac: */
-    setIcon(uiCommon().vmGuestOSTypePixmapDefault(enmType.GetId()));
+    setIcon(generalIconPool().guestOSTypePixmapDefault(enmType.GetId()));
 #endif
 
     setText(enmType.GetDescription());
@@ -86,7 +87,7 @@ void UIGuestOSTypeSelectionButton::populateMenu()
         QMenu *pSubMenu = m_pMainMenu->addMenu(uiCommon().vmGuestOSFamilyDescription(strFamilyId));
         foreach (const CGuestOSType &comType, uiCommon().vmGuestOSTypeList(strFamilyId))
         {
-            QAction *pAction = pSubMenu->addAction(uiCommon().vmGuestOSTypePixmapDefault(comType.GetId()),
+            QAction *pAction = pSubMenu->addAction(generalIconPool().guestOSTypePixmapDefault(comType.GetId()),
                                                    comType.GetDescription());
             connect(pAction, &QAction::triggered,
                     m_pSignalMapper, static_cast<void(QSignalMapper::*)(void)>(&QSignalMapper::map));

@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.cpp 90967 2021-08-27 20:37:40Z vboxsync $ */
+/* $Id: UIMachineSettingsDisplay.cpp 91125 2021-09-06 14:32:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsDisplay class implementation.
  */
@@ -18,6 +18,7 @@
 /* Qt includes: */
 #include <QCheckBox>
 #include <QComboBox>
+#include <QFileInfo>
 #include <QGridLayout>
 #include <QLabel>
 #include <QLineEdit>

@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItemCloud.cpp 86922 2020-11-19 15:41:51Z vboxsync $ */
+/* $Id: UIVirtualMachineItemCloud.cpp 91125 2021-09-06 14:32:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItemCloud class implementation.
  */
@@ -268,9 +268,9 @@ void UIVirtualMachineItemCloud::recachePixmap()
     /* We are using icon corresponding to cached guest OS type: */
     if (   itemType() == UIVirtualMachineItemType_CloudFake
         && fakeCloudItemState() == UIFakeCloudVirtualMachineItemState_Loading)
-        m_pixmap = uiCommon().vmGuestOSTypePixmapDefault("Cloud", &m_logicalPixmapSize);
+        m_pixmap = generalIconPool().guestOSTypePixmapDefault("Cloud", &m_logicalPixmapSize);
     else
-        m_pixmap = uiCommon().vmGuestOSTypePixmapDefault(m_strOSTypeId, &m_logicalPixmapSize);
+        m_pixmap = generalIconPool().guestOSTypePixmapDefault(m_strOSTypeId, &m_logicalPixmapSize);
 }
 
 bool UIVirtualMachineItemCloud::isItemEditable() const
