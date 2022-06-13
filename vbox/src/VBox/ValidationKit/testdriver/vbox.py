@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 94509 2022-04-07 12:07:16Z vboxsync $
+# $Id: vbox.py 94590 2022-04-13 14:56:43Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 94509 $"
+__version__ = "$Revision: 94590 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -1127,6 +1127,9 @@ class TestDriver(base.TestDriver):                                              
                 if not os.path.isfile(sGdb): sGdb = '/usr/sfw/bin/gdb';
                 if not os.path.isfile(sGdb): sGdb = 'gdb';
                 sGdbCmdLine = '%s --args %s --pidfile %s' % (sGdb, sVBoxSVC, self.sVBoxSvcPidFile);
+                # Cool tweak to run performance analysis instead of gdb:
+                #sGdb = '/usr/bin/valgrind';
+                #sGdbCmdLine = '%s --tool=callgrind --collect-atstart=no -- %s --pidfile %s' % (sGdb, sVBoxSVC, self.sVBoxSvcPidFile);
                 reporter.log('term="%s" gdb="%s"' % (sTerm, sGdbCmdLine));
                 os.environ['SHELL'] = self.sOrgShell; # Non-working shell may cause gdb and/or the term problems.
                 ## @todo -e  is deprecated; use "-- <args>".
@@ -2637,6 +2640,27 @@ class TestDriver(base.TestDriver):                                              
                 reporter.log('Added "%s" with name "%s"' % (oVM.id, sNameOrId));
                 self.logVmInfo(oVM);
         return oVM;
+
+    def forgetTestMachine(self, oVM, fQuiet = False):
+        """
+        Forget about an already known test VM in the test VM list.
+
+        Returns True on success, False if failed.
+        """
+        try:
+            sUuid = oVM.id;
+            sName = oVM.name;
+        except:
+            reporter.errorXcpt('failed to get the UUID for VM "%s"' % (oVM,));
+            return False;
+        try:
+            self.aoVMs.remove(oVM);
+            if not fQuiet:
+                reporter.log('Removed "%s" with name "%s"' % (sUuid, sName));
+        except:
+            reporter.errorXcpt('could not find vm "%s"' % (sName,));
+            return False;
+        return True;
 
     def openSession(self, oVM):
         """
