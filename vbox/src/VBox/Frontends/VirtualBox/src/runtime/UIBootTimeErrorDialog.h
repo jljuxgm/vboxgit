@@ -1,4 +1,4 @@
-/* $Id: UIBootTimeErrorDialog.h 91657 2021-10-11 08:49:23Z vboxsync $ */
+/* $Id: UIBootTimeErrorDialog.h 91659 2021-10-11 09:06:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIBootTimeErrorDialog class declaration.
  */
@@ -40,7 +40,7 @@ class UIFilePathSelector;
 #include "CMachine.h"
 
 /** QIDialog extension providing GUI with a dialog to select an existing medium. */
-class SHARED_LIBRARY_STUFF UIBootTimeErrorDialog : public QIWithRetranslateUI<QIMainDialog>
+class UIBootTimeErrorDialog : public QIWithRetranslateUI<QIMainDialog>
 {
 
     Q_OBJECT;
