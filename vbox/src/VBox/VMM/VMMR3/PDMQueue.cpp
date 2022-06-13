@@ -1,4 +1,4 @@
-/* $Id: PDMQueue.cpp 93609 2022-02-05 19:03:08Z vboxsync $ */
+/* $Id: PDMQueue.cpp 93612 2022-02-05 19:17:17Z vboxsync $ */
 /** @file
  * PDM Queue - Transport data and tasks to EMT and R3.
  */
@@ -541,7 +541,9 @@ VMMR3_INT_DECL(int) PDMR3QueueDestroyDriver(PVM pVM, PPDMDRVINS pDrvIns)
  * Free an item.
  *
  * @param   pQueue  The queue.
- * @param   pItem   The item.
+ * @param   pbItems Where the items area starts.
+ * @param   cbItem  Item size.
+ * @param   pItem   The item to free.
  */
 DECLINLINE(void) pdmR3QueueFreeItem(PPDMQUEUE pQueue, uint8_t *pbItems, uint32_t cbItem, PPDMQUEUEITEMCORE pItem)
 {
