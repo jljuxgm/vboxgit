@@ -1,4 +1,4 @@
-/* $Id: efivarstorevfs.cpp 90114 2021-07-09 11:12:53Z vboxsync $ */
+/* $Id: efivarstorevfs.cpp 90115 2021-07-09 11:15:57Z vboxsync $ */
 /** @file
  * IPRT - Expose a EFI variable store as a Virtual Filesystem.
  */
@@ -674,7 +674,7 @@ static int rtEfiVarStore_Flush(PRTEFIVARSTORE pThis)
                 VarHdr.fAttr      = RT_H2LE_U32(pVar->fAttr);
                 VarHdr.cMonotonic = RT_H2LE_U64(pVar->cMonotonic);
                 VarHdr.idPubKey   = RT_H2LE_U32(pVar->idPubKey);
-                VarHdr.cbName     = RT_H2LE_U32(cbName);
+                VarHdr.cbName     = RT_H2LE_U32((uint32_t)cbName);
                 VarHdr.cbData     = RT_H2LE_U32(pVar->cbData);
                 RTEfiGuidFromUuid(&VarHdr.GuidVendor, &pVar->Uuid);
                 memcpy(&VarHdr.Timestamp, &pVar->EfiTimestamp, sizeof(pVar->EfiTimestamp));
