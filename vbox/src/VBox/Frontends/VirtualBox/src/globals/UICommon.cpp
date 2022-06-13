@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 90301 2021-07-23 12:47:15Z vboxsync $ */
+/* $Id: UICommon.cpp 90302 2021-07-23 13:08:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -4152,6 +4152,16 @@ void UICommon::sltHandleMediumCreated(const CMedium &comMedium)
 {
     /* Make sure we cached created medium in GUI: */
     createMedium(UIMedium(comMedium, UIMediumDeviceType_HardDisk, KMediumState_Created));
+}
+
+void UICommon::sltHandleCloudMachineAdded(const QString &strShortProviderName,
+                                          const QString &strProfileName,
+                                          const CCloudMachine &comMachine)
+{
+    /* Make sure we cached added cloud VM in GUI: */
+    notifyCloudMachineRegistered(strShortProviderName,
+                                 strProfileName,
+                                 comMachine);
 }
 
 bool UICommon::eventFilter(QObject *pObject, QEvent *pEvent)
