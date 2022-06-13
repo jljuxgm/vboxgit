@@ -1,4 +1,4 @@
-/* $Id: PGMAllGst.h 92642 2021-11-30 09:19:01Z vboxsync $ */
+/* $Id: PGMAllGst.h 92684 2021-12-02 05:54:33Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Guest Paging Template - All context code.
  */
@@ -109,11 +109,8 @@ DECLINLINE(int) PGM_GST_NAME(WalkReturnRsvdError)(PVMCPUCC pVCpu, PPGMPTWALK pWa
  *
  * @param   pVCpu       The cross context virtual CPU structure of the calling EMT.
  * @param   GCPtr       The guest virtual address to walk by.
- * @param   pWalk       The common page walk information.
- * @param   pGstWalk    The guest mode specific page walk information.
- *
- * @warning Callers must initialize @a pWalk and @a pGstWalk before calling this
- *          function.
+ * @param   pWalk       The page walk info.
+ * @param   pGstWalk    The guest mode specific page walk info.
  */
 DECLINLINE(int) PGM_GST_NAME(Walk)(PVMCPUCC pVCpu, RTGCPTR GCPtr, PPGMPTWALK pWalk, PGSTPTWALK pGstWalk)
 {
