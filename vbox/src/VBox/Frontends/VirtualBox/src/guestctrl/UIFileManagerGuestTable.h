@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerGuestTable.h 93697 2022-02-11 15:48:03Z vboxsync $ */
+/* $Id: UIFileManagerGuestTable.h 93726 2022-02-14 14:24:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerGuestTable class declaration.
  */
@@ -112,6 +112,7 @@ private:
         State_NoGuestAdditions,
         State_SessionPossible,
         State_SessionRunning,
+        State_MachinePaused,
         State_Max
     };
 
