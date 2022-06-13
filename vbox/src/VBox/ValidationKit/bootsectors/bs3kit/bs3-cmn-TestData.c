@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-TestData.c 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: bs3-cmn-TestData.c 93754 2022-02-15 14:29:56Z vboxsync $ */
 /** @file
  * BS3Kit - Test Data.
  */
@@ -102,6 +102,13 @@ char const  g_aszBs3TestUnitNames[][12] =
     "pages/s",
     "ticks/page",
     "ns/page",
+    "ps",
+    "ps/call",
+    "ps/frame",
+    "ps/occ",
+    "ps/packet",
+    "ps/rndtrp",
+    "ps/page",
 };
 
 
