@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportApp.cpp 91368 2021-09-24 16:31:13Z vboxsync $ */
+/* $Id: UIWizardExportApp.cpp 91459 2021-09-29 14:56:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportApp class implementation.
  */
@@ -45,6 +45,10 @@ UIWizardExportApp::UIWizardExportApp(QWidget *pParent,
     , m_predefinedMachineNames(predefinedMachineNames)
     , m_fFastTraverToExportOCI(fFastTraverToExportOCI)
     , m_fFormatCloudOne(false)
+    , m_enmMACAddressExportPolicy(MACAddressExportPolicy_KeepAllMACs)
+    , m_fManifestSelected(false)
+    , m_fIncludeISOsSelected(false)
+    , m_enmCloudExportMode(CloudExportMode_DoNotAsk)
 {
 #ifndef VBOX_WS_MAC
     /* Assign watermark: */
