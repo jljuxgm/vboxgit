@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 92413 2021-11-14 11:38:38Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 92446 2021-11-16 09:44:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class implementation.
  */
@@ -4347,11 +4347,14 @@ void UIMachineSettingsStorage::sltHandleMouseClick(QMouseEvent *pEvent)
     /* Make sure event is valid: */
     AssertPtrReturnVoid(pEvent);
 
-    /* Remember last mouse press position: */
-    m_mousePressPosition = pEvent->globalPos();
-
+    /* Acquire indexes: */
+    const QModelIndex currentIndex = m_pTreeViewStorage->currentIndex();
     const QModelIndex index = m_pTreeViewStorage->indexAt(pEvent->pos());
     const QRect indexRect = m_pTreeViewStorage->visualRect(index);
+
+    /* Remember last mouse press position only if we pressed current index: */
+    if (index == currentIndex)
+        m_mousePressPosition = pEvent->globalPos();
 
     /* Expander icon: */
     if (m_pModelStorage->data(index, StorageModel::R_IsController).toBool())
