@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase.cpp 91897 2021-10-20 13:42:39Z vboxsync $ */
+/* $Id: DrvHostBase.cpp 92226 2021-11-04 21:31:31Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver.
  */
@@ -858,9 +858,11 @@ static DECLCALLBACK(int) drvHostBaseLock(PPDMIMOUNT pInterface)
     if (!pThis->fLocked)
     {
         if (pThis->pfnDoLock)
+        {
             rc = pThis->pfnDoLock(pThis, true);
-        if (RT_SUCCESS(rc))
-            pThis->fLocked = true;
+            if (RT_SUCCESS(rc))
+                pThis->fLocked = true;
+        }
     }
     else
         LogFlow(("%s-%d: drvHostBaseLock: already locked\n", pThis->pDrvIns->pReg->szName, pThis->pDrvIns->iInstance));
