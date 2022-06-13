@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 92533 2021-11-21 14:18:55Z vboxsync $ */
+/* $Id: VBoxManage.h 92534 2021-11-21 17:32:22Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -74,6 +74,22 @@ struct a_CtxName \
    } \
 }
 #endif
+
+/**
+ * Defines an option with two variants, producing two RTGETOPTDEF entries.
+ *
+ * This is mainly for replacing character-soup option names like
+ * --natlocalhostreachable and --biossystemtimeoffset with more easily parsed
+ * ones, like --nat-localhost-reachable and --bios-system-time-offset, without
+ * removing the legacy name.
+ */
+#define OPT2(a_pszWordDashWord, a_pszWordSoup, a_chOptOrValue, a_fFlags) \
+    { a_pszWordDashWord, a_chOptOrValue, a_fFlags }, \
+    { a_pszWordSoup,     a_chOptOrValue, a_fFlags }
+
+/** A single option variant of OPT2 for better looking tables. */
+#define OPT1(a_pszOption, a_chOptOrValue, a_fFlags) \
+    { a_pszOption, a_chOptOrValue, a_fFlags }
 
 
 /** @name Syntax diagram category, i.e. the command.
