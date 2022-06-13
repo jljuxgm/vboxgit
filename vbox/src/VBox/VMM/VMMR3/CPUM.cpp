@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 94901 2022-05-06 18:59:14Z vboxsync $ */
+/* $Id: CPUM.cpp 94910 2022-05-08 15:42:06Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -2124,9 +2124,10 @@ VMMR3DECL(int) CPUMR3Init(PVM pVM)
                                  &cpumR3InfoHost, DBGFINFO_FLAGS_ALL_EMTS);
     DBGFR3InfoRegisterInternalEx(pVM, "cpumguestinstr",   "Displays the current guest instruction.",
                                  &cpumR3InfoGuestInstr, DBGFINFO_FLAGS_ALL_EMTS);
-    DBGFR3InfoRegisterInternal(  pVM, "cpuid",            "Displays the guest cpuid leaves.",         &cpumR3CpuIdInfo);
+    DBGFR3InfoRegisterInternal(  pVM, "cpuid",            "Displays the guest cpuid leaves.",
+                                 &cpumR3CpuIdInfo);
     DBGFR3InfoRegisterInternal(  pVM, "cpumvmxfeat",      "Displays the host and guest VMX hwvirt. features.",
-                               &cpumR3InfoVmxFeatures);
+                                 &cpumR3InfoVmxFeatures);
 
     rc = cpumR3DbgInit(pVM);
     if (RT_FAILURE(rc))
