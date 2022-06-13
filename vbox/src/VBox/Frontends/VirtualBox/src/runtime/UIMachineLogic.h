@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIMachineLogic.h 94659 2022-04-21 08:38:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -271,6 +271,9 @@ private slots:
     void sltCloseVMInformationDialogDefault() { sltCloseVMInformationDialog(true); }
     void sltShowFileManagerDialog();
     void sltCloseFileManagerDialog();
+    void sltShowLogDialog();
+    /** Handles close signal from the log viewer dialog. */
+    void sltCloseLogViewerWindow();
     void sltReset();
     void sltPause(bool fOn);
     void sltDetach();
@@ -310,9 +313,6 @@ private slots:
     void sltShowDebugStatistics();
     void sltShowDebugCommandLine();
     void sltLoggingToggled(bool);
-    void sltShowLogDialog();
-    /** Handles close signal from the log viewer dialog. */
-    void sltCloseLogViewerWindow();
     void sltShowGuestControlConsoleDialog();
     void sltCloseGuestControlConsoleDialog();
 #endif /* VBOX_WITH_DEBUGGER_GUI */
