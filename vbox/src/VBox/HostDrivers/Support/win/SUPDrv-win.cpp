@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-win.cpp 93274 2022-01-17 14:42:20Z vboxsync $ */
+/* $Id: SUPDrv-win.cpp 93325 2022-01-18 16:00:55Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Windows NT specifics.
  */
@@ -5513,9 +5513,9 @@ static NTSTATUS supdrvNtProtectInit(void)
                     {
                         /* .Version                     = */ OB_FLT_REGISTRATION_VERSION,
                         /* .OperationRegistrationCount  = */ RT_ELEMENTS(s_aObOperations),
-                        /* .Altitude.Length             = */ 0,
-                        /* .Altitude.MaximumLength      = */ 0,
-                        /* .Altitude.Buffer             = */ NULL,
+                        /* .Altitude.Length             = */ { 0,
+                        /* .Altitude.MaximumLength      = */   0,
+                        /* .Altitude.Buffer             = */   NULL },
                         /* .RegistrationContext         = */ NULL,
                         /* .OperationRegistration       = */ &s_aObOperations[0]
                     };
