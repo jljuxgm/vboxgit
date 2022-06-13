@@ -1,4 +1,4 @@
-/* $Id: SUPLib-darwin.cpp 92613 2021-11-26 21:53:47Z vboxsync $ */
+/* $Id: SUPLib-darwin.cpp 93030 2021-12-20 10:44:43Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Darwin specific parts.
  */
@@ -197,6 +197,15 @@ DECLHIDDEN(int) suplibOsInit(PSUPLIBDATA pThis, bool fPreInited, uint32_t fFlags
         return VINF_SUCCESS;
 
     /*
+     * Driverless?
+     */
+    if (fFlags & SUPR3INIT_F_DRIVERLESS)
+    {
+        pThis->fDriverless = true;
+        return VINF_SUCCESS;
+    }
+
+    /*
      * Do the job.
      */
     Assert(pThis->hDevice == (intptr_t)NIL_RTFILE);
@@ -214,6 +223,13 @@ DECLHIDDEN(int) suplibOsInit(PSUPLIBDATA pThis, bool fPreInited, uint32_t fFlags
             }
             pThis->uConnection = 0;
         }
+    }
+    if (   RT_FAILURE(rc)
+        && fFlags & SUPR3INIT_F_DRIVERLESS_MASK)
+    {
+        LogRel(("Failed to open \"%s\", rc=%Rrc - Switching to driverless mode.\n", IOCLASS_NAME, rc));
+        pThis->fDriverless = true;
+        rc = VINF_SUCCESS;
     }
 
     return rc;
