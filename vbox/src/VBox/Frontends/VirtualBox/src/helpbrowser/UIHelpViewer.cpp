@@ -1,4 +1,4 @@
-/* $Id: UIHelpViewer.cpp 90725 2021-08-18 15:58:39Z vboxsync $ */
+/* $Id: UIHelpViewer.cpp 90870 2021-08-25 11:12:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class implementation.
  */
@@ -1007,7 +1007,6 @@ void UIHelpViewer::clearOverlay()
     m_fOverlayMode = false;
     if (m_pOverlayBlurEffect)
         m_pOverlayBlurEffect->setEnabled(false);
-    emit sigOverlayModeChanged(false);
 }
 
 void UIHelpViewer::loadImageAtPosition(const QPoint &globalPosition)
@@ -1045,7 +1044,6 @@ void UIHelpViewer::loadImageAtPosition(const QPoint &globalPosition)
                 m_pOverlayBlurEffect->setEnabled(true);
             viewport()->setCursor(m_defaultCursor);
             m_fCursorChanged = false;
-            emit sigOverlayModeChanged(true);
             toggleFindInPageWidget(false);
         }
     }

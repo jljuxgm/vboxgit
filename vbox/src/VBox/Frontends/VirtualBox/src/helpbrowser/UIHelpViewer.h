@@ -1,4 +1,4 @@
-/* $Id: UIHelpViewer.h 89546 2021-06-07 12:06:58Z vboxsync $ */
+/* $Id: UIHelpViewer.h 90870 2021-08-25 11:12:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class declaration.
  */
@@ -50,7 +50,6 @@ signals:
     void sigGoHome();
     void sigAddBookmark();
     void sigZoomPercentageChanged(int iPercentage);
-    void sigOverlayModeChanged(bool fEnabled);
     void sigMouseOverImage(const QString &strImageName);
 
 public:
