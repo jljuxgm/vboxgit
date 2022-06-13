@@ -1,4 +1,4 @@
-/* $Id: UIFDCreationDialog.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIFDCreationDialog.h 93161 2022-01-10 08:38:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFDCreationDialog class declaration.
  */
@@ -83,7 +83,7 @@ private:
     /** Floppy disc sizes. */
     enum FDSize
     {
-        //FDSize_2_88M,
+        FDSize_2_88M,
         FDSize_1_44M,
         FDSize_1_2M,
         FDSize_720K,
