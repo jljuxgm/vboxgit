@@ -1,4 +1,4 @@
-/* $Id: UpdateAgentImpl.cpp 94723 2022-04-27 14:18:37Z vboxsync $ */
+/* $Id: UpdateAgentImpl.cpp 94724 2022-04-27 14:24:01Z vboxsync $ */
 /** @file
  * IUpdateAgent COM class implementations.
  */
@@ -800,12 +800,12 @@ HRESULT HostUpdateAgent::init(VirtualBox *aVirtualBox)
     mData.m_fHidden = false;
 
     const UpdateChannel_T aChannels[] =
- 	{
- 	    UpdateChannel_Stable,
- 	    UpdateChannel_All,
- 	    UpdateChannel_WithBetas
+    {
+        UpdateChannel_Stable,
+        UpdateChannel_All,
+        UpdateChannel_WithBetas
         /** @todo Add UpdateChannel_WithTesting once it's implemented on the backend. */
- 	};
+    };
     unconst(mData.m_enmChannels).assign(aChannels, aChannels + RT_ELEMENTS(aChannels));
 
     /* Set default repository. */
