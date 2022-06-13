@@ -1,4 +1,4 @@
-/* $Id: vbox_mode.c 90519 2021-08-04 13:27:10Z vboxsync $ */
+/* $Id: vbox_mode.c 90577 2021-08-09 09:57:00Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -862,7 +862,7 @@ static int vbox_cursor_set2(struct drm_crtc *crtc, struct drm_file *file_priv,
 
 #if RTLNX_VER_MIN(5,14,0)
 	ret = ttm_bo_kmap(&bo->bo, 0, bo->bo.resource->num_pages, &uobj_map);
-#elif RTLNX_VER_MIN(5,12,0)
+#elif RTLNX_VER_MIN(5,12,0) || RTLNX_RHEL_MAJ_PREREQ(8,5)
 	ret = ttm_bo_kmap(&bo->bo, 0, bo->bo.mem.num_pages, &uobj_map);
 #else
 	ret = ttm_bo_kmap(&bo->bo, 0, bo->bo.num_pages, &uobj_map);
