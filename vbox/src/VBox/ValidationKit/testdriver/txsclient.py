@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: txsclient.py 94522 2022-04-07 16:39:23Z vboxsync $
+# $Id: txsclient.py 94526 2022-04-08 08:17:12Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 94522 $"
+__version__ = "$Revision: 94526 $"
 
 # Standard Python imports.
 import array;
@@ -1091,7 +1091,7 @@ class Session(TdTaskBase):
         _ = fFallbackOkay; # Not used yet.
         # Note: If fMode is set to 0, it's up to the target OS' implementation with
         #       what a file mode the destination file gets created (i.e. via umask).
-        rc = self.sendMsg('CPFILE', (fMode, sSrcFile, sDstFile,));
+        rc = self.sendMsg('CPFILE', (int(fMode), sSrcFile, sDstFile,));
         if rc is True:
             rc = self.recvAckLogged('CPFILE');
         return rc;
