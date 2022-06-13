@@ -1,4 +1,4 @@
-/* $Id: tstSSM-2.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: tstSSM-2.cpp 94763 2022-04-29 16:36:29Z vboxsync $ */
 /** @file
  * Saved State Manager Testcase: Extract the content of a saved state.
  */
@@ -33,7 +33,7 @@
 static RTEXITCODE extractUnit(const char *pszFilename, const char *pszUnitname, const char *pszOutputFilename)
 {
     PSSMHANDLE pSSM;
-    int rc = SSMR3Open(pszFilename, 0, &pSSM);
+    int rc = SSMR3Open(pszFilename, NULL /*pStreamOps*/, NULL /*pvStreamOps*/, 0, &pSSM);
     RTEXITCODE rcExit = RTEXITCODE_FAILURE;
     if (RT_SUCCESS(rc))
     {

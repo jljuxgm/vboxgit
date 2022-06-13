@@ -1,4 +1,4 @@
-/* $Id: DisplayUtils.cpp 93444 2022-01-26 18:01:15Z vboxsync $ */
+/* $Id: DisplayUtils.cpp 94763 2022-04-29 16:36:29Z vboxsync $ */
 /** @file
  * Implementation of IDisplay helpers, currently only used in VBoxSVC.
  */
@@ -40,7 +40,8 @@ int readSavedDisplayScreenshot(const Utf8Str &strStateFilePath, uint32_t u32Type
     uint32_t u32Height = 0;
 
     PSSMHANDLE pSSM;
-    int vrc = SSMR3Open(strStateFilePath.c_str(), 0 /*fFlags*/, &pSSM);
+    int vrc = SSMR3Open(strStateFilePath.c_str(), NULL /*pStreamOps*/, NULL /*pvStreamOps*/,
+                        0 /*fFlags*/, &pSSM);
     if (RT_SUCCESS(vrc))
     {
         uint32_t uVersion;
@@ -156,7 +157,8 @@ int readSavedGuestScreenInfo(const Utf8Str &strStateFilePath, uint32_t u32Screen
     }
 
     PSSMHANDLE pSSM;
-    int vrc = SSMR3Open(strStateFilePath.c_str(), 0 /*fFlags*/, &pSSM);
+    int vrc = SSMR3Open(strStateFilePath.c_str(), NULL /*pStreamOps*/, NULL /*pvStreamOps*/,
+                        0 /*fFlags*/, &pSSM);
     if (RT_SUCCESS(vrc))
     {
         uint32_t uVersion;
