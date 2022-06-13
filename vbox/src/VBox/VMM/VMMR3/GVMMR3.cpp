@@ -1,4 +1,4 @@
-/* $Id: GVMMR3.cpp 92229 2021-11-05 00:52:57Z vboxsync $ */
+/* $Id: GVMMR3.cpp 92231 2021-11-05 00:55:27Z vboxsync $ */
 /** @file
  * GVMM - Global VM Manager, ring-3 request wrappers..
  */
@@ -24,10 +24,10 @@
 #include <VBox/vmm/vmm.h>
 #include <VBox/vmm/vmcc.h>
 #include <VBox/sup.h>
-#include <VBox/err.h>
 #include <VBox/param.h>
 
 #include <iprt/assert.h>
+#include <iprt/errcore.h>
 #include <VBox/log.h>
 #include <iprt/mem.h>
 #include <iprt/string.h>
