@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 94590 2022-04-13 14:56:43Z vboxsync $
+# $Id: vbox.py 94596 2022-04-13 21:41:11Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 94590 $"
+__version__ = "$Revision: 94596 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -1129,7 +1129,8 @@ class TestDriver(base.TestDriver):                                              
                 sGdbCmdLine = '%s --args %s --pidfile %s' % (sGdb, sVBoxSVC, self.sVBoxSvcPidFile);
                 # Cool tweak to run performance analysis instead of gdb:
                 #sGdb = '/usr/bin/valgrind';
-                #sGdbCmdLine = '%s --tool=callgrind --collect-atstart=no -- %s --pidfile %s' % (sGdb, sVBoxSVC, self.sVBoxSvcPidFile);
+                #sGdbCmdLine = '%s --tool=callgrind --collect-atstart=no -- %s --pidfile %s' \
+                #    % (sGdb, sVBoxSVC, self.sVBoxSvcPidFile);
                 reporter.log('term="%s" gdb="%s"' % (sTerm, sGdbCmdLine));
                 os.environ['SHELL'] = self.sOrgShell; # Non-working shell may cause gdb and/or the term problems.
                 ## @todo -e  is deprecated; use "-- <args>".
