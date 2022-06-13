@@ -1,4 +1,4 @@
-/* $Id: tstRTExprEval.cpp 93178 2022-01-11 08:28:01Z vboxsync $ */
+/* $Id: tstRTExprEval.cpp 93187 2022-01-11 20:29:44Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTExprEval
  */
@@ -99,6 +99,13 @@ static void tstBasic(void)
     RTTESTI_CHECK_RC(RTExprEvalToBool(hExprEval, RT_STR_TUPLE("defined(NO_SUCH_VARIABLE)"), &fResult, NULL), VINF_SUCCESS);
     CHECK_fResult(false);
     g_fQueryVariableExpected = false;
+
+    RTTESTI_CHECK_RC(RTExprEvalToBool(hExprEval, RT_STR_TUPLE("1.0.1 vle 2.0"), &fResult, NULL), VINF_SUCCESS);
+    CHECK_fResult(true);
+    RTTESTI_CHECK_RC(RTExprEvalToBool(hExprEval, RT_STR_TUPLE("1.0.1 vle 1.0"), &fResult, NULL), VINF_SUCCESS);
+    CHECK_fResult(false);
+    RTTESTI_CHECK_RC(RTExprEvalToBool(hExprEval, RT_STR_TUPLE("1.0.1 vle 1.0.1"), &fResult, NULL), VINF_SUCCESS);
+    CHECK_fResult(true);
 
     int64_t iResult;
 #define CHECK_iResult(a_iExpect) do { \
