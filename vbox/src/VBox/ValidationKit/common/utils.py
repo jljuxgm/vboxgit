@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: utils.py 94123 2022-03-08 13:51:26Z vboxsync $
+# $Id: utils.py 94244 2022-03-15 11:59:37Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 94123 $"
+__version__ = "$Revision: 94244 $"
 
 
 # Standard Python imports.
@@ -674,6 +674,15 @@ def processPopenSafe(*aPositionalArgs, **dKeywordArgs):
             dKeywordArgs['creationflags'] = subprocess.CREATE_NEW_PROCESS_GROUP;
     return subprocess.Popen(*aPositionalArgs, **dKeywordArgs);  # pylint: disable=consider-using-with
 
+def processStart(*aPositionalArgs, **dKeywordArgs):
+    """
+    Wrapper around subprocess.Popen to deal with its absence in older
+    python versions.
+    Returns process object on success which can be worked on.
+    """
+    _processFixPythonInterpreter(aPositionalArgs, dKeywordArgs);
+    return processPopenSafe(*aPositionalArgs, **dKeywordArgs);
+
 def processCall(*aPositionalArgs, **dKeywordArgs):
     """
     Wrapper around subprocess.call to deal with its absence in older
@@ -682,8 +691,7 @@ def processCall(*aPositionalArgs, **dKeywordArgs):
     """
     assert dKeywordArgs.get('stdout') is None;
     assert dKeywordArgs.get('stderr') is None;
-    _processFixPythonInterpreter(aPositionalArgs, dKeywordArgs);
-    oProcess = processPopenSafe(*aPositionalArgs, **dKeywordArgs);
+    oProcess = processStart(*aPositionalArgs, **dKeywordArgs);
     return oProcess.wait();
 
 def processOutputChecked(*aPositionalArgs, **dKeywordArgs):
@@ -796,6 +804,15 @@ def _sudoFixArguments(aPositionalArgs, dKeywordArgs, fInitialEnv = True):
             aPositionalArgs = (asArgs,) + aPositionalArgs[1:];
     return None;
 
+
+def sudoProcessStart(*aPositionalArgs, **dKeywordArgs):
+    """
+    sudo (or similar) + subprocess.Popen,
+    returning the process object on success.
+    """
+    _processFixPythonInterpreter(aPositionalArgs, dKeywordArgs);
+    _sudoFixArguments(aPositionalArgs, dKeywordArgs);
+    return processStart(*aPositionalArgs, **dKeywordArgs);
 
 def sudoProcessCall(*aPositionalArgs, **dKeywordArgs):
     """

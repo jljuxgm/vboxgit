@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tdAudioTest.py 94243 2022-03-15 11:45:03Z vboxsync $
+# $Id: tdAudioTest.py 94244 2022-03-15 11:59:37Z vboxsync $
 
 """
 AudioTest test driver which invokes the VKAT (Validation Kit Audio Test)
@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 94243 $"
+__version__ = "$Revision: 94244 $"
 
 # Standard Python imports.
 from datetime import datetime
@@ -314,7 +314,7 @@ class tdAudioTest(vbox.TestDriver):
                 return False;
 
             iPid = oProcess.pid;
-            self.pidFileAdd(iPid);
+            self.pidFileAdd(sWhat, iPid);
 
             iRc  = 0;
 
@@ -390,7 +390,7 @@ class tdAudioTest(vbox.TestDriver):
                 self.wait(1);
             reporter.log2('Thread returned exit code for "%s": %d' % (sWhat, self.iThreadHstProcRc));
         except:
-            self.logXcpt('Starting thread for "%s" failed' % (sWhat,));
+            reporter.logXcpt('Starting thread for "%s" failed' % (sWhat,));
 
         return self.iThreadHstProcRc == 0;
 
