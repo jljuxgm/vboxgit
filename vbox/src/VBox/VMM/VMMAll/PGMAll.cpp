@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 91904 2021-10-20 16:54:47Z vboxsync $ */
+/* $Id: PGMAll.cpp 91986 2021-10-22 03:21:40Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -3825,4 +3825,21 @@ VMMDECL(unsigned) PGMAssertCR3(PVMCC pVM, PVMCPUCC pVCpu, uint64_t cr3, uint64_t
     return cErrors;
 }
 #endif /* VBOX_STRICT */
+
+
+#ifdef VBOX_WITH_NESTED_HWVIRT_VMX_EPT
+/**
+ * Updates PGM's copy of the guest's EPT pointer.
+ *
+ * @param   pVCpu       The cross context virtual CPU structure.
+ * @param   uEptPtr     The EPT pointer.
+ *
+ * @remarks This can be called as part of VM-entry so we might be in the midst of
+ *          switching to VMX non-root mode.
+ */
+VMM_INT_DECL(void) PGMSetGuestEptPtr(PVMCPUCC pVCpu, uint64_t uEptPtr)
+{
+    pVCpu->pgm.s.uEptPtr = uEptPtr;
+}
+#endif
 
