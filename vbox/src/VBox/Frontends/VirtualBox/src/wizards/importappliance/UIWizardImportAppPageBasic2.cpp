@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageBasic2.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIWizardImportAppPageBasic2.cpp 91561 2021-10-05 10:15:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageBasic2 class implementation.
  */
@@ -72,69 +72,58 @@ UIWizardImportAppPageBasic2::UIWizardImportAppPageBasic2(const QString &strFileN
     QVBoxLayout *pMainLayout = new QVBoxLayout(this);
     if (pMainLayout)
     {
-        /* Create label: */
+        /* Prepare label: */
         m_pLabel = new QIRichTextLabel(this);
         if (m_pLabel)
-        {
-            /* Add into layout: */
             pMainLayout->addWidget(m_pLabel);
-        }
 
-        /* Create settings container layout: */
+        /* Prepare settings container layout: */
         m_pSettingsCntLayout = new QStackedLayout;
         if (m_pSettingsCntLayout)
         {
-            /* Create appliance widget container: */
+            /* Prepare appliance widget container: */
             QWidget *pApplianceWidgetCnt = new QWidget(this);
             if (pApplianceWidgetCnt)
             {
-                /* Create appliance widget layout: */
+                /* Prepare appliance widget layout: */
                 QVBoxLayout *pApplianceWidgetLayout = new QVBoxLayout(pApplianceWidgetCnt);
                 if (pApplianceWidgetLayout)
                 {
                     pApplianceWidgetLayout->setContentsMargins(0, 0, 0, 0);
 
-                    /* Create appliance widget: */
+                    /* Prepare appliance widget: */
                     m_pApplianceWidget = new UIApplianceImportEditorWidget(pApplianceWidgetCnt);
                     if (m_pApplianceWidget)
                     {
                         m_pApplianceWidget->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::MinimumExpanding);
                         m_pApplianceWidget->setFile(strFileName);
-
-                        /* Add into layout: */
                         pApplianceWidgetLayout->addWidget(m_pApplianceWidget);
                     }
 
-                    /* Create certificate label: */
-                    m_pCertLabel = new QLabel(QString(), pApplianceWidgetCnt);
+                    /* Prepare certificate label: */
+                    m_pCertLabel = new QLabel(pApplianceWidgetCnt);
                     if (m_pCertLabel)
-                    {
-                        /* Add into layout: */
                         pApplianceWidgetLayout->addWidget(m_pCertLabel);
-                    }
                 }
 
                 /* Add into layout: */
                 m_pSettingsCntLayout->addWidget(pApplianceWidgetCnt);
             }
 
-            /* Create form editor container: */
+            /* Prepare form editor container: */
             QWidget *pFormEditorCnt = new QWidget(this);
             if (pFormEditorCnt)
             {
-                /* Create form editor layout: */
+                /* Prepare form editor layout: */
                 QVBoxLayout *pFormEditorLayout = new QVBoxLayout(pFormEditorCnt);
                 if (pFormEditorLayout)
                 {
                     pFormEditorLayout->setContentsMargins(0, 0, 0, 0);
 
-                    /* Create form editor widget: */
+                    /* Prepare form editor widget: */
                     m_pFormEditor = new UIFormEditorWidget(pFormEditorCnt);
                     if (m_pFormEditor)
-                    {
-                        /* Add into layout: */
                         pFormEditorLayout->addWidget(m_pFormEditor);
-                    }
                 }
 
                 /* Add into layout: */
