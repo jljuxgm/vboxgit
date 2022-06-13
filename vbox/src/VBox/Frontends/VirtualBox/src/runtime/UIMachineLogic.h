@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 90878 2021-08-25 12:05:26Z vboxsync $ */
+/* $Id: UIMachineLogic.h 90883 2021-08-25 13:49:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -150,8 +150,6 @@ public:
     void shutdown();
     /** Power off VM, then close Runtime UI. */
     void powerOff(bool fDiscardingState);
-    /** Close Runtime UI. */
-    void closeRuntimeUI();
 
     /* API: 3D overlay visibility stuff: */
     virtual void notifyAbout3DOverlayVisibilityChange(bool fVisible);
@@ -354,9 +352,6 @@ private slots:
 
     /** Show Global Preferences. */
     void sltShowGlobalPreferences();
-
-    /** Close Runtime UI. */
-    void sltCloseRuntimeUI() { closeRuntimeUI(); }
 
     /** Handles request for visual state change. */
     void sltHandleVisualStateChange();

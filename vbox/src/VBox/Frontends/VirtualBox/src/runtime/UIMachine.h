@@ -1,4 +1,4 @@
-/* $Id: UIMachine.h 88633 2021-04-21 12:43:05Z vboxsync $ */
+/* $Id: UIMachine.h 90883 2021-08-25 13:49:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachine class declaration.
  */
@@ -77,7 +77,9 @@ public:
     /** Returns requested visual-state to be entered when possible. */
     UIVisualStateType requestedVisualState() const;
 
-    /** Close Runtime UI. */
+public slots:
+
+    /** Closes Runtime UI. */
     void closeRuntimeUI();
 
 private slots:

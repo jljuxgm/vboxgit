@@ -1,4 +1,4 @@
-/* $Id: UISession.h 90878 2021-08-25 12:05:26Z vboxsync $ */
+/* $Id: UISession.h 90883 2021-08-25 13:49:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -344,12 +344,13 @@ public slots:
     /** Defines @a iMouseState. */
     void setMouseState(int iMouseState) { m_iMouseState = iMouseState; emit sigMouseStateChange(m_iMouseState); }
 
+    /** Closes Runtime UI. */
+    void closeRuntimeUI();
+
 private slots:
 
     /** Detaches COM. */
     void sltDetachCOM();
-    /** Close Runtime UI. */
-    void sltCloseRuntimeUI();
 
 #ifdef RT_OS_DARWIN
     /** Mac OS X: Handles menu-bar configuration-change. */
