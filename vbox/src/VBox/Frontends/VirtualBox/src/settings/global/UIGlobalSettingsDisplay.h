@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsDisplay.h 89688 2021-06-14 17:10:09Z vboxsync $ */
+/* $Id: UIGlobalSettingsDisplay.h 89908 2021-06-25 09:45:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsDisplay class declaration.
  */
@@ -96,8 +96,10 @@ private:
         QLabel                         *m_pLabelMachineWindows;
         /** Holds the 'activate on mouse hover' check-box instance. */
         QCheckBox                      *m_pCheckBoxActivateOnMouseHover;
+#if defined(VBOX_WS_WIN) || defined(VBOX_WS_X11)
         /** Holds the 'disable host screen saver' check-box instance. */
         QCheckBox                      *m_pCheckBoxDisableHostScreenSaver;
+#endif
     /** @} */
 };
 
