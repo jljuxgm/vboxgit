@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: PGMPhys.cpp 93171 2022-01-11 00:59:10Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -1699,7 +1699,7 @@ static int pgmR3PhysRegisterHighRamChunk(PVM pVM, RTGCPHYS GCPhys, uint32_t cRam
     int rc = SUPR3PageAllocEx(cChunkPages, 0 /*fFlags*/, &pvChunk, &R0PtrChunk, paChunkPages);
     if (RT_SUCCESS(rc))
     {
-        Assert(R0PtrChunk != NIL_RTR0PTR);
+        Assert(R0PtrChunk != NIL_RTR0PTR || PGM_IS_IN_NEM_MODE(pVM));
         memset(pvChunk, 0, cChunkPages << PAGE_SHIFT);
 
         PPGMRAMRANGE pNew = (PPGMRAMRANGE)pvChunk;
@@ -2796,7 +2796,7 @@ static int pgmR3PhysMmio2Create(PVM pVM, PPDMDEVINS pDevIns, uint32_t iSubDev, u
             rc = SUPR3PageAllocEx(cChunkPages, 0 /*fFlags*/, &pvChunk, &R0PtrChunk, paChunkPages);
             AssertLogRelMsgRCBreakStmt(rc, ("rc=%Rrc, cChunkPages=%#zx\n", rc, cChunkPages), RTMemTmpFree(paChunkPages));
 
-            Assert(R0PtrChunk != NIL_RTR0PTR);
+            Assert(R0PtrChunk != NIL_RTR0PTR || PGM_IS_IN_NEM_MODE(pVM));
             memset(pvChunk, 0, cChunkPages << PAGE_SHIFT);
 
             pNew = (PPGMREGMMIO2RANGE)pvChunk;
