@@ -1,4 +1,4 @@
-/* $Id: tstRTR0Timer.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: tstRTR0Timer.h 92825 2021-12-08 15:32:59Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Timers, common header.
  */
@@ -61,6 +61,8 @@ typedef enum TSTRTR0TIMER
     TSTRTR0TIMER_PERIODIC_OMNI_HIRES,
     TSTRTR0TIMER_LATENCY_OMNI,
     TSTRTR0TIMER_LATENCY_OMNI_HIRES,
+    TSTRTR0TIMER_ONE_SHOT_RESOLUTION,
+    TSTRTR0TIMER_ONE_SHOT_RESOLUTION_HIRES,
     TSTRTR0TIMER_END
 } TSTRTR0TIMER;
 
@@ -76,6 +78,7 @@ typedef enum TSTRTR0TIMER
      || (uOperation) == TSTRTR0TIMER_PERIODIC_SPECIFIC_HIRES \
      || (uOperation) == TSTRTR0TIMER_PERIODIC_OMNI_HIRES \
      || (uOperation) == TSTRTR0TIMER_LATENCY_OMNI_HIRES \
+     || (uOperation) == TSTRTR0TIMER_ONE_SHOT_RESOLUTION_HIRES \
     )
 
 #endif /* !IPRT_INCLUDED_SRC_testcase_tstRTR0Timer_h */
