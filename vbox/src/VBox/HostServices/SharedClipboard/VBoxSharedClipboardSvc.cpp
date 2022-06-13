@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc.cpp 90238 2021-07-19 13:48:09Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc.cpp 90267 2021-07-20 20:51:42Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Host service entry points.
  */
@@ -2725,7 +2725,7 @@ extern "C" DECLCALLBACK(DECLEXPORT(int)) VBoxHGCMSvcLoad(VBOXHGCMSVCFNTABLE *pTa
             pTable->idxLegacyClientCategory = HGCM_CLIENT_CATEGORY_ROOT;
 
             /* Limit the number of clients to 128 in each category (should be enough),
-               but set kernel clients to 1 (zero would be default). */
+               but set kernel clients to 1. */
             for (uintptr_t i = 0; i < RT_ELEMENTS(pTable->acMaxClients); i++)
                 pTable->acMaxClients[i] = 128;
             pTable->acMaxClients[HGCM_CLIENT_CATEGORY_KERNEL] = 1;
