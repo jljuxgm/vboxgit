@@ -16,7 +16,7 @@
 <refentry id="vboxmanage-debugvm" lang="en">
 
   <refentryinfo>
-    <pubdate>$Date: 2021-06-15 17:54:12 +0800 (Tue, 15 Jun 2021) $</pubdate>
+    <pubdate>$Date: 2021-06-26 02:35:48 +0800 (Sat, 26 Jun 2021) $</pubdate>
     <title>VBoxManage debugvm</title>
   </refentryinfo>
 
@@ -99,7 +99,7 @@
       <arg choice="req"><replaceable>uuid|vmname</replaceable></arg>
       <arg choice="plain">setregisters</arg>
       <arg>--cpu=<replaceable>id</replaceable></arg>
-      <arg rep="repeat"><replaceable>reg-set.reg-name=value</replaceable></arg>
+      <arg rep="repeat"><replaceable>reg-set.reg-name</replaceable>=<replaceable>value</replaceable></arg>
     </cmdsynopsis>
     <cmdsynopsis id="synopsis-vboxmanage-debugvm-show">
       <command>VBoxManage debugvm</command>

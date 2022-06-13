@@ -19,7 +19,7 @@
 ]>
 <refentry id="vboxmanage-snapshot" lang="en">
   <refentryinfo>
-    <pubdate>March 2019</pubdate>
+    <pubdate>$Date: 2021-06-26 02:35:48 +0800 (Sat, 26 Jun 2021) $</pubdate>
     <title>VBoxManage snapshot</title>
   </refentryinfo>
 
@@ -103,7 +103,7 @@
 
       <arg choice="plain">list</arg>
 
-      <group choice="opt"><arg choice="opt">--details</arg><arg choice="opt">--machinereadable</arg></group>
+      <group><arg>--details</arg><arg>--machinereadable</arg></group>
     </cmdsynopsis>
 
     <cmdsynopsis id="synopsis-vboxmanage-snapshot-showvminfo">
