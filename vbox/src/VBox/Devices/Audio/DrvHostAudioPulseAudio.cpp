@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioPulseAudio.cpp 91162 2021-09-08 15:15:55Z vboxsync $ */
+/* $Id: DrvHostAudioPulseAudio.cpp 91168 2021-09-08 17:05:22Z vboxsync $ */
 /** @file
  * Host audio driver - Pulse Audio.
  */
@@ -829,7 +829,6 @@ static void drvHstAudPaStreamUnderflowStatsCallback(pa_stream *pStream, void *pv
         pa_stream_get_latency(pStream, &cUsLatency, &fNegative);
         LogRel2(("PulseAudio: Latency now is %'RU64 us\n", cUsLatency));
 
-# ifdef LOG_ENABLED
         if (LogRelIs2Enabled())
         {
             const pa_timing_info *pTInfo = pa_stream_get_timing_info(pStream);
@@ -840,7 +839,6 @@ static void drvHstAudPaStreamUnderflowStatsCallback(pa_stream *pStream, void *pv
                      pa_bytes_to_usec(pTInfo->write_index, pSpec), pa_bytes_to_usec(pTInfo->read_index, pSpec),
                      pa_rtclock_now() - pStreamPA->tsStartUs, cUsLatency, pSpec->rate, pSpec->channels));
         }
-# endif
     }
 }
 
