@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 93163 2022-01-10 11:05:35Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -3297,7 +3297,7 @@ HRESULT GuestSession::close()
 {
     LogFlowThisFuncEnter();
 
-    /* Note: Don't check if the session is ready via i_isReadyExternal() here;
+    /* Note: Don't check if the session is ready via i_isStartedExternal() here;
      *       the session (already) could be in a stopped / aborted state. */
 
     int vrc     = VINF_SUCCESS; /* Shut up MSVC. */
@@ -4645,7 +4645,7 @@ HRESULT GuestSession::symlinkRead(const com::Utf8Str &aSymlink, const std::vecto
 
 HRESULT GuestSession::waitFor(ULONG aWaitFor, ULONG aTimeoutMS, GuestSessionWaitResult_T *aReason)
 {
-    /* Note: No call to i_isReadyExternal() needed here, as the session might not has been started (yet). */
+    /* Note: No call to i_isStartedExternal() needed here, as the session might not has been started (yet). */
 
     LogFlowThisFuncEnter();
 
@@ -4691,7 +4691,7 @@ HRESULT GuestSession::waitFor(ULONG aWaitFor, ULONG aTimeoutMS, GuestSessionWait
 HRESULT GuestSession::waitForArray(const std::vector<GuestSessionWaitForFlag_T> &aWaitFor, ULONG aTimeoutMS,
                                    GuestSessionWaitResult_T *aReason)
 {
-    /* Note: No call to i_isReadyExternal() needed here, as the session might not has been started (yet). */
+    /* Note: No call to i_isStartedExternal() needed here, as the session might not has been started (yet). */
 
     LogFlowThisFuncEnter();
 
