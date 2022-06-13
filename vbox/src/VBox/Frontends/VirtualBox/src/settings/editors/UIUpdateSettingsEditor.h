@@ -1,4 +1,4 @@
-/* $Id: UIUpdateSettingsEditor.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIUpdateSettingsEditor.h 93986 2022-02-28 14:42:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUpdateSettingsEditor class declaration.
  */
@@ -32,8 +32,8 @@
 class QAbstractButton;
 class QButtonGroup;
 class QCheckBox;
-class QComboBox;
 class QLabel;
+class QIComboBox;
 
 /** QWidget subclass used as a update settings editor. */
 class SHARED_LIBRARY_STUFF UIUpdateSettingsEditor : public QIWithRetranslateUI<QWidget>
@@ -88,7 +88,7 @@ private:
         /** Holds the update period label instance. */
         QLabel       *m_pLabelUpdatePeriod;
         /** Holds the update period combo instance. */
-        QComboBox    *m_pComboUpdatePeriod;
+        QIComboBox   *m_pComboUpdatePeriod;
         /** Holds the update date label instance. */
         QLabel       *m_pLabelUpdateDate;
         /** Holds the update date field instance. */

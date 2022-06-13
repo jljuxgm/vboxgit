@@ -1,4 +1,4 @@
-/* $Id: QIComboBox.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: QIComboBox.h 93986 2022-02-28 14:42:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIComboBox class declaration.
  */
@@ -94,6 +94,8 @@ public:
     void addItems(const QStringList &items) const;
     /** Adds the @a strText and userData (stored in the Qt::UserRole) into the combo-box. */
     void addItem(const QString &strText, const QVariant &userData = QVariant()) const;
+    /** Inserts the @a items into the combo-box at the given @a iIndex. */
+    void insertItems(int iIndex, const QStringList &items);
     /** Inserts the @a strText and userData (stored in the Qt::UserRole) into the combo-box at the given @a iIndex. */
     void insertItem(int iIndex, const QString &strText, const QVariant &userData = QVariant()) const;
     /** Removes the item from the combo-box at the given @a iIndex. */
