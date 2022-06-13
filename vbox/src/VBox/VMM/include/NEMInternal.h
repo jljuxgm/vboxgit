@@ -1,4 +1,4 @@
-/* $Id: NEMInternal.h 93554 2022-02-02 22:57:02Z vboxsync $ */
+/* $Id: NEMInternal.h 93680 2022-02-10 13:09:51Z vboxsync $ */
 /** @file
  * NEM - Internal header file.
  */
@@ -267,6 +267,8 @@ typedef struct NEM
     bool                        fCreatedAsid : 1;
     /** The ASID for this VM (only valid if fCreatedAsid is true). */
     hv_vm_space_t               uVmAsid;
+    /** Number of mach time units per NS, for hv_vcpu_run_until(). */
+    uint64_t                    cMachTimePerNs;
     STAMCOUNTER                 StatMapPage;
     STAMCOUNTER                 StatUnmapPage;
     STAMCOUNTER                 StatMapPageFailed;
