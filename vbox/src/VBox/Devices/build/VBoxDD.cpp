@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.cpp 93312 2022-01-18 13:15:12Z vboxsync $ */
+/* $Id: VBoxDD.cpp 93560 2022-02-03 06:37:40Z vboxsync $ */
 /** @file
  * VBoxDD - Built-in drivers & devices (part 1).
  */
@@ -116,6 +116,12 @@ extern "C" DECLEXPORT(int) VBoxDevicesRegister(PPDMDEVREGCB pCallbacks, uint32_t
     if (RT_FAILURE(rc))
         return rc;
 #endif
+    rc = pCallbacks->pfnRegister(pCallbacks, &g_DeviceDP8390);
+    if (RT_FAILURE(rc))
+        return rc;
+    rc = pCallbacks->pfnRegister(pCallbacks, &g_Device3C501);
+    if (RT_FAILURE(rc))
+        return rc;
 #ifdef VBOX_WITH_INIP
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DeviceINIP);
     if (RT_FAILURE(rc))

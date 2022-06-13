@@ -1,4 +1,4 @@
-/* $Id: VBoxDDR0.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: VBoxDDR0.cpp 93560 2022-02-03 06:37:40Z vboxsync $ */
 /** @file
  * VBoxDDR0 - Built-in drivers & devices (part 1), ring-0 module.
  */
@@ -60,6 +60,8 @@ static PCPDMDEVREGR0 g_apVBoxDDR0DevRegs[] =
 #ifdef VBOX_WITH_VIRTIO
     &g_DeviceVirtioNet,
 #endif
+    &g_DeviceDP8390,
+    &g_Device3C501,
     &g_DeviceICHAC97,
     &g_DeviceHDA,
 #ifdef VBOX_WITH_VUSB

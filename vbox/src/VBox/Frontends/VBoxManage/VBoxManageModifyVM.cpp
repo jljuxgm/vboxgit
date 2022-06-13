@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 93560 2022-02-03 06:37:40Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -1553,6 +1553,30 @@ RTEXITCODE handleModifyVM(HandlerArg *a)
                     CHECK_ERROR(nic, COMSETTER(AdapterType)(NetworkAdapterType_Virtio));
                 }
 #endif /* VBOX_WITH_VIRTIO */
+                else if (!RTStrICmp(ValueUnion.psz, "NE1000"))
+                {
+                    CHECK_ERROR(nic, COMSETTER(AdapterType)(NetworkAdapterType_NE1000));
+                }
+                else if (!RTStrICmp(ValueUnion.psz, "NE2000"))
+                {
+                    CHECK_ERROR(nic, COMSETTER(AdapterType)(NetworkAdapterType_NE2000));
+                }
+                else if (!RTStrICmp(ValueUnion.psz, "WD8003"))
+                {
+                    CHECK_ERROR(nic, COMSETTER(AdapterType)(NetworkAdapterType_WD8003));
+                }
+                else if (!RTStrICmp(ValueUnion.psz, "WD8013"))
+                {
+                    CHECK_ERROR(nic, COMSETTER(AdapterType)(NetworkAdapterType_WD8013));
+                }
+                else if (!RTStrICmp(ValueUnion.psz, "3C503"))
+                {
+                    CHECK_ERROR(nic, COMSETTER(AdapterType)(NetworkAdapterType_3C503));
+                }
+                else if (!RTStrICmp(ValueUnion.psz, "3C501"))
+                {
+                    CHECK_ERROR(nic, COMSETTER(AdapterType)(NetworkAdapterType_3C501));
+                }
                 else
                 {
                     errorArgument(ModifyVM::tr("Invalid NIC type '%s' specified for NIC %u"),
