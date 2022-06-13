@@ -1,4 +1,4 @@
-/* $Id: UINotificationCenter.h 91755 2021-10-15 09:45:40Z vboxsync $ */
+/* $Id: UINotificationCenter.h 91877 2021-10-20 11:26:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINotificationCenter class declaration.
  */
@@ -82,7 +82,7 @@ public:
 
     /** Immediately and synchronously handles passed notification @a pProgress.
       * @note It's a blocking call finished by sltHandleProgressFinished(). */
-    void handleNow(UINotificationProgress *pProgress);
+    bool handleNow(UINotificationProgress *pProgress);
 
 protected:
 
@@ -174,6 +174,8 @@ private:
       * @note  This event-loop is only used when the center
       *        handles progress directly via handleNow(). */
     QPointer<QEventLoop>  m_pEventLoop;
+    /** Holds the last handleNow() result. */
+    bool                  m_fLastResult;
 };
 
 /** Singleton notification-center 'official' name. */
