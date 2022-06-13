@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 90375 2021-07-28 15:41:48Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 90490 2021-08-03 09:21:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -1464,7 +1464,6 @@ void UIChooserModel::prepareContextMenu()
         pMenuGlobal->addAction(actionPool()->action(UIActionIndexMN_M_File_M_Tools));
         pMenuGlobal->addSeparator();
 # ifdef VBOX_GUI_WITH_NETWORK_MANAGER
-        pMenuGlobal->addAction(actionPool()->action(UIActionIndex_M_Application_S_NetworkAccessManager));
         if (gEDataManager->applicationUpdateEnabled())
             pMenuGlobal->addAction(actionPool()->action(UIActionIndex_M_Application_S_CheckForUpdates));
 # endif

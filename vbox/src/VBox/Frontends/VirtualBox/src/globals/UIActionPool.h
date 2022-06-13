@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.h 88834 2021-05-03 13:09:49Z vboxsync $ */
+/* $Id: UIActionPool.h 90490 2021-08-03 09:21:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPool class declaration.
  */
@@ -64,7 +64,6 @@ enum UIActionIndex
 #endif
     UIActionIndex_M_Application_S_Preferences,
 #ifdef VBOX_GUI_WITH_NETWORK_MANAGER
-    UIActionIndex_M_Application_S_NetworkAccessManager,
     UIActionIndex_M_Application_S_CheckForUpdates,
 #endif /* VBOX_GUI_WITH_NETWORK_MANAGER */
     UIActionIndex_M_Application_S_ResetWarnings,
