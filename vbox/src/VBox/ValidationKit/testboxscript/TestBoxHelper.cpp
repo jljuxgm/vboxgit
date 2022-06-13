@@ -1,4 +1,4 @@
-/* $Id: TestBoxHelper.cpp 93515 2022-01-31 22:17:19Z vboxsync $ */
+/* $Id: TestBoxHelper.cpp 94490 2022-04-06 10:55:59Z vboxsync $ */
 /** @file
  * VirtualBox Validation Kit - Testbox C Helper Utility.
  */
@@ -607,7 +607,7 @@ static RTEXITCODE handlerCpuLongMode(int argc, char **argv)
         /* On darwin, we just ask the kernel via sysctl. Rules are a bit different here. */
         int     f64bitCapable = 0;
         size_t  cbParameter   = sizeof(f64bitCapable);
-        int rc = sysctlbyname("hw.cpu64bit_capable", &f64bitCapable, &cbParameter, NULL, NULL);
+        int rc = sysctlbyname("hw.cpu64bit_capable", &f64bitCapable, &cbParameter, NULL, 0);
         if (rc != -1)
             fSupported = f64bitCapable != 0;
         else
