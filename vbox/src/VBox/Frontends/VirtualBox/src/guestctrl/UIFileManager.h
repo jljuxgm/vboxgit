@@ -1,4 +1,4 @@
-/* $Id: UIFileManager.h 92630 2021-11-29 16:25:42Z vboxsync $ */
+/* $Id: UIFileManager.h 92631 2021-11-29 16:47:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManager class declaration.
  */
@@ -30,8 +30,9 @@
 #include "CEventListener.h"
 #include "CEventSource.h"
 #include "CGuest.h"
-#include "CMachine.h"
 #include "CGuestSession.h"
+#include "CMachine.h"
+#include "CSession.h"
 
 /* GUI includes: */
 #include "QIManagerDialog.h"
