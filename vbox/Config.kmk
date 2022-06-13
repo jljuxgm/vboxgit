@@ -1,4 +1,4 @@
-# $Id: Config.kmk 90928 2021-08-26 17:27:17Z vboxsync $
+# $Id: Config.kmk 90930 2021-08-27 00:21:09Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -4813,10 +4813,12 @@ TEMPLATE_VBoxR0_DTRACE_OBJ_FLAGS   += --pic
 TEMPLATE_VBoxR0_CFLAGS.amd64       += -mcmodel=kernel
 TEMPLATE_VBoxR0_CXXFLAGS.amd64     += -mcmodel=kernel
  endif
- ifdef VBOX_WITH_KMOD_WRAPPED_R0_MODS
+ ifdef VBOX_WITH_KMOD_WRAPPED_R0_MODS # For BTF/pahold issue we use -g1
 TEMPLATE_VBoxR0_DEFS               += VBOX_WITH_KMOD_WRAPPED_R0_MODS
 TEMPLATE_VBoxR0_LDFLAGS.linux      += $(PATH_ROOT)/src/VBox/HostDrivers/Support/linux/VBoxR0-wrapped.lds
 TEMPLATE_VBoxR0_LNK_DEPS.linux     += $(PATH_ROOT)/src/VBox/HostDrivers/Support/linux/VBoxR0-wrapped.lds
+TEMPLATE_VBoxR0_CFLAGS.linux       += -g1
+TEMPLATE_VBoxR0_CXXFLAGS.linux     += -g1
  endif
  ifn1of ($(KBUILD_TARGET),solaris freebsd)
  TEMPLATE_VBoxR0_LIBS               = \
@@ -8281,7 +8283,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 90928 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 90930 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
