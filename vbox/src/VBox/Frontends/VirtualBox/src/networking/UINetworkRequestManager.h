@@ -1,4 +1,4 @@
-/* $Id: UINetworkRequestManager.h 90539 2021-08-06 08:38:12Z vboxsync $ */
+/* $Id: UINetworkRequestManager.h 90540 2021-08-06 09:10:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkRequestManager stuff declaration.
  */
@@ -72,12 +72,12 @@ private slots:
 
     /** Handles progress for @a iReceived amount of bytes among @a iTotal. */
     void sltHandleNetworkRequestProgress(qint64 iReceived, qint64 iTotal);
+    /** Handles request @a strError. */
+    void sltHandleNetworkRequestFailure(const QString &strError);
     /** Handles request canceling. */
     void sltHandleNetworkRequestCancel();
     /** Handles request finishing. */
     void sltHandleNetworkRequestFinish();
-    /** Handles request @a strError. */
-    void sltHandleNetworkRequestFailure(const QString &strError);
 
 private:
 

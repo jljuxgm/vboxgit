@@ -1,4 +1,4 @@
-/* $Id: UINetworkCustomer.h 90524 2021-08-05 09:45:47Z vboxsync $ */
+/* $Id: UINetworkCustomer.h 90540 2021-08-06 09:10:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkCustomer class declaration.
  */
@@ -48,6 +48,8 @@ public:
 
     /** Handles network reply progress for @a iReceived amount of bytes among @a iTotal. */
     virtual void processNetworkReplyProgress(qint64 iReceived, qint64 iTotal) = 0;
+    /** Handles network reply failed with specified @a strError. */
+    virtual void processNetworkReplyFailed(const QString &strError) = 0;
     /** Handles network reply canceling for a passed @a pReply. */
     virtual void processNetworkReplyCanceled(UINetworkReply *pReply) = 0;
     /** Handles network reply finishing for a passed @a pReply. */

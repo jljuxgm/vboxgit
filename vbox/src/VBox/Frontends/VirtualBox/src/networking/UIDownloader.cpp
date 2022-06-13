@@ -1,10 +1,10 @@
-/* $Id: UIDownloader.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIDownloader.cpp 90540 2021-08-06 09:10:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDownloader class implementation.
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2021 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -82,6 +82,12 @@ void UIDownloader::processNetworkReplyProgress(qint64, qint64)
 {
 }
 
+void UIDownloader::processNetworkReplyFailed(const QString &)
+{
+    /* Delete downloader: */
+    deleteLater();
+}
+
 void UIDownloader::processNetworkReplyCanceled(UINetworkReply *)
 {
     /* Delete downloader: */
@@ -157,4 +163,3 @@ void UIDownloader::handleVerifyingResult(UINetworkReply *pNetworkReply)
     /* Delete downloader: */
     deleteLater();
 }
-

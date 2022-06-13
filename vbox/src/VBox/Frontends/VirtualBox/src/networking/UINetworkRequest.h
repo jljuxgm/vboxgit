@@ -1,4 +1,4 @@
-/* $Id: UINetworkRequest.h 90539 2021-08-06 08:38:12Z vboxsync $ */
+/* $Id: UINetworkRequest.h 90540 2021-08-06 09:10:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkRequest class declaration.
  */
@@ -37,19 +37,19 @@ class SHARED_LIBRARY_STUFF UINetworkRequest : public QObject
 
 signals:
 
+    /** Notifies listener about progress started. */
+    void sigStarted();
     /** Notifies listener about progress changed.
       * @param  iReceived  Brings the amount of bytes received.
       * @param  iTotal     Brings the amount of total bytes to receive. */
     void sigProgress(qint64 iReceived, qint64 iTotal);
-    /** Notifies listener about progress started. */
-    void sigStarted();
+    /** Notifies listener about progress failed.
+      * @param  strError  Brings the error progress failed with. */
+    void sigFailed(const QString &strError);
     /** Notifies listener about progress canceled. */
     void sigCanceled();
     /** Notifies listener about progress finished. */
     void sigFinished();
-    /** Notifies listener about progress failed.
-      * @param  strError  Brings the error progress failed with . */
-    void sigFailed(const QString &strError);
 
 public:
 
@@ -70,8 +70,6 @@ public:
 
 public slots:
 
-    /** Initiates request retrying. */
-    void sltRetry();
     /** Initiates request cancelling. */
     void sltCancel();
 

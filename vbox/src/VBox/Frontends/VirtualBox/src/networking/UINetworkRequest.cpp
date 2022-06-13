@@ -1,4 +1,4 @@
-/* $Id: UINetworkRequest.cpp 90539 2021-08-06 08:38:12Z vboxsync $ */
+/* $Id: UINetworkRequest.cpp 90540 2021-08-06 09:10:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkRequest class implementation.
  */
@@ -128,19 +128,6 @@ void UINetworkRequest::sltHandleNetworkReplyFinish()
             }
         }
     }
-}
-
-void UINetworkRequest::sltRetry()
-{
-    /* Cleanup current network-reply first: */
-    cleanupNetworkReply();
-
-    /* Choose first url as current: */
-    m_iUrlIndex = 0;
-    m_url = m_urls.at(m_iUrlIndex);
-
-    /* Create new network-reply finally: */
-    prepareNetworkReply();
 }
 
 void UINetworkRequest::sltCancel()
