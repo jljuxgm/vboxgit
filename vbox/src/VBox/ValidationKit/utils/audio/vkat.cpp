@@ -1,4 +1,4 @@
-/* $Id: vkat.cpp 92002 2021-10-22 12:54:42Z vboxsync $ */
+/* $Id: vkat.cpp 92004 2021-10-22 13:01:49Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) utility for testing and validating the audio stack.
  */
@@ -727,7 +727,7 @@ static DECLCALLBACK(const char *) audioTestCmdTestHelp(PCRTGETOPTDEF pOpt)
                                                        "    Default: 2";
         case VKAT_TEST_OPT_PCM_SIGNED:          return "PCM samples to use (signed = true, unsigned = false)\n"
                                                        "    Default: true";
-        case VKAT_TEST_OPT_PROBE_BACKENDS:      return "Probes all (available) backends until a working one is found\n"
+        case VKAT_TEST_OPT_PROBE_BACKENDS:      return "Probes all (available) backends until a working one is found\n";
         case VKAT_TEST_OPT_TAG:                 return "Test set tag to use";
         case VKAT_TEST_OPT_TEMPDIR:             return "Temporary directory to use";
         case VKAT_TEST_OPT_VOL:                 return "Audio volume (percent) to use";
