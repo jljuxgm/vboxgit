@@ -1,4 +1,4 @@
-/* $Id: vkatCommon.cpp 91632 2021-10-08 06:59:29Z vboxsync $ */
+/* $Id: vkatCommon.cpp 91644 2021-10-08 14:25:25Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) - Self test code.
  */
@@ -595,8 +595,10 @@ int audioTestPlayTone(PAUDIOTESTIOOPTS pIoOpts, PAUDIOTESTENV pTstEnv, PAUDIOTES
 
                     if (pTstEnv)
                     {
-                        /* Also write the beacon data to the test object. */
-                        rc = AudioTestObjWrite(Obj, abBuf, cbToPlay);
+                        /* Also write the beacon data to the test object.
+                         * Note: We use cbPlayed here instead of cbToPlay to know if the data actually was
+                         *       reported as being played by the audio stack. */
+                        rc = AudioTestObjWrite(Obj, abBuf, cbPlayed);
                     }
 
                     cbBeaconPlayed += cbPlayed;
