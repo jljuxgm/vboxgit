@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplExport.cpp 86650 2020-10-20 14:26:02Z vboxsync $ */
+/* $Id: ApplianceImplExport.cpp 91718 2021-10-14 11:43:12Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -2343,7 +2343,7 @@ HRESULT Appliance::i_exportCloudImpl(TaskCloud *pTask)
     ComPtr<ICloudProviderManager> cpm;
     hrc = mVirtualBox->COMGETTER(CloudProviderManager)(cpm.asOutParam());
     if (FAILED(hrc))
-        return setError(VBOX_E_OBJECT_NOT_FOUND, tr("%: Cloud provider manager object wasn't found"), __FUNCTION__);
+        return setError(VBOX_E_OBJECT_NOT_FOUND, tr("%s: Cloud provider manager object wasn't found"), __FUNCTION__);
 
     Utf8Str strProviderName = pTask->locInfo.strProvider;
     ComPtr<ICloudProvider> cloudProvider;

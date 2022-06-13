@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.cpp 90828 2021-08-24 09:44:46Z vboxsync $ */
+/* $Id: GuestSessionImplTasks.cpp 91718 2021-10-14 11:43:12Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session tasks.
  */
@@ -392,7 +392,7 @@ int GuestSessionTask::fileCopyFromGuestInner(const Utf8Str &strSrcFile, ComObjPt
         if (RT_FAILURE(rc))
         {
             setProgressErrorMsg(VBOX_E_IPRT_ERROR,
-                                Utf8StrFmt(tr("Reading %RU32 bytes @ %RU64 from guest \"%s\" failed: %Rrc"),
+                                Utf8StrFmt(tr("Reading %RU32 bytes @ %RU64 from guest \"%s\" failed: %Rrc", "", cbChunk),
                                            cbChunk, cbWrittenTotal, strSrcFile.c_str(), rc));
             break;
         }
@@ -401,7 +401,7 @@ int GuestSessionTask::fileCopyFromGuestInner(const Utf8Str &strSrcFile, ComObjPt
         if (RT_FAILURE(rc))
         {
             setProgressErrorMsg(VBOX_E_IPRT_ERROR,
-                                Utf8StrFmt(tr("Writing %RU32 bytes to host file \"%s\" failed: %Rrc"),
+                                Utf8StrFmt(tr("Writing %RU32 bytes to host file \"%s\" failed: %Rrc", "", cbRead),
                                            cbRead, strDstFile.c_str(), rc));
             break;
         }
@@ -712,7 +712,7 @@ int GuestSessionTask::fileCopyToGuestInner(const Utf8Str &strSrcFile, RTVFSFILE 
         if (RT_FAILURE(rc))
         {
             setProgressErrorMsg(VBOX_E_IPRT_ERROR,
-                                Utf8StrFmt(tr("Reading %RU32 bytes @ %RU64 from host file \"%s\" failed: %Rrc"),
+                                Utf8StrFmt(tr("Reading %RU32 bytes @ %RU64 from host file \"%s\" failed: %Rrc", "", cbChunk),
                                            cbChunk, cbWrittenTotal, strSrcFile.c_str(), rc));
             break;
         }
@@ -721,7 +721,7 @@ int GuestSessionTask::fileCopyToGuestInner(const Utf8Str &strSrcFile, RTVFSFILE 
         if (RT_FAILURE(rc))
         {
             setProgressErrorMsg(VBOX_E_IPRT_ERROR,
-                                Utf8StrFmt(tr("Writing %zu bytes to guest file \"%s\" failed: %Rrc"),
+                                Utf8StrFmt(tr("Writing %zu bytes to guest file \"%s\" failed: %Rrc", "", cbRead),
                                            cbRead, strDstFile.c_str(), rc));
             break;
         }

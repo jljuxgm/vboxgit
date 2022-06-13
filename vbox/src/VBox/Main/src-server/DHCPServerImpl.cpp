@@ -1,4 +1,4 @@
-/* $Id: DHCPServerImpl.cpp 91503 2021-10-01 08:57:59Z vboxsync $ */
+/* $Id: DHCPServerImpl.cpp 91718 2021-10-14 11:43:12Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1112,7 +1112,7 @@ HRESULT DHCPServer::getConfig(DHCPConfigScope_T aScope, const com::Utf8Str &aNam
             if (aName.isEmpty())
                 return setError(E_INVALIDARG, tr("A group must have a name!"));
             if (aName.length() > _1K)
-                return setError(E_INVALIDARG, tr("Name too long! %zu bytes"), aName.length());
+                return setError(E_INVALIDARG, tr("Name too long! %zu bytes", "", aName.length()), aName.length());
 
             /* Look up the group: */
             {

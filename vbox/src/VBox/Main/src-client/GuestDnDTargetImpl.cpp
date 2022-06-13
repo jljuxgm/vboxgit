@@ -1,4 +1,4 @@
-/* $Id: GuestDnDTargetImpl.cpp 85746 2020-08-13 08:47:12Z vboxsync $ */
+/* $Id: GuestDnDTargetImpl.cpp 91718 2021-10-14 11:43:12Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag'n drop target.
  */
@@ -540,7 +540,8 @@ HRESULT GuestDnDTarget::drop(ULONG aScreenId, ULONG aX, ULONG aY,
                 }
                 else
                     /** @todo r=bird: This isn't an IPRT error, is it?   */
-                    hr = setError(VBOX_E_IPRT_ERROR, tr("Guest returned invalid drop formats (%zu formats)"), lstFormats.size());
+                    hr = setError(VBOX_E_IPRT_ERROR, tr("Guest returned invalid drop formats (%zu formats)", "",
+                                                        lstFormats.size()), lstFormats.size());
             }
             else
                 hr = setErrorBoth(VBOX_E_IPRT_ERROR, vrc, tr("Waiting for response of dropped event failed (%Rrc)"), vrc);

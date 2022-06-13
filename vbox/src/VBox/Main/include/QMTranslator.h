@@ -1,4 +1,4 @@
-/* $Id: QMTranslator.h 91392 2021-09-27 12:33:40Z vboxsync $ */
+/* $Id: QMTranslator.h 91718 2021-10-14 11:43:12Z vboxsync $ */
 /** @file
  * VirtualBox API translation handling class
  */
@@ -43,7 +43,7 @@ public:
      * @returns Pointer to a translation (UTF-8 encoding), source string on failure.
      */
     const char *translate(const char *pszContext, const char *pszSource, const char **ppszSafeSource,
-                          const char *pszDisamb = NULL, const int iNum = -1) const RT_NOEXCEPT;
+                          const char *pszDisamb = NULL, const size_t aNum = (~(size_t)0)) const RT_NOEXCEPT;
 
     /**
      * Loads and parses QM file

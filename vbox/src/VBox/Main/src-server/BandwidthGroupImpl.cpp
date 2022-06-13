@@ -1,4 +1,4 @@
-/* $Id: BandwidthGroupImpl.cpp 85242 2020-07-11 23:05:19Z vboxsync $ */
+/* $Id: BandwidthGroupImpl.cpp 91718 2021-10-14 11:43:12Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -65,7 +65,7 @@ HRESULT BandwidthGroup::init(BandwidthControl *aParent,
     if (   (aType <= BandwidthGroupType_Null)
         || (aType >  BandwidthGroupType_Network))
         return setError(E_INVALIDARG,
-                        tr("Invalid bandwidth group type type"));
+                        tr("Invalid bandwidth group type"));
 
     /* Enclose the state transition NotReady->InInit->Ready */
     AutoInitSpan autoInitSpan(this);

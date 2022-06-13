@@ -1,4 +1,4 @@
-/* $Id: VBoxNls.h 91407 2021-09-27 15:20:15Z vboxsync $ */
+/* $Id: VBoxNls.h 91718 2021-10-14 11:43:12Z vboxsync $ */
 /** @file
  * VBox NLS.
  */
@@ -33,19 +33,19 @@
 # define DECLARE_TRANSLATION_CONTEXT(ctx) \
 struct ctx \
 {\
-   static const char *tr(const char *pszSource, const char *pszComment = NULL, const int iNum = -1) \
+   static const char *tr(const char *pszSource, const char *pszComment = NULL, const size_t aNum = (~(size_t)0)) \
    { \
-       return VirtualBoxTranslator::translate(NULL, #ctx, pszSource, pszComment, iNum); \
+       return VirtualBoxTranslator::translate(NULL, #ctx, pszSource, pszComment, aNum); \
    } \
 }
 #else
 # define DECLARE_TRANSLATION_CONTEXT(ctx) \
 struct ctx \
 {\
-   static const char *tr(const char *pszSource, const char *pszComment = NULL, const int iNum = -1) \
+   static const char *tr(const char *pszSource, const char *pszComment = NULL, const size_t aNum = (~(size_t)0)) \
    { \
        NOREF(pszComment); \
-       NOREF(iNum);       \
+       NOREF(aNum);       \
        return pszSource;  \
    } \
 }
