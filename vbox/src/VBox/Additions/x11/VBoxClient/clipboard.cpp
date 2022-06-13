@@ -1,4 +1,4 @@
-/** $Id: clipboard.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/** $Id: clipboard.cpp 93321 2022-01-18 15:20:39Z vboxsync $ */
 /** @file
  * Guest Additions - X11 Shared Clipboard.
  */
@@ -57,7 +57,8 @@ SHCLFUSECTX g_FuseCtx;
 #endif
 
 
-DECLCALLBACK(int) ShClX11RequestDataForX11Callback(PSHCLCONTEXT pCtx, SHCLFORMAT uFmt, void **ppv, uint32_t *pcb)
+/** @copydoc ShClX11RequestDataCallback */
+DECLCALLBACK(int) ShClX11RequestDataCallback(PSHCLCONTEXT pCtx, SHCLFORMAT uFmt, void **ppv, uint32_t *pcb)
 {
     LogFlowFunc(("pCtx=%p, uFmt=%#x\n", pCtx, uFmt));
 
@@ -142,6 +143,7 @@ struct CLIPREADCBREQ
     SHCLFORMAT Format;
 };
 
+/** @copydoc ShClX11ReportFormatsCallback */
 DECLCALLBACK(void) ShClX11ReportFormatsCallback(PSHCLCONTEXT pCtx, SHCLFORMATS fFormats)
 {
     RT_NOREF(pCtx);
@@ -153,8 +155,9 @@ DECLCALLBACK(void) ShClX11ReportFormatsCallback(PSHCLCONTEXT pCtx, SHCLFORMATS f
     LogFlowFuncLeaveRC(rc2);
 }
 
-DECLCALLBACK(void) ShClX11RequestFromX11CompleteCallback(PSHCLCONTEXT pCtx, int rcCompletion,
-                                                         CLIPREADCBREQ *pReq, void *pv, uint32_t cb)
+/** @copydoc ShClX11ReportDataCallback */
+DECLCALLBACK(void) ShClX11ReportDataCallback(PSHCLCONTEXT pCtx, int rcCompletion,
+                                             CLIPREADCBREQ *pReq, void *pv, uint32_t cb)
 {
     LogFlowFunc(("rcCompletion=%Rrc, Format=0x%x, pv=%p, cb=%RU32\n", rcCompletion, pReq->Format, pv, cb));
     RT_NOREF(rcCompletion);
