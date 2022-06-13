@@ -1,4 +1,4 @@
-/* $Id: DevIommuIntel.cpp 90212 2021-07-15 11:56:28Z vboxsync $ */
+/* $Id: DevIommuIntel.cpp 90213 2021-07-15 11:59:06Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - Intel implementation.
  */
@@ -2248,7 +2248,7 @@ static DECLCALLBACK(int) dmarDrSecondLevelTranslate(PPDMDEVINS pDevIns, PCDMARME
         {
             if ((fPtPerm & (VTD_BF_SL_PTE_R_MASK | VTD_BF_SL_PTE_W_MASK)) == 0)
                 dmarAtFaultRecord(pDevIns, kDmarDiag_At_Xm_Pte_Not_Present, pMemReqIn, pMemReqAux);
-            else if (!(pMemReqIn->AddrRange.fPerm & DMAR_PERM_READ))
+            else if ((pMemReqIn->AddrRange.fPerm & DMAR_PERM_READ) != (fPtPerm & VTD_BF_SL_PTE_R_MASK))
                 dmarAtFaultRecord(pDevIns, kDmarDiag_At_Xm_Perm_Read_Denied, pMemReqIn, pMemReqAux);
             else
                 dmarAtFaultRecord(pDevIns, kDmarDiag_At_Xm_Perm_Write_Denied, pMemReqIn, pMemReqAux);
