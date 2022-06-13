@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 90376 2021-07-28 17:11:28Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 90386 2021-07-29 07:54:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -333,7 +333,7 @@ void UIAcquirePublicKeyDialog::prepareEditorContents()
         foreach (const QString &strPath, defaultKeyFolders())
         {
             /* Gather possible file names, there can be few of them: */
-            const QStringList fileNames = QStringList() << "id_rsa" << "id_rsa.pub";
+            const QStringList fileNames = QStringList() << "id_rsa.pub" << "id_rsa";
             /* For each file name we have to: */
             foreach (const QString &strFileName, fileNames)
             {
