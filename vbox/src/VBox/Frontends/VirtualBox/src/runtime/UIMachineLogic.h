@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 90893 2021-08-25 17:15:36Z vboxsync $ */
+/* $Id: UIMachineLogic.h 91656 2021-10-11 08:44:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -271,7 +271,7 @@ private slots:
     void sltCloseVMInformationDialogDefault() { sltCloseVMInformationDialog(true); }
     void sltShowFileManagerDialog();
     void sltCloseFileManagerDialog();
-    void sltReset();
+    void sltReset(bool fShowConfirmation = true);
     void sltPause(bool fOn);
     void sltDetach();
     void sltSaveState();
@@ -385,6 +385,8 @@ private:
       * if there are no other vms running at the moment. Note that this seems to be not needed on Linux since
       * closing vm windows re-activates screen saver automatically. On Windows explicit re-activation is needed. */
     void activateScreenSaver();
+    /* Shows the boot failure dialog through which user can mount a boot DVD and reset the vm. */
+    void showBootFailureDialog();
 
     /* Private variables: */
     UISession *m_pSession;
