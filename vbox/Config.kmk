@@ -1,4 +1,4 @@
-# $Id: Config.kmk 93246 2022-01-15 00:29:42Z vboxsync $
+# $Id: Config.kmk 93247 2022-01-15 00:40:35Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -4388,7 +4388,7 @@ if defined(VBOX_SIGNING_MODE) && "$(KBUILD_TARGET)" == "win"
  $(1)_VBOX_RE_SIGNED_$(n) := 1
  $(eval $(1)_CLEAN += $$($(1)_0_OUTDIR)/$(n))
 
- $$($(1)_0_OUTDIR)/$(n): $(2) $(VBOX_VERSION_STAMP) | $$(dir $$@)
+ $$($(1)_0_OUTDIR)/$(n): $(2) $(VBOX_VERSION_STAMP) | $$(dir $$@) $(VBOX_SIGN_IMAGE_ORDERDEPS)
 	$(call MSG_TOOL,SIGNTOOL,,$<,$@)
 	$(RM) -f -- "$@"
 	$(CP) -- "$(quote-sh-dq $<)" "$@"
@@ -4410,7 +4410,7 @@ ifndef $(1)_VBOX_RE_SIGNED_$(n)
  $(1)_VBOX_RE_SIGNED_$(n) := 1
  $(eval $(1)_CLEAN += $$($(1)_0_OUTDIR)/$(n))
 
- $$($(1)_0_OUTDIR)/$(n): $(2) $(VBOX_VERSION_STAMP) | $$(dir $$@)
+ $$($(1)_0_OUTDIR)/$(n): $(2) $(VBOX_VERSION_STAMP) | $$(dir $$@) $(VBOX_SIGN_IMAGE_ORDERDEPS)
 	$(call MSG_TOOL,SIGNTOOL,,$<,$@)
 	$(RM) -f -- "$@"
 	$(CP) -- "$<" "$@"
@@ -8620,7 +8620,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 93246 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 93247 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
