@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerGuestTable.cpp 92913 2021-12-15 08:25:52Z vboxsync $ */
+/* $Id: UIFileManagerGuestTable.cpp 92917 2021-12-15 09:38:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerGuestTable class implementation.
  */
@@ -632,7 +632,7 @@ void UIFileManagerGuestTable::copyHostToGuest(const QStringList &hostSourcePathL
     CProgress progress = m_comGuestSession.CopyToGuest(sourcePaths, aFilters, aFlags, strDestinationPath);
     if (!checkGuestSession())
         return;
-    emit sigNewFileOperation(progress);
+    emit sigNewFileOperation(progress, m_strTableName);
 }
 
 QUuid UIFileManagerGuestTable::machineId()
@@ -695,7 +695,7 @@ void UIFileManagerGuestTable::copyGuestToHost(const QString& hostDestinationPath
     CProgress progress = m_comGuestSession.CopyFromGuest(sourcePaths, aFilters, aFlags, hostDestinationPath);
     if (!checkGuestSession())
         return;
-    emit sigNewFileOperation(progress);
+    emit sigNewFileOperation(progress, m_strTableName);
 }
 
 KFsObjType UIFileManagerGuestTable::fileType(const CFsObjInfo &fsInfo)

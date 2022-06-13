@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerGuestTable.h 92884 2021-12-13 13:46:35Z vboxsync $ */
+/* $Id: UIFileManagerGuestTable.h 92917 2021-12-15 09:38:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerGuestTable class declaration.
  */
@@ -53,7 +53,7 @@ class UIFileManagerGuestTable : public UIFileManagerTable
 
 signals:
 
-    void sigNewFileOperation(const CProgress &comProgress);
+    void sigNewFileOperation(const CProgress &comProgress, const QString &strTableName);
 
 public:
 
