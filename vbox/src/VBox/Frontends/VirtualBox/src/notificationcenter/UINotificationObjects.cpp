@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 91102 2021-09-03 12:19:45Z vboxsync $ */
+/* $Id: UINotificationObjects.cpp 91103 2021-09-03 12:22:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -483,14 +483,17 @@ void UINotificationMessage::createMessage(const QString &strName,
     if (isSuppressed(strInternalName))
         return;
     /* Check if message already exists: */
-    if (m_messages.contains(strInternalName))
+    if (   !strInternalName.isEmpty()
+        && m_messages.contains(strInternalName))
         return;
 
     /* Create message finally: */
-    m_messages[strInternalName] = gpNotificationCenter->append(new UINotificationMessage(strName,
-                                                                                         strDetails,
-                                                                                         strInternalName,
-                                                                                         strHelpKeyword));
+    const QUuid uId = gpNotificationCenter->append(new UINotificationMessage(strName,
+                                                                             strDetails,
+                                                                             strInternalName,
+                                                                             strHelpKeyword));
+    if (!strInternalName.isEmpty())
+        m_messages[strInternalName] = uId;
 }
 
 /* static */
