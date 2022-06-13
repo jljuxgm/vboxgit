@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 89976 2021-06-30 11:03:22Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 90260 2021-07-20 12:56:12Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -2907,7 +2907,7 @@ static void hmR0SvmImportGuestState(PVMCPUCC pVCpu, uint64_t fWhat)
     if (   VMMRZCallRing3IsEnabled(pVCpu)
         && VMCPU_FF_IS_SET(pVCpu, VMCPU_FF_HM_UPDATE_CR3))
     {
-        Assert(pCtx->cr3 == pVmcbGuest->u64CR3);
+        AssertMsg(pCtx->cr3 == pVmcbGuest->u64CR3, ("cr3=%#RX64 vmcb_cr3=%#RX64\n", pCtx->cr3, pVmcbGuest->u64CR3));
         PGMUpdateCR3(pVCpu, pCtx->cr3);
     }
 }
