@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 94234 2022-03-15 09:19:29Z vboxsync $ */
+/* $Id: VBoxManage.cpp 94240 2022-03-15 10:10:24Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -757,7 +757,7 @@ int main(int argc, char *argv[])
                     RTPrintf("    %s\n", g_aCommands[i].pszCommand);
             return RTEXITCODE_SUCCESS;
         }
-        return errorSyntax(USAGE_S_ALL, VBoxManage::tr("Invalid command '%s'"), argv[iCmd]);
+        return errorSyntax(VBoxManage::tr("Invalid command '%s'"), argv[iCmd]);
     }
 
     RTEXITCODE rcExit;

@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 94234 2022-03-15 09:19:29Z vboxsync $ */
+/* $Id: VBoxManage.h 94240 2022-03-15 10:10:24Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -129,8 +129,6 @@ struct HandlerArg
     ComPtr<ISession> session;
 };
 
-/** flag whether we're in internal mode */
-extern bool g_fInternalMode;
 
 /** showVMInfo details */
 typedef enum
@@ -159,15 +157,8 @@ extern bool g_fDetailedProgress;        // in VBoxManage.cpp
 ////////////////////////////////////////////////////////////////////////////////
 
 /* VBoxManageHelp.cpp */
-
 /* Legacy help infrastructure, to be replaced by new one using generated help. */
 void printUsage(USAGECATEGORY enmCommand, uint64_t fSubcommandScope, PRTSTREAM pStrm);
-RTEXITCODE errorSyntax(USAGECATEGORY enmCommand, const char *pszFormat, ...);
-RTEXITCODE errorSyntaxEx(USAGECATEGORY enmCommand, uint64_t fSubcommandScope, const char *pszFormat, ...);
-RTEXITCODE errorGetOpt(USAGECATEGORY enmCommand, int rc, union RTGETOPTUNION const *pValueUnion);
-RTEXITCODE errorGetOptEx(USAGECATEGORY enmCommand, uint64_t fSubcommandScope, int rc, union RTGETOPTUNION const *pValueUnion);
-
-void printUsageInternal(USAGECATEGORY enmCommand, PRTSTREAM pStrm);
 
 void        setCurrentCommand(enum HELP_CMD_VBOXMANAGE enmCommand);
 void        setCurrentSubcommand(uint64_t fCurSubcommandScope);
