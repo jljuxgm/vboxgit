@@ -1,4 +1,4 @@
-/* $Id: VBoxDispIf.cpp 91763 2021-10-15 14:15:30Z vboxsync $ */
+/* $Id: VBoxDispIf.cpp 91764 2021-10-15 14:30:44Z vboxsync $ */
 /** @file
  * VBoxTray - Display Settings Interface abstraction for XPDM & WDDM
  */
@@ -1781,15 +1781,15 @@ BOOL VBoxDispIfResizeDisplayWin7(PCVBOXDISPIF const pIf, uint32_t cDispDef, cons
     uint32_t i;
 
     /* SetDisplayConfig assumes the top-left corner of a primary display at (0, 0) position */
-    const VMMDevDisplayDef* paDispDefPrimary = NULL;
+    const VMMDevDisplayDef* pDispDefPrimary = NULL;
 
     for (i = 0; i < cDispDef; ++i)
     {
         pDispDef = &paDispDef[i];
 
-        if (RT_BOOL(pDispDef->fDisplayFlags & VMMDEV_DISPLAY_PRIMARY))
+        if (pDispDef->fDisplayFlags & VMMDEV_DISPLAY_PRIMARY)
         {
-            paDispDefPrimary = pDispDef;
+            pDispDefPrimary = pDispDef;
             break;
         }
     }
@@ -1889,8 +1889,8 @@ BOOL VBoxDispIfResizeDisplayWin7(PCVBOXDISPIF const pIf, uint32_t cDispDef, cons
 
                 if (pDispDef->fDisplayFlags & VMMDEV_DISPLAY_ORIGIN)
                 {
-                    pSrcMode->position.x = pDispDef->xOrigin - (paDispDefPrimary ? paDispDefPrimary->xOrigin : 0);
-                    pSrcMode->position.y = pDispDef->yOrigin - (paDispDefPrimary ? paDispDefPrimary->yOrigin : 0);
+                    pSrcMode->position.x = pDispDef->xOrigin - (pDispDefPrimary ? pDispDefPrimary->xOrigin : 0);
+                    pSrcMode->position.y = pDispDef->yOrigin - (pDispDefPrimary ? pDispDefPrimary->yOrigin : 0);
                 }
 
                 if (pDispDef->fDisplayFlags & VMMDEV_DISPLAY_BPP)
@@ -1993,8 +1993,8 @@ BOOL VBoxDispIfResizeDisplayWin7(PCVBOXDISPIF const pIf, uint32_t cDispDef, cons
 
                 if (pDispDef->fDisplayFlags & VMMDEV_DISPLAY_ORIGIN)
                 {
-                    pSrcModeInfo->sourceMode.position.x = pDispDef->xOrigin - (paDispDefPrimary ? paDispDefPrimary->xOrigin : 0);
-                    pSrcModeInfo->sourceMode.position.y = pDispDef->yOrigin - (paDispDefPrimary ? paDispDefPrimary->yOrigin : 0);
+                    pSrcModeInfo->sourceMode.position.x = pDispDef->xOrigin - (pDispDefPrimary ? pDispDefPrimary->xOrigin : 0);
+                    pSrcModeInfo->sourceMode.position.y = pDispDef->yOrigin - (pDispDefPrimary ? pDispDefPrimary->yOrigin : 0);
                 }
 
                 /* Configure the path information. */
