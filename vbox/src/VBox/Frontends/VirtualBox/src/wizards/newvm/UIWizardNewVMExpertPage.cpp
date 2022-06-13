@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMExpertPage.cpp 91106 2021-09-03 14:37:45Z vboxsync $ */
+/* $Id: UIWizardNewVMExpertPage.cpp 91152 2021-09-08 13:23:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMExpertPage class implementation.
  */
@@ -869,7 +869,7 @@ QWidget *UIWizardNewVMExpertPage::createNameOSTypeWidgets()
 void UIWizardNewVMExpertPage::setSkipCheckBoxEnable()
 {
     AssertReturnVoid(m_pSkipUnattendedCheckBox && m_pNameAndSystemEditor);
-    const QString &strPath = m_pNameAndSystemEditor->image();
+    const QString &strPath = m_pNameAndSystemEditor->ISOImagePath();
     if (strPath.isNull() || strPath.isEmpty())
     {
         m_pSkipUnattendedCheckBox->setEnabled(false);

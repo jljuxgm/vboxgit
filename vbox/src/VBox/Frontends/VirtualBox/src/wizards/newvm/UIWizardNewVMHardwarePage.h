@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMHardwarePage.h 91059 2021-09-01 13:48:12Z vboxsync $ */
+/* $Id: UIWizardNewVMHardwarePage.h 91152 2021-09-08 13:23:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMHardwarePage class declaration.
  */
@@ -50,9 +50,9 @@ private:
     /** Prepare stuff. */
     void prepare();
     void createConnections();
-    void retranslateUi();
-    void initializePage();
-    bool isComplete() const;
+    virtual void retranslateUi() /* override final */;
+    virtual void initializePage() /* override final */;
+    virtual bool isComplete() const /* override final */;
 
     /** @name Widgets
       * @{ */

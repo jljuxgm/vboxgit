@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.cpp 91125 2021-09-06 14:32:23Z vboxsync $ */
+/* $Id: UINameAndSystemEditor.cpp 91152 2021-09-08 13:23:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class implementation.
  */
@@ -131,7 +131,7 @@ QString UINameAndSystemEditor::path() const
     return m_pPathSelector->path();
 }
 
-QString UINameAndSystemEditor::image() const
+QString UINameAndSystemEditor::ISOImagePath() const
 {
     if (!m_pImageSelector)
         return QString();

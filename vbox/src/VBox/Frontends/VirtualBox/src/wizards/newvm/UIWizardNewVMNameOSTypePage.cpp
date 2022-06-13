@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMNameOSTypePage.cpp 91059 2021-09-01 13:48:12Z vboxsync $ */
+/* $Id: UIWizardNewVMNameOSTypePage.cpp 91152 2021-09-08 13:23:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasicNameOSStype class implementation.
  */
@@ -302,7 +302,7 @@ bool UIWizardNewVMNameOSTypeCommon::checkISOFile(UINameAndSystemEditor *pNameAnd
 {
     if (!pNameAndSystemEditor)
         return false;
-    const QString &strPath = pNameAndSystemEditor->image();
+    const QString &strPath = pNameAndSystemEditor->ISOImagePath();
     if (strPath.isNull() || strPath.isEmpty())
         return true;
     QFileInfo fileInfo(strPath);
@@ -522,7 +522,7 @@ void UIWizardNewVMNameOSTypePage::setSkipCheckBoxEnable()
         return;
     if (m_pNameAndSystemEditor)
     {
-        const QString &strPath = m_pNameAndSystemEditor->image();
+        const QString &strPath = m_pNameAndSystemEditor->ISOImagePath();
         m_pSkipUnattendedCheckBox->setEnabled(!strPath.isNull() && !strPath.isEmpty());
     }
 }
@@ -531,7 +531,7 @@ bool UIWizardNewVMNameOSTypePage::isUnattendedEnabled() const
 {
     if (!m_pNameAndSystemEditor)
         return false;
-    const QString &strPath = m_pNameAndSystemEditor->image();
+    const QString &strPath = m_pNameAndSystemEditor->ISOImagePath();
     if (strPath.isNull() || strPath.isEmpty())
         return false;
     if (m_pSkipUnattendedCheckBox && m_pSkipUnattendedCheckBox->isChecked())
