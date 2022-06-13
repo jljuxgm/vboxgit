@@ -1,4 +1,4 @@
-/* $Id: display-drm.cpp 92212 2021-11-04 17:50:52Z vboxsync $ */
+/* $Id: display-drm.cpp 92213 2021-11-04 17:57:56Z vboxsync $ */
 /** @file
  * X11 guest client - VMSVGA emulation resize event pass-through to drm guest
  * driver.
@@ -297,7 +297,7 @@ int main(int argc, char *argv[])
             VBClLogFatalError("Failure waiting for event, rc=%Rrc\n", rc);
     }
 
-    /* ToDo: this code never executed since we do not have yet a clean way to exit
+    /* @todo: this code never executed since we do not have yet a clean way to exit
      * main event loop above. */
     VBClLogInfo("VBoxDRMClient: releasing PID file lock\n");
     VbglR3ClosePidFile(szPidFile, hPidFile);
