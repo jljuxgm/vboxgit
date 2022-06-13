@@ -1,4 +1,4 @@
-/* $Id: DrvTpmEmu.cpp 91046 2021-09-01 07:52:43Z vboxsync $ */
+/* $Id: DrvTpmEmu.cpp 91048 2021-09-01 07:57:53Z vboxsync $ */
 /** @file
  * TPM emulator using a TCP/socket interface to talk to swtpm (https://github.com/stefanberger/swtpm).
  */
@@ -885,7 +885,7 @@ static DECLCALLBACK(int) drvTpmEmuConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, 
 
     if (!(pThis->fCaps & SWTPM_CAP_GET_CONFIG))
         return PDMDrvHlpVMSetError(pDrvIns, VERR_NOT_SUPPORTED, RT_SRC_POS,
-                                   N_("DrvTpmEmu#%d Emulated TPM misses the GET_CONFIG capability"),
+                                   N_("DrvTpmEmu#%d Emulated TPM at '%s' misses the GET_CONFIG capability"),
                                    pDrvIns->iInstance, szLocation);
 
     rc = drvTpmEmuQueryTpmVersion(pThis);
