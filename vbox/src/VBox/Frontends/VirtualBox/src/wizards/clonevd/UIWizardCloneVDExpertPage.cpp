@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDExpertPage.cpp 91222 2021-09-14 08:02:09Z vboxsync $ */
+/* $Id: UIWizardCloneVDExpertPage.cpp 91256 2021-09-15 15:50:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDExpertPage class implementation.
  */
@@ -92,7 +92,7 @@ void UIWizardCloneVDExpertPage::sltSelectLocationButtonClicked()
         return;
     QString strMediumPath =
         UIDiskEditorGroupBox::appendExtension(strSelectedPath,
-                                              UIDiskFormatsGroupBox::defaultExtension(pWizard->mediumFormat(), pWizard->deviceType()));
+                                              UIDiskEditorGroupBox::defaultExtension(pWizard->mediumFormat(), pWizard->deviceType()));
     QFileInfo mediumPath(strMediumPath);
     m_pMediumSizePathGroupBox->setMediumPath(QDir::toNativeSeparators(mediumPath.absoluteFilePath()));
 }
@@ -117,7 +117,7 @@ void UIWizardCloneVDExpertPage::sltMediumPathChanged(const QString &strPath)
     AssertReturnVoid(pWizard);
     QString strMediumPath =
         UIDiskEditorGroupBox::appendExtension(strPath,
-                                              UIDiskFormatsGroupBox::defaultExtension(pWizard->mediumFormat(), pWizard->deviceType()));
+                                              UIDiskEditorGroupBox::defaultExtension(pWizard->mediumFormat(), pWizard->deviceType()));
     pWizard->setMediumPath(strMediumPath);
     emit completeChanged();
 }
@@ -140,7 +140,7 @@ void UIWizardCloneVDExpertPage::initializePage()
     m_pMediumSizePathGroupBox->blockSignals(true);
     m_pMediumSizePathGroupBox->setMediumSize(pWizard->sourceDiskLogicalSize());
     pWizard->setMediumSize(m_pMediumSizePathGroupBox->mediumSize());
-    QString strExtension = UIDiskFormatsGroupBox::defaultExtension(pWizard->mediumFormat(), pWizard->deviceType());
+    QString strExtension = UIDiskEditorGroupBox::defaultExtension(pWizard->mediumFormat(), pWizard->deviceType());
     QString strSourceDiskPath = QDir::toNativeSeparators(QFileInfo(pWizard->sourceDiskFilePath()).absolutePath());
     /* Disk name without the format extension: */
     QString strDiskName = QString("%1_%2").arg(QFileInfo(pWizard->sourceDiskName()).completeBaseName()).arg(tr("copy"));
