@@ -1,4 +1,4 @@
-/* $Id: process-creation-posix.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: process-creation-posix.cpp 93216 2022-01-13 07:23:11Z vboxsync $ */
 /** @file
  * IPRT - Process Creation, POSIX.
  */
@@ -446,7 +446,7 @@ static bool rtProcPosixPamServiceExists(const char *pszService)
 typedef char *(*PFNCRYPTR)(const char *, const char *, struct crypt_data *);
 
 /**
- * Wrapper for resolving and calling crypt_r dynamcially.
+ * Wrapper for resolving and calling crypt_r dynamically.
  *
  * The reason for this is that fedora 30+ wants to use libxcrypt rather than the
  * glibc libcrypt.  The two libraries has different crypt_data sizes and layout,
