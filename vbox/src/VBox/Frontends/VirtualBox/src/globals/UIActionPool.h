@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.h 90490 2021-08-03 09:21:04Z vboxsync $ */
+/* $Id: UIActionPool.h 92352 2021-11-11 10:18:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPool class declaration.
  */
@@ -136,6 +136,11 @@ enum UIActionIndex
     UIActionIndex_M_FileManager_S_Guest_InvertSelection,
     UIActionIndex_M_FileManager_S_Host_ShowProperties,
     UIActionIndex_M_FileManager_S_Guest_ShowProperties,
+
+    /* VISO Creator actions: */
+    UIActionIndex_M_VISOCreator,
+    UIActionIndex_M_VISOCreator_ToggleConfigPanel,
+    UIActionIndex_M_VISOCreator_ToggleOptionsPanel,
 
     /* Maximum index: */
     UIActionIndex_Max

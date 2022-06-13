@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 92270 2021-11-08 14:46:28Z vboxsync $ */
+/* $Id: UICommon.cpp 92352 2021-11-11 10:18:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -1751,7 +1751,7 @@ QUuid UICommon::createVisoMediumWithVisoCreator(QWidget *pParent, const QString 
         strVisoSaveFolder = defaultFolderPathForType(UIMediumDeviceType_DVD);
 
     QWidget *pDialogParent = windowManager().realParentWindow(pParent);
-    UIVisoCreatorDialog *pVisoCreator = new UIVisoCreatorDialog(pDialogParent, strMachineName);
+    UIVisoCreatorDialog *pVisoCreator = 0;//new UIVisoCreatorDialog(pDialogParent, strMachineName);
 
     if (!pVisoCreator)
         return QString();
