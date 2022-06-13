@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageExpert.cpp 91261 2021-09-15 19:03:33Z vboxsync $ */
+/* $Id: UIWizardExportAppPageExpert.cpp 91262 2021-09-15 19:24:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageExpert class implementation.
  */
@@ -40,7 +40,6 @@
 #include "UIVirtualBoxEventHandler.h"
 #include "UIVirtualBoxManager.h"
 #include "UIWizardExportApp.h"
-#include "UIWizardExportAppDefs.h"
 #include "UIWizardExportAppPageExpert.h"
 
 
@@ -422,9 +421,6 @@ UIWizardExportAppPageExpert::UIWizardExportAppPageExpert(const QStringList &sele
     connect(m_pProfileToolButton, &QIToolButton::clicked,
             this, &UIWizardExportAppPageExpert::sltHandleProfileButtonClick);
 
-    /* Register classes: */
-    qRegisterMetaType<ExportAppliancePointer>();
-
     /* Register fields: */
     registerField("machineNames", this, "machineNames");
     registerField("machineIDs", this, "machineIDs");
@@ -440,7 +436,7 @@ UIWizardExportAppPageExpert::UIWizardExportAppPageExpert(const QStringList &sele
     registerField("vsd", this, "vsd");
     registerField("vsdExportForm", this, "vsdExportForm");
     registerField("cloudExportMode", this, "cloudExportMode");
-    registerField("applianceWidget", this, "applianceWidget");
+    registerField("localAppliance", this, "localAppliance");
 }
 
 void UIWizardExportAppPageExpert::retranslateUi()
@@ -632,6 +628,12 @@ bool UIWizardExportAppPageExpert::validatePage()
             if (!fResult)
                 msgCenter().cannotAcquireVirtualSystemDescriptionFormProperty(comForm);
         }
+    }
+    /* Otherwise if there was local target selected: */
+    else
+    {
+        /* Prepare export: */
+        m_pApplianceWidget->prepareExport();
     }
 
     /* Try to export appliance: */

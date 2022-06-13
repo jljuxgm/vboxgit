@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic2.cpp 91261 2021-09-15 19:03:33Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic2.cpp 91262 2021-09-15 19:24:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic2 class implementation.
  */
@@ -39,7 +39,6 @@
 #include "UIVirtualBoxEventHandler.h"
 #include "UIVirtualBoxManager.h"
 #include "UIWizardExportApp.h"
-#include "UIWizardExportAppDefs.h"
 #include "UIWizardExportAppPageBasic2.h"
 
 /* COM includes: */
