@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 91593 2021-10-06 15:12:58Z vboxsync $ */
+/* $Id: UIWizardNewVM.cpp 91618 2021-10-07 11:52:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
@@ -137,17 +137,11 @@ bool UIWizardNewVM::createVM()
             return false;
         }
 
-        /* The First RUN Wizard is to be shown:
-         * 1. if we don't attach any virtual hard-drive
-         * 2. or attach a new (empty) one.
-         * 3. and if the unattended install is not enabled
-         * 4. User did not select an ISO image file
-         * Usually we are assigning extra-data values through UIExtraDataManager,
-         * but in that special case VM was not registered yet, so UIExtraDataManager is unaware of it: */
+        /* Disable first run wizard for now. We will soon remove it: */
         if (ISOFilePath().isEmpty() &&
             !isUnattendedEnabled() &&
             !m_virtualDisk.isNull())
-            m_machine.SetExtraData(GUI_FirstRun, "yes");
+            m_machine.SetExtraData(GUI_FirstRun, "no");
     }
 
 #if 0
