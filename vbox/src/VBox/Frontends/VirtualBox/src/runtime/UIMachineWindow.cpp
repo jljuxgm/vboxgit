@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 93995 2022-02-28 21:31:59Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 94117 2022-03-07 18:05:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class implementation.
  */
@@ -325,7 +325,19 @@ void UIMachineWindow::closeEvent(QCloseEvent *pCloseEvent)
 
     /* Make sure machine is in one of the allowed states: */
     if (!uisession()->isRunning() && !uisession()->isPaused() && !uisession()->isStuck())
+    {
+#if defined(VBOX_IS_QT6_OR_LATER) && defined(VBOX_WS_MAC)
+        /* If we want to close the application, we need to accept the close event.
+           If we don't the QEvent::Quit processing in QApplication::event fails and
+           [QCocoaApplicationDelegate applicationShouldTerminate] complains printing
+           "Qt DEBUG: Application termination canceled" in the debug log. */
+        /** @todo qt6: This could easily be caused by something else, but needs to be
+         * looked at by a proper GUI expert.  */
+        if (uisession()->isTurnedOff()) /** @todo qt6: Better state check here? */
+            pCloseEvent->accept();
+#endif
         return;
+    }
 
     /* If there is a close hook script defined: */
     const QString strScript = gEDataManager->machineCloseHookScript(uiCommon().managedVMUuid());
