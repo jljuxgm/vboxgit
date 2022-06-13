@@ -1,4 +1,4 @@
-/* $Id: DevIommuAmd.cpp 90505 2021-08-04 05:17:28Z vboxsync $ */
+/* $Id: DevIommuAmd.cpp 90511 2021-08-04 10:04:15Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - AMD implementation.
  */
@@ -1305,7 +1305,7 @@ static void iommuAmdIotlbAdd(PIOMMU pThis, PIOMMUR3 pThisR3, uint16_t idDomain, 
 {
     Assert(!(uIovaPage & X86_PAGE_4K_OFFSET_MASK));
     Assert(pPageLookup);
-    Assert(pPageLookup->cShift <= 31);
+    Assert(pPageLookup->cShift <= 51);
     Assert(pPageLookup->fPerm != IOMMU_IO_PERM_NONE);
 
     /*
