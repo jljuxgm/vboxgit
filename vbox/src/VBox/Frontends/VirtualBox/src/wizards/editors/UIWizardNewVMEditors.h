@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMEditors.h 93541 2022-02-02 10:07:07Z vboxsync $ */
+/* $Id: UIWizardNewVMEditors.h 93638 2022-02-07 13:02:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMEditors class declaration.
  */
@@ -129,6 +129,7 @@ public:
         void setDomainName(const QString &strDomain);
         QString hostnameDomainName() const;
         bool isComplete() const;
+        bool isHostnameComplete() const;
         void mark();
         void disableEnableProductKeyWidgets(bool fEnabled);
     /** @} */

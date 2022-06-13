@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMEditors.cpp 93546 2022-02-02 15:44:53Z vboxsync $ */
+/* $Id: UIWizardNewVMEditors.cpp 93638 2022-02-07 13:02:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class implementation.
  */
@@ -321,10 +321,16 @@ QString UIAdditionalUnattendedOptions::hostnameDomainName() const
 
 bool UIAdditionalUnattendedOptions::isComplete() const
 {
+    return isHostnameComplete();
+}
+
+bool UIAdditionalUnattendedOptions::isHostnameComplete() const
+{
     if (m_pHostnameDomainNameEditor)
         return m_pHostnameDomainNameEditor->isComplete();
     return false;
 }
+
 
 void UIAdditionalUnattendedOptions::mark()
 {

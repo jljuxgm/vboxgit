@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMExpertPage.cpp 93607 2022-02-04 15:40:30Z vboxsync $ */
+/* $Id: UIWizardNewVMExpertPage.cpp 93638 2022-02-07 13:02:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMExpertPage class implementation.
  */
@@ -958,7 +958,8 @@ void UIWizardNewVMExpertPage::updateHostnameDomainNameFromMachineName()
     m_pAdditionalOptionsContainer->setHostname(pWizard->machineBaseName());
     m_pAdditionalOptionsContainer->setDomainName("myguest.virtualbox.org");
     /* Initialize unattended hostname here since we cannot get the default value from CUnattended this early (unlike username etc): */
-    pWizard->setHostnameDomainName(m_pAdditionalOptionsContainer->hostnameDomainName());
+    if (m_pAdditionalOptionsContainer->isHostnameComplete())
+        pWizard->setHostnameDomainName(m_pAdditionalOptionsContainer->hostnameDomainName());
 
     m_pAdditionalOptionsContainer->blockSignals(false);
 }
