@@ -1,4 +1,4 @@
-/* $Id: VBoxStubBld.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: VBoxStubBld.cpp 93306 2022-01-18 11:29:51Z vboxsync $ */
 /** @file
  * VBoxStubBld - VirtualBox's Windows installer stub builder.
  */
@@ -134,8 +134,8 @@ int main(int argc, char* argv[])
         if (argc < 2)
             printf("WARNING: No parameters given! Using default values!\n");
 
-        VBOXSTUBBUILDPKG stbBuildPkg[VBOXSTUB_MAX_PACKAGES] = {0};
-        VBOXSTUBPKG stbPkg[VBOXSTUB_MAX_PACKAGES] = {0};
+        VBOXSTUBBUILDPKG stbBuildPkg[VBOXSTUB_MAX_PACKAGES] = {{{0}}};
+        VBOXSTUBPKG stbPkg[VBOXSTUB_MAX_PACKAGES] = {{0}};
         VBOXSTUBPKGHEADER stbHeader =
         {
             "vbox$tub",    /* File magic. */
