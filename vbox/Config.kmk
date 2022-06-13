@@ -1,4 +1,4 @@
-# $Id: Config.kmk 89795 2021-06-19 20:21:17Z vboxsync $
+# $Id: Config.kmk 89824 2021-06-21 14:23:27Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -7015,7 +7015,7 @@ ifdef VBOX_WITH_QTGUI
  else if1of ($(KBUILD_TARGET), linux freebsd netbsd openbsd solaris win)
   VBOX_QT_MOD += Qt5Core Qt5Gui Qt5Widgets Qt5PrintSupport $(if $(VBOX_GUI_USE_QGL),Qt5OpenGL,)
   if1of ($(KBUILD_TARGET), linux freebsd netbsd openbsd solaris)
-   VBOX_QT_MOD += Qt5DBus Qt5XcbQpa Qt5X11Extras
+   VBOX_QT_MOD += Qt5DBus Qt5Xml Qt5XcbQpa Qt5X11Extras
    VBOX_QT_PLUGINS = \
    	plugins/platforms/libqxcb.so \
    	plugins/platformthemes/libqgtk2.so \
@@ -8246,7 +8246,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 89795 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 89824 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
