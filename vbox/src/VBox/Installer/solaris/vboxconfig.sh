@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: vboxconfig.sh 92650 2021-11-30 12:43:37Z vboxsync $
+# $Id: vboxconfig.sh 92655 2021-11-30 21:00:19Z vboxsync $
 ## @file
 # VirtualBox Configuration Script, Solaris host.
 #
@@ -914,7 +914,7 @@ install_python_bindings()
     # check if python has working distutils
     "$pythonbin" -c "from distutils.core import setup" > /dev/null 2>&1
     if test "$?" -ne 0; then
-        subprint "Skipped: $pythondesc install is unusable"
+        subprint "Skipped: $pythondesc install is unusable, missing package 'distutils'"
         return 0
     fi
 
