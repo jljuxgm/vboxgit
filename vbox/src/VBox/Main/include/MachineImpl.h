@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 91326 2021-09-22 15:10:38Z vboxsync $ */
+/* $Id: MachineImpl.h 91476 2021-09-29 20:36:36Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -53,8 +53,6 @@
 
 #include "VBox/com/ErrorInfo.h"
 
-#include <iprt/file.h>
-#include <iprt/thread.h>
 #include <iprt/time.h>
 
 #include <list>

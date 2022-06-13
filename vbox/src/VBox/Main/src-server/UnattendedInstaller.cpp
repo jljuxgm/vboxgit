@@ -1,4 +1,4 @@
-/* $Id: UnattendedInstaller.cpp 90828 2021-08-24 09:44:46Z vboxsync $ */
+/* $Id: UnattendedInstaller.cpp 91476 2021-09-29 20:36:36Z vboxsync $ */
 /** @file
  * UnattendedInstaller class and it's descendants implementation
  */
@@ -26,7 +26,6 @@
 #include "AutoCaller.h"
 #include <VBox/com/ErrorInfo.h>
 
-#include "MachineImpl.h"
 #include "UnattendedImpl.h"
 #include "UnattendedInstaller.h"
 #include "UnattendedScript.h"
@@ -36,6 +35,7 @@
 #include <iprt/fsisomaker.h>
 #include <iprt/fsvfs.h>
 #include <iprt/getopt.h>
+#include <iprt/file.h>
 #include <iprt/path.h>
 #include <iprt/stream.h>
 #include <iprt/vfs.h>
