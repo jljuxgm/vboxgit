@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 90120 2021-07-09 12:46:18Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 90121 2021-07-09 12:47:21Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -15,9 +15,6 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef DEBUG_bird               // temporary - bugref:9990
-# define RTMEM_WRAP_TO_EF_APIS  // temporary - bugref:9990
-#endif                          // temporary - bugref:9990
 #define LOG_GROUP LOG_GROUP_MAIN_DISPLAY
 #include "LoggingNew.h"
 
