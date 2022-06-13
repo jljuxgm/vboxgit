@@ -1,4 +1,4 @@
-/* $Id: tstUnattendedScript.cpp 93193 2022-01-11 23:29:20Z vboxsync $ */
+/* $Id: tstUnattendedScript.cpp 93194 2022-01-11 23:32:41Z vboxsync $ */
 /** @file
  * tstUnattendedScript - testcases for UnattendedScript.
  */
@@ -22,60 +22,18 @@
 #include "UnattendedScript.h"
 
 #include <VBox/com/VirtualBox.h>
-
-#include <VBox/com/com.h>
-#include <VBox/com/array.h>
-#include <VBox/com/string.h>
-#include <VBox/com/ErrorInfo.h>
 #include <VBox/com/errorprint.h>
 
+#include <iprt/file.h>
+#include <iprt/path.h>
 #include <iprt/test.h>
 #include <iprt/stream.h>
 
-
-/*********************************************************************************************************************************
-*   Stub Unattended Implementation                                                                                               *
-*********************************************************************************************************************************/
-/* $Id: tstUnattendedScript.cpp 93193 2022-01-11 23:29:20Z vboxsync $ */
-/** @file
- * Unattended class implementation
- */
-
-/*
- * Copyright (C) 2006-2022 Oracle Corporation
- *
- * This file is part of VirtualBox Open Source Edition (OSE), as
- * available from http://www.virtualbox.org. This file is free software;
- * you can redistribute it and/or modify it under the terms of the GNU
- * General Public License (GPL) as published by the Free Software
- * Foundation, in version 2 as it comes in the "COPYING" file of the
- * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
- * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
- */
-
-
-/*********************************************************************************************************************************
-*   Header Files                                                                                                                 *
-*********************************************************************************************************************************/
-#define LOG_GROUP LOG_GROUP_MAIN_UNATTENDED
-#include "LoggingNew.h"
 #include "VirtualBoxBase.h"
 #include "UnattendedImpl.h"
-#include "UnattendedInstaller.h"
 #include "UnattendedScript.h"
 #include "VirtualBoxImpl.h"
-#include "SystemPropertiesImpl.h"
 #include "MachineImpl.h"
-#include "Global.h"
-
-#include <VBox/err.h>
-#include <iprt/ctype.h>
-#include <iprt/file.h>
-#include <iprt/fsvfs.h>
-#include <iprt/inifile.h>
-#include <iprt/locale.h>
-#include <iprt/path.h>
-#include <iprt/vfs.h>
 
 using namespace std;
 
