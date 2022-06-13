@@ -1,4 +1,4 @@
-/* $Id: vkatCmdSelfTest.cpp 90894 2021-08-25 18:00:11Z vboxsync $ */
+/* $Id: vkatCmdSelfTest.cpp 90895 2021-08-25 18:06:21Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) - Self test.
  *
@@ -112,7 +112,7 @@ typedef SELFTESTCTX *PSELFTESTCTX;
 *********************************************************************************************************************************/
 
 /** The global self-text context. */
-static SELFTESTCTX g_Ctx = { 0 };
+static SELFTESTCTX g_Ctx;
 
 
 /*********************************************************************************************************************************
@@ -332,6 +332,8 @@ static DECLCALLBACK(const char *) audioTestCmdSelftestHelp(PCRTGETOPTDEF pOpt)
  */
 DECLCALLBACK(RTEXITCODE) audioTestCmdSelftestHandler(PRTGETOPTSTATE pGetState)
 {
+    RT_ZERO(g_Ctx);
+
     /* Argument processing loop: */
     int           rc;
     RTGETOPTUNION ValueUnion;
