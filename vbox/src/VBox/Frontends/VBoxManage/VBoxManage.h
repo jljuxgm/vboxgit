@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 91157 2021-09-08 14:24:32Z vboxsync $ */
+/* $Id: VBoxManage.h 91416 2021-09-28 06:15:49Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -332,6 +332,9 @@ RTEXITCODE handleUSBDevSource(HandlerArg *a);
 
 /* VBoxManageHostonly.cpp */
 RTEXITCODE handleHostonlyIf(HandlerArg *a);
+#ifdef VBOX_WITH_VMNET
+RTEXITCODE handleHostonlyNet(HandlerArg *a);
+#endif /* VBOX_WITH_VMNET */
 
 /* VBoxManageDHCPServer.cpp */
 RTEXITCODE handleDHCPServer(HandlerArg *a);

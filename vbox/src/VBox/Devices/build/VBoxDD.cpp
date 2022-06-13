@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.cpp 91331 2021-09-22 15:18:46Z vboxsync $ */
+/* $Id: VBoxDD.cpp 91416 2021-09-28 06:15:49Z vboxsync $ */
 /** @file
  * VBoxDD - Built-in drivers & devices (part 1).
  */
@@ -304,6 +304,11 @@ extern "C" DECLEXPORT(int) VBoxDriversRegister(PCPDMDRVREGCB pCallbacks, uint32_
     if (RT_FAILURE(rc))
         return rc;
 #endif
+#ifdef VBOX_WITH_VMNET
+    rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvVMNet);
+    if (RT_FAILURE(rc))
+        return rc;
+#endif /* VBOX_WITH_VMNET */
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvAUDIO);
     if (RT_FAILURE(rc))
         return rc;

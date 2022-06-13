@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 91240 2021-09-15 09:07:48Z vboxsync $
+# $Id: Makefile.kmk 91416 2021-09-28 06:15:49Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -219,6 +219,7 @@ UICommon_DEFS.darwin  += VBOX_DARWIN_USE_NATIVE_CONTROLS
 UICommon_DEFS         += \
 	$(if $(VBOX_WITH_UPDATE_REQUEST),VBOX_WITH_UPDATE_REQUEST) \
 	$(if $(VBOX_WITH_CLOUD_NET),VBOX_WITH_CLOUD_NET) \
+	$(if $(VBOX_WITH_VMNET),VBOX_WITH_VMNET) \
 	$(if $(VBOX_WITH_NETFLT)$(eq $(KBUILD_TARGET),freebsd),VBOX_WITH_NETFLT) \
 	$(if $(VBOX_WITH_VDE),VBOX_WITH_VDE) \
 	$(if $(VBOX_WITH_KCHMVIEWER),VBOX_WITH_KCHMVIEWER) \

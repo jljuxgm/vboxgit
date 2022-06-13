@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.h 90828 2021-08-24 09:44:46Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.h 91416 2021-09-28 06:15:49Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -78,6 +78,8 @@ private:
     HRESULT setBridgedInterface(const com::Utf8Str &aBridgedInterface);
     HRESULT getHostOnlyInterface(com::Utf8Str &aHostOnlyInterface);
     HRESULT setHostOnlyInterface(const com::Utf8Str &aHostOnlyInterface);
+    HRESULT getHostOnlyNetwork(com::Utf8Str &aHostOnlyNetwork);
+    HRESULT setHostOnlyNetwork(const com::Utf8Str &aHostOnlyNetwork);
     HRESULT getInternalNetwork(com::Utf8Str &aInternalNetwork);
     HRESULT setInternalNetwork(const com::Utf8Str &aInternalNetwork);
     HRESULT getNATNetwork(com::Utf8Str &aNATNetwork);

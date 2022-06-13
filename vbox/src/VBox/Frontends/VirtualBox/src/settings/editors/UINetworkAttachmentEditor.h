@@ -1,4 +1,4 @@
-/* $Id: UINetworkAttachmentEditor.h 86089 2020-09-11 09:54:24Z vboxsync $ */
+/* $Id: UINetworkAttachmentEditor.h 91416 2021-09-28 06:15:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkAttachmentEditor class declaration.
  */
@@ -88,6 +88,10 @@ public:
     /** Returns cloud network list. */
     static QStringList cloudNetworks();
 #endif /* VBOX_WITH_CLOUD_NET */
+#ifdef VBOX_WITH_VMNET
+    /** Returns host-only network list. */
+    static QStringList hostOnlyNetworks();
+#endif /* VBOX_WITH_VMNET */
 
 protected:
 

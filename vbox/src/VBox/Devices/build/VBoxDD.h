@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.h 91331 2021-09-22 15:18:46Z vboxsync $ */
+/* $Id: VBoxDD.h 91416 2021-09-28 06:15:49Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1) header.
  */
@@ -131,6 +131,9 @@ extern const PDMDRVREG g_DrvNAT;
 #ifdef VBOX_WITH_NETSHAPER
 extern const PDMDRVREG g_DrvNetShaper;
 #endif /* VBOX_WITH_NETSHAPER */
+#ifdef VBOX_WITH_VMNET
+extern const PDMDRVREG g_DrvVMNet;
+#endif /* VBOX_WITH_VMNET */
 extern const PDMDRVREG g_DrvNetSniffer;
 extern const PDMDRVREG g_DrvAUDIO;
 #ifdef VBOX_WITH_AUDIO_DEBUG

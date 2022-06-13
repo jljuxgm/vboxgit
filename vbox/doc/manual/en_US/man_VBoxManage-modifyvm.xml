@@ -19,7 +19,7 @@
 ]>
 <refentry id="vboxmanage-modifyvm" lang="en">
   <refentryinfo>
-    <pubdate>$Date: 2021-09-11 01:58:08 +0800 (Sat, 11 Sep 2021) $</pubdate>
+    <pubdate>$Date: 2021-09-28 14:15:49 +0800 (Tue, 28 Sep 2021) $</pubdate>
     <title>VBoxManage modifyvm</title>
   </refentryinfo>
 
@@ -279,6 +279,7 @@ time on documenting it. -->
           <arg choice="plain">bridged</arg>
           <arg choice="plain">intnet</arg>
           <arg choice="plain">hostonly</arg>
+          <arg choice="plain">hostonlynet</arg>
           <arg choice="plain">generic</arg>
           <arg choice="plain">natnetwork</arg>
         </group></arg>
@@ -319,6 +320,7 @@ time on documenting it. -->
           <arg choice="plain">none</arg>
           <arg choice="plain"><replaceable>device-name</replaceable></arg>
         </group></arg>
+      <arg>--hostonlynet<replaceable>N</replaceable>=<replaceable>network-name</replaceable></arg>
       <arg>--intnet<replaceable>N</replaceable>=<replaceable>network-name</replaceable></arg>
       <arg>--nat-network<replaceable>N</replaceable>=<replaceable>network-name</replaceable></arg>
       <arg>--nicgenericdrv<replaceable>N</replaceable>=<replaceable>driver-name</replaceable></arg>

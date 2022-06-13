@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 90424 2021-07-30 12:41:38Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 91416 2021-09-28 06:15:49Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -350,6 +350,7 @@ Utf8Str convertNetworkAttachmentTypeToString(NetworkAttachmentType_T type)
         case NetworkAttachmentType_Bridged: strType = "Bridged"; break;
         case NetworkAttachmentType_Internal: strType = "Internal"; break;
         case NetworkAttachmentType_HostOnly: strType = "HostOnly"; break;
+        case NetworkAttachmentType_HostOnlyNetwork: strType = "HostOnlyNetwork"; break;
         case NetworkAttachmentType_Generic: strType = "Generic"; break;
         case NetworkAttachmentType_NATNetwork: strType = "NATNetwork"; break;
         case NetworkAttachmentType_Null: strType = "Null"; break;

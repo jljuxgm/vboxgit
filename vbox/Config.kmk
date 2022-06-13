@@ -1,4 +1,4 @@
-# $Id: Config.kmk 91380 2021-09-27 09:25:06Z vboxsync $
+# $Id: Config.kmk 91416 2021-09-28 06:15:49Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -845,6 +845,8 @@ endif
 VBOX_WITH_DHCPD = 1
 # Experimental suport for cloud network integration
 VBOX_WITH_CLOUD_NET = 1
+# Use Mac OS X VMNET API instead of network kernel extensions
+#VBOX_WITH_VMNET = 1
 ## @}
 
 
@@ -8319,7 +8321,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 91380 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 91416 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)

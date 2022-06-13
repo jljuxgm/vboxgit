@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 91227 2021-09-14 10:49:11Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 91416 2021-09-28 06:15:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -751,6 +751,9 @@ public:
 #ifdef VBOX_WITH_CLOUD_NET
         DetailsElementOptionTypeNetwork_CloudNetwork    = RT_BIT(7),
 #endif /* VBOX_WITH_CLOUD_NET */
+#ifdef VBOX_WITH_VMNET
+        DetailsElementOptionTypeNetwork_HostOnlyNetwork = RT_BIT(8),
+#endif /* VBOX_WITH_VMNET */
         DetailsElementOptionTypeNetwork_Default         = 0xFFFF
     };
     Q_ENUM(DetailsElementOptionTypeNetwork);

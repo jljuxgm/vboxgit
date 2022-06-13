@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 91361 2021-09-24 12:48:04Z vboxsync $
+# $Id: Makefile.kmk 91416 2021-09-28 06:15:49Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -550,6 +550,13 @@ endif
   VBoxDD_DEFS           += VBOX_WITH_NETSHAPER
   VBoxDD_SOURCES        += \
  	Network/DrvNetShaper.cpp
+ endif
+
+ ifdef VBOX_WITH_VMNET
+  VBoxDD_DEFS           += VBOX_WITH_VMNET
+  VBoxDD_SOURCES        += \
+ 	Network/DrvVMNet.m
+  VBoxDD_LDFLAGS += -framework vmnet
  endif
 
  # --- Storage bits. ---
