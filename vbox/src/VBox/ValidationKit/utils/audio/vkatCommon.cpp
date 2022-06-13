@@ -1,4 +1,4 @@
-/* $Id: vkatCommon.cpp 91597 2021-10-06 16:23:40Z vboxsync $ */
+/* $Id: vkatCommon.cpp 91598 2021-10-06 16:26:49Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) - Self test code.
  */
@@ -155,6 +155,7 @@ int audioTestSetMasterVolume(unsigned uVolPercent)
     }
 
     hr = CoInitialize(NULL);
+    WASAPI_CHECK_HR_RET(("CoInitialize() failed, hr=%Rhrc", hr));
     IMMDeviceEnumerator* pIEnumerator = NULL;
     hr = CoCreateInstance(__uuidof(MMDeviceEnumerator), NULL, CLSCTX_ALL, __uuidof(IMMDeviceEnumerator), (void **)&pIEnumerator);
     WASAPI_CHECK_HR_RET(("WASAPI: Unable to create IMMDeviceEnumerator, hr=%Rhrc", hr));
