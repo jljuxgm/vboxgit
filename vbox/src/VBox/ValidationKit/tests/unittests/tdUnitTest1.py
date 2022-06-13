@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 94898 2022-05-06 13:09:27Z vboxsync $
+# $Id: tdUnitTest1.py 94899 2022-05-06 13:35:57Z vboxsync $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 94898 $"
+__version__ = "$Revision: 94899 $"
 
 
 # Standard Python imports.
@@ -969,6 +969,7 @@ class tdUnitTest1(vbox.TestDriver):
             # If the testcase source does not exist for whatever reason, just mark it as skipped
             # instead of reporting an error.
             if not self._wrapPathExists(sSrc):
+                self.cSkipped += 1;
                 fSkipped = True;
                 return fSkipped;
 
