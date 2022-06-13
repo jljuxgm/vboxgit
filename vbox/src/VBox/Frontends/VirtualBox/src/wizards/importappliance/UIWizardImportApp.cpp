@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportApp.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIWizardImportApp.cpp 93995 2022-02-28 21:31:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportApp class implementation.
  */
@@ -48,7 +48,7 @@ public:
     {
         /* Create widgets: */
         QVBoxLayout *pMainLayout = new QVBoxLayout(this);
-            pMainLayout->setMargin(12);
+            pMainLayout->setContentsMargins(12, 12, 12, 12);
             m_pCaption = new QLabel(this);
                 m_pCaption->setWordWrap(true);
             m_pLicenseText = new QTextEdit(this);

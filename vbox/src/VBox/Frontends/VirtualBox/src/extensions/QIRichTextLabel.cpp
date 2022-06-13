@@ -1,4 +1,4 @@
-/* $Id: QIRichTextLabel.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: QIRichTextLabel.cpp 93995 2022-02-28 21:31:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIRichTextLabel class implementation.
  */
@@ -37,7 +37,7 @@ QIRichTextLabel::QIRichTextLabel(QWidget *pParent)
     if (pMainLayout)
     {
         /* Configure layout: */
-        pMainLayout->setMargin(0);
+        pMainLayout->setContentsMargins(0, 0, 0, 0);
 
         /* Create text-browser: */
         m_pTextBrowser = new QTextBrowser;

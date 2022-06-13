@@ -1,4 +1,4 @@
-/* $Id: UILineTextEdit.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UILineTextEdit.cpp 93995 2022-02-28 21:31:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UILineTextEdit class definitions.
  */
@@ -37,7 +37,7 @@ UITextEditor::UITextEditor(QWidget *pParent /* = NULL */)
   : QIWithRetranslateUI<QIDialog>(pParent)
 {
     QVBoxLayout *pMainLayout = new QVBoxLayout(this);
-    pMainLayout->setMargin(12);
+    pMainLayout->setContentsMargins(12, 12, 12, 12);
 
     /* We need a text editor */
     m_pTextEdit = new QTextEdit(this);

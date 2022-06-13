@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 93366 2022-01-20 17:13:31Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 93995 2022-02-28 21:31:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class implementation.
  */
@@ -490,7 +490,7 @@ void UIMachineWindow::prepareMainLayout()
 
     /* Create main-layout: */
     m_pMainLayout = new QGridLayout(centralWidget());
-    m_pMainLayout->setMargin(0);
+    m_pMainLayout->setContentsMargins(0, 0, 0, 0);
     m_pMainLayout->setSpacing(0);
 
     /* Create shifting-spacers: */

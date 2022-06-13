@@ -1,4 +1,4 @@
-/* $Id: UIProgressDialog.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIProgressDialog.cpp 93995 2022-02-28 21:31:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIProgressDialog class implementation.
  */
@@ -281,7 +281,7 @@ void UIProgressDialog::prepareWidgets()
         AssertPtrReturnVoid(pDescriptionLayout);
         {
             /* Configure layout: */
-            pDescriptionLayout->setMargin(0);
+            pDescriptionLayout->setContentsMargins(0, 0, 0, 0);
 
             /* Add stretch: */
             pDescriptionLayout->addStretch(1);
@@ -308,7 +308,7 @@ void UIProgressDialog::prepareWidgets()
             AssertPtrReturnVoid(pProgressLayout);
             {
                 /* Configure layout: */
-                pProgressLayout->setMargin(0);
+                pProgressLayout->setContentsMargins(0, 0, 0, 0);
 
                 /* Create progress-bar: */
                 m_pProgressBar = new QProgressBar;
