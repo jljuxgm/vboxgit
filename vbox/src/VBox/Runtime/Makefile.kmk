@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 94511 2022-04-07 13:17:57Z vboxsync $
+# $Id: Makefile.kmk 94544 2022-04-11 00:15:04Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -2912,6 +2912,7 @@ RuntimeR0_SOURCES.amd64 += \
 	common/asm/ASMFxRstor.asm \
 	common/asm/ASMRdMsrEx.asm \
 	common/asm/ASMWrMsrEx.asm \
+	common/math/RTUInt128MulByU64Ex.asm \
 	common/string/RTStrEnd.asm
 RuntimeR0_SOURCES.arm32 += \
 	common/string/RTStrEnd.cpp
