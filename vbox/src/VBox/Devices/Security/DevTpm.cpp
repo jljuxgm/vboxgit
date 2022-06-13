@@ -1,4 +1,4 @@
-/* $Id: DevTpm.cpp 91005 2021-08-30 16:32:25Z vboxsync $ */
+/* $Id: DevTpm.cpp 91032 2021-08-31 13:11:10Z vboxsync $ */
 /** @file
  * DevTpm - Trusted Platform Module emulation.
  *
@@ -687,7 +687,7 @@ static VBOXSTRICTRC tpmMmioFifoRead(PPDMDEVINS pDevIns, PDEVTPM pThis, PDEVTPMLO
         if (pThis->offCmdResp <= pThis->cbCmdResp - cb)
         {
             memcpy(pu64, &pThis->abCmdResp[pThis->offCmdResp], cb);
-            pThis->offCmdResp += cb;
+            pThis->offCmdResp += (uint32_t)cb;
         }
         else
             memset(pu64, 0xff, cb);
@@ -814,7 +814,7 @@ static VBOXSTRICTRC tpmMmioFifoWrite(PPDMDEVINS pDevIns, PDEVTPM pThis, PDEVTPML
         if (pThis->offCmdResp <=  pThis->cbCmdResp - cb)
         {
             memcpy(&pThis->abCmdResp[pThis->offCmdResp], &u64, cb);
-            pThis->offCmdResp += cb;
+            pThis->offCmdResp += (uint32_t)cb;
         }
         return VINF_SUCCESS;
     }
