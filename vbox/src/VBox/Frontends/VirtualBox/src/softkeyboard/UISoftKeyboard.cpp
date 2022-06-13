@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboard.cpp 89568 2021-06-08 10:36:38Z vboxsync $ */
+/* $Id: UISoftKeyboard.cpp 89933 2021-06-28 16:08:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class implementation.
  */
@@ -2714,6 +2714,7 @@ void UISoftKeyboardWidget::deleteCurrentLayout()
     {
         if (!msgCenter().questionBinary(this, MessageType_Question,
                                         QString(UISoftKeyboard::tr("This will delete the keyboard layout file as well. Proceed?")),
+                                        QString() /* help keyword */,
                                         0 /* auto-confirm id */,
                                         QString("Delete") /* ok button text */,
                                         QString() /* cancel button text */,

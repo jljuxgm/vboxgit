@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 89740 2021-06-16 13:18:15Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 89933 2021-06-28 16:08:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -915,6 +915,7 @@ void UIExtraDataManagerWindow::sltDataHandleItemChanged(QStandardItem *pItem)
             /* Show warning and ask for overwriting approval: */
             if (!msgCenter().questionBinary(this, MessageType_Question,
                                             QString("Overwriting already existing key, Continue?"),
+                                            QString() /* help keyword */,
                                             0 /* auto-confirm id */,
                                             QString("Overwrite") /* ok button text */,
                                             QString() /* cancel button text */,
@@ -1105,6 +1106,7 @@ void UIExtraDataManagerWindow::sltAdd()
             /* Show warning and ask for overwriting approval: */
             if (!msgCenter().questionBinary(this, MessageType_Question,
                                             QString("Overwriting already existing key, Continue?"),
+                                            QString() /* help keyword */,
                                             0 /* auto-confirm id */,
                                             QString("Overwrite") /* ok button text */,
                                             QString() /* cancel button text */,
@@ -1150,7 +1152,8 @@ void UIExtraDataManagerWindow::sltDel()
     if (!msgCenter().errorWithQuestion(this, MessageType_Question,
                                        QString("<p>Do you really wish to "
                                                "remove chosen records?</p>"),
-                                       strDetails))
+                                       strDetails,
+                                       QString() /* help keyword */))
         return;
 
     /* Erase all the chosen extra-data records: */
