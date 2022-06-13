@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-win.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: SUPDrv-win.cpp 93251 2022-01-15 03:20:12Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Windows NT specifics.
  */
@@ -2600,7 +2600,9 @@ int  VBOXCALL   supdrvOSLdrLoad(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pImage, c
             &&  pNtHdrsIprt->OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_IMPORT].Size >= sizeof(IMAGE_IMPORT_DESCRIPTOR)
             &&  pNtHdrsIprt->OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_IMPORT].VirtualAddress > sizeof(IMAGE_NT_HEADERS)
             &&  pNtHdrsIprt->OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_IMPORT].VirtualAddress < pImage->cbImageBits
-            )
+            &&  pNtHdrsIprt->OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_LOAD_CONFIG].Size >= sizeof(IMAGE_LOAD_CONFIG_DIRECTORY)
+            &&  pNtHdrsIprt->OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_LOAD_CONFIG].VirtualAddress > sizeof(IMAGE_NT_HEADERS)
+            &&  pNtHdrsIprt->OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_LOAD_CONFIG].VirtualAddress < pImage->cbImageBits)
         {
             SUPDRVNTEXCLREGIONS ExcludeRegions;
             ExcludeRegions.cRegions = 0;
@@ -2657,6 +2659,14 @@ int  VBOXCALL   supdrvOSLdrLoad(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pImage, c
                 /* advance */
                 pImp++;
             }
+
+            /* Exclude the security cookie if present. */
+            uint32_t const cbCfg  = pNtHdrsIprt->OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_LOAD_CONFIG].Size;
+            uint32_t const offCfg = pNtHdrsIprt->OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_LOAD_CONFIG].VirtualAddress;
+            IMAGE_LOAD_CONFIG_DIRECTORY const * const pCfg = (IMAGE_LOAD_CONFIG_DIRECTORY const *)&pbImageBits[offCfg];
+            if (   pCfg->Size >= RT_UOFFSET_AFTER(IMAGE_LOAD_CONFIG_DIRECTORY, SecurityCookie)
+                && pCfg->SecurityCookie != NULL)
+                supdrvNtAddExclRegion(&ExcludeRegions, (uintptr_t)pCfg->SecurityCookie - (uintptr_t)pImage->pvImage, sizeof(void *));
 
             /*
              * Ok, do the comparison.

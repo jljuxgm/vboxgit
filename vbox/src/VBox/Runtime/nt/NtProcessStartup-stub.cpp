@@ -1,4 +1,4 @@
-/* $Id: NtProcessStartup-stub.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: NtProcessStartup-stub.cpp 93251 2022-01-15 03:20:12Z vboxsync $ */
 /** @file
  * IPRT - NtProcessStartup stub to make the link happy.
  */
@@ -37,4 +37,14 @@ extern "C" void __cdecl NtProcessStartup(void *pvIgnored)
     ASMBreakpoint();
     NOREF(pvIgnored);
 }
+
+
+#ifdef IN_RING0
+extern "C" long DriverEntry(void *pvDrvObjIgn, void *pvRegPathIgn)
+{
+    ASMBreakpoint();
+    RT_NOREF(pvDrvObjIgn, pvRegPathIgn);
+    return UINT32_C(0xc0000022);
+}
+#endif
 

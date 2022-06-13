@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 93115 2022-01-01 11:31:46Z vboxsync $
+# $Id: Makefile.kmk 93251 2022-01-15 03:20:12Z vboxsync $
 ## @file
 # Makefile for the Windows guest miniport driver.
 #
@@ -66,6 +66,10 @@ VBoxVideo_LIBS          = \
 	$(VBOX_PATH_ADDITIONS_LIB)/HGSMIGuestR0Lib$(VBOX_SUFF_LIB)
 VBoxVideo_LIBS.x86      = \
 	$(PATH_SDK_$(VBOX_WINDDK_GST_NT4)_LIB)/exsup.lib
+if "$(VBOX_VCC_TOOL_STEM)" >= "VCC142" && !defined(VBOX_WITHOUT_CONTROL_FLOW_GUARD)
+ VBoxVideo_LIBS += \
+ 	$(PATH_SDK_$(VBOX_WINDDK)_LIB.$(KBUILD_TARGET_ARCH))/BufferOverflowK.lib
+endif
 
 ifdef VBOX_WITH_WDDM
  #
