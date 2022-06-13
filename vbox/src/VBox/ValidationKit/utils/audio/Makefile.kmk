@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 91983 2021-10-21 21:38:27Z vboxsync $
+# $Id: Makefile.kmk 92137 2021-10-29 07:10:37Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - Audio Utilities.
 #
@@ -89,6 +89,20 @@ vkat_SOURCES  = \
 	$(VKAT_PATH_AUDIO)/AudioMixer.cpp \
 	$(VKAT_PATH_AUDIO)/AudioMixBuffer.cpp \
 	$(VKAT_PATH_AUDIO)/AudioHlp.cpp
+
+SANITIZE = \
+    -fsanitize=undefined \
+    -fsanitize=address \
+    -fsanitize=return \
+    -fsanitize=bounds \
+    -fsanitize=object-size \
+    -fno-sanitize=alignment \
+    -fno-sanitize=vptr \
+    -fno-common
+
+vkat_CXXFLAGS.linux += $(SANITIZE)
+vkat_CFLAGS.linux   += $(SANITIZE)
+vkat_LDFLAGS.linux  += $(SANITIZE)
 
 # Debug stuff.
 ifdef VBOX_WITH_AUDIO_DEBUG
