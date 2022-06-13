@@ -1,4 +1,4 @@
-/* $Id: dir.h 85121 2020-07-08 19:33:26Z vboxsync $ */
+/* $Id: dir.h 90789 2021-08-23 10:27:29Z vboxsync $ */
 /** @file
  * IPRT - Internal Header for RTDir.
  */
@@ -161,7 +161,7 @@ typedef struct RTDIRINTERNAL
  */
 DECLINLINE(bool) rtDirValidHandle(PRTDIRINTERNAL pDir)
 {
-    AssertMsgReturn(VALID_PTR(pDir), ("%p\n", pDir), false);
+    AssertPtrReturn(pDir, false);
     AssertMsgReturn(pDir->u32Magic == RTDIR_MAGIC, ("%#RX32\n", pDir->u32Magic), false);
     return true;
 }

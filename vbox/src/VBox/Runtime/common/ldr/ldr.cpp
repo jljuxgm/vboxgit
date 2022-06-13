@@ -1,4 +1,4 @@
-/* $Id: ldr.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: ldr.cpp 90789 2021-08-23 10:27:29Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader.
  */
@@ -49,7 +49,7 @@ RTDECL(int) RTLdrGetSymbol(RTLDRMOD hLdrMod, const char *pszSymbol, void **ppvVa
      */
     AssertMsgReturn(rtldrIsValid(hLdrMod), ("hLdrMod=%p\n", hLdrMod), VERR_INVALID_HANDLE);
     AssertMsgReturn(pszSymbol, ("pszSymbol=%p\n", pszSymbol), VERR_INVALID_PARAMETER);
-    AssertMsgReturn(VALID_PTR(ppvValue), ("ppvValue=%p\n", ppvValue), VERR_INVALID_PARAMETER);
+    AssertPtrReturn(ppvValue, VERR_INVALID_POINTER);
     PRTLDRMODINTERNAL pMod = (PRTLDRMODINTERNAL)hLdrMod;
     //AssertMsgReturn(pMod->eState == LDR_STATE_OPENED, ("eState=%d\n", pMod->eState), VERR_WRONG_ORDER);
 

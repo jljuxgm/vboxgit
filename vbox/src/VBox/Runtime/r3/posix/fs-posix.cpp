@@ -1,4 +1,4 @@
-/* $Id: fs-posix.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: fs-posix.cpp 90789 2021-08-23 10:27:29Z vboxsync $ */
 /** @file
  * IPRT - File System, Linux.
  */
@@ -57,7 +57,8 @@ RTR3DECL(int) RTFsQuerySizes(const char *pszFsPath, RTFOFF *pcbTotal, RTFOFF *pc
     /*
      * Validate input.
      */
-    AssertMsgReturn(VALID_PTR(pszFsPath) && *pszFsPath, ("%p", pszFsPath), VERR_INVALID_PARAMETER);
+    AssertPtrReturn(pszFsPath, VERR_INVALID_POINTER);
+    AssertReturn(*pszFsPath != '\0', VERR_INVALID_PARAMETER);
 
     /*
      * Convert the path and query the information.
@@ -102,8 +103,9 @@ RTR3DECL(int) RTFsQuerySerial(const char *pszFsPath, uint32_t *pu32Serial)
     /*
      * Validate input.
      */
-    AssertMsgReturn(VALID_PTR(pszFsPath) && *pszFsPath, ("%p", pszFsPath), VERR_INVALID_PARAMETER);
-    AssertMsgReturn(VALID_PTR(pu32Serial), ("%p", pu32Serial), VERR_INVALID_PARAMETER);
+    AssertPtrReturn(pszFsPath, VERR_INVALID_POINTER);
+    AssertReturn(*pszFsPath != '\0', VERR_INVALID_PARAMETER);
+    AssertPtrReturn(pu32Serial, VERR_INVALID_POINTER);
 
     /*
      * Convert the path and query the stats.
@@ -134,8 +136,9 @@ RTR3DECL(int) RTFsQueryProperties(const char *pszFsPath, PRTFSPROPERTIES pProper
     /*
      * Validate.
      */
-    AssertMsgReturn(VALID_PTR(pszFsPath) && *pszFsPath, ("%p", pszFsPath), VERR_INVALID_PARAMETER);
-    AssertMsgReturn(VALID_PTR(pProperties), ("%p", pProperties), VERR_INVALID_PARAMETER);
+    AssertPtrReturn(pszFsPath, VERR_INVALID_POINTER);
+    AssertReturn(*pszFsPath != '\0', VERR_INVALID_PARAMETER);
+    AssertPtrReturn(pProperties, VERR_INVALID_POINTER);
 
     /*
      * Convert the path and query the information.

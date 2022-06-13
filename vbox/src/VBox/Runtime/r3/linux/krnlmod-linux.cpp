@@ -1,4 +1,4 @@
-/* $Id: krnlmod-linux.cpp 86301 2020-09-26 10:06:13Z vboxsync $ */
+/* $Id: krnlmod-linux.cpp 90789 2021-08-23 10:27:29Z vboxsync $ */
 /** @file
  * IPRT - Kernel module, Linux.
  */
@@ -195,7 +195,8 @@ RTDECL(uint32_t) RTKrnlModLoadedGetCount(void)
 RTDECL(int) RTKrnlModLoadedQueryInfoAll(PRTKRNLMODINFO pahKrnlModInfo, uint32_t cEntriesMax,
                                         uint32_t *pcEntries)
 {
-    AssertReturn(VALID_PTR(pahKrnlModInfo) || cEntriesMax == 0, VERR_INVALID_PARAMETER);
+    AssertPtrReturn(pahKrnlModInfo, VERR_INVALID_POINTER);
+    AssertReturn(cEntriesMax == 0, VERR_INVALID_PARAMETER);
 
     uint32_t cKmodsLoaded = RTKrnlModLoadedGetCount();
     if (cEntriesMax < cKmodsLoaded)

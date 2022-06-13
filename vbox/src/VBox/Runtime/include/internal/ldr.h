@@ -1,4 +1,4 @@
-/* $Id: ldr.h 86524 2020-10-11 18:26:52Z vboxsync $ */
+/* $Id: ldr.h 90789 2021-08-23 10:27:29Z vboxsync $ */
 /** @file
  * IPRT - Loader Internals.
  */
@@ -575,7 +575,7 @@ typedef struct RTLDRMODINTERNAL
  */
 DECLINLINE(bool) rtldrIsValid(RTLDRMOD hLdrMod)
 {
-    return VALID_PTR(hLdrMod)
+    return RT_VALID_PTR(hLdrMod)
         && ((PRTLDRMODINTERNAL)hLdrMod)->u32Magic == RTLDRMOD_MAGIC;
 }
 

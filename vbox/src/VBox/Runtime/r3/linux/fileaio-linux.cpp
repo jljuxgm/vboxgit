@@ -1,4 +1,4 @@
-/* $Id: fileaio-linux.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: fileaio-linux.cpp 90789 2021-08-23 10:27:29Z vboxsync $ */
 /** @file
  * IPRT - File async I/O, native implementation for the Linux host platform.
  */
@@ -450,8 +450,7 @@ RTDECL(int) RTFileAioReqCancel(RTFILEAIOREQ hReq)
          * Decrement request count because the request will never arrive at the
          * completion port.
          */
-        AssertMsg(VALID_PTR(pReqInt->pCtxInt),
-                  ("Invalid state. Request was canceled but wasn't submitted\n"));
+        AssertMsg(RT_VALID_PTR(pReqInt->pCtxInt), ("Invalid state. Request was canceled but wasn't submitted\n"));
 
         ASMAtomicDecS32(&pReqInt->pCtxInt->cRequests);
         pReqInt->Rc = VERR_FILE_AIO_CANCELED;

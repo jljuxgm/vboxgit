@@ -1,4 +1,4 @@
-/* $Id: fs-win.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: fs-win.cpp 90789 2021-08-23 10:27:29Z vboxsync $ */
 /** @file
  * IPRT - File System, Win32.
  */
@@ -186,7 +186,8 @@ RTR3DECL(int) RTFsQuerySizes(const char *pszFsPath, RTFOFF *pcbTotal, RTFOFF *pc
     /*
      * Validate & get valid root path.
      */
-    AssertMsgReturn(VALID_PTR(pszFsPath) && *pszFsPath, ("%p", pszFsPath), VERR_INVALID_PARAMETER);
+    AssertPtrReturn(pszFsPath, VERR_INVALID_POINTER);
+    AssertReturn(*pszFsPath != '\0', VERR_INVALID_PARAMETER);
     PRTUTF16 pwszFsRoot;
     int rc = rtFsGetRoot(pszFsPath, &pwszFsRoot);
     if (RT_FAILURE(rc))
@@ -257,8 +258,9 @@ RTR3DECL(int) RTFsQuerySerial(const char *pszFsPath, uint32_t *pu32Serial)
     /*
      * Validate & get valid root path.
      */
-    AssertMsgReturn(VALID_PTR(pszFsPath) && *pszFsPath, ("%p", pszFsPath), VERR_INVALID_PARAMETER);
-    AssertMsgReturn(VALID_PTR(pu32Serial), ("%p", pu32Serial), VERR_INVALID_PARAMETER);
+    AssertPtrReturn(pszFsPath, VERR_INVALID_POINTER);
+    AssertReturn(*pszFsPath != '\0', VERR_INVALID_PARAMETER);
+    AssertPtrReturn(pu32Serial, VERR_INVALID_POINTER);
     PRTUTF16 pwszFsRoot;
     int rc = rtFsGetRoot(pszFsPath, &pwszFsRoot);
     if (RT_FAILURE(rc))
@@ -297,8 +299,9 @@ RTR3DECL(int) RTFsQueryProperties(const char *pszFsPath, PRTFSPROPERTIES pProper
     /*
      * Validate & get valid root path.
      */
-    AssertMsgReturn(VALID_PTR(pszFsPath) && *pszFsPath, ("%p", pszFsPath), VERR_INVALID_PARAMETER);
-    AssertMsgReturn(VALID_PTR(pProperties), ("%p", pProperties), VERR_INVALID_PARAMETER);
+    AssertPtrReturn(pszFsPath, VERR_INVALID_POINTER);
+    AssertReturn(*pszFsPath != '\0', VERR_INVALID_PARAMETER);
+    AssertPtrReturn(pProperties, VERR_INVALID_POINTER);
     PRTUTF16 pwszFsRoot;
     int rc = rtFsGetRoot(pszFsPath, &pwszFsRoot);
     if (RT_FAILURE(rc))

@@ -1,4 +1,4 @@
-/* $Id: RTFileCopyByHandlesEx-generic.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: RTFileCopyByHandlesEx-generic.cpp 90789 2021-08-23 10:27:29Z vboxsync $ */
 /** @file
  * IPRT - RTFileCopyByHandlesEx, generic implementation.
  */
@@ -44,7 +44,7 @@ RTDECL(int) RTFileCopyByHandlesEx(RTFILE hFileSrc, RTFILE hFileDst, PFNRTPROGRES
      */
     AssertMsgReturn(RTFileIsValid(hFileSrc), ("hFileSrc=%RTfile\n", hFileSrc), VERR_INVALID_PARAMETER);
     AssertMsgReturn(RTFileIsValid(hFileDst), ("hFileDst=%RTfile\n", hFileDst), VERR_INVALID_PARAMETER);
-    AssertMsgReturn(!pfnProgress || VALID_PTR(pfnProgress), ("pfnProgress=%p\n", pfnProgress), VERR_INVALID_PARAMETER);
+    AssertPtrNullReturn(pfnProgress, VERR_INVALID_POINTER);
 
     /*
      * Save file offset.
