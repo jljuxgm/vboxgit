@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.h 91165 2021-09-08 15:34:03Z vboxsync $ */
+/* $Id: UINotificationObjects.h 91169 2021-09-08 18:45:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects declarations.
  */
@@ -211,6 +211,9 @@ public:
         /** Notifies about inability to acquire INATNetwork parameter.
           * @param  comNetwork  Brings the object parameter get acquired from. */
         static void cannotAcquireNATNetworkParameter(const CNATNetwork &comNetwork);
+        /** Notifies about inability to acquire INATNetwork parameter.
+          * @param  comNetwork  Brings the object parameter get acquired from. */
+        static void cannotAcquireDispayParameter(const CDisplay &comDisplay);
 
         /** Notifies about inability to change IMedium parameter.
           * @param  comMedium  Brings the object parameter being changed for. */

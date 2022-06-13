@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 91125 2021-09-06 14:32:23Z vboxsync $ */
+/* $Id: UISession.cpp 91169 2021-09-08 18:45:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -1813,7 +1813,7 @@ bool UISession::preprocessInitialization()
     /* Check if non-existent interfaces found */
     if (!failedInterfaceNames.isEmpty())
     {
-        if (msgCenter().cannotStartWithoutNetworkIf(machineName(), failedInterfaceNames.join(", ")))
+        if (msgCenter().warnAboutNetworkInterfaceNotFound(machineName(), failedInterfaceNames.join(", ")))
             machineLogic()->openNetworkSettingsDialog();
         else
         {
