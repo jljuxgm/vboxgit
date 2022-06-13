@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 92385 2021-11-11 23:54:29Z vboxsync $ */
+/* $Id: PGM.cpp 92409 2021-11-12 22:17:42Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -711,8 +711,8 @@ static const DBGCCMD    g_aCmds[] =
 };
 #endif
 
-
 #ifdef VBOX_WITH_PGM_NEM_MODE
+
 /**
  * Interface that NEM uses to switch PGM into simplified memory managment mode.
  *
@@ -725,8 +725,20 @@ VMMR3_INT_DECL(void) PGMR3EnableNemMode(PVM pVM)
     AssertFatal(!PDMCritSectIsInitialized(&pVM->pgm.s.CritSectX));
     pVM->pgm.s.fNemMode = true;
 }
-#endif
 
+
+/**
+ * Checks whether the simplificed memory management mode for NEM is enabled.
+ *
+ * @returns true if enabled, false if not.
+ * @param   pVM     The cross context VM structure.
+ */
+VMMR3_INT_DECL(bool)    PGMR3IsNemModeEnabled(PVM pVM)
+{
+    return pVM->pgm.s.fNemMode;
+}
+
+#endif /* VBOX_WITH_PGM_NEM_MODE */
 
 /**
  * Initiates the paging of VM.
