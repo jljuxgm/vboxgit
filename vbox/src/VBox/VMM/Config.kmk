@@ -1,4 +1,4 @@
-# $Id: Config.kmk 86653 2020-10-20 14:44:49Z vboxsync $
+# $Id: Config.kmk 91014 2021-08-31 01:03:39Z vboxsync $
 ## @file
 # kBuild Configuration file for the VMM.
 #
@@ -68,11 +68,8 @@ ifdef VBOX_WITH_NATIVE_NEM
   VMM_COMMON_DEFS += VBOX_WITH_NATIVE_NEM VBOX_WITH_NEM_R0
  endif
 endif
-ifdef VBOX_WITH_RAM_IN_KERNEL
- VMM_COMMON_DEFS += VBOX_WITH_RAM_IN_KERNEL
- if1of ($(KBUILD_TARGET), linux solaris) # Hosts that implements SUPR0HCPhysToVirt.
-  VMM_COMMON_DEFS += VBOX_WITH_LINEAR_HOST_PHYS_MEM
- endif
+if1of ($(KBUILD_TARGET), linux solaris) # Hosts that implements SUPR0HCPhysToVirt.
+ VMM_COMMON_DEFS += VBOX_WITH_LINEAR_HOST_PHYS_MEM
 endif
 
 # VMM_COMMON_DEFS += VBOX_WITH_NS_ACCOUNTING_STATS

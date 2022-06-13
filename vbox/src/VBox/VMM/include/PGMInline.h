@@ -1,4 +1,4 @@
-/* $Id: PGMInline.h 87141 2020-12-29 19:12:45Z vboxsync $ */
+/* $Id: PGMInline.h 91014 2021-08-31 01:03:39Z vboxsync $ */
 /** @file
  * PGM - Inlined functions.
  */
@@ -270,7 +270,7 @@ DECLINLINE(int) pgmPhysPageQueryTlbeWithPage(PVMCC pVM, PPGMPAGE pPage, RTGCPHYS
         STAM_COUNTER_INC(&pVM->pgm.s.CTX_SUFF(pStats)->CTX_MID_Z(Stat,PageMapTlbHits));
         rc = VINF_SUCCESS;
         AssertPtr(pTlbe->pv);
-#if defined(IN_RING3) || !defined(VBOX_WITH_RAM_IN_KERNEL)
+#ifdef IN_RING3
         Assert(!pTlbe->pMap || RT_VALID_PTR(pTlbe->pMap->pv));
 #endif
     }
