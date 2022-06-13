@@ -1,4 +1,4 @@
-/* $Id: HGSMIHost.h 85121 2020-07-08 19:33:26Z vboxsync $ */
+/* $Id: HGSMIHost.h 91942 2021-10-21 12:59:54Z vboxsync $ */
 /** @file
  * VBox Host Guest Shared Memory Interface (HGSMI), host part.
  */
@@ -37,7 +37,7 @@ typedef FNHGSMINOTIFYGUEST *PFNHGSMINOTIFYGUEST;
  */
 
 int   HGSMICreate(PHGSMIINSTANCE *ppIns,
-                  PVM             pVM,
+                  PPDMDEVINS      pDevIns,
                   const char     *pszName,
                   HGSMIOFFSET     offBase,
                   uint8_t        *pu8MemBase,
