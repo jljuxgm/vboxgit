@@ -1,4 +1,4 @@
-/* $Id: HGCMMock.h 93978 2022-02-28 12:29:52Z vboxsync $ */
+/* $Id: HGCMMock.h 94228 2022-03-14 19:19:18Z vboxsync $ */
 /** @file
  * HGCMMock.h: Mocking framework for testing HGCM-based host services +
  *             Vbgl code on the host side.
@@ -60,7 +60,7 @@
 
 #if defined(IN_RING3) /* Only R3 parts implemented so far. */
 
-extern DECLCALLBACK(DECLEXPORT(int)) VBoxHGCMSvcLoad(VBOXHGCMSVCFNTABLE *ptable);
+extern "C" DECLCALLBACK(DECLEXPORT(int)) VBoxHGCMSvcLoad (VBOXHGCMSVCFNTABLE *ptable);
 
 # define VBGLR3DECL(type) DECL_HIDDEN_NOTHROW(type) VBOXCALL
 
