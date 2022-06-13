@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMUnattendedPageBasic.cpp 91025 2021-08-31 10:52:50Z vboxsync $ */
+/* $Id: UIWizardNewVMUnattendedPageBasic.cpp 91035 2021-08-31 15:57:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMUnattendedPageBasic class implementation.
  */
@@ -169,11 +169,6 @@ bool UIWizardNewVMUnattendedPageBasic::isComplete() const
     if (m_pAdditionalOptionsContainer && !m_pAdditionalOptionsContainer->isComplete())
         return false;
     return true;
-}
-
-void UIWizardNewVMUnattendedPageBasic::showEvent(QShowEvent *pEvent)
-{
-    UINativeWizardPage::showEvent(pEvent);
 }
 
 void UIWizardNewVMUnattendedPageBasic::sltInstallGACheckBoxToggle(bool fEnabled)

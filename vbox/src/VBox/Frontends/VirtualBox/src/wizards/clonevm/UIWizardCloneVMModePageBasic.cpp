@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMModePageBasic.cpp 90990 2021-08-30 09:38:18Z vboxsync $ */
+/* $Id: UIWizardCloneVMModePageBasic.cpp 91035 2021-08-31 15:57:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMModePageBasic class implementation.
  */
@@ -18,13 +18,11 @@
 /* Global includes: */
 #include <QVBoxLayout>
 
-
 /* Local includes: */
 #include "UIWizardCloneVM.h"
 #include "UIWizardCloneVMEditors.h"
 #include "UIWizardCloneVMModePageBasic.h"
 #include "QIRichTextLabel.h"
-
 
 UIWizardCloneVMModePageBasic::UIWizardCloneVMModePageBasic(bool fShowChildsOption)
     : m_pLabel(0)

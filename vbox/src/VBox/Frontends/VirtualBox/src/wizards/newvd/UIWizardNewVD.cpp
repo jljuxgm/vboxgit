@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVD.cpp 90564 2021-08-07 11:12:13Z vboxsync $ */
+/* $Id: UIWizardNewVD.cpp 91035 2021-08-31 15:57:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVD class implementation.
  */
@@ -24,7 +24,6 @@
 #include "UIWizardNewVDPageVariant.h"
 #include "UIWizardNewVDPageSizeLocation.h"
 #include "UIWizardNewVDPageExpert.h"
-
 
 UIWizardNewVD::UIWizardNewVD(QWidget *pParent,
                              const QString &strDefaultName,
@@ -99,7 +98,7 @@ void UIWizardNewVD::populatePages()
             addPage(new UIWizardNewVDPageSizeLocation(m_strDefaultName, m_strDefaultPath, m_uDefaultSize));
             break;
         }
-       case WizardMode_Expert:
+        case WizardMode_Expert:
         {
             addPage(new UIWizardNewVDPageExpert(m_strDefaultName, m_strDefaultPath, m_uDefaultSize));
             break;

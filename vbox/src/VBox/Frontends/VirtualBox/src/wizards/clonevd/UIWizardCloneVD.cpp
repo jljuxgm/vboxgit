@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVD.cpp 90827 2021-08-24 08:50:46Z vboxsync $ */
+/* $Id: UIWizardCloneVD.cpp 91035 2021-08-31 15:57:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVD class implementation.
  */
@@ -42,6 +42,11 @@ UIWizardCloneVD::UIWizardCloneVD(QWidget *pParent, const CMedium &comSourceVirtu
     /* Assign background image: */
     setPixmapName(":/wizard_new_harddisk_bg.png");
 #endif /* VBOX_WS_MAC */
+}
+
+const CMedium &UIWizardCloneVD::sourceVirtualDisk() const
+{
+    return m_comSourceVirtualDisk;
 }
 
 KDeviceType UIWizardCloneVD::deviceType() const
@@ -103,7 +108,7 @@ void UIWizardCloneVD::populatePages()
 
             {
             addPage(new UIWizardCloneVDPageFormat(m_enmDeviceType));
-            m_iMediumVariantPageIndex = addPage(new UIWizardCloneVDPageVariant(m_enmDeviceType));
+            m_iMediumVariantPageIndex = addPage(new UIWizardCloneVDPageVariant);
             addPage(new UIWizardCloneVDPagePathSize(sourceDiskLogicalSize()));
             break;
         }

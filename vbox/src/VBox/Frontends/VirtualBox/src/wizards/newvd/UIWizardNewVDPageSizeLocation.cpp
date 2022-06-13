@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageSizeLocation.cpp 90990 2021-08-30 09:38:18Z vboxsync $ */
+/* $Id: UIWizardNewVDPageSizeLocation.cpp 91035 2021-08-31 15:57:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageSizeLocation class implementation.
  */
@@ -20,7 +20,6 @@
 #include <QVBoxLayout>
 
 /* GUI includes: */
-#include "QIFileDialog.h"
 #include "UIWizardNewVDPageSizeLocation.h"
 #include "UIWizardNewVD.h"
 #include "UICommon.h"

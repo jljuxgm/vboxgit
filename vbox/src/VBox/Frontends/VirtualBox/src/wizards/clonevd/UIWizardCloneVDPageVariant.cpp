@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageVariant.cpp 90990 2021-08-30 09:38:18Z vboxsync $ */
+/* $Id: UIWizardCloneVDPageVariant.cpp 91035 2021-08-31 15:57:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDPageVariant class implementation.
  */
@@ -27,7 +27,7 @@
 /* COM includes: */
 #include "CMediumFormat.h"
 
-UIWizardCloneVDPageVariant::UIWizardCloneVDPageVariant(KDeviceType /*enmDeviceType*/)
+UIWizardCloneVDPageVariant::UIWizardCloneVDPageVariant()
     : m_pDescriptionLabel(0)
     , m_pDynamicLabel(0)
     , m_pFixedLabel(0)
@@ -65,7 +65,6 @@ void UIWizardCloneVDPageVariant::prepare()
                 this, &UIWizardCloneVDPageVariant::sltMediumVariantChanged);
 
     }
-
     retranslateUi();
 }
 

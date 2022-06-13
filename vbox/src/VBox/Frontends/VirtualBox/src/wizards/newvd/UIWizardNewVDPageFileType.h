@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageFileType.h 90990 2021-08-30 09:38:18Z vboxsync $ */
+/* $Id: UIWizardNewVDPageFileType.h 91035 2021-08-31 15:57:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageFileType class declaration.
  */
@@ -27,11 +27,6 @@
 /* Forward declarations: */
 class QIRichTextLabel;
 class UIDiskFormatsGroupBox;
-class UIWizardNewVD;
-
-namespace UIWizardNewVDFileType
-{
-}
 
 /* 1st page of the New Virtual Hard Drive wizard (basic extension): */
 class SHARED_LIBRARY_STUFF UIWizardNewVDPageFileType : public UINativeWizardPage

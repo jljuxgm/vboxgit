@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageVariant.h 90990 2021-08-30 09:38:18Z vboxsync $ */
+/* $Id: UIWizardCloneVDPageVariant.h 91035 2021-08-31 15:57:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDPageVariant class declaration.
  */
@@ -24,12 +24,8 @@
 /* GUI includes: */
 #include "UINativeWizardPage.h"
 
-/* COM includes: */
-#include "COMEnums.h"
-
 /* Forward declarations: */
 class QIRichTextLabel;
-class UIWizardCloneVD;
 class CMediumFormat;
 class UIDiskVariantGroupBox;
 
@@ -40,7 +36,7 @@ class UIWizardCloneVDPageVariant : public UINativeWizardPage
 public:
 
     /** Constructs basic page. */
-    UIWizardCloneVDPageVariant(KDeviceType enmDeviceType);
+    UIWizardCloneVDPageVariant();
 
 private slots:
 
@@ -67,7 +63,6 @@ private:
     QIRichTextLabel *m_pFixedLabel;
     /** Holds the 'Split to 2GB files' description label instance. */
     QIRichTextLabel *m_pSplitLabel;
-
     UIDiskVariantGroupBox *m_pVariantGroupBox;
 };
 

@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMNameOSTypePageBasic.h 90413 2021-07-29 15:54:11Z vboxsync $ */
+/* $Id: UIWizardNewVMNameOSTypePageBasic.h 91035 2021-08-31 15:57:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMNameOSTypePageBasic class declaration.
  */
@@ -51,7 +51,6 @@ namespace UIWizardNewVMNameOSTypePage
 /** 1st page of the New Virtual Machine wizard (basic extension). */
 class UIWizardNewVMNameOSTypePageBasic : public UINativeWizardPage
 {
-
     Q_OBJECT;
 
 public:
@@ -84,7 +83,6 @@ private:
     void prepare();
     void createConnections();
     void initializePage();
-    //void cleanupPage();
     QWidget *createNameOSTypeWidgets();
     void markWidgets() const;
     void setSkipCheckBoxEnable();

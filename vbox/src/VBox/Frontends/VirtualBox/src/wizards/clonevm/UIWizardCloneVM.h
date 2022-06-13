@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVM.h 90990 2021-08-30 09:38:18Z vboxsync $ */
+/* $Id: UIWizardCloneVM.h 91035 2021-08-31 15:57:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVM class declaration.
  */
@@ -26,7 +26,6 @@
 #include "UIWizardCloneVMEditors.h"
 
 /* COM includes: */
-#include "COMEnums.h"
 #include "CMachine.h"
 #include "CSnapshot.h"
 

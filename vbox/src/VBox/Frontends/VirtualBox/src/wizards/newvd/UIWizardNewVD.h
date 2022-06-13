@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVD.h 90990 2021-08-30 09:38:18Z vboxsync $ */
+/* $Id: UIWizardNewVD.h 91035 2021-08-31 15:57:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVD class declaration.
  */
@@ -42,17 +42,20 @@ public:
 
     bool createVirtualDisk();
 
-    qulonglong mediumVariant() const;
-    void setMediumVariant(qulonglong uMediumVariant);
+    /** @name Setter/getters for vm parameters
+     * @{ */
+       qulonglong mediumVariant() const;
+       void setMediumVariant(qulonglong uMediumVariant);
 
-    const CMediumFormat &mediumFormat();
-    void setMediumFormat(const CMediumFormat &mediumFormat);
+       const CMediumFormat &mediumFormat();
+       void setMediumFormat(const CMediumFormat &mediumFormat);
 
-    const QString &mediumPath() const;
-    void setMediumPath(const QString &strMediumPath);
+       const QString &mediumPath() const;
+       void setMediumPath(const QString &strMediumPath);
 
-    qulonglong mediumSize() const;
-    void setMediumSize(qulonglong mediumSize);
+       qulonglong mediumSize() const;
+       void setMediumSize(qulonglong mediumSize);
+    /** @} */
 
 protected:
 

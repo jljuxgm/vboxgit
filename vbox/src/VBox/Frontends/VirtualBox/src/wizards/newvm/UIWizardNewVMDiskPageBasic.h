@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMDiskPageBasic.h 90902 2021-08-26 08:15:30Z vboxsync $ */
+/* $Id: UIWizardNewVMDiskPageBasic.h 91035 2021-08-31 15:57:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMDiskPageBasic class declaration.
  */
@@ -41,7 +41,6 @@ class QIRichTextLabel;
 class QIToolButton;
 class UIMediaComboBox;
 class UIMediumSizeEditor;
-class UIWizardNewVM;
 
 enum SelectedDiskSource
 {

@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPagePathSize.cpp 90990 2021-08-30 09:38:18Z vboxsync $ */
+/* $Id: UIWizardCloneVDPagePathSize.cpp 91035 2021-08-31 15:57:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDPagePathSize class implementation.
  */
@@ -34,7 +34,6 @@ UIWizardCloneVDPagePathSize::UIWizardCloneVDPagePathSize(qulonglong uSourceDiskL
 void UIWizardCloneVDPagePathSize::prepare(qulonglong uSourceDiskLogicaSize)
 {
     QVBoxLayout *pMainLayout = new QVBoxLayout(this);
-
     m_pMediumSizePathGroupBox = new UIMediumSizeAndPathGroupBox(false /* expert mode */, 0 /* parent */, uSourceDiskLogicaSize);
     if (m_pMediumSizePathGroupBox)
     {
@@ -46,7 +45,6 @@ void UIWizardCloneVDPagePathSize::prepare(qulonglong uSourceDiskLogicaSize)
         connect(m_pMediumSizePathGroupBox, &UIMediumSizeAndPathGroupBox::sigMediumSizeChanged,
                 this, &UIWizardCloneVDPagePathSize::sltMediumSizeChanged);
     }
-
     pMainLayout->addStretch();
     retranslateUi();
 }

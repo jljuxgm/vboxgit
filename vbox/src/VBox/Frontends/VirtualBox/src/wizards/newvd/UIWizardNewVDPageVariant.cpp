@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageVariant.cpp 90990 2021-08-30 09:38:18Z vboxsync $ */
+/* $Id: UIWizardNewVDPageVariant.cpp 91035 2021-08-31 15:57:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageVariant class implementation.
  */
@@ -39,7 +39,6 @@ UIWizardNewVDPageVariant::UIWizardNewVDPageVariant()
 
 void UIWizardNewVDPageVariant::prepare()
 {
-
     QVBoxLayout *pMainLayout = new QVBoxLayout(this);
     AssertReturnVoid(pMainLayout);
 
@@ -102,9 +101,7 @@ bool UIWizardNewVDPageVariant::isComplete() const
 void UIWizardNewVDPageVariant::setWidgetVisibility(const CMediumFormat &mediumFormat)
 {
     AssertReturnVoid(m_pVariantGroupBox);
-
     m_pVariantGroupBox->updateMediumVariantWidgetsAfterFormatChange(mediumFormat);
-
     if (m_pDynamicLabel)
         m_pDynamicLabel->setHidden(!m_pVariantGroupBox->isCreateDynamicPossible());
     if (m_pFixedLabel)

@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPagePathSize.h 90990 2021-08-30 09:38:18Z vboxsync $ */
+/* $Id: UIWizardCloneVDPagePathSize.h 91035 2021-08-31 15:57:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDPagePathSize class declaration.
  */
@@ -32,9 +32,7 @@
 #include "COMEnums.h"
 
 /* Forward declarations: */
-class QIRichTextLabel;
 class UIMediumSizeAndPathGroupBox;
-class UIWizardCloneVD;
 
 /** 4th page of the Clone Virtual Disk Image wizard (basic extension): */
 class UIWizardCloneVDPagePathSize : public UINativeWizardPage

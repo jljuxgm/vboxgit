@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMTypePageBasic.cpp 90990 2021-08-30 09:38:18Z vboxsync $ */
+/* $Id: UIWizardCloneVMTypePageBasic.cpp 91035 2021-08-31 15:57:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMTypePageBasic class implementation.
  */
@@ -23,10 +23,6 @@
 #include "UIWizardCloneVM.h"
 #include "QIRichTextLabel.h"
 #include "UIWizardCloneVMEditors.h"
-
-/* COM includes: */
-#include "CSystemProperties.h"
-
 
 UIWizardCloneVMTypePageBasic::UIWizardCloneVMTypePageBasic(bool fAdditionalInfo)
     : m_pLabel(0)

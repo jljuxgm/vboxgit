@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMUnattendedPageBasic.h 91025 2021-08-31 10:52:50Z vboxsync $ */
+/* $Id: UIWizardNewVMUnattendedPageBasic.h 91035 2021-08-31 15:57:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMUnattendedPageBasic class declaration.
  */
@@ -29,7 +29,6 @@ class QIRichTextLabel;
 class UIAdditionalUnattendedOptions;
 class UIGAInstallationGroupBox;
 class UIUserNamePasswordGroupBox;
-class UIWizardNewVM;
 
 namespace UIWizardNewVMUnattendedPage
 {
@@ -44,11 +43,6 @@ class UIWizardNewVMUnattendedPageBasic : public UINativeWizardPage
 public:
 
     UIWizardNewVMUnattendedPageBasic();
-
-protected:
-
-    virtual void showEvent(QShowEvent *pEvent) /* override final*/;
-    /** Don't reset the user entered values in case of "back" button press. */
 
 private slots:
 
@@ -78,7 +72,6 @@ private:
         UIAdditionalUnattendedOptions *m_pAdditionalOptionsContainer;
         UIGAInstallationGroupBox *m_pGAInstallationISOContainer;
         UIUserNamePasswordGroupBox *m_pUserNamePasswordGroupBox;
-
     /** @} */
     QSet<QString> m_userModifiedParameters;
 };

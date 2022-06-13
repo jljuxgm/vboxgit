@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageFormat.h 90990 2021-08-30 09:38:18Z vboxsync $ */
+/* $Id: UIWizardCloneVDPageFormat.h 91035 2021-08-31 15:57:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDPageFormat class declaration.
  */
@@ -33,8 +33,6 @@
 /* Forward declarations: */
 class QIRichTextLabel;
 class UIDiskFormatsGroupBox;
-class UIWizardCloneVD;
-
 
 /** 2nd page of the Clone Virtual Disk Image wizard (basic extension): */
 class UIWizardCloneVDPageFormat : public UINativeWizardPage

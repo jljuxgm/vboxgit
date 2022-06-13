@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMHardwarePageBasic.h 91025 2021-08-31 10:52:50Z vboxsync $ */
+/* $Id: UIWizardNewVMHardwarePageBasic.h 91035 2021-08-31 15:57:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMHardwarePageBasic class declaration.
  */
@@ -30,11 +30,6 @@
 /* Forward declarations: */
 class QIRichTextLabel;
 class UINewVMHardwareContainer;
-class UIWizardNewVM;
-
-namespace UIWizardNewVMHardwarePage
-{
-}
 
 class UIWizardNewVMHardwarePageBasic : public UINativeWizardPage
 {
@@ -43,9 +38,6 @@ class UIWizardNewVMHardwarePageBasic : public UINativeWizardPage
 public:
 
     UIWizardNewVMHardwarePageBasic();
-
-protected:
-
 
 private slots:
 
@@ -63,9 +55,9 @@ private:
     bool isComplete() const;
 
     /** @name Widgets
-     * @{ */
-       QIRichTextLabel    *m_pLabel;
-       UINewVMHardwareContainer *m_pHardwareWidgetContainer;
+      * @{ */
+        QIRichTextLabel    *m_pLabel;
+        UINewVMHardwareContainer *m_pHardwareWidgetContainer;
     /** @} */
     /** This set is used to decide if we have to set wizard's parameters
       * some default values or not. When user modifies a value through a widget we

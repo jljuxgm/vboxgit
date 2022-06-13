@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.h 90990 2021-08-30 09:38:18Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.h 91035 2021-08-31 15:57:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class declaration.
  */
@@ -44,20 +44,15 @@ class UINameAndSystemEditor;
 class UINewVMHardwareContainer;
 class UIToolBox;
 class UIUserNamePasswordGroupBox;
-class UIWizardNewVM;
 
 /** Expert page of the New Virtual Machine wizard. */
 class UIWizardNewVMPageExpert : public UINativeWizardPage
 {
-
     Q_OBJECT;
 
 public:
 
     UIWizardNewVMPageExpert();
-
-protected:
-
 
 private slots:
 
@@ -82,7 +77,6 @@ private slots:
     void sltEFIEnabledChanged(bool fEnabled);
     void sltPasswordChanged(const QString &strPassword);
     void sltUserNameChanged(const QString &strUserName);
-
     void sltHostnameDomainNameChanged(const QString &strHostnameDomainName);
     void sltProductKeyChanged(const QString &strProductKey);
     void sltStartHeadlessChanged(bool fStartHeadless);
@@ -120,9 +114,7 @@ private:
     QWidget *createUnattendedWidgets();
     QWidget *createNewDiskWidgets();
     QWidget *createDiskWidgets();
-
     QWidget *createNameOSTypeWidgets();
-
     void updateVirtualMediumPathFromMachinePathName();
     void updateDiskWidgetsAfterMediumFormatChange();
     void updateHostnameDomainNameFromMachineName();
