@@ -19,7 +19,7 @@
 ]>
 <refentry id="vboxmanage-createmedium" lang="en">
   <refentryinfo>
-    <pubdate>$Date: 2021-12-16 01:26:13 +0800 (Thu, 16 Dec 2021) $</pubdate>
+    <pubdate>$Date: 2021-12-16 21:59:32 +0800 (Thu, 16 Dec 2021) $</pubdate>
     <title>VBoxManage createmedium</title>
   </refentryinfo>
 
@@ -160,7 +160,8 @@
               </para></listitem>
             <listitem><para>
                 <literal>RawDisk</literal> used for creating raw disks.
-                This value is for VMDK only.
+                This value is for VMDK only. For detailed information
+				about raw disks, see <xref linkend="adv-storage-config"/>
               </para><para>
               </para></listitem>
           </itemizedlist><para>
