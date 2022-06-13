@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageExpert.h 91663 2021-10-11 11:11:01Z vboxsync $ */
+/* $Id: UIWizardExportAppPageExpert.h 91707 2021-10-13 10:43:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageExpert class declaration.
  */
@@ -50,7 +50,7 @@ class UIFormEditorWidget;
 class UIToolBox;
 class UIWizardExportApp;
 
-/** UIWizardPage extension for UIWizardExportAppPage1, UIWizardExportAppPage2 and UIWizardExportAppPage3. */
+/** UIWizardPage extension for UIWizardExportAppVMs, UIWizardExportAppFormat and UIWizardExportAppSettings. */
 class UIWizardExportAppPageExpert : public UINativeWizardPage
 {
     Q_OBJECT;
