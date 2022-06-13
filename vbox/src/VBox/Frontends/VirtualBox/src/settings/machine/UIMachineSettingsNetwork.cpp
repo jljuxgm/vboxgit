@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsNetwork.cpp 94667 2022-04-21 11:31:58Z vboxsync $ */
+/* $Id: UIMachineSettingsNetwork.cpp 94675 2022-04-21 17:52:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsNetwork class implementation.
  */
@@ -493,7 +493,8 @@ QString UIMachineSettingsNetwork::alternativeName(KNetworkAttachmentType enmType
 
 void UIMachineSettingsNetwork::polishTab()
 {
-    if (m_pEditorNetworkSettings)
+    if (   m_pEditorNetworkSettings
+        && m_pParent)
     {
         /* General stuff: */
         m_pEditorNetworkSettings->setFeatureAvailable(m_pParent->isMachineOffline());
@@ -516,7 +517,8 @@ void UIMachineSettingsNetwork::polishTab()
 
 void UIMachineSettingsNetwork::reloadAlternatives()
 {
-    if (m_pEditorNetworkSettings)
+    if (   m_pEditorNetworkSettings
+        && m_pParent)
     {
         m_pEditorNetworkSettings->setValueNames(KNetworkAttachmentType_Bridged, m_pParent->bridgedAdapterList());
         m_pEditorNetworkSettings->setValueNames(KNetworkAttachmentType_Internal, m_pParent->internalNetworkList());
@@ -804,9 +806,9 @@ bool UIMachineSettingsNetworkPage::validate(QList<UIValidationMessage> &messages
     bool fValid = true;
 
     /* Delegate validation to adapter tabs: */
-    for (int i = 0; i < m_pTabWidget->count(); ++i)
+    for (int iIndex = 0; iIndex < m_pTabWidget->count(); ++iIndex)
     {
-        UIMachineSettingsNetwork *pTab = qobject_cast<UIMachineSettingsNetwork*>(m_pTabWidget->widget(i));
+        UIMachineSettingsNetwork *pTab = qobject_cast<UIMachineSettingsNetwork*>(m_pTabWidget->widget(iIndex));
         AssertPtrReturn(pTab, false);
         if (!pTab->validate(messages))
             fValid = false;

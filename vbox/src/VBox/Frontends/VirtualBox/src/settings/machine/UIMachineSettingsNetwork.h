@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsNetwork.h 94653 2022-04-20 15:15:43Z vboxsync $ */
+/* $Id: UIMachineSettingsNetwork.h 94675 2022-04-21 17:52:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsNetwork class declaration.
  */
@@ -64,11 +64,6 @@ public:
     const QStringList &hostOnlyNetworkList() const { return m_hostOnlyNetworkList; }
 #endif
 
- public slots:
-
-    /** Handles adapter alternative name change. */
-    void sltHandleAlternativeNameChange();
-
 protected:
 
     /** Returns whether the page content was changed. */
@@ -99,6 +94,8 @@ protected:
 
 private slots:
 
+    /** Handles adapter alternative name change. */
+    void sltHandleAlternativeNameChange();
     /** Handles whether the advanced button is @a fExpanded. */
     void sltHandleAdvancedButtonStateChange(bool fExpanded);
 

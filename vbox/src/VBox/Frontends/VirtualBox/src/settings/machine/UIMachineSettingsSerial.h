@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSerial.h 94333 2022-03-23 11:21:34Z vboxsync $ */
+/* $Id: UIMachineSettingsSerial.h 94675 2022-04-21 17:52:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSerial class declaration.
  */
@@ -44,6 +44,11 @@ public:
     /** Destructs Serial settings page. */
     virtual ~UIMachineSettingsSerialPage() RT_OVERRIDE;
 
+    /** Returns ports. */
+    QVector<QPair<QString, QString> > ports() const { return m_ports; }
+    /** Returns paths. */
+    QVector<QString> paths() const { return m_paths; }
+
 protected:
 
     /** Returns whether the page content was changed. */
@@ -72,6 +77,13 @@ protected:
     /** Performs final page polishing. */
     virtual void polishPage() RT_OVERRIDE;
 
+private slots:
+
+    /** Handles port change. */
+    void sltHandlePortChange();
+    /** Handles path change. */
+    void sltHandlePathChange();
+
 private:
 
     /** Prepares all. */
@@ -79,16 +91,26 @@ private:
     /** Cleanups all. */
     void cleanup();
 
+    /** Repopulates ports. */
+    void refreshPorts();
+    /** Repopulates paths. */
+    void refreshPaths();
+
     /** Saves existing data from cache. */
     bool saveData();
     /** Saves existing port data from cache. */
     bool savePortData(int iSlot);
 
-    /** Holds the tab-widget instance. */
-    QITabWidget *m_pTabWidget;
+    /** Holds the ports. */
+    QVector<QPair<QString, QString> >  m_ports;
+    /** Holds the paths. */
+    QVector<QString>                   m_paths;
 
     /** Holds the page data cache instance. */
     UISettingsCacheMachineSerial *m_pCache;
+
+    /** Holds the tab-widget instance. */
+    QITabWidget *m_pTabWidget;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_settings_machine_UIMachineSettingsSerial_h */
