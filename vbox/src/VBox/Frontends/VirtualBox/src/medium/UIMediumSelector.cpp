@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.cpp 92397 2021-11-12 11:53:07Z vboxsync $ */
+/* $Id: UIMediumSelector.cpp 92412 2021-11-14 10:32:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class implementation.
  */
@@ -451,8 +451,8 @@ void UIMediumSelector::sltAddMedium()
 
 void UIMediumSelector::sltCreateMedium()
 {
-    QUuid uMediumId;// = uiCommon().openMediumCreatorDialog(this, m_enmMediumType, m_strMachineFolder,
-    //                                   m_strMachineName, m_strMachineGuestOSTypeId);
+    QUuid uMediumId = uiCommon().openMediumCreatorDialog(0 /* action pool */, this, m_enmMediumType, m_strMachineFolder,
+                                                         m_strMachineName, m_strMachineGuestOSTypeId);
     /* Make sure that the data structure is updated and newly created medium is selected and visible: */
     sltHandleMediumCreated(uMediumId);
 }
