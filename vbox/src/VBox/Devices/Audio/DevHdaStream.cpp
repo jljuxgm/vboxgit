@@ -1,4 +1,4 @@
-/* $Id: DevHdaStream.cpp 89883 2021-06-24 11:13:31Z vboxsync $ */
+/* $Id: DevHdaStream.cpp 89884 2021-06-24 11:14:59Z vboxsync $ */
 /** @file
  * Intel HD Audio Controller Emulation - Streams.
  */
@@ -1440,7 +1440,6 @@ static void hdaR3StreamDoDmaInput(PPDMDEVINS pDevIns, PHDASTATE pThis, PHDASTREA
         else
             cbChunk = cbLeft;
 
-        /* If we're writing silence.  */
         uint32_t cbWritten = 0;
         if (!fWriteSilence)
         {
