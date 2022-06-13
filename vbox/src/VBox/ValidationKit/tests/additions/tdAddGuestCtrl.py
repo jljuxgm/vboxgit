@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 93669 $"
+__version__ = "$Revision: 93719 $"
 
 # Standard Python imports.
 import errno
@@ -2902,12 +2902,13 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
             if fRc:
                 reporter.log('All blocking processes were terminated successfully');
 
-            # There still should be 20 processes because we just terminated the 10 blocking ones above.
             try:    cProcs = len(self.oTstDrv.oVBoxMgr.getArray(oGuestSession, 'processes'));
             except: fRc    = reporter.errorXcpt();
             else:
-                if cProcs != cProcsPerGroup * 2:
-                    fRc = reporter.error('Got %d total processes, expected %d (final)' % (cProcs, cProcsPerGroup));
+                # There still should be 20 processes because we just terminated the 10 blocking ones above.
+                cProcsExpected = cProcsPerGroup * 2;
+                if cProcs != cProcsExpected:
+                    fRc = reporter.error('Got %d total processes, expected %d (final)' % (cProcs, cProcsExpected));
                 reporter.log2('Final guest session processes count: %d' % (cProcs,));
 
         if not fRc:
