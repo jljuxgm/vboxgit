@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 94756 2022-04-29 08:55:44Z vboxsync $ */
+/* $Id: UINotificationObjects.cpp 94758 2022-04-29 11:37:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -4318,6 +4318,12 @@ UINotificationProgressNewVersionChecker::UINotificationProgressNewVersionChecker
 {
     connect(this, &UINotificationProgress::sigProgressFinished,
             this, &UINotificationProgressNewVersionChecker::sltHandleProgressFinished);
+
+#ifdef VBOX_WITH_UPDATE_AGENT
+    CHost comHost = uiCommon().host();
+    if (!comHost.isNull())
+       m_comUpdateHost = comHost.GetUpdateHost();
+#endif /* VBOX_WITH_UPDATE_AGENT */
 }
 
 QString UINotificationProgressNewVersionChecker::name() const
