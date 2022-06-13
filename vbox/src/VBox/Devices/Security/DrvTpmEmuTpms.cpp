@@ -1,4 +1,4 @@
-/* $Id: DrvTpmEmuTpms.cpp 91311 2021-09-20 11:06:33Z vboxsync $ */
+/* $Id: DrvTpmEmuTpms.cpp 91327 2021-09-22 15:15:08Z vboxsync $ */
 /** @file
  * TPM emulation driver based on libtpms.
  */
@@ -746,7 +746,16 @@ static DECLCALLBACK(void) drvTpmEmuTpmsPowerOff(PPDMDRVINS pDrvIns)
 {
     PDMDRV_CHECK_VERSIONS_RETURN_VOID(pDrvIns);
 
+    PDRVTPMEMU pThis = PDMINS_2_DATA(pDrvIns, PDRVTPMEMU);
+
     TPMLIB_Terminate();
+
+    int rc;
+    if (pThis->pDrvVfs)
+        rc = drvTpmEmuTpmsNvramStoreToVfs(pThis);
+    else
+        rc = drvTpmEmuTpmsNvramStore(pThis);
+    AssertRC(rc);
 }
 
 
@@ -757,16 +766,6 @@ static DECLCALLBACK(void) drvTpmEmuTpmsDestruct(PPDMDRVINS pDrvIns)
 
     PDRVTPMEMU pThis = PDMINS_2_DATA(pDrvIns, PDRVTPMEMU);
     LogFlow(("%s\n", __FUNCTION__));
-
-    if (!pThis->fSsmCalled)
-    {
-        int rc;
-        if (pThis->pDrvVfs)
-            rc = drvTpmEmuTpmsNvramStoreToVfs(pThis);
-        else
-            rc = drvTpmEmuTpmsNvramStore(pThis);
-        AssertRC(rc);
-    }
 
     if (pThis->pvNvPermall)
     {
