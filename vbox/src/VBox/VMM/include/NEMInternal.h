@@ -1,4 +1,4 @@
-/* $Id: NEMInternal.h 92525 2021-11-21 00:08:49Z vboxsync $ */
+/* $Id: NEMInternal.h 92555 2021-11-22 18:51:43Z vboxsync $ */
 /** @file
  * NEM - Internal header file.
  */
@@ -381,6 +381,10 @@ typedef struct NEMCPU
     STAMCOUNTER                 StatBreakOnFFPost;
     STAMCOUNTER                 StatBreakOnStatus;
     STAMCOUNTER                 StatFlushExitOnReturn;
+    STAMCOUNTER                 StatFlushExitOnReturn1Loop;
+    STAMCOUNTER                 StatFlushExitOnReturn2Loops;
+    STAMCOUNTER                 StatFlushExitOnReturn3Loops;
+    STAMCOUNTER                 StatFlushExitOnReturn4PlusLoops;
     STAMCOUNTER                 StatImportOnDemand;
     STAMCOUNTER                 StatImportOnReturn;
     STAMCOUNTER                 StatImportOnReturnSkipped;
