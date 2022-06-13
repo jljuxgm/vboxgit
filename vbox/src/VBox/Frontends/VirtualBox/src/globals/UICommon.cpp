@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 91109 2021-09-03 15:31:49Z vboxsync $ */
+/* $Id: UICommon.cpp 91111 2021-09-03 15:52:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -39,9 +39,6 @@
 #include <QTranslator>
 #ifdef VBOX_WS_WIN
 # include <QStyleFactory>
-#endif
-#ifdef VBOX_WS_X11
-# include <QX11Info>
 #endif
 #ifdef VBOX_GUI_WITH_PIDFILE
 # include <QTextStream>
@@ -134,7 +131,6 @@
 #include <VBox/com/VirtualBox.h>
 
 /* External includes: */
-#include <math.h>
 #ifdef VBOX_WS_MAC
 # include <sys/utsname.h>
 #endif
