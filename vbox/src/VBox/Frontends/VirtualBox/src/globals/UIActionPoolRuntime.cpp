@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.cpp 92478 2021-11-17 13:47:45Z vboxsync $ */
+/* $Id: UIActionPoolRuntime.cpp 92487 2021-11-18 07:23:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolRuntime class implementation.
  */
@@ -3529,9 +3529,6 @@ void UIActionPoolRuntime::updateMenus()
 
     /* 'File Manager' menu: */
     updateMenuFileManager();
-
-    /* 'VISO Creator' menu: */
-    updateMenuVISOCreator();
 }
 
 QString UIActionPoolRuntime::shortcutsExtraDataID() const

@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.h 92467 2021-11-17 09:03:15Z vboxsync $ */
+/* $Id: UIActionPoolManager.h 92487 2021-11-18 07:23:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class declaration.
  */
@@ -83,7 +83,6 @@ enum UIActionIndexMN
     UIActionIndexMN_M_Group_M_Tools_T_Snapshots,
     UIActionIndexMN_M_Group_M_Tools_T_Logs,
     UIActionIndexMN_M_Group_M_Tools_T_Activity,
-    UIActionIndexMN_M_Group_M_Tools_T_VISOCreator,
     UIActionIndexMN_M_Group_S_Discard,
     UIActionIndexMN_M_Group_S_ShowLogDialog,
     UIActionIndexMN_M_Group_S_Refresh,
@@ -128,7 +127,6 @@ enum UIActionIndexMN
     UIActionIndexMN_M_Machine_M_Tools_T_Snapshots,
     UIActionIndexMN_M_Machine_M_Tools_T_Logs,
     UIActionIndexMN_M_Machine_M_Tools_T_Activity,
-    UIActionIndexMN_M_Machine_M_Tools_T_VISOCreator,
     UIActionIndexMN_M_Machine_S_Discard,
     UIActionIndexMN_M_Machine_S_ShowLogDialog,
     UIActionIndexMN_M_Machine_S_Refresh,

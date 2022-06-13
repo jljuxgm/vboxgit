@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneMachine.h 92467 2021-11-17 09:03:15Z vboxsync $ */
+/* $Id: UIToolPaneMachine.h 92487 2021-11-18 07:23:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolPaneMachine class declaration.
  */
@@ -41,7 +41,6 @@ class UIErrorPane;
 class UIVMActivityToolWidget;
 class UISnapshotPane;
 class UIVirtualMachineItem;
-class UIVisoCreatorWidget;
 class UIVMLogViewerWidget;
 
 
@@ -134,8 +133,6 @@ private:
     UIVMLogViewerWidget *m_pPaneLogViewer;
     /** Holds the Performance Monitor pane instance. */
     UIVMActivityToolWidget *m_pPaneVMActivityMonitor;
-    /** Holds the VISO Creator pane instance. */
-    UIVisoCreatorWidget *m_pPaneVISOCreator;
 
     /** Holds whether this pane is active. */
     bool  m_fActive;
