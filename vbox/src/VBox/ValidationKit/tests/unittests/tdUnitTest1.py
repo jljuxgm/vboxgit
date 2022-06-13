@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 94411 2022-03-31 11:09:03Z vboxsync $
+# $Id: tdUnitTest1.py 94417 2022-03-31 15:54:23Z vboxsync $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 94411 $"
+__version__ = "$Revision: 94417 $"
 
 
 # Standard Python imports.
@@ -387,6 +387,19 @@ class tdUnitTest1(vbox.TestDriver):
         self.fDryRun        = False;
         self.fOnlyWhiteList = False;
 
+    @staticmethod
+    def _sanitizePath(sPath):
+        """
+        Does a little bit of sanitizing a given path by removing quoting, if any.
+
+        This is needed because handed-in paths via command line arguments can contain variables like "${CDROM}"
+        which might need to get processed by TXS on the guest side first.
+
+        Returns the sanitized path.
+        """
+        if sPath is None: # Keep uninitialized strings as-is.
+            return None;
+        return sPath.strip('\"').strip('\'');
 
     def _detectPaths(self):
         """
@@ -443,6 +456,8 @@ class tdUnitTest1(vbox.TestDriver):
         else:
             reporter.log2('VBox installation root already set to "%s"' % (self.sVBoxInstallRoot));
 
+        self.sVBoxInstallRoot = self._sanitizePath(self.sVBoxInstallRoot);
+
         #
         # The unittests are generally not installed, so look for them.
         #
@@ -474,6 +489,8 @@ class tdUnitTest1(vbox.TestDriver):
                 return False;
         else:
             reporter.log2('Unit test source dir already set to "%s"' % (self.sUnitTestsPathSrc));
+
+        self.sUnitTestsPathSrc = self._sanitizePath(self.sUnitTestsPathSrc);
 
         return True;
 
