@@ -1,4 +1,4 @@
-/* $Id: PGMHandler.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: PGMHandler.cpp 93554 2022-02-02 22:57:02Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -277,7 +277,7 @@ static DECLCALLBACK(int) pgmR3HandlerPhysicalOneClear(PAVLROGCPHYSNODECORE pNode
 
         if (--cPages == 0)
             return 0;
-        GCPhys += PAGE_SIZE;
+        GCPhys += GUEST_PAGE_SIZE;
     }
 }
 
@@ -324,7 +324,7 @@ static DECLCALLBACK(int) pgmR3HandlerPhysicalOneSet(PAVLROGCPHYSNODECORE pNode, 
 
         if (--cPages == 0)
             return 0;
-        GCPhys += PAGE_SIZE;
+        GCPhys += GUEST_PAGE_SIZE;
     }
 }
 

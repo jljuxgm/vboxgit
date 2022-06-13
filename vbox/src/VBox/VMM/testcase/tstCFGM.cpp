@@ -1,4 +1,4 @@
-/* $Id: tstCFGM.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: tstCFGM.cpp 93554 2022-02-02 22:57:02Z vboxsync $ */
 /** @file
  * Testcase for CFGM.
  */
@@ -102,7 +102,8 @@ static void doInVmmTests(RTTEST hTest)
     }
 
     PVM pVM;
-    RTTESTI_CHECK_RC_RETV(SUPR3PageAlloc(RT_ALIGN_Z(sizeof(*pVM), PAGE_SIZE) >> PAGE_SHIFT, 0, (void **)&pVM), VINF_SUCCESS);
+    RTTESTI_CHECK_RC_RETV(SUPR3PageAlloc(RT_ALIGN_Z(sizeof(*pVM), HOST_PAGE_SIZE) >> HOST_PAGE_SHIFT, 0, (void **)&pVM),
+                          VINF_SUCCESS);
 
 
     PUVM pUVM = (PUVM)RTMemPageAllocZ(sizeof(*pUVM));

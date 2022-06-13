@@ -1,4 +1,4 @@
-/* $Id: MMInternal.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: MMInternal.h 93554 2022-02-02 22:57:02Z vboxsync $ */
 /** @file
  * MM - Internal header file.
  */
@@ -487,7 +487,8 @@ typedef struct MMLOOKUPHYPER
             R3PTRTYPE(void *)       pvR3;
             /** Host context ring-0 pointer. Optional. */
             RTR0PTR                 pvR0;
-            /** Pointer to an array containing the physical address of each page. */
+            /** Pointer to an array containing the physical address of each page
+             * (HOST_PAGE_SIZE). */
             R3PTRTYPE(PRTHCPHYS)    paHCPhysPages;
         } Locked;
 

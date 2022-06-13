@@ -1,4 +1,4 @@
-/* $Id: MMPagePool.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: MMPagePool.cpp 93554 2022-02-02 22:57:02Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Page Pool (what's left of it).
  */
@@ -42,7 +42,8 @@ VMMR3DECL(void *) MMR3PageDummyHCPtr(PVM pVM)
     VM_ASSERT_EMT(pVM);
     if (!pVM->mm.s.pvDummyPage)
     {
-        int rc = MMHyperAlloc(pVM, PAGE_SIZE, PAGE_SIZE, MM_TAG_PGM, &pVM->mm.s.pvDummyPage);
+        /** @todo Redo this. */
+        int rc = MMHyperAlloc(pVM, RT_MAX(GUEST_PAGE_SIZE, HOST_PAGE_SIZE), GUEST_PAGE_SIZE, MM_TAG_PGM, &pVM->mm.s.pvDummyPage);
         AssertRelease(RT_SUCCESS(rc));
         AssertRelease(pVM->mm.s.pvDummyPage);
         pVM->mm.s.HCPhysDummyPage = MMR3HyperHCVirt2HCPhys(pVM, pVM->mm.s.pvDummyPage);

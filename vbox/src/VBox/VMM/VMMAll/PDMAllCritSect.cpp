@@ -1,4 +1,4 @@
-/* $Id: PDMAllCritSect.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: PDMAllCritSect.cpp 93554 2022-02-02 22:57:02Z vboxsync $ */
 /** @file
  * PDM - Write-Only Critical Section, All Contexts.
  */
@@ -1063,8 +1063,8 @@ VMMDECL(int) PDMCritSectLeave(PVMCC pVM, PPDMCRITSECT pCritSect)
     pVCpu->pdm.s.apQueuedCritSectLeaves[i] = pCritSect->s.pSelfR3;
     VMM_ASSERT_RELEASE_MSG_RETURN(pVM,
                                      RT_VALID_PTR(pVCpu->pdm.s.apQueuedCritSectLeaves[i])
-                                  &&    ((uintptr_t)pVCpu->pdm.s.apQueuedCritSectLeaves[i] & PAGE_OFFSET_MASK)
-                                     == ((uintptr_t)pCritSect & PAGE_OFFSET_MASK),
+                                  &&    ((uintptr_t)pVCpu->pdm.s.apQueuedCritSectLeaves[i] & HOST_PAGE_OFFSET_MASK)
+                                     == ((uintptr_t)pCritSect & HOST_PAGE_OFFSET_MASK),
                                   ("%p vs %p\n", pVCpu->pdm.s.apQueuedCritSectLeaves[i], pCritSect),
                                   pdmCritSectCorrupted(pCritSect, "Invalid pSelfR3 value"));
     VMCPU_FF_SET(pVCpu, VMCPU_FF_PDM_CRITSECT); /** @todo handle VMCPU_FF_PDM_CRITSECT in ring-0 outside the no-call-ring-3 part. */

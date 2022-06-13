@@ -1,4 +1,4 @@
-# $Id: .scm-settings 93115 2022-01-01 11:31:46Z vboxsync $
+# $Id: .scm-settings 93554 2022-02-02 22:57:02Z vboxsync $
 ## @file
 # Source code massager settings for the VMM.
 #
@@ -33,4 +33,12 @@
 
 /*.h: --guard-relative-to-dir . --guard-prefix VMM_INCLUDED_SRC_
 /VMMR3/cpus/*.h: --guard-relative-to-dir VMMR3/cpus --guard-prefix VBOX_CPUDB_
+
+# Forbid PAGE_SIZE, PAGE_SIZE and PAGE_OFFSET_MASK w/o GUEST_ or HOST_ prefix.
+/*.cpp: --only-guest-host-page
+/*.h:   --only-guest-host-page
+# Except in the pool where more care/work is needed.
+/VMMAll/PGMAllPool.cpp: --no-page-restrictions
+/VMMR3/PGMPool.cpp:     --no-page-restrictions
+/testcase/tstVMStructSize.cpp:     --no-page-restrictions
 

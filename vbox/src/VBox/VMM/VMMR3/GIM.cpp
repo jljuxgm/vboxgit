@@ -1,4 +1,4 @@
-/* $Id: GIM.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: GIM.cpp 93554 2022-02-02 22:57:02Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager.
  */
@@ -598,7 +598,7 @@ VMMR3_INT_DECL(int) GIMR3Mmio2Map(PVM pVM, PGIMMMIO2REGION pRegion, RTGCPHYS GCP
     AssertPtr(pDevIns);
 
     /* The guest-physical address must be page-aligned. */
-    if (GCPhysRegion & PAGE_OFFSET_MASK)
+    if (GCPhysRegion & GUEST_PAGE_OFFSET_MASK)
     {
         LogFunc(("%s: %#RGp not paging aligned\n", pRegion->szDescription, GCPhysRegion));
         return VERR_PGM_INVALID_GC_PHYSICAL_ADDRESS;

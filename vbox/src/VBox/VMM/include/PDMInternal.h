@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: PDMInternal.h 93554 2022-02-02 22:57:02Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -80,7 +80,7 @@ RT_C_DECLS_BEGIN
 /** The maximum device instance (total) size, ring-3 only devices. */
 #define PDM_MAX_DEVICE_INSTANCE_SIZE_R3   _8M
 /** The maximum size for the DBGF tracing tracking structure allocated for each device. */
-#define PDM_MAX_DEVICE_DBGF_TRACING_TRACK PAGE_SIZE
+#define PDM_MAX_DEVICE_DBGF_TRACING_TRACK HOST_PAGE_SIZE
 
 
 

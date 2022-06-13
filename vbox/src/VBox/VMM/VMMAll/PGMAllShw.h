@@ -1,4 +1,4 @@
-/* $Id: PGMAllShw.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: PGMAllShw.h 93554 2022-02-02 22:57:02Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow Paging Template - All context code.
  */
@@ -594,10 +594,10 @@ PGM_SHW_DECL(int, ModifyPage)(PVMCPUCC pVCpu, RTGCUINTPTR GCPtr, size_t cb, uint
             }
 
             /* next page */
-            cb -= PAGE_SIZE;
+            cb -= HOST_PAGE_SIZE;
             if (!cb)
                 return VINF_SUCCESS;
-            GCPtr += PAGE_SIZE;
+            GCPtr += HOST_PAGE_SIZE;
             iPTE++;
         }
     }

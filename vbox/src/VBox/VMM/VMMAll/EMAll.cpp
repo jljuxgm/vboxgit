@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: EMAll.cpp 93554 2022-02-02 22:57:02Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -898,7 +898,7 @@ static DECLCALLBACK(int) emReadBytes(PDISCPUSTATE pDis, uint8_t offInstr, uint8_
     /*
      * Figure how much we can or must read.
      */
-    size_t      cbToRead = PAGE_SIZE - (uSrcAddr & PAGE_OFFSET_MASK);
+    size_t      cbToRead = GUEST_PAGE_SIZE - (uSrcAddr & (GUEST_PAGE_SIZE - 1));
     if (cbToRead > cbMaxRead)
         cbToRead = cbMaxRead;
     else if (cbToRead < cbMinRead)
@@ -922,7 +922,7 @@ static DECLCALLBACK(int) emReadBytes(PDISCPUSTATE pDis, uint8_t offInstr, uint8_
             if (rc == VERR_PAGE_TABLE_NOT_PRESENT || rc == VERR_PAGE_NOT_PRESENT)
             {
                 HMInvalidatePage(pVCpu, uSrcAddr);
-                if (((uSrcAddr + cbToRead - 1) >> PAGE_SHIFT) !=  (uSrcAddr >> PAGE_SHIFT))
+                if (((uSrcAddr + cbToRead - 1) >> GUEST_PAGE_SHIFT) != (uSrcAddr >> GUEST_PAGE_SHIFT))
                     HMInvalidatePage(pVCpu, uSrcAddr + cbToRead - 1);
             }
         }

@@ -1,4 +1,4 @@
-/* $Id: PGMAllGstSlatEpt.cpp.h 93539 2022-02-02 05:50:44Z vboxsync $ */
+/* $Id: PGMAllGstSlatEpt.cpp.h 93554 2022-02-02 22:57:02Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Guest EPT SLAT - All context code.
  */
@@ -335,7 +335,7 @@ DECLINLINE(int) PGM_GST_SLAT_NAME_EPT(Walk)(PVMCPUCC pVCpu, RTGCPHYS GCPhysNeste
         pWalk->fEffective = fEffective;
 
         pWalk->fSucceeded   = true;
-        pWalk->GCPhys       = GST_GET_PTE_GCPHYS(Pte) | (GCPhysNested & PAGE_OFFSET_MASK);
+        pWalk->GCPhys       = GST_GET_PTE_GCPHYS(Pte) | (GCPhysNested & GUEST_PAGE_OFFSET_MASK);
         return VINF_SUCCESS;
     }
 }

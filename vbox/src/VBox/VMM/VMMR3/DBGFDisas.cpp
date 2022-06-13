@@ -1,4 +1,4 @@
-/* $Id: DBGFDisas.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: DBGFDisas.cpp 93554 2022-02-02 22:57:02Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Disassembler.
  */
@@ -215,7 +215,7 @@ static DECLCALLBACK(int) dbgfR3DisasInstrRead(PDISCPUSTATE pDis, uint8_t offInst
          * Need to update the page translation?
          */
         if (    !pState->pvPageR3
-            ||  (GCPtr >> PAGE_SHIFT) != (pState->GCPtrPage >> PAGE_SHIFT))
+            ||  (GCPtr >> GUEST_PAGE_SHIFT) != (pState->GCPtrPage >> GUEST_PAGE_SHIFT))
         {
             int rc = VINF_SUCCESS;
 
@@ -246,7 +246,7 @@ static DECLCALLBACK(int) dbgfR3DisasInstrRead(PDISCPUSTATE pDis, uint8_t offInst
         /*
          * Calc how much we can read, maxing out the read.
          */
-        uint32_t cb = PAGE_SIZE - (GCPtr & PAGE_OFFSET_MASK);
+        uint32_t cb = GUEST_PAGE_SIZE - (GCPtr & GUEST_PAGE_OFFSET_MASK);
         if (!pState->f64Bits)
         {
             RTGCUINTPTR cbSeg = pState->GCPtrSegEnd - GCPtr;
@@ -259,7 +259,7 @@ static DECLCALLBACK(int) dbgfR3DisasInstrRead(PDISCPUSTATE pDis, uint8_t offInst
         /*
          * Read and advance,
          */
-        memcpy(&pDis->abInstr[offInstr], (char *)pState->pvPageR3 + (GCPtr & PAGE_OFFSET_MASK), cb);
+        memcpy(&pDis->abInstr[offInstr], (char *)pState->pvPageR3 + (GCPtr & GUEST_PAGE_OFFSET_MASK), cb);
         offInstr  += (uint8_t)cb;
         if (cb >= cbMinRead)
         {

@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlpTracing.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: PDMDevHlpTracing.cpp 93554 2022-02-02 22:57:02Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helper variants when tracing is enabled.
  */
@@ -257,7 +257,7 @@ pdmR3DevHlpTracing_MmioCreateEx(PPDMDEVINS pDevIns, RTGCPHYS cbRegion,
     /* HACK ALERT! Round the size up to page size.  The PCI bus should do something similar before mapping it. */
     /** @todo It's possible we need to do dummy MMIO fill-in of the PCI bus or
      *        guest adds more alignment to an region. */
-    cbRegion = RT_ALIGN_T(cbRegion, PAGE_SIZE, RTGCPHYS);
+    cbRegion = RT_ALIGN_T(cbRegion, GUEST_PAGE_SIZE, RTGCPHYS);
 
     int rc = VINF_SUCCESS;
     if (pDevIns->Internal.s.idxDbgfTraceTrackNext < pDevIns->Internal.s.cDbgfTraceTrackMax)

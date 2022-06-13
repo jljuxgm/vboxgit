@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: VMM.cpp 93554 2022-02-02 22:57:02Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -286,7 +286,7 @@ VMMR3_INT_DECL(int) VMMR3Init(PVM pVM)
     /*
      * Allocate mapping for the host APIC.
      */
-    rc = MMR3HyperReserve(pVM, PAGE_SIZE, "Host APIC", &pVM->vmm.s.GCPtrApicBase);
+    rc = MMR3HyperReserve(pVM, HOST_PAGE_SIZE, "Host APIC", &pVM->vmm.s.GCPtrApicBase);
     AssertRC(rc);
 #endif
     if (RT_SUCCESS(rc))

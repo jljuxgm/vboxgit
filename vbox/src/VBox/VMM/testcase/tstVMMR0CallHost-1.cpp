@@ -1,4 +1,4 @@
-/* $Id: tstVMMR0CallHost-1.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: tstVMMR0CallHost-1.cpp 93554 2022-02-02 22:57:02Z vboxsync $ */
 /** @file
  * Testcase for the VMMR0JMPBUF operations.
  */
@@ -144,7 +144,7 @@ int main()
         return rcExit;
     RTTestBanner(hTest);
 
-    g_Jmp.cbStackBuf = PAGE_SIZE;
+    g_Jmp.cbStackBuf = HOST_PAGE_SIZE;
     g_Jmp.pvStackBuf = (uintptr_t)RTTestGuardedAllocTail(hTest, g_Jmp.cbStackBuf);
     g_Jmp.pMirrorBuf = (uintptr_t)&g_JmpMirror;
 

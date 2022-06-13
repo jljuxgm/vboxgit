@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 93203 2022-01-12 18:36:50Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 93554 2022-02-02 22:57:02Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -761,7 +761,7 @@ static int hmR0VmxPagesAllocZ(PRTR0MEMOBJ phMemObj, PVMXPAGEALLOCINFO paAllocInf
     /* Allocate the pages. */
     if (cPages)
     {
-        size_t const cbPages = cPages << PAGE_SHIFT;
+        size_t const cbPages = cPages << HOST_PAGE_SHIFT;
         int rc = RTR0MemObjAllocPage(phMemObj, cbPages, false /* fExecutable */);
         if (RT_FAILURE(rc))
             return rc;

@@ -1,4 +1,4 @@
-/* $Id: SSM.cpp 93470 2022-01-27 23:51:28Z vboxsync $ */
+/* $Id: SSM.cpp 93554 2022-02-02 22:57:02Z vboxsync $ */
 /** @file
  * SSM - Saved State Manager.
  */
@@ -3467,10 +3467,9 @@ static int ssmR3DataWriteBig(PSSMHANDLE pSSM, const void *pvBuf, size_t cbBuf)
          */
         for (;;)
         {
-            AssertCompile(SSM_ZIP_BLOCK_SIZE == PAGE_SIZE);
             if (    cbBuf >= SSM_ZIP_BLOCK_SIZE
                 && (    ((uintptr_t)pvBuf & 0xf)
-                    ||  !ASMMemIsZeroPage(pvBuf))
+                    ||  !ASMMemIsZero(pvBuf, SSM_ZIP_BLOCK_SIZE))
                )
             {
                 /*

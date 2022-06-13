@@ -1,4 +1,4 @@
-/* $Id: PDMLdr.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: PDMLdr.cpp 93554 2022-02-02 22:57:02Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager, module loader.
  */
@@ -545,9 +545,9 @@ VMMR3DECL(int) PDMR3LdrLoadRC(PVM pVM, const char *pszFilename, const char *pszN
          * Allocate space in the hypervisor.
          */
         size_t          cb = RTLdrSize(pModule->hLdrMod);
-        cb = RT_ALIGN_Z(cb, PAGE_SIZE);
-        uint32_t        cPages = (uint32_t)(cb >> PAGE_SHIFT);
-        if (((size_t)cPages << PAGE_SHIFT) == cb)
+        cb = RT_ALIGN_Z(cb, RT_MAX(GUEST_PAGE_SIZE, HOST_PAGE_SIZE));
+        uint32_t        cPages = (uint32_t)(cb >> HOST_PAGE_SHIFT);
+        if (((size_t)cPages << HOST_PAGE_SHIFT) == cb)
         {
             PSUPPAGE    paPages = (PSUPPAGE)RTMemTmpAlloc(cPages * sizeof(paPages[0]));
             if (paPages)
