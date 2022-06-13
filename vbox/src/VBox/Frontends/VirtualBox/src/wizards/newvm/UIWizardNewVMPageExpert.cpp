@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.cpp 90206 2021-07-15 07:22:34Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.cpp 90208 2021-07-15 09:51:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class implementation.
  */
@@ -57,6 +57,7 @@ UIWizardNewVMPageExpert::UIWizardNewVMPageExpert()
     , m_pNameAndSystemEditor(0)
     , m_pSkipUnattendedCheckBox(0)
     , m_pNameAndSystemLayout(0)
+    , m_pHardwareWidgetContainer(0)
     , m_pAdditionalOptionsContainer(0)
     , m_pGAInstallationISOContainer(0)
 {
@@ -66,7 +67,8 @@ UIWizardNewVMPageExpert::UIWizardNewVMPageExpert()
         m_pToolBox = new UIToolBox;
         m_pToolBox->insertPage(ExpertToolboxItems_NameAndOSType, createNameOSTypeWidgets(), "");
         m_pToolBox->insertPage(ExpertToolboxItems_Unattended, createUnattendedWidgets(), "");
-        //m_pToolBox->insertPage(ExpertToolboxItems_Hardware, createHardwareWidgets(), "");
+        m_pHardwareWidgetContainer = new UINewVMHardwareContainer;
+        m_pToolBox->insertPage(ExpertToolboxItems_Hardware, m_pHardwareWidgetContainer, "");
         m_pToolBox->insertPage(ExpertToolboxItems_Disk, createNewDiskWidgets(), "");
         m_pToolBox->setCurrentPage(ExpertToolboxItems_NameAndOSType);
         pMainLayout->addWidget(m_pToolBox);

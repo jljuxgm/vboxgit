@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.h 90206 2021-07-15 07:22:34Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.h 90208 2021-07-15 09:51:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class declaration.
  */
@@ -46,6 +46,7 @@ class UIGAInstallationGroupBox;
 class UIHostnameDomainNameEditor;
 class UIMediumSizeEditor;
 class UINameAndSystemEditor;
+class UINewVMHardwareContainer;
 class UIToolBox;
 class UIUserNamePasswordGroupBox;
 class QIToolButton;
@@ -134,6 +135,7 @@ private:
         UINameAndSystemEditor *m_pNameAndSystemEditor;
         QCheckBox *m_pSkipUnattendedCheckBox;
         QGridLayout *m_pNameAndSystemLayout;
+        UINewVMHardwareContainer *m_pHardwareWidgetContainer;
         UIAdditionalUnattendedOptions *m_pAdditionalOptionsContainer;
         UIGAInstallationGroupBox *m_pGAInstallationISOContainer;
         UIUserNamePasswordGroupBox *m_pUserNamePasswordGroupBox;

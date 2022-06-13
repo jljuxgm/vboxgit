@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMHardwarePageBasic.h 90073 2021-07-07 06:38:10Z vboxsync $ */
+/* $Id: UIWizardNewVMHardwarePageBasic.h 90208 2021-07-15 09:51:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMHardwarePageBasic class declaration.
  */
@@ -37,6 +37,7 @@ class QRadioButton;
 class QCheckBox;
 class QIRichTextLabel;
 class UIBaseMemoryEditor;
+class UINewVMHardwareContainer;
 class UIVirtualCPUEditor;
 class UIWizardNewVM;
 
@@ -73,15 +74,12 @@ private:
     void retranslateUi();
     void initializePage();
     void cleanupPage();
-    QWidget *createHardwareWidgets();
     bool isComplete() const;
 
     /** @name Widgets
      * @{ */
-       UIBaseMemoryEditor *m_pBaseMemoryEditor;
-       UIVirtualCPUEditor *m_pVirtualCPUEditor;
-       QCheckBox          *m_pEFICheckBox;
        QIRichTextLabel    *m_pLabel;
+       UINewVMHardwareContainer *m_pHardwareWidgetContainer;
     /** @} */
     /** This set is used to decide if we have to set wizard's parameters
       * some default values or not. When user modifies a value through a widget we
