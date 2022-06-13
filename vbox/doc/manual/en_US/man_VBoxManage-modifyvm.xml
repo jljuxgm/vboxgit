@@ -19,7 +19,7 @@
 ]>
 <refentry id="vboxmanage-modifyvm" lang="en">
   <refentryinfo>
-    <pubdate>$Date: 2021-11-22 09:53:20 +0800 (Mon, 22 Nov 2021) $</pubdate>
+    <pubdate>$Date: 2022-01-28 22:34:46 +0800 (Fri, 28 Jan 2022) $</pubdate>
     <title>VBoxManage modifyvm</title>
   </refentryinfo>
 
@@ -1798,7 +1798,7 @@ it unless this changes. -->
                   On a Windows host system,
                   <replaceable>pipe-name</replaceable> is a named pipe
                   that has a name that uses the following form:
-                  <literal>\\.\<replaceable>pipe</replaceable>\</literal>.
+                  <literal>\\.\pipe\<replaceable>pipe-name</replaceable></literal>.
                 </para><para>
                   On a Linux host system,
                   <replaceable>pipe-name</replaceable> is a local domain

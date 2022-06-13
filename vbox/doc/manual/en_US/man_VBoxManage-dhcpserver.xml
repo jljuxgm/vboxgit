@@ -19,7 +19,7 @@
 ]>
 <refentry id="vboxmanage-dhcpserver" lang="en">
   <refentryinfo>
-    <pubdate>$Date: 2021-11-22 01:32:22 +0800 (Mon, 22 Nov 2021) $</pubdate>
+    <pubdate>$Date: 2022-01-28 22:34:46 +0800 (Fri, 28 Jan 2022) $</pubdate>
     <title>VBoxManage dhcpserver</title>
   </refentryinfo>
 
@@ -524,7 +524,7 @@
         </varlistentry>
         <varlistentry>
           <term><option>--del-user=<replaceable>string</replaceable></option></term>
-          <listitem><para>Delete the specific user class ID pattern from the group conditions.</para></listitem>
+          <listitem><para>Delete the specific user class ID from the group conditions.</para></listitem>
         </varlistentry>
         <varlistentry>
           <term><option>--del-user-wild=<replaceable>pattern</replaceable></option></term>
