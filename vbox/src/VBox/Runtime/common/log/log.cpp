@@ -1,4 +1,4 @@
-/* $Id: log.cpp 90863 2021-08-25 00:53:19Z vboxsync $ */
+/* $Id: log.cpp 90864 2021-08-25 00:57:45Z vboxsync $ */
 /** @file
  * Runtime VBox - Logger.
  */
@@ -2447,9 +2447,8 @@ RT_EXPORT_SYMBOL(RTLogDestinations);
  * Clear the file delay flag if set, opening the destination and flushing.
  *
  * @returns IPRT status code.
- * @param   pLogger             Logger instance (NULL for default logger).
- * @param   pszValue            The value to parse.
- * @param   pErrInfo            Where to return extended error info.  Optional.
+ * @param   pLogger     Logger instance (NULL for default logger).
+ * @param   pErrInfo    Where to return extended error info.  Optional.
  */
 RTDECL(int) RTLogClearFileDelayFlag(PRTLOGGER pLogger, PRTERRINFO pErrInfo)
 {
