@@ -1,4 +1,4 @@
-/* $Id: HMVMXAll.cpp 91971 2021-10-21 15:58:30Z vboxsync $ */
+/* $Id: HMVMXAll.cpp 92843 2021-12-09 11:08:08Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - All contexts.
  */
@@ -142,6 +142,14 @@ static const char * const g_apszVmxVDiagDesc[] =
     VMXV_DIAG_DESC(kVmxVDiag_Invvpid_Type1InvalidVpid         , "Type1InvalidVpid"          ),
     VMXV_DIAG_DESC(kVmxVDiag_Invvpid_Type3InvalidVpid         , "Type3InvalidVpid"          ),
     VMXV_DIAG_DESC(kVmxVDiag_Invvpid_VmxRoot                  , "VmxRoot"                   ),
+    /* INVEPT. */
+    VMXV_DIAG_DESC(kVmxVDiag_Invept_Cpl                       , "Cpl"                       ),
+    VMXV_DIAG_DESC(kVmxVDiag_Invept_DescRsvd                  , "DescRsvd"                  ),
+    VMXV_DIAG_DESC(kVmxVDiag_Invept_EptpInvalid               , "EptpInvalid"               ),
+    VMXV_DIAG_DESC(kVmxVDiag_Invept_LongModeCS                , "LongModeCS"                ),
+    VMXV_DIAG_DESC(kVmxVDiag_Invept_RealOrV86Mode             , "RealOrV86Mode"             ),
+    VMXV_DIAG_DESC(kVmxVDiag_Invept_TypeInvalid               , "TypeInvalid"               ),
+    VMXV_DIAG_DESC(kVmxVDiag_Invept_VmxRoot                   , "VmxRoot"                   ),
     /* VMLAUNCH/VMRESUME. */
     VMXV_DIAG_DESC(kVmxVDiag_Vmentry_AddrApicAccess           , "AddrApicAccess"            ),
     VMXV_DIAG_DESC(kVmxVDiag_Vmentry_AddrApicAccessEqVirtApic , "AddrApicAccessEqVirtApic"  ),
