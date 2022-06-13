@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioDSound.cpp 91020 2021-08-31 08:01:09Z vboxsync $ */
+/* $Id: DrvHostAudioDSound.cpp 91425 2021-09-28 07:55:15Z vboxsync $ */
 /** @file
  * Host audio driver - DirectSound (Windows).
  */
@@ -2609,19 +2609,6 @@ static DECLCALLBACK(int) drvHostDSoundHA_StreamCapture(PPDMIHOSTAUDIO pInterface
                      drvHostDSoundStreamStatusString(pStreamDS) ));
     }
 
-#ifdef VBOX_AUDIO_DEBUG_DUMP_PCM_DATA_PATH
-    if (cbRead)
-    {
-        RTFILE hFile;
-        int rc2 = RTFileOpen(&hFile, VBOX_AUDIO_DEBUG_DUMP_PCM_DATA_PATH "dsoundCapture.pcm",
-                             RTFILE_O_OPEN_CREATE | RTFILE_O_APPEND | RTFILE_O_WRITE | RTFILE_O_DENY_NONE);
-        if (RT_SUCCESS(rc2))
-        {
-            RTFileWrite(hFile, (uint8_t *)pvBuf - cbRead, cbRead, NULL);
-            RTFileClose(hFile);
-        }
-    }
-#endif
     return VINF_SUCCESS;
 }
 

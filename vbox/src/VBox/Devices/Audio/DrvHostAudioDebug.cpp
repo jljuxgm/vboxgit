@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioDebug.cpp 90012 2021-07-04 21:08:37Z vboxsync $ */
+/* $Id: DrvHostAudioDebug.cpp 91425 2021-09-28 07:55:15Z vboxsync $ */
 /** @file
  * Host audio driver - Debug - For dumping and injecting audio data from/to the device emulation.
  */
@@ -344,10 +344,6 @@ static DECLCALLBACK(int) drvHstAudDebugConstruct(PPDMDRVINS pDrvIns, PCFGMNODE p
     pThis->IHostAudio.pfnStreamGetReadable          = drvHstAudDebugHA_StreamGetReadable;
     pThis->IHostAudio.pfnStreamCapture              = drvHstAudDebugHA_StreamCapture;
 
-#ifdef VBOX_AUDIO_DEBUG_DUMP_PCM_DATA_PATH
-    RTFileDelete(VBOX_AUDIO_DEBUG_DUMP_PCM_DATA_PATH "AudioDebugOutput.pcm");
-#endif
-
     return VINF_SUCCESS;
 }
 
@@ -401,4 +397,3 @@ const PDMDRVREG g_DrvHostDebugAudio =
     /* u32EndVersion */
     PDM_DRVREG_VERSION
 };
-

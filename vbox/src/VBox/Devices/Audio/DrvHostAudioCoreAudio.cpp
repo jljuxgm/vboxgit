@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioCoreAudio.cpp 89510 2021-06-04 13:20:02Z vboxsync $ */
+/* $Id: DrvHostAudioCoreAudio.cpp 91425 2021-09-28 07:55:15Z vboxsync $ */
 /** @file
  * Host audio driver - Mac OS X CoreAudio.
  *
@@ -2857,14 +2857,6 @@ static DECLCALLBACK(int) drvHstAudCaConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg
         && orc != kAudioHardwareIllegalOperationError)
         LogRel(("CoreAudio: Failed to add the output default device changed listener: %d (%#x)\n", orc, orc));
 
-    /*
-     * Cleanup debug dumps from previous run.
-     */
-#ifdef VBOX_AUDIO_DEBUG_DUMP_PCM_DATA_PATH
-    RTFileDelete(VBOX_AUDIO_DEBUG_DUMP_PCM_DATA_PATH "caConverterCbInput.pcm");
-    RTFileDelete(VBOX_AUDIO_DEBUG_DUMP_PCM_DATA_PATH "caPlayback.pcm");
-#endif
-
     LogFlowFuncLeaveRC(rc);
     return rc;
 }
@@ -2920,4 +2912,3 @@ const PDMDRVREG g_DrvHostCoreAudio =
     /* u32EndVersion */
     PDM_DRVREG_VERSION
 };
-
