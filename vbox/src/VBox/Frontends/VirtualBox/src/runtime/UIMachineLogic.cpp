@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 90893 2021-08-25 17:15:36Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 91057 2021-09-01 11:57:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -609,8 +609,8 @@ void UIMachineLogic::sltDisableHostScreenSaverStateChanged(bool fDisabled)
 {
 #if defined(VBOX_WS_X11)
     if (m_methods.isEmpty())
-        m_methods = X11FindDBusScrenSaverInhibitMethods();
-    X11InhibitUninhibitScrenSaver(fDisabled, m_methods);
+        m_methods = NativeWindowSubsystem::X11FindDBusScrenSaverInhibitMethods();
+    NativeWindowSubsystem::X11InhibitUninhibitScrenSaver(fDisabled, m_methods);
 #elif defined(VBOX_WS_WIN)
     NativeWindowSubsystem::setScreenSaverActive(fDisabled);
 #else

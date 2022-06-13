@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 91009 2021-08-30 18:24:32Z vboxsync $ */
+/* $Id: UICommon.cpp 91057 2021-09-01 11:57:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -84,7 +84,6 @@
 #endif
 #ifdef VBOX_WS_X11
 # include "UIHostComboEditor.h"
-# include "VBoxX11Helper.h"
 #endif
 #ifdef VBOX_GUI_WITH_NETWORK_MANAGER
 # include "UINetworkRequestManager.h"
@@ -354,10 +353,10 @@ void UICommon::prepare()
 
 #ifdef VBOX_WS_X11
     /* Check whether we have compositing manager running: */
-    m_fCompositingManagerRunning = X11IsCompositingManagerRunning();
+    m_fCompositingManagerRunning = NativeWindowSubsystem::X11IsCompositingManagerRunning();
 
     /* Acquire current Window Manager type: */
-    m_enmWindowManagerType = X11WindowManagerType();
+    m_enmWindowManagerType = NativeWindowSubsystem::X11WindowManagerType();
 #endif /* VBOX_WS_X11 */
 
 #ifdef VBOX_WITH_DEBUGGER_GUI

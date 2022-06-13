@@ -1,4 +1,4 @@
-/* $Id: UICommon.h 91009 2021-08-30 18:24:32Z vboxsync $ */
+/* $Id: UICommon.h 91057 2021-09-01 11:57:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class declaration.
  */
@@ -31,7 +31,7 @@
 #include "UILibraryDefs.h"
 #include "UIMediumDefs.h"
 #ifdef VBOX_WS_X11
-# include "VBoxX11Helper.h"
+# include "VBoxUtils-x11.h"
 #endif
 
 /* COM includes: */

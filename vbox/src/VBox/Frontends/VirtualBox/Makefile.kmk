@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 91009 2021-08-30 18:24:32Z vboxsync $
+# $Id: Makefile.kmk 91057 2021-09-01 11:57:17Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -1508,7 +1508,7 @@ endif
 
 if1of ($(KBUILD_TARGET), freebsd linux netbsd openbsd solaris) # X11
  UICommon_SOURCES += \
-	src/platform/x11/VBoxX11Helper.cpp \
+	src/platform/x11/VBoxUtils-x11.cpp \
 	src/platform/x11/XKeyboard-new.cpp
 endif
 

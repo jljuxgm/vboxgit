@@ -1,4 +1,4 @@
-/* $Id: UIMouseHandler.cpp 91003 2021-08-30 15:40:14Z vboxsync $ */
+/* $Id: UIMouseHandler.cpp 91057 2021-09-01 11:57:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMouseHandler class implementation.
  */
@@ -53,8 +53,7 @@
 
 /* External includes: */
 #ifdef VBOX_WS_X11
-#include "VBoxX11Helper.h"
-# include <xcb/xcb.h>
+#include "VBoxUtils-x11.h"
 #endif
 
 
