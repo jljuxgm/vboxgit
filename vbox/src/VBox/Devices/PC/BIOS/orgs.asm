@@ -1,4 +1,4 @@
-; $Id: orgs.asm 95050 2022-05-20 13:15:21Z vboxsync $
+; $Id: orgs.asm 95052 2022-05-21 04:51:35Z vboxsync $
 ;; @file
 ; ???
 ;
@@ -735,10 +735,12 @@ fd_entry	struc
 	wpcomp	dw	?		; Write pre-compensation start cylinder
 	res_2	db	?
 	ctrl	db	?		; Control byte
-	res_3	db	3 dup(?)
+	res_3	db	?
+	res_4	db	?
+	res_5	db	?
 	lzone	dw	?		; Landing zone cylinder
 	spt	db	?		; Sectors per track
-	res_4	db	?
+	res_6	db	?
 fd_entry	ends
 
 ;; --------------------------------------------------------
