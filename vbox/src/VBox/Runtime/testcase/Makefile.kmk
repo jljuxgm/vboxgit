@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 93170 2022-01-11 00:50:22Z vboxsync $
+# $Id: Makefile.kmk 93318 2022-01-18 15:15:57Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -254,6 +254,7 @@ tstRTBase64_SOURCES = tstRTBase64.cpp
 tstRTBigNum_TEMPLATE = VBOXR3TSTEXE
 tstRTBigNum_SOURCES = tstRTBigNum.cpp
 tstRTBigNum_SDKS = VBOX_OPENSSL2
+tstRTBigNum_CXXFLAGS.win = -bigobj
 
 tstRTBitOperations_TEMPLATE = VBOXR3TSTEXE
 tstRTBitOperations_SOURCES = tstRTBitOperations.cpp
