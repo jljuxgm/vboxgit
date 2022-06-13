@@ -1,4 +1,4 @@
-/* $Id: VUSBUrbTrace.cpp 87632 2021-02-05 18:40:08Z vboxsync $ */
+/* $Id: VUSBUrbTrace.cpp 91374 2021-09-24 17:40:30Z vboxsync $ */
 /** @file
  * Virtual USB - URBs.
  */
@@ -159,7 +159,7 @@ DECLHIDDEN(void) vusbUrbTrace(PVUSBURB pUrb, const char *pszMsg, bool fComplete)
     Log(("%s: %*s: pDev=%p[%s] rc=%s a=%i e=%u d=%s t=%s cb=%#x(%d) ts=%RU64 (%RU64 ns ago) %s\n",
          pUrb->pszDesc, s_cchMaxMsg, pszMsg,
          pDev,
-         pUrb->pVUsb && pUrb->pVUsb->pDev ? pUrb->pVUsb->pDev->pUsbIns->pszName : "",
+         pUrb->pVUsb && pUrb->pVUsb->pDev && pUrb->pVUsb->pDev->pUsbIns ? pUrb->pVUsb->pDev->pUsbIns->pszName : "",
          vusbUrbStatusName(pUrb->enmStatus),
          pDev ? pDev->u8Address : -1,
          pUrb->EndPt,
