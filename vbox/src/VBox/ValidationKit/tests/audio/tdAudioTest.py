@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tdAudioTest.py 90517 2021-08-04 12:40:31Z vboxsync $
+# $Id: tdAudioTest.py 90643 2021-08-12 07:29:32Z vboxsync $
 
 """
 AudioTest test driver which invokes the VKAT (Validation Kit Audio Test)
@@ -30,11 +30,12 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 90517 $"
+__version__ = "$Revision: 90643 $"
 
 # Standard Python imports.
 import os
 import sys
+import signal
 import subprocess
 import uuid
 
@@ -212,7 +213,13 @@ class tdAudioTest(vbox.TestDriver):
         if sys.platform == 'win32':
             os.system('taskkill /IM "%s.exe" /F' % (sProcName));
         else: # Note: killall is not available on older Debians (requires psmisc).
-            os.system('kill -9 $(pidof %s)' % (sProcName));
+            procPs = subprocess.Popen(['ps', 'ax'], stdout=subprocess.PIPE); # Using the BSD syntax here; MacOS also should understand this.
+            out, _ = procPs.communicate();
+            for sLine in out.decode("utf-8").splitlines():
+                if sProcName in sLine:
+                    pid = int(sLine.split(None, 1)[0]);
+                    reporter.log2('Killing PID %d' % (pid,));
+                    os.kill(pid, signal.SIGKILL);
 
     def killHstVkat(self):
         """
