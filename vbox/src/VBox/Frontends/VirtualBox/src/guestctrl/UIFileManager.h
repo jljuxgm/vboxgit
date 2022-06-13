@@ -1,4 +1,4 @@
-/* $Id: UIFileManager.h 92947 2021-12-15 19:15:10Z vboxsync $ */
+/* $Id: UIFileManager.h 92979 2021-12-16 12:20:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManager class declaration.
  */
@@ -150,7 +150,7 @@ private:
     void                      appendLog(const QString &strLog, const QString &strMachineName, FileManagerLogType eLogType);
     void                      savePanelVisibility();
 
-    void setMachines(const QVector<QUuid> &machineIDs);
+    void setMachines(const QVector<QUuid> &machineIDs, const QUuid &lastSelectedMachineId = QUuid());
     void removeTabs(const QVector<QUuid> &machineIdsToRemove);
     void addTabs(const QVector<QUuid> &machineIdsToAdd);
     void setVerticalToolBarActionsEnabled();
