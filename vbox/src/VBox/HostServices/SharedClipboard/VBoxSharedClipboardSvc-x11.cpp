@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-x11.cpp 90238 2021-07-19 13:48:09Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-x11.cpp 91624 2021-10-07 21:14:43Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Linux host.
  */
@@ -325,10 +325,14 @@ DECLCALLBACK(void) ShClX11RequestFromX11CompleteCallback(PSHCLCONTEXT pCtx, int 
         rc2 = RTCritSectEnter(&pCtx->pClient->CritSect);
         if (RT_SUCCESS(rc2))
         {
-            ShClEventSignal(&pCtx->pClient->EventSrc, pReq->idEvent, pPayload);
-            /* Note: Skip checking if signalling the event is successful, as it could be gone already by now. */
+            rc2 = ShClEventSignal(&pCtx->pClient->EventSrc, pReq->idEvent, pPayload);
             RTCritSectLeave(&pCtx->pClient->CritSect);
+            if (RT_SUCCESS(rc2))
+                pPayload = NULL;
         }
+
+        if (pPayload)
+            ShClPayloadFree(pPayload);
     }
 
     if (pReq)
