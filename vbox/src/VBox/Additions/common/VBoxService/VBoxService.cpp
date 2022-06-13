@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 90829 2021-08-24 10:26:07Z vboxsync $ */
+/* $Id: VBoxService.cpp 90862 2021-08-25 00:37:59Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -315,7 +315,7 @@ int VGSvcLogCreate(const char *pszLogFile)
 #endif
     int rc = RTLogCreateEx(&g_pLoggerRelease, "VBOXSERVICE_RELEASE_LOG", fFlags, "all",
                            RT_ELEMENTS(s_apszGroups), s_apszGroups, UINT32_MAX /*cMaxEntriesPerGroup*/,
-                           NULL /*pfnFlush*/, 0 /*cBufDescs*/, NULL /*paBufDescs*/, RTLOGDEST_STDOUT | RTLOGDEST_USER,
+                           0 /*cBufDescs*/, NULL /*paBufDescs*/, RTLOGDEST_STDOUT | RTLOGDEST_USER,
                            vgsvcLogHeaderFooter, g_cHistory, g_uHistoryFileSize, g_uHistoryFileTime,
                            NULL /*pErrInfo*/, "%s", pszLogFile ? pszLogFile : "");
     if (RT_SUCCESS(rc))

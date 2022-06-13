@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 90840 2021-08-24 11:38:08Z vboxsync $ */
+/* $Id: VMM.cpp 90862 2021-08-25 00:37:59Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -206,6 +206,7 @@ VMMR3_INT_DECL(int) VMMR3Init(PVM pVM)
     pVM->vmm.s.hEvtMulRendezvousRecursionPop    = NIL_RTSEMEVENTMULTI;
     pVM->vmm.s.hEvtRendezvousRecursionPushCaller = NIL_RTSEMEVENT;
     pVM->vmm.s.hEvtRendezvousRecursionPopCaller = NIL_RTSEMEVENT;
+    pVM->vmm.s.nsProgramStart                   = RTTimeProgramStartNanoTS();
 
 #if 0 /* pointless when timers doesn't run on EMT */
     /** @cfgm{/YieldEMTInterval, uint32_t, 1, UINT32_MAX, 23, ms}

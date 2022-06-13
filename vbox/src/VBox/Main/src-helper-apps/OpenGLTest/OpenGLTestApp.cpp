@@ -1,4 +1,4 @@
-/* $Id: OpenGLTestApp.cpp 90829 2021-08-24 10:26:07Z vboxsync $ */
+/* $Id: OpenGLTestApp.cpp 90862 2021-08-25 00:37:59Z vboxsync $ */
 /** @file
  * VBox host opengl support test application.
  */
@@ -297,7 +297,7 @@ static int vboxInitLogging(const char *pszFilename, bool bGenNameSuffix)
 
 
     int vrc = RTLogCreateEx(&loggerRelease, "VBOX_RELEASE_LOG", fFlags, "all", RT_ELEMENTS(s_apszGroups), s_apszGroups, UINT32_MAX,
-                            NULL /*pfnFlush*/, 0 /*cBufDescs*/, NULL /*paBufDescs*/, enmLogDest,
+                            0 /*cBufDescs*/, NULL /*paBufDescs*/, enmLogDest,
                             NULL /*pfnBeginEnd*/, 0 /*cHistory*/, 0 /*cbHistoryFileMax*/, 0 /*uHistoryTimeMax*/,
                             NULL /*pErrInfo*/, pszFilenameFmt, pszFilename, RTTimeMilliTS());
     if (RT_SUCCESS(vrc))
@@ -460,7 +460,7 @@ int main(int argc, char **argv)
                     break;
 
                 case 'V':
-                    RTPrintf("$Revision: 90829 $\n");
+                    RTPrintf("$Revision: 90862 $\n");
                     return 0;
 
                 case VERR_GETOPT_UNKNOWN_OPTION:

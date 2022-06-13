@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 90836 2021-08-24 11:29:21Z vboxsync $ */
+/* $Id: VMMInternal.h 90862 2021-08-25 00:37:59Z vboxsync $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -284,6 +284,9 @@ typedef struct VMM
     char                        szRing0AssertMsg1[512];
     /** Buffer for storing the custom message for a ring-0 assertion. */
     char                        szRing0AssertMsg2[256];
+
+    /** Used when setting up ring-0 logger. */
+    uint64_t                    nsProgramStart;
 
     /** Number of VMMR0_DO_HM_RUN or VMMR0_DO_NEM_RUN calls. */
     STAMCOUNTER                 StatRunGC;

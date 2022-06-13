@@ -1,4 +1,4 @@
-/* $Id: VBoxTray.cpp 90829 2021-08-24 10:26:07Z vboxsync $ */
+/* $Id: VBoxTray.cpp 90862 2021-08-25 00:37:59Z vboxsync $ */
 /** @file
  * VBoxTray - Guest Additions Tray Application
  */
@@ -577,7 +577,7 @@ static int vboxTrayLogCreate(void)
     int rc = RTLogCreateEx(&g_pLoggerRelease, s_szEnvVarPfx,
                            RTLOGFLAGS_PREFIX_THREAD | RTLOGFLAGS_PREFIX_TIME_PROG | RTLOGFLAGS_USECRLF,
                            s_szGroupSettings, RT_ELEMENTS(s_apszGroups), s_apszGroups, UINT32_MAX,
-                           NULL /*pfnFlush*/, 0 /*cBufDescs*/, NULL /*paBufDescs*/, RTLOGDEST_STDOUT,
+                           0 /*cBufDescs*/, NULL /*paBufDescs*/, RTLOGDEST_STDOUT,
                            vboxTrayLogHeaderFooter, g_cHistory, g_uHistoryFileSize, g_uHistoryFileTime,
                            RTErrInfoInitStatic(&ErrInfo), NULL /*pszFilenameFmt*/);
     if (RT_SUCCESS(rc))

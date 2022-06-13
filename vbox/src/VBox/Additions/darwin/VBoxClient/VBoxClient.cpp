@@ -1,4 +1,4 @@
-/** $Id: VBoxClient.cpp 90829 2021-08-24 10:26:07Z vboxsync $ */
+/** $Id: VBoxClient.cpp 90862 2021-08-25 00:37:59Z vboxsync $ */
 /** @file
  * VBoxClient - User specific services, Darwin.
  */
@@ -60,7 +60,7 @@ static int vbclInitLogger(char *pszLogFileName)
     static const char * const s_apszGroups[] = VBOX_LOGGROUP_NAMES;
     int rc = RTLogCreateEx(&g_pLogger, "VBOXCLIENT_RELEASE_LOG", RTLOGFLAGS_PREFIX_THREAD | RTLOGFLAGS_PREFIX_TIME_PROG, "all",
                            RT_ELEMENTS(s_apszGroups), s_apszGroups, UINT32_MAX /*cMaxEntriesPerGroup*/,
-                           NULL /*pfnFlush*/, 0 /*cBufDescs*/, NULL /*paBufDescs*/, RTLOGDEST_STDOUT,
+                           0 /*cBufDescs*/, NULL /*paBufDescs*/, RTLOGDEST_STDOUT,
                            NULL /*pfnPhase*/,
                            pszLogFileName ? 10 : 0 /*cHistory*/,
                            pszLogFileName ? 100 * _1M : 0 /*cbHistoryFileMax*/,

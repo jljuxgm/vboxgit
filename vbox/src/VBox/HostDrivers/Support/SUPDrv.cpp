@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 90859 2021-08-24 21:36:42Z vboxsync $ */
+/* $Id: SUPDrv.cpp 90862 2021-08-25 00:37:59Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -300,6 +300,7 @@ static SUPFUNC g_aFunctions[] =
     { "SUPR0GetDefaultLogRelInstanceEx",        (void *)(uintptr_t)SUPR0GetDefaultLogRelInstanceEx },
     { "RTLogSetDefaultInstanceThread",          (void *)(uintptr_t)RTLogSetDefaultInstanceThread },
     { "RTLogSetFlushCallback",                  (void *)(uintptr_t)RTLogSetFlushCallback },
+    { "RTLogSetR0ProgramStart",                 (void *)(uintptr_t)RTLogSetR0ProgramStart },
     { "RTLogSetR0ThreadNameF",                  (void *)(uintptr_t)RTLogSetR0ThreadNameF },
     { "RTMemAllocExTag",                        (void *)(uintptr_t)RTMemAllocExTag },
     { "RTMemAllocTag",                          (void *)(uintptr_t)RTMemAllocTag },
@@ -5462,11 +5463,6 @@ static int supdrvIOCtl_LdrLoad(PSUPDRVDEVEXT pDevExt, PSUPDRVSESSION pSession, P
             break;
 
         case SUPLDRLOADEP_VMMR0:
-            if (pReq->u.In.EP.VMMR0.pvVMMR0 != pImage->pvImage)
-            {
-                supdrvLdrUnlock(pDevExt);
-                return supdrvLdrLoadError(VERR_INVALID_PARAMETER, pReq, "Invalid pvVMMR0 pointer: %p, expected %p", pReq->u.In.EP.VMMR0.pvVMMR0, pImage->pvImage);
-            }
             rc = supdrvLdrValidatePointer(pDevExt, pImage, pReq->u.In.EP.VMMR0.pvVMMR0EntryFast, false, pReq->u.In.abImage, "VMMR0EntryFast", pReq);
             if (RT_FAILURE(rc))
                 return rc;

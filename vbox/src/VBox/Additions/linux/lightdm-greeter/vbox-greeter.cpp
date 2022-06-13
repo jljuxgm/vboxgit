@@ -1,4 +1,4 @@
-/* $Id: vbox-greeter.cpp 90829 2021-08-24 10:26:07Z vboxsync $ */
+/* $Id: vbox-greeter.cpp 90862 2021-08-25 00:37:59Z vboxsync $ */
 /** @file
  * vbox-greeter - an own LightDM greeter module supporting auto-logons
  *                controlled by the host.
@@ -936,7 +936,7 @@ static int vboxGreeterLogCreate(const char *pszLogFile)
 #endif
     int rc = RTLogCreateEx(&g_pLoggerRelease, "VBOXGREETER_RELEASE_LOG", fFlags, "all",
                            RT_ELEMENTS(s_apszGroups), s_apszGroups, UINT32_MAX /*cMaxEntriesPerGroup*/,
-                           NULL /*pfnFlush*/, 0 /*cBufDescs*/, NULL /*paBufDescs*/, RTLOGDEST_STDOUT,
+                           0 /*cBufDescs*/, NULL /*paBufDescs*/, RTLOGDEST_STDOUT,
                            vboxGreeterLogHeaderFooter, g_cHistory, g_uHistoryFileSize, g_uHistoryFileTime,
                            NULL /*pErrInfo*/, pszLogFile);
     if (RT_SUCCESS(rc))
