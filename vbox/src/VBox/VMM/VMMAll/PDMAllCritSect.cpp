@@ -1,4 +1,4 @@
-/* $Id: PDMAllCritSect.cpp 90608 2021-08-10 21:33:32Z vboxsync $ */
+/* $Id: PDMAllCritSect.cpp 90657 2021-08-12 11:28:57Z vboxsync $ */
 /** @file
  * PDM - Write-Only Critical Section, All Contexts.
  */
@@ -842,13 +842,11 @@ VMMDECL(int) PDMCritSectLeave(PVMCC pVM, PPDMCRITSECT pCritSect)
     SUPSEMEVENT const hEventToSignal = pCritSect->s.hEventToSignal;
     pCritSect->s.hEventToSignal = NIL_SUPSEMEVENT;
 
-# ifdef IN_RING3
-#  if defined(PDMCRITSECT_STRICT)
+# if defined(PDMCRITSECT_STRICT)
     if (pCritSect->s.Core.pValidatorRec->hThread != NIL_RTTHREAD)
         RTLockValidatorRecExclReleaseOwnerUnchecked(pCritSect->s.Core.pValidatorRec);
-#  endif
-    Assert(!pCritSect->s.Core.pValidatorRec || pCritSect->s.Core.pValidatorRec->hThread == NIL_RTTHREAD);
 # endif
+    Assert(!pCritSect->s.Core.pValidatorRec || pCritSect->s.Core.pValidatorRec->hThread == NIL_RTTHREAD);
 
 # ifdef PDMCRITSECT_WITH_LESS_ATOMIC_STUFF
     //pCritSect->s.Core.cNestings = 0; /* not really needed */
