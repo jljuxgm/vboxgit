@@ -1,4 +1,4 @@
-/* $Id: UINewVersionChecker.cpp 90586 2021-08-10 09:37:06Z vboxsync $ */
+/* $Id: UINewVersionChecker.cpp 90602 2021-08-10 15:22:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINewVersionChecker class implementation.
  */
@@ -36,8 +36,8 @@
 #endif
 
 
-UINewVersionChecker::UINewVersionChecker(bool fForceCall)
-    : m_fForceCall(fForceCall)
+UINewVersionChecker::UINewVersionChecker(bool fForcedCall)
+    : m_fForcedCall(fForcedCall)
     , m_url("https://update.virtualbox.org/query.php")
 {
 }
@@ -105,7 +105,7 @@ void UINewVersionChecker::processNetworkReplyFinished(UINetworkReply *pReply)
     /* No newer version of necessary package found: */
     else
     {
-        if (isItForceCall())
+        if (isItForcedCall())
             msgCenter().showUpdateNotFound();
     }
 

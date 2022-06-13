@@ -1,4 +1,4 @@
-/* $Id: UIUpdateManager.h 90586 2021-08-10 09:37:06Z vboxsync $ */
+/* $Id: UIUpdateManager.h 90602 2021-08-10 15:22:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUpdateManager class declaration.
  */
@@ -62,8 +62,9 @@ public slots:
 
 private slots:
 
-    /** Checks whether update is necessary. */
-    void sltCheckIfUpdateIsNecessary(bool fForceCall = false);
+    /** Checks whether update is necessary.
+      * @param  fForcedCall  Brings whether this customer has forced privelegies. */
+    void sltCheckIfUpdateIsNecessary(bool fForcedCall = false);
 
     /** Handles update finishing. */
     void sltHandleUpdateFinishing();
