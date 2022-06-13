@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 92104 2021-10-27 13:20:45Z vboxsync $
+# $Id: vbox.py 92109 2021-10-27 15:02:35Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 92104 $"
+__version__ = "$Revision: 92109 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -2923,9 +2923,12 @@ class TestDriver(base.TestDriver):                                              
         # Needed to reach the host (localhost) from the guest. See xTracker #9896.
         for iSlot in range(0, 32):
             try:
+                oNic = oVM.getNetworkAdapter(iSlot);
+                if not oNic.enabled:
+                    continue;
                 sKey = 'VBoxInternal/Devices/%s/0/LUN#0/Config/LocalhostReachable' % \
-                       (self.oVBoxMgr.getEnumValueName('NetworkAdapterType', oVM.getNetworkAdapter(iSlot).adapterType));
-                self.oVBox.setExtraData(sKey, 'true');
+                       (self.oVBoxMgr.getEnumValueName('NetworkAdapterType', oNic.adapterType));
+                self.oVBox.setExtraData(sKey, '1');
             except:
                 break;
 
