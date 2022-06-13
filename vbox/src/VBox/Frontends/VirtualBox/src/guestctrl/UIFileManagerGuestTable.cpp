@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerGuestTable.cpp 92787 2021-12-07 13:04:35Z vboxsync $ */
+/* $Id: UIFileManagerGuestTable.cpp 92788 2021-12-07 13:19:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerGuestTable class implementation.
  */
@@ -24,7 +24,6 @@
 /* GUI includes: */
 #include "QILabel.h"
 #include "UIActionPool.h"
-#include "UIConsoleEventHandler.h"
 #include "UIConverter.h"
 #include "UICommon.h"
 #include "UICustomFileSystemModel.h"
@@ -168,8 +167,6 @@ UIFileManagerGuestTable::UIFileManagerGuestTable(UIActionPool *pActionPool, cons
             this, &UIFileManagerGuestTable::sltMachineStateChange);
     connect(&uiCommon(), &UICommon::sigAskToCommitData,
             this, &UIFileManagerGuestTable::sltCommitDataSignalReceived);
-    connect(gConsoleEvents, &UIConsoleEventHandler::sigAdditionsChange,
-            this, &UIFileManagerGuestTable::sltAdditionsChange);
 
     if (m_pActionPool && m_pActionPool->action(UIActionIndex_M_FileManager_T_GuestSession))
         m_pActionPool->action(UIActionIndex_M_FileManager_T_GuestSession)->setChecked(true);
