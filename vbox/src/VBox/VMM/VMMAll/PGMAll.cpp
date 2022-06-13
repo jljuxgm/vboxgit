@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 92751 2021-12-06 05:35:38Z vboxsync $ */
+/* $Id: PGMAll.cpp 92756 2021-12-06 09:47:53Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -2261,8 +2261,6 @@ int pgmGstLazyMapPml4(PVMCPUCC pVCpu, PX86PML4 *ppPml4)
 
     RTGCPHYS    GCPhysCR3 = pVCpu->pgm.s.GCPhysCR3 & X86_CR3_AMD64_PAGE_MASK;
     PPGMPAGE    pPage;
-    /** @todo Nested VMX: convert GCPhysCR3 from nested-guest physical to
-     *        guest-physical address here. */
     int rc = pgmPhysGetPageEx(pVM, GCPhysCR3, &pPage);
     if (RT_SUCCESS(rc))
     {
