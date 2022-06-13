@@ -1,4 +1,4 @@
-/* $Id: DevDP8390.cpp 93562 2022-02-03 07:17:21Z vboxsync $ */
+/* $Id: DevDP8390.cpp 93564 2022-02-03 07:31:00Z vboxsync $ */
 /** @file
  * DevDP8390 - National Semiconductor DP8390-based Ethernet Adapter Emulation.
  */
@@ -1752,29 +1752,6 @@ DECLINLINE(int) dp8390XmitAllocBuf(PDPNICSTATE pThis, size_t cbMin, bool fLoopba
         rc = VINF_SUCCESS;
     }
     return rc;
-}
-
-
-/**
- * Frees an unsent buffer.
- *
- * @param   pThis           The device instance.
- * @param   fLoopback       Set if we're in loopback mode.
- * @param   pSgBuf          The SG to free.  Can be NULL.
- */
-DECLINLINE(void) dp8390XmitFreeBuf(PDPNICSTATE pThis, bool fLoopback, PPDMSCATTERGATHER pSgBuf)
-{
-    if (pSgBuf)
-    {
-        if (RT_UNLIKELY(fLoopback))
-            pSgBuf->pvAllocator = NULL;
-        else
-        {
-            PPDMINETWORKUP pDrv = pThis->CTX_SUFF(pDrv);
-            if (RT_LIKELY(pDrv))
-                pDrv->pfnFreeBuf(pDrv, pSgBuf);
-        }
-    }
 }
 
 

@@ -1,4 +1,4 @@
-/* $Id: Dev3C501.cpp 93563 2022-02-03 07:24:54Z vboxsync $ */
+/* $Id: Dev3C501.cpp 93564 2022-02-03 07:31:00Z vboxsync $ */
 /** @file
  * Dev3C501 - 3Com EtherLink (3C501) Ethernet Adapter Emulation.
  */
@@ -936,29 +936,6 @@ DECLINLINE(int) elnkXmitAllocBuf(PELNKSTATE pThis, size_t cbMin, bool fLoopback,
         rc = VINF_SUCCESS;
     }
     return rc;
-}
-
-
-/**
- * Frees an unsent buffer.
- *
- * @param   pThis           The device instance.
- * @param   fLoopback       Set if we're in loopback mode.
- * @param   pSgBuf          The SG to free.  Can be NULL.
- */
-DECLINLINE(void) elnkXmitFreeBuf(PELNKSTATE pThis, bool fLoopback, PPDMSCATTERGATHER pSgBuf)
-{
-    if (pSgBuf)
-    {
-        if (RT_UNLIKELY(fLoopback))
-            pSgBuf->pvAllocator = NULL;
-        else
-        {
-            PPDMINETWORKUP pDrv = pThis->CTX_SUFF(pDrv);
-            if (RT_LIKELY(pDrv))
-                pDrv->pfnFreeBuf(pDrv, pSgBuf);
-        }
-    }
 }
 
 
