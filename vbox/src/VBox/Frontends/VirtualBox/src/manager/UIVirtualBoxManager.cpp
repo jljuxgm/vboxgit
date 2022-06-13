@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 89985 2021-07-01 08:44:04Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 89999 2021-07-02 11:34:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -1042,7 +1042,6 @@ void UIVirtualBoxManager::sltOpenAddMachineDialog()
         QWidget *pWizardParent = windowManager().realParentWindow(this);
         UISafePointerWizardAddCloudVM pWizard = new UIWizardAddCloudVM(pWizardParent, m_pWidget->fullGroupName());
         windowManager().registerNewParent(pWizard, pWizardParent);
-        pWizard->prepare();
 
         /* Execute wizard: */
         pWizard->exec();
