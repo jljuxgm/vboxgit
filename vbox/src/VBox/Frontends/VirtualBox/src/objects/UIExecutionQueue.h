@@ -1,4 +1,4 @@
-/* $Id: UIExecutionQueue.h 90579 2021-08-09 14:49:12Z vboxsync $ */
+/* $Id: UIExecutionQueue.h 90585 2021-08-10 08:30:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExecutionQueue class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef FEQT_INCLUDED_SRC_objects_UIExecutionQueue_h
 #define FEQT_INCLUDED_SRC_objects_UIExecutionQueue_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QObject>
