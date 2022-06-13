@@ -1,4 +1,4 @@
-/* $Id: SUPDrvInternal.h 90780 2021-08-23 09:25:17Z vboxsync $ */
+/* $Id: SUPDrvInternal.h 90943 2021-08-27 10:25:11Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
@@ -308,13 +308,6 @@
  * OS debug print macro.
  */
 #define OSDBGPRINT(a) SUPR0Printf a
-
-/** Debug printf macro shared with the ring-3 part. */
-#ifdef DEBUG_bird
-# define SUP_DPRINTF(a) SUPR0Printf a
-#else
-# define SUP_DPRINTF(a) do { } while (0)
-#endif
 
 
 /** @name Context values for the per-session handle tables.
