@@ -1,4 +1,4 @@
-/* $Id: UIChooserHandlerKeyboard.cpp 84610 2020-05-29 14:10:06Z vboxsync $ */
+/* $Id: UIChooserHandlerKeyboard.cpp 90909 2021-08-26 12:21:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserHandlerKeyboard class implementation.
  */
@@ -304,9 +304,9 @@ bool UIChooserHandlerKeyboard::handleKeyPress(QKeyEvent *pEvent) const
         }
         default:
         {
-            /* Start lookup: */
+            /* Start lookup only for non-empty and alphanumerical strings: */
             const QString strText = pEvent->text();
-            if (!strText.isEmpty())
+            if (!strText.isEmpty() && !strText.contains(QRegExp("[^A-Za-z0-9]", Qt::CaseInsensitive)))
                 model()->lookFor(strText);
             break;
         }
