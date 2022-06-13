@@ -1,4 +1,4 @@
-/* $Id: UIToolBox.cpp 91455 2021-09-29 13:02:49Z vboxsync $ */
+/* $Id: UIToolBox.cpp 91636 2021-10-08 12:20:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolBox class implementation.
  */
@@ -385,7 +385,7 @@ bool UIToolBox::insertPage(int iIndex, QWidget *pWidget, const QString &strTitle
             this, &UIToolBox::sltHandleShowPageWidget);
 
     /* Add stretch at the end: */
-    m_pMainLayout->addStretch();
+    m_pMainLayout->addStretch(1);
     return iIndex;
 }
 
