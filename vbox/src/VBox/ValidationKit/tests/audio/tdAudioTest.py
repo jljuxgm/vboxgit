@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tdAudioTest.py 90896 2021-08-25 18:11:39Z vboxsync $
+# $Id: tdAudioTest.py 90961 2021-08-27 15:23:42Z vboxsync $
 
 """
 AudioTest test driver which invokes the VKAT (Validation Kit Audio Test)
@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 90896 $"
+__version__ = "$Revision: 90961 $"
 
 # Standard Python imports.
 import os
@@ -523,6 +523,10 @@ class tdAudioTest(vbox.TestDriver):
         if  oTestVm.isWindows() \
         and oTestVm.sKind in ('WindowsNT4', 'Windows2000'): # Too old for DirectSound and WASAPI backends.
             reporter.log('Audio testing skipped, not implemented/available for that OS yet.');
+            return True;
+
+        if self.fpApiVer < 7.0:
+            reporter.log('Audio testing for non-trunk builds skipped.');
             return True;
 
         fRc = False;
