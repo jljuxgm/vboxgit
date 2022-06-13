@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-PagingMapRamAbove4GForLM.c 92262 2021-11-08 11:12:17Z vboxsync $ */
+/* $Id: bs3-cmn-PagingMapRamAbove4GForLM.c 92263 2021-11-08 11:16:15Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3PagingInitMapAbove4GForLM
  */
@@ -107,5 +107,4 @@ BS3_CMN_DEF(int, Bs3PagingMapRamAbove4GForLM,(uint64_t *puFailurePoint))
 
     return VINF_SUCCESS;
 }
-
 
