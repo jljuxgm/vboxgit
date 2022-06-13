@@ -1,4 +1,4 @@
-/* $Id: UIColorThemeEditor.h 94144 2022-03-09 08:35:33Z vboxsync $ */
+/* $Id: UIColorThemeEditor.h 94145 2022-03-09 08:59:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIColorThemeEditor class declaration.
  */
@@ -45,9 +45,8 @@ signals:
 
 public:
 
-    /** Constructs color theme editor passing @a pParent to the base-class.
-      * @param  fWithLabel  Brings whether we should add label ourselves. */
-    UIColorThemeEditor(QWidget *pParent = 0, bool fWithLabel = false);
+    /** Constructs color theme editor passing @a pParent to the base-class. */
+    UIColorThemeEditor(QWidget *pParent = 0);
 
     /** Defines editor @a enmValue. */
     void setValue(UIColorThemeType enmValue);
