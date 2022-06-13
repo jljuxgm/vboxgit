@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 91516 2021-10-01 14:20:07Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 92817 2021-12-08 14:04:00Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -3618,8 +3618,7 @@ HRESULT GuestSession::directoryRemoveRecursive(const com::Utf8Str &aPath, const 
     if (RT_UNLIKELY(aPath.c_str() == NULL || *aPath.c_str() == '\0'))
         return setError(E_INVALIDARG, tr("No directory to remove recursively specified"));
 
-    /* By default only delete empty directory structures, e.g. the operation will abort if there are
-     * directories which are not empty. */
+    /* By defautl remove recursively as the function name implies. */
     uint32_t fFlags = DIRREMOVEREC_FLAG_RECURSIVE;
     if (aFlags.size())
     {
