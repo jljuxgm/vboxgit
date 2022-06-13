@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 91366 2021-09-24 15:10:36Z vboxsync $ */
+/* $Id: MachineImpl.cpp 91470 2021-09-29 19:55:51Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -15185,6 +15185,9 @@ HRESULT Machine::applyDefaults(const com::Utf8Str &aFlags)
     mHWData->mHWVirtExEnabled = true;
 
     rc = osType->COMGETTER(RecommendedRAM)(&mHWData->mMemorySize);
+    if (FAILED(rc)) return rc;
+
+    rc = osType->COMGETTER(RecommendedCPUCount)(&mHWData->mCPUCount);
     if (FAILED(rc)) return rc;
 
     /* Graphics stuff. */

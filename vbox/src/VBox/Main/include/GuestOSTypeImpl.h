@@ -1,4 +1,4 @@
-/* $Id: GuestOSTypeImpl.h 90828 2021-08-24 09:44:46Z vboxsync $ */
+/* $Id: GuestOSTypeImpl.h 91470 2021-09-29 19:55:51Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -86,6 +86,7 @@ private:
     HRESULT getRecommendedUSB3(BOOL *aRecommendedUSB3);
     HRESULT getRecommendedTFReset(BOOL *aRecommendedTFReset);
     HRESULT getRecommendedX2APIC(BOOL *aRecommendedX2APIC);
+    HRESULT getRecommendedCPUCount(ULONG *aRecommendedCPUCount);
 
 
     const Utf8Str mFamilyID;
@@ -95,6 +96,7 @@ private:
     const VBOXOSTYPE mOSType;
     const uint32_t mOSHint;
     const uint32_t mRAMSize;
+    const uint32_t mCPUCount;
     const GraphicsControllerType_T mGraphicsControllerType;
     const uint32_t mVRAMSize;
     const uint64_t mHDDSize;

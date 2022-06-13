@@ -1,4 +1,4 @@
-/* $Id: Global.h 87241 2021-01-13 15:56:05Z vboxsync $ */
+/* $Id: Global.h 91470 2021-09-29 19:55:51Z vboxsync $ */
 /** @file
  * VirtualBox COM API - Global Declarations and Definitions.
  */
@@ -70,6 +70,7 @@ public:
         const char                    *description; /* utf-8 */
         const VBOXOSTYPE               osType;
         const uint32_t                 osHint;
+        const uint32_t                 recommendedCPUCount;
         const uint32_t                 recommendedRAM;
         const uint32_t                 recommendedVRAM;
         const uint64_t                 recommendedHDD;
