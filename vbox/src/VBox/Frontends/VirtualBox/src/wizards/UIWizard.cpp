@@ -1,4 +1,4 @@
-/* $Id: UIWizard.cpp 89277 2021-05-25 15:51:04Z vboxsync $ */
+/* $Id: UIWizard.cpp 90258 2021-07-20 11:52:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizard class implementation.
  */
@@ -547,7 +547,7 @@ void UIWizard::assignWatermarkHelper()
     /* Convert processed image to pixmap and assign it to wizard's watermark. */
     QPixmap pixWatermarkNew = QPixmap::fromImage(imgWatermarkNew);
     /* For HiDPI support parent-widget's device pixel ratio is to be taken into account: */
-    const double dRatio = parentWidget()->windowHandle()->devicePixelRatio();
+    const double dRatio = parentWidget()->window()->windowHandle()->devicePixelRatio();
     pixWatermarkNew.setDevicePixelRatio(dRatio);
     /* Assign watermark finally: */
     setPixmap(QWizard::WatermarkPixmap, pixWatermarkNew);
