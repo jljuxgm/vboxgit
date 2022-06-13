@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.h 88681 2021-04-23 15:15:11Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.h 90698 2021-08-16 14:15:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class declaration.
  */
@@ -350,6 +350,12 @@ private:
         UIChooserNode *searchFakeNode(UIChooserNode *pProfileNode);
         /** Searches for fake with passed @a strProviderShortName and @a strProfileName. */
         UIChooserNode *searchFakeNode(const QString &strProviderShortName, const QString &strProfileName);
+    /** @} */
+
+    /** @name Cloud update stuff.
+      * @{ */
+        /** Stops all cloud updates. */
+        void stopCloudUpdates();
     /** @} */
 
     /** @name General stuff.
