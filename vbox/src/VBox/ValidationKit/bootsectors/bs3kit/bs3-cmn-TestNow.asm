@@ -1,4 +1,4 @@
-; $Id: bs3-cmn-TestNow.asm 88839 2021-05-03 14:28:49Z vboxsync $
+; $Id: bs3-cmn-TestNow.asm 92255 2021-11-08 08:27:33Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3TestNow.
 ;
@@ -32,6 +32,8 @@ TMPL_BEGIN_TEXT
 
 ;;
 ; @cproto   BS3_DECL(uint64_t) Bs3TestNow(void);
+;
+; @uses     eflags, return register(s)
 ;
 BS3_PROC_BEGIN_CMN Bs3TestNow, BS3_PBC_HYBRID
         BS3_CALL_CONV_PROLOG 0
@@ -67,9 +69,9 @@ BONLY64 push    xDX
         shr     eax, 16                 ; The fourth word is returned in AX.
 %elif __BITS__ == 32
         mov     edx, eax
-        mov     eax, eax
+        mov     eax, ecx
 %else
-        shr     rax, 32
+        shl     rax, 32
         or      rax, rcx
 %endif
 
