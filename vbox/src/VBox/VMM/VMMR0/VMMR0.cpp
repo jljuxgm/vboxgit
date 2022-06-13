@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 90189 2021-07-14 16:39:09Z vboxsync $ */
+/* $Id: VMMR0.cpp 90190 2021-07-14 16:50:45Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -1491,6 +1491,7 @@ VMMR0DECL(void) VMMR0EntryFast(PGVM pGVM, PVMCC pVMIgnored, VMCPUID idCpu, VMMR0
                                             "Got VMCPU state %d expected %d.\n", VMCPU_GET_STATE(pGVCpu), VMCPUSTATE_STARTED_HM);
                                 rc = VERR_VMM_WRONG_HM_VMCPU_STATE;
                             }
+#if 0
                             /** @todo Get rid of this. HM shouldn't disable the context hook. */
                             else if (RT_UNLIKELY(vmmR0ThreadCtxHookIsEnabled(pGVCpu)))
                             {
@@ -1499,6 +1500,7 @@ VMMR0DECL(void) VMMR0EntryFast(PGVM pGVM, PVMCC pVMIgnored, VMCPUID idCpu, VMMR0
                                             "Thread-context hooks still enabled! VCPU=%p Id=%u rc=%d.\n", pGVCpu, pGVCpu->idCpu, rc);
                                 rc = VERR_VMM_CONTEXT_HOOK_STILL_ENABLED;
                             }
+#endif
 
                             VMCPU_SET_STATE(pGVCpu, VMCPUSTATE_STARTED);
                         }

@@ -1,4 +1,4 @@
-/* $Id: VMMGuruMeditation.cpp 90189 2021-07-14 16:39:09Z vboxsync $ */
+/* $Id: VMMGuruMeditation.cpp 90190 2021-07-14 16:50:45Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor, Guru Meditation Code.
  */
@@ -348,6 +348,10 @@ VMMR3DECL(void) VMMR3FatalDump(PVM pVM, PVMCPU pVCpu, int rcErr)
         case VINF_EM_DBG_HYPER_STEPPED:
         case VINF_EM_TRIPLE_FAULT:
         case VERR_VMM_HYPER_CR3_MISMATCH:
+        case VERR_VMM_SET_JMP_ERROR:
+        case VERR_VMM_SET_JMP_ABORTED_RESUME:
+        case VERR_VMM_SET_JMP_STACK_OVERFLOW:
+        case VERR_VMM_LONG_JMP_ERROR:
         {
             /*
              * Active trap? This is only of partial interest when in hardware
@@ -695,7 +699,7 @@ VMMR3DECL(void) VMMR3FatalDump(PVM pVM, PVMCPU pVCpu, int rcErr)
     vmmR3FatalDumpInfoHlpFlushStdErr(&Hlp);
     if (Hlp.szSummary[0])
         RTStrmPrintf(g_pStdErr,
-                     "%s"
+                     "%s\n"
                      "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n",
                      Hlp.szSummary);
 
