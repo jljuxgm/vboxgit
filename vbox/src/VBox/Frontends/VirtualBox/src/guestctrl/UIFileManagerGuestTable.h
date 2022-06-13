@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerGuestTable.h 92790 2021-12-07 18:18:45Z vboxsync $ */
+/* $Id: UIFileManagerGuestTable.h 92814 2021-12-08 13:57:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerGuestTable class declaration.
  */
@@ -58,6 +58,7 @@ signals:
 public:
 
     UIFileManagerGuestTable(UIActionPool *pActionPool, const CMachine &comMachine, QWidget *pParent = 0);
+    ~UIFileManagerGuestTable();
     void copyGuestToHost(const QString& hostDestinationPath);
     void copyHostToGuest(const QStringList &hostSourcePathList,
                          const QString &strDestination = QString());

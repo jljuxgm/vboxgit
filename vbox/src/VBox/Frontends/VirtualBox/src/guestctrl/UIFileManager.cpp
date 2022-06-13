@@ -1,4 +1,4 @@
-/* $Id: UIFileManager.cpp 92790 2021-12-07 18:18:45Z vboxsync $ */
+/* $Id: UIFileManager.cpp 92814 2021-12-08 13:57:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManager class implementation.
  */
@@ -144,6 +144,15 @@ UIFileManager::UIFileManager(EmbedTo enmEmbedding, UIActionPool *pActionPool,
 UIFileManager::~UIFileManager()
 {
     UIFileManagerOptions::destroy();
+    if (m_pGuestTablesContainer)
+    {
+        for (int i = 0; i < m_pGuestTablesContainer->count(); ++i)
+        {
+            UIFileManagerGuestTable *pTable = qobject_cast<UIFileManagerGuestTable*>(m_pGuestTablesContainer->widget(i));
+            if (pTable)
+                pTable->disconnect();
+        }
+    }
 }
 
 QMenu *UIFileManager::menu() const
