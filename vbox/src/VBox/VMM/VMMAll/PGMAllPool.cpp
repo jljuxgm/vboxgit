@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 91854 2021-10-20 00:50:11Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 91907 2021-10-20 19:00:05Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -2475,8 +2475,7 @@ static int pgmPoolMonitorInsert(PPGMPOOL pPool, PPGMPOOLPAGE pPage)
         PVMCC pVM = pPool->CTX_SUFF(pVM);
         const RTGCPHYS GCPhysPage = pPage->GCPhys & ~(RTGCPHYS)PAGE_OFFSET_MASK;
         rc = PGMHandlerPhysicalRegister(pVM, GCPhysPage, GCPhysPage + PAGE_OFFSET_MASK, pPool->hAccessHandlerType,
-                                        MMHyperCCToR3(pVM, pPage), MMHyperCCToR0(pVM, pPage), MMHyperCCToRC(pVM, pPage),
-                                        NIL_RTR3PTR /*pszDesc*/);
+                                        MMHyperCCToR3(pVM, pPage), MMHyperCCToR0(pVM, pPage), NIL_RTRCPTR, NIL_RTR3PTR /*pszDesc*/);
         /** @todo we should probably deal with out-of-memory conditions here, but for now increasing
          * the heap size should suffice. */
         AssertFatalMsgRC(rc, ("PGMHandlerPhysicalRegisterEx %RGp failed with %Rrc\n", GCPhysPage, rc));

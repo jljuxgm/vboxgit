@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 91874 2021-10-20 09:11:06Z vboxsync $ */
+/* $Id: PGMPhys.cpp 91907 2021-10-20 19:00:05Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -4271,7 +4271,7 @@ static int pgmR3PhysRomRegisterLocked(PVM pVM, PPDMDEVINS pDevIns, RTGCPHYS GCPh
              * Register the ROM access handler.
              */
             rc = PGMHandlerPhysicalRegister(pVM, GCPhys, GCPhysLast, pVM->pgm.s.hRomPhysHandlerType,
-                                            pRomNew, MMHyperCCToR0(pVM, pRomNew), MMHyperCCToRC(pVM, pRomNew), pszDesc);
+                                            pRomNew, MMHyperCCToR0(pVM, pRomNew), NIL_RTRCPTR, pszDesc);
             if (RT_SUCCESS(rc))
             {
                 /*
