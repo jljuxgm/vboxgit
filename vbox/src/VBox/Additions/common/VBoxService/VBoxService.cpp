@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 92693 2021-12-02 10:52:15Z vboxsync $ */
+/* $Id: VBoxService.cpp 92695 2021-12-02 11:03:33Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -1213,7 +1213,8 @@ int main(int argc, char **argv)
     }
 
 #else  /* !RT_OS_WINDOWS */
-    /** @todo Add PID file creation here? */
+    /* On other OSes we have PID file support provided by the actual service definitions / service wrapper scripts,
+     * like vboxadd-service.sh on Linux or vboxservice.xml on Solaris. */
 #endif /* !RT_OS_WINDOWS */
 
     VGSvcVerbose(0, "%s r%s started. Verbose level = %d\n", RTBldCfgVersion(), RTBldCfgRevisionStr(), g_cVerbosity);
