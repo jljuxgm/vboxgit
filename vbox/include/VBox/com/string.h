@@ -1,4 +1,4 @@
-/* $Id: string.h 91519 2021-10-01 14:36:27Z vboxsync $ */
+/* $Id: string.h 93105 2021-12-30 23:34:31Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - Smart string classes declaration.
  */
@@ -354,6 +354,19 @@ public:
      * @returns true if @a a_pThat equals this string.
      * @param   a_pThat    The native BSTR to compare with. */
     bool equalsIgnoreCase(BSTR a_pThat) const           { return compare(a_pThat, CaseInsensitive) == 0; }
+
+    /**
+     * Checks if the string starts with @a a_rStart.
+     */
+    bool startsWith(Bstr const &a_rStart) const;
+    /**
+     * Checks if the string starts with @a a_rStart.
+     */
+    bool startsWith(RTCString const &a_rStart) const;
+    /**
+     * Checks if the string starts with @a a_pszStart.
+     */
+    bool startsWith(const char *a_pszStart) const;
 
     /**
      * Returns true if the member string has no length.
