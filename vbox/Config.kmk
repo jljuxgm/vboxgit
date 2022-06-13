@@ -1,4 +1,4 @@
-# $Id: Config.kmk 92514 2021-11-19 18:38:54Z vboxsync $
+# $Id: Config.kmk 92595 2021-11-25 09:18:53Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -276,6 +276,7 @@ VBOX_PRODUCT      = Oracle VM VirtualBox
 #	src/VBox/Additions/WINNT/Installer/ISO/ReadmeDrivers.txt
 #	src/VBox/Main/nls/*.ts
 #	src/VBox/ExtPacks/Puel/nls/*.ts
+# src/VBox/Frontends/VBoxManage/nls/*.ts
 #	*/*.inf, */*.rc
 
 # Maybe we want set this manually.
@@ -8369,7 +8370,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 92514 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 92595 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
