@@ -1,4 +1,4 @@
-/* $Id: VMMDevTesting.cpp 90503 2021-08-03 21:22:13Z vboxsync $ */
+/* $Id: VMMDevTesting.cpp 90574 2021-08-07 15:24:44Z vboxsync $ */
 /** @file
  * VMMDev - Testing Extensions.
  *
@@ -515,7 +515,7 @@ vmmdevTestingIoWrite(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT offPort, uint32_
                         else if (off == 8)
                             pThis->TestingData.Value.u32Unit = (uint16_t)u32;
                         else if (off == 10)
-                            pThis->TestingData.Value.u32Unit = u32 << 16;
+                            pThis->TestingData.Value.u32Unit |= u32 << 16;
                         else
                             break;
                         pThis->offTestingData = off + 2;
