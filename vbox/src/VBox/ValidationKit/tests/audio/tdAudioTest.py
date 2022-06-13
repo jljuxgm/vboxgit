@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tdAudioTest.py 91575 2021-10-05 16:02:43Z vboxsync $
+# $Id: tdAudioTest.py 91585 2021-10-06 08:40:09Z vboxsync $
 
 """
 AudioTest test driver which invokes the VKAT (Validation Kit Audio Test)
@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 91575 $"
+__version__ = "$Revision: 91585 $"
 
 # Standard Python imports.
 from datetime import datetime
@@ -695,13 +695,13 @@ class tdAudioTest(vbox.TestDriver):
             reporter.log('Audio testing for non-trunk builds skipped.');
             fSkip = True;
 
-        sVkatExe = self.getBinTool('vkat');
-        asArgs   = [ sVkatExe, 'enum', '--probe-backends' ];
-        fRc      = self.executeHst("VKAT Host Audio Probing", asArgs);
-        if  not fSkip \
-        and not fRc:
-            reporter.log('Audio not available on host, skipping audio tests.');
-            fSkip = True;
+        if not fSkip:
+            sVkatExe = self.getBinTool('vkat');
+            asArgs   = [ sVkatExe, 'enum', '--probe-backends' ];
+            fRc      = self.executeHst("VKAT Host Audio Probing", asArgs);
+            if not fRc:
+                # Not fatal, as VBox then should fall back to the NULL audio backend (also worth having as a test case).
+                reporter.log('Warning: Backend probing on host failed, no audio available (pure server installation?)');
 
         if fSkip:
             reporter.testDone(fSkipped = True);
