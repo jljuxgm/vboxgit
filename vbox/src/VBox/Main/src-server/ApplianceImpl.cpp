@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 93480 2022-01-28 16:09:52Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -1825,5 +1825,24 @@ void VirtualSystemDescription::i_importVBoxMachineXML(const xml::ElementNode &el
 const settings::MachineConfigFile* VirtualSystemDescription::i_getMachineConfig() const
 {
     return m->pConfig;
+}
+
+/**
+ * Private method; walks through the array of VirtualSystemDescriptionEntry entries
+ * and returns the one matching the given index.
+ */
+const VirtualSystemDescriptionEntry* VirtualSystemDescription::i_findByIndex(const uint32_t aIndex)
+{
+    vector<VirtualSystemDescriptionEntry>::const_iterator it;
+    for (it = m->maDescriptions.begin();
+         it != m->maDescriptions.end();
+         ++it)
+    {
+        const VirtualSystemDescriptionEntry &d = *it;
+        if (d.ulIndex == aIndex)
+            return &d;
+    }
+
+    return NULL;
 }
 
