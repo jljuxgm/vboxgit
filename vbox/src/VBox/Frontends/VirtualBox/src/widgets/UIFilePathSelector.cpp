@@ -1,4 +1,4 @@
-/* $Id: UIFilePathSelector.cpp 91680 2021-10-12 06:47:33Z vboxsync $ */
+/* $Id: UIFilePathSelector.cpp 91681 2021-10-12 07:22:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFilePathSelector class implementation.
  */
@@ -168,6 +168,8 @@ void UIFilePathSelector::setResetEnabled(bool fEnabled)
         insertItem(ResetId, "");
         setItemIcon(ResetId, UIIconPool::iconSet(":/eraser_16px.png"));
     }
+
+    sltRecentMediaListUpdated(m_enmRecentMediaListType);
     retranslateUi();
 }
 
@@ -643,5 +645,4 @@ void UIFilePathSelector::sltRecentMediaListUpdated(UIMediumDeviceType enmMediumT
     insertSeparator(m_iRecentListSeparatorPosition);
     foreach (const QString strPath, recentMedia)
         addItem(strPath);
-
 }
