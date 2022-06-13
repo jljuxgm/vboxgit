@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 92756 2021-12-06 09:47:53Z vboxsync $ */
+/* $Id: PGMAll.cpp 92841 2021-12-09 08:11:48Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -3360,11 +3360,6 @@ VMM_INT_DECL(int) PGMHCChangeMode(PVMCC pVM, PVMCPUCC pVCpu, PGMMODE enmGuestMod
         case PGMMODE_AMD64_NX:
         case PGMMODE_AMD64:
             GCPhysCR3 = CPUMGetGuestCR3(pVCpu) & X86_CR3_AMD64_PAGE_MASK;
-            break;
-#endif
-#ifdef VBOX_WITH_NESTED_HWVIRT_VMX_EPT
-        case PGMMODE_EPT:
-            GCPhysCR3 = CPUMGetGuestCR3(pVCpu) & X86_CR3_EPT_PAGE_MASK;
             break;
 #endif
         default:
