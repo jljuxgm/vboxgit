@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageBasic2.h 90800 2021-08-23 16:48:32Z vboxsync $ */
+/* $Id: UIWizardCloneVDPageBasic2.h 90826 2021-08-24 07:52:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDPageBasic2 class declaration.
  */
@@ -44,6 +44,10 @@ public:
 
     /** Constructs basic page. */
     UIWizardCloneVDPageBasic2(KDeviceType enmDeviceType);
+
+private slots:
+
+    void sltMediumVariantChanged(qulonglong uVariant);
 
 private:
 

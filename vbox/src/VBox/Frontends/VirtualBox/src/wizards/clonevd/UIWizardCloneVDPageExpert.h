@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageExpert.h 90800 2021-08-23 16:48:32Z vboxsync $ */
+/* $Id: UIWizardCloneVDPageExpert.h 90826 2021-08-24 07:52:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDPageExpert class declaration.
  */
@@ -50,6 +50,9 @@ private slots:
 
     /** Handles target disk change. */
     void sltSelectLocationButtonClicked();
+    void sltMediumPathChanged(const QString &strPath);
+    void sltMediumVariantChanged(qulonglong uVariant);
+    void sltMediumSizeChanged(qulonglong uSize);
 
 private:
 
