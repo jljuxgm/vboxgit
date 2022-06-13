@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 92640 2021-11-30 08:40:16Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 92711 2021-12-02 16:27:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -967,7 +967,6 @@ void UIVirtualBoxManagerWidget::updateToolbar()
                 }
                 case UIToolType_FileManager:
                 {
-                    m_pToolBar->addAction(m_pActionPool->action(UIActionIndex_M_FileManager_T_GuestSession));
                     m_pToolBar->addAction(m_pActionPool->action(UIActionIndex_M_FileManager_T_Options));
                     m_pToolBar->addAction(m_pActionPool->action(UIActionIndex_M_FileManager_T_Operations));
                     m_pToolBar->addAction(m_pActionPool->action(UIActionIndex_M_FileManager_T_Log));

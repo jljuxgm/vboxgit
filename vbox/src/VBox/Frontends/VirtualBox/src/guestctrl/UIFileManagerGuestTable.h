@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerGuestTable.h 92710 2021-12-02 14:31:27Z vboxsync $ */
+/* $Id: UIFileManagerGuestTable.h 92711 2021-12-02 16:27:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerGuestTable class declaration.
  */
@@ -83,6 +83,12 @@ protected:
         virtual void  setPasteActionEnabled(bool fEnabled) /* override */;
         virtual void  pasteCutCopiedObjects() /* override */;
     /** @} */
+
+private slots:
+
+    void sltGuestSessionPanelToggled(bool fChecked);
+    void sltHandleGuestSessionPanelHidden();
+    void sltHandleGuestSessionPanelShown();
 
 private:
 
