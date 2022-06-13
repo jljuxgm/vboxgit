@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 90356 2021-07-27 14:06:35Z vboxsync $
+# $Id: Makefile.kmk 90358 2021-07-27 14:50:44Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -1158,7 +1158,6 @@ VirtualBox_SOURCES = \
 	src/wizards/addcloudvm/UIWizardAddCloudVMPageExpert.cpp \
 	src/wizards/editors/UIHostnameDomainNameEditor.cpp \
 	src/wizards/editors/UIUserNamePasswordEditor.cpp \
-	src/wizards/editors/UIWizardDiskEditors.cpp \
 	src/wizards/editors/UIWizardNewVMEditors.cpp \
 	src/wizards/newcloudvm/UIWizardNewCloudVM.cpp \
 	src/wizards/newcloudvm/UIWizardNewCloudVMPageBasic1.cpp \
