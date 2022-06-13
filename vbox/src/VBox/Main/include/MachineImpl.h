@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 93190 2022-01-11 23:22:13Z vboxsync $ */
+/* $Id: MachineImpl.h 93548 2022-02-02 18:08:28Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -681,7 +681,8 @@ protected:
         SaveSTS_StateTimeStamp = 0x80
     };
 
-    HRESULT i_prepareSaveSettings(bool *pfNeedsGlobalSaveSettings);
+    HRESULT i_prepareSaveSettings(bool *pfNeedsGlobalSaveSettings,
+                                  bool *pfSettingsFileIsNew);
     HRESULT i_saveSettings(bool *pfNeedsGlobalSaveSettings, AutoWriteLock &alock, int aFlags = 0);
 
     void i_copyMachineDataToSettings(settings::MachineConfigFile &config);
