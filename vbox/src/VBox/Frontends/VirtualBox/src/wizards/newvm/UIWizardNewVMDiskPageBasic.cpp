@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMDiskPageBasic.cpp 90401 2021-07-29 10:36:20Z vboxsync $ */
+/* $Id: UIWizardNewVMDiskPageBasic.cpp 90407 2021-07-29 13:17:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMDiskPageBasic class implementation.
  */
@@ -37,6 +37,7 @@
 #include "UIMessageCenter.h"
 #include "UIWizardNewVMDiskPageBasic.h"
 #include "UIWizardDiskEditors.h"
+#include "UIWizardNewVM.h"
 
 /* COM includes: */
 #include "CGuestOSType.h"
