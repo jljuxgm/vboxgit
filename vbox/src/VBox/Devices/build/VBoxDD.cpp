@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.cpp 90946 2021-08-27 10:55:25Z vboxsync $ */
+/* $Id: VBoxDD.cpp 91331 2021-09-22 15:18:46Z vboxsync $ */
 /** @file
  * VBoxDD - Built-in drivers & devices (part 1).
  */
@@ -418,6 +418,12 @@ extern "C" DECLEXPORT(int) VBoxDriversRegister(PCPDMDRVREGCB pCallbacks, uint32_
 
 # ifdef RT_OS_LINUX
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvTpmHost);
+    if (RT_FAILURE(rc))
+        return rc;
+# endif
+
+# ifdef VBOX_WITH_LIBTPMS
+    rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvTpmEmuTpms);
     if (RT_FAILURE(rc))
         return rc;
 # endif

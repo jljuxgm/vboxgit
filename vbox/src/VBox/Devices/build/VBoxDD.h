@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.h 90946 2021-08-27 10:55:25Z vboxsync $ */
+/* $Id: VBoxDD.h 91331 2021-09-22 15:18:46Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1) header.
  */
@@ -200,6 +200,9 @@ extern const PDMDRVREG g_DrvIfTrace;
 extern const PDMDRVREG g_DrvTpmEmu;
 # ifdef RT_OS_LINUX
 extern const PDMDRVREG g_DrvTpmHost;
+# endif
+# ifdef VBOX_WITH_LIBTPMS
+extern const PDMDRVREG g_DrvTpmEmuTpms;
 # endif
 #endif
 
