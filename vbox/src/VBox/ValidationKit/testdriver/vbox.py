@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 92050 2021-10-25 16:58:55Z vboxsync $
+# $Id: vbox.py 92099 2021-10-27 12:41:21Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 92050 $"
+__version__ = "$Revision: 92099 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -2919,6 +2919,14 @@ class TestDriver(base.TestDriver):                                              
                 self.oVBox.setExtraData('GUI/PreventBetaWarning', self.oVBox.version);
             except:
                 reporter.logXcpt();
+
+        # Needed to reach the host (localhost) from the guest. See xTracker #9896.
+        for iSlot in range(0, 32):
+            try:
+                sNetAdpName = self.oVBoxMgr.getEnumValueName('NetworkAdapterType', oVM.getNetworkAdapter(iSlot).adapterType)
+                self.oVBox.setExtraData(f'VBoxInternal/Devices/{sNetAdpName}/0/LUN#0/Config/LocalhostReachable', 'true');
+            except:
+                break
 
         # The UUID for the name.
         try:
