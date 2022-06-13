@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: txsclient.py 90740 2021-08-19 09:42:27Z vboxsync $
+# $Id: txsclient.py 93034 2021-12-20 19:28:17Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 90740 $"
+__version__ = "$Revision: 93034 $"
 
 # Standard Python imports.
 import array;
@@ -1913,7 +1913,7 @@ class TransportTcp(TransportBase):
             self.oWakeupW = None;
             if oWakeupW is not None:
                 reporter.log2('TransportTcp::cancelConnect: wakeup call');
-                try:    oWakeupW.send('cancelled!\n');
+                try:    oWakeupW.send(b'cancelled!\n');
                 except: reporter.logXcpt();
                 try:    oWakeupW.shutdown(socket.SHUT_WR);
                 except: reporter.logXcpt();
