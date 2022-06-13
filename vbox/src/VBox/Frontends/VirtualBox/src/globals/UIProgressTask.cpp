@@ -1,10 +1,10 @@
-/* $Id: UIProgressTask.cpp 86793 2020-11-03 11:25:58Z vboxsync $ */
+/* $Id: UIProgressTask.cpp 90253 2021-07-20 09:56:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIProgressTask class implementation.
  */
 
 /*
- * Copyright (C) 2020 Oracle Corporation
+ * Copyright (C) 2020-2021 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -43,6 +43,11 @@ bool UIProgressTask::isScheduled() const
 bool UIProgressTask::isRunning() const
 {
     return m_pProgressObject;
+}
+
+bool UIProgressTask::isCancelable() const
+{
+    return m_pProgressObject ? m_pProgressObject->isCancelable() : false;
 }
 
 void UIProgressTask::schedule(int iMsec)

@@ -1,10 +1,10 @@
-/* $Id: UIProgressTask.h 86773 2020-10-30 17:32:17Z vboxsync $ */
+/* $Id: UIProgressTask.h 90253 2021-07-20 09:56:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIProgressTask class declaration.
  */
 
 /*
- * Copyright (C) 2020 Oracle Corporation
+ * Copyright (C) 2020-2021 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -60,6 +60,9 @@ public:
 
     /** Returns whether task is running. */
     bool isRunning() const;
+
+    /** Returns whether task is cancelable. */
+    bool isCancelable() const;
 
 public slots:
 
