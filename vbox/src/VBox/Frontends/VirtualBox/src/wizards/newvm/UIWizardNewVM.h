@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.h 90009 2021-07-03 18:58:17Z vboxsync $ */
+/* $Id: UIWizardNewVM.h 90018 2021-07-05 07:35:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class declaration.
  */
@@ -82,7 +82,7 @@ public:
     void setDefaultUnattendedInstallData(const UIUnattendedInstallData &unattendedInstallData);
     const UIUnattendedInstallData &unattendedInstallData() const;
     bool isUnattendedEnabled() const;
-    bool isGuestOSTypeWindows() const;
+    //bool isGuestOSTypeWindows() const;
     CMedium &virtualDisk();
     void setVirtualDisk(const CMedium &medium);
     void setVirtualDisk(const QUuid &mediumId);
@@ -97,6 +97,9 @@ public:
 
     const QString &machineBaseName() const;
     void setMachineBaseName(const QString &strMachineBaseName);
+
+    const QString &createdMachineFolder() const;
+    void setCreatedMachineFolder(const QString &strCreatedMachineFolder);
 
     const QString &detectedOSTypeId() const;
     void setDetectedOSTypeId(const QString &strDetectedOSTypeId);
@@ -113,16 +116,13 @@ protected:
     void configureVM(const QString &strGuestTypeId, const CGuestOSType &comGuestType);
     bool attachDefaultDevices(const CGuestOSType &comGuestType);
 
-    QString getStringFieldValue(const QString &strFieldName) const;
-    bool getBoolFieldValue(const QString &strFieldName) const;
-
     friend class UIWizardNewVMPageDisk;
     friend class UIWizardNewVMPageExpert;
 
 private slots:
 
     void sltHandleWizardCancel();
-    void sltHandleDetectedOSTypeChange();
+    //void sltHandleDetectedOSTypeChange();
     virtual void sltCustomButtonClicked(int iId) /* override */;
 
 private:

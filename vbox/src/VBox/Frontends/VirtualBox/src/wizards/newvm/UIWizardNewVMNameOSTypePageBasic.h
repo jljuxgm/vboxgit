@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMNameOSTypePageBasic.h 90009 2021-07-03 18:58:17Z vboxsync $ */
+/* $Id: UIWizardNewVMNameOSTypePageBasic.h 90018 2021-07-05 07:35:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMNameOSTypePageBasic class declaration.
  */
@@ -35,38 +35,28 @@ class QGridLayout;
 class QIRichTextLabel;
 class UIFilePathSelector;
 class UINameAndSystemEditor;
-class UINativeWizard;
+class UIWizardNewVM;
 
 namespace UIWizardNewVMNameOSTypePage
 {
     void onNameChanged(UINameAndSystemEditor *pNameAndSystemEditor, QString strNewName);
     bool createMachineFolder(UINameAndSystemEditor *pNameAndSystemEditor,
                              UINativeWizardPage *pCaller,
-                             const QString &strMachineFolder,
-                             QString &strCreatedFolder);
+                             UIWizardNewVM *pWizard);
 
     /** Removes a previously created folder (if exists) before creating a new one.
      *  used during page cleanup and new folder creation. Called upon page Next/Back and
      *  wizard cancel */
-    bool cleanupMachineFolder(const QString &strMachineFolder,
-                              QString &strCreatedFolder,bool fWizardCancel = false);
-    void composeMachineFilePath(UINameAndSystemEditor *pNameAndSystemEditor, UINativeWizard *pWizard);
-    void determineOSType(const QString &strISOPath, UINativeWizard *pWizard);
-
+    bool cleanupMachineFolder(UIWizardNewVM *pWizard, bool fWizardCancel = false);
+    void composeMachineFilePath(UINameAndSystemEditor *pNameAndSystemEditor, UIWizardNewVM *pWizard);
+    void determineOSType(const QString &strISOPath, UIWizardNewVM *pWizard);
+    /** Return false if ISO path is not empty but points to an missing or unreadable file. */
+    bool checkISOFile(UINameAndSystemEditor *pNameAndSystemEditor);
 //     /** @name Property getters/setters
 //       * @{ */
-//         QString machineFilePath() const;
-//         void setMachineFilePath(const QString &strMachineFilePath);
-
-//         QString machineFolder() const;
-//         void setMachineFolder(const QString &strMachineFolder);
-
-//         QString machineBaseName() const;
-//         void setMachineBaseName(const QString &strMachineBaseName);
 
 //         QString guestOSFamiyId() const;
 
-//         bool isUnattendedEnabled() const;
 //         const QString &detectedOSTypeId() const;
 
 //         bool skipUnattendedInstall() const;
@@ -74,14 +64,9 @@ namespace UIWizardNewVMNameOSTypePage
 
 
 //     /** Colors the widgets red if they cause isComplete to fail. */
-//     void markWidgets() const;
 //     void retranslateWidgets();
 //     QString ISOFilePath() const;
 
-//     void setTypeByISODetectedOSType(const QString &strDetectedOSType);
-//     /** Return false if ISO path is not empty but points to an missing or unreadable file. */
-//     bool checkISOFile() const;
-//     void setSkipCheckBoxEnable();
 
 //
 
@@ -128,7 +113,12 @@ private:
     void initializePage();
     void cleanupPage();
     QWidget *createNameOSTypeWidgets();
+    void markWidgets() const;
+    void setSkipCheckBoxEnable();
+    bool isUnattendedEnabled() const;
 
+
+    UIWizardNewVM *m_pWizard;
 
     /** @name Widgets
      * @{ */
