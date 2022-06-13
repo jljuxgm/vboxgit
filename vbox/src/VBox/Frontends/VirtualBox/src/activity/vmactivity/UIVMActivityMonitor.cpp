@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityMonitor.cpp 90967 2021-08-27 20:37:40Z vboxsync $ */
+/* $Id: UIVMActivityMonitor.cpp 92511 2021-11-19 14:42:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMActivityMonitor class implementation.
  */
@@ -1453,13 +1453,13 @@ void UIVMActivityMonitor::updateDiskIOGraphsAndMetric(quint64 uDiskIOTotalWritte
     diskMetric.setTotal(0, uDiskIOTotalWritten);
     diskMetric.setTotal(1, uDiskIOTotalRead);
 
-    diskMetric.addData(0, iWriteRate);
-    diskMetric.addData(1, iReadRate);
     /* Do not set data and maximum if the metric has not been initialized  since we need to initialize totals "(t-1)" first: */
     if (!diskMetric.isInitialized()){
         diskMetric.setIsInitialized(true);
         return;
     }
+    diskMetric.addData(0, iWriteRate);
+    diskMetric.addData(1, iReadRate);
 
     if (m_infoLabels.contains(m_strDiskIOMetricName)  && m_infoLabels[m_strDiskIOMetricName])
     {
