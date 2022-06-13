@@ -1,4 +1,4 @@
-# $Id: Config.kmk 92926 2021-12-15 12:30:21Z vboxsync $
+# $Id: Config.kmk 92928 2021-12-15 13:21:39Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3757,13 +3757,17 @@ ifdef VBOX_SIGNING_MODE
    endif
   endif
   ifndef VBOX_PATH_SIGN_TOOLS
-   VBOX_PATH_SIGN_TOOLS := $(firstword $(rsort $(wildcard \
-   	$(addprefix $(KBUILD_DEVTOOLS)/win.x86/sdk/v8.1*/Bin/, x86 $(if-expr $(KBUILD_HOST_ARCH)=="amd64",x64,) ) )))
-   ifeq ($(VBOX_PATH_SIGN_TOOLS),)
+   ifdef VBOX_WITH_NEW_WINDOWS_SDK
+    VBOX_PATH_SIGN_TOOLS = $(PATH_SDK_$(VBOX_WINPSDK)_BIN)
+   else
     VBOX_PATH_SIGN_TOOLS := $(firstword $(rsort $(wildcard \
-    	$(addprefix $(KBUILD_DEVTOOLS)/win.x86/sdk/v10*/Bin/, x86 $(if-expr $(KBUILD_HOST_ARCH)=="amd64",x64,) ) )))
+    	$(addprefix $(KBUILD_DEVTOOLS)/win.x86/sdk/v8.1*/Bin/, x86 $(if-expr $(KBUILD_HOST_ARCH)=="amd64",x64,) ) )))
     ifeq ($(VBOX_PATH_SIGN_TOOLS),)
-     VBOX_PATH_SIGN_TOOLS := $(VBOX_PATH_SELFSIGN)
+     VBOX_PATH_SIGN_TOOLS := $(firstword $(rsort $(wildcard \
+     	$(addprefix $(KBUILD_DEVTOOLS)/win.x86/sdk/v10*/Bin/, x86 $(if-expr $(KBUILD_HOST_ARCH)=="amd64",x64,) ) )))
+     ifeq ($(VBOX_PATH_SIGN_TOOLS),)
+      VBOX_PATH_SIGN_TOOLS := $(VBOX_PATH_SELFSIGN)
+     endif
     endif
    endif
   endif
@@ -8453,7 +8457,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 92926 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 92928 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
