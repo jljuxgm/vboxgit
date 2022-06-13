@@ -1,4 +1,4 @@
-/* $Id: nt.h 92791 2021-12-07 21:47:51Z vboxsync $ */
+/* $Id: nt.h 92921 2021-12-15 10:12:35Z vboxsync $ */
 /** @file
  * IPRT - Header for code using the Native NT API.
  */
@@ -116,6 +116,7 @@
 
 # define NtQuerySystemInformation               IncompleteWinternl_NtQuerySystemInformation
 # define NtSetSystemInformation                 IncompleteWinternl_NtSetSystemInformation
+# define NtQueryTimerResolution                 AddedRecentlyUseOwnPrototype_NtQueryTimerResolution
 # define SYSTEM_INFORMATION_CLASS               IncompleteWinternl_SYSTEM_INFORMATION_CLASS
 # define _SYSTEM_INFORMATION_CLASS              IncompleteWinternl_SYSTEM_INFORMATION_CLASS
 # define SystemBasicInformation                 IncompleteWinternl_SystemBasicInformation
@@ -173,6 +174,7 @@
 
 # undef NtQuerySystemInformation
 # undef NtSetSystemInformation
+# undef NtQueryTimerResolution
 # undef SYSTEM_INFORMATION_CLASS
 # undef _SYSTEM_INFORMATION_CLASS
 # undef SystemBasicInformation
