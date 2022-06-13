@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 91797 2021-10-17 22:49:04Z vboxsync $
+# $Id: Makefile.kmk 91981 2021-10-21 18:48:11Z vboxsync $
 ## @file
 # Top level makefile.
 #
@@ -1064,7 +1064,7 @@ VBOX_RSYNC_IN_FN = $(if-expr "$(3)" != "nossh",$(VBOX_RSYNC),$(VBOX_RSYNC_NOSSH)
 	--exclude=tools/FetchDir/ \
 	--exclude=webtools/ \
 	--exclude=out/ \
-       --exclude=tools/common/plantuml/ \
+	--exclude=tools/common/plantuml/ \
 	$(if-expr "$1" == "solaris",--exclude=tools/common/openwatcom/,) \
 	$(foreach os,$(filter-out $(1), darwin freebsd linux solaris os2 win), \
 		--exclude=tools/$(os).x86/ \
