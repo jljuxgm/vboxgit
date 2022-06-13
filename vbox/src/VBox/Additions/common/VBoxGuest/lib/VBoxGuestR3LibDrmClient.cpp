@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibDrmClient.cpp 94305 2022-03-18 12:05:59Z vboxsync $ */
+/* $Id: VBoxGuestR3LibDrmClient.cpp 94563 2022-04-11 18:10:48Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, DRM client handling.
  */
@@ -150,7 +150,7 @@ static int VbglR3DrmStart(const char *pszCmd, const char **apszArgs)
 VBGLR3DECL(int) VbglR3DrmClientStart(void)
 {
 #if defined(RT_OS_LINUX)
-    const char *apszArgs[1] = { NULL }; /** @todo r=andy Pass path + process name as argv0? */
+    const char *apszArgs[2] = { VBOX_DRMCLIENT_EXECUTABLE, NULL }; /** @todo r=andy Pass path + process name as argv0? */
     return VbglR3DrmStart(VBOX_DRMCLIENT_EXECUTABLE, apszArgs);
 #else
     return VERR_NOT_SUPPORTED;
