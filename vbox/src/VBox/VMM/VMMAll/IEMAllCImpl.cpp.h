@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 92545 2021-11-22 12:12:53Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 92568 2021-11-23 15:45:50Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -5708,6 +5708,7 @@ IEM_CIMPL_DEF_2(iemCImpl_smsw_mem, uint8_t, iEffSeg, RTGCPTR, GCPtrEffDst)
         { /* likely */ } \
         else \
         { \
+            /* Either invalid PDPTEs or CR3 second-level translation failed. Raise #GP(0) either way. */ \
             Log(("iemCImpl_load_Cr%#x: Trying to load invalid PAE PDPEs\n", a_iCrReg)); \
             return iemRaiseGeneralProtectionFault0(a_pVCpu); \
         } \
