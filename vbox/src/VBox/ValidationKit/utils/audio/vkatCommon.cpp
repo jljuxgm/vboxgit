@@ -1,4 +1,4 @@
-/* $Id: vkatCommon.cpp 91574 2021-10-05 15:47:10Z vboxsync $ */
+/* $Id: vkatCommon.cpp 91576 2021-10-05 16:09:36Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) - Self test code.
  */
@@ -136,6 +136,23 @@ int audioTestSetMasterVolume(unsigned uVolPercent)
 # undef ALSA_CHECK_ERR_RET
 
 #else  /* !VBOX_WITH_AUDIO_ALSA */
+
+#if 0
+    CoInitialize(NULL);
+    CLSID CLSID_const MMDeviceEnumerator =_uuidof(MMDeviceEnumerator);
+    IID IID_const IMMDeviceEnumerator = uuidof(IMMDeviceEnumerator);
+	IMMDeviceEnumerator* pEnumerator;
+	HRESULT hr = CoCreateInstance(CLSID_MMDeviceEnumerator, NULL, CLSCTX_ALL, IID_IMMDeviceEnumerator, (void**)&pEnumerator);
+    IMMDevice *pDevice;
+	hr = pEnumerator->GetDefaultAudioEndpoint(EDataFlow::eRender, ERole::eConsole, &pDevice);
+    IAudioSessionManager *pManager;
+	IID IID_const IMMAudioSessionManager = uuidof(IAudioSessionManager);
+	hr = pDevice->Activate(IID_IMMAudioSessionManager, CLSCTX_ALL, NULL, (void**)&pManager);
+	ISimpleAudioVolume *pSimpleAudioVolume;
+	hr = pManager->GetSimpleAudioVolume(NULL, true, &pSimpleAudioVolume);
+    pSimpleAudioVolume->SetMasterVolume(1.0);
+#endif
+
     RT_NOREF(uVolPercent);
 #endif /* VBOX_WITH_AUDIO_ALSA */
 
