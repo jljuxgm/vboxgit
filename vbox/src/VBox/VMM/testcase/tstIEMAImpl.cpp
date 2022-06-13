@@ -1,4 +1,4 @@
-/* $Id: tstIEMAImpl.cpp 94680 2022-04-22 07:37:55Z vboxsync $ */
+/* $Id: tstIEMAImpl.cpp 94693 2022-04-22 21:39:16Z vboxsync $ */
 /** @file
  * IEM Assembly Instruction Helper Testcase.
  */
@@ -817,14 +817,14 @@ const char *GenFormatI16(int16_t const *pi16)
 static void GenerateHeader(PRTSTREAM pOut, const char *pszCpuDesc, const char *pszCpuType)
 {
     /* We want to tag the generated source code with the revision that produced it. */
-    static char s_szRev[] = "$Revision: 94680 $";
+    static char s_szRev[] = "$Revision: 94693 $";
     const char *pszRev = RTStrStripL(strchr(s_szRev, ':') + 1);
     size_t      cchRev = 0;
     while (RT_C_IS_DIGIT(pszRev[cchRev]))
         cchRev++;
 
     RTStrmPrintf(pOut,
-                 "/* $Id: tstIEMAImpl.cpp 94680 2022-04-22 07:37:55Z vboxsync $ */\n"
+                 "/* $Id: tstIEMAImpl.cpp 94693 2022-04-22 21:39:16Z vboxsync $ */\n"
                  "/** @file\n"
                  " * IEM Assembly Instruction Helper Testcase Data%s%s - r%.*s on %s.\n"
                  " */\n"
@@ -3789,12 +3789,13 @@ static void FpuBinaryEflR80Test(void)
                     || fEflOut != paTests[iTest].fEflOut)
                     RTTestFailed(g_hTest, "#%04u%s: fcw=%#06x fsw=%#06x in1=%s in2=%s\n"
                                           "%s               -> fsw=%#06x efl=%#08x\n"
-                                          "%s             expected %#06x     %#08x %s (%s)\n",
+                                          "%s             expected %#06x     %#08x %s%s (%s)\n",
                                  iTest, iVar ? "/n" : "", paTests[iTest].fFcw, paTests[iTest].fFswIn,
                                  FormatR80(&paTests[iTest].InVal1), FormatR80(&paTests[iTest].InVal2),
                                  iVar ? "  " : "", uFswOut, fEflOut,
                                  iVar ? "  " : "", paTests[iTest].fFswOut, paTests[iTest].fEflOut,
-                                 EFlagsDiff(fEflOut, paTests[iTest].fEflOut), FormatFcw(paTests[iTest].fFcw));
+                                 FswDiff(uFswOut, paTests[iTest].fFswOut), EFlagsDiff(fEflOut, paTests[iTest].fEflOut),
+                                 FormatFcw(paTests[iTest].fFcw));
             }
             pfn = g_aFpuBinaryEflR80[iFn].pfnNative;
         }
