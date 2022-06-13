@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: txsclient.py 93897 2022-02-23 12:52:49Z vboxsync $
+# $Id: txsclient.py 94399 2022-03-30 15:42:11Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 93897 $"
+__version__ = "$Revision: 94399 $"
 
 # Standard Python imports.
 import array;
@@ -1086,8 +1086,9 @@ class Session(TdTaskBase):
     #def "LSTAT   "
     #def "LIST    "
 
-    def taskCopyFile(self, sSrcFile, sDstFile, fMode):
+    def taskCopyFile(self, sSrcFile, sDstFile, fMode, fFallbackOkay):
         """ Copies a file within the remote from source to destination. """
+        _ = fFallbackOkay; # Not used yet.
         # Note: If fMode is set to 0, it's up to the target OS' implementation with
         #       what a file mode the destination file gets created (i.e. via umask).
         rc = self.sendMsg('CPFILE', (fMode, sSrcFile, sDstFile,));
