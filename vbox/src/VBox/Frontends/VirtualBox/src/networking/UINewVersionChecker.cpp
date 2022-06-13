@@ -1,4 +1,4 @@
-/* $Id: UINewVersionChecker.cpp 90602 2021-08-10 15:22:53Z vboxsync $ */
+/* $Id: UINewVersionChecker.cpp 90603 2021-08-10 15:26:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINewVersionChecker class implementation.
  */
@@ -72,6 +72,11 @@ void UINewVersionChecker::start()
     QUrl fullUrl(m_url);
     fullUrl.setQuery(url);
     createNetworkRequest(UINetworkRequestType_GET, QList<QUrl>() << fullUrl, QString(), headers);
+}
+
+void UINewVersionChecker::cancel()
+{
+    cancelNetworkRequest();
 }
 
 void UINewVersionChecker::processNetworkReplyProgress(qint64, qint64)

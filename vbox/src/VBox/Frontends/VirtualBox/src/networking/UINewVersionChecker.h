@@ -1,4 +1,4 @@
-/* $Id: UINewVersionChecker.h 90602 2021-08-10 15:22:53Z vboxsync $ */
+/* $Id: UINewVersionChecker.h 90603 2021-08-10 15:26:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINewVersionChecker class declaration.
  */
@@ -43,9 +43,15 @@ public:
 
     /** Returns whether this customer has forced privelegies. */
     bool isItForcedCall() const { return m_fForcedCall; }
+    /** Returns url. */
+    QUrl url() const { return m_url; }
+
+public slots:
 
     /** Starts new version check. */
     void start();
+    /** Cancels new version check. */
+    void cancel();
 
 protected:
 
