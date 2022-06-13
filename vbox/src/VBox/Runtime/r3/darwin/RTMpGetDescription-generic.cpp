@@ -1,4 +1,4 @@
-/* $Id: RTMpGetDescription-generic.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: RTMpGetDescription-generic.cpp 94087 2022-03-04 14:03:32Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, RTMpGetDescription for darwin/arm.
  */
@@ -49,8 +49,10 @@ RTDECL(int) RTMpGetDescription(RTCPUID idCpu, char *pszBuf, size_t cbBuf)
     /*
      * Just use the sysctl machdep.cpu.brand_string value for now.
      */
-    /** @todo on arm this is very boring, so we could use the cpufamily and
-     *        cpusubfamily instead... */
+    /** @todo on arm this is very boring and there are two different types of
+     *        cores in the system, "E" and "P" cores. The I/O registry can
+     *        be used to find out which @a idCpu is.  There are also codename
+     *        available there. */
     char szBrand[128] = {0};
     size_t cb = sizeof(szBrand);
     int rc = sysctlbyname("machdep.cpu.brand_string", &szBrand, &cb, NULL, 0);
