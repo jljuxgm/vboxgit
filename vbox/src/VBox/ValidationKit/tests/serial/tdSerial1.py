@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdSerial1.py 93115 2022-01-01 11:31:46Z vboxsync $
+# $Id: tdSerial1.py 94127 2022-03-08 14:44:28Z vboxsync $
 
 """
 VirtualBox Validation Kit - Serial port testing #1.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 93115 $"
+__version__ = "$Revision: 94127 $"
 
 
 # Standard Python imports.
@@ -229,19 +229,18 @@ class tdSerial1(vbox.TestDriver):
             # Open serial port and verify
             cLast = 0;
             try:
-                oFile = open(self.sLocation, 'rb');
-                sFmt = '=I';
-                cBytes = 4;
-                for i in xrange(1048576 // 4):
-                    _ = i;
-                    sData = oFile.read(cBytes);
-                    tupUnpacked = struct.unpack(sFmt, sData);
-                    cLast = cLast + 1;
-                    if tupUnpacked[0] != cLast:
-                        reporter.testFailure('Corruption detected, expected counter value %s, got %s'
-                                             % (cLast + 1, tupUnpacked[0]));
-                        break;
-                oFile.close();
+                with open(self.sLocation, 'rb') as oFile:
+                    sFmt = '=I';
+                    cBytes = 4;
+                    for i in xrange(1048576 // 4):
+                        _ = i;
+                        sData = oFile.read(cBytes);
+                        tupUnpacked = struct.unpack(sFmt, sData);
+                        cLast = cLast + 1;
+                        if tupUnpacked[0] != cLast:
+                            reporter.testFailure('Corruption detected, expected counter value %s, got %s'
+                                                 % (cLast + 1, tupUnpacked[0],));
+                            break;
             except:
                 reporter.logXcpt();
                 reporter.testFailure('Verifying the written data failed');

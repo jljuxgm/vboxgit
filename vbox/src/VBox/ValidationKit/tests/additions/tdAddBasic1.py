@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 93734 2022-02-14 16:32:58Z vboxsync $
+# $Id: tdAddBasic1.py 94127 2022-03-08 14:44:28Z vboxsync $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 93734 $"
+__version__ = "$Revision: 94127 $"
 
 # Standard Python imports.
 import os;
@@ -141,9 +141,8 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
                            '--pop ' \
                           % (uuid.uuid4(), self.sVBoxValidationKitIso, sGaIso);
             reporter.log2('Using VISO combining ValKit and GAs "%s": %s' % (sVisoContent, sGaViso));
-            oGaViso = open(sGaViso, 'w');
-            oGaViso.write(sVisoContent);
-            oGaViso.close();
+            with open(sGaViso, 'w') as oGaViso:
+                oGaViso.write(sVisoContent);
             sGaIso = sGaViso;
 
             self.sGstPathGaPrefix = 'vboxadditions';

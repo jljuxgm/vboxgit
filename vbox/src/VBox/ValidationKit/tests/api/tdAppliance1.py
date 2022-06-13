@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAppliance1.py 93115 2022-01-01 11:31:46Z vboxsync $
+# $Id: tdAppliance1.py 94127 2022-03-08 14:44:28Z vboxsync $
 
 """
 VirtualBox Validation Kit - IAppliance Test #1
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 93115 $"
+__version__ = "$Revision: 94127 $"
 
 
 # Standard Python imports.
@@ -160,7 +160,7 @@ class SubTstDrvAppliance1(base.SubTestDriverBase):
         #
         try:
             os.mkdir(sTmpDir, 0o755);
-            oTarFile = tarfile.open(sOva, 'r:*');
+            oTarFile = tarfile.open(sOva, 'r:*'); # No 'with' support in 2.6.   pylint: disable=consider-using-with
             oTarFile.extractall(sTmpDir);
             oTarFile.close();
         except:

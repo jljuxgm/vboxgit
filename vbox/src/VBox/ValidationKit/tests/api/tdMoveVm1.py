@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# "$Id: tdMoveVm1.py 93115 2022-01-01 11:31:46Z vboxsync $"
+# "$Id: tdMoveVm1.py 94127 2022-03-08 14:44:28Z vboxsync $"
 
 """
 VirtualBox Validation Kit - VM Move Test #1
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 93115 $"
+__version__ = "$Revision: 94127 $"
 
 # Standard Python imports.
 import os
@@ -396,7 +396,7 @@ class SubTstDrvMoveVm1(base.SubTestDriverBase):
 
         fRc = self.oTstDrv.terminateVmBySession(oSession)
 
-        if fRc is True or False:
+        if fRc is True:
             # Create a new Session object for moving VM.
             oSession = self.oTstDrv.openSession(oMachine)
 

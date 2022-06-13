@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: remoteexecutor.py 93115 2022-01-01 11:31:46Z vboxsync $
+# $Id: remoteexecutor.py 94127 2022-03-08 14:44:28Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage benchmark, test execution helpers.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 93115 $"
+__version__ = "$Revision: 94127 $"
 
 
 # Standard Python imports.
@@ -242,9 +242,8 @@ class RemoteExecutor(object):
         else:
             sFileId = self.sScratchPath + '/' + sFilename;
             try:
-                oFile = open(sFileId, 'wb');
-                oFile.write(sContent);
-                oFile.close();
+                with open(sFileId, 'wb') as oFile:
+                    oFile.write(sContent);
             except:
                 sFileId = None;
 
