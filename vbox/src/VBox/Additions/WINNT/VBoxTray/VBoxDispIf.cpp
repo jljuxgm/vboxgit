@@ -1,4 +1,4 @@
-/* $Id: VBoxDispIf.cpp 91764 2021-10-15 14:30:44Z vboxsync $ */
+/* $Id: VBoxDispIf.cpp 92962 2021-12-16 09:47:32Z vboxsync $ */
 /** @file
  * VBoxTray - Display Settings Interface abstraction for XPDM & WDDM
  */
@@ -19,8 +19,8 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#include "VBoxTray.h"
 #define _WIN32_WINNT 0x0601
+#include "VBoxTray.h"
 #include <iprt/log.h>
 #include <iprt/errcore.h>
 #include <iprt/assert.h>
