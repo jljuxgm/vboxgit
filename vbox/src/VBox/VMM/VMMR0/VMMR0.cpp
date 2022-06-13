@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 90997 2021-08-30 14:04:48Z vboxsync $ */
+/* $Id: VMMR0.cpp 90999 2021-08-30 14:08:43Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -1395,9 +1395,6 @@ static void vmmR0RecordRC(PVMCC pVM, PVMCPUCC pVCpu, int rc)
             {
                 case VMMCALLRING3_PGM_POOL_GROW:
                     STAM_COUNTER_INC(&pVM->vmm.s.StatRZCallPGMPoolGrow);
-                    break;
-                case VMMCALLRING3_PGM_LOCK:
-                    STAM_COUNTER_INC(&pVM->vmm.s.StatRZCallPGMLock);
                     break;
                 case VMMCALLRING3_PGM_MAP_CHUNK:
                     STAM_COUNTER_INC(&pVM->vmm.s.StatRZCallPGMMapChunk);
