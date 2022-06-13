@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMEditors.h 90232 2021-07-16 14:27:18Z vboxsync $ */
+/* $Id: UIWizardNewVMEditors.h 90236 2021-07-19 11:13:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMEditors class declaration.
  */
@@ -89,7 +89,8 @@ public:
       * @{ */
         QString path() const;
         void setPath(const QString &strPath, bool fRefreshText = true);
-        void mark(bool fError, const QString &strErrorMessage = QString());
+        void mark();
+        bool isComplete() const;
     /** @} */
 
 private slots:
@@ -127,6 +128,7 @@ public:
         void setDomainName(const QString &strDomain);
         QString hostnameDomainName() const;
         bool isComplete() const;
+        void mark();
         void disableEnableProductKeyWidgets(bool fEnabled);
     /** @} */
 
