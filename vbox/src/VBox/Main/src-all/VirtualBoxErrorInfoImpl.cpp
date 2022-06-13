@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxErrorInfoImpl.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: VirtualBoxErrorInfoImpl.cpp 93909 2022-02-24 10:44:19Z vboxsync $ */
 /** @file
  * VirtualBoxErrorInfo COM class implementation
  */
@@ -244,8 +244,7 @@ NS_IMETHODIMP VirtualBoxErrorInfo::GetMessage(char **aMessage)
 /* readonly attribute nsresult result; */
 NS_IMETHODIMP VirtualBoxErrorInfo::GetResult(nsresult *aResult)
 {
-    if (!aResult)
-      return NS_ERROR_INVALID_POINTER;
+    AssertReturn(aResult, NS_ERROR_INVALID_POINTER);
 
     PRInt32 lrc;
     nsresult rc = COMGETTER(ResultCode)(&lrc);
