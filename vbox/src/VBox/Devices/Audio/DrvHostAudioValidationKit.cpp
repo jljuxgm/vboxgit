@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioValidationKit.cpp 92195 2021-11-03 17:27:10Z vboxsync $ */
+/* $Id: DrvHostAudioValidationKit.cpp 92196 2021-11-03 17:33:11Z vboxsync $ */
 /** @file
  * Host audio driver - ValidationKit - For dumping and injecting audio data from/to the device emulation.
  */
@@ -1111,9 +1111,7 @@ static DECLCALLBACK(int) drvHostValKitAudioHA_StreamPlay(PPDMIHOSTAUDIO pInterfa
             {
                 /* Whether we count all silence as recorded data or not.
                  * Currently we don't, as otherwise consequtively played tones will be cut off in the end. */
-                bool const fCountAllSilenceAsData = false;
-                if (   !fIsAllSilence
-                    || (fIsAllSilence == fCountAllSilenceAsData))
+                if (!fIsAllSilence)
                     pTst->t.TestTone.u.Play.cbRead += cbBuf;
 
                 const bool fComplete = pTst->t.TestTone.u.Play.cbRead >= pTst->t.TestTone.u.Play.cbToRead;
