@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 92564 2021-11-23 13:37:27Z vboxsync $ */
+/* $Id: PGMPhys.cpp 92565 2021-11-23 13:49:29Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -1442,7 +1442,7 @@ int pgmPhysFreePage(PVM pVM, PGMMFREEPAGESREQ pReq, uint32_t *pcPendingPages, PP
         if (pVM->pgm.s.aHandyPages[i].idPage == idPage)
         {
             pVM->pgm.s.aHandyPages[i].HCPhysGCPhys = NIL_GMMPAGEDESC_PHYS;
-            pVM->pgm.s.aHandyPages[i].fZero        = false;
+            pVM->pgm.s.aHandyPages[i].fZeroed      = false;
             pVM->pgm.s.aHandyPages[i].idPage       = NIL_GMM_PAGEID;
             break;
         }
