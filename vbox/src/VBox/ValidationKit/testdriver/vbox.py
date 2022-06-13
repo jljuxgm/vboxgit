@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 92121 2021-10-28 06:32:21Z vboxsync $
+# $Id: vbox.py 92122 2021-10-28 06:43:19Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 92121 $"
+__version__ = "$Revision: 92122 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -1909,11 +1909,11 @@ class TestDriver(base.TestDriver):                                              
         if    oNic.adapterType == vboxcon.NetworkAdapterType_Am79C970A \
            or oNic.adapterType == vboxcon.NetworkAdapterType_Am79C973 \
            or oNic.adapterType == vboxcon.NetworkAdapterType_Am79C960:
-           return 'pcnet'
+            return 'pcnet'
         elif    oNic.adapterType == vboxcon.NetworkAdapterType_I82540EM \
              or oNic.adapterType == vboxcon.NetworkAdapterType_I82543GC \
              or oNic.adapterType == vboxcon.NetworkAdapterType_I82545EM:
-           return  'e1000'
+            return  'e1000'
         elif oNic.adapterType == vboxcon.NetworkAdapterType_Virtio:
             return 'virtio-net'
         elif oNic.adapterType == vboxcon.NetworkAdapterType_Virtio_1_0:
