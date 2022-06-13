@@ -1,4 +1,4 @@
-/* $Id: display-svga-x11.cpp 90218 2021-07-15 19:45:34Z vboxsync $ */
+/* $Id: display-svga-x11.cpp 90324 2021-07-23 19:40:54Z vboxsync $ */
 /** @file
  * X11 guest client - VMSVGA emulation resize event pass-through to X.Org
  * guest driver.
@@ -550,7 +550,7 @@ static void queryMonitorPositions()
                 continue;
             }
 
-            int iMonitorID = getMonitorIdFromName(pszMonitorName);
+            int iMonitorID = getMonitorIdFromName(pszMonitorName) - 1;
             XFree((void *)pszMonitorName);
             pszMonitorName = NULL;
 
