@@ -1,4 +1,4 @@
-/* $Id: UIWelcomePane.cpp 93990 2022-02-28 15:34:57Z vboxsync $ */
+/* $Id: UIWelcomePane.cpp 95019 2022-05-16 13:19:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWelcomePane class implementation.
  */
@@ -163,6 +163,11 @@ void UIWelcomePane::retranslateUi()
                              .arg(QKeySequence(QKeySequence::HelpContents).toString(QKeySequence::NativeText)));
 }
 
+void UIWelcomePane::sltHandleLinkActivated(const QString &strLink)
+{
+    uiCommon().openURL(strLink);
+}
+
 void UIWelcomePane::prepare()
 {
     /* Prepare default welcome icon: */
@@ -189,6 +194,7 @@ void UIWelcomePane::prepare()
                 m_pLabelText->setMinimumWidth(160); /// @todo make dynamic
                 m_pLabelText->setAlignment(Qt::AlignLeading | Qt::AlignTop);
                 m_pLabelText->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Minimum);
+                connect(m_pLabelText, &QLabel::linkActivated, this, &UIWelcomePane::sltHandleLinkActivated);
 
                 /* Add into layout: */
                 pLayoutWelcome->addWidget(m_pLabelText);
