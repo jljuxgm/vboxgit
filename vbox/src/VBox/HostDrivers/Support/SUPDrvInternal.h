@@ -1,4 +1,4 @@
-/* $Id: SUPDrvInternal.h 91551 2021-10-04 22:01:46Z vboxsync $ */
+/* $Id: SUPDrvInternal.h 91559 2021-10-05 08:28:55Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
@@ -771,6 +771,10 @@ typedef struct SUPDRVSESSION
 # if defined(RT_OS_WINDOWS) && defined(VBOX_WITH_HARDENING)
     /** Pointer to the process protection structure for this session. */
     struct SUPDRVNTPROTECT         *pNtProtect;
+# endif
+# if defined(RT_OS_WINDOWS)
+    /** Reference to the user ID structure corresponding to the Uid member. */
+    struct SUPDRVNTUSERID          *pNtUserId;
 # endif
 #endif /* !SUPDRV_AGNOSTIC */
 } SUPDRVSESSION;
