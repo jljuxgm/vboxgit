@@ -1,4 +1,4 @@
-/* $Id: pam_vbox.cpp 86824 2020-11-06 13:00:51Z vboxsync $ */
+/* $Id: pam_vbox.cpp 92797 2021-12-07 23:29:38Z vboxsync $ */
 /** @file
  * pam_vbox - PAM module for auto logons.
  */
@@ -872,7 +872,7 @@ DECLEXPORT(int) pam_sm_chauthtok(pam_handle_t *hPAM, int iFlags, int argc, const
 
 
 #ifdef DEBUG
-DECLEXPORT(void) RTAssertMsg1Weak(const char *pszExpr, unsigned uLine, const char *pszFile, const char *pszFunction)
+RTDECL(void) RTAssertMsg1Weak(const char *pszExpr, unsigned uLine, const char *pszFile, const char *pszFunction)
 {
     pam_vbox_log(g_pam_handle,
                  "\n!!Assertion Failed!!\n"
