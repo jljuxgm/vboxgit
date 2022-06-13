@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 90420 2021-07-30 00:42:39Z vboxsync $ */
+/* $Id: PDMInternal.h 90436 2021-07-30 16:03:48Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -1693,7 +1693,7 @@ int         pdmR3BlkCacheResume(PVM pVM);
 #endif /* IN_RING3 */
 
 void        pdmLock(PVMCC pVM);
-int         pdmLockEx(PVMCC pVM, int rc);
+int         pdmLockEx(PVMCC pVM, int rcBusy);
 void        pdmUnlock(PVMCC pVM);
 bool        pdmLockIsOwner(PVMCC pVM);
 

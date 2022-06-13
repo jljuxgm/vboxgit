@@ -1,4 +1,4 @@
-/* $Id: DevPciInternal.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: DevPciInternal.h 90436 2021-07-30 16:03:48Z vboxsync $ */
 /** @file
  * DevPCI - Common Internal Header.
  */
@@ -186,16 +186,19 @@ typedef DEVPCIROOT *PDEVPCIROOT;
 /** Converts a pointer to a PCI bus instance to a DEVPCIROOT pointer. */
 #define DEVPCIBUS_2_DEVPCIROOT(pPciBus) RT_FROM_MEMBER(pPciBus, DEVPCIROOT, PciBus)
 
-/** @def PCI_LOCK
+
+/** @def PCI_LOCK_RET
  * Acquires the PDM lock. This is a NOP if locking is disabled. */
+#define PCI_LOCK_RET(pDevIns, rcBusy) \
+    do { \
+        int const rcLock = PDMINS_2_DATA_CC(pDevIns, PDEVPCIBUSCC)->CTX_SUFF(pPciHlp)->pfnLock((pDevIns), rcBusy); \
+        if (rcLock == VINF_SUCCESS) \
+        { /* likely */ } \
+        else \
+            return rcLock; \
+    } while (0)
 /** @def PCI_UNLOCK
  * Releases the PDM lock. This is a NOP if locking is disabled. */
-#define PCI_LOCK(pDevIns, rc) \
-    do { \
-        int rc2 = PDMINS_2_DATA_CC(pDevIns, PDEVPCIBUSCC)->CTX_SUFF(pPciHlp)->pfnLock((pDevIns), rc); \
-        if (rc2 != VINF_SUCCESS) \
-            return rc2; \
-    } while (0)
 #define PCI_UNLOCK(pDevIns) \
     PDMINS_2_DATA_CC(pDevIns, PDEVPCIBUSCC)->CTX_SUFF(pPciHlp)->pfnUnlock(pDevIns)
 

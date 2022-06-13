@@ -1,4 +1,4 @@
-/* $Id: DevIommuAmd.cpp 90421 2021-07-30 09:21:29Z vboxsync $ */
+/* $Id: DevIommuAmd.cpp 90436 2021-07-30 16:03:48Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - AMD implementation.
  */
@@ -196,14 +196,14 @@
             return rcLock; \
     } while (0)
 
-/** Acquires the PDM lock (shouldn't really fail). */
+/** Acquires the PDM lock (can fail under extraordinary circumstance in in ring-0). */
 #ifdef IN_RING3
 # define IOMMU_LOCK(a_pDevIns, a_pThisCC)           (a_pThisCC)->CTX_SUFF(pIommuHlp)->pfnLock((a_pDevIns), VERR_IGNORED)
 #else
 # define IOMMU_LOCK(a_pDevIns, a_pThisCC) \
     do { \
         int const rcLock = (a_pThisCC)->CTX_SUFF(pIommuHlp)->pfnLock((a_pDevIns), VINF_SUCCESS); \
-        AssertRC(rcLock); \
+        PDM_CRITSECT_RELEASE_ASSERT_RC_DEV((a_pDevIns), NULL, rcLock); \
     } while (0)
 #endif
 
