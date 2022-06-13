@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 94187 2022-03-11 18:40:19Z vboxsync $
+# $Id: vbox.py 94509 2022-04-07 12:07:16Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 94187 $"
+__version__ = "$Revision: 94509 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -3735,6 +3735,10 @@ class TestDriver(base.TestDriver):                                              
     def txsUnpackFile(self, oSession, oTxsSession, sRemoteFile, sRemoteDir, cMsTimeout = 30000, fIgnoreErrors = False):
         return self.txsDoTask(oSession, oTxsSession, oTxsSession.asyncUnpackFile, \
                               (sRemoteFile, sRemoteDir, self.adjustTimeoutMs(cMsTimeout), fIgnoreErrors));
+
+    def txsExpandString(self, oSession, oTxsSession, sString, cMsTimeout = 30000, fIgnoreErrors = False):
+        return self.txsDoTask(oSession, oTxsSession, oTxsSession.asyncExpandString, \
+                              (sString, self.adjustTimeoutMs(cMsTimeout), fIgnoreErrors));
 
     # pylint: enable=missing-docstring
 

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: txsclient.py 94399 2022-03-30 15:42:11Z vboxsync $
+# $Id: txsclient.py 94509 2022-04-07 12:07:16Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 94399 $"
+__version__ = "$Revision: 94509 $"
 
 # Standard Python imports.
 import array;
@@ -1329,6 +1329,23 @@ class Session(TdTaskBase):
             rc = self.recvAckLogged('UNPKFILE');
         return rc;
 
+    def taskExpandString(self, sString):
+        rc = self.sendMsg('EXP STR ', (sString));
+        if rc is True:
+            rc = False;
+            cbMsg, sOpcode, abPayload = self.recvReply();
+            if cbMsg is not None:
+                sOpcode = sOpcode.strip();
+                if sOpcode == "STRING":
+                    sStringExp = getSZ(abPayload, 0);
+                    if sStringExp is not None:
+                        rc = sStringExp;
+                else: # Also handles SHORTSTR reply (not enough space to store result).
+                    reporter.maybeErr(self.fErr, 'taskExpandString got a bad reply: %s' % (sOpcode,));
+            else:
+                reporter.maybeErr(self.fErr, 'taskExpandString got 3xNone from recvReply.');
+        return rc;
+
     # pylint: enable=missing-docstring
 
 
@@ -1835,6 +1852,21 @@ class Session(TdTaskBase):
     def syncUnpackFile(self, sRemoteFile, sRemoteDir, cMsTimeout = 120000, fIgnoreErrors = False):
         """Synchronous version."""
         return self.asyncToSync(self.asyncUnpackFile, sRemoteFile, sRemoteDir, cMsTimeout, fIgnoreErrors);
+
+    def asyncExpandString(self, sString, cMsTimeout = 120000, fIgnoreErrors = False):
+        """
+        Initiates an expand string task.
+
+        Returns expanded string on success, False on failure (logged).
+
+        The task returns True on success, False on failure (logged).
+        """
+        return self.startTask(cMsTimeout, fIgnoreErrors, "expandString", self.taskExpandString,
+                              (sString));
+
+    def syncExpandString(self, sString, cMsTimeout = 120000, fIgnoreErrors = False):
+        """Synchronous version."""
+        return self.asyncToSync(self.asyncExpandString, sString, cMsTimeout, fIgnoreErrors);
 
 
 class TransportTcp(TransportBase):
