@@ -1,4 +1,4 @@
-/* $Id: QIRichTextLabel.cpp 89871 2021-06-24 02:53:57Z vboxsync $ */
+/* $Id: QIRichTextLabel.cpp 90251 2021-07-20 09:52:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIRichTextLabel class implementation.
  */
@@ -97,6 +97,16 @@ void QIRichTextLabel::installEventFilter(QObject *pFilterObj)
 {
     QWidget::installEventFilter(pFilterObj);
     m_pTextBrowser->installEventFilter(pFilterObj);
+}
+
+QFont QIRichTextLabel::browserFont() const
+{
+    return m_pTextBrowser->font();
+}
+
+void QIRichTextLabel::setBrowserFont(const QFont &newFont)
+{
+    m_pTextBrowser->setFont(newFont);
 }
 
 int QIRichTextLabel::minimumTextWidth() const
