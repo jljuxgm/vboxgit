@@ -1,4 +1,4 @@
-/** $Id: VBoxClient.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/** $Id: VBoxClient.cpp 94629 2022-04-19 10:15:33Z vboxsync $ */
 /** @file
  * VBoxClient - User specific services, Darwin.
  */
@@ -65,6 +65,7 @@ static int vbclInitLogger(char *pszLogFileName)
                            pszLogFileName ? 10 : 0 /*cHistory*/,
                            pszLogFileName ? 100 * _1M : 0 /*cbHistoryFileMax*/,
                            pszLogFileName ? RT_SEC_1DAY : 0 /*cSecsHistoryTimeSlot*/,
+                           NULL /*pOutputIf*/, NULL /*pvOutputIfUser*/,
                            NULL /*pErrInfo*/, "%s", pszLogFileName ? pszLogFileName : "");
     AssertRCReturn(rc, rc);
 
