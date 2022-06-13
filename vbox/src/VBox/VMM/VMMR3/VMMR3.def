@@ -1,4 +1,4 @@
-; $Id: VMMR3.def 90549 2021-08-06 13:57:29Z vboxsync $
+; $Id: VMMR3.def 93015 2021-12-17 11:44:08Z vboxsync $
 ;; @file
 ; VMM Ring-3 Context DLL - Definition file.
 
@@ -40,6 +40,8 @@ EXPORTS
     CFGMR3InsertString
     CFGMR3InsertStringW
     CFGMR3InsertInteger
+    CFGMR3InsertPasswordN
+    CFGMR3InsertPassword
     CFGMR3QueryStringAllocDef
     CFGMR3RemoveValue
     CFGMR3QueryIntegerDef

@@ -1,4 +1,4 @@
-/* $Id: PDMDriver.cpp 91955 2021-10-21 14:26:20Z vboxsync $ */
+/* $Id: PDMDriver.cpp 93015 2021-12-17 11:44:08Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Driver parts.
  */
@@ -2166,6 +2166,8 @@ const PDMDRVHLPR3 g_pdmR3DrvHlp =
     CFGMR3QueryIntegerDef,
     CFGMR3QueryString,
     CFGMR3QueryStringDef,
+    CFGMR3QueryPassword,
+    CFGMR3QueryPasswordDef,
     CFGMR3QueryBytes,
     CFGMR3QueryU64,
     CFGMR3QueryU64Def,
