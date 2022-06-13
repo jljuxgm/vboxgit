@@ -1,4 +1,4 @@
-/* $Id: VBoxRTDeps.cpp 93502 2022-01-31 14:47:17Z vboxsync $ */
+/* $Id: VBoxRTDeps.cpp 94134 2022-03-08 17:26:05Z vboxsync $ */
 /** @file
  * IPRT - VBoxRT.dll/so dependencies.
  */
@@ -115,7 +115,6 @@ struct CLANG11NONSENSE { PFNRT pfn; } g_VBoxRTDeps[] =
     { (PFNRT)TLSv1_server_method },
 #endif
     { (PFNRT)AES_ofb128_encrypt }, /* libtpms */
-    { (PFNRT)FIPS_mode }, /* libssh */
     { NULL }
 };
 
