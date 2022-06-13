@@ -1,4 +1,4 @@
-/* $Id: UIVRDESettingsEditor.h 94378 2022-03-25 19:34:56Z vboxsync $ */
+/* $Id: UIVRDESettingsEditor.h 94379 2022-03-25 19:45:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVRDESettingsEditor class declaration.
  */
@@ -26,7 +26,6 @@
 
 /* GUI includes: */
 #include "QIWithRetranslateUI.h"
-#include "UIUpdateDefs.h"
 
 /* COM includes: */
 #include "COMEnums.h"
