@@ -1,4 +1,4 @@
-/* $Id: UINativeWizard.cpp 91337 2021-09-22 19:47:30Z vboxsync $ */
+/* $Id: UINativeWizard.cpp 91456 2021-09-29 13:03:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINativeWizard class implementation.
  */
@@ -456,7 +456,7 @@ void UINativeWizard::prepare()
             }
 
             /* Add to layout: */
-            pLayoutMain->addLayout(pLayoutUpper);
+            pLayoutMain->addLayout(pLayoutUpper, 1);
         }
 
         /* Prepare bottom widget: */
