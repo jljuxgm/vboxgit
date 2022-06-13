@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 90066 2021-07-06 13:13:41Z vboxsync $ */
+/* $Id: UIWizardNewVM.cpp 90070 2021-07-06 16:08:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
@@ -87,9 +87,9 @@ void UIWizardNewVM::populatePages()
         case WizardMode_Basic:
         {
             addPage(new UIWizardNewVMNameOSTypePageBasic);
-            // addPage(new UIWizardNewVMUnattendedPageBasic);
-            // addPage(new UIWizardNewVMHardwarePageBasic);
-            // addPage(new UIWizardNewVMDiskPageBasic);
+            addPage(new UIWizardNewVMUnattendedPageBasic);
+            addPage(new UIWizardNewVMHardwarePageBasic);
+            addPage(new UIWizardNewVMDiskPageBasic);
             break;
         }
         case WizardMode_Expert:
@@ -805,9 +805,9 @@ const UIUnattendedInstallData &UIWizardNewVM::unattendedInstallData() const
 
 bool UIWizardNewVM::isUnattendedEnabled() const
 {
-    if (!m_fSkipUnattendedInstall)
-        return false;
     if (m_strISOFilePath.isEmpty() || m_strISOFilePath.isNull())
+        return false;
+    if (m_fSkipUnattendedInstall)
         return false;
     return true;
 }

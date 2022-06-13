@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMNameOSTypePageBasic.h 90060 2021-07-06 12:12:10Z vboxsync $ */
+/* $Id: UIWizardNewVMNameOSTypePageBasic.h 90070 2021-07-06 16:08:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMNameOSTypePageBasic class declaration.
  */
@@ -78,12 +78,11 @@ protected:
 
 private slots:
 
-    /** Handlers. */
     void sltNameChanged(const QString &strNewText);
     void sltPathChanged(const QString &strNewPath);
     void sltOsTypeChanged();
     void sltISOPathChanged(const QString &strPath);
-    void sltGuestOSFamilChanged(const QString &strGuestOSFamilyId);
+    void sltGuestOSFamilyChanged(const QString &strGuestOSFamilyId);
 
 private:
 
