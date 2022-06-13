@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 94013 2022-03-01 09:04:44Z vboxsync $ */
+/* $Id: UISession.cpp 94986 2022-05-11 18:42:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -273,7 +273,11 @@ bool UISession::powerUp()
     }
     else
     {
+#ifdef VBOX_IS_QT6_OR_LATER
+        msgCenter().showModalProgressDialog(progress, machineName(), ":/progress_start_90px.png", 0, 0);
+#else
         msgCenter().showModalProgressDialog(progress, machineName(), ":/progress_start_90px.png");
+#endif
         /* After VM start, machine-window(s) size-hint(s) should be sent: */
         machineLogic()->sendMachineWindowsSizeHints();
     }
