@@ -1,4 +1,4 @@
-/* $Id: PDMQueue.cpp 93896 2022-02-23 12:48:07Z vboxsync $ */
+/* $Id: PDMQueue.cpp 93900 2022-02-23 15:35:17Z vboxsync $ */
 /** @file
  * PDM Queue - Transport data and tasks to EMT and R3.
  */
@@ -432,6 +432,7 @@ VMMR3DECL(int) PDMR3QueueDestroy(PVM pVM, PDMQUEUEHANDLE hQueue, void *pvOwner)
             while (hQueue > 0 && pVM->pdm.s.papRing3Queues[hQueue - 1] == NULL)
                 hQueue--;
             pVM->pdm.s.cRing3Queues = hQueue;
+            /** @todo this should be done by PDMR3Term not here. */
             if (!hQueue)
             {
                 pVM->pdm.s.cRing3QueuesAlloc = 0;
