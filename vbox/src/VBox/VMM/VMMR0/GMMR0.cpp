@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 91014 2021-08-31 01:03:39Z vboxsync $ */
+/* $Id: GMMR0.cpp 91321 2021-09-21 12:47:41Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -193,7 +193,7 @@
 # define VBOX_USE_CRIT_SECT_FOR_GIANT
 #endif
 
-#if defined(VBOX_WITH_LINEAR_HOST_PHYS_MEM) && !defined(RT_OS_DARWIN)
+#if defined(VBOX_WITH_LINEAR_HOST_PHYS_MEM) && !defined(RT_OS_DARWIN) && 0
 /** Enable the legacy mode code (will be dropped soon). */
 # define GMM_WITH_LEGACY_MODE
 #endif
