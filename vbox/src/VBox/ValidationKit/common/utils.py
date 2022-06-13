@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: utils.py 92882 2021-12-13 13:34:57Z vboxsync $
+# $Id: utils.py 92887 2021-12-13 15:43:29Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 92882 $"
+__version__ = "$Revision: 92887 $"
 
 
 # Standard Python imports.
@@ -968,7 +968,8 @@ def processExists(uPid):
 
     Returns True if it positively exists, False otherwise.
     """
-    if sys.platform == 'win32':
+    sHostOs = getHostOs();
+    if sHostOs == 'win':
         fRc = False;
         # We try open the process for waiting since this is generally only forbidden in a very few cases.
         try:
@@ -982,6 +983,8 @@ def processExists(uPid):
         else:
             hProcess.Close();
             fRc = True;
+    elif sHostOs == 'linux':
+        fRc = os.path.exists('/proc/%s' % (uPid,);
     else:
         try:
             os.kill(uPid, 0);
