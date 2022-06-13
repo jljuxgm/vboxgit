@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVD.h 91041 2021-08-31 18:09:46Z vboxsync $ */
+/* $Id: UIWizardNewVD.h 91061 2021-09-01 14:30:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVD class declaration.
  */
@@ -70,8 +70,6 @@ private:
     CMediumFormat m_comMediumFormat;
     QString m_strMediumPath;
     qulonglong m_uMediumSize;
-
-
     QString     m_strDefaultName;
     QString     m_strDefaultPath;
     qulonglong  m_uDefaultSize;

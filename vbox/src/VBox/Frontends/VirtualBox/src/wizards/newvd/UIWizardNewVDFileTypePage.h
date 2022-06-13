@@ -1,6 +1,6 @@
-/* $Id: UIWizardNewVDPageFileType.h 91041 2021-08-31 18:09:46Z vboxsync $ */
+/* $Id: UIWizardNewVDFileTypePage.h 91061 2021-09-01 14:30:25Z vboxsync $ */
 /** @file
- * VBox Qt GUI - UIWizardNewVDPageFileType class declaration.
+ * VBox Qt GUI - UIWizardNewVDFileTypePage class declaration.
  */
 
 /*
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef FEQT_INCLUDED_SRC_wizards_newvd_UIWizardNewVDPageFileType_h
-#define FEQT_INCLUDED_SRC_wizards_newvd_UIWizardNewVDPageFileType_h
+#ifndef FEQT_INCLUDED_SRC_wizards_newvd_UIWizardNewVDFileTypePage_h
+#define FEQT_INCLUDED_SRC_wizards_newvd_UIWizardNewVDFileTypePage_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -29,14 +29,14 @@ class QIRichTextLabel;
 class UIDiskFormatsGroupBox;
 
 /** 1st page of the New Virtual Hard Drive wizard (basic extension). */
-class SHARED_LIBRARY_STUFF UIWizardNewVDPageFileType : public UINativeWizardPage
+class SHARED_LIBRARY_STUFF UIWizardNewVDFileTypePage : public UINativeWizardPage
 {
     Q_OBJECT;
 
 public:
 
     /** Constructor. */
-    UIWizardNewVDPageFileType();
+    UIWizardNewVDFileTypePage();
 
 private slots:
 
@@ -56,4 +56,4 @@ private:
 };
 
 
-#endif /* !FEQT_INCLUDED_SRC_wizards_newvd_UIWizardNewVDPageFileType_h */
+#endif /* !FEQT_INCLUDED_SRC_wizards_newvd_UIWizardNewVDFileTypePage_h */

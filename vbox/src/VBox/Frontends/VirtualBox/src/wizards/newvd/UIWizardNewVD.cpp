@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVD.cpp 91035 2021-08-31 15:57:07Z vboxsync $ */
+/* $Id: UIWizardNewVD.cpp 91061 2021-09-01 14:30:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVD class implementation.
  */
@@ -20,10 +20,10 @@
 #include "UIMessageCenter.h"
 #include "UINotificationCenter.h"
 #include "UIWizardNewVD.h"
-#include "UIWizardNewVDPageFileType.h"
-#include "UIWizardNewVDPageVariant.h"
-#include "UIWizardNewVDPageSizeLocation.h"
-#include "UIWizardNewVDPageExpert.h"
+#include "UIWizardNewVDFileTypePage.h"
+#include "UIWizardNewVDVariantPage.h"
+#include "UIWizardNewVDSizeLocationPage.h"
+#include "UIWizardNewVDExpertPage.h"
 
 UIWizardNewVD::UIWizardNewVD(QWidget *pParent,
                              const QString &strDefaultName,
@@ -93,14 +93,14 @@ void UIWizardNewVD::populatePages()
     {
         case WizardMode_Basic:
         {
-            addPage(new UIWizardNewVDPageFileType);
-            m_iMediumVariantPageIndex = addPage(new UIWizardNewVDPageVariant);
-            addPage(new UIWizardNewVDPageSizeLocation(m_strDefaultName, m_strDefaultPath, m_uDefaultSize));
+            addPage(new UIWizardNewVDFileTypePage);
+            m_iMediumVariantPageIndex = addPage(new UIWizardNewVDVariantPage);
+            addPage(new UIWizardNewVDSizeLocationPage(m_strDefaultName, m_strDefaultPath, m_uDefaultSize));
             break;
         }
         case WizardMode_Expert:
         {
-            addPage(new UIWizardNewVDPageExpert(m_strDefaultName, m_strDefaultPath, m_uDefaultSize));
+            addPage(new UIWizardNewVDExpertPage(m_strDefaultName, m_strDefaultPath, m_uDefaultSize));
             break;
         }
         default:
