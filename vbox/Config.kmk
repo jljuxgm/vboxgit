@@ -1,4 +1,4 @@
-# $Id: Config.kmk 89794 2021-06-19 20:13:25Z vboxsync $
+# $Id: Config.kmk 89795 2021-06-19 20:21:17Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -8246,7 +8246,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 89794 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 89795 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
@@ -8322,7 +8322,7 @@ else if defined(VBOX_JAVA_VERSION) && $(VBOX_JAVA_VERSION) >= 10900
 endif
 if defined(VBOX_JAVA_VERSION) && $(VBOX_JAVA_VERSION) >= 110000
  VBOX_JAVAC_OPTS   = -encoding UTF-8 -source 9 -target 9 -Xlint:unchecked
-else if defined(VBOX_JAVA_VERSION) && $(VBOX_JAVA_VERSION) >= 100000
+else if defined(VBOX_JAVA_VERSION) && $(VBOX_JAVA_VERSION) >= 90000
  VBOX_JAVAC_OPTS   = -encoding UTF-8 -source 6 -target 6 -Xlint:unchecked
 else
  VBOX_JAVAC_OPTS   = -encoding UTF-8 -source 1.5 -target 1.5 -Xlint:unchecked
