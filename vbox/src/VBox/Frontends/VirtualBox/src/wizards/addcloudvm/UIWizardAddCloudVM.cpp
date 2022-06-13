@@ -1,4 +1,4 @@
-/* $Id: UIWizardAddCloudVM.cpp 91335 2021-09-22 19:45:29Z vboxsync $ */
+/* $Id: UIWizardAddCloudVM.cpp 91367 2021-09-24 15:42:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardAddCloudVM class implementation.
  */
@@ -30,7 +30,7 @@
 
 UIWizardAddCloudVM::UIWizardAddCloudVM(QWidget *pParent,
                                        const QString &strFullGroupName /* = QString() */)
-    : UINativeWizard(pParent, WizardType_AddCloudVM, WizardMode_Auto)
+    : UINativeWizard(pParent, WizardType_AddCloudVM)
 {
 #ifndef VBOX_WS_MAC
     /* Assign watermark: */
