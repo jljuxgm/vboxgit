@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-internal.h 94232 2022-03-15 08:47:10Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-internal.h 94377 2022-03-25 18:26:29Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device - 3D part, internal header.
  */
@@ -1351,6 +1351,9 @@ DECLINLINE(int) vmsvga3dMipmapLevel(PVMSVGA3DSURFACE pSurface, uint32_t iArrayEl
 
 void vmsvga3dInfoSurfaceToBitmap(PCDBGFINFOHLP pHlp, PVMSVGA3DSURFACE pSurface,
                                  const char *pszPath, const char *pszNamePrefix, const char *pszNameSuffix);
+
+void vmsvga3dSurfaceMapInit(VMSVGA3D_MAPPED_SURFACE *pMap, VMSVGA3D_SURFACE_MAP enmMapType, SVGA3dBox const *pBox,
+                            PVMSVGA3DSURFACE pSurface, void *pvData, uint32_t cbRowPitch, uint32_t cbDepthPitch);
 
 #if defined(RT_OS_WINDOWS)
 #define D3D_RELEASE(ptr) do { \

@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-dx-savedstate.cpp 94232 2022-03-15 08:47:10Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-dx-savedstate.cpp 94377 2022-03-25 18:26:29Z vboxsync $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - DX backend saved state.
  */
@@ -311,7 +311,7 @@ static int vmsvga3dDXSaveSurface(PCPDMDEVHLPR3 pHlp, PVGASTATECC pThisCC, PSSMHA
                 {
                     /* Save mapped surface data. */
                     pHlp->pfnSSMPutBool(pSSM, true);
-                    if (map.box.w * map.cbPixel == map.cbRowPitch)
+                    if (map.cbRow == map.cbRowPitch)
                     {
                         rc = pHlp->pfnSSMPutMem(pSSM, map.pvData, pMipmapLevel->cbSurface);
                         AssertRCReturn(rc, rc);
@@ -319,7 +319,7 @@ static int vmsvga3dDXSaveSurface(PCPDMDEVHLPR3 pHlp, PVGASTATECC pThisCC, PSSMHA
                     else
                     {
                         uint8_t *pu8Map = (uint8_t *)map.pvData;
-                        for (uint32_t z = 0; z < dims.cDepth; ++z)
+                        for (uint32_t z = 0; z < map.box.z; ++z)
                         {
                             uint8_t *pu8MapPlane = pu8Map;
                             for (uint32_t y = 0; y < dims.cyBlocks; ++y)
