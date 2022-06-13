@@ -1,4 +1,4 @@
-/* $Id: DrvVUSBRootHub.cpp 91897 2021-10-20 13:42:39Z vboxsync $ */
+/* $Id: DrvVUSBRootHub.cpp 91945 2021-10-21 13:17:30Z vboxsync $ */
 /** @file
  * Virtual USB - Root Hub Driver.
  */
@@ -933,7 +933,7 @@ static DECLCALLBACK(int) vusbRhSetFrameProcessing(PVUSBIROOTHUBCONNECTOR pInterf
         if (   enmState == VMSTATE_RUNNING
             || enmState == VMSTATE_RUNNING_LS)
         {
-            rc = PDMR3ThreadResume(pThis->hThreadPeriodFrame);
+            rc = PDMDrvHlpThreadResume(pThis->pDrvIns, pThis->hThreadPeriodFrame);
             AssertRCReturn(rc, rc);
         }
     }

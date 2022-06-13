@@ -1,4 +1,4 @@
-/* $Id: DrvHostSerial.cpp 91897 2021-10-20 13:42:39Z vboxsync $ */
+/* $Id: DrvHostSerial.cpp 91945 2021-10-21 13:17:30Z vboxsync $ */
 /** @file
  * VBox serial devices: Host serial driver
  */
@@ -627,7 +627,7 @@ static void drvHostSerialIoLoopError(PDRVHOSTSERIAL pThis, PPDMTHREAD pThread)
              * Sleep a bit to avoid excessive I/O loop CPU usage, timing is not important in
              * this mode.
              */
-            PDMR3ThreadSleep(pThread, 100);
+            PDMDrvHlpThreadSleep(pThis->pDrvIns, pThread, 100);
         }
     }
 }

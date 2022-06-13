@@ -1,4 +1,4 @@
-/* $Id: DrvIntNet.cpp 91883 2021-10-20 11:47:48Z vboxsync $ */
+/* $Id: DrvIntNet.cpp 91945 2021-10-21 13:17:30Z vboxsync $ */
 /** @file
  * DrvIntNet - Internal network transport driver.
  */
@@ -1198,7 +1198,7 @@ static DECLCALLBACK(void) drvR3IntNetDestruct(PPDMDRVINS pDrvIns)
      */
     if (pThis->pXmitThread)
     {
-        int rc = PDMR3ThreadDestroy(pThis->pXmitThread, NULL);
+        int rc = PDMDrvHlpThreadDestroy(pDrvIns, pThis->pXmitThread, NULL);
         AssertRC(rc);
         pThis->pXmitThread = NULL;
     }

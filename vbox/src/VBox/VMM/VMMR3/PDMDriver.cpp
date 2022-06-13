@@ -1,4 +1,4 @@
-/* $Id: PDMDriver.cpp 91939 2021-10-21 12:43:45Z vboxsync $ */
+/* $Id: PDMDriver.cpp 91945 2021-10-21 13:17:30Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Driver parts.
  */
@@ -2230,6 +2230,12 @@ const PDMDRVHLPR3 g_pdmR3DrvHlp =
     pdmR3DrvHlp_SetAsyncNotification,
     pdmR3DrvHlp_AsyncNotificationCompleted,
     pdmR3DrvHlp_ThreadCreate,
+    PDMR3ThreadDestroy,
+    PDMR3ThreadIAmSuspending,
+    PDMR3ThreadIAmRunning,
+    PDMR3ThreadSleep,
+    PDMR3ThreadSuspend,
+    PDMR3ThreadResume,
     pdmR3DrvHlp_AsyncCompletionTemplateCreate,
     pdmR3DrvHlp_NetShaperAttach,
     pdmR3DrvHlp_NetShaperDetach,
