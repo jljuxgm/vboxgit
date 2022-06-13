@@ -1,4 +1,4 @@
-/* $Id: UIWizardDiskEditors.h 90400 2021-07-29 09:40:13Z vboxsync $ */
+/* $Id: UIWizardDiskEditors.h 90401 2021-07-29 10:36:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardDiskEditors class declaration.
  */
@@ -60,6 +60,7 @@ public:
     static QString appendExtension(const QString &strName, const QString &strExtension);
     static QString constructMediumFilePath(const QString &strFileName, const QString &strPath);
     static QString defaultExtensionForMediumFormat(const CMediumFormat &mediumFormatRef);
+    static bool checkFATSizeLimitation(const qulonglong uVariant, const QString &strMediumPath, const qulonglong uSize);
 
 protected:
 

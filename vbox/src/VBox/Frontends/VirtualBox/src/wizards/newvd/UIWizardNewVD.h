@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVD.h 90372 2021-07-28 15:30:17Z vboxsync $ */
+/* $Id: UIWizardNewVD.h 90401 2021-07-29 10:36:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVD class declaration.
  */
@@ -49,6 +49,7 @@ public:
                   const QString &strDefaultName, const QString &strDefaultPath,
                   qulonglong uDefaultSize, WizardMode mode = WizardMode_Auto);
 
+    bool createVirtualDisk();
 
     qulonglong mediumVariant() const;
     void setMediumVariant(qulonglong uMediumVariant);
@@ -63,9 +64,6 @@ public:
     void setMediumSize(qulonglong mediumSize);
 
 protected:
-
-    /* Creates virtual-disk: */
-    bool createVirtualDisk();
 
     virtual void populatePages() /* final override */;
 

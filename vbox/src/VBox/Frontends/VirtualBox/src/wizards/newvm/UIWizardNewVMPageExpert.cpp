@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.cpp 90400 2021-07-29 09:40:13Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.cpp 90401 2021-07-29 10:36:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class implementation.
  */
@@ -621,7 +621,7 @@ bool UIWizardNewVMPageExpert::validatePage()
         qulonglong uSize = pWizard->mediumSize();
         qulonglong uVariant = pWizard->mediumVariant();
         /* Check FAT size limitation of the host hard drive: */
-        fResult =  UIWizardNewVMDiskPage::checkFATSizeLimitation(uVariant, strMediumPath, uSize);
+        fResult =  UIDiskEditorGroupBox::checkFATSizeLimitation(uVariant, strMediumPath, uSize);
         if (!fResult)
         {
             msgCenter().cannotCreateHardDiskStorageInFAT(strMediumPath, this);
