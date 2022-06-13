@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlSession.cpp 92611 2021-11-26 16:22:20Z vboxsync $ */
+/* $Id: VBoxServiceControlSession.cpp 92662 2021-12-01 02:42:28Z vboxsync $ */
 /** @file
  * VBoxServiceControlSession - Guest session handling. Also handles the spawned session processes.
  */
@@ -2311,6 +2311,9 @@ static int vgsvcVGSvcGstCtrlSessionThreadCreateProcess(const PVBGLR3GUESTCTRLSES
     char const *apszArgs[24];
 
     apszArgs[idxArg++] = pszExeName;
+#ifdef VBOXSERVICE_ARG1_UTF8_ARGV
+    apszArgs[idxArg++] = VBOXSERVICE_ARG1_UTF8_ARGV; Assert(idxArg == 2);
+#endif
     apszArgs[idxArg++] = "guestsession";
     apszArgs[idxArg++] = szParmSessionID;
     apszArgs[idxArg++] = szParmSessionProto;
@@ -2407,7 +2410,7 @@ static int vgsvcVGSvcGstCtrlSessionThreadCreateProcess(const PVBGLR3GUESTCTRLSES
                          | RTPROC_FLAGS_SERVICE
                          | RTPROC_FLAGS_HIDDEN
 #endif
-                         ;
+                         | VBOXSERVICE_PROC_F_UTF8_ARGV;
 
     /*
      * Configure standard handles.
