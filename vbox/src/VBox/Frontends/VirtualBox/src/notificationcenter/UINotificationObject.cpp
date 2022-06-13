@@ -1,4 +1,4 @@
-/* $Id: UINotificationObject.cpp 90556 2021-08-06 16:08:18Z vboxsync $ */
+/* $Id: UINotificationObject.cpp 90590 2021-08-10 10:12:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINotificationObject class implementation.
  */
@@ -16,9 +16,11 @@
  */
 
 /* GUI includes: */
-#include "UIDownloader.h"
 #include "UINotificationObject.h"
 #include "UINotificationProgressTask.h"
+#ifdef VBOX_GUI_WITH_NETWORK_MANAGER
+# include "UIDownloader.h"
+#endif
 
 
 /*********************************************************************************************************************************
@@ -106,6 +108,7 @@ void UINotificationProgress::sltHandleProgressFinished()
 }
 
 
+#ifdef VBOX_GUI_WITH_NETWORK_MANAGER
 /*********************************************************************************************************************************
 *   Class UINotificationDownloader implementation.                                                                               *
 *********************************************************************************************************************************/
@@ -177,3 +180,4 @@ void UINotificationDownloader::sltHandleProgressFailed(const QString &strError)
     m_strError = strError;
     emit sigProgressFailed();
 }
+#endif /* VBOX_GUI_WITH_NETWORK_MANAGER */

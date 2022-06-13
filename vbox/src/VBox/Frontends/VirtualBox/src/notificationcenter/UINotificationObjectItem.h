@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjectItem.h 90556 2021-08-06 16:08:18Z vboxsync $ */
+/* $Id: UINotificationObjectItem.h 90590 2021-08-10 10:12:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINotificationObjectItem class declaration.
  */
@@ -31,9 +31,11 @@ class QProgressBar;
 class QVBoxLayout;
 class QIRichTextLabel;
 class QIToolButton;
-class UINotificationDownloader;
 class UINotificationObject;
 class UINotificationProgress;
+#ifdef VBOX_GUI_WITH_NETWORK_MANAGER
+class UINotificationDownloader;
+#endif
 
 /** QWidget-based notification-object item. */
 class UINotificationObjectItem : public QWidget
@@ -109,6 +111,7 @@ private:
     void updateDetails();
 };
 
+#ifdef VBOX_GUI_WITH_NETWORK_MANAGER
 /** UINotificationObjectItem extension for notification-downloader. */
 class UINotificationDownloaderItem : public UINotificationObjectItem
 {
@@ -143,6 +146,7 @@ private:
     /** Updates details. */
     void updateDetails();
 };
+#endif /* VBOX_GUI_WITH_NETWORK_MANAGER */
 
 /** Notification-object factory. */
 namespace UINotificationItem

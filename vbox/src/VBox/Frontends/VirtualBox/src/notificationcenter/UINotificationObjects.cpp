@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 90569 2021-08-07 12:21:17Z vboxsync $ */
+/* $Id: UINotificationObjects.cpp 90590 2021-08-10 10:12:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -1489,6 +1489,7 @@ void UINotificationProgressHostOnlyNetworkInterfaceRemove::sltHandleProgressFini
 }
 
 
+#ifdef VBOX_GUI_WITH_NETWORK_MANAGER
 /*********************************************************************************************************************************
 *   Class UINotificationDownloaderExtensionPack implementation.                                                                  *
 *********************************************************************************************************************************/
@@ -1655,3 +1656,4 @@ UIDownloader *UINotificationDownloaderUserManual::createDownloader()
     }
     return 0;
 }
+#endif /* VBOX_GUI_WITH_NETWORK_MANAGER */
