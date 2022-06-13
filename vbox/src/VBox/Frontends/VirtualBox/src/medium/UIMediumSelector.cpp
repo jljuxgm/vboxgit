@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.cpp 90326 2021-07-26 09:36:52Z vboxsync $ */
+/* $Id: UIMediumSelector.cpp 90425 2021-07-30 13:15:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class implementation.
  */
@@ -31,7 +31,6 @@
 #include "UICommon.h"
 #include "UIDesktopWidgetWatchdog.h"
 #include "UIExtraDataManager.h"
-#include "UIFDCreationDialog.h"
 #include "UIMediumSearchWidget.h"
 #include "UIMediumSelector.h"
 #include "UIMessageCenter.h"

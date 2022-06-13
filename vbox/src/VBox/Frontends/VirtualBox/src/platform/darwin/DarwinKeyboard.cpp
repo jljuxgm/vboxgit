@@ -1,4 +1,4 @@
-/* $Id: DarwinKeyboard.cpp 85327 2020-07-14 09:50:10Z vboxsync $ */
+/* $Id: DarwinKeyboard.cpp 90425 2021-07-30 13:15:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Declarations of utility functions for handling Darwin Keyboard specific tasks.
  */
@@ -560,7 +560,7 @@ void DarwinDisableGlobalHotKeys(bool fDisable)
 
 /** Callback function for consuming queued events.
   * @param   pvTarget  Brings the queue?
-  * @param   rcIn      Brigns what?
+  * @param   rcIn      Brings what?
   * @param   pvRefcon  Brings the pointer to the keyboard cache entry.
   * @param   pvSender  Brings what? */
 static void darwinQueueCallback(void *pvTarget, IOReturn rcIn, void *pvRefcon, void *pvSender)

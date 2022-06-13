@@ -1,4 +1,4 @@
-/* $Id: UIDetailsModel.h 88552 2021-04-15 17:10:32Z vboxsync $ */
+/* $Id: UIDetailsModel.h 90425 2021-07-30 13:15:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsModel class declaration.
  */
@@ -268,14 +268,14 @@ signals:
 
     /** Notifies listeners about all animations finished.
       * @param  enmType   Brings the type of element item which was animated.
-      * @param  fToggled  Brigns whether elements being toggled to be closed or opened. */
+      * @param  fToggled  Brings whether elements being toggled to be closed or opened. */
     void sigAllAnimationFinished(DetailsElementType enmType, bool fToggled);
 
 public:
 
     /** Constructors details element animation callback passing @a pParent to the base-class.
       * @param  enmType   Brings the type of element item which was animated.
-      * @param  fToggled  Brigns whether elements being toggled to be closed or opened. */
+      * @param  fToggled  Brings whether elements being toggled to be closed or opened. */
     UIDetailsElementAnimationCallback(QObject *pParent, DetailsElementType enmType, bool fToggled);
 
     /** Adds notifier for a certain details @a pItem. */
