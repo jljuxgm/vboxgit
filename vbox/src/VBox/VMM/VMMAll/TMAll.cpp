@@ -1,4 +1,4 @@
-/* $Id: TMAll.cpp 93620 2022-02-06 09:43:00Z vboxsync $ */
+/* $Id: TMAll.cpp 93717 2022-02-14 10:55:27Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, all contexts.
  */
@@ -140,7 +140,9 @@ DECLINLINE(PPDMCRITSECT) tmRZTimerGetCritSect(PVMCC pVM, PTMTIMER pTimer)
         if (offCritSect < pDevInsR0->pReg->cbInstanceShared)
             return (PPDMCRITSECT)((uintptr_t)pDevInsR0->pvInstanceDataR0 + offCritSect);
     }
-    return (PPDMCRITSECT)MMHyperR3ToCC(pVM, pTimer->pCritSect);
+    RT_NOREF(pVM);
+    Assert(pTimer->pCritSect == NULL);
+    return NULL;
 }
 #endif /* VBOX_STRICT && IN_RING0 */
 
