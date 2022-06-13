@@ -1,4 +1,4 @@
-/* $Id: UIUpdateSettingsEditor.h 94725 2022-04-27 14:39:28Z vboxsync $ */
+/* $Id: UIUpdateSettingsEditor.h 94733 2022-04-28 12:24:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUpdateSettingsEditor class declaration.
  */
@@ -71,8 +71,8 @@ private:
     /** Prepares connections. */
     void prepareConnections();
 
-    /** Returns period type. */
-    VBoxUpdateData::PeriodType periodType() const;
+    /** Returns update period. */
+    UpdatePeriodType updatePeriod() const;
     /** Returns update channel. */
     KUpdateChannel updateChannel() const;
 
