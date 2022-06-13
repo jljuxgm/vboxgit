@@ -1,4 +1,4 @@
-/* $Id: DevHda.h 89878 2021-06-24 10:05:07Z vboxsync $ */
+/* $Id: DevHda.h 89885 2021-06-24 11:28:32Z vboxsync $ */
 /** @file
  * Intel HD Audio Controller Emulation - Structures.
  */
@@ -142,10 +142,6 @@ typedef struct HDASTATE
     bool                    fDMAPosition;
     /** Current IRQ level. */
     uint8_t                 u8IRQL;
-    uint8_t                 abPadding[4 + 2];
-    /** Number of milliseconds to delay kicking off the AIO when a stream starts.
-     * @sa InitialDelayMs config value.  */
-    uint16_t                msInitialDelay;
     /** Config: Internal input DMA buffer size override, specified in milliseconds.
      * Zero means default size according to buffer and stream config.
      * @sa BufSizeInMs config value.  */
