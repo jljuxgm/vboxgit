@@ -1,4 +1,4 @@
-/* $Id: UnattendedImpl.cpp 93189 2022-01-11 21:50:56Z vboxsync $ */
+/* $Id: UnattendedImpl.cpp 93285 2022-01-17 21:46:59Z vboxsync $ */
 /** @file
  * Unattended class implementation
  */
@@ -791,10 +791,17 @@ HRESULT Unattended::i_innerDetectIsoOSWindows(RTVFS hVfsIso, DETECTBUFFER *pBuf,
      *        documented. It would also provide really accurate Windows
      *        version information without the need to guess. The current
      *        content of mStrDetectedOSVersion is mostly useful for human
-     *        consumption. Long term it should be possible to have version
+     *        consumption. ~~Long term it should be possible to have version
      *        conditionals (expr style, please) in the templates, which
      *        would make them a lot easier to write and more flexible at the
-     *        same time. */
+     *        same time. - done already~~
+     *
+     * Here is how to list images inside an install.wim file from powershell:
+     * https://docs.microsoft.com/en-us/powershell/module/dism/get-windowsimage?view=windowsserver2022-ps
+     *
+     * Unfortunately, powershell is available by default on non-windows hosts, so we
+     * have to do it ourselves of course, but this can help when coding & testing.
+     */
 
     return S_FALSE;
 }
