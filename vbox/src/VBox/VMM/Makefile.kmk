@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 91018 2021-08-31 01:30:41Z vboxsync $
+# $Id: Makefile.kmk 91676 2021-10-11 20:46:03Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -579,7 +579,9 @@ VMMR0_LIBS += \
 	$(PATH_STAGE_LIB)/SUPR0$(VBOX_SUFF_LIB)
  endif
  ifdef VBOX_WITH_NATIVE_NEM
-VMMR0_SOURCES.win.amd64 += VMMR0/NEMR0Native-win.cpp
+VMMR0_SOURCES.win.amd64 += \
+	VMMR0/NEMR0Native-win.cpp \
+	VMMR0/NEMR0NativeA-win.asm
 VMMR0_DEFS.win.amd64    += VBOX_WITH_NATIVE_NEM VBOX_WITH_NEM_R0
 VMMR0/NEMR0Native-win.cpp_SDKS.win = ReorderCompilerIncs $(VBOX_WINDDK) $(VBOX_WINPSDK)INCS
  endif
