@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: EM.cpp 93204 2022-01-12 18:37:23Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -504,6 +504,26 @@ static DECLCALLBACK(VBOXSTRICTRC) emR3SetExecutionPolicy(PVM pVM, PVMCPU pVCpu, 
                 break;
             case EMEXECPOLICY_IEM_ALL:
                 pVM->em.s.fIemExecutesAll = pArgs->fEnforce;
+
+                /* For making '.alliem 1' useful during debugging, transition the
+                   EMSTATE_DEBUG_GUEST_XXX to EMSTATE_DEBUG_GUEST_IEM.  */
+                for (VMCPUID i = 0; i < pVM->cCpus; i++)
+                {
+                    PVMCPU pVCpuX = pVM->apCpusR3[i];
+                    switch (pVCpuX->em.s.enmState)
+                    {
+                        case EMSTATE_DEBUG_GUEST_RAW:
+                        case EMSTATE_DEBUG_GUEST_HM:
+                        case EMSTATE_DEBUG_GUEST_NEM:
+                        case EMSTATE_DEBUG_GUEST_REM:
+                            Log(("EM: idCpu=%u: %s -> EMSTATE_DEBUG_GUEST_IEM\n", i, emR3GetStateName(pVCpuX->em.s.enmState) ));
+                            pVCpuX->em.s.enmState = EMSTATE_DEBUG_GUEST_IEM;
+                            break;
+                        case EMSTATE_DEBUG_GUEST_IEM:
+                        default:
+                            break;
+                    }
+                }
                 break;
             default:
                 AssertFailedReturn(VERR_INVALID_PARAMETER);
@@ -1673,7 +1693,12 @@ int emR3ForcedActions(PVM pVM, PVMCPU pVCpu, int rc)
         {
             CPUM_IMPORT_EXTRN_RCSTRICT(pVCpu, ~CPUMCTX_EXTRN_KEEPER_MASK, rc);
             rc2 = DBGFR3VMMForcedAction(pVM, pVCpu);
-            UPDATE_RC();
+            /** @todo why that VINF_EM_DBG_EVENT here? Duplicate info, should be handled
+             *        somewhere before we get here, I would think. */
+            if (rc == VINF_EM_DBG_EVENT) /* HACK! We should've handled pending debug event. */
+                rc = rc2;
+            else
+                UPDATE_RC();
         }
 
         /*
