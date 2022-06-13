@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 94234 2022-03-15 09:19:29Z vboxsync $
+# $Id: Makefile.kmk 94290 2022-03-17 12:47:49Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxManage (the CLI frontend).
 #
@@ -191,11 +191,6 @@ endif
 # VBoxManage built-in help from XML refentry in doc/manual/en_US/.
 #
 $(call KB_FN_DO_PASS0_ON_TARGET,VBoxManage)
-
-## @todo r=klaus the VBoxManage manpage handling currently cannot deal with
-# man_VBoxManage.xml and that's not just removing the - in the patterns. The
-# common options (and the included overview of the command) need to be handled
-# specially to be useful in VBoxManage.
 
 VBoxManage_CLEAN += \
 	$(VBOX_XML_CATALOG) \
