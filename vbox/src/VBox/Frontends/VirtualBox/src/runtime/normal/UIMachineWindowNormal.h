@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.h 88651 2021-04-22 12:12:33Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.h 90567 2021-08-07 11:50:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowNormal class declaration.
  */
@@ -97,6 +97,8 @@ private:
 #endif /* !VBOX_WS_MAC */
     /** Prepare status-bar routine. */
     void prepareStatusBar();
+    /** Prepare notification-center routine. */
+    void prepareNotificationCenter();
     /** Prepare visual-state routine. */
     void prepareVisualState();
     /** Load settings routine. */
@@ -104,6 +106,8 @@ private:
 
     /** Cleanup visual-state routine. */
     void cleanupVisualState();
+    /** Cleanup notification-center routine. */
+    void cleanupNotificationCenter();
     /** Cleanup session connections routine. */
     void cleanupSessionConnections();
 

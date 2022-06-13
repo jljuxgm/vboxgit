@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.h 88635 2021-04-21 14:05:26Z vboxsync $ */
+/* $Id: UIMachineWindowFullscreen.h 90567 2021-08-07 11:50:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowFullscreen class declaration.
  */
@@ -87,6 +87,8 @@ private slots:
 
 private:
 
+    /** Prepare notification-center routine. */
+    void prepareNotificationCenter();
     /** Prepare visual-state routine. */
     void prepareVisualState();
 #if defined(VBOX_WS_WIN) || defined(VBOX_WS_X11)
@@ -100,6 +102,8 @@ private:
 #endif /* VBOX_WS_WIN || VBOX_WS_X11 */
     /** Cleanup visual-state routine. */
     void cleanupVisualState();
+    /** Cleanup notification-center routine. */
+    void cleanupNotificationCenter();
 
     /** Updates geometry according to visual-state. */
     void placeOnScreen();

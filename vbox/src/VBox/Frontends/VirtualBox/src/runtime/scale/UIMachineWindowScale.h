@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowScale.h 88651 2021-04-22 12:12:33Z vboxsync $ */
+/* $Id: UIMachineWindowScale.h 90567 2021-08-07 11:50:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowScale class declaration.
  */
@@ -39,6 +39,8 @@ private:
 
     /** Prepare main-layout routine. */
     void prepareMainLayout();
+    /** Prepare notification-center routine. */
+    void prepareNotificationCenter();
 #ifdef VBOX_WS_MAC
     /** Prepare visual-state routine. */
     void prepareVisualState();
@@ -50,6 +52,8 @@ private:
     /** Cleanup visual-state routine. */
     void cleanupVisualState();
 #endif /* VBOX_WS_MAC */
+    /** Cleanup notification-center routine. */
+    void cleanupNotificationCenter();
 
     /** Updates visibility according to visual-state. */
     void showInNecessaryMode();

@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.h 86051 2020-09-07 16:17:11Z vboxsync $ */
+/* $Id: UIMachineWindow.h 90567 2021-08-07 11:50:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class declaration.
  */
@@ -163,6 +163,7 @@ protected:
     virtual void prepareMenu() {}
     virtual void prepareStatusBar() {}
     virtual void prepareMachineView();
+    virtual void prepareNotificationCenter();
     virtual void prepareVisualState() {}
     virtual void prepareHandlers();
     virtual void loadSettings() {}
@@ -171,6 +172,7 @@ protected:
     virtual void saveSettings() {}
     virtual void cleanupHandlers();
     virtual void cleanupVisualState() {}
+    virtual void cleanupNotificationCenter();
     virtual void cleanupMachineView();
     virtual void cleanupStatusBar() {}
     virtual void cleanupMenu() {}

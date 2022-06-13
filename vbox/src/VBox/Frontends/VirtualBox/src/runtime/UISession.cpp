@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 90167 2021-07-13 12:49:25Z vboxsync $ */
+/* $Id: UISession.cpp 90567 2021-08-07 11:50:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -44,6 +44,7 @@
 #include "UIMachineWindow.h"
 #include "UIMessageCenter.h"
 #include "UIMousePointerShapeData.h"
+#include "UINotificationCenter.h"
 #include "UIPopupCenter.h"
 #include "UIWizardFirstRun.h"
 #include "UIConsoleEventHandler.h"
@@ -525,6 +526,7 @@ void UISession::sltDetachCOM()
     /* Cleanup everything COM related: */
     cleanupFramebuffers();
     cleanupConsoleEventHandlers();
+    cleanupNotificationCenter();
     cleanupSession();
 }
 
@@ -938,6 +940,7 @@ bool UISession::prepare()
     /* Prepare COM stuff: */
     if (!prepareSession())
         return false;
+    prepareNotificationCenter();
     prepareConsoleEventHandlers();
     prepareFramebuffers();
 
@@ -1008,6 +1011,11 @@ bool UISession::prepareSession()
 
     /* True by default: */
     return true;
+}
+
+void UISession::prepareNotificationCenter()
+{
+    UINotificationCenter::create();
 }
 
 void UISession::prepareConsoleEventHandlers()
@@ -1351,6 +1359,11 @@ void UISession::cleanupConsoleEventHandlers()
     /* Destroy console event-handler if necessary: */
     if (gConsoleEvents)
         UIConsoleEventHandler::destroy();
+}
+
+void UISession::cleanupNotificationCenter()
+{
+    UINotificationCenter::destroy();
 }
 
 void UISession::cleanupSession()
