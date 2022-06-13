@@ -1,4 +1,4 @@
-/* $Id: nt.h 86191 2020-09-21 09:59:04Z vboxsync $ */
+/* $Id: nt.h 91678 2021-10-11 21:31:55Z vboxsync $ */
 /** @file
  * IPRT - Header for code using the Native NT API.
  */
@@ -3029,7 +3029,7 @@ typedef enum _SYSTEM_INFORMATION_CLASS
     SystemExtendedHandleInformation, /* 64 */
     SystemInformation_Unknown_65,
     SystemInformation_Unknown_66,
-    SystemInformation_Unknown_67,
+    SystemInformation_Unknown_67, /**< See https://www.geoffchappell.com/studies/windows/km/ntoskrnl/api/ex/sysinfo/codeintegrity.htm */
     SystemInformation_Unknown_68,
     SystemInformation_HotPatchInfo, /* 69 */
     SystemInformation_Unknown_70,
