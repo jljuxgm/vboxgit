@@ -1,4 +1,4 @@
-/* $Id: VBoxAcpi.cpp 85992 2020-09-02 10:44:05Z vboxsync $ */
+/* $Id: VBoxAcpi.cpp 90908 2021-08-26 10:27:04Z vboxsync $ */
 /** @file
  * VBoxAcpi - VirtualBox ACPI manipulation functionality.
  */
@@ -44,6 +44,9 @@
 # include <vboxaml.hex>
 # include <vboxssdt_standard.hex>
 # include <vboxssdt_cpuhotplug.hex>
+# ifdef VBOX_WITH_TPM
+#  include <vboxssdt_tpm.hex>
+# endif
 #endif
 
 #include "VBoxDD.h"
@@ -441,4 +444,40 @@ int acpiCleanupSsdt(PPDMDEVINS pDevIns, void *pvPtr)
         RTMemFree(pvPtr);
     return VINF_SUCCESS;
 }
+
+#ifdef VBOX_WITH_TPM
+/** No docs, lazy coder. */
+int acpiPrepareTpmSsdt(PPDMDEVINS pDevIns, void **ppvPtr, size_t *pcbSsdt)
+{
+    uint8_t *pabAmlCodeSsdt = NULL;
+    size_t   cbAmlCodeSsdt = 0;
+    int rc = acpiAmlLoadExternal(pDevIns, "SsdtTpmFilePath", "SSDT", &pabAmlCodeSsdt, &cbAmlCodeSsdt);
+    if (rc == VERR_CFGM_VALUE_NOT_FOUND)
+    {
+        rc = VINF_SUCCESS;
+        cbAmlCodeSsdt  = sizeof(AmlCodeSsdtTpm);
+        pabAmlCodeSsdt = (uint8_t *)RTMemDup(AmlCodeSsdtTpm, sizeof(AmlCodeSsdtTpm));
+        if (!pabAmlCodeSsdt)
+            rc = VERR_NO_MEMORY;
+    }
+    else if (RT_FAILURE(rc))
+        return PDMDEV_SET_ERROR(pDevIns, rc, N_("Configuration error: Failed to read \"SsdtFilePath\""));
+
+    if (RT_SUCCESS(rc))
+    {
+        *ppvPtr = pabAmlCodeSsdt;
+        *pcbSsdt = cbAmlCodeSsdt;
+    }
+    return rc;
+}
+
+/** No docs, lazy coder. */
+int acpiCleanupTpmSsdt(PPDMDEVINS pDevIns, void *pvPtr)
+{
+    RT_NOREF1(pDevIns);
+    if (pvPtr)
+        RTMemFree(pvPtr);
+    return VINF_SUCCESS;
+}
+#endif
 

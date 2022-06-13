@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.h 90530 2021-08-05 11:47:12Z vboxsync $ */
+/* $Id: VBoxDD.h 90908 2021-08-26 10:27:04Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1) header.
  */
@@ -212,6 +212,11 @@ int acpiPrepareDsdt(PPDMDEVINS pDevIns, void **ppvPtr, size_t *pcbDsdt);
 int acpiCleanupDsdt(PPDMDEVINS pDevIns, void *pvPtr);
 int acpiPrepareSsdt(PPDMDEVINS pDevIns, void **ppvPtr, size_t *pcbSsdt);
 int acpiCleanupSsdt(PPDMDEVINS pDevIns, void *pvPtr);
+
+#ifdef VBOX_WITH_TPM
+int acpiPrepareTpmSsdt(PPDMDEVINS pDevIns, void **ppvPtr, size_t *pcbSsdt);
+int acpiCleanupTpmSsdt(PPDMDEVINS pDevIns, void *pvPtr);
+#endif
 
 RT_C_DECLS_END
 
