@@ -1,4 +1,4 @@
-/* $Id: UINotificationCenter.cpp 90600 2021-08-10 15:13:39Z vboxsync $ */
+/* $Id: UINotificationCenter.cpp 90627 2021-08-11 12:56:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINotificationCenter class implementation.
  */
@@ -165,7 +165,9 @@ void UINotificationCenter::setParent(QWidget *pParent)
 
 void UINotificationCenter::invoke()
 {
-    emit sigOpen();
+    /* Open if center isn't opened yet: */
+    if (!m_pOpenButton->isChecked())
+        m_pOpenButton->animateClick();
 }
 
 QUuid UINotificationCenter::append(UINotificationObject *pObject)
