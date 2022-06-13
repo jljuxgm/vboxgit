@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageBasic2.cpp 91561 2021-10-05 10:15:55Z vboxsync $ */
+/* $Id: UIWizardImportAppPageBasic2.cpp 91564 2021-10-05 11:13:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageBasic2 class implementation.
  */
@@ -150,35 +150,38 @@ void UIWizardImportAppPageBasic2::retranslateUi()
     updatePageAppearance();
 
     /* Translate the certificate label: */
-    switch (m_enmCertText)
+    if (m_pCertLabel)
     {
-        case kCertText_Unsigned:
-            m_pCertLabel->setText(UIWizardImportApp::tr("Appliance is not signed"));
-            break;
-        case kCertText_IssuedTrusted:
-            m_pCertLabel->setText(UIWizardImportApp::tr("Appliance signed by %1 (trusted)").arg(m_strSignedBy));
-            break;
-        case kCertText_IssuedExpired:
-            m_pCertLabel->setText(UIWizardImportApp::tr("Appliance signed by %1 (expired!)").arg(m_strSignedBy));
-            break;
-        case kCertText_IssuedUnverified:
-            m_pCertLabel->setText(UIWizardImportApp::tr("Unverified signature by %1!").arg(m_strSignedBy));
-            break;
-        case kCertText_SelfSignedTrusted:
-            m_pCertLabel->setText(UIWizardImportApp::tr("Self signed by %1 (trusted)").arg(m_strSignedBy));
-            break;
-        case kCertText_SelfSignedExpired:
-            m_pCertLabel->setText(UIWizardImportApp::tr("Self signed by %1 (expired!)").arg(m_strSignedBy));
-            break;
-        case kCertText_SelfSignedUnverified:
-            m_pCertLabel->setText(UIWizardImportApp::tr("Unverified self signed signature by %1!").arg(m_strSignedBy));
-            break;
-        default:
-            AssertFailed();
-            RT_FALL_THRU();
-        case kCertText_Uninitialized:
-            m_pCertLabel->setText("<uninitialized page>");
-            break;
+        switch (m_enmCertText)
+        {
+            case kCertText_Unsigned:
+                m_pCertLabel->setText(UIWizardImportApp::tr("Appliance is not signed"));
+                break;
+            case kCertText_IssuedTrusted:
+                m_pCertLabel->setText(UIWizardImportApp::tr("Appliance signed by %1 (trusted)").arg(m_strSignedBy));
+                break;
+            case kCertText_IssuedExpired:
+                m_pCertLabel->setText(UIWizardImportApp::tr("Appliance signed by %1 (expired!)").arg(m_strSignedBy));
+                break;
+            case kCertText_IssuedUnverified:
+                m_pCertLabel->setText(UIWizardImportApp::tr("Unverified signature by %1!").arg(m_strSignedBy));
+                break;
+            case kCertText_SelfSignedTrusted:
+                m_pCertLabel->setText(UIWizardImportApp::tr("Self signed by %1 (trusted)").arg(m_strSignedBy));
+                break;
+            case kCertText_SelfSignedExpired:
+                m_pCertLabel->setText(UIWizardImportApp::tr("Self signed by %1 (expired!)").arg(m_strSignedBy));
+                break;
+            case kCertText_SelfSignedUnverified:
+                m_pCertLabel->setText(UIWizardImportApp::tr("Unverified self signed signature by %1!").arg(m_strSignedBy));
+                break;
+            default:
+                AssertFailed();
+                RT_FALL_THRU();
+            case kCertText_Uninitialized:
+                m_pCertLabel->setText("<uninitialized page>");
+                break;
+        }
     }
 }
 
