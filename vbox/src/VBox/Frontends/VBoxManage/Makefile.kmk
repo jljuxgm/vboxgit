@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 92835 2021-12-08 17:27:11Z vboxsync $
+# $Id: Makefile.kmk 92842 2021-12-09 09:51:57Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxManage (the cli frontend).
 #
@@ -318,7 +318,7 @@ endif
 		'' \
 		'const uint32_t g_cHelpLangEntries = RT_ELEMENTS(g_apHelpLangEntries);' \
 		'' \
-		'void * volatile g_pHelpLangEntry = (void *)&g_apHelpLangEntries[0];'\
+		'PHELP_LANG_ENTRY volatile g_pHelpLangEntry = &g_apHelpLangEntries[0];'\
 		''
 	$(QUIET)$(CP) --changed -- "$@" "$(patsubst %.ts,%,$@)"
 
@@ -365,7 +365,7 @@ $(VBoxManage_0_OUTDIR)/VBoxManageBuiltInHelp.h.ts \
 		'extern HELP_LANG_ENTRY g_apHelpLangEntries[];' \
 		'extern const uint32_t  g_cHelpLangEntries;' \
 		'' \
-		'extern void * volatile g_pHelpLangEntry;' \
+		'extern PHELP_LANG_ENTRY volatile g_pHelpLangEntry;' \
 		'' \
 		'RT_C_DECLS_END' \
 		'' \
