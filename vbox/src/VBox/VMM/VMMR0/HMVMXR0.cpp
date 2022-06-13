@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 90613 2021-08-11 05:39:33Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 90842 2021-08-24 11:40:31Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -10828,16 +10828,9 @@ static VBOXSTRICTRC hmR0VmxPreRunGuest(PVMCPUCC pVCpu, PVMXTRANSIENT pVmxTransie
      * Events in TRPM can be injected without inspecting the guest state.
      * If any new events (interrupts/NMI) are pending currently, we try to set up the
      * guest to cause a VM-exit the next time they are ready to receive the event.
-     *
-     * For nested-guests, verify that the TRPM event that we're about to inject using
-     * hardware-assisted VMX is -not- subject to nested-hypervisor interception.
-     * Otherwise, we should have checked and injected them manually elsewhere (IEM).
      */
     if (TRPMHasTrap(pVCpu))
-    {
-        Assert(!pVmxTransient->fIsNestedGuest || !CPUMIsGuestVmxInterceptEvents(&pVCpu->cpum.GstCtx));
         hmR0VmxTrpmTrapToPendingEvent(pVCpu);
-    }
 
     uint32_t fIntrState;
     rcStrict = hmR0VmxEvaluatePendingEvent(pVCpu, pVmxTransient, &fIntrState);
