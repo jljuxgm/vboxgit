@@ -1,4 +1,4 @@
-/* $Id: DrvVMNet.m 91417 2021-09-28 06:54:46Z vboxsync $ */
+/* $Id: DrvVMNet.m 91418 2021-09-28 07:13:29Z vboxsync $ */
 /** @file
  * DrvVMNet - Network filter driver that uses MAC OS VMNET API.
  */
@@ -57,6 +57,7 @@
 # define Log2    LogRel
 # define Log3    LogRel
 #endif
+
 
 /*********************************************************************************************************************************
 *   Structures and Typedefs                                                                                                      *
@@ -366,8 +367,7 @@ static vmnet_return_t drvVMNetAttach(PDRVVMNET pThis)
         Log(("Failed to start VMNET interface with unknown status!\n"));
         return VMNET_FAILURE;
     }
-    // Log(("MAC address: %RTmac\n", &pThis->MacAddress));
-    
+
     vmnet_interface_set_event_callback(pThis->Interface, VMNET_INTERFACE_PACKETS_AVAILABLE, pThis->InterfaceQueue, ^(interface_event_t event_mask, xpc_object_t  _Nonnull event) {
         if (event_mask & VMNET_INTERFACE_PACKETS_AVAILABLE)
         {
@@ -399,9 +399,8 @@ static vmnet_return_t drvVMNetAttach(PDRVVMNET pThis)
             }
             free(io.iov_base);
         }
-        
     });
-    
+
     return vmnet_status;
 }
 
@@ -413,7 +412,7 @@ static int drvVMNetDetach(PDRVVMNET pThis)
         });
     if (pThis->InterfaceQueue)
         dispatch_release(pThis->InterfaceQueue);
-    
+
     return 0;
 }
 
