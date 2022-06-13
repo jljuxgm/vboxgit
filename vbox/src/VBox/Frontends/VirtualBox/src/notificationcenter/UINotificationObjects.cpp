@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 90457 2021-08-01 13:11:31Z vboxsync $ */
+/* $Id: UINotificationObjects.cpp 90483 2021-08-02 15:46:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -1387,4 +1387,100 @@ void UINotificationProgressExtensionPackUninstall::sltHandleProgressFinished()
 {
     if (error().isEmpty())
         emit sigExtensionPackUninstalled(m_strExtensionPackName);
+}
+
+
+/*********************************************************************************************************************************
+*   Class UINotificationProgressHostOnlyNetworkInterfaceCreate implementation.                                                   *
+*********************************************************************************************************************************/
+
+UINotificationProgressHostOnlyNetworkInterfaceCreate::UINotificationProgressHostOnlyNetworkInterfaceCreate(const CHost &comHost,
+                                                                                                           const CHostNetworkInterface &comInterface)
+    : m_comHost(comHost)
+    , m_comInterface(comInterface)
+{
+    connect(this, &UINotificationProgress::sigProgressFinished,
+            this, &UINotificationProgressHostOnlyNetworkInterfaceCreate::sltHandleProgressFinished);
+}
+
+QString UINotificationProgressHostOnlyNetworkInterfaceCreate::name() const
+{
+    return UINotificationProgress::tr("Creating Host-only Network Interface ...");
+}
+
+QString UINotificationProgressHostOnlyNetworkInterfaceCreate::details() const
+{
+    return UINotificationProgress::tr("<b>Name:</b> %1").arg("TBD");
+}
+
+CProgress UINotificationProgressHostOnlyNetworkInterfaceCreate::createProgress(COMResult &comResult)
+{
+    /* Initialize progress-wrapper: */
+    CProgress comProgress = m_comHost.CreateHostOnlyNetworkInterface(m_comInterface);
+    /* Store COM result: */
+    comResult = m_comHost;
+    /* Return progress-wrapper: */
+    return comProgress;
+}
+
+void UINotificationProgressHostOnlyNetworkInterfaceCreate::sltHandleProgressFinished()
+{
+    if (error().isEmpty())
+        emit sigHostOnlyNetworkInterfaceCreated(m_comInterface);
+}
+
+
+/*********************************************************************************************************************************
+*   Class UINotificationProgressHostOnlyNetworkInterfaceRemove implementation.                                                   *
+*********************************************************************************************************************************/
+
+UINotificationProgressHostOnlyNetworkInterfaceRemove::UINotificationProgressHostOnlyNetworkInterfaceRemove(const CHost &comHost,
+                                                                                                           const QUuid &uInterfaceId)
+    : m_comHost(comHost)
+    , m_uInterfaceId(uInterfaceId)
+{
+    connect(this, &UINotificationProgress::sigProgressFinished,
+            this, &UINotificationProgressHostOnlyNetworkInterfaceRemove::sltHandleProgressFinished);
+}
+
+QString UINotificationProgressHostOnlyNetworkInterfaceRemove::name() const
+{
+    return UINotificationProgress::tr("Removing Host-only Network Interface ...");
+}
+
+QString UINotificationProgressHostOnlyNetworkInterfaceRemove::details() const
+{
+    return UINotificationProgress::tr("<b>Name:</b> %1").arg(m_strInterfaceName);
+}
+
+CProgress UINotificationProgressHostOnlyNetworkInterfaceRemove::createProgress(COMResult &comResult)
+{
+    /* Acquire interface: */
+    CHostNetworkInterface comInterface = m_comHost.FindHostNetworkInterfaceById(m_uInterfaceId);
+    if (!m_comHost.isOk())
+    {
+        comResult = m_comHost;
+        return CProgress();
+    }
+
+    /* Acquire interface name: */
+    m_strInterfaceName = comInterface.GetName();
+    if (!comInterface.isOk())
+    {
+        comResult = comInterface;
+        return CProgress();
+    }
+
+    /* Initialize progress-wrapper: */
+    CProgress comProgress = m_comHost.RemoveHostOnlyNetworkInterface(m_uInterfaceId);
+    /* Store COM result: */
+    comResult = m_comHost;
+    /* Return progress-wrapper: */
+    return comProgress;
+}
+
+void UINotificationProgressHostOnlyNetworkInterfaceRemove::sltHandleProgressFinished()
+{
+    if (error().isEmpty())
+        emit sigHostOnlyNetworkInterfaceRemoved(m_strInterfaceName);
 }

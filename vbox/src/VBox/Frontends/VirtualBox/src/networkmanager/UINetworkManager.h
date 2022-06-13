@@ -1,4 +1,4 @@
-/* $Id: UINetworkManager.h 87576 2021-02-03 15:35:40Z vboxsync $ */
+/* $Id: UINetworkManager.h 90483 2021-08-02 15:46:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkManager class declaration.
  */
@@ -110,8 +110,12 @@ private slots:
       * @{ */
         /** Handles command to create host network. */
         void sltCreateHostNetwork();
+        /** Handles signal about host network @a comInterface created. */
+        void sigHandleHostOnlyNetworkInterfaceCreated(const CHostNetworkInterface &comInterface);
         /** Handles command to remove host network. */
         void sltRemoveHostNetwork();
+        /** Handles signal about host network interface by the name of @a strInterfaceName was removed. */
+        void sigHandleHostOnlyNetworkInterfaceRemoved(const QString &strInterfaceName);
 
         /** Handles command to create NAT network. */
         void sltCreateNATNetwork();
