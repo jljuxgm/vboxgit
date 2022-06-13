@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-linux.c 91482 2021-09-30 00:12:26Z vboxsync $ */
+/* $Id: memobj-r0drv-linux.c 91483 2021-09-30 00:19:19Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Linux.
  */
@@ -799,7 +799,7 @@ DECLHIDDEN(int) rtR0MemObjNativeFree(RTR0MEMOBJ pMem)
 }
 
 
-DECLHIDDEN(int) rtR0MemObjNativeAllocPage(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, bool fExecutable)
+DECLHIDDEN(int) rtR0MemObjNativeAllocPage(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, bool fExecutable, const char *pszTag)
 {
     IPRT_LINUX_SAVE_EFL_AC();
     PRTR0MEMOBJLNX pMemLnx;
@@ -807,10 +807,10 @@ DECLHIDDEN(int) rtR0MemObjNativeAllocPage(PPRTR0MEMOBJINTERNAL ppMem, size_t cb,
 
 #if RTLNX_VER_MIN(2,4,22)
     rc = rtR0MemObjLinuxAllocPages(&pMemLnx, RTR0MEMOBJTYPE_PAGE, cb, PAGE_SIZE, GFP_HIGHUSER,
-                                   false /* non-contiguous */, fExecutable, VERR_NO_MEMORY, NULL);
+                                   false /* non-contiguous */, fExecutable, VERR_NO_MEMORY, pszTag);
 #else
     rc = rtR0MemObjLinuxAllocPages(&pMemLnx, RTR0MEMOBJTYPE_PAGE, cb, PAGE_SIZE, GFP_USER,
-                                   false /* non-contiguous */, fExecutable, VERR_NO_MEMORY, NULL);
+                                   false /* non-contiguous */, fExecutable, VERR_NO_MEMORY, pszTag);
 #endif
     if (RT_SUCCESS(rc))
     {
@@ -838,7 +838,7 @@ DECLHIDDEN(int) rtR0MemObjNativeAllocLarge(PPRTR0MEMOBJINTERNAL ppMem, size_t cb
 }
 
 
-DECLHIDDEN(int) rtR0MemObjNativeAllocLow(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, bool fExecutable)
+DECLHIDDEN(int) rtR0MemObjNativeAllocLow(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, bool fExecutable, const char *pszTag)
 {
     IPRT_LINUX_SAVE_EFL_AC();
     PRTR0MEMOBJLNX pMemLnx;
@@ -848,19 +848,19 @@ DECLHIDDEN(int) rtR0MemObjNativeAllocLow(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, 
 #if (defined(RT_ARCH_AMD64) || defined(CONFIG_X86_PAE)) && defined(GFP_DMA32)
     /* ZONE_DMA32: 0-4GB */
     rc = rtR0MemObjLinuxAllocPages(&pMemLnx, RTR0MEMOBJTYPE_LOW, cb, PAGE_SIZE, GFP_DMA32,
-                                   false /* non-contiguous */, fExecutable, VERR_NO_LOW_MEMORY, NULL);
+                                   false /* non-contiguous */, fExecutable, VERR_NO_LOW_MEMORY, pszTag);
     if (RT_FAILURE(rc))
 #endif
 #ifdef RT_ARCH_AMD64
         /* ZONE_DMA: 0-16MB */
         rc = rtR0MemObjLinuxAllocPages(&pMemLnx, RTR0MEMOBJTYPE_LOW, cb, PAGE_SIZE, GFP_DMA,
-                                       false /* non-contiguous */, fExecutable, VERR_NO_LOW_MEMORY, NULL);
+                                       false /* non-contiguous */, fExecutable, VERR_NO_LOW_MEMORY, pszTag);
 #else
 # ifdef CONFIG_X86_PAE
 # endif
         /* ZONE_NORMAL: 0-896MB */
         rc = rtR0MemObjLinuxAllocPages(&pMemLnx, RTR0MEMOBJTYPE_LOW, cb, PAGE_SIZE, GFP_USER,
-                                       false /* non-contiguous */, fExecutable, VERR_NO_LOW_MEMORY, NULL);
+                                       false /* non-contiguous */, fExecutable, VERR_NO_LOW_MEMORY, pszTag);
 #endif
     if (RT_SUCCESS(rc))
     {
@@ -881,7 +881,7 @@ DECLHIDDEN(int) rtR0MemObjNativeAllocLow(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, 
 }
 
 
-DECLHIDDEN(int) rtR0MemObjNativeAllocCont(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, bool fExecutable)
+DECLHIDDEN(int) rtR0MemObjNativeAllocCont(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, bool fExecutable, const char *pszTag)
 {
     IPRT_LINUX_SAVE_EFL_AC();
     PRTR0MEMOBJLNX pMemLnx;
@@ -890,17 +890,17 @@ DECLHIDDEN(int) rtR0MemObjNativeAllocCont(PPRTR0MEMOBJINTERNAL ppMem, size_t cb,
 #if (defined(RT_ARCH_AMD64) || defined(CONFIG_X86_PAE)) && defined(GFP_DMA32)
     /* ZONE_DMA32: 0-4GB */
     rc = rtR0MemObjLinuxAllocPages(&pMemLnx, RTR0MEMOBJTYPE_CONT, cb, PAGE_SIZE, GFP_DMA32,
-                                   true /* contiguous */, fExecutable, VERR_NO_CONT_MEMORY, NULL);
+                                   true /* contiguous */, fExecutable, VERR_NO_CONT_MEMORY, pszTag);
     if (RT_FAILURE(rc))
 #endif
 #ifdef RT_ARCH_AMD64
         /* ZONE_DMA: 0-16MB */
         rc = rtR0MemObjLinuxAllocPages(&pMemLnx, RTR0MEMOBJTYPE_CONT, cb, PAGE_SIZE, GFP_DMA,
-                                       true /* contiguous */, fExecutable, VERR_NO_CONT_MEMORY, NULL);
+                                       true /* contiguous */, fExecutable, VERR_NO_CONT_MEMORY, pszTag);
 #else
         /* ZONE_NORMAL (32-bit hosts): 0-896MB */
         rc = rtR0MemObjLinuxAllocPages(&pMemLnx, RTR0MEMOBJTYPE_CONT, cb, PAGE_SIZE, GFP_USER,
-                                       true /* contiguous */, fExecutable, VERR_NO_CONT_MEMORY, NULL);
+                                       true /* contiguous */, fExecutable, VERR_NO_CONT_MEMORY, pszTag);
 #endif
     if (RT_SUCCESS(rc))
     {

@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-os2.cpp 91482 2021-09-30 00:12:26Z vboxsync $ */
+/* $Id: memobj-r0drv-os2.cpp 91483 2021-09-30 00:19:19Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, OS/2.
  */
@@ -135,14 +135,14 @@ DECLHIDDEN(int) rtR0MemObjNativeFree(RTR0MEMOBJ pMem)
 }
 
 
-DECLHIDDEN(int) rtR0MemObjNativeAllocPage(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, bool fExecutable)
+DECLHIDDEN(int) rtR0MemObjNativeAllocPage(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, bool fExecutable, const char *pszTag)
 {
     NOREF(fExecutable);
 
     /* create the object. */
     const ULONG cPages = cb >> PAGE_SHIFT;
     PRTR0MEMOBJOS2 pMemOs2 = (PRTR0MEMOBJOS2)rtR0MemObjNew(RT_UOFFSETOF_DYN(RTR0MEMOBJOS2, aPages[cPages]),
-                                                           RTR0MEMOBJTYPE_PAGE, NULL, cb, NULL);
+                                                           RTR0MEMOBJTYPE_PAGE, NULL, cb, pszTag);
     if (!pMemOs2)
         return VERR_NO_MEMORY;
 
@@ -172,14 +172,14 @@ DECLHIDDEN(int) rtR0MemObjNativeAllocLarge(PPRTR0MEMOBJINTERNAL ppMem, size_t cb
 }
 
 
-DECLHIDDEN(int) rtR0MemObjNativeAllocLow(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, bool fExecutable)
+DECLHIDDEN(int) rtR0MemObjNativeAllocLow(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, bool fExecutable, const char *pszTag)
 {
     NOREF(fExecutable);
 
     /* create the object. */
     const ULONG cPages = cb >> PAGE_SHIFT;
     PRTR0MEMOBJOS2 pMemOs2 = (PRTR0MEMOBJOS2)rtR0MemObjNew(RT_UOFFSETOF_DYN(RTR0MEMOBJOS2, aPages[cPages]),
-                                                           RTR0MEMOBJTYPE_LOW, NULL, cb, NULL);
+                                                           RTR0MEMOBJTYPE_LOW, NULL, cb, pszTag);
     if (!pMemOs2)
         return VERR_NO_MEMORY;
 
@@ -203,12 +203,13 @@ DECLHIDDEN(int) rtR0MemObjNativeAllocLow(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, 
 }
 
 
-DECLHIDDEN(int) rtR0MemObjNativeAllocCont(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, bool fExecutable)
+DECLHIDDEN(int) rtR0MemObjNativeAllocCont(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, bool fExecutable, const char *pszTag)
 {
     NOREF(fExecutable);
 
     /* create the object. */
-    PRTR0MEMOBJOS2 pMemOs2 = (PRTR0MEMOBJOS2)rtR0MemObjNew(RT_UOFFSETOF(RTR0MEMOBJOS2, Lock), RTR0MEMOBJTYPE_CONT, NULL, cb, NULL);
+    PRTR0MEMOBJOS2 pMemOs2 = (PRTR0MEMOBJOS2)rtR0MemObjNew(RT_UOFFSETOF(RTR0MEMOBJOS2, Lock), RTR0MEMOBJTYPE_CONT,
+                                                           NULL, cb, pszTag);
     if (!pMemOs2)
         return VERR_NO_MEMORY;
 

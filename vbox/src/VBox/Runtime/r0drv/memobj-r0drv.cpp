@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv.cpp 91482 2021-09-30 00:12:26Z vboxsync $ */
+/* $Id: memobj-r0drv.cpp 91483 2021-09-30 00:19:19Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Common Code.
  */
@@ -436,10 +436,8 @@ RTR0DECL(int) RTR0MemObjAllocPageTag(PRTR0MEMOBJ pMemObj, size_t cb, bool fExecu
     AssertReturn(cb <= cbAligned, VERR_INVALID_PARAMETER);
     RT_ASSERT_PREEMPTIBLE();
 
-    RT_NOREF_PV(pszTag);
-
     /* do the allocation. */
-    return rtR0MemObjNativeAllocPage(pMemObj, cbAligned, fExecutable);
+    return rtR0MemObjNativeAllocPage(pMemObj, cbAligned, fExecutable, pszTag);
 }
 RT_EXPORT_SYMBOL(RTR0MemObjAllocPageTag);
 
@@ -493,10 +491,8 @@ RTR0DECL(int) RTR0MemObjAllocLowTag(PRTR0MEMOBJ pMemObj, size_t cb, bool fExecut
     AssertReturn(cb <= cbAligned, VERR_INVALID_PARAMETER);
     RT_ASSERT_PREEMPTIBLE();
 
-    RT_NOREF_PV(pszTag);
-
     /* do the allocation. */
-    return rtR0MemObjNativeAllocLow(pMemObj, cbAligned, fExecutable);
+    return rtR0MemObjNativeAllocLow(pMemObj, cbAligned, fExecutable, pszTag);
 }
 RT_EXPORT_SYMBOL(RTR0MemObjAllocLowTag);
 
@@ -511,10 +507,8 @@ RTR0DECL(int) RTR0MemObjAllocContTag(PRTR0MEMOBJ pMemObj, size_t cb, bool fExecu
     AssertReturn(cb <= cbAligned, VERR_INVALID_PARAMETER);
     RT_ASSERT_PREEMPTIBLE();
 
-    RT_NOREF_PV(pszTag);
-
     /* do the allocation. */
-    return rtR0MemObjNativeAllocCont(pMemObj, cbAligned, fExecutable);
+    return rtR0MemObjNativeAllocCont(pMemObj, cbAligned, fExecutable, pszTag);
 }
 RT_EXPORT_SYMBOL(RTR0MemObjAllocContTag);
 

@@ -1,4 +1,4 @@
-/* $Id: memobj.h 91482 2021-09-30 00:12:26Z vboxsync $ */
+/* $Id: memobj.h 91483 2021-09-30 00:19:19Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects.
  */
@@ -305,8 +305,9 @@ DECLHIDDEN(int) rtR0MemObjNativeFree(PRTR0MEMOBJINTERNAL pMem);
  * @param   ppMem           Where to store the ring-0 memory object handle.
  * @param   cb              Number of bytes to allocate, page aligned.
  * @param   fExecutable     Flag indicating whether it should be permitted to executed code in the memory object.
+ * @param   pszTag          Allocation tag used for statistics and such.
  */
-DECLHIDDEN(int) rtR0MemObjNativeAllocPage(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, bool fExecutable);
+DECLHIDDEN(int) rtR0MemObjNativeAllocPage(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, bool fExecutable, const char *pszTag);
 
 /**
  * Worker for RTR0MemObjAllocLargeTag.
@@ -331,8 +332,9 @@ DECLHIDDEN(int) rtR0MemObjNativeAllocLarge(PPRTR0MEMOBJINTERNAL ppMem, size_t cb
  * @param   ppMem           Where to store the ring-0 memory object handle.
  * @param   cb              Number of bytes to allocate, page aligned.
  * @param   fExecutable     Flag indicating whether it should be permitted to executed code in the memory object.
+ * @param   pszTag          Allocation tag used for statistics and such.
  */
-DECLHIDDEN(int) rtR0MemObjNativeAllocLow(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, bool fExecutable);
+DECLHIDDEN(int) rtR0MemObjNativeAllocLow(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, bool fExecutable, const char *pszTag);
 
 /**
  * Allocates page aligned virtual kernel memory with contiguous physical backing below 4GB.
@@ -343,8 +345,9 @@ DECLHIDDEN(int) rtR0MemObjNativeAllocLow(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, 
  * @param   ppMem           Where to store the ring-0 memory object handle.
  * @param   cb              Number of bytes to allocate, page aligned.
  * @param   fExecutable     Flag indicating whether it should be permitted to executed code in the memory object.
+ * @param   pszTag          Allocation tag used for statistics and such.
  */
-DECLHIDDEN(int) rtR0MemObjNativeAllocCont(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, bool fExecutable);
+DECLHIDDEN(int) rtR0MemObjNativeAllocCont(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, bool fExecutable, const char *pszTag);
 
 /**
  * Locks a range of user virtual memory.
