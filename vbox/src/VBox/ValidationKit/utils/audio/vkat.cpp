@@ -1,4 +1,4 @@
-/* $Id: vkat.cpp 92048 2021-10-25 16:29:49Z vboxsync $ */
+/* $Id: vkat.cpp 92049 2021-10-25 16:35:01Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) utility for testing and validating the audio stack.
  */
@@ -329,7 +329,7 @@ static DECLCALLBACK(int) audioTestPlayToneExec(PAUDIOTESTENV pTstEnv, void *pvCt
                              pTstParms->idxCurrent, i + 1, pTstParms->cIterations, rc);
         }
         else
-            RTTestFailed(g_hTest, "Test #%RU32/%RU16 (%RU16/%RU16): AudioTestSvcClientToneRecord() failed with %Rrc\n",
+            RTTestFailed(g_hTest, "Test #%RU32 (%RU16/%RU16): AudioTestSvcClientToneRecord() failed with %Rrc\n",
                          pTstParms->idxCurrent, i + 1, pTstParms->cIterations, rc);
 
         if (RT_SUCCESS(rc))
