@@ -1,4 +1,4 @@
-/* $Id: UpdateAgentImpl.cpp 94650 2022-04-20 11:52:14Z vboxsync $ */
+/* $Id: UpdateAgentImpl.cpp 94670 2022-04-21 16:07:53Z vboxsync $ */
 /** @file
  * IUpdateAgent COM class implementations.
  */
@@ -132,7 +132,7 @@ void UpdateAgent::uninit()
         return;
 }
 
-HRESULT UpdateAgent::check(ComPtr<IProgress> &aProgress)
+HRESULT UpdateAgent::checkFor(ComPtr<IProgress> &aProgress)
 {
     RT_NOREF(aProgress);
 
@@ -726,7 +726,7 @@ void HostUpdateAgent::uninit()
         return;
 }
 
-HRESULT HostUpdateAgent::check(ComPtr<IProgress> &aProgress)
+HRESULT HostUpdateAgent::checkFor(ComPtr<IProgress> &aProgress)
 {
     AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
 

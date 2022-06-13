@@ -1,4 +1,4 @@
-/* $Id: UpdateAgentImpl.h 94654 2022-04-20 16:50:13Z vboxsync $ */
+/* $Id: UpdateAgentImpl.h 94670 2022-04-21 16:07:53Z vboxsync $ */
 /** @file
  * Update agent COM class implementation - Header
  */
@@ -129,7 +129,7 @@ public:
 protected:
     /** @name Wrapped IUpdateAgent attributes and methods
      * @{ */
-    HRESULT check(ComPtr<IProgress> &aProgress);
+    HRESULT checkFor(ComPtr<IProgress> &aProgress);
     HRESULT download(ComPtr<IProgress> &aProgress);
     HRESULT install(ComPtr<IProgress> &aProgress);
     HRESULT rollback(void);
@@ -180,7 +180,7 @@ public:
 private:
     /** @name Implemented (pure) virtual methods from UpdateAgent.
      * @{ */
-    HRESULT check(ComPtr<IProgress> &aProgress);
+    HRESULT checkFor(ComPtr<IProgress> &aProgress);
 
     DECLCALLBACK(HRESULT) i_updateTask(UpdateAgentTask *pTask);
     /** @}  */

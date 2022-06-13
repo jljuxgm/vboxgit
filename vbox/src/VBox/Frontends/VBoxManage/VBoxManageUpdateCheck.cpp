@@ -1,4 +1,4 @@
-/* $Id: VBoxManageUpdateCheck.cpp 94644 2022-04-20 09:15:47Z vboxsync $ */
+/* $Id: VBoxManageUpdateCheck.cpp 94670 2022-04-21 16:07:53Z vboxsync $ */
 /** @file
  * VBoxManage - The 'updatecheck' command.
  */
@@ -268,7 +268,7 @@ static RTEXITCODE doUpdateCheck(int argc, char **argv, ComPtr<IUpdateAgent> pUpd
      * return value indicating update checks are disabled.
      */
     ComPtr<IProgress> pProgress;
-    HRESULT rc = pUpdateAgent->Check(pProgress.asOutParam());
+    HRESULT rc = pUpdateAgent->CheckFor(pProgress.asOutParam());
     if (FAILED(rc))
     {
         if (pProgress.isNull())
