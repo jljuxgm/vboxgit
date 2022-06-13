@@ -1,4 +1,4 @@
-/* $Id: UIMaximumGuestScreenSizeEditor.h 93992 2022-02-28 17:56:58Z vboxsync $ */
+/* $Id: UIMaximumGuestScreenSizeEditor.h 94057 2022-03-02 14:14:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMaximumGuestScreenSizeEditor class declaration.
  */
@@ -33,7 +33,7 @@
 class QGridLayout;
 class QLabel;
 class QSpinBox;
-class QIComboBox;
+class QComboBox;
 
 
 /** Maximum guest screen size value. */
@@ -117,7 +117,7 @@ private:
     /** Holds the policy label instance. */
     QLabel      *m_pLabelPolicy;
     /** Holds the policy combo instance. */
-    QIComboBox  *m_pComboPolicy;
+    QComboBox   *m_pComboPolicy;
     /** Holds the max width label instance. */
     QLabel      *m_pLabelMaxWidth;
     /** Holds the max width spinbox instance. */
