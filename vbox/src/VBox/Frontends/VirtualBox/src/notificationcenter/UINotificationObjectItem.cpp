@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjectItem.cpp 90290 2021-07-22 14:40:08Z vboxsync $ */
+/* $Id: UINotificationObjectItem.cpp 90292 2021-07-22 15:07:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINotificationObjectItem class implementation.
  */
@@ -136,8 +136,19 @@ void UINotificationObjectItem::paintEvent(QPaintEvent *pPaintEvent)
     QPalette pal = QApplication::palette();
 
     /* Gather suitable colors: */
-    QColor color1 = pal.color(fActive ? QPalette::Active : QPalette::Inactive, QPalette::Window).lighter(110);
-    QColor color2 = pal.color(fActive ? QPalette::Active : QPalette::Inactive, QPalette::Window).lighter(105);
+    QColor color = pal.color(fActive ? QPalette::Active : QPalette::Inactive, QPalette::Window);
+    QColor color1;
+    QColor color2;
+    if (color.black() > 128)
+    {
+        color1 = color.lighter(110);
+        color2 = color.lighter(105);
+    }
+    else
+    {
+        color1 = color.darker(105);
+        color2 = color.darker(110);
+    }
     /* Prepare background gradient: */
     QLinearGradient grad(QPointF(0, 0), QPointF(width(), height()));
     {
