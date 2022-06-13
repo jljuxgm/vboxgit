@@ -1,4 +1,4 @@
-/* $Id: AudioTestServiceInternal.h 89962 2021-06-30 07:02:07Z vboxsync $ */
+/* $Id: AudioTestServiceInternal.h 90962 2021-08-27 16:40:53Z vboxsync $ */
 /** @file
  * AudioTestService - Audio test execution server, Internal Header.
  */
@@ -121,8 +121,15 @@ typedef struct ATSTRANSPORT
     /**
      * Waits for a new client to connect and returns the client specific data on
      * success.
+     *
+     * @returns VBox status code.
+     * @param   pThis               The transport instance.
+     * @param   msTimeout           Timeout (in ms) waiting for a connection to be established.
+     *                              Use RT_INDEFINITE_WAIT to wait indefinitely.
+     *                              This might or might not be supported by the specific transport implementation.
+     * @param   ppClientNew         Where to return the allocated client on success.
      */
-    DECLR3CALLBACKMEMBER(int, pfnWaitForConnect, (PATSTRANSPORTINST pThis, PPATSTRANSPORTCLIENT ppClientNew));
+    DECLR3CALLBACKMEMBER(int, pfnWaitForConnect, (PATSTRANSPORTINST pThis, RTMSINTERVAL msTimeout, PPATSTRANSPORTCLIENT ppClientNew));
 
     /**
      * Polls for incoming packets.

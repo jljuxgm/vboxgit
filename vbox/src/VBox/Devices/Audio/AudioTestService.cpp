@@ -1,4 +1,4 @@
-/* $Id: AudioTestService.cpp 90918 2021-08-26 15:29:25Z vboxsync $ */
+/* $Id: AudioTestService.cpp 90962 2021-08-27 16:40:53Z vboxsync $ */
 /** @file
  * AudioTestService - Audio test execution server.
  */
@@ -1000,7 +1000,7 @@ static DECLCALLBACK(int) atsMainThread(RTTHREAD hThread, void *pvUser)
          * for every new client.
          */
         PATSTRANSPORTCLIENT pTransportClient;
-        rc = pThis->pTransport->pfnWaitForConnect(pThis->pTransportInst, &pTransportClient);
+        rc = pThis->pTransport->pfnWaitForConnect(pThis->pTransportInst, 1000 /* msTimeout */, &pTransportClient);
         if (RT_FAILURE(rc))
             continue;
 

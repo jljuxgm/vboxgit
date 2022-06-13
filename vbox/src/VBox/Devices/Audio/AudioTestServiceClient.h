@@ -1,4 +1,4 @@
-/* $Id: AudioTestServiceClient.h 90830 2021-08-24 10:47:52Z vboxsync $ */
+/* $Id: AudioTestServiceClient.h 90962 2021-08-27 16:40:53Z vboxsync $ */
 /** @file
  * AudioTestServiceClient - Audio test execution server, Public Header.
  */
@@ -46,6 +46,7 @@ void AudioTestSvcClientDestroy(PATSCLIENT pClient);
 
 /** @name Connection handling.
  * @{ */
+int AudioTestSvcClientConnectEx(PATSCLIENT pClient, RTMSINTERVAL msTimeout);
 int AudioTestSvcClientConnect(PATSCLIENT pClient);
 int AudioTestSvcClientClose(PATSCLIENT pClient);
 /** @} */
