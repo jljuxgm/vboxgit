@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMEditors.h 90328 2021-07-26 12:18:43Z vboxsync $ */
+/* $Id: UIWizardNewVMEditors.h 91474 2021-09-29 20:07:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMEditors class declaration.
  */
@@ -162,6 +162,7 @@ public:
     /** @name Wrappers for UIFilePathSelector
       * @{ */
         void setMemorySize(int size);
+        void setCPUCount(int iCount);
         void setEFIEnabled(bool fEnabled);
     /** @} */
 

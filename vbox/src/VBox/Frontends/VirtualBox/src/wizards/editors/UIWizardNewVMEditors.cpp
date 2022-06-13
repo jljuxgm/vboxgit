@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMEditors.cpp 91220 2021-09-13 15:25:34Z vboxsync $ */
+/* $Id: UIWizardNewVMEditors.cpp 91474 2021-09-29 20:07:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class implementation.
  */
@@ -357,6 +357,12 @@ void UINewVMHardwareContainer::setMemorySize(int iSize)
 {
     if (m_pBaseMemoryEditor)
         m_pBaseMemoryEditor->setValue(iSize);
+}
+
+void UINewVMHardwareContainer::setCPUCount(int iCount)
+{
+    if (m_pVirtualCPUEditor)
+        m_pVirtualCPUEditor->setValue(iCount);
 }
 
 void UINewVMHardwareContainer::setEFIEnabled(bool fEnabled)

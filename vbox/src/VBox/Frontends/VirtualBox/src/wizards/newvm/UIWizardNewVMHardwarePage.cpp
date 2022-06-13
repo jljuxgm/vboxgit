@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMHardwarePage.cpp 91059 2021-09-01 13:48:12Z vboxsync $ */
+/* $Id: UIWizardNewVMHardwarePage.cpp 91474 2021-09-29 20:07:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMHardwarePage class implementation.
  */
@@ -88,6 +88,11 @@ void UIWizardNewVMHardwarePage::initializePage()
                 ULONG recommendedRam = type.GetRecommendedRAM();
                 m_pHardwareWidgetContainer->setMemorySize(recommendedRam);
             }
+            if (!m_userModifiedParameters.contains("CPUCount"))
+            {
+                ULONG recommendedCPUs = type.GetRecommendedCPUCount();
+                m_pHardwareWidgetContainer->setCPUCount(recommendedCPUs);
+            }
             if (!m_userModifiedParameters.contains("EFIEnabled"))
             {
                 KFirmwareType fwType = type.GetRecommendedFirmware();
@@ -113,6 +118,7 @@ void UIWizardNewVMHardwarePage::sltCPUCountChanged(int iCount)
 {
     AssertReturnVoid(wizardWindow<UIWizardNewVM>());
     wizardWindow<UIWizardNewVM>()->setCPUCount(iCount);
+    m_userModifiedParameters << "CPUCount";
 }
 
 void UIWizardNewVMHardwarePage::sltEFIEnabledChanged(bool fEnabled)
