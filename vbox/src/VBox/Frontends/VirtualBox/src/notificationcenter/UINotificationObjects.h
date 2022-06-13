@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.h 91128 2021-09-06 17:39:56Z vboxsync $ */
+/* $Id: UINotificationObjects.h 91129 2021-09-06 18:18:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects declarations.
  */
@@ -150,6 +150,19 @@ public:
         /** Notifies about inability to acquire ISnapshot parameter.
           * @param  comSnapshot  Brings the object paramter get acquired from. */
         static void cannotAcquireSnapshotParameter(const CSnapshot &comSnapshot);
+
+        /** Notifies about inability to change IMachine parameter.
+          * @param  comMachine  Brings the object paramter being changed for. */
+        static void cannotChangeMachineAttribute(const CMachine &comMachine);
+        /** Notifies about inability to change IGraphicsAdapter parameter.
+          * @param  comAdapter  Brings the object paramter being changed for. */
+        static void cannotChangeGraphicsAdapterAttribute(const CGraphicsAdapter &comAdapter);
+        /** Notifies about inability to change IAudioAdapter parameter.
+          * @param  comAdapter  Brings the object paramter being changed for. */
+        static void cannotChangeAudioAdapterAttribute(const CAudioAdapter &comAdapter);
+        /** Notifies about inability to change INetworkAdapter parameter.
+          * @param  comAdapter  Brings the object paramter being changed for. */
+        static void cannotChangeNetworkAdapterAttribute(const CNetworkAdapter &comAdapter);
 
         /** Notifies about inability to enumerate host USB devices.
           * @param  comHost  Brings the host devices enumerated for. */
