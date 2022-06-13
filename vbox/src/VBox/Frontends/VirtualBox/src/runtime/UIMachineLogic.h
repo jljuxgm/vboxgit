@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 89741 2021-06-16 13:38:35Z vboxsync $ */
+/* $Id: UIMachineLogic.h 89744 2021-06-16 14:09:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -461,7 +461,6 @@ private:
 
     /* Holds the cookies returnd by QDBus inhibition calls. Map keys are service name. These are required during uninhibition.*/
     QMap<QString, uint> m_screenSaverInhibitionCookies;
-    bool m_fHostScreenSaverDisabled;
 
     /* Friend classes: */
     friend class UIMachineWindow;

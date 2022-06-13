@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 89741 2021-06-16 13:38:35Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 89744 2021-06-16 14:09:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -713,10 +713,6 @@ void UIMachineLogic::sltHidLedsSyncStateChanged(bool fEnabled)
 void UIMachineLogic::sltDisableHostScreenSaverStateChanged(bool fDisabled)
 {
 #if defined(VBOX_WS_X11)
-    if (m_fHostScreenSaverDisabled == fDisabled)
-        return;
-    m_fHostScreenSaverDisabled = fDisabled;
-
     QStringList services = X11ScrenSaverServices();
     if (services.isEmpty())
         return;
@@ -889,7 +885,6 @@ UIMachineLogic::UIMachineLogic(QObject *pParent, UISession *pSession, UIVisualSt
     , m_pProcessControlDialog(0)
     , m_pSoftKeyboardDialog(0)
     , m_pVMInformationDialog(0)
-    , m_fHostScreenSaverDisabled(false)
 {
 }
 
