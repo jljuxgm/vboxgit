@@ -1,4 +1,4 @@
-/* $Id: VMMAll.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VMMAll.cpp 90533 2021-08-05 20:55:28Z vboxsync $ */
 /** @file
  * VMM All Contexts.
  */
@@ -248,7 +248,11 @@ VMMDECL(PVMCPUCC) VMMGetCpu(PVMCC pVM)
 #elif defined(IN_RING0)
     VMCPUID const cCpus = pVM->cCpus;
     if (pVM->cCpus == 1)
-        return VMCC_GET_CPU_0(pVM);
+    {
+        PVMCPUCC pVCpu = VMCC_GET_CPU_0(pVM);
+        Assert(pVCpu->hNativeThreadR0 == RTThreadNativeSelf());
+        return pVCpu;
+    }
 
     /*
      * Search first by host cpu id (most common case)
@@ -266,7 +270,10 @@ VMMDECL(PVMCPUCC) VMMGetCpu(PVMCC pVM)
         {
             PVMCPUCC pVCpu = VMCC_GET_CPU(pVM, idCpu);
             if (pVCpu->idHostCpu == idHostCpu)
+            {
+                Assert(pVCpu->hNativeThreadR0 == RTThreadNativeSelf());
                 return pVCpu;
+            }
         }
     }
 
