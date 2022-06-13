@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageSource.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageSource.cpp 93234 2022-01-14 14:27:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageSource class implementation.
  */
@@ -391,8 +391,10 @@ UIWizardNewCloudVMPageSource::UIWizardNewCloudVMPageSource()
                     const int iFontHeight = fm.height();
                     const int iTotalHeight = 8 * iFontHeight;
                     m_pSourceImageList->setMinimumSize(QSize(iTotalWidth, iTotalHeight));
-                    m_pSourceImageList->setAlternatingRowColors(true);
+                    /* We want to have sorting enabled: */
                     m_pSourceImageList->setSortingEnabled(true);
+                    /* A bit of look&feel: */
+                    m_pSourceImageList->setAlternatingRowColors(true);
 
                     /* Add into layout: */
                     pSourceImageLayout->addWidget(m_pSourceImageList);
