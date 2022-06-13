@@ -1,4 +1,4 @@
-/* $Id: scmrw.cpp 93931 2022-02-24 16:02:00Z vboxsync $ */
+/* $Id: scmrw.cpp 93933 2022-02-24 16:05:57Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -3305,7 +3305,7 @@ bool rewrite_PageChecks(PSCMRWSTATE pState, PSCMSTREAM pIn, PSCMSTREAM pOut, PCS
                         && (   cchLeft == cchWord
                             || !ScmIsCIdentifierChar(pchHit[cchWord])) )
                     {
-                        if (i < 3)
+                        if (i < 5)
                             ScmFixManually(pState, "%u:%zu: %s is not allow! Use GUEST_%s or HOST_%s instead.\n",
                                            iLine, pchHit - pchLine + 1, pszWord, pszWord, pszWord);
                         else
