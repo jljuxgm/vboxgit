@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 91363 2021-09-24 13:08:32Z vboxsync $ */
+/* $Id: MachineImpl.cpp 91366 2021-09-24 15:10:36Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -12682,7 +12682,7 @@ void SessionMachine::uninit(Uninit::Reason aReason)
          */
         if (mData->mMachineState == MachineState_Saved || mData->mMachineState == MachineState_Restoring)
             i_setMachineState(MachineState_AbortedSaved);
-        else if (mData->mMachineState != MachineState_Aborted)
+        else if (mData->mMachineState != MachineState_Aborted && mData->mMachineState != MachineState_AbortedSaved)
             i_setMachineState(MachineState_Aborted);
     }
 
