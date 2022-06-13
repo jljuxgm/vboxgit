@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageBasic1.cpp 91578 2021-10-05 17:24:33Z vboxsync $ */
+/* $Id: UIWizardImportAppPageBasic1.cpp 91589 2021-10-06 10:43:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageBasic1 class implementation.
  */
@@ -41,6 +41,7 @@
 
 /* COM includes: */
 #include "CStringArray.h"
+#include "CVirtualSystemDescription.h"
 
 
 /*********************************************************************************************************************************

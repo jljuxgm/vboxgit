@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportApp.h 91578 2021-10-05 17:24:33Z vboxsync $ */
+/* $Id: UIWizardImportApp.h 91589 2021-10-06 10:43:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportApp class declaration.
  */
@@ -79,13 +79,6 @@ protected:
 
     /** Handles translation event. */
     virtual void retranslateUi() /* override */;
-
-protected slots:
-
-    /** Handles change for page with @a iId. */
-    virtual void sltCurrentIdChanged(int iId) /* override */;
-    /** Handles custom button 2 click  for page with @a iId. */
-    virtual void sltCustomButtonClicked(int iId) /* override */;
 
 private:
 
