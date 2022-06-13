@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tdAudioTest.py 90985 2021-08-30 07:12:12Z vboxsync $
+# $Id: tdAudioTest.py 90986 2021-08-30 07:14:03Z vboxsync $
 
 """
 AudioTest test driver which invokes the VKAT (Validation Kit Audio Test)
@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 90985 $"
+__version__ = "$Revision: 90986 $"
 
 # Standard Python imports.
 import os
@@ -216,7 +216,9 @@ class tdAudioTest(vbox.TestDriver):
         return (False, "");
 
     def executeHstLoop(self, sWhat, asArgs, fAsAdmin = False):
-
+        """
+        Inner loop which handles the execution of a host binary.
+        """
         fRc = False;
 
         if  fAsAdmin \
