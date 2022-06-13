@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.cpp 91152 2021-09-08 13:23:54Z vboxsync $ */
+/* $Id: UINameAndSystemEditor.cpp 91205 2021-09-10 15:25:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class implementation.
  */
@@ -305,6 +305,11 @@ void UINameAndSystemEditor::retranslateUi()
         m_pLabelFamily->setText(tr("&Type:"));
     if (m_pLabelType)
         m_pLabelType->setText(tr("&Version:"));
+
+    if (m_pPathSelector)
+        m_pPathSelector->setToolTip(tr("The folder hosting the virtual machine"));
+    if (m_pNameLineEdit)
+        m_pNameLineEdit->setToolTip(tr("The name of the virtual machine"));
 
     if (m_pComboFamily)
     {
