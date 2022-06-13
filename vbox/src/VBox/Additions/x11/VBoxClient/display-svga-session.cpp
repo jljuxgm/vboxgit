@@ -1,4 +1,4 @@
-/* $Id: display-svga-session.cpp 93423 2022-01-24 20:53:37Z vboxsync $ */
+/* $Id: display-svga-session.cpp 94076 2022-03-03 15:46:36Z vboxsync $ */
 /** @file
  * Guest Additions - VMSVGA Desktop Environment user session assistant.
  *
@@ -88,13 +88,13 @@ static RTLOCALIPCSESSION g_hSession = 0;
  * @param   cOffsets    Number of displays which have changed offset.
  * @param   paOffsets   Display data.
  */
-static DECLCALLBACK(int) vbclSVGASessionDisplayOffsetChanged(uint32_t cOffsets, RTPOINT *paOffsets)
+static DECLCALLBACK(int) vbclSVGASessionDisplayOffsetChanged(uint32_t cDisplays, struct VBOX_DRMIPC_VMWRECT *aDisplays)
 {
     int rc = RTCritSectEnter(&g_hClientCritSect);
 
     if (RT_SUCCESS(rc))
     {
-        rc = vbDrmIpcReportDisplayOffsets(&g_hClient, cOffsets, paOffsets);
+        rc = vbDrmIpcReportDisplayOffsets(&g_hClient, cDisplays, aDisplays);
         int rc2 = RTCritSectLeave(&g_hClientCritSect);
         if (RT_FAILURE(rc2))
             VBClLogError("vbclSVGASessionDisplayOffsetChanged: unable to leave critical session, rc=%Rrc\n", rc2);

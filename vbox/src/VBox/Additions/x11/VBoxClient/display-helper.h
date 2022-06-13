@@ -1,4 +1,4 @@
-/* $Id: display-helper.h 93551 2022-02-02 18:58:31Z vboxsync $ */
+/* $Id: display-helper.h 94076 2022-03-03 15:46:36Z vboxsync $ */
 /** @file
  * Guest Additions - Definitions for Desktop Environment helpers.
  */
@@ -30,10 +30,10 @@
  * Display offsets change notification callback.
  *
  * @returns IPRT status code.
- * @param   cOffsets    Number of displays which have changed their offset.
- * @param   paOffsets   Displays offset data.
+ * @param   cDisplays   Number of displays which have changed their offset.
+ * @param   aDisplays   Displays offset data.
  */
-typedef DECLCALLBACKTYPE(int, FNDISPLAYOFFSETCHANGE, (uint32_t cOffsets, struct RTPOINT *paOffsets));
+typedef DECLCALLBACKTYPE(int, FNDISPLAYOFFSETCHANGE, (uint32_t cDisplays, struct VBOX_DRMIPC_VMWRECT *aDisplays));
 
 /**
  * Desktop Environment helper definition structure.
