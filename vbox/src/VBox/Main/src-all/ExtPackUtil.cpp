@@ -1,4 +1,4 @@
-/* $Id: ExtPackUtil.cpp 91718 2021-10-14 11:43:12Z vboxsync $ */
+/* $Id: ExtPackUtil.cpp 91720 2021-10-14 11:59:23Z vboxsync $ */
 /** @file
  * VirtualBox Main - Extension Pack Utilities and definitions, VBoxC, VBoxSVC, ++.
  */
@@ -336,7 +336,7 @@ RTCString *VBoxExtPackLoadDescFromVfsFile(RTVFSFILE hVfsFile, PVBOXEXTPACKDESC a
 
     /* Check the file size. */
     if (ObjInfo.cbObject > _1M || ObjInfo.cbObject < 0)
-        return &(new RTCString)->printf(ExtPackUtil::tr("The XML file is too large (%'RU64 bytes)", "", ObjInfo.cbObject),
+        return &(new RTCString)->printf(ExtPackUtil::tr("The XML file is too large (%'RU64 bytes)", "", (size_t)ObjInfo.cbObject),
                                         ObjInfo.cbObject);
     size_t const cbFile = (size_t)ObjInfo.cbObject;
 
@@ -949,7 +949,7 @@ static int VBoxExtPackValidateStandardFile(const char *pszAdjName, RTVFSOBJTYPE 
             else if (ObjInfo.cbObject >= _1M)
                 rc = vboxExtPackReturnError(VERR_OUT_OF_RANGE, pszError, cbError,
                                             ExtPackUtil::tr("Standard member '%s' is too large: %'RU64 bytes (max 1 MB)", "",
-                                                            ObjInfo.cbObject),
+                                                            (size_t)ObjInfo.cbObject),
                                             pszAdjName, (uint64_t)ObjInfo.cbObject);
             else
             {
