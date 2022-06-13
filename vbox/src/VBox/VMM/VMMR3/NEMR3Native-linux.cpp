@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-linux.cpp 92444 2021-11-16 01:04:01Z vboxsync $ */
+/* $Id: NEMR3Native-linux.cpp 92445 2021-11-16 01:55:31Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, native ring-3 Linux backend.
  */
@@ -843,5 +843,4 @@ VMM_INT_DECL(void) NEMHCNotifyPhysPageChanged(PVMCC pVM, RTGCPHYS GCPhys, RTHCPH
  * This is using KVM.
  *
  */
-
 
