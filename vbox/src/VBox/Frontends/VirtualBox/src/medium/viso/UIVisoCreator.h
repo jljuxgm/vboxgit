@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.h 86233 2020-09-23 12:10:51Z vboxsync $ */
+/* $Id: UIVisoCreator.h 92270 2021-11-08 14:46:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator class declaration.
  */
@@ -42,13 +42,13 @@ class UIVisoConfigurationPanel;
 /** A QIMainDialog extension. It hosts two UIVisoBrowserBase extensions, one for host and one
   * for VISO file system. It has the main menu, main toolbar, and a vertical toolbar and corresponding
   * actions. */
-class UIVisoCreator : public QIWithRetranslateUI<QIMainDialog>
+class UIVisoCreatorDialog : public QIWithRetranslateUI<QIMainDialog>
 {
     Q_OBJECT;
 
 public:
 
-    UIVisoCreator(QWidget *pParent = 0, const QString& strMachineName = QString());
+    UIVisoCreatorDialog(QWidget *pParent = 0, const QString& strMachineName = QString());
     /** Returns the content of the .viso file. Each element of the list corresponds to a line in the .viso file. */
     QStringList       entryList() const;
     const QString     &visoName() const;
