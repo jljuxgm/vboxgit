@@ -1,4 +1,4 @@
-/* $Id: UINativeWizard.h 89960 2021-06-29 17:49:15Z vboxsync $ */
+/* $Id: UINativeWizard.h 89967 2021-06-30 08:58:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINativeWizard class declaration.
  */
@@ -158,6 +158,8 @@ private:
     QString     m_strHelpHashtag;
     /** Holds the pixmap name. */
     QString     m_strPixmapName;
+    /** Holds the last entered page index. */
+    int         m_iLastIndex;
 
     /** Holds the pixmap label instance. */
     QLabel                               *m_pLabelPixmap;
