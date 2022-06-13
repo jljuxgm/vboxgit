@@ -1,4 +1,4 @@
-/* $Id: UIDetailsItem.cpp 93990 2022-02-28 15:34:57Z vboxsync $ */
+/* $Id: UIDetailsItem.cpp 94765 2022-05-01 17:37:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsItem class definition.
  */
@@ -199,7 +199,6 @@ UIDetailsItem::UIDetailsItem(UIDetailsItem *pParent)
 
     /* Basic item setup: */
     setOwnedByLayout(false);
-    setAcceptDrops(false);
     setFocusPolicy(Qt::NoFocus);
     setFlag(QGraphicsItem::ItemIsSelectable, false);
 
