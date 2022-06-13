@@ -1,4 +1,4 @@
-/* $Id: NtProcessStartup-stub.cpp 93251 2022-01-15 03:20:12Z vboxsync $ */
+/* $Id: NtProcessStartup-stub.cpp 93260 2022-01-17 09:54:11Z vboxsync $ */
 /** @file
  * IPRT - NtProcessStartup stub to make the link happy.
  */
@@ -31,6 +31,10 @@
 #include <iprt/asm.h>
 
 
+/**
+ * This is the entrypoint the linker picks, however it is never called for
+ * ring-0 binaries.
+ */
 extern "C" void __cdecl NtProcessStartup(void *pvIgnored);
 extern "C" void __cdecl NtProcessStartup(void *pvIgnored)
 {
@@ -40,7 +44,12 @@ extern "C" void __cdecl NtProcessStartup(void *pvIgnored)
 
 
 #ifdef IN_RING0
-extern "C" long DriverEntry(void *pvDrvObjIgn, void *pvRegPathIgn)
+/**
+ * This dummy entry point is required for using BufferOverflowK.lib and
+ * /guard:cf and /GS.  It is never called.
+ */
+extern "C" long __stdcall DriverEntry(void *pvDrvObjIgn, void *pvRegPathIgn);
+extern "C" long __stdcall DriverEntry(void *pvDrvObjIgn, void *pvRegPathIgn)
 {
     ASMBreakpoint();
     RT_NOREF(pvDrvObjIgn, pvRegPathIgn);
