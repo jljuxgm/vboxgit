@@ -1,4 +1,4 @@
-/* $Id: DevHdaCodec.cpp 90144 2021-07-09 23:24:35Z vboxsync $ */
+/* $Id: DevHdaCodec.cpp 90145 2021-07-09 23:35:18Z vboxsync $ */
 /** @file
  * Intel HD Audio Controller Emulation - Codec, Sigmatel/IDT STAC9220.
  *
@@ -797,6 +797,7 @@ static int stac9220Construct(PHDACODECR3 pThis)
 
     pThis->fInReset = false;
 
+    uint16_t *pafNodeClassifications = (uint16_t *)&pThis->afNodeClassifications[0];
 #define STAC9220WIDGET(a_Type) do { \
             AssertCompile(RT_ELEMENTS(g_abStac9220##a_Type##s) <= RT_ELEMENTS(pThis->ab##a_Type##s)); \
             uint8_t  *pbDst = (uint8_t *)&pThis->ab##a_Type##s[0]; \
@@ -807,7 +808,7 @@ static int stac9220Construct(PHDACODECR3 pThis)
                 if (idNode != 0) \
                 { \
                     AssertReturn(idNode < RT_ELEMENTS(pThis->aNodes), VERR_INTERNAL_ERROR_3); \
-                    pThis->afNodeClassifications[idNode] |= RT_CONCAT(CODEC_NODE_CLS_,a_Type); \
+                    pafNodeClassifications[idNode] |= RT_CONCAT(CODEC_NODE_CLS_,a_Type); \
                 } \
                 pbDst[i] = idNode; \
             } \

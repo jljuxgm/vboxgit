@@ -1,4 +1,4 @@
-/* $Id: DevHdaCodec.h 90144 2021-07-09 23:24:35Z vboxsync $ */
+/* $Id: DevHdaCodec.h 90145 2021-07-09 23:35:18Z vboxsync $ */
 /** @file
  * Intel HD Audio Controller Emulation - Codec, Sigmatel/IDT STAC9220.
  */
@@ -854,7 +854,7 @@ typedef struct HDACODECR3
     /** @} */
 
     /** The CODEC_NODE_CLS_XXX flags for each node. */
-    uint16_t        afNodeClassifications[CODEC_NODES_MAX];
+    uint16_t const  afNodeClassifications[CODEC_NODES_MAX];
 
     CODECNODE       aNodes[CODEC_NODES_MAX];
 
