@@ -1,4 +1,4 @@
-/* $Id: vkatInternal.h 92169 2021-11-01 18:46:32Z vboxsync $ */
+/* $Id: vkatInternal.h 92396 2021-11-12 11:46:06Z vboxsync $ */
 /** @file
  * VKAT - Internal header file for common definitions + structs.
  */
@@ -237,7 +237,8 @@ typedef ATSCALLBACKCTX *PATSCALLBACKCTX;
 
 /**
  * Audio test environment parameters.
- * Not necessarily bound to a specific test (can be reused).
+ *
+ * This is global to all tests defined.
  */
 typedef struct AUDIOTESTENV
 {
@@ -250,6 +251,8 @@ typedef struct AUDIOTESTENV
     /** Name of the audio device to use.
      *  If empty the default audio device will be used. */
     char                    szDev[128];
+    /** Zero-based index of current test (will be increased for every run test). */
+    uint32_t                idxTest;
     /** Number of iterations for *all* tests specified.
      *  When set to 0 (default), a random value (see specific test) will be chosen. */
     uint32_t                cIterations;
