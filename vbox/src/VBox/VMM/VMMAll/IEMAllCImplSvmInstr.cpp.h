@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplSvmInstr.cpp.h 92493 2021-11-18 14:01:56Z vboxsync $ */
+/* $Id: IEMAllCImplSvmInstr.cpp.h 92541 2021-11-22 06:35:38Z vboxsync $ */
 /** @file
  * IEM - AMD-V (Secure Virtual Machine) instruction implementation.
  */
@@ -91,7 +91,8 @@ DECLINLINE(VBOXSTRICTRC) iemSvmWorldSwitch(PVMCPUCC pVCpu, bool fPdpesMapped)
      * We include X86_CR0_PE because PGM doesn't handle paged-real mode yet,
      * see comment in iemMemPageTranslateAndCheckAccess().
      */
-    int rc = PGMChangeMode(pVCpu, pVCpu->cpum.GstCtx.cr0 | X86_CR0_PE, pVCpu->cpum.GstCtx.cr4, pVCpu->cpum.GstCtx.msrEFER);
+    int rc = PGMChangeMode(pVCpu, pVCpu->cpum.GstCtx.cr0 | X86_CR0_PE, pVCpu->cpum.GstCtx.cr4, pVCpu->cpum.GstCtx.msrEFER,
+                           true /* fForce */);
     AssertRCReturn(rc, rc);
 
     /* Inform CPUM (recompiler), can later be removed. */

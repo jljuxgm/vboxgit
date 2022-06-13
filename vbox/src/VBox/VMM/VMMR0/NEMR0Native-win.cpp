@@ -1,4 +1,4 @@
-/* $Id: NEMR0Native-win.cpp 92495 2021-11-18 14:17:12Z vboxsync $ */
+/* $Id: NEMR0Native-win.cpp 92541 2021-11-22 06:35:38Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, native ring-0 Windows backend.
  */
@@ -2771,7 +2771,7 @@ NEM_TMPL_STATIC int nemR0WinImportState(PGVM pGVM, PGVMCPU pGVCpu, PCPUMCTX pCtx
     int rc = VINF_SUCCESS;
     if (fMaybeChangedMode)
     {
-        rc = PGMChangeMode(pGVCpu, pCtx->cr0, pCtx->cr4, pCtx->msrEFER);
+        rc = PGMChangeMode(pGVCpu, pCtx->cr0, pCtx->cr4, pCtx->msrEFER, false /* fForce */);
         AssertMsgReturn(rc == VINF_SUCCESS, ("rc=%Rrc\n", rc), RT_FAILURE_NP(rc) ? rc : VERR_NEM_IPE_1);
     }
 
