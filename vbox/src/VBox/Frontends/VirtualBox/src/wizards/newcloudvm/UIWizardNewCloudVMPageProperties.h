@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageProperties.h 91412 2021-09-27 16:42:23Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageProperties.h 91499 2021-09-30 14:39:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageProperties class declaration.
  */
@@ -24,13 +24,11 @@
 /* GUI includes: */
 #include "UINativeWizardPage.h"
 
-/* COM includes: */
-#include "CVirtualSystemDescriptionForm.h"
-
 /* Forward declarations: */
 class QIRichTextLabel;
 class UIFormEditorWidget;
 class UIWizardNewCloudVM;
+class CVirtualSystemDescriptionForm;
 
 /** Namespace for properties page of the New Cloud VM wizard. */
 namespace UIWizardNewCloudVMProperties

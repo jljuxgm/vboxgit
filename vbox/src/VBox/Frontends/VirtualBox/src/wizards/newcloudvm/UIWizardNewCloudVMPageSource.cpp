@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageSource.cpp 91411 2021-09-27 16:35:46Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageSource.cpp 91499 2021-09-30 14:39:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageSource class implementation.
  */
@@ -16,12 +16,10 @@
  */
 
 /* Qt includes: */
-#include <QHeaderView>
 #include <QGridLayout>
 #include <QLabel>
 #include <QListWidget>
 #include <QTabBar>
-#include <QTableWidget>
 #include <QVBoxLayout>
 
 /* GUI includes: */
@@ -37,7 +35,6 @@
 #include "UIWizardNewCloudVMPageSource.h"
 
 /* COM includes: */
-#include "CAppliance.h"
 #include "CStringArray.h"
 
 /* Namespaces: */
@@ -163,7 +160,9 @@ void UIWizardNewCloudVMSource::populateProfiles(QIComboBox *pCombo,
     pCombo->blockSignals(false);
 }
 
-void UIWizardNewCloudVMSource::populateSourceImages(QListWidget *pList, QTabBar *pTabBar, const CCloudClient &comClient)
+void UIWizardNewCloudVMSource::populateSourceImages(QListWidget *pList,
+                                                    QTabBar *pTabBar,
+                                                    const CCloudClient &comClient)
 {
     /* Sanity check: */
     AssertPtrReturnVoid(pList);
@@ -216,7 +215,9 @@ void UIWizardNewCloudVMSource::populateSourceImages(QListWidget *pList, QTabBar 
     pList->blockSignals(false);
 }
 
-void UIWizardNewCloudVMSource::populateFormProperties(CVirtualSystemDescription comVSD, QTabBar *pTabBar, const QString &strImageId)
+void UIWizardNewCloudVMSource::populateFormProperties(CVirtualSystemDescription comVSD,
+                                                      QTabBar *pTabBar,
+                                                      const QString &strImageId)
 {
     /* Sanity check: */
     AssertReturnVoid(comVSD.isNotNull());

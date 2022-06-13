@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageSource.h 91410 2021-09-27 16:31:08Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageSource.h 91499 2021-09-30 14:39:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageSource class declaration.
  */
@@ -26,9 +26,7 @@
 
 /* COM includes: */
 #include "COMEnums.h"
-#include "CCloudClient.h"
 #include "CVirtualSystemDescription.h"
-#include "CVirtualSystemDescriptionForm.h"
 
 /* Forward declarations: */
 class QGridLayout;
@@ -39,6 +37,7 @@ class QIComboBox;
 class QIRichTextLabel;
 class QIToolButton;
 class UIWizardNewCloudVM;
+class CCloudClient;
 class CCloudProvider;
 
 /** Provider combo data fields. */
