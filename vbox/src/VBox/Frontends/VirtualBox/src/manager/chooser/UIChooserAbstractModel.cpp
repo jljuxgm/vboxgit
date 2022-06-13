@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.cpp 90698 2021-08-16 14:15:08Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.cpp 90751 2021-08-19 15:31:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class implementation.
  */
@@ -750,7 +750,7 @@ void UIChooserAbstractModel::sltDetachCOM()
     m_pInvisibleRootNode = 0;
 
     /* Finally, stop all cloud updates: */
-    stopCloudUpdates();
+    stopCloudUpdates(true /* forced? */);
 }
 
 void UIChooserAbstractModel::sltCloudMachineUnregistered(const QString &strProviderShortName,
@@ -1827,7 +1827,7 @@ UIChooserNode *UIChooserAbstractModel::searchFakeNode(const QString &strProvider
     return searchMachineNode(strProviderShortName, strProfileName, QUuid());
 }
 
-void UIChooserAbstractModel::stopCloudUpdates()
+void UIChooserAbstractModel::stopCloudUpdates(bool fForced /* = false */)
 {
     /* Stop all cloud entity updates currently being performed: */
     foreach (const UICloudEntityKey &key, m_cloudEntityKeysBeingUpdated)
@@ -1841,7 +1841,8 @@ void UIChooserAbstractModel::stopCloudUpdates()
 
             /* Wait for cloud profile refresh task to complete,
              * then delete the task itself manually: */
-            pTask->cancel();
+            if (!fForced)
+                pTask->cancel();
             delete pTask;
         }
         /* For machines: */

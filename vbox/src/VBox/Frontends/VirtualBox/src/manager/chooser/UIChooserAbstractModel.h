@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.h 90698 2021-08-16 14:15:08Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.h 90751 2021-08-19 15:31:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class declaration.
  */
@@ -354,8 +354,9 @@ private:
 
     /** @name Cloud update stuff.
       * @{ */
-        /** Stops all cloud updates. */
-        void stopCloudUpdates();
+        /** Stops all cloud updates.
+          * @param  fForced  Brings whether cloud updates should be killed. */
+        void stopCloudUpdates(bool fForced = false);
     /** @} */
 
     /** @name General stuff.
