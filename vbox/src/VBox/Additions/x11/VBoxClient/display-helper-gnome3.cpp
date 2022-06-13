@@ -1,4 +1,4 @@
-/* $Id: display-helper-gnome3.cpp 93378 2022-01-20 18:35:50Z vboxsync $ */
+/* $Id: display-helper-gnome3.cpp 93379 2022-01-20 18:48:37Z vboxsync $ */
 /** @file
  * A helper for X11/Wayland Client which performs Gnome Desktop
  * Environment specific actions.
@@ -31,7 +31,6 @@
 
 #include <VBox/log.h>
 #include <VBox/VBoxGuestLib.h>
-#include <VBox/dbus.h>
 
 #include <iprt/env.h>
 #include <iprt/initterm.h>
@@ -40,6 +39,12 @@
 #include <iprt/err.h>
 #include <iprt/mem.h>
 #include <iprt/string.h>
+
+/** Load libDbus symbols needed for us. */
+#include <VBox/dbus.h>
+/* Declarations of the functions that we need from libXrandr. */
+#define VBOX_DBUS_GENERATE_BODY
+#include <VBox/dbus-calls.h>
 
 /** D-bus parameters for connecting to Gnome display service. */
 #define VBOXCLIENT_HELPER_DBUS_DESTINATION      "org.gnome.Mutter.DisplayConfig"

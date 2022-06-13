@@ -1,4 +1,4 @@
-/* $Id: display-helper-generic.cpp 93378 2022-01-20 18:35:50Z vboxsync $ */
+/* $Id: display-helper-generic.cpp 93379 2022-01-20 18:48:37Z vboxsync $ */
 /** @file
  * A generic helper for X11 Client which performs Desktop Environment
  * specific actions.
@@ -31,7 +31,7 @@
 #include <iprt/mem.h>
 #include <iprt/list.h>
 
-/** Load  */
+/** Load libxrandr symbols needed for us. */
 #include <VBox/xrandr.h>
 /* Declarations of the functions that we need from libXrandr. */
 #define VBOX_XRANDR_GENERATE_BODY
