@@ -1,4 +1,4 @@
-/* $Id: DrvIntNet.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: DrvIntNet.cpp 90103 2021-07-08 23:00:58Z vboxsync $ */
 /** @file
  * DrvIntNet - Internal network transport driver.
  */
@@ -749,14 +749,13 @@ static int drvR3IntNetRecvRun(PDRVINTNET pThis)
                         PCPDMNETWORKGSO pGso = IntNetHdrGetGsoContext(pHdr, pBuf);
                         if (PDMNetGsoIsValid(pGso, cbFrame, cbFrame - sizeof(PDMNETWORKGSO)))
                         {
-                            if (!pThis->pIAboveNet->pfnReceiveGso ||
-                                RT_FAILURE(pThis->pIAboveNet->pfnReceiveGso(pThis->pIAboveNet,
-                                                                            (uint8_t *)(pGso + 1),
-                                                                            pHdr->cbFrame - sizeof(PDMNETWORKGSO),
-                                                                            pGso)))
+                            if (   !pThis->pIAboveNet->pfnReceiveGso
+                                || RT_FAILURE(pThis->pIAboveNet->pfnReceiveGso(pThis->pIAboveNet,
+                                                                               (uint8_t *)(pGso + 1),
+                                                                               pHdr->cbFrame - sizeof(PDMNETWORKGSO),
+                                                                               pGso)))
                             {
                                 /*
-                                 *
                                  * This is where we do the offloading since this NIC
                                  * does not support large receive offload (LRO).
                                  */
