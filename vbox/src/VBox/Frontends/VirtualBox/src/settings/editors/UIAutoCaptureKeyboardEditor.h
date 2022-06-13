@@ -1,4 +1,4 @@
-/* $Id: UIAutoCaptureKeyboardEditor.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIAutoCaptureKeyboardEditor.h 93936 2022-02-24 16:50:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIAutoCaptureKeyboardEditor class declaration.
  */
@@ -35,9 +35,8 @@ class SHARED_LIBRARY_STUFF UIAutoCaptureKeyboardEditor : public QIWithRetranslat
 
 public:
 
-    /** Constructs auto capture keyboard editor passing @a pParent to the base-class.
-      * @param  fWithLabel  Brings whether we should add label ourselves. */
-    UIAutoCaptureKeyboardEditor(QWidget *pParent = 0, bool fWithLabel = false);
+    /** Constructs auto capture keyboard editor passing @a pParent to the base-class. */
+    UIAutoCaptureKeyboardEditor(QWidget *pParent = 0);
 
     /** Defines editor @a fValue. */
     void setValue(bool fValue);
@@ -53,9 +52,6 @@ private:
 
     /** Prepares all. */
     void prepare();
-
-    /** Holds whether descriptive label should be created. */
-    bool  m_fWithLabel;
 
     /** Holds the value to be set. */
     bool  m_fValue;

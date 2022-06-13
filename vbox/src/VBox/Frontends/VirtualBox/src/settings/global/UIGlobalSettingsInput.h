@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsInput.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIGlobalSettingsInput.h 93936 2022-02-24 16:50:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsInput class declaration.
  */
@@ -25,7 +25,6 @@
 #include "UISettingsPage.h"
 
 /* Forward declarations: */
-class QLabel;
 class UIAutoCaptureKeyboardEditor;
 class UIShortcutConfigurationEditor;
 struct UIDataSettingsGlobalInput;
@@ -86,8 +85,6 @@ private:
      * @{ */
         /** Holds the 'shortcut configuration' editor instance. */
         UIShortcutConfigurationEditor *m_pEditorShortcutConfiguration;
-        /** Holds the input extended label instance. */
-        QLabel                        *m_pLabelInputExtended;
         /** Holds the 'auto capture keyboard' editor instance. */
         UIAutoCaptureKeyboardEditor   *m_pEditorAutoCaptureKeyboard;
     /** @} */
