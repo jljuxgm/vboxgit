@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 90419 2021-07-30 00:37:38Z vboxsync $ */
+/* $Id: SUPDrv.cpp 90489 2021-08-03 09:19:13Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -388,9 +388,11 @@ static SUPFUNC g_aFunctions[] =
     { "RTSemEventCreate",                       (void *)(uintptr_t)RTSemEventCreate },
     { "RTSemEventDestroy",                      (void *)(uintptr_t)RTSemEventDestroy },
     { "RTSemEventGetResolution",                (void *)(uintptr_t)RTSemEventGetResolution },
+    { "RTSemEventIsSignalSafe",                 (void *)(uintptr_t)RTSemEventIsSignalSafe },
     { "RTSemEventMultiCreate",                  (void *)(uintptr_t)RTSemEventMultiCreate },
     { "RTSemEventMultiDestroy",                 (void *)(uintptr_t)RTSemEventMultiDestroy },
     { "RTSemEventMultiGetResolution",           (void *)(uintptr_t)RTSemEventMultiGetResolution },
+    { "RTSemEventMultiIsSignalSafe",            (void *)(uintptr_t)RTSemEventMultiIsSignalSafe },
     { "RTSemEventMultiReset",                   (void *)(uintptr_t)RTSemEventMultiReset },
     { "RTSemEventMultiSignal",                  (void *)(uintptr_t)RTSemEventMultiSignal },
     { "RTSemEventMultiWait",                    (void *)(uintptr_t)RTSemEventMultiWait },
