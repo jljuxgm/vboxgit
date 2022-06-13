@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 92996 2021-12-17 08:18:43Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 93102 2021-12-30 10:45:04Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -1293,6 +1293,10 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
         BOOL fUseNativeApi = false;
         hrc = pMachine->GetHWVirtExProperty(HWVirtExPropertyType_UseNativeApi, &fUseNativeApi); H();
         InsertConfigInteger(pHM, "UseNEMInstead", fUseNativeApi);
+
+        /* Enable workaround for missing TLB flush for OS/2 guests, see ticketref:20625. */
+        if (RTUtf16NCmpAscii(osTypeId.raw(), RT_STR_TUPLE("OS2")) == 0)
+            InsertConfigInteger(pHM, "MissingOS2TlbFlushWorkaround", 1);
 
         /*
          * NEM

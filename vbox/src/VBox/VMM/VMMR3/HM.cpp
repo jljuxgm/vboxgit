@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 92703 2021-12-02 12:45:58Z vboxsync $ */
+/* $Id: HM.cpp 93102 2021-12-30 10:45:04Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -282,7 +282,8 @@ VMMR3_INT_DECL(int) HMR3Init(PVM pVM)
                               "|SvmPauseFilterThreshold"
                               "|SvmVirtVmsaveVmload"
                               "|SvmVGif"
-                              "|LovelyMesaDrvWorkaround",
+                              "|LovelyMesaDrvWorkaround"
+                              "|MissingOS2TlbFlushWorkaround",
                               "" /* pszValidNodes */, "HM" /* pszWho */, 0 /* uInstance */);
     if (RT_FAILURE(rc))
         return rc;
@@ -508,6 +509,13 @@ VMMR3_INT_DECL(int) HMR3Init(PVM pVM)
         PVMCPU pVCpu = pVM->apCpusR3[idCpu];
         pVCpu->hm.s.fTrapXcptGpForLovelyMesaDrv = fMesaWorkaround;
     }
+
+    /** @cfgm{/HM/MissingOS2TlbFlushWorkaround,bool}
+     * Workaround OS/2 not flushing the TLB after page directory and page table
+     * modifications when returning to protected mode from a real mode call
+     * (TESTCFG.SYS typically crashes).  See ticketref:20625 for details. */
+    rc = CFGMR3QueryBoolDef(pCfgHm, "MissingOS2TlbFlushWorkaround", &pVM->hm.s.fMissingOS2TlbFlushWorkaround, false);
+    AssertLogRelRCReturn(rc, rc);
 
     /*
      * Check if VT-x or AMD-v support according to the users wishes.
