@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 91852 2021-10-19 23:34:50Z vboxsync $ */
+/* $Id: PGMPhys.cpp 91853 2021-10-19 23:55:01Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -5691,7 +5691,7 @@ int pgmPhysFreePage(PVM pVM, PGMMFREEPAGESREQ pReq, uint32_t *pcPendingPages, PP
         AssertMsgFailed(("GCPhys=%RGp pPage=%R[pgmpage]\n", GCPhys, pPage));
         return VMSetError(pVM, VERR_PGM_PHYS_INVALID_PAGE_ID, RT_SRC_POS, "GCPhys=%RGp idPage=%#x", GCPhys, pPage);
     }
-#ifdef VBOX_WITH_PGM_NEM_MODE
+#ifdef VBOX_WITH_NATIVE_NEM
     const RTHCPHYS HCPhysPrev = PGM_PAGE_GET_HCPHYS(pPage);
 #endif
 
