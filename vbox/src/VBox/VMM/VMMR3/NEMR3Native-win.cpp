@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-win.cpp 93515 2022-01-31 22:17:19Z vboxsync $ */
+/* $Id: NEMR3Native-win.cpp 93787 2022-02-16 11:07:57Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, native ring-3 Windows backend.
  *
@@ -1690,6 +1690,20 @@ void nemR3NativeNotifyFF(PVM pVM, PVMCPU pVCpu, uint32_t fFlags)
     AssertMsg(SUCCEEDED(hrc), ("WHvCancelRunVirtualProcessor -> hrc=%Rhrc\n", hrc));
     RT_NOREF_PV(hrc);
     RT_NOREF_PV(fFlags);
+}
+
+
+DECLHIDDEN(bool) nemR3NativeNotifyDebugEventChanged(PVM pVM, bool fUseDebugLoop);
+{
+    RT_NOREF(pVM, fUseDebugLoop);
+    return false;
+}
+
+
+DECLHIDDEN(bool) nemR3NativeNotifyDebugEventChangedPerCpu(PVM pVM, PVMCPU pVCpu, bool fUseDebugLoop);
+{
+    RT_NOREF(pVM, pVCpu, fUseDebugLoop);
+    return false;
 }
 
 
