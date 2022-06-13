@@ -1,4 +1,4 @@
-/* $Id: string.h 85314 2020-07-13 17:24:18Z vboxsync $ */
+/* $Id: string.h 91519 2021-10-01 14:36:27Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - Smart string classes declaration.
  */
@@ -1371,6 +1371,10 @@ protected:
  * @code
     Utf8StrFmt strName("program name = %s", argv[0]);
    @endcode
+ *
+ * @note    Do not use in assignments to Utf8Str variables.  Instead use
+ *          RTCString::printf directly on the variable!  This avoid an extra
+ *          temporary Utf8Str instance and assignment operation.
  */
 class Utf8StrFmt : public Utf8Str
 {
