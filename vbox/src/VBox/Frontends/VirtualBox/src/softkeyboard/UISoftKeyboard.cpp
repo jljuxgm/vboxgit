@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboard.cpp 93985 2022-02-28 14:41:44Z vboxsync $ */
+/* $Id: UISoftKeyboard.cpp 93987 2022-02-28 14:54:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class implementation.
  */
@@ -3302,7 +3302,7 @@ bool UIPhysicalLayoutReader::parseXMLFile(const QString &strFileName, UISoftKeyb
         else if (m_xmlReader.name() == QLatin1String("name"))
             physicalLayout.setName(m_xmlReader.readElementText());
         else if (m_xmlReader.name() == QLatin1String("id"))
-            physicalLayout.setUid(m_xmlReader.readElementText());
+            physicalLayout.setUid(QUuid(m_xmlReader.readElementText()));
         else
             m_xmlReader.skipCurrentElement();
     }

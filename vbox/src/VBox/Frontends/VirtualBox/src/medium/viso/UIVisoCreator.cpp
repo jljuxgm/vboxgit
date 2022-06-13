@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIVisoCreator.cpp 93987 2022-02-28 14:54:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator class implementation.
  */
@@ -520,7 +520,7 @@ QUuid UIVisoCreatorWidget::createViso(UIActionPool *pActionPool, QWidget *pParen
     UIVisoCreatorDialog *pVisoCreator = new UIVisoCreatorDialog(pActionPool, pDialogParent, strMachineName);
 
     if (!pVisoCreator)
-        return QString();
+        return QUuid();
     windowManager().registerNewParent(pVisoCreator, pDialogParent);
     pVisoCreator->setCurrentPath(gEDataManager->visoCreatorRecentFolder());
 

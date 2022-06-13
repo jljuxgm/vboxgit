@@ -1,4 +1,4 @@
-/* $Id: UITabBar.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UITabBar.cpp 93987 2022-02-28 14:54:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UITabBar class implementation.
  */
@@ -936,7 +936,7 @@ void UITabBar::dropEvent(QDropEvent *pEvent)
     /* Determine ID of token-item: */
     const QUuid tokenUuid = m_pItemToken->uuid();
     /* Determine ID of dropped-item: */
-    const QUuid droppedUuid = pMimeData->data(UITabBarItem::MimeType);
+    const QUuid droppedUuid(pMimeData->data(UITabBarItem::MimeType));
 
     /* Make sure these uuids are different: */
     if (droppedUuid == tokenUuid)
