@@ -1,4 +1,4 @@
-/* $Id: SUPLib-os2.cpp 85129 2020-07-09 00:05:45Z vboxsync $ */
+/* $Id: SUPLib-os2.cpp 92556 2021-11-23 01:12:29Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - OS/2 specific parts.
  */
@@ -163,9 +163,9 @@ DECLHIDDEN(int) suplibOsIOCtlFast(PSUPLIBDATA pThis, uintptr_t uFunction, uintpt
 }
 
 
-DECLHIDDEN(int) suplibOsPageAlloc(PSUPLIBDATA pThis, size_t cPages, void **ppvPages)
+DECLHIDDEN(int) suplibOsPageAlloc(PSUPLIBDATA pThis, size_t cPages, uint32_t fFlags, void **ppvPages)
 {
-    NOREF(pThis);
+    RT_NOREF(pThis, fFlags);
     *ppvPages = NULL;
     int rc = DosAllocMem(ppvPages, cPages << PAGE_SHIFT, PAG_READ | PAG_WRITE | PAG_EXECUTE | PAG_COMMIT | OBJ_ANY);
     if (rc == ERROR_INVALID_PARAMETER)

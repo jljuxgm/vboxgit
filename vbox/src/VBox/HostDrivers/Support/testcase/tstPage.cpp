@@ -1,4 +1,4 @@
-/* $Id: tstPage.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: tstPage.cpp 92556 2021-11-23 01:12:29Z vboxsync $ */
 /** @file
  * SUP Testcase - Page allocation interface (ring 3).
  */
@@ -45,7 +45,7 @@ int main(int argc, char **argv)
     if (!rc)
     {
         void *pv;
-        rc = SUPR3PageAlloc(1, &pv);
+        rc = SUPR3PageAlloc(1, 0, &pv);
         cErrors += rc != 0;
         if (!rc)
         {
@@ -61,7 +61,7 @@ int main(int argc, char **argv)
         /*
          * Big chunk.
          */
-        rc = SUPR3PageAlloc(1023, &pv);
+        rc = SUPR3PageAlloc(1023, 0, &pv);
         cErrors += rc != 0;
         if (!rc)
         {

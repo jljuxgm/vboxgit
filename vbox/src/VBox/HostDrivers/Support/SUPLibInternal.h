@@ -1,4 +1,4 @@
-/* $Id: SUPLibInternal.h 87700 2021-02-10 20:21:04Z vboxsync $ */
+/* $Id: SUPLibInternal.h 92556 2021-11-23 01:12:29Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Internal header.
  */
@@ -365,7 +365,7 @@ DECLHIDDEN(int)     suplibOsHardenedVerifyInit(void);
 DECLHIDDEN(int)     suplibOsHardenedVerifyTerm(void);
 DECLHIDDEN(int)     suplibOsIOCtl(PSUPLIBDATA pThis, uintptr_t uFunction, void *pvReq, size_t cbReq);
 DECLHIDDEN(int)     suplibOsIOCtlFast(PSUPLIBDATA pThis, uintptr_t uFunction, uintptr_t idCpu);
-DECLHIDDEN(int)     suplibOsPageAlloc(PSUPLIBDATA pThis, size_t cPages, void **ppvPages);
+DECLHIDDEN(int)     suplibOsPageAlloc(PSUPLIBDATA pThis, size_t cPages, uint32_t fFlags, void **ppvPages);
 DECLHIDDEN(int)     suplibOsPageFree(PSUPLIBDATA pThis, void *pvPages, size_t cPages);
 DECLHIDDEN(int)     suplibOsQueryVTxSupported(const char **ppszWhy);
 DECLHIDDEN(bool)    suplibOsIsNemSupportedWhenNoVtxOrAmdV(void);

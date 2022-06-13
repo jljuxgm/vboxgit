@@ -1,4 +1,4 @@
-/* $Id: tstPin.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: tstPin.cpp 92556 2021-11-23 01:12:29Z vboxsync $ */
 /** @file
  * SUP Testcase - Memory locking interface (ring 3).
  */
@@ -55,7 +55,7 @@ int main(int argc, char **argv)
          * Simple test.
          */
         void *pv;
-        rc = SUPR3PageAlloc(1, &pv);
+        rc = SUPR3PageAlloc(1, 0, &pv);
         AssertRC(rc);
         RTPrintf("pv=%p\n", pv);
         SUPPAGE aPages[1];
@@ -82,7 +82,7 @@ int main(int argc, char **argv)
         for (unsigned i = 0; i < sizeof(aPinnings) / sizeof(aPinnings[0]); i++)
         {
             aPinnings[i].pv = NULL;
-            SUPR3PageAlloc(0x10000 >> PAGE_SHIFT, &aPinnings[i].pv);
+            SUPR3PageAlloc(0x10000 >> PAGE_SHIFT, 0, &aPinnings[i].pv);
             aPinnings[i].pvAligned = RT_ALIGN_P(aPinnings[i].pv, PAGE_SIZE);
             rc = supR3PageLock(aPinnings[i].pvAligned, 0xf000 >> PAGE_SHIFT, &aPinnings[i].aPages[0]);
             if (!rc)
@@ -168,7 +168,7 @@ int main(int argc, char **argv)
         #define BIG_SIZE    72*1024*1024
         #define BIG_SIZEPP  (BIG_SIZE + PAGE_SIZE)
         pv = NULL;
-        SUPR3PageAlloc(BIG_SIZEPP >> PAGE_SHIFT, &pv);
+        SUPR3PageAlloc(BIG_SIZEPP >> PAGE_SHIFT, 0, &pv);
         if (pv)
         {
             static SUPPAGE s_aPages[BIG_SIZE >> PAGE_SHIFT];
