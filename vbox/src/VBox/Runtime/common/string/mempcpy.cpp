@@ -1,4 +1,4 @@
-/* $Id: mempcpy.cpp 93958 2022-02-27 13:46:29Z vboxsync $ */
+/* $Id: mempcpy.cpp 93959 2022-02-27 13:52:24Z vboxsync $ */
 /** @file
  * IPRT - CRT Strings, mempcpy().
  */
@@ -35,5 +35,4 @@ RTDECL(void *) mempcpy(void *pvDst, const void *pvSrc, size_t cb)
 {
     return (char *)memcpy(pvDst, pvSrc, cb) + cb;
 }
-
 
