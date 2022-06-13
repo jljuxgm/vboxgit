@@ -1,4 +1,4 @@
-/* $Id: vkat.cpp 89890 2021-06-24 15:56:05Z vboxsync $ */
+/* $Id: vkat.cpp 89891 2021-06-24 15:58:21Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) utility for testing and validating the audio stack.
  */
@@ -239,7 +239,7 @@ static DECLCALLBACK(int) audioTestPlayToneSetup(PAUDIOTESTENV pTstEnv, PAUDIOTES
 {
     RT_NOREF(pTstDesc, ppvCtx);
 
-    int rc;
+    int rc = VINF_SUCCESS;
 
     if (strlen(pTstEnv->szDev))
     {
@@ -322,7 +322,7 @@ static DECLCALLBACK(int) audioTestRecordToneSetup(PAUDIOTESTENV pTstEnv, PAUDIOT
 {
     RT_NOREF(pTstDesc, ppvCtx);
 
-    int rc;
+    int rc = VINF_SUCCESS;
 
     if (strlen(pTstEnv->szDev))
     {
