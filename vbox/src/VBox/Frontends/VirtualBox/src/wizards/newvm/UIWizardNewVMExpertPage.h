@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMExpertPage.h 91106 2021-09-03 14:37:45Z vboxsync $ */
+/* $Id: UIWizardNewVMExpertPage.h 91257 2021-09-15 16:33:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMExpertPage class declaration.
  */
@@ -34,7 +34,7 @@ class QGridLayout;
 class QRadioButton;
 class QIToolButton;
 class UIAdditionalUnattendedOptions;
-class UIDiskFormatsGroupBox;
+class UIDiskFormatsComboBox;
 class UIDiskVariantGroupBox;
 class UIMediumSizeAndPathGroupBox;
 class UIGAInstallationGroupBox;
@@ -126,7 +126,7 @@ private:
       * @{ */
         UIToolBox  *m_pToolBox;
         UIDiskVariantGroupBox *m_pDiskVariantGroupBox;
-        UIDiskFormatsGroupBox *m_pFormatButtonGroup;
+        UIDiskFormatsComboBox *m_pFormatComboBox;
         UIMediumSizeAndPathGroupBox *m_pSizeAndLocationGroup;
         UINameAndSystemEditor *m_pNameAndSystemEditor;
         QCheckBox *m_pSkipUnattendedCheckBox;
