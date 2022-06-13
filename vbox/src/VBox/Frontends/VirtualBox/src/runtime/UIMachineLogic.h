@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 89712 2021-06-15 15:09:18Z vboxsync $ */
+/* $Id: UIMachineLogic.h 89741 2021-06-16 13:38:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -397,6 +397,10 @@ private:
     /* Helpers: */
     static int searchMaxSnapshotIndex(const CMachine &machine, const CSnapshot &snapshot, const QString &strNameTemplate);
     void takeScreenshot(const QString &strFile, const QString &strFormat /* = "png" */) const;
+
+    /** Reactivates the screen saver. This is possbily called during vm window close and enables host screen
+      * if there are no other vms running at the moment. */
+    void activateScreenSaver();
 
     /* Private variables: */
     UISession *m_pSession;
