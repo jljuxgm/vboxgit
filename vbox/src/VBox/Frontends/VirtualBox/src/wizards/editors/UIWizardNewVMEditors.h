@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMEditors.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIWizardNewVMEditors.h 93541 2022-02-02 10:07:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMEditors class declaration.
  */
@@ -32,6 +32,7 @@
 class QCheckBox;
 class QGridLayout;
 class QLabel;
+class QIComboBox;
 class QILineEdit;
 class UIBaseMemoryEditor;
 class UIFilePathSelector;
@@ -174,6 +175,33 @@ private:
     UIBaseMemoryEditor *m_pBaseMemoryEditor;
     UIVirtualCPUEditor *m_pVirtualCPUEditor;
     QCheckBox *m_pEFICheckBox;
+};
+
+class UIWindowsISOImageSelector : public QIWithRetranslateUI<QGroupBox>
+{
+    Q_OBJECT;
+
+signals:
+
+    void sigSelectedWindowsImageChanged(ulong selectedImageIndex);
+
+public:
+
+    UIWindowsISOImageSelector(QWidget *pParent = 0);
+    void setImageNamesAndIndices(const QVector<QString> &names, const QVector<ulong> &ids);
+    bool isEmpty() const;
+    ulong selectedImageIndex() const;
+
+private slots:
+    void sltSelectedWindowsImageChanged(int);
+private:
+
+    void prepare();
+    void retranslateUi();
+
+    QIComboBox *m_pComboBox;
+    QLabel     *m_pLabel;
+
 };
 
 #endif /* !FEQT_INCLUDED_SRC_wizards_editors_UIWizardNewVMEditors_h */

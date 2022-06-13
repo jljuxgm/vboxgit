@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMExpertPage.h 93409 2022-01-24 13:35:27Z vboxsync $ */
+/* $Id: UIWizardNewVMExpertPage.h 93541 2022-02-02 10:07:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMExpertPage class declaration.
  */
@@ -45,6 +45,7 @@ class UINameAndSystemEditor;
 class UINewVMHardwareContainer;
 class UIToolBox;
 class UIUserNamePasswordGroupBox;
+class UIWindowsISOImageSelector;
 
 /** Expert page of the New Virtual Machine wizard. */
 class UIWizardNewVMExpertPage : public UINativeWizardPage
@@ -132,6 +133,7 @@ private:
         UIDiskVariantWidget *m_pDiskVariantWidget;
         UIDiskFormatsComboBox *m_pFormatComboBox;
         UIMediumSizeAndPathGroupBox *m_pSizeAndLocationGroup;
+        UIWindowsISOImageSelector *m_pWindowsISOImageSelector;
         UINameAndSystemEditor *m_pNameAndSystemEditor;
         QCheckBox *m_pSkipUnattendedCheckBox;
         QGridLayout *m_pNameAndSystemLayout;

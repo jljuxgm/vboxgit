@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMEditors.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIWizardNewVMEditors.cpp 93541 2022-02-02 10:07:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class implementation.
  */
@@ -406,4 +406,71 @@ void UINewVMHardwareContainer::retranslateUi()
         m_pEFICheckBox->setToolTip(UIWizardNewVM::tr("<p>Enables Extended Firmware Interface (EFI), which is required to boot certain "
                                                      "guest OSes. Non-EFI aware OSes will not be able to boot if this option is activated.</p>"));
     }
+}
+
+
+/*********************************************************************************************************************************
+*   UIWindowsISOImageSelector implementation.                                                                                   *
+*********************************************************************************************************************************/
+
+UIWindowsISOImageSelector::UIWindowsISOImageSelector(QWidget *pParent /* = 0 */)
+    :QIWithRetranslateUI<QGroupBox>(pParent)
+    , m_pComboBox(0)
+    , m_pLabel(0)
+{
+    prepare();
+}
+
+ulong UIWindowsISOImageSelector::selectedImageIndex() const
+{
+    if (!m_pComboBox || m_pComboBox->count() == 0)
+        return 0;
+    return m_pComboBox->currentData().value<ulong>();
+}
+
+void UIWindowsISOImageSelector::setImageNamesAndIndices(const QVector<QString> &names, const QVector<ulong> &ids)
+{
+    AssertReturnVoid(m_pComboBox && names.size() == ids.size());
+
+    m_pComboBox->clear();
+
+    for (int i = 0; i < names.size(); ++i)
+        m_pComboBox->addItem(names[i], QVariant::fromValue(ids[i]) /* user data */);
+}
+
+bool UIWindowsISOImageSelector::isEmpty() const
+{
+    if (!m_pComboBox)
+        return true;
+    return m_pComboBox->count() == 0;
+}
+
+void UIWindowsISOImageSelector::retranslateUi()
+{
+    setTitle(UIWizardNewVM::tr("Available OS Versions from ISO"));
+    if (m_pLabel)
+        m_pLabel->setText(UIWizardNewVM::tr("ISO Images"));
+
+    if (m_pComboBox)
+        m_pComboBox->setToolTip(UIWizardNewVM::tr("Select an image to be installed."));
+}
+
+void UIWindowsISOImageSelector::prepare()
+{
+    QHBoxLayout *pMainLayout = new QHBoxLayout(this);
+
+    m_pComboBox = new QIComboBox;
+    if (m_pComboBox)
+    {
+        pMainLayout->addWidget(m_pComboBox);
+        connect(m_pComboBox, static_cast<void(QIComboBox::*)(int)>(&QIComboBox::currentIndexChanged),
+                this, &UIWindowsISOImageSelector::sltSelectedWindowsImageChanged);
+    }
+    retranslateUi();
+}
+
+
+void UIWindowsISOImageSelector::sltSelectedWindowsImageChanged(int)
+{
+    emit sigSelectedWindowsImageChanged(selectedImageIndex());
 }

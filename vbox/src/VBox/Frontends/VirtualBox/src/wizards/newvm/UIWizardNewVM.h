@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.h 93540 2022-02-02 07:21:28Z vboxsync $ */
+/* $Id: UIWizardNewVM.h 93541 2022-02-02 10:07:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class declaration.
  */
@@ -170,9 +170,9 @@ public:
         bool emptyDiskRecommended() const;
         void setEmptyDiskRecommended(bool fEmptyDiskRecommended);
 
-        void setDetectedImageNamesAndIndices(const QVector<QString> &names, const QVector<ULONG> &ids);
+        void setDetectedImageNamesAndIndices(const QVector<QString> &names, const QVector<ulong> &ids);
         const QVector<QString> &detectedImageNames() const;
-        const QVector<ULONG> &detectedImageIndices() const;
+        const QVector<ulong> &detectedImageIndices() const;
 
         QVector<KMediumVariant> mediumVariants() const;
     /** @} */
@@ -229,7 +229,7 @@ private:
        QString m_strDetectedOSTypeId;
        /* Name and index lists of the images detected from an ISO. Currently only for Windows ISOs. */
        QVector<QString> m_detectedImageNames;
-       QVector<ULONG> m_detectedImageIndices;
+       QVector<ulong> m_detectedImageIndices;
 
        /** Holds the VM OS family ID. */
        QString  m_strGuestOSFamilyId;
