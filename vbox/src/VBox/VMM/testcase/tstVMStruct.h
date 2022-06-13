@@ -1,4 +1,4 @@
-/* $Id: tstVMStruct.h 91298 2021-09-17 12:02:38Z vboxsync $ */
+/* $Id: tstVMStruct.h 91301 2021-09-17 13:38:24Z vboxsync $ */
 /** @file
  * tstVMMStruct - Statements for generating VM and VMCPU offset and size tests.
  *
@@ -149,16 +149,6 @@
     GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.fNmiUnblockingIret);
     GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.pvVirtApicPageR0);
     GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.pvVirtApicPageR3);
-    GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.pvVmreadBitmapR0);
-    GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.pvVmreadBitmapR3);
-    GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.pvVmwriteBitmapR0);
-    GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.pvVmwriteBitmapR3);
-    GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.pEntryMsrLoadAreaR0);
-    GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.pEntryMsrLoadAreaR3);
-    GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.pExitMsrStoreAreaR0);
-    GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.pExitMsrStoreAreaR3);
-    GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.pExitMsrLoadAreaR0);
-    GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.pExitMsrLoadAreaR3);
     GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.pvMsrBitmapR0);
     GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.pvMsrBitmapR3);
     GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.pvIoBitmapR0);
