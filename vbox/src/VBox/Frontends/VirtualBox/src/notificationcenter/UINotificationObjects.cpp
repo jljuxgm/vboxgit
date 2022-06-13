@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 90365 2021-07-28 11:18:52Z vboxsync $ */
+/* $Id: UINotificationObjects.cpp 90366 2021-07-28 12:51:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -185,7 +185,7 @@ void UINotificationProgressMachineCopy::sltHandleProgressFinished()
 
 
 /*********************************************************************************************************************************
-*   Class UINotificationProgressMachineMediaRemove implementation.                                                                    *
+*   Class UINotificationProgressMachineMediaRemove implementation.                                                               *
 *********************************************************************************************************************************/
 
 UINotificationProgressMachineMediaRemove::UINotificationProgressMachineMediaRemove(const CMachine &comMachine,
