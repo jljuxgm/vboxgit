@@ -1,4 +1,4 @@
-/* $Id: VBoxManageNATNetwork.cpp 93279 2022-01-17 18:58:27Z vboxsync $ */
+/* $Id: VBoxManageNATNetwork.cpp 93284 2022-01-17 21:04:05Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of NAT Network command command.
  */
@@ -598,7 +598,7 @@ RTEXITCODE handleNATNetwork(HandlerArg *a)
 RTEXITCODE listNATNetworks(bool fLong, bool fSorted,
                            const ComPtr<IVirtualBox> &pVirtualBox)
 {
-    int rc;
+    HRESULT rc;
 
     RT_NOREF(fLong);
     RT_NOREF(fSorted);
