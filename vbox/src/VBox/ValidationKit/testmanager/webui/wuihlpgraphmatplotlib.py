@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuihlpgraphmatplotlib.py 93115 2022-01-01 11:31:46Z vboxsync $
+# $Id: wuihlpgraphmatplotlib.py 94129 2022-03-08 14:57:25Z vboxsync $
 
 """
 Test Manager Web-UI - Graph Helpers - Implemented using matplotlib.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 93115 $"
+__version__ = "$Revision: 94129 $"
 
 # Standard Python Import and extensions installed on the system.
 import re;
@@ -128,8 +128,8 @@ class WuiHlpBarGraph(WuiHlpGraphMatplotlibBase):
 
         for i in range(1, len(aoTable)):
             asNames.append(aoTable[i].sName);
-            for j in range(len(aoTable[i].aoValues)):
-                fpValue = float(aoTable[i].aoValues[j]);
+            for j, oValue in enumerate(aoTable[i].aoValues):
+                fpValue = float(oValue);
                 aoSeries[j].append(fpValue);
                 if fpValue < fpMin:
                     fpMin = fpValue;

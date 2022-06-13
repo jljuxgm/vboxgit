@@ -1,4 +1,4 @@
--- $Id: tmdb-r24-vcsbugreferences-1.pgsql 93115 2022-01-01 11:31:46Z vboxsync $
+-- $Id: tmdb-r24-vcsbugreferences-1.pgsql 94129 2022-03-08 14:57:25Z vboxsync $
 --- @file
 -- VBox Test Manager Database - Creates a new VcsBugReferences table.
 --
@@ -36,7 +36,7 @@ CREATE TABLE VcsBugReferences (
     sRepository         TEXT        NOT NULL,
     --- The version control tree revision number.
     iRevision           INTEGER     NOT NULL,
-    --- The bug tracker identifier - see g_kaBugTrackers in config.py.
+    --- The bug tracker identifier - see g_kdBugTrackers in config.py.
     sBugTracker         CHAR(4)     NOT NULL,
     --- The bug number in the bug tracker.
     lBugNo              BIGINT      NOT NULL,

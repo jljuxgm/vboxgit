@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: report.py 93115 2022-01-01 11:31:46Z vboxsync $
+# $Id: report.py 94129 2022-03-08 14:57:25Z vboxsync $
 
 """
 Test Manager - Report models.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 93115 $"
+__version__ = "$Revision: 94129 $"
 
 
 # Standard Python imports.
@@ -1221,8 +1221,8 @@ class ReportGraphModel(ReportModelBase): # pylint: disable=too-few-public-method
             # Look up the VCS revision details.
             #
             for oSeries in oCollection.aoSeries:
-                for i in range(len(oSeries.aiRevisions)):
-                    oSeries.aoRevInfo.append(self.oCache.getVcsRevInfo(sCurRepository, oSeries.aiRevisions[i]));
+                for iRevision in oSeries.aiRevisions:
+                    oSeries.aoRevInfo.append(self.oCache.getVcsRevInfo(sCurRepository, iRevision));
             aoRet.append(oCollection);
 
         return aoRet;

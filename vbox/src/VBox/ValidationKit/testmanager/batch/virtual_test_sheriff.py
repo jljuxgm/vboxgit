@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 93874 2022-02-21 19:18:26Z vboxsync $
+# $Id: virtual_test_sheriff.py 94129 2022-03-08 14:57:25Z vboxsync $
 # pylint: disable=line-too-long
 
 """
@@ -35,7 +35,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 93874 $"
+__version__ = "$Revision: 94129 $"
 
 
 # Standard python imports
@@ -339,8 +339,8 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
         (self.oConfig, _) = oParser.parse_args();
 
         if self.oConfig.sLogFile:
-            self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 93874 $ \n');
+            self.oLogFile = open(self.oConfig.sLogFile, "a");   # pylint: disable=consider-using-with
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 94129 $ \n');
 
 
     def eprint(self, sText):
@@ -517,8 +517,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
                         # This is an okay test result then.
                         ## @todo maybe check the elapsed time here, it could still be a bad run?
                         cOkay += 1;
-                        if iFirstOkay > iSet:
-                            iFirstOkay = iSet;
+                        iFirstOkay = min(iFirstOkay, iSet);
                 if iSet > 10:
                     break;
 
@@ -747,7 +746,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.getFailureReason(tReason);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 93874 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 94129 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
@@ -1029,8 +1028,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
             # one of the first three entries.
             #
             cHits = 0;
-            for iCpu in dStacks:
-                asBacktrace = dStacks[iCpu];
+            for asBacktrace in dStacks.values():
                 for iFrame in xrange(min(3, len(asBacktrace))):
                     if asBacktrace[iFrame].find('kvm_lock_spinning') >= 0:
                         cHits += 1;

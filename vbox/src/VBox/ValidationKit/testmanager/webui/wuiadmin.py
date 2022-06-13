@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuiadmin.py 93115 2022-01-01 11:31:46Z vboxsync $
+# $Id: wuiadmin.py 94129 2022-03-08 14:57:25Z vboxsync $
 
 """
 Test Manager Core - WUI - Admin Main page.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 93115 $"
+__version__ = "$Revision: 94129 $"
 
 
 # Standard python imports.
@@ -497,7 +497,7 @@ class WuiAdmin(WuiDispatcherBase):
             #
             # Open and send the dump.
             #
-            oFile = open(sOutFile, 'rb');
+            oFile = open(sOutFile, 'rb');                       # pylint: disable=consider-using-with
             cbFile = os.fstat(oFile.fileno()).st_size;
 
             self._oSrvGlue.setHeaderField('Content-Type', 'application/zip');

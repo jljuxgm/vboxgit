@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: schedulerbeci.py 93115 2022-01-01 11:31:46Z vboxsync $
+# $Id: schedulerbeci.py 94129 2022-03-08 14:57:25Z vboxsync $
 
 """
 Test Manager - Best-Effort-Continuous-Integration (BECI) scheduler.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 93115 $"
+__version__ = "$Revision: 94129 $"
 
 
 # Validation Kit imports.
@@ -74,8 +74,7 @@ class SchdulerBeci(SchedulerBase): # pylint: disable=too-few-public-methods
         # Generate the
         #
         cMaxItems = len(oData.aoArgsVariations) * 64;
-        if cMaxItems > 1048576:
-            cMaxItems = 1048576;
+        cMaxItems = min(cMaxItems, 1048576);
 
         aoItems   = list();
         cNotAtEnd = len(oData.aoTestCases);

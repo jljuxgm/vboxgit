@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: vcs_import.py 93115 2022-01-01 11:31:46Z vboxsync $
+# $Id: vcs_import.py 94129 2022-03-08 14:57:25Z vboxsync $
 
 """
 Cron job for importing revision history for a repository.
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 93115 $"
+__version__ = "$Revision: 94129 $"
 
 # Standard python imports
 import sys;
@@ -42,7 +42,7 @@ g_ksTestManagerDir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abs
 sys.path.append(g_ksTestManagerDir);
 
 # Test Manager imports
-from testmanager.config                 import g_kaBugTrackers;
+from testmanager.config                 import g_kdBugTrackers;
 from testmanager.core.db                import TMDatabaseConnection;
 from testmanager.core.vcsrevisions      import VcsRevisionData, VcsRevisionLogic;
 from testmanager.core.vcsbugreference   import VcsBugReferenceData, VcsBugReferenceLogic;
@@ -157,8 +157,7 @@ class VcsImport(object): # pylint: disable=too-few-public-methods
                 oLogic.addVcsRevision(oData);
 
             # Analyze the raw message looking for bug tracker references.
-            for sBugTrackerKey in g_kaBugTrackers:
-                oBugTracker = g_kaBugTrackers[sBugTrackerKey];
+            for oBugTracker in g_kdBugTrackers.values():
                 for sTag in oBugTracker.asCommitTags:
                     off = sRawMsg.find(sTag);
                     while off >= 0:

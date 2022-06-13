@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testset.py 93115 2022-01-01 11:31:46Z vboxsync $
+# $Id: testset.py 94129 2022-03-08 14:57:25Z vboxsync $
 
 """
 Test Manager - TestSet.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 93115 $"
+__version__ = "$Revision: 94129 $"
 
 
 # Standard python imports.
@@ -193,14 +193,14 @@ class TestSetData(ModelDataBase):
         # Try raw file first.
         sFile1 = os.path.join(config.g_ksFileAreaRootDir, self.sBaseFilename + '-' + sFilename);
         try:
-            oFile = open(sFile1, sMode);
+            oFile = open(sFile1, sMode);                        # pylint: disable=consider-using-with
             return (oFile, os.fstat(oFile.fileno()).st_size, False);
         except Exception as oXcpt1:
             # Try the zip archive next.
             sFile2 = os.path.join(config.g_ksZipFileAreaRootDir, self.sBaseFilename + '.zip');
             try:
-                oZipFile    = zipfile.ZipFile(sFile2, 'r');
-                oFile       = oZipFile.open(sFilename, sMode if sMode != 'rb' else 'r');
+                oZipFile    = zipfile.ZipFile(sFile2, 'r');                              # pylint: disable=consider-using-with
+                oFile       = oZipFile.open(sFilename, sMode if sMode != 'rb' else 'r'); # pylint: disable=consider-using-with
                 cbFile      = oZipFile.getinfo(sFilename).file_size;
                 return (oFile, cbFile, True);
             except Exception as oXcpt2:
@@ -229,7 +229,7 @@ class TestSetData(ModelDataBase):
         try:
             if not os.path.exists(os.path.dirname(sFile1)):
                 os.makedirs(os.path.dirname(sFile1), 0o755);
-            oFile = open(sFile1, sMode);
+            oFile = open(sFile1, sMode);                        # pylint: disable=consider-using-with
         except Exception as oXcpt1:
             return str(oXcpt1);
         return oFile;

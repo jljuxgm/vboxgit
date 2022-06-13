@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testcase.py 93115 2022-01-01 11:31:46Z vboxsync $
+# $Id: testcase.py 94129 2022-03-08 14:57:25Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 93115 $"
+__version__ = "$Revision: 94129 $"
 
 
 # Standard python imports.
@@ -901,8 +901,8 @@ class TestCaseDataEx(TestCaseData):
             # Note! We'll be returning an error dictionary instead of an string here.
             dErrors = {};
 
-            for iVar in range(len(self.aoTestCaseArgs)):
-                oVar = copy.copy(self.aoTestCaseArgs[iVar]);
+            for iVar, oVar in enumerate(self.aoTestCaseArgs):
+                oVar = copy.copy(oVar);
                 oVar.idTestCase = self.idTestCase;
                 dCurErrors = oVar.validateAndConvert(oDb, ModelDataBase.ksValidateFor_Other);
                 if not dCurErrors:
@@ -914,8 +914,8 @@ class TestCaseDataEx(TestCaseData):
                     dErrors[iVar] = '<br>\n'.join(asErrors)
                 aoNewValues.append(oVar);
 
-            for iVar in range(len(self.aoTestCaseArgs)):
-                sArgs = self.aoTestCaseArgs[iVar].sArgs;
+            for iVar, oVar in enumerate(self.aoTestCaseArgs):
+                sArgs = oVar.sArgs;
                 for iVar2 in range(iVar + 1, len(self.aoTestCaseArgs)):
                     if self.aoTestCaseArgs[iVar2].sArgs == sArgs:
                         sMsg = 'Duplicate argument variation "%s".' % (sArgs);

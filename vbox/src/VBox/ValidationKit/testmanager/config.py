@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: config.py 93115 2022-01-01 11:31:46Z vboxsync $
+# $Id: config.py 94129 2022-03-08 14:57:25Z vboxsync $
 
 """
 Test Manager Configuration.
@@ -26,14 +26,14 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 93115 $"
+__version__ = "$Revision: 94129 $"
 
 import os;
 
 ## Test Manager version string.
 g_ksVersion             = 'v0.1.0';
 ## Test Manager revision string.
-g_ksRevision            = ('$Revision: 93115 $')[11:-2];
+g_ksRevision            = ('$Revision: 94129 $')[11:-2];
 
 ## Enable VBox specific stuff.
 g_kfVBoxSpecific        = True;
@@ -159,7 +159,7 @@ class BugTrackerConfig(object):
         self.asCommitTags = asCommitTags;
 
 ## The key is the database table
-g_kaBugTrackers = {
+g_kdBugTrackers = {
     'xtrk': BugTrackerConfig('xtrk', 'xTracker',        'https://linserv.de.oracle.com/vbox/xTracker/index.php?bug=',
                              ['bugref:',    '@bugref{',    'bugef:', 'bugrf:', ], ),
     'bgdb': BugTrackerConfig('bgdb', 'BugDB',           'https://bug.oraclecorp.com/pls/bug/webbug_edit.edit_info_top?rptno=',

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: build.py 93115 2022-01-01 11:31:46Z vboxsync $
+# $Id: build.py 94129 2022-03-08 14:57:25Z vboxsync $
 
 """
 Test Manager - Builds.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 93115 $"
+__version__ = "$Revision: 94129 $"
 
 
 # Standard python imports.
@@ -738,11 +738,11 @@ class BuildLogic(ModelLogicBase): # pylint: disable=too-few-public-methods
 
         asOsAgnosticArch = [];
         asOsNoArch       = [];
-        for i in range(len(oBuildEx.oCat.asOsArches)):
-            asParts = oBuildEx.oCat.asOsArches[i].split('.');
+        for sOsArch in oBuildEx.oCat.asOsArches:
+            asParts = sOsArch.split('.');
             if len(asParts) != 2 or not asParts[0] or not asParts[1]:
                 raise self._oDb.integrityException('Bad build asOsArches value: %s (idBuild=%s idBuildCategory=%s)'
-                                                   % (oBuildEx.asOsArches[i], oBuildEx.idBuild, oBuildEx.idBuildCategory));
+                                                   % (sOsArch, oBuildEx.idBuild, oBuildEx.idBuildCategory));
             asOsNoArch.append(asParts[0] + '.noarch');
             asOsNoArch.append('os-agnostic.' + asParts[1]);
 

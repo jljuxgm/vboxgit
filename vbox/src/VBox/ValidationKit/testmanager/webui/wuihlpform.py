@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuihlpform.py 93115 2022-01-01 11:31:46Z vboxsync $
+# $Id: wuihlpform.py 94129 2022-03-08 14:57:25Z vboxsync $
 
 """
 Test Manager Web-UI - Form Helpers.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 93115 $"
+__version__ = "$Revision: 94129 $"
 
 # Standard python imports.
 import copy;
@@ -736,8 +736,7 @@ class WuiHlpForm(object):
 
             # Argument variations.
             aidTestCaseArgs = [] if oMember is None or oMember.aidTestCaseArgs is None else oMember.aidTestCaseArgs;
-            for iVar in range(len(oTestCase.aoTestCaseArgs)):
-                oVar = oTestCase.aoTestCaseArgs[iVar];
+            for iVar, oVar in enumerate(oTestCase.aoTestCaseArgs):
                 if iVar > 0:
                     self._add('  <tr class="%s">\n' % ('tmodd' if iTestCase & 1 else 'tmeven',));
                 self._add(u'   <td align="center">\n'

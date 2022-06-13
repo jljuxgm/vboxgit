@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: logout2.py 93115 2022-01-01 11:31:46Z vboxsync $
+# $Id: logout2.py 94129 2022-03-08 14:57:25Z vboxsync $
 
 """
 VirtualBox Validation Kit - CGI - Log out page for Safari.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 93115 $"
+__version__ = "$Revision: 94129 $"
 
 
 # Standard python imports.
@@ -51,8 +51,7 @@ def main():
     sUserAgent = oSrvGlue.getUserAgent();
     oSrvGlue.setHeaderField('Status', '401 Unauthorized to access the document');
     oSrvGlue.setHeaderField('WWW-authenticate', 'Basic realm="Test Manager"');
-    if  (sUserAgent.startswith('Mozilla/') and sUserAgent.find('AppleWebKit/') > 0) \
-     or False:
+    if sUserAgent.startswith('Mozilla/') and sUserAgent.find('AppleWebKit/') > 0:
         oSrvGlue.write('<p>Attempting to log out an Apple browser...</p>');
     else:
         oSrvGlue.write('<p>Sorry, not sure this will work...</p>');
