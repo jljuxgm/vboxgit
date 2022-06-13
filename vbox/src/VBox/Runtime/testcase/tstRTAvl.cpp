@@ -1,4 +1,4 @@
-/* $Id: tstRTAvl.cpp 93691 2022-02-11 10:10:12Z vboxsync $ */
+/* $Id: tstRTAvl.cpp 93692 2022-02-11 10:10:31Z vboxsync $ */
 /** @file
  * IPRT Testcase - AVL trees.
  */
@@ -1519,7 +1519,6 @@ int main()
     /*
      * Testing.
      */
-#if 0
     unsigned i;
     RTTestSub(hTest, "oGCPhys(32..2048)");
     for (i = 32; i < 2048; i++)
@@ -1539,7 +1538,6 @@ int main()
             break;
 
     avlrogcphys();
-#endif
     avlul();
 
     hardAvlRangeTreeGCPhys(hTest);
