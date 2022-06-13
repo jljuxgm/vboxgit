@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 87466 2021-01-28 16:33:07Z vboxsync $
+# $Id: Makefile.kmk 91775 2021-10-17 10:53:28Z vboxsync $
 ## @file
 # Sub-Makefile for the VMM testcases.
 #
@@ -313,6 +313,9 @@ tstVMMR0CallHost-1_SOURCES.x86 = \
 
 tstVMMR0CallHost-2_EXTENDS = tstVMMR0CallHost-1
 tstVMMR0CallHost-2_DEFS = VMM_R0_SWITCH_STACK
+tstVMMR0CallHost-2_SOURCES.amd64 = \
+	$(tstVMMR0CallHost-1_SOURCES.amd64) \
+	tstVMMR0CallHost-2A.asm
 
 #
 # For testing the VM request queue code.

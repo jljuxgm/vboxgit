@@ -1,4 +1,4 @@
-# $Id: Config.kmk 91768 2021-10-15 19:24:23Z vboxsync $
+# $Id: Config.kmk 91775 2021-10-17 10:53:28Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1996,7 +1996,7 @@ ifeq ($(KBUILD_TARGET),darwin)
  LIB_XPCOM_IMP   = $(PATH_STAGE_LIB)/VBoxXPCOMImp.dylib
  VBOX_LIB_XPCOM_X86     = $(PATH_STAGE_BIN)/VBoxXPCOM-x86.dylib
  LIB_DDU         = $(PATH_STAGE_BIN)/VBoxDDU.dylib
- VBOX_LIB_SUPR0 :=
+ VBOX_LIB_SUPR0  = $(PATH_STAGE_LIB)/SUPR0$(VBOX_SUFF_LIB)
 endif
 if1of ($(KBUILD_TARGET), freebsd haiku linux netbsd openbsd solaris)
  LIB_RUNTIME     = $(PATH_STAGE_BIN)/VBoxRT.so
@@ -8362,7 +8362,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 91768 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 91775 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
