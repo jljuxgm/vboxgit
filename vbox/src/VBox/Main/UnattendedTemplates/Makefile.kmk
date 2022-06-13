@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 93122 2022-01-04 03:03:10Z vboxsync $
+# $Id: Makefile.kmk 93124 2022-01-04 04:28:30Z vboxsync $
 ## @file
 # Top-level makefile for src/VBox/Main/UnattendedTemplates.
 #
@@ -46,7 +46,7 @@ ifdef VBOX_WITH_UNATTENDED
  	win_postinstall.cmd
 
  ifndef VBOX_WITH_OPEN_WATCOM
-  VBoxUnattendedTemplates_SOURCES = \
+  VBoxUnattendedTemplates_SOURCES += \
   	os2_util.exe
  endif
 
