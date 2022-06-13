@@ -1,4 +1,4 @@
-/* $Id: DrvMouseQueue.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: DrvMouseQueue.cpp 89831 2021-06-22 13:09:19Z vboxsync $ */
 /** @file
  * VBox input devices: Mouse queue driver
  */
@@ -248,8 +248,8 @@ static DECLCALLBACK(bool) drvMouseQueueConsumer(PPDMDRVINS pDrvIns, PPDMQUEUEITE
                                             pItem->u.Absolute.dw,
                                             pItem->u.Absolute.fButtons);
     else
-        return false;
-    return RT_SUCCESS(rc);
+        AssertMsgFailedReturn(("enmType=%d\n"), true /* remove buggy data */);
+    return rc != VERR_TRY_AGAIN;
 }
 
 
@@ -401,7 +401,8 @@ static DECLCALLBACK(int) drvMouseQueueConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pC
         return rc;
     }
 
-    rc = PDMDrvHlpQueueCreate(pDrvIns, sizeof(DRVMOUSEQUEUEITEM), cItems, cMilliesInterval, drvMouseQueueConsumer, "Mouse", &pDrv->pQueue);
+    rc = PDMDrvHlpQueueCreate(pDrvIns, sizeof(DRVMOUSEQUEUEITEM), cItems, cMilliesInterval,
+                              drvMouseQueueConsumer, "Mouse", &pDrv->pQueue);
     if (RT_FAILURE(rc))
     {
         AssertMsgFailed(("Failed to create driver: cItems=%d cMilliesInterval=%d rc=%Rrc\n", cItems, cMilliesInterval, rc));

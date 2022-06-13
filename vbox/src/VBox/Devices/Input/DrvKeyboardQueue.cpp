@@ -1,4 +1,4 @@
-/* $Id: DrvKeyboardQueue.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: DrvKeyboardQueue.cpp 89831 2021-06-22 13:09:19Z vboxsync $ */
 /** @file
  * VBox input devices: Keyboard queue driver
  */
@@ -352,7 +352,7 @@ static DECLCALLBACK(bool) drvKbdQueueConsumer(PPDMDRVINS pDrvIns, PPDMQUEUEITEMC
     PDRVKBDQUEUE        pThis = PDMINS_2_DATA(pDrvIns, PDRVKBDQUEUE);
     PDRVKBDQUEUEITEM    pItem = (PDRVKBDQUEUEITEM)pItemCore;
     int rc = pThis->pUpPort->pfnPutEventHid(pThis->pUpPort, pItem->idUsage);
-    return RT_SUCCESS(rc);
+    return rc != VERR_TRY_AGAIN;
 }
 
 
@@ -507,7 +507,8 @@ static DECLCALLBACK(int) drvKbdQueueConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg
         return rc;
     }
 
-    rc = PDMDrvHlpQueueCreate(pDrvIns, sizeof(DRVKBDQUEUEITEM), cItems, cMilliesInterval, drvKbdQueueConsumer, "Keyboard", &pDrv->pQueue);
+    rc = PDMDrvHlpQueueCreate(pDrvIns, sizeof(DRVKBDQUEUEITEM), cItems, cMilliesInterval,
+                              drvKbdQueueConsumer, "Keyboard", &pDrv->pQueue);
     if (RT_FAILURE(rc))
     {
         AssertMsgFailed(("Failed to create driver: cItems=%d cMilliesInterval=%d rc=%Rrc\n", cItems, cMilliesInterval, rc));
