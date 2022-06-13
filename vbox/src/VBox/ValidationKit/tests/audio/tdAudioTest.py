@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tdAudioTest.py 90194 2021-07-14 18:25:17Z vboxsync $
+# $Id: tdAudioTest.py 90195 2021-07-14 18:38:49Z vboxsync $
 
 """
 AudioTest test driver which invokes the VKAT (Validation Kit Audio Test)
@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 90194 $"
+__version__ = "$Revision: 90195 $"
 
 # Standard Python imports.
 import os
@@ -353,6 +353,8 @@ class tdAudioTest(vbox.TestDriver):
 
         self.logVmInfo(oVM);
 
+        fRc = True;
+
         # Reconfigure the VM.
         oSession = self.openSession(oVM);
         if oSession is not None:
@@ -366,20 +368,21 @@ class tdAudioTest(vbox.TestDriver):
             fRc = fRc and oSession.saveSettings()
             fRc = oSession.close() and fRc;
 
-        fRc = True;
-        oSession, oTxsSession = self.startVmAndConnectToTxsViaTcp(oTestVm.sVmName, fCdWait = False);
-        reporter.log("TxsSession: %s" % (oTxsSession,));
-        if oSession is not None:
-            self.addTask(oTxsSession);
+        if fRc:
+            oSession, oTxsSession = self.startVmAndConnectToTxsViaTcp(oTestVm.sVmName, fCdWait = False);
+            reporter.log("TxsSession: %s" % (oTxsSession,));
+            if oSession is not None:
+                self.addTask(oTxsSession);
 
-            fRc, oTxsSession = self.aoSubTstDrvs[0].testIt(oTestVm, oSession, oTxsSession);
+                fRc, oTxsSession = self.aoSubTstDrvs[0].testIt(oTestVm, oSession, oTxsSession);
 
-            # Cleanup.
-            self.removeTask(oTxsSession);
-            if not self.aoSubTstDrvs[0].oDebug.fNoExit:
-                self.terminateVmBySession(oSession);
-        else:
-            fRc = False;
+                # Cleanup.
+                self.removeTask(oTxsSession);
+                if not self.aoSubTstDrvs[0].oDebug.fNoExit:
+                    self.terminateVmBySession(oSession);
+            else:
+                fRc = False;
+
         return fRc;
 
     def onExit(self, iRc):
