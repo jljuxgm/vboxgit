@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 91810 2021-10-18 09:29:56Z vboxsync $ */
+/* $Id: VMMR0.cpp 91811 2021-10-18 09:36:15Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -2359,7 +2359,7 @@ DECL_NO_INLINE(static, int) vmmR0EntryExWorker(PGVM pGVM, VMCPUID idCpu, VMMR0OP
     return rc;
 }
 
-
+#ifndef VMM_R0_SWITCH_STACK /* Not safe unless we disable preemption first. */
 /**
  * This is just a longjmp wrapper function for VMMR0EntryEx calls.
  *
@@ -2376,6 +2376,7 @@ static DECLCALLBACK(int) vmmR0EntryExWrapper(void *pvArgs)
                               pGVCpu->vmmr0.s.u64Arg,
                               pGVCpu->vmmr0.s.pSession);
 }
+#endif
 
 
 /**
