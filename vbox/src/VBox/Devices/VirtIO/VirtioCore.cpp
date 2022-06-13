@@ -1,4 +1,4 @@
-/* $Id: VirtioCore.cpp 92950 2021-12-15 20:54:37Z vboxsync $ */
+/* $Id: VirtioCore.cpp 92995 2021-12-17 07:26:36Z vboxsync $ */
 
 /** @file
  * VirtioCore - Virtio Core (PCI, feature & config mgt, queue mgt & proxy, notification mgt)
@@ -2603,17 +2603,19 @@ int virtioCoreR3Init(PPDMDEVINS pDevIns, PVIRTIOCORE pVirtio, PVIRTIOCORECC pVir
 int virtioCoreRZInit(PPDMDEVINS pDevIns, PVIRTIOCORE pVirtio)
 {
     AssertLogRelReturn(pVirtio == PDMINS_2_DATA(pDevIns, PVIRTIOCORE), VERR_STATE_CHANGED);
-
+    int rc;
 #ifdef FUTURE_OPTIMIZATION
-    int rc = PDMDevHlpSetDeviceCritSect(pDevIns, PDMDevHlpCritSectGetNop(pDevIns));
+     rc = PDMDevHlpSetDeviceCritSect(pDevIns, PDMDevHlpCritSectGetNop(pDevIns));
     AssertRCReturn(rc, rc);
 #endif
-    int rc = PDMDevHlpMmioSetUpContext(pDevIns, pVirtio->hMmioPciCap, virtioMmioWrite, virtioMmioRead, pVirtio);
+    rc = PDMDevHlpMmioSetUpContext(pDevIns, pVirtio->hMmioPciCap, virtioMmioWrite, virtioMmioRead, pVirtio);
     AssertRCReturn(rc, rc);
 
-    rc = PDMDevHlpIoPortSetUpContext(pDevIns, pVirtio->hLegacyIoPorts, virtioLegacyIOPortOut, virtioLegacyIOPortIn, NULL /*pvUser*/);
-    AssertRCReturn(rc, rc);
-
+    if (pVirtio->fOfferLegacy)
+    {
+        rc = PDMDevHlpIoPortSetUpContext(pDevIns, pVirtio->hLegacyIoPorts, virtioLegacyIOPortOut, virtioLegacyIOPortIn, NULL /*pvUser*/);
+        AssertRCReturn(rc, rc);
+    }
     return rc;
 }
 
