@@ -1,4 +1,4 @@
-; $Id: IEMAllAImpl.asm 94190 2022-03-11 21:30:23Z vboxsync $
+; $Id: IEMAllAImpl.asm 94191 2022-03-11 23:26:08Z vboxsync $
 ;; @file
 ; IEM - Instruction Implementation in Assembly.
 ;
@@ -1444,13 +1444,13 @@ ENDPROC iemAImpl_ %+ %1 %+ _u32
 BEGINPROC_FASTCALL iemAImpl_ %+ %1 %+ _u64, 12
         PROLOGUE_3_ARGS
         IEM_MAYBE_LOAD_FLAGS A2, %2, %3
- %ifdef ASM_CALL64_GCC
+  %ifdef ASM_CALL64_GCC
         mov     cl, A1_8
         %1      qword [A0], cl
- %else
+  %else
         xchg    A1, A0
         %1      qword [A1], cl
- %endif
+  %endif
         IEM_SAVE_FLAGS       A2, %2, %3
         EPILOGUE_3_ARGS
 ENDPROC iemAImpl_ %+ %1 %+ _u64
