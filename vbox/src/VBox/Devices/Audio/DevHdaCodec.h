@@ -1,4 +1,4 @@
-/* $Id: DevHdaCodec.h 89888 2021-06-24 12:52:47Z vboxsync $ */
+/* $Id: DevHdaCodec.h 90120 2021-07-09 12:46:18Z vboxsync $ */
 /** @file
  * Intel HD Audio Controller Emulation - Codec, Sigmatel/IDT STAC9220.
  */
@@ -570,7 +570,7 @@ typedef struct CODECVERB
     /**
      * Function pointer for implementation callback.
      *
-     * This is always a valid  pointer in ring-3, while elsewhere a NULL indicates
+     * This is always a valid pointer in ring-3, while elsewhere a NULL indicates
      * that we must return to ring-3 to process it.
      */
     DECLCALLBACKMEMBER(int,    pfn, (PHDACODEC pThis, PHDACODECCC pThisCC, uint32_t uCmd, uint64_t *puResp));
