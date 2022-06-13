@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tdAudioTest.py 91119 2021-09-06 09:35:26Z vboxsync $
+# $Id: tdAudioTest.py 91123 2021-09-06 13:23:14Z vboxsync $
 
 """
 AudioTest test driver which invokes the VKAT (Validation Kit Audio Test)
@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 91119 $"
+__version__ = "$Revision: 91123 $"
 
 # Standard Python imports.
 from datetime import datetime
@@ -204,15 +204,15 @@ class tdAudioTest(vbox.TestDriver):
         """
         return oTestVm.pathJoin(self.getGuestTempDir(oTestVm), 'vkat-guest.log');
 
-    def locateGstVkat(self, oSession, oTxsSession):
+    def locateGstBinary(self, oSession, oTxsSession, asPaths):
         """
-        Returns guest side path to VKAT.
+        Locates a guest binary on the guest by checking the paths in \a asPaths.
         """
-        for sVkatPath in self.asGstVkatPaths:
-            reporter.log2('Checking for VKAT at: %s ...' % (sVkatPath));
-            if self.txsIsFile(oSession, oTxsSession, sVkatPath, fIgnoreErrors = True):
-                return (True, sVkatPath);
-        reporter.error('Unable to find guest VKAT in any of these places:\n%s' % ('\n'.join(self.asGstVkatPaths),));
+        for sCurPath in asPaths:
+            reporter.log2('Checking for \"%s\" ...' % (sCurPath));
+            if self.txsIsFile(oSession, oTxsSession, sCurPath, fIgnoreErrors = True):
+                return (True, sCurPath);
+        reporter.error('Unable to find guest binary in any of these places:\n%s' % ('\n'.join(asPaths),));
         return (False, "");
 
     def executeHstLoop(self, sWhat, asArgs, asEnv = None, fAsAdmin = False):
@@ -408,10 +408,11 @@ class tdAudioTest(vbox.TestDriver):
         reporter.log('Guest audio test output path is \"%s\"' % (sPathAudioTemp));
         reporter.log('Guest audio test tag is \"%s\"' % (sTag));
 
-        fRc, sVkatExe = self.locateGstVkat(oSession, oTxsSession);
+        fRc, sVkatExe = self.locateGstBinary(oSession, oTxsSession, self.asGstVkatPaths);
         if fRc:
             reporter.log('Using VKAT on guest at \"%s\"' % (sVkatExe));
 
+            sCmd   = '';
             asArgs = [];
 
             asArgsVkat = [ sVkatExe, 'test', '--mode', 'guest', '--probe-backends', \
@@ -434,13 +435,20 @@ class tdAudioTest(vbox.TestDriver):
                 # To work around this, we use the (hopefully) configured user "vbox" and run it under its behalf,
                 # as the Test Execution Service (TxS) currently does not implement impersonation yet.
                 #
-                sCmd     = '/usr/bin/su';
-                sCmdArgs = '';
-                for sArg in asArgs:
-                    sCmdArgs += sArg + " ";
-                asArgs   = [ sCmd, 'vbox', '-c', sCmdArgs ];
-            else: # Just start it with the same privileges as TxS.
-                sCmd     = sVkatExe;
+                asSU         = [ '/bin/su',
+                                 '/usr/bin/su',
+                                 '/usr/local/bin/su' ];
+                fRc, sCmd    = self.locateGstBinary(oSession, oTxsSession, asSU);
+                if fRc:
+                    sCmdArgs = '';
+                    for sArg in asArgs:
+                        sCmdArgs += sArg + " ";
+                    asArgs   = [ sCmd, 'vbox', '-c', sCmdArgs ];
+                else:
+                    reporter.log('Unable to find SU on guest, falling back to regular starting ...')
+
+            if not sCmd: # Just start it with the same privileges as TxS.
+                sCmd = sVkatExe;
 
             reporter.log2('startVkatOnGuest: sCmd=%s' % (sCmd,));
             reporter.log2('startVkatOnGuest: asArgs=%s' % (asArgs,));
