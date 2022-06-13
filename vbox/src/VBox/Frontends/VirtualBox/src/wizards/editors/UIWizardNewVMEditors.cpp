@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMEditors.cpp 90208 2021-07-15 09:51:10Z vboxsync $ */
+/* $Id: UIWizardNewVMEditors.cpp 90232 2021-07-16 14:27:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class implementation.
  */
@@ -190,7 +190,7 @@ void UIGAInstallationGroupBox::sltToggleWidgetsEnabled(bool fEnabled)
         m_pGAISOPathLabel->setEnabled(fEnabled);
 
     if (m_pGAISOFilePathSelector)
-        m_pGAISOFilePathSelector->setEnabled(m_pGAISOFilePathSelector);
+        m_pGAISOFilePathSelector->setEnabled(fEnabled);
 }
 
 

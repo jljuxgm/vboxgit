@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMEditors.h 90230 2021-07-16 11:56:03Z vboxsync $ */
+/* $Id: UIWizardNewVMEditors.h 90232 2021-07-16 14:27:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMEditors class declaration.
  */
@@ -92,7 +92,7 @@ public:
         void mark(bool fError, const QString &strErrorMessage = QString());
     /** @} */
 
-public slots:
+private slots:
 
     void sltToggleWidgetsEnabled(bool fEnabled);
 

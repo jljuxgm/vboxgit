@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.h 90225 2021-07-16 10:56:46Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.h 90232 2021-07-16 14:27:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class declaration.
  */
@@ -87,7 +87,12 @@ private slots:
     void sltMemorySizeChanged(int iValue);
     void sltCPUCountChanged(int iCount);
     void sltEFIEnabledChanged(bool fEnabled);
+    void sltPasswordChanged(const QString &strPassword);
+    void sltUserNameChanged(const QString &strUserName);
 
+    void sltHostnameDomainNameChanged(const QString &strHostnameDomainName);
+    void sltProductKeyChanged(const QString &strProductKey);
+    void sltStartHeadlessChanged(bool fStartHeadless);
 
 private:
 
@@ -127,6 +132,7 @@ private:
 
     void updateVirtualMediumPathFromMachinePathName();
     void updateWidgetAterMediumFormatChange();
+    void updateHostnameDomainNameFromMachineName();
     void setEnableNewDiskWidgets(bool fEnable);
     void setVirtualDiskFromDiskCombo();
     void setSkipCheckBoxEnable();
