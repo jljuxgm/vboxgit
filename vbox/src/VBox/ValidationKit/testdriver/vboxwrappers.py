@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 90244 2021-07-19 17:18:35Z vboxsync $
+# $Id: vboxwrappers.py 91055 2021-09-01 10:41:30Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 90244 $"
+__version__ = "$Revision: 91055 $"
 
 
 # Standard Python imports.
@@ -2164,12 +2164,14 @@ class SessionWrapper(TdTaskBase):
         if enmType is not None: pass
         return True;
 
-    def setupAudio(self, eAudioControllerType, fEnable = True, eAudioDriverType = None):
+    def setupAudio(self, eAudioControllerType, fEnable = True, fEnableIn = False, fEnableOut = True, eAudioDriverType = None):
         """
         Sets up audio.
 
         :param eAudioControllerType:    The audio controller type (vboxcon.AudioControllerType_XXX).
         :param fEnable:                 Whether to enable or disable the audio controller (default enable).
+        :param fEnableIn:               Whether to enable or disable audio input (default disable).
+        :param fEnableOut:              Whether to enable or disable audio output (default enable).
         :param eAudioDriverType:        The audio driver type (vboxcon.AudioDriverType_XXX), picks something suitable
                                         if None is passed (default).
         """
@@ -2195,8 +2197,14 @@ class SessionWrapper(TdTaskBase):
         try:    oAudioAdapter.enabled = fEnable;
         except: return reporter.errorXcpt('Failed to set the "enabled" property to %s.' % (fEnable,));
 
-        reporter.log('set audio adapter type to %d, driver to %d, and enabled to %s'
-                     % (eAudioControllerType, eAudioDriverType, fEnable,));
+        try:    oAudioAdapter.enabledIn = fEnableIn;
+        except: return reporter.errorXcpt('Failed to set the "enabledIn" property to %s.' % (fEnable,));
+
+        try:    oAudioAdapter.enabledOut = fEnableOut;
+        except: return reporter.errorXcpt('Failed to set the "enabledOut" property to %s.' % (fEnable,));
+
+        reporter.log('set audio adapter type to %d, driver to %d, and enabled to %s (input is %s, output is %s)'
+                     % (eAudioControllerType, eAudioDriverType, fEnable, fEnableIn, fEnableOut,));
         self.oTstDrv.processPendingEvents();
         return True;
 
