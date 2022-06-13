@@ -1,4 +1,4 @@
-/* $Id: asn1-ut-dyntype-decode.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: asn1-ut-dyntype-decode.cpp 93244 2022-01-14 23:51:02Z vboxsync $ */
 /** @file
  * IPRT - ASN.1, Dynamic Type, Decoding.
  */
@@ -191,10 +191,7 @@ RTDECL(int) RTAsn1DynType_DecodeAsn1(PRTASN1CURSOR pCursor, uint32_t fFlags, PRT
                                                pDynType->u.Core.uTag, pDynType->u.Core.uTag);
             }
         else
-        {
-            RTAsn1CursorSkip(pCursor, pDynType->u.Core.cb);
-            return VINF_SUCCESS;
-        }
+            Assert(pDynType->enmType == RTASN1TYPE_CORE);
 
         /*
          * Restore the cursor and redo with specific type.
