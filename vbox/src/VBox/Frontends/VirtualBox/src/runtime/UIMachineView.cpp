@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 94033 2022-03-01 11:34:06Z vboxsync $ */
+/* $Id: UIMachineView.cpp 94034 2022-03-01 11:37:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -805,7 +805,11 @@ void UIMachineView::sltMousePointerShapeChange()
          * compose the cursor on the basis of shape and mask both: */
         updateMousePointerPixmapScaling(pixmapShape, uXHot, uYHot);
         /// @todo updateMousePointerPixmapScaling(pixmapMask, uXHot, uYHot);
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0) /** @todo qt6: this is probably inefficient */
+        m_cursor = QCursor(QBitmap(pixmapShape), QBitmap(pixmapMask), uXHot, uYHot);
+#else
         m_cursor = QCursor(pixmapShape, pixmapMask, uXHot, uYHot);
+#endif
     }
 
     /* Let the listeners know: */
