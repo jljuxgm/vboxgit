@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 94909 2022-05-08 15:41:38Z vboxsync $ */
+/* $Id: CPUMR3CpuId.cpp 94911 2022-05-08 15:46:51Z vboxsync $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -4565,7 +4565,6 @@ int cpumR3InitCpuIdAndMsrs(PVM pVM, PCCPUMMSRS pHostMsrs)
     RT_ZERO(Config);
 
     bool const fNestedPagingAndFullGuestExec = VM_IS_NEM_ENABLED(pVM)
-                                            || VM_IS_EXEC_ENGINE_IEM(pVM)
                                             || HMAreNestedPagingAndFullGuestExecEnabled(pVM);
     int rc = cpumR3CpuIdReadConfig(pVM, &Config, pCpumCfg, fNestedPagingAndFullGuestExec);
     AssertRCReturn(rc, rc);
