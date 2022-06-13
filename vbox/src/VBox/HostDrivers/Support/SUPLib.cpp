@@ -1,4 +1,4 @@
-/* $Id: SUPLib.cpp 92718 2021-12-02 21:44:14Z vboxsync $ */
+/* $Id: SUPLib.cpp 92837 2021-12-08 21:56:50Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Common code.
  */
@@ -586,8 +586,9 @@ SUPR3DECL(int) SUPR3Term(bool fForced)
 
 SUPR3DECL(bool) SUPR3IsDriverless(void)
 {
-    Assert(g_cInits > 0);
-    return g_supLibData.fDriverless;
+    /* Assert(g_cInits > 0); - tstSSM does not initialize SUP, but SSM calls to
+       check status, so return driverless if not initialized. */
+    return g_supLibData.fDriverless || g_cInits == 0;
 }
 
 
