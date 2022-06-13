@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.h 91179 2021-09-09 13:16:15Z vboxsync $ */
+/* $Id: UINotificationObjects.h 91180 2021-09-09 13:50:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects declarations.
  */
@@ -219,6 +219,12 @@ public:
         /** Notifies about inability to acquire IVirtualBox parameter.
           * @param  comVBox  Brings the object parameter get acquired from. */
         static void cannotAcquireVirtualBoxParameter(const CVirtualBox &comVBox);
+        /** Notifies about inability to acquire IExtPackManager parameter.
+          * @param  comVBox  Brings the object parameter get acquired from. */
+        static void cannotAcquireExtensionPackManagerParameter(const CExtPackManager &comEPManager);
+        /** Notifies about inability to acquire IExtPack parameter.
+          * @param  comPackage  Brings the object parameter get acquired from. */
+        static void cannotAcquireExtensionPackParameter(const CExtPack &comPackage);
         /** Notifies about inability to acquire IHost parameter.
           * @param  comHost  Brings the object parameter get acquired from. */
         static void cannotAcquireHostParameter(const CHost &comHost);
@@ -307,6 +313,18 @@ public:
           * @param  comVBox      Brings common VBox object trying to open machine.
           * @param  strLocation  Brings the machine location. */
         static void cannotOpenMachine(const CVirtualBox &comVBox, const QString &strLocation);
+        /** Notifies about inability to get ext pack manager.
+          * @param  comVBox      Brings common VBox object trying to open machine. */
+        static void cannotGetExtensionPackManager(const CVirtualBox &comVBox);
+
+        /** Notifies about inability to open extension pack.
+          * @param  comExtPackManager  Brings extension pack manager trying to open extension pack.
+          * @param  strFilename        Brings extension pack file name. */
+        static void cannotOpenExtPack(const CExtPackManager &comExtPackManager, const QString &strFilename);
+        /** Notifies about inability to read extpack file.
+          * @param  comExtPackFile  Brings extension pack manager trying to open extension pack.
+          * @param  strFilename     Brings extension pack file name. */
+        static void cannotOpenExtPackFile(const CExtPackFile &comExtPackFile, const QString &strFilename);
 
         /** Notifies about inability to find host network interface.
           * @param  comHost  Brings the host being search through.
