@@ -1,4 +1,4 @@
-/* $Id: vkatCommon.cpp 91602 2021-10-06 17:35:59Z vboxsync $ */
+/* $Id: vkatCommon.cpp 91603 2021-10-06 17:40:53Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) - Self test code.
  */
@@ -44,6 +44,7 @@
 # include <sys/ioctl.h>
 # include <sys/mman.h>
 # include <sys/soundcard.h>
+# include <unistd.h>
 #endif
 #ifdef RT_OS_WINDOWS
 # include <iprt/win/windows.h>
