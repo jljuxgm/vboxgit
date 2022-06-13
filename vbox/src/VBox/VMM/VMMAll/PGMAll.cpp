@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 91986 2021-10-22 03:21:40Z vboxsync $ */
+/* $Id: PGMAll.cpp 91989 2021-10-22 03:33:13Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -3827,7 +3827,6 @@ VMMDECL(unsigned) PGMAssertCR3(PVMCC pVM, PVMCPUCC pVCpu, uint64_t cr3, uint64_t
 #endif /* VBOX_STRICT */
 
 
-#ifdef VBOX_WITH_NESTED_HWVIRT_VMX_EPT
 /**
  * Updates PGM's copy of the guest's EPT pointer.
  *
@@ -3841,5 +3840,4 @@ VMM_INT_DECL(void) PGMSetGuestEptPtr(PVMCPUCC pVCpu, uint64_t uEptPtr)
 {
     pVCpu->pgm.s.uEptPtr = uEptPtr;
 }
-#endif
 
