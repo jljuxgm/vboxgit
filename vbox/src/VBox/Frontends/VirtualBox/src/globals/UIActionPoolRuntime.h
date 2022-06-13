@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.h 93990 2022-02-28 15:34:57Z vboxsync $ */
+/* $Id: UIActionPoolRuntime.h 94651 2022-04-20 12:27:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolRuntime class declaration.
  */
@@ -50,6 +50,7 @@ enum UIActionIndexRT
     UIActionIndexRT_M_Machine_S_SaveState,
     UIActionIndexRT_M_Machine_S_Shutdown,
     UIActionIndexRT_M_Machine_S_PowerOff,
+    UIActionIndexRT_M_Machine_S_ShowLogDialog,
 
     /* 'View' menu actions: */
     UIActionIndexRT_M_View,
@@ -119,7 +120,6 @@ enum UIActionIndexRT
     UIActionIndexRT_M_Debug_S_ShowStatistics,
     UIActionIndexRT_M_Debug_S_ShowCommandLine,
     UIActionIndexRT_M_Debug_T_Logging,
-    UIActionIndexRT_M_Debug_S_ShowLogDialog,
     UIActionIndexRT_M_Debug_S_GuestControlConsole,
 #endif
 
