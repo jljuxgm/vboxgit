@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageExpert.cpp 91367 2021-09-24 15:42:38Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageExpert.cpp 91410 2021-09-27 16:31:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageExpert class implementation.
  */
@@ -34,8 +34,8 @@
 #include "UIWizardNewCloudVMPageExpert.h"
 
 /* Namespaces: */
-using namespace UIWizardNewCloudVMPage1;
-using namespace UIWizardNewCloudVMPage2;
+using namespace UIWizardNewCloudVMSource;
+using namespace UIWizardNewCloudVMProperties;
 
 
 UIWizardNewCloudVMPageExpert::UIWizardNewCloudVMPageExpert(bool fFullWizard)

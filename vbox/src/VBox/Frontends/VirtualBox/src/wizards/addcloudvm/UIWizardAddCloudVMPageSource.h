@@ -1,4 +1,4 @@
-/* $Id: UIWizardAddCloudVMPageSource.h 91367 2021-09-24 15:42:38Z vboxsync $ */
+/* $Id: UIWizardAddCloudVMPageSource.h 91410 2021-09-27 16:31:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardAddCloudVMPageSource class declaration.
  */
@@ -50,8 +50,8 @@ enum
     ProfileData_Name = Qt::UserRole + 1
 };
 
-/** Namespace for Source page of the Add Cloud VM wizard. */
-namespace UIWizardAddCloudVMPage1
+/** Namespace for source page of the Add Cloud VM wizard. */
+namespace UIWizardAddCloudVMSource
 {
     /** Populates @a pCombo with known providers. */
     void populateProviders(QIComboBox *pCombo);
@@ -69,15 +69,15 @@ namespace UIWizardAddCloudVMPage1
     QStringList currentListWidgetData(QListWidget *pList);
 }
 
-/** UINativeWizardPage extension for Source page of the Add Cloud VM wizard,
-  * based on UIWizardAddCloudVMPage1 namespace functions. */
+/** UINativeWizardPage extension for source page of the Add Cloud VM wizard,
+  * based on UIWizardAddCloudVMSource namespace functions. */
 class UIWizardAddCloudVMPageSource : public UINativeWizardPage
 {
     Q_OBJECT;
 
 public:
 
-    /** Constructs Source page. */
+    /** Constructs source page. */
     UIWizardAddCloudVMPageSource();
 
 protected:

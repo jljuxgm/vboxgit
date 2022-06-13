@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageProperties.cpp 91367 2021-09-24 15:42:38Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageProperties.cpp 91410 2021-09-27 16:31:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageProperties class implementation.
  */
@@ -26,15 +26,15 @@
 #include "UIWizardNewCloudVMPageProperties.h"
 
 /* Namespaces: */
-using namespace UIWizardNewCloudVMPage2;
+using namespace UIWizardNewCloudVMProperties;
 
 
 /*********************************************************************************************************************************
-*   Namespace UIWizardNewCloudVMPage2 implementation.                                                                            *
+*   Namespace UIWizardNewCloudVMProperties implementation.                                                                       *
 *********************************************************************************************************************************/
 
-void UIWizardNewCloudVMPage2::refreshFormPropertiesTable(UIFormEditorWidgetPointer pFormEditor,
-                                                         const CVirtualSystemDescriptionForm &comForm)
+void UIWizardNewCloudVMProperties::refreshFormPropertiesTable(UIFormEditorWidgetPointer pFormEditor,
+                                                              const CVirtualSystemDescriptionForm &comForm)
 {
     /* Sanity check: */
     AssertPtrReturnVoid(pFormEditor.data());
