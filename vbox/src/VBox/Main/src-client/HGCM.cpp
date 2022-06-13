@@ -1,4 +1,4 @@
-/* $Id: HGCM.cpp 91748 2021-10-14 21:01:31Z vboxsync $ */
+/* $Id: HGCM.cpp 92696 2021-12-02 12:32:00Z vboxsync $ */
 /** @file
  * HGCM (Host-Guest Communication Manager)
  */
@@ -1151,7 +1151,7 @@ int HGCMService::instanceCreate(const char *pszServiceLibrary, const char *pszSe
             m_pHgcmPort = pHgcmPort;
 
             /* Register statistics: */
-            STAMR3RegisterFU(pUVM, &m_StatHandleMsg, STAMTYPE_PROFILE, STAMVISIBILITY_ALWAYS, STAMUNIT_OCCURENCES,
+            STAMR3RegisterFU(pUVM, &m_StatHandleMsg, STAMTYPE_PROFILE, STAMVISIBILITY_ALWAYS, STAMUNIT_TICKS_PER_OCCURENCE,
                              "Message handling", "/HGCM/%s/Msg", pszServiceName);
             STAMR3RegisterFU(pUVM, &m_StatTooManyCalls, STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_OCCURENCES,
                              "Too many calls (per client)", "/HGCM/%s/TooManyCalls", pszServiceName);
