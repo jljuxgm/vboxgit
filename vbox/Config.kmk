@@ -1,4 +1,4 @@
-# $Id: Config.kmk 93506 2022-01-31 17:47:47Z vboxsync $
+# $Id: Config.kmk 93738 2022-02-14 18:58:06Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -563,6 +563,10 @@ endif
 # Enable vmsvga (svga2) graphics device variant, 3D part, VGPU10 DX commands
 ifdef VBOX_WITH_VMSVGA3D
  VBOX_WITH_VMSVGA3D_DX=1
+ # Enable DXVK library for supporting VGPU10 DX on non Windows hosts
+ if1of ($(KBUILD_TARGET), linux)
+  VBOX_WITH_DXVK = 1
+ endif
 endif
 # Enable the generic 3D settings support if at least one 3D capable solution is enabled
 ifdef VBOX_WITH_VMSVGA3D
@@ -8833,7 +8837,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 93506 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 93738 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
