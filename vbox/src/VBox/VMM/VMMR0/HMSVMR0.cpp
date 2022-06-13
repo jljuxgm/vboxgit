@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 91287 2021-09-16 21:30:45Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 91288 2021-09-16 21:33:01Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -4673,6 +4673,7 @@ static VBOXSTRICTRC hmR0SvmRunGuestCodeNested(PVMCPUCC pVCpu, uint32_t *pcLoops)
     HMSVM_ASSERT_IN_NESTED_GUEST(pCtx);
     Assert(pcLoops);
     Assert(*pcLoops <= pVCpu->CTX_SUFF(pVM)->hmr0.s.cMaxResumeLoops);
+    /** @todo r=bird: Sharing this with ring-3 isn't safe in the long run, I fear... */
     RTHCPHYS const HCPhysVmcb = GVMMR0ConvertGVMPtr2HCPhys(pVCpu->pGVM, &pCtx->hwvirt.svm.Vmcb);
 
     SVMTRANSIENT SvmTransient;
