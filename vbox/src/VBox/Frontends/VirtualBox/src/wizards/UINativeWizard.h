@@ -1,4 +1,4 @@
-/* $Id: UINativeWizard.h 92110 2021-10-27 15:48:02Z vboxsync $ */
+/* $Id: UINativeWizard.h 92149 2021-10-29 13:54:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINativeWizard class declaration.
  */
@@ -32,7 +32,6 @@
 
 /* Forward declarations: */
 class QLabel;
-class QProgressBar;
 class QPushButton;
 class QStackedWidget;
 class QVBoxLayout;
@@ -138,16 +137,6 @@ protected:
 
 protected slots:
 
-    /** Handles signal about progress has started. */
-    void sltHandleProgressStarted();
-    /** Handles signal about progress changed.
-      * @param  uPercent  Brings the progress percentage. */
-    void sltHandleProgressChange(ulong uPercent);
-    /** Handles signal about progress has finished. */
-    void sltHandleProgressFinished();
-
-private slots:
-
     /** Handles current-page change to page with @a iIndex. */
     void sltCurrentIndexChanged(int iIndex = -1);
     /** Handles page validity changes. */
@@ -205,10 +194,6 @@ private:
     QLabel                               *m_pLabelPageTitle;
     /** Holds the widget-stack instance. */
     QStackedWidget                       *m_pWidgetStack;
-    /** Holds the progress-stack instance. */
-    QStackedWidget                       *m_pProgressStack;
-    /** Holds the progress-bar instance. */
-    QProgressBar                         *m_pProgressBar;
     /** Holds button instance map. */
     QMap<WizardButtonType, QPushButton*>  m_buttons;
 
