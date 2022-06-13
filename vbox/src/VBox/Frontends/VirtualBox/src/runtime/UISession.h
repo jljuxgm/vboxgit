@@ -1,4 +1,4 @@
-/* $Id: UISession.h 90890 2021-08-25 16:46:48Z vboxsync $ */
+/* $Id: UISession.h 90893 2021-08-25 17:15:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -82,8 +82,8 @@ public:
     void saveState();
     /** Calls for guest shutdown to close Runtime UI. */
     void shutdown();
-    /** Powers VM down, then closes Runtime UI. */
-    bool powerOff(bool fIncludingDiscard, bool &fServerCrashed);
+    /** Powers VM off, then closes Runtime UI. */
+    void powerOff(bool fIncludingDiscard);
 
     /** Returns the session instance. */
     CSession& session() { return m_session; }

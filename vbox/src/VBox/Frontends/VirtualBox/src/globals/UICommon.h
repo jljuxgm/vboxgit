@@ -1,4 +1,4 @@
-/* $Id: UICommon.h 90760 2021-08-20 15:06:17Z vboxsync $ */
+/* $Id: UICommon.h 90893 2021-08-25 17:15:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class declaration.
  */
@@ -519,7 +519,7 @@ public:
         CSession tryToOpenSessionFor(CMachine &comMachine);
 
         /** Restores current snapshot for machine with certain @a uMachineId. */
-        bool restoreCurrentSnapshot(const QUuid &uMachineId);
+        void restoreCurrentSnapshot(const QUuid &uMachineId);
     /** @} */
 
     /** @name Cloud Virtual Machine stuff.

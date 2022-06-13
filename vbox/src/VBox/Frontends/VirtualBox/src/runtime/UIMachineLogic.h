@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 90890 2021-08-25 16:46:48Z vboxsync $ */
+/* $Id: UIMachineLogic.h 90893 2021-08-25 17:15:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -141,9 +141,6 @@ public:
     UIMachineView* dockPreviewView() const;
     virtual void updateDock();
 #endif /* VBOX_WS_MAC */
-
-    /** Power off VM, then close Runtime UI. */
-    void powerOff(bool fDiscardingState);
 
     /* API: 3D overlay visibility stuff: */
     virtual void notifyAbout3DOverlayVisibilityChange(bool fVisible);

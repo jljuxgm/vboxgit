@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 90890 2021-08-25 16:46:48Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 90893 2021-08-25 17:15:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class implementation.
  */
@@ -469,7 +469,7 @@ void UIMachineWindow::closeEvent(QCloseEvent *pCloseEvent)
             /* Power VM off: */
             LogRel(("GUI: Request for close-action to power VM off.\n"));
             const bool fDiscardStateOnPowerOff = gEDataManager->discardStateOnPowerOff(uiCommon().managedVMUuid());
-            machineLogic()->powerOff(machine().GetSnapshotCount() > 0 && fDiscardStateOnPowerOff);
+            uisession()->powerOff(machine().GetSnapshotCount() > 0 && fDiscardStateOnPowerOff);
             break;
         }
         default:

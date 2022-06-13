@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 90869 2021-08-25 10:21:27Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 90893 2021-08-25 17:15:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -1818,17 +1818,17 @@ void UIVirtualBoxManager::sltPerformPowerOffMachine()
         /* For local machine: */
         if (pItem->itemType() == UIVirtualMachineItemType_Local)
         {
-            /* Powering VM down: */
-            UINotificationProgressMachinePowerDown *pNotification =
-                new UINotificationProgressMachinePowerDown(pItem->toLocal()->machine());
+            /* Powering VM off: */
+            UINotificationProgressMachinePowerOff *pNotification =
+                new UINotificationProgressMachinePowerOff(pItem->toLocal()->machine());
             gpNotificationCenter->append(pNotification);
         }
         /* For real cloud machine: */
         else if (pItem->itemType() == UIVirtualMachineItemType_CloudReal)
         {
-            /* Powering cloud VM down: */
-            UINotificationProgressCloudMachinePowerDown *pNotification =
-                new UINotificationProgressCloudMachinePowerDown(pItem->toCloud()->machine());
+            /* Powering cloud VM off: */
+            UINotificationProgressCloudMachinePowerOff *pNotification =
+                new UINotificationProgressCloudMachinePowerOff(pItem->toCloud()->machine());
             gpNotificationCenter->append(pNotification);
         }
     }
