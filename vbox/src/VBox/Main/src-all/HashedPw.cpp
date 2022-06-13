@@ -1,4 +1,4 @@
-/* $Id: HashedPw.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: HashedPw.cpp 94912 2022-05-08 19:05:31Z vboxsync $ */
 /** @file
  * Main - Password Hashing
  */
@@ -64,8 +64,8 @@ bool VBoxIsPasswordHashed(RTCString const *a_pstrPassword)
 
     /* hash */
     uint8_t abHash[RTSHA512_HASH_SIZE];
-    int rc = RTSha512FromString(pszSaltEnd + 1, abHash);
-    return RT_SUCCESS(rc);
+    int vrc = RTSha512FromString(pszSaltEnd + 1, abHash);
+    return RT_SUCCESS(vrc);
 }
 
 
@@ -95,8 +95,8 @@ void VBoxHashPassword(RTCString *a_pstrPassword)
         /* hash */
         uint8_t abHash[RTSHA512_HASH_SIZE];
         RTSha512(a_pstrPassword->c_str(), a_pstrPassword->length(), abHash);
-        int rc = RTSha512ToString(abHash, pszHashedPw, sizeof(szHashedPw) - (size_t)(pszHashedPw - &szHashedPw[0]));
-        AssertReleaseRC(rc);
+        int vrc = RTSha512ToString(abHash, pszHashedPw, sizeof(szHashedPw) - (size_t)(pszHashedPw - &szHashedPw[0]));
+        AssertReleaseRC(vrc);
     }
 
     *a_pstrPassword = szHashedPw;
