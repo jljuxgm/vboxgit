@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: utils.py 92887 2021-12-13 15:43:29Z vboxsync $
+# $Id: utils.py 92888 2021-12-13 15:45:16Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 92887 $"
+__version__ = "$Revision: 92888 $"
 
 
 # Standard Python imports.
@@ -984,7 +984,7 @@ def processExists(uPid):
             hProcess.Close();
             fRc = True;
     elif sHostOs == 'linux':
-        fRc = os.path.exists('/proc/%s' % (uPid,);
+        fRc = os.path.exists('/proc/%s' % (uPid,));
     else:
         try:
             os.kill(uPid, 0);
