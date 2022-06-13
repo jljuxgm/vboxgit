@@ -1,4 +1,4 @@
-/* $Id: UIMediumItem.h 91132 2021-09-06 19:05:03Z vboxsync $ */
+/* $Id: UIMediumItem.h 91221 2021-09-14 07:17:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumItem class declaration.
  */
@@ -46,8 +46,6 @@ public:
       * @param  pParent    Brings the parent item reference. */
     UIMediumItem(const UIMedium &guiMedium, QITreeWidgetItem *pParent);
 
-    /** Copies UIMedium wrapped by <i>this</i> item. */
-    //virtual bool copy();
     /** Moves UIMedium wrapped by <i>this</i> item. */
     virtual bool move();
     /** Removes UIMedium wrapped by <i>this</i> item. */

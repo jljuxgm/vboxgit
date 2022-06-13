@@ -1,4 +1,4 @@
-/* $Id: UIMediumItem.cpp 91132 2021-09-06 19:05:03Z vboxsync $ */
+/* $Id: UIMediumItem.cpp 91221 2021-09-14 07:17:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumItem class implementation.
  */
@@ -89,21 +89,6 @@ bool UIMediumItem::move()
     /* Positive: */
     return true;
 }
-
-// bool UIMediumItem::copy()
-// {
-//     /* Show Clone VD wizard: */
-//     // UISafePointerWizard pWizard = new UIWizardCloneVD(treeWidget(), medium().medium());
-//     // pWizard->prepare();
-//     // pWizard->exec();
-
-//     // /* Delete if still exists: */
-//     // if (pWizard)
-//     //     delete pWizard;
-
-//     // /* True by default: */
-//     return true;
-// }
 
 bool UIMediumItem::release(bool fInduced /* = false */)
 {
