@@ -1,4 +1,4 @@
-/* $Id: IOMInternal.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: IOMInternal.h 93650 2022-02-08 10:43:53Z vboxsync $ */
 /** @file
  * IOM - Internal header file.
  */
@@ -570,9 +570,9 @@ void                iomR0MmioInitPerVMData(PGVM pGVM);
 #endif
 
 #ifndef IN_RING3
-DECLEXPORT(FNPGMRZPHYSPFHANDLER)    iomMmioPfHandlerNew;
+DECLCALLBACK(FNPGMRZPHYSPFHANDLER)  iomMmioPfHandlerNew;
 #endif
-PGM_ALL_CB2_PROTO(FNPGMPHYSHANDLER) iomMmioHandlerNew;
+DECLCALLBACK(FNPGMPHYSHANDLER)      iomMmioHandlerNew;
 
 /* IOM locking helpers. */
 #ifdef IOM_WITH_CRIT_SECT_RW

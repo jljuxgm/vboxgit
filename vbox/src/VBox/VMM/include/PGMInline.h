@@ -1,4 +1,4 @@
-/* $Id: PGMInline.h 93554 2022-02-02 22:57:02Z vboxsync $ */
+/* $Id: PGMInline.h 93650 2022-02-08 10:43:53Z vboxsync $ */
 /** @file
  * PGM - Inlined functions.
  */
@@ -987,6 +987,48 @@ DECLINLINE(PPGMPHYSHANDLER) pgmHandlerPhysicalLookup(PVMCC pVM, RTGCPHYS GCPhys)
     if (pHandler)
         pVM->pgm.s.CTX_SUFF(pLastPhysHandler) = pHandler;
     return pHandler;
+}
+
+
+/**
+ * Converts a handle to a pointer.
+ *
+ * @returns Pointer on success, NULL on failure (asserted).
+ * @param   pVM     The cross context VM structure.
+ * @param   hType   Physical access handler type handle.
+ */
+DECLINLINE(PCPGMPHYSHANDLERTYPEINT) pgmHandlerPhysicalTypeHandleToPtr(PVMCC pVM, PGMPHYSHANDLERTYPE hType)
+{
+#ifdef IN_RING0
+    PPGMPHYSHANDLERTYPEINT pType = &pVM->pgmr0.s.aPhysHandlerTypes[hType & PGMPHYSHANDLERTYPE_IDX_MASK];
+#elif defined(IN_RING3)
+    PPGMPHYSHANDLERTYPEINT pType = &pVM->pgm.s.aPhysHandlerTypes[hType & PGMPHYSHANDLERTYPE_IDX_MASK];
+#else
+# error "Invalid context"
+#endif
+    AssertReturn(pType->hType == hType, NULL);
+    return pType;
+}
+
+
+/**
+ * Converts a handle to a pointer, never returns NULL.
+ *
+ * @returns Pointer on success, dummy on failure (asserted).
+ * @param   pVM     The cross context VM structure.
+ * @param   hType   Physical access handler type handle.
+ */
+DECLINLINE(PCPGMPHYSHANDLERTYPEINT) pgmHandlerPhysicalTypeHandleToPtr2(PVMCC pVM, PGMPHYSHANDLERTYPE hType)
+{
+#ifdef IN_RING0
+    PPGMPHYSHANDLERTYPEINT pType = &pVM->pgmr0.s.aPhysHandlerTypes[hType & PGMPHYSHANDLERTYPE_IDX_MASK];
+#elif defined(IN_RING3)
+    PPGMPHYSHANDLERTYPEINT pType = &pVM->pgm.s.aPhysHandlerTypes[hType & PGMPHYSHANDLERTYPE_IDX_MASK];
+#else
+# error "Invalid context"
+#endif
+    AssertReturn(pType->hType == hType, &g_pgmHandlerPhysicalDummyType);
+    return pType;
 }
 
 

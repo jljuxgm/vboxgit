@@ -1,4 +1,4 @@
-/* $Id: PGMR0Pool.cpp 93554 2022-02-02 22:57:02Z vboxsync $ */
+/* $Id: PGMR0Pool.cpp 93650 2022-02-08 10:43:53Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool, ring-0 specific bits.
  */
@@ -31,6 +31,26 @@
 #include <VBox/err.h>
 #include <iprt/mem.h>
 #include <iprt/memobj.h>
+
+
+/**
+ * Called by PGMR0InitVM to complete the page pool setup for ring-0.
+ *
+ * @returns VBox status code.
+ * @param   pGVM    Pointer to the global VM structure.
+ */
+int pgmR0PoolInitVM(PGVM pGVM)
+{
+    PPGMPOOL pPool = pGVM->pgm.s.pPoolR0;
+    AssertPtrReturn(pPool, VERR_PGM_POOL_IPE);
+
+    int rc = PGMR0HandlerPhysicalTypeSetUpContext(pGVM, PGMPHYSHANDLERKIND_WRITE, PGMPHYSHANDLER_F_KEEP_PGM_LOCK,
+                                                  pgmPoolAccessHandler, pgmRZPoolAccessPfHandler,
+                                                  "Guest Paging Access Handler", pPool->hAccessHandlerType);
+    AssertLogRelRCReturn(rc, rc);
+
+    return VINF_SUCCESS;
+}
 
 
 /**

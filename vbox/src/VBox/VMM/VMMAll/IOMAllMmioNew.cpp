@@ -1,4 +1,4 @@
-/* $Id: IOMAllMmioNew.cpp 93635 2022-02-07 10:43:45Z vboxsync $ */
+/* $Id: IOMAllMmioNew.cpp 93650 2022-02-08 10:43:53Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context, MMIO & String I/O.
  */
@@ -727,8 +727,8 @@ DECLINLINE(VBOXSTRICTRC) iomMmioCommonPfHandlerNew(PVMCC pVM, PVMCPUCC pVCpu, ui
  *
  * @remarks The @a uUser argument is the MMIO handle.
  */
-DECLEXPORT(VBOXSTRICTRC) iomMmioPfHandlerNew(PVMCC pVM, PVMCPUCC pVCpu, RTGCUINT uErrorCode, PCPUMCTXCORE pCtxCore,
-                                             RTGCPTR pvFault, RTGCPHYS GCPhysFault, uint64_t uUser)
+DECLCALLBACK(VBOXSTRICTRC) iomMmioPfHandlerNew(PVMCC pVM, PVMCPUCC pVCpu, RTGCUINT uErrorCode, PCPUMCTXCORE pCtxCore,
+                                               RTGCPTR pvFault, RTGCPHYS GCPhysFault, uint64_t uUser)
 {
     STAM_PROFILE_START(&pVM->iom.s.StatMmioPfHandler, Prf);
     LogFlow(("iomMmioPfHandlerNew: GCPhys=%RGp uErr=%#x pvFault=%RGv rip=%RGv\n",
@@ -796,8 +796,8 @@ VMM_INT_DECL(VBOXSTRICTRC) IOMR0MmioPhysHandler(PVMCC pVM, PVMCPUCC pVCpu, uint3
  *
  * @remarks The @a uUser argument is the MMIO handle.
  */
-PGM_ALL_CB2_DECL(VBOXSTRICTRC) iomMmioHandlerNew(PVMCC pVM, PVMCPUCC pVCpu, RTGCPHYS GCPhysFault, void *pvPhys, void *pvBuf,
-                                                 size_t cbBuf, PGMACCESSTYPE enmAccessType, PGMACCESSORIGIN enmOrigin, uint64_t uUser)
+DECLCALLBACK(VBOXSTRICTRC) iomMmioHandlerNew(PVMCC pVM, PVMCPUCC pVCpu, RTGCPHYS GCPhysFault, void *pvPhys, void *pvBuf,
+                                             size_t cbBuf, PGMACCESSTYPE enmAccessType, PGMACCESSORIGIN enmOrigin, uint64_t uUser)
 {
     STAM_PROFILE_START(UnusedMacroArg, Prf);
     STAM_COUNTER_INC(&pVM->iom.s.CTX_SUFF(StatMmioHandler));

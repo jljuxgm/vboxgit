@@ -1,4 +1,4 @@
-/* $Id: GIMInternal.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: GIMInternal.h 93650 2022-02-08 10:43:53Z vboxsync $ */
 /** @file
  * GIM - Internal header file.
  */
@@ -50,8 +50,6 @@ typedef struct GIM
 
     /** Physical access handler type for semi-read-only MMIO2 memory. Lazy creation. */
     PGMPHYSHANDLERTYPE              hSemiReadOnlyMmio2Handler;
-    /** Alignment padding. */
-    uint32_t                        u32Padding;
 
     /** Pointer to the GIM device - R3 ptr. */
     R3PTRTYPE(PPDMDEVINS)            pDevInsR3;

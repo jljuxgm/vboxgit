@@ -1,4 +1,4 @@
-/* $Id: IOM.cpp 93635 2022-02-07 10:43:45Z vboxsync $ */
+/* $Id: IOM.cpp 93650 2022-02-08 10:43:53Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor.
  */
@@ -159,10 +159,7 @@ VMMR3_INT_DECL(int) IOMR3Init(PVM pVM)
      * Register the MMIO access handler type.
      */
     rc = PGMR3HandlerPhysicalTypeRegister(pVM, PGMPHYSHANDLERKIND_MMIO, 0 /*fFlags*/,
-                                          iomMmioHandlerNew,
-                                          NULL, "iomMmioHandlerNew", "iomMmioPfHandlerNew",
-                                          NULL, "iomMmioHandlerNew", "iomMmioPfHandlerNew",
-                                          "MMIO New", &pVM->iom.s.hNewMmioHandlerType);
+                                          iomMmioHandlerNew, "MMIO", &pVM->iom.s.hNewMmioHandlerType);
     AssertRCReturn(rc, rc);
 
     /*
