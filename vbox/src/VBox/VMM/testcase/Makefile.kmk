@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 94423 2022-03-31 22:59:46Z vboxsync $
+# $Id: Makefile.kmk 94540 2022-04-10 14:20:28Z vboxsync $
 ## @file
 # Sub-Makefile for the VMM testcases.
 #
@@ -245,6 +245,7 @@ tstGlobalConfig_LIBS     = $(LIB_RUNTIME)
 #
 tstIEMAImpl_TEMPLATE  = VBOXR3TSTEXE
 tstIEMAImpl_DEFS      = $(VMM_COMMON_DEFS) IEM_WITHOUT_ASSEMBLY IN_TSTVMSTRUCT
+tstIEMAImpl_SDKS      = VBOX_SOFTFLOAT
 tstIEMAImpl_INCS      = ../include .
 tstIEMAImpl_CLEAN     = \
 	$(tstIEMAImpl_0_OUTDIR)/tstIEMAImplDataInt.cpp \
@@ -268,6 +269,7 @@ $(call KB_FN_DO_PASS0_ON_TARGET,tstIEMAImpl)
 
 # This variant mainly for generating data.
 tstIEMAImplAsm_TEMPLATE  = VBOXR3TSTEXE
+tstIEMAImplAsm_SDKS      = VBOX_SOFTFLOAT
 tstIEMAImplAsm_DEFS      = $(VMM_COMMON_DEFS) IEM_WITH_ASSEMBLY IN_TSTVMSTRUCT TSTIEMAIMPL_WITH_GENERATOR
 tstIEMAImplAsm_INCS      = ../include .
 tstIEMAImplAsm_SOURCES   = \
