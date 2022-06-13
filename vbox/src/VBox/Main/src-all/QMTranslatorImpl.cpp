@@ -1,4 +1,4 @@
-/* $Id: QMTranslatorImpl.cpp 91392 2021-09-27 12:33:40Z vboxsync $ */
+/* $Id: QMTranslatorImpl.cpp 91393 2021-09-27 12:39:49Z vboxsync $ */
 /** @file
  * VirtualBox API translation handling class
  */
@@ -414,7 +414,7 @@ public:
                           const char *pszSource,
                           const char *pszDisamb,
                           const int   aNum,
-                          const char **ppszSafeSource) const
+                          const char **ppszSafeSource) const RT_NOEXCEPT
     {
         QMHashSetConstIter lowerIter, upperIter;
 

@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxTranslator.cpp 91392 2021-09-27 12:33:40Z vboxsync $ */
+/* $Id: VirtualBoxTranslator.cpp 91393 2021-09-27 12:39:49Z vboxsync $ */
 /** @file
  * VirtualBox Translator class.
  */
@@ -149,7 +149,7 @@ VirtualBoxTranslator *VirtualBoxTranslator::instance()
 
 
 /* static */
-VirtualBoxTranslator *VirtualBoxTranslator::tryInstance()
+VirtualBoxTranslator *VirtualBoxTranslator::tryInstance() RT_NOEXCEPT
 {
     int rc = RTOnce(&g_Once, initLock, NULL);
     if (RT_SUCCESS(rc))
@@ -430,7 +430,7 @@ const char *VirtualBoxTranslator::translate(PTRCOMPONENT aComponent,
                                             const char *aContext,
                                             const char *aSourceText,
                                             const char *aComment,
-                                            const int   aNum)
+                                            const int   aNum) RT_NOEXCEPT
 {
     VirtualBoxTranslator *pCurrInstance = VirtualBoxTranslator::tryInstance();
     const char *pszTranslation = aSourceText;
@@ -473,7 +473,7 @@ const char *VirtualBoxTranslator::i_translate(PTRCOMPONENT aComponent,
                                               const char *aContext,
                                               const char *aSourceText,
                                               const char *aComment,
-                                              const int   aNum)
+                                              const int   aNum) RT_NOEXCEPT
 {
     AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
 
@@ -500,7 +500,7 @@ const char *VirtualBoxTranslator::i_translate(PTRCOMPONENT aComponent,
 }
 
 
-const char *VirtualBoxTranslator::trSource(const char *aTranslation)
+const char *VirtualBoxTranslator::trSource(const char *aTranslation) RT_NOEXCEPT
 {
     const char *pszSource = aTranslation;
     VirtualBoxTranslator *pCurInstance = VirtualBoxTranslator::tryInstance(); /* paranoia */

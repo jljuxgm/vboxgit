@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxTranslator.h 91391 2021-09-27 11:50:27Z vboxsync $ */
+/* $Id: VirtualBoxTranslator.h 91393 2021-09-27 12:39:49Z vboxsync $ */
 /** @file
  * VirtualBox Translator.
  */
@@ -36,7 +36,7 @@ public:
 
     static VirtualBoxTranslator *instance();
     /* Returns instance if exists, returns NULL otherwise. */
-    static VirtualBoxTranslator *tryInstance();
+    static VirtualBoxTranslator *tryInstance() RT_NOEXCEPT;
     void release();
 
     /* Load language based on settings in the VirtualBox config */
@@ -93,13 +93,13 @@ public:
                                  const char *aContext,
                                  const char *aSourceText,
                                  const char *aComment = NULL,
-                                 const int   aNum = -1);
+                                 const int   aNum = -1) RT_NOEXCEPT;
 
     /**
      * Returns source text stored in the cache if exists.
      * Otherwise, the pszTranslation itself returned.
      */
-    static const char *trSource(const char *aTranslation);
+    static const char *trSource(const char *aTranslation) RT_NOEXCEPT;
 
     /* Convenience function used by VirtualBox::init */
     int i_loadLanguage(const char *pszLang);
@@ -142,7 +142,7 @@ private:
                             const char *aContext,
                             const char *aSourceText,
                             const char *aComment = NULL,
-                            const int   aNum = -1);
+                            const int   aNum = -1) RT_NOEXCEPT;
 };
 
 /** Pointer to a translator component. */
