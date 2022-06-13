@@ -1,4 +1,4 @@
-/* $Id: ldr.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: ldr.h 94869 2022-05-05 22:22:41Z vboxsync $ */
 /** @file
  * IPRT - Loader Internals.
  */
@@ -213,6 +213,15 @@ typedef enum RTLDRCPU
     RTLDRCPU_CORE2,
     RTLDRCPU_FIRST_AMD64 = RTLDRCPU_K8,
     RTLDRCPU_LAST_AMD64 = RTLDRCPU_CORE2,
+    /** @} */
+
+    /** @name K_ARCH_ARM64
+     * @{ */
+    RTLDRCPU_ARM64_BLEND,
+    RTLDRCPU_ARM64_V8,
+    RTLDRCPU_ARM64E,
+    RTLDRCPU_FIRST_ARM64 = RTLDRCPU_ARM64_V8,
+    RTLDRCPU_LAST_ARM64 = RTLDRCPU_ARM64E,
     /** @} */
 
     /** The end of the valid cpu values (exclusive). */
