@@ -1,4 +1,4 @@
-/* $Id: VHD.cpp 90802 2021-08-23 19:08:27Z vboxsync $ */
+/* $Id: VHD.cpp 90988 2021-08-30 08:45:10Z vboxsync $ */
 /** @file
  * VHD Disk image, Core Code.
  */
@@ -1643,7 +1643,7 @@ static DECLCALLBACK(int) vhdWrite(void *pBackendData, uint64_t uOffset, size_t c
     Assert(!(cbToWrite % VHD_SECTOR_SIZE));
     AssertPtrReturn(pIoCtx, VERR_INVALID_POINTER);
     AssertReturn(cbToWrite, VERR_INVALID_PARAMETER);
-    AssertReturn(uOffset + cbToWrite <= pImage->cbSize, VERR_INVALID_PARAMETER);
+    AssertReturn(uOffset + cbToWrite <= RT_ALIGN_64(pImage->cbSize, pImage->cbDataBlock), VERR_INVALID_PARAMETER); /* The image size might not be on a data block size boundary. */
 
     if (pImage->pBlockAllocationTable)
     {
