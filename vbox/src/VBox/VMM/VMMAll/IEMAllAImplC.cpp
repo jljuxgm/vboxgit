@@ -1,4 +1,4 @@
-/* $Id: IEMAllAImplC.cpp 94694 2022-04-22 23:12:01Z vboxsync $ */
+/* $Id: IEMAllAImplC.cpp 94698 2022-04-23 00:12:02Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in Assembly, portable C variant.
  */
@@ -4751,7 +4751,6 @@ static uint16_t iemFpuFloat80RoundAndComposeFrom192(PRTFLOAT80U pr80Dst, bool fS
     iExponent += RTFLOAT80U_EXP_BIAS;
 
     /* Do normalization if necessary and possible. */
-    unsigned cShifted = 0;
     if (!(puMantissa->QWords.qw2 & RT_BIT_64(63)))
     {
         int cShift = 192 - RTUInt256BitCount(puMantissa);
@@ -4768,7 +4767,6 @@ static uint16_t iemFpuFloat80RoundAndComposeFrom192(PRTFLOAT80U pr80Dst, bool fS
             }
             iExponent -= cShift;
         }
-        cShifted = cShift;
         RTUInt256AssignShiftLeft(puMantissa, cShift);
     }
 
