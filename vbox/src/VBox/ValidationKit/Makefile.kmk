@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 94433 2022-04-01 10:53:00Z vboxsync $
+# $Id: Makefile.kmk 94434 2022-04-01 10:55:28Z vboxsync $
 ## @file
 # VirtualBox Validation Kit.
 #
@@ -318,7 +318,7 @@ TMP_UNITTESTS_WHITELIST := \
 	tstUtf8
 
 TMP_UNITTESTS_WHITELIST.linux += \
-	tstRTProcWait
+	tstRTProcWait \
 	tstRTProcIsRunningByName
 
 TMP_UNITTESTS_WHITELIST.win += \
