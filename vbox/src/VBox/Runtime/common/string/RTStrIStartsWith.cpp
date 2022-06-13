@@ -1,4 +1,4 @@
-/* $Id: RTStrIStartsWith.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: RTStrIStartsWith.cpp 94386 2022-03-28 20:21:48Z vboxsync $ */
 /** @file
  * IPRT - String starts with predicate, case insensitive.
  */
@@ -37,12 +37,9 @@ RTDECL(bool) RTStrIStartsWith(const char *pszString, const char *pszStart)
 {
     if (pszString)
     {
-        if (*pszString == *pszStart)
-        {
-            size_t cchStart = strlen(pszStart);
-            if (RTStrNICmp(pszString, pszStart, cchStart) == 0)
-                return true;
-        }
+        size_t cchStart = strlen(pszStart);
+        if (RTStrNICmp(pszString, pszStart, cchStart) == 0)
+            return true;
     }
     return false;
 }
