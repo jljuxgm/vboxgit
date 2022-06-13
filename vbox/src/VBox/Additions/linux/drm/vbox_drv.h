@@ -1,4 +1,4 @@
-/* $Id: vbox_drv.h 90499 2021-08-03 17:49:31Z vboxsync $ */
+/* $Id: vbox_drv.h 90516 2021-08-04 12:39:32Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -176,7 +176,7 @@
 #if RTLNX_VER_MAX(5,13,0)
 # include <drm/ttm/ttm_memory.h>
 #endif
-#if RTLNX_VER_MAX(5,12,0)
+#if RTLNX_VER_MAX(5,12,0) && !RTLNX_RHEL_MAJ_PREREQ(8,5)
 # include <drm/ttm/ttm_module.h>
 #endif
 #if RTLNX_VER_MIN(5,10,0)

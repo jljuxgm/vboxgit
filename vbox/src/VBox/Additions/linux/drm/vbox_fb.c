@@ -1,4 +1,4 @@
-/* $Id: vbox_fb.c 90498 2021-08-03 17:37:08Z vboxsync $ */
+/* $Id: vbox_fb.c 90516 2021-08-04 12:39:32Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -303,7 +303,7 @@ static int vboxfb_create(struct drm_fb_helper *helper,
 
 #if RTLNX_VER_MIN(5,14,0)
 	ret = ttm_bo_kmap(&bo->bo, 0, bo->bo.resource->num_pages, &bo->kmap);
-#elif RTLNX_VER_MIN(5,12,0)
+#elif RTLNX_VER_MIN(5,12,0) || RTLNX_RHEL_MAJ_PREREQ(8,5)
 	ret = ttm_bo_kmap(&bo->bo, 0, bo->bo.mem.num_pages, &bo->kmap);
 #else
 	ret = ttm_bo_kmap(&bo->bo, 0, bo->bo.num_pages, &bo->kmap);
