@@ -1,4 +1,4 @@
-/* $Id: isomakercmd.cpp 93118 2022-01-04 01:41:47Z vboxsync $ */
+/* $Id: isomakercmd.cpp 94865 2022-05-05 19:17:28Z vboxsync $ */
 /** @file
  * IPRT - ISO Image Maker Command.
  */
@@ -904,7 +904,7 @@ static int rtFsIsoMakerCmdVerifyImageInRandomOrder(PRTFSISOMAKERCMDOPTS pOpts, R
                 if (fBitSet)
                 {
                     /* Look for the next clear bit after it (with wrap around). */
-                    int iHit = ASMBitNextClear(pvBitmap, cBlocks, iBlock);
+                    int iHit = ASMBitNextClear(pvBitmap, RT_ALIGN_32(cBlocks, 64), iBlock);
                     Assert(iHit < (int32_t)cBlocks);
                     if (iHit < 0)
                     {
