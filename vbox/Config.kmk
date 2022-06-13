@@ -1,4 +1,4 @@
-# $Id: Config.kmk 91360 2021-09-24 11:30:02Z vboxsync $
+# $Id: Config.kmk 91376 2021-09-27 08:27:04Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -556,7 +556,7 @@ VBOX_WITH_INTEL_PXE =
 # Enable EFI support
 VBOX_WITH_EFI = 1
 # Enable Secure Boot in the EFI firmware.
-VBOX_WITH_EFI_SECURE_BOOT =
+VBOX_WITH_EFI_SECURE_BOOT = 1
 # Enable TPM support in the EFI firmware.
 VBOX_WITH_EFI_TPM = 1
 # Embed the EFI firmwares in VBoxDD2.dll/dylib/so.
@@ -8322,7 +8322,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 91360 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 91376 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
