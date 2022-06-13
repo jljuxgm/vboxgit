@@ -1,4 +1,4 @@
-/* $Id: VMXAllTemplate.cpp.h 92495 2021-11-18 14:17:12Z vboxsync $ */
+/* $Id: VMXAllTemplate.cpp.h 92498 2021-11-18 16:04:25Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Code template for our own hypervisor and the NEM darwin backend using Apple's Hypervisor.framework.
  */
@@ -13080,10 +13080,7 @@ HMVMX_EXIT_DECL vmxHCExitEptViolation(PVMCPUCC pVCpu, PVMXTRANSIENT pVmxTransien
 
     VBOXSTRICTRC rcStrict;
     if (!pExitRec)
-    {
         rcStrict = IEMExecOne(pVCpu);
-        ASMAtomicUoOrU64(&VCPU_2_VMXSTATE(pVCpu).fCtxChanged, HM_CHANGED_ALL_GUEST);
-    }
     else
     {
         /* Frequent access or probing. */
@@ -13092,6 +13089,8 @@ HMVMX_EXIT_DECL vmxHCExitEptViolation(PVMCPUCC pVCpu, PVMXTRANSIENT pVmxTransien
               pVCpu->idCpu, pVCpu->cpum.GstCtx.cs.Sel, pVCpu->cpum.GstCtx.rip,
               VBOXSTRICTRC_VAL(rcStrict), pVCpu->cpum.GstCtx.cs.Sel, pVCpu->cpum.GstCtx.rip));
     }
+
+    ASMAtomicUoOrU64(&VCPU_2_VMXSTATE(pVCpu).fCtxChanged, HM_CHANGED_ALL_GUEST);
 #endif
 
     Log4Func(("EPT return to ring-3 rcStrict2=%Rrc\n", VBOXSTRICTRC_VAL(rcStrict)));
