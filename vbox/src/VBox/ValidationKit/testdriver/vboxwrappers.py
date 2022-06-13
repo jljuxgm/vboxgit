@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 92839 2021-12-08 22:54:36Z vboxsync $
+# $Id: vboxwrappers.py 92840 2021-12-08 23:05:21Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 92839 $"
+__version__ = "$Revision: 92840 $"
 
 
 # Standard Python imports.
@@ -1635,7 +1635,7 @@ class SessionWrapper(TdTaskBase):
         except:
             return reporter.errorXcpt('NIC enabled status (%s) failed for "%s"' % (iNic, self.sName,));
 
-        reporter.log('Setting "LocalhostReachable" for network adapter "%s" in slot %d to %s' % (sAdpName, iNic, fReachable));
+        reporter.log('Setting "LocalhostReachable" for network adapter in slot %d to %s' % (iNic, fReachable));
 
         try:
             oNatEngine = oNic.NATEngine;
