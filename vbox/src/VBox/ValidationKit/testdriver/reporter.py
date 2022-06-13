@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: reporter.py 92300 2021-11-09 18:55:04Z vboxsync $
+# $Id: reporter.py 92309 2021-11-10 08:27:26Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 92300 $"
+__version__ = "$Revision: 92309 $"
 
 
 # Standard Python imports.
@@ -1279,7 +1279,7 @@ class FileWrapperTestPipe(object):
                         cErrors += self.acTestErrors.pop();
                     cErrors += 1;
                     g_oReporter.subXmlWrite(self,
-                                            '\n%s  <Failed timestamp="%s" errors="%s">\n%s</Test>\n'
+                                            '\n%s  <Failed timestamp="%s" errors="%s"/>\n%s</Test>\n'
                                             % ('  ' * self.cTestDepth, sNow, cErrors, '  ' * self.cTestDepth),
                                             utils.getCallerName());
 
