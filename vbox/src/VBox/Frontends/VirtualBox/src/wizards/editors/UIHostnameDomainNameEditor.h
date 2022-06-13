@@ -1,4 +1,4 @@
-/* $Id: UIHostnameDomainNameEditor.h 90236 2021-07-19 11:13:47Z vboxsync $ */
+/* $Id: UIHostnameDomainNameEditor.h 90328 2021-07-26 12:18:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHostnameDomainNameEditor class declaration.
  */
@@ -58,6 +58,10 @@ public:
     bool isComplete() const;
     void mark();
 
+    int firstColumnWidth() const;
+    void setFirstColumnWidth(int iWidth);
+
+
 protected:
 
     void retranslateUi();
@@ -77,7 +81,7 @@ private:
 
     QLabel *m_pHostnameLabel;
     QLabel *m_pDomainNameLabel;
-
+    QGridLayout *m_pMainLayout;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_wizards_editors_UIHostnameDomainNameEditor_h */

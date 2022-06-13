@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMEditors.h 90236 2021-07-19 11:13:47Z vboxsync $ */
+/* $Id: UIWizardNewVMEditors.h 90328 2021-07-26 12:18:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMEditors class declaration.
  */
@@ -141,6 +141,7 @@ private:
     QILineEdit *m_pProductKeyLineEdit;
     UIHostnameDomainNameEditor *m_pHostnameDomainNameEditor;
     QCheckBox *m_pStartHeadlessCheckBox;
+    QGridLayout *m_pMainLayout;
 };
 
 
