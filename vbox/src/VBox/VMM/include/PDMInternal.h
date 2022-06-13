@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 93628 2022-02-06 23:44:05Z vboxsync $ */
+/* $Id: PDMInternal.h 93631 2022-02-07 00:45:08Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -1513,7 +1513,7 @@ typedef struct PDM
     /** Set by pdmR3LoadExec for use in assertions. */
     bool                            fStateLoaded;
     /** Alignment padding. */
-    bool                            afPadding[3];
+    bool                            afPadding1[3];
 
     /** The tracing ID of the next device instance.
      *
@@ -1543,9 +1543,17 @@ typedef struct PDM
 
     /** @name Network Shaper
      * @{ */
-    /** Pending TX thread. */
-    PPDMTHREAD                      pNsTxThread;
-    uint32_t                        au32Padding[1+8];
+    /** Thread that processes choked filter drivers after
+     * the a PDM_NETSHAPER_MAX_LATENCY period has elapsed. */
+    PPDMTHREAD                      pNsUnchokeThread;
+    /** Semaphore that the TX thread waits on. */
+    RTSEMEVENT                      hNsUnchokeEvt;
+    /** Timer handle for waking up pNsUnchokeThread. */
+    TMTIMERHANDLE                   hNsUnchokeTimer;
+    /** Indicates whether the unchoke timer has been armed already or not. */
+    bool volatile                   fNsUnchokeTimerArmed;
+    /** Align aNsGroups on a cacheline.   */
+    bool                            afPadding2[19];
     /** Number of network shaper groups.
      * @note Marked volatile to prevent re-reading after validation. */
     uint32_t volatile               cNsGroups;
