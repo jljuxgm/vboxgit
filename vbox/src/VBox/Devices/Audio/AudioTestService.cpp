@@ -1,4 +1,4 @@
-/* $Id: AudioTestService.cpp 91024 2021-08-31 09:56:26Z vboxsync $ */
+/* $Id: AudioTestService.cpp 91030 2021-08-31 12:03:07Z vboxsync $ */
 /** @file
  * AudioTestService - Audio test execution server.
  */
@@ -1041,14 +1041,14 @@ static DECLCALLBACK(int) atsMainThread(RTTHREAD hThread, void *pvUser)
             LogRelFunc(("New connection established (%s)\n", fFromServer ? "from server" : "as client"));
 
             /**
-             * If the new client is from a remote server (also called a reverse connection)
-             * instead from this server, exit this loop and stop trying to connect to the remote server.
+             * If the new client is not from our server but from a remote server (also called a reverse connection),
+             * exit this loop and stop trying to connect to the remote server.
              *
              * Otherwise we would connect lots and lots of clients without any real use.
              *
              ** @todo Improve this handling -- there might be a better / more elegant solution.
              */
-            if (fFromServer)
+            if (!fFromServer)
                 break;
         }
     }
