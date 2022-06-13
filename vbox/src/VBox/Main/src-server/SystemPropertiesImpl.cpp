@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 93513 2022-01-31 20:48:37Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.cpp 94578 2022-04-12 20:28:43Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2256,19 +2256,19 @@ HRESULT SystemProperties::setVBoxUpdateEnabled(BOOL aVBoxUpdateEnabled)
     return rc;
 }
 
-HRESULT SystemProperties::getVBoxUpdateCount(ULONG *VBoxUpdateCount)
+HRESULT SystemProperties::getVBoxUpdateCount(ULONG *aVBoxUpdateCount)
 {
     AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
 
-    *VBoxUpdateCount = m->uVBoxUpdateCount;
+    *aVBoxUpdateCount = m->uVBoxUpdateCount;
 
     return S_OK;
 }
 
-HRESULT SystemProperties::setVBoxUpdateCount(ULONG VBoxUpdateCount)
+HRESULT SystemProperties::setVBoxUpdateCount(ULONG aVBoxUpdateCount)
 {
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
-    m->uVBoxUpdateCount = VBoxUpdateCount;
+    m->uVBoxUpdateCount = aVBoxUpdateCount;
     alock.release();
 
     // VirtualBox::i_saveSettings() needs vbox write lock
