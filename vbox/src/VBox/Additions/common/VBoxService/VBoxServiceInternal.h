@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceInternal.h 92767 2021-12-06 15:23:29Z vboxsync $ */
+/* $Id: VBoxServiceInternal.h 93022 2021-12-17 18:05:16Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Services.
  */
@@ -262,7 +262,7 @@ extern int                      VGSvcVMInfoWinGetComponentVersions(uint32_t uCli
 
 #endif /* RT_OS_WINDOWS */
 
-#ifdef VBOX_WITH_VBOXSERVICE_MANAGEMENT
+#ifdef VBOX_WITH_MEMBALLOON
 extern uint32_t                 VGSvcBalloonQueryPages(uint32_t cbPage);
 #endif
 #if defined(VBOX_WITH_VBOXSERVICE_PAGE_SHARING)
