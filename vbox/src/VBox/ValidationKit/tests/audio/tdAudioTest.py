@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tdAudioTest.py 92174 2021-11-02 09:57:38Z vboxsync $
+# $Id: tdAudioTest.py 92281 2021-11-09 09:45:38Z vboxsync $
 
 """
 AudioTest test driver which invokes the VKAT (Validation Kit Audio Test)
@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 92174 $"
+__version__ = "$Revision: 92281 $"
 
 # Standard Python imports.
 from datetime import datetime
@@ -288,30 +288,36 @@ class tdAudioTest(vbox.TestDriver):
                 os.environ[sKey] = sValue; # Also apply it to the current environment.
                 asEnvTmp[sKey]   = sValue;
 
-        if  fAsAdmin \
-        and utils.getHostOs() != 'win':
-            oProcess = utils.sudoProcessPopen(asArgs,
-                                              env = asEnvTmp,
-                                              stdout = sys.stdout, stderr = sys.stdout,
-                                              close_fds = False);
-        else:
-            oProcess = utils.processPopenSafe(asArgs,
-                                              env = asEnvTmp,
-                                              stdout = sys.stdout, stderr = sys.stdout);
-        if oProcess:
-            self.pidFileAdd(oProcess.pid, sWhat, fSudo = fAsAdmin);
-            iRc = oProcess.wait();
-            self.pidFileRemove(oProcess.pid);
-
-            if iRc == 0:
-                reporter.log('*** %s: exit code %d' % (sWhat, iRc));
-                fRc = True;
+        try:
+            if  fAsAdmin \
+            and utils.getHostOs() != 'win':
+                sStdOut = utils.sudoProcessOutputChecked(asArgs, env = asEnvTmp);
+                if sStdOut:
+                    sStdOut = sStdOut.strip();
+                    reporter.log("stdout:\n" + sStdOut);
             else:
-                reporter.log('!*! %s: exit code %d' % (sWhat, iRc));
+                (iExit, sStdOut, sStdErr) = utils.processOutputUnchecked(asArgs, env = asEnvTmp);
+
+                if sStdOut:
+                    sStdOut = sStdOut.strip();
+                    reporter.log("stdout:\n" + sStdOut);
+
+                if sStdErr:
+                    sStdErr = sStdErr.strip();
+                    reporter.log("stderr:\n" + sStdErr);
+
+                if iExit == 0:
+                    reporter.log('*** %s: exit code %d' % (sWhat, iExit));
+                    fRc = True;
+                else:
+                    reporter.log('!*! %s: exit code %d' % (sWhat, iExit));
+
+        except:
+            reporter.logXcpt('Executing "%s" failed!' % (sWhat));
 
         return fRc;
 
-    def executeHst(self, sWhat, asArgs, asEnv = None, fAsync = False, fAsAdmin = False):
+    def executeHst(self, sWhat, asArgs, asEnv = None, fAsAdmin = False):
         """
         Runs a binary (image) with optional admin (root) rights on the host and
         waits until it terminates.
@@ -320,22 +326,18 @@ class tdAudioTest(vbox.TestDriver):
 
         Returns success status (exit code is 0).
         """
-        reporter.log('Executing \"%s\" on host (as admin = %s, async = %s)' % (sWhat, fAsAdmin, fAsync));
-
-        reporter.testStart(sWhat);
+        reporter.log('Executing \"%s\" on host (as admin = %s)' % (sWhat, fAsAdmin));
 
         try:    sys.stdout.flush();
         except: pass;
         try:    sys.stderr.flush();
         except: pass;
 
-        fRc = self.executeHstLoop(sWhat, asArgs, asEnv);
+        fRc = self.executeHstLoop(sWhat, asArgs, asEnv, fAsAdmin);
         if fRc:
             reporter.log('Executing \"%s\" on host done' % (sWhat,));
         else:
             reporter.log('Executing \"%s\" on host failed' % (sWhat,));
-
-        reporter.testDone();
 
         return fRc;
 
