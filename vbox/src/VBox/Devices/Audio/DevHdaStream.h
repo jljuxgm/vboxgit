@@ -1,4 +1,4 @@
-/* $Id: DevHdaStream.h 89885 2021-06-24 11:28:32Z vboxsync $ */
+/* $Id: DevHdaStream.h 89887 2021-06-24 12:30:53Z vboxsync $ */
 /** @file
  * Intel HD Audio Controller Emulation - Streams.
  */
@@ -334,6 +334,14 @@ void                hdaR3StreamMarkStopped(PHDASTREAM pStreamShared);
 uint64_t            hdaR3StreamTimerMain(PPDMDEVINS pDevIns, PHDASTATE pThis, PHDASTATER3 pThisCC,
                                          PHDASTREAM pStreamShared, PHDASTREAMR3 pStreamR3);
 DECLCALLBACK(void)  hdaR3StreamUpdateAsyncIoJob(PPDMDEVINS pDevIns, PAUDMIXSINK pSink, void *pvUser);
+/** @} */
+
+/** @name Helper functions associated with the stream code.
+ * @{ */
+int                 hdaR3SDFMTToPCMProps(uint16_t u16SDFMT, PPDMAUDIOPCMPROPS pProps);
+# ifdef LOG_ENABLED
+void                hdaR3BDLEDumpAll(PPDMDEVINS pDevIns, PHDASTATE pThis, uint64_t u64BDLBase, uint16_t cBDLE);
+# endif
 /** @} */
 
 #endif /* IN_RING3 */
