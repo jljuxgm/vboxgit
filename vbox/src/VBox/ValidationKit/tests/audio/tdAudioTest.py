@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tdAudioTest.py 91562 2021-10-05 10:43:35Z vboxsync $
+# $Id: tdAudioTest.py 91568 2021-10-05 12:29:44Z vboxsync $
 
 """
 AudioTest test driver which invokes the VKAT (Validation Kit Audio Test)
@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 91562 $"
+__version__ = "$Revision: 91568 $"
 
 # Standard Python imports.
 from datetime import datetime
@@ -718,12 +718,12 @@ class tdAudioTest(vbox.TestDriver):
 
             # Make sure that the VM's audio adapter is configured the way we need it to.
             if self.fpApiVer >= 4.0:
+                reporter.log('Configuring audio controller type ...');
                 if self.enmAudioControllerType is None:
                     oOsType = oSession.getOsType();
                     self.enmAudioControllerType = oOsType.recommendedAudioController;
                 else:
-                    reporter.log('Setting user-defined audio controller type to %d' % (self.enmAudioControllerType));
-
+                reporter.log('Setting user-defined audio controller type to %d' % (self.enmAudioControllerType));
                 oSession.setupAudio(self.enmAudioControllerType,
                                     fEnable = True, fEnableIn = True, fEnableOut = True);
 
