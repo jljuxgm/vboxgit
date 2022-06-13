@@ -1,4 +1,4 @@
-/* $Id: UIWizardAddCloudVM.cpp 91241 2021-09-15 09:57:02Z vboxsync $ */
+/* $Id: UIWizardAddCloudVM.cpp 91334 2021-09-22 19:37:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardAddCloudVM class implementation.
  */
@@ -61,7 +61,7 @@ bool UIWizardAddCloudVM::addCloudVMs()
         UINotificationProgressCloudMachineAdd *pNotification = new UINotificationProgressCloudMachineAdd(comClient,
                                                                                                          comMachine,
                                                                                                          strInstanceName,
-                                                                                                         shortProviderName(),
+                                                                                                         providerShortName(),
                                                                                                          profileName());
         connect(pNotification, &UINotificationProgressCloudMachineAdd::sigCloudMachineAdded,
                 &uiCommon(), &UICommon::sltHandleCloudMachineAdded);

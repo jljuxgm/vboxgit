@@ -1,4 +1,4 @@
-/* $Id: UIWizardAddCloudVMPageExpert.cpp 90375 2021-07-28 15:41:48Z vboxsync $ */
+/* $Id: UIWizardAddCloudVMPageExpert.cpp 91334 2021-09-22 19:37:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardAddCloudVMPageExpert class implementation.
  */
@@ -224,14 +224,14 @@ void UIWizardAddCloudVMPageExpert::sltHandleSourceInstanceChange()
     emit completeChanged();
 }
 
-void UIWizardAddCloudVMPageExpert::setShortProviderName(const QString &strProviderShortName)
+void UIWizardAddCloudVMPageExpert::setProviderShortName(const QString &strProviderShortName)
 {
-    qobject_cast<UIWizardAddCloudVM*>(wizard())->setShortProviderName(strProviderShortName);
+    qobject_cast<UIWizardAddCloudVM*>(wizard())->setProviderShortName(strProviderShortName);
 }
 
-QString UIWizardAddCloudVMPageExpert::shortProviderName() const
+QString UIWizardAddCloudVMPageExpert::providerShortName() const
 {
-    return qobject_cast<UIWizardAddCloudVM*>(wizard())->shortProviderName();
+    return qobject_cast<UIWizardAddCloudVM*>(wizard())->providerShortName();
 }
 
 void UIWizardAddCloudVMPageExpert::setProfileName(const QString &strProfileName)
@@ -267,8 +267,8 @@ QStringList UIWizardAddCloudVMPageExpert::instanceIds() const
 void UIWizardAddCloudVMPageExpert::updateProvider()
 {
     updateComboToolTip(m_pProviderComboBox);
-    setShortProviderName(m_pProviderComboBox->currentData(ProviderData_ShortName).toString());
-    CCloudProvider comCloudProvider = cloudProviderByShortName(shortProviderName(), wizard());
+    setProviderShortName(m_pProviderComboBox->currentData(ProviderData_ShortName).toString());
+    CCloudProvider comCloudProvider = cloudProviderByShortName(providerShortName(), wizard());
     populateProfiles(m_pProfileComboBox, comCloudProvider);
     updateProfile();
 }
@@ -276,7 +276,7 @@ void UIWizardAddCloudVMPageExpert::updateProvider()
 void UIWizardAddCloudVMPageExpert::updateProfile()
 {
     setProfileName(m_pProfileComboBox->currentData(ProfileData_Name).toString());
-    setClient(cloudClientByName(shortProviderName(), profileName(), wizard()));
+    setClient(cloudClientByName(providerShortName(), profileName(), wizard()));
     populateProfileInstances(m_pSourceInstanceList, client());
     updateSourceInstance();
 }

@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageExpert.h 91240 2021-09-15 09:07:48Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageExpert.h 91334 2021-09-22 19:37:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageExpert class declaration.
  */
@@ -74,10 +74,10 @@ private slots:
 
 private:
 
-    /** Defines short provider name. */
-    void setShortProviderName(const QString &strProviderShortName);
-    /** Returns profile name. */
-    QString shortProviderName() const;
+    /** Defines provider short name. */
+    void setProviderShortName(const QString &strProviderShortName);
+    /** Returns provider short name. */
+    QString providerShortName() const;
 
     /** Defines profile name. */
     void setProfileName(const QString &strProfileName);

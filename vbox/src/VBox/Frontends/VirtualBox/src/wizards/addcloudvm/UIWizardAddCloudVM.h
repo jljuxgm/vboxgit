@@ -1,4 +1,4 @@
-/* $Id: UIWizardAddCloudVM.h 91241 2021-09-15 09:57:02Z vboxsync $ */
+/* $Id: UIWizardAddCloudVM.h 91334 2021-09-22 19:37:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardAddCloudVM class declaration.
  */
@@ -43,9 +43,9 @@ public:
     QString fullGroupName() const { return m_strFullGroupName; }
 
     /** Defines @a strProviderShortName. */
-    void setShortProviderName(const QString &strProviderShortName) { m_strProviderShortName = strProviderShortName; }
-    /** Returns short provider name. */
-    QString shortProviderName() const { return m_strProviderShortName; }
+    void setProviderShortName(const QString &strProviderShortName) { m_strProviderShortName = strProviderShortName; }
+    /** Returns provider short name. */
+    QString providerShortName() const { return m_strProviderShortName; }
 
     /** Defines @a strProfileName. */
     void setProfileName(const QString &strProfileName) { m_strProfileName = strProfileName; }
