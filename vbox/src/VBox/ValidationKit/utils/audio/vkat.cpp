@@ -1,4 +1,4 @@
-/* $Id: vkat.cpp 91832 2021-10-18 17:22:48Z vboxsync $ */
+/* $Id: vkat.cpp 91911 2021-10-20 19:07:54Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) utility for testing and validating the audio stack.
  */
@@ -590,7 +590,7 @@ int audioTestWorker(PAUDIOTESTENV pTstEnv)
             if (RT_SUCCESS(rc))
             {
                 /** @todo Fudge! */
-                RTMSINTERVAL const msWait = RTRandU32Ex(RT_MS_5SEC, RT_MS_30SEC);
+                RTMSINTERVAL const msWait = RTRandU32Ex(RT_MS_1SEC, RT_MS_5SEC);
                 RTTestPrintf(g_hTest, RTTESTLVL_ALWAYS,
                              "Waiting %RU32ms to let guest and the audio stack process remaining data  ...\n", msWait);
                 RTThreadSleep(msWait);
