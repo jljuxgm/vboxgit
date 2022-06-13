@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMNameOSTypePageBasic.h 90037 2021-07-05 19:14:04Z vboxsync $ */
+/* $Id: UIWizardNewVMNameOSTypePageBasic.h 90060 2021-07-06 12:12:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMNameOSTypePageBasic class declaration.
  */
@@ -99,8 +99,6 @@ private:
     void markWidgets() const;
     void setSkipCheckBoxEnable();
     bool isUnattendedEnabled() const;
-
-    UIWizardNewVM *m_pWizard;
 
     /** @name Widgets
      * @{ */

@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMUnattendedPageBasic.h 90040 2021-07-05 20:05:25Z vboxsync $ */
+/* $Id: UIWizardNewVMUnattendedPageBasic.h 90060 2021-07-06 12:12:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMUnattendedPageBasic class declaration.
  */
@@ -34,7 +34,6 @@ class QLineEdit;
 class QIRichTextLabel;
 class UIFilePathSelector;
 class UIUserNamePasswordEditor;
-class UIWizardNewVM;
 struct UIUnattendedInstallData;
 
 
@@ -84,8 +83,6 @@ private:
     void disableEnableProductKeyWidgets(bool fEnabled);
     void disableEnableGAWidgets(bool fEnabled);
     void markWidgets() const;
-
-    UIWizardNewVM *m_pWizard;
 
     /** @name Widgets
       * @{ */
