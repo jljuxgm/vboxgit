@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 91149 2021-09-08 12:01:42Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 91151 2021-09-08 12:57:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -1387,6 +1387,13 @@ void UIMessageCenter::cannotAcquireCloudProfileParameter(const CCloudProfile &co
           UIErrorString::formatErrorInfo(comProfile));
 }
 
+void UIMessageCenter::cannotCreateCloudClient(const CCloudProfile &comProfile, QWidget *pParent /* = 0 */) const
+{
+    error(pParent, MessageType_Error,
+          tr("Failed to create cloud client."),
+          UIErrorString::formatErrorInfo(comProfile));
+}
+
 bool UIMessageCenter::cannotRestoreSnapshot(const CMachine &machine, const QString &strSnapshotName, const QString &strMachineName) const
 {
     error(0, MessageType_Error,
@@ -1403,13 +1410,6 @@ bool UIMessageCenter::cannotRestoreSnapshot(const CProgress &progress, const QSt
              .arg(strSnapshotName, strMachineName),
           UIErrorString::formatErrorInfo(progress));
     return false;
-}
-
-void UIMessageCenter::cannotCreateCloudClient(const CCloudProfile &comProfile, QWidget *pParent /* = 0 */) const
-{
-    error(pParent, MessageType_Error,
-          tr("Failed to create cloud client."),
-          UIErrorString::formatErrorInfo(comProfile));
 }
 
 void UIMessageCenter::cannotAcquireCloudClientParameter(const CCloudClient &comClient, QWidget *pParent /* = 0 */) const

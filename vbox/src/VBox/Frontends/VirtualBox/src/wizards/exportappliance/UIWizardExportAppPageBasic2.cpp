@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic2.cpp 91145 2021-09-07 19:10:39Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic2.cpp 91151 2021-09-08 12:57:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic2 class implementation.
  */
@@ -292,12 +292,9 @@ void UIWizardExportAppPage2::populateFormProperties()
             }
 
             /* Create Cloud Client: */
-            CCloudClient comClient = m_comCloudProfile.CreateCloudClient();
-            if (!m_comCloudProfile.isOk())
-            {
-                msgCenter().cannotCreateCloudClient(m_comCloudProfile);
+            CCloudClient comClient = cloudClient(m_comCloudProfile);
+            if (comClient.isNull())
                 break;
-            }
 
             /* Remember client: */
             m_comClient = comClient;

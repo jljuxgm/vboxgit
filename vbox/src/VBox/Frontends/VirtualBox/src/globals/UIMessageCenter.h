@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 91149 2021-09-08 12:01:42Z vboxsync $ */
+/* $Id: UIMessageCenter.h 91151 2021-09-08 12:57:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -380,6 +380,8 @@ public:
         void cannotAcquireCloudProviderManagerParameter(const CCloudProviderManager &comManager, QWidget *pParent = 0) const;
         void cannotAcquireCloudProviderParameter(const CCloudProvider &comProvider, QWidget *pParent = 0) const;
         void cannotAcquireCloudProfileParameter(const CCloudProfile &comProfile, QWidget *pParent = 0) const;
+
+        void cannotCreateCloudClient(const CCloudProfile &comProfile, QWidget *pParent = 0) const;
     /** @} */
 
     /** @name Runtime UI warnings.
@@ -388,7 +390,6 @@ public:
         bool cannotRestoreSnapshot(const CProgress &progress, const QString &strSnapshotName, const QString &strMachineName) const;
     /** @} */
 
-    void cannotCreateCloudClient(const CCloudProfile &comProfile, QWidget *pParent = 0) const;
     void cannotAcquireCloudClientParameter(const CCloudClient &comClient, QWidget *pParent = 0) const;
     void cannotAcquireCloudClientParameter(const CProgress &comProgress, QWidget *pParent = 0) const;
     void cannotAcquireCloudMachineParameter(const CCloudMachine &comMachine, QWidget *pParent = 0) const;

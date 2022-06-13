@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageBasic1.cpp 91145 2021-09-07 19:10:39Z vboxsync $ */
+/* $Id: UIWizardImportAppPageBasic1.cpp 91151 2021-09-08 12:57:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageBasic1 class implementation.
  */
@@ -193,12 +193,9 @@ void UIWizardImportAppPage1::populateProfileInstances()
         do
         {
             /* Acquire Cloud Client: */
-            m_comCloudClient = m_comCloudProfile.CreateCloudClient();
-            if (!m_comCloudProfile.isOk())
-            {
-                msgCenter().cannotCreateCloudClient(m_comCloudProfile);
+            m_comCloudClient = cloudClient(m_comCloudProfile);
+            if (m_comCloudClient.isNull())
                 break;
-            }
 
             /* Gather VM names, ids and states.
              * Currently we are interested in Running and Stopped VMs only. */
