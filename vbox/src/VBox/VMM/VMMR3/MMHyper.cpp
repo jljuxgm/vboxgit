@@ -1,4 +1,4 @@
-/* $Id: MMHyper.cpp 93554 2022-02-02 22:57:02Z vboxsync $ */
+/* $Id: MMHyper.cpp 93597 2022-02-03 21:45:05Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Hypervisor Memory Area.
  */
@@ -658,58 +658,6 @@ VMMR3DECL(int) MMR3HyperAllocOnceNoRelEx(PVM pVM, size_t cb, unsigned uAlignment
         rc = VERR_MM_HYPER_NO_MEMORY;
     LogRel(("MMR3HyperAllocOnceNoRel: cb=%#zx uAlignment=%#x returns %Rrc\n", cb, uAlignment, rc));
     return rc;
-}
-
-
-/**
- * Convert hypervisor HC virtual address to HC physical address.
- *
- * @returns HC physical address.
- * @param   pVM         The cross context VM structure.
- * @param   pvR3        Host context virtual address.
- */
-VMMR3DECL(RTHCPHYS) MMR3HyperHCVirt2HCPhys(PVM pVM, void *pvR3)
-{
-    PMMLOOKUPHYPER  pLookup = (PMMLOOKUPHYPER)((uint8_t *)pVM->mm.s.pHyperHeapR3 + pVM->mm.s.offLookupHyper);
-    for (;;)
-    {
-        switch (pLookup->enmType)
-        {
-            case MMLOOKUPHYPERTYPE_LOCKED:
-            {
-                unsigned off = (uint8_t *)pvR3 - (uint8_t *)pLookup->u.Locked.pvR3;
-                if (off < pLookup->cb)
-                    return pLookup->u.Locked.paHCPhysPages[off >> HOST_PAGE_SHIFT] | (off & HOST_PAGE_OFFSET_MASK);
-                break;
-            }
-
-            case MMLOOKUPHYPERTYPE_HCPHYS:
-            {
-                unsigned off = (uint8_t *)pvR3 - (uint8_t *)pLookup->u.HCPhys.pvR3;
-                if (off < pLookup->cb)
-                    return pLookup->u.HCPhys.HCPhys + off;
-                break;
-            }
-
-            case MMLOOKUPHYPERTYPE_GCPHYS:
-            case MMLOOKUPHYPERTYPE_MMIO2:
-            case MMLOOKUPHYPERTYPE_DYNAMIC:
-                /* can (or don't want to) convert these kind of records. */
-                break;
-
-            default:
-                AssertMsgFailed(("enmType=%d\n", pLookup->enmType));
-                break;
-        }
-
-        /* next */
-        if ((unsigned)pLookup->offNext == NIL_OFFSET)
-            break;
-        pLookup = (PMMLOOKUPHYPER)((uint8_t *)pLookup + pLookup->offNext);
-    }
-
-    AssertMsgFailed(("pvR3=%p is not inside the hypervisor memory area!\n", pvR3));
-    return NIL_RTHCPHYS;
 }
 
 
