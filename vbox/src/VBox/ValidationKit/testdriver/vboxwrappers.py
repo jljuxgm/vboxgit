@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 92241 2021-11-05 15:24:36Z vboxsync $
+# $Id: vboxwrappers.py 92242 2021-11-05 15:35:28Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 92241 $"
+__version__ = "$Revision: 92242 $"
 
 
 # Standard Python imports.
@@ -1646,19 +1646,19 @@ class SessionWrapper(TdTaskBase):
                 self.setExtraData(sKey, '');
                 return True;
         except:
-            return reporter.errorXcpt('NIC adapter type failed for "%s"' % (iNic, self.sName,));
+            return reporter.errorXcpt('NIC adapter type (%s) failed for "%s"' % (iNic, self.sName,));
 
         reporter.log('Setting "LocalhostReachable" for network adapter "%s" in slot %d to %s' % (sAdpName, iNic, fReachable));
 
         try:
             oNatEngine = oNic.NATEngine;
         except:
-            return reporter.errorXcpt('Getting NIC NAT engine failed for "%s"' % (iNic, self.sName,));
+            return reporter.errorXcpt('Getting NIC NAT engine (%s) failed for "%s"' % (iNic, self.sName,));
 
         try:
             oNatEngine.LocalhostReachable = fReachable;
         except:
-            return reporter.errorXcpt('LocalhostReachable failed for "%s"' % (iNic, self.sName,));
+            return reporter.errorXcpt('LocalhostReachable (%s) failed for "%s"' % (iNic, self.sName,));
 
         return True;
 
