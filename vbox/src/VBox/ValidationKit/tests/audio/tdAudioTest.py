@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tdAudioTest.py 90666 2021-08-12 16:50:40Z vboxsync $
+# $Id: tdAudioTest.py 90668 2021-08-12 17:27:22Z vboxsync $
 
 """
 AudioTest test driver which invokes the VKAT (Validation Kit Audio Test)
@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 90666 $"
+__version__ = "$Revision: 90668 $"
 
 # Standard Python imports.
 import os
@@ -240,9 +240,9 @@ class tdAudioTest(vbox.TestDriver):
         """
         if   sOsType == 'vista': # pylint: disable=no-else-return
              # Vista and up.
-            return (['netsh', 'advfirewall', 'set', 'allprofiles', 'state', 'off']);
+            return (['netsh.exe', 'advfirewall', 'set', 'allprofiles', 'state', 'off']);
         elif sOsType == 'xp':   # Older stuff (XP / 2003).
-            return(['netsh', 'firewall', 'set', 'opmode', 'mode=DISABLE']);
+            return(['netsh.exe', 'firewall', 'set', 'opmode', 'mode=DISABLE']);
         # Not supported / available.
         return [];
 
@@ -456,8 +456,11 @@ class tdAudioTest(vbox.TestDriver):
         """
 
         # Disable any OS-specific firewalls preventing VKAT / ATS to run.
-        self.disableHstFirewall();
-        self.disableGstFirewall(oTestVm, oTxsSession);
+        fRc = self.disableHstFirewall();
+        fRc = self.disableGstFirewall(oTestVm, oTxsSession) and fRc;
+
+        if not fRc:
+            return False;
 
         # First try to kill any old VKAT / VBoxAudioTest processes lurking around on the host.
         # Might happen because of former (aborted) runs.
