@@ -1,4 +1,4 @@
-/* $Id: tstRTInlineAsm.cpp 93752 2022-02-15 14:01:53Z vboxsync $ */
+/* $Id: tstRTInlineAsm.cpp 93753 2022-02-15 14:04:25Z vboxsync $ */
 /** @file
  * IPRT Testcase - inline assembly.
  */
@@ -2942,7 +2942,7 @@ void tstASMBench(void)
     BENCH(ASMAtomicCmpXchgExS64(&s_i64, 0, 1, &s_i64Old), "ASMAtomicCmpXchgExS64/neg");
     BENCH(ASMAtomicIncU32(&s_u32),               "ASMAtomicIncU32");
     BENCH(ASMAtomicIncS32(&s_i32),               "ASMAtomicIncS32");
-    BENCH(ASMAtomicDecU32(&s_u32),               "ASMAtomicDecU32") ;
+    BENCH(ASMAtomicDecU32(&s_u32),               "ASMAtomicDecU32");
     BENCH(ASMAtomicDecS32(&s_i32),               "ASMAtomicDecS32");
     BENCH(ASMAtomicAddU32(&s_u32, 5),            "ASMAtomicAddU32");
     BENCH(ASMAtomicAddS32(&s_i32, 5),            "ASMAtomicAddS32");
