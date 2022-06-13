@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 93115 2022-01-01 11:31:46Z vboxsync $
+# $Id: Makefile.kmk 93227 2022-01-13 16:14:01Z vboxsync $
 ## @file
 # Makefile for the Solaris guest additions base directory.
 #
@@ -101,7 +101,7 @@ OTHER_CLEAN       += $(PACKING) $(SOLARIS_ADDINST_OUT_DIR)/$(PKGFILENAME)
 #
 # VBoxAddISAExec
 #
-VBoxAddISAExec_TEMPLATE = VBOXR3EXE
+VBoxAddISAExec_TEMPLATE = VBoxGuestR3Exe
 VBoxAddISAExec_NAME     = VBoxISAExec
 VBoxAddISAExec_INST     = $(INST_ADDITIONS)
 VBoxAddISAExec_DEPS     = $(VBOX_SVN_REV_KMK)
