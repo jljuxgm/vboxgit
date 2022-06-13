@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 90202 2021-07-15 00:13:16Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 90203 2021-07-15 00:26:57Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -3096,6 +3096,10 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
                     InsertConfigInteger(pCfg,       "DebugEnabled",         fDebugEnabled);
                     if (strDebugPathOut.isNotEmpty())
                         InsertConfigString(pCfg,    "DebugPathOut",         strDebugPathOut);
+
+                    /* macOS guests uses a different HDA variant to make 10.14+ (or maybe 10.13?) recognize the device. */
+                    if (fOsXGuest)
+                        InsertConfigString(pCfg,    "DeviceName",           "Intel Sunrise Point");
                     break;
                 }
                 default:
