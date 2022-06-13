@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 94503 2022-04-06 17:24:39Z vboxsync $ */
+/* $Id: SUPDrv.cpp 94504 2022-04-06 18:08:10Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -79,7 +79,7 @@
 /* In Linux 5.18-rc1, memcpy became a wrapper which does fortify checks
  * before triggering __underlying_memcpy() call. We do not pass these checks here,
  * so bypass them for now.  */
-# if RTLNX_VER_MIN(5,18,0)
+# if RTLNX_VER_MIN(5,18,0) && !defined(__NO_FORTIFY) && defined(__OPTIMIZE__) && defined(CONFIG_FORTIFY_SOURCE)
 #  define SUPDRV_MEMCPY __underlying_memcpy
 # else
 # define SUPDRV_MEMCPY  memcpy
