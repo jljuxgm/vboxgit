@@ -1,4 +1,4 @@
-/* $Id: regops.c 90582 2021-08-09 20:23:33Z vboxsync $ */
+/* $Id: regops.c 90584 2021-08-09 20:27:02Z vboxsync $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, regular file inode and file operations.
  */
@@ -85,7 +85,7 @@
 #if RTLNX_VER_MIN(5,14,0)
 # define VBSF_GET_ITER_TYPE(a_pIter) ((a_pIter)->iter_type)
 #else
-# define VBSF_GET_ITER_TYPE(a_pIter) ((a_pIter)->iter)
+# define VBSF_GET_ITER_TYPE(a_pIter) ((a_pIter)->type)
 #endif
 
 
