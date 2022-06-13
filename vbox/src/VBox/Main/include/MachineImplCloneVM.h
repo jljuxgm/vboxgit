@@ -1,4 +1,4 @@
-/* $Id: MachineImplCloneVM.h 90828 2021-08-24 09:44:46Z vboxsync $ */
+/* $Id: MachineImplCloneVM.h 91312 2021-09-20 11:06:57Z vboxsync $ */
 /** @file
  * Definition of MachineCloneVM
  */
@@ -27,7 +27,7 @@
 /* Forward declaration of the d-pointer. */
 struct MachineCloneVMPrivate;
 
-class MachineCloneVM : public VirtualBoxTranslatable
+class MachineCloneVM
 {
 public:
     DECLARE_TRANSLATE_METHODS(MachineCloneVM)

@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxClientImpl.h 90879 2021-08-25 12:20:08Z vboxsync $ */
+/* $Id: VirtualBoxClientImpl.h 91312 2021-09-20 11:06:57Z vboxsync $ */
 /** @file
  * Header file for the VirtualBoxClient (IVirtualBoxClient) class, VBoxC.
  */
@@ -105,6 +105,7 @@ private:
         RTSEMEVENT m_SemEvWatcher;
 #ifdef VBOX_WITH_MAIN_NLS
         VirtualBoxTranslator *m_pVBoxTranslator;
+        TRCOMPONENT           m_pTrComponent;
 #endif
     };
 

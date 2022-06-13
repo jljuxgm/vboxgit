@@ -1,4 +1,4 @@
-/* $Id: Wrapper.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: Wrapper.h 91312 2021-09-20 11:06:57Z vboxsync $ */
 /** @file
  * VirtualBox COM - API wrapper helpers.
  */
@@ -39,7 +39,10 @@
         { /* likely */ }\
         else \
             throw setError(E_POINTER, \
-                tr("Output argument %s points to invalid memory location (%p)"), \
+                /* Had to define VirtualBoxBase as context switcher for translation. \
+                 * Otherwise, lupdate complains about unknown context and doesn't \
+                 * include the string into translation file */ \
+                VirtualBoxBase::tr("Output argument %s points to invalid memory location (%p)"), \
                 #arg, (void *)(arg)); \
     } while (0)
 

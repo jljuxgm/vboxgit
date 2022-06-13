@@ -1,4 +1,4 @@
-/* $Id: GuestDnDPrivate.h 90828 2021-08-24 09:44:46Z vboxsync $ */
+/* $Id: GuestDnDPrivate.h 91312 2021-09-20 11:06:57Z vboxsync $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget +
  * GuestDnDSource.
@@ -799,7 +799,7 @@ typedef std::map<uint32_t, GuestDnDCallback> GuestDnDCallbackMap;
 /**
  * Class for keeping a DnD guest state around.
  */
-class GuestDnDState : public VirtualBoxTranslatable
+class GuestDnDState
 {
 
 public:

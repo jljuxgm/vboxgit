@@ -1,5 +1,5 @@
 # !kmk_ash
-# $Id: gen-slickedit-workspace.sh 90828 2021-08-24 09:44:46Z vboxsync $
+# $Id: gen-slickedit-workspace.sh 91312 2021-09-20 11:06:57Z vboxsync $
 ## @file
 # Script for generating a SlickEdit workspace.
 #
@@ -631,7 +631,7 @@ my_generate_usercpp_h()
                                  const char *aComment = NULL, \
                                  const int   aNum = -1) \
     { \
-        return VirtualBoxTranslatable::translate(#cls, aSourceText, aComment, aNum); \
+        return VirtualBoxTranslator::translate(#cls, aSourceText, aComment, aNum); \
     }
 #define DECLARE_COMMON_CLASS_METHODS(cls) \
     DECLARE_EMPTY_CTOR_DTOR(cls) \

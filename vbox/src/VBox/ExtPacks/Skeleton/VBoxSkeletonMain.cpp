@@ -1,4 +1,4 @@
-/* $Id: VBoxSkeletonMain.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxSkeletonMain.cpp 91312 2021-09-20 11:06:57Z vboxsync $ */
 /** @file
  * Skeleton main module.
  */
@@ -83,6 +83,7 @@ static const VBOXEXTPACKREG g_vboxSkeletonExtPackReg =
 {
     VBOXEXTPACKREG_VERSION,
     /* .uVBoxFullVersion =  */  VBOX_FULL_VERSION,
+    /* .pszNlsBaseName =    */  NULL,
     /* .pfnInstalled =      */  NULL,
     /* .pfnUninstall =      */  NULL,
     /* .pfnVirtualBoxReady =*/  NULL,

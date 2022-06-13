@@ -1,4 +1,4 @@
-/* $Id: GuestProcessImpl.h 90828 2021-08-24 09:44:46Z vboxsync $ */
+/* $Id: GuestProcessImpl.h 91312 2021-09-20 11:06:57Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling implementation.
  */
@@ -213,7 +213,7 @@ struct GuestProcessToolErrorInfo
  * This class essentially helps to wrap all the gory details like process creation,
  * information extraction and maintaining the overall status.
  */
-class GuestProcessTool : public VirtualBoxTranslatable
+class GuestProcessTool
 {
 public:
     DECLARE_TRANSLATE_METHODS(GuestProcessTool)

@@ -1,4 +1,4 @@
-/* $Id: TextScript.h 90828 2021-08-24 09:44:46Z vboxsync $ */
+/* $Id: TextScript.h 91312 2021-09-20 11:06:57Z vboxsync $ */
 /** @file
  * Classes for reading/parsing/saving text scripts (unattended installation, ++).
  */
@@ -33,7 +33,6 @@
  */
 class AbstractScript
     : public RTCNonCopyable
-    , public VirtualBoxTranslatable
 {
 protected:
     /** For setting errors.

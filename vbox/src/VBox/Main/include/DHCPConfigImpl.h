@@ -1,4 +1,4 @@
-/* $Id: DHCPConfigImpl.h 90828 2021-08-24 09:44:46Z vboxsync $ */
+/* $Id: DHCPConfigImpl.h 91312 2021-09-20 11:06:57Z vboxsync $ */
 /** @file
  * VirtualBox Main - IDHCPConfig, IDHCPConfigGlobal, IDHCPConfigGroup, IDHCPConfigIndividual header.
  */
@@ -40,7 +40,7 @@ class DHCPGroupConfig;
  * wasn't even attempted.  Instead, we have a hack for passing a pointer that we
  * can call setError and such on.
  */
-class DHCPConfig : public VirtualBoxTranslatable
+class DHCPConfig
 {
 protected:
     /** Config scope (global, group, vm+nic, mac).  */

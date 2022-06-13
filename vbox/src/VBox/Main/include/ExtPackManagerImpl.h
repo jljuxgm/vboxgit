@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.h 90828 2021-08-24 09:44:46Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.h 91312 2021-09-20 11:06:57Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -181,7 +181,12 @@ protected:
                                                        VBOXEXTPACK_IF_CS(IEventSource) *aSource,
                                                        /* VBoxEventType_T */ uint32_t aType,
                                                        VBOXEXTPACK_IF_CS(IVetoEvent) **ppEventOut);
-    static DECLCALLBACK(int)    i_hlpReservedN(PCVBOXEXTPACKHLP pHlp);
+    static DECLCALLBACK(const char *) i_hlpTranslate(PCVBOXEXTPACKHLP pHlp,
+                                                     const char *pszComponent,
+                                                     const char *pszSourceText,
+                                                     const char *pszComment = NULL,
+                                                     const int   iNum = -1);
+    static DECLCALLBACK(int)      i_hlpReservedN(PCVBOXEXTPACKHLP pHlp);
     /** @}  */
 
 private:

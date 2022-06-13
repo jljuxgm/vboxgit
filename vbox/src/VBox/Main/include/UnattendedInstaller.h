@@ -1,4 +1,4 @@
-/* $Id: UnattendedInstaller.h 90828 2021-08-24 09:44:46Z vboxsync $ */
+/* $Id: UnattendedInstaller.h 91312 2021-09-20 11:06:57Z vboxsync $ */
 /** @file
  * UnattendedInstaller class header
  */
@@ -35,7 +35,7 @@ class BaseTextScript;
  * The class is intended to service a new VM that this VM will be able to
  * execute an unattended installation
  */
-class UnattendedInstaller : public RTCNonCopyable, public VirtualBoxTranslatable
+class UnattendedInstaller : public RTCNonCopyable
 {
 /*data*/
 protected:

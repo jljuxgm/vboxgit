@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxBase.cpp 90841 2021-08-24 11:40:08Z vboxsync $ */
+/* $Id: VirtualBoxBase.cpp 91312 2021-09-20 11:06:57Z vboxsync $ */
 /** @file
  * VirtualBox COM base classes implementation
  */
@@ -309,7 +309,11 @@ HRESULT VirtualBoxBase::setErrorInternalV(HRESULT aResultCode,
     com::Utf8Str strText;
     if (aLogIt)
     {
-        strText = trSource(aText);
+#ifdef VBOX_WITH_MAIN_NLS
+        strText = VirtualBoxTranslator::trSource(aText);
+#else
+        strText = aText;
+#endif
         va_list va2;
         va_copy(va2, aArgs);
         LogRel(("%s [COM]: aRC=%Rhrc (%#08x) aIID={%RTuuid} aComponent={%s} aText={%N}, preserve=%RTbool aResultDetail=%d\n",

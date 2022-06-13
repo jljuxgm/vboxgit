@@ -1,4 +1,4 @@
-/* $Id: MachineImplCloneVM.cpp 90828 2021-08-24 09:44:46Z vboxsync $ */
+/* $Id: MachineImplCloneVM.cpp 91312 2021-09-20 11:06:57Z vboxsync $ */
 /** @file
  * Implementation of MachineCloneVM
  */
@@ -62,7 +62,7 @@ typedef struct
 // The private class
 /////////////////////////////////////////////////////////////////////////////
 
-struct MachineCloneVMPrivate : public VirtualBoxTranslatable
+struct MachineCloneVMPrivate
 {
     MachineCloneVMPrivate(MachineCloneVM *a_q, ComObjPtr<Machine> &a_pSrcMachine, ComObjPtr<Machine> &a_pTrgMachine,
                           CloneMode_T a_mode, const RTCList<CloneOptions_T> &opts)

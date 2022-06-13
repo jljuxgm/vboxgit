@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxErrorInfoImpl.h 90828 2021-08-24 09:44:46Z vboxsync $ */
+/* $Id: VirtualBoxErrorInfoImpl.h 91312 2021-09-20 11:06:57Z vboxsync $ */
 /** @file
  * VirtualBoxErrorInfo COM class definition.
  */
@@ -30,7 +30,6 @@ class ATL_NO_VTABLE VirtualBoxErrorInfo
     , VBOX_SCRIPTABLE_IMPL(IVirtualBoxErrorInfo)
 #ifndef VBOX_WITH_XPCOM /* IErrorInfo doesn't inherit from IDispatch, ugly 3am hack: */
     , public IDispatch
-    , public VirtualBoxTranslatable
 #endif
 {
 public:

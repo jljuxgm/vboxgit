@@ -1,4 +1,4 @@
-/* $Id: SessionImpl.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: SessionImpl.cpp 91312 2021-09-20 11:06:57Z vboxsync $ */
 /** @file
  * VBox Client Session COM Class implementation in VBoxC.
  */
@@ -37,7 +37,7 @@
 #define CHECK_OPEN() \
     do { \
         if (mState != SessionState_Locked) \
-            return setError(E_UNEXPECTED, tr ("The session is not locked (session state: %s)"), \
+            return setError(E_UNEXPECTED, Session::tr("The session is not locked (session state: %s)"), \
                             Global::stringifySessionState(mState)); \
     } while (0)
 
