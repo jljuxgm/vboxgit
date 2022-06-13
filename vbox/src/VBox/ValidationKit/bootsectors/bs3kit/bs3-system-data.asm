@@ -1,4 +1,4 @@
-; $Id: bs3-system-data.asm 92523 2021-11-20 23:35:37Z vboxsync $
+; $Id: bs3-system-data.asm 92725 2021-12-02 23:47:32Z vboxsync $
 ;; @file
 ; BS3Kit - GDT
 ;
@@ -188,7 +188,7 @@ BS3_GLOBAL_DATA Bs3Gdte_X1TEXT16_CS, 8          ; Entry 0f0h
         dw  0fffeh, 00000h                      ; 16-bit conforming code (read+exec) segment, accessed. Will be finalized at startup.
         dw  09f00h, 00000h
 BS3_GLOBAL_DATA Bs3Gdte_R0_MMIO16, 8            ; Entry 0f8h
-        dw  0ffffh, 0f000h, 0930dh, 00000h      ; 16-bit VMMDev MMIO segment with base 0100000h.
+        dw  0ffffh, 0f000h, 0930dh, 00000h      ; 16-bit VMMDev MMIO segment with base 0df000h.
 BS3GdtAssertOffset 0100h
 
 
