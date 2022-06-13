@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 92050 2021-10-25 16:58:55Z vboxsync $
+# $Id: vboxwrappers.py 92141 2021-10-29 09:37:01Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 92050 $"
+__version__ = "$Revision: 92141 $"
 
 
 # Standard Python imports.
@@ -1613,7 +1613,7 @@ class SessionWrapper(TdTaskBase):
 
         if not self.setupNatForwardingForTxs(iNic):
             return False;
-        reporter.log('set NIC type on slot %s to %s for VM "%s"' % (iNic, eAttachmentType, self.sName));
+        reporter.log('set NIC attachment type on slot %s to %s for VM "%s"' % (iNic, eAttachmentType, self.sName));
         return True;
 
     def setNicMacAddress(self, sMacAddr, iNic = 0):
