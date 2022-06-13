@@ -1,4 +1,4 @@
-/* $Id: UINotificationCenter.h 92400 2021-11-12 15:07:42Z vboxsync $ */
+/* $Id: UINotificationCenter.h 92429 2021-11-15 14:25:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINotificationCenter class declaration.
  */
@@ -161,12 +161,12 @@ private:
     QVBoxLayout  *m_pLayoutMain;
     /** Holds the buttons layout instance. */
     QHBoxLayout  *m_pLayoutButtons;
-    /** Holds the open-button instance. */
-    QIToolButton *m_pOpenButton;
-    /** Holds the keep-button instance. */
-    QIToolButton *m_pKeepButton;
-    /** Holds the remove-finished-button instance. */
-    QIToolButton *m_pRemoveFinishedButton;
+    /** Holds the open button instance. */
+    QIToolButton *m_pButtonOpen;
+    /** Holds the keep-finished button instance. */
+    QIToolButton *m_pButtonKeepFinished;
+    /** Holds the remove-finished button instance. */
+    QIToolButton *m_pButtonRemoveFinished;
     /** Holds the items layout instance. */
     QVBoxLayout  *m_pLayoutItems;
 
