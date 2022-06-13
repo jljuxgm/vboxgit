@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 92089 2021-10-26 17:02:00Z vboxsync $ */
+/* $Id: UINotificationObjects.cpp 92096 2021-10-27 12:03:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -521,6 +521,17 @@ void UINotificationMessage::cannotAcquireVirtualBoxParameter(const CVirtualBox &
 }
 
 /* static */
+void UINotificationMessage::cannotAcquireApplianceParameter(const CAppliance &comAppliance,
+                                                            UINotificationCenter *pParent /* = 0 */)
+{
+    createMessage(
+        QApplication::translate("UIMessageCenter", "Appliance failure ..."),
+        QApplication::translate("UIMessageCenter", "Failed to acquire appliance parameter.") +
+        UIErrorString::formatErrorInfo(comAppliance),
+        QString(), QString(), pParent);
+}
+
+/* static */
 void UINotificationMessage::cannotAcquireExtensionPackManagerParameter(const CExtPackManager &comEPManager)
 {
     createMessage(
@@ -864,6 +875,16 @@ void UINotificationMessage::cannotAddDiskEncryptionPassword(const CAppliance &co
     createMessage(
         QApplication::translate("UIMessageCenter", "Bad password ..."),
         QApplication::translate("UIMessageCenter", "Bad password or authentication failure.") +
+        UIErrorString::formatErrorInfo(comAppliance),
+        QString(), QString(), pParent);
+}
+
+/* static */
+void UINotificationMessage::cannotInterpretAppliance(const CAppliance &comAppliance, UINotificationCenter *pParent /* = 0 */)
+{
+    createMessage(
+        QApplication::translate("UIMessageCenter", "Can't interpret appliance ..."),
+        QApplication::translate("UIMessageCenter", "Failed to interpret appliance being imported.") +
         UIErrorString::formatErrorInfo(comAppliance),
         QString(), QString(), pParent);
 }

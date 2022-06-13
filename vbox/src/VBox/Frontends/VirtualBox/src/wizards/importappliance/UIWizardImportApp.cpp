@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportApp.cpp 91969 2021-10-21 15:53:59Z vboxsync $ */
+/* $Id: UIWizardImportApp.cpp 92096 2021-10-27 12:03:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportApp class implementation.
  */
@@ -28,7 +28,6 @@
 /* GUI includes: */
 #include "QIDialog.h"
 #include "QIFileDialog.h"
-#include "UIMessageCenter.h"
 #include "UINotificationCenter.h"
 #include "UIWizardImportApp.h"
 #include "UIWizardImportAppPageExpert.h"
@@ -174,7 +173,7 @@ bool UIWizardImportApp::setFile(const QString &strName)
     CAppliance comAppliance = comVBox.CreateAppliance();
     if (!comVBox.isOk())
     {
-        msgCenter().cannotCreateAppliance(comVBox, this);
+        UINotificationMessage::cannotCreateAppliance(comVBox, notificationCenter());
         return false;
     }
 
@@ -187,7 +186,7 @@ bool UIWizardImportApp::setFile(const QString &strName)
     comAppliance.Interpret();
     if (!comAppliance.isOk())
     {
-        msgCenter().cannotImportAppliance(comAppliance, this);
+        UINotificationMessage::cannotInterpretAppliance(comAppliance, notificationCenter());
         return false;
     }
 

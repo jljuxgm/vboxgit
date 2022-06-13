@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageSettings.cpp 91709 2021-10-13 11:04:55Z vboxsync $ */
+/* $Id: UIWizardImportAppPageSettings.cpp 92096 2021-10-27 12:03:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageSettings class implementation.
  */
@@ -29,7 +29,7 @@
 #include "UICommon.h"
 #include "UIFilePathSelector.h"
 #include "UIFormEditorWidget.h"
-#include "UIMessageCenter.h"
+#include "UINotificationCenter.h"
 #include "UIWizardImportApp.h"
 #include "UIWizardImportAppPageSettings.h"
 
@@ -518,7 +518,7 @@ bool UIWizardImportAppPageSettings::validatePage()
             comForm.GetVirtualSystemDescription();
             fResult = comForm.isOk();
             if (!fResult)
-                msgCenter().cannotAcquireVirtualSystemDescriptionFormProperty(comForm);
+                UINotificationMessage::cannotAcquireVirtualSystemDescriptionFormParameter(comForm, wizard()->notificationCenter());
         }
     }
     else
