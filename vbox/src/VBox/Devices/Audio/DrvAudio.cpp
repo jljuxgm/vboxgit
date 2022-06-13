@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 89583 2021-06-09 14:10:21Z vboxsync $ */
+/* $Id: DrvAudio.cpp 89830 2021-06-22 12:30:17Z vboxsync $ */
 /** @file
  * Intermediate audio driver - Connects the audio device emulation with the host backend.
  */
@@ -622,7 +622,7 @@ static PDMHOSTAUDIOSTREAMSTATE drvAudioStreamProcessBackendStateChange(PDRVAUDIO
 #ifdef LOG_ENABLED
     DRVAUDIOPLAYSTATE const     enmPlayState    = enmDir == PDMAUDIODIR_OUT
                                                 ? pStreamEx->Out.enmPlayState   : DRVAUDIOPLAYSTATE_INVALID;
-    DRVAUDIOCAPTURESTATE const  enmCaptureState = enmDir == PDMAUDIODIR_OUT
+    DRVAUDIOCAPTURESTATE const  enmCaptureState = enmDir == PDMAUDIODIR_IN
                                                 ? pStreamEx->In.enmCaptureState : DRVAUDIOCAPTURESTATE_INVALID;
 #endif
     Assert(enmNewState != enmOldState);
