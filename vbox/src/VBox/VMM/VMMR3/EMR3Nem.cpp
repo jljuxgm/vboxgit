@@ -1,4 +1,4 @@
-/* $Id: EMR3Nem.cpp 91264 2021-09-15 19:35:24Z vboxsync $ */
+/* $Id: EMR3Nem.cpp 92118 2021-10-28 00:25:36Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager - NEM interface.
  */
@@ -341,14 +341,16 @@ VBOXSTRICTRC emR3NemExecute(PVM pVM, PVMCPU pVCpu, bool *pfFFDone)
     {
         STAM_PROFILE_ADV_START(&pVCpu->em.s.StatNEMEntry, a);
 
-#if 0
-        /* Check if a forced reschedule is pending. */
-        if (NEMR3IsRescheduleRequired(pVCpu))
+        /*
+         * Check that we can execute in NEM mode.
+         */
+        if (NEMR3CanExecuteGuest(pVM, pVCpu))
+        { /* likely */ }
+        else
         {
-            rcStrict = VINF_EM_RESCHEDULE;
+            rcStrict = VINF_EM_RESCHEDULE_REM;
             break;
         }
-#endif
 
         /*
          * Process high priority pre-execution raw-mode FFs.
