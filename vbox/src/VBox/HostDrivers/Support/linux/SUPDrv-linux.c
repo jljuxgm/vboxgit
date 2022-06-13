@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-linux.c 90930 2021-08-27 00:21:09Z vboxsync $ */
+/* $Id: SUPDrv-linux.c 90944 2021-08-27 10:29:03Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Linux specifics.
  */
@@ -140,8 +140,10 @@ static int  VBoxDrvResume(struct platform_device *pDev);
 # endif
 static void VBoxDevRelease(struct device *pDev);
 #endif
+#if RTLNX_VER_MIN(5,0,0)
 static int  supdrvLinuxLdrModuleNotifyCallback(struct notifier_block *pBlock,
                                                unsigned long uModuleState, void *pvModule);
+#endif
 
 
 /*********************************************************************************************************************************
