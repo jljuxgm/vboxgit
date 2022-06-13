@@ -1,4 +1,4 @@
-/* $Id: scm.h 93556 2022-02-02 23:14:47Z vboxsync $ */
+/* $Id: scm.h 94905 2022-05-07 16:10:49Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -253,6 +253,7 @@ FNSCMREWRITER rewrite_SvnKeywords;
 FNSCMREWRITER rewrite_SvnSyncProcess;
 FNSCMREWRITER rewrite_UnicodeChecks;
 FNSCMREWRITER rewrite_PageChecks;
+FNSCMREWRITER rewrite_ForceHrcVrcInsteadOfRc;
 FNSCMREWRITER rewrite_Copyright_CstyleComment;
 FNSCMREWRITER rewrite_Copyright_HashComment;
 FNSCMREWRITER rewrite_Copyright_PythonComment;
@@ -360,6 +361,8 @@ typedef struct SCMSETTINGSBASE
     bool            fOnlyGuestHostPage;
     /** No ASMMemIsZeroPage or ASMMemZeroPage calls allowed (C/C++). */
     bool            fNoASMMemPageUse;
+    /** No rc declarations allowed, only hrc or vrc depending on the result type. */
+    bool            fOnlyHrcVrcInsteadOfRc;
 
     /** Update the copyright year. */
     bool            fUpdateCopyrightYear;
