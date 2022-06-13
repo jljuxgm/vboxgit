@@ -1,4 +1,4 @@
-/* $Id: UIApplianceExportEditorWidget.cpp 91539 2021-10-04 10:57:58Z vboxsync $ */
+/* $Id: UIApplianceExportEditorWidget.cpp 91541 2021-10-04 12:51:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceExportEditorWidget class implementation.
  */
@@ -24,14 +24,12 @@
 #include "UIMessageCenter.h"
 
 
-/*********************************************************************************************************************************
-*   Class ExportSortProxyModel implementation.                                                                                   *
-*********************************************************************************************************************************/
-
-class ExportSortProxyModel: public UIApplianceSortProxyModel
+/** UIApplianceSortProxyModel subclass for Export Appliance wizard. */
+class ExportSortProxyModel : public UIApplianceSortProxyModel
 {
 public:
 
+    /** Constructs proxy model passing @a pParent to the base-class. */
     ExportSortProxyModel(QObject *pParent = 0)
         : UIApplianceSortProxyModel(pParent)
     {
