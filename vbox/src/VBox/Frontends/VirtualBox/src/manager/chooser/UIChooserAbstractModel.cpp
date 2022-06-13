@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.cpp 94029 2022-03-01 11:09:14Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.cpp 94085 2022-03-04 13:35:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class implementation.
  */
@@ -757,12 +757,12 @@ void UIChooserAbstractModel::sltReloadMachine(const QUuid &uMachineId)
 
 void UIChooserAbstractModel::sltDetachCOM()
 {
+    /* Finally, stop all cloud updates: */
+    stopCloudUpdates(true /* forced? */);
+
     /* Delete tree: */
     delete m_pInvisibleRootNode;
     m_pInvisibleRootNode = 0;
-
-    /* Finally, stop all cloud updates: */
-    stopCloudUpdates(true /* forced? */);
 }
 
 void UIChooserAbstractModel::sltCloudMachineUnregistered(const QString &strProviderShortName,
