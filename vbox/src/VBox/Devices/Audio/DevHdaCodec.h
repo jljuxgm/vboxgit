@@ -1,4 +1,4 @@
-/* $Id: DevHdaCodec.h 89869 2021-06-23 19:06:11Z vboxsync $ */
+/* $Id: DevHdaCodec.h 89888 2021-06-24 12:52:47Z vboxsync $ */
 /** @file
  * Intel HD Audio Controller Emulation - Codec, Sigmatel/IDT STAC9220.
  */
@@ -955,36 +955,6 @@ int hdaR3CodecRemoveStream(PHDACODECR3 pThisCC, PDMAUDIOMIXERCTL enmMixerCtl, bo
 int hdaCodecSaveState(PPDMDEVINS pDevIns, PHDACODEC pThis, PSSMHANDLE pSSM);
 void hdaCodecDestruct(PHDACODEC pThis);
 void hdaCodecReset(PHDACODEC pThis);
-
-/** @name DevHDA saved state versions
- * @{ */
-/** The current staved state version. */
-#define HDA_SAVED_STATE_VERSION  HDA_SAVED_STATE_WITHOUT_PERIOD
-
-/** Removed period and redefined wall clock. */
-#define HDA_SAVED_STATE_WITHOUT_PERIOD 8
-/** Added (Controller):              Current wall clock value (this independent from WALCLK register value).
-  * Added (Controller):              Current IRQ level.
-  * Added (Per stream):              Ring buffer. This is optional and can be skipped if (not) needed.
-  * Added (Per stream):              Struct g_aSSMStreamStateFields7.
-  * Added (Per stream):              Struct g_aSSMStreamPeriodFields7.
-  * Added (Current BDLE per stream): Struct g_aSSMBDLEDescFields7.
-  * Added (Current BDLE per stream): Struct g_aSSMBDLEStateFields7. */
-#define HDA_SAVED_STATE_VERSION_7 7
-/** Saves the current BDLE state.
- * @since 5.0.14 (r104839) */
-#define HDA_SAVED_STATE_VERSION_6 6
-/** Introduced dynamic number of streams + stream identifiers for serialization.
- *  Bug: Did not save the BDLE states correctly.
- *  Those will be skipped on load then.
- * @since 5.0.12 (r104520)  */
-#define HDA_SAVED_STATE_VERSION_5 5
-/** Since this version the number of MMIO registers can be flexible. */
-#define HDA_SAVED_STATE_VERSION_4 4
-#define HDA_SAVED_STATE_VERSION_3 3
-#define HDA_SAVED_STATE_VERSION_2 2
-#define HDA_SAVED_STATE_VERSION_1 1
-/** @} */
 
 #endif /* !VBOX_INCLUDED_SRC_Audio_DevHdaCodec_h */
 
