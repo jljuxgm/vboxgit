@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 93996 2022-02-28 22:04:49Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 93998 2022-02-28 22:42:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -328,8 +328,13 @@ QSize UIChooserPaneDelegate::sizeHint(const QStyleOptionViewItem &option, const 
     const int iWidth = m_iMargin +
                        pixmapSize.width() +
                        2 * m_iSpacing +
+#if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
+                       qMax(fm.horizontalAdvance(index.data(Field_Name).toString()),
+                            fm.horizontalAdvance(index.data(Field_ID).toString())) +
+#else
                        qMax(fm.width(index.data(Field_Name).toString()),
                             fm.width(index.data(Field_ID).toString())) +
+#endif
                        m_iMargin;
     /* Calculate height: */
     const int iHeight = m_iMargin +

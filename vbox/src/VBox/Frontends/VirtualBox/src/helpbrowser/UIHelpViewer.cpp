@@ -1,4 +1,4 @@
-/* $Id: UIHelpViewer.cpp 93990 2022-02-28 15:34:57Z vboxsync $ */
+/* $Id: UIHelpViewer.cpp 93998 2022-02-28 22:42:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class implementation.
  */
@@ -297,11 +297,18 @@ void UIFindInPageWidget::prepare()
     AssertReturnVoid(pLayout && m_pSearchLineEdit);
     setFocusProxy(m_pSearchLineEdit);
     QFontMetrics fontMetric(m_pSearchLineEdit->font());
-    setMinimumSize(40 * fontMetric.width("x"),
+#if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
+    setMinimumSize(40 * fontMetric.horizontalAdvance("x"),
                    fontMetric.height() +
                    qApp->style()->pixelMetric(QStyle::PM_LayoutBottomMargin) +
                    qApp->style()->pixelMetric(QStyle::PM_LayoutTopMargin));
 
+#else
+    setMinimumSize(40 * fontMetric.width("x"),
+                   fontMetric.height() +
+                   qApp->style()->pixelMetric(QStyle::PM_LayoutBottomMargin) +
+                   qApp->style()->pixelMetric(QStyle::PM_LayoutTopMargin));
+#endif
     connect(m_pSearchLineEdit, &UISearchLineEdit::textChanged,
             this, &UIFindInPageWidget::sigSearchTextChanged);
 

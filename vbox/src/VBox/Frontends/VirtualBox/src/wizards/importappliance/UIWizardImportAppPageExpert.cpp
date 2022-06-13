@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageExpert.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIWizardImportAppPageExpert.cpp 93998 2022-02-28 22:42:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageExpert class implementation.
  */
@@ -171,7 +171,11 @@ UIWizardImportAppPageExpert::UIWizardImportAppPageExpert(bool fImportFromOCIByDe
                                 if (m_pProfileInstanceList)
                                 {
                                     const QFontMetrics fm(m_pProfileInstanceList->font());
+#if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
+                                    const int iFontWidth = fm.horizontalAdvance('x');
+#else
                                     const int iFontWidth = fm.width('x');
+#endif
                                     const int iTotalWidth = 50 * iFontWidth;
                                     const int iFontHeight = fm.height();
                                     const int iTotalHeight = 4 * iFontHeight;

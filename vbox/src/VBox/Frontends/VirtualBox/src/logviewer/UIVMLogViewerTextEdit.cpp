@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerTextEdit.cpp 93990 2022-02-28 15:34:57Z vboxsync $ */
+/* $Id: UIVMLogViewerTextEdit.cpp 93998 2022-02-28 22:42:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -252,7 +252,11 @@ int UIVMLogViewerTextEdit::lineNumberAreaWidth()
         ++digits;
     }
 
+#if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
+    int space = 3 + fontMetrics().horizontalAdvance(QLatin1Char('9')) * digits;
+#else
     int space = 3 + fontMetrics().width(QLatin1Char('9')) * digits;
+#endif
 
     return space;
 }

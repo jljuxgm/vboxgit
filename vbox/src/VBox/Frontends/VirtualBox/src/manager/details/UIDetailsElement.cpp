@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElement.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIDetailsElement.cpp 93998 2022-02-28 22:42:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement class implementation.
  */
@@ -348,7 +348,11 @@ void UIDetailsElement::setName(const QString &strName)
     /* Cache name: */
     m_strName = strName;
     QFontMetrics fm(m_nameFont, model()->paintDevice());
+#if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
+    m_nameSize = QSize(fm.horizontalAdvance(m_strName), fm.height());
+#else
     m_nameSize = QSize(fm.width(m_strName), fm.height());
+#endif
 
     /* Update linked values: */
     updateMinimumHeaderWidth();

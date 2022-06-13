@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityOverviewWidget.cpp 93990 2022-02-28 15:34:57Z vboxsync $ */
+/* $Id: UIVMActivityOverviewWidget.cpp 93998 2022-02-28 22:42:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMActivityOverviewWidget class implementation.
  */
@@ -1717,7 +1717,11 @@ void UIVMActivityOverviewWidget::computeMinimumColumnWidths()
         int iColumnStringWidth = columnDataStringLengths.value(i, 0);
         int iColumnTitleWidth = m_columnTitles.value(i, QString()).length();
         int iMax = iColumnStringWidth > iColumnTitleWidth ? iColumnStringWidth : iColumnTitleWidth;
+#if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
+        columnWidthsInPixels[i] = iMax * fontMetrics.horizontalAdvance('x') +
+#else
         columnWidthsInPixels[i] = iMax * fontMetrics.width('x') +
+#endif
             QApplication::style()->pixelMetric(QStyle::PM_LayoutLeftMargin) +
             QApplication::style()->pixelMetric(QStyle::PM_LayoutRightMargin) +
             m_iSortIndicatorWidth;

@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsTextPane.cpp 93996 2022-02-28 22:04:49Z vboxsync $ */
+/* $Id: UIGraphicsTextPane.cpp 93998 2022-02-28 22:42:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGraphicsTextPane class implementation.
  */
@@ -201,8 +201,13 @@ void UIGraphicsTextPane::updateTextLayout(bool fFull /* = false */)
             fSingleColumnText = false;
         QString strLeftLine = fRightColumnPresent ? line.string1() + ":" : line.string1();
         QString strRightLine = line.string2();
+#if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
+        iMaximumLeftColumnWidth = qMax(iMaximumLeftColumnWidth, fm.horizontalAdvance(strLeftLine));
+        iMaximumRightColumnWidth = qMax(iMaximumRightColumnWidth, fm.horizontalAdvance(strRightLine));
+#else
         iMaximumLeftColumnWidth = qMax(iMaximumLeftColumnWidth, fm.width(strLeftLine));
         iMaximumRightColumnWidth = qMax(iMaximumRightColumnWidth, fm.width(strRightLine));
+#endif
     }
     iMaximumLeftColumnWidth += 1;
     iMaximumRightColumnWidth += 1;
@@ -506,7 +511,12 @@ QString UIGraphicsTextPane::searchForHoveredAnchor(QPaintDevice *pPaintDevice, c
                 int iSymbolX = (int)layoutLine.cursorToX(iTextPosition);
                 QRect symbolRect = QRect(layoutPosition.x() + linePosition.x() + iSymbolX,
                                          layoutPosition.y() + linePosition.y(),
-                                         fm.width(strLayoutText[iTextPosition]) + 1, fm.height());
+#if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
+                                         fm.horizontalAdvance(strLayoutText[iTextPosition]) + 1,
+#else
+                                         fm.width(strLayoutText[iTextPosition]) + 1,
+#endif
+                                         fm.height());
                 formatRegion += symbolRect;
             }
 

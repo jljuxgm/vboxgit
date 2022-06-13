@@ -1,4 +1,4 @@
-/* $Id: UIChooserItem.cpp 93990 2022-02-28 15:34:57Z vboxsync $ */
+/* $Id: UIChooserItem.cpp 93998 2022-02-28 22:42:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItem class definition.
  */
@@ -575,7 +575,11 @@ QSize UIChooserItem::textSize(const QFont &font, QPaintDevice *pPaintDevice, con
 
     /* Return text size, based on font-metrics: */
     QFontMetrics fm(font, pPaintDevice);
+#if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
+    return QSize(fm.horizontalAdvance(strText), fm.height());
+#else
     return QSize(fm.width(strText), fm.height());
+#endif
 }
 
 /* static */
@@ -585,7 +589,11 @@ int UIChooserItem::textWidth(const QFont &font, QPaintDevice *pPaintDevice, int 
     QFontMetrics fm(font, pPaintDevice);
     QString strString;
     strString.fill('_', iCount);
+#if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
+    return fm.horizontalAdvance(strString);
+#else
     return fm.width(strString);
+#endif
 }
 
 /* static */
@@ -597,14 +605,24 @@ QString UIChooserItem::compressText(const QFont &font, QPaintDevice *pPaintDevic
 
     /* Check if passed text fits maximum width: */
     QFontMetrics fm(font, pPaintDevice);
+#if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
+    if (fm.horizontalAdvance(strText) <= iWidth)
+#else
     if (fm.width(strText) <= iWidth)
+#endif
         return strText;
 
     /* Truncate otherwise: */
     QString strEllipsis = QString("...");
+#if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
+    int iEllipsisWidth = fm.horizontalAdvance(strEllipsis + " ");
+    while (!strText.isEmpty() && fm.horizontalAdvance(strText) + iEllipsisWidth > iWidth)
+        strText.truncate(strText.size() - 1);
+#else
     int iEllipsisWidth = fm.width(strEllipsis + " ");
     while (!strText.isEmpty() && fm.width(strText) + iEllipsisWidth > iWidth)
         strText.truncate(strText.size() - 1);
+#endif
     return strText + strEllipsis;
 }
 

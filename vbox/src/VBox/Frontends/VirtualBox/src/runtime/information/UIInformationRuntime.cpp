@@ -1,4 +1,4 @@
-/* $Id: UIInformationRuntime.cpp 93990 2022-02-28 15:34:57Z vboxsync $ */
+/* $Id: UIInformationRuntime.cpp 93998 2022-02-28 22:42:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationRuntime class implementation.
  */
@@ -215,7 +215,11 @@ void UIRuntimeInfoWidget::retranslateUi()
             strLongest = strLabel;
     }
     QFontMetrics fontMetrics(font());
+#if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
+    setColumnWidth(0, 1.5 * fontMetrics.horizontalAdvance(*strLongest));
+#else
     setColumnWidth(0, 1.5 * fontMetrics.width(*strLongest));
+#endif
 
     /* Make the API calls and populate the table: */
     createInfoRows();
