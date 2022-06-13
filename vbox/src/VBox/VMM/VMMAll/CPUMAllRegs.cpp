@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 90932 2021-08-27 05:42:03Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 90998 2021-08-30 14:07:29Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -2315,7 +2315,7 @@ VMM_INT_DECL(uint64_t) CPUMGetGuestCR4ValidMask(PVM pVM)
     PCCPUMFEATURES pGuestFeatures = &pVM->cpum.s.GuestFeatures;
     uint64_t fMask = X86_CR4_VME | X86_CR4_PVI
                    | X86_CR4_TSD | X86_CR4_DE
-                   | X86_CR4_PSE | X86_CR4_PAE
+                   | X86_CR4_PSE | X86_CR4_PAE /** @todo r=bird: PAE isn't a given either, we must check features. See als PAEmode. */
                    | X86_CR4_MCE | X86_CR4_PGE
                    | X86_CR4_PCE
                    | X86_CR4_OSXMMEEXCPT;  /** @todo r=ramshankar: Introduced in Pentium III along with SSE. Check fSse here? */
