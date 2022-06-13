@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageExpert.h 91499 2021-09-30 14:39:22Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageExpert.h 91640 2021-10-08 12:27:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageExpert class declaration.
  */
@@ -68,7 +68,7 @@ private slots:
     void sltHandleProfileButtonClick();
 
     /** Handles change in source tab-bar. */
-    void sltHandleSourceChange();
+    void sltHandleSourceTabBarChange();
 
     /** Handles change in instance list. */
     void sltHandleSourceImageChange();

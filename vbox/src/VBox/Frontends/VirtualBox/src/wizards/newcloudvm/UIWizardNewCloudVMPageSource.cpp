@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageSource.cpp 91499 2021-09-30 14:39:22Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageSource.cpp 91640 2021-10-08 12:27:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageSource class implementation.
  */
@@ -425,7 +425,7 @@ UIWizardNewCloudVMPageSource::UIWizardNewCloudVMPageSource()
     connect(m_pProfileToolButton, &QIToolButton::clicked,
             this, &UIWizardNewCloudVMPageSource::sltHandleProfileButtonClick);
     connect(m_pSourceTabBar, &QTabBar::currentChanged,
-            this, &UIWizardNewCloudVMPageSource::sltHandleSourceChange);
+            this, &UIWizardNewCloudVMPageSource::sltHandleSourceTabBarChange);
     connect(m_pSourceImageList, &QListWidget::currentRowChanged,
             this, &UIWizardNewCloudVMPageSource::sltHandleSourceImageChange);
 }
@@ -545,7 +545,7 @@ void UIWizardNewCloudVMPageSource::sltHandleProfileButtonClick()
         gpManager->openCloudProfileManager();
 }
 
-void UIWizardNewCloudVMPageSource::sltHandleSourceChange()
+void UIWizardNewCloudVMPageSource::sltHandleSourceTabBarChange()
 {
     updateSource();
     emit completeChanged();
