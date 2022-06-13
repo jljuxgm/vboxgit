@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tdAudioTest.py 91182 2021-09-09 15:45:47Z vboxsync $
+# $Id: tdAudioTest.py 91183 2021-09-09 15:53:45Z vboxsync $
 
 """
 AudioTest test driver which invokes the VKAT (Validation Kit Audio Test)
@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 91182 $"
+__version__ = "$Revision: 91183 $"
 
 # Standard Python imports.
 from datetime import datetime
@@ -447,7 +447,7 @@ class tdAudioTest(vbox.TestDriver):
             # Needed for NATed VMs.
             asArgs.extend(['--tcp-connect-addr', '10.0.2.2' ]);
 
-            if oTestVm.isLinux(): ## @todo Might need some more fine tuning later.
+            if oTestVm.sKind in 'Oracle_64':
                 #
                 # Some Linux distros have a bug / are configured (?) so that processes started by init system
                 # cannot access the PulseAudio server ("Connection refused"), for example OL 8.1.
