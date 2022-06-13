@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 90327 2021-07-26 09:54:34Z vboxsync $ */
+/* $Id: UINotificationObjects.cpp 90334 2021-07-26 13:07:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -284,4 +284,36 @@ void UINotificationProgressCloudMachineCreate::sltHandleProgressFinished()
 {
     if (m_comMachine.isNotNull() && !m_comMachine.GetId().isNull())
         emit sigCloudMachineCreated(m_strShortProviderName, m_strProfileName, m_comMachine);
+}
+
+
+/*********************************************************************************************************************************
+*   Class UINotificationProgressApplianceImport implementation.                                                                  *
+*********************************************************************************************************************************/
+
+UINotificationProgressApplianceImport::UINotificationProgressApplianceImport(const CAppliance &comAppliance,
+                                                                             const QVector<KImportOptions> &options)
+    : m_comAppliance(comAppliance)
+    , m_options(options)
+{
+}
+
+QString UINotificationProgressApplianceImport::name() const
+{
+    return UINotificationProgress::tr("Importing appliance ...");
+}
+
+QString UINotificationProgressApplianceImport::details() const
+{
+    return UINotificationProgress::tr("<b>From:</b> %1").arg(m_comAppliance.GetPath());
+}
+
+CProgress UINotificationProgressApplianceImport::createProgress(COMResult &comResult)
+{
+    /* Initialize progress-wrapper: */
+    CProgress comProgress = m_comAppliance.ImportMachines(m_options);
+    /* Store COM result: */
+    comResult = m_comAppliance;
+    /* Return progress-wrapper: */
+    return comProgress;
 }

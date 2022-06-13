@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportApp.cpp 86986 2020-11-26 14:22:34Z vboxsync $ */
+/* $Id: UIWizardImportApp.cpp 90334 2021-07-26 13:07:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportApp class implementation.
  */
@@ -30,6 +30,7 @@
 #include "QIFileDialog.h"
 #include "UICommon.h"
 #include "UIMessageCenter.h"
+#include "UINotificationCenter.h"
 #include "UIWizardImportApp.h"
 #include "UIWizardImportAppPageBasic1.h"
 #include "UIWizardImportAppPageBasic2.h"
@@ -208,28 +209,13 @@ bool UIWizardImportApp::importAppliance()
         /* No options for cloud VMs for now: */
         QVector<KImportOptions> options;
 
-        /* Initiate import porocedure: */
-        CProgress comProgress = comAppliance.ImportMachines(options);
+        /* Import appliance: */
+        UINotificationProgressApplianceImport *pNotification = new UINotificationProgressApplianceImport(comAppliance,
+                                                                                                         options);
+        notificationCenter().append(pNotification);
 
-        /* Show error message if necessary: */
-        if (!comAppliance.isOk())
-            msgCenter().cannotImportAppliance(comAppliance, this);
-        else
-        {
-            /* Show "Import appliance" progress: */
-            msgCenter().showModalProgressDialog(comProgress, tr("Importing Appliance ..."), ":/progress_import_90px.png", this, 0);
-            if (!comProgress.GetCanceled())
-            {
-                /* Show error message if necessary: */
-                if (!comProgress.isOk() || comProgress.GetResultCode() != 0)
-                    msgCenter().cannotImportAppliance(comProgress, comAppliance.GetPath(), this);
-                else
-                    return true;
-            }
-        }
-
-        /* Failure by default: */
-        return false;
+        /* Positive: */
+        return true;
     }
     else
     {

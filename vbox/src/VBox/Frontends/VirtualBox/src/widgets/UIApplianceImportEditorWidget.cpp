@@ -1,4 +1,4 @@
-/* $Id: UIApplianceImportEditorWidget.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIApplianceImportEditorWidget.cpp 90334 2021-07-26 13:07:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceImportEditorWidget class implementation.
  */
@@ -25,10 +25,11 @@
 /* GUI includes: */
 #include "QITreeView.h"
 #include "UIApplianceImportEditorWidget.h"
+#include "UICommon.h"
 #include "UIFilePathSelector.h"
 #include "UIMessageCenter.h"
+#include "UINotificationCenter.h"
 #include "UIWizardImportApp.h"
-#include "UICommon.h"
 
 /* COM includes: */
 #include "CAppliance.h"
@@ -247,8 +248,7 @@ bool UIApplianceImportEditorWidget::import()
 {
     if (m_pAppliance)
     {
-        /* Start the import asynchronously */
-        CProgress progress;
+        /* Configure appliance importing: */
         QVector<KImportOptions> options;
         if (m_pMACComboBox)
         {
@@ -265,27 +265,16 @@ bool UIApplianceImportEditorWidget::import()
                     break;
             }
         }
-
         if (m_pImportHDsAsVDI->isChecked())
             options.append(KImportOptions_ImportToVDI);
-        progress = m_pAppliance->ImportMachines(options);
-        bool fResult = m_pAppliance->isOk();
-        if (fResult)
-        {
-            /* Show some progress, so the user know whats going on */
-            msgCenter().showModalProgressDialog(progress, tr("Importing Appliance ..."), ":/progress_import_90px.png", this);
-            if (progress.GetCanceled())
-                return false;
-            if (!progress.isOk() || progress.GetResultCode() != 0)
-            {
-                msgCenter().cannotImportAppliance(progress, m_pAppliance->GetPath(), this);
-                return false;
-            }
-            else
-                return true;
-        }
-        if (!fResult)
-            msgCenter().cannotImportAppliance(*m_pAppliance, this);
+
+        /* Import appliance: */
+        UINotificationProgressApplianceImport *pNotification = new UINotificationProgressApplianceImport(*m_pAppliance,
+                                                                                                         options);
+        notificationCenter().append(pNotification);
+
+        /* Positive: */
+        return true;
     }
     return false;
 }
