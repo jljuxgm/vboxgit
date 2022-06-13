@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 94184 2022-03-11 18:24:17Z vboxsync $
+# $Id: vbox.py 94187 2022-03-11 18:40:19Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 94184 $"
+__version__ = "$Revision: 94187 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -782,7 +782,7 @@ class VirtualBoxEventHandlerBase(EventHandlerBase):
         pass;
     def onSnapshotChange(self, sMachineId, sSnapshotId):
         pass;
-    def onGuestPropertyChange(self, sMachineId, sName, sValue, sFlags):
+    def onGuestPropertyChange(self, sMachineId, sName, sValue, sFlags, fWasDeleted):
         pass;
     # pylint: enable=missing-docstring,unused-argument
 
