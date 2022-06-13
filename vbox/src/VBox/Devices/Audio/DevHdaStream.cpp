@@ -1,4 +1,4 @@
-/* $Id: DevHdaStream.cpp 89864 2021-06-23 14:40:16Z vboxsync $ */
+/* $Id: DevHdaStream.cpp 89865 2021-06-23 15:31:09Z vboxsync $ */
 /** @file
  * Intel HD Audio Controller Emulation - Streams.
  */
@@ -1167,6 +1167,7 @@ DECLINLINE(RTGCPHYS) hdaStreamDmaBufGet(PHDASTREAM pStreamShared, uint32_t *pcbL
     return pStreamShared->State.aBdl[idxBdle].GCPhys + offCurBdle;
 }
 
+#if 0 /* unused */
 /**
  * Get the size of the current BDLE.
  *
@@ -1179,6 +1180,7 @@ DECLINLINE(RTGCPHYS) hdaStreamDmaBufGetSize(PHDASTREAM pStreamShared)
     AssertStmt(idxBdle < pStreamShared->State.cBdles, idxBdle = 0);
     return pStreamShared->State.aBdl[idxBdle].cb;
 }
+#endif
 
 /**
  * Checks if the current BDLE is completed.
