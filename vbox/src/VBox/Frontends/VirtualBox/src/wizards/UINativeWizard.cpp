@@ -1,4 +1,4 @@
-/* $Id: UINativeWizard.cpp 91026 2021-08-31 11:36:38Z vboxsync $ */
+/* $Id: UINativeWizard.cpp 91337 2021-09-22 19:47:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINativeWizard class implementation.
  */
@@ -294,7 +294,8 @@ void UINativeWizard::sltCompleteChanged()
 {
     /* Make sure sender is current widget: */
     QWidget *pSender = qobject_cast<QWidget*>(sender());
-    AssertReturnVoid(m_pWidgetStack->currentWidget() == pSender);
+    if (pSender != m_pWidgetStack->currentWidget())
+        return;
 
     /* Allow Next button only if current page is complete: */
     UINativeWizardPage *pPage = qobject_cast<UINativeWizardPage*>(pSender);
