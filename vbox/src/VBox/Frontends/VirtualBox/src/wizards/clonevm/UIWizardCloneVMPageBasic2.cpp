@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMPageBasic2.cpp 90621 2021-08-11 08:55:12Z vboxsync $ */
+/* $Id: UIWizardCloneVMPageBasic2.cpp 90661 2021-08-12 13:25:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMPageBasic2 class implementation.
  */
@@ -59,6 +59,9 @@ void UIWizardCloneVMPageBasic2::prepare()
 void UIWizardCloneVMPageBasic2::sltCloneTypeChanged(bool fIsFullClone)
 {
     UIWizardCloneVM *pWizard = qobject_cast<UIWizardCloneVM*>(wizard());
+    m_userModifiedParameters << "LinkedClone";
+    cloneVMWizardPropertySet(LinkedClone, !fIsFullClone);
+    /* Show/hide 3rd page according to linked clone toggle: */
     AssertReturnVoid(pWizard);
     pWizard->setCloneModePageVisible(fIsFullClone);
 }

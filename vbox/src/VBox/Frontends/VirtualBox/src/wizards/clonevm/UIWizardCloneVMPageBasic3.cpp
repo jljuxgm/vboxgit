@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMPageBasic3.cpp 90607 2021-08-10 16:07:18Z vboxsync $ */
+/* $Id: UIWizardCloneVMPageBasic3.cpp 90661 2021-08-12 13:25:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMPageBasic3 class implementation.
  */
@@ -73,6 +73,8 @@ void UIWizardCloneVMPageBasic3::prepare()
     {
         pMainLayout->addWidget(m_pCloneModeGroupBox);
         m_pCloneModeGroupBox->setFlat(true);
+        connect(m_pCloneModeGroupBox, &UICloneVMCloneModeGroupBox::sigCloneModeChanged,
+                this, &UIWizardCloneVMPageBasic3::sltCloneModeChanged);
     }
     pMainLayout->addStretch();
 
@@ -139,4 +141,10 @@ bool UIWizardCloneVMPageBasic3::validatePage()
 
     /* Return result: */
     return fResult;
+}
+
+void UIWizardCloneVMPageBasic3::sltCloneModeChanged(KCloneMode enmCloneMode)
+{
+    m_userModifiedParameters << "CloneMode";
+    cloneVMWizardPropertySet(CloneMode, enmCloneMode);
 }

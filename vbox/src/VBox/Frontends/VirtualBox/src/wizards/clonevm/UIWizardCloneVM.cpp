@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVM.cpp 90628 2021-08-11 13:21:17Z vboxsync $ */
+/* $Id: UIWizardCloneVM.cpp 90661 2021-08-12 13:25:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVM class implementation.
  */
@@ -80,6 +80,56 @@ void UIWizardCloneVM::setCloneFilePath(const QString &strCloneFilePath)
 const QString &UIWizardCloneVM::cloneFilePath() const
 {
     return m_strCloneFilePath;
+}
+
+MACAddressClonePolicy UIWizardCloneVM::macAddressClonePolicy() const
+{
+    return m_enmMACAddressClonePolicy;
+}
+
+void UIWizardCloneVM::setMacAddressPolicy(MACAddressClonePolicy enmMACAddressClonePolicy)
+{
+    m_enmMACAddressClonePolicy = enmMACAddressClonePolicy;
+}
+
+bool UIWizardCloneVM::keepDiskNames() const
+{
+    return m_fKeepDiskNames;
+}
+
+void UIWizardCloneVM::setKeepDiskNames(bool fKeepDiskNames)
+{
+    m_fKeepDiskNames = fKeepDiskNames;
+}
+
+bool UIWizardCloneVM::keepHardwareUUIDs() const
+{
+    return m_fKeepHardwareUUIDs;
+}
+
+void UIWizardCloneVM::setKeepHardwareUUIDs(bool fKeepHardwareUUIDs)
+{
+    m_fKeepHardwareUUIDs = fKeepHardwareUUIDs;
+}
+
+bool UIWizardCloneVM::linkedClone() const
+{
+    return m_fLinkedClone;
+}
+
+void UIWizardCloneVM::setLinkedClone(bool fLinkedClone)
+{
+    m_fLinkedClone = fLinkedClone;
+}
+
+KCloneMode UIWizardCloneVM::cloneMode() const
+{
+    return m_enmCloneMode;
+}
+
+void UIWizardCloneVM::setCloneMode(KCloneMode enmCloneMode)
+{
+    m_enmCloneMode = enmCloneMode;
 }
 
 bool UIWizardCloneVM::cloneVM()

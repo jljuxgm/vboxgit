@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMPageBasic2.h 90621 2021-08-11 08:55:12Z vboxsync $ */
+/* $Id: UIWizardCloneVMPageBasic2.h 90661 2021-08-12 13:25:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMPageBasic2 class declaration.
  */
@@ -20,6 +20,9 @@
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
+
+/* Qt includes: */
+#include <QSet>
 
 /* Local includes: */
 #include "UINativeWizardPage.h"
@@ -50,6 +53,8 @@ private:
     QIRichTextLabel *m_pLabel;
     bool m_fAdditionalInfo;
     UICloneVMCloneTypeGroupBox *m_pCloneTypeGroupBox;
+
+    QSet<QString> m_userModifiedParameters;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_wizards_clonevm_UIWizardCloneVMPageBasic2_h */

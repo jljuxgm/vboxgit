@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMPageBasic1.h 90628 2021-08-11 13:21:17Z vboxsync $ */
+/* $Id: UIWizardCloneVMPageBasic1.h 90661 2021-08-12 13:25:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMPageBasic1 class declaration.
  */
@@ -26,6 +26,7 @@
 
 /* Local includes: */
 #include "UINativeWizardPage.h"
+#include "UIWizardCloneVMEditors.h"
 
 /* Forward declarations: */
 class UICloneVMAdditionalOptionsEditor;
@@ -51,8 +52,9 @@ private slots:
 
     void sltCloneNameChanged(const QString &strCloneName);
     void sltClonePathChanged(const QString &strClonePath);
-    /** Handles change in MAC address policy combo-box. */
-    void sltHandleMACAddressClonePolicyComboChange();
+    void sltMACAddressClonePolicyChanged(MACAddressClonePolicy enmMACAddressClonePolicy);
+    void sltKeepDiskNamesToggled(bool fKeepDiskNames);
+    void sltKeepHardwareUUIDsToggled(bool fKeepHardwareUUIDs);
 
 private:
 

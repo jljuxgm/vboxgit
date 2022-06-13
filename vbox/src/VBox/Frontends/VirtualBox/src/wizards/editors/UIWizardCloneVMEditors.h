@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMEditors.h 90628 2021-08-11 13:21:17Z vboxsync $ */
+/* $Id: UIWizardCloneVMEditors.h 90661 2021-08-12 13:25:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardDiskEditors class declaration.
  */
@@ -27,6 +27,9 @@
 
 /* Local includes: */
 #include "QIWithRetranslateUI.h"
+
+/* Other VBox includes: */
+#include "COMEnums.h"
 
 
 /* Forward declarations: */
@@ -109,6 +112,9 @@ class UICloneVMAdditionalOptionsEditor : public QIWithRetranslateUI<QGroupBox>
 
 signals:
 
+    void sigMACAddressClonePolicyChanged(MACAddressClonePolicy enmMACAddressClonePolicy);
+    void sigKeepDiskNamesToggled(bool fKeepDiskNames);
+    void sigKeepHardwareUUIDsToggled(bool fKeepHardwareUUIDs);
 
 public:
 
@@ -118,14 +124,20 @@ public:
 
     MACAddressClonePolicy macAddressClonePolicy() const;
     void setMACAddressClonePolicy(MACAddressClonePolicy enmMACAddressClonePolicy);
+
     void setFirstColumnWidth(int iWidth);
     int firstColumnWidth() const;
+
+private slots:
+
+    void sltMACAddressClonePolicyChanged();
 
 private:
 
     void prepare();
     virtual void retranslateUi() /* override final */;
     void populateMACAddressClonePolicies();
+    void updateMACAddressClonePolicyComboToolTip();
 
     QGridLayout *m_pContainerLayout;
     QLabel *m_pMACComboBoxLabel;
@@ -168,9 +180,15 @@ class UICloneVMCloneModeGroupBox : public QIWithRetranslateUI<QGroupBox>
 
 signals:
 
+    void sigCloneModeChanged(KCloneMode enmCloneMode);
+
 public:
 
     UICloneVMCloneModeGroupBox(bool fShowChildsOption, QWidget *pParent = 0);
+
+private slots:
+
+    void sltButtonClicked();
 
 private:
 
@@ -181,7 +199,6 @@ private:
     QRadioButton *m_pMachineRadio;
     QRadioButton *m_pMachineAndChildsRadio;
     QRadioButton *m_pAllRadio;
-
 };
 
 

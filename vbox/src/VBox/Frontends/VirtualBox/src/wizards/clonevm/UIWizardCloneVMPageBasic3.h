@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMPageBasic3.h 90607 2021-08-10 16:07:18Z vboxsync $ */
+/* $Id: UIWizardCloneVMPageBasic3.h 90661 2021-08-12 13:25:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMPageBasic3 class declaration.
  */
@@ -20,6 +20,9 @@
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
+
+/* Qt includes: */
+#include <QSet>
 
 /* GUI includes: */
 #include "UINativeWizardPage.h"
@@ -62,6 +65,10 @@ public:
     /* Constructor: */
     UIWizardCloneVMPageBasic3(bool fShowChildsOption);
 
+private slots:
+
+    void sltCloneModeChanged(KCloneMode enmCloneMode);
+
 private:
 
     /* Translation stuff: */
@@ -79,7 +86,7 @@ private:
     UICloneVMCloneModeGroupBox *m_pCloneModeGroupBox;
 
     bool m_fShowChildsOption;
-
+    QSet<QString> m_userModifiedParameters;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_wizards_clonevm_UIWizardCloneVMPageBasic3_h */
