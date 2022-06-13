@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIWizardNewVM.cpp 93409 2022-01-24 13:35:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
@@ -858,6 +858,17 @@ bool UIWizardNewVM::isUnattendedEnabled() const
     if (m_strISOFilePath.isEmpty() || m_strISOFilePath.isNull())
         return false;
     if (m_fSkipUnattendedInstall)
+        return false;
+    if (!isOSTypeDetectionOK())
+        return false;
+    return true;
+}
+
+bool UIWizardNewVM::isOSTypeDetectionOK() const
+{
+    if (m_strDetectedOSTypeId.isEmpty())
+        return false;
+    if (m_strDetectedOSTypeId.contains("other", Qt::CaseInsensitive))
         return false;
     return true;
 }

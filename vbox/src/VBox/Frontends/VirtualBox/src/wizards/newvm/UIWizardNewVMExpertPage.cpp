@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMExpertPage.cpp 93311 2022-01-18 12:19:06Z vboxsync $ */
+/* $Id: UIWizardNewVMExpertPage.cpp 93409 2022-01-24 13:35:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMExpertPage class implementation.
  */
@@ -913,11 +913,17 @@ void UIWizardNewVMExpertPage::setSkipCheckBoxEnable()
 {
     AssertReturnVoid(m_pSkipUnattendedCheckBox && m_pNameAndSystemEditor);
     const QString &strPath = m_pNameAndSystemEditor->ISOImagePath();
-    if (strPath.isNull() || strPath.isEmpty())
+    if (strPath.isEmpty())
     {
         m_pSkipUnattendedCheckBox->setEnabled(false);
         return;
     }
+    if (!isOSTypeDetectionOK())
+    {
+        m_pSkipUnattendedCheckBox->setEnabled(false);
+        return;
+    }
+
     m_pSkipUnattendedCheckBox->setEnabled(UIWizardNewVMNameOSTypeCommon::checkISOFile(m_pNameAndSystemEditor));
 }
 
@@ -942,6 +948,13 @@ bool UIWizardNewVMExpertPage::isUnattendedEnabled() const
     UIWizardNewVM *pWizard = wizardWindow<UIWizardNewVM>();
     AssertReturn(pWizard, false);
     return pWizard->isUnattendedEnabled();
+}
+
+bool UIWizardNewVMExpertPage::isOSTypeDetectionOK() const
+{
+    UIWizardNewVM *pWizard = wizardWindow<UIWizardNewVM>();
+    AssertReturn(pWizard, false);
+    return pWizard->isOSTypeDetectionOK();
 }
 
 void UIWizardNewVMExpertPage::setEnableDiskSelectionWidgets(bool fEnabled)
