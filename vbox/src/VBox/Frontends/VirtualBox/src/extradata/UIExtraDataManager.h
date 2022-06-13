@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 91713 2021-10-13 12:13:47Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 92400 2021-11-12 15:07:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -64,6 +64,9 @@ signals:
 
     /** Notifies about extra-data change. */
     void sigExtraDataChange(const QUuid &uID, const QString &strKey, const QString &strValue);
+
+    /** Notifies about notification-center order change. */
+    void sigNotificationCenterOrderChange();
 
     /** Notifies about GUI language change. */
     void sigLanguageChange(QString strLanguage);
@@ -187,6 +190,11 @@ public:
         bool keepSuccessfullNotificationProgresses();
         /** Defines whether successfull notification-progresses should NOT close (@a fKeep) automatically. */
         void setKeepSuccessfullNotificationProgresses(bool fKeep);
+
+        /** Returns notification-center order. */
+        Qt::SortOrder notificationCenterOrder();
+        /** Defines notification-progresses @a enmOrder. */
+        void setNotificationCenterOrder(Qt::SortOrder enmOrder);
 
 #if !defined(VBOX_BLEEDING_EDGE) && !defined(DEBUG)
         /** Returns version for which user wants to prevent BETA build warning. */

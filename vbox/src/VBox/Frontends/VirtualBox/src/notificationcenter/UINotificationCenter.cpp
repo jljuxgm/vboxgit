@@ -1,4 +1,4 @@
-/* $Id: UINotificationCenter.cpp 92295 2021-11-09 14:32:19Z vboxsync $ */
+/* $Id: UINotificationCenter.cpp 92400 2021-11-12 15:07:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINotificationCenter class implementation.
  */
@@ -147,6 +147,7 @@ UINotificationCenter *UINotificationCenter::instance()
 UINotificationCenter::UINotificationCenter(QWidget *pParent)
     : QIWithRetranslateUI<QWidget>(pParent)
     , m_pModel(0)
+    , m_enmOrder(Qt::AscendingOrder)
     , m_pLayoutMain(0)
     , m_pLayoutButtons(0)
     , m_pOpenButton(0)
@@ -351,6 +352,12 @@ void UINotificationCenter::paintEvent(QPaintEvent *pEvent)
     paintFrame(&painter);
 }
 
+void UINotificationCenter::sltHandleOrderChange()
+{
+    m_enmOrder = gEDataManager->notificationCenterOrder();
+    sltModelChanged();
+}
+
 void UINotificationCenter::sltHandleOpenButtonToggled(bool fToggled)
 {
     if (fToggled)
@@ -401,8 +408,13 @@ void UINotificationCenter::sltModelChanged()
     }
 
     /* Populate model contents again: */
-    foreach (const QUuid &uId, m_pModel->ids())
-        m_pLayoutItems->addWidget(UINotificationItem::create(this, m_pModel->objectById(uId)));
+    const int iCount = m_pModel->ids().count();
+    for (int iIndex = 0; iIndex < iCount; ++iIndex)
+    {
+        const QUuid &uId = m_pModel->ids().at(iIndex);
+        m_pLayoutItems->insertWidget(m_enmOrder == Qt::AscendingOrder ? iCount : 0,
+                                     UINotificationItem::create(this, m_pModel->objectById(uId)));
+    }
 
     /* Since there is a scroll-area expanded up to whole
      * height, we will have to align items added above up. */
@@ -442,6 +454,11 @@ void UINotificationCenter::prepare()
     prepareWidgets();
     prepareStateMachineSliding();
     prepareOpenTimer();
+
+    /* Prepare order: */
+    m_enmOrder = gEDataManager->notificationCenterOrder();
+    connect(gEDataManager, &UIExtraDataManager::sigNotificationCenterOrderChange,
+            this, &UINotificationCenter::sltHandleOrderChange);
 
     /* Apply language settings: */
     retranslateUi();

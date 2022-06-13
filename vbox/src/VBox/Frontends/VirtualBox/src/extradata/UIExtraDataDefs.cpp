@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 92398 2021-11-12 13:57:19Z vboxsync $ */
+/* $Id: UIExtraDataDefs.cpp 92400 2021-11-12 15:07:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -28,6 +28,7 @@ const char *UIExtraDataDefs::GUI_ColorTheme = "GUI/ColorTheme";
 const char *UIExtraDataDefs::GUI_SuppressMessages = "GUI/SuppressMessages";
 const char *UIExtraDataDefs::GUI_InvertMessageOption = "GUI/InvertMessageOption";
 const char *UIExtraDataDefs::GUI_NotificationCenter_KeepSuccessfullProgresses = "GUI/NotificationCenter/KeepSuccessfullProgresses";
+const char *UIExtraDataDefs::GUI_NotificationCenter_Order = "GUI/NotificationCenter/Order";
 #if !defined(VBOX_BLEEDING_EDGE) && !defined(DEBUG)
 const char *UIExtraDataDefs::GUI_PreventBetaWarning = "GUI/PreventBetaWarning";
 #endif
