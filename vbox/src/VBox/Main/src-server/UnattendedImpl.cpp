@@ -1,4 +1,4 @@
-/* $Id: UnattendedImpl.cpp 94296 2022-03-17 15:15:46Z vboxsync $ */
+/* $Id: UnattendedImpl.cpp 94297 2022-03-17 15:20:37Z vboxsync $ */
 /** @file
  * Unattended class implementation
  */
@@ -1824,7 +1824,7 @@ HRESULT Unattended::i_innerDetectIsoOSLinux(RTVFS hVfsIso, DETECTBUFFER *pBuf)
             if (RT_SUCCESS(vrc))
             {
                 if (!detectLinuxArchII(szVolumeId, &mEnmOsType, VBOXOSTYPE_Ubuntu))
-                    LogRel(("Unattended: .disk/info: Unknown: arch='%s'\n", pszArch));
+                    LogRel(("Unattended: .disk/info: Unknown: arch='%s'\n", szVolumeId));
             }
             else
                 LogRel(("Unattended: .disk/info No Volume Label found\n"));
