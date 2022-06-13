@@ -1,4 +1,4 @@
-/* $Id: UIIconPool.cpp 93588 2022-02-03 15:58:49Z vboxsync $ */
+/* $Id: UIIconPool.cpp 94004 2022-03-01 00:41:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIIconPool class implementation.
  */
@@ -441,9 +441,11 @@ QIcon UIIconPoolGeneral::userMachineIcon(const CMachine &comMachine) const
 
     /* 1. First, load icon from IMachine extra-data: */
     if (icon.isNull())
+    {
         foreach (const QString &strIconName, gEDataManager->machineWindowIconNames(uMachineId))
             if (!strIconName.isEmpty() && QFile::exists(strIconName))
                 icon.addFile(strIconName);
+    }
 
     /* 2. Otherwise, load icon from IMachine interface itself: */
     if (icon.isNull())

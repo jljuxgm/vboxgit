@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 94004 2022-03-01 00:41:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -1791,8 +1791,10 @@ void UIChooserModel::buildTreeForMainRoot(bool fPreserveSelection /* = false */)
     /* Remember all selected items if requested: */
     QStringList selectedItemDefinitions;
     if (fPreserveSelection && !selectedItems().isEmpty())
+    {
         foreach (UIChooserItem *pSelectedItem, selectedItems())
             selectedItemDefinitions << pSelectedItem->definition();
+    }
 
     /* Clean tree for main root: */
     clearTreeForMainRoot();

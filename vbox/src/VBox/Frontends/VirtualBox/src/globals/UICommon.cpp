@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 94001 2022-02-28 22:54:24Z vboxsync $ */
+/* $Id: UICommon.cpp 94004 2022-03-01 00:41:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -1787,6 +1787,7 @@ void UICommon::prepareStorageMenu(QMenu &menu,
         /* Make sure recent-medium usage is unique: */
         bool fIsRecentMediumUsed = false;
         if (enmMediumType != UIMediumDeviceType_DVD)
+        {
             foreach (const CMediumAttachment &otherAttachment, comAttachments)
             {
                 if (otherAttachment != comCurrentAttachment)
@@ -1799,6 +1800,7 @@ void UICommon::prepareStorageMenu(QMenu &menu,
                     }
                 }
             }
+        }
         /* If recent-medium usage is unique: */
         if (!fIsRecentMediumUsed)
         {
