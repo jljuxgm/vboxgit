@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsNetwork.cpp 94675 2022-04-21 17:52:59Z vboxsync $ */
+/* $Id: UIMachineSettingsNetwork.cpp 94697 2022-04-22 23:50:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsNetwork class implementation.
  */
@@ -16,6 +16,7 @@
  */
 
 /* Qt includes: */
+#include <QRegularExpression>
 #include <QVBoxLayout>
 
 /* GUI includes: */
@@ -451,8 +452,7 @@ bool UIMachineSettingsNetwork::validate(QList<UIValidationMessage> &messages)
         /* Make sure MAC-address is unicast: */
         if (m_pEditorNetworkSettings->macAddress().size() >= 2)
         {
-            QRegExp validator("^[0-9A-Fa-f][02468ACEace]");
-            if (validator.indexIn(m_pEditorNetworkSettings->macAddress()) != 0)
+            if (m_pEditorNetworkSettings->macAddress().indexOf(QRegularExpression("^[0-9A-Fa-f][02468ACEace]")) != 0)
             {
                 message.second << tr("The second digit in the MAC address may not be odd as only unicast addresses are allowed.");
                 fPass = false;
