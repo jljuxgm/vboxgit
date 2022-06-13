@@ -1,4 +1,4 @@
-/* $Id: thread-r0drv-freebsd.c 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: thread-r0drv-freebsd.c 90416 2021-07-29 21:10:03Z vboxsync $ */
 /** @file
  * IPRT - Threads (Part 1), Ring-0 Driver, FreeBSD.
  */
@@ -182,5 +182,13 @@ RTDECL(bool) RTThreadIsInInterrupt(RTTHREAD hThread)
     /** @todo FreeBSD: Implement RTThreadIsInInterrupt. Required for guest
      *        additions! */
     return !ASMIntAreEnabled();
+}
+
+
+RTDECL(int) RTThreadQueryTerminationStatus(RTTHREAD hThread)
+{
+    RT_NOREF(hThread);
+    /** @todo implement. */
+    return VERR_NOT_SUPPORTED;
 }
 
