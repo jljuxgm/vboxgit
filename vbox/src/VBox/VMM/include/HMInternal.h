@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 94419 2022-03-31 20:53:56Z vboxsync $ */
+/* $Id: HMInternal.h 94882 2022-05-06 06:33:54Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -747,8 +747,10 @@ typedef struct HMCPU
     bool                        fTrapXcptGpForLovelyMesaDrv;
     /** Whether we're executing a single instruction. */
     bool                        fSingleInstruction;
+    /** Whether \#DE needs to be intercepted (may be required by GCM). */
+    bool                        fGCMTrapXcptDE;
 
-    bool                        afAlignment0[2];
+    bool                        afAlignment0[1];
 
     /** An additional error code used for some gurus. */
     uint32_t                    u32HMError;
