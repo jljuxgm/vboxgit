@@ -1,4 +1,4 @@
-/* $Id: AudioMixBuffer.h 89800 2021-06-21 00:02:14Z vboxsync $ */
+/* $Id: AudioMixBuffer.h 89801 2021-06-21 00:42:48Z vboxsync $ */
 /** @file
  * Audio Mixing bufer convert audio samples to/from different rates / formats.
  */
@@ -24,7 +24,7 @@
 #include <iprt/cdefs.h>
 #include <VBox/vmm/pdmaudioifs.h>
 
-/** @defgroup grp_pdm_ifs_audio_mixer_buffers   Audio Mixing Buffers
+/** @defgroup grp_pdm_ifs_audio_mixing_buffers   Audio Mixing Buffers
  * @ingroup grp_pdm_ifs_audio_mixing
  *
  * @note This is currently placed under PDM Audio Interface as that seemed like
