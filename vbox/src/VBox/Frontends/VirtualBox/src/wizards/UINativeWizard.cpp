@@ -1,4 +1,4 @@
-/* $Id: UINativeWizard.cpp 90032 2021-07-05 15:34:39Z vboxsync $ */
+/* $Id: UINativeWizard.cpp 90045 2021-07-06 09:00:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINativeWizard class implementation.
  */
@@ -234,6 +234,11 @@ void UINativeWizard::sltCurrentIndexChanged(int iIndex /* = -1 */)
     m_pLabelPageTitle->setText(pPage->title());
     if (iIndex > m_iLastIndex)
         pPage->initializePage();
+
+    /* Disable/enable Next button: */
+    QPushButton *pButtonNext = wizardButton(WizardButtonType_Next);
+    AssertMsgReturnVoid(pButtonNext, ("No Next wizard button found!\n"));
+    pButtonNext->setEnabled(pPage->isComplete());
 
     /* Update last index: */
     m_iLastIndex = iIndex;
