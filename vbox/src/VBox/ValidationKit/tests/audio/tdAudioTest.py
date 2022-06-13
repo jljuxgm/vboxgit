@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tdAudioTest.py 91090 2021-09-02 12:17:58Z vboxsync $
+# $Id: tdAudioTest.py 91096 2021-09-02 14:10:23Z vboxsync $
 
 """
 AudioTest test driver which invokes the VKAT (Validation Kit Audio Test)
@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 91090 $"
+__version__ = "$Revision: 91096 $"
 
 # Standard Python imports.
 import os
@@ -210,7 +210,7 @@ class tdAudioTest(vbox.TestDriver):
         """
         for sVkatPath in self.asGstVkatPaths:
             reporter.log2('Checking for VKAT at: %s ...' % (sVkatPath));
-            if self.txsIsFile(oSession, oTxsSession, sVkatPath):
+            if self.txsIsFile(oSession, oTxsSession, sVkatPath, fIgnoreErrors = True):
                 return (True, sVkatPath);
         reporter.error('Unable to find guest VKAT in any of these places:\n%s' % ('\n'.join(self.asGstVkatPaths),));
         return (False, "");
