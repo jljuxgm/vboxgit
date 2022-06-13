@@ -1,4 +1,4 @@
-/* $Id: VBoxHeadless.cpp 91690 2021-10-12 13:08:19Z vboxsync $ */
+/* $Id: VBoxHeadless.cpp 92060 2021-10-26 07:22:44Z vboxsync $ */
 /** @file
  * VBoxHeadless - The VirtualBox Headless frontend for running VMs on servers.
  */
@@ -484,7 +484,8 @@ static void parse_environ(uint32_t *pulFrameWidth, uint32_t *pulFrameHeight,
 }
 #endif /* VBOX_WITH_RECORDING defined */
 
-#ifdef RT_OS_DARWIN
+/* This should be done in the hardening code already and it fails on Monterey. */
+#if 0 //def RT_OS_DARWIN
 
 # include <unistd.h>
 # include <stdio.h>
@@ -1159,7 +1160,7 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
 
     const char *pcszNameOrUUID = NULL;
 
-#ifdef RT_OS_DARWIN
+#if 0 //def RT_OS_DARWIN - see above
     hideSetUidRootFromAppKit();
 #endif
 
