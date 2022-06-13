@@ -1,4 +1,4 @@
-/* $Id: d3dhlp.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: d3dhlp.cpp 92180 2021-11-02 21:45:43Z vboxsync $ */
 /** @file
  * Gallium D3D testcase. Various D3D helpers.
  */
@@ -341,7 +341,7 @@ void D3DCamera::TimeAdvance(float dt)
 
 void D3DCamera::computeView(void)
 {
-    /* Vectors of the ñamera coordinate system must be orthonormal. */
+    /* Vectors of the Ã±amera coordinate system must be orthonormal. */
     d3dVectorNormalize(&mLook);
 
     d3dVectorCross(&mUp, &mLook, &mRight);
