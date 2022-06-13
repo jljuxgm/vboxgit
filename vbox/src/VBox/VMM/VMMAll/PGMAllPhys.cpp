@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 91849 2021-10-19 23:24:00Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 91855 2021-10-20 00:51:01Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -4553,5 +4553,4 @@ void pgmPhysSetNemStateForPages(PPGMPAGE paPages, RTGCPHYS cPages, uint8_t u2Sta
 }
 
 #endif /* VBOX_WITH_NATIVE_NEM */
-
 
