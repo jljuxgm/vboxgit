@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 93115 2022-01-01 11:31:46Z vboxsync $
+# $Id: Makefile.kmk 93437 2022-01-25 01:48:52Z vboxsync $
 ## @file
 # Sub-makefile for the darwin host driver helper scripts.
 #
@@ -27,11 +27,13 @@
 SUB_DEPTH = ../../../..
 include $(KBUILD_PATH)/subheader.kmk
 
-INSTALLS += HostDrivers-darwin-sh
-HostDrivers-darwin-sh_INST = $(INST_DIST)
-HostDrivers-darwin-sh_INSTTYPE = stage
-HostDrivers-darwin-sh_EXEC_SOURCES = \
-	loadall.sh
+ifdef VBOX_WITH_VBOXDRV
+ INSTALLS += HostDrivers-darwin-sh
+ HostDrivers-darwin-sh_INST = $(INST_DIST)
+ HostDrivers-darwin-sh_INSTTYPE = stage
+ HostDrivers-darwin-sh_EXEC_SOURCES = \
+ 	loadall.sh
+endif
 
 include $(FILE_KBUILD_SUB_FOOTER)
 
