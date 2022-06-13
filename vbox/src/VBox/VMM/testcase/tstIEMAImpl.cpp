@@ -1,4 +1,4 @@
-/* $Id: tstIEMAImpl.cpp 94194 2022-03-12 01:43:26Z vboxsync $ */
+/* $Id: tstIEMAImpl.cpp 94221 2022-03-14 12:57:25Z vboxsync $ */
 /** @file
  * IEM Assembly Instruction Helper Testcase.
  */
@@ -342,14 +342,14 @@ static uint64_t  RandU64Src(uint32_t iTest)
 static void GenerateHeader(PRTSTREAM pOut, const char *pszCpuDesc, const char *pszCpuType, const char *pszCpuSuffU)
 {
     /* We want to tag the generated source code with the revision that produced it. */
-    static char s_szRev[] = "$Revision: 94194 $";
+    static char s_szRev[] = "$Revision: 94221 $";
     const char *pszRev = RTStrStripL(strchr(s_szRev, ':') + 1);
     size_t      cchRev = 0;
     while (RT_C_IS_DIGIT(pszRev[cchRev]))
         cchRev++;
 
     RTStrmPrintf(pOut,
-                 "/* $Id: tstIEMAImpl.cpp 94194 2022-03-12 01:43:26Z vboxsync $ */\n"
+                 "/* $Id: tstIEMAImpl.cpp 94221 2022-03-14 12:57:25Z vboxsync $ */\n"
                  "/** @file\n"
                  " * IEM Assembly Instruction Helper Testcase Data%s%s - r%.*s on %s.\n"
                  " */\n"
@@ -1413,6 +1413,13 @@ void ShiftU ## a_cBits ## Generate(PRTSTREAM pOut, uint32_t cTests) \
             a_aSubTests[iFn].pfnNative(&Test.uDstOut, Test.uMisc, &Test.fEflOut); \
             RTStrmPrintf(pOut, "    { %#08x, %#08x, " a_Fmt ", " a_Fmt ", 0, %-2u }, /* #%u */\n", \
                          Test.fEflIn, Test.fEflOut, Test.uDstIn, Test.uDstOut, Test.uMisc, iTest); \
+            \
+            Test.fEflIn    = (~Test.fEflIn & X86_EFL_LIVE_MASK) | X86_EFL_RA1_MASK; \
+            Test.fEflOut   = Test.fEflIn; \
+            Test.uDstOut   = Test.uDstIn; \
+            a_aSubTests[iFn].pfnNative(&Test.uDstOut, Test.uMisc, &Test.fEflOut); \
+            RTStrmPrintf(pOut, "    { %#08x, %#08x, " a_Fmt ", " a_Fmt ", 0, %-2u }, /* #%u b */\n", \
+                         Test.fEflIn, Test.fEflOut, Test.uDstIn, Test.uDstOut, Test.uMisc, iTest); \
         } \
         RTStrmPrintf(pOut, "};\n"); \
     } \
@@ -1467,7 +1474,7 @@ static void ShiftU ## a_cBits ## Test(void) \
                 a_Type   uDst = paTests[iTest].uDstIn; \
                 pfn(&uDst, paTests[iTest].uMisc, &fEfl); \
                 if (   uDst != paTests[iTest].uDstOut \
-                    || fEfl != paTests[iTest].fEflOut) \
+                    || fEfl != paTests[iTest].fEflOut ) \
                     RTTestFailed(g_hTest, "#%u%s: efl=%#08x dst=" a_Fmt " shift=%2u -> efl=%#08x dst=" a_Fmt ", expected %#08x & " a_Fmt "%s\n", \
                                  iTest, iVar == 0 ? "" : "/n", \
                                  paTests[iTest].fEflIn, paTests[iTest].uDstIn, paTests[iTest].uMisc, \
