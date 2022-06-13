@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioPulseAudio.cpp 91184 2021-09-09 17:09:38Z vboxsync $ */
+/* $Id: DrvHostAudioPulseAudio.cpp 91185 2021-09-09 18:12:51Z vboxsync $ */
 /** @file
  * Host audio driver - Pulse Audio.
  */
@@ -1828,8 +1828,8 @@ static DECLCALLBACK(uint32_t) drvHstAudPaHA_StreamGetWritable(PPDMIHOSTAUDIO pIn
 
         pa_threaded_mainloop_unlock(pThis->pMainLoop);
     }
-    LogRel2(("PulseAudio: drvHstAudPaHA_StreamGetWritable returns %#x (%u) [max=%#RX32 min=%#RX32]\n",
-                 cbWritable, cbWritable, pStreamPA->BufAttr.maxlength, pStreamPA->BufAttr.minreq));
+    Log3Func(("returns %#x (%u) [max=%#RX32 min=%#RX32]\n",
+              cbWritable, cbWritable, pStreamPA->BufAttr.maxlength, pStreamPA->BufAttr.minreq));
     return cbWritable;
 }
 

@@ -1,4 +1,4 @@
-/* $Id: vkatCommon.cpp 91184 2021-09-09 17:09:38Z vboxsync $ */
+/* $Id: vkatCommon.cpp 91185 2021-09-09 18:12:51Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) - Self test code.
  */
@@ -305,8 +305,7 @@ int audioTestPlayTone(PAUDIOTESTENV pTstEnv, PAUDIOTESTSTREAM pStream, PAUDIOTES
             }
 
             uint32_t       cbPlayed   = 0;
-            AudioTestMixStreamGetWritable(&pStream->Mix);
-            uint32_t const cbCanWrite = PDMAudioPropsMilliToBytes(pMix->pProps, pStream->Cfg.Device.cMsSchedulingHint);
+            uint32_t const cbCanWrite = AudioTestMixStreamGetWritable(&pStream->Mix);
             if (cbCanWrite)
             {
                 uint32_t const cbToGenerate = RT_MIN(RT_MIN(cbToPlayTotal - cbPlayedTotal, sizeof(abBuf)), cbCanWrite);
