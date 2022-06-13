@@ -1,4 +1,4 @@
-/* $Id: VBoxDriversRegister.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxDriversRegister.cpp 91326 2021-09-22 15:10:38Z vboxsync $ */
 /** @file
  *
  * Main driver registration.
@@ -27,6 +27,7 @@
 #include "KeyboardImpl.h"
 #include "DisplayImpl.h"
 #include "VMMDev.h"
+#include "NvramStoreImpl.h"
 #ifdef VBOX_WITH_AUDIO_VRDE
 # include "DrvAudioVRDE.h"
 #endif
@@ -103,6 +104,10 @@ extern "C" DECLEXPORT(int) VBoxDriversRegister(PCPDMDRVREGCB pCallbacks, uint32_
     if (RT_FAILURE(rc))
         return rc;
 #endif
+
+    rc = pCallbacks->pfnRegister(pCallbacks, &NvramStore::DrvReg);
+    if (RT_FAILURE(rc))
+        return rc;
 
     return VINF_SUCCESS;
 }

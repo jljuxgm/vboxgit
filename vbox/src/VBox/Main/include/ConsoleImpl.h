@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 91312 2021-09-20 11:06:57Z vboxsync $ */
+/* $Id: ConsoleImpl.h 91326 2021-09-22 15:10:38Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -63,6 +63,7 @@ class VMMDevMouseInterface;
 class DisplayMouseInterface;
 class VMPowerUpTask;
 class VMPowerDownTask;
+class NvramStore;
 
 #include <iprt/uuid.h>
 #include <iprt/memsafer.h>
@@ -934,6 +935,7 @@ private:
     const ComObjPtr<ExtPackManager> mptrExtPackManager;
 #endif
     const ComObjPtr<EmulatedUSB> mEmulatedUSB;
+    const ComObjPtr<NvramStore> mptrNvramStore;
 
     USBDeviceList mUSBDevices;
     RemoteUSBDeviceList mRemoteUSBDevices;
