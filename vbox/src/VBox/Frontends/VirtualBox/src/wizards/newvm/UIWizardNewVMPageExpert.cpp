@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.cpp 90281 2021-07-22 09:44:32Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.cpp 90282 2021-07-22 10:02:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class implementation.
  */
@@ -280,11 +280,11 @@ void UIWizardNewVMPageExpert::createConnections()
 
     if (m_pDiskSelectionButton)
         connect(m_pDiskSelectionButton, &QIToolButton::clicked,
-               this, &UIWizardNewVMPageExpert::sltGetWithFileOpenDialog);
+                this, &UIWizardNewVMPageExpert::sltGetWithFileOpenDialog);
 
-    // if (m_pDiskSelector)
-    //     connect(m_pDiskSelector, static_cast<void(UIMediaComboBox::*)(int)>(&UIMediaComboBox::currentIndexChanged),
-    //             this, &UIWizardNewVMPageExpert::sltMediaComboBoxIndexChanged);
+    if (m_pDiskSelector)
+        connect(m_pDiskSelector, static_cast<void(UIMediaComboBox::*)(int)>(&UIMediaComboBox::currentIndexChanged),
+                this, &UIWizardNewVMPageExpert::sltMediaComboBoxIndexChanged);
 
 
     connect(m_pFormatButtonGroup, &UIDiskFormatsGroupBox::sigMediumFormatChanged,
