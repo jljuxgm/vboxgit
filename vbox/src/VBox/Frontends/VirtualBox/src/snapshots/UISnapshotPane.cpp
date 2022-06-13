@@ -1,4 +1,4 @@
-/* $Id: UISnapshotPane.cpp 93996 2022-02-28 22:04:49Z vboxsync $ */
+/* $Id: UISnapshotPane.cpp 94006 2022-03-01 01:03:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class implementation.
  */
@@ -307,7 +307,11 @@ void UISnapshotItem::recache()
         m_fOnline = m_comSnapshot.GetOnline();
         setIcon(Column_Name, *m_pSnapshotWidget->snapshotItemIcon(m_fOnline));
         m_strDescription = m_comSnapshot.GetDescription();
+#if QT_VERSION >= QT_VERSION_CHECK(5, 8, 0)
+        m_timestamp.setSecsSinceEpoch(m_comSnapshot.GetTimeStamp() / 1000);
+#else
         m_timestamp.setTime_t(m_comSnapshot.GetTimeStamp() / 1000);
+#endif
         m_fCurrentStateModified = false;
     }
 
@@ -336,7 +340,11 @@ void UISnapshotItem::setMachineState(KMachineState enmState)
     /* Set corresponding icon: */
     setIcon(Column_Name, gpConverter->toIcon(m_enmMachineState));
     /* Update timestamp: */
+#if QT_VERSION >= QT_VERSION_CHECK(5, 8, 0)
+    m_timestamp.setSecsSinceEpoch(m_comMachine.GetLastStateChange() / 1000);
+#else
     m_timestamp.setTime_t(m_comMachine.GetLastStateChange() / 1000);
+#endif
 }
 
 SnapshotAgeFormat UISnapshotItem::updateAge()
