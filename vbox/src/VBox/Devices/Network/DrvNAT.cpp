@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 91892 2021-10-20 12:42:02Z vboxsync $ */
+/* $Id: DrvNAT.cpp 91897 2021-10-20 13:42:39Z vboxsync $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -1679,7 +1679,7 @@ static DECLCALLBACK(int) drvNATConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uin
         GET_STRING_ALLOC(rc, pDrvIns, pCfg, "BindIP", pszBindIP);
         slirp_set_binding_address(pThis->pNATState, pszBindIP);
         if (pszBindIP != NULL)
-            MMR3HeapFree(pszBindIP);
+            PDMDrvHlpMMHeapFree(pDrvIns, pszBindIP);
 
 #define SLIRP_SET_TUNING_VALUE(name, setter)                    \
             do                                                  \

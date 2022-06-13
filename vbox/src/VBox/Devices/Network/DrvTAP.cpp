@@ -1,4 +1,4 @@
-/* $Id: DrvTAP.cpp 91872 2021-10-20 09:07:44Z vboxsync $ */
+/* $Id: DrvTAP.cpp 91897 2021-10-20 13:42:39Z vboxsync $ */
 /** @file
  * DrvTAP - Universal TAP network transport driver.
  */
@@ -814,14 +814,14 @@ static DECLCALLBACK(void) drvTAPDestruct(PPDMDRVINS pDrvIns)
     if (!pThis->fStatic)
         RTStrFree(pThis->pszDeviceName);    /* allocated by drvTAPSetupApplication */
     else
-        MMR3HeapFree(pThis->pszDeviceName);
+        PDMDrvHlpMMHeapFree(pDrvIns, pThis->pszDeviceName);
 #else
-    MMR3HeapFree(pThis->pszDeviceName);
+    PDMDrvHlpMMHeapFree(pDrvIns, pThis->pszDeviceName);
 #endif
     pThis->pszDeviceName = NULL;
-    MMR3HeapFree(pThis->pszSetupApplication);
+    PDMDrvHlpMMHeapFree(pDrvIns, pThis->pszSetupApplication);
     pThis->pszSetupApplication = NULL;
-    MMR3HeapFree(pThis->pszTerminateApplication);
+    PDMDrvHlpMMHeapFree(pDrvIns, pThis->pszTerminateApplication);
     pThis->pszTerminateApplication = NULL;
 
     /*

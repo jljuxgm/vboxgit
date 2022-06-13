@@ -1,4 +1,4 @@
-/* $Id: DevQemuFwCfg.cpp 86034 2020-09-06 08:37:06Z vboxsync $ */
+/* $Id: DevQemuFwCfg.cpp 91897 2021-10-20 13:42:39Z vboxsync $ */
 /** @file
  * DevQemuFwCfg - QEMU firmware configuration compatible device.
  */
@@ -322,7 +322,7 @@ static DECLCALLBACK(int) qemuFwCfgR3SetupCfgmFileSz(PDEVQEMUFWCFG pThis, PCQEMUF
         }
         else
             LogRel(("QemuFwCfg: Failed to open file \"%s\" -> %Rrc\n", pszFilePath, rc));
-        MMR3HeapFree(pszFilePath);
+        PDMDevHlpMMHeapFree(pThis->pDevIns, pszFilePath);
     }
     else
         LogRel(("QemuFwCfg: Failed to query \"%s\" -> %Rrc\n", pItem->pszCfgmKey, rc));
@@ -404,7 +404,7 @@ static DECLCALLBACK(int) qemuFwCfgR3SetupCfgmFile(PDEVQEMUFWCFG pThis, PCQEMUFWC
         }
         else
             LogRel(("QemuFwCfg: Failed to open file \"%s\" -> %Rrc\n", pszFilePath, rc));
-        MMR3HeapFree(pszFilePath);
+        PDMDevHlpMMHeapFree(pThis->pDevIns, pszFilePath);
     }
     else
         LogRel(("QemuFwCfg: Failed to query \"%s\" -> %Rrc\n", pItem->pszCfgmKey, rc));

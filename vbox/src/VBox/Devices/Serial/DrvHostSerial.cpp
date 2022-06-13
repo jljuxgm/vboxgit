@@ -1,4 +1,4 @@
-/* $Id: DrvHostSerial.cpp 91868 2021-10-20 09:05:37Z vboxsync $ */
+/* $Id: DrvHostSerial.cpp 91897 2021-10-20 13:42:39Z vboxsync $ */
 /** @file
  * VBox serial devices: Host serial driver
  */
@@ -762,7 +762,7 @@ static DECLCALLBACK(void) drvHostSerialDestruct(PPDMDRVINS pDrvIns)
 
     if (pThis->pszDevicePath)
     {
-        MMR3HeapFree(pThis->pszDevicePath);
+        PDMDrvHlpMMHeapFree(pDrvIns, pThis->pszDevicePath);
         pThis->pszDevicePath = NULL;
     }
 }

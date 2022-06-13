@@ -1,4 +1,4 @@
-/* $Id: DrvVUSBRootHub.cpp 91871 2021-10-20 09:06:26Z vboxsync $ */
+/* $Id: DrvVUSBRootHub.cpp 91897 2021-10-20 13:42:39Z vboxsync $ */
 /** @file
  * Virtual USB - Root Hub Driver.
  */
@@ -1376,7 +1376,7 @@ static DECLCALLBACK(int) vusbRhConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uin
                                        N_("VUSBSniffer cannot open '%s' for writing. The directory must exist and it must be writable for the current user"),
                                        pszCaptureFilename);
 
-        MMR3HeapFree(pszCaptureFilename);
+        PDMDrvHlpMMHeapFree(pDrvIns, pszCaptureFilename);
     }
 
     /*

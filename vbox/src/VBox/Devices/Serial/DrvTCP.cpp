@@ -1,4 +1,4 @@
-/* $Id: DrvTCP.cpp 91868 2021-10-20 09:05:37Z vboxsync $ */
+/* $Id: DrvTCP.cpp 91897 2021-10-20 13:42:39Z vboxsync $ */
 /** @file
  * TCP socket driver implementing the IStream interface.
  */
@@ -528,7 +528,7 @@ static DECLCALLBACK(void) drvTCPDestruct(PPDMDRVINS pDrvIns)
         pThis->hPollSet = NIL_RTPOLLSET;
     }
 
-    MMR3HeapFree(pThis->pszLocation);
+    PDMDrvHlpMMHeapFree(pDrvIns, pThis->pszLocation);
     pThis->pszLocation = NULL;
 
     /*

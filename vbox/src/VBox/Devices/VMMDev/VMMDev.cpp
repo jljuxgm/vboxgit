@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 91887 2021-10-20 12:02:36Z vboxsync $ */
+/* $Id: VMMDev.cpp 91897 2021-10-20 13:42:39Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -4630,7 +4630,7 @@ static DECLCALLBACK(int) vmmdevConstruct(PPDMDEVINS pDevIns, int iInstance, PCFG
         return PDMDEV_SET_ERROR(pDevIns, rc, N_("Configuration error: Failed querying \"GuestCoreDumpDir\" as a string"));
 
     RTStrCopy(pThis->szGuestCoreDumpDir, sizeof(pThis->szGuestCoreDumpDir), pszGuestCoreDumpDir);
-    MMR3HeapFree(pszGuestCoreDumpDir);
+    PDMDevHlpMMHeapFree(pDevIns, pszGuestCoreDumpDir);
 
     rc = pHlp->pfnCFGMQueryU32Def(pCfg, "GuestCoreDumpCount", &pThis->cGuestCoreDumps, 3);
     if (RT_FAILURE(rc))
@@ -4727,7 +4727,7 @@ static DECLCALLBACK(int) vmmdevConstruct(PPDMDEVINS pDevIns, int iInstance, PCFG
     /*
      * <missing comment>
      */
-    pThis->cbGuestRAM = MMR3PhysGetRamSize(PDMDevHlpGetVM(pDevIns));
+    pThis->cbGuestRAM = PDMDevHlpMMPhysGetRamSize(pDevIns);
 
     /*
      * We do our own locking entirely. So, install NOP critsect for the device

@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.cpp 91566 2021-10-05 11:45:51Z vboxsync $ */
+/* $Id: DevPcBios.cpp 91897 2021-10-20 13:42:39Z vboxsync $ */
 /** @file
  * DevPcBios - PC BIOS Device.
  */
@@ -772,10 +772,9 @@ static DECLCALLBACK(int) pcbiosInitComplete(PPDMDEVINS pDevIns)
     PPDMIMEDIA      apHDs[4] = {0};
     LogFlow(("pcbiosInitComplete:\n"));
 
-    PVM pVM                    = PDMDevHlpGetVM(pDevIns);
-    uint64_t const  cbRamSize  = MMR3PhysGetRamSize(pVM);
-    uint32_t const  cbBelow4GB = MMR3PhysGetRamSizeBelow4GB(pVM);
-    uint64_t const  cbAbove4GB = MMR3PhysGetRamSizeAbove4GB(pVM);
+    uint64_t const  cbRamSize  = PDMDevHlpMMPhysGetRamSize(pDevIns);
+    uint32_t const  cbBelow4GB = PDMDevHlpMMPhysGetRamSizeBelow4GB(pDevIns);
+    uint64_t const  cbAbove4GB = PDMDevHlpMMPhysGetRamSizeAbove4GB(pDevIns);
 
     /*
      * Memory sizes.

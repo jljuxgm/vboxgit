@@ -1,4 +1,4 @@
-  /* $Id: DrvNamedPipe.cpp 91868 2021-10-20 09:05:37Z vboxsync $ */
+  /* $Id: DrvNamedPipe.cpp 91897 2021-10-20 13:42:39Z vboxsync $ */
 /** @file
  * Named pipe / local socket stream driver.
  */
@@ -848,7 +848,7 @@ static DECLCALLBACK(void) drvNamedPipeDestruct(PPDMDRVINS pDrvIns)
         RTFileDelete(pThis->pszLocation);
 #endif /* !RT_OS_WINDOWS */
 
-    MMR3HeapFree(pThis->pszLocation);
+    PDMDrvHlpMMHeapFree(pDrvIns, pThis->pszLocation);
     pThis->pszLocation = NULL;
 
     /*

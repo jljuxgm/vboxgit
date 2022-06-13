@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase.cpp 91869 2021-10-20 09:05:50Z vboxsync $ */
+/* $Id: DrvHostBase.cpp 91897 2021-10-20 13:42:39Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver.
  */
@@ -1222,7 +1222,7 @@ DECLCALLBACK(void) DRVHostBaseDestruct(PPDMDRVINS pDrvIns)
 
     if (pThis->pszDevice)
     {
-        MMR3HeapFree(pThis->pszDevice);
+        PDMDrvHlpMMHeapFree(pDrvIns, pThis->pszDevice);
         pThis->pszDevice = NULL;
     }
 
@@ -1415,10 +1415,10 @@ DECLHIDDEN(int) DRVHostBaseInit(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, const char *
         if (RT_FAILURE(rc))
         {
             AssertMsgFailed(("Configuration error: Uuid from string failed on \"%s\", rc=%Rrc.\n", psz, rc));
-            MMR3HeapFree(psz);
+            PDMDrvHlpMMHeapFree(pDrvIns, psz);
             return rc;
         }
-        MMR3HeapFree(psz);
+        PDMDrvHlpMMHeapFree(pDrvIns, psz);
     }
     else
     {

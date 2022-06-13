@@ -1,4 +1,4 @@
-/* $Id: DrvRawFile.cpp 91868 2021-10-20 09:05:37Z vboxsync $ */
+/* $Id: DrvRawFile.cpp 91897 2021-10-20 13:42:39Z vboxsync $ */
 /** @file
  * VBox stream drivers - Raw file output.
  */
@@ -164,7 +164,7 @@ static DECLCALLBACK(void) drvRawFileDestruct(PPDMDRVINS pDrvIns)
     PDMDRV_CHECK_VERSIONS_RETURN_VOID(pDrvIns);
 
     if (pThis->pszLocation)
-        MMR3HeapFree(pThis->pszLocation);
+        PDMDrvHlpMMHeapFree(pDrvIns, pThis->pszLocation);
 
     if (pThis->hOutputFile != NIL_RTFILE)
     {

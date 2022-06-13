@@ -1,4 +1,4 @@
-/* $Id: DevINIP.cpp 85193 2020-07-10 15:09:57Z vboxsync $ */
+/* $Id: DevINIP.cpp 91897 2021-10-20 13:42:39Z vboxsync $ */
 /** @file
  * DevINIP - Internal Network IP stack device/service.
  */
@@ -555,11 +555,11 @@ static DECLCALLBACK(int) devINIPDestruct(PPDMDEVINS pDevIns)
     if (g_pDevINIPData != NULL)
         vboxLwipCoreFinalize(devINIPTcpipFiniDone, pThis);
 
-    MMR3HeapFree(pThis->pszIP);
+    PDMDevHlpMMHeapFree(pDevIns, pThis->pszIP);
     pThis->pszIP = NULL;
-    MMR3HeapFree(pThis->pszNetmask);
+    PDMDevHlpMMHeapFree(pDevIns, pThis->pszNetmask);
     pThis->pszNetmask = NULL;
-    MMR3HeapFree(pThis->pszGateway);
+    PDMDevHlpMMHeapFree(pDevIns, pThis->pszGateway);
     pThis->pszGateway = NULL;
 
     LogFlow(("%s: success\n", __FUNCTION__));

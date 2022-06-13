@@ -1,4 +1,4 @@
-/* $Id: DrvUDPTunnel.cpp 91872 2021-10-20 09:07:44Z vboxsync $ */
+/* $Id: DrvUDPTunnel.cpp 91897 2021-10-20 13:42:39Z vboxsync $ */
 /** @file
  * DrvUDPTunnel - UDP tunnel network transport driver
  *
@@ -413,7 +413,7 @@ static DECLCALLBACK(void) drvUDPTunnelDestruct(PPDMDRVINS pDrvIns)
 
     if (pThis->pszDestIP)
     {
-        MMR3HeapFree(pThis->pszDestIP);
+        PDMDrvHlpMMHeapFree(pDrvIns, pThis->pszDestIP);
         pThis->pszDestIP = NULL;
     }
 

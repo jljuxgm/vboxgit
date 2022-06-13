@@ -1,4 +1,4 @@
-/* $Id: DrvVDE.cpp 91872 2021-10-20 09:07:44Z vboxsync $ */
+/* $Id: DrvVDE.cpp 91897 2021-10-20 13:42:39Z vboxsync $ */
 /** @file
  * VDE network transport driver.
  */
@@ -501,7 +501,7 @@ static DECLCALLBACK(void) drvVDEDestruct(PPDMDRVINS pDrvIns)
         pThis->hPipeRead = NIL_RTPIPE;
     }
 
-    MMR3HeapFree(pThis->pszDeviceName);
+    PDMDrvHlpMMHeapFree(pDrvIns, pThis->pszDeviceName);
     pThis->pszDeviceName = NULL;
 
     /*

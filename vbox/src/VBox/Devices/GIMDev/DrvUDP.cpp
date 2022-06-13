@@ -1,4 +1,4 @@
-/* $Id: DrvUDP.cpp 91862 2021-10-20 09:03:40Z vboxsync $ */
+/* $Id: DrvUDP.cpp 91897 2021-10-20 13:42:39Z vboxsync $ */
 /** @file
  * UDP socket stream driver.
  */
@@ -158,7 +158,7 @@ static DECLCALLBACK(void) drvUDPDestruct(PPDMDRVINS pDrvIns)
         LogRel(("DrvUDP#%u: Closed socket to %s:%u\n", pThis->pDrvIns->iInstance, pThis->pszServerAddress, pThis->uServerPort));
     }
 
-    MMR3HeapFree(pThis->pszServerAddress);
+    PDMDrvHlpMMHeapFree(pDrvIns, pThis->pszServerAddress);
     pThis->pszServerAddress = NULL;
 }
 

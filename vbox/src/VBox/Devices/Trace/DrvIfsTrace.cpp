@@ -1,4 +1,4 @@
-/* $Id: DrvIfsTrace.cpp 91870 2021-10-20 09:06:11Z vboxsync $ */
+/* $Id: DrvIfsTrace.cpp 91897 2021-10-20 13:42:39Z vboxsync $ */
 /** @file
  * VBox interface callback tracing driver.
  */
@@ -79,7 +79,7 @@ static DECLCALLBACK(void) drvIfTrace_Destruct(PPDMDRVINS pDrvIns)
 
     if (pThis->pszTraceFilePath)
     {
-        MMR3HeapFree(pThis->pszTraceFilePath);
+        PDMDrvHlpMMHeapFree(pDrvIns, pThis->pszTraceFilePath);
         pThis->pszTraceFilePath = NULL;
     }
 }

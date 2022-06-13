@@ -1,4 +1,4 @@
-/* $Id: DevFwCommon.cpp 85948 2020-08-31 09:52:18Z vboxsync $ */
+/* $Id: DevFwCommon.cpp 91897 2021-10-20 13:42:39Z vboxsync $ */
 /** @file
  * FwCommon - Shared firmware code (used by DevPcBios & DevEFI).
  */
@@ -825,7 +825,7 @@ int FwCommonPlantDMITable(PPDMDEVINS pDevIns, uint8_t *pTable, unsigned cbMax, P
         /***************************************
          * DMI Physical Memory Array (Type 16) *
          ***************************************/
-        uint64_t const  cbRamSize = MMR3PhysGetRamSize(PDMDevHlpGetVM(pDevIns));
+        uint64_t const  cbRamSize = PDMDevHlpMMPhysGetRamSize(pDevIns);
 
         PDMIRAMARRAY pMemArray = (PDMIRAMARRAY)pszStr;
         DMI_CHECK_SIZE(sizeof(*pMemArray));

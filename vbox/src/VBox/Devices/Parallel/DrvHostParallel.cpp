@@ -1,4 +1,4 @@
-/* $Id: DrvHostParallel.cpp 91865 2021-10-20 09:04:42Z vboxsync $ */
+/* $Id: DrvHostParallel.cpp 91897 2021-10-20 13:42:39Z vboxsync $ */
 /** @file
  * VirtualBox Host Parallel Port Driver.
  *
@@ -900,7 +900,7 @@ static DECLCALLBACK(void) drvHostParallelDestruct(PPDMDRVINS pDrvIns)
 
     if (pThis->pszDevicePath)
     {
-        MMR3HeapFree(pThis->pszDevicePath);
+        PDMDrvHlpMMHeapFree(pDrvIns, pThis->pszDevicePath);
         pThis->pszDevicePath = NULL;
     }
 #endif /* !VBOX_WITH_WIN_PARPORT_SUP */

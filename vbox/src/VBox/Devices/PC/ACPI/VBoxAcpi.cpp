@@ -1,4 +1,4 @@
-/* $Id: VBoxAcpi.cpp 91885 2021-10-20 12:01:26Z vboxsync $ */
+/* $Id: VBoxAcpi.cpp 91897 2021-10-20 13:42:39Z vboxsync $ */
 /** @file
  * VBoxAcpi - VirtualBox ACPI manipulation functionality.
  */
@@ -346,7 +346,7 @@ static int acpiAmlLoadExternal(PPDMDEVINS pDevIns, const char *pcszCfgName, cons
 
             RTFileClose(hFileAml);
         }
-        MMR3HeapFree(pszAmlFilePath);
+        PDMDevHlpMMHeapFree(pDevIns, pszAmlFilePath);
     }
 
     return rc;
