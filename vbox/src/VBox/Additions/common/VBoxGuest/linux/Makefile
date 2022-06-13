@@ -1,4 +1,4 @@
-# $Id: Makefile 84947 2020-06-25 11:52:07Z vboxsync $
+# $Id: Makefile 89957 2021-06-29 14:34:08Z vboxsync $
 ## @file
 # VirtualBox Guest Additions Module Makefile.
 #
@@ -130,6 +130,7 @@ endif # VBOX_WITHOUT_COMBINED_SOURCES
 ifeq ($(VBOX_KBUILD_TARGET_ARCH),x86)
 VBOXMOD_OBJS += \
 	common/math/gcc/divdi3.o \
+	common/math/gcc/divmoddi4.o \
 	common/math/gcc/moddi3.o \
 	common/math/gcc/udivdi3.o \
 	common/math/gcc/udivmoddi4.o \
