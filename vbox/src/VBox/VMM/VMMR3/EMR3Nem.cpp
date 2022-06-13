@@ -1,4 +1,4 @@
-/* $Id: EMR3Nem.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: EMR3Nem.cpp 91264 2021-09-15 19:35:24Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager - NEM interface.
  */
@@ -250,14 +250,14 @@ static int emR3NemExecuteIOInstruction(PVM pVM, PVMCPU pVCpu)
     {
         rcStrict = IEMExecOne(pVCpu);
         LogFlow(("emR3NemExecuteIOInstruction: %Rrc (IEMExecOne)\n", VBOXSTRICTRC_VAL(rcStrict)));
-        STAM_COUNTER_INC(&pVCpu->em.s.CTX_SUFF(pStats)->StatIoIem);
+        STAM_COUNTER_INC(&pVCpu->em.s.StatIoIem);
     }
     else
     {
         RT_UNTRUSTED_VALIDATED_FENCE();
         rcStrict = EMHistoryExec(pVCpu, &pVCpu->em.s.aExitRecords[idxContinueExitRec], 0);
         LogFlow(("emR3NemExecuteIOInstruction: %Rrc (EMHistoryExec)\n", VBOXSTRICTRC_VAL(rcStrict)));
-        STAM_COUNTER_INC(&pVCpu->em.s.CTX_SUFF(pStats)->StatIoRestarted);
+        STAM_COUNTER_INC(&pVCpu->em.s.StatIoRestarted);
     }
 
     STAM_PROFILE_STOP(&pVCpu->em.s.StatIOEmu, a);

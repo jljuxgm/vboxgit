@@ -1,4 +1,4 @@
-/* $Id: EMInternal.h 89993 2021-07-02 09:21:45Z vboxsync $ */
+/* $Id: EMInternal.h 91264 2021-09-15 19:35:24Z vboxsync $ */
 /** @file
  * EM - Internal header file.
  */
@@ -77,39 +77,6 @@ typedef struct CLISTAT
 #ifdef IN_RING3
 AssertCompileMemberAlignment(CLISTAT, Counter, 8);
 #endif
-
-
-/**
- * Excessive (used to be) EM statistics.
- */
-typedef struct EMSTATS
-{
-#if 1 /* rawmode only? */
-    /** @name Privileged Instructions Ending Up In HC.
-     * @{ */
-    STAMCOUNTER             StatIoRestarted;
-    STAMCOUNTER             StatIoIem;
-    STAMCOUNTER             StatCli;
-    STAMCOUNTER             StatSti;
-    STAMCOUNTER             StatInvlpg;
-    STAMCOUNTER             StatHlt;
-    STAMCOUNTER             StatMovReadCR[DISCREG_CR4 + 1];
-    STAMCOUNTER             StatMovWriteCR[DISCREG_CR4 + 1];
-    STAMCOUNTER             StatMovDRx;
-    STAMCOUNTER             StatIret;
-    STAMCOUNTER             StatMovLgdt;
-    STAMCOUNTER             StatMovLldt;
-    STAMCOUNTER             StatMovLidt;
-    STAMCOUNTER             StatMisc;
-    STAMCOUNTER             StatSysEnter;
-    STAMCOUNTER             StatSysExit;
-    STAMCOUNTER             StatSysCall;
-    STAMCOUNTER             StatSysRet;
-    /** @} */
-#endif
-} EMSTATS;
-/** Pointer to the excessive EM statistics. */
-typedef EMSTATS *PEMSTATS;
 
 
 /**
@@ -260,6 +227,8 @@ typedef struct EMCPU
 
     /** R3: Profiling of emR3RawExecuteIOInstruction. */
     STAMPROFILE             StatIOEmu;
+    STAMCOUNTER             StatIoRestarted;
+    STAMCOUNTER             StatIoIem;
     /** R3: Profiling of emR3RawPrivileged. */
     STAMPROFILE             StatPrivEmu;
     /** R3: Number of times emR3HmExecute is called. */
@@ -267,16 +236,8 @@ typedef struct EMCPU
     /** R3: Number of times emR3NEMExecute is called. */
     STAMCOUNTER             StatNEMExecuteCalled;
 
-    /** More statistics (R3). */
-    R3PTRTYPE(PEMSTATS)     pStatsR3;
-    /** More statistics (R0). */
-    R0PTRTYPE(PEMSTATS)     pStatsR0;
-
-    /** Tree for keeping track of cli occurrences (debug only). */
-    R3PTRTYPE(PAVLGCPTRNODECORE) pCliStatTree;
-    STAMCOUNTER             StatTotalClis;
-    /** Align the next member at a 16-byte boundrary. */
-    uint64_t                au64Padding2[1];
+    /** Align the next member at a 32-byte boundrary. */
+    uint64_t                au64Padding2[1+2];
 
     /** Exit history table (6KB). */
     EMEXITENTRY             aExitHistory[256];
