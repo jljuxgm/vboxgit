@@ -1,4 +1,4 @@
-/* $Id: vkatDriverStack.cpp 91451 2021-09-29 08:59:35Z vboxsync $ */
+/* $Id: vkatDriverStack.cpp 91488 2021-09-30 08:17:37Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) - Driver stack code.
  */
@@ -1567,10 +1567,12 @@ void AudioTestMixStreamSetVolume(PAUDIOTESTDRVMIXSTREAM pMix, uint8_t uVolumePer
 {
     AssertReturnVoid(pMix->fDoMixing);
 
+    uint8_t const uVol = (PDMAUDIO_VOLUME_MAX / 100) * uVolumePercent;
+
     PDMAUDIOVOLUME Vol;
     RT_ZERO(Vol);
     for (size_t i = 0; i < RT_ELEMENTS(Vol.auChannels); i++)
-        Vol.auChannels[i] = (PDMAUDIO_VOLUME_MAX / 100) * uVolumePercent;
+        Vol.auChannels[i] = uVol;
     AudioMixBufSetVolume(&pMix->MixBuf, &Vol);
 }
 
