@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackend.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIConverterBackend.h 93408 2022-01-24 11:51:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConverterBackend declaration.
  */
@@ -77,6 +77,7 @@ template<class X> X fromInternalInteger(const int & /* iData */) { AssertFailed(
 
 
 /* Declare global canConvert specializations: */
+template<> SHARED_LIBRARY_STUFF bool canConvert<Qt::Alignment>();
 template<> SHARED_LIBRARY_STUFF bool canConvert<Qt::SortOrder>();
 template<> SHARED_LIBRARY_STUFF bool canConvert<SizeSuffix>();
 template<> SHARED_LIBRARY_STUFF bool canConvert<StorageSlot>();
@@ -159,6 +160,8 @@ template<> SHARED_LIBRARY_STUFF bool canConvert<KProcessStatus>();
 
 
 /* Declare global conversion specializations: */
+template<> SHARED_LIBRARY_STUFF QString toInternalString(const Qt::Alignment &enmAlignment);
+template<> SHARED_LIBRARY_STUFF Qt::Alignment fromInternalString<Qt::Alignment>(const QString &strAlignment);
 template<> SHARED_LIBRARY_STUFF QString toInternalString(const Qt::SortOrder &enmSortOrder);
 template<> SHARED_LIBRARY_STUFF Qt::SortOrder fromInternalString<Qt::SortOrder>(const QString &strSortOrder);
 template<> SHARED_LIBRARY_STUFF QString toString(const SizeSuffix &sizeSuffix);

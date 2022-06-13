@@ -1,4 +1,4 @@
-/* $Id: UINotificationCenter.h 93366 2022-01-20 17:13:31Z vboxsync $ */
+/* $Id: UINotificationCenter.h 93408 2022-01-24 11:51:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINotificationCenter class declaration.
  */
@@ -100,6 +100,9 @@ protected:
 
 private slots:
 
+    /** Handles alignment changes. */
+    void sltHandleAlignmentChange();
+
     /** Issues order changes. */
     void sltIssueOrderChange();
     /** Handles order changes. */
@@ -160,6 +163,8 @@ private:
     /** Holds the model instance. */
     UINotificationModel *m_pModel;
 
+    /** Holds the alignment. */
+    Qt::Alignment  m_enmAlignment;
     /** Holds the order. */
     Qt::SortOrder  m_enmOrder;
 

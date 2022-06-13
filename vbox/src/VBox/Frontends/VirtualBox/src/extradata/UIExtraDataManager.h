@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 93408 2022-01-24 11:51:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -65,6 +65,8 @@ signals:
     /** Notifies about extra-data change. */
     void sigExtraDataChange(const QUuid &uID, const QString &strKey, const QString &strValue);
 
+    /** Notifies about notification-center alignment change. */
+    void sigNotificationCenterAlignmentChange();
     /** Notifies about notification-center order change. */
     void sigNotificationCenterOrderChange();
 
@@ -190,6 +192,11 @@ public:
         bool keepSuccessfullNotificationProgresses();
         /** Defines whether successfull notification-progresses should NOT close (@a fKeep) automatically. */
         void setKeepSuccessfullNotificationProgresses(bool fKeep);
+
+        /** Returns notification-center alignment. */
+        Qt::Alignment notificationCenterAlignment();
+        /** Defines notification-progresses @a enmOrder. */
+        void setNotificationCenterAlignment(Qt::Alignment enmOrder);
 
         /** Returns notification-center order. */
         Qt::SortOrder notificationCenterOrder();
