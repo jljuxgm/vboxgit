@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 88363 2021-04-05 06:22:36Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 89921 2021-06-25 18:47:30Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -2128,6 +2128,10 @@ RTEXITCODE handleModifyVM(HandlerArg *a)
                     if (SUCCEEDED(rc))
                         fEnableUsb = true;
                 }
+                else if (!RTStrICmp(ValueUnion.psz, "none"))
+                {
+                    CHECK_ERROR(sessionMachine, COMSETTER(PointingHIDType)(PointingHIDType_None));
+                }
                 else
                 {
                     errorArgument("Invalid type '%s' specfied for pointing device", ValueUnion.psz);
@@ -2164,6 +2168,12 @@ RTEXITCODE handleModifyVM(HandlerArg *a)
                 else if (!RTStrICmp(ValueUnion.psz, "usb"))
                 {
                     CHECK_ERROR(sessionMachine, COMSETTER(KeyboardHIDType)(KeyboardHIDType_USBKeyboard));
+                    if (SUCCEEDED(rc))
+                        fEnableUsb = true;
+                }
+                else if (!RTStrICmp(ValueUnion.psz, "none"))
+                {
+                    CHECK_ERROR(sessionMachine, COMSETTER(KeyboardHIDType)(KeyboardHIDType_None));
                     if (SUCCEEDED(rc))
                         fEnableUsb = true;
                 }
