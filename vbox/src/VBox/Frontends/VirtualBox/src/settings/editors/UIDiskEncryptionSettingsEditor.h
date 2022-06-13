@@ -1,4 +1,4 @@
-/* $Id: UIDiskEncryptionSettingsEditor.h 94498 2022-04-06 16:03:44Z vboxsync $ */
+/* $Id: UIDiskEncryptionSettingsEditor.h 94515 2022-04-07 14:13:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDiskEncryptionSettingsEditor class declaration.
  */
@@ -109,17 +109,17 @@ private:
         /** Holds the settings widget instance. */
         QWidget   *m_pWidgetSettings;
         /** Holds the cipher type label instance. */
-        QLabel    *m_pLabelCipher;
+        QLabel    *m_pLabelCipherType;
         /** Holds the cipher type combo instance. */
-        QComboBox *m_pComboCipher;
-        /** Holds the enter password label instance. */
-        QLabel    *m_pLabelEncryptionPassword;
-        /** Holds the enter password editor instance. */
-        QLineEdit *m_pEditorEncryptionPassword;
-        /** Holds the confirm password label instance. */
-        QLabel    *m_pLabelEncryptionPasswordConfirm;
-        /** Holds the confirm password editor instance. */
-        QLineEdit *m_pEditorEncryptionPasswordConfirm;
+        QComboBox *m_pComboCipherType;
+        /** Holds the password 1 label instance. */
+        QLabel    *m_pLabelPassword1;
+        /** Holds the password 1 editor instance. */
+        QLineEdit *m_pEditorPassword1;
+        /** Holds the password 2 label instance. */
+        QLabel    *m_pLabelPassword2;
+        /** Holds the password 2 editor instance. */
+        QLineEdit *m_pEditorPassword2;
     /** @} */
 };
 

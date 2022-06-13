@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsGeneral.cpp 94498 2022-04-06 16:03:44Z vboxsync $ */
+/* $Id: UIMachineSettingsGeneral.cpp 94515 2022-04-07 14:13:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsGeneral class implementation.
  */
@@ -16,17 +16,11 @@
  */
 
 /* Qt includes: */
-#include <QCheckBox>
-#include <QComboBox>
-#include <QDir>
-#include <QLabel>
-#include <QLineEdit>
-#include <QTextEdit>
+#include <QFileInfo>
 #include <QVBoxLayout>
 
 /* GUI includes: */
 #include "QITabWidget.h"
-#include "QIWidgetValidator.h"
 #include "UIAddDiskEncryptionPasswordDialog.h"
 #include "UICommon.h"
 #include "UIConverter.h"
