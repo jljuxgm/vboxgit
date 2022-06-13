@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboard.cpp 93983 2022-02-28 14:37:43Z vboxsync $ */
+/* $Id: UISoftKeyboard.cpp 93985 2022-02-28 14:41:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class implementation.
  */
@@ -3509,6 +3509,7 @@ QVector<QPointF> UIPhysicalLayoutReader::computeKeyVertices(const UISoftKeyboard
     }
     return vertices;
 }
+
 
 /*********************************************************************************************************************************
 *   UIKeyboardLayoutReader implementation.                                                                                       *
