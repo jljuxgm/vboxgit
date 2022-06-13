@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 90157 2021-07-12 11:14:38Z vboxsync $ */
+/* $Id: UIWizardNewVM.cpp 90159 2021-07-12 17:27:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
@@ -83,7 +83,6 @@ void UIWizardNewVM::populatePages()
 {
     switch (mode())
     {
-        case WizardMode_Expert:
         case WizardMode_Basic:
         {
             addPage(new UIWizardNewVMNameOSTypePageBasic);
@@ -93,11 +92,11 @@ void UIWizardNewVM::populatePages()
             addPage(new UIWizardNewVMDiskPageBasic);
             break;
         }
-        // case WizardMode_Expert:
-        // {
-        //     // addPage(new UIWizardNewCloudVMPageExpert(m_fFullWizard));
-        //     break;
-        // }
+        case WizardMode_Expert:
+        {
+            addPage(new UIWizardNewVMPageExpert());
+            break;
+        }
         default:
         {
             AssertMsgFailed(("Invalid mode: %d", mode()));
