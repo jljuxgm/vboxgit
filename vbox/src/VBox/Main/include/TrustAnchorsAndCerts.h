@@ -1,4 +1,4 @@
-/* $Id: TrustAnchorsAndCerts.h 91396 2021-09-27 13:40:35Z vboxsync $ */
+/* $Id: TrustAnchorsAndCerts.h 91399 2021-09-27 13:48:47Z vboxsync $ */
 /** @file
  * Main - Collection of trust anchors and certificates included in VBoxSVC.
  */
@@ -20,6 +20,8 @@
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
+
+#include <iprt/cdefs.h>
 
 RT_C_DECLS_BEGIN
 
