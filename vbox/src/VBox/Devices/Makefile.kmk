@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 93419 2022-01-24 18:13:22Z vboxsync $
+# $Id: Makefile.kmk 93424 2022-01-24 21:09:41Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -554,10 +554,10 @@ VBOX_WITH_VMSVGA3D_DYNAMIC_LOAD = 1
  endif
 
  ifdef VBOX_WITH_VMNET
-  VBoxDD_DEFS           += VBOX_WITH_VMNET
-  VBoxDD_SOURCES        += \
+  VBoxDD_DEFS.darwin    += VBOX_WITH_VMNET
+  VBoxDD_SOURCES.darwin += \
  	Network/DrvVMNet.m
-  VBoxDD_LDFLAGS += -framework vmnet
+  VBoxDD_LDFLAGS.darwin += -framework vmnet
  endif
 
  if defined(VBOX_WITH_CLOUD_NET) && defined(VBOX_WITH_LIBSSH)
