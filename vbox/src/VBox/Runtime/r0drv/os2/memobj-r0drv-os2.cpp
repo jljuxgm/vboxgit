@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-os2.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: memobj-r0drv-os2.cpp 91446 2021-09-28 19:53:25Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, OS/2.
  */
@@ -162,6 +162,13 @@ DECLHIDDEN(int) rtR0MemObjNativeAllocPage(PPRTR0MEMOBJINTERNAL ppMem, size_t cb,
     }
     rtR0MemObjDelete(&pMemOs2->Core);
     return RTErrConvertFromOS2(rc);
+}
+
+
+DECLHIDDEN(int) rtR0MemObjNativeAllocLarge(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, size_t cbLargePage, uint32_t fFlags,
+                                           const char *pszTag)
+{
+    return rtR0MemObjFallbackAllocLarge(ppMem, cb, cbLargePage, fFlags, pszTag);
 }
 
 

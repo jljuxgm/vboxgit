@@ -1,4 +1,4 @@
-/* $Id: initterm-r0drv-nt.cpp 90417 2021-07-29 21:29:10Z vboxsync $ */
+/* $Id: initterm-r0drv-nt.cpp 91446 2021-09-28 19:53:25Z vboxsync $ */
 /** @file
  * IPRT - Initialization & Termination, R0 Driver, NT.
  */
@@ -101,6 +101,8 @@ PFNKESHOULDYIELDPROCESSOR               g_pfnrtKeShouldYieldProcessor;
 decltype(MmProtectMdlSystemAddress)    *g_pfnrtMmProtectMdlSystemAddress;
 /** MmAllocatePagesForMdl - Introduced in Windows 2000. */
 decltype(MmAllocatePagesForMdl)        *g_pfnrtMmAllocatePagesForMdl;
+/** MmAllocatePagesForMdlEx - Introduced in Windows Server 2003 SP1. */
+decltype(MmAllocatePagesForMdlEx)      *g_pfnrtMmAllocatePagesForMdlEx;
 /** MmFreePagesFromMdl - Introduced in Windows 2000. */
 decltype(MmFreePagesFromMdl)           *g_pfnrtMmFreePagesFromMdl;
 /** MmMapLockedPagesSpecifyCache - Introduced in Windows NT4 SP4. */
@@ -323,6 +325,7 @@ DECLHIDDEN(int) rtR0InitNative(void)
     GET_SYSTEM_ROUTINE_TYPE(KeShouldYieldProcessor, PFNKESHOULDYIELDPROCESSOR);
     GET_SYSTEM_ROUTINE(MmProtectMdlSystemAddress);
     GET_SYSTEM_ROUTINE(MmAllocatePagesForMdl);
+    GET_SYSTEM_ROUTINE(MmAllocatePagesForMdlEx);
     GET_SYSTEM_ROUTINE(MmFreePagesFromMdl);
     GET_SYSTEM_ROUTINE(MmMapLockedPagesSpecifyCache);
     GET_SYSTEM_ROUTINE(MmAllocateContiguousMemorySpecifyCache);

@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-haiku.c 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: memobj-r0drv-haiku.c 91446 2021-09-28 19:53:25Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Haiku.
  */
@@ -250,6 +250,13 @@ static int rtR0MemObjNativeAllocArea(PPRTR0MEMOBJINTERNAL ppMem, size_t cb,
 int rtR0MemObjNativeAllocPage(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, bool fExecutable)
 {
     return rtR0MemObjNativeAllocArea(ppMem, cb, fExecutable, RTR0MEMOBJTYPE_PAGE, 0 /* PhysHighest */, 0 /* uAlignment */);
+}
+
+
+DECLHIDDEN(int) rtR0MemObjNativeAllocLarge(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, size_t cbLargePage, uint32_t fFlags,
+                                           const char *pszTag)
+{
+    return rtR0MemObjFallbackAllocLarge(ppMem, cb, cbLargePage, fFlags, pszTag);
 }
 
 

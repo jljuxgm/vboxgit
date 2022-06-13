@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-darwin.cpp 85167 2020-07-10 10:06:55Z vboxsync $ */
+/* $Id: memobj-r0drv-darwin.cpp 91446 2021-09-28 19:53:25Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Darwin.
  */
@@ -834,6 +834,13 @@ DECLHIDDEN(int) rtR0MemObjNativeAllocPage(PPRTR0MEMOBJINTERNAL ppMem, size_t cb,
 
     IPRT_DARWIN_RESTORE_EFL_AC();
     return rc;
+}
+
+
+DECLHIDDEN(int) rtR0MemObjNativeAllocLarge(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, size_t cbLargePage, uint32_t fFlags,
+                                           const char *pszTag)
+{
+    return rtR0MemObjFallbackAllocLarge(ppMem, cb, cbLargePage, fFlags, pszTag);
 }
 
 

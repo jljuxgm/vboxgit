@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-solaris.c 88215 2021-03-19 18:42:55Z vboxsync $ */
+/* $Id: memobj-r0drv-solaris.c 91446 2021-09-28 19:53:25Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Solaris.
  */
@@ -667,6 +667,13 @@ DECLHIDDEN(int) rtR0MemObjNativeAllocPage(PPRTR0MEMOBJINTERNAL ppMem, size_t cb,
     pMemSolaris->pvHandle = NULL;
     *ppMem = &pMemSolaris->Core;
     return VINF_SUCCESS;
+}
+
+
+DECLHIDDEN(int) rtR0MemObjNativeAllocLarge(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, size_t cbLargePage, uint32_t fFlags,
+                                           const char *pszTag)
+{
+    return rtR0MemObjFallbackAllocLarge(ppMem, cb, cbLargePage, fFlags, pszTag);
 }
 
 
