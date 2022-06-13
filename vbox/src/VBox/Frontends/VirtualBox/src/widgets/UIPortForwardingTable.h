@@ -1,4 +1,4 @@
-/* $Id: UIPortForwardingTable.h 93990 2022-02-28 15:34:57Z vboxsync $ */
+/* $Id: UIPortForwardingTable.h 94017 2022-03-01 09:42:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPortForwardingTable class declaration.
  */
@@ -175,7 +175,7 @@ struct UIPortForwardingDataUnique
     {}
 
     /** Returns whether this port data is equal to @a another. */
-    bool operator==(const UIPortForwardingDataUnique &another)
+    bool operator==(const UIPortForwardingDataUnique &another) const
     {
         return    protocol == another.protocol
                && hostPort == another.hostPort

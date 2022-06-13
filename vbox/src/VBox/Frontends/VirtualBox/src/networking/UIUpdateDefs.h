@@ -1,4 +1,4 @@
-/* $Id: UIUpdateDefs.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIUpdateDefs.h 94017 2022-03-01 09:42:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Update routine related declarations.
  */
@@ -35,7 +35,7 @@ struct VBoxUpdateDay
     VBoxUpdateDay(const QString &strVal, const QString &strKey)
         : val(strVal), key(strKey) {}
 
-    bool operator==(const VBoxUpdateDay &other) { return val == other.val || key == other.key; }
+    bool operator==(const VBoxUpdateDay &other) const { return val == other.val || key == other.key; }
 
     QString val;
     QString key;
