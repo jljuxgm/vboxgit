@@ -1,4 +1,4 @@
-/* $Id: UIWizardDiskEditors.h 90193 2021-07-14 17:40:47Z vboxsync $ */
+/* $Id: UIWizardDiskEditors.h 90206 2021-07-15 07:22:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardDiskEditors class declaration.
  */
@@ -37,10 +37,12 @@ class QGridLayout;
 class QLabel;
 class QVBoxLayout;
 class QILineEdit;
+class QIToolButton;
 class UIFilePathSelector;
 class UIHostnameDomainNameEditor;
 class UIPasswordLineEdit;
 class UIUserNamePasswordEditor;
+class UIMediumSizeEditor;
 
 /* Other VBox includes: */
 #include "COMEnums.h"
@@ -92,5 +94,29 @@ private:
 
 };
 
+
+class UIDiskSizeAndLocationGroupBox : public QIWithRetranslateUI<QGroupBox>
+{
+    Q_OBJECT;
+
+signals:
+
+
+public:
+
+    UIDiskSizeAndLocationGroupBox(QWidget *pParent = 0);
+
+private:
+
+    void prepare();
+    virtual void retranslateUi() /* override final */;
+
+    QLabel *m_pLocationLabel;
+    QILineEdit *m_pLocationEditor;
+    QIToolButton *m_pLocationOpenButton;
+    QLabel *m_pMediumSizeEditorLabel;
+    UIMediumSizeEditor *m_pMediumSizeEditor;
+
+};
 
 #endif /* !FEQT_INCLUDED_SRC_wizards_editors_UIWizardDiskEditors_h */
