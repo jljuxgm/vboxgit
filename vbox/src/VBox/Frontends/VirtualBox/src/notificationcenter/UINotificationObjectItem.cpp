@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjectItem.cpp 90591 2021-08-10 10:19:38Z vboxsync $ */
+/* $Id: UINotificationObjectItem.cpp 90601 2021-08-10 15:16:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINotificationObjectItem class implementation.
  */
@@ -384,7 +384,7 @@ UINotificationObjectItem *UINotificationItem::create(QWidget *pParent, UINotific
     if (pObject->inherits("UINotificationProgress"))
         return new UINotificationProgressItem(pParent, static_cast<UINotificationProgress*>(pObject));
 #ifdef VBOX_GUI_WITH_NETWORK_MANAGER
-    if (pObject->inherits("UINotificationDownloader"))
+    else if (pObject->inherits("UINotificationDownloader"))
         return new UINotificationDownloaderItem(pParent, static_cast<UINotificationDownloader*>(pObject));
 #endif
     /* Handle defaults: */
