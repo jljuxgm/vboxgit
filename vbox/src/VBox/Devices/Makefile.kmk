@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 90946 2021-08-27 10:55:25Z vboxsync $
+# $Id: Makefile.kmk 91046 2021-09-01 07:52:43Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -590,6 +590,9 @@ endif
     Security/DrvTpmEmu.cpp
 
   VBoxDD_SOURCES.linux += \
+  	Security/DrvTpmHost.cpp
+
+  VBoxDD_SOURCES.win += \
   	Security/DrvTpmHost.cpp
  endif
 
