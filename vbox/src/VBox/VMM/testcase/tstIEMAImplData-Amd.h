@@ -1,4 +1,4 @@
-/* $Id: tstIEMAImplData-Amd.h 94155 2022-03-10 13:59:02Z vboxsync $ */
+/* $Id: tstIEMAImplData-Amd.h 94162 2022-03-10 22:29:05Z vboxsync $ */
 /** @file
  * IEM Assembly Instruction Helper Testcase Data, AMD - Stub.
  */
@@ -15,11 +15,11 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef VMM_INCLUDE_SRC_testcase_tstIEMAImplData_Amd_h
-#define VMM_INCLUDE_SRC_testcase_tstIEMAImplData_Amd_h
+#ifndef VMM_INCLUDED_SRC_testcase_tstIEMAImplData_Amd_h
+#define VMM_INCLUDED_SRC_testcase_tstIEMAImplData_Amd_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
 
-#endif /* !VMM_INCLUDE_SRC_testcase_tstIEMAImplData_Amd_h */
+#endif /* !VMM_INCLUDED_SRC_testcase_tstIEMAImplData_Amd_h */
 
