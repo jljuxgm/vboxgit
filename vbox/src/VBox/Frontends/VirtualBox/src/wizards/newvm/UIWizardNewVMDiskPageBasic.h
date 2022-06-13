@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMDiskPageBasic.h 90077 2021-07-07 15:40:54Z vboxsync $ */
+/* $Id: UIWizardNewVMDiskPageBasic.h 90082 2021-07-08 05:51:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMDiskPageBasic class declaration.
  */
@@ -128,9 +128,11 @@ private:
     SelectedDiskSource m_enmSelectedDiskSource;
     bool m_fRecommendedNoDisk;
 
-    QString m_strDefaultExtension;
     QSet<QString> m_userModifiedParameters;
     bool m_fVDIFormatFound;
+    qulonglong m_uMediumSizeMin;
+    qulonglong m_uMediumSizeMax;
+
 };
 
 #endif /* !FEQT_INCLUDED_SRC_wizards_newvm_UIWizardNewVMDiskPageBasic_h */
