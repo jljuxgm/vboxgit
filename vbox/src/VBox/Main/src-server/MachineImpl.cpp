@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 91743 2021-10-14 20:04:27Z vboxsync $ */
+/* $Id: MachineImpl.cpp 91747 2021-10-14 20:50:41Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -9860,6 +9860,7 @@ HRESULT Machine::i_prepareSaveSettings(bool *pfNeedsGlobalSaveSettings)
  *          settings have changed. This will happen if a machine rename has been
  *          saved and the global machine and media registries will therefore need
  *          updating.
+ * @param   alock   Reference to the lock for this machine object.
  * @param   aFlags  Flags.
  */
 HRESULT Machine::i_saveSettings(bool *pfNeedsGlobalSaveSettings,
