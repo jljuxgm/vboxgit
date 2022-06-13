@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 90829 2021-08-24 10:26:07Z vboxsync $ */
+/* $Id: VMM.cpp 90840 2021-08-24 11:38:08Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -750,7 +750,7 @@ static int vmmR3UpdateLoggersWorker(PVM pVM, PVMCPU pVCpu, PRTLOGGER pSrcLogger,
  *
  * @returns VBox status code.
  * @param   pVM     The cross context VM structure.
- * @param   EMT
+ * @thread  EMT
  */
 VMMR3_INT_DECL(int) VMMR3UpdateLoggers(PVM pVM)
 {
