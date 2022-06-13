@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 93115 2022-01-01 11:31:46Z vboxsync $
+# $Id: tdAddBasic1.py 93734 2022-02-14 16:32:58Z vboxsync $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 93115 $"
+__version__ = "$Revision: 93734 $"
 
 # Standard Python imports.
 import os;
@@ -238,6 +238,13 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
                 ## @todo Reset tests.
 
                 ## @todo Final test: Uninstallation.
+
+                # Download the TxS (Test Execution Service) log. This is not fatal when not being present.
+                if not fRc:
+                    self.txsDownloadFiles(oSession, oTxsSession,
+                                          [ (oTestVm.pathJoin(self.getGuestTempDir(oTestVm), 'vbox-txs-release.log'),
+                                                              'vbox-txs-%s.log' % oTestVm.sVmName) ],
+                                          fIgnoreErrors = True);
 
                 # Cleanup.
                 self.removeTask(oTxsSession);
