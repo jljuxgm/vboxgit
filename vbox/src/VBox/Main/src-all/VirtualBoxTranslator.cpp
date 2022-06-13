@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxTranslator.cpp 92145 2021-10-29 13:00:02Z vboxsync $ */
+/* $Id: VirtualBoxTranslator.cpp 92824 2021-12-08 15:18:32Z vboxsync $ */
 /** @file
  * VirtualBox Translator class.
  */
@@ -222,6 +222,14 @@ HRESULT VirtualBoxTranslator::loadLanguage(ComPtr<IVirtualBox> aVirtualBox)
         }
     }
     return hrc;
+}
+
+
+com::Utf8Str VirtualBoxTranslator::language()
+{
+    AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
+
+    return m_strLanguage;
 }
 
 

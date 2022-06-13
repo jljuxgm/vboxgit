@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxTranslator.h 92068 2021-10-26 08:35:27Z vboxsync $ */
+/* $Id: VirtualBoxTranslator.h 92824 2021-12-08 15:18:32Z vboxsync $ */
 /** @file
  * VirtualBox Translator.
  */
@@ -106,6 +106,8 @@ public:
     int i_loadLanguage(const char *pszLang);
 
     static int32_t initCritSect();
+
+    com::Utf8Str language();
 
 private:
     static RTCRITSECTRW s_instanceRwLock;
