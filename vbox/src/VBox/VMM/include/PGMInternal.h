@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 93735 2022-02-14 17:06:27Z vboxsync $ */
+/* $Id: PGMInternal.h 93824 2022-02-17 11:22:42Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -3408,6 +3408,13 @@ typedef struct PGMCPU
      *  When SLAT is active, this is CR3 prior to translation.
      *  When SLAT is inactive, this is unused (and NIL_RTGCPHYS). */
     RTGCPHYS                        GCPhysNstGstCR3;
+
+    /** The cached guest CR3 when it has been mapped in PAE mode.
+     * This allows us to skip remapping the CR3 and PAE PDPEs
+     * (in PGMFlushTLB or similar) when it was already done as
+     * part of MOV CRx instruction emulation.
+     */
+    RTGCPHYS                        GCPhysPaeCR3;
 
     /** @name 32-bit Guest Paging.
      * @{ */

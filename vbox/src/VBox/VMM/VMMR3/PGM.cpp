@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 93744 2022-02-14 21:00:26Z vboxsync $ */
+/* $Id: PGM.cpp 93824 2022-02-17 11:22:42Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -822,6 +822,7 @@ VMMR3DECL(int) PGMR3Init(PVM pVM)
 
         pPGM->GCPhysCR3         = NIL_RTGCPHYS;
         pPGM->GCPhysNstGstCR3   = NIL_RTGCPHYS;
+        pPGM->GCPhysPaeCR3      = NIL_RTGCPHYS;
 
         pPGM->pGst32BitPdR3     = NULL;
         pPGM->pGstPaePdptR3     = NULL;
